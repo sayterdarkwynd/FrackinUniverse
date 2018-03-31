@@ -20,7 +20,7 @@ function Crits:setCritDamage(damage)
 	if crit then
         if heldItem then
             -- exclude mining lasers
-            if not root.itemHasTag(heldItem, "mininggun") then
+            if not root.itemHasTag(heldItem, "mininggun") or root.itemHasTag(heldItem, "bugnet") then
 
                 -- Glitch ability
                 if world.entitySpecies(activeItem.ownerEntityId()) == "glitch" and (root.itemHasTag(heldItem, "mace") or root.itemHasTag(heldItem, "axe") or root.itemHasTag(heldItem, "greataxe")) then

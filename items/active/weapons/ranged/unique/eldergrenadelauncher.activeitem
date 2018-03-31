@@ -1,0 +1,88 @@
+{
+  "itemName" : "eldergrenadelauncher",
+  "price" : 3160,
+  "inventoryIcon" : "eldergrenadelauncher_minhui.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Powerful and multi-faceted
+^yellow;Multi-Effect Spread^reset;",
+  "shortdescription" : "Vindicator",
+  "category" : "grenadeLauncher",
+  "level" : 7,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Elder",
+  "itemTags" : ["weapon","ranged","grenadelauncher", "upgradeableWeapon", "elder"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/unique/eldergrenadelauncher.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "eldergrenadelauncher_minhui.png",
+    "middlefullbright" : "eldergrenadelauncherfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/energy-whip2.wav" ]
+    }
+  },
+
+  
+  "baseOffset" : [1.78, 0.05],
+  "muzzleOffset" : [1.25, 0.125],
+
+  "scripts" : ["/items/active/scripts/modifiablegun.lua", "/items/active/scripts/windupweaponhealth.lua" ],
+
+  "elementalType" : "shadow",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.5,
+    "baseDps" : 6.0,
+    "energyUsage" : 35,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "eldergrenade",
+	  "projectileParameters" : {
+	      "knockback" : 20,
+	      "damageSourceKind" : "shadow"
+	  },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "critChance" : 3,
+  "critBonus" : 12,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

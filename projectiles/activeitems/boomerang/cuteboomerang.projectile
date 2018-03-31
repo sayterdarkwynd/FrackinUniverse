@@ -30,5 +30,15 @@
   "emitters" : [ "cutetrailwide" ],
   "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
 
-  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ]
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 2,
+      "innerRadius" : 2,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  }  
 }

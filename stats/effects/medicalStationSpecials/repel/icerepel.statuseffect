@@ -1,0 +1,16 @@
+{
+	"name" : "medicalicerepel",
+	"label" : "^orange;[E]^reset; Ice Repel",
+	"icon" : "/interface/statuses/medicalStationSpecials/icerepel.png",
+
+	"defaultDuration" : 5,
+	"scripts" : [ "repel_base.lua" ],
+	
+	"effectConfig" : {
+		"dummyStatus" : "medicalicerepeldummy",
+		"resist" : "ice",
+		"bonusResistFlat" : 0.5,
+		"otherResistsMult" : 0.67,
+		"statusImmunities" : [ "liquidnitrogenImmunity", "nitrogenfreezeImmunity", "ffextremecoldImmunity", "biomecoldImmunity", "iceStatusImmunity" ]
+	}
+}

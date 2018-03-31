@@ -1,0 +1,41 @@
+{
+  "itemName" : "pyreiterapier",
+  "price" : 800,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Crafted of eternally burning fun.
+^cyan;Causes Burning^reset;",
+  "shortdescription" : "Pyreite Rapier",
+  "tooltipKind" : "sword2",
+  "category" : "Rapier",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon" ],
+  "handGrip" : "wrap",
+  "inventoryIcon" : "pyreiterapier.png",
+
+  "animation" : "piercecomboglow.animation",
+  "animationParts" : {
+    "handle": "",
+    "blade" : "pyreiterapier.png",
+    "bladefullbright" : "pyreiterapierfullbright.png"
+  },
+  "animationCustom" : { },
+  "critChance" : 1,
+  "critBonus" : 1, 
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "piercecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.32,
+    "baseDps" : 6.2,
+    "damageConfig" : {
+      "damageSourceKind":"radioactive",
+      "statusEffects":["burning"]
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

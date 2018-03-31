@@ -27,5 +27,15 @@
       "action" : "config",
       "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
     }  
-  ]
+  ],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 2,
+      "innerRadius" : 2,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  } 
 }

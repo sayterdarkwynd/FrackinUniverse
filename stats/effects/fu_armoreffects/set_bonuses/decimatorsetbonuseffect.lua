@@ -1,7 +1,7 @@
 setName="fu_decimatorset"
 
 weaponBonus={
-	{stat = "critChance", amount = 15},
+	{stat = "critChance", amount = 3},
 	{stat = "critBonus", baseMultiplier = 1.15}
 }
 

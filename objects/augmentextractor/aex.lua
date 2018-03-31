@@ -33,7 +33,7 @@ function craftingRecipe(items)
 				count = 1,
 				parameters = {} --{augment = aug_param} --used to pass all parameters, made the things unstackable	
 			}
-			sb.logInfo(sb.printJson(augment))
+			--sb.logInfo(sb.printJson(augment))
 		else --we don't know wtf this is, spawn a custom thing.
 			augment = {
 				name = "thornsaugment",

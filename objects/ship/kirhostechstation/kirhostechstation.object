@@ -1,0 +1,68 @@
+{
+  "objectName" : "kirhostechstation",
+  "printable" : false,
+  "rarity" : "Common",
+
+  "interactAction" : "OpenAiInterface",
+
+  "category" : "decorative",
+
+  "description" : "This tech station allows me to communicate with S.A.I.L and enable tech!",
+  "shortdescription" : "Tech Station",
+  "race" : "kirhos",
+  
+  "lightColor" : [61, 88, 102],
+  "lightPosition" : [-1, 0],
+
+  "apexDescription" : "A tech station. I can enable tech and talk to S.A.I.L through this.",
+  "floranDescription" : "Floran use thisss for magiccc and talk to sshhip S.A.I.L!",
+  "glitchDescription" : "Informative. This tech station allows me to choose tech and talk to S.A.I.L.",
+  "humanDescription" : "A tech station. Allows me to communicate with S.A.I.L and enable tech!",
+  "hylotlDescription" : "This tech station enables tech and allows me to communicate with S.A.I.L.",
+  "kirhosDescription" : "I can use this to load up on augs or chat with S.A.I.L, if I get lonely.",
+
+  "inventoryIcon" : "apexrecordplayericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "kirhostechstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "kirhostechstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    }
+  ],
+
+  "offeredQuests" : [ "gaterepair" ],
+
+  "animation" : "/objects/ship/techstation.animation",
+  "scripts" : [
+    "/objects/spawner/techstation.lua"
+  ],
+  "scriptDelta" : 20,
+  "shipPetType" : "petkoopy",
+  "spawnOffset" : [2, -1],
+
+  "chatPortrait" : "/ai/portraits/kirhosportrait.png:yell.1",
+  "dialog" : {
+    "wakeUp" : [
+      [ "Boot Initialised, new superuser acquired......  Greetings, Hacker!", "/ai/portraits/kirhosportrait.png:blink" ],
+      [ "I am S.A.I.L, your Ship-based Artificial Intelligence Lattice. I manage the maintainance of your ship.", "/ai/portraits/kirhosportrait.png:talk.0" ],
+      [ "Yes, the creation of AI was banned on Kirhosi ships, but my existence can be our little secret.  ;)", "/ai/portraits/kirhosportrait.png:talk.1" ],
+      [ "I take it you are a member of anarchist movement?  Congrats on stealing this ship.", "/ai/portraits/kirhosportrait.png:talk.0" ],
+      [ "Unfortunately, the ship's systems were damaged in our escape. Our location is currently unknown.", "/ai/portraits/kirhosportrait.png:refuse.0" ]
+    ],
+    "wakePlayer" : [
+      [ "System is down, please reboot.", "/ai/portraits/kirhosportrait.png:unique.1"],
+      [ "Please reboot the system.", "/ai/portraits/kirhosportrait.png:unique.1"],
+      [ "Reboot process remains uninitiated.", "/ai/portraits/kirhosportrait.png:unique.1"],
+      [ "To make use of your S.A.I.L please reboot.", "/ai/portraits/kirhosportrait.png:unique.1" ],
+      [ "Rebooting has shown to improve ship interaction satisfaction levels by 73%.", "/ai/portraits/kirhosportrait.png:unique.1"],
+      [ "Rebooting requires a conscious entity to interact with the S.A.I.L console.", "/ai/portraits/kirhosportrait.png:unique.1" ]
+    ]
+  },
+
+  "uniqueId" : "techstation"
+}

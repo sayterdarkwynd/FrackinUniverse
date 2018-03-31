@@ -3,7 +3,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_ravagerset"
 
 weaponBonus={ 
-	{stat = "powerMultiplier", amount = 0.25} 
+	{stat = "powerMultiplier", amount = 0.25},
+	{stat = "critBonus", baseMultiplier = 1.2} 
 }
 
 armorBonus2={}

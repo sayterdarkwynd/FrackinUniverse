@@ -1,0 +1,42 @@
+{
+  "itemName" : "fuautohookshot",
+  "price" : 200,
+  "inventoryIcon" : "autohookshoticon.png",
+  "rarity" : "common",
+  "maxStack" : 1,
+  "description" : "It pulls you up automatically!",
+  "shortdescription" : "Automatic Hookshot",
+  "largeImage" : "autohookshotbig.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : false,
+  "learnBlueprintsOnPickup" : [ "fuautohookshot2" ],
+  "scripts" : ["/items/active/grapplinghooks/autohookshot.lua"],
+  "animationScripts" : ["/items/active/grapplinghooks/autohookshotanimation.lua"],
+
+  "animation" : "autohookshot.animation",
+
+  "fireOffset" : [0, 0.3],
+  "ropeOffset" : [-1.75, 0.3],
+  "ropeVisualOffset" : [0.75, 0.3],
+
+  "consumeOnUse" : false,
+
+  "projectileType" : "grapplehook",
+  "projectileParameters" : {
+    "speed" : 70,
+    "timeToLive" : 0.25
+  },
+
+  "ropeWidth" : 1.0,
+  "ropeColor" : [150, 150, 150, 255],
+
+  "reelInDistance" : 3.5,
+  "reelOutLength" : 40,
+  "breakLength" : 50,
+
+  "reelSpeed" : 30,
+  "controlForce" : 800,
+
+  "groundLagTime" : 0.2
+}

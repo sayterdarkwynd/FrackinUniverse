@@ -1,0 +1,82 @@
+{
+  "itemName" : "arconcannon",
+  "price" : 500,
+  "inventoryIcon" : "arconcannon.png",
+    "maxStack" : 1,
+    "rarity" : "rare",
+  "description" : "Attaches to the forearm. Fires plasma bursts.
+^yellow;Counts as 'plasma' for set bonuses^reset;",
+  "shortdescription" : "ArCon Blaster",
+  "level" : 5,
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "plasma", "upgradeableWeapon"],
+  "tooltipKind" : "gun2",
+  
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "arconcannon.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
+  },      
+  "animationCustom" : {
+    "sounds" : { "fire" : [ "/sfx/weapons/protopistol.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [122, 22, 22] } }  
+  },
+
+  "baseOffset" : [0.0, 0.34],
+  "muzzleOffset" : [1.9, 0.40],
+  "handGrip" : "wrap",
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.15,
+    "baseDps" : 5.25,
+    "energyUsage" : 32,
+    "fireType" : "auto",
+    "inaccuracy" : 0.01,
+    "projectileCount" : 1,
+    "projectileType" : "brainbullet2",
+    "projectileParameters" : {
+      "speed" : 65
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

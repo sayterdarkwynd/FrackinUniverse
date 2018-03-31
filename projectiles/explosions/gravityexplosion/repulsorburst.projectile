@@ -1,0 +1,32 @@
+{
+  "projectileName" : "repulsorburst",
+  "image" : "fungravityexplosion.png",
+  "animationCycle" : 0.7,
+  "animationLoops" : false,
+  "physics" : "illusion",
+  "frameNumber" : 6,
+  "pointLight" : false,
+  "speed" : 0,
+  "power" : 0,
+  "level" : 1,
+  "bounces" : -1,
+
+  "timeToLive" : 2,
+
+  "orientationLocked" : true,
+
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 10,
+      "innerRadius" : 0,
+      "center" : [0,0],
+      "baseTargetRadialVelocity": 1200,
+      //"targetRadialVelocity" : 100,
+      "controlForce" : 1200,
+      "categoryWhitelist" : [ "projectile" ]
+    }
+  },
+
+  "clientEntityMode" : "ClientSlaveOnly"
+}

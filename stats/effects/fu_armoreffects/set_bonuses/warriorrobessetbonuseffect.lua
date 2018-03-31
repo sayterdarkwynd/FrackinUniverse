@@ -3,7 +3,7 @@ setName="fu_warriorrobesset"
 armorEffect={
 	{stat = "shadowImmunity", amount = 1},
 	{stat = "insanityImmunity", amount = 1},
-	{stat = "critChance", amount = 3},
+	{stat = "critChance", amount = 0.5},
 	{stat = "foodDelta", baseMultiplier = 0.8}
 }
 
@@ -17,8 +17,8 @@ end
 
 function update(dt)
 	mcontroller.controlModifiers({
-	  airJumpModifier = 1.15,
-	  speedModifier = 1.15
+	  airJumpModifier = 1.08,
+	  speedModifier = 1.08
 	})
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()

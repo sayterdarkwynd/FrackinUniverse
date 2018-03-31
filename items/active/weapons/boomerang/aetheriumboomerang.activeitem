@@ -1,0 +1,97 @@
+{
+  "itemName" : "aetheriumboomerang",
+  "level" : 7,
+  "price" : 1220,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "category" : "boomerang",
+  "description" : "State-of-the-art microthrusters guarantee that it will always return.",
+  "shortdescription" : "Aetherium Boomerang",
+  "tooltipKind" : "boomerang",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","boomerang","energy", "aetherium", "upgradeableWeapon"],
+
+  "inventoryIcon" : "aetheriumboomerang.png",
+  "animation" : "boomerang.animation",
+  "animationParts" : {
+    "boomerang" : "aetheriumboomerang.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "aetheriumboomerang",
+  "projectileParameters" : {
+    "power" : 5,
+    "knockback" : 20,
+
+    "ignoreTerrain" : false,
+    "controlForce" : 65,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 2.0
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "critChance" : 4,
+  "critBonus" : 2,
+
+  "builder" : "/items/buildscripts/buildboomerang.lua",
+  
+  
+  "upgradeParameters" : {
+	    "shortdescription" : "^cyan;Ultrum Boomerang^reset; ^yellow;^reset;",
+	  "description" : "Perfection.", 
+	  "animationParts" : { "boomerang" : "aetheriumboomerang8.png"},
+	  "inventoryIcon" : "aetheriumboomerang8.png",
+	  "projectileType" : "aetheriumboomerang8",
+	  "projectileParameters" : {
+		    "power" : 6.5,
+		    "knockback" : 20,
+
+		    "ignoreTerrain" : false,
+		    "controlForce" : 55,
+		    "pickupDistance" : 1.0,
+		    "snapDistance" : 1.5
+	  }
+    }
+}

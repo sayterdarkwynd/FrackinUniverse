@@ -408,7 +408,7 @@ function fuelCost(travel)
     if distanceMath < 30 then
       cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2 ) -- nearby systems are relatively cheap to travel to
     else
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * self.shipMass) -- but long range jumps are more complicated, and mass plays a factor in efficiency
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 2)) -- but long range jumps are more complicated, and mass plays a factor in efficiency
     end
     
 	if cost < 1000 and isConnected(self.one,self.two) then
@@ -436,6 +436,12 @@ end
 function disabledState()
   View:reset()
   widget.setVisible("disabledLabel", true)
+  
+  if player.hasCompletedQuest("human_mission1") then
+    widget.setText("disabledLabel", "FTL DRIVE NOT INSTALLED")
+  else
+    widget.setText("disabledLabel", "NAVIGATION OFFLINE")
+  end
 
   local flickerTime = config.getParameter("disabledFlickerTime")
   local flicker = config.getParameter("disabledFlicker")

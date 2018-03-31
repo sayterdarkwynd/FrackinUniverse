@@ -1,0 +1,48 @@
+{
+  "objectName" : "drugdealer",
+  "colonyTags" : [ "crafting", "radien" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/radienshopdrug.config",
+    "filter" : [ "radienshopdrug" ]
+  },
+  "printable" : false,
+  "description" : "I'm not sure I understand. Am I expected to purchase dirt?",
+  "shortdescription" : "^orange;Munchies' Dirt^white;",
+  "race" : "radien",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "silene_shopicon.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "drugdealer.png:<color>.<frame>", "fullbright" : true }, { "image" : "drugdealerlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-36, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 36,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "drugdealer.png:<color>.<frame>", "fullbright" : true }, { "image" : "drugdealerlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-36, 0],
+
+      "direction" : "right",
+
+      "frames" : 36,
+      "animationCycle" : 7.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg"
+
+}

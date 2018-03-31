@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_blisterset2"
 
 weaponBonus={
-	{stat = "critChance", amount = 8},
+	{stat = "critChance", amount = 4},
 	{stat = "powerMultiplier", amount = 0.15}
 }
 

@@ -2,7 +2,7 @@ setName="fu_reconset2"
 
 weaponBonus={
 	{stat = "powerMultiplier", amount = 0.15},
-	{stat = "critChance", amount = 5}
+	{stat = "critChance", amount = 2}
 }
 
 armorBonus={

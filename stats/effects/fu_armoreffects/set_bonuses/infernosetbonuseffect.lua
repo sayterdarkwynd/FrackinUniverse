@@ -6,7 +6,10 @@ weaponBonus={
   {stat = "powerMultiplier", amount = 0.30}
 }
 
-armorBonus={}
+armorBonus={
+  {stat = "fireStatusImmunity", amount = 1},
+  {stat = "biomeheatimmunity", amount = 1}
+}
 
 function init()
 	setSEBonusInit(setName)

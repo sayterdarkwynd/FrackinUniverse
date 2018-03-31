@@ -34,12 +34,12 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 3.0,
+          "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 25,
-            "minimumRange" : 4,
-            "maxYRange" : 4,
+            "maximumRange" : 10,
+            "minimumRange" : 0,
+            "maxYRange" : 8,
             "windupTime" : 0.6,
 
             "aimAtTarget" : false,
@@ -49,21 +49,21 @@
             "fireOffset" : [0.25, 0.0],
             "projectileCount" : 4,
             "projectileInterval" : 0.15,
-            "projectileParameters" : { "speed": 15, "physics" : "gas" },
+            "projectileParameters" : { "speed": 20, "physics" : "gas" },
             "fireState" : "fire",
             "fireSound" : "fire",
 
             "winddownState" : "firewinddown",
             "winddownTime" : 0.3
           }
-        },      
+        },
         {
           "name" : "action-fire",
-          "cooldown" : 3.0,
+          "cooldown" : 5.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 15,
-            "minimumRange" : 4,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
             "maxYRange" : 4,
             "windupTime" : 0.6,
 
@@ -81,9 +81,10 @@
             "winddownState" : "firewinddown",
             "winddownTime" : 0.3
           }
-        }
+        }         
       ],
 
+      
       "periodicActions" : [],
 
       "approachActions" : [

@@ -1,0 +1,87 @@
+{
+  "itemName" : "ancientbroadsword",
+  "price" : 2500,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Lethal, and ancient beyond measure.
+^cyan;Defense Debuff^reset;",
+  "shortdescription" : "Ancient Broadsword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","plasma", "upgradeableWeapon"],
+  "inventoryIcon" : "ancientbroadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ancientbroadsword.png",
+    "bladefullbright" : "ancientbroadswordfullbright.png"
+  },
+  "animationCustom" : { },
+  "emitters" : [ "ancientenergytrail", "barrierelectric" ],
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.89,
+    "baseDps" : 11,
+    "damageConfig" : {
+      "knockback" : 15,
+       "damageSourceKind" : "cosmicplasma",
+       "statusEffects" : [ "defenseboostneg20" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "aimAngle" : 0,
+        "allowRotate" : false,
+        "allowFlip" : true, 
+        "weaponOffset":[0,0.8]
+      },
+      "windup" : {
+        "duration" : 0.1,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : true, 
+        "weaponOffset":[0,0.8]
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false, 
+        "weaponOffset":[0,0.8]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : false, 
+        "weaponOffset":[0,0.8]
+      }
+    }     
+  },
+
+  "altAbilityType" : "flamethrowersword",
+  "altAbility" : {"name" : "Cosmic Burst"},
+  "critChance" : 2, 
+  "critBonus" : 8, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

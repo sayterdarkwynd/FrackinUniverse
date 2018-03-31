@@ -1,0 +1,89 @@
+{
+  "itemName" : "arconshield",
+  "price" : 100,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "rare",
+  "tooltipKind" : "shieldnew",  
+  "description" : "^green;+0.04% HP regen, +8 Shield Bash^reset;",  
+  "shortdescription" : "ArCon Shield",
+  "category" : "shield",
+  "twoHanded" : false,
+  "itemTags" : ["shield", "upgradeableWeapon"],
+
+  "inventoryIcon" : "images/arconshield.png:nearidle",
+
+  "animation" : "shield.animation",
+  "animationParts" : {
+    "shield" : "images/arconshield.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "raiseShield" : [ "/sfx/melee/sword_guard.ogg" ],
+      "perfectBlock" : [ "/sfx/melee/shield_block_metal_perfect.ogg" ],
+      "shieldBash" : [ "/sfx/melee/blunt_hit_metal3.ogg", "/sfx/melee/dagger_hit_metal1.ogg" ],
+      "block" : [ "/sfx/melee/shield_block_metal.ogg" ],
+      "break" : [ "/sfx/melee/shield_break_metal.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/items/active/shields/shield.lua" ],
+
+  // ***************   FU shield properties    *********************
+  // if using shield2.lua, you must include these values
+  "shieldHealthRegen" : 0.004,
+  "shieldEnergyRegen" : 0,
+  "shieldHealthBonus" : 0.09,
+  "shieldEnergyBonus" : 0,
+  "shieldProtection" : 0,
+  "shieldStamina" : 0.2,
+  "shieldFalling" : -0.2, 
+  "shieldCritChance" : 0,
+  "shieldCritBonus" : 0,      
+  "protectionBee" : 0,
+  "protectionAcid" : 0,
+  "protectionBlacktar" : 0,
+  "protectionBioooze" : 0,
+  "protectionPoison" : 0,
+  "protectionLava" : 0,
+  "protectionFire" : 0,
+  "protectionProto" : 0,
+  "protectionCold" : 0,
+  "protectionHeat" : 0,
+  "protectionRads" : 0,
+  "protectionXCold" : 0,
+  "protectionXHeat" : 0,
+  "protectionXRads" : 0,
+  "protectionInsanity" : 0, 
+  "protectionShock" : 1,
+  "protectionSlime" : 0,
+  "shieldBash" : 8,
+  "shieldBashPush" : 5,    
+  // end FU shield properties
+
+  "minActiveTime" : 0.25,
+
+  "forceWalk" : true,
+  "baseShieldHealth" : 90,
+  "cooldownTime" : 0.35,
+
+  "perfectBlockDirectives" : "?border=2;AACCFFFF;00000000",
+  "perfectBlockTime" : 0.3,
+  
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "raised" : {
+      "armRotation" : 0,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true
+    }
+  },
+
+  "builder" : "/items/buildscripts/fubuildunrandshield.lua"
+}

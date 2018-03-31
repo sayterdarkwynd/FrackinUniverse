@@ -1,0 +1,45 @@
+{
+  "itemName" : "vai",
+  "price" : 600,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Glistens like diamond, cuts like glass.
+^cyan;Inflicts Shadow Gas^reset;",
+  "shortdescription" : "Vai",
+  "tooltipKind" : "sword2",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword","longsword","upgradeableWeapon"],
+  "inventoryIcon" : "vai.png",
+  "animation" : "combolongsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "vai.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 1.1,
+    "baseDps" : 9.3,
+    "damageConfig" : {
+      "damageSourceKind": "iceplasma",
+      "statusEffects" : [ "shadowgasfx" ]
+    }
+  },
+
+  "critChance" : 2,
+  "critBonus" : 6,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

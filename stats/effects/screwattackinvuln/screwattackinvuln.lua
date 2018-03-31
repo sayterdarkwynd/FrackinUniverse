@@ -1,14 +1,8 @@
 function init()
-
   animator.setParticleEmitterOffsetRegion("sparks", mcontroller.boundBox())
   animator.setParticleEmitterActive("sparks", true)
   animator.playSound("screwattack_start")
   effect.setParentDirectives("?fade=29F77B=0.4")
-  --animator.playSound("timefreeze_loop", -1)
-  
-  -- effect.addStatModifierGroup({
-  --   {stat = "invulnerable", amount = 1}
-  -- })
   self.soundTimer = 0.5
   self.soundFlag = false
 
@@ -63,5 +57,7 @@ function update(dt)
 end
 
 function uninit()
-  
+  world.callScriptedEntity(self.screwProj, "projectile.die")
+  effect.expire()
+  animator.stopAllSounds("screwattack_loop")
 end

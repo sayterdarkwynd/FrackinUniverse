@@ -1,0 +1,42 @@
+{
+	"objectName" : "network_capacitySensor",
+	"colonyTags" : [],
+	"printable" : false,
+	"rarity" : "Common",
+	"notItemStorage":true,
+	"category" : "wire",
+	"price" : 500,
+	"description" : "Place near a container. Hook up wires.
+^red;Output1:^reset; Partial Fill
+^red;Output2:^reset; Complete Fill",
+	"shortdescription" : "Capacity Sensor",
+	"race" : "generic",
+
+	"inventoryIcon" : "kheAA_capacitysensoricon.png",
+	"orientations" : [
+		{
+			"image" : "kheAA_capacitySensor.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"animation" : "/objects/kheAA/kheAA_capacitySensor/kheAA_capacitySensor.animation",
+
+	"animationParts" : {
+		"capacitySensor" : "kheAA_capacitySensor.png"
+	},
+	"animationPosition" : [0, 0],
+
+	"health" : 1.5,
+	"outputNodes" : [ [0, 0],[1,0] ],
+	
+
+	"scripts" : [ "kheAA_capacitySensor.lua" ],
+	"scriptDelta" : 5,
+	
+	"kheAA_outPartialFillNode":0,
+	"kheAA_outCompleteFillNode":1
+}

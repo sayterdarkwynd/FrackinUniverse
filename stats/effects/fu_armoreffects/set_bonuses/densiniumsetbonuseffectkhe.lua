@@ -3,28 +3,31 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_densiniumsetkhe"
 
 weaponBonus={
-  {stat = "critChance", amount = 12},
+  {stat = "critChance", amount = 4},
   {stat = "powerMultiplier", baseMultiplier = 1.25}
 }
 
 armorBonus={
 	{stat = "breathProtection", amount = 1},
+	{stat = "pressureProtection", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1},
 	{stat = "biomeheatImmunity", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "biomecoldImmunity", amount = 1},	
 	{stat = "ffextremeheatImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},
-	{stat = "ffextremecoldImmunity", amount = 1}
+	{stat = "ffextremecoldImmunity", amount = 1},
+	{stat = "fallDamageMultiplier", baseMultiplier = 0.0}
 }
 
 function init()
 	setSEBonusInit(setName)
 	weaponBonusHandle=effect.addStatModifierGroup({})
-			
 	checkWeapons()
 
 	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	
+	
 end
 
 function update(dt)

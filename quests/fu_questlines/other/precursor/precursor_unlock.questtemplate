@@ -1,0 +1,34 @@
+{
+  "id" : "precursor_unlock",
+  "mainQuest" : true,
+  "title" : "A Strange Place",
+  "prerequisites" : [ ],
+  "text" : "Where am I? This ^green;data-disc^reset; at least presents the coordinates. What is odd, is that this sector has always been devoid of...everything.",
+  "completionText" : "I've gone ahead and ^orange;marked these coordinates^reset; into my SAIL. I can return here later if need-be.",
+
+  "moneyRange" : [0,0],
+  "rewards" : [],
+  "speaker" : "questGiver",
+  "canBeAbandoned" : false,
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "sciencebrochure2",
+        "count" : 1,
+        "consume" : true
+      }    
+    ],
+    "associatedMission" : "precursordungeon2"
+  }
+}

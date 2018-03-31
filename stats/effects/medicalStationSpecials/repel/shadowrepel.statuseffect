@@ -1,0 +1,16 @@
+{
+	"name" : "medicalshadowrepel",
+	"label" : "^orange;[E]^reset; Shadow Repel",
+	"icon" : "/interface/statuses/medicalStationSpecials/shadowrepel.png",
+
+	"defaultDuration" : 5,
+	"scripts" : [ "repel_base.lua" ],
+	
+	"effectConfig" : {
+		"dummyStatus" : "medicalshadowrepeldummy",
+		"resist" : "shadow",
+		"bonusResistFlat" : 0.5,
+		"otherResistsMult" : 0.67,
+		"statusImmunities" : [ "shadowImmunity" ]
+	}
+}

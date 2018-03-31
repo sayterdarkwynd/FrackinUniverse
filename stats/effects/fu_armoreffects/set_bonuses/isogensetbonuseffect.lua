@@ -4,7 +4,7 @@ setName="fu_isogenset"
 
 weaponBonus={
   {stat = "physicalResistance", amount = 0.15},
-  {stat = "critChance", amount = 5}
+  {stat = "critChance", amount = 3}
 }
 
 armorBonus={

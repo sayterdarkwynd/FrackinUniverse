@@ -1,0 +1,63 @@
+{
+  "objectName" : "extramissiledoor",
+  "rarity" : "Common",
+  "printable" : false,
+  "category" : "door",
+  "price" : 125,
+  "description" : "This door looks like it could be opened with a heavy explosive.",
+  "shortdescription" : "Missile Door",
+  "race" : "protectorate",
+
+  "apexDescription" : "This door looks like it could be opened with a heavy explosive.",
+  "avianDescription" : "This door looks like it could be opened with a heavy explosive.",
+  "floranDescription" : "This door lookss like it could be opened with a heavy explossive.",
+  "glitchDescription" : "Neutral. This door looks like it could be opened with a heavy explosive.",
+  "humanDescription" : "This door looks like it could be opened with a heavy explosive.",
+  "hylotlDescription" : "This door looks like it could be opened with a heavy explosive.",
+  "novakidDescription" : "This here door looks like it could be opened with a heavy explosive. My kind of thing!",
+
+  "inventoryIcon" : "extramissiledooricon.png",
+  "orientations" : [
+    {
+      "image" : "extramissiledoor.png:default",
+      "flipImages" : true,
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "extramissiledoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "spaceScan" : 0.1,
+      "anchors" : [],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "extramissiledoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

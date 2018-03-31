@@ -1,4 +1,23 @@
 [
+{
+"op": "add",
+"path": "/weightedgrapplinghook",
+"value": {
+    "mass" : 1.0,
+    "gravityMultiplier" : 2.0,
+    "stickyCollision" : true,
+    "stickyForce" : 52.0,
+    "maxMovementPerStep" : 0.4,
+
+    "collisionPoly" : [ [0.25, 0], [0.9, 0.3], [1.1, 0], [0.9, -0.3] ],
+    "ignorePlatformCollision" : true,
+
+    "airFriction" : 0.1,
+    "liquidFriction" : 7.0,
+    "groundFriction" : 18.0,
+    "maximumCorrection" : 0.70
+  }
+},
 	{
 	"op":"replace",
 	"path":"/slider/airFriction",
@@ -21,6 +40,28 @@
    }
  },
  
+ { 
+  "op" : "add",
+  "path" : "/eldergrenade",
+  "value" : 
+   {
+      "mass" : 0.6,
+      "gravityMultiplier" : 0.55,
+      "bounceFactor" : 0.75,
+      "stopOnFirstBounce" : false,
+      "maxMovementPerStep" : 0.4,
+      "stickyCollision" : true,
+      "stickyForce" : 50.0,      
+      "groundSlideMovementEnabled" : true,
+      "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+      "ignorePlatformCollision" : true,
+  
+      "airFriction" : 0.15,
+      "liquidFriction" : 2.0,
+      "groundFriction" : 5.0,
+      "maximumCorrection" : 0.65
+   }
+ }, 
  { 
   "op" : "add",
   "path" : "/nailgun",

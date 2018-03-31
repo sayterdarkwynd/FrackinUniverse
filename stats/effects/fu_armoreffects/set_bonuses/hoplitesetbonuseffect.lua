@@ -1,15 +1,15 @@
 setName="fu_hopliteset"
 
 weaponBonus={
-	{stat = "critChance", amount = 6}
-}
-
-armorBonus={
 	{stat = "critChance", amount = 3}
 }
 
+armorBonus={
+	{stat = "critChance", amount = 2.5}
+}
+
 armorEffect={
-	{stat = "grit", amount = 0.12},
+	    {stat = "grit", amount = 0.12},
         {stat = "shieldStaminaRegen", amount = 0.2},
         {stat = "protoImmunity", amount = 1.0},
         {stat = "shieldBash", amount = 10},

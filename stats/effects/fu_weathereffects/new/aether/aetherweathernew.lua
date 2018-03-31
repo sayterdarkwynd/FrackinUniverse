@@ -198,7 +198,8 @@ self.timerRadioMessage = self.timerRadioMessage - dt
   self.damageApply = setEffectDamage()   
   self.debuffApply = setEffectDebuff() 
       
-      if (self.biomeTimer <= 0) and (status.stat("maxEnergy",0) > 0) then
+      if (self.biomeTimer <= 0) and (status.stat("maxEnergy",0) > 0) then 
+      
             effect.addStatModifierGroup({
               {stat = "energyRegenPercentageRate", amount = status.stat("energyRegenPercentageRate") * (1 * -status.stat("cosmicResistance",0))  },
               {stat = "energyRegenBlockTime", amount = status.stat("energyRegenBlockTime") * (1 * -status.stat("cosmicResistance",0))  },            

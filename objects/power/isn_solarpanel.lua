@@ -1,6 +1,13 @@
 require '/scripts/power.lua'
 
+function daytimeCheck()
+	return world.timeOfDay() < 0.55 -- true if daytime
+end
+
 function update(dt)
+  daytime = daytimeCheck()  
+
+  if daytime then -- adds daytime check to Solar Panels. This means they will NO LONGER care about light sources unless it is daytime. People cant stop exploiting. So fuck it.
 	storage.checkticks = (storage.checkticks or 0) + dt
 	if storage.checkticks >= 10 then
 	  storage.checkticks = storage.checkticks - 10
@@ -21,7 +28,7 @@ function update(dt)
 		end	  
 		
 		if world.type() == 'playerstation' then  genmult = 3.75 end -- player space station always counts as high power, but never MAX power.
-		if world.liquidAt(location) then genmult = genmult * 0.5 end -- water halves the output
+		if world.liquidAt(location)then genmult = genmult * 0.05 end -- water significantly reduces the output
 		
 		local generated = math.min(powerLevel * genmult,36) -- max at 36 just in case.	
 
@@ -38,7 +45,9 @@ function update(dt)
 	        power.setPower(generated)
 	  end
 	end
-	power.update(dt)
+	
+  end
+  power.update(dt)
 end
 
 function getLight(location)

@@ -1,0 +1,135 @@
+{
+  "itemName" : "warden",
+  "level" : 5,
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A dangerously powerful minigun.
+^cyan;Counts as 'plasma' for set bonuses^reset;
+^yellow;Heavy. Extreme fire rate^reset;",
+  "shortdescription" : "ArCon Warden",
+  "tooltipKind" : "gun2",
+  "category" : "assaultRifle",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","assaultrifle", "plasma", "upgradeableWeapon"],
+  "inventoryIcon" : "wardenicon.png",
+
+  "cursor" : "/cursors/fuwardenreticle.cursor",
+
+  "animation" : "warden.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "wardenicon.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png",
+    "charge" : "warden.png",
+    "chargehold" : "wardenhold.png"
+  },
+  
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/arconpew.ogg" ],
+	  "chargeLoop" : [ "/sfx/weapons/arconcharge.ogg" ],
+	  "holdLoop" : [ "/sfx/objects/camera_pan_loop.ogg" ],
+	  "discharge" : [ "/sfx/weapons/arconwinddown.ogg" ]
+    },
+    "particleEmitters" : {
+      "chargeUp" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+
+  "baseOffset" : [0.5, -1.0],
+  "muzzleOffset" : [2.0, 0.315],
+
+  "scripts" : ["/items/active/scripts/thea-gun.lua","/items/active/scripts/heavyweapon.lua"],
+
+  "elementalType" : "radioactive",
+  
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/abilities/thea-minigun.lua"],
+    "class" : "TheaMinigun",
+
+    "fireTime" : 0.06,
+    "baseDps" : 24,
+    "energyUsage" : 45.0,
+    "inaccuracy" : 0.050,
+	
+	"chargeTime" : 1.347,
+	"resetTime" : 1.4,
+	
+	"walkWhileFiring" : true,
+
+    "projectileType" : "brainbullet2",
+	"projectileCount" : 1,
+	"projectileParameters" : { 
+      "knockback" : 3.5
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "charge" : {
+        "armRotation" : -2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "armRotation" : 6,
+        "weaponRotation" : 6,
+	    "weaponOffset" : [-0.15, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.05,
+        "armRotation" : 6,
+        "weaponRotation" : 6,
+	    "weaponOffset" : [-0.15, 0],
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "discharge" : {
+        "duration" : 0.1,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+	}
+  },
+  
+  "critChance" : 0.5,
+  "critBonus" : 3,
+  "altAbilityType" : "railgunshotpower",
+  "altAbility" : { 
+    "energyCost" : 100,
+    "projectileType" : "energyzone",
+    "name" : "Energy Zone",
+    "projectileParameters" : {
+      "timeToLive" : 12,
+      "speed" : 0
+    }
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

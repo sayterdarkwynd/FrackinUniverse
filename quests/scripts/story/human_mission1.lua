@@ -18,6 +18,9 @@ function init()
     findCrystals,
     turnIn
   }
+  message.setHandler("human_mission1", function()
+    return
+  end)
 
   self.state = FSM:new()
   self.state:set(self.stages[storage.stage])
@@ -37,12 +40,8 @@ end
 function update(dt)
   self.state:update(dt)
 
-  if storage.stage == 2 then
-    if player.hasCountOfItem("supermatter") >= 20 then
-	  quest.setCanTurnIn(true)
-    else
-      quest.setCanTurnIn(false)
-    end
+  if storage.complete then
+	quest.setCanTurnIn(true)
   end
 end
 
@@ -55,7 +54,6 @@ function questComplete()
     player.playCinematic(config.getParameter("shipUpgradeCinema"))
   end
   
-  player.consumeItem({name = "supermatter", count = 20})
   setPortraits()
   questutil.questCompleteActions()
 end
@@ -94,6 +92,7 @@ function turnIn()
   quest.setIndicators({})
   quest.setCompassDirection(nil)
   quest.setObjectiveList({{config.getParameter("descriptions.turnIn"), false}})
+  quest.setCanTurnIn(true)
   
   local findMechanic = util.uniqueEntityTracker(self.mechanicUid, self.compassUpdate)
   while storage.stage == 2 do

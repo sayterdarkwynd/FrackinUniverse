@@ -1,0 +1,104 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "light" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "bugs" ],
+              "lightsOff" : [ "mothtrapglow" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "particleEmittersOn" : [ "bugs" ],
+              "lightsOn" : [ "mothtrapglow" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "light" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0]
+        },
+
+        "partStates" : {
+          "light" : {
+            "off" : {
+            },
+            "on" : {
+              "properties" : {
+                "zLevel" : 1,
+                "image" : "<partImage>",
+                "fullbright" : true
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "properties" : {
+          "centered" : false,
+          "image" : "<partImage>:<stage>"
+        },
+
+        "partStates" : {
+        }
+      }
+    }
+  },
+  "globalTagDefaults" : {
+    "stage" : "1"
+  },
+  
+  "lights" : {
+    "mothtrapglow" : {
+      "active" : false,
+      "color" : [153, 153, 122],
+      "position" : [0, 2],
+
+      "flickerPeriod" : 1.0,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1.0,
+      "flickerPeriodVariance" : 0,
+      "flickerIntensityVariance" : 0
+    }
+  },
+
+  "particleEmitters" : {
+    "bugs" : {
+      "emissionRate" : 0.5,
+      "emissionVariance" : 0.3,
+
+      "particles" : [
+        {
+          "offset" : [0.5, 2.5],
+          "particle" : {
+          "type" : "ember",
+          "size" : 1.0,
+          "color" : [255, 254, 190, 255],
+          "destructionAction" : "shrink",
+          "destructionTime" : 0.5,
+          "position" : [0.0, 0.0],
+          "initialVelocity" : [0, 0],
+          "finalVelocity" : [-0.1, -0.1],
+          "approach" : [0.65, 0.65],
+          "timeToLive" : 5,
+          "light" : [20, 20, 16],
+          "layer" : "back",
+          "variance" : {
+            "initialVelocity" : [1.0, 1.0],
+            "finalVelocity" : [1.0, 1.0],
+            "position" : [0.5, 0.5]
+          }
+        }
+        }
+      ]
+    }
+  }
+}

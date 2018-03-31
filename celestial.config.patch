@@ -1093,15 +1093,15 @@
   "value" : [
 
     [-1.00, "White"],
-    [-0.30, "Orange"],
-    [-0.12, "Yellow"],
-    [0.00, "Blue"],   
+    [-0.35, "Orange"],
+    [-0.20, "Yellow"],
+    [-0.10, "bluesun1"], 
+    [-0.05, "redsun1"],          
+    [0.00, "Blue"],
+    [0.05, "binary1"],
     [0.12, "Red"],
-    [0.05, "bluesun1"], 
-    [0.05, "redsun1"],     
-    [0.20, "blacksun1"],
-    [0.25, "dying1"],
-    [0.30, "binary1"],    
+    [0.22, "dying1"],  
+    [0.25, "blacksun1"],    
     [0.30, ""]
   ]
 },
@@ -1213,10 +1213,6 @@
 {"op":"add",
 "path":"/planetaryTypes/Tier6/baseParameters/terrestrialType/-",
 "value":"arboreal2"
-},
-{"op":"add",
-"path":"/planetaryTypes/Barren/baseParameters/terrestrialType/-",
-"value":"sulphuric"
 },
 
 {"op":"add",
@@ -1879,11 +1875,11 @@
     "op" : "add",
     "path" : "/systemTypes/blacksun1",
     "value" : {
-      "selectionWeight" : 0.1,
+      "selectionWeight" : 0.10,
       "baseParameters" : {
         "typeName" : "blacksun1",
         "image" : "/celestial/system/blacksun1.png",
-        "twinkleTime" : [3.0, 3.5],
+        "twinkleTime" : [0.5, 1.15],
         "spaceThreatLevel" : 6
       },
       "variationParameters" : [

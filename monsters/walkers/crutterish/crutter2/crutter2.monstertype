@@ -1,7 +1,7 @@
 {
   "type" : "crutter2",
   "shortdescription" : "Nightcrutter",
-  "description" : "Just like other crutters, but a vastly more evil breed.",
+  "description" : "A strange mutation of the Crutter genome.",
   "categories" : [ "crutter2" ],
   "parts" : [ "body" ],
 
@@ -32,6 +32,7 @@
 
       "hostileActions" : [
         {
+          "cooldown" : 4,
           "name" : "action-fire",
           "parameters" : {
             "requireLineOfSight" : true,
@@ -40,13 +41,34 @@
             "windupState" : "windup",
             "windupTime" : 0.8,
 
-            "projectileType" : "poisonraptor",
-            "projectileParameters" : { "speed" : 35},
-            "power" : 9,
+            "projectileType" : "hgravityexplosion",
+            "projectileParameters" : { "speed" : 22, "timeToLive" : 0.45},
+            "power" : 2,
             "fireOffset" : [0.5, 0.6875],
             "aimAtTarget" : true,
             "fireState" : "fire",
-            "fireDelay" : 0.4,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },      
+        {
+          "cooldown" : 2,
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "windup",
+            "windupTime" : 0.8,
+
+            "projectileType" : "ngravityexplosion",
+            "projectileParameters" : { "speed" : 25, "timeToLive" : 1},
+            "power" : 6,
+            "fireOffset" : [0.5, 0.6875],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
             "fireSound" : "fire",
 
             "winddownState" : "",
@@ -54,7 +76,55 @@
           }
         }
       ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "windup",
+            "windupTime" : 0.8,
 
+            "projectileType" : "pushzone",
+            "projectileParameters" : { "speed" : 0, "timeToLive" : 2},
+            "power" : 9,
+            "fireOffset" : [0.5, 0.6875],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
+            "fireDelay" : 0.1,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        },       
+        {
+          "cooldown" : 2,
+          "name" : "action-fire",
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 20,
+            "minimumRange" : 10,
+            "windupState" : "windup",
+            "windupTime" : 0.8,
+
+            "projectileType" : "shadoworb",
+            "projectileParameters" : { "speed" : 45, "timeToLive" : 5},
+            "power" : 9,
+            "fireOffset" : [0.5, 0.6875],
+            "aimAtTarget" : true,
+            "fireState" : "fire",
+            "fireDelay" : 0.1,
+            "fireSound" : "fire",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }      
+      ],
+      
       "periodicActions" : [],
 
       "approachActions" : [
@@ -82,7 +152,7 @@
       "damage" : 10,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "shadow",
       "knockback" : 20,
       "statusEffects" : [ ]
     },

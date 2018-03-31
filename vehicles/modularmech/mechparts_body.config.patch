@@ -2091,6 +2091,47 @@
 	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
 	    "animationCustom" : {}
       }
+    }, 
+    {
+    "op" : "add",
+    "path" : "/mechbodyexitus",
+    "value" : {
+	    "stats" : {
+	      "energy" : 5,
+	      "protection" : 5,
+	      "mechMass" : 7
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+		"desertweathernew",
+		"jungleheatweather",
+		"protoweather",
+		"gasworld1",
+		"gasworld2",
+		"radioactiveweathernew",
+		"poisonweathernew",
+		"poisonweathernewbiome",
+		"biomepoisongas",
+		"biomepoison1",
+		"biomecold",
+		"coldweathernew",
+		"ffbiomecold0",
+		"ffbiomecold1",
+		"biomeheat",
+		"ffbiomeheat1",
+		"ffbiomeheat2",
+		"heatweathernew"
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/Exitus_back.png",
+	      "bodyFront" : "body/Exitus_front.png",
+	      "bodyFullbright" : "body/Exitus_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
     },     
     {
     "op" : "add",
@@ -2179,7 +2220,66 @@
 	    "animationCustom" : {}
       }
     },
-    
+  
+    {
+    "op" : "add",
+    "path" : "/titan",
+    "value" : {
+    "stats" : {
+      "energy" : 6,
+      "protection" : 4,
+      "mechMass" : 6
+    },
+    "partParameters" : {
+      "hazardImmunities" : [		
+                                "gasworld",
+                                "gasworldweak",
+                                "desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+				]
+    },
+	    "partImages" : {
+	      "bodyBack" : "body/titan_back.png",
+	      "bodyFront" : "body/titan_front.png",
+	      "bodyFullbright" : "body/titan_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+	  }
+    },    
     {
     "op" : "add",
     "path" : "/fuexplorer",
@@ -2354,6 +2454,8 @@
 		}
 	],
 		
+
+	
 	[
 	{ "op": "test", "path": "/zaku" },
 	{ "op": "add","path": "/zaku/stats/mechMass","value": 5 },
@@ -3773,5 +3875,423 @@
 				"heatweathernew"
 			]
 		}
+	],
+	
+	
+	
+	[
+	{ "op": "test", "path": "/anvil", "inverse" : false },
+	{ "op": "add", "path": "/anvil/stats/mechMass","value": 8 },
+	{ "op": "add", "path": "/anvil/stats/protection","value": 8 },
+	{ "op": "add", "path": "/anvil/stats/energy","value": 6 },
+		{
+			"op": "add",
+			"path": "/anvil/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	[
+	{ "op": "test", "path": "/inferno", "inverse" : false },
+	{ "op": "add", "path": "/inferno/stats/mechMass","value": 7 },
+	{ "op": "add", "path": "/inferno/stats/protection","value": 6 },
+	{ "op": "add", "path": "/inferno/stats/energy","value": 6 },
+		{
+			"op": "add",
+			"path": "/inferno/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"gasworld1",
+				"gasworld2",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	[
+	{ "op": "test", "path": "/warlock", "inverse" : false },
+	{ "op": "add", "path": "/warlock/stats/mechMass","value": 3 },
+	{ "op": "add", "path": "/warlock/stats/protection","value": 5 },
+	{ "op": "add", "path": "/warlock/stats/energy","value": 10 },
+		{
+			"op": "add",
+			"path": "/warlock/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	[
+	{ "op": "test", "path": "/gunslinger", "inverse" : false },
+	{ "op": "add", "path": "/gunslinger/stats/mechMass","value": 8 },
+	{ "op": "add", "path": "/gunslinger/stats/protection","value": 7 },
+	{ "op": "add", "path": "/gunslinger/stats/energy","value": 5 },
+		{
+			"op": "add",
+			"path": "/gunslinger/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	
+	
+	
+	
+	[
+	{ "op": "test", "path": "/PTX-010", "inverse" : false },
+	{ "op": "add", "path": "/PTX-010/stats/mechMass","value": 5 },
+	{ "op": "add", "path": "/PTX-010/stats/protection","value": 6 },
+	{ "op": "add", "path": "/PTX-010/stats/energy","value": 7 },
+		{
+			"op": "add",
+			"path": "/PTX-010/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+
+	[
+	{ "op": "test", "path": "/PTX-003C", "inverse" : false },
+	{ "op": "add", "path": "/PTX-003C/stats/mechMass","value": 6 },
+	{ "op": "add", "path": "/PTX-003C/stats/protection","value": 7 },
+	{ "op": "add", "path": "/PTX-003C/stats/energy","value": 6 },
+		{
+			"op": "add",
+			"path": "/PTX-003C/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+
+	[
+	{ "op": "test", "path": "/PTX-007-03C", "inverse" : false },
+	{ "op": "add", "path": "/PTX-007-03C/stats/mechMass","value": 4 },
+	{ "op": "add", "path": "/PTX-007-03C/stats/protection","value": 5 },
+	{ "op": "add", "path": "/PTX-007-03C/stats/energy","value": 8 },
+		{
+			"op": "add",
+			"path": "/PTX-007-03C/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+
+	[
+	{ "op": "test", "path": "/AGX-05", "inverse" : false },
+	{ "op": "add", "path": "/AGX-05/stats/mechMass","value": 5 },
+	{ "op": "add", "path": "/AGX-05/stats/protection","value": 6 },
+	{ "op": "add", "path": "/AGX-05/stats/energy","value": 7 },
+		{
+			"op": "add",
+			"path": "/AGX-05/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	
+	[
+	{ "op": "test", "path": "/mcobody", "inverse" : false },
+	{ "op": "add", "path": "/mcobody/stats/mechMass","value": 6 },
+	{ "op": "add", "path": "/mcobody/stats/protection","value": 4 },
+	{ "op": "add", "path": "/mcobody/stats/energy","value": 6 },
+		{
+			"op": "add",
+			"path": "/mcobody/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweatherstorm",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],
+	
+	[
+	{ "op": "test", "path": "/peglaciproto", "inverse" : false },
+	{ "op": "add", "path": "/peglaciproto/stats/mechMass","value": 3 },
+		{
+			"op": "add",
+			"path": "/peglaciproto/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"jungleheatweather",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1"
+			]
+		}
+	],
+	
+	[
+	{ "op": "test", "path": "/vieraproto", "inverse" : false },
+	{ "op": "add", "path": "/vieraproto/stats/mechMass","value": 3 },
+		{
+			"op": "add",
+			"path": "/vieraproto/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"jungleheatweather",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1"
+			]
+		}
 	]	
+	
 ]

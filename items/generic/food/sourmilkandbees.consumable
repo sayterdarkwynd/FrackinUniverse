@@ -1,0 +1,20 @@
+{
+  "itemName" : "sourmilkandbees",
+  "rarity" : "Common",
+  "price" : 50,
+  "category" : "drink",
+  "inventoryIcon" : "sourmilkandbees.png",
+  "description" : "Apparently, enough people drink this to facilitate a need for cartons.",
+  "shortdescription" : "Sour Milk and Bees",
+  "foodValue" : 25,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 10,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 12.0,
+  
+  "effects" : [ ["sourmilk"] ],
+  "blockingEffects" : ["sourmilk","wellfed"],
+  
+  "emitters" : [ "drinking" ]
+}

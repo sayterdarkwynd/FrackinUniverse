@@ -1,61 +1,47 @@
 {
   "animatedParts" : {
     "stateTypes" : {
-      "screen" : {
+      "base" : {
         "default" : "off",
         "states" : {
-          "off" : {"frames" : 1},
-          "slow" : {"frames" : 4, "cycle" : 0.7, "mode" : "loop"}
+          "off" : {"frames" : 1, "mode" : "loop"},
+          "powerup" : {"frames" : 1, "mode" : "transition", "transition" : "powered"},
+          "powered" : {"frames" : 1, "mode" : "loop"},
+		  "powerdown" : {"frames" : 1, "mode" : "transition", "transition" : "off"}
         }
-      },
-      "fans" : {
-        "default" : "off",
-        "states" : {
-          "off" : {"frames" : 1},
-          "slow" : {"frames" : 4, "cycle" : 0.7, "mode" : "loop"}
-        }
-      },
-	  "base" : {
-	    "default" : "base",
-		"states" : { "base" : {"frames" : 1}}
-	  }
+      }
     },
 
     "parts" : {
-      "screen" : {
+      "base" : {
 	"properties" : {
 	"zLevel" : 2,
 	"centered" : false,
 	"fullbright" : true 
 	},
         "partStates" : {
-          "screen" : {
+          "base" : {
             "off" : {"properties" : {"image" : "<partImage>:off"}},
-            "slow" : {"properties" : {"image" : "<partImage>:slow.<frame>"}}
+            "powerup" : {"properties" : {"image" : "<partImage>:powerup.<frame>"}},
+            "powered" : {"properties" : {"image" : "<partImage>:powered.<frame>"}},
+			"powerdown" : {"properties" : {"image" : "<partImage>:powerdown.<frame>"}}
           }
         }
       },
-      "fans" : {
+      "fullbright" : {
 	"properties" : {
 	"zLevel" : 3,
 	"centered" : false
 	},
         "partStates" : {
-          "fans" : {
+          "base" : {
             "off" : {"properties" : {"image" : "<partImage>:off"}},
-            "slow" : {"properties" : {"image" : "<partImage>:slow.<frame>"}}
+            "powerup" : {"properties" : {"image" : "<partImage>:powerup.<frame>"}},
+            "powered" : {"properties" : {"image" : "<partImage>:powered.<frame>"}},
+			"powerdown" : {"properties" : {"image" : "<partImage>:powerdown.<frame>"}}
           }
         }
-      },
-      "base" : {
-	"properties" : {
-	"zLevel" : 1,
-	"centered" : false
-	},
-        "partStates" : {
-          "base" : { "base" : {"properties" : {"image" : "<partImage>:base"}}}
-		}
-	  }
+      }      
     }
   }
 }

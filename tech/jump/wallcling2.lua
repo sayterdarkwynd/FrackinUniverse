@@ -181,7 +181,7 @@ function goUpside()
 end
 
 function setWallClingAbility()
-  status.addPersistentEffect("wallCling", "percentenergyboost20", math.huge);
+  --status.addPersistentEffect("wallCling", "percentenergyboost20", math.huge);
   status.addPersistentEffect("wallCling", "percentarmorboost10", math.huge);
 end
 

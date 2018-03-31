@@ -1,6 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
-setName="fu_bonesteelset"
+setName="fu_bountyhunterset"
 
 weaponBonus={
   {stat = "powerMultiplier", amount = 0.20}

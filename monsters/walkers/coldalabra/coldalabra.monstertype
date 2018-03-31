@@ -33,6 +33,7 @@
 
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
+     
       "approachActions" : [
         {
           "name" : "approach-walk",
@@ -48,7 +49,38 @@
           }
         }
       ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-fire",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 25,
+            "minimumRange" : 4,
+            "maxYRange" : 4,
+            "windupTime" : 0.6,
+            "windupState" : "idle",
+            "aimAtTarget" : true,
+            "projectileType" : "iceshardsmall",
+            "power" : 6,
+            "aimDirection" : [0.7, 0.4],
+            "fireOffset" : [0.25, 0.0],
+            "projectileCount" : 3,
+            "projectileInterval" : 0,
+            "inaccuracy" : 0.3,
+            "projectileParameters" : {
+              "speed": 30
+            },
+            "fireState" : "blink",
+            "fireSound" : "fire",
 
+            "winddownState" : "idle",
+            "winddownTime" : 0.3
+          }
+        }    
+      ],
+      
       "followActions" : [
         {
           "name" : "approach-teleport",
@@ -97,8 +129,16 @@
     "movementSettings" : {
       "collisionPoly" : [ [-0.25,0.62], [-0.25,-1], [0.5,-1], [0.5,0.62] ],
       "mass" : 1.0,
-      "walkSpeed" : 4,
-      "runSpeed" : 8
+      "walkSpeed" : 8,
+      "runSpeed" : 12,
+      "airForce" : 30,
+      "airBuoyancy" : 0.6,
+      "airFriction" : 0.2,
+
+      "liquidForce" : 600,
+      "liquidFriction" : 0.01,
+      "minimumLiquidPercentage" : 0.0,
+      "liquidImpedance" : 0.01    
     },
 
     "knockoutTime" : 0.25,
@@ -124,7 +164,7 @@
 
       "stats" : {
         "maxHealth" : {
-          "baseValue" : 25
+          "baseValue" : 55
         },
         "protection" : {
           "baseValue" : 0.0

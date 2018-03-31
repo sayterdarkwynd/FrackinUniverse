@@ -1,6 +1,6 @@
 {
   "name" : "supermatterzoneaether",
-  "friendlyName" : "Aether Fuel Crystal Expanse",
+  "friendlyName" : "Aether Erchius Expanse",
   "hueShiftOptions" : [ -125, -40, -25, 0, 25, 40, 125 ],
 
     "mainBlock" : "supermatter",
@@ -95,12 +95,21 @@
 
         {
           "mode" : "floor",
-          "priority" : 3.0,
+          "priority" : 5.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats", "reversepyramids" ]
+          "microdungeons" : [ "rocktunnel", "rockclimb", "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats", "reversepyramids" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "none", "canyonmini", "terrainfeatures", "aethermini" ]
         },
         {
           "mode" : "floor",

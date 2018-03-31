@@ -6,7 +6,7 @@ transferUtil.itemTypes = nil
 
 --[[
 function update(dt)
-	if deltaTime > 1 then
+	if not deltaTime or (deltaTime > 1) then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
 	else
@@ -36,110 +36,6 @@ end
 function transferUtil.initTypes()
 	transferUtil.itemTypes = root.assetJson("/scripts/kheAA/transferconfig.config").categories
 end
-
-
-function transferUtil.routeItems()
-	if storage.disabled then return end
-	if util.tableSize(storage.inContainers) == 0 then return end
-	if util.tableSize(storage.outContainers) == 0 then return end
-
-	for sourceContainer,sourcePos in pairs(storage.inContainers) do
-		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
-		if ping1 ~= nil then
-			sourceContainer=ping1
-		end
-		for targetContainer,targetPos in pairs(storage.outContainers) do
-			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
-			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
-			if ping2 ~= nil then
-				targetContainer=ping2
-			end
-			if targetAwake == true and sourceAwake == true then
-				local sourceItems=world.containerItems(sourceContainer)
-				if sourceItems then
-					for indexIn,item in pairs(sourceItems) do
-						local pass,mod = transferUtil.checkFilter(item)
-						if pass then
-							if transferUtil.validInputSlot(indexIn) then
-								item.count = item.count - (item.count % mod)
-								if util.tableSize(storage.outputSlots) > 0 then
-									for indexOut=1,world.containerSize(targetContainer) do
-										if transferUtil.validOutputSlot(indexOut) then
-											local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
-											if leftOverItems then
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-												item=leftOverItems
-											else
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-												break
-											end
-										end
-									end
-								else
-									--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
-									local leftOverItems=world.containerAddItems(targetContainer,item)
-									if leftOverItems then
-										local tempQuantity=item.count-leftOverItems.count
-										if tempQuantity > 0 then
-											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
-											--break
-										end
-									else
-										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-									end
-								end
-							end
-						end
-					end
-				end
-			else
-				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
-			end
-		end
-	end
-end
-
-
-
-function transferUtil.routeMoney()
-	if storage.disabled then return end
-	if util.tableSize(storage.inContainers) == 0 then return end
-	if util.tableSize(storage.outContainers) == 0 then return end
-
-	for sourceContainer,sourcePos in pairs(storage.inContainers) do
-		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
-		if ping1 ~= nil then
-			sourceContainer=ping1
-		end
-		for targetContainer,targetPos in pairs(storage.outContainers) do
-			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
-			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
-			if ping2 ~= nil then
-				targetContainer=ping2
-			end
-			if targetAwake == true and sourceAwake == true then
-				local sourceItems=world.containerItems(sourceContainer)
-				for indexIn,item in pairs(sourceItems or {}) do
-					local conf = root.itemConfig(item.name)
-					--sb.logInfo("%s",conf)
-					if conf.config.currency then
-						local leftOverItems = world.containerAddItems(targetContainer,item)
-						if leftOverItems then
-							world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-							item=leftOverItems
-						else
-							world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-							break
-						end
-					end
-				end
-			else
-				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
-			end
-		end
-	end
-end
-
 
 function transferUtil.containerAwake(targetContainer,targetPos)
 	if type(targetPos) ~= "table" then
@@ -293,7 +189,7 @@ function transferUtil.checkFilter(item)
 	end
 	routerItems=world.containerItems(entity.id())
 	if #routerItems == 0 then
-		return true,1
+		return true, 1
 	end
 	local invertcheck = nil     -- Inverted conditions are match-all
 	local noninvertcheck = nil  -- Non-inverted conditions are match-any
@@ -441,13 +337,16 @@ end
 
 function transferUtil.getType(item)
 	if not item.name then
-		return "generic"
+		return "unhandled"
 	elseif item.name == "sapling" then
 		return item.name
 	elseif item.currency then
 		return "currency"
 	end
 	local itemRoot = root.itemConfig(item)
+	if itemRoot.config.currency then
+		return "currency"
+	end
 	local itemCat
 	if itemRoot.category then
 		itemCat=itemRoot.category
@@ -463,24 +362,27 @@ function transferUtil.getType(item)
 	if itemCat then
 		return string.lower(itemCat)
 	elseif not unhandled[item.name] then
-		sb.logInfo("Unhandled Item:\n%s",itemRoot)
+		--sb.logInfo("Unhandled Item:\n%s",itemRoot)
 		unhandled[item.name]=true
 	end
-	return string.lower(item.name)
+	return "unhandled"
 end
 
 function transferUtil.getCategory(item)
 	local itemCat=transferUtil.getType(item)
-	--sb.logInfo("%s::%s",itemCat,string.lower(transferUtil.itemTypes[itemCat] or "generic"))
-	return transferUtil.itemTypes[itemCat] or "generic"
+	return transferUtil.itemTypes[itemCat] or "unhandled"
 end
 
 function transferUtil.loadSelfContainer()
 	storage.containerId=entity.id()
-	storage.inContainers={}
-	storage.outContainers={}
+	transferUtil.unloadSelfContainer()
 	storage.inContainers[storage.containerId]=storage.position
 	storage.outContainers[storage.containerId]=storage.position
+end
+
+function transferUtil.unloadSelfContainer()
+	storage.inContainers={}
+	storage.outContainers={}
 end
 
 function transferUtil.getAbsPos(position,pos)

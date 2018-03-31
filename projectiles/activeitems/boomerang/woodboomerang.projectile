@@ -20,5 +20,15 @@
 
   "persistentAudio" : "/sfx/projectiles/boomerang2.ogg",
 
-  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ]
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 5,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  } 
 }

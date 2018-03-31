@@ -1,0 +1,75 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "egg" : {
+        "priority" : 1,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+          "wobble" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "egg" : {
+        "properties" : {
+          "centered" : false
+        },
+        "partStates" : {
+          "egg" :{
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "wobble" : {
+              "properties" : {
+                "image" : "<partImage>:wobble.<frame>"
+              }
+            } 
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "hatch" : {
+      "offsetRegion" : [0.0, 0.0, 2.0, 2.0],
+      "anchorPart" : "egg",
+      "particles" : [
+        {
+          "count" : 16,
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/boneshard.animation",
+            "initialVelocity" : [0.0, 8.0],
+            "finalVelocity" : [0.0, -60.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.5,
+            "destructionTime" : 0.5,
+            "destructionAction" : "fade",
+            "layer" : "front",
+            "collidesForeground" : true,
+            "variance" : {
+              "initialVelocity" : [5, 3],
+              "finalVelocity" : [0, 20],
+              "rotation" : 180,
+              "angularVelocity" : 180
+            }
+          }
+        },
+        {
+          "count" : 5,
+          "particle" : "dust2"
+        }
+      ]
+    }
+  }
+}
