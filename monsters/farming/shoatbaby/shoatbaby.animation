@@ -1,0 +1,100 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+          "walk" : {
+            "frames" : 5,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "offset" : [0, 0.375]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+     "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }       
+      ]
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "sounds" : {
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  }
+}

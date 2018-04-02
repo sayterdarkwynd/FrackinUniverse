@@ -1,0 +1,39 @@
+{
+  "projectileName" : "slimeshieldability",
+  "image" : "slimeshieldability.png",
+  "animationCycle" : 1.6,
+  "frameNumber" : 32,
+  "timeToLive" : 1.6,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [100, 100, 100],
+  "pointLight" : true,
+  "flippable" : true,
+  "piercing" : true,
+	"statusEffects" : [
+{"effect" : "slimeslow", "duration" : 1 }
+  ],
+  "power" : 5.0,
+  "speed" : 0,
+  "knockback" : 0,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
+  "damageKind" : "plasma",
+  "fullbright" : false,
+  "damagePoly" : [[-90, 30], [90, 30], [90, -30], [-90, -30]],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "slimeshieldabilitystop",
+      "inheritDamageFactor" : 2,
+      "inheritSpeedFactor" : 1
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/shield/slimesheildstop.ogg" ]
+    }
+  ],
+
+
+  "persistentAudio" : "/sfx/shield/slimesheildloop.ogg"
+}
