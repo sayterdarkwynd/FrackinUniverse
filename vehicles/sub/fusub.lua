@@ -14,6 +14,46 @@ function healthLevelAdjust(hp_or_armor)
 end
 
 
+
+function checkHazardType()
+  isLiquid()
+  isGas()
+end
+
+function isLiquid()
+  if mcontroller.liquidId() == 1 or -- water
+     mcontroller.liquidId() == 55 or --alienjuice
+     mcontroller.liquidId() == 61 or -- beer
+     mcontroller.liquidId() == 40 or -- blood
+     mcontroller.liquidId() == 59 or -- crystal liquid
+     mcontroller.liquidId() == 60 or -- darkwater
+     mcontroller.liquidId() == 45 or -- elder fluid
+     mcontroller.liquidId() == 11 or -- erchius
+     mcontroller.liquidId() == 6 or -- healing liquid
+     mcontroller.liquidId() == 7 or -- milk
+     mcontroller.liquidId() == 43 or -- organic soup
+     mcontroller.liquidId() == 3 or -- poison
+     mcontroller.liquidId() == 44 or -- protocite
+     mcontroller.liquidId() == 53 or -- pus
+     mcontroller.liquidId() == 69 or -- sludge
+     mcontroller.liquidId() == 12 or -- swampwater
+     mcontroller.liquidId() == 58 then-- wastewater
+     self.liquidType = 1
+  end
+end
+
+function isGas()
+  if mcontroller.liquidId() == 65 or -- quicksand
+     mcontroller.liquidId() == 49 or --helium3
+     mcontroller.liquidId() == 62 or -- hydrogen
+     mcontroller.liquidId() == 66 or -- metallic hydrogen
+     mcontroller.liquidId() == 63 or -- nitrogen
+     mcontroller.liquidId() == 64 or -- poisongas
+     mcontroller.liquidId() == 50 then -- shadowgas
+     self.gasType = 1
+  end 
+end
+
 function init()
   self.specialLast = false
   self.rockingTimer = 0 
@@ -119,6 +159,7 @@ end
 
 function update()
 
+  
   local animState=animator.animationState("base")
   local waterFactor = mcontroller.liquidPercentage();
   drawDebugInfo(animState,waterFactor)
@@ -170,6 +211,7 @@ function update()
 
     moving,facing = updateDriving()
 
+    
     --Rocking in the wind, and rotating up when moving
     local floating = updateFloating(waterFactor, moving,facing)
     updateMovingEffects(floating,moving)
@@ -205,6 +247,9 @@ function getDriver()
 end
 
 function updateDriving()
+
+  checkHazardType()
+
   local moving = false
   local facing = self.facingDirection
   local floating = self.waterFactor > self.minWaterFactorToFloat and self.waterFactor < self.maxWaterFactorToFloat
@@ -223,58 +268,62 @@ function updateDriving()
 
   if (driverThisFrame ~= nil) then
     vehicle.setDamageTeam(world.entityDamageTeam(driverThisFrame))
--- movement    
-    if vehicle.controlHeld("drivingSeat", "left") then
-      mcontroller.approachXVelocity(-self.targetMoveSpeed, self.moveControlForce)
-      moving = true
-      facing = -1
-    elseif vehicle.controlHeld("drivingSeat", "right") then
-      mcontroller.approachXVelocity(self.targetMoveSpeed, self.moveControlForce)
-      moving = true
-      facing = 1
-    end
---
-    if (vehicle.controlHeld("drivingSeat", "down")) then -- negative buoyancy
-      if (storage.ballasted) then 
-      local madj = moving and 1 or 0.75 -- dive faster while moving
-      mcontroller.approachYVelocity(-self.targetMoveSpeed*madj, self.moveControlForce)
-      moving = true
-      end
-    animator.setParticleEmitterEmissionRate("bubbles",25)
-    animator.setParticleEmitterActive("bubbles", true)      
-      holdingDown = true
-    elseif (vehicle.controlHeld("drivingSeat", "up")) then -- positive buoyancy
-      if (storage.ballasted) then 
-      local madj = moving and 1 or 0.75 -- rise faster while moving
-      mcontroller.approachYVelocity(self.targetMoveSpeed*madj, self.moveControlForce)
-      moving = true
-      end
-      holdingUp = true
-    animator.setParticleEmitterEmissionRate("bubbles",40)
-    animator.setParticleEmitterActive("bubbles", true)     
+    
+    
+    if self.liquidType == 1 or not self.isGas == 1 then -- check the type of liquid they are in. works, but not if they swap to new liquid type. odd?
+	-- movement    
+	    if vehicle.controlHeld("drivingSeat", "left") then
+	      mcontroller.approachXVelocity(-self.targetMoveSpeed, self.moveControlForce)
+	      moving = true
+	      facing = -1
+	    elseif vehicle.controlHeld("drivingSeat", "right") then
+	      mcontroller.approachXVelocity(self.targetMoveSpeed, self.moveControlForce)
+	      moving = true
+	      facing = 1
+	    end
+	--
+	    if (vehicle.controlHeld("drivingSeat", "down")) then -- negative buoyancy
+	      if (storage.ballasted) then 
+	      local madj = moving and 1 or 0.75 -- dive faster while moving
+	      mcontroller.approachYVelocity(-self.targetMoveSpeed*madj, self.moveControlForce)
+	      moving = true
+	      end
+	    animator.setParticleEmitterEmissionRate("bubbles",25)
+	    animator.setParticleEmitterActive("bubbles", true)      
+	      holdingDown = true
+	    elseif (vehicle.controlHeld("drivingSeat", "up")) then -- positive buoyancy
+	      if (storage.ballasted) then 
+	      local madj = moving and 1 or 0.75 -- rise faster while moving
+	      mcontroller.approachYVelocity(self.targetMoveSpeed*madj, self.moveControlForce)
+	      moving = true
+	      end
+	      holdingUp = true
+	    animator.setParticleEmitterEmissionRate("bubbles",40)
+	    animator.setParticleEmitterActive("bubbles", true)     
+	    end
     end
     
-    if self.ballastTimer <= 0 and vehicle.controlHeld("drivingSeat", "jump") then
+    if self.ballastTimer <= 0 and vehicle.controlHeld("drivingSeat", "jump") and not self.isGas == 1 or not self.isLiquid == 1 then
       self.ballastTimer = self.ballastTimeout
       storage.ballasted = not storage.ballasted
       if not storage.ballasted then -- blow tanks and rise - maybe bubbles?
-            applyMovementParams()
-    animator.setParticleEmitterEmissionRate("bubbles",60)
-    animator.setParticleEmitterActive("bubbles", true)
-            vehicle.setLoungeDance("drivingSeat","warmhands")
+	    applyMovementParams()
+            animator.setParticleEmitterEmissionRate("bubbles",60)
+            animator.setParticleEmitterActive("bubbles", true)
+	    vehicle.setLoungeDance("drivingSeat","warmhands")
       else -- sink to periscope depth / neutral buoyancy
-          applyMovementParams()
-          if not holdingDown and not holdingUp then
-            if self.waterFactor < self.minWaterFactorToFloat then 
-                mcontroller.setYVelocity(6.5) -- pop it off surface
-            end
-            if floating then
-                mcontroller.setYVelocity(-6.5) -- push it under surface
-            end
-          end
+	  applyMovementParams()
+	  if not holdingDown and not holdingUp then
+	    if self.waterFactor < self.minWaterFactorToFloat then 
+		mcontroller.setYVelocity(6.5) -- pop it off surface
+	    end
+	    if floating then
+		mcontroller.setYVelocity(-6.5) -- push it under surface
+	    end
+	  end
       end
     end
-    
+
     if vehicle.controlHeld("drivingSeat", "primaryFire") then
 	if (self.headlightCanToggle) then
 			if self.HeadlightsOn then
@@ -311,19 +360,14 @@ function updateDriving()
 		end
     end
 
---[[    can't read passenger input?!
     if self.hornTimer < 0 then
- --     for i = 1,2,1 do
         if vehicle.controlHeld("passenger1", "primaryFire") then
---          animator.setSoundPitch("hornLoop",2-(i/4),0.5)
           animator.playSound("hornLoop")
           self.hornTimer = self.hornTimeout
---        end
       end
     else
       self.hornTimer = self.hornTimer - script.updateDt()
     end
-    ]]
   else
     vehicle.setDamageTeam({type = "passive"})
     self.notes = nil
@@ -336,14 +380,14 @@ function updateSinking(waterFactor, currentAngle, sinkAngle)
     if storage.ballasted then storage.ballasted = false end
 
   if (mcontroller.onGround()) then
+  
     --not floating any more. Must have touched bottom.
     animator.setAnimationState("base", "sunk")  
 
---    animator.setParticleEmitterActive("bubbles", false)
---    animator.setParticleEmitterActive("smoke", false)
     animator.setParticleEmitterEmissionRate("bubbles",15)
     animator.setParticleEmitterActive("bubbles", true)
     animator.setParticleEmitterEmissionRate("smoke",1)
+
 
     mcontroller.applyParameters({groundFriction = 0.1,liquidFriction=0,liquidBuoyancy=0,airFriction=0,airBuoyancy=0})
 
@@ -402,18 +446,17 @@ function updateFloating(waterFactor, moving, facing)
       self.rockingTimer = self.rockingTimer - self.rockingInterval
     end
 
-      speedAngle = mcontroller.xVelocity() * self.speedRotationMultiplier/2
+    speedAngle = mcontroller.xVelocity() * self.speedRotationMultiplier/2
     local windPosition = vec2.add(mcontroller.position(), self.windLevelOffset)
     local windLevel = world.windLevel(windPosition)
-world.debugText("%s ",windLevel,vec2.add(mcontroller.position(),{0,3}),"green")
+    world.debugText("%s ",windLevel,vec2.add(mcontroller.position(),{0,3}),"green")
     local windMaxAngle = math.max(self.rockingWindAngleMultiplier * windLevel * 0.5,self.maxRockingAngle)
     local windAngle= windMaxAngle * (math.sin(self.rockingTimer / self.rockingInterval * (math.pi * 2)))
---    local windAngle= windMaxAngle * (math.sin(self.rockingTimer / self.rockingInterval * (math.pi * 2)))
-      speedAngle = windAngle + speedAngle
+    speedAngle = windAngle + speedAngle
 
     targetAngle = speedAngle-- + windMaxAngle
   else
-      speedAngle = mcontroller.yVelocity() * self.speedRotationMultiplier * facing
+    speedAngle = mcontroller.yVelocity() * self.speedRotationMultiplier * facing
     targetAngle=speedAngle+calcGroundCollisionAngle(self.waterBounds[2]) --pass in the water surtface
   end
 
@@ -459,7 +502,6 @@ function updateMovingEffects(floating,moving)
         animator.setParticleEmitterEmissionRate(bowWaveEmitter, rateFactor)
 
         local bowWaveBounds=self.waterBounds
---        bowWaveBounds[3]=bowWaveBounds[1]-0.5
         animator.setParticleEmitterOffsetRegion(bowWaveEmitter,bowWaveBounds)
 
         animator.setParticleEmitterActive(bowWaveEmitter, true)        
@@ -504,7 +546,6 @@ end
 function applyDamage(damageRequest)
   local damage = 0
   if damageRequest.damageType == "Damage" or damageRequest.damageType == "IgnoresDef" then
---  if damageRequest.damageType == "Damage" then
     damage = damage + root.evalFunction2("protection", damageRequest.damage, self.protection)
   elseif damageRequest.damageType == "IgnoresDef" then
     damage = damage + damageRequest.damage
