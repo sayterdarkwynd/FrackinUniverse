@@ -47,12 +47,20 @@ function setToolTipValues(ability)
 end
 
 function update(dt, fireMode, shiftHeld)
-	if sayter then
-		if sayter < 0.0 then
-			status.addEphemeralEffect("l6doomed",666)
-			sayter=nil
+	if sayterG then
+		if sayterG < 0.0 then
+			effectInRange(100,"l6doomed",7*activeItem.ownerPowerMultiplier())--yes, this is intentional.
+			sayterG=nil
 		else
-			sayter=sayter-dt
+			sayterG=sayterG-dt
+		end
+	end
+	if sayterE then
+		if sayterE < 0.0 then
+			status.addEphemeralEffect("l6doomed",7*activeItem.ownerPowerMultiplier())
+			sayterE=nil
+		else
+			sayterE=sayterE-dt
 		end
 	end
 	updateAim()
@@ -96,7 +104,8 @@ end]]
 function fire(ability,fireMode,throttle)
 	--sb.logInfo("%s",ability)
 	local special=math.floor(math.random(1,1000))
-	local projectileCount = throttle and 1 or math.floor(math.random(1,totalProjectileTypes[fireMode]))
+	local baseProjectileCount=totalProjectileTypes[fireMode]
+	local projectileCount = throttle and 1 or math.floor(math.random(1,baseProjectileCount*baseProjectileCount)/baseProjectileCount)
 	local params = {power = damagePerShot(ability,projectileCount), powerMultiplier = activeItem.ownerPowerMultiplier()}
 	
 	if fireMode=="alt" then
@@ -111,7 +120,11 @@ function fire(ability,fireMode,throttle)
 		local message="Sayter."
 		local color={0,0,0}
 		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
-		sayter=4.0
+		if sayterE then
+			sayterE=sayterE/2.0
+		else
+			sayterE=4.0
+		end
 	elseif special < 10 then
 		local aimVec=aimVector(ability)
 		local projectileType=""
@@ -120,25 +133,28 @@ function fire(ability,fireMode,throttle)
 		local color={}
 		
 		if fireMode=="alt" then
-			if shift then
+			if throttle then
 				doProjectile=true
 				projectileType="phoenix"
 				message="#$?#$%?@ Greg."
 				color={255,0,0}
 			else
-				status.addEphemeralEffect("timefreeze",4)
-				message="Banana? Heh. Rainbow."
-				color={238,130,238}
-			end
-		else
-			if shift then
 				status.addEphemeralEffect("cultistshield",4)
 				color={255,20,147}
 				message="Kevin."
-			else
+			end
+		else
+			if throttle then
+				local effect="damagebonus"..math.floor(math.random(2,6))
+				status.addEphemeralEffect(effect,4)
 				color={255,255,0}
 				message="BANANA! BANANA! BANANA!"
+			else
+				effectInRange(100,"timefreezeSkittles",4)
+				message="Banana? Heh. Rainbow."
+				color={238,130,238}
 			end
+			
 		end
 		
 		if doProjectile then
@@ -152,7 +168,16 @@ function fire(ability,fireMode,throttle)
 			)
 		end
 		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
-		
+	elseif special==1000 then
+		--this is THE card to draw. However, we're gonna be an ass about it. They won't know if it's this, or the bad one, til it's too late.
+		local message="Sayter."
+		local color={0,0,0}
+		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		if sayterG then
+			sayterG=sayterG/2.0
+		else
+			sayterG=4.0
+		end
 	else
 		for i = 1, projectileCount do
 			local buffer={}
@@ -227,13 +252,11 @@ end
 function spaz(wordCount,position,duration,throttle)
 	if not throttle then duration=duration*2 end
 	--gregese.words,gregese.punct}
-
-	wordCount=math.min(6,wordCount)
 	
 	local sentence=""
 	local caps=1
 	
-	for x=0,wordCount do
+	for x=0,wordCount-1 do
 		if caps==1 then
 			if math.random(0,1) > 0.67 then
 				caps=2
@@ -310,6 +333,13 @@ world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false,  {
         }
     }
     )
+end
+
+function effectInRange(range,effect,duration)
+	local buffer=util.mergeLists(world.npcQuery(activeItem.ownerAimPosition(),range),world.monsterQuery(activeItem.ownerAimPosition(),range))
+	for _,id in pairs(buffer) do
+		world.sendEntityMessage(id,"applyStatusEffect",effect,duration)
+	end
 end
 
 function uninit()
