@@ -4,7 +4,7 @@
   "description" : "Generates research slowly, but constantly.",
   "shortdescription" : "Personal Computer",
   "race" : "generic",
-  "category" : "decorative",
+  "category" : "storage",
   "price" : 750,
   "printable" : false,
   "objectType" : "container",
@@ -13,18 +13,33 @@
   "inventoryIcon" : "sciencelaptop1icon.png",
   "orientations" : [
     {
-      "dualImage" : "sciencelaptop1.png:<color>",
+      "direction" : "left",
+      "imageLayers" : [ { "image" : "sciencelaptop1.png:<color>.<frame>", "fullbright" : true }, { "image" : "sciencelaptop1.png:<color>.<frame>" } ],
 
-      "imagePosition" : [-16, -0],
+      "imagePosition" : [0, 0],
       "frames" : 11,
-      "animationCycle" : 1.0,
+      "animationCycle" : 2.0,
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
 
-    }
+    },
+    {
+      "direction" : "right",
+      "imageLayers" : [ { "image" : "sciencelaptop1.png:<color>.<frame>", "fullbright" : true }, { "image" : "sciencelaptop1.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 11,
+      "animationCycle" : 2.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    } 
   ],
-    "outputNodes" : [ [2, 1] ],
+  "outputNodes" : [ [2, 1] ],
+  "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ], 
   "scripts" : [ "/scripts/sciencelaptop.lua" ],
   "scriptDelta" : 320,
   "slotCount" : 1,
@@ -32,6 +47,6 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   "wellslots" : [
-    {"name" : "fuscienceresource","ratio" : 1,"max" : 200}
+    {"name" : "fuscienceresource","ratio" : 10,"max" : 200}
   ]
 }

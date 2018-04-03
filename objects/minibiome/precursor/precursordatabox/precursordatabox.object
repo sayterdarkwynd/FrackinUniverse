@@ -4,7 +4,7 @@
   "rarity" : "rare",
   "objectType" : "container",
   "tooltipKind" : "container",
-  "description" : "This seems to provide a way to access precursor data.",
+  "description" : "This seems to provide a way to access precursor data. Generates research.",
   "shortdescription" : "Precursor Data Box",
   
   "apexDescription" : "This appears to provide access to precursor data.",
@@ -51,12 +51,17 @@
       "collision" : "platform"
     } 
   ],
-
+  "outputNodes" : [ [2, 1] ],
   "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
-  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
-  "slotCount" : 64,
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ], 
+  "scripts" : [ "/scripts/sciencelaptop.lua" ],
+  "scriptDelta" : 360,
+  "slotCount" : 1,
   "uiConfig" : "/interface/chests/chest<slots>.config",
-  "frameCooldown" : 5,
-  "autoCloseCooldown" : 3600
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "fuscienceresource","ratio" : 0.75,"max" : 2000}
+  ]
 
 }
