@@ -105,7 +105,7 @@ function fire(ability,fireMode,throttle)
 	--sb.logInfo("%s",ability)
 	local special=math.floor(math.random(1,1000))
 	local baseProjectileCount=totalProjectileTypes[fireMode]
-	local projectileCount = throttle and 1 or math.floor(math.random(1,baseProjectileCount*baseProjectileCount)/baseProjectileCount)
+	local projectileCount = throttle and 1 or math.max(1,math.floor(math.random(1,baseProjectileCount*baseProjectileCount)/baseProjectileCount))
 	local params = {power = damagePerShot(ability,projectileCount), powerMultiplier = activeItem.ownerPowerMultiplier()}
 	
 	if fireMode=="alt" then
