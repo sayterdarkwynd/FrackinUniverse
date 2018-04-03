@@ -1,0 +1,36 @@
+{
+  "objectName" : "sciencelaptop2",
+  "rarity" : "Common",
+  "description" : "Generates research slowly, but constantly.",
+  "shortdescription" : "Advanced Computer",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 1750,
+  "printable" : false,
+  "objectType" : "container",
+
+  "inventoryIcon" : "sciencelaptop2icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sciencelaptop2.png:<color>",
+
+      "imagePosition" : [-16, -0],
+      "frames" : 11,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+    "outputNodes" : [ [2, 1] ],
+  "scripts" : [ "/scripts/sciencelaptop.lua" ],
+  "scriptDelta" : 320,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "fuscienceresource","ratio" : 1,"max" : 1000}
+  ]
+}
