@@ -301,9 +301,9 @@ function updateDriving()
 	    animator.setParticleEmitterEmissionRate("bubbles",40)
 	    animator.setParticleEmitterActive("bubbles", true)     
 	    end
-    end
     
-    if self.ballastTimer <= 0 and vehicle.controlHeld("drivingSeat", "jump") and not self.isGas == 1 or not self.isLiquid == 1 then
+    
+    if self.ballastTimer <= 0 and vehicle.controlHeld("drivingSeat", "jump") then
       self.ballastTimer = self.ballastTimeout
       storage.ballasted = not storage.ballasted
       if not storage.ballasted then -- blow tanks and rise - maybe bubbles?
@@ -323,7 +323,10 @@ function updateDriving()
 	  end
       end
     end
-
+    
+    end
+    
+    
     if vehicle.controlHeld("drivingSeat", "primaryFire") then
 	if (self.headlightCanToggle) then
 			if self.HeadlightsOn then
