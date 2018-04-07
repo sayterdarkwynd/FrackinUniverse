@@ -32,7 +32,7 @@ function init()
 	if fool then
 		local color={math.floor(math.random(1,255)),math.floor(math.random(1,255)),math.floor(math.random(1,255))}
 		messageParticle(firePosition(),"Matt Damon.",color,0.6,nil,4,nil)
-		status.addEphemeralEffect("nude",5)
+		effectSelf("nude",5)
 	end
 end
 
@@ -71,7 +71,7 @@ function update(dt, fireMode, shiftHeld)
 	if fool then
 		foolDelta=(foolDelta or 0)+dt
 		if foolDelta >=4 then
-			status.addEphemeralEffect("nude",5)
+			effectSelf("nude",5)
 		end
 	end
 	if fireMode=="none" or not fireMode then return end
@@ -125,6 +125,11 @@ function fire(ability,fireMode,throttle)
 		else
 			sayterE=4.0
 		end
+	elseif special == 3 or special == 33 or special == 333 then
+		message="Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!"
+		color={238,130,238}
+		effectSelf("partytime2",special)
+		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
 	elseif special < 10 then
 		local aimVec=aimVector(ability)
 		local projectileType=""
@@ -139,18 +144,18 @@ function fire(ability,fireMode,throttle)
 				message="#$?#$%?@ Greg."
 				color={255,0,0}
 			else
-				status.addEphemeralEffect("cultistshield",4)
+				effectSelf("cultistshield",math.max(0,activeItem.ownerPowerMultiplier()))
 				color={255,20,147}
 				message="Kevin."
 			end
 		else
 			if throttle then
 				local effect="damagebonus"..math.floor(math.random(2,6))
-				status.addEphemeralEffect(effect,4)
+				effectSelf(effect,math.max(0,2*activeItem.ownerPowerMultiplier()))
 				color={255,255,0}
 				message="BANANA! BANANA! BANANA!"
 			else
-				effectInRange(100,"timefreezeSkittles",4)
+				effectInRange(100,"timefreezeSkittles",math.max(0,activeItem.ownerPowerMultiplier()))
 				message="Banana? Heh. Rainbow."
 				color={238,130,238}
 			end
@@ -335,11 +340,21 @@ world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false,  {
     )
 end
 
+
 function effectInRange(range,effect,duration)
 	local buffer=util.mergeLists(world.npcQuery(activeItem.ownerAimPosition(),range),world.monsterQuery(activeItem.ownerAimPosition(),range))
 	for _,id in pairs(buffer) do
-		world.sendEntityMessage(id,"applyStatusEffect",effect,duration)
+		--world.sendEntityMessage(id,"applyStatusEffect",effect,duration,activeItem.ownerEntityId())
+		effectTarget(id,effect,duration)
 	end
+end
+
+function effectSelf(effect,duration)
+	effectTarget(activeItem.ownerEntityId(),effect,duration)
+end
+
+function effectTarget(id,effect,duration)
+	world.sendEntityMessage(id,"applyStatusEffect",effect,duration,activeItem.ownerEntityId())
 end
 
 function uninit()

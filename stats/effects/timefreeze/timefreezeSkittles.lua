@@ -3,6 +3,10 @@ gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pf
 
 
 function init()
+	if effect.sourceEntity then
+		source=effect.sourceEntity()
+	end
+	--sb.logInfo("%s",{status=status,effect=effect})
   --effect.setParentDirectives("fade=6a2284=0.4")
   if status.isResource("stunned") then
     status.setResource("stunned", math.max(status.resource("stunned"), effect.duration()))
@@ -12,18 +16,56 @@ function init()
 end
 
 function update(dt)
-	if not gregDate or gregDate > 1.0 then
-		spaz(math.floor(math.random(1,81)/9))
-		gregDate=0.0
+	if status.resource("health") <= 0.0 then
+		status.setResource("stunned",0)
+		effect.expire()
+		return
 	else
-		gregDate=gregDate+dt*(math.random(1,10)/10.0)
-	end
+		if not gregDate or gregDate > 1.0 then
+			local donkey=math.floor(math.random(1,81))
+			--sb.logInfo("Donkey %s",donkey)
+			gregDate=0.0
+			if donkey == 1 or donkey == 81 then
+				if donkey == 1 then
+					effectSelf("l6doomed",effect.duration())
+				else
+					effectOnSource("l6doomed",effect.duration())
+				end
+				say("Sayter.")
+				special=true
+			elseif donkey == 6 or donkey == 66 then
+				status.setResource("stunned",0)
+				effectSelf("heal_1",effect.duration())
+				effectSelf("cultistshield",effect.duration())
+				say("Kevin.")
+				special=true
+			elseif donkey <= 3 or donkey == 33 then
+				effectSelf("partytime2",effect.duration()*donkey)
+				say("Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!")
+				special=true
+			elseif donkey <= 9 then
+				if source then
+					effectOnSource("nude",donkey*effect.duration()/10.0)
+					say("Matt Damon.")
+					special=true
+				end
+			end
+			if special then
+				effect.expire()
+				return
+			else
+				spaz(math.floor(donkey/9.0))
+			end
+		else
+			gregDate=gregDate+dt*(math.random(1,10)/10.0)
+		end
 
-	--mcontroller.setVelocity({0, 0})
-	mcontroller.controlModifiers({
-		facingSuppressed = true,
-		movementSuppressed = true
-	})
+		--mcontroller.setVelocity({0, 0})
+		mcontroller.controlModifiers({
+			facingSuppressed = true,
+			movementSuppressed = true
+		})
+	end
 end
 
 function spaz(wordCount)
@@ -68,6 +110,15 @@ function spaz(wordCount)
 		
 		sentence=sentence..rWord..rPunct
 	end
+	say(sentence)
+end
+
+
+function firstToUpper(str)
+    return (str:gsub("^%l", string.upper))
+end
+
+function say(sentence)
 	if world.entityType(entity.id()) =="npc" then
 		world.callScriptedEntity(entity.id(),"npc.say",sentence)
 	elseif  world.entityType(entity.id())=="monster" then
@@ -75,7 +126,22 @@ function spaz(wordCount)
 	end
 end
 
+function effectInRange(range,effect,duration)
+	local buffer=util.mergeLists(world.npcQuery(activeItem.ownerAimPosition(),range),world.monsterQuery(activeItem.ownerAimPosition(),range))
+	for _,id in pairs(buffer) do
+		--world.sendEntityMessage(id,"applyStatusEffect",effect,duration,activeItem.ownerEntityId())
+		effectTarget(id,effect,duration)
+	end
+end
 
-function firstToUpper(str)
-    return (str:gsub("^%l", string.upper))
+function effectSelf(effect,duration)
+	status.addEphemeralEffect(effect,duration,source)
+end
+
+function effectOnSource(effect,duration)
+	effectTarget(source,effect,duration)
+end
+
+function effectTarget(id,effect,duration)
+	world.sendEntityMessage(id,"applyStatusEffect",effect,duration,source)
 end
