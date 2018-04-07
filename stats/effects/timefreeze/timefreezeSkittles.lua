@@ -6,35 +6,36 @@ function init()
 	if effect.sourceEntity then
 		source=effect.sourceEntity()
 	end
+	--"specialStatusImmunity"
+	hardTarget=(status.stat("specialStatusImmunity")>0)
 	--sb.logInfo("%s",{status=status,effect=effect})
-  --effect.setParentDirectives("fade=6a2284=0.4")
-  if status.isResource("stunned") then
-    status.setResource("stunned", math.max(status.resource("stunned"), effect.duration()))
-  end
+	--effect.setParentDirectives("fade=6a2284=0.4")
+	stun(1)
 
-  --mcontroller.setVelocity({0, 0})
+	--mcontroller.setVelocity({0, 0})
 end
 
 function update(dt)
 	if status.resource("health") <= 0.0 then
-		status.setResource("stunned",0)
+		stun()
 		effect.expire()
 		return
 	else
 		if not gregDate or gregDate > 1.0 then
+			stun((gregDate or 1.0)*1.3)
 			local donkey=math.floor(math.random(1,81))
 			--sb.logInfo("Donkey %s",donkey)
 			gregDate=0.0
 			if donkey == 1 or donkey == 81 then
 				if donkey == 1 then
-					effectSelf("l6doomed",effect.duration())
+					effectSelf("l6doomed",effect.duration()/(hardTarget and 2 or 1))
 				else
-					effectOnSource("l6doomed",effect.duration())
+					effectOnSource("l6doomed",effect.duration()*(hardTarget and 2 or 1))
 				end
 				say("Sayter.")
 				special=true
 			elseif donkey == 6 or donkey == 66 then
-				status.setResource("stunned",0)
+				stun()
 				effectSelf("heal_1",effect.duration())
 				effectSelf("cultistshield",effect.duration())
 				say("Kevin.")
@@ -46,6 +47,9 @@ function update(dt)
 			elseif donkey <= 9 then
 				if source then
 					effectOnSource("nude",donkey*effect.duration()/10.0)
+					if hardTarget then
+						effectOnSource("vulnerability",donkey*effect.duration()/10.0)
+					end
 					say("Matt Damon.")
 					special=true
 				end
@@ -131,6 +135,15 @@ function effectInRange(range,effect,duration)
 	for _,id in pairs(buffer) do
 		--world.sendEntityMessage(id,"applyStatusEffect",effect,duration,activeItem.ownerEntityId())
 		effectTarget(id,effect,duration)
+	end
+end
+
+function stun(duration)
+	duration=duration or 0
+	if status.isResource("stunned") and not (status.stat("stunImmunity") > 0) then
+		status.setResource("stunned", duration)
+	elseif duration > 0 then
+		status.modifyResourcePercentage("health",duration*0.1)
 	end
 end
 
