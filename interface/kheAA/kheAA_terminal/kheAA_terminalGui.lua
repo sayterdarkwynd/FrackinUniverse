@@ -60,6 +60,12 @@ function refresh()
 	refreshList()
 end
 
+function clearInputs()
+	widget.setText("filterBox", "");
+	widget.setText("requestAmount", "");
+	refreshList();
+end
+
 function containerFound(containerID,pos)
 	if containerID == nil then return false end
 	--if not world.regionActive(rectPos) then return false end
