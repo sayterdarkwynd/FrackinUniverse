@@ -5,7 +5,10 @@
         "priority" : 0,
         "default" : "idle",
         "states" : {
-        
+          "invulnerable" : {
+            "frames" : 5,
+            "cycle" : 0.5
+          },        
           "idle" : {
             "frames" : 8,
             "cycle" : 1,
@@ -23,47 +26,41 @@
             }
           },
           "swoopwindup" : {
-            "frames" : 7,
-            "cycle" : 1,
-            "mode" : "loop"
+            "frames" : 8,
+            "cycle" : 0.8
           },
           "swoop" : {
-            "frames" : 6,
-            "cycle" : 1,
-            "mode" : "loop",
+            "frames" : 5,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/starspawn3.ogg"
+              "immediateSound" : "/sfx/npc/monsters/fleshreaper1.wav"
             }
           },
           "swoopwinddown" : {
-            "frames" : 7,
-            "cycle" : 0.7,
-            "mode" : "loop"
+            "frames" : 3,
+            "cycle" : 0.3
           },
           "chargewindup" : {
-            "frames" : 7,
-            "cycle" : 1,
-            "mode" : "loop",
+            "frames" : 9,
+            "cycle" : 0.9,
             "properties" : {
-               "immediateSound" : "/sfx/npc/monsters/starspawn1.ogg"
+               "immediateSound" : "/sfx/npc/monsters/fleshreaper1.wav"
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/orbide_windup1.ogg", "", "", "", "", "", "", "/sfx/npc/monsters/orbide_windup2.ogg", "" ]
             }
           },
           "charge" : {
-            "frames" : 6,
-            "cycle" : 1,
-            "mode" : "loop",
+            "frames" : 1,
+            "cycle" : 0.1,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/starspawnattack2.ogg"
+              "immediateSound" : "/sfx/npc/monsters/fleshreaper2.wav"
             }
           },
           "chargewinddown" : {
             "frames" : 3,
             "cycle" : 0.3,
             "mode" : "transition",
-            "transition" : "fly",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/starspawnattack.ogg"
-            }
+            "transition" : "fly"
           },
           "ranged" : {
             "frames" : 14,
@@ -73,9 +70,7 @@
           },
           "fire" : {
             "frames" : 7,
-            "cycle" : 0.7,
-            "mode" : "transition",
-            "transition" : "chargewinddown"
+            "cycle" : 0.7
           },
           "melee" : {
             "frames" : 13,
@@ -90,20 +85,23 @@
             "transition" : "idle"
           },
           "hurt" : {
-            "frames" : 3,
-            "cycle" : 0.3,
-            "mode" : "loop"
+            "frames" : 1,
+            "cycle" : 0.1
           },
           "stunned" : {
-            "frames" : 3,
-            "cycle" : 0.3,
-            "mode" : "loop"
+            "frames" : 1,
+            "cycle" : 0.1
           },
            "warp" : {
             "frames" : 7,
-            "cycle" : 0.3,
-            "mode" : "loop"
-          }         
+            "cycle" : 0.35
+          },
+           "warpin" : {
+            "frames" : 3,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "idle"
+          }          
         }
       },
       "damage" : {
@@ -155,6 +153,11 @@
         },
         "partStates" : {
           "body" : {
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },            
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -172,12 +175,7 @@
             },
             "swoop" : {
               "properties" : {
-                "image" : "<partImage>:charge.<frame>"
-              }
-            },
-            "swoopwinddown" : {
-              "properties" : {
-                "image" : "<partImage>:swoopwindup.<frame>"
+                "image" : "<partImage>:swoop.<frame>"
               }
             },
             "melee" : {
@@ -197,7 +195,7 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:chargewinddown.<frame>"
               }
             },
             "crash" : {
@@ -207,7 +205,7 @@
             },
             "hurt" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:hurt"
               }
             },
             "ranged" : {
@@ -224,12 +222,17 @@
               "properties" : {
                 "image" : "<partImage>:warp.<frame>"
               }
-            }            
+            },
+            "warpin" : {
+              "properties" : {
+                "image" : "<partImage>:warpin.<frame>"
+              }
+            }             
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:hurt"
               }
             }
           }
@@ -243,6 +246,11 @@
         },
         "partStates" : {
           "body" : {
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },          
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -260,12 +268,7 @@
             },
             "swoop" : {
               "properties" : {
-                "image" : "<partImage>:charge.<frame>"
-              }
-            },
-            "swoopwinddown" : {
-              "properties" : {
-                "image" : "<partImage>:swoopwindup.<frame>"
+                "image" : "<partImage>:swoop.<frame>"
               }
             },
             "melee" : {
@@ -285,7 +288,7 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:chargewinddown.<frame>"
               }
             },
             "crash" : {
@@ -295,7 +298,7 @@
             },
             "hurt" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:hurt"
               }
             },
             "ranged" : {
@@ -312,12 +315,17 @@
               "properties" : {
                 "image" : "<partImage>:warp.<frame>"
               }
-            } 
+            },
+            "warpin" : {
+              "properties" : {
+                "image" : "<partImage>:warpin.<frame>"
+              }
+            }  
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:hurt"
               }
             }
           }
