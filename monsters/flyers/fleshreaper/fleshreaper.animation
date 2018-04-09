@@ -97,7 +97,12 @@
             "frames" : 1,
             "cycle" : 0.3,
             "mode" : "loop"
-          }
+          },
+           "warp" : {
+            "frames" : 7,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          }         
         }
       },
       "damage" : {
@@ -142,8 +147,10 @@
     "parts" : {
       "body" : {
         "properties" : {
+          "zLevel" : 1,
           "transformationGroups" : [ "body" ],
-          "offset" : [0.25, -0.25]
+          "offset" : [0.25, -0.25],
+          "fullbright" : true
         },
         "partStates" : {
           "body" : {
@@ -189,7 +196,7 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:melee.<frame>"
+                "image" : "<partImage>:hurt.<frame>"
               }
             },
             "crash" : {
@@ -211,7 +218,12 @@
               "properties" : {
                 "image" : "<partImage>:fire.<frame>"
               }
-            }
+            },
+            "warp" : {
+              "properties" : {
+                "image" : "<partImage>:warp.<frame>"
+              }
+            }            
           },
           "damage" : {
             "stunned" : {
@@ -224,6 +236,7 @@
       },
       "bodyfullbright" : {
         "properties" : {
+          "zLevel" : 2,
           "transformationGroups" : [ "body" ],
           "offset" : [0.25, -0.25]
         },
@@ -271,7 +284,7 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:melee.<frame>"
+                "image" : "<partImage>:hurt.<frame>"
               }
             },
             "crash" : {
@@ -293,7 +306,12 @@
               "properties" : {
                 "image" : "<partImage>:fire.<frame>"
               }
-            }
+            },
+            "warp" : {
+              "properties" : {
+                "image" : "<partImage>:warp.<frame>"
+              }
+            } 
           },
           "damage" : {
             "stunned" : {
