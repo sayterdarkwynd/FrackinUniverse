@@ -5,6 +5,7 @@
         "priority" : 0,
         "default" : "idle",
         "states" : {
+        
           "idle" : {
             "frames" : 8,
             "cycle" : 1,
@@ -72,13 +73,13 @@
           },
           "fire" : {
             "frames" : 7,
-            "cycle" : 0.6,
+            "cycle" : 0.7,
             "mode" : "transition",
             "transition" : "chargewinddown"
           },
           "melee" : {
             "frames" : 13,
-            "cycle" : 0.65,
+            "cycle" : 1.3,
             "mode" : "transition",
             "transition" : "idle"
           },
@@ -94,7 +95,7 @@
             "mode" : "loop"
           },
           "stunned" : {
-            "frames" : 1,
+            "frames" : 3,
             "cycle" : 0.3,
             "mode" : "loop"
           },
@@ -206,7 +207,7 @@
             },
             "hurt" : {
               "properties" : {
-                "image" : "<partImage>:hurt"
+                "image" : "<partImage>:hurt.<frame>"
               }
             },
             "ranged" : {
@@ -228,7 +229,7 @@
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:stunned"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           }
@@ -294,7 +295,7 @@
             },
             "hurt" : {
               "properties" : {
-                "image" : "<partImage>:hurt"
+                "image" : "<partImage>:hurt.<frame>"
               }
             },
             "ranged" : {
@@ -316,7 +317,7 @@
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:stunned"
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           }
