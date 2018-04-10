@@ -6,36 +6,48 @@ local requiredPower = 0
 function init()
 	power.init()
 	self = config.getParameter("spawner")
+	requiredPower = config.getParameter('isn_requiredPower')
 	storage.timer = self.defaultSpawnTime
-	if storage.crafting == true then
+	if storage.crafting then
 		animator.playSound("running", -1)
 	end
 	powered = false
 end
 
 function update(dt)
+	if not storage.timer then
+		self = config.getParameter("spawner")
+		requiredPower = config.getParameter('isn_requiredPower')
+		storage.timer = self.defaultSpawnTime
+	elseif type(storage.timer) ~= "number" then
+		storage.timer=tonumber(storage.timer)
+	end
+	if storage.timer >= 0 then
+		storage.timer = storage.timer - dt
+	else
+		storage.timer=-1
+	end
+
 	if wireCheck() then
 		if not storage.crafting then
-			local slot = 0
-			local fuelSlot = getInputContents(slot)
+			local fuelSlot = getInputContents(0)
 			if fuelSlot.name == self.fuelType then
-				local slot = 1
-				local podSlot = getInputContents(slot)
+				local podSlot = getInputContents(1)
 				if podSlot.name == self.podType then
-					if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
+					if power.getTotalEnergy() >= requiredPower then
 						world.containerConsumeAt(entity.id(),0,1)
 						storage.pets = (podSlot.parameters.pets)
 						pet = root.monsterParameters(storage.pets[1].config.type)
-						spawnTime = pet.statusSettings.stats.maxHealth.baseValue * self.spawnTimeMultiplier
+						spawnTime = pet.statusSettings.stats.maxHealth.baseValue * (self.spawnTimeMultiplier or 0.1)
 						storage.timer = spawnTime or self.defaultSpawnTime
-						requiredPower = config.getParameter('isn_requiredPower')
+						
 						storage.crafting = true
 					end
 				end
 			end
 		end
 	end
-	storage.timer = storage.timer - dt
+	
 	if storage.crafting then
 		if animator.animationState("base") == "off" then
 			animator.playSound("on")
@@ -49,6 +61,33 @@ function update(dt)
 			end
 		end
 		animator.setAnimationState("base", "on")
+		
+		if storage.timer <= 0  then
+			if power.consume(requiredPower) then
+				if storage.pets then
+					local params={}
+					local spawnPosition = vec2.add(object.position(), {0, 5})
+					
+					local monsterType = storage.pets[1].config.type
+					local blacklisted = checkBlacklist(monsterType)
+					
+					params.seed = storage.pets[1].config.parameters.seed
+					params.colors = storage.pets[1].config.parameters.colors
+					params.aggressive = storage.pets[1].config.parameters.aggressive
+					params.level = blacklisted and math.max(8, world.threatLevel()) or math.max(5, world.threatLevel())
+					
+					if blacklisted then
+						params.dropPools = {}
+						params.dropPools["default"] = "empty"
+					end
+					
+					if monsterType and params.seed then
+						world.spawnMonster(monsterType, spawnPosition, params);
+					end
+				end
+				storage.crafting = false
+			end
+		end
 	else
 		if animator.animationState("base") == "on" then
 			animator.stopAllSounds("running")
@@ -56,39 +95,11 @@ function update(dt)
 		end
 		animator.setAnimationState("base", "off")
 	end
-	if storage.timer <= 0 and storage.crafting then
-		if power.consume(requiredPower) then
-			if storage.pets then
-				monsterType = storage.pets[1].config.type
-				monsterSeed = storage.pets[1].config.parameters.seed
-				monsterColour = storage.pets[1].config.parameters.colors
-				monsterAggro = storage.pets[1].config.parameters.aggressive
-				blacklisted = checkBlacklist(monsterType)
-				dropPool = {}
-				dropPool["default"] = "empty"
-				spawnPosition = vec2.add(object.position(), {0, 5})
-				monsterLevel = math.max(5, world.threatLevel())
-				if monsterType and monsterSeed then
-					if blacklisted == true then
-						world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, dropPools = dropPool, aggressive = monsterAggro, capturable = false, relocatable = false});
-					else
-						world.spawnMonster(monsterType, spawnPosition, {level = monsterLevel, seed = monsterSeed, colors = monsterColour, aggressive = monsterAggro, capturable = false, relocatable = false});
-					end
-				end
-			end
-			storage.crafting = false
-		end
-	end
 	power.update(dt)
 end
 
 function getInputContents(slot)
-	local stack = world.containerItemAt(entity.id(),slot)
-	local contents = {}
-	if stack then
-		contents = stack
-	end
-	return contents
+	return world.containerItemAt(entity.id(),slot) or {}
 end
 
 function checkBlacklist(monster)
@@ -102,14 +113,9 @@ function checkBlacklist(monster)
 end
 
 function wireCheck()
-	if object.isInputNodeConnected(0) == true then
-		if object.getInputNodeLevel(0) == true then
-			return true
-		else
-			return false
-		end
+	if object.isInputNodeConnected(0) then
+		return object.getInputNodeLevel(0)
 	else
-	return true
+		return true
 	end
-	return false
 end
