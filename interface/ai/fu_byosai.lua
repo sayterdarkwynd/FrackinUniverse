@@ -7,6 +7,7 @@ function init()
 	textData = {}
 	textUpdateDelay = config.getParameter("textUpdateDelay")
 	chatterSound = config.getParameter("chatterSound")
+  defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
 	aiFaceCanvas = widget.bindCanvas("aiFaceCanvas")
 	aiImage = {image = config.getParameter("aiImage")}
 	aiImage.frames = config.getParameter("aiFrames") - 1
@@ -110,7 +111,7 @@ function racial()
 	parameters = getBYOSParameters("techstation", true, _)
 	player.giveItem({name = "fu_byostechstationdeco", count = 1, parameters = parameters})
 	player.startQuest("fu_shipupgrades")
-	player.upgradeShip({shipLevel = 1})
+	player.upgradeShip(defaultShipUpgrade)
 end
 
 function racialiserBootUp()

@@ -5,16 +5,20 @@
         "priority" : 0,
         "default" : "idle",
         "states" : {
+          "invulnerable" : {
+            "frames" : 5,
+            "cycle" : 0.5
+          },        
           "idle" : {
-            "frames" : 4,
-            "cycle" : 0.8,
+            "frames" : 8,
+            "cycle" : 1,
             "mode" : "loop",
             "frameProperties" : {
               "immediateSound" : [ "", "/sfx/npc/monsters/batong_flap1.ogg", "", "/sfx/npc/monsters/batong_flap2.ogg" ]
             }
           },
           "fly" : {
-            "frames" : 4,
+            "frames" : 9,
             "cycle" : 0.8,
             "mode" : "loop",
             "frameProperties" : {
@@ -22,82 +26,82 @@
             }
           },
           "swoopwindup" : {
-            "frames" : 1,
-            "cycle" : 0.5,
-            "mode" : "loop"
+            "frames" : 8,
+            "cycle" : 0.8
           },
           "swoop" : {
-            "frames" : 1,
-            "cycle" : 1,
-            "mode" : "loop",
+            "frames" : 5,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/starspawn3.ogg"
+              "immediateSound" : "/sfx/npc/monsters/fleshreaper1.wav"
             }
           },
           "swoopwinddown" : {
-            "frames" : 1,
-            "cycle" : 0.5,
-            "mode" : "loop"
+            "frames" : 3,
+            "cycle" : 0.3
           },
           "chargewindup" : {
-            "frames" : 1,
-            "cycle" : 0.5,
-            "mode" : "loop",
+            "frames" : 9,
+            "cycle" : 0.9,
             "properties" : {
-               "immediateSound" : "/sfx/npc/monsters/starspawn1.ogg"
+               "immediateSound" : "/sfx/npc/monsters/fleshreaper1.wav"
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/orbide_windup1.ogg", "", "", "", "", "", "", "/sfx/npc/monsters/orbide_windup2.ogg", "" ]
             }
           },
           "charge" : {
             "frames" : 1,
-            "cycle" : 1,
-            "mode" : "loop",
+            "cycle" : 0.1,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/starspawnattack2.ogg"
+              "immediateSound" : "/sfx/npc/monsters/fleshreaper2.wav"
             }
           },
           "chargewinddown" : {
             "frames" : 3,
             "cycle" : 0.3,
             "mode" : "transition",
-            "transition" : "fly",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/starspawnattack.ogg"
-            }
+            "transition" : "fly"
           },
           "ranged" : {
-            "frames" : 6,
-            "cycle" : 0.6,
+            "frames" : 14,
+            "cycle" : 1.4,
             "mode" : "transition",
             "transition" : "idle"
           },
           "fire" : {
-            "frames" : 6,
-            "cycle" : 0.6,
-            "mode" : "transition",
-            "transition" : "chargewinddown"
+            "frames" : 7,
+            "cycle" : 0.7
           },
           "melee" : {
+            "frames" : 13,
+            "cycle" : 1.3,
+            "mode" : "transition",
+            "transition" : "idle"
+          },
+          "crash" : {
             "frames" : 3,
             "cycle" : 0.3,
             "mode" : "transition",
             "transition" : "idle"
           },
-          "crash" : {
-            "frames" : 5,
-            "cycle" : 0.5,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
           "hurt" : {
             "frames" : 1,
-            "cycle" : 0.5,
-            "mode" : "loop"
+            "cycle" : 0.1
           },
           "stunned" : {
             "frames" : 1,
-            "cycle" : 0.5,
-            "mode" : "loop"
-          }
+            "cycle" : 0.1
+          },
+           "warp" : {
+            "frames" : 7,
+            "cycle" : 0.35
+          },
+           "warpin" : {
+            "frames" : 3,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "idle"
+          }          
         }
       },
       "damage" : {
@@ -142,11 +146,18 @@
     "parts" : {
       "body" : {
         "properties" : {
+          "zLevel" : 1,
           "transformationGroups" : [ "body" ],
-          "offset" : [0.25, -0.25]
+          "offset" : [0.25, -0.25],
+          "fullbright" : true
         },
         "partStates" : {
           "body" : {
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },            
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -164,12 +175,7 @@
             },
             "swoop" : {
               "properties" : {
-                "image" : "<partImage>:charge.<frame>"
-              }
-            },
-            "swoopwinddown" : {
-              "properties" : {
-                "image" : "<partImage>:swoopwindup.<frame>"
+                "image" : "<partImage>:swoop.<frame>"
               }
             },
             "melee" : {
@@ -189,7 +195,7 @@
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:melee.<frame>"
+                "image" : "<partImage>:chargewinddown.<frame>"
               }
             },
             "crash" : {
@@ -211,17 +217,122 @@
               "properties" : {
                 "image" : "<partImage>:fire.<frame>"
               }
-            }
+            },
+            "warp" : {
+              "properties" : {
+                "image" : "<partImage>:warp.<frame>"
+              }
+            },
+            "warpin" : {
+              "properties" : {
+                "image" : "<partImage>:warpin.<frame>"
+              }
+            }             
           },
           "damage" : {
             "stunned" : {
               "properties" : {
-                "image" : "<partImage>:stunned"
+                "image" : "<partImage>:hurt"
               }
             }
           }
         }
-      }
+      },
+      "bodyfullbright" : {
+        "properties" : {
+          "zLevel" : 2,
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.25, -0.25]
+        },
+        "partStates" : {
+          "body" : {
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },          
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "swoopwindup" : {
+              "properties" : {
+                "image" : "<partImage>:swoopwindup.<frame>"
+              }
+            },
+            "swoop" : {
+              "properties" : {
+                "image" : "<partImage>:swoop.<frame>"
+              }
+            },
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>"
+              }
+            },
+            "crash" : {
+              "properties" : {
+                "image" : "<partImage>:crash.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt"
+              }
+            },
+            "ranged" : {
+              "properties" : {
+                "image" : "<partImage>:ranged.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "warp" : {
+              "properties" : {
+                "image" : "<partImage>:warp.<frame>"
+              }
+            },
+            "warpin" : {
+              "properties" : {
+                "image" : "<partImage>:warpin.<frame>"
+              }
+            }  
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt"
+              }
+            }
+          }
+        }
+      }      
+      
+      
     }
   },
 

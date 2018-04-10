@@ -1,0 +1,52 @@
+{
+  "objectName" : "sciencelaptop1",
+  "rarity" : "Common",
+  "description" : "Generates research slowly, but constantly.",
+  "shortdescription" : "Personal Computer",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 750,
+  "printable" : false,
+  "objectType" : "container",
+  "learnBlueprintsOnPickup" : [ "sciencelaptop2" ],
+
+  "inventoryIcon" : "sciencelaptop1icon.png",
+  "orientations" : [
+    {
+      "direction" : "left",
+      "imageLayers" : [ { "image" : "sciencelaptop1.png:<color>.<frame>", "fullbright" : true }, { "image" : "sciencelaptop1.png:<color>.<frame>" } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 11,
+      "animationCycle" : 2.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    },
+    {
+      "direction" : "right",
+      "imageLayers" : [ { "image" : "sciencelaptop1.png:<color>.<frame>", "fullbright" : true }, { "image" : "sciencelaptop1.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 11,
+      "animationCycle" : 2.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    } 
+  ],
+  "outputNodes" : [ [2, 1] ],
+  "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ], 
+  "scripts" : [ "/scripts/sciencelaptop.lua" ],
+  "scriptDelta" : 320,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "fuscienceresource","ratio" : 10,"max" : 200}
+  ]
+}

@@ -73,9 +73,6 @@ function init()
  	  protectionXRads = config.getParameter("protectionXRads",0)	  
  	  shieldBash = config.getParameter("shieldBash",0)
  	  shieldBashPush = config.getParameter("shieldBashPush",0)
- 	  
- 	  
- 	  --shieldBonusApply()
   -- end FU special effects
   
   species = world.entitySpecies(activeItem.ownerEntityId())

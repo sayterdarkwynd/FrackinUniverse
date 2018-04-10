@@ -99,13 +99,22 @@
             "aimDirection" : [0, 0],
             "fireOffset" : [0, 0]
           }
-        }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileType" : "sulphurdeath",
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }        
       ]
     },
 
     "touchDamage" : {
       "poly" : [ [-0.85, -0.45], [-0.45, -0.85], [0.45, -0.85], [0.85, -0.45], [0.85, 0.45], [0.45, 0.85], [-0.45, 0.85], [-0.85, 0.45] ],
-      "damage" : 14,
+      "damage" : 24,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -160,10 +169,10 @@
           "baseValue" : 1.0
         },
         "maxHealth" : {
-          "baseValue" : 500
+          "baseValue" : 700
         },
         "protection" : {
-          "baseValue" : 25.0
+          "baseValue" : 45.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -236,6 +245,6 @@
     "capturable" : false,
     "segments" : 15,
     "segmentMonster" : ["megaburrower_tail", "megaburrower_segment_empty", "megaburrower_segment", "megaburrower_segment_empty", "megaburrower_segment", "megaburrower_segment_empty", "megaburrower_segment_empty", "megaburrower_segment", "megaburrower_segment_empty", "megaburrower_segment", "megaburrower_segment_empty", "megaburrower_segment", "megaburrower_segment_empty", "megaburrower_segment", "megaburrower_segment_empty"],
-    "radius" : 1.2
+    "radius" : 3
   }
 }
