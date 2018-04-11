@@ -12,7 +12,7 @@
   "physics" : "laser",
   "fullbright" : true,
   "bounces" : 3,
-  "piercing" : true,
+  "piercing" : false,
   "timeToLive" : 2,
   "lightColor" : [63, 0, 76],
   "emitters" : [ "cosmicdust" ],
@@ -20,7 +20,8 @@
     {
       "action" : "projectile",
       "inheritDamageFactor" : 0.15,
-      "type" : "drillspearexplosion"
+      "type" : "cosmicorb",
+      "config" : { "timeToLive" : 1.5}
     }  
   ],
   "statusEffects" : [ "slow" ],  
