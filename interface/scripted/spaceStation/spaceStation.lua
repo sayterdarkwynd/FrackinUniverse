@@ -29,7 +29,7 @@ function init()
 	local objects = {}
 	local playerPos = world.entityPosition(player.id())
 	
-	local objectIDs = world.objectQuery(playerPos, 3000, { order = "nearest", name = "spacestationguiconsole" })
+	local objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "spacestationguiconsole" })
 	for _, ID in ipairs(objectIDs) do
 		local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
 		distance = math.sqrt(distance[1]^2 + distance[2]^2)
@@ -38,7 +38,25 @@ function init()
 	end
 	
 	for _, type in ipairs(stationData.stationTypes) do
-		objectIDs = world.objectQuery(playerPos, 3000, { order = "nearest", name = "spacestationguiconsole_"..type })
+		objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "spacestationguiconsole_"..type })
+		for _, ID in ipairs(objectIDs) do
+			local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
+			distance = math.sqrt(distance[1]^2 + distance[2]^2)
+			table.insert(objects, {ID, distance, type})
+			break
+		end
+	end
+	
+	objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "racialspacestationconsole" })
+	for _, ID in ipairs(objectIDs) do
+		local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
+		distance = math.sqrt(distance[1]^2 + distance[2]^2)
+		table.insert(objects, {ID, distance})
+		break
+	end
+	
+	for _, type in ipairs(stationData.stationTypes) do
+		objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "racialspacestationconsole_"..type })
 		for _, ID in ipairs(objectIDs) do
 			local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
 			distance = math.sqrt(distance[1]^2 + distance[2]^2)
@@ -76,27 +94,36 @@ end
 function firstTimeInit()
 	sb.logInfo("----------")
 	sb.logInfo("STATION OBJECT ID "..objectID.." CALLED FOR THE FIRST TIME. ATTEMPTING TO ADD STATION DATA...")
+	
+	local race = "generic"
+	if objectData then
+		race = objectData.stationRace
+	end
+	
 	objectData = stationData.objectData
+	
+	-- Set type/race if it wasn't set already
+	if stationType == "" then
+		objectData.stationType = stationData.stationTypes[math.random(1,#stationData.stationTypes)]
+	else
+		objectData.stationType = stationType
+	end
+	
+	sb.logInfo("Station type - %s", objectData.stationType)
 	
 	--		TEMPORARY - Scientific stations are random instead		--
 	------------------------------------------------------------------
-		while stationType == "scientific" do
+	if objectData.stationType == "scientific" then
+		while objectData.stationType == "scientific" do
 			stationType = stationData.stationTypes[math.random(1,#stationData.stationTypes)]
+			objectData.stationType = stationType
 		end
+		
+		sb.logInfo("Overriden 'scientific' type to %s", objectData.stationType)
+	end
 	------------------------------------------------------------------
 	
-	
-	objectData.stationType = stationType
-	
-	-- Set type/race if it wasn't set already
-	if objectData.stationType == "" then
-		objectData.stationType = stationData.stationTypes[math.random(1,#stationData.stationTypes)]
-	end
-	sb.logInfo("Station type - %s", objectData.stationType)
-	
-	if objectData.stationRace == "" then
-		objectData.stationRace = stationData.stationRaces[math.random(1,#stationData.stationRaces)]
-	end
+	objectData.stationRace = race
 	sb.logInfo("Station race - %s", objectData.stationRace)
 	
 	-- Set race to generic if chosen one has no texts
@@ -341,7 +368,7 @@ function update()
 		if objectData ~= nil and objectData:finished() then
 			if objectData:succeeded() then
 				objectData = objectData:result()
-				if objectData == nil then
+				if not objectData or objectData.firstTime then
 					firstTimeInit()
 				else
 					GUIinit()
