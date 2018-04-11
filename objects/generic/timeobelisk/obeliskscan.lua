@@ -38,6 +38,7 @@ function scanInteraction()
 	      self.scanned = 1
       	      animator.burstParticleEmitter("teleportOut")
       	      animator.playSound("deathPuff")
+      	      object.smash()
       end      
 
 end
