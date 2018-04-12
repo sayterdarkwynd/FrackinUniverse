@@ -35,6 +35,7 @@
     "wallKnockback": false,
     "damageOnTouch": false,
     "fireOffset": [0, 0],
+    "fireDelay" : 0,
     "projectileType": "invisibleProjectile",
     "projectileParameters": {}
   },
@@ -356,6 +357,14 @@
                               "vector": "fireOffset"
                             }
                           },
+			  {
+			    "title": "timer",
+			    "type": "action",
+			    "name": "timer",
+			    "parameters": {
+			      "time": {"value": "<fireDelay>"}
+			    }
+			  },                          
                           {
                             "title": "sequence",
                             "type": "composite",

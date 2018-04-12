@@ -6,20 +6,64 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 10
-          },
+            "frames" : 8,
+            "cycle" : 0.8
+          },        
           "fly" : {
-            "frames" : 10,
+            "frames" : 8,
+            "cycle" : 0.8,
             "mode" : "loop",
             "properties" : {
               "persistentSound" : "/sfx/npc/monsters/spookit_fly_loop.ogg"
             }
           },
           "invulnerable" : {
-            "frames" : 8,
+            "frames" : 1,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/spookit_invulnerable_combined.ogg",
+              "particleEmittersOn" : [ "spookParticles" ]
+            }
+          },
+          "invulnerablestate" : {
+            "frames" : 1,
             "mode" : "loop",
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/spookit_invulnerable_combined.ogg"
+            }
+          },          
+          "summon" : {
+            "frames" : 40,
+            "cycle" : 2,
+            "mode" : "transition",
+            "transition" : "fly",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/boss/kluexboss_phase2.ogg"
+            }
+          },
+          "summon2" : {
+            "frames" : 40,
+            "cycle" : 2,
+            "mode" : "transition",
+            "transition" : "fly",            
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/spookit_fly_loop.ogg"
+            }
+          }, 
+          "meleewindup" : {
+            "frames" : 6,
+            "cycle" : 0.4,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/smallbiped/powlhead_small_turnhostile.ogg"
+            }
+          },          
+          "melee" : {
+            "frames" : 19,
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/smallbiped/powlhead_small_death.ogg"
             }
           }
         }
@@ -62,7 +106,9 @@
       "body" : {
         "properties" : {
           "transformationGroups" : [ "body" ],
-          "offset" : [0.0, 0.125]
+          "offset" : [0.0, 0.125],
+          "zLevel" : 10,
+          "fullbright" : true
         },
         "partStates" : {
           "body" : {
@@ -80,7 +126,32 @@
               "properties" : {
                 "image" : "<partImage>:invulnerable.<frame>"
               }
-            }
+            },
+            "invulnerablestate" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },            
+            "summon" : {
+              "properties" : {
+                "image" : "<partImage>:summon.<frame>"
+              }
+            },     
+            "summon2" : {
+              "properties" : {
+                "image" : "<partImage>:summon2.<frame>"
+              }
+            },             
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
+              }
+            },
+            "meleewindup" : {
+              "properties" : {
+                "image" : "<partImage>:meleewindup.<frame>"
+              }
+            }             
           },
           "damage" : {
             "stunned" : {
@@ -90,7 +161,66 @@
             }
           }
         }
-      }
+      },
+      
+      "bodyfullbright" : {
+        "properties" : {
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.0, 0.125],
+          "zLevel" : 20
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable"
+              }
+            },
+            "invulnerablestate" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable"
+              }
+            },            
+            "summon" : {
+              "properties" : {
+                "image" : "<partImage>:summon.<frame>"
+              }
+            },     
+            "summon2" : {
+              "properties" : {
+                "image" : "<partImage>:summon2.<frame>"
+              }
+            },             
+            "melee" : {
+              "properties" : {
+                "image" : "<partImage>:melee.<frame>"
+              }
+            },
+            "meleewindup" : {
+              "properties" : {
+                "image" : "<partImage>:meleewindup.<frame>"
+              }
+            }             
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }     
     }
   },
 
@@ -186,6 +316,7 @@
 
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "melee" : [ "/sfx/npc/monsters/ringram_attack1.ogg","/sfx/npc/monsters/ringram_attack2.ogg" ]
   }
 }

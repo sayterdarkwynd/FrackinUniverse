@@ -1,7 +1,7 @@
 {
   "type" : "doomspirit",
   "shortdescription" : "Wraith",
-  "description" : "Shadowy spirits that love to stalk their prey in the dark.",
+  "description" : "Shadowy spirit-like beasts that love to stalk their prey in the dark.",
 
   "categories" : [ "doomspirit" ],
   "parts" : [ "body" ],
@@ -35,12 +35,11 @@
         {
           "name" : "action-invulnerable",
           "parameters" : {
-            "windupTime" : 0,
-            "windupState" : "",
-            "winddownTime" : 0,
-            "winddownState" : "idle",
-
-            "invulnerableTime" : 2
+            "windupTime" : 2,
+            "windupState" : "summon",
+            "winddownTime" : 2,
+            "winddownState" : "summon2",
+            "invulnerableTime" : 1
           }
         }
       ],
@@ -52,16 +51,89 @@
           "name" : "approach-fly",
           "parameters" : {
             "usePathfinding" : false,
-            "flyState" : ""
+            "flyState" : "summon2"
           }
-        }
+        },
+        {
+          "name" : "action-fire",
+	  "cooldown" : 2,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 6,
+            "minimumRange" : 0,
+            "windupState" : "meleewindup",
+            "windupTime" : 0.4,
+            "projectileCount" : 6,
+            "projectileInterval" : 0,
+            "inaccuracy" : 3.14,
+            "projectileType" : "magnorbatropus2",
+            "power" : 9,
+            "fireOffset" : [0, 0],
+            
+            "aimAtTarget" : true,
+            "fireSound" : "melee",
+            "fireState" : "melee",
+            "fireDelay" : 0.9,
+            "winddownState" : "",
+            "winddownTime" : 0.25
+          }
+        }       
       ],
 
       "foundTargetActions" : [ ],
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [ ],
+      "hostileActions" : [  
+        {
+          "name" : "action-fire",
+	  "cooldown" : 2,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 12,
+            "minimumRange" : 0,
+            "windupState" : "meleewindup",
+            "windupTime" : 0.4,
+            "projectileCount" : 6,
+            "projectileInterval" : 0,
+            "inaccuracy" : 0.15,
+            "projectileType" : "magnorbwraith",
+            "power" : 9,
+            "fireOffset" : [0, 0],
+            
+            "aimAtTarget" : true,
+            "fireSound" : "melee",
+            "fireState" : "melee",
+            "fireDelay" : 0.9,
+            "winddownState" : "",
+            "winddownTime" : 0.25
+          }
+        },        
+        {
+          "name" : "action-swoosh-charge",
+          "cooldown" : 6,
+          "parameters" : {
+            "maximumRange" : 50,
+            "minimumRange" : 6,
+            "windupTime" : 2,
+            "windupState": "summon",
+            "chargeTime" : 1.5,
+            "chargeSpeed" : 15,
+            "chargeState" : "invulnerablestate",
+            "chargeControlForce" : 200,
+            "wallKnockback" : false,
+            "wallCrashSound" : "melee",
+            "wallCrashEmitter" : "",
+            "aimAtTarget" : true,
+            "winddownTime" : 2,
+            "winddownStopForce" : 500,
+            "winddownState" : "summon2",
+            "projectileType" : "astraltearstart2",
+            "fireOffset" : [0,0],
+            "fireDelay" : 0.7
+          }
+        } 	       
+      ],
 
       "periodicActions" : [ ],
 
@@ -80,8 +152,8 @@
         {
           "name" : "approach-teleport",
           "parameters" : {
-	    "moveState": "walk",
-	    "idleState": "idle",
+	    "moveState": "summon",
+	    "idleState": "summon2",
 	    "teleportMinDistance": 9,
 	    "targetXDelta": 5,
 	    "groundMinHeight": -10,
@@ -99,71 +171,14 @@
       ],
 
       "wanderActions" : [
-        {
-          "name" : "emerge-fly"
-        },
+        {"name" : "emerge-fly"},
 	{"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}}, 
 	{"name":"land-fly", "parameters":{"flySpeed":8, "flyControlForce":25, "landCheckDistance":40, "idleTime":40}}        
       ],
 
       "concurrentActions" : [  ],
 
-      "concurrentHostileActions" : [ 
-      
-	{
-	  "name":"action-projectile", 
-	  "cooldown":10.0, 
-	  "parameters":{
-	    "skillName":"glitterBurst", 
-	    "projectileCount":1, 
-	    "projectileType":"invisibleprojectile", 
-	    "projectileParameters":{
-	      "statusEffects":[ { "effect":"maxprotection", "duration":5} ], 
-	      "timeToLive":0.1, 
-	      "actionOnReap":[ {"action":"projectile","type":"astraltear2"} ], 
-	      "speed":0, 
-	      "power":0
-	      }, 
-	      "power":0, 
-	      "aimAtTarget":true, 
-	      "inaccuracy":0.0, 
-	      "fireOffset":[0,0]
-	  }
-	}, 
-
-	{
-	  "name":"action-projectile", 
-	  "cooldown":5.0, 
-	  "parameters":{
-	    "skillName":"glitterBurst", 
-	    "projectileCount":1, 
-	    "projectileType":"astraltear2", 
-	    "projectileParameters":{
-	      "statusEffects":[ {"effect":"glow", "duration":5}], 
-	      "timeToLive":3.1, 
-	      "actionOnReap":[], 
-	      "speed":0, 
-	      "power":0
-	    }, 
-	    "power":0, 
-	    "aimAtTarget":true, 
-	    "inaccuracy":0.0, 
-	    "fireOffset":[0,0]
-	  }
-	}, 
-	{
-	  "name":"action-projectile", 
-	  "cooldown":10.0, 
-	  "parameters":{
-	    "skillName":"glitterBurst", 
-	    "projectileCount":1, 
-	    "projectileType":"invisibleprojectile", 
-	    "projectileParameters":{
-	      "statusEffects":[{"effect":"camouflage0", "duration":5}]
-	    }
-	  }
-	}       
-      ]
+      "concurrentHostileActions" : [ ]
       
     },
 
@@ -228,7 +243,7 @@
           "baseValue" : 45
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.50
         },
         "healthRegen" : {
           "baseValue" : 0.0
