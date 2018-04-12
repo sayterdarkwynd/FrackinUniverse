@@ -53,31 +53,7 @@
             "usePathfinding" : false,
             "flyState" : "summon2"
           }
-        },
-        {
-          "name" : "action-fire",
-	  "cooldown" : 2,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 6,
-            "minimumRange" : 0,
-            "windupState" : "meleewindup",
-            "windupTime" : 0.4,
-            "projectileCount" : 6,
-            "projectileInterval" : 0,
-            "inaccuracy" : 3.14,
-            "projectileType" : "magnorbatropus2",
-            "power" : 9,
-            "fireOffset" : [0, 0],
-            
-            "aimAtTarget" : true,
-            "fireSound" : "melee",
-            "fireState" : "melee",
-            "fireDelay" : 0.9,
-            "winddownState" : "",
-            "winddownTime" : 0.25
-          }
-        }       
+        }    
       ],
 
       "foundTargetActions" : [ ],
@@ -178,7 +154,32 @@
 
       "concurrentActions" : [  ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [ 
+        {
+          "name" : "action-fire",
+	  "cooldown" : 6,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 4,
+            "minimumRange" : 0,
+            "windupState" : "meleewindup",
+            "windupTime" : 0.4,
+            "projectileCount" : 1,
+            "projectileInterval" : 0,
+            "inaccuracy" : 0,
+            "projectileType" : "particleswoosh",
+            "power" : 10,
+            "fireOffset" : [2, 0],
+            
+            "aimAtTarget" : true,
+            "fireSound" : "melee",
+            "fireState" : "melee",
+            "fireDelay" : 0.6,
+            "winddownState" : "",
+            "winddownTime" : 0.25
+          }
+        }        
+      ]
       
     },
 
