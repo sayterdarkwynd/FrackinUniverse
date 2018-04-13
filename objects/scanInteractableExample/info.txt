@@ -1,0 +1,9 @@
+BTW Sayter, its possible to set up scan specific actions that do not interact with the scanned object.
+Two options depending on needs:
+
+- The handler generates and keeps track of a table that holds an object name, and a function to call. Once that object is scanned, the function is called. Can be single use, can be infinite.
+Useful for when you want global stuff to happen like scan Apex statue to get 200 research and can mimic vanilla quests.
+
+- The handler sends a message to all objects in a radius when scanning an object. There will have to be another object that catches those messages and does stuff based on that.
+Useful for variable, area specific stuff where you'd have sort of a combination lock or a hidden button.
+Like entering a room would make the listener object pick a random object in the room, and will require you to scan it
