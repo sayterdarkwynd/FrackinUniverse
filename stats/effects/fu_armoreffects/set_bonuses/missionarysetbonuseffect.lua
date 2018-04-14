@@ -31,12 +31,11 @@ mcontroller.controlModifiers({
 })
 end
 
-function 
-	checkWeapons()
-	local weapons=weaponCheck({"fist","quarterstaff"})
-if weapons["both"] or weapons["twoHanded"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+function checkWeapons()
+  local weapons=weaponCheck({"fist","quarterstaff"})
+	if weapons["both"] or (weapons["twoHanded"] and weapons["either"]) then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end
