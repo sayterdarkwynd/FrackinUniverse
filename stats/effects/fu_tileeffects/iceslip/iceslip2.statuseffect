@@ -2,11 +2,15 @@
   "name" : "iceslip2",
   "blockingStat" : "iceslipImmunity",
 
-  "effectConfig" : {},
+  "effectConfig" : {
+    "groundFriction" : 0.75,
+    "groundForce" : 23.5,
+    "slodeSlide" : 0.445 
+  },
   "defaultDuration" : 0.25,
 
   "scripts" : [
-    "iceslip2.lua"
+    "iceslip.lua"
   ],
-  "animationConfig" : "iceslip2.animation"
+  "animationConfig" : "iceslip.animation"
 }

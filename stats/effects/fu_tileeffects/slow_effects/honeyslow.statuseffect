@@ -1,11 +1,16 @@
 {
   "name" : "honeyslow",
   "blockingStat" : "honeyslowImmunity",
-  "effectConfig" : {},
+  "effectConfig" : {
+    "moveMod" : "0.6",
+    "speedMod": "0.6",
+    "jumpMod" : "0.83",
+    "isHoney" : 1
+  },
   "defaultDuration" : 3,
 
   "scripts" : [
-    "honeyslow.lua"
+    "slow.lua"
   ],
 
   "animationConfig" : "honeyslow.animation",

@@ -5,9 +5,9 @@ end
 
 function update(dt)
   mcontroller.controlParameters({
-        normalGroundFriction = 0.52,
-        groundForce = 23.5,
-        slopeSlidingFactor = 0.375
+        normalGroundFriction = config.getParameter("groundFriction",0),
+        groundForce = config.getParameter("groundForce",0),
+        slopeSlidingFactor = config.getParameter("slopeSlide",0)
     })
 end
 
