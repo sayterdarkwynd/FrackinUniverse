@@ -32,13 +32,13 @@ function update(dt)
 	    local p = entity.position()
 	    local parameters = {}
 	    local type = "squidbeast"
-	    sb.logInfo("Spawning a slime from Slime armor. Type is %s",type)
+	    --sb.logInfo("Spawning a slime from Slime armor. Type is %s",type)
 	    parameters.persistent = false
 	    parameters.damageTeamType = "friendly"
 	    parameters.aggressive = true
 	    parameters.damageTeam = 0
 	    parameters.level = getLevel()
-	    sb.logInfo("Parameters for spawn are: %s",parameters)
+	    --sb.logInfo("Parameters for spawn are: %s",parameters)
 	    world.spawnMonster(type, mcontroller.position(), parameters)    
 		self.timer = math.random(220)+40
 	end
