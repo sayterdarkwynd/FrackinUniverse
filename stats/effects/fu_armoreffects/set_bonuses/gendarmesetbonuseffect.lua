@@ -3,11 +3,11 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_gendarmeset"
 
 weaponBonus={
-  {stat = "powerMultiplier", amount = 0.20}
+	{stat = "powerMultiplier", amount = 0.20}
 }
 
 armorBonus={
-  {stat = "fireStatusImmunity", amount = 1.0}
+	{stat = "fireStatusImmunity", amount = 1.0}
 }
 
 function init()

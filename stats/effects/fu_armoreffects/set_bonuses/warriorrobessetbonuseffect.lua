@@ -17,8 +17,8 @@ end
 
 function update(dt)
 	mcontroller.controlModifiers({
-	  airJumpModifier = 1.08,
-	  speedModifier = 1.08
+		airJumpModifier = 1.08,
+		speedModifier = 1.08
 	})
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()

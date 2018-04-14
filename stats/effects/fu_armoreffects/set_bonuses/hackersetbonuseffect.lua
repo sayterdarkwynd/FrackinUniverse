@@ -1,7 +1,7 @@
 setName="fu_hackerset"
 
 weaponBonus={
-  {stat = "critChance", amount = 1}
+	{stat = "critChance", amount = 1}
 }
 
 armorBonus={
@@ -26,13 +26,10 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"flail"})
+	
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end
 end
-
-
-
-

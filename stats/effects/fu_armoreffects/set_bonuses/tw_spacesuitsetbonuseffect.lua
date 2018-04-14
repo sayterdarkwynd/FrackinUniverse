@@ -5,8 +5,8 @@ setName="tw_spacesuitset"
 weaponBonus={}
 
 armorBonus={
-  {stat = "maxBreath", amount = 900},
-  {stat = "breathDepletionRate", baseMultiplier = 1.0}
+	{stat = "maxBreath", amount = 900},
+	{stat = "breathDepletionRate", baseMultiplier = 1.0}
 }
 
 function init()
@@ -20,7 +20,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 	end
 end

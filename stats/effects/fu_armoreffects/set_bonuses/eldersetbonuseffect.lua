@@ -25,10 +25,10 @@ function init()
 end
 
 function update(dt)
-self.timer = self.timer - dt
+	self.timer = self.timer - dt
   -- randomly spawn a minion  
     
-        if self.timer <= 0 then
+	if self.timer <= 0 then
 	    local p = entity.position()
 	    local parameters = {}
 	    local type = "squidbeast"
@@ -40,8 +40,8 @@ self.timer = self.timer - dt
 	    parameters.level = getLevel()
 	    sb.logInfo("Parameters for spawn are: %s",parameters)
 	    world.spawnMonster(type, mcontroller.position(), parameters)    
-            self.timer = math.random(220)+40
-        end
+		self.timer = math.random(220)+40
+	end
     
 	level=checkSetLevel(self.setBonusCheck)
 	if level==0 then
@@ -57,9 +57,9 @@ function checkArmor()
 end
 
 function getLevel()
-  if world.getProperty("ship.fuel") ~= nil then return 1 end
-  if world.threatLevel then return world.threatLevel() end
-  return 1
+	if world.getProperty("ship.fuel") ~= nil then return 1 end
+	if world.threatLevel then return world.threatLevel() end
+	return 1
 end
 
 function checkWeapons()

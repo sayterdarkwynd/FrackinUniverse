@@ -33,6 +33,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"dagger","knife","whip","boomerang","chakram"})
+	
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

@@ -25,20 +25,20 @@ function update(dt)
 		checkWeapons()
 	end
 
-  local hPerc = world.entityHealth(entity.id())
-  if hPerc[1] == 0 or hPerc[2] == 0 then return end
-  if ((hPerc[1] / hPerc[2]) * 100) >= 50 then return end
-  
-  script.setUpdateDelta(60)
-  status.modifyResourcePercentage("health", 0.01)
-  effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", amount = 1.05}})
-  effect.addStatModifierGroup({{stat = "energyRegenBlockDischarge", amount = -2}})
-  mcontroller.controlModifiers({
-    groundMovementModifier = 1.3,
-	runModifier = 1.3,
-	jumpModifier = 1.3
-  })
-  
+	local hPerc = world.entityHealth(entity.id())
+	if hPerc[1] == 0 or hPerc[2] == 0 then return end
+	if ((hPerc[1] / hPerc[2]) * 100) >= 50 then return end
+
+	script.setUpdateDelta(60)
+	status.modifyResourcePercentage("health", 0.01)
+	effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", amount = 1.05}})
+	effect.addStatModifierGroup({{stat = "energyRegenBlockDischarge", amount = -2}})
+	mcontroller.controlModifiers({
+		groundMovementModifier = 1.3,
+		runModifier = 1.3,
+		jumpModifier = 1.3
+	})
+
 end
 
 function checkWeapons()

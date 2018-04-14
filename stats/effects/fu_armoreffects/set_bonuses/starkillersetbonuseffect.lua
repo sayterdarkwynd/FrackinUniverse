@@ -41,8 +41,8 @@ end
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
-        else
-          checkArmor()
+	else
+		checkArmor()
 	end
 end
 
@@ -53,7 +53,7 @@ function checkArmor()
 	underground = undergroundCheck()
 	local lightLevel = getLight()
 	if daytime and not underground then
-	        effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 	else
 		effect.setStatModifierGroup(armorBonusHandle,{})
 	end
