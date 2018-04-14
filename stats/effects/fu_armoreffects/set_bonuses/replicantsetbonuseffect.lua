@@ -36,13 +36,12 @@ end
 
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword","broadsword","rapier","longsword","katana"})
-local weaponShield=weaponCheck({"shortsword","broadsword","rapier","longsword","katana"})
+	local weaponSword=weaponCheck({"shortsword","broadsword","rapier","longsword","katana"})
 
-	if weaponSword["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-	elseif weaponSword["either"] then
+	if weaponSword["primary"] and weaponSword["alt"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)
+	elseif weaponSword["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end

@@ -32,7 +32,8 @@ function checkArmor()
 end
 
 function checkWeapons()
-  local weaponSword=weaponCheck({"axe", "hammer", "broadsword", "spear" })
+	local weaponSword=weaponCheck({"axe", "hammer", "broadsword", "spear" })
+	
 	if weaponSword["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

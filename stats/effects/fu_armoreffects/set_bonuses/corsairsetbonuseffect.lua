@@ -3,13 +3,13 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_corsairset"
 
 weaponBonus={
-  {stat = "powerMultiplier", amount = 0.15}
+	{stat = "powerMultiplier", amount = 0.15}
 }
 
 armorBonus={
-  {stat = "pusImmunity", amount = 0.20},
-  {stat = "blacktarImmunity", amount = 0.20},
-  {stat = "maxBreath", amount = 400}
+	{stat = "pusImmunity", amount = 0.20},
+	{stat = "blacktarImmunity", amount = 0.20},
+	{stat = "maxBreath", amount = 400}
 }
 
 function init()

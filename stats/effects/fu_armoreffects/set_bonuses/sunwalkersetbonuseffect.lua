@@ -5,14 +5,14 @@ weaponBonus={
 }
 
 armorBonus={
-        {stat = "biomecoldImmunity", amount = 1},
-        {stat = "biomeheatImmunity", amount = 1},
-        {stat = "biomeradiationImmunity", amount = 1},
+	{stat = "biomecoldImmunity", amount = 1},
+	{stat = "biomeheatImmunity", amount = 1},
+	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},
 	{stat = "ffextremeheatImmunity", amount = 1},
 	{stat = "ffextremecoldImmunity", amount = 1},
-        {stat = "breathProtection", amount = 1}	
+	{stat = "breathProtection", amount = 1}	
 }
 
 setName="fu_sunwalkerset"

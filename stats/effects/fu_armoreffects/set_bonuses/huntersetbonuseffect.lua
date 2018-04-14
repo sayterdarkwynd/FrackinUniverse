@@ -2,7 +2,7 @@ setName="fu_hunterset"
 
 weaponBonus={
 	{stat = "critBonus", baseMultiplier = 1.06},
-        {stat = "powerMultiplier", baseMultiplier = 1.20}
+	{stat = "powerMultiplier", baseMultiplier = 1.20}
 }
 
 armorEffect={}
@@ -11,7 +11,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-        armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	weaponBonusHandle=effect.addStatModifierGroup({})
 	armorBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()

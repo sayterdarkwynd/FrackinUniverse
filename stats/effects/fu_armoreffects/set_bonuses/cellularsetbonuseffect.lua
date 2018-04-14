@@ -3,11 +3,11 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_cellularset"
 
 weaponBonus={
-  {stat = "powerMultiplier", amount = 0.20}
+	{stat = "powerMultiplier", amount = 0.20}
 }
 
 armorBonus={
-  {stat = "fallDamageMultiplier", baseMultiplier = 0.12}
+	{stat = "fallDamageMultiplier", baseMultiplier = 0.12}
 }
 
 function init()
@@ -23,8 +23,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 		checkWeapons()	
 		
 		status.modifyResourcePercentage("health", 0.0006 * dt)

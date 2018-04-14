@@ -23,31 +23,31 @@ function init()
 end
 
 function getLight()
-  local position = mcontroller.position()
-  position[1] = math.floor(position[1])
-  position[2] = math.floor(position[2])
-  local lightLevel = world.lightLevel(position)
-  self.lightLevel = math.floor(lightLevel * 100)
-  return lightLevel
+	local position = mcontroller.position()
+	position[1] = math.floor(position[1])
+	position[2] = math.floor(position[2])
+	local lightLevel = world.lightLevel(position)
+	self.lightLevel = math.floor(lightLevel * 100)
+	return lightLevel
 end
 
 -- ***********************************************************************************************************
 -- FR SPECIALS  Functions for projectile spawning
 -- ***********************************************************************************************************
 function firePosition()
-   return vec2.add(mcontroller.position(), entity.position())
+	return vec2.add(mcontroller.position(), entity.position())
 end
 
 function aimVector()  -- fires straight
-  local aimVector = vec2.rotate({1, 0}, mcontroller.facingDirection() )
-  aimVector[1] = aimVector[1] * mcontroller.facingDirection()
-  return aimVector
+	local aimVector = vec2.rotate({1, 0}, mcontroller.facingDirection() )
+	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
+	return aimVector
 end
 
 function aimVectorRand() -- fires wherever it wants
-  local aimVector = vec2.rotate({1, 0},  mcontroller.facingDirection() + sb.nrand(inaccuracy, 0))
-  aimVector[1] = aimVector[1] * mcontroller.facingDirection()
-  return aimVector
+	local aimVector = vec2.rotate({1, 0},  mcontroller.facingDirection() + sb.nrand(inaccuracy, 0))
+	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
+	return aimVector
 end
 
 
@@ -55,12 +55,12 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	        getLight()
+		getLight()
 		checkArmor()
 		self.randValue = math.random(30)	
 		if (self.randValue < 5) then  -- spawn a projectile
-		  params = { power = 10, damageKind = "shadow" }			
-		  projectileId = world.spawnProjectile("scouteyecultist",mcontroller.position(),entity.id(), aimVectorRand(),false,params)
+			params = { power = 10, damageKind = "shadow" }			
+			projectileId = world.spawnProjectile("scouteyecultist",mcontroller.position(),entity.id(), aimVectorRand(),false,params)
 		end			
 	end
 end

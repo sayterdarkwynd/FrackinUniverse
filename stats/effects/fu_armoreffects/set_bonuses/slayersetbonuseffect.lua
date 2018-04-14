@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_slayerset"
 
 weaponBonus={
-  {stat = "powerMultiplier", amount = 0.25}
+	{stat = "powerMultiplier", amount = 0.25}
 }
 
 armorBonus={}
@@ -21,8 +21,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 		checkWeapons()
 	end
 end

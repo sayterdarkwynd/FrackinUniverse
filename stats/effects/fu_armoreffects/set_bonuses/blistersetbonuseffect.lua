@@ -8,8 +8,8 @@ weaponBonus={
 }
 
 armorBonus={ 
-{stat = "poisonStatusImmunity", amount = 1.0},
-{stat = "protoImmunity", amount = 1.0}
+	{stat = "poisonStatusImmunity", amount = 1.0},
+	{stat = "protoImmunity", amount = 1.0}
 }
 
 
@@ -34,6 +34,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"blister"})
+	
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

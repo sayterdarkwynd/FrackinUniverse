@@ -12,11 +12,11 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-        armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	weaponBonusHandle=effect.addStatModifierGroup({})
 	armorBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-        checkArmor()
+	checkArmor()
 end
 
 function update(dt)
@@ -40,6 +40,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({ "shortsword","broadsword", "longsword", "katana", "dagger", "knife", "axe", "greataxe", "chakram", "rapier", "scythe" })
+	
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

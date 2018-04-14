@@ -3,17 +3,17 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_stalkerset"
 
 weaponBonus={
-  {stat = "powerMultiplier", baseMultiplier = 1.15},
-  {stat = "critChance", amount = 3}
+	{stat = "powerMultiplier", baseMultiplier = 1.15},
+	{stat = "critChance", amount = 3}
 }
 
 armorBonus2={
-  {stat = "fallDamageMultiplier", baseMultiplier = 0.25}
+	{stat = "fallDamageMultiplier", baseMultiplier = 0.25}
 }
 
 armorBonus={
-  {stat = "poisonResistance", amount = 0.20},
-  {stat = "fallDamageMultiplier", baseMultiplier = 0.25}
+	{stat = "poisonResistance", amount = 0.20},
+	{stat = "fallDamageMultiplier", baseMultiplier = 0.25}
 }
 
 function init()
@@ -29,8 +29,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 		checkWeapons()
 	end
 	mcontroller.controlModifiers({

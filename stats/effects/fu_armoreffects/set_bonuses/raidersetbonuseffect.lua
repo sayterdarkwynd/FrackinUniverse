@@ -26,13 +26,12 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-
 		checkWeapons()
 	end
 
 	mcontroller.controlModifiers({
-			speedModifier = 1.12
-		})
+		speedModifier = 1.12
+	})
 end
 
 function checkWeapons()
