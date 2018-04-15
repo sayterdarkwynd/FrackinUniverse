@@ -1,5 +1,7 @@
 function init()
-   effect.addStatModifierGroup({{stat = "cosmicResistance", amount = config.getParameter("valueAdded")}})
+   effect.addStatModifierGroup({
+     {stat = "cosmicResistance", amount = config.getParameter("valueAdded")}
+   })
 
    script.setUpdateDelta(0)
 end
