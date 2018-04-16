@@ -5,9 +5,9 @@ weaponBonus={
 }
 
 armorEffect={
-  {stat = "maxHealth", baseMultiplier = 1.25},
-  {stat = "sulphuricImmunity", amount = 1},
-  {stat = "breathProtection", amount = 1}
+	{stat = "maxHealth", baseMultiplier = 1.25},
+	{stat = "sulphuricImmunity", amount = 1},
+	{stat = "breathProtection", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -29,10 +29,10 @@ function update(dt)
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"dagger","broadsword","axe","hammer","shortsword","greataxe","spear","shortspear","quarterstaff"})
-	if weapons["twoHanded"] or (weapons["primary"] and weapons["alt"]) then
+	
+	if (weapons["either"] and weapons["twoHanded"]) or (weapons["primary"] and weapons["alt"]) then
 		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
 	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)

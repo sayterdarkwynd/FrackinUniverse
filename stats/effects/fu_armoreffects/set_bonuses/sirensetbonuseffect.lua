@@ -33,10 +33,8 @@ end
 
 function checkArmor()
 	if (world.type() == "ocean") or (world.type() == "tidewater") then
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,{})
+		effect.setStatModifierGroup(armorBonusHandle,{})
 	end
 end

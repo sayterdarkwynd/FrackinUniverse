@@ -6,9 +6,9 @@ weaponBonus={
 }
 
 armorBonus={
-		{stat = "fireStatusImmunity", amount = 1.0},
-		{stat = "breathProtection", amount = 1},
-		{stat = "electricStatusImmunity", amount = 1.0}
+	{stat = "fireStatusImmunity", amount = 1.0},
+	{stat = "breathProtection", amount = 1},
+	{stat = "electricStatusImmunity", amount = 1.0}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -23,24 +23,24 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	
-	checkWeapons()
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+		
+		checkWeapons()
+	end
 
 	mcontroller.controlModifiers({
-			speedModifier = 1.05
-		})
+		speedModifier = 1.05
+	})
 end
 
 function 
 	checkWeapons()
 	local weapons=weaponCheck({"tesla","electric"})
-if weapons["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+	if weapons["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end

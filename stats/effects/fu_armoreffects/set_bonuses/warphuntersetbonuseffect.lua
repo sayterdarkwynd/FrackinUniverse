@@ -5,14 +5,14 @@ weaponBonus={
 }
 
 armorBonus={
-		{stat = "protoImmunity", amount = 1.0},
-		{stat = "fireStatusImmunity", amount = 1.0},
-		{stat = "gasImmunity", amount = 1.0},
-		{stat = "iceslipImmunity", amount = 1.0},
-		{stat = "pressureProtection", amount = 1},
-		{stat = "extremepressureProtection", amount = 1},		
-		{stat = "breathProtection", amount = 1},
-		{stat = "asteroidImmunity", amount = 1}
+	{stat = "protoImmunity", amount = 1.0},
+	{stat = "fireStatusImmunity", amount = 1.0},
+	{stat = "gasImmunity", amount = 1.0},
+	{stat = "iceslipImmunity", amount = 1.0},
+	{stat = "pressureProtection", amount = 1},
+	{stat = "extremepressureProtection", amount = 1},		
+	{stat = "breathProtection", amount = 1},
+	{stat = "asteroidImmunity", amount = 1}
 }
 
 setName="fu_warphunterset"
@@ -33,14 +33,15 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	        --status.addEphemeralEffect("gravgenfieldarmor2",5)
+		--status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({"mininglaser"})
-	if weapons["primary"] and weapons["alt"] then
+	
+	if (weapons["either"] and weapons["twoHanded"]) or (weapons["primary"] and weapons["alt"]) then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,0.25))

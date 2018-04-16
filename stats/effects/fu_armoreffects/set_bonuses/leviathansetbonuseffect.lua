@@ -1,23 +1,23 @@
 setName="fu_leviathanset"
 
 armorBonus2={
-		{stat = "critChance", amount = 5},
-		{stat = "powerMultiplier", amount = 0.15},
-		{stat = "sulphuricImmunity", amount = 1},
-		{stat = "poisonStatusImmunity", amount = 1},
-		{stat = "biooozeImmunity", amount = 1},
-		{stat = "breathProtection", amount = 1},
-		{stat = "extremepressureProtection", amount = 1},
-		{stat = "swimboost3", amount = 1}
+	{stat = "critChance", amount = 5},
+	{stat = "powerMultiplier", amount = 0.15},
+	{stat = "sulphuricImmunity", amount = 1},
+	{stat = "poisonStatusImmunity", amount = 1},
+	{stat = "biooozeImmunity", amount = 1},
+	{stat = "breathProtection", amount = 1},
+	{stat = "extremepressureProtection", amount = 1},
+	{stat = "swimboost3", amount = 1}
 }
 
 armorBonus={
-		{stat = "sulphuricImmunity", amount = 1},
-		{stat = "gasImmunity", amount = 1},
-		{stat = "poisonStatusImmunity", amount = 1},
-		{stat = "biooozeImmunity", amount = 1},
-		{stat = "breathProtection", amount = 1},
-		{stat = "extremepressureProtection", amount = 1}
+	{stat = "sulphuricImmunity", amount = 1},
+	{stat = "gasImmunity", amount = 1},
+	{stat = "poisonStatusImmunity", amount = 1},
+	{stat = "biooozeImmunity", amount = 1},
+	{stat = "breathProtection", amount = 1},
+	{stat = "extremepressureProtection", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

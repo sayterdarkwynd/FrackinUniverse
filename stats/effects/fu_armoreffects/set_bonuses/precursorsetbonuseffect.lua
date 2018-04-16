@@ -28,21 +28,18 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	        --status.addEphemeralEffect("gravgenfieldarmor2",5)
+		--status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end	
 
 end
 
 function checkWeapons()
-local weaponSword=weaponCheck({"energy","precursor"})
-local weaponShield=weaponCheck({"energy","precursor"})
+	local weaponSword=weaponCheck({"energy","precursor"})
+	local weaponShield=weaponCheck({"energy","precursor"})
 
-	if weaponSword["either"] and weaponShield["either"] then
+	if weaponSword["either"] or weaponShield["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-	elseif weaponSword["either"] or weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-		
 	else
 		effect.setStatModifierGroup(weaponBonusHandle,{})
 	end

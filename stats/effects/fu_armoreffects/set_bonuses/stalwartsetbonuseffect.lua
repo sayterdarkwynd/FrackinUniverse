@@ -28,7 +28,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"spear","shortspear"})
-	if weapons["both"] then
+	if (weapons["either"] and weapons["twoHanded"]) or (weapons["primary"] and weapons["alt"]) then
 		effect.setStatModifierGroup(weaponHandle,setBonusMultiply(weaponEffect,2))
 	elseif weapons["either"] then
 		effect.setStatModifierGroup(weaponHandle,weaponEffect)

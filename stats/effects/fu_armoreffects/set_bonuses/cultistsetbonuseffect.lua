@@ -7,9 +7,9 @@ weaponBonus={
 }
 
 armorBonus={
-  {stat = "insanityImmunity", amount = 1},
-  {stat = "shadowImmunity", amount = 1},
-  {stat = "darknessImmunity", amount = 1}
+	{stat = "insanityImmunity", amount = 1},
+	{stat = "shadowImmunity", amount = 1},
+	{stat = "darknessImmunity", amount = 1}
 }
 
 

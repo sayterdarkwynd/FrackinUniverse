@@ -3,13 +3,13 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_hellfireset"
 
 weaponBonus={
-  {stat = "powerMultiplier", amount = 0.25}
+	{stat = "powerMultiplier", amount = 0.25}
 }
 
 armorBonus={
-{stat = "fireStatusImmunity", amount = 1},
-{stat = "biomeheatImmunity", amount = 1},
-{stat = "ffextremeheatImmunity", amount = 1}
+	{stat = "fireStatusImmunity", amount = 1},
+	{stat = "biomeheatImmunity", amount = 1},
+	{stat = "ffextremeheatImmunity", amount = 1}
 }
 
 function init()

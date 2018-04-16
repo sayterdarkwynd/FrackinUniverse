@@ -5,11 +5,11 @@ setName="fu_scoutset"
 weaponBonus={}
 
 armorBonus={
-  {stat = "gasImmunity", amount = 1.0},
-  {stat = "maxBreath", amount = 800},
-  {stat = "protoImmunity", amount = 1.0},
-  {stat = "energyRegenBlockTime", baseMultiplier = 0.9},
-  {stat = "energyRegenPercentageRate", amount = 0.08}
+	{stat = "gasImmunity", amount = 1.0},
+	{stat = "maxBreath", amount = 800},
+	{stat = "protoImmunity", amount = 1.0},
+	{stat = "energyRegenBlockTime", baseMultiplier = 0.9},
+	{stat = "energyRegenPercentageRate", amount = 0.08}
 }
 
 function init()
@@ -23,7 +23,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 	end
 end
