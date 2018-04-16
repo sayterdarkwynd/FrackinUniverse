@@ -1,6 +1,24 @@
 [
 {
 "op": "add",
+"path": "/floatingplatform",
+"value": {
+    "gravityMultiplier" : -0.01,
+    "bounceFactor" : 0.0,
+    "maxMovementPerStep" : 0.4,
+
+    "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+    "ignorePlatformCollision" : true,
+
+    "airFriction" : 0.0,
+    "liquidFriction" : 0.5,
+    "speedLimit" : 5,
+    "maximumCorrection" : 0.75
+  }
+},
+
+{
+"op": "add",
 "path": "/weightedgrapplinghook",
 "value": {
     "mass" : 1.0,
@@ -18,11 +36,11 @@
     "maximumCorrection" : 0.70
   }
 },
-	{
-	"op":"replace",
-	"path":"/slider/airFriction",
-	"value": 0
-	},
+{
+"op":"replace",
+"path":"/slider/airFriction",
+"value": 0
+},
  { 
   "op" : "add",
   "path" : "/fubeamweapon",
