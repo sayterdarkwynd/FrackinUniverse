@@ -23,14 +23,14 @@
           },          
           "hop" : {
             "frames" : 2,
-            "cycle" : 0.25,
+            "cycle" : 0.2,
             "mode" : "transition",
             "transition" : "hopfull",
             "properties" : {
               "immediateSoundRangeMultiplier" : 0.5
             },
             "frameProperties" : {
-              "immediateSound" : [ "", "/sfx/projectiles/bloodvomit1.ogg" ]
+              "immediateSound" : [ "/sfx/blocks/footstep_brains.ogg" , "/sfx/projectiles/bloodvomit1.ogg" ]
             }
           },
           "hopfull" : {
@@ -41,20 +41,20 @@
           },
           "fall" : {
             "frames" : 3,
-            "cycle" : 0.2,
+            "cycle" : 0.325,
             "mode" : "transition",
             "transition" : "land"
           },
           "land" : {
             "frames" : 2,
-            "cycle" : 0.25,
+            "cycle" : 0.2,
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
               "immediateSoundRangeMultiplier" : 0.5
             },            
             "frameProperties" : {
-              "immediateSound" : [ "/sfx/projectiles/bloodvomit2.ogg" , ""]
+              "immediateSound" : [ "/sfx/blocks/footstep_brains.ogg" , "/sfx/projectiles/bloodvomit1.ogg"]
             }   
           }
         }
