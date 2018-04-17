@@ -6,16 +6,21 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 1,
-            "cycle" : 2.5,
+            "frames" : 7,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSoundRangeMultiplier" : 0.5
+            },            
+            "frameProperties" : {
+              "immediateSound" : [ "" , "", "",  "/sfx/projectiles/bloodvomit1.ogg", "", "", ""]
+            } 
+          },
+          "walk" : {
+            "frames" : 7,
+            "cycle" : 0.5,
             "mode" : "loop"
-          },
-          "blink" : {
-            "frames" : 3,
-            "cycle" : 0.25,
-            "mode" : "transition",
-            "transition" : "idle"
-          },
+          },          
           "hop" : {
             "frames" : 2,
             "cycle" : 0.25,
@@ -30,17 +35,27 @@
           },
           "hopfull" : {
             "frames" : 3,
-            "cycle" : 0.325
+            "cycle" : 0.325,
+            "mode" : "transition",
+            "transition" : "fall"            
           },
           "fall" : {
             "frames" : 3,
-            "cycle" : 0.325
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "land"
           },
           "land" : {
             "frames" : 2,
             "cycle" : 0.25,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "properties" : {
+              "immediateSoundRangeMultiplier" : 0.5
+            },            
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/projectiles/bloodvomit2.ogg" , ""]
+            }   
           }
         }
       },
@@ -91,6 +106,11 @@
                 "image" : "<partImage>:idle.<frame>"
               }
             },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },            
             "blink" : {
               "properties" : {
                 "image" : "<partImage>:blink.<frame>"
