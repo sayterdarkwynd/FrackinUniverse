@@ -34,24 +34,16 @@ function init()
     gooshoategg = {"gooshoatbaby", 400, 1},
     greenshoategg = {"greenshoatbaby", 400, 1},
     normaldrone = {"normalbee", 10, 1},
-    larva = {"fleshleech", 400, 1}
+    larva = {"fleshleech", 20, 1}
   }
   -- egg modifiers
   eggmodifiers = {
     default = 1
   }
 
-
-  -- change this to check the egg instead. each egg has a spawnMod that influences its hatch time
-  spawnMod = math.random(10) -- + config.getParameter("spawnModValue")
-
-  -- is world temperature suitable? warmer weather reduces spawn time unless it likes cold
-  storage.warmth = 0
-  storage.cold = 0
-
-  -- how tough is the egg? the tougher it is, the longer it takes to hatch
-  storage.hardiness = 0
-     
+  spawnMod = math.random(10) -- + config.getParameter("spawnModValue") -- change this to check the egg instead. each egg has a spawnMod that influences its hatch time
+  storage.warmth = 0 -- is world temperature suitable? warmer weather reduces spawn time unless it likes cold
+  storage.hardiness = 0 -- how tough is the egg? the tougher it is, the longer it takes to hatch
 end
 
 
@@ -61,6 +53,7 @@ function fillPercent(container)
   local count = 0
   for i = 0,size,1 do
     local item = world.containerItemAt(container, i)
+    
     if item ~= nil then
       count = count + 1
       
@@ -102,18 +95,14 @@ function checkHatching()
       if storage.incubationTime == nil then
         storage.incubationTime = os.time()
       end
-      --sb.logInfo("Incubation time: %s", storage.incubationTime)
 
       -- set the eggs current age
       local age = (os.time() - storage.incubationTime) - spawnMod
-      --sb.logInfo("age: %s", age)
-      --sb.logInfo("hatch modifier: %s", spawnMod)
 
       -- base hatch time
       local hatchTime = incubation[item.name][2]
       if hatchTime == nil then   -- Cannot ever be true, since this if-block never gets run if hatchTime would be nil
         hatchTime = incubation.default
-        --sb.logInfo("Hatch time: %s", hatchTime)
       end
 
       -- forced hatch time
@@ -143,12 +132,7 @@ function checkHatching()
       if self.timer > -1 then 
         animator.setGlobalTag("bin_indicator", self.timer) 
       end
-      
       self.timer = self.timer + 1
-    else
-      storage.incubationTime = nil
-      self.indicator = 0
-      self.timer = 0
     end
   end
 end
@@ -156,7 +140,7 @@ end
 function hatchEgg()  --make the baby
   local container = entity.id()
   local item = world.containerTakeNumItemsAt(container, 0, 1)
-
+  
   if item then
     if (math.random() < incubation[item.name][3]) then
       local spawnposition = entity.position()
@@ -174,11 +158,13 @@ function hatchEgg()  --make the baby
         world.spawnMonster(incubation[item.name][1], spawnposition, parameters)
         self.indicator = 0
         storage.incubationTime = nil
-        self.timer = 0            
+        self.timer = 0   
+        animator.setGlobalTag("bin_indicator", self.timer) 
       else
         self.indicator = 0
         storage.incubationTime = nil
-        self.timer = 0     
+        self.timer = 0   
+        animator.setGlobalTag("bin_indicator", self.timer) 
         world.spawnMonster(incubation[item.name][1], spawnposition, parameters)
       end
     else
