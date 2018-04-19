@@ -5,7 +5,9 @@ setName="fu_diamondset"
 
 weaponBonus={
 	{stat = "powerMultiplier", baseMultiplier = 1.25},
-	{stat = "critChance", amount = 2.5}
+	{stat = "critChance", amount = 2.5},
+	{stat = "sulphuricImmunity", amount = 1},
+	{stat = "biooozeImmunity", amount = 1}
 }
 
 armorBonus={}
