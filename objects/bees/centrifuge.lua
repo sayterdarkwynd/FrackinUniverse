@@ -71,7 +71,9 @@ function update(dt)
 	  animator.setAnimationState("centrifuge", "working")
 	  storage.timer = math.max(storage.timer - dt,0)
 	elseif storage.timer == 0 then
-	  world.containerConsume(entity.id(), { name = storage.input.name, count = 1, data={}})
+	  if not self.centrifugeType=="cloning" then
+	    world.containerConsume(entity.id(), { name = storage.input.name, count = 1, data={}})
+	  end
 	  stashHoney(storage.input.name)
 	  storage.input = nil
 	  storage.activeConsumption = false

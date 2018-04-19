@@ -6,6 +6,7 @@
 
 function init()
   -- egg type?
+  self.centrifugeType = config.getParameter("centrifugeType")
   incubation = {  -- monster to spawn, incubation time, success rate (0-1)
     default = {"fuhenbaby", 400, 1},
     egg = {"fuhenbaby", 400, 0.5},
@@ -31,7 +32,9 @@ function init()
     erchibudegg = {"erchibudbaby", 500, 1},
     slimeshoategg = {"slimeshoatbaby", 400, 1},
     gooshoategg = {"gooshoatbaby", 400, 1},
-    greenshoategg = {"greenshoatbaby", 400, 1}
+    greenshoategg = {"greenshoatbaby", 400, 1},
+    normaldrone = {"normalbee", 20, 1},
+    larva = {"fleshleech", 400, 1}
   }
   -- egg modifiers
   eggmodifiers = {
@@ -112,6 +115,7 @@ end
 function hatchEgg()  --make the baby
   local container = entity.id()
   local item = world.containerTakeNumItemsAt(container, 0, 1)
+
   if item then
     if (math.random() < incubation[item.name][3]) then
       local spawnposition = entity.position()
@@ -123,6 +127,9 @@ function hatchEgg()  --make the baby
       parameters.damageTeamType = "passive"
       if item.name == "goldenegg" then
         world.spawnItem("money", spawnposition, 5000)
+      elseif self.centrifugeType == "cloning" then -- are we cloning bees/eggs?
+        world.spawnMonster(incubation[item.name][1], spawnposition, parameters)
+        world.spawnMonster(incubation[item.name][1], spawnposition, parameters)
       else
         world.spawnMonster(incubation[item.name][1], spawnposition, parameters)
       end
