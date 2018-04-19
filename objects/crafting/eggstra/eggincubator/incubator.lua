@@ -34,7 +34,7 @@ function init()
     gooshoategg = {"gooshoatbaby", 400, 1},
     greenshoategg = {"greenshoatbaby", 400, 1},
     normaldrone = {"normalbee", 10, 1},
-    larva = {"fleshleech", 20, 1}
+    larva = {"maggot", 20, 1}
   }
   -- egg modifiers
   eggmodifiers = {
