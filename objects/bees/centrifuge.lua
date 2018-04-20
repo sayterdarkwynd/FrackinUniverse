@@ -45,42 +45,7 @@ function deciding(item)
   return nil
 end
 
-
-function binInventoryChange()
-  if entity.id() then
-    local container = entity.id()
-    local frames = config.getParameter("binFrames", 10) - 1
-    local fill = math.ceil(frames * fillPercent(container))
-    if self.fill ~= fill then
-      self.fill = fill
-      animator.setAnimationState("fillState", tostring(fill))
-    end
-  end
-end
-
-function fillPercent(container)
-  if type(container) ~= "number" then return nil end
-  local size = world.containerSize(container)
-  local count = 0
-  for i = 0,size,1 do
-    local item = world.containerItemAt(container, i)
-    if item ~= nil then
-      count = count + 1
-      
-      if size == 1 then
-        size = 1000
-        count = item.count
-      end
-    end
-  end
-  return (count/size)
-end
-
-
 function update(dt)
-  binInventoryChange()
-  fillPercent()
-  
   if deltaTime>1 then
 	transferUtil.loadSelfContainer()
 	deltaTime=0
@@ -106,9 +71,7 @@ function update(dt)
 	  animator.setAnimationState("centrifuge", "working")
 	  storage.timer = math.max(storage.timer - dt,0)
 	elseif storage.timer == 0 then
-	  if not self.centrifugeType=="cloning" then
-	    world.containerConsume(entity.id(), { name = storage.input.name, count = 1, data={}})
-	  end
+	  world.containerConsume(entity.id(), { name = storage.input.name, count = 1, data={}})
 	  stashHoney(storage.input.name)
 	  storage.input = nil
 	  storage.activeConsumption = false
