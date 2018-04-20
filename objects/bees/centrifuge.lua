@@ -104,7 +104,7 @@ function update(dt)
   else
     animator.setAnimationState("centrifuge", "idle")
 	storage.activeConsumption = false
-    storage.input = nil
+        storage.input = nil
 	storage.output = nil
 	storage.timer = nil
   end
