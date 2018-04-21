@@ -3,7 +3,11 @@ function init()
 	efficient=config.getParameter("efficient",true)
 	lethal=config.getParameter("lethal",true)--if this is true, efficient doesn't matter.
 	ratio = config.getParameter("ratio", 1.0)--food per health (both percentages)
-	self.healingRate = config.getParameter("healPercent", 0) / effect.duration()	
+	flat = config.getParameter("flat")--healPercent is per second if this is true
+	self.healingRate = config.getParameter("healPercent", 0)
+	if not flat then
+		self.healingRate=self.healingRate / effect.duration()
+	end
 end
 
 function update(dt)
