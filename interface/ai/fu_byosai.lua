@@ -8,7 +8,7 @@ function init()
 	textUpdateDelay = config.getParameter("textUpdateDelay")
 	chatterSound = config.getParameter("chatterSound")
 	defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
-	racialItems = config.getParameter("racialItems")
+	byosItems = config.getParameter("byosItems")
 	aiFaceCanvas = widget.bindCanvas("aiFaceCanvas")
 	aiImage = {image = config.getParameter("aiImage")}
 	aiImage.frames = config.getParameter("aiFrames") - 1
@@ -94,6 +94,11 @@ function byos()
 	for _, recipe in pairs (root.assetJson("/interface/ai/fu_byosrecipes.config")) do
 		player.giveBlueprint(recipe)
 	end
+	if byosItems then
+		for _,byosItem in pairs (byosItems) do
+			player.giveItem(byosItem)
+		end
+	end
 	world.sendEntityMessage("bootup", "byos", player.species())
 end
 
@@ -113,11 +118,6 @@ function racial()
 	player.giveItem({name = "fu_byostechstationdeco", count = 1, parameters = parameters})
 	player.startQuest("fu_shipupgrades")
 	player.upgradeShip(defaultShipUpgrade)
-	if racialItems then
-		for _,racialItem in pairs (racialItems) do
-			player.giveItem(racialItem)
-		end
-	end
 end
 
 function racialiserBootUp()
