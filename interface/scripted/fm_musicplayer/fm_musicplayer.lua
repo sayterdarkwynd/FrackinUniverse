@@ -130,7 +130,7 @@ function doUnlock()
 			music = {}
 			table.insert(music, tech.musicDirectory)
 			if entityType == "object" then
-				world.sendEntityMessage(entityID, "changeMusic", music)
+				world.sendEntityMessage(entityID, "changeMusic", music, tech.name)
 				pane.dismiss()
 			else
 				world.sendEntityMessage(player.id(), "playAltMusic", music, 2.0)
