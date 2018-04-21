@@ -8,7 +8,7 @@ function init()
 	pendingDrops = {}
 	bugSpawn = nil
 	self.scriptBug = nil
-	self.distance = config.getParameter("harvestDistance") or 40
+	self.distance = config.getParameter("harvestDistance",40)
 	removableMods = {
 	["ash"] = true,
 	["blackash"] = true,
