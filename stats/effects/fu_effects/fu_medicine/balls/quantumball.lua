@@ -38,8 +38,10 @@ end
 function pulse()
 	effectNonPlayersInRange(range,"timefreezeNoVFX",effect.duration())
 	effectNonPlayersInRange(range,"invulnerable",effect.duration())
+	--effectNonPlayersInRange(range,"statusimmunity",effect.duration())
 	
 	effectPlayersInRange(range,"superdarkstatUnblockableHidden",effect.duration())
 	effectPlayersInRange(range,"timefreezeNoVFX",effect.duration())
 	effectPlayersInRange(range,"invulnerable",effect.duration())
+	--effectPlayersInRange(range,"statusimmunity",effect.duration())
 end
