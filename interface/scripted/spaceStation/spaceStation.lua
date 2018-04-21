@@ -1211,7 +1211,7 @@ function calculateSellPrice()
 		for column = 1, self.data.shopSellSlots[2] do
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
-				local config = root.itemConfig(slotItem.name, slotItem.parameters.level, slotItem.parameters.seed)
+				local config = root.itemConfig(slotItem.name)
 				local itemPrice = config.config.price
 				if itemPrice then
 					total = itemPrice * slotItem.count + total
@@ -1245,6 +1245,8 @@ function shopSell()
 	money = calculateShopPrice(money, false)
 	player.addCurrency("money", money)
 	widget.setText("shopTotalPrice", "0")
+	
+	sb.logError("pixels - %s", money)
 	
 	if money > 0 then
 		widget.playSound("/sfx/objects/coinstack_small"..math.random(1,3)..".ogg")
