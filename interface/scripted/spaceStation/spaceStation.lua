@@ -1246,8 +1246,6 @@ function shopSell()
 	player.addCurrency("money", money)
 	widget.setText("shopTotalPrice", "0")
 	
-	sb.logError("pixels - %s", money)
-	
 	if money > 0 then
 		widget.playSound("/sfx/objects/coinstack_small"..math.random(1,3)..".ogg")
 	end
