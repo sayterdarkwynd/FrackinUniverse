@@ -56,7 +56,7 @@ function valueOfContents()
              cfg.category == 'preparedFood' or
              cfg.category == 'drink' or
              (cfg.category == 'craftingMaterial' and containsOneOf(cfg.itemTags, 'textile', 'monsterdrop')) then
-            self.itemValues[item.name] = math.ceil(cfg.price * config.getParameter("sellFactor"))
+            self.itemValues[item.name] = math.ceil(cfg.price * config.getParameter("sellFactor",0.0))
           end
         end
       end
