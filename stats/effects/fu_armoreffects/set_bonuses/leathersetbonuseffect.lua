@@ -2,12 +2,12 @@ setName="fu_leatherset"
 
 weaponBonus={
 	{stat = "critChance", amount = 5},
-        {stat = "powerMultiplier", amount = 0.05}
+	{stat = "powerMultiplier", amount = 0.05}
 }
 
 armorBonus={
 	{stat = "grit", amount = 0.05},
-        {stat = "maxEnergy", amount = 5}
+	{stat = "maxEnergy", amount = 5}
 }
 
 armorEffect={
@@ -19,7 +19,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 
-armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	weaponBonusHandle=effect.addStatModifierGroup({})
 
 	armorBonusHandle=effect.addStatModifierGroup({})
@@ -29,31 +29,30 @@ armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	
-	checkWeapons()
-	checkArmor()
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+		
+		checkWeapons()
+		checkArmor()
+	end
 
-mcontroller.controlModifiers({
-	speedModifier = 1.05
-})
+	mcontroller.controlModifiers({
+		speedModifier = 1.05
+	})
 end
 
 function checkArmor()
 	if (world.type() == "garden") or (world.type() == "forest") then
-	  effect.setStatModifierGroup(
-	  armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(  armorBonusHandle,armorBonus)
 	else
-	  effect.setStatModifierGroup(
-	  armorBonusHandle,{})
+		effect.setStatModifierGroup(  armorBonusHandle,{})
 	end
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({"bow","crossbow"})
+	
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

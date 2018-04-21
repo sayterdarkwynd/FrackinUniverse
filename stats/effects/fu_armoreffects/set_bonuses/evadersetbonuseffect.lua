@@ -23,20 +23,20 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	
-	checkWeapons()
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+		
+		checkWeapons()
+	end
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({"shield"})
 	local weapons2=weaponCheck({"shortsword"})
-if weapons["either"] and weapons2["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
-end
+	if weapons["either"] and weapons2["either"] then
+		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	else
+		effect.setStatModifierGroup(weaponBonusHandle,{})
+	end
 end

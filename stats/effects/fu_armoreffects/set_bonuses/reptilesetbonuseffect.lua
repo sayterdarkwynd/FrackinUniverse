@@ -38,9 +38,9 @@ function update(dt)
 end
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword"})
-local weaponShield=weaponCheck({"shield"})
-local weaponSword2=weaponCheck({"axe"})
+	local weaponSword=weaponCheck({"shortsword"})
+	local weaponShield=weaponCheck({"shield"})
+	local weaponSword2=weaponCheck({"axe"})
 
 	if weaponSword["either"] and weaponShield["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)

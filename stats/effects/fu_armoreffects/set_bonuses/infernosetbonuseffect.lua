@@ -3,12 +3,12 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_infernoset"
 
 weaponBonus={
-  {stat = "powerMultiplier", amount = 0.30}
+	{stat = "powerMultiplier", amount = 0.30}
 }
 
 armorBonus={
-  {stat = "fireStatusImmunity", amount = 1},
-  {stat = "biomeheatimmunity", amount = 1}
+	{stat = "fireStatusImmunity", amount = 1},
+	{stat = "biomeheatimmunity", amount = 1}
 }
 
 function init()
@@ -24,8 +24,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 		checkWeapons()
 	end
 end
@@ -33,6 +32,7 @@ end
 function 
 	checkWeapons()
 	local weapons=weaponCheck({"flamethrower"})
+	
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

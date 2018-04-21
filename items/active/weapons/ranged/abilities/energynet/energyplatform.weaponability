@@ -36,10 +36,9 @@
 
     "projectileType" : "fuplatformprojectile",
     "projectileParameters" : {
-      "timeToLive" : 5,
-      "speed" : 1,
-      "periodicActions" : [
-        
+      "timeToLive" : 3,
+      "speed" : 5,
+	"periodicActions" : [
 	    {
 	      "action" : "projectile",
 	      "time" : 0.3,
@@ -48,20 +47,32 @@
 	      "inheritDamageFactor" : 0.05,
 	      "angleAdjust" : 0,
 	      "config" : {
-	        "timeToLive" : 1,
-	        "speed" : 5,
-	        "statusEffects" : [ "stun" ]
+		"timeToLive" : 1.15,
+		"speed" : 5,
+		"statusEffects" : [ "stun" ]
 	      }
-	    }        
-      ]      
+	    },  
+	    {
+	      "time" : 0,
+	      "repeat" : false,
+	      "action" : "sound",
+	      "options" : [ "/sfx/tech/vehicle_appear2.ogg" ]
+	    },  
+	    {
+	      "time" : 4,
+	      "repeat" : false,
+	      "action" : "sound",
+	      "options" : [ "/sfx/tech/vehicle_disappear2.ogg" ]
+	    }      
+	] 
     },
     
     "projectileCount" : 1,
     
     "inaccuracy" : 0,
-    "baseDps" : 3,
-    "energyUsage" : 67,
-    "fireTime" : 3,
+    "baseDps" : 5,
+    "energyUsage" : 17,
+    "fireTime" : 1.5,
     "fireType" : "auto",
 
     "firePositionPart" : "grenadelauncher",

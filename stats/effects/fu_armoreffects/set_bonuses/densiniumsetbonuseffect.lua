@@ -3,8 +3,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_densiniumset"
 
 weaponBonus={
-  {stat = "critChance", amount = 3},
-  {stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "critChance", amount = 3},
+	{stat = "powerMultiplier", baseMultiplier = 1.25}
 }
 
 armorBonus={
@@ -31,15 +31,14 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 		checkWeapons()
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"densinium"})
+	
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else

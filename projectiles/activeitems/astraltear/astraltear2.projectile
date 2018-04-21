@@ -1,15 +1,16 @@
 {
   "projectileName" : "astraltear2",
-  "image" : "astraltear.png",
+  "image" : "astraltear2.png",
   "animationCycle" : 0.25,
   "frameNumber" : 1,
   "timeToLive" : 5,
   "damageKindImage" : "icon.png",
-  "lightColor" : [100, 100, 100],
+  "lightColor" : [12, 111, 12],
   "pointLight" : true,
   "flippable" : true,
   "piercing" : true,
-  "statusEffects" : [ ],
+  "statusEffects" : [ "insanitynew" ],
+  "emitters" : [ ],
   "power" : 5.0,
   "speed" : 0,
   "knockback" : 20,
@@ -17,7 +18,7 @@
     "collisionEnabled" : false
   },
   "damageKind" : "shadow",
-  "fullbright" : false,
+  "fullbright" : true,
   "damagePoly" : [[-16, 24], [8, 16], [16, -24], [-8, -16]],
   "actionOnReap" : [
     {
@@ -28,26 +29,35 @@
     },
     {
       "action" : "sound",
-      "options" : [ "/sfx/projectiles/astraltear_stop2.ogg" ]
+      "options" : [ "/sfx/npc/monsters/orbide_creepy_loop.ogg" ]
     }
   ],
   
   "periodicActions" : [
     {
+      "time" : 0.08,
+      "repeat" : true,
+      "action" : "explosion",
+      "foregroundRadius" : 3,
+      "backgroundRadius" : 2,
+      "explosiveDamageAmount" : 0.4,
+      "delaySteps" : 2
+    },  
+    {
       "action" : "particle",
-      "specification" : "shadowsmoke2",
+      "specification" : "astraltearsparkle1",
       "time" : 0.1,
       "repeat" : true
     },
     {
       "action" : "particle",
-      "specification" : "shadowsmoke2",
+      "specification" : "astraltearsparkle2",
       "time" : 0.1,
       "repeat" : true
     },
     {
       "action" : "particle",
-      "specification" : "shadowsmoke2",
+      "specification" : "astraltearsparkle3",
       "time" : 0.1,
       "repeat" : true
     }

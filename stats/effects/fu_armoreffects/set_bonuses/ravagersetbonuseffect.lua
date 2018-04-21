@@ -24,14 +24,14 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
 		checkWeapons()
 	end
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({"rifle","sniperrifle"})
+	
 	if weapons["either"] then
 		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
 	else
