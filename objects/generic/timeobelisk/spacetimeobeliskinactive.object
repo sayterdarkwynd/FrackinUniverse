@@ -1,18 +1,16 @@
 {
-  	"objectName" : "spacetimeobelisk",
+  	"objectName" : "spacetimeobeliskinactive",
   	"colonyTags" : ["ancient","electronic","elder"],
 	  "description" : "A strange artifact of unknown use.",
 	  "shortdescription" : "Mysterious Pillar",
 	"rarity" : "legendary",
 	"race" : "generic",
-	"category" : "other",
+	"category" : "decorative",
 	"printable" : false,
-	"price" : 0,
+	"price" : 200,
 	  "lightColor" : [22, 51, 177],
-	  "hasObjectItem" : false,
-	  "unbreakable" : true,
-	  "health" : 90,
-	  "consumeOnPickup" : true,
+	  "hasObjectItem" : true,
+	  "health" : 9,
 	  "flickerPeriod" : 0.5,
 	  "flickerMinIntensity" : 0.95,
 	  "flickerMaxIntensity" : 1,
@@ -47,7 +45,7 @@
 	    }
 	],
 	
-	"scripts" : [ "obeliskscan.lua","/scripts/npcToyObject.lua" ],
+	"scripts" : ["/scripts/npcToyObject.lua" ],
 	  "animation" : "spacetimeobelisk.animation",
 	  "animationCustom" : {
 	    "sounds" : {
@@ -67,17 +65,5 @@
     "preciseStandPositionLeft" : [-0.5, 0.0],
     "preciseStandPositionRight" : [2.0, 0.0],
     "maxNpcs" : 1
-  },
-  
-  "smashable" : true,
-  "smashOnBreak" : true,
-  "smashSounds" : [  ],
-  "smashDropPool" : "fuprecursorResources",
-  "explosionProjectile" : "plasmaboom",
-  "explosionOffset" : [1, 2],
-  "inactiveVariant":"spacetimeobeliskinactive",
-  "treasure" : {
-    "pool" : "ffmetallicChestSurprise",
-    "level" : 1
-  }	
+  }
 }

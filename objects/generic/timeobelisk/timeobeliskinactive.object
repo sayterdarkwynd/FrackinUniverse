@@ -1,27 +1,25 @@
 {
-  	"objectName" : "spacetimeobelisk",
+  	"objectName" : "timeobeliskinactive",
   	"colonyTags" : ["ancient","electronic","elder"],
-	  "description" : "A strange artifact of unknown use.",
-	  "shortdescription" : "Mysterious Pillar",
+  	"description" : "A strange and ancient artifact of unknown origin.",
+  	"shortdescription" : "Cosmic Obelisk",
 	"rarity" : "legendary",
 	"race" : "generic",
-	"category" : "other",
+	"category" : "decorative",
 	"printable" : false,
-	"price" : 0,
+	"price" : 200,
 	  "lightColor" : [22, 51, 177],
-	  "hasObjectItem" : false,
-	  "unbreakable" : true,
-	  "health" : 90,
-	  "consumeOnPickup" : true,
+	  "hasObjectItem" : true,
+	  "health" : 9,
 	  "flickerPeriod" : 0.5,
 	  "flickerMinIntensity" : 0.95,
 	  "flickerMaxIntensity" : 1,
 	  "flickerPeriodVariance" : 0.0,
 	  "flickerIntensityVariance" : 0.0,	
-	"inventoryIcon" : "spacetimeobeliskicon.png",
+	"inventoryIcon" : "timeobeliskicon.png",
 	"orientations" : [
 	    {
-	      "image" : "spacetimeobelisk.png:<color>.on",
+	      "image" : "timeobelisk.png:<color>.on",
 	      "flipImages" : true,
 	      "direction" : "left",
 	      "lightPosition" : [0, 1],
@@ -34,7 +32,7 @@
 	      "anchors" : [ "bottom" ]
 	    },
 	    {
-	      "image" : "spacetimeobelisk.png:<color>.on",
+	      "image" : "timeobelisk.png:<color>.on",
 	      "direction" : "right",
 	      "lightPosition" : [0, 1],
 
@@ -47,8 +45,8 @@
 	    }
 	],
 	
-	"scripts" : [ "obeliskscan.lua","/scripts/npcToyObject.lua" ],
-	  "animation" : "spacetimeobelisk.animation",
+	"scripts" : ["/scripts/npcToyObject.lua" ],
+	  "animation" : "timeobelisk.animation",
 	  "animationCustom" : {
 	    "sounds" : {
 	      "on" : [ "/sfx/objects/console_button.ogg" ],
@@ -56,8 +54,8 @@
 	    }
 	  },	
 	  "animationParts" : {
-	    "bg" : "spacetimeobelisk.png",
-	    "fg" : "spacetimeobelisklit.png"
+	    "bg" : "timeobelisk.png",
+	    "fg" : "timeobelisklit.png"
 	  },
 	  "animationPosition" : [-8, 0],
 	  
@@ -67,17 +65,5 @@
     "preciseStandPositionLeft" : [-0.5, 0.0],
     "preciseStandPositionRight" : [2.0, 0.0],
     "maxNpcs" : 1
-  },
-  
-  "smashable" : true,
-  "smashOnBreak" : true,
-  "smashSounds" : [  ],
-  "smashDropPool" : "fuprecursorResources",
-  "explosionProjectile" : "plasmaboom",
-  "explosionOffset" : [1, 2],
-  "inactiveVariant":"spacetimeobeliskinactive",
-  "treasure" : {
-    "pool" : "ffmetallicChestSurprise",
-    "level" : 1
-  }	
+  }
 }
