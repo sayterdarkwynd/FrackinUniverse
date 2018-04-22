@@ -1,6 +1,7 @@
 mementomori = {}
 
-mementomori.deathPositionKey = "mementomori.lastDeathPosition"
+mementomori.deathPositionKey = "mementomori.lastDeathInfo"
+mementomori.worldId = "mementomori.worldId"
 
 function mementomori.interp(a,b,t)
     return a + ((b-a) * t)
