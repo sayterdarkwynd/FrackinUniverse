@@ -4,7 +4,7 @@
     "species" : "dummy",
     "rules" : [
     ],
-    "anchor" : [ "arborealmini1", "arborealmini3", "arborealmini4", "arborealmini5", "arborealmini6" ],
+    "anchor" : [ "arborealmini1", "arborealmini3", "arborealmini4", "arborealmini6", "treehouse1", "treehouse2", "treehouse3" ],
 
     "maxRadius" : 2000,
     "maxParts" : 15
@@ -561,14 +561,30 @@
       "def" : [ "image", [ "arborealmini4.png", "arborealmini4-objects.png" ] ]
     },
     {
-      "name" : "arborealmini5",
-      "rules" : [ ],
-      "def" : [ "image", [ "arborealmini5.png", "arborealmini5-objects.png" ] ]
-    },
-    {
       "name" : "arborealmini6",
       "rules" : [ ],
       "def" : [ "image", [ "arborealmini6.png", "arborealmini6-objects.png" ] ]
-    }    
+    },
+    {
+      "name" : "treehouse1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "treehouse1.json" ]
+    },
+    {
+      "name" : "treehouse2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "treehouse2.json" ]
+    },
+     {
+      "name" : "treehouse3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "treehouse3.json" ]
+    }
   ]
 }
