@@ -1,6 +1,6 @@
 function init()
-	self.range=config.getParameter("range")
-	self.value = config.getParameter("refresh")
+	self.range=config.getParameter("range",0)
+	self.value = config.getParameter("refresh",0)
 	script.setUpdateDelta(self.value)
 end
 

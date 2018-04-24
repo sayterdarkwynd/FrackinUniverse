@@ -7,7 +7,8 @@ function init()
 	textData = {}
 	textUpdateDelay = config.getParameter("textUpdateDelay")
 	chatterSound = config.getParameter("chatterSound")
-  defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
+	defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
+	byosItems = config.getParameter("byosItems")
 	aiFaceCanvas = widget.bindCanvas("aiFaceCanvas")
 	aiImage = {image = config.getParameter("aiImage")}
 	aiImage.frames = config.getParameter("aiFrames") - 1
@@ -92,6 +93,11 @@ function byos()
 	player.startQuest("fu_shipupgrades")
 	for _, recipe in pairs (root.assetJson("/interface/ai/fu_byosrecipes.config")) do
 		player.giveBlueprint(recipe)
+	end
+	if byosItems then
+		for _,byosItem in pairs (byosItems) do
+			player.giveItem(byosItem)
+		end
 	end
 	world.sendEntityMessage("bootup", "byos", player.species())
 end

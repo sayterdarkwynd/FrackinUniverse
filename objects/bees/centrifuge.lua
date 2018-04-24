@@ -52,7 +52,13 @@ function update(dt)
   else
 	deltaTime=deltaTime+dt
   end
-  local input = world.containerItemAt(entity.id(),self.inputSlot-1)
+  local input
+  for i=0,self.inputSlot-1 do
+    input = world.containerItemAt(entity.id(),i)
+    if input then
+      break
+    end
+  end
   if not storage.input then
     if input then
 	  local output = deciding(input)
@@ -83,7 +89,7 @@ function update(dt)
 		local throw=nil
 		if rnd <= chance then
 		  local contSize=world.containerSize(entity.id())
-		  for i=1,contSize-1 do
+		  for i=self.inputSlot,contSize-1 do
 			throw = world.containerPutItemsAt(entity.id(), { name = item, count = 1, data={}},i)
 			if not throw then
 			  done=true
@@ -104,7 +110,7 @@ function update(dt)
   else
     animator.setAnimationState("centrifuge", "idle")
 	storage.activeConsumption = false
-    storage.input = nil
+        storage.input = nil
 	storage.output = nil
 	storage.timer = nil
   end
