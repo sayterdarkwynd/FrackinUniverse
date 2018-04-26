@@ -12,10 +12,10 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 end
 
 function update(dt)
@@ -34,8 +34,8 @@ end
 function checkWeapons()
 	local weapons=weaponCheck({"fist","quarterstaff"})
 	if weapons["both"] or (weapons["twoHanded"] and weapons["either"]) then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

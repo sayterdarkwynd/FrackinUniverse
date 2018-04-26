@@ -6,26 +6,26 @@ weaponBonus={
 }
 
 armorBonus={
-                {stat = "biooozeImmunity", amount = 1.0},
-                {stat = "poisonStatusImmunity", amount = 1.0},
-		{stat = "slimestickImmunity", amount = 1},
-		{stat = "slimefrictionImmunity", amount = 1},
-		{stat = "slimeImmunity", amount = 1},
-		{stat = "snowslowImmunity", amount = 1},
-		{stat = "iceslipImmunity", amount = 1},
-		{stat = "mudslowImmunity", amount = 1}
+	{stat = "biooozeImmunity", amount = 1.0},
+	{stat = "poisonStatusImmunity", amount = 1.0},
+	{stat = "slimestickImmunity", amount = 1},
+	{stat = "slimefrictionImmunity", amount = 1},
+	{stat = "slimeImmunity", amount = 1},
+	{stat = "snowslowImmunity", amount = 1},
+	{stat = "iceslipImmunity", amount = 1},
+	{stat = "mudslowImmunity", amount = 1}
 }
 
 setName="fu_slimeset3"
 
 function init()
-  self.timer = math.random(60)
+	self.timer = math.random(60)
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -70,10 +70,10 @@ end
 function checkWeapons()
 	local weapons=weaponCheck({"slime"})
 	if weapons["both"] then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,2))
 	elseif weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

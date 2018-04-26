@@ -9,14 +9,14 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		status.modifyResourcePercentage("health", 0.004 * dt)
 	end
 end

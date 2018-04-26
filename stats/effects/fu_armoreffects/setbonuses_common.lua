@@ -28,6 +28,10 @@ function setBonusInit(setBonusName, setBonusStats, callbacks)
 end
 
 function setSEBonusInit(setBonusName, SetBonusEffects)
+	if not effectHandlerList then
+		effectHandlerList={}
+	end
+	
 	script.setUpdateDelta(6)
 	self.armourPresent = nil
 	self.setBonusName = setBonusName
@@ -165,6 +169,13 @@ function weaponCheck(tags)
 	return weaponCheckResults
 end
 
-function uninit()
+function setBonusUninit()
 	removeSetBonus()
+	for _,v in pairs(effectHandlerList or {}) do
+		effect.removeStatModifierGroup(v)
+	end
+end
+
+function uninit()
+	setBonusUninit()
 end

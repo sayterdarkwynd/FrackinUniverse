@@ -24,9 +24,9 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 	if (world.type() == "ocean") or (world.type() == "sulphuricocean") or (world.type() == "aethersea") or (world.type() == "nitrogensea") or (world.type() == "strangesea") or (world.type() == "tidewater") then
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus2)
 	end
 end
 
@@ -38,12 +38,12 @@ function update(dt)
 		status.addEphemeralEffect("swimboost2")
 	end
 	if (world.type() == "ocean") or (world.type() == "sulphuricocean") or (world.type() == "aethersea") or (world.type() == "nitrogensea") or (world.type() == "strangesea") or (world.type() == "tidewater") then
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus2)
 
 		mcontroller.controlModifiers({
 			speedModifier = 1.05
 		})
 	else
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	end
 end

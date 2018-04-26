@@ -18,10 +18,10 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
-	weaponBonusHandle2=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle2=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -38,13 +38,13 @@ function checkWeapons()
 	local weaponMace=weaponCheck({"mace"})
 	
 	if weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 	if weaponMace["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle2,weaponBonus2)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle2,weaponBonus2)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle2,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle2,{})
 	end	
 end

@@ -14,12 +14,12 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandlePrimary=effect.addStatModifierGroup({})
-	weaponBonusHandleAlt=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandlePrimary=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandleAlt=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -39,18 +39,18 @@ function checkWeapons()
 	local guns=weaponCheck({"machinepistol", "pistol"})
 	
 	if knives["primary"] then
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,weaponBonus1)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandlePrimary,weaponBonus1)
 	elseif guns["primary"] then
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,weaponBonus2)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandlePrimary,weaponBonus2)
 	else
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandlePrimary,{})
 	end
 	
 	if knives["alt"] then
-		effect.setStatModifierGroup(weaponBonusHandleAlt,weaponBonus1)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandleAlt,weaponBonus1)
 	elseif guns["alt"] then
-		effect.setStatModifierGroup(weaponBonusHandleAlt,weaponBonus2)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandleAlt,weaponBonus2)
 	else
-		effect.setStatModifierGroup(weaponBonusHandleAlt,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandleAlt,{})
 	end
 end

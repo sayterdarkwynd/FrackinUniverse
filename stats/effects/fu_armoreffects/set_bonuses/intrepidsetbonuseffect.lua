@@ -18,10 +18,10 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
-	armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 
 
 	checkWeapons()
@@ -39,9 +39,9 @@ end
 
 function checkArmor()
 	if (world.type() == "mountainous4") or (world.type() == "mountainous3") or (world.type() == "mountainous2") or (world.type() == "mountainous") then
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else
-		effect.setStatModifierGroup(armorBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end
 end
 
@@ -49,8 +49,8 @@ function checkWeapons()
 	local weapons=weaponCheck({"hammer","flail"})
 	
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

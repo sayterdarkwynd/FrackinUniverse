@@ -16,9 +16,9 @@ setName="fu_corruptset"
 
 function init()
 	setSEBonusInit(setName)
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 
-	armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	checkArmor()
 end
 
@@ -68,9 +68,9 @@ end
 function checkArmor()
 	if (world.type() == "lightless") or (world.type() == "penumbra") or (world.type() == "aethersea") or (world.type() == "moon_shadow") or (world.type() == "shadow") or (world.type() == "midnight") then
 		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effectHandlerList.armorBonusHandle,armorBonus)
 	else
 		effect.setStatModifierGroup(
-		armorBonusHandle,{})
+		effectHandlerList.armorBonusHandle,{})
 	end
 end

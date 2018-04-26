@@ -15,9 +15,9 @@ setName="fu_enforcerset"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -33,10 +33,10 @@ function checkWeapons()
 	local weaponShotgun=weaponCheck({"shotgun","assaultrifle"})
 
 	if (weaponShotgun["primary"] and weaponShotgun["alt"]) or (weaponShotgun["twoHanded"] and weaponShotgun["primary"]) then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus1,2))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus1,2))
 	elseif weaponShotgun ["either"] then
-	    effect.setStatModifierGroup(weaponBonusHandle,weaponBonus1)
+	    effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus1)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end
