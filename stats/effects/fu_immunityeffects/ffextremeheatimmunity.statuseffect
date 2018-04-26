@@ -1,9 +1,18 @@
 {
-  "name" : "ffextremeheatimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 300,
-
-  "scripts" : [
-    "ffextremeheatimmunity.lua"
-  ]
+	"name": "ffextremeheatimmunity",
+	"effectConfig": {
+		"stats": [{
+				"stat": "ffextremeheatImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "biomeheatImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

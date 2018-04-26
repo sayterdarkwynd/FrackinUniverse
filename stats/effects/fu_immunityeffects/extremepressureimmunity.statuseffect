@@ -1,10 +1,23 @@
 {
-  "name" : "extremepressureimmunity",
-  "blockingStat" : "negativeMiasma",
-  "effectConfig" : {},
-  "defaultDuration" : 300,
-
-  "scripts" : [
-    "extremepressureimmunity.lua"
-  ]
+	"name": "extremepressureimmunity",
+	"blockingStat": "negativeMiasma",
+	"effectConfig": {
+		"stats": [{
+				"stat": "breathProtection",
+				"amount": 1
+			},
+			{
+				"stat": "extremepressureProtection",
+				"amount": 1
+			},
+			{
+				"stat": "waterbreathProtection",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

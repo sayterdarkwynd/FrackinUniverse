@@ -1,3 +1,8 @@
 function init()
-	effect.addStatModifierGroup(config.getParameter("stats",{}))
+	handler=effect.addStatModifierGroup(config.getParameter("stats",{}))
+	--script.setUpdateDelta(0)
+end
+
+function uninit()
+	effect.removeStatModifierGroup(handler)
 end
