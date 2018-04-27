@@ -17,9 +17,9 @@ setName="fu_assassiniset"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -35,8 +35,8 @@ function checkWeapons()
 	local weaponSword=weaponCheck({"pistol", "machinepistol"})
 
 	if weaponSword["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

@@ -15,9 +15,9 @@ setName="fu_boneset"
 
 function init()
 	setSEBonusInit(setName)
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 
-	armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	checkArmor()
 end
 
@@ -32,9 +32,9 @@ end
 function checkArmor()
 	if (world.type() == "garden") or (world.type() == "forest") then
 		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effectHandlerList.armorBonusHandle,armorBonus)
 	else
 		effect.setStatModifierGroup(
-		armorBonusHandle,{})
+		effectHandlerList.armorBonusHandle,{})
 	end
 end

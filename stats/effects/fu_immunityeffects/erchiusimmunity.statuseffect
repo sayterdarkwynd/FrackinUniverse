@@ -1,11 +1,15 @@
 {
-  "name" : "erchiusimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 300,
-
-  "scripts" : [
-    "erchiusimmunity.lua"
-  ],
-  "label" : "Ghostproof",
-  "icon" : "/interface/statuses/erchiusimmunity.png"
+	"name": "erchiusimmunity",
+	"effectConfig": {
+		"stats": [{
+			"stat": "erchiusImmunity",
+			"amount": 1
+		}]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
+	"label": "Ghostproof",
+	"icon": "/interface/statuses/erchiusimmunity.png"
 }

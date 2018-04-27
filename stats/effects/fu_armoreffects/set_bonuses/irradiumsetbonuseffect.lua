@@ -15,10 +15,10 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandlePrimary=effect.addStatModifierGroup({})
-	weaponBonusHandleAlt=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandlePrimary=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandleAlt=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -33,8 +33,8 @@ function checkWeapons()
 	local knives=weaponCheck({"irradium"})
 	
 	if knives["either"] then
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,weaponBonus1)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandlePrimary,weaponBonus1)
 	else
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandlePrimary,{})
 	end
 end

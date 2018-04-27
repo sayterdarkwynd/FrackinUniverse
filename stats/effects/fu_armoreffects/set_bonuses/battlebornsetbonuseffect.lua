@@ -15,8 +15,8 @@ setName="fu_battlebornset"
 
 function init()
 	setSEBonusInit(setName)
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
-	armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	checkArmor()
 end
 
@@ -30,8 +30,8 @@ end
 
 function checkArmor()
 	if (world.type() == "metallicmoon") or (world.type() == "urbanwasteland") or (world.type() == "scorched") then
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else
-		effect.setStatModifierGroup(armorBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end
 end

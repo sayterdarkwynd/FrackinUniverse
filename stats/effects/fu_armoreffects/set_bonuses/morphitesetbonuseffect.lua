@@ -10,7 +10,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 end
 
 function update(dt)
