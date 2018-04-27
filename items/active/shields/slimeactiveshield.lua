@@ -12,7 +12,7 @@ function init()
   
   self.aimAngle = 0
   self.aimDirection = 1
-
+  getSkinColorOnce = 0
   self.active = false
   self.cooldownTimer = config.getParameter("cooldownTime")
   self.activeTimer = 0
