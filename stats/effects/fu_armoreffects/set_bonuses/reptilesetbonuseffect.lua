@@ -21,11 +21,11 @@ setName="fu_reptileset"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -43,10 +43,10 @@ function checkWeapons()
 	local weaponSword2=weaponCheck({"axe"})
 
 	if weaponSword["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	elseif weaponSword2["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)		
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus2)		
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

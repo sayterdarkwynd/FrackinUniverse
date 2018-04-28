@@ -78,14 +78,13 @@ function update(dt)
       self.lastPhase = nil
       setPhaseStates(self.phases)
       --status.setResource("health", status.stat("maxHealth"))
-
-      if bossReset then bossReset() end
+      --if bossReset then bossReset() end
     end
 
     if status.resource("health") > 0 then script.setUpdateDelta(10) end
 
     if not self.state.update(dt) then
-            animator.playSound("turnHostile")
+      animator.playSound("turnHostile")
       self.state.pickState()
     end
   end
@@ -95,6 +94,11 @@ end
 
 function damage(args)
   self.tookDamage = true
+  
+  if self.tookDamage and math.random(10)==1 then
+    animator.playSound("hurt")
+  end
+  
   self.randval = math.random(100)
   self.randval2 = math.random(100)
   self.healthLevel = status.resource("health") / status.stat("maxHealth")

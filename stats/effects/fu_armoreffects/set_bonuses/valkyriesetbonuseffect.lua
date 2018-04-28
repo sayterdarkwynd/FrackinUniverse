@@ -14,14 +14,14 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	end
 end

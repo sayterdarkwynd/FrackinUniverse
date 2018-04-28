@@ -21,11 +21,11 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -42,10 +42,10 @@ local weaponSingle=weaponCheck({"katana"})
 local weaponDual=weaponCheck({"katana","dagger"})
 
 	if weaponSingle["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	elseif weaponDual["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)				
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus2)				
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

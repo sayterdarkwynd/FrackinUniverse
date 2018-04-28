@@ -16,8 +16,8 @@ setName="fu_chitinset"
 
 function init()
 	setSEBonusInit(setName)
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
-	armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	checkArmor()
 end
 
@@ -31,8 +31,8 @@ end
 
 function checkArmor()
 	if (world.type() == "sulphuric") or (world.type() == "sulphuricdark") or (world.type() == "sulphuricocean") then
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else
-		effect.setStatModifierGroup(armorBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end
 end

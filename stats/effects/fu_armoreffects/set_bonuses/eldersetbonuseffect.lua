@@ -17,9 +17,9 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	armorBonusHandle=effect.addStatModifierGroup({})
-	weaponBonusHandlePrimary=effect.addStatModifierGroup({})
-	weaponBonusHandleAlt=effect.addStatModifierGroup({})
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandlePrimary=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandleAlt=effect.addStatModifierGroup({})
 	self.timer = 0
         update(0)
 end
@@ -53,7 +53,7 @@ function update(dt)
 end
 
 function checkArmor()
-	effect.setStatModifierGroup( armorBonusHandle,setBonusMultiply(armorBonus,level))
+	effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,setBonusMultiply(armorBonus,level))
 end
 
 function getLevel()
@@ -66,8 +66,8 @@ function checkWeapons()
 	local weapons=weaponCheck({"elder"})
 	
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandleAlt,setBonusMultiply(weaponBonus,level))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandleAlt,setBonusMultiply(weaponBonus,level))
 	else
-		effect.setStatModifierGroup(weaponBonusHandleAlt,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandleAlt,{})
 	end
 end

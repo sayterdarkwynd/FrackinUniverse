@@ -28,18 +28,22 @@ function scanInteraction()
 	object.say(texts[math.random(1, #texts)])
 	object.setInteractive(true)
 
-      if not self.scanned then
-	      local pool = config.getParameter("treasure.pool")
-	      local level = config.getParameter("treasure.level")
-	      local seed = config.getParameter("treasure.seed")
-	      local treasure = root.createTreasure(pool, level, seed)
-	      world.spawnTreasure(object.position(), pool, level, seed) 
-	      world.spawnTreasure(object.position(), "fuprecursorResources", 1, 1)
-	      self.scanned = 1
-      	      animator.burstParticleEmitter("teleportOut")
-      	      animator.playSound("deathPuff")
-      	      object.smash()
-      end      
+	if not self.scanned then
+		local pool = config.getParameter("treasure.pool")
+		local level = config.getParameter("treasure.level")
+		local seed = config.getParameter("treasure.seed")
+		local inactiveVariant = config.getParameter("inactiveVariant")
+		local treasure = root.createTreasure(pool, level, seed)
+		world.spawnTreasure(object.position(), pool, level, seed) 
+		world.spawnTreasure(object.position(), "fuprecursorResources", 1, 1)
+		self.scanned = 1
+		animator.burstParticleEmitter("teleportOut")
+		animator.playSound("deathPuff")
+		if inactiveVariant then
+			world.spawnItem({name=inactiveVariant,amount=1,{}},entity.position())
+		end
+		object.smash()
+	end      
 
 end
 

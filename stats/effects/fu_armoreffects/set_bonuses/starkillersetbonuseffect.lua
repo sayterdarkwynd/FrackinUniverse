@@ -13,9 +13,9 @@ setName="fu_starkillerset"
 
 function init()
 	setSEBonusInit(setName)
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 
-	armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	checkArmor()
 end
 
@@ -53,8 +53,8 @@ function checkArmor()
 	underground = undergroundCheck()
 	local lightLevel = getLight()
 	if daytime and not underground then
-		effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else
-		effect.setStatModifierGroup(armorBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end
 end

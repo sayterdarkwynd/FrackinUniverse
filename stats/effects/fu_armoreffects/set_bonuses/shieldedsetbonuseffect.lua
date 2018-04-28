@@ -11,9 +11,9 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -21,7 +21,7 @@ function update(dt)
 		effect.expire()
 	else
 		effect.setStatModifierGroup(
-		armorBonusHandle,armorBonus)
+		effectHandlerList.armorBonusHandle,armorBonus)
 	end
 	mcontroller.controlModifiers({
 		speedModifier = 1.15

@@ -14,8 +14,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
 end
 
@@ -31,8 +31,8 @@ end
 function checkWeapons()
 	local weapons=weaponCheck({"magnorb", "magnorbs", "energy"})
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

@@ -18,11 +18,11 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 			
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -30,9 +30,9 @@ function update(dt)
 		effect.expire()
 	else
 		if (world.type() == "sulphuric") or (world.type() == "sulphuricdark") or (world.type() == "sulphuricocean") or (world.type() == "mountainous") then
-			effect.setStatModifierGroup(armorBonusHandle,armorBonus2)
+			effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus2)
 		else
-			effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+			effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		end
 		
 		checkWeapons()
@@ -42,8 +42,8 @@ end
 function checkWeapons()
 	local weapons=weaponCheck({"broadsword","shortsword"})
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

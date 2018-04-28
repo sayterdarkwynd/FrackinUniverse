@@ -14,9 +14,9 @@ setName="fu_bearset2"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -28,16 +28,16 @@ function update(dt)
 end
 
 function checkArmor()
-	effect.setStatModifierGroup( armorBonusHandle,setBonusMultiply(armorBonus,level))
+	effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,setBonusMultiply(armorBonus,level))
 end
 
 function checkWeapons()
 local weaponSword=weaponCheck({ "axe", "hammer", "broadsword", "spear" })
 
 	if weaponSword["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 	
 end
