@@ -354,22 +354,32 @@ end
 function doneOpening()
 	isOpening = false
 	
-	-- local lootbox = player.consumeItem({name = "fu_lootbox"}, true)
 	local hasLootbox = false
 	local itemLevel = 0
 	
-	for i = 0, 10 do
-		if player.consumeItem({name = "fu_lootbox", parameters = {level = i}}, true, true) then
+	do
+		local cursorItem = player.swapSlotItem()
+		if cursorItem and cursorItem.name == "fu_lootbox" then
+			itemLevel = cursorItem.parameters.level or math.floor(world.threatLevel() + 0.5)
+			player.setSwapSlotItem(nil)
 			hasLootbox = true
-			itemLevel = i
-			break
+		end
+	end
+	
+	if not hasLootbox then
+		for i = 0, 10 do
+			if player.consumeItem({name = "fu_lootbox", parameters = {level = i}}, true, true) then
+				hasLootbox = true
+				itemLevel = i
+				break
+			end
 		end
 	end
 	
 	if not hasLootbox then
 		if player.consumeItem({name = "fu_lootbox"}, true) then
 			hasLootbox = true
-			itemLevel = roundNum(world.threatLevel())
+			itemLevel = math.floor(world.threatLevel() + 0.5)
 		end
 	end
 	
@@ -677,8 +687,8 @@ function animate()
 					movY = movY + 0.5
 				end
 				
-				tbl.pos[1] = roundNum(tbl.pos[1] + movX)
-				tbl.pos[2] = roundNum(tbl.pos[2] + movY)
+				tbl.pos[1] = math.floor(tbl.pos[1] + movX + 0.5)
+				tbl.pos[2] = math.floor(tbl.pos[2] + movY + 0.5)
 			end
 			
 			if not (tbl.scale <= tbl.targetScale + 0.02 and tbl.scale >= tbl.targetScale - 0.02) then
@@ -782,25 +792,6 @@ end
 
 function distanceToPoint(p1, p2)
 	return math.sqrt((p2[1] - p1[1])^2 + (p2[2] - p1[2])^2)
-end
-
-function roundNum(num)
-	local low = math.floor(num)
-	local high = math.ceil(num)
-	
-	if math.abs(num - low) < math.abs(num - high) then
-		if num < 0 then
-			return low * -1
-		else
-			return low
-		end
-	else
-		if num < 0 then
-			return high * -1
-		else
-			return high
-		end
-	end
 end
 
 function targetedVecAngle(pos, target)
