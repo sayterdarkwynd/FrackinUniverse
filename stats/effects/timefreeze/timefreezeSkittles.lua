@@ -1,3 +1,4 @@
+require "/stats/effects/effectUtil.lua"
 
 gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
 
@@ -28,7 +29,7 @@ function update(dt)
 			gregDate=0.0
 			if donkey == 1 or donkey == 81 then
 				if donkey == 1 then
-					effectSelf("l6doomed",effect.duration()/(hardTarget and 2 or 1))
+					effectUtil.effectSelf("l6doomed",effect.duration()/(hardTarget and 2 or 1))
 				else
 					effectOnSource("l6doomed",effect.duration()*(hardTarget and 2 or 1))
 				end
@@ -36,12 +37,12 @@ function update(dt)
 				special=true
 			elseif donkey == 6 or donkey == 66 then
 				stun()
-				effectSelf("heal_1",effect.duration())
-				effectSelf("cultistshield",effect.duration())
+				effectUtil.effectSelf("heal_1",effect.duration())
+				effectUtil.effectSelf("cultistshield",effect.duration())
 				say("Kevin.")
 				special=true
 			elseif donkey <= 3 or donkey == 33 then
-				effectSelf("partytime2",effect.duration()*donkey)
+				effectUtil.effectSelf("partytime2",effect.duration()*donkey)
 				say("Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!")
 				special=true
 			elseif donkey <= 9 then
@@ -130,13 +131,6 @@ function say(sentence)
 	end
 end
 
-function effectInRange(range,effect,duration)
-	local buffer=util.mergeLists(world.npcQuery(activeItem.ownerAimPosition(),range),world.monsterQuery(activeItem.ownerAimPosition(),range))
-	for _,id in pairs(buffer) do
-		--world.sendEntityMessage(id,"applyStatusEffect",effect,duration,activeItem.ownerEntityId())
-		effectTarget(id,effect,duration)
-	end
-end
 
 function stun(duration)
 	duration=duration or 0
@@ -147,14 +141,6 @@ function stun(duration)
 	end
 end
 
-function effectSelf(effect,duration)
-	status.addEphemeralEffect(effect,duration,source)
-end
-
 function effectOnSource(effect,duration)
-	effectTarget(source,effect,duration)
-end
-
-function effectTarget(id,effect,duration)
-	world.sendEntityMessage(id,"applyStatusEffect",effect,duration,source)
+	effectUtil.effectTarget(source,effect,duration)
 end
