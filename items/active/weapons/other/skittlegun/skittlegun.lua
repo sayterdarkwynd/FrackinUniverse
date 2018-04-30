@@ -1,10 +1,12 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/epoch.lua"
+require "/stats/effects/effectUtil.lua"
 
 gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
 
 function init()
+
 	local timeData=epoch.currentToTable()
 	if timeData.month == 4 and timeData.day==1 then
 		fool=true
@@ -31,8 +33,8 @@ function init()
 	setToolTipValues(config.getParameter("primaryAbility"))
 	if fool then
 		local color={math.floor(math.random(1,255)),math.floor(math.random(1,255)),math.floor(math.random(1,255))}
-		messageParticle(firePosition(),"Matt Damon.",color,0.6,nil,4,nil)
-		effectSelf("nude",5)
+		effectUtil.messageParticle(firePosition(),"Matt Damon.",color,0.6,nil,4,nil)
+		effectUtil.effectSelf("nude",5)
 	end
 end
 
@@ -49,7 +51,7 @@ end
 function update(dt, fireMode, shiftHeld)
 	if sayterG then
 		if sayterG < 0.0 then
-			effectInRange(100,"l6doomed",7*activeItem.ownerPowerMultiplier())--yes, this is intentional.
+			effectUtil.effectNonPlayersInRange(100,"l6doomed",7*activeItem.ownerPowerMultiplier())--yes, this is intentional.
 			sayterG=nil
 		else
 			sayterG=sayterG-dt
@@ -64,17 +66,59 @@ function update(dt, fireMode, shiftHeld)
 		end
 	end
 	updateAim()
-	
-	--sb.logInfo("%s",{fireMode=fireMode,shiftHeld=shiftHeld})
+
 	storage.fireTimer = math.max(storage.fireTimer - dt, 0)
 	self.recoilTimer = math.max(self.recoilTimer - dt, 0)
 	if fool then
 		foolDelta=(foolDelta or 0)+dt
 		if foolDelta >=4 then
-			effectSelf("nude",5)
+			effectUtil.effectSelf("nude",5)
 		end
 	end
 	if fireMode=="none" or not fireMode then return end
+	
+	local worldType=world.type()
+
+	if  not shipwarning and world.getProperty("ship.fuel") then
+		if storage.fireTimer <= 0 then
+			effectUtil.say("Greg? Greg greg? GREG?!?")
+			storage.fireTimer = 1
+			shipwarning=true
+		end
+		return
+	elseif worldType == "scienceoutpost" then
+		if storage.fireTimer <= 0 then
+			scienceWarning=(scienceWarning or 0) + 1
+			storage.fireTimer = 1 * scienceWarning
+			effectUtil.effectSelf("nude",storage.fireTimer)
+			if scienceWarning >= 3 then
+				effectUtil.effectSelf("paralysis",storage.fireTimer)
+				effectUtil.say("KEVIN!!!")
+			else
+				effectUtil.say("Greg gregogreg...Kevin...")
+			end
+		end
+		return
+	elseif worldType == "outpost" then
+		if storage.fireTimer <= 0 then
+			effectUtil.say("Gregdonkeybow. GREG! Greg. greg...$!@#$!@% GREG.")
+			storage.fireTimer = 1
+		end
+		return
+	elseif worldType == "extrachallengelabs" or worldType == "ancientgateway" then
+		if storage.fireTimer <= 0 then
+			effectUtil.say("Greg.")
+			storage.fireTimer = 1
+		end
+		return
+	elseif worldType == "protectorate" or worldType == "felinintro" then
+		if storage.fireTimer <= 0 then
+			effectUtil.say("...donkey...")
+			storage.fireTimer = 6
+			effectUtil.effectSelf("fu_death",storage.fireTimer)
+		end
+		return
+	end
 	
 	local abilString = fireMode.."Ability"
 	if shiftHeld then
@@ -83,7 +127,6 @@ function update(dt, fireMode, shiftHeld)
 		abilString = abilString.."Shift"
 	end
 	local ability = config.getParameter(abilString)
-	--sb.logInfo("%s",ability)
 	if abilString2 and not ability then ability = config.getParameter(abilString2) end
 
 	if ability and storage.fireTimer <= 0 and not world.pointTileCollision(firePosition()) and status.overConsumeResource("energy", ability.energyUsage) then
@@ -102,7 +145,6 @@ end
 end]]
 
 function fire(ability,fireMode,throttle)
-	--sb.logInfo("%s",ability)
 	local special=math.floor(math.random(1,1000))
 	local baseProjectileCount=totalProjectileTypes[fireMode]
 	local projectileCount = throttle and 1 or math.max(1,math.floor(math.random(1,baseProjectileCount*baseProjectileCount)/baseProjectileCount))
@@ -119,7 +161,7 @@ function fire(ability,fireMode,throttle)
 		--someone just drew the unluckiest card in the deck.
 		local message="Sayter."
 		local color={0,0,0}
-		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
 		if sayterE then
 			sayterE=sayterE/2.0
 		else
@@ -128,8 +170,8 @@ function fire(ability,fireMode,throttle)
 	elseif special == 3 or special == 33 or special == 333 then
 		message="Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!"
 		color={238,130,238}
-		effectSelf("partytime2",special)
-		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		effectUtil.effectSelf("partytime2",special)
+		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
 	elseif special < 10 then
 		local aimVec=aimVector(ability)
 		local projectileType=""
@@ -144,18 +186,18 @@ function fire(ability,fireMode,throttle)
 				message="#$?#$%?@ Greg."
 				color={255,0,0}
 			else
-				effectSelf("cultistshield",math.max(0,activeItem.ownerPowerMultiplier()))
+				effectUtil.effectSelf("cultistshield",math.max(0,activeItem.ownerPowerMultiplier()))
 				color={255,20,147}
 				message="Kevin."
 			end
 		else
 			if throttle then
 				local effect="damagebonus"..math.floor(math.random(2,6))
-				effectSelf(effect,math.max(0,2*activeItem.ownerPowerMultiplier()))
+				effectUtil.effectSelf(effect,math.max(0,2*activeItem.ownerPowerMultiplier()))
 				color={255,255,0}
 				message="BANANA! BANANA! BANANA!"
 			else
-				effectInRange(100,"timefreezeSkittles",math.max(0,activeItem.ownerPowerMultiplier()))
+				effectUtil.effectNonPlayersInRange(100,"timefreezeSkittles",math.max(0,activeItem.ownerPowerMultiplier()))
 				message="Banana? Heh. Rainbow."
 				color={238,130,238}
 			end
@@ -172,12 +214,12 @@ function fire(ability,fireMode,throttle)
 				params
 			)
 		end
-		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
 	elseif special==1000 then
 		--this is THE card to draw. However, we're gonna be an ass about it. They won't know if it's this, or the bad one, til it's too late.
 		local message="Sayter."
 		local color={0,0,0}
-		messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
 		if sayterG then
 			sayterG=sayterG/2.0
 		else
@@ -208,7 +250,6 @@ function fire(ability,fireMode,throttle)
 			end
 			
 			projectileType=string.gsub(projectileType,"<element>",element)
-			--sb.logInfo("aimVec: %s",aimVec)
 			local projectileId = world.spawnProjectile(
 				projectileType,
 				firePosition(),
@@ -302,59 +343,11 @@ function spaz(wordCount,position,duration,throttle)
 	
 	local color={math.floor(math.random(1,255)),math.floor(math.random(1,255)),math.floor(math.random(1,255))}
 	
-	messageParticle(position,sentence,color,0.6,nil,duration,nil)
+	effectUtil.messageParticle(position,sentence,color,0.6,nil,duration,nil)
 end
 
 function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
-end
-
-function messageParticle(position, text, color, size, offset, duration, layer)
-world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false,  {
-        timeToLive = 0, damageType = "NoDamage", actionOnReap =
-        {
-            {
-                action = "particle",
-                specification = {
-                    text =  text or "default Text",
-                    color = color or {255, 255, 255, 255},  -- white
-                    destructionImage = "/particles/acidrain/1.png",
-                    destructionAction = "fade", --"shrink", "fade", "image" (require "destructionImage")
-                    destructionTime = duration or 0.8,
-                    layer = layer or "front",   -- 'front', 'middle', 'back' 
-                    position = offset or {0, 2},
-                    size = size or 0.7,  
-                    approach = {0,20},    -- dunno what it is
-                    initialVelocity = {0, 0.8},   -- vec2 type (x,y) describes initial velocity
-                    finalVelocity = {0,0.5},
-                    -- variance = {initialVelocity = {3,10}},  -- 'jitter' of included parameter
-                    angularVelocity = 0,                                   
-                    flippable = false,
-                    timeToLive = duration or 2,
-                    rotation = 0,
-                    type = "text"                 -- our best luck
-                }
-            } 
-        }
-    }
-    )
-end
-
-
-function effectInRange(range,effect,duration)
-	local buffer=util.mergeLists(world.npcQuery(activeItem.ownerAimPosition(),range),world.monsterQuery(activeItem.ownerAimPosition(),range))
-	for _,id in pairs(buffer) do
-		--world.sendEntityMessage(id,"applyStatusEffect",effect,duration,activeItem.ownerEntityId())
-		effectTarget(id,effect,duration)
-	end
-end
-
-function effectSelf(effect,duration)
-	effectTarget(activeItem.ownerEntityId(),effect,duration)
-end
-
-function effectTarget(id,effect,duration)
-	world.sendEntityMessage(id,"applyStatusEffect",effect,duration,activeItem.ownerEntityId())
 end
 
 function uninit()
