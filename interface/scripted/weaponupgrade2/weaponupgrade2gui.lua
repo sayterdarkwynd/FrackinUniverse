@@ -151,8 +151,9 @@ function doUpgrade()
 					
 					upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 0.25  -- increase Crit Chance
 					upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage  
+					
 					-- is it a rapier?
-					if (itemConfig.config.category == "rapier") or (itemConfig.config.category == "Rapier") then
+					if (itemConfig.config.category == "rapier") or (itemConfig.config.category == "Rapier") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") then
 					  upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 0.10	
 					  upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 0.5     -- increase Crit Damage  
 					end					
@@ -177,7 +178,7 @@ function doUpgrade()
 						end		    
 					end	
 					
-					if (itemConfig.config.category == "Tool") or (itemConfig.config.category == "tool") then
+				        if (itemConfig.config.category == "Tool") or (itemConfig.config.category == "tool") then
 						-- parasol
 						if upgradedItem.parameters.fallingParameters then
 							upgradedItem.parameters.fallingParameters.airForce = (itemConfig.parameters.airForce or itemConfig.config.airForce or 1) * 1.15 
@@ -189,19 +190,19 @@ function doUpgrade()
 							upgradedItem.parameters.maxFallSpeed = (itemConfig.parameters.maxFallSpeed or itemConfig.config.maxFallSpeed or 1) - 4 
 						end	 		
 							
-					-- hoe, chainsaw, etc
-					if upgradedItem.parameters.fireTime then
-						upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
-					end
-					
-					if upgradedItem.parameters.blockRadius then
-						upgradedItem.parameters.blockRadius = (itemConfig.parameters.blockRadius or itemConfig.config.blockRadius or 1) + 1
-					end	
-					
-					if upgradedItem.parameters.altBlockRadius then
-						upgradedItem.parameters.altBlockRadius = (itemConfig.parameters.altBlockRadius or itemConfig.config.altBlockRadius or 1) + 1
-					end			    
-				end
+						-- hoe, chainsaw, etc
+						if upgradedItem.parameters.fireTime then
+							upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
+						end
+
+						if upgradedItem.parameters.blockRadius then
+							upgradedItem.parameters.blockRadius = (itemConfig.parameters.blockRadius or itemConfig.config.blockRadius or 1) + 1
+						end	
+
+						if upgradedItem.parameters.altBlockRadius then
+							upgradedItem.parameters.altBlockRadius = (itemConfig.parameters.altBlockRadius or itemConfig.config.altBlockRadius or 1) + 1
+						end			    
+				        end
 					
 					-- is it a shield?
 					if (itemConfig.config.category == "shield") then
@@ -266,20 +267,21 @@ function doUpgrade()
 							}
 						end
 						
-						-- does the item have primaryAbility and a Fire Time? if so, we reduce fire time slightly as long as the weapon isnt already fast firing. We exclude rapiers, as they muck up with low-low firetimes, being fast already. Instead, we give them other perks.
-
-						if (itemConfig.config.primaryAbility.fireTime) and not (itemConfig.config.primaryAbility.fireTime <= 0.1) and not (itemConfig.config.category == "rapier") and not (itemConfig.config.category == "Rapier") then
-							if (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "scythe") then
-								upgradedItem.parameters.primaryAbility.fireTime = upgradedItem.parameters.primaryAbility.fireTime
-							else
-								local fireTimeBase = itemConfig.config.primaryAbility.fireTime
-								local fireTimeMod = ( upgradedItem.parameters.level/10 * 0.5)
-								local fireTimeFinal = fireTimeBase * fireTimeMod 
-								local fireTimeFinal2 = fireTimeBase - fireTimeFinal
-								upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2 
-							end
+						-- we reduce fire time slightly as long as the weapon isnt already too fast firing. 
+						if (itemConfig.config.primaryAbility.fireTime) then
+						  local fireTimeBase = itemConfig.config.primaryAbility.fireTime
+						  local fireTimeMod = ( upgradedItem.parameters.level/20 * 0.25)
+						  local fireTimeFinal = fireTimeBase * fireTimeMod 
+						  local fireTimeFinal2 = fireTimeBase - fireTimeFinal	
+						  
+						  if (itemConfig.config.category == "Rapier") or (itemConfig.config.category == "rapier") or (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "scythe") or (itemConfig.config.primaryAbility.fireTime <= 0.1) then
+						    upgradedItem.parameters.primaryAbility.fireTime = fireTimeBase	
+						  else
+						    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2  
+						  end
+						  
 						end
-
+						    
 						-- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
 						if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
 							local baseDpsBase = itemConfig.config.primaryAbility.baseDps
