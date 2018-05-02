@@ -12,7 +12,8 @@ armorBonus2={
 }
 
 armorBonus={
-	{stat = "poisonResistance", amount = 0.20},
+	{stat = "poisonStatusImmunity", amount = 1},
+	{stat = "biooozeImmunity", amount = 1},
 	{stat = "fallDamageMultiplier", baseMultiplier = 0.25}
 }
 
