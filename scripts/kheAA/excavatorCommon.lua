@@ -1,13 +1,14 @@
 require "/scripts/kheAA/transferUtil.lua"
 
-excavatorCommon={}
+excavatorCommon={
+	mainDelta = 0,
+	loadSelfTimer=0
+}
 states={}
 reDrillLevelFore=0
 redrillPosFore=nil
 reDrillLevelback=0
 redrillPosBack=nil
-deltatime = 0;
-local delta2=0
 step=0;
 time = 0;
 --[[
@@ -58,13 +59,8 @@ function excavatorCommon.init()
 	end
 	
 	if storage.isVacuum then
-		--[[if not world.takeItemDrop then
-			storage.isVacuum=false
-			sb.logInfo("Vacuum code set to run on client entity. Functionality disabled.")--shouldnt technically ever run.
-		else
-			storage.vacuumRange=config.getParameter("kheAA_vacuumRange")
-		end]]
 		storage.vacuumRange=config.getParameter("kheAA_vacuumRange",4)
+		storage.vacuumDelay=config.getParameter("kheAA_vacuumDelay",0)--in seconds
 	end
 	
 	if storage.isDrill or storage.isPump or storage.isVacuum then
@@ -77,32 +73,30 @@ end
 
 function excavatorCommon.cycle(dt)
 	if storage.disabled then return end
-	if not delta2 or delta2 > 1.0 then
+	if not excavatorCommon.loadSelfTimer or excavatorCommon.loadSelfTimer > 1.0 then
 		transferUtil.loadSelfContainer()
 		if storage.isPump then
 			liquidLib.update(dt)
 		end
-		delta2=0
+		excavatorCommon.loadSelfTimer=0
 	else
-		delta2=delta2+dt
-	end
-	if storage.state=="off" then
-		setRunning(false)
-		return
+		excavatorCommon.loadSelfTimer=excavatorCommon.loadSelfTimer+dt
 	end
 	
-	if transferUtil.powerLevel(storage.logicNode) then
+	if storage.state=="off" or not transferUtil.powerLevel(storage.logicNode) then
+		setRunning(false)
+		excavatorCommon.mainDelta=0
+		return
+	elseif transferUtil.powerLevel(storage.logicNode) then
 		if storage.state=="stop" then
 			setRunning(true)
 			storage.state="start"
-			return;
+			return
 		end
-	else
-		setRunning(false)
-		deltatime=0
 	end
+	
 	setRunning(true)
-	deltatime = (deltatime or 100) + dt
+	excavatorCommon.mainDelta = (excavatorCommon.mainDelta or 100) + dt--DO NOT INCREMENT ELSEWHERE
 	time = (time or (dt*-1)) + dt;
 	if time > 10 then
 		local pos = storage.position;
@@ -133,15 +127,22 @@ end
 
 function states.vacuum(dt)
 	if transferUtil.powerLevel(storage.logicNode) then
-		excavatorCommon.grab(entity.position())
-		storage.state="start"
+		if excavatorCommon.mainDelta > storage.vacuumDelay then
+			if excavatorCommon.vacuumSafetyCheck(entity.position()) then
+				excavatorCommon.grab(entity.position())
+			end
+			excavatorCommon.mainDelta=0
+			storage.state="start"
+		end
+	else
+		excavatorCommon.mainDelta=0
 	end
 end
 
 function states.moveDrillBar(dt)
-	if (deltatime * storage.excavatorRate) >= 0.2 then
+	if (excavatorCommon.mainDelta * storage.excavatorRate) >= 0.2 then
 		step = step + 0.2;
-		deltatime=0
+		excavatorCommon.mainDelta=0
 	end
 	animator.resetTransformationGroup("horizontal")
 	animator.scaleTransformationGroup("horizontal", {storage.width+step,1});
@@ -176,9 +177,9 @@ function states.moveDrill(dt)
 		storage.drillPos[2] = storage.drillPos[2] + drillDir[2];
 		renderDrill({storage.drillPos[1], storage.drillPos[2]})
 	end
-	if (deltatime * storage.excavatorRate) >= 0.05 then
+	if (excavatorCommon.mainDelta * storage.excavatorRate) >= 0.05 then
 		step = step + 0.1;
-		deltatime = 0;
+		excavatorCommon.mainDelta = 0;
 		renderDrill({storage.drillPos[1] + drillDir[1] * step, storage.drillPos[2] + drillDir[2] * step})
 	end
 	if storage.drillPos[1] == drillTarget[1] and storage.drillPos[2] == drillTarget[2] then
@@ -193,7 +194,7 @@ end
 
 
 function states.movePump(dt)
-	if (deltatime * storage.excavatorRate) >= 0.2 then
+	if (excavatorCommon.mainDelta * storage.excavatorRate) >= 0.2 then
 		step = step + 0.2;
 	end
 	if step >= 1 then
@@ -202,16 +203,18 @@ function states.movePump(dt)
 		storage.state = "pump";
 		renderPump(step)
 	end
-	if (deltatime * storage.excavatorRate) >= 0.1 then
+	if (excavatorCommon.mainDelta * storage.excavatorRate) >= 0.1 then
 		step = step + 0.1;
-		deltatime = 0;
+		excavatorCommon.mainDelta = 0;
 		renderPump(step)
 	end
 end
 
-
-
 function excavatorCommon.grab(grabPos)
+	if not entity.entityType() == "object" then
+		sb.logInfo("excavatorCommon.grab: Cannot run on non-object (id: %s). Stop trying to do so.",entity.id())
+		return
+	end
 	if not storage.vacuumRange then
 		if not missingRangeCheck then
 			sb.logInfo("Uh-oh, an object at %s is missing vacuum range!",entity.position())
@@ -221,21 +224,49 @@ function excavatorCommon.grab(grabPos)
 	end
 	local drops = world.itemDropQuery(grabPos,storage.vacuumRange);
 	--local size=world.containerItemsCanFit(storage.containerId,drops[i])
-	for i = 1, #drops do
-		local item = world.takeItemDrop(drops[i]);
+	for _,id in pairs(drops) do
+		--if entity.entityInSight(drops[i])
+		local item = world.takeItemDrop(id);
 		if item~=nil then
-			transferUtil.throwItemsAt(storage.containerId,storage.inContainers[storage.containerId],item,true)
+			local result,countSent,dropped=transferUtil.throwItemsAt(storage.containerId,storage.inContainers[storage.containerId],item,true)
+			--sb.logInfo("result: %s, countSent: %s, dropped: %s",result,countSent,dropped)
+			if dropped then--throttle control. no effect if no vac delay (such as on quarries and pumps)
+				excavatorCommon.mainDelta=storage.vacuumDelay*-1
+			end
 		end
 	end
 end
 
-
+function excavatorCommon.vacuumSafetyCheck(grabPos)
+	if entity.entityType()~="object" then
+		sb.logInfo("excavatorCommon.vacuumSafetyCheck: vacuum code disabled for nonobjects.")
+		return false
+	end--idiotproofing	
+	if not storage.vacuumRange then
+		if not missingRangeCheck then
+			sb.logInfo("Uh-oh, an object at %s is missing vacuum range!",entity.position())
+			missingRangeCheck=true
+		end
+		return
+	end
+	local objects = world.objectQuery(grabPos,storage.vacuumRange,{order = "nearest",withoutEntityId = entity.id()});--,callScript = "config.getParameter",callScriptArgs = "kheAA_vacuumRange", callScriptResult <???>
+	for _,id in pairs(objects) do
+		if world.entityExists(id) then
+			local range=world.getObjectParameter(id,"kheAA_isVacuum") and world.getObjectParameter(id,"kheAA_vacuumRange")
+			if range then
+				--vec2f entity.distanceToEntity
+				--sb.logInfo("Range of %s: %s",id,range)
+			end
+		end
+	end
+	return true
+end
 
 function states.mine(dt)
-	if (deltatime * storage.excavatorRate) < 0.1 then
+	if (excavatorCommon.mainDelta * storage.excavatorRate) < 0.1 then
 		return;
 	end
-	deltatime = 0;
+	excavatorCommon.mainDelta = 0;
 	if redrillPosFore ~= nil then
 		if reDrillLevelFore == 1 then
 			if world.material(redrillPosFore,"foreground") then
@@ -326,7 +357,7 @@ function states.mine(dt)
 		end
 	end
 	storage.drillTarget = excavatorCommon.getNextDrillTarget();
-	deltatime=0.1
+	excavatorCommon.mainDelta=0.1
 	storage.state = "moveDrill";
 	if storage.isVacuum then
 		excavatorCommon.grab(absdrillPos)
@@ -335,12 +366,15 @@ function states.mine(dt)
 end
 
 function states.pump(dt)
-	if (deltatime * storage.excavatorRate) < 0.2 then
+	if (excavatorCommon.mainDelta * storage.excavatorRate) < 0.2 then
 		return;
 	end
-	deltatime = 0;
-
-	local liquid = world.forceDestroyLiquid(transferUtil.getAbsPos({storage.facing, storage.depth},storage.position));
+	excavatorCommon.mainDelta = 0;
+	
+	local pos = transferUtil.getAbsPos({storage.facing, storage.depth},storage.position)
+		
+	local liquid = world.forceDestroyLiquid(pos);
+	
 	if liquid ~= nil then
 		if storage.liquids[liquid[1]] == nil then
 			storage.liquids[liquid[1]] = 0;
@@ -411,7 +445,7 @@ function states.pump(dt)
 		end
 		return
 	end
-	if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 1},storage.position), "foreground") then
+	if world.material({pos.x,pos.y-1}, "foreground") then
 		return;
 	end
 	--[[if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 2},storage.position), "foreground") then
@@ -476,4 +510,23 @@ function anims()
 		sb.logInfo("Excavator lib loaded. Your anims, however, are not.")
 		animWarn=true
 	end
+end
+
+function findCorners()
+	local rVal={xMin=0,yMin=0,xMax=0,yMax=0}
+	for _,v in pairs(object.spaces()) do
+		if rVal.xMin > v[1] then
+			rVal.xMin=v[1]
+		end
+		if rVal.yMin > v[2] then
+			rVal.yMin=v[2]
+		end
+		if rVal.xMax < v[1] then
+			rVal.xMax=v[1]
+		end
+		if rVal.yMax < v[2] then
+			rVal.yMax=v[2]
+		end
+	end
+	return rVal
 end
