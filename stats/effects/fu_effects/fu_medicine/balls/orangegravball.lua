@@ -1,5 +1,5 @@
 require "/scripts/util.lua"
-require "/stats/effects/effectUtil.lua"
+require "/scripts/effectUtil.lua"
 
 function init()
 	range=config.getParameter("range",200)

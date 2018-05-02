@@ -1,7 +1,7 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/epoch.lua"
-require "/stats/effects/effectUtil.lua"
+require "/scripts/effectUtil.lua"
 
 gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
 
