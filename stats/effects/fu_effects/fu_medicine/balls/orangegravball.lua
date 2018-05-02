@@ -15,8 +15,6 @@ function update(dt)
 end
 
 function pulse()
-	effectUtil.effectAllInRange(range,"timefreezeNoVFX",effect.duration())
-	effectUtil.effectAllInRange(range,"invulnerable",effect.duration())
-	
-	effectUtil.effectPlayersInRange(range,"superdarkstatUnblockableHidden",effect.duration())
+	effectUtil.effectAllInRange(range,"orangegravrainHiddenNoBlock",effect.duration())
+	effectUtil.effectAllInRange(range,"staffslow2",effect.duration())
 end

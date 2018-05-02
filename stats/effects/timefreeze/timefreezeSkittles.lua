@@ -1,18 +1,14 @@
+require "/scripts/effectUtil.lua"
 
 gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
 
 
 function init()
 	if effect.sourceEntity then
-		source=effect.sourceEntity()
+		effectUtil.source=effect.sourceEntity()
 	end
-	--"specialStatusImmunity"
 	hardTarget=(status.stat("specialStatusImmunity")>0)
-	--sb.logInfo("%s",{status=status,effect=effect})
-	--effect.setParentDirectives("fade=6a2284=0.4")
 	stun(1)
-
-	--mcontroller.setVelocity({0, 0})
 end
 
 function update(dt)
@@ -24,35 +20,43 @@ function update(dt)
 		if not gregDate or gregDate > 1.0 then
 			stun((gregDate or 1.0)*1.3)
 			local donkey=math.floor(math.random(1,81))
-			--sb.logInfo("Donkey %s",donkey)
 			gregDate=0.0
 			if donkey == 1 or donkey == 81 then
 				if donkey == 1 then
-					effectSelf("l6doomed",effect.duration()/(hardTarget and 2 or 1))
+					effectUtil.effectSelf("l6doomed",effect.duration()/(hardTarget and 2 or 1))
 				else
-					effectOnSource("l6doomed",effect.duration()*(hardTarget and 2 or 1))
+					effectUtil.effectOnSource("l6doomed",effect.duration()*(hardTarget and 2 or 1))
 				end
-				say("Sayter.")
+				effectUtil.say("Sayter.")
 				special=true
 			elseif donkey == 6 or donkey == 66 then
 				stun()
-				effectSelf("heal_1",effect.duration())
-				effectSelf("cultistshield",effect.duration())
-				say("Kevin.")
+				effectUtil.effectSelf("heal_1",effect.duration())
+				effectUtil.effectSelf("cultistshield",effect.duration())
+				effectUtil.say("Kevin.")
 				special=true
 			elseif donkey <= 3 or donkey == 33 then
-				effectSelf("partytime2",effect.duration()*donkey)
-				say("Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!")
+				if hardTarget and not true then
+					
+				end
+				effectUtil.effectSelf("partytime2",effect.duration()*donkey)
+				effectUtil.say("Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!")
 				special=true
 			elseif donkey <= 9 then
-				if source then
-					effectOnSource("nude",donkey*effect.duration()/10.0)
-					if hardTarget then
-						effectOnSource("vulnerability",donkey*effect.duration()/10.0)
+				effectUtil.effectOnSource("nude",donkey*effect.duration()/10.0,true)
+				if hardTarget and not effectUtil.effectOnSource("vulnerability",donkey*effect.duration()/10.0) then
+					if effectUtil.effectPlayersInRange(100,"vulnerability",donkey*effect.duration()/10.0) == 0 then
+						kevinDamon=true
+						effectUtil.effectSelf("heal_1",effect.duration())
+						effectUtil.effectSelf("cultistshield",effect.duration())
 					end
-					say("Matt Damon.")
-					special=true
 				end
+				if kevinDamon then
+					effectUtil.say("Kevin Damon.")
+				else
+					effectUtil.say("Matt Damon.")
+				end
+				special=true
 			end
 			if special then
 				effect.expire()
@@ -63,8 +67,7 @@ function update(dt)
 		else
 			gregDate=gregDate+dt*(math.random(1,10)/10.0)
 		end
-
-		--mcontroller.setVelocity({0, 0})
+		
 		mcontroller.controlModifiers({
 			facingSuppressed = true,
 			movementSuppressed = true
@@ -114,7 +117,7 @@ function spaz(wordCount)
 		
 		sentence=sentence..rWord..rPunct
 	end
-	say(sentence)
+	effectUtil.say(sentence)
 end
 
 
@@ -122,39 +125,11 @@ function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
 end
 
-function say(sentence)
-	if world.entityType(entity.id()) =="npc" then
-		world.callScriptedEntity(entity.id(),"npc.say",sentence)
-	elseif  world.entityType(entity.id())=="monster" then
-		world.callScriptedEntity(entity.id(),"monster.say",sentence)
-	end
-end
-
-function effectInRange(range,effect,duration)
-	local buffer=util.mergeLists(world.npcQuery(activeItem.ownerAimPosition(),range),world.monsterQuery(activeItem.ownerAimPosition(),range))
-	for _,id in pairs(buffer) do
-		--world.sendEntityMessage(id,"applyStatusEffect",effect,duration,activeItem.ownerEntityId())
-		effectTarget(id,effect,duration)
-	end
-end
-
 function stun(duration)
 	duration=duration or 0
 	if status.isResource("stunned") and not (status.stat("stunImmunity") > 0) then
 		status.setResource("stunned", duration)
 	elseif duration > 0 then
-		status.modifyResourcePercentage("health",duration*0.1)
+		status.modifyResourcePercentage("health",duration*0.001*math.random(1,10))
 	end
-end
-
-function effectSelf(effect,duration)
-	status.addEphemeralEffect(effect,duration,source)
-end
-
-function effectOnSource(effect,duration)
-	effectTarget(source,effect,duration)
-end
-
-function effectTarget(id,effect,duration)
-	world.sendEntityMessage(id,"applyStatusEffect",effect,duration,source)
 end
