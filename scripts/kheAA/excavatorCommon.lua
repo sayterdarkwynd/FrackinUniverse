@@ -128,9 +128,9 @@ end
 function states.vacuum(dt)
 	if transferUtil.powerLevel(storage.logicNode) then
 		if excavatorCommon.mainDelta > storage.vacuumDelay then
-			if excavatorCommon.vacuumSafetyCheck(entity.position()) then
-				excavatorCommon.grab(entity.position())
-			end
+			--if excavatorCommon.vacuumSafetyCheck(entity.position()) then
+			excavatorCommon.grab(entity.position())
+			--end
 			excavatorCommon.mainDelta=0
 			storage.state="start"
 		end
@@ -237,7 +237,7 @@ function excavatorCommon.grab(grabPos)
 	end
 end
 
-function excavatorCommon.vacuumSafetyCheck(grabPos)
+--[[function excavatorCommon.vacuumSafetyCheck(grabPos)
 	if entity.entityType()~="object" then
 		sb.logInfo("excavatorCommon.vacuumSafetyCheck: vacuum code disabled for nonobjects.")
 		return false
@@ -260,7 +260,7 @@ function excavatorCommon.vacuumSafetyCheck(grabPos)
 		end
 	end
 	return true
-end
+end]]
 
 function states.mine(dt)
 	if (excavatorCommon.mainDelta * storage.excavatorRate) < 0.1 then
@@ -512,7 +512,7 @@ function anims()
 	end
 end
 
-function findCorners()
+--[[function findCorners()
 	local rVal={xMin=0,yMin=0,xMax=0,yMax=0}
 	for _,v in pairs(object.spaces()) do
 		if rVal.xMin > v[1] then
@@ -529,4 +529,4 @@ function findCorners()
 		end
 	end
 	return rVal
-end
+end]]
