@@ -1,4 +1,5 @@
 require "/scripts/kheAA/transferUtil.lua"
+require "/scripts/vec2.lua"
 
 excavatorCommon={
 	mainDelta = 0,
@@ -29,7 +30,8 @@ function excavatorCommon.init()
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
 		return
 	end
-	storage.facing=util.clamp(object.direction(),0,1)
+	storage.direction=util.clamp(object.direction(),0,1)
+	storage.facing=object.direction()
 	storage.isDrill=config.getParameter("kheAA_isDrill",false)
 	storage.isPump=config.getParameter("kheAA_isPump",false)
 	storage.isVacuum=config.getParameter("kheAA_isVacuum",false)
@@ -123,6 +125,7 @@ function states.start(dt)
 	elseif storage.isVacuum then
 		storage.state="vacuum"
 	end
+	storage.box=transferUtil.findCorners()
 end
 
 function states.vacuum(dt)
@@ -321,15 +324,15 @@ function states.mine(dt)
 			end
 		end
 	end
-
-	local absdrillPos = transferUtil.getAbsPos(storage.drillPos,storage.position);
-	if (storage.position[2]-absdrillPos[2]) > storage.maxDepth then
+	
+	if storage.position[2] > storage.maxDepth then
 		drillReset()
 		anims()
 		setRunning(false)
 		storage.state="stop"
 		return
 	end
+	local absdrillPos = excavatorCommon.combineWrap({storage.drillPos,storage.position})
 	if world.material(absdrillPos,"foreground") then
 		world.damageTiles({absdrillPos}, "foreground", absdrillPos, "plantish", storage.drillPower)
 		if world.material(absdrillPos,"foreground") then
@@ -371,8 +374,7 @@ function states.pump(dt)
 	end
 	excavatorCommon.mainDelta = 0;
 	
-	local pos = transferUtil.getAbsPos({storage.facing, storage.depth},storage.position)
-		
+	local pos = excavatorCommon.combineWrap({{storage.facing, storage.depth},storage.position,{storage.facing==-1 and storage.box.xMax or 0,0}})
 	local liquid = world.forceDestroyLiquid(pos);
 	
 	if liquid ~= nil then
@@ -445,12 +447,9 @@ function states.pump(dt)
 		end
 		return
 	end
-	if world.material({pos.x,pos.y-1}, "foreground") then
+	if world.material({pos[1],pos[2]-1}, "foreground") then
 		return;
 	end
-	--[[if world.material(transferUtil.getAbsPos({storage.facing, storage.depth - 2},storage.position), "foreground") then
-		return;
-	end]]
 	if liquid == nil then
 		if storage.isDrill then
 			storage.state = "moveDrill";
@@ -469,14 +468,14 @@ end
 function excavatorCommon.getNextDrillTarget()
 	local pos = storage.position;
 	local target = {storage.drillPos[1], storage.drillPos[2]}
-	if storage.facing == 1 and target[1] >= storage.width + 1 then
-		storage.facing = -1
+	if storage.direction == 1 and target[1] >= storage.width + 1 then
+		storage.direction = -1
 		target[2] = target[2] - 1;	 
-	elseif storage.facing == -1 and target[1] <= 2 then
-		storage.facing = 1
+	elseif storage.direction == -1 and target[1] <= 2 then
+		storage.direction = 1
 		target[2] = target[2] - 1;
 	else
-		target[1] = target[1] + storage.facing;
+		target[1] = target[1] + storage.direction;
 	end
 	if pos[2] + target[2] <= 1 then
 		storage.state = "stop";
@@ -512,7 +511,18 @@ function anims()
 	end
 end
 
---[[function findCorners()
+
+function excavatorCommon.combineWrap(argList)
+	local buffer={0,0}
+	for _,pos in pairs(argList) do
+		buffer=vec2.add(buffer,pos or {0,0})
+	end
+	buffer[1]=world.xwrap(buffer[1])
+	--sb.logInfo("%s",buffer)
+	return buffer
+end
+
+function transferUtil.findCorners()
 	local rVal={xMin=0,yMin=0,xMax=0,yMax=0}
 	for _,v in pairs(object.spaces()) do
 		if rVal.xMin > v[1] then
@@ -529,4 +539,4 @@ end
 		end
 	end
 	return rVal
-end]]
+end
