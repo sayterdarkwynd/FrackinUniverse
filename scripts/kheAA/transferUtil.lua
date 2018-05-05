@@ -385,10 +385,6 @@ function transferUtil.unloadSelfContainer()
 	storage.outContainers={}
 end
 
-function transferUtil.getAbsPos(position,pos)
-	return {world.xwrap(pos[1] + position[1]), pos[2] + position[2]};
-end
-
 function dbg(args)
 	sb.logInfo(sb.printJson(args))
 end
