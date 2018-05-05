@@ -1,12 +1,14 @@
 {
   "name" : "fushadowresistance",
-  "effectConfig" : {
-    "resistanceValue" : 0.1
-  },
-  
-  "defaultDuration" : 300,
-
-  "scripts" : [
-    "fushadowresistance.lua"
-  ]
+	"effectConfig": {
+		"stats": [{
+				"stat": "shadowResistance",
+				"amount": 0.1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }
