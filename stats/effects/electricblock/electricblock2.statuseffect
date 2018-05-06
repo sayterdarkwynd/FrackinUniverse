@@ -1,14 +1,26 @@
 {
   "name" : "electricblock2",
-  "effectConfig" : {
-    "valueAdded" : 0.20
-  },
-  "defaultDuration" : 120,
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "electricResistance",
+				"amount": 0.2
+			},
+			{
+				"stat": "electricStatusImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "biomeelectricImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
-  "scripts" : [
-    "electricblock2.lua"
-  ],
-
-  "label" : "Electric Resistance",
+  "label" : "20% Electric Resistance",
   "icon" : "/interface/statuses/defenseelectric.png"
 }

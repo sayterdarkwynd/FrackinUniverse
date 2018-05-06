@@ -1,13 +1,16 @@
 {
   "name" : "defenseboost300",
-  "effectConfig" : {
-    "defenseAmount" : 32
-  },
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "defenseboost.lua"
-  ],
+ 	"effectConfig": {
+		"stats": [{
+				"stat": "protection",
+				"amount": 32
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
   "label" : "Def +32",
   "icon" : "/interface/statuses/defense4.png"

@@ -1,14 +1,22 @@
 {
   "name" : "physicalblock2",
-  "effectConfig" : {
-    "valueAdded" : 0.20
-  },
-  "defaultDuration" : 120,
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "physicalResistance",
+				"amount": 0.2
+			},
+			{
+				"stat": "grit",
+				"amount": 0.2
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
-  "scripts" : [
-    "physicalblock.lua"
-  ],
-
-  "label" : "Physical Resistance",
+  "label" : "20% Physical Resistance",
   "icon" : "/interface/statuses/defensephysical.png"
 }

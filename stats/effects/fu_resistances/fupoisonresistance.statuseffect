@@ -1,11 +1,14 @@
 {
   "name" : "fupoisonresistance",
-  "effectConfig" : {
-    "resistanceValue" : 0.1
-  },
-  "defaultDuration" : 300,
-
-  "scripts" : [
-    "fupoisonresistance.lua"
-  ]
+	"effectConfig": {
+		"stats": [{
+				"stat": "poisonResistance",
+				"amount": 0.1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

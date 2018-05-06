@@ -1,13 +1,16 @@
 {
   "name" : "defense5",
-  "effectConfig" : {
-    "defenseAmount" : 7
-  },
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "defenseboost.lua"
-  ],
+ 	"effectConfig": {
+		"stats": [{
+				"stat": "protection",
+				"amount": 7
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
   "label" : "Def +7",
   "icon" : "/interface/statuses/defense2.png"
