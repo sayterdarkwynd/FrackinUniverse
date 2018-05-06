@@ -1,9 +1,15 @@
 {
   "name" : "sulphuricimmunitywhitespine",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "sulphuricimmunity.lua"
-  ]
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "sulphuricImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }
