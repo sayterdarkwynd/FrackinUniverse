@@ -3463,7 +3463,128 @@
                     }
                 }
             }
-        }	  
+        },
+        
+        
+        
+	{
+		"op": "add",
+		"path": "/powerblaster",
+		"value": {
+			"stats": {
+				"power": 5,
+				"energy": 3,
+				"mechMass" : 3,
+				"multicount" : 6
+			},
+			"partParameters": {
+			    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+			    "armClass": "GunArm",
+			    "rotationLimits": [-1.75, 1.75],
+			    "fireOffset": [4, 0],
+			    "extendTime": 1,
+			    "fireTime": 2,
+			    "projectileType": "energyshard",
+			    "projectileCount": 6,
+			    "projectileSpread": 0.4,
+			    "projectileRandomOffset": [1.5, 0.75],			    
+			    "projectileParameters": {
+				"power": 8
+			    }
+			},
+			"partImages": {
+			    "<armName>": "arm/cannon.png",
+			    "<armName>Fullbright": "arm/cannon_fullbright.png"
+			},
+			
+			"defaultPrimaryColors": [
+			"838383",
+			"555555",
+			"383838",
+			"151515"
+			],
+			"defaultSecondaryColors": [
+			"9da8af",
+			"676f83",
+			"3d3d51",
+			"24232f"
+			],
+
+			"animationCustom": {
+			    "sounds": {
+				"<armName>Fire": [
+				    "/sfx/weapons/densiniumrifle.ogg"
+				]
+			    }
+			}
+		}
+	},        
+        
+	{
+		"op": "add",
+		"path": "/sawblaster",
+		"value": {
+			"stats": {
+				"power": 3,
+				"energy": 1,
+				"mechMass" : 3,
+				"multicount" : 3
+			},
+			"partParameters": {
+				"script": "/vehicles/modularmech/armscripts/missileburstarm.lua",
+				"armClass": "MissileBurst",
+				"rotationLimits": [-1.75,
+				1.75],
+				"fireOffset": [3.5,
+				-0.25],
+				"windupTime": 0.2,
+				"fireTime": 0.1,
+				"cooldownTime": 0.5,
+				"projectileType": "sawchakram",
+				"projectileParameters": {
+				  "power": 3
+				},
+				"projectileCount": 3,
+				"projectileSpread": 0.4,
+				"projectileRandomOffset": [1.5,0.75]
+			},
+			"partImages": {
+			    "<armName>": "arm/fusentrygun.png",
+			    "<armName>Fullbright": "arm/fusentrygun_fullbright.png"
+			},
+			
+			"defaultPrimaryColors": [
+			"838383",
+			"555555",
+			"383838",
+			"151515"
+			],
+			"defaultSecondaryColors": [
+			"9da8af",
+			"676f83",
+			"3d3d51",
+			"24232f"
+			],
+			
+			"animationCustom": {
+				"animatedParts": {
+					"stateTypes": {
+						"<armName>": {
+							"states": {
+								"windup": {
+									"mode": "end"
+								}
+							}
+						}
+					}
+				},
+				"sounds": {
+					"<armName>Recover": ["/sfx/gun/mech_beamdrill_winddown.ogg"],
+					"<armName>Fire": ["/sfx/projectiles/plasma1.ogg","/sfx/projectiles/plasma2.ogg"]
+				}
+			}
+		}
+	}        
     ],
 
     [{
