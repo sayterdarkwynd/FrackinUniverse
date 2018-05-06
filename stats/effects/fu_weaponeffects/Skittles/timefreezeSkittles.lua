@@ -7,6 +7,8 @@ function init()
 	if effect.sourceEntity then
 		effectUtil.source=effect.sourceEntity()
 	end
+	local typeName=effectUtil.entityTypeName()
+	isGreg=typeName=="greg" or typeName=="crewmembergreg"
 	hardTarget=(status.stat("specialStatusImmunity")>0)
 	stun(1)
 end
@@ -27,20 +29,20 @@ function update(dt)
 				else
 					effectUtil.effectOnSource("l6doomed",effect.duration()*(hardTarget and 2 or 1))
 				end
-				effectUtil.say("Sayter.")
+				skittleSay("Sayter.")
 				special=true
 			elseif donkey == 6 or donkey == 66 then
 				stun()
 				effectUtil.effectSelf("heal_1",effect.duration())
 				effectUtil.effectSelf("cultistshield",effect.duration())
-				effectUtil.say("Kevin.")
+				skittleSay("Kevin.")
 				special=true
 			elseif donkey <= 3 or donkey == 33 then
 				if hardTarget and not true then
 					
 				end
 				effectUtil.effectSelf("partytime2",effect.duration()*donkey)
-				effectUtil.say("Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!")
+				skittleSay("Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!")
 				special=true
 			elseif donkey <= 9 then
 				effectUtil.effectOnSource("nude",donkey*effect.duration()/10.0,true)
@@ -52,9 +54,9 @@ function update(dt)
 					end
 				end
 				if kevinDamon then
-					effectUtil.say("Kevin Damon.")
+					skittleSay("Kevin Damon.")
 				else
-					effectUtil.say("Matt Damon.")
+					skittleSay("Matt Damon.")
 				end
 				special=true
 			end
@@ -117,7 +119,7 @@ function spaz(wordCount)
 		
 		sentence=sentence..rWord..rPunct
 	end
-	effectUtil.say(sentence)
+	skittleSay(sentence)
 end
 
 
@@ -126,10 +128,14 @@ function firstToUpper(str)
 end
 
 function stun(duration)
-	duration=duration or 0
+	duration=not isGreg and duration or 0
 	if status.isResource("stunned") and not (status.stat("stunImmunity") > 0) then
 		status.setResource("stunned", duration)
 	elseif duration > 0 then
 		status.modifyResourcePercentage("health",duration*0.001*math.random(1,10))
 	end
+end
+
+function skittleSay(sentence)
+	skittleSay(isGreg and string.reverse(sentence) or sentence)
 end

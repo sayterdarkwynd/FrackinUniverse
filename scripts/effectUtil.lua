@@ -102,3 +102,7 @@ function effectUtil.say(sentence)
 		effectUtil.messageParticle(effectUtil.getPos(),sentence)
 	end
 end
+
+function effectUtil.entityTypeName()
+	return npc and npc.npcType() or monster and monster.type or entity and entity.entityType()
+end
