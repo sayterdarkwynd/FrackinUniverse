@@ -5,30 +5,31 @@ local output = nil
 function init()
 	power.init()
 	self = config.getParameter("duplicator")
+	self.craftTime = config.getParameter("craftTime")
 	self.timer = self.craftTime
 end
 
 function update(dt)
 	--if wireCheck() == true then
 		if crafting == false then
-		if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
-			local slot = 0
-			local fuelSlot = getInputContents(slot)
-			for _,fuel in pairs (self.fuel) do
-				if fuelSlot == fuel then
-					slot = 1
-					local inputOutputSlot = getInputContents(slot)
-					for _,inputOutput in pairs (self.inputOutput) do
-						if inputOutputSlot == inputOutput then
-							world.containerConsumeAt(entity.id(),0,1)
-							self.timer = self.craftTime
-							output = inputOutputSlot
-							crafting = true
+			if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
+				local slot = 0
+				local fuelSlot = getInputContents(slot)
+				for _,fuel in pairs (self.fuel) do
+					if fuelSlot == fuel then
+						slot = 1
+						local inputOutputSlot = getInputContents(slot)
+						for _,inputOutput in pairs (self.inputOutput) do
+							if inputOutputSlot == inputOutput then
+								world.containerConsumeAt(entity.id(),0,1)
+								self.timer = self.craftTime
+								output = inputOutputSlot
+								crafting = true
+							end
 						end
 					end
 				end
 			end
-		end
 		end
 	--end
 	self.timer = self.timer - dt
