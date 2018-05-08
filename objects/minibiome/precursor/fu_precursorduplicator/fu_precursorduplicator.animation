@@ -4,35 +4,42 @@
       "base" : {
         "default" : "off",
         "states" : {
-          "off" : {"frames" : 1}
+          "off" : {
+            "frames" : 1
+          },
+          "on" : {
+            "frames" : 80,
+            "cycle" : 5,
+            "mode" : "loop"
+          }
         }
       }
     },
 
     "parts" : {
+     
       "base" : {
 	"properties" : {
-	"zLevel" : 2,
-	"centered" : false,
-	"fullbright" : true 
+	  "centered" : false,
+	  "zLevel" : 1,
+	  "fullbright" : false
 	},
         "partStates" : {
           "base" : {
-            "off" : {"properties" : {"image" : "<partImage>:off"}}
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            }
           }
         }
-      },
-      "basefullbright" : {
-	"properties" : {
-	"zLevel" : 3,
-	"centered" : false
-	},
-        "partStates" : {
-          "base" : {
-            "off" : {"properties" : {"image" : "<partImage>:off"}}
-          }
-        }
-      }      
+      }
     }
   }
 }

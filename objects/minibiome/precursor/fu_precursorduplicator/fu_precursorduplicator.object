@@ -2,27 +2,39 @@
   "objectName" : "fu_precursorduplicator",
   "colonyTags" : ["precursor","ancient"],
   "rarity" : "Legendary",
-  "description" : "Place fuel in the top left slot to duplicate materials in the bottom left slot. ^cyan;Requires ^orange;200W ^cyan;power.^reset;",
-  "shortdescription" : "Precursor Duplicator",
+  "description" : "Place fuel in the FUEL slot to duplicate materials in the ITEM slot. ^cyan;Requires ^orange;120W ^cyan;power.^reset;",
+  "shortdescription" : "Duplicator",
   "race" : "precursor",
   "printable" : false,
   "category" : "crafting",
   
   "health" : 20,
 
-  "animation" : "fu_precursorduplicator2.animation",
+  "animation" : "fu_precursorduplicator.animation",
   "animationParts" : {
-    "base" : "fu_precursorduplicator2.png",
-    "basefullbright" : "fu_precursorduplicator2lit.png"
+    "base" : "fu_precursorduplicator.png"
   },
   "animationPosition" : [-23, 0],
   
   "inventoryIcon" : "fu_precursorduplicatoricon.png",
   "orientations" : [
     {
-      "dualImage" : "fu_precursorduplicator2.png:off",
+      "imageLayers" : [ { "image" : "fu_precursorduplicator.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_precursorduplicatorlit.png:<color>.<frame>"} ],
       "imagePosition" : [-23, 0],
       "frames" : 81,
+      "direction" : "left",
+      "flipImages" : true,      
+      "animationCycle" : 5,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_precursorduplicator.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_precursorduplicatorlit.png:<color>.<frame>"} ],
+      "imagePosition" : [-23, 0],
+      "frames" : 81,
+      "direction" : "right",
+      "flipImages" : true,      
+      "animationCycle" : 5,
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
@@ -46,5 +58,5 @@
   "autoCloseCooldown" : 3600,
   "craftTime" : 1,
   "powertype" : "input",
-  "isn_requiredPower" : 80
+  "isn_requiredPower" : 120
 }
