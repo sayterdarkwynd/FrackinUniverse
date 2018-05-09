@@ -325,7 +325,8 @@ function states.mine(dt)
 		end
 	end
 	
-	if storage.position[2] > storage.maxDepth then
+	if storage.drillPos[2] > storage.maxDepth then
+		--sb.logInfo(".p %s, .mD %s",storage.position,storage.maxDepth)
 		drillReset()
 		anims()
 		setRunning(false)
