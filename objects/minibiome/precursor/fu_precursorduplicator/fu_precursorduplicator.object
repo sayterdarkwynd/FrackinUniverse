@@ -2,27 +2,39 @@
   "objectName" : "fu_precursorduplicator",
   "colonyTags" : ["precursor","ancient"],
   "rarity" : "Legendary",
-  "description" : "Place fuel in the top left slot to duplicate materials in the bottom left slot. ^cyan;Requires ^orange;200W ^cyan;power.^reset;",
-  "shortdescription" : "Precursor Duplicator",
+  "description" : "Place fuel in the FUEL slot to duplicate materials in the ITEM slot. ^cyan;Requires ^orange;120W ^cyan;power.^reset;",
+  "shortdescription" : "Duplicator",
   "race" : "precursor",
   "printable" : false,
   "category" : "crafting",
   
-  "health" : 100000,
+  "health" : 20,
 
   "animation" : "fu_precursorduplicator.animation",
   "animationParts" : {
-    "base" : "fu_precursorduplicator.png",
-    "basefullbright" : "fu_precursorduplicatorlit.png"
+    "base" : "fu_precursorduplicator.png"
   },
-  "animationPosition" : [-64, 0],
+  "animationPosition" : [-23, 0],
   
   "inventoryIcon" : "fu_precursorduplicatoricon.png",
   "orientations" : [
     {
-      "dualImage" : "fu_precursorduplicator.png:off",
-      "imagePosition" : [-64, 0],
-      "frames" : 8,
+      "imageLayers" : [ { "image" : "fu_precursorduplicator.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_precursorduplicatorlit.png:<color>.<frame>"} ],
+      "imagePosition" : [-23, 0],
+      "frames" : 81,
+      "direction" : "left",
+      "flipImages" : true,      
+      "animationCycle" : 5,
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fu_precursorduplicator.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_precursorduplicatorlit.png:<color>.<frame>"} ],
+      "imagePosition" : [-23, 0],
+      "frames" : 81,
+      "direction" : "right",
+      "flipImages" : true,      
+      "animationCycle" : 5,
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
@@ -35,8 +47,7 @@
 
   "duplicator" : {
         "fuel" : [ "precursorfluid", "plutoniumrod", "solariumstar" ],
-	"inputOutput" : [ "plutoniumrod","uraniumrod", "neptuniumrod", "thoriumrod", "solariumstar", "copperbar", "silverbar", "ironbar", "titaniumbar", "durasteelbar", "goldbar", "tungstenbar", "densiniumbar", "quietusbar","effigiumbar","fuamberchunk","irradiumbar","isogenbar","moonstonebar","penumbriteshard","protocitebar","pyreitebar","solaricrystal","triangliumpyramid","xithricitecrystal","zerchesiumbar"],
-	"craftTime" : 1
+	"inputOutput" : [ "plutoniumrod","uraniumrod", "neptuniumrod", "thoriumrod", "solariumstar", "copperbar", "silverbar", "ironbar", "titaniumbar", "durasteelbar", "goldbar", "tungstenbar", "densiniumbar", "quietusbar","effigiumbar","fuamberchunk","irradiumbar","isogenbar","moonstonebar","penumbriteshard","protocitebar","pyreitebar","solaricrystal","triangliumpyramid","xithricitecrystal","zerchesiumbar"]
   },
   
   "objectType" : "container",
@@ -45,7 +56,7 @@
   "subtitle" : "",
   "frameCooldown" : 5,
   "autoCloseCooldown" : 3600,
-  
+  "craftTime" : 1,
   "powertype" : "input",
-  "isn_requiredPower" : 200
+  "isn_requiredPower" : 120
 }
