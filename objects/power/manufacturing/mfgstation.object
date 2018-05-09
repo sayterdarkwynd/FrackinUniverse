@@ -25,8 +25,8 @@
   "orientations" : [
     {
       "imageLayers" : [ { "image" : "mfgstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "mfgstationlit.png:<color>.<frame>" } ],
-      "imagePosition" : [0, 0],
-
+      "imagePosition" : [-63, 0],
+      "animationPosition" : [-63, 0],
       "direction" : "left",
       "flipImages" : true,
 
@@ -38,9 +38,9 @@
     },
 
     {
-      "imageLayers" : [ { "image" : "mfgstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "mfgstationlit.png:<color>.<frame>" } ],
-      "imagePosition" : [0, 0],
-
+      "imageLayers" : [ { "image" : "dmfgstation.png:<color>.<frame>", "fullbright" : true }, { "image" : "mfgstationlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-63, 0],
+      "animationPosition" : [-63, 0],
       "direction" : "right",
 
       "frames" : 12,
@@ -51,13 +51,13 @@
     }
   ],
 
-  "animation" : "/objects/manufacturing/mfgstation.animation",
-"animationParts" : {
-  "samplingarrayanim" : "mfgstation.png"
-},
+  "animation" : "mfgstation.animation",
+  "animationParts" : {
+    "samplingarrayanim" : "mfgstation.png"
+  },
 
 
-  "scripts" : [ "/scripts/power.lua","/objects/manufacturing/mfgstation.lua", "/scripts/npcToyObject.lua"],
+  "scripts" : [ "/scripts/power.lua", "mfgstation.lua", "/scripts/npcToyObject.lua"],
   "scriptDelta" : 30,
   "recipeGroup" : "mfgstation",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
