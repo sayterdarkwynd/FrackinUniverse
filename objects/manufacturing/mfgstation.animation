@@ -1,0 +1,42 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "samplingarrayanim" : {
+        "default" : "idle",
+        "states" : {
+          "working" : {
+            "frames" : 11,
+            "cycle" : 1,
+            "mode" : "loop"
+          },
+          "idle" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "samplingarrayanim" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "samplingarrayanim" : {
+            "working" : {
+              "properties" : {
+                "image" : "<partImage>:default.<frame>"
+              }
+            },
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:default.default"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
