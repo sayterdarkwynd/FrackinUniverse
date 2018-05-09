@@ -2,11 +2,6 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/KheAA/transferUtil.lua"
 require "/scripts/power.lua"
 
-<<<<<<< HEAD
-=======
--- search "POWERTEST" to see lines added for power.
--- commenting out those lines should have the station functioning without power.
->>>>>>> 26f654973224c33f6390d38b3b014eee81e1551f
 
 -- list of items to exlude from prototyping
 local exclusionList = {
@@ -104,16 +99,10 @@ function scanRecipes(sample)
                     sampleInputs[stack.name] = stack.count
                 end
               end
-<<<<<<< HEAD
               if recipeTime < 1 then recipeTime = 1
             table.insert(recipes, n, {inputs = sampleInputs, outputs = sampleOutput, time = recipeTime })
           end
         end
-=======
-
-            table.insert(recipes, n, {inputs = sampleInputs, outputs = sampleOutput, time = recipeTime })
-          end
->>>>>>> 26f654973224c33f6390d38b3b014eee81e1551f
             return recipes
         end
 
