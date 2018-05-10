@@ -1,14 +1,19 @@
 {
-  "name" : "jumpboostwarriorrobes",
-  "effectConfig" : {},
-  "defaultDuration" : 1,
+	"name": "jumpboostwarriorrobes",
+	"effectConfig": {
+		"controlModifiers": {
+			"airJumpModifier": 1.25,
+			"speedModifier": 1.25
+		}
+	},
+	"defaultDuration": 1,
 
-  "scripts" : [
-    "jumpboostwarriorrobes.lua"
-  ],
+	"scripts": [
+		"/stats/effects/fu_genericControlModifiers.lua"
+	],
 
-  "animationConfig" : "jumpboost.animation",
+	"animationConfig": "jumpboost.animation",
 
-  "label" : "Jump Boost",
-  "icon" : "/interface/statuses/jumpboost.png"
+	"label": "Jump Boost",
+	"icon": "/interface/statuses/jumpboost.png"
 }
