@@ -1,15 +1,46 @@
 {
   "name" : "apexartifact",
-  "effectConfig" : {
-    "energyBonus" : 1.15,
-    "iceResistance" : 0.10,
-    "poisonResistance" : 0.10
-  },
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "maxEnergy",
+				"baseMultiplier": 1.15
+			},
+			{
+				"stat": "iceResistance",
+				"amount": 0.1
+			},
+			{
+				"stat": "poisonResistance",
+				"amount": 0.1
+			},
+			{
+				"stat": "fumudslowImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "iceslipImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "jungleslowImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "slushslowImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "snowslowImmunity",
+				"amount": 1
+			}
+		]
+	},
   
   "defaultDuration" : 3,
 
   "scripts" : [
-    "apexartifact.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ]
 
 }
