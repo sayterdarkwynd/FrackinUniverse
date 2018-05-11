@@ -1,11 +1,6 @@
-function init()
-  script.setUpdateDelta(3)
-end
+oldUpdate=update
 
 function update(dt)
   animator.setFlipped(mcontroller.facingDirection() == -1)
-end
-
-function uninit()
-  
+  oldUpdate(dt)
 end
