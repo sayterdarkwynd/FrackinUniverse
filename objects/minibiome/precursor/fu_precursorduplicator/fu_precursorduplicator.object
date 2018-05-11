@@ -46,7 +46,17 @@
   "inputNodes" : [ [-1, 0] ],
 
   "duplicator" : {
-        "fuel" : [ "precursorfluid", "plutoniumrod", "solariumstar" ],
+		"fuel": {
+			"tritium" : 4,
+			"precursorfluid": 4,
+			"solariumstar": 3,
+			"enricheduranium" : 2,
+			"enrichedplutonium" : 2,
+			"thoriumrod": 2,
+			"uraniumrod": 1,
+			"plutoniumrod": 1,
+			"neptuniumrod": 1
+		},
 	"inputOutput" : [ "plutoniumrod","uraniumrod", "neptuniumrod", "thoriumrod", "solariumstar", "copperbar", "silverbar", "ironbar", "titaniumbar", "durasteelbar", "goldbar", "tungstenbar", "densiniumbar", "quietusbar","effigiumbar","fuamberchunk","irradiumbar","isogenbar","moonstonebar","penumbriteshard","protocitebar","pyreitebar","solaricrystal","triangliumpyramid","xithricitecrystal","zerchesiumbar"]
   },
   
@@ -56,7 +66,7 @@
   "subtitle" : "",
   "frameCooldown" : 5,
   "autoCloseCooldown" : 3600,
-  "craftTime" : 1,
+  "craftTime" : 0.5,
   "powertype" : "input",
   "isn_requiredPower" : 120
 }

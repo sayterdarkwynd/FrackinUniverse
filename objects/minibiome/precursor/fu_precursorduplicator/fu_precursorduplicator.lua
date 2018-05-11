@@ -1,4 +1,5 @@
-require '/scripts/power.lua'
+require '/scripts/power.lua' --needed for contains()
+require '/scripts/util.lua'
 local crafting = false
 local output = nil
 
@@ -9,39 +10,24 @@ function init()
 	self.timer = self.craftTime
 end
 
-
--- this is to determine fuel value
-function checkFuelType()
-	  if fuel[item.name] == "precursorfluid" then
-	    self.fuelValue = 3
-	  elseif fuel[item.name] == "plutoniumrod" or "uraniumrod" or "neptuniumrod" or "thoriumrod" then
-	    self.fuelValue = 1
-	  elseif fuel[item.name] == "solariumstar" then
-	    self.fuelValue = 2
-	  end			
-	  sb.logInfo("fuel = ",fuel[item.name])
-end
-
-
 function update(dt)
 	--if wireCheck() == true then
 		if crafting == false then
 			if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
-				local slot = 0
-				local fuelSlot = getInputContents(slot)
-				for _,fuel in pairs (self.fuel) do
-					if fuelSlot == fuel then
-						slot = 1
-						local inputOutputSlot = getInputContents(slot)
-						for _,inputOutput in pairs (self.inputOutput) do
-							if inputOutputSlot == inputOutput then
-								world.containerConsumeAt(entity.id(),0,1)
-								self.timer = self.craftTime
-								output = inputOutputSlot
-								crafting = true
-							end
-						end
-					end
+				local fuelSlot = world.containerItemAt(entity.id(),0)
+				fuelSlot = fuelSlot and fuelSlot.name or ""
+
+				local inputOutputSlot = world.containerItemAt(entity.id(),1)
+				inputOutputSlot = inputOutputSlot and inputOutputSlot.name or ""
+				
+				local fuelValue=self.fuel[fuelSlot] or 0
+			
+				if contains(self.inputOutput,inputOutputSlot) then
+					world.containerConsumeAt(entity.id(),0,1)
+					self.timer = self.craftTime
+					output = inputOutputSlot
+					outputCount = fuelValue  --  math.round(math.max( fuelValue * (item.price / 1000),10))  (needs root.itemConfig?)
+					crafting = true
 				end
 			end
 		end
@@ -53,14 +39,14 @@ function update(dt)
 			if power.consume(config.getParameter('isn_requiredPower')) then
 				local slots = getOutSlotsFor(output)
 				for _,i in pairs(slots) do
-					output = world.containerPutItemsAt(entity.id(), output, i)
+					output = world.containerPutItemsAt(entity.id(), {name=output,count=outputCount}, i)  
 					if output == nil then
 						break
 					end
 				end
-				
+
 				if output ~= nil then
-				  world.spawnItem(output, entity.position(), 1)
+				  world.spawnItem(output, entity.position(), outputCount)
 				end
 				crafting = false
 			end
@@ -74,26 +60,8 @@ function update(dt)
 	power.update(dt)
 end
 
-function getInputContents(slot)
-	local stack = world.containerItemAt(entity.id(),slot)
-	local contents = {}
-	if stack then
-		contents = stack.name
-	end
-	return contents
-end
-
 function wireCheck()
-	if object.isInputNodeConnected(0) == true then
-		if object.getInputNodeLevel(0) == true then
-			return true
-		else
-			return false
-		end
-	else
-	return true
-	end
-	return false
+	return (object.inputNodeCount() == 0) or not object.isInputNodeConnected(0) or object.getInputNodeLevel(0)
 end
 
 function getOutSlotsFor(something)
