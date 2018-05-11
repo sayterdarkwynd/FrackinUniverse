@@ -1,67 +1,67 @@
 {
-  "itemName" : "protominer",
-  "level" : 2,
+  "itemName" : "weaponminer",
+  "level" : 3,
   "price" : 100,
-  "inventoryIcon" : "protominergun.png",
+  "inventoryIcon" : "weaponminergun.png",
   "maxStack" : 1,
   "rarity" : "common",
-    "description" : "A reliable beam-miner.",
-    "shortdescription" : "P-7 Miner",
-    "learnBlueprintsOnPickup" : [ "penumbriteminer", "murdermanipulator", "weaponminer" ],
-  "category" : "upgradeableTool",
-  "itemTags" : [ "weapon","ranged", "tool", "mininggun", "mininglaser", "upgradeableWeapon" ],
-  "twoHanded" : false,
   "tooltipKind" : "gun2",
-  "animation" : "protominer.animation",
+  "description" : "A trusty beam weapon.",
+  "shortdescription" : "Phaser",
+  "category" : "pistol",
+  "itemTags" : [ "weapon","ranged", "pistol", "energy", "upgradeableWeapon" ],
+  "twoHanded" : false,
+
+  "animation" : "weaponminer.animation",
   "animationParts" : {
     "beamorigin" : "rainbowmuzzle.png",
-    "gnome" : "protominer.png",
-    "gnomefullbright" : "protominerfullbright.png"
+    "gnome" : "weaponminer.png",
+    "gnomefullbright" : "weaponminerfullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fireStart" : [ "/sfx/gun/aegisaltpistol_start.ogg" ],
-      "fireLoop" : [ "/sfx/gun/magnorbs_shield_loop2.ogg" ],
-      "fireEnd" : [ "/sfx/gun/aegisaltpistol_stop.ogg" ],
+      "fireStart" : [ "/sfx/weapons/arconpew.ogg" ],
+      "fireLoop" : [ "/sfx/weapons/isn_heatray.ogg" ],
+      "fireEnd" : [ "/sfx/weapons/arconpew.ogg" ],
       "beamImpact" : [ "/sfx/tools/block_protected.ogg" ]
     }
   },
   "animationScripts" : ["/items/active/effects/chain.lua"],
 
-  "muzzleOffset" : [1.2, -0.05],
+  "muzzleOffset" : [1.45, 0.15],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua" ],
 
   "elementalType" : "physical",
-  "critChance" : 5,
+  "critChance" : 0.25,
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/unique/miners/protominer/beamfire.lua"],
+    "scripts" : ["/items/active/weapons/ranged/unique/miners/weaponminer/beamfire.lua"],
     "class" : "BeamFire",
 
-    "fireTime" : 0.18,
-    "baseDps" : 0.6,
-    "energyUsage" : 2,
+    "fireTime" : 0.1,
+    "baseDps" : 12,
+    "energyUsage" : 20,
 
     "damageConfig" : {
-      "statusEffects" : [ "electrified" ],
+      "statusEffects" : [ "stun" ],
       "damageSourceKind" : "electric",
-      "knockback" : 5
+      "knockback" : 0
     },
 
-    "beamLength" : 6,
+    "beamLength" : 20,
 
     "chain" : {
       "startOffset" : [0, 0],
-      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/protominer/rainbowstart.png",
-      "segmentImage" : "/items/active/weapons/ranged/unique/miners/protominer/rainbow.png",
-      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/protominer/rainbowend.png",
+      "startSegmentImage" : "/items/active/weapons/ranged/unique/miners/weaponminer/rainbowstart.png",
+      "segmentImage" : "/items/active/weapons/ranged/unique/miners/weaponminer/rainbow.png",
+      "endSegmentImage" : "/items/active/weapons/ranged/unique/miners/weaponminer/rainbowend.png",
       "segmentSize" : 0.40,
-      "overdrawLength" : 0.1,
+      "overdrawLength" : 0.0,
       "taper" : 0,
       "waveform" : {
-        "frequency" : 2.5,
-        "amplitude" : 0.1,
-        "movement" : 2.0
+        "frequency" : 0.1,
+        "amplitude" : 0,
+        "movement" : 0.0
       },
       "fullbright" : true
     },
@@ -113,19 +113,19 @@
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   
   "upgradeParameters" : {
-          "shortdescription" : "^cyan;P-7 Miner^reset; ^green;^reset;"  
+          "shortdescription" : "^cyan;Phaser MkII^reset; ^green;^reset;"  
   },
   "upgradeParameters2" : {
-          "shortdescription" : "^cyan;P-7 Miner^reset; ^cyan;^reset;" 
+          "shortdescription" : "^cyan;Phaser MkIII^reset; ^cyan;^reset;"   
   },
   "upgradeParameters3" : {
-          "shortdescription" : "^cyan;P-7 Miner^reset; ^yellow;^reset;",
+          "shortdescription" : "^cyan;Phaser MkIV^reset; ^yellow;^reset;",
 	  "primaryAbility" : {
 	    "damageConfig" : {
 	      "statusEffects" : [ "frozenburning" ],
 	      "damageSourceKind" : "cosmic",
-	      "knockback" : 5
+	      "knockback" : 1
 	    }
-	  }    
-  }
+	  }
+  }  
 }
