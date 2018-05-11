@@ -19,6 +19,7 @@ function update(dt)
 	inputOutputSlot = inputOutputSlot and inputOutputSlot.name or ""
 
 	local fuelValue=self.fuel[fuelSlot] or 0
+	local fuelValueBonus = 0  -- bonus output
 	
 	if wireCheck() == true and fuelValue > 0 then -- make sure there is fuel in there
 		if crafting == false then
@@ -33,8 +34,12 @@ function update(dt)
 					itemOre = root.itemConfig(world.containerItemAt(entity.id(),1))
 					
 					if itemOre then
+					  if math.random(10) == 10 then
+					    fuelValueBonus = math.random(1,2)
+					  end
+					  
 					  itemValue = itemOre.config.price /1000
-					  fuelValue = fuelValue - (fuelValue  * itemValue) 
+					  fuelValue = (fuelValue - (fuelValue  * itemValue)) + fuelValueBonus
 					  if fuelValue < 1 then
 					    fuelValue = 1
 					  end
