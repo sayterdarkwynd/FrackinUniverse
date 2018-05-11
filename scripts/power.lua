@@ -9,6 +9,10 @@ function init()
 end
 
 function power.update(dt)
+	if not power.warmedUp then
+		power.init()
+		power.warmedUp=true
+	end
   if config.getParameter('powertype') then
     if config.getParameter('powertype') == 'battery' then
       storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
