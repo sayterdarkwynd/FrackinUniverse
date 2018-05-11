@@ -8,5 +8,5 @@ end
 
 function update(dt)
 	mcontroller.controlModifiers(controlModifierValues)
-	if oldUpdate then oldUpdate() end
+	if oldUpdate then oldUpdate(dt) end
 end
