@@ -9,6 +9,20 @@ function init()
 	self.timer = self.craftTime
 end
 
+
+-- this is to determine fuel value
+function checkFuelType()
+	  if fuel[item.name] == "precursorfluid" then
+	    self.fuelValue = 3
+	  elseif fuel[item.name] == "plutoniumrod" or "uraniumrod" or "neptuniumrod" or "thoriumrod" then
+	    self.fuelValue = 1
+	  elseif fuel[item.name] == "solariumstar" then
+	    self.fuelValue = 2
+	  end			
+	  sb.logInfo("fuel = ",fuel[item.name])
+end
+
+
 function update(dt)
 	--if wireCheck() == true then
 		if crafting == false then
