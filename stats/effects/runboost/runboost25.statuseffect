@@ -1,12 +1,15 @@
 {
   "name" : "runboost25",
-  "effectConfig" : {},
-  "defaultDuration" : 30,
+	"effectConfig": {
+		"controlModifiers": {
+			"speedModifier": 1.25
+		}
+	},
+	"defaultDuration": 30,
 
-  "scripts" : [
-    "runboost25.lua"
-  ],
-
+	"scripts": [
+		"/stats/effects/fu_genericControlModifiers.lua"
+	],
   "animationConfig" : "runboost.animation",
 
   "label" : "+25% Run",

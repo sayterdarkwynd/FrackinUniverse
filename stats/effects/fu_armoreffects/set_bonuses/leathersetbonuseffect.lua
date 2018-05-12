@@ -25,7 +25,7 @@ function init()
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
-        checkArmor()
+	checkArmor()
 end
 
 function update(dt)
@@ -36,10 +36,6 @@ function update(dt)
 		checkWeapons()
 		checkArmor()
 	end
-
-	mcontroller.controlModifiers({
-		speedModifier = 1.05
-	})
 end
 
 function checkArmor()

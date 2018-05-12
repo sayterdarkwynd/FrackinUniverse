@@ -1704,16 +1704,16 @@
                     "<armName>Fullbright": "arm/Burstrifle_fullbright.png"
                 },
                 "defaultPrimaryColors": [
-                    "fffa70",
-                    "e9d31b",
-                    "d1b412",
-                    "927c03"
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
                 ],
                 "defaultSecondaryColors": [
-                    "6a6a6a",
+                    "838383",
                     "555555",
-                    "2b2b2b",
-                    "202020"
+                    "383838",
+                    "151515"
                 ],
                 "animationCustom": {
                     "sounds": {
@@ -1723,7 +1723,310 @@
                     }
                 }
             }
-        }, {
+        },
+	{
+            "op": "add",
+            "path": "/fuflamearm",
+            "value": {
+                "stats": {
+                    "power": 2,
+                    "energy": 3,
+                    "rapidFire" : 8,
+                    "mechMass" : 3
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [4.5, -0.2],
+                    "extendTime": 1,
+                    "fireTime": 0.08,
+                    "projectileType": "flamethrower",
+                    "projectileCount": 1,
+                    "projectileInaccuracy" : 0.05,
+                    "projectileParameters": {
+                        "power": 0.04
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/flamer.png",
+                    "<armName>Fullbright": "arm/flamer_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],                
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/items/active/weapons/ranged/unique/science/flamecannon/isn_flamethrower_deep.ogg"
+                        ]
+                    }
+                }
+            }
+        },         
+ 	{
+            "op": "add",
+            "path": "/fuflamearm2",
+            "value": {
+                "stats": {
+                    "power": 4,
+                    "energy": 5,
+                    "multicount" : 4,
+                    "rapidFire" : 20,
+                    "mechMass" : 5
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [4.5, -0.4],
+                    "extendTime": 1,
+                    "fireTime": 0.08,
+                    "projectileType": "flamethrower",
+                    "projectileSpacing" : [0, 1],
+                    "projectileCount": 2,
+                    "projectileInaccuracy" : 0.05,
+                    "projectileParameters": {
+                        "power": 0.03
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/flamer2.png",
+                    "<armName>Fullbright": "arm/flamer2_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],                
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/items/active/weapons/ranged/unique/science/flamecannon/isn_flamethrower_deep.ogg"
+                        ]
+                    }
+                }
+            }
+        },   
+ 	{
+            "op": "add",
+            "path": "/fuflamearm3",
+            "value": {
+                "stats": {
+                    "power": 6,
+                    "energy": 7,
+                    "multicount" : 8,
+                    "rapidFire" : 20,
+                    "mechMass" : 6
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [4.5, -0.4],
+                    "extendTime": 1,
+                    "fireTime": 0.08,
+                    "projectileType": "flamethrower",
+                    "projectileSpacing" : [0, 0.5],
+                    "projectileCount": 4,
+                    "projectileInaccuracy" : 0.05,
+                    "projectileParameters": {
+                        "power": 0.01
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/flamer3.png",
+                    "<armName>Fullbright": "arm/flamer3_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],                
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/items/active/weapons/ranged/unique/science/flamecannon/isn_flamethrower_deep.ogg"
+                        ]
+                    }
+                }
+            }
+        }, 
+	{
+            "op": "add",
+            "path": "/fuicearm",
+            "value": {
+                "stats": {
+                    "power": 2,
+                    "energy": 3,
+                    "rapidFire" : 10,
+                    "mechMass" : 3
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [4.5, -0.2],
+                    "extendTime": 1,
+                    "fireTime": 0.08,
+                    "projectileType": "fuicethrower",
+                    "projectileCount": 1,
+                    "projectileInaccuracy" : 0.05,
+                    "projectileParameters": {
+                        "power": 0.015
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/flamer.png",
+                    "<armName>Fullbright": "arm/flamer_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],                
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/items/active/weapons/ranged/unique/science/flamecannon/isn_flamethrower_deep.ogg"
+                        ]
+                    }
+                }
+            }
+        },         
+ 	{
+            "op": "add",
+            "path": "/fuicearm2",
+            "value": {
+                "stats": {
+                    "power": 4,
+                    "energy": 5,
+                    "multicount" : 6,
+                    "rapidFire" : 20,
+                    "mechMass" : 5
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [4.5, -0.4],
+                    "extendTime": 1,
+                    "fireTime": 0.08,
+                    "projectileType": "fuicethrower",
+                    "projectileSpacing" : [0, 1],
+                    "projectileCount": 2,
+                    "projectileInaccuracy" : 0.05,
+                    "projectileParameters": {
+                        "power": 0.02
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/flamer2.png",
+                    "<armName>Fullbright": "arm/flamer2_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],                
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/items/active/weapons/ranged/unique/science/flamecannon/isn_flamethrower_deep.ogg"
+                        ]
+                    }
+                }
+            }
+        },   
+ 	{
+            "op": "add",
+            "path": "/fuicearm3",
+            "value": {
+                "stats": {
+                    "power": 6,
+                    "energy": 7,
+                    "multicount" : 10,
+                    "rapidFire" : 24,
+                    "mechMass" : 6
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [4.5, -0.4],
+                    "extendTime": 1,
+                    "fireTime": 0.08,
+                    "projectileType": "fuicethrower",
+                    "projectileSpacing" : [0, 0.5],
+                    "projectileCount": 4,
+                    "projectileInaccuracy" : 0.05,
+                    "projectileParameters": {
+                        "power": 0.002
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/flamer3.png",
+                    "<armName>Fullbright": "arm/flamer3_fullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "f4988c",
+                    "d93a3a",
+                    "932625",
+                    "601119"
+                ],
+                "defaultSecondaryColors": [
+                    "838383",
+                    "555555",
+                    "383838",
+                    "151515"
+                ],                
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/items/active/weapons/ranged/unique/science/flamecannon/isn_flamethrower_deep.ogg"
+                        ]
+                    }
+                }
+            }
+        },           
+        {
             "op": "add",
             "path": "/fuultracannon",
             "value": 
@@ -3311,7 +3614,128 @@
                     }
                 }
             }
-        }	  
+        },
+        
+        
+        
+	{
+		"op": "add",
+		"path": "/powerblaster",
+		"value": {
+			"stats": {
+				"power": 5,
+				"energy": 3,
+				"mechMass" : 3,
+				"multicount" : 6
+			},
+			"partParameters": {
+			    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+			    "armClass": "GunArm",
+			    "rotationLimits": [-1.75, 1.75],
+			    "fireOffset": [4, 0],
+			    "extendTime": 1,
+			    "fireTime": 2,
+			    "projectileType": "energyshard",
+			    "projectileCount": 6,
+			    "projectileSpread": 0.4,
+			    "projectileRandomOffset": [1.5, 0.75],			    
+			    "projectileParameters": {
+				"power": 8
+			    }
+			},
+			"partImages": {
+			    "<armName>": "arm/cannon.png",
+			    "<armName>Fullbright": "arm/cannon_fullbright.png"
+			},
+			
+			"defaultPrimaryColors": [
+			"838383",
+			"555555",
+			"383838",
+			"151515"
+			],
+			"defaultSecondaryColors": [
+			"9da8af",
+			"676f83",
+			"3d3d51",
+			"24232f"
+			],
+
+			"animationCustom": {
+			    "sounds": {
+				"<armName>Fire": [
+				    "/sfx/weapons/densiniumrifle.ogg"
+				]
+			    }
+			}
+		}
+	},        
+        
+	{
+		"op": "add",
+		"path": "/sawblaster",
+		"value": {
+			"stats": {
+				"power": 3,
+				"energy": 1,
+				"mechMass" : 3,
+				"multicount" : 3
+			},
+			"partParameters": {
+				"script": "/vehicles/modularmech/armscripts/missileburstarm.lua",
+				"armClass": "MissileBurst",
+				"rotationLimits": [-1.75,
+				1.75],
+				"fireOffset": [3.5,
+				-0.25],
+				"windupTime": 0.2,
+				"fireTime": 0.1,
+				"cooldownTime": 0.5,
+				"projectileType": "sawchakram",
+				"projectileParameters": {
+				  "power": 3
+				},
+				"projectileCount": 3,
+				"projectileSpread": 0.4,
+				"projectileRandomOffset": [1.5,0.75]
+			},
+			"partImages": {
+			    "<armName>": "arm/fusentrygun.png",
+			    "<armName>Fullbright": "arm/fusentrygun_fullbright.png"
+			},
+			
+			"defaultPrimaryColors": [
+			"838383",
+			"555555",
+			"383838",
+			"151515"
+			],
+			"defaultSecondaryColors": [
+			"9da8af",
+			"676f83",
+			"3d3d51",
+			"24232f"
+			],
+			
+			"animationCustom": {
+				"animatedParts": {
+					"stateTypes": {
+						"<armName>": {
+							"states": {
+								"windup": {
+									"mode": "end"
+								}
+							}
+						}
+					}
+				},
+				"sounds": {
+					"<armName>Recover": ["/sfx/gun/mech_beamdrill_winddown.ogg"],
+					"<armName>Fire": ["/sfx/projectiles/plasma1.ogg","/sfx/projectiles/plasma2.ogg"]
+				}
+			}
+		}
+	}        
     ],
 
     [{
@@ -4003,5 +4427,53 @@
             "path": "/ranger/partParameters/projectileParameters/power",
             "value": 30
         }
-    ]       
+    ],
+    [{
+            "op": "test",
+            "path": "/crows"
+        },{
+            "op": "add",
+            "path": "/crows/stats/mechMass",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/ranger/stats/power",
+            "value": 15
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/crows"
+        },{
+            "op": "add",
+            "path": "/crows/stats/mechMass",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/ranger/stats/power",
+            "value": 15
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/cloudspear"
+        },{
+            "op": "add",
+            "path": "/cloudspear/stats/mechMass",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/powerhammer/stats/power",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/powerhammer/stats/energy",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/powerhammer/partParameters/projectileParameters/power",
+            "value": 31
+        }
+    ]
 ]

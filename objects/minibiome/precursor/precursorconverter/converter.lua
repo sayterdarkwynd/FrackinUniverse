@@ -22,7 +22,9 @@ local recipes =
 {inputs = { techcard=1 }, outputs = { essence=4 }, time = 1.0},
 {inputs = { upgrademodule=1 }, outputs = { essence=4 }, time = 1.0},
 {inputs = { manipulatormodule=1 }, outputs = { essence=3 }, time = 1.0},
-{inputs = { crunchychick=1 }, outputs = { essence=20 }, time = 1.0}
+{inputs = { crunchychick=1 }, outputs = { essence=5 }, time = 1.0},
+{inputs = { crunchychickdeluxe=1 }, outputs = { essence=20 }, time = 1.0},
+{inputs = { crunchychickevil=1 }, outputs = { fuscienceresource=1000 }, time = 1.0}
 -- should have precursor resources crafted here, too
 }
 

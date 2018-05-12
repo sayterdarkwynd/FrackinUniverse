@@ -10,7 +10,3 @@ function update(dt)
       jumpModifier = 0.9
     })
 end
-
-function uninit()
-  
-end

@@ -6,7 +6,6 @@ function init()
       {stat = "energyRegenPercentageRate", amount = -1},
       {stat = "energyRegenBlockTime", effectiveMultiplier = 0}
     })
-  local bounds = mcontroller.boundBox()
     self.powerModifier = (status.resource("energy")/100) + (status.resource("health")/100) + 0.25
     effect.addStatModifierGroup({
       {stat = "powerMultiplier", baseMultiplier = 1 + self.powerModifier}

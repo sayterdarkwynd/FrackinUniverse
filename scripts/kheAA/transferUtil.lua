@@ -100,7 +100,7 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 	if target==nil and targetPos==nil then
 		if drop then
 			world.spawnItem(item,entity.position())
-			return true,item.count
+			return true,item.count,true
 		else
 			return false
 		end
@@ -113,7 +113,7 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 		end
 	elseif drop then
 		world.spawnItem(item,entity.position())
-		return true,item.count
+		return true,item.count,true
 	else
 		return false
 	end
@@ -121,7 +121,7 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 	if world.containerSize(target) == nil or world.containerSize(target) == 0 then
 		if drop then
 			world.spawnItem(item,targetPos)
-			return true,item.count
+			return true,item.count,true
 		else
 			return false
 		end
@@ -131,7 +131,7 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 	if leftOverItems ~= nil then
 		if drop then
 			world.spawnItem(leftOverItems,targetPos)
-			return true, item.count
+			return true, item.count, true
 		else
 			return true,item.count-leftOverItems.count
 		end
@@ -383,10 +383,6 @@ end
 function transferUtil.unloadSelfContainer()
 	storage.inContainers={}
 	storage.outContainers={}
-end
-
-function transferUtil.getAbsPos(position,pos)
-	return {world.xwrap(pos[1] + position[1]), pos[2] + position[2]};
 end
 
 function dbg(args)

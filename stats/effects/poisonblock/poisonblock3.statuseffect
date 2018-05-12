@@ -1,13 +1,21 @@
 {
   "name" : "poisonblock3",
-  "effectConfig" : {
-    "valueAdded" : 0.30
-  },
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "poisonblock2.lua"
-  ],
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "poisonResistance",
+				"amount": 0.3
+			},
+			{
+				"stat": "poisonStatusImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
   "label" : "Poison Resistance",
   "icon" : "/interface/statuses/defensepoison.png"

@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/scripts/effectUtil.lua"
 
 function init()
 	range=config.getParameter("range",200)
@@ -13,35 +14,9 @@ function update(dt)
 	end
 end
 
-function effectNonPlayersInRange(range,effect,duration)
-	local buffer=util.mergeLists(world.npcQuery(entity.position(),range),world.monsterQuery(entity.position(),range))
-	for _,id in pairs(buffer) do
-		effectTarget(id,effect,duration)
-	end
-end
-
-function effectPlayersInRange(range,effect,duration)
-	local buffer=world.playerQuery(entity.position(),range)
-	for _,id in pairs(buffer) do
-		effectTarget(id,effect,duration)
-	end
-end
-
-function effectSelf(effect,duration)
-	effectTarget(entity.id(),effect,duration)
-end
-
-function effectTarget(id,effect,duration)
-	world.sendEntityMessage(id,"applyStatusEffect",effect,duration,entity.id())
-end
-
 function pulse()
-	effectNonPlayersInRange(range,"timefreezeNoVFX",effect.duration())
-	effectNonPlayersInRange(range,"invulnerable",effect.duration())
-	--effectNonPlayersInRange(range,"statusimmunity",effect.duration())
+	effectUtil.effectAllInRange(range,"timefreezeNoVFX",effect.duration())
+	effectUtil.effectAllInRange(range,"invulnerable",effect.duration())
 	
-	effectPlayersInRange(range,"superdarkstatUnblockableHidden",effect.duration())
-	effectPlayersInRange(range,"timefreezeNoVFX",effect.duration())
-	effectPlayersInRange(range,"invulnerable",effect.duration())
-	--effectPlayersInRange(range,"statusimmunity",effect.duration())
+	effectUtil.effectPlayersInRange(range,"superdarkstatUnblockableHidden",effect.duration())
 end

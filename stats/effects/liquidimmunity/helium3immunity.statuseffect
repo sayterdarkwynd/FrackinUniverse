@@ -1,9 +1,15 @@
 {
   "name" : "helium3Immunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "helium3immunity.lua"
-  ]
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "helium3Immunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

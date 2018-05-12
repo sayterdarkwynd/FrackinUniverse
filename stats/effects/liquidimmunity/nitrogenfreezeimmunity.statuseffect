@@ -1,9 +1,15 @@
 {
   "name" : "nitrogenfreezeimmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "nitrogenfreezeimmunity.lua"
-  ]
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "liquidnitrogenImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

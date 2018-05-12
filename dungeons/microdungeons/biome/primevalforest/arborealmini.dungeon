@@ -4,7 +4,7 @@
     "species" : "dummy",
     "rules" : [
     ],
-    "anchor" : [ "arborealmini1", "arborealmini3", "arborealmini4", "arborealmini6", "treehouse1", "treehouse2", "treehouse3" ],
+    "anchor" : [ "arborealmini1", "arborealmini3", "arborealmini4", "arborealmini6" ],
 
     "maxRadius" : 2000,
     "maxParts" : 15
@@ -19,7 +19,7 @@
       "value" : [0, 131, 41, 255],
       "comment" : "background ",
       "brush" : [ [ "clear" ], [ "back", "plantmatter" ], [ "front", "plantmatter" ] ]
-    },    
+    },
     {
       "value" : [73, 53, 41, 255],
       "comment" : "background ",
@@ -29,12 +29,12 @@
       "value" : [73, 62, 41, 255],
       "comment" : "background ",
       "brush" : [ [ "clear" ], [ "back", "fullwood2" ] ]
-    },    
+    },
     {
       "value" : [117, 85, 66, 255],
       "comment" : "background ",
       "brush" : [ [ "clear" ], [ "back", "fullwood2" ], [ "front", "fullwood2" ] ]
-    },    
+    },
     {
       "value" : [167, 149, 113, 255],
       "comment" : "background ",
@@ -70,7 +70,7 @@
     {
       "value" : [255, 0, 225, 255],
       "comment" : "magic pinkppp, a no-op value"
-    },    
+    },
     {
       "value" : [0, 0, 0, 255],
       "rules" : [ [ "worldGenMustContainAirBackground" ], [ "allowOverdrawing" ] ],
@@ -564,27 +564,6 @@
       "name" : "arborealmini6",
       "rules" : [ ],
       "def" : [ "image", [ "arborealmini6.png", "arborealmini6-objects.png" ] ]
-    },
-    {
-      "name" : "treehouse1",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "tmx", "treehouse1.json" ]
-    },
-    {
-      "name" : "treehouse2",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "tmx", "treehouse2.json" ]
-    },
-     {
-      "name" : "treehouse3",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "tmx", "treehouse3.json" ]
     }
   ]
 }

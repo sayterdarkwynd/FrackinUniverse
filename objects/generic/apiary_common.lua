@@ -62,6 +62,12 @@ function initAntimiteFrames()
 		if mods.antimite then
 			self.antimiteFrames[frame] = true
 		end
+		--if mods.miteReduction then
+		--	self.miteReduction = mods.miteReduction
+		--end
+		--if mods.mitePenalty then
+		--	self.mitePenalty = mods.mitePenalty
+		--end		
 	end
 end
 

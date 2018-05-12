@@ -1,11 +1,14 @@
 {
   "name" : "furadioactiveresistance3",
-  "effectConfig" : {
-    "resistanceValue" : 0.3
-  },
-  "defaultDuration" : 300,
-
-  "scripts" : [
-    "furadioactiveresistance.lua"
-  ]
+	"effectConfig": {
+		"stats": [{
+				"stat": "radioactiveResistance",
+				"amount": 0.3
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

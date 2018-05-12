@@ -1,12 +1,25 @@
 {
-  "name" : "humanartifact",
-  "effectConfig" : {
-  },
-  
-  "defaultDuration" : 3,
+	"name": "humanartifact",
+	"effectConfig": {
+		"stats": [{
+				"stat": "maxEnergy",
+				"baseMultiplier": 1.2
+			},
+			{
+				"stat": "powerMultiplier",
+				"baseMultiplier": 1.1
+			},
+			{
+				"stat": "cosmicResistance",
+				"amount": 0.2
+			}
+		]
+	},
 
-  "scripts" : [
-    "humanartifact.lua"
-  ]
+	"defaultDuration": 3,
+
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 
 }
