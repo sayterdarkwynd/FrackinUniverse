@@ -2,5 +2,5 @@ oldUpdate=update
 
 function update(dt)
   animator.setFlipped(mcontroller.facingDirection() == -1)
-  oldUpdate(dt)
+  if oldUpdate then oldUpdate(dt) end
 end
