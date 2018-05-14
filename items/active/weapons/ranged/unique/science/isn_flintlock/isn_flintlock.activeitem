@@ -33,15 +33,15 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.6,
-    "baseDps" : 6.6,
-    "energyUsage" : 35,
+    "baseDps" : 8,
+    "energyUsage" : 25,
     "fireType" : "auto",
-    "inaccuracy" : 0.03,
+    "inaccuracy" : 0.01,
     "projectileCount" : 1,
     "projectileType" : "bullet-2",
     "projectileParameters" : {
       "speed" : 75,
-      "knockback" : 4
+      "knockback" : 12
     },
     "stances" : {
       "idle" : {
@@ -72,7 +72,63 @@
       }
     }
   },
-  "critChance" : 5,
+  "critChance" : 2,
   "critBonus" : 4,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;AS-2 Powershot^reset; ^yellow;^reset;",
+  "description" : "Revolver...evolved.
+^cyan;+1 projectile^reset;", 
+  "animationParts" : {
+    "middle" : "isn_flintlock2.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "isn_flintlock2.png:" }
+    ],
+    "critChance" : 2.5,
+    "critBonus" : 5,
+    "primaryAbility" : {
+	    "fireTime" : 0.55,
+	    "baseDps" : 8.4,
+	    "energyUsage" : 25,
+	    "inaccuracy" : 0.03,
+	    "fireType" : "auto",
+
+	    "projectileType" : "bullet-2",
+	    "projectileParameters" : {
+	      "speed" : 75,
+	      "knockback" : 15
+	    },
+	    "projectileCount" : 2    
+    }
+  },
+  "upgradeParameters2" : {
+    "shortdescription" : "^cyan;AS-6 Motherlode^reset; ^yellow;^reset;",
+  "description" : "It doesn't get better.
+^cyan;+2 projectile^reset;", 
+  "animationParts" : {
+    "middle" : "isn_flintlock3.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "isn_flintlock3.png:" }
+    ],
+    "critChance" : 2.65,
+    "critBonus" : 6,
+    "primaryAbility" : {
+	    "fireTime" : 0.50,
+	    "baseDps" : 9,
+	    "energyUsage" : 25,
+	    "inaccuracy" : 0.03,
+	    "fireType" : "auto",
+
+	    "projectileType" : "bullet-2",
+	    "projectileParameters" : {
+	      "speed" : 75,
+	      "knockback" : 18
+	    },
+	    "projectileCount" : 3    
+    }
+  }  
+  
 }
