@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Fires unusual blasts that ignore physics
-^yellow;Multiple damage types^reset;",
+^yellow;Ignores walls^reset;",
   "shortdescription" : "Wave Gun",
   "tooltipKind" : "gun2",
   "category" : "assaultRifle",
@@ -31,7 +31,7 @@
     }
   },
   "baseOffset" : [0.92, 0.35],
-  "muzzleOffset" : [0.5, 0.0],
+  "muzzleOffset" : [0.5, -0.05],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -46,12 +46,12 @@
     "energyUsage" : 24,
     "inaccuracy" : 0,
     "fireType" : "auto",
-
+    "timeToLive" : 1.5,
     //"projectileType" : "isn_annihilator",
     "projectileType" : "fuwobbleshot",
     "projectileParameters" : {
       "knockback" : 16,
-      "speed" : 50
+      "speed" : 40
     },
     "projectileCount" : 1,
 
@@ -87,6 +87,19 @@
   "critChance" : 2,
   "critBonus" : 5,
   "altAbilityType" : "deathshead",
-
+  "altAbility" : {
+    "name" : "Wave Burst",
+    "projectileCount" : 8,
+    "inaccuracy" : 0.08,
+    "fireTime" : 1.5,
+    "projectileType" : "fuwobbleshot",
+    "projectileParameters" : { 
+      "damageSourceKind" : "shadow",
+      "knockback"  : 8,
+      "speed" : 35,
+      "statusEffects" : [ "defenseboostneg10" ]
+      }
+  },
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
