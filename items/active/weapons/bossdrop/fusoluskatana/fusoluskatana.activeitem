@@ -92,17 +92,27 @@
   "critChance": 4,
   "critBonus": 6,
   "altAbilityType": "kunaiblast",
+  "altAbility":{
+      //"projectileOffset" : [2.5, 0],
+      "stances" : {
+		"windup" : {
+			"weaponOffset":[0,2.5] 
+			},
+		"fire" : {
+			"weaponOffset":[0,2.5] 
+			}
+		}
+	},
   "builder": "/items/buildscripts/buildunrandweapon.lua",
   
   "upgradeParameters": {
-    "inventoryIcon": "fusoluskatanaicon_l8.png",
+    "inventoryIcon": "fusoluskatanaicon_l5.png",
     "animationParts": {
-      "blade": "blade_l8.png",
-      "handle": "handle_l8.png"
+      "blade": "blade_l5.png"
     },
-	"animation": "/items/active/weapons/bossdrop/fusoluskatana/fusoluskatana_l8.animation",
-	"description": "Your meddling with Asra's katana has changed the blade's color to purple. Oh, and it's more killy too.",
-        "shortdescription": "Essenus Katana",
+	"animation": "/items/active/weapons/bossdrop/fusoluskatana/fusoluskatana_l5.animation",
+	"description": "Asra Nox's sword, Now with more Valiantness! And killy Kunais! ...By the way, is it just me or is the color a bit off?",
+    "shortdescription": "Valiantus Katana",
 	"primaryAbility": {
 		"fireTime": 0.78,
 		"baseDps": 7.25,
@@ -118,7 +128,7 @@
 			[0.14, -57.5],
 			[0.18, -70]
 		],
-		"projectileType" : "fuenergyshardplayer"
+		"projectileType" : "fuenergyshardplayer_r"
 	}
   },
   "upgradeParameters2": {
@@ -128,13 +138,13 @@
       "handle": "handle_l8.png"
     },
 	"animation": "/items/active/weapons/bossdrop/fusoluskatana/fusoluskatana_l8.animation",
-	"description": "Wow.",
-        "shortdescription": "Valiant Katana",
+	"description": "Your constant meddling with Asra's Katana and Essence has changed the blade's color to purple! Oh, and it's far more killy too.",
+        "shortdescription": "Essenus Katana",
 	"primaryAbility": {
 		"fireTime": 0.73,
 		"baseDps": 7.65,
 		"comboSteps": 10
-  },
+	},
   "critChance": 5,
   "critBonus": 7,
 	"altAbility": {
