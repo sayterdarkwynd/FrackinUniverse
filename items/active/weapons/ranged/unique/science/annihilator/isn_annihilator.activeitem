@@ -18,7 +18,7 @@
     "middle" : "isn_annihilator.png",
     "middlefullbright" : "isn_annihilatorfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/alienmuzzle.png"
   },
   "animationCustom" : {
     "lights" : { "glow" : {
@@ -35,21 +35,22 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "cosmic",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 0.6,
+    "fireTime" : 0.2,
     "baseDps" : 9.274,
     "energyUsage" : 23,
     "inaccuracy" : 0,
     "fireType" : "auto",
 
-    "projectileType" : "isn_annihilator",
+    //"projectileType" : "isn_annihilator",
+    "projectileType" : "fuwobbleshot",
     "projectileParameters" : {
-      "knockback" : 2,
+      "knockback" : 15,
       "speed" : 60
     },
     "projectileCount" : 1,
