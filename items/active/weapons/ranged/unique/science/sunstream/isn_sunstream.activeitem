@@ -124,7 +124,7 @@
 		      "loop" : true,
 		      "action" : "projectile",
 		      "type" : "chargeshotboom",
-		      "inheritDamageFactor" :0.25,
+		      "inheritDamageFactor" :0.45,
 		      "fuzzAngle" : 0
 		   },
 		    {
@@ -132,7 +132,7 @@
 		      "loop" : true,
 		      "action" : "projectile",
 		      "type" : "electricguardianbullet",
-		      "inheritDamageFactor" :0.5,
+		      "inheritDamageFactor" :0.45,
 		      "fuzzAngle" : 360,
 		      "projectileParameters" : { "speed" : 0 }
 		   }
@@ -140,7 +140,7 @@
 		  "actionOnReap" : [
 		    {
 			  "action" : "config",
-			  "file" : "/projectiles/explosions/plasmaboomsmall/plasmaboomsmall4.config"
+			  "file" : "/projectiles/explosions/plasmaboom/plasmaboom.config"
 		    },   
 		    {
 		      "action" : "sound",
@@ -151,6 +151,9 @@
 	  },
 	  "altAbilityType" : "floatydeathball2",
 	  "altAbility" : {
+	    "fireTime" : 2,
+	    "baseDps" : 12,
+	    "energyUsage" : 40,	  
 	    "projectileParameters" : {
 	      "processing":"?hueshift=0"
 	    }

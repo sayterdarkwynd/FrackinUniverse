@@ -5,21 +5,22 @@
   "timeToLive" : 10,
   "image" : "floatydeathball2.png",
   "animationCycle" : 1.5,
-  "animationLoops" : false,
+  "animationLoops" : true,
   "orientationLocked" : true,
   "flippable" : true,
   "fullbright" : true,
   "scripts" : [ "homingarrow.lua" ],
   "baseHomingControlForce" : 2,
-  "lightColor" : [160, 160, 0],
+  "lightColor" : [40, 0, 200],
   "frameNumber" : 2,
   "periodicActions" : [ 
     {
-      "time" : 0.01,
+      "time" : 0.005,
       "loop" : true,
       "action" : "projectile",
       "type" : "chargeshotboom",
-      "inheritDamageFactor" :0.25,
+      "inheritDamageFactor" :0.45,
+      "config" : { "timeToLive" : 1 },
       "fuzzAngle" : 0
    },
     {
@@ -27,7 +28,25 @@
       "loop" : true,
       "action" : "projectile",
       "type" : "electricguardianbullet",
-      "inheritDamageFactor" :0.5,
+      "inheritDamageFactor" :0.55,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 0 }
+   },   
+    {
+      "time" : 0.008,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "electricguardianbullet",
+      "inheritDamageFactor" :0.55,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 0 }
+   },   
+    {
+      "time" : 0.005,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "electricguardianbullet",
+      "inheritDamageFactor" :0.55,
       "fuzzAngle" : 360,
       "projectileParameters" : { "speed" : 0 }
    }
@@ -35,14 +54,11 @@
   
   "actionOnReap" : [
     {
-          "action" : "config",
-          "file" : "/projectiles/explosions/plasmaboomsmall/plasmaboomsmall4.config"
-    },   
-    {
-      "action" : "sound",
-      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+	  "action" : "config",
+	  "file" : "/projectiles/explosions/plasmaboom/plasmaboom.config"
     }
   ],
+  "level" : 6,  
   "power" : 10,
   "damageKind" : "cosmic"
 }
