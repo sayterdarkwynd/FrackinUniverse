@@ -103,5 +103,27 @@
   "critBonus" : 12,
   "altAbilityType" : "swtjc_ewg_repelgrenades",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Paladin^reset; ^yellow;",
+    "description" : "A massive energy sniper rifle. Big impact.
+^yellow;AoE Denial Primary^reset;",
+   "animationParts" : { "middle" : "bigdaddy2.png" },
+    "inventoryIcon" : [ { "image" : "bigdaddy2.png" } ], 
+    
+	  "primaryAbility" : {
+	    "baseDps" : 9.4,
+	    "energyUsage" : 47.0,
+	    "recoilForce" : 20,	  
+	    "projectileParameters" : { 
+	      "processing":"?hueshift=-180",
+	      "speed" : 92,
+	      "knockback" : 30,
+	      "statusEffects" : [ "frozenburning" ],
+	      "damageSourceKind" : "fire"
+	    }       
+	  }	  
+      }
 }
