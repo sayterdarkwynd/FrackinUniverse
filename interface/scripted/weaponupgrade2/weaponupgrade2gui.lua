@@ -296,7 +296,7 @@ function doUpgrade()
 						end
 					end
 	  
-					sb.logInfo("Upgrading weapon : ")	  
+					sb.logInfo("Pre-Upgrade Stats : ")	  
 					sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
 					
 					if (itemConfig.config.upgradeParameters)  and (upgradedItem.parameters.level) > 3 then
@@ -311,6 +311,9 @@ function doUpgrade()
 				-- check if player gets Research randomly
 				checkResearchBonus()        
 				player.giveItem(upgradedItem)
+					sb.logInfo("Upgraded Stats: ")	  
+					sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
+				
 			end
 		end
 		
