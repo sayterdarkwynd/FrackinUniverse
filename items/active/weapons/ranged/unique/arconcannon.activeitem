@@ -78,5 +78,32 @@
 
   "critChance" : 1,
   "critBonus" : 3,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+  "shortdescription" : "ArCon Blaster MkII",    
+  "description" : "Attaches to the forearm. Fires plasma bursts.
+^yellow;Counts as 'plasma' for set bonuses^reset;",
+  "animationParts" : {
+    "middle" : "arconcannon2.png"
+    },
+    "critChance" : 1.5,
+    "critBonus" : 5,    
+    "inventoryIcon" : [ { "image" : "arconcannon2.png" } ],    
+	  "primaryAbility" : {
+	    "fireTime" : 0.15,
+	    "baseDps" : 5.65,
+	    "energyUsage" : 31,
+	    "fireType" : "auto",
+	    "inaccuracy" : 0.03,
+	    "projectileCount" : 2,
+	    "projectileType" : "brainbullet2",
+	    "projectileParameters" : {
+	      "speed" : 65
+	    }         
+            
+	  }
+      }
+      
 }
