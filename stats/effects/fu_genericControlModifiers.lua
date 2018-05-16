@@ -1,12 +1,12 @@
-oldInit=init
-oldUpdate=update
+oldInitControlModifier=init
+oldUpdateControlModifier=update
 
 function init()
 	controlModifierValues=config.getParameter("controlModifiers",{})
-	if oldInit then oldInit() end
+	if oldInitControlModifier then oldInitControlModifier() end
 end
 
 function update(dt)
 	mcontroller.controlModifiers(controlModifierValues)
-	if oldUpdate then oldUpdate(dt) end
+	if oldUpdateControlModifier then oldUpdateControlModifier(dt) end
 end
