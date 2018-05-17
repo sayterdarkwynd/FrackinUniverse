@@ -86,7 +86,8 @@
   "description" : "Attaches to the forearm. Fires plasma bursts.
 ^yellow;Counts as 'plasma' for set bonuses^reset;",
   "animationParts" : {
-    "middle" : "arconcannon2.png"
+      "middle" : "arconcannon2.png",
+      "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
     },
     "critChance" : 1.5,
     "critBonus" : 5,    
@@ -100,9 +101,9 @@
 	    "projectileCount" : 2,
 	    "projectileType" : "brainbullet2",
 	    "projectileParameters" : {
+	      "processing":"?hueshift=-180",
 	      "speed" : 65
 	    }         
-            
 	  }
       }
       
