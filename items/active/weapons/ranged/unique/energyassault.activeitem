@@ -86,5 +86,32 @@
 
   "altAbilityType" : "flashlight",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+"upgradeParameters" : {
+    "shortdescription" : "^cyan;G7 Energy Rifle^reset; ^yellow;^reset;",
+  "description" : "One of the most reliable energy rifles known on the galactic market
+^yellow;High efficiency^reset;",
+  "animationParts" : {
+    "middle" : "energyassault2.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "energyassault2.png:" }
+    ],
+    "critChance" : 3,
+    "critBonus" : 4,
+    "primaryAbility" : {
+	    "fireTime" : 0.11,
+	    "baseDps" : 9.25,
+	    "energyUsage" : 32.0,
+	    "inaccuracy" : 0.004,
+
+	    "projectileType" : "energyassault",
+	    "projectileParameters" : { 
+	      "speed" : 70,
+	      "knockback" : 4
+	    }  
+    }
+  }
+  
 }
