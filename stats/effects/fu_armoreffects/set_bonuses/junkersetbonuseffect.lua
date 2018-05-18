@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 setName="fu_junkerset"
 
-weaponBonus={ { stat = "powerMultiplier" , baseMultiplier = 1.25} }
+weaponBonus={ { stat = "powerMultiplier" , effectiveMultiplier = 1.25} }
 
 armorBonus={
 	{stat = "gasImmunity", amount = 1.0},

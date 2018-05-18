@@ -88,5 +88,75 @@
   "critBonus" : 7,
   "altAbilityType" : "floatydeathball",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+  "shortdescription" : "^cyan;Singularity^reset; ^yellow;^reset;",
+  "description" : "Even more powerful and boomy.
+^yellow;Homing alt^reset;
+^green;Bouncing projectiles",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "isn_sunstream2.png",
+    "middlefullbright" : "isn_sunstream2fullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+    },
+    "inventoryIcon" : [ { "image" : "isn_sunstream2.png:idle.1" } ],
+    "critChance" : 4.5,
+    "critBonus" : 8,
+          "projectileType" : "isn_sunstream",
+	  "primaryAbility" : {
+	    "fireTime" : 1.2,
+	    "baseDps" : 5.75,
+	    "energyUsage" : 30,
+            
+	    "projectileParameters" : {
+	      "image" : "isn_sunstreamshot2.png",
+	      "knockback" : 20,
+ 	      "damageKind" : "electric",
+  	      "emitters" : [ "electricplasma" ],
+  	      "processing":"?hueshift=180",	      
+	      "speed" : 60,
+		  "periodicActions" : [
+		    {
+		      "time" : 0.30,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "chargeshotboom",
+		      "inheritDamageFactor" :0.45,
+		      "fuzzAngle" : 0
+		   },
+		    {
+		      "time" : 0.15,
+		      "loop" : true,
+		      "action" : "projectile",
+		      "type" : "electricguardianbullet",
+		      "inheritDamageFactor" :0.45,
+		      "fuzzAngle" : 360,
+		      "projectileParameters" : { "speed" : 0 }
+		   }
+		  ],
+		  "actionOnReap" : [
+		    {
+			  "action" : "config",
+			  "file" : "/projectiles/explosions/plasmaboom/plasmaboom.config"
+		    },   
+		    {
+		      "action" : "sound",
+		      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+		    }
+		  ]       
+	    }
+	  },
+	  "altAbilityType" : "floatydeathball2",
+	  "altAbility" : {
+	    "fireTime" : 2,
+	    "baseDps" : 12,
+	    "energyUsage" : 40,	  
+	    "projectileParameters" : {
+	      "processing":"?hueshift=0"
+	    }
+	  }
+  }
 }

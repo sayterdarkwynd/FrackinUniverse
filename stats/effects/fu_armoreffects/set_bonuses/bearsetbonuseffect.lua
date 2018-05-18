@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
 	{stat = "critChance", amount = 3.5},
-	{stat = "powerMultiplier", baseMultiplier = 1.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorBonus={

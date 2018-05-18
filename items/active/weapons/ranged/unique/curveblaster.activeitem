@@ -86,5 +86,32 @@
 
   "altAbilityType" : "energyplatform",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Breach Ripper^reset; ^yellow;",
+  "description" : "A unique plasma phase weapon specially designed for breaching hulls.
+^yellow;Burns targets",
+  "animationParts" : {
+    "middle" : "curveblaster_sacre2.png"
+    },
+    "inventoryIcon" : [ { "image" : "curveblaster_sacre2.png" } ],    
+	  "primaryAbility" : {
+	    "projectileParameters" : {
+	      "speed" : 70,
+	      "knockback" : 24,
+	      "statusEffects" : [ "frozenburning" ],
+		  "timeToLive" : 1.2,
+		  "animationCycle" : 1.2,	      
+		  "controlForce" : 60,
+		  "snapDistance" : 0.3,
+		  "pickupDistance" : 0.3,
+		  "returnOnHit" : false,
+		  "returning" : true,
+		  "ignoreTerrain" : true	      
+	    }          
+            
+	  }
+      }
 }

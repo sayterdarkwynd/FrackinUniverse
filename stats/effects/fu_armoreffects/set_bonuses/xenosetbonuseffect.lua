@@ -1,7 +1,7 @@
 setName="fu_xenoset"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.20},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.20},
 	{stat = "critChance", amount = 2}
 }
 

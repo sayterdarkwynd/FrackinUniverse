@@ -86,7 +86,7 @@ function findTrough(args)
 end
 
 function eatFood(args)
-  if not args.entity then return false end
+  if (not args.entity) or (not world.entityExists(args.entity)) or (not world.containerSize(args.entity)) then return false end
   local foodlist = root.assetJson('/scripts/actions/monsters/farmable.config').foodlists
   local diet = config.getParameter('diet','omnivore')
 

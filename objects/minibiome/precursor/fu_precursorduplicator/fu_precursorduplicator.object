@@ -8,33 +8,32 @@
   "printable" : false,
   "category" : "crafting",
   
-  "health" : 20,
+  "health" : 2,
 
   "animation" : "fu_precursorduplicator.animation",
   "animationParts" : {
     "base" : "fu_precursorduplicator.png"
   },
-  "animationPosition" : [-23, 0],
+  "animationPosition" : [-26, 0],
   
   "inventoryIcon" : "fu_precursorduplicatoricon.png",
   "orientations" : [
     {
       "imageLayers" : [ { "image" : "fu_precursorduplicator.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_precursorduplicatorlit.png:<color>.<frame>"} ],
-      "imagePosition" : [-23, 0],
+      "imagePosition" : [-26, 0],
       "frames" : 81,
       "direction" : "left",
       "flipImages" : true,      
-      "animationCycle" : 5,
+      "animationCycle" : 3,
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     },
     {
       "imageLayers" : [ { "image" : "fu_precursorduplicator.png:<color>.<frame>", "fullbright" : true }, { "image" : "fu_precursorduplicatorlit.png:<color>.<frame>"} ],
-      "imagePosition" : [-23, 0],
+      "imagePosition" : [-26, 0],
       "frames" : 81,
-      "direction" : "right",
-      "flipImages" : true,      
-      "animationCycle" : 5,
+      "direction" : "right",    
+      "animationCycle" : 3,
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
@@ -46,8 +45,76 @@
   "inputNodes" : [ [-1, 0] ],
 
   "duplicator" : {
-        "fuel" : [ "precursorfluid", "plutoniumrod", "solariumstar" ],
-	"inputOutput" : [ "plutoniumrod","uraniumrod", "neptuniumrod", "thoriumrod", "solariumstar", "copperbar", "silverbar", "ironbar", "titaniumbar", "durasteelbar", "goldbar", "tungstenbar", "densiniumbar", "quietusbar","effigiumbar","fuamberchunk","irradiumbar","isogenbar","moonstonebar","penumbriteshard","protocitebar","pyreitebar","solaricrystal","triangliumpyramid","xithricitecrystal","zerchesiumbar"]
+		"fuel": {
+		        "elderrelic1" : 10,
+		        "exoticmatter" : 10,
+		        "honedlunari" : 6,
+			"precursorfluid": 4,
+			"energiwood" : 5,
+			
+			"lunaricrystal" : 5,
+			"triangliumpyramid" : 4,
+			"prisilitestar" : 4,
+			
+			"tritium" : 6,
+			"ultronium" : 5,			
+			"solariumstar": 3,
+			"thoriumrod": 2,
+			"enricheduranium" : 2,
+			"uraniumrod": 1,
+			"enrichedplutonium" : 2,
+			"plutoniumrod": 1,
+			"neptuniumrod": 1,
+
+		        "pureerchius" : 8,
+		        "supermatter" : 4,
+		        "liquidfuel" : 1,
+		        
+			"biofuelcannistermax" : 3,
+			"biofuelcannisteradv" : 2,
+			"biofuelcannister" : 1			
+		},
+		
+	"inputOutput" : [ 
+	  "biofuelcannister",
+	  "biofuelcannisteradv",
+	  "biofuelcannistermax",
+	  "corruptionseed",
+	  "ff_fertilizer",
+	  "ff_fertilizer2",
+	  "ff_fertilizer3",
+	  "glass",
+	  "blobbushjelly",
+	  "fu_mulch",
+	  "morphiteore",
+	  "unstableparticles",
+	  "plutoniumrod",
+	  "uraniumrod", 
+	  "neptuniumrod", 
+	  "thoriumrod", 
+	  "solariumstar", 
+	  "copperbar", 
+	  "silverbar", 
+	  "ironbar", 
+	  "titaniumbar", 
+	  "durasteelbar", 
+	  "goldbar", 
+	  "tungstenbar", 
+	  "densiniumbar", 
+	  "quietusbar",
+	  "effigiumbar",
+	  "fuamberchunk",
+	  "irradiumbar",
+	  "isogenbar",
+	  "moonstonebar",
+	  "penumbriteshard",
+	  "protocitebar",
+	  "pyreitebar",
+	  "solaricrystal",
+	  "triangliumpyramid",
+	  "xithricitecrystal",
+	  "zerchesiumbar"
+	  ]
   },
   
   "objectType" : "container",
@@ -56,7 +123,7 @@
   "subtitle" : "",
   "frameCooldown" : 5,
   "autoCloseCooldown" : 3600,
-  "craftTime" : 1,
+  "craftTime" : 3,
   "powertype" : "input",
   "isn_requiredPower" : 120
 }

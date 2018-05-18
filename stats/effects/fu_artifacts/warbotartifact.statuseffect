@@ -1,11 +1,21 @@
 {
-  "name" : "warbotartifact",
-  "effectConfig" : { },
-  
-  "defaultDuration" : 3,
+	"name": "warbotartifact",
+	"effectConfig": {
+		"stats": [{
+				"stat": "critBonus",
+				"effectiveMultiplier": 1.2
+			},
+			{
+				"stat": "critChance",
+				"amount": 3
+			}
+		]
+	},
 
-  "scripts" : [
-    "warbotartifact.lua"
-  ]
+	"defaultDuration": 3,
+
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 
 }

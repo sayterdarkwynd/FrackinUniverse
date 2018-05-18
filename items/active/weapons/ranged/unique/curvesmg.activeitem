@@ -91,5 +91,34 @@
 
   "altAbilityType" : "flashlight",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+    "upgradeParameters" : {
+  "description" : "A space pirate favorite in plasma technology.
+^yellow;+Bouncy and Burny",
+  "shortdescription" : "^cyan;Breach Blaster^reset; ^yellow;",
+  "animationParts" : {
+    "middle" : "curvesmg_sacre2.png"
+    },
+    "inventoryIcon" : [ { "image" : "curvesmg_sacre2.png" } ],    
+	  "primaryAbility" : {
+	    "fireTime" : 0.25,
+	    "baseDps" : 4.75,
+	    "energyUsage" : 23.0,
+
+	    "projectileCount" : 1,
+	    "fireType" : "burst",
+	    "inaccuracy" : 0.02,
+	    "burstTime" : 0.03,
+	    "burstCount" : 5,
+
+	    "projectileParameters" : { 
+	      "bounces" : 3,
+	      "speed" : 85,
+	      "knockback" : 12,
+	      "statusEffects" : [ "frozenburning" ]
+	    }       
+	  }
+      }
+      
 }
