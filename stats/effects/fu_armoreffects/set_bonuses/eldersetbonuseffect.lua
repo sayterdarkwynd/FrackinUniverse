@@ -4,7 +4,7 @@ setName="fu_elderset"
 
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={

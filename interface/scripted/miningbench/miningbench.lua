@@ -18,10 +18,10 @@ end
 
 function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
-  --local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *2
-  --local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)/25) *2)
-  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *1650
-  local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)) *1650)
+  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *2
+  local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)/25) *2)
+  --local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *1650
+  --local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)) *1650)
   return math.floor(prevValue)
 end
 
@@ -68,8 +68,8 @@ function populateItemList(forceRepop)
 end
 
 function showWeapon(item, price)
-  --local playerModule =  player.hasCountOfItem("manipulatormodule", true)
-    local playerModule = player.currency("fuscienceresource")
+  local playerModule =  player.hasCountOfItem("manipulatormodule", true)
+  --local playerModule = player.currency("fuscienceresource")
   local enableButton = false
 
   if item then
@@ -124,43 +124,31 @@ function doUpgrade()
 	 end
 	 
 			  
-          upgradedItem.parameters.primaryAbility = {}   
-
-		  if (itemConfig.config.primaryAbility) then	 
-			  
-		    -- beams and miners
-			if (itemConfig.config.primaryAbility.beamLength) then
-			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + ( upgradedItem.parameters.level + 2 )
-			  upgradedItem.parameters.primaryAbility.energyUsage= itemConfig.config.primaryAbility.energyUsage + ( upgradedItem.parameters.level /10 )
-			end
-		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
-			if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
-			    local baseDpsBase = itemConfig.config.primaryAbility.baseDps
-			    local baseDpsMod = (upgradedItem.parameters.level/25)
-			    local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
-			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
-			end			
-		  end
-	  
-	  sb.logInfo("Upgrading weapon : ")	  
-          sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
-          
-          if (upgradedItem.parameters.level) < 4 then
+          upgradedItem.parameters.primaryAbility = {}  
+ 
+	  if (upgradedItem.parameters.level) <= 2 then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
-          elseif (upgradedItem.parameters.level) == 4 then
+          elseif (upgradedItem.parameters.level) == 3 then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
-          elseif (upgradedItem.parameters.level) == 5 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)            
-          elseif (upgradedItem.parameters.level) == 6 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
-          elseif (upgradedItem.parameters.level) == 7 then
+          elseif (upgradedItem.parameters.level) == 4 then
             upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)            
+          elseif (upgradedItem.parameters.level) == 5 then
+            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
+          elseif (upgradedItem.parameters.level) == 6 then
+            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters5)     
+          elseif (upgradedItem.parameters.level) == 7 then
+            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters6)   
+          elseif (upgradedItem.parameters.level) == 8 then
+            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7) 
+          elseif (upgradedItem.parameters.level) > 8 then
+		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+		  upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
+		  upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
+		  upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 ) 		  
           end
-                   
         end
         player.giveItem(upgradedItem)
-	      -- check if player gets Research randomly
-		checkResearchBonus()
+	checkResearchBonus()
       end
     end
     populateItemList(true)

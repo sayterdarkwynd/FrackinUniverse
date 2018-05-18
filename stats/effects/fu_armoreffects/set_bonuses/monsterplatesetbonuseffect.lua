@@ -2,7 +2,7 @@ setName="fu_monsterplateset"
 
 weaponBonus={
 	{stat = "critChance", amount = 5},
-	{stat = "powerMultiplier", baseMultiplier = 1.15},  
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},  
 }
 
 armorBonus={

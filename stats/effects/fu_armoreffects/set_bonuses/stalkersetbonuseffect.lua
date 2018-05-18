@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_stalkerset"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.15},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
 	{stat = "critChance", amount = 3}
 }
 

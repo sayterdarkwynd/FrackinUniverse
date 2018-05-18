@@ -2,7 +2,7 @@ setName="fu_intrepidset"
 
 weaponBonus={
 	{stat = "critChance", amount = 2},
-	{stat = "powerMultiplier", baseMultiplier = 1.20}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
 }
 
 armorBonus={ 	

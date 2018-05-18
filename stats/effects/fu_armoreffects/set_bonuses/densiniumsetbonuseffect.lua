@@ -4,7 +4,7 @@ setName="fu_densiniumset"
 
 weaponBonus={
 	{stat = "critChance", amount = 3},
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={

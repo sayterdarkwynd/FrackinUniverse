@@ -1,6 +1,6 @@
 setName="fu_biofleshset"
 
-weaponBonus={ {stat = "powerMultiplier", amount = 0.15} }
+weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.15} }
 
 armorBonus={
 	{stat = "pusImmunity", amount = 1}
