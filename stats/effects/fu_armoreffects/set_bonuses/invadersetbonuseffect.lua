@@ -2,7 +2,7 @@ setName="fu_invaderset"
 
 weaponBonus={
 	{stat = "critChance", amount = 5},
-	{stat = "powerMultiplier", baseMultiplier = 1.20}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
 }
 
 armorEffect={

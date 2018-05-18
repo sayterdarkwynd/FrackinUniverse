@@ -4,7 +4,7 @@ setName="fu_blisterset"
 
 weaponBonus={
 	{stat = "critChance", amount = 2},
-	{stat = "powerMultiplier", amount = 0.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorBonus={ 

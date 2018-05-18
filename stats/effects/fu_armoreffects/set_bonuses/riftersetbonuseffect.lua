@@ -2,7 +2,7 @@ setName="fu_rifterset"
 
 weaponBonus={
 	{stat = "critChance", amount = 3},
-    {stat = "powerMultiplier", baseMultiplier = 1.25}
+        {stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorEffect={
