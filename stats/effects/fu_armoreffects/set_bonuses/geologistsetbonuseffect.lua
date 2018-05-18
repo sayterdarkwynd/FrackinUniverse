@@ -1,6 +1,6 @@
 setName="fu_geologistset"
 
-weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.5} }
+weaponBonus={ {stat = "powerMultiplier", baseMultiplier = 1.5} }
 
 armorBonus={
 	{stat = "liquidnitrogenImmunity", amount = 1},

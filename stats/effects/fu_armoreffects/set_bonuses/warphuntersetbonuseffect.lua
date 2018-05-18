@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", effectiveMultiplier = 3.4}
+	{stat = "powerMultiplier", baseMultiplier = 3.4}
 }
 
 armorBonus={
