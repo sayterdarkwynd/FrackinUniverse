@@ -18,10 +18,8 @@ end
 
 function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
-  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *2
+  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *3
   local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)/25) *2)
-  --local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *1650
-  --local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)) *1650)
   return math.floor(prevValue)
 end
 
@@ -112,11 +110,11 @@ function doUpgrade()
 		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 
 	 -- set Rarity
-	 if upgradedItem.parameters.level ==4 then
+	 if upgradedItem.parameters.level ==3 then
 	   upgradedItem.parameters.rarity = "uncommon"
 	 elseif upgradedItem.parameters.level == 5 then
 	   upgradedItem.parameters.rarity = "rare"
-	 elseif upgradedItem.parameters.level == 6 then
+	 elseif upgradedItem.parameters.level == 7 then
 	   upgradedItem.parameters.rarity = "legendary"
 	 elseif upgradedItem.parameters.level >= 8 then
 	   upgradedItem.parameters.rarity = "essential"	   
