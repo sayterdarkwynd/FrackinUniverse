@@ -103,9 +103,8 @@ function doUpgrade()
     if upgradeItem then
       local consumedItem = player.consumeItem(upgradeItem, false, true)
       if consumedItem then
-        --local consumedCurrency = player.consumeItem("manipulatormodule", false, selectedData.price)
-        --local consumedCurrency = player.consumeItem({name = "manipulatormodule", count = selectedData.price}, false, true) 
-        local consumedCurrency = player.consumeCurrency("fuscienceresource", selectedData.price)
+        local consumedCurrency = player.consumeItem({name = "manipulatormodule", count = selectedData.price}, false, true) 
+        --local consumedCurrency = player.consumeCurrency("fuscienceresource", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
         
