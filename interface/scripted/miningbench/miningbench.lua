@@ -32,8 +32,8 @@ function populateItemList(forceRepop)
 
   widget.setVisible("emptyLabel", #upgradeableWeaponItems == 0)
 
-  --local playerModule = player.hasCountOfItem("manipulatormodule", true)
-  local playerModule = player.currency("fuscienceresource")
+  local playerModule = player.hasCountOfItem("manipulatormodule", true)
+
   if forceRepop or not compare(upgradeableWeaponItems, self.upgradeableWeaponItems) then
     self.upgradeableWeaponItems = upgradeableWeaponItems
     widget.clearListItems(self.itemList)
