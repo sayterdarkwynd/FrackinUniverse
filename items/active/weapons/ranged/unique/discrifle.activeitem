@@ -91,5 +91,24 @@
     "projectileCount":1
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Disc Rifle MkII^reset; ^yellow;",
+    "description" : "Even more discy.
+^yellow;Slows enemies^reset;",
+    "animationParts" : {"middle" : "discrifle2.png"},
+    "inventoryIcon" : [ { "image" : "discrifle2.png" } ],    
+	  "primaryAbility" : {
+	    "fireTime" : 0.35,
+	    "baseDps" : 7.5,
+	    "energyUsage" : 31,
+	    "projectileCount" : 1,
+	    "projectileParameters" : {
+	      "knockback" : 10,
+	      "statusEffects" : [ "slow" ]
+	    }          
+	  }
+      }   
 }

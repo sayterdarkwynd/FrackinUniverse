@@ -5,7 +5,7 @@ weaponBonus={
 }
 
 weaponBonus2={
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={
@@ -13,7 +13,7 @@ armorBonus={
 	{stat = "poisonResistance", amount = 0.15}
 	{stat = "sulphuricImmunity", amount = 0.15},
 	{stat = "maxHealth", baseMultiplier = 1.16},
-	{stat = "powerMultiplier", baseMultiplier = 1.16},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.16},
 	{stat = "poisonResistance", amount = 0.15}
 }
 

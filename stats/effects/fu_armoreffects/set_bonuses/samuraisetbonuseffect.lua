@@ -4,14 +4,14 @@ setName="fu_samuraiset"
 
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.15},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
 	{stat = "critChance", amount = 2}
 }
 
 weaponBonus2={
-	{stat = "powerMultiplier", baseMultiplier = 1.15},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
 	{stat = "critChance", amount = 1},
-	{stat = "protection", baseMultiplier = 1.1}
+	{stat = "protection", effectiveMultiplier = 1.1}
 }
 
 armorBonus={

@@ -4,7 +4,7 @@ weaponBonus={
 	{stat = "grit", baseMultiplier = 1.25}
 }
 weaponBonus2={
-	{stat = "powerMultiplier", baseMultiplier = 1.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 

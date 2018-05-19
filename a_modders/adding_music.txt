@@ -1,0 +1,54 @@
+Introduction:
+
+
+Hello, and welcome to this short guide, on how to easily add your own questlines into the Frackin' Universe custom questline GUI!
+Note that this guide assumes that the user has very little knowledge about Starbound modding, and will hand hold you as much as it can.
+If you don't even know how to setup your own mod, look here: https://starbounder.org/Modding:Modding_Basics
+Sorry in advance if that annoys the living crap out of you. :)
+
+
+Instructions:
+
+
+First thing you'll need to do, is get a code editor program such as Notepad++.
+Here is a link to make your life easier: https://notepad-plus-plus.org/
+(I know there are others out there, and you think [insert better program name here] is better, but NP++ is more than enough)
+
+You must also be able to view, and change file extension.
+Look up "How to see file extensions in [operating system]" on Google if you can't and don't know how to enable that.
+
+In your mod project, create the following directory: "/music"
+Take the music file you'd like to add, and place them in that folder.
+Note that their format must be in .ogg, stereo, 44100Hz, 16-bit PCM format.
+If you don't know what that means, just look up "online ogg converter" on Google, and convert any music file format to .ogg, should work.
+
+In your mod project, create the following directory: "/interface/scripted/fm_musicplayer"
+And add a file named "fm_musicplayer.config.patch", and add the following code snippet:
+
+[
+	{
+		"op":"add",
+		"path":"/music/-",
+		"value":
+		{
+			"name" : "###",				// Replace with the name it would display in the GUI
+			"musicDirectory" : "###",	// Replace with the location of the file 
+			"category" : "other"
+		}
+	}
+]
+
+Here is an example:
+
+[
+	{
+		"op":"add",
+		"path":"/music/-",
+		"value":
+		{
+			"name" : "^orange;SR2^reset; | Beyond Reach",
+			"musicDirectory" : "/music/Space Rangers 2 - Beyond Reach.ogg",
+			"category" : "other"
+		}
+	}
+]

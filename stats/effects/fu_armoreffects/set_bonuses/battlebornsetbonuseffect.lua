@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 armorBonus={
 	{stat = "maxHealth", baseMultiplier = 1.24},
-	{stat = "powerMultiplier", baseMultiplier = 1.12},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.12},
 	{stat = "poisonResistance", amount = 0.1},
 	{stat = "physicalResistance", amount = 0.1}
 }

@@ -158,7 +158,16 @@ function autoFire(target)
 		if world.entityType(target)=="player" then
 			world.sendEntityMessage(target,"applyStatusEffect","nude")
 		else
-			world.damageTiles({world.entityPosition(target)}, "foreground", world.entityPosition(target), "plantish", 0.2, 1)
+			local buffer={}
+			local entPos=world.entityPosition(target)
+			
+			for _,coord in pairs(world.objectSpaces(target)) do
+				local coordBuffer=vec2.add(coord,entPos)
+				coordBuffer={world.xwrap(coordBuffer[1]),coordBuffer[2]}
+				table.insert(buffer,coordBuffer)
+			end
+			
+			world.damageTiles(buffer, "foreground", world.entityPosition(target), "plantish", 0.2, 1)
 		end
 		animator.playSound("fire")
 		util.wait(config.getParameter("fireTime",0.1))

@@ -3,10 +3,10 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_vagabondset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.075}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.075}
 }
 weaponBonusBoth={
-	{stat = "powerMultiplier", amount = 0.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorBonus={}

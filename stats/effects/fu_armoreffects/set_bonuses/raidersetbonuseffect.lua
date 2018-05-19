@@ -5,7 +5,7 @@ weaponBonus1={
 }
 
 weaponBonus2={
-	{stat = "powerMultiplier", amount = 0.075}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.075}
 }
 
 armorBonus={ }

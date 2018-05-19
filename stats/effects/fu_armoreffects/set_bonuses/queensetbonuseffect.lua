@@ -3,7 +3,7 @@ setName="fu_queenset"
 weaponBonus={
 	{stat = "critChance", amount = 8},
 	{stat = "critBonus", baseMultiplier = 3},
-	{stat = "powerMultiplier", baseMultiplier = 1.2},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.2},
 }
 
 armorBonus={
