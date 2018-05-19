@@ -1,5 +1,5 @@
-oldInitStatApplier=init
-oldUninitStatApplier=uninit
+local oldInitStatApplier=init
+local oldUninitStatApplier=uninit
 
 function init()
 	handler=effect.addStatModifierGroup(config.getParameter("stats",{}))

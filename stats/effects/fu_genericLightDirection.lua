@@ -1,4 +1,4 @@
-oldUpdateLightDirection=update
+local oldUpdateLightDirection=update
 
 function update(dt)
 	animator.setFlipped(mcontroller.facingDirection() == -1)
