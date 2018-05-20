@@ -13,7 +13,7 @@
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "precursor", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "precursorgun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/precursorcrippler/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "mechgun.png",
@@ -22,6 +22,15 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.36, 0.26]
+		  }
+		}
+      }
+    },  
     "sounds" : { "fire" : [ "/sfx/gun/plasma_pistol3.ogg" ] },
     "lights" : { "muzzleFlash" : {"color" : [44, 104, 164] } }
   },

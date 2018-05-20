@@ -16,7 +16,7 @@
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "precursor", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "precursorvaporizer.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "fuvaporizer.png",
@@ -25,6 +25,15 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.5, 0.32]
+		  }
+		}
+      }
+    },    
     "sounds" : {
       "fire" : [ "/sfx/weapons/plasmaburst.ogg" ]
     }

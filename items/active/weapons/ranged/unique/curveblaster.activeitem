@@ -14,7 +14,7 @@
   "itemTags" : ["weapon", "ranged", "shotgun", "plasma", "upgradeableWeapon" ],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/curveblaster.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "curveblaster_sacre.png",
@@ -23,6 +23,16 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [1.6, 0.3]
+		  }
+		}
+      }
+    },   
     "sounds" : {
       "fire" : [ "/sfx/weapons/wavebeam.wav" ]
     }
