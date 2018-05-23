@@ -1,20 +1,20 @@
 {
-  "itemName" : "tethersnap2",
+  "itemName" : "tethersnap3",
   "price" : 3000,
-  "inventoryIcon" : "tethersnapicon2.png",
+  "inventoryIcon" : "tethersnapicon3.png",
   "rarity" : "legendary",
   "maxStack" : 1,
-  "description" : "An amazing grappler that ^orange;regenerates your energy^reset; when extended.",
-  "shortdescription" : "Energy Tether",
-  "largeImage" : "tethersnap2.png",
+  "description" : "Siphons light and ^orange;converts it to food^reset; when extended.",
+  "shortdescription" : "Shadow Line",
+  "largeImage" : "tethersnap3.png",
   "category" : "Tool",
   "fireTime" : 0,
   "twoHanded" : false,
-
+  "level" : 3,
   "scripts" : ["/items/active/grapplinghooks/grapplinghook.lua"],
   "animationScripts" : ["/items/active/effects/renderrope.lua"],
 
-  "animation" : "tethersnap2.animation",
+  "animation" : "tethersnap3.animation",
 
   "fireOffset" : [0, 0],
   "ropeOffset" : [-1.2, 0],
@@ -22,10 +22,16 @@
   "handGrip" : "wrap",
   "consumeOnUse" : false,
 
-  "projectileType" : "tethersnap2",
+  "projectileType" : "tethersnap3",
   "projectileParameters" : {
-    "speed" : 120,
+    "speed" : 200,
+    "power" : 10,
+    "piercing" : true,
+    "onlyHitTerrain":false,
+    "damageSourceKind" : "shadow",
+    "damageKind" : "shadow",
     "timeToLive" : 0.7,
+    "statusEffects" : [ "webstickgrappler", "negativemiasma" ],
     "actionOnCollide":[ {"options":["/sfx/projectiles/magnorb_impact2.ogg"],"action":"sound"} ],
     "periodicActions": [
       {
@@ -34,8 +40,8 @@
         "specification": {
           "type": "ember",
           "size": 0.1,
-          "light": [155,20,155],
-          "color": [255,25,255,255],
+          "light": [210, 207, 39],
+          "color": [0, 0, 0,255],
           "initialVelocity": [0,0],
           "finalVelocity": [0,0],
           "approach": [0,0 ],
@@ -83,12 +89,12 @@
                 "knockback": 0,
                 "statusEffects": [
                   {
-                    "effect": "energyregen",
-                    "duration": 0.25
+                    "effect": "feedpackcrew2",
+                    "duration": 0.9
                   },
                   {
-                    "effect": "colorpurple",
-                    "duration": 0.25
+                    "effect": "coloryellow",
+                    "duration": 0.9
                   }
                 ],
                 "damageType": "damage",
@@ -97,7 +103,6 @@
                   "type": "indiscriminate"
                 },
                 "speed": 0,
-                "processing": "?hueshift=?70",
                 "timeToLive": 0.05
               }
             }
@@ -109,13 +114,13 @@
     ]    
   },
 
-  "ropeWidth" : 2,
-  "ropeColor" : [255, 40, 255, 225],
+  "ropeWidth" : 3,
+  "ropeColor" : [0, 0, 0, 125],
   "groundLagTime" : 0,
-  "reelSpeed" : 30,
-  "reelInDistance" : 5,
-  "reelOutLength" : 150,
-  "breakLength" : 180,
+  "reelSpeed" : 25,
+  "reelInDistance" : 3,
+  "reelOutLength" : 70,
+  "breakLength" : 80,
   "minSwingDistance" : 0, 
-  "controlForce" : 9000
+  "controlForce" : 4000
 }
