@@ -13,8 +13,8 @@ function init()
   self.dashCooldown = config.getParameter("dashCooldown")
   self.groundOnly = config.getParameter("groundOnly")
   self.stopAfterDash = config.getParameter("stopAfterDash")
-  self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=CCCCFFFF=0.25")
-  self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
+  self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=22CCDDFF=0.5")
+  self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.25)
 
   self.doubleTap = DoubleTap:new({"left", "right"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
       if self.dashTimer == 0
@@ -86,7 +86,14 @@ function startDash(direction)
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
 
-  status.addEphemeralEffect("dodgeboost") 
+
+    if status.resource("energy") > 50 then -- requires at least 50 energy
+      status.addEphemeralEffect("shieldmastery") 
+      animator.playSound("chargebonus")
+      status.consumeResource("energy", 50)
+    end
+    
+  
   
 end
 
