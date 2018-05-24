@@ -93,6 +93,14 @@ function endDash()
   if self.stopAfterDash then
     local movementParams = mcontroller.baseParameters()
     local currentVelocity = mcontroller.velocity()
+    
+    self.specialModifier = status.resource("energy") / status.stat("maxEnergy")
+    if status.resource("energy") > 60 then -- give bonus defense if energy is high
+      status.addEphemeralEffect("defense4",self.specialModifier) 
+      animator.playSound("chargebonus")
+      status.consumeResource("energy", 10)
+    end
+    
     if math.abs(currentVelocity[1]) > movementParams.runSpeed then
       mcontroller.setVelocity({movementParams.runSpeed * self.dashDirection, 0})
     end
