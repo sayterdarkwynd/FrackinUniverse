@@ -55,7 +55,7 @@ function excavatorCommon.init()
 	
 	if storage.isDrill then
 		storage.drillPower=config.getParameter("kheAA_drillPower",8);
-		storage.drillHPNode=config.getParameter("kheAA_powerMineNode");
+		storage.drillHPNode=config.getParameter("kheAA_powerDrillNode");
 		storage.maxWidth = config.getParameter("kheAA_maxWidth",8);
 		storage.width=0
 	end
@@ -325,7 +325,7 @@ function states.mine(dt)
 		end
 	end
 	
-	if storage.drillPos[2] > storage.maxDepth then
+	if storage.drillPos[2] < (-1 * storage.maxDepth) then
 		--sb.logInfo(".p %s, .mD %s",storage.position,storage.maxDepth)
 		drillReset()
 		anims()

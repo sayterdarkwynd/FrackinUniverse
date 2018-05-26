@@ -473,8 +473,8 @@ function miteInfection()
         if baseSmallDiceRoll < 10 and self.totalMites > 12 then   --chance to spawn bugshell when killing mites
           world.containerAddItems(entity.id(), { name="bugshell", count = baseMiteKill/2, data={}})
         end
-    elseif (self.totalMites >= 120) and (baseDiceRoll < baseMiteChance) then
-        animator.playSound("addMite")         
+    elseif (self.totalMites >= 360) and (baseDiceRoll < baseMiteChance) then
+        --animator.playSound("addMite")         
     elseif (self.totalMites >= 10) and (baseSmallDiceRoll < baseMiteChance *4) and (vmiteFitCheck > 0) then
         transferUtil.unloadSelfContainer()
         world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
