@@ -86,7 +86,7 @@ function startDash(direction)
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
 
-  status.addEphemeralEffect("dodgeboost") 
+  status.addEphemeralEffect(config.getParameter("dodgeboost")) --depends on equipped dodge tech
   
 end
 
