@@ -1302,6 +1302,6 @@ function flyShip(system, target)
 	if target and target[1] == "coordinate" and celestial.visitableParameters(target[2]) then
 		world.setProperty("ship.celestial_type", celestial.visitableParameters(target[2]).typeName)
 	else 
-		world.setProperty("ship.celestial_type", nil) =
+		world.setProperty("ship.celestial_type", nil)
 	end
 end
