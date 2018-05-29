@@ -14,7 +14,7 @@
   "itemTags" : ["weapon","ranged","machinepistol","plasma","upgradeableWeapon"],
   "twoHanded" : false,
 
-  "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "curvepistol_sacre.png",
@@ -23,6 +23,16 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [1.5, 0.0]
+		  }
+		}
+      }
+    },   
     "sounds" : {
       "fire" : [ "/sfx/gun/plasma_ar4.ogg" ]
     }

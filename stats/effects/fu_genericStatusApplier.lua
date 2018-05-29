@@ -1,8 +1,8 @@
 require "/scripts/effectUtil.lua"
 
-oldInitStatusApplier=init
-oldUninitStatusApplier=uninit
-oldUpdateStatusApplier=update
+local oldInitStatusApplier=init
+local oldUninitStatusApplier=uninit
+local oldUpdateStatusApplier=update
 
 function init()
 	statusApplierValues=config.getParameter("statusApplierValues",{})

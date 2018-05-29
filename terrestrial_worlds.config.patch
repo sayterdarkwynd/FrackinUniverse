@@ -241,8 +241,9 @@
 
   {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/0","value": 3},
   {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/1","value": 3},
-  //{"op": "add","path": "/planetTypes/garden/layers/surface/dungeons/0","value": [1,"medic1"]},
-  {"op": "replace", "path": "/planetTypes/garden/layers/surface/dungeons/1/1","value": "medic1"},    
+  {"op": "add","path": "/planetTypes/garden/layers/surface/dungeons/-","value": [1,"caveeentrance"]},
+  {"op": "replace", "path": "/planetTypes/garden/layers/surface/dungeons/1/1","value": "medic1"}, 
+  
 {"op" : "add", "path" : "/planetTypes/garden/layers/subsurface/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground1/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground2/dungeons", "value" : [] },
@@ -2871,7 +2872,7 @@
         "primaryRegion" : [ "iceclouds" ]
         },
         "surface" : {
-          "primaryRegion" : [ "icewaste", "icecloudswastesurface" ],
+          "primaryRegion" : [ "icewaste" ],
           "secondaryRegions" : [ "futentacle", "energyorbforest", "prism", "crystaldesert", "crystalswamp","supermatterzone", "elder", "ice", "snow", "icefire", "precursorsurface" ],
           "dungeons" : [ 
           [1.0, "elderruins"], 
@@ -6454,12 +6455,6 @@
        "blendSize" : 30,
        "threatRange" : [5, 8],
        "layers" : {
-      "space" : {
-        "primaryRegion" : [ "elderasteroid", "elderasteroid", "asteroids", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ]
-      },       
-      "atmosphere" : {
-        "primaryRegion" : [ "clouds" ]
-      },        
         "surface" : {
           "primaryRegion" : [ "aethersea" ],
           "secondaryRegions" : [ "energyorbforestaether", "aetherbreakwater", "estuaryaether", "supermatterzoneaether2", "crystalswampaether", "cellfieldaether", "bioluminescence", "elder", "hellhive" ],
@@ -7098,7 +7093,7 @@
 		"op" : "add",
 		"path" : "/regionTypes/tentacleasteroid",
 		"value" : {
-                    "blockSelector" : [ "iceclouds", "asteroids" ],
+                    "blockSelector" : [ "iceclouds", "asteroids", "iceclouds2" ],
 		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "moonCaves", "empty" ],
 		    "bgCaveSelector" : [ "largeClumps" ],
 		      "biome" : [
@@ -7110,7 +7105,7 @@
 		"op" : "add",
 		"path" : "/regionTypes/erchiusasteroid",
 		"value" : {
-                    "blockSelector" : [ "iceclouds", "asteroids" ],
+                    "blockSelector" : [ "iceclouds", "asteroids", "iceclouds2" ],
 		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "moonCaves", "empty" ],
 		    "bgCaveSelector" : [ "largeClumps" ],
 		      "biome" : [
@@ -7122,7 +7117,7 @@
 		"op" : "add",
 		"path" : "/regionTypes/corruptasteroid",
 		"value" : {
-                    "blockSelector" : [ "iceclouds", "asteroids"],
+                    "blockSelector" : [ "iceclouds", "asteroids","iceclouds2"],
 		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "moonCaves", "empty" ],
 		    "bgCaveSelector" : [ "largeClumps" ],
 		      "biome" : [
@@ -7134,7 +7129,7 @@
 		"op" : "add",
 		"path" : "/regionTypes/icecloudswastesurface",
 		"value" : {
-                    "blockSelector" : [ "iceclouds" ],
+                    "blockSelector" : [ "iceclouds","iceclouds2" ],
 		    "fgCaveSelector" : [ "surfaceCaves", "denseCaves", "normalCaves" ],
 		    "bgCaveSelector" : [ "largeClumps" ],
 		      "biome" : [

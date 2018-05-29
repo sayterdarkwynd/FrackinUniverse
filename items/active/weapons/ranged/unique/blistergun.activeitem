@@ -15,7 +15,7 @@
   "itemTags" : ["weapon","ranged","grenadelauncher","bioweapon","blister", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "blistergun.png",
@@ -24,8 +24,17 @@
     "muzzleFlash" : "/animations/muzzleflash/purplemuzzle.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.5, 0.0]
+		  }
+		}
+      }
+    },  
     "sounds" : {
-      "fire" : [ "/sfx/gun/burstshot1.ogg" ]
+      "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ]
     },
     "lights" : { "glow" : {
       "active" : true,

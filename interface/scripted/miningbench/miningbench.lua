@@ -18,10 +18,8 @@ end
 
 function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
-  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *2
+  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *3
   local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)/25) *2)
-  --local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *1650
-  --local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)) *1650)
   return math.floor(prevValue)
 end
 
@@ -112,11 +110,11 @@ function doUpgrade()
 		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 
 	 -- set Rarity
-	 if upgradedItem.parameters.level ==4 then
+	 if upgradedItem.parameters.level ==3 then
 	   upgradedItem.parameters.rarity = "uncommon"
 	 elseif upgradedItem.parameters.level == 5 then
 	   upgradedItem.parameters.rarity = "rare"
-	 elseif upgradedItem.parameters.level == 6 then
+	 elseif upgradedItem.parameters.level == 7 then
 	   upgradedItem.parameters.rarity = "legendary"
 	 elseif upgradedItem.parameters.level >= 8 then
 	   upgradedItem.parameters.rarity = "essential"	   
@@ -125,26 +123,38 @@ function doUpgrade()
 			  
           upgradedItem.parameters.primaryAbility = {}  
  
-	  if (upgradedItem.parameters.level) <= 2 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
-          elseif (upgradedItem.parameters.level) == 3 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
-          elseif (upgradedItem.parameters.level) == 4 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)            
-          elseif (upgradedItem.parameters.level) == 5 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
-          elseif (upgradedItem.parameters.level) == 6 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters5)     
-          elseif (upgradedItem.parameters.level) == 7 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters6)   
-          elseif (upgradedItem.parameters.level) == 8 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7) 
-          elseif (upgradedItem.parameters.level) > 8 then
-		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
-		  upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
-		  upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
-		  upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 ) 		  
-          end
+		  if (upgradedItem.parameters.level) <= 2 and itemConfig.config.upgradeParameters then
+		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
+		  elseif (upgradedItem.parameters.level) == 3 and itemConfig.config.upgradeParameters2 then
+		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+		  elseif (upgradedItem.parameters.level) == 4 and itemConfig.config.upgradeParameters3 then
+		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)            
+		  elseif (upgradedItem.parameters.level) == 5 and itemConfig.config.upgradeParameters4 then
+		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
+		  elseif (upgradedItem.parameters.level) == 6 and itemConfig.config.upgradeParameters5 then
+		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters5)     
+		  elseif (upgradedItem.parameters.level) == 7 and itemConfig.config.upgradeParameters6 then
+		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters6)   
+		  elseif (upgradedItem.parameters.level) == 8 and itemConfig.config.upgradeParameters7 then
+		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7)  
+		  elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
+			  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+			  upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
+			  upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
+			  upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 ) 
+		
+		  --is it a repair gun?
+                  elseif (itemConfig.config.category == "repairgun") and (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
+			  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7)
+			  upgradedItem.parameters.primaryAbility.projectileParameters.restoreBase= (upgradedItem.parameters.level) + 3
+			  upgradedItem.parameters.primaryAbility.projectileParameters.speed= (upgradedItem.parameters.level)+1
+			  upgradedItem.parameters.primaryAbility.energyUsage= 40 + ( upgradedItem.parameters.level /10 )	
+                  -- catch leftovers  
+		  elseif (upgradedItem.parameters.level) > 8 then 	 
+			  upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
+			  upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
+			  upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 ) 		  
+		  end 	  
         end
         player.giveItem(upgradedItem)
 	checkResearchBonus()

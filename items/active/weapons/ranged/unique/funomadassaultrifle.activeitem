@@ -15,7 +15,7 @@
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "densinium", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/nomadassaultrifle.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "nomadassaultrifle.png",
@@ -23,6 +23,16 @@
     "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [0.7, 0.4]
+		  }
+		}
+      }
+    },  
     "sounds" : {
       "fire" : [ "/sfx/weapons/dkmarauder3.wav" ]
     }
@@ -85,5 +95,21 @@
   "critBonus" : 2,
   "altAbilityType" : "lance",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Expar Rifle^reset; ^yellow;",
+  "description" : "Superior weaponry offering unsurpassed utility.
+^yellow;Counts as Hunting weapon^reset;
+^green;Causes Rad Burn^reset;", 
+  "animationParts" : {"middle" : "nomadassaultrifle2.png","middlefullbright" : "nomadassaultrifle2fullbright.png"},
+  "inventoryIcon" : [ { "image" : "nomadassaultrifle2.png" } ],    
+	  "primaryAbility" : {
+	    "fireTime" : 0.10,
+	    "baseDps" : 8.5,
+	    "energyUsage" : 29,
+	    "inaccuracy" : 0.0      
+	  }
+      }
 }

@@ -93,6 +93,7 @@ function update(dt, fireMode, shiftHeld)
 			effectUtil.effectSelf("nude",storage.fireTimer)
 			if scienceWarning >= 3 then
 				effectUtil.effectSelf("paralysis",storage.fireTimer)
+				effectUtil.effectSelf("activemovementdummy",storage.fireTimer)
 				effectUtil.say("KEVIN!!!")
 			else
 				effectUtil.say("Greg gregogreg...Kevin...")

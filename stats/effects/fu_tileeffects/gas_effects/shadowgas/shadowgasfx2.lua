@@ -1,5 +1,4 @@
 function init()
-  local bounds = mcontroller.boundBox()
   animator.setParticleEmitterOffsetRegion("shadowgaseffect", mcontroller.boundBox())
   animator.setParticleEmitterActive("shadowgaseffect", true)
   effect.setParentDirectives("fade=000000=0.15")
