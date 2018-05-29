@@ -1,0 +1,71 @@
+[
+	{
+		"op" : "add", 
+		"path" : "/animatedParts/stateTypes/releaseParticles",
+		"value" : {
+			"default" : "off",
+			"states" : {
+				"off" : {
+					"frames" : 1,
+					"properties" : {
+						"particleEmittersOff" : [ "releaseParticles" ]
+					}
+				},
+				"on" : {
+					"frames" : 1,
+					"cycle" : 0.1,
+					"mode" : "transition",
+					"transition" : "off",
+					"properties" : {
+						"particleEmittersOn" : [ "releaseParticles" ]
+					}
+				}
+			}
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/particleEmitters/captureParticles",
+		"value" : {
+			"particles" : [
+				{ "particle" : "monstercapture" }
+			]
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/particleEmitters/releaseParticles",
+		"value" : {
+			"particles" : [
+				{ "particle" : "monsterrelease" }
+			]
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/particleEmitters/teleportOut",
+		"value" : {
+			"particles" : [
+				{ "particle" : "monstercapture" }
+			]
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/particleEmitters/teleportIn",
+		"value" : {
+			"particles" : [
+				{ "particle" : "monsterrelease" }
+			]
+		}
+	},
+	{
+		"op" : "add",
+		"path" : "/particleEmitters/levelUp",
+		"value" : {
+			"particles" : [
+				{ "particle" : "monsterlevelup" }
+			]
+		}
+	}
+]

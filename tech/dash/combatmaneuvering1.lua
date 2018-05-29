@@ -85,14 +85,17 @@ function startDash(direction)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
+
+  status.addEphemeralEffect(config.getParameter("dodgeboost")) --depends on equipped dodge tech
+  
 end
 
 function endDash()
   status.clearPersistentEffects("movementAbility")
-  
   if self.stopAfterDash then
     local movementParams = mcontroller.baseParameters()
     local currentVelocity = mcontroller.velocity()
+
     if math.abs(currentVelocity[1]) > movementParams.runSpeed then
       mcontroller.setVelocity({movementParams.runSpeed * self.dashDirection, 0})
     end

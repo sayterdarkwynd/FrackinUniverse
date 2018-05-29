@@ -1,5 +1,5 @@
-oldInitControlModifier=init
-oldUpdateControlModifier=update
+local oldInitControlModifier=init
+local oldUpdateControlModifier=update
 
 function init()
 	controlModifierValues=config.getParameter("controlModifiers",{})

@@ -11,11 +11,11 @@
   "category" : "sniperRifle",
   "level" : 4,
   "tooltipKind" : "gun2",
-  "weaponType" : "Coilgun",
+  "weaponType" : "sniperRifle",
   "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/funomadgun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "nomadgun.png",
@@ -24,6 +24,16 @@
     "muzzleFlash" : "/animations/muzzleflash/protomuzzle.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+	  "properties" : {
+		//Same as BaseOffset
+	    "offset" : [0.7, 0.4]
+	  }
+	}
+      }
+    },  
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
@@ -142,5 +152,20 @@
     "name" : "Radiation Burst",
     "baseDps" : 4
   },
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Expar Sniper Rifle^reset; ^yellow;",
+  "description" : "Superior weaponry offering unsurpassed utility.
+^yellow;Counts as Hunting weapon^reset;
+^green;Causes Rad Burn^reset;", 
+  "animationParts" : {"middle" : "nomadgun2.png","middlefullbright" : "nomadgun2fullbright.png"},
+  "inventoryIcon" : [ { "image" : "nomadgun2.png" } ],    
+	  "primaryAbility" : {
+	    "fireTime" : 0.7,
+	    "baseDps" : 9,
+	    "energyUsage" : 30.0,
+	    "inaccuracy" : 0     
+	  }
+      }
 }

@@ -1,0 +1,36 @@
+{
+  "metadata" : {
+    "name" : "caveeentrance",
+    "species" : "generic",
+    "rules" : [],
+    "protected" : false,
+    "anchor" : [ "cavern1","cavern2","cavern3" ],
+    "maxRadius" : 1000000,
+    "maxParts" : 1,
+    "extendSurfaceFreeSpace" : 20
+  },
+
+  "parts" : [
+    {
+      "name" : "cavern1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "cavern1.json" ]
+    },
+    {
+      "name" : "cavern2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "cavern2.json" ]
+    },
+    {
+      "name" : "cavern3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "cavern3.json" ]
+    }
+  ]
+}
