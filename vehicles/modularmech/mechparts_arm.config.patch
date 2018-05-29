@@ -3735,7 +3735,440 @@
 				}
 			}
 		}
-	}        
+	},
+	
+
+	  // -------------- SINCO WEAPONS --------------
+
+	{"op":"add","path":"/sinrack","value":
+	  {
+	    "stats" : {
+	      "power" : 8,
+	      "energy" : 8
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/missileburstarm.lua",
+	      "armClass" : "MissileBurst",
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [3.5, -0.5],
+
+	      "windupTime" : 0.2,
+	      "fireTime" : 0.6,
+	      "cooldownTime" : 2,
+
+	      "projectileType" : "mechminimissile",
+	      "projectileParameters" : {
+		"power" : 35
+	      },
+
+	      "projectileCount" : 16,
+	      "projectileSpread" : 0.15,
+	      "projectileRandomOffset" : [1.5, 1.25],
+	      "projectileInaccuracy" : 0.02
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/sinrack.png",
+	      "<armName>Fullbright" : "arm/sinrack_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["c36a5f", "994c49", "6f3130", "551d28"],
+	    "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+	    "animationCustom" : {
+	      "animatedParts" : { "stateTypes" : { "<armName>" : { "states" : {
+		"windup" : {
+		  "mode" : "end"
+		}
+	      }}}},
+	      "sounds" : {
+		"<armName>Recover" : ["/sfx/gun/reload/rocket_reload_clip1.ogg"],
+		"<armName>Fire" : ["/sfx/gun/rocket2.ogg"]
+	      }
+	    }
+	  }
+	},
+
+	{"op":"add","path":"/sinchaingun","value":
+	  {
+	    "stats" : {
+	      "power" : 8,
+	      "energy" : 8
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/gatlingarm.lua",
+	      "armClass" : "GatlingArm",
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [4.75, 0.25],
+
+	      // these timings need to match the animation cycles for windup/winddown and active, respectively
+	      "windupTime" : 0.3,
+	      "fireTime" : 0.1,
+
+	      "projectileType" : "heavybullet",
+	      "projectileParameters" : {
+		"power" : 40
+	      },
+
+	      "projectileInaccuracy" : 0.04
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/sinchaingun.png",
+	      "<armName>Fullbright" : "arm/sinchaingun_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["c36a5f", "994c49", "6f3130", "551d28"],
+	    "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+	    "animationCustom" : {
+	      "animatedParts" : { "stateTypes" : { "<armName>" : {
+		"states" : {
+		  "windup" : {
+		    "properties" : {
+		      "persistentSound" : "/sfx/gun/mech_gatling_windup.ogg",
+		      "persistentSoundRangeMultiplier" : 1.0,
+		      "persistentSoundStopTime" : 0.2
+		    }
+		  },
+		  "active" : {
+		    "cycle" : 0.1
+		  },
+		  "winddown" : {
+		    "properties" : {
+		      "persistentSound" : "/sfx/gun/mech_gatling_winddown.ogg",
+		      "persistentSoundRangeMultiplier" : 1.0,
+		      "persistentSoundStopTime" : 0.2
+		    }
+		  }
+		}
+	      }}},
+	      "particleEmitters" : {
+		"<armName>Fire" : {
+		  "active" : false,
+		  "burstCount" : 3,
+		  "anchorPart" : "<armName>",
+		  "particles" : [
+		    { "particle" : {
+			"type" : "ember",
+			"size" : 1.0,
+			"position" : [4.25, 3.125],
+			"color" : [200, 150, 0, 255],
+			"light" : [100, 100, 50],
+			"fullbright" : true,
+			"fade" : 0.9,
+			"initialVelocity" : [20.0, 0],
+			"finalVelocity" : [0.0, -40.0],
+			"approach" : [0, 30],
+			"timeToLive" : 0.3,
+			"layer" : "middle",
+			"variance" : {
+			  "initialVelocity" : [5, 5],
+			  "timeToLive" : 0.2
+			}
+		      } }
+		  ]
+		}
+	      },
+	      "sounds" : {
+		"<armName>Fire" : ["/sfx/gun/mech_gatling1.ogg"]
+	      }
+	    }
+	  }
+	},
+
+	{"op":"add","path":"/sinclustermine","value":
+	  {
+	    "stats" : {
+	      "power" : 8,
+	      "energy" : 8
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/remotedetonatorarm.lua",
+	      "armClass" : "RemoteDetonator",
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [3.5, 0],
+
+	      "windupTime" : 0.4,
+	      "fireTime" : 0.6,
+	      "cooldownTime" : 1.5,
+
+	      "projectileType" : "clustermine",
+	      "projectileParameters" : {
+		"power" : 30
+	      },
+
+	      "projectileCount" : 15,
+	      "projectileSpread" : 0.05,
+	      "projectileInaccuracy" : 0.04,
+	      "projectileRandomOffset" : [1.5, 0.75],
+	      "projectileRandomSpeed" : [14, 34]
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/sinclustermine.png",
+	      "<armName>Fullbright" : "arm/sinclustermine_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["c36a5f", "994c49", "6f3130", "551d28"],
+	    "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+	    "animationCustom" : {
+	      "animatedParts" : { "stateTypes" : { "<armName>" : { "states" : {
+		"windup" : {
+		  "mode" : "end"
+		}
+	      }}}},
+	      "sounds" : {
+		"<armName>Recover" : ["/sfx/gun/reload/rocket_reload_clip1.ogg"],
+		"<armName>Fire" : ["/sfx/gun/grenade1.ogg"],
+		"<armName>Trigger" : ["/sfx/interface/rocket_lockon.ogg"]
+	      }
+	    }
+	  }
+	},
+
+	{"op":"add","path":"/sinfist","value":
+	 {
+	    "stats" : {
+	      "power" : 8,
+	      "energy" : 8
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/boomerangarm.lua",
+	      "armClass" : "Boomerang",
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [3.5, -0.75],
+
+	      "windupTime" : 0.2,
+	      "fireTime" : 0.6,
+
+	      "projectileType" : "spikefistrocket",
+	      "projectileParameters" : {
+		"speed" : 120,
+		"power" : 350,
+		"knockback" : 50,
+		"knockbackDirectional" : true,
+
+		"ignoreTerrain" : false,
+		"controlForce" : 120,
+		"pickupDistance" : 1.0,
+		"snapDistance" : 5.0
+	      }
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/sinfistlauncher.png",
+	      "<armName>Fullbright" : "arm/sinfistlauncher_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["c36a5f", "994c49", "6f3130", "551d28"],
+	    "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+	    "animationCustom" : {
+	      "animatedParts" : { "stateTypes" : { "<armName>" : { "states" : {
+		"windup" : {
+		  "mode" : "end"
+		}
+	      }}}},
+	      "sounds" : {
+		"<armName>Recover" : ["/sfx/gun/reload/rocket_reload_clip1.ogg"],
+		"<armName>Fire" : ["/sfx/gun/rocket2.ogg"]
+	      }
+	    }
+	  }
+	},
+
+	{"op":"add","path":"/sinsniper","value":
+	  {
+	    "stats" : {
+	      "power" : 8,
+	      "energy" : 8
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/beamarm.lua",
+	      "armClass" : "BeamArm",
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [4.5, 0.375],
+
+	      "windupTime" : 0.7,
+	      "fireTime" : 0.2,
+	      "winddownTime" : 0.7,
+
+	      "repeatFire" : false,
+	      "lockAim" : true,
+
+	      "beamSourceOffset" : [4.5, 2.625],
+	      "beamHeight" : 1,
+	      "beamLength" : 120,
+	      "beamParticleDensity" : 2,
+	      "beamTileDamage" : 0,
+	      "beamTileDamageDepth" : 0
+	    },
+	    "damageSources" : {
+	      "<armName>Beam" : {
+		"enabled" : false,
+		"attachToPart" : "<armName>",
+
+		"line" : [ [4.5, 2.625], [64.5, 2.625] ],
+		"damage" : 375,
+		"damageSourceKind" : "poisonplasma",
+		"damageRepeatTimeout" : 0.3,
+		"damageRepeatGroup" : "<armName>Beam",
+		"knockback" : 0,
+
+		"rayCheck" : true
+	      }
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/mecharmsinsniper.png",
+	      "<armName>Fullbright" : "arm/mecharmsinsniper_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["c36a5f", "994c49", "6f3130", "551d28"],
+	    "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+	    "animationCustom" : {
+	      "animatedParts" : {
+		"stateTypes" : {
+		  "<armName>" : { "states" : {
+		    "windup" : {
+		      "cycle" : 0.5
+		    },
+		    "winddown" : {
+		      "cycle" : 0.5
+		    }
+		  }},
+		  "<armName>Beam" : {
+		    "default" : "off",
+		    "states" : {
+		      "off" : {},
+		      "fire" : {
+			"frames" : 3,
+			"cycle" : 0.2,
+			"mode" : "transition",
+			"transition" : "off"
+		      }
+		    }
+		  }
+		},
+		"parts" : {
+		  "<armName>Beam" : {
+		    "properties" : {
+		      "zLevel" : 10,
+		      "offset" : [4.5, 2.15],
+		      "anchorPart" : "<armName>",
+		      "fullbright" : true,
+		      "centered" : false,
+		      "transformationGroups" : ["<armName>Beam"]
+		    },
+		    "partStates" : {
+		      "<armName>Beam" : {
+			"fire" : {
+			  "properties" : {
+			    "image" : "/vehicles/modularmech/beam/sinsniperbeam.png:<frame>"
+			  }
+			}
+		      }
+		    }
+		  }
+		}
+	      },
+	      "particleEmitters" : {
+		"<armName>Beam" : {
+		  "active" : false,
+		  "anchorPart" : "<armName>",
+		  "particles" : [
+		    { "particle" : {
+			"type" : "ember",
+			"fullbright" : true,
+			"color" : [132, 255, 0, 150],
+			"light" : [132, 255, 0],
+			"fade" : 0.5,
+			"destructionAction" : "shrink",
+			"destructionTime" : 0.25,
+			"initialVelocity" : [0, 0],
+			"timeToLive" : 0.4,
+			"layer" : "middle",
+			"variance" : {
+			  "initialVelocity" : [1, 1],
+			  "timeToLive" : 0.2
+			}
+		      } }
+		  ]
+		}
+	      },
+	      "transformationGroups" : {
+		"<armName>Beam" : {}
+	      },
+	      "sounds" : {
+		"<armName>Windup" : [],
+		"<armName>Fire" : ["/sfx/gun/grenadeblast_electric2.ogg"]
+	      }
+	    }
+	  }
+	},
+
+	{"op":"add","path":"/sinshotgun","value":
+	  {
+	    "stats" : {
+	      "power" : 8,
+	      "energy" : 8
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/gatlingarm.lua",
+	      "armClass" : "GatlingArm",
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [6.5, -0.3],
+
+	      // these timings need to match the animation cycles for windup/winddown and active, respectively
+	      "windupTime" : 0.4,
+	      "fireTime" : 1,
+
+	      "projectileType" : "heavybullet",
+	      "projectileParameters" : {
+		"power" : 40
+	      },
+
+	      "projectileCount" : 9,
+	      "projectileSpacing" : [0, 0.1],
+
+	      "projectileInaccuracy" : 0.15
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/sinshotgun.png",
+	      "<armName>Fullbright" : "arm/sinshotgun_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["c36a5f", "994c49", "6f3130", "551d28"],
+	    "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+	    "animationCustom" : {
+	      "animatedParts" : { "stateTypes" : { "<armName>" : {
+		"states" : {
+		  "windup" : {
+		    "properties" : {
+		      "persistentSound" : "/sfx/gun/mech_gatling_windup.ogg",
+		      "persistentSoundRangeMultiplier" : 1.0,
+		      "persistentSoundStopTime" : 0.2
+		    }
+		  },
+		  "active" : {
+		    "cycle" : 1
+		  },
+		  "winddown" : {
+		    "properties" : {
+		      "persistentSound" : "/sfx/gun/mech_gatling_winddown.ogg",
+		      "persistentSoundRangeMultiplier" : 1.0,
+		      "persistentSoundStopTime" : 0.2
+		    }
+		  }
+		}
+	      }}},
+	      "sounds" : {
+		"<armName>Fire" : ["/sfx/gun/burstshot1.ogg"]
+	      }
+	    }
+	  }
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
     ],
 
     [{
