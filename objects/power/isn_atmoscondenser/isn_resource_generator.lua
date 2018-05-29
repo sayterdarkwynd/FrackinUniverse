@@ -16,19 +16,26 @@ function init()
     self.powerConsumption = config.getParameter("isn_requiredPower")
     power.init()
 
+    self.maxWeight = {}
+    self.outputMap = {}
+
+    initMap(world.type())
+end
+
+function initMap(worldtype)
     -- Set up output here so it won't take up time later
     local outputConfig = config.getParameter("outputs")
-    local outputTable = outputConfig[world.type()] or outputConfig["default"]
+    local outputTable = outputConfig[worldtype] or outputConfig["default"]
     if type(outputTable) == "string" then
         outputTable = outputConfig[outputTable]
     end
     local weights = config.getParameter("namedWeights")
-    self.maxWeight = 0
-    self.outputMap = {}
+    self.maxWeight[worldtype] = 0
+    self.outputMap[worldtype] = {}
     for _,table in ipairs(outputTable or {}) do
         local weight = weights[table.weight] or table.weight
-        self.maxWeight = self.maxWeight + weight
-        self.outputMap[weight] = table.items
+        self.maxWeight[worldtype] = self.maxWeight[worldtype] + weight
+        self.outputMap[worldtype][weight] = table.items
     end
 end
 
@@ -42,13 +49,21 @@ function update(dt)
 		deltaTime = deltaTime + dt
 	end
 
+	local worldtype = world.type()
+	if worldtype == 'unknown' then
+		worldtype = world.getProperty("ship.celestial_type") or worldtype
+	end
+	if not self.outputMap[worldtype] then
+		initMap(worldtype)
+	end
+	
     local output = nil
-    local rarityroll = math.random(1, self.maxWeight)
+    local rarityroll = math.random(1, self.maxWeight[worldtype])
 
     -- Goes through the list adding values to the range as it goes.
     -- This keeps the chance ratios while allowing the list to be in any order.
     local total = 0
-    for weight,table in pairs(self.outputMap) do
+    for weight,table in pairs(self.outputMap[worldtype]) do
         total = total + weight
         if rarityroll <= total then
             output = util.randomFromList(table)
