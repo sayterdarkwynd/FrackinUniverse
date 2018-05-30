@@ -1,5 +1,30 @@
 [
-{"op": "add","path": "/critChance","value": 3},
-{"op": "add","path": "/critBonus","value": 11},
-{"op": "replace","path": "/tooltipKind","value": "swordunique"}
+
+{"op": "add","path": "/critChance","value": 2},
+{"op": "add","path": "/critBonus","value": 7},
+{"op": "replace","path": "/tooltipKind","value": "swordunique"},
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "upgradeableWeapon"
+  },
+  
+  {
+    "op": "add",
+    "path": "/upgradeParameters",
+    "value": {
+      "shortdescription": "^cyan;Master Sword^reset; ^yellow;^reset;",
+      "description": "An exquisite sword.",
+      "animationParts": {
+        "sword": "protectoratebroadsword2.png"
+        "swordfullbright": "protectoratebroadsword2fullbright.png"
+      },
+      "critChance": 3,
+      "critBonus": 8,
+      "primaryAbility": {
+        "fireTime": 0.80,
+        "baseDps": 12
+      }
+    }
+  } 
 ]
