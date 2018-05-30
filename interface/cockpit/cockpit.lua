@@ -725,7 +725,7 @@ function universeMoveState(startPosition, systems, toPosition, travel, queued)
 	  if not player.isAdmin() then		
             world.setProperty("ship.fuel", world.getProperty("ship.fuel") - fuelCost(travel.system))		
           end  
-    celestial.flyShip(travel.system, travel.target)
+    flyShip(travel.system, travel.target)
     while not celestial.skyFlying() do
       coroutine.yield()
     end
@@ -1017,7 +1017,7 @@ function systemScreenState(system, warpIn)
       if isCurrent and compare(self.travel.system, system.location) then
         if self.travel.target then
           if self.travel.target[1] ~= "coordinate" or celestial.visitableParameters(self.travel.target[2]) then
-            celestial.flyShip(self.travel.system, self.travel.target)
+            flyShip(self.travel.system, self.travel.target)
           end
         end
         self.travel = {}
@@ -1221,7 +1221,7 @@ function planetScreenState(planet)
             orbiting = shipLocation[2]
           end
           if orbiting and compare(coordinatePlanet(orbiting), coordinatePlanet(self.travel.target[2])) then
-            celestial.flyShip(self.travel.system, self.travel.target)
+            flyShip(self.travel.system, self.travel.target)
             self.travel = {}
           end
         end
@@ -1295,4 +1295,13 @@ function planetSystemTransition(fromPlanet)
 
   pane.stopAllSounds(self.sounds.zoom)
   self.state:set(systemScreenState, system, false)
+end
+
+function flyShip(system, target)
+    celestial.flyShip(system, target)
+	if target and target[1] == "coordinate" and celestial.visitableParameters(target[2]) then
+		world.setProperty("ship.celestial_type", celestial.visitableParameters(target[2]).typeName)
+	else 
+		world.setProperty("ship.celestial_type", nil)
+	end
 end

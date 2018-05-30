@@ -3743,8 +3743,10 @@
 	{"op":"add","path":"/sinrack","value":
 	  {
 	    "stats" : {
-	      "power" : 8,
-	      "energy" : 8
+	      "power" : 7,
+	      "energy" : 8,
+	      "mechMass" : 8,
+	      "multicount" : 14
 	    },
 	    "partParameters" : {
 	      "script" : "/vehicles/modularmech/armscripts/missileburstarm.lua",
@@ -3759,7 +3761,7 @@
 
 	      "projectileType" : "mechminimissile",
 	      "projectileParameters" : {
-		"power" : 35
+		"power" : 26
 	      },
 
 	      "projectileCount" : 16,
@@ -3790,8 +3792,10 @@
 	{"op":"add","path":"/sinchaingun","value":
 	  {
 	    "stats" : {
-	      "power" : 8,
-	      "energy" : 8
+	      "power" : 7,
+	      "energy" : 8,
+	      "mechMass" : 4,
+	      "rapidFire" : 4
 	    },
 	    "partParameters" : {
 	      "script" : "/vehicles/modularmech/armscripts/gatlingarm.lua",
@@ -3806,7 +3810,7 @@
 
 	      "projectileType" : "heavybullet",
 	      "projectileParameters" : {
-		"power" : 40
+		"power" : 5
 	      },
 
 	      "projectileInaccuracy" : 0.04
@@ -3876,8 +3880,10 @@
 	{"op":"add","path":"/sinclustermine","value":
 	  {
 	    "stats" : {
-	      "power" : 8,
-	      "energy" : 8
+	      "power" : 7,
+	      "energy" : 8,
+	      "mechMass" : 5,
+	      "multicount" : 12
 	    },
 	    "partParameters" : {
 	      "script" : "/vehicles/modularmech/armscripts/remotedetonatorarm.lua",
@@ -3892,7 +3898,7 @@
 
 	      "projectileType" : "clustermine",
 	      "projectileParameters" : {
-		"power" : 30
+		"power" : 24
 	      },
 
 	      "projectileCount" : 15,
@@ -3925,8 +3931,9 @@
 	{"op":"add","path":"/sinfist","value":
 	 {
 	    "stats" : {
-	      "power" : 8,
-	      "energy" : 8
+	      "power" : 7,
+	      "energy" : 8,
+	      "mechMass" : 5
 	    },
 	    "partParameters" : {
 	      "script" : "/vehicles/modularmech/armscripts/boomerangarm.lua",
@@ -3941,14 +3948,36 @@
 	      "projectileType" : "spikefistrocket",
 	      "projectileParameters" : {
 		"speed" : 120,
-		"power" : 350,
+		"power" : 26.5,
 		"knockback" : 50,
 		"knockbackDirectional" : true,
 
 		"ignoreTerrain" : false,
-		"controlForce" : 120,
+		"controlForce" : 90,
 		"pickupDistance" : 1.0,
-		"snapDistance" : 5.0
+		"snapDistance" : 5.0,
+		"actionOnCollide" : [
+		      {
+			"action": "sound",
+			"options": [
+			  "/sfx/weapons/explosion1.ogg",
+			  "/sfx/weapons/explosion2.ogg"
+			]
+		      },
+		      {
+			"action": "projectile",
+			"inheritDamageFactor": 0,
+			"type": "burstjumpboom3"
+		      },
+		      {
+			"action": "explosion",
+			"foregroundRadius": 4,
+			"backgroundRadius": 2,
+			"explosiveDamageAmount": 32,
+			"harvestLevel": 99,
+			"delaySteps": 2
+		      }		
+		]
 	      }
 	    },
 	    "partImages" : {
@@ -3974,8 +4003,10 @@
 	{"op":"add","path":"/sinsniper","value":
 	  {
 	    "stats" : {
-	      "power" : 8,
-	      "energy" : 8
+	      "power" : 6,
+	      "basePower" : 26,
+	      "energy" : 8,
+	      "mechMass" : 7
 	    },
 	    "partParameters" : {
 	      "script" : "/vehicles/modularmech/armscripts/beamarm.lua",
@@ -4002,14 +4033,12 @@
 	      "<armName>Beam" : {
 		"enabled" : false,
 		"attachToPart" : "<armName>",
-
 		"line" : [ [4.5, 2.625], [64.5, 2.625] ],
-		"damage" : 375,
+		"damage" : 0,
 		"damageSourceKind" : "poisonplasma",
 		"damageRepeatTimeout" : 0.3,
 		"damageRepeatGroup" : "<armName>Beam",
 		"knockback" : 0,
-
 		"rayCheck" : true
 	      }
 	    },
@@ -4093,7 +4122,9 @@
 		"<armName>Beam" : {}
 	      },
 	      "sounds" : {
-		"<armName>Windup" : [],
+                "<armName>Windup": ["/sfx/gun/mech_beamdrill_windup.ogg"],
+                "<armName>WinddownNoFire": [],
+                "<armName>Winddown": ["/sfx/gun/mech_beamdrill_winddown.ogg"],
 		"<armName>Fire" : ["/sfx/gun/grenadeblast_electric2.ogg"]
 	      }
 	    }
@@ -4103,8 +4134,10 @@
 	{"op":"add","path":"/sinshotgun","value":
 	  {
 	    "stats" : {
-	      "power" : 8,
-	      "energy" : 8
+	      "power" : 4,
+	      "energy" : 4,
+	      "multicount" : 6,
+	      "mechMass" : 6
 	    },
 	    "partParameters" : {
 	      "script" : "/vehicles/modularmech/armscripts/gatlingarm.lua",
@@ -4113,13 +4146,13 @@
 	      "rotationLimits" : [-1.75, 1.75],
 	      "fireOffset" : [6.5, -0.3],
 
-	      // these timings need to match the animation cycles for windup/winddown and active, respectively
 	      "windupTime" : 0.4,
 	      "fireTime" : 1,
 
 	      "projectileType" : "heavybullet",
 	      "projectileParameters" : {
-		"power" : 40
+		"power" : 15,
+		"knockback" : 8
 	      },
 
 	      "projectileCount" : 9,
@@ -4161,14 +4194,7 @@
 	    }
 	  }
 	}	
-	
-	
-	
-	
-	
-	
-	
-	
+
     ],
 
     [{
