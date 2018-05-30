@@ -22,8 +22,8 @@
         "subsurface"   : { "baseHeight" : 1200, "layerLevel" : 1000 },
         "underground1" : { "baseHeight" : 900, "layerLevel" : 800 },
         "underground2" : { "baseHeight" : 700, "layerLevel" : 600 },
-        "underground3" : { "baseHeight" : 500,  "layerLevel" : 400  },      
-        "core" : { "baseHeight" : 220, "layerLevel" : 0 }
+        "underground3" : { "baseHeight" : 500,  "layerLevel" : 200  },      
+        "core" : { "baseHeight" : 100, "layerLevel" : 0 }
     }
   }
 },
@@ -34,7 +34,7 @@
     "value" : {
       "size" : [11000, 7000],
       "gravityRange" : [90, 150], 
-      "dayLengthRange" : [1000, 4000],
+      "dayLengthRange" : [1000, 4400],
       "layerDefaults" : { 
         "secondaryRegionPeriod" : [1500, 3000],
         "secondaryRegionSize" : [0.2, 0.92],
@@ -43,14 +43,14 @@
         "dungeonCountRange" : [2, 6]
       },
       "layers" : {
-        "space"        : { "baseHeight" : 6500, "layerLevel" : 5700 },
-        "atmosphere"   : { "baseHeight" : 5500, "layerLevel" : 4600 },
-        "surface"      : { "baseHeight" : 4000, "layerLevel" : 3200 },
-        "subsurface"   : { "baseHeight" : 3000, "layerLevel" : 2500 },
-        "underground1" : { "baseHeight" : 1500, "layerLevel" : 1000 },
+        "space"        : { "baseHeight" : 6500, "layerLevel" : 6200 },
+        "atmosphere"   : { "baseHeight" : 5500, "layerLevel" : 5000 },
+        "surface"      : { "baseHeight" : 4000, "layerLevel" : 3800 },
+        "subsurface"   : { "baseHeight" : 3000, "layerLevel" : 2800 },
+        "underground1" : { "baseHeight" : 1500, "layerLevel" : 1300 },
         "underground2" : { "baseHeight" : 900, "layerLevel" : 800 },
-        "underground3" : { "baseHeight" : 700,  "layerLevel" : 600  },
-        "core" : { "baseHeight" : 400, "layerLevel" : 0 }
+        "underground3" : { "baseHeight" : 700,  "layerLevel" : 200  },
+        "core" : { "baseHeight" : 200, "layerLevel" : 0 }
     }
   }
 },
@@ -58,13 +58,13 @@
     "value" : {
       "size" : [16000, 8000],
       "gravityRange" : [90, 180],
-      "dayLengthRange" : [1200, 4000],
+      "dayLengthRange" : [1200, 5000],
       "layerDefaults" : {
         "secondaryRegionPeriod" : [1500, 3000],
         "secondaryRegionSize"   : [0.2, 0.92],
         "secondaryRegionCount" : [1, 5],
         "subRegionSize" : [0.15, 0.55],
-        "dungeonCountRange"     : [3, 7]
+        "dungeonCountRange"     : [2, 7]
       },
       "layers" : {
         "space"        : { "baseHeight" : 7500, "layerLevel" : 6600 },
@@ -88,24 +88,55 @@
         "secondaryRegionSize"   : [0.2, 0.92],
         "secondaryRegionCount" : [1, 5],
         "subRegionSize" : [0.15, 0.55],
-        "dungeonCountRange"     : [3, 8]
+        "dungeonCountRange"     : [2, 8]
       },
       "layers" : {
         "space"        : { "baseHeight" : 23500, "layerLevel" : 20600 },
         "atmosphere"   : { "baseHeight" : 17500, "layerLevel" : 15500 },
-        "surface"      : { "baseHeight" : 14500, "layerLevel" : 9400 },
+        "surface"      : { "baseHeight" : 14500, "layerLevel" : 11400 },
         "subsurface"   : { "baseHeight" : 9200, "layerLevel" : 9000 },
         "underground1" : { "baseHeight" : 7900, "layerLevel" : 7700 },
         "underground2" : { "baseHeight" : 5400, "layerLevel" : 5200 },
         "underground3" : { "baseHeight" : 2755, "layerLevel" : 950 },
-        "core"         : { "baseHeight" : 600,  "layerLevel" : 0    }
+        "core"         : { "baseHeight" : 300,  "layerLevel" : 0    }
       }
     }
   },  
 
 
-
-
+  //remove ocean hardcoded sealevels?
+  {
+    "op": "remove",
+    "path": "/planetTypes/ocean/layers/surface/baseHeight"
+  },
+  {
+    "op": "remove",
+    "path": "/planetTypes/ocean/layers/surface/layerLevel"
+  },
+  {
+    "op": "remove",
+    "path": "/planetTypes/magma/layers/surface/baseHeight"
+  },
+  {
+    "op": "remove",
+    "path": "/planetTypes/magma/layers/surface/layerLevel"
+  },
+  {
+    "op": "remove",
+    "path": "/planetTypes/toxic/layers/surface/baseHeight"
+  },
+  {
+    "op": "remove",
+    "path": "/planetTypes/toxic/layers/surface/layerLevel"
+  },
+  {
+    "op": "remove",
+    "path": "/planetTypes/arctic/layers/surface/baseHeight"
+  },
+  {
+    "op": "remove",
+    "path": "/planetTypes/arctic/layers/surface/layerLevel"
+  },  
 
 //garden
 
