@@ -9,7 +9,8 @@ weaponBonus={
 armorBonus={
 	{stat = "beestingImmunity", amount = 1},
 	{stat = "honeyslowImmunity", amount = 1},
-	{stat = "ffextremeradiationImmunity", amount = 1}
+	{stat = "ffextremeradiationImmunity", amount = 1.0},
+	{stat = "biomeradiationImmunity", amount = 1.0}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
