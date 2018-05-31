@@ -5,9 +5,9 @@ require "/scripts/messageutil.lua"
 
 function init()
 	acceptedItems = config.getParameter("acceptedItems")
-	if not config.getParameter("moddedCaptureSupport") then
-		petCaptureWhitelist = config.getParameter("petCaptureWhitelist")
-	end
+	--if not config.getParameter("moddedCaptureSupport") then
+		--petCaptureWhitelist = config.getParameter("petCaptureWhitelist")
+	--end
 end
 
 function update(dt)

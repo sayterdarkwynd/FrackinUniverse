@@ -2,7 +2,7 @@ require "/scripts/util.lua"
 require "/scripts/interp.lua"
 
 function init()
-	raceInfo = root.assetJson("/interface/objectcrafting/fu_racialiser/fu_raceinfo.config")
+	raceInfo = root.assetJson("/interface/objectcrafting/fu_racialiser/fu_raceinfo.config").raceInfo
     count = 1
 	itemType = nil
 	raceAmount = raceAmount()
@@ -153,12 +153,18 @@ end
 
 function getBYOSParameters(BYOSItemType, pet, treasure)
 	itemType = BYOSItemType
+	if countOld then
+		count = countOld
+		countOld = nil
+	end
 	if itemType then
 		info = raceInfo[count]
 		value = info[itemType]
 		if not value then
+			countOld = count
 			count = 1
-			return getBYOSParameters(BYOSItemType, pet, treasure)
+			info = raceInfo[count]
+			value = info[itemType]
 		end
 		if root.itemConfig(value.name) then
 			itemNew = value
