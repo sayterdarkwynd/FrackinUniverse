@@ -4,13 +4,15 @@
   "inventoryIcon" : "autohookshoticon.png",
   "rarity" : "common",
   "maxStack" : 1,
-  "description" : "It pulls you up automatically!",
-  "shortdescription" : "Automatic Hookshot",
+  "level" : 1,
+  "description" : "It pulls you up automatically! Upgrade at a ^orange;Tool Upgrade Station^reset;.",
+  "shortdescription" : "Hookshot",
   "largeImage" : "autohookshotbig.png",
-  "category" : "Tool",
+  "category" : "hookshot",
   "fireTime" : 0,
   "twoHanded" : false,
-  "learnBlueprintsOnPickup" : [ "fuautohookshot2" ],
+  "itemTags" : [ "mininglaser", "tool" ],
+
   "scripts" : ["/items/active/grapplinghooks/autohookshot.lua"],
   "animationScripts" : ["/items/active/grapplinghooks/autohookshotanimation.lua"],
 
@@ -38,5 +40,58 @@
   "reelSpeed" : 30,
   "controlForce" : 800,
 
-  "groundLagTime" : 0.2
+  "groundLagTime" : 0.2,
+  
+  
+  
+"upgradeParameters" : { 
+  "description" : "It pulls you up automatically! Upgrade at a ^orange;Tool Upgrade Station^reset;.",
+  "shortdescription" : "Hookshot MkII ^red;^reset;",
+  
+  "animation" : "autohookshot2.animation",
+  "largeImage" : "autohookshotbig2.png",    
+  "inventoryIcon" : "autohookshoticon2.png",
+  
+	  "projectileParameters" : {
+	    "speed" : 90,
+	    "timeToLive" : 0.35
+	  },
+
+	  "ropeWidth" : 1.0,
+	  "ropeColor" : [150, 150, 150, 255],
+
+	  "reelInDistance" : 3.5,
+	  "reelOutLength" : 60,
+	  "breakLength" : 70,
+
+	  "reelSpeed" : 40,
+	  "controlForce" : 900,
+
+	  "groundLagTime" : 0.1
+  },
+"upgradeParameters2" : { 
+  "description" : "It pulls you up automatically! Upgrade at a ^orange;Tool Upgrade Station^reset;.",
+  "shortdescription" : "Hookshot MkIII ^#e43774;^reset;",
+  
+  "animation" : "autohookshot3.animation",
+  "largeImage" : "autohookshotbig3.png",    
+  "inventoryIcon" : "autohookshoticon3.png",
+  
+  "projectileParameters" : {
+    "speed" : 120,
+    "timeToLive" : 0.4
+  },
+
+  "ropeWidth" : 1.0,
+  "ropeColor" : [150, 150, 150, 255],
+
+  "reelInDistance" : 3.5,
+  "reelOutLength" : 80,
+  "breakLength" : 90,
+
+  "reelSpeed" : 50,
+  "controlForce" : 1100,
+
+  "groundLagTime" : 0.05
+  }  
 }

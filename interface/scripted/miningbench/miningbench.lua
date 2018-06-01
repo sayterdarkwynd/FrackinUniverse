@@ -122,39 +122,49 @@ function doUpgrade()
 	 
 			  
           upgradedItem.parameters.primaryAbility = {}  
- 
 		  if (upgradedItem.parameters.level) <= 2 and itemConfig.config.upgradeParameters then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
 		  elseif (upgradedItem.parameters.level) == 3 and itemConfig.config.upgradeParameters2 then
-		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
-		  elseif (upgradedItem.parameters.level) == 4 and itemConfig.config.upgradeParameters3 then
+		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)	    
+		  elseif (upgradedItem.parameters.level) == 4 and itemConfig.config.upgradeParameters3 and not (itemConfig.config.category == "hookshot") then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)            
-		  elseif (upgradedItem.parameters.level) == 5 and itemConfig.config.upgradeParameters4 then
+		  elseif (upgradedItem.parameters.level) == 5 and itemConfig.config.upgradeParameters4 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
-		  elseif (upgradedItem.parameters.level) == 6 and itemConfig.config.upgradeParameters5 then
+		  elseif (upgradedItem.parameters.level) == 6 and itemConfig.config.upgradeParameters5 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters5)     
-		  elseif (upgradedItem.parameters.level) == 7 and itemConfig.config.upgradeParameters6 then
+		  elseif (upgradedItem.parameters.level) == 7 and itemConfig.config.upgradeParameters6 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters6)   
-		  elseif (upgradedItem.parameters.level) == 8 and itemConfig.config.upgradeParameters7 then
+		  elseif (upgradedItem.parameters.level) == 8 and itemConfig.config.upgradeParameters7 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7)  
-		  elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
+		  elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and not (itemConfig.config.category == "detector") and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  then
 			  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 			  upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
 			  upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
 			  upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 ) 
-		
 		  --is it a repair gun?
                   elseif (itemConfig.config.category == "repairgun") and (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
-			  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7)
+			  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 			  upgradedItem.parameters.primaryAbility.projectileParameters.restoreBase= (upgradedItem.parameters.level) + 3
 			  upgradedItem.parameters.primaryAbility.projectileParameters.speed= (upgradedItem.parameters.level)+1
 			  upgradedItem.parameters.primaryAbility.energyUsage= 40 + ( upgradedItem.parameters.level /10 )	
                   -- catch leftovers  
-		  elseif (upgradedItem.parameters.level) > 8 then 	 
+                  elseif (itemConfig.config.category == "detector") and (upgradedItem.parameters.level) > 8 then -- ore detectors and cave detectors
+                          upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+		          upgradedItem.parameters.pingRange= upgradedItem.parameters.pingRange + 1
+		          upgradedItem.parameters.pingDuration= upgradedItem.parameters.pingDuration + 0.15
+		          upgradedItem.parameters.pingCooldown= upgradedItem.parameters.pingCooldown - 0.05  
+                  elseif (itemConfig.config.category == "hookshot") and (upgradedItem.parameters.level) > 3 then -- ore detectors and cave detectors
+                          upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+		          upgradedItem.parameters.level = 20	
+                  elseif (itemConfig.config.category == "relocator") and (upgradedItem.parameters.level) > 4 then -- relocators
+                          upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
+		          upgradedItem.parameters.level = 20		          
+		  elseif (upgradedItem.parameters.level) > 8  and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") then 	 
 			  upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
 			  upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
-			  upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 ) 		  
-		  end 	  
+			  upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 ) or 1		  
+		  end 
+		  
         end
         player.giveItem(upgradedItem)
 	checkResearchBonus()
