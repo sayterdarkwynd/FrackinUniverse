@@ -1,21 +1,21 @@
 {
-  "itemName" : "woodencrossbow",
-  "price" : 100,
-  "inventoryIcon" : "woodencrossbow.png",
+  "itemName" : "carboncrossbow",
+  "price" : 320,
+  "inventoryIcon" : "carboncrossbow.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "A standard wooden crossbow.",
-  "shortdescription" : "Wooden Crossbow",
-  "level" : 1,
+  "description" : "Packs serious punch.",
+  "shortdescription" : "Carbon Crossbow",
+  "level" : 3,
   "tooltipKind" : "gun",
   "category" : "crossbow",
   "itemTags" : ["weapon","ranged","crossbow","upgradeableWeapon"],
   "twoHanded" : true,
-  "learnBlueprintsOnPickup" : [ "ironcrossbow" ],
+  "learnBlueprintsOnPickup" : [ "zerchesiumcrossbow" ],
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "woodencrossbow.png",
+    "middle" : "carboncrossbow.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -36,17 +36,17 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 1.2,
-    "baseDps" : 8,
+    "fireTime" : 1.4,
+    "baseDps" : 9,
     "energyUsage" : 24,
-    "inaccuracy" : 0.008,
+    "inaccuracy" : 0.003,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "woodenbolt",
+    "projectileType" : "ironarrow",
     "projectileParameters" : {
-      "knockback" : 25
+      "knockback" : 32
     },
     "stances" : {
       "idle" : {
