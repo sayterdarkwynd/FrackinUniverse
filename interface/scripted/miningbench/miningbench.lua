@@ -126,17 +126,17 @@ function doUpgrade()
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
 		  elseif (upgradedItem.parameters.level) == 3 and itemConfig.config.upgradeParameters2 then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)	    
-		  elseif (upgradedItem.parameters.level) == 4 and itemConfig.config.upgradeParameters3 and not (itemConfig.config.category == "hookshot") then
+		  elseif (upgradedItem.parameters.level) == 4 and itemConfig.config.upgradeParameters3 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "parasol") then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)            
-		  elseif (upgradedItem.parameters.level) == 5 and itemConfig.config.upgradeParameters4 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") then
+		  elseif (upgradedItem.parameters.level) == 5 and itemConfig.config.upgradeParameters4 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
-		  elseif (upgradedItem.parameters.level) == 6 and itemConfig.config.upgradeParameters5 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  then
+		  elseif (upgradedItem.parameters.level) == 6 and itemConfig.config.upgradeParameters5 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters5)     
-		  elseif (upgradedItem.parameters.level) == 7 and itemConfig.config.upgradeParameters6 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  then
+		  elseif (upgradedItem.parameters.level) == 7 and itemConfig.config.upgradeParameters6 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters6)   
-		  elseif (upgradedItem.parameters.level) == 8 and itemConfig.config.upgradeParameters7 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  then
+		  elseif (upgradedItem.parameters.level) == 8 and itemConfig.config.upgradeParameters7 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
 		    upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7)  
-		  elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and not (itemConfig.config.category == "detector") and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  then
+		  elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and not (itemConfig.config.category == "detector") and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
 			  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 			  upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
 			  upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
@@ -153,13 +153,19 @@ function doUpgrade()
 		          upgradedItem.parameters.pingRange= upgradedItem.parameters.pingRange + 1
 		          upgradedItem.parameters.pingDuration= upgradedItem.parameters.pingDuration + 0.15
 		          upgradedItem.parameters.pingCooldown= upgradedItem.parameters.pingCooldown - 0.05  
-                  elseif (itemConfig.config.category == "hookshot") and (upgradedItem.parameters.level) > 3 then -- ore detectors and cave detectors
+                  elseif (itemConfig.config.category == "parasol") and (upgradedItem.parameters.level) >=2 then -- parasol
                           upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
 		          upgradedItem.parameters.level = 20	
-                  elseif (itemConfig.config.category == "relocator") and (upgradedItem.parameters.level) > 4 then -- relocators
+                  elseif (itemConfig.config.category == "translocator") and (upgradedItem.parameters.level) >=4 then -- translocator
+                          upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
+		          upgradedItem.parameters.level = 20			          
+                  elseif (itemConfig.config.category == "hookshot") and (upgradedItem.parameters.level) >=3 then -- hookshots
+                          upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+		          upgradedItem.parameters.level = 20	
+                  elseif (itemConfig.config.category == "relocator") and (upgradedItem.parameters.level) >=4 then -- relocators
                           upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
 		          upgradedItem.parameters.level = 20		          
-		  elseif (upgradedItem.parameters.level) > 8  and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") then 	 
+		  elseif (upgradedItem.parameters.level) > 8  and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "translocator") then 	 
 			  upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
 			  upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
 			  upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 ) or 1		  
