@@ -14,43 +14,7 @@ noError = true
 errorString = "An error has occured.\n\nPlease report this on the Steam page or Discord server with a log attached.\n\nMeanwhile, you can click any of the buttons to open the vanilla version of SAIL."
 -- 'errorString' is overriden by whatever is in 'cfg.TextData.strings.error'
 
-
-
-function DeepPrintTable(toPrint, level)
-	level = level or 0
-	local str = ""
-	
-	if type(toPrint) == "table" then
-		for k, v in pairs(toPrint) do
-			for i = 0, level do
-				str = str.."	"
-			end
-			
-			local lenFix = ""
-			for i = 1, 30 - string.len(tostring(k)) do 
-				lenFix = lenFix.." "
-			end
-			
-			str = str..tostring(k)..lenFix.."=          "..tostring(v)
-			
-			if type(v) == "table" then
-				str = str..DeepPrintTable(v, level +1).."\n"
-			else
-				str = str.."\n"
-			end
-		end
-	
-	else
-		str = tostring(toPrint)
-	end
-	
-	return "\n"..str
-end
-
 function init()
-	cfg = root.assetJson("/interface/scripted/fu_sail/aidata.config")
-	errorString = cfg.TextData.strings.error
-	
 	local status, err = pcall(initSafe)
 	if not status then
 		script.setUpdateDelta(0)
@@ -136,14 +100,19 @@ end
 --	However, this does not prevent stack overflows, or errors that cause crashes. (such as a function expecting a string of an image path, but recieving a non-absolute path, or a path leading to a non-image)
 
 function initSafe()
+	cfg = root.assetJson("/interface/scripted/fu_sail/aidata.config")
+	errorString = cfg.TextData.strings.error
+	
 	cfg.GUI.canvas = widget.bindCanvas("aiFaceCanvas")
 	cfg.GUI.missionViewing = "main"
 	
+	buildCurrencyList()
 	writerInit(cfg.TextData, cfg.TextData.strings.intro)
 end
 
 function resetGUI()
 	widget.setVisible("root", true)
+	widget.setSize("root", {144,136})
 	
 	widget.clearListItems("root.currencyList")
 	widget.setVisible("root.currencyList", false)
@@ -321,6 +290,7 @@ function buttonMainSafe(wd)
 		
 	elseif wd == "buttonMissions" then
 		resetGUI()
+		widget.setSize("root", {144,118})
 		
 		widget.setText("path", "root/sail/ui/missions/main")
 		widget.setVisible("switchMissionSecondary", true)
@@ -342,6 +312,7 @@ function buttonMainSafe(wd)
 		
 	elseif wd == "switchMissionMain" then
 		resetGUI()
+		widget.setSize("root", {144,118})
 		
 		widget.setText("path", "root/sail/ui/missions/main")
 		widget.setButtonEnabled("switchMissionSecondary", true)
@@ -356,6 +327,7 @@ function buttonMainSafe(wd)
 		
 	elseif wd == "switchMissionSecondary" then
 		resetGUI()
+		widget.setSize("root", {144,118})
 		
 		widget.setText("path", "root/sail/ui/missions/secondary")
 		widget.setButtonEnabled("switchMissionSecondary", false)
@@ -433,21 +405,88 @@ function buttonMainSafe(wd)
 	end
 end
 
+
+function buildCurrencyList()
+	local cd = root.assetJson("/currencies.config")
+	local tbl = {unsorted = {}}
+	
+	for cur, dat in pairs(cd) do
+		if dat.fu_group then
+			if not tbl[dat.fu_group] then
+				tbl[dat.fu_group] = {}
+			end
+			
+			table.insert(tbl[dat.fu_group], dat)
+			tbl[dat.fu_group][#tbl[dat.fu_group]].currency = cur
+		elseif not dat.fu_hidden then
+			table.insert(tbl.unsorted, dat)
+			tbl.unsorted[#tbl.unsorted].currency = cur
+		end
+	end
+	
+	local order = {}
+	for _, k in ipairs(cd.money.fu_group_order) do
+		if k ~= "main" and k ~= "unsorted" and tbl[k] then
+			local duplicate = false
+			for _, v in ipairs(order) do
+				if k == v then
+					duplicate = true
+					break
+				end
+			end
+			
+			if not duplicate then
+				table.insert(order, k)
+			end
+		end
+	end
+	
+	table.insert(order, 1, "main")
+	table.insert(order, "unsorted")
+	
+	cfg.Data.currencies = tbl
+	cfg.Data.currencyOrder = order
+end
+
 function populateCurrencyList()
 	widget.clearListItems("root.currencyList")
 	
 	local listItem = ""
 	local i = 0
-	for _, currency in ipairs(cfg.Data.currencies) do
-		if cfg.Data.currenciesAlwaysDisplay[currency] or player.currency(currency) > 0 then
-			local loc = i % 2
-			if loc == 0 then
-				listItem = "root.currencyList."..widget.addListItem("root.currencyList")
+	
+	for o, ord in ipairs(cfg.Data.currencyOrder) do
+		if o > 1 and #cfg.Data.currencies[ord] > 0 then
+			local secrets = 0
+			for currency, dat in pairs(cfg.Data.currencies[ord]) do
+				if dat.fu_secret and player.currency(currency) <= 0 then
+					secrets = secrets + 1
+				end
 			end
 			
-			widget.setItemSlotItem(listItem..".item"..loc+1, currency)
-			widget.setText(listItem..".amount"..loc+1, player.currency(currency))
-			i = i + 1
+			if secrets < #cfg.Data.currencies[ord] then
+				listItem = "root.currencyList."..widget.addListItem("root.currencyList")
+				widget.setText(listItem..".title", cfg.TextData.currencies[ord] or ord)
+				widget.setVisible(listItem..".background", false)
+				widget.setVisible(listItem..".amount1", false)
+				widget.setVisible(listItem..".amount2", false)
+				widget.setVisible(listItem..".item1", false)
+				widget.setVisible(listItem..".item2", false)
+				widget.setVisible(listItem..".title", true)
+				widget.setVisible(listItem..".titleBG", true)
+			end
+		end
+		
+		for _, dat in ipairs(cfg.Data.currencies[ord]) do
+			if not dat.fu_secret or (dat.fu_secret and player.currency(dat.currency) > 0) then
+				local loc = i % 2
+				if loc == 0 then
+					listItem = "root.currencyList."..widget.addListItem("root.currencyList")
+				end
+				
+				widget.setItemSlotItem(listItem..".item"..loc+1, dat.representativeItem)
+				widget.setText(listItem..".amount"..loc+1, player.currency(dat.currency))
+				i = i + 1
+			end
 		end
 	end
 end
@@ -459,14 +498,6 @@ function populateMissionList()
 	local listItem = ""
 	local replays = {}
 	local noMissions = true
-	
-	-- add spacing for the main/secondary mission swapper buttons
-	listItem = "root.missionList."..widget.addListItem("root.missionList")
-	widget.setVisible(listItem..".background", false)
-	widget.setVisible(listItem..".iconBG", false)
-	widget.setVisible(listItem..".icon", false)
-	widget.setVisible(listItem..".title", false)
-	widget.setVisible(listItem..".pseudobutton", false)
 	
 	for i, tbl in ipairs(cfg.Data.missions[cfg.GUI.missionViewing]) do
 		if type(tbl[2]) == "table" then
@@ -541,6 +572,7 @@ function missionSelectedSafe()
 	if not customDataInited then return end
 	local selected = widget.getListSelected("root.missionList")
 	if selected then
+		widget.setSize("root", {144,136})
 		local listData = widget.getData("root.missionList."..selected)
 		if listData then
 			local dat = root.assetJson("/ai/"..cfg.Data.missions[cfg.GUI.missionViewing][listData.index][1]..".aimission")
@@ -556,6 +588,7 @@ function missionSelectedSafe()
 				end
 				
 				writerInit(cfg.TextData, text)
+				cfg.GUI.talker.emote = "talk"
 				widget.setText("path", "root/sail/ui/missions/"..dat.missionName)
 				widget.setVisible("switchMissionSecondary", false)
 				widget.setVisible("switchMissionMain", false)
