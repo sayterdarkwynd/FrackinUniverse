@@ -137,7 +137,7 @@ function doUpgrade()
 		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters6)
 	elseif (upgradedItem.parameters.level) == 8 and itemConfig.config.upgradeParameters7 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
 		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7)
-	elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
+	elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") and not (itemConfig.config.category == "detector") then
 		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 		upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
 		upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
@@ -150,7 +150,7 @@ function doUpgrade()
 		  upgradedItem.parameters.primaryAbility.projectileParameters.speed= (upgradedItem.parameters.level)+1
 		  upgradedItem.parameters.primaryAbility.energyUsage= 40 + ( upgradedItem.parameters.level /10 )	
 	  -- catch leftovers  
-	  elseif (itemConfig.config.category == "detector") and (upgradedItem.parameters.level) > 8 then -- ore detectors and cave detectors
+	  elseif (itemConfig.config.category == "detector") and (upgradedItem.parameters.level) >=8 then -- ore detectors and cave detectors
 		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 		  upgradedItem.parameters.pingRange= upgradedItem.parameters.pingRange + 1
 		  upgradedItem.parameters.pingDuration= upgradedItem.parameters.pingDuration + 0.15
