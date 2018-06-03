@@ -148,7 +148,7 @@ function doUpgrade()
 		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 		  upgradedItem.parameters.primaryAbility.projectileParameters.restoreBase= (upgradedItem.parameters.level) + 3
 		  upgradedItem.parameters.primaryAbility.projectileParameters.speed= (upgradedItem.parameters.level)+1
-		  upgradedItem.parameters.primaryAbility.energyUsage= 40 + ( upgradedItem.parameters.level /10 )	
+		  upgradedItem.parameters.primaryAbility.energyUsage= 10 + ( upgradedItem.parameters.level /10 )	
 	  -- catch leftovers  
 	  elseif (itemConfig.config.category == "detector") and (upgradedItem.parameters.level) >=8 then -- ore detectors and cave detectors
 		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
