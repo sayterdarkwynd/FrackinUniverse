@@ -223,7 +223,7 @@ function updateSafe(dt)
 				cfg.GUI.talker.frame = 0
 			end
 		else
-			if cfg.GUI.talker.blinkTimer > 0  then
+			if cfg.GUI.talker.blinkTimer > 0 then
 				cfg.GUI.talker.blinkTimer = cfg.GUI.talker.blinkTimer - dt
 			else
 				cfg.GUI.talker.emote = "blink"
@@ -853,9 +853,9 @@ function defaultAI(type)
 end
 
 -- Yup... Straight out of the customizable sail mod
-function openAIChipCraft() --this is so hacky godbless 1.3
+function openAIChipCraft()
 	local tempData = root.assetJson("/ai/ai.config")
-	local interactDataThingy = { --I don't really wanna patch that in every interfaces I'm plugging my S.A.I.L. into?
+	local interactData = {
 		config = "/interface/windowconfig/craftingmerchant.config",
 		--disableTimer = false,
 		paneLayoutOverride = {
@@ -874,17 +874,7 @@ function openAIChipCraft() --this is so hacky godbless 1.3
 		},
 		filter = { "aichip" }
 	}
-	
-	player.setSwapSlotItem(root.createItem({
-		name = "interfaceopener",
-		count = 1,
-		parameters = {
-			interactAction = "OpenCraftingInterface",
-			interactData = interactDataThingy,
-			swapItem = player.swapSlotItem(),
-			techStationId = pane.sourceEntity() --thanks based V6, somehow interfaces do a distance check from that entity and it needs to be an object?? starboundpls
-		}
-	}))
-	
+
+	player.interact("OpenCraftingInterface", interactData, pane.sourceEntity())
 	pane.dismiss()
 end
