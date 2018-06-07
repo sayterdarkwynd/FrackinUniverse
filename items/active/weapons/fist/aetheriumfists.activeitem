@@ -1,26 +1,24 @@
 {
-  "itemName" : "stabfists",
-  "price" : 20,
-  "level" : 2,
+  "itemName" : "aetheriumfist",
+  "price" : 2500,
+  "level" : 7,
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Strap these blades to your hands. Fun ensues",
-  "shortdescription" : "Iron Fists",
+  "rarity" : "legendary",
+  "description" : "A lesson in hard love.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Aetherium Claw",
   "tooltipKind" : "fistweapon",
   "category" : "fistWeapon",
   "twoHanded" : false,
-  "itemTags" : ["weapon","fist", "upgradeableWeapon"],
-  "collectablesOnPickup" : { "fu_weaponfist" : "stabfists" },
-  "inventoryIcon" : "stabfists.png:front",
+  "itemTags" : ["weapon","fist","energy","aether","upgradeableWeapon"],
+
+  "inventoryIcon" : "aetherium_fist_ashey.png:front",
   "animation" : "fistweapon.animation",
   "animationParts" : {
-    "weapon" : "stabfists.png",
-    "swoosh" : "swoosh/slash.png"
+    "weapon" : "aetherium_fist_ashey.png",
+    "swoosh" : "swoosh/clawswoosh.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
-      "damageArea" : [[-1, -1.1], [2.1, -0.6], [2.1, 0.8], [-1, 1.3]]
-    }}}}}}},
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
     }
@@ -30,26 +28,25 @@
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.1,
 
-  "comboSteps" : 4,
-  "comboTiming" : [0.1, 0.45],
+  "comboSteps" : 3,
+  "comboTiming" : [0.2, 0.5],
   "comboCooldown" : 0.2,
-  "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/megauppercut.combofinisher",
-
-  "freezeLimit" : 2,
-
+  "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/lovepunch.combofinisher",
+  "elementalType" : "cosmic",
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/fist/punch.lua"],
     "class" : "Punch",
 
     "freezeTime" : 0.12,
-    "fireTime" : 0.2,
-    "baseDps" : 7,
+    "fireTime" : 0.25,
+    "baseDps" : 8,
     "damageConfig" : {
       "statusEffects" : [ ],
-      "damageSourceKind" : "dagger",
+      "damageSourceKind" : "cosmicbroadsword",
       "knockback" : [0, 15],
       "timeoutGroup" : "primary",
-      "timeout" : 0.1
+      "timeout" : 0.1,
+      "statusEffects":["defenseboostneg20"]
     },
     "stances" : {
       "idle" : {
@@ -58,7 +55,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.25, -0.575],
 
-        "allowRotate" : true,
+        "allowRotate" : false,
         "allowFlip" : true,
 
         "frontArmFrame" : "run.2",
@@ -71,7 +68,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.625, -0.125],
 
-        "allowRotate" : true,
+        "allowRotate" : false,
         "allowFlip" : false,
 
         "frontArmFrame" : "swimIdle.1",
@@ -84,7 +81,7 @@
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [-0.75, -0.125],
 
-        "allowRotate" : true,
+        "allowRotate" : false,
         "allowFlip" : false,
 
         "frontArmFrame" : "swimIdle.1",
@@ -93,13 +90,13 @@
         "recoil" : true
       },
       "fire" : {
-        "duration" : 0.05,
+        "duration" : 0.1,
         "armRotation" : 0,
         "weaponRotation" : 0,
         "weaponRotationCenter" : [-1.0, 0.0],
         "weaponOffset" : [0.125, -0.25],
 
-        "allowRotate" : true,
+        "allowRotate" : false,
         "allowFlip" : false,
 
         "frontArmFrame" : "rotation",
@@ -107,7 +104,8 @@
       }
     }
   },
-  "critChance" : 3,
-  "critBonus" : 4, 
+  "critChance": 7,
+  "critBonus": 4,
+
   "builder" : "/items/buildscripts/buildfist.lua"
 }
