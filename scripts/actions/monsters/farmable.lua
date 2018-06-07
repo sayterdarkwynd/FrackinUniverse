@@ -31,6 +31,14 @@ function hasMonsterHarvest(args, board)
     resetMonsterHarvest()
   end
   storage.producePercent = storage.producePercent + 0.333333333 * ((storage.happiness or 50)/100) * math.max(math.min(((storage.food or 100)-10)/10,1),0)
+	return isMonsterHarvestable(args, board)
+end
+
+function isMonsterHarvestable(args, board)
+  if not storage.producePercent then
+    resetMonsterHarvest()
+  end
+  --storage.producePercent = storage.producePercent + 0.333333333 * ((storage.happiness or 50)/100) * math.max(math.min(((storage.food or 100)-10)/10,1),0)
   if storage.producePercent >= storage.produceRequired then
     return true
   else
