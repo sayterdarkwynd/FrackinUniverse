@@ -36,13 +36,8 @@ local exclusionList = {
   pyreitebar=true,
   isogenbar=true,
   xithricitecrystal=true,
-  carbonplate=true,
   fuamberchunk=true,
-  advancealloy=true,
-  aetheriumalloy=true,
-  densealloy=true,
   nocxiumbar=true,
-  tritaniumbar=true,
 }
 
 

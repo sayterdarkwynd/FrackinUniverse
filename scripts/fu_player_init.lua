@@ -6,22 +6,14 @@ function init()
 	origInit()
 	sb.logInfo("----- FU player init -----")
 	
-	local data = root.assetJson("/_FUversioning.config")
-	if status.statusProperty("FUversion", "0") ~= data.version then
-		local world = world.type()
-		local ignore = false
-		
-		for _, instance in ipairs(data.ignoredInstances) do
-			if world == instance then
-				ignore = true
-				break
-			end
-		end
-		
-		if not ignore then
-			player.interact("ScriptPane", "/interface/scripted/fu_updateInfoWindow/updateInfoWindow.config", player.id())
-		end
+	-- popping up the update window in a safe enviorment so everything else runs as it should in case of errors with the versioning file
+	local status, err = pcall(popupWindow)
+	if not status then
+		sb.logInfo("ERROR LOADING '/_FUversioning.config' FILE.")
+		sb.logInfo("%s", err)
+		player.interact("ScriptPane", "/interface/scripted/fu_updateInfoWindow/updateInfoWindowError.config", player.id())
 	end
+	sb.logInfo("")
 	
 	message.setHandler("fu_key", function(_, _, requiredItem)
 		if player.hasItem(requiredItem) then
@@ -54,6 +46,26 @@ function init()
 		end
 	end
 	--]]
+	
+end
+
+function popupWindow()
+	local data = root.assetJson("/_FUversioning.config")
+	if status.statusProperty("FUversion", "0") ~= data.version then
+		local world = world.type()
+		local ignore = false
+		
+		for _, instance in ipairs(data.ignoredInstances) do
+			if world == instance then
+				ignore = true
+				break
+			end
+		end
+		
+		if not ignore then
+			player.interact("ScriptPane", "/interface/scripted/fu_updateInfoWindow/updateInfoWindow.config", player.id())
+		end
+	end
 	
 	sb.logInfo("Frackin' Universe version %s", data.version)
 end

@@ -1,0 +1,17 @@
+[
+    [
+    	{
+    		"op": "replace",
+    		"path": "/interactAction",
+    		"value": "ScriptPane"
+    	}
+	],
+	[
+		{ "op": "test", "path": "/interactData" },
+		{ "op": "replace", "path": "/interactData", "value": "/interface/scripted/fu_sail/customSail.config" }
+	],
+	[
+		{ "op": "test", "path": "/interactData", "inverse": true },
+		{ "op": "add", "path": "/interactData", "value": "/interface/scripted/fu_sail/customSail.config" }
+	]
+]
