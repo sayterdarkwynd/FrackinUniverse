@@ -12,20 +12,33 @@
   "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "laspistol.png",
+    "middlefullbright" : "laspistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
+
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/weapons/laserblast.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [80, 30, 12] } }
+    "lights" : { "muzzleFlash" : {"color" : [80, 30, 12] } },
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/laserblast.ogg" ]
+    },  
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.8, 0.04]
+		  }
+		}
+      }
+    }
   },
 
-  "baseOffset" : [1.0, 0.04],
-  "muzzleOffset" : [1.1, 0.6],
+  "baseOffset" : [0.8, 0.04],
+  "muzzleOffset" : [1.0, 0.3],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -77,5 +90,38 @@
   "critChance" : 2,
   "critBonus" : 7,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+    "description" : "Superior firepower. Sexy sheen.^yellow;Reliable^reset;",
+    "shortdescription" : "Scatterlaser Pistol",
+    "inventoryIcon" : [ { "image" : "laspistol2.png" } ],
+    "animation" : "/items/active/weapons/ranged/unique/fugun.animation",    
+    "animationParts" : {
+      "middle" : "laspistol2.png",
+      "middlefullbright" : "laspistol2fullbright.png"
+    },  
+    "animationCustom" : {
+      "lights" : { "muzzleFlash" : {"color" : [80, 30, 12] } },
+      "sounds" : { "fire" : [ "/sfx/weapons/laserblast.ogg" ] },
+      "animatedParts" : {
+        "parts" : {
+          "middlefullbright" : {
+            "properties" : { "offset" : [0.8, 0.04] }
+          }
+        }
+      }
+    },
+
+      "primaryAbility" : {
+	    "fireTime" : 0.12,
+	    "baseDps" : 8,
+	    "energyUsage" : 27,	  
+	    "projectileParameters" : {
+	      "speed" : 75,
+	      "knockback" : 5
+	    }    
+    }
+  }
+  
 }
