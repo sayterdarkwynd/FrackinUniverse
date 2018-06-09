@@ -1,0 +1,86 @@
+{
+  "animatedParts": {
+    "stateTypes": {
+      "light": {
+        "default": "off",
+        "states": {
+          "off": {
+            "properties": {
+              "particleEmittersOff": ["aroma"]
+            }
+          },
+          "on": {
+            "frames": 3,
+            "cycle": 0.6,
+            "mode": "loop",
+            "properties": {
+              "particleEmittersOn": ["aroma"]
+            }
+          }
+        }
+      }
+    },
+    "parts": {
+      "bg": {
+        "properties": {
+          "centered": false
+        },
+        "partStates": {
+          "light": {
+            "off": {
+              "properties": {
+                "image": "<partImage>:<color>.off"
+              }
+            },
+            "on": {
+              "properties": {
+                "image": "<partImage>:<color>.<frame>",
+                "fullbright": true
+              }
+            }
+          }
+        }
+      },
+      "fg": {
+        "properties": {
+          "centered": false,
+          "zLevel": 1
+        },
+        "partStates": {
+          "light": {
+            "off": {
+              "properties": {
+                "image": "<partImage>:<color>.off"
+              }
+            },
+            "on": {
+              "properties": {
+                "image": "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "particleEmitters": {
+    "aroma": {
+      "emissionRate": 2,
+      "emissionRateVariance": 0,
+      "active": true,
+      "particles": [{
+        "particle": {
+          "type": "animated",
+          "animation": "/animations/aroma/aroma.animation",
+          "size": 1,
+          "position": [0.3, 2.1],
+          "timeToLive": 1.25,
+          "layer": "middle",
+          "variance": {
+            "position": [0, 0]
+          }
+        }
+      }]
+    }
+  }
+}
