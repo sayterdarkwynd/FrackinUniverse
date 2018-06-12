@@ -232,7 +232,7 @@ function displayHappiness()
 	    world.spawnProjectile("fu_sad", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
 	  elseif storage.food >= 90 then 
 	    world.spawnProjectile("fu_happy2", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 	    
-	  elseif storage.food >= 60 then 
+	  elseif storage.food >= 50 then 
 	    world.spawnProjectile("fu_happy", mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	  elseif storage.food >=30 then
 	    world.spawnProjectile("fu_hungry",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
