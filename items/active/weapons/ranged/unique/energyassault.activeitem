@@ -14,7 +14,7 @@
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/energyassault.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "energyassault.png",
@@ -23,6 +23,15 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.0, 0.2]
+		  }
+		}
+      }
+    },   
     "sounds" : {
       "fire" : [ "/sfx/weapons/energyassault.ogg" ]
     }
@@ -86,5 +95,32 @@
 
   "altAbilityType" : "flashlight",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+"upgradeParameters" : {
+    "shortdescription" : "^cyan;G7 Energy Rifle^reset; ^yellow;^reset;",
+  "description" : "One of the most reliable energy rifles known on the galactic market
+^yellow;High efficiency^reset;",
+  "animationParts" : {
+    "middle" : "energyassault2.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "energyassault2.png:" }
+    ],
+    "critChance" : 3,
+    "critBonus" : 4,
+    "primaryAbility" : {
+	    "fireTime" : 0.11,
+	    "baseDps" : 9.25,
+	    "energyUsage" : 32.0,
+	    "inaccuracy" : 0.004,
+
+	    "projectileType" : "energyassault",
+	    "projectileParameters" : { 
+	      "speed" : 70,
+	      "knockback" : 4
+	    }  
+    }
+  }
+  
 }

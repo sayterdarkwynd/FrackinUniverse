@@ -15,18 +15,21 @@
   "damagePoly" : [ [-12, 0], [-9, 9], [0, 12], [9, 9], [0, 12], [9, -9], [0,-12], [-9, -9] ],
   "supportsProcessing" : true,
   "onlyHitTerrain" : true,
-  "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/globeexplosions/greenglobeexplosion/greenglobeexplosion.config"
-    }
-  ],
+
   "damageKind" : "electricplasma",
 
   "scripts" : [ "/projectiles/activeitems/staff/lasereyestaff/fu_lasereye_eyeball.lua" ],
 
   "projectileType" : "fu_lasereyeshot",
   "projectileParameters" : {},
+  
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/globeexplosions/greenglobeexplosion/greenglobeexplosion.config"
+    }
+  ],
+  
   "spawnRate" : 0.2,
 
   "controlMovement" : {

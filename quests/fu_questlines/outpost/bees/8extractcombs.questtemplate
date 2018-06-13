@@ -1,0 +1,32 @@
+{
+  "id" : "8extractcombs",
+  "prerequisites" : [ "7combs" ],
+  "title" : "Wax and Wane",
+  "text" : "Place the combs within a wooden centrifuge^reset;, which you can build at the Machining Table, and collect the ^orange;wax chunks^reset; from within.",
+  "completionText" : "Different combs contain very different resources. Experimentation is part of the challenge!",
+  "moneyRange" : [120, 220],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "followUp" : "9alveary",
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "waxchunk",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

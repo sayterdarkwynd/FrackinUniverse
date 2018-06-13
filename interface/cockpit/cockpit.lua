@@ -31,7 +31,7 @@ function init()
   self.playTyping = true
 
   self.state = FSM:new()
-  if not contains(player.shipUpgrades().capabilities, "planetTravel") then
+  if not contains(player.shipUpgrades().capabilities, "planetTravel") and (not world.getProperty("fu_byos.planetTravel") or world.getProperty("fu_byos.planetTravel") <= 0) then
     self.state:set(disabledState)
   elseif celestial.skyInHyperspace() and celestial.currentSystem() then
     self.state:set(transitState)
@@ -408,7 +408,7 @@ function fuelCost(travel)
     if distanceMath < 30 then
       cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2 ) -- nearby systems are relatively cheap to travel to
     else
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * self.shipMass) -- but long range jumps are more complicated, and mass plays a factor in efficiency
+      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 2)) -- but long range jumps are more complicated, and mass plays a factor in efficiency
     end
     
 	if cost < 1000 and isConnected(self.one,self.two) then
@@ -436,6 +436,12 @@ end
 function disabledState()
   View:reset()
   widget.setVisible("disabledLabel", true)
+  
+  if player.hasCompletedQuest("human_mission1") then
+    widget.setText("disabledLabel", "FTL DRIVE NOT INSTALLED")
+  else
+    widget.setText("disabledLabel", "NAVIGATION OFFLINE")
+  end
 
   local flickerTime = config.getParameter("disabledFlickerTime")
   local flicker = config.getParameter("disabledFlicker")
@@ -684,7 +690,9 @@ function universeScreenState(startSystem)
           self.travel = {}
         end
       elseif self.travel.confirmed == nil then
-        showJumpDialog(self.travel.system, self.travel.target)
+		if contains(player.shipUpgrades().capabilities, "planetTravel") or world.getProperty("fu_byos.systemTravel") > 0 then
+		  showJumpDialog(self.travel.system, self.travel.target)
+		end
       end
     end
 
@@ -717,7 +725,7 @@ function universeMoveState(startPosition, systems, toPosition, travel, queued)
 	  if not player.isAdmin() then		
             world.setProperty("ship.fuel", world.getProperty("ship.fuel") - fuelCost(travel.system))		
           end  
-    celestial.flyShip(travel.system, travel.target)
+    flyShip(travel.system, travel.target)
     while not celestial.skyFlying() do
       coroutine.yield()
     end
@@ -1009,7 +1017,7 @@ function systemScreenState(system, warpIn)
       if isCurrent and compare(self.travel.system, system.location) then
         if self.travel.target then
           if self.travel.target[1] ~= "coordinate" or celestial.visitableParameters(self.travel.target[2]) then
-            celestial.flyShip(self.travel.system, self.travel.target)
+            flyShip(self.travel.system, self.travel.target)
           end
         end
         self.travel = {}
@@ -1213,7 +1221,7 @@ function planetScreenState(planet)
             orbiting = shipLocation[2]
           end
           if orbiting and compare(coordinatePlanet(orbiting), coordinatePlanet(self.travel.target[2])) then
-            celestial.flyShip(self.travel.system, self.travel.target)
+            flyShip(self.travel.system, self.travel.target)
             self.travel = {}
           end
         end
@@ -1287,4 +1295,13 @@ function planetSystemTransition(fromPlanet)
 
   pane.stopAllSounds(self.sounds.zoom)
   self.state:set(systemScreenState, system, false)
+end
+
+function flyShip(system, target)
+    celestial.flyShip(system, target)
+	if target and target[1] == "coordinate" and celestial.visitableParameters(target[2]) then
+		world.setProperty("ship.celestial_type", celestial.visitableParameters(target[2]).typeName)
+	else 
+		world.setProperty("ship.celestial_type", nil)
+	end
 end

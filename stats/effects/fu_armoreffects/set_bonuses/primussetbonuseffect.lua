@@ -1,7 +1,9 @@
 setName="fu_primusset"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 0.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25},
+	{stat = "critChance", amount = 3},
+	{stat = "grit", amount = 0.5}
 }
 
 armorBonus={}
@@ -10,9 +12,9 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -24,12 +26,12 @@ function update(dt)
 
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"fist"})
+	
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

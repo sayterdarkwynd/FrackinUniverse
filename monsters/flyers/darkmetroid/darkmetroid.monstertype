@@ -120,9 +120,9 @@
       "concurrentHostileActions" : [       
         {
          "name":"action-projectile",
-         "cooldown" : 0.04,
+         "cooldown" : 0.02,
          "parameters" : {
-          "projectileType" : "fuhgravityexplosion",
+          "projectileType" : "fuhgravityexplosionmetroid",
           "aimDirection" : [0,0],
           "aimAtTarget" : true,
 	    "power":0.0,
@@ -138,12 +138,12 @@
 
     "touchDamage" : {
       "poly" : [ [4.26, 4.625],  [4.625, 4.26], [4.625, -3.26], [4.26, -3.625], [-4.26, -3.625], [-4.625, -3.26], [-4.625, 4.26], [-4.26, 4.625] ],
-      "damage" : 1,
+      "damage" : 5,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "shadow",
       "knockback" : 0,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "stun" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],

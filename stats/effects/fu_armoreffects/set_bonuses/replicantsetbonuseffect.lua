@@ -1,11 +1,11 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 5}
+	{stat = "critChance", amount = 2}
 }
 
 weaponBonus2={
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={
@@ -19,11 +19,11 @@ setName="fu_replicantset"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -36,14 +36,13 @@ end
 
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword","broadsword","rapier","longsword","katana"})
-local weaponShield=weaponCheck({"shortsword","broadsword","rapier","longsword","katana"})
+	local weaponSword=weaponCheck({"shortsword","broadsword","rapier","longsword","katana"})
 
-	if weaponSword["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	if weaponSword["primary"] and weaponSword["alt"] then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus2)
 	elseif weaponSword["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

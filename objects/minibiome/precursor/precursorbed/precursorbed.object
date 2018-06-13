@@ -1,0 +1,49 @@
+{
+  "objectName" : "precursorbed",
+  "colonyTags" : ["precursor"],
+  "rarity" : "legendary",
+  "description" : "Rather stark bedding. I suppose comfort wasn't an issue for them.",
+  "shortdescription" : "Precursor Bed",
+
+  "category" : "furniture",
+  "printable" : false,
+  "price" : 60,
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  "sitPosition" : [-6, 14],
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed3"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "precursorbed.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "precursorbed.png:<color>"}, { "image" : "precursorbedlit.png:<color>", "fullbright" : true } ],
+      "flipImages" : true,
+      "direction" : "left",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "precursorbed.png:<color>"}, { "image" : "precursorbedlit.png:<color>", "fullbright" : true } ],
+      "direction" : "right",
+
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }    
+  ]
+}

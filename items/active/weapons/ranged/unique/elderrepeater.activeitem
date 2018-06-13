@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Project blasts from beyond time and space
-^yellow;Inflicts paralysis",
+^yellow;Inflicts paralysis
+^green;Splashing projectiles",
   "shortdescription" : "Dimensional Repeater",
   "category" : "machinePistol",
   "level" : 7,
@@ -14,7 +15,7 @@
   "itemTags" : [ "weapon","ranged","machinepistol", "upgradeableWeapon", "elder" ],
   "twoHanded" : false,
   "weaponType" : "Disruptor",
-  "animation" : "/items/active/weapons/ranged/unique/elderrepeater.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "elderrepeater.png",
@@ -23,8 +24,17 @@
     "muzzleFlash" : "/animations/muzzleflash/precursormuzzle.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.8, 0.26]
+		  }
+		}
+      }
+    },   
     "sounds" : {
-      "fire" : [ "/sfx/weapons/eldercarbine.ogg" ]
+      "fire" : [ "/sfx/weapons/elderburst.ogg" ]
     }
   },
 

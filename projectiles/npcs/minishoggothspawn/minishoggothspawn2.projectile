@@ -1,0 +1,26 @@
+{
+  "projectileName" : "minishoggothspawn2",
+  "image" : "minishoggothspawn.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 3,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [150, 0, 150],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/acidexplosionshoggoth/acidexplosionshoggoth.config"
+    },  
+    {
+      "action" : "spawnmonster",
+      "type" : "floatingshoggoth",
+      "offset" : [0, 2],
+      "arguments" : {
+        "aggressive" : true
+      }
+    }
+  ],
+  "timeToLive" : 1,
+  "power" : 0,
+  "speed" : 10,
+  "damageKind" : "shadow"
+}

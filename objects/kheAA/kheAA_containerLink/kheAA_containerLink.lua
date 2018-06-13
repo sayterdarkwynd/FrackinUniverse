@@ -1,32 +1,44 @@
 require "/scripts/kheAA/transferUtil.lua"
-local deltatime = 0;
-local linkRange=1;
 
 function init()
 	transferUtil.init()
-	storage.receiveItems=true
-	inDataNode=0
-	outDataNode=0
 	storage.inContainers={}
 	storage.outContainers={}
 	storage.containerId=nil
 	storage.containerPos={0,0}
-	linkRange=16
+	storage.linkRange=config.getParameter("kheAA_linkRange",16)
+	storage.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
+	storage.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
 end
 
 function update(dt)
-	deltatime = deltatime + dt;
+	deltatime = (deltatime or 0) + dt;
 	if deltatime < 1 then
 		return;
 	end
 	deltatime=0
 	findContainer()
-	object.setOutputNodeLevel(outDataNode,not storage.containerId==nil)
+	object.setOutputNodeLevel(storage.outDataNode,not storage.containerId==nil)
+	
+	
+
+	if storage.outPartialFillNode or storage.outCompleteFillNode then
+		storage.containerSize=world.containerSize(storage.containerId)
+		storage.containerFill=util.tableSize(world.containerItems(storage.containerId) or {})
+		
+		if storage.outPartialFillNode then
+			object.setOutputNodeLevel(storage.outPartialFillNode,(storage.containerFill or 0) > 0)
+		end
+		if storage.outCompleteFillNode then
+			object.setOutputNodeLevel(storage.outCompleteFillNode,(storage.containerFill and storage.containerSize) and (storage.containerFill==storage.containerSize))
+		end
+	end
+
 end
 
 function findContainer()
 	if storage.containerId == nil then
-		local tempRect=transferUtil.pos2Rect(storage.position,linkRange)
+		local tempRect=transferUtil.pos2Rect(storage.position,storage.linkRange)
 		if not world.regionActive(temprect) then
 			world.loadRegion(tempRect)
 		end
@@ -37,7 +49,7 @@ function findContainer()
 		end
 	end
 
-	local objectIds = world.objectQuery(entity.position(), linkRange, { order = "nearest" })
+	local objectIds = world.objectQuery(entity.position(), storage.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
 		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
 			storage.containerId=objectId

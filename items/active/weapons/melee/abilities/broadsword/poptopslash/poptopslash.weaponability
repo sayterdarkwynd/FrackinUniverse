@@ -1,0 +1,54 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "fireKunai" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Frost Rage",
+    "type" : "poptopslash",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/poptopslash/poptopslash.lua"],
+    "class" : "KunaiBlast",
+    
+    // timing and angle adjust to launch projectiles during fire stance
+    "projectileTimesAndAngles" : [
+      [0.025, 0]
+    ],
+    
+
+    "projectileOffset" : [5, 0],
+    "projectileType" : "poptopswooshsetup",
+    
+    "projectileParameters" : {
+      "baseDamage" : 7
+    },
+
+    "baseDamage" : 7,
+    "baseDps" : 7,
+    "energyUsage" : 85,
+    "cooldownTime" : 3,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.2,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.25,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

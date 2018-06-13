@@ -93,7 +93,7 @@ function questComplete()
     if condition.onQuestComplete then condition:onQuestComplete() end
   end
 
-  local mm = player.essentialItem("beamaxe")
+  --[[local mm = player.essentialItem("beamaxe")
   local newmm = root.createItem("fumastermanipulator")
 
   -- Upgrades that this MM comes with
@@ -116,7 +116,7 @@ function questComplete()
   newmm.parameters.canCollectLiquid = config.canCollectLiquid
 
   -- Finally, give the player the new MM
-  player.giveEssentialItem("beamaxe", newmm)
+  player.giveEssentialItem("beamaxe", newmm)]]
   questutil.questCompleteActions()
 end
 

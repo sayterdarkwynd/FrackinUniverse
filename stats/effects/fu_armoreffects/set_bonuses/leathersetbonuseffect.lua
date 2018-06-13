@@ -2,12 +2,12 @@ setName="fu_leatherset"
 
 weaponBonus={
 	{stat = "critChance", amount = 5},
-        {stat = "powerMultiplier", amount = 0.05}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.05}
 }
 
 armorBonus={
 	{stat = "grit", amount = 0.05},
-        {stat = "maxEnergy", amount = 5}
+	{stat = "maxEnergy", amount = 5}
 }
 
 armorEffect={
@@ -19,44 +19,39 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 
-armorEffectHandle=effect.addStatModifierGroup(armorEffect)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
-	armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 
-	checkWeapons()
-        checkArmor()
-end
-
-function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	
 	checkWeapons()
 	checkArmor()
 end
 
-mcontroller.controlModifiers({
-	speedModifier = 1.05
-})
+function update(dt)
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+		
+		checkWeapons()
+		checkArmor()
+	end
 end
 
 function checkArmor()
 	if (world.type() == "garden") or (world.type() == "forest") then
-	  effect.setStatModifierGroup(
-	  armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(  effectHandlerList.armorBonusHandle,armorBonus)
 	else
-	  effect.setStatModifierGroup(
-	  armorBonusHandle,{})
+		effect.setStatModifierGroup(  effectHandlerList.armorBonusHandle,{})
 	end
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"bow"})
+	local weapons=weaponCheck({"bow","crossbow"})
+	
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

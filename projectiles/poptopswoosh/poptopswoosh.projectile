@@ -1,0 +1,187 @@
+{
+  "projectileName" : "poptopswoosh",
+  "image" : "poptopswoosh.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 8,
+  "timeToLive" : 0.8,
+  "power" : 0,
+  "emitters" : [ ],
+  "damagePoly" : [[-35, -32], [-35, 22], [35, 22], [35,-32]],
+  "bounces" : -1,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "fullbright" : true,
+  "damageKind" : "ice",
+  "speed" : 0,
+  "statusEffects" : [ "freezefu" ],
+      "periodicActions" : [ 
+	    {
+	      "time" : 0.2,
+	      "action" : "loop",
+	      "count" : 3,
+	      "body" : [
+		{
+		  "action" : "particle",
+		  "specification" : "iceshard"
+		}
+	      ]
+	    },        
+	{  
+          "time":0,
+          "loop" : true,
+          "action":"particle",
+          "specification":{  
+            "type":"ember",
+            "light":[  
+              0,
+              0,
+              180
+            ],
+            "size":0.5,
+            "color":[  
+              0,
+              77,
+              180,
+              50
+            ],
+            "initialVelocity":[  
+              0.0,
+              10.0
+            ],
+            "finalVelocity":[  
+              0.0,
+              3.0
+            ],
+            "approach":[  
+              0.0,
+              3.0
+            ],
+            "timeToLive":0.5,
+            "fade":1,
+            "destructionAction":"shrink",
+            "destructionTime":0.2,
+            "layer":"front",
+            "variance":{  
+              "initialVelocity":[  
+                0.0,
+                0.0
+              ],
+              "position":[  
+                2.2,
+                0.2
+              ],
+              "size":2
+            }
+          }
+        }, 
+        {     
+          "time" : 0.8,
+          "loops" : false,        
+          "action" : "projectile",
+          "type" : "healingzone",
+          "inheritDamageFactor" : 0,
+          "offset" : [-2,0],
+          "config" : {
+              "processing":"?hueshift=-170",
+              "timeToLive" : 1,
+              "speed" : 0      
+          }
+        },          
+        {
+          "time" : 0.5,
+          "loops" : false,        
+          "action" : "projectile",
+          "type" : "iceblade",
+          "inheritDamageFactor" : 1,
+          "config" : {
+	      "statusEffects" : [ "freezefu" ],
+	      "actionOnReap" : [
+		{
+
+		  "action" : "config",
+		  "file" : "/projectiles/boss/guardianboss/guardianlargeexplosion/iceguardianlargeexplosionisogen.config"
+		}      
+	      ]           
+          }
+        }
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+	    },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/iceexplosion4/iceexplosion4.config"
+	    },              
+        {      
+          "action" : "projectile",
+          "type" : "icestickyspikes",
+          "inheritDamageFactor" : 1,
+          "fuzzAngle" : 360,
+          "config" : {
+              "speed" : 60,
+              "timeToLive" : 2,
+	      "statusEffects" : [ "freezefu" ],
+	      "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/iceexplosion4/iceexplosion4.config"
+		    }       
+	      ]           
+          }
+        },       
+        {      
+          "action" : "projectile",
+          "type" : "icestickyspikes",
+          "inheritDamageFactor" : 1,
+          "fuzzAngle" : 360,
+          "config" : {
+              "speed" : 60,
+              "timeToLive" : 2,
+	      "statusEffects" : [ "freezefu" ],
+	      "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/iceexplosion4/iceexplosion4.config"
+		    }       
+	      ]           
+          }
+        },       
+        {      
+          "action" : "projectile",
+          "type" : "icestickyspikes",
+          "inheritDamageFactor" : 1,
+          "fuzzAngle" : 360,
+          "config" : {
+              "speed" : 60,
+              "timeToLive" : 2,
+	      "statusEffects" : [ "freezefu" ],
+	      "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/iceexplosion4/iceexplosion4.config"
+		    }       
+	      ]           
+          }
+        },       
+        {      
+          "action" : "projectile",
+          "type" : "icestickyspikes",
+          "inheritDamageFactor" : 1,
+          "fuzzAngle" : 360,
+          "config" : {
+              "speed" : 60,
+              "timeToLive" : 2,
+	      "statusEffects" : [ "freezefu" ],
+	      "actionOnReap" : [
+		    {
+		      "action" : "config",
+		      "file" : "/projectiles/explosions/iceexplosion4/iceexplosion4.config"
+		    }       
+	      ]           
+          }
+        }         
+      ]        
+}

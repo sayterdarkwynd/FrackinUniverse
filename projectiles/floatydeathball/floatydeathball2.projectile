@@ -1,0 +1,40 @@
+{
+  "projectileName" : "floatydeathball2",
+  "physics" : "laser",
+  "speed" : 15,
+  "timeToLive" : 10,
+  "image" : "floatydeathball.png",
+  "animationCycle" : 1.5,
+  "animationLoops" : false,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "fullbright" : true,
+  "scripts" : [ "homingarrow.lua" ],
+  "baseHomingControlForce" : 2,
+  "lightColor" : [160, 160, 0],
+  "frameNumber" : 2,
+  "periodicActions" : [ 
+    {
+      "time" : 0.25,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "magnorbhellfire2",
+      "inheritDamageFactor" :0.35,
+      "fuzzAngle" : 360,
+      "projectileParameters" : { "speed" : 50, "damageSourceKind" : "fireplasma" }
+   }
+  ],
+  
+  "actionOnReap" : [
+    {
+          "action" : "config",
+          "file" : "/projectiles/explosions/hellfireexplosion/hellfireexplosion.config"
+    },   
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
+    }
+  ],
+  "power" : 10,
+  "damageKind" : "fireplasma"
+}

@@ -1,23 +1,22 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 5},
-	{stat = "critBonus", baseMultiplier = 1.25},
-	{stat = "shipMass", baseMultiplier = 0.85}
+	{stat = "critChance", amount = 2},
+	{stat = "critBonus", baseMultiplier = 1.25}
 }
 
-armorBonus={}
+armorBonus={
+	{stat = "shipMass", baseMultiplier = 0.85}
+}
 
 setName="fu_intersecset"
 
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
-
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -31,9 +30,10 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"rifle","assaultrifle", "pistol"})
+	
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

@@ -14,7 +14,7 @@
   "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/fugaussrifle.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "fugaussrifle.png",
@@ -23,6 +23,22 @@
     "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.7, 0.3]
+		  }
+		}
+      }
+    },  
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    },    
     "sounds" : {
       "fire" : [ "/sfx/weapons/fugauss.ogg" ]
     }

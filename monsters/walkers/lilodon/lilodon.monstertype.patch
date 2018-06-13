@@ -1,0 +1,69 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+      "name": "action-leap",
+      "cooldown": 1,
+      "parameters": {
+        "minimumRange": 1,
+        "maximumRange": 12,
+        "maxXRange": 20,
+        "windupTime": 0.5,
+        "windupState": "walk",
+        "leapVelocity": 50,
+        "collisionCheck": true,
+        "highArc": true,
+        "leapState": "jump",
+        "fallState": "fall",
+        "winddownState": "",
+        "winddownTime": 0.0
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/invulnerableActions",
+    "value": [
+      {
+        "name": "action-charge",
+        "cooldown": 3,
+        "parameters": {
+          "maximumRange": 20,
+          "windupState": "idlefin",
+          "windupTime": 0.2,
+          "chargeTime": 0.2,
+          "chargeSpeed": 40,
+          "chargeControlForce": 1000,
+          "chargeState": "dig",
+          "wallCrashSound": "",
+          "wallCrashEmitter": "",
+          "winddownTime": 0.1,
+          "winddownStopForce": 1000,
+          "winddownState": "charge"
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-invulnerable",
+        "cooldown": [
+          1,
+          2
+        ],
+        "parameters": {
+          "windupTime": 0.4,
+          "windupState": "dive",
+          "winddownTime": 0.2,
+          "winddownState": "charge",
+          "invulnerableState": "idlefin",
+          "invulnerableTime": 1
+        }
+      }
+    ]
+  }
+]

@@ -22,5 +22,15 @@
   "scripts" : [ "boomerangprojectile.lua", "lunarangprojectile.lua" ],
 
   "shardType" : "tentabanedisc",
-  "shardCount" : 4
+  "shardCount" : 4,
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 5,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  } 
 }

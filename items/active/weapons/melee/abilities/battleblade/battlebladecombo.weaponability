@@ -28,7 +28,7 @@
     // cooldown time multiplier for steps after the first, compounded per combo step
     "comboSpeedFactor" : 2,
 
-    "edgeTriggerGrace" : 0.75,
+    "edgeTriggerGrace" : 0.25,
 
     "fireTime" : 1,
     "baseDps" : 7.5,
@@ -37,20 +37,20 @@
       "damageSourceKind" : "broadsword",
       "statusEffects" : [ ],
       "knockbackMode" : "facing",
-      "timeout" : 0.3
+      "timeout" : 0.4
     },
     "stepDamageConfig" : [
       {
         "baseDamageFactor" : 1.0,
-        "knockback" : 15
-      },
-      {
-        "baseDamageFactor" : 0.7,
         "knockback" : 10
       },
       {
-        "baseDamageFactor" : 0.8,
+        "baseDamageFactor" : 0.65,
         "knockback" : 15
+      },
+      {
+        "baseDamageFactor" : 1.0,
+        "knockback" : 10
       }
     ],
 

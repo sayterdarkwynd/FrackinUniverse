@@ -1,0 +1,28 @@
+{
+  "id" : "fuquest_powerstation",
+  "title" : "Wind Power",
+  "text" : "You can generate power in many ways. Alternator generators are just the simplest. Try building a ^orange;Wind Turbine^reset;, and see how useful they get in a windstorm!",
+  "completionText" : "Other options for power include Solar, Combustion, Fission and Quantum power generation. Each has pros and cons. You'll definitely want to try them each.",
+  "rewards" : [
+    [ [ "biofuelcannister", 20] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "isn_windarray",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

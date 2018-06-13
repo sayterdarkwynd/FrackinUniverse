@@ -1,54 +1,42 @@
-setName="fu_enforcerset"
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus1={
-	{stat = "powerMultiplier", amount = 0.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
 }
-weaponBonus2={
-	{stat = "powerMultiplier", amount = 0.35}
-}
+
 armorBonus={
   {stat = "liquidnitrogenImmunity", amount = 1.0},
   {stat = "darknessImmunity", amount = 1}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
+setName="fu_enforcerset"
+
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandlePrimary=effect.addStatModifierGroup({})
-	weaponBonusHandleAlt=effect.addStatModifierGroup({})
-
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-
 		checkWeapons()
 	end
 end
 
+
 function checkWeapons()
-	local knives=weaponCheck({"assaultrifle"})
-	local guns=weaponCheck({"shotgun"})
-	
-	if knives["primary"] then
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,weaponBonus1)
-	elseif guns["primary"] then
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,weaponBonus2)
+	local weaponShotgun=weaponCheck({"shotgun","assaultrifle"})
+
+	if (weaponShotgun["primary"] and weaponShotgun["alt"]) or (weaponShotgun["twoHanded"] and weaponShotgun["primary"]) then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus1,2))
+	elseif weaponShotgun ["either"] then
+	    effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus1)
 	else
-		effect.setStatModifierGroup(weaponBonusHandlePrimary,{})
-	end
-	
-	if knives["alt"] then
-		effect.setStatModifierGroup(weaponBonusHandleAlt,weaponBonus1)
-	elseif guns["alt"] then
-		effect.setStatModifierGroup(weaponBonusHandleAlt,weaponBonus2)
-	else
-		effect.setStatModifierGroup(weaponBonusHandleAlt,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

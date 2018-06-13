@@ -1,0 +1,35 @@
+{
+  "id" : "fuquest_ancientsentry",
+  "prerequisites" : [ ],
+  "title" : "Aberrant Sentry [BOSS]",
+  "text" : "Find and kill an ^orange;Aberrant Sentry^reset; in an ancient ruin.",
+  "completionText" : "Exceptional work. That was no simple feat!",
+  "moneyRange" : [110, 250],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "secret" : true,
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "turnInDescription" : "Find the ^orange;Relic Shield^reset; carried by an ^orange;Aberrant Sentry^reset;.",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "furelicshield",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

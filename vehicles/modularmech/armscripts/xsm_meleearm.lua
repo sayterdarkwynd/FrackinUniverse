@@ -40,7 +40,7 @@ function MeleeArm:windupState()
   self.state:set(self.fireState, self, self.windupAngle, self.fireAngle, true)
 end
 
-function MeleeArm:fireState(fromAngle, toAngle, allowCombo) -- allowCombo flase=downSlash true = upslash
+function MeleeArm:fireState(fromAngle, toAngle, allowCombo) -- allowCombo false=downSlash true = upslash
   animator.playSound(self.armName .. "Fire")
   animator.setAnimationState(self.armName, "active")
 --  allowCombo = false

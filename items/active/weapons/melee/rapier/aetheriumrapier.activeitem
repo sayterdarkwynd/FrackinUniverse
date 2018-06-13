@@ -9,7 +9,7 @@
   "tooltipKind" : "sword2",
   "category" : "Rapier",
   "twoHanded" : false,
-  "itemTags" : ["weapon", "melee","rapier", "upgradeableWeapon" ],
+  "itemTags" : ["weapon", "melee", "rapier", "upgradeableWeapon" ],
   "handGrip" : "wrap",
   "inventoryIcon" : "aetheriumrapier.png",
   "collectablesOnPickup" : { "fu_weaponrapier" : "aetheriumrapier" },
@@ -27,13 +27,30 @@
 
   "primaryAbilityType" : "piercecombo",
   "primaryAbility" : {
-    "fireTime" : 0.42,
-    "baseDps" : 5.76,
+    "fireTime" : 0.41,
+    "baseDps" : 6.2,
     "damageConfig" : {
       "damageSourceKind":"cosmicbroadsword",
       "statusEffects":["defenseboostneg20"]
     }
   },
-
+  "upgradeParameters" : {
+	  "animationParts" : {
+	    "handle" : "",
+	    "blade" : "aetheriumrapiert8.png",
+	    "bladefullbright" : "aetheriumrapierfullbrightt8.png"
+	  },  
+	  "inventoryIcon" : "aetheriumrapiert8.png",
+	  "shortdescription" : "Aetherium Puncturer",
+	  "description" : "Vengeance be thy pursuit.",
+	  "primaryAbility" : {
+	    "fireTime" : 0.37,
+	    "baseDps" : 6.4,
+	    "damageConfig" : {
+	      "damageSourceKind":"cosmicbroadsword",
+	      "statusEffects":["defenseboostneg20"]
+	    }
+	  }	  
+  },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

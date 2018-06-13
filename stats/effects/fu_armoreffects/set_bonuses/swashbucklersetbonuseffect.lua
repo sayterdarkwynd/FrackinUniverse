@@ -4,10 +4,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_swashbucklerset"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.075}
-}
-weaponBonus2={
-	{stat = "powerMultiplier", baseMultiplier = 1.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.075}
 }
 
 armorBonus={
@@ -17,22 +14,22 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
 	level=checkSetLevel(self.setBonusCheck)
 	if level==0 then
-	  effect.expire()
+		effect.expire()
 	else
-	  checkWeapons()
+		checkWeapons()
 	end
 	mcontroller.controlModifiers({
-	  airJumpModifier = 1.08
+		airJumpModifier = 1.08
 	})
 end
 
@@ -40,10 +37,10 @@ function
 	checkWeapons()
 	local weapons=weaponCheck({"rapier","pistol"})
 	if weapons["both"] then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus2,level))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,level*2))
 	elseif weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,level))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,level))
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

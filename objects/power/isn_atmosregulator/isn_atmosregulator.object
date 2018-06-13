@@ -47,8 +47,13 @@
     }
   ],
 
-  "scripts" : [ "/scripts/power.lua","isn_atmosregenerator.lua","/objects/isn_sharedobjectscripts.lua" ],
+  "scripts" : [ "/scripts/power.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua","/objects/isn_sharedobjectscripts.lua" ],
   "scriptDelta" : 60,
+  
+  "atmos" : {
+	"range" : 500,
+	"objectEffects" : ["isn_atmosregen"]
+  },
 
   "animation" : "isn_atmosregulator.animation",
   "animationParts" : {

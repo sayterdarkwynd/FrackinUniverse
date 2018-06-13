@@ -1,0 +1,50 @@
+{
+  "objectName" : "fu_Bartable",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A bar table.",
+  "shortdescription" : "Bar Table",
+  "race" : "generic",
+  "category" : "furniture",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
+
+  "inventoryIcon" : "fu_Bartableicon.png",
+  "orientations" : [
+    {
+      "image" : "fu_Bartable_Aurora.png:<color>",
+      "imagePosition" : [-40, 0],
+      "direction" : "left",
+
+      "sitPositions" : [
+        // Positions from front to back.
+	[34, 24], // Right
+        [9, 24], // Middle
+        [-16, 24] // Left
+      ],
+
+      "spaceScan" : 0.1,
+      "collision" : "platform",
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "fu_Bartable_Aurora.png:<color>",
+      "imagePosition" : [-40, 0],
+      "direction" : "right",
+	  "flipImages" : true,
+
+      "sitPositions" : [
+        // Positions from front to back.
+        [34, 24], // Right
+        [9, 24], // Middle
+        [-16, 24] // Left
+      ],
+
+      "spaceScan" : 0.1,
+      "collision" : "platform",
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+	"name": "gasfx",
+	"blockingStat": "shadowgasImmunity",
+
+	"effectConfig": {
+		"controlModifiers": {
+			"groundForce": 70,
+			"airForce": 20,
+			"airFriction": 0.3,
+			"liquidForce": 50,
+			"liquidFriction": 0.35,
+			"liquidImpedance": 0.1,
+			"liquidBuoyancy": 0.25,
+			"minimumLiquidPercentage": 0.1,
+			"liquidJumpProfile": {
+				"jumpSpeed": 70.0,
+				"jumpControlForce": 610.0,
+				"jumpInitialPercentage": 0.45,
+				"jumpHoldTime": 0.2,
+				"multiJump": false,
+				"reJumpDelay": 1.05,
+				"autoJump": false,
+				"collisionCancelled": false
+			}
+		}
+	},
+	"defaultDuration": 2,
+
+	"scripts": [
+		"/stats/effects/fu_genericControlModifiers.lua"
+	],
+
+	"animationConfig": "gasfx.animation"
+}

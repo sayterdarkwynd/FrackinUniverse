@@ -1,5 +1,32 @@
 [
 
+{ "op": "add", "path": "/species/-", "value" : "thelusian" },
+{ "op": "add", "path": "/species/-", "value" : "fukirhos" },
+{ "op": "add", "path": "/species/-", "value" : "radien" },
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/thelusian",
+		"value" : "mechbodyapexproto"
+	},
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/fukirhos",
+		"value" : "mechbodyglitchproto"
+	},
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/radien",
+		"value" : "mechbodynovakidproto"
+	},	
+	{"op" : "add",
+		"path" : "/defaultCodexes/thelusian",
+		"value" : [ "protectorate1", "protectorate2" ]
+	},
+	{"op" : "add",
+		"path" : "/defaultCodexes/fukirhos",
+		"value" : [ "protectorate1", "protectorate2" ]
+	},
+	{"op" : "add",
+		"path" : "/defaultCodexes/radien",
+		"value" : [ "protectorate1", "protectorate2" ]
+	},	
   {
     "op" : "add",
     "path" : "/collisionParams",
@@ -17,10 +44,24 @@
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/fu_tilegroundeffects.lua" },
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value":  "/scripts/isn_geldetection.lua" },
 
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox2"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "multitinytether"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "multitether"} },
         { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "statuetether"} },
-
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "trough"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "largetrough"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "irontrough"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "petfood1"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "petfood2"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "petfood3"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "petfood4"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "oilstew"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rustchowder"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "relocator"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mothtrap2"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "bughouse"} },
+        
 	// crew
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract_janitor"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract"} },
@@ -28,9 +69,12 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract_science"} },
 
         { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "flashlight_new"} },
+        
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "radrebelchest"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "radrebelpants"} },
 
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ffguide-codex"} },
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "sciencebrochure"} },
+	//{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "sciencebrochure"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fullwood1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ffguide2-codex"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ffguide3-codex"} },
@@ -145,7 +189,6 @@
 
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "aex"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "prototyper"} },
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "cog"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "polymer"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "laserdiode"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "farmwell" } },
@@ -172,6 +215,14 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodenkatana"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodenmace"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironkatana"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironquarterstaff"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tungstenquarterstaff"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tungstenrapier"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironboomerang"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tungstenboomerang"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "titaniumboomerang"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tungstenboomerang"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironscythe"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironmace"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "bonemace"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stonemace"} },
@@ -202,7 +253,9 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stoneaxe"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stonehammer"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stonedagger"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "brokenprotectoratebroadsword"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stoneshortsword"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stoneshortspear"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stonebroadsword"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stonegreataxe"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stonedagger"} },
@@ -252,8 +305,9 @@
   { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fubonescythe" } },
   { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fuboneshield" } },
   { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "bonebow" } } ,
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "blastcannon"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "friendmaker"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "durasteelassaultrifle2"} },
+
 	//armors
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fumantiziroyalguardchest"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fumantiziroyalguardhead"} },
@@ -454,16 +508,147 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_sequencer4bithinputs" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_sequencer4bitvinputs" } },
 
-  {"op" : "add",
-  "path" : "/companionsConfig/uniformSlots/head",
-  "value" : ["headCosmetic", "head" ]
-  },
+	//Decorations
 
-  {
-    "op": "add",
-    "path": "/statusControllerSettings/stats/shipMass",
-    "value": {
-      "baseValue": 31.4
-    }
-  }
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_blackorange" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_blue" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_green" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_lightblue" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_magenta" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_magentawhite" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_orange" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_pink" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_purple" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_purplewhite" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_red" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_redgreen" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_redyellow" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_teal" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_white" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fairylights_whiteblue" } },
+	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "tinylocker" } },
+	
+	
+	//Dyes (green)
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "aegisaltdye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "aliendye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "amephiumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "azurockdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "biodye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "bloodstonedye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "brickdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "coalblackdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "copperdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "densiniumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "durasteeldye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "emeritedye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "feroziumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "golddye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "goldinedye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "honeydye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "hotmetaldye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "irondye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "jellydye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "metaldye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "onyxdye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "paperdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "pearlstardye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "plantdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "platinumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "plutoniumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "seaweeddye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "silverdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "solariumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "synthdye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "tealdye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "tungstendye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "uraniumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "violiumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "woodbrowndye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "zerchesiumdye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_blackdye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_bluedye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_browndye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_greendye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_greydye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_orangedye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_pinkdye" } },		
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_purpledye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_reddye" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_whitedye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_yellowdye" } },	
+	// mechs
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechlegssimpleupgrade"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechboostersimpleupgrade"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodybrute"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodyfuexplorer"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodyheavy"} },
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechlegsfuexplorer"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechlegsheavy"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mecharmdrill2"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mecharmflakcannon2"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mecharmfuhuntergun"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mecharmpointdefense"} },
+	
+	
+	//basic
+
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "longjump_tech"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "cellpodsplant"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ghostmushroomseed"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stranglevineseed"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fuspongeweedseed"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kramil"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "aenemaflower"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ginsengseed"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_mulch"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avikanspiceplantseed"} },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "cellmatter"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "calciumnitrate"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "magnesiumsulfate"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "electromagnet"} },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "oredetector1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_alternatorgenerator"} },
+
+	
+	//Pointless Crap
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_funsign1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_funsign2"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_funsign3"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_funsign4"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_funsign5"} },
+	
+	// BYOS
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_crewbed0" } },
+	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_apex1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_avian1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_glitch1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_hylotl1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_human1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_nova1"} },
+	
+	
+	// Custom FU player init functions
+	{ "op": "add", "path" : "/deploymentConfig/scripts/-", "value" : "/scripts/fu_player_init.lua"},
+	
+	// Companiom Uniform Slot
+	{ "op" : "add", "path" : "/companionsConfig/uniformSlots/head", "value" : ["headCosmetic", "head" ]},
+	
+	// Space Station Charisma Stat
+	{ "op": "add", "path": "/statusControllerSettings/stats/fuCharisma", "value": { "baseValue": 1.00 } },
+	
+	// Ship Mass
+	{ "op": "add", "path": "/statusControllerSettings/stats/shipMass", "value": { "baseValue": 31.4 } },
+	
+	//deployment hack
+	{"op": "add","path": "/deploymentConfig/scripts/-","value": "/scripts/fu_playerdeploymenthack.lua"},
+	
+	//Sentient Cookie Tiles
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"fuslopedblackglass"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"fuslopedglass"}},
+	
+	// FU SAIL helper for getting player companions
+	{ "op": "add", "path": "/companionsConfig/scripts/-", "value": "/scripts/companionhandler.lua" }
 ]

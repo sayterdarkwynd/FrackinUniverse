@@ -5,13 +5,13 @@
     "maxStack" : 1,
     "rarity" : "essential",
   "description" : "A famous modified Graviton pistol thought lost forever.
-^yellow;Heavily modified^reset;
-^green;+ Greg^reset;",
-  "shortdescription" : "^#ffdb31;Kevin^reset;",
+^yellow;Causes Freeze^reset;
+^green;Powerful knockback^reset;",
+  "shortdescription" : "^#ffdb31;Susan^reset;",
   "level" : 5,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "energy","upgradeableWeapon"],
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gununique",
   "twoHanded" : false,
   "weaponType" : "Energy",
   "learnBlueprintsOnPickup" : [ "gravitongun" ],
@@ -40,7 +40,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.75,
+    "fireTime" : 1,
     "baseDps" : 7.7,
     "energyUsage" : 40,
     "fireType" : "auto",
@@ -48,8 +48,9 @@
     "projectileCount" : 1,
     "projectileType" : "electricblast",
     "projectileParameters" : {
-      "speed" : 45,
-      "knockback" : 32,
+      "speed" : 35,
+      "damageKind" : "cosmic",
+      "knockback" : 30,
           "emitters" : [ "electricplasmapurple" ],
 	  "periodicActions" : [
 	    {
@@ -57,15 +58,18 @@
 	      "loop" : true,
 	      "action" : "projectile",
 	      "type" : "icegas",
-	      "inheritDamageFactor" :0.25,
+	      "inheritDamageFactor" :0.05,
 	      "fuzzAngle" : 360,
-	      "projectileParameters" : { "damageKind" : "cosmic" }
+	      "config" : {
+	        "damageSourceKind" : "ice",
+	        "timeToLive" : 2
+	      }
 	   }
 	  ],
 	  "actionOnReap" : [
 	    {
 	      "action" : "config",
-	      "file" : "/projectiles/explosions/fuwavebeamexplosion/fuwavebeamexp.config"
+	      "file" : "/projectiles/explosions/fuwavebeamexplosion/fuwavebeamexp2.config"
 	    },    
 	    {
 	      "action" : "sound",

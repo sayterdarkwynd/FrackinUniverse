@@ -1,0 +1,31 @@
+{
+  "id" : "fu_byosshipcraftingtable",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Ship Component Assembly",
+  "text" : "To start on ship repairs I should build a ^orange;Ship Component Assembler^reset;.",
+  "completionText" : "I should find a way to get some erchius crystals to build a ^orange;FTL drive^reset;.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "player",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "player",
+      "questComplete" : "player"
+    },
+    
+    "requireTurnIn" : false,
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_shipcraftingtable",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

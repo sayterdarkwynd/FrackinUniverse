@@ -1,5 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/scripts/researchGenerators.lua"
 
 function init()
   self.itemList = "itemScrollArea.itemList"
@@ -17,8 +18,8 @@ end
 
 function upgradeCost(itemConfig)
   if itemConfig == nil then return 0 end
-
-  local prevValue = root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *2
+  itemConfig.config.upmod = itemConfig.config.upmod or 1
+  local prevValue = (root.evalFunction("minerModuleValue", itemConfig.parameters.level or itemConfig.config.level or 1) *3) * itemConfig.config.upmod
   local newValue = (root.evalFunction("minerModuleValue", self.upgradeLevel) * ( (itemConfig.parameters.level or itemConfig.config.level or 1)/25) *2)
   return math.floor(prevValue)
 end
@@ -32,8 +33,8 @@ function populateItemList(forceRepop)
 
   widget.setVisible("emptyLabel", #upgradeableWeaponItems == 0)
 
-  local playerModule = player.hasCountOfItem("manipulatormodule", true)
-
+  --local playerModule = player.hasCountOfItem("manipulatormodule", true)
+  local playerModule = player.currency("fuscienceresource")
   if forceRepop or not compare(upgradeableWeaponItems, self.upgradeableWeaponItems) then
     self.upgradeableWeaponItems = upgradeableWeaponItems
     widget.clearListItems(self.itemList)
@@ -67,6 +68,7 @@ end
 
 function showWeapon(item, price)
   local playerModule =  player.hasCountOfItem("manipulatormodule", true)
+  --local playerModule = player.currency("fuscienceresource")
   local enableButton = false
 
   if item then
@@ -91,7 +93,6 @@ function itemSelected()
   end
 end
 
-
 function doUpgrade()
   if self.selectedItem then
     local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))  
@@ -100,8 +101,8 @@ function doUpgrade()
     if upgradeItem then
       local consumedItem = player.consumeItem(upgradeItem, false, true)
       if consumedItem then
-        --local consumedCurrency = player.consumeItem("manipulatormodule", false, selectedData.price)
-        local consumedCurrency = player.consumeItem({name = "manipulatormodule", count = selectedData.price}, false, true)
+        local consumedCurrency = player.consumeItem({name = "manipulatormodule", count = selectedData.price}, false, true) 
+        --local consumedCurrency = player.consumeCurrency("fuscienceresource", selectedData.price)
         local upgradedItem = copy(consumedItem)
         if consumedCurrency then
         
@@ -109,54 +110,93 @@ function doUpgrade()
 		  upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 
 	 -- set Rarity
-	 if upgradedItem.parameters.level ==4 then
+	 if upgradedItem.parameters.level ==3 then
 	   upgradedItem.parameters.rarity = "uncommon"
 	 elseif upgradedItem.parameters.level == 5 then
 	   upgradedItem.parameters.rarity = "rare"
-	 elseif upgradedItem.parameters.level == 6 then
+	 elseif upgradedItem.parameters.level == 7 then
 	   upgradedItem.parameters.rarity = "legendary"
 	 elseif upgradedItem.parameters.level >= 8 then
 	   upgradedItem.parameters.rarity = "essential"	   
 	 end
 	 
 			  
-          upgradedItem.parameters.primaryAbility = {}   
-
-		  if (itemConfig.config.primaryAbility) then	 
-			  
-		    -- beams and miners
-			if (itemConfig.config.primaryAbility.beamLength) then
-			  upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + ( upgradedItem.parameters.level * 3.14 )
-			  upgradedItem.parameters.primaryAbility.energyUsage= itemConfig.config.primaryAbility.energyUsage + ( upgradedItem.parameters.level /10 )
-			end
-		  -- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
-			if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
-			    local baseDpsBase = itemConfig.config.primaryAbility.baseDps
-			    local baseDpsMod = (upgradedItem.parameters.level/25)
-			    local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
-			    upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
-			end			
-		  end
-	  
-	  sb.logInfo("Upgrading weapon : ")	  
-          sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
+          upgradedItem.parameters.primaryAbility = {}  
           
-          if (upgradedItem.parameters.level) < 4 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
-          elseif (upgradedItem.parameters.level) == 4 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
-          elseif (upgradedItem.parameters.level) == 5 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)            
-          elseif (upgradedItem.parameters.level) == 6 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
-          elseif (upgradedItem.parameters.level) == 7 then
-            upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)            
-          end
-                   
+        -- check item types here
+        if not (upgradedItem.parameters.upmod) then 
+          upgradedItem.parameters.upmod = 1
+        end
+        
+	if (upgradedItem.parameters.level) <= 2 and itemConfig.config.upgradeParameters then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
+	elseif (upgradedItem.parameters.level) == 3 and itemConfig.config.upgradeParameters2 then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+	elseif (upgradedItem.parameters.level) == 4 and itemConfig.config.upgradeParameters3 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "parasol") then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
+		upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 1.5
+	elseif (upgradedItem.parameters.level) == 5 and itemConfig.config.upgradeParameters4 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
+	elseif (upgradedItem.parameters.level) == 6 and itemConfig.config.upgradeParameters5 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters5)
+		upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 2
+	elseif (upgradedItem.parameters.level) == 7 and itemConfig.config.upgradeParameters6 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters6)
+	elseif (upgradedItem.parameters.level) == 8 and itemConfig.config.upgradeParameters7 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7)
+		upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 2.5
+	elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and not (itemConfig.config.category == "bugnet") and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")  and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") and not (itemConfig.config.category == "detector") then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+		upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
+		upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
+		upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 )
+		upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 3
+	elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and (itemConfig.config.category == "bugnet") then
+		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+		upgradedItem.parameters.primaryAbility.energyUsage= 1 + ( upgradedItem.parameters.level /20 )
+		upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 )
+		upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 3		
+	end
+	
+	  if (itemConfig.config.category == "repairgun") and (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
+		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+		  upgradedItem.parameters.primaryAbility.projectileParameters.restoreBase= (upgradedItem.parameters.level) + 3
+		  upgradedItem.parameters.primaryAbility.projectileParameters.speed= (upgradedItem.parameters.level)+1
+		  upgradedItem.parameters.primaryAbility.energyUsage= 10 + ( upgradedItem.parameters.level /10 )
+	  -- catch leftovers  
+	  elseif (itemConfig.config.category == "detector") and (upgradedItem.parameters.level) >=8 then -- ore detectors and cave detectors
+		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+		  upgradedItem.parameters.pingRange= upgradedItem.parameters.pingRange + 1
+		  upgradedItem.parameters.pingDuration= upgradedItem.parameters.pingDuration + 0.15
+		  upgradedItem.parameters.pingCooldown= upgradedItem.parameters.pingCooldown - 0.05  
+	  elseif (itemConfig.config.category == "parasol") and (upgradedItem.parameters.level) >=3 then -- parasol
+		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+		  upgradedItem.parameters.level = 20	
+		  upgradedItem.parameters.rarity = "legendary"	
+	  elseif (itemConfig.config.category == "translocator") and (upgradedItem.parameters.level) >=5 then -- translocator
+		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
+		  upgradedItem.parameters.level = 20	
+		  upgradedItem.parameters.rarity = "legendary"	
+	  elseif (itemConfig.config.category == "hookshot") and (upgradedItem.parameters.level) >=3 then -- hookshots
+		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+		  upgradedItem.parameters.level = 20	
+		  upgradedItem.parameters.rarity = "legendary"	
+	  elseif (itemConfig.config.category == "relocator") and (upgradedItem.parameters.level) >=4 then -- relocators
+		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
+		  upgradedItem.parameters.level = 20
+		  upgradedItem.parameters.rarity = "legendary"	
+	  end 
+	  
         end
         player.giveItem(upgradedItem)
+	checkResearchBonus()
       end
     end
     populateItemList(true)
   end
 end
+
+
+
+
+          

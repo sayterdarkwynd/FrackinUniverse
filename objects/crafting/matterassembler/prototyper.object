@@ -13,21 +13,21 @@
   "scripts" : [ "/scripts/npcToyObject.lua",
                 "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
               ],
-              
-  "pickupQuestTemplates" : [ "fuquest_prototyper" ],
-  
+
+
+
   "animation" : "prototyper.animation",
   "animationPosition" : [0, 28],
 
   "inventoryIcon" : "prototyper1icon.png",
   "placementImage" : "prototyper1.png:default.default",
-  "placementImagePosition" : [-28, 0],    
+  "placementImagePosition" : [-28, 0],
 
   "description" : "^cyan;(Frackin' Universe main table)^reset; Craft all sorts of useful gear.",
   "shortdescription" : "^orange;Machining Table^white;",
 
   "learnBlueprintsOnPickup" : [],
- 
+
   "startingUpgradeStage" : 1,
   "maxUpgradeStage" : 3,
 
@@ -38,7 +38,7 @@
       "itemSpawnParameters" : {
         "inventoryIcon" : "prototyper1icon.png",
         "placementImage" : "prototyper1.png:default.default",
-        "placementImagePosition" : [-28, 0],    
+        "placementImagePosition" : [-28, 0],
 
         "description" : "Craft all sorts of complex gear",
         "shortdescription" : "^orange;Machining Table^white;"
@@ -57,11 +57,11 @@
         },
 
         "filter" : [ "prototyper1" ],
-        "initialRecipeUnlocks" : [ "petpicrepair", "servitorloader", "bothealingstation", "genecabinet", "genestorage", "polymer", "cog", "laserdiode", "wiretoolfu", "fu_alternatorgenerator", "fu_woodensifter", "circuitboard", "coil", "electromagnet", "wire", "microscope", "handmill", "nanofabricator", "armory", "designlab", "sproutingtable", "fu_growingtray", "farmwell", "eggincubator", "heavypipe", "fulabpipe", "labtechpanel", "fu_autobeamer3bugs", "portablelight", "crewcontract_science", "fm_musicplayer" ],
+        "initialRecipeUnlocks" : [ "fu_byoscaptainschair", "fu_byosfuelhatch", "fu_byosshipdoor", "fu_byosshiphatch", "fu_byosshiplocker", "fu_byostechstationdeco", "fu_byosteleporterdeco", "powerstation", "petpicrepair", "servitorloader", "bothealingstation", "genecabinet", "genestorage", "polymer", "laserdiode", "wiretoolfu", "fu_alternatorgenerator", "fu_woodensifter", "siliconboard","electromagnet", "wire", "microscope", "handmill", "nanofabricator", "armory", "designlab", "sproutingtable", "fu_growingtray", "farmwell", "eggincubator", "heavypipe", "fulabpipe", "labtechpanel", "fu_autobeamer3bugs", "portablelight", "crewcontract_science", "fm_musicplayer", "fu_byospethouse", "fu_racialiser", "fu_shipcraftingtable", "fu_ftldrivedeco", "fu_byoscaptainschairdeco" ],
         "upgradeMaterials" : [
           { "item" : "tungstenbar", "count" : 10 },
-          { "item" : "circuitboard", "count" : 2 },
-          { "item" : "coil", "count" : 6 }
+          { "item" : "siliconboard", "count" : 2 },
+          { "item" : "wire", "count" : 6 }
         ]
       },
       "craftingSound" : "/sfx/interface/crafting_anvil.ogg",
@@ -76,7 +76,7 @@
         "price" : 400,
         "inventoryIcon" : "prototyper2icon.png",
         "placementImage" : "prototyper2.png:default.default",
-        "placementImagePosition" : [-28, 0],    
+        "placementImagePosition" : [-28, 0],
 
         "description" : "Create more complicated gear",
         "shortdescription" : "^orange;Auto-Assembler^white;"
@@ -94,7 +94,7 @@
           }
         },
         "filter" : [ "prototyper1", "prototyper2" ],
-        "initialRecipeUnlocks" : [ "mechrepairpod", "miningbench", "checkpoint", "petpicrepair", "servitorloader", "bothealingstation", "genecabinet", "genestorage", "polymer", "cog", "laserdiode", "wiretoolfu", "fu_alternatorgenerator", "fu_woodensifter", "circuitboard", "coil", "electromagnet", "wire", "microscope", "handmill", "nanofabricator", "armory", "designlab", "sproutingtable", "fu_growingtray", "farmwell", "eggincubator", "heavypipe", "fulabpipe", "labtechpanel", "fu_autobeamer3bugs", "portablelight", "fulabhoverplatform", "fulabhoverpanel", "labvendingmachine", "techconsole", "xenostation", "apexcoolshelf2",  "apexpod2", "electronmicroscope", "titaniumwallblockmaterial", "speedblockmaterial", "jumpblockmaterial", "extractionlab", "manipulatormodule", "upgrademodule", "techcard", "crewcontract_gas", "crewcontract_sciencedrug", "crewcontract_scuba" ],
+        "initialRecipeUnlocks" : [ "fu_autobeamer3farmbeasts","mechassemblystation", "fusubcontroller", "fu_byoscaptainschair", "fu_byosfuelhatch", "fu_byosshipdoor", "fu_byosshiphatch", "fu_byosshiplocker", "fu_byostechstationdeco", "fu_byosteleporterdeco", "powerstation", "mechcraftingtable", "mechrepairpod", "miningbench", "checkpoint", "petpicrepair", "servitorloader", "bothealingstation", "genecabinet", "genestorage", "polymer", "laserdiode", "wiretoolfu", "fu_alternatorgenerator", "fu_woodensifter", "siliconboard", "electromagnet", "wire", "microscope", "handmill", "nanofabricator", "armory", "designlab", "sproutingtable", "fu_growingtray", "farmwell", "eggincubator", "heavypipe", "fulabpipe", "labtechpanel", "fu_autobeamer3bugs", "portablelight", "fulabhoverplatform", "fulabhoverpanel", "labvendingmachine", "techconsole", "xenostation", "apexcoolshelf2",  "apexpod2", "electronmicroscope", "titaniumwallblockmaterial", "speedblockmaterial", "jumpblockmaterial", "extractionlab", "manipulatormodule", "upgrademodule", "techcard", "crewcontract_gas", "crewcontract_sciencedrug", "crewcontract_scuba", "fm_musicplayer", "network_moneyrouter", "fu_byospethouse", "fu_racialiser", "fu_shipcraftingtable", "fu_ftldrivedeco", "fu_byoscaptainschairdeco" ],
         "upgradeMaterials" : [
           { "item" : "titaniumbar", "count" : 6 },
           { "item" : "cpu", "count" : 2 },
@@ -116,9 +116,9 @@
         "price" : 750,
         "inventoryIcon" : "prototyper3icon.png",
         "placementImage" : "prototyper3lit.png:default.default",
-        "placementImagePosition" : [-28, 0],    
+        "placementImagePosition" : [-28, 0],
 
-        "description" : "Create advanced technology",
+        "description" : "Create advanced technology.",
         "shortdescription" : "^orange;Matter Assembler^white;"
       },
 
@@ -136,58 +136,61 @@
         "filter" : [ "prototyper1", "prototyper2", "prototyper3" ],
         "craftingSound" : "/sfx/interface/crafting_furnacetech.ogg",
         "initialRecipeUnlocks" : [
-        "mechrepairpod", 
-        "miningbench", 
-        "checkpoint", 
-        "petpicrepair", 
-        "servitorloader", 
-        "bothealingstation", 
-        "genecabinet", 
-        "genestorage", 
-        "polymer", 
-        "cog", 
-        "laserdiode", 
-        "wiretoolfu", 
-        "fu_alternatorgenerator", 
-        "fu_woodensifter", 
-        "circuitboard", 
-        "coil", 
-        "electromagnet", 
-        "wire", 
-        "microscope", 
-        "handmill", 
-        "nanofabricator", 
-        "armory", 
-        "designlab", 
-        "sproutingtable", 
-        "fu_growingtray", 
-        "farmwell", 
-        "eggincubator", 
-        "heavypipe", 
-        "fulabpipe", 
-        "labtechpanel", 
-        "fu_autobeamer3bugs", 
-        "portablelight", 
-        "fulabhoverplatform", 
-        "fulabhoverpanel", 
-        "labvendingmachine", 
-        "techconsole", 
-        "xenostation", 
-        "apexcoolshelf2",  
-        "apexpod2", 
-        "electronmicroscope", 
-        "titaniumwallblockmaterial", 
-        "speedblockmaterial", 
-        "jumpblockmaterial", 
-        "extractionlab", 
-        "clonelab", 
-        "gravgen", 
-        "antigravgen", 
-        "fu_craftinfo", 
+        "mechassemblystation", "fusubcontroller", "fu_autobeamer3farmbeasts",
+        "fu_byoscaptainschair", "fu_byosfuelhatch", "fu_byosshipdoor", "fu_byosshiphatch", "fu_byosshiplocker", "fu_byostechstationdeco", "fu_byosteleporterdeco",
+        "mechcraftingtable",
+        "network_moneyrouter",
+        "mechrepairpod",
+        "miningbench",
+        "checkpoint",
+        "petpicrepair",
+        "servitorloader",
+        "bothealingstation",
+        "genecabinet",
+        "genestorage",
+        "polymer",
+        "laserdiode",
+        "wiretoolfu",
+        "fu_alternatorgenerator",
+        "fu_woodensifter",
+        "siliconboard",
+        "electromagnet",
+        "wire",
+        "microscope",
+        "handmill",
+        "nanofabricator",
+        "armory",
+        "designlab",
+        "sproutingtable",
+        "fu_growingtray",
+        "farmwell",
+        "eggincubator",
+        "heavypipe",
+        "fulabpipe",
+        "labtechpanel",
+        "fu_autobeamer3bugs",
+        "portablelight",
+        "fulabhoverplatform",
+        "fulabhoverpanel",
+        "labvendingmachine",
+        "techconsole",
+        "xenostation",
+        "apexcoolshelf2",
+        "apexpod2",
+        "electronmicroscope",
+        "titaniumwallblockmaterial",
+        "speedblockmaterial",
+        "jumpblockmaterial",
+        "extractionlab",
+        "clonelab",
+        "gravgen",
+        "antigravgen",
+        "fu_craftinfo",
         "powerstation",
-        "manipulatormodule", 
-        "upgrademodule", 
-        "techcard",        
+        "manipulatormodule",
+        "upgrademodule",
+        "techcard",
+        "crewcontract_gas", "crewcontract_sciencedrug", "crewcontract_scuba",
         "microformeraliendesert",
         "microformeralienforest",
         "microformerbadlands",
@@ -262,12 +265,18 @@
         "terraformersavannah",
         "terraformerslimeworld",
         "terraformersnow",
-        "terraformersulphuric",  
+        "terraformersulphuric",
         "terraformertarball",
         "terraformerthickjungle",
         "terraformertundra",
         "terraformervolcanic",
-        "futeleporter2" 
+        "futeleporter2",
+		"fm_musicplayer",
+		"fu_byospethouse",
+		"fu_racialiser",
+		"fu_shipcraftingtable",
+		"fu_ftldrivedeco",
+		"fu_byoscaptainschairdeco"
         ]
       },
 
@@ -278,7 +287,7 @@
   "orientations" : [
     {
       "image" : "prototyper1.png:default.<frame>",
-      "imagePosition" : [-28, 0],    
+      "imagePosition" : [-28, 0],
       "direction" : "left",
       "flipImages" : true,
       "spaces" : [
@@ -294,7 +303,7 @@
     },
     {
       "image" : "prototyper1.png:default.<frame>",
-      "imagePosition" : [-28, 0],    
+      "imagePosition" : [-28, 0],
       "direction" : "right",
       "spaces" : [
         [-4, 6],[-3, 6], [-2, 6], [-1, 6], [0, 6], [1, 6], [2, 6],[3, 6],
@@ -308,7 +317,7 @@
       "anchors" : [ "bottom" ]
     }
   ],
-  
+
   "npcToy" : {
     "influence" : [
       "sink",
@@ -325,5 +334,5 @@
     "preciseStandPositionLeft" : [-1.0, 0.0],
     "preciseStandPositionRight" : [1.0, 0.0],
     "maxNpcs" : 2
-  }  
+  }
 }

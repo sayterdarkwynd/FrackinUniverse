@@ -1,0 +1,25 @@
+{
+  "itemName" : "bloodycorpsewaffles",
+  "rarity" : "rare",
+  "price" : 35,
+  "category" : "preparedFood",
+  "inventoryIcon" : "bloodycorpsewaffles.png",
+  "description" : "Clearly the breakfast of choice for a growing child.",
+  "shortdescription" : "Bloody Corpse Waffles",
+  "effects" : [ [
+    {
+        "effect" : "maxhealthscalingboostfood",
+        "duration" : 45,
+	"healthModifier" : 1.10
+    }
+  ] ],
+  "foodValue" : 22,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.5,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "itemName" : "telebriumshortsword",
+  "price" : 60,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Endowed with energies of the moon.",
+  "shortdescription" : "Telebrium Sword",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "telebriumshortsword.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "telebriumshortsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "shortswordcombo2",
+  "primaryAbility" : {
+    "fireTime" : 0.60,
+    "baseDps" : 7.6
+  },
+
+  //"altAbilityType" : "risingslash",
+  
+  "critChance" : 2,
+  "critBonus" : 1,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+  
+  
+}

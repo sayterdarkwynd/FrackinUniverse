@@ -1,5 +1,5 @@
 setName="fu_mutaviskset"
-setStatEffects={ "mutavisksetbonuseffect" }
+setStatEffects={ "mutavisksetbonuseffect", "ffextremeradiationimmunity" }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

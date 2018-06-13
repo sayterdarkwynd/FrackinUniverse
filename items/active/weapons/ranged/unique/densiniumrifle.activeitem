@@ -15,7 +15,7 @@
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "densinium", "upgradeableWeapon"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/densiniumrifle.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "densiniumrifle.png",
@@ -24,6 +24,16 @@
     "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [0.68, -0.22]
+		  }
+		}
+      }
+    },  
     "sounds" : {
       "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
     }

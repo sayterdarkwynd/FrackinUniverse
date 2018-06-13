@@ -1,0 +1,28 @@
+{
+  "id" : "fuquest_rawminerals",
+  "title" : "Like a Mason",
+  "text" : "Extracting from ^orange;50 cobblestone^reset; will create ^orange;raw minerals^reset;. This resource will help create ^orange;mineral samples^reset;, essential in many experiments.",
+  "completionText" : "Now it's time to mess with life a bit.",
+  "rewards" : [
+    [ [ "leather", 3] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "rawminerals",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

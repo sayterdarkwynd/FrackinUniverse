@@ -2,7 +2,6 @@ require "/scripts/kheAA/liquidLib.lua"
 require "/scripts/kheAA/transferUtil.lua"
 
 function init()
-	powerNode=0
 	receiveLiquid=true
 	transferUtil.init()
 	liquidLib.init()

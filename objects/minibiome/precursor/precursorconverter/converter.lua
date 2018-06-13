@@ -1,24 +1,30 @@
+require "/scripts/kheAA/transferUtil.lua"
+
 local recipes =
 {
 
 --liquids
-{inputs = { solidfuel=50 }, outputs = { precursorfluid=1 }, time = 1.0},
-{inputs = { liquidfuel=50 }, outputs = { precursorfluid=1 }, time = 1.0},
-{inputs = { toxicwaste=25 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { solidfuel=100 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { liquidfuel=200 }, outputs = { precursorfluid=1 }, time = 1.0},
+{inputs = { toxicwaste=100 }, outputs = { precursorfluid=1 }, time = 1.0},
 {inputs = { irradiumore=25 }, outputs = { precursorfluid=1 }, time = 1.0},
 {inputs = { irradiumbar=10 }, outputs = { precursorfluid=1 }, time = 1.0},
 {inputs = { supermatter=50 }, outputs = { precursorfluid=2 }, time = 2.0},
-{inputs = { uraniumrod=1 }, outputs = { precursorfluid=2 }, time = 2.0},
-{inputs = { plutoniumrod=1 }, outputs = { precursorfluid=3 }, time = 3.0},
-{inputs = { neptuniumrod=1 }, outputs = { precursorfluid=4 }, time = 4.0},
-{inputs = { thoriumrod=1 }, outputs = { precursorfluid=5 }, time = 5.0},
-{inputs = { solariumstar=6 }, outputs = { precursorfluid=6 }, time = 6.0},
-{inputs = { ultronium=1 }, outputs = { precursorfluid=50 }, time = 6.0},
+{inputs = { uraniumrod=1 }, outputs = { precursorfluid=1 }, time = 2.0},
+{inputs = { plutoniumrod=1 }, outputs = { precursorfluid=1 }, time = 3.0},
+{inputs = { neptuniumrod=1 }, outputs = { precursorfluid=2 }, time = 4.0},
+{inputs = { thoriumrod=1 }, outputs = { precursorfluid=2 }, time = 5.0},
+{inputs = { solariumstar=6 }, outputs = { precursorfluid=2 }, time = 6.0},
+{inputs = { enricheduranium=1 }, outputs = { precursorfluid=2 }, time = 6.0},
+{inputs = { enrichedplutonium=1}, outputs = { precursorfluid=2 }, time = 6.0},
+{inputs = { ultronium=1 }, outputs = { precursorfluid=3 }, time = 6.0},
 {inputs = { precursorfluid=50 }, outputs = { essence=400 }, time = 7.0},
 {inputs = { techcard=1 }, outputs = { essence=4 }, time = 1.0},
 {inputs = { upgrademodule=1 }, outputs = { essence=4 }, time = 1.0},
 {inputs = { manipulatormodule=1 }, outputs = { essence=3 }, time = 1.0},
-{inputs = { crunchychick=1 }, outputs = { essence=20 }, time = 1.0}
+{inputs = { crunchychick=1 }, outputs = { essence=5 }, time = 1.0},
+{inputs = { crunchychickdeluxe=1 }, outputs = { essence=20 }, time = 1.0},
+{inputs = { crunchychickevil=1 }, outputs = { fuscienceresource=1000 }, time = 1.0}
 -- should have precursor resources crafted here, too
 }
 
@@ -27,6 +33,7 @@ function init()
     self.mintick = 1
     self.crafting = false
     self.output = {}
+	transferUtil.init()
 end
 
 function getInputContents()
@@ -104,6 +111,12 @@ end
 
 
 function update(dt)
+	if not deltaTime or (deltaTime > 1) then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
     self.timer = self.timer - dt
     if self.timer <= 0 then
         if self.crafting then

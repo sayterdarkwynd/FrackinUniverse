@@ -1,0 +1,88 @@
+{
+  "itemName" : "cuteorblauncher",
+  "price" : 560,
+  "inventoryIcon" : "cuteorblauncher.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Fire destructive balls of energy.
+^yellow;Counts asa 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Orb Launcher",
+  "category" : "shotgun",
+  "level" : 4,
+  "tooltipKind" : "gun2",
+  "weaponType" : "shotgun",
+  "itemTags" : ["weapon","ranged","shotgun", "energy", "upgradeableWeapon"],
+  "twoHanded" : false,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "cuteorblauncher.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/disruptor.ogg" ]
+    }
+  },
+
+  "baseOffset" : [0.75, 0.25],
+  "muzzleOffset" : [1.9, 0.25],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.8,
+    "baseDps" : 6.6,
+    "energyUsage" : 40.0,
+    "inaccuracy" : 0,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "cutewobbleshot",
+    "projectileParameters" : { 
+      "speed" : 50,
+      "knockback" : 30,
+      "damageKind" : "cosmic"
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+
+  "critChance" : 5,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

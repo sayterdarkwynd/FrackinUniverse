@@ -1,0 +1,30 @@
+{
+  "id" : "shoggoth_unlocknew",
+  "mainQuest" : true,
+  "prerequisites" : [],
+  "title" : "Delta Freya Expedition",
+  "text" : "I've found an ancient text, and am alarmed. Scrawled within are coordinates that match up exactly with a ^orange;recent research expedition^reset; we sent out to the fringes. I get no response when hailing them. S.A.I.L can take me there.",
+  "completionText" : "There are no words to express the madness and strangeness that tugs now at the very roots of my soul. A piece of myself has been forever lost to that hellish place.",
+  "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questReceiver"
+  },
+  "moneyRange" : [0, 0],
+  "missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
+  "rewards" : [
+      [ [ "fuscienceresource", 25000 ] ]
+   ],
+  "canBeAbandoned" : true,
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+		"portraits" : {
+		"default" : "player"
+		},
+	"associatedMission" : "shoggothmission",
+    "turnInDescription" : "Explore Delta Freya II",
+    "requireTurnIn" : true
+  }
+}
+

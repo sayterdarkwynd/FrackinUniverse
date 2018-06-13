@@ -1,0 +1,152 @@
+{
+  "objectName" : "designlaboutpost",
+  "colonyTags" : [ "fu", "science", "scienceoutpost", "hitech" ],
+  "rarity" : "Essential",
+  "race" : "generic",
+  "category" : "crafting",
+
+  "breakDropOptions" : [],
+
+  "price" : 50,
+  "printable" : false,
+
+  "scripts" : [ "/scripts/npcToyObject.lua",
+                "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua"
+              ],
+
+  "animation" : "designlab.animation",
+  "animationPosition" : [0, 26],
+
+  "inventoryIcon" : "designlab1icon.png",
+  "placementImage" : "designlab1lit.png:default.default",
+  "placementImagePosition" : [-40, 0],    
+
+  "description" : "Create plants from raw materials.",
+  "shortdescription" : "^orange;Greenhouse^white;",
+
+  "learnBlueprintsOnPickup" : [ "fu_growingtray" ],
+
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+
+  "upgradeStages" : [
+    {
+      "animationState" : "greenhouse",
+
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "designlab1icon.png",
+        "placementImage" : "designlab1lit.png:default.default",
+        "placementImagePosition" : [-40, 0],    
+
+        "description" : "Breed basic plants",
+        "shortdescription" : "^orange;Greenhouse^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config"
+      },
+
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "botanylab",
+
+      "itemSpawnParameters" : {
+        "price" : 400,
+        "inventoryIcon" : "designlab2icon.png",
+        "placementImage" : "designlab2.png:default.default",
+        "placementImagePosition" : [-40, 0],    
+
+        "description" : "More advanced seed experimentation.",
+        "shortdescription" : "^orange;Botany Lab^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config"
+      },
+
+      "learnBlueprintsOnPickup" : [],
+
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    },
+
+    {
+      "animationState" : "designlab",
+
+      "itemSpawnParameters" : {
+        "price" : 750,
+        "inventoryIcon" : "designlab3icon.png",
+        "placementImage" : "designlab3.png:default.default",
+        "placementImagePosition" : [-40, 0],    
+
+        "description" : "Create bizarre alien plantlife",
+        "shortdescription" : "^orange;Gene Design Lab^white;"
+      },
+
+      "interactData" : {
+        "config" : "/interface/windowconfig/fuempty.config"
+      },
+
+      "learnBlueprintsOnPickup" : []
+    }
+  ],
+
+  "orientations" : [
+    {
+      "image" : "designlab1.png:default.<frame>",
+      "imagePosition" : [-40, 0],    
+      "direction" : "left",
+      "flipImages" : true,
+      "spaces" : [
+        [-5, 6],[-4, 6],[-3, 6], [-2, 6], [-1, 6], [0, 6], [1, 6], [2, 6],[3, 6],[4, 6],
+        [-5, 5],[-4, 5],[-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5],[3, 5],[4, 5],
+        [-5, 4],[-4, 4],[-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4],[3, 4],[4, 4],
+        [-5, 3],[-4, 3],[-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3],[3, 3],[4, 3],
+        [-5, 2],[-4, 2],[-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],[3, 2],[4, 2],
+        [-5, 1],[-4, 1],[-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],[3, 1],[4, 1],
+        [-5, 0],[-4, 0],[-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0],[3, 0],[4, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "designlab1.png:default.<frame>",
+      "imagePosition" : [-40, 0],    
+      "direction" : "right",
+      "spaces" : [
+        [-4, 6],[-3, 6], [-2, 6], [-1, 6], [0, 6], [1, 6], [2, 6],[3, 6],[4, 6],[5, 6],
+        [-4, 5],[-3, 5], [-2, 5], [-1, 5], [0, 5], [1, 5], [2, 5],[3, 5],[4, 5],[5, 5],
+        [-4, 4],[-3, 4], [-2, 4], [-1, 4], [0, 4], [1, 4], [2, 4],[3, 4],[4, 4],[5, 4],
+        [-4, 3],[-3, 3], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3],[3, 3],[4, 3],[5, 3],
+        [-4, 2],[-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],[3, 2],[4, 2],[5, 2],
+        [-4, 1],[-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],[3, 1],[4, 1],[5, 1],
+        [-4, 0],[-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0],[3, 0],[4, 0],[5, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "npcToy" : {
+    "influence" : [
+      "furnace",
+      "furnace",
+      "furnaceComplete"
+    ],
+    "defaultReactions" : {
+      "furnace" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"]
+      ],
+      "furnaceComplete" : [
+        [1.0, "warmhands"],
+        [1.0, "crouchwarm"],
+        [1.0, "pokefire"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.5, 0.0],
+    "preciseStandPositionRight" : [2.5, 0.0],
+    "maxNpcs" : 1
+  }
+}

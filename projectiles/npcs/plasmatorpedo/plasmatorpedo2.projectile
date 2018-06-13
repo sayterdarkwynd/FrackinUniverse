@@ -1,0 +1,19 @@
+{
+  "projectileName" : "plasmatorpedo2",
+  "image" : "plasmatorpedo2.png",
+  "animationCycle" : 0.1,
+  "lightColor" : [2, 28, 93],
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "physics" : "boomerang",
+  "timeToLive" : 0.1,
+  "emitters" : [ "electricplasma", "defaultblue" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
+    }
+  ],
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageKind" : "slash"
+}

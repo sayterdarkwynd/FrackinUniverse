@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorBonus={
@@ -18,32 +18,29 @@ function init()
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
 	setSEBonusInit(setName)
 	
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
 	
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	        --status.addEphemeralEffect("gravgenfieldarmor2",5)
+		--status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end	
 
 end
 
 function checkWeapons()
-local weaponSword=weaponCheck({"energy","precursor"})
-local weaponShield=weaponCheck({"energy","precursor"})
+	local weaponSword=weaponCheck({"energy","precursor"})
+	local weaponShield=weaponCheck({"energy","precursor"})
 
-	if weaponSword["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-	elseif weaponSword["either"] or weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-		
+	if weaponSword["either"] or weaponShield["either"] then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

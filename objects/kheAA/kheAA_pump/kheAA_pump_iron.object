@@ -5,12 +5,13 @@
 	"rarity": "Common",
 	"description": "Pumps liquids.\n^blue;Input^white;1^blue;: ^white;power switch\n^blue;Input^white;2^blue;: ^white;compression\n^red;Output^white;1^red;: ^white;item network\n^red;Output^white;2^red;: ^white;liquid network^reset;",
 	"shortdescription": "Iron Pump",
+	"learnBlueprintsOnPickup": ["network_pump_titanium"],
 	"objectType": "container",
 	"tooltipKind": "container",
 	"race": "generic",
 	"retainScriptStorageInItem": true,
 	"category": "wire",
-	"price": 15,
+	"price": 150,
 
 	"inventoryIcon": "kheAA_pump_ironicon.png",
 	"orientations": [{
@@ -61,10 +62,10 @@
 	"openSounds": ["/sfx/objects/woodenbox_open.ogg"],
 	"closeSounds": ["/sfx/objects/woodenbox_close.ogg"],
 	"slotCount": 16,
+	"lockedSlots": [16],
 	"uiConfig": "/interface/kheAA/kheAA_pump/kheAA_pumpGui.config",
 	"frameCooldown": 5,
 	"autoCloseCooldown": 3600,
-	"kheAA_maxDepth": 20,
 	"inputNodes": [
 		[0, 0],
 		[1, 0]
@@ -73,5 +74,11 @@
 		[0, 1],
 		[1, 1]
 	],
-	"lockedSlots": [16]
+	"kheAA_logicNode": 0,
+	"kheAA_outDataNode": 0,
+	"kheAA_powerPumpNode": 1,
+	"kheAA_spoutNode": 1,
+	"kheAA_excavatorRate": 1.0,
+	"kheAA_isPump": true,
+	"kheAA_maxDepth": 16
 }

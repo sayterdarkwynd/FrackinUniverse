@@ -4,9 +4,9 @@
   "inventoryIcon" : "ionrifle.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Fires bursts of bouncy energy that enemies just adore
-^yellow;Multi-bounce^reset;
-^green;Speedy projectiles^reset;",
+  "description" : "Reliable infantry weapon for anti-robot warfare.
+^yellow;Inflicts Electrified^reset;
+^green;Area-Denial Alt^reset;",
   "shortdescription" : "Ion Rifle",
   "category" : "assaultRifle",
   "level" : 3,
@@ -24,12 +24,12 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/ionrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/ionburst.ogg" ]
     }
   },
 
   "baseOffset" : [0.68, -0.22],
-  "muzzleOffset" : [2.845, 0.325],
+  "muzzleOffset" : [2.4, 0.5],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -38,19 +38,59 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.11,
+    "fireTime" : 0.21,
     "baseDps" : 10,
-    "energyUsage" : 52,
-    "inaccuracy" : 0.03,
-    "burstTime" : 0.075,
-    "burstCount" : 2,
+    "energyUsage" : 32,
+    "inaccuracy" : 0.01,
     "projectileCount" : 1,
-    "fireType" : "burst",
+    "fireType" : "auto",
 
-    "projectileType" : "ionrifleshot",
+    "projectileType" : "electricguardianpellet",
     "projectileParameters" : { 
-      "speed" : 55,
-      "knockback" : 3.5
+      "speed" : 60,
+      "knockback" : 3.5,
+      "statusEffects" : [ "electrified" ],
+      "periodicActions" : [ 
+	    {
+	      "action":"particle",
+	      "repeat":true,
+	      "rotate":true,
+	      "specification":{
+		"destructionAction":"fade",
+		"destructionTime":0.2,
+		"fullbright":true,
+		"image":"/projectiles/boss/guardianboss/guardianpellet/electricguardianpellet.png",
+		"layer":"back",
+		"position":[0,0],
+		"timeToLive":0.01,
+		"type":"textured"
+		},
+	      "time":0
+	    },
+
+	    {
+	      "action":"particle",
+	      "repeat":true,
+	      "rotate":true,
+	      "specification":{
+		"destructionAction":"fade",
+		"destructionTime":0.2,
+		"fullbright":true,
+		"image":"/projectiles/boss/guardianboss/guardianpellet/electricguardianpellet.png",
+		"layer":"back",
+		"position":[0,0],
+		"timeToLive":0.03,
+		"type":"textured"
+		},
+	      "time":0.05
+	      }   
+      ],      
+      "actionOnReap" : [ 
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/boss/guardianboss/guardianexplosion/electricguardianexplosion.config"
+	    }     
+      ]
     },
 	  "stances" : {
 	    "idle" : {
@@ -85,6 +125,21 @@
   "critChance" : 3,
   "critBonus" : 3,
   "altAbilityType" : "iongrenadelauncher",
+  "altAbility" : {
+    "name" : "Shock Grenade",
+    "projectileParameters" : {
+      "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "electricguardiandamagearea",
+	      "fuzzAngle" : 0,
+	      "inheritDamageFactor" : 1,
+	      "angleAdjust" : 0,
+	      "config" : { "timeToLive" : 3.5 }
+	    }
+      ]
+    }
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -9,16 +9,12 @@
       {
         "select" : 4,
         "pool" : [
-          [ 0.07, "aggroHugeGround" ],
-          [ 0.07, "passiveHugeGround" ],        
+          [ 0.4, "aggroHugeGround" ],
+          [ 0.4, "passiveHugeGround" ],
           [ 0.2, "anglure4" ],
           [ 0.2, "bulbop2" ],
-          [ 0.2, "iguarmor" ],
+          [ 0.1, "bulbopfriendly" ],
           [ 0.3, "pteropod" ],
-          [ 0.2, "ixoling2" ],
-          [ 0.2, "fukingsnake" ],
-          [ 0.3, "nutmidge" ],
-          [ 0.2, "fucaterpillar" ],
           [ 0.3, "mandraflora" ],
           [ 0.3, "fuallergen" ],
           [ 0.3, "furaptor" ],
@@ -36,8 +32,8 @@
           [ 0.4, "forestbee" ],
           [ 0.1, "minerbee" ],
           [ 0.3, "normalbee" ],
-          [ 0.3, "greentip" ],
-          [ 0.3, "blueback" ],
+          [ 0.111, "pangolin" ],
+          [ 0.111, "pangobaby" ],
           [ 0.1, "aurorabee" ],
           [ 0.09, "fumothcritter" ],
           [ 0.111, "fuspidercritter" ],
@@ -380,7 +376,7 @@
           "distribution" : "/biomes/distributions.config:tiyDist",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+          "microdungeons" : [ "lakes_water", "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
         },
          {
           "mode" : "floor",
@@ -586,7 +582,7 @@
         },
         {
           "mode" : "floor",
-          "priority" : 0.0,
+          "priority" : 1.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:overgroundChests",
 
@@ -641,7 +637,7 @@
           "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "forestmicrodungeons", "gardenmicrodungeons", "arborealmini" ]
+          "microdungeons" : [ "forestmicrodungeons", "gardenmicrodungeons", "arborealmini", "treehouses" ]
         },
         {
           "mode" : "floor",

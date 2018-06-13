@@ -1,0 +1,33 @@
+{
+  "id" : "shoggoth_wagner",
+  "mainQuest" : true,
+  "prerequisites" : [ "shoggoth_unlock" ],
+  "title" : "A Missing Friend",
+  "text" : "I still can't reach them...My friend ^green;Wagner^reset; might be in trouble. The research lab has ^orange;gone dark^white; with no signs of contact for days! ^green;Can you investigate and see what happened^reset; to my friend? You'll find the coordinates ^orange;in your SAIL^reset;.",
+  "completionText" : "Oh no. Wagner is...dead? Thank you...^orange;Sad news is better than no news at all^reset;. Please take this for your efforts, and leave me. ^green;I need to be alone now^reset;.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "nocxiumbar", 12 ] ]],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+    "turnInDescription" : "Return ^orange;Wagner's ID^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "wagneridcard",
+        "count" : 1,
+        "consume" : true
+      }
+    ],
+    "associatedMission" : "shoggothmission"
+  }
+}

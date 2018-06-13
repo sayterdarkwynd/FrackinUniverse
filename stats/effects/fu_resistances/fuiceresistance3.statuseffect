@@ -1,11 +1,14 @@
 {
   "name" : "fuiceresistance3",
-  "effectConfig" : {
-    "resistanceValue" : 0.3
-  },
-  "defaultDuration" : 300,
-
-  "scripts" : [
-    "fuiceresistance.lua"
-  ]
+	"effectConfig": {
+		"stats": [{
+				"stat": "iceResistance",
+				"amount": 0.3
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

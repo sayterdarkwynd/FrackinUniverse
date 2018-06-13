@@ -9,7 +9,7 @@
   "level" : 3,
   "tooltipKind" : "gun2",
   "category" : "crossbow",
-  "itemTags" : ["weapon","ranged","crossbow"],
+  "itemTags" : ["weapon","ranged","crossbow","upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -37,8 +37,8 @@
     "class" : "GunFire",
 
     "fireTime" : 1.3,
-    "baseDps" : 7,
-    "energyUsage" : 28,
+    "baseDps" : 8,
+    "energyUsage" : 24,
     "inaccuracy" : 0.008,
 
     "projectileCount" : 1,
@@ -46,7 +46,8 @@
 
     "projectileType" : "icebolt",
     "projectileParameters" : {
-      "knockback" : 25
+      "knockback" : 25,
+      "damageSourceKind" : "bow"
     },
     "stances" : {
       "idle" : {

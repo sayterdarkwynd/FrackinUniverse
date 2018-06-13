@@ -9,6 +9,10 @@ function init()
 end
 
 function power.update(dt)
+	if not power.warmedUp then
+		power.init()
+		power.warmedUp=true
+	end
   if config.getParameter('powertype') then
     if config.getParameter('powertype') == 'battery' then
       storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
@@ -49,7 +53,7 @@ function power.consume(amount)
       energy = power.getEnergy(storage.entitylist.output[i])
       if energy > 0 then
         energy = math.min(energy,amount)
-  	    world.callScriptedEntity(storage.entitylist.output[i],'power.remove',energy)
+  	    callEntity(storage.entitylist.output[i],'power.remove',energy)
   	    amount = amount - energy
       end
       if amount == 0 then
@@ -60,7 +64,7 @@ function power.consume(amount)
       energy = power.getEnergy(storage.entitylist.battery[i])
       if energy > 0 then
         energy = math.min(energy,amount)
-  	  world.callScriptedEntity(storage.entitylist.battery[i],'power.remove',energy)
+  	  callEntity(storage.entitylist.battery[i],'power.remove',energy)
   	  amount = amount - energy
       end
       if amount == 0 then
@@ -75,9 +79,9 @@ end
 function power.sendPowerToBatteries()
   if (storage.energy or 0) > 0 then
     for key,value in pairs(storage.entitylist.battery) do
-      amount = math.min((storage.energy or 0),world.callScriptedEntity(value,'power.getStorageLeft'))
+      amount = math.min((storage.energy or 0),(callEntity(value,'power.getStorageLeft') or 0))
 	  storage.energy = (storage.energy or 0) - amount
-	  world.callScriptedEntity(value,'power.recievePower',amount)
+	  callEntity(value,'power.recievePower',amount)
 	  if storage.energy == 0 then
 	    break
 	  end
@@ -120,7 +124,7 @@ function power.getEnergy(id)
   if not id or id == entity.id() then
     return storage.energy or 0
   else
-    return world.callScriptedEntity(id,'power.getEnergy') or 0
+    return callEntity(id,'power.getEnergy') or 0
   end
 end
 
@@ -146,7 +150,7 @@ function power.onNodeConnectionChange(arg)
       if object.isInputNodeConnected(i) then
 	    local idlist = object.getInputNodeIds(i)
 	    for value in pairs(idlist) do
-	      powertype = world.callScriptedEntity(value,'isPower')
+	      powertype = callEntity(value,'isPower')
 	      if powertype then
 	        for j=1,#entitylist.all+1 do
 		      if j == #entitylist.all+1 then
@@ -156,7 +160,7 @@ function power.onNodeConnectionChange(arg)
 			      table.insert(entitylist.output,value)
 			    end
 		        table.insert(entitylist.all,value)
-			    entitylist = world.callScriptedEntity(value,'power.onNodeConnectionChange',entitylist)
+			    entitylist = (callEntity(value,'power.onNodeConnectionChange',entitylist) or entitylist)
 		      elseif entitylist.all[j] == value then
 		        break
 		      end
@@ -169,7 +173,7 @@ function power.onNodeConnectionChange(arg)
       if object.isOutputNodeConnected(i) then
 	    local idlist = object.getOutputNodeIds(i)
 	    for value in pairs(idlist) do
-	      powertype = world.callScriptedEntity(value,'isPower')
+	      powertype = callEntity(value,'isPower')
 	      if powertype then
 	        for j=1,#entitylist.all+1 do
 		      if j == #entitylist.all+1 then
@@ -179,7 +183,7 @@ function power.onNodeConnectionChange(arg)
 			      table.insert(entitylist.output,value)
 			    end
 		        table.insert(entitylist.all,value)
-			    entitylist = world.callScriptedEntity(value,'power.onNodeConnectionChange',entitylist)
+			    entitylist = (callEntity(value,'power.onNodeConnectionChange',entitylist) or entitylist)
 		      elseif entitylist.all[j] == value then
 		        break
 		      end
@@ -193,7 +197,7 @@ function power.onNodeConnectionChange(arg)
     else
       storage.entitylist = entitylist
       for i=2,#entitylist.all do
-        world.callScriptedEntity(entitylist.all[i],'updateList',entitylist)
+        callEntity(entitylist.all[i],'updateList',entitylist)
 	  end
     end
   end
@@ -205,4 +209,10 @@ end
 
 function updateList(list)
   storage.entitylist = list
+end
+
+function callEntity(id,...)
+  if world.entityExists(id) then
+    return world.callScriptedEntity(id,...)
+  end
 end

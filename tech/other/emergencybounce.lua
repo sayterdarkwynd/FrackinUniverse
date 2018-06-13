@@ -47,21 +47,11 @@ function attemptActivation()
 end
 
 function activate()
-  if not self.active then
-    status.addPersistentEffect("booster", "powerboost", math.huge)
-	world.setProperty("hide[" .. tostring(entity.id()) .. "]", true)
-  end
-
   self.active = true
   self.deactiveDelay = self.deactiveDelayMax
 end
 
 function deactivate()
-  if self.active then
-    status.clearPersistentEffects("booster")
-	world.setProperty("hide[" .. tostring(entity.id()) .. "]", nil)
-  end
-
   self.active = false
 end
 

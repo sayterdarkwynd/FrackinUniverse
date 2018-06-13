@@ -1,0 +1,41 @@
+{
+  "itemName" : "fucultistmace",
+  "price" : 600,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A dense slab of whackin' fun",
+  "shortdescription" : "Cultist Mace
+^cyan;Inflicts bleeding",
+  "tooltipKind" : "sword2",
+  "category" : "mace",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+
+  "inventoryIcon" : "fucultistmace.png",
+  "animation" : "combomace.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fucultistmace.png"
+  },
+  "animationCustom":{},
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "macecombo",
+  "primaryAbility":{
+    "fireTime":1.2, 
+    "baseDps":7.2, 
+    "damageConfig" : {
+      "knockback" : 20,
+      "statusEffects" : [ "bleedingshort" ]
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 8,
+  "stunChance" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

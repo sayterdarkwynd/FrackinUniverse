@@ -1,13 +1,13 @@
 {
   "objectName" : "scentedapiary",
   "colonyTags" : [ "hive", "bees", "insects" ],
-  "rarity" : "Rare",
+  "rarity" : "uncommon",
   "description" : "An apiary that does not spawn bees.",
   "shortdescription" : "^orange;Scented Apiary^white;",
   "race" : "generic",
   "subtitle" : "Harvest honey!",
   "category" : "crafting",
-  "price" : 900,
+  "price" : 200,
   "objectType" : "container",
   "printable" : false,
 
@@ -15,24 +15,20 @@
   "orientations" : [
     {
       "dualImage" : "scentedapiary.png:<color>.<frame>",
-
       "imagePosition" : [0, 0],
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ],
       "collision" : "platform"
-
-
     }
   ],
+  
   "learnBlueprintsOnPickup" : [ "scentedalveary" ],
   "animation" : "/objects/bees/scentedapiary/scentedapiary.animation",
-  "animationParts" : {
-    "beacon" : "apiary.png"
-  },
+  "animationParts" : {"beacon" : "apiary.png"},
   "animationPosition" : [0, 0],
   "recipeGroup" : "beetrap",
   "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
-  "scripts" : [ "/objects/bees/apiary/common.lua" ],
+  "scripts" : [ "/objects/generic/apiary_common.lua" ],
   "scriptDelta" : 140,
   "slotCount" : 19,
   "uiConfig" : "/interface/bees/apiary/apiary.config",
@@ -56,5 +52,6 @@
   "droneSlot" : 2,
   "frameSlots" : [ 3 ],
   "inputNodes":[[0,0]],
-  "outputNodes":[[0,1]]
+  "outputNodes":[[0,1]],
+  "notItemStorage":true
 }

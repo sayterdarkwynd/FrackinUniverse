@@ -44,8 +44,7 @@ function questStart()
 
   player.setUniverseFlag("final_gate_key")
   player.playCinematic(config.getParameter("openGateCinematic"))
-  -- new for FU!!!!!!
-  player.giveItem("humanartifactaugment")
+
 end
 
 function questInteract(entityId)
@@ -56,6 +55,8 @@ end
 
 function questComplete()
   setPortraits()
+  -- new for FU!!!!!!
+  player.giveItem("humanartifactaugment")  
   questutil.questCompleteActions()
 end
 

@@ -1,0 +1,69 @@
+{
+  "objectName" : "fu_byosfuelhatch",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "container",
+  "description" : "Accepts Liquid Erchius as fuel for the ship's FTL dive.",
+  "shortdescription" : "FTL Fuel Hatch",
+  "race" : "generic",
+  "lightColor" : [61, 88, 102],
+
+  "apexDescription" : "The FTL drive fuel hatch. Converts fuel into freedom.",
+  "avianDescription" : "The FTL fuel hatch. Let's load it up and take to the stars!",
+  "floranDescription" : "Fuel hatch for FTL drive. Let'ss fill it up!",
+  "glitchDescription" : "Excited. This hatch fuels the FTL drive so that I may visit planets outside of this system.",
+  "humanDescription" : "The ship's fuel hatch. With fuel for the FTL drive I can explore outside this system.",
+  "hylotlDescription" : "The humble FTL fuel hatch. Fuel is the lifeblood of exploration.",
+  "novakidDescription" : "FTL fuel goes in here!",
+
+  "inventoryIcon" : "/objects/ship/apexfuelhatch/fuelhatchicon.png",
+  "placementImage" : "/objects/ship/apexfuelhatch/apexfuelhatch.png:default.0",
+  "placementImagePosition" : [-8, -16],
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/fu_byosfuelhatch/fu_byosfuelhatch.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/fu_byosfuelhatch/fu_byosfuelhatchlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [-8, -16],
+      "frames" : 4,
+      "animationCycle" : 0.7,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+	  "spaces" : [
+	  [-1,0],   [0,0],
+	  [-1,-1],  [0,-1],
+	  [-1,-2],  [0,-2]
+	  ]
+    }
+  ],
+  "defaultImageConfig" : [
+    {
+      "imageLayers" : [ { "image" : "/objects/ship/apexfuelhatch/apexfuelhatch.png:<color>.<frame>", "fullbright" : true }, { "image" : "/objects/ship/apexfuelhatch/apexfuelhatchlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [-8, -16],
+      "frames" : 4,
+      "animationCycle" : 0.7,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "hasWindowIcon" : false,
+  "recipeGroup" : "fuel",
+  "slotCount" : 6,
+  "uiConfig" : "/interface/fuel/fuel.config",
+  "autoCloseCooldown" : 3600,
+  "frameCooldown" : 5,
+
+  "itemTags" : [ "newfuelhatch" ],
+
+  "scripts" : ["/stagehands/radiomessage.lua", "/objects/ship/fu_byosobjectdeath.lua"],
+  "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
+  "scriptDelta" : 20,
+  "broadcastArea" : [-5, -5, 5, 5],
+  "radioMessage" : "fuel",
+  "racialiserType" : "fuelhatch",
+  "retainObjectParametersInItem" : true
+}

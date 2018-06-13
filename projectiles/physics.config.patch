@@ -1,9 +1,66 @@
 [
-	{
-	"op":"replace",
-	"path":"/slider/airFriction",
-	"value": 0
-	},
+{
+"op": "add",
+"path": "/wtfman",
+"value": {
+    "mass" : 0.01,
+    "gravityMultiplier" : -0.48,
+    "bounceFactor" : 5.0,
+    "maxMovementPerStep" : 0.4,
+
+    "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+    "ignorePlatformCollision" : true,
+
+    "airFriction" : 0.05,
+    "liquidFriction" : 0.0,
+    "speedLimit" : 30,
+    "maximumCorrection" : 0.65
+  }
+},
+
+{
+"op": "add",
+"path": "/floatingplatform",
+"value": {
+
+    "gravityMultiplier" : -0.02,
+    "bounceFactor" : 0.0,
+    "maxMovementPerStep" : 0.4,
+
+    "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+    "ignorePlatformCollision" : true,
+
+    "airFriction" : 0.25,
+    "liquidFriction" : 0.5,
+    "speedLimit" : 10,
+    "maximumCorrection" : 0.75
+  }
+},
+
+{
+"op": "add",
+"path": "/weightedgrapplinghook",
+"value": {
+    "mass" : 1.0,
+    "gravityMultiplier" : 2.0,
+    "stickyCollision" : true,
+    "stickyForce" : 52.0,
+    "maxMovementPerStep" : 0.4,
+
+    "collisionPoly" : [ [0.25, 0], [0.9, 0.3], [1.1, 0], [0.9, -0.3] ],
+    "ignorePlatformCollision" : true,
+
+    "airFriction" : 0.1,
+    "liquidFriction" : 7.0,
+    "groundFriction" : 18.0,
+    "maximumCorrection" : 0.70
+  }
+},
+{
+"op":"replace",
+"path":"/slider/airFriction",
+"value": 0
+},
  { 
   "op" : "add",
   "path" : "/fubeamweapon",
@@ -21,6 +78,51 @@
    }
  },
  
+ { 
+  "op" : "add",
+  "path" : "/eldergrenade",
+  "value" : 
+   {
+      "mass" : 0.6,
+      "gravityMultiplier" : 0.55,
+      "bounceFactor" : 0.75,
+      "stopOnFirstBounce" : false,
+      "maxMovementPerStep" : 0.4,
+      "stickyCollision" : true,
+      "stickyForce" : 50.0,      
+      "groundSlideMovementEnabled" : true,
+      "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+      "ignorePlatformCollision" : true,
+  
+      "airFriction" : 0.15,
+      "liquidFriction" : 2.0,
+      "groundFriction" : 5.0,
+      "maximumCorrection" : 0.65
+   }
+ }, 
+ { 
+  "op" : "add",
+  "path" : "/nailgun",
+  "value" : 
+   {
+      "mass" : 0.6,
+      "gravityMultiplier" : 0.12,
+      "bounceFactor" : 0.5,
+      "stopOnFirstBounce" : true,
+      "maxMovementPerStep" : 0.4,
+      "stickyCollision" : true,
+      "stickyForce" : 20.0,      
+      "groundSlideMovementEnabled" : true,
+      "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+      "ignorePlatformCollision" : true,
+  
+      "airFriction" : 0.05,
+      "liquidFriction" : 6.0,
+      "groundFriction" : 8.0,
+      "maximumCorrection" : 0.25
+   }
+ },
+
   {"op":"add","path":"/floatydeath","value":{
     "mass" : 0.0,
     "gravityMultiplier" : -0.05,
@@ -140,6 +242,23 @@
   }
 },      
 
+{"op":"add",
+"path":"/fleshbomb",
+"value": {
+    "mass" : 0.5,
+    "gravityMultiplier" : 0.15,
+    "stickyForce" : 0.55,
+    "bounceFactor" : 0,
+    "maxMovementPerStep" : 0.7,
+
+    "collisionPoly" : [ [-0.5,1.917], [-1.583,1.333], [-1.917,0.042], [-1.417,-1.167], [-0.5,-1.75], [0.833,-1.667], [1.792,-0.458], [1.792,0.417], [1.125,1.458], [0.417,1.875] ],
+    "ignorePlatformCollision" : true,
+
+    "airFriction" : 0.32,
+    "liquidFriction" : 0.1,
+    "groundFriction" : 2.0
+  }
+},   
 
     
 {"op":"add",

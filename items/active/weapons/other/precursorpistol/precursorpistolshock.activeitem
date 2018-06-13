@@ -7,14 +7,14 @@
   "description" : "Shockingly fun
 ^yellow;Electrocute your enemies.^reset;",
   "shortdescription" : "Precursor Jolt Gun",
-  "category" : "Energy Weapon",
-  "level" : 4,
-  "tooltipKind" : "gun2",
+  "category" : "energy",
+  "level" : 5,
+  "tooltipKind" : "gununique",
   "weaponType" : "pistol",
   "itemTags" : ["weapon","ranged","pistol", "energy", "precursor", "upgradeableWeapon"],
   "twoHanded" : false,
 
-  "animation" : "/items/active/weapons/ranged/unique/precursorhealgun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "precursorpistolshock.png",
@@ -23,6 +23,15 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.5, 0.2]
+		  }
+		}
+      }
+    },   
     "sounds" : {
       "fire" : [ "/sfx/weapons/illusion.wav" ]
     }

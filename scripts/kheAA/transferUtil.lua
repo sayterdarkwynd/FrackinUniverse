@@ -6,7 +6,7 @@ transferUtil.itemTypes = nil
 
 --[[
 function update(dt)
-	if deltaTime > 1 then
+	if not deltaTime or (deltaTime > 1) then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
 	else
@@ -22,86 +22,20 @@ function transferUtil.init()
 	if storage.init==nil then
 		storage.init=true
 	end
+	storage.disabled=(entity.entityType() ~= "object")
+	if storage.disabled then
+		sb.logInfo("transferUtil automation functions are disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
+		return
+	end
 	storage.position=entity.position()
+	storage.logicNode=config.getParameter("kheAA_logicNode")
+	storage.inDataNode=config.getParameter("kheAA_inDataNode");
+	storage.outDataNode=config.getParameter("kheAA_outDataNode");
 end
 
 function transferUtil.initTypes()
-	transferUtil.itemTypes={}
-	transferUtil.itemTypes["bee"]={"queen","drone"}
-	transferUtil.itemTypes["treasure"]={"coin", "celestialitem","vehiclecontroller","bug","largefossil","mysteriousreward","smallfossil","shiplicense","currency","upgradecomponent","tradingcard","trophy","actionfigure","artifact"}
-	transferUtil.itemTypes["material"]={"block","liquid","platform","breakable"} 
-	transferUtil.itemTypes["rail"]={"rail","railplatform","railpoint"} 
-	transferUtil.itemTypes["tool"]={"tool","fishingrod","miningtool","flashlight","wiretool","beamminingtool","tillingtool","paintingbeamtool","harvestingtool","musicalinstrument","grapplinghook","thrownitem", "throwableItem"}
-	transferUtil.itemTypes["weapon"]={"swtjc_ewg_beamPistol","swtjc_ewg_revolver","swtjc_ewg_submachineGun","swtjc_ewg_battleRifle","swtjc_ewg_squadAutomaticWeapon","swtjc_ewg_beamRifle","swtjc_ewg_antiMaterialRifle","swtjc_ewg_sawedOffShotgun","swtjc_ewg_autoShotgun","swtjc_ewg_flakCannon","swtjc_ewg_multiGrenadeLauncher","swtjc_ewg_miniRocketLauncher","^#e43774;Upgradeable Weapon^reset;","assaultrifle","axe","boomerang","bow","broadsword","chakram","crossbow","dagger","fistweapon","grenadelauncher","hammer","machinepistol","pistol","rocketlauncher","shield","shortsword","shotgun","sniperrifle","spear","staff","wand","toy","uniqueweapon","whip","fu_upgrade","fu_warspear","fu_lance","fu_pierce","fu_scythe","quarterstaff","warblade","fu_keening", "xbow", "longsword", "greataxe","rapier","shortspear","katana","scythe", "mace", "lance", "energy", "magnorbs", "bioweapon","plasma","flamethrower","liquidGun","mininglaser","upgradeable","upgradeableTool","sniperrifle","rifle","elder" }
-	transferUtil.itemTypes["consumable"]={"drink","preparedfood","food","medicine"}
-	transferUtil.itemTypes["augments"]={"eppaugment","fishinglure","fishingreel","petcollar","clothingdye"}
-	transferUtil.itemTypes["building"]={"techmanagement","crafting","machinery","spawner","terraformer","trap","wire","light","furniture","decorative","door","fridgestorage","teleporter","teleportmarker","shippingcontainer","storage"}
-	transferUtil.itemTypes["farming"]={"seed","sapling","farmbeastegg","farmbeastfood","farmbeastfeed"}
-	transferUtil.itemTypes["armor"]={"headarmor", "chestarmor", "legsarmor", "backarmor","headarmour", "chestarmour", "legsarmour", "backarmour","enviroprotectionpack", "t1armor", "t1armoru", "t2armor", "t2armoru", "t3armor", "t3armoru", "t4armor", "t4armoru", "t5armor", "t5armoru", "t6armor", "t6armoru", "t7armor", "t7armoru", "t8armor", "t8armoru"} 
-	transferUtil.itemTypes["cosmeticarmor"]={"chestwear","legwear","headwear","backwear"}
-	transferUtil.itemTypes["reagents"]={"craftingmaterial","cookingingredient","fuel"}
-	transferUtil.itemTypes["books"]={"blueprint", "codex"}
-	transferUtil.itemTypes["generic"]={"foodjunk","junk","other","generic","quest","tech"} 
+	transferUtil.itemTypes = root.assetJson("/scripts/kheAA/transferconfig.config").categories
 end
-
-
-function transferUtil.routeItems()
-	if util.tableSize(storage.inContainers) == 0 then return end
-	if util.tableSize(storage.outContainers) == 0 then return end
-	
-	for sourceContainer,sourcePos in pairs(storage.inContainers) do
-		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
-		if ping1 ~= nil then
-			sourceContainer=ping1
-		end
-		for targetContainer,targetPos in pairs(storage.outContainers) do
-			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
-			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
-			if ping2 ~= nil then
-				targetContainer=ping2
-			end
-			if targetAwake == true and sourceAwake == true then
-				local sourceItems=world.containerItems(sourceContainer)
-				if sourceItems ~= nil then 
-					for indexIn,item in pairs(sourceItems) do
-						if transferUtil.checkFilter(item) then
-							if transferUtil.validInputSlot(indexIn) then
-								if util.tableSize(storage.outputSlots) > 0 then
-									for indexOut=1,world.containerSize(targetContainer) do
-										if transferUtil.validOutputSlot(indexOut) then
-											local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
-											if leftOverItems~=nil then
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-												item=leftOverItems
-											else
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-												break
-											end
-										end
-									end
-								else
-									local leftOverItems=world.containerAddItems(targetContainer,item)
-									if leftOverItems~=nil then
-										local tempQuantity=item.count-leftOverItems.count
-										if tempQuantity > 0 then
-											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
-											--break
-										end
-									else
-										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-									end
-								end
-							end
-						end
-					end
-				end
-			else
-				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
-			end
-		end
-	end
-end
-
 
 function transferUtil.containerAwake(targetContainer,targetPos)
 	if type(targetPos) ~= "table" then
@@ -119,7 +53,7 @@ function transferUtil.containerAwake(targetContainer,targetPos)
 		if ping ~= nil then
 			if ping ~= targetContainer then
 				if world.containerSize(ping) ~= nil then
-					return true, ping	
+					return true, ping
 				else
 					return false,nil
 				end
@@ -134,6 +68,7 @@ function transferUtil.containerAwake(targetContainer,targetPos)
 end
 
 function transferUtil.zoneAwake(targetBox)
+	if storage.disabled then return end
 	if type(targetBox) ~= "table" then
 		dbg({"zoneawake failure, invalid input:",targetBox})
 		return nil
@@ -159,18 +94,18 @@ end
 function transferUtil.throwItemsAt(target,targetPos,item,drop)
 
 	if item.count~=math.floor(item.count) or item.count<=0 then return false end
-	
+
 	drop=drop or false
-	
+
 	if target==nil and targetPos==nil then
 		if drop then
 			world.spawnItem(item,entity.position())
-			return true,item.count
+			return true,item.count,true
 		else
 			return false
 		end
 	end
-	
+
 	local awake,ping=transferUtil.containerAwake(target,targetPos)
 	if awake then
 		if ping ~= nil then
@@ -178,40 +113,44 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 		end
 	elseif drop then
 		world.spawnItem(item,entity.position())
-		return true,item.count
+		return true,item.count,true
 	else
 		return false
 	end
-	
+
 	if world.containerSize(target) == nil or world.containerSize(target) == 0 then
 		if drop then
 			world.spawnItem(item,targetPos)
-			return true,item.count
+			return true,item.count,true
 		else
 			return false
 		end
 	end
-	
+	--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
 	local leftOverItems = world.containerAddItems(target, item)
 	if leftOverItems ~= nil then
 		if drop then
 			world.spawnItem(leftOverItems,targetPos)
-			return true, item.count
+			return true, item.count, true
 		else
 			return true,item.count-leftOverItems.count
 		end
 	else
 		return true, item.count
 	end
-	
+
 	return false;
-	
+
 end
 
-function transferUtil.updateInputs(dataNode)
+function transferUtil.updateInputs()
 	storage.input={}
 	storage.inContainers={}
-	storage.input=object.getInputNodeIds(dataNode);
+	if storage.disabled then return end
+	if not storage.inDataNode then
+		return
+	end
+	storage.input=object.getInputNodeIds(storage.inDataNode);
 	local buffer={}
 	for inputSource,nodeValue in pairs(storage.input) do
 		local temp=world.callScriptedEntity(inputSource,"transferUtil.sendContainerInputs")
@@ -224,14 +163,18 @@ function transferUtil.updateInputs(dataNode)
 	storage.inContainers=buffer
 end
 
-function transferUtil.updateOutputs(dataNode)
+function transferUtil.updateOutputs()
 	storage.output={}
 	storage.outContainers={}
-	storage.output=object.getOutputNodeIds(dataNode);
+	if storage.disabled then return end
+	if not storage.outDataNode then
+		return
+	end
+	storage.output=object.getOutputNodeIds(storage.outDataNode);
 	local buffer={}
 	for outputSource,nodeValue in pairs(storage.output) do
 		local temp=world.callScriptedEntity(outputSource,"transferUtil.sendContainerOutputs")
-		if temp ~= nil then
+		if temp then
 			for entId,position in pairs(temp) do
 				buffer[entId]=position
 			end
@@ -241,76 +184,63 @@ function transferUtil.updateOutputs(dataNode)
 end
 
 function transferUtil.checkFilter(item)
-	if transferUtil.itemTypes==nil then
+	if not transferUtil.itemTypes then
 		transferUtil.initTypes()
 	end
 	routerItems=world.containerItems(entity.id())
 	if #routerItems == 0 then
-		return true
+		return true, 1
 	end
-	local buffer={}
-	for k,v in pairs(routerItems) do
-		buffer[k]=true
-	end
+	local invertcheck = nil     -- Inverted conditions are match-all
+	local noninvertcheck = nil  -- Non-inverted conditions are match-any
+	local mod = nil             -- Stack comparison check is match-any (first match has priority)
 	for slot,rItem in pairs(routerItems) do
-		local fType=storage.filterType[slot]
-		if fType == -1 then
-			if not transferUtil.compareItems(rItem, item) then
-				buffer[slot]=false
-			end
-		elseif fType==0 then
-			if not transferUtil.compareTypes(rItem, item) then
-				buffer[slot]=false
-			end
-		elseif fType==1 then
-			if not transferUtil.compareCategories(rItem, item) then
-				buffer[slot]=false
-			end
-		else
-			sb.logError("TransferUtil.routeItems just failed hardcore! something got screwed up somewhere.")
-			return false
-		end
-	end
-	local result=false
-	for slot,b in pairs(buffer) do
-		if storage.filterInverted[slot] then
-			if buffer[slot] then
-				result=false
-				break
+		if not noninvertcheck or storage.filterInverted[slot] then
+			local result = false
+			local fType = storage.filterType[slot]
+			if fType == -1 and transferUtil.compareItems(rItem, item) then
+				result = true
+			elseif fType == 0 and transferUtil.compareTypes(rItem, item) then
+				result = true
+			elseif fType == 1 and transferUtil.compareCategories(rItem, item) then
+				result = true
 			else
-				result=true
+				result = false
 			end
-		else
-			if buffer[slot] then
-				result=true
+			if storage.filterInverted[slot] then
+				result = not result
+				invertcheck = result
+				if not result then return false end
+			else
+				noninvertcheck = result
+			end
+			if result and not mod then
+				mod = rItem.count
 			end
 		end
-	
 	end
-	return result
+	return (noninvertcheck and invertcheck)
+			or (noninvertcheck == nil and invertcheck)
+			or (noninvertcheck and invertcheck == nil),
+			mod or 1
 end
 
 function transferUtil.findNearest(source,sourcePos,targetList)
-	local temp=nil
-	local target=nil
-	local distance=nil
-	local targetPos=nil
-	if source == nil or targetList == nil then
+	if not source or not targetList then
 		return nil
 	elseif util.tableSize(targetList) == 0 then
 		return nil
 	end
+	local target = nil
+	local distance = math.huge
+	local targetPos = nil
 	for i2,position in pairs(targetList) do
-		if i2 ~= source and i2 ~= nil then
-		temp=world.magnitude(position,sourcePos)
-			if distance==nil then
+		if i2 ~= source then
+			local dist = world.magnitude(position,sourcePos)
+			if distance > dist then
 				target=i2
 				targetPos=position
-				distance=temp
-			elseif distance > temp then
-				target=i2
-				targetPos=position
-				distance=temp
+				distance=dist
 			end
 		end
 	end
@@ -319,7 +249,7 @@ end
 
 
 function transferUtil.pos2Rect(pos,size)
-	if size == nil then size = 0 end
+	if not size then size = 0 end
 	return({pos[1]-size,pos[2]-size,pos[1]+size,pos[2]+size})
 end
 
@@ -344,7 +274,7 @@ end
 
 
 function transferUtil.compareItems(itemA, itemB)
-	if itemA == nil or itemB == nil then
+	if not itemA or not itemB then
 		return false;
 	elseif itemA.name == itemB.name then
 		return true;
@@ -354,7 +284,7 @@ function transferUtil.compareItems(itemA, itemB)
 end
 
 function transferUtil.compareTypes(itemA, itemB)
-	if itemA == nil or itemB == nil then
+	if not itemA or not itemB then
 		return false;
 	end
 	if transferUtil.getType(itemA) == transferUtil.getType(itemB) then
@@ -363,7 +293,7 @@ function transferUtil.compareTypes(itemA, itemB)
 	return false
 end
 function transferUtil.compareCategories(itemA, itemB)
-	if itemA == nil or itemB == nil then
+	if not itemA or not itemB then
 		return false;
 	end
 	if transferUtil.getCategory(itemA) == transferUtil.getCategory(itemB) then
@@ -389,8 +319,8 @@ function transferUtil.sendContainerOutputs()
 end
 
 function transferUtil.powerLevel(node,explicit)
-	if(node==nil)then
-		node=0
+	if not node then
+		return not explicit
 	end
 	if explicit==nil then
 		explicit=false
@@ -406,59 +336,55 @@ function transferUtil.powerLevel(node,explicit)
 end
 
 function transferUtil.getType(item)
-	if item.name==nil then
-		return "generic"
+	if not item.name then
+		return "unhandled"
 	elseif item.name == "sapling" then
 		return item.name
+	elseif item.currency then
+		return "currency"
 	end
 	local itemRoot = root.itemConfig(item)
-	local itemCat
-	if itemRoot.category ~= nil then
-		itemCat=itemRoot.category
-	elseif itemRoot.config.category ~= nil then
-			itemCat=itemRoot.config.category
-	elseif itemRoot.config.projectileType~=nil then
-		itemCat="thrownitem"
-	elseif itemRoot.config.itemTags then
-		for _,tag in pairs(itemRoot.config.itemTags) do
-		
-		end
+	if itemRoot.config.currency then
+		return "currency"
 	end
-	if itemCat~=nil then
+	local itemCat
+	if itemRoot.category then
+		itemCat=itemRoot.category
+	elseif itemRoot.config.category then
+		itemCat=itemRoot.config.category
+	elseif itemRoot.config.projectileType then
+		itemCat="throwableitem"
+	--[[elseif itemRoot.config.itemTags then
+		for _,tag in pairs(itemRoot.config.itemTags) do
+
+		end]]
+	end
+	if itemCat then
 		return string.lower(itemCat)
-	elseif unhandled[item.name]~=true then
-		sb.logInfo("Unhandled Item:\n%s",itemRoot)
+	elseif not unhandled[item.name] then
+		--sb.logInfo("Unhandled Item:\n%s",itemRoot)
 		unhandled[item.name]=true
 	end
-	return string.lower(item.name)
+	return "unhandled"
 end
 
 function transferUtil.getCategory(item)
 	local itemCat=transferUtil.getType(item)
-	for group,options in pairs(transferUtil.itemTypes) do
-		for _,option in pairs(options) do
-			option=string.lower(option)
-			if(itemCat==option) then
-				return string.lower(group)
-			end
-		end
-	end
-	return string.lower(item.name)
+	return transferUtil.itemTypes[itemCat] or "unhandled"
 end
 
 function transferUtil.loadSelfContainer()
 	storage.containerId=entity.id()
-	storage.inContainers={}
-	storage.outContainers={}
+	transferUtil.unloadSelfContainer()
 	storage.inContainers[storage.containerId]=storage.position
 	storage.outContainers[storage.containerId]=storage.position
 end
 
-function transferUtil.getAbsPos(position,pos)
-	return {world.xwrap(pos[1] + position[1]), pos[2] + position[2]};
+function transferUtil.unloadSelfContainer()
+	storage.inContainers={}
+	storage.outContainers={}
 end
 
 function dbg(args)
 	sb.logInfo(sb.printJson(args))
 end
-

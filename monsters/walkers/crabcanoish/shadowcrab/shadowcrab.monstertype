@@ -85,7 +85,18 @@
           }
         }
       ],
-
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 10,
+          "parameters" : {
+          "effect" : "mage_shield_lvl1shadowcrab",
+          "duration" : 5
+          }
+        }      
+      ],
+      
      "deathActions" : [
         {
           "name" : "action-projectile",
@@ -187,7 +198,7 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "fireResistance" : {
           "baseValue" : 0.5

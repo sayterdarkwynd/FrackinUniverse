@@ -27,7 +27,7 @@ function update(dt)
   self.timer = self.timer - dt
   if self.timer <= 0 then
     if oreCheck() and clearSlotCheck(storage.currentoutput) then
-	  if power.getTotalEnergy() >= config.getParameter("isn_requiredPower", 1) and world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}}) and power.consume(config.getParameter("isn_requiredPower", 1)) then
+	  if power.getTotalEnergy() >= config.getParameter("isn_requiredPower", 1) and world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}}) and power.consume(config.getParameter("isn_requiredPower", 1)*self.timerInitial) then
 	    animator.setAnimationState("furnaceState", "active")
 	    storage.activeConsumption = true
 	    if math.random() <= self.extraConsumptionChance then

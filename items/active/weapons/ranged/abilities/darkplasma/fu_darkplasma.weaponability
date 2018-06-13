@@ -1,0 +1,168 @@
+{
+  "animationCustom" : {
+    "animatedParts" : { "parts" : {
+      "grenadelauncher" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [-0.75, -0.375],
+          "transformationGroups" : ["muzzle"],
+          "firePosition" : [0.75, -0.125],
+          "image" : "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
+        }
+      }
+    }},
+    "sounds" : {
+      "altFire" : [ "/sfx/gun/dragonhead_fire1.ogg" ]
+    },
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [-0.25, -0.5, -0.25, -0.5],
+        "particles" : [
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }
+  },
+
+  "ability" : {
+    "name" : "Dark Plasma",
+    "type" : "fu_darkplasma",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+
+    "projectileType" : "fuplasmatorpedo3",
+
+    "elementalConfig" : {
+      "physical" : {
+        "projectileParameters" : {
+          
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+            }
+          ]
+        }
+      },
+      "fire" : {
+        "projectileParameters" : {
+
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "electric" : {
+        "projectileParameters" : {
+       
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "ice" : {
+        "projectileParameters" : {
+     
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "poison" : {
+        "projectileParameters" : {
+    
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/poisonexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "radioactive" : {
+        "projectileParameters" : {
+  
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/radioactiveexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "shadow" : {
+        "projectileParameters" : {
+       
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/shadowexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      },
+      "cosmic" : {
+        "projectileParameters" : {
+       
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/explosions/regularexplosion2/cosmicexplosionknockbackstatus.config"
+            }
+          ]
+        }
+      }       
+    },
+    "projectileParameters" : {
+      "bounces" : -1,
+      "speed" : 35,
+      "knockbackRange" : [50, 70],
+      "timeToLive" : [1.5, 2.5]
+    },
+    "projectileCount" : 1,
+    "inaccuracy" : 0.01,
+    "baseDamageMultiplier" : 1.15,
+    "energyUsageMultiplier" : 1.25,
+    "fireTime" : 3.0,
+    "fireType" : "auto",
+
+    "firePositionPart" : "grenadelauncher",
+    "hidePrimaryMuzzleFlash" : true,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

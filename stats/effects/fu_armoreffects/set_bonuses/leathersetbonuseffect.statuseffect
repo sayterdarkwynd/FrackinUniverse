@@ -1,13 +1,18 @@
 {
   "name" : "leathersetbonuseffect",
+  	"effectConfig": {
+		"controlModifiers": {
+			"speedModifier": 1.05
+		}
+	},
   "defaultDuration" : 15,
 
   "scripts" : [
-    "leathersetbonuseffect.lua"
+    "leathersetbonuseffect.lua","/stats/effects/fu_genericControlModifiers.lua"
   ],
   "scriptDelta": 50,
 
-  "label" : "+5% Speed, 2% Crit Chance. Bows: +5% Crit Chance, +5% Power.  Lush/Forest: +10% Knockback Resist, +5% Energy",
+  "label" : "+5% Speed, 2% Crit Chance. Bows/Crossbow: +5% Crit Chance, +5% Power.  Lush/Forest: +10% Knockback Resist, +5% Energy",
   "icon" : "/interface/statuses/set_bow.png"
 }
 

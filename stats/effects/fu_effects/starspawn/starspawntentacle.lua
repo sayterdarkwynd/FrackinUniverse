@@ -1,5 +1,4 @@
-function init() 
-  local bounds = mcontroller.boundBox()
+function init()
   
   
   --if mcontroller.onGround() then

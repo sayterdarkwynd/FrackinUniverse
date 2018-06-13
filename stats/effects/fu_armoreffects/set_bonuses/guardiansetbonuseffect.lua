@@ -4,23 +4,24 @@ weaponBonus={
 	{stat = "grit", baseMultiplier = 1.25}
 }
 weaponBonus2={
-	{stat = "powerMultiplier", baseMultiplier = 1.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 
 armorBonus={
-        {stat = "shieldBash", amount = 20},
+	{stat = "shieldBash", amount = 20},
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.25},
-        {stat = "shieldBonusShield", amount = 0.25}
+	{stat = "shieldBonusShield", amount = 0.25}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle2=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -33,16 +34,17 @@ end
 
 
 function checkWeapons()
-	local weapons=weaponCheck({"shield"})
-	local weapons2=weaponCheck({"mace"})
-	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	local weaponShield=weaponCheck({"shield"})
+	local weaponMace=weaponCheck({"mace"})
+	
+	if weaponShield["either"] then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
-	if weapons2["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)
+	if weaponMace["either"] then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle2,weaponBonus2)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle2,{})
 	end	
 end

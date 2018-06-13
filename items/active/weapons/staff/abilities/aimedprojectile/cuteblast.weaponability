@@ -1,0 +1,63 @@
+{
+  "ability" : {
+    "type" : "cuteblast",
+    "name" : "Pretty Blast",
+    "scripts" : ["/items/active/weapons/staff/abilities/aimedprojectile/aimedprojectile.lua"],
+    "class" : "AimedProjectile",
+
+    "energyCost" : 30,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "cuteblast",
+    "projectileParameters" : {
+      "baseDamage" : 5
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "charge" : {
+        "duration" : 0.5,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "charged" : {
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "discharge" : {
+        "duration" : 0.25,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : -110,
+        "weaponRotation" : 20,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0.5],
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  }
+}

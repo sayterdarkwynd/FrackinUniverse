@@ -1,23 +1,23 @@
 setName="fu_geistset"
 
 weaponBonus={
-	{stat = "critChance", amount = 9}
+	{stat = "critChance", amount = 1.5}
 }
 
 armorEffect={
-  {stat = "maxHealth", baseMultiplier = 1.25},
-  {stat = "sulphuricImmunity", amount = 1},
-  {stat = "breathProtection", amount = 1}
+	{stat = "maxHealth", baseMultiplier = 1.25},
+	{stat = "sulphuricImmunity", amount = 1},
+	{stat = "breathProtection", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 end
 
 function update(dt)
@@ -29,14 +29,14 @@ function update(dt)
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"dagger","broadsword","axe","hammer","shortsword","greataxe","spear","shortspear","quarterstaff"})
-	if weapons["twoHanded"] or (weapons["primary"] and weapons["alt"]) then
-		effect.setStatModifierGroup(weaponBonusHandle,setBonusMultiply(weaponBonus,2))
+	
+	if (weapons["either"] and weapons["twoHanded"]) or (weapons["primary"] and weapons["alt"]) then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,2))
 	elseif weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

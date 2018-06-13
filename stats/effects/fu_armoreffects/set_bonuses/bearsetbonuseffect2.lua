@@ -1,8 +1,8 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 7.5},
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "critChance", amount = 4.5},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={
@@ -14,9 +14,9 @@ setName="fu_bearset2"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -27,17 +27,17 @@ function update(dt)
 	end
 end
 
-function checkArmor()
-	effect.setStatModifierGroup( armorBonusHandle,setBonusMultiply(armorBonus,level))
-end
+--[[function checkArmor()--commented out because if it gets called, it will error. level needs to be set in the update block, before calling this function
+	effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,setBonusMultiply(armorBonus,level))
+end]]
 
 function checkWeapons()
 local weaponSword=weaponCheck({ "axe", "hammer", "broadsword", "spear" })
 
 	if weaponSword["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 	
 end

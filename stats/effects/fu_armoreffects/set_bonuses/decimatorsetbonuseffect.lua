@@ -1,7 +1,7 @@
 setName="fu_decimatorset"
 
 weaponBonus={
-	{stat = "critChance", amount = 15},
+	{stat = "critChance", amount = 3},
 	{stat = "critBonus", baseMultiplier = 1.15}
 }
 
@@ -14,10 +14,10 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -30,9 +30,10 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"shotgun","grenadelauncher"})
+	
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

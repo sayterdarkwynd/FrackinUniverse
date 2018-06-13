@@ -19,17 +19,23 @@
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },      
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ] },
+    "sounds" : { 
+      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ],
+      "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
+    },
+ 
     "lights" : { "muzzleFlash" : {"color" : [44, 44, 44] } }  
   },
 
-  "baseOffset" : [0.8, 0.34],
+  "baseOffset" : [0.8, 0.1],
   "muzzleOffset" : [1.5, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
 
+  "isReloader" : 1,
+  
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -41,34 +47,32 @@
     "projectileCount" : 4,
     "projectileType" : "splitbullet",
     "projectileParameters" : {
-      "speed" : 52
+      "speed" : 62,
+      "knockback" : 7
     },
     "stances" : {
-      "idle" : {
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
-
-        "allowRotate" : true,
-        "allowFlip" : true
+      "idle":{  
+        "armRotation":0,
+        "weaponRotation":0,
+        "twoHanded":false,
+        "allowRotate":true,
+        "allowFlip":true
       },
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
-
-        "allowRotate" : false,
-        "allowFlip" : false
+      "fire":{  
+        "duration":0.1,
+        "armRotation":3,
+        "weaponRotation":8,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
       },
-      "cooldown" : {
-        "duration" : 0.0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
-        "twoHanded" : true,
-
-        "allowRotate" : false,
-        "allowFlip" : false
+      "cooldown":{  
+        "duration":0.3,
+        "armRotation":-7,
+        "weaponRotation":-360,
+        "twoHanded":false,
+        "allowRotate":false,
+        "allowFlip":true
       }
     }
   },

@@ -4,14 +4,14 @@ setName="fu_samuraiset"
 
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.15},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
 	{stat = "critChance", amount = 2}
 }
 
 weaponBonus2={
-        {stat = "powerMultiplier", baseMultiplier = 1.15},
-        {stat = "critChance", amount = 1},
-	{stat = "protection", baseMultiplier = 1.1}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
+	{stat = "critChance", amount = 1},
+	{stat = "protection", effectiveMultiplier = 1.1}
 }
 
 armorBonus={
@@ -21,11 +21,11 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -38,14 +38,14 @@ end
 
 
 function checkWeapons()
-local weaponSingle=weaponCheck({"katana"})
-local weaponDual=weaponCheck({"katana","dagger"})
+	local weaponKatana=weaponCheck({"katana"})
+	local weaponDagger=weaponCheck({"dagger"})
 
-	if weaponSingle["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
-	elseif weaponDual["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)				
+	if weaponKatana["either"] and weaponDagger["either"] then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus2)
+	elseif (weaponKatana["either"]) and not weaponKatana["both"] then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)				
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

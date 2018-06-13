@@ -1,0 +1,73 @@
+{
+  "projectileName" : "fumechchainsawswoosh",
+  "image" : "fumechchainsawswoosh.png",
+  "animationCycle" : 0.3,
+  "timeToLive" : 0.3,
+  "frameNumber" : 5,
+  "speed" : 30,
+  "orientationLocked" : true,
+  "damagePoly" : [ [0, -36], [30, -28], [50, 0], [30, 28], [0, 36] ],
+  "animationLoops" : true,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageKind" : "electric",
+  "emitters" : [ ],
+  "lightColor" : [30, 40, 170],
+  "fullbright" : true,
+  "statusEffects" : [ "stun" ],
+  "knockback" : 22,
+  "knockbackDirectional" : true,
+  "acceleration" : -140,
+  "periodicActions" : [
+    {
+      "action" : "config",
+      "time" : 0.05,
+      "loop" : true,      
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    },	  
+    {
+      "action" : "explosion",
+      "time" : 0.08,
+      "loop" : true,
+      "foregroundRadius" : 5,
+      "backgroundRadius" : 3,
+      "explosiveDamageAmount" : 1,
+      "harvestLevel" : 99,
+      "delaySteps" : 2
+    },  
+     {
+      "time" : 0.01,
+      "repeat" : true,
+
+      "action" : "loop",
+      "count" : 0.05,
+      "body" : [
+        {
+          "action" : "particle",
+          "rotate" : true,
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "position" : [-1.5, 0],
+            "color" : [0, 150, 220, 255],
+            "light" : [0, 100, 150],
+            "fullbright" : true,
+            "fade" : 0.9,
+            "initialVelocity" : [-6.0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [2, 9],
+            "timeToLive" : 0.5,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0, 1],
+              "initialVelocity" : [5, 9],
+              "timeToLive" : 0.5,
+              "size" : 0.65
+            }
+          }
+        }
+      ]
+    }  
+  ]
+}

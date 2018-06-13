@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_wandererset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
 	{stat = "critBonus", baseMultiplier = 1.10}
 }
 
@@ -12,11 +12,11 @@ armorBonus={}
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	
 	checkWeapons()
 	
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -31,8 +31,8 @@ end
 function checkWeapons()
 	local weapons=weaponCheck({"energy"})
 	if weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

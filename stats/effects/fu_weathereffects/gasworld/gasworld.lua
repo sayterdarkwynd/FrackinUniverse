@@ -17,6 +17,10 @@ function init()
   effect.setParentDirectives("fade=ffea00=0.027")
   baseValue = config.getParameter("biomeDmgPerTick")
   activateVisualEffects()
+  
+  if status.stat("negativeMiasma") > 0 then
+    effect.expire()
+  end
 end
 
 

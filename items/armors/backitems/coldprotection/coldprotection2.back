@@ -6,7 +6,7 @@
   "rarity" : "Rare",
   "pickupQuestTemplates" : [ ],
   "category" : "enviroProtectionPack",
-  "description" : "Adds heat generation to your EPP's capabilities. +40% Ice Resist. Useful on ^red;moderate to severe cold^reset; planets.",
+  "description" : "+40% Ice Resist. Useful on ^red;moderate to severe cold^reset; planets. Provides limited air.",
   "shortdescription" : "Heating EPP II",
   "learnBlueprintsOnPickup" : [ "coldprotectionback3" ],
 
@@ -18,7 +18,19 @@
     {
       "stat" : "iceResistance",
       "amount" : 0.4
-    }  
+    },   
+    {
+      "stat" : "maxBreath",
+      "amount" : 200
+    },    
+    {
+      "stat" : "breathDepletionRate",
+      "amount" : -2
+    },
+    {
+      "stat" : "breathRegenerationRate",
+      "amount" : 20
+    }     
   ],
 
   "acceptsAugmentType" : "back",

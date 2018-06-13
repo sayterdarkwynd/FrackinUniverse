@@ -1,6 +1,7 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/activeitem/stances.lua"
+require "/items/active/weapons/crits.lua"
 
 function init()
   self.critChance = config.getParameter("critChance", 0)
@@ -20,50 +21,6 @@ function init()
     setStance("idle")
   end
 end
-
-
-
-  -- *******************************************************
-  -- FU Crit Damage Script
-
-function setCritDamageBoomerang(damage)
-	if not self.critChance then 
-		self.critChance = config.getParameter("critChance", 0)
-	end
-	if not self.critBonus then
-		self.critBonus = config.getParameter("critBonus", 0)
-	end
-     -- check their equipped weapon
-     -- Primary hand, or single-hand equip  
-     local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-     --used for checking dual-wield setups
-     local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")  
-     local weaponModifier = config.getParameter("critChance",0)
-     
-  if heldItem then
-        self.critChance = 0 + weaponModifier
-  end
-  self.critBonus = (status.stat("critBonus",0) + config.getParameter("critBonus",0))/2  
-  self.critChance = (self.critChance  + config.getParameter("critChanceMultiplier",0) + status.stat("critChanceMultiplier",0) + status.stat("critChance",0)) 
-  self.critRoll = math.random(200)
-  
-  local crit = self.critRoll <= self.critChance
-  damage = crit and ((damage*2) + self.critBonus) or damage
-  self.critChance = 0
-
-  if crit then
-    if heldItem then
-      -- exclude mining lasers
-      if not root.itemHasTag(heldItem, "mininggun") then 
-        status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
-      end
-    end
-  end
-
-  return damage
-end
-  -- *******************************************************
-
 
 function update(dt, fireMode, shiftHeld)
   updateStance(dt)
@@ -98,9 +55,9 @@ function fire()
   local params = copy(self.projectileParameters)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.ownerAimPosition = activeItem.ownerAimPosition()
-  
-  params.power = setCritDamageBoomerang(params.power)
-  
+
+  params.power = Crits.setCritDamage(self, params.power)
+
   if self.aimDirection < 0 then params.processing = "?flipx" end
   local projectileId = world.spawnProjectile(
       self.projectileType,

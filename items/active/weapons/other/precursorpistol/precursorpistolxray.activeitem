@@ -7,14 +7,14 @@
   "description" : "Fire through solid materials!
 ^yellow;Reveal enemies and terrain^reset;",
   "shortdescription" : "Precursor X-Ray Gun",
-  "category" : "Energy Weapon",
-  "level" : 4,
-  "tooltipKind" : "gun2",
+  "category" : "energy",
+  "level" : 5,
+  "tooltipKind" : "gununique",
   "weaponType" : "pistol",
   "itemTags" : ["weapon","ranged","pistol", "energy", "precursor", "upgradeableWeapon"],
   "twoHanded" : false,
 
-  "animation" : "/items/active/weapons/ranged/unique/precursorhealgun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "precursorpistolxray.png",
@@ -23,6 +23,15 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlegreen.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.5, 0.2]
+		  }
+		}
+      }
+    },   
     "sounds" : {
       "fire" : [ "/sfx/gun/elemental_lance.ogg" ]
     }

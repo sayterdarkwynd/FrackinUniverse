@@ -5,13 +5,13 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "A brutally effective pistol.
-^cyan;Counts as a shotgun or pistol^reset;",
+^cyan;Shotgun-style bursts^reset;",
   "shortdescription" : "Blasthammer",
   "category" : "pistol",
   "level" : 4,
   "tooltipKind" : "gun2",
 
-  "itemTags" : ["weapon","ranged","shotgun","pistol", "upgradeableWeapon" ],
+  "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon" ],
   "twoHanded" : false,
   "weaponType" : "shotgun",
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -37,19 +37,17 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.5,
-    "baseDps" : 7.5,
-    "energyUsage" : 22,
-    "inaccuracy" : 0.15,
+    "fireTime" : 1.4,
+    "baseDps" : 7,
+    "energyUsage" : 24,
+    "inaccuracy" : 0.12,
 
     "projectileCount" : 5,
     "fireType" : "auto",
 
     "projectileType" : "splitbullet2",
     "projectileParameters" : {
-      "speed" : 75,
-      "damageSourceKind" : "radioactive",
-      "statusEffects" : [ "radiationburn" ]
+      "speed" : 75
     },
 
     "stances" : {

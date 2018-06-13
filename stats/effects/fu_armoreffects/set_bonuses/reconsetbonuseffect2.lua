@@ -1,8 +1,8 @@
 setName="fu_reconset2"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.15},
-	{stat = "critChance", amount = 5}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
+	{stat = "critChance", amount = 2}
 }
 
 armorBonus={
@@ -14,11 +14,11 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -38,8 +38,8 @@ function
 	checkWeapons()
 	local weapons=weaponCheck({"rifle","sniperrifle"})
 if weapons["either"] then
-	effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+	effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 else
-	effect.setStatModifierGroup(weaponBonusHandle,{})
+	effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 end
 end

@@ -1,0 +1,28 @@
+{
+  "id" : "fuquest_dna",
+  "title" : "Deoxyribonucleic Acid",
+  "text" : "Now that the basics are clear to you, try making some essential ^orange;DNA Samples^reset; in the ^orange;Chemistry Lab^reset;. ^green;Upgrade your Alchemy Table^reset; to access it.",
+  "completionText" : "Without DNA, you'll have a hard time doing much xenobiology. You can't create or modify life without this resource. Stockpile it!",
+  "rewards" : [
+    [ [ "glass", 2] ]
+  ],
+  "moneyRange" : [10, 10],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "dnasample",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

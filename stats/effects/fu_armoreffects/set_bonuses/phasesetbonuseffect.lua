@@ -4,14 +4,14 @@ armorBonus={
 	{stat ="electricStatusImmunity" , amount = 1 },
 	{stat ="pressureProtection" , amount = 1 },
 	{stat ="extremepressureProtection" , amount = 1 },
-	{stat ="critChance" , amount = 5 }
+	{stat ="critChance" , amount = 3 }
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)

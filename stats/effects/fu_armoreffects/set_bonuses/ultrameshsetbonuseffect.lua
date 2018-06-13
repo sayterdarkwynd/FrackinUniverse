@@ -1,29 +1,29 @@
 setName="fu_ultrameshset"
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.20}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
 }
 
 
 armorBonus={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.35},
-        {stat = "shieldBonusShield", amount = 0.35},
-        {stat = "perfectBlockLimitRegen", baseMultiplier = 1.35},
-        {stat = "aetherImmunity", amount = 1},
-        {stat = "extremepressureProtection", amount = 1},
-        {stat = "pressureProtection", amount = 1},
-        {stat = "insanityImmunity", amount = 1}
+	{stat = "shieldBonusShield", amount = 0.35},
+	{stat = "perfectBlockLimitRegen", baseMultiplier = 1.35},
+	{stat = "aetherImmunity", amount = 1},
+	{stat = "extremepressureProtection", amount = 1},
+	{stat = "pressureProtection", amount = 1},
+	{stat = "insanityImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -36,13 +36,13 @@ end
 
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword"})
-local weaponShield=weaponCheck({"shield"})
-
-	local weapons=weaponCheck({"shortsword","shield"})
+	local weaponSword=weaponCheck({"shortsword","rapier","katana"})
+	local weaponShield=weaponCheck({"shield"})
+	--local weapons=weaponCheck({"shortsword","shield"})
+	
 	if weaponSword["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

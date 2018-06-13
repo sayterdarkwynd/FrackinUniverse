@@ -38,8 +38,8 @@
     "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
 
     "class" : "MeleeSlash",
-    "fireTime" : 0.215,
-    "baseDps" : 7.54,
+    "fireTime" : 2.215,
+    "baseDps" : 7.6,
     "damageConfig" : {
       "knockback" : 10,
        "statusEffects" : [ "defenseboostneg20" ],
@@ -64,7 +64,7 @@
         "allowRotate" : false
       },
       "fire" : {
-        "duration" : 0.2,
+        "duration" : 2.2,
         "armRotation" : -135,
         "weaponRotation" : 40,
         "weaponOffset" : [0.1, 2.5],
@@ -74,7 +74,19 @@
       }
     }
   },
-  "critChance" : 1,
-  "critBonus" : 4,
+  "critChance" : 8,
+  "critBonus" : 30,
+  "upgradeParameters": {
+    "description" : "Death be thy shadow.",
+	"shortdescription" : "Aetherium Godkiller",
+	"inventoryIcon" : "aetheriumdaggert8.png",
+	"animationParts" : {
+      "blade" : "aetheriumdaggert8.png",
+      "bladefullbright" : "aetheriumdaggerfullbrightt8.png",
+	  "handle" : ""
+    },
+	"critChance" : 13,
+	"critBonus" : 60
+  },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

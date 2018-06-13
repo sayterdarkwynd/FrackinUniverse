@@ -1,0 +1,41 @@
+{
+  "itemName" : "fucultistbroadsword",
+  "price" : 800,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Forged from carbon.
+^cyan;Inflicts bleeding^reset;",
+  "shortdescription" : "Cultist Broadsword",
+  "tooltipKind" : "sword2",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword", "upgradeableWeapon"],
+  "inventoryIcon" : "fucultistbroadsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "fucultistbroadsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.00,
+    "baseDps" : 10.0,
+    "damageConfig" : {
+      "statusEffects" : [ "bleedingshort" ]
+    }
+  },
+
+  "altAbilityType" : "parry",
+
+  "critChance" : 2,
+  "critBonus" : 8,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

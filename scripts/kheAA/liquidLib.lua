@@ -7,6 +7,8 @@ function liquidLib.init()
 	if storage.liquidOuts == nil then
 		storage.liquidOuts = {};
 	end
+	
+	storage.inLiquidNode=config.getParameter("kheAA_inLiquidNode")--doesn't actually do anything, doesn't matter at this point.
 end
 
 function liquidLib.itemToLiquidId(item)
@@ -49,7 +51,7 @@ end
 
 
 function liquidLib.doPump()
-	if not transferUtil.powerLevel(storage.logicInNode) then
+	if not transferUtil.powerLevel(storage.logicNode) then
 		return;
 	end
 	local pos = entity.position();
@@ -105,7 +107,10 @@ end
 
 function liquidLib.update(dt)
 	storage.liquidOuts={}
-	local tempList=object.getOutputNodeIds(outLiquidNode)
+	if not storage.inLiquidNode then
+		return
+	end
+	local tempList=object.getOutputNodeIds(storage.inLiquidNode)
 	if tempList then
 		for id,node in pairs(tempList) do
 			local result=world.callScriptedEntity(id,"liquidLib.canReceiveLiquid")
@@ -121,8 +126,17 @@ function liquidLib.die()
 	if storage.liquids then
 		for id,count in pairs(storage.liquids) do
 			local liquid=liquidLib.liquidToItem(id,count)
+			
 			if liquid then
-				world.spawnItem(liquid,entity.position())
+				local buffer=liquid.count
+				liquid.count=math.floor(liquid.count)
+				buffer=buffer-liquid.count
+				if liquid.count > 0 then
+					world.spawnItem(liquid,entity.position())
+				end
+				if buffer > 0.0 then
+					world.spawnLiquid(entity.position(),id,buffer)
+				end
 			else
 				world.spawnLiquid(entity.position(),id,count)
 			end

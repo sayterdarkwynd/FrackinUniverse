@@ -1,0 +1,33 @@
+{
+  "projectileName" : "astraltearstart2",
+  "image" : "astraltear2start.png",
+  "animationCycle" : 0.4,
+  "animationLoops" : false,
+  "frameNumber" : 9,
+  "timeToLive" : 0.2,
+  "lightColor" : [5, 50, 5],
+  "pointLight" : true,
+  "flippable" : true,
+  "piercing" : true,
+  "statusEffects" : [ ],
+  "power" : 5.0,
+  "speed" : 0,
+  "knockback" : 30,
+  "knockbackDirectional" : true,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
+  "damageKind" : "shadow",
+  "fullbright" : false,
+  "damagePoly" : [[-12, 20], [0, 20], [16, -20], [4, -20]],
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "astraltear2",
+      "inheritDamageFactor" : 0.25,
+      "inheritSpeedFactor" : 1
+    }
+  ],
+
+  "persistentAudio" : "/sfx/projectiles/astraltear_start.ogg"
+}

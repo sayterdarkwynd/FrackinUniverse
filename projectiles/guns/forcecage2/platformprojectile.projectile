@@ -1,7 +1,8 @@
 {
   "projectileName" : "fuplatformprojectile",
-  "physics" : "default",
-  "timeToLive" : 4,
+  "physics" : "floatingplatform",
+  "timeToLive" : 3,
+  "speed" : 5,
   "image" : "platformprojectile.png",
   "animationCycle" : 0.1,
   "frameNumber" : 3,
@@ -9,6 +10,19 @@
   "windupTime" : 0.5,
   "winddownFrames" : 3,
   "periodicActions" : [
+    {
+      "action" : "projectile",
+      "time" : 0.3,
+      "type" : "icegas",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 0,
+      "config" : {
+	"timeToLive" : 1.15,
+	"speed" : 5,
+	"statusEffects" : [ "stun" ]
+      }
+    },  
     {
       "time" : 0,
       "repeat" : false,
@@ -37,7 +51,6 @@
     "controlForce" : 0,
     "friction" : 1
   },
-  "speed" : 0,
   "power" : 4,
 
   "onlyHitTerrain" : true,

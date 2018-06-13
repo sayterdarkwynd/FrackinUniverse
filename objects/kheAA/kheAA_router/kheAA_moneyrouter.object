@@ -1,0 +1,50 @@
+{
+	"objectName" : "network_moneyrouter",
+	"colonyTags" : [],
+	"printable" : false,
+	"rarity" : "Common",
+	"notItemStorage":true,
+	"category" : "wire",
+	"price" : 500,
+	"description" : "Moves money between containers.
+^blue;Input^white;1^blue;: ^white;power switch
+^blue;Input^white;2^blue;: ^white;item network
+^red;Output: ^white;item network^reset;",
+	"shortdescription" : "Money Transference Device",
+	"race" : "generic",
+
+	"inventoryIcon" : "kheAA_routericon.png",
+	"orientations" : [
+		{
+			"image" : "kheAA_router.png:<color>.off",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ]
+		}
+	],
+
+	"animation" : "/objects/kheAA/kheAA_router/kheAA_router.animation",
+
+	"animationParts" : {
+		"router" : "kheAA_router.png"
+	},
+	"animationPosition" : [0, 0],
+
+	"health" : 1.5,
+
+	"openSounds" : [ "/sfx/objects/mannequin_open.ogg" ],
+	"closeSounds" : [ "/sfx/objects/mannequin_close.ogg" ],
+	"frameCooldown" : 5,
+	"autoCloseCooldown" : 3600,
+	"inputNodes" : [ [0, 0],[1,0] ],
+	"outputNodes" : [ [0, 1] ],
+	"kheAA_logicNode":0,
+	"kheAA_inDataNode":1,
+	"kheAA_outDataNode":0,
+	
+
+	"scripts" : [ "kheAA_moneyrouter.lua" ],
+	"scriptDelta" : 5,
+	"itemAgeMultiplier" : 0.0
+}

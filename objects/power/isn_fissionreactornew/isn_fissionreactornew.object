@@ -34,17 +34,34 @@
     "base" : "isn_fissionreactornew_base.png"
   },
   "animationPosition" : [0, 0],
-  
+
   "slotCount" : 6,
   "uiConfig" : "/objects/power/isn_fissionreactornew/isn_fissionreactornew.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  
+
   "scripts" : [ "/scripts/power.lua","isn_fissionreactor.lua" ],
   "scriptDelta" : 60,
-  
+
   "inputNodes" : [ [2, 4] ],
   "outputNodes" : [ [2, 2] ],
   "isn_powerSupplier" : true,
-  "powertype" : "output"
+  "powertype" : "output",
+
+  "bonusWasteChance" : 50,
+  "fuels" : {
+      "biofuelcannister" :    { "power" : 4,  "decayRate" : 60  },
+      "biofuelcannisteradv" : { "power" : 4,  "decayRate" : 60  },
+      "biofuelcannistermax" : { "power" : 5,  "decayRate" : 60  },
+      "deuterium" :           { "power" : 6,  "decayRate" : 80  },
+      "uraniumrod" :          { "power" : 7,  "decayRate" : 80  },
+	  "neptuniumrod" :        { "power" : 7,  "decayRate" : 80  },
+      "tritium" :             { "power" : 9,  "decayRate" : 80  },
+	  "thoriumrod" :          { "power" : 9,  "decayRate" : 80  }, // gets increased power from 7 to 9 (+28%), but loses in consumption rate, from 1/100 to 1/80 (-25%)
+	  "enricheduranium" :     { "power" : 10, "decayRate" : 500 }, // gets increased power from 8 to 10 + gain efficiency from 1/100 to 1/500
+	  "plutoniumrod" :        { "power" : 10, "decayRate" : 80  },
+	  "enrichedplutonium" :   { "power" : 16, "decayRate" : 500 }, // gets increased power from 12 to 16  + gain efficiency 5x
+	  "solariumstar" :        { "power" : 19, "decayRate" : 80  }, // gets higher power from 15 to 19 (+26%) but loses out in efficiency from 1/100 to 1/80 (-25%)
+	  "ultronium" :           { "power" : 21, "decayRate" : 500 }
+  }
 }

@@ -1,0 +1,33 @@
+{
+  "id" : "create_blastfurnace",
+  "prerequisites" : [ "create_advxeno" ],
+  "title" : "Smelting Champion",
+  "text" : "If you can ^orange;build a blast furnace^reset; with a ^orange;Power Station^reset; and bring it here so I can analyze it I would prove ^green;most grateful^reset; and perhaps reward you.",
+  "completionText" : "Fantastic work! Truly amazing. Thank you for the help. As thanks, here's payment for your troubles.",
+  "moneyRange" : [1220, 2320],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+        "turnInDescription" : "Bring the ^orange;Blast Furnace^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_blastfurnace",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

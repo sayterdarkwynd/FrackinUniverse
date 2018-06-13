@@ -1,0 +1,33 @@
+{
+  "id" : "13mites",
+  "prerequisites" : [ "12breeding" ],
+  "title" : "Mites",
+  "text" : "It should be noted that bees have a natural predator: ^orange;Mites^reset;. These parasites infest your apiaries from time to time, and reduce their productivity and can even kill the bees. Create an ^orange;anti-mite frame^reset; to combat them.",
+  "completionText" : "Simply placing this in an apiary will work its magic. ^orange;Mites hate these things^reset; and will be killed or driven off by them. Keep some handy. That's all I can teach you, it's up to you to experiment and breed the best bees you can! Bee all you can bee!",
+  "moneyRange" : [120, 220],
+  "rewards" : [ [ [ "crewcontract_fubees", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "amite",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

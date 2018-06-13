@@ -1,0 +1,96 @@
+{
+  "projectileName" : "fireportalpyreite",
+  "physics" : "hover",
+  "timeToLive" : 6,
+  "image" : "fireportal.png",
+  "animationCycle" : 0.35,
+  "lightColor" : [110, 80, 30],
+  "frameNumber" : 4,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  
+  "periodicActions" : [
+	{
+	  "time":0.66,
+	  "action":"option",
+	  "options":[     
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:12","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:11","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:10","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:9","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:8","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:7","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:6","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:4","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}},
+	    {"action":"particle","rotate":true,"specification":{"type":"textured","image":"/animations/teleport/playerwarpout.png:5","size":1,"fullbright":true,"timeToLive":0.02,"destructionAction":"fade","destructionTime":0.02,"position":[0,0.3],"variance":{"position":[0.3,2]}}}  	    
+	    ]
+	}, 
+        {
+          "time" : 1.6,
+          "loop" : true,
+          "action" : "sound",
+          "options" : [ "/sfx/tech/mech_activate4.ogg" ] 
+        },           
+	{
+	  "time" : 1.6,
+	  "action":"spawnmonster", 
+	  "type":"ignomesummon", 
+	  "offset":[0,0], 
+	  "arguments":{
+	    "damageTeamType":"friendly", "damageTeam":0
+	  }
+	},    
+    {
+      "time" : 1.6,
+      "loop" :true,
+      "action" : "projectile",
+      "type" : "armornova",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.1,
+      "config" : {
+	"timeToLive" : 1
+      }
+    },  
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/melee/astraltear2.ogg" ]
+    },
+    {
+      "time" : 5.65,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/astraltear_stop3.ogg" ]
+    }  
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpactmute.config"
+    }
+  ],
+  "speed" : 0,
+  "power" : 0,
+  "damagePoly" : [],
+
+  "fullbright" : true,
+  "emitters" : [],
+
+  "renderLayer" : "Projectile-1",
+  "orientationLocked" : true,
+
+  "bounces" : -1,
+  "onlyHitTerrain" : true,
+
+  "scripts" : [ "/projectiles/activeitems/staff/elementportal/elementportal.lua" ],
+
+  "projectileType" : "magnorbpyreite",
+  "projectileParameters" : {
+    "power" : 3
+  },
+  "spawnRate" : 0.3,
+
+  "persistentAudio" : "/sfx/projectiles/fireball_loop.ogg"
+}

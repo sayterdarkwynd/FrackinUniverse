@@ -1,0 +1,33 @@
+{
+  "id" : "create_augment",
+  "prerequisites" : [ "create_mutavisk" ],
+  "title" : "Augments",
+  "text" : "You're probably starting to have some issues surviving by now in different biomes. So let's get you building ^orange;augments^reset;! Show me an ^orange;Acid Shield augment^reset;  made by your own two hands!",
+  "completionText" : "Perhaps one day I might call on your talents to help me with a little problem I am having...I'll need to consider.",
+  "moneyRange" : [220, 320],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+        "turnInDescription" : "Bring the ^orange;Acid Shield Augment^reset; to ^green;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fuacidaugment1",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

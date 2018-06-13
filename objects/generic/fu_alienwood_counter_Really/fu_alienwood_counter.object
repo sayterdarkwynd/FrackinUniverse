@@ -1,0 +1,35 @@
+{
+  "objectName" : "fu_alienwood_counter",
+  "colonyTags" : ["storage"],
+  "rarity" : "Common",
+  "category" : "storage",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "An alienwood counter.",
+  "shortdescription" : "Alien Wood Counter",
+  "race" : "generic",
+  "health" : 1.5,
+
+  "inventoryIcon" : "fu_alienwood_countericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_alienwood_counter_Really.png:<color>",
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodendoor_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodendoor_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}

@@ -73,44 +73,6 @@ function init()
  	  protectionXRads = config.getParameter("protectionXRads",0)	  
  	  shieldBash = config.getParameter("shieldBash",0)
  	  shieldBashPush = config.getParameter("shieldBashPush",0)
- 	  
- 	  
- 	  status.setPersistentEffects("shieldEffects", {
- 	  {stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
- 	  {stat = "energyRegenPercentageRate", amount = shieldEnergyRegen},
- 	  {stat = "maxHealth", amount = shieldHealthBonus},
- 	  {stat = "maxEnergy", amount = shieldEnergyBonus},
- 	  {stat = "protection", amount = shieldProtection},
- 	  {stat = "shieldStaminaRegen", amount = shieldStamina},
- 	  {stat = "fallDamageMultiplier", amount = shieldFalling},
- 	  {stat = "beestingImmunity", amount = protectionBee},
- 	  {stat = "sulphuricImmunity", amount = protectionAcid},
- 	  {stat = "blacktarImmunity", amount = protectionBlackTar},
- 	  {stat = "biooozeImmunity", amount = protectionBioooze},
- 	  {stat = "poisonStatusImmunity", amount = protectionPoison},
- 	  {stat = "insanityImmunity", amount = protectionInsanity},
- 	  {stat = "shockStatusImmunity", amount = protectionShock},
- 	  {stat = "slimeImmunity", amount = protectionSlime},
- 	  {stat = "lavaImmunity", amount = protectionLava},
- 	  {stat = "fireStatusImmunity", amount = protectionFire},
- 	  {stat = "protoImmunity", amount = protectionProto},
- 	  {stat = "sulphuricImmunity", amount = protectionAcid},
- 	  {stat = "blacktarImmunity", amount = protectionBlackTar},
- 	  {stat = "biooozeImmunity", amount = protectionBioooze},
- 	  {stat = "poisonStatusImmunity", amount = protectionPoison},
- 	  {stat = "insanityImmunity", amount = protectionInsanity},
- 	  {stat = "electricStatusImmunity", amount = protectionShock},
- 	  {stat = "slimeImmunity", amount = protectionSlime},
- 	  {stat = "lavaImmunity", amount = protectionLava},
- 	  {stat = "biomecoldImmunity", amount = protectionCold},
- 	  {stat = "ffextremecoldImmunity", amount = protectionXCold},
- 	  {stat = "biomeheatImmunity", amount = protectionHeat},
- 	  {stat = "ffextremeheatImmunity", amount = protectionXHeat},
- 	  {stat = "biomeradiationImmunity", amount = protectionRads},
- 	  {stat = "ffextremeradiationImmunity", amount = protectionXRads},
- 	  {stat = "shieldBash", amount = shieldBash},
- 	  {stat = "shieldBashPush", amount = shieldBashPush}
- 	  })
   -- end FU special effects
   
   species = world.entitySpecies(activeItem.ownerEntityId())
@@ -124,6 +86,49 @@ function init()
 
   updateAim()
 end
+
+
+function shieldBonusApply()
+
+status.setPersistentEffects("shieldEffects", {
+ 		{stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
+ 		{stat = "energyRegenPercentageRate", amount = config.getParameter("shieldEnergyRegen",0)},
+ 		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
+ 		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
+ 		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
+ 		{stat = "shieldStaminaRegen", amount = shieldStamina},
+ 		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
+ 		{stat = "beestingImmunity", amount = protectionBee},
+ 		{stat = "sulphuricImmunity", amount = protectionAcid},
+ 		{stat = "blacktarImmunity", amount = protectionBlackTar},
+ 		{stat = "biooozeImmunity", amount = protectionBioooze},
+ 		{stat = "poisonStatusImmunity", amount = protectionPoison},
+ 		{stat = "insanityImmunity", amount = protectionInsanity},
+ 		{stat = "shockStatusImmunity", amount = protectionShock},
+ 		{stat = "slimeImmunity", amount = protectionSlime},
+ 		{stat = "lavaImmunity", amount = protectionLava},
+ 		{stat = "fireStatusImmunity", amount = protectionFire},
+ 		{stat = "protoImmunity", amount = protectionProto},
+ 		{stat = "sulphuricImmunity", amount = protectionAcid},
+ 		{stat = "blacktarImmunity", amount = protectionBlackTar},
+ 		{stat = "biooozeImmunity", amount = protectionBioooze},
+ 		{stat = "poisonStatusImmunity", amount = protectionPoison},
+ 		{stat = "insanityImmunity", amount = protectionInsanity},
+ 		{stat = "electricStatusImmunity", amount = protectionShock},
+ 		{stat = "slimeImmunity", amount = protectionSlime},
+ 		{stat = "lavaImmunity", amount = protectionLava},
+ 		{stat = "biomecoldImmunity", amount = protectionCold},
+ 		{stat = "ffextremecoldImmunity", amount = protectionXCold},
+ 		{stat = "biomeheatImmunity", amount = protectionHeat},
+ 		{stat = "ffextremeheatImmunity", amount = protectionXHeat},
+ 		{stat = "biomeradiationImmunity", amount = protectionRads},
+ 		{stat = "ffextremeradiationImmunity", amount = protectionXRads},
+ 		{stat = "shieldBash", amount = shieldBash},
+ 		{stat = "shieldBashPush", amount = shieldBashPush}
+ 	})
+ 	
+end
+
 
 function update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
@@ -216,7 +221,7 @@ function raiseShield()
   status.setPersistentEffects(activeItem.hand().."Shield", {{stat = "shieldHealth", amount = shieldHealth()}})
   local shieldPoly = animator.partPoly("shield", "shieldPoly")
   activeItem.setItemShieldPolys({shieldPoly})
-
+  shieldBonusApply()
   if self.knockback > 0 then
     local knockbackDamageSource = {
       poly = shieldPoly,

@@ -90,13 +90,44 @@
       }
     },
 
-  "critChance" : 3,
-  "critBonus" : 12,
+  "critChance" : 1,
+  "critBonus" : 3,
 
   "altAbilityType" : "lunarishrapnelbomb",
   "altAbility" : {
     "name" : "Starshock"
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Lunari MkII^reset; ^yellow;^reset;",
+  "description" : "Crystalline blasts charged with lunari energy
+^yellow;Lights areas^reset;
+^green;Long-lived projectiles",
+  "animationParts" : {
+    "middle" : "lunaririfle2.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "lunaririfle2.png:" }
+    ],
+    "critChance" : 2,
+    "critBonus" : 3,
+    "primaryAbility" : {
+	    "fireTime" : 0.35,
+	    "baseDps" : 8,
+	    "energyUsage" : 30,
+	    "inaccuracy" : 0,
+
+	    "projectileCount" : 3,
+	    "fireType" : "auto",
+
+	    "projectileType" : "lunarishotinitiate",
+	    "projectileParameters" : { 
+	      "speed" : 50,
+	      "knockback" : 4
+	    }
+    }
+  }
+  
 }

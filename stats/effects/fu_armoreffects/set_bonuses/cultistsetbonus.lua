@@ -1,5 +1,5 @@
 setName="fu_cultistset"
-setStatEffects={"cultistsetbonuseffect", "lightregen", "glowyellow2"}
+setStatEffects={"cultistsetbonuseffect", "darkregen", "glowyellow2"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

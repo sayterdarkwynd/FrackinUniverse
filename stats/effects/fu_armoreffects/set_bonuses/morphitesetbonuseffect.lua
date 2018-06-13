@@ -3,14 +3,14 @@ setName="fu_morphiteset"
 weaponBonus={}
 
 armorEffect={
-  {stat = "sulphuricImmunity", amount = 1}
+	{stat = "sulphuricImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
-        armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 end
 
 function update(dt)

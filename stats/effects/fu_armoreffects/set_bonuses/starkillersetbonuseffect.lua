@@ -3,8 +3,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 armorBonus={
    { stat = "maxHealth", baseMultiplier = 1.25},
    { stat = "maxEnergy", baseMultiplier = 1.25},
-   { stat = "powerMultiplier", baseMultiplier = 1.25},
-   { stat = "protection", baseMultiplier = 1.25}
+   { stat = "powerMultiplier", effectiveMultiplier = 1.25},
+   { stat = "protection", effectiveMultiplier = 1.25}
 }
 
 armorEffect={}
@@ -13,9 +13,9 @@ setName="fu_starkillerset"
 
 function init()
 	setSEBonusInit(setName)
-	armorEffectHandle=effect.addStatModifierGroup(armorEffect)
+	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 
-	armorBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	checkArmor()
 end
 
@@ -41,8 +41,8 @@ end
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
-        else
-          checkArmor()
+	else
+		checkArmor()
 	end
 end
 
@@ -53,8 +53,8 @@ function checkArmor()
 	underground = undergroundCheck()
 	local lightLevel = getLight()
 	if daytime and not underground then
-	        effect.setStatModifierGroup(armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else
-		effect.setStatModifierGroup(armorBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end
 end

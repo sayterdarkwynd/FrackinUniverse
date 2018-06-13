@@ -1,0 +1,48 @@
+{
+  "objectName" : "precursorpressureplatform",
+  "colonyTags" : ["precursor","trap","door"],
+  "rarity" : "legendary",
+
+  "category" : "door",
+  "price" : 1125,
+  "description" : "A hovering pressure platform.",
+  "shortdescription" : "Pressure Platform",
+
+  "inventoryIcon" : "templepressureplatformicon.png",
+
+  "scripts" : [ "/objects/wired/door/trapdoor.lua" ],
+  "scriptDelta" : 10,
+
+  "animation" : "/objects/wired/door/4framedoor.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/ancientconsole_on.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/ancientconsole_off.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "templepressureplatform.png"
+  },
+
+  "orientations" : [
+    {
+      "image" : "templepressureplatform.png:default",
+      "imagePosition" : [-16, -8],
+      "renderLayer" : "Object+5",
+      "animationPosition" : [-16, -8],
+      "spaces" : [ [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0] ],
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "detectArea" : [ [-1.95, 0.5], [2.95, 1.25] ],
+
+  "stayClosedTime" : 0.3, // before the platform disappears
+  "stayOpenTime" : 1.5 // after the platform has disappeared and all players have left
+}

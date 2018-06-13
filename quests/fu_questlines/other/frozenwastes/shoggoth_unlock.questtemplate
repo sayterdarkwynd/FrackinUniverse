@@ -1,0 +1,34 @@
+{
+  "id" : "shoggoth_unlock",
+  "mainQuest" : true,
+  "title" : "Molten Power",
+  "prerequisites" : [ "create_plastic" ],
+  "text" : "Why am I up here? I'm trying to use this relay, but the damned thing is shorted out. I desperately need to reach a friend. Could you perhaps craft a ^orange;Molten Core^reset; in your ^orange;Matter Assembler^reset;? That should fix it right up.",
+  "completionText" : "That did it, thanks!...hmm, that's odd. No signal from the ^green;lab on Delta Freya II^reset;. I wonder if my friend is okay?",
+
+  "moneyRange" : [50, 50],
+  "rewards" : [ ],
+  "canBeAbandoned" : false,
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : true,
+    "turnInDescription" : "Bring the ^orange;Molten Core^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "moltencore",
+        "count" : 1,
+        "consume" : false
+      }
+    ],
+
+    "compassUpdate" : 0.2
+  }
+}

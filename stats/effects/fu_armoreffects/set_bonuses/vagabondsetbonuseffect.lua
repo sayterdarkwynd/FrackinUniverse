@@ -3,39 +3,39 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_vagabondset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.075}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.075}
 }
 weaponBonusBoth={
-	{stat = "powerMultiplier", amount = 0.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorBonus={}
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	
 	checkWeapons()
 	
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		
-	checkWeapons()
+		checkWeapons()
 	end
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({"pistol","machinepistol"})
+	
 	if weapons["both"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonusBoth)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonusBoth)
 	elseif weapons["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

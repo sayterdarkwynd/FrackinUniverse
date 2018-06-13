@@ -1,11 +1,12 @@
 {
   "type" : "wormmass",
-  "shortdescription" : "Mass of Worms",
-  "description" : "A writhing mass of angry worms.",
+  "shortdescription" : "Putrid Worm",
+  "description" : "A repulsive, gore-spewing worm.",
 
   "categories" : [ "wormmass" ],
   "parts" : [ "body" ],
-
+  "reversed" : true,
+  
   "animation" : "wormmass.animation",
 
   "dropPools" : [ { "default" : "gleapTreasure", "bow" : "gleapHunting" } ],
@@ -16,7 +17,8 @@
     ],
 
     "behavior" : "monster",
-
+    "deathBehavior" : "monster-death",
+    
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -28,35 +30,48 @@
 
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
 
-      "hostileActions" : [
+      "hostileActions" : [   
         {
-          "name" : "action-hop", 
-          "cooldown" : 0.0,
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 2.0,
           "parameters" : {
-            "verticalSpeed" : 20,
-            "horizontalSpeed" : 10,
-            "hopSequence" : 1,
-            "timeBetweenHops" : 0.0,
-            "windupTime" : 0.1,
-            "landTime" : 0.1,
+            "verticalSpeed" : 30,
+            "horizontalSpeed" : 25,
+            "hopSequence" : 3,
+            "windupTime" : 0.2,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.05,
             "hopAwayFromWall" : false,
-            "wallVerticalSpeed" : 35
+            "wallVerticalSpeed" : 35,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
           }
-        }
+        }        
       ],
-
+      
+      "concurrentHostileActions" : [],
+      
       "periodicActions" : [
         {
-          "name" : "action-hop", 
-          "cooldown" : 0.0,
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 10.0,
           "parameters" : {
-            "verticalSpeed" : 25,
-            "horizontalSpeed" : 10,
+            "verticalSpeed" : 15,
+            "horizontalSpeed" : 25,
             "hopSequence" : 3,
-            "timeBetweenHops" : 0.25,
-            "hopAwayFromWall" : true
+            "windupTime" : 0.2,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.01,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
           }
-        }
+        }        
       ],
 
       "followActions" : [
@@ -66,26 +81,61 @@
           }
         },
         {
-          "name" : "action-hop", 
-          "cooldown" : 0.0,
+          "name" : "approach-walk",
           "parameters" : {
-            "verticalSpeed" : 20,
-            "horizontalSpeed" : 10,
-            "hopSequence" : 1,
-            "timeBetweenHops" : 0.0,
-            "windupTime" : 0.1,
-            "landTime" : 0.1,
-            "hopAwayFromWall" : false,
-            "wallVerticalSpeed" : 35
+            "resetHeading" : false
           }
         }
-      ]
-
+      ],
+      
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
+      ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-landing-projectile-hop",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "verticalSpeed" : 60,
+            "horizontalSpeed" : 15,
+            "hopSequence" : 1,
+            "windupTime" : 0.2,
+            "landTime" : 0.2,
+            "timeBetweenHops" : 0.04,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 35,
+            "aimDirection" : [0, -1],
+            "projectileType" : "fubloodexplosionfast",
+            "power" : 4,
+            "fireOffset" : [0,0]
+          }
+        }      
+      ],
+      
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "fugoreexplosionfast",
+            "projectileParameters" : {},
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 2]
+          }
+        }
+      ]      
     },
 
     "touchDamage" : {
-      "poly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
-      "damage" : 8,
+      "poly" : [ [-1.5, -1], [-0.8, -1.5], [0.8, -1.5], [1.5, -1], [1.5, 0.15], [0.8, 0.3], [-0.8, 0.3], [-1.5, 0.15] ],
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
@@ -97,12 +147,12 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-0.6875, -0.375], [-0.4375, -0.625], [0.4375, -0.625], [0.6875, -0.375], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
+      "collisionPoly" : [ [-1.5, -1], [-0.8, -1.5], [0.8, -1.5], [1.5, -1], [1.5, 0.15], [0.8, 0.3], [-0.8, 0.3], [-1.5, 0.15] ],
 
       "mass" : 1.0,
       "walkSpeed" : 5,
-      "runSpeed" : 5,
-      "jumpSpeed" : 5
+      "runSpeed" : 10,
+      "jumpSpeed" : 15
     },
 
     "bodyMaterialKind" : "organic",
@@ -136,7 +186,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 25
+          "baseValue" : 40
         },
         "protection" : {
           "baseValue" : 0.0
@@ -145,6 +195,21 @@
           "baseValue" : 0.0
         },
         "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "shadowImmunity" : {
+          "baseValue" : 1.0
+        }, 
+        "pusImmunity" : {
+          "baseValue" : 1.0
+        },           
+        "bleedingImmunity" : {
+          "baseValue" : 1.0
+        },           
+        "stunImmunity" : {
+          "baseValue" : 1.0
+        },           
+        "insanityImmunity" : {
           "baseValue" : 1.0
         }
       },

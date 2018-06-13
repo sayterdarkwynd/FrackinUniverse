@@ -6,7 +6,7 @@
   "rarity" : "rare",
   "pickupQuestTemplates" : [ ],
   "category" : "enviroProtectionPack",
-  "description" : "Adds poison neutralization to your EPP's capabilities. Gives +40% Poison Resistance. Use it on planets with ^red;moderate poison levels^reset;.",
+  "description" : "Gives +40% Poison Resistance. Use it on planets with ^red;moderate poison levels^reset;. Provides limited air.",
   "shortdescription" : "Poison EPP II",
   "learnBlueprintsOnPickup" : [ "poisonprotectionback3" ],
   "maleFrames" : "back.png",
@@ -17,7 +17,19 @@
     {
       "stat" : "poisonResistance",
       "amount" : 0.4
-    }
+    },   
+    {
+      "stat" : "maxBreath",
+      "amount" : 200
+    },    
+    {
+      "stat" : "breathDepletionRate",
+      "amount" : -2
+    },
+    {
+      "stat" : "breathRegenerationRate",
+      "amount" : 20
+    }  
   ],
 
   "acceptsAugmentType" : "back",

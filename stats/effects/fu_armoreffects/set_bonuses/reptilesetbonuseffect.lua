@@ -5,7 +5,7 @@ weaponBonus={
 }
 
 weaponBonus2={
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={
@@ -13,7 +13,7 @@ armorBonus={
 	{stat = "poisonResistance", amount = 0.15}
 	{stat = "sulphuricImmunity", amount = 0.15},
 	{stat = "maxHealth", baseMultiplier = 1.16},
-	{stat = "powerMultiplier", baseMultiplier = 1.16},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.16},
 	{stat = "poisonResistance", amount = 0.15}
 }
 
@@ -21,11 +21,11 @@ setName="fu_reptileset"
 
 function init()
 	setSEBonusInit(setName)
-	weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
 
-	armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -38,15 +38,15 @@ function update(dt)
 end
 
 function checkWeapons()
-local weaponSword=weaponCheck({"shortsword"})
-local weaponShield=weaponCheck({"shield"})
-local weaponSword2=weaponCheck({"axe"})
+	local weaponSword=weaponCheck({"shortsword"})
+	local weaponShield=weaponCheck({"shield"})
+	local weaponSword2=weaponCheck({"axe"})
 
 	if weaponSword["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	elseif weaponSword2["either"] and weaponShield["either"] then
-		effect.setStatModifierGroup(weaponBonusHandle,weaponBonus2)		
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus2)		
 	else
-		effect.setStatModifierGroup(weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

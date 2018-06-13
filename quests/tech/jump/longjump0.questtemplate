@@ -1,0 +1,30 @@
+{
+  "id" : "longjump0",
+  "prerequisites" : [ ],
+  "title" : "Enhanced Jump",
+  "text" : "I've found some sort of ancient tech in a ruin. I wonder what it does?",
+  "completionText" : "This strange new technology has ^green;fused into my body^reset;. I seem to have ^orange;increased jumping ability^reset;.",
+  "moneyRange" : [220, 320],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "requireTurnIn" : false,
+
+    "conditions" : [ ],
+    "showTech" : [
+      "longjump0"
+    ],
+    "equipTech" : [
+      "longjump0"
+    ]
+  }
+}

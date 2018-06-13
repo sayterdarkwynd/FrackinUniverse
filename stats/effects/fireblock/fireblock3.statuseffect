@@ -1,14 +1,22 @@
 {
   "name" : "fireblock3",
-  "effectConfig" : {
-    "valueAdded" : 0.30
-  },
-  "defaultDuration" : 120,
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "fireResistance",
+				"amount": 0.3
+			},
+			{
+				"stat": "fireStatusImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
-  "scripts" : [
-    "fireblock2.lua"
-  ],
-
-  "label" : "Fire Resistance",
+  "label" : "30% Fire Resistance",
   "icon" : "/interface/statuses/defenseheat.png"
 }

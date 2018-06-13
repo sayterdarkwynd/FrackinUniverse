@@ -1,14 +1,22 @@
 {
   "name" : "shadowblock3",
-  "effectConfig" : {
-    "valueAdded" : 0.30
-  },
-  "defaultDuration" : 120,
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "shadowResistance",
+				"amount": 0.3
+			},
+			{
+				"stat": "shadowImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
-  "scripts" : [
-    "shadowblock.lua"
-  ],
-
-  "label" : "Shadow Resistance",
+  "label" : "30% Shadow Resistance",
   "icon" : "/interface/statuses/defenseshadow.png"
 }

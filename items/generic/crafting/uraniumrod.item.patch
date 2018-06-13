@@ -4,7 +4,9 @@
     { "op": "add", "path": "/itemTags", "value": [] }
   ],
   [
-    {"op":"add","path":"/fuelAmount","value": 100},
+    { "op" : "replace", "path" : "/price", "value" : 250 },
+    {"op":"replace","path":"/description","value": "This radioactive isotope is typically found on Irradiated planets."},
+    {"op":"add","path":"/fuelAmount","value": 9},
     {"op":"add", "path":"/itemTags/-", "value":"reagent"},
     {"op":"replace", "path":"/category", "value":"fuel"},
     {"op": "add", "path": "/collectablesOnPickup", "value": { "fu_isotopes" : "uraniumrod" } }

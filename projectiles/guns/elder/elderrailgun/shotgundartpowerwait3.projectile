@@ -5,14 +5,23 @@
   "piercing" : true,
   "physics" : "gas",
   "bounces" : 0,
-  "frameNumber" : 1,  
+  "frameNumber" : 4,  
   "pointLight" : false,   
-  "timeToLive" : 0.01,
+  "timeToLive" : 0.4,
   "speed" :1, 
   "fullbright" : true,
-  "lightColor" : [40, 150, 40],
+  "lightColor" : [0, 80, 0],
+  "periodicActions" : [
+    {
+      "time" : 0.15,
+      "loop" : true,
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/shadowimpactmute.config"
+   }  
+  ],
+  
   "actionOnReap" : [
-  {
+   {
       "action" : "config",
       "file" : "/projectiles/guns/elder/elderrailgun/elderrailgunexplosion.config"
     },
@@ -20,7 +29,7 @@
       "action" : "projectile",
       "type" : "elderrailgunshotpower2c",
       "inheritDamageFactor" : 0.3,
-      "angleAdjust" : 0
+      "angleAdjust" : -90
     }
   ],
   "damageKind" : "shadowplasmashotgun"

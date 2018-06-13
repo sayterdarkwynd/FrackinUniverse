@@ -1,11 +1,14 @@
 {
   "name" : "fuphysicalresistance",
-  "effectConfig" : {
-    "resistanceValue" : 0.1
-  },
-  "defaultDuration" : 300,
-
-  "scripts" : [
-    "fuphysicalresistance.lua"
-  ]
+	"effectConfig": {
+		"stats": [{
+				"stat": "physicalResistance",
+				"amount": 0.1
+			}
+		]
+	},
+	"defaultDuration": 300,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

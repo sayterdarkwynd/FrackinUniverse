@@ -1,14 +1,22 @@
 {
   "name" : "radioactiveblock3",
-  "effectConfig" : {
-    "valueAdded" : 0.30
-  },
-  "defaultDuration" : 120,
+ 	"effectConfig": {
+		"stats": [
+			{
+				"stat": "radioactiveResistance",
+				"amount": 0.3
+			},
+			{
+				"stat": "radiationburnImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
-  "scripts" : [
-    "radioactiveblock.lua"
-  ],
-
-  "label" : "Radiation Resistance",
+  "label" : "30% Radiation Resistance",
   "icon" : "/interface/statuses/defenseradiation.png"
 }

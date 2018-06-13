@@ -6,7 +6,7 @@
   "rarity" : "Legendary",
   "description" : "Pierce the heavens, or at least the earth.",
   "shortdescription" : "Drill Spear",
-  "tooltipKind" : "base",
+  "tooltipKind" : "swordunique",
   "category" : "spear",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
@@ -38,7 +38,7 @@
   "altAbility" : {
     "scripts" : ["/items/active/weapons/other/drillspear/drillcharge.lua"],
     "class" : "DrillCharge",
-
+    "name" : "Drill Charge",
     "energyUsage" : 30,
 
     "boostSpeed" : 25,
@@ -90,6 +90,9 @@
       }
     }
   },
-
+  
+  "critChance" : 2,
+  "critBonus" : 8,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

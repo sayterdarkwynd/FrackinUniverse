@@ -1,0 +1,33 @@
+{
+  "id" : "create_radleaf",
+  "prerequisites" : [ ],
+  "title" : "Rad Leaves",
+  "text" : "I'm trying to study this material but I have no radiation protection. Specifically, I would like some ^orange;rad leaf^reset; to ingest. Care to get me some?",
+  "completionText" : "It never hurts to help! And since you helped me, I'll help you. Here's a ^orange;big bag of pixels^reset;!",
+  "moneyRange" : [2600, 3200],
+  "rewards" : [ ],
+  "speaker" : "questGiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+
+    "canBeAbandoned" : true,
+    "requireTurnIn" : false,  
+        "turnInDescription" : "Bring the ^orange;3 Rad Leaf^reset; to ^green;me^reset;!",
+
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "guam",
+        "count" : 3,
+        "consume" : true
+      }
+    ]
+  }
+}

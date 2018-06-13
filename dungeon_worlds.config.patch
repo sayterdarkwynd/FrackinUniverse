@@ -57,7 +57,40 @@
       "biome" : "shoggothbiome"
       }
 },
-
+{
+    "op": "add",
+    "path": "/cavedungeon",
+    "value": 
+      {
+      "primaryDungeon":"cavedungeon",
+      
+      "threatLevel":1,
+      "gravity":100,
+      "airless" : false,
+      "worldSize":[2000,2000],
+      "dungeonBaseHeight" : 1400,
+      "dungeonSurfaceHeight" : 1500,
+      "ambientLightLevel":[15,10,25],          
+      "biome" : "mamapoptop"
+      }
+},
+{
+    "op": "add",
+    "path": "/precursordungeon2",
+    "value": 
+      {
+      "primaryDungeon":"precursordungeon2",
+      
+      "threatLevel":5,
+      "gravity":100,
+      "airless" : false,
+      "worldSize":[2000,2000],
+      "dungeonBaseHeight" : 1400,
+      "dungeonSurfaceHeight" : 1500,
+      "ambientLightLevel":[15,10,25],          
+      "biome" : "irradiatedunderground"
+      }
+},
   {
     "op" : "add",
     "path" : "/flyingpyramid",
@@ -188,6 +221,22 @@
       "environmentStatusEffects" : ["biomeairless"],
       "worldEdgeForceRegions" : "TopAndBottom",
       "biome" : "space"
+    }
+  },
+
+ {
+    "op" : "add",
+    "path" : "/japaneseruins",
+    "value" : {
+      "primaryDungeon" : "japaneseruins",
+      "threatLevel" : 8,
+      "gravity" : 80,
+      "worldSize" : [3000, 3000],
+      "dungeonBaseHeight" : 200,
+      "ambientLightLevel" : [24, 24, 24],
+      "musicTrack" : "/music/japaneseruins.ogg",
+      "biome": "forest",
+      "environmentStatusEffects" : ["dontstarve"]
     }
   },
 

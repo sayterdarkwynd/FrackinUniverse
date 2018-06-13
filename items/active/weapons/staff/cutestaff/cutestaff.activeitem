@@ -1,0 +1,52 @@
+{
+  "itemName" : "cutestaff",
+  "price" : 400,
+  "maxStack" : 1,
+  "level" : 4,
+  "rarity" : "Rare",
+  "description" : "Channel phenomenal cosmic power.
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Prismatic Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","energy","upgradeableWeapon"],
+  "tooltipKind" : "staff",
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "cutestaff.png",
+    "stone" : "",
+    "chargeEffect" : "cutestaffglow.png"
+  },
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [255, 89, 160]
+      }
+    },
+    "particleEmitters" : {
+      "cosmicCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 20,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "cutestaff"}
+        ]
+      }
+    }
+  },
+
+  "inventoryIcon" : "cutestaff.png",
+
+  "elementalType" : "cosmic",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "primaryAbilityType" : "cuteblast",
+  "primaryAbility": {},
+
+  "altAbilityType" : "cutecloud",
+  "altAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,38 @@
+{
+  "projectileName" : "fungravityexplosionprecursor",
+  "image" : "fungravityexplosion.png",
+  "animationCycle" : 0.6,
+  "animationLoops" : false,
+  "physics" : "illusion",
+  "frameNumber" : 6,
+  "pointLight" : false,
+  "speed" : 0,
+  "power" : 5.0,
+  "emitters" : [ "radioactivethrowertrail" ],
+  "bounces" : -1,
+
+  "timeToLive" : 1,
+
+  "orientationLocked" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockbackprecursor.config"
+    }
+  ],
+  
+  "damageKind" : "electric",
+  
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 8,
+      "innerRadius" : 6,
+      "targetRadialVelocity" : 70,
+      "controlForce" : 700,
+      "categoryWhitelist" : [ "monster", "npc" ]
+    }
+  },
+
+  "clientEntityMode" : "ClientSlaveOnly"
+}

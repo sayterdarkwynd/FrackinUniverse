@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "A supreme long-ranged option for snipers
-^yellow;Eradicates tiles^reset;",
+^yellow;Inflicts Electrified^reset;
+^cyan;Amazing crowd control^reset;",
   "shortdescription" : "Tesla Gun",
   "level" : 3,
   "tooltipKind" : "gun2",
@@ -76,8 +77,8 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.0,
-    "baseDps" : 7.4,
+    "fireTime" : 1.5,
+    "baseDps" : 10,
     "energyUsage" : 35.0,
     "inaccuracy" : 0,
 
@@ -86,7 +87,7 @@
 
     "projectileType" : "fftesla",
     "projectileParameters" : { 
-      "speed" : 72,
+      "speed" : 80,
       "knockback" : 1.5
     },
   "stances" : {
@@ -123,15 +124,17 @@
   "critBonus" : 9,
 
   "altAbility": {
-    "name" : "Tesla's Wrath",
-    "baseDps" : 30,
+    "name" : "Wrath of Thor",
+    "baseDps" : 2.4,
     "energyUsage": 100,
     "fireTime" : 5,
     "maxDistance": 0,
     "minChargeTime": 0.01,
     "projectileParameters": {
       "timeToLive": 0,
-      "knockback": 0,
+      "knockback": 10,
+      
+      "statusEffects" : [ "electrified" ],
       
       "actionOnTimeout": [
         {
@@ -146,14 +149,18 @@
                     "action": "projectile",
                     "angle": 180,
                     "angleAdjust": 0,
-                    "config": {
+                    "config": { 
+                      "knockback": 15,
+                      "statusEffects" : [ "electrified" ],
                       "periodicActions": [
                         {
                           "action": "projectile",
                           "angle": -90,
-                          "time": 0.25,
+                          "time": 0.1,
                           "angleAdjust": 0,
                           "config": {
+                            "statusEffects" : [ "electrified" ],
+                            "knockback": 15,
                             "actionOnCollide": [],
                             "actionOnReap": [
                               {
@@ -161,16 +168,20 @@
                                 "angle": -90,
                                 "angleAdjust": 0,
                                 "config": {
+                                  "statusEffects" : [ "electrified" ],
+                                  "knockback": 15,
                                   "actionOnReap": [
                                     {
                                       "action": "projectile",
                                       "angle": -90,
                                       "angleAdjust": 0,
                                       "config": {
+                                        "knockback": 15,
+                                        "statusEffects" : [ "electrified" ],
                                         "actionOnReap": [
                                           {
                                             "action": "projectile",
-                                            "inheritDamageFactor": 12,
+                                            "inheritDamageFactor": 3,
                                             "config": {
                                               "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
                                             },
@@ -232,294 +243,8 @@
                                             "action": "projectile",
                                             "angleAdjust": 0,
                                             "config": {
-                                              "damageTeam": null,
-                                              "periodicActions": [
-                                                {
-                                                  "action": "option",
-                                                  "options": [
-                                                    {
-                                                      "action": "spark"
-                                                    },
-                                                    {
-                                                      "action": "spark"
-                                                    },
-                                                    {
-                                                      "action": "sound",
-                                                      "options": [
-                                                        "/sfx/gun/lightningcoil1.ogg",
-                                                        "/sfx/gun/lightningcoil2.ogg",
-                                                        "/sfx/gun/lightningcoil3.ogg"
-                                                      ]
-                                                    }
-                                                  ],
-                                                  "repeat": false,
-                                                  "time": 0
-                                                }
-                                              ],
-                                              "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
-                                            },
-                                            "delaySteps": 0,
-                                            "fuzzAngle": 0,
-                                            "inheritDamageFactor": 7,
-                                            "inheritSpeedFactor": 0,
-                                            "repeat": true,
-                                            "time": 0,
-                                            "type": "teslabolt"
-                                          }
-                                        ],
-                                        "piercing": false,
-                                        "processing": "?multiply=00000000",
-                                        "speed": 200,
-                                        "timeToLive": 0.25,
-                                        "waveAmplitude": 0.85,
-                                        "wavePeriod": 0.05
-                                      },
-                                      "delaySteps": 0,
-                                      "fuzzAngle": 0,
-                                      "inheritDamageFactor": 5,
-                                      "type": "miniwobbleshot"
-                                    }
-                                  ],
-                                  "damageKind": "hidden",
-                                  "damageTeam": {
-                                    "type": "ghostly"
-                                  },
-                                  "periodicActions": [
-                                    {
-                                      "action": "projectile",
-                                      "angleAdjust": 0,
-                                      "config": {
-                                        "movementSettings": {
-                                          "collisionEnabled": false
-                                        },
-                                        "damageTeam": null,
-                                        "periodicActions": [
-                                          {
-                                            "action": "option",
-                                            "options": [
-                                              {
-                                                "action": "spark"
-                                              },
-                                              {
-                                                "action": "spark"
-                                              },
-                                              {
-                                                "action": "sound",
-                                                "options": [
-                                                  "/sfx/gun/lightningcoil1.ogg",
-                                                  "/sfx/gun/lightningcoil2.ogg",
-                                                  "/sfx/gun/lightningcoil3.ogg"
-                                                ]
-                                              }
-                                            ],
-                                            "repeat": false,
-                                            "time": 0
-                                          }
-                                        ],
-                                        "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
-                                      },
-                                      "delaySteps": 0,
-                                      "fuzzAngle": 0,
-                                      "inheritDamageFactor": 5,
-                                      "inheritSpeedFactor": 0,
-                                      "repeat": true,
-                                      "time": 0,
-                                      "type": "teslabolt"
-                                    }
-                                  ],
-                                  "piercing": false,
-                                  "processing": "?multiply=00000000",
-                                  "speed": 200,
-                                  "timeToLive": 0.12,
-                                  "movementSettings": {
-                                    "collisionEnabled": false
-                                  },
-                                  "waveAmplitude": 0.02,
-                                  "wavePeriod": 0.05
-                                },
-                                "delaySteps": 0,
-                                "fuzzAngle": 5,
-                                "inheritDamageFactor": 5,
-                                "type": "miniwobbleshot"
-                              }
-                            ],
-                            "damageKind": "hidden",
-                            "damageTeam": {
-                              "type": "ghostly"
-                            },
-                            "periodicActions": [
-                              {
-                                "action": "projectile",
-                                "angleAdjust": 0,
-                                "config": {
-                                  "movementSettings": {
-                                    "collisionEnabled": false
-                                  },
-                                  "damageTeam": null,
-                                  "periodicActions": [
-                                    {
-                                      "action": "option",
-                                      "options": [
-                                        {
-                                          "action": "spark"
-                                        },
-                                        {
-                                          "action": "spark"
-                                        },
-                                        {
-                                          "action": "sound",
-                                          "options": [
-                                            "/sfx/gun/lightningcoil1.ogg",
-                                            "/sfx/gun/lightningcoil2.ogg",
-                                            "/sfx/gun/lightningcoil3.ogg"
-                                          ]
-                                        }
-                                      ],
-                                      "repeat": false,
-                                      "time": 0
-                                    }
-                                  ],
-                                  "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
-                                },
-                                "delaySteps": 0,
-                                "fuzzAngle": 0,
-                                "inheritDamageFactor": 5,
-                                "inheritSpeedFactor": 0,
-                                "repeat": true,
-                                "time": 0,
-                                "type": "teslabolt"
-                              }
-                            ],
-                            "piercing": false,
-                            "processing": "?multiply=00000000",
-                            "speed": 200,
-                            "movementSettings": {
-                              "collisionEnabled": false
-                            },
-                            "timeToLive": 0.1,
-                            "waveAmplitude": 0.2,
-                            "wavePeriod": 0.05
-                          },
-                          "delaySteps": 0,
-                          "fuzzAngle": 2,
-                          "inheritDamageFactor": 1,
-                          "type": "miniwobbleshot"
-                        }
-                      ],
-                      "damageKind": "hidden",
-                      "damageTeam": {
-                        "type": "ghostly"
-                      },
-                      "piercing": false,
-                      "processing": "?multiply=00000000",
-                      "speed": 50,
-                      "movementSettings": {
-                        "collisionEnabled": false
-                      },
-                      "timeToLive": 1,
-                      "waveAmplitude": 0.85,
-                      "wavePeriod": 0.05
-                    },
-                    "delaySteps": 0,
-                    "fuzzAngle": 1,
-                    "inheritDamageFactor": 2,
-                    "type": "miniwobbleshot"
-                  }
-                ],
-                "count": 1
-              },
-              {
-                "action": "loop",
-                "body": [
-                  {
-                    "action": "projectile",
-                    "angle": 0,
-                    "angleAdjust": 0,
-                    "config": {
-                      "periodicActions": [
-                        {
-                          "action": "projectile",
-                          "angle": -90,
-                          "time": 0.25,
-                          "angleAdjust": 0,
-                          "config": {
-                            "actionOnReap": [
-                              {
-                                "action": "projectile",
-                                "angle": -90,
-                                "angleAdjust": 0,
-                                "config": {
-                                  "actionOnReap": [
-                                    {
-                                      "action": "projectile",
-                                      "angle": -90,
-                                      "angleAdjust": 0,
-                                      "config": {
-                                        "actionOnReap": [
-                                          {
-                                            "action": "projectile",
-                                            "inheritDamageFactor": 5,
-                                            "config": {
-                                              "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
-                                            },
-                                            "type": "electricexplosionknockback"
-                                          },
-                                          {
-                                            "action": "loop",
-                                            "body": [
-                                              {
-                                                "action": "option",
-                                                "options": [
-                                                  {
-                                                    "action": "particle",
-                                                    "specification": {
-                                                      "animation": "/animations/electroshock/electroshock.animation?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50",
-                                                      "approach": [
-                                                        0.5,
-                                                        0.5
-                                                      ],
-                                                      "timeToLive": 0.2,
-                                                      "type": "animated",
-                                                      "variance": {
-                                                        "initialVelocity": [
-                                                          1,
-                                                          1
-                                                        ],
-                                                        "position": [
-                                                          2,
-                                                          2
-                                                        ],
-                                                        "rotation": 180
-                                                      }
-                                                    }
-                                                  }
-                                                ]
-                                              }
-                                            ],
-                                            "count": 1
-                                          },
-                                          {
-                                            "action": "sound",
-                                            "options": [
-                                              "/sfx/gun/grenadeblast_electric1.ogg",
-                                              "/sfx/gun/grenadeblast_electric2.ogg",
-                                              "/sfx/gun/grenadeblast_electric3.ogg"
-                                            ]
-                                          },
-                                          {
-                                            "action": "light",
-                                            "color": "yellow"
-                                          }
-                                        ],
-                                        "damageKind": "hidden",
-                                        "damageTeam": {
-                                          "type": "ghostly"
-                                        },
-                                        "periodicActions": [
-                                          {
-                                            "action": "projectile",
-                                            "angleAdjust": 0,
-                                            "config": {
+                                              "knockback": 15,
+                                              "statusEffects" : [ "electrified" ],
                                               "damageTeam": null,
                                               "periodicActions": [
                                                 {
@@ -564,7 +289,7 @@
                                       },
                                       "delaySteps": 0,
                                       "fuzzAngle": 0,
-                                      "inheritDamageFactor": 2,
+                                      "inheritDamageFactor": 1,
                                       "type": "miniwobbleshot"
                                     }
                                   ],
@@ -577,6 +302,8 @@
                                       "action": "projectile",
                                       "angleAdjust": 0,
                                       "config": {
+                                        "knockback": 15,
+                                        "statusEffects" : [ "electrified" ],
                                         "movementSettings": {
                                           "collisionEnabled": false
                                         },
@@ -608,7 +335,308 @@
                                       },
                                       "delaySteps": 0,
                                       "fuzzAngle": 0,
-                                      "inheritDamageFactor": 2,
+                                      "inheritDamageFactor": 1,
+                                      "inheritSpeedFactor": 0,
+                                      "repeat": true,
+                                      "time": 0,
+                                      "type": "teslabolt"
+                                    }
+                                  ],
+                                  "piercing": false,
+                                  "processing": "?multiply=00000000",
+                                  "speed": 200,
+                                  "timeToLive": 0.12,
+                                  "movementSettings": {
+                                    "collisionEnabled": false
+                                  },
+                                  "waveAmplitude": 0.02,
+                                  "wavePeriod": 0.05
+                                },
+                                "delaySteps": 0,
+                                "fuzzAngle": 5,
+                                "inheritDamageFactor": 1,
+                                "type": "miniwobbleshot"
+                              }
+                            ],
+                            "damageKind": "hidden",
+                            "damageTeam": {
+                              "type": "ghostly"
+                            },
+                            "periodicActions": [
+                              {
+                                "action": "projectile",
+                                "angleAdjust": 0,
+                                "config": {
+                                  "knockback": 15,
+                                  "statusEffects" : [ "electrified" ],
+                                  "movementSettings": {
+                                    "collisionEnabled": false
+                                  },
+                                  "damageTeam": null,
+                                  "periodicActions": [
+                                    {
+                                      "action": "option",
+                                      "options": [
+                                        {
+                                          "action": "spark"
+                                        },
+                                        {
+                                          "action": "spark"
+                                        },
+                                        {
+                                          "action": "sound",
+                                          "options": [
+                                            "/sfx/gun/lightningcoil1.ogg",
+                                            "/sfx/gun/lightningcoil2.ogg",
+                                            "/sfx/gun/lightningcoil3.ogg"
+                                          ]
+                                        }
+                                      ],
+                                      "repeat": false,
+                                      "time": 0
+                                    }
+                                  ],
+                                  "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
+                                },
+                                "delaySteps": 0,
+                                "fuzzAngle": 0,
+                                "inheritDamageFactor": 1,
+                                "inheritSpeedFactor": 0,
+                                "repeat": true,
+                                "time": 0,
+                                "type": "teslabolt"
+                              }
+                            ],
+                            "piercing": false,
+                            "processing": "?multiply=00000000",
+                            "speed": 200,
+                            "movementSettings": {
+                              "collisionEnabled": false
+                            },
+                            "timeToLive": 0.1,
+                            "waveAmplitude": 0.2,
+                            "wavePeriod": 0.05
+                          },
+                          "delaySteps": 0,
+                          "fuzzAngle": 2,
+                          "inheritDamageFactor": 1,
+                          "type": "miniwobbleshot"
+                        }
+                      ],
+                      "damageKind": "hidden",
+                      "damageTeam": {
+                        "type": "ghostly"
+                      },
+                      "piercing": false,
+                      "processing": "?multiply=00000000",
+                      "speed": 50,
+                      "movementSettings": {
+                        "collisionEnabled": false
+                      },
+                      "timeToLive": 1,
+                      "waveAmplitude": 0.85,
+                      "wavePeriod": 0.05
+                    },
+                    "delaySteps": 0,
+                    "fuzzAngle": 1,
+                    "inheritDamageFactor": 1,
+                    "type": "miniwobbleshot"
+                  }
+                ],
+                "count": 1
+              },
+              {
+                "action": "loop",
+                "body": [
+                  {
+                    "action": "projectile",
+                    "angle": 0,
+                    "angleAdjust": 0,
+                    "config": {
+                      "knockback": 15,
+                      "statusEffects" : [ "electrified" ],
+                      "periodicActions": [
+                        {
+                          "action": "projectile",
+                          "angle": -90,
+                          "time": 0.1,
+                          "angleAdjust": 0,
+                          "config": {
+                            "knockback": 15,
+                            "actionOnReap": [
+                              {
+                                "action": "projectile",
+                                "angle": -90,
+                                "angleAdjust": 0,
+                                "config": {
+                                  "knockback": 15,
+                                  "statusEffects" : [ "electrified" ],
+                                  "actionOnReap": [
+                                    {
+                                      "action": "projectile",
+                                      "angle": -90,
+                                      "angleAdjust": 0,
+                                      "config": {
+                                        "knockback": 15,
+                                        "statusEffects" : [ "electrified" ],
+                                        "actionOnReap": [
+                                          {
+                                            "action": "projectile",
+                                            "inheritDamageFactor": 1,
+                                            "config": {
+                                              "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
+                                            },
+                                            "type": "electricexplosionknockback"
+                                          },
+                                          {
+                                            "action": "loop",
+                                            "body": [
+                                              {
+                                                "action": "option",
+                                                "options": [
+                                                  {
+                                                    "action": "particle",
+                                                    "specification": {
+                                                      "animation": "/animations/electroshock/electroshock.animation?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50",
+                                                      "approach": [
+                                                        0.5,
+                                                        0.5
+                                                      ],
+                                                      "timeToLive": 0.2,
+                                                      "type": "animated",
+                                                      "variance": {
+                                                        "initialVelocity": [
+                                                          1,
+                                                          1
+                                                        ],
+                                                        "position": [
+                                                          2,
+                                                          2
+                                                        ],
+                                                        "rotation": 180
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ],
+                                            "count": 1
+                                          },
+                                          {
+                                            "action": "sound",
+                                            "options": [
+                                              "/sfx/gun/grenadeblast_electric1.ogg",
+                                              "/sfx/gun/grenadeblast_electric2.ogg",
+                                              "/sfx/gun/grenadeblast_electric3.ogg"
+                                            ]
+                                          },
+                                          {
+                                            "action": "light",
+                                            "color": "yellow"
+                                          }
+                                        ],
+                                        "damageKind": "hidden",
+                                        "damageTeam": {
+                                          "type": "ghostly"
+                                        },
+                                        "periodicActions": [
+                                          {
+                                            "action": "projectile",
+                                            "angleAdjust": 0,
+                                            "config": {
+                                              "knockback": 15,
+                                              "statusEffects" : [ "electrified" ],
+                                              "damageTeam": null,
+                                              "periodicActions": [
+                                                {
+                                                  "action": "option",
+                                                  "options": [
+                                                    {
+                                                      "action": "spark"
+                                                    },
+                                                    {
+                                                      "action": "spark"
+                                                    },
+                                                    {
+                                                      "action": "sound",
+                                                      "options": [
+                                                        "/sfx/gun/lightningcoil1.ogg",
+                                                        "/sfx/gun/lightningcoil2.ogg",
+                                                        "/sfx/gun/lightningcoil3.ogg"
+                                                      ]
+                                                    }
+                                                  ],
+                                                  "repeat": false,
+                                                  "time": 0
+                                                }
+                                              ],
+                                              "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
+                                            },
+                                            "delaySteps": 0,
+                                            "fuzzAngle": 0,
+                                            "inheritDamageFactor": 1,
+                                            "inheritSpeedFactor": 0,
+                                            "repeat": true,
+                                            "time": 0,
+                                            "type": "teslabolt"
+                                          }
+                                        ],
+                                        "piercing": false,
+                                        "processing": "?multiply=00000000",
+                                        "speed": 200,
+                                        "timeToLive": 0.25,
+                                        "waveAmplitude": 0.85,
+                                        "wavePeriod": 0.05
+                                      },
+                                      "delaySteps": 0,
+                                      "fuzzAngle": 0,
+                                      "inheritDamageFactor": 1,
+                                      "type": "miniwobbleshot"
+                                    }
+                                  ],
+                                  "damageKind": "hidden",
+                                  "damageTeam": {
+                                    "type": "ghostly"
+                                  },
+                                  "periodicActions": [
+                                    {
+                                      "action": "projectile",
+                                      "angleAdjust": 0,
+                                      "config": {
+                                        "knockback": 15,
+                                        "statusEffects" : [ "electrified" ],
+                                        "movementSettings": {
+                                          "collisionEnabled": false
+                                        },
+                                        "damageTeam": null,
+                                        "periodicActions": [
+                                          {
+                                            "action": "option",
+                                            "options": [
+                                              {
+                                                "action": "spark"
+                                              },
+                                              {
+                                                "action": "spark"
+                                              },
+                                              {
+                                                "action": "sound",
+                                                "options": [
+                                                  "/sfx/gun/lightningcoil1.ogg",
+                                                  "/sfx/gun/lightningcoil2.ogg",
+                                                  "/sfx/gun/lightningcoil3.ogg"
+                                                ]
+                                              }
+                                            ],
+                                            "repeat": false,
+                                            "time": 0
+                                          }
+                                        ],
+                                        "processing": "?setcolor=FFFFFFFF?border=5;AAFFAAAA;00FF0000?hueshift=-50"
+                                      },
+                                      "delaySteps": 0,
+                                      "fuzzAngle": 0,
+                                      "inheritDamageFactor": 1,
                                       "inheritSpeedFactor": 0,
                                       "repeat": true,
                                       "time": 0,
@@ -627,7 +655,7 @@
                                 },
                                 "delaySteps": 0,
                                 "fuzzAngle": 5,
-                                "inheritDamageFactor": 2,
+                                "inheritDamageFactor": 1,
                                 "type": "miniwobbleshot"
                               }
                             ],
@@ -640,6 +668,8 @@
                                 "action": "projectile",
                                 "angleAdjust": 0,
                                 "config": {
+                                  "knockback": 15,
+                                  "statusEffects" : [ "electrified" ],
                                   "movementSettings": {
                                     "collisionEnabled": false
                                   },
@@ -739,23 +769,15 @@
       "movementSettings": {
         "collisionEnabled": false
       },
-      "power": 7,
+      "power": 6.5,
       "processing": "?scalenearest=0.00"
     },
     "projectileType": "invisibleprojectile",
-    "shockWaveBounds": [
-      -0.4,
-      0,
-      0.4,
-      0
-    ],
+    "shockWaveBounds": [-0.4,0,0.4,0],
     "shockwaveHeight": 1.375,
     "type": "physicalshockwave"
   },
   "altAbilityType": "shockburstshot",
   
-  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
-  
 }

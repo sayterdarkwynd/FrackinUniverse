@@ -1,0 +1,36 @@
+{
+  "id" : "create_woodencentrifuge",
+  "prerequisites" : [ "create_matterassembler" ],
+  "title" : "Centrifuge",
+  "text" : "A centrifuge allows you to separate liquid from material, and more. There are ^orange;several types^reset; of these devices, but we'll start simple: build a ^orange;wooden centrifuge^reset; to get started.",
+  "completionText" : "While not incredibly effective, a wooden centrifuge is able to process basic liquids and grind up honeycombs to get at the goodies inside. As soon as possible, upgrade to an ^orange;Iron Centrifuge^reset; for far more utility.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
+  "speaker" : "questGiver",
+  
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
+    },
+    
+    
+    
+    "requireTurnIn" : false,
+    
+    "turnInDescription" : "Bring the ^green;Armorworks^reset; to ^orange;me^reset; at the ^orange;Science Outpost^reset;",
+
+    
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "woodencentrifuge",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

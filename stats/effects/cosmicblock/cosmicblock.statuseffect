@@ -1,14 +1,17 @@
 {
   "name" : "cosmicblock",
-  "effectConfig" : {
-    "valueAdded" : 0.10
-  },
-  "defaultDuration" : 120,
+ 	"effectConfig": {
+		"stats": [{
+				"stat": "cosmicResistance",
+				"amount": 0.1
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
 
-  "scripts" : [
-    "cosmicblock.lua"
-  ],
-
-  "label" : "Cosmic Resistance",
+  "label" : "10% Cosmic Resistance",
   "icon" : "/interface/statuses/defensecosmic.png"
 }

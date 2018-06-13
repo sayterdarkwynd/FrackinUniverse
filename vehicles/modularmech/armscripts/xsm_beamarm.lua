@@ -70,7 +70,7 @@ function BeamArm:fireState()
   -- FU beam damage scaling *******************************************
 	  self:statSet()  
 	  self.mechTier = self.stats.power
-	  self.basePower = self.stats.basePower
+	  self.basePower = self.stats.basePower or 1
 	  
           pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
           self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
@@ -130,7 +130,7 @@ function BeamArm:fireState()
   end
     
     if beamCollision and beamEndTimer <= 0 and self.beamEndProjectile then
-      world.spawnProjectile(self.beamEndProjectile, {endPoint[1],endPoint[2] - self.beamHeight}, self.driverId, {0, 0}, false)
+      world.spawnProjectile(self.beamEndProjectile, {endPoint[1],endPoint[2]}, self.driverId, {0, 0}, false)
       beamEndTimer = self.beamEndTimer
     end
     
@@ -146,7 +146,6 @@ function BeamArm:fireState()
     elseif (self.basePower) >= 34 then
       beamParams.timeToLive =  2        
     end   
-    
     
     beamParams.power =  self.applyBeamDamage      
     --FU Projectile spawn, to do scaled damage *******************************************************************************

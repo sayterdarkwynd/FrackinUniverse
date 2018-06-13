@@ -1,0 +1,40 @@
+{
+  "objectName" : "fu_byosshipdoorBroken",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  
+  "category" : "decorative",
+  "description" : "A door suitable for a spaceship.",
+  "shortdescription" : "Ship Door",
+  "race" : "generic",
+
+  "apexDescription" : "These doors are used on all our ships. This one is not playing nice.",
+  "avianDescription" : "A door. It won't open.",
+  "floranDescription" : "Door won't open!",
+  "glitchDescription" : "Disappointed. A door. It appears to be disabled currently.",
+  "humanDescription" : "Cool door. Too bad it isn't opening right now.",
+  "hylotlDescription" : "A basic ship door. It won't open at the moment.",
+  "novakidDescription" : "The door is broken, it ain't opening any time soon.",
+
+  "inventoryIcon" : "fu_byosshipdoorBrokenicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_byosshipdoorBroken.png:default",
+      "imagePosition" : [-20, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "collision" : "solid",
+      "collisionSpaces" : [ [-1, 0], [0, 0], [-1, 1], [0, 1], [-1, 2], [0, 2], [-1, 3], [0, 3], [-1, 4], [0, 4] ]
+    }
+  ],
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua"
+  ],
+  
+  "sounds" : [ "/sfx/interface/ship_error1.ogg" ]
+}

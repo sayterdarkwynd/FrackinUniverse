@@ -5,9 +5,10 @@ function init()
   script.setUpdateDelta(5)
 
   self.healingRate = 1.0 / config.getParameter("healTime", 60)
-  
+  self.energyCost = config.getParameter("energyCost")
+
   effect.addStatModifierGroup({
-    {stat = "protection", baseMultiplier = 1.25},
+    {stat = "protection", effectiveMultiplier = 1.25},
     {stat = "energyRegenPercentageRate", baseMultiplier = 0},
     {stat = "energyRegenBlockTime", baseMultiplier = 0},
     {stat = "shieldStaminaRegen", baseMultiplier = 0}     
@@ -16,8 +17,8 @@ function init()
 end
 
 function update(dt)
-  status.modifyResourcePercentage("health", self.healingRate * dt)
-  if stat.resource("energy") then
+  if status.overConsumeResource("energy", self.energyCost) then
+    status.modifyResourcePercentage("health", self.healingRate * dt)
     status.modifyResourcePercentage("energy", (-self.healingRate * dt) * 2)
   end
 end

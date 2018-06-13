@@ -47,7 +47,14 @@ function tentacleSwipeAttack.update(dt, stateData)
     mcontroller.controlFace(targetDir)
     if stateData.windupTimer > 0 then
       if stateData.windupTimer == config.getParameter("tentacleSwipeAttack.windupTime") then
-      	animator.setAnimationState("movement", "swipe")
+      	animator.setAnimationState("movement", "swipe") 
+      	
+      self.randValNum = math.random(100)
+      if self.randValNum >=75 then
+        animator.playSound("attackMain")
+      end      	
+	  animator.setParticleEmitterOffsetRegion("whipUp", mcontroller.boundBox())
+	  animator.setParticleEmitterActive("whipUp", true)       	
       end
       stateData.windupTimer = stateData.windupTimer - dt
     elseif stateData.winddownTimer > 0 then

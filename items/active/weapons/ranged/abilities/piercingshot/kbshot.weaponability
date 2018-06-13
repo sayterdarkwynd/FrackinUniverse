@@ -1,0 +1,84 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "altMuzzleFlash" : {
+        "active" : false,
+        "emissionRate" : 8,
+        "transformationGroups" : ["muzzle"],
+        "offsetRegion" : [0, 0, 0, 0],
+        "particles" : [
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"},
+          { "particle" : "piercingspark"}
+        ]
+      }
+    },
+    "sounds" : {
+      "altFire" : [ "/sfx/weapons/megablast1.ogg"  ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Force Blast",
+    "type" : "kbshot",
+    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
+    "class" : "AltFireAttack",
+    
+    "projectileType" : "fuplasmatorpedo",
+    "projectileCount" : 1,
+    "fireTime" : 2,
+    "baseDps" : 3,
+    "inaccuracy" : 0,
+    "projectileParameters" : {
+        "piercing" : true,
+	"periodicActions":[], 
+	"processing":"?hueshift=-195",
+	"statusEffects":[{"effect":"electricaura", "duration":2.0},{"effect":"electriccharge", "duration":2.0},{"effect":"levitation", "duration":2.0}], 
+	"bounces":0, 
+	"speed":75, 
+	"timeToLive":0.04, 
+	"power":0.0, 
+	"knockback":35, 
+	"actionOnReap":[
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 3,
+	      "backgroundRadius" : 3,
+	      "explosiveDamageAmount" : 0.05,
+	      "delaySteps" : 2
+	    }	
+	]   
+    },
+
+
+    // use baseDps and fireTime from primary fire
+
+    "baseDamageMultiplier" : 1.25,
+    "energyUsageMultiplier" : 1.667,
+
+    "stances" : {
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

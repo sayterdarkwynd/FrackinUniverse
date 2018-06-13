@@ -13,7 +13,15 @@
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : { },
-  "animationCustom" : { },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+        ]
+      }
+    }    
+  },
   "baseOffset" : [-1.0, 0.25],
   "muzzleOffset" : [0.0, 0.3125],
 
@@ -168,7 +176,8 @@
       "swtjc_ewg_globelauncher",
       "swtjc_ewg_phaseburst",
       "swtjc_ewg_rocketjump",
-      "swtjc_ewg_shattershot"
+      "swtjc_ewg_shattershot",
+      "forcebubble"
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]

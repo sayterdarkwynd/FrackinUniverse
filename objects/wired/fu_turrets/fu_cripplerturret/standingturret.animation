@@ -1,0 +1,166 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "attack" : {
+        "priority" : 0,
+        "default" : "dead",
+
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+          "dead" : {
+            "frames" : 1
+          },
+          "attack" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          }
+        }
+      },
+      "energy" : {
+        "default" : "full",
+
+        "states" : {
+          "full" : { "frames" : 1 },
+          "high" : { "frames" : 1 },
+          "medium" : { "frames" : 1 },
+          "low" : { "frames" : 1 },
+          "none" : { "frames" : 1 }
+        }
+      },
+      "opened" : {
+        "default" : "true",
+
+        "states" : {
+          "true" : { "frames" : 1 },
+          "false" : { "frames" : 1 }
+        }
+      }
+    },
+
+    "parts" : {
+      "gun" : {
+        "properties" : {
+          "offset" : [0.5, 0.0],
+          "projectileSource" : [3.0, 0.0],
+          "rotationGroup" : "gun",
+          "centered" : true,
+          "fullbright" : true,
+          "zLevel" : 3
+        },
+
+        "partStates" : {
+          "attack" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "dead" : {
+              "properties" : {
+                "image" : "<partImage>:dead"
+              }
+            },
+            "attack" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "gunfullbright" : {
+        "properties" : {
+          "offset" : [0.5, 0.0],
+          "projectileSource" : [3.0, 0.0],
+          "rotationGroup" : "gun",
+          "centered" : true,
+          "zLevel" : 4
+        },
+
+        "partStates" : {
+          "attack" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "dead" : {
+              "properties" : {
+                "image" : "<partImage>:dead"
+              }
+            },
+            "attack" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            }
+          }
+        }
+      },
+      
+      "stand" : {
+        "properties" : {
+          "offset" : [0, 0],
+          "image" : "<partImage>",
+          "centered" : true,
+          "zLevel" : 1
+        }
+      },
+
+      "energy" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 2,
+          "transformationGroups" : [ "energy" ]
+        },
+
+        "partStates" : {
+          "energy" : {
+            "full" : {
+              "properties" : { "image" : "<partImage>:full" }
+            },
+            "high" : {
+              "properties" : { "image" : "<partImage>:high" }
+            },
+            "medium" : {
+              "properties" : { "image" : "<partImage>:medium" }
+            },
+            "low" : {
+              "properties" : { "image" : "<partImage>:low" }
+            },
+            "none" : {
+              "properties" : { "image" : "<partImage>:none" }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "gun" : {
+      "rotationCenter" : [0, 0],
+      "angularVelocity" : 1
+    },
+    "gunfullbright" : {
+      "rotationCenter" : [0, 0],
+      "angularVelocity" : 1
+    }
+  },
+
+  "transformationGroups" : {
+    "energy" : { "interpolated" : false }
+  },
+
+  "sounds" : {
+    "powerUp" : ["/sfx/tech/mech_jump3.ogg"],
+    "powerDown" : ["/sfx/tech/mech_powerdown2.ogg"],
+    "foundTarget" : ["/sfx/interface/nav_computer_on.ogg"],
+    "scan" : ["/sfx/interface/scan.ogg"],
+    "fire" : [ "/sfx/weapons/teslagun.ogg" ]
+  }
+}

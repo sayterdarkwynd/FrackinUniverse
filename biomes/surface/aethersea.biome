@@ -11,10 +11,8 @@
       {
         "select" : 4,
         "pool" : [
-          [ 0.4, "webbermini" ],
-          [ 0.3, "webber" ],
           [ 0.1, "furatthing2" ],
-          [ 0.24, "fearmoth" ],
+          [ 0.2, "fearmoth" ],
           [ 0.1, "shadowtop" ],
           [ 0.1, "adultshadowtop" ],
           [ 0.1, "blackgiantscorpion" ],
@@ -303,6 +301,22 @@
     "grassMod" : [ "bloodstonegrass", "darkgrass", "blackslimegrass" ],
     "grassModDensity" : 0.9,
       "items" : [
+           {
+             "mode" : "ceiling",
+             "priority" : 1.0,
+             "variants" : 1,
+             "distribution" : "/biomes/distributions.config:ffunCommon",
+   
+             "type" : "object",
+             "objectSets" : [
+               {
+                 "pool" : [ 
+                   [0.50, "wildlumivineseed" ]
+                 ],
+                 "parameters" : { "startingStage" : 3 }
+               }
+             ]
+           },         
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -333,7 +347,16 @@
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "sandstone", "blockpile", "loops", "flats", "spikes", "rods", "spiralspikes", "stripeblocks", "wiggles" ]
+          "microdungeons" : [ "rockclimb", "rocktunnel", "sandstone", "blockpile", "loops", "flats", "spikes", "rods", "spiralspikes", "stripeblocks", "wiggles" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "none", "canyonmini", "terrainfeatures", "aethermini" ]
         },
         {
           "mode" : "floor",

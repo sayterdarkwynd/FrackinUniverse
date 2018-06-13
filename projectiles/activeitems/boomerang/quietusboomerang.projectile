@@ -20,5 +20,15 @@
   //"emitters" : [ "acidsquirt" ],
   "persistentAudio" : "/sfx/melee/spear_twirl_loop.ogg",
 
-  "scripts" : [ "boomerangprojectile.lua" ]
+  "scripts" : [ "boomerangprojectile.lua" ],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 5,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 1500,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  } 
 }

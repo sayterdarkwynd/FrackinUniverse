@@ -1,14 +1,16 @@
 {
   "name" : "defenseghostweave",
-  "effectConfig" : {
-    "defenseAmount" : 10
-  },
-  "defaultDuration" : 5,
-
-  "scripts" : [
-    "defenseboost.lua"
-  ],
-
+ 	"effectConfig": {
+		"stats": [{
+				"stat": "protection",
+				"amount": 10
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
   "label" : "Def +10",
   "icon" : "/interface/statuses/defense2.png"
 }

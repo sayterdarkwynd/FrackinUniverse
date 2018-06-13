@@ -8,7 +8,15 @@
     "op": "add",
     "path": "/scorchedcity/-",
     "value": [
-      0.35,
+      0.25,
+      "fu_smog"
+    ]
+  },  
+  {
+    "op": "add",
+    "path": "/scorchedcity/-",
+    "value": [
+      0.25,
       "poisongasstorm"
     ]
   },
@@ -16,7 +24,7 @@
     "op": "add",
     "path": "/scorchedcity/-",
     "value": [
-      0.25,
+      0.15,
       "poisongasstorm2"
     ]
   },
@@ -92,7 +100,8 @@
     [0.12, "insanitystorm"],
     [0.12, "freezestorm"],
     [0.10, "fuheatblast2"],
-    [0.1, "fulightningrain"],
+    [0.05, "fulightningrain"],
+    [0.05, "fulightningrain2"],
     [0.10, "fusuddenchill2"],
     [0.12, "fulightningstorm2"],
     [0.10, "fuearthquakesevere"],
@@ -108,7 +117,8 @@
     [0.10, "orangegravrain"],
     [0.10, "gravrainlight"], 
     [0.10, "orangegravrainlight"],
-    [0.1, "fulightningrain"],
+    [0.05, "fulightningrain"],
+    [0.05, "fulightningrain2"],
     [0.10, "mistyrain"],
     [0.20, "fububblerain"],
     [0.05, "fusparklejoy"],
@@ -166,7 +176,7 @@
 "value" : [     
    [0.5, "clear"],
    [0.1, "fuearthquake"],
-   [0.1, "windstorm"],
+   [0.1, "fu_smog"],
    [0.1, "fulightningstorm"],
    [0.05, "ember"],
    [0.05, "heatwave"],
@@ -175,7 +185,28 @@
    ]
 },
 
-
+  {
+    "op": "add",
+    "path": "/magma/-",
+    "value": [
+      0.2,
+      "fu_smog"
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/volcanic/0/0",
+    "value": 0.82
+  },
+  {
+    "op": "add",
+    "path": "/volcanic/-",
+    "value": [
+      0.03,
+      "fu_smog"
+    ]
+  },
+  
 {
 "op" : "add",
 "path" : "/fungal",
@@ -220,6 +251,8 @@
 "path" : "/fungaldeadly",
 "value" : [     
    [0.1, "clear"],
+   [0.02, "fulightningrain"],
+   [0.02, "fulightningrain2"],   
    [0.02, "fulightningstorm2"],
    [0.20, "hurricane"],
    [0.3, "groundmist"],
@@ -367,8 +400,10 @@
     [0.1, "sulphuracidrain"],
     [0.2, "magmastorm"],
     [0.2, "magmastormgreater"],
-    [0.10, "fulightningstorm"], 
-    [0.10, "fulightningstorm2"]
+    [0.05, "fulightningstorm"], 
+    [0.05, "fulightningstorm2"],
+    [0.05, "fulightningrain"],
+    [0.05, "fulightningrain2"]    
    ]
 },
 {
@@ -415,12 +450,6 @@
     [0.001, "largemeteor"]
     ]
 },
-// Irradiated - Windy
-// Irradiated - Weird
-// Irradiated - Poisonous
-// Irradiated - Calm
-
-
 
 {
 "op" : "add",
@@ -512,15 +541,61 @@
 "path" : "/sulphuric",
 "value" : [     
     [0.3, "clear"],
-    [0.2, "tarrain" ],
+    [0.2, "tarrain"],
     [0.2, "sulphurstormlesser"],
     [0.1, "sulphurstorm"],
-    [0.3, "sulphuracidrain" ],
+    [0.3, "sulphuracidrain"],
+    [0.05, "fulightningstorm2"],
+    [0.05, "fulightningrain2"],    
+    [0.001, "largemeteor"],
+    [0.01, "fuearthquake"],
+    [0.05, "fu_smog"],
+    [0.05, "fog2"]
+    ]
+}, 
+{
+"op" : "add",
+"path" : "/sulphuric2",
+"value" : [     
+    [0.2, "tarrain"],
+    [0.2, "sulphurstormlesser"],
+    [0.1, "sulphurstorm"],
+    [0.3, "sulphuracidrain"],
+    [0.025, "fulightningstorm2"],
+    [0.025, "fulightningrain2"], 
+    [0.02, "fuheatblast3"],
+    [0.03, "fuheatblast2"],
+    [0.05, "fu_smog"],
+    [0.05, "fog2"]
+    ]
+}, 
+{
+"op" : "add",
+"path" : "/sulphuricinsane",
+"value" : [     
+    [0.1, "tarrain"],
+    [0.3, "sulphurstormlesser"],
+    [0.3, "sulphurstorm"],
+    [0.3, "sulphuracidrain"],
     [0.005, "meteorshower"],
     [0.001, "largemeteor"],
+    [0.02, "fuheatblast3"],
+    [0.03, "fuheatblast2"],    
     [0.01, "fuearthquake"]
     ]
-},  
+},
+{
+"op" : "add",
+"path" : "/sulphuriccalm",
+"value" : [     
+    [0.3, "clear"],
+    [0.2, "tarrain"],
+    [0.1, "sulphurstormlesser"],
+    [0.1, "sulphuracidrain"],
+    [0.2, "fu_smog"],
+    [0.1, "fog2"]
+    ]
+}, 
 
 {
 "op" : "add",
@@ -562,8 +637,10 @@
     [0.05, "fog2"],
     [0.2, "crystalrain"],
     [0.5, "heavyrain"],
-    [0.1, "fulightningstorm"],
+    [0.05, "fulightningstorm"],
     [0.025, "fulightningstorm2"], 
+    [0.05, "fulightningrain"], 
+    [0.05, "fulightningrain2"],     
     [0.025, "mistyrain"],
     [0.025, "hailstones"],
     [0.025, "windstorm"]
@@ -599,10 +676,10 @@
     [0.1, "poisongasstorm"],
     [0.05, "poisongasstorm2"],
     [0.007, "poisongasstorm3"],    
-    [0.3, "ashstorm"],
+    [0.2, "ashstorm"],
     [0.1, "tarrain" ],    
     [0.2, "ash"],
-    [0.2, "windstorm"]
+    [0.3, "ashstormlesser"]
     ]
 },
 
@@ -619,10 +696,10 @@
     [0.1, "poisongasstorm"],
     [0.05, "poisongasstorm2"],
     [0.007, "poisongasstorm3"],    
-    [0.3, "ashstorm"],
+    [0.2, "ashstorm"],
     [0.1, "tarrain" ],    
     [0.2, "ash"],
-    [0.2, "windstorm"]
+    [0.3, "ashstormlesser"]
     ]
 },
 
@@ -645,7 +722,7 @@
     [0.3, "poisongasstorm"],
     [0.2, "poisongasstorm2"],
     [0.1, "poisongasstorm3"],
-    [0.2, "windstorm"]
+    [0.2, "fu_smog"]
     ]
 },
 {
@@ -655,8 +732,10 @@
     [0.3, "clear"],
     [0.1, "rain"],
     [0.1, "acidrain"],
-    [0.1, "fulightningstorm"],  
-    [0.1, "fulightningstorm2"],
+    [0.05, "fulightningstorm"],  
+    [0.05, "fulightningstorm2"],
+    [0.05, "fulightningrain"],     
+    [0.05, "fulightningrain2"],     
     [0.02, "gravrain"],
     [0.02, "orangegravrain"],
     [0.02, "gravrainlight"], 
@@ -674,7 +753,7 @@
     [0.05, "orangegravrainlight"],
     [0.2, "insanitystorm"],
     [0.1, "clear"],
-    [0.4, "fog"],
+    [0.4, "fu_smog"],
     [0.05, "rain"],
     [0.05, "acidrain"]
     ]
@@ -687,11 +766,12 @@
     [0.10, "rain"],
     [0.10, "storm"],
     [0.20, "snow"],
-    [0.15, "fulightningstorm"],
+    [0.1, "fulightningstorm"],
     [0.05, "glowingrain"],
-    [0.15, "drizzle"],
+    [0.1, "drizzle"],
     [0.2, "clear"],
-    [0.05, "acidrain"]
+    [0.05, "acidrain"],
+    [0.2, "mountainmass" ]
   ]
 },
 
@@ -737,7 +817,6 @@
     [0.1, "glowingrain"],
     [0.1, "mistyrain"],
     [0.1, "drizzle"],
-    [0.03, "fulightningrain"],
     [0.1, "futhunderclaplesser"]
    ]
 },
@@ -750,7 +829,6 @@
     [0.1, "mistyrain"],
     [0.1, "drizzle"],
     [0.1, "futhunderclap"],
-    [0.1, "fulightningrain"],
     [0.1, "futhunderclaplesser"]
    ]
 },
