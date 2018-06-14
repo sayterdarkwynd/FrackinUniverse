@@ -1,22 +1,22 @@
 {
-  "itemName" : "durasteelsniperrifle",
-  "price" : 460,
+  "itemName" : "ironlmg",
+  "price" : 160,
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "Powerfully strong to cover long distances.",
-  "shortdescription" : "Durasteel Sniper Rifle",
+  "rarity" : "Common",
+  "description" : "Dangerous, but inaccurate.",
+  "shortdescription" : "Iron LMG",
   "tooltipKind" : "gun",
-  "category" : "sniperRifle",
+  "category" : "assaultRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","upgradeableWeapon","sniperrifle"],
-  "level" : 4,
+  "itemTags" : ["weapon","ranged","upgradeableWeapon","assaultrifle"],
+  "level" : 1,
 
-  "inventoryIcon" : "durasteelsniperrifle.png",
+  "inventoryIcon" : "ironLMG7_finished_Valo.png",
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "durasteelsniperrifle.png",
+    "middle" : "ironLMG7_finished_Valo.png",
     "barrel" : "",
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
@@ -26,8 +26,8 @@
     }
   },
 
-  "critChance" : 8,
-  "critBonus" : 12,
+  "critChance" : 1,
+  "critBonus" : 2,
   
   "baseOffset" : [0.6, 0.3],
   "muzzleOffset" : [2.9, -0.2],
@@ -40,17 +40,17 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 1.3,
-    "baseDps" : 8.5,
+    "fireTime" : 0.14,
+    "baseDps" : 9,
     "energyUsage" : 25.5,
-    "inaccuracy" : 0.008,
+    "inaccuracy" : 0.0095,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "standardbullet",
     "projectileParameters" : {
-      "knockback" : 22
+      "knockback" : 15
     },
     "stances" : {
       "idle" : {
@@ -82,7 +82,7 @@
     }
   },
 
-  "altAbilityType" : "piercingshot",
+  "altAbilityType" : "spray",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
