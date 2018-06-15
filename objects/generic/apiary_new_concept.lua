@@ -12,6 +12,55 @@ DEFAULT_OFFSPRING_CHANCE = 0.4
 --use the above to track time for bee maturation while player isnt present
 --
 
+
+
+
+
+--[   
+
+functioin init ()
+  --base values are set here
+end
+
+function initAntimiteFrames()
+end
+
+
+
+function findBeeType()
+
+end
+
+function findHiveAge()
+
+end
+
+function findFrameType()  -- call frames *after* bee age/hive age and type is determined
+end
+
+function applyFrameType()  -- apply frame bonuses/penalties and stat changes
+end
+
+function mateBees()  --call mate before mutate
+end
+
+function findMutationChance()
+end
+
+function applyMutation()
+end
+
+
+
+function reset()   ---When bees are not present, this sets a slightly increased timer for when bees are added again.
+
+end
+
+--]
+
+
+
+
 function init()
 	transferUtil.init()
 	
@@ -57,25 +106,7 @@ function init()
 end
 
 
---[   
-function findBeeType()
 
-end
-
-function findHiveAge()
-
-end
-
-function findMutationChance()
-end
-
-function applyMutation()
-end
-
-function mateBees()
-end
-
---]
 
 
 
