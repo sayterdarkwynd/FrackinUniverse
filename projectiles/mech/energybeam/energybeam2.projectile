@@ -1,0 +1,67 @@
+{
+  "projectileName" : "energybeam2",
+  "image" : "energybeam2.png",
+  "animationCycle" : 0.4,
+  "lightColor" : [164, 82, 196],
+  "frameNumber" : 4,
+  "flippable" : false,
+  "fullbright" : true,
+  "physics" : "laser",
+  "bounces" : 0,
+  "emitters" : [ ],
+  "actionOnReap" : [
+    {
+      "action" : "spark"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/impact_plasma.ogg" ]
+    },
+    {
+      "action" : "loop",
+      "count" : 15,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [164, 81, 196, 255],
+            "light" : [144, 70, 180],
+            "fullbright" : true,
+            "fade" : 0.9,
+            "initialVelocity" : [0, 0],
+            "timeToLive" : 0.3,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [10, 10],
+              "timeToLive" : 0.15
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.015,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/erchiussmoke/erchiussmoke.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.2,
+        "layer" : "middle",
+        "position" : [0.0, 0.0]
+      }
+    }
+  ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "damageKind" : "cosmic",
+  "knockback" : 15,
+  "knockbackDirectional" : true,
+
+  "speed" : 80
+}

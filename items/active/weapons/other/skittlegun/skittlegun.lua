@@ -94,7 +94,14 @@ function update(dt, fireMode, shiftHeld)
 			if scienceWarning >= 3 then
 				effectUtil.effectSelf("paralysis",storage.fireTimer)
 				effectUtil.effectSelf("activemovementdummy",storage.fireTimer)
-				effectUtil.say("KEVIN!!!")
+				if scienceWarning >= 13 then
+					effectUtil.effectSelf("vulnerability",storage.fireTimer)
+					effectUtil.effectSelf("l6doomed",storage.fireTimer)
+					world.spawnProjectile("fu_beebriefcasetemp",mcontroller.position())
+					effectUtil.say("KEVIN. Banana...donkey.")
+				else
+					effectUtil.say("KEVIN!!!")
+				end
 			else
 				effectUtil.say("Greg gregogreg...Kevin...")
 			end
