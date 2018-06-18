@@ -1,23 +1,22 @@
 {
-  "itemName" : "fuatropusgreataxe",
-  "price" : 600,
-  "level" : 5,
+  "itemName" : "irradiumgreataxe",
+  "price" : 1350,
+  "level" : 4,
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A revolting bio-weapon
-^cyan;Inflicts Poison^reset;",
-  "shortdescription" : "Fleshweave Greataxe",
+  "description" : "Not at all fun to be cleaved by.
+^cyan;+12% Stun chance^reset;",
+  "shortdescription" : "Irradium Greataxe",
   "tooltipKind" : "sword2",
   "category" : "greataxe",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","greataxe", "upgradeableWeapon"],
 
-  "inventoryIcon" : "fuatropusgreataxe.png",
-  "collectablesOnPickup" : { "fu_weapongreataxe" : "fuatropusgreataxe" },
+  "inventoryIcon" : "irradiumgreataxe.png",
   "animation" : "/items/active/weapons/melee/greataxe/greataxe.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "fuatropusgreataxe.png"
+    "blade" : "irradiumgreataxe.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -33,23 +32,24 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "radioactive",
 
   "primaryAbilityType" : "greataxesmash",
   "primaryAbility" : {
-    "fireTime" : 1.2,
-    "baseDps" : 11.5,
+    "fireTime" : 0.75,
+    "baseDps" : 11.0,
     "damageConfig" : {
-      "statusEffects" : [ "weakpoison" ]
+      "statusEffects" : [ "radiationburn" ],
+      "knockback":20
     }
   },
 
   "palette" : "/items/active/weapons/colors/tier1melee.weaponcolors",
 
   "altAbilityType" : "fusuperflipslash",
-  "critChance" : 3,
-  "critBonus" : 5,
+  "critChance" : 2,
+  "critBonus" : 8,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   
-  "stunChance" : 8
+  "stunChance" : 12
 }
