@@ -14,7 +14,7 @@
   "itemTags" : ["weapon","ranged","machinepistol","plasma","upgradeableWeapon"],
   "twoHanded" : false,
 
-  "animation" : "/items/active/weapons/ranged/unique/blistergun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "curvepistol_sacre.png",
@@ -23,6 +23,16 @@
     "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [1.5, 0.0]
+		  }
+		}
+      }
+    },   
     "sounds" : {
       "fire" : [ "/sfx/gun/plasma_ar4.ogg" ]
     }
@@ -39,7 +49,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.35,
-    "baseDps" : 4.85,
+    "baseDps" : 5.2,
     "energyUsage" : 24.0,
     "inaccuracy" : 0.02,
 
@@ -87,5 +97,33 @@
   "critChance" : 1,
   "critBonus" : 3, 
   
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+    "upgradeParameters" : {
+  "description" : "A space pirate favorite in plasma technology.
+^yellow;+Bouncy and Burny",
+  "shortdescription" : "^cyan;Breach Pistol^reset; ^yellow;",
+  "animationParts" : {
+    "middle" : "curvepistol_sacre2.png"
+    },
+    "inventoryIcon" : [ { "image" : "curvepistol_sacre2.png" } ],    
+	  "primaryAbility" : {
+	    "fireTime" : 0.25,
+	    "baseDps" : 5.75,
+	    "energyUsage" : 23.0,
+	    "inaccuracy" : 0.03,
+
+	    "projectileCount" : 1,
+	    "fireType" : "auto",
+
+	    "projectileType" : "fuenergyballshot",
+	    "projectileParameters" : { 
+	      "bounces" : 4,
+	      "speed" : 64,
+	      "knockback" : 7.5,
+	      "statusEffects" : [ "frozenburning" ]
+	    }      
+	  }
+      }
+      
 }

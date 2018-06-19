@@ -1,9 +1,11 @@
 setName="fu_biofleshset"
 
-weaponBonus={ {stat = "powerMultiplier", amount = 0.15} }
+weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.15} }
 
 armorBonus={
-	{stat = "pusImmunity", amount = 1}
+	{stat = "pusImmunity", amount = 1},
+	{stat = "energyRegenPercentageRate", amount = 1.05},
+	{stat = "energyRegenBlockDischarge", amount = -2
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -27,12 +29,14 @@ function update(dt)
 
 	local hPerc = world.entityHealth(entity.id())
 	if hPerc[1] == 0 or hPerc[2] == 0 then return end
-	if ((hPerc[1] / hPerc[2]) * 100) >= 50 then return end
-
+	
+	if ((hPerc[1] / hPerc[2]) * 100) >= 50 then 
+	  return 
+	else
+	  status.modifyResourcePercentage("health", 0.01)
+	end
 	script.setUpdateDelta(60)
-	status.modifyResourcePercentage("health", 0.01)
-	effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", amount = 1.05}})
-	effect.addStatModifierGroup({{stat = "energyRegenBlockDischarge", amount = -2}})
+
 	mcontroller.controlModifiers({
 		groundMovementModifier = 1.3,
 		runModifier = 1.3,

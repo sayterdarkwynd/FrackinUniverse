@@ -12,7 +12,7 @@
   "level" : 5,
   "tooltipKind" : "gun2",
   "weaponType" : "Plasma Sniper",
-  "itemTags" : ["weapon","ranged","sniperrifle","bioweapon", "plasma", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged", "sniperrifle", "plasma", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -82,10 +82,37 @@
   }
   },
 
-  "critChance" : 4,
+  "critChance" : 2,
   "critBonus" : 2,
 
   "altAbilityType" : "fudronelauncheradv",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Longinus MkII^reset; ^yellow;^reset;",
+  "description" : "Higher Calibre. Super duper fun.
+^cyan;Counts as 'plasma' for set bonuses.^reset;
+^yellow;Counts as Hunting weapon^reset;",
+  "animationParts" : {
+    "middle" : "longinus2.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "longinus2.png:" }
+    ],
+    "critChance" : 3,
+    "critBonus" : 4,
+    "primaryAbility" : {
+	    "fireTime" : 1.8,
+	    "baseDps" : 8,
+	    "energyUsage" : 40.0,
+
+	    "projectileType" : "longinusbullet",
+	    "projectileParameters" : { 
+	      "speed" : 120,
+	      "knockback" : 20,
+	      "damageKind" : "bow"
+	    }
+    }
+  }    
 }

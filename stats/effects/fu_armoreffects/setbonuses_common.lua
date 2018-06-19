@@ -85,6 +85,7 @@ function setBonusMultiply(effectBase,mult)
 		local v=copy(vOld)
 		v["amount"]=(v["amount"] and (v["amount"]*mult)) or nil
 		v["baseMultiplier"]=(v["baseMultiplier"] and (1.0+(v["baseMultiplier"]-1.0)*mult)) or nil
+		v["effectiveMultiplier"]=(v["effectiveMultiplier"] and (1.0+(v["effectiveMultiplier"]-1.0)*mult)) or nil
 		table.insert(temp,v)
 	end
 	return temp

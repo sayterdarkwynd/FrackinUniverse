@@ -20,7 +20,7 @@
     "butt" : "",
     "middle" : "thornrifle.png",
     "barrel" : "",
-    "muzzleFlash" : "/items/active/weapons/ranged/bulletmuzzle.png"
+    "muzzleFlash" : "/animations/muzzleflash/greenburstmuzzle.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -28,8 +28,8 @@
     }
   },
 
-  "baseOffset" : [1.3, 0.2],
-  "muzzleOffset" : [2.445, 0.325],
+  "baseOffset" : [1.3, 0.34],
+  "muzzleOffset" : [3, 0.225],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -116,5 +116,22 @@
     }    
   },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+    "upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "shortdescription" : "^cyan;Thornrage^reset; ^yellow;",
+    "description" : "What greater joy than cooking flesh?
+^yellow;Inflicts poison^reset;
+^cyan;Summons Pterobombs^reset;",
+    "animationParts" : {"middle" : "thornrifle2.png"},
+    "inventoryIcon" : [ { "image" : "thornrifle2.png" } ],    
+	  "primaryAbility" : {
+	    "baseDps" : 8.4,
+	    "projectileParameters" : {
+	      "speed" : 110,
+	      "knockback" : 10
+	    }          
+	  }
+      }     
 }

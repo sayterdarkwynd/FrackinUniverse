@@ -66,7 +66,7 @@ function update(dt)
 end
 
 function racialiserBootUp()
-	raceInfo = root.assetJson("/interface/objectcrafting/fu_racialiser/fu_raceinfo.config")
+	raceInfo = root.assetJson("/interface/objectcrafting/fu_racialiser/fu_raceinfo.config").raceInfo
 	for num, info in pairs (raceInfo) do
 		if info.race == race then
 			return num

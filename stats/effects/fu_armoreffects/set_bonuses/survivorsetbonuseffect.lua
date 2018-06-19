@@ -2,7 +2,7 @@ setName="fu_survivorset"
 
 weaponBonus={
 	{stat = "critBonus", amount = 6},
-	{stat = "powerMultiplier", baseMultiplier = 1.20}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
 }
 
 armorEffect={

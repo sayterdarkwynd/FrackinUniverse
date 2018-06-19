@@ -17,7 +17,7 @@
   "learnBlueprintsOnPickup" : [ "blistergun" ],
   
   
-  "animation" : "/items/active/weapons/ranged/unique/blisterpistol.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "blisterpistol.png",
@@ -27,6 +27,16 @@
   },      
   
   "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+			//Same as BaseOffset
+		    "offset" : [0.7, 0.2]
+		  }
+		}
+      }
+    },  
     "sounds" : { "fire" : [ "/sfx/projectiles/goo_spit2.ogg" ] },
     "lights" : { "glow" : {
       "active" : true,

@@ -1,13 +1,12 @@
 require "/scripts/effectUtil.lua"
 
-oldInit=init
-oldUninit=uninit
-oldUpdate=update
+local oldInitStatusApplier=init
+local oldUninitStatusApplier=uninit
+local oldUpdateStatusApplier=update
 
 function init()
 	statusApplierValues=config.getParameter("statusApplierValues",{})
-	--script.setUpdateDelta(0)
-	if oldInit then oldInit() end
+	if oldInitStatusApplier then oldInitStatusApplier() end
 	if statusApplierValues.init then
 		for _,effect in pairs(statusApplierValues.init) do
 			effectUtil.effectSelf(effect[1],effect[2])
@@ -32,8 +31,8 @@ function update(dt)
 			end
 		end
 	end
-	if oldUpdate then
-		oldUpdate(dt)
+	if oldUpdateStatusApplier then
+		oldUpdateStatusApplier(dt)
 	end
 end
 
@@ -43,5 +42,5 @@ function uninit()
 			effectUtil.effectSelf(effect[1],effect[2])
 		end
 	end
-	if oldUninit then oldUninit() end
+	if oldUninitStatusApplier then oldUninitStatusApplier() end
 end

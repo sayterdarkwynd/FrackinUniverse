@@ -1,6 +1,6 @@
 {
   "name": "rangedcombat",
-  "description": "",
+  "description": null,
   "scripts": [
     "/scripts/behavior.lua",
     "/scripts/actions/world.lua",
@@ -14,10 +14,10 @@
     "/scripts/actions/position.lua"
   ],
   "parameters": {
-    "rangedAimTime": 0.05,
+    "rangedAimTime": 0.0,
     "rangedWindupTime": 0.05,
     "rangedMinFireTime": 0.5,
-    "rangedMaxFireTime": 1,
+    "rangedMaxFireTime": 2,
     "arrowSpeed": 62.5
   },
   "root": {
@@ -414,10 +414,63 @@
                               },
                               "children": [
                                 {
-                                  "title": "primaryFire",
-                                  "type": "action",
-                                  "name": "primaryFire",
-                                  "parameters": {}
+                                  "title": "sequence",
+                                  "type": "composite",
+                                  "name": "sequence",
+                                  "parameters": {},
+                                  "children": [
+                                    {
+                                      "title": "faceEntity",
+                                      "type": "action",
+                                      "name": "faceEntity",
+                                      "parameters": {
+                                        "entity": {"key": "target"}
+                                      }
+                                    },
+                                    {
+                                      "title": "entityPosition",
+                                      "type": "action",
+                                      "name": "entityPosition",
+                                      "parameters": {
+                                        "entity": {"key": "target"}
+                                      },
+                                      "output": {
+                                        "position": "targetPosition"
+                                      }
+                                    },
+                                    {
+                                      "title": "offsetPosition",
+                                      "type": "action",
+                                      "name": "offsetPosition",
+                                      "parameters": {
+                                        "offset": {"value": [0, 0]},
+                                        "position": {"key": "targetPosition"}
+                                      },
+                                      "output": {
+                                        "position": "aimPosition"
+                                      }
+                                    },
+                                    {
+                                      "title": "setAimPosition",
+                                      "type": "action",
+                                      "name": "setAimPosition",
+                                      "parameters": {
+                                        "position": {"key": "aimPosition"}
+                                      }
+                                    },
+                                    {
+                                      "title": "primaryFire",
+                                      "type": "action",
+                                      "name": "primaryFire",
+                                      "parameters": {}
+                                    },
+                                    {
+                                      "title": "altFire",
+                                      "type": "action",
+                                      "name": "altFire",
+                                      "parameters": {}
+                                    }
+                                  ]
                                 },
                                 {
                                   "title": "sequence",

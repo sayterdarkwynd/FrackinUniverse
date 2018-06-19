@@ -12,10 +12,11 @@
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","broadsword","longsword","upgradeableWeapon"],
   "inventoryIcon" : "vai.png",
-  "animation" : "combolongsword.animation",
+  "animation" : "combolongswordglow.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "vai.png"
+    "blade" : "vai.png",
+    "bladefullbright" : "vaifullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -41,5 +42,15 @@
 
   "critChance" : 2,
   "critBonus" : 6,  
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Daravai^reset; ^yellow;",  
+    "animationParts" : {"blade" : "vai2.png","bladefullbright" : "vai2fullbright.png"},
+    "inventoryIcon" : [ { "image" : "vai2.png" } ], 
+    "primaryAbility" : {
+      "fireTime" : 1.0,
+      "baseDps" : 9.6   
+    }
+  }
 }

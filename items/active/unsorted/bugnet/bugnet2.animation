@@ -63,10 +63,39 @@
           }
         }
       },
+      "bugnetfullbright" : {
+        "properties" : {
+          "zLevel" : 1,
+          "centered" : true,
+          "offset" : [-0.75, 1.0],
+          "transformationGroups" : ["weapon"],
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "net" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "hang" : {
+              "properties" : {
+                "image" : "<partImage>:hang.<frame>"
+              }
+            },
+            "swing" : {
+              "properties" : {
+                "image" : "<partImage>:swing.<frame>"
+              }
+            }
+          }
+        }
+      },      
 
       "swoosh" : {
         "properties" : {
-          "zLevel" : -1,
+          "zLevel" : -2,
           "centered" : true,
           "offset" : [1.0, 1.75],
           "transformationGroups" : ["swoosh"],
@@ -88,7 +117,33 @@
             }
           }
         }
-      }
+      },
+      "swooshfullbright" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [1.0, 1.75],
+          "transformationGroups" : ["swoosh"],
+          "rotationCenter" : [0, 0],
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>",
+                "damageArea" : [[-2.25, 1.75], [-1, 2.25], [0.25, 2.25], [2, 1.5], [3.0, -0.125], [3.0, -1.25], [2.5, -2.0], [1.0, -2.0]]
+              }
+            }
+          }
+        }
+      }      
     }
   },
 

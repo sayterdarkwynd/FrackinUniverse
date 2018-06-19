@@ -1,41 +1,60 @@
 {
-  "objectName" : "bluecandle",
-  "colonyTags" : [ "bees", "light" ],
-  "rarity" : "Common",
-  "category" : "light",
-  "price" : 45,
-
-  "description" : "A candle made with frozen beeswax.",
-  "shortdescription" : "Blue Candle",
-  "race" : "generic",
-
-  "hydrophobic" : true,
-
-  "apexDescription" : "A small candle.",
-  "avianDescription" : "Avian priests often work by candlelight.",
-  "floranDescription" : "Hsss take it away!",
-  "glitchDescription" : "Explanation. The Glitch do not yet have the technology to produce electric lights.",
-  "humanDescription" : "A pretty little candle.",
-  "hylotlDescription" : "Little is as beautiful as the flickering of a candle flame.",
-
-  "lightColor" : [234, 139, 103],
-  "flickerDistance" : 0.5,
-  "flickerStrength" : 0.1,
-
-  "inventoryIcon" : "bluecandleicon.png",
-  "orientations" : [
-
-    {
-      "dualImage" : "bluecandle.png:<color>.<frame>",
-      "imagePosition" : [0, 0],
-      "frames" : 3,
-      "animationCycle" : 0.5,
-
-      "spaces" : [ [0, 0], [0, 1] ],
-      "fgAnchors" : [ [0, -1] ]
-    }
-  ],
-
-  "soundEffect" : "/sfx/objects/oillantern.ogg"
-
+  "objectName": "bluecandle",
+  "colonyTags": ["bees", "light"],
+  "rarity": "Common",
+  "category": "light",
+  "price": 45,
+  "description": "A candle made with blue beeswax.",
+  "shortdescription": "Blue Candle",
+  "race": "generic",
+  "hydrophobic": true,
+  "apexDescription": "A small candle.",
+  "avianDescription": "Avian priests often work by candlelight.",
+  "floranDescription": "Hsss take it away!",
+  "glitchDescription": "Explanation. The Glitch do not yet have the technology to produce electric lights.",
+  "humanDescription": "A pretty little candle.",
+  "hylotlDescription": "Little is as beautiful as the flickering of a candle flame.",
+  "lightColor": [234, 139, 103],
+  "flickerDistance": 0.5,
+  "flickerStrength": 0.1,
+  "inventoryIcon": "bluecandleicon.png",
+  "orientations": [{
+    "image": "bluecandle.png:<color>.<frame>",
+    "imagePosition": [0, 0],
+    "animationPosition": [0, 0],
+    "direction": "left",
+    "flipImages": true,
+    "spaces": [
+      [0, 0],
+      [0, 1]
+    ],
+    "fgAnchors": [
+      [0, -1]
+    ]
+  }, {
+    "image": "bluecandle.png:<color>.<frame>",
+    "imagePosition": [0, 0],
+    "animationPosition": [0, 0],
+    "direction": "right",
+    "spaces": [
+      [0, 0],
+      [0, 1]
+    ],
+    "fgAnchors": [
+      [0, -1]
+    ]
+  }],
+  "soundEffect": "/sfx/objects/oillantern.ogg",
+  "animation": "bluecandle.animation",
+  "animationParts": {
+    "bg": "bluecandle.png",
+    "fg": "bluecandlelit.png"
+  },
+  "animationPosition": [0, 0],
+  "scripts": ["/objects/wired/light/light.lua"],
+  "scriptDelta": 60,
+  "interactive": false,
+  "inputNodes": [
+    [0, 0]
+  ]
 }

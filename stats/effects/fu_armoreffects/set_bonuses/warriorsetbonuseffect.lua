@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_warriorset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.10}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.10}
 }
 
 armorBonus={

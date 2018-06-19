@@ -2,7 +2,7 @@ setName="fu_leatherset"
 
 weaponBonus={
 	{stat = "critChance", amount = 5},
-	{stat = "powerMultiplier", amount = 0.05}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.05}
 }
 
 armorBonus={

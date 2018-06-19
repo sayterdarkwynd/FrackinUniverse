@@ -54,7 +54,7 @@ end
 
 function activate()
   if not self.active then
-    status.addPersistentEffect("booster", "powerboost", math.huge)
+        status.addPersistentEffect("booster", "phaseattackstat", math.huge)
 	world.setProperty("hide[" .. tostring(entity.id()) .. "]", true)
 	animator.playSound("activate")
   end

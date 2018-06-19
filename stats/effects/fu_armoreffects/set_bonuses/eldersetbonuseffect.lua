@@ -4,7 +4,7 @@ setName="fu_elderset"
 
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={
@@ -53,7 +53,8 @@ function update(dt)
 end
 
 function checkArmor()
-	effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,setBonusMultiply(armorBonus,level))
+	--effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,setBonusMultiply(armorBonus,level))--currently just a waste of cpu time. they're blocking stats in this set.
+	effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,armorBonus)
 end
 
 function getLevel()

@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
 	{stat = "critChance", amount = 3.5},
-	{stat = "powerMultiplier", baseMultiplier = 1.15}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorBonus={
@@ -27,9 +27,9 @@ function update(dt)
 	end
 end
 
-function checkArmor()
+--[[function checkArmor()--commented out because if it gets called, it will error. level needs to be set in the update block, before calling this function
 	effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,setBonusMultiply(armorBonus,level))
-end
+end]]
 
 function checkWeapons()
 	local weaponSword=weaponCheck({"axe", "hammer", "broadsword", "spear" })

@@ -1,0 +1,24 @@
+{
+  "itemName" : "faceskin",
+  "rarity" : "rare",
+  "category" : "food",
+  "price" : 20,
+  "inventoryIcon" : "faceskin.png",
+  "description" : "Just like mom used to make.",
+  "shortdescription" : "Face Skin",
+  "maxStack" : 1000,
+  "foodValue" : 30,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 15,
+  "effects" : [ [
+    {
+        "effect" : "negativehealth5",
+        "duration" : 10
+    }
+  ] ],
+  "blockingEffects" : [
+     "wellfed"
+  ]
+}

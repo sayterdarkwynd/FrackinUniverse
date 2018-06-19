@@ -2,7 +2,7 @@ setName="fu_steampunkset"
 
 weaponBonus={
 	{stat = "maxEnergy", baseMultiplier = 1.25},
-	{stat = "powerMultiplier", baseMultiplier = 1.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={

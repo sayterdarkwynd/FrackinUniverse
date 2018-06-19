@@ -3,7 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_ghostweaveset"
 
 weaponBonus={
-	{stat = "powerMultiplier", amount = 0.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={
