@@ -187,6 +187,13 @@ end
 
 function updateAim()
   local aimAngle, aimDirection = activeItem.aimAngleAndDirection(0, activeItem.ownerAimPosition())
+	
+  if self.active then --This is the thing that makes it aimable and look okay while doing it. I hope I'm doing this right. -Cookie
+    self.aimAngle = aimAngle
+	activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation)
+	else
+	activeItem.setArmAngle(self.relativeArmRotation)
+  end
   
   if self.stance.allowRotate then
     self.aimAngle = aimAngle
