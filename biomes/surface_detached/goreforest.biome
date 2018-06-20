@@ -5,12 +5,12 @@
     "groups" : [
         {
         "select" : 3,
-        "pool" : [ 
-          [ 0.09, "wisper" ],     
+        "pool" : [
+          [ 0.09, "wisper" ],
           [ 0.09, "lilodon" ],
-          [ 0.09, "fusnapper" ],        
+          [ 0.09, "fusnapper" ],
           [ 0.09, "skimbus" ],
-          [ 0.09, "ravager" ],         
+          [ 0.09, "ravager" ],
           [ 0.09, "monopus" ]
         ]
       },
@@ -89,7 +89,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildmutaviskseed" ],
               [0.35, "wildneuropodseed" ],
               [0.35, "wildbloodrootseed" ]
@@ -98,7 +98,7 @@
             }
           ]
         },
-    
+
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -159,9 +159,18 @@
           "priority" : 3.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
-        
+
           "type" : "microdungeon",
-          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats", "reversepyramids" ]
+          "microdungeons" : [ "terrainfeatures", "toxicmicrodungeons", "rockclimb","rocktunnel", "sandstone", "blockpile", "loops", "flats", "reversepyramids" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 5,
+          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "hauntedmini" ]
         },
         {
           "mode" : "floor",
@@ -278,5 +287,3 @@
       ]
     }
 }
-
-
