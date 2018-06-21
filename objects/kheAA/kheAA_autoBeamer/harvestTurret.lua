@@ -136,6 +136,8 @@ end
 -- Coroutine
 function autoFire(target)
 	local types=targetTypes(target)
+	local rotation = animator.currentRotationAngle("gun") 		
+	local aimVector = {object.direction() * math.cos(rotation), math.sin(rotation)}
 	
 	while true do
 		if types.eType=="player" then
