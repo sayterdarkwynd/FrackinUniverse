@@ -149,7 +149,7 @@
 	"animation": "standingturretbug.animation",
 
 	"scripts": [
-		"/objects/kheAA/kheAA_autoBeamer/standingturretbug.lua",
+		"/objects/kheAA/kheAA_autoBeamer/harvestTurret.lua",
 		"/scripts/npcToyObject.lua",
 		"/scripts/stateMachine.lua"
 	],
@@ -171,6 +171,13 @@
 	
 	"fireTime": 1,
 
+	"targetEntityTypes":[
+		"monster"
+	],
+	"validTargetTypes":{
+		"bug":true
+	},
+	
 	"npcToy": {
 		"influence": [
 			"turret"

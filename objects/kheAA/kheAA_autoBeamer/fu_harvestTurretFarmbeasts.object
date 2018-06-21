@@ -149,7 +149,7 @@
 	"animation": "standingturretbug.animation",
 
 	"scripts": [
-		"/objects/kheAA/kheAA_autoBeamer/standingturretfarmbeast.lua",
+		"/objects/kheAA/kheAA_autoBeamer/harvestTurret.lua",
 		"/scripts/npcToyObject.lua",
 		"/scripts/stateMachine.lua"
 	],
@@ -170,6 +170,14 @@
 	"maxFireAngle": 3,
 	
 	"fireTime": 1,
+
+	"targetEntityTypes":[
+		"monster"
+	],
+	"validTargetTypes":{
+		"farmbeast":true
+	},
+
 
 	"npcToy": {
 		"influence": [
