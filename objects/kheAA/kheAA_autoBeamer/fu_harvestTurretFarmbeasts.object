@@ -10,7 +10,7 @@
 	"frameCooldown": 5,
 	"autoCloseCooldown": 3600,
 	"health": 5,
-	"description": "Harvester turret modified to harvest farmbeasts instead.",
+	"description": "A specialized turret designed to harvest farmbeasts.",
 	"shortdescription": "Farmbeast Harvester Turret",
 	"subtitle": "Automatic Harvesting",
 	"race": "generic",
@@ -149,7 +149,7 @@
 	"animation": "standingturretbug.animation",
 
 	"scripts": [
-		"/objects/kheAA/kheAA_autoBeamer/standingturretfarmbeast.lua",
+		"/objects/kheAA/kheAA_autoBeamer/harvestTurret.lua",
 		"/scripts/npcToyObject.lua",
 		"/scripts/stateMachine.lua"
 	],
@@ -170,6 +170,14 @@
 	"maxFireAngle": 3,
 	
 	"fireTime": 1,
+
+	"targetEntityTypes":[
+		"monster"
+	],
+	"validTargetTypes":{
+		"farmbeast":true
+	},
+
 
 	"npcToy": {
 		"influence": [
