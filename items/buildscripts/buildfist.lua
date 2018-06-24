@@ -39,6 +39,7 @@ function build(directory, config, parameters, level, seed)
     -- FU ADDITIONS 
       config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
       config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
+      config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
     -- *******************************
     
   -- set price
