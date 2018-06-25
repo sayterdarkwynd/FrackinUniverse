@@ -1,11 +1,11 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
-setName="tw_spacesuitset"
+setName="tw_spacesuitset2"
 
 weaponBonus={}
 
 armorBonus={
-	{stat = "maxBreath", effectiveMultiplier = 15},
+	{stat = "maxBreath", effectiveMultiplier = 30},
 	{stat = "breathDepletionRate", baseMultiplier = 1.0}
 }
 
