@@ -133,6 +133,7 @@ function update(dt)
             self.output = {}
             self.timer = self.mintick --reset timer to a safe minimum
             animator.setAnimationState("samplingarrayanim", "idle")
+            animator.playSound("active")
         end
 
         if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
@@ -144,9 +145,9 @@ end
 
 
 function startCrafting(result)
+    
     if next(result) == nil then return false
     else _,result = next(result)
-
         for k,v in pairs(result.inputs) do
             if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
         end
@@ -155,7 +156,6 @@ function startCrafting(result)
         self.timer = result.time
         self.output = result.outputs
         animator.setAnimationState("samplingarrayanim", "working")
-
         return true
     end
 end
