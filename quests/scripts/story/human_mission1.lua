@@ -46,13 +46,13 @@ function update(dt)
 end
 
 function questComplete()
- -- if player.hasCompletedQuest("fu_byos") then
- --   quest.addReward(config.getParameter("BYOSRewards"))
---	quest.setCompletionText(config.getParameter("BYOSCompletionText"))
- -- else
- --   player.upgradeShip(config.getParameter("shipUpgrade"))
- --   player.playCinematic(config.getParameter("shipUpgradeCinema"))
- -- end
+  -- if player.hasCompletedQuest("fu_byos") then
+  --  quest.addReward(config.getParameter("BYOSRewards"))
+  --	quest.setCompletionText(config.getParameter("BYOSCompletionText"))
+  -- else
+  --   player.upgradeShip(config.getParameter("shipUpgrade"))
+  --   player.playCinematic(config.getParameter("shipUpgradeCinema"))
+  -- end
   
   setPortraits()
   questutil.questCompleteActions()
