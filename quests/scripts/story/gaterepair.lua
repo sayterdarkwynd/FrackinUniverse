@@ -279,6 +279,7 @@ function questComplete()
   
   
   if player.hasCompletedQuest("fu_byos") then
+    player.upgradeShip(config.getParameter("shipUpgrade"))
     quest.addReward(config.getParameter("BYOSRewards"))
     quest.setCompletionText(config.getParameter("BYOSCompletionText"))
   else
