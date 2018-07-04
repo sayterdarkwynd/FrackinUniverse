@@ -279,11 +279,11 @@ function questComplete()
   
   
   if player.hasCompletedQuest("fu_byos") then
-    player.upgradeShip(config.getParameter("shipUpgrade"))
+    player.upgradeShip(config.getParameter("shipUpgrade2"))
     quest.addReward(config.getParameter("BYOSRewards"))
     quest.setCompletionText(config.getParameter("BYOSCompletionText"))
   else
-    player.upgradeShip(config.getParameter("shipUpgrade2"))
+    player.upgradeShip(config.getParameter("shipUpgrade3"))
     player.playCinematic(config.getParameter("shipUpgradeCinema"))
   end  
 end
