@@ -1,0 +1,77 @@
+{
+  "itemName" : "fushadowdagger",
+  "price" : 40,
+  "maxStack" : 1,
+  "level" : 1,
+  "rarity" : "rare",
+  "description" : "Shadow-forged dagger
+^cyan;Shadow Damage^reset;",
+  "shortdescription" : "Shadeclaw",
+  "tooltipKind" : "sword2",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger","shadow", "upgradeableWeapon"],
+  "inventoryIcon" : "shadowdagger.png",
+  "animation" : "daggerglow.animation",
+  "animationParts" : {
+    "blade" : "shadowdagger.png",
+    "bladefullbright" : "shadowdagger.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [0.0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "aimOffset" : -1.0,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+    "fireTime" : 0.35,
+    "baseDps" : 7.24,
+    "damageConfig" : {
+      "knockback" : 10,
+       "statusEffects" : [ "shadowgasfx" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.1, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -20,
+        "weaponRotation" : -20,
+        "weaponOffset" : [0.1, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0.1, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      }
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
