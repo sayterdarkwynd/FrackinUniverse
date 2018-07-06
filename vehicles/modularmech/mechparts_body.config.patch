@@ -3691,7 +3691,10 @@
 			]
 		}
 	],	
-	
+	[
+	{ "op": "test", "path": "/aegiproto" },
+	{ "op": "add", "path": "/aegiproto/stats/mechMass","value": 1 }
+	],	
 	[
 	{ "op": "test", "path": "/avikanproto" },
 	{ "op": "add", "path": "/avikanproto/stats/mechMass","value": 1 }
@@ -3754,7 +3757,7 @@
 	{ "op": "add", "path": "/droden/stats/mechMass","value": 3 },		
 		{
 			"op": "add",
-			"path": "/avikan/partParameters/hazardImmunities",
+			"path": "/droden/partParameters/hazardImmunities",
 			"value": [
 				"desertweathernew",
 				"desertweathernewdeadly",
@@ -3881,7 +3884,50 @@
 			]
 		}
 	],
-	
+	[
+	{ "op": "test", "path": "/aegi" },
+	{ "op": "add", "path": "/aegi/stats/mechMass","value": 8 },		
+		{
+			"op": "add",
+			"path": "/avikan/partParameters/hazardImmunities",
+			"value": [
+				"desertweathernew",
+				"desertweathernewdeadly",
+				"jungleheatweather",
+				"protoweather",
+				"protoweather2",
+				"aetherweathernew",
+				"sulphuricweathernew",
+				"sulphuricweathernew2",
+				"sulphuricweatherstorm",
+				"sulphuricweatherstorm2",
+				"gasworld1",
+				"gasworld2",
+				"gasworld3",
+				"biomeradiation",
+				"radioactiveweathernew",
+				"radioactiveweathernew2",
+				"radioactiveweathernew3",
+				"poisonweathernew",
+				"poisonweathernewbiome",
+				"biomepoisongas",
+				"biomepoison1",
+				"biomepoison2",
+				"biomepoison3",
+				"biomecold",
+				"coldweathernew",
+				"ffbiomecold0",
+				"ffbiomecold1",
+				"ffbiomecold2",
+				"ffbiomecold3",
+				"biomeheat",
+				"ffbiomeheat1",
+				"ffbioimeheat2",
+				"heatweathernew2",
+				"heatweathernew"
+			]
+		}
+	],	
 	[
 	{ "op": "test", "path": "/dnbody", "inverse" : false },
 	{ "op": "add", "path": "/dnbody/stats/mechMass","value": 7 },

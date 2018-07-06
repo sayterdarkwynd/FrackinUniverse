@@ -1,0 +1,56 @@
+{
+  "objectName" : "shadowdoor",
+  "rarity" : "rare",
+  "printable" : true,
+  "category" : "door",
+  "price" : 125,
+  "description" : "This door looks like it could be opened with a heavy explosive.",
+  "shortdescription" : "Missile Door",
+  "race" : "shadow",
+
+
+  "inventoryIcon" : "shadowdooricon.png",
+  "orientations" : [
+    {
+      "image" : "shadowdoor.png:default",
+      "flipImages" : true,
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "shadowdoor.png:default",
+      "imagePosition" : [-20, 0],
+      "renderLayer" : "Object+5",
+      "spaceScan" : 0.1,
+      "anchors" : [],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "shadowdoor.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

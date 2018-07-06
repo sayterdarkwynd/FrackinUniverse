@@ -94,7 +94,8 @@ function updateStage(dt)
     end
   elseif self.missionStage == 4 then
     player.giveItem("statustablet")
-     quest.complete()     
+    player.upgradeShip(config.getParameter("shipUpgrade"))
+    quest.complete()     
   end
 end
 
