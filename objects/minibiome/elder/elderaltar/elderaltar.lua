@@ -24,7 +24,10 @@ local recipes =
 {inputs = { nocxiumbar=7, elderrelic7=1, elderrelic12=1 }, outputs = { cultarmorchest=1 }, time = 15.0 },
 {inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 },
 {inputs = { cthulureward=1, elderrelic3=2, elderrelic14=1 }, outputs = { eldermace=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic1=3, elderrelic11=2 }, outputs = { eldergrenadelauncher=1 }, time = 15.0 }
+{inputs = { elderrelic12=5, elderrelic4=1, elderrelic8=1 }, outputs = { eldershotgun=1 }, time = 15.0 },
+{inputs = { cthulureward=1, elderrelic1=3, elderrelic11=2 }, outputs = { eldergrenadelauncher=1 }, time = 15.0 },
+{inputs = { shoggothessence=5}, outputs = { shoggothflesh=1 }, time = 1.0 },
+{inputs = { shoggothflesh=1}, outputs = { essence=1000,fuscienceresource=1000 }, time = 1.0 }
 }
 
 function init()
@@ -130,6 +133,7 @@ function update(dt)
             self.output = {}
             self.timer = self.mintick --reset timer to a safe minimum
             animator.setAnimationState("samplingarrayanim", "idle")
+            animator.playSound("active")
         end
 
         if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
@@ -141,9 +145,9 @@ end
 
 
 function startCrafting(result)
+    
     if next(result) == nil then return false
     else _,result = next(result)
-
         for k,v in pairs(result.inputs) do
             if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
         end
@@ -152,7 +156,6 @@ function startCrafting(result)
         self.timer = result.time
         self.output = result.outputs
         animator.setAnimationState("samplingarrayanim", "working")
-
         return true
     end
 end

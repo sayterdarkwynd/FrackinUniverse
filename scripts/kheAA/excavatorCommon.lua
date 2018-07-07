@@ -131,8 +131,11 @@ end
 function states.vacuum(dt)
 	if transferUtil.powerLevel(storage.logicNode) then
 		if excavatorCommon.mainDelta > storage.vacuumDelay then
+			local buffer=entity.position()
 			--if excavatorCommon.vacuumSafetyCheck(entity.position()) then
-			excavatorCommon.grab(entity.position())
+			if buffer then
+				excavatorCommon.grab(buffer)
+			end
 			--end
 			excavatorCommon.mainDelta=0
 			storage.state="start"
@@ -214,6 +217,10 @@ function states.movePump(dt)
 end
 
 function excavatorCommon.grab(grabPos)
+	if not grabPos then
+		return
+	end
+	
 	if not entity.entityType() == "object" then
 		sb.logInfo("excavatorCommon.grab: Cannot run on non-object (id: %s). Stop trying to do so.",entity.id())
 		return
@@ -270,7 +277,7 @@ function states.mine(dt)
 		return;
 	end
 	excavatorCommon.mainDelta = 0;
-	if redrillPosFore ~= nil then
+	if redrillPosFore then
 		if reDrillLevelFore == 1 then
 			if world.material(redrillPosFore,"foreground") then
 				world.damageTileArea(redrillPosFore,1.25, "foreground", redrillPosFore, "plantish", storage.drillPower/3)
@@ -297,13 +304,13 @@ function states.mine(dt)
 			end
 		end
 	end
-	if redrillPosBack ~= nil then
+	if redrillPosBack then
 		if reDrillLevelBack == 1 then
 			if world.material(redrillPosBack,"background") then
 				world.damageTileArea(redrillPosBack,1.25, "background", redrillPosBack, "plantish", storage.drillPower/3)
 				reDrillLevelBack=2
 				if storage.isVacuum then
-					excavatorCommon.grab(redrillPosFore)
+					excavatorCommon.grab(redrillPosBack)
 				end
 				return
 			else
@@ -364,7 +371,9 @@ function states.mine(dt)
 	excavatorCommon.mainDelta=0.1
 	storage.state = "moveDrill";
 	if storage.isVacuum then
-		excavatorCommon.grab(absdrillPos)
+		if absdrillPos then
+			excavatorCommon.grab(absdrillPos)
+		end
 	end
 	
 end
@@ -378,7 +387,7 @@ function states.pump(dt)
 	local pos = excavatorCommon.combineWrap({{storage.facing, storage.depth},storage.position,{storage.facing==-1 and storage.box.xMax or 0,0}})
 	local liquid = world.forceDestroyLiquid(pos);
 	
-	if liquid ~= nil then
+	if liquid then
 		if storage.liquids[liquid[1]] == nil then
 			storage.liquids[liquid[1]] = 0;
 		end
@@ -390,7 +399,7 @@ function states.pump(dt)
 			if v >= 1 then
 				local level=10^math.floor(math.log(v,10))
 				local itemD=liquidLib.liquidToItem(k,level)
-				if itemD ~= nil then
+				if itemD then
 					local try,count=transferUtil.throwItemsAt(storage.containerId,storage.inContainers[storage.containerId],itemD)
 					if try then
 						storage.liquids[k] = storage.liquids[k] - count;

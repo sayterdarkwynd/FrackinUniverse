@@ -2,6 +2,7 @@
 { "op": "add", "path": "/species/-", "value" : "thelusian" },
 { "op": "add", "path": "/species/-", "value" : "fukirhos" },
 { "op": "add", "path": "/species/-", "value" : "radien" },
+{ "op": "add", "path": "/species/-", "value" : "shadow" },
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/thelusian",
 		"value" : "mechbodyapexproto"
@@ -13,7 +14,11 @@
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/radien",
 		"value" : "mechbodynovakidproto"
-	},	
+	},
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/shadow",
+		"value" : "mechbodynovakidproto"
+	},		
 	{"op" : "add",
 		"path" : "/defaultCodexes/thelusian",
 		"value" : [ "protectorate1", "protectorate2" ]
@@ -25,6 +30,10 @@
 	{"op" : "add",
 		"path" : "/defaultCodexes/radien",
 		"value" : [ "protectorate1", "protectorate2" ]
+	},
+	{"op" : "add",
+		"path" : "/defaultCodexes/shadow",
+		"value" : [ "shadow1", "shadow2" ]
 	},	
   {
     "op" : "add",
@@ -42,7 +51,11 @@
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/basictilegroundeffects.lua" },
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/fu_tilegroundeffects.lua" },
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value":  "/scripts/isn_geldetection.lua" },
-
+	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_sciencefuelhatch"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_sciencetechstationhuman"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_scienceshiplocker"} },
+	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox2"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "multitinytether"} },
@@ -71,7 +84,7 @@
         
         { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "radrebelchest"} },
         { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "radrebelpants"} },
-
+        
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ffguide-codex"} },
 	//{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "sciencebrochure"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fullwood1"} },
@@ -235,6 +248,7 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "durasteelkatana"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironmachinepistol"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironshotgun"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironlmg"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironsniperrifle"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironmachinepistol"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tungstenmachinepistol"} },
@@ -529,7 +543,8 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "tinylocker" } },
 	
 	
-	//Dyes (green)
+	//Dyes 
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "brassdye" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "aegisaltdye" } },	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "aliendye" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "amephiumdye" } },
@@ -647,6 +662,7 @@
 	//Sentient Cookie Tiles
 	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"fuslopedblackglass"}},
 	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"fuslopedglass"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"fuslopedtintedglass"}},
 	
 	// FU SAIL helper for getting player companions
 	{ "op": "add", "path": "/companionsConfig/scripts/-", "value": "/scripts/companionhandler.lua" }

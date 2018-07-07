@@ -4,14 +4,14 @@ function init()
   effect.setParentDirectives("fade=6f6f6f=0.55")
    effect.addStatModifierGroup({
      {stat = "protection", amount = config.getParameter("defenseAmount", 0)},
-     {stat = "physicalResistance", amount = config.getParameter("defenseAmount2", 0)},
-     {stat = "fireResistance", amount = config.getParameter("defenseAmount2", 0)},
-     {stat = "iceResistance", amount = config.getParameter("defenseAmount2", 0)},
-     {stat = "poisonResistance", amount = config.getParameter("defenseAmount2", 0)},
-     {stat = "electricResistance", amount = config.getParameter("defenseAmount2", 0)},
-     {stat = "radioactiveResistance", amount = config.getParameter("defenseAmount2", 0)},
-     {stat = "shadowResistance", amount = config.getParameter("defenseAmount2", 0)},
-     {stat = "cosmicResistance", amount = config.getParameter("defenseAmount2", 0)}
+     {stat = "physicalResistance", amount = config.getParameter("resistanceAmount", 0)},
+     {stat = "fireResistance", amount = config.getParameter("resistanceAmount", 0)},
+     {stat = "iceResistance", amount = config.getParameter("resistanceAmount", 0)},
+     {stat = "poisonResistance", amount = config.getParameter("resistanceAmount", 0)},
+     {stat = "electricResistance", amount = config.getParameter("resistanceAmount", 0)},
+     {stat = "radioactiveResistance", amount = config.getParameter("resistanceAmount", 0)},
+     {stat = "shadowResistance", amount = config.getParameter("resistanceAmount", 0)},
+     {stat = "cosmicResistance", amount = config.getParameter("resistanceAmount", 0)}
    })
    makeAlert()
    script.setUpdateDelta(0)

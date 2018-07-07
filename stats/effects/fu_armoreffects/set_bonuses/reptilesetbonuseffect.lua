@@ -10,7 +10,7 @@ weaponBonus2={
 
 armorBonus={
 	{stat = "biomeheatImmunity", amount = 1},
-	{stat = "poisonResistance", amount = 0.15}
+	{stat = "poisonResistance", amount = 0.15},
 	{stat = "sulphuricImmunity", amount = 0.15},
 	{stat = "maxHealth", baseMultiplier = 1.16},
 	{stat = "powerMultiplier", effectiveMultiplier = 1.16},
@@ -38,9 +38,9 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weaponSword=weaponCheck({"shortsword"})
+	local weaponSword=weaponCheck({"shortsword","longsword","katana","rapier","dagger"})
 	local weaponShield=weaponCheck({"shield"})
-	local weaponSword2=weaponCheck({"axe"})
+	local weaponSword2=weaponCheck({"axe","shortspear"})
 
 	if weaponSword["either"] and weaponShield["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)

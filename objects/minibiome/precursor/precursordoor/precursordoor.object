@@ -8,7 +8,7 @@
   "description" : "This door is made of light.",
   "shortdescription" : "Precursor Door",
   "race" : "precursor",
- "lightColor" : [0, 166, 166],
+ "openLight" : [0, 166, 166],
   "inventoryIcon" : "precursordooricon.png",
   "orientations" : [
     {
@@ -31,7 +31,7 @@
   "scripts" : [ "/objects/wired/door/door.lua" ],
   "scriptDelta" : 5,
 
-  "animation" : "/objects/wired/door/door.animation",
+  "animation" : "/objects/wired/door/doorglow.animation",
   "animationCustom" : {
     "sounds" : {
       "open" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
@@ -39,7 +39,8 @@
     }
   },
   "animationParts" : {
-    "door" : "precursordoor.png"
+    "door" : "precursordoor.png",
+	"doorfullbright" : "precursordoorfullbright.png"
   },
   "animationPosition" : [-20, 0],
 

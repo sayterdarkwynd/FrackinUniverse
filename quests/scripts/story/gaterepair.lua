@@ -97,7 +97,7 @@ function explore()
       -- Gate is on this world, put buffer onto the exploration timer
       storage.exploreTimer = storage.exploreTimer + buffer
       buffer = 0
-      if world.magnitude(mcontroller.position(), gatePosition) < 200 then
+      if world.magnitude(mcontroller.position(), gatePosition) < 60 then
         self.state:set(gateFound)
         coroutine.yield()
       end
@@ -276,4 +276,13 @@ end
 function questComplete()
   setPortraits()
   questutil.questCompleteActions()
+  
+  
+  if player.hasCompletedQuest("fu_byos") then
+    quest.addReward(config.getParameter("BYOSRewards"))
+    quest.setCompletionText(config.getParameter("BYOSCompletionText"))
+  else
+    player.upgradeShip(config.getParameter("shipUpgrade2"))
+    player.playCinematic(config.getParameter("shipUpgradeCinema"))
+  end  
 end

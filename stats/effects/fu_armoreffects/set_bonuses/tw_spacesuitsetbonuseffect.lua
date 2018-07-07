@@ -5,7 +5,7 @@ setName="tw_spacesuitset"
 weaponBonus={}
 
 armorBonus={
-	{stat = "maxBreath", amount = 900},
+	{stat = "maxBreath", effectiveMultiplier = 15},
 	{stat = "breathDepletionRate", baseMultiplier = 1.0}
 }
 

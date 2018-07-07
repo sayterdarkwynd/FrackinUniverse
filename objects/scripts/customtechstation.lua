@@ -1,4 +1,4 @@
-CSAILoldInit = init
+local CSAILoldInit = init
 
 function init()
 	if CSAILoldInit then CSAILoldInit() end

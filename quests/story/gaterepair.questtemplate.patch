@@ -14,7 +14,11 @@
     "path": "/scriptConfig/descriptions/makeTable",
     "value": "Obtain a ^orange;Personal Tricorder^reset; from ^green;Vinalisj^reset;."
   },
-
+  {
+    "op": "replace",
+    "path": "/completionText",
+    "value": "Welcome back to the ^orange;Protectorate^reset;, Agent. With your help I know we can triumph. I've had one of our mechanics ^green;repair your FTL Drive^reset; so that you can resume your duties!"
+  },
   {
     "op": "add",
     "path": "/scriptConfig/caveUid",
@@ -33,5 +37,26 @@
         "scienceoutpost"
       ]
     }
-  }
+  },
+
+  {
+    "op": "add",
+    "path": "/scriptConfig/shipUpgrade2",
+    "value": {
+      "shipLevel": 3,
+      "capabilities" : [ "planetTravel" ]
+    }
+  },
+	{"op":"add",
+	"path":"/scriptConfig/shipUpgradeCinema",
+	"value":"/cinematics/repair/repair.cinematic" 
+	},  
+	{"op":"add",
+	"path":"/scriptConfig/BYOSCompletionText",
+	"value":"Welcome back to the ^orange;Protectorate^reset;, Agent. With your help I know we can triumph. We can't fix your ^orange;broken FTL drive^reset; here! You'll have to ^green;build it on your own^reset;. Have the last of my ^green;erchius fuel^reset;! Build the ^orange;FTL drive^reset; at a ^orange;Machining Table^reset;." 
+	},	
+	{"op":"add",
+	"path":"/scriptConfig/BYOSRewards",
+	"value":["solidfuel", 20] 
+	}
 ]

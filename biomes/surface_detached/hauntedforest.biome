@@ -5,11 +5,11 @@
     "groups" : [
         {
         "select" : 3,
-        "pool" : [ 
-          [ 0.09, "wisper" ],     
+        "pool" : [
+          [ 0.09, "wisper" ],
           [ 0.09, "lilodon" ],
           [ 0.09, "webber" ],
-          [ 0.09, "doomspirit" ],        
+          [ 0.09, "doomspirit" ],
           [ 0.09, "shadowhound" ],
 	  [ 0.09, "fuallergenheavy" ]
         ]
@@ -89,7 +89,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ 
+              "pool" : [
               [0.35, "wildalgaeseed" ],
               [0.35, "wildtalonseedseed" ],
               [0.35, "wildmutaviskseed" ],
@@ -108,7 +108,7 @@
             }
           ]
         },
-    
+
        {
           "mode" : "floor",
           "priority" : 1.0,
@@ -118,7 +118,7 @@
           "type" : "object",
           "objectSets" : [
         {
-          "pool" : [ 
+          "pool" : [
           [0.15, "jungleplant_ff1" ],
           [0.15, "shimbush1" ],
           [0.15, "shimbush2" ],
@@ -139,7 +139,7 @@
           [0.15, "shrubby2" ],
           [0.15, "shrubby3" ],
           [0.15, "orangebush" ],
-          [0.15, "bladeplant1" ],              
+          [0.15, "bladeplant1" ],
           [0.15, "ferny1" ],
           [0.15, "fireflies1"],
           [0.50, "tombstone1" ],
@@ -228,15 +228,24 @@
           "treeStemHueShiftMax" : 15,
           "treeStemList" : [ "edelwood" ],
           "treeFoliageList" : [ "edelwoodleaves" ]
-        },        
+        },
         {
           "mode" : "floor",
           "priority" : 3.0,
           "variants" : 1,
           "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
-        
+
           "type" : "microdungeon",
-          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "loops", "flats", "reversepyramids" ]
+          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel", "sandstone", "blockpile", "loops", "flats", "reversepyramids", "toxicmicrodungeons" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 5,
+          "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "hauntedmini" ]
         },
         {
           "mode" : "floor",
@@ -353,5 +362,3 @@
       ]
     }
 }
-
-
