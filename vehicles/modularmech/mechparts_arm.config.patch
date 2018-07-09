@@ -2633,9 +2633,8 @@
             "value": {
                 "stats": {
                     "power": 3,
-                    "energy": 9,
-                    "rapidFire": 5,
-                    "multicount" : 2,
+                    "energy": 10,
+                    "rapidFire": 4,
                     "mechMass": 8
                 },
                 "partParameters": {
@@ -2645,12 +2644,58 @@
                     "fireOffset": [7.75, 0.0],
                     "windupTime": 0.5,
                     "fireTime": 0.08,
-                    "projectileCount" : 2,
+                    "projectileCount" : 1,
                     "projectileType": "heavybullet",
                     "projectileParameters": {
-                        "power": 0.01,
+                        "power": 0.5,
                         "timeToLive": 1.0,
-                        "knockback" : 4
+                        "knockback" : 7,
+                        "actionOnReap" : [
+			    {
+			      "action" : "projectile",
+			      "inheritDamageFactor" : 0.25,
+			      "type" : "smallregularexplosion"
+			    },
+			    {
+			      "action" : "loop",
+			      "count" : 6,
+			      "body" : [
+				{
+				  "action" : "option",
+				  "options" : [
+				    {
+				      "action" : "particle",
+				      "specification" : {
+					"type" : "animated",
+					"animation" : "/animations/dusttest/dusttest.animation",
+					"approach" : [0.5, 0.5],
+					"timeToLive" : 0.85,
+					"variance" : {
+					  "position" : [1.5, 1.5],
+					  "initialVelocity" : [1, 1],
+					  "rotation" : 180
+					}
+				      }
+				    }
+				  ]
+				},
+				{
+				  "action" : "spark"
+				}
+			      ]
+			    },
+			    {
+			      "action" : "sound",
+			      "options" : [ "/sfx/gun/grenadeblast_small1.ogg", "/sfx/gun/grenadeblast_small2.ogg", "/sfx/gun/grenadeblast_small3.ogg" ]
+			    },
+			    {
+			      "action" : "explosion",
+			      "foregroundRadius" : 3,
+			      "backgroundRadius" : 0,
+			      "explosiveDamageAmount" : 2,
+			      "delaySteps" : 2
+			    }                        
+                        ]
                     },
                     "projectileInaccuracy": 0.065
                 },

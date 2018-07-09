@@ -9,9 +9,6 @@ function init()
   end)
 end
 
-
-
-
 --//more stages
 --//
 --// player.shipUpgrades() 
@@ -24,8 +21,6 @@ end
 --// player.itemsWithTag(`String` tag)
 --// player.consumeTaggedItem(`String` tag, `unsigned` count)
 --// player.primaryHandItem()
-
-
 
 function questStart()
 
