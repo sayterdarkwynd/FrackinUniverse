@@ -13,7 +13,7 @@ end
 function update(dt)
 	if status.isResource("energy") then
 		status.modifyResourcePercentage("energy", self.regen * dt)
-		sb.logInfo("energyrestorepercentage.lua effect value per tick: %s",self.regen*dt)
+		--sb.logInfo("energyrestorepercentage.lua effect value per tick: %s",self.regen*dt)
 		if vfx then
 			effect.setParentDirectives("fade=005500="..0.4)
 		end
