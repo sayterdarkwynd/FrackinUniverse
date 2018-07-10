@@ -137,5 +137,5 @@ function stun(duration)
 end
 
 function skittleSay(sentence)
-	skittleSay(isGreg and string.reverse(sentence) or sentence)
+	effectUtil.say(isGreg and string.reverse(sentence) or sentence)
 end
