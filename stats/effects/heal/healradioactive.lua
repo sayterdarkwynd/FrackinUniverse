@@ -11,7 +11,7 @@ end
 function update(dt)
   local species = world.entitySpecies(entity.id())
   
-  if species == "radien" then
+  if (species == "radien") or (species == "novakid")  or (species == "shadow")  then
     status.modifyResource("health", (self.healingRate - self.penaltyRate) * dt)
   else
     status.modifyResource("health", -(self.healingRate) * dt)
