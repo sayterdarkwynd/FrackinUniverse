@@ -79,7 +79,7 @@ function update(dt, fireMode, shiftHeld)
 	
 	local worldType=world.type()
 
-	if  not shipwarning and world.getProperty("ship.fuel") then
+	if not shipwarning and world.getProperty("ship.fuel") then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("Greg? Greg greg? GREG?!?")
 			storage.fireTimer = 1
@@ -157,7 +157,7 @@ function fire(ability,fireMode,throttle)
 	local baseProjectileCount=totalProjectileTypes[fireMode]
 	local projectileCount = throttle and 1 or math.max(1,math.floor(math.random(1,baseProjectileCount*baseProjectileCount)/baseProjectileCount))
 	local params = {power = damagePerShot(ability,projectileCount), powerMultiplier = activeItem.ownerPowerMultiplier()}
-	
+
 	if fireMode=="alt" then
 		params.controlForce=140
 		params.ignoreTerrain=false
@@ -166,15 +166,18 @@ function fire(ability,fireMode,throttle)
 	end
 	
 	if special == 1 then
-		--someone just drew the unluckiest card in the deck.
-		local message="Sayter."
-		local color={0,0,0}
-		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		--someone just drew the second unluckiest card in the deck.
+		effectUtil.messageParticle(firePosition(),"Sayter.",{0,0,0},0.6,nil,4,nil)
 		if sayterE then
 			sayterE=sayterE/2.0
 		else
 			sayterE=4.0
 		end
+	elseif special == 111 and throttle and not world.getProperty("ship.fuel") then
+		--Marvin. Arguably worse than sayter. It will not end until the person dies.
+		--Since they will have no resistances and will be immune to most healing, death is pretty much guaranteed.
+		--effectUtil.messageParticle(firePosition(),"Marvin.",{0,1,0},0.6,nil,4,nil)
+		effectUtil.effectSelf("marvinSkittles")
 	elseif special == 3 or special == 33 or special == 333 then
 		message="Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!"
 		color={238,130,238}
