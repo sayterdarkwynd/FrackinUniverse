@@ -59,7 +59,7 @@ function update(dt, fireMode, shiftHeld)
 	end
 	if sayterE then
 		if sayterE < 0.0 then
-			status.addEphemeralEffect("l6doomed",7*activeItem.ownerPowerMultiplier())
+			effectUtil.effectSelf("l6doomed",7*activeItem.ownerPowerMultiplier())
 			sayterE=nil
 		else
 			sayterE=sayterE-dt
