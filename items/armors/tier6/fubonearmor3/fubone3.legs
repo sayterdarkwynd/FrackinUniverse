@@ -4,35 +4,36 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
-   "description" : "Set Bonus:
-^cyan;+25% Shadow Resist^reset;
-^#e43774;Immune: Poison , Acid^reset;
-^cyan;+30% chance to spawn Eye Bomb^reset;",
-  "shortdescription" : "Greaves of the Necro-King",
-  "category" : "t4armor",
+  "rarity" : "legendary",
+  "description" : "Set Bonus:
+^cyan; Immune: All radiation, Gas, Shadow^reset;
+^yellow;+250% Oxygen, +2% Crit Chance (Elder)^reset;
+^#e43774;50% Cosmic and 50% Shadow resistance.^reset;",
+  "shortdescription" : "Necrontir Greaves",
+  "category" : "t6armor",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "level" : 4,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "fuarmoredcultistlegs" },
+  "level" : 6,
+  "itemTags" : [ "upgradeableWeapon" ],
+  
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1
+      "baseMultiplier" : 1.18
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.2
+      "amount" : 0.12
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 2
+      "amount" : 3
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
@@ -40,13 +41,20 @@
       "amount" : 2
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  
   "statusEffects" : [
-    "movementprotection",
-    "corruptsetbonus",
+    "necrosetbonus",
     {
-      "stat" : "fu_corruptset_legs",
+      "stat" : "fu_necroset_legs",
       "amount" : 1
+    },  
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.1
+    },  
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.1
     }
   ], 
 

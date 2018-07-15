@@ -1,16 +1,16 @@
 {
   "itemName" : "fubonearmor3chest",
-  "price" : 0,
+  "price" : 11000,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
-   "description" : "Set Bonus:
-^cyan;+25% Shadow Resist^reset;
-^#e43774;Immune: Poison , Acid^reset;
-^cyan;+30% chance to spawn Eye Bomb^reset;",
-  "shortdescription" : "Plate of the Necro-King",
-  "category" : "t4armor",
+  "rarity" : "legendary",
+  "description" : "Set Bonus:
+^cyan; Immune: All radiation, Gas, Shadow^reset;
+^yellow;+250% Oxygen, +2% Crit Chance (Elder)^reset;
+^#e43774;50% Cosmic and 50% Shadow resistance.^reset;",
+  "shortdescription" : "Necrontir Plate",
+  "category" : "t6armor",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -25,8 +25,9 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-  "level" : 4,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "fuarmoredcultistchest" },
+  "level" : 6,
+  "itemTags" : [ "upgradeableWeapon" ],
+  
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -36,25 +37,33 @@
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.5
+      "amount" : 0.42
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 5
+      "amount" : 4
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 5
+      "amount" : 3
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+  
   "statusEffects" : [
-    "corruptsetbonus",
+    "necrosetbonus",
     {
-      "stat" : "fu_corruptset_chest",
+      "stat" : "fu_necroset_legs",
       "amount" : 1
+    },  
+    {
+      "stat" : "shadowResistance",
+      "amount" : 0.2
+    },  
+    {
+      "stat" : "cosmicResistance",
+      "amount" : 0.2
     }
   ], 
 
