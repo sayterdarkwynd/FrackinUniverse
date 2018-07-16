@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 2},
+	{stat = "critChance", amount = 3.5},
 	{stat = "maxHealth", baseMultiplier = 1.25}
 }
 
@@ -36,7 +36,7 @@ end
 
 
 function checkWeapons()
-	local weaponSword=weaponCheck({"elder"})
+	local weaponSword=weaponCheck({"elder","precursor"})
 
 	if weaponSword["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
