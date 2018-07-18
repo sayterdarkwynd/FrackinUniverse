@@ -88,7 +88,12 @@ function update(dt, fireMode, shiftHeld)
 
 	if storage.fireTimer <= 0 and not world.pointTileCollision(firePosition()) then
 		storage.fireTimer = 1
-		effectUtil.effectSelf("marvinSkittles")
+		local special=math.floor(math.random(1,1000))
+		if special==1 then
+			world.spawnItem("gregskittlegun",world.entityPosition(activeItem.ownerEntityId()),1)
+		else
+			effectUtil.effectSelf("marvinSkittles")
+		end
 		animator.burstParticleEmitter("fireParticles")
 		animator.playSound("fire")
 		item.consume(1)
