@@ -6,79 +6,78 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 5,
-            "cycle" : 1,
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/raptor5.ogg",
-              "particleEmittersOff" : [ "spindust" ]
-            }
+            "frames" : 13,
+            "cycle" : 1.5
           },
           "walk" : {
-            "frames" : 6,
-            "cycle" : 0.6,
+            "frames" : 8,
+            "cycle" : 0.5,
             "mode" : "loop",
             "properties" : {
             "particleEmittersOff" : [ "spindust" ]
             }
           },
-          "melee" : {
-            "frames" : 6,
-            "cycle" : 0.6,
-            "mode" : "loop"
-          },   
-          "stand" : {
-            "frames" : 1,
-            "cycle" : 0.3,
-            "mode" : "loop"
-          },            
           "jump" : {
-            "frames" : 6,
-            "cycle" : 0.6,
+            "frames" : 4,
+            "cycle" : 0.5,
             "mode" : "loop"
           },
           "fall" : {
-            "frames" : 2,
+            "frames" : 1,
             "cycle" : 0.5,
             "mode" : "loop"
           },
           "chargewindup" : {
-            "frames" : 1,
-            "cycle" : 0.3,
+            "frames" : 5,
+            "cycle" : 0.5,
             "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/reptar6.ogg",
+              "persistentSound" : "/sfx/npc/monsters/raptor4.ogg",
+              "persistentSoundStopTime" : 2.2,
               "particleEmittersOff" : [ "spindust" ]
             }
           },
           "chargewinddown" : {
-            "frames" : 1,
+            "frames" : 5,
             "cycle" : 0.2,
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/raptor5.ogg",
+              "persistentSoundStopTime" : 2.2,
               "particleEmittersOff" : [ "spindust" ]
             }
           },        
           "charge" : {
             "frames" : 6,
-            "cycle" : 0.3,
+            "cycle" : 1.0,
             "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/raptor1.ogg",
+              "persistentSoundStopTime" : 2.0,
               "particleEmittersOff" : [ "spindust" ]
             }
           },
           "fire" : {
-            "frames" : 7,
-            "cycle" : 1.4,
+            "frames" : 5,
+            "cycle" : 0.5,
             "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/raptor3.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
               "particleEmittersOff" : [ "spindust" ]
             }
-          }, 
-          "fire2" : {
-            "frames" : 8,
-            "cycle" : 1.6,
+          },          
+          "roar" : {
+            "frames" : 9,
+            "cycle" : 2.2,
+            "mode" : "transition",
+            "transition" : "idle",
             "properties" : {
-              "particleEmittersOff" : [ "spindust" ]
+              "immediateSound" : "/sfx/npc/monsters/dino4.ogg"            
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
+              "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [] ]
             }
-          }           
+          }
         }
       },
       "damage" : {
@@ -139,49 +138,46 @@
             },
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:fall.<frame>"
+                "image" : "<partImage>:walk.<frame>"
               }
-            },          
+            },
+            "roarwindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame>"
+              }
+            },
+            "roarwinddown" : {
+              "properties" : {
+                "image" : "<partImage>:roarwinddown.<frame>"
+              }
+            },
+            "roar" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame>"
+              }
+            },           
             "chargewindup" : {
               "properties" : {
-                "image" : "<partImage>:stand"
+                "image" : "<partImage>:roar.<frame>"
               }
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:stand"
+                "image" : "<partImage>:roar.<frame>"
               }
             },
             "charge" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame>",
+                "image" : "<partImage>:charge.<frame>",
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:fire.<frame>",
+                "image" : "<partImage>:roar.<frame>",
                 "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
               }
-            },
-            "fire2" : {
-              "properties" : {
-                "image" : "<partImage>:fire2.<frame>",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
-              }
-            },
-            "melee" : {
-              "properties" : {
-                "image" : "<partImage>:melee.<frame>",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
-              }
-            },
-            "stand" : {
-              "properties" : {
-                "image" : "<partImage>:stand",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
-              }
-            }             
+            }            
           },
           "damage" : {
             "stunned" : {
@@ -264,13 +260,11 @@
   },
 
   "sounds" : {
-    "aggroHop" : [ "/sfx/npc/monsters/dino1.ogg" , "/sfx/npc/monsters/dino2.ogg", "/sfx/npc/monsters/dino3.ogg", "/sfx/npc/monsters/dino4.ogg" ],
-    "attack" : [ "/sfx/melee/soulseeker_swing.ogg" ],
-    "fire" : [ "/sfx/npc/monsters/reptar4.ogg" ],
-    "wallCrash" : [ "/sfx/gun/grenadeblast_poison1.ogg", "/sfx/gun/grenadeblast_poison2.ogg", "/sfx/gun/grenadeblast_poison3.ogg"  ],
-    "chargeSound" : [ "/sfx/npc/monsters/dino1.ogg" , "/sfx/npc/monsters/dino2.ogg", "/sfx/npc/monsters/dino3.ogg", "/sfx/npc/monsters/dino4.ogg" ],
-    "attackSound" : [ "/sfx/melee/fleshwhip_swing1.ogg", "/sfx/melee/fleshwhip_swing2.ogg", "/sfx/melee/fleshwhip_swing3.ogg" ],
-    "turnHostile" : [ "/sfx/npc/monsters/dino1.ogg" , "/sfx/npc/monsters/dino2.ogg", "/sfx/npc/monsters/dino3.ogg", "/sfx/npc/monsters/dino4.ogg"  ],
-    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]  
+    "aggroHop" : [ "/sfx/npc/quadruped/bulbouseyehead_turnhostile.ogg" ],
+    "attack" : [ "/sfx/npc/smallbiped/arrowhead_small_attack1.ogg" ],
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
+    "attackSound" : [ "/sfx/npc/monsters/raptor1.ogg", "/sfx/npc/monsters/raptor2.ogg" , "/sfx/npc/monsters/raptor3.ogg", "/sfx/npc/monsters/raptor4.ogg" , "/sfx/npc/monsters/raptor5.ogg"  ],
+    "turnHostile" : [ "/sfx/npc/monsters/raptor1.ogg", "/sfx/npc/monsters/raptor2.ogg" , "/sfx/npc/monsters/raptor3.ogg", "/sfx/npc/monsters/raptor4.ogg" , "/sfx/npc/monsters/raptor5.ogg"  ],
+    "deathPuff" : [ "/sfx/npc/monsters/raptor2.ogg", "/sfx/npc/monsters/raptor3.ogg" ]  
   }
 }
