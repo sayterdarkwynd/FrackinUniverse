@@ -1,0 +1,24 @@
+{
+  "itemName" : "babyheadonastick",
+  "rarity" : "rare",
+  "category" : "food",
+  "price" : 55,
+  "inventoryIcon" : "babyheadonastick.png",
+  "description" : "Floran delicacy.",
+  "shortdescription" : "Baby Head (on a stick)",
+  "maxStack" : 1000,
+  "foodValue" : 50,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 15,
+  "effects" : [ [
+    {
+        "effect" : "negativehealth5",
+        "duration" : 10
+    }
+  ] ],
+  "blockingEffects" : [
+     "wellfed"
+  ]
+}
