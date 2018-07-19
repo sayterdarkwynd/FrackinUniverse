@@ -89,7 +89,7 @@ function init()
   end
 
 
-  monster.setName("Magma Titan")
+  monster.setName("Magmatop Alpha")
 
   monster.setDamageBar("special")
 
