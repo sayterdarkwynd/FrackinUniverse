@@ -1,139 +1,127 @@
 {
-  "type" : "magmagolem3",
-  "shortdescription" : "Omega Magma Beast",
-  "description" : "All rage and fire. Best to avoid. Really quite dangerous.",
+  "type" : "adultpoptopfire2",
+  "shortdescription" : "Magatop Alpha",
+  "description" : "I don't recommend petting one of these. Absolutely lethal.",
 
-  "categories" : [ "magmagolem" ],
-  "parts" : [ "body" ],
+  "categories" : [ "adultpoptopfire" ],
+  "parts" : [ "body", "bodyfullbright" ],
 
-  "animation" : "magmagolem.animation",
+  "animation" : "adultpoptopfire.animation",
 
-  "dropPools" : [ "ashgolemLoot", "ashgolemLoot", "ashgolemLoot" ],
+  "dropPools" : [ { "default" : "ashgolemLoot", "bow" : "ashgolemLoot" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/walkers/golems/magmagolem/monster.lua",
+      "/monsters/walkers/adultpoptopish/adultpoptopfire/monster2.lua",
       "/stats/monstereffects/monsterstatus_deathbombmagma.lua",
       "/scripts/golemancer/gol_monstermain.lua"
     ],
-  "tickEvoTime" : 2,
+  "tickEvoTime" : 3,
   "evolutions" : [ "/scripts/golemancer/evolutions/megamagmagolem2.evo" ],
+
+    "renderLayer" : "Monster+10",
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
+    
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 30,
+      "targetQueryRange" : 50,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 2.5,
-      "hurtTime": 0.10,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 20.5,
       "hurtWaitForGround": false,
-      "hurtWaitForGroundTime": 0.1,
 
-      "foundTargetActions" : [],
+      "foundTargetActions" : [ 
+        {
+          "name" : "action-animate",
+          "cooldown" : 15,
+          "parameters" : {
+            "stateType" : "body",
+            "state" : "roar",
+            "animationTime" : 0.53
+          }
+        }      
+      ],
+
       "fleeActions" : [],
 
       "hostileActions" : [
         {
           "name" : "action-animate",
-          "cooldown" : 10,
+          "cooldown" : 15,
           "parameters" : {
             "stateType" : "body",
             "state" : "roar",
-            "animationTime" : 1.25
+            "animationTime" : 0.53
           }
-        },
+        },         
+        {
+          "name" : "action-fire",
+          "cooldown" : 15,
+          "parameters" : {
+            "projectileType" : "hellfireburst2",
+            "fireOffset" : [0.875, 0.625],
+
+            "maximumRange" : 30,
+            "minimumRange" : 3,
+            "windupState" : "roarlong",
+            "windupTime" : 1.5,
+
+            "power" : 22,
+            "speed": 50,
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "fireSound" : "fire",
+            "range": 30,
+
+            "winddownState" : ""
+          }
+        },         
         {
           "name" : "action-charge",
-          "cooldown" : 5,
+          "cooldown" : 3.0,
           "parameters" : {
-            "maximumRange" : 25,
+            "maximumRange" : 20,
             "windupState" : "chargewindup",
-            "windupTime" : 0.4,
+            "windupTime" : 0.3,
 
-            "chargeTime" : 0.6,
-            "chargeSpeed" : 90,
-            "chargeControlForce" : 1200,
+            "chargeTime" : 0.2,
+            "chargeSpeed" : 60,
+            "chargeControlForce" : 1000,
             "chargeState" : "charge",
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
-            "winddownTime" : 0.2,
+            "winddownTime" : 0.05,
             "winddownStopForce" : 1000,
             "winddownState" : "chargewinddown"
           }
         },
         {
           "name" : "action-fire",
-	        "cooldown" :11,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 30,
-            "minimumRange" : 3,
-            "windupState" : "fire",
-            "windupTime" : 1,
-
-            "projectileType" : "hellfireburst2",
-            "power" : 35,
-            "speed": 70,
-            "fireOffset" : [5, -1],
-            "aimAtTarget" : true,
-            "projectileCount" : 1,
-            "fireSound" : "fire",
-            "range": 30,
-            "fireState" : "",
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.6
-          }
-        },        
-        {
-          "name" : "action-fire",
-	        "cooldown" : 5,
+	  "cooldown" : 5,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 10,
             "minimumRange" : 3,
-            "windupState" : "firewindup",
-            "windupTime" : 0.7,
+            "windupState" : "roarlong",
+            "windupTime" : 0.5,
 
             "projectileType" : "napalm2",
-            "power" : 9,
-            "speed": 60,
+            "power" : 5,
+            "speed": 50,
             "fireOffset" : [3.0, -0.2],
             "aimAtTarget" : true,
             "projectileCount" : 8,
             "projectileInterval" : 0.01,
             "fireSound" : "fire",
             "range": 10,
-            "fireState" : "fire",
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.6
-          }
-        },        
-        {
-          "name" : "action-fire",
-	        "cooldown" : 5,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 30,
-            "minimumRange" : 3,
-            "windupState" : "fire",
-            "windupTime" : 0.7,
-
-            "projectileType" : "hellfireprojectile",
-            "power" : 28.5,
-            "speed": 60,
-            "fireOffset" : [5, 0],
-            "aimAtTarget" : true,
-            "projectileCount" : 1,
-            "fireSound" : "fire",
-            "range": 30,
-            "fireState" : "",
-            "winddownState" : "firewinddown",
-            "winddownTime" : 0.2
+            "fireState" : "roar",
+            "winddownState" : "roarwinddown",
+            "winddownTime" : 1
           }
         }        
       ],
@@ -172,35 +160,48 @@
           }
         }
       ],
-
-      "wanderActions" : [
+      "damageTakenActions" : [
         {
-          "name" : "wander-walk",
-          "cooldown" : 6.0,
+          "name" : "action-charge",
+          "cooldown" : 1.0,
           "parameters" : {
-            "wanderTime" : [5, 15],
-            "canJump" : true,
-            "maxJumps" : 5,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
-            "jumpXControlForce" : 50,
-            "minXRange" : 10
-          }
-        }
-      ],
+            "maximumRange" : 15,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.3,
 
+            "chargeTime" : 0.4,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 1000,
+            "chargeState" : "charge",
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.05,
+            "winddownStopForce" : 1200,
+            "winddownState" : "chargewinddown"
+          }
+        }      
+      ],
       "concurrentActions" : [
         {
           "name" : "action-spawncompanions",
           "parameters" : {
             "maxCount" : 3,
             "spawnCooldown" : 5.0,
-            "monsterType" : "ignome",
+            "monsterType" : "firetop",
             "state" : "roar"
           }
         }
+      ],      
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "wanderTime" : [5, 15]
+          }
+        }
       ],
-      
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -214,46 +215,44 @@
             "fireOffset" : [0, 1]
           }
         }
-      ]      
-      
+      ]       
     },
-
 
     "damageParts" : {
       "body" : {
-        "damage" : 16,
+        "damage" : 13,
 
         "teamType" : "enemy",
         "damageSourceKind" : "slash",
-        "knockback" : 40,
-        "statusEffects" : [ "burning" ]
+        "knockback" : 20,
+        "statusEffects" : [ ]
       }
     },
 
     "touchDamage" : {
-      "poly" : [ [-1.375,1.583], [-1.958,0.958], [-1.625,-4.792], [-1.042,-5.583], [0.333,-5.625], [0.875,-4.792], [0.875,0.75], [0.042,1.708] ],
-      "damage" : 32,
+      "poly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+      "damage" : 19,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
-      "knockback" : 40,
+      "knockback" : 20,
       "statusEffects" : [ "burning" ]
     },
 
-    "metaBoundBox" : [-5.0, -5.25, 3.31, 2.5],
-    "scale" : 1.7,
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.5,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-1.375,1.583], [-1.958,0.958], [-1.625,-4.792], [-1.042,-5.583], [0.333,-5.625], [0.875,-4.792], [0.875,0.75], [0.042,1.708] ],
+      "collisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
 
       "mass" : 2.5,
-      "walkSpeed" : 7,
-      "runSpeed" : 14,
+      "walkSpeed" : 8,
+      "runSpeed" : 9,
 
       "airFriction" : 0,
 
       "airJumpProfile" : {
-        "jumpSpeed" : 55.0,
+        "jumpSpeed" : 35.0,
         "jumpInitialPercentage" : 1.0,
         "jumpHoldTime" : 0.0
       }
@@ -261,7 +260,7 @@
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0.2,
+    "knockoutTime" : 0.3,
     "knockoutAnimationStates" : {
       "damage" : "stunned"
     },
@@ -273,8 +272,8 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
@@ -284,16 +283,16 @@
 
       "stats" : {
         "knockbackStunTime" : {
-          "baseValue" : 0.15
+          "baseValue" : 0.25
         },
         "knockbackThreshold" : {
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 1220
+          "baseValue" : 820
         },
         "protection" : {
-          "baseValue" : 0.85
+          "baseValue" : 0.40
         },
         "lavaImmunity" : {
           "baseValue" : 1.0
@@ -308,7 +307,7 @@
           "baseValue" : 1.0
         },        
         "powerMultiplier" : {
-          "baseValue" : 1.75
+          "baseValue" : 1.45
         },
         "poisonResistance" : { "baseValue" : 0.99 },
         "fireResistance" : { "baseValue" : 1 },
@@ -335,11 +334,9 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.24,
-    "capturedMonsterName" : "Magma Golem",
-    "capturedMonsterType" : "magmagolempet", // turn into an adultpoptop when captured    
+    "capturable" : false,
+    "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "magmagolem" }
+    "captureCollectables" : { "fu_monster" : "adultpoptopfire" }
   }
 }
