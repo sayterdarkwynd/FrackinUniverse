@@ -89,8 +89,9 @@ function init()
   end
 
 
-  monster.setName("Apex War-Born")
-  monster.setDamageBar("special") 
+  monster.setName("Magmatop Alpha")
+
+  monster.setDamageBar("special")
 
   monster.setInteractive(config.getParameter("interactive", false))
 
@@ -177,7 +178,6 @@ function update(dt)
     overrideCollisionPoly()
   end
   self.behaviorTick = self.behaviorTick + 1
-
 end
 
 function skillBehaviorConfig()
