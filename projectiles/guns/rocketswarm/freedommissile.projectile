@@ -1,0 +1,74 @@
+{
+  "projectileName" : "freedommissile",
+  "image" : "rocketswarm.png",
+  "animationCycle" : 0.15,  
+  "physics" : "rocket",
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "fallSpeed" : 0,
+  "lightColor" : [100, 100, 100],
+  "timeToLive" : 25,
+  "knockback" : 60,
+  "knockbackDirectional" : true,
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/freedomexplosion.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.6,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgunred",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },   
+    {
+      "time" : 0.75,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgungreen",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },  
+    {
+      "time" : 0.9,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgunyellow",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },  
+    {
+      "time" : 1.25,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgunyellow",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },  
+    {
+      "time" : 1.6,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgunblue",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },  
+    {
+      "time" : 1.85,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgun",
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   }   
+  ],
+  
+  "power" : 5.0,
+  "damageKind" : "nodamage",
+  "emitters" : [ "smoke", "fireplasma" ]
+}
