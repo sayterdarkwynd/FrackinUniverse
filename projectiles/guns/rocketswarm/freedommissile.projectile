@@ -1,6 +1,6 @@
 {
   "projectileName" : "freedommissile",
-  "image" : "rocketswarm.png",
+  "image" : "freedommissile.png",
   "animationCycle" : 0.15,  
   "physics" : "rocket",
   "frameNumber" : 4,
@@ -19,50 +19,152 @@
   ],
   "periodicActions" : [
     {
-      "time" : 0.6,
+      "time" : 0.3,
       "loop" : true,
       "action" : "projectile",
       "type" : "fireworkgunred",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkred2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkred2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkred2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
       "inheritDamageFactor" :0.25,
       "fuzzAngle" : 360
    },   
     {
-      "time" : 0.75,
+      "time" : 0.5,
       "loop" : true,
       "action" : "projectile",
       "type" : "fireworkgungreen",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgreen3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgreen3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgreen3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
       "inheritDamageFactor" :0.25,
       "fuzzAngle" : 360
-   },  
+   },   
     {
-      "time" : 0.9,
+      "time" : 0.8,
       "loop" : true,
       "action" : "projectile",
       "type" : "fireworkgunyellow",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgunyellow2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgunyellow2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgunyellow2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
       "inheritDamageFactor" :0.25,
       "fuzzAngle" : 360
    },  
     {
-      "time" : 1.25,
-      "loop" : true,
-      "action" : "projectile",
-      "type" : "fireworkgunyellow",
-      "inheritDamageFactor" :0.25,
-      "fuzzAngle" : 360
-   },  
-    {
-      "time" : 1.6,
+      "time" : 1.1,
       "loop" : true,
       "action" : "projectile",
       "type" : "fireworkgunblue",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkblue3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkblue3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkblue3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
       "inheritDamageFactor" :0.25,
       "fuzzAngle" : 360
    },  
     {
-      "time" : 1.85,
+      "time" : 1.5,
       "loop" : true,
       "action" : "projectile",
       "type" : "fireworkgun",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgun3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgun3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgun3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
       "inheritDamageFactor" :0.25,
       "fuzzAngle" : 360
    }   

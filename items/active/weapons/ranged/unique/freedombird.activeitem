@@ -1,15 +1,15 @@
 {
   "itemName" : "freedombird",
-  "price" : 16000,
+  "price" : 6000,
   "inventoryIcon" : "freedombird.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Fire freedom and justice at enemies of capitalism.",
-  "shortdescription" : "FREEDOM",
-  "level" : 6,
+  "description" : "Fire condensed freedom at enemies of capitalism.",
+  "shortdescription" : "^red;FR^white;EED^blue;OM^reset;",
+  "level" : 4,
   "category" : "rocketLauncher", 
-  "tooltipKind" : "gun2",
-  "weaponType" : "Rifle",
+  "tooltipKind" : "gununique",
+  "weaponType" : "rocketLauncher",
   "itemTags" : ["weapon","ranged","rocketlauncher", "upgradeableWeapon"],
   "twoHanded" : true,
 
@@ -22,7 +22,8 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/freedom.ogg" ]
+      "fire" : [ "/sfx/weapons/freedom.ogg" ],
+      "altFire" : [ "/sfx/weapons/freedom.ogg" ]
     }
   },
 
@@ -36,19 +37,19 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 5,
-    "baseDps" : 7.65,
+    "fireTime" : 4,
+    "baseDps" : 12.65,
     "energyUsage" : 55.5,
     
-    "inaccuracy" : 0.08,
+    "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "freedommissile",
     "projectileParameters" : { 
-      "speed" : 47,
-      "knockback" : 15
+      "speed" : 55,
+      "knockback" : 35
     },
   "stances" : {
     "idle" : {
@@ -92,7 +93,13 @@
   "critChance" : 2,
   "critBonus" : 3,
   
-  "altAbilityType" : "atomguidedrocket",
+  "altAbilityType" : "swtjc_ewg_rocketjump",
+  "altAbility" : {
+     "projectileCount" : 1,
+     "baseDps" : 8,
+     "projectileType" : "freedommissile",
+     "knockback" : 120
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
