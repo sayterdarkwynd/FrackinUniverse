@@ -1,3 +1,5 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 setName="fu_biofleshset"
 
 weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.15} }
@@ -5,10 +7,10 @@ weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.15} }
 armorBonus={
 	{stat = "pusImmunity", amount = 1},
 	{stat = "energyRegenPercentageRate", amount = 1.05},
-	{stat = "energyRegenBlockDischarge", amount = -2
+	{stat = "energyRegenBlockDischarge", amount = -2}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+
 
 function init()
 	setSEBonusInit(setName)
