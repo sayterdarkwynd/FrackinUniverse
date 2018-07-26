@@ -1,0 +1,176 @@
+{
+  "projectileName" : "freedommissile",
+  "image" : "freedommissile.png",
+  "animationCycle" : 0.15,  
+  "physics" : "rocket",
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "fallSpeed" : 0,
+  "lightColor" : [100, 100, 100],
+  "timeToLive" : 25,
+  "knockback" : 60,
+  "knockbackDirectional" : true,
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/freedomexplosion.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.3,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgunred",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkred2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkred2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkred2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },   
+    {
+      "time" : 0.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgungreen",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgreen3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgreen3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgreen3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },   
+    {
+      "time" : 0.8,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgunyellow",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgunyellow2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgunyellow2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgunyellow2",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },  
+    {
+      "time" : 1.1,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgunblue",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkblue3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkblue3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkblue3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   },  
+    {
+      "time" : 1.5,
+      "loop" : true,
+      "action" : "projectile",
+      "type" : "fireworkgun",
+      "config" : {
+        "actionOnReap" : [
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgun3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }, 
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgun3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    },  
+	    {
+	      "action" : "projectile",
+	      "type" : "fireworkgun3",
+	      "inheritDamageFactor" : 1,
+	      "fuzzAngle" : 360
+	    }  	    
+        ]
+      },
+      "inheritDamageFactor" :0.25,
+      "fuzzAngle" : 360
+   }   
+  ],
+  
+  "power" : 5.0,
+  "damageKind" : "nodamage",
+  "emitters" : [ "smoke", "fireplasma" ]
+}
