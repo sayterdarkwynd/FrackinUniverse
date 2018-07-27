@@ -3,14 +3,14 @@
   "price" : 1160,
   "inventoryIcon" : "gumballgun.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "legendary",
   "description" : "All things considered, it's actually pretty awesome.",
   "shortdescription" : "Gumball Gun",
-  "category" : "shotgun",
+  "category" : "assaultRifle",
   "level" : 3,
   "tooltipKind" : "gununique",
-  "weaponType" : "shotgun",
-  "itemTags" : ["weapon","ranged","shotgun", "upgradeableWeapon"],
+  "weaponType" : "assaultRifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -22,8 +22,7 @@
   },
   "animationCustom" : { 
     "sounds" : {
-      "windup" : [ "/sfx/weapons/gumballwindup.ogg" ],
-      "fire" : [ "/sfx/weapons/gumballfire.ogg" ]
+      "fire" : [ "/sfx/weapons/gumballgun.ogg" ]
     }
   },
 
@@ -37,18 +36,24 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.2,
+    "fireTime" : 0.3,
     "baseDps" : 9,
-    "energyUsage" : 40,
-    "inaccuracy" : 0.09,
+    "energyUsage" : 30,
+    "inaccuracy" : 0.01,
 
-    "projectileCount" : 3,
+    "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : ["electricguardianpellet","fireguardianpellet","iceguardianpellet","poisonguardianpellet"],
     "projectileParameters" : { 
       "speed" : 72,
-      "knockback" : 4
+      "knockback" : 4,
+      "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+	    }      
+      ]
     },
 	  "stances" : {
 	    "idle" : {
