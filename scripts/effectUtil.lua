@@ -1,46 +1,7 @@
 effectUtil={}
 
-function effectUtil.effectAllInRange(range,effect,duration)
-	return effectUtil.effectNonPlayersInRange(range,effect,duration) + effectUtil.effectPlayersInRange(range,effect,duration)
-end
-
-function effectUtil.effectNonPlayersInRange(range,effect,duration)
-	local buffer=util.mergeLists(world.npcQuery(effectUtil.getPos(),range),world.monsterQuery(effectUtil.getPos(),range))
-	local rVal=0
-	for _,id in pairs(buffer) do
-		if effectUtil.effectTarget(id,effect,duration) then
-			rVal=rVal+1
-		end
-	end
-	return rVal
-end
-
-function effectUtil.effectPlayersInRange(range,effect,duration)
-	local buffer=world.playerQuery(effectUtil.getPos(),range)
-	local rVal=0
-	for _,id in pairs(buffer) do
-		if effectUtil.effectTarget(id,effect,duration) then
-			rVal=rVal+1
-		end
-	end
-	return rVal
-end
-
-function effectUtil.effectSelf(effect,duration)
-	return effectUtil.effectTarget(effectUtil.getSelf(),effect,duration)
-end
-
-function effectUtil.effectTarget(id,effect,duration)
-	if world.entityExists(id) then
-		world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
-		return true
-	else
-		return false
-	end
-end
-
 function effectUtil.getPos()
-	return (entity and entity.position and entity.position()) or (activeItem and activeItem.ownerAimPosition and activeItem.ownerAimPosition()) or {0,0}
+	return ((entity and entity.position) and entity.position()) or ((activeItem and activeItem.ownerAimPosition) and activeItem.ownerAimPosition()) or {0,0}
 end
 
 function effectUtil.getSelf()
@@ -105,4 +66,92 @@ end
 
 function effectUtil.entityTypeName()
 	return npc and npc.npcType() or monster and monster.type or entity and entity.entityType()
+end
+
+
+
+
+function effectUtil.effectTypesInRange(effect,range,types,duration)
+	if type(effect)~="string" then
+		return 0
+	end
+	local pos=effectUtil.getPos()
+	local buffer=world.entityQuery(pos,range,{includedTypes=types})
+	local rVal=0
+	for _,id in pairs(buffer) do
+		if effectUtil.effectTarget(id,effect,duration) then
+			rVal=rVal+1
+		end
+	end
+	return rVal
+end
+
+function effectUtil.effectAllInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration)
+end
+
+function effectUtil.effectNonPlayersInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"npc","monster"},duration)
+end
+
+function effectUtil.effectPlayersInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"player"},duration)
+end
+
+function effectUtil.effectSelf(effect,duration)
+	return effectUtil.effectTarget(effectUtil.getSelf(),effect,duration)
+end
+
+function effectUtil.effectTarget(id,effect,duration)
+	if world.entityExists(id) then
+		world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
+		return true
+	else
+		return false
+	end
+end
+
+function effectUtil.projectileTypesInRange(projtype,tilerange,types)
+	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
+	for key, value in pairs(targetlist) do
+		world.spawnProjectile(projtype, world.entityPosition(value), entity.id())
+	end
+end
+
+function effectUtil.projectilePlayersInRange(projtype,tilerange)
+	effectUtil.projectileTypesInRange(projtype,tilerange,{"player"})
+end
+
+function effectUtil.projectileAllInRange(projtype,tilerange)
+	effectUtil.projectileTypesInRange(projtype,tilerange,{"creature"})
+end
+
+function effectUtil.projectileTypesInRangeParams(projtype,tilerange,params,types)
+	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
+	for key, value in pairs(targetlist) do
+		world.spawnProjectile(projtype, world.entityPosition(value), entity.id(),{0,0},false,params)
+	end
+end
+
+function effectUtil.projectilePlayersInRangeParams(projtype,tilerange,params)
+	effectUtil.projectileTypesInRangeParams(projtype,tilerange,params,{"player"})
+end
+
+function effectUtil.projectileAllInRangeParams(projtype,tilerange,params)
+	effectUtil.projectileTypesInRangeParams(projtype,tilerange,params,{"creature"})
+end
+
+function effectUtil.projectileTypesInRectangle(projtype,entpos,xwidth,yheight,types)
+	local targetlist = world.entityQuery(entpos,{entpos[1]+xwidth, entpos[2]+yheight},{includedTypes=types})
+	for key, value in pairs(targetlist) do
+		world.spawnProjectile(projtype,world.entityPosition(value))
+	end
+end
+
+function effectUtil.projectilePlayersInRectangle(projtype,entpos,xwidth,yheight)
+	effectUtil.projectileTypesInRectangle(projtype,entpos,xwidth,yheight,{"player"})
+end
+
+function effectUtil.projectileAllInRectangle(projtype,entpos,xwidth,yheight)
+	effectUtil.projectileTypesInRectangle(projtype,entpos,xwidth,yheight,{"creature"})
 end

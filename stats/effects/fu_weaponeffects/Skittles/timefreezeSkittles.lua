@@ -47,7 +47,7 @@ function update(dt)
 			elseif donkey <= 9 then
 				effectUtil.effectOnSource("nude",donkey*effect.duration()/10.0,true)
 				if hardTarget and not effectUtil.effectOnSource("vulnerability",donkey*effect.duration()/10.0) then
-					if effectUtil.effectPlayersInRange(100,"vulnerability",donkey*effect.duration()/10.0) == 0 then
+					if effectUtil.effectPlayersInRange("vulnerability",100,donkey*effect.duration()/10.0) == 0 then
 						kevinDamon=true
 						effectUtil.effectSelf("heal_1",effect.duration())
 						effectUtil.effectSelf("cultistshield",effect.duration())

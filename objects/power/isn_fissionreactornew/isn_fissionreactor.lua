@@ -1,6 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
-require '/objects/isn_sharedobjectscripts.lua'
+require "/scripts/effectUtil.lua"
 
 local deltaTime=0
 
@@ -74,19 +74,19 @@ function update(dt)
 	-- therefore I think we could rework this for a single instance. sayter said that he or someone else
 	-- could match this with the current radiation resistance
 	if storage.radiation >= 50 then
-		isn_projectileAllInRange("isn_fissionrads",4)
+		effectUtil.projectileAllInRange("isn_fissionrads",4)
 	end
 
 	if storage.radiation >= 80 then
-		isn_projectileAllInRange("isn_fissionrads",8)
+		effectUtil.projectileAllInRange("isn_fissionrads",8)
 	end
 
 	if storage.radiation >= 100 then
-		isn_projectileAllInRange("isn_fissionrads",12)
+		effectUtil.projectileAllInRange("isn_fissionrads",12)
 	end
 
 	if storage.radiation >= 120 then
-		isn_projectileAllInRange("isn_fissionrads",16)
+		effectUtil.projectileAllInRange("isn_fissionrads",16)
 	end
 	power.update(dt)
 end
