@@ -160,7 +160,7 @@ end
 -- Upates growth animation
 function updateState()
 	--Compute which graphic should be displayed and update.
-	local growthperc = isn_getXPercentageOfY(math.min(storage.growth, storage.growthCap), storage.growthCap)
+	local growthperc = (storage.growthcap ~= 0) and (100*math.min(storage.growth, storage.growthCap)/storage.growthCap) or 0
 	animator.setAnimationState("growth", sb.print(math.min(math.floor(growthperc / 25), 3)))
 end
 

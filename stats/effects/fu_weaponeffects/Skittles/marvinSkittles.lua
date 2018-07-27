@@ -1,6 +1,6 @@
 require "/scripts/effectUtil.lua"
 
-gregese={words={"@#$@$#@","marvin"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
+gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
 
 
 function init()
@@ -12,6 +12,10 @@ function init()
 	self.tickTime = 1.0
 	self.tickTimer = self.tickTime
 	spaz(1)
+	stun()
+	if status.isResource("energy") then
+		status.setResourcePercentage("energy",0)
+	end
 end
 
 function update(dt)
@@ -22,6 +26,7 @@ function update(dt)
 		effect.modifyDuration(dt)
 		if status.resourcePercentage("health") < self.tickDamagePercentage then
 			status.setResourcePercentage("health",0.0)
+			stun()
 		else
 			self.tickTimer = self.tickTimer - dt
 			if self.tickTimer <= 0 then
@@ -34,6 +39,7 @@ function update(dt)
 					damageSourceKind = "default",
 					sourceEntityId = entity.id()
 				})
+				stun()
 			end
 		end
 	end
@@ -84,7 +90,21 @@ function spaz(wordCount)
 	effectUtil.say(sentence)
 end
 
-
 function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
+end
+
+function stun()
+	if status.isResource("stunned") then
+		if status.resourcePositive("health") then
+			status.setResourcePercentage("stunned",1)
+		else
+			status.setResourcePercentage("stunned",0)
+		end
+	end
+	if status.resourcePositive("health") then
+		if status.isResource("energyRegenBlock") then
+			status.setResourcePercentage("energyRegenBlock",1)
+		end
+	end
 end

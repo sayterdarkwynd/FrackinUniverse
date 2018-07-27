@@ -261,6 +261,15 @@
     "body" : { "interpolated" : true }
   },
 
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [200, 90, 30],
+      "pointLight" : false
+    }
+  },
+  
   "effects" : {
     "blink" : {
       "type" : "flash",
@@ -270,6 +279,19 @@
   },
 
   "particleEmitters" : {
+    "fireaura" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "firestormflame" },
+        { "particle" : "firestormflame" },
+        { "particle" : "firestormflame" },
+        { "particle" : "firestormflame" },
+        { "particle" : "fireaura" },
+        { "particle" : "fireaura" }
+        
+      ]
+    },  
     "spindust" : {
       "emissionRate" : 15,
       "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
