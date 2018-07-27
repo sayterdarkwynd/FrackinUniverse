@@ -1,15 +1,20 @@
 function init()
-end
-
-function update(dt)
-	if not doOnce then
-		timerVar=(timerVar or 0)+dt
-		if timerVar>1.0 then
+	warningResource="biomeairlesswarning"
+	if status.isResource(warningResource) then
+		if not status.resourcePositive(warningResource) then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeairless", 1.0)
-			doOnce=true
 		end
+		status.setResourcePercentage(warningResource,1.0)
+	else
+		world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeairless", 1.0)
 	end
 end
 
-function uninit()
+function update(dt)
+	if status.isResource(warningResource) then
+		warningTimer=(warningTimer or 0)+dt
+		if warningTimer>1 then
+			status.setResourcePercentage(warningResource,1.0)
+		end
+	end
 end
