@@ -51,7 +51,7 @@ end
 function update(dt, fireMode, shiftHeld)
 	if sayterG then
 		if sayterG < 0.0 then
-			effectUtil.effectNonPlayersInRange(100,"l6doomed",7*activeItem.ownerPowerMultiplier())--yes, this is intentional.
+			effectUtil.effectNonPlayersInRange("l6doomed",100,7*activeItem.ownerPowerMultiplier())--yes, this is intentional.
 			sayterG=nil
 		else
 			sayterG=sayterG-dt
@@ -208,7 +208,7 @@ function fire(ability,fireMode,throttle)
 				color={255,255,0}
 				message="BANANA! BANANA! BANANA!"
 			else
-				effectUtil.effectNonPlayersInRange(100,"timefreezeSkittles",math.max(0,activeItem.ownerPowerMultiplier()))
+				effectUtil.effectNonPlayersInRange("timefreezeSkittles",100,math.max(0,activeItem.ownerPowerMultiplier()))
 				message="Banana? Heh. Rainbow."
 				color={238,130,238}
 			end

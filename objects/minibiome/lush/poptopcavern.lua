@@ -26,8 +26,8 @@ function update(dt)
       promises:add(world.sendEntityMessage(playerId, "fu_key", "statustablet"), function(successful)
 	    if successful then
 	      storage.tricorder[world.entityUniqueId(playerId)] = true
-		else
-		  storage.tricorder[world.entityUniqueId(playerId)] = false
+            else
+	      storage.tricorder[world.entityUniqueId(playerId)] = false
 	    end
       end, function()
 	    sb.logWarn("Either the player query is detecting some non-players or the message can't be recieved.")
