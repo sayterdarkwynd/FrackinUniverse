@@ -57,13 +57,13 @@ funcs = {
 			return {title = "Wolves!", subtitle = "Rabid Angry Carnivores!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }		
 		else
 			-- fallback
-			local v = math.random(100)
-			if math.random(2) == 1 then
+			local v = math.random(200)
+			if math.random(2) == 2 then
 			  world.spawnItem("fuscienceresource", world.entityPosition(player.id()),v)
-			  return {title = "Research", subtitle = "That's useful!", image = "/items/currency/fuscienceresource.png", textColor = "#ffffff", flashColor = "#0000AA" }
+			  return {title = "Research", subtitle = "That's useful!", image = "/items/currency/fuscienceresource.png", textColor = "#ffffff", flashColor = "#FF00AA" }
 			else
 			  world.spawnItem("essence", world.entityPosition(player.id()),v)
-			  return {title = "Essence", subtitle = "That's useful!", image = "/items/currency/essence.png", textColor = "#ffffff", flashColor = "#0000AA" }
+			  return {title = "Essence", subtitle = "That's useful!", image = "/items/currency/essence.png", textColor = "#ffffff", flashColor = "#00FFAA" }
 			end		
 		end
 	end,
