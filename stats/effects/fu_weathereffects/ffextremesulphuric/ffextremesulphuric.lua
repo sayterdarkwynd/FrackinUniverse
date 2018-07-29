@@ -14,7 +14,7 @@ function init()
 		end
 		status.setResourcePercentage(warningResource,1.0)
 	else
-		world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0)
+		world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 30.0)
 	end
 end
 
