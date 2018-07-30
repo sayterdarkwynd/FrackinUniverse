@@ -11,7 +11,8 @@
   "health" : 30,
   "orientations" : [
     {
-      "image" : "tetrapod.png:<color>",
+      "imageLayers" : [ { "image" : "tetrapod.png:<color>", "fullbright" : true }, { "image" : "tetrapodfullbright.png:<color>" } ],
+      
       "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -23,10 +24,10 @@
   ],
   "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
   "smashDropOptions" : [
-    [ [ "fuscienceresource", 50, { } ] ]
+    [ [ "fuscienceresource", 350, { } ] ]
   ],
 
   "breakDropOptions" : [
-    [ [ "fuscienceresource", 50, { } ] ]
+    [ [ "fuscienceresource", 350, { } ] ]
   ]
 }
