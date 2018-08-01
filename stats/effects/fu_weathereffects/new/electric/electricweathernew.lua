@@ -46,7 +46,10 @@ end
 
 function isWet()
 	local liquid=mcontroller.liquidId()
-	return world.liquidAt(vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))) and ((liquid==1) or (liquid==6) or (liquid==58) or (liquid==12))
+	local entityPos=mcontroller.position()
+	local mouthPos=world.entityMouthPosition(entity.id()) or {0,0}
+	--sb.logInfo("%s %s",entityPos,mouthPos)
+	return entityPos and (world.liquidAt(vec2.add(entityPos, mouthPos)) and ((liquid==1) or (liquid==6) or (liquid==58) or (liquid==12)))
 end
 
 
