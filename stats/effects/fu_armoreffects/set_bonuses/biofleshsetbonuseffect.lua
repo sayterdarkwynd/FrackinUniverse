@@ -40,8 +40,7 @@ function update(dt)
 	script.setUpdateDelta(60)
 
 	mcontroller.controlModifiers({
-		groundMovementModifier = 1.3,
-		runModifier = 1.3,
+		speedModifier = 1.3,
 		jumpModifier = 1.3
 	})
 
