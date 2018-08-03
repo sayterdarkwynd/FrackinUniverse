@@ -1,0 +1,88 @@
+{
+  "objectName" : "fuaethervending",
+  "colonyTags" : ["fu","aether","pretty","valuable","commerce"],
+  "rarity" : "Legendary",
+  "category" : "decorative",
+  "price" : 135,
+  "lightColor" : [120, 20, 180],
+  "printable" : false,
+
+  "shortdescription" : "Aether Vending Machine",
+  "description" : "A vending machine filled with aetheric beverages.",
+  "race" : "generic",
+
+  "interactAction" : "OpenMerchantInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/vendingmachine.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : "Aether Vending Machine",
+        "subtitle" : " Delicious Cosmic Drinks"
+      }
+    },
+    "buyFactor" : 2.5,
+    "sellFactor" : 0.2,
+    "items" : [
+      { "item" : "bottledwater" },
+      { "item" : "fuaetherade" },
+	  { "item" : "fuaetherade2" },
+	  { "item" : "fuaetherade3" },
+	  { "item" : "fuaetherade4" }
+    ]
+  },
+
+  "inventoryIcon" : "fuaethervendingicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fuaethervending.png:<color>" }, { "image" : "fuaethervendingfullbright.png:<color>", "fullbright" : true }, { "image" : "fuaethervendinglit.png:<color>" } ],
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fuaethervending.png:<color>" }, { "image" : "fuaethervendingfullbright.png:<color>", "fullbright" : true }, { "image" : "fuaethervendinglit.png:<color>" } ],
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "scripts" : [ "/scripts/npcToyObject.lua" ],
+  "npcToy" : {
+    "influence" : [
+      "vendingmachineActivate",
+      "vendingmachineCollect",
+      "vendingmachineConsume",
+      "vendingmachineComplete"
+    ],
+    "defaultReactions" : {
+      "vendingmachineActivate" : [
+        [1.0, "pressbutton"]
+      ],
+      "vendingmachineCollect" : [
+        [1.0, "crouchcollect"]
+      ],
+      "vendingmachineConsume" : [
+        [1.0, "drink"]
+      ],
+      "vendingmachineComplete" : [
+        [1.0, "smile"],
+        [0.1, "vomit"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-0.5, 0.0],
+    "preciseStandPositionRight" : [2.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

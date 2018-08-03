@@ -1,0 +1,47 @@
+[
+  {
+    "op": "replace",
+    "path": "/text",
+    "value": "If you'd like your own Space Station I can build you a ^orange;Station Transponder^white; if you provide the materials to construct it. \n I need ^green;1 ^orange;Power Core^white;, ^green;12 ^orange;Copper Wire^white;, and ^green;6 ^orange;Carbon Plate^white; to ^green;me or any other Transponder vendor^white;. Note that you'll also be charged an ^green;20000^white; pixel free for labor."
+  },
+  {
+    "op": "replace",
+    "path": "/scriptConfig/conditions/0",
+    "value": {
+      "type": "gatherItem",
+      "itemName": "powercore",
+      "count": 1,
+      "consume": true
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/scriptConfig/conditions/1",
+    "value": {
+      "type": "gatherItem",
+      "itemName": "wire",
+      "count": 12,
+      "consume": true
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/scriptConfig/conditions/2",
+    "value": {
+      "type": "gatherItem",
+      "itemName": "carbonplate",
+      "count": 6,
+      "consume": true
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/scriptConfig/conditions/3",
+    "value": {
+      "type": "gatherItem",
+      "itemName": "money",
+      "count": 20000,
+      "consume": true
+    }
+  }
+]

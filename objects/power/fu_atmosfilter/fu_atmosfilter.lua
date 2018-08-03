@@ -1,3 +1,5 @@
+require "/scripts/effectUtil.lua"
+
 function init()
   power.init()
   if not config.getParameter("slotCount") then
@@ -11,12 +13,12 @@ function update(dt)
     animator.setAnimationState("switchState", "on")
 	if storage.effects then
 	  for _,effect in pairs(storage.effects) do
-		isn_effectTypesInRange(effect,self.range,{"player", "npc"},5)
+		effectUtil.effectTypesInRange(effect,self.range,{"player", "npc"},5)
 	  end
 	end
 	if self.objectEffects then
 	  for _,effect in pairs (self.objectEffects) do
-		isn_effectTypesInRange(effect,self.range,{"player", "npc"},5)
+		effectUtil.effectTypesInRange(effect,self.range,{"player", "npc"},5)
 	  end
 	end
   else
