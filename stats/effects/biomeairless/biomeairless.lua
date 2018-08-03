@@ -1,13 +1,13 @@
 function init()
 	warningResource="biomeairlesswarning"
-	message(true)
+	sendMessage(true)
 end
 
 function update(dt)
-	message()
+	sendMessage()
 end
 
-function message(force)
+function sendMessage(force)
 	if not world.breathable(entity.position()) then
 		if status.isResource(warningResource) then
 			if not status.resourcePositive(warningResource) then

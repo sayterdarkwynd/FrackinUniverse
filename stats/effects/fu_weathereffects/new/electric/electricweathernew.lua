@@ -1,4 +1,5 @@
 require("/scripts/vec2.lua")
+
 function init()
 	self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
 	-- Environment Configuration --
@@ -9,13 +10,13 @@ function init()
 	self.baseDmg = config.getParameter("baseDmgPerTick",0)
 	self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
 	self.biomeTemp = config.getParameter("biomeTemp",0)
-	
+
 	--timer stuff
 	warningResource1="biomeelectricsurfacewarning"
 	warningResource2="biomeelectricwaterwarning"
 	self.biomeTimer = self.baseRate
 	self.biomeTimer2 = (self.baseRate * (1 + status.stat("electricResistance",0)) *10)
-	
+
 	--conditionals
 	zapped=effect.addStatModifierGroup({})
 	self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -46,17 +47,20 @@ end
 
 function isWet()
 	local liquid=mcontroller.liquidId()
-	return world.liquidAt(vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))) and ((liquid==1) or (liquid==6) or (liquid==58) or (liquid==12))
+	local entityPos=mcontroller.position()
+	local mouthPos=world.entityMouthPosition(entity.id()) or {0,0}
+	--sb.logInfo("%s %s",entityPos,mouthPos)
+	return entityPos and (world.liquidAt(vec2.add(entityPos, mouthPos)) and ((liquid==1) or (liquid==6) or (liquid==58) or (liquid==12)))
 end
 
 
 
 function update(dt)
 	checkEffectValid()
-	
+
 	self.biomeTimer = self.biomeTimer - dt
 	self.biomeTimer2 = self.biomeTimer2 - dt
-	
+
 	if not world.underground(mcontroller.position()) then
 		if status.isResource(warningResource1) then
 			if not status.resourcePositive(warningResource1) then
@@ -67,7 +71,7 @@ function update(dt)
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 30.0)
 		end
 	end
-	
+
 	if isWet() then
 		if status.isResource(warningResource2) then
 			if not status.resourcePositive(warningResource2) then
@@ -78,7 +82,7 @@ function update(dt)
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricwater", 1.0)
 		end
 	end
-	
+
 	self.debuffApply = calcDebuff() / 120
 	effect.setStatModifierGroup(zapped,{
 		{stat = "maxEnergy", baseMultiplier = 0.5},
