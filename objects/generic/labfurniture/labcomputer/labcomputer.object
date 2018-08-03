@@ -11,11 +11,25 @@
   "inventoryIcon" : "labcomputericon.png",
   "orientations" : [
     {
-      "dualImage" : "labcomputer.png:<color>.off",
+      "imageLayers" : [ { "image" : "labcomputer.png:<color>", "fullbright" : true }, { "image" : "labcomputerlit.png:<color>" } ],
+      "flipImages" : true,
       "imagePosition" : [-9, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+      "anchors" : [ "bottom" ],
+      "direction" : "left"
+    },
+    {
+      "imageLayers" : [ { "image" : "labcomputer.png:<color>", "fullbright" : true }, { "image" : "labcomputerlit.png:<color>"} ],
+      "imagePosition" : [-9, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right"
     }
   ]
 }

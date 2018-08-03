@@ -25,7 +25,7 @@ function init()
 		end
 		status.setResourcePercentage(warningResource,1.0)
 	else
-		world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure", 1.0)
+		world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure", 30.0)
 	end
 
 	if status.stat("negativeMiasma") > 0 then

@@ -42,33 +42,29 @@ funcs = {
 	--	{title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
 	--	'itemLevelMod' field can be used to modify item level
 	spawnMonsters = function(params)
-		local r = math.random(5)
+		local r = math.random(50)
 		if r == 1 then
-			--bees
 			world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
 			return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
-			
 		elseif r == 2 then
-			-- poptops
 			world.spawnProjectile("fu_poptopsack", world.entityPosition(player.id()))
 			return {title = "Poptops!", subtitle = "Adorable Rabid Poptops!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFCCAA", flashColor = "#FFCCAA" }
-		
 		elseif r == 3 then
-			-- chicks
 			world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
 			return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }
-		
-		
 		elseif r == 4 then
-			-- wolves
 			world.spawnProjectile("fuwolfcase2", world.entityPosition(player.id()))
 			return {title = "Wolves!", subtitle = "Rabid Angry Carnivores!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }		
-		
-		
 		else
-			-- chicks
-			world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
-			return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }		
+			-- fallback
+			local v = math.random(200)
+			if math.random(2) == 2 then
+			  world.spawnItem("fuscienceresource", world.entityPosition(player.id()),v)
+			  return {title = "Research", subtitle = "That's useful!", image = "/items/currency/fuscienceresource.png", textColor = "#ffffff", flashColor = "#FF00AA" }
+			else
+			  world.spawnItem("essence", world.entityPosition(player.id()),v)
+			  return {title = "Essence", subtitle = "That's useful!", image = "/items/currency/essence.png", textColor = "#ffffff", flashColor = "#00FFAA" }
+			end		
 		end
 	end,
 	
