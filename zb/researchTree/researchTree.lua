@@ -1,5 +1,6 @@
 
 require("/zb/zb_util.lua")
+require("/scripts/util.lua")
 
 -- constants
 researchTree = nil
@@ -162,10 +163,8 @@ function researchButton()
 			player.giveBlueprint(researchTree[selected].unlocks)
 		end
 		
-		if researchTree[selected].func then
-			if _ENV[researchTree[selected].func] then
-				_ENV[researchTree[selected].func](researchTree[selected].params)
-			end
+		if researchTree[selected].func and _ENV[researchTree[selected].func] then
+			_ENV[researchTree[selected].func](researchTree[selected].params)
 		end
 		
 		local researchedTable = status.statusProperty("zb_researchtree_researched", {}) or {}
@@ -743,14 +742,15 @@ end
 function buildStates(tree)
 	selected = nil
 	if tree then
-		researchTree = data.researchTree[tree]
 		selectedTree = tree
-	elseif not researchTree then
+	elseif not selectedTree then
 		return
 	end
 	
+	researchTree = copy(data.researchTree[selectedTree])
+	
 	local researchedTable = status.statusProperty("zb_researchtree_researched", {}) or {}
-	local dataString = researchedTable[tree] or ""
+	local dataString = researchedTable[selectedTree] or ""
 	local insertingString = ""
 	local splitString = {}
 	local splitpos = 0
@@ -767,16 +767,16 @@ function buildStates(tree)
 	
 	local isAvailable = true
 	for _, acr in ipairs(splitString) do
-		if data.acronyms[tree][acr] and researchTree[data.acronyms[tree][acr]] then
-			researchTree[data.acronyms[tree][acr]].state = "researched"
+		if data.acronyms[selectedTree][acr] and researchTree[data.acronyms[selectedTree][acr]] then
+			researchTree[data.acronyms[selectedTree][acr]].state = "researched"
 			
-			if researchTree[data.acronyms[tree][acr]].children then
-				for _, child in ipairs(researchTree[data.acronyms[tree][acr]].children) do
+			if researchTree[data.acronyms[selectedTree][acr]].children then
+				for _, child in ipairs(researchTree[data.acronyms[selectedTree][acr]].children) do
 					if researchTree[child].state ~= "researched" then
 						isAvailable = true
 						
 						for research, tbl in pairs(researchTree) do
-							if research ~= data.acronyms[tree][acr] and tbl.children then
+							if research ~= data.acronyms[selectedTree][acr] and tbl.children then
 								for _, child2 in ipairs(tbl.children) do
 									if child2 == child and tbl.state ~= "researched" then
 										isAvailable = false
@@ -797,10 +797,10 @@ function buildStates(tree)
 		end
 	end
 	
-	if data.hiddenResearch[tree] then
-		for _, acr in ipairs(data.hiddenResearch[tree]) do
-			if researchTree[data.acronyms[tree][acr]] and not researchTree[data.acronyms[tree][acr]].state then
-				hideResearchBranch(data.acronyms[tree][acr])
+	if data.hiddenResearch[selectedTree] then
+		for _, acr in ipairs(data.hiddenResearch[selectedTree]) do
+			if researchTree[data.acronyms[selectedTree][acr]] and not researchTree[data.acronyms[selectedTree][acr]].state then
+				hideResearchBranch(data.acronyms[selectedTree][acr])
 			end
 		end
 	end
