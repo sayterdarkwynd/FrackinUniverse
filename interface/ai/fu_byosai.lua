@@ -1,7 +1,7 @@
 require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
 require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
-require "/scripts/textTyper.lua"
+require "/zb/zb_textTyper.lua"
 
 function init()
 	textData = {}
@@ -23,7 +23,7 @@ function init()
 	static.updateTime = config.getParameter("staticUpdateTime")
 	static.currentFrame = 0
 	updateAiImage()
-	writerInit(textData, config.getParameter("shipStatus"))
+	textTyper.init(textData, config.getParameter("shipStatus"))
 	widget.setButtonEnabled("showMissions", false)
 	widget.setButtonEnabled("showCrew", false)
 	pane.playSound(chatterSound, -1)
@@ -32,7 +32,7 @@ end
 function update(dt)
 	if not textData.isFinished then
 		if textUpdateDelay <= 0 then
-			writerUpdate(textData, "shipStatusText")
+			textTyper.update(textData, "shipStatusText")
 			textUpdateDelay = config.getParameter("textUpdateDelay")
 		else
 			textUpdateDelay = textUpdateDelay - 1
