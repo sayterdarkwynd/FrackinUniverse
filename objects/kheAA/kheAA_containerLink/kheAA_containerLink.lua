@@ -37,18 +37,12 @@ function update(dt)
 end
 
 function findContainer()
-	if storage.containerId == nil then
-		local tempRect=transferUtil.pos2Rect(storage.position,storage.linkRange)
-		if not world.regionActive(temprect) then
-			world.loadRegion(tempRect)
-		end
-	elseif not world.regionActive(transferUtil.pos2Rect(storage.containerPos,1)) then
-		world.loadRegion(transferUtil.pos2Rect(storage.containerPos,1))
-		if not world.entityExists(storage.containerId) then
-			storage.containerId=nil
-		end
-	end
-
+	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+	storage.containerId=nil
+	storage.containerPos=nil
+	storage.inContainers={}
+	storage.outContainers={}
+	
 	local objectIds = world.objectQuery(entity.position(), storage.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
 		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
@@ -58,5 +52,5 @@ function findContainer()
 			storage.outContainers[storage.containerId]=storage.containerPos
 			break
 		end
-	end 
+	end
 end
