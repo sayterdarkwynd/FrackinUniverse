@@ -3,6 +3,7 @@ require("/zb/zb_util.lua")
 require("/scripts/util.lua")
 
 -- constants
+currencyTable = {}
 researchTree = nil
 gridTileSize = {}
 canvasSize = nil
@@ -30,6 +31,7 @@ function init()
 	-- zbutil.DeepPrintTable(status.statusProperty("zb_researchtree_researched", {}))
 	-- status.setStatusProperty("zb_researchtree_researched", nil)
 	
+	currencyTable = root.assetJson("/currencies.config")
 	data = root.assetJson("/zb/researchTree/data.config")
 	for _, file in ipairs(data.researchFiles) do
 		local temp = root.assetJson(file)
@@ -133,21 +135,21 @@ function update(dt)
 		end
 	end
 	
-	if mouseDown and not lowQuality then
-		local mousePos = canvas:mousePosition()
-		dragOffset.x = dragOffset.x + mousePos[1] - oldMousePos[1]
-		dragOffset.y = dragOffset.y + mousePos[2] - oldMousePos[2]
-		oldMousePos = mousePos
-		
-		-- idleRedrawCooldown = data.idleRedrawInterval
-		if not lowQuality then draw() end
-	-- else
-		-- if idleRedrawCooldown <= 0 then
-			-- idleRedrawCooldown = data.idleRedrawInterval
-			-- draw()
-		-- else
-			-- idleRedrawCooldown = idleRedrawCooldown - dt
-		-- end
+	if not lowQuality then
+		if mouseDown then
+			local mousePos = canvas:mousePosition()
+			dragOffset.x = dragOffset.x + mousePos[1] - oldMousePos[1]
+			dragOffset.y = dragOffset.y + mousePos[2] - oldMousePos[2]
+			oldMousePos = mousePos
+			
+			idleRedrawCooldown = data.idleRedrawInterval
+			draw()
+		elseif idleRedrawCooldown <= 0 then
+			idleRedrawCooldown = data.idleRedrawInterval
+			draw()
+		else
+			idleRedrawCooldown = idleRedrawCooldown - dt
+		end
 	end
 end
 
@@ -282,23 +284,28 @@ function updateInfoPanel()
 			end
 			
 			if researchTree[selected].price then
-				for i = 1, 9 do
-					local price = researchTree[selected].price[i]
-					if price then
-						local isCurrency = false
-						for _, tbl in ipairs(data.currencies) do
-							if price[1] == tbl[1] then
-								widget.setItemSlotItem("priceItem"..i, {name = tbl[3], count = price[2]})
-								isCurrency = true
-								break
-							end
-						end
-						
-						if not isCurrency then
-							widget.setItemSlotItem("priceItem"..i, {name = price[1], count = price[2]})
-						end
-					end
+				for i, tbl in ipairs(researchTree[selected].price) do
+					widget.setItemSlotItem("priceItem"..i, {name = tbl[1], count = tbl[2]})
+					if i >= 9 then break end
 				end
+				
+				
+				-- for i = 1, 9 do
+					-- local price = researchTree[selected].price[i]
+					-- if price then
+						-- local isCurrency = false
+						-- for _, tbl in ipairs(data.currencies) do
+							-- if price[1] == tbl[1] then
+								-- widget.setItemSlotItem("priceItem"..i, {name = tbl[3], count = price[2]})
+								-- isCurrency = true
+								-- break
+							-- end
+						-- end
+						
+						-- if not isCurrency then
+						-- end
+					-- end
+				-- end
 			end
 		else
 			widget.setText("title", data.strings.info[1])
@@ -823,16 +830,7 @@ function canAfford(research, consume)
 	
 	if researchTree[research].price then
 		for _, tbl in ipairs(researchTree[research].price) do
-			local isCurrency = false
-			
-			for _, curTbl in ipairs(data.currencies) do
-				if tbl[1] == curTbl[1] then
-					isCurrency = true
-					break
-				end
-			end
-			
-			if isCurrency then
+			if currencyTable[tbl[1]] then
 				if player.currency(tbl[1]) < tbl[2] then
 					return false
 				end
@@ -844,18 +842,10 @@ function canAfford(research, consume)
 		end
 	end
 	
+	-- Running the loops again so it consumes stuff AFTER checking that the player has everything
 	if consume then
 		for _, tbl in ipairs(researchTree[research].price) do
-			local isCurrency = false
-			
-			for _, curTbl in ipairs(data.currencies) do
-				if tbl[1] == curTbl[1] then
-					isCurrency = true
-					break
-				end
-			end
-			
-			if isCurrency then
+			if currencyTable[tbl[1]] then
 				player.consumeCurrency(tbl[1], tbl[2])
 			else
 				player.consumeItem({name = tbl[1], count = tbl[2]}, true)
@@ -998,4 +988,3 @@ function cheat(wd)
 		widget.setText(wd, "")
 	end
 end
-
