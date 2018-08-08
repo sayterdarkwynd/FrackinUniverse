@@ -22,6 +22,11 @@ function init()
 end
 
 function update(dt)
+	mcontroller.controlModifiers({
+		speedModifier = 1.3,
+		airJumpModifier = 1.3
+	})
+	
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
@@ -38,11 +43,6 @@ function update(dt)
 	  status.modifyResourcePercentage("health", 0.01)
 	end
 	script.setUpdateDelta(60)
-
-	mcontroller.controlModifiers({
-		speedModifier = 1.3,
-		jumpModifier = 1.3
-	})
 
 end
 
