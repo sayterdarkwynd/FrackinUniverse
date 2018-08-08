@@ -1,5 +1,5 @@
 
-require "/scripts/textTyper.lua"
+require "/zb/zb_textTyper.lua"
 
 function init()
 	self.data = root.assetJson("/interface/scripted/spaceStation/spaceStation.config")
@@ -359,7 +359,7 @@ function GUIinit()
 	local welcomeMessage = string.gsub(textData[objectData.stationRace].welcome, "{STATIONNAME}", "^orange;"..objectData.stationName.."^reset;")
 	welcomeMessage = welcomeMessage.."\n\n"..textData[objectData.stationRace][objectData.stationType.."Special"]
 	
-	writerInit(textData, welcomeMessage)
+	textTyper.init(textData, welcomeMessage)
 	resetGUI()
 end
 
@@ -379,8 +379,8 @@ function update()
 		end
 	else
 		if textUpdateDelay == 0 then
-			writerUpdate(textData, "text", textData.sound, textData.volume, textData.cutoffSound)
-			writerScrambling(textData)
+			textTyper.update(textData, "text", textData.sound, textData.volume, textData.cutoffSound)
+			textTyper.scrambling(textData)
 			
 			-- Portrait animation
 			if textData.textPause <= 0 and not textData.isFinished then
@@ -463,48 +463,48 @@ function commandProcessor(wd)
 	
 	local command = tostring(widget.getData(wd))
 	if command == "Chat" then
-		writerInit(textData, textData[objectData.stationRace]["chat"..math.random(1,textData[objectData.stationRace].chatCount)])
+		textTyper.init(textData, textData[objectData.stationRace]["chat"..math.random(1,textData[objectData.stationRace].chatCount)])
 		
 	elseif command == "Quest" then
 		local stage = objectData.currentQuest.stage
 		if stage == 0 then	-- Requesting a quest
 			updateQuestDetails(objectData.currentQuest.difficulty)
-			writerInit(textData, textData[objectData.stationRace]["questStage"..stage].."\n\n"..buildQuestString())
+			textTyper.init(textData, textData[objectData.stationRace]["questStage"..stage].."\n\n"..buildQuestString())
 			modifyButtons("Accept", "Easier", "Harder", false, false, "Decline")
 			
 		elseif stage == 1 then	-- Requesting a quest when there's one in progress
-			writerInit(textData, textData[objectData.stationRace]["questStage"..stage])
+			textTyper.init(textData, textData[objectData.stationRace]["questStage"..stage])
 			resetGUI()
 			
 		elseif stage == 2 then	-- Returning a failed quest
 			objectData.currentQuest.stage = 0
 			objectData.currentQuest.difficulty = 1
-			writerInit(textData, textData[objectData.stationRace]["questStage"..stage])
+			textTyper.init(textData, textData[objectData.stationRace]["questStage"..stage])
 			resetGUI()
 			
 		elseif stage == 3 then	-- Returning a complete quest
 			objectData.currentQuest.stage = 0
 			-- reward the player
 			objectData.currentQuest.current.difficulty = 1
-			writerInit(textData, textData[objectData.stationRace]["questStage"..stage])
+			textTyper.init(textData, textData[objectData.stationRace]["questStage"..stage])
 			resetGUI()
 		end
 	
 	elseif command == "Accept" then
 		objectData.currentQuest.stage = 1
-		writerInit(textData, textData[objectData.stationRace].questAccept)
+		textTyper.init(textData, textData[objectData.stationRace].questAccept)
 		resetGUI()
 		
 	elseif command == "Decline" then
 		objectData.currentQuest.difficulty = 1
-		writerInit(textData, textData[objectData.stationRace].questDecline)
+		textTyper.init(textData, textData[objectData.stationRace].questDecline)
 		resetGUI()
 	
 	elseif command == "Easier" then
 		-- modify values
 		objectData.currentQuest.difficulty = objectData.currentQuest.difficulty - 1
 		updateQuestDetails(objectData.currentQuest.difficulty)
-		writerInit(textData, textData[objectData.stationRace].questEasier.."\n\n"..buildQuestString())
+		textTyper.init(textData, textData[objectData.stationRace].questEasier.."\n\n"..buildQuestString())
 		
 		if objectData.currentQuest.difficulty < 1 then
 			modifyButtons("Accept", false, "Harder", false, false, "Decline")
@@ -516,7 +516,7 @@ function commandProcessor(wd)
 		-- modify values
 		objectData.currentQuest.difficulty = objectData.currentQuest.difficulty + 1
 		updateQuestDetails(objectData.currentQuest.difficulty)
-		writerInit(textData, textData[objectData.stationRace].questHarder.."\n\n"..buildQuestString())
+		textTyper.init(textData, textData[objectData.stationRace].questHarder.."\n\n"..buildQuestString())
 		
 		if objectData.currentQuest.difficulty > 1 then
 			modifyButtons("Accept", "Easier", false, false, false, "Decline")
@@ -538,13 +538,13 @@ function commandProcessor(wd)
 		widget.setText("shopTotalPrice", "0")
 		
 		populateShopList()
-		writerInit(textData, "")
+		textTyper.init(textData, "")
 		widget.setText("text", "")
 		modifyButtons("Sell", false, false, false, false, "Back")
 		
 	elseif command == "Trade Goods" then
 		populateGoodsList()
-		writerInit(textData, "")
+		textTyper.init(textData, "")
 		widget.setText("text", "")
 		
 		widget.setVisible("playerPixels", true)
@@ -553,19 +553,19 @@ function commandProcessor(wd)
 		
 	elseif command == "Special" then
 		local type = objectData.stationType
-		-- writerInit must happen AFTER populating a list
+		-- textTyper.init must happen AFTER populating a list
 		-- Because if you pick an item on a list, close it, and then re-open it, the game will run the list item selected script
 		-- Which ould init the 'no item selected' error message
 		
 		if type == "military" then
 			if objectData.mercHired then
-				writerInit(textData, textData[objectData.stationRace].noMoreMerc)
+				textTyper.init(textData, textData[objectData.stationRace].noMoreMerc)
 			else
 				modifyButtons("Hire Crew", false, false, false, false, "Back")
 				widget.setButtonEnabled("button1", false)
 				widget.setVisible("specialsScrollList", true)
 				populateSpecialList()
-				writerInit(textData, textData[objectData.stationRace]["militarySpecial"])
+				textTyper.init(textData, textData[objectData.stationRace]["militarySpecial"])
 			end
 			
 		elseif type == "medical" then
@@ -581,14 +581,14 @@ function commandProcessor(wd)
 			widget.setVisible("playerPixels", true)
 			
 			populateSpecialList()
-			writerInit(textData, textData[objectData.stationRace]["medicalSpecial"])
+			textTyper.init(textData, textData[objectData.stationRace]["medicalSpecial"])
 			
 		elseif type == "scientific" then
 			widget.setVisible("scientificSpecialList", true)
-			writerInit(textData, textData[objectData.stationRace].scientificSpecial)
+			textTyper.init(textData, textData[objectData.stationRace].scientificSpecial)
 			populateScientificList()
 			
-			writerInit(textData, textData[objectData.stationRace]["scientificSpecial"])
+			textTyper.init(textData, textData[objectData.stationRace]["scientificSpecial"])
 			modifyButtons(false, false, false, false, false, "Back")
 			
 		elseif type == "trading" then
@@ -597,7 +597,7 @@ function commandProcessor(wd)
 			updateBar(false)
 			modifyButtons(false, false, false, false, false, "Back")
 		else
-			writerInit(textData, "^red;ERROR -^reset;\nWrong 'type' recieved in 'commandProcessor' > 'elseif command == \"Special\" then'")
+			textTyper.init(textData, "^red;ERROR -^reset;\nWrong 'type' recieved in 'commandProcessor' > 'elseif command == \"Special\" then'")
 			resetGUI()
 		end
 		
@@ -609,22 +609,22 @@ function commandProcessor(wd)
 				world.spawnNpc(world.entityPosition(player.id()), stationData.crewRaces[math.random(1, #stationData.crewRaces)], stationData.military[stationData.selected.index][4], 1, math.random(255), {})
 				objectData.mercHired = true
 				
-				writerInit(textData, textData[objectData.stationRace].hireMerc)
+				textTyper.init(textData, textData[objectData.stationRace].hireMerc)
 				resetGUI()
 			else
-				writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+				textTyper.init(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
 			end
 		end
 		
 	elseif command == "Back" then
-		writerInit(textData, textData[objectData.stationRace].returnSpecial)
+		textTyper.init(textData, textData[objectData.stationRace].returnSpecial)
 		resetGUI()
 		
 	elseif command == "Acquire" then
 		local special = stationData.selected
 		if special then
 			if status.statusProperty("fuEnhancerActive", false) then
-				writerInit(textData, textData[objectData.stationRace].activeEnhancer)
+				textTyper.init(textData, textData[objectData.stationRace].activeEnhancer)
 			else
 				local price = stationData.medical[stationData.selected.index][2]
 				if player.consumeCurrency("money", price) then
@@ -643,10 +643,10 @@ function commandProcessor(wd)
 					local effect = stationData.medical[stationData.selected.index][4]
 					status.setStatusProperty("fuEnhancerActive", effect)
 					
-					writerInit(textData, textData[objectData.stationRace].acquireEnhancer)
+					textTyper.init(textData, textData[objectData.stationRace].acquireEnhancer)
 					resetGUI()
 				else
-					writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+					textTyper.init(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
 				end
 			end
 		end
@@ -656,9 +656,9 @@ function commandProcessor(wd)
 			if player.consumeCurrency("money", stationData.medicalEnhancerRemoveCost) then
 				widget.setButtonEnabled("button2", false)
 				status.setStatusProperty("fuEnhancerActive", false)
-				writerInit(textData, textData[objectData.stationRace].removeEnhancer)
+				textTyper.init(textData, textData[objectData.stationRace].removeEnhancer)
 			else
-				writerInit(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
+				textTyper.init(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
 			end
 		end
 	elseif command == "Buy" then
@@ -677,7 +677,7 @@ function commandProcessor(wd)
 		widget.setText("shopTotalPrice", "0")
 		
 		populateShopList()
-		writerInit(textData, "")
+		textTyper.init(textData, "")
 		widget.setText("text", "")
 		modifyButtons("Sell", false, false, false, false, "Back")
 	elseif command == "Sell" then
@@ -696,7 +696,7 @@ function commandProcessor(wd)
 			end
 		end
 		
-		writerInit(textData, "")
+		textTyper.init(textData, "")
 		widget.setText("text", "")
 		modifyButtons("Buy", false, false, false, false, "Back")
 	elseif command == "Goodbye" then
@@ -871,7 +871,7 @@ end
 -- Skip text when clicking on dialogue box
 function canvasClickEvent(position, button, isButtonDown)
 	if isButtonDown then
-		writerSkip(textData, "text")
+		textTyper.skip(textData, "text")
 	end
 end
 
@@ -1394,7 +1394,7 @@ function sellGoods()
 			populateGoodsList()
 		end
 	else
-		writerInit(textData, "No item selected.\nHow the fuck did you achieve this?\nSeriously, I'm impressed.\n\nReport this I guess?")
+		textTyper.init(textData, "No item selected.\nHow the fuck did you achieve this?\nSeriously, I'm impressed.\n\nReport this I guess?")
 	end
 end
 
@@ -1413,7 +1413,7 @@ function buyGoods()
 			populateGoodsList()
 		end
 	else
-		writerInit(textData, "No item selected.\nHow the fuck did you achieve this?\nSeriously, I'm impressed.\n\nReport this I guess?")
+		textTyper.init(textData, "No item selected.\nHow the fuck did you achieve this?\nSeriously, I'm impressed.\n\nReport this I guess?")
 	end
 end
 
@@ -1551,10 +1551,10 @@ function specialSelected()
 		stationData.selected = widget.getData("specialsScrollList.itemList."..listItem)
 		widget.setButtonEnabled("button1", true)
 		
-		writerInit(textData, stationData[objectData.stationType][stationData.selected.index][5])
+		textTyper.init(textData, stationData[objectData.stationType][stationData.selected.index][5])
 	else
 		widget.setButtonEnabled("button1", false)
-		writerInit(textData, "No item selected.\nHow the fuck did you achieve this?\nSeriously, I'm impressed.\n\nReport this I guess?")
+		textTyper.init(textData, "No item selected.\nHow the fuck did you achieve this?\nSeriously, I'm impressed.\n\nReport this I guess?")
 	end
 end
 
@@ -1661,7 +1661,7 @@ function tradeA()
 			player.giveItem(outputDescriptor)
 		end
 	else
-		writerInit(textData, "ERROR - Attempted to trade while no item was selected in function 'tradeA'")
+		textTyper.init(textData, "ERROR - Attempted to trade while no item was selected in function 'tradeA'")
 	end
 end
 
@@ -1682,7 +1682,7 @@ function tradeB()
 			player.giveItem(outputDescriptor)
 		end
 	else
-		writerInit(textData, "ERROR - Attempted to trade while no item was selected in function 'tradeB'")
+		textTyper.init(textData, "ERROR - Attempted to trade while no item was selected in function 'tradeB'")
 	end
 end
 
@@ -1720,9 +1720,9 @@ function specialsTableInit()
 	
 	if objectData.specialsTable.investLevel < stationData.trading.investMaxLevel then
 		widget.setText("investRequired", "Required: "..tostring(objectData.specialsTable.investRequired - objectData.specialsTable.invested))
-		writerInit(textData, textData[objectData.stationRace].tradingSpecial)
+		textTyper.init(textData, textData[objectData.stationRace].tradingSpecial)
 	else
-		writerInit(textData, textData[objectData.stationRace].tradingSpecialMax)
+		textTyper.init(textData, textData[objectData.stationRace].tradingSpecialMax)
 		widget.setText("investRequired", "Fully upgraded!")
 		widget.setButtonEnabled("investButton", false)
 		widget.setButtonEnabled("investMax", false)
@@ -1745,7 +1745,7 @@ function invest()
 	
 	-- Disable some elements and increase charisma stat when reaching max level
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
-		writerInit(textData, textData[objectData.stationRace].tradingSpecialMax)
+		textTyper.init(textData, textData[objectData.stationRace].tradingSpecialMax)
 		widget.setText("investRequired", "Fully upgraded!")
 		widget.setButtonEnabled("investButton", false)
 		widget.setButtonEnabled("investMax", false)
@@ -1879,7 +1879,7 @@ end
 
 -- Save data into the station object
 function uninit()
-	writerStopSounds(textData)
+	textTyper.stopSounds(textData)
 	world.sendEntityMessage(objectID, 'setInteractable', true)
 	
 	if objectData and type(objectData) == "table" then
