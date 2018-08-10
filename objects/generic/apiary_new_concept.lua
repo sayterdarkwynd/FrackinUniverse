@@ -386,8 +386,7 @@ function vegetableCheck()
 	for i, p in pairs(self.config.vegetables) do
 		vegetables = world.objectQuery(entity.position(), 80, {name = p})
 		if vegetables ~= nil then
-			self.vegetablePower = self.vegetablePower + math.ceil(math.sqrt(#vegetables) / 2)
-		end
+			self.vegetablePower = self.vegetablePower + math.ceil(math.sqrt(#vegetables) / 2) 
 	end
 
 	if self.vegetablePower == noVegetablesYet then
