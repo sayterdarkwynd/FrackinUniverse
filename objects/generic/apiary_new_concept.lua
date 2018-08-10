@@ -375,6 +375,10 @@ function flowerCheck()
 		self.flowerPower = 60
 	end
 
+	if self.beeType == 'honey'
+		then self.flowerPower = self.flowerPower*1.5
+	end
+
 	return self.flowerPower --sees no flowers but is working anyway?
 end
 
@@ -386,7 +390,8 @@ function vegetableCheck()
 	for i, p in pairs(self.config.vegetables) do
 		vegetables = world.objectQuery(entity.position(), 80, {name = p})
 		if vegetables ~= nil then
-			self.vegetablePower = self.vegetablePower + math.ceil(math.sqrt(#vegetables) / 2) 
+			self.vegetablePower = self.vegetablePower + math.ceil(math.sqrt(#vegetables) / 2)
+		end
 	end
 
 	if self.vegetablePower == noVegetablesYet then
@@ -394,6 +399,13 @@ function vegetableCheck()
 	elseif self.vegetablePower >= 60 then
 		self.vegetablePower = 60
 	end
+
+	if self.beeType == 'squash'
+		then self.vegetablePower = self.vegetablePower*1.2
+	elseif self.beeType == 'honey'
+		then self.vegetablePower = self.vegetablePower*.5
+	end
+
 	return self.vegetablePower
 end
 
@@ -414,6 +426,11 @@ function fruitCheck()
 	elseif self.fruitPower >= 60 then
 		self.fruitPower = 60
 	end
+
+	if self.beeType == 'sweat'
+		then self.fruitPower = self.fruitPower*1.2
+	end
+
 	return self.fruitPower
 end
 
