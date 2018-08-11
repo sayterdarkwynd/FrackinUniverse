@@ -26,8 +26,11 @@ function init()
 			end
 		end
 		
-		if #modslist == 1 and not timer then
+		if #modslist == 1 then
 			widget.setButtonEnabled("buttonNext", false)
+		end
+		
+		if not timer then
 			timer = data.Data.minimumUptime
 		end
 		
