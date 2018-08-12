@@ -11,7 +11,7 @@ function init()
 	widget.setButtonEnabled("modeButton", false)
 	
 	if world.entityType(pane.sourceEntity()) ~= "object" then
-		widget.setButtonEnabled("labelButton", false)
+		widget.setButtonEnabled("settingsButton", false)
 	end
 	
 	for _, file in ipairs(musicList["##files##"]) do
@@ -20,6 +20,8 @@ function init()
 			musicList = zbutil.mergeTable(musicList, temp)
 		end
 	end
+	
+	zbutil.PrintTable(musicList)
 	
 	populateMusicList()
 end
@@ -109,6 +111,16 @@ function labelButton()
 	world.sendEntityMessage(pane.sourceEntity(), "toggleLabel")
 end
 
+function settingsButton()
+	if widget.active("settings") then
+		widget.setVisible("settings", false)
+		widget.setVisible("scrollArea", true)
+	else
+		widget.setVisible("settings", true)
+		widget.setVisible("scrollArea", false)
+	end
+end
+
 function listSelected()
 	if viewing == "##albums##" then
 		widget.setButtonEnabled("modeButton", true)
@@ -117,19 +129,17 @@ end
 
 function playButton()
 	playing = widget.getData("scrollArea.list."..widget.getListSelected("scrollArea.list")..".name")
-	startMusic()
-end
-
-function startMusic()
+	
 	if world.entityType(pane.sourceEntity()) == "object" then
 		world.sendEntityMessage(pane.sourceEntity(), "changeMusic", playing.directory, playing.name)
 	else
-		world.sendEntityMessage(pane.sourceEntity(), "changeMusic", playing.directory, playing.name)
 		world.sendEntityMessage(player.id(), "playAltMusic", {playing.directory}, 2.0)
 	end
 end
 
-function search()
-	populateMusicList()
+function rangeButton(wd)
+	local range = string.gsub(wd, "range", "")
+	range = tonumber(range)
+	world.sendEntityMessage(pane.sourceEntity(), "setMusicRange", range)
 end
 
