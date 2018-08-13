@@ -42,16 +42,17 @@ local exclusionList = {
 
 
 local deltaTime = 0
-local requiredPower = 0
 
 function init()
-    power.init()
-    requiredPower = config.getParameter('isn_requiredPower')
-    transferUtil.init()
-    self.timer = 1
-    self.mintick = 1
-    self.crafting = false
-    self.output = {}
+	power.init()
+	transferUtil.init()
+	self.mintick = math.max(script.updateDt(),0.0167)--0.0167 (1/60 of a second) is minimum due to frames/second limit.
+	storage.timer = storage.timer or self.mintick
+	storage.powerTimer = 0
+	storage.requiredPower = config.getParameter('isn_requiredPower')*self.mintick--<40>/s.
+	storage.crafting = storage.crafting or false
+	storage.output = storage.output or {}
+	animate()
 end
 
 
@@ -92,7 +93,7 @@ function scanRecipes(sample)
 				sampleInputs[item.name]=item.count
 			end
 			
-			table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(recipe.duration,1) })
+			table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(recipe.duration,self.mintick) })
 		end
 		return recipes
 	end
@@ -166,44 +167,52 @@ function update(dt)
 		deltaTime=deltaTime+dt
 	end
 
-    self.timer = self.timer - dt
-	if self.timer <= 0 then
-		if self.crafting then
-			local powerCons = power.consume(config.getParameter('isn_requiredPower'))
-			if powerCons then
-				for k,v in pairs(self.output) do
-					local leftover = {name = k, count = v}
-					local slots = getOutSlotsFor(k)
-					for _,i in pairs(slots) do
-						leftover = world.containerPutItemsAt(entity.id(), leftover, i)
-						if not leftover then
-							break
-						end
+    storage.timer = storage.timer - dt
+	
+	if storage.crafting then
+		if not storage.powerTimer or storage.powerTimer <= 0 then
+			if power.consume(storage.requiredPower) then
+				storage.powerTimer=self.minTick
+			else
+				abort()
+			end
+		else
+			storage.powerTimer=storage.powerTimer-dt
+		end
+	
+	end
+	
+	if storage.timer <= 0 then
+		if storage.crafting then
+			for k,v in pairs(storage.output) do
+				local leftover = {name = k, count = v}
+				local slots = getOutSlotsFor(k)
+				for _,i in pairs(slots) do
+					leftover = world.containerPutItemsAt(entity.id(), leftover, i)
+					if not leftover then
+						break
 					end
+				end
 
-					if leftover then
-						world.spawnItem(leftover.name, entity.position(), leftover.count)
-					end
+				if leftover then
+					world.spawnItem(leftover.name, entity.position(), leftover.count)
 				end
 			end
 	
-			self.crafting = false
-			self.output = {}
-			self.timer = self.mintick --reset timer to a safe minimum
-			animator.setAnimationState("samplingarrayanim", "idle")
+			stop()
 		end
 	end
 
-	if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
+	if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
 		local slot0 = world.containerItemAt(entity.id(), 0)
 		if slot0 then                            --sb.logInfo("slot0: %s", slot0)
 			local type = root.itemType(slot0.name) --sb.logInfo("slot0 type: %s", type)
 			local tags = root.itemTags(slot0.name) --sb.logInfo("slot0 Tags: %s", tags)
 			if not exclusionList[slot0.name] and not exclusionList[type] then
 				local totalEnergy = power.getTotalEnergy() --sb.logInfo("totalEnergy %s", totalEnergy)
-				if totalEnergy >= requiredPower then
+				if totalEnergy >= storage.requiredPower then
 					if not startCrafting(getValidRecipes(getInputContents())) then
-						self.timer = self.mintick
+						storage.timer = self.mintick
 					end --set timeout if there were no recipes
 				end
 			end
@@ -218,18 +227,55 @@ function startCrafting(result)
 		return false
     else
 		_,result = next(result)
-
+		
+		--if we cant consume all of them, consume NONE.
         for k,v in pairs(result.inputs) do
-			if not world.containerConsume(entity.id(), {item = k , count = v}) then
+			if not world.containerAvailable(entity.id(), {item = k , count = v}) then
 				return false
 			end
         end
+		
+        for k,v in pairs(result.inputs) do
+			world.containerConsume(entity.id(), {item = k , count = v})
+        end
 
-        self.crafting = true
-        self.timer = result.time
-        self.output = result.outputs
-        animator.setAnimationState("samplingarrayanim", "working")
-
+        storage.crafting = true
+		storage.rate = result.time
+        storage.timer = result.time
+		storage.input = result.inputs
+        storage.output = result.outputs
+		animate()
         return true
     end
+end
+
+function animate()
+	animator.setAnimationRate(1/(storage.rate or 1))
+	animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
+end
+
+function abort()
+	--waste no materials.
+	if storage.crafting then
+		for k,v in pairs(storage.input) do
+			local leftovers=world.containerAddItems(entity.id(), {item = k , count = v})
+			if leftovers then
+				world.spawnItem(entity.position(), leftovers)
+			end
+		end
+	end
+	stop()
+end
+
+function stop()
+	storage.crafting = false
+	storage.output = {}
+	storage.input = {}
+	storage.timer = self.mintick --reset timer to a safe minimum
+	storage.rate=storage.timer
+	animate()
+end
+
+function die()
+	abort()
 end
