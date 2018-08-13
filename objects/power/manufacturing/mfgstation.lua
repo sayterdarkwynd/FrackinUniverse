@@ -141,7 +141,7 @@ function scanRecipes(sample)
 					if recipeExclusionList.groups then
 						for _,group in pairs(recipe.groups) do
 							if recipeExclusionList.groups[group] then
-								groupfail=true
+								groupFail=true
 								break
 							end
 						end
