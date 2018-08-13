@@ -4,8 +4,36 @@ require "/scripts/power.lua"
 
 
 -- list of items to exlude from prototyping
-local exclusionList = {
-	liquid=true,
+
+inputExclusionList = {
+	types={
+		--here because meh. not likely to ever use.
+	},
+	tags={
+		"bees"
+	}
+}
+
+recipeExclusionList = {
+	groups={
+		--bars=true,--carbon plate, which takes multiple ingredients and cant be arc/blast furnaced, is on this list
+		beerefuge=true,
+		radienshopdrug=true,
+		radienshop=true,
+		terraforge=true,
+		beakeasy=true,
+		teleshop=true,
+		treasuredtrophies=true
+	}
+}
+
+outputExclusionList = {
+	types={
+		liquid=true
+	},
+	tags={
+		--could put stuff here
+	},
 	copperbar=true,
 	ironbar=true,
 	silverbar=true,
@@ -74,9 +102,25 @@ end
 
 
 function scanRecipes(sample)
-	local recipeScan = root.recipesForItem(sample.name)
+	
 	local recipes={}
-
+	
+	local type = root.itemType(sample.name) --sb.logInfo("slot0 type: %s", type)
+	local tags = root.itemTags(sample.name) --sb.logInfo("slot0 Tags: %s", tags)
+	
+	if (inputExclusionList.types and inputExclusionList.types[type]) or (inputExclusionList and inputExclusionList[sample.name]) then
+		return recipes
+	end
+	
+	if inputExclusionList.tags then
+		for _,tag in ipairs(tags) do
+			if inputExclusionList.tags[tag] then
+				return recipes
+			end
+		end
+	end
+	
+	local recipeScan = root.recipesForItem(sample.name)
 	if recipeScan then --sb.logInfo("RecipeScan: %s", recipeScan)
 		for index,recipe in pairs(recipeScan) do
 			local recipeInputs = {recipe.input}
@@ -85,15 +129,32 @@ function scanRecipes(sample)
 			local stackOut = recipe.output
 			sampleOutput[stackOut.name] = stackOut.count
 			
-			if recipe.currencyInputs then --sb.logInfo("recipe.currencyInputs: %s", recipe.currencyInputs)
-				sampleInputs = recipe.currencyInputs --sb.logInfo("sampleInputs if currency: %s", sampleInputs)
+			if not recipe.currencyInputs or util.tableSize(recipe.currencyInputs) == 0 then
+				local groupFail
+				--ignore any recipes that take a currency
+				--[[if recipe.currencyInputs then --sb.logInfo("recipe.currencyInputs: %s", recipe.currencyInputs)
+					sampleInputs = recipe.currencyInputs --sb.logInfo("sampleInputs if currency: %s", sampleInputs)
+				end
+				]]
+				
+				if recipe.groups then
+					if recipeExclusionList.groups then
+						for _,group in pairs(recipe.groups) do
+							if recipeExclusionList.groups[group] then
+								groupfail=true
+								break
+							end
+						end
+					end
+				end
+				
+				if not groupFail then
+					for index,item in pairs(recipe.input) do
+						sampleInputs[item.name]=item.count
+					end
+					table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(recipe.duration,self.mintick) })
+				end
 			end
-			
-			for index,item in pairs(recipe.input) do
-				sampleInputs[item.name]=item.count
-			end
-			
-			table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(recipe.duration,self.mintick) })
 		end
 		return recipes
 	end
@@ -118,7 +179,7 @@ function getValidRecipes(query)
 	if slot0 then
 		local recipes = scanRecipes(slot0)  --sb.logInfo("recipes: %s", recipes)
 		local function subset(t1,t2)
-			if next(t2) == nil then
+			if not next(t2) then
 				return false
 			end
 			if t1 == t2 then
@@ -208,13 +269,26 @@ function update(dt)
 		if slot0 then                            --sb.logInfo("slot0: %s", slot0)
 			local type = root.itemType(slot0.name) --sb.logInfo("slot0 type: %s", type)
 			local tags = root.itemTags(slot0.name) --sb.logInfo("slot0 Tags: %s", tags)
-			if not exclusionList[slot0.name] and not exclusionList[type] then
-				local totalEnergy = power.getTotalEnergy() --sb.logInfo("totalEnergy %s", totalEnergy)
-				if totalEnergy >= storage.requiredPower then
-					if not startCrafting(getValidRecipes(getInputContents())) then
-						storage.timer = self.mintick
-					end --set timeout if there were no recipes
+			local tagFail
+			if outputExclusionList.tags then
+				for _,tag in ipairs(tags) do
+					if outputExclusionList.tags[tag] then
+						tagFail=true
+						break
+					end
 				end
+			end
+			if not tagfail then
+				if not (outputExclusionList.types and outputExclusionList.types[type]) and not (outputExclusionList and outputExclusionList[slot0.name]) then
+					local totalEnergy = power.getTotalEnergy() --sb.logInfo("totalEnergy %s", totalEnergy)
+					if totalEnergy >= storage.requiredPower then
+						if not startCrafting(getValidRecipes(getInputContents())) then
+							storage.timer = self.mintick
+						end --set timeout if there were no recipes
+					end
+				end
+			else
+				storage.timer = self.mintick
 			end
 		end
 	end
