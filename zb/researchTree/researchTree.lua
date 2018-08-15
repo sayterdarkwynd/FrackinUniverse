@@ -159,7 +159,7 @@ function researchButton()
 		
 		if type(researchTree[selected].unlocks) == "table" then
 			for _, blueprint in ipairs(researchTree[selected].unlocks) do
-				player.giveBlueprint(researchTree[selected].unlocks)
+				player.giveBlueprint(blueprint)
 			end
 		elseif researchTree[selected].unlocks then
 			player.giveBlueprint(researchTree[selected].unlocks)
@@ -199,7 +199,7 @@ function searchButton()
 	if widget.active("searchList") then
 		widget.setVisible("researchButton", true)
 		widget.setVisible("searchList", false)
-		widget.setVisible("text", true)
+		widget.setVisible("infoList", true)
 		
 		for i = 1, 9 do
 			widget.setVisible("priceItem"..i, true)
@@ -216,7 +216,7 @@ function searchButton()
 		widget.setText("title", "Zoom to a research by clicking on it in the list")
 		widget.setVisible("researchButton", false)
 		widget.setVisible("searchList", true)
-		widget.setVisible("text", false)
+		widget.setVisible("infoList", false)
 		populateSearchList()
 		
 		for i = 1, 9 do
@@ -234,7 +234,7 @@ function treePickButton()
 	if widget.active("treeList") then
 		widget.setVisible("researchButton", true)
 		widget.setVisible("treeList", false)
-		widget.setVisible("text", true)
+		widget.setVisible("infoList", true)
 		
 		for i = 1, 9 do
 			widget.setVisible("priceItem"..i, true)
@@ -251,7 +251,7 @@ function treePickButton()
 		widget.setText("title", "Select a research tree")
 		widget.setVisible("researchButton", false)
 		widget.setVisible("treeList", true)
-		widget.setVisible("text", false)
+		widget.setVisible("infoList", false)
 		populateTreeList()
 		
 		for i = 1, 9 do
@@ -270,6 +270,10 @@ end
 
 function updateInfoPanel()
 	if not widget.active("searchList") and not widget.active("treeList") then
+		widget.clearListItems("infoList.unlocks")
+		widget.setVisible("infoList.unlocksLabel", false)
+		widget.setPosition("infoList.unlocks", {0,0})
+		
 		for i = 1, 9 do
 			widget.setItemSlotItem("priceItem"..i, nil)
 		end
@@ -277,10 +281,10 @@ function updateInfoPanel()
 		if selected then
 			if data.strings.research[selected] then
 				widget.setText("title", data.strings.research[selected][1])
-				widget.setText("text", data.strings.research[selected][2])
+				widget.setText("infoList.text", data.strings.research[selected][2])
 			else
 				widget.setText("title", selected)
-				widget.setText("text", "ERROR - Missing text data for selected research")
+				widget.setText("infoList.text", "ERROR - Missing text data for selected research")
 			end
 			
 			if researchTree[selected].price then
@@ -288,28 +292,35 @@ function updateInfoPanel()
 					widget.setItemSlotItem("priceItem"..i, {name = tbl[1], count = tbl[2]})
 					if i >= 9 then break end
 				end
-				
-				
-				-- for i = 1, 9 do
-					-- local price = researchTree[selected].price[i]
-					-- if price then
-						-- local isCurrency = false
-						-- for _, tbl in ipairs(data.currencies) do
-							-- if price[1] == tbl[1] then
-								-- widget.setItemSlotItem("priceItem"..i, {name = tbl[3], count = price[2]})
-								-- isCurrency = true
-								-- break
-							-- end
-						-- end
-						
-						-- if not isCurrency then
-						-- end
-					-- end
-				-- end
+			end
+			
+			if researchTree[selected].unlocks and not researchTree[selected].hideUnlocks then
+				if type(researchTree[selected].unlocks) == "table" then
+					widget.setVisible("infoList.unlocksLabel", true)
+					local listItem = ""
+					for i, item in ipairs(researchTree[selected].unlocks) do
+						if (i-1)%9 == 0 then
+							local pos = widget.getPosition("infoList.unlocks")
+							widget.setPosition("infoList.unlocks", {pos[1], pos[2]-18})
+							
+							listItem = "infoList.unlocks."..widget.addListItem("infoList.unlocks")
+						end
+						widget.setItemSlotItem(listItem..".item"..(i-1)%9, {name = item})
+						widget.setVisible(listItem..".item"..(i-1)%9, true)
+					end
+				else
+					local pos = widget.getPosition("infoList.unlocks")
+					widget.setPosition("infoList.unlocks", {pos[1], pos[2]-18})
+					
+					widget.setVisible("infoList.unlocksLabel", true)
+					local listItem = "infoList.unlocks."..widget.addListItem("infoList.unlocks")
+					widget.setItemSlotItem(listItem..".item0", {name = researchTree[selected].unlocks})
+					widget.setVisible(listItem..".item0", true)
+				end
 			end
 		else
 			widget.setText("title", data.strings.info[1])
-			widget.setText("text", data.strings.info[2])
+			widget.setText("infoList.text", data.strings.info[2])
 		end
 	end
 end
@@ -738,7 +749,7 @@ function verifyAcronims()
 		widget.setVisible("centerButton", false)
 		widget.setVisible("searchButton", false)
 		widget.setText("title", "^red;ERROR:^reset; Researches missing acronyms")
-		widget.setText("text", missing)
+		widget.setText("infoList.text", missing)
 		canvas:drawLine({0, canvasSize[2]*0.5}, {canvasSize[1], canvasSize[2]*0.5}, "#16232BF0", canvasSize[2]*2)
 		canvas:drawText("ERROR\nMISSING ACRONYMS", {position = {canvasSize[1]*0.5, canvasSize[2]*0.5}, horizontalAnchor = "mid", verticalAnchor = "mid"}, 20, "#FF5E66F0")
 		

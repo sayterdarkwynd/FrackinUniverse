@@ -10,7 +10,10 @@
 --		number	- Minimum range (Will not be below this)
 --		number	- Maximum range (Will not be above this)
 
---	zbutil.DeepPrintTable(table) : Prints the given table to the log
+--	zbutil.PrintTable(table) : Prints the contents of the given table.
+--		table	- The table you want to print (Can shove any other value, but it ill just print it as it is)
+
+--	zbutil.DeepPrintTable(table) : Prints the contents of the given table and all tables contained within.
 --		table	- The table you want to print (Can shove any other value, but it ill just print it as it is)
 
 --	zbutil.FadeHex(string, string, integer, string) : Returns a modified two-digit hex faded in the requested direction of the recieved two-digit hex
@@ -37,15 +40,29 @@
 -- zbutil.isArray(table) : Returns true if the table is an array (aka 'ipairs' table)
 --		table	- Amount of rolled dice
 
+-- Preventing potential overrides
 zbutil = zbutil or {}
 
 function math.clamp(input, min, max)
-	if input >= min and input <= max then
-		return input
-	elseif input < min then
-		return min
+	return math.max(min, math.min(input, max))
+end
+
+function zbutil.PrintTable(tbl)
+	if type(tbl) == "table" then
+		local str = "\n{"
+		for k, v in pairs(tbl) do
+			local lenFix = ""
+			for i = 1, 30 - string.len(tostring(k)) do 
+				lenFix = lenFix.." "
+			end
+			
+			str = str.."\n	"..tostring(k)..lenFix.."=          ("..type(v)..") "..tostring(v)         
+		end
+		
+		sb.logInfo("\n%s", str.."\n}")
+	else
+		sb.logInfo("\n%s", tbl)
 	end
-	return max
 end
 
 function zbutil.DeepPrintTable(tbl)

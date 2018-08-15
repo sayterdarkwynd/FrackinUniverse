@@ -5,7 +5,7 @@
 	"category" : "decorative",
 
 	"description" : "A music player, for playing music.",
-	"learnBlueprintsOnPickup" : ["fm_portablemusicplayer"],
+	"learnBlueprintsOnPickup" : ["fm_musicplayerwall", "fm_portablemusicplayer"],
 	"shortdescription" : "Music Player",
 	"race" : "generic",
 
@@ -47,7 +47,8 @@
 	"interactAction" : "ScriptPane",
 	"interactData" : "/interface/scripted/fm_musicplayer/fm_musicplayer.config",
 	
-	"inputNodes" : [ [0, 0] ],
+	"inputNodes" : [ [-1, 0] ],
+	"outputNodes" : [ [1, 0] ],
 	
 	"scripts" : [ "/objects/generic/fm_musicplayer/fm_musicplayer.lua"],
 	"scriptDelta" : 7,	

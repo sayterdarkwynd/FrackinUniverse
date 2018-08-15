@@ -4,102 +4,160 @@ require "/scripts/power.lua"
 
 
 -- list of items to exlude from prototyping
-local exclusionList = {
-  liquid=true,
-  copperbar=true,
-  ironbar=true,
-  silverbar=true,
-  goldbar=true,
-  platinumbar=true,
-  titaniumbar=true,
-  uraniumrod=true,
-  plutoniumrod=true,
-  refinedaegisalt=true,
-  refinedviolium=true,
-  refinedferozium=true,
-  solariumstar=true,
-  densiniumbar=true,
-  irradiumbar=true,
-  zerchesiumbar=true,
-  penumbriteshard=true,
-  prisilitestar=true,
-  protocitebar=true,
-  quietusbar=true,
-  solaricrystal=true,
-  triangliumpyramid=true,
-  moonstonebar=true,
-  durasteelbar=true,
-  tungstenbar=true,
-  thoriumrod=true,
-  neptuniumrod=true,
-  effigiumbar=true,
-  pyreitebar=true,
-  isogenbar=true,
-  xithricitecrystal=true,
-  fuamberchunk=true,
-  nocxiumbar=true,
+
+inputExclusionList = {
+	types={
+		--here because meh. not likely to ever use.
+	},
+	tags={
+		"bees"
+	}
+}
+
+recipeExclusionList = {
+	groups={
+		--bars=true,--carbon plate, which takes multiple ingredients and cant be arc/blast furnaced, is on this list
+		beerefuge=true,
+		radienshopdrug=true,
+		radienshop=true,
+		terraforge=true,
+		beakeasy=true,
+		teleshop=true,
+		treasuredtrophies=true
+	}
+}
+
+outputExclusionList = {
+	types={
+		liquid=true
+	},
+	tags={
+		--could put stuff here
+	},
+	copperbar=true,
+	ironbar=true,
+	silverbar=true,
+	goldbar=true,
+	platinumbar=true,
+	titaniumbar=true,
+	uraniumrod=true,
+	plutoniumrod=true,
+	refinedaegisalt=true,
+	refinedviolium=true,
+	refinedferozium=true,
+	solariumstar=true,
+	densiniumbar=true,
+	irradiumbar=true,
+	zerchesiumbar=true,
+	penumbriteshard=true,
+	prisilitestar=true,
+	protocitebar=true,
+	quietusbar=true,
+	solaricrystal=true,
+	triangliumpyramid=true,
+	moonstonebar=true,
+	durasteelbar=true,
+	tungstenbar=true,
+	thoriumrod=true,
+	neptuniumrod=true,
+	effigiumbar=true,
+	pyreitebar=true,
+	isogenbar=true,
+	xithricitecrystal=true,
+	fuamberchunk=true,
+	nocxiumbar=true,
 }
 
 
 local deltaTime = 0
-local requiredPower = 0
 
 function init()
-    power.init()
-    requiredPower = config.getParameter('isn_requiredPower')
-    transferUtil.init()
-    self.timer = 1
-    self.mintick = 1
-    self.crafting = false
-    self.output = {}
+	power.init()
+	transferUtil.init()
+	self.mintick = math.max(script.updateDt(),0.0167)--0.0167 (1/60 of a second) is minimum due to frames/second limit.
+	storage.timer = storage.timer or self.mintick
+	storage.powerTimer = 0
+	storage.requiredPower = config.getParameter('isn_requiredPower')*self.mintick--<40>/s.
+	storage.crafting = storage.crafting or false
+	storage.output = storage.output or {}
+	animate()
 end
 
 
 function getInputContents()
-        local id = entity.id()
-        local contents = {}
-        for i=1,6 do
-            local stack = world.containerItemAt(entity.id(),i)
-            if stack ~=nil then
-                if contents[stack.name] ~= nil then
-                  contents[stack.name] = contents[stack.name] + stack.count
-                else
-                  contents[stack.name] = stack.count
-                end
-            end
-        end
-      return contents
+	local id = entity.id()
+	local contents = {}
+	for i=1,6 do
+		local stack = world.containerItemAt(entity.id(),i)
+		if stack then
+			if contents[stack.name] then
+				contents[stack.name] = contents[stack.name] + stack.count
+			else
+				contents[stack.name] = stack.count
+			end
+		end
+	end
+	return contents
 end
 
 
 function scanRecipes(sample)
-  local recipeScan = root.recipesForItem(sample.name)
-  local recipes={}
-
-      if recipeScan then --sb.logInfo("RecipeScan: %s", recipeScan)
-        for n = 1,#recipeScan do
-            local recipeInputs = {recipeScan[n].input}
-            local recipeOutput = {recipeScan[n].output}
-            local recipeTime = recipeScan[n].duration
-            local sampleInputs = {}
-            local sampleOutput = {}
-            local stackOut = recipeOutput[1]
-            sampleOutput[stackOut.name] = stackOut.count
-            if recipeScan[n].currencyInputs then --sb.logInfo("recipeScan[n].currencyInputs: %s", recipeScan[n].currencyInputs)
-              sampleInputs = recipeScan[n].currencyInputs --sb.logInfo("sampleInputs if currency: %s", sampleInputs)
-            end
-              for i,scanInputs in ipairs(recipeInputs) do
-                for i=1,#scanInputs do
-                  local stack = scanInputs[i]
-                    sampleInputs[stack.name] = stack.count
-                end
-              end
-              if recipeTime < 1 then recipeTime = 1
-            table.insert(recipes, n, {inputs = sampleInputs, outputs = sampleOutput, time = recipeTime })
-          end
-        end
-            return recipes
-        end
+	
+	local recipes={}
+	
+	local type = root.itemType(sample.name) --sb.logInfo("slot0 type: %s", type)
+	local tags = root.itemTags(sample.name) --sb.logInfo("slot0 Tags: %s", tags)
+	
+	if (inputExclusionList.types and inputExclusionList.types[type]) or (inputExclusionList and inputExclusionList[sample.name]) then
+		return recipes
+	end
+	
+	if inputExclusionList.tags then
+		for _,tag in ipairs(tags) do
+			if inputExclusionList.tags[tag] then
+				return recipes
+			end
+		end
+	end
+	
+	local recipeScan = root.recipesForItem(sample.name)
+	if recipeScan then --sb.logInfo("RecipeScan: %s", recipeScan)
+		for index,recipe in pairs(recipeScan) do
+			local recipeInputs = {recipe.input}
+			local sampleInputs = {}
+			local sampleOutput = {}
+			local stackOut = recipe.output
+			sampleOutput[stackOut.name] = stackOut.count
+			
+			if not recipe.currencyInputs or util.tableSize(recipe.currencyInputs) == 0 then
+				local groupFail
+				--ignore any recipes that take a currency
+				--[[if recipe.currencyInputs then --sb.logInfo("recipe.currencyInputs: %s", recipe.currencyInputs)
+					sampleInputs = recipe.currencyInputs --sb.logInfo("sampleInputs if currency: %s", sampleInputs)
+				end
+				]]
+				
+				if recipe.groups then
+					if recipeExclusionList.groups then
+						for _,group in pairs(recipe.groups) do
+							if recipeExclusionList.groups[group] then
+								groupFail=true
+								break
+							end
+						end
+					end
+				end
+				
+				if not groupFail then
+					for index,item in pairs(recipe.input) do
+						sampleInputs[item.name]=item.count
+					end
+					table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(recipe.duration,self.mintick) })
+				end
+			end
+		end
+		return recipes
+	end
 
 end
 
@@ -113,30 +171,30 @@ function map(l,f)
 end
 
 function filter(l,f)
-  return map(l, function(e) return f(e) and e or nil end)
+	return map(l, function(e) return f(e) and e or nil end)
 end
 
 function getValidRecipes(query)
-  local slot0 = world.containerItemAt(entity.id(), 0)
-    if slot0 then
-        local recipes = scanRecipes(slot0)  --sb.logInfo("recipes: %s", recipes)
-        local function subset(t1,t2)
-          if next(t2) == nil then
-            return false
-          end
-          if t1 == t2 then
-            return true
-          end
-            for k,_ in pairs(t1) do
-                if not t2[k] or t1[k] > t2[k] then
-                  return false
-                end
-            end
-        return true
-      end
+	local slot0 = world.containerItemAt(entity.id(), 0)
+	if slot0 then
+		local recipes = scanRecipes(slot0)  --sb.logInfo("recipes: %s", recipes)
+		local function subset(t1,t2)
+			if not next(t2) then
+				return false
+			end
+			if t1 == t2 then
+				return true
+			end
+			for k,_ in pairs(t1) do
+				if not t2[k] or t1[k] > t2[k] then
+					return false
+				end
+			end
+			return true
+		end
 
-return filter(recipes, function(l) return subset(l.inputs, query) end)
-end
+		return filter(recipes, function(l) return subset(l.inputs, query) end)
+	end
 end
 
 
@@ -146,7 +204,7 @@ function getOutSlotsFor(something)
 
     for i = 7, 16 do -- iterate all output slots
         local stack = world.containerItemAt(entity.id(), i) -- get the stack on i
-        if stack ~= nil then -- not empty
+        if stack then -- not empty
             if stack.name == something then -- its "something"
                 table.insert(slots,i) -- possible drop slot
             end
@@ -163,70 +221,135 @@ end
 
 
 function update(dt)
-  if not deltaTime or (deltaTime > 1) then
-local	deltaTime=0
+	if not deltaTime or (deltaTime > 1) then
+		deltaTime=0
 		transferUtil.loadSelfContainer()
 	else
 		deltaTime=deltaTime+dt
 	end
 
-    self.timer = self.timer - dt
-    if self.timer <= 0 then
-        if self.crafting then
-          local powerCons = power.consume(config.getParameter('isn_requiredPower'))
-          if powerCons then
-            for k,v in pairs(self.output) do
-                local leftover = {name = k, count = v}
-                local slots = getOutSlotsFor(k)
-                for _,i in pairs(slots) do
-                    leftover = world.containerPutItemsAt(entity.id(), leftover, i)
-                    if leftover == nil then
-                        break
-                    end
-                end
+    storage.timer = storage.timer - dt
+	
+	if storage.crafting then
+		if not storage.powerTimer or storage.powerTimer <= 0 then
+			if power.consume(storage.requiredPower) then
+				storage.powerTimer=self.minTick
+			else
+				abort()
+			end
+		else
+			storage.powerTimer=storage.powerTimer-dt
+		end
+	
+	end
+	
+	if storage.timer <= 0 then
+		if storage.crafting then
+			for k,v in pairs(storage.output) do
+				local leftover = {name = k, count = v}
+				local slots = getOutSlotsFor(k)
+				for _,i in pairs(slots) do
+					leftover = world.containerPutItemsAt(entity.id(), leftover, i)
+					if not leftover then
+						break
+					end
+				end
 
-                if leftover ~= nil then
-                    world.spawnItem(leftover.name, entity.position(), leftover.count)
-                end
-              end
-            end
-            self.crafting = false
-            self.output = {}
-            self.timer = self.mintick --reset timer to a safe minimum
-            animator.setAnimationState("samplingarrayanim", "idle")
-          end
-        end
+				if leftover then
+					world.spawnItem(leftover.name, entity.position(), leftover.count)
+				end
+			end
+	
+			stop()
+		end
+	end
 
-          if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
-            local slot0 = world.containerItemAt(entity.id(), 0)
-            if slot0 then                            --sb.logInfo("slot0: %s", slot0)
-              local type = root.itemType(slot0.name) --sb.logInfo("slot0 type: %s", type)
-              local tags = root.itemTags(slot0.name) --sb.logInfo("slot0 Tags: %s", tags)
-              if not exclusionList[slot0.name] and not exclusionList[type] then
-                local totalEnergy = power.getTotalEnergy() --sb.logInfo("totalEnergy %s", totalEnergy)
-                if totalEnergy >= requiredPower then
-                  if not startCrafting(getValidRecipes(getInputContents())) then self.timer = self.mintick end --set timeout if there were no recipes
-                end
-              end
-            end
-          end
-  power.update(dt)
+	if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
+		local slot0 = world.containerItemAt(entity.id(), 0)
+		if slot0 then                            --sb.logInfo("slot0: %s", slot0)
+			local type = root.itemType(slot0.name) --sb.logInfo("slot0 type: %s", type)
+			local tags = root.itemTags(slot0.name) --sb.logInfo("slot0 Tags: %s", tags)
+			local tagFail
+			if outputExclusionList.tags then
+				for _,tag in ipairs(tags) do
+					if outputExclusionList.tags[tag] then
+						tagFail=true
+						break
+					end
+				end
+			end
+			if not tagfail then
+				if not (outputExclusionList.types and outputExclusionList.types[type]) and not (outputExclusionList and outputExclusionList[slot0.name]) then
+					local totalEnergy = power.getTotalEnergy() --sb.logInfo("totalEnergy %s", totalEnergy)
+					if totalEnergy >= storage.requiredPower then
+						if not startCrafting(getValidRecipes(getInputContents())) then
+							storage.timer = self.mintick
+						end --set timeout if there were no recipes
+					end
+				end
+			else
+				storage.timer = self.mintick
+			end
+		end
+	end
+	power.update(dt)
 end
 
 
 function startCrafting(result)
-    if next(result) == nil then return false
-    else _,result = next(result)
-
+    if next(result) == nil then
+		return false
+    else
+		_,result = next(result)
+		
+		--if we cant consume all of them, consume NONE.
         for k,v in pairs(result.inputs) do
-        if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
+			if not world.containerAvailable(entity.id(), {item = k , count = v}) then
+				return false
+			end
+        end
+		
+        for k,v in pairs(result.inputs) do
+			world.containerConsume(entity.id(), {item = k , count = v})
         end
 
-        self.crafting = true
-        self.timer = result.time
-        self.output = result.outputs
-        animator.setAnimationState("samplingarrayanim", "working")
-
+        storage.crafting = true
+		storage.rate = result.time
+        storage.timer = result.time
+		storage.input = result.inputs
+        storage.output = result.outputs
+		animate()
         return true
     end
+end
+
+function animate()
+	animator.setAnimationRate(1/(storage.rate or 1))
+	animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
+end
+
+function abort()
+	--waste no materials.
+	if storage.crafting then
+		for k,v in pairs(storage.input) do
+			local leftovers=world.containerAddItems(entity.id(), {item = k , count = v})
+			if leftovers then
+				world.spawnItem(entity.position(), leftovers)
+			end
+		end
+	end
+	stop()
+end
+
+function stop()
+	storage.crafting = false
+	storage.output = {}
+	storage.input = {}
+	storage.timer = self.mintick --reset timer to a safe minimum
+	storage.rate=storage.timer
+	animate()
+end
+
+function die()
+	abort()
 end
