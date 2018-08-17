@@ -147,24 +147,111 @@
 	  "spawnCooldown":0.5, 
 	  "monsterType":"bighairyfrankbaby", 
 	  "maxCount":15, 
-	  "monsterParameters":{"level":[3]}
+	  "monsterParameters":{ "level":[3] }
 	  }
 	},    
        { "name" : "action-aim-head" } 
        
        ],
        
-      "concurrentActions" : [ { "name" : "action-aim-head"} ],
-      "deathActions" : [ 
+      "concurrentActions" : [ 
 	{
 	"name":"action-spawncompanions", 
 	"parameters":{
-	  "spawnCooldown":0.05, 
+	  "spawnCooldown":0.5, 
 	  "monsterType":"bighairyfrankbaby", 
 	  "maxCount":15, 
-	  "monsterParameters":{"level":[3]}
+	  "monsterParameters":{ "level":[3] }
 	  }
 	},      
+        { "name" : "action-aim-head"} 
+      ],
+      
+      "deathActions" : [ 
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },        
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },        
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
         {
           "name" : "action-projectile",
           "parameters" : {
