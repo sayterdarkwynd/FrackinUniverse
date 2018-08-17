@@ -110,8 +110,12 @@
             "winddownState" : "",
             "winddownTime" : 0
           }
-        }		],
+        }		
+        
+      ],
+        
       "periodicActions" : [ ],
+      
       "approachActions" : [
         {
           "name" : "approach-fly",
@@ -137,15 +141,50 @@
           }
         }
       ],
-       "concurrentHostileActions" : [ 
-	   { 
-	   "name" : "action-aim-head" 
-	   } ],
-       "concurrentActions" : [ 
-	   { 
-	   "name" : "action-aim-head"
-	   } ],
-      "deathActions" : [ {
+      "concurrentHostileActions" : [ 
+        {
+          "name" : "action-spawnmonster",
+          "cooldown" : 5,
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },       
+       { "name" : "action-aim-head" } 
+       
+       ],
+       
+      "concurrentActions" : [ { "name" : "action-aim-head"} ],
+      "deathActions" : [ 
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 10,
@@ -160,7 +199,8 @@
             "aimDirection" : [0, 1],
             "fireOffset" : [0, 0]
           }
-        } ]
+        } 
+      ]
     },
 
     "touchDamage" : {
