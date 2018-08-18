@@ -1,21 +1,8 @@
-function init()
-	warningResource="biomeairlesswarning"
-	sendMessage(true)
-end
+require "\stats\effects\fu_weathereffects\fuWeatherLib.lua"
 
 function update(dt)
-	sendMessage()
-end
-
-function sendMessage(force)
-	if not world.breathable(entity.position()) then
-		if status.isResource(warningResource) then
-			if not status.resourcePositive(warningResource) then
-				world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeairless", 1.0)
-			end
-			status.setResourcePercentage(warningResource,1.0)
-		elseif force then
-			world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeairless", 30.0)
-		end
+	warningTimer=(warningTimer or script.updateDt()*2)-dt
+	if warningTimer<=0 then
+		warningTimer=fuWeatherLib.warn("biomeairlesswarning","biomeairless") and 1 or math.huge
 	end
 end
