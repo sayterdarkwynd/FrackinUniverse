@@ -1,41 +1,39 @@
 {
-  "objectName" : "fu_liquidcondenser",
-  "rarity" : "rare",
-  "colonyTags" : [ "science", "wired", "lab" ],
-  "description" : "Condenses liquid from biome atmosphere. Requires 4W of power.",
-  "shortdescription" : "^cyan;Liquid Collector^white;",
-  "race" : "generic",
-  "category" : "wire",
-  "price" : 500,
-  "printable" : false,
-  "learnBlueprintsOnPickup" : [ "isn_atmoscondenser", "fu_liquidmixer" ],
-  
-  "scripts" : [ "/scripts/power.lua","isn_resource_generator.lua" ],
-  "scriptDelta" : 60,
-  
-  
-  
-  
-  "animation" : "/objects/power/isn_resource_generator.animation",
+	"objectName": "fu_liquidcondenser",
+	"rarity": "rare",
+	"colonyTags": ["science", "wired", "lab"],
+	"description": "Condenses liquid from biome atmosphere. Requires 4W of power. Scan for more Info.",
+	"shortdescription": "^cyan;Liquid Collector^white;",
+	"race": "generic",
+	"category": "wire",
+	"price": 500,
+	"printable": false,
+	"learnBlueprintsOnPickup": ["isn_atmoscondenser", "fu_liquidmixer"],
 
-  "animationParts" : {
-    "basemachine" : "fu_liquidcondenser.png"
-  },
-  "animationPosition" : [0, 0],
-  
-  "inputNodes" : [ [1, 1] ],
-  "powertype" : "input",
-  "isn_requiredPower" : 4,
-  "isn_liquidCollector" : true,
-  
-  "inventoryIcon" : "fu_liquidcondenser_inv.png",
-  "orientations" : [
-    {
-      "image" : "fu_liquidcondenser.png:<color>.idle",
-      "imagePosition" : [0, 0],
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
-    }
-  ]
+	"scripts": ["isn_resource_generator.lua"],
+	"scriptDelta": 60,
+
+	"animation": "/objects/power/fu_liquidcondenser/isn_resource_generator.animation",
+
+	"animationParts": {
+		"basemachine": "fu_liquidcondenser.png"
+	},
+	"animationPosition": [0, 0],
+
+	"inputNodes": [
+		[1, 1],
+		[2, 1]
+	],
+	"powertype": "input",
+	"isn_requiredPower": 4,
+	"isn_liquidCollector": true,
+
+	"inventoryIcon": "fu_liquidcondenser_inv.png",
+	"orientations": [{
+		"image": "fu_liquidcondenser.png:<color>.idle",
+		"imagePosition": [0, 0],
+		"spaceScan": 0.1,
+		"anchors": ["bottom"],
+		"collision": "platform"
+	}]
 }
