@@ -27,7 +27,7 @@ function pump(inputPos,outputPos)
         if (storage.ispumppres or (not outliq or (outliq[1] == inliq[1] and outliq[2] < 1))) then --if output has no liquid or (liquid ids are the same and outliquidlever < 2)
             if storage.outputProtected then world.setTileProtection(world.dungeonId(storage.outputPos), false) end
             world.destroyLiquid(inputPos)
-            world.spawnLiquid(outputPos,inliq[1],inliq[2]*1.01)
+            world.spawnLiquid(outputPos,inliq[1],inliq[2])
             if storage.outputProtected then world.setTileProtection(world.dungeonId(storage.outputPos), true) end
             return true
         end
