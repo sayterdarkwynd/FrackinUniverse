@@ -1,4 +1,4 @@
-require "\stats\effects\fu_weathereffects\fuWeatherLib.lua"
+require "/stats/effects/fu_weathereffects/fuWeatherLib.lua"
 
 function update(dt)
 	warningTimer=(warningTimer or script.updateDt()*2)-dt

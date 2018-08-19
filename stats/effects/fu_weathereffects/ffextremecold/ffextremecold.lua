@@ -1,4 +1,4 @@
-require "\stats\effects\fu_weathereffects\fuWeatherLib.lua"
+require "/stats/effects/fu_weathereffects/fuWeatherLib.lua"
 
 function init()
 	animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
