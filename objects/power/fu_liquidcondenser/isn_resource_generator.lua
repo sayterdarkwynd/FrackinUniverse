@@ -1,4 +1,5 @@
 require'/scripts/power.lua'
+require'/scripts/util.lua'
 
 liquids = {
 	aethersea = {liquid=100,cooldown=2},
@@ -35,8 +36,9 @@ function init()
 	storage.timer = storage.timer or 1
 	power.init()
 	power.update()
-	baseMessage="^blue;Input^reset;1^blue;:^reset; Logic\n^blue;Input^reset;2^blue;:^reset; Power"
 	setDesc()
+	storage.outputPos=entity.position()
+	storage.outputPos[1]=storage.outputPos[1]+2+util.clamp(object.direction(),-1,0)
 end
 
 function update(dt)
@@ -58,12 +60,10 @@ function update(dt)
 				animator.setAnimationState("machineState", "idle")
 			end
 		else
-			local pos=entity.position()
-			pos={pos[1]+2,pos[2]}
-			local liquid = world.liquidAt(pos)
+			local liquid = world.liquidAt(storage.outputPos)
 			local value = worldInfo()
 			if not liquid or (liquid[2] <= 0.5 and liquid[1] == value.liquid) then
-				world.spawnLiquid(pos,value.liquid,0.5)
+				world.spawnLiquid(storage.outputPos,value.liquid,0.5)
 				storage.timer = value.cooldown
 			else
 				animator.setAnimationState("machineState", "full")
@@ -80,6 +80,7 @@ function worldInfo()
 end
 
 function setDesc()
+	local baseMessage="^blue;Input^reset;1^blue;:^reset; Logic\n^blue;Input^reset;2^blue;:^reset; Power"
 	local color="^yellow;"
 	local info="Standby."
 	if world.type() == 'playerstation' or world.type() == 'unknown' then
