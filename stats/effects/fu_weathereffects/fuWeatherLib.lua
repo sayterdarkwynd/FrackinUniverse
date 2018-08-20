@@ -213,7 +213,6 @@ function fuWeatherLib.warn(resource,message)
 		status.setResourcePercentage(resource,1.0)
 		return true
 	else
-		sb.logInfo("It's not a resource!")
 		world.sendEntityMessage(entity.id(), "queueRadioMessage",message, 30.0)
 		return false
 	end
