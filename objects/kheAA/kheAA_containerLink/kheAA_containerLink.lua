@@ -9,6 +9,12 @@ function init()
 	storage.linkRange=config.getParameter("kheAA_linkRange",16)
 	storage.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
 	storage.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
+	
+	local desc="^blue;Input: ^white;item network^reset;\n^red;Output: ^white;item network^reset;"
+	if storage.outPartialFillNode then
+		desc=desc.."^red;Lower output: ^white;item network^reset;\n^red;Upper outputs: ^white;Partial/Complete Fill^reset;"
+	end
+	object.setConfigParameter('description',desc)
 end
 
 function update(dt)
@@ -37,18 +43,12 @@ function update(dt)
 end
 
 function findContainer()
-	if storage.containerId == nil then
-		local tempRect=transferUtil.pos2Rect(storage.position,storage.linkRange)
-		if not world.regionActive(temprect) then
-			world.loadRegion(tempRect)
-		end
-	elseif not world.regionActive(transferUtil.pos2Rect(storage.containerPos,1)) then
-		world.loadRegion(transferUtil.pos2Rect(storage.containerPos,1))
-		if not world.entityExists(storage.containerId) then
-			storage.containerId=nil
-		end
-	end
-
+	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+	storage.containerId=nil
+	storage.containerPos=nil
+	storage.inContainers={}
+	storage.outContainers={}
+	
 	local objectIds = world.objectQuery(entity.position(), storage.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
 		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
@@ -58,5 +58,5 @@ function findContainer()
 			storage.outContainers[storage.containerId]=storage.containerPos
 			break
 		end
-	end 
+	end
 end

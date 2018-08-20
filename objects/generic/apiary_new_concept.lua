@@ -136,6 +136,9 @@ function reset()   ---When bees are not present, this sets a slightly increased 
 	if self.spawnHoneyBrake then self.spawnHoneyCooldown = self.spawnHoneyBrake * 2 end
 	if self.spawnDroneBrake then self.spawnDroneCooldown = self.spawnDroneBrake * 2 end
 	self.beePower = 0
+	self.flowerPower = 0
+	self.vegetablePower = 0
+	self.fruitPower = 0
 	contents = world.containerItems(entity.id())
 end
 
@@ -354,74 +357,98 @@ function beeSting()
 	end
 end
 
-
 function flowerCheck()
 	local flowers
-	local noFlowersYet = self.beePower
+	self.flowerPower = self.beePower
+	local noFlowersYet = self.flowerPower
 
 	for i, p in pairs(self.config.flowers) do
 		flowers = world.objectQuery(entity.position(), 80, {name = p})
 		if flowers ~= nil then
-			self.beePower = self.beePower + math.ceil(math.sqrt(#flowers) / 2)
+			self.flowerPower = self.flowerPower + math.ceil(math.sqrt(#flowers) / 2)
 		end
 	end
 
-	if self.beePower == noFlowersYet then
-		self.beePower = -1
-	elseif self.beePower >= 60 then
-		self.beePower = 60
+	if self.flowerPower == noFlowersYet then
+		self.flowerPower = -1
+	elseif self.flowerPower >= 60 then
+		self.flowerPower = 60
 	end
 
-	local beePowerSay = "FC:bP = " .. self.beePower
-	local location = entity.position()
-	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
-	-- object.say(beePowerSay)
+	if self.beeType == 'honey'
+		then self.flowerPower = self.flowerPower*1.5
+	end
+
+	return self.flowerPower --sees no flowers but is working anyway?
 end
 
 function vegetableCheck()
 	local vegetables
-	local noFlowersYet = self.beePower
+	self.vegetablePower = self.beePower
+	local noVegetablesYet = self.vegetablePower
 
 	for i, p in pairs(self.config.vegetables) do
 		vegetables = world.objectQuery(entity.position(), 80, {name = p})
 		if vegetables ~= nil then
-			self.beePower = self.beePower + math.ceil(math.sqrt(#vegetables) / 2)
+			self.vegetablePower = self.vegetablePower + math.ceil(math.sqrt(#vegetables) / 2)
 		end
 	end
 
-	if self.beePower == noFlowersYet then
-		self.beePower = -1
-	elseif self.beePower >= 60 then
-		self.beePower = 60
+	if self.vegetablePower == noVegetablesYet then
+		self.vegetablePower = -1
+	elseif self.vegetablePower >= 60 then
+		self.vegetablePower = 60
 	end
 
-	local beePowerSay = "FC:bP = " .. self.beePower
-	local location = entity.position()
-	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
-	-- object.say(beePowerSay)
+	if self.beeType == 'squash'
+		then self.vegetablePower = self.vegetablePower*1.2
+	elseif self.beeType == 'honey'
+		then self.vegetablePower = self.vegetablePower*.5
+	end
+
+	return self.vegetablePower
 end
 
 function fruitCheck()
 	local fruits
-	local noFlowersYet = self.beePower
+	self.fruitPower = self.beePower
+	local noFruitYet = self.fruitPower
 
 	for i, p in pairs(self.config.fruits) do
 		fruits = world.objectQuery(entity.position(), 80, {name = p})
 		if fruits ~= nil then
-			self.beePower = self.beePower + math.ceil(math.sqrt(#fruits) / 2)
+			self.fruitPower = self.fruitPower + math.ceil(math.sqrt(#fruits) / 2)
 		end
 	end
 
-	if self.beePower == noFlowersYet then
-		self.beePower = -1
-	elseif self.beePower >= 60 then
-		self.beePower = 60
+	if self.fruitPower == noFruitYet then
+		self.fruitPower = -1
+	elseif self.fruitPower >= 60 then
+		self.fruitPower = 60
 	end
 
-	local beePowerSay = "FC:bP = " .. self.beePower
-	local location = entity.position()
-	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
-	-- object.say(beePowerSay)
+	if self.beeType == 'sweat'
+		then self.fruitPower = self.fruitPower*1.2
+	end
+
+	return self.fruitPower
+end
+
+function pollinationCheck()
+	fruitCheck()
+	vegetableCheck()
+	flowerCheck()
+
+	self.beePower = self.flowerPower + self.vegetablePower + self.fruitPower
+
+	if self.beePower <= -1
+		then self.beePower = -1
+	elseif self.beePower >= 60
+		then self.beePower = 60
+	end
+
+	return self.beePower
+
 end
 
 
@@ -566,18 +593,18 @@ end
 function setAnimationState()
 	if self.beePower < 0 then
 		animator.setAnimationState("bees", "off")
-	elseif beeActiveWhen == "day" then
+	elseif self.beeActiveWhen == "day" then
 		animator.setAnimationState("bees", daytime and "on" or "off")
-	elseif beeActiveWhen == "earlyday" then
+	elseif self.beeActiveWhen == "earlyday" then
 		animator.setAnimationState("bees", earlyday and "on" or "off")
-	elseif beeActiveWhen == "night" then
+	elseif self.beeActiveWhen == "night" then
 		animator.setAnimationState("bees", night and "on" or "off")
-	elseif beeActiveWhen == "midday" then
+	elseif self.beeActiveWhen == "midday" then
 		animator.setAnimationState("bees", midday and "on" or "off")
-	elseif beeActiveWhen == "midnight" then
+	elseif self.beeActiveWhen == "midnight" then
 		animator.setAnimationState("bees", midnight and "on" or "off")
 	else
-		animator.setAnimationState("bees", beeActiveWhen == "always" and "on" or "off")
+		animator.setAnimationState("bees", self.beeActiveWhen == "always" and "on" or "off")
 	end
 end
 
@@ -609,7 +636,7 @@ function update(dt)
 	end
 
 	frame() 	--Checks to see if a frame in installed.
-	flowerCheck()   -- checks flowers
+	pollinationCheck()   -- combine fruit, vegetable, and flower check
 	deciding()
 
 	if not self.doBees and not self.doItems and not self.doHoney and not self.doDrones then
@@ -704,21 +731,21 @@ function workingBees()
 	if queen == drone and self.config.spawnList[queen] then
 		local config = self.config.spawnList[queen]
 		if self.beeType == 'carpenter'
-			then beeActiveWhen = 'earlyday'
+			then self.beeActiveWhen = 'earlyday'
 		elseif self.beeType == 'mason'
-			then beeActiveWhen = 'night'
+			then self.beeActiveWhen = 'night'
 		elseif self.beeType == 'leafcutter'
-			then beeActiveWhen = 'midday'
+			then self.beeActiveWhen = 'midday'
 		elseif self.beeType == 'squash'
-			then beeActiveWhen = 'earlyday'
+			then self.beeActiveWhen = 'earlyday'
 		elseif self.beeType == 'plasterer'
-			then beeActiveWhen = 'midnight'
+			then self.beeActiveWhen = 'midnight'
 		else
-			local beeActiveWhen = 'day'
+			self.beeActiveWhen = 'day'
 		end
 
 		if world.type() == "playerstation"
-			then beeActiveWhen = "always" end
+			then self.beeActiveWhen = "always" end
 
 --		sb.logInfo ('Checking ' .. queen .. ' (' .. when .. ' / ' .. notnow .. ')')
 
@@ -782,14 +809,14 @@ function breedingBees()
 			trySpawnMutantDrone(0.20, species)
 			expelQueens(bee1Type)
 			expelQueens(bee2Type)
-			beeActiveWhen = "day"
+			self.beeActiveWhen = "day"
 			return true
 		end
 	end
 
         miteInfection() -- additional chance for infection when breeding
 
-	beeActiveWhen = "unknown"
+	self.beeActiveWhen = "unknown"
 	self.beePower = -1
 	return false
 end

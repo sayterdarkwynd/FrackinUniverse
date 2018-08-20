@@ -31,7 +31,7 @@ function init()
 	self.madnessTotal = config.getParameter("madnessTotal",0)
 
 	checkEffectValid()
-	insanityDarkImmune=effect.setStatModifierGroup({})
+	insanityDarkImmune=effect.addStatModifierGroup({})
 	script.setUpdateDelta(5)
 end
 

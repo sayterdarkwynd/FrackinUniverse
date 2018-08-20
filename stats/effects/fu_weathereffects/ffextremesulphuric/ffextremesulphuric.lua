@@ -1,3 +1,5 @@
+require "/stats/effects/fu_weathereffects/fuWeatherLib.lua"
+
 function init()
 	animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
 	animator.setParticleEmitterActive("drips", true)
@@ -6,16 +8,6 @@ function init()
 	self.tickDamagePercentage = 0.03
 	self.tickTime = 1.0
 	self.tickTimer = self.tickTime
-
-	warningResource="ffbiomesulphuricwarning"
-	if status.isResource(warningResource) then
-		if not status.resourcePositive(warningResource) then
-			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0)
-		end
-		status.setResourcePercentage(warningResource,1.0)
-	else
-		world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 30.0)
-	end
 end
 
 
@@ -37,11 +29,10 @@ function update(dt)
 			sourceEntityId = entity.id()
 		})
 	end
-	if status.isResource(warningResource) then
-		warningTimer=(warningTimer or 0)+dt
-		if warningTimer>1 then
-			status.setResourcePercentage(warningResource,1.0)
-		end
+	
+	warningTimer=(warningTimer or script.updateDt()*2)-dt
+	if warningTimer<=0 then
+		warningTimer=fuWeatherLib.warn("ffbiomesulphuricwarning","ffbiomesulphuric") and 1 or math.huge
 	end
 end
 

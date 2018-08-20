@@ -6,16 +6,19 @@ data = nil
 modslist = {}
 index = 1
 timer = nil
+versionIndex = {}
 
 function init()
 	local passed, err = pcall(function()
 		data = root.assetJson("/zb/updateInfoWindow/data.config")
 		modslist = status.statusProperty("zb_updatewindow_pending", {}) or {}
-		-- local versions = status.statusProperty("zb_updatewindow_versions", {})
 		
 		widget.setButtonEnabled("close", false)
 		widget.setButtonEnabled("buttonPrevious", false)
 		if #modslist <= 0 then
+			checkedAll = true
+			timer = 0
+			
 			for mod, _ in pairs(data) do
 				if mod ~= "Data" then
 					table.insert(modslist, mod)
@@ -25,6 +28,9 @@ function init()
 		
 		if #modslist == 1 then
 			widget.setButtonEnabled("buttonNext", false)
+		end
+		
+		if not timer then
 			timer = data.Data.minimumUptime
 		end
 		
@@ -58,6 +64,7 @@ end
 
 function displayInfo()
 	texts = root.assetJson(data[modslist[index]].file)
+	versionIndex[modslist[index]] = texts.version
 	
 	widget.setButtonEnabled("buttonChangelog", true)
 	widget.setButtonEnabled("buttonCredits", true)
@@ -88,7 +95,7 @@ function uninit()
 		local pending = status.statusProperty("zb_updatewindow_pending", {}) or {}
 		local versions = status.statusProperty("zb_updatewindow_versions", {}) or {}
 		for _, mod in ipairs(pending) do
-			versions[mod] = texts.version
+			versions[mod] = versionIndex[mod]
 			status.setStatusProperty("zb_updatewindow_versions", versions)
 		end
 		status.setStatusProperty("zb_updatewindow_pending", nil)

@@ -188,7 +188,7 @@ function transferUtil.checkFilter(item)
 		transferUtil.initTypes()
 	end
 	routerItems=world.containerItems(entity.id())
-	if #routerItems == 0 then
+	if util.tableSize(routerItems) == 0 then
 		return true, 1
 	end
 	local invertcheck = nil     -- Inverted conditions are match-all
