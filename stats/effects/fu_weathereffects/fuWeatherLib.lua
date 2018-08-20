@@ -125,7 +125,7 @@ end
 
 
 function fuWeatherLib.getEffectTime(resistType)
-	return self.baseRate * math.max((1 + math.min(status.stat(resistType,0)),0.01)
+	return self.baseRate * math.max(1 + math.min(status.stat(resistType,0),0.01))
 end
 
 -- ********************************
@@ -210,9 +210,10 @@ function fuWeatherLib.warn(resource,message)
 		if not status.resourcePositive(resource) then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", message, 1.0)
 		end
-		status.setResourcePercentage("ffbiomeheatwarning",1.0)
+		status.setResourcePercentage(resource,1.0)
 		return true
 	else
+		sb.logInfo("It's not a resource!")
 		world.sendEntityMessage(entity.id(), "queueRadioMessage",message, 30.0)
 		return false
 	end
