@@ -33,7 +33,7 @@ local recipes =
 {inputs = { bottle=1,violiumcomb=1 }, outputs = { shellhoneyjar=1 }, time = 1.0},
 {inputs = { bottle=1,liquidwater=1 }, outputs = { liquidwastewater=1 }, time = 1.0},
 {inputs = { bottle=1,magmacomb=1 }, outputs = { hothoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,eldercomb=1 }, outputs = { elderhoneyjar=1 }, time = 1.0}
+{inputs = { bottle=1,eldercomb=1 }, outputs = { elderhoneyjar=1,liquidelderfluid=1 }, time = 1.0}
 }
 
 function init()
