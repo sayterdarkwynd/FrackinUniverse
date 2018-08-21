@@ -14,7 +14,8 @@ function init()
     self.currentSearch = ""                         -- Current search filter
 
     self.forceRepop = true                          -- Whether to repopulate the list next update
-
+	
+	categories()
     -- initializing the available techs
     for i,tech in ipairs(self.lockedTechs) do
         if not tech.recipeReq or player.blueprintKnown(tech.item) then

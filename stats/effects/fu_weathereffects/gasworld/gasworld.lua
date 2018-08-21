@@ -1,3 +1,5 @@
+require "/stats/effects/fu_weathereffects/fuWeatherLib.lua"
+
 function init()
 	script.setUpdateDelta(5)
 	animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
@@ -16,17 +18,6 @@ function init()
 	effect.setParentDirectives("fade=ffea00=0.027")
 	baseValue = config.getParameter("biomeDmgPerTick")
 	activateVisualEffects()
-
-
-	warningResource="fubiomepressurewarning"
-	if status.isResource(warningResource) then
-		if not status.resourcePositive(warningResource) then
-			world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure", 1.0)
-		end
-		status.setResourcePercentage(warningResource,1.0)
-	else
-		world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure", 30.0)
-	end
 
 	if status.stat("negativeMiasma") > 0 then
 		effect.expire()
@@ -84,7 +75,7 @@ function update(dt)
 				damage = biomeDmg+2,
 				damageSourceKind = "poison",
 				sourceEntityId = entity.id(),
-				biomeTimer = 2	
+				biomeTimer = 2
 			})
 			makeAlert()
 			activateVisualEffects()
@@ -96,21 +87,17 @@ function update(dt)
 				damage = biomeDmg+2,
 				damageSourceKind = "electric",
 				sourceEntityId = entity.id(),
-				biomeTimer = 2	
+				biomeTimer = 2
 			})
 			makeAlert()
 			activateVisualEffects()
 		end
-	end	
-	
-	
-	if status.isResource(warningResource) then
-		warningTimer=(warningTimer or 0)+dt
-		if warningTimer>1 then
-			status.setResourcePercentage(warningResource,1.0)
-		end
 	end
-
+	
+	warningTimer=(warningTimer or script.updateDt()*2)-dt
+	if warningTimer<=0 then
+		warningTimer=fuWeatherLib.warn("fubiomepressurewarning","fubiomepressure") and 1 or math.huge
+	end
 end
 
 function uninit()

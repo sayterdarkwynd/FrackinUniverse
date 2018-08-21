@@ -152,7 +152,7 @@ function scanRecipes(sample)
 					for index,item in pairs(recipe.input) do
 						sampleInputs[item.name]=item.count
 					end
-					table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(recipe.duration,self.mintick) })
+					table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(util.round(recipe.duration^0.5,3),self.mintick) })
 				end
 			end
 		end
@@ -160,7 +160,6 @@ function scanRecipes(sample)
 	end
 
 end
-
 
 function map(l,f)
     local res = {}

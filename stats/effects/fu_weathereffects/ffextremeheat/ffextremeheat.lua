@@ -1,3 +1,5 @@
+require "/stats/effects/fu_weathereffects/fuWeatherLib.lua"
+
 function init()
 	animator.setParticleEmitterOffsetRegion("flamesfu", mcontroller.boundBox())
 	animator.setParticleEmitterActive("flamesfu", true)
@@ -6,16 +8,6 @@ function init()
 	self.tickDamagePercentage = 0.056
 	self.tickTime = 1.0
 	self.tickTimer = self.tickTime
-	
-	warningResource="ffbiomeheatwarning"
-	if status.isResource(warningResource) then
-		if not status.resourcePositive(warningResource) then
-			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheat", 1.0)
-		end
-		status.setResourcePercentage(warningResource,1.0)
-	else
-		world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheat", 30.0)
-	end
 end
 
 
@@ -38,11 +30,9 @@ function update(dt)
 		})
 	end
 
-  	if status.isResource(warningResource) then
-		warningTimer=(warningTimer or 0)+dt
-		if warningTimer>1 then
-			status.setResourcePercentage(warningResource,1.0)
-		end
+	warningTimer=(warningTimer or script.updateDt()*2)-dt
+	if warningTimer<=0 then
+		warningTimer=fuWeatherLib.warn("ffbiomeheatwarning","ffbiomeheat") and 1 or math.huge
 	end
 end
 
