@@ -1348,7 +1348,7 @@
 	  "secondaryRegions" : [ "precursorunderground", "furuinsunderground", "wartfield", "metalhive", "metalworksunderground1", "metalworksunderground2", "metalworksunderground3", "metalworksunderground4", "ffpoopit", "ffcrystalrealm", "colorfulcave", "zen", "crystalcave", "abandonedmines", "hiveold", "moondesertunderground", "moonstoneunderground", "moonvolcanicunderground", "moontoxicunderground", "rainbowforest", "ffspidernest", "mountainous", "ffsupermatter", "deepseavent", "tidewater", "tidewaterfloor", "tidewaterunderground", "lightlessshadowsea", "metallicmoonshadowsea", "icemoonheliumsea", "metallicmoonheliumsea", "bloodstonesea", "sulphuricoceanfloor", "magmaoceanfloor", "arcticoceanfloor", "toxicoceanfloor", "oceanfloor", "nitrogenseafloor", "desertsubsurface", "barrenunderground", "shallowunderground", "arborealunderground", "atropusunderground", "bloodstoneunderground", "wastelandunderground", "bogunderground", "crystalmoonunderground", "icemoonunderground", "icewasteunderground", "infernusunderground", "irradiatedunderground", "lightlessunderground", "metallicunderground", "penumbraunderground", "slimeworldunderground", "sulphuricunderground", "thickjungleunderground", "arboreal", "atropus", "bloodstone", "bog", "crystalmoon", "icemoon", "icewaste", "infernus", "irradiated", "lightless", "metallicmoon", "nitrogensea", "penumbra", "protoworld", "sulphuric", "thickjungle", "urbanwasteland", "alien", "barren", "desert", "forest", "jungle", "magma", "savannah", "scorchedcity", "snow", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "corruptedforest", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga"  ]
         },
         "core" : {
-          "primaryRegion" : [ "mooncore", "nitrogencore", "protocore", "core", "liquidprotocore", "irradiumcore" ]
+          "primaryRegion" : [ "mooncore", "nitrogencore", "protocore", "core", "liquidprotocore", "irradiumcore","eldercore" ]
         }
        }
      }
@@ -1395,7 +1395,7 @@
           "secondaryRegions" : [ "precursorunderground", "colourful", "zen", "crystalcave", "abandonedmines", "hiveold","coralcavern", "luminouscaves", "stonecaves", "bonecaves", "icecaves" ]
         },
         "core" : {
-          "primaryRegion" : [ "mooncore", "nitrogencore", "protocore", "core", "liquidprotocore", "irradiumcore" ]
+          "primaryRegion" : [ "mooncore", "nitrogencore", "protocore", "core", "liquidprotocore", "irradiumcore","eldercore" ]
         }
        }
      }
@@ -1925,7 +1925,7 @@
           "secondaryRegions" : [ "furuinsunderground", "bloodstoneunderground", "corruptmoonunderground", "ffhellhiveunderground", "ffpoopit", "hiveold", "ffspidernest", "fffleshcaves", "ffcellcaves", "ffshadow" ]
         },
         "core" : {
-          "primaryRegion" : [ "puscore", "fleshcore" ]
+          "primaryRegion" : [ "puscore", "fleshcore","eldercore" ]
         }
        }
      }
@@ -1982,7 +1982,7 @@
           "secondaryRegions" : [ "furuinsunderground", "bloodstoneunderground", "corruptmoonunderground", "ffhellhiveunderground", "ffpoopit", "hiveold", "ffspidernest", "fffleshcaves", "ffcellcaves", "ffshadow" ]
         },
         "core" : {
-          "primaryRegion" : [ "puscore", "fleshcore" ]
+          "primaryRegion" : [ "puscore", "fleshcore","eldercore" ]
         }
        }
      }
@@ -3644,7 +3644,7 @@
           "secondaryRegions" : [ "precursorunderground", "futentacleunderground", "ffhellhiveunderground", "ffcrystalrealm", "zen", "hiveold", "fftarunderground", "ffvolcanic", "ffzen", "cellcaves", "ffcellcaves", "irradiatedunderground" ]
         },
         "core" : {
-          "secondaryRegions" : [ "protocore" ]
+          "secondaryRegions" : [ "core", "liquidprotocore", "protocore" ]
         }
         }
       }
@@ -3733,7 +3733,7 @@
           "secondaryRegions" : [ "precursorunderground", "futentacleunderground", "ffhellhiveunderground", "ffcrystalrealm", "zen", "hiveold", "fftarunderground", "ffvolcanic", "ffzen", "cellcaves", "ffcellcaves", "irradiatedunderground" ]
         },
         "core" : {
-          "secondaryRegions" : [ "protocore" ]
+          "secondaryRegions" : [ "core", "liquidprotocore", "protocore", "eldercore" ]
         }
         }
       }
@@ -3817,7 +3817,7 @@
           "secondaryRegions" : [ "futentacleunderground", "ffhiveunderground","ffpoopit", "zen", "hiveold", "abandonedmines", "colorfulcave", "ffspidernest", "tarunderground", "luminouscaves", "cellcaves" ]
         },
         "core" : {
-          "primaryRegion" : [ "core" ]
+          "primaryRegion" : [ "core", "nitrogencore", "core" ]
         }
         }
       }
@@ -6264,7 +6264,7 @@
   {
       "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
-      "caveLiquid" : [ "bloodliquid", "alienjuice", "mercuryliquid", "pus", "bio_ooze" ],
+      "caveLiquid" : [ "bloodliquid", "alienjuice", "elderfluid", "pus", "bio_ooze" ],
       "caveLiquidChanceRange" : [65, 85],
 
       "biome" : [
@@ -8099,6 +8099,23 @@
       ]
     }
   },
+  {"op" : "add",
+  "path" : "/regionTypes/eldercore",
+  "value" :
+    {
+      "caveLiquid" : [ "mercuryliquid", "elderfluid", "blacktar", "alienjuice", "orangegravrain", "organicsoup", "funitrogengas", "fuhydrogengas", "darkwater", "bio_ooze"],
+      "caveLiquidChanceRange" : [35, 85],
+      "caveLiquidSeedDensityRange" : [4.0, 4.0],
+      "oceanLiquid" : [ "liquidnitrogen" ],
+      "oceanLevelOffset" : -20,
+      "subBlockSelector" : [ "lowHillsSurface" ],
+      "fgCaveSelector" : [ "coreCaves" ],
+      "bgCaveSelector" : [ "coreBackgroundCaves" ],
+      "biome" : [
+        [0, [ "eldercorelayer"] ]
+      ]
+    }
+  },  
   {"op" : "add",
   "path" : "/regionTypes/nitrogencore",
   "value" :
