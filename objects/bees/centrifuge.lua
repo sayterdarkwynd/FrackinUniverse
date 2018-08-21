@@ -153,7 +153,7 @@ function stashHoney(comb)
 		else
 			storage.combsProcessed = { type = jar, count = 1 }
 		end
-		--sb.logInfo("STASH: %s %s", storage.combsProcessed.count,storage.combsProcessed.type)
+		sb.logInfo("STASH: %s %s", storage.combsProcessed.count,storage.combsProcessed.type)
 	end
 end
 
@@ -162,6 +162,6 @@ function drawHoney()
 	if not storage.combsProcessed or storage.combsProcessed.count == 0 then return nil end
 	local ret = storage.combsProcessed
 	storage.combsProcessed = { count = 0 }
-	--sb.logInfo("STASH: Withdrawing")
+	sb.logInfo("STASH: Withdrawing")
 	return ret
 end
