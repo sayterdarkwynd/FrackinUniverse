@@ -5078,7 +5078,7 @@
         },{
             "op": "replace",
             "path": "/ue_mk49launcher/partParameters/projectileParameters/power",
-            "value": 30
+            "value": 12
         }
     ],
     
@@ -5087,29 +5087,34 @@
             "path": "/ue_shermantankcannon"
         },{
             "op": "add",
-            "path": "/ue_mk49launcher/stats/mechMass",
+            "path": "/ue_shermantankcannon/stats/mechMass",
             "value": 8
         },{
             "op": "replace",
-            "path": "/ue_mk49launcher/stats/power",
+            "path": "/ue_shermantankcannon/stats/power",
             "value": 8
         },{
             "op": "replace",
-            "path": "/ue_mk49launcher/stats/energy",
+            "path": "/ue_shermantankcannon/stats/energy",
             "value": 7
         },{
             "op": "replace",
-            "path": "/rebel_oldmachinegun/partParameters/projectileParameters/power",
-            "value": 32
+            "path": "/ue_shermantankcannon/partParameters/projectileParameters/power",
+            "value": 50
         }
     ],
     
     [{
             "op": "test",
             "path": "/ue_molotovskymg"
-        },{
+        },
+        {
             "op": "add",
             "path": "/ue_molotovskymg/stats/mechMass",
+            "value": 6
+        },{
+            "op": "add",
+            "path": "/ue_molotovskymg/stats/rapidFire",
             "value": 6
         },{
             "op": "replace",
@@ -5122,10 +5127,10 @@
         },{
             "op": "replace",
             "path": "/ue_molotovskymg/partParameters/projectileParameters/power",
-            "value": 12
+            "value": 15
         }
     ],
-    
+
     [{
             "op": "test",
             "path": "/ue_mechdecoydronelauncher"
@@ -5143,16 +5148,16 @@
             "value": 4
         },{
             "op": "replace",
-            "path": "/ue_mechdecoydronelauncher/droneParameters/targetRange",
+            "path": "/ue_mechdecoydronelauncher/partParameters/droneParameters/targetRange",
             "value": 60
         },{
             "op": "replace",
-            "path": "/ue_mechdecoydronelauncher/droneParameters/statusSettings/stats/flatMaxHealth/baseValue",
+            "path": "/ue_mechdecoydronelauncher/partParameters/droneParameters/statusSettings/stats/flatMaxHealth/baseValue",
             "value": 120
         },{
             "op": "replace",
-            "path": "/ue_mechdecoydronelauncher/droneParameters/gun/projectileParameters/power",
-            "value": 10
+            "path": "/ue_mechdecoydronelauncher/partParameters/droneParameters/gun/projectileParameters/power",
+            "value": 35
         }
     ],
     
@@ -5173,16 +5178,16 @@
             "value": 10
         },{
             "op": "replace",
-            "path": "/ue_multimissiledronelauncher/droneParameters/targetRange",
+            "path": "/ue_multimissiledronelauncher/partParameters/droneParameters/targetRange",
             "value": 60
         },{
             "op": "replace",
-            "path": "/ue_multimissiledronelauncher/droneParameters/statusSettings/stats/flatMaxHealth/baseValue",
+            "path": "/ue_multimissiledronelauncher/partParameters/droneParameters/statusSettings/stats/flatMaxHealth/baseValue",
             "value": 450
         },{
             "op": "replace",
-            "path": "/ue_multimissiledronelauncher/droneParameters/gun/projectileParameters/power",
-            "value": 20
+            "path": "/ue_multimissiledronelauncher/partParameters/droneParameters/gun/projectileParameters/power",
+            "value": 60
         }
     ],
     
@@ -5196,7 +5201,7 @@
         },{
             "op": "add",
             "path": "/ue_katrushkya/stats/multicount",
-            "value": 12
+            "value": 8
         },{
             "op": "replace",
             "path": "/ue_katrushkya/stats/power",
@@ -5207,12 +5212,8 @@
             "value": 10
         },{
             "op": "replace",
-            "path": "/ue_katrushkya/partParameters/projectileParameters/windupTime",
-            "value": 2
-        },{
-            "op": "replace",
             "path": "/ue_katrushkya/partParameters/projectileParameters/power",
-            "value": 25
+            "value": 35
         }
     ],
     
@@ -5233,10 +5234,6 @@
             "value": 10
         },{
             "op": "replace",
-            "path": "/ue_seekingmissile/partParameters/projectileParameters/windupTime",
-            "value": 5
-        },{
-            "op": "replace",
             "path": "/ue_seekingmissile/partParameters/projectileParameters/power",
             "value": 80
         }
@@ -5248,7 +5245,7 @@
         },{
             "op": "add",
             "path": "/ue_xmg2418/stats/rapidFire",
-            "value": 8
+            "value": 30
         },{
             "op": "add",
             "path": "/ue_xmg2418/stats/mechMass",
@@ -5264,33 +5261,7 @@
         },{
             "op": "replace",
             "path": "/ue_xmg2418/partParameters/projectileParameters/power",
-            "value": 4
-        }
-    ],
-    
-    [{
-            "op": "test",
-            "path": "/ue_xmg2418"
-        },{
-            "op": "add",
-            "path": "/ue_xmg2418/stats/rapidFire",
-            "value": 8
-        },{
-            "op": "add",
-            "path": "/ue_xmg2418/stats/mechMass",
-            "value": 8
-        },{
-            "op": "replace",
-            "path": "/ue_xmg2418/stats/power",
-            "value": 9
-        },{
-            "op": "replace",
-            "path": "/ue_xmg2418/stats/energy",
-            "value": 10
-        },{
-            "op": "replace",
-            "path": "/ue_xmg2418/partParameters/projectileParameters/power",
-            "value": 4
+            "value": 0.5
         }
     ],
     
@@ -5300,7 +5271,7 @@
         },{
             "op": "add",
             "path": "/ue_xmg2418mk2/stats/rapidFire",
-            "value": 4
+            "value": 12
         },{
             "op": "add",
             "path": "/ue_xmg2418mk2/stats/mechMass",
@@ -5316,7 +5287,7 @@
         },{
             "op": "replace",
             "path": "/ue_xmg2418mk2/partParameters/projectileParameters/power",
-            "value": 4
+            "value": 3
         }
     ],
     
@@ -5342,7 +5313,7 @@
         },{
             "op": "replace",
             "path": "/ue_antixenomulticannon/partParameters/projectileParameters/power",
-            "value": 3.6
+            "value": 4
         }
     ],
     
@@ -5390,7 +5361,7 @@
         },{
             "op": "replace",
             "path": "/ue_torpedotube/partParameters/projectileParameters/power",
-            "value": 200
+            "value": 500
         }
     ],
     
@@ -5412,7 +5383,7 @@
         },{
             "op": "replace",
             "path": "/ue_armsmg/partParameters/projectileParameters/power",
-            "value": 3
+            "value": 9
         }
     ]
     
