@@ -1,0 +1,119 @@
+{
+  "name" : "spiderNest",
+
+  "type" : "minmax",
+  "sources" : [
+    //stringy karst caves
+    {
+      "type" : "karstcave",
+
+      "layerResolution" : 8,
+      "layerDensity" : 0.07,
+
+      "layerHeightVariation" : {
+        "type" : "perlin",
+        "octaves" : 2,
+        "frequency" : 0.1,
+        "amplitude" : 3
+      },
+      "bufferHeight" : 50,
+
+      "caveDecision" : {
+        "type" : "perlin",
+        "octaves" : 2,
+        "frequency" : 0.01,
+        "amplitude" : 1,
+        "bias" : 0
+      },
+      "caveTaperPoint" : 0.08,
+
+      "caveHeightVariation" : {
+        "type" : "perlin",
+        "octaves" : 2,
+        "frequency" : 0.032,
+        "amplitude" : 24,
+        "bias" : 10
+      },
+
+      "caveFloorVariation" : {
+        "type" : "perlin",
+        "octaves" : 2,
+        "frequency" : 0.1,
+        "amplitude" : 4,
+        "bias" : -2
+      }
+    }
+    ,
+    //larger karst chambers
+    {
+      "type" : "karstcave",
+
+      "layerResolution" : 27,
+      "layerDensity" : 0.04,
+
+      "layerHeightVariation" : {
+        "type" : "perlin",
+        "octaves" : 2,
+        "frequency" : 0.02,
+        "amplitude" : 20
+      },
+      "bufferHeight" : 50,
+
+      "caveDecision" : {
+        "type" : "perlin",
+        "octaves" : 2,
+        "frequency" : 0.1,
+        "amplitude" : 1.4,
+        "bias" : -0.9
+      },
+      "caveTaperPoint" : 0.5,
+
+      "caveHeightVariation" : {
+        "type" : "perlin",
+        "octaves" : 2,
+        "frequency" : 0.05,
+        "amplitude" : 24,
+        "bias" : 6
+      },
+
+      "caveFloorVariation" : {
+        "type" : "perlin",
+        "octaves" : 2,
+        "frequency" : 0.008,
+        "amplitude" : 2,
+        "bias" : -14
+      }
+    }
+    ,
+    //worm caves
+    {
+      "type" : "displacement",
+      "xType" : "perlin",
+      "xOctaves" : 1,
+      "xFreq" : 0.05,
+      "xAmp" : 2,
+      "xXInfluence" : 0.2,
+      "yType" : "perlin",
+      "yOctaves" : 1,
+      "yFreq" : 0.05,
+      "yAmp" : 2,
+      "yYInfluence" : 0.5,
+
+      "source" : {
+        "type" : "wormcave",
+
+        "sectorSize" : 64,
+        "sectorRadius" : 2,
+        "numberOfWormsPerSectorRange" : [0.7, 0.7],
+        "wormSpeed" : 1.0,
+
+        "wormSizeRange" : [5, 8],
+        "wormLengthRange" : [80, 120],
+        "wormTaperDistance" : 15,
+        "wormAngleRange" : [0, 6.283],
+        "wormTurnChance" : 0.2,
+        "wormTurnRate" : 0.08
+      }
+    }
+  ]
+}
