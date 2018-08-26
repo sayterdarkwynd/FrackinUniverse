@@ -4239,6 +4239,69 @@
 	      }
 	    }
 	  }
+	},
+	{"op":"add","path":"/sinshotgun2","value":
+	  {
+	    "stats" : {
+	      "power" : 6,
+	      "energy" : 8,
+	      "multicount" : 10,
+	      "mechMass" : 8
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/gatlingarm.lua",
+	      "armClass" : "GatlingArm",
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [6.5, -0.3],
+
+	      "windupTime" : 0.4,
+	      "fireTime" : 1.4,
+
+	      "projectileType" : "gausspistolshot",
+	      "projectileParameters" : {
+		"power" : 35,
+		"knockback" : 15
+	      },
+
+	      "projectileCount" : 15,
+	      "projectileSpacing" : [0, 0.1],
+
+	      "projectileInaccuracy" : 0.12
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/sinshotgun2.png",
+	      "<armName>Fullbright" : "arm/sinshotgun2_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["c36a5f", "994c49", "6f3130", "551d28"],
+	    "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+	    "animationCustom" : {
+	      "animatedParts" : { "stateTypes" : { "<armName>" : {
+		"states" : {
+		  "windup" : {
+		    "properties" : {
+		      "persistentSound" : "/sfx/gun/mech_gatling_windup.ogg",
+		      "persistentSoundRangeMultiplier" : 1.0,
+		      "persistentSoundStopTime" : 0.2
+		    }
+		  },
+		  "active" : {
+		    "cycle" : 1
+		  },
+		  "winddown" : {
+		    "properties" : {
+		      "persistentSound" : "/sfx/gun/mech_gatling_winddown.ogg",
+		      "persistentSoundRangeMultiplier" : 1.0,
+		      "persistentSoundStopTime" : 0.2
+		    }
+		  }
+		}
+	      }}},
+	      "sounds" : {
+		"<armName>Fire" : ["/sfx/weapons/megablast1.ogg"]
+	      }
+	    }
+	  }
 	}	
 
     ],
