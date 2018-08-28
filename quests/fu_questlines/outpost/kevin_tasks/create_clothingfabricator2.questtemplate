@@ -2,8 +2,8 @@
   "id" : "create_clothingfabricator2",
   "prerequisites" : [ "create_clothingfabricator" ],
   "title" : "I just don't know...",
-  "text" : "^orange;5 Biofuel Canisters^reset; would be all that I needed to create a ^cyan;rocket-powered guinea pig^reset;. With some ^orange;algae^reset; found on a ^green;Bog Biome^reset; you'd have no problem making some. I promise to ^red;not^reset; reward you with deadly bees this time!",
-  "completionText" : "Thanks. You look like you could use some ^orange;party time^reset;! It's dangerous to go alone! Take this!",
+  "text" : "5 ^orange;Biofuel Canisters^reset; would be all that I needed to create a ^cyan;rocket-powered guinea pig^reset;. With some ^orange;Algae^reset; found in a ^orange;Bog^reset; biome you'd have no problem making some. I promise to ^red;not^reset; reward you with deadly bees this time!",
+  "completionText" : "Thanks. You look like you could use some ^orange;party time^reset;! It's dangerous to go alone! Take ^green;this^reset;!",
   "moneyRange" : [0, 0],
   "rewards" : [ [ [ "bone", 1 ], [ "crewcontract_plur", 1 ] ] ],
   "speaker" : "questGiver",
@@ -20,7 +20,7 @@
     "canBeAbandoned" : true,
     "requireTurnIn" : false,
 
-    "turnInDescription" : "Bring ^orange;Kevin, your overlord^reset; 5 ^green;Biofuel Canisters^reset;",
+    "turnInDescription" : "Bring ^red;Kevin, your overlord^reset; 5 ^orange;Biofuel Canisters^reset;",
 
 
     "conditions" : [
@@ -28,7 +28,7 @@
         "type" : "gatherItem",
         "itemName" : "biofuelcannister",
         "count" : 5,
-        "consume" : false
+        "consume" : true
       }
     ]
   }

@@ -220,9 +220,9 @@ function transferUtil.checkFilter(item)
 		end
 	end
 	return (noninvertcheck and invertcheck)
-			or (noninvertcheck == nil and invertcheck)
-			or (noninvertcheck and invertcheck == nil),
-			mod or 1
+		or (noninvertcheck == nil and invertcheck)
+		or (noninvertcheck and invertcheck == nil),
+		mod or 1
 end
 
 function transferUtil.findNearest(source,sourcePos,targetList)
