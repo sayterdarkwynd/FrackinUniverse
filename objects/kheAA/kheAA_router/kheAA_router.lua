@@ -97,92 +97,85 @@ function routeItems()
 		if ping1 ~= nil then
 			sourceContainer=ping1
 		end
-		for targetContainer,targetPos in pairs(storage.outContainers) do
-			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
-			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
-			if ping2 ~= nil then
-				targetContainer=ping2
-			end
-			if targetAwake == true and sourceAwake == true then
-				local sourceItems=world.containerItems(sourceContainer)
-				if sourceItems then
-					for indexIn,item in pairs(sourceItems) do
-						local pass,mod = transferUtil.checkFilter(item)
-						if pass then
+		
+		local sourceItems=world.containerItems(sourceContainer)
+		
+		if sourceItems then
+			for indexIn,item in pairs(sourceItems) do
+				local pass,mod = transferUtil.checkFilter(item)
+				if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
+					local outputSlotCount = (storage.invertSlots[2] and (world.containerSize(targetContainer) - util.tableSize(storage.outputSlots))) or util.tableSize(storage.outputSlots)
+					local originalCount=item.count
+					local canRobinRoundSlots
+					if storage.roundRobin then
+						local buffer
+						buffer=math.floor(item.count/outputSizeG)
+						buffer=math.floor(buffer-(buffer%mod))
+						item.count = math.floor(buffer)
+					end
+					if storage.roundRobinSlots and outputSlotCount>0 then
+						local buffer
+						buffer=math.floor(item.count/outputSlotCount)
+						buffer=math.floor(buffer-(buffer%mod))
+						item.count = math.floor(buffer)
+					end
+					item.count = item.count - (item.count % mod)
+					for targetContainer,targetPos in pairs(storage.outContainers) do
+						local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
+						if ping2 ~= nil then
+							targetContainer=ping2
+						end
+						if targetAwake == true and sourceAwake == true then
 							if transferUtil.validInputSlot(indexIn) then
-								if storage.roundRobin then
-									-- Maximum amount per container
-									storage.RRPKT = math.floor((item.count / outputSize) % mod)
-									storage.RRPKT = math.floor(item.count / outputSize - storage.RRPKT)
-
-									-- Amount left in the round-robin
-									storage.RRAMT = item.count
-									item.count = storage.RRPKT
-								end
-								item.count = item.count - (item.count % mod)
-								local outputSlotCount = (storage.invertSlots[2] and (world.containerSize(targetContainer) - util.tableSize(storage.outputSlots))) or util.tableSize(storage.outputSlots)
 								if outputSlotCount > 0 then
-									if storage.roundRobinSlots then
-										-- Maximum amount per slot
-										storage.RRSPKT = math.floor((item.count / outputSlotCount) % mod)
-										storage.RRSPKT = math.floor(item.count / outputSlotCount - storage.RRSPKT)
-
-										-- Amount left in the round-robin
-										storage.RRSAMT = item.count
-										item.count = storage.RRSPKT
-									end
-									for indexOut=1,world.containerSize(targetContainer) do
-										if transferUtil.validOutputSlot(indexOut) then
-											local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
-											if leftOverItems then
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
-												item = leftOverItems
-											else
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-												if not storage.roundRobinSlots then
-													break
+									local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
+									if item.count>0 and buffer<=originalCount then
+										for indexOut=1,world.containerSize(targetContainer) do
+											if transferUtil.validOutputSlot(indexOut) then
+												local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
+												if leftOverItems then
+													world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
+													originalCount=originalCount-(item.count-leftOverItems.count)
+													if not storage.roundRobinSlots then
+														if not storage.roundRobin then
+															item = leftOverItems
+														else
+															break
+														end
+													end
+												else
+													world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
+													originalCount=originalCount-item.count
+													if not (storage.roundRobinSlots) then
+														break
+													end
 												end
 											end
 										end
-										if storage.roundRobinSlots then
-											if storage.RRSAMT < storage.RRSPKT then break end
-											storage.RRSAMT = storage.RRSAMT - storage.RRSPKT
-											item.count = storage.RRSPKT
-										end
-										-- Count down on those output slots!
-										outputSlotCount = outputSlotCount - 1
 									end
-									storage.RRSPKT = nil
-									storage.RRSAMT = nil
 								else
-									--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
-									local leftOverItems=world.containerAddItems(targetContainer,item)
-									if leftOverItems then
-										local tempQuantity=item.count-leftOverItems.count
-										if tempQuantity > 0 then
-											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
-											--break
+									if item.count>0 then
+										--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
+										local leftOverItems=world.containerAddItems(targetContainer,item)
+										if leftOverItems then
+											local tempQuantity=item.count-leftOverItems.count
+											if tempQuantity > 0 then
+												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
+												item=leftOverItems
+											end
+										else
+											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
+											if not storage.roundRobin then
+												item.count=0
+											end
 										end
-									else
-										world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
 									end
-								end
-								if storage.roundRobin then
-									storage.RRAMT = storage.RRAMT - storage.RRPKT
-									item.count = storage.RRAMT
-									storage.RRAMT = nil
-									storage.RRPKT = nil
 								end
 							end
 						end
+						outputSize=outputSize-1
 					end
 				end
-			else
-				--dbg{"naptime",targetContainer,targetPos,sourceContainer,sourcePos}
-			end
-			if storage.roundRobin then
-				-- Count down on those outputs!
-				outputSize = outputSize - 1
 			end
 		end
 	end
