@@ -104,7 +104,7 @@ function routeItems()
 			for indexIn,item in pairs(sourceItems) do
 				local pass,mod = transferUtil.checkFilter(item)
 				if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
-					local outputSlotCount = (storage.invertSlots[2] and (world.containerSize(targetContainer) - util.tableSize(storage.outputSlots))) or util.tableSize(storage.outputSlots)
+					local outputSlotCountG = util.tableSize(storage.outputSlots)
 					local originalCount=item.count
 					local canRobinRoundSlots
 					if storage.roundRobin then
@@ -113,9 +113,9 @@ function routeItems()
 						buffer=math.floor(buffer-(buffer%mod))
 						item.count = math.floor(buffer)
 					end
-					if storage.roundRobinSlots and outputSlotCount>0 then
+					if storage.roundRobinSlots and not storage.invertSlots[2] and outputSlotCountG>0 then
 						local buffer
-						buffer=math.floor(item.count/outputSlotCount)
+						buffer=math.floor(item.count/outputSlotCountG)
 						buffer=math.floor(buffer-(buffer%mod))
 						item.count = math.floor(buffer)
 					end
@@ -126,6 +126,16 @@ function routeItems()
 							targetContainer=ping2
 						end
 						if targetAwake == true and sourceAwake == true then
+							local outputSlotCount=outputSlotCountG
+							local subCount=item.count
+							if storage.roundRobinSlots and storage.invertSlots[2] then
+								outputSlotCount=world.containerSize(targetContainer)-outputSlotCount
+								local buffer
+								buffer=math.floor(item.count/outputSlotCount)
+								buffer=math.floor(buffer-(buffer%mod))
+								item.count = math.floor(buffer)
+							end
+							
 							if transferUtil.validInputSlot(indexIn) then
 								if outputSlotCount > 0 then
 									local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
@@ -171,6 +181,9 @@ function routeItems()
 										end
 									end
 								end
+							end
+							if storage.roundRobinSlots and storage.invertSlots[2] then
+								item.count=subCount
 							end
 						end
 						outputSize=outputSize-1
