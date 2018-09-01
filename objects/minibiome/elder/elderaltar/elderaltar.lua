@@ -1,7 +1,8 @@
 local recipes =
 {
-
---liquids
+{inputs = { wrappedbody=1 }, outputs = { brain=1,fuscienceresource=120,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidblood=40 }, time = 5.0},
+{inputs = { wrappedbodyputrid=1 }, outputs = { brain=1,fumadnessresource=5,bone=8,leather=1,rottingfleshmaterial=4,slew2=12,biospore=2,liquidbioooze=40 }, time = 5.0},
+{inputs = { wrappedbodyalien=1 }, outputs = { brain=1,fuprecursorresource=5,bone=8,leather=1,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 5.0},
 {inputs = { cthulureward=1,elderrelic7=1,elderrelic11=1 }, outputs = { elderripper=1 }, time = 15.0},
 {inputs = { cthulureward=1, elderrelic5=1, elderrelic11=1 }, outputs = { eldercarbine=1 }, time = 15.0},
 {inputs = { cthulureward=1, elderrelic12=1, elderrelic11=1 }, outputs = { elderpistol=1 }, time = 15.0 },
