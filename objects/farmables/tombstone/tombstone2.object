@@ -1,0 +1,46 @@
+{
+  "objectName" : "futombstone2",
+  "colonyTags" : [ "death", "macabre", "creepy" ],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "A grave.",
+  "shortdescription" : "Grave",
+  "objectType" : "farmable",
+  "printable" : false,
+
+  "inventoryIcon" : "tombstoneicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "tombstone.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3], [1, 4], [0, 4] ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "stages" : [
+    {
+      "duration" : [100, 200]
+    },
+    {
+      "duration" : [100, 200]
+    },
+    {
+      "alts" : 5,
+      "duration" : [300, 600]
+    },
+    {
+      "alts" : 5,
+      "harvestPool" : "tombstoneHarvest"
+    }
+  ],
+
+  "breakDropOptions" : [
+    [ [ "cobblestonematerial", 3, { } ] ]
+  ],
+  "consumeSoilMoisture" : false,
+  "maxImmersion" : 2
+}
