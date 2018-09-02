@@ -17,6 +17,9 @@
           },
           "jump" : {
             "frames" : 1,
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/leadlitcute2.ogg"]
+            },            
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/monster_hop.ogg",
               "immediateSoundRangeMultiplier" : 0.5
@@ -29,12 +32,15 @@
             "frames" : 8,
             "cycle" : 0.5,
             "frameProperties" : {
-              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/monsters/peblit_drop3.ogg", "" ]
+              "immediateSound" : [ "/sfx/npc/monsters/leadlitgrowl.ogg", "", "", "", "", "", "/sfx/npc/monsters/peblit_drop3.ogg", "" ]
             }
           },
           "invulnerablewinddown" : {
             "frames" : 5,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/leadlitcute1.ogg"]
+            }           
           },
           "invulnerable" : {
             "frames" : 1
