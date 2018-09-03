@@ -1,0 +1,208 @@
+{
+  "name" : "atropuscellfield",
+  "friendlyName" : "Cellular Expanse",
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [ 
+          [ 1.0, "taroni" ],
+          [ 1.0, "derrick" ]
+        ]
+      },
+      {
+        "select" : 3,
+        "pool" : [
+          [ 0.20, "bowbirdcritter" ],
+          [ 0.20, "sluggreencritter" ],
+          [ 0.20, "slugbluecritter" ],
+          [ 0.20, "slugcritter" ],
+          [ 0.20, "leafscabcritter" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "insanityImmunity" : {
+            "baseValue" : 1.0
+          },
+          "poisonStatusImmunity" : {
+            "baseValue" : 1.0
+          },          
+          "pusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "biooozeImmunity" : {
+            "baseValue" : 1.0
+          },
+            "tarImmunity" : {
+              "baseValue" : 1.0
+            },
+            "slimestickImmunity" : {
+              "baseValue" : 1.0
+            },
+            "slimefrictionImmunity" : {
+              "baseValue" : 1.0
+            }
+        }
+      }
+    }
+  },
+  "hueShiftOptions" : [-165, -70, -25, 0, 25, 70, 165],
+
+    "mainBlock" : "genetile",
+    "subBlocks" : [ "rottingflesh", "boneyflesh" ],
+    "ores" : "ff_deepsurfaceshadowOres",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "tentaclegrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "strange", "sticky", "bubbles" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:randomEncounter",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "tar", "randomencounter" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:rareClumpyLarge",
+
+          "type" : "bush",
+          "bushes" : [
+            {
+              "name" : "tentacleshrub",
+              "baseHueShiftMax" : 30,
+              "modHueShiftMax" : 20
+            },
+            {
+              "name" : "fleshcorpse",
+              "baseHueShiftMax" : 30,
+              "modHueShiftMax" : 20
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "rockyshapes", "rods", "spikes" ]
+        },
+        
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistPlatform",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "aridplatforming" ]
+        }       
+    ]
+  },
+  "undergroundPlaceables" : {
+    "grassMod" : [ "tentaclegrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [1, "statuspod" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 0.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:overgroundChests",
+
+          "type" : "treasureBox",
+          "treasureBoxSets" : [ "weaponChest" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "terrainfeatures", "rockclimb","rocktunnel",  "toxicmicrodungeons", "sandstone", "blockpile", "rockyshapes", "rods", "spikes" ]
+        },
+   
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistPlatform",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "aridplatforming" ]
+        },
+        {
+          "mode" : "ceiling",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:denseMedium",
+
+          "type" : "tree",
+          "treeFoliageHueShiftMax" : 220,
+          "treeStemHueShiftMax" : 220,
+          "treeStemList" : [ "bloodvine" ],
+          "treeFoliageList" : [ "nofoliagevine"  ]
+        }        
+    ]
+  }
+}
+
+

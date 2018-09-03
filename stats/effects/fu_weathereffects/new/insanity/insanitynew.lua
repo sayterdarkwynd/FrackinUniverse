@@ -288,7 +288,6 @@ function update(dt)
 			self.biomeTimer = self.baseRate
 		end
 
-
 		if status.isResource("food") and self.timerRadioMessage2 < 1 then
 			if (self.hungerLevel < 5) then
 				world.sendEntityMessage(entity.id(), "queueRadioMessage", "insanityeffecthungry4", 1.0)

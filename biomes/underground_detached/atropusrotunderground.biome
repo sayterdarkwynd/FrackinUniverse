@@ -1,28 +1,17 @@
 {
-  "name" : "atropusunderground",
-  "friendlyName" : "Atropus depths",
+  "name" : "atropusrotunderground",
+  "friendlyName" : "Rotting Caves",
 
     "spawnProfile" : {
     "groups" : [
       {
         "select" : 3,
         "pool" : [ 
-          [ 0.03, "burrower_depth_selector" ],
-          [ 0.07, "fubloodgolem" ],     
-          [ 0.07, "wormmass" ],
-          [ 0.07, "anglure2" ],
-          [ 0.07, "fleshleech" ],     
-          [ 0.07, "pteropod3" ],
-	  [ 0.05, "ravager" ],
-          [ 0.03, "fleshreaper" ],
-          [ 0.07, "tentaclegnat" ],
-          [ 0.07, "tentaclespawner2" ],
-          [ 0.07, "tentaclebomb" ],
-          [ 0.07, "tentacleghost" ],
-          [ 0.07, "tentacleclam" ]
+          [ 0.1111, "fleshleech" ],     
+          [ 0.1111, "paratail" ],
+	  [ 0.1111, "hemogoblin" ]
         ]
       },  
-
       {
         "select" : 2,
         "pool" : [
@@ -32,13 +21,8 @@
         ]
       },
       {
-        "select" : 4,
+        "select" : 3,
         "pool" : [
-          [ 1, "bigwormcritter" ],
-          [ 1, "fisheyecritter" ],
-          [ 1, "cellcritter" ],
-          [ 1, "cell2critter" ],
-          [ 1, "eggcellcritter" ],
 	  [ 0.3, "apexscabcritter" ],
           [ 0.4, "avianscabcritter" ],
           [ 0.3, "eyefriendcritter" ],
@@ -53,10 +37,6 @@
       {
         "select" : 2,
         "pool" : "generatedGround"
-      },
-      {
-        "select" : 2,
-        "pool" : "generatedFlying"
       }
     ],
     "monsterParameters" : {
@@ -75,13 +55,12 @@
         }
       }
     }
-  }, 
+  },
 
-    "mainBlock" : "fleshblock",
-    "subBlocks" : [ "brainsblock", "hellstone" ],
-    "ores" : "ff_deepsurfaceatropusOres",
+  "mainBlock" : "rottingflesh",
+  "subBlocks" : [ "fleshblock", "hellstone" ],
+  "ores" : "ff_deepsurfaceatropusOres",
 
-  "parallax" : "/parallax/underground/atropusunderground.parallax",
 
   "ambientNoises" : {
       "day" : {
@@ -102,39 +81,12 @@
   },
 
   "undergroundPlaceables" : {
-    "grassMod" : [ "fleshgrass2" ],
-    "grassModDensity" : 0.9,
+      "grassMod" : [ "fleshgrass2", "tentaclegrass", "fleshgrass", "bloodstonegrass" ],
+      "grassModDensity" : 0.9,
       "ceilingGrassMod" : [ "veingrowth" ],
       "ceilingGrassModDensity" : 0.5,
+
     "items" : [
-      {
-        "mode" : "background",
-        "priority" : 1.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:undergroundFossils",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [0.15, "dirtyfossil1" ], [0.15, "dirtyfossil2" ], [0.15, "dirtyfossil3" ], [0.15, "dirtyfossil4" ], [0.1, "dirtyfossil5" ], [0.1, "dirtyfossil6" ], [0.1, "dirtyfossil7" ], [0.1, "dirtyfossil8" ] ],
-            "parameters" : {  "materials" : ["mud", "cobblestone", "bonematerial"]}
-          }
-        ]
-      },    
-        {
-          "mode" : "floor",
-          "priority" : 1.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
-              "parameters" : { }
-            }
-          ]
-        },
         {
           "mode" : "floor",
           "priority" : 0.0,
@@ -142,7 +94,7 @@
           "distribution" : "/biomes/distributions.config:undergroundChests",
 
           "type" : "treasureBox",
-          "treasureBoxSets" : [ "ffbasicChest2" ]
+          "treasureBoxSets" : [ "ffbasicChest" ]
         },
         {
           "mode" : "floor",
@@ -176,7 +128,20 @@
             }
           ]
         },
-// *** FF STUFF HERE
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredPots",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "parameters" : { }
+            }
+          ]
+        },
            {
             "mode" : "floor",
             "priority" : 1.0,
@@ -193,45 +158,54 @@
           },
         {
           "mode" : "floor",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "grass",
-          "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "atropusgrass1"  ]
-        },   
-        {
-          "mode" : "ceiling",
-          "priority" : 3.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
-
-          "type" : "grass",
-          "grasses" : [ "ceilingfleshplant", "ceilingfleshbone" ]
-        },
-        {
-          "mode" : "ceiling",
           "priority" : 2.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:ffunCommon",
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
 
-          "type" : "tree",
-          "treeFoliageHueShiftMax" : 220,
-          "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "podvine", "bloodvine"],
-          "treeFoliageList" : [ "nofoliagevine" ]
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : 
+              [ 
+              [0.15, "fleshbush1" ], 
+              [0.15, "fleshbush2" ], 
+              [0.15, "fleshbush3" ], 
+              [0.15, "fleshbush4" ], 
+              [0.15, "fleshbush5" ], 
+              [0.15, "fleshbush6" ],
+              [0.15, "heckaltar" ], 
+              [0.15, "heckbush1" ], 
+              [0.15, "heckbush2" ], 
+              [0.15, "heckbush3" ], 
+              [0.15, "heckbush4" ], 
+              [0.15, "heckbush5" ],
+              [0.15, "heckbush6" ], 
+              [0.15, "heckbush7" ], 
+              [0.15, "heckbush8" ], 
+              [0.15, "heckbush9" ], 
+              [0.15, "heckbush10" ],
+              [0.15, "hecklight1" ], 
+              [0.15, "hecklight2" ], 
+              [0.15, "heckpillar1" ], 
+              [0.15, "heckpillar2" ]
+              ],
+              "parameters" : { }
+            }
+          ]
         },
+        
+        
         {
           "mode" : "floor",
           "priority" : 1.0,
           "variants" : 1,
-          "distribution" : "/biomes/distributions.config:potsRare",
+          "distribution" : "/biomes/distributions.config:denseLarge",
 
           "type" : "tree",
           "treeFoliageHueShiftMax" : 35,
           "treeStemHueShiftMax" : 35,
-          "treeStemList" : [ "fleshstem", "fleshstem2", "bloodkelp" ],
-          "treeFoliageList" : [ "fleshfoliage", "fleshfoliage2", "bloodkelpy" ]
+          "treeStemList" : [ "fleshstem" ],
+          "treeFoliageList" : [ "fleshfoliage" ]
         },
         {
           "mode" : "ceiling",
@@ -242,8 +216,26 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 220,
           "treeStemHueShiftMax" : 220,
-          "treeStemList" : [ "vein", "bluevein"],
-          "treeFoliageList" : [ "blueveiny", "veiny" ]
+          "treeStemList" : [ "fleshvine_atropus", "fleshvine2", "podvine" ],
+          "treeFoliageList" : [ "nofoliagevine" ]
+        },
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+          "type" : "grass",
+          "grasses" : [ "freebone", "fleshbone", "fleshplant", "heckflower", "shadowy", "atropusgrass1"  ]
+        },   
+        {
+          "mode" : "ceiling",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "grass",
+          "grasses" : [ "ceilingfleshplant", "ceilingfleshbone" ]
         },
         {
           "mode" : "floor",
@@ -339,47 +331,7 @@
               "modHueShiftMax" : 35
             }
           ]
-        },     
-        {
-          "mode" : "floor",
-          "priority" : 2.0,
-          "variants" : 1,
-          "distribution" : "/biomes/distributions.config:scatteredSmall",
-
-          "type" : "object",
-          "objectSets" : [
-            {
-              "pool" : 
-              [ 
-              [0.15, "atropus1" ], 
-              [0.15, "atropus2" ], 
-              [0.15, "atropus3" ],
-              [0.15, "fleshbush1" ], 
-              [0.15, "fleshbush2" ], 
-              [0.15, "fleshbush3" ], 
-              [0.15, "fleshbush4" ], 
-              [0.15, "fleshbush5" ], 
-              [0.15, "fleshbush6" ],              
-              [0.15, "heckaltar" ], 
-              [0.15, "heckbush1" ], 
-              [0.15, "heckbush2" ], 
-              [0.15, "heckbush3" ], 
-              [0.15, "heckbush4" ], 
-              [0.15, "heckbush5" ],
-              [0.15, "heckbush6" ], 
-              [0.15, "heckbush7" ], 
-              [0.15, "heckbush8" ], 
-              [0.15, "heckbush9" ], 
-              [0.15, "heckbush10" ],
-              [0.15, "hecklight1" ], 
-              [0.15, "hecklight2" ], 
-              [0.15, "heckpillar1" ], 
-              [0.15, "heckpillar2" ]
-              ],
-              "parameters" : { }
-            }
-          ]
-        },
+        },              
          {
           "mode" : "ceiling",
           "priority" : 2.0,
@@ -404,22 +356,27 @@
               "modHueShiftMax" : 35
             },
             {
+              "name" : "tendonlight",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            },
+            {
+              "name" : "tendonbush",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            },
+            {
+              "name" : "glowbush",
+              "baseHueShiftMax" : 35,
+              "modHueShiftMax" : 35
+            },
+            {
               "name" : "ceilingbones",
               "baseHueShiftMax" : 35,
               "modHueShiftMax" : 35
             }
           ]
-        },
-      {
-        "mode" : "floor",
-        "priority" : 99.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:tiyDist",
-
-        "type" : "microdungeon",
-        "microdungeons" : [ "underground5bmicrodungeons" ]
-      }               
+        } 
     ]
-  },
-    "hueShiftOptions" : [0]
+  }
 }

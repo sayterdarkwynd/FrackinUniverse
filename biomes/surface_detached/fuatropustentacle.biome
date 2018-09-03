@@ -1,0 +1,277 @@
+{
+  "name" : "fuatropustentacle",
+  "friendlyName" : "Infested",
+  
+  "spawnProfile" : {
+    "groups" : [
+      {
+        "select" : 6,
+        "pool" : [ 
+          [ 0.2, "tentaclecrawler" ],
+          [ 0.1, "tentaclegnat" ],
+          [ 0.1, "tentaclespawner" ],
+          [ 0.1, "tentaclebomb" ],
+          [ 0.1, "tentacleghost" ],
+          [ 0.1, "futentaclebarrier" ],
+          [ 0.1, "tentacleclam" ]
+        ]
+      },
+      {
+        "select" : 5,
+        "pool" : [
+          [ 1, "bigwormcritter" ],
+          [ 1, "fisheyecritter" ],
+          [ 1, "cellcritter" ],
+          [ 1, "cell2critter" ],
+          [ 1, "eggcellcritter" ]          
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "colors" : "volcanic",
+        "statusSettings" : {
+        "stats" : {
+          "poisonStatusImmunity" : {"baseValue" : 1.0},
+          "pusImmunity" : {"baseValue" : 1.0},
+          "insanityImmunity" : {"baseValue" : 1.0},
+          "biooozeImmunity" : {"baseValue" : 1.0}
+        }
+      }
+    }
+  },
+
+ "hueShiftOptions" : [-45, 0, 45],
+    "mainBlock" : "tentacleblock",
+    "subBlocks" : [ "hellstone", "brainsblock", "fustomachblock" ],
+    "ores" : "ff_deepsurfaceshadowOres",
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "tentaclegrass" ],
+    "grassModDensity" : 0.9,
+      "ceilingGrassMod" : [ "tentaclegrass" ],
+      "ceilingGrassModDensity" : 0.5,
+    "items" : [
+
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "tentacle" ],
+        "treeFoliageList" : [ "" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [2.0, "tentaclepopbig" ], 
+            [0.8, "tentaclepopmed" ], 
+            [0.8, "tentaclepopsmall" ], 
+            [0.8, "tentacleegg" ],
+            [0.4, "tentaclespawner1" ] 
+            ]
+          }
+        ]
+      },      
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDist",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "none" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+        "type" : "microdungeon",
+        "microdungeons" : [ "terrainfeatures" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 180,
+        "treeStemHueShiftMax" : 45,
+        "treeStemList" : [ "tentacletree", "tentacletreetwo" ],
+        "treeFoliageList" : [ "tentacletreeblank" ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      },      
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      }   
+    ]
+  },
+
+  "undergroundPlaceables" : {
+    "grassMod" : [ "tentaclegrass" ],
+    "grassModDensity" : 0.9,
+      "ceilingGrassMod" : [ "tentaclegrass" ],
+      "ceilingGrassModDensity" : 0.5,
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ 
+            [2.0, "tentaclepopbig" ], 
+            [0.8, "tentaclepopmed" ], 
+            [0.8, "tentaclepopsmall" ], 
+            [0.8, "tentacleegg" ],
+            [0.4, "tentaclespawner1" ] 
+            ]
+          }
+        ]
+      },  
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCapsules",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      },      
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclespike" ] ],
+            "parameters" : { }
+          }
+        ]
+      },      
+      {
+        "mode" : "ceiling",
+        "priority" : 1.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [2.0, "tentaclepart1" ], [0.8, "tentaclepart2" ], [0.8, "tentaclepart3" ], [0.4, "tentaclespawner1" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "ceiling",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "tentacle" ],
+        "treeFoliageList" : [ "" ]
+      }
+    ]
+  }
+  
+}
+
+
+
+
+
+
