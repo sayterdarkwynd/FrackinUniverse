@@ -8,7 +8,7 @@ function update(dt)
     self.depth = world.oceanLevel(entity.position())
     --sb.logInfo("depth is = "..self.depth)
      
-    if world.liquidAt(entity.position()) or self.depth > 50 then  --cannot work unless in out of liquid
+    if world.liquidAt(entity.position()) or self.depth > 1 then  --cannot work unless in out of liquid
       return 
     end   
 
