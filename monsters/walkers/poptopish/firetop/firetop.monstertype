@@ -33,7 +33,7 @@
       "hostileActions" : [     
         {
           "name" : "action-fire",
-          "cooldown" : 2,
+          "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 12,
@@ -47,9 +47,8 @@
             "aimAtTarget" : true,
             "projectileCount" : 2,
             "projectileInterval" : 0,
-            "projectileParameters" : { 
-            "speed" : 70 },
-            "inaccuracy" : 3,
+            "projectileParameters" : { "speed" : 60 },
+            "inaccuracy" : 0.75,
             "fireSound" : "fire",
             "fireState" : "",
             "winddownState" : "charge",
@@ -60,17 +59,16 @@
 
       "periodicActions" : [],
       
-      "concurrentHostileActions" : [
+      "damageTakenActions" : [
         {
           "name" : "action-statuseffect", 
-          "cooldown" : 5,
+          "cooldown" : 0,
           "parameters" : {
           "effect" : "fireburstmonster",
           "duration" : 500
           }
         }       
-      ],
-      
+      ],      
       "approachActions" : [
         {
           "name" : "approach-walk",
