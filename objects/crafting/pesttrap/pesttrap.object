@@ -1,0 +1,36 @@
+{
+  "objectName" : "pesttrap",
+  "rarity" : "Common",
+  "description" : "Great for catching smaller sources of meat.",
+  "shortdescription" : "Pest Trap",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 150,
+  "printable" : false,
+  "objectType" : "container",
+
+  "inventoryIcon" : "pesttrap.png",
+  "orientations" : [
+    {
+      "dualImage" : "pesttrap.png:<color>",
+
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "outputNodes" : [ [0, 0] ],
+  "scripts" : [ "/scripts/pesttrap.lua" ],
+  "scriptDelta" : 820,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "fupest","ratio" : 50,"max" : 5}
+  ]
+}
