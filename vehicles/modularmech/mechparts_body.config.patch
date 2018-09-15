@@ -1965,6 +1965,61 @@
 			"path": "/protector/partParameters/hazardImmunities/-",
 			"value": "biomepoison3"
 		},
+		
+  {
+    "op": "add",
+    "path": "/mantiziproto",
+    "value": {
+      "stats": {
+        "energy": 3,
+        "protection": 3,
+	"mechMass" : 3
+      },
+      "partParameters": {},
+      "partImages": {
+        "bodyBack": "body/mantiziproto_back.png",
+        "bodyFront": "body/mantiziproto_front.png",
+        "bodyFullbright": "body/mantiziproto_fullbright.png"
+      },
+      "defaultPrimaryColors": [ "D1B187", "B88F59", "8A6433", "482D0A" ],
+      "defaultSecondaryColors": [ "C65555", "A53535", "7A1C1C", "4F0909" ],
+      "animationCustom": {
+        "animatedParts": { "parts": { "bodyFront": { "properties": {
+                "sitPosition": [ 0.4, 0 ]
+        }}}}
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/mantizi",
+    "value": {
+      "stats": {
+        "energy": 5,
+        "protection": 5,
+	"mechMass" : 6
+      },
+      "partParameters": {
+        "hazardImmunities": [
+          "biomeradiation",
+          "biomecold"
+        ]
+      },
+      "partImages": {
+        "bodyBack": "body/mantizi_back.png",
+        "bodyFront": "body/mantizi_front.png",
+        "bodyFullbright": "body/mantizi_fullbright.png"
+      },
+      "defaultPrimaryColors": [ "D1B187", "B88F59", "8A6433", "482D0A" ],
+      "defaultSecondaryColors": [ "C65555", "A53535", "7A1C1C", "4F0909" ],
+      "animationCustom": {
+        "animatedParts": { "parts": { "bodyFront": { "properties": {
+                "sitPosition": [ 0.8, 0 ]
+        }}}}
+      }
+    }
+  },
+  
     {
     "op" : "add",
     "path" : "/fubrute",
