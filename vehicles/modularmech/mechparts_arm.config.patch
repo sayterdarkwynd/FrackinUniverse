@@ -1487,6 +1487,46 @@
             }
         }, {
             "op": "add",
+            "path": "/fumechdepleteduranium",
+            "value": {
+                "stats": {
+                    "power": 3,
+                    "energy": 4,
+                    "mechMass": 2
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [6.4, 0.6],
+                    "extendTime": 1,
+                    "fireTime": 0.2,
+                    "projectileType": "radiationguardianpellet",
+                    "projectileCount": 1,
+                    "projectileInaccuracy": 0.01,
+                    "projectileParameters": {
+                        "power": 2,
+                        "damageSourceKind" : "radioactive",
+                        "piercing" : true,
+                        "fullbright" : true
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/fu_dumecharm.png",
+                    "<armName>Fullbright": "arm/fu_dumecharmfullbright.png"
+                },
+   		"defaultPrimaryColors" : ["8da6b0", "657988", "434d5e", "313247"],
+    		"defaultSecondaryColors" : ["fbdf71", "d9b035", "a26f03", "664601"],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/weapons/densiniumrifle.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
             "path": "/fumechdensinium",
             "value": {
                 "stats": {
@@ -1547,10 +1587,10 @@
                     "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
                     "armClass": "GatlingArm",
                     "rotationLimits": [-1.75, 1.75],
-                    "fireOffset": [4.2, 0],
+                    "fireOffset": [5.65, 0],
                     "extendTime": 1,
-                    "windupTime" : 0.4,
-                    "fireTime": 0.13,
+                    "windupTime" : 0.15,
+                    "fireTime": 0.15,
                     "projectileType": "gausspistolshotmech",
                     "projectileCount": 1,
                     "projectileInaccuracy": 0.04,
@@ -1559,8 +1599,8 @@
                     }
                 },
                 "partImages": {
-                    "<armName>": "arm/gatling.png",
-                    "<armName>Fullbright": "arm/gatling_fullbright.png"
+                    "<armName>": "arm/fugaussarm.png",
+                    "<armName>Fullbright": "arm/fugaussarm_fullbright.png"
                 },
                 "defaultPrimaryColors": [
                     "c36a5f",
