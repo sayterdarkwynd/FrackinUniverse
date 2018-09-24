@@ -35,8 +35,8 @@
 
   "ability" : {
     "name" : "Needle Shot",
-    "type" : "stingflurry",
-    "scripts" : ["/items/active/weapons/melee/abilities/spear/stingflurry/stingflurry.lua"],
+    "type" : "needleflurry",
+    "scripts" : ["/items/active/weapons/melee/abilities/spear/needleflurry/needleflurry.lua"],
     "class" : "Flurry",
 
     "cooldownResetTime" : 0.25,
@@ -44,13 +44,13 @@
     "minCooldownTime" : 0.15,
     "cooldownSwingReduction" : 0.04,
 
-    "energyUsage" : 9.0,
+    "energyUsage" : 1,
     "cooldownTime" : 0.2,
 
     "damageConfig" : {
       "damageSourceKind" : "spear",
       "statusEffects" : [ ],
-      "baseDamage" : 1,
+      "baseDamage" : 2,
       "knockback" : 10,
       "timeout" : 0.15,
       "timeoutGroup" : "alt"
@@ -58,9 +58,8 @@
 
     "projectileType" : "injectorprojectile",
     "projectileParameters" : {
-      "baseDamage" : 1
+      "baseDamage" : 2
     },
-
     "cycleRotationOffsets" : [0, 7.5, -7.5],
     "stances" : {
 	    "idle" : {
