@@ -1,14 +1,14 @@
 {
-  "itemName" : "carvelle",
+  "itemName" : "reapersniper",
   "price" : 160,
-  "inventoryIcon" : "carvelle.png",
+  "inventoryIcon" : "reaperSniper_Sky.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A powerful sniper rifle
-^yellow;Homing bullet^reset;",
-  "shortdescription" : "Carvelle Sniper Rifle",
+  "description" : "Lethal at extreme range.
+^yellow;Piercing^reset;",
+  "shortdescription" : "Tk7 Reaper",
   "category" : "sniperRifle",
-  "level" : 4,
+  "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Sniper Rifle",
   "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
@@ -17,7 +17,7 @@
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "carvelle.png",
+    "middle" : "reaperSniper_Sky.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
   },
@@ -28,7 +28,7 @@
   },
 
   "baseOffset" : [1.3, 0.2],
-  "muzzleOffset" : [3, 0.325],
+  "muzzleOffset" : [3.2, 0.7],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -37,19 +37,20 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 2,
+    "fireTime" : 1.2,
     "baseDps" : 5,
-    "energyUsage" : 50.0,
+    "energyUsage" : 30.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "homingbullet",
+    "projectileType" : "iceplasma",
     "projectileParameters" : { 
-      "speed" : 60,
+      "speed" : 220,
+      "timeToLive" : 3,
       "knockback" : 15,
-      "damageKind" : "bow"
+      "damageKind" : "ice"
     },
   "stances" : {
     "idle" : {
