@@ -183,7 +183,9 @@ function trackTargets(keepInSight, queryRange, trackingRange, switchTargetDistan
 end
 
 function validTarget(targetId, keepInSight, trackingRange)
+
   local entityType = world.entityType(targetId)
+  
   if entityType ~= "player" and entityType ~= "npc" then
     status.addEphemeralEffect("invulnerable",math.huge)
     return false
@@ -354,6 +356,8 @@ end
 --------------------------------------------------------------------------------
 --TODO: this could probably be further optimized by creating a list of discrete points and using sensors... project for another time
 function checkTerrain(direction)
+
+
   --normalize to 1 or -1
   direction = direction > 0 and 1 or -1
 
@@ -401,16 +405,6 @@ function checkTerrain(direction)
   self.willFall =
       world.lineTileCollision(fallLine[1], fallLine[2]) == false and
       world.lineTileCollision({fallLine[1][1], fallLine[1][2] - 1}, {fallLine[2][1], fallLine[2][2] - 1}) == false
-    
-  if isBlocked == true then  
-	  self.randval = math.random(100)
-	  self.randval2 = math.random(100)
-
-	  spit1={ power = 0, speed = 15, timeToLive = 0.2 }
-	    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
-	    animator.playSound("shoggothChomp")    
-   
-  end
 end
 
 --------------------------------------------------------------------------------
