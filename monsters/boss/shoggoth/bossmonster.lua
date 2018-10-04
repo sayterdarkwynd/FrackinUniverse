@@ -84,7 +84,7 @@ function update(dt)
     if status.resource("health") > 0 then script.setUpdateDelta(10) end
 
     if not self.state.update(dt) then
-      animator.playSound("turnHostile")
+      --animator.playSound("turnHostile")
       self.state.pickState()
     end
   end
@@ -94,21 +94,23 @@ end
 
 function damage(args)
   self.tookDamage = true
+  self.healthLevel = status.resource("health") / status.stat("maxHealth")
+  self.randval = math.random(100)
+  self.randval2 = math.random(100)
+
+  spit1={ power = 0, speed = 15, timeToLive = 0.2 }
+
+
+  if (self.randval2 >= 80) then
+    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
+    animator.playSound("shoggothChomp")    
+  end 
+
   
   if self.tookDamage and math.random(10)==1 then
     animator.playSound("hurt")
   end
-  
-  self.randval = math.random(100)
-  self.randval2 = math.random(100)
-  self.healthLevel = status.resource("health") / status.stat("maxHealth")
-  self.soundPlay = math.random(2)
-  spit1={ power = 0, speed = 15, timeToLive = 0.2 }
 
-  if (self.randval2) >= 80  and (self.healthLevel) <= 0.99 then
-    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
-    animator.playSound("shoggothChomp")    
-  end  
   
   if (self.randval) >= 99 and (self.healthLevel) <= 0.80 then
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)
@@ -121,7 +123,8 @@ function damage(args)
     world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1) 
     if self.randval >=2 then animator.playSound("giveBirth") end
     animator.playSound("giveBirth")
-  end
+  end  
+  
   
   if status.resource("health") <= 0 then
     local inState = self.state.stateDesc()
@@ -329,11 +332,11 @@ function move(delta, run, jumpThresholdX)
       -- we are about to fall, or the target is significantly high above us
       local doJump = false
       if isBlocked() then
-        doJump = true
+        doJump = false
       elseif (delta[2] >= 0 and willFall() and math.abs(delta[1]) > 7) then
-        doJump = true
+        doJump = false
       elseif (math.abs(delta[1]) < jumpThresholdX and delta[2] > config.getParameter("jumpTargetDistance")) then
-        doJump = true
+        doJump = false
       end
 
       if doJump then
@@ -398,6 +401,16 @@ function checkTerrain(direction)
   self.willFall =
       world.lineTileCollision(fallLine[1], fallLine[2]) == false and
       world.lineTileCollision({fallLine[1][1], fallLine[1][2] - 1}, {fallLine[2][1], fallLine[2][2] - 1}) == false
+    
+  if isBlocked == true then  
+	  self.randval = math.random(100)
+	  self.randval2 = math.random(100)
+
+	  spit1={ power = 0, speed = 15, timeToLive = 0.2 }
+	    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
+	    animator.playSound("shoggothChomp")    
+   
+  end
 end
 
 --------------------------------------------------------------------------------
