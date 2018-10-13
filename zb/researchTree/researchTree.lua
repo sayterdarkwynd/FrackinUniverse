@@ -35,7 +35,7 @@ function init()
 	data = root.assetJson("/zb/researchTree/data.config")
 	for _, file in ipairs(data.researchFiles) do
 		local temp = root.assetJson(file)
-		data = zbutil.mergeTable(data, temp)
+		data = zbutil.MergeTable(data, temp)
 	end
 	-- zbutil.DeepPrintTable(data)
 	
