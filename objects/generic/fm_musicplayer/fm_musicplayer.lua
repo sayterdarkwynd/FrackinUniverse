@@ -4,10 +4,15 @@
 function init()
 	self.players = {}
 	self.lastWireModified = 0
+	
 	message.setHandler("changeMusic", changeMusic)
 	message.setHandler("turnOff", turnOff)
 	message.setHandler("toggleLabel", toggleLabel)
 	message.setHandler("setMusicRange", setMusicRange)
+	
+	if storage.isPlaying then
+		animator.setAnimationState("light", "on")
+	end
 end
 
 function update()
