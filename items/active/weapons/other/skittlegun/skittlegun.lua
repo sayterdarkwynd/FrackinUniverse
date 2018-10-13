@@ -157,7 +157,6 @@ function fire(ability,fireMode,throttle)
 	local baseProjectileCount=totalProjectileTypes[fireMode]
 	local projectileCount = throttle and 1 or math.max(1,math.floor(math.random(1,baseProjectileCount*baseProjectileCount)/baseProjectileCount))
 	local params = {power = damagePerShot(ability,projectileCount), powerMultiplier = activeItem.ownerPowerMultiplier()}
-
 	if fireMode=="alt" then
 		params.controlForce=140
 		params.ignoreTerrain=false
@@ -173,6 +172,11 @@ function fire(ability,fireMode,throttle)
 		else
 			sayterE=4.0
 		end
+	elseif special == 222 then
+		local aimVec=aimVector(ability)
+		local aimAngle=vec2.angle(vec2.mul(aimVec,-1))
+		mcontroller.controlApproachVelocityAlongAngle(aimAngle, 1557*projectileCount, 1557*ability.fireTime*projectileCount, true)
+		effectUtil.messageParticle(firePosition(),"Donkey!",{150,75,0},0.6,nil,4,nil)
 	elseif special == 111 and throttle and not world.getProperty("ship.fuel") then
 		--Marvin. Arguably worse than sayter. It will not end until the person dies.
 		--Since they will have no resistances and will be immune to most healing, death is pretty much guaranteed.

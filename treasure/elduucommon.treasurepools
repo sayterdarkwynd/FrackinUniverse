@@ -1,0 +1,1660 @@
+{
+  // ==============================================================================================
+  //                                     COMMON TREASURE POOLS
+  // ==============================================================================================
+
+  // ================================
+  //             Blank
+  // ================================
+
+  /*"empty" : [
+    [0, {
+      "fill" : [ ]
+    }]
+  ],*/
+
+  // ================================
+  //     Generic Treasure Chests
+  // ================================
+  "elduubasicChestTreasure" : [
+    [0, {
+      "fill" : [
+        {"pool" : "valuableTreasure"},
+        {"pool" : "maybeWeaponTreasure"}
+      ],
+      "poolRounds" : [
+        [0.1, 1],
+        [0.4, 2],
+        [0.4, 3],
+        [0.1, 4]
+      ],
+      "pool" : [
+        {"weight" : 1.0, "pool" : "basicTreasure"}
+      ]
+    }]
+  ],
+
+  "elduusmallChestTreasure" : [
+    [0, {
+      "poolRounds" : [
+        [0.4, 1],
+        [0.4, 2],
+        [0.2, 3]
+      ],
+      "pool" : [
+        {"weight" : 1.0, "pool" : "basicTreasure"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //       Generic Weapon Chests
+  // ================================
+  "elduuweaponChestTreasure" : [
+    [0, {
+      "fill" : [
+        {"pool" : "goodWeapon"}
+      ],
+      "poolRounds" : [
+        [0.5, 2],
+        [0.3, 3],
+        [0.2, 4]
+      ],
+      "pool" : [
+        {"weight" : 1.0, "pool" : "basicTreasure"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //       Basic Treasure Pool
+  // ================================
+
+  "elduubasicTreasure" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.32, "pool" : "chestMoney"},
+        {"weight" : 0.16, "pool" : "healingItem"},
+        {"weight" : 0.16, "pool" : "ore"},
+        {"weight" : 0.12, "pool" : "thrownWeapon"},
+        {"weight" : 0.05, "pool" : "weapon"},
+        {"weight" : 0.05, "pool" : "elduugem"},
+        {"weight" : 0.08, "item" : "manipulatormodule"},
+        {"weight" : 0.03, "item" : "techcard"},
+        {"weight" : 0.01, "item" : "upgrademodule"},
+        {"weight" : 0.01, "pool" : "instrument"},
+        {"weight" : 0.01, "pool" : "costume"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //     Small Chance of Weapon
+  // ================================
+
+  "elduumaybeWeaponTreasure" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.25, "pool" : "weapon"},
+        {"weight" : 0.1, "pool" : "shield"},
+        {"weight" : 0.65, "pool" : "basicTreasure"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //    Generic Valuable Treasure
+  // ================================
+
+  "elduuvaluableTreasure" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.25, "item" : "techcard"},
+        {"weight" : 0.45, "item" : "manipulatormodule"},
+        {"weight" : 0.08, "item" : "upgrademodule"},
+        {"weight" : 0.04, "item" : "teleportercore"},
+        {"weight" : 0.15, "pool" : "goodWeapon"},
+        {"weight" : 0.03, "pool" : "uniqueWeapon"}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 0.25, "item" : "techcard"},
+        {"weight" : 0.35, "item" : "manipulatormodule"},
+        {"weight" : 0.05, "item" : ["manipulatormodule", 2]},
+        {"weight" : 0.11, "item" : "upgrademodule"},
+        {"weight" : 0.05, "item" : "teleportercore"},
+        {"weight" : 0.05, "pool" : "augments"},
+        {"weight" : 0.12, "pool" : "goodWeapon"},
+        {"weight" : 0.02, "pool" : "uniqueWeapon"}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        {"weight" : 0.25, "item" : "techcard"},
+        {"weight" : 0.33, "item" : "manipulatormodule"},
+        {"weight" : 0.07, "item" : ["manipulatormodule", 2]},
+        {"weight" : 0.12, "item" : "upgrademodule"},
+        {"weight" : 0.05, "item" : "teleportercore"},
+        {"weight" : 0.05, "pool" : "augments"},
+        {"weight" : 0.03, "pool" : "petcollars"},
+        {"weight" : 0.05, "pool" : "goodWeapon"},
+        {"weight" : 0.03, "pool" : "uniqueWeapon"},
+        {"weight" : 0.02, "pool" : "uniqueWeaponRecipe"}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 0.25, "item" : "techcard"},
+        {"weight" : 0.30, "item" : "manipulatormodule"},
+        {"weight" : 0.10, "item" : ["manipulatormodule", 2]},
+        {"weight" : 0.13, "item" : "upgrademodule"},
+        {"weight" : 0.05, "item" : "teleportercore"},
+        {"weight" : 0.06, "pool" : "augments"},
+        {"weight" : 0.06, "pool" : "petcollars"},
+        {"weight" : 0.03, "pool" : "uniqueWeapon"},
+        {"weight" : 0.02, "pool" : "uniqueWeaponRecipe"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //             Augments
+  // ================================
+
+  "elduuaugments" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.5, "item" : "damageaugment1"},
+        {"weight" : 0.5, "item" : "energyaugment1"},
+        {"weight" : 0.5, "item" : "healingaugment1"},
+        {"weight" : 0.5, "item" : "healthaugment1"},
+        {"weight" : 0.5, "item" : "lightaugment1"}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 0.5, "item" : "damageaugment1"},
+        {"weight" : 0.5, "item" : "energyaugment1"},
+        {"weight" : 0.5, "item" : "healingaugment1"},
+        {"weight" : 0.5, "item" : "healthaugment1"},
+        {"weight" : 0.5, "item" : "lightaugment1"},
+
+        {"weight" : 0.5, "item" : "fireblockaugment"},
+        {"weight" : 0.5, "item" : "iceblockaugment"},
+        {"weight" : 0.5, "item" : "electricblockaugment"},
+        {"weight" : 0.5, "item" : "poisonblockaugment"}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        {"weight" : 0.3, "item" : "damageaugment1"},
+        {"weight" : 0.3, "item" : "energyaugment1"},
+        {"weight" : 0.3, "item" : "healingaugment1"},
+        {"weight" : 0.3, "item" : "healthaugment1"},
+        {"weight" : 0.3, "item" : "lightaugment1"},
+
+        {"weight" : 0.3, "item" : "fireblockaugment"},
+        {"weight" : 0.3, "item" : "iceblockaugment"},
+        {"weight" : 0.3, "item" : "electricblockaugment"},
+        {"weight" : 0.3, "item" : "poisonblockaugment"},
+
+        {"weight" : 0.5, "item" : "damageaugment2"},
+        {"weight" : 0.5, "item" : "energyaugment2"},
+        {"weight" : 0.5, "item" : "healingaugment2"},
+        {"weight" : 0.5, "item" : "healthaugment2"},
+        {"weight" : 0.5, "item" : "lightaugment2"}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 0.3, "item" : "damageaugment1"},
+        {"weight" : 0.3, "item" : "energyaugment1"},
+        {"weight" : 0.3, "item" : "healingaugment1"},
+        {"weight" : 0.3, "item" : "healthaugment1"},
+        {"weight" : 0.3, "item" : "lightaugment1"},
+
+        {"weight" : 0.3, "item" : "fireblockaugment"},
+        {"weight" : 0.3, "item" : "iceblockaugment"},
+        {"weight" : 0.3, "item" : "electricblockaugment"},
+        {"weight" : 0.3, "item" : "poisonblockaugment"},
+
+        {"weight" : 0.5, "item" : "damageaugment2"},
+        {"weight" : 0.5, "item" : "energyaugment2"},
+        {"weight" : 0.5, "item" : "healingaugment2"},
+        {"weight" : 0.5, "item" : "healthaugment2"},
+        {"weight" : 0.5, "item" : "lightaugment2"},
+
+        {"weight" : 0.5, "item" : "gravityaugment"},
+        {"weight" : 0.5, "item" : "jumpaugment"},
+        {"weight" : 0.5, "item" : "speedaugment"},
+        {"weight" : 0.5, "item" : "swimaugment"}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        {"weight" : 0.1, "item" : "damageaugment1"},
+        {"weight" : 0.1, "item" : "energyaugment1"},
+        {"weight" : 0.1, "item" : "healingaugment1"},
+        {"weight" : 0.1, "item" : "healthaugment1"},
+        {"weight" : 0.1, "item" : "lightaugment1"},
+
+        {"weight" : 0.1, "item" : "fireblockaugment"},
+        {"weight" : 0.1, "item" : "iceblockaugment"},
+        {"weight" : 0.1, "item" : "electricblockaugment"},
+        {"weight" : 0.1, "item" : "poisonblockaugment"},
+
+        {"weight" : 0.3, "item" : "damageaugment2"},
+        {"weight" : 0.3, "item" : "energyaugment2"},
+        {"weight" : 0.3, "item" : "healingaugment2"},
+        {"weight" : 0.3, "item" : "healthaugment2"},
+        {"weight" : 0.3, "item" : "lightaugment2"},
+
+        {"weight" : 0.3, "item" : "gravityaugment"},
+        {"weight" : 0.3, "item" : "jumpaugment"},
+        {"weight" : 0.3, "item" : "speedaugment"},
+        {"weight" : 0.3, "item" : "swimaugment"},
+
+        {"weight" : 0.5, "item" : "damageaugment3"},
+        {"weight" : 0.5, "item" : "energyaugment3"},
+        {"weight" : 0.5, "item" : "healingaugment3"},
+        {"weight" : 0.5, "item" : "healthaugment3"},
+        {"weight" : 0.5, "item" : "lightaugment3"}
+      ]
+    }],
+    [5.9, {
+      "pool" : [
+        {"weight" : 0.1, "item" : "damageaugment1"},
+        {"weight" : 0.1, "item" : "energyaugment1"},
+        {"weight" : 0.1, "item" : "healingaugment1"},
+        {"weight" : 0.1, "item" : "healthaugment1"},
+        {"weight" : 0.1, "item" : "lightaugment1"},
+
+        {"weight" : 0.1, "item" : "fireblockaugment"},
+        {"weight" : 0.1, "item" : "iceblockaugment"},
+        {"weight" : 0.1, "item" : "electricblockaugment"},
+        {"weight" : 0.1, "item" : "poisonblockaugment"},
+
+        {"weight" : 0.3, "item" : "damageaugment2"},
+        {"weight" : 0.3, "item" : "energyaugment2"},
+        {"weight" : 0.3, "item" : "healingaugment2"},
+        {"weight" : 0.3, "item" : "healthaugment2"},
+        {"weight" : 0.3, "item" : "lightaugment2"},
+
+        {"weight" : 0.3, "item" : "gravityaugment"},
+        {"weight" : 0.3, "item" : "jumpaugment"},
+        {"weight" : 0.3, "item" : "speedaugment"},
+        {"weight" : 0.3, "item" : "swimaugment"},
+
+        {"weight" : 0.5, "item" : "damageaugment3"},
+        {"weight" : 0.5, "item" : "energyaugment3"},
+        {"weight" : 0.5, "item" : "healingaugment3"},
+        {"weight" : 0.5, "item" : "healthaugment3"},
+        {"weight" : 0.5, "item" : "lightaugment3"},
+
+        {"weight" : 0.5, "item" : "thornsaugment"},
+        {"weight" : 0.5, "item" : "mobilityaugment"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //             Pet Collars
+  // ================================
+
+  "elduupetcollars" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.6, "item" : "damagecollar1"},
+        {"weight" : 0.6, "item" : "healingcollar1"},
+        {"weight" : 0.6, "item" : "healthcollar1"},
+        {"weight" : 0.6, "item" : "lightcollar"},
+        {"weight" : 0.6, "item" : "bouncycollar"}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 0.6, "item" : "damagecollar1"},
+        {"weight" : 0.6, "item" : "healingcollar1"},
+        {"weight" : 0.6, "item" : "healthcollar1"},
+        {"weight" : 0.6, "item" : "lightcollar"},
+        {"weight" : 0.6, "item" : "bouncycollar"},
+
+        {"weight" : 0.6, "item" : "firebombcollar"},
+        {"weight" : 0.6, "item" : "icebombcollar"},
+        {"weight" : 0.6, "item" : "electricbombcollar"},
+        {"weight" : 0.6, "item" : "poisonbombcollar"}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        {"weight" : 0.3, "item" : "damagecollar1"},
+        {"weight" : 0.3, "item" : "healingcollar1"},
+        {"weight" : 0.3, "item" : "healthcollar1"},
+        {"weight" : 0.3, "item" : "lightcollar"},
+        {"weight" : 0.3, "item" : "bouncycollar"},
+
+        {"weight" : 0.3, "item" : "firebombcollar"},
+        {"weight" : 0.3, "item" : "icebombcollar"},
+        {"weight" : 0.3, "item" : "electricbombcollar"},
+        {"weight" : 0.3, "item" : "poisonbombcollar"},
+
+        {"weight" : 0.6, "item" : "damagecollar2"},
+        {"weight" : 0.6, "item" : "healingcollar2"},
+        {"weight" : 0.6, "item" : "healthcollar2"}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 0.3, "item" : "damagecollar1"},
+        {"weight" : 0.3, "item" : "healingcollar1"},
+        {"weight" : 0.3, "item" : "healthcollar1"},
+        {"weight" : 0.3, "item" : "lightcollar"},
+        {"weight" : 0.3, "item" : "bouncycollar"},
+
+        {"weight" : 0.3, "item" : "firebombcollar"},
+        {"weight" : 0.3, "item" : "icebombcollar"},
+        {"weight" : 0.3, "item" : "electricbombcollar"},
+        {"weight" : 0.3, "item" : "poisonbombcollar"},
+
+        {"weight" : 0.6, "item" : "damagecollar2"},
+        {"weight" : 0.6, "item" : "healingcollar2"},
+        {"weight" : 0.6, "item" : "healthcollar2"},
+
+        {"weight" : 0.6, "item" : "obliviouscollar"}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        {"weight" : 0.1, "item" : "damagecollar1"},
+        {"weight" : 0.1, "item" : "healingcollar1"},
+        {"weight" : 0.1, "item" : "healthcollar1"},
+        {"weight" : 0.1, "item" : "lightcollar"},
+        {"weight" : 0.1, "item" : "bouncycollar"},
+
+        {"weight" : 0.1, "item" : "firebombcollar"},
+        {"weight" : 0.1, "item" : "icebombcollar"},
+        {"weight" : 0.1, "item" : "electricbombcollar"},
+        {"weight" : 0.1, "item" : "poisonbombcollar"},
+
+        {"weight" : 0.3, "item" : "damagecollar2"},
+        {"weight" : 0.3, "item" : "healingcollar2"},
+        {"weight" : 0.3, "item" : "healthcollar2"},
+
+        {"weight" : 0.3, "item" : "obliviouscollar"},
+
+        {"weight" : 0.6, "item" : "damagecollar3"},
+        {"weight" : 0.6, "item" : "healingcollar3"},
+        {"weight" : 0.6, "item" : "healthcollar3"}
+
+      ]
+    }],
+    [5.9, {
+      "pool" : [
+        {"weight" : 0.1, "item" : "damagecollar1"},
+        {"weight" : 0.1, "item" : "healingcollar1"},
+        {"weight" : 0.1, "item" : "healthcollar1"},
+        {"weight" : 0.1, "item" : "lightcollar"},
+        {"weight" : 0.1, "item" : "bouncycollar"},
+
+        {"weight" : 0.1, "item" : "firebombcollar"},
+        {"weight" : 0.1, "item" : "icebombcollar"},
+        {"weight" : 0.1, "item" : "electricbombcollar"},
+        {"weight" : 0.1, "item" : "poisonbombcollar"},
+
+        {"weight" : 0.3, "item" : "damagecollar2"},
+        {"weight" : 0.3, "item" : "healingcollar2"},
+        {"weight" : 0.3, "item" : "healthcollar2"},
+
+        {"weight" : 0.3, "item" : "obliviouscollar"},
+
+        {"weight" : 0.6, "item" : "damagecollar3"},
+        {"weight" : 0.6, "item" : "healingcollar3"},
+        {"weight" : 0.6, "item" : "healthcollar3"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //    $$  Dollar Dollar Bill  $$
+  // ================================
+
+  "elduuchestMoney" : [
+    [0, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 15]},
+        {"weight" : 0.6, "item" : ["money", 30]},
+        {"weight" : 0.2, "item" : ["money", 50]}
+      ]
+    }],
+    [1.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 22]},
+        {"weight" : 0.6, "item" : ["money", 45]},
+        {"weight" : 0.2, "item" : ["money", 75]}
+      ]
+    }],
+    [2.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 30]},
+        {"weight" : 0.6, "item" : ["money", 60]},
+        {"weight" : 0.2, "item" : ["money", 100]}
+      ]
+    }],
+    [3.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 37]},
+        {"weight" : 0.6, "item" : ["money", 75]},
+        {"weight" : 0.2, "item" : ["money", 125]}
+      ]
+    }],
+    [4.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 45]},
+        {"weight" : 0.6, "item" : ["money", 90]},
+        {"weight" : 0.2, "item" : ["money", 150]}
+      ]
+    }],
+    [5.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 52]},
+        {"weight" : 0.6, "item" : ["money", 105]},
+        {"weight" : 0.2, "item" : ["money", 175]}
+      ]
+    }],
+    [6.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 60]},
+        {"weight" : 0.6, "item" : ["money", 120]},
+        {"weight" : 0.2, "item" : ["money", 200]}
+      ]
+    }]
+  ],
+
+  "elduumoney" : [
+    [0, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 5]},
+        {"weight" : 0.6, "item" : ["money", 10]},
+        {"weight" : 0.2, "item" : ["money", 25]}
+      ]
+    }],
+    [1.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 7]},
+        {"weight" : 0.6, "item" : ["money", 15]},
+        {"weight" : 0.2, "item" : ["money", 37]}
+      ]
+    }],
+    [2.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 10]},
+        {"weight" : 0.6, "item" : ["money", 20]},
+        {"weight" : 0.2, "item" : ["money", 50]}
+      ]
+    }],
+    [3.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 12]},
+        {"weight" : 0.6, "item" : ["money", 25]},
+        {"weight" : 0.2, "item" : ["money", 62]}
+      ]
+    }],
+    [4.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 15]},
+        {"weight" : 0.6, "item" : ["money", 30]},
+        {"weight" : 0.2, "item" : ["money", 75]}
+      ]
+    }],
+    [5.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 17]},
+        {"weight" : 0.6, "item" : ["money", 35]},
+        {"weight" : 0.2, "item" : ["money", 87]}
+      ]
+    }],
+    [6.9, {
+      "poolRounds" : [[0.65, 1], [0.3, 2], [0.05, 3]],
+      "pool" : [
+        {"weight" : 0.2, "item" : ["money", 20]},
+        {"weight" : 0.6, "item" : ["money", 40]},
+        {"weight" : 0.2, "item" : ["money", 100]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //            Ore Pools
+  // ================================
+
+  "elduuore" : [
+    [0, {
+      "poolRounds" : [[0.6, 1], [0.3, 2], [0.1, 3]],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 4]},
+        {"weight" : 0.1, "item" : [ "silverore", 4]},
+        {"weight" : 0.1, "item" : [ "goldore", 4]},
+        {"weight" : 0.7, "item" : [ "ironore", 4]}
+      ]
+    }],
+    [1.9, {
+      "poolRounds" : [[0.6, 1], [0.3, 2], [0.1, 3]],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 4]},
+        {"weight" : 0.1, "item" : [ "silverore", 4]},
+        {"weight" : 0.1, "item" : [ "goldore", 4]},
+        {"weight" : 0.7, "item" : [ "tungstenore", 4]}
+      ]
+    }],
+    [2.9, {
+      "poolRounds" : [[0.6, 1], [0.3, 2], [0.1, 3]],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 4]},
+        {"weight" : 0.1, "item" : [ "silverore", 4]},
+        {"weight" : 0.1, "item" : [ "goldore", 4]},
+        {"weight" : 0.65, "item" : [ "titaniumore", 4]},
+        {"weight" : 0.05, "item" : [ "diamond", 1]}
+      ]
+    }],
+    [3.9, {
+      "poolRounds" : [[0.6, 1], [0.3, 2], [0.1, 3]],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 4]},
+        {"weight" : 0.1, "item" : [ "silverore", 4]},
+        {"weight" : 0.1, "item" : [ "goldore", 4]},
+        {"weight" : 0.65, "item" : [ "durasteelore", 4]},
+        {"weight" : 0.05, "item" : [ "diamond", 1]}
+      ]
+    }],
+    [4.9, {
+      "poolRounds" : [[0.6, 1], [0.3, 2], [0.1, 3]],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 4]},
+        {"weight" : 0.1, "item" : [ "silverore", 4]},
+        {"weight" : 0.1, "item" : [ "goldore", 4]},
+        {"weight" : 0.2, "item" : [ "violiumore", 4]},
+        {"weight" : 0.2, "item" : [ "aegisaltore", 4]},
+        {"weight" : 0.2, "item" : [ "feroziumore", 4]},
+        {"weight" : 0.1, "item" : [ "diamond", 1]}
+      ]
+    }],
+    [5.9, {
+      "poolRounds" : [[0.6, 1], [0.3, 2], [0.1, 3]],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 4]},
+        {"weight" : 0.1, "item" : [ "silverore", 4]},
+        {"weight" : 0.1, "item" : [ "goldore", 4]},
+        {"weight" : 0.6, "item" : [ "solariumore", 4]},
+        {"weight" : 0.1, "item" : [ "diamond", 1]}
+      ]
+    }]
+  ],
+
+  "elduurichOre" : [
+    [0, {
+      "poolRounds" : 1,
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 15]},
+        {"weight" : 0.1, "item" : [ "silverore", 15]},
+        {"weight" : 0.1, "item" : [ "goldore", 15]},
+        {"weight" : 0.7, "item" : [ "ironore", 15]}
+      ]
+    }],
+    [1.9, {
+      "poolRounds" : 1,
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 15]},
+        {"weight" : 0.1, "item" : [ "silverore", 15]},
+        {"weight" : 0.1, "item" : [ "goldore", 15]},
+        {"weight" : 0.7, "item" : [ "tungstenore", 15]}
+      ]
+    }],
+    [2.9, {
+      "poolRounds" : 1,
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 15]},
+        {"weight" : 0.1, "item" : [ "silverore", 15]},
+        {"weight" : 0.1, "item" : [ "goldore", 15]},
+        {"weight" : 0.65, "item" : [ "titaniumore", 15]},
+        {"weight" : 0.05, "item" : [ "diamond", 1]}
+      ]
+    }],
+    [3.9, {
+      "poolRounds" : 1,
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 15]},
+        {"weight" : 0.1, "item" : [ "silverore", 15]},
+        {"weight" : 0.1, "item" : [ "goldore", 15]},
+        {"weight" : 0.65, "item" : [ "durasteelore", 15]},
+        {"weight" : 0.05, "item" : [ "diamond", 1]}
+      ]
+    }],
+    [4.9, {
+      "poolRounds" : 1,
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 15]},
+        {"weight" : 0.1, "item" : [ "silverore", 15]},
+        {"weight" : 0.1, "item" : [ "goldore", 15]},
+        {"weight" : 0.2, "item" : [ "violiumore", 15]},
+        {"weight" : 0.2, "item" : [ "aegisaltore", 15]},
+        {"weight" : 0.2, "item" : [ "feroziumore", 15]},
+        {"weight" : 0.1, "item" : [ "diamond", 2]}
+      ]
+    }],
+    [5.9, {
+      "poolRounds" : 1,
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "copperore", 15]},
+        {"weight" : 0.1, "item" : [ "silverore", 15]},
+        {"weight" : 0.1, "item" : [ "goldore", 15]},
+        {"weight" : 0.6, "item" : [ "solariumore", 15]},
+        {"weight" : 0.1, "item" : [ "diamond", 3]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //              Tools
+  // ================================
+
+  "elduutool" : [
+    //TODO: add tiers
+    [0, {
+      "pool" : [
+        {"weight" : 0.3, "pool" : "diggingTool"},
+
+        {"weight" : 0.3, "item" : [ "flare", 15]},
+        {"weight" : 0.3, "item" : [ "torch", 15]},
+
+        {"weight" : 0.03, "item" : [ "throwingblock", 20]},
+
+        {"weight" : 0.04, "item" : [ "bomb", 3]},
+
+        {"weight" : 0.01, "item" : [ "redflashlight", 1]},
+        {"weight" : 0.01, "item" : [ "greenflashlight", 1]},
+        {"weight" : 0.01, "item" : [ "yellowflashlight", 1]}
+      ]
+    }]
+  ],
+
+  "elduudiggingTool" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.7, "item" : "copperpickaxe"},
+        {"weight" : 0.3, "item" : "silverpickaxe"}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 0.7, "item" : "silverpickaxe"},
+        {"weight" : 0.3, "item" : "platinumpickaxe"}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        {"weight" : 0.7, "item" : "platinumpickaxe"},
+        {"weight" : 0.3, "item" : "diamondpickaxe"}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 0.7, "item" : "diamondpickaxe"},
+        {"weight" : 0.3, "item" : "golddrill"}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        {"weight" : 0.7, "item" : "golddrill"},
+        {"weight" : 0.3, "item" : "platinumdrill"}
+      ]
+    }],
+    [5.9, {
+      "pool" : [
+        {"weight" : 0.7, "item" : "platinumdrill"},
+        {"weight" : 0.3, "item" : "diamonddrill"}
+      ]
+    }],
+    [6.9, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "diamonddrill"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //          Healing Items
+  // ================================
+
+  "elduuhealingItem" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.40, "item" : [ "kahla", 2]},
+        {"weight" : 0.35, "item" : [ "salve", 3]},
+        {"weight" : 0.25, "item" : [ "bandage", 2]}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 0.40, "item" : [ "medkit", 1]},
+        {"weight" : 0.35, "item" : [ "kahla", 2]},
+        {"weight" : 0.15, "item" : [ "nanowrap", 1]},
+        {"weight" : 0.10, "item" : [ "kahla", 2]}
+      ]
+    }]
+  ],
+
+  "elduustim" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.25, "item" : [ "redstim", 2]},
+        {"weight" : 0.25, "item" : [ "bluestim", 2]},
+        {"weight" : 0.25, "item" : [ "greenstim", 2]},
+        {"weight" : 0.25, "item" : [ "yellowstim", 2]}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 0.25, "item" : [ "redstim", 3]},
+        {"weight" : 0.25, "item" : [ "bluestim", 3]},
+        {"weight" : 0.25, "item" : [ "greenstim", 3]},
+        {"weight" : 0.25, "item" : [ "yellowstim", 3]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //          Weapon Pools
+  // ================================
+
+  "elduuweapon" : [
+    [0, {
+      "pool" : [
+        // large chance of melee
+        {"weight" : 0.40, "pool" : "commonMelee"},
+        {"weight" : 0.30, "pool" : "uncommonMelee"},
+        {"weight" : 0.10, "pool" : "rareMelee"},
+
+        // small chance of guns
+        {"weight" : 0.12, "pool" : "commonGun"},
+        {"weight" : 0.06, "pool" : "uncommonGun"},
+        {"weight" : 0.02, "pool" : "rareGun"}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        // moderate chance of melee
+        {"weight" : 0.25, "pool" : "commonMelee"},
+        {"weight" : 0.15, "pool" : "uncommonMelee"},
+        {"weight" : 0.05, "pool" : "rareMelee"},
+
+        // moderate chance of guns
+        {"weight" : 0.25, "pool" : "commonGun"},
+        {"weight" : 0.15, "pool" : "uncommonGun"},
+        {"weight" : 0.05, "pool" : "rareGun"},
+
+        // small chance of staff/wand
+        {"weight" : 0.05, "item" : "rarestaff"},
+        {"weight" : 0.05, "item" : "rarewand"}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        // moderate chance of melee
+        {"weight" : 0.20, "pool" : "commonMelee"},
+        {"weight" : 0.12, "pool" : "uncommonMelee"},
+        {"weight" : 0.05, "pool" : "rareMelee"},
+
+        // moderate chance of guns
+        {"weight" : 0.20, "pool" : "commonGun"},
+        {"weight" : 0.13, "pool" : "uncommonGun"},
+        {"weight" : 0.05, "pool" : "rareGun"},
+
+        // moderate chance of staff/wand
+        {"weight" : 0.12, "item" : "rarestaff"},
+        {"weight" : 0.13, "item" : "rarewand"}
+      ]
+    }]
+  ],
+
+  "elduugoodWeapon" : [
+    [0, {
+      "pool" : [
+        // large chance of melee
+        {"weight" : 0.40, "pool" : "uncommonMelee"},
+        {"weight" : 0.35, "pool" : "rareMelee"},
+
+        // small chance of guns
+        {"weight" : 0.15, "pool" : "uncommonGun"},
+        {"weight" : 0.10, "pool" : "rareGun"}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        // moderate chance of melee
+        {"weight" : 0.25, "pool" : "uncommonMelee"},
+        {"weight" : 0.18, "pool" : "rareMelee"},
+
+        // moderate chance of guns
+        {"weight" : 0.25, "pool" : "uncommonGun"},
+        {"weight" : 0.18, "pool" : "rareGun"},
+
+        // small chance of staff/wand
+        {"weight" : 0.05, "item" : "rarestaff"},
+        {"weight" : 0.05, "item" : "rarewand"},
+
+        // tiny chance of unique weapon or recipe
+        {"weight" : 0.02, "pool" : "uniqueWeapon"},
+        {"weight" : 0.02, "pool" : "uniqueWeaponRecipe"}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        // moderate chance of melee
+        {"weight" : 0.20, "pool" : "uncommonMelee"},
+        {"weight" : 0.13, "pool" : "rareMelee"},
+
+        // moderate chance of guns
+        {"weight" : 0.20, "pool" : "uncommonGun"},
+        {"weight" : 0.13, "pool" : "rareGun"},
+
+        // moderate chance of staff/wand
+        {"weight" : 0.13, "item" : "rarestaff"},
+        {"weight" : 0.13, "item" : "rarewand"},
+
+        // small chance of unique weapon or recipe
+        {"weight" : 0.04, "pool" : "uniqueWeapon"},
+        {"weight" : 0.04, "pool" : "uniqueWeaponRecipe"}
+      ]
+    }]
+  ],
+
+  "elduuthrownWeapon" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.10, "item" : ["bomb", 3]},
+        {"weight" : 0.10, "item" : ["molotov", 3]},
+        {"weight" : 0.40, "item" : ["throwingdart", 20]},
+        {"weight" : 0.40, "item" : ["huntingspear", 10]}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 0.15, "item" : ["bomb", 3]},
+        {"weight" : 0.15, "item" : ["molotov", 3]},
+        {"weight" : 0.35, "item" : ["throwingdagger", 25]},
+        {"weight" : 0.35, "item" : ["throwingspear", 10]}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        {"weight" : 0.15, "item" : ["bomb", 3]},
+        {"weight" : 0.15, "item" : ["molotov", 3]},
+        {"weight" : 0.35, "item" : ["throwingknife", 25]},
+        {"weight" : 0.35, "item" : ["throwingaxe", 10]}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 0.15, "item" : ["bomb", 3]},
+        {"weight" : 0.15, "item" : ["molotov", 3]},
+        {"weight" : 0.35, "item" : ["throwingkunai", 25]},
+        {"weight" : 0.35, "item" : ["javelin", 10]}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        {"weight" : 0.15, "item" : ["bomb", 3]},
+        {"weight" : 0.15, "item" : ["molotov", 3]},
+        {"weight" : 0.70, "item" : ["throwingstar", 40]}
+      ]
+    }],
+    [5.9, {
+      "pool" : [
+        {"weight" : 0.15, "item" : ["bomb", 3]},
+        {"weight" : 0.15, "item" : ["molotov", 3]},
+        {"weight" : 0.70, "item" : ["energyjavelin", 5]}
+      ]
+    }]
+  ],
+
+  "elduucommonMelee" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "commonbroadsword"},
+        {"weight" : 1.0, "item" : "commonaxe"},
+        {"weight" : 1.0, "item" : "commonspear"},
+        {"weight" : 1.0, "item" : "commonhammer"},
+        {"weight" : 1.0, "item" : "commondagger"},
+        {"weight" : 1.0, "item" : "commonshortsword"}
+      ]
+    }]
+  ],
+
+  "elduuuncommonMelee" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.007, "item" : "uncommonbroadsword"},
+        {"weight" : 0.007, "item" : "uncommonaxe"},
+        {"weight" : 0.007, "item" : "uncommonspear"},
+        {"weight" : 0.007, "item" : "uncommonhammer"},
+        {"weight" : 0.007, "item" : "uncommondagger"},
+        {"weight" : 0.007, "item" : "uncommonshortsword"}
+      ]
+    }]
+  ],
+
+  "elduurareMelee" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.007, "item" : "rarebroadsword"},
+        {"weight" : 0.007, "item" : "rareaxe"},
+        {"weight" : 0.007, "item" : "rarespear"},
+        {"weight" : 0.007, "item" : "rarehammer"},
+        {"weight" : 0.007, "item" : "raredagger"},
+        {"weight" : 0.007, "item" : "rareshortsword"}
+      ]
+    }]
+  ],
+
+  "elduucommonGun" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "commonpistol"},
+        {"weight" : 1.0, "item" : "commonmachinepistol"}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "commonassaultrifle"},
+        {"weight" : 1.0, "item" : "commonshotgun"},
+        {"weight" : 1.0, "item" : "commonsniperrifle"},
+        {"weight" : 1.0, "item" : "commonpistol"},
+        {"weight" : 1.0, "item" : "commonmachinepistol"},
+        {"weight" : 0.7, "item" : "commongrenadelauncher"},
+        {"weight" : 0.7, "item" : "commonrocketlauncher"}
+      ]
+    }]
+  ],
+
+  "elduuuncommonGun" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "uncommonpistol"},
+        {"weight" : 1.0, "item" : "uncommonmachinepistol"}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "uncommongrenadelauncher"},
+        {"weight" : 1.0, "item" : "uncommonassaultrifle"},
+        {"weight" : 1.0, "item" : "uncommonshotgun"},
+        {"weight" : 1.0, "item" : "uncommonsniperrifle"},
+        {"weight" : 1.0, "item" : "uncommonpistol"},
+        {"weight" : 1.0, "item" : "uncommonmachinepistol"},
+        {"weight" : 0.7, "item" : "uncommonrocketlauncher"}
+      ]
+    }]
+  ],
+
+  "elduurareGun" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "rarepistol"},
+        {"weight" : 1.0, "item" : "raremachinepistol"}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "rareassaultrifle"},
+        {"weight" : 1.0, "item" : "rareshotgun"},
+        {"weight" : 1.0, "item" : "raresniperrifle"},
+        {"weight" : 1.0, "item" : "rarepistol"},
+        {"weight" : 1.0, "item" : "raremachinepistol"},
+        {"weight" : 1.0, "item" : "raregrenadelauncher"},
+        {"weight" : 0.7, "item" : "rarerocketlauncher"}
+      ]
+    }]
+  ],
+
+  "elduuuniqueWeapon" : [
+    [0, {
+      "pool" : [
+        // level 2 uniques
+        {"weight" : 1.0, "item" : "boomerang"},
+        {"weight" : 1.0, "item" : "chakram"},
+        {"weight" : 1.0, "item" : "ropewhip"},
+        {"weight" : 1.5, "item" : "gauntlet"},
+        {"weight" : 1.0, "item" : "flamethrower"},
+        {"weight" : 1.0, "item" : "poisonbow"},
+        {"weight" : 1.0, "item" : "pollenpump"}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        // include a chance for these since they're needed for later upgrades
+        {"weight" : 0.5, "item" : "boomerang"},
+        {"weight" : 0.5, "item" : "chakram"},
+        {"weight" : 0.75, "item" : "gauntlet"},
+
+        // level 4 uniques
+        {"weight" : 1.0, "item" : "vinewhip"},
+        {"weight" : 1.0, "item" : "wormgun"},
+        {"weight" : 1.0, "item" : "wormerang"},
+        {"weight" : 1.0, "item" : "gristlegun"},
+        {"weight" : 1.0, "item" : "soulseeker"},
+        {"weight" : 1.0, "item" : "electricrailgun"},
+        {"weight" : 1.0, "item" : "timepierce"},
+        {"weight" : 1.0, "item" : "eyesword"},
+        {"weight" : 1.0, "item" : "intestinewhip"},
+        {"weight" : 0.2, "item" : "gnomegun"}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        // level 6 uniques
+        {"weight" : 1.0, "item" : "supernovaglove"},
+        {"weight" : 1.0, "item" : "astrosabredeluxe"},
+        {"weight" : 1.0, "item" : "energywhip"},
+        {"weight" : 1.0, "item" : "teslastaff"},
+        {"weight" : 1.0, "item" : "magnorbs"},
+        {"weight" : 1.0, "item" : "tentaclegun"},
+        {"weight" : 1.0, "item" : "exmachina"},
+        {"weight" : 1.0, "item" : "energypickaxe"},
+        {"weight" : 1.0, "item" : "evileye"},
+        {"weight" : 1.0, "item" : "remotegrenadelauncher"}
+      ]
+    }]
+  ],
+
+  "elduuuniqueWeaponRecipe" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1.0, "item" : "iceboomerang-recipe" },
+        {"weight" : 1.0, "item" : "fireboomerang-recipe" },
+        {"weight" : 1.0, "item" : "lunarang-recipe" },
+        {"weight" : 1.0, "item" : "neochakram-recipe" },
+        {"weight" : 1.0, "item" : "sawchakram-recipe" },
+        {"weight" : 1.0, "item" : "hardchakram-recipe" },
+        {"weight" : 1.0, "item" : "clawglove-recipe" },
+        {"weight" : 1.0, "item" : "stunglove-recipe" },
+        {"weight" : 1.0, "item" : "vinefist-recipe" }
+      ]
+    }]
+  ],
+
+  "elduushield" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.5, "item" : "commonsmallshield" },
+        {"weight" : 0.5, "item" : "commonlargeshield" }
+      ]
+    }]
+  ],
+
+  // ================================
+  //              Seeds
+  // ================================
+
+  "elduuseed" : [
+    [0, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "wheatseed", 3]},
+        {"weight" : 3.0, "item" : [ "pearlpeaseed", 3]},
+        {"weight" : 2.0, "item" : [ "oceaniteseed", 1]},
+        {"weight" : 2.0, "item" : [ "riceseed", 3]},
+        {"weight" : 1.0, "item" : [ "potatoseed", 3]}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "carrotseed", 3]},
+        {"weight" : 3.0, "item" : [ "tomatoseed", 3]},
+        {"weight" : 2.0, "item" : [ "sugarcaneseed", 3]},
+        {"weight" : 2.0, "item" : [ "beakseedseed", 3]},
+        {"weight" : 2.0, "item" : [ "coffeeseed", 3]},
+        {"weight" : 1.0, "item" : [ "feathercrownseed", 3]},
+        {"weight" : 1.0, "item" : [ "kiwiseed", 3]}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "automatoseed", 3]},
+        {"weight" : 3.0, "item" : [ "currentcornseed", 3]},
+        {"weight" : 2.0, "item" : [ "bananaseed", 3]},
+        {"weight" : 2.0, "item" : [ "grapesseed", 3]},
+        {"weight" : 1.0, "item" : [ "bonebooseed", 3]},
+        {"weight" : 1.0, "item" : [ "pineappleseed", 3]}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "coralcreepseed", 3]},
+        {"weight" : 3.0, "item" : [ "dirturchinseed", 3]},
+        {"weight" : 2.0, "item" : [ "pussplumseed", 3]},
+        {"weight" : 2.0, "item" : [ "reefpodseed", 3]},
+        {"weight" : 1.0, "item" : [ "toxictopseed", 3]},
+        {"weight" : 1.0, "item" : [ "oculemonseed", 3]}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "eggshootseed", 3]},
+        {"weight" : 3.0, "item" : [ "boltbulbseed", 3]},
+        {"weight" : 2.0, "item" : [ "diodiaseed", 3]}
+      ]
+    }],
+    [5.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "wartweedseed", 3]},
+        {"weight" : 2.0, "item" : [ "chiliseed", 3]},
+        {"weight" : 2.0, "item" : [ "avesmingoseed", 3]},
+        {"weight" : 1.0, "item" : [ "neonmelonseed", 3]}
+      ]
+    }],
+    [6.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "wheatseed", 3]},
+        {"weight" : 3.0, "item" : [ "pearlpeaseed", 3]},
+        {"weight" : 2.0, "item" : [ "cornseed", 3]},
+        {"weight" : 2.0, "item" : [ "riceseed", 3]},
+        {"weight" : 1.0, "item" : [ "potatoseed", 3]},
+
+        {"weight" : 3.0, "item" : [ "carrotseed", 3]},
+        {"weight" : 3.0, "item" : [ "tomatoseed", 3]},
+        {"weight" : 2.0, "item" : [ "sugarcaneseed", 3]},
+        {"weight" : 2.0, "item" : [ "beakseedseed", 3]},
+        {"weight" : 2.0, "item" : [ "coffeeseed", 3]},
+        {"weight" : 1.0, "item" : [ "feathercrownseed", 3]},
+        {"weight" : 1.0, "item" : [ "kiwiseed", 3]},
+
+        {"weight" : 3.0, "item" : [ "automatoseed", 3]},
+        {"weight" : 3.0, "item" : [ "currentcornseed", 3]},
+        {"weight" : 2.0, "item" : [ "bananaseed", 3]},
+        {"weight" : 2.0, "item" : [ "grapesseed", 3]},
+        {"weight" : 1.0, "item" : [ "bonebooseed", 3]},
+        {"weight" : 1.0, "item" : [ "pineappleseed", 3]},
+
+        {"weight" : 3.0, "item" : [ "coralcreepseed", 3]},
+        {"weight" : 3.0, "item" : [ "dirturchinseed", 3]},
+        {"weight" : 2.0, "item" : [ "pussplumseed", 3]},
+        {"weight" : 2.0, "item" : [ "reefpodseed", 3]},
+        {"weight" : 1.0, "item" : [ "toxictopseed", 3]},
+        {"weight" : 1.0, "item" : [ "oculemonseed", 3]},
+
+        {"weight" : 3.0, "item" : [ "eggshootseed", 3]},
+        {"weight" : 3.0, "item" : [ "boltbulbseed", 3]},
+        {"weight" : 2.0, "item" : [ "diodiaseed", 3]},
+
+        {"weight" : 3.0, "item" : [ "wartweedseed", 3]},
+        {"weight" : 2.0, "item" : [ "chiliseed", 3]},
+        {"weight" : 2.0, "item" : [ "avesmingoseed", 3]},
+        {"weight" : 1.0, "item" : [ "neonmelonseed", 3]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //           Food Chests
+  // ================================
+
+  "elduufoodTreasureMedium" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1.0, "pool" : "produce"}
+      ],
+      "poolRounds" : [
+        [0.1, 1],
+        [0.6, 2],
+        [0.3, 3],
+        [0.15, 4],
+        [0.05, 5]
+      ],
+      "allowDuplication" : true
+    }]
+  ],
+
+  "elduufood" : [
+    //TODO: divide by levels, add buff foods
+    [0, {
+      "pool" : [
+        {"weight" : 1.0, "pool" : "produce"}
+      ]
+    }]
+  ],
+
+  "elduuproduce" : [
+    [0, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "wheat", 3]},
+        {"weight" : 3.0, "item" : [ "pearlpea", 3]},
+        {"weight" : 2.0, "item" : [ "corn", 3]},
+        {"weight" : 2.0, "item" : [ "rice", 3]},
+        {"weight" : 1.0, "item" : [ "potato", 3]}
+      ]
+    }],
+    [1.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "carrot", 3]},
+        {"weight" : 3.0, "item" : [ "tomato", 3]},
+        {"weight" : 2.0, "item" : [ "sugar", 3]},
+        {"weight" : 1.0, "item" : [ "feathercrown", 3]},
+        {"weight" : 1.0, "item" : [ "kiwi", 3]}
+      ]
+    }],
+    [2.9, {
+      "pool" : [
+        {"weight" : 2.0, "item" : [ "banana", 3]},
+        {"weight" : 2.0, "item" : [ "grapes", 3]},
+        {"weight" : 1.0, "item" : [ "pineapple", 3]}
+      ]
+    }],
+    [3.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "coralcreep", 3]},
+        {"weight" : 3.0, "item" : [ "dirturchin", 3]},
+        {"weight" : 2.0, "item" : [ "pussplum", 3]},
+        {"weight" : 2.0, "item" : [ "reefpod", 3]},
+        {"weight" : 1.0, "item" : [ "toxictop", 3]},
+        {"weight" : 1.0, "item" : [ "oculemon", 3]}
+      ]
+    }],
+    [4.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "eggshoot", 3]}
+      ]
+    }],
+    [5.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "wartweed", 3]},
+        {"weight" : 2.0, "item" : [ "chili", 3]},
+        {"weight" : 2.0, "item" : [ "avesmingo", 3]},
+        {"weight" : 1.0, "item" : [ "neonmelon", 3]}
+      ]
+    }],
+    [6.9, {
+      "pool" : [
+        {"weight" : 3.0, "item" : [ "wheat", 3]},
+        {"weight" : 3.0, "item" : [ "pearlpea", 3]},
+        {"weight" : 2.0, "item" : [ "corn", 3]},
+        {"weight" : 2.0, "item" : [ "rice", 3]},
+        {"weight" : 1.0, "item" : [ "potato", 3]},
+
+        {"weight" : 3.0, "item" : [ "carrot", 3]},
+        {"weight" : 3.0, "item" : [ "tomato", 3]},
+        {"weight" : 2.0, "item" : [ "sugar", 3]},
+        {"weight" : 2.0, "item" : [ "coffeebeans", 3]},
+        {"weight" : 1.0, "item" : [ "feathercrown", 3]},
+        {"weight" : 1.0, "item" : [ "kiwi", 3]},
+
+        {"weight" : 3.0, "item" : [ "automato", 3]},
+        {"weight" : 3.0, "item" : [ "currentcorn", 3]},
+        {"weight" : 2.0, "item" : [ "banana", 3]},
+        {"weight" : 2.0, "item" : [ "grapes", 3]},
+        {"weight" : 1.0, "item" : [ "pineapple", 3]},
+
+        {"weight" : 3.0, "item" : [ "coralcreep", 3]},
+        {"weight" : 3.0, "item" : [ "dirturchin", 3]},
+        {"weight" : 2.0, "item" : [ "pussplum", 3]},
+        {"weight" : 2.0, "item" : [ "reefpod", 3]},
+        {"weight" : 1.0, "item" : [ "toxictop", 3]},
+        {"weight" : 1.0, "item" : [ "oculemon", 3]},
+
+        {"weight" : 3.0, "item" : [ "eggshoot", 3]},
+        {"weight" : 3.0, "item" : [ "boltbulb", 3]},
+        {"weight" : 2.0, "item" : [ "diodia", 3]},
+
+        {"weight" : 3.0, "item" : [ "wartweed", 3]},
+        {"weight" : 2.0, "item" : [ "chili", 3]},
+        {"weight" : 2.0, "item" : [ "avesmingo", 3]},
+        {"weight" : 1.0, "item" : [ "neonmelon", 3]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //            Costumes
+  // ================================
+
+  "elduucostume" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.0003, "item" : [ "ethnichead", 1]},
+        {"weight" : 0.0003, "item" : [ "chefhead", 1]},
+        {"weight" : 0.0003, "item" : [ "cheflegs", 1]},
+        {"weight" : 0.0003, "item" : [ "chefchest", 1]},
+        {"weight" : 0.0003, "item" : [ "cowboyhead", 1]},
+        {"weight" : 0.0003, "item" : [ "cowboychest", 1]},
+        {"weight" : 0.0003, "item" : [ "cowboylegs", 1]},
+        {"weight" : 0.0003, "item" : [ "dress1legs", 1]},
+        {"weight" : 0.0003, "item" : [ "dress1chest", 1]},
+        {"weight" : 0.0003, "item" : [ "fairyback", 1]},
+        {"weight" : 0.0003, "item" : [ "fairychest", 1]},
+        {"weight" : 0.0003, "item" : [ "fairyhead", 1]},
+        {"weight" : 0.0003, "item" : [ "fairylegs", 1]},
+        {"weight" : 0.0003, "item" : [ "jumpsuitlegs", 1]},
+        {"weight" : 0.0003, "item" : [ "jumpsuitchest", 1]},
+        {"weight" : 0.0003, "item" : [ "pilotback", 1]},
+        {"weight" : 0.0003, "item" : [ "pilothead", 1]},
+        {"weight" : 0.0003, "item" : [ "pilotlegs", 1]},
+        {"weight" : 0.0003, "item" : [ "pilotchest", 1]},
+        {"weight" : 0.0003, "item" : [ "moneybagshead", 1]},
+        {"weight" : 0.0003, "item" : [ "moneybagschest", 1]},
+        {"weight" : 0.0003, "item" : [ "moneybagsback", 1]},
+        {"weight" : 0.0003, "item" : [ "moneybagspants", 1]},
+        {"weight" : 0.0003, "item" : [ "neoback", 1]},
+        {"weight" : 0.0003, "item" : [ "neolegs", 1]},
+        {"weight" : 0.0003, "item" : [ "neohead", 1]},
+        {"weight" : 0.0003, "item" : [ "neochest", 1]},
+        {"weight" : 0.0003, "item" : [ "pixelherodemolegs", 1]},
+        {"weight" : 0.0003, "item" : [ "pixelherodemochest", 1]},
+        {"weight" : 0.0003, "item" : [ "scientistchest", 1]},
+        {"weight" : 0.0003, "item" : [ "scientisthead", 1]},
+        {"weight" : 0.0003, "item" : [ "scientistlegs", 1]},
+        {"weight" : 0.0003, "item" : [ "startracklegs", 1]},
+        {"weight" : 0.0003, "item" : [ "startrackchest", 1]},
+        {"weight" : 0.0003, "item" : [ "strapchest", 1]},
+        {"weight" : 0.0003, "item" : [ "straplegs", 1]},
+        {"weight" : 0.0003, "item" : [ "wedding1chest", 1]},
+        {"weight" : 0.0003, "item" : [ "wedding1legs", 1]},
+        {"weight" : 0.0003, "item" : [ "wedding2head", 1]},
+        {"weight" : 0.0003, "item" : [ "wedding2chest", 1]},
+        {"weight" : 0.0003, "item" : [ "wedding2legs", 1]},
+        {"weight" : 0.0003, "item" : [ "afrowighead", 1]},
+        {"weight" : 0.0003, "item" : [ "bearhead", 1]},
+        {"weight" : 0.0003, "item" : [ "caphead", 1]},
+        {"weight" : 0.0003, "item" : [ "captainshead", 1]},
+        {"weight" : 0.0003, "item" : [ "cardboardhead", 1]},
+        {"weight" : 0.0003, "item" : [ "coolshadeshead", 1]},
+        {"weight" : 0.0003, "item" : [ "clocktophathead", 1]},
+        {"weight" : 0.0003, "item" : [ "demonhornshead", 1]},
+        {"weight" : 0.0003, "item" : [ "devhead", 1]},
+        {"weight" : 0.0003, "item" : [ "dinosaurhead", 1]},
+        {"weight" : 0.0003, "item" : [ "dreadfulskullhead", 1]},
+        {"weight" : 0.0003, "item" : [ "electroniumhat", 1]},
+        {"weight" : 0.0003, "item" : [ "toptophathead", 1]},
+        {"weight" : 0.0003, "item" : [ "herocaphead", 1]},
+        {"weight" : 0.0003, "item" : [ "fancaphead", 1]},
+        {"weight" : 0.0003, "item" : [ "featherhead", 1]},
+        {"weight" : 0.0003, "item" : [ "floppyhathead", 1]},
+        {"weight" : 0.0003, "item" : [ "insidioushead", 1]},
+        {"weight" : 0.0003, "item" : [ "jesterhead", 1]},
+        {"weight" : 0.0003, "item" : [ "gagnosehead", 1]},
+        {"weight" : 0.0003, "item" : [ "gladiatorhead", 1]},
+        {"weight" : 0.0003, "item" : [ "glasses1head", 1]},
+        {"weight" : 0.0003, "item" : [ "glasses2head", 1]},
+        {"weight" : 0.0003, "item" : [ "glasses3eyes", 1]},
+        {"weight" : 0.0003, "item" : [ "glasses4head", 1]},
+        {"weight" : 0.0003, "item" : [ "glasses5head", 1]},
+        {"weight" : 0.0003, "item" : [ "hobohead", 1]},
+        {"weight" : 0.0003, "item" : [ "horsehead", 1]},
+        {"weight" : 0.0003, "item" : [ "kathoodhead", 1]},
+        {"weight" : 0.0003, "item" : [ "ladyhathead", 1]},
+        {"weight" : 0.0003, "item" : [ "meercaphead", 1]},
+        {"weight" : 0.0003, "item" : [ "monitorhead", 1]},
+        {"weight" : 0.0003, "item" : [ "mughathead", 1]},
+        {"weight" : 0.0003, "item" : [ "multicamhat", 1]},
+        {"weight" : 0.0003, "item" : [ "phoenixhat", 1]},
+        {"weight" : 0.0003, "item" : [ "phrygiancaphead", 1]},
+        {"weight" : 0.0003, "item" : [ "plaguemasterhead", 1]},
+        {"weight" : 0.0003, "item" : [ "plainhoodhead", 1]},
+        {"weight" : 0.0003, "item" : [ "plumeknighthead", 1]},
+        {"weight" : 0.0003, "item" : [ "rustyskul", 1]},
+        {"weight" : 0.0003, "item" : [ "skullmaskhead", 1]},
+        {"weight" : 0.0003, "item" : [ "smartchest", 1]},
+        {"weight" : 0.0003, "item" : [ "smartpants", 1]},
+        {"weight" : 0.0003, "item" : [ "stargazer", 1]},
+        {"weight" : 0.0003, "item" : [ "soulguise", 1]},
+        {"weight" : 0.0003, "item" : [ "summerchest", 1]},
+        {"weight" : 0.0003, "item" : [ "summerpants", 1]},
+        {"weight" : 0.0003, "item" : [ "tophathead", 1]},
+        {"weight" : 0.0003, "item" : [ "tricornhat", 1]},
+        {"weight" : 0.0003, "item" : [ "tvhelmethead", 1]},
+        {"weight" : 0.0003, "item" : [ "uncathat", 1]},
+        {"weight" : 0.0003, "item" : [ "ushankahead", 1]},
+        {"weight" : 0.0003, "item" : [ "valkyriehelm", 1]},
+        {"weight" : 0.0003, "item" : [ "venetianmaskhead", 1]},
+        {"weight" : 0.0003, "item" : [ "visorhead", 1]},
+        {"weight" : 0.0003, "item" : [ "winterscarfhead", 1]},
+        {"weight" : 0.0003, "item" : [ "luchadorhead", 1]},
+        {"weight" : 0.0003, "item" : [ "carrothathead", 1]},
+        {"weight" : 0.0003, "item" : [ "thinkingcaphead", 1]},
+        {"weight" : 0.0003, "item" : [ "boxmanhathead", 1]},
+        {"weight" : 0.0003, "item" : [ "scalpionhead", 1]},
+        {"weight" : 0.0003, "item" : [ "corobocklehead", 1]},
+        {"weight" : 0.0003, "item" : [ "faceleechhead", 1]},
+        {"weight" : 0.0003, "item" : [ "pinkeyeparasitehead", 1]},
+        {"weight" : 0.0003, "item" : [ "batterypackAAback", 1]},
+        {"weight" : 0.0003, "item" : [ "paperwingsback", 1]},
+        {"weight" : 0.0003, "item" : [ "tribalfeathersback", 1]},
+        {"weight" : 0.0003, "item" : [ "berethead", 1]},
+        {"weight" : 0.0003, "item" : [ "bevhead", 1]},
+        {"weight" : 0.0003, "item" : [ "sombrerohead", 1]},
+        {"weight" : 0.0003, "item" : [ "wighead", 1]},
+        {"weight" : 0.0003, "item" : [ "gasmaskhead", 1]},
+        {"weight" : 0.0003, "item" : [ "ironavianhelmethead", 1]},
+        {"weight" : 0.0003, "item" : [ "fedorahead", 1]},
+        {"weight" : 0.0001, "item" : [ "doghathead", 1]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //          Rare Furniture
+  // ================================
+
+  "elduurarefurniture" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.03, "item" : [ "wavebed", 1]},
+        {"weight" : 0.03, "item" : [ "wavechair", 1]},
+        {"weight" : 0.03, "item" : [ "wavedoor", 1]},
+        {"weight" : 0.03, "item" : [ "wavelight", 1]},
+        {"weight" : 0.03, "item" : [ "waveswitch", 1]},
+        {"weight" : 0.03, "item" : [ "wavetable", 1]},
+        {"weight" : 0.03, "item" : [ "doombed", 1]},
+        {"weight" : 0.03, "item" : [ "doomchair", 1]},
+        {"weight" : 0.03, "item" : [ "doomdoor", 1]},
+        {"weight" : 0.03, "item" : [ "doomlight", 1]},
+        {"weight" : 0.03, "item" : [ "doomswitch", 1]},
+        {"weight" : 0.03, "item" : [ "doomtable", 1]},
+        {"weight" : 0.03, "item" : [ "geometricbed", 1]},
+        {"weight" : 0.03, "item" : [ "geometricchair", 1]},
+        {"weight" : 0.03, "item" : [ "geometricdoor", 1]},
+        {"weight" : 0.03, "item" : [ "geometriclight", 1]},
+        {"weight" : 0.03, "item" : [ "geometricswitch", 1]},
+        {"weight" : 0.03, "item" : [ "geometrictable", 1]},
+        {"weight" : 0.03, "item" : [ "opulentbed", 1]},
+        {"weight" : 0.03, "item" : [ "opulentchair", 1]},
+        {"weight" : 0.03, "item" : [ "opulentdoor", 1]},
+        {"weight" : 0.03, "item" : [ "opulentlight", 1]},
+        {"weight" : 0.03, "item" : [ "opulentswitch", 1]},
+        {"weight" : 0.03, "item" : [ "opulenttable", 1]},
+        {"weight" : 0.03, "item" : [ "serenebed", 1]},
+        {"weight" : 0.03, "item" : [ "serenechair", 1]},
+        {"weight" : 0.03, "item" : [ "serenedoor", 1]},
+        {"weight" : 0.03, "item" : [ "serenelight", 1]},
+        {"weight" : 0.03, "item" : [ "sereneswitch", 1]},
+        {"weight" : 0.03, "item" : [ "serenetable", 1]},
+        {"weight" : 0.03, "item" : [ "executivebed", 1]},
+        {"weight" : 0.03, "item" : [ "executivechair", 1]},
+        {"weight" : 0.03, "item" : [ "executivedoor", 1]},
+        {"weight" : 0.03, "item" : [ "executivelight", 1]},
+        {"weight" : 0.03, "item" : [ "executiveswitch", 1]},
+        {"weight" : 0.03, "item" : [ "executivetable", 1]},
+        {"weight" : 0.03, "item" : [ "carbed", 1]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //           Instruments
+  // ================================
+
+  "elduuinstrument" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.0007, "item" : [ "accordion", 1]},
+        {"weight" : 0.0008, "item" : [ "acousticguitar", 1]},
+        {"weight" : 0.0007, "item" : [ "banjo", 1]},
+        {"weight" : 0.0007, "item" : [ "bassguitar", 1]},
+        {"weight" : 0.0008, "item" : [ "brightpiano", 1]},
+        {"weight" : 0.0008, "item" : [ "bones", 1]},
+        {"weight" : 0.0007, "item" : [ "clarinet", 1]},
+        {"weight" : 0.0007, "item" : [ "drumkit", 1]},
+        {"weight" : 0.0007, "item" : [ "dulcimer", 1]},
+        {"weight" : 0.0007, "item" : [ "electricbass", 1]},
+        {"weight" : 0.0007, "item" : [ "flute", 1]},
+        {"weight" : 0.0008, "item" : [ "harmonica", 1]},
+        {"weight" : 0.0007, "item" : [ "harp", 1]},
+        {"weight" : 0.0007, "item" : [ "koto", 1]},
+        {"weight" : 0.0007, "item" : [ "leadguitar", 1]},
+        {"weight" : 0.0007, "item" : [ "microphone", 1]},
+        {"weight" : 0.0007, "item" : [ "microphonefem", 1]},
+        {"weight" : 0.0007, "item" : [ "musicbox", 1]},
+        {"weight" : 0.0008, "item" : [ "nylonguitar", 1]},
+        {"weight" : 0.0007, "item" : [ "oboe", 1]},
+        {"weight" : 0.0007, "item" : [ "ocarina", 1]},
+        {"weight" : 0.0007, "item" : [ "overdriveguitar", 1]},
+        {"weight" : 0.0008, "item" : [ "piano", 1]},
+        {"weight" : 0.0007, "item" : [ "reedorgan", 1]},
+        {"weight" : 0.0007, "item" : [ "rockorgan", 1]},
+        {"weight" : 0.0007, "item" : [ "saxophone", 1]},
+        {"weight" : 0.0007, "item" : [ "steeldrum", 1]},
+        {"weight" : 0.0008, "item" : [ "trumpet", 1]},
+        {"weight" : 0.0008, "item" : [ "violin", 1]},
+        {"weight" : 0.0001, "item" : [ "jukebox", 1]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //          Geode Rewards
+  // ================================
+
+  "elduugeodeRewards" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.3, "item" : "cobblestonematerial"},
+        {"weight" : 0.05, "item" : "copperore"},
+        {"weight" : 0.05, "item" : "goldore"},
+        {"weight" : 0.05, "item" : "silverore"},
+        {"weight" : 0.05, "item" : "ironore"},
+        {"weight" : 0.0025, "item" : "ironsample"},
+        {"weight" : 0.0025, "item" : "coppersample"},
+        {"weight" : 0.0025, "item" : "tungstensample"},
+        {"weight" : 0.0025, "item" : "titaniumsample"},
+        {"weight" : 0.0025, "item" : "durasteelsample"},
+        {"weight" : 0.0025, "item" : "diamondsample"},
+        {"weight" : 0.0025, "item" : "feroziumsample"},
+        {"weight" : 0.0025, "item" : "aegisaltsample"},
+        {"weight" : 0.0025, "item" : "violiumsample"},
+        {"weight" : 0.0025, "item" : "solariumsample"},
+        {"weight" : 0.0025, "item" : "prisilitesample"},
+        {"weight" : 0.0025, "item" : "corefragmentsample"},
+        {"weight" : 0.0025, "item" : "silversample"},
+        {"weight" : 0.0025, "item" : "goldsample"},
+        {"weight" : 0.0025, "item" : "coalsample"},
+        {"weight" : 0.0025, "item" : "erchiuscrystalsample"},
+        {"weight" : 0.1, "item" : "geodebluesample"},
+        {"weight" : 0.1, "item" : "geodegreensample"},
+        {"weight" : 0.1, "item" : "geodeorangesample"},
+        {"weight" : 0.1, "item" : "geodepurplesample"},
+        {"weight" : 0.1, "item" : "geoderedsample"},
+        {"weight" : 0.1, "item" : "geodeyellowsample"}
+
+      ]
+    }]
+  ],
+
+  // ================================
+  //          Tech Chests
+  // ================================
+
+  "elduutechChestTreasure" : [
+    [0, {
+      "fill" : [
+        {"pool" : "valuableTechTreasure"}
+      ],
+      "poolRounds" : [
+        [0.4, 1],
+        [0.4, 2],
+        [0.2, 3]
+      ],
+      "pool" : [
+        {"weight" : 1.0, "pool" : "techTreasure"}
+      ]
+    }]
+  ],
+
+  "elduutechTreasure" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.20, "item" : "siliconboard"},
+        {"weight" : 0.10, "item" : ["smallbattery", 1]},
+        {"weight" : 0.10, "item" : ["smallbattery", 2]},
+        {"weight" : 0.10, "item" : ["smallbattery", 3]},
+        {"weight" : 0.10, "item" : ["wire", 1]},
+        {"weight" : 0.10, "item" : ["wire", 3]},
+        {"weight" : 0.10, "item" : ["wire", 5]}
+      ]
+    }]
+  ],
+
+  "elduuvaluableTechTreasure" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.3, "item" : ["techcard", 2]},
+        {"weight" : 0.3, "item" : ["techcard", 3]},
+        {"weight" : 0.4, "item" : "teleportercore"}
+      ]
+    }]
+  ],
+
+  // ================================
+  //      Challenge Room Chests
+  // ================================
+
+  "elduucrystal" : [
+    [0, {
+      "poolRounds" : [[0.6, 1], [0.3, 2], [0.1, 3]],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "nhydri", 2]},
+        {"weight" : 0.1, "item" : [ "feya", 3]},
+        {"weight" : 0.1, "item" : [ "emera", 2]},
+		{"weight" : 0.1, "item" : [ "opul", 1]},
+        {"weight" : 0.6, "item" : [ "oceanite", 6]}
+      ]
+    }]
+  ],
+
+  // ================================
+  //     End Game Treasure
+  // ================================
+
+  "elduuendTreasure" : [
+    [0, {
+      "fill" : [
+        {"item" : ["money", 25000]},
+        {"item" : "finalpostcard-codex" },
+        {"pool" : "valuableTreasure"},
+        {"pool" : "valuableTreasure"},
+        {"pool" : "valuableTreasure"},
+        {"pool" : "valuableTreasure"}
+      ]
+    }]
+  ]
+}

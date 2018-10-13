@@ -31,7 +31,7 @@ function init()
 	self.madnessTotal = config.getParameter("madnessTotal",0)
 
 	checkEffectValid()
-	insanityDarkImmune=effect.setStatModifierGroup({})
+	insanityDarkImmune=effect.addStatModifierGroup({})
 	script.setUpdateDelta(5)
 end
 
@@ -287,7 +287,6 @@ function update(dt)
 		end
 			self.biomeTimer = self.baseRate
 		end
-
 
 		if status.isResource("food") and self.timerRadioMessage2 < 1 then
 			if (self.hungerLevel < 5) then

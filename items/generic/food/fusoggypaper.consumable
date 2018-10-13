@@ -1,0 +1,25 @@
+{
+  "itemName" : "fusoggypaper",
+  "rarity" : "Common",
+  "price" : 20,
+  "category" : "preparedFood",
+  "inventoryIcon" : "fusoggypaper.png",
+  "description" : "For some reason, I feel inclined to eat this.",
+  "shortdescription" : "Edible Soggy Paper",
+  
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 125
+    }
+  ] ],
+  "foodValue" : 3,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 100,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 5.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

@@ -9,11 +9,10 @@ weaponBonus={
 armorBonus={
 	{stat = "shadowImmunity", amount = 1},
 	{stat = "gasImmunity", amount = 1},
-	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "radiationburnImmunity", amount = 1},
-	{stat = "breathAmount", effectiveMuliplier = 250}
+	{stat = "breathAmount", baseMultiplier = 250}
 }
 
 

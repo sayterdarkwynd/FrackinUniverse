@@ -5,6 +5,8 @@ function init()
 	storage.linkRange=config.getParameter("kheAA_linkRange",16)
 	storage.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
 	storage.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
+	
+	object.setConfigParameter('description',"^red;Output1:^reset; Partial Fill^red;Output2:^reset; Complete Fill")
 end
 
 function update(dt)

@@ -32,7 +32,7 @@
       "hostileActions" : [
 	    {
           "name" : "action-fire",
-          "cooldown" : 8.0,
+          "cooldown" : 6.0,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 60,
@@ -40,10 +40,10 @@
             "windupState" : "fire2",
             "windupTime" : 1,
 	    "projectileInterval" : 0,
-            "projectileCount" : 2,
+            "projectileCount" : 1,
 	    "inaccuracy" : 0.1,
             "projectileType" : "webspitfrank",
-            "power" : 10,
+            "power" : 12,
             "fireOffset" : [0, 0],
             "aimAtTarget" : true,
             "fireState" : "fire",
@@ -63,7 +63,7 @@
             "windupState" : "",
             "windupTime" : 1,
 	    "projectileInterval" : 0,
-            "projectileCount" : 3,
+            "projectileCount" : 2,
 	    "inaccuracy" : 0.3,
             "projectileType" : "pusvomit",
             "power" : 9,
@@ -72,13 +72,12 @@
             "fireState" : "fire",
             "fireDelay" : 0.2,
             "fireSound" : "fire",
-			"projectileParameters" : {
-			  "statusEffects" : [ "webstick" ],
-			  "speed" : 40,
-			  "animationCycle" : 1,
-			  "timeToLive" : 1
-			},
-			
+		"projectileParameters" : {
+		  "statusEffects" : [ "webstick", "weakpoison" ],
+		  "speed" : 40,
+		  "animationCycle" : 1,
+		  "timeToLive" : 1
+		},	
             "projectileSpeed": 40,
             "gravityMultiplier": 0.6,
 	    "fireArc" : true,
@@ -100,8 +99,8 @@
 	    "inaccuracy" : 3,
             "projectileType" : "tilesprayer",
 	    "projectileParameters" : {
-	    "speed" : 15
-	},
+	      "speed" : 15
+	    },
             "fireOffset" : [0, 0],
             "aimAtTarget" : false,
             "fireState" : "",
@@ -110,8 +109,12 @@
             "winddownState" : "",
             "winddownTime" : 0
           }
-        }		],
+        }		
+        
+      ],
+        
       "periodicActions" : [ ],
+      
       "approachActions" : [
         {
           "name" : "approach-fly",
@@ -137,15 +140,119 @@
           }
         }
       ],
-       "concurrentHostileActions" : [ 
-	   { 
-	   "name" : "action-aim-head" 
-	   } ],
-       "concurrentActions" : [ 
-	   { 
-	   "name" : "action-aim-head"
-	   } ],
-      "deathActions" : [ {
+      "concurrentHostileActions" : [ 
+	{
+	"name":"action-spawncompanions", 
+	"parameters":{
+	  "spawnCooldown":0.5, 
+	  "monsterType":"bighairyfrankbaby", 
+	  "maxCount":15, 
+	  "monsterParameters":{ "level":[3] }
+	  }
+	},    
+       { "name" : "action-aim-head" } 
+       
+       ],
+       
+      "concurrentActions" : [ 
+	{
+	"name":"action-spawncompanions", 
+	"parameters":{
+	  "spawnCooldown":0.5, 
+	  "monsterType":"bighairyfrankbaby", 
+	  "maxCount":15, 
+	  "monsterParameters":{ "level":[3] }
+	  }
+	},      
+        { "name" : "action-aim-head"} 
+      ],
+      
+      "deathActions" : [ 
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },        
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },        
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },
+        {
+          "name" : "action-spawnmonster",
+          "parameters" : {
+            "offset" : [-0.5,0],
+            "monsterType" : "bighairyfrankbaby"
+          }
+        },      
+        {
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 10,
@@ -160,17 +267,18 @@
             "aimDirection" : [0, 1],
             "fireOffset" : [0, 0]
           }
-        } ]
+        } 
+      ]
     },
 
     "touchDamage" : {
       "poly" : [ [3, 1.5], [3, -1.5], [0.5, -2.5], [-2.5, -1.5], [-2.5, 1.5], [0.5, 2.5] ],
-      "damage" : 24,
+      "damage" : 27,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "weakpoison" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -223,7 +331,7 @@
           "baseValue" : 600
         },
         "protection" : {
-          "baseValue" : 25.0
+          "baseValue" : 50.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -232,10 +340,10 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.11
+          "baseValue" : 0.15
         },
         "fireResistance" : {
-          "baseValue" : -0.25
+          "baseValue" : -0.15
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
