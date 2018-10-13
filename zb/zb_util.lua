@@ -5,7 +5,7 @@
 --		Functions:
 --	# marks optional parameters
 
---	math.clamp(number, number, number) : Clams the first number to the given range
+--	math.clamp(number, number, number) : Clamps the first number to the given range
 --		number	- Input number
 --		number	- Minimum range (Will not be below this)
 --		number	- Maximum range (Will not be above this)
@@ -26,19 +26,31 @@
 --		number	- A number between 0 and 1 (gets clamped)
 
 --	zbutil.RGBToHex(number) : Turns a number between 0 and 255 into hex (0 = 00, 255 = FF)
---		number	- A number between 0 and 255 (gets clamped)
+--		number	- A number between 0 and 255
 
--- zbutil.RollDice(integer, integer, integer) : Returns a value of a simulated dice roll. (Ever wanted to use a simple 2d4 somewhere before?)
+--	zbutil.HexToRGB(hex) : Turns a hex into a number between 0 and 255 (00 = 0, FF = 255)
+--		hex		- A hex string between 00 and FF
+
+--	zbutil.RollDice(integer, integer, integer) : Returns a value of a simulated dice roll. (Ever wanted to use a simple 2d4 somewhere before?)
 --		integer	- Amount of rolled dice
 --		integer	- Dice sides
---	#	integer - Static modifier that is added to the final value
+--	#	integer - Static modifier added to the final value
 
--- zbutil.mergeTable(table, table) : Merges tables. Unlike vanilla 'util.mergeTable', merges arrays (aka 'ipairs' table) instead of overriding them
+--	zbutil.MergeTable(table, table) : Merges tables. Unlike vanilla 'util.MergeTable', merges arrays (aka 'ipairs' table) instead of overriding them
 --		table	- Table to merge into
 --		table	- Table to merge from
 
--- zbutil.isArray(table) : Returns true if the table is an array (aka 'ipairs' table)
---		table	- Amount of rolled dice
+--	zbutil.IsArray(table) : Returns true if the table is an array ('ipairs' table)
+--		table	- Table you'd like to check
+
+--	zbutil.positionWhithinBounds(table[2], table[2], table[2]) : Returns true if the first passed table is inside the box created by the second and third tables
+--		table[2] - Position you're checking
+--		table[2] - Position of the boxes lower left corner
+--		table[2] - Position of the boxes upper right corner
+
+--	zbutil.positionWhithinBox(table[2], table[4]) : Returns true if the first passed table is inside the passed box
+--		table[2] - Position you're checking
+--		table[4] - Box coordinates
 
 -- Preventing potential overrides
 zbutil = zbutil or {}
@@ -100,132 +112,50 @@ function zbutil._DeepPrintTableHelper(toPrint, level)
 	return "\n"..str
 end
 
--- Hex code char-number values 
-cb = {}
-cb[70] = 15	-- F
-cb[69] = 14	-- E
-cb[68] = 13	-- D
-cb[67] = 12	-- C
-cb[66] = 11	-- B
-cb[65] = 10	-- A
-cb[57] = 9	-- 9
-cb[56] = 8	-- 8
-cb[55] = 7	-- 7
-cb[54] = 6	-- 6
-cb[53] = 5	-- 5
-cb[52] = 4	-- 4
-cb[51] = 3	-- 3
-cb[50] = 2	-- 2
-cb[49] = 1	-- 1
-cb[48] = 0	-- 0
-
-function zbutil.FadeHex(hex, fade, amount, target)
-	hex = string.upper(hex)
-	amount = math.ceil(amount)
-	fade = string.lower(fade)
+function zbutil.RGBToHex(num)
+	num = math.clamp(math.floor(num + 0.5), 0, 255)
 	
-	if target then target = string.upper(target) end
-	if hex == target then return hex end
-	
-	if fade == "out" then
-		local tens = cb[string.byte(string.sub(hex, 1, 1))]
-		local units = cb[string.byte(string.sub(hex, 2, 2))]
-		units = units - amount
-		
-		while units < 0 do
-			units = units + 15
-			tens = tens - 1
-			
-			if target then
-				local tTens = cb[string.byte(string.sub(target, 1, 1))]
-				local tUnits = cb[string.byte(string.sub(target, 2, 2))]
-				
-				if tens <= tTens then
-					return target
-				end
-			elseif tens < 0 then
-				tens = 0
-				units = 0
-				break
-			end
-		end
-		
-		for i, j in pairs(cb) do
-			if units == j then
-				units = i
-			end
-			
-			if tens == j then
-				tens = i
-			end
-		end
-		
-		return string.char(tens)..string.char(units)
-		
-	elseif fade == "in" then
-		local tens = cb[string.byte(string.sub(hex, 1, 1))]
-		local units = cb[string.byte(string.sub(hex, 2, 2))]
-		units = units + amount
-		
-		while units > 15 do
-			units = units - 15
-			tens = tens + 1
-			
-			if target then
-				local tTens = cb[string.byte(string.sub(target, 1, 1))]
-				local tUnits = cb[string.byte(string.sub(target, 2, 2))]
-				
-				if tens >= tTens then
-					return target
-				end
-			elseif tens > 15 then
-				tens = 15
-				units = 15
-				break
-			end
-		end
-		
-		for i, j in pairs(cb) do
-			if units == j then
-				units = i
-			end
-			
-			if tens == j then
-				tens = i
-			end
-		end
-		
-		return string.char(tens)..string.char(units)
-	end
+	local hexidecimal = "0123456789ABCDEF"
+	local units = num%16+1
+	local tens = math.floor(num/16)+1
+	return string.sub(hexidecimal, tens, tens)..string.sub(hexidecimal, units, units)
 end
 
-function zbutil.valToHex(num)
+function zbutil.ValToHex(num)
 	return zbutil.RGBToHex(255 * math.clamp(num, 0, 1))
 end
 
-function zbutil.RGBToHex(num)
-	num = math.floor(num + 0.5)
-	num = math.clamp(num, 0, 255)
-	
-	local hex = ""
-	local units = num % 16
-	local tens = (num - units) / 16
-	
-	for char, val in pairs(cb) do
-		if val == tens then
-			hex = hex..string.char(char)
-			break
-		end
+function zbutil.HexToRGB(hex)
+	hex = string.upper(hex)
+	if string.len(hex) == 1 then
+		hex = "0"..hex
+	elseif string.len(hex) == 0 then
+		return 0
 	end
 	
-	for char, val in pairs(cb) do
-		if val == units then
-			hex = hex..string.char(char)
-			break
-		end
+	local hexidecimal = "0123456789ABCDEF"
+	local tens = string.find(hexidecimal, string.sub(hex,1,1))
+	local units = string.find(hexidecimal, string.sub(hex,2,2))
+	return (tonumber(tens)-1)*16 + (tonumber(units)-1)
+end
+
+function zbutil.FadeHex(hex, fade, amount, target)
+	if target then target = zbutil.HexToRGB(hex) end
+	amount = math.floor(amount+0.5)
+	fade = string.lower(fade)
+	
+	local rgbValue = zbutil.HexToRGB(hex)
+	
+	if fade == "out" then
+		rgbValue = math.max(target or 0, rgbValue - amount)
+	elseif fade == "in" then
+		rgbValue = math.min(target or 255, rgbValue + amount)
+	else
+		sb.logError("[ZB] ERROR - 'zbutil.FadeHex' 2nd arguement not 'in' or 'out'")
+		return "00"
 	end
 	
-	return hex
+	return zbutil.RGBToHex(rgbValue)
 end
 
 function zbutil.RollDice(dice, sides, mod)
@@ -238,12 +168,12 @@ function zbutil.RollDice(dice, sides, mod)
 	return sum
 end
 
-function zbutil.mergeTable(t1, t2)
-	if zbutil.isArray(t2) then
+function zbutil.MergeTable(t1, t2)
+	if zbutil.IsArray(t2) then
 		for _, v in ipairs(t2) do
 			table.insert(t1, v)
 		end
-	elseif zbutil.isArray(t1) then
+	elseif zbutil.IsArray(t1) then
 		local length = #t2
 		for _, v in ipairs(t2) do
 			table.insert(t1, v)
@@ -252,7 +182,7 @@ function zbutil.mergeTable(t1, t2)
 		for k, v in pairs(t2) do
 			if type(k) ~= "number" or k > length then
 				if type(v) == "table" and type(t1[k]) == "table" then
-					zbutil.mergeTable(t1[k] or {}, v)
+					zbutil.MergeTable(t1[k] or {}, v)
 				else
 					t1[k] = v
 				end
@@ -261,7 +191,7 @@ function zbutil.mergeTable(t1, t2)
 	else
 		for k, v in pairs(t2) do
 			if type(v) == "table" and type(t1[k]) == "table" then
-				zbutil.mergeTable(t1[k] or {}, v)
+				zbutil.MergeTable(t1[k] or {}, v)
 			else
 				t1[k] = v
 			end
@@ -270,7 +200,7 @@ function zbutil.mergeTable(t1, t2)
 	return t1
 end
 
-function zbutil.isArray(tbl)
+function zbutil.IsArray(tbl)
 	if type(tbl) == "table" then
 		local length = #tbl
 		for i, _ in pairs(tbl) do
@@ -281,4 +211,12 @@ function zbutil.isArray(tbl)
 		return true
 	end
 	return false
+end
+
+function zbutil.positionWhithinBounds(target, startPoint, endPoint)
+	return (target[1] >= startPoint[1] and target[1] <= endPoint[1] and target[2] >= startPoint[2] and target[2] <= endPoint[2])
+end
+
+function zbutil.positionWhithinBox(target, box)
+	return (target[1] >= box[1] and target[1] <= box[3] and target[2] >= box[2] and target[2] <= box[4])
 end
