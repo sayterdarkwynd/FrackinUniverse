@@ -17,12 +17,12 @@
   "hylotlDescription" : "A great door for a defensive structure.",
   "novakidDescription" : "Tough to get past, like the bugs themselves.",
   "mantiziDescription" : "Not enough locks.",
-
+  
   "inventoryIcon" : "imperialdooricon.png",
   "orientations" : [
     {
-      "dualImage" : "imperialdoor.png:default",
-      "imagePosition" : [-16, 0],
+      "image" : "imperialdoor.png:default",
+      "imagePosition" : [-20, 0],
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom", "top" ]
@@ -35,8 +35,8 @@
   "animation" : "/objects/wired/door/door.animation",
   "animationCustom" : {
     "sounds" : {
-      "open" : [ "/sfx/objects/woodendoor_open.ogg" ],
-      "close" : [ "/sfx/objects/woodendoor_close.ogg" ]
+      "open" : [ "/sfx/objects/wooddoor_open.ogg" ],
+      "close" : [ "/sfx/objects/wooddoor_close.ogg" ]
     }
   },
   "animationParts" : {
@@ -44,6 +44,6 @@
   },
   "animationPosition" : [-16, 0],
 
-  "inboundNodes" : [ [0, 4] ],
-  "outboundNodes" : [ [0, 0] ]
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
 }

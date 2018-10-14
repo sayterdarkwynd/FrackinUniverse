@@ -17,11 +17,9 @@ function init()
 	for _, file in ipairs(musicList["##files##"]) do
 		local temp = root.assetJson(file)
 		if temp then
-			musicList = zbutil.mergeTable(musicList, temp)
+			musicList = zbutil.MergeTable(musicList, temp)
 		end
 	end
-	
-	zbutil.PrintTable(musicList)
 	
 	populateMusicList()
 end
