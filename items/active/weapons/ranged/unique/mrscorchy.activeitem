@@ -1,51 +1,62 @@
 {
-  "itemName" : "bushmaster",
-  "price" : 160,
-  "inventoryIcon" : "bushmaster.png",
+  "itemName" : "mrscorchy",
+  "price" : 8160,
+  "inventoryIcon" : "mrscorchy.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A sturdy, reliable grenade launcher.
-^green;Explosive^reset;",
-  "shortdescription" : "Bushmaster",
+  "rarity" : "legendary",
+  "description" : "Avoid indoor use.
+^green;Caution: Lava^reset;",
+  "shortdescription" : "Mr.Scorchy",
   "category" : "grenadeLauncher",
-  "level" : 2,
-  "tooltipKind" : "gun2",
+  "level" : 5,
+  "tooltipKind" : "gununique",
   "weaponType" : "Grenade Launcher",
-  "itemTags" : ["weapon","ranged","grenadelauncher","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","grenadelauncher","blister", "upgradeableWeapon"],
   "twoHanded" : false,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "bushmaster.png",
+    "middle" : "mrscorchy.png",
+    "middlefullbright" : "mrscorchyfullbright.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
-  "animationCustom" : {  
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [1.6, 0.1]
+		  }
+		}
+      }
+    },   
     "sounds" : {
-      "fire" : [  "/sfx/gun/grenade1.ogg", "/sfx/gun/grenade2.ogg" ]
+      "fire" : [ "/sfx/gun/grenade1.ogg", "/sfx/gun/grenade2.ogg" ]
     }
   },
-
+  
+  
   "baseOffset" : [1.6, 0.1],
-  "muzzleOffset" : [1.645, 0.7],
+  "muzzleOffset" : [1.2, 0.7],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "fire",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1.2,
-    "baseDps" : 6.25,
+    "baseDps" : 3.25,
     "energyUsage" : 24.0,
     "inaccuracy" : 0.0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "grenade",
+    "projectileType" : "mrscorchy",
     "projectileParameters" : { 
       "knockback" : 40
     },
