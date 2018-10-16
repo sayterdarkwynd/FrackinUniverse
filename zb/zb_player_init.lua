@@ -29,6 +29,9 @@ function init()
 		player.startQuest("zb_scaninteraction")
 	end
 	
+	-- require "/zb/zb_util.lua"
+	-- zbutil.DeepPrintTable(player)
+	
 	sb.logInfo("")
 end
 
@@ -66,8 +69,10 @@ function updateInfoWindow()
 	end
 end
 
--- function uninit()
-	-- origUninit()
-	-- if zbUninited then return end
-	-- zbUninited = true
--- end
+function uninit()
+	origUninit()
+	if zbUninited then return end
+	zbUninited = true
+	
+	world.sendEntityMessage(player.id(), "stopAltMusic", 2.0)
+end
