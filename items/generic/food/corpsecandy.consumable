@@ -1,0 +1,23 @@
+{
+  "itemName" : "corpsecandy",
+  "rarity" : "rare",
+  "price" : 35,
+  "category" : "preparedFood",
+  "inventoryIcon" : "corpsecandy.png",
+  "description" : "Dried and sweetened...um...corpses. Delicious.",
+  "shortdescription" : "Corpse Candy",
+  "effects" : [ [
+    {
+        "effect" : "maxhealthscalingboostfood",
+        "duration" : 60,
+	"healthModifier" : 1.12
+    }
+  ] ],
+  "foodValue" : 2,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.5,
+  "blockingEffects" : ["wellfed"]
+}
