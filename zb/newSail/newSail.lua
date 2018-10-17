@@ -854,10 +854,16 @@ function retrieveCustomData()
 			for i = 1, 3 do
 				local chipItem = data["aiDataItemSlot"..i]
 				if chipItem then
-					local descriptor = root.itemConfig(chipItem.name).config
-					if descriptor and descriptor.category == "A.I. Chip" then
-						widget.setItemSlotItem("aiDataItemSlot"..i, chipItem.name)
-						customData = util.MergeTable(customData, util.MergeTable(descriptor, chipItem.parameters).aiData)
+					local descriptor = root.itemConfig(chipItem.name)
+					if descriptor then 
+						descriptor = descriptor.config
+						if descriptor.category == "A.I. Chip" then
+							widget.setItemSlotItem("aiDataItemSlot"..i, chipItem.name)
+							customData = util.mergeTable(customData, util.mergeTable(descriptor, chipItem.parameters).aiData)
+						end
+					else
+						-- Remove the chip if it no longer exists
+						world.sendEntityMessage(pane.sourceEntity(), 'storeData', "aiDataItemSlot"..i, nil)
 					end
 				end
 			end
