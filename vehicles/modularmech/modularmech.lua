@@ -493,9 +493,9 @@ function update(dt)
 		  
 		  while dist >= 0 do
         if (newControls.down and not self.fallThroughSustain) or (
-          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {-2.5, dist})) or
-          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {0, dist})) or
-          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {2.5, dist}))
+          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {-2.5, 5})) or  	-- Y value used to be "dist"
+          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {0, 5})) or 		-- Y value used to be "dist"
+          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {2.5, 5}))  		-- Y value used to be "dist"
           ) then
           self.crouchOn = true
           self.crouchTarget = 1.0 - dist / self.crouchCheckMax

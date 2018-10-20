@@ -1,0 +1,25 @@
+{
+  "itemName" : "horkulsausage",
+  "rarity" : "rare",
+  "price" : 255,
+  "category" : "preparedFood",
+  "inventoryIcon" : "horkulsausage.png",
+  "description" : "A rare meat with potent nutrients.",
+  "shortdescription" : "Horkulbeast Sausage",
+  "effects" : [ [
+    {
+        "effect" : "maxhealthscalingboostfood",
+        "duration" : 125,
+	"healthModifier" : 1.15
+    }
+  ] ],
+  "foodValue" : 22,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.5,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

@@ -1487,6 +1487,46 @@
             }
         }, {
             "op": "add",
+            "path": "/fumechdepleteduranium",
+            "value": {
+                "stats": {
+                    "power": 3,
+                    "energy": 4,
+                    "mechMass": 2
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [6.4, 0.6],
+                    "extendTime": 1,
+                    "fireTime": 0.2,
+                    "projectileType": "radiationguardianpellet",
+                    "projectileCount": 1,
+                    "projectileInaccuracy": 0.01,
+                    "projectileParameters": {
+                        "power": 2,
+                        "damageSourceKind" : "radioactive",
+                        "piercing" : true,
+                        "fullbright" : true
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/fu_dumecharm.png",
+                    "<armName>Fullbright": "arm/fu_dumecharmfullbright.png"
+                },
+   		"defaultPrimaryColors" : ["8da6b0", "657988", "434d5e", "313247"],
+    		"defaultSecondaryColors" : ["fbdf71", "d9b035", "a26f03", "664601"],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/weapons/densiniumrifle.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
             "path": "/fumechdensinium",
             "value": {
                 "stats": {
@@ -1547,20 +1587,20 @@
                     "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
                     "armClass": "GatlingArm",
                     "rotationLimits": [-1.75, 1.75],
-                    "fireOffset": [4.2, 0],
+                    "fireOffset": [5.65, 0],
                     "extendTime": 1,
-                    "windupTime" : 0.4,
-                    "fireTime": 0.13,
+                    "windupTime" : 0.15,
+                    "fireTime": 0.15,
                     "projectileType": "gausspistolshotmech",
                     "projectileCount": 1,
                     "projectileInaccuracy": 0.04,
                     "projectileParameters": {
-                        "power": 3.5
+                        "power": 1.7
                     }
                 },
                 "partImages": {
-                    "<armName>": "arm/gatling.png",
-                    "<armName>Fullbright": "arm/gatling_fullbright.png"
+                    "<armName>": "arm/fugaussarm.png",
+                    "<armName>Fullbright": "arm/fugaussarm_fullbright.png"
                 },
                 "defaultPrimaryColors": [
                     "c36a5f",
@@ -4239,6 +4279,69 @@
 	      }
 	    }
 	  }
+	},
+	{"op":"add","path":"/sinshotgun2","value":
+	  {
+	    "stats" : {
+	      "power" : 6,
+	      "energy" : 8,
+	      "multicount" : 10,
+	      "mechMass" : 8
+	    },
+	    "partParameters" : {
+	      "script" : "/vehicles/modularmech/armscripts/gatlingarm.lua",
+	      "armClass" : "GatlingArm",
+
+	      "rotationLimits" : [-1.75, 1.75],
+	      "fireOffset" : [6.5, -0.3],
+
+	      "windupTime" : 0.4,
+	      "fireTime" : 1.4,
+
+	      "projectileType" : "gausspistolshot",
+	      "projectileParameters" : {
+		"power" : 35,
+		"knockback" : 15
+	      },
+
+	      "projectileCount" : 15,
+	      "projectileSpacing" : [0, 0.1],
+
+	      "projectileInaccuracy" : 0.12
+	    },
+	    "partImages" : {
+	      "<armName>" : "arm/sinshotgun2.png",
+	      "<armName>Fullbright" : "arm/sinshotgun2_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["c36a5f", "994c49", "6f3130", "551d28"],
+	    "defaultSecondaryColors" : ["e6e6e6", "b6b6b6", "7b7b7b", "373737"],
+	    "animationCustom" : {
+	      "animatedParts" : { "stateTypes" : { "<armName>" : {
+		"states" : {
+		  "windup" : {
+		    "properties" : {
+		      "persistentSound" : "/sfx/gun/mech_gatling_windup.ogg",
+		      "persistentSoundRangeMultiplier" : 1.0,
+		      "persistentSoundStopTime" : 0.2
+		    }
+		  },
+		  "active" : {
+		    "cycle" : 1
+		  },
+		  "winddown" : {
+		    "properties" : {
+		      "persistentSound" : "/sfx/gun/mech_gatling_winddown.ogg",
+		      "persistentSoundRangeMultiplier" : 1.0,
+		      "persistentSoundStopTime" : 0.2
+		    }
+		  }
+		}
+	      }}},
+	      "sounds" : {
+		"<armName>Fire" : ["/sfx/weapons/megablast1.ogg"]
+	      }
+	    }
+	  }
 	}	
 
     ],
@@ -4967,20 +5070,7 @@
             "value": 6
         },{
             "op": "replace",
-            "path": "/ranger/stats/power",
-            "value": 15
-        }
-    ],
-    [{
-            "op": "test",
-            "path": "/crows"
-        },{
-            "op": "add",
-            "path": "/crows/stats/mechMass",
-            "value": 6
-        },{
-            "op": "replace",
-            "path": "/ranger/stats/power",
+            "path": "/crows/stats/power",
             "value": 15
         }
     ],
@@ -4994,16 +5084,412 @@
             "value": 7
         },{
             "op": "replace",
-            "path": "/powerhammer/stats/power",
+            "path": "/cloudspear/stats/power",
             "value": 6
         },{
             "op": "replace",
-            "path": "/powerhammer/stats/energy",
+            "path": "/cloudspear/stats/energy",
             "value": 6
         },{
             "op": "replace",
-            "path": "/powerhammer/partParameters/projectileParameters/power",
+            "path": "/cloudspear/partParameters/projectileParameters/power",
             "value": 31
         }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/rebel_heavyflak"
+        },{
+            "op": "add",
+            "path": "/rebel_heavyflak/stats/mechMass",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/rebel_heavyflak/stats/power",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/rebel_heavyflak/stats/energy",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/rebel_heavyflak/partParameters/projectileParameters/power",
+            "value": 10
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/rebel_oldmachinegun"
+        },{
+            "op": "add",
+            "path": "/rebel_oldmachinegun/stats/mechMass",
+            "value": 3
+        },{
+            "op": "replace",
+            "path": "/rebel_oldmachinegun/stats/power",
+            "value": 3
+        },{
+            "op": "replace",
+            "path": "/rebel_oldmachinegun/stats/energy",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/rebel_oldmachinegun/partParameters/projectileParameters/power",
+            "value": 2.0
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_crackerdrill"
+        },{
+            "op": "add",
+            "path": "/ue_crackerdrill/stats/mechMass",
+            "value": 3
+        },{
+            "op": "replace",
+            "path": "/ue_crackerdrill/stats/power",
+            "value": 1
+        },{
+            "op": "replace",
+            "path": "/ue_crackerdrill/stats/energy",
+            "value": 4
+        },{
+            "op": "replace",
+            "path": "/ue_crackerdrill/damageSources/<armName>Drill/damage",
+            "value": 12
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_mk49launcher"
+        },{
+            "op": "add",
+            "path": "/ue_mk49launcher/stats/mechMass",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/ue_mk49launcher/stats/power",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/ue_mk49launcher/stats/energy",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_mk49launcher/partParameters/projectileParameters/power",
+            "value": 12
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_shermantankcannon"
+        },{
+            "op": "add",
+            "path": "/ue_shermantankcannon/stats/mechMass",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/ue_shermantankcannon/stats/power",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/ue_shermantankcannon/stats/energy",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/ue_shermantankcannon/partParameters/projectileParameters/power",
+            "value": 50
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_molotovskymg"
+        },
+        {
+            "op": "add",
+            "path": "/ue_molotovskymg/stats/mechMass",
+            "value": 6
+        },{
+            "op": "add",
+            "path": "/ue_molotovskymg/stats/rapidFire",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/ue_molotovskymg/stats/power",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/ue_molotovskymg/stats/energy",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/ue_molotovskymg/partParameters/projectileParameters/power",
+            "value": 15
+        }
+    ],
+
+    [{
+            "op": "test",
+            "path": "/ue_mechdecoydronelauncher"
+        },{
+            "op": "add",
+            "path": "/ue_mechdecoydronelauncher/stats/mechMass",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/ue_mechdecoydronelauncher/stats/power",
+            "value": 4
+        },{
+            "op": "replace",
+            "path": "/ue_mechdecoydronelauncher/stats/energy",
+            "value": 4
+        },{
+            "op": "replace",
+            "path": "/ue_mechdecoydronelauncher/partParameters/droneParameters/targetRange",
+            "value": 60
+        },{
+            "op": "replace",
+            "path": "/ue_mechdecoydronelauncher/partParameters/droneParameters/statusSettings/stats/flatMaxHealth/baseValue",
+            "value": 120
+        },{
+            "op": "replace",
+            "path": "/ue_mechdecoydronelauncher/partParameters/droneParameters/gun/projectileParameters/power",
+            "value": 35
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_multimissiledronelauncher"
+        },{
+            "op": "add",
+            "path": "/ue_multimissiledronelauncher/stats/mechMass",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/ue_multimissiledronelauncher/stats/power",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/ue_multimissiledronelauncher/stats/energy",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_multimissiledronelauncher/partParameters/droneParameters/targetRange",
+            "value": 60
+        },{
+            "op": "replace",
+            "path": "/ue_multimissiledronelauncher/partParameters/droneParameters/statusSettings/stats/flatMaxHealth/baseValue",
+            "value": 450
+        },{
+            "op": "replace",
+            "path": "/ue_multimissiledronelauncher/partParameters/droneParameters/gun/projectileParameters/power",
+            "value": 60
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_katrushkya"
+        },{
+            "op": "add",
+            "path": "/ue_katrushkya/stats/mechMass",
+            "value": 8
+        },{
+            "op": "add",
+            "path": "/ue_katrushkya/stats/multicount",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/ue_katrushkya/stats/power",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/ue_katrushkya/stats/energy",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_katrushkya/partParameters/projectileParameters/power",
+            "value": 35
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_seekingmissile"
+        },{
+            "op": "add",
+            "path": "/ue_seekingmissile/stats/mechMass",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/ue_seekingmissile/stats/power",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_seekingmissile/stats/energy",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_seekingmissile/partParameters/projectileParameters/power",
+            "value": 80
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_xmg2418"
+        },{
+            "op": "add",
+            "path": "/ue_xmg2418/stats/rapidFire",
+            "value": 30
+        },{
+            "op": "add",
+            "path": "/ue_xmg2418/stats/mechMass",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/ue_xmg2418/stats/power",
+            "value": 9
+        },{
+            "op": "replace",
+            "path": "/ue_xmg2418/stats/energy",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_xmg2418/partParameters/projectileParameters/power",
+            "value": 0.5
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_xmg2418mk2"
+        },{
+            "op": "add",
+            "path": "/ue_xmg2418mk2/stats/rapidFire",
+            "value": 12
+        },{
+            "op": "add",
+            "path": "/ue_xmg2418mk2/stats/mechMass",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/ue_xmg2418mk2/stats/power",
+            "value": 4
+        },{
+            "op": "replace",
+            "path": "/ue_xmg2418mk2/stats/energy",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/ue_xmg2418mk2/partParameters/projectileParameters/power",
+            "value": 3
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_antixenomulticannon"
+        },{
+            "op": "add",
+            "path": "/ue_antixenomulticannon/stats/rapidFire",
+            "value": 12
+        },{
+            "op": "add",
+            "path": "/ue_antixenomulticannon/stats/mechMass",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/ue_antixenomulticannon/stats/power",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/ue_antixenomulticannon/stats/energy",
+            "value": 9
+        },{
+            "op": "replace",
+            "path": "/ue_antixenomulticannon/partParameters/projectileParameters/power",
+            "value": 4
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_50caliber"
+        },{
+            "op": "add",
+            "path": "/ue_50caliber/stats/rapidFire",
+            "value": 3
+        },{
+            "op": "add",
+            "path": "/ue_50caliber/stats/mechMass",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/ue_50caliber/stats/power",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/ue_50caliber/stats/energy",
+            "value": 3
+        },{
+            "op": "replace",
+            "path": "/ue_50caliber/partParameters/projectileParameters/power",
+            "value": 2.4
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_torpedotube"
+        },{
+            "op": "add",
+            "path": "/ue_torpedotube/stats/mechMass",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_torpedotube/stats/power",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_torpedotube/stats/energy",
+            "value": 10
+        },{
+            "op": "replace",
+            "path": "/ue_torpedotube/partParameters/projectileParameters/power",
+            "value": 500
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/ue_armsmg"
+        },{
+            "op": "add",
+            "path": "/ue_armsmg/stats/mechMass",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/ue_armsmg/stats/power",
+            "value": 6
+        },{
+            "op": "replace",
+            "path": "/ue_armsmg/stats/energy",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/ue_armsmg/partParameters/projectileParameters/power",
+            "value": 9
+        }
     ]
+    
+    
+             
 ]

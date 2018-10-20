@@ -34,7 +34,7 @@
       "hostileActions" : [ 
         {
           "name" : "action-swoop",
-          "cooldown" : 1.0,
+          "cooldown" : 2.0,
           "parameters" : {
             "skillName":"flyingSwoopApproach",
             "minimumRange" : 0,
@@ -42,9 +42,9 @@
             "onGround" : false,
             "windupTime" : 0.25,
             "windupState" : "firewindup",
-            "windupStopForce" : 30,
-            "gravityMultiplier" : -0.7,
-            "swoopVelocity" : 25,
+            "windupStopForce" : 50,
+            "gravityMultiplier" : -0.2,
+            "swoopVelocity" : 35,
             "collisionCheck" : true,
             "highArc" : false,
             "swoopstate" : "idle",
@@ -52,7 +52,7 @@
 
             "winddownTime" : 0.1,
             "winddownState" : "fly",
-            "winddownStopForce" : 20
+            "winddownStopForce" : 50
           }
         }        
       ],
@@ -65,9 +65,7 @@
             "projectileCount" : 6,
             "skillName":"glitterBurst",
             "projectileType" : "watersprinkledroplet",
-            "projectileParameters" : {
-             "speed" :8
-            },
+            "projectileParameters" : { "speed" :25 },
             "aimAtTarget" : "true",
             "inaccuracy" : 3.14,
             "fireOffset" : [0, 0],
@@ -113,8 +111,8 @@
             "wanderTime" : [10,40],
             "groundDistance" : 20,
             "ceilingDistance" : 10,
-            "xVelocity" : 8,
-            "yVelocity" : 12
+            "xVelocity" : 10,
+            "yVelocity" : 16
           }
         },
         {
@@ -122,8 +120,8 @@
           "cooldown" : 2,
           "parameters" : {
             "landDirection" : [0, -1],
-            "flySpeed" : 8,
-            "flyControlForce" : 25,
+            "flySpeed" : 10,
+            "flyControlForce" : 45,
             "landCheckDistance" : 40,
             "idleTime" : [10,40],
             "landState" : "idle"
@@ -131,14 +129,12 @@
         }        
       ],
 
-      "concurrentActions" : [
-      
-      ],
+      "concurrentActions" : [ ],
 
       "concurrentHostileActions" : [
         {
           "name" : "action-projectile",
-          "cooldown" : 1.5,
+          "cooldown" : 4,
           "parameters" : {
             "skillName":"glitterBurst",
             "projectileCount" : 1,
@@ -147,12 +143,13 @@
              "speed" :0,
              "damageTeam" : {"type":"enemy"},
              "damageType" : "damage",
-             "damageKind" : "ice"
+             "damageKind" : "ice",
+             "timeToLive" : 2
             },
             "aimAtTarget" : "true",
             "inaccuracy" : 0,
             "fireOffset" : [0, 0],
-            "power" : 3
+            "power" : 4
           }
         } 
        ]
@@ -164,8 +161,8 @@
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
-      "knockback" : 20,
-      "statusEffects" : [ "frostsnare" ]
+      "knockback" : 15,
+      "statusEffects" : [ ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],

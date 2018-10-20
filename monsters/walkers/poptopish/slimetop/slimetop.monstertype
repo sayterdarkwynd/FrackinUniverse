@@ -33,43 +33,18 @@
       "hostileActions" : [
         {
           "name" : "action-charge",
-          "cooldown" : 3,
+          "cooldown" : 1.5,
           "parameters" : {
-            "maximumRange" : 5,
+            "maximumRange" : 30,
             "windupTime" : 0.4,
-
             "aimAtTarget" : false,
             "aimDirection" : [1, 0.5],
             "chargeTime" : [0.3, 0.3],
-            "chargeSpeed" : 25,
-            "chargeControlForce" : 200,
+            "chargeSpeed" : 24,
+            "chargeControlForce" : 300,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
-
             "winddownTime" : 0.5
-          }
-        },      
-        {
-          "name" : "action-fire",
-		   "cooldown" : 2,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 16,
-            "minimumRange" : 1,
-            "windupState" : "chargewindup",
-            "windupTime" : 0.4,
-
-            "projectileType" : "slimestormblob",
-            "power" : 6,
-            "fireOffset" : [0, 0],
-            "aimAtTarget" : true,
-            "projectileCount" : 1,
-            "projectileInterval" : 0.01,
-            "fireSound" : "fire",
-            "range": 16,
-            "fireState" : "",
-            "winddownState" : "charge",
-            "winddownTime" : 0.3
           }
         }
       ],
@@ -78,11 +53,42 @@
       
       "concurrentHostileActions" : [
         {
+          "name" : "action-fire",
+	  "cooldown" : 3,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 6,
+            "minimumRange" : 1,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.5,
+
+            "projectileType" : "slimestormblob",
+            "projectileParameters" : { "timeToLive" : 2},
+            "power" : 6,
+            "fireOffset" : [0, 0],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0.01,
+            "fireSound" : "fire",
+            "fireState" : "",
+            "winddownState" : "charge",
+            "winddownTime" : 0.3
+          }
+        },      
+        {
           "name" : "action-statuseffect", 
           "cooldown" : 5,
           "parameters" : {
           "effect" : "swimboost2",
           "duration" : 500
+          }
+        },       
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "slimefriction",
+          "duration" : 20
           }
         }       
       ],
@@ -90,7 +96,20 @@
       "approachActions" : [
         {
           "name" : "approach-walk",
-          "cooldown" :  2,
+          "cooldown" :  3,
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "moveState" : "run",
+            "jumpXVelocity" : 42,
+            "jumpYVelocity" : 45,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        },      
+        {
+          "name" : "approach-walk",
           "parameters" : {
             "canJump" : true,
             "maxJumps" : 8,
@@ -99,13 +118,7 @@
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
             "minXRange" : 10,
-            "run" : true
-          }
-        },      
-        {
-          "name" : "approach-crawl",
-          "parameters" : {
-            "run" : true
+            "run" : false
           }
         }
       ],
@@ -117,7 +130,17 @@
           }
         },
         {
-          "name" : "approach-crawl"
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 8,
+            "moveState" : "run",
+            "jumpXVelocity" : 12,
+            "jumpYVelocity" : 30,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
         }
       ],
 
@@ -129,14 +152,13 @@
             "moveState" : "stroll",
             "wanderTime" : [5, 20]
           }
-        },      
+        },
         {
-          "name" : "wander-crawl",
-          "cooldown" : [3,6],
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
           "parameters" : {
-            "wanderTime" : [2,4],
-            "idleTime" : [3,6],
-            "stopForce" : 200
+            "moveState" : "walk",
+            "wanderTime" : [5, 5]
           }
         }
       ]
@@ -144,7 +166,7 @@
 
     "touchDamage" : {
       "poly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.55],  [-0.8125, -1.55], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
-      "damage" : 14,
+      "damage" : 12,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
@@ -216,6 +238,7 @@
         "physicalResistance" : {
           "baseValue" : 0.3
         },
+        "fallDamageMultiplier" : { "baseValue" : 0.0 },
         "fireResistance" : {
           "baseValue" : -0.5
         },
@@ -246,9 +269,7 @@
 	"slimestickImmunity" : {
           "baseValue" : 1
         },
-	"slimefrictionImmunity" : {
-          "baseValue" : 1
-        },        
+       
 	"slimeImmunity" : {
           "baseValue" : 1
         }         

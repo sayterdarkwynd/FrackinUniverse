@@ -17,6 +17,10 @@
        {"weight" : 0.037, "item" : "randombook13-codex"},
        {"weight" : 0.037, "item" : "randombook14-codex"},
        {"weight" : 0.037, "item" : "dark1-codex"},
+       {"weight" : 0.037, "item" : "mantizi1-codex"},
+       {"weight" : 0.037, "item" : "mantizi2-codex"},
+       {"weight" : 0.037, "item" : "mantizi3-codex"},
+       {"weight" : 0.037, "item" : "mantizi4-codex"},       
        {"weight" : 0.037, "item" : "radien1-codex"},
        {"weight" : 0.037, "item" : "radien2-codex"},
        {"weight" : 0.037, "item" : "radien3-codex"},
@@ -91,6 +95,8 @@
   "deadBodies" : [
    [0, {
      "pool" : [
+       {"weight" : 0.05, "item" : "wrappedbody"},
+       {"weight" : 0.01, "item" : "wrappedbodyputrid"},  
        {"weight" : 0.34, "item" : "rawribmeat"},
        {"weight" : 0.25, "item" : "leather"},
        {"weight" : 0.25, "item" : "bone"},
@@ -105,6 +111,9 @@
  "woodShed" : [
      [0, {
        "pool" : [
+         {"weight" : 0.05, "item" : "wrappedbody"},
+         {"weight" : 0.01, "item" : "wrappedbodyputrid"},
+         {"weight" : 0.005, "item" : "wrappedbodyalien"},
          {"weight" : 0.34, "item" : ["darkwoodmaterial", 20]},
          {"weight" : 0.25, "item" : ["logblock", 20]},
          {"weight" : 0.25, "item" : ["fullwood1", 15]},
@@ -189,7 +198,29 @@
     }]
   ],
 
+  "fuMadnessVoxelSmall" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1, "item" : ["fumadnessresource", 500]}
+      ]
+    }]
+  ],
+  "fuMadnessVoxel" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1, "item" : ["fumadnessresource", 1000]}
+      ]
+    }]
+  ],
 
+  "fuMadnessVoxelLarge" : [
+    [0, {
+      "pool" : [
+        {"weight" : 1, "item" : ["fumadnessresource", 5000]}
+      ]
+    }]
+  ],
+  
   "fuResearchVoxelSmall" : [
     [0, {
       "pool" : [
@@ -233,7 +264,20 @@
     }]
   ],
 
-
+  "poGolemLoot" : [
+    [0, {
+      "fill" : [
+        {"item" : [ "poop", 25]}
+      ],    
+      "pool" : [
+        {"weight" : 0.2, "item" : ["feces", 12]},
+        {"weight" : 0.1, "item" : ["poop", 25]},
+        {"weight" : 0.4, "pool" : "money"},
+        {"weight" : 0.3, "pool" : "basicTreasure"}
+      ]
+    }]
+  ],
+  
   "fuEssence" : [
     [0, {
       "pool" : [
@@ -273,12 +317,33 @@
     }]
   ],
 
+  "carbonRock" : [
+    [0, {
+      "pool" : [     
+        {"weight" : 0.4, "item" : ["fu_carbon", 2]},
+        {"weight" : 0.3, "item" : ["fu_carbon", 3]},
+        {"weight" : 0.2, "item" : ["fu_carbon", 4]},
+        {"weight" : 0.1, "item" : ["fu_carbon", 6]},
+        {"weight" : 0.05, "item" : ["fu_carbon", 8]}
+      ]
+    }]
+  ],
+  "carbonRockSmall" : [
+    [0, {
+      "pool" : [     
+        {"weight" : 0.7, "item" : ["fu_carbon", 1]},
+        {"weight" : 0.2, "item" : ["fu_carbon", 3]},
+        {"weight" : 0.1, "item" : ["fu_carbon", 5]}
+      ]
+    }]
+  ],
+  
   "fuRareOre" : [
     [0, {
-      "pool" : [
+      "pool" : [     
         {"weight" : 0.05, "item" : ["isogenbar", 1]},
         {"weight" : 0.06, "item" : ["pyreitebar", 1]},
-        {"weight" : 0.005, "item" : ["aetheriumbar", 1]},
+        {"weight" : 0.005, "item" : ["aetheriumalloy", 1]},
         {"weight" : 0.04, "item" : ["tritaniumbar", 1]},
         {"weight" : 0.02, "item" : ["nocxiumore", 1]},
         {"weight" : 0.005, "item" : ["nocxiumbar", 1]},
@@ -440,6 +505,7 @@
         {"weight" : 0.008, "item" : [ "protostim", 1]},
         {"weight" : 0.008, "item" : [ "serumstim", 1]},
         {"weight" : 0.005, "item" : [ "gravstim", 1]},
+        {"weight" : 0.005, "item" : [ "killpod", 1]},
         {"weight" : 0.03, "item" : [ "portaljuice", 1]},
         {"weight" : 0.04, "item" : [ "crunchychick", 1]},
         {"weight" : 0.02, "item" : [ "crunchychickdeluxe", 1]},
@@ -491,21 +557,29 @@
     }]
   ],
 
+
+
+  
+  
   "artifactloot" : [
     [0, {
       "pool" : [
-        {"weight" : 0.3, "item" : "artifact1"},
+        {"weight" : 0.2, "item" : "artifact1"},
         {"weight" : 0.1, "item" : "artifact2"},
         {"weight" : 0.2, "item" : "artifact3"},
         {"weight" : 0.1, "item" : "artifact4"},
         {"weight" : 0.15, "item" : "artifact5"},
         {"weight" : 0.008, "item" : "ancientlongsword-recipe"},
+        {"weight" : 0.008, "item" : "ancientquarterstaff-recipe"},
         {"weight" : 0.008, "item" : "ancientcarbine-recipe"},
         {"weight" : 0.008, "item" : "ancientrapier-recipe"},
         {"weight" : 0.008, "item" : "ancientbroadsword-recipe"},
         {"weight" : 0.008, "item" : "ancientscythe-recipe"},
         {"weight" : 0.008, "item" : "flailancient-recipe"},
-        {"weight" : 0.008, "item" : "ancientspear-recipe"}
+        {"weight" : 0.008, "item" : "ancientspear-recipe"},
+        {"weight" : 0.06, "item" : "wrappedbody"},
+        {"weight" : 0.03, "item" : "wrappedbodyputrid"},
+        {"weight" : 0.01, "item" : "wrappedbodyalien"}        
       ]
     }]
   ],
@@ -684,6 +758,7 @@
         {"weight" : 0.08, "item" : "quantumball"},
         {"weight" : 0.08, "item" : "bluegravball"},
         {"weight" : 0.08, "item" : "orangegravball"},
+        {"weight" : 0.04, "item"  : [ "mantizanwine", 1]},
         {"weight" : 0.04, "item"  : [ "duncecap", 1]},
         {"weight" : 0.01, "item" : [ "labroof-recipe", 1]},
         {"weight" : 0.01, "item" : [ "labtile-recipe", 1]},
@@ -731,28 +806,10 @@
     }],
     [1.9, {
       "pool" : [
-        {"weight" : 0.08, "item" : "quantumball"},
-        {"weight" : 0.08, "item" : "bluegravball"},
-        {"weight" : 0.08, "item" : "orangegravball"},
+        {"weight" : 0.08, "pool" : "fuGravBalls"},
+        {"weight" : 0.05, "pool" : "fuLabParts"},
+        {"weight" : 0.003, "pool" : "fuGuardianWings"},
         {"weight" : 0.04, "item"  : [ "duncecap", 1]},
-        {"weight" : 0.01, "item" : [ "labroof-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labtile-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall1-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labbeam-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labsupport-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwallfence-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labframedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "hitechmetalblock-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "fureinforcedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labgirdir-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "yellowguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "blueguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "pinkguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "greenguardianback-recipe", 1]},
-        {"weight" : 0.03, "item" : [ "ff_labchest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff3-recipe", 1]},
         {"weight" : 0.009, "item" : [ "ff_gasmask", 1]},
@@ -784,28 +841,10 @@
     }],
     [2.9, {
       "pool" : [
-        {"weight" : 0.08, "item" : "quantumball"},
-        {"weight" : 0.08, "item" : "bluegravball"},
-        {"weight" : 0.08, "item" : "orangegravball"},
+        {"weight" : 0.08, "pool" : "fuGravBalls"},
+        {"weight" : 0.05, "pool" : "fuLabParts"},
+        {"weight" : 0.003, "pool" : "fuGuardianWings"},
         {"weight" : 0.04, "item"  : [ "duncecap", 1]},
-        {"weight" : 0.01, "item" : [ "labroof-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labtile-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall1-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labbeam-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labsupport-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwallfence-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labframedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "hitechmetalblock-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "fureinforcedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labgirdir-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "yellowguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "blueguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "pinkguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "greenguardianback-recipe", 1]},
-        {"weight" : 0.03, "item" : [ "ff_labchest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff3-recipe", 1]},
         {"weight" : 0.009, "item" : [ "ff_gasmask", 1]},
@@ -818,7 +857,7 @@
         {"weight" : 0.04, "item" : [ "fumementomori", 1]},
         {"weight" : 0.03, "item" : [ "headinjar", 1]},
         {"weight" : 0.01, "item" : [ "gyrostabilizer", 1]},
-	{"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
+	{"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},	
         {"weight" : 0.004, "item" : [ "herocowl", 1]},
         {"weight" : 0.0035, "item" : [ "seekerhelm", 1]},
         {"weight" : 0.008, "item" : [ "kungfuheadband", 1]},
@@ -840,57 +879,37 @@
         {"weight" : 0.004, "item" : [ "fufireangelwings", 1]},
         {"weight" : 0.004, "item" : ["bmcglowscoutvisor-recipe", 1]},
         {"weight" : 0.003, "item" : "randomharpoongun"},
-                {"weight" : 0.1, "pool" : "fucodexRandom" },
+        {"weight" : 0.1, "pool" : "fucodexRandom" },
         {"weight" : 0.001, "item" : "flailcookie"},
         {"weight" : 0.001, "item" : "flailtrollfist"}
       ]
     }],
     [3.9, {
       "pool" : [
-        {"weight" : 0.08, "item" : "quantumball"},
-        {"weight" : 0.08, "item" : "bluegravball"},
-        {"weight" : 0.08, "item" : "orangegravball"},
+        {"weight" : 0.08, "pool" : "fuGravBalls"},
+        {"weight" : 0.05, "pool" : "fuLabParts"},
+        {"weight" : 0.003, "pool" : "fuGuardianWings"},
         {"weight" : 0.01, "pool" : "arconLoot"},
-        {"weight" : 0.004, "item" : "deathbringer"},
-        {"weight" : 0.004, "item" : "deathbringer-recipe"},
-        {"weight" : 0.004, "item" : "shadowburst"},
-        {"weight" : 0.004, "item" : "shadowburst-recipe"},
-        {"weight" : 0.04, "item"  : [ "duncecap", 1]},
+        {"weight" : 0.02, "item" : "deathbringer-recipe"},
+        {"weight" : 0.02, "item" : "shadowburst-recipe"},
+        {"weight" : 0.07, "item"  : [ "duncecap", 1]},
         {"weight" : 0.01, "item"  : [ "freedombird", 1]},
         {"weight" : 0.01, "item" : ["gumballgun", 1]},
-        {"weight" : 0.01, "item" : [ "labroof-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labtile-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall1-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labbeam-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labsupport-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwallfence-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labframedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "hitechmetalblock-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "fureinforcedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labgirdir-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "yellowguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "blueguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "pinkguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "greenguardianback-recipe", 1]},
-        {"weight" : 0.03, "item" : [ "ff_labchest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest2-recipe", 1]},
-        {"weight" : 0.001, "item" :  [ "cultiststaff2-recipe", 1]},
-        {"weight" : 0.001, "item" :  [ "cultiststaff3-recipe", 1]},
-        {"weight" : 0.009, "item" : [ "ff_gasmask", 1]},
-        {"weight" : 0.009, "item" : [ "ff_divingmaskhead", 1]},
-        {"weight" : 0.009, "item" : [ "armoredsnowpants", 1]},
-        {"weight" : 0.025, "item" : [ "fuearphones-recipe", 1]},
-        {"weight" : 0.005, "item" : [ "fuhoodedmask-recipe", 1]},
+        {"weight" : 0.003, "item" :  [ "cultiststaff2-recipe", 1]},
+        {"weight" : 0.003, "item" :  [ "cultiststaff3-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "ff_gasmask", 1]},
+        {"weight" : 0.05, "item" : [ "ff_divingmaskhead", 1]},
+        {"weight" : 0.05, "item" : [ "armoredsnowpants", 1]},
+        {"weight" : 0.05, "item" : [ "fuearphones-recipe", 1]},
+        {"weight" : 0.03, "item" : [ "fuhoodedmask-recipe", 1]},
         {"weight" : 0.04, "item" : [ "fumementomori", 1]},
-        {"weight" : 0.03, "item" : [ "headinjar", 1]},
+        {"weight" : 0.07, "item" : [ "headinjar", 1]},
         {"weight" : 0.01, "item" : [ "gyrostabilizer", 1]},
 	{"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
-        {"weight" : 0.004, "item" : [ "herocowl", 1]},
-        {"weight" : 0.0035, "item" : [ "seekerhelm", 1]},
-        {"weight" : 0.008, "item" : [ "kungfuheadband", 1]},
-        {"weight" : 0.035, "item"  : [ "jokeglasses", 1]},
+        {"weight" : 0.008, "item" : [ "herocowl", 1]},
+        {"weight" : 0.008, "item" : [ "seekerhelm", 1]},
+        {"weight" : 0.03, "item" : [ "kungfuheadband", 1]},
+        {"weight" : 0.03, "item"  : [ "jokeglasses", 1]},
         {"weight" : 0.002, "item"  : [ "murdermask", 1]},
         {"weight" : 0.002, "item"  : [ "murdermachete", 1]},
         {"weight" : 0.004, "item" : [ "armcannon-recipe", 1]},
@@ -898,39 +917,33 @@
         {"weight" : 0.003, "item" : [ "verdantrailgun-recipe", 1]},
         {"weight" : 0.003, "item" : [ "druidstaff-recipe", 1]},
         {"weight" : 0.003, "item" : [ "biopistol-recipe", 1]},
-        {"weight" : 0.007, "item" : [ "laspistol", 1]},
-        {"weight" : 0.007, "item" : [ "bloodyknife", 1]},
-        {"weight" : 0.005, "item" : [ "ffwizardhat", 1]},
+        {"weight" : 0.06, "item" : [ "laspistol", 1]},
+        {"weight" : 0.009, "item" : [ "bloodyknife", 1]},
+        {"weight" : 0.03, "item" : [ "ffwizardhat", 1]},
         {"weight" : 0.004, "item" : [ "fupowerglove", 1]},
         {"weight" : 0.004, "item" : [ "fugoldengun", 1]},
         {"weight" : 0.007, "item" : [ "facebreaker", 1]},
         {"weight" : 0.004, "item" : [ "gravitonpistolunique", 1]},
-        {"weight" : 0.004, "item" : [ "fuicaruswings", 1]},
-        {"weight" : 0.004, "item" : [ "fufallenangelwings", 1]},
-        {"weight" : 0.004, "item" : [ "fufireangelwings", 1]},
-        {"weight" : 0.004, "item" : ["bmcglowscoutvisor-recipe", 1]},
-        {"weight" : 0.003, "item" : "randomharpoongun"},
-        {"weight" : 0.005, "pool" : "arconLoot"},
-        {"weight" : 0.01, "item" : [ "panishment", 1]},
-        {"weight" : 0.002, "item"  : [ "burrowerrang", 1]},
-        {"weight" : 0.004, "item" : [ "armcannon-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "verdantcarbine-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "verdantrailgun-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "druidstaff-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "biopistol-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "laspistol", 1]},
-        {"weight" : 0.007, "item" : [ "bloodyknife", 1]},
-        {"weight" : 0.01, "item" : [ "vai-recipe", 1]},
-        {"weight" : 0.02, "item" : ["teslagun2", 1]},
         {"weight" : 0.003, "item" : [ "skullreaperhelm", 1]},
         {"weight" : 0.002, "item" : [ "skullreaperhelm2", 1]},
         {"weight" : 0.001, "item" : [ "skullreaperhelm3", 1]},
         {"weight" : 0.003, "item" : [ "powerhelm", 1]},
-        {"weight" : 0.01, "item" : [ "enforcerhelm-recipe", 1]},
-    	{"weight" : 0.008, "item" : "razorneedler"},
-    	{"weight" : 0.008, "item" : "scorchneedler"},
-    	{"weight" : 0.008, "item" : "shockneedler"},
-    	{"weight" : 0.008, "item" : "toxicneedler"},
+        {"weight" : 0.01, "item" : [ "enforcerhelm-recipe", 1]},        
+        {"weight" : 0.004, "item" : [ "fuicaruswings", 1]},
+        {"weight" : 0.004, "item" : [ "fufallenangelwings", 1]},
+        {"weight" : 0.004, "item" : [ "fufireangelwings", 1]},
+        {"weight" : 0.004, "item" : ["bmcglowscoutvisor-recipe", 1]},
+        {"weight" : 0.007, "item" : "randomharpoongun"},
+        {"weight" : 0.009, "item" : [ "shovelspear", 1]},
+        {"weight" : 0.012, "item" : [ "fushovelspear", 1]},        
+        {"weight" : 0.01, "item" : [ "panishment", 1]},
+        {"weight" : 0.002, "item"  : [ "burrowerrang", 1]},
+        {"weight" : 0.01, "item" : [ "vai-recipe", 1]},
+        {"weight" : 0.02, "item" : ["teslagun2", 1]},
+    	{"weight" : 0.01, "item" : "razorneedler"},
+    	{"weight" : 0.01, "item" : "scorchneedler"},
+    	{"weight" : 0.01, "item" : "shockneedler"},
+    	{"weight" : 0.01, "item" : "toxicneedler"},
         {"weight" : 0.004, "item" : "teslagun2"},
         {"weight" : 0.008, "item"  : [ "ff_bubblegun2", 1]},
         {"weight" : 0.005, "item"  : [ "erchiusghostback2", 1]},
@@ -941,24 +954,23 @@
         {"weight" : 0.004, "item"  : [ "tethersnap2", 1]},
         {"weight" : 0.004, "item"  : [ "tethersnap3", 1]},
         {"weight" : 0.004, "item"  : [ "iceaxe2", 1]},
-        {"weight" : 0.003, "item" : "gravitonpistolunique"},
         {"weight" : 0.004, "item" : [ "classiczapper", 1]},
         {"weight" : 0.09, "item" : ["ironkatana2", 1]},
         {"weight" : 0.001, "item" : "shockarang"},
-        {"weight" : 0.1, "pool" : "fucodexRandom" },
         //removed bosses loot
         {"weight" : 0.001, "item" : "fuapexclaws"},
         {"weight" : 0.001, "item" : "stormwarden"},
         {"weight" : 0.001, "item" : "gorgolithtail"},
         {"weight" : 0.001, "item" : "flailcookie"},
-        {"weight" : 0.001, "item" : "flailtrollfist"}
+        {"weight" : 0.001, "item" : "flailtrollfist"},        
+        {"weight" : 0.1, "pool" : "fucodexRandom" }
       ]
     }],
     [4.9, {
       "pool" : [
-        {"weight" : 0.08, "item" : "quantumball"},
-        {"weight" : 0.08, "item" : "bluegravball"},
-        {"weight" : 0.08, "item" : "orangegravball"},
+        {"weight" : 0.08, "pool" : "fuGravBalls"},
+        {"weight" : 0.05, "pool" : "fuLabParts"},
+        {"weight" : 0.003, "pool" : "fuGuardianWings"},
         {"weight" : 0.01, "pool" : "arconLoot"},
         {"weight" : 0.004, "item" : "deathbringer"},
         {"weight" : 0.004, "item" : "deathbringer-recipe"},
@@ -967,24 +979,6 @@
         {"weight" : 0.04, "item"  : [ "duncecap", 1]},
         {"weight" : 0.01, "item" : ["gumballgun", 1]},
         {"weight" : 0.01, "item"  : [ "freedombird", 1]},
-        {"weight" : 0.01, "item" : [ "labroof-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labtile-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall1-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labbeam-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labsupport-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwallfence-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labframedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "hitechmetalblock-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "fureinforcedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labgirdir-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "yellowguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "blueguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "pinkguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "greenguardianback-recipe", 1]},
-        {"weight" : 0.03, "item" : [ "ff_labchest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff3-recipe", 1]},
         {"weight" : 0.009, "item" : [ "ff_gasmask", 1]},
@@ -994,6 +988,8 @@
         {"weight" : 0.005, "item" : [ "fuhoodedmask-recipe", 1]},
         {"weight" : 0.04, "item" : [ "fumementomori", 1]},
         {"weight" : 0.03, "item" : [ "headinjar", 1]},
+        {"weight" : 0.03, "item" : [ "shovelspear", 1]},
+        {"weight" : 0.03, "item" : [ "fushovelspear", 1]},        
         {"weight" : 0.01, "item" : [ "gyrostabilizer", 1]},
 	{"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
         {"weight" : 0.004, "item" : [ "herocowl", 1]},
@@ -1064,6 +1060,7 @@
         {"weight" : 0.004, "item"  : [ "iceaxe2", 1]},
         {"weight" : 0.003, "item" : "gravitonpistolunique"},
         {"weight" : 0.1, "pool" : "fucodexRandom" },
+        {"weight" : 0.003, "item" : "mrscorchy"},
         //removed bosses loot
         {"weight" : 0.001, "item" : "fuapexclaws"},
         {"weight" : 0.001, "item" : "stormwarden"},
@@ -1074,9 +1071,9 @@
     }],
     [5.9, {
       "pool" : [
-        {"weight" : 0.08, "item" : "quantumball"},
-        {"weight" : 0.08, "item" : "bluegravball"},
-        {"weight" : 0.08, "item" : "orangegravball"},
+        {"weight" : 0.08, "pool" : "fuGravBalls"},
+        {"weight" : 0.05, "pool" : "fuLabParts"},
+        {"weight" : 0.003, "pool" : "fuGuardianWings"},
         {"weight" : 0.01, "pool" : "arconLoot"},
         {"weight" : 0.01, "item" : ["gumballgun", 1]},
         {"weight" : 0.004, "item" : "deathbringer"},
@@ -1085,24 +1082,8 @@
         {"weight" : 0.004, "item" : "shadowburst-recipe"},
         {"weight" : 0.04, "item"  : [ "duncecap", 1]},
         {"weight" : 0.01, "item"  : [ "freedombird", 1]},
-        {"weight" : 0.01, "item" : [ "labroof-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labtile-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwall1-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labbeam-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labsupport-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labwallfence-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labframedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "hitechmetalblock-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "fureinforcedglass-recipe", 1]},
-        {"weight" : 0.01, "item" : [ "labgirdir-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "yellowguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "blueguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "pinkguardianback-recipe", 1]},
-        {"weight" : 0.003, "item" : [ "greenguardianback-recipe", 1]},
-        {"weight" : 0.03, "item" : [ "ff_labchest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest-recipe", 1]},
-        {"weight" : 0.04, "item" : [ "ff_stonechest2-recipe", 1]},
+        {"weight" : 0.03, "item" : [ "shovelspear", 1]},
+        {"weight" : 0.03, "item" : [ "fushovelspear", 1]},        
         {"weight" : 0.001, "item" :  [ "cultiststaff2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff3-recipe", 1]},
         {"weight" : 0.009, "item" : [ "ff_gasmask", 1]},
@@ -1169,6 +1150,7 @@
         {"weight" : 0.004, "item"  : [ "tethersnap3", 1]},
         {"weight" : 0.004, "item"  : [ "iceaxe2", 1]},
         {"weight" : 0.003, "item" : "gravitonpistolunique"},
+        {"weight" : 0.003, "item" : "cinder"},
         {"weight" : 0.09, "item" : ["ironkatana2", 1]},
         {"weight" : 0.002, "item" : [ "skullreaperhelm2", 1]},
         {"weight" : 0.004, "item" : [ "fiendefeller", 1]},
@@ -1181,6 +1163,7 @@
         {"weight" : 0.001, "item" : [ "skullreaperhelm3", 1]},
         {"weight" : 0.0005, "item" : ["atomsmasher", 1]},
         {"weight" : 0.1, "pool" : "fucodexRandom" },
+        {"weight" : 0.003, "item" : "mrscorchy"},
         //removed bosses loot
         {"weight" : 0.001, "item" : "fuapexclaws"},
         {"weight" : 0.001, "item" : "stormwarden"},
@@ -1191,6 +1174,107 @@
     }]
   ],
 
+
+    
+    
+    
+    
+  "fuGravBalls" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.33, "item" : "quantumball"},
+        {"weight" : 0.33, "item" : "bluegravball"},
+        {"weight" : 0.33, "item" : "orangegravball"}
+      ]
+    }]
+  ],    
+  
+  "fuLabParts" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.05, "item" : [ "labroof-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "labtile-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "labwall-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "labwall1-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "labbeam-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "labsupport-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "labwallfence-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "labframedglass-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "hitechmetalblock-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "fureinforcedglass-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "labgirdir-recipe", 1]}
+      ]
+    }]
+  ],
+  "fuGuardianWings" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.008, "item" : [ "yellowguardianback-recipe", 1]},
+        {"weight" : 0.008, "item" : [ "blueguardianback-recipe", 1]},
+        {"weight" : 0.008, "item" : [ "pinkguardianback-recipe", 1]},
+        {"weight" : 0.008, "item" : [ "greenguardianback-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "ff_labchest-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "ff_stonechest-recipe", 1]},
+        {"weight" : 0.05, "item" : [ "ff_stonechest2-recipe", 1]}        
+      ]
+    }]
+  ],
+  
+  "fuRareWeapons" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.003, "item" :  [ "cultiststaff2-recipe", 1]},
+        {"weight" : 0.003, "item" :  [ "cultiststaff3-recipe", 1]},      
+        {"weight" : 0.02, "item" : "deathbringer-recipe"},
+        {"weight" : 0.02, "item" : "shadowburst-recipe"},
+        {"weight" : 0.01, "item" : ["gumballgun", 1]},     
+        {"weight" : 0.09, "item" : ["ironkatana2", 1]},
+        {"weight" : 0.008, "item"  : [ "sniperknife2", 1]},
+    	{"weight" : 0.01, "item" : "razorneedler"},
+    	{"weight" : 0.01, "item" : "scorchneedler"},
+    	{"weight" : 0.01, "item" : "shockneedler"},
+    	{"weight" : 0.01, "item" : "toxicneedler"}               
+      ]
+    }]
+  ], 
+  
+  "fuSuperWeapons" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.01, "item"  : [ "freedombird", 1]},
+        {"weight" : 0.004, "item" : [ "fupowerglove", 1]},
+        {"weight" : 0.004, "item" : [ "fugoldengun", 1]},
+        {"weight" : 0.007, "item" : [ "facebreaker", 1]},
+        {"weight" : 0.004, "item" : [ "gravitonpistolunique", 1]},  
+        {"weight" : 0.007, "item" : "randomharpoongun"},
+        {"weight" : 0.009, "item" : [ "shovelspear", 1]},
+        {"weight" : 0.012, "item" : [ "fushovelspear", 1]},        
+        {"weight" : 0.01, "item" : [ "panishment", 1]},
+        {"weight" : 0.002, "item"  : [ "burrowerrang", 1]},
+        {"weight" : 0.01, "item" : [ "vai-recipe", 1]},
+        {"weight" : 0.008, "item" : ["teslagun2", 1]},
+        {"weight" : 0.008, "item"  : [ "ff_bubblegun2", 1]},
+        {"weight" : 0.005, "item"  : [ "erchiusghostback2", 1]},
+        {"weight" : 0.003, "item"  : [ "erchiusghostback3", 1]},
+        {"weight" : 0.008, "item"  : [ "randomharpoongun2", 1]},
+        {"weight" : 0.008, "item"  : [ "friendmaker2", 1]},
+        {"weight" : 0.004, "item"  : [ "tethersnap2", 1]},
+        {"weight" : 0.004, "item"  : [ "tethersnap3", 1]},
+        {"weight" : 0.004, "item"  : [ "iceaxe2", 1]},
+        {"weight" : 0.004, "item" : [ "classiczapper", 1]},
+        {"weight" : 0.001, "item" : "shockarang"},
+        {"weight" : 0.001, "item" : "fuapexclaws"},
+        {"weight" : 0.003, "item" : "mrscorchy"},
+        {"weight" : 0.001, "item" : "stormwarden"},
+        {"weight" : 0.001, "item" : "gorgolithtail"},
+        {"weight" : 0.001, "item" : "flailcookie"},
+        {"weight" : 0.003, "item" : "cinder"},
+        {"weight" : 0.01, "item" : "flailtrollfist"}                
+      ]
+    }]
+  ],
+  
+  
   "fucuteequipment" : [
     [0, {
       "pool" : [
@@ -1246,7 +1330,8 @@
         {"weight" : 0.5, "item" : "severedhandinabagaugment"},
         {"weight" : 0.5, "item" : "fubreathaugment1"},
         {"weight" : 0.5, "item" : "pushbackaugment"},
-        {"weight" : 0.5, "item" : "berserkeraugment"}
+        {"weight" : 0.5, "item" : "berserkeraugment"},
+        {"weight" : 0.2, "item" : "charmbracelet"}
       ]
     }],
     [1.9, {
@@ -1280,7 +1365,8 @@
         {"weight" : 0.2, "item" : "fubreathaugment1"},
         {"weight" : 0.2, "item" : "biooozeprotection"},
         {"weight" : 0.2, "item" : "pushbackaugment"},
-        {"weight" : 0.2, "item" : "berserkeraugment"}
+        {"weight" : 0.2, "item" : "berserkeraugment"},
+        {"weight" : 0.2, "item" : "charmbracelet"}
       ]
     }],
     [2.9, {
@@ -1325,7 +1411,8 @@
         {"weight" : 0.2, "item" : "fubreathaugment1"},
         {"weight" : 0.2, "item" : "biooozeprotection"},
         {"weight" : 0.2, "item" : "pushbackaugment"},
-        {"weight" : 0.2, "item" : "berserkeraugment"}
+        {"weight" : 0.2, "item" : "berserkeraugment"},
+        {"weight" : 0.2, "item" : "charmbracelet"}
       ]
     }],
     [3.9, {
@@ -1377,7 +1464,8 @@
         {"weight" : 0.5, "item" : "fubreathaugment1"},
         {"weight" : 0.3, "item" : "biooozeprotection"},
         {"weight" : 0.2, "item" : "pushbackaugment"},
-        {"weight" : 0.2, "item" : "berserkeraugment"}
+        {"weight" : 0.2, "item" : "berserkeraugment"},
+        {"weight" : 0.2, "item" : "charmbracelet"}
       ]
     }],
     [4.9, {
@@ -1435,7 +1523,8 @@
         {"weight" : 0.2, "item" : "biooozeprotection"},
         {"weight" : 0.2, "item" : "fushadowresistanceaugment"},
         {"weight" : 0.2, "item" : "pushbackaugment"},
-        {"weight" : 0.2, "item" : "berserkeraugment"}
+        {"weight" : 0.2, "item" : "berserkeraugment"},
+        {"weight" : 0.2, "item" : "charmbracelet"}
       ]
     }],
     [5.9, {
@@ -1492,7 +1581,8 @@
         {"weight" : 0.2, "item" : "shadowimmunity1"},
         {"weight" : 0.2, "item" : "fushadowresistanceaugment"},
         {"weight" : 0.2, "item" : "pushbackaugment"},
-        {"weight" : 0.2, "item" : "berserkeraugment"}
+        {"weight" : 0.2, "item" : "berserkeraugment"},
+        {"weight" : 0.2, "item" : "charmbracelet"}
       ]
     }]
   ]
