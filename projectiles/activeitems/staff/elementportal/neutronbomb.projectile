@@ -1,22 +1,21 @@
 {
-  "projectileName" : "gravityportal",
+  "projectileName" : "neutronbomb",
   "physics" : "laser",
   "timeToLive" : 5,
   "image" : "neutronportal.png",
   "animationCycle" : 0.35,
-  "lightColor" : [90, 60, 110],
+  "lightColor" : [255, 0, 0],
+  "damagePoly" : [ [-132, 0], [-128, 128], [128, 128], [132, 0], [128, -128], [-128, -128] ],
   "frameNumber" : 4,
   "windupFrames" : 3,
   "winddownFrames" : 3,
   "piercing" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
+  "statusEffects" : [ "radiationburn2" ],
+
+  "universalDamage" : true,
   
-  "periodicActions" : [
-    {
-	"time" : 0.3,
-	"loop" : true,    
-      "action" : "config",
-      "file" : "/projectiles/explosions/gravityblast.config"
-    },  
+  "periodicActions" : [ 
     {
       "time" : 0,
       "repeat" : false,
@@ -32,7 +31,7 @@
        {
 	"action":"projectile", 
 	"type":"redglobe", 
-	"time" : 1.0,
+	"time" : 0.5,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
@@ -40,8 +39,8 @@
 	    "speed" : 24,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
-	    "damageType":"noDamage", 
-	    "damageKind":"noDamage", 
+	    "damageType":"radioactive", 
+	    "damageTeam" : { "type" : "indiscriminate" },
 	    "knockback":0, 
 	    "bounces":-1, 
 	    "timeToLive":2.0
@@ -50,7 +49,7 @@
 	{
 	"action":"projectile", 
 	"type":"greenglobe", 
-	"time" : 1.2,
+	"time" : 0.2,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
@@ -58,8 +57,8 @@
 	    "speed" : 24,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
-	    "damageType":"noDamage", 
-	    "damageKind":"noDamage", 
+	    "damageType":"radioactive", 
+	    "damageTeam" : { "type" : "indiscriminate" },
 	    "knockback":0, 
 	    "bounces":-1, 
 	    "timeToLive":2.0
@@ -68,7 +67,7 @@
 	{
 	"action":"projectile", 
 	"type":"yellowglobe", 
-	"time" : 1.4,
+	"time" : 0.6,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
@@ -76,8 +75,8 @@
 	    "speed" : 24,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
-	    "damageType":"noDamage", 
-	    "damageKind":"noDamage", 
+	    "damageType":"radioactive", 
+	    "damageTeam" : { "type" : "indiscriminate" },
 	    "knockback":0, 
 	    "bounces":-1, 
 	    "timeToLive":2.0
@@ -86,7 +85,7 @@
 	{
 	"action":"projectile", 
 	"type":"whiteglobe", 
-	"time" : 1.6,
+	"time" : 1,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
@@ -94,8 +93,8 @@
 	    "speed" : 24,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
-	    "damageType":"noDamage", 
-	    "damageKind":"noDamage", 
+	    "damageType":"radioactive", 
+	    "damageTeam" : { "type" : "indiscriminate" },
 	    "knockback":0, 
 	    "bounces":-1, 
 	    "timeToLive":2.0
@@ -104,7 +103,7 @@
 	{
 	"action":"projectile", 
 	"type":"blueglobe", 
-	"time" : 1.8,
+	"time" : 1.2,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
@@ -112,8 +111,8 @@
 	    "speed" : 24,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
-	    "damageType":"noDamage", 
-	    "damageKind":"noDamage", 
+	    "damageType":"radioactive", 
+	    "damageTeam" : { "type" : "indiscriminate" },
 	    "knockback":0, 
 	    "bounces":-1, 
 	    "timeToLive":2.0
@@ -127,38 +126,32 @@
 	   "specification":  {
 	     "type":"animated", 
 	     "looping":true, 
-	     "animation":"/animations/spacemonsterspawn/spacemonsterspawn.animation", 
+	     "animation":"/animations/neutronexplosion/neutronexplosion.animation", 
 	     "position":[0,0], 
 	     "finalVelocity":[0,0], 
 	     "approach":[0,0], 
 	     "destructionAction":"shrink", 
 	     "destructionTime":0.4, 
 	     "fade":1, 
-	     "size":2, 
+	     "size":7, 
 	     "layer":"back", 
 	     "timeToLive":0.2
 	     }
 	 }    
   ],
-  "actionOnReap" : [  
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/elementimpact/electricimpactmute.config"
-    }
-  ],
+  "actionOnReap" : [ ],
+  
   "speed" : 0,
   "power" : 0,
-  "damagePoly" : [],
 
   "fullbright" : true,
   "emitters" : [],
 
   "renderLayer" : "Projectile-1",
 
-
   "scripts" : [ "/projectiles/activeitems/staff/elementportal/elementportal.lua" ],
 
-  "projectileType" : "gravblast2",
+  "projectileType" : "plasmabullet",
   "projectileParameters" : {},
   "spawnRate" : 0.6,
 
@@ -168,10 +161,10 @@
   "physicsForces" : {
     "vacuum" : {
       "type" : "RadialForceRegion",
-      "outerRadius" : 56,
-      "innerRadius" : 40,
-      "targetRadialVelocity" : -120,
-      "controlForce" : 1200,
+      "outerRadius" : 100,
+      "innerRadius" : 100,
+      "targetRadialVelocity" : -220,
+      "controlForce" : 2200,
       "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"]
     }
   },
