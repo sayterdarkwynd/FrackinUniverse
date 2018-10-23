@@ -139,5 +139,32 @@
   "critBonus" : 6,
   "altAbilityType" : "fudronelauncher",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  
+  
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Shatterstar^reset; ^yellow;^reset;",
+  "animationParts" : {"middle" : "mobiusrifle2.png"},
+    "inventoryIcon" : [{ "image" : "mobiusrifle2.png" }],
+	  "primaryAbility" : {
+	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+	    "class" : "GunFire",
+
+	    "fireTime" : 0.11,
+	    "baseDps" : 9.8,
+	    "energyUsage" : 27,
+	    "inaccuracy" : 0.03,
+	    "burstTime" : 0.075,
+	    "burstCount" : 3,
+	    "projectileCount" : 1,
+	    "fireType" : "burst",
+
+	    "projectileType" : "frozengravityball",
+	    "projectileParameters" : {
+	      "speed" : 60,
+	      "knockback" : 1
+	    }
+	  }
+  }
 }
