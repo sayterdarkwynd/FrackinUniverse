@@ -1,7 +1,7 @@
 {
   "projectileName" : "neutronbomb",
   "physics" : "laser",
-  "timeToLive" : 5,
+  "timeToLive" : 10,
   "image" : "neutronportal.png",
   "animationCycle" : 0.35,
   "lightColor" : [255, 0, 0],
@@ -31,73 +31,55 @@
        {
 	"action":"projectile", 
 	"type":"redglobe", 
-	"time" : 0.5,
-	"loop" : true,
-	"fuzzAngle" : 360,
-	"inheritDamageFactor":1, 
-	  "config":{
-	    "speed" : 24,
-	    "piercing":true, 
-	    "onlyHitTerrain":true, 
-	    "damageType":"radioactive", 
-	    "damageTeam" : { "type" : "indiscriminate" },
-	    "knockback":0, 
-	    "bounces":-1, 
-	    "timeToLive":2.0
-	  }
-	},		 
-	{
-	"action":"projectile", 
-	"type":"greenglobe", 
 	"time" : 0.2,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
 	  "config":{
-	    "speed" : 24,
+	    "speed" : 224,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
-	    "damageType":"radioactive", 
+	    "damageKind":"radioactive", 
 	    "damageTeam" : { "type" : "indiscriminate" },
 	    "knockback":0, 
 	    "bounces":-1, 
-	    "timeToLive":2.0
-	  }
-	},		 
-	{
-	"action":"projectile", 
-	"type":"yellowglobe", 
-	"time" : 0.6,
-	"loop" : true,
-	"fuzzAngle" : 360,
-	"inheritDamageFactor":1, 
-	  "config":{
-	    "speed" : 24,
-	    "piercing":true, 
-	    "onlyHitTerrain":true, 
-	    "damageType":"radioactive", 
-	    "damageTeam" : { "type" : "indiscriminate" },
-	    "knockback":0, 
-	    "bounces":-1, 
-	    "timeToLive":2.0
+	    "timeToLive":2.0,
+	    "actionOnReap" : [
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 20,
+		      "backgroundRadius" : 20,
+		      "explosiveDamageAmount" : 150,
+		      "delaySteps" : 0
+		    }	    
+	    ]
 	  }
 	},		 
 	{
 	"action":"projectile", 
 	"type":"whiteglobe", 
-	"time" : 1,
+	"time" : 0.4,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
 	  "config":{
-	    "speed" : 24,
+	    "speed" : 224,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
-	    "damageType":"radioactive", 
+	    "damageKind":"radioactive", 
 	    "damageTeam" : { "type" : "indiscriminate" },
 	    "knockback":0, 
 	    "bounces":-1, 
-	    "timeToLive":2.0
+	    "timeToLive":2.0,
+	    "actionOnReap" : [
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 20,
+		      "backgroundRadius" : 20,
+		      "explosiveDamageAmount" : 150,
+		      "delaySteps" : 0
+		    }	    
+	    ]
 	  }
 	},		 
 	{
@@ -108,14 +90,23 @@
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
 	  "config":{
-	    "speed" : 24,
+	    "speed" : 224,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
-	    "damageType":"radioactive", 
+	    "damageKind":"radioactive", 
 	    "damageTeam" : { "type" : "indiscriminate" },
 	    "knockback":0, 
 	    "bounces":-1, 
-	    "timeToLive":2.0
+	    "timeToLive":2.0,
+	    "actionOnReap" : [
+		    {
+		      "action" : "explosion",
+		      "foregroundRadius" : 20,
+		      "backgroundRadius" : 20,
+		      "explosiveDamageAmount" : 150,
+		      "delaySteps" : 0
+		    }	    
+	    ]
 	  }
 	},		 
 	 {
@@ -133,7 +124,7 @@
 	     "destructionAction":"shrink", 
 	     "destructionTime":0.4, 
 	     "fade":1, 
-	     "size":7, 
+	     "size":8, 
 	     "layer":"back", 
 	     "timeToLive":0.2
 	     }
