@@ -1,7 +1,7 @@
 {
   "projectileName" : "neutronbomb",
   "physics" : "laser",
-  "timeToLive" : 10,
+  "timeToLive" : 30,
   "image" : "neutronportal.png",
   "animationCycle" : 0.35,
   "lightColor" : [255, 0, 0],
@@ -31,12 +31,12 @@
        {
 	"action":"projectile", 
 	"type":"redglobe", 
-	"time" : 0.2,
+	"time" : 0.15,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
 	  "config":{
-	    "speed" : 224,
+	    "speed" : 220,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
 	    "damageKind":"radioactive", 
@@ -62,12 +62,12 @@
 	{
 	"action":"projectile", 
 	"type":"whiteglobe", 
-	"time" : 0.4,
+	"time" : 0.3,
 	"loop" : true,
 	"fuzzAngle" : 360,
 	"inheritDamageFactor":1, 
 	  "config":{
-	    "speed" : 224,
+	    "speed" : 220,
 	    "piercing":true, 
 	    "onlyHitTerrain":true, 
 	    "damageKind":"radioactive", 
@@ -89,38 +89,7 @@
 		    }	    
 	    ]
 	  }
-	},		 
-	{
-	"action":"projectile", 
-	"type":"blueglobe", 
-	"time" : 1.2,
-	"loop" : true,
-	"fuzzAngle" : 360,
-	"inheritDamageFactor":1, 
-	  "config":{
-	    "speed" : 224,
-	    "piercing":true, 
-	    "onlyHitTerrain":true, 
-	    "damageKind":"radioactive", 
-	    "damageTeam" : { "type" : "indiscriminate" },
-	    "knockback":0, 
-	    "bounces":-1, 
-	    "timeToLive":2.0,
-	    "actionOnReap" : [
-		    {
-		      "action" : "config",
-		      "file" : "/projectiles/explosions/neutron/neutronbombexp.config"
-		    },	    
-		    {
-		      "action" : "explosion",
-		      "foregroundRadius" : 20,
-		      "backgroundRadius" : 20,
-		      "explosiveDamageAmount" : 150,
-		      "delaySteps" : 0
-		    }	    
-	    ]
-	  }
-	},		 
+	},		 		 
 	 {
 	   "time" : 0.3,
 	   "loop" : true,		 
