@@ -10,7 +10,7 @@ function init()
 	
 	for _, file in ipairs(QD.questlineFiles) do
 		local temp = root.assetJson(file)
-		QD = zbutil.mergeTable(QD, temp)
+		QD = zbutil.MergeTable(QD, temp)
 	end
 	
 	QD.current = {line = nil, quest = nil}

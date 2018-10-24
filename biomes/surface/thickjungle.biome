@@ -277,10 +277,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/forsaken-grotto.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/vast-immortal-suns.ogg", "/music/drosera.ogg", "/music/mira.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/horsehead-nebula.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/ForestBattle1.ogg","/music/ultramarine.ogg","/music/forsaken-grotto.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/vast-immortal-suns.ogg", "/music/drosera.ogg", "/music/mira.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/horsehead-nebula.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg" ]
+      "tracks" : [ "/music/ForestBattle1.ogg","/music/ultramarine.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg" ]
     }
   },
 
@@ -671,8 +671,8 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "orangestem", "nyanistem", "coconutwood", "bananatreestem", "twisty", "woody", "oldwood", "crackly", "palmlike" ],
-          "treeFoliageList" : [ "orangeleaf", "nyanifoliage", "coconut", "bananatreeleaf", "lushy", "junglepalm", "jungly", "jungleleaf" ]
+          "treeStemList" : [ "cherrybloomwood", "cherrywood",  "orangestem", "nyanistem", "coconutwood", "bananatreestem", "twisty", "woody", "oldwood", "crackly", "palmlike" ],
+          "treeFoliageList" : [ "cherrygreen", "cherrybloom","orangeleaf", "nyanifoliage", "coconut", "bananatreeleaf", "lushy", "junglepalm", "jungly", "jungleleaf" ]
         },  
         
         {
@@ -709,6 +709,20 @@
     "ceilingGrassModDensity" : 0.3,
     
       "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "carbonrock" ], [0.35, "carbonrocksmall" ], [0.35, "goldrock" ], [0.35, "goldrocksmall" ], [0.35, "silverrock" ], [0.35, "silverrocksmall" ], [0.35, "copperrock" ], [0.35, "copperrocksmall" ], [0.35, "diamondrock" ], [0.35, "diamondrocksmall" ] ],
+              "parameters" : { }
+            }
+          ]
+        },       
         {
           "mode" : "ceiling",
           "priority" : 1.0,

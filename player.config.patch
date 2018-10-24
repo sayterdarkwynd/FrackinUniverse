@@ -112,10 +112,15 @@
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avalipart1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avaligun1"} },
+	{ "op": "add","path":"/defaultBlueprints/tier1/-","value": { "item" : "funeontube"}},
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_sciencefuelhatch"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_sciencetechstationhuman"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_scienceshiplocker"} },
+	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotltechstation"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotlshiplocker"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotlfuelhatch"} },
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox2"} },
@@ -137,6 +142,20 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "lobstertrap"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "pesttrap"} },
 	
+	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushlarge"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushlarge_box"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushmed"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushmed_box"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushsmall"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushsmall_box"} },
+	
+	//racial
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tenebrhaeshipdoor"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kirhosdoor2"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kirhosbed"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kirhoscouch"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kirhostable"} },
 	// crew
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract_janitor"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract"} },
@@ -290,6 +309,7 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodenkatana"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodenmace"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironkatana"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironlongsword"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironquarterstaff"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tungstenquarterstaff"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tungstenrapier"} },
@@ -699,10 +719,13 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_byoscaptainschair2deco" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_apex1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_avian1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_floran1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_glitch1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_hylotl1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_human1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_nova1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "apexshiplight"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "apexshipplatform"} },
 	
 	
 	// Custom FU player init functions
@@ -743,5 +766,16 @@
 	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "fusewerpipe" }},
 	
 	// New SAIL helper for getting player companions
-	{ "op": "add", "path": "/companionsConfig/scripts/-", "value": "/scripts/companionhandler.lua" }
+	{ "op": "add", "path": "/companionsConfig/scripts/-", "value": "/scripts/companionhandler.lua" },
+	
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"flagmantizi"}},
+	
+	{ "op" : "add"
+	,"path" : "/species/-"
+	,"value" : "elduukhar" },
+	
+	{ "op" : "add",
+	  "path" : "/defaultCodexes/elduukhar",
+	    "value" : [ "protectorate1", "protectorate2", "elduukharorigins" ]
+	}
 ]

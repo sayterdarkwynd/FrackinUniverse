@@ -204,10 +204,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/desert-exploration2.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/nomads.ogg", "/music/psyche.ogg" ]
+      "tracks" : [ "/music/ultramarine.ogg","/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/desert-exploration2.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/nomads.ogg", "/music/psyche.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/nomads.ogg", "/music/psyche.ogg", "/music/casiopeia.ogg", "/music/error-0xbfaf000.ogg", "/music/accretion-disc.ogg" ]
+      "tracks" : [ "/music/ultramarine.ogg","/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/nomads.ogg", "/music/psyche.ogg", "/music/casiopeia.ogg", "/music/error-0xbfaf000.ogg", "/music/accretion-disc.ogg" ]
     }
   },
 
@@ -412,6 +412,20 @@
       "grassModDensity" : 0.1,
 
       "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "carbonrock" ], [0.35, "carbonrocksmall" ], [0.35, "goldrock" ], [0.35, "goldrocksmall" ], [0.35, "silverrock" ], [0.35, "silverrocksmall" ], [0.35, "copperrock" ], [0.35, "copperrocksmall" ], [0.35, "diamondrock" ], [0.35, "diamondrocksmall" ] ],
+              "parameters" : { }
+            }
+          ]
+        },       
            {
              "mode" : "ceiling",
              "priority" : 1.0,

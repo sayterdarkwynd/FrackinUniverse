@@ -19,11 +19,16 @@
 --		sound		= [Optional] The sound you want to play with each typed character
 --		volume		= [Optional] The volume of the sound
 --		cutoffSound	= [Optional] Should the sound be cut-off in the middle when typing the next character?
+--	Call this whenever the text should be updated
 
 --	textTyper.skip( textData )
 --		textData	= Table that holds data required for the script to function
 --		wd			= [Optional] The widget that should have its text updated
 --	Instantly prints the entire text, skipping the typing part
+
+--	textTyper.scrambling( textData )
+--		textData	= Table that holds data required for the script to function
+--	If you've added scrambling letters, you must call this function for them to actually scramble
 
 --		Formats:
 --	Regular formats that start with ^ and end with ; are automatically compressed
@@ -35,8 +40,7 @@
 --	[(function)x]	= Call a function from the textData table, x being its location in the textData table (x = "example" , textData.example)
 
 textTyper = {}
-textTyper.allowedScrambleCharacters = {"a", "b", "d", "e", "g", "h", "n", "o", "p", "q", "s", "u", "v", "y", "z", "A", "B", "D", "G", "H", "J", "K", "N", "O", "P", "Q", "R", "S", "U", "V", "X", "Y", "0", "2", "3", "4", "5", "6", "7", "8", "9", "_", "~" }
-
+textTyper.allowedScrambleCharacters = "abdeghnopqsuvyzABDGHJKNOPQRSUVXY023456789_~"
 
 function textTyper.init(textData, str)
 	if not textData then
@@ -140,6 +144,20 @@ function textTyper.init(textData, str)
 			end
 		end
 	end
+	
+	local removedIndexes = {}
+	for i, character in ipairs(textData.toWrite) do
+		if not (#removedIndexes > 0 and removedIndexes[#removedIndexes] == i+1) then
+			if string.byte(character) > 127 then
+				textData.toWrite[i] = utf8.char(159)
+				table.insert(removedIndexes, 1, i+1)
+			end
+		end
+	end
+	
+	for _, index in ipairs(removedIndexes) do
+		table.remove(textData.toWrite, index)
+	end
 end
 
 function textTyper.splitTableString(str)
@@ -242,7 +260,7 @@ function textTyper.skip(textData, wd)
 end
 
 function textTyper.scrambling(textData)
-	if not textData or not textData.scrambingLetters then return end
+	if not textData or not textData.scrambingLetters or #textData.scrambingLetters == 0 then return end
 	
 	for _, coords in ipairs(textData.scrambingLetters) do
 		local textLength = string.len(textData.written)
@@ -260,7 +278,9 @@ function textTyper.scrambling(textData)
 		if toScramble ~= "" then
 			local replacement = ""
 			for i = 1, string.len(toScramble) do
-				replacement = replacement..textTyper.allowedScrambleCharacters[math.random(1,#textTyper.allowedScrambleCharacters)]
+				-- replacement = replacement..textTyper.allowedScrambleCharacters[math.random(1,#textTyper.allowedScrambleCharacters)]
+				local rnd = math.random(1, string.len(textTyper.allowedScrambleCharacters))
+				replacement = replacement..string.sub(textTyper.allowedScrambleCharacters, rnd, rnd)
 			end
 			
 			textData.written = preScramble..replacement..postScramble

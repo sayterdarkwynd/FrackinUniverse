@@ -171,10 +171,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/darkambient2a.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+      "tracks" : [ "/music/TentacleExploration2.ogg","/music/tentacle-exploration1.ogg","/music/a_thing.ogg","/music/darkambient2a.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/devilstritone.ogg", "/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+      "tracks" : [ "/music/TentacleExploration2.ogg","/music/tentacle-exploration1.ogg", "/music/a_thing.ogg","/music/devilstritone.ogg", "/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     }
   },
 
@@ -426,6 +426,20 @@
   "type" : "microdungeon",
   "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
 },      
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "carbonrock" ], [0.35, "carbonrocksmall" ], [0.35, "goldrock" ], [0.35, "goldrocksmall" ], [0.35, "silverrock" ], [0.35, "silverrocksmall" ], [0.35, "copperrock" ], [0.35, "copperrocksmall" ], [0.35, "diamondrock" ], [0.35, "diamondrocksmall" ] ],
+              "parameters" : { }
+            }
+          ]
+        }, 
         {
           "mode" : "floor",
           "priority" : 0.0,

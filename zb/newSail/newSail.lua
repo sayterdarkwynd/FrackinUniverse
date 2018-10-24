@@ -244,6 +244,7 @@ function updateSafe(dt)
 	else
 		charDeltaCounter = charDeltaCounter + (dt * GUI.talker.speedModifier)
 		if 1 / (customData.charactersPerSecond or GUI.talker.charactersPerSecond) <= charDeltaCounter then
+			textTyper.scrambling(cfg.TextData)
 			textTyper.update(cfg.TextData, "root.text", customData.chatterSound or cfg.TextData.sound, cfg.TextData.volume, false)
 			charDeltaCounter = 0
 		end
@@ -304,8 +305,8 @@ end
 function draw()
 	GUI.canvas:clear()
 	GUI.canvas:drawImage(GUI.talker.displayImage, {0,0})
-	GUI.canvas:drawImage(GUI.static.image..":"..GUI.static.frame, {0,0}, nil, "#FFFFFF"..zbutil.valToHex(customData.staticOpacity or GUI.static.opacity), false)
-	GUI.canvas:drawImage(GUI.scanLines.image..":"..GUI.scanLines.frame, {0,0}, nil, "#FFFFFF"..zbutil.valToHex(customData.scanlineOpacity or GUI.scanLines.opacity), false)
+	GUI.canvas:drawImage(GUI.static.image..":"..GUI.static.frame, {0,0}, nil, "#FFFFFF"..zbutil.ValToHex(customData.staticOpacity or GUI.static.opacity), false)
+	GUI.canvas:drawImage(GUI.scanLines.image..":"..GUI.scanLines.frame, {0,0}, nil, "#FFFFFF"..zbutil.ValToHex(customData.scanlineOpacity or GUI.scanLines.opacity), false)
 end
 
 function buttonMainSafe(wd)
@@ -612,9 +613,9 @@ function missionSelectedSafe()
 	if not customDataInited then return end
 	local selected = widget.getListSelected("root.missionList")
 	if selected then
-		widget.setSize("root", {144,136})
 		local listData = widget.getData("root.missionList."..selected)
 		if listData then
+			widget.setSize("root", {144,136})
 			local dat = root.assetJson(cfg.Data.missions[GUI.missionViewing][listData.index][1])
 			if dat then
 				
@@ -627,8 +628,6 @@ function missionSelectedSafe()
 				
 				if customData.missionsText and customData.missionsText[dat.missionName] and customData.missionsText[dat.missionName].selectSpeech then
 					GUI.talker.emote = customData.missionsText[dat.missionName].selectSpeech.animation or "talk"
-				else
-					GUI.talker.emote = "talk"
 				end
 				
 				widget.setText("path", "root/sail/ui/missions/"..dat.missionName)
@@ -855,10 +854,16 @@ function retrieveCustomData()
 			for i = 1, 3 do
 				local chipItem = data["aiDataItemSlot"..i]
 				if chipItem then
-					local descriptor = root.itemConfig(chipItem.name).config
-					if descriptor and descriptor.category == "A.I. Chip" then
-						widget.setItemSlotItem("aiDataItemSlot"..i, chipItem.name)
-						customData = util.mergeTable(customData, util.mergeTable(descriptor, chipItem.parameters).aiData)
+					local descriptor = root.itemConfig(chipItem.name)
+					if descriptor then 
+						descriptor = descriptor.config
+						if descriptor.category == "A.I. Chip" then
+							widget.setItemSlotItem("aiDataItemSlot"..i, chipItem.name)
+							customData = util.mergeTable(customData, util.mergeTable(descriptor, chipItem.parameters).aiData)
+						end
+					else
+						-- Remove the chip if it no longer exists
+						world.sendEntityMessage(pane.sourceEntity(), 'storeData', "aiDataItemSlot"..i, nil)
 					end
 				end
 			end

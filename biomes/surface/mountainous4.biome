@@ -515,8 +515,8 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "birch", "cocoa", "fleshy", "grumpy", "metal", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
-          "treeFoliageList" : [ "bubbles", "cloudy", "greenleaves", "leafy", "pinefoliage", "redleaves", "scraggy" ]
+          "treeStemList" : [ "cherrybloomwood", "cherrywood", "birch", "cocoa", "fleshy", "grumpy", "metal", "pine", "roottree", "slimey", "something", "spikey", "twisted", "wood", "slobby", "pineytree" ],
+          "treeFoliageList" : [ "cherrygreen", "cherrybloom", "bubbles", "cloudy", "greenleaves", "leafy", "pinefoliage", "redleaves", "scraggy" ]
         },
         {
           "mode" : "floor",
@@ -583,6 +583,20 @@
   "type" : "microdungeon",
   "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
   },       
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "carbonrock" ], [0.35, "carbonrocksmall" ], [0.35, "goldrock" ], [0.35, "goldrocksmall" ], [0.35, "silverrock" ], [0.35, "silverrocksmall" ], [0.35, "copperrock" ], [0.35, "copperrocksmall" ], [0.35, "diamondrock" ], [0.35, "diamondrocksmall" ] ],
+              "parameters" : { }
+            }
+          ]
+        },    
         {
           "mode" : "floor",
           "priority" : 0.0,
