@@ -37,7 +37,22 @@
 
       "hostileActions" : [],
 
-      "periodicActions" : [],
+      "periodicActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 5.0,
+          "parameters" : {
+            "verticalSpeed" : 30,
+            "horizontalSpeed" : 20,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 45
+          }
+        }       
+      ],
 
       "approachActions" : [
 	    {
@@ -87,6 +102,20 @@
       ],
 
       "wanderActions" : [
+        {
+          "name" : "action-hop",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "verticalSpeed" : 30,
+            "horizontalSpeed" : 20,
+            "hopSequence" : 1,
+            "timeBetweenHops" : 0.0,
+            "windupTime" : 0.1,
+            "landTime" : 0.1,
+            "hopAwayFromWall" : false,
+            "wallVerticalSpeed" : 45
+          }
+        },       
 	    {
           "name" : "wander-walk",
           "cooldown" : 3.0,
