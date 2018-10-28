@@ -256,7 +256,9 @@ function updateDriving()
 	if (driverThisFrame ~= nil) then
 		vehicle.setDamageTeam(world.entityDamageTeam(driverThisFrame))
 		
-		if isSafeLiquid() then -- check the type of liquid they are in. works, but not if they swap to new liquid type. odd?
+		if not isSafeLiquid() then 
+		  world.sendEntityMessage(vehicle.entityLoungingIn("drivingSeat"), "queueRadioMessage", "subCantOperate", 1.0) -- send player a warning
+		elseif isSafeLiquid() then -- check the type of liquid they are in. works, but not if they swap to new liquid type. odd?
 			-- movement    
 			if vehicle.controlHeld("drivingSeat", "left") then
 				mcontroller.approachXVelocity(-self.targetMoveSpeed, self.moveControlForce)
