@@ -21,23 +21,9 @@ function checkHazardType()
 end
 
 function isSafeLiquid()
-	if mcontroller.liquidId() == 1 or	-- water
-		mcontroller.liquidId() == 55 or	--alienjuice
-		mcontroller.liquidId() == 61 or	-- beer
-		mcontroller.liquidId() == 40 or	-- blood
-		mcontroller.liquidId() == 59 or	-- crystal liquid
-		mcontroller.liquidId() == 60 or	-- darkwater
-		mcontroller.liquidId() == 45 or	-- elder fluid
-		mcontroller.liquidId() == 11 or	-- erchius
-		mcontroller.liquidId() == 6 or	-- healing liquid
-		mcontroller.liquidId() == 7 or	-- milk
-		mcontroller.liquidId() == 43 or	-- organic soup
-		mcontroller.liquidId() == 3 or	-- poison
-		mcontroller.liquidId() == 44 or	-- protocite
-		mcontroller.liquidId() == 53 or	-- pus
-		mcontroller.liquidId() == 69 or	-- sludge
-		mcontroller.liquidId() == 12 or	-- swampwater
-		mcontroller.liquidId() == 58 then -- wastewater
+	if mcontroller.liquidId() == 2 or	-- lava
+		mcontroller.liquidId() == 8 or	--corelava
+		mcontroller.liquidId() == 52  then -- molten iron
 		return true
 	end
 end
@@ -149,7 +135,7 @@ function init()
 		animator.setAnimationState("base", "warpIn")  
 	end
 	
-	--set up any damage effects we have...
+	--set up any damage efects we have...
 	updateDamageEffects(0, true)
 end
 
@@ -256,9 +242,9 @@ function updateDriving()
 	if (driverThisFrame ~= nil) then
 		vehicle.setDamageTeam(world.entityDamageTeam(driverThisFrame))
 		
-		if not isSafeLiquid() then 
+		if isSafeLiquid() then 
 		  world.sendEntityMessage(vehicle.entityLoungingIn("drivingSeat"), "queueRadioMessage", "subCantOperate", 1.0) -- send player a warning
-		elseif isSafeLiquid() then -- check the type of liquid they are in. works, but not if they swap to new liquid type. odd?
+		elseif not isSafeLiquid() then -- check the type of liquid they are in. works, but not if they swap to new liquid type. odd?
 			-- movement    
 			if vehicle.controlHeld("drivingSeat", "left") then
 				mcontroller.approachXVelocity(-self.targetMoveSpeed, self.moveControlForce)
@@ -532,7 +518,6 @@ end
 
 function applyDamage(damageRequest)
 	local damage = 0
-	
 	if damageRequest.damageType == "Damage" or damageRequest.damageType == "IgnoresDef" then
 		damage = damage + root.evalFunction2("protection", damageRequest.damage, self.protection)
 	elseif damageRequest.damageType == "IgnoresDef" then
