@@ -1,11 +1,12 @@
 {
-  "itemName" : "razorneedler",
+  "itemName" : "crystallineneedler",
   "price" : 500,
-  "inventoryIcon" : "razorneedler.png",
+  "inventoryIcon" : "crystallineneedler.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "A black market customized special needler with razor sharp crystal shards.",
-  "shortdescription" : "^cyan;Shard Needler^reset;",
+  "description" : "Launch dangerous (but fun) shards of crystal at enemies.
+^cyan;Counts as Hunting weapon^reset;",
+  "shortdescription" : "^cyan;Crystalline Needler^reset;",
   "level" : 3,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
@@ -14,7 +15,7 @@
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "razorneedler.png",
+    "middle" : "crystallineneedler.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },      
@@ -34,14 +35,15 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.12,
-    "baseDps" : 6,
-    "energyUsage" : 26,
+    "baseDps" : 5.5,
+    "energyUsage" : 22,
     "fireType" : "auto",
     "inaccuracy" : 0.001,
     "projectileCount" : 1,
     "projectileType" : "razorneedlerthorns",
     "projectileParameters" : {
-      "speed" : 65
+      "damageSourceKind" : "bow",
+      "speed" : 70
     },
     "stances" : {
       "idle" : {
