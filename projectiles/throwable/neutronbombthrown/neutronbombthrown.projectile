@@ -1,0 +1,36 @@
+{
+  "projectileName" : "neutronbombthrown",
+  "image" : "neutronbombthrown.png",
+  "animationCycle" : 0.55,
+  "level" : 8,
+  "physics" : "stickybomb",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "timeToLive" : 20,
+  "speed" : 150,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "neutronbomb",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 40,
+      "backgroundRadius" : 50,
+      "explosiveDamageAmount" : 1500,
+      "delaySteps" : 0
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/plasmaexplosion.ogg" ]
+    }
+  ],
+
+  "power" : 100.0,
+  "damageKind" : "radioactive"
+}
+
+

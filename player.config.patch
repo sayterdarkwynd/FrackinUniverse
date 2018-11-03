@@ -4,11 +4,15 @@
 	{ "op": "add", "path": "/species/-", "value" : "radien" },
 	{ "op": "add", "path": "/species/-", "value" : "shadow" },
 	{ "op": "add", "path": "/species/-", "value" : "fumantizi" },
+	{ "op": "add", "path": "/species/-", "value" : "nightar" },
 	{ "op": "add", "path": "/species/-", "value" : "fuizku" },
 	{ "op": "add", "path": "/species/-", "value" : "fudarkizku" },
 	{ "op": "add", "path": "/species/-", "value" : "fuanodyne" },
 	{ "op": "add", "path": "/species/-", "value" : "fumantis" },
-	
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/nightar",
+		"value" : "mechbodyapexproto"
+	},	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/thelusian",
 		"value" : "mechbodyapexproto"
@@ -27,11 +31,11 @@
 	},	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fumantizi",
-		"value" : "mechbodyapexproto"
+		"value" : "mechbodymantiziproto"
 	},	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fukirhos",
-		"value" : "mechbodyglitchproto"
+		"value" : "mechbodykirhosproto"
 	},
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/radien",
@@ -44,6 +48,10 @@
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fuanodyne",
 		"value" : "mechbodynovakidproto"
+	},
+	{"op" : "add",
+		"path" : "/defaultCodexes/nightar",
+		"value" : [ "protectorate1", "protectorate2" ]
 	},	
 	{"op" : "add",
 		"path" : "/defaultCodexes/fuanodyne",
@@ -112,10 +120,15 @@
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avalipart1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avaligun1"} },
+	{ "op": "add","path":"/defaultBlueprints/tier1/-","value": { "item" : "funeontube"}},
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_sciencefuelhatch"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_sciencetechstationhuman"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_scienceshiplocker"} },
+	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotltechstation"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotlshiplocker"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotlfuelhatch"} },
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox2"} },
@@ -137,6 +150,20 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "lobstertrap"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "pesttrap"} },
 	
+	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushlarge"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushlarge_box"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushmed"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushmed_box"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushsmall"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "rosebushsmall_box"} },
+	
+	//racial
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tenebrhaeshipdoor"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kirhosdoor2"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kirhosbed"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kirhoscouch"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "kirhostable"} },
 	// crew
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract_janitor"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract"} },
