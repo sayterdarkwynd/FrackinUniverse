@@ -205,7 +205,7 @@ function update(dt)
 
 		self.damageApply = setEffectDamage()
 		self.debuffApply = setEffectDebuff()
-		
+		configBombDrop = {}
 		world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
 		
 		effect.addStatModifierGroup({
