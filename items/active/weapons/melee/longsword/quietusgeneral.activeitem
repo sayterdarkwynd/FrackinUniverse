@@ -1,19 +1,19 @@
 {
   "itemName" : "quietusgeneral",
-  "price" : 1500,
+  "price" : 700,
   "level" : 5,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Heavy-duty quietus weapon with seriously sharp edges.",
   "shortdescription" : "Generals' Blade",
   "tooltipKind" : "sword2",
-  "category" : "broadsword",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","quietus", "upgradeableWeapon"],
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","longsword","quietus", "upgradeableWeapon"],
   "collectablesOnPickup" : { "fu_weaponbroadsword" : "quietusgeneral" },
   "inventoryIcon" : "quietusgeneral.png",
 
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animation" : "combolongsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "quietusgeneral.png"
@@ -24,15 +24,13 @@
 
   "elementalType" : "ice",
 
-  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
     "fireTime" : 0.855,
-    "baseDps" : 11.5
+    "baseDps" : 8
   },
 
-  "altAbilityType" : "parry",
-
-  "critChance" : 3, 
-  "critBonus" : 3, 
+  "critChance" : 1.5, 
+  "critBonus" : 7, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
