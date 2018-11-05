@@ -19,8 +19,10 @@
             "mode" : "loop"
           },
           "jump" : {
-            "frames" : 8,
-            "cycle" : 0.6
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "fall"
           },
           "hop" : {
             "frames" : 8,
@@ -48,13 +50,13 @@
             }
           },          
           "land" : {
-            "frames" : 5,
+            "frames" : 4,
             "cycle" : 0.5,
             "mode" : "transition",
             "transition" : "idle"
           },          
           "fall" : {
-            "frames" : 5,
+            "frames" : 4,
             "cycle" : 0.5
           },
           "charge" : {
@@ -123,7 +125,7 @@
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:run.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "hop" : {

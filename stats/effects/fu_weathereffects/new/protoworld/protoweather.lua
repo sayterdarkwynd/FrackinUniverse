@@ -191,6 +191,10 @@ function update(dt)
 		end
 		self.damageApply = setEffectDamage()
 		self.debuffApply = setEffectDebuff()
+		
+		configBombDrop = {}
+		world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+		
 		-- damage application per tick
 		status.applySelfDamageRequest ({
 			damageType = "IgnoresDef",

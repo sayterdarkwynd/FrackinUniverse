@@ -149,7 +149,7 @@ function init()
 		animator.setAnimationState("base", "warpIn")  
 	end
 	
-	--set up any damage efects we have...
+	--set up any damage effects we have...
 	updateDamageEffects(0, true)
 end
 
@@ -532,6 +532,7 @@ end
 
 function applyDamage(damageRequest)
 	local damage = 0
+	
 	if damageRequest.damageType == "Damage" or damageRequest.damageType == "IgnoresDef" then
 		damage = damage + root.evalFunction2("protection", damageRequest.damage, self.protection)
 	elseif damageRequest.damageType == "IgnoresDef" then

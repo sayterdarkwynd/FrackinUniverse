@@ -1,0 +1,44 @@
+{
+  "itemName" : "silverlongsword",
+  "price" : 350,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "Gorgeous to look at, even if its a softer metal.",
+  "shortdescription" : "Silver Longsword",
+  "tooltipKind" : "sword",
+  "category" : "longsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee", "longsword", "broadsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "silverlongsword.png",
+
+  "animation" : "combolongsword.animation",
+  
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "silverlongsword.png"
+  },
+  "animationCustom" : { 
+	  "sounds" : {
+	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
+	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+	  }  
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "battlebladecombo",
+  "primaryAbility" : {
+    "fireTime" : 0.83,
+    "baseDps" : 8.2
+  },
+  
+  "critChance" : 1.25,
+  "critBonus" : 4.75,  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
