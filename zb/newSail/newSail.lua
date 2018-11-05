@@ -10,9 +10,9 @@ require "/zb/zb_util.lua"
 --	Small additions to already present functions
 
 textTyper.initOrig = textTyper.init
-function textTyper.init(textData, str)
+function textTyper.init(textData, str, sound)
 	doneTalking = false
-	textTyper.initOrig(textData, str)
+	textTyper.initOrig(textData, str, sound)
 end
 
 textTyper.skipOrig = textTyper.skip
@@ -20,6 +20,7 @@ function textTyper.skip(textData, wd)
 	doneTalking = false
 	textTyper.skipOrig(textData, wd)
 end
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 --	UNSAFE FUNCTIONS
@@ -47,6 +48,18 @@ function init()
 		local status, err = pcall(customDatainit)
 		if not status then
 			enableFailsafe(err)
+		end
+	end
+end
+
+function uninit()
+	if cfg.TextData then
+		if type(cfg.TextData.soundPlaying) == "table" then
+			for _, snd in ipairs(cfg.TextData.soundPlaying) do
+				pane.stopAllSounds(snd)
+			end
+		elseif cfg.TextData.soundPlaying then
+			pane.stopAllSounds(cfg.TextData.soundPlaying)
 		end
 	end
 end
@@ -134,7 +147,7 @@ function initSafe()
 	widget.setImage("windowIcon", cfg.GUI.titleIcon)
 	
 	buildCurrencyList()
-	textTyper.init(cfg.TextData, cfg.TextData.strings.intro)
+	textTyper.init(cfg.TextData, cfg.TextData.strings.intro, customData.chatterSound or cfg.TextData.sound)
 end
 
 function resetGUI()
@@ -245,7 +258,7 @@ function updateSafe(dt)
 		charDeltaCounter = charDeltaCounter + (dt * GUI.talker.speedModifier)
 		if 1 / (customData.charactersPerSecond or GUI.talker.charactersPerSecond) <= charDeltaCounter then
 			textTyper.scrambling(cfg.TextData)
-			textTyper.update(cfg.TextData, "root.text", customData.chatterSound or cfg.TextData.sound, cfg.TextData.volume, false)
+			textTyper.update(cfg.TextData, "root.text")
 			charDeltaCounter = 0
 		end
 	end
@@ -311,6 +324,8 @@ end
 
 function buttonMainSafe(wd)
 	if not customDataInited then return end
+	textTyper.stopSounds(cfg.TextData)
+	
 	if wd == "buttonMain" then
 		resetGUI()
 		
@@ -588,11 +603,11 @@ function populateMissionList()
 		widget.setVisible("root.text", true)
 		
 		if customData.noMissionsSpeech then
-			textTyper.init(cfg.TextData, customData.noMissionsSpeech.text or cfg.Speech.noMissionsSpeech.text)
+			textTyper.init(cfg.TextData, customData.noMissionsSpeech.text or cfg.Speech.noMissionsSpeech.text, customData.chatterSound or cfg.TextData.sound)
 			GUI.talker.emote = customData.noMissionsSpeech.animation or cfg.Speech.noMissionsSpeech.animation
 			GUI.talker.speedModifier = customData.noMissionsSpeech.speedModifier or cfg.Speech.noMissionsSpeech.speedModifier
 		else
-			textTyper.init(cfg.TextData, cfg.Speech.noMissionsSpeech.text)
+			textTyper.init(cfg.TextData, cfg.Speech.noMissionsSpeech.text, customData.chatterSound or cfg.TextData.sound)
 			GUI.talker.emote = cfg.Speech.noMissionsSpeech.animation
 			GUI.talker.speedModifier = cfg.Speech.noMissionsSpeech.speedModifier
 		end
@@ -624,7 +639,7 @@ function missionSelectedSafe()
 					text = customData.missionsText[dat.missionName].selectSpeech.text or text
 				end
 				
-				textTyper.init(cfg.TextData, text)
+				textTyper.init(cfg.TextData, text, customData.chatterSound or cfg.TextData.sound)
 				
 				if customData.missionsText and customData.missionsText[dat.missionName] and customData.missionsText[dat.missionName].selectSpeech then
 					GUI.talker.emote = customData.missionsText[dat.missionName].selectSpeech.animation or "talk"
@@ -673,13 +688,13 @@ function populateCrewList()
 		else
 			widget.setVisible("root.text", true)
 			
-			textTyper.init(cfg.TextData, cfg.TextData.strings.noCrew)
+			textTyper.init(cfg.TextData, cfg.TextData.strings.noCrew, customData.chatterSound or cfg.TextData.sound)
 			if customData.noCrewSpeech then
-				textTyper.init(cfg.TextData, customData.noCrewSpeech.text or cfg.Speech.noCrewSpeech.text)
+				textTyper.init(cfg.TextData, customData.noCrewSpeech.text or cfg.Speech.noCrewSpeech.text, customData.chatterSound or cfg.TextData.sound)
 				GUI.talker.emote = customData.noCrewSpeech.animation or cfg.Speech.noCrewSpeech.animation
 				GUI.talker.speedModifier = customData.noCrewSpeech.speedModifier or cfg.Speech.noCrewSpeech.speedModifier
 			else
-				textTyper.init(cfg.TextData, cfg.Speech.noCrewSpeech.text)
+				textTyper.init(cfg.TextData, cfg.Speech.noCrewSpeech.text, customData.chatterSound or cfg.TextData.sound)
 				GUI.talker.emote = cfg.Speech.noCrewSpeech.animation
 				GUI.talker.speedModifier = cfg.Speech.noCrewSpeech.speedModifier
 			end
@@ -703,7 +718,7 @@ function crewSelectedSafe()
 			local crew = cfg.Data.crew[listData.index]
 			if crew then
 				local text = crew.description.."\n^cyan;> Species:^white; "..crew.config.species.."\n^cyan;> Level:^white; "..crew.config.parameters.level
-				textTyper.init(cfg.TextData, text)
+				textTyper.init(cfg.TextData, text, customData.chatterSound or cfg.TextData.sound)
 
 				widget.setText("path", "root/sail/ui/crew/"..crew.name)
 				widget.clearListItems("root.crewList")
@@ -774,7 +789,7 @@ function miscSelectedSafe()
 			elseif listData[1] == "customAI" then
 				if root.itemConfig("apexancientaichip") then
 					resetGUI()
-					textTyper.init(cfg.TextData, cfg.TextData.strings.customAI)
+					textTyper.init(cfg.TextData, cfg.TextData.strings.customAI, customData.chatterSound or cfg.TextData.sound)
 					GUI.talker.emote = "talk"
 					
 					for i = 1, 3 do
@@ -786,7 +801,7 @@ function miscSelectedSafe()
 					widget.setText("buttonScreenRight", "CRAFT >")
 				else
 					resetGUI()
-					textTyper.init(cfg.TextData, cfg.TextData.strings.noCustomAIMod)
+					textTyper.init(cfg.TextData, cfg.TextData.strings.noCustomAIMod, customData.chatterSound or cfg.TextData.sound)
 					GUI.talker.emote = "refuse"
 				end
 			end
@@ -854,10 +869,16 @@ function retrieveCustomData()
 			for i = 1, 3 do
 				local chipItem = data["aiDataItemSlot"..i]
 				if chipItem then
-					local descriptor = root.itemConfig(chipItem.name).config
-					if descriptor and descriptor.category == "A.I. Chip" then
-						widget.setItemSlotItem("aiDataItemSlot"..i, chipItem.name)
-						customData = util.MergeTable(customData, util.MergeTable(descriptor, chipItem.parameters).aiData)
+					local descriptor = root.itemConfig(chipItem.name)
+					if descriptor then 
+						descriptor = descriptor.config
+						if descriptor.category == "A.I. Chip" then
+							widget.setItemSlotItem("aiDataItemSlot"..i, chipItem.name)
+							customData = util.mergeTable(customData, util.mergeTable(descriptor, chipItem.parameters).aiData)
+						end
+					else
+						-- Remove the chip if it no longer exists
+						world.sendEntityMessage(pane.sourceEntity(), 'storeData', "aiDataItemSlot"..i, nil)
 					end
 				end
 			end
