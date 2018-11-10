@@ -29,23 +29,36 @@ function init()
 	script.setUpdateDelta(5)
 end
 
---******* check effect and cancel ************
-function checkEffectValid()
-
-	if world.entityType(entity.id()) ~= "player" then
-		deactivateVisualEffects()
-		effect.expire()
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
 	end
-	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("biomeheatImmunity") or
+	status.statPositive("ffextremeheayImmunity") or
+	(status.stat("fireResistance",0)  >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
+
+--[[ Check if weather effect is still applicable, and handle visual effects ]]--
+function checkEffectValid()
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
 		effect.expire()
+	-- add visual effect and display warning (if not yet shown)
 	else
-		if (status.stat("fireResistance") <= self.effectCutoffValue) then
-			if not self.usedIntro and self.timerRadioMessage == 0 then
-				-- activate visuals and check stats
-				world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0) -- send player a warning
-				self.usedIntro = 1
-			end
+		activateVisualEffects()
+		if not self.usedIntro then
+			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesert", 1.0)
+			self.usedIntro = 1
+			self.timerRadioMessage = 220
 		end
 	end
 end
@@ -116,9 +129,7 @@ end
 
 function isDry()
 	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-		inWater = 0
-	end
+	return not world.liquidAt(mouthPosition)
 end
 
 function hungerLevel()
@@ -157,12 +168,10 @@ end
 
 function update(dt)
 	checkEffectValid()
-
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
+	-- self.biomeTimer2 = self.biomeTimer2 - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
---set the base stats
+	-- set the base stats
 	self.baseRate = config.getParameter("baseRate",0)
 	self.baseDmg = config.getParameter("baseDmgPerTick",0)
 	self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
@@ -173,48 +182,29 @@ function update(dt)
 	self.liquidPenalty = config.getParameter("liquidPenalty",0)
 
 	self.baseRate = setEffectTime()
-	self.damageApply = setEffectDamage()
-	self.debuffApply = setEffectDebuff()
 
 	-- environment checks
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
 	local lightLevel = getLight()
+	local dry = isDry()
 
-	if underground then
-		self.biomeTemp = self.biomeTemp / 4
-		self.gracePeriod = 60
-		if not self.usedCavernous then
-			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertunderground", 1.0) -- send player a warning
-			self.timerRadioMessage = 10
-			self.usedCavernous = 1
-		end
-	end
-
-	if (status.stat("fireResistance") <= self.effectCutoffValue) and (self.gracePeriod <=0) then
-		if daytime and lightLevel >= 75 then
-			self.situationPenalty = self.situationPenalty + 0.5
-			if not self.usedNoon then
-				world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnoon", 1.0) -- send player a warning
-				self.timerRadioMessage = 10
-				self.usedNoon = 1
-			end
-		elseif daytime and lightLevel >= 15 then
-			if not self.usedSunrise then
-				world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertsunrise", 1.0) -- send player a warning
-				self.timerRadioMessage = 10
-				self.usedSunrise = 1
-			end
-		else
-			self.situationPenalty = config.getParameter("situationPenalty",0)
-		end
-
+	if isEntityAffected() then
+		-- Desert heat only applies during the day.
 		if daytime then
-			-- are they in liquid?
-			local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-			local mouthful = world.liquidAt(mouthposition)
-			if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
-				setLiquidPenalty()
+			-- Check underground or wet conditions which pause heat effects.
+			-- Going underground reduces biome temperature and provides 60 sec immunity after leaving.
+			if underground then
+				self.biomeTemp = self.biomeTemp / 4
+				self.gracePeriod = 60
+				if not self.usedCavernous then
+					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertunderground", 1.0) -- send player a warning
+					self.timerRadioMessage = 10
+					self.usedCavernous = 1
+				end
+			-- Getting wet provides 60 sec immunity after leaving.
+			elseif not dry then
+				setLiquidPenalty() -- Less than 1.
 				if (self.timerRadioMessage <= 0) then
 					if not self.usedWater then
 						world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertwater", 1.0) -- send player a warning
@@ -223,31 +213,47 @@ function update(dt)
 						self.usedWater = 1
 					end
 				end
-				inWater = 1
-			else
-				isDry()
 			end
-
-			self.damageApply = setEffectDamage()
-			self.debuffApply = setEffectDebuff()
-
-			if self.biomeTimer <= 0 and status.stat("fireResistance",0) < self.effectCutoffValue then
-				self.biomeTimer = setEffectTime()
-				self.timerRadioMessage = self.timerRadioMessage - dt
-			end
-
-			if status.stat("fireResistance",0) <= self.effectCutoffValue then
+			-- Only apply effects if underground/wet/night immunity has worn off.
+			if (self.gracePeriod <= 0) then
+				self.biomeTimer = self.biomeTimer - dt
+				if (self.biomeTimer <= 0) then
+					-- Desert heat is worse during the day.
+					if lightLevel >= 75 then
+						self.situationPenalty = self.situationPenalty + 0.5
+						if not self.usedNoon then
+							world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertnoon", 1.0) -- send player a warning
+							self.timerRadioMessage = 10
+							self.usedNoon = 1
+						end
+					elseif lightLevel >= 15 then
+						if not self.usedSunrise then
+							world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomedesertsunrise", 1.0) -- send player a warning
+							self.timerRadioMessage = 10
+							self.usedSunrise = 1
+						end
+					else
+						self.situationPenalty = config.getParameter("situationPenalty",0)
+					end
+					self.biomeTimer = self.baseRate
+				end -- self.biomeTimer <= 0
+				-- Set damage totals.
+				self.damageApply = setEffectDamage()
+				self.debuffApply = setEffectDebuff()
+				-- Apply health drain.
 				status.modifyResource("health", -self.damageApply * dt)
-
-				if (status.resource("health")) <= (status.resource("health")/4) then
+				-- If player has low health, penalise movement.
+				if (status.resource("health")) <= (status.stat("maxHealth",0)/4) then
 					mcontroller.controlModifiers({
 						airJumpModifier = 0.85,
 						speedModifier = 0.85
 					})
 				end
+			else -- if self.gracePeriod > 0 then
+				self.gracePeriod = self.gracePeriod - dt
 			end
-			self.biomeTimer = self.biomeTimer - dt
-		else
+		-- Display night message (if not yet shown).
+		else -- if not daytime then
 			self.gracePeriod = 60
 			if (self.timerRadioMessage <= 0) then
 				if not self.usedNight then
@@ -257,10 +263,7 @@ function update(dt)
 				end
 			end
 		end
-		activateVisualEffects()
-	else
-		self.gracePeriod = self.gracePeriod - dt
-	end
+	end -- isEntityAffected()
 end
 
 function uninit()
