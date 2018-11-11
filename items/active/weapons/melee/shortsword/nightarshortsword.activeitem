@@ -1,0 +1,39 @@
+{
+  "itemName" : "nightarshortsword",
+  "price" : 30,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Poor balance, but holds a sharp edge.",
+  "shortdescription" : "Nightarian Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
+
+  "inventoryIcon" : "nightarshortsword.png",
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "nightarshortsword.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  
+  
+  "primaryAbilityType" : "shortswordcombo2",
+  "primaryAbility" : {
+    "fireTime" : 0.63,
+    "baseDps" : 5.6
+  },
+
+  "critChance" : 2,
+  "critBonus" : 1,
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}
