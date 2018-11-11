@@ -204,21 +204,34 @@ function update(dt)
 	if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < self.effectCutoffValue then
 			self.biomeTimer = setEffectTime()
 			self.timerRadioMessage = self.timerRadioMessage - dt
+			
 	end
 
-	if status.stat("physicalResistance",0) <= self.effectCutoffValue then
-		status.modifyResource("health", -self.damageApply * dt)
+	if (status.stat("physicalResistance",0)) < (self.effectCutoffValue) then
 		activateVisualEffects()
-		if (status.resource("health")) <= (status.resource("health")/3) then
-			self.modifier = status.stat("physicalResistance",0)
-			if (status.stat("physicalResistance",0) <= 0) then self.modifier = 0.05 end
-				mcontroller.controlModifiers({
-					airJumpModifier = self.modifier,
-					speedModifier = self.modifier
-				})
+		
+		status.modifyResource("health", -self.damageApply * dt)
+		if status.isResource("health") then
+			if status.resource("health") >= 2 then
+				status.modifyResource("health", (-self.debuffApply /10) * dt )
 			end
 		end
-	self.biomeTimer = self.biomeTimer - dt
+		
+		
+		--debuffs
+		self.modifier = 0.70 + status.stat("physicalResistance",0)
+		
+		if (status.stat("physicalResistance",0) <= 0) then
+			self.modifier = 0.70
+		elseif (status.stat("physicalResistance",0) > 99) then
+		        self.modifier = 1
+		end
+		mcontroller.controlModifiers({
+			airJumpModifier = self.modifier,
+			speedModifier = self.modifier
+		})
+	end
+
 end
 
 function uninit()
