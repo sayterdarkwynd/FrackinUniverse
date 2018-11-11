@@ -30,20 +30,34 @@ function init()
 	script.setUpdateDelta(5)
 end
 
-
---******* check effect and cancel ************
-function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
-		deactivateVisualEffects()
-		effect.expire()
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
 	end
-	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) or  (status.stat("physicalResistance",0) >= 0.2) or (status.statPositive("biomeheatImmunity")) or (status.statPositive("ffextremeheatImmunity")) or world.type()=="unknown" then
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("biomeheatImmunity") or
+	status.statPositive("ffextremeheatImmunity") or
+	(status.stat("fireResistance",0) >= self.effectCutoffValue) or
+	(status.stat("physicalResistance",0) >= self.effectCutoffValue))then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
+
+--[[ Check if weather effect is still applicable, and handle visual effects ]]--
+function checkEffectValid()
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
 		effect.expire()
-
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
-		if not self.usedIntro and (self.timerRadioMessage == 0) then
+		activateVisualEffects()
+		if not self.usedIntro and self.timerRadioMessage <= 0 then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejungle", 1.0) -- send player a warning
 			self.usedIntro = 1
 			self.timerRadioMessage = 20
@@ -116,9 +130,7 @@ end
 
 function isDry()
 	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-		inWater = 0
-	end
+	return not world.liquidAt(mouthPosition)
 end
 
 function hungerLevel()
@@ -157,9 +169,8 @@ end
 
 function update(dt)
 	checkEffectValid()
-
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
+	--self.biomeTimer = self.biomeTimer - dt
+	--self.biomeTimer2 = self.biomeTimer2 - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
 	--set the base stats
@@ -177,61 +188,43 @@ function update(dt)
 	self.debuffApply = setEffectDebuff()
 
 	-- environment checks
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
 	local lightLevel = getLight()
+	local dry = isDry()
 
-	-- are they in liquid?
-	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	local mouthful = world.liquidAt(mouthposition)
-	if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
-		setLiquidPenalty()
-		if (self.timerRadioMessage <= 0) then
-			if not self.usedWater then
-				world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejunglewater", 1.0) -- send player a warning
-				self.timerRadioMessage = 60
-				self.usedWater = 1
+	if isEntityAffected() then
+		-- Jungle heat is reduced while in certain liquids.
+		if not dry and (
+			(mcontroller.liquidId()== 1) or
+			(mcontroller.liquidId()== 6) or
+			(mcontroller.liquidId()== 58) or
+			(mcontroller.liquidId()== 12)
+		) then
+			setLiquidPenalty()
+			if (self.timerRadioMessage <= 0) then
+				if not self.usedWater then
+					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomejunglewater", 1.0) -- send player a warning
+					self.timerRadioMessage = 60
+					self.usedWater = 1
+				end
 			end
 		end
-		inWater = 1
-	else
-		isDry()
-	end
-
-	self.damageApply = setEffectDamage()
-	self.debuffApply = setEffectDebuff()
-
-	if self.biomeTimer <= 0 and status.stat("physicalResistance",0) < self.effectCutoffValue then
-			self.biomeTimer = setEffectTime()
-			self.timerRadioMessage = self.timerRadioMessage - dt
-			
-	end
-
-	if (status.stat("physicalResistance",0)) < (self.effectCutoffValue) then
-		activateVisualEffects()
-		
+		-- Set damage totals with modifiers.
+		self.damageApply = setEffectDamage()
+		self.debuffApply = setEffectDebuff()
+		-- Apply health drain.
 		status.modifyResource("health", -self.damageApply * dt)
-		if status.isResource("health") then
-			if status.resource("health") >= 2 then
-				status.modifyResource("health", (-self.debuffApply /10) * dt )
-			end
+		-- If at low health, penalise movement.
+		--[[TODO: It would help to have some kind of warning message when this happens.]]--
+		if (status.resource("health")) <= (status.stat("maxHealth")/3) then
+			self.modifier = math.max(status.stat("physicalResistance",0), 0.4)
+			mcontroller.controlModifiers({
+				airJumpModifier = self.modifier,
+				speedModifier = self.modifier
+			})
 		end
-		
-		
-		--debuffs
-		self.modifier = 0.70 + status.stat("physicalResistance",0)
-		
-		if (status.stat("physicalResistance",0) <= 0) then
-			self.modifier = 0.70
-		elseif (status.stat("physicalResistance",0) > 99) then
-		        self.modifier = 1
-		end
-		mcontroller.controlModifiers({
-			airJumpModifier = self.modifier,
-			speedModifier = self.modifier
-		})
-	end
-
+	end --isEntityAffected()
 end
 
 function uninit()

@@ -1,5 +1,8 @@
 require("/scripts/vec2.lua")
 
+--[[ TODO: This file is identical to sulphuricweathernew.lua - it could be
+			removed. The .statuseffect files link to sulphuricweathernew.lua instead.]]--
+
 function init()
 	self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
 

@@ -193,25 +193,22 @@ function update(dt)
 	end
 
 	if isEntityAffected() then
-		self.biomeTimer = self.biomeTimer - dt
-		if (self.biomeTimer <= 0) then
-			-- Aether effects are worse at night (while above ground).
-			if not (daytime or underground) then
-				setNightPenalty()
-				if (self.timerRadioMessage <= 0) then
-					if not self.usedNight then
-						world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaethernight", 1.0) -- send player a warning
-						self.timerRadioMessage = 10
-						self.usedNight = 1
-					end
+		-- Aether effects are worse at night (while above ground).
+		if not (daytime or underground) then
+			setNightPenalty()
+			if (self.timerRadioMessage <= 0) then
+				if not self.usedNight then
+					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaethernight", 1.0) -- send player a warning
+					self.timerRadioMessage = 10
+					self.usedNight = 1
 				end
 			end
-			-- Don't reset biome timer yet (done later in function).
 		end
 		-- Set damage totals (accounting for modifiers).
 		self.damageApply = setEffectDamage()
 		self.debuffApply = setEffectDebuff()
 		-- Apply effects.
+		self.biomeTimer = self.biomeTimer - dt
 		if (self.biomeTimer <= 0) then
 			-- Aether effects initially reduce the player's max energy.
 			if (status.stat("maxEnergy",0) > 0) then

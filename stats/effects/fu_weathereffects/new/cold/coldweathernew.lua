@@ -184,43 +184,44 @@ function update(dt)
 	local dry = isDry()
 
 	if isEntityAffected() then
-		self.biomeTimer = self.biomeTimer - dt
-		if (self.biomeTimer <= 0) then
-			-- Cold weather is worse when windy.
-			if not (self.windLevel < 40 or underground) then
-				setWindPenalty()
-				if (self.timerRadioMessage <=0) then
-					if not self.usedWind then
-						world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
-						self.timerRadioMessage = 10
-						self.usedWind = 1
-					end
+		-- Cold weather is worse when windy.
+		if not (self.windLevel < 40 or underground) then
+			setWindPenalty()
+			if (self.timerRadioMessage <=0) then
+				if not self.usedWind then
+					world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
+					self.timerRadioMessage = 10
+					self.usedWind = 1
 				end
 			end
-			-- Cold weather is worse when in liquid.
-			if not dry then
-				setLiquidPenalty()
-				if (self.timerRadioMessage <= 0) then
-						if not self.usedWater then
-							world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
-							self.timerRadioMessage = 10
-							self.usedWater = 1
-						end
-				end
-			end
-			-- Cold weather is worse at night.
-			if not (daytime or underground) then
-				setNightPenalty()
-				if (self.timerRadioMessage <= 0) then
-					if not self.usedNight then
-						world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
-						self.timerRadioMessage = 10
-						self.usedNight = 1
-					end
-				end
-			end
-			self.biomeTimer = self.baseRate
 		end
+		-- Cold weather is worse when in liquid.
+		if not dry then
+			setLiquidPenalty()
+			if (self.timerRadioMessage <= 0) then
+					if not self.usedWater then
+						world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
+						self.timerRadioMessage = 10
+						self.usedWater = 1
+					end
+			end
+		end
+		-- Cold weather is worse at night.
+		if not (daytime or underground) then
+			setNightPenalty()
+			if (self.timerRadioMessage <= 0) then
+				if not self.usedNight then
+					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
+					self.timerRadioMessage = 10
+					self.usedNight = 1
+				end
+			end
+		end
+		-- self.biomeTimer = self.biomeTimer - dt
+		-- if (self.biomeTimer <= 0) then
+		--
+		-- 	self.biomeTimer = self.baseRate
+		-- end
 		-- Set damage totals.
 		self.damageApply = setEffectDamage()
 		self.debuffApply = setEffectDebuff()

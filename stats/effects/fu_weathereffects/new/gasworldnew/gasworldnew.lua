@@ -153,7 +153,7 @@ function activateVisualEffects()
 end
 
 function deactivateVisualEffects()
-	effect.setParentDirectives("fade=306630=1.0")
+	effect.setParentDirectives("fade=306630=0")
 end
 
 

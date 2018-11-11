@@ -16,7 +16,6 @@ function init()
 	--timers
 	self.biomeTimer = self.baseRate
 	self.biomeTimer2 = 1
-	self.usedIntro = 0
 	self.timerRadioMessage = 0
 	--conditionals
 	self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
@@ -29,39 +28,38 @@ function init()
 	script.setUpdateDelta(5)
 end
 
-function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
-		deactivateVisualEffects()
-		effect.expire()
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
 		return false
 	end
-	if  (world.type()=="unknown") then
-		deactivateVisualEffects()
-		self.usedIntro = nil
-		effect.expire()
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("sulphuricImmunity") or
+	(status.stat("physicalResistance",0) >= self.effectCutoffValue)) then
 		return false
-	elseif (status.statPositive("sulphuricImmunity")) or ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
+	end
+	-- otherwise, return true
+	return true
+end
+
+--[[ Check if weather effect is still applicable, and handle visual effects ]]--
+function checkEffectValid()
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
-		self.usedIntro = nil
 		effect.expire()
-		return false
-	elseif (status.statPositive("sulphuricImmunity")) then
-		deactivateVisualEffects()
-		self.usedIntro = nil
-		effect.expire()
-		return false
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
-		if (self.timerRadioMessage == 0) and not self.usedIntro then
+		activateVisualEffects()
+		if not self.usedIntro and self.timerRadioMessage <= 0 then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
 			self.usedIntro = 1
 			self.timerRadioMessage = 220
 		end
 	end
-	return true;
 end
-
-
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -128,9 +126,7 @@ end
 
 function isDry()
 	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-		inWater = 0
-	end
+	return not world.liquidAt(mouthPosition)
 end
 
 function hungerLevel()
@@ -183,20 +179,23 @@ function update(dt)
 	self.damageApply = setEffectDamage()
 	self.debuffApply = setEffectDebuff()
 
-	if (self.biomeTimer <= 0) and (status.stat("protection",0) > 0) then
-		makeAlert()
-		effect.addStatModifierGroup({
-			{stat = "protection", amount = -self.debuffApply  },
-			{stat = "physicalResistance", amount = (status.stat("physicalResistance",0) *(-self.debuffApply/100))  }
-		})
-
-		activateVisualEffects()
-		self.biomeTimer = self.baseRate
-	end
-
-	if status.stat("protection",0) < 1 then
-		status.modifyResource("health", -self.damageApply * dt)
-	end
+	if isEntityAffected() then
+		-- Periodically debuff player's protection (and phys resist).
+		if self.biomeTimer <= 0 then
+			if status.stat("protection",0) > 0 then
+				effect.addStatModifierGroup({
+					{stat = "protection", amount = -self.debuffApply},
+					{stat = "physicalResistance", amount = (status.stat("physicalResistance",0) * (-self.debuffApply/100))}
+				})
+				makeAlert()
+			end
+			self.biomeTimer = self.baseRate
+		end
+		-- If player's protection is zero, rapidly drain health.
+		if status.stat("protection",0) < 1 then
+			status.modifyResource("health", -self.damageApply * dt)
+		end
+	end --isEntityAffected()
 end
 
 function uninit()
