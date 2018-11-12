@@ -1,11 +1,11 @@
 {
   "itemName" : "nightardagger",
-  "price" : 50,
+  "price" : 240,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Reliable, but of poor quality.",
-  "shortdescription" : "Nightarian Coreblade",
-  "tooltipKind" : "sword2",
+  "description" : "Dull and nearly lifeless, but still dangerous.",
+  "shortdescription" : "Nightarian Knife",
+  "tooltipKind" : "sword",
   "category" : "dagger",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
@@ -34,10 +34,10 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
     "class" : "MeleeSlash",
-    "fireTime" : 0.45,
-    "baseDps" : 5.0,
+    "fireTime" : 0.5,
+    "baseDps" : 9,
     "damageConfig" : {
-      "knockback" : 2
+      "knockback" : 10
     },
     "stances" : {
       "idle" : {
@@ -69,7 +69,21 @@
     }
   },
   "critChance" : 1, 
-  "critBonus" : 3, 
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "critBonus" : 2, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+          "animation" : "daggerglow.animation",
+	  "animationParts" : {
+	    "handle" : "",
+	    "blade" : "nightardagger.png",
+	    "bladefullbright" : "nightardaggerfullbright.png"
+	  },  
+	  "inventoryIcon" : "nightarshortsword2.png",
+	  "shortdescription" : "Peerless Nightar Knife",
+	  "description" : "The finest edge possible.",
+	  "critChance" : 2,
+	  "critBonus" : 5	  
+  }
+  
 }
