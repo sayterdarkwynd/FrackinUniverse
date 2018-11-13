@@ -29,21 +29,37 @@ function init()
 	script.setUpdateDelta(5)
 end
 
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
+	end
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("biomecoldImmunity") or
+	status.statPositive("ffextremecoldImmunity") or
+	(status.stat("iceResistance",0)  >= self.effectCutoffValue) or
+	(status.stat("physicalResistance",0) >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
+
 --******* check effect and cancel ************
 function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
 		effect.expire()
-	end
-	if (status.stat("iceResistance",0) >= self.effectCutoffValue) or status.statPositive("biomecoldImmunity") or (status.stat("physicalResistance",0) >= self.effectCutoffValue) or world.type()=="unknown" then
-		deactivateVisualEffects()
-		effect.expire()
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
-		if (self.timerRadioMessage == 0) and not self.usedIntro then
-				world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0) -- send player a warning
-				self.usedIntro = 1
-				self.timerRadioMessage = 220
+		activateVisualEffects()
+		if not self.usedIntro then
+			world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomecold", 1.0)
+			self.usedIntro = 1
+			self.timerRadioMessage = 220
 		end
 	end
 end
@@ -151,8 +167,6 @@ end
 
 function update(dt)
 	checkEffectValid()
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
 --set the base stats
@@ -166,85 +180,82 @@ function update(dt)
 	self.liquidPenalty = config.getParameter("liquidPenalty",0)
 
 	self.baseRate = setEffectTime()
-	self.damageApply = setEffectDamage()
-	self.debuffApply = setEffectDebuff()
 
 	-- environment checks
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
 	local lightLevel = getLight()
+	local dry = isDry()
 
-	if (self.biomeTimer <= 0) and (status.stat("iceResistance",0) < self.effectCutoffValue) then
-
-		if self.windLevel >= 40 then
-			setWindPenalty()
-			if (self.timerRadioMessage <=0) then
-				if not self.usedWind then
-					world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
-					self.timerRadioMessage = 10
-					self.usedWind = 1
+	if isEntityAffected() then
+		self.biomeTimer = self.biomeTimer - dt
+		if (self.biomeTimer <= 0) then
+			-- Snow is worse when windy.
+			if not (self.windLevel < 40 or underground) then
+				setWindPenalty()
+				if (self.timerRadioMessage <= 0) then
+					if not self.usedWind then
+						world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomecoldwind", 1.0) -- send player a warning
+						self.timerRadioMessage = 10
+						self.usedWind = 1
+					end
 				end
 			end
-		end
-
-		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-		local mouthful = world.liquidAt(mouthposition)
-		if (world.liquidAt(mouthPosition)) then
-			setLiquidPenalty()
-			if (self.timerRadioMessage <= 0) then
-				if not self.usedWater then
-					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
-					self.timerRadioMessage = 10
-					self.usedWater = 1
+			-- Snow is worse when in liquid.
+			if not dry then
+				setLiquidPenalty()
+				if (self.timerRadioMessage <= 0) then
+					if not self.usedWater then
+						world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldwater", 1.0) -- send player a warning
+						self.timerRadioMessage = 10
+						self.usedWater = 1
+					end
 				end
 			end
-		end
-
-		if not daytime then
-			setNightPenalty()
-			if (self.timerRadioMessage <= 0) then
-				if not self.usedNight then
-					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
-					self.timerRadioMessage = 10
-					self.usedNight = 1
+			-- Snow is worse at night.
+			if not (daytime or underground) then
+				setNightPenalty()
+				if (self.timerRadioMessage <= 0) then
+					if not self.usedNight then
+						world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomecoldnight", 1.0) -- send player a warning
+						self.timerRadioMessage = 10
+						self.usedNight = 1
+					end
 				end
 			end
+			-- Don't reset biome timer yet.
 		end
-
+		-- Set damage totals.
 		self.damageApply = setEffectDamage()
 		self.debuffApply = setEffectDebuff()
-
-		effect.addStatModifierGroup({
-			{stat = "maxHealth", amount = -self.damageApply  },
-			{stat = "powerMultiplier", amount = -(self.debuffApply/100 )  }
-		})
-		activateVisualEffects()
-		self.biomeTimer = setEffectTime()
-	end
-
-	if (status.stat("iceResistance",0)) < (self.effectCutoffValue) then
-		self.modifier = status.stat("iceResistance",0)
-		if (status.stat("iceResistance",0) <= 0) then
-			self.modifier = 0
+		-- Set movement penalties.
+		self.modifier = math.max(status.stat("iceResistance",0), 0) + 0.3
+		-- Apply periodic snow effects (max health drain and power reduction).
+		if self.biomeTimer <= 0 then
+			effect.addStatModifierGroup({
+				{stat = "maxHealth", amount = -self.damageApply},
+				{stat = "powerMultiplier", amount = -self.debuffApply / 100}
+			})
+			self.biomeTimer = self.baseRate
 		end
-		self.modifier = self.modifier + 0.3
-		mcontroller.controlModifiers({
-			airJumpModifier = self.modifier,
-			speedModifier = self.modifier
-		})
-		self.damageApply = self.damageApply
+		-- Apply health drain.
 		status.modifyResource("health", -self.damageApply * dt)
-
+		-- Apply hunger drain (if not casual).
 		if status.isResource("food") then
-			self.debuffApply = (self.debuffApply /120)
-			if status.resource("food") >= 2 then
-				status.modifyResource("food", -self.debuffApply * dt )
+			if (status.resource("food") >= 2) then
+				status.modifyResource("food", -self.debuffApply * dt / 120)
 			end
 		end
-	end
-
+		-- Apply movement penalties.
+		mcontroller.controlModifiers({
+			airJumpModifier = self.modifier,
+			speedModifier = self.modifier - 0.1
+		})
+	end -- isEntityAffected()
+	-- Add frosted breath effect (regardless of player status).
+	self.biomeTimer2 = self.biomeTimer2 - dt
 	if self.biomeTimer2 <= 0 then
-		makeAlert() -- misty breath
+		makeAlert()
 		self.biomeTimer2 = 2.4
 	end
 end

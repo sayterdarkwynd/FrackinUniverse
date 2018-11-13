@@ -2,7 +2,6 @@ require("/scripts/vec2.lua")
 
 function init()
 
-	self.usedIntro = 0
 	self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
 
 	-- Environment Configuration --
@@ -31,33 +30,39 @@ function init()
 	script.setUpdateDelta(5)
 end
 
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
+	end
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("biomeradiationImmunity") or
+	status.statPositive("ffextremeradiationImmunity") or
+	(status.stat("radioactiveResistance",0) >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
 
-
---******* check effect and cancel ************
+--[[ Check if weather effect is still applicable, and handle visual effects ]]--
 function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
 		effect.expire()
-	end
-	if status.statPositive("biomeradiationImmunity") or status.statPositive("ffextremeradiationImmunity") or world.type()=="unknown" then
-		deactivateVisualEffects()
-		effect.expire()
-	end
-
-	-- checks strength of effect vs resistance
-	if ( status.stat("radioactiveResistance",0)  >= self.effectCutoffValue ) then
-		deactivateVisualEffects()
-		effect.expire()
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
-		if not self.usedIntro and self.timerRadioMessage == 0 then
+		activateVisualEffects()
+		if not self.usedIntro and self.timerRadioMessage <= 0 then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeradiation", 1.0) -- send player a warning
 			self.usedIntro = 1
 			self.timerRadioMessage = 20
 		end
 	end
 end
-
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -124,9 +129,7 @@ end
 
 function isDry()
 	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-		inWater = 0
-	end
+	return not world.liquidAt(mouthPosition)
 end
 
 function toHex(num)
@@ -145,9 +148,6 @@ end
 
 --*********alert the player that they are affected
 function activateVisualEffects()
-	local statusTextRegion = { 0, 1, 0, 1 }
-	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	animator.burstParticleEmitter("statustext")
 	effect.setParentDirectives("fade=33dd15=0.4")
 	animator.setParticleEmitterOffsetRegion("radioactivebreath", mcontroller.boundBox())
 	animator.setParticleEmitterActive("radioactivebreath", true)
@@ -161,13 +161,15 @@ end
 function makeAlert()
 	world.spawnProjectile("poisonsmoke",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
  	animator.playSound("bolt")
+	local statusTextRegion = { 0, 1, 0, 1 }
+	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+	animator.burstParticleEmitter("statustext")
 end
 
 
 function update(dt)
 	checkEffectValid()
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
+	--self.biomeTimer2 = self.biomeTimer2 - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
 --set the base stats
@@ -185,16 +187,16 @@ function update(dt)
 	self.debuffApply = setEffectDebuff()
 
 	-- environment checks
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
 	local lightLevel = getLight()
+	local dry = isDry()
 
-	if self.biomeTimer <= 0 and status.stat("radioactiveResistance") < self.effectCutoffValue then
-		self.timerRadioMessage = self.timerRadioMessage - dt
-		self.windLevel =  world.windLevel(mcontroller.position())
+	if isEntityAffected() then
+		self.windLevel = world.windLevel(mcontroller.position())
 		if self.windLevel >= 20 then
 			setWindPenalty()
-			if self.timerRadioMessage == 0 then
+			if self.timerRadioMessage <= 0 then
 				if not self.usedWind then
 					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeradiationwind", 1.0) -- send player a warning
 					self.timerRadioMessage = 10
@@ -202,32 +204,30 @@ function update(dt)
 				end
 			end
 		end
-
 		self.damageApply = setEffectDamage()
 		self.debuffApply = setEffectDebuff()
-		configBombDrop = {}
-		world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
-		
-		effect.addStatModifierGroup({
-			{stat = "maxHealth", amount = -self.debuffApply  },
-			{stat = "maxEnergy", amount = -self.debuffApply  }
-		})
-		activateVisualEffects()
-		makeAlert()
-		self.biomeTimer = self.baseRate
-	end
-
-	if status.stat("radioactiveResistance") <= self.effectCutoffValue then
-		self.damageApply = (self.damageApply /100)
-		status.modifyResource("health", -self.damageApply * dt)
-
+		-- Apply health and hunger drain (if not casual).
+		status.modifyResource("health", -self.damageApply * dt / 100)
 		if status.isResource("food") then
 			if status.resource("food") >= 2 then
 				status.modifyResource("food", (-self.debuffApply /20) * dt )
 			end
 		end
-	end
-	self.biomeTimer = self.biomeTimer - dt
+		-- Periodically debuff max health and energy.
+		self.biomeTimer = self.biomeTimer - dt
+		if self.biomeTimer <= 0 then
+			-- Extra "HP down" particle because people don't seem to notice
+			configBombDrop = {}
+			world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+
+			effect.addStatModifierGroup({
+				{stat = "maxHealth", amount = -self.debuffApply},
+				{stat = "maxEnergy", amount = -self.debuffApply}
+			})
+			makeAlert()
+			self.biomeTimer = self.baseRate
+		end
+	end --isEntityAffected()
 end
 
 function uninit()

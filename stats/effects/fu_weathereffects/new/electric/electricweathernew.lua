@@ -29,9 +29,29 @@ function init()
 	script.setUpdateDelta(5)
 end
 
---******* check effect and cancel ************
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
+	end
+	-- if player does not have energy (for some reason), return false --
+	if not status.isResource("energy") then
+		return false
+	end
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("biomeelectricImmunity") or
+	(status.stat("electricResistance",0) >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
+
+--[[ Check if weather effect is still applicable (no visual effects) ]]--
 function checkEffectValid()
-	if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") or (status.stat("electricResistance",0)  >= self.effectCutoffValue) or status.statPositive("biomeelectricImmunity") or world.type()=="unknown" then
+	if not isEntityAffected() then
 		effect.expire()
 	end
 end
@@ -53,13 +73,10 @@ function isWet()
 	return entityPos and (world.liquidAt(vec2.add(entityPos, mouthPos)) and ((liquid==1) or (liquid==6) or (liquid==58) or (liquid==12)))
 end
 
-
-
 function update(dt)
 	checkEffectValid()
-
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
+	--self.biomeTimer = self.biomeTimer - dt
+	--self.biomeTimer2 = self.biomeTimer2 - dt
 
 	if not world.underground(mcontroller.position()) then
 		if status.isResource(warningResource1) then

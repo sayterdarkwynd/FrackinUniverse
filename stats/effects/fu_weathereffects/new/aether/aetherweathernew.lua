@@ -31,27 +31,35 @@ function init()
 	script.setUpdateDelta(5)
 end
 
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
+	end
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("aetherImmunity") or
+	(status.stat("cosmicResistance",0)  >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
 
---******* check effect and cancel ************
+--[[ Check if weather effect is still applicable, and handle visual effects ]]--
 function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
 		effect.expire()
-	end
-	if status.statPositive("aetherImmunity") or world.type()=="unknown" then
-		effect.expire()
-	end
-
-	-- checks strength of effect vs resistance
-	if ( status.stat("cosmicResistance",0)  >= self.effectCutoffValue ) then
-		deactivateVisualEffects()
-		effect.expire()
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
+		activateVisualEffects()
 		if not self.usedIntro then
-			-- activate visuals and check stats
-			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaether", 1.0) -- send player a warning
+			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaether", 1.0)
 			self.usedIntro = 1
+			self.timerRadioMessage = 220
 		end
 	end
 end
@@ -118,12 +126,9 @@ function undergroundCheck()
 	return world.underground(mcontroller.position())
 end
 
-
 function isDry()
 local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-		inWater = 0
-	end
+	return not world.liquidAt(mouthPosition)
 end
 
 function hungerLevel()
@@ -159,8 +164,7 @@ end
 
 function update(dt)
 	checkEffectValid()
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
+	-- self.biomeTimer2 = self.biomeTimer2 - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
 --set the base stats
@@ -175,6 +179,12 @@ function update(dt)
 
 	self.baseRate = setEffectTime()
 
+	-- environment checks
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
+	local lightLevel = getLight()
+	local dry = isDry()
+
 	if status.isResource("food") then
 		setSituationPenalty()
 		self.baseDmg = ( self.baseDmg * (status.resource("food")/40) )
@@ -182,39 +192,44 @@ function update(dt)
 		self.baseRate = ( self.baseRate * (status.resource("food")/40) )
 	end
 
-	-- is it nighttime or above ground?
-	if not daytime then
-		setNightPenalty()
-		if (self.timerRadioMessage <= 0) then
-			if not self.usedNight then
-				world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaethernight", 1.0) -- send player a warning
-				self.timerRadioMessage = 10
-				self.usedNight = 1
+	if isEntityAffected() then
+		-- Aether effects are worse at night (while above ground).
+		if not (daytime or underground) then
+			setNightPenalty()
+			if (self.timerRadioMessage <= 0) then
+				if not self.usedNight then
+					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeaethernight", 1.0) -- send player a warning
+					self.timerRadioMessage = 10
+					self.usedNight = 1
+				end
 			end
 		end
-	end
-
-	--apply damage totals
-	self.damageApply = setEffectDamage()
-	self.debuffApply = setEffectDebuff()
-
-	if (self.biomeTimer <= 0) and (status.stat("maxEnergy",0) > 0) then
-		effect.addStatModifierGroup({
-			{stat = "energyRegenPercentageRate", amount = status.stat("energyRegenPercentageRate") * (1 * -status.stat("cosmicResistance",0))  },
-			{stat = "energyRegenBlockTime", amount = status.stat("energyRegenBlockTime") * (1 * -status.stat("cosmicResistance",0))  },
-			{stat = "maxEnergy", amount = util.round(-self.debuffApply)  }
-		})
-		makeAlert()
-		activateVisualEffects()
-		self.biomeTimer = self.baseRate
-	end
-
-	if (status.stat("maxEnergy",0) < 20) then
-		status.modifyResource("health", -self.damageApply * dt)
-		if status.isResource("energy") then
-			status.modifyResource("energy", -self.damageApply * dt)
+		-- Set damage totals (accounting for modifiers).
+		self.damageApply = setEffectDamage()
+		self.debuffApply = setEffectDebuff()
+		-- Apply effects.
+		self.biomeTimer = self.biomeTimer - dt
+		if (self.biomeTimer <= 0) then
+			-- Aether effects initially reduce the player's max energy.
+			if (status.stat("maxEnergy",0) > 0) then
+				effect.addStatModifierGroup({
+					{stat = "energyRegenPercentageRate", amount = status.stat("energyRegenPercentageRate") * (1 * -status.stat("cosmicResistance",0))  },
+					{stat = "energyRegenBlockTime", amount = status.stat("energyRegenBlockTime") * (1 * -status.stat("cosmicResistance",0))  },
+					{stat = "maxEnergy", amount = util.round(-self.debuffApply)  }
+				})
+				makeAlert()
+			end
+			-- Reset the biome timer.
+			self.biomeTimer = self.baseRate
 		end
-	end
+		-- Once player's energy gets low, Aether rapidly drains HP and energy.
+		if (status.stat("maxEnergy",0) < 20) then
+			status.modifyResource("health", -self.damageApply * dt)
+			if status.isResource("energy") then
+				status.modifyResource("energy", -self.damageApply * dt)
+			end
+		end
+	end -- isEntityAffected()
 end
 
 function uninit()
