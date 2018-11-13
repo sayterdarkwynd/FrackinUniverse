@@ -283,7 +283,7 @@ function update(dt)
 			self.biomeTimer = self.baseRate
 		end
 		-- Insanity messages for hunger run on a separate timer.
-		if status.isResource("food") then
+		--if status.isResource("food") then
 			self.timerRadioMessage2 = self.timerRadioMessage2 - dt
 			if self.timerRadioMessage2 <= 0 then
 				local hungerLevel = hungerLevel()
@@ -304,7 +304,7 @@ function update(dt)
 				end
 				self.timerRadioMessage2 = 60
 			end
-		end
+		--end
 		self.biomeTimer2 = self.biomeTimer2 - dt
 		-- Apply semi-periodic protection and energy debuffs.
 		if self.biomeTimer2 <= 0 then
