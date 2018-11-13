@@ -26,44 +26,48 @@ function init()
 	script.setUpdateDelta(5)
 end
 
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
+	end
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("extremepressureProtection") or
+	(status.stat("physicalResistance",0) >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
 
-
---******* check effect and cancel ************
+--[[ Check if weather effect is still applicable and handle visual effects ]]--
 function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
+	-- remove effect if no longer affected
+	if not isEntityAffected() then
+		deactivateVisualEffects()
 		effect.expire()
-	end
-	if status.statPositive("extremepressureProtection") or world.type()=="unknown" then
-		effect.expire()
-	end
-
-	-- checks strength of effect vs resistance
-	if ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
-		effect.expire()
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
+		activateVisualEffects()
+		-- display a random warning
 		if (self.timerRadioMessage <= 0) and (self.usedIntro == 0) then
-			if math.random(3) == 3 then
+			local rand = math.random(4)
+			if rand == 1 then
 				world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure", 1.0) -- send player a warning
-				self.usedIntro = 1
-				self.timerRadioMessage = 20
-			elseif math.random == 2 then
+			elseif rand == 2 then
 				world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure2", 1.0) -- send player a warning
-				self.usedIntro = 1
-				self.timerRadioMessage = 20
-			elseif math.random == 1 then
+			elseif rand == 3 then
 				world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure3", 1.0) -- send player a warning
-				self.usedIntro = 1
-				self.timerRadioMessage = 20
-			else
+			else -- rand == 4, obviously
 				world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomepressure4", 1.0) -- send player a warning
-				self.usedIntro = 1
-				self.timerRadioMessage = 20
 			end
+			self.usedIntro = 1
+			self.timerRadioMessage = 20
 		end
 	end
 end
-
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -146,22 +150,25 @@ end
 
 function activateVisualEffects()
 	effect.setParentDirectives("fade=306630=0.8")
-	local statusTextRegion = { 0, 1, 0, 1 }
-	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	animator.burstParticleEmitter("statustext")
+end
+
+function deactivateVisualEffects()
+	effect.setParentDirectives("fade=306630=0")
 end
 
 
 function makeAlert()
 	world.spawnProjectile( "teslaboltsmall", mcontroller.position(), entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
 	animator.playSound("bolt")
+	local statusTextRegion = { 0, 1, 0, 1 }
+	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+	animator.burstParticleEmitter("statustext")
 end
 
 
 function update(dt)
 	checkEffectValid()
 
-	self.biomeTimer = self.biomeTimer - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
 	self.windLevel =  world.windLevel(mcontroller.position()) or 1
@@ -180,12 +187,14 @@ function update(dt)
 	self.debuffApply = setEffectDebuff()
 
 	-- environment checks
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
 	local lightLevel = getLight()
 
-	if ( self.biomeTimer <= 0 ) then
-		if (status.stat("physicalResistance") <=  self.effectCutoffValue ) then
+	if isEntityAffected() then
+		self.biomeTimer = self.biomeTimer - dt
+		if ( self.biomeTimer <= 0 ) then
+			-- Pressure is three times worse during the day. Not sure why.
 			if daytime then
 				if (self.timerRadioMessage <= 0) then
 					if not self.usedIntro2 then
@@ -194,9 +203,7 @@ function update(dt)
 						self.timerRadioMessage = 220
 					end
 				end
-				status.modifyResource("health", -((self.damageApply * self.situationPenalty)*3) * dt)
-				makeAlert()
-				activateVisualEffects()
+				status.modifyResource("health", -self.damageApply * self.situationPenalty * 3 * dt)
 			else
 				if (self.timerRadioMessage <= 0) then
 					if not self.usedIntro3 then
@@ -205,11 +212,10 @@ function update(dt)
 						self.timerRadioMessage = 220
 					end
 				end
-				status.modifyResource("health", -(self.damageApply * self.situationPenalty) * dt)
-				makeAlert()
-				activateVisualEffects()
+				status.modifyResource("health", -self.damageApply * self.situationPenalty * dt)
 			end
-				-- add wind modifiers
+			makeAlert()
+			-- add wind modifiers
 			if self.windLevel >= 40 then
 				self.biomeThreshold = self.biomeThreshold + (self.windLevel / 100)
 				if (self.timerRadioMessage <= 0) then
@@ -220,9 +226,9 @@ function update(dt)
 					end
 				end
 			end
-		end
-		self.biomeTimer = setEffectTime()
-	end
+			self.biomeTimer = setEffectTime()
+		end -- self.biomeTimer <= 0
+	end -- isEntityAffected()
 end
 
 function uninit()
