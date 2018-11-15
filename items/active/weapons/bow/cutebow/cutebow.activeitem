@@ -20,12 +20,15 @@
   "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
     "bow" : "cutebow.png",
-    "bowfullbright" : "penumbrabowfullfullbright.png"
+    "bowfullbright" : "cutebowfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "bow" : { "properties" : {
-      "offset" : [0.25, 0]
-    }}}},
+    "animatedParts" : { 
+    	"parts" : { 
+    		"bow" : {"properties" : {"offset" : [0.26, 0] } },
+    		"bowfullbright" : {"properties" : {"offset" : [0.26, 0] } }
+    	}
+    },
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
       "release" : [ "/sfx/melee/laser_weapon_swing2.ogg" ],
@@ -40,7 +43,7 @@
   "primaryAbilityType" : "bowshot",
   "primaryAbility" : {
     "fireOffset" : [1.75, 0.125],
-	  "drawFrameSelector" : "bowImageSelector",
+    "drawFrameSelector" : "bowImageSelector",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
     "projectileType" : "cutearrow",
     "powerProjectileType" : "chargedcutearrow",
