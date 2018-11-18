@@ -1,18 +1,38 @@
 {
   "name" : "ffbiomeheat1",
-  "blockingStat" : "biomeheatImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "fireResistance",
-          "effectCutoffValue" : 0.2,    
-	  "biomeTemp" : 1.15, 
-	  "biomeThreshold" : 1,
-	    "baseRate" : 5,
-	    "baseDebuffPerTick" : 5,
-	    "baseDmgPerTick" : 4,
-	    "situationPenalty" : 1.1,
-	    "liquidPenalty" : 0.7,
-	    "biomeNight" : 0.8        
+    "resistanceTypes" : {
+      "fireResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.2,
+    "immunityStats" : [
+      "biomeHeatImmunity",
+      "ffextremeheatImmunity"
+    ],
+
+    "healthDrain" : 4,
+    "hungerDrain" : 0.5,
+    "speedPenalty" : 1.0,
+    "speedMin" : 0.3,
+    "jumpPenalty" : 1.0,
+    "jumpMin" : 0.3,
+
+    "debuffRate" : 5,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "night" : 0.8,
+      "wet" : 0.7,
+      "underground" : 1.1
+    },
+
+    "messages" : {
+      "intro" : "biomeheat",
+      "underground" : "ffbiomeheatcavern"
+    },
+    "configPath" : "/stats/effects/fu_weathereffects/new/heat/ffbiomeheat1.statuseffect"
   },
   "defaultDuration" : 2,
 

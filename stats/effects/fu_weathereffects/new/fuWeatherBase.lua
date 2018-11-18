@@ -1,23 +1,23 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
-fuWeather = {}
+fuWeatherBase = {}
 
 --============================= CLASS CONSTRUCTOR ============================--
-
-function fuWeather:new(obj)
+--[[
+function fuWeatherBase:new(obj)
   obj = obj or {} -- initialise object table if not given
   setmetatable(obj, self)
   self.__index = self -- allow object to inherit parent methods
   obj.parent = self -- manually allow access to overwritten parent methods
   return obj
 end
-
+]]--
 --============================== INIT AND UNINIT =============================--
 
-function fuWeather:init(config_file)
+function fuWeatherBase.init(self, config_file)
   -- Environment Configuration --
-  local effectConfig = root.assetJson(config_file).effectConfig
+  local effectConfig = root.assetJson(config_file)["effectConfig"]
   --resistances
   self.resistanceTypes = effectConfig.resistanceTypes
   self.resistanceThreshold = effectConfig.resistanceThreshold
@@ -46,18 +46,18 @@ function fuWeather:init(config_file)
 
   -- Check and apply initial effect --
   self.effectActive = false
-  self.checkEffect()
+  --fuWeatherBase.checkEffect()
 
   -- Define script update interval --
   script.setUpdateDelta(5)
 end
 
-function fuWeather:uninit()
+function fuWeatherBase.uninit(self)
 end
 
 --=========================== CORE HELPER FUNCTIONS ==========================--
 
-function fuWeather:totalResist()
+function fuWeatherBase.totalResist(self)
   local totalResist = 0
   for resist, multiplier in pairs(self.resistanceTypes) do
     totalResist = totalResist + (status.stat(resist,0) * multiplier)
@@ -65,8 +65,8 @@ function fuWeather:totalResist()
   return totalResist
 end
 
-function fuWeather:resistModifier()
-  local totalResist = self.totalResist()
+function fuWeatherBase.resistModifier(self)
+  local totalResist = fuWeatherBase.totalResist(self)
   if (totalResist > 0) then
     if (self.resistanceThreshold > 0) then
       -- Normal case: scale resistance modifier to resistanceThreshold
@@ -78,9 +78,10 @@ function fuWeather:resistModifier()
   else
     -- Negative resist case: don't scale to resistanceThreshold
     return 1.0 - totalResist
+  end
 end
 
-function fuWeather:entityAffected()
+function fuWeatherBase.entityAffected(self)
   -- if player has the correct immunity stat, return false
   for _,stat in pairs(self.immunityStats) do
     if status.statPositive(stat) then
@@ -88,42 +89,41 @@ function fuWeather:entityAffected()
     end
   end
   -- if player has sufficient total resistances, return false
-  if (self.totalResist() >= self.resistanceThreshold) do
+  if (fuWeatherBase.totalResist(self) >= self.resistanceThreshold) then
     return false
   end
   return true
 end
 
-function fuWeather:applyEffect()
-  self.activateVisualEffects()
+function fuWeatherBase.applyEffect(self)
+  activateVisualEffects() -- locally defined function
   self.effectActive = true
 end
 
-function fuWeather:removeEffect()
-  self.deactivateVisualEffects()
+function fuWeatherBase.removeEffect(self)
+  deactivateVisualEffects() -- locally defined function
   self.effectActive = false
-  --effect.expire() -- This destroys the instance, right?
 end
 
 --[[ Checks whether or not the effect should be active, changes the effect's
     stat if necessary, and tries to play the "intro" warning message if it
     hasn't been played yet. ]]--
-function fuWeather:checkEffect()
+function fuWeatherBase.checkEffect(self)
   --[[ if not a player, or world type is "unknown" (on ship) then remove the
       effect and expire (should destroy this instance). ]]--
   if ((world.entityType(entity.id()) ~= "player")
   or world.type()=="unknown") then
-    self.removeEffect()
+    fuWeatherBase.removeEffect(self)
     effect.expire()
     return
   end
-  if self.entityAffected() then
+  if fuWeatherBase.entityAffected(self) then
     if (not self.effectActive) then
-      self.applyEffect()
+      fuWeatherBase.applyEffect(self)
     end
-    self.sendWarning("intro")
+    fuWeatherBase.sendWarning(self, "intro")
   elseif self.effectActive then
-    self.removeEffect()
+    fuWeatherBase.removeEffect(self)
   end
 end
 
@@ -134,7 +134,7 @@ end
     3. The message has not already been sent for this effect instance
     If successful, the message timer will be reset and the message will be
     flagged as used. ]]--
-function fuWeather:sendWarning(type)
+function fuWeatherBase.sendWarning(self, type)
   if (self.messages[type] ~= nil) then
     if (self.messageTimer <= 0) then
       if (self.usedMessages[type] ~= true) then
@@ -148,7 +148,7 @@ end
 
 --============================ CONDITIONAL CHECKS ===========================--
 
-function fuWeather:lightLevel()
+function fuWeatherBase.lightLevel()
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
   position[2] = math.floor(position[2])
@@ -157,7 +157,7 @@ function fuWeather:lightLevel()
   return lightLevel
 end
 
-function fuWeather:hungerLevel()
+function fuWeatherBase.hungerLevel()
   if status.isResource("food") then
     return status.resource("food")
   else
@@ -165,21 +165,33 @@ function fuWeather:hungerLevel()
   end
 end
 
-function fuWeather:isDaytime()
+function fuWeatherBase.isDaytime()
   return (world.timeOfDay() < 0.5)
 end
 
-function fuWeather:isUnderground()
+function fuWeatherBase.isUnderground()
   return world.underground(mcontroller.position())
 end
 
-function fuWeather:isWet()
+function fuWeatherBase.isWet()
   local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
   return world.liquidAt(mouthPosition)
 end
 
-function fuWeather:isWindy()
+function fuWeatherBase.isWindy()
   return (world.windLevel(mcontroller.position()) > 40)
+end
+
+--============================ DEBUFFING FUNCTIONS ===========================--
+
+function fuWeatherBase.applyDebuffs(self, modifier)
+  modifierGroup = {}
+  i = 1
+  for dStat, dAmount in pairs(self.debuffs) do
+    modifierGroup[i] = {stat = dStat, amount = -dAmount * modifier}
+    i = i + 1
+  end
+  effect.addStatModifierGroup(modifierGroup)
 end
 
 --============================= GRAPHICAL EFFECTS ============================--
@@ -187,26 +199,13 @@ end
     each weather type. I have left these here as an "abstract class"-style
     definition. ]]--
 
-function fuWeather:activateVisualEffects()
-end
+--[[
+function activateVisualEffects()
 
-function fuWeather:deactivateVisualEffects()
-end
+function deactivateVisualEffects()
 
-function fuWeather:createAlert()
-end
-
---============================ DEBUFFING FUNCTIONS ===========================--
-
-function fuWeather:applyDebuffs(modifier)
-  modifierGroup = {}
-  i = 1
-  for dStat, dAmount in pairs(self.debuffs) do
-    modifierGroup[i] = {stat = dStat, amount = -dAmount}
-    i = i + 1
-  end
-  effect.addStatModifierGroup(modifierGroup)
-end
+function createAlert()
+]]--
 
 --=========================== MAIN UPDATE FUNCTION ==========================--
 --[[ NOTE: The actual update() function must be defined in each weather
@@ -214,9 +213,9 @@ end
     weather effect does can be achieved simply by calling the method
     self.parent.update(). ]]--
 
-function fuWeather:update(dt)
+function fuWeatherBase.update(self, dt)
   -- Check that weather effect is (still) active.
-  self.checkEffect()
+  fuWeatherBase.checkEffect(self)
   if (not self.effectActive) then
     return
   end
@@ -225,22 +224,22 @@ function fuWeather:update(dt)
   self.debuffTimer = math.max(self.debuffTimer - dt, 0)
 
   -- Calculate the total effect modifier.
-  local totalModifier = self.resistModifier()
-  if (self.modifiers["night"] ~= nil) and (not self.isDaytime()) then
+  local totalModifier = fuWeatherBase.resistModifier(self)
+  if (self.modifiers["night"] ~= nil) and (not fuWeatherBase.isDaytime()) then
     totalModifier = totalModifier * self.modifiers["night"]
-    self.sendWarning("night")
+    fuWeatherBase.sendWarning(self, "night")
   end
-  if (self.modifiers["underground"] ~= nil) and (self.isUnderground()) then
+  if (self.modifiers["underground"] ~= nil) and (fuWeatherBase.isUnderground()) then
     totalModifier = totalModifier * self.modifiers["underground"]
-    self.sendWarning("underground")
+    fuWeatherBase.sendWarning(self, "underground")
   end
-  if (self.modifiers["wet"] ~= nil) and (self.isWet()) then
+  if (self.modifiers["wet"] ~= nil) and (fuWeatherBase.isWet()) then
     totalModifier = totalModifier * self.modifiers["wet"]
-    self.sendWarning("wet")
+    fuWeatherBase.sendWarning(self, "wet")
   end
-  if (self.modifiers["windy"] ~= nil) and (self.isWindy()) then
+  if (self.modifiers["windy"] ~= nil) and (fuWeatherBase.isWindy()) then
     totalModifier = totalModifier * self.modifiers["windy"]
-    self.sendWarning("windy")
+    fuWeatherBase.sendWarning(self, "windy")
   end
 
   -- Apply health drain.
@@ -266,12 +265,12 @@ function fuWeather:update(dt)
   end
   -- Clamp modifiers between specified minimum and 1.0.
   mcontroller.controlModifiers({
-    speedModifier = math.min(math.max(speedMod, self.speedMin), 1.0)
+    speedModifier = math.min(math.max(speedMod, self.speedMin), 1.0),
     airJumpModifier = math.min(math.max(jumpMod, self.jumpMin), 1.0)
   })
   -- Periodically apply any stat debuffs.
   if (self.debuffTimer == 0) then
-    self.applyDebuffs(totalModifier)
+    fuWeatherBase.applyDebuffs(self, totalModifier)
     self.debuffTimer = self.baseDebuffRate
   end
 end
