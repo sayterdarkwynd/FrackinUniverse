@@ -1,7 +1,4 @@
 require("/scripts/vec2.lua")
-require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
-
-fuHeatWeather = fuWeather.new{}
 
 function init()
 	self.timerRadioMessage = 0  -- initial delay for secondary radiomessages

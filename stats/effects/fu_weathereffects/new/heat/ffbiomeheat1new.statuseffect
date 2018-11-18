@@ -1,0 +1,45 @@
+{
+  "name" : "ffbiomeheat1",
+  "blockingStat" : "",
+
+  "effectConfig" : {
+    "resistanceTypes" : {
+      "fireResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.2,
+    "immunityStats" : [
+      "biomeHeatImmunity",
+      "ffextremeheatImmunity"
+    ],
+
+    "healthDrain" : 4,
+    "hungerDrain" : 0.5,
+    "speedPenalty" : 1.0,
+    "speedMin" : 0.3,
+    "jumpPenalty" : 1.0,
+    "jumpMin" : 0.3,
+
+    "debuffRate" : 5,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "night" : 0.8,
+      "wet" : 0.7,
+      "underground" : 1.1
+    },
+
+    "messages" : {
+      "intro" : "biomeheat",
+      "underground" : "ffbiomeheatcavern"
+    }
+  },
+  "defaultDuration" : 2,
+
+  "scripts" : [
+    "heatweathernew.lua"
+  ],
+
+  "animationConfig" : "heatweathernew.animation",
+  "label" : "Severe Heat",
+  "icon" : "/interface/statuses/heat1.png"
+}
