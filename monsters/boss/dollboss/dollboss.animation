@@ -10,11 +10,15 @@
           },
           "screamwindup" : {
             "frames" : 4,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "scream"
           },
           "screamwinddown" : {
             "frames" : 4,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "mode" : "transition",
+            "transition" : "idle"
           },
           "scream" : {
             "frames" : 1,
@@ -56,12 +60,14 @@
           }
         }
       },
-      "lefthand" : {
+      "hands" : {
         "default" : "invisible",
         "states" : {
-          "invisible" : {
-            "frames" : 1,
-            "cycle" : 0.5
+          "spawn" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition": "idle"
           },
           "idle" : {
             "frames" : 1,
@@ -73,56 +79,19 @@
           },
           "windup" : {
             "frames" : 4,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+			      "mode" : "transition",
+            "transition": "slam"
           },
           "winddown" : {
             "frames" : 4,
-            "cycle" : 0.5
-          }
-        }
-      },
-      "righthand" : {
-        "default" : "invisible",
-        "states" : {
-          "invisible" : {
+            "cycle" : 0.5,
+			      "mode" : "transition",
+            "transition": "idle"
+          },
+		      "invisible" : {
             "frames" : 1,
             "cycle" : 0.5
-          },
-          "idle" : {
-            "frames" : 1,
-            "cycle" : 0.5
-          },
-          "slam" : {
-            "frames" : 1,
-            "cycle" : 0.5
-          },
-          "windup" : {
-            "frames" : 4,
-            "cycle" : 0.5
-          },
-          "winddown" : {
-            "frames" : 4,
-            "cycle" : 0.5
-          }
-        }
-      },
-      "sound" : {
-        "priority" : 0,
-        "default" : "off",
-        "states" : {
-          "off" : {
-          },
-          "sweep" : {
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monster/doll_charge.ogg",
-              "immediateSoundRangeMultiplier" : 1.5
-            }
-          },
-          "summon" : {
-            "properties" : {
-              "immediateSound" : "/sfx/melee/staff_aura_activate.ogg",
-              "immediateSoundRangeMultiplier" : 1.5
-            }
           }
         }
       },
@@ -144,48 +113,49 @@
         "properties" : {
           "zLevel" : 1,
           "centered" : true,
-          "transformationGroups" : [ "body" ]
+          "transformationGroups" : [ "body" ],
+          "rotationGroups" : ["all"]
         },
         "partStates" : {
           "head" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle<incorpreal>"
+                "image" : "<partImage>:idle<incorporeal>"
               }
             },
             "screamwindup" : {
               "properties" : {
-                "image" : "<partImage>:screamwindup.<frame><incorpreal>"
+                "image" : "<partImage>:screamwindup.<frame><incorporeal>"
               }
             },
             "screamwinddown" : {
               "properties" : {
-                "image" : "<partImage>:screamwinddown.<frame><incorpreal>"
+                "image" : "<partImage>:screamwinddown.<frame><incorporeal>"
               }
             },
             "scream" : {
               "properties" : {
-                "image" : "<partImage>:scream<incorpreal>"
+                "image" : "<partImage>:scream<incorporeal>"
               }
             },
             "laser" : {
               "properties" : {
-                "image" : "<partImage>:laser.<frame><incorpreal>"
+                "image" : "<partImage>:laser.<frame><incorporeal>"
               }
             },
             "sleeping" : {
               "properties" : {
-                "image" : "<partImage>:sleeping<incorpreal>"
+                "image" : "<partImage>:sleeping<incorporeal>"
               }
             },
             "spawn" : {
               "properties" : {
-                "image" : "<partImage>:spawn.<frame><incorpreal>"
+                "image" : "<partImage>:spawn.<frame><incorporeal>"
               }
             },
             "hurt" : {
               "properties" : {
-                "image" : "<partImage>:hurt<incorpreal>"
+                "image" : "<partImage>:hurt<incorporeal>"
               }
             }
           },
@@ -196,18 +166,19 @@
         "properties" : {
           "zLevel" : 0,
           "centered" : true,
-          "transformationGroups" : [ "body" ]
+          "transformationGroups" : [ "body" ],
+          "rotationGroups" : ["all"]
         },
         "partStates" : {
           "hair" : {
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame><incorpreal>"
+                "image" : "<partImage>:idle.<frame><incorporeal>"
               }
             },
             "hurt" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame><incorpreal>"
+                "image" : "<partImage>:idle.<frame><incorporeal>"
               }
             }
           }
@@ -216,40 +187,41 @@
       "lefthand" : {
         "properties" : {
           "zLevel" : 2,
-          "offset" : [-0.625, 2.5],
+          "offset" : [-5, -5],
           "centered" : true,
-          "transformationGroups" : [ "lefthand" ]
+          "transformationGroups" : [ "hands","lefthand" ],
+          "rotationGroups" : ["all"]
         },
         "partStates" : {
-          "lefthand" : {
-            "invisible" : {
-              "properties" : {
-                "image" : "<partImage>:invisible<incorpreal>"
-              }
-            },
+          "hands" : {
             "spawn" : {
               "properties" : {
-                "image" : "<partImage>:spawn.<frame><incorpreal>"
+                "image" : "<partImage>:spawn.<frame><incorporeal>"
               }
             },
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle<incorpreal>"
+                "image" : "<partImage>:idle<incorporeal>"
               }
             },
             "slam" : {
               "properties" : {
-                "image" : "<partImage>:slam<incorpreal>"
+                "image" : "<partImage>:slam<incorporeal>"
               }
             },
             "windup" : {
               "properties" : {
-                "image" : "<partImage>:windup.<frame><incorpreal>"
+                "image" : "<partImage>:windup.<frame><incorporeal>"
               }
             },
             "winddown" : {
               "properties" : {
-                "image" : "<partImage>:winddown.<frame><incorpreal>"
+                "image" : "<partImage>:winddown.<frame><incorporeal>"
+              }
+            },
+			      "invisible" : {
+              "properties" : {
+                "image" : "<partImage>:invisible<incorporeal>"
               }
             }
           }
@@ -257,41 +229,42 @@
       },
       "righthand" : {
         "properties" : {
-          "zLevel" : 2,
-          "offset" : [0.625, 2.5],
+          "zLevel" : 3,
+          "offset" : [5, -5],
           "centered" : true,
-          "transformationGroups" : [ "righthand" ]
+          "transformationGroups" : [ "hands","righthand" ],
+          "rotationGroups" : ["all"]
         },
         "partStates" : {
-          "righthand" : {
-            "invisible" : {
-              "properties" : {
-                "image" : "<partImage>?:invisible<incorpreal>"
-              }
-            },
+          "hands" : {
             "spawn" : {
               "properties" : {
-                "image" : "<partImage>:spawn.<frame><incorpreal>"
+                "image" : "<partImage>:spawn.<frame><incorporeal>?flipx"
               }
             },
             "idle" : {
               "properties" : {
-                "image" : "<partImage>:idle<incorpreal>"
+                "image" : "<partImage>:idle<incorporeal>?flipx"
               }
             },
             "slam" : {
               "properties" : {
-                "image" : "<partImage>:slam<incorpreal>"
+                "image" : "<partImage>:slam<incorporeal>?flipx"
               }
             },
             "windup" : {
               "properties" : {
-                "image" : "<partImage>:windup.<frame><incorpreal>"
+                "image" : "<partImage>:windup.<frame><incorporeal>?flipx"
               }
             },
             "winddown" : {
               "properties" : {
-                "image" : "<partImage>:winddown.<frame><incorpreal>"
+                "image" : "<partImage>:winddown.<frame><incorporeal>?flipx"
+              }
+            },
+			      "invisible" : {
+              "properties" : {
+                "image" : "<partImage>:invisible<incorporeal>?flipx"
               }
             }
           }
@@ -301,13 +274,17 @@
   },
 
   "globalTagDefaults" : {
-    "incorpreal" : ""
+    "incorporeal" : ""
   },
 
   "transformationGroups" : {
     "body" : {"interpolated" : true},
-    "lefthand" : {"interpolated" : true},
-    "righthand" : {"interpolated" : true}
+    "hands" : {"interpolated" : true},
+	  "lefthand" : {"interpolated" : true},
+	  "righthand" : {"interpolated" : true}
+  },
+  "rotationGroups" : {
+    "all" : {"interpolated" : true}
   },
 
   "particleEmitters" : {
@@ -316,67 +293,12 @@
       "particles" : [
       ]
     },
-    "deathWindup" : {
-      "emissionRate" : 5,
-      "offsetRegion" : [-6, -6, 6, 6],
-      "particles" : [
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" }
-      ]
-    },
-    "deathWindupExplosions" : {
-      "emissionRate" : 5,
-      "offsetRegion" : [-6, -6, 6, 6],
-      "particles" : [
-        { "particle" : "monstersplosion" },
-        { "particle" : "monstersplosion" },
-        { "particle" : "monstersplosion" },
-        { "particle" : "monstersplosion" },
-        { "particle" : "monstersplosion" },
-        { "particle" : "monstersplosion" },
-        { "particle" : "monstersplosion" }
-      ]
-    },
     "deathPoof" : {
-	  "emissionRate" : 1.0,
-      "offsetRegion" : [-6, -7, 6, 0],
-      "particles" : [
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/puff2c/puff2c.animation",
-            "size" : 1,
-            "angularVelocity" : 35,
-            "fade" : 1,
-            "destructionTime" : 1,
-            "position" : [0, 0],
-            "initialVelocity" : [0, 0],
-            "finalVelocity" : [0, 0],
-            "approach" : [1, 1],
-            "timeToLive" : 0.4,
-            "layer" : "middle"
-          }
-        },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" },
-        { "particle" : "dust4" }
-      ]
-	},
+  	  "emissionRate" : 1.0,
+        "offsetRegion" : [-6, -7, 6, 0],
+        "particles" : [
+        ]
+    },
     "slam" : {
       "emissionRate" : 1.0,
       "offsetRegion" : [-6, -8, 6, 6],
@@ -395,30 +317,29 @@
     }
   },
 
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
   "sounds" : {
     "turnHostile" : [  ],
-    "deathWindup" : {
-      "pool" : [ "/sfx/boss/boss_dying.ogg" ],
-      "rangeMultiplier" : 1.5
-    },
     "slam" : {
       "pool" : [ "/sfx/gun/grenadeblast2.ogg" ],
       "rangeMultiplier" : 1.5
     },
-    "dollslam" : {
-      "pool" : [ "/sfx/npc/boss/spiderboss_attack1.ogg", "/sfx/npc/boss/spiderboss_attack2.ogg" ],
+    "laser" : {
+      "pool" : [ "/sfx/npc/boss/dollboss_laser.ogg" ],
       "rangeMultiplier" : 1.5
     },
     "scream" : {
       "pool" : [ "/sfx/npc/boss/dollboss_scream.ogg" ],
       "rangeMultiplier" : 1.5
     },
-    "sweep" : {
-      "pool" : [ "/sfx/projectiles/fireout_louder.ogg" ],
-      "rangeMultiplier" : 1.5
-    },
     "summon" : {
-      "pool" : [ "/sfx/monsters/pod_release1.ogg" ],
+      "pool" : [ "/sfx/npc/monsters/pod_release1.ogg" ],
       "rangeMultiplier" : 1.5
     },
     "death" : {
@@ -426,13 +347,5 @@
       "rangeMultiplier" : 1.5
     },
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
-  },
-
-  "effects" : {
-    "blink" : {
-      "type" : "flash",
-      "time" : 0.25,
-      "directives" : "fade=ffffff;0.5"
-    }
   }
 }

@@ -19,11 +19,11 @@
     "butt" : "",
     "middle" : "cutesniperrifle.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/obliterator.ogg" ]
+      "fire" : [ "/sfx/weapons/sniper1.ogg", "/sfx/weapons/sniper2.ogg", "/sfx/weapons/sniper3.ogg" ]
     }
   },
 
@@ -37,7 +37,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 2,
+    "fireTime" : 1,
     "baseDps" : 5.5,
     "energyUsage" : 50.0,
     "inaccuracy" : 0,
@@ -46,7 +46,7 @@
     "fireType" : "auto",
 
     "projectileType" : "lightpellet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 90,
       "knockback" : 25,
       "damageKind" : "cosmic"
@@ -70,7 +70,7 @@
       "allowFlip" : false
     },
     "cooldown" : {
-      "duration" : 0.075,
+      "duration" : 0.25,
       "armRotation" : 5,
       "weaponRotation" : 5,
       "twoHanded" : true,

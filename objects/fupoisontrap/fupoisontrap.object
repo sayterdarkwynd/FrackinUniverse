@@ -1,0 +1,154 @@
+{
+  "objectName" : "fupoisontrap",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "Much drippy, such poison, so wow~ \n^blue;Input 1^white; : Poison Spray. \n^blue;Input 2^white; : Particles.^reset;",
+  "shortdescription" : "Poison Emitter",
+  "race" : "generic",
+
+  "category" : "trap",
+  "price" : 0,
+
+  "inventoryIcon" : "fupoisontrap-icon.png",
+
+  "fireTime" : 0.115,
+  "fireTimeVariance" : 0.015,
+  "inaccuracy" : 0.1,
+  "projectile" : "fupoisontrap-shot",
+  "projectileConfig" : {
+    "damageTeam" : { "type" : "environment" },
+    "power" : 10,
+    "speed" : 10
+  },
+
+  "orientations" : [
+    {
+      "image" : "fupoisontrap.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [0, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, -1] ],
+      "fudirection" : "up",
+      "projectileConfig" : {
+        "speed" : 30
+      }
+    },
+    {
+      "image" : "fupoisontrap-right.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, 0],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 0] ],
+      "fudirection" : "right"
+    },
+    {
+      "image" : "fupoisontrap.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, 1] ],
+      "fudirection" : "down"
+    },
+    {
+      "image" : "fupoisontrap-left.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, 0],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 0] ],
+      "fudirection" : "left"
+    },
+    {
+      "image" : "fupoisontrap-ul.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, -1] ],
+      "fudirection" : "upperL",
+      "projectileConfig" : {
+        "speed" : 20
+      }
+    },
+    {
+      "image" : "fupoisontrap-ur.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, -1] ],
+      "fudirection" : "upperR",
+      "projectileConfig" : {
+        "speed" : 20
+      }
+    },
+    {
+      "image" : "fupoisontrap-ur.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 1] ],
+      "fudirection" : "lowerR"
+    },
+    {
+      "image" : "fupoisontrap-ul.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 1] ],
+      "fudirection" : "lowerL"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/fuprojectiletrap/fuprojectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "fupoisontrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ ],
+      "on" : [  ],
+      "off" : [  ]
+    }
+  },
+
+//  "soundEffect" : "/sfx/objects/flametrap_loop.ogg", // this is a thing that also works
+
+  "inputNodes" : [ [0, 0], [1, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "health" : 5
+
+}

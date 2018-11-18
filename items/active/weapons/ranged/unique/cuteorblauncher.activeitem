@@ -7,11 +7,11 @@
   "description" : "Fire destructive balls of energy.
 ^yellow;Counts asa 'energy' for set bonuses^reset;",
   "shortdescription" : "Prismatic Orb Launcher",
-  "category" : "shotgun",
+  "category" : "grenadeLauncher",
   "level" : 4,
   "tooltipKind" : "gun2",
-  "weaponType" : "shotgun",
-  "itemTags" : ["weapon","ranged","shotgun", "energy", "upgradeableWeapon"],
+  "weaponType" : "Grenade Launcher",
+  "itemTags" : ["weapon","ranged","grenadelauncher", "energy", "upgradeableWeapon"],
   "twoHanded" : false,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -19,11 +19,11 @@
     "butt" : "",
     "middle" : "cuteorblauncher.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+    "muzzleFlash" : ""
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/disruptor.ogg" ]
+      "fire" : [ "/sfx/gun/grenade1.ogg", "/sfx/gun/grenade2.ogg" ]
     }
   },
 
@@ -37,15 +37,13 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.8,
+    "fireTime" : 1.25,
     "baseDps" : 6.6,
     "energyUsage" : 40.0,
     "inaccuracy" : 0,
-    "projectileCount" : 1,
-    "fireType" : "auto",
 
-    "projectileType" : "cutewobbleshot",
-    "projectileParameters" : { 
+    "projectileType" : "cuteplasmagrenade",
+    "projectileParameters" : {
       "speed" : 50,
       "knockback" : 30,
       "damageKind" : "cosmic"
@@ -66,16 +64,16 @@
 	      "twoHanded" : false,
 
 	      "allowRotate" : false,
-	      "allowFlip" : false
+	      "allowFlip" : true
 	    },
 	    "cooldown" : {
-	      "duration" : 0.075,
+	      "duration" : 0.4,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
 	      "twoHanded" : false,
 
 	      "allowRotate" : false,
-	      "allowFlip" : false
+	      "allowFlip" : true
 	    }
 	  }
   },

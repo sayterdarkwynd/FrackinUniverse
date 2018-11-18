@@ -1,0 +1,89 @@
+{
+  "projectileName" : "fublueflamethrower",
+  "image" : "blueflamethrower.png",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "timeToLive" : 0.01,
+  "physics" : "flame",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "pointLight" : false,
+  "actionOnReap" : [
+    {
+      "action" : "option",
+      "options" : [
+        {
+          "action" : "projectile",
+          "type" : "fublueflame",
+          "fuzzAngle" : 2,
+          "inheritDamageFactor" : 1,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "fublueflame",
+          "fuzzAngle" : 2,
+          "inheritDamageFactor" : 1,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "actions",
+          "list" : [
+            {
+              "action" : "projectile",
+              "type" : "fublueflame",
+              "fuzzAngle" : 2,
+              "inheritDamageFactor" : 1,
+              "inheritSpeedFactor" : 1
+            },
+            {
+              "action" : "projectile",
+              "type" : "fubluefire",
+              "inheritDamageFactor" : 0.5,
+              "inheritSpeedFactor" : 1.1,
+              "fuzzAngle" : 15,
+              "angleAdjust" : 15,
+              "autoFlipAdjust" : true
+            }
+          ]
+        },
+        {
+          "action" : "actions",
+          "list" : [
+            {
+              "action" : "projectile",
+              "type" : "fublueflame",
+              "fuzzAngle" : 2,
+              "inheritDamageFactor" : 1,
+              "inheritSpeedFactor" : 1
+            },
+            {
+              "action" : "projectile",
+              "type" : "fubluefire",
+              "inheritDamageFactor" : 0.5,
+              "inheritSpeedFactor" : 0.9,
+              "fuzzAngle" : 15,
+              "angleAdjust" : 15,
+              "autoFlipAdjust" : true
+            },
+            {
+              "action" : "projectile",
+              "type" : "fubluefire",
+              "inheritDamageFactor" : 0.5,
+              "inheritSpeedFactor" : 1.1,
+              "fuzzAngle" : 15,
+              "angleAdjust" : 15,
+              "autoFlipAdjust" : true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "damagePoly" : [ ],
+  "power" : 0.0,
+  "damageKind" : "flamethrower",
+  "statusEffects" : [
+    "burning2"
+  ],
+  "hydrophobic" : false
+}

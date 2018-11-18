@@ -20,7 +20,7 @@
     "middle" : "cutemachinegun.png",
     "middlefullbright" : "cutemachinegunfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "animatedParts" : {
@@ -31,16 +31,16 @@
 		  }
 		}
       }
-    },    
+    },
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    },   
+    },
     "sounds" : {
-      "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
+      "fire" : [ "/sfx/gun/ar1.ogg", "/sfx/gun/ar2.ogg", "/sfx/gun/ar3.ogg", "/sfx/gun/ar4.ogg", "/sfx/gun/ar5.ogg", "/sfx/gun/ar6.ogg" ]
     }
   },
 
@@ -54,16 +54,18 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.08,
+    "fireTime" : 0.145,
     "baseDps" : 9.7,
     "energyUsage" : 37.0,
     "inaccuracy" : 0.08,
 
+    "burstTime" : 0.075,
+    "burstCount" : 4,
     "projectileCount" : 1,
-    "fireType" : "auto",
+    "fireType" : ["auto", "burst"],
 
     "projectileType" : "lightpellet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 60,
       "knockback" : 4,
       "fullbright" : true,
@@ -88,7 +90,7 @@
 	      "allowFlip" : false
 	    },
 	    "cooldown" : {
-	      "duration" : 0.075,
+	      "duration" : 0.011,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
 	      "twoHanded" : true,

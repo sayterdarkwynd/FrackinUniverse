@@ -1,0 +1,92 @@
+{
+  "objectName" : "dollhousebouldertrap",
+  "colonyTags" : ["cute", "evil"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A trap that drops heavy boulders on unsuspecting intruders.",
+  "shortdescription" : "Dollhouse Boulder Trap",
+  "race" : "avian",
+
+  "apexDescription" : "If I time my movements correctly I can avoid the falling boulders.",
+  "avianDescription" : "Better time my moves right, I don't want a boulder to land on me.",
+  "dollhouseDescription" : "Heavy rockss fall from this hole.",
+  "glitchDescription" : "Disappointed. Who would make a trap to drop boulders with such convenient timing?",
+  "humanDescription" : "Boulders come out of that little hole.",
+  "hylotlDescription" : "A boulder trap is easy to avoid with well timed movements.",
+  "novakidDescription" : "Rollin' boulders!",
+
+  "category" : "trap",
+  "price" : 200,
+
+  "inventoryIcon" : "dollhousebouldertrapicon.png",
+  "orientations" : [
+    {
+      "image" : "dollhousebouldertrap.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationPosition" : [-16, -16],
+      "animationParts" : {
+        "bg" : "dollhousebouldertrap.png",
+        "fg" : "dollhousebouldertrap.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "bgAnchors" : [ [-1, 1], [0, 1], [-2, 0], [1, 0], [-2, -1], [1, -1], [-1, -2], [0, -2] ]
+    },
+    {
+      "image" : "dollhousebouldertrap.png:<color>.<frame>",
+      "imagePosition" : [-16, -16],
+      "direction" : "right",
+
+      "animationPosition" : [-16, -16],
+      "animationParts" : {
+        "bg" : "dollhousebouldertrap.png",
+        "fg" : "dollhousebouldertrap.png"
+      },
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "bgAnchors" : [ [-1, 1], [0, 1], [-2, 0], [1, 0], [-2, -1], [1, -1], [-1, -2], [0, -2] ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/projectiletrap/projectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "/objects/wired/projectiletrap/projectiletrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ ],
+      "on" : [ ],
+      "off" : [ ]
+    }
+  },
+
+  "inputNodes" : [ [0, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "fireTime" : 3.0, // rate of fire
+  "fireTimeVariance" : 0.0, // variation in rate of fire
+  "projectile" : "avianboulderappear", // name of projectile (required)
+  "projectileConfig" : { // extra configuration overrides for projectile
+    "damageTeam" : { "type" : "indiscriminate" },
+    "power" : 40,
+    "speed" : 0
+  },
+
+  "health" : 5,
+
+  "smashOnBreak" : true,
+  "smashSounds" : [ "/sfx/objects/rock_break1.ogg", "/sfx/objects/rock_break2.ogg", "/sfx/objects/rock_break3.ogg", "/sfx/objects/rock_break4.ogg", "/sfx/objects/rock_break5.ogg", "/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg" ],
+  "smashParticles" : [ { "count" : 10, "particle" : "potshard" } ]
+}

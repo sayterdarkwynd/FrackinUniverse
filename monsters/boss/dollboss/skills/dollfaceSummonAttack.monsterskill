@@ -1,0 +1,17 @@
+{
+  "name" : "dollfaceSummonAttack",
+  "label" : "SUMMON DOLLS",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/dollboss/skills/dollfaceSummonAttack.lua" ],
+
+    "dollfaceSummonAttack" : {
+      "projectileType" : "dollspawn",
+      "maxDolls" : 10, //can never summon more then 10.
+      "dollCounts" : [3,4,5,10], //+1 each phase, +5 for final phase
+      "spawnRange" : [8,16], //radial :)
+      "interval" : 0.4 //spawning interval
+    }
+  }
+}

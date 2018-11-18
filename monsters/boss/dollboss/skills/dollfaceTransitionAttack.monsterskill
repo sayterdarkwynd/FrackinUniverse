@@ -1,0 +1,24 @@
+{
+  "name" : "dollfaceTransitionAttack",
+  "label" : "TRANSITION",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/dollboss/skills/dollfaceTransitionAttack.lua" ],
+
+    "dollfaceTransitionAttack" : {
+      "skillTime": 1,
+
+      "projectileOffset" : [-0.5, 0],
+      "fireInterval" : 0.1,
+      "projectile" : {
+        "type" : "fusoundwaveboss",
+        "config" : {
+          "speed" : 60,
+          "power" : 5,
+          "timeToLive" : 1
+        }
+      }
+    }
+  }
+}

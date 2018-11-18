@@ -12,24 +12,21 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_ghostlyglow.lua"
+      "/monsters/monster.lua"
     ],
 
     "behavior" : "monster",
-
-    "facingMode" : "transformation",
 
     "renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 100,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
-      "keepTargetInRange" : 100,
-      "targetOutOfSightTime" : 10.0,
+      "keepTargetInRange" : 200,
+      "targetOutOfSightTime" : 5.0,
 
       "hurtTime" : 0.25,
       "hurtWaitForGround" : false,
@@ -106,21 +103,7 @@
 
       "concurrentActions" : [],
 
-      "concurrentHostileActions" : [
-        {
-          "name" : "action-projectile",
-          "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "bluefire",
-            "projectileParameters" : {
-              "power" : 2
-            },
-            "aimDirection" : [0, 1],
-            "inaccuracy" : 0,
-            "fireOffset" : [0, 1.75]
-          }
-        }
-      ]
+      "concurrentHostileActions" : []
     },
 
     "touchDamage" : {

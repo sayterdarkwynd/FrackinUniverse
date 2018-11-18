@@ -14,45 +14,56 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/boss/dollboss/bossMonster.lua",
+      "/monsters/simpleRangedAttack.lua",
+      "/monsters/shockwaveAttack.lua",
+      "/scripts/stateMachine.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+
+      "/monsters/boss/dollboss/states/idleState.lua",
+      "/monsters/boss/dollboss/states/dieState.lua",
+      "/monsters/boss/dollboss/states/reset.lua"
     ],
-    "initialScriptDelta" : 1,
-    "behaviorUpdateDelta" : 1,
-	
-	"behavior" : "dollboss",
-    "behaviorConfig" : {
-      "deathMovementParameters" : {
-        "gravityEnabled" : true,
-        "bounceFactor" : 0.1
+
+    "skills" : ["dollfaceSlamAttack", "dollfaceSwoopAttack", "dollfaceSummonAttack", "dollfaceLaserAttack", "dollfaceScreamAttack", "dollfaceTransitionAttack"],
+    "skillCount" : 6,
+
+    "phases" : [
+      {
+        "skills" : ["dollfaceSlamAttack", "dollfaceSummonAttack"]
+      },
+      {
+        "enterPhase" : "dollfaceTransitionAttack",
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.8,
+        "skills" : ["dollfaceSlamAttack", "dollfaceSwoopAttack", "dollfaceSummonAttack"]
+      },
+      {
+        "enterPhase" : "dollfaceTransitionAttack",
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.50,
+        "skills" : ["dollfaceSlamAttack", "dollfaceSwoopAttack", "dollfaceLaserAttack", "dollfaceSummonAttack"]
+      },
+      {
+        "enterPhase" : "dollfaceTransitionAttack",
+        "trigger" : "healthPercentage",
+        "healthPercentage" : 0.25,
+        "skills" : ["dollfaceSlamAttack", "dollfaceSwoopAttack", "dollfaceLaserAttack", "dollfaceScreamAttack", "dollfaceSummonAttack"]
       }
-    },
+    ],
 
-    //shockwave
-    "projectileType" : "dollbossshockwave",
-    "projectileParameters" : null,
-    "shockWaveBounds" : [-0.4, -1.375, 0.4, 0.0],
-    "shockwaveHeight" : 1.375,
-    "maxDistance" : 15,
+    "queryTargetDistance" : 50.0,
+    "trackTargetDistance" : 200.0,
+    "switchTargetDistance" : 100.0,
+    "keepTargetInSight" : true,
 
-    "damageBar" : "None",
+    "cruiseDistance" : 25,
+    "ghosttime" : 12,
 
-    "knockoutTime" : 0,
-    "knockoutEffect" : "blink",
-    "deathParticles" : "deathPoof",
-
-    "alwaysAggressive" : true,
-
-    //"rotationOffset" : -4.71,
-    "lockFacingDirection" : true,
-
+    "metaBoundBox" : [-6.0, -5.0, 6.0, 5.0],
     "scale" : 1.0,
 
-    //"portraitIcon" : "/monsters/boss/spiderboss/spiderbossicon.png",
-
-    "lineSensors" : {
-      "ground" : [0, -15]
-    },
-	
     "movementSettings" : {
       "gravityEnabled" : false,
       "collisionPoly" : [[-6.0,0.5],[-1.5,6.125],[1.5,6.125],[6.0,0.5],[6.0,-1.5],[2.75,-5.125],[-2.75,-5.125],[-6.0,-1.5]],
@@ -70,8 +81,10 @@
       "physicsEffectCategories" : ["boss"]
     },
 
-	 "metaBoundBox" : [-25, -25, 25, 25],
-	
+    "knockoutTime" : 0.1,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
     "touchDamage" : {
       "poly" : [[-6.0,0.5],[-1.5,6.125],[1.5,6.125],[6.0,0.5],[6.0,-1.5],[2.75,-5.125],[-2.75,-5.125],[-6.0,-1.5]],
       "damage" : 20,
@@ -82,7 +95,7 @@
       "statusEffects" : [ "slow" ]
     },
 
-    "statusSettings" : {
+    "statusSettings": {
       "statusProperties" : {
         "targetMaterialKind" : "organic"
       },
@@ -193,6 +206,27 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+
+    "projectiles" : {
+      "deathexplosion" : {
+        "type" : "dollbossdeath",
+        "config" : {
+          "speed" : 0,
+          "power" : 2,
+
+          "actionOnReap" : [
+            {
+              "action" : "config",
+              "file" : "/projectiles/boss/dollboss/dollbossdeath/dollbossdeath.config"
+            }
+          ]
+        },
+
+        "fireTime" : 8.0,
+        "fireInterval" : 0.2,
+        "cooldown" : 0.1
+      }
+    }
   }
 }

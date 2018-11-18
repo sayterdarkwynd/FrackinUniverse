@@ -1,0 +1,50 @@
+{
+  "objectName" : "pipedoor",
+  "colonyTags" : ["sewer","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 250,
+  "description" : "Pipes that open and close.",
+  "shortdescription" : "Pipe Door",
+  "race" : "generic",
+
+
+  "inventoryIcon" : "pipedooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "pipedoor.png:default",
+      "imagePosition" : [-1, 0],
+      "renderLayer" : "Object+5",
+
+      "spaces" : [
+                    [0, 0], [0, 1], [0, 2], [0, 3], [0, 4]
+      ],
+      "fgAnchors" : [ [0, -1], [0, 5]]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/metalslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/metalslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "pipedoor.png"
+  },
+  "animationPosition" : [-1,0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

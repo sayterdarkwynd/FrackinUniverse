@@ -1,0 +1,28 @@
+{
+  "projectileName" : "fubluefire2",
+  "physics" : "grenadenobounce",
+  "bounces" : 0,
+  "timeToLive" : 1,
+  "speed" : 15,
+  "image" : "bluefire.png",
+  "animationCycle" : 0.55,
+  "lightColor" : [60, 20, 250],
+  "frameNumber" : 4,
+  "emitters" : [ "bluefireplasma", "blueflames" ],
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "hydrophobic" : false,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "bluefirefinish",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "fire",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "statusEffects" : [
+    "burning2"
+  ]
+}

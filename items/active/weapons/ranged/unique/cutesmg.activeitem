@@ -19,11 +19,11 @@
     "butt" : "",
     "middle" : "cutesmg.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
+      "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg" ]
     }
   },
 
@@ -37,7 +37,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.08,
+    "fireTime" : 0.145,
     "baseDps" : 6,
     "energyUsage" : 42,
     "inaccuracy" : 0.008,
@@ -67,7 +67,7 @@
         "weaponRotation" : 1,
         "twoHanded" : false,
 
-        "allowRotate" : true,
+        "allowRotate" : false,
         "weaponOffset" : [-0.5, 0],
         "allowFlip" : true
       },
@@ -77,7 +77,7 @@
         "weaponRotation" : 1,
         "twoHanded" : false,
 
-        "allowRotate" : true,
+        "allowRotate" : false,
         "weaponOffset" : [-0.5, 0],
         "allowFlip" : true
       }

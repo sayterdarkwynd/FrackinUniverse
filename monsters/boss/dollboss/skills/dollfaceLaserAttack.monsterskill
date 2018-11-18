@@ -1,0 +1,33 @@
+{
+  "name" : "dollfaceLaserAttack",
+  "label" : "EYEBEAM",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/dollboss/skills/dollfaceLaserAttack.lua" ],
+
+    "dollfaceLaserAttack" : {
+      "skillTime": 5,
+      "bobTime" : 2,
+      "bobHeight" : 3,
+
+      "projectileOffsets" : [[-1.2, 1],[1.2, 1]],
+      "fireInterval" : 1,
+      "projectile" : {
+        "type" : "dollbosslaser",
+        "config" : {
+          "speed" : 80,
+          "power" : 8,
+          "periodicActions" : [
+            {
+              "time" : 0,
+              "repeat" : false,
+              "action" : "sound",
+              "options" : [ "/sfx/npc/boss/dollboss_laser.ogg" ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

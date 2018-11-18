@@ -11,7 +11,7 @@
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
-  
+
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
@@ -19,16 +19,10 @@
     "middle" : "cutearmgun_rockcat.png",
     "middlefullbright" : "cutearmgunfullbright.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
-  }, 
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
   "animationCustom" : {
-    "animatedParts" : {
-      "parts" : {
-        "middlefullbright" : { "properties" : {"offset" : [0.0, 0.34]} }
-      }
-    },    
-    "sounds" : { "fire" : [ "/sfx/weapons/hailstrike.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "sounds" : { "fire" : [ "/sfx/weapons/hailstrike.ogg" ] }
   },
   "baseOffset" : [0.0, 0.34],
   "muzzleOffset" : [1.0, 0.05],
@@ -36,7 +30,6 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "cosmic",
-  "learnBlueprintsOnPickup" : [], 
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],

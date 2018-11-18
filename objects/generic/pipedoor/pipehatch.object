@@ -1,0 +1,50 @@
+{
+  "objectName" : "pipehatch",
+  "colonyTags" : ["sewer","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 250,
+  "description" : "Pipes that open and close.",
+  "shortdescription" : "Pipe Hatch",
+  "race" : "generic",
+
+
+  "inventoryIcon" : "pipehatchicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "pipehatch.png:default",
+      "imagePosition" : [-16, -1],
+      "renderLayer" : "Object+5",
+
+      "spaces" : [
+                    [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0]
+      ],
+      "fgAnchors" : [ [-3, 0], [3, 0]]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/metalslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/metalslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "pipehatch.png"
+  },
+  "animationPosition" : [-16, -1],
+
+  "inputNodes" : [ [-2, 0] ],
+  "outputNodes" : [ [2, 0] ]
+}

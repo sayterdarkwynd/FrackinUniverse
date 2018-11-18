@@ -19,13 +19,13 @@
     "butt" : "",
     "middle" : "cuteshotgun.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
-    "sounds" : { 
-      "fire" : [ "/sfx/weapons/hailstrike.ogg" ],
+    "sounds" : {
+      "fire" : [ "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg" ],
       "cooldown":[  "/sfx/weapons/shotgunreload.ogg"]
-    }    
+    }
   },
 
   "baseOffset" : [0.84, 0.32],
@@ -36,7 +36,7 @@
   "elementalType" : "cosmic",
 
   "isReloader" : 1,
-  
+
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -49,29 +49,29 @@
     "fireType" : "auto",
 
     "projectileType" : "lightpellet",
-    "projectileParameters" : { 
+    "projectileParameters" : {
       "speed" : 62,
       "knockback" : 7,
       "damageKind" : "cosmic"
     },
     "stances" : {
-      "idle":{  
+      "idle":{
         "armRotation":0,
         "weaponRotation":0,
         "twoHanded":true,
         "allowRotate":true,
         "allowFlip":true
       },
-      "fire":{  
-        "duration":0.1,
+      "fire":{
+        "duration":0,
         "armRotation":3,
         "weaponRotation":8,
         "twoHanded":true,
         "allowRotate":false,
         "allowFlip":true
       },
-      "cooldown":{  
-        "duration":0.3,
+      "cooldown":{
+        "duration":0.2,
         "armRotation":-7,
         "weaponRotation":-360,
         "twoHanded":true,
@@ -83,7 +83,7 @@
 
   "critChance" : 1,
   "critBonus" : 4,
-  
+
   "altAbilityType" : "grenadelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

@@ -8,9 +8,9 @@
 ^yellow;Counts as 'energy' for set bonuses^reset;",
     "shortdescription" : "Prismatic Rocket Launcher",
   "level" : 4,
-  "category" : "rocketLauncher", 
+  "category" : "rocketLauncher",
   "tooltipKind" : "gun2",
-  "weaponType" : "Rifle",
+  "weaponType" : "Rocket Launcher",
   "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
@@ -19,11 +19,12 @@
     "butt" : "",
     "middle" : "cuterocketlauncher.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
+    "muzzleFlash" : ""
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/darknessblast.ogg" ]
+      "fire" : [ "/sfx/weapons/rocketburst.ogg" ],
+      "reload" : [ "/sfx/gun/rocket_reload_clip1.ogg", "/sfx/gun/rocket_reload_clip2.ogg", "/sfx/gun/rocket_reload_clip3.ogg" ]
     }
   },
 
@@ -32,21 +33,23 @@
   "learnBlueprintsOnPickup" : [  ],
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "isReloader" : 1,
+
+  "elementalType" : "cosmic",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.35,
+    "fireTime" : 0.2,
     "baseDps" : 5.8,
     "energyUsage" : 35.0,
-    "inaccuracy" : 0.01,
+    "inaccuracy" : 0.2,
 
     "projectileCount" : 4,
     "fireType" : "auto",
-    
-    "projectileType" : "fuwidebeamshotrocket",
-    "projectileParameters" : { 
+
+    "projectileType" : "cuteplasmarocket",
+    "projectileParameters" : {
       "speed" : 80,
       "knockback" : 20,
       "timeToLive" : 4

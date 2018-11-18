@@ -1,0 +1,38 @@
+{
+  "id" : "dollhouse_mission",
+  "mainQuest" : true,
+  "prerequisites" : [],
+  "title" : "An eerie message.",
+  "text" : "Come and play in my dollhouse.",
+  "completionText" : "Oh you actually survived, oh damn it. Well here's you reward.",
+  "moneyRange" : [50, 50],
+  "rewards" : [ [ ["crewcontract_magicalgirl", 1], ["cutearmors", 1] ] ],
+  "canBeAbandoned" : false,
+  "questGiverIndicator" : "mainquestreceiver",
+  "questReceiverIndicator" : "mainquestreceiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "questGiver",
+      "questComplete" : "questReceiver"
+    },
+    "associatedMission" : "dollhousemission",
+    "missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
+    "missionRadioMessage" : {
+      "messageId" : "dollhousemissionunlocked",
+      "unique" : false,
+      "text" : "I have received the coordinates for the ^orange;Dollhouse^reset;. ^green;Use the ship computer^reset; to access the location."
+    },
+    "requireTurnIn" : false,
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "fauxwood",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

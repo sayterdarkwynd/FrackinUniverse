@@ -1,0 +1,185 @@
+{
+  "objectName" : "fusewerpipe-end",
+  "objectType" : "physics",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "A sewer pipe used for transporting waste.",
+  "glitchDescription" : "Disgusted. This pipe is filthy, I would hate to see what is inside it.",
+  "floranDescription" : "Sssmelly ssewer pipess.",
+  "novakidDescription" : "Filthy, dirty lookin' sewer pipes.",
+  "shortdescription" : "Sewerpipe End",
+  "race" : "generic",
+
+  "category" : "trap",
+  "price" : 0,
+
+  "inventoryIcon" : "fusewerpipe-end-icon.png",
+
+  "orientations" : [
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:down",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, -1] ]
+    },
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:left",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 0] ]
+    },
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:up",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, 1] ]
+    },
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:right",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 0] ]
+    },
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:lr",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, -1] ]
+    },
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:ll",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, -1] ]
+    },
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:ul",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 1] ]
+    },
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:ur",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 1] ]
+    },
+    {
+      "image" : "fusewerpipe-end.png",
+      "imagePosition" : [-3, -3],
+      "direction" : "right",
+
+      "animationParts" : {
+        "bg" : "fusewerpipe-end-bg.png:back",
+        "fg" : "fusewerpipe-end.png"
+      },
+      "animationPosition" : [-3, -3],
+      "renderLayer" : "foregroundentity+1",
+
+      "spaceScan" : 0.1,
+      "bgAnchors" : [ [0, 0] ]
+    }
+  ],
+
+  "physicsCollisions" : {
+    "oneTile" : {
+      "collision" : [
+        [0, 0],
+        [1, 0],
+        [1, 1],
+        [0, 1]
+      ],
+      "collisionKind" : "slippery",
+// Note to self, look into whitelisting liquids and renderlayer options
+      "enabled" : false
+    }
+  },
+
+  "enableCollision" : "oneTile",
+
+  "scripts" : [ "fusewerpipe-end.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "fusewerpipe-end.animation",
+
+  "inputNodes" : [ [0, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "health" : 5
+
+}

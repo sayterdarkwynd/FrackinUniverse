@@ -1,0 +1,42 @@
+{
+  "name" : "railsawtrap",
+  "boundBox" : [-1.5, -1.5, 1.5, 1.5],
+  "slaveControlTimeout" : 2.0,
+  "slaveControlHeartbeat" : 1.0,
+  "canBeHit" : false,
+
+  "persistent" : true,
+
+  "script" : "/vehicles/railsawtrap/railsawtrap.lua",
+  "animation" : "/vehicles/railsawtrap/railsawtrap.animation",
+
+  "animationPartTags" : {
+    "saw" : {
+      "partImage" : "/vehicles/railsawtrap/railsawtrap.png"
+    }
+  },
+
+  "movementSettings" : {
+    "collisionPoly" : [ [-1.5, 1], [-1, 1.5], [1, 1.5], [1.5, 1], [1.5, -1], [1, -1.5], [-1, -1.5], [-1.5, -1] ],
+    "mass" : 2.0,
+    "ignorePlatformCollision" : true,
+    "physicsEffectCategories" : []
+  },
+
+  "damageSources" : {
+    "sawblade" : {
+      "enabled" : true,
+      "poly" : [ [-1.5, 1], [-1, 1.5], [1, 1.5], [1.5, 1], [1.5, -1], [1, -1.5], [-1, -1.5], [-1.5, -1] ],
+      "damage" : 0,
+      "damageType" : "Environment",
+      "damageRepeatTimeout" : 0.25,
+      "knockback" : 15
+    }
+  },
+
+  "loungePositions" : {},
+
+  "railConfig" : {
+    "speed" : 25
+  }
+}

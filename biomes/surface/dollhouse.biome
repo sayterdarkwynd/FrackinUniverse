@@ -1,0 +1,144 @@
+{
+  "name" : "dollhousemission",
+  "friendlyName" : "dollhousemission",
+
+  "statusEffects" : [ "radioactiveweathernew3" ],
+
+  "hueShiftOptions" : [-250, -200, -150, -100, -80, -50, -30, 0, -20, -15, -10, -5, 0, 5, 10, 15, 20, 30, 50, 80, 100, 150, 200, 250],
+
+  "weather" : [
+    [0, [
+      "/weather.config:dollhouse"
+    ]]
+  ],
+
+  "skyOptions" : [
+    {
+      // pinkish all around
+      "mainColor" : [255, 255, 255],
+
+      "morningColors" : [ [255, 167, 152], [255, 163, 208] ],
+      "dayColors" : [ [228, 152, 169], [243, 205, 193] ],
+      "eveningColors" : [ [221, 186, 235], [247, 73, 121] ],
+      "nightColors" : [ [28, 14, 14, 60], [28, 14, 14, 160] ],
+
+      "morningLightColor" : [195, 156, 149],
+      "dayLightColor" : [197, 184, 182],
+      "eveningLightColor" : [197, 98, 126],
+      "nightLightColor" : [28, 14, 14]
+    }
+  ],
+
+  "mainBlock" : "chromadirtdungeon", //same except no radiant light
+  "subBlocks" : [ "rainbowsand", "retexrock17" ],
+  "ores" : "ff_chromaticOres",
+  "baseHueShiftMax" : 120,
+  "modHueShiftMax" : 180,
+  "ceilingGrassMod" : [ "roots" ],
+  "ceilingGrassModDensity" : 0.6,
+
+  "parallax" : "/parallax/surface/dollhousemission.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/forest_day.ogg", "/sfx/environmental/forest_day2.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/forest_night.ogg", "/sfx/environmental/forest_night2.ogg" ]
+    }
+  },
+
+  //SURFACE
+
+  "surfacePlaceables" : {
+    "grassMod" : [ "aliengrass" ],
+    "grassModDensity" : 0.9,
+
+    "items" : [
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:overgroundChests",
+
+        "type" : "treasureBox",
+        "treasureBoxSets" : [ "dollhouseChest" ]
+      },
+
+      //BUSHES
+      {
+        "mode" : "floor",
+        "priority" : 3.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:denseMedium",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [0.35, "colourfulbush1" ], [0.35, "colourfulbush2" ], [0.35, "colourfulbush3" ], [0.35, "colourfulbush4" ], [0.35, "colourfulbush5" ] ],
+            "parameters" : { }
+          }
+        ]
+      },
+      {
+        "mode" : "floor",
+        "priority" : 2.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:ffCommon",
+
+        "type" : "bush",
+        "bushes" : [
+          {
+            "name" : "swampplant",
+            "baseHueShiftMax" : 60,
+            "modHueShiftMax" : 220
+          },
+          {
+            "name" : "chromaticgrass",
+            "baseHueShiftMax" : 60,
+            "modHueShiftMax" : 220
+          }
+        ]
+      },
+      //TREES
+      {
+        "mode" : "floor",
+        "priority" : 1.0,
+        "variants" : 12,
+        "distribution" : "/biomes/distributions.config:denseLarge",
+
+        "type" : "tree",
+        "treeFoliageHueShiftMax" : 0,
+        "treeStemHueShiftMax" : 0,
+        "treeStemList" : [ "chromatree"  ],
+        "treeFoliageList" : [ "chromafoliage" ]
+      },
+      //GRASS
+      {
+        "mode" : "floor",
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:scatteredSmall",
+
+        "type" : "grass",
+        "grasses" : [ "dandy", "geometricflower", "lillies", "signplant", "tiberia"  ]
+      },
+      //DARKLIGHT BLOSSOMS
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "wilddarklightflower" ] ],
+            "parameters" : {
+              "startingStage" : 2
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

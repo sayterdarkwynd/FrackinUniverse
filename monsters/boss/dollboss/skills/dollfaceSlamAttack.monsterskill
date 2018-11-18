@@ -1,0 +1,32 @@
+{
+  "name" : "dollfaceSlamAttack",
+  "label" : "SLAM",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/dollboss/skills/dollfaceSlamAttack.lua" ],
+
+    "dollfaceSlamAttack" : {
+      "skillTime" : 10,
+
+      "slamHeight" : 8,
+      "riseSpeed" : 10,
+      "slamSpeed" : 70,
+
+      "stunDuration" : 0,
+
+      "shockwaveBounds" : [-0.4, -1.375, 0.4, 0.0],
+      "shockwaveHeight" : 1.375,
+      "maxDistance" : 15,
+      "impactLine" : [[0, -4.125], [0, -7]],
+      "directions" : [1, -1],
+      "projectile" : {
+        "type" : "dollbossshockwave",
+        "config" : {
+          "speed" : 0,
+          "power" : 8
+        }
+      }
+    }
+  }
+}

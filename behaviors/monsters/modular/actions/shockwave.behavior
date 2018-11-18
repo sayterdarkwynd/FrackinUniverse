@@ -1,0 +1,223 @@
+{
+  "name": "fireshockwave",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/math.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/behavior.lua",
+    "/scripts/actions/sensor.lua"
+  ],
+  "parameters": {
+    "spawnConfig": {},
+    "bounds": [-0.4, -1.375, 0.4, 0],
+    "height": 1.375,
+    "distance": 12,
+    "impactLine": "[[1.25, -1.5][1.25, -4.5]]",
+    "directions": []
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "each",
+        "type": "decorator",
+        "name": "each",
+        "parameters": {
+          "list": {"value": "directions"},
+          "type": {"value": "number"}
+        },
+        "child": {
+          "title": "sequence",
+          "type": "composite",
+          "name": "sequence",
+          "parameters": {},
+          "children": [
+            {
+              "title": "multiply",
+              "type": "action",
+              "name": "multiply",
+              "parameters": {
+                "factor": {"value": "direction"},
+                "number": {"key": "\"facingDirection\""}
+              },
+              "output": {
+                "result": "direction"
+              }
+            },
+            {
+              "title": "breakVector",
+              "type": "action",
+              "name": "breakVector",
+              "parameters": {
+                "vector": {"value": "impactposition"}
+              },
+              "output": {
+                "x": "impactx",
+                "y": "impacty"
+              }
+            },
+            {
+              "title": "repeater",
+              "type": "decorator",
+              "name": "repeater",
+              "parameters": {
+                "maxLoops": {"value": "distance"},
+                "untilSuccess": {"value": false}
+              },
+              "child": {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "unsetFlag",
+                    "type": "action",
+                    "name": "unsetFlag",
+                    "parameters": {
+                      "name": {"key": "continue"}
+                    }
+                  },
+                  {
+                    "title": "add",
+                    "type": "action",
+                    "name": "add",
+                    "parameters": {
+                      "addend": {"value": 1},
+                      "number": {"value": "count"}
+                    },
+                    "output": {
+                      "result": "count"
+                    }
+                  },
+                  {
+                    "title": "listReverse",
+                    "type": "action",
+                    "name": "listReverse",
+                    "parameters": {
+                      "list": {"value": [0, 1, 1]}
+                    },
+                    "output": {
+                      "list": "ydirs"
+                    }
+                  },
+                  {
+                    "title": "each",
+                    "type": "decorator",
+                    "name": "each",
+                    "parameters": {
+                      "list": {"value": "ydirs"},
+                      "type": {"value": "number"}
+                    },
+                    "child": {
+                      "title": "sequence",
+                      "type": "composite",
+                      "name": "sequence",
+                      "parameters": {},
+                      "children": [
+                        {
+                          "title": "multiply",
+                          "type": "action",
+                          "name": "multiply",
+                          "parameters": {
+                            "factor": {"value": "direction"},
+                            "number": {"value": "count"}
+                          },
+                          "output": {
+                            "result": "result"
+                          }
+                        },
+                        {
+                          "title": "add",
+                          "type": "action",
+                          "name": "add",
+                          "parameters": {
+                            "addend": {"value": "result"},
+                            "number": {"value": "impactx"}
+                          },
+                          "output": {
+                            "result": "xPosition"
+                          }
+                        },
+                        {
+                          "title": "add",
+                          "type": "action",
+                          "name": "add",
+                          "parameters": {
+                            "addend": {"value": "ydir"},
+                            "number": {"value": "impacty"}
+                          },
+                          "output": {
+                            "result": "yPosition"
+                          }
+                        },
+                        {
+                          "title": "add",
+                          "type": "action",
+                          "name": "add",
+                          "parameters": {
+                            "addend": {"value": "ydir"},
+                            "number": {"value": "impacty"}
+                          },
+                          "output": {
+                            "result": "waveY"
+                          }
+                        },
+                        {
+                          "title": "setVector",
+                          "type": "action",
+                          "name": "setVector",
+                          "parameters": {
+                            "vector": {"value": ["xPosition", "waveY"]}
+                          },
+                          "output": {
+                            "vector": "wavePosition"
+                          }
+                        },
+                        {
+                          "title": "setVector",
+                          "type": "action",
+                          "name": "setVector",
+                          "parameters": {
+                            "vector": {"value": ["xPosition", "yPosition"]}
+                          },
+                          "output": {
+                            "vector": "groundPosition"
+                          }
+                        },
+                        {
+                          "title": "boundsTranslate",
+                          "type": "action",
+                          "name": "boundsTranslate",
+                          "parameters": {
+                            "bounds": {"value": "<bounds>"},
+                            "offset": {"value": "wavePosition"}
+                          },
+                          "output": {
+                            "bounds": "newbounds"
+                          }
+                        },
+                        {
+                          "title": "pointTileCollision",
+                          "type": "action",
+                          "name": "pointTileCollision",
+                          "parameters": {
+                            "position": {"value": "groundPosition"},
+                            "collisionType": {"value": ["Null", "Block"]}
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

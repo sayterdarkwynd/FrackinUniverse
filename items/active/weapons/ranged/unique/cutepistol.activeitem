@@ -17,11 +17,12 @@
     "butt" : "",
     "middle" : "cutepistol.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
-  },      
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+  },
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/weapons/hailstrike.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [111, 124, 154] } }  
+    "sounds" : {
+      "fire" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg" ]
+    }
   },
 
   "baseOffset" : [0.50, 0.34],
@@ -34,7 +35,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.782,
+    "fireTime" : 0.665,
     "baseDps" : 5.7,
     "energyUsage" : 20,
     "fireType" : "auto",
@@ -63,22 +64,22 @@
         "twoHanded" : false,
 
         "allowRotate" : false,
-        "allowFlip" : false
+        "allowFlip" : true
       },
       "cooldown" : {
-        "duration" : 0.0,
+        "duration" : 0.15,
         "armRotation" : 0,
         "weaponRotation" : 0,
         "twoHanded" : false,
 
         "allowRotate" : false,
-        "allowFlip" : false
+        "allowFlip" : true
       }
     }
   },
 
   "critChance" : 2,
-  "critBonus" : 3, 
+  "critBonus" : 3,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

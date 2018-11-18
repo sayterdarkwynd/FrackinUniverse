@@ -1,0 +1,115 @@
+{
+  "objectName" : "dollhousespike",
+  "colonyTags" : ["cute","evil"],
+  "rarity" : "Common",
+  "category" : "trap",
+  "price" : 50,
+
+  "description" : "Don't wanna fall on one of these...",
+  "shortdescription" : "Dollhouse Spike",
+  "race" : "generic",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.5,
+    "emissionVariance" : 0.25,
+    "pixelOrigin" : [0, 0],
+    "placeInSpaces" : true,
+
+    "particle" : {
+      "type" : "textured",
+      "image" : "/particles/hazard/hazardstat.png",
+      "size" : 0.5,
+      "color" : [231, 223, 189, 175],
+      "fade" : 0,
+      "destructionAction" : "fade",
+      "destructionTime" : 0.5,
+      "initialVelocity" : [0, 2],
+      "finalVelocity" : [0, 1],
+      "approach" : [4, 1],
+      "timeToLive" : 0.5,
+      "layer" : "middle",
+      "collidesForeground" : false
+    },
+    "particleVariance" : {
+      "position" : [0.5, 0.5],
+      "initialVelocity" : [2, 0],
+      "finalVelocity" : [1, 0]
+    }
+  },
+
+  "inventoryIcon" : "dollhousespikeicon.png",
+  "orientations" : [
+    {
+      "image" : "dollhousespiketop.png",
+      "direction" : "right",
+      "imagePosition" : [0, -8],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, 1] ],
+
+      "touchDamage" : {
+        "poly" : [ [0.5, -1.0], [0.8, 1.0], [0.2, 1.0] ],
+        "damage" : 15,
+        "knockback" : 20,
+
+        "damageType" : "Environment",
+        "damageSourceKind" : "spear"
+      }
+    },
+    {
+      "image" : "dollhousespikebottom.png",
+      "direction" : "right",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, -1] ],
+
+      "touchDamage" : {
+        "poly" : [ [0.2, 0.0], [0.5, 2.0], [0.8, 0.0] ],
+        "damage" : 15,
+        "knockback" : 20,
+
+        "damageType" : "Environment",
+        "damageSourceKind" : "spear"
+      }
+    },
+    {
+      "image" : "dollhousespikeleft.png",
+      "direction" : "right",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 0] ],
+
+      "touchDamage" : {
+        "poly" : [ [0.0, 0.2], [2.0, 0.5], [0.0, 0.8] ],
+        "damage" : 15,
+        "knockback" : 20,
+
+        "damageType" : "Environment",
+        "damageSourceKind" : "spear"
+      }
+    },
+    {
+      "image" : "dollhousespikeright.png",
+      "direction" : "right",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 0] ],
+
+      "touchDamage" : {
+        "poly" : [ [1.0, 0.2], [-1.0, 0.5], [1.0, 0.8] ],
+        "damage" : 15,
+        "knockback" : 20,
+
+        "damageType" : "Environment",
+        "damageSourceKind" : "spear"
+      }
+    }
+  ],
+
+  "smashable" : true,
+  "smashSounds" : [ "/sfx/objects/ice_break1.ogg", "/sfx/objects/ice_break2.ogg", "/sfx/objects/ice_break3.ogg" ],
+  "smashParticles" : [ { "count" : 5, "particle" : "boneshard" } ]
+}

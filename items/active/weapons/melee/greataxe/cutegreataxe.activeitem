@@ -1,7 +1,7 @@
 {
   "itemName" : "cutegreataxe",
-  "level" : 5,
-  "price" : 850,
+  "level" : 4,
+  "price" : 550,
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Super Choppy, Super Cute",
@@ -83,7 +83,10 @@
     "fireTime" : 0.8,
     "baseDps" : 12,
     "damageConfig" : {
-      "damageSourceKind" : "cosmicaxe"
+      "damageSourceKind" : "cosmicaxe",
+      "statusEffects" : [ "defenseboostneg20" ],
+      "knockback" : 30,
+      "knockbackMode" : "facing"
     }
   },
 
@@ -97,6 +100,6 @@
   "critChance" : 3,
   "critBonus" : 6,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
   "stunChance" : 6
 }
