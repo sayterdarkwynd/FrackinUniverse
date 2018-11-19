@@ -7,7 +7,6 @@ require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
 
 function init()
   local config_file = config.getParameter("configPath")
-  sb.logInfo("config_file: %s", config_file)
   fuWeatherBase.init(self, tostring(config_file))
 end
 

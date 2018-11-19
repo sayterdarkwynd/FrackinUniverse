@@ -1,26 +1,46 @@
 {
   "name" : "heatweathernew2",
-  "blockingStat" : "biomeheatImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "fireResistance",
-          "effectCutoffValue" : 0.25,   
-	  "biomeTemp" : 1, 
-	  "biomeThreshold" : 1,
-	  "baseRate" : 5,
-	  "baseDebuffPerTick" : 2,
-	  "baseDmgPerTick" : 2,
-	  "situationPenalty" : 1.2,
-	  "liquidPenalty" : 1.1,
-	  "biomeNight" : 1.1
+    "resistanceTypes" : {
+      "fireResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.25,
+    "immunityStats" : [
+      "biomeHeatImmunity",
+      "ffextremeheatImmunity"
+    ],
+
+    "healthDrain" : 2,
+    "hungerDrain" : 0.2,
+    "speedPenalty" : 1.0,
+    "speedMin" : 0.3,
+    "jumpPenalty" : 1.0,
+    "jumpMin" : 0.3,
+
+    "debuffRate" : 5,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "night" : 0.8,
+      "wet" : 0.7,
+      "underground" : 1.1
+    },
+
+    "messages" : {
+      "intro" : "biomeheat",
+      "underground" : "ffbiomeheatcavern"
+    },
+    "configPath" : "/stats/effects/fu_weathereffects/new/heat/heatweathernew2.statuseffect"
   },
-  "defaultDuration" : 5,
+  "defaultDuration" : 2,
 
   "scripts" : [
-    "heatweathernew2.lua"
+    "heatweathernew.lua"
   ],
 
   "animationConfig" : "heatweathernew.animation",
-
-  "icon" : "/interface/statuses/heat1.png"
+  "label" : "Heat Wave",
+  "icon" : "/interface/statuses/heat.png"
 }
