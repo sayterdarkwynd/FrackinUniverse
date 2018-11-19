@@ -3,6 +3,16 @@ require "/scripts/util.lua"
 
 fuWeatherBase = {}
 
+--============================= CLASS DEFINITION ============================--
+
+function fuWeatherBase.new(self, child)
+  child = child or {}
+  setmetatable(child, self)
+  child.parent = self
+  self.__index = self
+  return child
+end
+
 --============================== INIT AND UNINIT =============================--
 
 function fuWeatherBase.init(self, config_file)
@@ -84,12 +94,12 @@ function fuWeatherBase.entityAffected(self)
 end
 
 function fuWeatherBase.applyEffect(self)
-  activateVisualEffects() -- locally defined function
+  self.activateVisualEffects()
   self.effectActive = true
 end
 
 function fuWeatherBase.removeEffect(self)
-  deactivateVisualEffects() -- locally defined function
+  self.deactivateVisualEffects() -- locally defined function
   -- Reset used warning messages (in case player only has temporary immunity)
   self.usedMessages = {}
   self.effectActive = false
@@ -103,17 +113,17 @@ function fuWeatherBase.checkEffect(self)
       effect and expire (should destroy this instance). ]]--
   if ((world.entityType(entity.id()) ~= "player")
   or world.type()=="unknown") then
-    fuWeatherBase.removeEffect(self)
+    self:removeEffect()
     effect.expire()
     return
   end
   if fuWeatherBase.entityAffected(self) then
     if (not self.effectActive) then
-      fuWeatherBase.applyEffect(self)
+      self:applyEffect()
     end
-    fuWeatherBase.sendWarning(self, "intro")
+    self:sendWarning("intro")
   elseif self.effectActive then
-    fuWeatherBase.removeEffect(self)
+    self:removeEffect()
   end
 end
 
@@ -138,7 +148,7 @@ end
 
 --============================ CONDITIONAL CHECKS ===========================--
 
-function fuWeatherBase.lightLevel()
+function fuWeatherBase.lightLevel(self)
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
   position[2] = math.floor(position[2])
@@ -147,7 +157,7 @@ function fuWeatherBase.lightLevel()
   return lightLevel
 end
 
-function fuWeatherBase.hungerLevel()
+function fuWeatherBase.hungerLevel(self)
   if status.isResource("food") then
     return status.resource("food")
   else
@@ -155,24 +165,80 @@ function fuWeatherBase.hungerLevel()
   end
 end
 
-function fuWeatherBase.isDaytime()
+function fuWeatherBase.isDaytime(self)
   return (world.timeOfDay() < 0.5)
 end
 
-function fuWeatherBase.isUnderground()
+function fuWeatherBase.isUnderground(self)
   return world.underground(mcontroller.position())
 end
 
-function fuWeatherBase.isWet()
+function fuWeatherBase.isWet(self)
   local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
   return world.liquidAt(mouthPosition)
 end
 
-function fuWeatherBase.isWindy()
+function fuWeatherBase.isWindy(self)
   return (world.windLevel(mcontroller.position()) > 40)
 end
 
 --============================ DEBUFFING FUNCTIONS ===========================--
+
+--[[ Note that this function also triggers the appropriate warning messages
+    for situational effects (wet, underground etc.). ]]--
+function fuWeatherBase.totalModifier(self)
+  local totalModifier = self:resistModifier()
+  if (self.modifiers["night"] ~= nil) and not (self:isDaytime() or self:isUnderground()) then
+    totalModifier = totalModifier * self.modifiers["night"]
+    self:sendWarning("night")
+  end
+  if (self.modifiers["underground"] ~= nil) and (self:isUnderground()) then
+    totalModifier = totalModifier * self.modifiers["underground"]
+    self:sendWarning("underground")
+  end
+  if (self.modifiers["wet"] ~= nil) and (self:isWet()) then
+    totalModifier = totalModifier * self.modifiers["wet"]
+    self:sendWarning("wet")
+  end
+  if (self.modifiers["windy"] ~= nil) and (self:isWindy()) and (not self:isUnderground()) then
+    totalModifier = totalModifier * self.modifiers["windy"]
+    self:sendWarning("windy")
+  end
+  return totalModifier
+end
+
+function fuWeatherBase.applyHealthDrain(self, modifier, dt)
+  if (self.baseHealthDrain > 0) then
+    local healthDrain = self.baseHealthDrain * modifier
+    status.modifyResource("health", -healthDrain * dt)
+  end
+end
+
+function fuWeatherBase.applyHungerDrain(self, modifier, dt)
+  if status.isResource("food") then
+    if (status.resource("food") >= 2) then
+      local hungerDrain = self.baseHungerDrain * modifier
+      status.modifyResource("food", -hungerDrain * dt)
+    end
+  end
+end
+
+function fuWeatherBase.applyMovementPenalties(self, modifier)
+  --[[ NOTE: Base penalties should be less than 1. The totalModifier is capped
+      at 1.0 so that the player cannot be stopped completely. ]]--
+  local speedPenalty = 0
+  local jumpPenalty = 0
+  if (self.baseSpeedPenalty > 0) then
+    speedPenalty = self.baseSpeedPenalty * math.min(modifier, 1.0)
+  end
+  if (self.baseJumpPenalty > 0) then
+    jumpPenalty = self.baseJumpPenalty * math.min(modifier, 1.0)
+  end
+  mcontroller.controlModifiers({
+    speedModifier = 1.0 - speedPenalty,
+    airJumpModifier = 1.0 - jumpPenalty
+  })
+end
 
 function fuWeatherBase.applyDebuffs(self, modifier)
   modifierGroup = {}
@@ -189,25 +255,14 @@ end
     each weather type. I have left these here as an "abstract class"-style
     definition. ]]--
 
---[[
-function activateVisualEffects()
-
-function deactivateVisualEffects()
-
-function createAlert()
-]]--
-
---===================== OTHER WEATHER-SPECIFIC FUNCTIONS ====================--
---[[ NOTE: This function allows specific weather types to alter the total
-    damage/debuff modifier in certain circumstances. The main case of this is
-    desert heat, which is worse in bright light (during the day). If it is not
-    used, it should be defined as below. ]]--
-
---[[
-function extraModifier()
-  return 1.0
+function fuWeatherBase.activateVisualEffects(self)
 end
-]]--
+
+function fuWeatherBase.deactivateVisualEffects(self)
+end
+
+function fuWeatherBase.createAlert(self)
+end
 
 --=========================== MAIN UPDATE FUNCTION ==========================--
 --[[ NOTE: The actual update() function must be defined in each weather
@@ -217,7 +272,7 @@ end
 
 function fuWeatherBase.update(self, dt)
   -- Check that weather effect is (still) active.
-  fuWeatherBase.checkEffect(self)
+  self:checkEffect()
   if (not self.effectActive) then
     return
   end
@@ -226,57 +281,18 @@ function fuWeatherBase.update(self, dt)
   self.debuffTimer = math.max(self.debuffTimer - dt, 0)
 
   -- Calculate the total effect modifier.
-  local totalModifier = fuWeatherBase.resistModifier(self)
-  if (self.modifiers["night"] ~= nil) and not (fuWeatherBase.isDaytime() or fuWeatherBase.isUnderground()) then
-    totalModifier = totalModifier * self.modifiers["night"]
-    fuWeatherBase.sendWarning(self, "night")
-  end
-  if (self.modifiers["underground"] ~= nil) and (fuWeatherBase.isUnderground()) then
-    totalModifier = totalModifier * self.modifiers["underground"]
-    fuWeatherBase.sendWarning(self, "underground")
-  end
-  if (self.modifiers["wet"] ~= nil) and (fuWeatherBase.isWet()) then
-    totalModifier = totalModifier * self.modifiers["wet"]
-    fuWeatherBase.sendWarning(self, "wet")
-  end
-  if (self.modifiers["windy"] ~= nil) and (fuWeatherBase.isWindy()) and (not fuWeatherBase.isUnderground()) then
-    totalModifier = totalModifier * self.modifiers["windy"]
-    fuWeatherBase.sendWarning(self, "windy")
-  end
-  -- Apply any weather-specific modifiers (e.g. desert light)
-  totalModifier = totalModifier * extraModifier() -- locally defined function
+  local modifier = self:totalModifier()
 
   -- Apply health drain.
-  if (self.baseHealthDrain > 0) then
-    local healthDrain = self.baseHealthDrain * totalModifier
-    status.modifyResource("health", -healthDrain * dt)
-  end
+  self:applyHealthDrain(modifier, dt)
   -- Apply hunger drain (if not casual).
-  if status.isResource("food") then
-    if (status.resource("food") >= 2) then
-      local hungerDrain = self.baseHungerDrain * totalModifier
-      status.modifyResource("food", -hungerDrain * dt)
-    end
-  end
+  self:applyHungerDrain(modifier, dt)
   -- Apply speed and jump penalties.
-  --[[ NOTE: Base penalties should be less than 1. The totalModifier is capped
-      at 1.0 so that the player cannot be stopped completely. ]]--
-  local speedPenalty = 0
-  local jumpPenalty = 0
-  if (self.baseSpeedPenalty > 0) then
-    speedPenalty = self.baseSpeedPenalty * math.min(totalModifier, 1.0)
-  end
-  if (self.baseJumpPenalty > 0) then
-    jumpPenalty = self.baseJumpPenalty * math.min(totalModifier, 1.0)
-  end
-  mcontroller.controlModifiers({
-    speedModifier = 1.0 - speedPenalty,
-    airJumpModifier = 1.0 - jumpPenalty
-  })
-  -- Periodically apply any stat debuffs.
+  self:applyMovementPenalties(modifier)
+  -- Periodically apply any stat debuffs. Display alerts (e.g. "-Max HP" popup).
   if (self.debuffTimer == 0) then
-    fuWeatherBase.applyDebuffs(self, totalModifier)
-    createAlert() -- locally defined function
+    self:applyDebuffs(modifier)
+    self:createAlert() -- locally defined function
     self.debuffTimer = self.baseDebuffRate
   end
 end
