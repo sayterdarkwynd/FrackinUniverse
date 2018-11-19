@@ -3,16 +3,6 @@ require "/scripts/util.lua"
 
 fuWeatherBase = {}
 
---============================= CLASS CONSTRUCTOR ============================--
---[[
-function fuWeatherBase:new(obj)
-  obj = obj or {} -- initialise object table if not given
-  setmetatable(obj, self)
-  self.__index = self -- allow object to inherit parent methods
-  obj.parent = self -- manually allow access to overwritten parent methods
-  return obj
-end
-]]--
 --============================== INIT AND UNINIT =============================--
 
 function fuWeatherBase.init(self, config_file)
@@ -29,8 +19,6 @@ function fuWeatherBase.init(self, config_file)
   --movement penalties
   self.baseSpeedPenalty = effectConfig.speedPenalty
   self.baseJumpPenalty = effectConfig.jumpPenalty
-  self.speedMin = effectConfig.speedMin
-  self.jumpMin = effectConfig.jumpMin
   --debuffs
   self.baseDebuffRate = effectConfig.debuffRate
   self.debuffs = effectConfig.debuffs
@@ -102,6 +90,8 @@ end
 
 function fuWeatherBase.removeEffect(self)
   deactivateVisualEffects() -- locally defined function
+  -- Reset used warning messages (in case player only has temporary immunity)
+  self.usedMessages = {}
   self.effectActive = false
 end
 
@@ -207,6 +197,18 @@ function deactivateVisualEffects()
 function createAlert()
 ]]--
 
+--===================== OTHER WEATHER-SPECIFIC FUNCTIONS ====================--
+--[[ NOTE: This function allows specific weather types to alter the total
+    damage/debuff modifier in certain circumstances. The main case of this is
+    desert heat, which is worse in bright light (during the day). If it is not
+    used, it should be defined as below. ]]--
+
+--[[
+function extraModifier()
+  return 1.0
+end
+]]--
+
 --=========================== MAIN UPDATE FUNCTION ==========================--
 --[[ NOTE: The actual update() function must be defined in each weather
     effect's .lua file. However, the idea is that the majority of what each
@@ -225,7 +227,7 @@ function fuWeatherBase.update(self, dt)
 
   -- Calculate the total effect modifier.
   local totalModifier = fuWeatherBase.resistModifier(self)
-  if (self.modifiers["night"] ~= nil) and (not fuWeatherBase.isDaytime()) then
+  if (self.modifiers["night"] ~= nil) and not (fuWeatherBase.isDaytime() or fuWeatherBase.isUnderground()) then
     totalModifier = totalModifier * self.modifiers["night"]
     fuWeatherBase.sendWarning(self, "night")
   end
@@ -237,10 +239,12 @@ function fuWeatherBase.update(self, dt)
     totalModifier = totalModifier * self.modifiers["wet"]
     fuWeatherBase.sendWarning(self, "wet")
   end
-  if (self.modifiers["windy"] ~= nil) and (fuWeatherBase.isWindy()) then
+  if (self.modifiers["windy"] ~= nil) and (fuWeatherBase.isWindy()) and (not fuWeatherBase.isUnderground()) then
     totalModifier = totalModifier * self.modifiers["windy"]
     fuWeatherBase.sendWarning(self, "windy")
   end
+  -- Apply any weather-specific modifiers (e.g. desert light)
+  totalModifier = totalModifier * extraModifier() -- locally defined function
 
   -- Apply health drain.
   if (self.baseHealthDrain > 0) then
@@ -255,22 +259,24 @@ function fuWeatherBase.update(self, dt)
     end
   end
   -- Apply speed and jump penalties.
-  local speedMod = 1.0
-  local jumpMod = 1.0
+  --[[ NOTE: Base penalties should be less than 1. The totalModifier is capped
+      at 1.0 so that the player cannot be stopped completely. ]]--
+  local speedPenalty = 0
+  local jumpPenalty = 0
   if (self.baseSpeedPenalty > 0) then
-    speedMod = speedMod - (self.baseSpeedPenalty * totalModifier)
+    speedPenalty = self.baseSpeedPenalty * math.min(totalModifier, 1.0)
   end
   if (self.baseJumpPenalty > 0) then
-    jumpMod = jumpMod - (self.baseJumpPenalty * totalModifier)
+    jumpPenalty = self.baseJumpPenalty * math.min(totalModifier, 1.0)
   end
-  -- Clamp modifiers between specified minimum and 1.0.
   mcontroller.controlModifiers({
-    speedModifier = math.min(math.max(speedMod, self.speedMin), 1.0),
-    airJumpModifier = math.min(math.max(jumpMod, self.jumpMin), 1.0)
+    speedModifier = 1.0 - speedPenalty,
+    airJumpModifier = 1.0 - jumpPenalty
   })
   -- Periodically apply any stat debuffs.
   if (self.debuffTimer == 0) then
     fuWeatherBase.applyDebuffs(self, totalModifier)
+    createAlert() -- locally defined function
     self.debuffTimer = self.baseDebuffRate
   end
 end

@@ -1,8 +1,6 @@
 require("/scripts/vec2.lua")
 require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
 
---fuHeatWeather = fuWeather.new{}
-
 --============================== INIT AND UNINIT =============================--
 
 function init()
@@ -24,8 +22,14 @@ function deactivateVisualEffects()
   effect.setParentDirectives("fade=ff7600=0.0")
 end
 
-function makeAlert()
+function createAlert() -- NOTE: Not used for heat.
   animator.playSound("bolt")
+end
+
+--===================== OTHER WEATHER-SPECIFIC FUNCTIONS ====================--
+
+function extraModifier()
+  return 1.0
 end
 
 --=========================== MAIN UPDATE FUNCTION ==========================--
