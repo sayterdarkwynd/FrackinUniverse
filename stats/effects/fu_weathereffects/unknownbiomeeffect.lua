@@ -89,7 +89,9 @@ function update(dt)
 	elseif self.value==40
 		status.addEphemeralEffect( "shadowgasfx" )
 	elseif self.value==41 then
-		status.addEphemeralEffect( "ffextremeheat" )		
+		status.addEphemeralEffect( "ffextremeheat" )	
+	elseif self.value==42
+		status.addEphemeralEffect( "ffbiomecold4" )		
 	end  
   else
     effect.expire()

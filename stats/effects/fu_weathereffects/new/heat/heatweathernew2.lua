@@ -52,24 +52,33 @@ function init()
 	script.setUpdateDelta(5)
 end
 
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
+	end
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("biomeheatImmunity") or
+	status.statPositive("ffextremeheatImmunity") or
+	(status.stat("fireResistance",0) >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
 
---******* check effect and cancel ************
+--[[ Check if weather effect is still applicable, and handle visual effects ]]--
 function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
 		effect.expire()
-	end
-	if status.statPositive("biomeheatImmunity") or status.statPositive("ffextremeheatImmunity") or world.type()=="unknown" then
-		deactivateVisualEffects()
-		effect.expire()
-	end
-
-	if (status.stat("fireResistance",0)  >= self.effectCutoffValue) then
-		deactivateVisualEffects()
-		effect.expire()
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
-		if not self.usedIntro and self.timerRadioMessage == 0 then
+		activateVisualEffects()
+		if not self.usedIntro and self.timerRadioMessage <= 0 then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeheat", 1.0) -- send player a warning
 			self.usedIntro = 1
 			self.timerRadioMessage = 20
@@ -146,9 +155,7 @@ end
 
 function isDry()
 	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-		inWater = 0
-	end
+	return not world.liquidAt(mouthPosition)
 end
 
 function hungerLevel()
@@ -185,9 +192,7 @@ end
 
 function update(dt)
 	checkEffectValid()
-
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
+	--self.biomeTimer2 = self.biomeTimer2 - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
 --set the base stats
@@ -205,46 +210,44 @@ function update(dt)
 	self.debuffApply = setEffectDebuff()
 
 	-- environment checks
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
 	local lightLevel = getLight()
+	local dry = isDry()
 
-	if underground then
-		if not self.usedCavern then
-			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheatcavern", 1.0) -- send player a warning
-			self.timerRadioMessage = 10
-			self.usedCavern = 1
-		end
-		activateVisualEffects()
-		setSituationPenalty()
-	end
-
-	self.damageApply = setEffectDamage()
-	self.debuffApply = setEffectDebuff()
-
-	if (status.stat("fireResistance",0)) < (self.effectCutoffValue) then
-		activateVisualEffects()
+	if isEntityAffected() then
+		self.biomeTimer = self.biomeTimer - dt
+		if self.biomeTimer <= 0 then
+			-- Heat is worse underground.
+			if underground then
+				if not self.usedCavern then
+					self.setSituationPenalty()
+					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeheatcavern", 1.0) -- send player a warning
+					self.timerRadioMessage = 10
+					self.usedCavern = 1
+				end
+			end
+			self.biomeTimer = self.baseRate
+		end -- self.biomeTimer <= 0
+		-- Set total damage.
+		self.damageApply = setEffectDamage()
+		self.debuffApply = setEffectDebuff()
+		-- Set movement penalty.
+		self.modifier = math.max(status.stat("fireResistance",0), 0) + 0.3
+		-- Apply health drain.
 		status.modifyResource("health", -self.damageApply * dt)
+		-- Apply hunger drain (if not casual).
 		if status.isResource("food") then
 			if status.resource("food") >= 2 then
 				status.modifyResource("food", (-self.debuffApply /12) * dt )
 			end
 		end
-		if self.biomeTimer2 <= 0 and status.stat("fireResistance",0) < 1.0 then
-			makeAlert()
-			self.biomeTimer2 = setEffectTime()
-			self.timerRadioMessage = self.timerRadioMessage - dt
-		end
-		self.modifier = status.stat("fireResistance",0)
-		if (status.stat("fireResistance",0) <= 0) then
-			self.modifier = 0
-		end
-		self.modifier = self.modifier + 0.3
+		-- Apply movement penalty.
 		mcontroller.controlModifiers({
 			airJumpModifier = self.modifier,
 			speedModifier = self.modifier
 		})
-	end
+	end -- isEntityAffected()
 end
 
 function uninit()

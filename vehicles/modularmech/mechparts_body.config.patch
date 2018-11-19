@@ -1975,7 +1975,16 @@
         "protection": 2,
 	"mechMass" : 1
       },
-      "partParameters": {},
+	    "partParameters" : {
+	      "hazardImmunities" : [
+  				"coldweathernew",
+  				"ffbiomecold0",
+  				"desertweathernew",
+  				"jungleheatweather",
+  				"poisonweathernewbiome",
+  				"poisonweathernew"
+	      ]
+	    },
       "partImages": {
         "bodyBack": "body/mantiziproto_back.png",
         "bodyFront": "body/mantiziproto_front.png",
@@ -1999,12 +2008,29 @@
         "protection": 5,
 	"mechMass" : 6
       },
-      "partParameters": {
-        "hazardImmunities": [
-          "biomeradiation",
-          "biomecold"
-        ]
-      },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+		"desertweathernew",
+		"jungleheatweather",
+		"protoweather",
+		"gasworld1",
+		"gasworld2",
+		"radioactiveweathernew",
+		"poisonweathernew",
+		"poisonweathernewbiome",
+		"biomepoisongas",
+		"biomepoison1",
+		"biomecold",
+		"coldweathernew",
+		"ffbiomecold0",
+		"ffbiomecold1",
+		"ffbiomecold2",
+		"biomeheat",
+		"ffbiomeheat1",
+		"ffbiomeheat2",
+		"heatweathernew"
+	      ]
+	    },
       "partImages": {
         "bodyBack": "body/mantizi_back.png",
         "bodyFront": "body/mantizi_front.png",
@@ -2036,6 +2062,7 @@
 		"protoweather",
 		"gasworld1",
 		"gasworld2",
+		"gasworld3",
 		"radioactiveweathernew",
 		"poisonweathernew",
 		"poisonweathernewbiome",
@@ -2045,9 +2072,12 @@
 		"coldweathernew",
 		"ffbiomecold0",
 		"ffbiomecold1",
+		"ffbiomecold2",
+		"ffbiomecold3",
 		"biomeheat",
 		"ffbiomeheat1",
 		"ffbiomeheat2",
+		"ffbiomeheat3",
 		"heatweathernew"
 	      ]
 	    },
@@ -2275,7 +2305,52 @@
 	    "animationCustom" : {}
       }
     },
-  
+    {
+    "op" : "add",
+    "path" : "/fustomper",
+    "value" : {
+	    "stats" : {
+	      "energy" : 3,
+	      "protection" : 4,
+	      "mechMass" : 8
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+						"desertweathernew",
+						"jungleheatweather",
+						"protoweather",
+						"sulphuricweathernew",
+						"sulphuricweatherstorm",
+						"gasworld1",
+						"gasworld2",
+						"gasworld3",
+						"biomeradiation",
+						"radioactiveweathernew",
+						"radioactiveweathernew2",
+						"poisonweathernew",
+						"poisonweathernewbiome",
+						"biomepoisongas",
+						"biomepoison1",
+						"biomecold",
+						"coldweathernew",
+						"ffbiomecold0",
+						"ffbiomecold1",
+						"biomeheat",
+						"ffbiomeheat1",
+						"ffbiomeheat2",
+						"heatweathernew"
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/stomper_back.png",
+	      "bodyFront" : "body/stomper_front.png",
+	      "bodyFullbright" : ""
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
+    },  
     {
     "op" : "add",
     "path" : "/titan",
@@ -2425,6 +2500,354 @@
 	    "animationCustom" : {}
       }
     },    
+
+
+    {
+    "op" : "add",
+    "path" : "/futhelusianbodyproto",
+    "value" : {
+	    "stats" : {
+	      "energy" : 1,
+	      "protection" : 2,
+	      "mechMass" : 3
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+		"desertweathernew",
+		"jungleheatweather",
+		"coldweathernew",
+		"ffbiomecold0",
+		"heatweathernew"
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/thelusianbody_back.png",
+	      "bodyFront" : "body/thelusianbodyproto_front.png",
+	      "bodyFullbright" : ""
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
+    },    
+    {
+    "op" : "add",
+    "path" : "/futhelusianbody",
+    "value" : {
+	    "stats" : {
+	      "energy" : 4,
+	      "protection" : 10,
+	      "mechMass" : 10
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+ 		"desertweathernew",
+		"jungleheatweather",
+		"protoweather",
+		"gasworld1",
+		"gasworld2",
+		"gasworld3",
+		"radioactiveweathernew",
+		"poisonweathernew",
+		"poisonweathernewbiome",
+		"biomepoisongas",
+		"biomepoison1",
+		"biomecold",
+		"coldweathernew",
+		"ffbiomecold0",
+		"ffbiomecold1",
+		"ffbiomecold2",
+		"ffbiomecold3",
+		"biomeheat",
+		"ffbiomeheat1",
+		"ffbiomeheat2",
+		"ffbiomeheat3",
+		"heatweathernew" 
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/thelusianbody_back.png",
+	      "bodyFront" : "body/thelusianbody_front.png",
+	      "bodyFullbright" : "body/thelusianbody_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
+    },   
+
+    {
+    "op" : "add",
+    "path" : "/fuemissarybodyproto",
+    "value" : {
+	    "stats" : {
+	      "energy" : 2,
+	      "protection" : 1,
+	      "mechMass" : 4
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+		"desertweathernew",
+		"jungleheatweather",
+		"coldweathernew",
+		"ffbiomecold0",
+		"heatweathernew"
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/emissarybodyproto_front.png",
+	      "bodyFront" : "body/emissarybodyproto_front.png",
+	      "bodyFullbright" : "body/emissarybodyproto_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["464040", "332f2f", "232020", "100f0f"],
+	    "defaultSecondaryColors" : ["735e60", "5f4c4e", "443536", "2b2122"],
+	    "animationCustom" : {}
+      }
+    },  
+    
+    {
+    "op" : "add",
+    "path" : "/fuemissarybody",
+    "value" : {
+	    "stats" : {
+	      "energy" : 7,
+	      "protection" : 5,
+	      "mechMass" : 5
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+ 		"desertweathernew",
+		"jungleheatweather",
+		"protoweather",
+		"gasworld1",
+		"gasworld2",
+		"radioactiveweathernew",
+		"poisonweathernew",
+		"poisonweathernewbiome",
+		"biomepoisongas",
+		"biomepoison1",
+		"biomecold",
+		"coldweathernew",
+		"ffbiomecold0",
+		"ffbiomecold1",
+		"ffbiomecold2",
+		"biomeheat",
+		"ffbiomeheat1",
+		"ffbiomeheat2",
+		"heatweathernew" 
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/emissarybody_front.png",
+	      "bodyFront" : "body/emissarybody_front.png",
+	      "bodyFullbright" : "body/emissarybody_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["464040", "332f2f", "232020", "100f0f"],
+	    "defaultSecondaryColors" : ["735e60", "5f4c4e", "443536", "2b2122"],
+	    "animationCustom" : {}
+      }
+    },   
+    
+    
+    {
+    "op" : "add",
+    "path" : "/fukirhosbodyproto",
+    "value" : {
+	    "stats" : {
+	      "energy" : 2,
+	      "protection" : 1,
+	      "mechMass" : 2
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+						"desertweathernew",
+						"jungleheatweather",
+						"coldweathernew",
+						"ffbiomecold0",
+						"heatweathernew"
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/kirhosbody_back.png",
+	      "bodyFront" : "body/kirhosbody_frontproto.png",
+	      "bodyFullbright" : ""
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
+    },    
+    {
+    "op" : "add",
+    "path" : "/fukirhosbody",
+    "value" : {
+	    "stats" : {
+	      "energy" : 4,
+	      "protection" : 3,
+	      "mechMass" : 4
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+ 		"desertweathernew",
+		"jungleheatweather",
+		"protoweather",
+		"gasworld1",
+		"gasworld2",
+		"gasworld3",
+		"radioactiveweathernew",
+		"poisonweathernew",
+		"poisonweathernewbiome",
+		"biomepoisongas",
+		"biomepoison1",
+		"biomecold",
+		"coldweathernew",
+		"ffbiomecold0",
+		"ffbiomecold1",
+		"ffbiomecold2",
+		"ffbiomecold3",
+		"biomeheat",
+		"ffbiomeheat1",
+		"ffbiomeheat2",
+		"ffbiomeheat3",
+		"heatweathernew" 
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/kirhosbody_back.png",
+	      "bodyFront" : "body/kirhosbody_front.png",
+	      "bodyFullbright" : "body/kirhosbody_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
+    },   
+    {
+    "op" : "add",
+    "path" : "/fudrakaet",
+    "value" : {
+	    "stats" : {
+	      "energy" : 8,
+	      "protection" : 3,
+	      "mechMass" : 4
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+ 		"desertweathernew",
+		"jungleheatweather",
+		"protoweather",
+		"gasworld1",
+		"gasworld2",
+		"gasworld3",
+		"radioactiveweathernew",
+		"poisonweathernew",
+		"poisonweathernewbiome",
+		"biomepoisongas",
+		"biomepoison1",
+		"biomecold",
+		"coldweathernew",
+		"ffbiomecold0",
+		"ffbiomecold1",
+		"ffbiomecold2",
+		"ffbiomecold3",
+		"biomeheat",
+		"ffbiomeheat1",
+		"ffbiomeheat2",
+		"ffbiomeheat3",
+		"heatweathernew" 
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/drakaet_front.png",
+	      "bodyFront" : "body/drakaet_front.png",
+	      "bodyFullbright" : "body/drakaet_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
+    },       
+    {
+    "op" : "add",
+    "path" : "/fuorbusbodyproto",
+    "value" : {
+	    "stats" : {
+	      "energy" : 2,
+	      "protection" : 2,
+	      "mechMass" : 2
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+ 		"desertweathernew",
+		"jungleheatweather",
+		"radioactiveweathernew",
+		"poisonweathernew",
+		"poisonweathernewbiome",
+		"biomepoisongas",
+		"biomepoison1",
+		"biomecold",
+		"coldweathernew",
+		"ffbiomecold0",
+		"biomeheat",
+		"ffbiomeheat1",
+		"heatweathernew" 
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/fuOrbus_back.png",
+	      "bodyFront" : "body/fuOrbus_front2.png",
+	      "bodyFullbright" : "body/fuOrbus2_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
+    },          
+    {
+    "op" : "add",
+    "path" : "/fuorbusbody",
+    "value" : {
+	    "stats" : {
+	      "energy" : 7,
+	      "protection" : 7,
+	      "mechMass" : 7
+	    },
+	    "partParameters" : {
+	      "hazardImmunities" : [
+ 		"desertweathernew",
+		"jungleheatweather",
+		"protoweather",
+		"gasworld1",
+		"gasworld2",
+		"gasworld3",
+		"radioactiveweathernew",
+		"poisonweathernew",
+		"poisonweathernewbiome",
+		"biomepoisongas",
+		"biomepoison1",
+		"biomecold",
+		"coldweathernew",
+		"ffbiomecold0",
+		"ffbiomecold1",
+		"ffbiomecold2",
+		"ffbiomecold3",
+		"biomeheat",
+		"ffbiomeheat1",
+		"ffbiomeheat2",
+		"ffbiomeheat3",
+		"heatweathernew" 
+	      ]
+	    },
+	    "partImages" : {
+	      "bodyBack" : "body/fuOrbus_back.png",
+	      "bodyFront" : "body/fuOrbus_front.png",
+	      "bodyFullbright" : "body/fuOrbus_fullbright.png"
+	    },
+	    "defaultPrimaryColors" : ["e7e7e7", "b7b7b7", "7c7c7c", "383838"],
+	    "defaultSecondaryColors" : ["838383", "555555", "383838", "151515"],
+	    "animationCustom" : {}
+      }
+    },      
     
 		{
 			"op": "add",

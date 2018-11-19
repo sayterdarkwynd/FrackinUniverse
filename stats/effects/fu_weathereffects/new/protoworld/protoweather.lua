@@ -15,40 +15,49 @@ function init()
 
 	--timers
 	self.biomeTimer = self.baseRate
-	self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
+	self.biomeTimer2 = self.baseRate * (1 + status.stat("poisonResistance",0)) * 10
+	--[[TODO: biomeTimer2 always seems to initialise at 20 times the base rate,
+			rather than 10... Not sure why.]]--
 
 	checkEffectValid()
 
 	script.setUpdateDelta(5)
 end
 
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
+	end
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("protoImmunity") or
+	(status.stat("poisonResistance",0) >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
 
---******* check effect and cancel ************
+--[[ Check if weather effect is still applicable, and handle visual effects ]]--
 function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
-		effect.expire()
-	end
-	if status.statPositive("protoImmunity") or world.type()=="unknown" then
-		deactivateVisualEffects()
-		effect.expire()
-	end
-
-	-- checks strength of effect vs resistance
-	if ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
 		deactivateVisualEffects2()
-		deactivateVisualEffects()
 		effect.expire()
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
-		if not self.usedIntro and (self.timerRadioMessage == 0) then
+		activateVisualEffects()
+		--activateVisualEffects2() is called on a timer.
+		if not self.usedIntro and self.timerRadioMessage <= 0 then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
 			self.usedIntro = 1
 			self.timerRadioMessage = 20
 		end
 	end
 end
-
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -115,9 +124,7 @@ end
 
 function isDry()
 	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-		inWater = 0
-	end
+	return not world.liquidAt(mouthPosition)
 end
 
 function hungerLevel()
@@ -162,8 +169,6 @@ end
 
 function update(dt)
 	checkEffectValid()
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
 --set the base stats
@@ -182,42 +187,49 @@ function update(dt)
 
 	-- environment checks
 	local lightLevel = getLight()
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
+	local dry = isDry()
 
-	if self.biomeTimer <= 0 and status.stat("poisonResistance",0) < self.effectCutoffValue then
+	if isEntityAffected() then
+		-- Proto poison is slightly worse during the night.
+		-- TODO: Why are we using setSituationPenalty instead of setNightPenalty?
 		if not daytime then
-				setSituationPenalty()
+			setSituationPenalty()
 		end
 		self.damageApply = setEffectDamage()
 		self.debuffApply = setEffectDebuff()
-		-- damage application per tick
-		status.applySelfDamageRequest ({
-			damageType = "IgnoresDef",
-			damage = self.damageApply,
-			damageSourceKind = "poison",
-			sourceEntityId = entity.id()
-		})
-
-		activateVisualEffects()
-
-		self.biomeTimer = self.baseRate
-	end
-	if self.biomeTimer2 <= 0 and status.stat("poisonResistance",0) < self.effectCutoffValue then
-		if status.stat("critChance",0) >=1 then
-			effect.addStatModifierGroup({
-				{stat = "maxHealth", amount = -self.debuffApply },
-				{stat = "critChance", amount = -self.debuffApply }
+		self.biomeTimer = self.biomeTimer - dt
+		if self.biomeTimer <= 0 then
+			-- Apply periodic damage
+			status.applySelfDamageRequest({
+				damageType = "IgnoresDef",
+				damage = self.damageApply,
+				damageSourceKind = "poison",
+				sourceEntityId = entity.id()
 			})
-		else
-			effect.addStatModifierGroup({
-				{stat = "maxHealth", amount = -self.debuffApply }
-			})
+			self.biomeTimer = self.baseRate
 		end
-		activateVisualEffects2()
-		self.biomeTimer2 = (self.biomeTimer * (1 + status.stat("poisonResistance",0))) * 2
-	end
-
+		self.biomeTimer2 = self.biomeTimer2 - dt
+		if self.biomeTimer2 <= 0 then
+			-- Extra "HP down" particle because people don't seem to notice
+			configBombDrop = {}
+			world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+			-- Periodically drain crit chance and max health.
+			if status.stat("critChance",0) >= 1 then
+				effect.addStatModifierGroup({
+					{stat = "maxHealth", amount = -self.debuffApply},
+					{stat = "critChance", amount = -self.debuffApply}
+				})
+			else
+				effect.addStatModifierGroup({
+					{stat = "maxHealth", amount = -self.debuffApply}
+				})
+			end
+			activateVisualEffects2()
+			self.biomeTimer2 = self.baseRate * (1 + status.stat("poisonResistance",0)) * 2
+		end
+	end --isEntityAffected()
 end
 
 function uninit()

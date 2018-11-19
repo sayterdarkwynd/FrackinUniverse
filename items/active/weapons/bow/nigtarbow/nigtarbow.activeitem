@@ -1,0 +1,60 @@
+{
+  "itemName" : "nigtarbow",
+  "price" : 440,
+  "inventoryIcon" : "nigtarbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "Harvests meat and other goods from monsters.",
+  "shortdescription" : "Frostmoon Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "nightar"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 4,
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "nigtarbowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.125, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "ice",
+  
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "drawFrameSelector" : "poisonBowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "icearrow",
+    "powerProjectileType" : "chargedicearrow",
+    "projectileParameters" : {
+      "power" : 6.5
+    }
+  },
+
+  "altAbilityType" : "bowshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "energyPerShot" : 35,
+    "projectileType" : "chargedicearrow",
+    "powerProjectileType" : "rimewindarrow",
+    "projectileParameters" : {
+      "power" : 10
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

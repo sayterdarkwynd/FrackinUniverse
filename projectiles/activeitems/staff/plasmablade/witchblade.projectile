@@ -1,0 +1,47 @@
+{
+  "projectileName" : "witchblade",
+  "physics" : "default",
+  "timeToLive" : 1,
+  "image" : "witchblade.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [30, 230, 30],
+  "frameNumber" : 1,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "spear",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+
+  "fullbright" : true,
+  "emitters" : [],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/blocks/footstep_crystal.ogg",
+        "/sfx/projectiles/poison_barrier_kill.ogg",
+        "/sfx/projectiles/poison_barrier_break1.ogg",
+        "/sfx/projectiles/poison_barrier_break3.ogg",
+        "/sfx/projectiles/poison_barrier_break5.ogg"
+      ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "bioblast1",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    }
+  ],
+
+  "bounces" : 0,
+
+  "scripts" : [ "/projectiles/activeitems/staff/plasmablade/plasmablade.lua" ],
+
+  "triggerSpeed" : 120,
+
+  "controlRotation" : {
+    "maxSpeed" : 25,
+    "controlForce" : 270,
+    "friction" : 5
+  }
+}

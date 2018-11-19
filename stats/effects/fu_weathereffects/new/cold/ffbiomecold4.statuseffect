@@ -1,0 +1,27 @@
+{
+  "name" : "ffbiomecold4",
+  "blockingStat" : "biomecoldImmunity",
+
+  "effectConfig" : {
+          "effectCutoff" : "iceResistance",
+          "effectCutoffValue" : 0.8,     
+	  "biomeTemp" : 1.6, 
+	  "biomeThreshold" : 0.7,
+	  "baseRate" : 3,
+	  "baseDebuffPerTick" : 6,
+	  "baseDmgPerTick" : 9,
+	  "situationPenalty" : 1.55,
+	  "liquidPenalty" : 1.6,
+	  "biomeNight" : 1.6
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "coldweathernew.lua"
+  ],
+
+  "animationConfig" : "coldweathernew.animation",
+
+  "label" : "Lethal Cold",
+  "icon" : "/interface/statuses/cold4.png"
+}
