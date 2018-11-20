@@ -14,9 +14,9 @@ fuHeatWeather = fuWeatherBase:new({})
     defined in this section. ]]--
 
 --[[ NOTE: When calling parent methods, use the syntax
-        child.parent.method(self)
+        self.parent.method(self)
     rather than the conventional "syntactic sugar version"
-        child.parent:method()
+        self.parent:method()
     The latter will pass the parent class as the "self" parameter instead of
     the child class. In this case, any attributes overwritten or added by the
     child will be inaccessible, leading to confusing behaviour. ]]--
