@@ -26,12 +26,15 @@ function fuWeatherBase.init(self, config_file)
   --damage over time
   self.baseHealthDrain = effectConfig.healthDrain
   self.baseHungerDrain = effectConfig.hungerDrain
+  self.baseEnergyDrain = effectConfig.energyDrain
   --movement penalties
   self.baseSpeedPenalty = effectConfig.speedPenalty
   self.baseJumpPenalty = effectConfig.jumpPenalty
   --debuffs
   self.baseDebuffRate = effectConfig.debuffRate
   self.debuffs = effectConfig.debuffs
+  self.currentDebuffs = {}
+  self.debuffGroup = effect.addStatModifierGroup({})
   --situational modifiers
   self.modifiers = effectConfig.modifiers
   --messages
@@ -100,6 +103,7 @@ end
 
 function fuWeatherBase.removeEffect(self)
   self:deactivateVisualEffects()
+  self:removeDebuffs()
   -- Reset used warning messages (in case player only has temporary immunity)
   self.usedMessages = {}
   self.effectActive = false
@@ -215,10 +219,21 @@ function fuWeatherBase.applyHealthDrain(self, modifier, dt)
 end
 
 function fuWeatherBase.applyHungerDrain(self, modifier, dt)
-  if status.isResource("food") then
-    if (status.resource("food") >= 2) then
-      local hungerDrain = self.baseHungerDrain * modifier
-      status.modifyResource("food", -hungerDrain * dt)
+  if (self.baseHungerDrain > 0) then
+    if status.isResource("food") then
+      if (status.resource("food") >= 2) then
+        local hungerDrain = self.baseHungerDrain * modifier
+        status.modifyResource("food", -hungerDrain * dt)
+      end
+    end
+  end
+end
+
+function fuWeatherBase.applyEnergyDrain(self, modifier, dt)
+  if (self.baseEnergyDrain > 0) then
+    if status.isResource("energy") then
+      local energyDrain = self.baseEnergyDrain * modifier
+      status.modifyResource("energy", -energyDrain * dt)
     end
   end
 end
@@ -241,13 +256,38 @@ function fuWeatherBase.applyMovementPenalties(self, modifier)
 end
 
 function fuWeatherBase.applyDebuffs(self, modifier)
-  modifierGroup = {}
-  i = 1
-  for dStat, dAmount in pairs(self.debuffs) do
-    modifierGroup[i] = {stat = dStat, amount = -dAmount * modifier}
+  local newGroup = {}
+  local i = 1
+  for dStat, dParams in pairs(self.debuffs) do
+    local statName = tostring(dStat)
+    local dAmount = nil
+    if (tostring(dParams.type) == "relative") then
+      dAmount = status.stat(statName) * dParams.amount * modifier
+    else -- dParams.type == "absolute"
+      dAmount = dParams.amount * modifier
+    end
+    -- Add debuffs cumulatively to currentDebuffs.
+    if (self.currentDebuffs[statName] == nil) then
+      self.currentDebuffs[statName] = dAmount
+    else
+      self.currentDebuffs[statName] = self.currentDebuffs[statName] + dAmount
+    end
+    -- Add debuff to modifier group.
+    newGroup[i] = {stat = statName, amount = self.currentDebuffs[statName]}
     i = i + 1
   end
-  effect.addStatModifierGroup(modifierGroup)
+  if (i > 1) then
+    -- Update this effect's debuff modifier group.
+    effect.setStatModifierGroup(self.debuffGroup, newGroup)
+    -- Display alerts (e.g. "-Max HP" popup).
+    self:createAlert()
+  end
+end
+
+function fuWeatherBase.removeDebuffs(self)
+  self.currentDebuffs = {}
+  effect.removeStatModifierGroup(self.debuffGroup)
+  self.debuffGroup = effect.addStatModifierGroup({})
 end
 
 --============================= GRAPHICAL EFFECTS ============================--
@@ -286,12 +326,13 @@ function fuWeatherBase.update(self, dt)
   self:applyHealthDrain(modifier, dt)
   -- Apply hunger drain (if not casual).
   self:applyHungerDrain(modifier, dt)
+  -- Apply energy drain (unusual effect and probably conditional).
+  self:applyEnergyDrain(modifier, dt)
   -- Apply speed and jump penalties.
   self:applyMovementPenalties(modifier)
-  -- Periodically apply any stat debuffs. Display alerts (e.g. "-Max HP" popup).
+  -- Periodically apply any stat debuffs.
   if (self.debuffTimer == 0) then
     self:applyDebuffs(modifier)
-    self:createAlert()
     self.debuffTimer = self.baseDebuffRate
   end
 end
