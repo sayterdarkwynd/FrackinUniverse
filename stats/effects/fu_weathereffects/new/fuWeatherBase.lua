@@ -51,6 +51,8 @@ function fuWeatherBase.init(self, config_file)
 
   -- Define script update interval --
   script.setUpdateDelta(5)
+  -- Return the effect config (for child classes to extend).
+  return effectConfig
 end
 
 function fuWeatherBase.uninit(self)
@@ -266,10 +268,11 @@ function fuWeatherBase.applyDebuffs(self, modifier)
     else -- dParams.type == "absolute"
       dAmount = dParams.amount * modifier
     end
-    -- Add debuffs cumulatively to currentDebuffs.
+    -- Initialise debuff entry if not yet set.
     if (self.currentDebuffs[statName] == nil) then
       self.currentDebuffs[statName] = dAmount
-    else
+    -- Unless constant flag is set, stack debuffs on subsequent ticks.
+    elseif (dParams.constant == nil) then
       self.currentDebuffs[statName] = self.currentDebuffs[statName] + dAmount
     end
     -- Add debuff to modifier group.
@@ -288,6 +291,15 @@ function fuWeatherBase.removeDebuffs(self)
   self.currentDebuffs = {}
   effect.removeStatModifierGroup(self.debuffGroup)
   self.debuffGroup = effect.addStatModifierGroup({})
+end
+
+function fuWeatherBase.applySelfDamage(self, amount, type)
+  status.applySelfDamageRequest({
+    damageType = "IgnoresDef",
+    damage = amount,
+    damageSourceKind = type,
+    sourceEntityId = entity.id()
+  })
 end
 
 --============================= GRAPHICAL EFFECTS ============================--
@@ -313,7 +325,7 @@ function fuWeatherBase.update(self, dt)
   -- Check that weather effect is (still) active.
   self:checkEffect()
   if (not self.effectActive) then
-    return
+    return 0
   end
   -- Tick down timers.
   self.messageTimer = math.max(self.messageTimer - dt, 0)
@@ -335,4 +347,6 @@ function fuWeatherBase.update(self, dt)
     self:applyDebuffs(modifier)
     self.debuffTimer = self.baseDebuffRate
   end
+  -- Return the total modifier (for child classes to extend).
+  return modifier
 end
