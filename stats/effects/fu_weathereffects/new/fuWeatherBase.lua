@@ -87,19 +87,19 @@ function fuWeatherBase.entityAffected(self)
     end
   end
   -- if player has sufficient total resistances, return false
-  if (fuWeatherBase.totalResist(self) >= self.resistanceThreshold) then
+  if (self:totalResist() >= self.resistanceThreshold) then
     return false
   end
   return true
 end
 
 function fuWeatherBase.applyEffect(self)
-  self.activateVisualEffects()
+  self:activateVisualEffects()
   self.effectActive = true
 end
 
 function fuWeatherBase.removeEffect(self)
-  self.deactivateVisualEffects() -- locally defined function
+  self:deactivateVisualEffects()
   -- Reset used warning messages (in case player only has temporary immunity)
   self.usedMessages = {}
   self.effectActive = false
@@ -117,7 +117,7 @@ function fuWeatherBase.checkEffect(self)
     effect.expire()
     return
   end
-  if fuWeatherBase.entityAffected(self) then
+  if self:entityAffected() then
     if (not self.effectActive) then
       self:applyEffect()
     end
@@ -251,9 +251,8 @@ function fuWeatherBase.applyDebuffs(self, modifier)
 end
 
 --============================= GRAPHICAL EFFECTS ============================--
---[[ NOTE: These functions are simply much easier to define individually for
-    each weather type. I have left these here as an "abstract class"-style
-    definition. ]]--
+--[[ NOTE: These functions should be defined individually for each weather
+    type. I have left these here as an "abstract class"-style definition. ]]--
 
 function fuWeatherBase.activateVisualEffects(self)
 end
@@ -268,7 +267,7 @@ end
 --[[ NOTE: The actual update() function must be defined in each weather
     effect's .lua file. However, the idea is that the majority of what each
     weather effect does can be achieved simply by calling the method
-    self.parent.update(). ]]--
+    self:update(dt). ]]--
 
 function fuWeatherBase.update(self, dt)
   -- Check that weather effect is (still) active.
@@ -292,7 +291,7 @@ function fuWeatherBase.update(self, dt)
   -- Periodically apply any stat debuffs. Display alerts (e.g. "-Max HP" popup).
   if (self.debuffTimer == 0) then
     self:applyDebuffs(modifier)
-    self:createAlert() -- locally defined function
+    self:createAlert()
     self.debuffTimer = self.baseDebuffRate
   end
 end
