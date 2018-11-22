@@ -1,26 +1,57 @@
 {
   "name" : "gasworld3",
-  "blockingStat" : "extremepressureProtection",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "physicalResistance",
-          "effectCutoffValue" : 0.99,   
-	  "biomeTemp" : 1.3, 
-	  "biomeThreshold" : 0.5,
-	  "baseRate" : 0.35,
-	  "baseDebuffPerTick" : 10,
-	  "baseDmgPerTick" : 100,
-	  "situationPenalty" : 2.2,
-	  "liquidPenalty" : 1.7,
-	  "biomeNight" : 1.25
+    "resistanceTypes" : {
+      "physicalResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.99,
+    "immunityStats" : [
+      "extremepressureProtection"
+    ],
+
+    "healthDrain" : 0,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.6,
+    "jumpPenalty" : 0.9,
+
+    "debuffRate" : 4,
+    "debuffs" : {},
+
+    "pressureDamage" : {
+      "base" : 40,
+      "increase" : 20
+    },
+
+    "modifiers" : {
+      "night" : 2.0,
+      "windy" : 1.2
+    },
+
+    "messages" : {
+      "intro" : [
+        "fubiomepressure",
+        "fubiomepressure2",
+        "fubiomepressure3",
+        "fubiomepressure4"
+      ],
+      "day" : "fubiomepressureday",
+      "night" : "fubiomepressurenight",
+      "windy" : "fubiomepressurewind"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/gasworldnew/gasworld3.statuseffect"
   },
-  "defaultDuration" : 120,
+  "defaultDuration" : 2,
 
   "scripts" : [
     "gasworldnew.lua"
   ],
 
   "animationConfig" : "gasworldnew.animation",
-  "label" : "Lethal Pressure",
+
+  "label" : "Deadly Pressure",
   "icon" : "/interface/statuses/pressure.png"
 }
