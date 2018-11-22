@@ -42,7 +42,7 @@ function fuWeatherBase.init(self, config_file)
   self.usedMessages = {}
   --timers
   self.messageTimer = 0  -- timer until next radio message may play
-  self.messageDelay = 20  -- default cooldown for radio messages
+  self.messageDelay = 5  -- default cooldown for radio messages
   self.debuffTimer = self.baseDebuffRate
 
   -- Check and apply initial effect --
@@ -142,7 +142,7 @@ end
     flagged as used. ]]--
 function fuWeatherBase.sendWarning(self, type)
   if (self.messages[type] ~= nil) then
-    if (self.messageTimer <= 0) then
+    if (self.messageTimer <= 0) or (override == true) then
       if (self.usedMessages[type] ~= true) then
         world.sendEntityMessage(entity.id(), "queueRadioMessage", self.messages[type], 1.0)
         self.messageTimer = self.messageDelay
