@@ -206,9 +206,22 @@ end
 
 ]]
 
+function updateListItem(selectedItem, count)
+	if count > 0 then
+		widget.setText(itemList .. "." .. selectedItem .. ".amount", "x" .. count);
+		deltatime=0
+	else
+		deltatime=29.9
+		refreshList();
+	end
+end
+
 function requestOne()
 	local text = widget.getText("requestAmount")
-	if text ~= "" and tonumber(text) >= 0 then
+	if text == "" then
+		text = "1"
+	end
+	if tonumber(text) >= 0 then
 		--pane.playerEntityId()
 		--itemData={containerID, index}, itemDescriptor, itemConfig,pos
 		local selected = widget.getListSelected(itemList)
@@ -218,14 +231,12 @@ function requestOne()
 					local itemToSend=copy(items[i])
 					--sb.logInfo("%s",itemToSend)
 					itemToSend[2].count=math.min(tonumber(text),itemToSend[2].count)
+					items[i][2].count = items[i][2].count - itemToSend[2].count
 
 					table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
 					--sb.logInfo(sb.printJson({playerPos=temp}))
 					world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
-					--table.remove(items, i);
-					items[i][2].count=items[i][2].count-1
-					deltatime=29.9
-					refreshList();
+					updateListItem(selected, items[i][2].count)
 					return;
 				end
 			end
