@@ -140,14 +140,28 @@ end
     3. The message has not already been sent for this effect instance
     If successful, the message timer will be reset and the message will be
     flagged as used. ]]--
-function fuWeatherBase.sendWarning(self, type)
-  if (self.messages[type] ~= nil) then
-    if (self.messageTimer <= 0) or (override == true) then
-      if (self.usedMessages[type] ~= true) then
-        world.sendEntityMessage(entity.id(), "queueRadioMessage", self.messages[type], 1.0)
-        self.messageTimer = self.messageDelay
-        self.usedMessages[type] = true
+function fuWeatherBase.sendWarning(self, label)
+  if (self.messages[label] == nil) then
+    return
+  end
+  if (self.messageTimer <= 0) then
+    if (self.usedMessages[label] ~= true) then
+      -- Determine what message to send.
+      local message = nil
+      if (type(self.messages[label]) == "string") then
+        -- If the target is a string, then that is the message.
+        message = self.messages[label]
+      elseif (type(self.messages[label]) == "table") then
+        -- If the target is a table, choose one of its elements at random.
+        local index = math.random(#(self.messages[label]))
+        message = self.messages[label][index]
+      else
+        -- Unrecognised type, abort.
+        return
       end
+      world.sendEntityMessage(entity.id(), "queueRadioMessage", message, 1.0)
+      self.messageTimer = self.messageDelay
+      self.usedMessages[label] = true
     end
   end
 end
@@ -294,6 +308,7 @@ function fuWeatherBase.removeDebuffs(self)
 end
 
 function fuWeatherBase.applySelfDamage(self, amount, type)
+  -- Note that 'type' should be optional.
   status.applySelfDamageRequest({
     damageType = "IgnoresDef",
     damage = amount,
