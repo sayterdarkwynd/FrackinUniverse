@@ -9,6 +9,11 @@ ported this behaviour yet. It could be re-implemented later, but I think it
 would be a good idea to add a new SAIL warning message which plays when the
 penalty is applied.
 
+TODO: The heatwave{1,2,3} weather effects are a little bit odd. They
+share the desert heat effects, but probably don't occur on desert planets...
+(Actually, heatwave2 and heatwave3 aren't used.) They could use a proper
+revamp, and removing duplication with "heatweathernew" would be a good idea.
+
 -Wannas (Wannas16)
 ]]--
 
