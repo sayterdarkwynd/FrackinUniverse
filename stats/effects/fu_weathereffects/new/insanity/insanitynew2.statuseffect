@@ -1,22 +1,102 @@
 {
   "name" : "insanitynew2",
-  "blockingStat" : "insanityImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "cosmicResistance",
-          "effectCutoffValue" : 0.7,   
-	  "biomeTemp" : 1, 
-	  "biomeThreshold" : 1,
-	  "baseRate" : 8,
-	  "baseDebuffPerTick" : 2,
-	  "baseDmgPerTick" : 4,
-	  "situationPenalty" : 1,
-	  "liquidPenalty" : 1,
-	  "biomeNight" : 1,
-	  "multiplyColor" : [-210, -210, -210]
+    "resistanceTypes" : {
+      "cosmicResistance" : 1.0,
+      "shadowResistance" : 0.5
+    },
+    "resistanceThreshold" : 0.7,
+    "immunityStats" : [
+      "insanityImmunity"
+    ],
+
+    "healthDrain" : 0.5,
+    "hungerDrain" : 0.25,
+    "energyDrain" : 0,
+    "speedPenalty" : 0,
+    "jumpPenalty" : 0,
+
+    "debuffRate" : 8,
+    "debuffs" : {
+      "protection" : {
+        "type" : "absolute",
+        "amount" : -2
+      },
+      "maxEnergy" : {
+        "type" : "absolute",
+        "amount" : -4
+      }
+    },
+
+    "colorMod" : [-160, -210, -210],
+    "saturation" : 0,
+
+    "chatterDelay" : {
+      "base" : 30,
+      "random" : 45
+    },
+
+    "darknessImmunityDelay" : 60,
+
+    "modifiers" : {},
+
+    "messages" : {
+      "intro" : "fubiomeinsanity",
+      "wet" : "insanityeffectliquid",
+      "fast" : "insanityeffectfast",
+      "zeroG" : "insanityEffectgrav",
+      "airborne" : [
+        "insanityEffectair",
+        "insanityEffectair2",
+        "insanityEffectair3"
+      ],
+      "injured" : [
+        "insanityeffectdying",
+        "insanityeffectdying2",
+        "insanityeffectdying3",
+        "insanityeffectdying4",
+        "insanityeffectdying5",
+        "insanityeffectskin",
+        "insanityeffectwindy",
+        "insanityeffectducts",
+        "insanityeffectweirdo1",
+        "insanityeffectweirdo2",
+        "insanityeffectweirdo3",
+        "insanityeffectweirdo4",
+        "fu_kevin_insanity3",
+        "fu_kevin_insanity5",
+        "fu_kevin_insanity1"
+      ],
+      "random" : [
+        "insanityeffectkyle",
+        "insanityeffectmike",
+        "insanityeffectmusic",
+        "insanityeffectwee",
+        "insanityeffectneat",
+        "insanityeffectskin",
+        "insanityeffectwindy",
+        "insanityeffectducts",
+        "insanityeffectweirdo1",
+        "insanityeffectweirdo2",
+        "insanityeffectweirdo3",
+        "insanityeffectweirdo4",
+        "fu_kevin_insanity6",
+        "fu_kevin_insanity2",
+        "fu_kevin_insanity4"
+      ],
+      "hungry5" : "insanityeffecthungry4",
+      "hungry10" : "insanityeffecthungry3",
+      "hungry20" : "insanityeffecthungry2",
+      "hungry30" : "insanityeffecthungry1",
+      "hungry40" : "insanityeffecthungry5",
+      "hungry50" : "insanityeffecthungry6",
+      "hungry60" : "insanityeffecthungry7"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/insanity/insanitynew2.statuseffect"
   },
-  
-  
   "defaultDuration" : 120,
 
   "scripts" : [

@@ -318,6 +318,15 @@ function fuWeatherBase.applySelfDamage(self, amount, type)
 end
 
 --============================= GRAPHICAL EFFECTS ============================--
+
+function fuWeatherBase.toHex(self, num)
+	local hex = string.format("%X", math.floor(num + 0.5))
+	if num < 16 then
+    hex = "0" .. hex
+  end
+	return hex
+end
+
 --[[ NOTE: These functions should be defined individually for each weather
     type. I have left these here as an "abstract class"-style definition. ]]--
 
