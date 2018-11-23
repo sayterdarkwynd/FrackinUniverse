@@ -1,10 +1,6 @@
 require("/scripts/vec2.lua")
 
---[[ TODO: This file is identical to poisonweathernew.lua - it could be
-			removed. The .statuseffect file links to poisonweathernew.lua instead.]]--
-
 function init()
-
 	self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
 
 	-- Environment Configuration --
@@ -19,10 +15,8 @@ function init()
 	--timers
 	self.biomeTimer = self.baseRate
 	self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
-	--sb.logInfo("my counter : "..self.usedIntro)
-	--sb.logInfo("my counter : "..self.timerRadioMessage)
-	--conditionals
 
+	--conditionals
 	self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
 	self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
 	self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
@@ -30,37 +24,45 @@ function init()
 	self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?
 
 	checkEffectValid()
-
+	self.usedIntro = 0
 	script.setUpdateDelta(5)
 end
 
+--[[ Helper function to determine if weather effect applies to an entity ]]--
+function isEntityAffected()
+	-- if not a player, or world type is "unknown" (???) then return false --
+	if ((world.entityType(entity.id()) ~= "player") or
+	world.type()=="unknown") then
+		return false
+	end
+	-- if player has immunity stat or sufficient resistance, return false --
+	if (status.statPositive("poisonStatusImmunity") or
+	status.statPositive("poisongasImmunity") or
+	status.statPositive("gasImmunity") or
+	(status.stat("poisonResistance",0) >= self.effectCutoffValue)) then
+		return false
+	end
+	-- otherwise, return true
+	return true
+end
 
---******* check effect and cancel ************
+--[[ Check if weather effect is still applicable, and handle visual effects ]]--
 function checkEffectValid()
-	if world.entityType(entity.id()) ~= "player" then
+	-- remove visual effect if no longer affected
+	if not isEntityAffected() then
 		deactivateVisualEffects()
+		self.usedIntro = nil -- TODO: is this needed?
 		effect.expire()
-	end
-	if (status.statPositive("poisonStatusImmunity")) or (status.statPositive("gasImmunity")) or world.type()=="unknown" then
-		deactivateVisualEffects()
-		self.usedIntro = nil
-		effect.expire()
-	end
-
-	-- checks strength of effect vs resistance
-	if ( status.stat("poisonResistance",0)  >= self.effectCutoffValue ) then
-		deactivateVisualEffects()
-		effect.expire()
+	-- add visual effect and display warning (if not yet shown)
 	else
-		-- activate visuals and check stats
-		if (self.timerRadioMessage == 0) and not self.usedIntro then
+		activateVisualEffects()
+		if not self.usedIntro and self.timerRadioMessage <= 0 then
 			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
 			self.usedIntro = 1
-			self.timerRadioMessage = 20
+			self.timerRadioMessage = 10
 		end
 	end
 end
-
 
 -- *******************Damage effects
 function setEffectDamage()
@@ -72,7 +74,7 @@ function setEffectDebuff()
 end
 
 function setEffectTime()
-	return (  self.baseRate *  math.min(   1 - math.min( status.stat("poisonResistance",0) ),0.35))
+	return (  self.baseRate *  math.min(   1 - math.min( status.stat("poisonResistance",0) ),0.45))
 end
 
 -- ******** Applied bonuses and penalties
@@ -128,9 +130,7 @@ end
 
 function isDry()
 	local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-		inWater = 0
-	end
+	return not world.liquidAt(mouthPosition)
 end
 
 function toHex(num)
@@ -155,7 +155,7 @@ function activateVisualEffects()
 end
 
 function deactivateVisualEffects()
-	effect.setParentDirectives("fade=558833=0")
+	effect.setParentDirectives("fade=558833=0.0")
 	animator.setParticleEmitterActive("poisonbreath", false)
 end
 
@@ -169,12 +169,10 @@ end
 
 function update(dt)
 	checkEffectValid()
-
-	self.biomeTimer = self.biomeTimer - dt
-	self.biomeTimer2 = self.biomeTimer2 - dt
+	--self.biomeTimer = self.biomeTimer - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
---set the base stats
+	-- set the base stats
 	self.baseRate = config.getParameter("baseRate",0)
 	self.baseDmg = config.getParameter("baseDmgPerTick",0)
 	self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
@@ -189,46 +187,47 @@ function update(dt)
 	self.debuffApply = setEffectDebuff()
 
 	-- environment checks
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
 	local lightLevel = getLight()
+	local dry = isDry()
 
-	if status.stat("poisonResistance",0) < self.effectCutoffValue then
-		activateVisualEffects()
+	if isEntityAffected() then
 		self.windLevel =  world.windLevel(mcontroller.position())
 		if self.windLevel >= 40 then
 			setWindPenalty()
 			if self.timerRadioMessage == 0 then
 				if not self.usedWind then
-					world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
-					self.timerRadioMessage = 220
-					self.usedWind = 1
+						world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
+						self.timerRadioMessage = 220
+						self.usedWind = 1
 				end
 			end
 		end
-
-	self.damageApply = setEffectDamage()
-	self.debuffApply = setEffectDebuff()
-
-	if (self.biomeTimer2 <= 0) and (status.stat("poisonResistance",0) < self.effectCutoffValue) and (status.stat("powerMultiplier") >=0.05) then
-		effect.addStatModifierGroup({
-			{stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
-		})
-		makeAlert()
-		self.biomeTimer2 = setEffectTime()
-	end
-
-	status.modifyResource("health", -self.damageApply * dt)
-	if (status.stat("poisonResistance",0) <= 0) then self.modifier = 0 end
-		self.modifier = (status.resource("health")) / (status.stat("maxHealth"))  -- calculate percent of health
-		if self.modifier <= 0 then
-			self.modifier = 0.15
+		-- Set damage totals, accounting for modifiers
+		self.damageApply = setEffectDamage()
+		self.debuffApply = setEffectDebuff()
+		-- Apply health drain.
+		status.modifyResource("health", -self.damageApply * dt)
+		-- Periodically apply power debuff.
+		self.biomeTimer2 = self.biomeTimer2 - dt
+		if self.biomeTimer2 <= 0 then
+			local power = status.stat("powerMultiplier")
+			if power >= 0.05 then
+				effect.addStatModifierGroup({
+					{stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
+				})
+			end
+			makeAlert()
+			self.biomeTimer2 = self.baseRate
 		end
+		-- Apply movement penalties.
+		self.modifier = math.max((status.resource("health") / status.stat("maxHealth")), 0.15)
 		mcontroller.controlModifiers({
 			airJumpModifier = 1 * self.modifier,
 			speedModifier = (1 * self.modifier) + 0.1
 		})
-	end
+	end --isEntityAffected
 end
 
 function uninit()

@@ -27,10 +27,10 @@ function fuInsanityWeather.init(self, config_file)
   self.saturation = effectConfig.saturation
   -- Chatter timer.
   self.chatterDelay = effectConfig.chatterDelay
-  self.chatterTimer = self.chatterDelay.base + math.random() * self.chatterDelay.random
+  self.chatterTimer = nil
   -- Delay before granting darkness immunity.
   self.darknessImmunityDelay = effectConfig.darknessImmunityDelay
-  self.darknessImmunityTimer = self.darknessImmunityDelay
+  self.darknessImmunityTimer = nil
 end
 
 function fuInsanityWeather.update(self, dt)
@@ -53,9 +53,9 @@ function fuInsanityWeather.totalModifier(self)
   return self:resistModifier()
 end
 
-function fuInsanityWeather.removeEffect(self)
-  self.parent.removeEffect(self)
-  -- Reset timers in case the effect is re-applied later.
+function fuInsanityWeather.applyEffect(self)
+  self.parent.applyEffect(self)
+  -- Set auxiliary timers.
   self.darknessImmunityTimer = self.darknessImmunityDelay
   self.chatterTimer = self.chatterDelay.base + math.random() * self.chatterDelay.random
 end
