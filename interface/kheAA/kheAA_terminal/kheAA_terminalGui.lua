@@ -163,6 +163,16 @@ function request()
 	end
 end
 
+function updateListItem(selectedItem, count)
+	if count > 0 then
+		widget.setText(itemList .. "." .. selectedItem .. ".amount", "x" .. count);
+		deltatime=0
+	else
+		deltatime=29.9
+		refreshList();
+	end
+end
+
 function requestAllButOne()
 	--pane.playerEntityId()
 	local selected = widget.getListSelected(itemList)
@@ -177,8 +187,7 @@ function requestAllButOne()
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 				--table.remove(items, i);
 				items[i][2].count=1
-				deltatime=29.9
-				refreshList();
+				updateListItem(selected, 1)
 				return;
 			end
 		end
@@ -205,16 +214,6 @@ end
 
 
 ]]
-
-function updateListItem(selectedItem, count)
-	if count > 0 then
-		widget.setText(itemList .. "." .. selectedItem .. ".amount", "x" .. count);
-		deltatime=0
-	else
-		deltatime=29.9
-		refreshList();
-	end
-end
 
 function requestOne()
 	local text = widget.getText("requestAmount")
