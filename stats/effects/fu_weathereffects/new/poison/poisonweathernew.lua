@@ -36,14 +36,6 @@ function fuPoisonWeather.applyMovementPenalties(self, modifier)
   end
 end
 
---[[ Modified function does not apply debuffs until the debuffStartTimer has
-    expired, and only while power >= 0.05. ]]--
-function fuPoisonWeather.applyDebuffs(self, modifier)
-  if (status.stat("powerMultiplier") >= 0.05) then
-    self.parent.applyDebuffs(self, modifier)
-  end
-end
-
 --============================= GRAPHICAL EFFECTS ============================--
 
 function fuPoisonWeather.activateVisualEffects(self)

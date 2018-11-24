@@ -1,6 +1,7 @@
 require("/scripts/vec2.lua")
 
 function init()
+
 	self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
 
 	-- Environment Configuration --
@@ -14,17 +15,12 @@ function init()
 
 	--timers
 	self.biomeTimer = self.baseRate
-	self.biomeTimer2 = (self.baseRate * (1 + status.stat("poisonResistance",0)) *10)
-
-	--conditionals
-	self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
-	self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
-	self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
-	self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
-	self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?
+	self.biomeTimer2 = self.baseRate * (1 + status.stat("poisonResistance",0)) * 10
+	--[[TODO: biomeTimer2 always seems to initialise at 20 times the base rate,
+			rather than 10... Not sure why.]]--
 
 	checkEffectValid()
-	self.usedIntro = 0
+
 	script.setUpdateDelta(5)
 end
 
@@ -36,9 +32,7 @@ function isEntityAffected()
 		return false
 	end
 	-- if player has immunity stat or sufficient resistance, return false --
-	if (status.statPositive("poisonStatusImmunity") or
-	status.statPositive("poisongasImmunity") or
-	status.statPositive("gasImmunity") or
+	if (status.statPositive("protoImmunity") or
 	(status.stat("poisonResistance",0) >= self.effectCutoffValue)) then
 		return false
 	end
@@ -51,15 +45,16 @@ function checkEffectValid()
 	-- remove visual effect if no longer affected
 	if not isEntityAffected() then
 		deactivateVisualEffects()
-		self.usedIntro = nil -- TODO: is this needed?
+		deactivateVisualEffects2()
 		effect.expire()
 	-- add visual effect and display warning (if not yet shown)
 	else
 		activateVisualEffects()
+		--activateVisualEffects2() is called on a timer.
 		if not self.usedIntro and self.timerRadioMessage <= 0 then
-			world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoison", 1.0) -- send player a warning
+			world.sendEntityMessage(entity.id(), "queueRadioMessage", "fubiomeproto", 1.0) -- send player a warning
 			self.usedIntro = 1
-			self.timerRadioMessage = 10
+			self.timerRadioMessage = 20
 		end
 	end
 end
@@ -101,7 +96,6 @@ end
 
 function setWindPenalty()
 	self.windLevel =  world.windLevel(mcontroller.position())
-	if not self.windLevel then self.windLevel = world.windLevel(mcontroller.position()) end
 	if (self.windLevel > 1) then
 		self.biomeThreshold = self.biomeThreshold + (self.windLevel / 100)
 	end
@@ -133,12 +127,6 @@ function isDry()
 	return not world.liquidAt(mouthPosition)
 end
 
-function toHex(num)
-	local hex = string.format("%X", math.floor(num + 0.5))
-	if num < 16 then hex = "0"..hex end
-	return hex
-end
-
 function hungerLevel()
 	if status.isResource("food") then
 		return status.resource("food")
@@ -147,32 +135,43 @@ function hungerLevel()
 	end
 end
 
---*********alert the player that they are affected
+function toHex(num)
+	local hex = string.format("%X", math.floor(num + 0.5))
+	if num < 16 then hex = "0"..hex end
+	return hex
+end
+
+--**** Alert the player
 function activateVisualEffects()
-	effect.setParentDirectives("fade=558833=0.7")
-	animator.setParticleEmitterOffsetRegion("poisonbreath", mcontroller.boundBox())
-	animator.setParticleEmitterActive("poisonbreath", true)
+	animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
+	animator.setParticleEmitterActive("coldbreath", true)
 end
 
-function deactivateVisualEffects()
-	effect.setParentDirectives("fade=558833=0.0")
-	animator.setParticleEmitterActive("poisonbreath", false)
-end
-
-function makeAlert()
+function activateVisualEffects2()
+	effect.setParentDirectives("fade=306630=0.35")
 	local statusTextRegion = { 0, 1, 0, 1 }
 	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
 	animator.burstParticleEmitter("statustext")
-	animator.playSound("bolt")
+end
+
+function deactivateVisualEffects()
+	animator.setParticleEmitterActive("coldbreath", false)
+end
+function deactivateVisualEffects2()
+	effect.setParentDirectives("fade=306630=0")
+end
+
+-- visual indicator for effect
+function makeAlert()
+	world.spawnProjectile("poisonsmoke",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
 end
 
 
 function update(dt)
 	checkEffectValid()
-	--self.biomeTimer = self.biomeTimer - dt
 	self.timerRadioMessage = self.timerRadioMessage - dt
 
-	-- set the base stats
+--set the base stats
 	self.baseRate = config.getParameter("baseRate",0)
 	self.baseDmg = config.getParameter("baseDmgPerTick",0)
 	self.baseDebuff = config.getParameter("baseDebuffPerTick",0)
@@ -187,47 +186,50 @@ function update(dt)
 	self.debuffApply = setEffectDebuff()
 
 	-- environment checks
+	local lightLevel = getLight()
 	local daytime = daytimeCheck()
 	local underground = undergroundCheck()
-	local lightLevel = getLight()
 	local dry = isDry()
 
 	if isEntityAffected() then
-		self.windLevel =  world.windLevel(mcontroller.position())
-		if self.windLevel >= 40 then
-			setWindPenalty()
-			if self.timerRadioMessage == 0 then
-				if not self.usedWind then
-						world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomepoisonwind", 1.0) -- send player a warning
-						self.timerRadioMessage = 220
-						self.usedWind = 1
-				end
-			end
+		-- Proto poison is slightly worse during the night.
+		-- TODO: Why are we using setSituationPenalty instead of setNightPenalty?
+		if not daytime then
+			setSituationPenalty()
 		end
-		-- Set damage totals, accounting for modifiers
 		self.damageApply = setEffectDamage()
 		self.debuffApply = setEffectDebuff()
-		-- Apply health drain.
-		status.modifyResource("health", -self.damageApply * dt)
-		-- Periodically apply power debuff.
+		self.biomeTimer = self.biomeTimer - dt
+		if self.biomeTimer <= 0 then
+			-- Apply periodic damage
+			status.applySelfDamageRequest({
+				damageType = "IgnoresDef",
+				damage = self.damageApply,
+				damageSourceKind = "poison",
+				sourceEntityId = entity.id()
+			})
+			self.biomeTimer = self.baseRate
+		end
 		self.biomeTimer2 = self.biomeTimer2 - dt
 		if self.biomeTimer2 <= 0 then
-			local power = status.stat("powerMultiplier")
-			if power >= 0.05 then
+			-- Extra "HP down" particle because people don't seem to notice
+			configBombDrop = {}
+			world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+			-- Periodically drain crit chance and max health.
+			if status.stat("critChance",0) >= 1 then
 				effect.addStatModifierGroup({
-					{stat = "powerMultiplier", amount = -(self.debuffApply/100)  }
+					{stat = "maxHealth", amount = -self.debuffApply},
+					{stat = "critChance", amount = -self.debuffApply}
+				})
+			else
+				effect.addStatModifierGroup({
+					{stat = "maxHealth", amount = -self.debuffApply}
 				})
 			end
-			makeAlert()
-			self.biomeTimer2 = self.baseRate
+			activateVisualEffects2()
+			self.biomeTimer2 = self.baseRate * (1 + status.stat("poisonResistance",0)) * 2
 		end
-		-- Apply movement penalties.
-		self.modifier = math.max((status.resource("health") / status.stat("maxHealth")), 0.15)
-		mcontroller.controlModifiers({
-			airJumpModifier = 1 * self.modifier,
-			speedModifier = (1 * self.modifier) + 0.1
-		})
-	end --isEntityAffected
+	end --isEntityAffected()
 end
 
 function uninit()

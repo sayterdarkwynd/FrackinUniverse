@@ -45,20 +45,6 @@ function fuAetherWeather.applyEnergyDrain(self, modifier, dt)
   end
 end
 
-function fuAetherWeather.applyDebuffs(self, modifier)
-  -- Only apply energy max/regen debuffs if max energy > 0.
-  if (status.stat("maxEnergy", 0) > 0) then
-    self.parent.applyDebuffs(self, modifier)
-  end
-  --[[ If max energy is exactly zero, set it to -1 (to stop wipeout effect
-      spam for admins). ]]--
-  if (status.stat("maxEnergy", 0) == 0) then
-    effect.addStatModifierGroup({
-      {stat = "maxEnergy", amount = -1}
-    })
-  end
-end
-
 --============================= GRAPHICAL EFFECTS ============================--
 
 function fuAetherWeather.activateVisualEffects(self)

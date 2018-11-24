@@ -36,6 +36,7 @@ function fuWeatherBase.init(self, config_file)
   self.debuffs = effectConfig.debuffs
   self.currentDebuffs = {}
   self.debuffGroup = effect.addStatModifierGroup({})
+  self.energyFixGroup = effect.addStatModifierGroup({})
   --situational modifiers
   self.modifiers = effectConfig.modifiers
   --messages
@@ -293,21 +294,36 @@ function fuWeatherBase.applyDebuffs(self, modifier)
   -- Only apply debuffs if the start delay has ended.
   if (self.debuffStartTimer == 0) then
     local newGroup = {}
+    local debuffChanged = false
     local i = 1
     for dStat, dParams in pairs(self.debuffs) do
       local statName = tostring(dStat)
-      local dAmount = nil
-      if (tostring(dParams.type) == "relative") then
-        dAmount = status.stat(statName) * dParams.amount * modifier
-      else -- dParams.type == "absolute"
-        dAmount = dParams.amount * modifier
-      end
+      local dAmount = dParams.amount * modifier
       -- Initialise debuff entry if not yet set.
       if (self.currentDebuffs[statName] == nil) then
         self.currentDebuffs[statName] = dAmount
       -- Unless constant flag is set, stack debuffs on subsequent ticks.
       elseif (dParams.constant == nil) then
-        self.currentDebuffs[statName] = self.currentDebuffs[statName] + dAmount
+        -- If stat debuff is capped, do not exceed it.
+        if (dParams.cap ~= nil) then
+          local cappedAmount = nil
+          if (dAmount > 0) then -- upper cap
+            cappedAmount = math.min(dParams.cap - status.stat(statName), dAmount)
+          else -- lower cap
+            cappedAmount = math.max(dParams.cap - status.stat(statName), dAmount)
+          end
+          -- Discard tiny changes due to precision limits.
+          if (math.abs(cappedAmount) < 0.0001) then
+            cappedAmount = 0
+          end
+          if (cappedAmount ~= 0) then
+            debuffChanged = true
+          end
+          self.currentDebuffs[statName] = self.currentDebuffs[statName] + cappedAmount
+        else
+          self.currentDebuffs[statName] = self.currentDebuffs[statName] + dAmount
+          debuffChanged = true
+        end
       end
       -- Add debuff to modifier group.
       newGroup[i] = {stat = statName, amount = self.currentDebuffs[statName]}
@@ -317,7 +333,9 @@ function fuWeatherBase.applyDebuffs(self, modifier)
       -- Update this effect's debuff modifier group.
       effect.setStatModifierGroup(self.debuffGroup, newGroup)
       -- Display alerts (e.g. "-Max HP" popup).
-      self:createAlert()
+      if (debuffChanged) then
+        self:createAlert()
+      end
     end
   end
 end
@@ -326,6 +344,8 @@ function fuWeatherBase.removeDebuffs(self)
   self.currentDebuffs = {}
   effect.removeStatModifierGroup(self.debuffGroup)
   self.debuffGroup = effect.addStatModifierGroup({})
+  effect.removeStatModifierGroup(self.energyFixGroup)
+  self.energyFixGroup = effect.addStatModifierGroup({})
 end
 
 function fuWeatherBase.applySelfDamage(self, amount, type)
@@ -388,7 +408,14 @@ function fuWeatherBase.update(self, dt)
   self:applyEnergyDrain(modifier, dt)
   -- Apply speed and jump penalties.
   self:applyMovementPenalties(modifier)
-  -- Periodically apply any stat debuffs.
+  --[[ Special case: if the player's max energy is exactly zero due to debuffs,
+      set it to -1 instead. This prevents the 'wipeout effect' from spamming
+      if the player is in admin mode. ]]--
+  if (type(self.currentDebuffs["maxEnergy"]) == "number") and (status.stat("maxEnergy") == 0) then
+    local newGroup = {{stat = "maxEnergy", amount = -1}}
+    effect.setStatModifierGroup(self.energyFixGroup, newGroup)
+  end
+  -- Then, periodically apply any stat debuffs.
   if (self.debuffTimer == 0) then
     self:applyDebuffs(modifier)
     self.debuffTimer = self.baseDebuffRate
