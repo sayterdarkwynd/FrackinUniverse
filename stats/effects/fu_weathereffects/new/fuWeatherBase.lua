@@ -32,6 +32,7 @@ function fuWeatherBase.init(self, config_file)
   self.baseJumpPenalty = effectConfig.jumpPenalty
   --debuffs
   self.baseDebuffRate = effectConfig.debuffRate
+  self.baseDebuffStartDelay = effectConfig.debuffStartDelay
   self.debuffs = effectConfig.debuffs
   self.currentDebuffs = {}
   self.debuffGroup = effect.addStatModifierGroup({})
@@ -41,9 +42,10 @@ function fuWeatherBase.init(self, config_file)
   self.messages = effectConfig.messages
   self.usedMessages = {}
   --timers
-  self.messageTimer = 0  -- timer until next radio message may play
-  self.messageDelay = 5  -- default cooldown for radio messages
-  self.debuffTimer = self.baseDebuffRate
+  self.messageTimer = nil -- timer until next radio message may play
+  self.messageDelay = 5 -- default cooldown for radio messages
+  self.debuffTimer = nil -- timer until next debuff tick
+  self.debuffStartTimer = nil -- timer before debuffs start to apply
 
   -- Check and apply initial effect --
   self.effectActive = false
@@ -101,6 +103,22 @@ end
 function fuWeatherBase.applyEffect(self)
   self:activateVisualEffects()
   self.effectActive = true
+  -- Set debuff and other timers.
+  self.messageTimer = 0
+  self.debuffTimer = self.baseDebuffRate
+  -- Debuff start delay timer scales with player resistances.
+  if (self.baseDebuffStartDelay ~= nil) and (self.baseDebuffStartDelay > 0) then
+    local debuffStartMult = nil
+    local totalResist = self:totalResist()
+    if (totalResist >= 0) then
+      debuffStartMult = 1.0 / (1.0 + totalResist / self.resistanceThreshold)
+    else
+      debuffStartMult = 1.0 / math.max(1.0 + totalResist, 0.5)
+    end
+    self.debuffStartTimer = self.baseDebuffStartDelay * debuffStartMult
+  else
+    self.debuffStartTimer = 0
+  end
 end
 
 function fuWeatherBase.removeEffect(self)
@@ -272,32 +290,35 @@ function fuWeatherBase.applyMovementPenalties(self, modifier)
 end
 
 function fuWeatherBase.applyDebuffs(self, modifier)
-  local newGroup = {}
-  local i = 1
-  for dStat, dParams in pairs(self.debuffs) do
-    local statName = tostring(dStat)
-    local dAmount = nil
-    if (tostring(dParams.type) == "relative") then
-      dAmount = status.stat(statName) * dParams.amount * modifier
-    else -- dParams.type == "absolute"
-      dAmount = dParams.amount * modifier
+  -- Only apply debuffs if the start delay has ended.
+  if (self.debuffStartTimer == 0) then
+    local newGroup = {}
+    local i = 1
+    for dStat, dParams in pairs(self.debuffs) do
+      local statName = tostring(dStat)
+      local dAmount = nil
+      if (tostring(dParams.type) == "relative") then
+        dAmount = status.stat(statName) * dParams.amount * modifier
+      else -- dParams.type == "absolute"
+        dAmount = dParams.amount * modifier
+      end
+      -- Initialise debuff entry if not yet set.
+      if (self.currentDebuffs[statName] == nil) then
+        self.currentDebuffs[statName] = dAmount
+      -- Unless constant flag is set, stack debuffs on subsequent ticks.
+      elseif (dParams.constant == nil) then
+        self.currentDebuffs[statName] = self.currentDebuffs[statName] + dAmount
+      end
+      -- Add debuff to modifier group.
+      newGroup[i] = {stat = statName, amount = self.currentDebuffs[statName]}
+      i = i + 1
     end
-    -- Initialise debuff entry if not yet set.
-    if (self.currentDebuffs[statName] == nil) then
-      self.currentDebuffs[statName] = dAmount
-    -- Unless constant flag is set, stack debuffs on subsequent ticks.
-    elseif (dParams.constant == nil) then
-      self.currentDebuffs[statName] = self.currentDebuffs[statName] + dAmount
+    if (i > 1) then
+      -- Update this effect's debuff modifier group.
+      effect.setStatModifierGroup(self.debuffGroup, newGroup)
+      -- Display alerts (e.g. "-Max HP" popup).
+      self:createAlert()
     end
-    -- Add debuff to modifier group.
-    newGroup[i] = {stat = statName, amount = self.currentDebuffs[statName]}
-    i = i + 1
-  end
-  if (i > 1) then
-    -- Update this effect's debuff modifier group.
-    effect.setStatModifierGroup(self.debuffGroup, newGroup)
-    -- Display alerts (e.g. "-Max HP" popup).
-    self:createAlert()
   end
 end
 
@@ -354,6 +375,7 @@ function fuWeatherBase.update(self, dt)
   -- Tick down timers.
   self.messageTimer = math.max(self.messageTimer - dt, 0)
   self.debuffTimer = math.max(self.debuffTimer - dt, 0)
+  self.debuffStartTimer = math.max(self.debuffStartTimer - dt, 0)
 
   -- Calculate the total effect modifier.
   local modifier = self:totalModifier()

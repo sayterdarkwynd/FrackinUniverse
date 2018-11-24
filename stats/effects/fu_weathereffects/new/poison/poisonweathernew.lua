@@ -21,23 +21,9 @@ fuPoisonWeather = fuWeatherBase:new({})
     any attributes overwritten by the child from being used. ]]--
 
 function fuPoisonWeather.init(self, config_file)
-  effectConfig = self.parent.init(self, config_file)
-  self.debuffStartDelay = effectConfig.debuffStartDelay
-  self.debuffStartTimer = 0
+  self.parent.init(self, config_file)
   -- Health percentage below which movement becomes penalised.
   self.movementPenaltyHealthThreshold = 0.6
-end
-
-function fuPoisonWeather.applyEffect(self)
-  self.parent.applyEffect(self)
-  local debuffStartMult = nil
-  local totalResist = self:totalResist()
-  if (totalResist >= 0) then
-    debuffStartMult = 1.0 / (1.0 + totalResist / self.resistanceThreshold)
-  else
-    debuffStartMult = 1.0 / math.max(1.0 + totalResist, 0.5)
-  end
-  self.debuffStartTimer = self.debuffStartDelay * debuffStartMult
 end
 
 --[[ Modified function only applies movement penalties when health is below
@@ -53,20 +39,10 @@ end
 --[[ Modified function does not apply debuffs until the debuffStartTimer has
     expired, and only while power >= 0.05. ]]--
 function fuPoisonWeather.applyDebuffs(self, modifier)
-  if (self.debuffStartTimer == 0) then
-    if (status.stat("powerMultiplier") >= 0.05) then
-      self.parent.applyDebuffs(self, modifier)
-    end
+  if (status.stat("powerMultiplier") >= 0.05) then
+    self.parent.applyDebuffs(self, modifier)
   end
 end
-
-function fuPoisonWeather.update(self, dt)
-  self.parent.update(self, dt)
-  if (self.effectActive) then
-    self.debuffStartTimer = math.max(self.debuffStartTimer - dt, 0)
-  end
-end
-
 
 --============================= GRAPHICAL EFFECTS ============================--
 
