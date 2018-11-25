@@ -1,18 +1,37 @@
 {
   "name" : "sulphuricweathernew4",
-  "blockingStat" : "sulphuricImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "physicalResistance",
-          "effectCutoffValue" : 0.95,     
-	  "biomeTemp" : 1.8, 
-	  "biomeThreshold" : 3,
-	  "baseRate" : 3,
-	  "baseDebuffPerTick" : 9,
-	  "baseDmgPerTick" : 17,
-	  "situationPenalty" : 3.65,
-	  "liquidPenalty" : 1,
-	  "biomeNight" : 1
+    "resistanceTypes" : {
+      "physicalResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.95,
+    "immunityStats" : [
+      "sulphuricImmunity"
+    ],
+
+    "healthDrain" : 20,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0,
+    "jumpPenalty" : 0,
+
+    "debuffRate" : 3,
+    "debuffStartDelay" : 0,
+    "debuffs" : {
+      "protection" : {
+        "amount" : -9
+      }
+    },
+
+    "modifiers" : {},
+
+    "messages" : {
+      "intro" : "ffbiomesulphuric"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/sulphuric/sulphuricweathernew4.statuseffect"
   },
   "defaultDuration" : 5,
 
@@ -20,8 +39,6 @@
     "sulphuricweathernew.lua"
   ],
 
-  "animationConfig" : "sulphuricweathernew.animation",
-
-  "label" : "Impossibly Acidic",
+  "label" : "Impossibly Acidic Atmosphere",
   "icon" : "/interface/statuses/acid3.png"
 }

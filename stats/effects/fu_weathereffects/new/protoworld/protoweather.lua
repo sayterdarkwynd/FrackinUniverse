@@ -22,14 +22,6 @@ fuProtoWeather = fuWeatherBase:new({})
 
 --============================= GRAPHICAL EFFECTS ============================--
 
-function fuProtoWeather.applyDebuffs(self, modifier)
-  self.parent.applyDebuffs(self, modifier)
-  -- Damage the player a little to make it even more obvious.
-  if (self.debuffStartTimer == 0) then
-    self:applySelfDamage(0.1, "poison")
-  end
-end
-
 function fuProtoWeather.activateVisualEffects(self)
   animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
   animator.setParticleEmitterActive("coldbreath", true)
@@ -49,6 +41,8 @@ function fuProtoWeather.createAlert(self)
   -- Emit a "HP down" symbol to make it extra obvious.
   configBombDrop = {}
   world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+  -- Finally, hurt the player for an audio warning.
+  self:applySelfDamage(0.1)
 end
 
 --============================== INIT AND UNINIT =============================--
