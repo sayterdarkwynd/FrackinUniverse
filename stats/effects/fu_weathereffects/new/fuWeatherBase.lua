@@ -302,6 +302,7 @@ function fuWeatherBase.applyDebuffs(self, modifier)
       -- Initialise debuff entry if not yet set.
       if (self.currentDebuffs[statName] == nil) then
         self.currentDebuffs[statName] = dAmount
+        debuffChanged = true
       -- Unless constant flag is set, stack debuffs on subsequent ticks.
       elseif (dParams.constant == nil) then
         -- If stat debuff is capped, do not exceed it.
