@@ -1,15 +1,6 @@
 require("/scripts/vec2.lua")
 require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
 
---=================================== NOTES ==================================--
---[[
-TODO: The sulphuric storms (temporary weather events) currently use the same
-warning messages as the sulphuric biome effects. This should be changed so that
-it's clear that the storms are temporary.
-
--Wannas
-]]--
-
 --============================= CLASS DEFINITION ============================--
 --[[ This instantiates a child class of fuWeatherBase. The child's metatable
     is set to the parent's, so that any missing indexes (methods) are looked
