@@ -28,6 +28,7 @@ end
 
 --[[ Modified function only applies movement penalties when health is below
     a threshold percentage. The penalty scales up as health decreases. ]]--
+-- TODO: Maybe a new SAIL warning that plays when this happens?
 function fuPoisonWeather.applyMovementPenalties(self, modifier)
   local healthPercent = status.resource("health") / status.stat("maxHealth")
   if (healthPercent < self.movementPenaltyHealthThreshold) then
