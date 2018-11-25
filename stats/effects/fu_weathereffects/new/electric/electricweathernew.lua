@@ -17,6 +17,12 @@ Going inside (somewhere with a background wall) or underwater (I think, need to
 confirm) will remove the effect. Hence the wet effect and warning do not seem
 to occur very often in practice.
 
+Additional note 2: Effects applied by weather events (electric storms, poison
+gas etc.) seem to be initialised by Starbound every tick. This doesn't actually
+cause problems, as it seems the new instance it uninitialised instantly...
+However, it's pretty poor form performance-wise. Not sure if there's any way
+to fix it.
+
 -Wannas (Wannas16)
 ]]--
 

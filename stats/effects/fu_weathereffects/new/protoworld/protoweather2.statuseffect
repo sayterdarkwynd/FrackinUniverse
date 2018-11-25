@@ -1,20 +1,45 @@
 {
   "name" : "protoweather2",
-  "blockingStat" : "protoImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "poisonResistance",
-          "effectCutoffValue" : 0.61,   
-	  "biomeTemp" : 1.0,
-	  "biomeThreshold" : 1.0,
-	  "baseRate" : 5.0,
-	  "baseDebuffPerTick" : 5,
-	  "baseDmgPerTick" : 3,
-	  "situationPenalty" : 1.15,
-	  "liquidPenalty" : 1.2,
-	  "biomeNight" : 0.8	
+    "resistanceTypes" : {
+      "poisonResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.65,
+    "immunityStats" : [
+      "protoImmunity"
+    ],
+
+    "healthDrain" : 1.5,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0,
+    "jumpPenalty" : 0,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 30,
+    "debuffs" : {
+      "maxHealth" : {
+        "type" : "absolute",
+        "amount" : -5.0
+      },
+      "critChance" : {
+        "type" : "absolute",
+        "amount" : -0.5,
+        "cap" : 0
+      }
+    },
+
+    "modifiers" : {},
+
+    "messages" : {
+      "intro" : "fubiomeproto"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/protoworld/protoweather2.statuseffect"
   },
-  "defaultDuration" : 6,
+  "defaultDuration" : 5,
 
   "scripts" : [
     "protoweather.lua"
@@ -22,6 +47,6 @@
 
   "animationConfig" : "protoweather.animation",
 
-  "label" : "Severe Proto Poison",
+  "label" : "Extreme Proto Poison",
   "icon" : "/interface/statuses/hpdown.png"
 }
