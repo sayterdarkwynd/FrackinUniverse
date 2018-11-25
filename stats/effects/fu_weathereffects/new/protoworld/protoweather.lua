@@ -32,7 +32,7 @@ end
 
 function fuProtoWeather.activateVisualEffects(self)
   animator.setParticleEmitterOffsetRegion("coldbreath", mcontroller.boundBox())
-	animator.setParticleEmitterActive("coldbreath", true)
+  animator.setParticleEmitterActive("coldbreath", true)
   effect.setParentDirectives("fade=306630=0.5")
 end
 
@@ -44,8 +44,8 @@ end
 function fuProtoWeather.createAlert(self)
   -- Status text
   local statusTextRegion = { 0, 1, 0, 1 }
-	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	animator.burstParticleEmitter("statustext")
+  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+  animator.burstParticleEmitter("statustext")
   -- Emit a "HP down" symbol to make it extra obvious.
   configBombDrop = {}
   world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
