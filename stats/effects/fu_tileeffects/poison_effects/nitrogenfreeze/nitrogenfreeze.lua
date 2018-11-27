@@ -4,27 +4,21 @@ function init()
   script.setUpdateDelta(5)
   self.tickTime = 0.7
   self.tickTimer = self.tickTime
-  self.baseDamage = setEffectDamage()
-  self.baseTime = setEffectTime() 
-end
-
-
-function setEffectDamage()
-  self.baseValue = config.getParameter("healthDown",0)
-  return ( self.baseValue *  (1 -status.stat("iceResistance",0) )  )
+  self.baseDamage = config.getParameter("healthDown",0)
+  self.baseTime = setEffectTime()
 end
 
 function setEffectTime()
-  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("iceResistance",0) ),0.45))
+  return self.tickTimer * math.min(1 - status.stat("iceResistance",0), 0.45)
 end
 
 function update(dt)
   	if ( status.stat("iceResistance",0)  >= 0.75 ) then
-	  effect.expire() 
-	end  
+	  effect.expire()
+	end
   mcontroller.controlModifiers({
         groundForce = 60.5,
-        slopeSlidingFactor = 0.6,  
+        slopeSlidingFactor = 0.6,
         groundMovementModifier = 0.45,
         runModifier = 0.65,
         jumpModifier = 0.75
@@ -33,7 +27,7 @@ function update(dt)
   mcontroller.controlParameters({
       normalGroundFriction = 4.675
     })
-    
+
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
