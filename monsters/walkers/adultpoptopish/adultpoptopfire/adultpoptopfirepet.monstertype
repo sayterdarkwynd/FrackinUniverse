@@ -1,5 +1,5 @@
 {
-  "type" : "adultpoptopfire",
+  "type" : "adultpoptopfirepet",
   "shortdescription" : "Adult Magmatop",
   "description" : "I don't recommend petting one of these. Absolutely lethal.",
 
@@ -13,11 +13,8 @@
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_deathbombmagma.lua",
-      "/scripts/golemancer/gol_monstermain.lua"
+      "/stats/monstereffects/monsterstatus_deathbombmagma.lua"
     ],
-  "tickEvoTime" : 3,
-  "evolutions" : [ "/scripts/golemancer/evolutions/megamagmagolem.evo", "/scripts/golemancer/evolutions/magmagolemdmg.evo" ],
 
     "renderLayer" : "Monster+10",
 
@@ -340,7 +337,6 @@
     "capturable" : true,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
-    "capturedMonsterType" : "adultpoptopfirepet", // turn into an adultpoptop when captured    
     "captureCollectables" : { "fu_monster" : "adultpoptopfire" }
   }
 }

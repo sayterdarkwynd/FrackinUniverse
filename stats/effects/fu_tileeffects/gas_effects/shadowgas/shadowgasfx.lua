@@ -59,7 +59,7 @@ mcontroller.controlParameters(self.liquidMovementParameter)
     self.tickTimer = self.tickTime
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
-        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
+        damage = math.ceil(status.resourceMax("health") * self.tickDamagePercentage),
         damageSourceKind = "shadow",
         sourceEntityId = entity.id()
       })
