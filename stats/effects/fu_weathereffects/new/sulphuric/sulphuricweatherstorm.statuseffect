@@ -1,18 +1,37 @@
 {
   "name" : "sulphuricweatherstorm",
-  "blockingStat" : "sulphuricImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "physicalResistance",
-          "effectCutoffValue" : 0.55,
-	  "biomeTemp" : 1.05,
-	  "biomeThreshold" : 0.5,
-	  "baseRate" : 4,
-	  "baseDebuffPerTick" : 2,
-	  "baseDmgPerTick" : 1,
-	  "situationPenalty" : 1.1,
-	  "liquidPenalty" : 0.9,
-	  "biomeNight" : 1.0
+    "resistanceTypes" : {
+      "physicalResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.55,
+    "immunityStats" : [
+      "sulphuricImmunity"
+    ],
+
+    "healthDrain" : 3,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0,
+    "jumpPenalty" : 0,
+
+    "debuffRate" : 4,
+    "debuffStartDelay" : 0,
+    "debuffs" : {
+      "protection" : {
+        "amount" : -2
+      }
+    },
+
+    "modifiers" : {},
+
+    "messages" : {
+      "intro" : "ffbiomesulphuricstorm"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/sulphuric/sulphuricweatherstorm.statuseffect"
   },
   "defaultDuration" : 5,
 
@@ -22,6 +41,6 @@
 
   "animationConfig" : "sulphuricweathernew.animation",
 
-  "label" : "Acid Storm",
+  "label" : "Extreme Acid Storm",
   "icon" : "/interface/statuses/acid1.png"
 }
