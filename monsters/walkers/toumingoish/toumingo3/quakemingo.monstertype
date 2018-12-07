@@ -12,8 +12,7 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua",
-      "/monsters/shockwaveAttack.lua"
+      "/monsters/monster.lua"
     ],
 
     "behavior" : "monster",
@@ -24,7 +23,7 @@
       "targetQueryRange" : 20,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
+      "keepTargetInRange" : 100,
       "targetOutOfSightTime" : 2.5,
 
       "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
@@ -33,11 +32,12 @@
 
       "hostileActions" : [
         {
-          "name" : "action-shockwave-leap",
-          "cooldown" : 2.0,
+          "name" : "action-projectile-leap",
+          "cooldown" : 1.0,
           "parameters" : {
-            "minimumRange" : 2,
-            "maximumRange" : 20,
+            "minimumRange" : 0,
+            "maximumRange" : 100,
+            "maxXRange" : 50,
             "windupTime" : 0.5,
             "windupState" : "windup",
 
@@ -48,12 +48,19 @@
             "fallState" : "",
 
             "winddownTime" : 1.8,
-            "winddownState" : "winddown"
+            "winddownState" : "winddown",
+
+            "aimDirection": [0, 1],
+            "projectileType": "rock",
+            "inaccuracy": 0.52,
+            "projectileCount": 12,
+            "fireOffset": [2.0,-1.5],
+            "projectileParameters": {},
+            "fireBurstParticle": "quake",
+            "fireSound": "quake"
           }
         }
       ],
-
-      "periodicActions" : [],
 
       "approachActions" : [
         {
@@ -101,15 +108,6 @@
       ]
     },
 
-    //shockwave attributes
-    "projectile" : "physicalshockwave",
-    "projectileConfig" : {"power" : 24},
-    "projectileBounds" : [-0.4, -1.375, 0.4, 0.0],
-    "projectileHeight" : 1.375,
-    "maxDistance" : 12,
-    "impactLine" : [[0, 0.5],[0, -2.5]],
-    "directions" : [1],
-
     "collisionParts" : [
       "body"
     ],
@@ -132,14 +130,14 @@
       "collisionPoly" : [ [0.25, 1.6875], [0.625, 1.3125], [0.625, -1.3125], [0.25, -1.6875], [-0.25, -1.6875], [-0.625, -1.3125], [-0.625, 1.3125], [-0.25, 1.6875] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 1,
-      "runSpeed" : 2,
+      "walkSpeed" : 2,
+      "runSpeed" : 4,
 
       "airFriction" : 0,
 
       "airJumpProfile" : {
-        "jumpSpeed" : 45.0,
-        "jumpInitialPercentage" : 1.0,
+        "jumpSpeed" : 90.0,
+        "jumpInitialPercentage" : 2.0,
         "jumpHoldTime" : 0.0
       }
     },

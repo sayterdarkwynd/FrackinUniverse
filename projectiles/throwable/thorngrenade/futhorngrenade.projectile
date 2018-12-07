@@ -1,0 +1,124 @@
+{
+  "projectileName" : "futhorngrenade",
+  "physics" : "grenadenobounce",
+  "bounces" : 0,
+  "timeToLive" : 3,
+  "damageKindImage" : "icon.png",
+  "image" : "thorngrenade.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/snowball_hit_organic2.ogg"
+      ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/thorngrenadeexplosion/thorngrenadeexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 22
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 45
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 68
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 112
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 135
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 158
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 202
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 225
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 248
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 270
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 292
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 315
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufruitthorn",
+      "inheritDamageFactor" : 0.2,
+      "angle" : 338
+    }
+  ],
+  "power" : 50,
+  "damageKind" : "poisonspear",
+  "statusEffects" : ["weakpoison"],
+  "damagePoly" : [ [-4.5, 0], [-3, -3], [0, -4.5], [3, -3], [4.5, 0], [3, 3], [0, 4.5], [-3, 3] ]
+}

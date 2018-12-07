@@ -37,7 +37,7 @@
   "ceilingGrassMod" : [ "roots" ],
   "ceilingGrassModDensity" : 0.6,
 
-  "parallax" : "/parallax/surface/dollhousemission.parallax",
+  "parallax" : "/parallax/surface/forest.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -104,7 +104,7 @@
       {
         "mode" : "floor",
         "priority" : 1.0,
-        "variants" : 12,
+        "variants" : 1,
         "distribution" : "/biomes/distributions.config:denseLarge",
 
         "type" : "tree",
@@ -121,23 +121,6 @@
 
         "type" : "grass",
         "grasses" : [ "dandy", "geometricflower", "lillies", "signplant", "tiberia"  ]
-      },
-      //DARKLIGHT BLOSSOMS
-      {
-        "mode" : "floor",
-        "priority" : 0.0,
-        "variants" : 1,
-        "distribution" : "/biomes/distributions.config:surfaceCrops",
-
-        "type" : "object",
-        "objectSets" : [
-          {
-            "pool" : [ [1, "wilddarklightflower" ] ],
-            "parameters" : {
-              "startingStage" : 2
-            }
-          }
-        ]
       }
     ]
   }

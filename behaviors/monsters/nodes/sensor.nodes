@@ -59,7 +59,8 @@
     "name": "pointTileCollision",
     "title": "",
     "properties": {
-      "position": {"type": "position", "value": null}
+      "position": {"type": "position", "value": null},
+      "collisionType": {"type": "list", "value": ["Null", "Block", "Dynamic"]}
     },
     "category": "sensor",
     "script": "/scripts/actions/sensor.lua",
@@ -77,5 +78,46 @@
     "category": "sensor",
     "script": "/scripts/actions/sensor.lua",
     "output": {}
+  },
+  "lineBlockCollision": {
+    "type": "action",
+    "name": "lineBlockCollision",
+    "title": "",
+    "properties": {
+      "startLine": {"type": "position", "value": null},
+      "endLine": {"type": "position", "value": null},
+      "collisionType": {"type": "list", "value": ["Null", "Block", "Dynamic", "Slippery"]}
+    },
+    "category": "sensor",
+    "script": "/scripts/actions/fusensor.lua",
+    "output": {
+      "blocks": {"type": "list", "key": null}
+    }
+  },
+  "rectTileCollision": {
+    "type": "action",
+    "name": "rectTileCollision",
+    "title": "",
+    "properties": {
+      "rectangle": {"type": "list", "value": null},
+      "collisionType": {"type": "list", "value": ["Null", "Block", "Dynamic"]}
+    },
+    "category": "sensor",
+    "script": "/scripts/actions/fusensor.lua",
+    "output": {}
+  },
+  "boundsTranslate": {
+    "type": "action",
+    "name": "boundsTranslate",
+    "title": "",
+    "properties": {
+      "bounds": {"type": "position", "value": null},
+      "offset": {"type": "position", "value": null}
+    },
+    "category": "sensor",
+    "script": "/scripts/actions/fusensor.lua",
+    "output": {
+      "bounds": {"type": "list", "key": null}
+    }
   }
 }

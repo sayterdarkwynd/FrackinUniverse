@@ -67,5 +67,19 @@
       "aimVector": {"type": "vec2", "key": null},
       "aimAngle": {"type": "number", "key": null}
     }
+  },
+  "setTimeToLive": {
+    "type": "action",
+    "name": "setTimeToLive",
+    "title": "",
+    "properties": {
+      "config": {"type": "json", "value": "parameters"},
+      "timeToLive": {"type": "number", "value": "null"}
+    },
+    "category": "projectiles",
+    "script": "/scripts/actions/fuprojectiles.lua",
+    "output": {
+      "newConfig": {"type": "json", "key": "parameters"}
+    }
   }
 }

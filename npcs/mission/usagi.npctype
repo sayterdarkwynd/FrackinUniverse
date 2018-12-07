@@ -1,0 +1,153 @@
+{
+  "type" : "usagi",
+  "baseType" : "base",
+
+  "keepAlive" : true,
+
+  "npcname" : "usagi",
+  "identity" : {
+    "imagePath" : "usagi",
+    "gender" : "male",
+    "hairGroup" : "hair",
+    "hairType" : "1"
+  },
+  "humanoidConfig" : "/npcs/story/humanoid.config",
+
+  "damageTeamType" : "assistant",
+  "damageTeam" : 1,
+
+  "persistent" : true,
+
+  "dropPools" : [],
+
+  "scriptConfig" : {
+    "behavior" : "usagi",
+
+    "chatPortrait" : "/interface/chatbubbles/usagi.png:<frame>",
+
+    "chatSounds" : {
+      "avian" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      },
+      "apex" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      },
+      "floran" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      },
+      "glitch" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      },
+      "human" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      },
+      "hylotl" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      },
+      "default" : {
+        "male" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ],
+        "female" : [
+          "/sfx/humanoid/human_chatter_male3.ogg"
+        ]
+      }
+    },
+
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "I wonder where the planet's light went?",
+            "Wanna join the Better Carrot Bureau?",
+            "I'll sit here and eat carrots while you go and smash things m'kay",
+            "Dollface got it out for me!",
+            "Some day I'll find a way out of here.",
+            "I have a daughter, her name is Chibiusa",
+            "This planet is radioactive, wait you do have radgrass leaves right?",
+            "Never trust a hare, they are nothing but trouble",
+            "Any luck?",
+            "These tunnels are vast, even I haven't explored them fully.",
+            "Yes I am a bunny, I just talk and stuff.",
+            "This is not a furry costume I swear.",
+            "If your wondering about the hay, it's emergency rations",
+            "Be careful around bunnies, some are violet."
+          ]
+        }
+      },
+      "dollhousemissionstart" : {
+        "introduction" : {
+          "default" : {
+            "default" : [
+              "About time you show up! I was beginning to wonder if I was doing the smoke signals correctly.",
+              "Oh me? I'm ^orange;Usagi^white; - and I am not a guy in a bunny costume. Just a big talking bunny",
+              "Anyways... Here's the scoop I need you to takedown dollface. She should be in the dollhouse somewhere.",
+              "Be careful, she has an army of killer toys. You look like you can handle yourself though.",
+              "Then again, everyone before you has died... Anyhow, good luck!"
+            ]
+          }
+        },
+        "end" : {
+          "default" : {
+            "default" : [
+              "Any luck?"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ "fullbunnyhead" ],
+            "chest" : [ "fubunnychest" ],
+            "legs" : [ "fubunnylegs" ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "protection" : {
+        "baseValue" : 100.0
+      }
+    },
+    "statusProperties" : {
+      "effectDirectives" : "?replace=FEFFFFFF=FFFFFFFF?replace=9bd4ffFF=8af062FF?replace=31a6ffFF=40bf21FF"
+    }
+  }
+}

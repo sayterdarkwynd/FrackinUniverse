@@ -1,7 +1,7 @@
 {
   "type" : "trictus3",
-  "shortdescription" : "Pricktus",
-  "description" : "A trictus that enjoys throwing its prickly pears at travelers.",
+  "shortdescription" : "Suctus",
+  "description" : "Its diet is made up of small amounts of water that it finds by digging into the ground.",
 
   "categories" : [ "trictus3" ],
   "parts" : [ "body" ],
@@ -24,7 +24,7 @@
       "targetQueryCooldown" : 0.2,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 10,
+      "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
 
       "foundTargetActions" : [
@@ -42,24 +42,19 @@
 
       "hostileActions" : [
         {
-          "name" : "action-charge",
-          "cooldown" : 0,
+          "name" : "action-fire",
+          "cooldown" : 0.5,
           "parameters" : {
-            "maximumRange" : 10,
-            "windupState" : "",
-            "windupTime" : 0.0,
-            "aimAtTarget": true,
-
-            "chargeTime" : 0.4,
-            "chargeSpeed" : 5,
-            "chargeControlForce" : 200,
-            "chargeState" : "slash",
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
-
-            "winddownStopForce" : 200,
-            "winddownState" : "",
-            "winddownTime" : 0.5
+            "projectileType": "futhorngrenade",
+            "projectileCount": 1,
+            "fireOffset": [2.25, 1.25],
+            "fireSound": "fire",
+            "fireState": "slash",
+            "winddownState": "",
+            "windupState": "",
+            "fireDelay": 0,
+            "fireArc": true,
+            "projectileSpeed": 30
           }
         }
       ],
@@ -111,9 +106,9 @@
       "damage" : 13,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "poisonslash",
       "knockback" : 20,
-      "statusEffects" : [ "weakpoison" ]
+      "statusEffects" : [ "weakpoison"]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -187,7 +182,7 @@
           "baseValue" : 1.0
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
@@ -199,10 +194,10 @@
           "baseValue" : 0.0
         },
         "poisonResistance" : {
-          "baseValue" : -0.5
+          "baseValue" : 0.5
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.0
         }
       },
 
