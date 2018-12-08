@@ -32,7 +32,7 @@ function update(dt)
     mcontroller.controlModifiers({airJumpModifier = self.airJumpModifier})
   end
 
-  
+
   --reworked falling to apply Softness and Brittle tiles
   local minimumFallDistance = collisionParams.minimumFallDistance
   local fallDistanceDamageFactor = collisionParams.fallDistanceDamageFactor
@@ -48,7 +48,7 @@ function update(dt)
 
     if currentTile then
       applyTileEffects()
-      
+
       -- check if player gets Research randomly
       if not self.researchTimer then self.researchTimer = 0 end
       if self.researchTimer == 0 then
@@ -57,7 +57,7 @@ function update(dt)
       else
         self.researchTimer = self.researchTimer - dt
       end
-      
+
       --applyTileEffects(groundMat)
       softness = currentTile["softness"]
       --softness = self.matCheck[groundMat][9]
@@ -86,7 +86,7 @@ end
 
 
 applyTileEffects = function(groundMat)
-  
+
   status.addEphemeralEffects(currentTile["effects"])
   mcontroller.controlModifiers(currentTile["controlModifiers"])
   mcontroller.controlParameters(currentTile["controlParameters"])
@@ -140,36 +140,38 @@ end
 
 
 brittleTiles = function(yVelChange,minimumFallVel, groundMat, offset)
-  --if currentTile then
-    local brittle = currentTile["brittle"] or false
-    local options = currentTile["options"] or false
+  local brittle = currentTile["brittle"] or false
+  local opts = currentTile["options"] or false
 
-    if brittle and self.fallDistance > brittle and yVelChange > minimumFallVel - brittle then
-      local damage = math.random(currentTile["damage"])+1
-      local position = {self.position[1],math.floor(self.position[2])}
-      world.damageTiles({vec2.add(position,{offset,-3})}, "foreground", position, "blockish", damage, 0)
-      for y = -1, 0 do
-        for x = -1, 1 do
-          local tilePos = vec2.add({position[1]+x, position[2]+y}, {offset,-3})
-          local tile = world.material(tilePos, "foreground")
-          if not (x == 0 and y == 0) and type(tile) == "string" and tile == groundMat then
-            world.damageTiles({tilePos}, "foreground", position, "blockish", math.random(0,damage), 0)
-          end
+  if brittle and self.fallDistance > brittle and yVelChange > minimumFallVel - brittle then
+    local damage = math.random(currentTile["damage"])+1
+    local position = {self.position[1],math.floor(self.position[2])}
+    world.damageTiles({vec2.add(position,{offset,-3})}, "foreground", position, "blockish", damage, 0)
+    for y = -1, 0 do
+      for x = -1, 1 do
+        local tilePos = vec2.add({position[1]+x, position[2]+y}, {offset,-3})
+        local tile = world.material(tilePos, "foreground")
+        if not (x == 0 and y == 0) and type(tile) == "string" and tile == groundMat then
+          world.damageTiles({tilePos}, "foreground", position, "blockish", math.random(0,damage), 0)
         end
       end
-
-      world.spawnProjectile("invisibleprojectile", position, entity.id(), {0,0}, false, {
-        timeToLive = 0,
-        damageType = "noDamage",
-        actionOnReap = {
-          {
-            action = "sound",
-            options = currentTile["options"] or false
+    end
+    if (opts) then
+      world.spawnProjectile(
+        "invisibleprojectile", position, entity.id(), {0,0}, false,
+        {
+          timeToLive = 0,
+          damageType = "noDamage",
+          actionOnReap = {
+            {
+              action = "sound",
+              options = opts
+            }
           }
         }
-      })
+      )
     end
-  --end
+  end
 end
 
 
