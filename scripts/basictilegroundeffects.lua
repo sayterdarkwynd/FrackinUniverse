@@ -32,7 +32,7 @@ function update(dt)
     mcontroller.controlModifiers({airJumpModifier = self.airJumpModifier})
   end
 
-  
+
   --reworked falling to apply Softness and Brittle tiles
   local minimumFallDistance = collisionParams.minimumFallDistance
   local fallDistanceDamageFactor = collisionParams.fallDistanceDamageFactor
@@ -48,7 +48,7 @@ function update(dt)
 
     if currentTile then
       applyTileEffects()
-      
+
       -- check if player gets Research randomly
       if not self.researchTimer then self.researchTimer = 0 end
       if self.researchTimer == 0 then
@@ -57,7 +57,7 @@ function update(dt)
       else
         self.researchTimer = self.researchTimer - dt
       end
-      
+
       --applyTileEffects(groundMat)
       softness = currentTile["softness"]
       --softness = self.matCheck[groundMat][9]
@@ -86,7 +86,7 @@ end
 
 
 applyTileEffects = function(groundMat)
-  
+
   status.addEphemeralEffects(currentTile["effects"])
   mcontroller.controlModifiers(currentTile["controlModifiers"])
   mcontroller.controlParameters(currentTile["controlParameters"])
@@ -140,7 +140,7 @@ end
 
 
 brittleTiles = function(yVelChange,minimumFallVel, groundMat, offset)
-  --if currentTile then
+  if currentTile then
     local brittle = currentTile["brittle"] or false
     local options = currentTile["options"] or false
 
@@ -169,7 +169,7 @@ brittleTiles = function(yVelChange,minimumFallVel, groundMat, offset)
         }
       })
     end
-  --end
+  end
 end
 
 
