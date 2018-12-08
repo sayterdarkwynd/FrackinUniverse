@@ -140,34 +140,36 @@ end
 
 
 brittleTiles = function(yVelChange,minimumFallVel, groundMat, offset)
-  if currentTile then
-    local brittle = currentTile["brittle"] or false
-    local options = currentTile["options"] or false
+  local brittle = currentTile["brittle"] or false
+  local opts = currentTile["options"] or false
 
-    if brittle and self.fallDistance > brittle and yVelChange > minimumFallVel - brittle then
-      local damage = math.random(currentTile["damage"])+1
-      local position = {self.position[1],math.floor(self.position[2])}
-      world.damageTiles({vec2.add(position,{offset,-3})}, "foreground", position, "blockish", damage, 0)
-      for y = -1, 0 do
-        for x = -1, 1 do
-          local tilePos = vec2.add({position[1]+x, position[2]+y}, {offset,-3})
-          local tile = world.material(tilePos, "foreground")
-          if not (x == 0 and y == 0) and type(tile) == "string" and tile == groundMat then
-            world.damageTiles({tilePos}, "foreground", position, "blockish", math.random(0,damage), 0)
-          end
+  if brittle and self.fallDistance > brittle and yVelChange > minimumFallVel - brittle then
+    local damage = math.random(currentTile["damage"])+1
+    local position = {self.position[1],math.floor(self.position[2])}
+    world.damageTiles({vec2.add(position,{offset,-3})}, "foreground", position, "blockish", damage, 0)
+    for y = -1, 0 do
+      for x = -1, 1 do
+        local tilePos = vec2.add({position[1]+x, position[2]+y}, {offset,-3})
+        local tile = world.material(tilePos, "foreground")
+        if not (x == 0 and y == 0) and type(tile) == "string" and tile == groundMat then
+          world.damageTiles({tilePos}, "foreground", position, "blockish", math.random(0,damage), 0)
         end
       end
-
-      world.spawnProjectile("invisibleprojectile", position, entity.id(), {0,0}, false, {
-        timeToLive = 0,
-        damageType = "noDamage",
-        actionOnReap = {
-          {
-            action = "sound",
-            options = currentTile["options"] or false
+    end
+    if (opts) then
+      world.spawnProjectile(
+        "invisibleprojectile", position, entity.id(), {0,0}, false,
+        {
+          timeToLive = 0,
+          damageType = "noDamage",
+          actionOnReap = {
+            {
+              action = "sound",
+              options = opts
+            }
           }
         }
-      })
+      )
     end
   end
 end
