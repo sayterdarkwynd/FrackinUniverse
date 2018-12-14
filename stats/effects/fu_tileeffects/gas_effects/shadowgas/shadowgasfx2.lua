@@ -7,8 +7,8 @@ function init()
   self.tickDamagePercentage = 0.01
   self.tickTime = 1.2
   self.tickTimer = self.tickTime
-  
-  
+
+
   self.liquidMovementParameter = {
     groundForce = 70,
     airForce = 20,
@@ -26,13 +26,13 @@ function init()
       multiJump = false,
       reJumpDelay = 1.05,
       autoJump = false,
-      collisionCancelled = false 
+      collisionCancelled = false
     }
-  }  
+  }
 	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") or ( status.stat("shadowResistance",0) > 0.5) then
 	  deactivateVisualEffects()
 	  effect.expire()
-	end  
+	end
 end
 
 function deactivateVisualEffects()
@@ -46,7 +46,7 @@ function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
 end
-  
+
 
 function update(dt)
 	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") or ( status.stat("shadowResistance",0) > 0.5) then
@@ -60,12 +60,12 @@ mcontroller.controlParameters(self.liquidMovementParameter)
     self.tickTimer = self.tickTime
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
-        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
+        damage = math.ceil(status.resourceMax("health") * self.tickDamagePercentage),
         damageSourceKind = "shadow",
         sourceEntityId = entity.id()
       })
   end
-  
+
 end
 
 function uninit()

@@ -1,0 +1,31 @@
+{
+  "itemName" : "greghead",
+  "rarity" : "rare",
+  "price" : 300,
+  "category" : "preparedFood",
+  "inventoryIcon" : "greghead.png",
+  "description" : "The severed head of a Greg.",
+  "shortdescription" : "Greg Head",
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.9,
+  "blockingEffects" : ["wellfed"],
+  "learnBlueprintsOnPickup" : [ "greggnog" ],
+  "effects" : [ [
+		{
+		"effect" : "regeneration2",
+		"duration" : 20
+		},
+		{
+		"effect" : "booze",
+		"amount" : 3,
+		"duration" : 60
+        }
+    ] ]
+}
+
+
+

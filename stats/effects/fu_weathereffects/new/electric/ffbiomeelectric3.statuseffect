@@ -1,20 +1,60 @@
 {
   "name" : "ffbiomeelectric3",
-  "blockingStat" : "biomeelectricImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "electricResistance",
-          "effectCutoffValue" : 0.6,    
-	  "biomeTemp" : 1.34, 
-	  "biomeThreshold" : 1.5,
-	    "baseRate" : 3,
-	    "baseDebuffPerTick" : 7,
-	    "baseDmgPerTick" : 6,
-	    "situationPenalty" : 2,
-	    "liquidPenalty" : 2,
-	    "biomeNight" : 1      
+    "resistanceTypes" : {
+      "electricResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.6,
+    "immunityStats" : [
+      "biomeelectricImmunity",
+      "fuelectricresistance",
+      "electricblock1"
+    ],
+
+    "healthDrain" : 0,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.1,
+    "jumpPenalty" : 0.1,
+
+    "debuffRate" : 2,
+    "debuffStartDelay" : 0,
+    "debuffs" : {
+      "energyRegenPercentageRate" : {
+        "amount" : -0.35,
+        "constant" : true
+      },
+      "energyRegenBlockTime" : {
+        "amount" : 1.25,
+        "constant" : true
+      }
+    },
+
+    "modifiers" : {
+      "wet" : 1.5,
+      "windy" : 1.4
+    },
+
+    "messages" : {
+      "intro" : "ffbiomeelectric",
+      "wet" : "ffbiomeelectricwater"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/electric/ffbiomeelectric3.statuseffect",
+
+    "shockParams" : {
+      "baseHealth" : 10,
+      "randomHealth" : 15,
+      "baseEnergy" : 0.3,
+      "randomEnergy" : 0.7,
+      "baseDelay" : 2,
+      "randomDelay" : 10
+    }
   },
-  "defaultDuration" : 2,
+
+  "defaultDuration" : 5,
 
   "scripts" : [
     "electricweathernew.lua"

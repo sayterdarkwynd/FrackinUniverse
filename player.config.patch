@@ -4,14 +4,18 @@
 	{ "op": "add", "path": "/species/-", "value" : "radien" },
 	{ "op": "add", "path": "/species/-", "value" : "shadow" },
 	{ "op": "add", "path": "/species/-", "value" : "fumantizi" },
+	{ "op": "add", "path": "/species/-", "value" : "nightar" },
 	{ "op": "add", "path": "/species/-", "value" : "fuizku" },
 	{ "op": "add", "path": "/species/-", "value" : "fudarkizku" },
 	{ "op": "add", "path": "/species/-", "value" : "fuanodyne" },
 	{ "op": "add", "path": "/species/-", "value" : "fumantis" },
-	
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/nightar",
+		"value" : "mechbodyfuorbusproto"
+	},	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/thelusian",
-		"value" : "mechbodyapexproto"
+		"value" : "mechbodythelusianproto"
 	},
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fuizku",
@@ -27,11 +31,11 @@
 	},	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fumantizi",
-		"value" : "mechbodyapexproto"
+		"value" : "mechbodymantiziproto"
 	},	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fukirhos",
-		"value" : "mechbodyglitchproto"
+		"value" : "mechbodykirhosproto"
 	},
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/radien",
@@ -39,11 +43,15 @@
 	},
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/shadow",
-		"value" : "mechbodynovakidproto"
+		"value" : "mechbodyemissaryproto"
 	},
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fuanodyne",
 		"value" : "mechbodynovakidproto"
+	},
+	{"op" : "add",
+		"path" : "/defaultCodexes/nightar",
+		"value" : [ "protectorate1", "protectorate2" ]
 	},	
 	{"op" : "add",
 		"path" : "/defaultCodexes/fuanodyne",
@@ -304,6 +312,9 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "celestaruniform4chest"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "celestaruniform4pants"} },
 
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "nightardagger"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "nightarshortsword"} },
+	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodencrossbow"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodenboomerang"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodenkatana"} },
@@ -684,8 +695,12 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mecharmflakcannon2"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mecharmfuhuntergun"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mecharmpointdefense"} },
-	
-	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodymantiziproto"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodykirhosproto"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodyorbusproto"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodythelusianproto"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodyemissaryproto"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodystomper"} },
 	//basic
 
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "longjump_tech"} },

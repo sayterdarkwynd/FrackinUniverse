@@ -68,7 +68,7 @@ function SonicSlash:fire()
 	local params = {
     powerMultiplier = activeItem.ownerPowerMultiplier(),
     power = self:damageAmount(),
-	speed = 60
+	speed = 120
   }
   world.spawnProjectile("sonic", position, activeItem.ownerEntityId(), self:aimVector(), false, params)
 

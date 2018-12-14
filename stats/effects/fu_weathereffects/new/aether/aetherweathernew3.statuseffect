@@ -1,19 +1,47 @@
 {
   "name" : "aetherweathernew3",
-  "blockingStat" : "aetherImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "cosmicResistance",
-          "effectCutoffValue" : 0.9,  
-	  "biomeTemp" : 4, 
-	  "biomeThreshold" : 1,
-	  "baseRate" : 3,
-	  "baseDebuffPerTick" : 1,
-	  "baseDmgPerTick" : 7,
-	  "situationPenalty" : 1,
-	  "liquidPenalty" : 1,
-	  "biomeNight" : 1.4
+    "resistanceTypes" : {
+      "cosmicResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.9,
+    "immunityStats" : [
+      "aetherImmunity"
+    ],
+
+    "healthDrain" : 7.0,
+    "hungerDrain" : 0,
+    "energyDrain" : 3.0,
+    "speedPenalty" : 0,
+    "jumpPenalty" : 0,
+
+    "debuffRate" : 3.5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {
+      "maxEnergy" : {
+        "amount" : -11.0,
+        "cap" : -1
+      },
+      "energyRegenPercentageRate" : {
+        "amount" : -0.04,
+        "cap" : 0.1
+      }
+    },
+
+    "modifiers" : {
+      "night" : 1.5
+    },
+
+    "messages" : {
+      "intro" : "ffbiomeaether",
+      "night" : "ffbiomeaethernight"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/aether/aetherweathernew3.statuseffect"
   },
+
   "defaultDuration" : 5,
 
   "scripts" : [

@@ -1,0 +1,53 @@
+{
+  "objectName" : "nightarchest",
+  "colonyTags" : ["nightar","storage"],
+  "rarity" : "Legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "race" : "nightar",
+  "health" : 1.5,
+
+  "category" : "storage",
+  "price" : 75,
+  "printable" : false,
+  "description" : "An small Nigtar chest.",
+  "shortdescription" : "Nightar Chest",
+
+  "apexDescription" : "An extremely old chest. It could contain anything.",
+  "avianDescription" : "This chest looks to be very old indeed.",
+  "floranDescription" : "Floran curiousss... what could be in ssstrange box?",
+  "glitchDescription" : "Cautious. The structure of this chest is impenetrable to my sensors.",
+  "humanDescription" : "That is one old looking chest.",
+  "hylotlDescription" : "This chest has an unfamiliar design, I am unable to determine it's maker.",
+  "novakidDescription" : "It's a wonder this chest is still standin' after all this time.",
+
+  "inventoryIcon" : "nightarchesticon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "nightarchest.png:<color>.<key>", "fullbright" : true }, { "image" : "nightarchestlit.png:<color>.<key>" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "nightarchest.png:<color>.<key>", "fullbright" : true }, { "image" : "nightarchestlit.png:<color>.<key>" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}
