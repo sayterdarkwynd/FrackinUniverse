@@ -53,6 +53,9 @@
   ],
   "darkmetroidTreasure" : [
     [1, {
+      "fill" : [
+        {"item" : "unknowngene", "amount" : 1}
+      ],    
       "pool" : [
         {"weight" : 0.05, "pool" : "fuEssence"},
         {"weight" : 0.05, "pool" : "petcollars2"},
@@ -74,8 +77,8 @@
         "pool" : [
           {"weight" : 0.0333, "item" : [ "liquidmetallichydrogen", 150]},
           {"weight" : 0.0333, "item" : [ "fuscienceresource", 150]},
-          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
+          {"weight" : 0.0200, "item" : [ "unknowngene", 3]},
+          {"weight" : 0.0200, "item" : [ "cell_mutated", 50]},
           {"weight" : 0.0366, "item" : [ "fuscienceresource", 15]},
           {"weight" : 0.0366, "item" : [ "iodine", 4]},
           {"weight" : 0.0366, "item" : [ "ff_mercury", 6]}
@@ -461,68 +464,33 @@
       }
     ]
   ],
+  "fleshreaperhuntLoot" : [
+    [1, {
+        "pool" : [
+          {"weight" : 0.20, "item" : [ "monsterplating", 4]},
+          {"weight" : 0.20, "item" : [ "cellmatter", 4]},
+          {"weight" : 0.05, "item" : [ "unknowngene", 1]},
+          {"weight" : 0.05, "item" : [ "cell_mutated", 5]},
+          {"weight" : 0.20, "item" : [ "biospore", 5]},
+          {"weight" : 0.20, "item" : [ "cellmatter", 5]}
+        ],
+        "poolRounds" : [
+          [0.63, 1],
+          [0.33, 2]
+        ],
+      "allowDuplication" : true
+      }
+    ]
+  ],  
   "fleshreaperLoot" : [
     [1, {
         "pool" : [
-          {"weight" : 0.20, "pool" : "money"},
-          {"weight" : 0.0333, "item" : [ "monsterplating", 15]},
-          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-	  {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-          {"weight" : 0.0333, "item" : [ "laboil", 1]},
-          {"weight" : 0.0211, "item" : [ "volatilepowder", 9]},
-          {"weight" : 0.0211, "item" : [ "magnesiumore", 9]},
-          {"weight" : 0.0211, "item" : [ "mascagniteore", 9]},
-          {"weight" : 0.0210, "item" : [ "cinnabarore", 5]},
-          {"weight" : 0.0210, "item" : [ "sulphur", 5]},
-          {"weight" : 0.0210, "item" : [ "lead", 7]},
-          {"weight" : 0.0211, "item" : [ "glassmaterial", 25]},
-          {"weight" : 0.0211, "item" : [ "protociteore", 5]},
-          {"weight" : 0.0211, "item" : [ "penumbriteore", 5]},
-          {"weight" : 0.0211, "item" : [ "tungstenore", 5]},
-          {"weight" : 0.0211, "item" : [ "ff_spareparts", 5]},
-          {"weight" : 0.0250, "item" : [ "fleshstrand", 50]},
-          {"weight" : 0.0200, "item" : [ "fleshstrand", 100]},
-          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-          {"weight" : 0.0366, "item" : [ "biospore", 5]},
-          {"weight" : 0.0366, "item" : [ "cellmatter", 5]},
-          {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
-          {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
-          {"weight" : 0.0366, "item" : [ "methanol", 30]},
-          {"weight" : 0.0366, "item" : [ "phosphorus", 3]},
-          {"weight" : 0.0366, "item" : [ "silk", 15]},
-          {"weight" : 0.0366, "item" : [ "agaranichor", 12]},
-          {"weight" : 0.0326, "item" : [ "agaranichor", 24]},
-          {"weight" : 0.0366, "item" : [ "ff_plastic", 6]},
-          {"weight" : 0.0366, "item" : [ "iodine", 4]},
-          {"weight" : 0.0366, "item" : [ "ff_mercury", 6]},
-          {"weight" : 0.012, "item" : [ "targetinggoggles", 1]},
-          {"weight" : 0.005, "item" :  [ "yellowguardianback-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "blueguardianback-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "pinkguardianback-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "greenguardianback-recipe", 1]},
-          {"weight" : 0.012, "item" :  [ "atropuschest-recipe", 1]},
-          {"weight" : 0.012, "item" :  [ "longarmpistol-recipe", 1]},
-          {"weight" : 0.012, "item" :  [ "longarm-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "eldertome", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic1", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic2", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic3", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic4", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic5", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic6", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic7", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic8", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic9", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic10", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic11", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic12", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic13", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic14", 1]},
-          {"weight" : 0.008, "item" :  [ "brainslug", 1]}
+          {"weight" : 0.60, "pool" : "money"},
+          {"weight" : 0.05, "item" : [ "cell_mutated", 5]},
+          {"weight" : 0.05, "item" : [ "biospore", 5]},
+          {"weight" : 0.05, "item" : [ "cellmatter", 5]},
+          {"weight" : 0.05, "item" : [ "essence", 25]},
+          {"weight" : 0.20, "item" : [ "fuscienceresource", 125]}
         ],
         "poolRounds" : [
           [0.63, 1],
