@@ -1,19 +1,14 @@
 function init()
   script.setUpdateDelta(5)
   self.tickTime = 3.0
-  self.tickTimer = self.tickTime  
-  self.baseDamage = setEffectDamage()
+  self.tickTimer = self.tickTime
+  self.baseDamage = config.getParameter("healthDown",0)
   self.baseTime = setEffectTime()
   activateVisualEffects()
 end
 
-function setEffectDamage()
-  self.baseValue = config.getParameter("healthDown",0)
-  return ( self.baseValue *  (1 -status.stat("poisonResistance",0) )  )
-end
-
 function setEffectTime()
-  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("poisonResistance",0) ),0.45))
+  return self.tickTimer * math.min(1 - status.stat("poisonResistance",0), 0.45)
 end
 
 function activateVisualEffects()
@@ -31,8 +26,8 @@ end
 function update(dt)
   	if ( status.stat("poisonResistance",0)  >= 0.50 ) and ( status.stat("radioactiveResistance",0)  >= 0.25 ) then
   	  deactivateVisualEffects()
-	  effect.expire() 
-	end  
+	  effect.expire()
+	end
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
@@ -49,5 +44,5 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end

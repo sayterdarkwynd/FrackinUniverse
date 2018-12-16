@@ -1,20 +1,45 @@
 {
   "name" : "protoweather",
-  "blockingStat" : "protoImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "poisonResistance",
-          "effectCutoffValue" : 0.41,   
-	  "biomeTemp" : 1.15,
-	  "biomeThreshold" : 0.5,
-	  "baseRate" : 7.0,
-	  "baseDebuffPerTick" : 3,
-	  "baseDmgPerTick" : 3,
-	  "situationPenalty" : 1.0,
-	  "liquidPenalty" : 1.1,
-	  "biomeNight" : 0.8	
+    "resistanceTypes" : {
+      "poisonResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.45,
+    "immunityStats" : [
+      "protoImmunity"
+    ],
+
+    "healthDrain" : 0.75,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0,
+    "jumpPenalty" : 0,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 45,
+    "debuffs" : {
+      "maxHealth" : {
+        "type" : "absolute",
+        "amount" : -3.0
+      },
+      "critChance" : {
+        "type" : "absolute",
+        "amount" : -0.3,
+        "cap" : 0
+      }
+    },
+
+    "modifiers" : {},
+
+    "messages" : {
+      "intro" : "fubiomeproto"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/protoworld/protoweather.statuseffect"
   },
-  "defaultDuration" : 6,
+  "defaultDuration" : 5,
 
   "scripts" : [
     "protoweather.lua"

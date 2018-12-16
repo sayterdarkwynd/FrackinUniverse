@@ -1,18 +1,41 @@
 {
   "name" : "ffbiomecold2",
-  "blockingStat" : "biomecoldImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "iceResistance",
-          "effectCutoffValue" : 0.4,     
-	  "biomeTemp" : 1.25, 
-	  "biomeThreshold" : 0.5,
-	  "baseRate" : 3,
-	  "baseDebuffPerTick" : 4,
-	  "baseDmgPerTick" : 5,
-	  "situationPenalty" : 1.3,
-	  "liquidPenalty" : 1.2,
-	  "biomeNight" : 1.15
+    "resistanceTypes" : {
+      "iceResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.4,
+    "immunityStats" : [
+      "biomeColdImmunity",
+      "ffextremecoldImmunity"
+    ],
+
+    "healthDrain" : 5,
+    "hungerDrain" : 0.4,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.6,
+    "jumpPenalty" : 0.6,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "night" : 1.15,
+      "wet" : 1.2,
+      "windy" : 1.2
+    },
+
+    "messages" : {
+      "intro" : "biomecold",
+      "night" : "ffbiomecoldnight",
+      "wet" : "ffbiomecoldwater",
+      "windy" : "fubiomecoldwind"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/cold/ffbiomecold2.statuseffect"
   },
   "defaultDuration" : 5,
 

@@ -4,13 +4,13 @@
   "inventoryIcon" : "batterypack_quantumicon.png",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "rarity" : "legendary",
-  "description" : "An extremely powerful energy storage tank. Grants +25% energy, 15% energy regen and a slight glow.",
+  "description" : "An extremely powerful energy storage tank. Blocks electrical storms and grants +25% energy, +40% energy regen and a slight glow.",
   "shortdescription" : "Quantum Energy Pack",
   "tooltipKind" : "baseaugment",
   "category" : "enviroProtectionPack",
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-  
+
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
 
@@ -21,8 +21,12 @@
       "stat" : "maxEnergy",
       "effectiveMultiplier" : 1.25
     },
-    "glowblue2"
+    "glowblue2",
+    {
+      "stat" : "biomeelectricImmunity",
+      "amount" : 1.0
+    }
   ]
-  
-  
+
+
 }
