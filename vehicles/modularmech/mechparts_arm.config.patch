@@ -2065,7 +2065,7 @@
                     }
                 }
             }
-        },{
+        },{    
             "op": "add",
             "path": "/fugrenadearm",
             "value": {
@@ -2076,26 +2076,29 @@
                     "mechMass": 8
                 },
                 "partParameters": {
-                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
-                    "armClass": "GunArm",
+                    "script": "/vehicles/modularmech/armscripts/gatlingarm.lua",
+                    "armClass": "GatlingArm",
                     "rotationOffset" : [-8.0,0],
 
 	            "rotationLimits" : [-1.75, 1.75],
-
+	            
+		    "windupTime": 0.1,
+		    "fireTime": 3,
+		    
                     "fireOffset": [8.3, 0],
-                    "extendTime": 0.725,
-                    "fireTime": 4,
+                    "extendTime": 1,
+                    
                     "projectileType": "radbomb",
  
                     "projectileInaccuracy": 0.092,
                     "projectileCount": 1,
                     "projectileParameters": {
-                        "power": 8
+                        "power": 4
                     }
                 },
                 "partImages": {
                     "<armName>": "arm/fugrenadearm.png",
-                    "<armName>Fullbright": "arm/fugrenadearmfullbright.png"
+                    "<armName>Fullbright": ""
                 },
                 "defaultPrimaryColors": [
                     "5f5b64",
@@ -2119,18 +2122,16 @@
                 				"states" : 
                 				{
 						    "windup" : {
-						      "frames" : 1,
-						      "cycle" : 2
+						      "frames" : 6,
+						      "cycle" : 0.1
 						    },
 						    "active" : {
 						      "frames" : 6,
-						      "cycle" : 0.75,
-						      "mode" : "transition",
-						      "transition" : "idle"
+						      "cycle" : 3
 						    },
 						    "winddown" : {
 						      "frames" : 1,
-						      "cycle" : 1
+						      "cycle" : 0.1
 						    }                				
                 				}
                 			}
@@ -2182,7 +2183,7 @@
                 	
                         "sounds": 
                         {
-				"<armName>Fire": [ "/sfx/weapons/irradiumrifle.ogg" ]
+				"<armName>Fire": [ "/sfx/weapons/explosion2.ogg" ]
                         },
 		      "transformationGroups" : {
 			"<armName>" : {
