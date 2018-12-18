@@ -1,0 +1,28 @@
+{
+  "itemName" : "solariumcookie",
+  "rarity" : "Legendary",
+  "price" : 255,
+  "category" : "preparedFood",
+  "inventoryIcon" : "solariumcookie.png",
+  "description" : "These cookies are as bright as the sun. Surprisingly, they aren't hot.",
+  "shortdescription" : "Solarium Cookie",
+  "effects" : [ [
+    {
+        "effect" : "lavaimmunity",
+        "duration" : 300
+    },
+    {
+        "effect" : "biomeheatImmunity",
+        "duration" : 300
+    }
+  ] ],
+  "foodValue" : 55,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}
