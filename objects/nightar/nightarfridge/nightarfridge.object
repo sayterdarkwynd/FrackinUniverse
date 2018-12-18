@@ -12,7 +12,7 @@
   "price" : 200,
   "health" : 1.5,
 
-  "apexDescription" : "A fridge. Hopefully it contains banana milkshake.",
+  "apexDescription" : "A fridge. Hopefully it contains a banana milkshake.",
   "avianDescription" : "A fridge. Ideally filled with drinks and snacks.",
   "floranDescription" : "Floran can sssmell meat inside.",
   "glitchDescription" : "Pleased. This fridge is operating at the optimal temperature.",
@@ -23,7 +23,10 @@
   "inventoryIcon" : "nightarfridgeicon.png",
   "orientations" : [
     {
-      "dualImage" : "nightarfridge.png:<color>",
+      "imageLayers" : [ { "image" : "nightarfridge.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarfridgelit.png:<color>.<frame>"} ],
+	  "direction" : "left",
+	  "flipImages" : true,
+	  
       "imagePosition" : [-8, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
@@ -31,7 +34,18 @@
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ],
       "collision" : "platform"
+    },
+	{
+      "imageLayers" : [ { "image" : "nightarfridge.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarfridgelit.png:<color>.<frame>"} ],
+	  "direction" : "right",
+	  
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
 
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
     }
   ],
 

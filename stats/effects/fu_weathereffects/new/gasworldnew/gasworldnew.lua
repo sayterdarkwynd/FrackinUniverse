@@ -42,8 +42,10 @@ end
 function fuPressureWeather.update(self, dt)
   self.parent.update(self, dt)
   -- Extra hook to play the daytime warning message.
-  if (self:isDaytime()) then
-    self:sendWarning("day")
+  if self.effectActive then
+    if (self:isDaytime()) then
+      self:sendWarning("day")
+    end
   end
 end
 
