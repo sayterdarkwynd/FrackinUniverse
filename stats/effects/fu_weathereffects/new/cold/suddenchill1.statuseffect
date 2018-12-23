@@ -1,18 +1,41 @@
 {
   "name" : "suddenchill1",
-  "blockingStat" : "biomecoldImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "iceResistance",
-          "effectCutoffValue" : 0.25,     
-	  "biomeTemp" : 1, 
-	  "biomeThreshold" : 0.55,
-	  "baseRate" : 4.3,
-	  "baseDebuffPerTick" : 3.3,
-	  "baseDmgPerTick" : 3.2,
-	  "situationPenalty" : 1.4,
-	  "liquidPenalty" : 1.2,
-	  "biomeNight" : 1.2
+    "resistanceTypes" : {
+      "iceResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.25,
+    "immunityStats" : [
+      "biomeColdImmunity",
+      "ffextremecoldImmunity"
+    ],
+
+    "healthDrain" : 3,
+    "hungerDrain" : 0.3,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.4,
+    "jumpPenalty" : 0.4,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "night" : 1.2,
+      "wet" : 1.2,
+      "windy" : 1.2
+    },
+
+    "messages" : {
+      "intro" : "biomecold",
+      "night" : "ffbiomecoldnight",
+      "wet" : "ffbiomecoldwater",
+      "windy" : "fubiomecoldwind"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/cold/suddenchill1.statuseffect"
   },
   "defaultDuration" : 5,
 

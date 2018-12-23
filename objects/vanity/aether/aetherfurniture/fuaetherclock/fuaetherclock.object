@@ -1,0 +1,42 @@
+{
+	"objectName": "fuaetherclock",
+	"colonyTags": ["fu", "aether", "pretty", "valuable"],
+	"rarity": "Legendary",
+	"category": "decorative",
+	"price": 420,
+	"description": "I didn't know clocks were capable of reproduction...",
+	"shortdescription": "Aether Grandfather Clock",
+	"race": "generic",
+
+
+	"inventoryIcon": "fuaetherclockicon.png",
+	"orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fuaetherclock.png:<color>.<frame>" }, { "image" : "fuaetherclockfullbright.png:<color>.<frame>", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 8,
+      "animationCycle" : 2,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fuaetherclock.png:<color>.<frame>" }, { "image" : "fuaetherclockfullbright.png:<color>.<frame>", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 8,
+      "animationCycle" : 2,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/clock_loop.ogg",
+  "soundEffectRangeMultiplier" : 0.5
+
+}

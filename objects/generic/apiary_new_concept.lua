@@ -16,10 +16,51 @@ DEFAULT_OFFSPRING_CHANCE = 0.4
 
 
 
---[   
+--[
 
-functioin init ()
+function init()
   --base values are set here
+	transferUtil.init()
+
+
+	animator.setAnimationState("bees", "off")
+
+	if not self.spawnDelay or not contents then
+		self.queenSlot = config.getParameter ("queenSlot")				-- Apiary inventory slot number (indexed from 1)
+		self.droneSlot = config.getParameter ("droneSlot")				--
+		self.frameSlots = config.getParameter ("frameSlots")
+
+		self.spawnDelay = config.getParameter("spawnDelay")				-- A global spawn rate multiplier. Higher is slower.
+		self.spawnBeeBrake = config.getParameter("spawnBeeBrake")   	-- Individual spawn rates. Set to nil if none to be spawned.
+		self.spawnItemBrake = config.getParameter("spawnItemBrake")		--
+		self.spawnHoneyBrake = config.getParameter("spawnHoneyBrake")	--
+		self.spawnDroneBrake = config.getParameter("spawnDroneBrake")	--
+		self.limitDroneCount = config.getParameter("limitDroneCount")	-- whether to limit the number of drones
+
+		self.beeStingChance = config.getParameter("beeStingChance")		-- chance of being stung by the aggressive varieties
+		self.beeStingOffset = config.getParameter("beeStingOffset")		-- spawn offset of the sting object (0,0 if not set)
+
+		self.beePowerScaling = config.getParameter("beePowerScaling")	-- scaling factor for cooldown modification in deciding()
+
+		self.honeyModifier = 0		-- modifiers for frames, higher means faster production
+		self.itemModifier = 0		--
+		self.droneModifier = 0		--
+		self.mutationIncrease = 0   --
+                self.honeyAmount = 0 --
+
+                -- new FU properties for apiaries
+                self.miteReduction = config.getParameter("miteReduction",0)
+                self.mitePenalty = config.getParameter("mitePenalty",0)
+                self.mutationMultiplier = config.getParameter("mutationMultiplier",0)
+
+		self.config = root.assetJson('/objects/bees/apiaries_new.config')	-- common apiaries configuration
+		self.functions = { chooseMinerHoney = chooseMinerHoney, chooseMinerOffspring = chooseMinerOffspring }
+
+		initAntimiteFrames()
+		reset()
+		return true
+	end
+	return false
 end
 
 function initAntimiteFrames()
@@ -27,9 +68,21 @@ end
 
 
 
-function findBeeType()
-
+function findBeeType() --gonna need an if/else for if it isnt a queen/drone pair
+	local queen, drone = getEquippedBees() --get names of queen and drone
+	if queen and drone then
+		if queen == drone and self.config.beeProperties[queen] then
+			local properties = self.config.beeProperties[queen] -- taken from how spawnList works in workingBees()
+			self.beeType = properties.beeType
+		elseif queen ~= drone
+			then self.beeType = 'mismatch'
+		end
+	else
+		beeType = 'nobees'
+	end
+	return self.beeType --returns bee family
 end
+
 
 function findHiveAge()
 
@@ -61,56 +114,6 @@ end
 
 
 
-function init()
-	transferUtil.init()
-	
-
-	animator.setAnimationState("bees", "off")
-
-	if not self.spawnDelay or not contents then
-		self.queenSlot = config.getParameter ("queenSlot")				-- Apiary inventory slot number (indexed from 1)
-		self.droneSlot = config.getParameter ("droneSlot")				--
-		self.frameSlots = config.getParameter ("frameSlots")			
-
-		self.spawnDelay = config.getParameter("spawnDelay")				-- A global spawn rate multiplier. Higher is slower.
-		self.spawnBeeBrake = config.getParameter("spawnBeeBrake")   	-- Individual spawn rates. Set to nil if none to be spawned.
-		self.spawnItemBrake = config.getParameter("spawnItemBrake")		--
-		self.spawnHoneyBrake = config.getParameter("spawnHoneyBrake")	--
-		self.spawnDroneBrake = config.getParameter("spawnDroneBrake")	--
-		self.limitDroneCount = config.getParameter("limitDroneCount")	-- whether to limit the number of drones
-
-		self.beeStingChance = config.getParameter("beeStingChance")		-- chance of being stung by the aggressive varieties
-		self.beeStingOffset = config.getParameter("beeStingOffset")		-- spawn offset of the sting object (0,0 if not set)
-
-		self.beePowerScaling = config.getParameter("beePowerScaling")	-- scaling factor for cooldown modification in deciding()
-
-		self.honeyModifier = 0		-- modifiers for frames, higher means faster production
-		self.itemModifier = 0		--
-		self.droneModifier = 0		--
-		self.mutationIncrease = 0   --
-                self.honeyAmount = 0 --
-                
-                -- new FU properties for apiaries
-                self.miteReduction = config.getParameter("miteReduction",0)
-                self.mitePenalty = config.getParameter("mitePenalty",0)
-                self.mutationMultiplier = config.getParameter("mutationMultiplier",0)
-                
-		self.config = root.assetJson('/objects/bees/apiaries.config')	-- common apiaries configuration
-		self.functions = { chooseMinerHoney = chooseMinerHoney, chooseMinerOffspring = chooseMinerOffspring }
-
-		initAntimiteFrames()
-		reset()
-		return true
-	end
-	return false
-end
-
-
-
-
-
-
-
 function initAntimiteFrames()
 	self.antimiteFrames = {}
 	for frame, mods in pairs(self.config.modifiers) do
@@ -122,7 +125,7 @@ function initAntimiteFrames()
 		--end
 		--if mods.mitePenalty then
 		--	self.mitePenalty = mods.mitePenalty
-		--end		
+		--end
 	end
 end
 
@@ -133,6 +136,9 @@ function reset()   ---When bees are not present, this sets a slightly increased 
 	if self.spawnHoneyBrake then self.spawnHoneyCooldown = self.spawnHoneyBrake * 2 end
 	if self.spawnDroneBrake then self.spawnDroneCooldown = self.spawnDroneBrake * 2 end
 	self.beePower = 0
+	self.flowerPower = 0
+	self.vegetablePower = 0
+	self.fruitPower = 0
 	contents = world.containerItems(entity.id())
 end
 
@@ -221,7 +227,7 @@ function getEquippedBees()
 
 		if count then
 		--Beepower = cooldown reduction rate. At 500ms scriptDelta, and with 20 beePower, it takes 5 seconds to reduce a 200 cooldown to 0.
-			self.beePower = math.ceil(math.sqrt(count) + 10)  
+			self.beePower = math.ceil(math.sqrt(count) + 10)
 			return queenName, droneName
 		end
 	end
@@ -245,7 +251,7 @@ function trySpawnBee(chance,type)
 	-- Type is normally things "normal" or "bone", as the code inputs them in workingBees() or breedingBees(), this function uses them to spawn bee monsters. "normalbee" for example.
 	-- chance is a float value between 0.00 (will never spawn) and 1.00 (will always spawn)
 	if self.doBees and math.random(100) <= 100 * chance and spaceForBees() then
-		world.spawnMonster(type .. "bee", object.toAbsolutePosition({ 2, 3 }), { level = 1 })	
+		world.spawnMonster(type .. "bee", object.toAbsolutePosition({ 2, 3 }), { level = 1 })
 		self.doBees = false
 	end
 end
@@ -325,9 +331,9 @@ function expelQueens(type)   ---Checks how many queens are in the apiary, either
 	local queenLocate = type .. "queen"  ---Input the used bee type, and create a string such as "normal" .. "queen" = "normalqueen"
 
 	local slot = nil
-	if contents[self.queenSlot].name == queenLocate then	
+	if contents[self.queenSlot].name == queenLocate then
 		slot = self.queenSlot
-	elseif contents[self.droneSlot].name == queenLocate then	
+	elseif contents[self.droneSlot].name == queenLocate then
 		slot = self.droneSlot
 	end
 
@@ -351,79 +357,103 @@ function beeSting()
 	end
 end
 
-
 function flowerCheck()
 	local flowers
-	local noFlowersYet = self.beePower 			
+	self.flowerPower = self.beePower
+	local noFlowersYet = self.flowerPower
 
 	for i, p in pairs(self.config.flowers) do
 		flowers = world.objectQuery(entity.position(), 80, {name = p})
 		if flowers ~= nil then
-			self.beePower = self.beePower + math.ceil(math.sqrt(#flowers) / 2)
+			self.flowerPower = self.flowerPower + math.ceil(math.sqrt(#flowers) / 2)
 		end
 	end
-	
-	if self.beePower == noFlowersYet then
-		self.beePower = -1				
-	elseif self.beePower >= 60 then
-		self.beePower = 60
+
+	if self.flowerPower == noFlowersYet then
+		self.flowerPower = -1
+	elseif self.flowerPower >= 60 then
+		self.flowerPower = 60
 	end
 
-	local beePowerSay = "FC:bP = " .. self.beePower
-	local location = entity.position()
-	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
-	-- object.say(beePowerSay)
+	if self.beeType == 'honey'
+		then self.flowerPower = self.flowerPower*1.5
+	end
+
+	return self.flowerPower --sees no flowers but is working anyway?
 end
 
 function vegetableCheck()
 	local vegetables
-	local noFlowersYet = self.beePower 			
+	self.vegetablePower = self.beePower
+	local noVegetablesYet = self.vegetablePower
 
 	for i, p in pairs(self.config.vegetables) do
 		vegetables = world.objectQuery(entity.position(), 80, {name = p})
 		if vegetables ~= nil then
-			self.beePower = self.beePower + math.ceil(math.sqrt(#vegetables) / 2)
+			self.vegetablePower = self.vegetablePower + math.ceil(math.sqrt(#vegetables) / 2)
 		end
-	end	
-	
-	if self.beePower == noFlowersYet then
-		self.beePower = -1			
-	elseif self.beePower >= 60 then
-		self.beePower = 60
 	end
 
-	local beePowerSay = "FC:bP = " .. self.beePower
-	local location = entity.position()
-	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
-	-- object.say(beePowerSay)
+	if self.vegetablePower == noVegetablesYet then
+		self.vegetablePower = -1
+	elseif self.vegetablePower >= 60 then
+		self.vegetablePower = 60
+	end
+
+	if self.beeType == 'squash'
+		then self.vegetablePower = self.vegetablePower*1.2
+	elseif self.beeType == 'honey'
+		then self.vegetablePower = self.vegetablePower*.5
+	end
+
+	return self.vegetablePower
 end
 
 function fruitCheck()
 	local fruits
-	local noFlowersYet = self.beePower 			
+	self.fruitPower = self.beePower
+	local noFruitYet = self.fruitPower
 
 	for i, p in pairs(self.config.fruits) do
 		fruits = world.objectQuery(entity.position(), 80, {name = p})
 		if fruits ~= nil then
-			self.beePower = self.beePower + math.ceil(math.sqrt(#fruits) / 2)
+			self.fruitPower = self.fruitPower + math.ceil(math.sqrt(#fruits) / 2)
 		end
 	end
-	
-	if self.beePower == noFlowersYet then
-		self.beePower = -1				
-	elseif self.beePower >= 60 then
-		self.beePower = 60
+
+	if self.fruitPower == noFruitYet then
+		self.fruitPower = -1
+	elseif self.fruitPower >= 60 then
+		self.fruitPower = 60
 	end
 
-	local beePowerSay = "FC:bP = " .. self.beePower
-	local location = entity.position()
-	world.debugText(beePowerSay,{location[1],location[2]+1.5},"orange")
-	-- object.say(beePowerSay)
+	if self.beeType == 'sweat'
+		then self.fruitPower = self.fruitPower*1.2
+	end
+
+	return self.fruitPower
+end
+
+function pollinationCheck()
+	fruitCheck()
+	vegetableCheck()
+	flowerCheck()
+
+	self.beePower = self.flowerPower + self.vegetablePower + self.fruitPower
+
+	if self.beePower <= -1
+		then self.beePower = -1
+	elseif self.beePower >= 60
+		then self.beePower = 60
+	end
+
+	return self.beePower
+
 end
 
 
 function deciding()
-	if self.beePower < 0 then  
+	if self.beePower < 0 then
 		return
 	end
 
@@ -504,35 +534,35 @@ function updateTotalMites()
     end
 end
 
-function miteInfection() 
+function miteInfection()
     local vmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "vmite", count = 1, data={}})   --see if the container has room for more mites
     local fmiteFitCheck = world.containerItemsCanFit(entity.id(), { name= "firemite", count = 1, data={}})
 
     checkAntimiteFrames()
 
     -- mite settings get applied
-    local baseMiteChance = 0.4 + math.random(2) + (self.totalMites/10) 
+    local baseMiteChance = 0.4 + math.random(2) + (self.totalMites/10)
     if baseMiteChance > 100 then baseMiteChance = 100 end
 
     local baseMiteReproduce = (1 + (self.totalMites /40))
     local baseMiteKill = 2 * (self.totalFrames /24)
     if baseMiteKill < 1 then baseMiteKill = 1 end
-    
+
     local baseDiceRoll = math.random(200)
     local baseSmallDiceRoll = math.random(100)
     local baseLargeDiceRoll = math.random(1000)
-    
-     --Infection stops spreading if the frame is an anti-mite frame present. It this is the case, we also roll to see if we get a bugshell when we kill the mite. 
-    if self.antimite then  
+
+     --Infection stops spreading if the frame is an anti-mite frame present. It this is the case, we also roll to see if we get a bugshell when we kill the mite.
+    if self.antimite then
         world.containerConsume(entity.id(), { name= "vmite", count = math.min(baseMiteKill,self.totalMites), data={}})
         if baseSmallDiceRoll < 10 and self.totalMites > 12 then   --chance to spawn bugshell when killing mites
           world.containerAddItems(entity.id(), { name="bugshell", count = baseMiteKill/2, data={}})
         end
     elseif (self.totalMites >= 360) and (baseDiceRoll < baseMiteChance) then
-        --animator.playSound("addMite")         
+        --animator.playSound("addMite")
     elseif (self.totalMites >= 10) and (baseSmallDiceRoll < baseMiteChance *4) and (vmiteFitCheck > 0) then
         transferUtil.unloadSelfContainer()
-        world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}}) 
+        world.containerAddItems(entity.id(), { name="vmite", count = baseMiteReproduce, data={}})
         self.totalMites = self.totalMites + baseMiteReproduce
         self.beePower = self.beePower - (1 + self.totalMites/20)
     elseif (baseDiceRoll < baseMiteChance) and (vmiteFitCheck > 0) then
@@ -553,19 +583,28 @@ function miteKillsBee()
 end
 
 function daytimeCheck()
-	daytime = world.timeOfDay() < 0.45 or world.type() == 'playerstation' --we made day earlier
+	earlyday = world.timeOfDay() < 0.25 or world.type() == 'playerstation'
+	daytime = world.timeOfDay() < 0.5 or world.type() == 'playerstation'
+	night = world.timeOfDay() > 0.5 or world.type() == 'playerstation'
+	midday = world.timeOfDay() > 0.125 and world.timeOfDay() < 0.375 or world.type() == 'playerstation'
+	midnight = world.timeOfDay() > 0.625 and world.timeOfDay() < 0.875 or world.type() == 'playerstation' --we made day earlier
 end
-
 
 function setAnimationState()
 	if self.beePower < 0 then
 		animator.setAnimationState("bees", "off")
-	elseif beeActiveWhen == "day" then
+	elseif self.beeActiveWhen == "day" then
 		animator.setAnimationState("bees", daytime and "on" or "off")
-	elseif beeActiveWhen == "night" then
-		animator.setAnimationState("bees", daytime and "off" or "on")
+	elseif self.beeActiveWhen == "earlyday" then
+		animator.setAnimationState("bees", earlyday and "on" or "off")
+	elseif self.beeActiveWhen == "night" then
+		animator.setAnimationState("bees", night and "on" or "off")
+	elseif self.beeActiveWhen == "midday" then
+		animator.setAnimationState("bees", midday and "on" or "off")
+	elseif self.beeActiveWhen == "midnight" then
+		animator.setAnimationState("bees", midnight and "on" or "off")
 	else
-		animator.setAnimationState("bees", beeActiveWhen == "always" and "on" or "off")
+		animator.setAnimationState("bees", self.beeActiveWhen == "always" and "on" or "off")
 	end
 end
 
@@ -597,7 +636,7 @@ function update(dt)
 	end
 
 	frame() 	--Checks to see if a frame in installed.
-	flowerCheck()   -- checks flowers
+	pollinationCheck()   -- combine fruit, vegetable, and flower check
 	deciding()
 
 	if not self.doBees and not self.doItems and not self.doHoney and not self.doDrones then
@@ -657,15 +696,15 @@ end
 
 
 function chooseMinerOffspring(config)
-	if self.mutationIncrease == 0 then 
-	  return nil 
+	if self.mutationIncrease == 0 then
+	  return nil
 	end
-	
+
 	if math.random() > self.mutationIncrease then
 	--sb.logInfo('may spawn miner bees')
 		return nil
 	end
-	
+
 	--sb.logInfo('may spawn strange bees')
 	local threat = world.threatLevel() or 1
 	local chance = config.chance or DEFAULT_HONEY_CHANCE
@@ -676,31 +715,41 @@ function chooseMinerOffspring(config)
 	elseif (math.random(100) <= 2 * (chance + self.mutationIncrease)) then
 	  world.spawnMonster("fearmoth", object.toAbsolutePosition({ 0, 3 }), { level = threat, aggressive = true })
 	end
-	
+
 	return { type = 'radioactive', chance = config.chance, bee = (config.bee or 1) * 1.1, drone = (config.drone or 1) * 0.9 } -- tip a little more in favour of world over hive
-	
+
 end
 
 
 function workingBees()
 
 	local type, config
-	local notnow = daytime and 'night' or 'day'
 
 	local queen, drone = getEquippedBees()
+	findBeeType()
 
 	if queen == drone and self.config.spawnList[queen] then
 		local config = self.config.spawnList[queen]
-		local when = config.active or 'day'
+		if self.beeType == 'carpenter'
+			then self.beeActiveWhen = 'earlyday'
+		elseif self.beeType == 'mason'
+			then self.beeActiveWhen = 'night'
+		elseif self.beeType == 'leafcutter'
+			then self.beeActiveWhen = 'midday'
+		elseif self.beeType == 'squash'
+			then self.beeActiveWhen = 'earlyday'
+		elseif self.beeType == 'plasterer'
+			then self.beeActiveWhen = 'midnight'
+		else
+			self.beeActiveWhen = 'day'
+		end
+
+		if world.type() == "playerstation"
+			then self.beeActiveWhen = "always" end
+
 --		sb.logInfo ('Checking ' .. queen .. ' (' .. when .. ' / ' .. notnow .. ')')
 
-		
-		if when ~= notnow or world.type() == "playerstation" then -- strictly, when == 'always' or == now
-			if when ~= notnow then 
-				beeActiveWhen = when 
-				else 
-				beeActiveWhen = "always" 
-			end
+		if animator.animationState("bees") == 'on' or world.type() == "playerstation" then -- strictly, when == 'always' or == now
 
 			if self.doHoney then
 				-- read config; call functions returning config if specified
@@ -760,14 +809,14 @@ function breedingBees()
 			trySpawnMutantDrone(0.20, species)
 			expelQueens(bee1Type)
 			expelQueens(bee2Type)
-			beeActiveWhen = "day"
+			self.beeActiveWhen = "day"
 			return true
 		end
 	end
-	
+
         miteInfection() -- additional chance for infection when breeding
-        
-	beeActiveWhen = "unknown"
+
+	self.beeActiveWhen = "unknown"
 	self.beePower = -1
 	return false
 end

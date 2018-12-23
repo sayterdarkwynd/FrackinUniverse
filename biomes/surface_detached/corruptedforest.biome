@@ -5,12 +5,12 @@
     "groups" : [
       {
         "select" : 3,
-        "pool" : [     
+        "pool" : [
           [ 0.09, "fugiantbee" ],
           [ 0.04, "motherpoptop2" ],
-          [ 0.1, "knifetop" ],       
+          [ 0.1, "knifetop" ],
           [ 0.09, "ectoslime" ],
-          [ 0.09, "ocumera" ],     
+          [ 0.09, "ocumera" ],
           [ 0.09, "futoxicgolem" ],
           [ 0.14, "futoxicflylarge" ],
           [ 0.27, "fucorruptflylarge" ],
@@ -58,6 +58,27 @@
       }
     }
   },
+  
+  "parallax" : "/parallax/surface/aliensub.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/forest_day.ogg", "/sfx/environmental/forest_day2.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/forest_night.ogg", "/sfx/environmental/forest_night2.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/haiku.ogg","/music/mira.ogg","/music/ultramarine.ogg", "/music/desert-exploration1.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/crystal-exploration1.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg","/music/lava-exploration2.ogg", "/music/nomads.ogg", "/music/ultramarine.ogg", "/music/forsaken-grotto.ogg", "/music/desert-exploration2.ogg" ]
+    }
+  },
+  
   "hueShiftOptions" : [-225, -165, -70, -25, 0, 25, 70, 165, 225],
 
     "mainBlock" : "alienrock",
@@ -74,16 +95,25 @@
            "priority" : 3.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:tiyDist",
- 
+
            "type" : "microdungeon",
            "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "reversepyramids", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none" ]
+         },
+         {
+           "mode" : "floor",
+           "priority" : 2.0,
+           "variants" : 1,
+           "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
+
+           "type" : "microdungeon",
+           "microdungeons" : [ "hauntedmini" ]
          },
          {
            "mode" : "floor",
            "priority" : 1.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:potsRare",
- 
+
            "type" : "object",
            "objectSets" : [
              {
@@ -97,7 +127,7 @@
            "priority" : 1.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:potsRare",
- 
+
            "type" : "object",
            "objectSets" : [
              {
@@ -119,7 +149,7 @@
            "priority" : 0.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:overgroundChests",
- 
+
            "type" : "treasureBox",
            "treasureBoxSets" : [ "basicChest" ]
          },
@@ -128,18 +158,18 @@
            "priority" : 0.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:overgroundChests",
- 
+
            "type" : "treasureBox",
            "treasureBoxSets" : [ "weaponChest" ]
          },
- 
- 
+
+
          {
            "mode" : "floor",
            "priority" : 1.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:overgroundChests",
- 
+
            "type" : "object",
            "objectSets" : [
              {
@@ -153,7 +183,7 @@
            "priority" : 3.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:scatteredSmall",
- 
+
            "type" : "grass",
            "grasses" : [ "pebbles" ]
          },
@@ -162,17 +192,17 @@
            "priority" : 3.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
- 
+
            "type" : "microdungeon",
            "microdungeons" : [ "terrainfeatures" ]
          },
-         			
+
          {
            "mode" : "floor",
            "priority" : 3.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:tiyDistPlatform",
- 
+
            "type" : "microdungeon",
            "microdungeons" : [ "aridplatforming" ]
          },
@@ -181,7 +211,7 @@
            "priority" : 2.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:denseLarge",
- 
+
            "type" : "bush",
            "bushes" : [
              {
@@ -232,13 +262,13 @@
         "treeStemHueShiftMax" : 0,
         "treeStemList" : [ "hive" ],
         "treeFoliageList" : [ "hive" ]
-      },    
+      },
          {
            "mode" : "floor",
            "priority" : 1.0,
            "variants" : 1,
            "distribution" : "/biomes/distributions.config:scatteredLarge",
- 
+
            "type" : "tree",
            "treeFoliageHueShiftMax" : 180,
            "treeStemHueShiftMax" : 15,
@@ -260,8 +290,3 @@
     ]
   }
 }
-
-
-
-
-

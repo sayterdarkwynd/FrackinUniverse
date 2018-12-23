@@ -17,7 +17,7 @@ function update(dt)
   
   if (self.songTimer)<1 then
     animator.playSound("dancemusic")
-    self.songTimer = 24.2
+    self.songTimer = 365
   end 
 
   self.songTimer = self.songTimer - dt

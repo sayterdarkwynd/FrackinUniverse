@@ -99,8 +99,26 @@
       ],
 
       "wanderActions" : [
-	{"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}}, 
-	{"name":"land-fly", "parameters":{"flySpeed":8, "flyControlForce":25, "landCheckDistance":40, "idleTime":40}}
+	{
+	"name":"wander-fly", 
+	"cooldown":[5,20], 
+	"parameters":{
+		"wanderTime":[10,40], 
+		"groundDistance":20, 
+		"ceilingDistance":10, 
+		"xVelocity":8, 
+		"yVelocity":12
+		}
+	}, 
+	{
+	"name":"land-fly", 
+	"parameters":{
+		"flySpeed":8, 
+		"flyControlForce":25, 
+		"landCheckDistance":40, 
+		"idleTime":40
+		}
+	}
       ],
 
       "concurrentActions" : [
@@ -115,14 +133,15 @@
 
       "concurrentHostileActions" : [
 	{"name":"action-projectile", 
-	"cooldown":0.01, 
+	"cooldown":0.1, 
 	"parameters":{
 	  "skillName":"glitterBurst", 
 	  "projectileCount":5, 
 	  "projectileType":"hiveswarm", 
 	  "projectileParameters":{
+	    "timeToLive" : 0.5,
 	    "speed":10, 
-	    "statusEffects":[{"effect":"electrified", "duration":3}], 
+	    "statusEffects":[ {"effect":"electrified", "duration":3} ], 
 	    "power":0.3, 
 	    "actionOnReap":[], 
 	    "damageTeam":{"type":"enemy"}, 

@@ -9,6 +9,7 @@
       {
         "select" : 4,
         "pool" : [ 
+          [ 0.1, "warmdeer" ],
           [ 0.1, "anglure4" ],
           [ 0.1, "bulbop2" ],
           [ 0.1, "bulbopfriendly" ],
@@ -21,6 +22,7 @@
           [ 0.1, "knifetop" ],
           [ 0.1, "aquapodflyer" ],
           [ 0.1, "fennix" ],
+          [ 0.07, "deathbunny" ],
           [ 0.1, "hypnare" ],
           [ 0.1, "nutmidge" ],
           [ 0.1, "fukingsnake" ],
@@ -29,8 +31,6 @@
           [ 0.1, "scaveran" ],
           [ 0.1, "toumingo" ],
           [ 0.1, "swarpion" ],
-          [ 0.1, "fugiantscorpion" ],
-          [ 0.1, "blackgiantscorpion" ],
           [ 0.1, "fuwolf" ],
 	  [ 0.1, "fuallergen" ],
 	  [ 0.1, "glarp" ],
@@ -279,10 +279,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/ForestBattle1.ogg","/music/ultramarine.ogg","/music/forsaken-grotto.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/vast-immortal-suns.ogg", "/music/drosera.ogg", "/music/mira.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/horsehead-nebula.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/ForestBattle1.ogg","/music/ultramarine.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg" ]
     }
   },
 
@@ -608,7 +608,8 @@
           [0.15, "junglebush16" ],
           [0.15, "junglebush17" ],
           [0.15, "junglebush18" ],
-          [0.15, "beanstalk" ]
+          [0.15, "beanstalk" ],
+          [0.02, "warbotDowned" ]
           ],
               "parameters" : { }
             }
@@ -673,8 +674,8 @@
           "type" : "tree",
           "treeFoliageHueShiftMax" : 180,
           "treeStemHueShiftMax" : 15,
-          "treeStemList" : [ "orangestem", "nyanistem", "coconutwood", "bananatreestem", "twisty", "woody", "oldwood", "crackly", "palmlike" ],
-          "treeFoliageList" : [ "orangeleaf", "nyanifoliage", "coconut", "bananatreeleaf", "lushy", "junglepalm", "jungly", "jungleleaf" ]
+          "treeStemList" : [ "cherrybloomwood", "cherrywood",  "orangestem", "nyanistem", "coconutwood", "bananatreestem", "twisty", "woody", "oldwood", "crackly", "palmlike" ],
+          "treeFoliageList" : [ "cherrygreen", "cherrybloom","orangeleaf", "nyanifoliage", "coconut", "bananatreeleaf", "lushy", "junglepalm", "jungly", "jungleleaf" ]
         },  
         
         {
@@ -711,6 +712,20 @@
     "ceilingGrassModDensity" : 0.3,
     
       "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "carbonrock" ], [0.35, "carbonrocksmall" ], [0.35, "goldrock" ], [0.35, "goldrocksmall" ], [0.35, "silverrock" ], [0.35, "silverrocksmall" ], [0.35, "copperrock" ], [0.35, "copperrocksmall" ], [0.35, "diamondrock" ], [0.35, "diamondrocksmall" ] ],
+              "parameters" : { }
+            }
+          ]
+        },       
         {
           "mode" : "ceiling",
           "priority" : 1.0,

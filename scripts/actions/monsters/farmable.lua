@@ -254,13 +254,13 @@ function checkMate()
 	    storage.mateTimer = 20  -- full happiness pets mate sooner
 	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	    animator.playSound("harvest")
-    elseif storage.happiness >= 90 then
+    elseif storage.happiness > 90 then
 	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
 	    storage.mateTimer = 40
 	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
 	    animator.playSound("harvest")
 	    storage.food = storage.food - 10
-    elseif storage.happiness >=70 then
+    elseif storage.happiness > 70 then
 	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
 	    storage.mateTimer = config.getParameter("mateTime")
 	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 

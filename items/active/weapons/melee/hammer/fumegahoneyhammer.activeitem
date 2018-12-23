@@ -5,7 +5,7 @@
   "rarity" : "legendary",
   "description" : "Truly solid amber condensed into a mallet.",
   "shortdescription" : "Queen Hammer",
-  "tooltipKind" : "sword2",
+  "tooltipKind" : "hammer",
   "category" : "hammer",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon", "bees"],
@@ -20,7 +20,7 @@
   },
   "animationCustom" : {
     "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-3.0, 1.5]
+      "offset" : [-1.25, 1.5]
     }}}},
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
@@ -37,42 +37,6 @@
     "baseDps" : 12.5,
     "damageConfig" : {
       "damageSourceKind" : "poisonhammer"
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -10,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0, 1.75]
-      },
-      "windup" : {
-        "duration" : 0.8,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0, 1.75],
-
-        // Windup animation
-        "idleHammerAngle" : -10,
-        "windupHammerAngle" : 0,
-        "dropHammerAngle" : 60,
-        "bounceHammerAngle" : 55,
-
-        "minWindup" : 0.7,
-        "windupBaseAngle" : -10,
-        "windupAngleRange" : 70
-      },
-      "preslash" : {
-        "duration" : 0.025,
-        "armRotation" : 55,
-        "weaponRotation" : -45,
-        "weaponOffset" : [0, 2.0]
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -35,
-        "weaponRotation" : -55,
-        "smashTimer" : 1.5,
-        "weaponOffset" : [0, 2.0]
-      }
     }
   },
 

@@ -1,207 +1,73 @@
 require("/scripts/vec2.lua")
+require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
 
-function init()
+--============================= CLASS DEFINITION ============================--
+--[[ This instantiates a child class of fuWeatherBase. The child's metatable
+    is set to the parent's, so that any missing indexes (methods) are looked
+    up from fuWeatherBase. The methods can also be accessed manually (in cases
+    that extend the parent method) through the child.parent attribute. ]]--
 
-  self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
-    
-  -- Environment Configuration --
-  --base values
-  self.effectCutoff = config.getParameter("effectCutoff",0)
-  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
-  self.baseRate = config.getParameter("baseRate",0)                
-  self.baseDmg = config.getParameter("baseDmgPerTick",0)        
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
-  self.biomeTemp = config.getParameter("biomeTemp",0)              
-  
-  --timers
-  self.biomeTimer = self.baseRate
-  self.biomeTimer2 = 1
-  self.usedIntro = 0
-  self.timerRadioMessage = 0
-  --conditionals
-  self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
-  self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
-  self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
-  self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
-  self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
+fuSulphuricWeather = fuWeatherBase:new({})
 
-  checkEffectValid()
-  script.setUpdateDelta(5)
+--============================= CLASS EXTENSIONS ============================--
+--[[ Any methods which need to be overridden from fuWeatherBase should be
+    defined in this section. ]]--
+
+--[[ NOTE: When calling parent methods, use the syntax
+        self.parent.method(self)
+    rather than the conventional "syntactic sugar version"
+        self.parent:method()
+    The latter will pass the parent class as the "self" parameter, preventing
+    any attributes overwritten by the child from being used. ]]--
+
+function fuSulphuricWeather.init(self, config_file)
+  self.parent.init(self, config_file)
+  -- Protection threshold before health drain starts.
+  self.protectionThreshold = 1
 end
 
-function checkEffectValid()
-  if world.entityType(entity.id()) ~= "player" then
-    deactivateVisualEffects()
-    effect.expire()
-	return false;
-  end
-  if  (world.type()=="unknown") then
-	  deactivateVisualEffects()
-	  self.usedIntro = nil	
-	  effect.expire()
-	  return false;
-  elseif (status.statPositive("sulphuricImmunity")) or ( status.stat("physicalResistance",0)  >= self.effectCutoffValue ) then
-	  deactivateVisualEffects()
-	  self.usedIntro = nil
-	  effect.expire() 
-	  return false;
-  elseif (status.statPositive("sulphuricImmunity")) then
-      deactivateVisualEffects()
-	  self.usedIntro = nil
-	  effect.expire() 
-	  return false;
-  else
-	  -- activate visuals and check stats
-  if (self.timerRadioMessage == 0) and not self.usedIntro then
-	    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomesulphuric", 1.0) -- send player a warning
-	     self.usedIntro = 1
-	     self.timerRadioMessage = 220
-    end
-  end
-  return true;
-end
-
-
-
--- *******************Damage effects
-function setEffectDamage()
-  return ( ( self.baseDmg ) *  (1 -status.stat("physicalResistance",0) ) * self.biomeThreshold  )
-end
-
-function setEffectDebuff()
-  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("physicalResistance",0) * self.biomeThreshold) )
-end
-
-function setEffectTime()
-  return (  self.baseRate *  math.min(   1 - math.min( status.stat("physicalResistance",0) ),0.25))
-end
-
--- ******** Applied bonuses and penalties
-function setNightPenalty()
-  if (self.biomeNight > 1) then
-    self.baseDmg = self.baseDmg + self.biomeNight
-    self.baseDebuff = self.baseDebuff + self.biomeNight
+function fuSulphuricWeather.applyHealthDrain(self, modifier, dt)
+  -- Only drain health once player's protection is depleted.
+  if status.stat("protection", 0) < 1 then
+    self.parent.applyHealthDrain(self, modifier, dt)
   end
 end
 
-function setSituationPenalty()
-  if (self.situationPenalty > 1) then
-    self.baseDmg = self.baseDmg + self.situationPenalty
-    self.baseDebuff = self.baseDebuff + self.situationPenalty 
-  end
-end
+--============================= GRAPHICAL EFFECTS ============================--
 
-function setLiquidPenalty()
-  if (self.liquidPenalty > 1) then
-    self.baseDmg = self.baseDmg * 2
-    self.baseDebuff = self.baseDebuff + self.liquidPenalty 
-  end
-end
-
-function setWindPenalty()
-  self.windLevel =  world.windLevel(mcontroller.position())
-  if (self.windLevel > 1) then
-    self.biomeThreshold = self.biomeThreshold + (self.windLevel / 100)
-  end  
-end
-
--- ********************************
-
---**** Other functions
-function getLight()
-  local position = mcontroller.position()
-  position[1] = math.floor(position[1])
-  position[2] = math.floor(position[2])
-  local lightLevel = world.lightLevel(position)
-  lightLevel = math.floor(lightLevel * 100)
-  return lightLevel
-end
-
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position()) 
-end
-
-
-function isDry()
-local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-	    inWater = 0
-	end
-end
-
-function hungerLevel()
-  if status.isResource("food") then
-   return status.resource("food")
-  else
-   return 50
-  end
-end
-
-function toHex(num)
-  local hex = string.format("%X", math.floor(num + 0.5))
-  if num < 16 then hex = "0"..hex end
-  return hex
-end
-
-
-function activateVisualEffects()
+function fuSulphuricWeather.activateVisualEffects(self)
   effect.setParentDirectives("fade=ffbe22=0.3")
 end
 
-function deactivateVisualEffects()
+function fuSulphuricWeather.deactivateVisualEffects(self)
   effect.setParentDirectives("fade=ffbe22=0")
 end
 
-function makeAlert()
-	  local statusTextRegion = { 0, 1, 0, 1 }
-	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	  animator.burstParticleEmitter("statustext")  
+function fuSulphuricWeather.createAlert(self)
+  local statusTextRegion = { 0, 1, 0, 1 }
+  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+  animator.burstParticleEmitter("statustext")
+  -- Hurt the player as an extra warning.
+  self:applySelfDamage(0.1)
 end
 
+--============================== INIT AND UNINIT =============================--
+--[[ Starbound calls these non-class functions when handling status effects.
+    They should not need to be modified (apart from the class name). ]]--
 
-function update(dt)
-checkEffectValid()
-self.biomeTimer = self.biomeTimer - dt 
-self.biomeTimer2 = self.biomeTimer2 - dt 
-self.timerRadioMessage = self.timerRadioMessage - dt
-
---set the base stats
-  self.baseRate = config.getParameter("baseRate",0)                
-  self.baseDmg = config.getParameter("baseDmgPerTick",0)        
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
-  self.biomeTemp = config.getParameter("biomeTemp",0)  
-  self.biomeThreshold = config.getParameter("biomeThreshold",0)    
-  self.biomeNight = config.getParameter("biomeNight",0)            
-  self.situationPenalty = config.getParameter("situationPenalty",0)
-  self.liquidPenalty = config.getParameter("liquidPenalty",0)   
-  
-  self.baseRate = setEffectTime()
-  self.damageApply = setEffectDamage()   
-  self.debuffApply = setEffectDebuff() 
-  
-      
-      if (self.biomeTimer <= 0) and (status.stat("protection",0) > 0) then
-      makeAlert()
-            effect.addStatModifierGroup({
-              {stat = "protection", amount = -self.debuffApply  },
-              {stat = "physicalResistance", amount = (status.stat("physicalResistance",0) *(-self.debuffApply/100))  }
-            })
-            
-            activateVisualEffects()
-            self.biomeTimer = self.baseRate
-      end 
-
-      
-      if status.stat("protection",0) < 1 then 
-	     status.modifyResource("health", -self.damageApply * dt) 
-      end  
-        
-end         
+function init()
+  local config_file = config.getParameter("configPath")
+  fuSulphuricWeather:init(tostring(config_file))
+end
 
 function uninit()
+  fuSulphuricWeather:uninit()
+end
 
+--=========================== MAIN UPDATE FUNCTION ==========================--
+--[[ Starbound calls this non-class function when updating status effects. It
+    shouldn't need to be modified (apart from the class name). ]]--
+
+function update(dt)
+  fuSulphuricWeather:update(dt)
 end

@@ -1,4 +1,15 @@
 [
+	{ "op" : "add", "path" : "/slimenpcmerchcloth", "value" : [[0, [
+      { "item": { "name": "slimenobleblackchest", "data": { "colorIndex": 1 } },"rartiy" : 0.05 },
+	  { "item": { "name": "slimenobleblacklegs", "data": { "colorIndex": 1 } },"rartiy" : 0.05 },
+	   { "item": { "name": "slimenoblewhitechest", "data": { "colorIndex": 1 } },"rartiy" : 0.05 },
+	  { "item": { "name": "slimenoblewhitelegs", "data": { "colorIndex": 1 } },"rartiy" : 0.05 }
+    ]]]},
+	{ "op" : "add", "path" : "/slimenpcmerchpool", "value" : [[0, [
+	  { "item": { "name": "slimegoo"}, "rartiy" : 0.05, "price" : 250 },
+	  { "item": { "name": "slime"}, "rartiy" : 0.05, "price" : 80 },
+	  { "item": { "name": "greenslime"}, "rartiy" : 0.05, "price" : 120 }
+    ]]]},
   {
     "op": "add",
     "path": "/basicmerchant/0/1/-",
@@ -44,11 +55,6 @@
     "path": "/basicmerchant/0/1/-",
     "value": { "item" : { "name" : "poptopegg" }, "rarity" : 0.03 }
   },  
-  {
-    "op": "add",
-    "path": "/basicmerchant/0/1/-",
-    "value": { "item" : { "name" : "megastatue" }, "rarity" : 0.03 }
-  },
   {
     "op": "add",
     "path": "/basicmerchant/0/1/-",
@@ -109,7 +115,159 @@
 {"op" : "add", "path" : "/randomguns/0/1/-", "value" : { "item" : { "name" : "swtjc_ewg_commonantimaterialrifle" }, "rarity" : 0.02, "useSeed" : true } },
 {"op" : "add", "path" : "/randomguns/0/1/-", "value" : { "item" : { "name" : "swtjc_ewg_commonmultigrenadelauncher" }, "rarity" : 0.02, "useSeed" : true } },
 {"op" : "add", "path" : "/randomguns/0/1/-", "value" : { "item" : { "name" : "swtjc_ewg_commonminirocketlauncher" }, "rarity" : 0.02, "useSeed" : true } },
-{"op" : "add", "path" : "/randomguns/0/1/-", "value" : { "item" : { "name" : "swtjc_ewg_commonflakcannon" }, "rarity" : 0.02, "useSeed" : true } }
+{"op" : "add", "path" : "/randomguns/0/1/-", "value" : { "item" : { "name" : "swtjc_ewg_commonflakcannon" }, "rarity" : 0.02, "useSeed" : true } },
+
+{ "op" : "add"
+	,"path" : "/elduukharscience"
+	,"value" : [
+		[0, [
+			{ "item" : { "name" : "redstim" } },
+			{ "item" : { "name" : "medkit" } },
+			{ "item" : { "name" : "bandage" } }
+		]]
+	]
+},
+
+{ "op" : "add"
+	,"path" : "/elduukharpub"
+	,"value" : [
+		[0, [
+			{ "item" : { "name" : "greenstim" } },
+			{ "item" : { "name" : "redstim" } },
+			{ "item" : { "name" : "yellowstim" } },
+			{ "item" : { "name" : "bluestim" } },
+			{ "item" : { "name" : "whiskeyflask" } },
+			{ "item" : { "name" : "wineglass" } },
+			{ "item" : { "name" : "ricewine" } }
+		]]
+	]
+},
+
+{ "op" : "add"
+	,"path" : "/elduukharweaponblueprints"
+	,"value" : [
+		[0, [
+			{ "item" : { "name" : "elduukhartier1shortsword-recipe" }, "cost" : 375, "rarity" : 0.1 },
+			{ "item" : { "name" : "elduukhartier1broadsword-recipe" }, "cost" : 750, "rarity" : 0.1 }
+		]],
+		  [2, [
+			{ "item" : { "name" : "elduukhartier2shortsword" }, "rarity" : 0.1 },
+			{ "item" : { "name" : "elduukhartier2broadsword" }, "rarity" : 0.1 }
+                ]]
+	]
+},
+
+{ "op" : "add"
+	,"path" : "/elduukhargem"
+	,"value" : [
+		[0, [
+			{ "item" : { "name" : "oceanite" } },
+			{ "item" : { "name" : "feya" } },
+			{ "item" : { "name" : "emera" } },
+			{ "item" : { "name" : "nhydri" } },
+			{ "item" : { "name" : "opul" } },
+			{ "item" : { "name" : "crystal" } },
+			{ "item" : { "name" : "oceaniteseed" } },
+			{ "item" : { "name" : "emeraseed" } },
+			{ "item" : { "name" : "feyaseed" } }
+		]]
+	]
+},
+
+  {
+    "op": "add",
+    "path": "/futemplemerchant",
+    "value": [
+      [
+        0,
+        [
+          {
+            "item": {
+              "name": "elderbaseboard"
+            },
+            "price": 60,
+            "prerequisiteQuest": "shoggoth_unlocknew"
+          },
+          {
+            "item": {
+              "name": "elderfloor"
+            },
+            "price": 60,
+            "prerequisiteQuest": "shoggoth_unlocknew"
+          },
+          {
+            "item": {
+              "name": "elderblock1"
+            },
+            "price": 40,
+            "prerequisiteQuest": "shoggoth_wagner"
+          },
+          {
+            "item": {
+              "name": "elderblock2"
+            },
+            "price": 40,
+            "prerequisiteQuest": "shoggoth_wagner"
+          },
+          {
+            "item": {
+              "name": "elderbricks"
+            },
+            "price": 50,
+            "prerequisiteQuest": "shoggoth_wagner"
+          },
+          {
+            "item": {
+              "name": "elderbricks2"
+            },
+            "price": 50,
+            "prerequisiteQuest": "shoggoth_wagner"
+          },
+          {
+            "item": {
+              "name": "eldertile"
+            },
+            "price": 50,
+            "prerequisiteQuest": "shoggoth_wagner"
+          },
+          {
+            "item": {
+              "name": "elderroof"
+            },
+            "price": 50,
+            "prerequisiteQuest": "shoggoth_wagner"
+          },
+          {
+            "item": {
+              "name": "elderpillar1"
+            },
+            "price": 70,
+            "prerequisiteQuest": "shoggoth_defeat"
+          },
+          {
+            "item": {
+              "name": "elderpillarcap"
+            },
+            "price": 70,
+            "prerequisiteQuest": "shoggoth_defeat"
+          },
+          {
+            "item": {
+              "name": "elderpipe"
+            },
+            "price": 70,
+            "prerequisiteQuest": "shoggoth_defeat"
+          },
+          {
+            "item": {
+              "name": "elderrubble"
+            },
+            "price": 20
+          }
+        ]
+      ]
+    ]
+  }
 
 ]
 

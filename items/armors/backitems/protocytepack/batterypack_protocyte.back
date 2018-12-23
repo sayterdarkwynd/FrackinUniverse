@@ -4,13 +4,14 @@
   "inventoryIcon" : "batterypack_protocyteicon.png",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "rarity" : "uncommon",
-  "description" : "Blocks proto-poison. Grants +20 energy, 5% energy regen and a slight glow.",
+  "description" : "An improved energy pack which blocks proto-poison and electrical storms. Grants +15% energy, +20% energy regen and a slight glow.",
   "shortdescription" : "Protocite Energy Pack",
   "tooltipKind" : "baseaugment",
   "category" : "^#e43774;Upgradeable EPP^reset;",
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-  
+
+  "maxStack" : 1,
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
 
@@ -19,10 +20,14 @@
     "energyregenfu_proto",
     {
       "stat" : "maxEnergy",
-      "amount" : 20
+      "effectiveMultiplier" : 1.15
     },
-    "glowyellow2"
+    "glowyellow2",
+    {
+      "stat" : "biomeelectricImmunity",
+      "amount" : 1.0
+    }
   ]
-  
-  
+
+
 }

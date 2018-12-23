@@ -1,0 +1,122 @@
+{
+  "objectName" : "ranscastle",
+  "colonyTags" : ["nightar","commerce"],
+  "rarity" : "legendary",
+  "category" : "other",
+  "description" : "A storefront for the Nightar merchant, Ran, to sell his wares.",
+  "shortdescription" : "Ran's Castle",
+  "race" : "nightar",
+  "printable" : false,
+  "lightColor" : [130, 217, 232],
+  "lightPosition" : [0, 4],
+  "interactAction" : "OpenMerchantInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/merchant.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : "Ran's Castle",
+        "subtitle" : "^#b9b5b2;Sells Nightar-themed goods"
+      }
+    },
+    "buyFactor" : 1.0,
+    "sellFactor" : 0.2,
+    "items" : [
+	//=======================> blocks
+      { "item" : "nightarcastleblock" },
+      { "item" : "nightarcastleblock2" },
+      { "item" : "nightarfloor" },
+      { "item" : "nightarshipblock" },
+	    { "item" : "nightarsupport" },
+	    { "item" : "nightarsupport2" },
+	    { "item" : "nightarswall1" },
+	    { "item" : "nightartechblock" },
+	    { "item" : "nightarwall2" },
+      { "item" : "nightarsplatform" },
+	    { "item" : "nightarpanelblock" },
+	    { "item" : "nightarslopedhullpanel" },
+
+	//=======================> Stuff
+
+	    { "item" : "nightarshipdoor" },
+	    { "item" : "nightarshiphatch" },
+      { "item" : "nightarbattlestandard" },
+      { "item" : "nightarbed" },
+      { "item" : "nightarbookcase" },
+      { "item" : "nightarbox1" },
+      { "item" : "nightarbox2" },
+      { "item" : "nightarcabinet" },
+      { "item" : "nightarcastledoor" },
+      { "item" : "nightarchair" },
+	    { "item" : "nightarchandelier" },
+      { "item" : "nightarcomputer" },
+	    { "item" : "nightarconsole" },
+	    { "item" : "nightardresser" },
+	    { "item" : "nightarlight" },
+	    { "item" : "nightarpedestal" },
+	    { "item" : "nightarpicture" },
+	    { "item" : "nightarsbannersmall" },
+	    { "item" : "nightarsbannertorn" },
+	    { "item" : "nightarshelf" },
+	    { "item" : "nightarshiplight" },
+	    { "item" : "nightarsink" },
+	    { "item" : "nightarstasispod" },
+	    { "item" : "nightarstoragelocker" },
+	    { "item" : "nightarstove" },
+	    { "item" : "nightartable" },
+	    { "item" : "nightartablechair" },
+	    { "item" : "nightartoilet" },
+	    { "item" : "nightartinywallswitch" },
+	    { "item" : "nightarfridge"},
+	    { "item" : "nightarthrone" },
+	    { "item" : "nightarteleporter" },
+	    { "item" : "nightarchest"}
+    ]
+  },
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "ranscastleleft.png:<color>.<frame>", "fullbright" : true }, { "image" : "ranscastleleftlit.png:<color>.<frame>" } ],
+      "direction" : "left",
+
+      "lightPosition" : [-1, 2],
+
+      "imagePosition" : [-64, 0],
+      "frames" : 16,
+      "animationCycle" : 1.2,
+
+      "spaceScan" : 0.1,
+      "interactiveSpaces": [
+        [-5, 1], [-4, 1], [-3, 1], [-2, 1], [-1, 1], [0, 1],
+        [-5, 2], [-4, 2], [-3, 2], [-2, 2], [-1, 2],
+        [-4, 3], [-3, 3], [-2, 3],
+        [-4, 4], [-3, 4], [-2, 4],
+        [-6, 5], [-5, 5], [-4, 5], [-3, 5], [-2, 5], [-1, 5], [0, 5],
+        [-6, 6], [-5, 6], [-4, 6], [-3, 6], [-2, 6], [-1, 6], [0, 6]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "ranscastleright.png:<color>.<frame>", "fullbright" : true }, { "image" : "ranscastlerightlit.png:<color>.<frame>" } ],
+      "direction" : "right",
+
+      "lightPosition" : [0, 3],
+
+      "imagePosition" : [-64, 0],
+      "frames" : 16,
+      "animationCycle" : 1.2,
+
+      "spaceScan" : 0.1,
+      "interactiveSpaces": [
+        [6, 1], [5, 1], [4, 1], [3, 1], [2, 1], [1, 1], [0, 1], [-1, 1],
+        [4, 2], [3, 2], [2, 2], [1, 2], [0, 2],
+        [3, 3], [2, 3], [1, 3],
+        [3, 4], [2, 4], [1, 4],
+        [5, 5], [4, 5], [3, 5], [2, 5], [1, 5], [0, 5], [-1, 5],
+        [5, 6], [4, 6], [3, 6], [2, 6], [1, 6], [0, 6], [-1, 6]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "soundEffect" : "/sfx/objects/hubbub.ogg"
+}

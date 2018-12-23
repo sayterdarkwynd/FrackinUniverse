@@ -2,8 +2,8 @@
   "id" : "create_clothingfabricator3",
   "prerequisites" : [ "create_clothingfabricator2" ],
   "title" : "Okay, I kinda get why...",
-  "text" : "Can you do me a favor? I need someone to murder like....100 things. I need ^orange;40 Monster Plate^reset; and am far ^green;too lazy^reset; to do it myself. Go on, then. I'll pay.",
-  "completionText" : "Thanks, Dave. Have this significant sum of money and this stupid contract...and this ^red;other thing^reset; I...found. Yea. Found. I'm done with you. Bugger off, little peon.",
+  "text" : "I cannot possibly poison-tip the ^cyan;rocket-powered guinea pigs^reset; without a supply of 5 ^orange;Alien Compound^reset;. Perhaps you could get me some? I would (in theory) handsomely reward you!",
+  "completionText" : "Thanks, Dave. Now I can construct a weapon the likes of which nobody has ever seen. Bonus: They're also ^green;delicious^reset;!",
   "moneyRange" : [1, 2],
   "rewards" : [ [ [ "crewcontract_hobo", 1 ], [ "roadkillaugment", 1 ] ] ],
   "speaker" : "questGiver",
@@ -20,15 +20,15 @@
     "canBeAbandoned" : true,
     "requireTurnIn" : false,
 
-    "turnInDescription" : "Bring ^orange;Kevin, your overlord^reset; heaps of ^green;Monster Plate^reset;",
+    "turnInDescription" : "Bring ^red;Kevin, your overlord^reset; 5 ^orange;Alien Compound^reset;",
 
 
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "monsterplating",
-        "count" : 40,
-        "consume" : false
+        "itemName" : "aliencompound",
+        "count" : 5,
+        "consume" : true
       }
     ]
   }

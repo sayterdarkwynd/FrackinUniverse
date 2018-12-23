@@ -5,7 +5,7 @@
   "rarity" : "uncommon",
   "description" : "Crystalling impact weapon.",
   "shortdescription" : "Lunari Hammer",
-  "tooltipKind" : "sword2",
+  "tooltipKind" : "hammer",
   "category" : "hammer",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","hammer","lunari", "upgradeableWeapon"],
@@ -33,43 +33,7 @@
   "primaryAbilityType" : "hammersmashlunari",
   "primaryAbility" : {
     "fireTime" : 1,
-    "baseDps" : 13.6,
-    "stances" : {
-      "idle" : {
-        "armRotation" : -10,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.5, 1.75]
-      },
-      "windup" : {
-        "duration" : 0.8,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.4, 1.75],
-
-        // Windup animation
-        "idleHammerAngle" : -10,
-        "windupHammerAngle" : 0,
-        "dropHammerAngle" : 60,
-        "bounceHammerAngle" : 55,
-
-        "minWindup" : 0.7,
-        "windupBaseAngle" : -10,
-        "windupAngleRange" : 70
-      },
-      "preslash" : {
-        "duration" : 0.025,
-        "armRotation" : 55,
-        "weaponRotation" : -45,
-        "weaponOffset" : [0.4, 2.0]
-      },
-      "fire" : {
-        "duration" : 0.4,
-        "armRotation" : -35,
-        "weaponRotation" : -55,
-        "smashTimer" : 1.5,
-        "weaponOffset" : [0.6, 2.0]
-      }
-    }
+    "baseDps" : 13.6
   },
 
   "altAbilityType" : "fugroundslamice",
@@ -79,5 +43,5 @@
   "critBonus" : 5,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   
-  "stunChance" : 3
+  "stunChance" : 9
 }

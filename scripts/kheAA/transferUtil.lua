@@ -188,7 +188,7 @@ function transferUtil.checkFilter(item)
 		transferUtil.initTypes()
 	end
 	routerItems=world.containerItems(entity.id())
-	if #routerItems == 0 then
+	if util.tableSize(routerItems) == 0 then
 		return true, 1
 	end
 	local invertcheck = nil     -- Inverted conditions are match-all
@@ -220,9 +220,9 @@ function transferUtil.checkFilter(item)
 		end
 	end
 	return (noninvertcheck and invertcheck)
-			or (noninvertcheck == nil and invertcheck)
-			or (noninvertcheck and invertcheck == nil),
-			mod or 1
+		or (noninvertcheck == nil and invertcheck)
+		or (noninvertcheck and invertcheck == nil),
+		mod or 1
 end
 
 function transferUtil.findNearest(source,sourcePos,targetList)

@@ -28,12 +28,12 @@ function transferItem(_, _, itemData)
 	local targetPos=itemData[5]
 	local slot = itemData[1][2];
 	local count= itemData[2].count
-	local awake,ping=transferUtil.containerAwake(source,sourcePos)
+	local awake,newId=transferUtil.containerAwake(source,sourcePos)
 	if not awake==true then
 		return
 	else
-		if ping~=nil then
-			source=ping
+		if newId~=nil then
+			source=newId
 		end
 		local item = world.containerTakeNumItemsAt(source, slot - 1,count);
 		if item ~= nil then
@@ -43,6 +43,15 @@ function transferItem(_, _, itemData)
 end
 
 function transferUtil.sendConfig()
+	local buffer={}
+	for id,pos in pairs(storage.inContainers) do
+		local awake,newId=transferUtil.containerAwake(id,pos)
+		if awake then
+			id=newId or id
+			buffer[id]=pos
+		end
+	end
+	storage.inContainers=buffer
 	return storage;
 end
 

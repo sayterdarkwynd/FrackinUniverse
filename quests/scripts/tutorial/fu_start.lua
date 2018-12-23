@@ -9,9 +9,6 @@ function init()
   end)
 end
 
-
-
-
 --//more stages
 --//
 --// player.shipUpgrades() 
@@ -24,8 +21,6 @@ end
 --// player.itemsWithTag(`String` tag)
 --// player.consumeTaggedItem(`String` tag, `unsigned` count)
 --// player.primaryHandItem()
-
-
 
 function questStart()
 
@@ -94,7 +89,8 @@ function updateStage(dt)
     end
   elseif self.missionStage == 4 then
     player.giveItem("statustablet")
-     quest.complete()     
+    player.upgradeShip(config.getParameter("shipUpgrade"))
+    quest.complete()     
   end
 end
 

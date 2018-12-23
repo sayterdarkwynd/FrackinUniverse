@@ -16,6 +16,6 @@ end
 
 
 function pulse()
-	effectUtil.effectAllInRange(range,"gravrainHiddenNoBlock",effect.duration())
-	effectUtil.effectAllInRange(range,"knockbackWeaknessHidden",effect.duration())
+	effectUtil.effectAllInRange("gravrainHiddenNoBlock",range,effect.duration())
+	effectUtil.effectAllInRange("knockbackWeaknessHidden",range,effect.duration())
 end

@@ -1,150 +1,143 @@
-require "/scripts/util.lua"
-require "/scripts/interp.lua"
+
+require "/zb/zb_util.lua"
+
+viewing = "##albums##"
+musicList = {}
+playing = {}
 
 function init()
-    self.itemList = "scrollArea.itemList"
-    self.availableTechs = {}
-    self.currentList = {}
-    self.selectedItem = nil
-    self.category = ""
-    self.selectedTech = ""
-
-    self.currentFilter = ""
-    self.availableFilter = false
-    self.currentSearch = ""
-
-    populateItemList()
+	musicList = root.assetJson("/interface/scripted/fm_musicplayer/musiclist.config")
+	widget.registerMemberCallback("scrollArea.list", "button", playButton)
+	widget.setButtonEnabled("modeButton", false)
+	
+	if world.entityType(pane.sourceEntity()) ~= "object" then
+		widget.setButtonEnabled("settingsButton", false)
+	end
+	
+	for _, file in ipairs(musicList["##files##"]) do
+		local temp = root.assetJson(file)
+		if temp then
+			musicList = zbutil.MergeTable(musicList, temp)
+		end
+	end
+	
+	populateMusicList()
 end
 
-function update(dt)
-    updateSearch()
-    updateCounts()
-    reloadCraftable()
-    populateItemList()
-end
-
-function reloadCraftable()
-    for _,v in pairs(self.currentList or {}) do
-        widget.setVisible(v..".notcraftableoverlay")
-    end
-end
-
-function updateSearch()
-    self.currentSearch = string.lower(widget.getText("filter"))
-    self.availableFilter = widget.getChecked("btnFilterHaveMaterials")
-end
-
-function updateCounts()
-    local listItem = widget.getListSelected(self.itemList)
-
-    local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
-end
-
-function populateItemList(forceRepop)
-    local shopTechs = config.getParameter("music")
-    local availableTechs = {}
-    for _,v in pairs(shopTechs) do
-        local legit = true
-
-        if legit and (self.currentFilter ~= "") then
-            legit = v.category == self.currentFilter
-        end
-
-        if legit and (self.currentSearch ~= "") then
-            -- Search by item name and then by tech name
-            legit = (v.name and (string.find(v.name:lower(), self.currentSearch) ~= nil))
-        end
-
-        if legit then table.insert(availableTechs, v) end
-    end
-
-    if forceRepop or not compare(availableTechs, self.availableTechs) then
-        self.availableTechs = availableTechs
-        widget.clearListItems(self.itemList)
-        widget.setButtonEnabled("btnUpgrade", false)
-
-        self.currentList = {}
-
-        for i, tech in ipairs(self.availableTechs) do
-
-            local listWidget = widget.addListItem(self.itemList)
-            local listItem = string.format("%s.%s", self.itemList, listWidget)
-            table.insert(self.currentList, listItem)
-
-
-            widget.setText(listItem..".itemName", tech.name)
-            widget.setItemSlotItem(listItem..".itemIcon", tech.icon or "fm_placeholder")
-
-            widget.setData(listItem,
-            {
-                index = i,
-                tech = tech.name,
-				image = tech.image,
-				description = tech.description
-            })
-
-            widget.setVisible(listItem..".moneyIcon", false)
-            widget.setText(listItem..".priceLabel", "")
-            widget.setVisible(string.format("%s.notcraftableoverlay", listItem))
-
-            if tech.name == self.selectedTech then
-                widget.setListSelected(self.itemList, listWidget)
-            end
-        end
-
-        self.selectedItem = nil
-        setCanUnlock(nil)
-    end
-end
-
-function setCanUnlock(recipe)
-	if recipe then
-		widget.setButtonEnabled("btnCraft", true)
+function populateMusicList()
+	widget.clearListItems("scrollArea.list")
+	local listItem = ""
+	local searching = widget.getText("search")
+	
+	if viewing == "##albums##" then
+		listItem = "scrollArea.list."..widget.addListItem("scrollArea.list")
+		widget.setText(listItem..".name", "All")
+		widget.setButtonEnabled(listItem..".button", false)
+		
+		local img = "/interface/scripted/fm_musicplayer/controls.png:album"
+		widget.setButtonImages(listItem..".button", { base = img, hover = img, pressed = img, disabled = img })
+		widget.setButtonEnabled(listItem..".button", false)
+		widget.setImage("titleIcon", "/interface/scripted/fm_musicplayer/controls.png:album")
+		
+		for album, _ in pairs(musicList) do
+			if album ~= "##album_icons##" and album ~= "##files##" then
+				if not searching or string.find(string.lower(album), string.lower(searching)) then
+					listItem = "scrollArea.list."..widget.addListItem("scrollArea.list")
+					widget.setText(listItem..".name", album)
+					widget.setData(listItem..".name", album)
+					
+					local img = musicList["##album_icons##"][album] or "/interface/scripted/fm_musicplayer/icon_unsorted.png"
+					widget.setButtonImages(listItem..".button", { base = img, hover = img, pressed = img, disabled = img })
+					widget.setButtonEnabled(listItem..".button", false)
+				end
+			end
+		end
 	else
-		widget.setButtonEnabled("btnCraft", false)
+		if viewing then
+			widget.setImage("titleIcon", musicList["##album_icons##"][viewing] or "/interface/scripted/fm_musicplayer/icon_unsorted.png")
+		else
+			widget.setImage("titleIcon", "/interface/scripted/fm_musicplayer/controls.png:album")
+		end
+		
+		-- Slightly less efficient, but no need to copy shit
+		for album, _ in pairs(musicList) do
+			if album ~= "##album_icons##" and album ~= "##files##" then
+				if not viewing or album == viewing then
+					for _, tbl in ipairs(musicList[album]) do
+						if not searching or string.find(string.lower(tbl.name), string.lower(searching)) then
+							listItem = "scrollArea.list."..widget.addListItem("scrollArea.list")
+							widget.setText(listItem..".name", tbl.name)
+							widget.setData(listItem..".name", tbl)
+						end
+					end
+				end
+			end
+		end
 	end
 end
 
-function itemSelected()
-    local listItem = widget.getListSelected(self.itemList)
-    self.selectedItem = listItem
-
-    if listItem then
-        local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
-        setCanUnlock("unlock")
-        self.selectedTech = itemData.tech
-
-        widget.setText("techDescription", itemData.description or "Replaces the background music with the selected one. The music player object plays music when a player is nearby and the music player is switched on. The portable music player plays music until the music is changed or reset.")
-        widget.setImage("techIcon", itemData.image or "/items/generic/fm_placeholder.png")
-    end
-end
-
-function doUnlock()
-    if self.selectedItem then
-        local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
-        local tech = self.availableTechs[selectedData.index]
+function modeButton()
+	if viewing == "##albums##" then
+		viewing = widget.getData("scrollArea.list."..widget.getListSelected("scrollArea.list")..".name")
+		widget.setText("titleText", viewing or "All")
 		
-        if tech then
-			local entityID = pane.sourceEntity()
-			local entityType = world.entityType(entityID)
-			music = {}
-			table.insert(music, tech.musicDirectory)
-			if entityType == "object" then
-				world.sendEntityMessage(entityID, "changeMusic", music, tech.name)
-				pane.dismiss()
-			else
-				world.sendEntityMessage(player.id(), "playAltMusic", music, 2.0)
-				pane.dismiss()
-			end
-        end
-
-        populateItemList(true)
-    end
+		local img = "/interface/scripted/fm_musicplayer/controls.png:album"
+		widget.setButtonImages("modeButton", { base = img, hover = img.."Hover", pressed = img })
+	else
+		local img = "/interface/scripted/fm_musicplayer/controls.png:play"
+		widget.setButtonImages("modeButton", { base = img, hover = img.."Hover", pressed = img })
+		widget.setButtonEnabled("modeButton", false)
+		
+		widget.setText("titleText", "Select an album")
+		viewing = "##albums##"
+	end
+	
+	widget.setText("search", "")
+	populateMusicList()
 end
 
-function categories()
-    local data = widget.getSelectedData("categories")
-    if data then
-        self.currentFilter = data.filter
-    end
+function stopButton()
+	if world.entityType(pane.sourceEntity()) == "object" then
+		world.sendEntityMessage(pane.sourceEntity(), "turnOff")
+	else
+		world.sendEntityMessage(pane.sourceEntity(), "turnOff")
+		world.sendEntityMessage(player.id(), "stopAltMusic", 2.0)
+	end
 end
+
+function labelButton()
+	world.sendEntityMessage(pane.sourceEntity(), "toggleLabel")
+end
+
+function settingsButton()
+	if widget.active("settings") then
+		widget.setVisible("settings", false)
+		widget.setVisible("scrollArea", true)
+	else
+		widget.setVisible("settings", true)
+		widget.setVisible("scrollArea", false)
+	end
+end
+
+function listSelected()
+	if viewing == "##albums##" then
+		widget.setButtonEnabled("modeButton", true)
+	end
+end
+
+function playButton()
+	playing = widget.getData("scrollArea.list."..widget.getListSelected("scrollArea.list")..".name")
+	
+	if world.entityType(pane.sourceEntity()) == "object" then
+		world.sendEntityMessage(pane.sourceEntity(), "changeMusic", playing.directory, playing.name)
+	else
+		world.sendEntityMessage(player.id(), "playAltMusic", {playing.directory}, 2.0)
+	end
+end
+
+function rangeButton(wd)
+	local range = string.gsub(wd, "range", "")
+	range = tonumber(range)
+	world.sendEntityMessage(pane.sourceEntity(), "setMusicRange", range)
+end
+
