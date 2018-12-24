@@ -1,7 +1,7 @@
 function activate(fireMode, shiftHeld)
     self.species = world.entitySpecies(activeItem.ownerEntityId())
     if fireMode == "primary" then
-      if self.species == "slime" then
+      if self.species == "slimeperson" then
         player.makeTechAvailable("colorvariableslimesphere")
         player.enableTech("colorvariableslimesphere")
         player.equipTech("colorvariableslimesphere") 	
