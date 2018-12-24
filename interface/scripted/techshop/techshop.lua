@@ -5,20 +5,22 @@ function init()
 	self.itemList = "scrollArea.itemList"
 	self.availableTechs = {}						-- Techs that are unlocked
 	self.lockedTechs = config.getParameter("techs") -- Techs that aren't unlocked (don't have recipe)
-	self.currentList = {}						   -- Current list items in the widget
-	self.selectedItem = nil						 -- Current selected item in list widget
-	self.selectedTech = ""						  -- Current selected tech (for remembering position)
+	self.currentList = {}						    -- Current list items in the widget
+	self.selectedData = nil						    -- Current selected tech data
+	self.selectedTech = ""						    -- Current selected tech (for remembering position)
 
-	self.currentFilter = ""						 -- Current selected category filter (head, body, legs)
+	self.currentFilter = ""						    -- Current selected category filter (head, body, legs)
 	self.availableFilter = false					-- Whether the materials available filter is checked
-	self.currentSearch = ""						 -- Current search filter
+	self.currentSearch = ""						    -- Current search filter
 
-	self.forceRepop = true						  -- Whether to repopulate the list next update
+	self.forceRepop = true						    -- Whether to repopulate the list next update
 	
 	categories()
 	-- initializing the available techs
 	for i,tech in ipairs(self.lockedTechs) do
-		if not tech.recipeReq or player.blueprintKnown(tech.item) then
+		if tech.race and not contains(tech.race, player.species()) then
+			self.lockedTechs[i] = nil
+		elseif not tech.recipeReq or player.blueprintKnown(tech.item) then
 			table.insert(self.availableTechs, tech)
 			self.lockedTechs[i] = nil  -- nil instead of table.remove to preserve order
 		end
@@ -59,7 +61,7 @@ function update(dt)
 	end
 
 	updateSearch()
-	updateCounts()
+	updateIngredients()
 	populateItemList(self.forceRepop)
 	reloadCraftable()
 
@@ -68,7 +70,7 @@ end
 
 function reloadCraftable()
 	for _,v in pairs(self.currentList or {}) do
-		widget.setVisible(v..".notcraftableoverlay", not hasIngredients(widget.getData(v).recipe))
+		widget.setVisible(v..".notcraftableoverlay", not canCraft(widget.getData(v)))
 	end
 end
 
@@ -77,39 +79,6 @@ function updateSearch()
 	if self.currentSearch ~= newSearch then
 		self.currentSearch = newSearch
 		self.forceRepop = true
-	end
-end
-
-function updateCounts()
-	local listItem = widget.getListSelected(self.itemList)
-	if not listItem then
-		for i=1,4 do
-			widget.setItemSlotItem("ingredient"..i, nil)
-			widget.setText("ingLabel"..i, "")
-			widget.setText("ingName"..i, "")
-		end
-		return
-	end
-
-	local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
-
-	for i=1,4 do
-		local ingredient = itemData.recipe[i]
-		if ingredient then
-			if isCurrency(ingredient) then
-				widget.setText("ingLabel"..i, player.currency(ingredient.currency).."/"..ingredient.count)
-			else
-				widget.setText("ingLabel"..i, player.hasCountOfItem(ingredient.name).."/"..ingredient.count)
-			end
-			widget.setText("ingName"..i, root.itemConfig(ingredient.name).config.shortdescription)
-			if hasEnough(ingredient) then
-				widget.setFontColor("ingLabel"..i, "white")
-			else
-				widget.setFontColor("ingLabel"..i, "red")
-			end
-		else
-			break
-		end
 	end
 end
 
@@ -139,7 +108,7 @@ function populateItemList(forceRepop)
 			end
 
 			if legit and self.availableFilter then
-				legit = hasIngredients(tech.recipe)
+				legit = canCraft(tech)
 			end
 
 			if legit then
@@ -150,7 +119,7 @@ function populateItemList(forceRepop)
 				widget.setText(listItem..".itemName", name)
 				widget.setItemSlotItem(listItem..".itemIcon", root.createItem(tech.item or "techcard"))
 
-				if contains(player.availableTechs(), tech.name) then
+				if contains(player.enabledTechs(), tech.name) then
 					widget.setVisible(listItem..".newIcon", false)
 					tech.owned = true
 				end
@@ -167,125 +136,60 @@ function populateItemList(forceRepop)
 
 				widget.setVisible(listItem..".moneyIcon", false)
 				widget.setText(listItem..".priceLabel", "")
-				widget.setVisible(string.format("%s.notcraftableoverlay", listItem), not (hasIngredients(tech.recipe) or hasPrereqs(tech.prereq)))
+				widget.setVisible(string.format("%s.notcraftableoverlay", listItem), not canCraft(tech))
 
 				if tech.name == self.selectedTech then
 					widget.setListSelected(self.itemList, listWidget)
-					self.selectedItem = listWidget
-					selectFound = true
 				end
 			end
 		end
-		if not selectFound then self.selectedItem = nil end
 	end
 end
 
-function setCanUnlock(itemData)
+function setCanUnlock()
 	local enableButton = false
 
-	if itemData then
-		enableButton = hasIngredients(itemData.recipe) and hasPrereqs(itemData.prereq)
+	if self.selectedData then
+		enableButton = canCraft(self.selectedData)
 	end
-														-- eyyyyy more hax
+	
 	widget.setButtonEnabled("btnCraft", enableButton)
 end
 
 function itemSelected()
-	local listItem = widget.getListSelected(self.itemList)
-	self.selectedItem = listItem
-
-	if listItem then
-		local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
-		setCanUnlock(itemData)
-		self.selectedTech = itemData.tech
-
-		if not hasPrereqs(itemData.prereq) then
-			local missing = ""
-			for _,p in pairs(itemData.prereq or {}) do
-				local found = false
-				for d,x in pairs(player.enabledTechs()) do
-					if x == p then found = true break end
-				end
-				if not found then missing = missing.."  - "..root.techConfig(p).shortDescription.."\n" end
-			end								 --  Preliminary research required:
-			widget.setText("techDescription", "^red;Preliminary research required:\n"..missing.."^reset;")
-		else
-			widget.setText("techDescription", root.techConfig(itemData.tech).description)
-		end
-		widget.setImage("techIcon", root.techConfig(itemData.tech).icon)
-
-		for i=1,4 do
-			if itemData.recipe[i] then
-				local ingredient = itemData.recipe[i]
-				widget.setItemSlotItem("ingredient"..i, root.createItem(ingredient.name))
-				if isCurrency(ingredient) then
-					widget.setText("ingLabel"..i, player.currency(ingredient.currency).."/"..ingredient.count)
-				else
-					widget.setText("ingLabel"..i, player.hasCountOfItem(ingredient.name).."/"..ingredient.count)
-				end
-				widget.setText("ingName"..i, root.itemConfig(ingredient.name).config.shortdescription)
-				if hasEnough(ingredient) then
-					widget.setFontColor("ingLabel"..i, "white")
-				else
-					widget.setFontColor("ingLabel"..i, "red")
-				end
-			else
-				widget.setItemSlotItem("ingredient"..i, nil)
-				widget.setText("ingName"..i, "")
-				widget.setText("ingLabel"..i, "")
-			end
-		end
-		widget.setItemSlotItem("currentRecipeIcon", root.createItem(itemData.item or "techcard"))
-	else
-		for i=1,4 do
-			widget.setItemSlotItem("ingredient"..i, nil)
-			widget.setText("ingLabel"..i, "")
-			widget.setText("ingName"..i, "")
-		end
-
-		widget.setText("techDescription", "")
-		widget.setImage("techIcon", "")
-		widget.setButtonEnabled("btnCraft", false)
-		widget.setItemSlotItem("currentRecipeIcon", nil)
-	end
+	updateSelected()
+	if self.selectedData then self.selectedTech = self.selectedData.tech end
+	swapRecipe()
 end
 
 function doUnlock()
-	if self.selectedItem then
-		local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
-		local tech = self.availableTechs[selectedData.index]
-
-		local legit = true
+	if self.selectedData then
+		local tech = self.selectedData
 		if tech then
-			for k,v in pairs(selectedData.recipe) do
-				if not hasEnough(v) then
-					legit = not legit
-					break
+			local craftable = canCraft(tech)
+			
+			if not (craftable or player.isAdmin()) then return end
+			
+			for k,v in pairs(tech.recipe) do
+				if isCurrency(v) then
+					player.consumeCurrency(v.name, v.count)
+				else
+					player.consumeItem(v)
 				end
 			end
-
-			if legit or player.isAdmin() then
-				if not selectedData.owned and not player.isAdmin() then
-					for k,v in pairs(selectedData.recipe) do
-						if isCurrency(v) then
-							player.consumeCurrency(v.name, v.count)
-						else
-							player.consumeItem(v)
-						end
-					end
+			
+			if tech.item then
+				world.sendEntityMessage(player.id(), "addCollectable", "fu_tech", tech.item)
+				local techItem = root.itemConfig(tech.item)
+				local techBlueprints = techItem.config.learnBlueprintsOnPickup
+				for _,blueprint in pairs (techBlueprints or {}) do
+					player.giveBlueprint(blueprint)
 				end
-				player.makeTechAvailable(tech.name)
-				player.enableTech(tech.name)
-				if tech.item then
-					world.sendEntityMessage(player.id(), "addCollectable", "fu_tech", tech.item)
-					local techItem = root.itemConfig(tech.item)
-					local techBlueprints = techItem.config.learnBlueprintsOnPickup
-					for _,blueprint in pairs (techBlueprints or {}) do
-						player.giveBlueprint(blueprint)
-					end
-				end
-				populateItemList(true)
 			end
+			
+			player.makeTechAvailable(tech.tech)
+			player.enableTech(tech.tech)
+			populateItemList(true)
 		end
 	end
 end
@@ -325,14 +229,85 @@ function materialFilter()
 	self.forceRepop = true
 end
 
+function swapRecipe()
+	updateIngredients()
+	setCanUnlock()
+	
+	if self.selectedData then
+		if not hasPrereqs(self.selectedData.prereq) then
+			local missing = ""
+			for _,p in pairs(self.selectedData.prereq or {}) do
+				local found = false
+				for d,x in pairs(player.enabledTechs()) do
+					if x == p then found = true break end
+				end
+				if not found then missing = missing.."  - "..root.techConfig(p).shortDescription.."\n" end
+			end								 --  Preliminary research required:
+			widget.setText("techDescription", "^red;Preliminary research required:\n"..missing.."^reset;")
+		else
+			widget.setText("techDescription", root.techConfig(self.selectedData.tech).description)
+		end
+		
+		widget.setImage("techIcon", root.techConfig(self.selectedData.tech).icon)
+	else
+		widget.setText("techDescription", "")
+		widget.setImage("techIcon", "")
+	end
+end
+
+function updateIngredients()
+	local recipe = {}
+	if self.selectedData then
+		recipe = self.selectedData.recipe
+	end
+	
+	for i=1,4 do
+		if recipe[i] then
+			local ingredient = recipe[i]
+			widget.setItemSlotItem("ingredient"..i, root.createItem(ingredient.name))
+			widget.setText("ingLabel"..i, getAmount(ingredient).."/"..ingredient.count)
+			widget.setText("ingName"..i, root.itemConfig(ingredient.name).config.shortdescription)
+			if hasEnough(ingredient) then
+				widget.setFontColor("ingLabel"..i, "white")
+			else
+				widget.setFontColor("ingLabel"..i, "red")
+			end
+		else
+			widget.setItemSlotItem("ingredient"..i, nil)
+			widget.setText("ingName"..i, "")
+			widget.setText("ingLabel"..i, "")
+		end
+	end
+end
+
+function updateSelected()
+	local listItem = widget.getListSelected(self.itemList)
+	self.selectedData = listItem and widget.getData(string.format("%s.%s", self.itemList, listItem)) or nil
+end
+
 function isCurrency(item)
 	return root.itemType(item.name) == "currency"
 end
 
-function hasEnough(item)
-	if isCurrency(item) then
-		return player.currency(item.currency) >= item.count
-	else
-		return player.hasCountOfItem(item.name) >= item.count
+function currencyType(item)
+	if item.parameters and item.parameters.currency then
+		return item.parameters.currency
 	end
+	return root.itemConfig(item).config["currency"]
+end
+
+function getAmount(item)
+	if isCurrency(item) then
+		return player.currency(currencyType(item))
+	else
+		return player.hasCountOfItem(item.name)
+	end
+end
+
+function hasEnough(item)
+	return getAmount(item) >= item.count
+end
+
+function canCraft(tech)
+	return hasIngredients(tech.recipe) and hasPrereqs(tech.prereq) and not tech.owned
 end
