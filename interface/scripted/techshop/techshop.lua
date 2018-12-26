@@ -14,6 +14,12 @@ function init()
 	self.currentSearch = ""						    -- Current search filter
 
 	self.forceRepop = true						    -- Whether to repopulate the list next update
+	self.cursorTracker = widget.bindCanvas("cursorTracker")
+	
+	self.popupDelayTime = 0.3
+	self.popupDelay = 0
+	self.popupPos = {-9999, -9999}
+	self.popupMouseBuffer = 8
 	
 	categories()
 	-- initializing the available techs
@@ -25,7 +31,8 @@ function init()
 			self.lockedTechs[i] = nil  -- nil instead of table.remove to preserve order
 		end
 	end
-
+	
+	movePopup({-9999, -9999}, 0)
 	widget.setButtonEnabled("btnCraft", false)
 end
 
@@ -61,10 +68,15 @@ function update(dt)
 	end
 
 	updateSearch()
-	updateIngredients()
 	populateItemList(self.forceRepop)
 	reloadCraftable()
-
+	
+	self.popupDelay = self.popupDelay - dt
+	local newPos = self.cursorTracker:mousePosition()
+	if self.popupDelay <= 0 or pointDist(self.popupPos, newPos) > self.popupMouseBuffer then
+		movePopup({-9999, -9999}, 0)
+	end
+	
 	self.forceRepop = false
 end
 
@@ -72,6 +84,48 @@ function reloadCraftable()
 	for _,v in pairs(self.currentList or {}) do
 		widget.setVisible(v..".notcraftableoverlay", not canCraft(widget.getData(v)))
 	end
+end
+
+function movePopup(pos, size)
+	local offX = 10
+	local offY = -(size + 28)
+	if pos[2] - (size + 28) < 0 then
+		offY = offY + (pos[2] - (size + 28)) * -1
+	end
+	widget.setPosition("popupBg", {pos[1] + offX, pos[2] + offY})
+	widget.setPosition("popupTitle", {pos[1] + 63 + offX, pos[2] + 33 + size + offY})
+	widget.setPosition("popupList", {pos[1] + offX, pos[2] + 21 + offY})
+end
+
+function createTooltip(screenPosition)
+	self.popupDelay = self.popupDelayTime
+	local oldPos = self.popupPos
+	local newPos = self.cursorTracker:mousePosition()
+	if newPos[1] == 0 or newPos[2] == 0 then return end
+	if pointDist(oldPos, newPos) <= self.popupMouseBuffer then
+		return
+	end
+	self.popupPos = newPos
+	for _,item in pairs(self.currentList) do
+		if widget.inMember(item, screenPosition) then
+			local data = widget.getData(item)
+			local height = 0
+			widget.clearListItems("popupList")
+			for _,ingredient in pairs(data.recipe) do
+				height = height + 23
+				local listWidget = widget.addListItem("popupList")
+				local listItem = string.format("%s.%s", "popupList", listWidget)
+				widget.setItemSlotItem(listItem..".itemIcon", root.createItem(ingredient.name))
+				widget.setText(listItem..".itemName", root.itemConfig(ingredient.name).config.shortdescription)
+				widget.setText(listItem..".count", getAmount(ingredient).."/"..ingredient.count)
+				widget.setFontColor(listItem..".count", hasEnough(ingredient) and "green" or "red")
+			end
+			widget.setSize("popupBg", {134, 38 + height})
+			movePopup(self.popupPos, height)
+			return
+		end
+	end
+	movePopup({-9999, -9999}, 0)
 end
 
 function updateSearch()
@@ -230,7 +284,6 @@ function materialFilter()
 end
 
 function swapRecipe()
-	updateIngredients()
 	setCanUnlock()
 	
 	if self.selectedData then
@@ -252,31 +305,6 @@ function swapRecipe()
 	else
 		widget.setText("techDescription", "")
 		widget.setImage("techIcon", "")
-	end
-end
-
-function updateIngredients()
-	local recipe = {}
-	if self.selectedData then
-		recipe = self.selectedData.recipe
-	end
-	
-	for i=1,4 do
-		if recipe[i] then
-			local ingredient = recipe[i]
-			widget.setItemSlotItem("ingredient"..i, root.createItem(ingredient.name))
-			widget.setText("ingLabel"..i, getAmount(ingredient).."/"..ingredient.count)
-			widget.setText("ingName"..i, root.itemConfig(ingredient.name).config.shortdescription)
-			if hasEnough(ingredient) then
-				widget.setFontColor("ingLabel"..i, "white")
-			else
-				widget.setFontColor("ingLabel"..i, "red")
-			end
-		else
-			widget.setItemSlotItem("ingredient"..i, nil)
-			widget.setText("ingName"..i, "")
-			widget.setText("ingLabel"..i, "")
-		end
 	end
 end
 
@@ -310,4 +338,8 @@ end
 
 function canCraft(tech)
 	return hasIngredients(tech.recipe) and hasPrereqs(tech.prereq) and not tech.owned
+end
+
+function pointDist(a, b)
+	return ((a[1] - b[1])^2 + (a[2] - b[2])^2)^0.5
 end
