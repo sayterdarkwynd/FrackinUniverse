@@ -1,0 +1,33 @@
+{
+  "projectileName" : "radienbulbthrown",
+  "image" : "radienbulb.png",
+  "animationCycle" : 1.0,
+  "level" : 1,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "physics" : "floatystickybomb",
+  "pointLight" : false,
+  "timeToLive" : 2,
+  "bounces" : 1,
+  "lightColor" : [225, 174, 24],
+  
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "oonfortagas",
+      "config" : { "timeToLive" : 2 },
+      "inheritDamageFactor" : 0.3
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/icechucker.ogg" ]
+    }
+  ],
+  
+  "statusEffects" : [ "glowyellow" ],
+    
+  "power" : 5,
+  "speed" : 1,
+  "damageType" : "IgnoresDef",
+  "damageKind" : "radioactive"
+}
