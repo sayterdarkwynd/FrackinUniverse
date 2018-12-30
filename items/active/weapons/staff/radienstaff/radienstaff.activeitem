@@ -13,7 +13,7 @@
   "animation" : "/items/active/weapons/staff/staff.animation",
   "animationParts" : {
     "staff" : "radienstaff.png",
-    "stone" : "",
+    "stone" : "/items/active/weapons/staff/generated/stone/radienstaff.png",
     "chargeEffect" : "radienstaffglow.png"
   },
   "animationCustom" : {
@@ -87,11 +87,11 @@
 
   "elementalType" : "radioactive",
 
-  "primaryAbilityType" : "biowand",
+  "primaryAbilityType" : "thornburst",
   "primaryAbility" : {},
 
   "altAbilityType" : "healingzone",
-  "altAbility" : {},
+  "altAbility" : { "projectileParameters" : { "timeToLive" : 4}},
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
