@@ -1,13 +1,28 @@
 {
   "objectName" : "radiencrafting",
   "rarity" : "Common",
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/radien.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " X'ian Forming Bulb",
+        "subtitle" : " For everything to do with X'i",
+        "icon" : {
+          "file" : "/interface/crafting/radiencraft.png"
+        }
+      }
+    },
+    "filter" : [ "radiencrafting" ]
+  },
+  
   "description" : "Allows a X'i to craft pieces of itself through direct melding.",
-  "shortdescription" : "X'ian Form-Bulb",
+  "shortdescription" : "X'ian Forming Bulb",
   "race" : "radien",
   "category" : "crafting",
   "price" : 2,
   "printable" : false,
-  "objectType" : "container",
   "inventoryIcon" : "radiencraftingicon.png",
   "colonyTags" : ["crafting","radien"],
   
@@ -31,11 +46,5 @@
       "anchors" : [ "bottom" ]
 
     }
-  ],
-
-  "interactAction" : "OpenCraftingInterface",
-  "interactData" : {
-    "config" : "/interface/windowconfig/crafting.config",
-    "filter" : [ "radiencrafting" ]
-  }
+  ]
 }
