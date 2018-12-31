@@ -5,12 +5,12 @@
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "Fires repulsive glowy goo-globs.
-^green;Targets glow
-^yellow;+Rad Burn",
+^yellow;Hunting weapon^reset;
+^cyan;Poisonous Alt Attack^reset;",
   "shortdescription" : "X'ian Bulb Gun",
   "category" : "bioweapon",
   "level" : 2,
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "weaponType" : "Grenade Launcher",
   "itemTags" : ["weapon","ranged","grenadelauncher","bioweapon","radien", "upgradeableWeapon"],
   "twoHanded" : true,
@@ -59,7 +59,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1,
-    "baseDps" : 2,
+    "baseDps" : 5,
     "energyUsage" : 21.0,
     "inaccuracy" : 0.008,
 
@@ -71,7 +71,8 @@
       "speed" : 30,
       "bounces" : 1,
       "knockback" : 10,
-      "statusEffects" : [ "radiationburn" ]
+      "damageSourceKind" : "radioactivebow",
+      "statusEffects" : [ ]
     },
 	  "stances" : {
 	    "idle" : {
