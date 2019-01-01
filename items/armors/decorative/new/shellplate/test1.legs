@@ -3,25 +3,21 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;",
+  "rarity" : "common",
+  "description" : "Set Bonus:
+^green;+12%^reset; Xi Bulb Regen Rate
+^green;5%^reset; Speed & Damage 
+^green;+6%^reset; Fire & Ice Resistance^reset;
+^cyan;X'i Weapons grant ^green;+15%^cyan; Max Health^reset;",
   "itemTags" : [ "upgradeableWeapon" ],
-  "shortdescription" : "Shellplate Greaves",
-  "category" : "^#e43774;Upgradeable Armor^reset;",
+  "shortdescription" : "X'ian Leather Greaves",
+  "category" : "t2armor",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "learnBlueprintsOnPickup" : [
-    "fumonsterplatedchest", 
-    "fumonsterplatedhead", 
-    "fumonsterplatedlegs"   
-  ],
-  
-  "level" : 3,
+  "level" : 2,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -31,35 +27,39 @@
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.25
+      "amount" : 0.15
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 1
+      "amount" : 4
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 3
+      "amount" : 1
     }
-  ],
-
-  "statusEffects" : [ 
-    "chitinsetbonus",
+  ],  
+  "statusEffects" : [
+    "leathersetbonusradien",
     {
-      "stat" : "fu_chitinset_legs",
+      "stat" : "fu_leathersetradien_legs",
       "amount" : 1
     },
     {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
+      "stat" : "iceResistance",
+      "amount" : 0.02
     },
     {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
-    }
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    },
+    {
+      "stat" : "xiBonus",
+      "amount" : 0.04
+    }    
   ],
+  
   "colorOptions" : [
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" },
