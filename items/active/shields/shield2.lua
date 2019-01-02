@@ -2,9 +2,9 @@ require "/scripts/util.lua"
 require "/scripts/status.lua"
 
 function init()
-  self.debug = tfalse
+  self.debug = false
   if self.debug then sb.logInfo("(FR) shield.lua init() for %s", activeItem.hand()) end
-  
+
   self.aimAngle = 0
   self.aimDirection = 1
 
@@ -20,7 +20,7 @@ function init()
   self.minActiveTime = config.getParameter("minActiveTime", 0)
   self.cooldownTime = config.getParameter("cooldownTime")
   self.forceWalk = config.getParameter("forceWalk", false)
-  
+
    -- FU special effects
      -- health effects
           self.critChance = config.getParameter("critChance", 0)
@@ -60,10 +60,10 @@ function init()
  	  protectionHeat = config.getParameter("protectionHeat",0)
  	  protectionXHeat = config.getParameter("protectionXHeat",0)
  	  protectionRads = config.getParameter("protectionRads",0)
- 	  protectionXRads = config.getParameter("protectionXRads",0)	  
- 	  
- 	  
- 	  
+ 	  protectionXRads = config.getParameter("protectionXRads",0)
+
+
+
  	  status.setPersistentEffects("shieldEffects", {
  	  {stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
  	  {stat = "energyRegenPercentageRate", amount = shieldEnergyRegen},
@@ -99,9 +99,9 @@ function init()
  	  {stat = "ffextremeradiationImmunity", amount = protectionXRads}
  	  })
   -- end FU special effects
-  
-  
-  
+
+
+
   animator.setGlobalTag("directives", "")
   animator.setAnimationState("shield", "idle")
   activeItem.setOutsideOfHand(true)
@@ -139,9 +139,9 @@ function update(dt, fireMode, shiftHeld)
     --
     --
     --
-    
-    
-    
+
+
+
     if status.resourcePositive("perfectBlock") then
       animator.setGlobalTag("directives", self.perfectBlockDirectives)
     else
@@ -164,12 +164,12 @@ function uninit()
   status.clearPersistentEffects(activeItem.hand().."Shield")
   activeItem.setItemShieldPolys({})
   activeItem.setItemDamageSources({})
-  status.clearPersistentEffects("shieldEffects")  
+  status.clearPersistentEffects("shieldEffects")
 end
 
 function updateAim()
   local aimAngle, aimDirection = activeItem.aimAngleAndDirection(0, activeItem.ownerAimPosition())
-  
+
   if self.stance.allowRotate then
     self.aimAngle = aimAngle
   end
