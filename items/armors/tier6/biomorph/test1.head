@@ -1,22 +1,27 @@
 {
-  "itemName" : "vilehead",
+  "itemName" : "biomorphhead",
+  "price" : 750,
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Uncommon",
+  "rarity" : "legendary",
   "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;",
+^green;30%^reset; Xi Bulb Regen Rate
+^green;17%^reset; Shadow and Fire Resist^reset;
+^green;12%^reset; Health, ^green;20%^reset; Max Energy^reset;
+^cyan;Immune: Burning, All Radiation, Snow, Slush, Ice, Air^reset;",
+  "shortdescription" : "Biomorphic Helm",
   "itemTags" : [ "upgradeableWeapon" ],
-  "shortdescription" : "Vile Helm",
-  "category" : "^#e43774;Upgradeable Armor^reset;",
+  
+  "category" : "t6armor",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  
-  "level" : 5,
+
+  "level" : 6,
+
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -26,35 +31,26 @@
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.35
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
-      "stat" : "maxEnergy",
-      "amount" : 2
-    },
-    {
-      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
-      "stat" : "maxHealth",
-      "amount" : 4
+      "amount" : 0.3
     }
   ],
 
   "statusEffects" : [
-    "chitinsetbonus",
+    "pyreitesetbonusradien",
     {
-      "stat" : "fu_chitinset_head",
+      "stat" : "fu_pyreitesetradien_head",
       "amount" : 1
     },
     {
-      "stat" : "poisonResistance",
+      "stat" : "fireResistance",
       "amount" : 0.05
     },
     {
-      "stat" : "physicalResistance",
+      "stat" : "shadowResistance",
       "amount" : 0.05
     }
   ],
+  
   "colorOptions" : [
     /* BLACK */
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },

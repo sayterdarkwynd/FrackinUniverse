@@ -1,24 +1,24 @@
 {
-  "itemName" : "shellplatepants",
+  "itemName" : "biomorphpants",
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Set Bonus:
-^green;12%^reset; Xi Bulb Regen Rate
-^green;5%^reset; Speed & Damage 
-^green;6%^reset; Fire & Ice Resistance^reset;
-^cyan;X'i Weapons grant ^green;15%^cyan; Max Health^reset;",
+  "rarity" : "legendary",
+  "description" : "Set Bonus: 
+^green;30%^reset; Xi Bulb Regen Rate
+^green;17%^reset; Shadow and Fire Resist^reset;
+^green;12%^reset; Health, ^green;20%^reset; Max Energy^reset;
+^cyan;Immune: Burning, All Radiation, Snow, Slush, Ice, Air^reset;",
   "itemTags" : [ "upgradeableWeapon" ],
-  "learnBlueprintsOnPickup" : [ "mutachitinhead","mutachitinpants","mutachitinchest"],
-  "shortdescription" : "X'ian Leather Greaves",
-  "category" : "t2armor",
+  "shortdescription" : "Biomorphic Greaves",
+  "category" : "t6armor",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "level" : 2,
+
+  "level" : 6,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -28,45 +28,38 @@
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.15
+      "amount" : 0.2
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 4
+      "amount" : 2
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 1
+      "amount" : 2
     }
-  ],  
-  "statusEffects" : [
-    "leathersetbonusradien",
+  ],
+
+  "statusEffects" : [ 
+    "pyreitesetbonusradien",
     {
-      "stat" : "fu_leathersetradien_legs",
+      "stat" : "fu_pyreitesetradien_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.02
     },
     {
       "stat" : "fireResistance",
-      "amount" : 0.02
+      "amount" : 0.05
     },
     {
-      "stat" : "xiBonus",
-      "amount" : 0.04
-    }    
+      "stat" : "shadowResistance",
+      "amount" : 0.05
+    }
   ],
-  
   "colorOptions" : [
-    /* BROWN */
-    { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" },
-
-    /* GREY BLUE */
-    { "ffca8a" : "9da8af", "e0975c" : "676f83", "a85636" : "3d3d51", "6f2919" : "24232f" },
+    /* BLACK */
+    { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
     /* BLACK */
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
     /* GREY */
@@ -89,16 +82,5 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-    /*
-    { "ffca8a" : "d4c398", "e0975c" : "bda67a", "a85636" : "9c7f54", "6f2919" : "755937" },
-    { "ffca8a" : "d5595f", "e0975c" : "a32c2c", "a85636" : "71291b", "6f2919" : "4c1e10" },
-    { "ffca8a" : "46b3e8", "e0975c" : "1a7bb5", "a85636" : "0e427e", "6f2919" : "072655" },
-    { "ffca8a" : "b0e944", "e0975c" : "78b618", "a85636" : "3f7f0d", "6f2919" : "255606" },
-    { "ffca8a" : "eef055", "e0975c" : "d3bb1c", "a85636" : "9c8011", "6f2919" : "644807" },
-    { "ffca8a" : "fd8d30", "e0975c" : "ca6705", "a85636" : "8c5d00", "6f2919" : "5c4400" },
-    { "ffca8a" : "c260ff", "e0975c" : "931ad0", "a85636" : "710587", "6f2919" : "52015b" },
-    { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
-    { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
-*/
   ]
 }

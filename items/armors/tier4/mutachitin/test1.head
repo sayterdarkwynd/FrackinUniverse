@@ -1,71 +1,65 @@
 {
-  "itemName" : "mutachitinchest",
-  "inventoryIcon" : "icons.png:chest",
+  "itemName" : "mutachitinhead",
+  "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;",
-  "itemTags" : [ "upgradeableWeapon" ],
-  "shortdescription" : "Muta-Chitin Chest",
-  "category" : "^#e43774;Upgradeable Armor^reset;",
+^green;20%^reset; Xi Bulb Regen Rate
+^green;15%^reset; Shadow and Fire Resist^reset;
+^green;12%^reset; Health, ^green;20%^reset; Max Energy^reset;",
+  "shortdescription" : "Muta-Chitin Helm",
+    "itemTags" : [ "upgradeableWeapon" ],
+  "category" : "t4armor",
   "tooltipKind" : "armornew2",
-
-  "maleFrames" : {
-    "body" : "chestm.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
-  "femaleFrames" : {
-    "body" : "chestf.png",
-    "backSleeve" : "bsleeve.png",
-    "frontSleeve" : "fsleeve.png"
-  },
-
-  "level" : 5,
+"learnBlueprintsOnPickup" : [ "biomorphhead","biomorphpants","biomorphchest"],
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
+  
+  "level" : 4,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.15
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.55
+      "amount" : 0.25
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 4
+      "amount" : 5
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
+      "amount" : 2
     }
   ],
 
   "statusEffects" : [
-    "chitinsetbonus",
+    "chitinsetbonusradien",
     {
-      "stat" : "fu_chitinset_chest",
+      "stat" : "fu_chitinsetradien_head",
       "amount" : 1
     },
     {
-      "stat" : "poisonResistance",
+      "stat" : "shadowResistance",
       "amount" : 0.05
     },
     {
-      "stat" : "physicalResistance",
+      "stat" : "fireResistance",
       "amount" : 0.05
     }
   ],
   //"directives":"?replace;ffca8a=20d20b;e0975c=1b9b0c;a85636=127406;6f2919=244326;ffffa7=ff586e;e2c344=a32c1c;5b6364=1b9b0c;3a3f42=127406;181c1d=244326;9da8af=58596f;676f83=2f3344;3d3d51=24232f;99919e=58596f;6a6d7c=2f3344;474b56=24232f;585c60=1b9b0c",
 
   "colorOptions" : [
+    
     { "ffca8a" : "9da8af", "e0975c" : "676f83", "a85636" : "3d3d51", "6f2919" : "24232f" },
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
