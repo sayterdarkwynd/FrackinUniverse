@@ -1,43 +1,47 @@
 {
-  "itemName" : "shellplatehead",
-  "inventoryIcon" : "icons.png:head",
+  "itemName" : "shellplatechest",
+  "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "Set Bonus: 
-^cyan;Immune: Acid. +15% Poison and Physical Resist^reset;
-^#e43774;+12% Health, +12% Damage (Sulphuric biomes)^reset;",
+  "rarity" : "common",
+  "description" : "Set Bonus:
+^green;+12%^reset; Xi Bulb Regen Rate
+^green;5%^reset; Speed & Damage 
+^green;+6%^reset; Fire & Ice Resistance^reset;
+^cyan;X'i Weapons grant ^green;+15%^cyan; Max Health^reset;",
   "itemTags" : [ "upgradeableWeapon" ],
-  "shortdescription" : "Shellplate Helm",
-  "category" : "^#e43774;Upgradeable Armor^reset;",
+  "shortdescription" : "X'ian Leather Chest",
+  "category" : "t2armor",
   "tooltipKind" : "armornew2",
 
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
 
-  "learnBlueprintsOnPickup" : [
-    "fumonsterplatedchest", 
-    "fumonsterplatedhead", 
-    "fumonsterplatedlegs"   
-  ],
-  
-  "level" : 3,
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "level" : 2,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
+      "baseMultiplier" : 1.25
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.35
+      "amount" : 0.45
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 2
+      "amount" : 7
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
@@ -46,21 +50,27 @@
     }
   ],
 
+
   "statusEffects" : [
-    "chitinsetbonus",
+    "leathersetbonusradien",
     {
-      "stat" : "fu_chitinset_head",
+      "stat" : "fu_leathersetradien_chest",
       "amount" : 1
     },
     {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
+      "stat" : "iceResistance",
+      "amount" : 0.02
     },
     {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
-    }
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    },
+    {
+      "stat" : "xiBonus",
+      "amount" : 0.04
+    }      
   ],
+
   "colorOptions" : [
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" },
