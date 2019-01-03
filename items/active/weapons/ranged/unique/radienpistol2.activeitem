@@ -1,13 +1,13 @@
 {
-  "itemName" : "radienpistol",
+  "itemName" : "radienpistol2",
   "price" : 80,
-  "inventoryIcon" : "radienpistol.png",
+  "inventoryIcon" : "radienpistol2.png",
     "maxStack" : 1,
     "rarity" : "uncommon",
-  "shortdescription" : "X'ian Pistol",
+  "shortdescription" : "X'ian Acid Gun",
   "description" : "A strange X'i-formed weapon.
-^cyan;Slows targets^reset;
-^yellow;Wide, piercing shots^reset;",
+^cyan;Eats Tiles^reset;
+^yellow;Poison Rad Gas^reset;",
   "level" : 2,
   "category" : "bioweapon",
   "itemTags" : ["weapon","ranged","pistol","radien","bioweapon","upgradeableWeapon"],
@@ -20,8 +20,8 @@
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "radienpistol.png",
-    "middlefullbright" : "radienpistolfullbright.png",
+    "middle" : "radienpistol2.png",
+    "middlefullbright" : "radienpistol2fullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },      
@@ -50,7 +50,7 @@
   },
 
   "baseOffset" : [0.7, 0.2],
-  "muzzleOffset" : [1.2, 0.13],
+  "muzzleOffset" : [1.1, 0.4],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -59,18 +59,91 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.25,
+    "fireTime" : 2,
     "baseDps" : 3.5,
     "energyUsage" : 22,
     "inaccuracy" : 0.0,
     "fireType" : "auto",
     "projectileCount" : 1,
-    "projectileType" : "mechchainsawswoosh",
+    "projectileType" : "radiationguardianpelletgrenade",
     "projectileParameters" : {
+      "timeToLive" : 8,
       "speed" : 50,
       "damageKind" : "radioactive",
       "knockback": 6,
-      "statusEffects" : [ "slow" ]
+      "statusEffects" : [],
+      "actionOnCollide" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 2,
+	      "backgroundRadius" : 2,
+	      "explosiveDamageAmount" : 2,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    },      
+	    {
+	      "action" : "projectile",
+	      "type" : "radiengas",
+	      "inheritDamageFactor" :0.001,
+	      "fuzzAngle" : 360,
+	      "projectileCount" : 1,
+	      "projectileParameters" : { "speed" : 5}
+	   }        
+      ],
+      "periodicActions" : [
+	    {
+	      "time" : 0.14,
+	      "loop" : true,	    
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+	    },
+	    {
+	      "time" : 0.10,
+	      "loop" : true,	    
+	      "action" : "explosion",
+	      "foregroundRadius" : 2,
+	      "backgroundRadius" : 2,
+	      "explosiveDamageAmount" : 1,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    },      
+	    {
+	      "time" : 0.5,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "radiengas",
+	      "inheritDamageFactor" :0.001,
+	      "fuzzAngle" : 360,
+	      "projectileCount" : 1,
+	      "projectileParameters" : { "speed" : 5}
+	   }      
+      ],
+      "actionOnReap" : [
+	    {
+	      "action" : "sound",
+	      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+	    },
+	    {
+	      "action" : "explosion",
+	      "foregroundRadius" : 2,
+	      "backgroundRadius" : 2,
+	      "explosiveDamageAmount" : 2,
+	      "harvestLevel" : 99,
+	      "delaySteps" : 2
+	    },      
+	    {
+	      "action" : "projectile",
+	      "type" : "radiengas",
+	      "inheritDamageFactor" :0.001,
+	      "fuzzAngle" : 360,
+	      "projectileCount" : 1,
+	      "projectileParameters" : { "speed" : 5}
+	   }       
+      ]
     },
     "stances" : {
       "idle" : {
