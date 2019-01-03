@@ -61,7 +61,7 @@
     "class" : "GunFire",
     "fireTime" : 2,
     "baseDps" : 3.5,
-    "energyUsage" : 22,
+    "energyUsage" : 30,
     "inaccuracy" : 0.0,
     "fireType" : "auto",
     "projectileCount" : 1,
@@ -141,7 +141,58 @@
 	      "inheritDamageFactor" :0.001,
 	      "fuzzAngle" : 360,
 	      "projectileCount" : 1,
-	      "projectileParameters" : { "speed" : 5}
+	      "projectileParameters" : { "speed" : 5,
+		      "periodicActions" : [
+			    {
+			      "time" : 0.14,
+			      "loop" : true,	    
+			      "action" : "sound",
+			      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+			    },
+			    {
+			      "time" : 0.10,
+			      "loop" : true,	    
+			      "action" : "explosion",
+			      "foregroundRadius" : 2,
+			      "backgroundRadius" : 2,
+			      "explosiveDamageAmount" : 1,
+			      "harvestLevel" : 99,
+			      "delaySteps" : 2
+			    },      
+			    {
+			      "time" : 0.5,
+			      "loop" : true,
+			      "action" : "projectile",
+			      "type" : "radiengas",
+			      "inheritDamageFactor" :0.001,
+			      "fuzzAngle" : 360,
+			      "projectileCount" : 1,
+			      "projectileParameters" : { "speed" : 5}
+			   }      
+		      ],
+		      "actionOnReap" : [
+			    {
+			      "action" : "sound",
+			      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+			    },
+			    {
+			      "action" : "explosion",
+			      "foregroundRadius" : 2,
+			      "backgroundRadius" : 2,
+			      "explosiveDamageAmount" : 2,
+			      "harvestLevel" : 99,
+			      "delaySteps" : 2
+			    },      
+			    {
+			      "action" : "projectile",
+			      "type" : "radiengas",
+			      "inheritDamageFactor" :0.001,
+			      "fuzzAngle" : 360,
+			      "projectileCount" : 1,
+			      "projectileParameters" : { "speed" : 5}
+			   }       
+		      ]	      
+	      }
 	   }       
       ]
     },
@@ -177,5 +228,23 @@
   "critChance" : 1,
   "critBonus" : 3,
   
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+  "shortdescription" : "X'ian Acid Spitter",
+	  "primaryAbility" : {
+	    "projectileParameters" : {
+	      "projectileCount" : 2
+	    }  
+	  }
+
+  },
+  "upgradeParameters2" : {
+  "shortdescription" : "X'ian Acid Ejector",
+	  "primaryAbility" : {
+	    "projectileParameters" : {
+	      "projectileCount" : 3
+	    }  
+	  }
+  }  
 }
