@@ -5,7 +5,9 @@
     "maxStack" : 1,
     "rarity" : "uncommon",
   "shortdescription" : "X'ian Pistol",
-  "description" : "A strange but dangerous X'i-formed weapon.",
+  "description" : "A strange X'i-formed weapon.
+^cyan;Slows targets^reset;
+^yellow;Wide, piercing shots^reset;",
   "level" : 2,
   "category" : "bioweapon",
   "itemTags" : ["weapon","ranged","pistol","radien","bioweapon","upgradeableWeapon"],
@@ -57,17 +59,18 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.45,
-    "baseDps" : 3.3,
+    "fireTime" : 0.25,
+    "baseDps" : 3.5,
     "energyUsage" : 22,
+    "inaccuracy" : 0.0,
     "fireType" : "auto",
-    "inaccuracy" : 0.001,
     "projectileCount" : 1,
     "projectileType" : "mechchainsawswoosh",
     "projectileParameters" : {
-      "speed" : 32,
+      "speed" : 50,
       "damageKind" : "radioactive",
-      "knockback" : 10
+      "knockback": 6,
+      "statusEffects" : [ "slow" ]
     },
     "stances" : {
       "idle" : {
@@ -83,7 +86,6 @@
         "armRotation" : 0,
         "weaponRotation" : 0,
         "twoHanded" : false,
-
         "allowRotate" : false,
         "allowFlip" : false
       },
