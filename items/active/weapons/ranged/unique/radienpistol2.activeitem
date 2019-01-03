@@ -68,7 +68,7 @@
     "projectileType" : "radiationguardianpelletgrenade",
     "projectileParameters" : {
       "timeToLive" : 8,
-      "speed" : 50,
+      "speed" : 30,
       "damageKind" : "radioactive",
       "knockback": 6,
       "statusEffects" : [],
@@ -232,19 +232,26 @@
   
   "upgradeParameters" : {
   "shortdescription" : "X'ian Acid Spitter",
+  "description" : "A strange X'i-formed weapon.
+^green;+1^reset; Projectiles;  
+^cyan;Eats Tiles^reset;
+^yellow;Poison Rad Gas^reset;",
+
 	  "primaryAbility" : {
-	    "projectileParameters" : {
-	      "projectileCount" : 2
-	    }  
+	    "inaccuracy" : 0.05,
+	    "projectileCount" : 2
 	  }
 
   },
   "upgradeParameters2" : {
   "shortdescription" : "X'ian Acid Ejector",
+  "description" : "A strange X'i-formed weapon.
+^green;+2^reset; Projectiles;  
+^cyan;Eats Tiles^reset;
+^yellow;Poison Rad Gas^reset;",  
 	  "primaryAbility" : {
-	    "projectileParameters" : {
-	      "projectileCount" : 3
-	    }  
+	    "inaccuracy" : 0.1,
+	    "projectileCount" : 3
 	  }
   }  
 }
