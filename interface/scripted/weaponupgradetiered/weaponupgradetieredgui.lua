@@ -4,7 +4,7 @@ require "/scripts/researchGenerators.lua"
 
 function init()
 	self.itemList = "itemScrollArea.itemList"
-	self.upgradeLevel = 8
+	self.upgradeLevel = 6
 	self.upgradeableWeaponItems = {}
 	self.selectedItem = nil
 	populateItemList()
