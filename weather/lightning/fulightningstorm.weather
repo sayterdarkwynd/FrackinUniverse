@@ -244,6 +244,12 @@
         "power" : 24,
         "statusEffects" : [ "electrified" ],
           "actionOnReap" : [
+		      {
+			"action" : "projectile",
+			"type" : "fogprimerelectric",
+			"fuzzAngle" : 0,
+			"inheritDamageFactor" : 1
+		      },          
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
