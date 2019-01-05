@@ -34,5 +34,5 @@ function update(dt)
 end
 
 function uninit()
-  status.clearPersistentEffects("aciddust")
+
 end

@@ -14,11 +14,12 @@ function FUOverHeating:init()
 	self.isReloader = config.getParameter("isReloader",0)  -- is this a shotgun style reload? 
 
 	-- set the overheating values
-	self.currentHeat = config.getParameter("overHeatValue",0)
-	self.isOverheated = config.getParameter("isOverheated", false)
+	self.currentHeat = config.getParameter("heat",0)
+	self.overheatActive = config.getParameter("overheat", false)
 	self.timerIdle = 0  --timer before returning to Idle state
 	-- play cooling animation here
-	animator.setParticleEmitterActive("heatVenting",self.isOverheated)
+	animator.setParticleEmitterActive("heatVenting",self.overheatActive)
+
 	-- ********************** END FU additions **************************
 
   self.weapon.onLeaveAbility = function()
@@ -42,10 +43,14 @@ function FUOverHeating:update(dt, fireMode, shiftHeld)
   -- ************** FU OVERHEATING
   -- set the current animation state depending on heat value of weapon
   if self.currentHeat >= self.overheatLevel then
+        self.overheatLimitedCharge = config.getParameter("overheatLimitedCharge")
+        if not self.overheatLimitedCharge then
+        self.overheatActive = true
+        end
   	activeItem.setInstanceValue("overheat", true)
   elseif self.currentHeat >= self.highLevel then
-  	animator.setAnimationState("weapon", "hot")
-  elseif self.currentHead >= self.medLevel then
+  	animator.setAnimationState("weapon", "high")
+  elseif self.currentHeat >= self.medLevel then
   	animator.setAnimationState("weapon", "med")
   elseif self.currentHeat >= self.lowLevel then
   	animator.setAnimationState("weapon", "low")
@@ -54,23 +59,22 @@ function FUOverHeating:update(dt, fireMode, shiftHeld)
   end
 
   -- when not overheated, cool down passively
-  if self.timerIdle == self.coolingIdleTime and not self.isOverheated then
-	self.currentHeat = math.max(0, self.currentHeat - (self.loseHeatLevel * self.dt))
+  if self.timerIdle == self.coolingTime and not self.overheatActive then
+	self.currentHeat = math.max(0, self.currentHeat - (self.heatLossLevel * self.dt))
 	activeItem.setInstanceValue("heat", self.currentHeat)
   end
   
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
-    and not self.isOverheated
+    and not self.overheatActive
     and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-
     if self.fireType == "auto" then
       self:setState(self.auto)
     elseif self.fireType == "burst" then
       self:setState(self.burst)
     end
-  elseif self.isOverheated then-- is currently overheated
+  elseif self.overheatActive then-- is currently overheated
   	self:setState(self.overheating)
   end
 end
@@ -80,6 +84,25 @@ function FUOverHeating:auto()
 
   self:fireProjectile()
   self:muzzleFlash()
+
+  if self.recoilVelocity then
+	if not (self.crouchReduction and mcontroller.crouching()) then
+	  local recoilVelocity = vec2.mul(vec2.norm(vec2.mul(self:aimVector(0), -1)), self.recoilVelocity)
+
+	  if (self.weapon.aimAngle <= 0 and not mcontroller.zeroG()) then
+		mcontroller.setYVelocity(0)
+	  end
+	  
+	  mcontroller.addMomentum(recoilVelocity)
+	  mcontroller.controlJump()
+	  
+	elseif self.crouchRecoilVelocity then
+	  local recoilVelocity = vec2.mul(vec2.norm(vec2.mul(self:aimVector(0), -1)), self.crouchRecoilVelocity)
+	  mcontroller.setYVelocity(0)
+	  mcontroller.addMomentum(recoilVelocity)
+	end
+  end
+
 
   if self.stances.fire.duration then
     util.wait(self.stances.fire.duration)
@@ -116,7 +139,6 @@ end
 function FUOverHeating:cooldown()
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
-
   local progress = 0
   util.wait(self.stances.cooldown.duration, function()
     local from = self.stances.cooldown.weaponOffset or {0,0}
@@ -132,20 +154,19 @@ end
 
 function FUOverHeating:overheating()
 	--set the stance
-	self.weapon:setStance(self.stances.overheating)
+	self.weapon:setStance(self.stances.overheat)
 	self.weapon:updateAim()
 	-- reset aim
 	self.weapon.aimAngle = 0
-	
-	while self.isOverheated > 0 do
+	while self.currentHeat > 0 do
 	  animator.setParticleEmitterActive("heatVenting",true)
 	  animator.setAnimationState("weapon","overheat")
-	  self.currentHeat = math.max(0, self.heat - (self.heatLossRateMaxed * self.dt))
+	  self.currentHeat = math.max(0, self.currentHeat - (self.heatLossRateMax * self.dt))
 	  activeItem.setInstanceValue("heat",self.currentHeat)
 	  coroutine.yield()
 	end
 	
-	self.isOverheated = false
+	self.overheatActive = false
 	activeItem.setInstanceValue("overheat",false)
 	animator.setParticleEmitterActive("heatVenting",false)
 end
@@ -215,5 +236,5 @@ function FUOverHeating:damagePerShot()      --return (self.baseDamage or (self.b
 end
 
 
-function GunFire:uninit()
+function FUOverHeating:uninit()
 end

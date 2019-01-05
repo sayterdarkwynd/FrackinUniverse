@@ -1,7 +1,7 @@
 {
   "itemName" : "eldercarbine",
   "price" : 160,
-  "inventoryIcon" : "eldercarbine.png",
+  "inventoryIcon" : "eldercarbineicon.png",
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Brutally deadly elder technology.
@@ -9,12 +9,13 @@
   "shortdescription" : "Elder Disruptor",
   "category" : "assaultRifle",
   "level" : 7,
-  "tooltipKind" : "gun2",
+  "tooltipKind" : "gun2overheat",
   "weaponType" : "Disruptor",
   "itemTags" : ["weapon","ranged","plasma", "upgradeableWeapon", "elder"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  //"animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugunoverheating.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "eldercarbine.png",
@@ -44,8 +45,9 @@
   "elementalType" : "shadow",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    //"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+    "class" : "FUOverHeating",
     "fireTime" : 0.117,
     "baseDps" : 10.45,
     "energyUsage" : 40.0,
@@ -53,6 +55,24 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
+	//Overheating Weapon Values (based heavily on elithian races version)
+	"heatGain" : 10,				//Heat generated per shot
+	
+	"coolingTime" : 0.25,			//Time before passive cooling kicks in
+	"heatLossLevel" : 32,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 17,		//Heat lost per second while overheated
+	
+	"overheatLevel" : 200,		//Heat threshold to overheat
+	"highLevel" : 150,			//Heat threshold for "hot" animation state
+	"medLevel" : 100,			//Heat threshold for "medium" animation state
+	"lowLevel" : 50,			//Heat threshold for "cold" animation state
+        
+        // recoil
+        "crouchReduction" : true,
+        "recoilVelocity" : 3,
+        "crouchRecoilVelocity" : 0,
+        
+        
     "projectileType" : "elderplasma4green",
     "projectileParameters" : {
       "speed" : 65,
@@ -77,23 +97,37 @@
 	      "allowFlip" : false
 	    },
 	    "cooldown" : {
-	      "duration" : 0.075,
+	      "duration" : 0.14,
 	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "weaponRotation" : 7,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
+	    },
+	    "overheat" : {
+		"armRotation" : -22,
+		"weaponRotation" : 56,
+		"twoHanded" : false,
+
+		"allowRotate" : false,
+		"allowFlip" : true
 	    }
 	  }
   },
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
-          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] },
-          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] },
-          { "particle" : "fastrisingelectric", "offset" : [0.0, 0.0] }
+          { "particle" : "madnessstaff", "offset" : [0.0, 0.0] },
+          { "particle" : "madnessstaff", "offset" : [0.0, 0.0] },
+          { "particle" : "madnessstaff", "offset" : [0.0, 0.0] }
         ]
+      },
+      "heatVenting" : {
+      "emissionRate" : 20.0,
+      "transformationGroups" : ["muzzle"],
+      "offsetRegion" : [-0.875, 0.125, -0.875, 0.125],
+      "particles" : [ { "particle" : "eldritchstaff" },{ "particle" : "madnessstaff" } ]
       }
     },
 
@@ -102,6 +136,10 @@
   "critBonus" : 8,
 
   "altAbilityType" : "eldergrenadelauncher",
+  "altAbility" : {
+    "fireTime" : 0.5,
+    "baseDps" : 11
+  },
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildfuoverheatweapon.lua"
 }
