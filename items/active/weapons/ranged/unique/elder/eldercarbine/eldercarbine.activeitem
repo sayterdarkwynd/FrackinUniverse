@@ -14,7 +14,7 @@
   "twoHanded" : true,
 
   //"animation" : "/items/active/weapons/ranged/unique/fugun.animation",
-  "animation" : "/items/active/weapons/ranged/unique/fugunoverheating.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugunoverheatingelder.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "eldercarbine.png",
@@ -33,7 +33,8 @@
       }
     },   
     "sounds" : {
-      "fire" : [ "/sfx/weapons/eldercarbine.ogg" ]
+      "fire" : [ "/sfx/weapons/eldercarbine.ogg" ],
+      "cooldown" : [ "/sfx/weapons/chargereload1.ogg" ]
     }
   },
 
@@ -47,7 +48,7 @@
     //"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
-    "fireTime" : 0.117,
+    "fireTime" : 0.10,
     "baseDps" : 10.45,
     "energyUsage" : 40.0,
     "inaccuracy" : 0.005,
@@ -55,23 +56,15 @@
     "fireType" : "auto",
 
 	//Overheating Weapon Values (based heavily on elithian races version)
-	"heatGain" : 10,				//Heat generated per shot
-	
-	"coolingTime" : 0.25,			//Time before passive cooling kicks in
-	"heatLossLevel" : 32,				//Heat lost per second while not overheated
-	"heatLossRateMax" : 17,		//Heat lost per second while overheated
-	
-	"overheatLevel" : 200,		//Heat threshold to overheat
-	"highLevel" : 150,			//Heat threshold for "hot" animation state
-	"medLevel" : 100,			//Heat threshold for "medium" animation state
-	"lowLevel" : 50,			//Heat threshold for "cold" animation state
-        
-        // recoil
-        "crouchReduction" : true,
-        "recoilVelocity" : 3,
-        "crouchRecoilVelocity" : 0,
-        
-        
+	"heatGain" : 1,					//Heat generated per shot
+	"coolingTime" : 0.25,				//Time before passive cooling kicks in
+	"heatLossLevel" : 10,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 5,				//Heat lost per second while overheated
+	"lowLevel" : 5,					//Value required to reach Low heat
+	"medLevel" : 20,				//Value required to reach Medium heat
+	"highLevel" : 30,				//Value required to reach High heat	
+	"overheatLevel" : 40,				//Overheat at this value
+ 
     "projectileType" : "elderplasma4green",
     "projectileParameters" : {
       "speed" : 65,
@@ -114,22 +107,6 @@
 	    }
 	  }
   },
-    "particleEmitters" : {
-      "muzzleFlash" : {
-        "particles" : [
-          { "particle" : "madnessstaff", "offset" : [0.0, 0.0] },
-          { "particle" : "madnessstaff", "offset" : [0.0, 0.0] },
-          { "particle" : "madnessstaff", "offset" : [0.0, 0.0] }
-        ]
-      },
-      "heatVenting" : {
-      "emissionRate" : 20.0,
-      "transformationGroups" : ["muzzle"],
-      "offsetRegion" : [-0.875, 0.125, -0.875, 0.125],
-      "particles" : [ { "particle" : "eldritchstaff" },{ "particle" : "madnessstaff" } ]
-      }
-    },
-
 
   "critChance" : 3,
   "critBonus" : 8,

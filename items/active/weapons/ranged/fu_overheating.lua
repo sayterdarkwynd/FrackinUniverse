@@ -43,9 +43,9 @@ function FUOverHeating:update(dt, fireMode, shiftHeld)
   -- ************** FU OVERHEATING
   -- set the current animation state depending on heat value of weapon
   if self.currentHeat >= self.overheatLevel then
-        self.overheatLimitedCharge = config.getParameter("overheatLimitedCharge")
+        self.overheatLimitedCharge = config.getParameter("overheatLimitedCharge")  -- if this is set, you can never reach max overheat
         if not self.overheatLimitedCharge then
-        self.overheatActive = true
+          self.overheatActive = true
         end
   	activeItem.setInstanceValue("overheat", true)
   elseif self.currentHeat >= self.highLevel then
@@ -92,7 +92,6 @@ function FUOverHeating:auto()
 	  if (self.weapon.aimAngle <= 0 and not mcontroller.zeroG()) then
 		mcontroller.setYVelocity(0)
 	  end
-	  
 	  mcontroller.addMomentum(recoilVelocity)
 	  mcontroller.controlJump()
 	  
@@ -114,7 +113,7 @@ function FUOverHeating:auto()
   -- Is it a reloading weapon?
   self.isReloader = config.getParameter("isReloader",0)
   if (self.isReloader) >= 1 then
-    animator.playSound("cooldown") -- adds new sound to reload
+    animator.playSound("reload") -- adds new sound to reload
   end
 end
 
@@ -156,6 +155,7 @@ function FUOverHeating:overheating()
 	--set the stance
 	self.weapon:setStance(self.stances.overheat)
 	self.weapon:updateAim()
+	animator.playSound("cooldown")
 	-- reset aim
 	self.weapon.aimAngle = 0
 	while self.currentHeat > 0 do

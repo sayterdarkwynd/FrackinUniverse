@@ -142,17 +142,24 @@
   },
 
   "particleEmitters" : {
-    "muzzleFlash" : {
-      "transformationGroups" : ["muzzle"],
-      "offsetRegion" : [0, 0, 0, 0],
-      "particles" : [ ]
-    },
-    "heatVenting" : {
-      "emissionRate" : 24.0,
-      "transformationGroups" : ["muzzle"],
-      "offsetRegion" : [-0.875, 0.125, -0.875, 0.125],
-      "particles" : [ { "particle" : "smoke" },{ "particle" : "smoke" } ]
-    }
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "eldritchstaff", "offset" : [2.8, 0.335] },
+          { "particle" : "eldritchstaff", "offset" : [2.8, 0.325] },
+          { "particle" : "eldritchstaff", "offset" : [2.8, 0.315] }
+        ]
+      },
+      "heatVenting" : {
+	      "emissionRate" : 20.0,
+	      "transformationGroups" : ["muzzle"],
+	      "offsetRegion" : [-1.1, 0.125, -1.1, 0.125],
+	      "particles" : [ 
+		{ "particle" : "smallshadowcloud1" },
+		{ "particle" : "smallshadowcloud2" },
+		{ "particle" : "eldritchstaff" },
+		{ "particle" : "eldritchstaff" }		
+	      ]
+      }
   },
 
   "lights" : {
