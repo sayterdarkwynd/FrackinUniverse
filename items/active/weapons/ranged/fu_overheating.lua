@@ -3,45 +3,79 @@ require "/scripts/interp.lua"
 require "/items/active/weapons/crits.lua"
 
 -- Base gun fire ability
-GunFire = WeaponAbility:new()
+FUOverHeating = WeaponAbility:new()
 
-function GunFire:init()
--- FU additions
-  self.isReloader = config.getParameter("isReloader",0)  -- is this a shotgun style reload? 
-  
+function FUOverHeating:init()
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
+  
+	-- ********************** BEGIN FU additions **************************
+	self.isReloader = config.getParameter("isReloader",0)  -- is this a shotgun style reload? 
+
+	-- set the overheating values
+	self.currentHeat = config.getParameter("overHeatValue",0)
+	self.isOverheated = config.getParameter("isOverheated", false)
+	self.timerIdle = 0  --timer before returning to Idle state
+	-- play cooling animation here
+	animator.setParticleEmitterActive("heatVenting",self.isOverheated)
+	-- ********************** END FU additions **************************
 
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
 end
 
-function GunFire:update(dt, fireMode, shiftHeld)
+function FUOverHeating:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
-
+  
+  -- ************ FU overheating idle timer
+  self.timerIdle = math.min(self.coolingTime, self.timerIdle + self.dt)
+  
+  
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)
   end
 
+  -- ************** FU OVERHEATING
+  -- set the current animation state depending on heat value of weapon
+  if self.currentHeat >= self.overheatLevel then
+  	activeItem.setInstanceValue("overheat", true)
+  elseif self.currentHeat >= self.highLevel then
+  	animator.setAnimationState("weapon", "hot")
+  elseif self.currentHead >= self.medLevel then
+  	animator.setAnimationState("weapon", "med")
+  elseif self.currentHeat >= self.lowLevel then
+  	animator.setAnimationState("weapon", "low")
+  else
+  	animator.setAnimationState("weapon", "idle")
+  end
+
+  -- when not overheated, cool down passively
+  if self.timerIdle == self.coolingIdleTime and not self.isOverheated then
+	self.currentHeat = math.max(0, self.currentHeat - (self.loseHeatLevel * self.dt))
+	activeItem.setInstanceValue("heat", self.currentHeat)
+  end
+  
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
-    and not status.resourceLocked("energy")
+    and not self.isOverheated
     and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 
-    if self.fireType == "auto" and status.overConsumeResource("energy", self:energyPerShot()) then
+    if self.fireType == "auto" then
       self:setState(self.auto)
     elseif self.fireType == "burst" then
       self:setState(self.burst)
     end
+  elseif self.isOverheated then-- is currently overheated
+  	self:setState(self.overheating)
   end
 end
 
-function GunFire:auto()
+function FUOverHeating:auto()
   self.weapon:setStance(self.stances.fire)
 
   self:fireProjectile()
@@ -53,17 +87,19 @@ function GunFire:auto()
 
   self.cooldownTimer = self.fireTime
   self:setState(self.cooldown)
+  
+  -- Is it a reloading weapon?
   self.isReloader = config.getParameter("isReloader",0)
   if (self.isReloader) >= 1 then
     animator.playSound("cooldown") -- adds new sound to reload
   end
 end
 
-function GunFire:burst()
+function FUOverHeating:burst()
   self.weapon:setStance(self.stances.fire)
 
   local shots = self.burstCount
-  while shots > 0 and status.overConsumeResource("energy", self:energyPerShot()) do
+  while shots > 0 do
     self:fireProjectile()
     self:muzzleFlash()
     shots = shots - 1
@@ -77,7 +113,7 @@ function GunFire:burst()
   self.cooldownTimer = (self.fireTime - self.burstTime) * self.burstCount
 end
 
-function GunFire:cooldown()
+function FUOverHeating:cooldown()
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
 
@@ -94,7 +130,28 @@ function GunFire:cooldown()
   end)
 end
 
-function GunFire:muzzleFlash()
+function FUOverHeating:overheating()
+	--set the stance
+	self.weapon:setStance(self.stances.overheating)
+	self.weapon:updateAim()
+	-- reset aim
+	self.weapon.aimAngle = 0
+	
+	while self.isOverheated > 0 do
+	  animator.setParticleEmitterActive("heatVenting",true)
+	  animator.setAnimationState("weapon","overheat")
+	  self.currentHeat = math.max(0, self.heat - (self.heatLossRateMaxed * self.dt))
+	  activeItem.setInstanceValue("heat",self.currentHeat)
+	  coroutine.yield()
+	end
+	
+	self.isOverheated = false
+	activeItem.setInstanceValue("overheat",false)
+	animator.setParticleEmitterActive("heatVenting",false)
+end
+
+
+function FUOverHeating:muzzleFlash()
   animator.setPartTag("muzzleFlash", "variant", math.random(1, 3))
   animator.setAnimationState("firing", "fire")
   animator.burstParticleEmitter("muzzleFlash")
@@ -103,12 +160,17 @@ function GunFire:muzzleFlash()
   animator.setLightActive("muzzleFlash", true)
 end
 
-function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, firePosition, projectileCount)
+function FUOverHeating:fireProjectile(projectileType, projectileParams, inaccuracy, firePosition, projectileCount)
   local params = sb.jsonMerge(self.projectileParameters, projectileParams or {})
   params.power = self:damagePerShot()
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.speed = util.randomInRange(params.speed)
 
+  -- *********** FU heat
+  self.currentHeat = self.currentHeat + self.heatGain
+  activeItem.setInstanceValue("heat",self.currentHeat)
+  self.timerIdle = 0
+  
   if not projectileType then
     projectileType = self.projectileType
   end
@@ -134,21 +196,21 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
   return projectileId
 end
 
-function GunFire:firePosition()
+function FUOverHeating:firePosition()
   return vec2.add(mcontroller.position(), activeItem.handPosition(self.weapon.muzzleOffset))
 end
 
-function GunFire:aimVector(inaccuracy)
+function FUOverHeating:aimVector(inaccuracy)
   local aimVector = vec2.rotate({1, 0}, self.weapon.aimAngle + sb.nrand(inaccuracy, 0))
   aimVector[1] = aimVector[1] * mcontroller.facingDirection()
   return aimVector
 end
 
-function GunFire:energyPerShot()
+function FUOverHeating:energyPerShot()
   return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
 end
 
-function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
+function FUOverHeating:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
     return Crits.setCritDamage(self, (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount)
 end
 
