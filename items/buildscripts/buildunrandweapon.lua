@@ -71,7 +71,22 @@ function build(directory, config, parameters, level, seed)
       config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
       config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
       config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)
-      
+    
+    -- weapon abilities
+    
+    --overheating
+    if config.primaryAbility.overheatLevel then
+	    config.tooltipFields.overheatLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatGain, 1)
+	    config.tooltipFields.cooldownLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatLossRateMax, 1)    
+    end
+    
+    -- Recoil
+    if config.primaryAbility.recoilVelocity then
+	    config.tooltipFields.isCrouch = configParameter("crouchReduction",false)
+	    config.tooltipFields.recoilStrength = util.round(configParameter("recoilVelocity",0), 0)
+	    config.tooltipFields.recoilCrouchStrength = util.round(configParameter("crouchRecoilVelocity",0), 0)    
+    end
+    
     -- *******************************
     if elementalType ~= "physical" then
       config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
