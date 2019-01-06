@@ -1,7 +1,7 @@
 {
   "itemName" : "radienpistol2",
   "price" : 80,
-  "inventoryIcon" : "radienpistol2.png",
+  "inventoryIcon" : "radienpistol2icon.png",
     "maxStack" : 1,
     "rarity" : "uncommon",
   "shortdescription" : "X'ian Acid Gun",
@@ -11,13 +11,13 @@
   "level" : 2,
   "category" : "bioweapon",
   "itemTags" : ["weapon","ranged","pistol","radien","bioweapon","upgradeableWeapon"],
-  "tooltipKind" : "gun2",
+  "tooltipKind" : "gun2overheat",
   "twoHanded" : false,
   "piercing" : true,
   "weaponType" : "Bio Pistol",
   "handGrip" : "wrap",
   
-  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/radien/fugunoverheating.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "radienpistol2.png",
@@ -57,13 +57,24 @@
   "elementalType" : "radioactive",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 2,
+    "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+    "class" : "FUOverHeating",
+    "fireTime" : 1.45,
     "baseDps" : 3.5,
     "energyUsage" : 30,
     "inaccuracy" : 0.0,
     "fireType" : "auto",
+    
+	//Overheating Weapon Values (based heavily on elithian races version)
+	"heatGain" : 5,					//Heat generated per shot
+	"coolingTime" : 1.0,				//Time before passive cooling kicks in
+	"heatLossLevel" : 3,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 3,				//Heat lost per second while overheated
+	"lowLevel" : 10,				//Value required to reach Low heat
+	"medLevel" : 15,				//Value required to reach Medium heat
+	"highLevel" : 20,				//Value required to reach High heat	
+	"overheatLevel" : 25,				//Overheat at this value
+	
     "projectileCount" : 1,
     "projectileType" : "radiationguardianpelletgrenade",
     "projectileParameters" : {
@@ -221,6 +232,14 @@
 
         "allowRotate" : false,
         "allowFlip" : false
+      },
+      "overheat" : {
+	"armRotation" : -22,
+	"weaponRotation" : 56,
+	"twoHanded" : false,
+
+	"allowRotate" : false,
+	"allowFlip" : true
       }
     }
   },
@@ -228,30 +247,6 @@
   "critChance" : 1,
   "critBonus" : 3,
   
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
-  "upgradeParameters" : {
-  "shortdescription" : "X'ian Acid Spitter",
-  "description" : "A strange X'i-formed weapon.
-^green;+1^reset; Projectiles;  
-^cyan;Eats Tiles^reset;
-^yellow;Poison Rad Gas^reset;",
-
-	  "primaryAbility" : {
-	    "inaccuracy" : 0.05,
-	    "projectileCount" : 2
-	  }
-
-  },
-  "upgradeParameters2" : {
-  "shortdescription" : "X'ian Acid Ejector",
-  "description" : "A strange X'i-formed weapon.
-^green;+2^reset; Projectiles;  
-^cyan;Eats Tiles^reset;
-^yellow;Poison Rad Gas^reset;",  
-	  "primaryAbility" : {
-	    "inaccuracy" : 0.1,
-	    "projectileCount" : 3
-	  }
-  }  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+ 
 }
