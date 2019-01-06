@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "^#a5ff00;Infused with strange energies, this alien weapon radiates menace.^reset;",
-  "shortdescription" : "^#a5ff00;Elder Disruptor^reset;",
+  "shortdescription" : "^#a5ff00;Disruptor Rifle^reset;",
   "category" : "assaultRifle",
   "level" : 7,
   "tooltipKind" : "gun2overheatelder",
@@ -47,21 +47,21 @@
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
     "fireTime" : 0.10,
-    "baseDps" : 10.45,
+    "baseDps" : 10,
     "energyUsage" : 40.0,
     "inaccuracy" : 0.005,
     "projectileCount" : 1,
     "fireType" : "auto",
 
 	//Overheating Weapon Values (based heavily on elithian races version)
-	"heatGain" : 1,					//Heat generated per shot
+	"heatGain" : 10,					//Heat generated per shot
 	"coolingTime" : 0.25,				//Time before passive cooling kicks in
-	"heatLossLevel" : 10,				//Heat lost per second while not overheated
-	"heatLossRateMax" : 5,				//Heat lost per second while overheated
-	"lowLevel" : 5,					//Value required to reach Low heat
-	"medLevel" : 20,				//Value required to reach Medium heat
-	"highLevel" : 30,				//Value required to reach High heat	
-	"overheatLevel" : 40,				//Overheat at this value
+	"heatLossLevel" : 50,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 30,				//Heat lost per second while overheated
+	"lowLevel" : 50,					//Value required to reach Low heat
+	"medLevel" : 100,				//Value required to reach Medium heat
+	"highLevel" : 150,				//Value required to reach High heat	
+	"overheatLevel" : 200,				//Overheat at this value
  
     "projectileType" : "elderplasma4green",
     "projectileParameters" : {
@@ -111,8 +111,9 @@
 
   "altAbilityType" : "eldergrenadelauncher",
   "altAbility" : {
-    "fireTime" : 0.5,
-    "baseDps" : 11
+    "name" : "Unfocused Blast",
+    "fireTime" : 1,
+    "baseDps" : 11.25
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

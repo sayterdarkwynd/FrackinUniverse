@@ -1,11 +1,10 @@
 {
   "itemName" : "elderpistol",
   "price" : 160,
-  "inventoryIcon" : "elderpistol.png",
+  "inventoryIcon" : "elderpistolicon.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "^#a5ff00;Eradicate foes with unimaginable energies.
-^cyan;Greater damage at close range^reset;",
+  "description" : "^#a5ff00;Pulsing with energy, this weapon promises to punish your enemies.^reset;",
   "shortdescription" : "^#a5ff00;Disruptor Pistol^reset;",
   "category" : "pistol",
   "level" : 7,
@@ -39,7 +38,7 @@
   },
 
   "baseOffset" : [0.8, 0.26],
-  "muzzleOffset" : [1.645, 0.225],
+  "muzzleOffset" : [1.545, 0.225],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -48,17 +47,17 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
-    "fireTime" : 0.6,
-    "baseDps" : 6.65,
+    "fireTime" : 0.2,
+    "baseDps" : 6.5,
     "energyUsage" : 18.5,
-    "inaccuracy" : 0.008,
+    "inaccuracy" : 0.01,
 
     "projectileCount" : 1,
     "fireType" : "auto",
     
 	//Overheating Weapon Values (based heavily on elithian races version)
 	"heatGain" : 1,					//Heat generated per shot
-	"coolingTime" : 0.25,				//Time before passive cooling kicks in
+	"coolingTime" : 0.20,				//Time before passive cooling kicks in
 	"heatLossLevel" : 4,				//Heat lost per second while not overheated
 	"heatLossRateMax" : 3,				//Heat lost per second while overheated
 	"lowLevel" : 3,					//Value required to reach Low heat
@@ -66,7 +65,7 @@
 	"highLevel" : 9,				//Value required to reach High heat	
 	"overheatLevel" : 12,				//Overheat at this value
 	
-    "projectileType" : "elderplasma4green",
+    "projectileType" : "elderplasma4green2",
     "projectileParameters" : {
       "speed" : 70,
       "knockback" : 20
@@ -97,6 +96,14 @@
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
+	    },
+	    "overheat" : {
+		"armRotation" : -22,
+		"weaponRotation" : 56,
+		"twoHanded" : false,
+
+		"allowRotate" : false,
+		"allowFlip" : true
 	    }
 	  }
   },
