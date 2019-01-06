@@ -6,7 +6,9 @@ require "/items/active/weapons/crits.lua"
 GunFire = WeaponAbility:new()
 
 function GunFire:init()
-self.isReloader = config.getParameter("isReloader",0)
+-- FU additions
+  self.isReloader = config.getParameter("isReloader",0)  -- is this a shotgun style reload? 
+  
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
