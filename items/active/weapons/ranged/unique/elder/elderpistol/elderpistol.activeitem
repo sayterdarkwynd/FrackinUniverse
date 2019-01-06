@@ -9,12 +9,12 @@
   "shortdescription" : "^#a5ff00;Disruptor Pistol^reset;",
   "category" : "pistol",
   "level" : 7,
-  "tooltipKind" : "gun2elder",
+  "tooltipKind" : "gun2overheatelder",
 
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "elder"],
   "twoHanded" : false,
   "weaponType" : "Disruptor",
-  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugunoverheatingelder.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "elderpistol.png",
@@ -33,7 +33,8 @@
       }
     },   
     "sounds" : {
-      "fire" : [ "/sfx/weapons/elderdisruptor.ogg" ]
+      "fire" : [ "/sfx/weapons/elderdisruptor.ogg" ],
+      "cooldown" : [ "/sfx/weapons/chargereload1.ogg" ]
     }
   },
 
@@ -45,17 +46,27 @@
   "elementalType" : "shadow",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+    "class" : "FUOverHeating",
     "fireTime" : 0.6,
     "baseDps" : 6.65,
     "energyUsage" : 18.5,
-    "inaccuracy" : 0.01,
+    "inaccuracy" : 0.008,
 
     "projectileCount" : 1,
     "fireType" : "auto",
-
-    "projectileType" : "elderburst",
+    
+	//Overheating Weapon Values (based heavily on elithian races version)
+	"heatGain" : 1,					//Heat generated per shot
+	"coolingTime" : 0.25,				//Time before passive cooling kicks in
+	"heatLossLevel" : 4,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 3,				//Heat lost per second while overheated
+	"lowLevel" : 3,					//Value required to reach Low heat
+	"medLevel" : 5,				//Value required to reach Medium heat
+	"highLevel" : 9,				//Value required to reach High heat	
+	"overheatLevel" : 12,				//Overheat at this value
+	
+    "projectileType" : "elderplasma4green",
     "projectileParameters" : {
       "speed" : 70,
       "knockback" : 20
