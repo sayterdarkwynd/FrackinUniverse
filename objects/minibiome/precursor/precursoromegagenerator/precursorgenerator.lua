@@ -13,16 +13,20 @@ function update(dt)
   end
   if not storage.fueltime or storage.fueltime == 0 then
     storage.powermod = nil
-    item = world.containerItemAt(entity.id(),0)
-	if item and (not object.isInputNodeConnected(1) or object.getInputNodeLevel(1)) then
-	  itemlist = config.getParameter('acceptablefuel')
-	  for key,value in pairs(itemlist) do
-	    if item.name == key then
-	      world.containerConsumeAt(entity.id(),0,1)
-	      storage.fueltime = value
-		  storage.powermod = value
+    fuel = world.containerItemAt(entity.id(),0)
+    neutronium = world.containerItemAt(entity.id(),1)
+    antineutronium = world.containerItemAt(entity.id(),2)
+	if neutronium and antineutronium and neutronium.name=="neutronium" and antineutronium.name=="antineutronium" then
+		if fuel and (not object.isInputNodeConnected(1) or object.getInputNodeLevel(1)) then
+		  fuellist = config.getParameter('acceptablefuel')
+		  for key,value in pairs(fuellist) do
+			if fuel.name == key then
+			  world.containerConsumeAt(entity.id(),0,1)
+			  storage.fueltime = value
+			  storage.powermod = value
+			end
+		  end
 		end
-	  end
 	end
   end
   if storage.fueltime and storage.fueltime > 0 then
