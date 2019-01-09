@@ -18,26 +18,22 @@ function update(dt)
   end
 
   self.tickTimer = self.tickTimer - dt
-  self.currentDebuff = self.currentDebuff + self.debuffPerSec * dt
+  self.currentDebuff = math.max(self.currentDebuff + self.debuffPerSec * dt, self.maxDebuff)
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-    if self.currentDebuff >= self.maxDebuff then
-      status.setPersistentEffects("aciddust", { {stat = "physicalResistance", amount = self.currentDebuff } })
-      -- Apply a tiny amount of damage for "hurt" noise --
-      status.applySelfDamageRequest({
-        damageType = "IgnoresDef",
-        damage = 0.1,
-        damageSourceKind = "radioactive",
-        sourceEntityId = entity.id()
-      })
-    else
-      status.applySelfDamageRequest({
-        damageType = "IgnoresDef",
-        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage),
-        damageSourceKind = "radioactive",
-        sourceEntityId = entity.id()
-      })
+    -- Incrementally debuff target's physical resistance. --
+    status.setPersistentEffects("aciddust", { {stat = "physicalResistance", amount = self.currentDebuff } })
+    -- Apply damage if target's physical resistance is zero (otherwise, just make the 'hurt' SFX). --
+    local dmg = 0.1
+    if (self.currentDebuff == self.maxDebuff) then
+      dmg = math.floor(status.resourceMax("health") * self.tickDamagePercentage)
     end
+    status.applySelfDamageRequest({
+      damageType = "IgnoresDef",
+      damage = dmg,
+      damageSourceKind = "radioactive",
+      sourceEntityId = entity.id()
+    })
   end
 end
 
