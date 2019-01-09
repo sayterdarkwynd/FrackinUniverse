@@ -7,32 +7,40 @@ function init()
   self.tickDamagePercentage = 0.02
   self.tickTime = 0.2
   self.tickTimer = self.tickTime
-  self.statusValue = status.stat("physicalResistance",0)
+  self.currentDebuff = 0.0
+  self.debuffPerSec = -0.15 -- Lose 15% phys resist per second
+  self.maxDebuff = -status.stat("physicalResistance",0)
 end
 
 function update(dt)
   if (status.stat("radioactiveResistance",0)  >= 0.4) or status.statPositive("biomeradiationImmunity") or status.statPositive("ffextremeradiationImmunity") then
     effect.expire()
   end
-  
-  
+
   self.tickTimer = self.tickTimer - dt
-  self.statusValue = self.statusValue - dt
+  self.currentDebuff = self.currentDebuff + self.debuffPerSec * dt
   if self.tickTimer <= 0 then
-      	self.tickTimer = self.tickTime
-	if self.statusValue > 0.05 then
-	  status.setPersistentEffects("aciddust", { {stat = "physicalResistance", amount = self.statusValue } })
-        else 
-	    status.applySelfDamageRequest({
-		damageType = "IgnoresDef",
-		damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage),
-		damageSourceKind = "radioactive",
-		sourceEntityId = entity.id()
-	    })          
-	end  
+    self.tickTimer = self.tickTime
+    if self.currentDebuff >= self.maxDebuff then
+      status.setPersistentEffects("aciddust", { {stat = "physicalResistance", amount = self.currentDebuff } })
+      -- Apply a tiny amount of damage for "hurt" noise --
+      status.applySelfDamageRequest({
+        damageType = "IgnoresDef",
+        damage = 0.1,
+        damageSourceKind = "radioactive",
+        sourceEntityId = entity.id()
+      })
+    else
+      status.applySelfDamageRequest({
+        damageType = "IgnoresDef",
+        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage),
+        damageSourceKind = "radioactive",
+        sourceEntityId = entity.id()
+      })
+    end
   end
 end
 
 function uninit()
-
+  status.clearPersistentEffects("aciddust")
 end

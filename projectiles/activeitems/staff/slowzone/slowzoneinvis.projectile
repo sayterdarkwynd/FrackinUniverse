@@ -10,19 +10,19 @@
   "periodicActions" : [
 	    {
               "time" : 0.1,
-              "repeat" : false,	    
+              "repeat" : false,
 	      "action" : "projectile",
 	      "type" : "flamethrowerflameff",
 	      "fuzzAngle" : 360,
 	      "inheritDamageFactor" : 0.05,
 	      "config" : { "statusEffects" : [ "radiationburn" ] }
-	    },   
+	    },
     	    {
               "time" : 0.3,
-              "repeat" : false,    	    
+              "repeat" : false,
     	      "action" : "config",
     	      "file" : "/projectiles/explosions/hellfireexplosion/spankrexplosion.config"
-	    },     
+	    },
     {
       "time" : 1,
       "repeat" : false,
@@ -62,14 +62,14 @@
 	      "inheritDamageFactor" : 0.15,
 	      "config" : { "statusEffects" : [ "radiationburn" ] },
 	      "angleAdjust" : 180
-	    } 	  
+	    }
   ],
   "speed" : 0,
   "power" : 0,
   "renderLayer" : "Player+1",
 
   "onlyHitTerrain" : true,
-  "persistentStatusEffects" : ["staffslow", "radiationburn"],
+  "persistentStatusEffects" : ["staffslow"],
   "statusEffectArea" : [ [-6.0, 0], [-4.0, -4.0], [0, -6.0], [4.0, -4.0], [6.0, 0], [4.0, 4.0], [0, 6.0], [-4.0, 4.0] ],
 
 
@@ -81,6 +81,6 @@
   "bounces" : -1,
 
   "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
-  
+
   "persistentAudio" : "/sfx/projectiles/zone_slow_loop.ogg"
 }
