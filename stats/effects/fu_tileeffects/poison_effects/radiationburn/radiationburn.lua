@@ -17,7 +17,7 @@ function update(dt)
   
   
   self.tickTimer = self.tickTimer - dt
-  self.statusValue = self.statusValue - dt
+  self.statusValue = self.statusValue - 0.01
   if self.tickTimer <= 0 then
       	self.tickTimer = self.tickTime
 	if self.statusValue > 0.05 then
