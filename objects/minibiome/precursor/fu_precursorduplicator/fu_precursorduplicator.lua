@@ -29,7 +29,8 @@ function update(dt)
 						world.containerConsumeAt(entity.id(),1,1)
 						storage.timer = self.craftTime
 						storage.output = inputSlot
-
+						local fuelMod = self.fuel[inputSlot] and 0.5 or 1
+						
 						--sb.logInfo("%s",root.itemConfig(inputSlot))
 						itemOre = root.itemConfig(world.containerItemAt(entity.id(),0))
 
@@ -39,7 +40,7 @@ function update(dt)
 							end
 
 							itemValue = itemOre.config.price /1000
-							fuelValue = (fuelValue - (fuelValue  * itemValue)) + fuelValueBonus
+							fuelValue = ((fuelValue - (fuelValue  * itemValue)) + fuelValueBonus) * fuelMod
 							if fuelValue < 1 then
 								fuelValue = 1
 							end
