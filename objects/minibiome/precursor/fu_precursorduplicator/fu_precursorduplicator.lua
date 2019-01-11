@@ -59,7 +59,7 @@ function update(dt)
 
 			if wireCheck() and power.consume(config.getParameter('isn_requiredPower')) then -- added option for a hard abort that won't eat materials
 				--local slots = getOutSlotsFor(storage.output)
-				storage.output = world.containerPutItemsAt(entity.id(), {name=storage.output,count=storage.outputCount}, 2)
+				storage.output = world.containerPutItemsAt(entity.id(), {name=storage.output,count=storage.outputCount}, 4)
 
 				if storage.output then
 					storage.output=world.containerPutItemsAt(entity.id(), storage.output, 0)
@@ -99,10 +99,10 @@ end
 
 function wireCheck()
 	--since we're only really using them here these neutronium parts got added here. can easily be moved out if needed.
-	local neutronium = world.containerItemAt(entity.id(),3)
+	local neutronium = world.containerItemAt(entity.id(),2)
 	neutronium=neutronium and (neutronium.name=="neutronium")
 	
-	local antineutronium = world.containerItemAt(entity.id(),4)
+	local antineutronium = world.containerItemAt(entity.id(),3)
 	antineutronium=antineutronium and (antineutronium.name=="antineutronium")
 	
 	return (neutronium and antineutronium) and (object.inputNodeCount() < 1 or not object.isInputNodeConnected(0) or object.getInputNodeLevel(0))
