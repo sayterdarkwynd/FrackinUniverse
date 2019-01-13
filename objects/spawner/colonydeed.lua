@@ -553,7 +553,8 @@ function scanVacantArea()
 
   if house.poly and world.regionActive(polyBoundBox(house.poly)) then
     local scanResults = scanHouseContents(house.poly)
-    if scanResults.otherDeed then
+	
+    if scanResults.otherDeed or fuDeedCheck(house.poly) then
       util.debugLog("Colony deed is already present")
     elseif scanResults.objects then
       local tags = countTags(scanResults.objects, house.doors)
@@ -587,6 +588,10 @@ end
 
 function checkHouseIntegrity()
   storage.grumbles = scanHouseIntegrity()
+  
+  if fuDeedCheck() then
+    storage.grumbles[#storage.grumbles+1] = {"otherDeed"}
+  end
 
   for _,tenant in ipairs(storage.occupier.tenants) do
     if tenant.uniqueId and world.findUniqueEntity(tenant.uniqueId):result() then
@@ -655,4 +660,18 @@ function scanHouseIntegrity()
   end
 
   return grumbles
+end
+
+function fuDeedCheck(housePoly)
+  local objects = world.objectQuery(self.position, self.position, {poly = housePoly or storage.house.boundary, boundMode = "Position"})
+  local fuDeed = false
+  for _, objectId in pairs (objects) do
+    if objectId ~= entity.id() then
+      if world.getObjectParameter(objectId, "isDeed") then
+        fuDeed = true
+        break
+      end
+   end
+  end
+  return fuDeed
 end
