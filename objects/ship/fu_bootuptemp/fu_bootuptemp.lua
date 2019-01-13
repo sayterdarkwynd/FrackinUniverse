@@ -72,5 +72,5 @@ function racialiserBootUp()
 			return num
 		end
 	end
-	return 1
+	return 0
 end
