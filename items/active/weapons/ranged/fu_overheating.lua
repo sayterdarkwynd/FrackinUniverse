@@ -155,7 +155,7 @@ function FUOverHeating:overheating()
 	--set the stance
 	self.weapon:setStance(self.stances.overheat)
 	self.weapon:updateAim()
-	animator.playSound("cooldown")
+	animator.playSound("cooldown",0)
 	-- reset aim
 	self.weapon.aimAngle = 0
 	while self.currentHeat > 0 do
