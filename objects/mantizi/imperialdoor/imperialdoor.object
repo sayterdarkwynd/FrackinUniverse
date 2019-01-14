@@ -22,7 +22,8 @@
   "orientations" : [
     {
       "image" : "imperialdoor.png:default",
-      "imagePosition" : [-20, 0],
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
 
       "spaceScan" : 0.1,
       "anchors" : [ "bottom", "top" ]
@@ -35,8 +36,14 @@
   "animation" : "/objects/wired/door/door.animation",
   "animationCustom" : {
     "sounds" : {
-      "open" : [ "/sfx/objects/wooddoor_open.ogg" ],
-      "close" : [ "/sfx/objects/wooddoor_close.ogg" ]
+      "open" : {
+        "pool" : [ "/sfx/objects/woodendoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/woodendoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
     }
   },
   "animationParts" : {
@@ -44,6 +51,6 @@
   },
   "animationPosition" : [-16, 0],
 
-  "inputNodes" : [ [-1, 4] ],
+  "inputNodes" : [ [0, 4] ],
   "outputNodes" : [ [0, 0] ]
 }
