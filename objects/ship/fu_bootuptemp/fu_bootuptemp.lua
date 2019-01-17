@@ -7,22 +7,15 @@ function init()
 	position = object.position()
 	shipPet = "petcat"
 	message.setHandler("byos", function(_,_,species)
-		world.breakObject(world.objectAt(vec2.add(position, {11,0})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {-10,0})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {-20,-2})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {16,-2})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {19,1})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {23,-2})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {10,-3})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {4,7})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {11,7})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {19,7})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {-3,7})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {-10,7})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {4,-5})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {-3,-5})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {-10,-5})), true)
-		world.breakObject(world.objectAt(vec2.add(position, {-19,-5})), true)
+		shipObjects = world.entityQuery(position, config.getParameter("scanRadius"))
+		newShipObjects = {}
+		for _, shipObjectId in pairs (shipObjects) do
+			local shipObjectReplacement = world.getObjectParameter(shipObjectId, "byosBootupReplacement")
+			if shipObjectReplacement then
+				newShipObjects[world.entityPosition(shipObjectId)] = shipObjectReplacement
+				world.breakObject(shipObjectId, true)
+			end
+		end
 		baseStats = config.getParameter("baseStats")
 		for stat, value in pairs (baseStats) do
 			world.setProperty("fu_byos." .. stat, value)
@@ -36,29 +29,16 @@ end
 function update(dt)
 	if byos then
 		if counter == 1 then
-			parameters = getBYOSParameters("techstation", true, _)
-			world.placeObject("fu_byostechstation", vec2.add(position, {11,0}), _, parameters)
-			parameters = getBYOSParameters("shiplocker", _, true)
-			world.placeObject("fu_byosshiplocker", vec2.add(position, {-10,0}), _, parameters)
-			parameters = getBYOSParameters("teleporter")
-			world.placeObject("fu_byosteleporter", vec2.add(position, {-20,-2}), _, parameters)
-			parameters = getBYOSParameters("shipdoor")
-			world.placeObject("fu_byosshipdoor", vec2.add(position, {16,-2}), _, parameters)
-			parameters = getBYOSParameters("fuelhatch")
-			world.placeObject("fu_byosfuelhatch", vec2.add(position, {19,1}), _, parameters)
-			parameters = getBYOSParameters("captainschair")
-			world.placeObject("fu_byoscaptainschair", vec2.add(position, {23,-2}), _, parameters)
-			parameters = getBYOSParameters("shiphatch")
-			world.placeObject("fu_byosshiphatch", vec2.add(position, {10,-3}), _, parameters)
-			world.placeObject("apexshiplight", vec2.add(position, {4,7}))
-			world.placeObject("apexshiplight", vec2.add(position, {11,7}))
-			world.placeObject("apexshiplight", vec2.add(position, {19,7}))
-			world.placeObject("apexshiplight", vec2.add(position, {-3,7}))
-			world.placeObject("apexshiplight", vec2.add(position, {-10,7}))
-			world.placeObject("apexshiplight", vec2.add(position, {4,-5}))
-			world.placeObject("apexshiplight", vec2.add(position, {-3,-5}))
-			world.placeObject("apexshiplight", vec2.add(position, {-10,-5}))
-			world.placeObject("apexshiplight", vec2.add(position, {-19,-5}))
+			for newShipObjectPosition, newShipObject in pairs (newShipObjects) do 
+				local newShipObjectData = root.itemConfig(newShipObject).config
+				if newShipObjectData then 
+					parameters = nil
+					if newShipObjectData.racialiserType then
+						parameters = getBYOSParameters(newShipObjectData.racialiserType, newShipObjectData.shipPetType, newShipObjectData.byosBootupTreasure)
+					end
+					world.placeObject(newShipObject, newShipObjectPosition, _, parameters)
+				end
+			end
 			object.smash(true)
 		end
 		counter = counter + 1
@@ -72,5 +52,5 @@ function racialiserBootUp()
 			return num
 		end
 	end
-	return 1
+	return 0
 end
