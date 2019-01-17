@@ -76,10 +76,10 @@ function update(dt)
 					params.aggressive = storage.pets[1].config.parameters.aggressive
 					params.level = blacklisted and math.max(8, world.threatLevel()) or math.max(5, world.threatLevel())
 					
-					if blacklisted then
+					--if blacklisted then												--Disabled since I can't be bothered updating the blacklist
 						params.dropPools = {}
 						params.dropPools["default"] = "empty"
-					end
+					--end
 					
 					if monsterType and params.seed then
 						world.spawnMonster(monsterType, spawnPosition, params);
