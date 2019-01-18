@@ -97,14 +97,14 @@ end
 function stun()
 	if status.isResource("stunned") then
 		if status.resourcePositive("health") then
-			status.setResourcePercentage("stunned",1)
+			status.setResource("stunned",status.resourceMax("stunned") or math.huge)
 		else
-			status.setResourcePercentage("stunned",0)
+			status.setResource("stunned",0)
 		end
 	end
 	if status.resourcePositive("health") then
 		if status.isResource("energyRegenBlock") then
-			status.setResourcePercentage("energyRegenBlock",1)
+			status.setResource("energyRegenBlock",status.resourceMax("energyRegenBlock") or 60)
 		end
 	end
 end
