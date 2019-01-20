@@ -184,17 +184,17 @@ end
 -- Coroutine
 function autoFire()
   local level = math.max(1.0, world.threatLevel())
-  local power = 7 * math.max(1.0, world.threatLevel())
-  local fireTime = 0.54
-  local projectileParameters = { power = power , speed=42, knockback=1.5  }
-  local energyUsage = 15
-
+  local power = config.getParameter("power") * math.max(1.0, world.threatLevel())
+  local fireTime = config.getParameter("fireTime")
+  local projectileType = config.getParameter("projectileType")
+  local energyUsage =  config.getParameter("energyUsage")
+  local projectileParameters = { power = power }
   while true do
     while not consumeEnergy(energyUsage) do coroutine.yield() end
 
     local rotation = animator.currentRotationAngle("gun")
     local aimVector = {object.direction() * math.cos(rotation), math.sin(rotation)}
-    world.spawnProjectile("vashtashard", firePosition(), entity.id(), aimVector, false, projectileParameters)
+    world.spawnProjectile(projectileType, firePosition(), entity.id(), aimVector, false, projectileParameters)
     animator.playSound("fire")
     util.wait(fireTime)
   end
