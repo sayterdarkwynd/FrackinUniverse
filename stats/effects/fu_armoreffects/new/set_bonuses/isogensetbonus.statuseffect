@@ -1,0 +1,29 @@
+{
+  "name" : "isogensetbonus",
+
+  "effectConfig" : {
+    "statusEffects" : [ "isogenseticon" ],
+    "armorSetStat" : "fuIsogenSetCount",
+    "armorBonuses" : {
+      "breathProtection" : 1,
+      "fireStatusImmunity" : 1,
+      "lavaImmunity" : 1,
+      "ffextremeheatImmunity" : 1
+    },
+    "weaponTags" : [ "isogen" ],
+    "weaponBonuses" : {
+      "normal" : {
+        "physicalResistance" : { "amount" : 0.15 },
+        "critChance" : { "amount" : 3 }
+      }
+    },
+
+    "configPath" : "/stats/effects/fu_armoreffects/new/set_bonuses/isogensetbonus.statuseffect"
+  },
+
+  "defaultDuration" : 15,
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/fuDefaultSetBonus.lua"
+  ],
+  "scriptDelta": 50
+}
