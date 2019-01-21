@@ -1,0 +1,48 @@
+{
+  "animatedParts" : 
+  {
+    "stateTypes" : 
+    {
+      "antennaeState" : 
+      {
+        "default" : "idle",
+        "states" : 
+        {
+          "idle" : 
+          {
+            "frames" : 2,
+            "cycle" : 3.5,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : 
+    {
+      "antennae" : 
+      {
+        "properties" : 
+        {
+          "centered" : false,
+          "fullbright" : false,
+          "zLevel" : 1
+        },
+
+        "partStates" : 
+        {
+          "antennaeState" : 
+          {
+            "idle" : 
+            {
+              "properties" : 
+              {
+                "image" : "<partImage>:default.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -14,9 +14,9 @@
     "/scripts/actions/position.lua"
   ],
   "parameters": {
-    "rangedAimTime": 0.025,
+    "rangedAimTime": 0.35,
     "rangedWindupTime": 0.05,
-    "rangedMinFireTime": 0.5,
+    "rangedMinFireTime": 0.05,
     "rangedMaxFireTime": 2,
     "arrowSpeed": 62.5
   },
@@ -56,6 +56,83 @@
             },
             "output": {
               "position": "movePosition"
+            }
+          }
+        ]
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": 1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "moveToPosition",
+            "type": "action",
+            "name": "moveToPosition",
+            "parameters": {
+              "avoidLiquid": {"value": true},
+              "groundPosition": {"value": false},
+              "maxGround": {"value": 5},
+              "minGround": {"value": -10},
+              "position": {"key": "rangedPosition"},
+              "run": {"value": true}
+            },
+            "output": {
+              "pathfinding": "rangedPathing"
+            }
+          },
+          {
+            "title": "succeeder",
+            "type": "decorator",
+            "name": "succeeder",
+            "parameters": {},
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "groupResource",
+                  "type": "action",
+                  "name": "groupResource",
+                  "parameters": {
+                    "groupId": {"value": "combat"},
+                    "name": {"value": "minRange"}
+                  },
+                  "output": {
+                    "number": "minRange"
+                  }
+                },
+                {
+                  "title": "inverter",
+                  "type": "decorator",
+                  "name": "inverter",
+                  "parameters": {},
+                  "child": {
+                    "title": "entityInRange",
+                    "type": "action",
+                    "name": "entityInRange",
+                    "parameters": {
+                      "entity": {"key": "target"},
+                      "position": {"key": "self"},
+                      "range": {"key": "minRange"}
+                    }
+                  }
+                },
+                {
+                  "title": "faceEntity",
+                  "type": "action",
+                  "name": "faceEntity",
+                  "parameters": {
+                    "entity": {"key": "target"}
+                  }
+                }
+              ]
             }
           }
         ]
