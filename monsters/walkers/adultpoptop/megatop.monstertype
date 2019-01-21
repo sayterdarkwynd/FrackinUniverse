@@ -1,7 +1,7 @@
 {
-  "type" : "adultpoptop",
-  "shortdescription" : "Adult Poptop",
-  "description" : "It's huge...",
+  "type" : "megatop",
+  "shortdescription" : "Mega Poptop",
+  "description" : "A massive, fully grown Poptop. Fearsome.",
 
   "categories" : [ "adultpoptop" ],
   "parts" : [ "body" ],
@@ -20,13 +20,7 @@
     "shadowbow" : "adultpoptopHunting" } ],
 
   "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua",
-      "/scripts/golemancer/gol_monstermain.lua"
-    ],
-  "tickEvoTime" : 3,
-  "agingEvoTime" : 2500,
-  "evolutions" : [ "/scripts/golemancer/evolutions/poptopgrow4.evo" ],
+    "scripts" : ["/monsters/monster.lua"],
 
     "behavior" : "monster",
 
@@ -226,7 +220,7 @@
 
     "damageParts" : {
       "body" : {
-        "damage" : 13,
+        "damage" : 20,
 
         "teamType" : "enemy",
         "damageSourceKind" : "slash",
@@ -237,23 +231,23 @@
 
     "touchDamage" : {
       "poly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
-      "damage" : 15,
+      "damage" : 20,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "stun" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 1.0,
+    "scale" : 1.5,
 
     "movementSettings" : {
       "collisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
 
-      "mass" : 2.5,
-      "walkSpeed" : 2,
-      "runSpeed" : 3,
+      "mass" : 2.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 4,
 
       "airFriction" : 0,
 
@@ -295,40 +289,40 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 180
+          "baseValue" : 250
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.4
         },
         "healthRegen" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.4
         },
         "powerMultiplier" : {
-          "baseValue" : 1.0
+          "baseValue" : 1.5
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "electricStatusImmunity" : {
           "baseValue" : 0.0
         },
         "poisonResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "poisonStatusImmunity" : {
           "baseValue" : 0.0
@@ -350,9 +344,7 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "monsters" : "adultpoptop" }
+    "capturable" : false,
+    "nametagColor" : [64, 200, 255]
   }
 }
