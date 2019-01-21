@@ -3,6 +3,7 @@ require "/scripts/vec2.lua"
 require "/objects/spawner/colonydeed.lua"
 require "/objects/spawner/colonydeed/scanning.lua"
 require "/objects/ship/fu_shipstatmodifier.lua"
+
 statModifierInit = init or function() end
 local reload = true
 
@@ -20,6 +21,12 @@ function init()
 	
 	local questParticipantOutbox = Outbox.new("questParticipantOutbox", ContactList.new("questParticipantContacts"))
 	self.questParticipant = QuestParticipant.new("questParticipant", questParticipantOutbox)
+	
+	if not object.uniqueId() then
+		object.setUniqueId(sb.makeUuid())
+	end
+	
+	self.notOwnShipMessage = self.notOwnShipMessage or "Only the owner of the ship can manage crew rooms"
 end
 
 function update(dt)
@@ -41,18 +48,18 @@ function die()
 	end
 end
 
-function onInteraction()
+function onInteraction(args)
 	checkHouseIntegrity()
 	grumbleText = displayGrumbles()
 	timer = 0
 	if #storage.grumbles > 0 then
 		return {"ShowPopup", {message = grumbleText}}
 	else
-																--Add crew member info popup if a crew member is attached
+		world.sendEntityMessage(args.sourceId, "openCrewDeedInterface", {objectId = entity.id(), notOwnShipMessage = self.notOwnShipMessage})
 	end
 end
 
-function checkHouseIntegrity()									--Try fix not checking for background when on BYOS ship
+function checkHouseIntegrity()
 	storage.grumbles = scanHouseIntegrity()
 	
 	if fuDeedCheck() then
