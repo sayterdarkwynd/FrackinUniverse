@@ -21,7 +21,7 @@
     "middlefullbright" : "kirhospistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/greenmuzzleblast.png"
-  },d
+  },
   "animationCustom" : {
     "animatedParts" : {
       "parts" : {
@@ -112,5 +112,27 @@
   "critChance" : 0.5,
   "critBonus" : 8,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+    "shortdescription" : "^cyan;Kirhos Blaster II^reset; ^yellow;^reset;",
+  "description" : "Perfection.
+^cyan;Hunting Weapon^reset;  
+^yellow;+1 projectile^reset;", 
+  "animationParts" : {
+    "middle" : "kirhospistol2.png",
+    "middlefullbright" : "kirhospistol2fullbright.png"
+  },
+    "inventoryIcon" : [{ "image" : "kirhospistolicon.png" }],
+	  "critChance" : 1,
+	  "critBonus" : 9,
+	  "primaryAbility" : {
+		"heatLossLevel" : 15,				
+		"heatLossRateMax" : 11,				
+		"lowLevel" : 15,
+		"medLevel" : 22,			
+		"highLevel" : 35,					
+		"overheatLevel" : 42
+	  }
+  }
 }
