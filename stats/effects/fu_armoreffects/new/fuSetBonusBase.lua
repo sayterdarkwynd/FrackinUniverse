@@ -19,9 +19,10 @@ function fuSetBonusBase.init(self, config_file)
   self.effectConfig = root.assetJson(config_file)["effectConfig"]
   -- Set status effect(s)
   self.statusEffects = self.effectConfig.statusEffects
-  -- Armor and weapon effects
+  -- Armor effects
   self.armorBonuses = self.effectConfig.armorBonuses
   self.armorMovementModifiers = self.effectConfig.armorMovementModifiers
+  -- Weapon effects
   self.weaponBonuses = self.effectConfig.weaponBonuses
   --[[ NOTE: weaponBonuses should be an array with three keys:
       * "normal": The basic bonuses to apply with a 1-handed weapon.
@@ -30,9 +31,8 @@ function fuSetBonusBase.init(self, config_file)
       The "normal" key is mandatory. If "dual" or "twohand" are omitted, no
       additional bonuses will be applied.
   ]]--
-  -- Buff groups
-  self.armorBonusGroup = effect.addStatModifierGroup({})
-  self.weaponBonusGroup = effect.addStatModifierGroup({})
+  -- Biome effects
+  self.biomeBonuses = self.effectConfig.biomeBonuses
   -- Equipped armor checks
   self.armorSetStat = self.effectConfig.armorSetStat
   self.setBonusActive = false
@@ -42,6 +42,13 @@ function fuSetBonusBase.init(self, config_file)
   self.currentAlt = nil
   self.bonusWeaponCount = 0 -- 0, 1 or 2
   self.bonusTwoHanded = false
+  -- Bonus biome checks
+  self.currentBiome = nil
+  self.biomeTags = self.effectConfig.biomeTags
+  -- Buff groups
+  self.armorBonusGroup = effect.addStatModifierGroup({})
+  self.weaponBonusGroup = effect.addStatModifierGroup({})
+  self.biomeBonusGroup = effect.addStatModifierGroup({})
 
   script.setUpdateDelta(5)
 end
@@ -59,6 +66,9 @@ end
 
 -- Returns true if the weapon count has changed, and false otherwise.
 function fuSetBonusBase.updateBonusWeaponCount(self)
+  if (self.weaponTags == nil or #(self.weaponTags) == 0) then
+    return false
+  end
   local newPrimary = world.entityHandItem(entity.id(), "primary")
   local newAlt = world.entityHandItem(entity.id(), "alt")
   -- Check if the player's equipped items have changed. Exit if they haven't.
@@ -94,16 +104,44 @@ function fuSetBonusBase.updateBonusWeaponCount(self)
   return changed
 end
 
+function fuSetBonusBase.inBonusBiome(self)
+  local tags = self.biomeTags
+  if (tags == nil or #tags == 0) then
+    return false
+  end
+  for _, tag in pairs(tags) do
+    if (self.currentBiome == tag) then
+      return true
+    end
+  end
+  return false
+end
+
 --========================== BONUS EFFECT FUNCTIONS ==========================--
+
+function fuSetBonusBase.getBonusGroupFromTable(self, name, table)
+  if (table.amount ~= nil) then
+    return {stat = name, amount = table.amount}
+  elseif (table.baseMultiplier ~= nil) then
+    return {stat = name, baseMultiplier = table.baseMultiplier}
+  elseif (table.effectiveMultiplier ~= nil) then
+    return {stat = name, effectiveMultiplier = table.effectiveMultiplier}
+  else
+    -- Default to 'amount = 1'.
+    return {stat = name, amount = 1}
+  end
+end
 
 function fuSetBonusBase.applyArmorBonuses(self)
   status.addPersistentEffects("setbonus", self.statusEffects)
   local newGroup = {}
   local i = 1
-  for bStat, bAmount in pairs(self.armorBonuses) do
-    statName = tostring(bStat)
-    newGroup[i] = {stat = statName, amount = bAmount}
-    i = i + 1
+  for stat, bonus in pairs(self.armorBonuses) do
+    local next = self:getBonusGroupFromTable(tostring(stat), bonus)
+    if (next ~= false) then
+      newGroup[i] = next
+      i = i + 1
+    end
   end
   -- Update armor bonus modifier group.
   effect.setStatModifierGroup(self.armorBonusGroup, newGroup)
@@ -128,68 +166,36 @@ end
 function fuSetBonusBase.updateWeaponBonuses(self)
   if (self.bonusWeaponCount > 0) then
     -- 1. Add normal weapon bonuses.
-    local newStats = {}
-    local newMultipliers = {}
+    local newGroup = {}
+    local i = 1
     for stat, bonus in pairs(self.weaponBonuses.normal) do
-      local statName = tostring(stat)
-      if (bonus.multiplier == true) then
-        newMultipliers[statName] = bonus.amount
-      else
-        newStats[statName] = bonus.amount
+      local next = self:getBonusGroupFromTable(tostring(stat), bonus)
+      if (next ~= false) then
+        newGroup[i] = next
+        i = i + 1
       end
     end
     -- 2. Add dual-wielding weapon bonuses, if applicable.
     if ((self.bonusWeaponCount == 2) and (self.weaponBonuses.dual ~= nil)) then
       for stat, bonus in pairs(self.weaponBonuses.dual) do
-        local statName = tostring(stat)
-        -- Add together with existing stats of the same type.
-        if (bonus.multiplier == true) then
-          if (newMultipliers[statName] ~= nil) then
-            newMultipliers[statName] = newMultipliers[statName] + bonus.amount
-          else
-            newMultipliers[statName] = bonus.amount
-          end
-        else
-          if (newStats[statName] ~= nil) then
-            newStats[statName] = newStats[statName] + bonus.amount
-          else
-            newStats[statName] = bonus.amount
-          end
+        local next = self:getBonusGroupFromTable(tostring(stat), bonus)
+        if (next ~= false) then
+          newGroup[i] = next
+          i = i + 1
         end
       end
     end
     -- 3. Add two-handed weapon bonuses, if applicable.
     if ((self.bonusWeaponCount == 1) and self.bonusTwoHanded and (self.weaponBonuses.twohand ~= nil)) then
       for stat, bonus in pairs(self.weaponBonuses.twohand) do
-        local statName = tostring(stat)
-        -- Add together with existing stats of the same type.
-        if (bonus.multiplier == true) then
-          if (newMultipliers[statName] ~= nil) then
-            newMultipliers[statName] = newMultipliers[statName] + bonus.amount
-          else
-            newMultipliers[statName] = bonus.amount
-          end
-        else
-          if (newStats[statName] ~= nil) then
-            newStats[statName] = newStats[statName] + bonus.amount
-          else
-            newStats[statName] = bonus.amount
-          end
+        local next = self:getBonusGroupFromTable(tostring(stat), bonus)
+        if (next ~= false) then
+          newGroup[i] = next
+          i = i + 1
         end
       end
     end
-    -- Format the total boosts into a statModifierGroup.
-    local newGroup = {}
-    local i = 1
-    for statName, statAmt in pairs(newStats) do
-      newGroup[i] = {stat = statName, amount = statAmt}
-      i = i + 1
-    end
-    for statName, statMult in pairs(newMultipliers) do
-      newGroup[i] = {stat = statName, effectiveMultiplier = statMult}
-      i = i + 1
-    end
-    -- Update armor bonus modifier group.
+    -- Update weapon bonus modifier group.
     effect.setStatModifierGroup(self.weaponBonusGroup, newGroup)
   else
     self:removeWeaponBonuses()
@@ -202,6 +208,29 @@ function fuSetBonusBase.removeWeaponBonuses(self)
   self.weaponBonusGroup = effect.addStatModifierGroup({})
 end
 
+function fuSetBonusBase.updateBiomeBonuses(self)
+  if (self:inBonusBiome() == true) then
+    local newGroup = {}
+    local i = 1
+    for stat, bonus in pairs(self.biomeBonuses) do
+      local next = self:getBonusGroupFromTable(tostring(stat), bonus)
+      if (next ~= false) then
+        newGroup[i] = next
+        i = i + 1
+      end
+    end
+    -- Update biome bonus modifier group.
+    effect.setStatModifierGroup(self.biomeBonusGroup, newGroup)
+  else
+    self:removeBiomeBonuses()
+  end
+end
+
+function fuSetBonusBase.removeBiomeBonuses(self)
+  effect.removeStatModifierGroup(self.biomeBonusGroup)
+  self.biomeBonusGroup = effect.addStatModifierGroup({})
+end
+
 --=========================== MAIN UPDATE FUNCTION ==========================--
 
 function fuSetBonusBase.update(self)
@@ -211,19 +240,30 @@ function fuSetBonusBase.update(self)
     self.setBonusActive = active
     if (active) then
       self:applyArmorBonuses()
+      -- Force weapon and biome checks and updates on set bonus activation.
+      self:updateBonusWeaponCount()
       self:updateWeaponBonuses()
+      self.currentBiome = world.type()
+      self:updateBiomeBonuses()
     else
       self:removeWeaponBonuses()
       self:removeArmorBonuses()
+      self:removeBiomeBonuses()
     end
   end
   if (active) then
     -- Apply any movement modifiers from armor set.
     self:applyArmorMovementModifiers()
     -- Update bonus weapon effects if the player's bonus weapon count has changed.
-    changed = self:updateBonusWeaponCount()
+    local changed = self:updateBonusWeaponCount()
     if (changed) then
       self:updateWeaponBonuses()
+    end
+    -- Update biome bonus effects if the current world type has changed.
+    local newBiome = world.type()
+    if (self.currentBiome ~= newBiome) then
+      self.currentBiome = newBiome
+      self:updateBiomeBonuses()
     end
   end
 end
