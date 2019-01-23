@@ -79,19 +79,39 @@ function update(dt)
 					params.level = world.threatLevel()
 					
 					params.dropPools = {}
-					params.dropPools["default"] = "empty"
-					
-					if baseParams.deathBehavior and baseParams.deathBehavior ~= "monster-death" then --Makes it so that this doesn't break some monsters (maybe make them just drop the beer item instead?)	
-					else
-						params.deathBehavior = "monster-death"
-						params.behaviorConfig = baseParams.behaviorConfig or {}
-						params.behaviorConfig.deathActions = params.behaviorConfig.deathActions or {}
-						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
-					end
+					params.dropPools["default"] = "fu_precursorspawnerloot"
 					
 					params.statusSettings = baseParams.statusSettings or {}
 					params.statusSettings.stats = baseParams.statusSettings.stats or {}
 					params.statusSettings.stats.boozeImmunity = {baseValue = 1.0}
+					
+					params.behaviorConfig = baseParams.behaviorConfig or {}
+					
+					if baseParams.deathBehavior and baseParams.deathBehavior ~= "monster-death" then --Makes it so that this doesn't break some monsters (maybe make them just drop the beer item instead?)	
+					else
+						params.deathBehavior = "monster-death"
+						params.behaviorConfig.deathActions = params.behaviorConfig.deathActions or {}
+						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
+					end
+					
+					for actionType, actions in pairs (params.behaviorConfig) do
+						if type(actions) == "table" then
+							local tempActions = actions
+							for num, action in pairs (actions) do
+								if action.name == "action-spawnmonster" then
+									tempActions[num] = false
+								elseif action.name == "action-spawncompanions" then
+									tempActions[num] = false
+								end
+							end
+							params.behaviorConfig[actionType] = {}
+							for _, action in pairs (tempActions) do
+								if action then
+									table.insert(params.behaviorConfig[actionType], action)
+								end
+							end
+						end
+					end
 					
 					if monsterType and params.seed then
 						world.spawnMonster(monsterType, spawnPosition, params);
