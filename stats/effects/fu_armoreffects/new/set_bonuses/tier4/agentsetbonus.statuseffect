@@ -1,0 +1,27 @@
+{
+  "name" : "agentsetbonus",
+
+  "effectConfig" : {
+    "statusEffects" : [ "agentseticon" ],
+    "armorSetStat" : "fuAgentSetCount",
+    "armorBonuses" : {},
+    "armorMovementModifiers" : {
+      "speed" : 1.25,
+      "jump" : 1.25
+    },
+    "weaponTags" : [ "dagger", "pistol" ],
+    "weaponBonuses" : {
+      "normal" : {
+        "critChance" : { "amount" : 4 }
+      }
+    },
+
+    "configPath" : "/stats/effects/fu_armoreffects/new/set_bonuses/tier4/agentsetbonus.statuseffect"
+  },
+
+  "defaultDuration" : 15,
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/fuDefaultSetBonus.lua"
+  ],
+  "scriptDelta": 50
+}
