@@ -4,13 +4,14 @@
   "inventoryIcon" : "kirhospistolicon.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "^#a5ff00;A standard-issue Arkology Police sidearm.^reset;",
-  "shortdescription" : "^#a5ff00;Kirhosi Blaster^reset;",
+  "description" : "A low-capacity, high power energy sidearm.
+^cuan;Hunting weapon^reset;",
+  "shortdescription" : "Kirhosi Blaster",
   "category" : "pistol",
-  "level" : 7,
+  "level" : 1,
   "tooltipKind" : "gun2overheat",
 
-  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "elder"],
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy"],
   "twoHanded" : false,
   "weaponType" : "Energy",
   "animation" : "/items/active/weapons/ranged/unique/fugunoverheating.animation",
@@ -20,7 +21,7 @@
     "middlefullbright" : "kirhospistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/greenmuzzleblast.png"
-  },
+  },d
   "animationCustom" : {
     "animatedParts" : {
       "parts" : {
@@ -48,18 +49,18 @@
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
     "fireTime" : 0.5,
-    "baseDps" : 6.5,
+    "baseDps" : 13,
     "energyUsage" : 18.5,
-    "inaccuracy" : 0.03,
+    "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
     
 	//Overheating Weapon Values (based heavily on elithian races version)
-	"heatGain" : 4,					//Heat generated per shot
-	"coolingTime" : 0.25,				//Time before passive cooling kicks in
-	"heatLossLevel" : 4,				//Heat lost per second while not overheated
-	"heatLossRateMax" : 3,				//Heat lost per second while overheated
+	"heatGain" : 10,					//Heat generated per shot
+	"coolingTime" : 0.42,				//Time before passive cooling kicks in
+	"heatLossLevel" : 10,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 7,				//Heat lost per second while overheated
 	"lowLevel" : 5,					//Value required to reach Low heat
 	"medLevel" : 12,				//Value required to reach Medium heat
 	"highLevel" : 25,				//Value required to reach High heat	
