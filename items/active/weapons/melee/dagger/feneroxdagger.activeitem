@@ -1,0 +1,75 @@
+{
+  "itemName" : "feneroxdagger",
+  "price" : 10,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "Strange shape, but actually quite useful.",
+  "shortdescription" : "Fenerox Knife",
+  "tooltipKind" : "sword",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
+  "level" : 1,
+  "inventoryIcon" : "feneroxdagger.png",
+  "animation" : "dagger.animation",
+  "animationParts" : {
+    "blade" : "feneroxdagger.png",
+    "handle" : ""
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [0, 1.75]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+
+  "aimOffset" : -1.0,
+
+  "elementType" : "physical", 
+  
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+    "fireTime" : 0.5,
+    "baseDps" : 9,
+    "damageConfig" : {
+      "knockback" : 10
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.2, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -20,
+        "weaponRotation" : -20,
+        "weaponOffset" : [0.2, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0.2, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      }
+    }
+  },
+  "critChance" : 1, 
+  "critBonus" : 2, 
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
