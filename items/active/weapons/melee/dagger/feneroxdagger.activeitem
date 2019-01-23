@@ -3,7 +3,8 @@
   "price" : 10,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Strange shape, but actually quite useful.",
+  "description" : "Strange shape, but actually quite useful.
+^cyan;Hunting Weapon^reset;",
   "shortdescription" : "Fenerox Knife",
   "tooltipKind" : "sword",
   "category" : "dagger",
@@ -30,7 +31,7 @@
 
   "aimOffset" : -1.0,
 
-  "elementType" : "physical", 
+   "elementalType" : "physical", 
   
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
@@ -38,7 +39,8 @@
     "fireTime" : 0.5,
     "baseDps" : 9,
     "damageConfig" : {
-      "knockback" : 10
+      "knockback" : 10,
+      "damageSourceKind" : "bow"
     },
     "stances" : {
       "idle" : {
