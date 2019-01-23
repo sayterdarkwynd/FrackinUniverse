@@ -1,0 +1,115 @@
+{
+  "itemName" : "kirhospistol",
+  "price" : 21,
+  "inventoryIcon" : "kirhospistolicon.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "description" : "^#a5ff00;A standard-issue Arkology Police sidearm.^reset;",
+  "shortdescription" : "^#a5ff00;Kirhosi Blaster^reset;",
+  "category" : "pistol",
+  "level" : 7,
+  "tooltipKind" : "gun2overheat",
+
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "elder"],
+  "twoHanded" : false,
+  "weaponType" : "Energy",
+  "animation" : "/items/active/weapons/ranged/unique/fugunoverheating.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "kirhospistol.png",
+    "middlefullbright" : "kirhospistolfullbright.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/greenmuzzleblast.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.8, 0.26]
+		  }
+		}
+      }
+    },   
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/dark-explosion.ogg" ],
+      "cooldown" : [ "/sfx/weapons/charging.wav" ]
+    }
+  },
+
+  "baseOffset" : [0.8, 0.26],
+  "muzzleOffset" : [0.6, 0],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+    "class" : "FUOverHeating",
+    "fireTime" : 0.5,
+    "baseDps" : 6.5,
+    "energyUsage" : 18.5,
+    "inaccuracy" : 0.03,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+    
+	//Overheating Weapon Values (based heavily on elithian races version)
+	"heatGain" : 4,					//Heat generated per shot
+	"coolingTime" : 0.25,				//Time before passive cooling kicks in
+	"heatLossLevel" : 4,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 3,				//Heat lost per second while overheated
+	"lowLevel" : 5,					//Value required to reach Low heat
+	"medLevel" : 12,				//Value required to reach Medium heat
+	"highLevel" : 25,				//Value required to reach High heat	
+	"overheatLevel" : 32,				//Overheat at this value
+	
+    "projectileType" : "farsightshotkirhos",
+    "projectileParameters" : {
+      "speed" : 70,
+      "knockback" : 20
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : false,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : false,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "overheat" : {
+		"armRotation" : -22,
+		"weaponRotation" : 56,
+		"twoHanded" : false,
+
+		"allowRotate" : false,
+		"allowFlip" : true
+	    }
+	  }
+  },
+
+  "critChance" : 0.5,
+  "critBonus" : 8,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
