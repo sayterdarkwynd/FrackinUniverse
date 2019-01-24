@@ -10,13 +10,14 @@ function init()
   self.evolutions = config.getParameter("evolutions")
   self.tickEvoTime = config.getParameter("tickEvoTime") or 5.0
   self.tickEvoTimer = self.tickEvoTime
-
+  self.tickEvoTimerAging = config.getParameter("agingEvoTime") or 5000
   self.consumedTable = {}
 end
 
 function update(dt)
   preGolemUpdate(dt)
   self.tickEvoTimer = self.tickEvoTimer - dt
+  self.tickEvoTimerAging = self.tickEvoTimerAging - dt
   if self.tickEvoTimer <= 0 then
     self.tickEvoTimer = self.tickEvoTime
     self.position = mcontroller.position()
@@ -24,8 +25,15 @@ function update(dt)
       local evolution = root.assetJson(v)
       if consumeResources(evolution) == "allConsumed" then evolve(evolution) end
     end
-
   end
+  if self.tickEvoTimerAging <= 0 then
+    self.tickEvoTimerAging = self.tickEvoTimerAging
+    self.position = mcontroller.position()
+    for _, v in ipairs(self.evolutions) do
+      local evolution = root.assetJson(v)
+      evolve(evolution)
+    end
+  end  
 end
 
 function require(s)
