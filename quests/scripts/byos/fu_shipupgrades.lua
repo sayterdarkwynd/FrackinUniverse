@@ -1,9 +1,11 @@
 require "/scripts/util.lua"
 require "/quests/scripts/questutil.lua"
 require "/quests/scripts/portraits.lua"
+require "/objects/spawner/colonydeed/scanning.lua"
 
 function init()
 	upgradeConfig = root.assetJson("/quests/scripts/byos/fu_shipupgrades.config")
+	self = upgradeConfig.atmosphereSystem
 	crewSizeShipOld = 0
 	maxFuelShipOld = 0
 	fuelEfficiencyShipOld = 0
@@ -14,10 +16,20 @@ function update(dt)
 	if world.type() == "unknown" then
 		shipLevel = world.getProperty("ship.level")
 		if shipLevel == 0 then
-			if not world.tileIsOccupied(mcontroller.position(), false) then
-				lifeSupport(false)
+			if world.getProperty("fu_byos.newAtmosphereSystem") then
+				self.position = entity.position()
+				room = findHouseBoundary(self.position, self.maxPerimeter or 500)
+				if not room.poly then
+					lifeSupport(false)
+				else
+					lifeSupport(true)
+				end
 			else
-				lifeSupport(true)
+				if not world.tileIsOccupied(mcontroller.position(), false) then
+					lifeSupport(false)
+				else
+					lifeSupport(true)
+				end
 			end
 		else
 			lifeSupport(true)
@@ -155,4 +167,8 @@ end
 function round(num, numDecimalPlaces)
   local mult = 10^(numDecimalPlaces or 0)
   return math.floor(num * mult + 0.5) / mult
+end
+
+function isShipWorld()
+  return false
 end
