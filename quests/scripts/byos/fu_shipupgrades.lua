@@ -1,9 +1,12 @@
 require "/scripts/util.lua"
 require "/quests/scripts/questutil.lua"
 require "/quests/scripts/portraits.lua"
+require "/scripts/messageutil.lua"
 
 function init()
 	upgradeConfig = root.assetJson("/quests/scripts/byos/fu_shipupgrades.config")
+	self = upgradeConfig.atmosphereSystem
+	self.maxPerimeter = self.maxPerimeter or 500
 	crewSizeShipOld = 0
 	maxFuelShipOld = 0
 	fuelEfficiencyShipOld = 0
@@ -11,18 +14,37 @@ function init()
 end
 
 function update(dt)
+	promises:update()
+	
 	if world.type() == "unknown" then
 		shipLevel = world.getProperty("ship.level")
 		if shipLevel == 0 then
-			if not world.tileIsOccupied(mcontroller.position(), false) then
-				lifeSupport(false)
+			if world.getProperty("fu_byos.newAtmosphereSystem") then
+				self.position = entity.position()
+				if roomCheckId then
+					promises:add(world.sendEntityMessage(roomCheckId, "fu_checkByosAtmosphere", self), function(enclosed)
+						if enclosed then
+							lifeSupport(true)
+						else
+							lifeSupport(false)
+						end
+					end)
+					roomCheckId = nil
+				end
+				roomCheckId = sb.makeUuid()
+				world.spawnMonster("fu_byosatmospheretemp", self.position, {uniqueId = roomCheckId})
 			else
-				lifeSupport(true)
+				if not world.tileIsOccupied(mcontroller.position(), false) then
+					lifeSupport(false)
+				else
+					lifeSupport(true)
+				end
 			end
 		else
 			lifeSupport(true)
 		end
 	end
+	
 	if player.worldId() == player.ownShipWorldId() then
 		if not initFinished then
 			initFinished = true
@@ -40,19 +62,13 @@ function update(dt)
 		crewSizeShip = world.getProperty("fu_byos.crewSize") or 0
 		shipMaxFuel = world.getProperty("ship.maxFuel")
 		maxFuelShip = world.getProperty("fu_byos.maxFuel") or 0
-		shipFuelEfficiency = round(world.getProperty("ship.fuelEfficiency"), 3)
+		shipFuelEfficiency = world.getProperty("ship.fuelEfficiency")
 		fuelEfficiencyShip = world.getProperty("fu_byos.fuelEfficiency") or 0
 		shipShipSpeed = player.shipUpgrades().shipSpeed
 		shipSpeedShip = world.getProperty("fu_byos.shipSpeed") or 0
 		shipMassShip = world.getProperty("fu_byos.shipMass") or 0
-		if world.getProperty("fu_byos.inWarp") then
-			--world.spawnProjectile("explosivebullet", vec2.add(entity.position(), {50,0}), entity.id(), {-1, 0}, false, {}) -- disabled until properly implemented
-		end
 		if crewSizeShip then
 			crewSizeNew, crewSizeShipNew = calculateNew("crewSize", crewSizeShip, crewSizeShipOld, shipCrewSize)
-			--[[ if crewSizeNew > world.getProperty("ship.crewSize") then
-				player.upgradeShip({crewSize = crewSizeNew})
-			end ]]--
 			if shipLevel == 0 then
 				crewSizeShipOld = crewSizeNew
 				status.setStatusProperty("byosCrewSize", crewSizeNew)
@@ -150,9 +166,4 @@ function calculateNew(stat, modifier, oldModifier, currentAmount)
 		--sb.logInfo("4. " .. statNew)
 		return statNew, statModifier
 	end
-end
-
-function round(num, numDecimalPlaces)
-  local mult = 10^(numDecimalPlaces or 0)
-  return math.floor(num * mult + 0.5) / mult
 end
