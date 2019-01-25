@@ -169,7 +169,7 @@ function doUpgrade()
 						upgradedItem.parameters.rarity = "essential"	   
 					end
 					
-	                -- is it a fishing rod?
+
 					if (itemConfig.config.category == "fishingRod") then
 						if itemConfig.parameters.reelParameters then
 							upgradedItem.parameters.reelParameters.reelOutLength = (itemConfig.parameters.reelParameters.reelOutLength or 1) +10
