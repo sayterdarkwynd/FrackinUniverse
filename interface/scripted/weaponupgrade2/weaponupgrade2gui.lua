@@ -146,11 +146,11 @@ function doUpgrade()
 					self.baseValueMod = itemConfig.config.level or 1 -- store the original level in case we need it for calculations
 					upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 					if (itemConfig.parameters.baseDps) or (itemConfig.config.baseDps) then
-						upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/30) )  -- increase DPS a bit
+						upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/80) )  -- increase DPS a bit
 					end
 					
-					upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 0.25  -- increase Crit Chance
-					upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage  
+					upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 0.15  -- increase Crit Chance
+					upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 0.5     -- increase Crit Damage  
 					
 					-- is it a rapier?
 					if (itemConfig.config.category == "rapier") or (itemConfig.config.category == "Rapier") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") then
@@ -285,7 +285,7 @@ function doUpgrade()
 						-- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
 						if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
 							local baseDpsBase = itemConfig.config.primaryAbility.baseDps
-							local baseDpsMod = (upgradedItem.parameters.level/20)
+							local baseDpsMod = (upgradedItem.parameters.level/80)
 							local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
 							upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
 						end							
