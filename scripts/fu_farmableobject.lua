@@ -3,6 +3,7 @@ require "/scripts/vec2.lua"
 
 function init()
 	stages = config.getParameter("stages")
+	farmingModConfig = root.assetJson("/farming.config").wetToDryMods
 	if #stages > 0 then
 		storage.stage = storage.stage or 1
 		if not storage.lastHarvest then
@@ -95,8 +96,8 @@ end
 function checkForMoisture()
 	local groundPosition = object.position()
 	local objectId = entity.id()
-	local modPositions = {}
 	local noMoisture = false
+	local modData = {}
 	local modifiers = {{-1, 0}, {1, 0}}
 	while world.objectAt(groundPosition) == objectId do			--Assumes the crops can only be placed on the ground
 		groundPosition = vec2.add(groundPosition, {0, -1})
@@ -105,8 +106,9 @@ function checkForMoisture()
 		local position = vec2.add(groundPosition, {0, 1})
 		while world.objectAt(position) == objectId do
 			local modPosition = vec2.add(position, {0, -1})
-			if world.mod(modPosition, "foreground") == "tilled" then
-				table.insert(modPositions, modPosition)
+			local newMod = farmingModConfig[world.mod(modPosition, "foreground")]
+			if newMod then
+				table.insert(modData, {position = modPosition, mod = newMod})
 				position = vec2.add(position, modifier)
 			else
 				noMoisture = true
@@ -120,11 +122,10 @@ function checkForMoisture()
 	if noMoisture then
 		return false
 	end
-	sb.logInfo(sb.printJson(modPositions))
-	for _, position in pairs (modPositions) do
-		world.placeMod(position, "foreground", "tilleddry")
+	for _, data in pairs (modData) do
+		world.placeMod(data.position, "foreground", data.mod)
 	end
-	if #modPositions > 0 then
+	if #modData > 0 then
 		return true
 	end
 end
