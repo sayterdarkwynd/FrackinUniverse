@@ -4,6 +4,11 @@ require "/scripts/vec2.lua"
 function init()
 	stages = config.getParameter("stages")
 	farmingModConfig = root.assetJson("/farming.config").wetToDryMods
+	seedDrop = config.getParameter("dropSeed")
+	if type(seedDrop) ~= "string" then
+		dontDropItem = seedDrop == false
+		seedDrop = nil
+	end
 	if #stages > 0 then
 		storage.stage = storage.stage or 1
 		if not storage.lastHarvest then
@@ -35,11 +40,11 @@ function die()
 	if storage.harvestable then
 		dropHarvest()
 		storage.stage = stages[storage.stage].resetToStage
-		if storage.stage then
-			world.spawnItem(object.name(), object.position())
+		if storage.stage and not dontDropItem then
+			world.spawnItem(seedDrop or object.name(), object.position())
 		end
 	elseif not dontDropItem then
-		world.spawnItem(object.name(), object.position())
+		world.spawnItem(seedDrop or object.name(), object.position())
 	end
 end
 
@@ -52,6 +57,8 @@ function onInteraction()
 		dontDropItem = true
 		object.smash(true)
 		return
+	else
+		storage.stage = storage.stage + 1 
 	end
 	resetGrowthTime()
 	setImage()
@@ -87,7 +94,10 @@ end
 function setImage()
 	animator.setGlobalTag("stage", storage.stage - 1)
 	if stages[storage.stage].alts then
-		animator.setGlobalTag("alt", math.random(0, stages[storage.stage].alts - 1))
+		if not storage.alt then									--Assumes that it has the same amount of alts everytime it has alts
+			storage.alt = math.random(0, stages[storage.stage].alts - 1)
+		end
+		animator.setGlobalTag("alt", storage.alt)
 	else
 		animator.setGlobalTag("alt", 0)
 	end
