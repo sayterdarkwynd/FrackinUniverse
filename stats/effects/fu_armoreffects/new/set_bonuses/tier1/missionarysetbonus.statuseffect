@@ -1,0 +1,35 @@
+{
+  "name" : "missionarysetbonus",
+
+  "effectConfig" : {
+    "statusEffects" : [ "missionaryseticon" ],
+    "armorSetStat" : "fuMissionarySetCount",
+
+    "armorBonuses" : {
+      "critBonus" : { "baseMultiplier" : 1.15 }
+    },
+    "armorMovementModifiers" : {
+      "speed" : 1.10,
+      "jump" : 1.10
+    },
+
+    "weaponTags" : [ "fist", "quarterstaff" ],
+    "weaponBonuses" : {
+      "normal" : {},
+      "dual" : {
+        "powerMultiplier" : { "effectiveMultiplier" : 1.25 }
+      },
+      "twohand" : {
+        "powerMultiplier" : { "effectiveMultiplier" : 1.25 }
+      }
+    },
+
+    "configPath" : "/stats/effects/fu_armoreffects/new/set_bonuses/tier1/missionarysetbonus.statuseffect"
+  },
+
+  "defaultDuration" : 15,
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/fuDefaultSetBonus.lua"
+  ],
+  "scriptDelta": 5
+}

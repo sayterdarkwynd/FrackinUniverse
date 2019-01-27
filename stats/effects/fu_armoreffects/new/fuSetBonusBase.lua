@@ -18,7 +18,8 @@ function fuSetBonusBase.init(self, config_file)
   -- Armor Set Configuration --
   self.effectConfig = root.assetJson(config_file)["effectConfig"]
   -- Set status effect(s)
-  self.statusEffects = self.effectConfig.statusEffects
+  self.statusEffects = config.getParameter("statusEffects")
+  --self.statusEffects = self.effectConfig.statusEffects
   -- Armor effects
   self.armorBonuses = self.effectConfig.armorBonuses
   self.armorMovementModifiers = self.effectConfig.armorMovementModifiers
@@ -37,7 +38,8 @@ function fuSetBonusBase.init(self, config_file)
   self.armorSetStat = self.effectConfig.armorSetStat
   self.setBonusActive = false
   -- Equipped weapon checks
-  self.weaponTags = self.effectConfig.weaponTags
+  self.weaponTags = config.getParameter("weaponTags")
+  --self.weaponTags = self.effectConfig.weaponTags
   self.currentPrimary = nil
   self.currentAlt = nil
   self.bonusWeaponCount = 0 -- 0, 1 or 2

@@ -4,10 +4,11 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^green;+15% Shield Regen, Blocking, and Stamina^reset;
-^#e43774;Sword/Mace and Shield: +20% Health^reset;
-^cyan;+6% Fire Resist. 15% Knockback Resist^reset;",
+  "description" : "^red;+2% Fire Resist^reset;
+Set Bonuses:
+^a00000;+15% Shield Health and Regen, +15% Knockback Resist^reset;
+^green;Sword/Mace and Shield: +20% Health^reset;",
+
   "shortdescription" : "Plebeian Cap",
   "category" : "t1armoru",
   "tooltipKind" : "armornew2",
@@ -50,13 +51,13 @@
   "statusEffects" : [
     "plebiansetbonus",
     {
-      "stat" : "fu_plebianset_head",
+      "stat" : "fuPlebianSetCount",
       "amount" : 1
     },
     {
       "stat" : "fireResistance",
       "amount" : 0.02
-    }   
+    }
   ],
 
   "colorOptions" : [
