@@ -47,19 +47,21 @@ function die()
 end
 
 function onInteraction()
-	storage.harvestable = false
-	object.setInteractive(false)
-	dropHarvest()
-	storage.stage = stages[storage.stage].resetToStage
-	if not storage.stage then
-		dontDropItem = true
-		object.smash(true)
-		return
-	else
-		storage.stage = storage.stage + 1 
+	if storage.harvestable then
+		storage.harvestable = false
+		object.setInteractive(false)
+		dropHarvest()
+		storage.stage = stages[storage.stage].resetToStage
+		if not storage.stage then
+			dontDropItem = true
+			object.smash(true)
+			return
+		else
+			storage.stage = storage.stage + 1 
+		end
+		resetGrowthTime()
+		setImage()
 	end
-	resetGrowthTime()
-	setImage()
 end
 
 function grow()
