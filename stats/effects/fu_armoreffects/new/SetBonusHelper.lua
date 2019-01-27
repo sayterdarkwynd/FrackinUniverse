@@ -1,10 +1,10 @@
 require "/scripts/util.lua"
 
-fuSetBonusBase = {}
+SetBonusHelper = {}
 
 --============================= CLASS DEFINITION ============================--
 
-function fuSetBonusBase.new(self, child)
+function SetBonusHelper.new(self, child)
   child = child or {}
   setmetatable(child, self)
   child.parent = self
@@ -14,17 +14,14 @@ end
 
 --============================== INIT AND UNINIT =============================--
 
-function fuSetBonusBase.init(self, config_file)
-  -- Armor Set Configuration --
-  self.effectConfig = root.assetJson(config_file)["effectConfig"]
+function SetBonusHelper.init(self)
   -- Set status effect(s)
   self.statusEffects = config.getParameter("statusEffects")
-  --self.statusEffects = self.effectConfig.statusEffects
   -- Armor effects
-  self.armorBonuses = self.effectConfig.armorBonuses
-  self.armorMovementModifiers = self.effectConfig.armorMovementModifiers
+  self.armorBonuses = config.getParameter("armorBonuses")
+  self.armorMovementModifiers = config.getParameter("armorMovementModifiers")
   -- Weapon effects
-  self.weaponBonuses = self.effectConfig.weaponBonuses
+  self.weaponBonuses = config.getParameter("weaponBonuses")
   --[[ NOTE: weaponBonuses should be an array with three keys:
       * "normal": The basic bonuses to apply with a 1-handed weapon.
       * "dual": Additional bonuses to add when dual-wielding 1-handed weapons.
@@ -33,20 +30,20 @@ function fuSetBonusBase.init(self, config_file)
       additional bonuses will be applied.
   ]]--
   -- Biome effects
-  self.biomeBonuses = self.effectConfig.biomeBonuses
+  self.biomeBonuses = config.getParameter("biomeBonuses")
   -- Equipped armor checks
-  self.armorSetStat = self.effectConfig.armorSetStat
+  self.armorSetStat = config.getParameter("armorSetStat")
   self.setBonusActive = false
   -- Equipped weapon checks
   self.weaponTags = config.getParameter("weaponTags")
-  --self.weaponTags = self.effectConfig.weaponTags
+  self.offhandTags = config.getParameter("offhandTags")
   self.currentPrimary = nil
   self.currentAlt = nil
   self.bonusWeaponCount = 0 -- 0, 1 or 2
   self.bonusTwoHanded = false
   -- Bonus biome checks
   self.currentBiome = nil
-  self.biomeTags = self.effectConfig.biomeTags
+  self.biomeTags = config.getParameter("biomeTags")
   -- Buff groups
   self.armorBonusGroup = effect.addStatModifierGroup({})
   self.weaponBonusGroup = effect.addStatModifierGroup({})
@@ -55,19 +52,19 @@ function fuSetBonusBase.init(self, config_file)
   script.setUpdateDelta(5)
 end
 
-function fuSetBonusBase.uninit(self)
+function SetBonusHelper.uninit(self)
 end
 
 --=========================== CORE HELPER FUNCTIONS ==========================--
 
-function fuSetBonusBase.isWearingSet(self)
+function SetBonusHelper.isWearingSet(self)
   -- Every armor set consists of 3 pieces. See if the set stat equals 3.
   local count = status.stat(self.armorSetStat)
   return (count == 3)
 end
 
 -- Returns true if the weapon count has changed, and false otherwise.
-function fuSetBonusBase.updateBonusWeaponCount(self)
+function SetBonusHelper.updateBonusWeaponCount(self)
   if (self.weaponTags == nil or #(self.weaponTags) == 0) then
     return false
   end
@@ -106,7 +103,7 @@ function fuSetBonusBase.updateBonusWeaponCount(self)
   return changed
 end
 
-function fuSetBonusBase.inBonusBiome(self)
+function SetBonusHelper.inBonusBiome(self)
   local tags = self.biomeTags
   if (tags == nil or #tags == 0) then
     return false
@@ -121,7 +118,7 @@ end
 
 --========================== BONUS EFFECT FUNCTIONS ==========================--
 
-function fuSetBonusBase.getBonusGroupFromTable(self, name, table)
+function SetBonusHelper.getBonusGroupFromTable(self, name, table)
   if (table.amount ~= nil) then
     return {stat = name, amount = table.amount}
   elseif (table.baseMultiplier ~= nil) then
@@ -134,7 +131,7 @@ function fuSetBonusBase.getBonusGroupFromTable(self, name, table)
   end
 end
 
-function fuSetBonusBase.applyArmorBonuses(self)
+function SetBonusHelper.applyArmorBonuses(self)
   status.addPersistentEffects("setbonus", self.statusEffects)
   local newGroup = {}
   local i = 1
@@ -149,13 +146,13 @@ function fuSetBonusBase.applyArmorBonuses(self)
   effect.setStatModifierGroup(self.armorBonusGroup, newGroup)
 end
 
-function fuSetBonusBase.removeArmorBonuses(self)
+function SetBonusHelper.removeArmorBonuses(self)
   status.clearPersistentEffects("setbonus")
   effect.removeStatModifierGroup(self.armorBonusGroup)
   self.armorBonusGroup = effect.addStatModifierGroup({})
 end
 
-function fuSetBonusBase.applyArmorMovementModifiers(self)
+function SetBonusHelper.applyArmorMovementModifiers(self)
   local modifiers = self.armorMovementModifiers
   if (modifiers ~= nil and (modifiers.speed ~= nil or modifiers.jump ~= nil)) then
     mcontroller.controlModifiers({
@@ -165,7 +162,7 @@ function fuSetBonusBase.applyArmorMovementModifiers(self)
   end
 end
 
-function fuSetBonusBase.updateWeaponBonuses(self)
+function SetBonusHelper.updateWeaponBonuses(self)
   if (self.bonusWeaponCount > 0) then
     -- 1. Add normal weapon bonuses.
     local newGroup = {}
@@ -205,12 +202,12 @@ function fuSetBonusBase.updateWeaponBonuses(self)
   end
 end
 
-function fuSetBonusBase.removeWeaponBonuses(self)
+function SetBonusHelper.removeWeaponBonuses(self)
   effect.removeStatModifierGroup(self.weaponBonusGroup)
   self.weaponBonusGroup = effect.addStatModifierGroup({})
 end
 
-function fuSetBonusBase.updateBiomeBonuses(self)
+function SetBonusHelper.updateBiomeBonuses(self)
   if (self:inBonusBiome() == true) then
     local newGroup = {}
     local i = 1
@@ -228,14 +225,14 @@ function fuSetBonusBase.updateBiomeBonuses(self)
   end
 end
 
-function fuSetBonusBase.removeBiomeBonuses(self)
+function SetBonusHelper.removeBiomeBonuses(self)
   effect.removeStatModifierGroup(self.biomeBonusGroup)
   self.biomeBonusGroup = effect.addStatModifierGroup({})
 end
 
 --=========================== MAIN UPDATE FUNCTION ==========================--
 
-function fuSetBonusBase.update(self)
+function SetBonusHelper.update(self)
   -- Add/remove set bonus effects if the player has put on or taken off the set.
   local active = self:isWearingSet()
   if (self.setBonusActive ~= active) then

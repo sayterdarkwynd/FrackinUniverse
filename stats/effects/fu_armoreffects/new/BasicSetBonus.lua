@@ -1,5 +1,5 @@
 require "/scripts/util.lua"
-require "/stats/effects/fu_armoreffects/new/fuSetBonusBase.lua"
+require "/stats/effects/fu_armoreffects/new/SetBonusHelper.lua"
 
 --============================= CLASS DEFINITION ============================--
 --[[ This instantiates a child class of fuSetBonusBase. The child's metatable
@@ -7,7 +7,7 @@ require "/stats/effects/fu_armoreffects/new/fuSetBonusBase.lua"
     up from fuSetBonusBase. The methods can also be accessed manually (in cases
     that extend the parent method) through the child.parent attribute. ]]--
 
-fuDefaultSetBonus = fuSetBonusBase:new({})
+BasicSetBonus = SetBonusHelper:new({})
 
 --============================= CLASS EXTENSIONS ============================--
 --[[ Any methods which need to be overridden from fuSetBonusBase should be
@@ -25,12 +25,11 @@ fuDefaultSetBonus = fuSetBonusBase:new({})
     They should not need to be modified (apart from the class name). ]]--
 
 function init()
-  local config_file = config.getParameter("configPath")
-  fuDefaultSetBonus:init(tostring(config_file))
+  BasicSetBonus:init()
 end
 
 function uninit()
-  fuDefaultSetBonus:uninit()
+  BasicSetBonus:uninit()
 end
 
 --=========================== MAIN UPDATE FUNCTION ==========================--
@@ -38,5 +37,5 @@ end
     shouldn't need to be modified (apart from the class name). ]]--
 
 function update()
-  fuDefaultSetBonus:update()
+  BasicSetBonus:update()
 end
