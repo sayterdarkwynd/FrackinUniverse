@@ -4,9 +4,11 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+6% Ice, Electric Resistance^reset;
-^green;+2% Crit Chance (Per Machine Pistol or Pistol), +4% with Rifles^reset;",    
+  "description" : "^red;2% Ice and Electric Resist^reset;
+Set Bonuses:
+^green;Pistol/Machine Pistol: +2% Crit Chance each
+Rifles: +4% Crit Chance^reset;",
+
  "shortdescription" : "Underworld Goggles",
   "category" : "t1armor",
   "tooltipKind" : "armornew2",
@@ -41,9 +43,9 @@
   ],
 
   "statusEffects" : [
-    "underworldsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_underworldset_head",
+      "stat" : "underworldsetcount",
       "amount" : 1
     },
     {
@@ -53,7 +55,7 @@
     {
       "stat" : "electricResistance",
       "amount" : 0.02
-    }      
+    }
   ],
 
   "colorOptions" : [

@@ -18,6 +18,7 @@ function SetBonusHelper.init(self)
   -- Armor effects
   self.armorBonuses = config.getParameter("armorBonuses")
   self.armorMovementModifiers = config.getParameter("armorMovementModifiers")
+  self.armorEphemeralEffects = config.getParameter("armorEphemeralEffects")
   -- Weapon effects
   self.weaponBonuses = config.getParameter("weaponBonuses")
 --[[ Example weaponBonuses:
@@ -67,12 +68,14 @@ function SetBonusHelper.init(self)
   self:updateWeaponBonuses()
   self:updateBiomeBonuses()
   self:updateMovementBonuses()
+  self:updateEphemeralEffects()
 end
 
 function SetBonusHelper.uninit(self)
-  effect.removeStatModifierGroup(self.armorBonusGroup)
-  effect.removeStatModifierGroup(self.weaponBonusGroup)
-  effect.removeStatModifierGroup(self.biomeBonusGroup)
+  self:removeArmorBonuses()
+  self:removeWeaponBonuses()
+  self:removeBiomeBonuses()
+  self:removeEphemeralEffects()
 end
 
 --=========================== CORE HELPER FUNCTIONS ==========================--
@@ -117,6 +120,22 @@ end
 function SetBonusHelper.removeArmorBonuses(self)
   effect.removeStatModifierGroup(self.armorBonusGroup)
   self.armorBonusGroup = effect.addStatModifierGroup({})
+end
+
+function SetBonusHelper.updateEphemeralEffects(self)
+  if (self.armorEphemeralEffects ~= nil) then
+    for _, effect in pairs(self.armorEphemeralEffects) do
+      status.addEphemeralEffect(effect)
+    end
+  end
+end
+
+function SetBonusHelper.removeEphemeralEffects(self)
+  if (self.armorEphemeralEffects ~= nil) then
+    for _, effect in pairs(self.armorEphemeralEffects) do
+      status.removeEphemeralEffect(effect)
+    end
+  end
 end
 
 --========================== WEAPON BONUS FUNCTIONS ==========================--
@@ -273,4 +292,6 @@ function SetBonusHelper.update(self)
   self:updateBiomeBonuses()
   -- Apply movement modifiers (these need to be set every update)
   self:updateMovementBonuses()
+  -- Apply any extra ephemeral status effects (which also need to be refreshed).
+  self:updateEphemeralEffects()
 end
