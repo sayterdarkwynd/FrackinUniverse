@@ -1,10 +1,8 @@
 {
   "name" : "isogensetbonus",
+  "defaultDuration" : 15,
 
   "effectConfig" : {
-    "statusEffects" : [ "isogenseticon" ],
-    "armorSetStat" : "fuIsogenSetCount",
-
     "armorBonuses" : {
       "breathProtection" : {},
       "fireStatusImmunity" : {},
@@ -12,20 +10,23 @@
       "ffextremeheatImmunity" : {}
     },
 
-    "weaponTags" : [ "isogen" ],
-    "weaponBonuses" : {
-      "normal" : {
-        "physicalResistance" : { "amount" : 0.15 },
-        "critChance" : { "amount" : 3 }
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "isogen" ],
+        "stats" : {
+          "physicalResistance" : { "amount" : 0.15 },
+          "critChance" : { "amount" : 3 }
+        }
       }
-    },
-
-    "configPath" : "/stats/effects/fu_armoreffects/new/set_bonuses/tier6/isogensetbonus.statuseffect"
+    ]
   },
 
-  "defaultDuration" : 15,
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5
+  "scriptDelta": 5,
+
+  "label" : "Isogen weapons: +3% Crit Chance, +15% Physical Resist",
+  "icon" : "/interface/statuses/defensecold.png"
 }

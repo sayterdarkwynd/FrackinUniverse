@@ -1,10 +1,8 @@
 {
   "name" : "bonesetbonus",
+  "defaultDuration" : 15,
 
   "effectConfig" : {
-    "statusEffects" : [ "boneseticon" ],
-    "armorSetStat" : "fuBoneSetCount",
-
     "armorBonuses" : {
       "maxHealth" : { "amount" : 5 },
       "fallDamageMultiplier" : { "baseMultiplier" : 0.85 }
@@ -15,14 +13,15 @@
       "maxHealth" : { "amount" : 5 },
       "powerMultiplier" : { "effectiveMultiplier" : 1.05 },
       "physicalResistance" : { "amount" : 0.05 }
-    },
-
-    "configPath" : "/stats/effects/fu_armoreffects/new/set_bonuses/tier1/bonesetbonus.statuseffect"
+    }
   },
 
-  "defaultDuration" : 15,
+
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5
+  "scriptDelta": 5,
+
+  "label" : "+5 HP, +15% Fall Resist. Lush/Forest: +5 HP, +5% Dmg, +5% Phys. Resist",
+  "icon" : "/interface/statuses/defense.png"
 }
