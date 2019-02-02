@@ -4,10 +4,11 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^green;+17% Shield Regen, Blocking, Stamina^reset;
-^#e43774;Sword/Mace and Shield: +2% Crit, +15 Crit Dmg^reset;
-^cyan;+15% Fire Res, 15% Knockback Res^reset;",
+  "description" : "^red;+5% Fire Resist^reset;
+Set Bonuses:
+^#a00000;+17% Shield Health and Regen^reset;
+^green;Sword/Mace and Shield: +2% Crit Chance, +15% Crit Dmg, +15% Knockback Resist^reset;",
+
   "shortdescription" : "Footman Helmet",
   "category" : "t2armor",
   "tooltipKind" : "armornew2",
@@ -42,15 +43,15 @@
   ],
 
   "statusEffects" : [
-    "footmansetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_footmanset_head",
+      "stat" : "footmansetcount",
       "amount" : 1
     },
     {
       "stat" : "fireResistance",
       "amount" : 0.05
-    }   
+    }
   ],
 
   "colorOptions" : [

@@ -4,9 +4,10 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+15% Damage (Short Spear, Spear,Lance)^reset; 
-^green;+15% Knockback Resistance^reset;", 
+  "description" : "Set Bonuses:
+^#a00000;+15% Knockback Resist^reset;
+^green;Spear/Shortspear: +15% Dmg^reset;",
+
   "shortdescription" : "Stalwart Leggings",
   "category" : "t2armor",
   "tooltipKind" : "armornew2",
@@ -40,11 +41,11 @@
   ],
 
   "statusEffects" : [
-    "stalwartsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_stalwartset_legs",
+      "stat" : "stalwartsetcount",
       "amount" : 1
-    } 
+    }
   ],
 
   "colorOptions" : [
