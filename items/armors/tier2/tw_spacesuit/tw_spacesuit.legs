@@ -3,19 +3,26 @@
   "price" : 960,
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "category" : "t2armoru",
-  "description" : "Set Bonus:
-^cyan;+1500% Oxygen Supply, Reduced breath rate^reset;
-^green;+15% Fire/Ice/Poison/Radiation/Electric Resistance^reset;",   
+  "rarity" : "Common",
+  "description" : "^red;+5% Fire, Ice, Poison, Radiation and Electric Resists^reset;
+Set Bonus:
+^#a00000;+1400% Oxygen^reset;
 
   "shortdescription" : "Hazard Leggings",
+  "category" : "t2armoru",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "learnBlueprintsOnPickup" : ["tw_spacepunkhead", "tw_spacepunklegs", "tw_spacepunkchest","spacefarerchest","spacefarerhead","spacefarerpants"],
+  "learnBlueprintsOnPickup" : [
+    "tw_spacepunkhead",
+    "tw_spacepunklegs",
+    "tw_spacepunkchest",
+    "spacefarerchest",
+    "spacefarerhead",
+    "spacefarerpants"
+  ],
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorexplorer" : "tw_spacesuitlegs" },
@@ -43,9 +50,9 @@
   ],
 
   "statusEffects" : [
-	"tw_spacesuitsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "tw_spacesuitset_legs",
+      "stat" : "tw_spacesuitsetcount",
       "amount" : 1
     },
     {
@@ -67,14 +74,14 @@
     {
       "stat" : "radioactiveResistance",
       "amount" : 0.05
-    }  
-  ],  
-    
+    }
+  ],
+
   "colorOptions" : [
     /* WHITE */
-    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },  
+    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
     /* BROWN */
-    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },  
+    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },
     /* GREY */
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
     /* BLACK */
