@@ -1,49 +1,60 @@
 {
-  "itemName" : "armcannonshock",
+  "itemName" : "armcannonveluu",
   "price" : 500,
-  "inventoryIcon" : "armcannonshock.png",
+  "inventoryIcon" : "armcannonveluu.png",
     "maxStack" : 1,
-    "rarity" : "rare",
+    "rarity" : "uncommon",
   "description" : "Attaches to the forearm. Fires electric blasts.
 ^yellow;Counts as 'electric' for set bonuses^reset;",
-  "shortdescription" : "^#ce64de;Arm Cannon (Shock)",
+  "shortdescription" : "^#ce64de;Veluuish Riot Gun",
   "level" : 3,
   "category" : "armcannon",
-  "itemTags" : ["weapon","ranged","electric", "upgradeableWeapon", "armcannon"],
+  "itemTags" : ["weapon","ranged","upgradeableWeapon", "armcannon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
-    "butt" : "",
-    "middle" : "armcannonshock.png",
-    "barrel" : "",
-        "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
+    "middle" : "armcannonveluu.png",
+    "middlefullbright" : "armcannonveluufullbright.png",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
   },      
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/weapons/shock_impact3.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.0, 0.14]//Same as BaseOffset
+		  }
+		}
+      }
+    },  
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_ar4.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [42, 14, 124] } }    
   },
-
-  "baseOffset" : [0.0, 0.34],
-  "muzzleOffset" : [1.0, 0.05],
+  
+  "baseOffset" : [0.0, 0.14],
+  "muzzleOffset" : [1.2, 0.0],
   "handGrip" : "wrap",
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.1,
-    "baseDps" : 10,
-    "energyUsage" : 25,
-    "fireType" : "auto",
-    "inaccuracy" : 0,
-    "projectileCount" : 1,
-    "projectileType" : "teslaboltsmall2",
+    "fireTime" : 0.65,
+    "baseDps" : 8,
+    "energyUsage" : 29,
+    "fireType" : "burst",
+    "inaccuracy" : 0.086,
+    "projectileCount" : 3,
+    "projectileType" : "electricguardianpellet",
+    "burstTime" : 0.075,
+    "burstCount" : 3,    
     "projectileParameters" : {
-      "speed" : 65
+      "speed" : 65,
+      "knockback" : 3.5,
+      "statusEffects" : [ "electrified" ]
     },
     "stances" : {
       "idle" : {
@@ -74,7 +85,7 @@
       }
     }
   },
-  "critChance" : 2,
+  "critChance" : 1,
   "critBonus" : 2,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

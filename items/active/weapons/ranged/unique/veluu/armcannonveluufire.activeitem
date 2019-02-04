@@ -1,50 +1,60 @@
 {
-  "itemName" : "armcannonexplosive",
-  "price" : 500,
-  "inventoryIcon" : "armcannonexplosive.png",
+  "itemName" : "armcannonveluufire",
+  "price" : 100,
+  "inventoryIcon" : "armcannonveluufire.png",
     "maxStack" : 1,
-    "rarity" : "rare",
-  "description" : "Attaches to the forearm. Fires explosive blasts.
-^yellow;Counts as 'rocket launcher' for set bonuses^reset;",
-  "shortdescription" : "^red;Arm Cannon (Missile)",
-  "level" : 3,
+    "rarity" : "common",
+  "description" : "Attaches to the forearm. Fires fire blasts.
+^cyan;Fire weapon^reset;",
+  "shortdescription" : "^#ce64de;Veluuish Burner",
+  "level" : 1,
   "category" : "armcannon",
   "itemTags" : ["weapon","ranged","upgradeableWeapon", "armcannon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
-    "butt" : "",
-    "middle" : "armcannonexplosive.png",
-    "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlered.png"
+    "middle" : "armcannonveluufire.png",
+    "middlefullbright" : "armcannonveluufirefullbright.png",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleorange.png"
   },      
   "animationCustom" : {
-    "sounds" : { "fire" : [ "/sfx/gun/plasma_mp2.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [22, 124, 84] } }  
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.0, 0.14]//Same as BaseOffset
+		  }
+		}
+      }
+    },  
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_ar4.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [42, 14, 124] } }    
   },
-
-  "baseOffset" : [0.0, 0.34],
-  "muzzleOffset" : [1.0, 0.05],
+  
+  "baseOffset" : [0.0, 0.14],
+  "muzzleOffset" : [1.0, -0.10],
   "handGrip" : "wrap",
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "fire",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.0,
-    "baseDps" : 2.2,
-    "energyUsage" : 34,
+    "fireTime" : 0.4,
+    "baseDps" : 8,
+    "energyUsage" : 32,
     "fireType" : "auto",
-    "inaccuracy" : 0.001,
+    "inaccuracy" : 0.05,
     "projectileCount" : 1,
-    "projectileType" : "rocketswarmlite",
+    "projectileType" : "magnorbhellfire4",
+ 
     "projectileParameters" : {
-      "speed" : 65,
-      "knockback" : 5
+      "speed" : 40,
+      "knockback" : 3,
+      "damageSourceKind" : "fire",
+      "statusEffects" : [ "burning" ]
     },
     "stances" : {
       "idle" : {
@@ -75,9 +85,7 @@
       }
     }
   },
-
-  "critChance" : 4,
-  "critBonus" : 3,
-
+  "critChance" : 1,
+  "critBonus" : 2,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
