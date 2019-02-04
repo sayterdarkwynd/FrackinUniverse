@@ -14,7 +14,10 @@
 	{ "op" : "add","path" : "/species/-","value" : "fenerox" },
 	{ "op" : "add","path" : "/species/-","value" : "veluu" },
 	
-	
+	{ "op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/cat",
+		"value" : "mechbodycatproto"
+	},
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fenerox",
 		"value" : "mechbodyfloranproto"
@@ -118,7 +121,18 @@
 	},
 	{ "op" : "add",
 	  "path" : "/defaultCodexes/veluu",
-	    "value" : [ "protectorate1", "protectorate2" ]
+	    "value" : [ "protectorate1", "protectorate2", "catdiary" ]
+	},
+	{
+		"op": "add",
+		"path": "/defaultCodexes/cat",
+		"value": [ "protectorate1", "protectorate2", "catdiary" ]
+	},
+	
+	{
+		"op": "add",
+		"path": "/statusControllerSettings/primaryScriptSources/-",
+		"value": "/stats/cat_primary.lua"
 	},
 	
 	{

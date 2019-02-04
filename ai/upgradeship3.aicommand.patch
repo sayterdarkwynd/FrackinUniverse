@@ -51,5 +51,34 @@
           "speedModifier" : 1.0
         }
       ]
-    }}
+    }},
+	
+	{
+		"op": "add",
+		"path": "/speciesText/cat",
+		"value": {
+			"buttonText" : "Repair Ship's FTL drive",
+			"selectSpeech" : [
+				{
+					"animation" : "talk",
+					"text" : "If we can get hold of ^orange;20 Erchius crystals ^white;from somewhere^green; I can repair our FTL drive. ^white;Unfortunately, I'm detecting no signs of Erchius crystals on any of the planets in this star system. ^green;We should see where the ^orange;gate^green; in this system leads us.",
+					"speedModifier" : 1.0
+				}
+			],
+			"successSpeech" : [
+				{
+					"animation" : "talk",
+					"text" : "Our FTL drive is now up and running. ^green;We can now jump to entirely new star systems!",
+					"speedModifier" : 1.0
+				}
+			],
+			"failSpeech" : [
+				{
+					"animation" : "refuse",
+					"text" : "Failure! ^green;You've not yet gathered the required materials.",
+					"speedModifier" : 1.0
+				}
+			]
+		}
+	}
 ]
