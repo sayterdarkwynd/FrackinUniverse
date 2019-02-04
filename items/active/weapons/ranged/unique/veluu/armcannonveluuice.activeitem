@@ -1,12 +1,12 @@
 {
-  "itemName" : "armcannonveluufire",
+  "itemName" : "armcannonveluuice",
   "price" : 100,
-  "inventoryIcon" : "armcannonveluufire.png",
+  "inventoryIcon" : "armcannonveluuice.png",
     "maxStack" : 1,
     "rarity" : "common",
-  "description" : "Attaches to the forearm. Fires fire blasts.
-^cyan;Fire weapon^reset;",
-  "shortdescription" : "Veluuish Burner",
+  "description" : "Attaches to the forearm. Fires ice blasts.
+^cyan;Freeze-burns enemies^reset;",
+  "shortdescription" : "Veluuish Gigant",
   "level" : 2,
   "category" : "armcannon",
   "itemTags" : ["weapon","ranged","upgradeableWeapon", "armcannon"],
@@ -14,47 +14,51 @@
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
-    "middle" : "armcannonveluufire.png",
-    "middlefullbright" : "armcannonveluufirefullbright.png",
-    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
+    "middle" : "armcannonveluuice.png",
+    "middlefullbright" : "armcannonveluuicefullbright.png",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleblue.png"
   },      
   "animationCustom" : {
     "animatedParts" : {
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-		    "offset" : [0.0, 0.14]//Same as BaseOffset
+		    "offset" : [0.0, 0.27]//Same as BaseOffset
 		  }
 		}
       }
     },  
-    "sounds" : { "fire" : [ "/sfx/gun/magnorbs_fire1.ogg", "/sfx/gun/magnorbs_fire2.ogg", "/sfx/gun/magnorbs_fire3.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [142, 14, 44] } }    
+    "sounds" : { "fire" : [ "/sfx/gun/grenadeblast_fire1.ogg","/sfx/gun/grenadeblast_fire2.ogg","/sfx/gun/grenadeblast_fire3.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [42, 42, 42] } }    
   },
   
-  "baseOffset" : [0.0, 0.14],
-  "muzzleOffset" : [1.0, -0.10],
+  "baseOffset" : [0.0, 0.27],
+  "muzzleOffset" : [1.4, 0.35],
   "handGrip" : "wrap",
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "fire",
+  "elementalType" : "ice",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.4,
-    "baseDps" : 8,
-    "energyUsage" : 32,
+    "fireTime" : 0.8,
+    "baseDps" : 5.5,
+    "energyUsage" : 24,
     "fireType" : "auto",
-    "inaccuracy" : 0.05,
+    "inaccuracy" : 0.01,
     "projectileCount" : 1,
-    "projectileType" : "magnorbhellfire4",
+    "projectileType" : "iceshardsmall",
  
     "projectileParameters" : {
-      "speed" : 40,
-      "knockback" : 3,
-      "damageSourceKind" : "fire",
-      "statusEffects" : [ "burning" ]
+      "speed" : 90,
+      "knockback" : 12,
+      "actionOnReap" : [
+	     {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/iceexplosion4/iceexplosionreaper.config"
+	     }  
+      ]
     },
     "stances" : {
       "idle" : {
