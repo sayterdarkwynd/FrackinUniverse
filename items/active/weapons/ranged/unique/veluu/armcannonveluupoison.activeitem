@@ -1,0 +1,91 @@
+{
+  "itemName" : "armcannonveluupoison",
+  "price" : 100,
+  "inventoryIcon" : "armcannonveluupoison.png",
+    "maxStack" : 1,
+    "rarity" : "common",
+  "description" : "Attaches to the forearm. Fires poison blasts.
+^cyan;Poison weapon^reset;",
+  "shortdescription" : "^#ce64de;Veluuish Reaver",
+  "level" : 1,
+  "category" : "armcannon",
+  "itemTags" : ["weapon","ranged","upgradeableWeapon", "armcannon"],
+  "tooltipKind" : "gun2",
+  "twoHanded" : false,
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
+  "animationParts" : {
+    "middle" : "armcannonveluupoison.png",
+    "middlefullbright" : "armcannonveluupoisonfullbright.png",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlegreen.png"
+  },      
+  "animationCustom" : {
+    "animatedParts" : {
+      "parts" : {
+        "middlefullbright" : {
+		  "properties" : {
+		    "offset" : [0.0, 0.14]//Same as BaseOffset
+		  }
+		}
+      }
+    },  
+    "sounds" : { "fire" : [ "/sfx/gun/plasma_ar4.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [42, 14, 124] } }    
+  },
+  
+  "baseOffset" : [0.0, 0.14],
+  "muzzleOffset" : [1.0, -0.10],
+  "handGrip" : "wrap",
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.4,
+    "baseDps" : 8,
+    "energyUsage" : 32,
+    "fireType" : "auto",
+    "inaccuracy" : 0.05,
+    "projectileCount" : 1,
+    "projectileType" : "magnorbwraith3",
+ 
+    "projectileParameters" : {
+      "speed" : 70,
+      "knockback" : 3,
+      "damageSourceKind" : "poison",
+      "statusEffects" : [ "weakpoison" ]
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "critChance" : 1,
+  "critBonus" : 2,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
