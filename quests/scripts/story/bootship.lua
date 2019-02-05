@@ -16,6 +16,7 @@ function init()
   self.state:set(wakeSail)
 
   self.interactTimer = 0
+  self.activationTimer = 1
 end
 
 function questInteract(entityId)
@@ -37,9 +38,20 @@ function update(dt)
   self.interactTimer = math.max(self.interactTimer - dt, 0)
   
   promises:update()
+  
+  if self.questComplete then
+    promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
+      quest.complete()
+	end)
+    if self.activationTimer <= 0 then
+      quest.complete()
+    else
+      self.activationTimer = self.activationTimer - dt
+    end	
+  end
 end
 
-function wakeSail()
+function wakeSail(dt)
   quest.setCompassDirection(nil)
   quest.setObjectiveList({
     {self.descriptions.wakeSail, false}
@@ -69,12 +81,9 @@ function wakeSail()
 
     local shipUpgrades = player.shipUpgrades()
     if shipUpgrades.shipLevel > 0 or player.hasQuest("fu_byos") then
-        --promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
-        --  quest.complete()
-	--  end, function()
-	--end)   
-	  quest.complete()
-	  world.sendEntityMessage(self.techstationUid, "activateShip")
+        self.questComplete = true
+	  --quest.complete()
+	  --world.sendEntityMessage(self.techstationUid, "activateShip")
     end
     coroutine.yield()
   end
