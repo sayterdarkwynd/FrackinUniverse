@@ -115,7 +115,7 @@ function racial()
 	race = player.species()
 	count = racialiserBootUp()
 	parameters = getBYOSParameters("techstation", true, _)
-	player.giveItem({name = "fu_byostechstationdeco", count = 1, parameters = parameters})
+	player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
 	player.startQuest("fu_shipupgrades")
 	player.upgradeShip(defaultShipUpgrade)
 end

@@ -1,0 +1,44 @@
+{
+  "type" : "catvisitor",
+  "baseType" : "outpostvisitor",
+
+  "statusControllerSettings" : {
+    "statusProperties" : {
+      "effectDirectives" : ""
+    }
+  },
+
+  "scriptConfig" : {
+    "dialog" : {
+      "converse" : {
+        "default" : {
+          "default" : [
+            "Meow! The outpost is full of pawesome shops, huh?",
+            "Meow. ...I had you thinking I was a normal cat, didn't I?",
+            "Mew... The outpost is a bit chilly, huh? Cats prefer warm places, for sure!",
+            "Meow? What's that? Sorry, this thick crowd is messing with my telepathy."
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "chest" : [
+              { "name" : "hiderchest", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "back" : [
+              { "name" : "hiderback", "parameters" : { "colorIndex" : 0 } }
+            ],
+            "legs" : [
+              { "name" : "hiderlegs", "parameters" : { "colorIndex" : 0 } }
+            ]
+          }
+        ] ]
+    ]
+  }
+}
+
