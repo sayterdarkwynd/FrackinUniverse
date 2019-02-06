@@ -70,7 +70,8 @@ function init()
  	  protectionHeat = config.getParameter("protectionHeat",0)
  	  protectionXHeat = config.getParameter("protectionXHeat",0)
  	  protectionRads = config.getParameter("protectionRads",0)
- 	  protectionXRads = config.getParameter("protectionXRads",0)	  
+ 	  protectionXRads = config.getParameter("protectionXRads",0)
+ 	  stunChance = config.getParameter("stunChance", 0)
  	  shieldBash = config.getParameter("shieldBash",0)
  	  shieldBashPush = config.getParameter("shieldBashPush",0)
   -- end FU special effects
@@ -87,6 +88,23 @@ function init()
   updateAim()
 end
 
+
+function shieldBonusApplyPartial()
+
+status.setPersistentEffects("shieldEffects", {
+ 		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
+ 		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
+ 		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
+ 		{stat = "shieldStaminaRegen", amount = shieldStamina},
+ 		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
+ 		{stat = "stunChance", amount =  stunChance},
+ 		{stat = "shieldBash", amount =  shieldBash},
+ 		{stat = "shieldBashPush", amount =  shieldBashPush},
+ 		{stat = "critChance", amount =  self.critChance},
+ 		{stat = "critChance", amount =  self.critBonus} 	
+ 	})
+ 	
+end
 
 function shieldBonusApply()
 
@@ -124,15 +142,22 @@ status.setPersistentEffects("shieldEffects", {
  		{stat = "biomeradiationImmunity", amount = protectionRads},
  		{stat = "ffextremeradiationImmunity", amount = protectionXRads},
  		{stat = "shieldBash", amount = shieldBash},
+ 		{stat = "stunChance", amount =  config.getParameter("stunChance", 0)},
  		{stat = "shieldBashPush", amount = shieldBashPush}
  	})
  	
 end
 
+function isShield(name) -- detect if they have a shield equipped for racial tag checks
+	if root.itemHasTag(name, "shield") then
+		return true
+	end
+	return false
+end
 
 function update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
-
+shieldBonusApplyPartial()
   if not self.active
     and fireMode == "primary"
     and self.cooldownTimer == 0
@@ -146,6 +171,7 @@ function update(dt, fireMode, shiftHeld)
 
     self.damageListener:update()
 
+	shieldBonusApply()
     --
     --
     --
@@ -182,7 +208,9 @@ function uninit()
   status.clearPersistentEffects(activeItem.hand().."Shield")
   activeItem.setItemShieldPolys({})
   activeItem.setItemDamageSources({})
-  status.clearPersistentEffects("shieldEffects")  
+	status.clearPersistentEffects("shieldBonus")
+	status.clearPersistentEffects("shieldEffects")
+  
 end
 
 function updateAim()
