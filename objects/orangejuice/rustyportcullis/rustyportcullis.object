@@ -1,0 +1,55 @@
+{
+  "objectName" : "rustyportcullis",
+  "colonyTags" : ["door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 105,
+  "description" : "A retractable gate, made from rusty metal.",
+  "shortdescription" : "Rusty Gate",
+  "race" : "floran",
+
+  "apexDescription" : "This retractable gate is very strong.",
+  "avianDescription" : "Despite the fact that it is made of old metal, this is quite a sturdy gate.",
+  "floranDescription" : "Metal ssstrongest ssstuff because it growsss in dirtsss.",
+  "glitchDescription" : "Intrigued. This metal gate is remarkably sturdy.",
+  "humanDescription" : "This large metal gate is retractable.",
+  "hylotlDescription" : "This gate design uses function over form.",
+  "novakidDescription" : "This gate is made from old metal, but I reckon it ain't easy to break.",
+
+  "inventoryIcon" : "rustyportcullisicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "rustyportcullis.png:default",
+      "imagePosition" : [-16, -32],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bardoor2_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bardoor2_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "rustyportcullis.png"
+  },
+  "animationPosition" : [-16, -32],
+
+  "inputNodes" : [ [0, 0] ],
+  "outputNodes" : [ [0, -4] ]
+}

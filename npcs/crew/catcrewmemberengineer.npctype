@@ -1,0 +1,59 @@
+{
+  "type" : "catcrewmemberengineer",
+  "baseType" : "catcrewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : true
+    },
+
+    "crew" : {
+      "role" : {
+        "type" : "engineer",
+        "name" : "Engineer",
+        "field" : "Engineering",
+        "uniformColorIndex" : 5,
+
+        "benefits" : [
+          {
+            "type" : "PeriodicMultiplier",
+            "property" : "fuelEfficiency",
+            "value" : 1.1,
+            "period" : 1000
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Meow! I'll get to work on impurroving mewr fuel efficiency!"
+            ]
+          }
+        },
+        "shipImprovementApplied" : {
+          "default" : {
+            "default" : [
+              "Meow! Purrfect! Fuel efficiency is up another 10%! I'll keep working on it!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "hiderchest" } ],
+            "legs" : [ { "name" : "hiderlegs" } ],
+            "sheathedprimary" : [ "npcpistol", "veluusword3" ]
+          }
+        ] ]
+    ]
+  }
+}
