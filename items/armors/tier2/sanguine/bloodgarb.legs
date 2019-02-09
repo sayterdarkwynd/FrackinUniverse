@@ -3,10 +3,12 @@
   "price" : 200,
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "Set Bonus:
-^cyan;+4% Crit (Daggers, Whips, Strikers), + 0.2% Regen^reset;
-^green;+10% Speed, +10% Shadow Resistance^reset;",
+  "rarity" : "Common",
+  "description" : "Set Bonuses:
+^red;+10% Shadow Resist^reset;
+^#a00000;+10% Speed, +0.5% HP Regen^reset;
+^green;Dagger/Whip/Striker: +4% Crit Chance^reset;",
+
   "shortdescription" : "Sanguine Boots",
   "category" : "t2armoru",
   "tooltipKind" : "armor",
@@ -16,11 +18,11 @@
   "itemTags" : [ "upgradeableWeapon" ],
 
   "learnBlueprintsOnPickup" : [
-    "chaoschest", 
-    "chaoshead", 
-    "chaospants"   
+    "chaoschest",
+    "chaoshead",
+    "chaospants"
   ],
-  
+
   "level" : 2,
   "collectablesOnPickup" : { "fu_armormelee" : "bloodgarbpants" },
   "leveledStatusEffects" : [
@@ -47,9 +49,9 @@
   ],
 
   "statusEffects" : [
-    "sanguinesetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_sanguineset_legs",
+      "stat" : "sanguinesetcount",
       "amount" : 1
     }
   ],

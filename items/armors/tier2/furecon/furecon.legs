@@ -5,16 +5,23 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+15% Damage (Rifle, Sniper Rifle), +5% Speed^reset;
-^green;+12% Radioactive Resist, Immune: Rad Burn^reset;", 
+  "description" : "^red;+4% Radioactive Resist^reset;
+Set Bonuses:
+^cyan;Immune: Rad Burn^reset;
+^#a00000;+5% Speed^reset;
+^green;Rifle/Sniper Rifle: +15% Dmg^reset;",
+
   "shortdescription" : "Recon Leggings",
   "category" : "t2armoru",
   "tooltipKind" : "armor",
-  "learnBlueprintsOnPickup" : [ "fureconhead2", "fureconchest2", "fureconpants2" ],
+  "learnBlueprintsOnPickup" : [
+    "fureconhead2",
+    "fureconchest2",
+    "fureconpants2"
+  ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  
+
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorranged" : "fureconpants" },
   "leveledStatusEffects" : [
@@ -41,15 +48,15 @@
   ],
 
   "statusEffects" : [
-     "reconsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_reconset_legs",
+      "stat" : "reconsetcount",
       "amount" : 1
     },
     {
-      "stat" : "pradioactiveResistance",
+      "stat" : "radioactiveResistance",
       "amount" : 0.04
-    }  
+    }
   ],
 
   "colorOptions" : [

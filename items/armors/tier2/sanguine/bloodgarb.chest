@@ -3,10 +3,12 @@
   "price" : 500,
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "Set Bonus:
-^cyan;+4% Crit (Daggers, Whips, Strikers), + 0.2% Regen^reset;
-^green;+10% Speed, +10% Shadow Resistance^reset;",
+  "rarity" : "Common",
+  "description" : "Set Bonuses:
+^red;+10% Shadow Resist^reset;
+^#a00000;+10% Speed, +0.5% HP Regen^reset;
+^green;Dagger/Whip/Striker: +4% Crit Chance^reset;",
+
   "shortdescription" : "Sanguine Vest",
   "category" : "t2armoru",
   "tooltipKind" : "armor",
@@ -24,11 +26,11 @@
   },
 
   "learnBlueprintsOnPickup" : [
-    "chaoschest", 
-    "chaoshead", 
-    "chaospants"   
+    "chaoschest",
+    "chaoshead",
+    "chaospants"
   ],
-  
+
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armormelee" : "bloodgarbchest" },
@@ -56,9 +58,9 @@
   ],
 
   "statusEffects" : [
-    "sanguinesetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_sanguineset_chest",
+      "stat" : "sanguinesetcount",
       "amount" : 1
     }
   ],
