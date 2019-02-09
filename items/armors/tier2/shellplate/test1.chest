@@ -4,17 +4,23 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Set Bonus:
-^green;30%^reset; Xi Bulb Regen Rate
-^green;5%^reset; Speed & Damage 
-^green;6%^reset; Fire & Ice Resistance^reset;
-^cyan;X'i Weapons grant ^green;15%^cyan; Max Health^reset;",
+  "description" : "^red;+2% Fire and Ice Resists^reset;
+^#a00000;+10% X'i Bulb Regen Rate^reset;
+Set Bonuses:
+^#a00000;+5% Dmg and Speed^reset;
+^green;X'i weapons: +15 Health^reset;
+^#009000;Lush/Forest biomes: +5% Energy and KB Resist^reset;",
+
   "itemTags" : [ "upgradeableWeapon" ],
-  
-  "learnBlueprintsOnPickup" : [ "mutachitinhead","mutachitinpants","mutachitinchest"],
-  
+
+  "learnBlueprintsOnPickup" : [
+    "mutachitinhead",
+    "mutachitinpants",
+    "mutachitinchest"
+  ],
+
   "shortdescription" : "X'ian Leather Chest",
-  "category" : "t2armor",
+  "category" : "t2armoru",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -55,9 +61,9 @@
 
 
   "statusEffects" : [
-    "leathersetbonusradien",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_leathersetradien_chest",
+      "stat" : "radienleathersetcount",
       "amount" : 1
     },
     {
@@ -71,7 +77,7 @@
     {
       "stat" : "xiBonus",
       "amount" : 0.1
-    }      
+    }
   ],
 
   "colorOptions" : [
