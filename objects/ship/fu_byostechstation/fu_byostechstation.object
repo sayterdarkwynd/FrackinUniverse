@@ -9,8 +9,8 @@
 
   "category" : "decorative",
 
-  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short. (DO NOT PLACE MORE THAN ONE S.A.I.L)",
-  "shortdescription" : "S.A.I.L",
+  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short. Comes with a pet.",
+  "shortdescription" : "S.A.I.L Interface",
   "race" : "generic",
 
   "lightColor" : [61, 88, 102],
@@ -61,8 +61,9 @@
 
   "animation" : "/objects/ship/techstation.animation",
   "scripts" : [
-    "/objects/spawner/techstation.lua",
-    "/objects/scripts/customtechstation.lua"
+    "/objects/ship/fu_byostechstation/fu_byostechstation.lua",
+    "/objects/scripts/customtechstation.lua",
+	"/objects/ship/fu_byosobjectdeath.lua"
   ],
   "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
   "scriptDelta" : 20,
@@ -88,7 +89,6 @@
     ]
   },
 
-  "uniqueId" : "techstation",
   "racialiserType" : "techstation",
   "retainObjectParametersInItem" : true
 }

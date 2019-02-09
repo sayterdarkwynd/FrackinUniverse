@@ -1142,16 +1142,18 @@ function planetScreenState(planet)
 
     if self.focus.system then
       if self.focus.target and self.focus.target[1] == "coordinate" then
-        local planets = {planet}
-        util.appendLists(planets, celestial.children(planet))
-        for _,planet in pairs(planets) do
-          if compare(planet, self.focus.target[2]) then
-            selection = {"coordinate", planet}
-            View:showPlanetInfo(planet)
-            self.focus = {}
-            break
+        if self.hide == false then
+          local planets = {planet}
+          util.appendLists(planets, celestial.children(planet))
+          for _,planet in pairs(planets) do
+            if compare(planet, self.focus.target[2]) then
+              selection = {"coordinate", planet}
+              View:showPlanetInfo(planet)
+              break
+            end
           end
         end
+        self.focus = {}
       else
         return self.state:set(planetSystemTransition, planet)
       end
@@ -1181,6 +1183,7 @@ function planetScreenState(planet)
           end
 
           if not compare(hover, select) then
+            self.hide = false
             selection = hover
             if selection and selection[1] == "coordinate" then
               View:showPlanetInfo(selection[2])
@@ -1221,7 +1224,7 @@ function planetScreenState(planet)
             orbiting = shipLocation[2]
           end
           if orbiting and compare(coordinatePlanet(orbiting), coordinatePlanet(self.travel.target[2])) then
-            flyShip(self.travel.system, self.travel.target)
+            celestial.flyShip(self.travel.system, self.travel.target)
             self.travel = {}
           end
         end
@@ -1236,7 +1239,7 @@ function planetScreenState(planet)
       hover = nil
     end
     View.planet.hover = hover
-    if selection then
+    if selection and self.hide == false then
       View:select(system, selection)
     else
       View:select(nil)

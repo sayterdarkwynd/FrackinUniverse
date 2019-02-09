@@ -1,11 +1,11 @@
 setName="fu_missionaryset"
 
 weaponBonus={
-	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorEffect={
-	{stat = "critBonus", baseMultiplier = 1.15}
+	{stat = "critBonus", baseMultiplier = 1.5}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -26,8 +26,8 @@ function update(dt)
 		checkWeapons()
 	end
 	mcontroller.controlModifiers({
-		speedModifier = 1.10,
-		airJumpModifier = 1.10
+		speedModifier = 1.05,
+		airJumpModifier = 1.05
 	})
 end
 

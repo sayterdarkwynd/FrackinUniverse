@@ -12,7 +12,20 @@
 	{ "op" : "add","path" : "/species/-","value" : "slimeperson" },	
 	{ "op" : "add","path" : "/species/-","value" : "elduukhar" },
 	{ "op" : "add","path" : "/species/-","value" : "fenerox" },
-
+	{ "op" : "add","path" : "/species/-","value" : "veluu" },
+	
+	{ "op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/veluu",
+		"value" : "mechbodycatproto"
+	},
+	{ "op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/elduukhar",
+		"value" : "mechbodyfuorbusproto"
+	},	
+	{ "op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/cat",
+		"value" : "mechbodycatproto"
+	},
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/fenerox",
 		"value" : "mechbodyfloranproto"
@@ -113,7 +126,23 @@
 	{"op" : "add",
 		"path" : "/defaultCodexes/shadow",
 		"value" : [ "shadow1", "shadow2" ]
-	},	
+	},
+	{ "op" : "add",
+	  "path" : "/defaultCodexes/veluu",
+	    "value" : [ "protectorate1", "protectorate2", "catdiary" ]
+	},
+	{
+		"op": "add",
+		"path": "/defaultCodexes/cat",
+		"value": [ "protectorate1", "protectorate2", "catdiary" ]
+	},
+	
+	{
+		"op": "add",
+		"path": "/statusControllerSettings/primaryScriptSources/-",
+		"value": "/stats/cat_primary.lua"
+	},
+	
 	{
 	"op" : "add",
 	"path" : "/collisionParams",
@@ -142,7 +171,7 @@
 	{ "op": "add", "path": "/statusControllerSettings/resources/biomeelectricwaterwarning", "value": { "maxValue": 60, "deltaValue": -1, "initialPercentage": 0 } },
 	//end biome warnings
 	
-	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "glassball"} },	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avalipart1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avaligun1"} },
 	{ "op": "add","path":"/defaultBlueprints/tier1/-","value": { "item" : "funeontube"}},
@@ -499,7 +528,11 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fumantizitier4chest"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fumantizitier4pants"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "iceaxe"} },
-
+     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "phaseshake" }},
+     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "solusjam" }},
+     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "plasmangoicecream" }},
+     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "violirootplate" }},
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "orangestim" }},
 	//Kherae's turrets
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_autoBeamer"} },
 
@@ -855,12 +888,9 @@
 	
 	// Crew overflow scripts
 	{ "op": "add", "path": "/companionsConfig/scripts/-", "value": "/scripts/fu_crewoverflow.lua" },
-	
-	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"flagmantizi"}},
-	
 
-	
-{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimesword"} },
+
+    { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimesword"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "wavyslimesword"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimewhip"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimetendrils"} },
