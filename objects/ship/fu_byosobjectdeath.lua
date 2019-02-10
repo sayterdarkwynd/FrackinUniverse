@@ -1,6 +1,6 @@
 function die()
 	if config.getParameter("keepStorage") then
-		storageData = storage
+		object.setConfigParameter("storageData", storage)
 	end
 	storage = {}
 	object.setConfigParameter("treasurePools", nil)
