@@ -16,6 +16,7 @@ function init()
   self.completeText = config.getParameter("completeText")
   self.incompleteText = config.getParameter("incompleteText")
 
+  self.healthFormat = config.getParameter("healthFormat")
   self.energyFormat = config.getParameter("energyFormat")
   self.drainFormat = config.getParameter("drainFormat")
   self.massFormat = config.getParameter("massFormat")
@@ -214,13 +215,17 @@ function updatePreview()
   end
 
   if self.partManager:itemSetComplete(self.itemSet) then
+    widget.setVisible("imgHealthBar", true)
+    widget.setVisible("lblHealth", true)  
     widget.setVisible("imgEnergyBar", true)
     widget.setVisible("lblEnergy", true)
     widget.setVisible("lblDrain", true)
     widget.setVisible("lblMass", true)
-    
-    local energyMax = params.parts.body.energyMax
+    local energyMax = params.parts.body.energyMax * params.parts.body.stats.energyBonus
+    local healthMax = params.parts.body.energyMax * params.parts.body.stats.healthBonus
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
+    energyDrain = energyDrain * 0.6
+    widget.setText("lblHealth", string.format(self.healthFormat, healthMax))
     widget.setText("lblEnergy", string.format(self.energyFormat, energyMax))
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
 
@@ -228,6 +233,8 @@ function updatePreview()
 
     widget.setText("lblMass", string.format(self.massFormat, mechMass))
   else
+    widget.setVisible("imgHealthBar", false)
+    widget.setVisible("lblHealth", false)  
     widget.setVisible("imgEnergyBar", false)
     widget.setVisible("lblEnergy", false)
     widget.setVisible("lblDrain", false)
