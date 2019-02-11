@@ -189,6 +189,10 @@ function doUpgrade()
 						end
 					end				
 					
+					
+					if (itemConfig.config.improvedParameters)  and (upgradedItem.parameters.level) > 3 then
+						upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.improvedParameters)
+					end					
 				-- check if player gets Research randomly
 				checkResearchBonus()        
 				player.giveItem(upgradedItem)

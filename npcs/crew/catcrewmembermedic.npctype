@@ -1,0 +1,72 @@
+{
+  "type" : "catcrewmembermedic",
+  "baseType" : "catcrewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : true
+    },
+
+    "crew" : {
+      "role" : {
+        "type" : "medic",
+        "name" : "Medic",
+        "field" : "Medical",
+        "uniformColorIndex" : 3,
+
+        "benefits" : [
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "Meow! I'll heal mew whenever we're on the ship!"
+            ]
+          }
+        },
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Meow! Let me help mew out!",
+              "Meow! Need some healing?",
+              "Meow? Mew look like mew wouldn't mind some healing. Here!",
+              "Meow. Hey, I can heal mew! Just hold still!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Meow? Mew look like mew could use some healing!",
+              "Meow. Let me help mew out!",
+              "Meow! I'm a combat medic - let me help mew!",
+              "Meow? Looks like mew could use my assistance!",
+              "Meow. I can heal mew! Come to me, quickly!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "nothingchest" } ],
+            "legs" : [ { "name" : "nothinglegs" } ],
+            "primary" : [ "medkit" ],
+            "sheathedprimary" : [ "npcpistol", "veluushortsword3" ]
+          }
+        ] ]
+    ]
+  }
+}

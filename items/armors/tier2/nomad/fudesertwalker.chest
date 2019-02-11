@@ -4,20 +4,23 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;Immune: Burns, Deserts. +15% Fire Resist^reset;
-^#e43774;+20% Shield Regen, +15% Damage (Dagger,Shortspear)^reset;
-^green;Desert biomes: +15% Fire Resist^reset;",
+  "description" : "^red;+5% Fire Resist^reset;
+Set Bonuses:
+^cyan;Immune: Burning, Deserts^reset;
+^#a00000;+20% Shield Regen^reset;
+^green;Dagger/Shortspear: +15% Dmg^reset;
+^#009000;Desert biomes: +15% Fire Resist^reset;",
+
   "shortdescription" : "Nomad Robes",
   "category" : "t2armoru",
   "tooltipKind" : "armornew2",
 
   "learnBlueprintsOnPickup" : [
-	"chitinchest", 
-	"chitinlegs", 
-	"chitinhead"   
+    "chitinchest",
+    "chitinlegs",
+    "chitinhead"
   ],
-  
+
   "maleFrames" : {
     "body" : "chest.png",
     "backSleeve" : "bsleeve.png",
@@ -56,17 +59,16 @@
   ],
 
   "statusEffects" : [
-    "nomadsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_nomadset_chest",
+      "stat" : "nomadsetcount",
       "amount" : 1
     },
     {
       "stat" : "fireResistance",
       "amount" : 0.05
-    }       
+    }
   ],
-
 
   "colorOptions" : [
     /* RED */

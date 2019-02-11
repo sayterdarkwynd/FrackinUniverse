@@ -3,16 +3,21 @@
   "price" : 2500,
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
-  "rarity" : "Rare",
-  "category" : "t2armor",
-  "description" : "Set Bonus:
-^cyan;+5% Physical Resistance^reset; 
-^#e43774;Katana: +15% Damage, +2% Crit^reset;
-^green;Katana + Dagger: +1% Crit Chance, +10% Protection^reset;",
+  "rarity" : "Common",
+  "description" : "Set Bonuses:
+^red;+5% Physical Resist^reset;
+^green;Katana: +15% Dmg, +2% Crit Chance^reset;
+^green;Katana + Dagger: Additional +1% Crit Chance, +10% Protection^reset;",
+
   "shortdescription" : "Samurai Pants",
+  "category" : "t2armoru",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "samurai2pants", "samurai2head", "samurai2chest" ],
-  
+  "learnBlueprintsOnPickup" : [
+    "samurai2pants",
+    "samurai2head",
+    "samurai2chest"
+  ],
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
@@ -41,12 +46,11 @@
     }
   ],
 
-  "statusEffects" : [ 
-
-    "samuraisetbonus",
+  "statusEffects" : [
+    "fusetbonusmanager",
     {
-      "stat" : "fu_samuraiset_legs",
+      "stat" : "samuraisetcount",
       "amount" : 1
-    }  
+    }
   ]
 }

@@ -6,8 +6,8 @@
     "rarity" : "common",
   "description" : "Attaches to the forearm. Fires poison blasts.
 ^cyan;Poison weapon^reset;",
-  "shortdescription" : "^#ce64de;Veluuish Reaver",
-  "level" : 1,
+  "shortdescription" : "Veluuish Reaver",
+  "level" : 2,
   "category" : "armcannon",
   "itemTags" : ["weapon","ranged","upgradeableWeapon", "armcannon"],
   "tooltipKind" : "gun2",
@@ -28,8 +28,8 @@
 		}
       }
     },  
-    "sounds" : { "fire" : [ "/sfx/gun/plasma_ar4.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [42, 14, 124] } }    
+    "sounds" : { "fire" : [ "/sfx/gun/omnicannon_shot1.ogg","/sfx/gun/omnicannon_shot2.ogg","/sfx/gun/omnicannon_shot3.ogg","/sfx/gun/omnicannon_shot4.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [42, 114, 44] } }    
   },
   
   "baseOffset" : [0.0, 0.14],
@@ -43,18 +43,24 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.4,
-    "baseDps" : 8,
+    "baseDps" : 10,
     "energyUsage" : 32,
     "fireType" : "auto",
-    "inaccuracy" : 0.05,
+    "inaccuracy" : 0,
     "projectileCount" : 1,
     "projectileType" : "magnorbwraith3",
  
     "projectileParameters" : {
-      "speed" : 70,
+      "speed" : 50,
       "knockback" : 3,
       "damageSourceKind" : "poison",
-      "statusEffects" : [ "weakpoison" ]
+      "statusEffects" : [ "weakpoison" ],
+      "actionOnReap" : [
+	     {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/elementimpact/poisonimpact.config"
+	     }  
+      ]      
     },
     "stances" : {
       "idle" : {

@@ -1,6 +1,7 @@
 local crewOverflowOldInit = init
 local crewOverflowOldUpdate = update
 local crewOverflowOldUninit = uninit
+local Pet = Pet or {}
 
 function init()
 	crewOverflowOldInit()
@@ -73,4 +74,24 @@ end
 function uninit()
 	crewOverflowOldUninit()
 	status.setStatusProperty("fuStoredCrew", fuStoredCrew)
+end
+
+function Pet:store()
+  if self.uniqueId then
+    promises:add(world.sendEntityMessage(self.uniqueId, "pandorasboxGetHarvestTimeLeft"), function(harvestTimeLeft)
+      if harvestTimeLeft then
+        self.spawnConfig.parameters.pandorasboxHarvestTimeLeft = harvestTimeLeft
+      end
+    end)
+	promises:add(world.sendEntityMessage(self.uniqueId, "fuGetShipPetData"), function(shipPetData)
+      if shipPetData then
+        self.spawnConfig.parameters = util.mergeTable(self.spawnConfig.parameters, shipPetData)
+      end
+    end)
+  end
+  local result = self:toJson()
+  if not self.persistent then
+    result.uniqueId = nil
+  end
+  return result
 end

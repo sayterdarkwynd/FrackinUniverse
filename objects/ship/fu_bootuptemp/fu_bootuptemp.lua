@@ -9,11 +9,16 @@ function init()
 	message.setHandler("byos", function(_,_,species)
 		shipObjects = world.entityQuery(position, config.getParameter("scanRadius"))
 		newShipObjects = {}
+		newShipObjectsUniqueIds = {}
 		for _, shipObjectId in pairs (shipObjects) do
 			local shipObjectReplacement = world.getObjectParameter(shipObjectId, "byosBootupReplacement")
+			local shipObjectUniqueId = world.getObjectParameter(shipObjectId, "byosBootupUniqueId")
 			if shipObjectReplacement then
 				newShipObjects[world.entityPosition(shipObjectId)] = shipObjectReplacement
 				world.breakObject(shipObjectId, true)
+			end
+			if shipObjectUniqueId then
+				newShipObjectsUniqueIds[shipObjectReplacement] = shipObjectUniqueId
 			end
 		end
 		baseStats = config.getParameter("baseStats")
@@ -35,6 +40,10 @@ function update(dt)
 					parameters = nil
 					if newShipObjectData.racialiserType then
 						parameters = getBYOSParameters(newShipObjectData.racialiserType, newShipObjectData.shipPetType, newShipObjectData.byosBootupTreasure)
+					end
+					local newShipObjectsUniqueId = newShipObjectsUniqueIds[newShipObject]
+					if newShipObjectsUniqueId then
+						parameters.uniqueId = newShipObjectsUniqueId
 					end
 					world.placeObject(newShipObject, newShipObjectPosition, _, parameters)
 				end

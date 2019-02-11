@@ -3,14 +3,20 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Set Bonus:
-^cyan;Immune: Snow. +12% Ice Resistance^reset;
-^green;+10 to 20% Crit Damage (Dagger/Shortsword)^reset;",
+  "rarity" : "Common",
+  "description" : "^red;+4% Ice Resist^reset;
+Set Bonuses:
+^cyan;Immune: Snow, Chill^reset;
+^green;Dagger/Shortsword: +10% Crit Damage each^reset;",
+
   "shortdescription" : "Fang Shaman Coat",
   "category" : "t2armoru",
   "tooltipKind" : "armor",
-  "learnBlueprintsOnPickup" : [ "fuwolfchest2" ],
+  "learnBlueprintsOnPickup" : [
+    "fuwolfchest2",
+    "fuwolfhead2",
+    "fuwolflegs2"
+  ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -49,15 +55,15 @@
   ],
 
   "statusEffects" : [
-    "wolfsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_wolfset_chest",
+      "stat" : "wolfsetcount",
       "amount" : 1
     },
     {
       "stat" : "iceResistance",
       "amount" : 0.04
-    }  
+    }
   ],
 
   "colorOptions" : [
