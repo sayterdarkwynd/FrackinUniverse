@@ -145,23 +145,23 @@ function fuel()
     localFuelType = "Quantum"
   -- Cores. Provide high energy value AND bonus energy that goes above the maxLimit  
   elseif item.name == "powercore" then
-    fuelMultiplier = 500
+    fuelMultiplier = 1.5
     fuelBonus = 25
     localFuelType = "Core"
   elseif item.name == "moltencore" then
-    fuelMultiplier = 600
+    fuelMultiplier = 2
     fuelBonus = 120
     localFuelType = "Core"
   elseif item.name == "particlecore" then
-    fuelMultiplier = 700
+    fuelMultiplier = 3
     fuelBonus = 240
     localFuelType = "Core"    
   elseif item.name == "nuclearcore" then
-    fuelMultiplier = 800
+    fuelMultiplier = 4
     fuelBonus = 400
     localFuelType = "Core"
   elseif item.name == "precursorcore" then
-    fuelMultiplier = 900
+    fuelMultiplier = 5
     fuelBonus = 500
     localFuelType = "Core"    
   end
@@ -314,19 +314,19 @@ function fuelCountPreview(item)
     fuelMultiplier = 1.96
     textColor = "orange"
   elseif item.name == "powercore" then
-    fuelMultiplier = 500
+    fuelMultiplier = 1.5
     textColor = "green"    
   elseif item.name == "moltencore" then
-    fuelMultiplier = 600
+    fuelMultiplier = 2
     textColor = "green"
   elseif item.name == "particlecore" then
-    fuelMultiplier = 700
+    fuelMultiplier = 3
     textColor = "green"
   elseif item.name == "nuclearcore" then
-    fuelMultiplier = 800
+    fuelMultiplier = 4
     textColor = "green"
   elseif item.name == "precursorcore" then
-    fuelMultiplier = 900
+    fuelMultiplier = 5
     textColor = "green"      
   end
 
