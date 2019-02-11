@@ -148,10 +148,10 @@ function init()
 
   -- setup energy pool --modded
   --set up health pool
-  self.healthMax = self.parts.body.energyMax * self.parts.body.stats.mechHealth
+  self.healthMax = self.parts.body.energyMax * (self.parts.body.stats.healthBonus or 1)
   storage.health = storage.health or (config.getParameter("startHealthRatio", 1.0) * self.healthMax) 
 
-  self.energyMax = self.parts.body.energyMax
+  self.energyMax = self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1)
   storage.energy = 0
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
@@ -231,7 +231,7 @@ function init()
 
   self.crouch = 0.0 -- 0.0 ~ 1.0
   self.crouchTarget = 0.0
-  self.crouchCheckMax = 7.0
+  self.crouchCheckMax = 20.0
   self.bodyCrouchMax = -2.0
  -- self.crouchCheckMax = 20.0 
  -- self.bodyCrouchMax = -4.0
@@ -548,19 +548,19 @@ function update(dt)
 		  self.crouchTarget = 0.0
 		  self.crouchOn = false
 
-		  while dist > 0 do
-        if (newControls.down and not self.fallThroughSustain) or (
-          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {-2.5, dist})) or
-          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {0, dist})) or
-          world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {2.5, dist}))
-          ) then
-          self.crouchOn = true
-          self.crouchTarget = 1.0 - dist / self.crouchCheckMax
-        else
-          break
-        end
+	while dist > 0 do
+		if (newControls.down and not self.fallThroughSustain) or (
+		  world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {-2.5, dist})) or
+		  world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {0, dist})) or
+		  world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {2.5, dist}))
+		  ) then
+		  self.crouchOn = true
+		  self.crouchTarget = 1.0 - dist / self.crouchCheckMax
+		else
+		  break
+       	        end
         dist = dist - 1
-		  end
+	end
 		  --end
 
         else
@@ -640,18 +640,14 @@ function update(dt)
 
   --crouch code is here
   if storage.energy > 0 then
-	self.crouchTarget = 0.5
-	self.crouchOn = true
+    self.crouchTarget = 0.5
+    self.crouchOn = true
     self.crouch = self.crouch + (self.crouchTarget - self.crouch) * 0.1
   end
 
   if not self.flightMode then --lpk - dont set while in 0g
-    if self.crouchOn then
-    
-	  mcontroller.applyParameters(self.crouchSettings)
-    else
-	  mcontroller.applyParameters(self.noneCrouchSettings)
-    end
+    self.crouchTarget = 0.5
+    self.crouchOn = true
   end
   --end
 
@@ -717,22 +713,22 @@ function update(dt)
 		end
 	  end
 	  
-      if (storage.energy) < (self.energyMax*0.15) then -- play damage effects at certain health percentages
+      if (storage.health) < (self.energyMax*0.15) then -- play damage effects at certain health percentages
         animator.setParticleEmitterActive("highDamage", true) -- land fx 
         animator.setParticleEmitterActive("midDamage", false) -- land fx
         animator.setParticleEmitterActive("lowDamage", false) -- land fx  
         animator.setParticleEmitterActive("minorDamage", false) -- land fx 
-      elseif (storage.energy) < (self.energyMax*0.25) then 
+      elseif (storage.health) < (self.energyMax*0.25) then 
         animator.setParticleEmitterActive("highDamage", false) -- land fx 
         animator.setParticleEmitterActive("midDamage", true) -- land fx
         animator.setParticleEmitterActive("lowDamage", false) -- land fx 
         animator.setParticleEmitterActive("minorDamage", false) -- land fx 
-      elseif (storage.energy) < (self.energyMax*0.40) then 
+      elseif (storage.health) < (self.energyMax*0.40) then 
         animator.setParticleEmitterActive("midDamage", false) -- land fx
         animator.setParticleEmitterActive("highDamage", false) -- land fx
         animator.setParticleEmitterActive("lowDamage", true) -- land fx   
         animator.setParticleEmitterActive("minorDamage", false) -- land fx 
-      elseif (storage.energy) < (self.energyMax*0.60) then              
+      elseif (storage.health) < (self.energyMax*0.60) then              
         animator.setParticleEmitterActive("lowDamage", false) -- land fx
         animator.setParticleEmitterActive("midDamage", false) -- land fx
         animator.setParticleEmitterActive("highDamage", false) -- land fx  
@@ -829,7 +825,13 @@ function update(dt)
         mcontroller.resetParameters(self.movementSettings)
       end
     end
-
+    
+    if self.crouchOn then --lpk - dont set while in 0g
+	mcontroller.applyParameters(self.crouchSettings)
+    else
+	mcontroller.applyParameters(self.noneCrouchSettings)
+    end
+  
     if self.fallThroughTimer > 0 or self.fallThroughSustain then
       mcontroller.applyParameters({ignorePlatformCollision = true})
     else
