@@ -18,5 +18,66 @@
       "vAnchor": "mid",
       "value": ""
     }
+  },
+  
+  {
+        "op": "add",
+        "path": "/gui/imgHealthBar",
+        "value": 
+		{
+		  "type" : "image",
+          "file" : "/interface/scripted/mechassembly/energy_bar.png",
+          "zlevel" : 1,
+          "position" : [191, 61]
+	    }
+  },
+  
+  {
+        "op": "add",
+        "path": "/gui/lblHealth",
+        "value": 
+		{
+		  "type" : "label",
+          "zlevel" : 2,
+          "position" : [228, 65],
+          "hAnchor" : "mid",
+          "vAnchor" : "mid",
+          "value" : ""
+	    }
+  },
+  
+
+  {
+        "op": "add",
+        "path": "/healthFormat",
+        "value": "Health: %d"
+  },
+  
+  {
+        "op": "replace",
+        "path": "/gui/imgEnergyBar/position",
+        "value": [191, 51]
+  },
+  
+  {
+        "op": "replace",
+        "path": "/energyFormat",
+        "value": "Fuel: %d "
+  },  
+  {
+        "op": "replace",
+        "path": "/gui/lblEnergy/position",
+        "value": [228, 55]
+  },
+  
+  {
+        "op": "replace",
+        "path": "/gui/lblDrain/position",
+        "value": [147, 45]
+  },  
+  {
+        "op": "replace",
+        "path": "/drainFormat",
+        "value": "E.Drain: %.02f E/s"
   }
 ]
