@@ -223,8 +223,10 @@ function updatePreview()
     widget.setVisible("imgEnergyBar", true)
     widget.setVisible("lblEnergy", true)
 
-    local healthMax = (math.floor(100 *(params.parts.body.stats.mechMass+params.parts.body.stats.protection)) * (params.parts.body.stats.healthBonus or 1))
-    local energyMax = math.floor(params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1))
+    local massTotal = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)
+    local healthMax = (math.floor(50 *(massTotal+params.parts.body.stats.protection)) * (params.parts.body.stats.healthBonus or 1))
+    
+    local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1))
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
 

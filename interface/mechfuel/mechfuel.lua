@@ -44,13 +44,13 @@ function update(dt)
     if self.maxFuelMessage:succeeded() then
 	    if self.maxFuelMessage:result() then
 	      local params = self.maxFuelMessage:result()
-	      self.maxFuel = params.parts.body.energyMax * params.parts.body.stats.energyBonus
+	      self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)
 	    end
 	  end
   end
 
-  if self.maxFuel and self.currentFuel then
-    widget.setText("lblModuleCount", string.format("%.02f", self.currentFuel) .. " / " .. math.floor(self.maxFuel))
+  if self.maxFuel and self.currentFuel then  
+    widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
   end
 
   if self.setItemMessage and self.setItemMessage:finished() then
@@ -275,11 +275,12 @@ function setEfficiencyText(currentItem)
 end
 
 function fuelCountPreview(item)
+
   if self.currentFuel > self.maxFuel then
-    self.currentFuel = self.maxFuel
-  end
+  self.currentFuel = self.maxFuel
+  end    
   if not item then
-    widget.setText("lblModuleCount", string.format("%.02f", self.currentFuel) .. " / " .. math.floor(self.maxFuel))
+    widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
     return
   end
 

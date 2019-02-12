@@ -242,9 +242,6 @@ function init()
     mcontroller.setVelocity({0, self.deploy.initialVelocity})
   end)
 
-
-
-  --New values here
   --manual flight mode
   self.manualFlightMode = false;
   self.doubleJumpCount = 0
@@ -252,6 +249,7 @@ function init()
 
   self.crouch = 0.0 -- 0.0 ~ 1.0
   self.crouchTarget = 0.0
+  
   self.crouchCheckMax = 7.0
   self.bodyCrouchMax = -2.0
  -- self.crouchCheckMax = 20.0 
@@ -274,11 +272,12 @@ function init()
 end
 
 function setHealthValue()
-  self.healthMax = (100 * (self.parts.body.stats.mechMass+self.parts.body.stats.protection)) * (self.parts.body.stats.healthBonus or 1)
-  self.healthMax = 
+  self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
+  self.healthMax = (50 * (self.massTotal+self.parts.body.stats.protection)) * (self.parts.body.stats.healthBonus or 1) 
 end
+
 function setEnergyValue()
-  self.energyMax = self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1)
+  self.energyMax = 100 + self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1)
 end
 
 -- this function activates all the relevant stats that FU needs to call on for mech parts
@@ -1088,8 +1087,8 @@ function update(dt)
 	-- if it falls too hard, the mech takes some damage based on how far its gone
 	  self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2	  
 	  
-	if self.mechMassBase >= 15 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then  
-	  storage.energy = math.max(0, storage.energy - (self.baseDamage /200))
+	if self.mechMassBase >= 15 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then    --mech takes damage from stomps
+	  storage.health = math.max(0, storage.health - (self.baseDamage /200))
 	end
 
 	if self.mechMassBase > 0 and time <= 0 then
