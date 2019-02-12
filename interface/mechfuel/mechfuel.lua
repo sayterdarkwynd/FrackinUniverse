@@ -44,7 +44,25 @@ function update(dt)
     if self.maxFuelMessage:succeeded() then
 	    if self.maxFuelMessage:result() then
 	      local params = self.maxFuelMessage:result()
-	      self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)
+	      
+	        self.energyBoost = 0
+	        local massTotal = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)
+		if params.parts.hornName == 'mechenergyfield' then 
+		  self.energyBoost = 100
+		elseif params.parts.hornName == 'mechenergyfield2' then 
+		  self.energyBoost = 200
+		elseif params.parts.hornName == 'mechenergyfield3' then 
+		  self.energyBoost = 300
+		elseif params.parts.hornName == 'mechenergyfield4' then 
+		  self.energyBoost = 400
+		elseif params.parts.hornName == 'mechenergyfield5' then 
+		  self.energyBoost = 500
+		end   
+	        if massTotal > 22 then
+	          self.energyBoost = self.energyBoost * (massTotal/50)
+	        end	
+	        
+	      self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)  +(self.energyBoost)
 	    end
 	  end
   end

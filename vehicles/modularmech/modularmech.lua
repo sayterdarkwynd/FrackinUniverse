@@ -321,8 +321,12 @@ end
 function setEnergyValue()
   self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
   setEnergyBoostValue()
-  self.energyModifier = self.energyBoost * (self.massTotal/50)
-  self.energyMax = 100 + self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1) + ( self.energyModifier or 0)
+  
+  if self.massTotal > 22 then
+    self.energyBoost = self.energyBoost * (self.massTotal/50)
+  end
+  
+  self.energyMax = 100 + self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1) + ( self.energyBoost or 0)
 end
 
 -- this function activates all the relevant stats that FU needs to call on for mech parts
