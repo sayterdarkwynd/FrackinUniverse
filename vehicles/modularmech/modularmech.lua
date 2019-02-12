@@ -23,13 +23,34 @@ function init()
 
   message.setHandler("restoreEnergy", function(_, _, base, percentage)
       if alive() then
+        self.energyMax = self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1)
+        self.healthMax = self.parts.body.energyMax *(self.parts.body.stats.healthBonus or 1)
         local restoreAmount = (base or 0) + self.healthMax * (percentage or 0)
         storage.health = math.min(storage.health + (restoreAmount*0.75), self.healthMax)
-		    world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", math.min(storage.energy + (restoreAmount * 0.15), self.energyMax))
+	world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", math.min(storage.energy + (restoreAmount * 0.15), self.energyMax))
         animator.playSound("restoreEnergy")
+        if storage.energy > self.energyMax then
+          storage.energy = self.energyMax
+        end    
+        if storage.health > self.healthMax then
+          storage.health = self.healthMax
+        end        
       end
     end)
 
+  message.setHandler("restoreHealth", function(_, _, base, percentage)
+      if alive() then
+        self.healthMax = self.parts.body.energyMax *(self.parts.body.stats.healthBonus or 1)
+        local restoreAmount = (base or 0) + self.healthMax * (percentage or 0)
+        storage.health = math.min(storage.health + (restoreAmount*0.75), self.healthMax)
+
+        animator.playSound("restoreEnergy")
+        if storage.health > self.healthMax then
+          storage.health = self.healthMax
+        end
+      end
+    end)
+    
   self.ownerUuid = config.getParameter("ownerUuid")
   self.ownerEntityId = config.getParameter("ownerEntityId")
 
