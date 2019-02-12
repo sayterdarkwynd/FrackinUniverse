@@ -135,7 +135,10 @@ function fuel()
     localFuelType = "Isotope" 
   elseif item.name == "enrichedplutonium" then
     fuelMultiplier = 2.5
-    localFuelType = "Isotope"    
+    localFuelType = "Isotope"   
+  elseif item.name == "ultronium" then
+    fuelMultiplier = 25
+    localFuelType = "Isotope"     
   -- rare fuels  
   elseif item.name == "precursorfuelcell" then
     fuelMultiplier = 250
@@ -197,6 +200,7 @@ function swapItem(widgetName)
   or swapItem.name == "thoriumrod"   
   or swapItem.name == "enricheduranium"
   or swapItem.name == "enrichedplutonium"
+  or swapItem.name == "ultronium"
   or swapItem.name == "precursorfuelcell"
   or swapItem.name == "precursorfluid"   
   or swapItem.name == "powercore"
@@ -233,21 +237,23 @@ function setEfficiencyText(currentItem)
   elseif currentItem.name == "unrefinedliquidmechfuel" then
     widget.setText("lblEfficiency", "Detected fuel type: ^orange;Unrefined fuel^white;, Efficiency: x1.5")
   elseif currentItem.name == "uraniumrod" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#bf2fe2;Uranium^white;, Efficiency: x2.0")
+    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Uranium^white;, Efficiency: x2.0")
   elseif currentItem.name == "plutoniumrod" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#bf2fe2;Plutonium^white;, Efficiency: x1.5")
+    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Plutonium^white;, Efficiency: x1.5")
   elseif currentItem.name == "neptuniumrod" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#bf2fe2;Neptunium^white;, Efficiency: x1.5")
+    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Neptunium^white;, Efficiency: x1.5")
   elseif currentItem.name == "thoriumrod" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#bf2fe2;Thorium^white;, Efficiency: x1.65")
+    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Thorium^white;, Efficiency: x1.65")
   elseif currentItem.name == "enricheduranium" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#bf2fe2;Enriched Uranium^white;, Efficiency: x3")    
+    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Enriched Uranium^white;, Efficiency: x3")    
   elseif currentItem.name == "enrichedplutonium" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#bf2fe2;Enriched Plutonium^white;, Efficiency: x2.5")
+    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Enriched Plutonium^white;, Efficiency: x2.5")
+  elseif currentItem.name == "ultronium" then
+    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Ultronium^white;, Efficiency: x25")    
   elseif currentItem.name == "precursorfuelcell" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Precursor Cell^white;, Efficiency: x250")
+    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Precursor Cell^white;, Efficiency: x250")
   elseif currentItem.name == "precursorfluid" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Quantum Fluid^white;, Efficiency: x3.5")
+    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Quantum Fluid^white;, Efficiency: x3.5")
   elseif currentItem.name == "powercore" then
     widget.setText("lblEfficiency", "Detected fuel type: ^orange;Power Core^white;, Efficiency: x500")
   elseif currentItem.name == "moltencore" then
@@ -286,28 +292,31 @@ function fuelCountPreview(item)
     textColor = "orange"
   elseif item.name == "uraniumrod" then
     fuelMultiplier = 2
-    textColor = "#bf2fe2"
+    textColor = "#fcff00"
   elseif item.name == "plutoniumrod" then
     fuelMultiplier = 1.5
-    textColor = "#bf2fe2"
+    textColor = "#fcff00"
   elseif item.name == "enricheduranium" then
     fuelMultiplier = 3
-    textColor = "#bf2fe2"
+    textColor = "#fcff00"
   elseif item.name == "enrichedplutonium" then
     fuelMultiplier = 2.5
-    textColor = "#bf2fe2"
+    textColor = "#fcff00"
+  elseif item.name == "ultronium" then
+    fuelMultiplier = 25
+    textColor = "#fcff00"    
   elseif item.name == "neptuniumrod" then
     fuelMultiplier = 1.5
-    textColor = "#bf2fe2"
+    textColor = "#fcff00"
   elseif item.name == "thoriumrod" then
     fuelMultiplier = 1.65
-    textColor = "#bf2fe2"
+    textColor = "#fcff00"
   elseif item.name == "precursorfuelcell" then
     fuelMultiplier = 250
-    textColor = "orange"
+    textColor = "00e3ff"
   elseif item.name == "precursorfluid" then
     fuelMultiplier = 3.5
-    textColor = "orange"
+    textColor = "00e3ff"
   elseif item.name == "powercore" then
     fuelMultiplier = 500
     textColor = "green"    
@@ -345,29 +354,9 @@ function setFuelTypeText(type)
   elseif type == "Unrefined" then
     textColor = "orange"
   elseif type == "Isotope" then
-    textColor = "#bf2fe2"
-  elseif type == "Isotope" then
-    textColor = "#bf2fe2"
-  elseif type == "Isotope" then
-    textColor = "#bf2fe2"
-  elseif type == "Isotope" then
-    textColor = "#bf2fe2"
-  elseif type == "Isotope" then
-    textColor = "#bf2fe2"
-  elseif type == "Isotope" then
-    textColor = "#bf2fe2"
+    textColor = "#fcff00"
   elseif type == "Quantum" then
-    textColor = "orange"
-  elseif type == "Quantum" then
-    textColor = "orange"
-  elseif type == "Core" then
-    textColor = "green"
-  elseif type == "Core" then
-    textColor = "green"
-  elseif type == "Core" then
-    textColor = "green"
-  elseif type == "Core" then
-    textColor = "green"
+    textColor = "#00e3ff"
   elseif type == "Core" then
     textColor = "green"       
   else
