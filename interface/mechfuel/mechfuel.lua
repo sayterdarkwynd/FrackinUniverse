@@ -138,31 +138,26 @@ function fuel()
     localFuelType = "Isotope"    
   -- rare fuels  
   elseif item.name == "precursorfuelcell" then
-    fuelMultiplier = 25
+    fuelMultiplier = 250
     localFuelType = "Quantum"
   elseif item.name == "precursorfluid" then
-    fuelMultiplier = 1.96
+    fuelMultiplier = 3.5
     localFuelType = "Quantum"
   -- Cores. Provide high energy value AND bonus energy that goes above the maxLimit  
   elseif item.name == "powercore" then
     fuelMultiplier = 500
-    fuelBonus = 25
     localFuelType = "Core"
   elseif item.name == "moltencore" then
     fuelMultiplier = 600
-    fuelBonus = 120
     localFuelType = "Core"
   elseif item.name == "particlecore" then
     fuelMultiplier = 700
-    fuelBonus = 240
     localFuelType = "Core"    
   elseif item.name == "nuclearcore" then
     fuelMultiplier = 800
-    fuelBonus = 400
     localFuelType = "Core"
   elseif item.name == "precursorcore" then
     fuelMultiplier = 900
-    fuelBonus = 500
     localFuelType = "Core"    
   end
 
@@ -171,7 +166,7 @@ function fuel()
     return
   end
 
-  local addFuelCount = self.currentFuel + (item.count * fuelMultiplier) + fuelBonus
+  local addFuelCount = self.currentFuel + (item.count * fuelMultiplier) 
 
   if addFuelCount > self.maxFuel then
     item.count = addFuelCount - self.maxFuel
@@ -250,19 +245,19 @@ function setEfficiencyText(currentItem)
   elseif currentItem.name == "enrichedplutonium" then
     widget.setText("lblEfficiency", "Detected fuel type: ^#bf2fe2;Enriched Plutonium^white;, Efficiency: x2.5")
   elseif currentItem.name == "precursorfuelcell" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Precursor Cell^white;, Efficiency: x25")
+    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Precursor Cell^white;, Efficiency: x250")
   elseif currentItem.name == "precursorfluid" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Quantum Fluid^white;, Efficiency: x1.96")
+    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Quantum Fluid^white;, Efficiency: x3.5")
   elseif currentItem.name == "powercore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Power Core^white;, Efficiency: x1.5")
+    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Power Core^white;, Efficiency: x500")
   elseif currentItem.name == "moltencore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Molten Core^white;, Efficiency: x2")
+    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Molten Core^white;, Efficiency: x600")
   elseif currentItem.name == "particlecore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Particle Core^white;, Efficiency: x3")
+    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Particle Core^white;, Efficiency: x700")
   elseif currentItem.name == "nuclearcore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Nuclear Core^white;, Efficiency: x4")
+    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Nuclear Core^white;, Efficiency: x800")
   elseif currentItem.name == "precursorcore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Precursor Core^white;, Efficiency: x5")    
+    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Precursor Core^white;, Efficiency: x900")    
   else
     widget.setText("lblEfficiency", "")
   end
@@ -308,10 +303,10 @@ function fuelCountPreview(item)
     fuelMultiplier = 1.65
     textColor = "#bf2fe2"
   elseif item.name == "precursorfuelcell" then
-    fuelMultiplier = 25
+    fuelMultiplier = 250
     textColor = "orange"
   elseif item.name == "precursorfluid" then
-    fuelMultiplier = 1.96
+    fuelMultiplier = 3.5
     textColor = "orange"
   elseif item.name == "powercore" then
     fuelMultiplier = 500
