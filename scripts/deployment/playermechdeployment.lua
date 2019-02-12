@@ -396,8 +396,10 @@ function drawEnergyBar()
     imageFrame = "/scripts/deployment/energybarframeCore.png"
     imageBar =  "/scripts/deployment/energybarCore.png"        
   else
-    imageFrame = "/scripts/deployment/energybarNone.png"
-    imageBar =  "/scripts/deployment/energybarNone.png"
+   -- imageFrame = "/scripts/deployment/energybarNone.png"
+   -- imageBar =  "/scripts/deployment/energybarNone.png"
+    imageFrame = "/scripts/deployment/energybarframemechfuel.png"
+    imageBar =  "/scripts/deployment/energybarmechfuel.png"   
   end
 
   localAnimator.addDrawable({
