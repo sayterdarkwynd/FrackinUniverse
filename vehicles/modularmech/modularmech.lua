@@ -158,6 +158,7 @@ function init()
   --FU special stats	  		
   self.aimassist = self.parts.hornName == 'mechaimassist'		
   self.masscancel = self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4'
+  self.defenseboost = self.parts.hornName == 'mechdefensefield' or self.parts.hornName == 'mechdefensefield2' or self.parts.hornName == 'mechdefensefield3' or self.parts.hornName == 'mechdefensefield4' or self.parts.hornName == 'mechdefensefield5'
   --
   
   
@@ -271,9 +272,31 @@ function init()
   self.doubleTabBoostJump = false
 end
 
+function setDefenseBoostValue()
+  self.defenseboost = self.parts.hornName == 'mechdefensefield' or self.parts.hornName == 'mechdefensefield2' or self.parts.hornName == 'mechdefensefield3' or self.parts.hornName == 'mechdefensefield4' or self.parts.hornName == 'mechdefensefield5'
+	  if self.defenseboost then
+		if self.parts.hornName == 'mechdefensefield' then 
+		  self.defenseBoost = 100
+		elseif self.parts.hornName == 'mechdefensefield2' then 
+		  self.defenseBoost = 200
+		elseif self.parts.hornName == 'mechdefensefield3' then 
+		  self.defenseBoost = 300
+		elseif self.parts.hornName == 'mechdefensefield4' then 
+		  self.defenseBoost = 400
+		elseif self.parts.hornName == 'mechdefensefield5' then 
+		  self.defenseBoost = 500		  
+		end
+	  else
+	    self.defenseBoost = 500
+	  end
+	  
+end
+
 function setHealthValue()
   self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
-  self.healthMax = (50 * (self.massTotal+self.parts.body.stats.protection)) * (self.parts.body.stats.healthBonus or 1) 
+  setDefenseBoostValue()
+  self.defenseModifier = (self.defenseBoost * self.massTotal) * 0.1
+  self.healthMax = 50 * ((self.massTotal+self.parts.body.stats.protection) * (self.parts.body.stats.healthBonus or 1)) + ( self.defenseModifier or 0)
 end
 
 function setEnergyValue()
@@ -282,6 +305,7 @@ end
 
 -- this function activates all the relevant stats that FU needs to call on for mech parts
 -- **************************************************************************************
+
 function activateFUMechStats()
           self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
           self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
@@ -479,6 +503,9 @@ function update(dt)
 	  if self.parts.hornName == 'mechaimassist' then
 		self.aimassist = not self.aimassist
 		animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
+	 -- elseif self.parts.hornName == 'mechdefensefield' or self.parts.hornName == 'mechdefensefield2' or self.parts.hornName == 'mechdefensefield3' or self.parts.hornName == 'mechdefensefield4' or self.parts.hornName == 'mechdefensefield5' then
+	--	self.defenseboost = not self.defenseboost
+	--	animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))		
 	  elseif self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4' then
 		self.masscancel = not self.masscancel		  
 		animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
@@ -728,11 +755,6 @@ function update(dt)
       eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
       eMult = eMult 
 
-      --[[ ************************************************************************************
-      In Frackin Universe, mechs regen (which is initially from XS Mechs - Modular Edition. You rock, LoPhatKo!)
-      but not if they are in a hostile environment to their body type. Additionally, the higher threat that the biome
-      is, the slower the regeneration rate becomes, which should help to balance out energy cost.
-      ***************************************************************************************** --]]
       activateFUMechStats()
 	  
 	  if self.masscancel then
@@ -744,6 +766,20 @@ function update(dt)
 		  self.mechMass = self.mechMass * 0.25
 		elseif self.parts.hornName == 'mechmasscancel4' then
 		  self.mechMass = 0
+		end
+	  end
+	  
+	  if self.defenseboost then
+		if self.parts.hornName == 'mechdefensefield' then 
+		  self.defenseBoost = 100
+		elseif self.parts.hornName == 'mechdefensefield2' then 
+		  self.defenseBoost = 200
+		elseif self.parts.hornName == 'mechdefensefield3' then 
+		  self.defenseBoost = 300
+		elseif self.parts.hornName == 'mechdefensefield4' then 
+		  self.defenseBoost = 400
+		elseif self.parts.hornName == 'mechdefensefield5' then 
+		  self.defenseBoost = 500		  
 		end
 	  end
 	  
@@ -774,22 +810,27 @@ function update(dt)
         animator.setParticleEmitterActive("minorDamage", false) -- land fx 
       end
 
-      if (storage.energy) < (self.energyMax/2) then 
-        eMult = 0  
-      elseif (self.mechMassBase) > 22 then
-        eMult = 0
-      else
-        eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
-      end
+      --[[ ************************************************************************************
+      In Frackin Universe, mechs regen (which is initially from XS Mechs - Modular Edition. You rock, LoPhatKo!)
+      but not if they are in a hostile environment to their body type. Additionally, the higher threat that the biome
+      is, the slower the regeneration rate becomes, which should help to balance out energy cost.
+      ***************************************************************************************** --]]
+      --if (storage.energy) < (self.energyMax/2) then 
+      --  eMult = 0  
+      --elseif (self.mechMassBase) > 22 then
+      --  eMult = 0
+      --else
+      --  eMult = (eMult - self.threatMod) * self.mechBonusTotal/20 + (self.storageValue)
+      --end
 
       -- is their mech affected by the planet? if so, do not regen. Likewise, if their mass is too high, do not regen.
       -- Otherwise, we apply the bonus
       --energyDrain = energyDrain - self.extraDrain     if enabling the extra code for Powerful weapons
-      if self.regenPenalty then 
-        energyDrain = energyDrain 
-      else
-        energyDrain = -energyDrain*eMult
-      end       
+      --if self.regenPenalty then 
+      --  energyDrain = energyDrain 
+      --else
+      --  energyDrain = -energyDrain*eMult
+      --end       
     
       energyDrain = 0
     end
