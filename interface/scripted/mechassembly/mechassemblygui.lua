@@ -237,10 +237,22 @@ function updatePreview()
 		elseif params.parts.hornName == 'mechdefensefield5' then 
 		  self.defenseBoost = 500
 		end
-     		
+   self.energyBoost = 0
+		if params.parts.hornName == 'mechenergyfield' then 
+		  self.energyBoost = 100
+		elseif params.parts.hornName == 'mechenergyfield2' then 
+		  self.energyBoost = 200
+		elseif params.parts.hornName == 'mechenergyfield3' then 
+		  self.energyBoost = 300
+		elseif params.parts.hornName == 'mechenergyfield4' then 
+		  self.energyBoost = 400
+		elseif params.parts.hornName == 'mechenergyfield5' then 
+		  self.energyBoost = 500
+		end   
+		
     local healthMax = math.floor(50 * ((massTotal+params.parts.body.stats.protection) * (params.parts.body.stats.healthBonus or 1)) + ((self.defenseBoost * massTotal)*0.1))
 
-    local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1))
+    local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost * (massTotal/50))
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
 

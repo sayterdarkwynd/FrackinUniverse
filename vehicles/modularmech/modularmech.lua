@@ -159,6 +159,7 @@ function init()
   self.aimassist = self.parts.hornName == 'mechaimassist'		
   self.masscancel = self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4'
   self.defenseboost = self.parts.hornName == 'mechdefensefield' or self.parts.hornName == 'mechdefensefield2' or self.parts.hornName == 'mechdefensefield3' or self.parts.hornName == 'mechdefensefield4' or self.parts.hornName == 'mechdefensefield5'
+  self.energyboost = self.parts.hornName == 'mechenergyfield' or self.parts.hornName == 'mechenergyfield2' or self.parts.hornName == 'mechenergyfield3' or self.parts.hornName == 'mechenergyfield4' or self.parts.hornName == 'mechenergyfield5'
   --
   
   
@@ -287,9 +288,27 @@ function setDefenseBoostValue()
 		  self.defenseBoost = 500		  
 		end
 	  else
-	    self.defenseBoost = 500
+	    self.defenseBoost = 0
 	  end
 	  
+end
+function setEnergyBoostValue()
+  self.energyboost = self.parts.hornName == 'mechenergyfield' or self.parts.hornName == 'mechenergyfield2' or self.parts.hornName == 'mechenergyfield3' or self.parts.hornName == 'mechenergyfield4' or self.parts.hornName == 'mechenergyfield5'
+	  if self.energyboost then
+		if self.parts.hornName == 'mechenergyfield' then 
+		  self.energyBoost = 100
+		elseif self.parts.hornName == 'mechenergyfield2' then 
+		  self.energyBoost = 200
+		elseif self.parts.hornName == 'mechenergyfield3' then 
+		  self.energyBoost = 300
+		elseif self.parts.hornName == 'mechenergyfield4' then 
+		  self.energyBoost = 400
+		elseif self.parts.hornName == 'mechenergyfield5' then 
+		  self.energyBoost = 500		  
+		end
+	  else
+	    self.energyBoost = 0
+	  end
 end
 
 function setHealthValue()
@@ -300,7 +319,10 @@ function setHealthValue()
 end
 
 function setEnergyValue()
-  self.energyMax = 100 + self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1)
+  self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
+  setEnergyBoostValue()
+  self.energyModifier = self.energyBoost * (self.massTotal/50)
+  self.energyMax = 100 + self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1) + ( self.energyModifier or 0)
 end
 
 -- this function activates all the relevant stats that FU needs to call on for mech parts
@@ -502,10 +524,7 @@ function update(dt)
       if newControls.Special1 and not self.lastControls.Special1 and storage.energy > 0 then
 	  if self.parts.hornName == 'mechaimassist' then
 		self.aimassist = not self.aimassist
-		animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
-	 -- elseif self.parts.hornName == 'mechdefensefield' or self.parts.hornName == 'mechdefensefield2' or self.parts.hornName == 'mechdefensefield3' or self.parts.hornName == 'mechdefensefield4' or self.parts.hornName == 'mechdefensefield5' then
-	--	self.defenseboost = not self.defenseboost
-	--	animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))		
+		animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))		
 	  elseif self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4' then
 		self.masscancel = not self.masscancel		  
 		animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
@@ -780,6 +799,19 @@ function update(dt)
 		  self.defenseBoost = 400
 		elseif self.parts.hornName == 'mechdefensefield5' then 
 		  self.defenseBoost = 500		  
+		end
+	  end
+	  if self.energyboost then
+		if self.parts.hornName == 'mechenergyfield' then 
+		  self.energyBoost = 100
+		elseif self.parts.hornName == 'mechenergyfield2' then 
+		  self.energyBoost = 200
+		elseif self.parts.hornName == 'mechenergyfield3' then 
+		  self.energyBoost = 300
+		elseif self.parts.hornName == 'mechenergyfield4' then 
+		  self.energyBoost = 400
+		elseif self.parts.hornName == 'mechenergyfield5' then 
+		  self.energyBoost = 500		  
 		end
 	  end
 	  
