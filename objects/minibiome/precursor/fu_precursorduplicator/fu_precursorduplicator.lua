@@ -6,6 +6,7 @@ function init()
 	self = config.getParameter("duplicator")
 	self.craftTime = config.getParameter("craftTime")
 	storage.timer = storage.timer or self.craftTime -- making this, storage.crafting, etc. persistent so that on server terminus, nothing is lost.
+	math.randomseed(os.time())
 end
 
 function update(dt)
@@ -35,17 +36,20 @@ function update(dt)
 						itemOre = root.itemConfig(world.containerItemAt(entity.id(),0))
 
 						if itemOre then
-							if math.random(10) == 10 then
-								fuelValueBonus = math.random(1,2)
-							end
 
 							itemValue = itemOre.config.price /1000
-							fuelValue = ((fuelValue - (fuelValue  * itemValue)) + fuelValueBonus) * fuelMod
-							if fuelValue < 1 then
-								fuelValue = 1
+							fuelValue = (fuelValue - (fuelValue * itemValue)) + (math.random() * 0.1)
+							
+							local fuelValueDecimals=(fuelValue%1)*fuelMod*fuelMod
+							fuelValue=math.max(fuelValue*fuelMod,1)
+							
+							if fuelValueDecimals>0 then
+								fuelValue=math.floor(fuelValue)
+								if math.random() < fuelValueDecimals then
+									fuelValue=fuelValue+1
+								end
 							end
 						end
-						
 						storage.outputCount = fuelValue
 						storage.crafting = true
 					end
