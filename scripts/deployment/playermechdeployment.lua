@@ -104,7 +104,7 @@ function init()
 
   --health bar variables
   self.healthBarSize = root.imageSize("/scripts/deployment/healthbar.png")
-  self.healthBarFrameOffset = {0, 4.3}
+  self.healthBarFrameOffset = {0, 4.8}
   self.healthBarOffset = {self.healthBarFrameOffset[1] - self.healthBarSize[1] / 16, self.healthBarFrameOffset[2] - self.healthBarSize[2] / 16}
   --end
 
@@ -386,9 +386,18 @@ function drawEnergyBar()
   elseif fuelType == "Unrefined" then
     imageFrame = "/scripts/deployment/energybarframeunrefinedfuel.png"
     imageBar =  "/scripts/deployment/energybarunrefinedfuel.png"
+  elseif fuelType == "Isotope" then
+    imageFrame = "/scripts/deployment/energybarframemechfuel.png"
+    imageBar =  "/scripts/deployment/energybarIsotope.png"   
+  elseif fuelType == "Quantum" then
+    imageFrame = "/scripts/deployment/energybarframeQuantum.png"
+    imageBar =  "/scripts/deployment/energybarQuantum.png"   
+  elseif fuelType == "Core" then
+    imageFrame = "/scripts/deployment/energybarframeCore.png"
+    imageBar =  "/scripts/deployment/energybarCore.png"        
   else
-    imageFrame = "/null.png"
-    imageBar =  "/null.png"
+    imageFrame = "/scripts/deployment/energybarNone.png"
+    imageBar =  "/scripts/deployment/energybarNone.png"
   end
 
   localAnimator.addDrawable({
