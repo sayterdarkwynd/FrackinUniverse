@@ -87,6 +87,11 @@ function update(dt)
     end
     self.fuelTypeMessage = nil
   end
+  
+  if self.currentFuel > self.maxFuel then
+    self.currentFuel = self.maxFuel
+  end
+  
 end
 
 function insertFuel()
@@ -270,6 +275,9 @@ function setEfficiencyText(currentItem)
 end
 
 function fuelCountPreview(item)
+  if self.currentFuel > self.maxFuel then
+    self.currentFuel = self.maxFuel
+  end
   if not item then
     widget.setText("lblModuleCount", string.format("%.02f", self.currentFuel) .. " / " .. math.floor(self.maxFuel))
     return

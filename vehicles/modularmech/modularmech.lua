@@ -23,8 +23,8 @@ function init()
 
   message.setHandler("restoreEnergy", function(_, _, base, percentage)
       if alive() then
-        self.energyMax = self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1)
-        self.healthMax = self.parts.body.energyMax *(self.parts.body.stats.healthBonus or 1)
+        setHealthValue()
+        setEnergyValue()
         local restoreAmount = (base or 0) + self.healthMax * (percentage or 0)
         storage.health = math.min(storage.health + (restoreAmount*0.75), self.healthMax)
 	world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", math.min(storage.energy + (restoreAmount * 0.15), self.energyMax))
@@ -40,7 +40,7 @@ function init()
 
   message.setHandler("restoreHealth", function(_, _, base, percentage)
       if alive() then
-        self.healthMax = self.parts.body.energyMax *(self.parts.body.stats.healthBonus or 1)
+        setHealthValue()
         local restoreAmount = (base or 0) + self.healthMax * (percentage or 0)
         storage.health = math.min(storage.health + (restoreAmount*0.75), self.healthMax)
 
@@ -169,10 +169,10 @@ function init()
 
   -- setup energy pool --modded
   --set up health pool
-  self.healthMax = self.parts.body.energyMax *(self.parts.body.stats.healthBonus or 1)
+  setHealthValue()
   storage.health = storage.health or (config.getParameter("startHealthRatio", 1.0) * self.healthMax) 
 
-  self.energyMax = self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1)
+  setEnergyValue()
   storage.energy = 0
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
@@ -271,6 +271,14 @@ function init()
   self.doubleTabBoostSpeedMult = 1.0
 
   self.doubleTabBoostJump = false
+end
+
+function setHealthValue()
+  self.healthMax = (100 * (self.parts.body.stats.mechMass+self.parts.body.stats.protection)) * (self.parts.body.stats.healthBonus or 1)
+  self.healthMax = 
+end
+function setEnergyValue()
+  self.energyMax = self.parts.body.energyMax *(self.parts.body.stats.energyBonus or 1)
 end
 
 -- this function activates all the relevant stats that FU needs to call on for mech parts

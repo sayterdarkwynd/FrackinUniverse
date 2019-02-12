@@ -215,16 +215,19 @@ function updatePreview()
   end
 
   if self.partManager:itemSetComplete(self.itemSet) then
+    widget.setVisible("lblDrain", true)
+    widget.setVisible("lblMass", true)
+    
     widget.setVisible("imgHealthBar", true)
     widget.setVisible("lblHealth", true)  
     widget.setVisible("imgEnergyBar", true)
     widget.setVisible("lblEnergy", true)
-    widget.setVisible("lblDrain", true)
-    widget.setVisible("lblMass", true)
-    local energyMax = params.parts.body.energyMax * params.parts.body.stats.energyBonus
-    local healthMax = params.parts.body.energyMax * params.parts.body.stats.healthBonus
+
+    local healthMax = (math.floor(100 *(params.parts.body.stats.mechMass+params.parts.body.stats.protection)) * (params.parts.body.stats.healthBonus or 1))
+    local energyMax = math.floor(params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1))
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
+
     widget.setText("lblHealth", string.format(self.healthFormat, healthMax))
     widget.setText("lblEnergy", string.format(self.energyFormat, energyMax))
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
