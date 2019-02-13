@@ -7,7 +7,6 @@
   "shortdescription" : "^cyan;Small FTL Drive^white;",
   "race" : "generic",
   "printable" : false,
-  "learnBlueprintsOnPickup" : [ "fu_ftldrive", "fu_ftldrive2", "fu_ftldrive3" ],
 
   "inventoryIcon" : "fu_ftldrivesmallicon.png",
   "orientations" : [
@@ -50,20 +49,5 @@
       "initialVelocity" : [0.5, 2.0],
       "position" : [0.4, 0]
     }
-  },
-  
-  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/objects/ship/fu_ftldriveanimation.lua" ],
-  "scriptDelta" : 60,
-  
-  "stats" : {
-    "shipMass" : 1
-  },
-  "capabilities" : [
-    "systemTravel",
-    "planetTravel"
-  ],
-  "maxAmountGroups" : {
-    "ftlDrive" : 1
-  },
-  "byosOnly" : true
+  }
 }
