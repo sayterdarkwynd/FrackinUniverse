@@ -64,11 +64,11 @@ funcs = {
 			local v = math.random(200)
 			if math.random(2) == 2 then
 			  world.spawnItem("fuscienceresource", world.entityPosition(player.id()),v)
-			  pane.playSound(config.getParameter("uncommonSound"))
+			  pane.playSound(config.getParameter("funSound"))
 			  return {title = "Research", subtitle = "That's useful!", image = "/items/currency/fuscienceresource.png", textColor = "#ffffff", flashColor = "#FF00AA" }
 			else
 			  world.spawnItem("essence", world.entityPosition(player.id()),v)
-			  pane.playSound(config.getParameter("uncommonSound"))
+			  pane.playSound(config.getParameter("funSound"))
 			  return {title = "Essence", subtitle = "That's useful!", image = "/items/currency/essence.png", textColor = "#ffffff", flashColor = "#00FFAA" }
 			end		
 		end
