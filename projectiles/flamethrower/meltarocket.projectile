@@ -6,7 +6,7 @@
   "timeToLive" : 0.55,
   "speed" : 20,
   "piercing" : true,
-  "image" : "flamethrowerflameff.png",
+  "image" : "melta.png",
   "animationCycle" : 0.55,
   "lightColor" : [218, 83, 2],
   "frameNumber" : 4,  
@@ -15,10 +15,6 @@
     {
       "action" : "config",
       "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
-    },  
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/smoke/smoke.config"
     }
   ],
   "actionOnCollide" : [
@@ -38,13 +34,7 @@
       ]
     }
   ], 
-"periodicActions" : [  
-    {
-      "action" : "config",
-      "time" : 0.25,
-      "loop" : true,      
-      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
-    },	  
+"periodicActions" : [  	  
     {
       "action" : "explosion",
       "time" : 0.1,
@@ -90,5 +80,5 @@
     }
   ],  
   "damageKind" : "fire",
-  "statusEffects" : [ "glow", "burning" ]
+  "statusEffects" : [ "burning" ]
 }
