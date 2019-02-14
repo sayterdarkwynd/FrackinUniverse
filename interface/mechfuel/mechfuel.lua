@@ -439,8 +439,8 @@ function setFuelTypeText(type)
   end
 
   if textColor then
-    widget.setText("lblFuelType", "CURRENT FUEL TYPE: ^" .. textColor .. ";" .. type)
+    widget.setText("lblFuelType", "CURRENT FUEL: ^" .. textColor .. ";" .. type)
   else
-    widget.setText("lblFuelType", "CURRENT FUEL TYPE: EMPTY")
+    widget.setText("lblFuelType", "CURRENT FUEL: ^red;EMPTY^reset;")
   end
 end
