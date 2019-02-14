@@ -5,11 +5,14 @@
   "rarity" : "Common",
 
   "interactAction" : "ScriptPane",
+  
+  "planetInteractAction" : "ScriptPane",
+  "planetInteractData" : "/interface/scripted/fu_planetsail/fu_planetsail.config",
 
   "category" : "decorative",
 
   "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short.",
-  "shortdescription" : "S.A.I.L",
+  "shortdescription" : "S.A.I.L Interface",
   "race" : "hylotl",
 
   "apexDescription" : "I can talk to SAIL through this console.",
@@ -40,8 +43,8 @@
 
 
 
-  "interactData" : "/interface/scripted/fu_sail/customSail.config",
-  "scripts" : [ "/objects/scripts/customtechstation.lua" ],
+  "interactData" : "/zb/newSail/newSail.config",
+  "scripts" : [ "/objects/scripts/customtechstation.lua", "/objects/ship/fu_shipobjectplanetinteraction.lua" ],
 
 
 
@@ -62,7 +65,5 @@
       [ "Rebooting has shown to improve ship interaction satisfaction levels by 73%.", "/ai/portraits/hylotlportrait.png:unique.1"],
       [ "Rebooting requires a conscious entity to interact with the S.A.I.L console.", "/ai/portraits/hylotlportrait.png:unique.1" ]
     ]
-  },
-
-  "uniqueId" : "techstation"
+  }
 }
