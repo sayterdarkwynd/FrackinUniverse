@@ -4,8 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+15% Damage (Shotgun, Assault Rifle)^reset;", 
+  "description" : "^red;+5% Poison Resist^reset;
+Set Bonuses:
+^green;Shotgun/Assault Rifle: +15% Dmg^reset;",
+
   "shortdescription" : "Telebrium Armor",
   "category" : "t2armor",
   "tooltipKind" : "armornew2",
@@ -45,13 +47,17 @@
       "stat" : "maxHealth",
       "amount" : 4
     }
-  ],  
+  ],
 
   "statusEffects" : [
-    "militiasetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_militiaset_chest",
+      "stat" : "militiasetcount",
       "amount" : 1
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.05
     }
   ],
 

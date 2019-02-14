@@ -30,7 +30,8 @@
         {"weight" : 0.0618, "item" : "upgrademodule"},       
         {"weight" : 0.0618, "item" : [ "manipulatormodule", 2]},
         {"weight" : 0.0618, "item" : [ "techcard", 2]},
-        {"weight" : 0.0618, "item" : [ "upgrademodule", 2]}
+        {"weight" : 0.0618, "item" : [ "upgrademodule", 2]},
+        {"weight" : 0.06, "item" : [ "fuelcatalyst", 200]}
       ]
     }]
   ],
@@ -52,7 +53,9 @@
         {"weight" : 0.048, "item" : [ "upgrademodule", 2]},
         {"weight" : 0.048, "item" : [ "manipulatormodule", 3]},
         {"weight" : 0.048, "item" : [ "techcard", 3]},
-        {"weight" : 0.048, "item" : [ "upgrademodule", 3]}
+        {"weight" : 0.048, "item" : [ "upgrademodule", 3]},
+        {"weight" : 0.048, "item" : [ "tritium", 3]},
+        {"weight" : 0.06, "item" : [ "fuelcatalyst", 200]}
       ]
     }]
   ],
@@ -74,7 +77,9 @@
         {"weight" : 0.048, "item" : [ "upgrademodule", 3]},
         {"weight" : 0.048, "item" : [ "manipulatormodule", 4]},
         {"weight" : 0.048, "item" : [ "techcard", 4]},
-        {"weight" : 0.048, "item" : [ "upgrademodule", 4]}          
+        {"weight" : 0.048, "item" : [ "upgrademodule", 4]},
+        {"weight" : 0.048, "item" : [ "tritium", 3]},
+        {"weight" : 0.06, "item" : [ "fuelcatalyst", 200]}          
       ]
     }]
   ],
@@ -96,7 +101,10 @@
         {"weight" : 0.048, "item" : [ "upgrademodule", 4]},
         {"weight" : 0.048, "item" : [ "manipulatormodule", 5]},
         {"weight" : 0.048, "item" : [ "techcard", 5]},
-        {"weight" : 0.048, "item" : [ "upgrademodule", 5]}          
+        {"weight" : 0.048, "item" : [ "upgrademodule", 5]},
+        {"weight" : 0.048, "item" : [ "tritium", 3]},
+        {"weight" : 0.001, "item" : [ "neutronium", 1]},
+        {"weight" : 0.06, "item" : [ "fuelcatalyst", 200]}            
       ]
     }]
   ],
@@ -114,7 +122,9 @@
         {"weight" : 0.025, "pool" : "fuspecialLoot"},
         {"weight" : 0.008, "pool" : "augmentsFU"},
         {"weight" : 0.008, "pool" : "artifactloot"},
-        {"weight" : 0.25, "pool" : "nonTieredRichOre"}
+        {"weight" : 0.25, "pool" : "nonTieredRichOre"},
+        {"weight" : 0.25, "pool" : "fuGenericQuestLoot"},
+        {"weight" : 0.1, "item" : [ "fuelcatalyst", 120]} 
       ],
       "poolRounds" : [
         [0.85, 1],
@@ -137,7 +147,9 @@
         {"weight" : 0.008, "pool" : "augmentsFU"},
         {"weight" : 0.008, "pool" : "artifactloot"},
         {"weight" : 0.025, "pool" : "fuspecialLoot"},
-        {"weight" : 0.25, "pool" : "nonTieredRichOre"}
+        {"weight" : 0.25, "pool" : "nonTieredRichOre"},
+        {"weight" : 0.25, "pool" : "fuGenericQuestLootMid"},
+        {"weight" : 0.1, "item" : [ "fuelcatalyst", 280]}
       ],
       "poolRounds" : [
         [0.85, 1],
@@ -162,7 +174,14 @@
         {"weight" : 0.15, "pool" : "fuRareOre"},
         {"weight" : 0.008, "pool" : "augmentsFU"},
         {"weight" : 0.008, "pool" : "artifactloot"},
-        {"weight" : 0.25, "pool" : "nonTieredRichOre"}
+        {"weight" : 0.25, "pool" : "nonTieredRichOre"},
+        {"weight" : 0.25, "pool" : "fuGenericQuestLootHigh"},
+        {"weight" : 0.1, "item" : [ "fuelcatalyst", 420]},
+        {"weight" : 0.005, "item" : [ "exoticmatter", 2]},
+        {"weight" : 0.004, "item" : [ "honedlunari", 2]},
+        {"weight" : 0.003, "item" : [ "unknowngene", 2]},
+        {"weight" : 0.001, "item" : [ "cthulureward", 1]},
+        {"weight" : 0.003, "item" : [ "precursorcore", 1]}
       ],
       "poolRounds" : [
         [0.85, 1],
@@ -306,6 +325,7 @@
         {"weight" : 0.05, "item" : "rarerocketlauncher"},        
         {"weight" : 0.05, "item" : "rareshotgun"},
         {"weight" : 0.05, "item" : "raresniperrifle"},
+        {"weight" : 0.05, "pool" : "fuspecialLoot"},
         {"weight" : 0.05, "item" : "swtjc_ewg_rarebattlerifle"},
         {"weight" : 0.05, "item" : "swtjc_ewg_commonsaw"},
         {"weight" : 0.05, "item" : "swtjc_ewg_raremultigrenadelauncher"},
@@ -336,6 +356,7 @@
         {"weight" : 0.7, "item" : "rarespear"},
         {"weight" : 0.7, "item" : "rareshortsword"},
         
+        {"weight" : 0.7, "pool" : "fuspecialLoot"},
         {"weight" : 0.7, "item" : "rareassaultrifle"},
         {"weight" : 0.7, "item" : "raregrenadelauncher"},
         {"weight" : 0.7, "item" : "raremachinepistol"},

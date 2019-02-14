@@ -4,8 +4,11 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Has built-in head lamp. Set Bonus:
-^cyan;+15% Damage (Shotgun, Assault Rifle)^reset;",
+  "description" : "^red;+5% Poison Resist^reset;
+^#a00000;Has built-in head lamp^reset;
+Set Bonuses:
+^green;Shotgun/Assault Rifle: +15% Dmg^reset;",
+
   "shortdescription" : "Telebrium Helmet",
   "category" : "t2armor",
   "tooltipKind" : "armornew2",
@@ -40,15 +43,18 @@
   ],
 
   "statusEffects" : [
-    "headlamp",
-    "militiasetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_militiaset_head",
+      "stat" : "militiasetcount",
       "amount" : 1
     },
-    { "stat" : "poisonResistance", "amount" : 0.05}
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.05
+    },
+    "headlamp"
   ],
-  
+
   "colorOptions" : [
     { "48bac2" : "00bb7e", "9ef9ff" : "22ffb7", "4d1515" : "1c0f23", "611a1a" : "392344", "852424" : "684a77", "ffca8a" : "467562", "e0975c" : "2d5742", "a85636" : "173926", "6f2919" : "071b0d", "45361b" : "2a2722", "5c4824" : "474239", "6e562b" : "625c4f" },
     /* BLACK */
