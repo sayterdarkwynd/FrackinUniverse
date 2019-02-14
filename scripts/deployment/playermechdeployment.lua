@@ -164,12 +164,34 @@ function setMechColorIndexes(primaryIndex, secondaryIndex)
   buildMechParameters()
 end
 
+function checkEnergyBonus()
+	self.energyBoost = 0
+	local massTotal = (self.mechParameters.parts.body.stats.mechMass or 0) + (self.mechParameters.parts.booster.stats.mechMass or 0) + (self.mechParameters.parts.legs.stats.mechMass or 0) + (self.mechParameters.parts.leftArm.stats.mechMass or 0) + (self.mechParameters.parts.rightArm.stats.mechMass or 0)
+	if self.mechParameters.parts.hornName == 'mechenergyfield' then 
+	  self.energyBoost = 100
+	elseif self.mechParameters.parts.hornName == 'mechenergyfield2' then 
+	  self.energyBoost = 200
+	elseif self.mechParameters.parts.hornName == 'mechenergyfield3' then 
+	  self.energyBoost = 300
+	elseif self.mechParameters.parts.hornName == 'mechenergyfield4' then 
+	  self.energyBoost = 400
+	elseif self.mechParameters.parts.hornName == 'mechenergyfield5' then 
+	  self.energyBoost = 500
+	end   
+	-- check mass. If its too high, we reduce the amount of boosted energy given to the player to keep heavy mechs heavy, not energy batteries
+	if massTotal > 22 then
+	  self.energyBoost = self.energyBoost * (massTotal/50)
+	end   
+end
+
 function update(dt)
 
   --setting the max fuel count for arithmetics on dummy quest
   if self.mechParameters then
-    local energyMax = self.mechParameters.parts.body.energyMax
-	  world.sendEntityMessage(self.playerId, "setCurrentMaxFuel", energyMax)
+    --local energyMax = self.mechParameters.parts.body.energyMax
+    checkEnergyBonus()
+    local energyMax = 100 + self.mechParameters.parts.body.energyMax *(self.mechParameters.parts.body.stats.energyBonus or 1)  + (self.energyBoost)
+    world.sendEntityMessage(self.playerId, "setCurrentMaxFuel", energyMax)
   end
 
   if self.deployTicks then
