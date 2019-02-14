@@ -45,24 +45,30 @@ funcs = {
 		local r = math.random(50)
 		if r == 1 then
 			world.spawnProjectile("fu_beebriefcasetemp", world.entityPosition(player.id()))
-			return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }
+			pane.playSound(config.getParameter("badSound"))
+			return {title = "Bees!", subtitle = "Oh no not the bees!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }	
 		elseif r == 2 then
 			world.spawnProjectile("fu_poptopsack", world.entityPosition(player.id()))
+			pane.playSound(config.getParameter("badSound"))
 			return {title = "Poptops!", subtitle = "Adorable Rabid Poptops!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFCCAA", flashColor = "#FFCCAA" }
 		elseif r == 3 then
 			world.spawnProjectile("fu_chicks", world.entityPosition(player.id()))
+			pane.playSound(config.getParameter("rareSound"))
 			return {title = "Chickens!", subtitle = "Aww! Babies!", image = "/items/bees/bees/normal/queen.png", textColor = "#0000AA", flashColor = "#0000AA" }
 		elseif r == 4 then
 			world.spawnProjectile("fuwolfcase2", world.entityPosition(player.id()))
+			pane.playSound(config.getParameter("badSound"))
 			return {title = "Wolves!", subtitle = "Rabid Angry Carnivores!", image = "/items/bees/bees/normal/queen.png", textColor = "#FFFF00", flashColor = "#FF0000" }		
 		else
 			-- fallback
 			local v = math.random(200)
 			if math.random(2) == 2 then
 			  world.spawnItem("fuscienceresource", world.entityPosition(player.id()),v)
+			  pane.playSound(config.getParameter("funSound"))
 			  return {title = "Research", subtitle = "That's useful!", image = "/items/currency/fuscienceresource.png", textColor = "#ffffff", flashColor = "#FF00AA" }
 			else
 			  world.spawnItem("essence", world.entityPosition(player.id()),v)
+			  pane.playSound(config.getParameter("funSound"))
 			  return {title = "Essence", subtitle = "That's useful!", image = "/items/currency/essence.png", textColor = "#ffffff", flashColor = "#00FFAA" }
 			end		
 		end
@@ -121,8 +127,10 @@ function canvasClickEvent(position, button, pressed)
 						startOpening()
 					elseif hovered == 2 then
 						rotateButtons("left")
+						pane.playSound(config.getParameter("flipSound"))
 					elseif hovered == #vfx.boxes.instances then
 						rotateButtons("right")
+						pane.playSound(config.getParameter("flipSound"))
 					end
 				end
 			end
@@ -368,7 +376,7 @@ function doneOpening()
 				hasLootbox = true
 				itemLevel = i
 				break
-			end
+			end		
 		end
 	end
 	
@@ -482,6 +490,21 @@ function doneOpening()
 				
 				world.spawnItem(item, world.entityPosition(player.id()))
 				
+				
+				if rarity == "common" then
+					pane.playSound(config.getParameter("commonSound"))
+				elseif rarity == "uncommon" then
+					pane.playSound(config.getParameter("uncommonSound"))
+				elseif rarity == "rare" then
+					pane.playSound(config.getParameter("rareSound"))
+				elseif rarity == "legendary" then
+					pane.playSound(config.getParameter("legendarySound"))
+				elseif rarity == "essential" then
+					pane.playSound(config.getParameter("essentialSound"))
+				end
+				
+				
+						
 				if not title then
 					title = item.shortdescription
 					if title then
@@ -543,7 +566,7 @@ function doneOpening()
 		vfx.title.text = "Nothing!"
 		vfx.subtitle.text = "No lootbox, no loot."
 	end
-	
+
 	isOpen = true
 end
 

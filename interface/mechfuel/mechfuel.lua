@@ -20,6 +20,8 @@ function init()
   self.effeciencySet = false
 end
 
+
+
 function update(dt)
   if self.disabled then return end
 
@@ -43,10 +45,9 @@ function update(dt)
   if self.maxFuelMessage and self.maxFuelMessage:finished() then
     if self.maxFuelMessage:succeeded() then
 	    if self.maxFuelMessage:result() then
-	      local params = self.maxFuelMessage:result()
-	      
-	        self.energyBoost = 0
+	        local params = self.maxFuelMessage:result() 
 	        local massTotal = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)
+		self.energyBoost = 0
 		if params.parts.hornName == 'mechenergyfield' then 
 		  self.energyBoost = 100
 		elseif params.parts.hornName == 'mechenergyfield2' then 
@@ -58,21 +59,21 @@ function update(dt)
 		elseif params.parts.hornName == 'mechenergyfield5' then 
 		  self.energyBoost = 500
 		end   
-	        if massTotal > 22 then
-	          self.energyBoost = self.energyBoost * (massTotal/50)
-	        end	
-	        
-	      self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)  +(self.energyBoost)
+		-- check mass. If its too high, we reduce the amount of boosted energy given to the player to keep heavy mechs heavy, not energy batteries
+		if massTotal > 22 then
+		  self.energyBoost = self.energyBoost * (massTotal/50)
+		end
+	        self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)  + (self.energyBoost)
 	    end
-	  end
+    end
   end
 
   if self.maxFuel and self.currentFuel then  
-    widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
+	widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
   end
 
   if self.setItemMessage and self.setItemMessage:finished() then
-	  self.setItemMessage = nil
+	self.setItemMessage = nil
   end
 
   if not self.getItemMessage then

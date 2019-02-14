@@ -718,9 +718,8 @@ function update(dt)
 
   --crouch code is here
   if storage.energy > 0 then
-	self.crouchTarget = 0.5
-	self.crouchOn = true
-    self.crouch = self.crouch + (self.crouchTarget - self.crouch) * 0.1
+    --self.crouch = self.crouch + (self.crouchTarget - self.crouch) * 0.1
+    self.crouch = util.lerp(0.1,self.crouch,self.crouchTarget)
   end
 
   if not self.flightMode then --lpk - dont set while in 0g
@@ -733,8 +732,11 @@ function update(dt)
 	  mcontroller.applyParameters(self.noneCrouchSettings)
     end
   end
-  --end
 
+  
+  
+  --end
+  
   -- update damage team (don't take damage without a driver)
   -- also anything else that depends on a driver's presence
 
