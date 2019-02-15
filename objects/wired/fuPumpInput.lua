@@ -63,9 +63,7 @@ function locatePump(area)
     for k,v in pairs(area) do
         local var = world.entityName(k)
         if var == "pumpoutputStandard" or  
-           var == "pumpoutputPressurized" then--or
-           --var == "pumpoutputStandardElder" or
-           --var == "pumpoutputPressurizedElder" then
+           var == "pumpoutputPressurized" then
         	return k
         end
     end
@@ -75,7 +73,7 @@ function locatePump(area)
 function setCurrentOutput()
     if object.isOutputNodeConnected(0) then
         local outputId =  locatePump(object.getOutputNodeIds(0))
-        local var
+        local var -- set to null
         if not outputId then
             var = "null"
         else
