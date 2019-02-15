@@ -96,7 +96,7 @@ function update(dt)
 
     if self.timer <= 0 then
         setCurrentOutput()
-        self.initialValue = 1000
+        self.initialValue = 9999
     end
     
     self.initialValue = self.initialValue - 1
