@@ -119,8 +119,8 @@ end
 
 --random helper functions
 --ternary operator
-function toggleState(condition,iftrue,iffalse)
-    if condition then return iftrue else return iffalse end
+function toggleState(condition,positive,negative)
+    if condition then return positive else return negative end
 end
 
 -- will have to examine if this is actually needed. seems i could set this elsewhere.

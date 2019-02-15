@@ -3,11 +3,11 @@ function init()
   output(storage.currentState)
 end
 
-function toggleState(condition,iftrue,iffalse)
+function toggleState(condition,positive,negative)
     if condition then 
-      return iftrue 
+      return positive 
     else 
-      return iffalse 
+      return negative 
     end
 end
 
