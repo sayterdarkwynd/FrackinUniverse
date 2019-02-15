@@ -60,13 +60,13 @@ end
 
 -- look for pumps. This should probably be streamlined to not be necessary at all and can simply scan for an itemTag, or something of the sort
 function locatePump(area)
-    for k,v in pairs(area) do
-        local var = world.entityName(k)
+    for outputObject,v in pairs(area) do
+        local var = world.entityName(outputObject)
         if var == "pumpoutputStandard" or  
            var == "pumpoutputPressurized" then--or
            --var == "pumpoutputStandardElder" or
            --var == "pumpoutputPressurizedElder" then
-        	return k
+        	return outputObject
         end
     end
     return false
