@@ -74,13 +74,13 @@ function locatePump(area)
 
 function setCurrentOutput()
     if object.isOutputNodeConnected(0) then
-        local outputid =  locatePump(object.getOutputNodeIds(0))
+        local outputId =  locatePump(object.getOutputNodeIds(0))
         local var
-        if not outputid then
-            var = "nope"
+        if not outputId then
+            var = "null"
         else
-            storage.outputLocation = world.entityPosition(outputid)
-            var = world.entityName(outputid)
+            storage.outputLocation = world.entityPosition(outputId)
+            var = world.entityName(outputId)
             
             --tile protection will break the pumps if we dont store it and toggle it before and after each pump sequence.
             storage.outputProtected = world.isTileProtected(storage.outputLocation)
