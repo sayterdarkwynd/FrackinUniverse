@@ -83,6 +83,7 @@ function setCurrentOutput()
             var = world.entityName(outputId)
             
             --tile protection will break the pumps if we dont store it and toggle it before and after each pump sequence.
+            -- sadly, this spams the hell out of the log. I don't think theres another viable way to run this though.
             storage.outputProtected = world.isTileProtected(storage.outputLocation)
         end
         storage.liquidStandard = var == "pumpoutputStandard"
