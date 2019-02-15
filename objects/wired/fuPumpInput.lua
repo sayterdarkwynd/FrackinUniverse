@@ -23,7 +23,6 @@ function moveLiquid(inputLocation,outputLocation)
     -- is there sufficient liquid at the location to relocate? If so, set the output liquid.
     if inValidLiquid and inValidLiquid[2] > 0.1 then  
         local outputLiquid = world.liquidAt(outputLocation)
-        
         --is there liquid here?
         if (storage.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inValidLiquid[1] and outputLiquid[2] < 1))) then 
         
@@ -45,6 +44,7 @@ function moveLiquid(inputLocation,outputLocation)
             
             return true
         end
+
     end
     return false
 end
