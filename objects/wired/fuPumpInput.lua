@@ -63,7 +63,9 @@ function locatePump(area)
     for k,v in pairs(area) do
         local var = world.entityName(k)
         if var == "pumpoutputStandard" or  
-           var == "pumpoutputPressurized" then
+           var == "pumpoutputPressurized" then--or
+           --var == "pumpoutputStandardElder" or
+           --var == "pumpoutputPressurizedElder" then
         	return k
         end
     end
