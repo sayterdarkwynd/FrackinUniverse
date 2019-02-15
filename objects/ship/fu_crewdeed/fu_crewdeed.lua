@@ -5,7 +5,6 @@ require "/objects/spawner/colonydeed/scanning.lua"
 require "/objects/ship/fu_shipstatmodifier.lua"
 
 statModifierInit = init or function() end
-local reload = true
 
 function init()
 	storage.notNew = true										--To stop it from applying the stats in init()
@@ -30,16 +29,20 @@ function init()
 end
 
 function update(dt)
-	if timer >= self.scanDelay then
-		checkHouseIntegrity()
-		timer = 0
+	if storage.reload then
+		if timer >= self.scanDelay then
+			checkHouseIntegrity()
+			timer = 0
+		else
+			timer = timer + dt
+		end
 	else
-		timer = timer + dt
+		animator.setAnimationState("deedState", "grumbling")
 	end
 end
 
 function die()
-	if reload then
+	if storage.reload then
 		if storage.statApplied then
 			applyStats(-1)
 			storage.statApplied = false
@@ -60,7 +63,13 @@ function onInteraction(args)
 end
 
 function checkHouseIntegrity()
-	storage.grumbles = scanHouseIntegrity()
+	if storage.reload then
+		storage.grumbles = scanHouseIntegrity()
+	elseif world.type() ~= "unknown" then
+		storage.grumbles = {{"notShip"}}
+	else
+		storage.grumbles = {{"notByos"}}
+	end
 	
 	if fuDeedCheck() then
 		storage.grumbles[#storage.grumbles+1] = {"otherDeed"}
@@ -84,7 +93,7 @@ function checkHouseIntegrity()
 end
 
 function isShipWorld()
-	return world.getProperty("ship.level") ~= 0			--Assumes you can only place it on ships
+	return world.getProperty("ship.level") ~= 0			--Assumes that it only functions on ships
 end
 
 function displayGrumbles()

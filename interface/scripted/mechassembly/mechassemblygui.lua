@@ -21,7 +21,7 @@ function init()
   self.drainFormat = config.getParameter("drainFormat")
   self.massFormat = config.getParameter("massFormat")
   self.imageBasePath = config.getParameter("imageBasePath")
-
+  
   local getUnlockedMessage = world.sendEntityMessage(player.id(), "mechUnlocked")
   if getUnlockedMessage:finished() and getUnlockedMessage:succeeded() then
     local unlocked = getUnlockedMessage:result()
@@ -215,18 +215,53 @@ function updatePreview()
   end
 
   if self.partManager:itemSetComplete(self.itemSet) then
+    widget.setVisible("lblDrain", true)
+    widget.setVisible("lblMass", true)
+    
     widget.setVisible("imgHealthBar", true)
     widget.setVisible("lblHealth", true)  
     widget.setVisible("imgEnergyBar", true)
     widget.setVisible("lblEnergy", true)
-    widget.setVisible("lblDrain", true)
-    widget.setVisible("lblMass", true)
-    local energyMax = params.parts.body.energyMax * params.parts.body.stats.energyBonus
-    local healthMax = params.parts.body.energyMax * params.parts.body.stats.healthBonus
+
+    local massTotal = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)
+
+    self.defenseBoost = 0
+		if params.parts.hornName == 'mechdefensefield' then 
+		  self.defenseBoost = 100
+		elseif params.parts.hornName == 'mechdefensefield2' then 
+		  self.defenseBoost = 200
+		elseif params.parts.hornName == 'mechdefensefield3' then 
+		  self.defenseBoost = 300
+		elseif params.parts.hornName == 'mechdefensefield4' then 
+		  self.defenseBoost = 400
+		elseif params.parts.hornName == 'mechdefensefield5' then 
+		  self.defenseBoost = 500
+		end    
+
+    self.energyBoost = 0
+		if params.parts.hornName == 'mechenergyfield' then 
+		  self.energyBoost = 100
+		elseif params.parts.hornName == 'mechenergyfield2' then 
+		  self.energyBoost = 200
+		elseif params.parts.hornName == 'mechenergyfield3' then 
+		  self.energyBoost = 300
+		elseif params.parts.hornName == 'mechenergyfield4' then 
+		  self.energyBoost = 400
+		elseif params.parts.hornName == 'mechenergyfield5' then 
+		  self.energyBoost = 500
+		end     
+    if massTotal > 22 then
+      self.energyBoost = self.energyBoost * (massTotal/50)
+    end
+    
+    local healthMax = math.floor(50 * ((massTotal+params.parts.body.stats.protection) * (params.parts.body.stats.healthBonus or 1)) + ((self.defenseBoost * massTotal)*0.1))
+    local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
+    
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
-    widget.setText("lblHealth", string.format(self.healthFormat, healthMax))
-    widget.setText("lblEnergy", string.format(self.energyFormat, energyMax))
+
+    widget.setText("lblHealth", string.format(self.healthFormat, math.floor(healthMax)))
+    widget.setText("lblEnergy", string.format(self.energyFormat, math.floor(energyMax)))
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
 
     local mechMass = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)  
