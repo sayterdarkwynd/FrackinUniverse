@@ -58,7 +58,7 @@ function onNodeConnectionChange()
   setCurrentOutput() 
 end
 
--- look for particular pump names. This should probably be streamlined to not be necessary at all and can simply scan for an itemTag, or something of the sort
+-- look for pumps. This should probably be streamlined to not be necessary at all and can simply scan for an itemTag, or something of the sort
 function locatePump(area)
     for k,v in pairs(area) do
         local var = world.entityName(k)
