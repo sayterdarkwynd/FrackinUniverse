@@ -92,15 +92,17 @@ end
 
 --update every dt ms
 function update(dt)
+
     if self.timer <= 0 then
         setCurrentOutput()
         self.initialValue = 1000
     end
+    
     self.initialValue = self.initialValue - 1
     local hasMovedLiquid = false
+    
     if object.isOutputNodeConnected(0) and object.getInputNodeLevel(0)  then
         output(true)
-
         if storage.liquidStandard or storage.liquidPressurized then
             hasMovedLiquid = moveLiquid(self.inputLocation,storage.outputLocation)
             hasMovedLiquid = moveLiquid(toright(self.inputLocation),toright(storage.outputLocation)) or hasMovedLiquid
@@ -109,7 +111,7 @@ function update(dt)
         output(false)
         object.setAllOutputNodes(false)
     end
-    --maintainwireoutput
+    
     self.relocateLiquid = toggleState(hasMovedLiquid,3,self.relocateLiquid -1)
     object.setAllOutputNodes(self.relocateLiquid > 0)
 end
