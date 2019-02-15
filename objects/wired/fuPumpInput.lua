@@ -94,9 +94,9 @@ end
 function update(dt)
     if self.timer <= 0 then
         setCurrentOutput()
-        self.firsttime = 1000
+        self.initialValue = 1000
     end
-    self.firsttime = self.firsttime - 1
+    self.initialValue = self.initialValue - 1
     local hasMovedLiquid = false
     if object.isOutputNodeConnected(0) and object.getInputNodeLevel(0)  then
         output(true)
@@ -120,6 +120,7 @@ function toggleState(condition,iftrue,iffalse)
     if condition then return iftrue else return iffalse end
 end
 
+-- will have to examine if this is actually needed. seems i could set this elsewhere.
 --return one pos to the right
 function toright( pos )
     return {pos[1]+1,pos[2]}
