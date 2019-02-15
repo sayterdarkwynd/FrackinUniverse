@@ -17,10 +17,10 @@ function output(stateCurrent)
 end
 
 function moveLiquid(inputLocation,outputLocation)
-    -- what liquid are we in?
+    -- what liquid are we in? We check here.
     local inValidLiquid= world.liquidAt(inputLocation)
     
-    -- is there sufficient liquid at the location to relocate?
+    -- is there sufficient liquid at the location to relocate? If so, set the output liquid.
     if inValidLiquid and inValidLiquid[2] > 0.1 then  
         local outputLiquid = world.liquidAt(outputLocation)
         
@@ -49,7 +49,7 @@ function moveLiquid(inputLocation,outputLocation)
     return false
 end
 
--- node checks
+-- node checks for wiring
 function onInputNodeChange(args)
   setCurrentOutput()
 end
@@ -58,19 +58,20 @@ function onNodeConnectionChange()
   setCurrentOutput() 
 end
 
---some reason entityid is the key instead of a value in the table object.getOutputNodeIds(0).
+-- look for particular pump names. This should probably be streamlined to not be necessary at all.
 function locatePump(area)
     for k,v in pairs(area) do
         local var = world.entityName(k)
-        if var == "pumpoutputStandard" or  var == "pumpoutputPressurized" then
-            return k
+        if var == "pumpoutputStandard" or  
+           var == "pumpoutputPressurized" then--or
+           --var == "pumpoutputStandardElder" or
+           --var == "pumpoutputPressurizedElder" then
+        	return k
         end
     end
     return false
  end
 
-
---called when anything changes with the wires, stores the location of the outputpump
 function setCurrentOutput()
     if object.isOutputNodeConnected(0) then
         local outputid =  locatePump(object.getOutputNodeIds(0))
@@ -112,9 +113,6 @@ function update(dt)
     self.relocateLiquid = toggleState(hasMovedLiquid,3,self.relocateLiquid -1)
     object.setAllOutputNodes(self.relocateLiquid > 0)
 end
-
-
-
 
 --random helper functions
 --ternary operator
