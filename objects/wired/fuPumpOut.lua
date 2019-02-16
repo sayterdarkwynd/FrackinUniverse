@@ -3,18 +3,14 @@ function init()
   output(storage.currentState)
 end
 
-function toggleState(condition,positive,negative)
-    if condition then 
-      return positive 
-    else 
-      return negative 
-    end
-end
-
-function output(state)
+function output(stateCurrent)
   if stateCurrent ~= storage.currentState then
     storage.currentState = stateCurrent
-    animator.setAnimationState("outputState",toggleState(stateCurrent,"on","off"))
+  end
+  if stateCurrent then
+      animator.setAnimationState("outputState","on")
+  else
+      animator.setAnimationState("outputState","off")
   end
 end
 

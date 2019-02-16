@@ -1,20 +1,15 @@
 function init()
   storage.currentState = storage.currentState or false
-  output(storage.stateCurrent)
+  output(storage.currentState)
 end
 
-function toggleState(condition,iftrue,iffalse)
-    if condition then 
-      return iftrue 
-    else 
-      return iffalse 
-    end
-end
-
-function output(state)
+function output(stateCurrent)
   if stateCurrent ~= storage.currentState then
     storage.currentState = stateCurrent
-    animator.setAnimationState("outputPressurizedState",toggleState(stateCurrent,"on","off"))
+  if stateCurrent then
+      animator.setAnimationState("outputState","on")
+  else
+      animator.setAnimationState("outputState","off")
   end
 end
 
