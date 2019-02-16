@@ -1,0 +1,152 @@
+{
+  "objectName" : "scb-flametrap",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "Flames, embers, and burning, oh my~ \n^blue;Input 1^white; : Flames. \n^blue;Input 2^white; : Particles.^reset;",
+  "shortdescription" : "SCB Flame Emitter",
+  "race" : "generic",
+
+  "apexDescription" : "A flame trap, definitely one to avoid.",
+  "avianDescription" : "Ouch! Flames and feathers don't mix!",
+  "floranDescription" : "Fire trap is Floran's worssst enemy!",
+  "glitchDescription" : "Terrified. It's just a little flame trap, nothing that can't be overcome.",
+  "humanDescription" : "A trusty, reliable flame trap.",
+  "hylotlDescription" : "The swift warrior fears not the flame.",
+  "novakidDescription" : "Simple yet deadly. My favourite kind.",
+
+  "category" : "trap",
+  "price" : 0,
+
+  "inventoryIcon" : "scb-flametrap-icon.png",
+
+  "orientations" : [
+    {
+      "image" : "scb-flametrap.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [0, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, -1] ],
+      "scb-direction" : "up"
+    },
+    {
+      "image" : "scb-flametrap-right.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, 0],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 0] ],
+      "scb-direction" : "right"
+    },
+    {
+      "image" : "scb-flametrap.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, 1] ],
+      "scb-direction" : "down"
+    },
+    {
+      "image" : "scb-flametrap-left.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, 0],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 0] ],
+      "scb-direction" : "left"
+    },
+    {
+      "image" : "scb-flametrap-ul.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, -1] ],
+      "scb-direction" : "upperL"
+    },
+    {
+      "image" : "scb-flametrap-ur.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, -1] ],
+      "scb-direction" : "upperR"
+    },
+    {
+      "image" : "scb-flametrap-ur.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 1] ],
+      "scb-direction" : "lowerR"
+    },
+    {
+      "image" : "scb-flametrap-ul.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 1] ],
+      "scb-direction" : "lowerL"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/scb-projectiletrap/scb-projectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "scb-flametrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ ],
+      "on" : [ "/sfx/objects/flametrap_on.ogg" ],
+      "off" : [ "/sfx/objects/flametrap_off.ogg" ]
+    }
+  },
+
+//  "soundEffect" : "/sfx/objects/flametrap_loop.ogg", // this is a thing that also works
+
+  "inputNodes" : [ [0, 0], [1, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "fireTime" : 0.115, // rate of fire
+  "fireTimeVariance" : 0.015, // variation in rate of fire
+  "projectile" : "trapflame", // name of projectile (required)
+  "projectileConfig" : { // extra configuration overrides for projectile
+    "damageTeam" : { "type" : "environment" },
+    "power" : 20,
+    "speed" : 7
+  },
+
+  "health" : 5
+
+}
