@@ -49,7 +49,7 @@ function update(dt)
 			local bottomPosition = entity.position()
 			bottomPosition[2] = 0
 			if world.polyContains(mcontroller.collisionBody(), bottomPosition) then
-				status.addEphemeralEffect("fu_byosbeamdown", 60)
+				status.addEphemeralEffect("fu_byosbeamdown", 10)
 				player.warp("OrbitedWorld")
 				beamDownTimer = 10
 			end
