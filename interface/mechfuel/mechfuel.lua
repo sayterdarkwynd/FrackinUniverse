@@ -170,7 +170,22 @@ function fuel()
   elseif item.name == "precursorfluid" then
     fuelMultiplier = 3.5
     localFuelType = "Quantum"
-  -- Cores. Provide high energy value AND bonus energy that goes above the maxLimit  
+  elseif item.name == "schrodingerscat" then
+    fuelMultiplier = 3000
+    localFuelType = "Quantum" 
+    
+  -- bio fuels  
+  elseif item.name == "biofuelcannister" then
+    fuelMultiplier = 3
+    localFuelType = "Bio"
+  elseif item.name == "biofuelcannisteradv" then
+    fuelMultiplier = 8
+    localFuelType = "Bio"
+  elseif item.name == "biofuelcannistermax" then
+    fuelMultiplier = 16
+    localFuelType = "Bio"
+    
+  -- Cores. Provide high energy value in one go
   elseif item.name == "powercore" then
     fuelMultiplier = 500
     localFuelType = "Core"
@@ -231,8 +246,13 @@ function swapItem(widgetName)
   or swapItem.name == "moltencore"
   or swapItem.name == "particlecore"  
   or swapItem.name == "nuclearcore"
-  or swapItem.name == "precursorcore") then
-    return
+  or swapItem.name == "precursorcore"
+  or swapItem.name == "biofuelcannister"
+  or swapItem.name == "biofuelcannisteradv"
+  or swapItem.name == "biofuelcannistermax"
+  or swapItem.name == "schrodingerscat"
+  or swapItem.name == "liquidelderfluid") then
+  return
   end
 
   player.setSwapSlotItem(currentItem)
@@ -287,7 +307,17 @@ function setEfficiencyText(currentItem)
   elseif currentItem.name == "nuclearcore" then
     widget.setText("lblEfficiency", "Detected fuel type: ^orange;Nuclear Core^white;, Efficiency: x800")
   elseif currentItem.name == "precursorcore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Precursor Core^white;, Efficiency: x900")    
+    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Precursor Core^white;, Efficiency: x900") 
+  elseif currentItem.name == "biofuelcannister" then
+    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Bio^white;, Efficiency: x3")  
+  elseif currentItem.name == "biofuelcannisteradv" then
+    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Bio^white;, Efficiency: x8")
+  elseif currentItem.name == "biofuelcannistermax" then
+    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Bio^white;, Efficiency: x16") 
+  elseif currentItem.name == "schrodingerscat" then
+    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Mega Cat^white;, Efficiency: x3000") 
+  elseif currentItem.name == "liquidelderfluid" then
+    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Elder Fluid^white;, Efficiency: x25")     
   else
     widget.setText("lblEfficiency", "")
   end
@@ -359,7 +389,22 @@ function fuelCountPreview(item)
     textColor = "green"
   elseif item.name == "precursorcore" then
     fuelMultiplier = 900
-    textColor = "green"      
+    textColor = "green"
+  elseif item.name == "schrodingerscat" then
+    fuelMultiplier = 3000
+    textColor = "00e3ff" 
+  elseif item.name == "biofuelcannister" then
+    fuelMultiplier = 3
+    textColor = "00e3ff" 
+  elseif item.name == "biofuelcannisteradv" then
+    fuelMultiplier = 8
+    textColor = "00e3ff" 
+  elseif item.name == "biofuelcannistermax" then
+    fuelMultiplier = 16
+    textColor = "00e3ff"  
+  elseif item.name == "liquidelderfluid" then
+    fuelMultiplier = 25
+    textColor = "00e3ff"     
   end
 
   local addFuelCount = self.currentFuel + (item.count * fuelMultiplier)
@@ -385,6 +430,8 @@ function setFuelTypeText(type)
     textColor = "#fcff00"
   elseif type == "Quantum" then
     textColor = "#00e3ff"
+  elseif type == "Bio" then
+    textColor = "#00e3ff"    
   elseif type == "Core" then
     textColor = "green"       
   else
@@ -392,8 +439,8 @@ function setFuelTypeText(type)
   end
 
   if textColor then
-    widget.setText("lblFuelType", "CURRENT FUEL TYPE: ^" .. textColor .. ";" .. type)
+    widget.setText("lblFuelType", "CURRENT FUEL: ^" .. textColor .. ";" .. type)
   else
-    widget.setText("lblFuelType", "CURRENT FUEL TYPE: EMPTY")
+    widget.setText("lblFuelType", "CURRENT FUEL: ^red;EMPTY^reset;")
   end
 end
