@@ -1,10 +1,10 @@
 {
-  "objectName" : "pumpinfuelder",
+  "objectName" : "pumpinfu",
   "colonyTags" : ["wired"],
   "printable" : false,
   "rarity" : "Common",
-  "description" : "^cyan;Signal Node^reset; ^red;Output Node^reset;",
-  "shortdescription" : "Elder Pump",
+  "description" : "^cyan;Blue - Connect to signal^reset; ^red;Red - connect to Liquid Outlet^reset;",
+  "shortdescription" : "Liquid Pump Input",
   "race" : "generic",
   "health" : 2.5,
   "category" : "wire",
@@ -13,20 +13,20 @@
     "inventoryIcon" : "pumpinfuicon.png",
     "orientations" : [
         {
-            "image" : "pumpinfuelder.png:<color>.off",
+            "image" : "pumpinfu.png:<color>.off",
             "imagePosition" : [0, 0],
             "spaceScan" : 0.1,
             "anchors" : [ "background" ]
         }
     ],
 
-  "scripts" : [ "/objects/wired/pumpinelder/pumpinfu.lua" ],
+  "scripts" : [ "/objects/wired/pumps/fuPumpInput.lua" ],
   "scriptDelta" : 5,
 
-  "animation" : "/objects/wired/pumpinelder/pumpinfuelder.animation",
+  "animation" : "/objects/wired/pumps/fuPumpInput.animation",
 
   "animationParts" : {
-    "pumpin" : "pumpinfuelder.png"
+    "inputPump" : "pumpinfu.png"
   },
   "animationPosition" : [0, 0],
 

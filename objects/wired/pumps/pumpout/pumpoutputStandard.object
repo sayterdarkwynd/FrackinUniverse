@@ -4,7 +4,7 @@
   "printable" : false,
   "rarity" : "Common",
   "description" : "^cyan;Blue - connect to Liquid Pump^reset;",
-  "shortdescription" : "Output Pump",
+  "shortdescription" : "DONKEY",
   "race" : "generic",
   "health" : 2.5,
   "category" : "wire",
@@ -20,15 +20,16 @@
         }
     ],
 
-  "scripts" : [ "/objects/wired/fuPumpOut.lua" ],
+  "scripts" : [ "/objects/wired/pumps/fuPumpOutput.lua" ],
   "scriptDelta" : 10,
 
-  "animation" : "/objects/wired/fuPumpOutput.animation",
+  "animation" : "/objects/wired/pumps/fuPumpOutput.animation",
 
   "animationParts" : {
     "outputPump" : "pumpoutfu.png"
   },
   "animationPosition" : [0, 0],
+  "pumpOutputStandard" : true,
 
   "inputNodes" : [ [0, 0] ],
   "outputNodes" : [ [1, 0] ],
