@@ -1,24 +1,21 @@
 function init()
-  storage.state = storage.state or false
-  output(storage.state)
+  storage.currentState = storage.currentState or false
+  output(storage.currentState)
 end
 
---ternary operator
-function fif(condition,iftrue,iffalse)
-    if condition then return iftrue else return iffalse end
-end
-
--- Change Animation
-function output(state)
-  if state ~= storage.state then
-    storage.state = state
-    animator.setAnimationState("pumpoutState",fif(state,"on","off"))
+function output(stateCurrent)
+  if stateCurrent ~= storage.currentState then
+    storage.currentState = stateCurrent
+  end
+  if stateCurrent then
+      animator.setAnimationState("outputState","on")
+  else
+      animator.setAnimationState("outputState","off")
   end
 end
 
---update animation and outputwire
 function update(dt)
-    local con = object.isOutputNodeConnected(0) and object.getInputNodeLevel(0)
-    output(con)
-    object.setAllOutputNodes(con)
+    local isConnected = object.isOutputNodeConnected(0) and object.getInputNodeLevel(0)
+    output(isConnected)
+    object.setAllOutputNodes(isConnected)
 end
