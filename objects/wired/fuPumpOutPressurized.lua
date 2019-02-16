@@ -6,6 +6,7 @@ end
 function output(stateCurrent)
   if stateCurrent ~= storage.currentState then
     storage.currentState = stateCurrent
+  end
   if stateCurrent then
       animator.setAnimationState("outputState","on")
   else
