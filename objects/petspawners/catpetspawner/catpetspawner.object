@@ -1,0 +1,34 @@
+{
+  "objectName" : "catpetspawner",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "legendary",
+  "category" : "furniture",
+  "price" : 0,
+
+  "description" : "Spawns in a pet cat! \n^orange;To locate it after placing, toggle wire mode.",
+  "shortdescription" : "^orange;Cat Spawner^white;",
+  "race" : "generic",
+
+  "inventoryIcon" : "catpetspawnericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "catpetspawner.png:<color>",
+
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : []
+
+    }
+  ],
+
+  "scripts" : [
+    "/objects/spawner/techstation.lua"
+  ],
+  "scriptDelta" : 20,
+  "shipPetType" : "petcat",
+  "spawnOffset" : [0, 0],
+
+  "inputNodes" : [ [0, 0] ]
+}

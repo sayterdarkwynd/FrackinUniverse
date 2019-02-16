@@ -1,0 +1,62 @@
+{
+  "objectName" : "weatheredbed",
+  "colonyTags" : ["weathered"],
+  "printable" : false,
+  "rarity" : "Uncommon",
+  "category" : "furniture",
+  "price" : 0,
+  "description" : "An exceptionally fashionable weathered wooden bed.",
+  "shortdescription" : "Weathered Bed",
+  "race" : "generic",
+
+  "apexDescription" : "The age of this bed's wood is a selling point rather than a deterrent.",
+  "avianDescription" : "The wood of this bed has been repurposed to give it a vintage look.",
+  "floranDescription" : "Old bed is still sssoft.",
+  "glitchDescription" : "Confused. It looks like something out of a Glitch village, but it's priced like something out of a castle...",
+  "humanDescription" : "This bed looks like it's made of barn wood. And yet...",
+  "hylotlDescription" : "There's a rustic charm about this bed.",
+  "novakidDescription" : "Now here's a bed I could settle right into.",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage" : "/objects/themed/weathered/weatheredbed/weatheredbedcover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed3"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "weatheredbedicon.png",
+  "orientations" : [
+    {
+      "image" : "weatheredbed.png:<color>",
+      "imagePosition" : [-24, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "sitPosition" : [-12, 13],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [1, 2], [2, 2], [3, 2] ]
+
+    },
+    {
+      "image" : "weatheredbed.png:<color>",
+      "imagePosition" : [-24, 0],
+      
+      "direction" : "right",
+
+      "sitPosition" : [-5, 13],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-1, 2], [-2, 2], [-3, 2] ]
+    }
+  ]
+}

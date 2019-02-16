@@ -1,0 +1,56 @@
+{
+  "objectName" : "unsmashablesilverrocksmall",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "printable" : false,
+
+  "description" : "A cracked rock full of silver. Unbreakable!",
+  "shortdescription" : "Small Silver Rock",
+  "race" : "generic",
+
+  "apexDescription" : "There appears to be silver within this fragile rock.",
+  "avianDescription" : "If I break this rock I should be able to gather the silver ore within it.",
+  "floranDescription" : "Glittery rock. Sssmash it!",
+  "glitchDescription" : "Observant. This rock contains silver, and is covered in cracks.",
+  "humanDescription" : "A rock full of silver! Maybe I can break it.",
+  "hylotlDescription" : "A swift blow to this rock would free the silver within.",
+  "novakidDescription" : "A rock rich with silver. I should break it.",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.4,
+    "emissionVariance" : 0.2,
+    "pixelOrigin" : [8, 8],
+
+    "particle" : {
+      "type" : "animated",
+      "animation" : "/animations/sparkles/sparkle1.animation",
+      "size" : 1.0,
+      "fade" : 0,
+      "destructionAction" : "shrink",
+      "destructionTime" : 3,
+      "initialVelocity" : [0, 0],
+      "finalVelocity" : [0, 0],
+      "timeToLive" : 1,
+      "layer" : "front"
+    },
+
+    "particleVariance" : {
+      "position" : [0.5, 0.5]
+    }
+  },
+
+  "inventoryIcon" : "unsmashablesilverrocksmallicon.png",
+  "orientations" : [
+    {
+      "image" : "unsmashablesilverrocksmall.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ]
+}

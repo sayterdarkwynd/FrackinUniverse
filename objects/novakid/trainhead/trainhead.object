@@ -1,0 +1,45 @@
+{
+  "objectName" : "trainhead",
+  "colonyTags" : ["novakid","novakidvillage"],
+  "rarity" : "Legendary",
+  "description" : "Be your own conductor!",
+  "shortdescription" : "Train Head",
+  "race" : "novakid",
+  "category" : "furniture",
+  "price" : 10000,
+
+  "apexDescription" : "A tad outdated, but a joy to ride.",
+  "avianDescription" : "This train has a shriller whistle than most Avians.",
+  "floranDescription" : "Choo-Choo!",
+  "glitchDescription" : "Awed. What a delightful machine!",
+  "humanDescription" : "It's like a childhood dream come true!",
+  "hylotlDescription" : "Awfully noisy, isn't it?",
+  "novakidDescription" : "Shame it's only a prop. I'd love to take this beauty out on a spin.",
+
+  "inventoryIcon" : "trainheadicon.png",
+  "orientations" : [
+    {
+      "image" : "trainhead.png:<color>",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+
+  "sounds" : [ "/sfx/tech/mech_horn_train.ogg" ],
+
+  "objectType" : "loungeable",
+  "sitCoverImage" : "/objects/novakid/trainhead/trainheadcover.png",
+  "sitFlipDirection" : true,
+  "sitPosition" : [35, 25]
+
+}
