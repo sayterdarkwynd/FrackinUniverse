@@ -11,7 +11,6 @@ function init()
 	maxFuelShipOld = 0
 	fuelEfficiencyShipOld = 0
 	shipSpeedShipOld = 0
-	counter = 1
 	beamDownTimer = 0
 end
 
