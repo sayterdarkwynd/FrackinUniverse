@@ -4,7 +4,7 @@
   "printable" : false,
   "rarity" : "Common",
   "description" : "^cyan;Blue - connect to Liquid Pump^reset;. This output pressurizes liquid it releases.",
-  "shortdescription" : "Pressure Elder",
+  "shortdescription" : "Elder Pressurized Output",
   "race" : "generic",
   "health" : 2.5,
   "category" : "wire",
@@ -20,15 +20,16 @@
         }
     ],
 
-  "scripts" : [ "/objects/wired/pumpoutpressureelder/pumpoutpressurefuelder.lua" ],
+  "scripts" : [ "/objects/wired/pumps/fuPumpOutput.lua" ],
   "scriptDelta" : 10,
 
-  "animation" : "/objects/wired/pumpoutpressureelder/pumpoutpressurefuelder.animation",
+  "animation" : "/objects/wired/pumps/fuPumpOutput.animation",
 
   "animationParts" : {
-    "pumpoutpressure" : "pumpoutpressurefuelder.png"
+    "outputPump" : "pumpoutpressurefuelder.png"
   },
   "animationPosition" : [0, 0],
+  "pumpOutputPressure" : true,
 
   "inputNodes" : [ [0, 0] ],
   "outputNodes" : [ [1, 0] ],
