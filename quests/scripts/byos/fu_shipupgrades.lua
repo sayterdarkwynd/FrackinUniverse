@@ -11,6 +11,7 @@ function init()
 	maxFuelShipOld = 0
 	fuelEfficiencyShipOld = 0
 	shipSpeedShipOld = 0
+	beamDownTimer = 0
 end
 
 function update(dt)
@@ -42,6 +43,17 @@ function update(dt)
 			end
 		else
 			lifeSupport(true)
+		end
+		if beamDownTimer <= 0 then
+			local bottomPosition = entity.position()
+			bottomPosition[2] = 0
+			if world.polyContains(mcontroller.collisionBody(), bottomPosition) then
+				status.addEphemeralEffect("fu_byosbeamdown", 10)
+				player.warp("OrbitedWorld")
+				beamDownTimer = 10
+			end
+		else
+			beamDownTimer = beamDownTimer - dt
 		end
 	end
 	
