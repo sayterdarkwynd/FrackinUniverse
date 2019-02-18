@@ -184,6 +184,18 @@ function fuel()
   elseif item.name == "biofuelcannistermax" then
     fuelMultiplier = 16
     localFuelType = "Bio"
+  elseif item.name == "radioactivehoneyjar" then
+    fuelMultiplier = 4
+    localFuelType = "Bio"
+  elseif item.name == "plutoniumhoneyjar" then
+    fuelMultiplier = 8
+    localFuelType = "Bio"
+  elseif item.name == "solariumhoneyjar" then
+    fuelMultiplier = 10
+    localFuelType = "Bio"
+  elseif item.name == "orphanpaste" then
+    fuelMultiplier = 25
+    localFuelType = "Bio"
     
   -- Cores. Provide high energy value in one go
   elseif item.name == "powercore" then
@@ -200,7 +212,10 @@ function fuel()
     localFuelType = "Core"
   elseif item.name == "precursorcore" then
     fuelMultiplier = 900
-    localFuelType = "Core"    
+    localFuelType = "Core"
+  elseif item.name == "elderrelic11" then
+    fuelMultiplier = 1000
+    localFuelType = "Core"     
   end
 
   if self.currentFuelType and localFuelType ~= self.currentFuelType then
