@@ -10,7 +10,7 @@ armorBonus={
 	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},
 	{stat = "grit", amount = 0.8},
-	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.8}
+	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.2}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
