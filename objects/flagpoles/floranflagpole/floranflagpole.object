@@ -1,0 +1,52 @@
+{
+  "objectName" : "floranflagpole",
+  "colonyTags" : ["floran"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 0,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+  
+  "description" : "The Floran flag. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Floran Flag",
+  "race" : "floran",
+
+  "apexDescription" : "The Floran flag is a lot less bloodthirsty than you'd expect.",
+  "avianDescription" : "The Floran flag is actually quite pretty.",
+  "floranDescription" : "Floran, Floran, Floran yeah! Ssstab with flagpole!",
+  "glitchDescription" : "Statement. The simplistic beauty of the Floran flag.",
+  "humanDescription" : "A flower for the Florans.",
+  "hylotlDescription" : "A horrifying Floran symbol for a horrifying species.",
+  "novakidDescription" : "That's a right cute flag. We sure it's Floran?",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "floranflagpoleicon.png",
+  "orientations" : [
+    {
+      "image" : "floranflagpole.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "floranflagpole.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}
