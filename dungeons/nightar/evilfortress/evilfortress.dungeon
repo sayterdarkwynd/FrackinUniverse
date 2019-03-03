@@ -1,0 +1,124 @@
+{
+  "metadata" : {
+    "name" : "evilfortress",
+    "species" : "glitch",
+    "rules" : [
+    ],
+    "anchor" : [ "evilfortressentrance2" ],
+    "maxRadius" : 1000000,
+    "maxParts" : 5,
+    "extendSurfaceFreeSpace" : 100,
+    "protected" : false
+  },
+
+  "parts" : [
+    {
+      "name" : "evilfortressentrance1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "evilfortressentrance1.json" ]
+    },
+    {
+      "name" : "evilfortressentrance2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "evilfortressentrance2.json" ]
+    },
+    {
+      "name" : "evilfortress1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress1a", "evilfortress1b", "evilfortress1c" ] ]
+      ],
+      "def" : [ "tmx", "evilfortress1a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "evilfortress1b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress1a", "evilfortress1b", "evilfortress1c" ] ]
+      ],
+      "def" : [ "tmx", "evilfortress1b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "evilfortress1c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress1a", "evilfortress1b", "evilfortress1c" ] ]
+      ],
+      "def" : [ "tmx", "evilfortress1c.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "evilfortress2a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress2a", "evilfortress2b", "evilfortress2c" ] ]
+      ],
+      "def" : [ "tmx", "evilfortress2a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "evilfortress2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress2a", "evilfortress2b", "evilfortress2c" ] ]
+      ],
+      "def" : [ "tmx", "evilfortress2b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "evilfortress2c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress2a", "evilfortress2b", "evilfortress2c" ] ]
+      ],
+      "def" : [ "tmx", "evilfortress2c.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "evilfortresstop1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress1a", "evilfortress1b", "evilfortress1c" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "evilfortresstop1a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "evilfortresstop1b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress1a", "evilfortress1b", "evilfortress1c" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "evilfortresstop1b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "evilfortresstop1c",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress1a", "evilfortress1b", "evilfortress1c" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "evilfortresstop1c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "evilfortresstop1d",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "evilfortress1a", "evilfortress1b", "evilfortress1c" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "evilfortresstop1d.json" ],
+      "chance" : 0
+    }
+  ]
+}

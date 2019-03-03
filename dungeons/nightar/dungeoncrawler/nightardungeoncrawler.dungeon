@@ -1,0 +1,222 @@
+{
+  "metadata" : {
+    "name" : "nightardungeoncrawler",
+    "species" : "glitch",
+    "rules" : [
+    ],
+    "anchor" : [ "nightardungeoncrawlerbase1", "nightardungeoncrawlerbase2"],
+    "maxRadius" : 1000000,
+    "maxParts" : 65,
+    "extendSurfaceFreeSpace" : 100,
+    "protected" : false
+  },
+
+  "parts" : [
+    {
+      "name" : "nightardungeoncrawlerbase1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerbase2", "nightardungeoncrawler2a", "nightardungeoncrawler2b" ] ]
+
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerbase1.json" ]
+    },
+    {
+      "name" : "nightardungeoncrawlerbase2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerbase1", "nightardungeoncrawler2a", "nightardungeoncrawler2b" ] ]
+
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerbase2.json" ]
+    },
+    {
+      "name" : "nightardungeoncrawler1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler1a", "nightardungeoncrawler1b" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler1a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawler1b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler1a", "nightardungeoncrawler1b" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler1b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawler2a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler2a", "nightardungeoncrawler2b" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler2a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawler2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler2a", "nightardungeoncrawler2b" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawler2bclue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler2b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawler2bclue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler2a", "nightardungeoncrawler2bclue" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawler2b", "nightardungeoncrawler3bclue", "nightardungeoncrawlerside1clue", "nightardungeoncrawlerside2clue", "nightardungeoncrawlerside6clue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler2bclue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawler3a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler3a", "nightardungeoncrawler3b" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler3a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawler3b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler3a", "nightardungeoncrawler3b" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawler3bclue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler3b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawler3bclue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler3a", "nightardungeoncrawler3bclue" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawler3b", "nightardungeoncrawler2bclue", "nightardungeoncrawlerside1clue", "nightardungeoncrawlerside2clue", "nightardungeoncrawlerside6clue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler3bclue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawler4a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawler4a" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawler4a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawlerside1clue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside1.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside1clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6", "nightardungeoncrawlerside1clue" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawlerside1", "nightardungeoncrawler2bclue", "nightardungeoncrawler3bclue", "nightardungeoncrawlerside2clue", "nightardungeoncrawlerside6clue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside1clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawlerside2clue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside2.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside2clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6", "nightardungeoncrawlerside2clue" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawlerside2", "nightardungeoncrawler2bclue", "nightardungeoncrawler3bclue", "nightardungeoncrawlerside1clue", "nightardungeoncrawlerside6clue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside2clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside3.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside4.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside5",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside5.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside6",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawlerside6clue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside6.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlerside6clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlerside1", "nightardungeoncrawlerside2", "nightardungeoncrawlerside3", "nightardungeoncrawlerside4", "nightardungeoncrawlerside5", "nightardungeoncrawlerside6", "nightardungeoncrawlerside6clue" ] ],
+        [ "doNotCombineWith", [ "nightardungeoncrawlerside6", "nightardungeoncrawlerside1", "nightardungeoncrawlerside2clue", "nightardungeoncrawler2bclue", "nightardungeoncrawler3bclue" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlerside6clue.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "nightardungeoncrawlersidetunnel",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "nightardungeoncrawlersidetunnel" ] ]
+      ],
+      "def" : [ "tmx", "nightardungeoncrawlersidetunnel.json" ],
+      "chance" : 1
+    }
+  ]
+}
