@@ -5,7 +5,7 @@ function init()
   message.setHandler("setQuestFuelCount", function(_, _, value)
     if storage.fuelCount then
 	    storage.fuelCount = value
-	  end
+    end
   end)
 
   message.setHandler("getQuestFuelCount", function()

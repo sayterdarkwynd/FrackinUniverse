@@ -4,15 +4,18 @@
   "category" : "fuel",
   "price" : 60,
   "inventoryIcon" : "solariumhoneyjar.png",
-  "description" : "Top-shelf stuff. All resists gain +30% for 1 minute. Can fuel ships and mechs.",
+  "description" : "Top-shelf stuff. All resists gain +15% for 1 minute. Can fuel ships and mechs.",
   "shortdescription" : "Quasar Honey Jar",
   "fuelAmount" : 10,
   
   "effects" : [ [
-    "furesistall",
+    {
+        "effect" : "furesistall",
+        "duration" : 120
+    },    
     {
         "effect" : "fedhoney",
-        "duration" : 60
+        "duration" : 120
     }
   ] ],
   "blockingEffects" : [
