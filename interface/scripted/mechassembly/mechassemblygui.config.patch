@@ -2,7 +2,7 @@
   {
     "op": "add",
     "path": "/massFormat",
-    "value": "Total Mass: %.02f t"
+    "value": "Mass: %.02f t"
   },
   {
     "op": "add",
@@ -11,8 +11,8 @@
       "type": "label",
       "zlevel": 2,
       "position": [
-        228,
-        45
+        83,
+        142
       ],
       "hAnchor": "mid",
       "vAnchor": "mid",
@@ -26,7 +26,7 @@
         "value": 
 		{
 		  "type" : "image",
-          "file" : "/interface/scripted/mechassembly/energy_bar.png",
+          "file" : "/interface/scripted/mechassembly/health_bar.png",
           "zlevel" : 1,
           "position" : [191, 61]
 	    }
@@ -68,16 +68,57 @@
         "op": "replace",
         "path": "/gui/lblEnergy/position",
         "value": [228, 55]
-  },
-  
+  },  
   {
         "op": "replace",
         "path": "/gui/lblDrain/position",
-        "value": [147, 45]
+        "value": [228,45]
   },  
   {
         "op": "replace",
         "path": "/drainFormat",
-        "value": "E.Drain: %.02f E/s"
+        "value": "Fuel Use: %.02f/s"
+  },
+  
+  
+  {
+    "op": "replace",
+    "path": "/gui/lblPrimaryColor/position/0",
+    "value": 7
+  },
+  {
+    "op": "replace",
+    "path": "/gui/lblSecondaryColor/position/0",
+    "value": 7
+  },
+  {
+    "op": "replace",
+    "path": "/gui/btnPrevPrimaryColor/position/0",
+    "value": 42
+  },
+  {
+    "op": "replace",
+    "path": "/gui/btnNextPrimaryColor/position/0",
+    "value": 73
+  },
+  {
+    "op": "replace",
+    "path": "/gui/btnPrevSecondaryColor/position/0",
+    "value": 42
+  },
+  {
+    "op": "replace",
+    "path": "/gui/btnNextSecondaryColor/position/0",
+    "value": 73
+  },
+  {
+    "op": "replace",
+    "path": "/gui/imgPrimaryColorPreview/position/0",
+    "value": 52
+  },
+  {
+    "op": "replace",
+    "path": "/gui/imgSecondaryColorPreview/position/0",
+    "value": 52
   }
 ]

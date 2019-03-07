@@ -17,6 +17,7 @@ function init()
   self.incompleteText = config.getParameter("incompleteText")
 
   self.healthFormat = config.getParameter("healthFormat")
+  self.bonusHealthFormat = config.getParameter("bonusHealthFormat")
   self.energyFormat = config.getParameter("energyFormat")
   self.drainFormat = config.getParameter("drainFormat")
   self.massFormat = config.getParameter("massFormat")
@@ -219,7 +220,7 @@ function updatePreview()
     widget.setVisible("lblMass", true)
     
     widget.setVisible("imgHealthBar", true)
-    widget.setVisible("lblHealth", true)  
+    widget.setVisible("lblHealth", true)       
     widget.setVisible("imgEnergyBar", true)
     widget.setVisible("lblEnergy", true)
 
@@ -253,10 +254,10 @@ function updatePreview()
     if massTotal > 22 then
       self.energyBoost = self.energyBoost * (massTotal/50)
     end
-    
+
     local healthMax = math.floor(50 * ((massTotal+params.parts.body.stats.protection) * (params.parts.body.stats.healthBonus or 1)) + ((self.defenseBoost * massTotal)*0.1))
-    local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
     
+    local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
     energyDrain = energyDrain + massTotal/100
@@ -266,8 +267,8 @@ function updatePreview()
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
 
     local mechMass = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)  
-
     widget.setText("lblMass", string.format(self.massFormat, mechMass))
+    
   else
     widget.setVisible("imgHealthBar", false)
     widget.setVisible("lblHealth", false)  
