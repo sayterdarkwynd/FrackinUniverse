@@ -259,6 +259,7 @@ function updatePreview()
     
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
+    energyDrain = energyDrain + massTotal/100
 
     widget.setText("lblHealth", string.format(self.healthFormat, math.floor(healthMax)))
     widget.setText("lblEnergy", string.format(self.energyFormat, math.floor(energyMax)))

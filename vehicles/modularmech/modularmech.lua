@@ -179,6 +179,13 @@ function init()
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
   self.energyDrain = self.energyDrain*0.6
+  
+ --factor Mass into energy drain, as a penalty
+ self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
+ self.massMod = self.massTotal/100
+ self.energyDrain = self.energyDrain + self.massMod
+ --sb.logInfo(self.energyDrain)
+  
   --end
 
   -- check for environmental hazards / protection
@@ -553,7 +560,8 @@ function update(dt)
 		    if not hasTouched(newControls) and not hasTouched(oldControls) and self.manualFlightMode then
 		      local vel = mcontroller.velocity()
             if vel[1] ~= 0 or vel[2] ~= 0 then
-              mcontroller.approachVelocity({0, 0}, self.flightControlForce*2)
+              --mcontroller.approachVelocity({0, 0}, self.flightControlForce*2)
+              mcontroller.approachVelocity({0, 0}, self.flightControlForce*1.5)
               boost(vec2.mul(vel, -1))
             end
 	    	end
@@ -915,6 +923,16 @@ function update(dt)
       animator.playSound("energyout")
       self.energyOutPlayed = true
     end
+    
+	    for _, arm in pairs({"left", "right"}) do
+	      local fireControl = (arm == "left") and "PrimaryFire" or "AltFire"
+	
+	      animator.resetTransformationGroup(arm .. "Arm")
+	      animator.resetTransformationGroup(arm .. "ArmFlipper")
+	
+	      self[arm .. "Arm"]:updateBase(dt, self.driverId, false, false, self.aimPosition, self.facingDirection, self.crouch * self.bodyCrouchMax)
+	      self[arm .. "Arm"]:update(dt)
+	    end    
 	  return
   else
     self.energyOutPlayed = false
