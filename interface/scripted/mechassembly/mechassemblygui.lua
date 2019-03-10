@@ -17,6 +17,7 @@ function init()
   self.incompleteText = config.getParameter("incompleteText")
 
   self.healthFormat = config.getParameter("healthFormat")
+  self.bonusHealthFormat = config.getParameter("bonusHealthFormat")
   self.energyFormat = config.getParameter("energyFormat")
   self.drainFormat = config.getParameter("drainFormat")
   self.massFormat = config.getParameter("massFormat")
@@ -254,23 +255,30 @@ function updatePreview()
       self.energyBoost = self.energyBoost * (massTotal/50)
     end
     
-    local healthMax = math.floor(50 * ((massTotal+params.parts.body.stats.protection) * (params.parts.body.stats.healthBonus or 1)) + ((self.defenseBoost * massTotal)*0.1))
+    self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
+    --compute health/defense
+    local healthMax = math.floor(((((100 * params.parts.body.stats.healthBonus) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) )
+    --compute energy
     local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
-    
+    --compute energy drain
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
-
+    
+    --mass affects drain
+    energyDrain = energyDrain + massTotal/100
+    
+    
     widget.setText("lblHealth", string.format(self.healthFormat, math.floor(healthMax)))
     widget.setText("lblEnergy", string.format(self.energyFormat, math.floor(energyMax)))
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
-
-    local mechMass = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)  
-
-    widget.setText("lblMass", string.format(self.massFormat, mechMass))
+    widget.setText("lblMass", string.format(self.massFormat, massTotal))
   else
     widget.setVisible("imgHealthBar", false)
     widget.setVisible("lblHealth", false)  
+    widget.setVisible("lblHealthBonus", false)
+    widget.setVisible("lblSpeedPenalty", false)
     widget.setVisible("imgEnergyBar", false)
+    widget.setVisible("lblEnergyPenalty", false)  
     widget.setVisible("lblEnergy", false)
     widget.setVisible("lblDrain", false)
     widget.setVisible("lblMass", false)

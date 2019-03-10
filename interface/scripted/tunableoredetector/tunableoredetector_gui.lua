@@ -14,6 +14,8 @@ end
 
 
 function update(dt)	
+
+	
 	
 	if self.itemInSlot then
 		self.timer = self.timer + dt
@@ -21,28 +23,32 @@ function update(dt)
 						
 			--check if item is one of the ores in the list
 			if self.oreList[self.itemInSlot.name] then
-				widget.setVisible("lb_Scanning", false)
-				local detectorItem = detectorInHand()
-				local upgradeLevel = detectorItem.parameters.level or root.itemConfig(detectorItem).config.level
+				if detectorInHand() then
+					widget.setVisible("lb_Scanning", false)
+					local detectorItem = detectorInHand()
+					local upgradeLevel = detectorItem.parameters.level or root.itemConfig(detectorItem).config.level
 				
-				if upgradeLevel >= self.oreList[self.itemInSlot.name][2] then
-					local newDetectorItem = copy(detectorItem)
-					newDetectorItem.parameters.currentTargetOre = self.oreList[self.itemInSlot.name][1]
+					if upgradeLevel >= self.oreList[self.itemInSlot.name][2] then
+						local newDetectorItem = copy(detectorItem)
+						newDetectorItem.parameters.currentTargetOre = self.oreList[self.itemInSlot.name][1]
 						
-					--use exact match in case player has several detectors
-					player.consumeItem(detectorItem, false, true)
-					player.giveItem(newDetectorItem)
+						--use exact match in case player has several detectors
+						player.consumeItem(detectorItem, false, true)
+						player.giveItem(newDetectorItem)
 			
-					--give back the ore to the player before closing the panel
-					player.giveItem(self.itemInSlot)
-					self.itemInSlot = nil
-					widget.setItemSlotItem("oreSlot",nil)
-					self.timer = 0
-					pane.playSound(self.successSound)
-					pane.dismiss()
-				else
-					--need to level up
-					itemError("UpgradeRequired")
+						--give back the ore to the player before closing the panel
+						player.giveItem(self.itemInSlot)
+						self.itemInSlot = nil
+						widget.setItemSlotItem("oreSlot",nil)
+						self.timer = 0
+						pane.playSound(self.successSound)
+						pane.dismiss()
+					
+					
+					else
+						--need to level up
+						itemError("UpgradeRequired")
+					end
 				end
 				
 			else
