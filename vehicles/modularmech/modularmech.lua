@@ -321,7 +321,7 @@ function setHealthValue()
   self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
   setDefenseBoostValue()
   self.defenseModifier = (self.defenseBoost * self.massTotal) * 0.1
-  self.healthMax = 50 * ((self.massTotal+self.parts.body.stats.protection) * (self.parts.body.stats.healthBonus or 1)) + ( self.defenseModifier or 0)
+  self.healthMax = ((((100 * (self.parts.body.stats.healthBonus or 1)) + self.massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0) )   
 end
 
 function setEnergyValue()

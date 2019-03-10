@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Brutally effective magnet-based weaponry
-^yellow;Explosive rounds^reset;",
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;",
   "shortdescription" : "Gauss Machinegun",
   "category" : "swtjc_ewg_squadAutomaticWeapon",
   "level" : 4,
@@ -35,12 +36,15 @@
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
-          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] },
+          { "particle" : "dust2", "offset" : [0.4, -0.4] },
+          { "particle" : "electricalburn", "offset" : [0.4, -0.4] },
+          { "particle" : "electricenergy", "offset" : [0.4, -0.4] }
         ]
       }
     },   
     "sounds" : {
-      "fire" : [ "/sfx/weapons/fugauss.ogg" ]
+      "fire" : [ "/sfx/weapons/fugausspistol.ogg" ]
     }
   },
 
@@ -54,8 +58,8 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.09,
-    "baseDps" : 8,
+    "fireTime" : 0.15,
+    "baseDps" : 8.2,
     "energyUsage" : 33.0,
     "inaccuracy" : 0.03,
 
@@ -64,8 +68,8 @@
 
     "projectileType" : "gausspistolshot",
     "projectileParameters" : { 
-      "speed" : 72,
-      "knockback" : 4
+      "speed" : 100,
+      "knockback" : 8
     },
 	  "stances" : {
 	    "idle" : {
@@ -107,8 +111,8 @@
     },
 
 
-  "critChance" : 2,
-  "critBonus" : 9,
+  "critChance" : 1,
+  "critBonus" : 3,
   "altAbilityType" : "explosiveburst",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

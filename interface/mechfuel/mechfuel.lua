@@ -191,9 +191,8 @@ end
 
 function fuelCountPreview(item)
 
-  if self.currentFuel > self.maxFuel then
-  self.currentFuel = self.maxFuel
-  end    
+
+  
   if not item then
     widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
     return
