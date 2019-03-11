@@ -284,5 +284,8 @@ function questComplete()
   else
     player.upgradeShip(config.getParameter("shipUpgrade2"))
     player.playCinematic(config.getParameter("shipUpgradeCinema"))
-  end  
+  end 
+  
+  world.sendEntityMessage(player.id(), "setQuestFuelCount", 200)
+
 end
