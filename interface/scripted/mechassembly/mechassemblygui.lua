@@ -232,50 +232,89 @@ function updatePreview()
     self.defenseBoost = 0
     self.energyBoost = 0
     self.mobilityBoostValue = 0
-		if params.parts.hornName == 'mechdefensefield' then 
-		  self.defenseBoost = 100
-		elseif params.parts.hornName == 'mechdefensefield2' then 
-		  self.defenseBoost = 200
-		elseif params.parts.hornName == 'mechdefensefield3' then 
-		  self.defenseBoost = 300
-		elseif params.parts.hornName == 'mechdefensefield4' then 
-		  self.defenseBoost = 400
-		elseif params.parts.hornName == 'mechdefensefield5' then 
-		  self.defenseBoost = 500
-		end    
-		
-		if params.parts.hornName == 'mechenergyfield' then 
-		  self.energyBoost = 100
-		elseif params.parts.hornName == 'mechenergyfield2' then 
-		  self.energyBoost = 200
-		elseif params.parts.hornName == 'mechenergyfield3' then 
-		  self.energyBoost = 300
-		elseif params.parts.hornName == 'mechenergyfield4' then 
-		  self.energyBoost = 400
-		elseif params.parts.hornName == 'mechenergyfield5' then 
-		  self.energyBoost = 500
-		end    
-	        if massTotal > 22 then
-	          self.energyBoost = self.energyBoost * (massTotal/50)
-	        end
-	        
-		if params.parts.hornName == 'mechmobility' then 
-		  self.mobilityBoostValue = 10
-		elseif params.parts.hornName == 'mechmobility2' then 
-		  self.mobilityBoostValue = 20
-		elseif params.parts.hornName == 'mechmobility3' then 
-		  self.mobilityBoostValue = 30
-		elseif params.parts.hornName == 'mechmobility4' then 
-		  self.mobilityBoostValue = 40
-		elseif params.parts.hornName == 'mechmobility5' then 
-		  self.mobilityBoostValue = 50		  
-		end      
-    --total bonus to health from defense
-    self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
-    --compute health/defense
-    local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 50
+    self.mobilityControlValue = 0
+    self.mobilityJumpValue = 0
+    self.fuelCost = 1
+    self.fuelBoost = 0
+    
+	if params.parts.hornName == 'mechdefensefield' then 
+	  self.defenseBoost = 100
+	elseif params.parts.hornName == 'mechdefensefield2' then 
+	  self.defenseBoost = 200
+	elseif params.parts.hornName == 'mechdefensefield3' then 
+	  self.defenseBoost = 300
+	elseif params.parts.hornName == 'mechdefensefield4' then 
+	  self.defenseBoost = 400
+	elseif params.parts.hornName == 'mechdefensefield5' then 
+	  self.defenseBoost = 500
+	end    
+
+	if params.parts.hornName == 'mechenergyfield' then 
+	  self.energyBoost = 100
+	elseif params.parts.hornName == 'mechenergyfield2' then 
+	  self.energyBoost = 200
+	elseif params.parts.hornName == 'mechenergyfield3' then 
+	  self.energyBoost = 300
+	elseif params.parts.hornName == 'mechenergyfield4' then 
+	  self.energyBoost = 400
+	elseif params.parts.hornName == 'mechenergyfield5' then 
+	  self.energyBoost = 500
+	end    
+	
+        --total bonus to health from defense
+        self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
+        --compute health/defense
+        local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 50
+
+	if params.parts.hornName == 'mechchipfeather' then 
+	  massTotal = massTotal * 0.4
+	  healthMax = healthMax * 0.75
+	end	
+	if massTotal > 22 then
+	  self.energyBoost = self.energyBoost * (massTotal/50)
+	end
+
+	if params.parts.hornName == 'mechmobility' then 
+	  self.mobilityBoostValue = 10
+	  self.mobilityControlValue = 10
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechmobility2' then 
+	  self.mobilityBoostValue = 20
+	  self.mobilityControlValue = 20
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechmobility3' then 
+	  self.mobilityBoostValue = 30
+	  self.mobilityControlValue = 30
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechmobility4' then 
+	  self.mobilityBoostValue = 40
+	  self.mobilityControlValue = 40
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechmobility5' then 
+	  self.mobilityBoostValue = 50	
+	  self.mobilityControlValue = 50
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechchipcontrol' then 
+	  self.mobilityBoostValue = -20
+	  self.mobilityControlValue = 20
+	  self.mobilityJumpValue = 20	
+	elseif params.parts.hornName == 'mechchipspeed' then 
+	  self.mobilityBoostValue = 40
+	  self.mobilityControlValue = -20
+	  self.mobilityJumpValue = -20		  
+	end    
+
+    --compute fuel module bonuses
+	if params.parts.hornName == 'mechchipfuel' then 
+	  healthMax = healthMax * 0.8
+	  self.energyBoost = 300
+	elseif params.parts.hornName == 'mechchiprefueler' then
+	  self.fuelCost = 0.8
+	end   
+	
     --compute energy
     local energyMax = math.floor(100 + (params.parts.body.energyMax or 0) * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
+    
     --compute energy drain
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
@@ -283,35 +322,23 @@ function updatePreview()
     --mass affects drain
     energyDrain = energyDrain + massTotal/100
     
+    --final energy drain after modules
+    energyDrain = energyDrain * (self.fuelCost or 1)
+    
     --check mobility boosts
     local mobilityMax = self.mobilityBoostValue or 0
     
     widget.setText("lblHealth", string.format(self.healthFormat, math.floor(healthMax)))
     widget.setText("lblEnergy", string.format(self.energyFormat, math.floor(energyMax)))
     
-    
     --display boost totals if present.
     widget.setVisible("lblModuleBonuses", true)
-    --if self.defenseBoost >= 100 then
-      widget.setText("lblDefenseBoost", string.format(self.defenseBoostFormat, math.floor(self.defenseModifier)))
-      --widget.setVisible("lblDefenseBoost", true)
-    --else
-      --widget.setVisible("lblDefenseBoost", false)
-    --end
-    --if self.energyBoost >= 100 then 
-      widget.setText("lblEnergyBoost", string.format(self.energyBoostFormat, math.floor(self.energyBoost)))
-      --widget.setVisible("lblEnergyBoost", true)
-    --else
-      --widget.setVisible("lblEnergyBoost", false)      
-   -- end
-   -- if self.mobilityBoostValue > 1 then 
-      widget.setText("lblMobility", string.format(self.mobilityFormat, math.floor(mobilityMax)).."%")
-      --widget.setVisible("lblMobility", true)  
-    --else
-      --widget.setVisible("lblMobility", false)      
-   -- end
-    
-    
+    widget.setVisible("lblDefenseBoost", true)
+    widget.setVisible("lblEnergyBoost", true)
+    widget.setVisible("lblMobility", true)
+    widget.setText("lblDefenseBoost", string.format(self.defenseBoostFormat, math.floor(self.defenseModifier)))
+    widget.setText("lblEnergyBoost", string.format(self.energyBoostFormat, math.floor(self.energyBoost)))
+    widget.setText("lblMobility", string.format(self.mobilityFormat, math.floor(mobilityMax)).."%")
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
     widget.setText("lblMass", string.format(self.massFormat, massTotal))
   else
