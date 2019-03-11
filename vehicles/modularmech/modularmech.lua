@@ -155,11 +155,13 @@ function init()
 
   -- setup arms
 
-  --FU special stats	  		
+  --FU special stats from modules  		
   self.aimassist = self.parts.hornName == 'mechaimassist'		
   self.masscancel = self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4'
   self.defenseboost = self.parts.hornName == 'mechdefensefield' or self.parts.hornName == 'mechdefensefield2' or self.parts.hornName == 'mechdefensefield3' or self.parts.hornName == 'mechdefensefield4' or self.parts.hornName == 'mechdefensefield5'
   self.energyboost = self.parts.hornName == 'mechenergyfield' or self.parts.hornName == 'mechenergyfield2' or self.parts.hornName == 'mechenergyfield3' or self.parts.hornName == 'mechenergyfield4' or self.parts.hornName == 'mechenergyfield5'
+  self.mobilityboost = self.parts.hornName == 'mechmobility' or self.parts.hornName == 'mechmobility2' or self.parts.hornName == 'mechmobility3' or self.parts.hornName == 'mechmobility4' or self.parts.hornName == 'mechmobility5'
+  --self.comboboost =  mixed bonuses go here
   --
   
   
@@ -317,11 +319,31 @@ function setEnergyBoostValue()
 	  end
 end
 
+function setMobilityBoostValue()
+  self.mobilityboost = self.parts.hornName == 'mechmobility' or self.parts.hornName == 'mechmobility2' or self.parts.hornName == 'mechmobility3' or self.parts.hornName == 'mechmobility4' or self.parts.hornName == 'mechmobility5' 
+	  if self.mobilityboost then
+		if self.parts.hornName == 'mechmobility' then 
+		  self.mobilityBoostValue = 1.1
+		elseif self.parts.hornName == 'mechmobility2' then 
+		  self.mobilityBoostValue = 1.2
+		elseif self.parts.hornName == 'mechmobility3' then 
+		  self.mobilityBoostValue = 1.3
+		elseif self.parts.hornName == 'mechmobility4' then 
+		  self.mobilityBoostValue = 1.4
+		elseif self.parts.hornName == 'mechmobility5' then 
+		  self.mobilityBoostValue = 1.5		  
+		end
+	  else
+	    self.mobilityBoostValue = 1
+	  end
+end
+
 function setHealthValue()
   self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
   setDefenseBoostValue()
   self.defenseModifier = (self.defenseBoost * self.massTotal) * 0.1
-  self.healthMax = ((((100 * (self.parts.body.stats.healthBonus or 1)) + self.massTotal) * self.parts.body.stats.protection) + (self.defenseModifier or 0) )   
+  self.healthMax = ((((100 * (self.parts.body.stats.healthBonus or 1)) + self.massTotal) * self.parts.body.stats.protection) + (self.defenseModifier or 0) )   + 50
+  setMobilityBoostValue() --set Mobility while we are at it
 end
 
 function setEnergyValue()
@@ -355,29 +377,24 @@ function activateFUMechStats()
           self.mechMass = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass 
         
           self.threatMod = (world.threatLevel()/10) / 2  -- threat calculation. we divide to minimize the impact of effects
-
 	  -- *********************** movement penalties for Mass *****************************************************
 	  if self.mechMass > 20 then  -- is the mech a heavy mech?
 	          -- setup booster mass modifier
-		  self.airControlSpeed = self.parts.booster.airControlSpeed - (self.mechMass/30)
-		  self.flightControlSpeed = self.parts.booster.flightControlSpeed - (self.mechMass/30)
+		  self.airControlSpeed = (self.parts.booster.airControlSpeed - (self.mechMass/30)) * self.mobilityBoostValue
+		  self.flightControlSpeed = (self.parts.booster.flightControlSpeed - (self.mechMass/30))  * self.mobilityBoostValue
 
 		  -- setup legs affected by mass modifier
-		  self.groundSpeed = self.parts.legs.groundSpeed - (self.mechMass/20)
-		  self.jumpVelocity = self.parts.legs.jumpVelocity - (self.mechMass/20)
-	  elseif self.mechMass > 15 then
+		  self.groundSpeed = (self.parts.legs.groundSpeed - (self.mechMass/20)) * self.mobilityBoostValue
+		  self.jumpVelocity = (self.parts.legs.jumpVelocity - (self.mechMass/20)) * self.mobilityBoostValue
+	  else
 	          -- setup booster mass modifier
-		  self.airControlSpeed = self.parts.booster.airControlSpeed - (self.mechMass/60)
-		  self.flightControlSpeed = self.parts.booster.flightControlSpeed - (self.mechMass/60)
+		  self.airControlSpeed = (self.parts.booster.airControlSpeed - (self.mechMass/60)) * self.mobilityBoostValue
+		  self.flightControlSpeed = (self.parts.booster.flightControlSpeed - (self.mechMass/60)) * self.mobilityBoostValue
 
 		  -- setup legs affected by mass modifier
-		  self.groundSpeed = self.parts.legs.groundSpeed - (self.mechMass/40)
-		  self.jumpVelocity = self.parts.legs.jumpVelocity - (self.mechMass/40)	  
+		  self.groundSpeed = (self.parts.legs.groundSpeed - (self.mechMass/40)) * self.mobilityBoostValue
+		  self.jumpVelocity = (self.parts.legs.jumpVelocity - (self.mechMass/40)) * self.mobilityBoostValue
 	  end
-
-          -- *********************is the mech below 50% energy? if so, do not regen. If they are above, regen rate increases with higher energy
-          self.storageValue = (storage.energy) * (1 * (self.energyMax/100))/10 
-          self.storageValue = self.storageValue / 200
 end
 
 
@@ -762,13 +779,8 @@ function update(dt)
   end
 
   -- decay and check energy
-
---  if self.driverId then
---    storage.energy = math.max(0, storage.energy - self.energyDrain * dt)
---  end
--- lpk - regen while idle, no drain while coasting
   if self.driverId then
-	--energy drain
+  --energy drain
     local energyDrain = self.energyDrain
 
 	  --set energy drain x2 on manual flight mode
@@ -826,7 +838,19 @@ function update(dt)
 		  self.energyBoost = 500		  
 		end
 	  end
-	  
+	  if self.mobilityboost then
+		if self.parts.hornName == 'mechmobility' then 
+		  self.mobilityBoostValue = 1.1
+		elseif self.parts.hornName == 'mechmobility2' then 
+		  self.mobilityBoostValue = 1.2
+		elseif self.parts.hornName == 'mechmobility3' then 
+		  self.mobilityBoostValue = 1.3
+		elseif self.parts.hornName == 'mechmobility4' then 
+		  self.mobilityBoostValue = 1.4
+		elseif self.parts.hornName == 'mechmobility5' then 
+		  self.mobilityBoostValue = 1.5		  
+		end
+	  end	  
       if (storage.health) < (self.healthMax*0.15) then -- play damage effects at certain health percentages
         animator.setParticleEmitterActive("highDamage", true) -- land fx 
         animator.setParticleEmitterActive("midDamage", false) -- land fx

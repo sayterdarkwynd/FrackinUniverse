@@ -18,6 +18,9 @@ function init()
 
   self.healthFormat = config.getParameter("healthFormat")
   self.bonusHealthFormat = config.getParameter("bonusHealthFormat")
+  self.mobilityFormat = config.getParameter("mobilityFormat")
+  self.defenseBoostFormat = config.getParameter("defenseBoostFormat")    
+  self.energyBoostFormat = config.getParameter("energyBoostFormat")  
   self.energyFormat = config.getParameter("energyFormat")
   self.drainFormat = config.getParameter("drainFormat")
   self.massFormat = config.getParameter("massFormat")
@@ -227,6 +230,8 @@ function updatePreview()
     local massTotal = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)
 
     self.defenseBoost = 0
+    self.energyBoost = 0
+    self.mobilityBoostValue = 0
 		if params.parts.hornName == 'mechdefensefield' then 
 		  self.defenseBoost = 100
 		elseif params.parts.hornName == 'mechdefensefield2' then 
@@ -238,8 +243,7 @@ function updatePreview()
 		elseif params.parts.hornName == 'mechdefensefield5' then 
 		  self.defenseBoost = 500
 		end    
-
-    self.energyBoost = 0
+		
 		if params.parts.hornName == 'mechenergyfield' then 
 		  self.energyBoost = 100
 		elseif params.parts.hornName == 'mechenergyfield2' then 
@@ -250,14 +254,26 @@ function updatePreview()
 		  self.energyBoost = 400
 		elseif params.parts.hornName == 'mechenergyfield5' then 
 		  self.energyBoost = 500
-		end     
-    if massTotal > 22 then
-      self.energyBoost = self.energyBoost * (massTotal/50)
-    end
-    
+		end    
+	        if massTotal > 22 then
+	          self.energyBoost = self.energyBoost * (massTotal/50)
+	        end
+	        
+		if params.parts.hornName == 'mechmobility' then 
+		  self.mobilityBoostValue = 10
+		elseif params.parts.hornName == 'mechmobility2' then 
+		  self.mobilityBoostValue = 20
+		elseif params.parts.hornName == 'mechmobility3' then 
+		  self.mobilityBoostValue = 30
+		elseif params.parts.hornName == 'mechmobility4' then 
+		  self.mobilityBoostValue = 40
+		elseif params.parts.hornName == 'mechmobility5' then 
+		  self.mobilityBoostValue = 50		  
+		end      
+    --total bonus to health from defense
     self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
     --compute health/defense
-    local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 0)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) )
+    local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 50
     --compute energy
     local energyMax = math.floor(100 + (params.parts.body.energyMax or 0) * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
     --compute energy drain
@@ -267,9 +283,35 @@ function updatePreview()
     --mass affects drain
     energyDrain = energyDrain + massTotal/100
     
+    --check mobility boosts
+    local mobilityMax = self.mobilityBoostValue or 0
     
     widget.setText("lblHealth", string.format(self.healthFormat, math.floor(healthMax)))
     widget.setText("lblEnergy", string.format(self.energyFormat, math.floor(energyMax)))
+    
+    
+    --display boost totals if present.
+    widget.setVisible("lblModuleBonuses", true)
+    --if self.defenseBoost >= 100 then
+      widget.setText("lblDefenseBoost", string.format(self.defenseBoostFormat, math.floor(self.defenseModifier)))
+      --widget.setVisible("lblDefenseBoost", true)
+    --else
+      --widget.setVisible("lblDefenseBoost", false)
+    --end
+    --if self.energyBoost >= 100 then 
+      widget.setText("lblEnergyBoost", string.format(self.energyBoostFormat, math.floor(self.energyBoost)))
+      --widget.setVisible("lblEnergyBoost", true)
+    --else
+      --widget.setVisible("lblEnergyBoost", false)      
+   -- end
+   -- if self.mobilityBoostValue > 1 then 
+      widget.setText("lblMobility", string.format(self.mobilityFormat, math.floor(mobilityMax)).."%")
+      --widget.setVisible("lblMobility", true)  
+    --else
+      --widget.setVisible("lblMobility", false)      
+   -- end
+    
+    
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
     widget.setText("lblMass", string.format(self.massFormat, massTotal))
   else
@@ -277,6 +319,9 @@ function updatePreview()
     widget.setVisible("lblHealth", false)  
     widget.setVisible("lblHealthBonus", false)
     widget.setVisible("lblSpeedPenalty", false)
+    widget.setVisible("lblMobility", false)
+    widget.setVisible("lblDefenseBoost", false)
+    widget.setVisible("lblEnergyBoost", false)
     widget.setVisible("imgEnergyBar", false)
     widget.setVisible("lblEnergyPenalty", false)  
     widget.setVisible("lblEnergy", false)
