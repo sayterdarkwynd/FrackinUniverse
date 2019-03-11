@@ -4,7 +4,7 @@
   "inventoryIcon" : "energyassault.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "One of the most reliable energy rifles known on the galactic market
+  "description" : "One of the most popular energy rifles on the galactic market
 ^yellow;High efficiency^reset;",
   "shortdescription" : "F4 Energy Rifle",
   "category" : "assaultRifle",
@@ -32,6 +32,15 @@
 		}
       }
     },   
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] },
+          { "particle" : "electricenergy", "offset" : [0.4, -0.4] },
+          { "particle" : "daggerblue", "offset" : [0.4, -0.4] }
+        ]
+      }
+    },      
     "sounds" : {
       "fire" : [ "/sfx/weapons/energyassault.ogg" ]
     }
@@ -90,7 +99,7 @@
 	  }
   },
 
-  "critChance" : 3,
+  "critChance" : 1.5,
   "critBonus" : 5,
 
   "altAbilityType" : "flashlight",
@@ -99,7 +108,7 @@
   
 "upgradeParameters" : {
     "shortdescription" : "^cyan;G7 Energy Rifle^reset; ^yellow;^reset;",
-  "description" : "One of the most reliable energy rifles known on the galactic market
+  "description" : "You've gone and made it even better.
 ^yellow;High efficiency^reset;",
   "animationParts" : {
     "middle" : "energyassault2.png"
@@ -108,7 +117,7 @@
     { "image" : "energyassault2.png:" }
     ],
     "critChance" : 3,
-    "critBonus" : 4,
+    "critBonus" : 6,
     "primaryAbility" : {
 	    "fireTime" : 0.11,
 	    "baseDps" : 9.25,
@@ -117,8 +126,8 @@
 
 	    "projectileType" : "energyassault",
 	    "projectileParameters" : { 
-	      "speed" : 70,
-	      "knockback" : 4
+	      "speed" : 120,
+	      "knockback" : 5
 	    }  
     }
   }
