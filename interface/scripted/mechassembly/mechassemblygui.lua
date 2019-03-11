@@ -248,7 +248,11 @@ function updatePreview()
 	elseif params.parts.hornName == 'mechdefensefield5' then 
 	  self.defenseBoost = 500
 	end    
-
+        --total bonus to health from defense
+        self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
+        --compute health/defense
+        local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 50
+        
 	if params.parts.hornName == 'mechenergyfield' then 
 	  self.energyBoost = 100
 	elseif params.parts.hornName == 'mechenergyfield2' then 
@@ -260,11 +264,6 @@ function updatePreview()
 	elseif params.parts.hornName == 'mechenergyfield5' then 
 	  self.energyBoost = 500
 	end    
-	
-        --total bonus to health from defense
-        self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
-        --compute health/defense
-        local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 50
 
 	if params.parts.hornName == 'mechchipfeather' then 
 	  massTotal = massTotal * 0.4

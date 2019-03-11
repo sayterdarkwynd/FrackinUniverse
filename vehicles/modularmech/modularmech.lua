@@ -373,7 +373,7 @@ function setMassBoostValue()
 end
 
 function setFuelBoostValue()
- 	self.fuelboost = self.parts.hornName == 'mechchipfuel'  or self.parts.hornName == 'mechchiprefueler' or self.parts.hornName == 'mechchipfeather'
+ 	self.fuelboost = self.parts.hornName == 'mechchipfuel'  or self.parts.hornName == 'mechchiprefueler'
 	if self.fuelboost then
 		if self.parts.hornName == 'mechchipfuel' then 
 		  self.healthMax = self.healthMax * 0.8
