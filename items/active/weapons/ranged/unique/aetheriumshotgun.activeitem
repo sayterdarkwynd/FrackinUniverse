@@ -7,7 +7,7 @@
   "description" : "Sleek, deadly perfection.
 ^cyan;Energy weapon^reset;
 ^yellow;Cosmic, Fire and Radiation damage^reset;",
-  "shortdescription" : "Aetherium Harlequin",
+  "shortdescription" : "Aetherium Titan",
   "category" : "shotgun",
   "level" : 7,
   "tooltipKind" : "gun2aetherium",
@@ -27,7 +27,7 @@
         "middlefullbright" : {
 		  "properties" : {
 			//Same as BaseOffset
-		    "offset" : [1.5, 0.35]
+		    "offset" : [2, 0.15]
 		  }
 		}
       }
@@ -37,7 +37,16 @@
         "particles" : [
           { "particle" : "erchiussmoke", "offset" : [0.4, -0.4] },
           { "particle" : "peglacitrail", "offset" : [0.4, -0.4] },
-          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] }
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] },
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.2] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.2] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.2] },
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.6] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.6] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.6] },         
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.5] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.5] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.5] }
         ]
       }
     },     
@@ -46,8 +55,8 @@
     }
   },
 
-  "baseOffset" : [1.5, 0.35],
-  "muzzleOffset" : [1.2, 0.125],
+  "baseOffset" : [2, 0.15],
+  "muzzleOffset" : [0.4, 0.2],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 

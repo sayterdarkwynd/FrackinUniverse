@@ -257,9 +257,9 @@ function updatePreview()
     
     self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
     --compute health/defense
-    local healthMax = math.floor(((((100 * params.parts.body.stats.healthBonus) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) )
+    local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 0)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) )
     --compute energy
-    local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
+    local energyMax = math.floor(100 + (params.parts.body.energyMax or 0) * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
     --compute energy drain
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
