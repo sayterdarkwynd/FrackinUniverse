@@ -19,8 +19,12 @@ function init()
   self.healthFormat = config.getParameter("healthFormat")
   self.bonusHealthFormat = config.getParameter("bonusHealthFormat")
   self.mobilityFormat = config.getParameter("mobilityFormat")
+  self.mobilityBoostFormat = config.getParameter("mobilityBoostFormat")
+  self.mobilityControlFormat = config.getParameter("mobilityControlFormat")
+  self.mobilityJumpFormat = config.getParameter("mobilityJumpFormat")
   self.defenseBoostFormat = config.getParameter("defenseBoostFormat")    
   self.energyBoostFormat = config.getParameter("energyBoostFormat")  
+  self.fuelBonusFormat = config.getParameter("fuelBonusFormat") 
   self.energyFormat = config.getParameter("energyFormat")
   self.drainFormat = config.getParameter("drainFormat")
   self.massFormat = config.getParameter("massFormat")
@@ -326,6 +330,10 @@ function updatePreview()
     
     --check mobility boosts
     local mobilityMax = self.mobilityBoostValue or 0
+    local mobilityBoostMax = self.mobilityBoostValue or 0
+    local mobilityControlMax = self.mobilityControlValue or 0
+    local mobilityJumpMax = self.mobilityJumpValue or 0
+    local fuelBonusMax = self.fuelCost or 0
     
     widget.setText("lblHealth", string.format(self.healthFormat, math.floor(healthMax)))
     widget.setText("lblEnergy", string.format(self.energyFormat, math.floor(energyMax)))
@@ -334,10 +342,18 @@ function updatePreview()
     widget.setVisible("lblModuleBonuses", true)
     widget.setVisible("lblDefenseBoost", true)
     widget.setVisible("lblEnergyBoost", true)
-    widget.setVisible("lblMobility", true)
+    --widget.setVisible("lblMobility", false)
+    widget.setVisible("lblMobilityBoost", true)
+    widget.setVisible("lblMobilityControl", true)
+    widget.setVisible("lblMobilityJump", true)
+    widget.setVisible("lblFuelBonus", true)
     widget.setText("lblDefenseBoost", string.format(self.defenseBoostFormat, math.floor(self.defenseModifier)))
     widget.setText("lblEnergyBoost", string.format(self.energyBoostFormat, math.floor(self.energyBoost)))
-    widget.setText("lblMobility", string.format(self.mobilityFormat, math.floor(mobilityMax)).."%")
+    --widget.setText("lblMobility", string.format(self.mobilityFormat, math.floor(mobilityMax)).."%")
+    widget.setText("lblMobilityBoost", string.format(self.mobilityBoostFormat, math.floor(mobilityBoostMax)).."%")
+    widget.setText("lblMobilityControl", string.format(self.mobilityControlFormat, math.floor(mobilityControlMax)).."%")
+    widget.setText("lblMobilityJump", string.format(self.mobilityJumpFormat, math.floor(mobilityJumpMax)).."%")
+    widget.setText("lblFuelBonus", string.format(self.fuelBonusFormat, fuelBonusMax))
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
     widget.setText("lblMass", string.format(self.massFormat, massTotal))
   else

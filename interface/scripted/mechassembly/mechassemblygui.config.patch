@@ -30,7 +30,7 @@
     "value": {
       "type": "label",
       "zlevel": 2,
-      "position": [133,79],
+      "position": [110,79],
       "hAnchor": "mid",
       "vAnchor": "mid",
       "value": "Module Bonuses:"
@@ -42,8 +42,8 @@
     "value": {
       "type": "label",
       "zlevel": 2,
-      "position": [133,52],
-      "hAnchor": "mid",
+      "position": [60,52],
+      "hAnchor": "left",
       "vAnchor": "mid",
       "value": ""
     }
@@ -51,16 +51,67 @@
   {
         "op": "add",
         "path": "/mobilityFormat",
-        "value": "^orange;Mobility Bonus^reset;: %d"
+        "value": "^orange;Mobility +^reset;: %d"
+  },  
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityControl",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,61],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
   },
+  {
+        "op": "add",
+        "path": "/mobilityControlFormat",
+        "value": "^orange;Agility^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityJump",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,70],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityJumpFormat",
+        "value": "^orange;Jump^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityBoost",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,52],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityBoostFormat",
+        "value": "^orange;Speed^reset; : %d"
+  }, 
   {
     "op": "add",
     "path": "/gui/lblEnergyBoost",
     "value": {
       "type": "label",
       "zlevel": 2,
-      "position": [133,61],
-      "hAnchor": "mid",
+      "position": [50,61],
+      "hAnchor": "left",
       "vAnchor": "mid",
       "value": ""
     }
@@ -68,7 +119,7 @@
   {
         "op": "add",
         "path": "/energyBoostFormat",
-        "value": "^green;Energy Bonus^reset;: %d"
+        "value": "^green;Energy^reset; : %d"
   },  
   {
     "op": "add",
@@ -76,8 +127,8 @@
     "value": {
       "type": "label",
       "zlevel": 2,
-      "position": [133,70],
-      "hAnchor": "mid",
+      "position": [50,70],
+      "hAnchor": "left",
       "vAnchor": "mid",
       "value": ""
     }
@@ -85,9 +136,25 @@
   {
         "op": "add",
         "path": "/defenseBoostFormat",
-        "value": "^red;Defense Bonus^reset;: %d"
+        "value": "^red;Defense^reset; : %d"
   },
-  
+  {
+    "op": "add",
+    "path": "/gui/lblFuelBonus",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [50,52],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/fuelBonusFormat",
+        "value": "^#e43774;Fuel Eff^reset; : %.02f"
+  },   
   {
         "op": "add",
         "path": "/gui/imgHealthBar",
@@ -148,46 +215,62 @@
         "value": "Fuel Use: %.02f/s"
   },
   
-  
-  {
-    "op": "replace",
-    "path": "/gui/lblPrimaryColor/position/0",
-    "value": 7
+ 
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/position/0",
+     "value": 8
+   },
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/position/1",
+     "value": 79
+   },
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/value",
+     "value": "Colours"
   },
+    {
+     "op": "replace",
+     "path": "/gui/lblSecondaryColor/value",
+     "value": ""
+  }, 
   {
     "op": "replace",
     "path": "/gui/lblSecondaryColor/position/0",
     "value": 7
   },
+  
   {
     "op": "replace",
     "path": "/gui/btnPrevPrimaryColor/position/0",
-    "value": 42
+    "value": 7
   },
   {
     "op": "replace",
     "path": "/gui/btnNextPrimaryColor/position/0",
-    "value": 73
+    "value": 29
   },
   {
     "op": "replace",
     "path": "/gui/btnPrevSecondaryColor/position/0",
-    "value": 42
+    "value": 7
   },
   {
     "op": "replace",
     "path": "/gui/btnNextSecondaryColor/position/0",
-    "value": 73
+    "value": 29
   },
   {
     "op": "replace",
     "path": "/gui/imgPrimaryColorPreview/position/0",
-    "value": 52
+    "value": 17
   },
   {
     "op": "replace",
     "path": "/gui/imgSecondaryColorPreview/position/0",
-    "value": 52
+    "value": 17
   },
 
 
