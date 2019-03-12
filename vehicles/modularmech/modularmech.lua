@@ -389,7 +389,7 @@ function setHealthValue()
   setDefenseBoostValue()
   self.defenseModifier = (self.defenseBoost * self.massTotal) * 0.1
   setMassBoostValue()  
-  self.healthMax = ((((100 * (self.parts.body.stats.healthBonus or 1)) + self.massTotal) * self.parts.body.stats.protection) + (self.defenseModifier or 0) ) + 50
+  self.healthMax = ((((100 * (self.parts.body.stats.healthBonus or 1)) + self.massTotal) * self.parts.body.stats.protection) + (self.defenseModifier or 0) ) + 150
   setMobilityBoostValue() --set other boosts while we are at it
   setFuelBoostValue() --set other boosts while we are at it
 end

@@ -251,7 +251,7 @@ function updatePreview()
         --total bonus to health from defense
         self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
         --compute health/defense
-        local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 50
+        local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 150
         
 	if params.parts.hornName == 'mechenergyfield' then 
 	  self.energyBoost = 100
