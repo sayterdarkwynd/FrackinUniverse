@@ -313,6 +313,9 @@ function updatePreview()
 	  self.energyBoost = 300
 	elseif params.parts.hornName == 'mechchiprefueler' then
 	  self.fuelCost = 0.8
+	elseif params.parts.hornName == 'mechchipovercharge' then 
+	  self.fuelCost = 2.5
+	  self.mobilityBoostValue = 80	  
 	end   
 	
     --compute energy

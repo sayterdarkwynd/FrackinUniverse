@@ -162,11 +162,14 @@ function init()
   self.defenseboost = self.parts.hornName == 'mechdefensefield' or self.parts.hornName == 'mechdefensefield2' or self.parts.hornName == 'mechdefensefield3' or self.parts.hornName == 'mechdefensefield4' or self.parts.hornName == 'mechdefensefield5'
   self.energyboost = self.parts.hornName == 'mechenergyfield' or self.parts.hornName == 'mechenergyfield2' or self.parts.hornName == 'mechenergyfield3' or self.parts.hornName == 'mechenergyfield4' or self.parts.hornName == 'mechenergyfield5'
   self.mobilityboost = self.parts.hornName == 'mechchipspeed' or self.parts.hornName == 'mechchipcontrol' or self.parts.hornName == 'mechmobility' or self.parts.hornName == 'mechmobility2' or self.parts.hornName == 'mechmobility3' or self.parts.hornName == 'mechmobility4' or self.parts.hornName == 'mechmobility5'
-  self.fuelboost =  self.parts.hornName == 'mechchipfuel' or self.parts.hornName == 'mechchiprefueler'
+  self.fuelboost =  self.parts.hornName == 'mechchipfuel' or self.parts.hornName == 'mechchiprefueler' or self.parts.hornName == 'mechchipovercharge'
   self.otherboost = self.parts.hornName == 'mechchipdefense'  or self.parts.hornName == 'mechchippower' 
-  --
-  
-  
+  self.mobilityBoostValue = 0
+  self.mobilityControlValue = 0
+  self.mobilityJumpValue = 0
+  self.fuelCost = 1
+  self.fuelBoost = 0  
+  --  
   require(self.parts.leftArm.script)
   self.leftArm = _ENV[self.parts.leftArm.armClass]:new(self.parts.leftArm, "leftArm", {2.375, 2.0}, self.ownerUuid)
 
@@ -373,13 +376,16 @@ function setMassBoostValue()
 end
 
 function setFuelBoostValue()
- 	self.fuelboost = self.parts.hornName == 'mechchipfuel'  or self.parts.hornName == 'mechchiprefueler'
+ 	self.fuelboost = self.parts.hornName == 'mechchipfuel'  or self.parts.hornName == 'mechchiprefueler' or self.parts.hornName == 'mechchipovercharge'
 	if self.fuelboost then
 		if self.parts.hornName == 'mechchipfuel' then 
 		  self.healthMax = self.healthMax * 0.8
 		  self.energyBoost = 200
 		elseif self.parts.hornName == 'mechchiprefueler' then 
 		  self.fuelCost = 0.6
+		elseif self.parts.hornName == 'mechchipovercharge' then 
+		  self.fuelCost = 2.5
+		  self.mobilityBoostValue = 1.8			  
 		end  
 	end
 end
@@ -934,6 +940,9 @@ function update(dt)
 		  self.energyBoost = 300
 		elseif self.parts.hornName == 'mechchiprefueler' then 
 		  self.fuelCost = 0.6
+		elseif self.parts.hornName == 'mechchipovercharge' then 
+		  self.fuelCost = 2.5
+		  self.mobilityBoostValue = 1.8		  
 		end  
 	else
 	  self.fuelCost = 1
