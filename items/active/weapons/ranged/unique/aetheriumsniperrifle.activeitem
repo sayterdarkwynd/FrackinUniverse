@@ -1,24 +1,24 @@
 {
-  "itemName" : "aetheriumshotgun",
+  "itemName" : "aetheriumsniperrifle",
   "price" : 1160,
-  "inventoryIcon" : "aetheriumblaster.png",
+  "inventoryIcon" : "aetheriumsniperrifle.png",
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Sleek, deadly perfection.
 ^cyan;Energy weapon^reset;
 ^yellow;Cosmic, Fire and Radiation damage^reset;",
-  "shortdescription" : "Aetherium Titan",
-  "category" : "shotgun",
+  "shortdescription" : "Aetherium Vindicator",
+  "category" : "sniperRifle",
   "level" : 7,
   "tooltipKind" : "gun2aetherium",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","shotgun","energy","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","sniperrifle","energy","upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
-    "middle" : "aetheriumblaster.png",
-    "middlefullbright" : "aetheriumblasterfullbright.png",
+    "middle" : "aetheriumsniperrifle.png",
+    "middlefullbright" : "aetheriumsniperriflefullbright.png",
     "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
   },
   "animationCustom" : {
@@ -27,7 +27,7 @@
         "middlefullbright" : {
 		  "properties" : {
 			//Same as BaseOffset
-		    "offset" : [2, 0.15]
+		    "offset" : [1.3, -0.15]
 		  }
 		}
       }
@@ -37,16 +37,7 @@
         "particles" : [
           { "particle" : "erchiussmoke", "offset" : [0.4, -0.4] },
           { "particle" : "peglacitrail", "offset" : [0.4, -0.4] },
-          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] },
-          { "particle" : "erchiussmoke", "offset" : [0.4, -0.2] },
-          { "particle" : "peglacitrail", "offset" : [0.4, -0.2] },
-          { "particle" : "plasmafireflames", "offset" : [0.4, -0.2] },
-          { "particle" : "erchiussmoke", "offset" : [0.4, -0.6] },
-          { "particle" : "peglacitrail", "offset" : [0.4, -0.6] },
-          { "particle" : "plasmafireflames", "offset" : [0.4, -0.6] },         
-          { "particle" : "erchiussmoke", "offset" : [0.4, -0.5] },
-          { "particle" : "peglacitrail", "offset" : [0.4, -0.5] },
-          { "particle" : "plasmafireflames", "offset" : [0.4, -0.5] }
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] }
         ]
       }
     },     
@@ -55,8 +46,8 @@
     }
   },
 
-  "baseOffset" : [2, 0.15],
-  "muzzleOffset" : [0.4, 0.2],
+  "baseOffset" : [1.3, -0.15],
+  "muzzleOffset" : [2.4, 0.325],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -66,18 +57,19 @@
     "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
     "class" : "GunFireFixed",
     "fireTime" : 2,
-    "baseDps" : 5,
+    "baseDps" : 14,
     "energyUsage" : 80.0,
     "useEnergy" : true,
     "runSlowWhileShooting" : true,
+    "projectileCount" : 1,
     "fireType" : "auto",
-    "inaccuracy" : 0.09,
+    "inaccuracy" : 0,
 
-    "projectileCount" : 9,
     "projectileType" : "aetherbullet",
     "projectileParameters" : { 
-      "speed" : 80,
-      "knockback" : 5
+      "speed" : 180,
+      "piercing" : true,
+      "knockback" : 15
     },
 	  "stances" : {
 	    "idle" : {
@@ -113,7 +105,7 @@
   "critChance" : 1,
   "critBonus" : 5, 
 
-  "altAbilityType" : "fusionblast",
+  "altAbilityType" : "energynet",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
       
