@@ -4,180 +4,8 @@
     "path": "/gui/lblSlot_horn/value",
     "value": "Module"
   },
-  
-  {
-        "op": "add",
-        "path": "/gui/lblHealthBonus",
-        "value":
-		      {
-		        "type" : "label",
-            "zlevel" : 1,
-            "fontSize":7,
-            "position" : [142, 85],
-            "hAnchor" : "mid",
-            "vAnchor" : "mid",
-            "wrapWidth" : 100,
-            "value" : ""
-	        }
-  },
-  
-  {
-        "op": "add",
-        "path": "/gui/itemSlot_upgrade1",
-        "value":
-		      {
-		        "type" : "itemslot",
-            "zlevel" : 2,
-            "position" : [124, 48],
-            "callback" : "setChip1",
-            "rightClickCallback" : "null",
-            "backingImage" : "/interface/scripted/mechassembly/upgradeitemslot.png",
-            "visible" : true
-	        }
-  },
 
-  {
-        "op": "add",
-        "path": "/gui/itemSlot_upgrade2",
-        "value":
-		      {
-		        "type" : "itemslot",
-            "zlevel" : 2,
-            "position" : [144, 48],
-            "callback" : "setChip2",
-            "rightClickCallback" : "null",
-            "backingImage" : "/interface/scripted/mechassembly/upgradeitemslot.png",
-            "visible" : true
-	        }
-  },
 
-  {
-        "op": "add",
-        "path": "/gui/itemSlot_upgrade3",
-        "value":
-		      {
-		        "type" : "itemslot",
-            "zlevel" : 2,
-            "position" : [164, 48],
-            "callback" : "setChip3",
-            "rightClickCallback" : "null",
-            "backingImage" : "/interface/scripted/mechassembly/upgradeitemslot.png",
-            "visible" : false
-	        }
-  },
-
-  {
-        "op": "add",
-        "path": "/gui/itemSlot_expansion",
-        "value":
-		      {
-		        "type" : "itemslot",
-            "zlevel" : 2,
-            "position" : [92, 48],
-            "callback" : "setExpansion",
-            "rightClickCallback" : "null",
-            "backingImage" : "/interface/scripted/mechassembly/upgradeitemslot.png"
-	        }
-  },
-
-  {
-        "op": "add",
-        "path": "/gui/imgArrow",
-        "value":
-		      {
-		        "type" : "image",
-            "file" : "/interface/scripted/mechassembly/arrow.png",
-            "zlevel" : 2,
-            "position" : [112, 53]
-	        }
-  },
-
-  {
-        "op": "add",
-        "path": "/gui/lblExpansion",
-        "value":
-		      {
-		        "type" : "label",
-            "zlevel" : 2,
-            "position" : [106, 68],
-            "hAnchor" : "left",
-            "value" : "Expansion Slots"
-	        }
-  },
-
-  {
-        "op": "add",
-        "path": "/scriptWidgetCallbacks/-",
-        "value": "setExpansion"
-  },
-
-  {
-        "op": "add",
-        "path": "/scriptWidgetCallbacks/-",
-        "value": "setChip1"
-  },
-
-  {
-        "op": "add",
-        "path": "/scriptWidgetCallbacks/-",
-        "value": "setChip2"
-  },
-
-  {
-        "op": "add",
-        "path": "/scriptWidgetCallbacks/-",
-        "value": "setChip3"
-  },
-
-  {
-        "op": "add",
-        "path": "/gui/imgLocked1",
-        "value":
-		      {
-		        "type" : "image",
-            "file" : "/interface/scripted/mechassembly/itemslotlocked.png",
-            "zlevel" : 3,
-            "position" : [124, 48]
-	        }
-  },
-
-  {
-        "op": "add",
-        "path": "/gui/imgLocked2",
-        "value":
-		      {
-		        "type" : "image",
-            "file" : "/interface/scripted/mechassembly/itemslotlocked.png",
-            "zlevel" : 3,
-            "position" : [144, 48]
-	        }
-  },
-
-  {
-        "op": "add",
-        "path": "/gui/imgLocked3",
-        "value":
-		      {
-		        "type" : "image",
-            "file" : "/interface/scripted/mechassembly/itemslotlocked.png",
-            "zlevel" : 3,
-            "position" : [164, 48]
-	        }
-  },
-
-  {
-        "op": "add",
-        "path": "/gui/imgLockedExpansion",
-        "value":
-		      {
-		        "type" : "image",
-            "file" : "/interface/scripted/mechassembly/itemslotlocked.png",
-            "zlevel" : 3,
-            "position" : [90, 48],
-            "visible" : false
-	        }
-  },
-  
   
   {
     "op": "add",
@@ -190,13 +18,143 @@
     "value": {
       "type": "label",
       "zlevel": 2,
-      "position": [83,152],
+      "position": [83,155],
       "hAnchor": "mid",
       "vAnchor": "mid",
       "value": ""
     }
   },
-  
+  {
+    "op": "add",
+    "path": "/gui/lblModuleBonuses",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [110,79],
+      "hAnchor": "mid",
+      "vAnchor": "mid",
+      "value": "Module Bonuses:"
+    }
+  },  
+  {
+    "op": "add",
+    "path": "/gui/lblMobility",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [60,52],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityFormat",
+        "value": "^orange;Mobility +^reset;: %d"
+  },  
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityControl",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,61],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityControlFormat",
+        "value": "^orange;Agility^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityJump",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,70],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityJumpFormat",
+        "value": "^orange;Jump^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblMobilityBoost",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [128,52],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/mobilityBoostFormat",
+        "value": "^orange;Speed^reset; : %d"
+  }, 
+  {
+    "op": "add",
+    "path": "/gui/lblEnergyBoost",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [50,61],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/energyBoostFormat",
+        "value": "^green;Energy^reset; : %d"
+  },  
+  {
+    "op": "add",
+    "path": "/gui/lblDefenseBoost",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [50,70],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/defenseBoostFormat",
+        "value": "^red;Defense^reset; : %d"
+  },
+  {
+    "op": "add",
+    "path": "/gui/lblFuelBonus",
+    "value": {
+      "type": "label",
+      "zlevel": 2,
+      "position": [50,52],
+      "hAnchor": "left",
+      "vAnchor": "mid",
+      "value": ""
+    }
+  },
+  {
+        "op": "add",
+        "path": "/fuelBonusFormat",
+        "value": "^#e43774;Fuel Eff^reset; : %.02f"
+  },   
   {
         "op": "add",
         "path": "/gui/imgHealthBar",
@@ -257,46 +215,62 @@
         "value": "Fuel Use: %.02f/s"
   },
   
-  
-  {
-    "op": "replace",
-    "path": "/gui/lblPrimaryColor/position/0",
-    "value": 7
+ 
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/position/0",
+     "value": 8
+   },
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/position/1",
+     "value": 79
+   },
+   {
+     "op": "replace",
+     "path": "/gui/lblPrimaryColor/value",
+     "value": "Colours"
   },
+    {
+     "op": "replace",
+     "path": "/gui/lblSecondaryColor/value",
+     "value": ""
+  }, 
   {
     "op": "replace",
     "path": "/gui/lblSecondaryColor/position/0",
     "value": 7
   },
+  
   {
     "op": "replace",
     "path": "/gui/btnPrevPrimaryColor/position/0",
-    "value": 42
+    "value": 7
   },
   {
     "op": "replace",
     "path": "/gui/btnNextPrimaryColor/position/0",
-    "value": 73
+    "value": 29
   },
   {
     "op": "replace",
     "path": "/gui/btnPrevSecondaryColor/position/0",
-    "value": 42
+    "value": 7
   },
   {
     "op": "replace",
     "path": "/gui/btnNextSecondaryColor/position/0",
-    "value": 73
+    "value": 29
   },
   {
     "op": "replace",
     "path": "/gui/imgPrimaryColorPreview/position/0",
-    "value": 52
+    "value": 17
   },
   {
     "op": "replace",
     "path": "/gui/imgSecondaryColorPreview/position/0",
-    "value": 52
+    "value": 17
   },
 
 

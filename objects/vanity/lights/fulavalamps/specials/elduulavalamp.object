@@ -1,0 +1,52 @@
+{
+  "objectName" : "elduulavalamp",
+  "colonyTags" : ["elduukhar","light"],
+  "rarity" : "uncommon",
+  "category" : "light",
+  "price" : 200,
+  "description" : "A lamp made from gold and crystal.",
+  "shortdescription" : "Crystal Lava Lamp",
+  "race" : "elduukhar",
+
+  "lightColor" : [238, 255, 186],
+  "lightPosition" : [0, 1],
+
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.725,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+
+  "inventoryIcon" : "elduulavalampicon.png",
+  "orientations" : [
+    {
+      "image" : "elduulavalamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "elduulavalamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "default.animation",
+  "animationParts" : {
+    "bg" : "elduulavalamp.png",
+    "fg" : "elduulavalamplit.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

@@ -18,6 +18,13 @@ function init()
 
   self.healthFormat = config.getParameter("healthFormat")
   self.bonusHealthFormat = config.getParameter("bonusHealthFormat")
+  self.mobilityFormat = config.getParameter("mobilityFormat")
+  self.mobilityBoostFormat = config.getParameter("mobilityBoostFormat")
+  self.mobilityControlFormat = config.getParameter("mobilityControlFormat")
+  self.mobilityJumpFormat = config.getParameter("mobilityJumpFormat")
+  self.defenseBoostFormat = config.getParameter("defenseBoostFormat")    
+  self.energyBoostFormat = config.getParameter("energyBoostFormat")  
+  self.fuelBonusFormat = config.getParameter("fuelBonusFormat") 
   self.energyFormat = config.getParameter("energyFormat")
   self.drainFormat = config.getParameter("drainFormat")
   self.massFormat = config.getParameter("massFormat")
@@ -75,162 +82,7 @@ function init()
 end
 
 function update(dt)
-  if self.disabled then return end
 
-  --update item slots based on dummy quest
-  if not self.chipsMessage and self.currentLoadout and self.itemChanged then
-    self.chipsMessage = world.sendEntityMessage(player.id(), "getChips" .. self.currentLoadout)
-  end
-  if self.chipsMessage and self.chipsMessage:finished() then
-    if self.chipsMessage:succeeded() then
-      self.chips = self.chipsMessage:result()
-      if not self.chips then
-        self.chips = {}
-      end
-      local chips = self.chips
-
-      widget.setItemSlotItem("itemSlot_upgrade1", chips.chip1)
-      widget.setItemSlotItem("itemSlot_upgrade2", chips.chip2)
-      widget.setItemSlotItem("itemSlot_upgrade3", chips.chip3)
-      widget.setItemSlotItem("itemSlot_expansion", chips.expansion)
-
-      local expansionItem = widget.itemSlotItem("itemSlot_expansion")
-
-      if expansionItem then
-        if expansionItem.name == "mechchipexpansion1" then
-          widget.setVisible("imgLocked1", false)
-          widget.setVisible("itemSlot_upgrade1", true)
-
-          widget.setVisible("imgLocked2", true)
-          widget.setVisible("itemSlot_upgrade2", false)
-          widget.setVisible("imgLocked3", true)
-          widget.setVisible("itemSlot_upgrade3", false)
-        elseif expansionItem.name == "mechchipexpansion2" then
-          widget.setVisible("imgLocked1", false)
-          widget.setVisible("itemSlot_upgrade1", true)
-          widget.setVisible("imgLocked2", false)
-          widget.setVisible("itemSlot_upgrade2", true)
-
-          widget.setVisible("imgLocked3", true)
-          widget.setVisible("itemSlot_upgrade3", false)
-        elseif expansionItem.name == "mechchipexpansion3" then
-          widget.setVisible("imgLocked1", false)
-          widget.setVisible("itemSlot_upgrade1", true)
-          widget.setVisible("imgLocked2", false)
-          widget.setVisible("itemSlot_upgrade2", true)
-          widget.setVisible("imgLocked3", false)
-          widget.setVisible("itemSlot_upgrade3", true)
-        end
-      else
-        widget.setVisible("imgLocked1", true)
-        widget.setVisible("itemSlot_upgrade1", false)
-        widget.setVisible("imgLocked2", true)
-        widget.setVisible("itemSlot_upgrade2", false)
-        widget.setVisible("imgLocked3", true)
-        widget.setVisible("itemSlot_upgrade3", false)
-      end
-    end
-    self.chipsMessage = nil
-    self.itemChanged = false
-    itemSetChanged()
-  end
-end
-
-
-function setExpansion()
-  if self.disabled then return end
-
-  swapItemChips("itemSlot_expansion", true, "expansion")
-end
-
-function setChip1()
-  if self.disabled then return end
-
-  swapItemChips("itemSlot_upgrade1", false, "1")
-end
-
-function setChip2()
-  if self.disabled then return end
-
-  swapItemChips("itemSlot_upgrade2", false, "2")
-end
-
-function setChip3()
-  if self.disabled then return end
-
-  swapItemChips("itemSlot_upgrade3", false, "3")
-end
-
-function swapItemChips(slotName, expansion, chipName)
-  if self.disabled then return end
-
-  local currentItem = widget.itemSlotItem(slotName)
-  local swapItem = player.swapSlotItem()
-
-  local upgrades = {}
-  self.chips = {}
-  upgrades.upgrade1 = widget.itemSlotItem("itemSlot_upgrade1")
-  upgrades.upgrade2 = widget.itemSlotItem("itemSlot_upgrade2")
-  upgrades.upgrade3 = widget.itemSlotItem("itemSlot_upgrade3")
-
-  if swapItem and ((upgrades.upgrade1 and swapItem.name == upgrades.upgrade1.name)
-  or (upgrades.upgrade2 and swapItem.name == upgrades.upgrade2.name)
-  or (upgrades.upgrade3 and swapItem.name == upgrades.upgrade3.name)) then return end
-
-  if not swapItem or (not expansion and string.find(swapItem.name, "mechchip")) or
-  (expansion and string.find(swapItem.name, "mechchipexpansion")) then
-    player.setSwapSlotItem(currentItem)
-    widget.setItemSlotItem(slotName, swapItem)
-
-    if chipName ~= "expansion" then
-      self.chips["chip" .. chipName] = swapItem
-    else
-      self.chips["expansion"] = swapItem
-    end
-
-    world.sendEntityMessage(player.id(), "setChips" .. self.currentLoadout, self.chips)
-
-    currentItem = widget.itemSlotItem("itemSlot_expansion")
-
-    if not currentItem and expansion then
-      if upgrades.upgrade1 then
-        player.giveItem(upgrades.upgrade1)
-        self.chips.chip1 = nil
-        world.sendEntityMessage(player.id(), "setChips" .. self.currentLoadout , self.chips)
-      end
-      if upgrades.upgrade2 then
-        player.giveItem(upgrades.upgrade2)
-        self.chips.chip2 = nil
-        world.sendEntityMessage(player.id(), "setChips" .. self.currentLoadout , self.chips)
-      end
-      if upgrades.upgrade3 then
-        player.giveItem(upgrades.upgrade3)
-        self.chips.chip3 = nil
-        world.sendEntityMessage(player.id(), "setChips" .. self.currentLoadout , self.chips)
-      end
-    elseif currentItem and expansion then
-      if currentItem.name == "mechchipexpansion2" then
-        if upgrades.upgrade3 then
-          player.giveItem(upgrades.upgrade3)
-          self.chips.chip3 = nil
-          world.sendEntityMessage(player.id(), "setChips" .. self.currentLoadout , self.chips)
-        end
-      elseif currentItem.name == "mechchipexpansion1" then
-        if upgrades.upgrade1 then
-          player.giveItem(upgrades.upgrade1)
-          self.chips.chip1 = nil
-          world.sendEntityMessage(player.id(), "setChips" .. self.currentLoadout , self.chips)
-        end
-        if upgrades.upgrade3 then
-          player.giveItem(upgrades.upgrade3)
-          self.chips.chip3 = nil
-          world.sendEntityMessage(player.id(), "setChips" .. self.currentLoadout , self.chips)
-        end
-      end
-    end
-
-    self.itemChanged = true
-  end
 end
 
 function swapItem(widgetName)
@@ -373,86 +225,150 @@ function updatePreview()
   if self.partManager:itemSetComplete(self.itemSet) then
     widget.setVisible("lblDrain", true)
     widget.setVisible("lblMass", true)
-
-    widget.setVisible("lblHealthBonus", false)
-    --widget.setVisible("lblSpeedPenalty", false)
-   -- widget.setVisible("lblEnergyPenalty", false)
-    --params = MechPartManager.calculateTotalMass(params, self.chips)
-   -- local healthMax = params.parts.body.healthMax + params.parts.body.healthBonus
-   -- local speedPenaltyPercent = math.floor((params.parts.body.speedNerf or 0) * 100)    
-    
-    local chips = self.chips or {}
-    for chipName,chip in pairs(chips) do
-      if chip.name == "mechchiprefueler" then
-        energyDrain = energyDrain * 0.75
-      end
-    end
     
     widget.setVisible("imgHealthBar", true)
-    widget.setVisible("lblHealth", true)       
+    widget.setVisible("lblHealth", true)  
     widget.setVisible("imgEnergyBar", true)
     widget.setVisible("lblEnergy", true)
 
-    local mass = params.parts.body.totalMass
     local massTotal = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)
 
     self.defenseBoost = 0
-		if params.parts.hornName == 'mechdefensefield' then 
-		  self.defenseBoost = 100
-		elseif params.parts.hornName == 'mechdefensefield2' then 
-		  self.defenseBoost = 200
-		elseif params.parts.hornName == 'mechdefensefield3' then 
-		  self.defenseBoost = 300
-		elseif params.parts.hornName == 'mechdefensefield4' then 
-		  self.defenseBoost = 400
-		elseif params.parts.hornName == 'mechdefensefield5' then 
-		  self.defenseBoost = 500
-		end    
-
     self.energyBoost = 0
-		if params.parts.hornName == 'mechenergyfield' then 
-		  self.energyBoost = 100
-		elseif params.parts.hornName == 'mechenergyfield2' then 
-		  self.energyBoost = 200
-		elseif params.parts.hornName == 'mechenergyfield3' then 
-		  self.energyBoost = 300
-		elseif params.parts.hornName == 'mechenergyfield4' then 
-		  self.energyBoost = 400
-		elseif params.parts.hornName == 'mechenergyfield5' then 
-		  self.energyBoost = 500
-		end     
-		
-    if massTotal > 22 then
-      self.energyBoost = self.energyBoost * (massTotal/50)
-    end
+    self.mobilityBoostValue = 0
+    self.mobilityControlValue = 0
+    self.mobilityJumpValue = 0
+    self.fuelCost = 1
+    self.fuelBoost = 0
     
-    --compute health/defense
-    self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
+	if params.parts.hornName == 'mechdefensefield' then 
+	  self.defenseBoost = 100
+	elseif params.parts.hornName == 'mechdefensefield2' then 
+	  self.defenseBoost = 200
+	elseif params.parts.hornName == 'mechdefensefield3' then 
+	  self.defenseBoost = 300
+	elseif params.parts.hornName == 'mechdefensefield4' then 
+	  self.defenseBoost = 400
+	elseif params.parts.hornName == 'mechdefensefield5' then 
+	  self.defenseBoost = 500
+	end    
+        --total bonus to health from defense
+        self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
+        --compute health/defense
+        local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 150
+        
+	if params.parts.hornName == 'mechenergyfield' then 
+	  self.energyBoost = 100
+	elseif params.parts.hornName == 'mechenergyfield2' then 
+	  self.energyBoost = 200
+	elseif params.parts.hornName == 'mechenergyfield3' then 
+	  self.energyBoost = 300
+	elseif params.parts.hornName == 'mechenergyfield4' then 
+	  self.energyBoost = 400
+	elseif params.parts.hornName == 'mechenergyfield5' then 
+	  self.energyBoost = 500
+	end    
 
-    local healthMax = math.floor(50 * ((massTotal+params.parts.body.stats.protection) * (params.parts.body.stats.healthBonus or 1)) + (self.defenseModifier or 0))
-    local bonusHealth =  healthMax - math.floor(50 * (massTotal+params.parts.body.stats.protection))
-    
+	if params.parts.hornName == 'mechchipfeather' then 
+	  massTotal = massTotal * 0.4
+	  healthMax = healthMax * 0.75
+	end	
+	if massTotal > 22 then
+	  self.energyBoost = self.energyBoost * (massTotal/50)
+	end
+
+	if params.parts.hornName == 'mechmobility' then 
+	  self.mobilityBoostValue = 10
+	  self.mobilityControlValue = 10
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechmobility2' then 
+	  self.mobilityBoostValue = 20
+	  self.mobilityControlValue = 20
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechmobility3' then 
+	  self.mobilityBoostValue = 30
+	  self.mobilityControlValue = 30
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechmobility4' then 
+	  self.mobilityBoostValue = 40
+	  self.mobilityControlValue = 40
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechmobility5' then 
+	  self.mobilityBoostValue = 50	
+	  self.mobilityControlValue = 50
+	  self.mobilityJumpValue = 0
+	elseif params.parts.hornName == 'mechchipcontrol' then 
+	  self.mobilityBoostValue = -20
+	  self.mobilityControlValue = 20
+	  self.mobilityJumpValue = 20	
+	elseif params.parts.hornName == 'mechchipspeed' then 
+	  self.mobilityBoostValue = 40
+	  self.mobilityControlValue = -20
+	  self.mobilityJumpValue = -20		  
+	end    
+
+    --compute fuel module bonuses
+	if params.parts.hornName == 'mechchipfuel' then 
+	  healthMax = healthMax * 0.8
+	  self.energyBoost = 300
+	elseif params.parts.hornName == 'mechchiprefueler' then
+	  self.fuelCost = 0.8
+	elseif params.parts.hornName == 'mechchipovercharge' then 
+	  self.fuelCost = 2.5
+	  self.mobilityBoostValue = 80	  
+	end   
+	
     --compute energy
-    local energyMax = math.floor(100 + params.parts.body.energyMax * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
+    local energyMax = math.floor(100 + (params.parts.body.energyMax or 0) * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
+    
+    --compute energy drain
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
-    energyDrain = energyDrain + massTotal/100 --params.parts.body.energyPenalty 
-
+    
+    --mass affects drain
+    energyDrain = energyDrain + massTotal/100
+    
+    --final energy drain after modules
+    energyDrain = energyDrain * (self.fuelCost or 1)
+    
+    --check mobility boosts
+    local mobilityMax = self.mobilityBoostValue or 0
+    local mobilityBoostMax = self.mobilityBoostValue or 0
+    local mobilityControlMax = self.mobilityControlValue or 0
+    local mobilityJumpMax = self.mobilityJumpValue or 0
+    local fuelBonusMax = self.fuelCost or 0
+    
     widget.setText("lblHealth", string.format(self.healthFormat, math.floor(healthMax)))
     widget.setText("lblEnergy", string.format(self.energyFormat, math.floor(energyMax)))
+    
+    --display boost totals if present.
+    widget.setVisible("lblModuleBonuses", true)
+    widget.setVisible("lblDefenseBoost", true)
+    widget.setVisible("lblEnergyBoost", true)
+    --widget.setVisible("lblMobility", false)
+    widget.setVisible("lblMobilityBoost", true)
+    widget.setVisible("lblMobilityControl", true)
+    widget.setVisible("lblMobilityJump", true)
+    widget.setVisible("lblFuelBonus", true)
+    widget.setText("lblDefenseBoost", string.format(self.defenseBoostFormat, math.floor(self.defenseModifier)))
+    widget.setText("lblEnergyBoost", string.format(self.energyBoostFormat, math.floor(self.energyBoost)))
+    --widget.setText("lblMobility", string.format(self.mobilityFormat, math.floor(mobilityMax)).."%")
+    widget.setText("lblMobilityBoost", string.format(self.mobilityBoostFormat, math.floor(mobilityBoostMax)).."%")
+    widget.setText("lblMobilityControl", string.format(self.mobilityControlFormat, math.floor(mobilityControlMax)).."%")
+    widget.setText("lblMobilityJump", string.format(self.mobilityJumpFormat, math.floor(mobilityJumpMax)).."%")
+    widget.setText("lblFuelBonus", string.format(self.fuelBonusFormat, fuelBonusMax))
     widget.setText("lblDrain", string.format(self.drainFormat, energyDrain))
-    widget.setText("lblHealthBonus", string.format(math.floor(bonusHealth)))
-    
-    local mechMass = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)  
-    widget.setText("lblMass", string.format(self.massFormat, mechMass))
-    
+    widget.setText("lblMass", string.format(self.massFormat, massTotal))
   else
     widget.setVisible("imgHealthBar", false)
     widget.setVisible("lblHealth", false)  
     widget.setVisible("lblHealthBonus", false)
     widget.setVisible("lblSpeedPenalty", false)
-    widget.setVisible("lblEnergyPenalty", false)    
+    widget.setVisible("lblMobility", false)
+    widget.setVisible("lblDefenseBoost", false)
+    widget.setVisible("lblEnergyBoost", false)
     widget.setVisible("imgEnergyBar", false)
+    widget.setVisible("lblEnergyPenalty", false)  
     widget.setVisible("lblEnergy", false)
     widget.setVisible("lblDrain", false)
     widget.setVisible("lblMass", false)
