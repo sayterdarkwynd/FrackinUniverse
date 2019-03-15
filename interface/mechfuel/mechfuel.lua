@@ -60,7 +60,7 @@ function update(dt)
 		if massTotal > 22 then
 		  self.energyBoost = self.energyBoost * (massTotal/50)
 		end
-	        self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)  + (self.energyBoost)
+	        self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)  + (self.energyBoost) 
 	    end
     end
   end
@@ -191,9 +191,8 @@ end
 
 function fuelCountPreview(item)
 
-  if self.currentFuel > self.maxFuel then
-  self.currentFuel = self.maxFuel
-  end    
+
+  
   if not item then
     widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
     return

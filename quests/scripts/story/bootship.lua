@@ -39,15 +39,19 @@ function update(dt)
   
   promises:update()
   
-  if self.questComplete then
+  if self.questComplete and not self.techstationFound then
     promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
-      quest.complete()
+      self.techstationFound = true
 	end)
     if self.activationTimer <= 0 then
-      quest.complete()
+      self.techstationFound = true
     else
       self.activationTimer = self.activationTimer - dt
     end	
+  end
+  
+  if self.techstationFound then
+    quest.complete()
   end
 end
 
@@ -82,13 +86,12 @@ function wakeSail(dt)
     local shipUpgrades = player.shipUpgrades()
     if shipUpgrades.shipLevel > 0 or player.hasQuest("fu_byos") then
         self.questComplete = true
-	  --quest.complete()
-	  --world.sendEntityMessage(self.techstationUid, "activateShip")
     end
     coroutine.yield()
   end
 end
 
 function questComplete()
+  status.addEphemeralEffect("fu_byosfindship", 10)
   questutil.questCompleteActions()
 end
