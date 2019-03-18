@@ -1,23 +1,24 @@
 {
-  "itemName" : "aetheriumpistol",
+  "itemName" : "aetheriumsniperrifle",
   "price" : 1160,
-  "inventoryIcon" : "aetheriumpistol.png",
+  "inventoryIcon" : "aetheriumsniperrifle.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Powerful, focused blasts of raw cosmic energy.
-^cyan;Energy weapon^reset;",
-  "shortdescription" : "Aetherium Vigilant",
-  "category" : "machinePistol",
+  "description" : "Dangerous and supremely accurate.
+^cyan;Energy weapon^reset;
+^yellow;Cosmic, Fire and Radiation damage^reset;",
+  "shortdescription" : "Aetherium Vindicator",
+  "category" : "sniperRifle",
   "level" : 7,
   "tooltipKind" : "gun2aetherium",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","machinepistol","energy","upgradeableWeapon"],
-  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","sniperrifle","energy","upgradeableWeapon"],
+  "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
-    "middle" : "aetheriumpistol.png",
-    "middlefullbright" : "aetheriumpistolfullbright.png",
+    "middle" : "aetheriumsniperrifle.png",
+    "middlefullbright" : "aetheriumsniperriflefullbright.png",
     "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
   },
   "animationCustom" : {
@@ -26,11 +27,11 @@
         "middlefullbright" : {
 		  "properties" : {
 			//Same as BaseOffset
-		    "offset" : [2.4, 0.15]
+		    "offset" : [1.3, -0.15]
 		  }
 		}
       }
-    }, 
+    },  
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
@@ -39,14 +40,14 @@
           { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] }
         ]
       }
-    },      
+    },     
     "sounds" : {
       "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
     }
   },
 
-  "baseOffset" : [2.4, 0.15],
-  "muzzleOffset" : [-0.5, 0],
+  "baseOffset" : [1.3, -0.15],
+  "muzzleOffset" : [2.4, 0.325],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -55,27 +56,26 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
     "class" : "GunFireFixed",
-    "fireTime" : 0.14,
-    "baseDps" : 6,
-    "energyUsage" : 34.0,
+    "fireTime" : 2,
+    "baseDps" : 14,
+    "energyUsage" : 80.0,
     "useEnergy" : true,
-    "burstCooldown" : 0.2,
+    "runSlowWhileShooting" : true,
     "projectileCount" : 1,
-    "fireType" : "burst",
-    "inaccuracy" : 0.02,
-    "burstTime" : 0.015,
-    "burstCount" : 2,
+    "fireType" : "auto",
+    "inaccuracy" : 0,
 
     "projectileType" : "aetherbullet",
     "projectileParameters" : { 
-      "speed" : 80,
-      "knockback" : 3
+      "speed" : 180,
+      "piercing" : true,
+      "knockback" : 15
     },
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0,
 	      "weaponRotation" : 0,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : true,
 	      "allowFlip" : true
@@ -84,7 +84,7 @@
 	      "duration" : 0,
 	      "armRotation" : 2,
 	      "weaponRotation" : 2,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -93,7 +93,7 @@
 	      "duration" : 0.03,
 	      "armRotation" : -2,
 	      "weaponRotation" : -2,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -104,6 +104,8 @@
 
   "critChance" : 1,
   "critBonus" : 5, 
+
+  "altAbilityType" : "energynet",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
       
