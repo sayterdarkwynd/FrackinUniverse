@@ -12,8 +12,8 @@ function init()
 	self.cooldownTimer = config.getParameter("cooldownTime")
 	self.activeTimer = 0
 	
-	self.animationData = config.getParameter("animationCustom")
-
+	self.animationData = config.getParameter("animationCustom", {})
+	
 	self.level = config.getParameter("level", 1)
 	self.baseShieldHealth = config.getParameter("baseShieldHealth", 1)
 	self.knockback = config.getParameter("knockback", 0)
@@ -273,10 +273,7 @@ function raiseShield()
 						bashEnemy()
 					end	  
 					animator.playSound("perfectBlock")
-					if self.animationData.particleEmitters and self.animationData.particleEmitters.perfectBlock then
-						--Protection for if the user hasn't specified perfect block particles (Sounds are required vanilla and are not included in this check as a result)
-						animator.burstParticleEmitter("perfectBlock")
-					end
+					animator.burstParticleEmitter("perfectBlock")
 					refreshPerfectBlock()
 				elseif status.resourcePositive("shieldStamina") then   
 					if (self.energyval) >= 50 and (self.randomBash) >= 100 then -- Shield Bash when perfect blocking
@@ -317,44 +314,28 @@ function bashEnemy()
 			self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
 			params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash	
 			params2 = { speed=20, power = 0 , damageKind = "default", knockback = 0 } -- Stun	
-			world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
 			world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params2)
-			status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy	
-			if self.animationData.sounds and self.animationData.sounds.shieldBash then
-				--Protection for if the user hasn't specified shield bash sounds
-				animator.playSound("shieldBash")
-			end
-			if self.animationData.particleEmitters and self.animationData.particleEmitters.shieldBashHit then
-				--Protection for if the user hasn't specified shield bash particles
-				animator.burstParticleEmitter("shieldBashHit")
-			end
 		else
 			self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
 			params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash			  
-			world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
-			status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy		
-			if self.animationData.sounds and self.animationData.sounds.shieldBash then
-				--Protection for if the user hasn't specified shield bash sounds
-				animator.playSound("shieldBash")
-			end
-			if self.animationData.particleEmitters and self.animationData.particleEmitters.shieldBashHit then
-				--Protection for if the user hasn't specified shield bash particles
-				animator.burstParticleEmitter("shieldBashHit")
-			end	
 		end
 	else
 		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 2
 		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash			  
-		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
-		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy
-		if self.animationData.sounds and self.animationData.sounds.shieldBash then
-			--Protection for if the user hasn't specified shield bash sounds
-			animator.playSound("shieldBash")
-		end
-		if self.animationData.particleEmitters and self.animationData.particleEmitters.shieldBashHit then
-			--Protection for if the user hasn't specified shield bash particles
-			animator.burstParticleEmitter("shieldBashHit")
-		end	
+	end
+	
+	world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
+	status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy	
+	
+	if animator.hasSound("shieldBash") then
+		--Protection for if the user hasn't specified shield bash sounds
+		animator.playSound("shieldBash")
+	end
+
+	--Alright Bob I'll take "Slapping chucklefish for not offering animator.hasParticle" for $500
+	if self.animationData.particleEmitters and self.animationData.particleEmitters.shieldBashHit then
+		--Protection for if the user hasn't specified shield bash partiles
+		animator.burstParticleEmitter("shieldBashHit")
 	end
 end
 
