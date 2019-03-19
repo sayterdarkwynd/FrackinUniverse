@@ -272,8 +272,12 @@ function raiseShield()
 					if (self.energyval) >= 50 and (self.randomBash) >= 50 then -- Shield Bash when perfect blocking
 						bashEnemy()
 					end	  
+					--No catch case for this sound since it's required by vanilla.
 					animator.playSound("perfectBlock")
-					animator.burstParticleEmitter("perfectBlock")
+					
+					if self.animationData.particleEmitters and self.animationData.particleEmitters.perfectBlock then
+						animator.burstParticleEmitter("perfectBlock")
+					end
 					refreshPerfectBlock()
 				elseif status.resourcePositive("shieldStamina") then   
 					if (self.energyval) >= 50 and (self.randomBash) >= 100 then -- Shield Bash when perfect blocking
