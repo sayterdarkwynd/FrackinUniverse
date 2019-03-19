@@ -19,8 +19,6 @@ function init()
 	else
 		widget.setImage("characterSuit", "/interface/scripted/techupgrade/suits/novakid-"..player.gender()..".png") -- Novakid because it has the least amount features
 	end
-	
-	updateInterface()
 end
 
 function update()
