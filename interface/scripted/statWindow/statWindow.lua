@@ -1,6 +1,3 @@
-
-
-
 function init()
 	self.data = root.assetJson("/interface/scripted/statWindow/statWindow.config")
 	self.elements = self.data.elements
@@ -22,10 +19,12 @@ function init()
 	else
 		widget.setImage("characterSuit", "/interface/scripted/techupgrade/suits/novakid-"..player.gender()..".png") -- Novakid because it has the least amount features
 	end
+	
+	updateInterface()
 end
 
-function update()
-	for _, element in ipairs(self.elements) do
+function updateInterface()
+	for _, element in pairs(self.elements) do
 		widget.setText(element.."Resist", math.floor(status.stat(element.."Resistance")*100+0.5).."%")
 	end
 
@@ -33,10 +32,12 @@ function update()
 	for thing,stuff in pairs(self.statuses) do
 		local skipping = false
 
-		for _,skipped in ipairs(stuff.skip or {}) do
-			if status.stat(skipped) >= 1 then
-				skipping = true
-				break
+		if stuff.skip then
+			for _,skipped in pairs(stuff.skip) do
+				if status.stat(skipped) >= 1 then
+					skipping = true
+					break
+				end
 			end
 		end
 
@@ -47,6 +48,9 @@ function update()
 			end
 		end
 	end
+end
+
+function update()
 end
 
 function expand()
