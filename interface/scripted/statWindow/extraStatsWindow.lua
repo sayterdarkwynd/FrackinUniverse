@@ -1,7 +1,3 @@
-
-
-
-
 function init()
 	self.data = root.assetJson("/interface/scripted/statWindow/extraStatsWindow.config")
 	canvas = widget.bindCanvas("tooltipHandler")
@@ -9,15 +5,13 @@ function init()
 	self.delayCounter = self.data.tooltipCheckDelay
 	
 	widget.setText("tooltip", self.data.defaultTooltip)
-	update()
+	updateInterface()
 end
 
-function update()
-	-- Breath calculated separetly
+function updateInterface()
 	local breatRegen = status.stat("breathRegenerationRate")
 	local breathRate = status.stat("breathDepletionRate")
 	local breathMax = status.stat("maxBreath")
-	
 	for stat, type in pairs(self.data.stats) do
 		local value = status.stat(stat)
 		
@@ -55,7 +49,9 @@ function update()
 			end
 		end
 	end
-	
+end
+
+function update()
 	if self.delayCounter == 0 then
 		self.delayCounter = self.data.tooltipLifespan
 		
