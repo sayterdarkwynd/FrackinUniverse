@@ -1,0 +1,47 @@
+{
+  "objectName" : "jojabox",
+  "colonyTags" : ["joja","commerce","storage"],
+  "printable" : false,
+  "rarity" : "Uncommon",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A blue cardboard box, adorned with an ominous blue \"J\".",
+  "shortdescription" : "^blue;Joja^white; Box",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 0,
+
+  "apexDescription" : "A delivery box. But of what?",
+  "avianDescription" : "A blue package, left unopened.",
+  "floranDescription" : "What iss in pretty blue box?",
+  "glitchDescription" : "Curious. What is a package doing out here? Is it for me...?",
+  "humanDescription" : "I didn't even know they made blue cardboard.",
+  "hylotlDescription" : "Whoever shipped this package out certainly is dedicated to their branding.",
+  "novakidDescription" : "Well don't mind if I do.",
+
+  "inventoryIcon" : "jojaboxicon.png",
+  "orientations" : [
+    {
+      "image" : "jojaboxleft.png:<color>",
+      "imagePosition" : [-16, 0],
+      "spaceScan" : 0.1,
+      "direction" : "right",
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "image" : "jojaboxright.png:<color>",
+      "imagePosition" : [-16, 0],
+      "spaceScan" : 0.1,
+      "direction" : "left",
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+  "openSounds" : [ "/sfx/objects/cardboardbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/cardboardbox_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

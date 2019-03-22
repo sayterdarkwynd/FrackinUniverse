@@ -49,7 +49,7 @@ function findContainer()
 	storage.inContainers={}
 	storage.outContainers={}
 	
-	local objectIds = world.objectQuery(entity.position(), storage.linkRange, { order = "nearest" })
+	local objectIds = world.objectQuery(storage.position, storage.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
 		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
 			storage.containerId=objectId

@@ -1,18 +1,44 @@
 {
   "name" : "biomepoison2",
-  "blockingStat" : "poisonStatusImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "poisonResistance",
-          "effectCutoffValue" : 0.4,    
-	  "biomeTemp" : 1.15, 
-	  "biomeThreshold" : 1.0,
-	    "baseRate" : 4,
-	    "baseDebuffPerTick" : 3,
-	    "baseDmgPerTick" : 2,
-	    "situationPenalty" : 1.1,
-	    "liquidPenalty" : 1.0,
-	    "biomeNight" : 1.0  
+    "resistanceTypes" : {
+      "poisonResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.4,
+    "immunityStats" : [
+      "poisonStatusImmunity",
+      "poisongasImmunity",
+      "gasImmunity"
+    ],
+
+    "healthDrain" : 2,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.75,
+    "jumpPenalty" : 0.75,
+
+    "debuffRate" : 3.5,
+    "debuffStartDelay" : 25,
+    "debuffs" : {
+      "powerMultiplier" : {
+        "type" : "absolute",
+        "amount" : -0.05,
+        "cap" : 0.05
+      }
+    },
+
+    "modifiers" : {
+      "windy" : 1.2
+    },
+
+    "messages" : {
+      "intro" : "ffbiomepoison",
+      "windy" : "ffbiomepoisonwind"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/poison/biomepoison2.statuseffect"
   },
   "defaultDuration" : 20,
 

@@ -4,7 +4,8 @@
   "level" : 4,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Light and brutally radioactive. Guaranteed to cause death.",
+  "description" : "Light and brutally radioactive. Guaranteed to cause death.
+^cyan;Hunting weapon^reset;",
   "shortdescription" : "Irradium Shortspear",
   "tooltipKind" : "sword2",
   "category" : "shortspear",
@@ -36,7 +37,9 @@
     "fireTime" : 0.60,
     "baseDps" : 6.1,
     "damageConfig" : {
-      "statusEffects" : [ "radiationburn" ]
+        "damageSourceKind" : "radioactivebow",
+      "statusEffects" : [ "radiationburn" ],
+      "knockback" : 7
     },
     "stances" : {
       "idle" : {

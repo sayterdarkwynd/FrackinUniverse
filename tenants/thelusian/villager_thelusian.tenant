@@ -1,0 +1,25 @@
+{
+  "name" : "villager_thelusian",
+  "priority" : 2,
+
+  "colonyTagCriteria": {
+    "light" : 1,
+    "door" : 1,
+    "thelusian" : 6
+  },
+
+  "tenants" : [{
+      "spawn" : "npc",
+      "species" : "thelusian",
+      "type" : "villager",
+      "overrides" : {
+	     "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent" : {
+    "periodRange" : [900.0, 1800.0],
+    "pool" : "villagerGift"
+  }
+}

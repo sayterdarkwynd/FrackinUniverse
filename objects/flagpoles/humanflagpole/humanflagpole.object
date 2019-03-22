@@ -1,0 +1,52 @@
+{
+  "objectName" : "humanflagpole",
+  "colonyTags" : ["human"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 0,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+  
+  "description" : "The flag of the Protectorate. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Human Flag",
+  "race" : "human",
+
+  "apexDescription" : "A human flag. Looks like it represents their organisation.",
+  "avianDescription" : "I see this human symbol a lot.",
+  "floranDescription" : "Floran like meatman flag!",
+  "glitchDescription" : "Statement. A human flag, depicting the alternate symbol of the Terrene Protectorate.",
+  "humanDescription" : "The other flag of the Protectorate!",
+  "hylotlDescription" : "This human flag represents intercolonial co-operation.",
+  "novakidDescription" : "I can bookmark this human flag for quick teleportin'.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "humanflagpoleicon.png",
+  "orientations" : [
+    {
+      "image" : "humanflagpole.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "humanflagpole.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

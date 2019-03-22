@@ -1,0 +1,57 @@
+{
+  "objectName" : "slimenpcdoor",
+    "colonyTags" : ["slimenpc","slimeperson","slimevillage", "door", "slimenpchuman","slime"],
+  "printable" : false,
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "Door made of slime.",
+  "shortdescription" : "Slime Door",
+  "race" : "slimeperson",
+
+  "slimepersonDescription" : "Just a door.",
+  "apexDescription" : "I don't want to touch these doors.",
+  "avianDescription" : "Gooey door.",
+  "floranDescription" : "Sssuch a lovely door.",
+  "glitchDescription" : "Scared. These doors almost seem alive.",
+  "humanDescription" : "Sticky door.",
+  "hylotlDescription" : "A door that looks like seaweed.",
+  "novakidDescription" : "A door.",
+
+  "inventoryIcon" : "slimenpcdooricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "slimenpcdoor.png:default",
+      "imagePosition" : [0, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.3,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/slimeshipdooropen.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/slimeshipdoorclose.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "slimenpcdoor.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

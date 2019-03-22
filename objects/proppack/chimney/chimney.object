@@ -1,0 +1,54 @@
+{
+  "objectName" : "chimney",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "*Chimney sweep not included.",
+  "shortdescription" : "Chimney",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 0,
+
+  "apexDescription" : "I suppose all that smoke has to go somewhere...",
+  "avianDescription" : "I should be careful not to let the smoke get in my lungs.",
+  "floranDescription" : "Where there's sssmoke...",
+  "glitchDescription" : "Sympathetic. Cleaning chimneys is actually much more dangerous than one would expect.",
+  "humanDescription" : "How's Santa supposed to come down one of these anyways? Is his suit fireproof?",
+  "hylotlDescription" : "This chimney channels a fireplace's smoke away from the inside of the building.",
+  "novakidDescription" : "A trusty ol' chimney.",
+
+  "inventoryIcon" : "chimneyicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "chimney.png:<color>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+
+      "particleEmitter" : {
+        "emissionRate" : 0.3,
+        "emissionVariance" : 0.05,
+        "pixelOrigin" : [24, 0],
+
+        "particle" : {
+          "type" : "animated",
+          "image" : "/animations/smoke/smoke.animation",
+          "size" : 1.0,
+          "color" : [244, 244, 244, 255],
+          "destructionAction" : "fade",
+          "destructionTime" : 4,
+          "initialVelocity" : [-2, 5],
+          "timeToLive" : 5,
+          "layer" : "front",
+          "position" : [-2, 5],
+          "collidesForeground" : false
+        },
+        "particleVariance" : {
+          "initialVelocity" : [1.0, 1.0],
+          "finalVelocity" : [1.0, 1.0]
+        }
+      }
+    }
+  ]
+}

@@ -34,6 +34,84 @@
     "path": "/mechtestbasic/worldProperties/mechTempSecondaryColorIndex",
     "value": 4
   },
+
+  {
+    "op" : "add",
+    "path" : "/nightfort",
+      "value" : {
+      "type" : "FloatingDungeon",
+      "dungeonWorld" : "nightfort",
+      "seed" : 1111,
+      "spawningEnabled" : false,
+      "beamUpRule" : "AnywhereWithWarning",
+      "disableDeathDrops" : true,
+
+      "skyParameters" : {
+        "dayLength" : 900,
+        "surfaceLevel" : 500,
+        "spaceLevel" : 3000,
+        "seed" : -5288806180628666923,
+  
+        "skyType" : "atmospheric",
+        "skyColoring" : {
+          "mainColor" : [12, 12, 12],
+
+	      "morningColors" : [ [20, 20, 20], [20, 20, 20] ],
+	      "dayColors" : [ [20, 20, 20], [20, 20, 20] ],
+	      "eveningColors" : [ [10, 10, 10], [10, 10, 10] ],
+	      "nightColors" : [ [0, 0, 0], [0, 0, 0] ],
+
+	      "morningLightColor" : [20, 20, 20],
+	      "dayLightColor" : [20, 20, 20],
+	      "eveningLightColor" : [10, 10, 10],
+	      "nightLightColor" : [0, 0, 0]
+        },
+
+        "satellites" : [ {
+          "pos" : [ 0.310561, 0.35497 ],
+          "layers" : [
+		    {
+              "scale" : 0.055,
+              "image" : "/celestial/system/terrestrial/liquids/water.png"
+            }, {
+              "scale" : 0.055,
+              "image" : "/celestial/system/terrestrial/biomes/forest/maskie3.png?hueshift=-45?addmask=/celestial/system/terrestrial/dynamics/temperate/2.png"
+            }, {
+              "scale" : 0.055,
+              "image" : "/celestial/system/terrestrial/biomes/forest/maskie2.png?hueshift=-45?addmask=/celestial/system/terrestrial/dynamics/temperate/20.png"
+            }, {
+              "scale" : 0.055,
+              "image" : "/celestial/system/terrestrial/biomes/forest/maskie1.png?hueshift=-45?addmask=/celestial/system/terrestrial/dynamics/temperate/5.png"
+            }, {
+              "scale" : 0.055,
+              "image" : "/celestial/system/terrestrial/shadows/9.png"
+            }
+		  ]
+        }
+	  ],
+      
+	  "planet" : {
+          "pos" : [ 0.00538729, 0.46961 ],
+          "layers" : [
+		    {
+              "scale" : 0.15,
+              "image" : "/celestial/system/gas_giant/gas_giant_base.png?hueshift=-80"
+            }, {
+              "scale" : 0.15,
+              "image" : "/celestial/system/gas_giant/gas_giant_clouds_0.png?hueshift=-70?addmask=/celestial/system/gas_giant/gas_giant_dynamics/3.png+/celestial/system/gas_giant/gas_giant_dynamics/29.png"
+            }, {
+              "scale" : 0.15,
+              "image" : "/celestial/system/gas_giant/gas_giant_clouds_1.png?hueshift=-77?addmask=/celestial/system/gas_giant/gas_giant_dynamics/28.png+/celestial/system/gas_giant/gas_giant_dynamics/29.png"
+            }, {
+              "scale" : 0.15,
+              "image" : "/celestial/system/gas_giant/shadows/9.png"
+            }
+		  ]
+        },
+        "horizonImages" : [ ]
+      }
+    }
+  },
   
   
 {
@@ -1911,6 +1989,40 @@
         } ]
       },
       "horizonImages" : [ ]
+    }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/fastfoodspace",
+    "value" : {
+    "type" : "FloatingDungeon",
+    "dungeonWorld" : "fastfoodspace",
+    "beamUpRule" : "Anywhere",
+    "disableDeathDrops" : true,
+
+    "tempWorldDeleteTime" : 600000,
+
+    "skyParameters" : {
+      "dayLength" : 10000,
+      "surfaceLevel" : 1000,
+      "spaceLevel" : 3000,
+      "seed" : -5288806180628666923,
+
+      "skyType" : "barren",
+      "skyColoring" : {
+        "mainColor" : [200, 200, 255],
+
+        "morningColors" : [[200, 200, 255], [200, 200, 255]],
+        "dayColors" : [[200, 200, 255], [200, 200, 255]],
+        "eveningColors" : [[200, 200, 255], [200, 200, 255]],
+        "nightColors" : [[200, 200, 255], [200, 200, 255]],
+
+        "morningLightColor" : [120, 120, 120],
+        "dayLightColor" : [120, 120, 120],
+        "eveningLightColor" : [120, 120, 120],
+        "nightLightColor" : [120, 120, 120]
+      }
     }
     }
   }

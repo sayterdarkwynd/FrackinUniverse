@@ -126,10 +126,23 @@ function routeItems()
 							targetContainer=ping2
 						end
 						if targetAwake == true and sourceAwake == true then
+							local containerSize=world.containerSize(targetContainer)
 							local outputSlotCount=outputSlotCountG
+							local outputSlotsBuffer={}
+							
+							
+							for _,v in pairs(storage.outputSlots) do
+								if v <= containerSize then
+									table.insert(outputSlotsBuffer,v)
+								end
+							end
+							
+							outputSlotCount=util.tableSize(outputSlotsBuffer)
+							
+							
 							local subCount=item.count
 							if storage.roundRobinSlots and storage.invertSlots[2] then
-								outputSlotCount=world.containerSize(targetContainer)-outputSlotCount
+								outputSlotCount=containerSize-outputSlotCount
 								local buffer
 								buffer=math.floor(item.count/outputSlotCount)
 								buffer=math.floor(buffer-(buffer%mod))
@@ -140,7 +153,7 @@ function routeItems()
 								if outputSlotCount > 0 then
 									local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
 									if item.count>0 and buffer<=originalCount then
-										for indexOut=1,world.containerSize(targetContainer) do
+										for indexOut=1,containerSize do
 											if transferUtil.validOutputSlot(indexOut) then
 												local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
 												if leftOverItems then

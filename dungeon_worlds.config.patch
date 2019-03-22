@@ -1,5 +1,21 @@
 [
   {
+    "op" : "add",
+    "path" : "/nightfort",
+    "value" : {
+      "primaryDungeon":"nightfort",
+      "weatherPool" : [ [1.0, "fog"] ],
+      "threatLevel":5,
+      "gravity":80,
+      "worldSize":[2000,2000],
+      "dungeonBaseHeight" : 500,
+      "ambientLightLevel" : [12, 12, 12],
+      "biome" : "penumbra",
+      "musicTrack" : "/music/hizzaque.ogg",
+      "environmentStatusEffects" : []
+    }
+  },
+  {
     "op": "replace",
     "path": "/mechtestbasic/musicTrack",
     "value": "/music/inviolate-loop.ogg"
@@ -27,7 +43,7 @@
       "dungeonSurfaceHeight" : 1050,
       "ambientLightLevel":[80,80,80],
       "biome" : "thickjungle",
-      "musicTrack" : "/music/hizzaque.ogg",//cygnus-x1.ogg
+      "musicTrack" : "/music/scienceoutpost.ogg", 
       "environmentStatusEffects" : []
       }
 },
@@ -45,7 +61,8 @@
       "dungeonSurfaceHeight" : 1209,
       "ambientLightLevel":[15,25,10],
       "biome" : "shoggothbiome",
-      "musicTrack" : "/sfx/ambiance/shoggoth.ogg"
+      "musicTrack" : "/sfx/ambiance/shoggoth.ogg",
+      "environmentStatusEffects" : [ "ffbiomecold4" ]
       }
 },
 {
@@ -62,11 +79,9 @@
       "dungeonBaseHeight" : 1400,
       "dungeonSurfaceHeight" : 1209,
       "ambientLightLevel":[15,25,10],
-    "weatherPool" : [
-        [1.0, "freezestorm"]
-    ],            
-      "biome" : "shoggothbiome"
-      }
+      "weatherPool" : [[1.0, "freezestorm"]],           
+      "biome" : "shoggothbiome",
+      "environmentStatusEffects" : [ "ffbiomecold4" ]}
 },
 {
     "op": "add",
@@ -82,11 +97,9 @@
       "dungeonBaseHeight" : 1400,
       "dungeonSurfaceHeight" : 1209,
       "ambientLightLevel":[15,25,10],
-    "weatherPool" : [
-        [1.0, "freezestorm"]
-    ],            
-      "biome" : "shoggothbiome"
-      }
+      "weatherPool" : [ [1.0, "freezestorm"] ], 
+      "biome" : "shoggothbiome"},
+      "environmentStatusEffects" : [ "ffbiomecold4" ]
 },
 {
     "op": "add",
@@ -562,6 +575,24 @@
       "musicTrack" : "/music/alienitem.ogg",
       "biome": "extraalienjungle",
       "environmentStatusEffects" : ["dontstarve"]
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/fastfoodspace",
+    "value" : {
+      "primaryDungeon" : "fastfoodspace",
+      "threatLevel" : 1,
+      "gravity" : 0,
+      "worldSize" : [1300, 500],
+      "dungeonBaseHeight" : 250,
+      "dungeonSurfaceHeight" : 250,
+      "ambientLightLevel" : [32, 32, 32],
+	  "ambientNoises" : "/sfx/environmental/space_loop4.ogg",
+      "musicTrack" : "/music/home-concept-loop.ogg",
+      "environmentStatusEffects" : ["biomeairless"],
+      "worldEdgeForceRegions" : "TopAndBottom",
+      "biome" : "space"
     }
   }
 ]

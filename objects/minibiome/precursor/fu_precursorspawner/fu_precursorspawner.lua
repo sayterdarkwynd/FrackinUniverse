@@ -35,13 +35,15 @@ function update(dt)
 				local podSlot = getInputContents(1)
 				if podSlot.name == self.podType then
 					if power.getTotalEnergy() >= requiredPower then
-						world.containerConsumeAt(entity.id(),0,1)
 						storage.pets = (podSlot.parameters.pets)
 						pet = root.monsterParameters(storage.pets[1].config.type)
-						spawnTime = pet.statusSettings.stats.maxHealth.baseValue * (self.spawnTimeMultiplier or 0.1)
-						storage.timer = spawnTime or self.defaultSpawnTime
-						
-						storage.crafting = true
+						fuelAmount = pet.statusSettings.stats.maxHealth.baseValue * (self.fuelMultiplier or 0.1)
+						storage.fuelAmount = fuelAmount or self.defaultFuelAmount
+						if world.containerConsumeAt(entity.id(),0,storage.fuelAmount) then
+							spawnTime = pet.statusSettings.stats.maxHealth.baseValue * (self.spawnTimeMultiplier or 0.1)
+							storage.timer = spawnTime or self.defaultSpawnTime
+							storage.crafting = true
+						end
 					end
 				end
 			end
@@ -69,16 +71,46 @@ function update(dt)
 					local spawnPosition = vec2.add(object.position(), {0, 5})
 					
 					local monsterType = storage.pets[1].config.type
-					local blacklisted = checkBlacklist(monsterType)
+					local baseParams = root.monsterParameters(monsterType)
 					
 					params.seed = storage.pets[1].config.parameters.seed
 					params.colors = storage.pets[1].config.parameters.colors
 					params.aggressive = storage.pets[1].config.parameters.aggressive
-					params.level = blacklisted and math.max(8, world.threatLevel()) or math.max(5, world.threatLevel())
+					params.level = world.threatLevel()
 					
-					if blacklisted then
-						params.dropPools = {}
-						params.dropPools["default"] = "empty"
+					params.dropPools = {}
+					params.dropPools["default"] = "fu_precursorspawnerloot"
+					
+					params.statusSettings = baseParams.statusSettings or {}
+					params.statusSettings.stats = baseParams.statusSettings.stats or {}
+					params.statusSettings.stats.boozeImmunity = {baseValue = 1.0}
+					
+					params.behaviorConfig = baseParams.behaviorConfig or {}
+					
+					if baseParams.deathBehavior and baseParams.deathBehavior ~= "monster-death" then --Makes it so that this doesn't break some monsters (maybe make them just drop the beer item instead?)	
+					else
+						params.deathBehavior = "monster-death"
+						params.behaviorConfig.deathActions = params.behaviorConfig.deathActions or {}
+						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
+					end
+					
+					for actionType, actions in pairs (params.behaviorConfig) do
+						if type(actions) == "table" then
+							local tempActions = actions
+							for num, action in pairs (actions) do
+								if action.name == "action-spawnmonster" then
+									tempActions[num] = false
+								elseif action.name == "action-spawncompanions" then
+									tempActions[num] = false
+								end
+							end
+							params.behaviorConfig[actionType] = {}
+							for _, action in pairs (tempActions) do
+								if action then
+									table.insert(params.behaviorConfig[actionType], action)
+								end
+							end
+						end
 					end
 					
 					if monsterType and params.seed then
@@ -100,16 +132,6 @@ end
 
 function getInputContents(slot)
 	return world.containerItemAt(entity.id(),slot) or {}
-end
-
-function checkBlacklist(monster)
-	blacklist = root.assetJson('/objects/minibiome/precursor/fu_precursorspawner/fu_precursorspawnerblacklist.config')
-	for _,blacklistMonster in pairs (blacklist) do
-		if monster == blacklistMonster then
-			return true
-		end
-	end
-	return false
 end
 
 function wireCheck()

@@ -103,19 +103,10 @@ function byos()
 end
 
 function racial()
-	local teleporters = world.entityQuery(world.entityPosition(player.id()), 100, {includedTypes = {"object"}})
-    teleporters = util.filter(teleporters, function(entityId)
-		if string.find(world.entityName(entityId), "teleporterTier0") then
-			return true
-		end
-    end)
-    if #teleporters > 0 then
-		player.lounge(teleporters[1])
-    end
 	race = player.species()
 	count = racialiserBootUp()
 	parameters = getBYOSParameters("techstation", true, _)
-	player.giveItem({name = "fu_byostechstationdeco", count = 1, parameters = parameters})
+	player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
 	player.startQuest("fu_shipupgrades")
 	player.upgradeShip(defaultShipUpgrade)
 end
@@ -127,5 +118,5 @@ function racialiserBootUp()
 			return num
 		end
 	end
-	return 1
+	return 0
 end

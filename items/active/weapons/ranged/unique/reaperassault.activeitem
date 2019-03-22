@@ -1,0 +1,97 @@
+{
+  "itemName" : "reaperassault",
+  "price" : 150,
+  "inventoryIcon" : "reaperassault.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A reliable and frosty assault rifle.
+^cyan;Spawns defensive drones",
+  "shortdescription" : "Tk-12 Akasha",
+  "category" : "assaultRifle",
+  "level" : 3,
+  "tooltipKind" : "gun2",
+  "weaponType" : "Assault Rifle",
+  "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "reaperassault.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlepurple.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/weapons/dkmarauder1.wav" ]
+    }
+  },
+
+  "baseOffset" : [0.5, 0.2],
+  "muzzleOffset" : [1.7, 0.3],
+  
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 0.12,
+    "baseDps" : 6,
+    "energyUsage" : 30,
+    "inaccuracy" : 0.03,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "iceplasma",
+    "projectileParameters" : { 
+      "speed" : 120,
+      "knockback" : 2
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.075,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "smallfirecloud1", "offset" : [0.0, 0.0] },
+          { "particle" : "smallfirecloud2", "offset" : [0.0, 0.0] },
+          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+        ]
+      }
+    },
+
+  "critChance" : 1,
+  "critBonus" : 3,
+
+  "altAbilityType" : "fudronelauncherakasha",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

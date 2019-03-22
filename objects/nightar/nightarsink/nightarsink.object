@@ -8,17 +8,31 @@
   "category" : "decorative",
   "price" : 150,
 
-  "apexDescription" : "Where does the water come from or go to? I will never know..",
-  "avianDescription" : "Where does the water come from or go to? I will never know..",
-  "floranDescription" : "Where does the water come from or go to? I will never know..",
-  "glitchDescription" : "Where does the water come from or go to? I will never know..",
-  "humanDescription" : "Where does the water come from or go to? I will never know..",
-  "hylotlDescription" : "Where does the water come from or go to? I will never know..",
+  "apexDescription" : "This sink has a built-in conservation system to help prevent wasting water.",
+  "avianDescription" : "This sink is just large enough for me to clean my feathers.",
+  "floranDescription" : "Clean water flowssss out.",
+  "glitchDescription" : "Where does the water come from or go to? I will never know.",
+  "humanDescription" : "Hylotl across the galaxy would probably clamor to use this.",
+  "hylotlDescription" : "Fancy-lookin' sink.",
 
   "inventoryIcon" : "icon.png",
   "orientations" : [
     {
-      "dualImage" : "nightarsink.png:<color>",
+      "imageLayers" : [ { "image" : "nightarsink.png:<color>", "fullbright" : true }, { "image" : "nightarsinklit.png:<color>" } ],
+	  "direction" : "left",
+	  "flipImages" : true,
+
+      "imagePosition" : [-8, -8],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+
+    },
+	{
+      "imageLayers" : [ { "image" : "nightarsink.png:<color>", "fullbright" : true }, { "image" : "nightarsinklit.png:<color>" } ],
+	  "direction" : "right",
 
       "imagePosition" : [-8, -8],
       "frames" : 1,

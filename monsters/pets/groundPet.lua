@@ -61,23 +61,76 @@ function init()
   end
 
   self.lastInteract = 0
-  monster.setInteractive(false)
+  
+  self.emitCaptureParticles = config.getParameter("emitCaptureParticles")
+
   capturable.init()
+  
+  self.dontNeedAnchor = config.getParameter("dontNeedAnchor")
+  
+  if not capturable.ownerUuid() and world.entityName(entity.id()) ~= "" then
+    monster.setDisplayNametag(true)
+  end
+  
+  message.setHandler("despawn", function()
+    status.setResource("health", 0)
+  end)
+  message.setHandler("fuGetShipPetData", function()
+    return {
+      foodLikings = storage.foodLikings,
+      knownPlayers = storage.knownPlayers,
+      petResources = petResources()
+    }
+  end)
+  
+  self.interactionType = config.getParameter("interactionType", "timer")
+end
+
+function resetMonsterInteract()
+  self.lastInteract = world.time()
+end
+
+function hasMonsterInteract(args, board)
+  if not self.lastInteract then
+    resetMonsterInteract()
+  end
+  
+  --Interaction types
+  if self.interactionType == "timer" then
+    if world.time() - self.lastInteract >= config.getParameter("interactCooldown", 3.0) then
+      return true
+    else
+      return false
+    end
+  elseif self.interactionType == "always" then
+	return true
+  else
+    return false
+  end
 end
 
 function receiveNotification(notification)
   return self.state.pickState({ notification = notification })
 end
 
-
 function interact()
   if world.time() - self.lastInteract > config.getParameter("interactCooldown", 3.0) then
     emote("happy")
+	if self.interactionType == "timer" then
+      monster.setInteractive(false)
+	end
     self.lastInteract = world.time()
+  end
+
+  local chatOptions = config.getParameter("chatOptions", {})
+  if #chatOptions > 0 then
+    monster.say(chatOptions[math.random(1, #chatOptions)])
   end
 end
 
 function update(dt)
+  monster.setInteractive(hasMonsterInteract())
+
   self.actionState.update(dt)
 
   if self.actionState.stateDesc() == "" and not self.state.update(dt) then
@@ -150,7 +203,7 @@ function findAnchor()
     end
   end
 
-  if not storage.home and not capturable.ownerUuid() then
+  if not storage.home and not capturable.ownerUuid() and not self.dontNeedAnchor then
     status.setResource("health", 0)
   else
     -- Pet spawned by a colony deed -- allow the pet to continue living until
@@ -385,5 +438,21 @@ function die()
       self.deathBehavior:run(script.updateDt())
     end
     capturable.die()
+  end
+end
+
+-- Capturable Particle Overrides
+function capturable.recall()
+  if self.emitCaptureParticles then
+    animator.burstParticleEmitter("captureParticles")
+  end
+  status.addEphemeralEffect("monstercapture")
+  capturable.despawnTimer = 0.5
+end
+
+function capturable.startReleaseAnimation()
+  status.addEphemeralEffect("monsterrelease")
+  if self.emitCaptureParticles then
+    animator.setAnimationState("releaseParticles", "on")
   end
 end

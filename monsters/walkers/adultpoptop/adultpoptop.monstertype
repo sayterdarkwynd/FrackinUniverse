@@ -8,12 +8,25 @@
 
   "animation" : "adultpoptop.animation",
 
-  "dropPools" : [ { "default" : "adultpoptopTreasure", "bow" : "adultpoptopHunting" } ],
+  "dropPools" : [ { 
+    "default" : "adultpoptopTreasure", 
+    "bow" : "adultpoptopHunting",
+    "firebow" : "adultpoptopHunting",
+    "icebow" : "adultpoptopHunting",
+    "poisonbow" : "adultpoptopHunting",
+    "electricbow" : "adultpoptopHunting",
+    "cosmicbow" : "adultpoptopHunting",
+    "radioactivebow" : "adultpoptopHunting",
+    "shadowbow" : "adultpoptopHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "tickEvoTime" : 3,
+  "agingEvoTime" : 2500,
+  "evolutions" : [ "/scripts/golemancer/evolutions/poptopgrow4.evo" ],
 
     "behavior" : "monster",
 

@@ -1,10 +1,20 @@
 [
   {
     "op": "add",
+    "path": "/futestdrive00",
+    "value": {
+      "unique": false,
+      "text": "Welcome to your new mech! Before we begin, collect the goods from the crates in front of you. Exit the mech by pressing ^#FF1493;[E]^reset;. You'll need the goods if you plan to pilot your mech.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },
+  {
+    "op": "add",
     "path": "/futestdrive01",
     "value": {
       "unique": false,
-      "text": "Welcome to your new mech! Take a moment to move around and get used to it. You can ^#FF1493;duck by pressing ^#FF1493;down^reset;, or ^#FF1493;sprint with a ^#FF1493;double-tap!^reset;",
+      "text": "Now use the ^#orange;Mech Tablet^reset; and fill your mech with the fuel in these storage units. After that, you'll be ready to rock! Use your mechs leg servos to jump to the next floor when you are ready.",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -14,7 +24,7 @@
     "path": "/futestdrive02",
     "value": {
       "unique": false,
-      "text": "Mechs have powerful leg servos that allow you to jump pretty well. Try leaping up to reach the next floor.",
+      "text": "Your mech can ^#FF1493;duck by pressing ^#FF1493;[DOWN]^reset;, or ^#FF1493;sprint with a ^#FF1493;[double-tap]^reset; in the direction you are walking.",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
@@ -24,11 +34,42 @@
     "path": "/futestdrive03",
     "value": {
       "unique": false,
-      "text": "To reach the exit here, you'll have to take the left side. Your mech can crouch through the gap on the top.",
+      "text": "Your mech will auto-crouch to fit into areas that it can pass, should the need arise. Such as at the top of this passage.",
       "portraitImage": "yell.<frame>",
       "textSpeed": 70
     }
   },
+  {
+    "op": "replace",
+    "path": "/testdrive04",
+    "value": {
+      "unique": false,
+      "text": "Remember, you can create a ^orange;Mech Repair tool^reset; at your ^orange;Tinker Table^reset; and upgrade it to be more effective at a ^orange;Tool Upgrade Station^reset;.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },  
+  {
+    "op": "add",
+    "path": "/futestdrive03b",
+    "value": {
+      "unique": false,
+      "text": "Your mech switches to a ground-movement configuration when in an environment with gravity, you can manually switch from ground-movement to flight-Mode ^#FF1493;double tapping the [UP] key^reset;. I would advise you continue to proceed in your mech.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  }, 
+  {
+    "op": "add",
+    "path": "/futestdrive03c",
+    "value": {
+      "unique": false,
+      "text": "Please be aware of your mech's ^#bf2fe2;fuel^white; and ^#1d8e25;health^white; reserves, visualised respectively as the ^green;colored bars you can see above your vehicle^reset;. The ^#bf2fe2;fuel^white; will deplete over time and the ^#1d8e25;health^white; bar will deplete when the mech takes damage.",
+      "portraitImage": "yell.<frame>",
+      "textSpeed": 70
+    }
+  },  
+  
   {
     "op": "add",
     "path": "/futestdrive04",
@@ -39,6 +80,12 @@
       "textSpeed": 70
     }
   },
+  {
+        "op": "replace",
+        "path": "/testdrive05/text",
+		"value" : "Hostile entities also exist in zero-gravity environments. My cosmonautical records indicate that defeating them may result in obtaining an erchius battery, which your mech can absorb to replenish health and fuel."
+  },
+  
   {
     "op": "add",
     "path": "/futestdrive05",

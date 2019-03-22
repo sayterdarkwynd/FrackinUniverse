@@ -62,67 +62,7 @@
         "collidesLiquid" : true,
         "ignoreWind" : true
       }
-    },      
-         {
-       "density" : 0.03,
-       "particle" : {
-         "type" : "textured",
-         "image" : "/particles/windstorm/1.png",
-         "velocity" : [0, -12],
-         "angularVelocity" : 180,
-         "timeToLive" : 100,
-         "collidesForeground" : true,
-         "collidesLiquid" : true
-       }
-     },
-     {
-       "density" : 0.025,
-       "particle" : {
-         "type" : "textured",
-         "image" : "/particles/windstorm/2.png",
-         "velocity" : [0, -11],
-         "angularVelocity" : 180,
-         "timeToLive" : 100,
-         "collidesForeground" : true,
-         "collidesLiquid" : true
-       }
-     },
-     {
-       "density" : 0.15,
-       "particle" : {
-         "type" : "textured",
-         "image" : "/particles/windstorm/3.png",
-         "velocity" : [0, -14],
-         "angularVelocity" : 180,
-         "timeToLive" : 100,
-         "collidesForeground" : true,
-         "collidesLiquid" : true
-       }
- 	},  
-     {
-       "density" : 0.01,
-       "particle" : {
-         "type" : "textured",
-         "image" : "/particles/windstorm/4.png",
-         "velocity" : [0, -14],
-         "angularVelocity" : 180,
-         "timeToLive" : 100,
-         "collidesForeground" : true,
-         "collidesLiquid" : true
-       }
- 	},  
-     {
-       "density" : 0.005,
-       "particle" : {
-         "type" : "textured",
-         "image" : "/particles/windstorm/5.png",
-         "velocity" : [0, -14],
-         "angularVelocity" : 180,
-         "timeToLive" : 100,
-         "collidesForeground" : true,
-         "collidesLiquid" : true
-       }	  
-     },
+    },
  	{
  
        "density" : 0.0025,
@@ -135,30 +75,6 @@
          "collidesForeground" : true,
          "collidesLiquid" : true
        }	  
-     },
- 	{
-       "density" : 0.03,
-       "particle" : {
-         "type" : "textured",
-         "image" : "/particles/windstorm/6.png",
-         "velocity" : [0, -12],
-         "angularVelocity" : 180,
-         "timeToLive" : 100,
-         "collidesForeground" : true,
-         "collidesLiquid" : true
-       }
-     },
- 	{
-       "density" : 0.03,
-       "particle" : {
-         "type" : "textured",
-         "image" : "/particles/windstorm/7.png",
-         "velocity" : [0, -12],
-         "angularVelocity" : 180,
-         "timeToLive" : 100,
-         "collidesForeground" : true,
-         "collidesLiquid" : true
-       }
      }
   ],
   
@@ -242,6 +158,12 @@
 				    "knockback": 15,
 				    "actionOnCollide": [],
 				    "actionOnReap": [
+				      {
+				        "action" : "projectile",
+				        "type" : "fogprimerelectric",
+				        "fuzzAngle" : 0,
+				        "inheritDamageFactor" : 1
+				      },				    
 					    {
 					      "action" : "config",
 					      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
@@ -272,6 +194,12 @@
 					  "statusEffects" : [ "electrified" ],
 					  "knockback": 15,
 					  "actionOnReap": [
+					      {
+						"action" : "projectile",
+						"type" : "fogprimerelectric",
+						"fuzzAngle" : 0,
+						"inheritDamageFactor" : 1
+					      },					  
 					    {
 					      "action" : "config",
 					      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
@@ -302,6 +230,12 @@
 						"knockback": 15,
 						"statusEffects" : [ "electrified" ],
 						"actionOnReap": [
+						      {
+							"action" : "projectile",
+							"type" : "fogprimerelectric",
+							"fuzzAngle" : 0,
+							"inheritDamageFactor" : 1
+						      },						
 						    {
 						      "action" : "config",
 						      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"
@@ -600,7 +534,7 @@
 				  "angleAdjust": 0,
 				  "config": {
 				    "knockback": 15,
-				    "actionOnReap": [
+				    "actionOnReap": [				    
 				      {
 					"action": "projectile",
 					"angle": -90,
@@ -989,6 +923,12 @@
         "speed" : 120,
         "statusEffects" : [ "electrified" ],
           "actionOnReap" : [
+		      {
+			"action" : "projectile",
+			"type" : "fogprimerelectric",
+			"fuzzAngle" : 0,
+			"inheritDamageFactor" : 1
+		      },          
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/burstexplosion/electricburstexplosion.config"

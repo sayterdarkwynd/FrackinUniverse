@@ -10,7 +10,8 @@
 
   "baseParameters" : {
     "persistent" : true,
-
+    "damageTeamType" : "ghostly",
+    
     "scripts" : [
       "/monsters/pets/groundPet.lua",
       "/scripts/pathing.lua",
@@ -31,7 +32,8 @@
     ],
 
     "petBehavior" : "petBehavior",
-
+    "anchorName" : "techstation",
+    
     "petResources" : {
       "sleepy" : 10,
       "hunger" : 60,
@@ -202,6 +204,7 @@
     },
 
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8]
+    "feetOffset" : [0, -8],
+	"emitCaptureParticles" : true
   }
 }

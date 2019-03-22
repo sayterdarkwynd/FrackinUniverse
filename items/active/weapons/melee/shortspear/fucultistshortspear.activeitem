@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "Unmistakably wonderful and cheery.
-^cyan;Inflicts bleeding",
+^cyan;Inflicts bleeding^reset;
+^cyan;Hunting weapon^reset;",
   "shortdescription" : "Cultist Shortspear",
   "tooltipKind" : "sword",
   "category" : "shortspear",
@@ -37,7 +38,9 @@
     "fireTime" : 0.625,
     "baseDps" : 6,
     "damageConfig" : {
-      "statusEffects" : [ "bleedingshort" ]
+        "damageSourceKind" : "bow",
+      "statusEffects" : [ "bleedingshort" ],
+      "knockback" : 6
     },    
     "stances" : {
       "idle" : {

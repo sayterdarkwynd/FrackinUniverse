@@ -1,0 +1,73 @@
+{
+  "objectName" : "zerchesiumlight",
+  "colonyTags" : ["zerchesium","light"],
+  "rarity" : "Common",
+  "description" : "A Zerchesium light fixture.",
+  "shortdescription" : "Zerchesium Ceiling Light",
+  "race" : "generic",
+
+  "category" : "light",
+  "price" : 90,
+  "lightColor" : [255, 249, 140],
+  "pointLight" : true,
+  "pointBeam" : 2,
+  "beamAmbience" : 0.3,
+
+  "apexDescription" : "A light fixture made from metal.",
+  "avianDescription" : "It's a light, but not an attractive one.",
+  "floranDescription" : "Shiny lightsss.",
+  "glitchDescription" : "Impressed. This light functions superbly.",
+  "humanDescription" : "These lights are great, until they start flickering.",
+  "hylotlDescription" : "This light is harsh and unforgiving.",
+  "novakidDescription" : "A light that works, what more could you want?",
+
+  "inventoryIcon" : "zerchesiumlighticon.png",
+  "orientations" : [
+    {
+      "image" : "zerchesiumlight.png:<color>.<frame>",
+      "imagePosition" : [-12, 0],
+      "animationParts" : {
+        "bg" : "zerchesiumlight.png",
+        "fg" : "zerchesiumlightlit.png"
+      },
+      "animationPosition" : [-12, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+      "lightPosition" : [0, 1],
+      "beamAngle" : 270
+    },
+    {
+      "image" : "zerchesiumlight.png:<color>.<frame>",
+      "imagePosition" : [-12, 0],
+      "animationParts" : {
+        "bg" : "zerchesiumlight.png",
+        "fg" : "zerchesiumlightlit.png"
+      },
+      "animationPosition" : [-12, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+      "lightPosition" : [0, 1],
+      "beamAngle" : 270
+    }
+  ],
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "outpostceilinglight.png",
+    "fg" : "outpostceilinglightlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}
