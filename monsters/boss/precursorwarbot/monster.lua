@@ -94,6 +94,8 @@ function init()
   monster.setInteractive(config.getParameter("interactive", false))
 
   monster.setAnimationParameter("chains", config.getParameter("chains"))
+  
+  monster.setUniqueId(config.getParameter("uniqueId"))
 end
 
 function update(dt)
@@ -211,6 +213,7 @@ function die()
     end
     capturable.die()
   end
+  world.setProperty("shoggothDied", true)
   spawnDrops()
 end
 
