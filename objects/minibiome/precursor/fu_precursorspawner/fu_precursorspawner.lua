@@ -85,7 +85,7 @@ function update(dt)
 					params.statusSettings.stats = baseParams.statusSettings.stats or {}
 					params.statusSettings.stats.boozeImmunity = {baseValue = 1.0}
 					
-					params.behaviorConfig = baseParams.behaviorConfig or {}
+					params.behaviorConfig = util.mergeTable(baseParams.behaviorConfig or {}, params.behaviorConfig or {})
 					
 					if baseParams.deathBehavior and baseParams.deathBehavior ~= "monster-death" then --Makes it so that this doesn't break some monsters (maybe make them just drop the beer item instead?)	
 					else
@@ -98,10 +98,12 @@ function update(dt)
 						if type(actions) == "table" then
 							local tempActions = actions
 							for num, action in pairs (actions) do
-								if action.name == "action-spawnmonster" then
-									tempActions[num] = false
-								elseif action.name == "action-spawncompanions" then
-									tempActions[num] = false
+								if type(action) == "table" then
+									if action.name == "action-spawnmonster" then
+										tempActions[num] = false
+									elseif action.name == "action-spawncompanions" then
+										tempActions[num] = false
+									end
 								end
 							end
 							params.behaviorConfig[actionType] = {}
