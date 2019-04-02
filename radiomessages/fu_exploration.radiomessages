@@ -22,10 +22,10 @@
     "text" : "Your submersible vehicle cannot operate in the substance it is currently immersed in.",  
     "textSpeed" : 70,      
     "persistTime" : 8.0
-  },
+  },   
   "getsmall" : {
     "type" : "mission",
-    "text" : "In order to get further, you're going to need to find a way to make yourself smaller. See if you can find some sort of hidden passage, maybe? Ooh boy! ^orange;I love hidden passages^reset;!",
+    "text" : "In order to get into that gap, you're going to need to find a way to make yourself smaller. Maybe there's an answer elsewhere in this cavern. I bet it's a secret! Ooh boy! ^orange;I love secrets^reset;!",
     "senderName" : "Vinalisj",
     "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>",    
     "portraitFrames" : 9,   
@@ -45,7 +45,7 @@
   },  
   "mamapoptopdoorlocked" : {
     "type" : "mission",
-    "text" : "This door appears to have two separate inputs, if these symbols are any indication. There are undoubtedly consoles in the area to activate it.",
+    "text" : "I suppose both symbols glowing would represent 'on', then? That seems to make the most sense. Activate the correct consoles and ^green;ffwwooomf^reset;! Open Sesame! Or a lethal trap, I suppose.",
     "senderName" : "Vinalisj",
     "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>",    
     "portraitFrames" : 9,   
@@ -54,8 +54,8 @@
     "persistTime" : 8.0
   },  
   "mamapoptopdoorshoot1" : {
-    "type" : "mission",
-    "text" : "Hmm. This door appears well sealed. It has neat little missile icon on it! Perhaps some ^orange;Explosive Force^reset; might open it? A grenade, bomb or rocket should do the trick.",
+    "type" : "quest",
+    "text" : "Hmm. This door appears well sealed. Oh! It has neat little missile icon on it! Perhaps some ^orange;explosive force^reset; might open it? A ^green;grenade, bomb or rocket^reset; should do the trick.",
     "senderName" : "Vinalisj",
     "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>",    
     "portraitFrames" : 9,   
@@ -64,18 +64,18 @@
     "persistTime" : 8.0
   },
   "mamapoptopdoorshoot2" : {
-    "type" : "mission",
-    "text" : "Ohmygoshohmygoshohmygosh ^orange;OH MY GOSH^reset;! Undiscovered ruins of the ^green;Ancients^reset;! Go! EXPLORE!",
+    "type" : "quest",
+    "text" : "Ah, another of these ^orange;explosive^reset; triggered doors. I should hope you know what to do by now.",
     "senderName" : "Vinalisj",
-    "portraitImage": "/interface/chatbubbles/fuvintalkamazed.png:<frame>",    
+    "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>",    
     "portraitFrames" : 9,   
-    "portraitSpeed" : 0.5,
+    "portraitSpeed" : 0.5,  
     "textSpeed" : 70,      
     "persistTime" : 8.0
-  },
+  },  
   "mamapoptopdoorshoot3" : {
     "type" : "mission",
-    "text" : "Interesting. This switch is far enough from the door that entry without some sort of swift boost appears to be impossible.",
+    "text" : "Hmm. This switch is far enough from the door that entry without some sort of swift boost or motion appears to be almost impossible.",
     "senderName" : "Vinalisj",
     "portraitImage": "/interface/chatbubbles/fuvintalkamazed.png:<frame>",    
     "portraitFrames" : 9,   
@@ -85,7 +85,7 @@
   },  
   "mamapoptop1" : {
     "type" : "mission",
-    "text" : "I can hear ^orange;subtle hints of gutteral sounds^reset; over your frequency. Keep an eye out for predators.",
+    "text" : "The energy signatures within this cave are quite unusual. I'm getting definite trace readings of ^green;ancient essence^reset;, which doesn't make much sense. The ^#ff00fc;Ancients^reset; have no known historical presence in this sector.",
     "senderName" : "Vinalisj",
     "portraitImage": "/interface/chatbubbles/fuvintalkannoyed.png:<frame>",    
     "portraitFrames" : 9,   
@@ -93,9 +93,59 @@
     "textSpeed" : 70,      
     "persistTime" : 8.0
   },
+  "mamapoptop1b" : {
+    "type" : "mission",
+    "text" : "Still...this reads as ^#ff00fc;Ancients^reset;, I'm almost positive. If these readings are accurate, we've stumbled across something truly significant. Press on! This is a rare chance for a true discovery.",
+    "senderName" : "Vinalisj",
+    "portraitImage": "/interface/chatbubbles/fuvintalkannoyed.png:<frame>",    
+    "portraitFrames" : 9,   
+    "portraitSpeed" : 0.5,    
+    "textSpeed" : 70,      
+    "persistTime" : 8.0
+  },     
+  "mamapoptop1c" : {
+    "type" : "mission",
+    "text" : "I suppose it is safe to assume there is nobody here left alive. I can detect no trace of recent activity. I would estimate perhaps a decade since anyone has tread here.",
+    "senderName" : "Vinalisj",
+    "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>", 
+    "portraitFrames" : 9,   
+    "portraitSpeed" : 0.5,      
+    "textSpeed" : 70,      
+    "persistTime" : 8.0
+  },   
+  "mamapoptop1d" : {
+    "type" : "mission",
+    "text" : "^orange;YES^reset;! This is ^green;definitely^reset; an energy signature linked with the ^#ff00fc;Ancients^reset;. It's coming from somewhere very close to your position.",
+    "senderName" : "Vinalisj",
+    "portraitImage": "/interface/chatbubbles/fuvintalkamazed.png:<frame>",    
+    "portraitFrames" : 9,   
+    "portraitSpeed" : 0.5,
+    "textSpeed" : 70,      
+    "persistTime" : 8.0
+  },  
+  "ruins" : {
+    "type" : "mission",
+    "text" : "I would guess that something unpleasant happened to the colonists here. A find like this could be worth millions of pixels, and no new colony is going to pass up that income.",
+    "senderName" : "Vinalisj",
+    "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>",    
+    "portraitFrames" : 9,   
+    "portraitSpeed" : 0.5,  
+    "textSpeed" : 70,      
+    "persistTime" : 8.0
+  },  
+  "ruins2" : {
+    "type" : "mission",
+    "text" : "This door is sealed by a locking mechanism that should respond well to ^orange;explosive force^reset;. If you can obtain a ^green;bomb or other sort of explosive^reset;, you could probably open this.",
+    "senderName" : "Vinalisj",
+    "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>",    
+    "portraitFrames" : 9,   
+    "portraitSpeed" : 0.5,  
+    "textSpeed" : 70,      
+    "persistTime" : 8.0
+  },   
   "mamapoptop2" : {
     "type" : "mission",
-    "text" : "Wow. Functioning tech of the Ancients! You ^orange;NEED^orange; to check that out! PLEASE! For science!?!?!",
+    "text" : "Wow. ^#ff00fc;Ancient^reset; technology in almost perfect condition! This is a ^orange;very^reset; valuable discovery.",
     "senderName" : "Vinalisj",
     "portraitImage": "/interface/chatbubbles/fuvintalkhappy.png:<frame>",    
     "portraitFrames" : 9,   
@@ -103,19 +153,10 @@
     "textSpeed" : 70,      
     "persistTime" : 8.0
   },
-  "mamapoptop3" : {
-    "type" : "mission",
-    "text" : "This place is long abandoned, it would seem. At one point this world had a promising outlook. I wonder what happened?",
-    "senderName" : "Vinalisj",
-    "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>", 
-    "portraitFrames" : 9,   
-    "portraitSpeed" : 0.5,      
-    "textSpeed" : 70,      
-    "persistTime" : 8.0
-  }, 
+
   "mamapoptopb4lake" : {
     "type" : "mission",
-    "text" : "This door appears to be locked at the moment. You'll need to explore elsewhere to find a ^orange;switch^reset; of some sort.^reset;.",
+    "text" : "This door appears to be locked. Perhaps searching elsewhere in the cave will reveal a ^orange;switch^reset; of some sort.^reset;.",
     "senderName" : "Vinalisj",
     "portraitImage": "/interface/chatbubbles/fuvintalk.png:<frame>", 
     "portraitFrames" : 9,    
