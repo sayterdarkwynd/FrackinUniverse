@@ -333,3 +333,12 @@ function setupTenant(...)
   require("/scripts/tenant.lua")
   tenant.setHome(...)
 end
+
+function damage(args)
+  self.randval = math.random(100)
+  
+  if (self.randval >= 95) then
+    animator.playSound("roar")    
+  end 
+end
+

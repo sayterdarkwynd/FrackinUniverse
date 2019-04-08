@@ -1,7 +1,7 @@
 {
   "type" : "megaburrower",
   "shortdescription" : "Burrower",
-  "description" : "A camoflauged worm burrowing through the earth",
+  "description" : "A massive, deadly worm. Definitely not natural.",
 
   "categories" : [ "megaburrower" ],
   "parts" : [ "bodylit", "body" ],
@@ -27,10 +27,43 @@
       "keepTargetInSight" : false,
       "keepTargetInRange" : 80,
       "targetOutOfSightTime" : 5.0,
-      "damageTakenActions" : [ ],
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 4,
+          "parameters" : {
+            "effect" : "mage_shield_lvl4starspawn",
+            "duration" : 2
+          }
+        }     
+      ],
       "foundTargetActions" : [ ],
       "fleeActions" : [ ],    
-      "hostileActions" : [ ],
+      "hostileActions" : [ 
+        {
+          "name" : "action-fire",
+          "cooldown" : 12,
+          "parameters" : {
+            "onGround" : false,
+            "requireLineOfSight" : true,
+            "maximumRange" : 100,
+            "minimumRange" : 12,
+            "windupState" : "",
+            "windupTime" : 0.6,
+            "windupStopForce" : 2,
+
+            "projectileType" : "fublueorb",
+            "projectileParameters" : { "power":10, "speed" : 35 },
+            
+            "fireOffset" : [0, 0],
+            "fireSound" : "fire",
+            "fireState" : "",
+
+            "winddownState" : "",
+            "winddownTime" : 0.1
+          }
+        }       
+      ],
       "periodicActions" : [ ],
       "approachActions" : [
         {

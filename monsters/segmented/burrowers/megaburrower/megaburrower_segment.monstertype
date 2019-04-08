@@ -28,7 +28,29 @@
       "keepTargetInSight" : false,
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
-      
+      "damageTakenActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 4,
+          "parameters" : {
+            "effect" : "mage_shield_lvl4starspawn",
+            "duration" : 2
+          }
+        }         
+      ],  
+      "hostileActions" : [
+        {
+         "cooldown" : 4,
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "gasburst",
+            "projectileConfig" : {"timeToLive" : 2,"power":2},
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        }        
+      ],      
       "deathActions" : [
         {
           "name" : "action-projectile",
@@ -36,6 +58,15 @@
             "projectileCount" : 1,
             "projectileType" : "xithricitedeath2",
             "projectileParameters" : {},
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "fireOffset" : [0, 0]
+          }
+        },
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileType" : "uraniumdeath",
             "power" : 0,
             "aimDirection" : [0, 0],
             "fireOffset" : [0, 0]
