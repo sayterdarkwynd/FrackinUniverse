@@ -1,0 +1,85 @@
+{
+  "animatedParts" : {
+    "parts" : {
+      "familiar" : {
+        "properties" : {
+          "centered" : false
+        },
+        "partStates" : {
+          "familiarState" : {
+            "frogtocat" : {
+              "properties" : {
+                "image" : "<partImage>:frogtocat.<frame>"
+              }
+            },
+            "frogidle" : {
+              "properties" : {
+                "image" : "<partImage>:frogidle.<frame>"
+              }
+            },
+            "owlidle" : {
+              "properties" : {
+                "image" : "<partImage>:owlidle.<frame>"
+              }
+            },
+            "cattoowl" : {
+              "properties" : {
+                "image" : "<partImage>:cattoowl.<frame>"
+              }
+            },
+            "owltofrog" : {
+              "properties" : {
+                "image" : "<partImage>:owltofrog.<frame>"
+              }
+            },
+            "catidle" : {
+              "properties" : {
+                "image" : "<partImage>:catidle.<frame>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "stateTypes" : {
+      "familiarState" : {
+        "default" : "owlidle",
+        "states" : {
+          "frogtocat" : {
+            "cycle" : 1,
+            "transition" : "catidle",
+            "mode" : "transition",
+            "frames" : 9
+          },
+          "frogidle" : {
+            "cycle" : 3,
+            "mode" : "loop",
+            "frames" : 16
+          },
+          "owlidle" : {
+            "cycle" : 3,
+            "mode" : "loop",
+            "frames" : 16
+          },
+          "cattoowl" : {
+            "cycle" : 1,
+            "transition" : "owlidle",
+            "mode" : "transition",
+            "frames" : 9
+          },
+          "owltofrog" : {
+            "cycle" : 1,
+            "transition" : "frogidle",
+            "mode" : "transition",
+            "frames" : 9
+          },
+          "catidle" : {
+            "cycle" : 3,
+            "mode" : "loop",
+            "frames" : 16
+          }
+        }
+      }
+    }
+  }
+}

@@ -18,12 +18,20 @@ function init()
   end
 
   self.effeciencySet = false
+  self.fuels = config.getParameter("fuels")
+  self.fuelTypes = config.getParameter("fuelTypes")
+  self.mechHornEnergyBoosts = config.getParameter("mechHornEnergyBoosts")
+  self.planetId = player.worldId()
 end
 
 
 
 function update(dt)
   if self.disabled then return end
+  
+  if not world.entityExists(player.id()) then
+    return
+  end
 
   if not self.currentFuelMessage then
     local id = player.id()
@@ -47,23 +55,12 @@ function update(dt)
 	    if self.maxFuelMessage:result() then
 	        local params = self.maxFuelMessage:result() 
 	        local massTotal = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)
-		self.energyBoost = 0
-		if params.parts.hornName == 'mechenergyfield' then 
-		  self.energyBoost = 100
-		elseif params.parts.hornName == 'mechenergyfield2' then 
-		  self.energyBoost = 200
-		elseif params.parts.hornName == 'mechenergyfield3' then 
-		  self.energyBoost = 300
-		elseif params.parts.hornName == 'mechenergyfield4' then 
-		  self.energyBoost = 400
-		elseif params.parts.hornName == 'mechenergyfield5' then 
-		  self.energyBoost = 500
-		end   
+		self.energyBoost = self.mechHornEnergyBoosts[params.parts.hornName] or 0
 		-- check mass. If its too high, we reduce the amount of boosted energy given to the player to keep heavy mechs heavy, not energy batteries
 		if massTotal > 22 then
 		  self.energyBoost = self.energyBoost * (massTotal/50)
 		end
-	        self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)  + (self.energyBoost)
+	        self.maxFuel = 100 + params.parts.body.energyMax *(params.parts.body.stats.energyBonus or 1)  + (self.energyBoost) 
 	    end
     end
   end
@@ -129,78 +126,11 @@ function fuel()
   local fuelMultiplier = 1
   local fuelBonus = 0
   local localFuelType = ""
- 
-  if item.name == "liquidoil" then
-    fuelMultiplier = 0.5
-    localFuelType = "Oil"
-  elseif item.name == "liquidfuel" or item.name == "solidfuel" then
-    fuelMultiplier = 1
-    localFuelType = "Erchius"
-  elseif item.name == "liquidmechfuel" then
-    fuelMultiplier = 2
-    localFuelType = "Mech fuel"
-  elseif item.name == "unrefinedliquidmechfuel" then
-    fuelMultiplier = 1.5
-    localFuelType = "Unrefined"
-  elseif item.name == "uraniumrod" then
-    fuelMultiplier = 2
-    localFuelType = "Isotope"    
-  elseif item.name == "plutoniumrod" then
-    fuelMultiplier = 1.5
-    localFuelType = "Isotope"    
-  elseif item.name == "neptuniumrod" then
-    fuelMultiplier = 1.5
-    localFuelType = "Isotope"     
-  elseif item.name == "thoriumrod" then
-    fuelMultiplier = 1.65
-    localFuelType = "Isotope"    
-  elseif item.name == "enricheduranium" then
-    fuelMultiplier = 3
-    localFuelType = "Isotope" 
-  elseif item.name == "enrichedplutonium" then
-    fuelMultiplier = 2.5
-    localFuelType = "Isotope"   
-  elseif item.name == "ultronium" then
-    fuelMultiplier = 25
-    localFuelType = "Isotope"     
-  -- rare fuels  
-  elseif item.name == "precursorfuelcell" then
-    fuelMultiplier = 250
-    localFuelType = "Quantum"
-  elseif item.name == "precursorfluid" then
-    fuelMultiplier = 3.5
-    localFuelType = "Quantum"
-  elseif item.name == "schrodingerscat" then
-    fuelMultiplier = 3000
-    localFuelType = "Quantum" 
-    
-  -- bio fuels  
-  elseif item.name == "biofuelcannister" then
-    fuelMultiplier = 3
-    localFuelType = "Bio"
-  elseif item.name == "biofuelcannisteradv" then
-    fuelMultiplier = 8
-    localFuelType = "Bio"
-  elseif item.name == "biofuelcannistermax" then
-    fuelMultiplier = 16
-    localFuelType = "Bio"
-    
-  -- Cores. Provide high energy value in one go
-  elseif item.name == "powercore" then
-    fuelMultiplier = 500
-    localFuelType = "Core"
-  elseif item.name == "moltencore" then
-    fuelMultiplier = 600
-    localFuelType = "Core"
-  elseif item.name == "particlecore" then
-    fuelMultiplier = 700
-    localFuelType = "Core"    
-  elseif item.name == "nuclearcore" then
-    fuelMultiplier = 800
-    localFuelType = "Core"
-  elseif item.name == "precursorcore" then
-    fuelMultiplier = 900
-    localFuelType = "Core"    
+  
+  local fuelData = self.fuels[item.name]
+  if fuelData then
+    fuelMultiplier = fuelData.fuelMultiplier
+    localFuelType = fuelData.fuelType 
   end
 
   if self.currentFuelType and localFuelType ~= self.currentFuelType then
@@ -228,31 +158,8 @@ end
 function swapItem(widgetName)
   local currentItem = widget.itemSlotItem(widgetName)
   local swapItem = player.swapSlotItem()
-  if swapItem and not (swapItem.name == "liquidfuel"
-  or swapItem.name == "solidfuel"
-  or swapItem.name == "liquidoil"
-  or swapItem.name == "liquidmechfuel"
-  or swapItem.name == "unrefinedliquidmechfuel"
-  or swapItem.name == "uraniumrod"
-  or swapItem.name == "plutoniumrod"
-  or swapItem.name == "neptuniumrod"
-  or swapItem.name == "thoriumrod"   
-  or swapItem.name == "enricheduranium"
-  or swapItem.name == "enrichedplutonium"
-  or swapItem.name == "ultronium"
-  or swapItem.name == "precursorfuelcell"
-  or swapItem.name == "precursorfluid"   
-  or swapItem.name == "powercore"
-  or swapItem.name == "moltencore"
-  or swapItem.name == "particlecore"  
-  or swapItem.name == "nuclearcore"
-  or swapItem.name == "precursorcore"
-  or swapItem.name == "biofuelcannister"
-  or swapItem.name == "biofuelcannisteradv"
-  or swapItem.name == "biofuelcannistermax"
-  or swapItem.name == "schrodingerscat"
-  or swapItem.name == "liquidelderfluid") then
-  return
+  if swapItem and not self.fuels[swapItem.name] then
+    return
   end
 
   player.setSwapSlotItem(currentItem)
@@ -271,53 +178,12 @@ function setEfficiencyText(currentItem)
     widget.setText("lblEfficiency", "")
     return
   end
-
-  if currentItem.name == "liquidfuel" or currentItem.name == "solidfuel" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#bf2fe2;Erchius^white;, Efficiency: x1.0")
-  elseif currentItem.name == "liquidoil" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^gray;Oil^white;, Efficiency: x0.5")
-  elseif currentItem.name == "liquidmechfuel" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^yellow;Mech fuel^white;, Efficiency: x2")
-  elseif currentItem.name == "unrefinedliquidmechfuel" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Unrefined fuel^white;, Efficiency: x1.5")
-  elseif currentItem.name == "uraniumrod" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Uranium^white;, Efficiency: x2.0")
-  elseif currentItem.name == "plutoniumrod" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Plutonium^white;, Efficiency: x1.5")
-  elseif currentItem.name == "neptuniumrod" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Neptunium^white;, Efficiency: x1.5")
-  elseif currentItem.name == "thoriumrod" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Thorium^white;, Efficiency: x1.65")
-  elseif currentItem.name == "enricheduranium" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Enriched Uranium^white;, Efficiency: x3")    
-  elseif currentItem.name == "enrichedplutonium" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Enriched Plutonium^white;, Efficiency: x2.5")
-  elseif currentItem.name == "ultronium" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Ultronium^white;, Efficiency: x25")    
-  elseif currentItem.name == "precursorfuelcell" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Precursor Cell^white;, Efficiency: x250")
-  elseif currentItem.name == "precursorfluid" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Quantum Fluid^white;, Efficiency: x3.5")
-  elseif currentItem.name == "powercore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Power Core^white;, Efficiency: x500")
-  elseif currentItem.name == "moltencore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Molten Core^white;, Efficiency: x600")
-  elseif currentItem.name == "particlecore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Particle Core^white;, Efficiency: x700")
-  elseif currentItem.name == "nuclearcore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Nuclear Core^white;, Efficiency: x800")
-  elseif currentItem.name == "precursorcore" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^orange;Precursor Core^white;, Efficiency: x900") 
-  elseif currentItem.name == "biofuelcannister" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Bio^white;, Efficiency: x3")  
-  elseif currentItem.name == "biofuelcannisteradv" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Bio^white;, Efficiency: x8")
-  elseif currentItem.name == "biofuelcannistermax" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Bio^white;, Efficiency: x16") 
-  elseif currentItem.name == "schrodingerscat" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#00e3ff;Mega Cat^white;, Efficiency: x3000") 
-  elseif currentItem.name == "liquidelderfluid" then
-    widget.setText("lblEfficiency", "Detected fuel type: ^#fcff00;Elder Fluid^white;, Efficiency: x25")     
+  
+  local fuelData = self.fuels[currentItem.name]
+  local effeciencyText = "Detected fuel type: ^<color>;<fuelName>^white;, Efficiency: x<fuelMultiplier>"	--Make json value
+  local currentItemCfg = root.itemConfig(currentItem.name).config
+  if fuelData then
+    widget.setText("lblEfficiency", effeciencyText:gsub("<color>", fuelData.textColor or "white"):gsub("<fuelName>", currentItemCfg.shortdescription):gsub("<fuelMultiplier>", fuelData.fuelMultiplier))
   else
     widget.setText("lblEfficiency", "")
   end
@@ -325,9 +191,8 @@ end
 
 function fuelCountPreview(item)
 
-  if self.currentFuel > self.maxFuel then
-  self.currentFuel = self.maxFuel
-  end    
+
+  
   if not item then
     widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
     return
@@ -335,76 +200,11 @@ function fuelCountPreview(item)
 
   local fuelMultiplier = 1
   local textColor = "white"
-
-  if item.name == "liquidoil" then
-    fuelMultiplier = 0.5
-    textColor = "gray"
-  elseif item.name == "liquidfuel" then
-    fuelMultiplier = 1
-    textColor = "#bf2fe2"
-  elseif item.name == "liquidmechfuel" then
-    fuelMultiplier = 2
-    textColor = "yellow"
-  elseif item.name == "unrefinedliquidmechfuel" then
-    fuelMultiplier = 1.5
-    textColor = "orange"
-  elseif item.name == "uraniumrod" then
-    fuelMultiplier = 2
-    textColor = "#fcff00"
-  elseif item.name == "plutoniumrod" then
-    fuelMultiplier = 1.5
-    textColor = "#fcff00"
-  elseif item.name == "enricheduranium" then
-    fuelMultiplier = 3
-    textColor = "#fcff00"
-  elseif item.name == "enrichedplutonium" then
-    fuelMultiplier = 2.5
-    textColor = "#fcff00"
-  elseif item.name == "ultronium" then
-    fuelMultiplier = 25
-    textColor = "#fcff00"    
-  elseif item.name == "neptuniumrod" then
-    fuelMultiplier = 1.5
-    textColor = "#fcff00"
-  elseif item.name == "thoriumrod" then
-    fuelMultiplier = 1.65
-    textColor = "#fcff00"
-  elseif item.name == "precursorfuelcell" then
-    fuelMultiplier = 250
-    textColor = "00e3ff"
-  elseif item.name == "precursorfluid" then
-    fuelMultiplier = 3.5
-    textColor = "00e3ff"
-  elseif item.name == "powercore" then
-    fuelMultiplier = 500
-    textColor = "green"    
-  elseif item.name == "moltencore" then
-    fuelMultiplier = 600
-    textColor = "green"
-  elseif item.name == "particlecore" then
-    fuelMultiplier = 700
-    textColor = "green"
-  elseif item.name == "nuclearcore" then
-    fuelMultiplier = 800
-    textColor = "green"
-  elseif item.name == "precursorcore" then
-    fuelMultiplier = 900
-    textColor = "green"
-  elseif item.name == "schrodingerscat" then
-    fuelMultiplier = 3000
-    textColor = "00e3ff" 
-  elseif item.name == "biofuelcannister" then
-    fuelMultiplier = 3
-    textColor = "00e3ff" 
-  elseif item.name == "biofuelcannisteradv" then
-    fuelMultiplier = 8
-    textColor = "00e3ff" 
-  elseif item.name == "biofuelcannistermax" then
-    fuelMultiplier = 16
-    textColor = "00e3ff"  
-  elseif item.name == "liquidelderfluid" then
-    fuelMultiplier = 25
-    textColor = "00e3ff"     
+  
+  local fuelData = self.fuels[item.name]
+  if fuelData then
+    fuelMultiplier = fuelData.fuelMultiplier
+    textColor = fuelData.textColor or textColor 
   end
 
   local addFuelCount = self.currentFuel + (item.count * fuelMultiplier)
@@ -418,22 +218,9 @@ end
 
 function setFuelTypeText(type)
   local textColor = ""
-  if type == "Oil" then
-    textColor = "gray"
-  elseif type == "Erchius" then
-    textColor = "#bf2fe2"
-  elseif type == "Mech fuel" then
-    textColor = "yellow"
-  elseif type == "Unrefined" then
-    textColor = "orange"
-  elseif type == "Isotope" then
-    textColor = "#fcff00"
-  elseif type == "Quantum" then
-    textColor = "#00e3ff"
-  elseif type == "Bio" then
-    textColor = "#00e3ff"    
-  elseif type == "Core" then
-    textColor = "green"       
+  local fuelTypeData = self.fuelTypes[type]
+  if fuelTypeData then
+    textColor = fuelTypeData.textColor       
   else
     textColor = nil
   end

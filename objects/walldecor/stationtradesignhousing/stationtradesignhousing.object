@@ -1,0 +1,68 @@
+{
+  "objectName" : "stationtradesignhousing",
+  "colonyTags" : ["station","electronic"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 0,
+
+  "lightColor" : [62, 84, 89],
+
+  "flickerPeriod" : 0.4,
+  "flickerMinIntensity" : 0.97,
+  "flickerMaxIntensity" : 1.0,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+  
+  "description" : "A sign with an image of an house, indicating a housing facility.",
+  "shortdescription" : "Housing Facility Sign",
+  "race" : "generic",
+
+  "apexDescription" : "This sign is meant to indicate a housing facility.",
+  "avianDescription" : "This sign denotes a housing facility.",
+  "floranDescription" : "This housssing sign is bright.",
+  "glitchDescription" : "Informed. The image of this component is meant to indicate a housing facility.",
+  "humanDescription" : "A sign which marks a housing facility.",
+  "hylotlDescription" : "Signs like this usually mean there is a nearby housing facility.",
+  "novakidDescription" : "Reckon this sign means there's meant to be a housing facility 'round here.",
+
+  "inventoryIcon" : "stationtradesignhousingicon.png",
+  "orientations" : [
+    {
+      "image" : "stationtradesignhousing.png:<color>.<frame>",
+      "imagePosition" : [-8, -8],
+      "animationPosition" : [-8, -8],
+      
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "stationtradesignhousing.png:<color>.<frame>",
+      "imagePosition" : [-8, -8],
+      "animationPosition" : [-8, -8],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  // "soundEffect" : "/sfx/objects/tv_static.ogg",
+
+  "animation" : "stationtradesignhousing.animation",
+  "animationParts" : {
+    "bg" : "stationtradesignhousing.png",
+    "fg" : "stationtradesignhousinglit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+
+  "interactive" : false
+}
