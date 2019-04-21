@@ -45,19 +45,19 @@
         // Default pools for any biome that is not supported
         "default" : [
             { "weight" : "common",   "items" : [ "liquidwater", "fu_oxygen", "fu_hydrogen", "fu_nitrogen" ] },
-            { "weight" : "uncommon", "items" : [ "fu_carbon", "fu_salt", "koaniteore", "ff_mercury", "silverore", "goldore" ] },
+            { "weight" : "uncommon", "items" : [ "fu_carbon", "fu_salt", "koaniteore", "ff_mercury", "silverore", "goldore","fu_carbondioxide" ] },
             { "weight" : "rare",     "items" : [ "helium3gasliquid", "shadowgasliquid", "cellmatter", "fuscienceresource", "deuterium", "tritium" ] }
         ],
 
         "fungus" : [
             { "weight" : "common",   "items" : [ "liquidpoison", "fu_oxygen", "fu_hydrogen", "fu_nitrogen" ] },
-            { "weight" : "uncommon", "items" : [ "fu_carbon", "agaranichor", "fuscienceresource", "cellmatter" ] },
+            { "weight" : "uncommon", "items" : [ "fu_carbon", "agaranichor", "fuscienceresource", "cellmatter","fu_carbondioxide" ] },
             { "weight" : "rare",     "items" : [ "liquidbioooze", "liquidpus", "fuscienceresource" ] }
         ],
         "aethersea" : [
             { "weight" : "common",   "items" : [ "liquidaether", "liquidpoison", "liquidsulphuricacid", "fu_nitrogen", "fu_hydrogen", "uraniumore" ] },
             { "weight" : "uncommon", "items" : [ "mutagene1", "mutagene2", "fu_salt", "sulphur" ] },
-            { "weight" : "rare",     "items" : [ "shadowgasliquid", "mutagene3", "xithriciteore", "cellmatter", "fuscienceresource", "deuterium", "tritium" ] }
+            { "weight" : "rare",     "items" : [ "shadowgasliquid", "mutagene3", "xithriciteore", "cellmatter", "fuscienceresource", "deuterium", "tritium","fu_carbondioxide" ] }
         ],
         "moon" : [
             { "weight" : "common",   "items" : [ "fu_carbon", "fuscienceresource", "fu_hydrogen", "fu_nitrogen", "solidfuel" ] },
@@ -70,13 +70,13 @@
         "moon_toxic" : "moon",
         "moon_volcanic" : "moon",
         "atropus" : [
-            { "weight" : "common",   "items" : [ "liquidpus", "liquidblood", "fu_oxygen", "fleshstrand", "fuscienceresource"] },
+            { "weight" : "common",   "items" : [ "liquidpus", "liquidblood", "fu_oxygen", "fleshstrand", "fuscienceresource","fu_carbondioxide"] },
             { "weight" : "uncommon", "items" : [ "larva", "methanol", "biospore", "cellmatter", "aliencompound" ] },
             { "weight" : "rare",     "items" : [ "helium3gasliquid", "shadowgasliquid", "cellmatter","deuterium", "tritium", "fuscienceresource", "quietusore" ] }
         ],
         "atropusdark" : "atropus",
         "fugasgiant" : [
-            { "weight" : "common",   "items" : [ "helium3gasliquid", "shadowgasliquid", "liquidpoison", "fu_hydrogen", "fu_nitrogen" ] },
+            { "weight" : "common",   "items" : [ "helium3gasliquid", "shadowgasliquid", "liquidpoison", "fu_hydrogen", "fu_nitrogen","fu_carbondioxide" ] },
             { "weight" : "uncommon", "items" : [ "fuscienceresource", "fu_hydrogen", "fu_nitrogen", "aliencompound" ] },
             { "weight" : "rare",     "items" : [ "fu_hydrogenmetallic", "tritium", "unstableparticles" ] }
         ],
@@ -85,19 +85,19 @@
         "fugasgiant4" : "fugasgiant",
         "fugasgiant5" : "fugasgiant",
         "bog" : [
-            { "weight" : "common",   "items" : [ "swampwater", "fu_oxygen", "algaegreen", "liquidwater", "fu_hydrogen", "fu_nitrogen" ] },
+            { "weight" : "common",   "items" : [ "swampwater", "fu_oxygen", "algaegreen", "liquidwater", "fu_hydrogen", "fu_nitrogen","fu_carbondioxide" ] },
             { "weight" : "uncommon", "items" : [ "cellmatter", "fu_carbon", "fu_salt" ] },
             { "weight" : "rare",     "items" : [ "helium3gasliquid", "shadowgasliquid", "cellmatter", "fuscienceresource", "deuterium", "tritium" ] }
         ],
         "chromatic" : [
-            { "weight" : "common",   "items" : [ "fu_oxygen", "liquidwater", "toxicwaste", "fu_mulch", "chromadirtmaterial"  ] },
+            { "weight" : "common",   "items" : [ "fu_oxygen", "liquidwater", "toxicwaste", "fu_mulch", "chromadirtmaterial","fu_carbondioxide"  ] },
             { "weight" : "uncommon", "items" : [ "uraniumore", "lead", "aliencompound", "fu_nitrogen", "fu_hydrogen" ] },
             { "weight" : "rare",     "items" : [ "plutoniumore", "mutagene4", "neptuniumore", "thoriumore", "tritium" ] }
         ],
         "crystalmoon" : [
             { "weight" : "common",   "items" : [ "liquidorganicsoup", "crystalsandmaterial", "fu_nitrogen", "fu_hydrogen", "fu_oxygen" ] },
             { "weight" : "uncommon", "items" : [ "crystal", "liquidcrystal", "mutagene1", "fu_carbon", "ff_silicon" ] },
-            { "weight" : "rare",     "items" : [ "icecrystal", "solarishard", "tritium", "aliencompound" ] }
+            { "weight" : "rare",     "items" : [ "icecrystal", "solarishard", "tritium", "aliencompound","fu_carbondioxide" ] }
         ],
         "desert" : [
             { "weight" : "common",   "items" : [ "sand", "fu_oxygen", "liquidoil", "calichewall", "fu_hydrogen", "fu_nitrogen" ] },
@@ -107,7 +107,7 @@
         "desertwastes" : "desert",
         "desertwastesdark" : "desert",
         "icewaste" : [
-            { "weight" : "common",   "items" : [ "fu_nitrogen", "snowflake", "fu_hydrogen", "liquidwater", "fu_carbon", "fu_salt" ] },
+            { "weight" : "common",   "items" : [ "fu_nitrogen", "snowflake", "fu_hydrogen", "liquidwater", "fu_carbon", "fu_salt","fu_carbondioxide"] },
             { "weight" : "uncommon", "items" : [ "methanol", "iodine", "liquidnitrogenitem", "icecrystal", "fu_oxygen" ] },
             { "weight" : "rare",     "items" : [ "mutagene3", "isogenore", "tritium", "aliencompound" ] }
         ],
@@ -118,13 +118,13 @@
             { "weight" : "rare",     "items" : [ "mutagene2", "icecrystal", "tritium", "aliencompound" ] }
         ],
         "infernus" : [
-            { "weight" : "common",   "items" : [ "liquidlava", "fu_carbon", "sulphur", "corefragmentore" ] },
+            { "weight" : "common",   "items" : [ "liquidlava", "fu_carbon", "sulphur", "corefragmentore","fu_carbondioxide" ] },
             { "weight" : "uncommon", "items" : [ "fu_nitrogen", "ff_mercury", "fu_carbon", "ammoniumsulfate" ] },
             { "weight" : "rare",     "items" : [ "magnesiumsulfate", "pyreiteore", "tritium", "aliencompound" ] }
         ],
         "infernusdark" : "infernus",
         "irradiated" : [
-            { "weight" : "common",   "items" : [ "liquidpoison", "uraniumore", "toxicwaste" ] },
+            { "weight" : "common",   "items" : [ "liquidpoison", "uraniumore", "toxicwaste","fu_carbondioxide" ] },
             { "weight" : "uncommon", "items" : [ "fu_carbon", "plutoniumore", "alienwoodsap", "neptuniumore", "thoriumore" ] },
             { "weight" : "rare",     "items" : [ "calciumnitrate", "tritium", "liquidirradium", "irradiumore" ] }
         ],
@@ -147,7 +147,7 @@
         "slimeworld" : [
             { "weight" : "common",   "items" : [ "liquidslime", "mascagniteore", "fuscienceresource", "fuscienceresource", "slime" ] },
             { "weight" : "uncommon", "items" : [ "agaranichor", "greenslime", "liquidalienjuice" ] },
-            { "weight" : "rare",     "items" : [ "endomorphicjelly", "cellmatter", "tritium", "deuterium" ] }
+            { "weight" : "rare",     "items" : [ "endomorphicjelly", "cellmatter", "tritium", "deuterium","fu_carbondioxide" ] }
         ],
         "strangesea" : [
             { "weight" : "common",   "items" : [ "fuscienceresource", "fu_salt", "fuscienceresource" ] },
@@ -155,7 +155,7 @@
             { "weight" : "rare",     "items" : [ "agaranichor", "corruptionore", "obsidian", "tritium" ] }
         ],
         "lightless" : [
-            { "weight" : "common",   "items" : [ "liquidwater", "fu_hydrogen", "fu_nitrogen", "fu_oxygen" ] },
+            { "weight" : "common",   "items" : [ "liquidwater", "fu_hydrogen", "fu_nitrogen", "fu_oxygen","fu_carbondioxide" ] },
             { "weight" : "uncommon", "items" : [ "fu_carbon", "triangliumore", "ff_silicon" ] },
             { "weight" : "rare",     "items" : [ "effigiumore", "blooddiamond", "tritium", "aliencompound" ] }
         ],
@@ -165,20 +165,20 @@
             { "weight" : "rare",     "items" : [ "durasteelore", "tritium", "stickofram", "cpu", "fuprocessor" ] }
         ],
         "sulphuric" : [
-            { "weight" : "common",   "items" : [ "liquidsulphuricacid", "ff_mercury", "fu_hydrogen", "fu_nitrogen", "liquidpoison" ] },
+            { "weight" : "common",   "items" : [ "liquidsulphuricacid", "ff_mercury", "fu_hydrogen", "fu_nitrogen", "liquidpoison","fu_carbondioxide" ] },
             { "weight" : "uncommon", "items" : [ "phosphorus", "liquidblacktar", "cinnabarore", "methanol" ] },
             { "weight" : "rare",     "items" : [ "liquidmercury", "tritium", "neptuniumore", "fu_oxygen" ] }
         ],
         "sulphuricdark" : "sulphuric",
         "sulphuricocean" : "sulphuric",
         "tarball" : [
-            { "weight" : "common",   "items" : [ "liquidblacktar", "liquidoil", "corefragmentore", "fu_hydrogen", "sulphur", "lead" ] },
+            { "weight" : "common",   "items" : [ "liquidblacktar", "liquidoil", "corefragmentore", "fu_hydrogen", "sulphur", "lead","fu_carbondioxide" ] },
             { "weight" : "uncommon", "items" : [ "laboil", "agaranichor", "mutagene1", "fu_carbon", "ff_silicon" ] },
             { "weight" : "rare",     "items" : [ "mutagene2", "aliencompound", "cinnabarore", "tritium", "thoriumore" ] }
         ],
         "toxic" : [
             { "weight" : "common",   "items" : [ "ammoniumsulfate", "toxicwaste", "alienwoodsap", "fu_hydrogen", "fu_nitrogen", "methanol", "liquidpoison" ] },
-            { "weight" : "uncommon", "items" : [ "venomsample", "ff_mercury", "liquidalienjuice", "liquidbioooze" ] },
+            { "weight" : "uncommon", "items" : [ "venomsample", "ff_mercury", "liquidalienjuice", "liquidbioooze","fu_carbondioxide" ] },
             { "weight" : "rare",     "items" : [ "liquidorganicsoup", "liquidmercury", "tritium", "uraniumore", "plutoniumore" ] }
         ]
     },
