@@ -18,5 +18,5 @@ end
 --   Listing order is no guarantee of checking order
 --   No checks are made for multi-input recipes being overridden by single-input recipesa
 function getRecipes()
-	return root.assetJson('/objects/generic/extractionlabmadness_recipes.config')
+	return root.assetJson('/objects/generic/extractionlab_recipes.config')
 end
