@@ -102,10 +102,8 @@ end
 
 function fuInsanityWeather.insanityChatter(self)
 -- spawn madness randomly when this effect is active
-  self.randMadness = math.random(1,100)
-  if self.randMadness == 1 then
-    world.spawnItem("fumadnessresource",entity.id(),1)
-  end
+    self.randMadness = math.random(1,6)
+    world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
 --
 
   -- Insanity messages for hunger take priority (most of the time).

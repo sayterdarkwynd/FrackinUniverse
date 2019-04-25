@@ -25,13 +25,11 @@ function fuAetherWeather.init(self, config_file)
   self.energyDrainThreshold = 20
 end
 
---[[ TODO: The old aether weather effect scaled the damage and energy drain
-    depending on the player's hunger levels (multiplied by hunger/40). I
-    really have no idea why, and it incorrectly increased the delay between
-    ticks as well. I haven't implemented it, so I'm making a note in case it
-    should be done later on ]]--
-
 function fuAetherWeather.applyHealthDrain(self, modifier, dt)
+-- spawn madness randomly when this effect is active
+    self.randMadness = math.random(1,3)
+    world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
+--
   -- Only apply health drain if max energy is below threshold.
   if (status.stat("maxEnergy", 0) < self.energyDrainThreshold) then
     self.parent.applyHealthDrain(self, modifier, dt)
