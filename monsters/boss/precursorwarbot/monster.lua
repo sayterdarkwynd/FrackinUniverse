@@ -213,7 +213,7 @@ function die()
     end
     capturable.die()
   end
-  world.setProperty("shoggothDied", true)
+  world.setProperty("fu_shoggothDied", true)
   spawnDrops()
 end
 
