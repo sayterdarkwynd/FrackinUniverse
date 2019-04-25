@@ -7,6 +7,7 @@ function init()
   self.player = entity.id()
   self.randEvent = math.random(1,100) --only pick this on init so that effect changes on reloads only
   self.timerDegrade = math.random(1,12)
+  self.degradeTotal = 0
 end
 
 function randomEvent()
@@ -168,19 +169,6 @@ end
 function update(dt)
   storage.madnessCount = player.currency("fumadnessresource")
   
-  --gradually reduce Madness over time
-    self.timerDegrade = self.timerDegrade -1
-	if self.timerDegrade < 0 then -- make sure its never negative
-		self.timerDegrade = 0
-	end
-	if self.timerDegrade == 0 then
-	    if storage.madnessCount > 1000 then   --high madness is hard to keep consistent
-		    self.timerDegradePenalty = self.timerDegradePenalty or 0
-		    player.consumeCurrency("fumadnessresource", 1)
-		    self.timerDegrade=math.random(1,6) - self.timerDegradePenalty    
-	    end
-	end
-  
   -- Core Adjustments Functions
   self.timer = self.timer - 1
   if self.timer < 1 then 
@@ -206,67 +194,81 @@ function update(dt)
 		randomEvent() --apply random effect
 	  end  
 	  if storage.madnessCount > 500 then
-		player.consumeCurrency("fumadnessresource", 1)
 		self.timer = 100
 		randomEvent() --apply random effect
 	  end
 	  if storage.madnessCount > 700 then
-		player.consumeCurrency("fumadnessresource", 1)
 		self.timer = 90
 		randomEvent() --apply random effect
 	  end  
 	  if storage.madnessCount > 900 then
-		player.consumeCurrency("fumadnessresource", 1)
 		self.timer = 80
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 1
+		self.degradeTotal = 2
 	  end  
 	  if storage.madnessCount > 1000 then
-		player.consumeCurrency("fumadnessresource", 1)
 		self.timer = 75
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 2
+		self.degradeTotal = 2
 	  end  	  
 	  if storage.madnessCount > 1500 then
-		player.consumeCurrency("fumadnessresource", 1)
 		self.timer = 70
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 3
+		self.degradeTotal = 3
 	  end  
 	  if storage.madnessCount > 2000 then
-		player.consumeCurrency("fumadnessresource", 2)
 		self.timer = 60
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 4
+		self.degradeTotal = 3
 	  end    
 	  if storage.madnessCount > 2500 then
-		player.consumeCurrency("fumadnessresource", 3)
 		self.timer = 50
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 4
+		self.degradeTotal = 4
 	  end
 	  if storage.madnessCount > 3000 then
-		player.consumeCurrency("fumadnessresource", 4)
 		self.timer = 40
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 5
+		self.degradeTotal = 4
 	  end  
 	  if storage.madnessCount > 3500 then
-		player.consumeCurrency("fumadnessresource", 4)
 		self.timer = 30
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 5
+		self.degradeTotal = 5
 	  end  
 	  if storage.madnessCount > 4999 then
-		player.consumeCurrency("fumadnessresource", 5)
 		self.timer = 20
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 6
+		self.degradeTotal = 5
 	  end
-	  
+	  if storage.madnessCount > 15000 then
+		self.degradeTotal = 25
+		self.timerDegradePenalty = 6
+	  end	  
   end
   -- end CORE
   
+    --gradually reduce Madness over time
+    self.timerDegrade = self.timerDegrade -1
+	if self.timerDegrade < 0 then -- make sure its never negative
+		self.timerDegrade = 0
+	end
+	
+	if self.timerDegrade == 0 then
+	    if storage.madnessCount > 1000 then   --high madness is hard to keep consistent
+		    self.timerDegradePenalty = self.timerDegradePenalty or 0
+		    player.consumeCurrency("fumadnessresource", self.degradeTotal)
+		    self.timerDegrade= 7 - self.timerDegradePenalty    
+	    end
+	end  
 end
 
 function uninit()
