@@ -108,6 +108,7 @@ function fuInsanityWeather.insanityChatter(self)
 
   -- Insanity messages for hunger take priority (most of the time).
   local hunger = self:hungerLevel()
+  
   if (hunger < 60) and (math.random() >= 0.3) then
     if (hunger < 5) then
       self:sendWarning("hungry5")
