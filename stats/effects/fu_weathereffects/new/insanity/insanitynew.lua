@@ -101,6 +101,13 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 end
 
 function fuInsanityWeather.insanityChatter(self)
+-- spawn madness randomly when this effect is active
+  self.randMadness = math.random(1,100)
+  if self.randMadness == 1 then
+    world.spawnItem("fumadnessresource",entity.id(),1)
+  end
+--
+
   -- Insanity messages for hunger take priority (most of the time).
   local hunger = self:hungerLevel()
   if (hunger < 60) and (math.random() >= 0.3) then
@@ -202,13 +209,5 @@ end
     shouldn't need to be modified (apart from the class name). ]]--
 
 function update(dt)
-
--- spawn madness randomly when this effect is active
-  self.randMadness = math.random(1,100)
-  if self.randMadness == 1 then
-    world.spawnItem("fumadnessresource",entity.id())
-  end
---
-
   fuInsanityWeather:update(dt)
 end
