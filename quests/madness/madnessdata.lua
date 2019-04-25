@@ -11,9 +11,9 @@ function init()
 end
 
 function randomEvent()
-
     storage.currentPrimary=world.entityHandItem(entity.id(), "primary")
-    storage.currentSecondary = world.entityHandItem(entity.id(), "alt")  
+    storage.currentSecondary = world.entityHandItem(entity.id(), "alt") 
+    
     if self.randEvent == 1 then 
 	if player.hasCountOfItem("plantfibre")  then -- consume a plant fibre, just to confuse and confound
 		player.consumeItem("plantfibre", true, false)
@@ -163,15 +163,26 @@ function randomEvent()
 	  status.setPersistentEffects("madnessEffectsMain", {  
 		{stat = "maxFood", amount = status.stat("maxFood")-penaltyValue }
 	  })    
-    end   
+    end  
+    if self.randEvent == 41 then --death if high madness
+      local penaltyValue = math.random(1,8)
+	  status.setPersistentEffects("madnessEffectsMain", {  
+		{stat = "maxHealth", amount = status.stat("maxHealth") - status.stat("maxHealth") }
+	  })    
+    end     
 end
 
 function update(dt)
-  storage.madnessCount = player.currency("fumadnessresource")
-  
+
   -- Core Adjustments Functions
   self.timer = self.timer - 1
   if self.timer < 1 then 
+  
+  	  --loss of sanity failsafe
+	  self.degradeTotal = storage.madnessCount * 0.025 
+	  if self.degradeTotal > 100 then
+		self.degradeTotal = 100
+	  end
   
 	  if storage.madnessCount > 50 then
 		self.timer = 300
@@ -205,52 +216,46 @@ function update(dt)
 		self.timer = 80
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 1
-		self.degradeTotal = 2
 	  end  
 	  if storage.madnessCount > 1000 then
 		self.timer = 75
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 2
-		self.degradeTotal = 2
 	  end  	  
 	  if storage.madnessCount > 1500 then
 		self.timer = 70
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 3
-		self.degradeTotal = 3
 	  end  
 	  if storage.madnessCount > 2000 then
 		self.timer = 60
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 4
-		self.degradeTotal = 3
 	  end    
 	  if storage.madnessCount > 2500 then
 		self.timer = 50
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 4
-		self.degradeTotal = 4
 	  end
 	  if storage.madnessCount > 3000 then
 		self.timer = 40
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 5
-		self.degradeTotal = 4
 	  end  
 	  if storage.madnessCount > 3500 then
 		self.timer = 30
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 5
-		self.degradeTotal = 5
 	  end  
 	  if storage.madnessCount > 4999 then
 		self.timer = 20
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 6
-		self.degradeTotal = 5
 	  end
-	  if storage.madnessCount > 15000 then
+	  if (storage.madnessCount > 15000) or (world.type()=="unknown") then --high madness, or on ship
 		self.degradeTotal = 25
+		self.timer = 20
+		randomEvent()
 		self.timerDegradePenalty = 6
 	  end	  
   end
@@ -272,28 +277,5 @@ function update(dt)
 end
 
 function uninit()
-	--status.clearEphemeralEffect("loweredshadow")  
-	--status.clearEphemeralEffect("slow") 
-	--status.clearEphemeralEffect("ffbiomecold0") 
-	--status.clearEphemeralEffect("jungleweathernew") 
-	--status.clearEphemeralEffect("insanity")
-	--status.clearEphemeralEffect("booze")
-	--status.clearEphemeralEffect("maxhealthboostneg20")
-	--status.clearEphemeralEffect("maxenergyboostneg20")
-	--status.clearEphemeralEffect("lowgrav_fallspeedup")
-	--status.clearEphemeralEffect("medicalimmunization")
-	--status.clearEphemeralEffect("slimeleech")
-	--status.clearEphemeralEffect("rootfu")
-	--status.clearEphemeralEffect("burning")
-	--status.clearEphemeralEffect("eatself")
-	--status.clearEphemeralEffect("fu_nooxygen")
-	--status.clearEphemeralEffect("knockbackWeaknessHidden")
-	--status.clearEphemeralEffect("swimboost1")
-	--status.clearEphemeralEffect("swimboost2")
-	--status.clearEphemeralEffect("runboost5")
-	--status.clearEphemeralEffect("runboost10")
-	--status.clearEphemeralEffect("runboost15")
-	--status.clearEphemeralEffect("runboostdebuff")
-	--status.clearEphemeralEffect("feedpackneg")
 	status.clearPersistentEffects("madnessEffectsMain")
 end
