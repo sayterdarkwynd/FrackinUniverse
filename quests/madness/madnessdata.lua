@@ -183,7 +183,7 @@ function update(dt)
 	  if self.degradeTotal > 100 then
 		self.degradeTotal = 100
 	  end
-  
+          
 	  if storage.madnessCount > 50 then
 		self.timer = 300
 		randomEvent() --apply random effect
@@ -252,7 +252,7 @@ function update(dt)
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 6
 	  end
-	  if (storage.madnessCount > 15000) or (world.type()=="unknown") then --high madness, or on ship
+	  if storage.madnessCount > 15000 then --high madness, or on ship
 		self.degradeTotal = 25
 		self.timer = 20
 		randomEvent()
@@ -262,7 +262,7 @@ function update(dt)
   -- end CORE
   
     --gradually reduce Madness over time
-    self.timerDegrade = self.timerDegrade -1
+        self.timerDegrade = self.timerDegrade -1
 	if self.timerDegrade < 0 then -- make sure its never negative
 		self.timerDegrade = 0
 	end
