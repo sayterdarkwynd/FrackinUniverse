@@ -105,16 +105,8 @@ function update(dt)
 		widget.setVisible("cheatBox", false)
 	end
 	
-	if selected then
-		if canAfford(selected) then
-			if readOnly or researchTree[selected].state == "researched" then
-				widget.setButtonEnabled("researchButton", false)
-			else
-				widget.setButtonEnabled("researchButton", true)
-			end
-		else
-			widget.setButtonEnabled("researchButton", false)
-		end
+	if selected and not readOnly and researchTree[selected].state == "available" and canAfford(selected) then
+		widget.setButtonEnabled("researchButton", true)
 	else
 		widget.setButtonEnabled("researchButton", false)
 	end
