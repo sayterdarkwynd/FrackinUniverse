@@ -5,6 +5,7 @@ require("/scripts/util.lua")
 -- constants
 currencyTable = {}
 researchTree = nil
+gridTileImage = nil
 gridTileSize = {}
 canvasSize = nil
 verified = false
@@ -28,18 +29,15 @@ noCost = false
 
 -- Basic GUI functions
 function init()
-	-- zbutil.DeepPrintTable(status.statusProperty("zb_researchtree_researched", {}))
-	-- status.setStatusProperty("zb_researchtree_researched", nil)
-	
 	currencyTable = root.assetJson("/currencies.config")
 	data = root.assetJson("/zb/researchTree/data.config")
 	for _, file in ipairs(data.researchFiles) do
 		local temp = root.assetJson(file)
 		data = zbutil.MergeTable(data, temp)
 	end
-	-- zbutil.DeepPrintTable(data)
 	
-	gridTileSize = root.imageSize("/zb/researchTree/gridTile.png")
+	gridTileImage = data.defaultGridTileImage
+	gridTileSize = root.imageSize(gridTileImage)
 	canvas = widget.bindCanvas("canvas")
 	canvasSize = widget.getSize("canvas")
 	
@@ -426,6 +424,9 @@ function treeSelected()
 	local wdata = widget.getListSelected("treeList.list")
 	if wdata then
 		wdata = widget.getData("treeList.list."..wdata)
+		
+		gridTileImage = data.cutsomGridTileImages[wdata] or data.defaultGridTileImage
+		gridTileSize = root.imageSize(gridTileImage)
 		buildStates(wdata)
 		treePickButton()
 		panTo()
@@ -448,7 +449,7 @@ function draw()
 	
 	-- Draw background
 	local gridOffset = {dragOffset.x % gridTileSize[1], dragOffset.y % gridTileSize[2]}
-	canvas:drawTiledImage("/zb/researchTree/gridTile.png", gridOffset, {0, 0, canvasSize[1] + 19, canvasSize[2] + 19})
+	canvas:drawTiledImage(gridTileImage, gridOffset, {0, 0, canvasSize[1] + gridTileSize[1], canvasSize[2] + gridTileSize[2]})
 	
 	-- Draw "READ ONLY"
 	if readOnly then
