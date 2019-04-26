@@ -124,10 +124,19 @@ function update(dt)
 --*** FOR FU
 --check if we're insane! if so, swap our team
   self.randomTeam = math.random(1,3)
+  self.teamName = "default"
+  self.randomTeamName = math.random(1,3)
+  if self.randomTeamName == 1 then
+    self.typename = "friend"
+  elseif self.randomTeamName == 2 then
+    self.typename = "enemy"
+  elseif self.randomTeamName == 3 then
+    self.typename = "assistant"
+  end
   
   if status.stat("isInsane") >= 1 then
     npc.setDamageTeam({
-        type = "enemy",
+        type = self.typename,
         team = self.randomTeam 
       }) 
   else
