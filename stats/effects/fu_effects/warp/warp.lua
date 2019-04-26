@@ -5,6 +5,10 @@ end
 
 function update(dt)
   animator.setFlipped(mcontroller.facingDirection() == -1)
+  
+  self.randVal = math.random(1,12)
+  world.spawnItem("fumadnessresource",entity.position(),self.randVal)
+  
   if status.resourcePercentage("health") < 0.099 then
 	sb.logInfo("Rescuing!")
 	mcontroller.setPosition(rescuePosition)

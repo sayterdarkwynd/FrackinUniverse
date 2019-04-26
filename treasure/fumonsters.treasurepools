@@ -484,6 +484,10 @@
   ],  
   "fleshreaperLoot" : [
     [1, {
+      "fill" : [
+        {"item" : [ "liquidelderfluid", 12]},
+        {"item" : [ "fumadnessresource", 24]}
+      ],   
         "pool" : [
           {"weight" : 0.60, "pool" : "money"},
           {"weight" : 0.05, "item" : [ "cell_mutated", 5]},
@@ -502,12 +506,14 @@
   ],
   "deeponeTreasure" : [
     [1, {
+      "fill" : [
+        {"item" : [ "liquidelderfluid", 24]},
+        {"item" : [ "fumadnessresource", 24]}
+      ],      
       "pool" : [
-        {"weight" : 0.83, "pool" : "money"},
-        {"weight" : 0.05, "item" : "goldbar"},
-        {"weight" : 0.25, "item" : "venomsample"},
-        {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.01, "pool" : "basicTreasure"}
+        {"weight" : 0.43, "pool" : "money"},
+        {"weight" : 0.2, "item" : "venomsample"},
+        {"weight" : 0.2, "pool" : "basicTreasure"}
       ],
       "poolRounds" : [
         [0.20, 0],
@@ -519,6 +525,10 @@
   ],
   "ffelderStarspawnTreasure" : [
     [1, {
+      "fill" : [
+        {"item" : [ "liquidelderfluid", 24]},
+        {"item" : [ "fumadnessresource", 220]}
+      ],     
       "pool" : [
         {"weight" : 0.001, "pool" : "artifactloot" },
         {"weight" : 0.03, "pool" : "augments"},
@@ -635,7 +645,9 @@
   "ffelderStarspawnTreasureBoss" : [
     [1, {
       "fill" : [
-        { "item" : "eldertome" }
+        { "item" : "eldertome" },
+        {"item" : [ "liquidelderfluid", 24]},
+        {"item" : [ "fumadnessresource", 220]}
       ],
       "pool" : [
         {"weight" : 0.2, "pool" : "fuEssenceHigh" },
@@ -718,7 +730,8 @@
         {"weight" : 0.53, "pool" : "money"},
         {"weight" : 0.47, "item" : "phasematter"},
         {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.9, "item" : "sharpenedclaw"}
+        {"weight" : 0.9, "item" : "sharpenedclaw"},
+        {"weight" : 0.05, "item" :  [ "fumadnessresource", 3]}
       ],
       "poolRounds" : [
         [0.20, 0],
@@ -730,6 +743,10 @@
   ],
   "minishoggothLoot" : [
     [1, {
+      "fill" : [
+        {"item" : [ "liquidelderfluid", 12]},
+        {"item" : [ "fumadnessresource", 32]}
+      ],    
       "pool" : [
         {"weight" : 0.30, "pool" : "money"},
         {"weight" : 0.03, "item" : "cell_viral"},
@@ -748,7 +765,9 @@
   "shoggothFlesh" : [
     [0, {
       "fill" : [ { "item" : [ "shoggothflesh", 30 ] },
-                 { "item" : [ "essence", 2000 ] } ],
+      		 {"item" : [ "liquidelderfluid", 500]},
+                 { "item" : [ "essence", 2000 ] },
+        	 {"item" : [ "fumadnessresource", 3200]} ],
       "pool" : [
         {"weight" : 0.20, "pool" : "money"},
         {"weight" : 0.02, "pool" : "artifactloot" },
@@ -1909,7 +1928,8 @@
   "fleshreaperTreasure" : [
     [1, {
       "fill" : [
-        { "item" : [ "hardenedcarapace", 15]}
+        { "item" : [ "hardenedcarapace", 15]},
+        {"item" : [ "fumadnessresource", 32]}
       ],
 
       "pool" : [
@@ -2015,7 +2035,8 @@
   "shadowgolemLoot" : [
     [1, {
       "fill" : [
-        { "item" : [ "shadowgasliquid", 15]}
+        { "item" : [ "shadowgasliquid", 15]},
+        {"item" : [ "fumadnessresource", 32]}
       ],
 
       "pool" : [
@@ -2129,13 +2150,14 @@
       ],
       "poolRounds" : [[0.75, 4],[0.25, 6]],
       "allowDuplication" : true,
-	  "fill" : [{ "item" : [ "venomsample", 3]}]
+	  "fill" : [{ "item" : [ "venomsample", 3]},
+                    {"item" : [ "fumadnessresource", 32]}]
       }
     ]
   ],
   "frankLootBoss" : [
     [1, {
-      "fill" : [ { "item" : [ "websnapper", 1]  }, { "item" : [ "venomsample", 10]}  ],
+      "fill" : [{"item" : [ "websnapper", 1]  }, {"item" : [ "venomsample", 10]}, {"item" : [ "fumadnessresource", 632]}],
       "pool" : [
         {"weight" : 0.33, "pool" : "money"},
         {"weight" : 0.33, "item" : [ "liquidpus", 10]},
@@ -2149,7 +2171,7 @@
   "fu_precursorspawnerloot" : [
     [1, { 
 	  "pool" : [ 
-	    {"weight" : 0.001, "item" : [ "gregskittlegunfake", 1]  } 
+	    {"weight" : 0.001, "item" : [ "gregskittlegunfake", 1]  }
 	  ],
 	  "poolRounds" : [
 		[0.999, 0],

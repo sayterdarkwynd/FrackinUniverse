@@ -2,7 +2,8 @@
 
   "fucodexRandom" : [
    [0, {
-     "pool" : [
+     "pool" : [  
+       {"weight" : 0.025, "pool" : "fuMadnessVoxelItem"},
        {"weight" : 0.037, "item" : "thesubstance-codex"},
        {"weight" : 0.037, "item" : "randombook1-codex"},
        {"weight" : 0.037, "item" : "randombook2-codex"},
@@ -82,7 +83,7 @@
        {"weight" : 0.037, "item" : "fenerox17-codex"},
        {"weight" : 0.037, "item" : "fenerox18-codex"},
        {"weight" : 0.037, "item" : "fenerox19-codex"},
-	   {"weight" : 0.037, "item" : "fenerox20-codex"},
+       {"weight" : 0.037, "item" : "fenerox20-codex"},
        
        {"weight" : 0.037, "item" : "greg1-codex"},
        {"weight" : 0.037, "item" : "greg2-codex"},
@@ -132,6 +133,7 @@
       "pool" : [
        {"weight" : 0.037, "item" : "greg1-codex"},
        {"weight" : 0.037, "item" : "greg2-codex"},
+       {"weight" : 0.002, "pool" : "fuMadnessVoxelItem"},
        {"weight" : 0.037, "item" : "greg3-codex"},
        {"weight" : 0.037, "item" : "greg4-codex"},
        {"weight" : 0.037, "item" : "greg5-codex"},
@@ -279,6 +281,7 @@
          {"weight" : 0.05, "item" : "wrappedbody"},
          {"weight" : 0.01, "item" : "wrappedbodyputrid"},
          {"weight" : 0.005, "item" : "wrappedbodyalien"},
+         {"weight" : 0.002, "pool" : "fuMadnessVoxelItem"},
          {"weight" : 0.34, "item" : ["darkwoodmaterial", 20]},
          {"weight" : 0.25, "item" : ["logblock", 20]},
          {"weight" : 0.25, "item" : ["fullwood1", 15]},
@@ -296,6 +299,7 @@
     [0, {
       "pool" : [
         {"weight" : 0.2, "item" : "fu_lootbox"},
+        {"weight" : 0.002, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.05, "pool" : "fuEssence"},
         {"weight" : 0.05, "pool" : "petcollars2"},
         {"weight" : 0.05, "pool" : "fuLootStims"},
@@ -314,6 +318,7 @@
       "pool" : [
         {"weight" : 0.2, "item" : "fu_lootbox"},
         {"weight" : 0.05, "pool" : "fuEssence"},
+        {"weight" : 0.002, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.05, "pool" : "petcollars2"},
         {"weight" : 0.05, "pool" : "fuLootStims"},
         {"weight" : 0.1, "pool" : "fuSpaceBonus"},
@@ -332,6 +337,7 @@
       "pool" : [
         {"weight" : 0.2, "item" : "fu_lootbox"},
         {"weight" : 0.05, "pool" : "fuEssence"},
+        {"weight" : 0.002, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.05, "pool" : "fuEssenceHigh"},
         {"weight" : 0.05, "pool" : "petcollars2"},
         {"weight" : 0.05, "pool" : "fuLootStims"},
@@ -352,6 +358,7 @@
       "pool" : [
         {"weight" : 0.05, "pool" : "fuEssence"},
         {"weight" : 0.05, "pool" : "arconLoot"},
+        {"weight" : 0.002, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.05, "pool" : "petcollars2"},
         {"weight" : 0.05, "pool" : "fuLootStims"},
         {"weight" : 0.05, "pool" : "slopedMaterial"},
@@ -364,25 +371,73 @@
     }]
   ],
 
-  "fuMadnessVoxelSmall" : [
+  "fuMadnessVoxelItem" : [
     [0, {
       "pool" : [
-        {"weight" : 1, "item" : ["fumadnessresource", 500]}
+        {"weight" : 0.30, "item" : ["madness_knowledge", 1]},
+        {"weight" : 0.20, "item" : ["voynich", 1]},
+        {"weight" : 0.20, "item" : ["madnesstoken", 1]},
+        {"weight" : 0.05, "item" : ["whispercrystal", 1]},
+        {"weight" : 0.10, "item" : ["beachscene", 1]},
+        {"weight" : 0.10, "item" : ["madnesstoken2", 1]},
+        {"weight" : 0.01, "item" : ["madnesstoken3", 1]},
+        {"weight" : 0.01, "item" : ["madcomb", 1]},
+        {"weight" : 0.01, "item" : ["chipotle", 1]},
+        {"weight" : 0.01, "item" : ["motedust", 1]},
+        {"weight" : 0.01, "item" : ["madmask", 1]},
+        {"weight" : 0.01, "item" : ["madstatue", 1]}, 
+        {"weight" : 0.01, "item" : ["blindingenvelope", 1]},
+        {"weight" : 0.01, "item" : ["bloodyfinger", 1]},
+        {"weight" : 0.01, "item" : ["candleofstench", 1]},
+        {"weight" : 0.01, "item" : ["crayonoflies", 1]},
+        {"weight" : 0.01, "item" : ["lawbook", 1]},
+        {"weight" : 0.01, "item" : ["mapofdreamland", 1]},
+        {"weight" : 0.01, "item" : ["mirrormirror", 1]},
+        {"weight" : 0.01, "item" : ["sharpenedmouse", 1]},
+        {"weight" : 0.01, "item" : ["stickoftruth", 1]},
+        {"weight" : 0.01, "item" : ["terracottastatue", 1]},
+        {"weight" : 0.01, "item" : ["threecoins", 1]},
+        {"weight" : 0.01, "item" : ["tonsil", 1]},
+        {"weight" : 0.01, "item" : ["undulator", 1]},
+        {"weight" : 0.01, "item" : ["universalparking", 1]},
+        {"weight" : 0.01, "item" : ["vileconch", 1]}
+      ]
+    }]
+  ],
+
+
+  "fuMadnessVoxelTiny" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.10, "item" : ["fumadnessresource", 1]},
+        {"weight" : 0.30, "item" : ["fumadnessresource", 2]},
+        {"weight" : 0.30, "item" : ["fumadnessresource", 4]},
+        {"weight" : 0.20, "item" : ["fumadnessresource", 8]},
+        {"weight" : 0.05, "item" : ["fumadnessresource", 16]},
+        {"weight" : 0.03, "item" : ["fumadnessresource", 32]},
+        {"weight" : 0.02, "item" : ["fumadnessresource", 64]}
+      ]
+    }]
+  ],
+  "fuMadnessVoxelSmall" : [
+    [0, {
+      "fill" : [
+        {"item" : [ "fumadnessresource", 500]}
       ]
     }]
   ],
   "fuMadnessVoxel" : [
     [0, {
-      "pool" : [
-        {"weight" : 1, "item" : ["fumadnessresource", 1000]}
+      "fill" : [
+        {"item" : [ "fumadnessresource", 1000]}
       ]
     }]
   ],
 
   "fuMadnessVoxelLarge" : [
     [0, {
-      "pool" : [
-        {"weight" : 1, "item" : ["fumadnessresource", 5000]}
+      "fill" : [
+        {"item" : [ "fumadnessresource", 5000]}
       ]
     }]
   ],
@@ -499,7 +554,8 @@
       "pool" : [     
         {"weight" : 0.7, "item" : ["fu_carbon", 1]},
         {"weight" : 0.2, "item" : ["fu_carbon", 3]},
-        {"weight" : 0.1, "item" : ["fu_carbon", 5]}
+        {"weight" : 0.1, "item" : ["fu_carbon", 5]},
+        {"weight" : 0.01, "pool" : "fuMadnessVoxelItem"}
       ]
     }]
   ],
@@ -513,7 +569,8 @@
         {"weight" : 0.04, "item" : ["tritaniumbar", 1]},
         {"weight" : 0.02, "item" : ["nocxiumore", 1]},
         {"weight" : 0.005, "item" : ["nocxiumbar", 1]},
-        {"weight" : 0.07, "item" : ["xithricitecrystal", 1]}
+        {"weight" : 0.07, "item" : ["xithricitecrystal", 1]},
+        {"weight" : 0.01, "pool" : "fuMadnessVoxelItem"}
       ]
     }]
   ],
@@ -521,6 +578,7 @@
   "fuBasicMaterials" : [
     [0, {
       "pool" : [
+          {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
           {"weight" : 0.02, "item" : [ "deuterium", 2]},
           {"weight" : 0.03, "item" : [ "tritium", 2]},
           {"weight" : 0.333, "item" : [ "polymer", 10]},
@@ -735,6 +793,7 @@
         {"weight" : 0.2, "item" : "artifact3"},
         {"weight" : 0.1, "item" : "artifact4"},
         {"weight" : 0.15, "item" : "artifact5"},
+        {"weight" : 0.03, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.008, "item" : "ancientlongsword-recipe"},
         {"weight" : 0.008, "item" : "ancientquarterstaff-recipe"},
         {"weight" : 0.008, "item" : "ancientcarbine-recipe"},
@@ -947,6 +1006,7 @@
         {"weight" : 0.001, "item" :  [ "cultiststaff2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff3-recipe", 1]},
         {"weight" : 0.009, "item" :  [ "floatstaff2", 1]},
+        {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.01, "item" : [ "ff_gasmask", 1]},
         {"weight" : 0.02, "item" : [ "ff_divingmaskhead", 1]},
         {"weight" : 0.02, "item" : [ "fuearphones-recipe", 1]},
@@ -974,6 +1034,7 @@
       "pool" : [
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
+        {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
         {"weight" : 0.04, "item"  : [ "duncecap", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff2-recipe", 1]},
@@ -1010,6 +1071,7 @@
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
+        {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.04, "item"  : [ "duncecap", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff2-recipe", 1]},
         {"weight" : 0.001, "item" :  [ "cultiststaff3-recipe", 1]},
@@ -1053,6 +1115,7 @@
     [3.9, {
       "pool" : [
         {"weight" : 0.08, "pool" : "fuGravBalls"},
+        {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
         {"weight" : 0.01, "pool" : "arconLoot"},
@@ -1133,7 +1196,8 @@
         {"weight" : 0.001, "item" : "flailcookie"},
         {"weight" : 0.001, "item" : "flailtrollfist"},
         {"weight" : 0.007, "item" : [ "fuyinyang", 1]},        
-        {"weight" : 0.1, "pool" : "fucodexRandom" }
+        {"weight" : 0.1, "pool" : "fucodexRandom" },
+        {"weight" : 0.007, "item" : "futrigun"}
       ]
     }],
     [4.9, {
@@ -1141,6 +1205,7 @@
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
+        {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.01, "pool" : "arconLoot"},
         {"weight" : 0.004, "item" : "deathbringer"},
         {"weight" : 0.004, "item" : "deathbringer-recipe"},
@@ -1237,13 +1302,15 @@
         {"weight" : 0.001, "item" : "gorgolithtail"},
         {"weight" : 0.001, "item" : "flailcookie"},
         {"weight" : 0.001, "item" : "flailtrollfist"},
-        {"weight" : 0.007, "item" : [ "fuyinyang", 1]}
+        {"weight" : 0.007, "item" : [ "fuyinyang", 1]},
+        {"weight" : 0.007, "item" : "futrigun"}
       ]
     }],
     [5.9, {
       "pool" : [
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
+        {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
         {"weight" : 0.01, "pool" : "arconLoot"},
         {"weight" : 0.01, "item" : ["gumballgun", 1]},
@@ -1347,7 +1414,8 @@
         {"weight" : 0.001, "item" : "flailcookie"},
         {"weight" : 0.001, "item" : "flailtrollfist"},
         {"weight" : 0.007, "item" : [ "fuyinyang", 1]},
-        {"weight" : 0.001, "item" : [ "cultivatorsgauntlets", 1]}
+        {"weight" : 0.001, "item" : [ "cultivatorsgauntlets", 1]},
+        {"weight" : 0.007, "item" : "futrigun"}
       ]
     }]
   ],

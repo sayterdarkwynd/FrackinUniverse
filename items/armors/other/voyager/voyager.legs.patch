@@ -1,4 +1,11 @@
 [
-  { "op" : "add", "path" : "/acceptsAugmentType", "value" : "back" },
-  { "op" : "replace", "path" : "/tooltipKind", "value" : "upgradeableWeapon" }
+	[
+	{ "op": "test", "path": "/itemTags", "inverse" : false },
+	{"op": "add","path": "/itemTags","value": []},
+	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
+	],
+	[
+	{ "op": "test", "path": "/itemTags", "inverse" : true },
+	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
+	]
 ]

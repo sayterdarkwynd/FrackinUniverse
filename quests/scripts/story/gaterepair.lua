@@ -51,12 +51,14 @@ end
 function questStart()
   player.upgradeShip(config.getParameter("shipUpgrade"))
   self.gateUid = "ancientgate"
+  if not player.hasQuest("madnessquestdata") then
+  	player.startQuest("madnessquestdata")
+  end  
 end
 
 function update(dt)
   self.state:update(dt)
   checkGate()
-
   if storage.stage < 5 and gateActive() then
     storage.stage = 5
     self.state:set(gateRepaired)
