@@ -63,7 +63,7 @@ function init()
 				
 				if type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
 					for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
-						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
+						player.giveBlueprint(blueprint)
 					end
 				elseif data.researchTree[tree][data.acronyms[tree][acr]].unlocks then
 					player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
@@ -74,6 +74,37 @@ function init()
 						_ENV[data.researchTree[tree][data.acronyms[tree][acr]].func](data.researchTree[tree][data.acronyms[tree][acr]].params)
 					end
 				end
+			end
+		end
+	end
+	
+	-- Check if the tree was updated, and reaquire blueprints for already learned research
+	for tree, dataString in pairs(researchedTable) do
+		if data.versions[tree] then
+			local oldVersion = ""
+			
+			local versionEndPos = string.find(dataString, data.versionSplitString)
+			if versionEndPos then
+				oldVersion = string.sub(dataString, 0, versionEndPos-1)
+			end
+			
+			if oldVersion ~= data.versions[tree] then
+				if versionEndPos then
+					dataString = string.sub(dataString, versionEndPos + string.len(data.versionSplitString), string.len(dataString))
+				end
+				
+				local researches = stringToAcronyms(dataString)
+				for _, acr in ipairs(researches) do
+					if type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
+						for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
+							player.giveBlueprint(blueprint)
+						end
+					elseif data.researchTree[tree][data.acronyms[tree][acr]].unlocks then
+						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
+					end
+				end
+				
+				researchedTable[tree] = data.versions[tree]..data.versionSplitString..dataString
 			end
 		end
 	end
@@ -750,6 +781,21 @@ function verifyAcronims()
 	end
 end
 
+function stringToAcronyms(dataString)
+	local splitString = {}
+	local _, count = string.gsub(dataString, ",", "")
+	for i = 1, count do
+		splitpos = string.find(dataString, ",")
+		insertingString = string.sub(dataString, 1, splitpos)
+		dataString = string.gsub(dataString, insertingString, "")
+		
+		insertingString = string.gsub(insertingString, ",", "")
+		table.insert(splitString, insertingString)
+	end
+	
+	return splitString
+end
+
 function buildStates(tree)
 	selected = nil
 	if tree then
@@ -763,20 +809,16 @@ function buildStates(tree)
 	local researchedTable = status.statusProperty("zb_researchtree_researched", {}) or {}
 	local dataString = researchedTable[selectedTree] or ""
 	local insertingString = ""
-	local splitString = {}
 	local splitpos = 0
 	
-	local _, count = string.gsub(dataString, ",", "")
-	for i = 1, count do
-		splitpos = string.find(dataString, ",")
-		insertingString = string.sub(dataString, 1, splitpos)
-		dataString = string.gsub(dataString, insertingString, "")
-		
-		insertingString = string.gsub(insertingString, ",", "")
-		table.insert(splitString, insertingString)
+	local versionEndPos = string.find(dataString, data.versionSplitString)
+	if versionEndPos then
+		dataString = string.sub(dataString, versionEndPos + string.len(data.versionSplitString), string.len(dataString))
 	end
 	
+	local splitString = stringToAcronyms(dataString)
 	local isAvailable = true
+	
 	for _, acr in ipairs(splitString) do
 		if data.acronyms[selectedTree][acr] and researchTree[data.acronyms[selectedTree][acr]] then
 			researchTree[data.acronyms[selectedTree][acr]].state = "researched"
