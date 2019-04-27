@@ -148,7 +148,7 @@ function Weapon:updateAim()
   end
   
   --activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation)
-  activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation, not self.stance.rotationMatters)--, self.stance.allowRotate) -- StardustLib edit; added allowRotate parameter
+  activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation, not self.stance.noAimCompensation)   -- StardustLib edit; added allowRotate parameter
   
   local isPrimary = activeItem.hand() == "primary"
   if isPrimary then
