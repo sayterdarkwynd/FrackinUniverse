@@ -26,10 +26,7 @@ function fuAetherWeather.init(self, config_file)
 end
 
 function fuAetherWeather.applyHealthDrain(self, modifier, dt)
--- spawn madness randomly when this effect is active
-    self.randMadness = math.random(1,3)
-    world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
---
+
   -- Only apply health drain if max energy is below threshold.
   if (status.stat("maxEnergy", 0) < self.energyDrainThreshold) then
     self.parent.applyHealthDrain(self, modifier, dt)
