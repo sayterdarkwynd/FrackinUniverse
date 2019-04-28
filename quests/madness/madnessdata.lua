@@ -17,38 +17,40 @@ function randomEvent()
     self.isProtectedRandVal = self.isProtectedRand / 100
   
     --mentalProtection can make it harder to be affected
-    if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal >= status.stat("mentalProtection")) then 
-      self.randEvent = self.randEvent + math.random(10,70)  --it doesnt*remove* the effect, it just moves it further up the list, and potentially off of it.
+    if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal <= status.stat("mentalProtection")) then 
+      self.randEvent = self.randEvent + math.random(10,70)  --it doesnt *remove* the effect, it just moves it further up the list, and potentially off of it.
     end
 
     if self.randEvent == 1 and storage.madnessCount > 200 then 
 	if player.hasCountOfItem("plantfibre")  then -- consume a plant fibre, just to confuse and confound
 		player.consumeItem("plantfibre", true, false)
+		player.radioMessage("madness1")
 	end      
     end
     if self.randEvent == 2 and storage.madnessCount > 200 then 
 	status.addEphemeralEffect("slow",120) --slows the player for a while
+	player.radioMessage("madness2")
     end
     if self.randEvent == 3 and storage.madnessCount > 200 then 
-	status.addEphemeralEffect("loweredshadow",200) --more succeptible to shadow
+	status.addEphemeralEffect("loweredshadow",300) --more succeptible to shadow
     end
     if self.randEvent == 4 and storage.madnessCount > 200 then 
 	status.addEphemeralEffect("ffbiomecold0",200) --player feels cold
     end
     if self.randEvent == 5 and storage.madnessCount > 200 then 
-	status.addEphemeralEffect("jungleweathernew",120) --player feels hot
+	status.addEphemeralEffect("jungleweathernew",220) --player feels hot
     end
     if self.randEvent == 6 and storage.madnessCount > 200 then 
 	status.addEphemeralEffect("insanity",600) --player feels insane
     end
     if self.randEvent == 7 and storage.madnessCount > 200 then 
-	status.addEphemeralEffect("booze",120) --player feels drunk
+	status.addEphemeralEffect("booze",220) --player feels drunk
     end
     if self.randEvent == 8 and storage.madnessCount > 300 then 
-	status.addEphemeralEffect("maxhealthboostneg20",120) -- lowered health
+	status.addEphemeralEffect("maxhealthboostneg20",220) -- lowered health
     end
     if self.randEvent == 9 and storage.madnessCount > 300 then 
-	status.addEphemeralEffect("maxenergyboostneg20",120) -- lowered energy
+	status.addEphemeralEffect("maxenergyboostneg20",220) -- lowered energy
     end
     if self.randEvent == 10 and storage.madnessCount > 350 then 
 	status.addEphemeralEffect("lowgrav_fallspeedup",20) -- adjusts gravity
@@ -62,6 +64,7 @@ function randomEvent()
     end    
     if self.randEvent == 13 and storage.madnessCount > 900 then 
 	status.addEphemeralEffect("rootfu",10) -- unable to move
+	player.radioMessage("madnessroot")
     end    
     if self.randEvent == 14 and storage.madnessCount > 700 then 
 	status.addEphemeralEffect("burning",320) -- You feel like you are on fire, even though you arent
@@ -98,14 +101,17 @@ function randomEvent()
     end  
     if self.randEvent == 23 and storage.madnessCount > 500 then 
 	status.addEphemeralEffect("runboostdebuff",320) -- run boost!
+	player.radioMessage("madness2")
 	self.timerDegradePenalty = 3
     end     
-    if self.randEvent == 24 and storage.madnessCount > 2100 then
+    if self.randEvent == 24 and storage.madnessCount > 1100 then
       player.consumeCurrency("fuscienceresource", 200) -- lose 200 research
+      player.radioMessage("sanitygain")
       self.timerDegradePenalty = 2
     end
     if self.randEvent == 25 and storage.madnessCount > 2100 then
-      player.consumeCurrency("fumadnessresource", 200) -- lose 200 madness
+      player.consumeCurrency("fumadnessresource", 300) -- lose 300 madness
+      player.radioMessage("sanitygain")
       self.timerDegradePenalty = 2
     end   
     if self.randEvent == 26 and storage.madnessCount > 200 then
@@ -129,20 +135,24 @@ function randomEvent()
     if self.randEvent == 31 and storage.madnessCount > 800 then --if holding a knife, cut yourself
       if root.itemHasTag(storage.currentPrimary, "dagger") or root.itemHasTag(storage.currentSecondary, "dagger") then
 	status.addEphemeralEffect("bleeding05",20) -- You just can't stop stabbing yourself
+	player.radioMessage("madnessharm")
       end
     end
     if self.randEvent == 32 and storage.madnessCount > 500 then --increased hunger
 	status.addEphemeralEffect("feedpackneg",600) --player feels hot
+	player.radioMessage("madnessfood")
 	self.timerDegradePenalty = 2
     end    
     if self.randEvent == 33 and storage.madnessCount > 700 then 
 	status.addEphemeralEffect("jumpboost25neg",240) -- You suddenly suck at jumping
+	player.radioMessage("madness2")
     end   
     if self.randEvent == 34 and storage.madnessCount > 400 then --your hunger total is random
 	    if status.isResource("food") then
 	       local randHunger = math.random(1,70)+2
 	       status.setResource("food",randHunger)
 	    end  
+	    player.radioMessage("madnessfood")
     end
     if self.randEvent == 35 and storage.madnessCount > 1200 then --swap tech
 	player.equipTech("distortionsphere")
@@ -153,8 +163,8 @@ function randomEvent()
     if self.randEvent == 37 and storage.madnessCount > 1200 then --swap tech
 	player.equipTech("dash")
     end      
-    if self.randEvent == 38 and storage.madnessCount > 1500 then --become unarmored by 1d8
-      local penaltyValue = math.random(1,8)
+    if self.randEvent == 38 and storage.madnessCount > 1500 then --become unarmored by 1d20
+      local penaltyValue = math.random(1,20)
 	  status.setPersistentEffects("madnessEffectsMain", {  
 		{stat = "protection", amount = status.stat("protection")-penaltyValue }
 	  })    
