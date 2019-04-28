@@ -12,7 +12,14 @@
   "maxStack" : 1,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 2.0,
+  "effects" : [ [
+    {
+        "effect" : "negativehealth5",
+        "duration" : 60
+    },
+    "madnessgain3"   
+  ] ],  
   "blockingEffects" : [
-    "wellfed"
+    "wellfed","negativehealth5"
   ]
 }
