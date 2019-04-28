@@ -16,7 +16,7 @@ function randomEvent()
     storage.currentPrimary=world.entityHandItem(entity.id(), "primary")
     storage.currentSecondary = world.entityHandItem(entity.id(), "alt")  
     
-	if not isProtected then --player does not have the mentalProtection stat applied
+	if (isProtected == 0) then --player does not have the mentalProtection stat applied
 	    if self.randEvent == 1 and storage.madnessCount > 200 then 
 		if player.hasCountOfItem("plantfibre")  then -- consume a plant fibre, just to confuse and confound
 			player.consumeItem("plantfibre", true, false)
