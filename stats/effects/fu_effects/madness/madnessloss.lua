@@ -2,7 +2,7 @@ function init()
   script.setUpdateDelta(3)
   
   effect.addStatModifierGroup({
-    {stat = "mentalProtection", amount = 1}
+    {stat = "mentalProtection", amount = config.getParameter("mentalProtect")}
   })  
   
 end

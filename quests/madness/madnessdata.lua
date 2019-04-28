@@ -13,11 +13,11 @@ end
 function randomEvent()
     storage.currentPrimary = world.entityHandItem(entity.id(), "primary")  --what are we carrying?
     storage.currentSecondary = world.entityHandItem(entity.id(), "alt")  --what are we carrying?
-    self.isProtectedRand = math.random(1,120)
+    self.isProtectedRand = math.random(1,100)
     self.isProtectedRandVal = self.isProtectedRand / 100
   
     --mentalProtection can make it harder to be affected
-    if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal >= 1) then 
+    if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal >= status.stat("mentalProtection")) then 
       self.randEvent = self.randEvent + math.random(10,70)  --it doesnt*remove* the effect, it just moves it further up the list, and potentially off of it.
     end
 
