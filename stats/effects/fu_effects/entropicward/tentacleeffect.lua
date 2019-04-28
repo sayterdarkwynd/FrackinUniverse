@@ -12,6 +12,9 @@ function init()
           animator.setAnimationState("aura", "on")
           effect.addStatModifierGroup({{stat = "physicalResistance", amount = config.getParameter("resistanceAmount", 0)}})          
 	end
+	
+  self.randVal = math.random(1,12) 
+  world.spawnItem("fumadnessresource",entity.position(),self.randVal)	
 end
 
 function update(dt)
