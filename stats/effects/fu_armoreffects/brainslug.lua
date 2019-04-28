@@ -5,9 +5,12 @@ function init()
     {stat = "energyRegenPercentageRate", baseMultiplier = 0.50},
     {stat = "energyRegenBlockTime", baseMultiplier = 1.35},
     {stat = "fallDamageMultiplier", amount = 0.85},
-    {stat = "foodDelta", baseMultiplier = 1.25},
+    {stat = "maxFood", baseMultiplier = 0.5},
     {stat = "aetherImmunity", amount = 1}
   })  
+  self.timerReduction = config.getParameter("timerReduction") or 0
+  self.madnessTimer = 40 - self.timerReduction
+  self.madVal = math.random(1,4)
 end
 
 function update(dt)
@@ -19,6 +22,13 @@ function update(dt)
   mcontroller.controlModifiers({
       speedModifier = 1.40
     })    
+    
+    
+    self.madnessTimer = self.madnessTimer -1
+    if self.madnessTimer ==0 then
+    	world.spawnItem("fumadnessresource",entity.position(),self.madVal)
+    end
+    
 end
 
 function uninit()
