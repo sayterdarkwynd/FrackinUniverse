@@ -8,8 +8,6 @@ function init()
   self.randEvent = math.random(1,100) --only pick this on init so that effect changes on reloads only
   self.timerDegrade = math.random(1,12)
   self.degradeTotal = 0
-  
-
 end
 
 function randomEvent()
@@ -20,7 +18,7 @@ function randomEvent()
   
     --mentalProtection can make it harder to be affected
     if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal >= 1) then 
-      self.randEvent = self.randEvent * 1.5
+      self.randEvent = self.randEvent + math.random(10,70)  --it doesnt*remove* the effect, it just moves it further up the list, and potentially off of it.
     end
 
     if self.randEvent == 1 and storage.madnessCount > 200 then 
@@ -210,35 +208,29 @@ function update(dt)
 		self.timer = 90
 		randomEvent() --apply random effect
 	  end  
-	  if storage.madnessCount > 900 then
+	  if storage.madnessCount > 1000 then
 		self.timer = 80
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 1
-		self.degradeTotal = 2
-	  end  
-	  if storage.madnessCount > 1000 then
-		self.timer = 75
-		randomEvent() --apply random effect
 		self.timerDegradePenalty = 2
-		self.degradeTotal = 2
+		self.degradeTotal = 1
 	  end  	  
 	  if storage.madnessCount > 1500 then
 		self.timer = 70
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 3
-		self.degradeTotal = 3
+		self.degradeTotal = 2
 	  end  
 	  if storage.madnessCount > 2000 then
 		self.timer = 60
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 4
-		self.degradeTotal = 3
+		self.degradeTotal = 2
 	  end    
 	  if storage.madnessCount > 2500 then
 		self.timer = 50
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 4
-		self.degradeTotal = 4
+		self.degradeTotal = 3
 	  end
 	  if storage.madnessCount > 3000 then
 		self.timer = 40
@@ -256,12 +248,12 @@ function update(dt)
 		self.timer = 20
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 6
-		self.degradeTotal = 5
+		self.degradeTotal = 6
 	  end
 	  if storage.madnessCount > 15000 then
 	        self.timer = 10
 	        randomEvent()
-		self.degradeTotal = 25
+		self.degradeTotal = 32
 		self.timerDegradePenalty = 6
 	  end	  
   end
