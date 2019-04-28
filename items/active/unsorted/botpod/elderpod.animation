@@ -1,0 +1,69 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "weapon" : {
+        "default" : "visible",
+        "states" : {
+          "visible" : {},
+          "hidden" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "botpod" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "transformationGroups" : [ "weapon" ]
+        },
+
+        "partStates" : {
+          "weapon" : {
+            "visible" : {
+              "properties" : {
+                "image" : "<partImage>:<health>.<frame>"
+              }
+            },
+            "hidden" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {}
+  },
+
+  "sounds" : {
+    "throw" : [ "/sfx/projectiles/throw_item_small.ogg" ],
+    "dead" : [ "/sfx/npc/monsters/pod_dead1.ogg" ]
+  },
+
+  "particleEmitters" : {
+    "energyball" : {
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/items/active/unsorted/botpod/energyballdark.animation",
+            "size" : 1,
+            "destructionTime" : 0.3,
+            "destructionAction" : "shrink",
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 0],
+            "timeToLive" : 0,
+            "layer" : "front"
+          }
+        }
+      ]
+    }
+  }
+}

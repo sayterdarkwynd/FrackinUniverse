@@ -2,6 +2,13 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 
 function init()
+
+  --make sure Madness quest is on, this is a safe place to do so
+  if not player.hasQuest("madnessquestdata") then
+  	player.startQuest("madnessquestdata")
+  end
+  
+
   message.setHandler("setQuestFuelCount", function(_, _, value)
     if storage.fuelCount then
 	    storage.fuelCount = value
