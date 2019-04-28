@@ -9,9 +9,9 @@
 
     "crew" : {
       "defaultUniform" : {
-        "head" : "",
-        "chest" : "celestaruniform1chest",
-        "legs" : "celestaruniform1pants"
+        "head" : "nothinghead",
+        "chest" : "startrekchest",
+        "legs" : "startrekpants"
         },
 
       "role" : {
@@ -47,8 +47,34 @@
             ]
           }
         },
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Tell me what you're feeling.",
+              "If you don't share your problems, I cannot help you.",
+              "Have you seen a bearded, sexy commander lately? I'm asking for a friend.",
+              "This isn't the first time I've been exposed to this, it's okay to open up."
+            ]
+          }
+        },        
         "combatBenefit" : {
           "default" : {
+            "default" : [
+              "Tell me what you're feeling.",
+              "If you don't share your problems, I cannot help you.",
+              "Have you seen a bearded, sexy commander lately? I'm asking for a friend.",
+              "This isn't the first time I've been exposed to this, it's okay to open up."
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Tell me what you're feeling.",
+              "If you don't share your problems, I cannot help you.",
+              "Have you seen a bearded, sexy commander lately? I'm asking for a friend.",
+              "This isn't the first time I've been exposed to this, it's okay to open up."
+            ]
+          },
+          "glitch" : {
             "default" : [
               "Tell me what you're feeling.",
               "If you don't share your problems, I cannot help you.",
@@ -65,10 +91,10 @@
     "default" : [
       [0, [
           {
-            "primary" : [ ],
-			"head" :  [],
-			"chest" : [ { "name" : "celestaruniform1chest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-            		"legs" : [ { "name" : "celestaruniform1pants", "count" :1, "parameters" : { "colorIndex" : 8 } } ]
+            "primary" : [ "weaponminer" ],
+	    "head" :  [{ "name" : "nothinghead", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
+	    "chest" : [ { "name" : "startrekchest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
+            "legs" : [ { "name" : "startrekpants", "count" :1, "parameters" : { "colorIndex" : 8 } } ]
           }
         ] ]
     ]
