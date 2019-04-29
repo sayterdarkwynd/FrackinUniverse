@@ -1,0 +1,25 @@
+{
+  "itemName" : "psionicmagammo",
+  "price" : 100,
+  "rarity" : "rare",
+  "tooltipKind" : "ammoitem",
+  "category" : "uniqueWeapon",
+  "inventoryIcon" : "icon.png",
+  "description" : "Magazine full of psionic ammunition.",
+  "shortdescription" : "Psionic Capacitor",
+
+  "ammoType" : "psionicbulletammo",									//type of ammo, has to be same as itemname since it's used for giving the ammo back in case of unloading
+  "ammoTag"  : "bullet",											//ammo tag, has to match one of the tags in weapons "ammoTags" list
+  "ammoCasing" : "psioniccasing",									//casing item spawned on firing the weapon
+  "ammoName" : "Neural Charge",										//used for the tooltip?
+  "ammoIcon" : "/items/augments/ammo/simplebulletammo/icon.png",	//used for the tooltip?
+  "ammoProjectile" : "stickyplasma",								//overrides projectile for the primary attack
+  "ammoProjectileCount" : 1,										//overrides projectile count for the primary. Damage is divided evenly across the projectiles
+  "ammoCount" : 30,													//determines how much ammo this item restores. The excess will be returned in items specified in "ammoType"
+  "ammoDamage" : 0,													//damage per shot added by this type of ammo. This damage is split between all projectiles if projectile count is not 1
+  "magazineType" : "psionicmagammo",									//type of magazine used. put name of "empty magazine" item here, it will be used for spawning one
+  "ammoMax" : 30,													//for use with magazines. Replace "false" with number of ammo per magazine
+
+  "scripts" : [ "/items/augments/ammo/ammo.lua" ],
+  "builder" : "/items/buildscripts/buildammo.lua"
+}

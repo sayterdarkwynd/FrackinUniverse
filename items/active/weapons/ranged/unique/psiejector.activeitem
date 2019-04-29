@@ -10,9 +10,26 @@
   "category" : "armcannon",
   "level" : 5,
   "handGrip" : "wrap",
-  "tooltipKind" : "gun2",
+  //"tooltipKind" : "gun2",
+  "tooltipKind" : "ammogun",
   "itemTags" : ["weapon","ranged","armcannon","psionic","upgradeableWeapon"],
   "twoHanded" : false,
+
+
+
+  "ammoMax" 		: 30,			//Specifies how big the guns' magazine is.
+  "ammoAmount" 		: 0,			//Holds the current amount of ammo. Mostly set dynamically
+  "usesAmmo" 		: true,			//Used by ammo to determine if it should bother trying to load into the gun
+  "ammoName" 		: "",			//Used by the tooltip, set by ammo
+  "ammoType" 		: "",			//Holds the name of currently used ammo item
+  "magazineType"	: "none",		//Holds the name of currently used magazine item or false if not using magazines (can omit this). Set to "none" for making a gun without a mag in currently.
+  "ammoIcon" 		: "",			//Used by the tooltip, set by ammo	
+  "ammoCasing" 		: false,		//Used by the gunfireammo ability. False for no casings, name of the casing item otherwise. Supposed to be set by the ammo item.
+  "extraAmmo" 		: false,		//Used for ejecting ammo, set dynamically
+  "extraAmmoList" 	: [],			//Used for ejecting ammo, set dynamically
+  "reloadParam" 	: false,		//false for reloadammo secondary ejecting ammo, [reload_amount,reload_cost,cooldown] for reloadammo reloading the gun (eg, for reloading one bullet for 20 energy every 2 seconds it will look like [1,20,2])
+
+
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
@@ -22,7 +39,65 @@
   },
   "animationCustom" : {
     "animatedParts" : {
+    
+      "stateTypes" : {
+        "gunState" : {
+          "default" : "empty",
+          "states" : {					//animations are handled by both gunammo.lua (ammo states) and gunfireammo.lua (firing state). If you want to change those, make a copy and work with that.
+			"firing" :{					//gun will transition to "firing" state each time you pull the trigger
+			  "frames" : 4,
+			  "cycle" : 0.05,
+			  "mode" : "transition",
+			  "transition" : "armed"	//transition mode and animation is set up for the crossbow. may not work for everything
+			},
+			    "armed" : {					//gun transitions to "armed" state if it has ammo
+			      "frames" : 1,
+					  "mode":"end"
+			    },
+			    "empty" : {					//gun transitions to "empty" if it has no ammo
+			      "frames" : 1,
+					  "mode":"end"
+			    },
+			"reloading" : {				//reloading animation, placeholder here but can be useful if reloadejects is set to false
+			  "frames" : 1,
+			  "mode" : "transition",
+			  "transition" : "empty"
+			}
+          }
+        }
+      },
+      
       "parts" : {
+	"middle" : {
+          "properties" : {
+            "image" : null
+          },
+
+          "partStates" : {
+            "gunState" : {
+			  "firing" : {
+				"properties" : {
+				  "image" : "<partImage>:firing.<frame><paletteSwaps>"
+				}
+			  },
+		      "armed" : {
+			"properties" : {
+			  "image" : "<partImage>:armed.<frame><paletteSwaps>"
+			}
+		      },
+		      "empty" : {
+			"properties" : {
+			  "image" : "<partImage>:empty.<frame><paletteSwaps>"
+			}
+		      },
+			  "reloading" : {
+			    "properties" : {
+				  "image" : "<partImage>:empty.<frame><paletteSwaps>"
+				}
+			  }
+            }
+          }
+        },      
         "middlefullbright" : {
 		  "properties" : {
 		    "offset" : [1.5, 0.0]//Same as BaseOffset
@@ -41,20 +116,24 @@
           { "particle" : "madnessstaff", "offset" : [1, -0.15] }          
         ]
       }
-    },      
-    "sounds" : { "fire" : [ "/sfx/weapons/illusion.wav", "/sfx/weapons/imperbeam.wav"] },
+    },  
+    "sounds" : {
+      "fire" 		: [ "/sfx/weapons/illusion.wav", "/sfx/weapons/imperbeam.wav"],
+      "empty"		: [ "/sfx/gun/reload/machinepistol_reload_clip1.ogg" ],
+      "switchAmmo" 	: [ "/sfx/gun/reload/shotgun_reload_clip3.ogg" ]
+    },    
     "lights" : { "muzzleFlash" : {"color" : [42, 66, 144] } }    
   },
 
   "baseOffset" : [1.3, 0.0],
   "muzzleOffset" : [-1, 0.15],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : ["/items/active/weapons/ranged/gunammo.lua"],
 
   "elementalType" : "cosmic",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "scripts" : ["/items/active/weapons/ranged/gunfireammo.lua"],
     "class" : "GunFire",
     "fireTime" : 2,
     "baseDps" : 3.4,
@@ -62,7 +141,7 @@
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
-    "fireType" : "auto",
+    "fireType" : "semi",
 
     "projectileType" : "stickyplasma",
     "projectileParameters" : { 
@@ -130,6 +209,8 @@
   "critChance" : 1,
   "critBonus" : 3, 
   
+  "altAbilityType" : "reloadammo",		//the alt ability that handles reloading/ejecting
+    
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
    
 }
