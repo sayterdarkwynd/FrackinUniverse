@@ -34,11 +34,11 @@
       "muzzleFlash" : {
         "particles" : [
           { "particle" : "gausssmoke", "offset" : [0.4, -0.15] },
-          { "particle" : "peglacitrail", "offset" : [0.4, -0.15] },
-          { "particle" : "plasmafireflames", "offset" : [0.4, -0.15] },
-          { "particle" : "teslaboltpurple", "offset" : [0.4, -0.15] },
-          { "particle" : "madnessstaff", "offset" : [0.4, -0.15] },
-          { "particle" : "plasmafireflames", "offset" : [0.4, -0.15] }          
+          { "particle" : "peglacitrail", "offset" : [1, -0.15] },
+          { "particle" : "plasmafireflames", "offset" : [1, -0.15] },
+          { "particle" : "teslaboltpurple", "offset" : [1, -0.15] },
+          { "particle" : "madnessstaff", "offset" : [1, -0.15] },
+          { "particle" : "madnessstaff", "offset" : [1, -0.15] }          
         ]
       }
     },      
@@ -57,8 +57,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 2,
-    "baseDps" : 2,
-    "energyUsage" : 30.0,
+    "baseDps" : 3.4,
+    "energyUsage" : 60.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
@@ -66,13 +66,13 @@
 
     "projectileType" : "stickyplasma",
     "projectileParameters" : { 
-      "speed" : 35,
+      "speed" : 42,
       "knockback" : 30,
       "statusEffects" : [ "stun" ],
       "actionOnReap":[
 	    {
 	      "action" : "projectile",
-	      "inheritDamageFactor" : 0.01,
+	      "inheritDamageFactor" : 0.4,
 	      "type" : "fuhgravityexplosion"
 	    },   
 	    {
@@ -115,7 +115,7 @@
 	      "allowFlip" : false
 	    },
 	    "cooldown" : {
-	      "duration" : 0.1,
+	      "duration" : 1,
 	      "armRotation" : 2,
 	      "weaponRotation" : 2,
 	      "twoHanded" : false,
@@ -127,7 +127,7 @@
   },
 
 
-  "critChance" : 0.25,
+  "critChance" : 1,
   "critBonus" : 3, 
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

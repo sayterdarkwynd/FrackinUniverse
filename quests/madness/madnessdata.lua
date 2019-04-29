@@ -109,32 +109,32 @@ function randomEvent()
 	self.timerDegradePenalty = 3
     end     
     if self.randEvent == 24 and storage.madnessCount > 1100 then
-      player.consumeCurrency("fuscienceresource", 200) -- lose 200 research
+      player.consumeCurrency("fuscienceresource", 1) 
       player.radioMessage("sanitygain")
       self.timerDegradePenalty = 2
     end
     if self.randEvent == 25 and storage.madnessCount > 2100 then
-      player.consumeCurrency("fumadnessresource", 300) -- lose 300 madness
+      player.consumeCurrency("fumadnessresource", 1) 
       player.radioMessage("sanitygain")
       self.timerDegradePenalty = 2
     end   
     if self.randEvent == 26 and storage.madnessCount > 200 then
-      player.addCurrency("fuscienceresource", 200) -- gain 200 research
+      player.addCurrency("fuscienceresource", 1) 
       self.timerDegradePenalty = 2
     end
     if self.randEvent == 27 and storage.madnessCount > 400 then
-      player.addCurrency("fumadnessresource", 200) -- gain 200 madness
+      player.addCurrency("fuscienceresource", 2) 
       self.timerDegradePenalty = 2
     end       
     if self.randEvent == 28 and storage.madnessCount > 1200 then
-      player.addCurrency("essence", 200) -- gain 200 essence
+      player.addCurrency("essence", 1) 
     end  
     if self.randEvent == 29 and storage.madnessCount > 1200 then
-      player.consumeCurrency("essence", 200) -- lose 200 essence
+      player.consumeCurrency("essence", 1) 
       self.timerDegradePenalty = 2
     end      
     if self.randEvent == 30 and storage.madnessCount > 800 then
-      player.addCurrency("essence", 200) -- gain 200 essence
+      player.addCurrency("essence", 2)
     end        
     if self.randEvent == 31 and storage.madnessCount > 800 then --if holding a knife, cut yourself
       if root.itemHasTag(storage.currentPrimary, "dagger") or root.itemHasTag(storage.currentSecondary, "dagger") then
@@ -271,6 +271,7 @@ function update(dt)
 		self.degradeTotal = 6
 	  end
 	  if storage.madnessCount > 15000 then
+	        storage.madnessCount = 15000
 	        self.timer = 10
 	        randomEvent()
 		self.degradeTotal = 32
