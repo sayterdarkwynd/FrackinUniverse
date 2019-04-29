@@ -12,10 +12,9 @@
   "maxStack" : 1000,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 0.9,
-  "blockingEffects" : ["wellfed","booze"],
   "learnBlueprintsOnPickup" : [ "greggnog" ],
   "effects" : [ [
-  		"madnessgain2",
+  		"madnessgain",
 		{
 		"effect" : "regeneration2",
 		"duration" : 20
@@ -25,7 +24,11 @@
 		"amount" : 3,
 		"duration" : 60
         }
-    ] ]
+    ] ],
+    
+  "blockingEffects" : [
+    "wellfed","booze"
+  ]   
 }
 
 
