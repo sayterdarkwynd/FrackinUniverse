@@ -20,7 +20,11 @@ function randomEvent()
     if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal <= status.stat("mentalProtection")) then 
       self.randEvent = self.randEvent + math.random(10,70)  --it doesnt *remove* the effect, it just moves it further up the list, and potentially off of it.
     end
+    
+    -- are we currently carrying any really weird stuff? 
+    isWeirdStuff()
 
+    
     if self.randEvent == 1 and storage.madnessCount > 200 then 
 	if player.hasCountOfItem("plantfibre")  then -- consume a plant fibre, just to confuse and confound
 		player.consumeItem("plantfibre", true, false)
@@ -181,6 +185,12 @@ function randomEvent()
 		{stat = "maxFood", amount = status.stat("maxFood")-penaltyValue }
 	  })    
     end
+    if self.randEvent == 41 and storage.madnessCount > 600 then --swap tech
+      if player.isLounging() then
+        status.addEphemeralEffect("burning",20)
+        player.radioMessage("combust")
+      end
+    end    
 end
 
 function update(dt)
@@ -282,6 +292,27 @@ function update(dt)
 		    self.timerDegrade= 7 - self.timerDegradePenalty    
 	    end
 	end  
+end
+
+function isWeirdStuff()
+    if player.hasItem("faceskin") then
+	player.addCurrency("fumadnessresource", 2) 
+    end
+    if player.hasItem("greghead") then
+	player.addCurrency("fumadnessresource", 2) 
+    end
+    if player.hasItem("gregnog") then
+	player.addCurrency("fumadnessresource", 2) 
+    end    
+    if player.hasItem("babyheadonastick") then
+	player.addCurrency("fumadnessresource", 2) 
+    end
+    if player.hasItem("greghead") then
+	player.addCurrency("fumadnessresource", 2) 
+    end    
+    if player.hasItem("meatpickle") then
+	player.addCurrency("fumadnessresource", 2) 
+    end
 end
 
 function uninit()
