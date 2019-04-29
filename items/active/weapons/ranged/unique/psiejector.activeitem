@@ -1,9 +1,9 @@
 {
   "itemName" : "psiejector",
-  "price" : 40,
+  "price" : 2240,
   "inventoryIcon" : "psiejector.png",
   "maxStack" : 1,
-  "rarity" : "common",
+  "rarity" : "rare",
   "description" : "Fires psionic bursts.
 ^yellow;Counts as 'psionic' for set bonuses^reset;",
   "shortdescription" : "Psionic Disruptor",
@@ -33,13 +33,16 @@
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
-          { "particle" : "teslaboltpurple", "offset" : [0.4, -0.4] },
-          { "particle" : "peglacitrail", "offset" : [0.4, -0.4] },
-          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] }
+          { "particle" : "gausssmoke", "offset" : [0.4, -0.15] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.15] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.15] },
+          { "particle" : "teslaboltpurple", "offset" : [0.4, -0.15] },
+          { "particle" : "madnessstaff", "offset" : [0.4, -0.15] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.15] }          
         ]
       }
     },      
-    "sounds" : { "fire" : [ "/sfx/gun/omnicannon_shot1.ogg","/sfx/gun/omnicannon_shot2.ogg","/sfx/gun/omnicannon_shot3.ogg","/sfx/gun/omnicannon_shot4.ogg" ] },
+    "sounds" : { "fire" : [ "/sfx/weapons/illusion.wav", "/sfx/weapons/imperbeam.wav"] },
     "lights" : { "muzzleFlash" : {"color" : [42, 66, 144] } }    
   },
 
@@ -61,10 +64,10 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "electricguardianpellet",
+    "projectileType" : "stickyplasma",
     "projectileParameters" : { 
-      "speed" : 80,
-      "knockback" : 25,
+      "speed" : 35,
+      "knockback" : 30,
       "statusEffects" : [ "stun" ],
       "actionOnReap":[
 	    {
@@ -82,15 +85,10 @@
 	    }        
      
       ],
-       "actionOnHit":[
-	    {
-	      "action" : "projectile",
-	      "inheritDamageFactor" : 0.01,
-	      "type" : "fuhgravityexplosion"
-	    },          
+       "actionOnHit":[        
 	    {
 		  "action" : "config",
-		  "file" : "/projectiles/explosions/prismaticexplosion/prismaticexplosion.config"
+		  "file" : "/projectiles/explosions/psiexplosion/psiexplosion.config"
 	    },   
 	    {
 	      "action" : "sound",
