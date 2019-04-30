@@ -63,7 +63,10 @@ function init()
 				
 				if type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
 					for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
-						player.giveBlueprint(blueprint)
+					
+						--player.giveBlueprint(blueprint)
+						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)						
+						
 					end
 				elseif data.researchTree[tree][data.acronyms[tree][acr]].unlocks then
 					player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
