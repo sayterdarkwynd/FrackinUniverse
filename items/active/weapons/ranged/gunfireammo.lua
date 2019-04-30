@@ -8,6 +8,7 @@ function GunFire:init()
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
+  
   self.fireHeld = false
   self.weapon.cocked = not( self.fireType == "bolt" )
   

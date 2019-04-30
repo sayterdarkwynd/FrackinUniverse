@@ -6,7 +6,7 @@
   "rarity" : "rare",
   "description" : "Focuses mental power via Psionic energy.
 ^yellow;Can use various types of ammo.^reset;",
-  "shortdescription" : "Psionic Disruptor",
+  "shortdescription" : "Psionic Focus",
   "category" : "armcannon",
   "level" : 3,
   "handGrip" : "wrap",
@@ -16,19 +16,19 @@
   
   "twoHanded" : false,
 
-  "ammoMax" 		: 30,			//Specifies how big the guns' magazine is.
-  "ammoAmount" 		: 0,			//Holds the current amount of ammo. Mostly set dynamically
-  "usesAmmo" 		: true,			//Used by ammo to determine if it should bother trying to load into the gun
-  "ammoTags" 		: ["psionic"],	        //Tags, specifying the kind of ammo the gun takes
-  "ammoName" 		: "",			//Used by the tooltip, set by ammo
-  "ammoType" 		: "",			//Holds the name of currently used ammo item
-  "magazineType"	: "none",		//Holds the name of currently used magazine item or false if not using magazines (can omit this). Set to "none" for making a gun without a mag in currently.
-  "ammoIcon" 		: "",			//Used by the tooltip, set by ammo	
-  "ammoCasing" 		: false,		//Used by the gunfireammo ability. False for no casings, name of the casing item otherwise. Supposed to be set by the ammo item.
-  "extraAmmo" 		: false,		//Used for ejecting ammo, set dynamically
-  "extraAmmoList" 	: [],			//Used for ejecting ammo, set dynamically
-  "reloadParam" 	: false,		//false for reloadammo secondary ejecting ammo, [reload_amount,reload_cost,cooldown] for reloadammo reloading the gun (eg, for reloading one bullet for 20 energy every 2 seconds it will look like [1,20,2])
-
+  "ammoMax" 		: 30,					//Specifies how big the guns' magazine is.
+  "ammoAmount" 		: 0,					//Holds the current amount of ammo. Mostly set dynamically
+  "usesAmmo" 		: true,					//Used by ammo to determine if it should bother trying to load into the gun
+  "ammoTags" 		: ["psionic","psionicheal"],	        //Tags, specifying the kind of ammo the gun takes
+  "ammoName" 		: "",					//Used by the tooltip, set by ammo
+  "ammoType" 		: "",					//Holds the name of currently used ammo item
+  "magazineType"	: "none",				//Holds the name of currently used magazine item or false if not using magazines (can omit this). Set to "none" for making a gun without a mag in currently.
+  "ammoIcon" 		: "",					//Used by the tooltip, set by ammo	
+  "ammoCasing" 		: false,				//Used by the gunfireammo ability. False for no casings, name of the casing item otherwise. Supposed to be set by the ammo item.
+  "extraAmmo" 		: false,				//Used for ejecting ammo, set dynamically
+  "extraAmmoList" 	: [],					//Used for ejecting ammo, set dynamically
+  "reloadParam" 	: false,				//false for reloadammo secondary ejecting ammo, [reload_amount,reload_cost,cooldown] for reloadammo reloading the gun (eg, for reloading one bullet for 20 energy every 2 seconds it will look like [1,20,2])
+  "ammoFireRate"        : 0,				        //the fire rate set by the ammo. 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "middle" : "psiejector.png",
@@ -133,46 +133,16 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfireammo.lua"],
     "class" : "GunFire",
-    "fireTime" : 2,
+    "fireTime" : 0.01,//this is set low for a reason -- ammo determines firing speed
     "baseDps" : 3.5,
-    "energyUsage" : 45.0,
+    "energyUsage" : 12.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
-    "fireType" : "semi",
+    "fireType" : "auto",
 
-    "projectileType" : "stickyplasma",
-    "projectileParameters" : { 
-      "speed" : 42,
-      "knockback" : 30,
-      "statusEffects" : [ "stun" ],
-      "actionOnReap":[
-	    {
-	      "action" : "projectile",
-	      "inheritDamageFactor" : 0.4,
-	      "type" : "fuhgravityexplosion"
-	    },   
-	    {
-		  "action" : "config",
-		  "file" : "/projectiles/explosions/shadowfireboom/shadowfireboom.config"
-	    },	    
-	    {
-	      "action" : "sound",
-	      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
-	    }        
-     
-      ],
-       "actionOnHit":[        
-	    {
-		  "action" : "config",
-		  "file" : "/projectiles/explosions/psiexplosion/psiexplosion.config"
-	    },   
-	    {
-	      "action" : "sound",
-	      "options" : [ "/sfx/weapons/energypew.ogg", "/sfx/weapons/energyweapon2.ogg" ]
-	    }       
-      ]     
-    },
+    "projectileType" : "psionicburst",
+    "projectileParameters" : {  },
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0,
@@ -192,7 +162,7 @@
 	      "allowFlip" : false
 	    },
 	    "cooldown" : {
-	      "duration" : 1,
+	      "duration" : 0.05,
 	      "armRotation" : 2,
 	      "weaponRotation" : 2,
 	      "twoHanded" : false,
