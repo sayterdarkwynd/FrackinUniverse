@@ -11,6 +11,7 @@ function init()
   self.timerReduction = config.getParameter("timerReduction") or 0
   self.madnessTimer = 40 - self.timerReduction
   self.madVal = math.random(1,4)
+  self.activateTimer = 10
 end
 
 function update(dt)
@@ -23,10 +24,11 @@ function update(dt)
       speedModifier = 1.40
     })    
     
-    
+    self.activateTimer = self.activateTimer -1
     self.madnessTimer = self.madnessTimer -1
-    if self.madnessTimer ==0 then
+    if (self.madnessTimer == 0) and (self.activateTimer == 0) then
     	world.spawnItem("fumadnessresource",entity.position(),self.madVal)
+    	self.activateTimer = 10
     end
     
 end
