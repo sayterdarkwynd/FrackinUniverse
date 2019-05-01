@@ -1,4 +1,3 @@
-
 require("/zb/zb_util.lua")
 require("/scripts/util.lua")
 
@@ -63,10 +62,7 @@ function init()
 				
 				if type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
 					for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
-					
-						--player.giveBlueprint(blueprint)
-						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)						
-						
+						player.giveBlueprint(blueprint)
 					end
 				elseif data.researchTree[tree][data.acronyms[tree][acr]].unlocks then
 					player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
@@ -97,11 +93,21 @@ function init()
 				end
 				
 				local researches = stringToAcronyms(dataString)
-				for _, acr in ipairs(researches) do
-					if type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
+				for i, acr in ipairs(researches) do
+					
+					-- Remove acronyms that don't have a linked research
+					if not data.acronyms[tree][acr] then
+						if i == 1 then
+							dataString = string.gsub(dataString, acr..",", "")
+						else
+							dataString = string.gsub(dataString, ","..acr..",", ",")
+						end
+						
+					elseif type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
 						for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
 							player.giveBlueprint(blueprint)
 						end
+						
 					elseif data.researchTree[tree][data.acronyms[tree][acr]].unlocks then
 						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
 					end
@@ -916,11 +922,7 @@ end
 
 cheats = {
 	nocosttoogreat = function()
-		if noCost then
-			noCost = false
-		else
-			noCost = true
-		end
+		noCost = not noCost
 	end,
 	
 	iamabeaconofknowledge = function()
