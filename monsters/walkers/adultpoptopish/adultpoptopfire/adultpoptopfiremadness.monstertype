@@ -1,6 +1,6 @@
 {
-  "type" : "adultpoptopfire3",
-  "shortdescription" : "Magmatop Omega",
+  "type" : "adultpoptopfiremadness",
+  "shortdescription" : "Mamgatop Omega",
   "description" : "I don't recommend petting one of these. Absolutely lethal.",
 
   "categories" : [ "adultpoptopfire" ],
@@ -17,19 +17,17 @@
     "cosmicbow" : "ashgolemLoot",
     "radioactivebow" : "ashgolemLoot",
     "shadowbow" : "ashgolemLoot",
-  		"brain" : "madnessBrainHarvestingGreat"   }],
+    "brain" : "madnessBrainHarvestingGreat"   }
+  ],
 
   "baseParameters" : {
     "scripts" : [
       "/monsters/walkers/adultpoptopish/adultpoptopfire/monster2.lua",
-      "/stats/monstereffects/monsterstatus_deathbombmagma.lua",
-      "/scripts/golemancer/gol_monstermain.lua"
+      "/stats/monstereffects/monsterstatus_deathbombmagma.lua"
     ],
-  "tickEvoTime" : 3,
-  "evolutions" : [ "/scripts/golemancer/evolutions/megamagmagolem2.evo" ],
-
+  
     "renderLayer" : "Monster+10",
-
+    "damageTeamType" : "friendly",
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
     
@@ -298,7 +296,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 1220
+          "baseValue" : 4220
         },
         "protection" : {
           "baseValue" : 0.40
@@ -349,6 +347,6 @@
     "capturable" : false,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "adultpoptopfire" }
+    "captureCollectables" : { "fu_monster" : "adultpoptopfiremadness" }
   }
 }
