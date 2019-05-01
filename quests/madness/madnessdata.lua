@@ -289,15 +289,16 @@ function update(dt)
   -- end CORE
 
  	self.timerDegrade = self.timerDegrade -1
+    
 	if self.timerDegrade <= 0 then
 	--gradually reduce Madness over time
-	    if storage.madnessCount then   --high madness is harder to hold onto, and less farmable, if it always reduces
+	    if storage.madnessCount >= 500 then   --high madness is harder to hold onto, and less farmable, if it always reduces
 			    self.timerDegradePenalty = self.timerDegradePenalty or 0
 			    player.consumeCurrency("fumadnessresource", self.degradeTotal)
 			    self.timerDegrade= 7 - self.timerDegradePenalty        
 	    end	
 	end 
-	
+
  -- apply bonus loss from anti-madness effects
 	self.bonusTimer = self.bonusTimer -1
 	if self.bonusTimer <= 0 then
