@@ -1,0 +1,26 @@
+{
+  "itemName" : "garflipp",
+  "rarity" : "rare",
+  "price" : 350,
+  "category" : "preparedFood",
+  "inventoryIcon" : "garflipp.png",
+  "description" : "A brain-eating leech native to the Vorta sector. Apparently delicious.",
+  "shortdescription" : "Garflipp",
+  "effects" : [ [
+    "madnessgain",
+    {
+        "effect" : "maxhealthscalingboostfood",
+        "duration" : 100,
+	"healthModifier" : 1.20
+    }
+  ] ],
+  "foodValue" : 6,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 0.5,
+  "blockingEffects" : [
+    "wellfed","maxhealthscalingboostfood"
+  ]
+}
