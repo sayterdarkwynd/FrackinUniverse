@@ -5,6 +5,13 @@
         "priority" : 0,
         "default" : "idle",
         "states" : {
+          "invulnerable" : {
+            "frames" : 1,
+            "cycle" : 5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/titanyell.ogg"
+            }
+          },          
           "idle" : {
             "frames" : 4,
             "cycle" : 0.5,
@@ -14,7 +21,12 @@
             "frames" : 3,
             "cycle" : 0.3,
             "mode" : "loop"
-          },          
+          },  
+          "fall" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },            
           "move" : {
             "frames" : 4,
             "cycle" : 0.5,
@@ -34,7 +46,10 @@
             "frames" : 9,
             "cycle" : 0.50,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/reptar6.ogg"
+            }
           },
           "windup" : {
             "frames" : 5,
@@ -45,13 +60,19 @@
           "charge" : {
             "frames" : 8,
             "cycle" : 0.75,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/fleshreaper1.wav"
+            }            
           },
           "winddown" : {
             "frames" : 5,
             "cycle" : 1,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "idle",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/wingflap.ogg"
+            } 
           }
         }
       },
@@ -59,6 +80,10 @@
         "priority" : 1,
         "default" : "idle",
         "states" : {
+          "invulnerable" : {
+            "frames" : 1,
+            "cycle" : 5
+          },          
           "idle" : {
             "frames" : 4,
             "cycle" : 0.5,
@@ -141,6 +166,11 @@
 
         "partStates" : {
           "movement" : {
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },          
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -161,6 +191,11 @@
                 "image" : "<partImage>:windup.<frame>"
               }
             }, 
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },             
             "run" : {
               "properties" : {
                 "image" : "<partImage>:move.<frame>"
@@ -225,6 +260,11 @@
 
         "partStates" : {
           "body" : {
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame>"
+              }
+            },           
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
@@ -244,7 +284,12 @@
               "properties" : {
                 "image" : "<partImage>:windup.<frame>"
               }
-            },             
+            },   
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },              
             "run" : {
               "properties" : {
                 "image" : "<partImage>:move.<frame>"

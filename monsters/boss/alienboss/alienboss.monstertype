@@ -95,7 +95,51 @@
           }
         }
       ],
-
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-invulnerable",
+          "cooldown" : 6,
+          "parameters" : {
+            "windupTime" : 0.35,
+            "windupState" : "windup",
+            "winddownTime" : 0.15,
+            "winddownState" : "winddown",
+            "invulnerableTime" : 5
+          }
+        }    
+      ],
+      "invulnerableActions" : [
+       {
+          "name" : "action-fire",
+          "cooldown" : 15,
+          "parameters" : {
+             "requireLineOfSight" : true,
+             "maximumRange" : 20,
+             "minimumRange" : 5,
+             "windupState" : "windup",
+             "windupTime" : 0.5,
+ 
+             "projectileType" : "lunarishotinitiate",
+             "projectileCount" : 30,
+             "power" : 5,
+             "fireDelay" : 0.00001,
+             "projectileInterval" : 0.00001,
+             "inaccuracy" : 0.08,
+             "projectileSpeed": 50,
+             "gravityMultiplier": 0.6,
+             
+             "fireOffset" : [1.0, 0.7],
+             "aimAtTarget" : true,
+             "fireState" : "charge",
+             "fireSound" : "",
+             "fireArc": false,
+             "winddownState" : "winddown",
+             "winddownTime" : 1  
+          }
+        }     
+      ],
+    
       "followActions" : [
         {
           "name" : "approach-teleport",
@@ -107,10 +151,10 @@
           "parameters" : {
             "canJump" : true,
             "maxJumps" : 6,
-            "jumpXVelocity" : 12,
-            "jumpYVelocity" : 30,
+            "jumpXVelocity" : 32,
+            "jumpYVelocity" : 50,
             "jumpXControlForce" : 50,
-            "minXRange" : 10
+            "minXRange" : 6
           }
         }
       ],
@@ -120,7 +164,7 @@
           "name" : "wander-walk",
           "cooldown" : 6.0,
           "parameters" : {
-            "wanderTime" : [3, 6]
+            "wanderTime" : [1, 2]
           }
         }
       ]
@@ -274,6 +318,6 @@
     "nametagColor" : [64, 200, 255],
     "captureCollectables" : { "fu_monster" : "fleshtyrant" },
     "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -20]
+    "feetOffset" : [0, -8]
   }
 }
