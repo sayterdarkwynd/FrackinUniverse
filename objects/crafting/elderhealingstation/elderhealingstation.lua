@@ -3,8 +3,9 @@ require "/scripts/util.lua"
 function craftingRecipe(items)
   if #items ~= 1 then return end
   local item = items[1]
-  if not item or item.name ~= "botpod" or item.name ~= "elderpod" or item.name ~= "filledcapturepod" then return end
-
+  //if not item or item.name ~= "botpod" or item.name ~= "elderpod" or item.name ~= "filledcapturepod" then return end
+  if not item or not acceptedPods[item.name] then return end
+  
   local healedParams = copy(item.parameters) or {}
   jremove(healedParams, "inventoryIcon")
   jremove(healedParams, "currentPets")
