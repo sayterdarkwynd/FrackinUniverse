@@ -8,6 +8,7 @@ function init()
   self.randEvent = math.random(1,100) --only pick this on init so that effect changes on reloads only
   self.timerDegrade = math.random(1,12)
   self.degradeTotal = 0
+  self.degradeBonus = status.stat("mentalProtection")/10 or 0--incorporate psychiatric buffs
 end
 
 function randomEvent()
@@ -279,19 +280,24 @@ function update(dt)
 	  end	  
   end
   -- end CORE
-  
-    --gradually reduce Madness over time
+
     self.timerDegrade = self.timerDegrade -1
 	if self.timerDegrade < 0 then -- make sure its never negative
 		self.timerDegrade = 0
 	end
 	
 	if self.timerDegrade == 0 then
-	    if storage.madnessCount > 1000 then   --high madness is hard to keep consistent
-		    self.timerDegradePenalty = self.timerDegradePenalty or 0
-		    player.consumeCurrency("fumadnessresource", self.degradeTotal)
-		    self.timerDegrade= 7 - self.timerDegradePenalty    
-	    end
+	
+    	--gradually reduce Madness over time
+	    if self.degradeBonus >= 1 then  -- if you have mental protection, you always lose madness
+			    self.timerDegradePenalty = self.timerDegradePenalty or 0
+			    player.consumeCurrency("fumadnessresource", self.degradeTotal + self.degradeBonus)
+			    self.timerDegrade= 7 - self.timerDegradePenalty        
+	    elseif storage.madnessCount > 1000 then   --high madness is hard to keep consistent
+			    self.timerDegradePenalty = self.timerDegradePenalty or 0
+			    player.consumeCurrency("fumadnessresource", self.degradeTotal)
+			    self.timerDegrade= 7 - self.timerDegradePenalty        
+	    end	
 	end  
 end
 
