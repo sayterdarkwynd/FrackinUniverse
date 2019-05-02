@@ -5,8 +5,8 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "Set Bonuses:
-^red;+10% Shadow Resist^reset;
-^#a00000;+10% Speed, +0.5% HP Regen^reset;
+^yellow;+10% Shadow Resist^reset;
+^cyan;+10% Speed, +0.5% HP Regen^reset;
 ^green;Dagger/Whip/Striker: +4% Crit Chance^reset;",
 
   "shortdescription" : "Sanguine Vest",
@@ -59,6 +59,10 @@
 
   "statusEffects" : [
     "fusetbonusmanager",
+    {
+      "stat" : "healingBonus",
+      "amount" : 0.05
+    },    
     {
       "stat" : "sanguinesetcount",
       "amount" : 1
