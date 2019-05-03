@@ -5,11 +5,11 @@ function init()
     {stat = "mentalProtection", amount = config.getParameter("mentalProtect")}
   })  
   
+  
 end
 
 function update(dt)
 
- 
 end
 
 function uninit()

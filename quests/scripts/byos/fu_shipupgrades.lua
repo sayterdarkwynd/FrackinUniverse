@@ -149,15 +149,18 @@ function lifeSupport(isOn)
 	if isOn then
 		mcontroller.clearControls()
 		status.removeEphemeralEffect("fu_nooxygen")
+		status.setStatusProperty("fu_byosnogravity", false)
 		lifeSupportInit = false
 	else
 		if status.statusProperty("fu_byosgravgenfield", 0) > 0 then
 			mcontroller.clearControls()
+			status.setStatusProperty("fu_byosnogravity", false)
 			lifeSupportInit = false
 		else
 			mcontroller.controlParameters({gravityEnabled = false})
 			if not lifeSupportInit then
 				mcontroller.setVelocity({0, 0})
+				status.setStatusProperty("fu_byosnogravity", true)
 				lifeSupportInit = true
 			end
 		end

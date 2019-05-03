@@ -9,6 +9,7 @@ local recipes =
 {inputs = { wrappedbodyputrid=1 }, outputs = { inferiorbrain=1,fumadnessresource=5,bone=8,leather=1,rottingfleshmaterial=4,slew2=12,biospore=2,liquidbioooze=40 }, time = 14.0},
 {inputs = { wrappedbodyalien=1 }, outputs = { brain=1,fuprecursorresource=5,bone=8,leather=1,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 14.0},
 {inputs = { greghead=1 }, outputs = { fumadnessresource=1,inferiorbrain=1,bone=4,slew2=3}, time = 9.0},
+{inputs = { severedheadplatter=1 }, outputs = { fumadnessresource=1,inferiorbrain=1,bone=4,slew2=3}, time = 9.0},
 {inputs = { faceskin=1 }, outputs = { fumadnessresource=1,liquidblood=2, slew2=1}, time = 7.0},
 {inputs = { leather=1 }, outputs = { slew2=1}, time = 7.0},
 {inputs = { hardenedcarapace=1 }, outputs = { slew2=1}, time = 7.0},
