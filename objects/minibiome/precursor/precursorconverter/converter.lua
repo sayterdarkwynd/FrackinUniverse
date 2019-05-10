@@ -19,9 +19,6 @@ local recipes =
 {inputs = { solariumstar=15 }, outputs = { precursorfluid=2 }, time = 30.0},
 {inputs = { ultronium=1 }, outputs = { precursorfluid=5 }, time = 12.0},
 {inputs = { precursorfluid=50 }, outputs = { essence=1 }, time = 20.0},
-{inputs = { techcard=1 }, outputs = { essence=2 }, time = 30.0},
-{inputs = { upgrademodule=1 }, outputs = { essence=2 }, time = 30.0},
-{inputs = { manipulatormodule=1 }, outputs = { essence=2 }, time = 30.0},
 {inputs = { crunchychick=1 }, outputs = { essence=5 }, time = 10.0},
 {inputs = { crunchychickdeluxe=1 }, outputs = { essence=50 }, time = 10.0},
 {inputs = { crunchychickevil=1 }, outputs = { essence=100 }, time = 10.0}

@@ -19,9 +19,6 @@ local recipes =
 {inputs = { enrichedplutonium=1}, outputs = { bagoffarts=4 }, time = 20.0},
 {inputs = { ultronium=1 }, outputs = { bagoffarts=4 }, time = 20.0},
 {inputs = { precursorfluid=50 }, outputs = { bagoffarts=4 }, time = 20.0},
-{inputs = { techcard=1 }, outputs = { bagoffarts=1 }, time = 4.0},
-{inputs = { upgrademodule=1 }, outputs = { bagoffarts=1 }, time = 4.0},
-{inputs = { manipulatormodule=1 }, outputs = { bagoffarts=1 }, time = 4.0},
 {inputs = { bagoffarts=1 }, outputs = { crunchychick=1 }, time = 8.0}
 -- should have precursor resources crafted here, too
 }
