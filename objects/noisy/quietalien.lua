@@ -7,6 +7,10 @@ end
 
 function onInteraction()
   if self.count < 1 then
+	  if #self.sounds > 0 then
+	    animator.playSound("noise")
+	    self.count = self.count +1
+	  end    
     self.random = math.random(1,4)
     if self.random == 1 then
       world.spawnItem("wrappedbodyalien", object.position(), 1)  
@@ -15,7 +19,7 @@ function onInteraction()
       world.spawnItem("wrappedbody", object.position(), 1)  
       self.count = 1
     elseif self.random == 3 then
-      world.spawnItem("wrappedbodyputrid", object.position(), 1)  
+      world.spawnItem("wrappedbodyputrid", object.position(), 1) 
       self.count = 1          
     else
       self.count = 1

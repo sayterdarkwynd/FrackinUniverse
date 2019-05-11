@@ -7,6 +7,10 @@ end
 
 function onInteraction()
   if self.count < 1 then
+	  if #self.sounds > 0 then
+	    animator.playSound("noise")
+	    self.count = self.count +1
+	  end  
     self.random = math.random(1,2)
     if self.random == 1 then
       world.spawnItem("wrappedbodybirb", object.position(), 1)  
