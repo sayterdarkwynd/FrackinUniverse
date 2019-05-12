@@ -191,7 +191,51 @@ function randomEvent()
         status.addEphemeralEffect("burning",20)
         player.radioMessage("combust")
       end
+    end  
+    if self.randEvent == 42 and storage.madnessCount > 50 then 
+        status.addEphemeralEffect("cultistshieldAlwaysVisible",1)
+    end 
+    if self.randEvent == 43 and storage.madnessCount > 50 then 
+        status.addEphemeralEffect("cultistshieldAlwaysHidden",5)
+    end      
+    if self.randEvent == 44 and storage.madnessCount > 50 then --temporary protection from madness
+	  status.setPersistentEffects("madnessEffectsMain", {  
+		{stat = "mentalProtection", amount = status.stat("mentalProtection") + 0.5 }
+	  })    
+    end 
+    if self.randEvent == 45 and storage.madnessCount > 150 then 
+        status.addEphemeralEffect("partytime2",200)
+    end 
+    if self.randEvent == 46 and storage.madnessCount > 150 then 
+        status.addEphemeralEffect("partytime3",200)
     end    
+    if self.randEvent == 47 and storage.madnessCount > 150 then 
+        status.addEphemeralEffect("partytime4",200)
+    end  
+    if self.randEvent == 48 and storage.madnessCount > 150 then 
+        status.addEphemeralEffect("partytime5",200)
+    end     
+    if self.randEvent == 49 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("biomeairless",200)
+    end   
+    if self.randEvent == 50 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("trollblood",200)
+    end  
+    if self.randEvent == 51 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("toxiccloud",200)
+    end
+    if self.randEvent == 52 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("hypopanic",200)
+    end 
+    if self.randEvent == 53 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("sandstorm",200)
+    end  
+    if self.randEvent == 54 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("nude",200)
+    end   
+    if self.randEvent == 55 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("staffslow2",200)
+    end        
 end
 
 function update(dt)
