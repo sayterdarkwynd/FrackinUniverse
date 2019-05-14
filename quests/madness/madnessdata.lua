@@ -61,7 +61,7 @@ function randomEvent()
 	status.addEphemeralEffect("lowgrav_fallspeedup",20) -- adjusts gravity
     end
     if self.randEvent == 11 and storage.madnessCount > 400 then 
-	status.addEphemeralEffect("medicalimmunization",200) -- immunization. you just dont CARE about sickness.
+	status.addEphemeralEffect("booze",400) 
     end
     if self.randEvent == 12 and storage.madnessCount > 400 then 
 	status.addEphemeralEffect("slimeleech",200) -- slimeleech. ew.
@@ -193,10 +193,10 @@ function randomEvent()
       end
     end  
     if self.randEvent == 42 and storage.madnessCount > 50 then 
-        status.addEphemeralEffect("cultistshieldAlwaysVisible",1)
+        status.addEphemeralEffect("booze",220) --player feels drunk
     end 
-    if self.randEvent == 43 and storage.madnessCount > 50 then 
-        status.addEphemeralEffect("cultistshieldAlwaysHidden",5)
+    if self.randEvent == 43 and storage.madnessCount > 450 then 
+        status.addEphemeralEffect("vulnerability",360) --player feels drunk
     end      
     if self.randEvent == 44 and storage.madnessCount > 50 then --temporary protection from madness
 	  status.setPersistentEffects("madnessEffectsMain", {  
@@ -219,13 +219,19 @@ function randomEvent()
         status.addEphemeralEffect("biomeairless",200)
     end   
     if self.randEvent == 50 and storage.madnessCount > 350 then 
-        status.addEphemeralEffect("trollblood",200)
+      local penaltyValue = math.random(6,40)
+	  status.setPersistentEffects("madnessEffectsMain", {  
+		{stat = "fuCharisma", amount = status.stat("fuCharisma")-penaltyValue }
+	  })
     end  
     if self.randEvent == 51 and storage.madnessCount > 350 then 
         status.addEphemeralEffect("toxiccloud",200)
     end
-    if self.randEvent == 52 and storage.madnessCount > 350 then 
-        status.addEphemeralEffect("hypopanic",200)
+    if self.randEvent == 52 and storage.madnessCount > 550 then 
+      local penaltyValue = math.random(12,60)
+	  status.setPersistentEffects("madnessEffectsMain", {  
+		{stat = "fuCharisma", amount = status.stat("fuCharisma")-penaltyValue }
+	  })
     end 
     if self.randEvent == 53 and storage.madnessCount > 350 then 
         status.addEphemeralEffect("sandstorm",200)
