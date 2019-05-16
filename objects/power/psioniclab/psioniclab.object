@@ -3,13 +3,13 @@
   "colonyTags" : [ "elder", "science", "madness", "scienceoutpost" ],
   "rarity" : "rare",
   "race" : "generic",
-  "category" : "^orange;Extractor^reset;",
+  "category" : "^#d1d1d1;Extractor^reset;",
   "printable" : false,
   "objectType" : "container",
 
   "price" : 450,
   "inventoryIcon" : "psioniclabicon.png",
-  "description" : "Generates nascent psionic energy with a little help from some brains.",
+  "description" : "Generates nascent psionic energy with a little help from some brains.  Requires 60W of power.",
   "shortdescription" : "^cyan;Psionic Amplifier^white;",
   "orientations" : [
      {
@@ -45,13 +45,21 @@
   "animationParts" : {
     "samplingarrayanim" : "psioniclab.png"
   },
-  "scripts" : [ "/objects/generic/extractionlab_madness.lua",
+  
+  "powertype" : "input",
+  "isn_requiredPower" : 60,
+  "isn_liquidCollector" : false,
+  "fu_mintick" : 0,
+  "fu_stationTechLevel" : 3,
+  "fu_timerMod" : 1,
+  
+  "scripts" : [ "/scripts/power.lua", "/objects/generic/extractionlab_madness.lua",
                 "/scripts/npcToyObject.lua" ],
-  "scriptDelta" : 5,
+  "scriptDelta" : 30,
   "recipeGroup" : "extractionlab",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
   "slotCount" : 12,
-  "uiConfig" : "/interface/extractor/extractor.config",
+  "uiConfig" : "/interface/extractor/brainsiphon.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
@@ -74,9 +82,5 @@
     "preciseStandPositionLeft" : [-1.0, 0.0],
     "preciseStandPositionRight" : [1.0, 0.0],
     "maxNpcs" : 1
-  },
-
-  "fu_mintick" : 1,
-  "fu_stationTechLevel" : 1,
-  "fu_timerMod" : 4
+  }
 }

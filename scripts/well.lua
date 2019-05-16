@@ -2,12 +2,22 @@ require "/scripts/kheAA/transferUtil.lua"
 
 function init()
   transferUtil.init()
+	wellRange=config.getParameter("wellRange",20)
+  wellInit()
+
 end
 
 function update(dt)
   if world.type() ~= 'unknown' and world.type() ~= 'playerstation' then
-	  transferUtil.loadSelfContainer()
-	  storage.waterCount = math.min((storage.waterCount or 0) + dt,100)
+		if not deltaTime or (deltaTime > 1) then
+			deltaTime=0
+			transferUtil.loadSelfContainer()
+			wellInit()
+		else
+			deltaTime=deltaTime+dt
+		end
+	
+	  storage.waterCount = math.min((storage.waterCount or 0) + dt/wellsDrawing,100)
 	  for i=2,#config.getParameter('wellslots') do
 	    if world.containerItemAt(entity.id(),i-1) and world.containerItemAt(entity.id(),i-1).name ~= config.getParameter('wellslots')[i].name then
 	      world.containerConsumeAt(entity.id(),i-1,world.containerItemAt(entity.id(),i-1).count)
@@ -46,3 +56,9 @@ function update(dt)
 	  else
   end  
 end
+
+function wellInit()
+	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isWell"}) or {})
+end
+
+function fu_isWell() return true end

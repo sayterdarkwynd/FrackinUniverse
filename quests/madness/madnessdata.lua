@@ -61,7 +61,7 @@ function randomEvent()
 	status.addEphemeralEffect("lowgrav_fallspeedup",20) -- adjusts gravity
     end
     if self.randEvent == 11 and storage.madnessCount > 400 then 
-	status.addEphemeralEffect("medicalimmunization",200) -- immunization. you just dont CARE about sickness.
+	status.addEphemeralEffect("booze",400) 
     end
     if self.randEvent == 12 and storage.madnessCount > 400 then 
 	status.addEphemeralEffect("slimeleech",200) -- slimeleech. ew.
@@ -191,7 +191,57 @@ function randomEvent()
         status.addEphemeralEffect("burning",20)
         player.radioMessage("combust")
       end
+    end  
+    if self.randEvent == 42 and storage.madnessCount > 50 then 
+        status.addEphemeralEffect("booze",220) --player feels drunk
+    end 
+    if self.randEvent == 43 and storage.madnessCount > 450 then 
+        status.addEphemeralEffect("vulnerability",360) --player feels drunk
+    end      
+    if self.randEvent == 44 and storage.madnessCount > 50 then --temporary protection from madness
+	  status.setPersistentEffects("madnessEffectsMain", {  
+		{stat = "mentalProtection", amount = status.stat("mentalProtection") + 0.5 }
+	  })    
+    end 
+    if self.randEvent == 45 and storage.madnessCount > 150 then 
+        status.addEphemeralEffect("partytime2",200)
+    end 
+    if self.randEvent == 46 and storage.madnessCount > 150 then 
+        status.addEphemeralEffect("partytime3",200)
     end    
+    if self.randEvent == 47 and storage.madnessCount > 150 then 
+        status.addEphemeralEffect("partytime4",200)
+    end  
+    if self.randEvent == 48 and storage.madnessCount > 150 then 
+        status.addEphemeralEffect("partytime5",200)
+    end     
+    if self.randEvent == 49 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("biomeairless",200)
+    end   
+    if self.randEvent == 50 and storage.madnessCount > 350 then 
+      local penaltyValue = math.random(6,40)
+	  status.setPersistentEffects("madnessEffectsMain", {  
+		{stat = "fuCharisma", amount = status.stat("fuCharisma")-penaltyValue }
+	  })
+    end  
+    if self.randEvent == 51 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("toxiccloud",200)
+    end
+    if self.randEvent == 52 and storage.madnessCount > 550 then 
+      local penaltyValue = math.random(12,60)
+	  status.setPersistentEffects("madnessEffectsMain", {  
+		{stat = "fuCharisma", amount = status.stat("fuCharisma")-penaltyValue }
+	  })
+    end 
+    if self.randEvent == 53 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("sandstorm",200)
+    end  
+    if self.randEvent == 54 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("nude",200)
+    end   
+    if self.randEvent == 55 and storage.madnessCount > 350 then 
+        status.addEphemeralEffect("staffslow2",200)
+    end        
 end
 
 function update(dt)

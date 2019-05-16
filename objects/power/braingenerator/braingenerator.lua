@@ -98,11 +98,11 @@ function isn_getCurrentPowerOutput(divide)
 	if divisor < 1 then divisor = 1 end
 	
 	local powercount = 0
-	if storage.currentpowerprod > 90 then powercount = 20
-	elseif storage.currentpowerprod > 70 then powercount = 14
-	elseif storage.currentpowerprod > 50 then powercount = 9
-	elseif storage.currentpowerprod > 30 then powercount = 7
-	elseif storage.currentpowerprod > 10 then powercount = 3	
+	if storage.currentpowerprod > 90 then powercount = 60
+	elseif storage.currentpowerprod > 70 then powercount = 45
+	elseif storage.currentpowerprod > 50 then powercount = 28
+	elseif storage.currentpowerprod > 30 then powercount = 15
+	elseif storage.currentpowerprod > 10 then powercount = 9	
 	else powercount = 0 end
 	---sb.logInfo("TGCPOD: Powercount is" .. powercount)
 	
