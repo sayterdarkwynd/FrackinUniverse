@@ -14,6 +14,7 @@ function init()
     transferUtil.init()
     object.setInteractive(true)
     self.powerConsumption = config.getParameter("isn_requiredPower")
+    productionTime = (config.getParameter("productionTime",120))/60
     power.init()
 
     self.maxWeight = {}
@@ -55,7 +56,7 @@ function update(dt)
 	if not storage.timer then
 		storage.timer=0
 	end
-	if storage.timer>=2 then
+	if storage.timer>=productionTime then
 		
 		local worldtype = world.type()
 		if worldtype == 'unknown' then
