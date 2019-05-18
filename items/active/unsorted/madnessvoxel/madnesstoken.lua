@@ -61,6 +61,7 @@ function activate(fireMode, shiftHeld)
   if not storage.firing then
     self.active = true
   end
+  animator.playSound("active")
 end
 
 function updateAim()
