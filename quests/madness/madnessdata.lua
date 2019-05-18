@@ -9,6 +9,10 @@ function init()
   self.timerDegrade = math.random(1,12)
   self.degradeTotal = 0
   self.bonusTimer = 1
+  status.removeEphemeralEffect("partytime5")
+  status.removeEphemeralEffect("partytime4")
+  status.removeEphemeralEffect("partytime3")
+  status.removeEphemeralEffect("partytime2")
 end
 
 function randomEvent()
