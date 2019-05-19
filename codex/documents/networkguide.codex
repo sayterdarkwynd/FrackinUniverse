@@ -9,37 +9,37 @@
 
 	"Pay close attention to the item tooltips for the various ITN objects, these will tell you exactly what each of that object's nodes are used for. Also be aware that some item descriptions will change after being placed - examine them both in your inventory and while placed! Also note that while many of these objects have power nodes that can be used to toggle them between active and inactive, none of the ITN objects require power (as created by generators) to function.",
 
-	"The first core components of the ITN is the storage bridge, which is used to provide containers with input & output wiring nodes by way of proxy. Storage bridges look around themselves for the nearest container to connect to, but can get confused if you put them right between multiple containers. Make sure your storage bridges are placed as close as possible to the one container you want them linked to, and to leave space between them and other containers.",
+	"The first core component of the ITN is the storage bridge, which is used to provide containers with input & output wiring nodes by way of proxy. Storage bridges look around themselves for the nearest container to connect to, but can get confused if you put them right between multiple containers. Make sure your storage bridges are placed as close as possible to the one container you want them linked to, and to leave space between them and other containers.",
 
 	"Storage bridges work with more than just ordinary containers. Almost any object which can be interacted with that has item slots can be linked to a storage bridge. This includes some FrackinUniverse crafting stations and a few misc. objects that might already have power nodes (but no input/output nodes). If you find yourself uncertain about which nodes to use, remember that storage bridge nodes always function as ITN input/output nodes.",
 
-	"Item & Money Transference Devices (ITDs & MTDs) are additional core components of the ITN system. The former is used to move any and all inventory items, while the latter moves currencies, such as pixels & research. You can place them wherever you want as long as you can keep their wiring straight. For the moment, only the ITD can be configured. Mastery of the ITD will bring mastery over the entire ITN system.",
+	"Item & Money Transference Devices (ITDs & MTDs) are additional core components of the ITN system. The former is used to move any and all inventory items, while the latter moves currencies, such as pixels & research. You can place them wherever you want as long as you can keep their wiring straight. Only the ITD can be configured. Mastery of the ITD will bring mastery over the entire ITN system.",
 
 	"In order to set up a basic ITN network, connect the red output node for a container's storage bridge to the second blue input node for an ITD, and then connect the ITD's red output node to the blue input node of a second container's storage bridge. Now all items put into the first container will be automatically moved to the second one.",
 
-	"ITDs can be interacted with to bring up their configuration menu. Input slots indicate what slots in a container the ITD will pull from; output slots designate what inventory slots in a container the ITD will drop items into. You can press the red I button to invert the selected slots, telling the ITD to ignore those specific slots rather use them specifically. Even splitting and slot splitting dictate whether the ITD sorts items into single stacks or splits items between every indicated output slot.",
+	"ITDs can be interacted with to bring up their configuration menu. Input slots indicate what slots in a container the ITD will pull from; output slots designate what inventory slots in a container the ITD will drop items into. You can press the red I button to invert the selected slots, telling the ITD to ignore those specific slots rather than use them specifically. Even splitting and slot splitting dictate whether the ITD sorts items into single stacks or splits items between every indicated output slot.",
 
 	"You can place items in the empty item boxes in the top-right corner of an ITD's configuration screen to tell it to pull specific kinds of items and ignore others. You can further specify whether you want the ITD to pull that exact item, or else the same types or categories of that item. Using the Inverted Logic setting tells the ITD to ignore that specific, type, or category of item.",
 
 	"Item Types: 
-	Hand Tools (Flashlight, rope, picks)
-	Instruments (Violin, xylaphone, assflute)
-	Thrown weapons (Throwing knives, bombs)
-	Augments
-	Collars
-	Dyes",
+  Hand Tools (Flashlight, rope, picks)
+  Instruments (Violin, xylaphone, assflute)
+  Thrown weapons (Throwing knives, bombs)
+  Augments
+  Collars
+  Dyes",
 
 	"Item Categories: 
-	Treasure (Valuable & rare items)
-	Materials (Blocks, liquids, platforms)
-	Rails (Including platforms and trams)
-	Books (Including Blueprints)
-	Ingredients (Crafting materials, ores) 
-	Objects (Containers, crafting stations, lights & doors)
-	Farm (Most agricultural products)
-	Weapons
-	Armor (Including back items & augments)
-	Unhandled (Anything not in the other categories)",
+  Treasure (Valuable & rare items)
+  Materials (Blocks, liquids, platforms)
+  Rails (Including platforms and trams)
+  Books (Including Blueprints)
+  Ingredients (Crafting materials, ores) 
+  Objects (Containers, crafting stations, lights & doors)
+  Farm (Most agricultural products)
+  Weapons
+  Armor (Including back items & augments)
+  Unhandled (Anything not in the other categories)",
 
 	"Once you have a basic ITN setup (described on page 6), you can make a terminal at the electronics/power center. By connecting the output of a container's storage bridge to a terminal's input node, you can see and search through every item stored in that container, and pull them into your inventory - but you cannot send items back through the terminal. A single terminal can be connected to multiple containers this way, letting you view and pull items from multiple containers at once.",
 
@@ -49,27 +49,27 @@
 
 	"Dos & Don'ts:
 
-	Do daisy-chain multiple containers. Use ITDs to draw items out of a container dumped to by another ITD to help automatically compress item stacks where possible and to give you more item-specific storage space.
+  Do daisy-chain multiple containers. Use ITDs to draw items out of a container dumped to by another ITD to help automatically compress item stacks where possible and to give you more item-specific storage space.
 
-	Do Not link the output and input nodes of ITDs directly to one another. This is redundant and can be a source of lag, and ITD configurations do not stack without a separating container.",
+  Do Not link the output and input nodes of ITDs directly to one another. This is redundant and can be a source of lag, and ITD configurations do not stack without a separating container.",
 
 	"Dos & Don'ts:
 
-	Do create branching ITD trees along a string of containers where you feel you need to.
+  Do create branching ITD trees along a string of containers where you feel you need to.
 
-	Do Not create any sort of infinite back-and-forth loop that shifts the same items between the same containers unless you have a very good reason to do so. This can be a substantial source of lag.",
+  Do Not create any sort of infinite back-and-forth loop that shifts the same items between the same containers unless you have a very good reason to do so. This can be a substantial source of lag.",
 
-	"The pros of the ITN system are that it allows for extremely powerful, precise, decentralized and fully automated item storage. No more having to prance between dozens of different containers whenever you get back from a loot haul, you can just drop it all in a single chest and have it all sorted exactly where you need it, or else retrieve exactly the materials you need for crafting without having to leave a crafting station.",
+	"The pros of the ITN system are that it allows for extremely powerful, precise, decentralized and fully automated item storage. No more having to prance between dozens of different containers whenever you get back from a loot haul, you can just drop it all in a single chest and have it all sorted exactly where you need it, or else retrieve exactly the materials you need for crafting without having to leave a crafting station.
 
-	The cons of the ITN system are that that it requires extensive setup and occasionally sophisticated wiring to get working, and requires examples of the items you want it to filter. It can also be a significant source of lag, the process of shifting and reorganizing upwards of a hundred stacks of items between multiple containers at once can be one of the most process-intensive aspects present in Starbound.",
+The cons of the ITN system are that that it requires extensive setup and occasionally sophisticated wiring to get working, and requires examples of the items you want it to filter. It can also be a significant source of lag, the process of shifting and reorganizing upwards of a hundred stacks of items between multiple containers at once can be one of the most process-intensive aspects present in Starbound.",
 
 	"Credits: 
 
-	Kherae for making all this arcane schlock work.
-	HelloWorld123 for writing the original Network Guide.
-	TP for Steambound Reloaded.
-	Cratesmith for the Vesselbound Container Link Code.
-	Terminal for figuring out how to reverse entropy and for writing this guide."
+  Kherae for making all this arcane schlock work.
+  HelloWorld123 for writing the original Network Guide.
+  TP for Steambound Reloaded.
+  Cratesmith for the Vesselbound Container Link Code.
+  Terminal for figuring out how to reverse entropy and for writing this guide."
 
 	],
 	"itemConfig": {
