@@ -1,6 +1,7 @@
 require "/scripts/vec2.lua"
 
 function init()
+	--isInstance=world.getProperty("ephemeral")
 	self.inputLocation = object.position()
 	storage.currentState = setCurrentOutput() and (not object.isOutputNodeConnected(0) or object.getInputNodeLevel(0))
 	animate()
@@ -55,6 +56,16 @@ function moveLiquid(inputLocation,outputLocation)
             end
 			
             world.destroyLiquid(inputLocation)
+			
+			--tested. doesn't work. pretending sufficient throttle by nature of liquid flow.
+			--[[if not isInstance then
+				local bufferLiquid = world.liquidAt(inputLocation)
+				if bufferLiquid then
+					sb.logInfo("Buffer Liquid: %s",bufferLiquid)
+					
+				end
+			end]]
+			
             world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
            
             if storage.outputProtected then 
@@ -89,9 +100,13 @@ function update(dt)
 	
     if storage.currentState then
         if storage.liquidStandard or storage.liquidPressurized then
-            hasMovedLiquid = moveLiquid(self.inputLocation,storage.outputLocation)
-            hasMovedLiquid = moveLiquid(vec2.add(self.inputLocation,{1,0}),vec2.add(storage.outputLocation,{1,0})) or hasMovedLiquid
-			world.callScriptedEntity(world.objectAt(storage.outputLocation),"receivedLiquidPumpInput")
+			local buffer=world.objectAt(storage.outputLocation)
+			if buffer then
+				hasMovedLiquid = moveLiquid(self.inputLocation,storage.outputLocation)
+				hasMovedLiquid = moveLiquid(vec2.add(self.inputLocation,{1,0}),vec2.add(storage.outputLocation,{1,0})) or hasMovedLiquid
+
+				world.callScriptedEntity(buffer,"receivedLiquidPumpInput")
+			end
         end
 	end
 	
