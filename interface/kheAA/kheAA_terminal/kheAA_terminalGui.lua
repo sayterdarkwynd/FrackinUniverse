@@ -5,7 +5,7 @@ local deltatime=0;
 function init()
 	promise=nil
 	storage={}
-	storage.inContainers={}
+	transferUtil.vars.inContainers={}
 	items = {};
 	deltatime=30;
 	pos = world.entityPosition(pane.containerEntityId());
@@ -46,14 +46,14 @@ function refresh()
 	end
 
 	local blankList=false
-	if storage.inContainers==nil then
+	if transferUtil.vars.inContainers==nil then
 		blankList=true
-	elseif util.tableSize(storage.inContainers) == 0 then
+	elseif util.tableSize(transferUtil.vars.inContainers) == 0 then
 		blankList=true
 	end
 	items={};
 	if not blankList then
-		for entId,pos in pairs(storage.inContainers) do
+		for entId,pos in pairs(transferUtil.vars.inContainers) do
 			containerFound(entId,pos)
 		end
 	end

@@ -1,14 +1,10 @@
 liquidLib = {}
 
 function liquidLib.init()
-	if storage.liquids == nil then
-		storage.liquids = {};
-	end
-	if storage.liquidOuts == nil then
-		storage.liquidOuts = {};
-	end
-	
-	storage.inLiquidNode=config.getParameter("kheAA_inLiquidNode")--doesn't actually do anything, doesn't matter at this point.
+	storage.liquids = storage.liquids or {}
+	self.liquidOuts = self.liquidOuts or {}
+	liquidLib.vars={}
+	liquidLib.vars.inLiquidNode=config.getParameter("kheAA_inLiquidNode")--doesn't actually do anything, doesn't matter at this point.
 end
 
 function liquidLib.itemToLiquidId(item)
@@ -51,7 +47,7 @@ end
 
 
 function liquidLib.doPump()
-	if not transferUtil.powerLevel(storage.logicNode) then
+	if not transferUtil.powerLevel(transferUtil.vars.logicNode) then
 		return;
 	end
 	local pos = entity.position();
@@ -106,16 +102,16 @@ function liquidLib.tryConsumeLiqitem(item)
 end
 
 function liquidLib.update(dt)
-	storage.liquidOuts={}
-	if not storage.inLiquidNode then
+	self.liquidOuts={}
+	if not liquidLib.vars.inLiquidNode then
 		return
 	end
-	local tempList=object.getOutputNodeIds(storage.inLiquidNode)
+	local tempList=object.getOutputNodeIds(liquidLib.vars.inLiquidNode)
 	if tempList then
 		for id,node in pairs(tempList) do
 			local result=world.callScriptedEntity(id,"liquidLib.canReceiveLiquid")
 			if result then
-				storage.liquidOuts[id]=world.entityPosition(id)
+				self.liquidOuts[id]=world.entityPosition(id)
 			end
 		end
 	end

@@ -14,7 +14,7 @@ function update(dt)
 	else
 		return
 	end
-	transferUtil.updateInputs(storage.inDataNode)
+	transferUtil.updateInputs(transferUtil.vars.inDataNode)
 end
 
 function transferItem(_, _, itemData)
@@ -44,14 +44,14 @@ end
 
 function transferUtil.sendConfig()
 	local buffer={}
-	for id,pos in pairs(storage.inContainers) do
+	for id,pos in pairs(transferUtil.vars.inContainers) do
 		local awake,newId=transferUtil.containerAwake(id,pos)
 		if awake then
 			id=newId or id
 			buffer[id]=pos
 		end
 	end
-	storage.inContainers=buffer
+	transferUtil.vars.inContainers=buffer
 	return storage;
 end
 
