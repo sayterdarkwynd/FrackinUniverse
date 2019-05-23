@@ -15,22 +15,23 @@ function update(dt)
     else
       local location = isn_getTruePosition()
       local light = getLight(location) or 0
-      local genmult = 1
-      if light >= 0.75 then
-        genmult = 0
-      elseif light >= 0.65 then
+      local genmult = 0
+
+      if light >= 0.50 then
         genmult = 1
-      elseif light >= 0.45 then
-        genmult = 2
       elseif light >= 0.35 then
-        genmult = 3
-      elseif light <= 0 then
-        genmult = 3 * (1 + light)
+        genmult = 2
+      elseif light >= 0.15 then
+        genmult = 3       
+      elseif light <= 0.01 then
+        genmult = 4
+      else 
+        genmult = 0
       end
 
       if world.liquidAt(location)then genmult = genmult * 0.05 end -- water significantly reduces the output
 
-      local generated = math.min(self.powerLevel * genmult,36) -- max at 36 just in case.
+      local generated = math.min(self.powerLevel * genmult,4) -- max at 4 just in case.
 
       if genmult >= 4 then
         animator.setAnimationState("meter", "4")
@@ -50,7 +51,7 @@ function update(dt)
 end
 
 function getLight(location)
-  local objects = world.objectQuery(entity.position(), 20)
+  local objects = world.objectQuery(entity.position(), 10)
   local lights = {}
   for i=1,#objects do
     local light = world.callScriptedEntity(objects[i],'object.getLightColor')
