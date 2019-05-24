@@ -1,17 +1,17 @@
 {
-  "type" : "atropusfish",
-  "shortdescription" : "Deep Seer",
-  "description" : "It lurks in the depths, and sees all.",
+  "type" : "atropuseye",
+  "shortdescription" : "Atropal Eye",
+  "description" : "Spawned from some other creature.",
   "reversed" : true,
   
-  "categories" : [ "atropusfish" ],
+  "categories" : [ "atropuseye" ],
   "parts" : [ "body" ],
 
-  "animation" : "atropusfish.animation",
+  "animation" : "atropuseye.animation",
 
   "dropPools" : [ 
     { 
-      "default" : "bloodgolemLoot", 
+      "default" : "wisperHunting", 
       "bow" : "wisperHunting",
       "firebow" : "wisperHunting",
       "icebow" : "wisperHunting",
@@ -19,7 +19,7 @@
       "electricbow" : "wisperHunting",
       "cosmicbow" : "wisperHunting",
       "radioactivebow" : "wisperHunting",
-      "shadowbow" : "wisperHunting"
+      "shadowbow" : "bloodgolemLoot"
     } 
   ],
 
@@ -57,7 +57,7 @@
           "cooldown" : 5.0,
           "parameters" : {
             "minimumRange" : 1,
-            "maximumRange" : 20,
+            "maximumRange" : 50,
             "windupStopForce" : 25,
             "windupTime" : 1,
 
@@ -75,18 +75,7 @@
         }
       ],
 
-      "periodicActions" : [ 
-        {
-          "name" : "action-spawncompanions",
-          "cooldown" : 8,
-          "parameters" : {
-            "maxCount" : 8,
-            "spawnCooldown" : 5.0,
-            "monsterType" : "atropuseye",
-            "state" : "fire"
-            }
-        }        
-      ],
+      "periodicActions" : [],
 
       "approachActions" : [
         {
@@ -113,47 +102,36 @@
         }        
       ],
 
-      "concurrentActions" : [ 
-        {
-          "name" : "action-spawncompanions",
-          "cooldown" : 8,
-          "parameters" : {
-            "maxCount" : 2,
-            "spawnCooldown" : 5.0,
-            "monsterType" : "atropuseye",
-            "state" : "fire"
-            }
-        }       
-      ],
+      "concurrentActions" : [ ],
 
       "concurrentHostileActions" : [ ]
     },
 
     "touchDamage" : {
-      "poly" : [ [6.25, 2.75], [6.625, 2.375], [6.625, -2.375], [6.25, -2.75], [-6.25, -2.75], [-6.625, -2.375], [-6.625, 2.375], [-6.25, 2.75] ],
-      "damage" : 15,
+      "poly" : [ [2.25, 0.75], [2.625, 0.375], [2.625, -0.375], [2.25, -0.75], [-2.25, -0.75], [-2.625, -0.375], [-2.625, 0.375], [-2.25, 0.75] ],
+      "damage" : 8,
 
       "teamType" : "enemy",
       "damageSourceKind" : "shadow",
       "knockback" : 20,
-      "statusEffects" : [ "madnessgain" ]
+      "statusEffects" : [ ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
-    "selfDamagePoly" : [ [6.25, 2.75], [6.625, 2.375], [6.625, -2.375], [6.25, -2.75], [-6.25, -2.75], [-6.625, -2.375], [-6.625, 2.375], [-6.25, 2.75] ],
+    "selfDamagePoly" : [ [2.25, 0.75], [2.625, 0.375], [2.625, -0.375], [2.25, -0.75], [-2.25, -0.75], [-2.625, -0.375], [-2.625, 0.375], [-2.25, 0.75] ],
 
     "movementSettings" : {
-      "collisionPoly" : [ [6.25, 2.75], [6.625, 2.375], [6.625, -2.375], [6.25, -2.75], [-6.25, -2.75], [-6.625, -2.375], [-6.625, 2.375], [-6.25, 2.75] ],
+      "collisionPoly" : [ [2.25, 0.75], [2.625, 0.375], [2.625, -0.375], [2.25, -0.75], [-2.25, -0.75], [-2.625, -0.375], [-2.625, 0.375], [-2.25, 0.75] ],
 
-      "mass" : 12.0,
-      "walkSpeed" : 2,
-      "runSpeed" : 5,
+      "mass" : 1.0,
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
       "gravityEnabled" : false,
 
       "airForce" : 50,
-      "flySpeed" : 6
+      "flySpeed" : 8
     },
 
     "bodyMaterialKind" : "organic",
@@ -187,13 +165,13 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 930
+          "baseValue" : 30
         },
         "protection" : {
           "baseValue" : 25.0
         },
         "healthRegen" : {
-          "baseValue" : 0.01
+          "baseValue" : 0.0
         },
         "iceImmunity" : {
           "baseValue" : 1.0
@@ -206,25 +184,7 @@
         },        
         "powerMultiplier" : {
           "baseValue" : 1.0
-        },
-        "poisonResistance" : { "baseValue" : 0.7 },
-        "fireResistance" : { "baseValue" : 0.8 },
-        "iceResistance" : { "baseValue" : 0.1 },
-        "electricResistance" : { "baseValue" : 0.92 },
-        "physicalResistance" : { "baseValue" : 0.2 },
-        "shadowResistance" : { "baseValue" : 0.95 },
-        "cosmicResistance" : { "baseValue" : 0.6 },
-        "radioactiveResistance" : { "baseValue" : -0.2 },
-        "bleedingImmunity" : { "baseValue" : 1 },
-        "linerifleResistance" : { "baseValue" : 0.9 },
-        "linerifleStatusImmunity" : { "baseValue" : 1 },
-        "centensianenergyResistance" : { "baseValue" : 0.9 },
-        "centensianenergyStatusImmunity" : { "baseValue" : 0.9 },
-        "xanafianResistance" : { "baseValue" : 0.9 },
-        "xanafianStatusImmunity" : { "baseValue" : 1 },
-        "akkimariacidResistance" : { "baseValue" : 0.9 },
-        "akkimariacidStatusImmunity" : { "baseValue" : 1 },
-        "ignoreInvisibilityEffects" : { "baseValue" : 1 }       
+        }
       },
 
       "resources" : {
