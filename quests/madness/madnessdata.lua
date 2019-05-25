@@ -290,7 +290,7 @@ function update(dt)
   -- Core Adjustments Functions
   self.timer = self.timer - 1
   if self.timer < 1 then 
-	  if storage.madnessCount > 50 then
+	  if storage.madnessCount > 0 then
 		self.timer = 300
 		self.degradeTotal = 1
 		randomEvent() --apply random effect
