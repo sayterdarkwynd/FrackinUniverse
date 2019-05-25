@@ -330,43 +330,43 @@ function update(dt)
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 1
 		self.degradeTotal = 1
-	  end  	  
-	  if storage.madnessCount > 1500 then
-		self.timer = 70
-		randomEvent() --apply random effect
-		self.timerDegradePenalty = 2
-		self.degradeTotal = 1
-	  end  
+	  end  	   
 	  if storage.madnessCount > 2000 then
 		self.timer = 60
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 3
 		self.degradeTotal = 2
 	  end    
-	  if storage.madnessCount > 2500 then
+	  if storage.madnessCount > 3000 then
 		self.timer = 50
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 4
 		self.degradeTotal = 3
 	  end
-	  if storage.madnessCount > 3000 then
+	  if storage.madnessCount > 4000 then
 		self.timer = 40
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 5
 		self.degradeTotal = 4
 	  end  
-	  if storage.madnessCount > 3500 then
+	  if storage.madnessCount > 5000 then
 		self.timer = 30
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 5
+		self.timerDegradePenalty = 6
 		self.degradeTotal = 5
-	  end  
-	  if storage.madnessCount > 4999 then
-		self.timer = 20
+	  end
+	  if storage.madnessCount > 6000 then
+		self.timer = 25
 		randomEvent() --apply random effect
 		self.timerDegradePenalty = 6
 		self.degradeTotal = 6
-	  end
+	  end	  
+	  if storage.madnessCount > 8000 then
+		self.timer = 20
+		randomEvent() --apply random effect
+		self.timerDegradePenalty = 6
+		self.degradeTotal = 16
+	  end	  
 	  if storage.madnessCount > 15000 then
 	        storage.madnessCount = 15000
 	        self.timer = 10
