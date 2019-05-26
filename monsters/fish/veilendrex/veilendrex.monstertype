@@ -1,23 +1,23 @@
 {
-  "type" : "atropusfish",
-  "shortdescription" : "Deep Seer",
-  "description" : "It lurks in the depths, and sees all.",
+  "type" : "veilendrex",
+  "shortdescription" : "Veilendrex",
+  "description" : "One of the most dangerous known predatory fish families.",
   "reversed" : true,
   
-  "categories" : [ "atropusfish" ],
+  "categories" : [ "veilendrex" ],
   "parts" : [ "body" ],
 
-  "animation" : "atropusfish.animation",
+  "animation" : "veilendrex.animation",
 
   "dropPools" : [ 
     { 
-      "default" : "bloodgolemLoot"
+      "default" : "tidewaterFloorChestTreasure"
     } 
   ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/fish/atropusfish/monster.lua"
+      "/monsters/fish/veilendrex/monster.lua"
     ],
 
     "behavior" : "monster",
@@ -68,16 +68,7 @@
       ],
 
       "periodicActions" : [ 
-        {
-          "name" : "action-spawncompanions",
-          "cooldown" : 8,
-          "parameters" : {
-            "maxCount" : 8,
-            "spawnCooldown" : 5.0,
-            "monsterType" : "atropuseye",
-            "state" : "fire"
-            }
-        }        
+   
       ],
 
       "approachActions" : [
@@ -106,19 +97,27 @@
       ],
 
       "concurrentActions" : [ 
-        {
-          "name" : "action-spawncompanions",
-          "cooldown" : 8,
-          "parameters" : {
-            "maxCount" : 2,
-            "spawnCooldown" : 5.0,
-            "monsterType" : "atropuseye",
-            "state" : "fire"
-            }
-        }       
+     
       ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [ 
+        {
+          "name" : "action-projectile",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "shadowcloud",
+            "projectileParameters" : {
+              "power" : 2,
+              "timeToLive" : 4,
+              "speed" : 1
+            },
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0.0]
+          }
+        }      
+      ]
     },
 
     "touchDamage" : {
@@ -179,7 +178,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 930
+          "baseValue" : 730
         },
         "protection" : {
           "baseValue" : 25.0
@@ -199,22 +198,22 @@
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
-        "poisonResistance" : { "baseValue" : 0.7 },
-        "fireResistance" : { "baseValue" : 0.8 },
-        "iceResistance" : { "baseValue" : 0.1 },
-        "electricResistance" : { "baseValue" : 0.92 },
-        "physicalResistance" : { "baseValue" : 0.2 },
-        "shadowResistance" : { "baseValue" : 0.95 },
-        "cosmicResistance" : { "baseValue" : 0.6 },
+        "poisonResistance" : { "baseValue" : 1 },
+        "fireResistance" : { "baseValue" : 0.5 },
+        "iceResistance" : { "baseValue" : -0.1 },
+        "electricResistance" : { "baseValue" : -0.22 },
+        "physicalResistance" : { "baseValue" : 0.6 },
+        "shadowResistance" : { "baseValue" : 0.99 },
+        "cosmicResistance" : { "baseValue" : 0.2 },
         "radioactiveResistance" : { "baseValue" : -0.2 },
         "bleedingImmunity" : { "baseValue" : 1 },
-        "linerifleResistance" : { "baseValue" : 0.9 },
+        "linerifleResistance" : { "baseValue" : 0.5 },
         "linerifleStatusImmunity" : { "baseValue" : 1 },
-        "centensianenergyResistance" : { "baseValue" : 0.9 },
-        "centensianenergyStatusImmunity" : { "baseValue" : 0.9 },
-        "xanafianResistance" : { "baseValue" : 0.9 },
+        "centensianenergyResistance" : { "baseValue" : 0.5 },
+        "centensianenergyStatusImmunity" : { "baseValue" : 1 },
+        "xanafianResistance" : { "baseValue" : 0.5 },
         "xanafianStatusImmunity" : { "baseValue" : 1 },
-        "akkimariacidResistance" : { "baseValue" : 0.9 },
+        "akkimariacidResistance" : { "baseValue" : 0.5 },
         "akkimariacidStatusImmunity" : { "baseValue" : 1 },
         "ignoreInvisibilityEffects" : { "baseValue" : 1 }       
       },
