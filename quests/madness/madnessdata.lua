@@ -13,6 +13,7 @@ function init()
   status.removeEphemeralEffect("partytime4")
   status.removeEphemeralEffect("partytime3")
   status.removeEphemeralEffect("partytime2")
+  self.paintTimer = 0
 end
 
 function randomEvent()
@@ -29,6 +30,7 @@ function randomEvent()
     -- are we currently carrying any really weird stuff? 
     isWeirdStuff()
 
+    
     --set duration of curse
     self.curseDuration = storage.madnessCount / 5  --this value will be adjusted based on effect type
     self.curseDuration_status = self.curseDuration * 2
@@ -286,11 +288,16 @@ end
 function update(dt)
 
 	storage.madnessCount = player.currency("fumadnessresource")
-	    
+	
+   self.paintTimer = self.paintTimer - 1
+   if self.paintTimer == 0 then
+     checkMadnessArt()
+   end
+   
   -- Core Adjustments Functions
   self.timer = self.timer - 1
   if self.timer < 1 then 
-	  if storage.madnessCount > 0 then
+	  if storage.madnessCount > 50 then
 		self.timer = 300
 		self.degradeTotal = 1
 		randomEvent() --apply random effect
@@ -398,6 +405,84 @@ function update(dt)
 	    end
 	    self.bonusTimer = 5
 	end
+end
+
+function checkMadnessArt()
+    if player.hasItem("demiurgepainting") then
+	player.addCurrency("fumadnessresource", 2) 
+	player.giveItem("fumadnessresource")
+    end    
+    if player.hasItem("dreamspainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end    
+    if player.hasItem("fleshpainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end           
+    if player.hasItem("homepainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end           
+    if player.hasItem("hordepainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end           
+    if player.hasItem("nightmarepainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end           
+    if player.hasItem("theexpansepainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end    
+    if player.hasItem("thefishpainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end         
+    if player.hasItem("thehuntpainting") then
+	player.addCurrency("fumadnessresource", 5) 
+    end         
+    if player.hasItem("thepalancepainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end         
+    if player.hasItem("theroompainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end         
+    if player.hasItem("thingsinthedarkpainting") then
+	player.addCurrency("fumadnessresource", 2) 
+    end         
+    if player.hasItem("elderhugepainting") then
+	player.addCurrency("fumadnessresource", 5) 
+    end         
+    if player.hasItem("elderpainting1") then
+	player.addCurrency("fumadnessresource", 2) 
+    end         
+    if player.hasItem("elderpainting2") then
+	player.addCurrency("fumadnessresource", 2) 
+    end  
+    if player.hasItem("elderpainting3") then
+	player.addCurrency("fumadnessresource", 2) 
+    end           
+    if player.hasItem("elderpainting4") then
+	player.addCurrency("fumadnessresource", 2) 
+    end           
+    if player.hasItem("elderpainting5") then
+	player.addCurrency("fumadnessresource", 2) 
+    end           
+    if player.hasItem("elderpainting6") then
+	player.addCurrency("fumadnessresource", 2) 
+    end    
+    if player.hasItem("elderpainting7") then
+	player.addCurrency("fumadnessresource", 2) 
+    end                   
+    if player.hasItem("elderpainting8") then
+	player.addCurrency("fumadnessresource", 2) 
+    end            
+    if player.hasItem("elderpainting9") then
+	player.addCurrency("fumadnessresource", 2) 
+    end           
+    if player.hasItem("elderpainting10") then
+	player.addCurrency("fumadnessresource", 2) 
+    end       
+    if player.hasItem("elderpainting11") then
+	player.addCurrency("fumadnessresource", 2) 
+    end
+    
+    self.paintTimer = 20
 end
 
 function isWeirdStuff()
