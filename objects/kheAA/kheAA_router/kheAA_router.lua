@@ -20,22 +20,22 @@ function update(dt)
 		return;
 	end
 	deltatime = 0;
-	storage.routerItems=world.containerItems(entity.id())
+	self.routerItems=world.containerItems(entity.id())
 	transferUtil.updateInputs();
 	transferUtil.updateOutputs();
 
-	if transferUtil.powerLevel(storage.logicNode) then
+	if transferUtil.powerLevel(transferUtil.vars.logicNode) then
 		routeItems();
-		object.setOutputNodeLevel(storage.outDataNode,util.tableSize(storage.inContainers)>0)
+		object.setOutputNodeLevel(transferUtil.vars.outDataNode,util.tableSize(transferUtil.vars.inContainers)>0)
 	else
-		object.setOutputNodeLevel(storage.outDataNode,false)
+		object.setOutputNodeLevel(transferUtil.vars.outDataNode,false)
 	end
 end
 
 function initVars()
-	storage.routerItems={}
-	storage.inContainers={}
-	storage.outContainers={}
+	self.routerItems={}
+	transferUtil.vars.inContainers={}
+	transferUtil.vars.outContainers={}
 	if storage.inputSlots == nil then
 		storage.inputSlots = {};
 	end
@@ -57,6 +57,7 @@ function initVars()
 	if not storage.invertSlots then
 		storage.invertSlots={false,false}
 	end
+	self.init=true
 end
 
 function sendConfig()
@@ -85,13 +86,14 @@ function sendConfig()
 end
 
 function routeItems()
+	if not self.init then return end
 	if storage.disabled then return end
-	if util.tableSize(storage.inContainers) == 0 then return end
+	if util.tableSize(transferUtil.vars.inContainers) == 0 then return end
 
-	local outputSizeG = util.tableSize(storage.outContainers)
+	local outputSizeG = util.tableSize(transferUtil.vars.outContainers)
 	if outputSizeG == 0 then return end
 
-	for sourceContainer,sourcePos in pairs(storage.inContainers) do
+	for sourceContainer,sourcePos in pairs(transferUtil.vars.inContainers) do
 		local outputSize = outputSizeG
 		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
 		if ping1 ~= nil then
@@ -102,7 +104,7 @@ function routeItems()
 		
 		if sourceItems then
 			for indexIn,item in pairs(sourceItems) do
-				local pass,mod = transferUtil.checkFilter(item)
+				local pass,mod = checkFilter(item)
 				if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
 					local outputSlotCountG = util.tableSize(storage.outputSlots)
 					local originalCount=item.count
@@ -120,7 +122,7 @@ function routeItems()
 						item.count = math.floor(buffer)
 					end
 					item.count = item.count - (item.count % mod)
-					for targetContainer,targetPos in pairs(storage.outContainers) do
+					for targetContainer,targetPos in pairs(transferUtil.vars.outContainers) do
 						local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
 						if ping2 ~= nil then
 							targetContainer=ping2
@@ -149,12 +151,12 @@ function routeItems()
 								item.count = math.floor(buffer)
 							end
 							
-							if transferUtil.validInputSlot(indexIn) then
+							if validInputSlot(indexIn) then
 								if outputSlotCount > 0 then
 									local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
 									if item.count>0 and buffer<=originalCount then
 										for indexOut=1,containerSize do
-											if transferUtil.validOutputSlot(indexOut) then
+											if validOutputSlot(indexOut) then
 												local leftOverItems=world.containerPutItemsAt(targetContainer,item,indexOut-1)
 												if leftOverItems then
 													world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count-leftOverItems.count)
@@ -205,4 +207,59 @@ function routeItems()
 			end
 		end
 	end
+end
+
+function checkFilter(item)
+	if not transferUtil.itemTypes then
+		transferUtil.initTypes()
+	end
+	routerItems=world.containerItems(entity.id())
+	if util.tableSize(routerItems) == 0 then
+		return true, 1
+	end
+	local invertcheck = nil     -- Inverted conditions are match-all
+	local noninvertcheck = nil  -- Non-inverted conditions are match-any
+	local mod = nil             -- Stack comparison check is match-any (first match has priority)
+	for slot,rItem in pairs(routerItems) do
+		if not noninvertcheck or storage.filterInverted[slot] then
+			local result = false
+			local fType = storage.filterType[slot]
+			if fType == -1 and transferUtil.compareItems(rItem, item) then
+				result = true
+			elseif fType == 0 and transferUtil.compareTypes(rItem, item) then
+				result = true
+			elseif fType == 1 and transferUtil.compareCategories(rItem, item) then
+				result = true
+			else
+				result = false
+			end
+			if storage.filterInverted[slot] then
+				result = not result
+				invertcheck = result
+				if not result then return false end
+			else
+				noninvertcheck = result
+			end
+			if result and not mod then
+				mod = rItem.count
+			end
+		end
+	end
+	return (noninvertcheck and invertcheck)
+		or (noninvertcheck == nil and invertcheck)
+		or (noninvertcheck and invertcheck == nil),
+		mod or 1
+end
+
+
+function validInputSlot(slot)
+	if not storage.inputSlots then return false end
+	if util.tableSize(storage.inputSlots) == 0 then return true end
+	return (transferUtil.tFirstIndex(slot,storage.inputSlots)>0) == not storage.invertSlots[1]
+end
+
+function validOutputSlot(slot)
+	if not storage.outputSlots then return false end
+	if util.tableSize(storage.outputSlots) == 0 then return true end
+	return (transferUtil.tFirstIndex(slot,storage.outputSlots)>0) == not storage.invertSlots[2]
 end

@@ -11,8 +11,8 @@ function init()
   })
 
   --gain some madness
-  self.randVal = math.random(1,12) 
-  world.spawnItem("fumadnessresource",entity.position(),self.randVal)	  
+  --self.randVal = math.random(1,12) 
+  --world.spawnItem("fumadnessresource",entity.position(),self.randVal)	  
 end
 
 function update(dt)

@@ -2,14 +2,14 @@ require "/scripts/kheAA/transferUtil.lua"
 
 function init()
 	transferUtil.init()
-	storage.inContainers={}
-	storage.outContainers={}
-	message.setHandler("sendConfig", sendConfig)
+	transferUtil.vars.inContainers={}
+	transferUtil.vars.outContainers={}
+	--[[message.setHandler("sendConfig", sendConfig)
 	message.setHandler("setFilters", function (_, _, types) storage.filterType = types end)
 	message.setHandler("setInverts", function (_, _, inverted) storage.filterInverted = inverted end)
 	message.setHandler("setInvertSlots", function (_, _, inverted) storage.invertSlots = inverted end)
 	message.setHandler("setInputSlots", function (msg, _, slots) storage.inputSlots = slots end)
-	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)
+	message.setHandler("setOutputSlots", function (msg, _, slots) storage.outputSlots = slots end)]]
 	object.setInteractive(false)
 end
 
@@ -22,26 +22,26 @@ function update(dt)
 	transferUtil.updateInputs();
 	transferUtil.updateOutputs();
 	
-	if transferUtil.powerLevel(storage.logicNode) then
+	if transferUtil.powerLevel(transferUtil.vars.logicNode) then
 		routeMoney();
-		object.setOutputNodeLevel(storage.outDataNode,util.tableSize(storage.inContainers)>0)
+		object.setOutputNodeLevel(transferUtil.vars.outDataNode,util.tableSize(transferUtil.vars.inContainers)>0)
 	else
-		object.setOutputNodeLevel(storage.outDataNode,false)
+		object.setOutputNodeLevel(transferUtil.vars.outDataNode,false)
 	end
 end
 
 function routeMoney()
 	if storage.disabled then return end
-	if util.tableSize(storage.inContainers) == 0 then return end
-	if util.tableSize(storage.outContainers) == 0 then return end
+	if util.tableSize(transferUtil.vars.inContainers) == 0 then return end
+	if util.tableSize(transferUtil.vars.outContainers) == 0 then return end
 
-	for sourceContainer,sourcePos in pairs(storage.inContainers) do
+	for sourceContainer,sourcePos in pairs(transferUtil.vars.inContainers) do
 		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
 		if ping1 ~= nil then
 			sourceContainer=ping1
 		end
-		for targetContainer,targetPos in pairs(storage.outContainers) do
-			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,storage.outContainers)
+		for targetContainer,targetPos in pairs(transferUtil.vars.outContainers) do
+			--local targetContainer,targetPos=transferUtil.findNearest(sourceContainer,sourcePos,transferUtil.vars.outContainers)
 			local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
 			if ping2 ~= nil then
 				targetContainer=ping2

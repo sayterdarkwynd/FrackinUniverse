@@ -14,7 +14,7 @@
 
   "itemTags" : ["weapon","ranged","armcannon","psionic","upgradeableWeapon"],
   
-  "twoHanded" : false,
+  "twoHanded" : true,
 
   "ammoMax" 		: 30,					//Specifies how big the guns' magazine is.
   "ammoAmount" 		: 0,					//Holds the current amount of ammo. Mostly set dynamically
@@ -133,9 +133,9 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfireammo.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.01,//this is set low for a reason -- ammo determines firing speed
+    "fireTime" : 1,
     "baseDps" : 3.5,
-    "energyUsage" : 12.0,
+    "energyUsage" : 1.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
@@ -147,7 +147,7 @@
 	    "idle" : {
 	      "armRotation" : 0,
 	      "weaponRotation" : 0,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : true,
 	      "allowFlip" : true
@@ -156,7 +156,7 @@
 	      "duration" : 0,
 	      "armRotation" : 2,
 	      "weaponRotation" : 2,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
@@ -165,7 +165,7 @@
 	      "duration" : 0.05,
 	      "armRotation" : 2,
 	      "weaponRotation" : 2,
-	      "twoHanded" : false,
+	      "twoHanded" : true,
 
 	      "allowRotate" : false,
 	      "allowFlip" : false
