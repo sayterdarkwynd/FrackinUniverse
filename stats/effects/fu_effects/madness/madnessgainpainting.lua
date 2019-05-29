@@ -1,7 +1,7 @@
 function init()
   self.baseValue = config.getParameter("baseValue")
   self.valBonus = config.getParameter("valBonus") - ((config.getParameter("mentalProtection") or 0) * 10)
-  self.timer = 30
+  self.timer = 10
   
   animator.setParticleEmitterOffsetRegion("insane", mcontroller.boundBox())
   animator.setParticleEmitterEmissionRate("insane", config.getParameter("emissionRate", 3))
