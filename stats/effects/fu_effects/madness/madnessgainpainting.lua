@@ -8,25 +8,32 @@ function init()
   animator.setParticleEmitterActive("insane", true)
   activateVisualEffects()
   
+  effect.addStatModifierGroup({{stat = "madnessModifier", amount = (status.stat("madnessModifier") or 0) * 1.25}})  
+  
   script.setUpdateDelta(3)
 end
 
 function update(dt)
+        
   	self.timer = self.timer - dt
-	if (self.timer <= 0) then
-	        self.healthDamage = 3 * ((status.stat("mentalProtection") or 0)*10)
-		self.timer = 30
-		self.totalValue = self.baseValue + self.valBonus
-		world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
-		animator.playSound("madness")
-		activateVisualEffects()
-		    status.applySelfDamageRequest({
-		      damageType = "IgnoresDef",
-		      damage = self.healthDamage,
-		      damageSourceKind = "shadow",
-		      sourceEntityId = entity.id()
-		    })
-  	end
+	if (status.stat("maxEnergy")) then
+		if (self.timer <= 0) then
+			self.healthDamage = ((status.stat("mentalProtection") or 0)*10) + status.stat("madnessModifier")
+			self.timer = 30
+			self.totalValue = self.baseValue + self.valBonus + math.random(1,6)
+			world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
+			animator.playSound("madness")
+			activateVisualEffects()
+			    status.applySelfDamageRequest({
+			      damageType = "IgnoresDef",
+			      damage = self.healthDamage,
+			      damageSourceKind = "shadow",
+			      sourceEntityId = entity.id()
+			    })
+		end
+	else
+		effect.expire()
+	end
 end
 
 

@@ -391,20 +391,21 @@ function update(dt)
 	    if storage.madnessCount >= 500 then   --high madness is harder to hold onto, and less farmable, if it always reduces
 			    self.timerDegradePenalty = self.timerDegradePenalty or 0
 			    player.consumeCurrency("fumadnessresource", self.degradeTotal)
-			    self.timerDegrade= 7 - self.timerDegradePenalty        
+			    self.timerDegrade= 9 - self.timerDegradePenalty        
 	    end	
 	end 
+ 	-- apply bonus loss from anti-madness effects
+		self.bonusTimer = self.bonusTimer -1
+		if self.bonusTimer <= 0 then
+		    self.protectionBonus = status.stat("mentalProtection")/5 + math.random(1,20) -- 1d20 + their Mental Protection / 5
+		    --mentalProtection can make it harder to be affected
+		    if (status.statPositive("mentalProtection")) then 
+		      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
+		    end
+		    self.bonusTimer = 15
+		end	
 
- -- apply bonus loss from anti-madness effects
-	self.bonusTimer = self.bonusTimer -1
-	if self.bonusTimer <= 0 then
-	    self.protectionBonus = status.stat("mentalProtection")/5 + math.random(1,20) -- 1d20 + their Mental Protection / 5
-	    --mentalProtection can make it harder to be affected
-	    if (status.statPositive("mentalProtection")) then 
-	      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
-	    end
-	    self.bonusTimer = 5
-	end
+
 end
 
 function checkMadnessArt()
