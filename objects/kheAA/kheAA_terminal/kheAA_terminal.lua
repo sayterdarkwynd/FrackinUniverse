@@ -51,7 +51,7 @@ function transferUtil.sendConfig()
 			buffer[id]=pos
 		end
 	end
-	transferUtil.vars.inContainers=buffer
-	return storage;
+		transferUtil.vars.inContainers=buffer
+	return transferUtil.vars
 end
 
