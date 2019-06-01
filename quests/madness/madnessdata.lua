@@ -315,63 +315,67 @@ function update(dt)
 	  if storage.madnessCount > 300 then
 		self.timer = 150
 		self.degradeTotal = 1
+		self.timerDegradePenalty = 1
 		randomEvent() --apply random effect	
 	  end
 	  if storage.madnessCount > 400 then
 		self.timer = 120
 		self.degradeTotal = 1
+		self.timerDegradePenalty = 1
 		randomEvent() --apply random effect
 	  end  
 	  if storage.madnessCount > 500 then
 		self.timer = 100
 		self.degradeTotal = 1
+		self.timerDegradePenalty = 2
 		randomEvent() --apply random effect
 	  end
 	  if storage.madnessCount > 700 then
 		self.timer = 90
 		self.degradeTotal = 1
+		self.timerDegradePenalty = 2
 		randomEvent() --apply random effect
 	  end  
 	  if storage.madnessCount > 1000 then
 		self.timer = 80
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 1
+		self.timerDegradePenalty = 3
 		self.degradeTotal = 1
 	  end  	   
 	  if storage.madnessCount > 2000 then
 		self.timer = 60
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 3
+		self.timerDegradePenalty = 4
 		self.degradeTotal = 2
 	  end    
 	  if storage.madnessCount > 3000 then
 		self.timer = 50
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 4
+		self.timerDegradePenalty = 5
 		self.degradeTotal = 3
 	  end
 	  if storage.madnessCount > 4000 then
 		self.timer = 40
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 5
+		self.timerDegradePenalty = 6
 		self.degradeTotal = 4
 	  end  
 	  if storage.madnessCount > 5000 then
 		self.timer = 30
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 6
+		self.timerDegradePenalty = 7
 		self.degradeTotal = 5
 	  end
 	  if storage.madnessCount > 6000 then
 		self.timer = 25
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 6
+		self.timerDegradePenalty = 8
 		self.degradeTotal = 6
 	  end	  
 	  if storage.madnessCount > 8000 then
 		self.timer = 20
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 6
+		self.timerDegradePenalty = 9
 		self.degradeTotal = 16
 	  end	  
 	  if storage.madnessCount > 15000 then
@@ -379,32 +383,30 @@ function update(dt)
 	        self.timer = 10
 	        randomEvent()
 		self.degradeTotal = 32
-		self.timerDegradePenalty = 6
+		self.timerDegradePenalty = 10
 	  end	  
   end
   -- end CORE
 
  	self.timerDegrade = self.timerDegrade -1
-    
-	if self.timerDegrade <= 0 then
-	--gradually reduce Madness over time
-	    if storage.madnessCount >= 500 then   --high madness is harder to hold onto, and less farmable, if it always reduces
-			    self.timerDegradePenalty = self.timerDegradePenalty or 0
-			    player.consumeCurrency("fumadnessresource", self.degradeTotal)
-			    self.timerDegrade= 7 - self.timerDegradePenalty        
-	    end	
+ 	--gradually reduce Madness over time
+	if (self.timerDegrade <= 0) and (storage.madnessCount >= 500) then --high madness is harder to hold onto, and less farmable, if it always reduces
+	    self.timerDegradePenalty = self.timerDegradePenalty or 0
+	    player.consumeCurrency("fumadnessresource", self.degradeTotal)
+	    self.timerDegrade= 30 - self.timerDegradePenalty        
 	end 
-
- -- apply bonus loss from anti-madness effects
+ 	-- apply bonus loss from anti-madness effects even if not above 500 madness
 	self.bonusTimer = self.bonusTimer -1
 	if self.bonusTimer <= 0 then
-	    self.protectionBonus = status.stat("mentalProtection")/5 + math.random(1,20) -- 1d20 + their Mental Protection / 5
+	    self.protectionBonus = status.stat("mentalProtection")/5 + math.random(1,12) -- 1d12 + their Mental Protection / 5
 	    --mentalProtection can make it harder to be affected
 	    if (status.statPositive("mentalProtection")) then 
 	      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
 	    end
-	    self.bonusTimer = 5
-	end
+	    self.bonusTimer = 20
+	end	
+
+
 end
 
 function checkMadnessArt()
