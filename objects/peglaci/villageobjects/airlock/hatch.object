@@ -1,0 +1,49 @@
+{
+  "objectName" : "peglaciairlock",
+  "rarity" : "Common",
+  "category" : "wired",
+  "printable" : false,
+  "price" : 0,
+  "description" : "An airlock - drains water and closes automatically after a moment.",
+  "shortdescription" : "Settlement Airlock",
+  "race" : "peglaci",
+
+  "apexDescription" : "This hatch looks watertight and heavy.",
+  "avianDescription" : "This looks like it could stop water from getting through.",
+  "floranDescription" : "Heavy, wet door.",
+  "glitchDescription" : "Statement. A waterproof hatch with automated sealing procedures.",
+  "humanDescription" : "Nice hatch - heavy duty.",
+  "hylotlDescription" : "We use hatches like this in our domiciles - ours are much finer, of course.",
+  "peglaciDescription" : "We use these hatches in our settlements to prevent water infiltration into our homes. Water's nice, but being dry has its perks!",
+
+
+  "inventoryIcon" : "hatchicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "hatch.png:default",
+      "imagePosition" : [-16, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "right", "left" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/peglaci/airlock/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationParts" : {
+    "door" : "hatch.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inboundNodes" : [ [0, 2] ],
+  "outboundNodes" : [ [0, -1] ],
+
+    "animationCustom" : {
+    "sounds" : {
+      "openSounds" : [ "/sfx/objects/apexcooldoor_open.wav" ],
+      "closeSounds" : [ "/sfx/objects/apexcooldoor_close.wav" ]
+    }
+  }
+}

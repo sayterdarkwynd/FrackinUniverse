@@ -1,0 +1,58 @@
+{
+  "projectileName" : "peglacitier8knife",
+  "frames" : "knife8.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 3,
+  "physics" : "bullet",
+  "bounces" : 0,
+  "frameNumber" : 4, 
+  "lightColor" : [0, 255, 255],
+  "speed" : 10,
+  "timeToLive" : 0.8,
+"actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosion2.config"
+    },
+	{
+      "action" : "projectile",
+      "type" : "icecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 10
+    },
+	{
+      "action" : "projectile",
+      "type" : "icecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 10
+    },
+	{
+      "action" : "projectile",
+      "type" : "icecloud",
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 10
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacitier8knife-2",
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 180
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier8knife-2",
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 195
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier8knife-2",
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 165
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "peglacitrail" ]
+}
+
+

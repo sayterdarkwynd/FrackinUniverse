@@ -1,0 +1,57 @@
+{
+  "projectileName" : "peglacitier10knife-1",
+  "frames" : "iceshot.png",
+ // "materialBlock" : 30,
+  "animationCycle" : 0.5,
+  "armorPenetration" : 3,
+  "physics" : "laser",
+  "bounces" : 3,
+  "frameNumber" : 3,
+  "pointLight" : false,
+  "speed" : 30,
+  "timeToLive" : 0.3,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "peglacitier10knife-1A",
+      "inheritDamageFactor" :0.5,
+      "angleAdjust" : 90
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier10knife-1A",
+      "inheritDamageFactor" :0.5,
+      "angleAdjust" : -90
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier10knife-1A",
+      "inheritDamageFactor" :0.5,
+      "angleAdjust" : 180
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier10knife-2",
+      "inheritDamageFactor" :0.05,
+      "angleAdjust" : 90
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier10knife-2",
+      "inheritDamageFactor" :0.05,
+      "angleAdjust" : -90
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier10knife-2",
+      "inheritDamageFactor" :0.05,
+      "angleAdjust" : 180
+    }
+  ],
+  "statusEffects" : [
+  ],
+  "damageKind" : "dagger",
+  "emitters" : [ "peglacitrail" ]
+}
+
+
