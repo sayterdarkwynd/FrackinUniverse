@@ -30,13 +30,12 @@
       "/monsters/pets/actions/eatAction.lua",
       "/monsters/pets/actions/sleepAction.lua",
       "/monsters/pets/actions/begAction.lua",
-      "/monsters/pets/actions/pounceAction.lua",
-      "/monsters/pets/actions/starvingAction.lua"
+      "/monsters/pets/actions/pounceAction.lua"
     ],
 
     "petBehavior" : "petBehavior",
 
-    "anchorName" : "aviantechstation",
+    "anchorName" : "peglacitechstation",
     "petResources" : {
       "sleepy" : 10,
       "hunger" : 60,
@@ -51,7 +50,7 @@
     },
 
     "actionParams" : {
-      "hungerStarvingLevel" : 80, 
+      "hungerStarvingLevel" : 80,
       "beg" : {
         "minScore" : 50,
         "cooldown" : 5,
@@ -139,34 +138,46 @@
       "statusEffects" : [ ]
     },
 
-    "dropPools" : [ "potreasure" ],
-
     "statusSettings" : {
       "statusProperties" : {
         "targetMaterialKind" : "organic"
       },
 
       "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
         "/stats/monster_primary.lua"
       ],
-      "primaryScriptDelta" : 0,
+      "primaryScriptDelta" : 5,
 
       "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
         "maxHealth" : {
           "baseValue" : 72
         },
         "protection" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
         }
       },
 
       "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
         "health" : {
           "maxStat" : "maxHealth",
           "deltaStat" : "healthRegen",

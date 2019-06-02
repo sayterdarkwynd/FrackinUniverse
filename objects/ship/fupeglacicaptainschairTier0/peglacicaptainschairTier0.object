@@ -1,13 +1,14 @@
 {
-  "objectName" : "peglacicaptainschair",
+  "objectName" : "fupeglacicaptainschairTier0",
+  "colonyTags" : [ "peglaci" ],
   "printable" : false,
   "rarity" : "Common",
+  "category" : "furniture",
   "objectType" : "loungeable",
 
   "description" : "The utmost in comfort and efficiency of design for long journeys.",
   "shortdescription" : "Captain's Chair",
   "race" : "peglaci",
-  "category" : "furniture",
 
   "apexDescription" : "Quite oddly designed, and not exactly comfortable. What are all these probes for?",
   "avianDescription" : "A Peglaci control chair. Looks very advanced, and somewhat comfortable.",
@@ -17,10 +18,10 @@
   "hylotlDescription" : "A command chair with built-in life support systems. Quite elegant.",
   "peglaciDescription" : "The utmost in comfort and efficiency of design for long journeys.",
 
-  "inventoryIcon" : "captainschairicon.png",
+  "inventoryIcon" : "peglacicaptainschairTier0icon.png",
   "orientations" : [
     {
-      "image" : "captainschair.png:<color>.<frame>",
+      "image" : "peglacicaptainschairTier0.png:<color>.<frame>",
       "imagePosition" : [-8, 0],
       "frames" : 5,
       "animationCycle" : 1,
@@ -32,7 +33,7 @@
       "sitPosition" : [8, 18]
     },
     {
-      "image" : "captainschair.png:<color>.<frame>",
+      "image" : "peglacicaptainschairTier0.png:<color>.<frame>",
       "imagePosition" : [-8, 0],
       "frames" : 5,
       "animationCycle" : 1,
@@ -43,11 +44,14 @@
       "sitPosition" : [8, 18]
     }
   ],
-
-  "interactAction" : "ScriptPane",
-  "interactData" : "/interface/cockpit/cockpit.config",
-
   "sitFlipDirection" : false,
-  "soundEffect" : "/sfx/objects/shipengine.ogg",
-  "soundEffectRadius" : 40
+  
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua"
+  ],
+  
+  "sounds" : [ "/sfx/interface/clickon_error.ogg" ]
+  
 }

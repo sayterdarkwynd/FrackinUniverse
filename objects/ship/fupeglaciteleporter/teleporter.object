@@ -1,10 +1,10 @@
 {
-  "objectName" : "peglaciteleporter",
+  "objectName" : "fupeglaciteleporter",
     "printable" : false,
   "rarity" : "Common",
   "description" : "Trusty teleporter, what would I do without you?",
-  "shortdescription" : "Ship Teleporter",
-  "race" : "peglaci",
+  "shortdescription" : "Teleporter",
+  "race" : "fupeglaci",
 
   "apexDescription" : "This is definitely a teleporter, but I've never seen one so small or solid-state.",
   "avianDescription" : "This looks like a teleporter, but it's so small...",
@@ -20,39 +20,9 @@
   "flickerStrength" : 0.05,
   "flickerTiming" : 0.5,
   
-  "interactAction" : "OpenTeleportDialog",
+   "interactAction" : "OpenTeleportDialog",
   "interactData" : "/interface/warping/shipteleporter.config",
-  "soundEffect" : "/sfx/objects/shipengine.ogg",
-  "soundEffectRangeMultiplier" : 1.5,
 
-  "particleEmitter" : {
-    "emissionRate" : 3,
-    "emissionVariance" : 0.5,
-
-    "particle" : {
-      "type" : "ember",
-      "position" : [-0.5, 5],
-      "size" : 1.0,
-      "color" : [238, 255, 186, 255],
-      "light" : [37, 111, 161],
-      "fade" : 0.9,
-      "destructionAction" : "shrink",
-      "destructionTime" : 0.5,
-      "initialVelocity" : [0.0, 0.0],
-      "finalVelocity" : [0.0, 0.0],
-      "approach" : [0, 1],
-      "timeToLive" : 1.5,
-      "layer" : "middle"
-    },
-
-    "particleVariance" : {
-      "initialVelocity" : [0, 5],
-      "finalVelocity" : [0, 1],
-      "position" : [1.5, 0],
-      "size" : 0.5
-    }
-  },
-  
   "inventoryIcon" : "teleportericon.png",
   "orientations" : [
     {
