@@ -3,8 +3,8 @@ require "/scripts/util.lua"
 require "/scripts/activeitem/stances.lua"
 
 function init()
-  initStances()
-  setStance("idle")
+	initStances()
+	setStance("idle")
 end
 
 function update(dt, fireMode, shiftHeld)
