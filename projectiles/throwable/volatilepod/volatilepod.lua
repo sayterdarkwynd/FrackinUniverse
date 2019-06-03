@@ -1,4 +1,5 @@
 require "/scripts/poly.lua"
+require "/scripts/companions/util.lua"
 
 function init()
 end
@@ -45,6 +46,6 @@ function releaseMonsters()
 		projectile.die()
 	end
 	
-	world.spawnMonster(monsterType, mcontroller.position(), params)
+	world.spawnMonster(monsterType, findCompanionSpawnPosition(mcontroller.position(),params.movementSettings.collisionPoly), params)
 	projectile.die()
 end
