@@ -1,0 +1,103 @@
+{
+  "objectName" : "peglacitorch",
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 50,
+  "retainObjectParametersInItem" : true, 
+  
+  "description" : "This glowing crystal can provide illumination under the water as well.",
+  "shortdescription" : "Glowstar",
+  "race" : "peglaci",
+
+  "apexDescription" : "This glowing mechanism sticks to all kinds of surfaces. ",
+  "avianDescription" : "These look oddly similar to our crystal technology...",
+  "floranDescription" : "Cold light from thisss cryssstal.",
+  "glitchDescription" : "Statement. Versatile waterproof lighting.",
+  "humanDescription" : "Hey, these are cool! They're all glowy!",
+  "hylotlDescription" : "Hmm. Seems like the Hyotl could do better.",
+  "peglaciDescription" : "A simple fluorescing crystal. Lights the way, even underwater. ",
+
+
+   "lightColors" : {    "default" :  [100, 200, 255],    "red" : [200, 100, 100],    "blue" : [100, 100, 200],    "green" : [100, 200, 100],    "yellow" : [200, 200, 100],    "orange" : [200, 150, 16],    "pink" : [200, 0, 200],    "black" : [32, 32, 32],    "white" : [200, 200, 200]  },
+  "flickerDistance" : 0.5,
+  "flickerStrength" : 0.001,
+
+  "particleEmitter" : {
+    "emissionRate" : 1.0,
+    "emissionVariance" : 0.5,
+
+    "particle" : {
+      "type" : "ember",
+      "size" : 1.0,
+      "color" : [100, 200, 255,50],
+      "light" : [0, 0, 10],
+      "fade" : 0.9,
+      "initialVelocity" : [0.0, 5.0],
+      "finalVelocity" : [10.0, -50.0],
+      "approach" : [0, 20],
+      "timeToLive" : 0.6,
+      "layer" : "middle"
+    },
+
+    "particleVariance" : {
+      "initialVelocity" : [1.5, 2.0]
+    }
+  },
+
+  "inventoryIcon" : "torchicon.png",
+  "orientations" : [
+    {
+      "image" : "torch.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+
+    {
+      "image" : "torchleft.png:<color>.<frame>",
+      "imagePosition" : [1, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left" ]
+    },
+
+    {
+      "image" : "torchright.png:<color>.<frame>",
+      "imagePosition" : [-2, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+     "spaceScan" : 0.1,
+      "anchors" : [ "right" ]
+    },
+	
+	{
+      "image" : "torchdown.png:<color>.<frame>",
+      "imagePosition" : [0, -1],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+     "spaceScan" : 0.1,
+      "anchors" : [ "top" ]
+    },
+
+    {
+      "image" : "torchback.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "frames" : 4,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/torch.wav"
+
+}

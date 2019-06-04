@@ -1,4 +1,5 @@
 function init()
+  self.applyToTypes = {"player", "npc"}
   self.baseValue = config.getParameter("baseValue")
   self.valBonus = config.getParameter("valBonus") - ((config.getParameter("mentalProtection") or 0) * 10)
   self.timer = 10
@@ -13,6 +14,15 @@ function init()
   script.setUpdateDelta(3)
 end
 
+function allowedType()
+  local entityType = entity.entityType()
+  for _,applyType in ipairs(self.applyToTypes) do
+    if entityType == applyType then
+      return true
+    end
+  end
+end
+
 function update(dt)
         
   	self.timer = self.timer - dt
@@ -21,7 +31,9 @@ function update(dt)
 			self.healthDamage = ((status.stat("mentalProtection") or 0)*10) + status.stat("madnessModifier")
 			self.timer = 30
 			self.totalValue = self.baseValue + self.valBonus + math.random(1,6)
+		if  entity.entityType() =="player" then
 			world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
+		end
 			animator.playSound("madness")
 			activateVisualEffects()
 			    status.applySelfDamageRequest({
