@@ -1,0 +1,79 @@
+{
+  "projectileName" : "peglacisplitterdart1power",
+  "image" : "peglacisplitterdart1power.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 3,
+  "physics" : "grenade",
+  "bounces" : 0,
+  "frameNumber" : 1,  
+  "pointLight" : false,
+  "speed" :60,
+  "timeToLive" : 1,
+  "lightColor" : [255, 40, 190],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bombblockexplosion/bombblockexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 180
+    },
+		{
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -90
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 135
+    },
+		{
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 45
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -45
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -135
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "peglacitrailpurple" ]
+}
+
+
