@@ -1,0 +1,37 @@
+{
+  "projectileName" : "peglacitier6knife-1",
+  "image" : "knife6.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 3,
+  "physics" : "stickybomb",
+  "bounces" : 3,
+  "frameNumber" : 4,
+    "lightColor" : [0, 255, 255],
+  "timeToLive" : 5,
+  "speed" : 18,  
+  "piercing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "peglacitier6knife-1A",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacitier6knife-1A",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 140
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacitier6knife-1A",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : -140
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "peglacitrail" ]
+}
+
+
