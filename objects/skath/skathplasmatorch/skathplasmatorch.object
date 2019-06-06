@@ -1,0 +1,64 @@
+{
+  "objectName" : "skathplasmatorch",
+	"colonyTags": ["light", "skath"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 60,
+
+  "description" : "This torch suspends a tiny plasma orb to provide light.",
+  "shortdescription" : "Skath Plasma Torch",
+  "race" : "skath",
+
+  "apexDescription" : "There is a tiny plasma orb floating above the torch. Better make sure not to touch it.",
+  "avianDescription" : "This reminds me a lot of our crystal torches.",
+  "floranDescription" : "Floran isss scared of blue fireball.",
+  "glitchDescription" : "Ingenious. My readings say that a forcefield keeps the plasma in its place.",
+  "humanDescription" : "It's like a torch but more sci-fi.",
+  "hylotlDescription" : "I don't like the Skath technology in general but this tiny orb of plasma is truly mesmerizing.",
+  "novakidDescription" : "This floatin shiny ball burns just like a torch.",
+   
+   "skathDescription" : "A forcefield keeps this plasma orb in its place so we won't get burned by it's heat.",
+//  "volarianDescription" : "TODO.",
+//  "placeholderDescription" : "TODO.",
+  "statusEffects" : [ ],
+
+  "lightColor" : [0, 240, 255],
+  "flickerDistance" : 0.5,
+  "flickerStrength" : 0.01,
+
+  "inventoryIcon" : "skathplasmatorchicon.png",
+  "orientations" : [
+    {
+      "image" : "skathplasmatorch.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      
+      "direction" : "left",
+      "flipImages" : true,
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "skathplasmatorch.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      
+      "direction" : "right",
+      "animationPosition" : [0, 0],
+
+      "spaces" : [ [0, 0], [0, 1] ],
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "skathplasmatorch.animation",
+  "animationParts" : {
+    "bg" : "skathplasmatorch.png",
+    "fg" : "skathplasmatorchlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

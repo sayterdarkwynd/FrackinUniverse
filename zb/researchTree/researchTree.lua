@@ -1,10 +1,10 @@
-
 require("/zb/zb_util.lua")
 require("/scripts/util.lua")
 
 -- constants
 currencyTable = {}
 researchTree = nil
+gridTileImage = nil
 gridTileSize = {}
 canvasSize = nil
 verified = false
@@ -28,18 +28,15 @@ noCost = false
 
 -- Basic GUI functions
 function init()
-	-- zbutil.DeepPrintTable(status.statusProperty("zb_researchtree_researched", {}))
-	-- status.setStatusProperty("zb_researchtree_researched", nil)
-	
 	currencyTable = root.assetJson("/currencies.config")
 	data = root.assetJson("/zb/researchTree/data.config")
 	for _, file in ipairs(data.researchFiles) do
 		local temp = root.assetJson(file)
 		data = zbutil.MergeTable(data, temp)
 	end
-	-- zbutil.DeepPrintTable(data)
 	
-	gridTileSize = root.imageSize("/zb/researchTree/gridTile.png")
+	gridTileImage = data.defaultGridTileImage
+	gridTileSize = root.imageSize(gridTileImage)
 	canvas = widget.bindCanvas("canvas")
 	canvasSize = widget.getSize("canvas")
 	
@@ -65,7 +62,7 @@ function init()
 				
 				if type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
 					for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
-						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
+						player.giveBlueprint(blueprint)
 					end
 				elseif data.researchTree[tree][data.acronyms[tree][acr]].unlocks then
 					player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
@@ -76,6 +73,47 @@ function init()
 						_ENV[data.researchTree[tree][data.acronyms[tree][acr]].func](data.researchTree[tree][data.acronyms[tree][acr]].params)
 					end
 				end
+			end
+		end
+	end
+	
+	-- Check if the tree was updated, and reaquire blueprints for already learned research
+	for tree, dataString in pairs(researchedTable) do
+		if data.versions[tree] then
+			local oldVersion = ""
+			
+			local versionEndPos = string.find(dataString, data.versionSplitString)
+			if versionEndPos then
+				oldVersion = string.sub(dataString, 0, versionEndPos-1)
+			end
+			
+			if oldVersion ~= data.versions[tree] then
+				if versionEndPos then
+					dataString = string.sub(dataString, versionEndPos + string.len(data.versionSplitString), string.len(dataString))
+				end
+				
+				local researches = stringToAcronyms(dataString)
+				for i, acr in ipairs(researches) do
+					
+					-- Remove acronyms that don't have a linked research
+					if not data.acronyms[tree][acr] then
+						if i == 1 then
+							dataString = string.gsub(dataString, acr..",", "")
+						else
+							dataString = string.gsub(dataString, ","..acr..",", ",")
+						end
+						
+					elseif type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
+						for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
+							player.giveBlueprint(blueprint)
+						end
+						
+					elseif data.researchTree[tree][data.acronyms[tree][acr]].unlocks then
+						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
+					end
+				end
+				
+				researchedTable[tree] = data.versions[tree]..data.versionSplitString..dataString
 			end
 		end
 	end
@@ -105,16 +143,8 @@ function update(dt)
 		widget.setVisible("cheatBox", false)
 	end
 	
-	if selected then
-		if canAfford(selected) then
-			if readOnly or researchTree[selected].state == "researched" then
-				widget.setButtonEnabled("researchButton", false)
-			else
-				widget.setButtonEnabled("researchButton", true)
-			end
-		else
-			widget.setButtonEnabled("researchButton", false)
-		end
+	if selected and not readOnly and researchTree[selected].state == "available" and canAfford(selected) then
+		widget.setButtonEnabled("researchButton", true)
 	else
 		widget.setButtonEnabled("researchButton", false)
 	end
@@ -434,6 +464,9 @@ function treeSelected()
 	local wdata = widget.getListSelected("treeList.list")
 	if wdata then
 		wdata = widget.getData("treeList.list."..wdata)
+		
+		gridTileImage = data.cutsomGridTileImages[wdata] or data.defaultGridTileImage
+		gridTileSize = root.imageSize(gridTileImage)
 		buildStates(wdata)
 		treePickButton()
 		panTo()
@@ -456,7 +489,7 @@ function draw()
 	
 	-- Draw background
 	local gridOffset = {dragOffset.x % gridTileSize[1], dragOffset.y % gridTileSize[2]}
-	canvas:drawTiledImage("/zb/researchTree/gridTile.png", gridOffset, {0, 0, canvasSize[1] + 19, canvasSize[2] + 19})
+	canvas:drawTiledImage(gridTileImage, gridOffset, {0, 0, canvasSize[1] + gridTileSize[1], canvasSize[2] + gridTileSize[2]})
 	
 	-- Draw "READ ONLY"
 	if readOnly then
@@ -757,6 +790,21 @@ function verifyAcronims()
 	end
 end
 
+function stringToAcronyms(dataString)
+	local splitString = {}
+	local _, count = string.gsub(dataString, ",", "")
+	for i = 1, count do
+		splitpos = string.find(dataString, ",")
+		insertingString = string.sub(dataString, 1, splitpos)
+		dataString = string.gsub(dataString, insertingString, "")
+		
+		insertingString = string.gsub(insertingString, ",", "")
+		table.insert(splitString, insertingString)
+	end
+	
+	return splitString
+end
+
 function buildStates(tree)
 	selected = nil
 	if tree then
@@ -770,20 +818,16 @@ function buildStates(tree)
 	local researchedTable = status.statusProperty("zb_researchtree_researched", {}) or {}
 	local dataString = researchedTable[selectedTree] or ""
 	local insertingString = ""
-	local splitString = {}
 	local splitpos = 0
 	
-	local _, count = string.gsub(dataString, ",", "")
-	for i = 1, count do
-		splitpos = string.find(dataString, ",")
-		insertingString = string.sub(dataString, 1, splitpos)
-		dataString = string.gsub(dataString, insertingString, "")
-		
-		insertingString = string.gsub(insertingString, ",", "")
-		table.insert(splitString, insertingString)
+	local versionEndPos = string.find(dataString, data.versionSplitString)
+	if versionEndPos then
+		dataString = string.sub(dataString, versionEndPos + string.len(data.versionSplitString), string.len(dataString))
 	end
 	
+	local splitString = stringToAcronyms(dataString)
 	local isAvailable = true
+	
 	for _, acr in ipairs(splitString) do
 		if data.acronyms[selectedTree][acr] and researchTree[data.acronyms[selectedTree][acr]] then
 			researchTree[data.acronyms[selectedTree][acr]].state = "researched"
@@ -878,11 +922,7 @@ end
 
 cheats = {
 	nocosttoogreat = function()
-		if noCost then
-			noCost = false
-		else
-			noCost = true
-		end
+		noCost = not noCost
 	end,
 	
 	iamabeaconofknowledge = function()

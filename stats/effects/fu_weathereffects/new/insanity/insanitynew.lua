@@ -96,13 +96,19 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
     -- Update this effect's debuff modifier group.
     effect.setStatModifierGroup(self.debuffGroup, newGroup)
     -- Display alerts (e.g. "-Max HP" popup).
+	-- spawn madness randomly when this effect is active
+	    self.randMadness = math.random(1,6)
+	    world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
+	--    
     self:createAlert()
   end
 end
 
 function fuInsanityWeather.insanityChatter(self)
+
   -- Insanity messages for hunger take priority (most of the time).
   local hunger = self:hungerLevel()
+  
   if (hunger < 60) and (math.random() >= 0.3) then
     if (hunger < 5) then
       self:sendWarning("hungry5")
@@ -202,13 +208,5 @@ end
     shouldn't need to be modified (apart from the class name). ]]--
 
 function update(dt)
-
--- spawn madness randomly when this effect is active
-  self.randMadness = math.random(1,100)
-  if self.randMadness == 1 then
-    world.spawnItem("fumadnessresource",entity.id())
-  end
---
-
   fuInsanityWeather:update(dt)
 end

@@ -19,7 +19,7 @@
     "novakidDescription" : "Would this be able to pull from my body? I hope not...",
 
     "scripts" : [ "/scripts/power.lua","/objects/power/isn_atmoscondenser/isn_resource_generator.lua"],
-    "scriptDelta" : 120,
+    "scriptDelta" : 10,
 
     "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
     "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
@@ -27,6 +27,10 @@
     "uiConfig" : "/objects/power/isn_atmoscondenser/isn_atmoscondenser.config",
     "frameCooldown" : 67,
     "autoCloseCooldown" : 3600,
+	
+	"airWellRange":30,
+	
+	"productionTime":120,
 
 
     // Condenser Outputs
@@ -167,7 +171,7 @@
         "sulphuric" : [
             { "weight" : "common",   "items" : [ "liquidsulphuricacid", "ff_mercury", "fu_hydrogen", "fu_nitrogen", "liquidpoison","fu_carbondioxide" ] },
             { "weight" : "uncommon", "items" : [ "phosphorus", "liquidblacktar", "cinnabarore", "methanol" ] },
-            { "weight" : "rare",     "items" : [ "liquidmercury", "tritium", "neptuniumore", "fu_oxygen" ] }
+            { "weight" : "rare",     "items" : [ "ff_mercury", "tritium", "neptuniumore", "fu_oxygen" ] }
         ],
         "sulphuricdark" : "sulphuric",
         "sulphuricocean" : "sulphuric",
@@ -179,7 +183,7 @@
         "toxic" : [
             { "weight" : "common",   "items" : [ "ammoniumsulfate", "toxicwaste", "alienwoodsap", "fu_hydrogen", "fu_nitrogen", "methanol", "liquidpoison" ] },
             { "weight" : "uncommon", "items" : [ "venomsample", "ff_mercury", "liquidalienjuice", "liquidbioooze","fu_carbondioxide" ] },
-            { "weight" : "rare",     "items" : [ "liquidorganicsoup", "liquidmercury", "tritium", "uraniumore", "plutoniumore" ] }
+            { "weight" : "rare",     "items" : [ "liquidorganicsoup", "ff_mercury", "tritium", "uraniumore", "plutoniumore" ] }
         ]
     },
 
