@@ -4,7 +4,7 @@
     "species" : "apex",
     "rules" : [
     ],
-    "anchor" : [ "apextestfacilitybase1" ],
+    "anchor" : [ "apextestfacilitybasefu1" ],
     "maxRadius" : 1000000,
     "maxParts" : 65,
     "extendSurfaceFreeSpace" : 100,
@@ -13,6 +13,15 @@
 
   "parts" : [
     {
+      "name" : "apextestfacilitybasefu1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apextestfacilitybase2", "apextestfacility2a", "apextestfacility2b" ] ]
+
+      ],
+      "def" : [ "tmx", "apextestfacilitybasefu1.json" ]
+    },
+    {
       "name" : "apextestfacilitybase1",
       "rules" : [
         [ "maxSpawnCount", [1] ],
@@ -20,12 +29,12 @@
 
       ],
       "def" : [ "tmx", "apextestfacilitybase1.json" ]
-    },
+    },    
     {
       "name" : "apextestfacilitybase2",
       "rules" : [
         [ "maxSpawnCount", [1] ],
-        [ "doNotConnectToPart", [ "apextestfacilitybasefu1","apextestfacilitybase1", "apextestfacility2a", "apextestfacility2b" ] ]
+        [ "doNotConnectToPart", [ "apextestfacilitybase1","apextestfacilitybasefu1", "apextestfacility2a", "apextestfacility2b" ] ]
 
       ],
       "def" : [ "tmx", "apextestfacilitybase2.json" ]
