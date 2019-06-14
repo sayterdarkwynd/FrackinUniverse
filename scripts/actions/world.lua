@@ -321,11 +321,56 @@ function spawnStagehand(args)
   return true
 end
 
--- also checks microdungeons!
 function dungeonId(args, board)
   if args.position == nil then return false end
 
   local id = world.dungeonId(args.position)
   if id ~= 0 then return true, {dungeonId = id}
-  else return false, {dungeonId = 0} end
+  else return false, {dungeonId = 0}
+  end
+end
+  
+function spawnItem(args)
+  world.spawnItem(args.item, args.position, args.count, args.parameters, args.velocity, args.intangibleTime)
+  return true
+end
+
+-- param player
+-- param title
+-- param subtitle
+-- param icon
+-- param message
+-- param okCaption
+-- param cancelCaption
+function playerConfirm(args)
+  local dialogConfig = {
+    title = args.title,
+    subtitle = args.subtitle,
+    icon = args.icon,
+    message = args.message,
+    okCaption = args.okCaption,
+    cancelCaption = args.cancelCaption,
+    sourceEntityId = entity.id()
+  }
+
+  -- ask player for confirmation, returns a uuid used for polling the result
+  local confirm = util.await(world.sendEntityMessage(args.player, "confirm", dialogConfig))
+  if not confirm:succeeded() then
+    error("Confirm message failed")
+  end
+
+  local uuid = confirm:result()
+  while true do
+    -- poll confirmation until the message fails (player is gone) or a result is returned
+    local confirmResult = util.await(world.sendEntityMessage(args.player, "confirmResult", uuid))
+    if not confirmResult:succeeded() then
+      return false
+    end
+    local res = confirmResult:result()
+    if res == nil then
+      util.run(0.5)
+    else
+      return res == true
+    end
+  end
 end

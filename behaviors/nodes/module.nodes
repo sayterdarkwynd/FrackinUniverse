@@ -353,6 +353,7 @@
       "highArc": {"type": "bool", "value": false},
       "faceTarget": {"type": "bool", "value": true},
       "rotateAim": {"type": "bool", "value": false},
+      "rotatedOffset": {"type": "vec2", "value": [0, 0]},
       "rotationCenter": {"type": "vec2", "value": [0, 0]},
       "fireStateType": {"type": "string", "value": "body"},
       "skillName": {"type": "string", "value": ""},
@@ -403,7 +404,7 @@
     "name": "rangedcombat",
     "title": "rangedcombat",
     "properties": {
-      "rangedAimTime": {"type": "number", "value": 0.05},
+      "rangedAimTime": {"type": "number", "value": 0},
       "rangedWindupTime": {"type": "number", "value": 0.05},
       "rangedMinFireTime": {"type": "number", "value": 0.5},
       "rangedMaxFireTime": {"type": "number", "value": 1},
@@ -483,8 +484,8 @@
     "name": "spiderboss-setstage",
     "title": "spiderboss-setstage",
     "properties": {
-      "shellState": {"type": "json", "value": "stage2"},
-      "setHealth": {"type": "json", "value": 0.65}
+      "shellState": {"type": "string", "value": "stage2"},
+      "setHealth": {"type": "number", "value": 0.65}
     }
   },
   "spiderboss-stage2": {
@@ -1337,7 +1338,7 @@
     "name": "spiderboss",
     "title": "",
     "properties": {
-      "deathMovementParameters": {"type": "json", "value": {"gravityEnabled": true}},
+      "deathMovementParameters": {"type": "table", "value": {"gravityEnabled": true}},
       "deathAcidSprayConfig": {"type": "json", "value": {"power": 0}}
     }
   },
@@ -2319,6 +2320,12 @@
       "openDoor": {"type": "bool", "value": false}
     }
   },
+  "bounty": {
+    "type": "module",
+    "name": "bounty",
+    "title": "",
+    "properties": {}
+  },
   "action-pairbeam": {
     "type": "module",
     "name": "action-pairbeam",
@@ -2362,6 +2369,12 @@
     "title": "",
     "properties": {}
   },
+  "bounty-arrest": {
+    "type": "module",
+    "name": "bounty-arrest",
+    "title": "",
+    "properties": {}
+  },
   "dollboss-setstage": {
     "type": "module",
     "name": "dollboss-setstage",
@@ -2373,6 +2386,12 @@
   "dollboss-stage1": {
     "type": "module",
     "name": "dollboss-stage1",
+    "title": "",
+    "properties": {}
+  },
+  "bounty-bribe": {
+    "type": "module",
+    "name": "bounty-bribe",
     "title": "",
     "properties": {}
   },
