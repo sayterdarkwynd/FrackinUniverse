@@ -77,6 +77,10 @@ function init()
       end
     end)
 
+  if not player.hasQuest("fuelDataQuest") then
+    player.startQuest( { questId = "fuelDataQuest" , templateId = "fuelDataQuest", parameters = {}} )
+  end
+  
   self.unlocked = player.getProperty("mechUnlocked", false)
   self.itemSet = player.getProperty("mechItemSet", {})
   self.primaryColorIndex = player.getProperty("mechPrimaryColorIndex", 0)
