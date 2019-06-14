@@ -5,7 +5,7 @@ function init()
   message.setHandler("unlockMech", function()
       if not self.unlocked then
         self.unlocked = true
-        status.setStatusProperty("mechUnlocked", true)
+        player.setProperty("mechUnlocked", true)
 
         local starterSet = config.getParameter("starterMechSet")
         local speciesBodies = config.getParameter("speciesStarterMechBody")
@@ -77,14 +77,10 @@ function init()
       end
     end)
 
-  if not player.hasQuest("fuelDataQuest") then
-    player.startQuest( { questId = "fuelDataQuest" , templateId = "fuelDataQuest", parameters = {}} )
-  end
-
-  self.unlocked = status.statusProperty("mechUnlocked", false)
-  self.itemSet = status.statusProperty("mechItemSet", {})
-  self.primaryColorIndex = status.statusProperty("mechPrimaryColorIndex", 0)
-  self.secondaryColorIndex = status.statusProperty("mechSecondaryColorIndex", 0)
+  self.unlocked = player.getProperty("mechUnlocked", false)
+  self.itemSet = player.getProperty("mechItemSet", {})
+  self.primaryColorIndex = player.getProperty("mechPrimaryColorIndex", 0)
+  self.secondaryColorIndex = player.getProperty("mechSecondaryColorIndex", 0)
 
   self.partManager = MechPartManager:new()
 
@@ -152,15 +148,15 @@ end
 
 function setMechItemSet(newItemSet)
   self.itemSet = self.partManager:validateItemSet(newItemSet)
-  status.setStatusProperty("mechItemSet", self.itemSet)
+  player.setProperty("mechItemSet", self.itemSet)
   buildMechParameters()
 end
 
 function setMechColorIndexes(primaryIndex, secondaryIndex)
   self.primaryColorIndex = self.partManager:validateColorIndex(primaryIndex)
   self.secondaryColorIndex = self.partManager:validateColorIndex(secondaryIndex)
-  status.setStatusProperty("mechPrimaryColorIndex", self.primaryColorIndex)
-  status.setStatusProperty("mechSecondaryColorIndex", self.secondaryColorIndex)
+  player.setProperty("mechPrimaryColorIndex", self.primaryColorIndex)
+  player.setProperty("mechSecondaryColorIndex", self.secondaryColorIndex)
   buildMechParameters()
 end
 

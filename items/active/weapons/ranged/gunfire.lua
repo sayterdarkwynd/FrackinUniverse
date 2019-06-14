@@ -95,7 +95,7 @@ function GunFire:cooldown()
 end
 
 function GunFire:muzzleFlash()
-  animator.setPartTag("muzzleFlash", "variant", math.random(1, 3))
+  animator.setPartTag("muzzleFlash", "variant", math.random(1, self.muzzleFlashVariants or 3))
   animator.setAnimationState("firing", "fire")
   animator.burstParticleEmitter("muzzleFlash")
   animator.playSound("fire")
@@ -151,7 +151,6 @@ end
 function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
     return Crits.setCritDamage(self, (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount)
 end
-
 
 function GunFire:uninit()
 end

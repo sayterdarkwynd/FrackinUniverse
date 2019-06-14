@@ -21,8 +21,12 @@ function init()
 end
 
 function applyDamageRequest(damageRequest)
-  --modified next line
   if damageRequest.damageSourceKind ~= "falling" and world.getProperty("nonCombat") then
+    return {}
+  end
+
+  -- don't get hit by knockback attacks if immune to knockback
+  if damageRequest.damageType == "Knockback" and status.stat("grit") >= 1 then
     return {}
   end
 
@@ -31,6 +35,10 @@ function applyDamageRequest(damageRequest)
     damage = damage + root.evalFunction2("protection", damageRequest.damage, status.stat("protection"))
   elseif damageRequest.damageType == "IgnoresDef" then
     damage = damage + damageRequest.damage
+  elseif damageRequest.damageType == "Status" then
+    -- only apply status effects
+    status.addEphemeralEffects(damageRequest.statusEffects, damageRequest.sourceEntityId)
+    return {}
   elseif damageRequest.damageType == "Environment" then
     return {}
   end
@@ -42,8 +50,6 @@ function applyDamageRequest(damageRequest)
   end
 
   local hitType = damageRequest.hitType
-  
-  
   local elementalStat = root.elementalResistance(damageRequest.damageSourceKind)
   local resistance = status.stat(elementalStat)
   damage = damage - (resistance * damage)
@@ -55,15 +61,15 @@ function applyDamageRequest(damageRequest)
   if healthLost > 0 and damageRequest.damageType ~= "Knockback" then
     status.modifyResource("health", -healthLost)
     if hitType == "stronghit" then
-      self.damageFlashTime = 0.07		
-      self.damageFlashType = "strong"		
-    elseif hitType == "weakhit" then		
-      self.damageFlashTime = 0.07		
-      self.damageFlashType = "weak"		
-    else		
-      self.damageFlashTime = 0.07		
-      self.damageFlashType = "default"		
-    end 
+      self.damageFlashTime = 0.07
+      self.damageFlashType = "strong"
+    elseif hitType == "weakhit" then
+      self.damageFlashTime = 0.07
+      self.damageFlashType = "weak"
+    else
+      self.damageFlashTime = 0.07
+      self.damageFlashType = "default"
+    end
   end
 
   status.addEphemeralEffects(damageRequest.statusEffects, damageRequest.sourceEntityId)
@@ -76,7 +82,6 @@ function applyDamageRequest(damageRequest)
       status.setResource("stunned", math.max(status.resource("stunned"), status.stat("knockbackStunTime")))
     end
   end
-
 
   if not status.resourcePositive("health") then
     hitType = "kill"
@@ -154,11 +159,11 @@ function update(dt)
 
   if self.damageFlashTime > 0 then
     local color = status.statusProperty("damageFlashColor") or "ff0000=0.85"
-    if self.damageFlashType == "strong" then		
-      color = status.statusProperty("strongDamageFlashColor") or "ffffff=1.0" or color		
-    elseif self.damageFlashType == "weak" then		
-      color = status.statusProperty("weakDamageFlashColor") or "000000=0.0" or color		
-    end    
+    if self.damageFlashType == "strong" then
+      color = status.statusProperty("strongDamageFlashColor") or "ffffff=1.0" or color
+    elseif self.damageFlashType == "weak" then
+      color = status.statusProperty("weakDamageFlashColor") or "000000=0.0" or color
+    end
     status.setPrimaryDirectives(string.format("fade=%s", color))
   else
     status.setPrimaryDirectives()
