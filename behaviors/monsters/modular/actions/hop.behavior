@@ -20,7 +20,8 @@
     "hopAwayFromWall": true,
     "wallVerticalSpeed": 35,
     "hopControlForce": 10,
-    "damageOnTouch": false
+    "damageOnTouch": false,
+    "burstEmitter": null
   },
   "root": {
     "title": "sequence",
@@ -206,6 +207,20 @@
               "name": "setDamageOnTouch",
               "parameters": {
                 "touchDamage": {"value": true}
+              }
+            },
+            {
+              "title": "succeeder",
+              "type": "decorator",
+              "name": "succeeder",
+              "parameters": {},
+              "child": {
+                "title": "burstParticleEmitter",
+                "type": "action",
+                "name": "burstParticleEmitter",
+                "parameters": {
+                  "emitter": {"key": "<burstEmitter>"}
+                }
               }
             },
             {

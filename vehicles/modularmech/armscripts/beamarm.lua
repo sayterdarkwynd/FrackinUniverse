@@ -4,11 +4,17 @@ BeamArm = MechArm:extend()
 
 function BeamArm:init()
   self.state = FSM:new()
+
+  if self.chain ~= nil then
+    self.chain.sourcePart = self.armName
+    self.chain.endPart = self.armName
+  end
+  self.renderChain = false
 end
 
 function BeamArm:update(dt)
   if self.state.state then
-	self.state:update()
+    self.state:update()
   end
 
   if not self.state.state then
@@ -39,7 +45,7 @@ function BeamArm:windupState()
     coroutine.yield()
   end
 
-  if self.isFiring then  
+  if self.isFiring then
     self.state:set(self.fireState, self)
   else
     self.state:set(self.winddownState, self)
@@ -99,12 +105,16 @@ function BeamArm:fireState()
   animator.playSound(self.armName .. "Fire")
   animator.setParticleEmitterBurstCount(self.armName .. "Beam", math.ceil(self.beamParticleDensity * beamLength))
   animator.burstParticleEmitter(self.armName .. "Beam")
-  animator.setAnimationState(self.armName .. "Beam", "fire", true)
-
+  if self.scriptedBeam then
+    self.renderChain = true
+  else
+    animator.setAnimationState(self.armName .. "Beam", "fire", true)
+  end
+  
   vehicle.setDamageSourceEnabled(self.armName .. "Beam", true)
 
   self.aimLocked = self.lockAim
-    
+
   if beamCollision and self.beamTileDamage > 0 then
     self.maximumEndPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
     --sb.logInfo("%s %s", self.firePosition, self.maximumEndPoint)
@@ -137,7 +147,7 @@ function BeamArm:fireState()
     
   coroutine.yield()
 
-  while stateTimer > 0 do
+  while stateTimer > 0 and (self.holdFire or self.isFiring) do
     animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
     self:updateBeam()
@@ -148,6 +158,10 @@ function BeamArm:fireState()
   end
 
   self.aimLocked = false
+  
+  if self.scriptedBeam then
+    self.renderChain = false
+  end
 
   vehicle.setDamageSourceEnabled(self.armName .. "Beam", false)
 
@@ -163,6 +177,10 @@ function BeamArm:winddownState()
 
   animator.setAnimationState(self.armName, "winddown")
   animator.playSound(self.armName .. "Winddown")
+  
+  if self.scriptedBeam then
+    vehicle.setAnimationParameter("chains", {})
+  end
 
   while stateTimer > 0 do
     animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
@@ -176,7 +194,6 @@ function BeamArm:winddownState()
 end
 
 function BeamArm:updateBeam()
-
   local endPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
   local beamCollision = world.lineCollision(self.firePosition, endPoint)
   if beamCollision then
@@ -184,8 +201,10 @@ function BeamArm:updateBeam()
   end
   local beamLength = world.magnitude(self.firePosition, endPoint)
 
-  animator.resetTransformationGroup(self.armName .. "Beam")
-  animator.scaleTransformationGroup(self.armName .. "Beam", {beamLength, 1}, {self.beamSourceOffset[1], self.beamSourceOffset[2] - self.beamHeight / 2})
+  if not self.scriptedBeam then
+    animator.resetTransformationGroup(self.armName .. "Beam")
+    animator.scaleTransformationGroup(self.armName .. "Beam", {beamLength, 1}, {self.beamSourceOffset[1], self.beamSourceOffset[2] - self.beamHeight / 2})
+  end
 
   local particleRegion = {self.beamSourceOffset[1], self.beamSourceOffset[2], self.beamSourceOffset[1] + beamLength, self.beamSourceOffset[2]}
   animator.setParticleEmitterOffsetRegion(self.armName .. "Beam", particleRegion)
