@@ -4,8 +4,7 @@ local deltatime=0;
 
 function init()
 	promise=nil
-	storage={}
-	transferUtil.vars.inContainers={}
+	self={}
 	items = {};
 	deltatime=30;
 	pos = world.entityPosition(pane.containerEntityId());
@@ -21,7 +20,7 @@ function update(dt)
 	if promise~=nil and promise:finished() then
 		if promise:succeeded() then
 			local res=promise:result();
-			storage=res
+			self=res
 			promise=nil;
 			if deltatime > 30 then
 				refresh();
@@ -41,19 +40,19 @@ end
 
 
 function refresh()
-	if storage==nil then
+	if not self then
 		init()
 	end
 
 	local blankList=false
-	if transferUtil.vars.inContainers==nil then
+	if self.inContainers==nil then
 		blankList=true
-	elseif util.tableSize(transferUtil.vars.inContainers) == 0 then
+	elseif util.tableSize(self.inContainers) == 0 then
 		blankList=true
 	end
 	items={};
 	if not blankList then
-		for entId,pos in pairs(transferUtil.vars.inContainers) do
+		for entId,pos in pairs(self.inContainers) do
 			containerFound(entId,pos)
 		end
 	end
@@ -70,14 +69,16 @@ function containerFound(containerID,pos)
 	if containerID == nil then return false end
 	--if not world.regionActive(rectPos) then return false end
 	if not world.entityExists(containerID) then return false end
-
+	
 	local containerItems = world.containerItems(containerID)
+	if not containerItems then return false end
+	
 	for index,item in pairs(containerItems) do
 		local conf = root.itemConfig(item, item.level or nil, item.seed or nil)
 		table.insert(items, {{containerID, index}, item, conf,pos})
 	end
 	refreshList()
-	return true;
+	return true
 end
 
 

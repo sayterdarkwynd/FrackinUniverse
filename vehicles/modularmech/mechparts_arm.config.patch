@@ -489,22 +489,22 @@
             "path": "/pointdefense",
             "value": {
                 "stats": {
-                    "power": 1,
-                    "energy": 3,
-                    "mechMass": 3
+                    "power": 2,
+                    "energy": 2,
+                    "mechMass": 2
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
                     "armClass": "DroneLauncher",
                     "rotationLimits": [-0.7, 0.6],
                     "fireOffset": [4, 0],
-                    "deployTime": 0.2,
+                    "deployTime": 0.3,
                     "launchTiming": 0.25,
                     "cooldownTime": 1.5,
                     "maxDrones": 8,
                     "droneOrbitRate": 0.25,
                     "droneOrbitDistance": 5,
-                    "droneMonsterType": "mechmultidrone2",
+                    "droneMonsterType": "mechmultidrone3",
 		      "droneParameters" : {
 			"movementMode" : "Orbit",
 
@@ -514,13 +514,13 @@
 			"duration" : 120,
 
 			"statusSettings" : { "stats" : {
-			  "flatMaxHealth" : { "baseValue" : 90 }
+			  "flatMaxHealth" : { "baseValue" : 110 }
 			}},
 
 			"gun" : {
 			  "fireDelay" : 0.1,
 
-			  "fireTime" : 0.1,
+			  "fireTime" : 0.2,
 			  "fireOffset" : [2, 0],
 
 			  "projectileType" : "laser-1",
@@ -572,7 +572,7 @@
                     }
                 }
             }
-        }, {
+        },{
             "op": "add",
             "path": "/pointdefense2",
             "value": {
@@ -586,11 +586,11 @@
                     "armClass": "DroneLauncher",
                     "rotationLimits": [-0.7, 0.6],
                     "fireOffset": [4, 0],
-                    "deployTime": 0.2,
+                    "deployTime": 0.3,
                     "launchTiming": 0.25,
                     "cooldownTime": 2,
                     "maxDrones": 6,
-                    "droneOrbitRate": 0.25,
+                    "droneOrbitRate": 0.55,
                     "droneOrbitDistance": 7,
                     "droneMonsterType": "mechmultidrone3",
 		      "droneParameters" : {
@@ -599,23 +599,23 @@
 			"attackMode" : "Target",
 			"targetRange" : 12,
 
-			"duration" : 120,
+			"duration" : 180,
 
 			"statusSettings" : { "stats" : {
-			  "flatMaxHealth" : { "baseValue" : 110 }
+			  "flatMaxHealth" : { "baseValue" : 180 }
 			}},
 
 			"gun" : {
 			  "fireDelay" : 0.1,
 
-			  "fireTime" : 0.1,
+			  "fireTime" : 0.2,
 			  "fireOffset" : [2, 0],
 
 			  "projectileType" : "electricguardianbullet",
 			  "projectileParameters" : {
-			    "speed" : 60,
+			    "speed" : 70,
 			    "power" : 2,
-			    "statusEffects" : [ "electrified", "stun" ]
+			    "statusEffects" : [ "stun", "electrified" ]
 			  },
 
 			  "projectileCount" : 1
@@ -665,45 +665,45 @@
             "path": "/pointdefense3",
             "value": {
                 "stats": {
-                    "power": 5,
+                    "power": 6,
                     "energy": 6,
-                    "mechMass": 4
+                    "mechMass": 6
                 },
                 "partParameters": {
                     "script": "/vehicles/modularmech/armscripts/dronelauncher.lua",
                     "armClass": "DroneLauncher",
                     "rotationLimits": [-0.7, 0.6],
                     "fireOffset": [4, 0],
-                    "deployTime": 0.2,
+                    "deployTime": 0.3,
                     "launchTiming": 0.25,
                     "cooldownTime": 3,
                     "maxDrones": 6,
-                    "droneOrbitRate": 0.25,
-                    "droneOrbitDistance": 7,
+                    "droneOrbitRate": 0.75,
+                    "droneOrbitDistance": 9,
                     "droneMonsterType": "mechmultidrone3",
 		      "droneParameters" : {
 			"movementMode" : "Orbit",
 
 			"attackMode" : "Target",
-			"targetRange" : 12,
+			"targetRange" : 15,
 
-			"duration" : 120,
+			"duration" : 220,
 
 			"statusSettings" : { "stats" : {
-			  "flatMaxHealth" : { "baseValue" : 225 }
+			  "flatMaxHealth" : { "baseValue" : 220 }
 			}},
 
 			"gun" : {
 			  "fireDelay" : 0.1,
 
-			  "fireTime" : 0.1,
+			  "fireTime" : 0.3,
 			  "fireOffset" : [2, 0],
 
-			  "projectileType" : "densiniumrifleshot",
+			  "projectileType" : "energybeam2",
 			  "projectileParameters" : {
-			    "speed" : 60,
+			    "speed" : 70,
 			    "power" : 4,
-			    "statusEffects" : [ "electrified", "stun" ]
+			    "statusEffects" : [ "stun", "electrified" ]
 			  },
 
 			  "projectileCount" : 1

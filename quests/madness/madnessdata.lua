@@ -9,7 +9,7 @@ function init()
   self.timerDegrade = math.random(1,12)
   self.degradeTotal = 0
   self.bonusTimer = 1
-  status.removeEphemeralEffect("partytime5")
+  status.removeEphemeralEffect("partytime5")--make sure the annoying sounds dont flood
   status.removeEphemeralEffect("partytime4")
   status.removeEphemeralEffect("partytime3")
   status.removeEphemeralEffect("partytime2")
@@ -29,7 +29,6 @@ function randomEvent()
     
     -- are we currently carrying any really weird stuff? 
     isWeirdStuff()
-
     
     --set duration of curse
     self.curseDuration = storage.madnessCount / 5  --this value will be adjusted based on effect type
@@ -38,9 +37,7 @@ function randomEvent()
     self.curseDuration_resource = self.curseDuration * 2.2	
     self.curseDuration_stat = self.curseDuration * 2.5
     self.curseDuration_fast = self.curseDuration *0.25
-    
     status.addEphemeralEffect("mad",60)
-    
     if storage.madnessCount > 50 then
 	    if self.randEvent == 1 then 
 		status.addEphemeralEffect("booze",self.curseDuration_status) --player feels drunk
@@ -62,7 +59,6 @@ function randomEvent()
 			player.radioMessage("madness1")
 		end      
 	    end
-	    
     elseif storage.madnessCount > 150 then
 	    if self.randEvent == 6 then 
 		status.addEphemeralEffect("partytime2",self.curseDuration_annoy)
@@ -79,7 +75,6 @@ function randomEvent()
 	    if self.randEvent == 10 then
 	      player.addCurrency("fuscienceresource", 1) 
 	    end    
-	    
     elseif storage.madnessCount > 200 then
 	    if self.randEvent == 11 then 
 		status.addEphemeralEffect("nude",self.curseDuration_status)
@@ -149,7 +144,6 @@ function randomEvent()
 			{stat = "maxFood", amount = status.stat("maxFood")-penaltyValue }
 		  })    
 	    end  
-	    
     elseif storage.madnessCount > 500 then
 	    if self.randEvent == 30 then
 	      local penaltyValue = math.random(1,20)
@@ -224,9 +218,7 @@ function randomEvent()
 			{stat = "cosmicResistance", amount = status.stat("cosmicResistance")-penaltyValue }
 		  })    
 	    end 
-	    
     elseif storage.madnessCount > 750 then
-
 	    if self.randEvent == 37 and storage.madnessCount > 800 then --if holding a knife, cut yourself
 	      if root.itemHasTag(storage.currentPrimary, "dagger") or root.itemHasTag(storage.currentSecondary, "dagger") then
 		status.addEphemeralEffect("bleeding05",self.curseDuration_status) -- You just can't stop stabbing yourself
@@ -255,7 +247,6 @@ function randomEvent()
 	    end 	    
 	    
     elseif storage.madnessCount > 1000 then
-
 	    if self.randEvent == 40 then --swap tech
 		player.equipTech("distortionsphere")
 	    end      
@@ -269,10 +260,7 @@ function randomEvent()
 	      player.consumeCurrency("fuscienceresource", 1) 
 	      player.radioMessage("sanitygain")
 	    end      
-    
-    
     elseif storage.madnessCount > 1500 then
-
 	    if self.randEvent == 44 then 
 		status.addEphemeralEffect("eatself",20) -- You just can't stop eating yourself.
 		status.addEphemeralEffect("bleeding05",20) -- You just can't stop eating yourself.
@@ -280,15 +268,13 @@ function randomEvent()
 	    if self.randEvent == 45 then 
 		status.addEphemeralEffect("runboost15",self.curseDuration_status) -- run boost!
 	    end    
-	    
     end
     self.randEvent = math.random(1,100)
 end
 
 function update(dt)
 
-	storage.madnessCount = player.currency("fumadnessresource")
-	
+   storage.madnessCount = player.currency("fumadnessresource")
    self.paintTimer = self.paintTimer - 1
    if self.paintTimer == 0 then
      checkMadnessArt()
@@ -315,63 +301,67 @@ function update(dt)
 	  if storage.madnessCount > 300 then
 		self.timer = 150
 		self.degradeTotal = 1
+		self.timerDegradePenalty = 1
 		randomEvent() --apply random effect	
 	  end
 	  if storage.madnessCount > 400 then
 		self.timer = 120
 		self.degradeTotal = 1
+		self.timerDegradePenalty = 1
 		randomEvent() --apply random effect
 	  end  
 	  if storage.madnessCount > 500 then
 		self.timer = 100
 		self.degradeTotal = 1
+		self.timerDegradePenalty = 2
 		randomEvent() --apply random effect
 	  end
 	  if storage.madnessCount > 700 then
 		self.timer = 90
 		self.degradeTotal = 1
+		self.timerDegradePenalty = 2
 		randomEvent() --apply random effect
 	  end  
 	  if storage.madnessCount > 1000 then
 		self.timer = 80
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 1
+		self.timerDegradePenalty = 3
 		self.degradeTotal = 1
 	  end  	   
 	  if storage.madnessCount > 2000 then
 		self.timer = 60
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 3
+		self.timerDegradePenalty = 4
 		self.degradeTotal = 2
 	  end    
 	  if storage.madnessCount > 3000 then
 		self.timer = 50
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 4
+		self.timerDegradePenalty = 5
 		self.degradeTotal = 3
 	  end
 	  if storage.madnessCount > 4000 then
 		self.timer = 40
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 5
+		self.timerDegradePenalty = 6
 		self.degradeTotal = 4
 	  end  
 	  if storage.madnessCount > 5000 then
 		self.timer = 30
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 6
+		self.timerDegradePenalty = 7
 		self.degradeTotal = 5
 	  end
 	  if storage.madnessCount > 6000 then
 		self.timer = 25
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 6
+		self.timerDegradePenalty = 8
 		self.degradeTotal = 6
 	  end	  
 	  if storage.madnessCount > 8000 then
 		self.timer = 20
 		randomEvent() --apply random effect
-		self.timerDegradePenalty = 6
+		self.timerDegradePenalty = 9
 		self.degradeTotal = 16
 	  end	  
 	  if storage.madnessCount > 15000 then
@@ -379,32 +369,30 @@ function update(dt)
 	        self.timer = 10
 	        randomEvent()
 		self.degradeTotal = 32
-		self.timerDegradePenalty = 6
+		self.timerDegradePenalty = 10
 	  end	  
   end
   -- end CORE
 
  	self.timerDegrade = self.timerDegrade -1
-    
-	if self.timerDegrade <= 0 then
-	--gradually reduce Madness over time
-	    if storage.madnessCount >= 500 then   --high madness is harder to hold onto, and less farmable, if it always reduces
-			    self.timerDegradePenalty = self.timerDegradePenalty or 0
-			    player.consumeCurrency("fumadnessresource", self.degradeTotal)
-			    self.timerDegrade= 7 - self.timerDegradePenalty        
-	    end	
+ 	--gradually reduce Madness over time
+	if (self.timerDegrade <= 0) and (storage.madnessCount >= 50) then --high madness is harder to hold onto, and less farmable, if it always reduces
+	    self.timerDegradePenalty = self.timerDegradePenalty or 0
+	    player.consumeCurrency("fumadnessresource", self.degradeTotal)
+	    self.timerDegrade= 30 - self.timerDegradePenalty        
 	end 
-
- -- apply bonus loss from anti-madness effects
+ 	-- apply bonus loss from anti-madness effects even if not above 500 madness
 	self.bonusTimer = self.bonusTimer -1
 	if self.bonusTimer <= 0 then
-	    self.protectionBonus = status.stat("mentalProtection")/5 + math.random(1,20) -- 1d20 + their Mental Protection / 5
+	    self.protectionBonus = status.stat("mentalProtection")/5 + math.random(1,12) -- 1d12 + their Mental Protection / 5
 	    --mentalProtection can make it harder to be affected
 	    if (status.statPositive("mentalProtection")) then 
 	      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
 	    end
-	    self.bonusTimer = 5
-	end
+	    self.bonusTimer = 20
+	end	
+
+
 end
 
 function checkMadnessArt()
