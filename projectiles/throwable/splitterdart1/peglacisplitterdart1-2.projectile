@@ -1,0 +1,39 @@
+{
+  "projectileName" : "peglacisplitterdart1-2",
+  "image" : "peglacisplitterdart1.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 3,
+  "physics" : "stickybullet",
+  "bounces" : 0,
+  "frameNumber" : 1,  
+  "pointLight" : false,
+  "speed" :40,
+  "lightColor" : [255, 40, 190],
+  "timeToLive" : 0.3,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/pulsecannonexplosion/pulsecannonexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : -10
+    },
+    {
+      "action" : "projectile",
+      "type" : "peglacisplitterdart1-3",
+      "inheritDamageFactor" : 0.3,
+      "angleAdjust" : 10
+    }
+  ],
+  "damageKind" : "default",
+  "emitters" : [ "peglacitrailpurple" ]
+}
