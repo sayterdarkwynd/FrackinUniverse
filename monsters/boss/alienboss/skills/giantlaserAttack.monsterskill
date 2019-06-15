@@ -1,0 +1,52 @@
+{
+  "name" : "giantlaserAttack",
+  "label" : "FLAMETHROWER",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/alienboss/skills/giantlaserAttack.lua" ],
+    "giantlaserAttack" : {
+      "distanceRange" : [25, 16],
+
+      "windupTime" : 0.5,
+      "winddownTime" : 0.5,
+
+      "skillDuration" : 3,
+      "angleCycle" : 0.1,
+      "maxFireAngle" : 0.0,
+      "fireInterval" : 0.0001,
+
+      "changeFacingTime" : 0.5,
+
+      "moveSpeed" : 18,
+
+      "projectile" : {
+        "type" : "giantalienlaser",
+        "config" : {
+          "power" : 40.0,
+          "speed" : 60.0,
+          "damageRepeatTimeout" : 0.0
+        }
+      }
+    }
+  },
+
+  "animationParameters" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "flameSound" : {
+          "default" : "off",
+          "states" : {
+            "off" : {
+            },
+            "on" : {
+              "properties" : {
+                "persistentSound" : "/sfx/npc/boss/crystalboss_beam.ogg"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

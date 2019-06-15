@@ -84,7 +84,8 @@ function init()
   end
   
   --for FU
-  storage.preInsaneDamageTeam = entity.damageTeam()
+  self.preInsaneDamageTeam = entity.damageTeam()
+  
 end
 
 -- The colony and crew systems repeatedly kill and respawn the same NPCs.
@@ -123,24 +124,24 @@ function update(dt)
 
 --*** FOR FU
 --check if we're insane! if so, swap our team
-  self.randomTeam = math.random(1,3)
+
   self.teamName = "default"
-  self.randomTeamName = math.random(1,3)
+  self.randomTeamName = math.random(1,2)
+  
+  --roll a 1 and we are friendly, else we are hostile.
   if self.randomTeamName == 1 then
     self.typename = "friend"
   elseif self.randomTeamName == 2 then
     self.typename = "enemy"
-  elseif self.randomTeamName == 3 then
-    self.typename = "assistant"
   end
   
   if status.stat("isInsane") >= 1 then
     npc.setDamageTeam({
         type = self.typename,
-        team = self.randomTeam 
+        team = self.randomTeamName 
       }) 
   else
-    npc.setDamageTeam(storage.preInsaneDamageTeam)   
+    npc.setDamageTeam(self.preInsaneDamageTeam)   
   end
 --
 

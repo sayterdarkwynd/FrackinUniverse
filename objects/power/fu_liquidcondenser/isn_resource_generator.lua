@@ -39,6 +39,8 @@ function init()
 	setDesc()
 	storage.outputPos=entity.position()
 	storage.outputPos[1]=storage.outputPos[1]+2+util.clamp(object.direction(),-1,0)
+	wellRange=config.getParameter("airWellRange",20)
+	wellInit()
 end
 
 function update(dt)
@@ -52,10 +54,16 @@ function update(dt)
 		return
 	end
 	if not object.isInputNodeConnected(0) or object.getInputNodeLevel(0) then
+		if not deltaTime or deltaTime > 1 then
+			wellInit()
+			deltaTime=0
+		else
+			deltaTime=deltaTime+dt
+		end
 		if storage.timer > 0 then
 			if power.consume(config.getParameter('isn_requiredPower')*dt) then
 				animator.setAnimationState("machineState", "active")
-				storage.timer = storage.timer - dt
+				storage.timer = storage.timer - (dt/wellsDrawing)
 			else
 				animator.setAnimationState("machineState", "idle")
 			end
@@ -106,3 +114,9 @@ function toHex(num)
 	if num < 16 then hex = "0"..hex end
 	return hex
 end
+
+function wellInit()
+	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAirWell"}) or {})
+end
+
+function fu_isAirWell() return (animator.animationState("machineState")=="active") end

@@ -97,7 +97,7 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
     effect.setStatModifierGroup(self.debuffGroup, newGroup)
     -- Display alerts (e.g. "-Max HP" popup).
 	-- spawn madness randomly when this effect is active
-	    self.randMadness = math.random(1,4)
+	    self.randMadness = math.random(1,6)
 	    world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
 	--    
     self:createAlert()

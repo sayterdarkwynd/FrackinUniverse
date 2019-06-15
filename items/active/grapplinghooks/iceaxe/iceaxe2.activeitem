@@ -4,7 +4,7 @@
   "inventoryIcon" : "iceaxe2.png",
   "rarity" : "legendary",
   "maxStack" : 1,
-  "description" : "Short-ranged grapple. ^red;Regenerates health^reset; when attached.",
+  "description" : "Short-ranged grapple. ^red;Regenerates health^reset; when attached. Improves bandages.",
   "shortdescription" : "Bloodhook",
   "largeImage" : "iceaxe2.png",
   "category" : "Tool",
@@ -86,6 +86,10 @@
                 "power": 0,
                 "knockback": 0,
                 "statusEffects": [
+		    {
+		      "effect" : "healingbonus",
+		      "duration" : 0.9
+		    },                
                   {
                     "effect": "regeneration4",
                     "duration": 0.9
