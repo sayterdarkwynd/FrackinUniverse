@@ -209,10 +209,10 @@ function repairGate()
     questutil.pointCompassAt(findGate())
 
     -- Go back to last stage if player loses core fragments
-    if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
+    if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       storage.stage = 3
       self.state:set(self.stages[storage.stage])
-    elseif not player.hasItem({name = "statustablet", count = 1}) then
+    else 
       storage.stage = 3
       quest.setObjectiveList({{self.descriptions.makeTable, false}})    
       player.radioMessage("fu_start_needstricorder")
