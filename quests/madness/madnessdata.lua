@@ -23,10 +23,10 @@ function randomEvent()
     storage.currentSecondary = world.entityHandItem(entity.id(), "alt")  --what are we carrying?
     self.isProtectedRand = math.random(1,100)
     self.isProtectedRandVal = self.isProtectedRand / 100
-  
+    self.currentProtection = status.stat("mentalProtection") or 0
     --mentalProtection can make it harder to be affected
     if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal <= status.stat("mentalProtection")) then 
-      self.randEvent = self.randEvent - (status.stat("mentalProtection") * 10) --math.random(10,70)  --it doesnt *remove* the effect, it just moves it further up the list, and potentially off of it.
+      self.randEvent = self.randEvent - (self.currentProtection * 10) --math.random(10,70)  --it doesnt *remove* the effect, it just moves it further up the list, and potentially off of it.
     end
     
     -- are we currently carrying any really weird stuff? 
