@@ -111,8 +111,8 @@ function doUpgrade()
 					
 					upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 					
-					upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 0.25  -- increase Crit Chance
-					upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 1     -- increase Crit Damage  
+					upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 0.1  -- increase Crit Chance
+					upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 0.25     -- increase Crit Damage 
 
 					-- set Rarity
 					if upgradedItem.parameters.level ==4 then
