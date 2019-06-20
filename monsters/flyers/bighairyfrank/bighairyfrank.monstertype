@@ -8,8 +8,10 @@
 
   "animation" : "bighairyfrank.animation",
 
-  "dropPools" : [ "frankLoot" ],
-
+  "dropPools" : [ {
+	"default" : "frankLoot",
+	"brain" : "madnessBrainHarvesting"  
+  }],
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -231,30 +233,15 @@
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
-        "physicalResistance" : {
-          "baseValue" : 0.11
-        },
-        "fireResistance" : {
-          "baseValue" : -0.5
-        },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
-        },
-        "iceResistance" : {
-          "baseValue" : 0.2
-        },
+        },        
         "iceStatusImmunity" : {
           "baseValue" : 0.0
-        },
-        "electricResistance" : {
-          "baseValue" : 0.3
-        },
+        },        
         "electricStatusImmunity" : {
           "baseValue" : 0.0
-        },
-        "poisonResistance" : {
-          "baseValue" : 0.75
-        },
+        },       
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
@@ -264,17 +251,32 @@
 	"webstickImmunity" : {
           "baseValue" : 1.0
         },
-        "shadowResistance" : {
-         "baseValue" : 0.2 
-        },
         "shadowImmunity" : {
          "baseValue" : 1
         },
-        "cosmicResistance" : { 
-         "baseValue" : 0.5 
-        },
         "radiationburnImmunity" : { 
           "baseValue" : 1
+        },      
+        "poisonResistance" : {
+          "baseValue" : 0.75
+        },
+        "electricResistance" : {
+          "baseValue" : 0.3
+        },
+        "iceResistance" : {
+          "baseValue" : 0.2
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.11
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },         
+        "shadowResistance" : {
+         "baseValue" : 0.2 
+        },        
+        "cosmicResistance" : { 
+         "baseValue" : 0.5 
         },        
         "radioactiveResistance" : { 
           "baseValue" : 0.5

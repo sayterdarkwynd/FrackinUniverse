@@ -210,13 +210,15 @@ function doUpgrade()
 						upgradedItem.parameters.shieldBashPush = (itemConfig.parameters.shieldBashPush or itemConfig.config.shieldBashPush or 1) + 0.5  
 						
 						if upgradedItem.parameters.cooldownTime then
-							upgradedItem.parameters.cooldownTime = (itemConfig.parameters.cooldownTime or itemConfig.config.cooldownTime or 1) * 0.95 
+							upgradedItem.parameters.cooldownTime = (itemConfig.parameters.cooldownTime or itemConfig.config.cooldownTime or 1) * 0.98
 						end
 						
 						if upgradedItem.parameters.perfectBlockTime then
 							upgradedItem.parameters.perfectBlockTime = (itemConfig.parameters.perfectBlockTime or itemConfig.config.perfectBlockTime or 1) * 1.05
 						end
-						
+						if upgradedItem.parameters.shieldEnergyBonus then
+							upgradedItem.parameters.shieldEnergyBonus = (itemConfig.parameters.shieldEnergyBonus or itemConfig.config.shieldEnergyBonus or 1) * 1.05
+						end							
 						if upgradedItem.parameters.baseShieldHealth then
 							upgradedItem.parameters.baseShieldHealth = (itemConfig.parameters.baseShieldHealth or itemConfig.config.baseShieldHealth or 1) * 1.15
 						end

@@ -2,20 +2,34 @@ require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/power.lua"
 require "/scripts/effectUtil.lua"
 
-local deltaTime=0
-
 function init()
     power.init()
 	transferUtil.init()
 	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
 	object.setInteractive(true)
-	radiation = {
-	  {amount = 100, state = 'danger'},
-	  {amount = 60, state = 'warn'},
-	  {amount = 1, state = 'safe'},
-	  {amount = 0, state = 'off'}
+	
+	radiationStates = {
+		{amount = 100, state = 'danger'},
+		{amount = 60, state = 'warn'},
+		{amount = 1, state = 'safe'},
+		{amount = 0, state = 'off'}
 	}
+	
+	radiationRanges = {
+		{range=16,power=120},
+		{range=12,power=100},
+		{range=8,power=80},
+		{range=4,power=50}
+	}
+	
+	powerStates = {
+		{amount = 11, state = 'on'},
+		{amount = 6, state = 'med'},
+		{amount = 1, state = 'slow'},
+		{amount = 0, state = 'off'}
+	}
+	
     storage.bonusWasteChance = config.getParameter("bonusWasteChance", 50)
     storage.fuels = config.getParameter("fuels")
 	storage.radiation = storage.radiation or 0
@@ -23,16 +37,16 @@ function init()
 end
 
 function update(dt)
-	if deltaTime > 1 then
+	if not deltaTime or deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
 	else
 		deltaTime=deltaTime+dt
 	end
 
-	for i=1,#radiation do
-        if storage.radiation >= radiation[i].amount then
-            animator.setAnimationState("hazard", radiation[i].state)
+	for _,dink in pairs(radiationStates) do
+        if storage.radiation >= dink.amount then
+            animator.setAnimationState("hazard", dink.state)
             break
         end
 	end
@@ -50,21 +64,21 @@ function update(dt)
 
 	local powerout = isn_getCurrentPowerOutput()
 	power.setPower(powerout)
-	if powerout > 11 then
-	  animator.setAnimationState("screen", "on")
-	elseif powerout >= 6 then
-	  animator.setAnimationState("screen", "med")
-	elseif powerout >= 1 then
-	  animator.setAnimationState("screen", "slow")
-	elseif powerout <= 0 then
-	  animator.setAnimationState("screen", "off")
+	
+	for _,dink in pairs(powerStates) do
+        if powerout >= dink.amount then
+            animator.setAnimationState("screen", dink.state)
+            break
+        end
 	end
 
 	local rads = -4 + powerout
-	rads = rads > 0 and rads * 2 or rads
+	rads = (rads > 0) and (rads * 2) or rads
+	
 	if world.containerAvailable(entity.id(),"toxicwaste") >= 75 then
 		rads = rads + 5
 	end
+	
 	storage.radiation = math.min(storage.radiation + rads,120)
 
 	local myLocation = entity.position()
@@ -73,21 +87,16 @@ function update(dt)
 	-- the effects here don't addup in damage, just it creates more particles & more noise.
 	-- therefore I think we could rework this for a single instance. sayter said that he or someone else
 	-- could match this with the current radiation resistance
-	if storage.radiation >= 50 then
-		effectUtil.projectileAllInRange("isn_fissionrads",4)
+	
+	--khe was here
+	
+	for _,dink in ipairs(radiationRanges) do
+        if storage.radiation >= dink.power then
+			effectUtil.projectileAllInRange("isn_fissionrads",dink.range)
+            break
+        end
 	end
-
-	if storage.radiation >= 80 then
-		effectUtil.projectileAllInRange("isn_fissionrads",8)
-	end
-
-	if storage.radiation >= 100 then
-		effectUtil.projectileAllInRange("isn_fissionrads",12)
-	end
-
-	if storage.radiation >= 120 then
-		effectUtil.projectileAllInRange("isn_fissionrads",16)
-	end
+	
 	power.update(dt)
 end
 
@@ -116,7 +125,6 @@ function isn_doSlotDecay(slot)
 	local tritium = world.containerItemAt(entity.id(),5)
 	local wastestack
 	local tritiumstack
-
 
 	if waste then
 		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)

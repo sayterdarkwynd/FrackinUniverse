@@ -23,7 +23,13 @@ function init()
 	static.updateTime = config.getParameter("staticUpdateTime")
 	static.currentFrame = 0
 	updateAiImage()
-	textTyper.init(textData, config.getParameter("shipStatus"))
+	local sailText
+	if world.getProperty("fuChosenShip") then
+		sailText = config.getParameter("shipChosen")
+	else
+		sailText = config.getParameter("shipStatus")
+	end
+	textTyper.init(textData, sailText)
 	widget.setButtonEnabled("showMissions", false)
 	widget.setButtonEnabled("showCrew", false)
 	pane.playSound(chatterSound, -1)
@@ -51,8 +57,10 @@ function update(dt)
 		else
 			aiImage.updateTime = aiImage.updateTime - dt
 		end
-		widget.setButtonEnabled("showMissions", true)
-		widget.setButtonEnabled("showCrew", true)
+		if not world.getProperty("fuChosenShip") then
+			widget.setButtonEnabled("showMissions", true)
+			widget.setButtonEnabled("showCrew", true)
+		end
 	end
 	if scanlines.updateTime <= 0 then
 		scanlines.currentFrame = updateFrame(scanlines)
@@ -89,35 +97,34 @@ function uninit()
 end
 
 function byos()
-	player.startQuest("fu_byos")
-	player.startQuest("fu_shipupgrades")
-	for _, recipe in pairs (root.assetJson("/interface/ai/fu_byosrecipes.config")) do
-		player.giveBlueprint(recipe)
-	end
-	if byosItems then
-		for _,byosItem in pairs (byosItems) do
-			player.giveItem(byosItem)
+	if not world.getProperty("fuChosenShip") then
+		player.startQuest("fu_byos")
+		player.startQuest("fu_shipupgrades")
+		for _, recipe in pairs (root.assetJson("/interface/ai/fu_byosrecipes.config")) do
+			player.giveBlueprint(recipe)
 		end
+		if byosItems then
+			for _,byosItem in pairs (byosItems) do
+				player.giveItem(byosItem)
+			end
+		end
+		world.sendEntityMessage("bootup", "byos", player.species())
+		world.setProperty("fuChosenShip", true)
+		pane.dismiss()
 	end
-	world.sendEntityMessage("bootup", "byos", player.species())
 end
 
 function racial()
-	local teleporters = world.entityQuery(world.entityPosition(player.id()), 100, {includedTypes = {"object"}})
-    teleporters = util.filter(teleporters, function(entityId)
-		if string.find(world.entityName(entityId), "teleporterTier0") then
-			return true
-		end
-    end)
-    if #teleporters > 0 then
-		player.lounge(teleporters[1])
-    end
-	race = player.species()
-	count = racialiserBootUp()
-	parameters = getBYOSParameters("techstation", true, _)
-	player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
-	player.startQuest("fu_shipupgrades")
-	player.upgradeShip(defaultShipUpgrade)
+	if not world.getProperty("fuChosenShip") then
+		race = player.species()
+		count = racialiserBootUp()
+		parameters = getBYOSParameters("techstation", true, _)
+		player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
+		player.startQuest("fu_shipupgrades")
+		player.upgradeShip(defaultShipUpgrade)
+		world.setProperty("fuChosenShip", true)
+		pane.dismiss()
+	end
 end
 
 function racialiserBootUp()

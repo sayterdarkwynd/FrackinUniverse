@@ -4,13 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Set Bonus:
-^cyan;+5% Jump, +5% Speed^reset; 
-^#e43774;+5% Crit Damage^reset;
-^green;+15% damage (Dual Fist or Quarterstaff)^reset;",
-  "shortdescription" : "Monks Robe",
+  "description" : "Set Bonuses:
+^#a00000;+5% Speed and Jump, +5% Crit Dmg^reset;
+^green;Dual Fist/Quarterstaff: +15% Damage^reset;",
+
+  "shortdescription" : "Monk's Robe",
   "category" : "t1armoru",
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : {
     "body" : "chestm.png",
@@ -25,11 +25,11 @@
   },
 
   "learnBlueprintsOnPickup" : [
-        "fulightpriesthead", 
-        "fulightpriestchest", 
-        "fulightpriestpants"	
+    "fulightpriesthead",
+    "fulightpriestchest",
+    "fulightpriestpants"
   ],
-  "itemTags" : [ "upgradeableWeapon" ],  
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 1,
   "leveledStatusEffects" : [
     {
@@ -55,9 +55,9 @@
   ],
 
   "statusEffects" : [
-    "missionarysetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_missionaryset_chest",
+      "stat" : "missionarysetcount",
       "amount" : 1
     }
   ],

@@ -1,0 +1,55 @@
+{
+  "objectName" : "barracksbunkbedbottom",
+  "colonyTags" : ["barracks","combat"],
+  "rarity" : "Common",
+  "category" : "furniture",
+  "price" : 0,
+  "printable" : false,
+  "description" : "A standard military bunk bed. You could bounce a coin off those sheets!",
+  "shortdescription" : "Barracks Bunk Bed Bottom",
+  "race" : "generic",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage" : "/objects/themed/barracks/barracksbunkbed/barracksbunkbedcover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed1"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+  
+  "breakDropPool" : "barracksbunkbed",
+
+  "inventoryIcon" : "barracksbunkbedicon.png",
+  "orientations" : [
+    {
+      "image" : "barracksbunkbedbottom.png:<color>",
+      "imagePosition" : [-24, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "sitPosition" : [-10, 11],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2]  ]
+    },
+    {
+      "image" : "barracksbunkbedbottom.png:<color>",
+      "imagePosition" : [-24, 0],
+      
+      "direction" : "right",
+
+      "sitPosition" : [-10, 11],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2] ]
+    }
+  ]
+}

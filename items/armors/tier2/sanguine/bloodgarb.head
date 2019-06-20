@@ -3,10 +3,12 @@
   "price" : 300,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "Set Bonus:
-^cyan;+4% Crit (Daggers, Whips, Strikers), + 0.2% Regen^reset;
-^green;+10% Speed, +10% Shadow Resistance^reset;",
+  "rarity" : "Common",
+  "description" : "Set Bonuses:
+^yellow;+10% Shadow Resist^reset;
+^cyan;+10% Speed, +0.5% HP Regen^reset;
+^green;Dagger/Whip/Striker: +4% Crit Chance^reset;",
+
   "shortdescription" : "Sanguine Crown",
   "category" : "t2armoru",
   "tooltipKind" : "armor",
@@ -17,11 +19,11 @@
   "itemTags" : [ "upgradeableWeapon" ],
 
   "learnBlueprintsOnPickup" : [
-    "chaoschest", 
-    "chaoshead", 
-    "chaospants"   
+    "chaoschest",
+    "chaoshead",
+    "chaospants"
   ],
-  
+
   "level" : 2,
   "collectablesOnPickup" : { "fu_armormelee" : "bloodgarbhead" },
   "leveledStatusEffects" : [
@@ -48,14 +50,20 @@
   ],
 
   "statusEffects" : [
-    "sanguinesetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_sanguineset_head",
+      "stat" : "healingBonus",
+      "amount" : 0.05
+    },      
+    {
+      "stat" : "sanguinesetcount",
       "amount" : 1
     }
   ],
 
   "colorOptions" : [
+    /* RED */
+    { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },  
     /* WHITE */
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
     /* BLACK */
@@ -64,8 +72,6 @@
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
     /* WHITE */
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
-    /* RED */
-    { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
     /* ORANGE */
     { "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },
     /* YELLOW */

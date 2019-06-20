@@ -4,7 +4,7 @@
   "inventoryIcon" : "protosniper.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "An energy-based sniper rifle.",
+  "description" : "An energy-based sniper rifle with a bouncy projectile.",
   "shortdescription" : "Proto Rifle",
   "category" : "sniperRifle",
   "level" : 3,
@@ -47,7 +47,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1.4,
-    "baseDps" : 11.0,
+    "baseDps" : 10.0,
     "energyUsage" : 35.0,
     "inaccuracy" : 0.001,
 
@@ -61,19 +61,19 @@
       "actionOnCollide" : [
 	    {
 	      "action" : "config",
-	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	      "file" : "/projectiles/explosions/elder/protoboomnodmg.config"
 	    }     
       ],      
       "actionOnHit" : [
 	    {
 	      "action" : "config",
-	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	      "file" : "/projectiles/explosions/elder/protoboomnodmg.config"
 	    }     
       ],
       "actionOnReap" : [
 	    {
 	      "action" : "config",
-	      "file" : "/projectiles/explosions/elder/protoboom.config"
+	      "file" : "/projectiles/explosions/elder/protoboomnodmg.config"
 	    }     
       ]
     },

@@ -3,10 +3,11 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
-   "description" : "Set Bonus:
-^cyan;+25% Speed and Jump^reset;
-^#e43774;+4% Crit Chance (Dagger / Pistol)^reset;", 
+  "rarity" : "Uncommon",
+  "description" : "Set Bonuses:
+^#a00000;+25% Speed and Jump^reset;
+^green;Dagger/Pistol: +4% Crit Chance^reset;",
+
   "shortdescription" : "Agent Chest",
   "category" : "t4armor",
   "tooltipKind" : "armornew2",
@@ -23,6 +24,7 @@
     "frontSleeve" : "fsleeve.png"
   },
 
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 4,
   "leveledStatusEffects" : [
     {
@@ -46,11 +48,11 @@
       "amount" : 4
     }
   ],
-  "itemTags" : [ "upgradeableWeapon" ],
+
   "statusEffects" : [
-    "agentsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_agentset_chest",
+      "stat" : "agentsetcount",
       "amount" : 1
     }
   ],

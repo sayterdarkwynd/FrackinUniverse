@@ -22,12 +22,21 @@
     "muzzleFlash" : "/animations/muzzleflash/fuplastmamuzzleblue1.png"
   },
   "animationCustom" : {
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "shadowsmoke", "offset" : [0.05, -0.4] },
+          { "particle" : "electricalburn", "offset" : [0.05, -0.4] },
+          { "particle" : "soluskatana1", "offset" : [0.05, -0.4] }
+        ]
+      }
+    },  
     "sounds" : {
       "fire" : [ "/sfx/weapons/farsight.ogg" ]
     }
   },
 
-  "baseOffset" : [1.6, -0.32],
+  "baseOffset" : [1.7, 0.02],
   "muzzleOffset" : [2.8, 0.25],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],

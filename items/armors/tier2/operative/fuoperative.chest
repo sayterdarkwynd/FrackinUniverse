@@ -4,8 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Set Bonus:
-^cyan;+4% Crit Chance, +20% Crit Damage^reset;",
+  "description" : "Set Bonuses:
+^#a00000;+4% Crit Chance, +20% Crit Dmg^reset;",
+
   "shortdescription" : "Operative Chest Armor",
   "category" : "t2armoru",
   "tooltipKind" : "armor",
@@ -22,11 +23,12 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-"learnBlueprintsOnPickup" : [
-"agilitysuithead",
-"agilitysuitchest",
-"agilitysuitlegs"
-],
+  "learnBlueprintsOnPickup" : [
+    "agilitysuithead",
+    "agilitysuitchest",
+    "agilitysuitlegs"
+  ],
+
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorpowerranged" : "fuoperativechest" },
@@ -53,12 +55,12 @@
     }
   ],
 
-  "statusEffects" : [ 
-    "operativesetbonus",
+  "statusEffects" : [
+    "fusetbonusmanager",
     {
-      "stat" : "fu_operativeset_chest",
+      "stat" : "operativesetcount",
       "amount" : 1
-    }  
+    }
   ],
 
   "colorOptions" : [

@@ -1,6 +1,6 @@
 {
   "itemName" : "aetheriumassaultrifle",
-  "price" : 1160,
+  "price" : 2160,
   "inventoryIcon" : "aetheriumassaultrifle.png",
   "maxStack" : 1,
   "rarity" : "legendary",
@@ -11,7 +11,7 @@
   "category" : "assaultRifle",
   "level" : 7,
   "tooltipKind" : "gun2aetherium",
-  "weaponType" : "Plasma",
+  "weaponType" : "Energy",
   "itemTags" : ["weapon","ranged","assaultrifle","energy","upgradeableWeapon"],
   "twoHanded" : true,
 
@@ -32,6 +32,15 @@
 		}
       }
     },  
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "particles" : [
+          { "particle" : "erchiussmoke", "offset" : [0.4, -0.4] },
+          { "particle" : "peglacitrail", "offset" : [0.4, -0.4] },
+          { "particle" : "plasmafireflames", "offset" : [0.4, -0.4] }
+        ]
+      }
+    },     
     "sounds" : {
       "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
     }
@@ -45,13 +54,15 @@
   "elementalType" : "cosmic",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
     "fireTime" : 0.14,
     "baseDps" : 7,
     "energyUsage" : 24.0,
-
+    "useEnergy" : true,
+    "runSlowWhileShooting" : true,
     "projectileCount" : 1,
+    "burstCooldown" : 0.25,
     "fireType" : "burst",
     "inaccuracy" : 0.03,
     "burstTime" : 0.035,

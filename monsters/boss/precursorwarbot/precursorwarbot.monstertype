@@ -8,7 +8,7 @@
 
   "animation" : "precursorwarbot.animation",
 
-  "dropPools" : [ { "default" : "fuprecursorLootBoss", "bow" : "fuprecursorLootBoss" } ],
+  "dropPools" : [ { "default" : "fuprecursorLootBoss", "brain" : "madnessBrainHarvestingRobot"} ],
 
   "baseParameters" : {
     "scripts" : [
@@ -102,7 +102,7 @@
         },         
         {
           "name" : "action-fire",
-	        "cooldown" : 1,
+	  "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 25,
@@ -112,6 +112,7 @@
 
             "projectileType" : "precursorshot2a",
             "projectileParameters" : {
+              "statusEffects" : [ "madnessgain" ],
               "actionOnReap" : [
 		    {
 		      "action" : "config",
@@ -151,6 +152,7 @@
 
             "projectileType" : "precursorball",
             "projectileParameters" : {
+                  "statusEffects" : [ "madnessgain3" ],
 		  "periodicActions" : [
 		    {
 		      "time" : 0.05,
@@ -229,7 +231,7 @@
 
             "projectileType" : "waveblast",
             "power" : 7,
-            "projectileParameters" : { "speed" : 80 },
+            "projectileParameters" : { "statusEffects" : [ "madnessgain2" ], "speed" : 80 },
             
             "fireOffset" : [1.0, 0],
             "aimAtTarget" : true,

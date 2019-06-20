@@ -76,7 +76,27 @@
             "frames" : 1
           }
         }
-      }
+      },
+	  "releaseParticles" : {
+	    "default" : "off",
+		"states" : {
+		  "off" : {
+		    "frames" : 1,
+			"properties" : {
+			  "particleEmittersOff" : [ "releaseParticles" ]
+			}
+		  },
+		  "on" : {
+			"frames" : 1,
+			"cycle" : 0.1,
+			"mode" : "transition",
+			"transition" : "off",
+			"properties" : {
+			  "particleEmittersOn" : [ "releaseParticles" ]
+			}
+		  }
+		}
+	  }
     },
 
     "parts" : {
@@ -417,7 +437,25 @@
         }
       ]
     },
-
+    "emotesleepy" : {
+      "emissionRate" : 1,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/emotes/sleepy.animation",
+            "position" : [0.5, 2],
+            "finalVelocity" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "destructionTime" : 0.2,
+            "destructionAction" : "shrink",
+            "layer" : "front",
+            "timeToLive" : 0.8,
+            "flippable" : false
+          }
+        }
+      ]
+    },
     "sleep" : {
       "emissionRate" : 2,
       "particles" : [
@@ -439,7 +477,32 @@
           }
         }
       ]
-    }
+    },
+	"captureParticles" : {
+	  "particles" : [
+		{ "particle" : "monstercapture" }
+	  ]
+	},
+	"releaseParticles" : {
+	  "particles" : [
+		{ "particle" : "monsterrelease" }
+	  ]
+	},
+	"teleportOut" : {
+	  "particles" : [
+		{ "particle" : "monstercapture" }
+	  ]
+	},
+	"teleportIn" : {
+	  "particles" : [
+		{ "particle" : "monsterrelease" }
+	  ]
+	},
+	"levelUp" : {
+	  "particles" : [
+		{ "particle" : "monsterlevelup" }
+	  ]
+	}
   },
 
   "effects" : {

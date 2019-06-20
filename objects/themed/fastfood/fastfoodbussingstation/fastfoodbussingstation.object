@@ -1,0 +1,58 @@
+{
+  "objectName" : "fastfoodbussingstation",
+  "printable" : false,
+  "colonyTags" : ["fastfood","cooking","storage"],
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "Tray storage and a garbage bin in one station!",
+  "shortdescription" : "Bussing Station",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 100,
+
+  "apexDescription" : "I can leave my tray and throw my trash away here.",
+  "avianDescription" : "A good way to make use of limited space.",
+  "floranDescription" : "Floran can throw away their sscraps here.",
+  "glitchDescription" : "Relieved. A convenient little bin to deposit my trash.",
+  "humanDescription" : "Phew! This trash might need to be taken out...",
+  "hylotlDescription" : "I do hope they're regularly taking those trays back to be washed...",
+  "novakidDescription" : "I can drop off my tray and trash here in one go.",
+
+  "inventoryIcon" : "fastfoodbussingstationicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "fastfoodbussingstation.png:<color>.<key>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/locker_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+  "scripts" : [ "/scripts/npcToyObject.lua"],
+
+  "npcToy" : {
+    "influence" : [
+      "trashcan",
+      "trashcanComplete"
+    ],
+    "defaultReactions" : {
+      "trashcan" : [
+        [1.0, "droptrash"]
+      ],
+      "trashcanComplete" : [
+        [1.0, "smile"],
+        [1.0, "annoyed"],
+        [1.0, "punch"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1, 0.0],
+    "preciseStandPositionRight" : [1, 0.0],
+    "maxNpcs" : 1
+  }
+}

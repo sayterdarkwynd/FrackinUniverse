@@ -1,0 +1,53 @@
+{
+  "objectName" : "unsmashableprismrockrunes",
+  "colonyTags" : ["prism"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "decorative",
+  "description" : "A highly refractive prism with runes engraved into it. Unbreakable!",
+  "shortdescription" : "Prism Crystal",
+  "race" : "generic",
+
+
+  "apexDescription" : "This prism appears to have runes carved into it.",
+  "avianDescription" : "There are runes on this prism.",
+  "floranDescription" : "Someone has sscratched runes into this rock.",
+  "glitchDescription" : "Curious. This prism has runes carved into it.",
+  "humanDescription" : "I wonder why there are runes on this crystal.",
+  "hylotlDescription" : "This prism has rather mysterious ancient runes carved into it.",
+  "novakidDescription":  "What's with these runes?",
+
+
+  "inventoryIcon" : "unsmashableprismrockrunesicon.png",
+  "orientations" : [
+    {
+      "image" : "unsmashableprismrockrunes.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "unsmashableprismrockrunes.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/lightsensor/unwiredlightsensor.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "unsmashableprismrockrunes.animation",
+  "animationParts" : {
+    "prism" : "unsmashableprismrockrunes.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "detectThresholdLow" : 10,
+  "detectThresholdHigh" : 30
+}

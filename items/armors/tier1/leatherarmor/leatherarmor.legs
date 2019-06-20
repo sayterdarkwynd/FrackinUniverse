@@ -5,10 +5,12 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "category" : "t1armor",
-  "description" : "Set Bonus:
-^green;+2% Crit, 5% Spd, +6% Ice & Elec Resistance^reset;
-^cyan;Bow/Crossbow: +5% Crit, +5% Dmg^reset; 
-^#e43774;(Lush/Forest biomes) +5 Energy, +5% Knockback Resist^reset;",   
+  "description" : "^red;+2% Ice and Electric Resist^reset;
+Set Bonuses:
+^#a00000;+2% Crit Chance, +5% Speed^reset;
+^green;Bow/XBow: +5% Crit Chance, +5% Dmg^reset;
+^#009000;Lush/Forest biomes: +5 Energy, +5% Knockback Resist^reset;",
+
   "shortdescription" : "Leather Leggings",
   "tooltipKind" : "armor",
 
@@ -38,11 +40,11 @@
       "stat" : "maxHealth",
       "amount" : 1
     }
-  ],  
+  ],
   "statusEffects" : [
-    "leathersetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_leatherset_legs",
+      "stat" : "leathersetcount",
       "amount" : 1
     },
     {
@@ -52,13 +54,13 @@
     {
       "stat" : "electricResistance",
       "amount" : 0.02
-    }    
+    }
   ],
 
 
   "colorOptions" : [
     // BROWN
-    { "ffca8a" : "cc9f69", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }, 
+    { "ffca8a" : "cc9f69", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" },
     // LIGHT GREY
     { "ffca8a" : "cccccc", "e0975c" : "9e9e9e", "a85636" : "616161", "6f2919" : "383838" },
     // BLACK

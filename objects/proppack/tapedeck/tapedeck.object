@@ -1,0 +1,91 @@
+{
+  "objectName" : "tapedeck",
+  "rarity" : "Common",
+  "printable" : false,
+  "category" : "decorative",
+  "price" : 0,
+  "description" : "A tapedeck.",
+  "shortdescription" : "Tapedeck",
+  "race" : "generic",
+
+  "apexDescription" : "My tapedeck! I like listening to local tunes.",
+  "avianDescription" : "It's a tapedeck.",
+  "floranDescription" : "Radio box for musssic.",
+  "glitchDescription" : "Neutral. It's the dorm tapedeck.",
+  "humanDescription" : "Ah, my tapedeck! It's good for background noise.",
+  "hylotlDescription" : "A simple tapedeck.",
+  "novakidDescription" : "Just a tapedeck.",
+
+  "lightColor" : [0, 0, 0],
+
+  "inventoryIcon" : "tapedeckicon.png",
+  "orientations" : [
+    {
+      "image" : "tapedeck.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+
+      "direction" : "left",
+      "lightPosition" : [-1, 0],
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : ["bottom"]
+    },
+    {
+      "image" : "tapedeck.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+
+      "direction" : "right",
+      "lightPosition" : [-1, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : ["bottom"]
+    }
+
+  ],
+
+  "animation" : "tapedeck.animation",
+  "animationParts" : {
+    "bg" : "tapedeck.png",
+    "fg" : "tapedecklit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/speaker_toggle.ogg" ],
+      "off" : [ "/sfx/objects/speaker_toggle.ogg" ]
+    }
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [
+    "/objects/wired/light/light.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+  "defaultLightState" : false,
+
+  "soundEffect" : "/sfx/objects/jukebox.ogg",
+
+  "npcToy" : {
+    "influence" : [
+      "hylotlmusic",
+      "hylotlmusic",
+      "hylotlmusic",
+      "hylotlmusicFinished"
+    ],
+    "defaultReactions" : {
+      "hylotlmusic" : [
+        [1.0, "hylotldance"]
+      ],
+      "hylotlmusicFinished" : [
+        [1.0, "hylotldance"],
+        [1.0, "smile"],
+        [1.0, "laugh"]
+      ]
+    },
+    "randomStandXRange" : [-4, 4],
+    "maxNpcs" : 4
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "objectName" : "sparklelavalamp2",
+  "colonyTags" : ["fu", "light"],
+  "rarity" : "Rare",
+  "category" : "light",
+  "price" : 60,
+  "description" : "I could watch this all day.",
+  "shortdescription" : "Teal Star Lamp",
+  "race" : "generic",
+
+  "lightColor" : [42, 120, 155],
+  "lightPosition" : [0, 1],
+
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.725,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+
+  "inventoryIcon" : "sparklelavalamp2icon.png",
+  "orientations" : [
+    {
+      "image" : "sparklelavalamp2.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "sparklelavalamp2.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "default.animation",
+  "animationParts" : {
+    "bg" : "sparklelavalamp2.png",
+    "fg" : "sparklelavalamp2lit.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

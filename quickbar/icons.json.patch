@@ -1,22 +1,27 @@
 [
-	{
-		"op": "add",
-		"path": "/normal/-",
-		"value": { "label": "Character Status", "pane": "/interface/scripted/statWindow/statWindow.config", "icon": "/items/tools/inspectiontool/inspectionmode.png" }
-	},
-	{
-		"op": "add",
-		"path": "/normal/-",
-		"value": { "label": "Quest List", "pane": "/zb/questList/questList.config", "icon": "/assetmissing.png" }
-	},
-	{
-		"op": "add",
-		"path": "/normal/-",
-		"value": { "label" : "Research Tree", "pane" : "/zb/researchTree/researchTree.config", "icon" : "/items/tools/inspectiontool/inspectionmode.png" }
-	},
-	{
-		"op": "add",
-		"path": "/normal/-",
-		"value": { "label": "Updates", "pane": "/zb/updateInfoWindow/updateInfoWindow.config", "icon": "/interface/quest.png" }
-	}
+    { "op": "add", "path": "/items/frackinuniverse:status", "value": {
+        "label": "Character Status",
+        "icon": "/items/tools/inspectiontool/inspectionmode.png",
+        "action" : [ "pane", "/interface/scripted/statWindow/statWindow.config" ]
+    } },
+    { "op": "add", "path": "/items/frackinuniverse:questlist", "value": {
+        "label": "Quest List",
+        //"icon": "",
+        "action" : [ "pane", "/zb/questList/questList.config" ]
+    } },
+    { "op": "add", "path": "/items/frackinuniverse:research", "value": {
+        "label": "Research Tree",
+        "icon": "/items/tools/inspectiontool/inspectionmode.png",
+        "action" : [ "pane", "/zb/researchTree/researchTree.config" ]
+    } },
+    { "op": "add", "path": "/items/frackinuniverse:updates", "value": {
+        "label": "Updates",
+        "icon": "/interface/quest.png",
+        "action" : [ "pane", "/zb/updateInfoWindow/updateInfoWindow.config" ]
+    } },
+    { "op": "add", "path": "/items/frackinuniverse:mechfuel", "value": {
+        "label": "Mech Fuel",
+        "icon": "/interface/mechfuel/icon.png",
+        "action" : [ "pane", "/interface/mechfuel/mechfuel.config" ]
+    } }
 ]

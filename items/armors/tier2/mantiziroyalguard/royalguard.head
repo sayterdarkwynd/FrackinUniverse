@@ -4,9 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Set Bonus:
-^cyan;+15% Damage (Short Spear, Spear,Lance)^reset; 
-^green;+15% Knockback Resistance^reset;", 
+  "description" : "Set Bonuses:
+^#a00000;+15% Knockback Resist^reset;
+^green;Spear/Shortspear: +15% Dmg^reset;",
+
   "shortdescription" : "Stalwart Helmet",
   "category" : "t2armor",
   "tooltipKind" : "armornew2",
@@ -42,11 +43,11 @@
   ],
 
   "statusEffects" : [
-    "stalwartsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_stalwartset_head",
+      "stat" : "stalwartsetcount",
       "amount" : 1
-    } 
+    }
   ],
 
   "colorOptions" : [

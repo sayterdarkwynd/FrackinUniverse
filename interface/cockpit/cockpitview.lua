@@ -424,7 +424,7 @@ function View:showPlanetInfo(planet)
 
   self.infoBox.update = function()
     local bookmark = newPlanetBookmark(planet)
-   if bookmark and existingBookmark(coordinateSystem(planet), bookmark) then
+    if bookmark and existingBookmark(coordinateSystem(planet), bookmark) then
       widget.setText("planetinfo.inner.bookmark", config.getParameter("planetInfoBox.bookmarkButtonCaption.edit"))
       widget.setButtonEnabled("planetinfo.inner.bookmark", true)
     elseif bookmark then
@@ -907,6 +907,7 @@ function View:renderSystemObjects(system, mappedObjects, doScale)
     for uuid,object in pairs(self.tweenIn) do
       local position, angle, scale = object.inFunc(object, self.settings)
       View.canvas:drawImageDrawable(object.parameters.icon, self:sToScreen(position), objectScale * scale, "white", angle)
+      self:questMarkUuid(uuid, self:sToScreen(position))
     end
     for uuid,object in pairs(self.objects) do
       local flip = object.direction[1] > 0 and 1 or -1
@@ -921,10 +922,12 @@ function View:renderSystemObjects(system, mappedObjects, doScale)
         color = self.settings.visitedTempObjectColor
       end
       View.canvas:drawImageDrawable(object.parameters.icon, self:sToScreen(object.position), {objectScale * flip, objectScale}, color, angle)
+      self:questMarkUuid(uuid, self:sToScreen(object.position))
     end
     for uuid,object in pairs(self.tweenOut) do
       local position, angle, scale = object.outFunc(object, self.settings)
       View.canvas:drawImageDrawable(object.parameters.icon, self:sToScreen(position), objectScale * scale, "white", angle)
+      self:questMarkUuid(uuid, self:sToScreen(position))
     end
   end
 
@@ -980,13 +983,27 @@ function View:renderStars(args, dt)
 
   for _,system in pairs(args.systems) do
     local opacity = 1.0
-    if compare(system, args.currentSystem) then
+    local isCurrentSystem = compare(system, args.currentSystem)
+    if isCurrentSystem then
       opacity = args.currentOpacity
     end
     local pos = self:uToScreen({system.location[1], system.location[2]})
     local color = {255, 255, 255, opacity * 255}
     for _,pair in pairs(celestial.starImages(system, View.twinkleTimer)) do
       View.canvas:drawImage(pair[1], pos, pair[2] * imageScale, color, true)
+    end
+
+    if not isCurrentSystem or not self.drawSystem then
+      local markers = {}
+      for _, p in pairs(self.questLocations) do
+        if compare(system.location, p[1].system) then
+          table.insert(markers, {p[2], pos})
+        end
+      end
+      table.sort(markers, function(l, r) return l[1] > r[1] end)
+      for _, p in ipairs(markers) do
+        self:drawQuestMarker(p[2], p[1])
+      end
     end
   end
 
@@ -1117,7 +1134,7 @@ function View:renderBackground()
 end
 
 function View:drawSystemPlanet(planet, opacity, parameters, visitable)
-  local position = celestial.planetPosition(planet)
+  local position = self:sToScreen(celestial.planetPosition(planet))
   local color = {255, 255, 255, opacity * 255}
   local planetSize = celestial.planetSize(planet)
 
@@ -1125,7 +1142,7 @@ function View:drawSystemPlanet(planet, opacity, parameters, visitable)
     local images = celestial.planetaryObjectImages(planet)
     for _,image in pairs(images) do
       local scale = (planetSize * self.systemCamera.scale) / root.imageSize(image[1])[1]
-      self.canvas:drawImage(image[1], self:sToScreen(position), scale, color, true)
+      self.canvas:drawImage(image[1], position, scale, color, true)
     end
   else
     if planetSize then
@@ -1139,9 +1156,11 @@ function View:drawSystemPlanet(planet, opacity, parameters, visitable)
       end
 
       local scale = (planetSize * self.systemCamera.scale) / root.imageSize(image)[1]
-      self.canvas:drawImage(image, self:sToScreen(position), scale, color, true)
+      self.canvas:drawImage(image, position, scale, color, true)
     end
   end
+
+  self:questMarkCoord(planet, position)
 end
 
 function View:drawAsteroidField(planet, count)
@@ -1162,13 +1181,48 @@ function View:drawAsteroidField(planet, count)
 end
 
 function View:drawWorld(object)
-  local position = celestial.planetPosition(object)
+  local position = self:sToScreen(celestial.planetPosition(object))
   local planetSize = celestial.planetSize(object)
   if planetSize then
     local images = celestial.worldImages(object)
     local scale = (planetSize * self.systemCamera.scale) / root.imageSize(images[1][1])[1]
     for i,image in pairs(images) do
-      self.canvas:drawImageDrawable(image[1], self:sToScreen(position), scale, "white", angle)
+      self.canvas:drawImageDrawable(image[1], position, scale, "white", angle)
+    end
+
+    self:questMarkCoord(object, position)
+  end
+end
+
+function View:questMarkCoord(object, position)
+  local markers = {}
+  for _, p in pairs(self.questLocations) do
+    if p[1].location and p[1].location[1] == "coordinate" and compare(object, p[1].location[2]) then
+      table.insert(markers, {p[2], position})
     end
   end
+  table.sort(markers, function(l, r) return l[1] > r[1] end)
+  for _, p in ipairs(markers) do
+    self:drawQuestMarker(p[2], p[1])
+  end
+end
+
+function View:questMarkUuid(uuid, position)
+  local markers = {}
+  for _, p in pairs(self.questLocations) do
+    if p[1].location and p[1].location[1] == "object" and uuid == p[1].location[2] then
+      table.insert(markers, {p[2], position})
+    end
+  end
+  table.sort(markers, function(l, r) return l[1] > r[1] end)
+  for _, p in ipairs(markers) do
+    self:drawQuestMarker(p[2], p[1])
+  end
+end
+
+function View:drawQuestMarker(position, markerType)
+  local image = self.settings[markerType .. "QuestMarkerImage"]
+  local offset = self.settings[markerType .. "QuestMarkerOffset"]
+  position = vec2.add(position, offset)
+  self.canvas:drawImage(image, position, 0.5, "white", true)
 end

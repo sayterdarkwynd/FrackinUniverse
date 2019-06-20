@@ -109,6 +109,9 @@ function getNewParameters(pet, treasure)
 		treasurePoolsNew = info.starterTreasure.name
 		newParameters = util.mergeTable(newParameters, {treasurePools = {treasurePoolsNew}})
 	end
+	if itemNew then
+		newParameters.racialisedTo = itemNew.name
+	end
 	return newParameters
 end
 
