@@ -1,0 +1,46 @@
+{
+  "name" : "raidersetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {},
+    "armorMovementModifiers" : {
+      "speed" : 1.12
+    },
+
+    "weaponBonuses" : [
+      // Note that pistol bonuses override dagger bonuses!
+      // E.g. dagger and pistol gives +7.5% Dmg but not +25% Crit Dmg.
+      {
+        "type" : "dual",
+        "tags" : [ "pistol", "machinepistol" ],
+        "altTags" : [ "pistol", "machinepistol" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.15 }
+        }
+      },
+      {
+        "type" : "any",
+        "altTags" : [ "pistol", "machinepistol" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.075 }
+        }
+      },
+      {
+        "type" : "any",
+        "tags" : [ "dagger", "knife" ],
+        "stats" : {
+          "critBonus" : { "baseMultiplier" : 1.25 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "+12% Speed. Daggers: +25% Crit Dmg. Pistol/Machine Pistol: +7.5% Dmg each",
+  "icon" : "/interface/statuses/attack.png"
+}
