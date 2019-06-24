@@ -4,23 +4,23 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Set Bonus: 
+  "description" : "Set Bonus:
 ^cyan;Immune:Gas, Proto-Poison^reset;
 ^#e43774;+800s Oxygen^reset;
 ^green;+8% Energy Regen^reset;",
   "shortdescription" : "Scout Greaves",
   "category" : "t3armoru",
   "tooltipKind" : "armornew2",
-  
-  "learnBlueprintsOnPickup" : [ 
-  "ff_scoutchest_melee", 
-  "ff_scouthelm_melee", 
-  "ff_scoutpants_melee" 
+
+  "learnBlueprintsOnPickup" : [
+    "ff_scoutchest_melee",
+    "ff_scouthelm_melee",
+    "ff_scoutpants_melee"
   ],
-  
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-    "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
   "collectablesOnPickup" : { "fu_armorranged" : "ff_scoutpants" },
   "leveledStatusEffects" : [
@@ -47,9 +47,9 @@
   ],
 
   "statusEffects" : [
-      "scoutsetbonus",
+    fusetbonusmanager",
     {
-      "stat" : "fu_scoutset_legs",
+      "stat" : "scoutsetcount",
       "amount" : 1
     }
   ]
