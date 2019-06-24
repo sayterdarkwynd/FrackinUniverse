@@ -447,26 +447,29 @@ function activateFUMechStats()
 end
 
 
+-- fu modularmech.lua update() with NPC Mechs support (LoPhatKo)
+
 
 function update(dt)
+ 
   -- despawn if owner has left the world
   if not self.ownerEntityId or world.entityType(self.ownerEntityId) ~= "player" then
     despawn()
   end
-
+ 
   --set storage.energy based on fuel in dummy quest
   if not self.currentFuelMessage then
     self.currentFuelMessage = world.sendEntityMessage(self.ownerEntityId, "getQuestFuelCount")
   end
-
+ 
   if self.currentFuelMessage and self.currentFuelMessage:finished() and storage.energy then
     if self.currentFuelMessage:succeeded() and self.currentFuelMessage:result() then
-	  storage.energy = self.currentFuelMessage:result()
-	  end
-	self.currentFuelMessage = nil
+      storage.energy = self.currentFuelMessage:result()
+      end
+    self.currentFuelMessage = nil
   end
   --end
-
+ 
   if self.explodeTimer then
     self.explodeTimer = math.max(0, self.explodeTimer - dt)
     if self.explodeTimer == 0 then
@@ -506,49 +509,49 @@ function update(dt)
     end
     return
   end
-
-
+ 
+ 
   --manual flight mode
   if self.manualFlightMode then
-	  setFlightMode(true)
+      setFlightMode(true)
   else
     setFlightMode(world.gravity(mcontroller.position()) == 0)-- or world.liquidAt(mcontroller.position()))--lpk:add liquidMovement
   end
-
+ 
   if self.manualFlightMode and world.gravity(mcontroller.position()) == 0 then
     self.manualFlightMode = false
   end
-
+ 
   -- update positions and movement
-
+ 
   self.boostDirection = {0, 0}
-
+ 
   local newPosition = mcontroller.position()
   local newVelocity = mcontroller.velocity()
-
+ 
   -- decrement timers
-
+ 
   self.stepSoundLimitTimer = math.max(0, self.stepSoundLimitTimer - dt)
   self.landingBobTimer = math.max(0, self.landingBobTimer - dt)
   self.jumpBoostTimer = math.max(0, self.jumpBoostTimer - dt)
   self.fallThroughTimer = math.max(0, self.fallThroughTimer - dt)
   self.onGroundTimer = math.max(0, self.onGroundTimer - dt)
-
+ 
   -- track onGround status
   if mcontroller.onGround() then
     self.onGroundTimer = self.onGroundTime
   end
   local onGround = self.onGroundTimer > 0
-
+ 
   -- hit ground
-
+ 
   if onGround and not self.lastOnGround and newVelocity[2] - self.lastVelocity[2] > self.landingBobThreshold then
     self.landingBobTimer = self.landingBobTime
     triggerStepSound()
   end
-
+ 
   -- update driver if energy > 0
-
+ 
   local driverId = vehicle.entityLoungingIn("seat")
   if driverId and not self.driverId and storage.energy > 0 then
     animator.setAnimationState("power", "activate")
@@ -556,29 +559,29 @@ function update(dt)
     animator.setAnimationState("power", "deactivate")
   end
   self.driverId = driverId
-
+ 
   -- read controls or do deployment
-
+ 
   local newControls = {}
   local oldControls = self.lastControls
-
+ 
   if self.deploy then
     self.deploy.fadeTimer = math.max(0.0, self.deploy.fadeTimer - dt)
     self.deploy.deployTimer = math.max(0.0, self.deploy.deployTimer - dt)
-
+ 
     -- visual fade in
     local multiply = math.floor(math.min(1.0, (self.deploy.fadeTime - self.deploy.fadeTimer) / self.deploy.fadeInTime) * 255)
     local fade = math.min(1.0, self.deploy.fadeTimer / self.deploy.fadeOutTime)
     animator.setGlobalTag("directives", string.format("?multiply=ffffff%02x?fade=ffffff;%.1f", multiply, fade))
     animator.setLightActive("deployLight", true)
     animator.setLightColor("deployLight", {fade, fade, fade})
-
+ 
     -- boost to a stop
     if self.deploy.deployTimer < self.deploy.boostTime then
       mcontroller.approachYVelocity(0, math.abs(self.deploy.initialVelocity) / self.deploy.boostTime * mcontroller.parameters().mass)
       boost({0, util.toDirection(-self.deploy.initialVelocity)})
     end
-
+ 
     if self.deploy.deployTimer == 0.0 then
       self.deploy = nil
       animator.setLightActive("deployLight", false)
@@ -588,49 +591,50 @@ function update(dt)
     if self.damageFlashTimer == 0 then
       animator.setGlobalTag("directives", "")
     end
-
+ 
     local walking = false
     if self.driverId then
-      for k, _ in pairs(self.lastControls) do
-        newControls[k] = vehicle.controlHeld("seat", k)
-      end
-
-      self.aimPosition = vehicle.aimPosition("seat")
-
+       -- for k, _ in pairs(self.lastControls) do
+        -- newControls[k] = vehicle.controlHeld("seat", k)
+      -- end
+ 
+      -- self.aimPosition = vehicle.aimPosition("seat")
+            self.aimPosition,newControls = readMechControls(newControls) -- NPC Mechs
+ 
       if newControls.Special1 and not self.lastControls.Special1 and storage.energy > 0 then
-	      if self.parts.hornName == 'mechaimassist' then
-		      self.aimassist = not self.aimassist
-		      animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
-	      elseif self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4' then
-		      self.masscancel = not self.masscancel
-		      animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
-	      else
+          if self.parts.hornName == 'mechaimassist' then
+              self.aimassist = not self.aimassist
+              animator.playSound('toggle'..(self.aimassist and 'on' or 'off'))
+          elseif self.parts.hornName == 'mechmasscancel' or self.parts.hornName == 'mechmasscancel2' or self.parts.hornName == 'mechmasscancel3' or self.parts.hornName == 'mechmasscancel4' then
+              self.masscancel = not self.masscancel
+              animator.playSound('toggle'..(self.masscancel and 'on' or 'off'))
+          else
           animator.playSound("horn")
         end
       end
-
+ 
       if self.flightMode then
-	      --disable manual flight mode on no energy
-	      if storage.energy <= 0 and self.manualFlightMode then
-		      setFlightMode(false)
-		      self.manualFlightMode = false
-		    end
-
-		    if self.manualFlightMode and mcontroller.yVelocity() > 0 and mcontroller.isColliding() then
+          --disable manual flight mode on no energy
+          if storage.energy <= 0 and self.manualFlightMode then
+              setFlightMode(false)
+              self.manualFlightMode = false
+            end
+ 
+            if self.manualFlightMode and mcontroller.yVelocity() > 0 and mcontroller.isColliding() then
           setFlightMode(false)
           self.manualFlightMode = false
         end
-
-		    if not hasTouched(newControls) and not hasTouched(oldControls) and self.manualFlightMode then
-		      local vel = mcontroller.velocity()
+ 
+            if not hasTouched(newControls) and not hasTouched(oldControls) and self.manualFlightMode then
+              local vel = mcontroller.velocity()
             if vel[1] ~= 0 or vel[2] ~= 0 then
               --mcontroller.approachVelocity({0, 0}, self.flightControlForce*2)
               mcontroller.approachVelocity({0, 0}, self.flightControlForce*1.5)
               boost(vec2.mul(vel, -1))
             end
-	    	end
-
-		    --set controls to only working on positive energy
+            end
+ 
+            --set controls to only working on positive energy
         if newControls.jump then
           local vel = mcontroller.velocity()
           if vel[1] ~= 0 or vel[2] ~= 0 then
@@ -642,23 +646,23 @@ function update(dt)
             mcontroller.approachXVelocity(self.flightControlSpeed, self.flightControlForce)
             boost({1, 0})
           end
-
+ 
           if newControls.left and storage.energy > 0 then
             mcontroller.approachXVelocity(-self.flightControlSpeed, self.flightControlForce)
             boost({-1, 0})
           end
-
+ 
           if newControls.up and storage.energy > 0 then
             mcontroller.approachYVelocity(self.flightControlSpeed, self.flightControlForce)
             boost({0, 1})
           end
-
+ 
           if newControls.down and storage.energy > 0 then
-		        if self.manualFlightMode then
+                if self.manualFlightMode then
               mcontroller.approachYVelocity(-self.flightControlSpeed*2, self.flightControlForce*2)
-			      else
-			        mcontroller.approachYVelocity(-self.flightControlSpeed, self.flightControlForce)
-			      end
+                  else
+                    mcontroller.approachYVelocity(-self.flightControlSpeed, self.flightControlForce)
+                  end
             boost({0, -1})
           end
         end
@@ -666,18 +670,18 @@ function update(dt)
         if not newControls.jump and storage.energy > 0 then
           self.fallThroughSustain = false
         end
-
+ 
         if onGround then
           if newControls.right and not newControls.left and storage.energy > 0 then
             mcontroller.approachXVelocity(self.groundSpeed, self.groundControlForce)
             walking = true
           end
-
+ 
           if newControls.left and not newControls.right and storage.energy > 0 then
             mcontroller.approachXVelocity(-self.groundSpeed, self.groundControlForce)
             walking = true
           end
-
+ 
           if newControls.jump and self.jumpBoostTimer > 0 and storage.energy > 0 then
             mcontroller.setYVelocity(self.jumpVelocity)
           elseif newControls.jump and not self.lastControls.jump then
@@ -686,19 +690,19 @@ function update(dt)
               self.fallThroughSustain = true
             else
               jump()
-
-			        self.doubleTabBoostJump = self.doubleTabBoostOn
+ 
+                    self.doubleTabBoostJump = self.doubleTabBoostOn
             end
           else
             self.jumpBoostTimer = 0
           end
-
-		  --crouch code is here
-		  local dist = self.crouchCheckMax
-		  self.crouchTarget = 0.0
-		  self.crouchOn = false
-
-		  while dist > 0 do
+ 
+          --crouch code is here
+          local dist = self.crouchCheckMax
+          self.crouchTarget = 0.0
+          self.crouchOn = false
+ 
+          while dist > 0 do
         if (newControls.down and not self.fallThroughSustain) or (
           world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {-2.5, dist})) or
           world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {0, dist})) or
@@ -710,25 +714,25 @@ function update(dt)
           break
         end
         dist = dist - 1
-		  end
-		  --end
-
+          end
+          --end
+ 
         else
           local controlSpeed = self.jumpBoostTimer > 0 and self.jumpAirControlSpeed or self.airControlSpeed
           local controlForce = self.jumpBoostTimer > 0 and self.jumpAirControlForce or self.airControlForce
-
+ 
           local boostSpeedMult = self.doubleTabBoostJump and self.doubleTabBoostSpeedMultTarget or 1.0
-
+ 
           if newControls.right and storage.energy > 0 then
             mcontroller.approachXVelocity(controlSpeed * boostSpeedMult, controlForce)
             boost({1, 0})
           end
-
+ 
           if newControls.left and storage.energy > 0 then
             mcontroller.approachXVelocity(-controlSpeed * boostSpeedMult, controlForce)
             boost({-1, 0})
           end
-
+ 
           if newControls.jump and storage.energy > 0 then
             if self.jumpBoostTimer > 0 then
               mcontroller.setYVelocity(self.jumpVelocity)
@@ -736,82 +740,82 @@ function update(dt)
           else
             self.jumpBoostTimer = 0
           end
-
-		  --crouch code is here
-		  self.crouchTarget = 0.0
-		  self.crouchOn = false
-		  --end
+ 
+          --crouch code is here
+          self.crouchTarget = 0.0
+          self.crouchOn = false
+          --end
         end
-
-		    doubleTabBoost(dt, newControls, oldControls)
+ 
+            doubleTabBoost(dt, newControls, oldControls)
       end
-
+ 
       self.facingDirection = world.distance(self.aimPosition, mcontroller.position())[1] > 0 and 1 or -1
-
+ 
       self.lastControls = newControls
     else
       for k, _ in pairs(self.lastControls) do
         self.lastControls[k] = false
       end
-
+ 
       newControls = self.lastControls
       oldControls = self.lastControls
-
+ 
       self.aimPosition = nil
     end
   end
-
+ 
   --manual flight mode
   if not self.driverId then
     setFlightMode(false)
     self.manualFlightMode = false
   end
-
+ 
   if newControls.up and not oldControls.up then
     self.doubleJumpCount = self.doubleJumpCount + 1
     self.doubleJumpDelay = self.doubleTabCheckDelayTime
   end
-
+ 
   if self.doubleJumpCount >= 2 then
     if self.manualFlightMode == true and world.gravity(mcontroller.position()) ~= 0 then
       self.manualFlightMode = false
     elseif self.manualFlightMode == false and world.gravity(mcontroller.position()) ~= 0 then
       self.manualFlightMode = true
     end
-
+ 
     self.doubleJumpCount = 0
   end
-
+ 
   self.doubleJumpDelay = self.doubleJumpDelay - dt
   if self.doubleJumpDelay < 0 then
     self.doubleJumpCount = 0
   end
   --end
-
+ 
   --crouch code is here
   if storage.energy > 0 then
     --self.crouch = self.crouch + (self.crouchTarget - self.crouch) * 0.1
     self.crouch = util.lerp(0.1,self.crouch,self.crouchTarget)
   end
-
+ 
   if not self.flightMode then --lpk - dont set while in 0g
-  	self.crouchTarget = 0.5
-	self.crouchOn = true
+    self.crouchTarget = 0.5
+    self.crouchOn = true
     if self.crouchOn then
-
-	  mcontroller.applyParameters(self.crouchSettings)
+ 
+      mcontroller.applyParameters(self.crouchSettings)
     else
-	  mcontroller.applyParameters(self.noneCrouchSettings)
+      mcontroller.applyParameters(self.noneCrouchSettings)
     end
   end
-
-
-
+ 
+ 
+ 
   --end
-
+ 
   -- update damage team (don't take damage without a driver)
   -- also anything else that depends on a driver's presence
-
+ 
   if self.driverId then
     vehicle.setDamageTeam(world.entityDamageTeam(self.driverId))
     vehicle.setInteractive(false)
@@ -826,127 +830,127 @@ function update(dt)
     animator.setLightActive("activeLight", false)
     animator.setLightActive("boostLight", false)
   end
-
+ 
   -- decay and check energy
   if self.driverId then
   --energy drain
     local energyDrain = self.energyDrain
-
-	  --set energy drain x2 on manual flight mode
-	  if self.flightMode and world.gravity(mcontroller.position()) == 0 then
-	    energyDrain = self.energyDrain
-	  elseif self.flightMode and world.gravity(mcontroller.position()) ~= 0 then
-	    energyDrain = self.energyDrain*2
-  	elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then
-	    energyDrain = self.energyDrain
-  	end
-
+ 
+      --set energy drain x2 on manual flight mode
+      if self.flightMode and world.gravity(mcontroller.position()) == 0 then
+        energyDrain = self.energyDrain
+      elseif self.flightMode and world.gravity(mcontroller.position()) ~= 0 then
+        energyDrain = self.energyDrain*2
+    elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then
+        energyDrain = self.energyDrain
+    end
+ 
     --set energy drain to 0 if null movement
     if not hasTouched(newControls) and not hasTouched(oldControls) and not self.manualFlightMode then --(not hasFired) then
-
+ 
       eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
       eMult = eMult
-
+ 
       activateFUMechStats()
-
-	  if self.defenseboost then
-		if self.parts.hornName == 'mechdefensefield' then
-		  self.defenseBoost = 100
-		elseif self.parts.hornName == 'mechdefensefield2' then
-		  self.defenseBoost = 200
-		elseif self.parts.hornName == 'mechdefensefield3' then
-		  self.defenseBoost = 300
-		elseif self.parts.hornName == 'mechdefensefield4' then
-		  self.defenseBoost = 400
-		elseif self.parts.hornName == 'mechdefensefield5' then
-		  self.defenseBoost = 500
-		end
-	  end
-
-	  if self.masspassive then
-		if self.parts.hornName == 'mechchipfeather' then
-		  self.mechMass = self.mechMass * 0.4
-		  self.healthMax = self.healthMax * 0.75
-		end
-	  end
-
-	  if self.masscancel then
-		if self.parts.hornName == 'mechmasscancel' then
-		  self.mechMass = self.mechMass * 0.75
-		elseif self.parts.hornName == 'mechmasscancel2' then
-		  self.mechMass = self.mechMass * 0.5
-		elseif self.parts.hornName == 'mechmasscancel3' then
-		  self.mechMass = self.mechMass * 0.25
-		elseif self.parts.hornName == 'mechmasscancel4' then
-		  self.mechMass = 0
-		end
-	  end
-
-	  if self.energyboost then
-		if self.parts.hornName == 'mechenergyfield' then
-		  self.energyBoost = 100
-		elseif self.parts.hornName == 'mechenergyfield2' then
-		  self.energyBoost = 200
-		elseif self.parts.hornName == 'mechenergyfield3' then
-		  self.energyBoost = 300
-		elseif self.parts.hornName == 'mechenergyfield4' then
-		  self.energyBoost = 400
-		elseif self.parts.hornName == 'mechenergyfield5' then
-		  self.energyBoost = 500
-		end
-	  end
-
-	  if self.mobilityboost then
-		if self.parts.hornName == 'mechmobility' then
-		  self.mobilityBoostValue = 1.1
-		  self.mobilityControlValue = 1.1
-		  self.mobilityJumpValue = 1
-		elseif self.parts.hornName == 'mechmobility2' then
-		  self.mobilityBoostValue = 1.2
-		  self.mobilityControlValue = 1.2
-		  self.mobilityJumpValue = 1
-		elseif self.parts.hornName == 'mechmobility3' then
-		  self.mobilityBoostValue = 1.3
-		  self.mobilityControlValue = 1.3
-		  self.mobilityJumpValue = 1
-		elseif self.parts.hornName == 'mechmobility4' then
-		  self.mobilityBoostValue = 1.4
-		  self.mobilityControlValue = 1.4
-		  self.mobilityJumpValue = 1
-		elseif self.parts.hornName == 'mechmobility5' then
-		  self.mobilityBoostValue = 1.5
-		  self.mobilityControlValue = 1.5
-		  self.mobilityJumpValue = 1
-		elseif self.parts.hornName == 'mechchipcontrol' then
-		  self.mobilityBoostValue = 0.8
-		  self.mobilityControlValue = 1.4
-		  self.mobilityJumpValue = 1.2
-		elseif self.parts.hornName == 'mechchipspeed' then
-		  self.mobilityBoostValue = 1.2
-		  self.mobilityControlValue = 0.8
-		  self.mobilityJumpValue = 0.8
-		end
-	  else
-	    self.mobilityBoostValue = 1
-	    self.mobilityControlValue = 1
-	    self.mobilityJumpValue = 1
-	  end
-
-
-	if self.fuelboost then
-		if self.parts.hornName == 'mechchipfuel' then
-		  self.healthMax = self.healthMax * 0.8
-		  self.energyBoost = 300
-		elseif self.parts.hornName == 'mechchiprefueler' then
-		  self.fuelCost = 0.6
-		elseif self.parts.hornName == 'mechchipovercharge' then
-		  self.fuelCost = 2.5
-		  self.mobilityBoostValue = 1.8
-		end
-	else
-	  self.fuelCost = 1
-	end
-
+ 
+      if self.defenseboost then
+        if self.parts.hornName == 'mechdefensefield' then
+          self.defenseBoost = 100
+        elseif self.parts.hornName == 'mechdefensefield2' then
+          self.defenseBoost = 200
+        elseif self.parts.hornName == 'mechdefensefield3' then
+          self.defenseBoost = 300
+        elseif self.parts.hornName == 'mechdefensefield4' then
+          self.defenseBoost = 400
+        elseif self.parts.hornName == 'mechdefensefield5' then
+          self.defenseBoost = 500
+        end
+      end
+ 
+      if self.masspassive then
+        if self.parts.hornName == 'mechchipfeather' then
+          self.mechMass = self.mechMass * 0.4
+          self.healthMax = self.healthMax * 0.75
+        end
+      end
+ 
+      if self.masscancel then
+        if self.parts.hornName == 'mechmasscancel' then
+          self.mechMass = self.mechMass * 0.75
+        elseif self.parts.hornName == 'mechmasscancel2' then
+          self.mechMass = self.mechMass * 0.5
+        elseif self.parts.hornName == 'mechmasscancel3' then
+          self.mechMass = self.mechMass * 0.25
+        elseif self.parts.hornName == 'mechmasscancel4' then
+          self.mechMass = 0
+        end
+      end
+ 
+      if self.energyboost then
+        if self.parts.hornName == 'mechenergyfield' then
+          self.energyBoost = 100
+        elseif self.parts.hornName == 'mechenergyfield2' then
+          self.energyBoost = 200
+        elseif self.parts.hornName == 'mechenergyfield3' then
+          self.energyBoost = 300
+        elseif self.parts.hornName == 'mechenergyfield4' then
+          self.energyBoost = 400
+        elseif self.parts.hornName == 'mechenergyfield5' then
+          self.energyBoost = 500
+        end
+      end
+ 
+      if self.mobilityboost then
+        if self.parts.hornName == 'mechmobility' then
+          self.mobilityBoostValue = 1.1
+          self.mobilityControlValue = 1.1
+          self.mobilityJumpValue = 1
+        elseif self.parts.hornName == 'mechmobility2' then
+          self.mobilityBoostValue = 1.2
+          self.mobilityControlValue = 1.2
+          self.mobilityJumpValue = 1
+        elseif self.parts.hornName == 'mechmobility3' then
+          self.mobilityBoostValue = 1.3
+          self.mobilityControlValue = 1.3
+          self.mobilityJumpValue = 1
+        elseif self.parts.hornName == 'mechmobility4' then
+          self.mobilityBoostValue = 1.4
+          self.mobilityControlValue = 1.4
+          self.mobilityJumpValue = 1
+        elseif self.parts.hornName == 'mechmobility5' then
+          self.mobilityBoostValue = 1.5
+          self.mobilityControlValue = 1.5
+          self.mobilityJumpValue = 1
+        elseif self.parts.hornName == 'mechchipcontrol' then
+          self.mobilityBoostValue = 0.8
+          self.mobilityControlValue = 1.4
+          self.mobilityJumpValue = 1.2
+        elseif self.parts.hornName == 'mechchipspeed' then
+          self.mobilityBoostValue = 1.2
+          self.mobilityControlValue = 0.8
+          self.mobilityJumpValue = 0.8
+        end
+      else
+        self.mobilityBoostValue = 1
+        self.mobilityControlValue = 1
+        self.mobilityJumpValue = 1
+      end
+ 
+ 
+    if self.fuelboost then
+        if self.parts.hornName == 'mechchipfuel' then
+          self.healthMax = self.healthMax * 0.8
+          self.energyBoost = 300
+        elseif self.parts.hornName == 'mechchiprefueler' then
+          self.fuelCost = 0.6
+        elseif self.parts.hornName == 'mechchipovercharge' then
+          self.fuelCost = 2.5
+          self.mobilityBoostValue = 1.8
+        end
+    else
+      self.fuelCost = 1
+    end
+ 
       if (storage.health) < (self.healthMax*0.15) then -- play damage effects at certain health percentages
         animator.setParticleEmitterActive("highDamage", true) -- land fx
         animator.setParticleEmitterActive("midDamage", false) -- land fx
@@ -973,45 +977,45 @@ function update(dt)
         animator.setParticleEmitterActive("highDamage", false) -- land fx
         animator.setParticleEmitterActive("minorDamage", false) -- land fx
       end
-
+ 
       energyDrain = 0
     end
     storage.energy = math.max(0, storage.energy - energyDrain * dt)
     --set new fuel count on dummy quest
     world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", storage.energy)
   end
-
+ 
   local inLiquid = world.liquidAt(mcontroller.position())
   if inLiquid then
     local liquidName = root.liquidName(inLiquid[1])
     if self.liquidVulnerabilities[liquidName] then
-	  --lower health and explode on liquid hazard
+      --lower health and explode on liquid hazard
       storage.health = math.max(0, storage.health - self.liquidVulnerabilities[liquidName].energyDrain * dt)
       if storage.health == 0 then
         explode()
         return
       end
-
+ 
       if not self.liquidVulnerabilities[liquidName].warned then
         world.sendEntityMessage(self.ownerEntityId, "queueRadioMessage", self.liquidVulnerabilities[liquidName].message)
         self.liquidVulnerabilities[liquidName].warned = true
       end
     end
   end
-
+ 
   --explode on 0 health
   if storage.health == 0 then
     explode()
-	  return
+      return
   end
-
+ 
   --lock arms and set sounds on 0 energy
   if storage.energy <= 0 then
     self.energyBackPlayed = false
     self.leftArm.bobLocked = true
-	  self.rightArm.bobLocked = true
-	  animator.setAnimationState("boost", "idle")
-		animator.setLightActive("boostLight", false)
+      self.rightArm.bobLocked = true
+      animator.setAnimationState("boost", "idle")
+        animator.setLightActive("boostLight", false)
     animator.stopAllSounds("step")
     animator.stopAllSounds("jump")
     if not self.energyOutPlayed then
@@ -1019,30 +1023,30 @@ function update(dt)
       animator.playSound("energyout")
       self.energyOutPlayed = true
     end
-
+ 
     for _, arm in pairs({"left", "right"}) do
       local fireControl = (arm == "left") and "PrimaryFire" or "AltFire"
-
+ 
       animator.resetTransformationGroup(arm .. "Arm")
       animator.resetTransformationGroup(arm .. "ArmFlipper")
-
+ 
       self[arm .. "Arm"]:updateBase(dt, self.driverId, false, false, self.aimPosition, self.facingDirection, self.crouch * self.bodyCrouchMax)
       self[arm .. "Arm"]:update(dt)
     end
-	  return
+      return
   else
     self.energyOutPlayed = false
     self.leftArm.bobLocked = false
-	  self.rightArm.bobLocked = false
+      self.rightArm.bobLocked = false
     if not self.energyBackPlayed then
       animator.setAnimationState("power", "activate")
       animator.playSound("energyback")
       self.energyBackPlayed = true
     end
   end
-
+ 
   -- set appropriate movement parameters for walking/falling conditions
-
+ 
   if not self.flightMode then
     if walking ~= self.lastWalking then
       self.lastWalking = walking
@@ -1052,56 +1056,56 @@ function update(dt)
         mcontroller.resetParameters(self.movementSettings)
       end
     end
-
+ 
     if self.fallThroughTimer > 0 or self.fallThroughSustain then
       mcontroller.applyParameters({ignorePlatformCollision = true})
     else
       mcontroller.applyParameters({ignorePlatformCollision = false})
     end
   end
-
+ 
   -- flip to match facing direction
-
+ 
   if storage.energy > 0 then
     animator.setFlipped(self.facingDirection < 0)
   end
-
+ 
   -- compute leg cycle
-
+ 
   if onGround then
     local newLegCycle = self.legCycle
     newLegCycle = self.legCycle + ((newPosition[1] - self.lastPosition[1]) * self.facingDirection) / (4 * self.legRadius)
-
+ 
     if math.floor(self.legCycle * 2) ~= math.floor(newLegCycle * 2) then
       triggerStepSound()
-
+ 
       -- mech ground thump damage (FU)
       self.thumpParamsMini = {
         power = self.mechMass,
         damageTeam = {type = "friendly"},
-	  actionOnReap = {
-	      {
-		action='explosion',
-		foregroundRadius=2,
-		backgroundRadius=0,
-		explosiveDamageAmount= 0.25,
-		harvestLevel = 99,
-		delaySteps=2
-	      }
-	    }
+      actionOnReap = {
+          {
+        action='explosion',
+        foregroundRadius=2,
+        backgroundRadius=0,
+        explosiveDamageAmount= 0.25,
+        harvestLevel = 99,
+        delaySteps=2
+          }
+        }
       }
-
+ 
       if self.mechMass > 8 then  -- 8 tonne minimum or tiles dont suffer at all.
         world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
       end
-
+ 
     end
-
+ 
     self.legCycle = newLegCycle
   end
-
+ 
   -- animate legs, leg joints, and hips
-
+ 
   if self.flightMode then
     -- legs stay locked in place for flight
   else
@@ -1110,21 +1114,21 @@ function update(dt)
       back = {}
     }
     local legCycleOffset = 0
-
+ 
     for _, legSide in pairs({"front", "back"}) do
       local leg = legs[legSide]
-
+ 
       leg.offset = legOffset(self.legCycle + legCycleOffset)
       legCycleOffset = legCycleOffset + 0.5
-
+ 
       leg.onGround = leg.offset[2] <= 0
-
+ 
       -- put foot down when stopped
       if not walking and math.abs(newVelocity[1]) < 0.5 then
         leg.offset[2] = 0
         leg.onGround = true
       end
-
+ 
       local footGroundOffset = findFootGroundOffset(leg.offset, self[legSide .. "Foot"])
       if footGroundOffset then
         leg.offset[2] = leg.offset[2] + footGroundOffset
@@ -1132,76 +1136,76 @@ function update(dt)
         leg.offset[2] = self.reachGroundDistance[2]
         leg.onGround = false
       end
-
+ 
       animator.setAnimationState(legSide .. "Foot", leg.onGround and "flat" or "tilt")
       animator.resetTransformationGroup(legSide .. "Leg")
       animator.translateTransformationGroup(legSide .. "Leg", leg.offset)
       animator.resetTransformationGroup(legSide .. "LegJoint")
       animator.translateTransformationGroup(legSide .. "LegJoint", {0.6 * leg.offset[1], 0.5 * leg.offset[2]})
     end
-
+ 
     if math.abs(newVelocity[1]) < 0.5 and math.abs(self.lastVelocity[1]) >= 0.5 then
       triggerStepSound()
     end
-
+ 
     animator.resetTransformationGroup("hips")
     local hipsOffset = math.max(-0.375, math.min(0, math.min(legs.front.offset[2] + 0.25, legs.back.offset[2] + 0.25))) + (self.crouch * self.hipCrouchMax)
     animator.translateTransformationGroup("hips", {0, hipsOffset})
   end
-
+ 
   -- update and animate arms
-
+ 
   local chains = {}
   for _, arm in pairs({"left", "right"}) do
     local fireControl = (arm == "left") and "PrimaryFire" or "AltFire"
-
-	local aim = self.aimPosition
-	if self.aimassist and self.aimPosition and self[arm..'Arm'].projectileType then
-	  local projectile = root.projectileConfig(self[arm..'Arm'].projectileType)
-	  if projectile.speed and projectile.speed > 0 then
-	    local armVec = world.xwrap(vec2.add(vec2.add(mcontroller.position(),{0, self.walkBobMagnitude * math.sin(math.pi * (((self.legCycle * 2) - self.armBobDelay) % 1)) + (self.crouch * self.bodyCrouchMax)}),arm == 'left' and {2.375,1.798} or {-2.375,1.798}))
-		local mechVec = mcontroller.velocity()
-		local aimAngle = vec2.angle(world.distance(self.aimPosition,armVec))
-		local mechVel = mechVec[1]*-1*math.sin(aimAngle)+mechVec[2]*math.cos(aimAngle)
-		local dist = world.magnitude(armVec,self.aimPosition)-self[arm..'Arm'].fireOffset[1]
-		local aimOffset = (mechVel ~= 0 and math.atan(mechVel*(dist/projectile.speed),dist) or 0)
-	    aim = world.xwrap(vec2.add(armVec,{math.cos(aimAngle-aimOffset),math.sin(aimAngle-aimOffset)}))
-	  end
-	end
-
+ 
+    local aim = self.aimPosition
+    if self.aimassist and self.aimPosition and self[arm..'Arm'].projectileType then
+      local projectile = root.projectileConfig(self[arm..'Arm'].projectileType)
+      if projectile.speed and projectile.speed > 0 then
+        local armVec = world.xwrap(vec2.add(vec2.add(mcontroller.position(),{0, self.walkBobMagnitude * math.sin(math.pi * (((self.legCycle * 2) - self.armBobDelay) % 1)) + (self.crouch * self.bodyCrouchMax)}),arm == 'left' and {2.375,1.798} or {-2.375,1.798}))
+        local mechVec = mcontroller.velocity()
+        local aimAngle = vec2.angle(world.distance(self.aimPosition,armVec))
+        local mechVel = mechVec[1]*-1*math.sin(aimAngle)+mechVec[2]*math.cos(aimAngle)
+        local dist = world.magnitude(armVec,self.aimPosition)-self[arm..'Arm'].fireOffset[1]
+        local aimOffset = (mechVel ~= 0 and math.atan(mechVel*(dist/projectile.speed),dist) or 0)
+        aim = world.xwrap(vec2.add(armVec,{math.cos(aimAngle-aimOffset),math.sin(aimAngle-aimOffset)}))
+      end
+    end
+ 
     animator.resetTransformationGroup(arm .. "Arm")
     animator.resetTransformationGroup(arm .. "ArmFlipper")
-
+ 
     self[arm .. "Arm"]:updateBase(dt, self.driverId, newControls[fireControl], oldControls[fireControl], aim, self.facingDirection, self.crouch * self.bodyCrouchMax, self.parts) --FU adds self.parts
-
+ 
     self[arm .. "Arm"]:update(dt)
     if self[arm.."Arm"].renderChain then
       table.insert(chains, self[arm.."Arm"].chain)
     end
-
+ 
     if self.facingDirection < 0 then
       animator.translateTransformationGroup(arm .. "ArmFlipper", {(arm == "right") and self.armFlipOffset or -self.armFlipOffset, 0})
     end
   end
   vehicle.setAnimationParameter("chains", chains)
-
+ 
   -- animate boosters and boost flames
-
+ 
   animator.resetTransformationGroup("boosters")
-
+ 
   if self.jumpBoostTimer > 0 then
     boost({0, 1})
   end
-
+ 
   if self.manualFlightMode then
     boost({0, 1})
   end
-
+ 
   if storage.energy <= 0 then
-	  animator.setAnimationState("boost", "idle")
+      animator.setAnimationState("boost", "idle")
       animator.setLightActive("boostLight", false)
   end
-
+ 
   if self.boostDirection[1] == 0 and self.boostDirection[2] == 0 then
     animator.setAnimationState("boost", "idle")
     animator.setLightActive("boostLight", false)
@@ -1220,20 +1224,20 @@ function update(dt)
     animator.setAnimationState("boost", stateTag)
     animator.setLightActive("boostLight", true)
   end
-
+ 
   -- animate bobbing and landing
   -- FU timer ***********************************
   time = (time or 1) - dt
-
+ 
   animator.resetTransformationGroup("body")
   if self.flightMode then
     local newFlightOffset = {
         math.max(-self.flightOffsetClamp, math.min(self.boostDirection[1] * self.facingDirection * self.flightOffsetFactor, self.flightOffsetClamp)),
         math.max(-self.flightOffsetClamp, math.min(self.boostDirection[2] * self.flightOffsetFactor, self.flightOffsetClamp))
       }
-
+ 
     self.currentFlightOffset = vec2.div(vec2.add(newFlightOffset, vec2.mul(self.currentFlightOffset, 4)), 5)
-
+ 
     animator.translateTransformationGroup("boosters", self.currentFlightOffset)
     animator.translateTransformationGroup("rightArm", self.currentFlightOffset)
     animator.translateTransformationGroup("leftArm", self.currentFlightOffset)
@@ -1243,11 +1247,11 @@ function update(dt)
     local bodyCycle = (self.legCycle * 2) % 1
     local bodyOffset = {0, self.walkBobMagnitude * math.sin(math.pi * bodyCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("body", bodyOffset)
-
+ 
     local boosterCycle = ((self.legCycle * 2) - self.boosterBobDelay) % 1
     local boosterOffset = {0, self.walkBobMagnitude * math.sin(math.pi * boosterCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("boosters", boosterOffset)
-
+ 
     local armCycle = ((self.legCycle * 2) - self.armBobDelay) % 1
     local armOffset = {0, self.walkBobMagnitude * math.sin(math.pi * armCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
@@ -1256,71 +1260,71 @@ function update(dt)
     -- TODO: make this less complicated
     local landingCycleTotal = 1.0 + math.max(self.boosterBobDelay, self.armBobDelay)
     local landingCycle = landingCycleTotal * (1 - (self.landingBobTimer / self.landingBobTime))
-
+ 
     local bodyCycle = math.max(0, math.min(1.0, landingCycle))
     local bodyOffset = {0, -self.landingBobMagnitude * math.sin(math.pi * bodyCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("body", bodyOffset)
-
+ 
     local legJointOffset = {0, 0.5 * bodyOffset[2]}
     animator.translateTransformationGroup("frontLegJoint", legJointOffset)
     animator.translateTransformationGroup("backLegJoint", legJointOffset)
-
+ 
     local boosterCycle = math.max(0, math.min(1.0, landingCycle + self.boosterBobDelay))
     local boosterOffset = {0, -self.landingBobMagnitude * 0.5 * math.sin(math.pi * boosterCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("boosters", boosterOffset)
-
+ 
     local armCycle = math.max(0, math.min(1.0, landingCycle + self.armBobDelay))
     local armOffset = {0, -self.landingBobMagnitude * 0.25 * math.sin(math.pi * armCycle) + (self.crouch * self.bodyCrouchMax)}
     animator.translateTransformationGroup("rightArm", self.rightArm.bobLocked and boosterOffset or armOffset)
     animator.translateTransformationGroup("leftArm", self.leftArm.bobLocked and boosterOffset or armOffset)
-
+ 
     -- ************************************ MECH MASS IMPACT (FU) ************************************
     if vehicle.entityLoungingIn("seat") then  -- only check mech mass application on terrain if the player is within the mech, to prevent weird cratering issues
-
-
-	  self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,55)
-	  self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,300)
-	  self.appliedDamage = self.baseDamage /2
-
-	-- if it falls too hard, the mech takes some damage based on how far its gone
-	  self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2
-
-	if self.mechMass >= 15 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then    --mech takes damage from stomps
-	  storage.health = math.max(0, storage.health - (self.baseDamage /200))
-	end
-
-	if self.mechMass > 0 and time <= 0 then
-	    time = 1
-	    local thumpParamsBig = {
-		power = self.appliedDamage,
-		damageTeam = {type = "friendly"},
-		actionOnReap = {
-		    {
-			action='explosion',
-			foregroundRadius=math.abs(mcontroller.velocity()[2]),
-			backgroundRadius=0,
-			explosiveDamageAmount= self.explosivedamage,
-			harvestLevel = 99,
-			delaySteps=2
-		    }
-		}
-	    }
-
-	    if self.mechMass >= 20 then
-		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / (6 - (self.mechMass/24))
-		thumpParamsBig.actionOnReap[1].backgroundRadius = thumpParamsBig.actionOnReap[1].backgroundRadius / 6
-		thumpParamsBig.actionOnReap[1].explosiveDamageAmount = thumpParamsBig.actionOnReap[1].explosiveDamageAmount * 1.5
-	    elseif self.mechMass >= 11 then
-		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 7.4
-	    else
-		thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 10
-	    end
-
-	    world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, thumpParamsBig)
-	    world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, thumpParamsBig)
-	end
-
-	-- separate so that it always applies regardless of actual damage, because it looks cool
+ 
+ 
+      self.explosivedamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,55)
+      self.baseDamage = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass,300)
+      self.appliedDamage = self.baseDamage /2
+ 
+    -- if it falls too hard, the mech takes some damage based on how far its gone
+      self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2
+ 
+    if self.mechMass >= 15 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then    --mech takes damage from stomps
+      storage.health = math.max(0, storage.health - (self.baseDamage /200))
+    end
+ 
+    if self.mechMass > 0 and time <= 0 then
+        time = 1
+        local thumpParamsBig = {
+        power = self.appliedDamage,
+        damageTeam = {type = "friendly"},
+        actionOnReap = {
+            {
+            action='explosion',
+            foregroundRadius=math.abs(mcontroller.velocity()[2]),
+            backgroundRadius=0,
+            explosiveDamageAmount= self.explosivedamage,
+            harvestLevel = 99,
+            delaySteps=2
+            }
+        }
+        }
+ 
+        if self.mechMass >= 20 then
+        thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / (6 - (self.mechMass/24))
+        thumpParamsBig.actionOnReap[1].backgroundRadius = thumpParamsBig.actionOnReap[1].backgroundRadius / 6
+        thumpParamsBig.actionOnReap[1].explosiveDamageAmount = thumpParamsBig.actionOnReap[1].explosiveDamageAmount * 1.5
+        elseif self.mechMass >= 11 then
+        thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 7.4
+        else
+        thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 10
+        end
+ 
+        world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, thumpParamsBig)
+        world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {-3,-6}, false, thumpParamsBig)
+    end
+ 
+    -- separate so that it always applies regardless of actual damage, because it looks cool
         if self.mechMass >= 20 and (self.explosivedamage) >= 40 then
           animator.playSound("landingThud")
           animator.playSound("heavyBoom")
@@ -1329,14 +1333,22 @@ function update(dt)
           animator.playSound("landingThud")
           animator.burstParticleEmitter("legImpact")
         end
-
+ 
     end
   end
   --
-
+ 
   self.lastPosition = newPosition
   self.lastVelocity = newVelocity
   self.lastOnGround = onGround
+end
+ 
+function readMechControls(newControls)
+      for k, _ in pairs(self.lastControls) do
+        newControls[k] = vehicle.controlHeld("seat", k)
+      end
+ 
+      return vehicle.aimPosition("seat"),newControls
 end
 
 function onInteraction(args)
