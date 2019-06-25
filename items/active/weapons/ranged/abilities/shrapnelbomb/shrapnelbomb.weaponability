@@ -1,32 +1,8 @@
 {
+  "animationParts" : { },
   "animationCustom" : {
-    "animatedParts" : { "parts" : {
-      "grenadelauncher" : {
-        "properties" : {
-          "zLevel" : -1,
-          "centered" : true,
-          "offset" : [-0.75, -0.375],
-          "transformationGroups" : ["muzzle"],
-          "firePosition" : [0.75, -0.125],
-          "image" : "/items/active/weapons/ranged/abilities/grenadelauncher/grenadelauncher.png"
-        }
-      }
-    }},
     "sounds" : {
       "altFire" : [ "/sfx/gun/grenade2.ogg" ]
-    },
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [-0.25, -0.5, -0.25, -0.5],
-        "particles" : [
-          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
-          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] },
-          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
-        ]
-      }
     }
   },
 
@@ -47,13 +23,17 @@
       "shadow" : { "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
       "cosmic" : { "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } }      
     },
+    "projectileParameters" : { },
 
+    "baseDamage" : 1,
+    "energyUsage" : 25,
+    
     "baseDamageMultiplier" : 0.1,
     "energyUsageMultiplier" : 1.5,
-
-    "fireTime" : 4.0,
+    
+    "fireTime" : 2.0,
     "projectileCount" : 1,
-    "inaccuracy" : 0.01,
+    "inaccuracy" : 0,
 
     "useParticleEmitter" : false,
 
