@@ -5,9 +5,9 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "Set Bonus:
-^cyan;Immune: Burning^reset;
+^cyan;Immune: Breath, Burning, Electrified^reset;
 ^#e43774;30% Electric Resistance, +5% speed^reset;
-^green;+20% Dmg, +25% Energy (Electric/Energy weapons)^reset;", 
+^green;+20% Dmg, +25% Energy (Electric/Energy weapons)^reset;",
   "shortdescription" : "Steampunk Coat",
   "category" : "t3armor",
   "tooltipKind" : "armornew2",
@@ -23,7 +23,7 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-    "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
   "collectablesOnPickup" : { "fu_armorpowerranged" : "fusteampunkchest" },
     "leveledStatusEffects" : [
@@ -50,9 +50,9 @@
   ],
 
   "statusEffects" : [
-    "steampunksetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_steampunkset_chest",
+      "stat" : "steampunksetcount",
       "amount" : 1
     },
     {
@@ -60,7 +60,7 @@
       "amount" : 0.1
     }
   ],
-  
+
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },
     { "ffca8a" : "727272", "e0975c" : "414141", "a85636" : "1c1c1c", "6f2919" : "0b0b0b" },

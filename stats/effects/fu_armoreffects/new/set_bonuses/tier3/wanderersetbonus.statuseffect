@@ -1,0 +1,27 @@
+{
+  "name" : "wanderersetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {},
+
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "energy" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.15 },
+          "critBonus" : { "baseMultiplier" : 1.10 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "Energy weapons: +15% Dmg, +10% Crit Dmg",
+  "icon" : "/interface/statuses/set_laser.png"
+}
