@@ -1,20 +1,39 @@
 {
   "name" : "jungleweathernew",
-  "blockingStat" : "jungleslowImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "physicalResistance",
-          "effectCutoffValue" : 0.2, 
-	  "biomeTemp" : 0.65, 
-	  "biomeThreshold" : 0.20,
-	    "baseRate" : 7,
-	    "baseDebuffPerTick" : 1,
-	    "baseDmgPerTick" : 0.3,
-	    "situationPenalty" : 1,
-	    "liquidPenalty" : 0.35,
-	    "biomeNight" : 1	    
+    "resistanceTypes" : {
+      "physicalResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.2,
+    "immunityStats" : [
+      "jungleslowImmunity"
+    ],
+
+    "healthDrain" : 0.3,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.5,
+    "jumpPenalty" : 0.5,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "night" : 0.9,
+      "wet" : 0.35
+    },
+
+    "messages" : {
+      "intro" : "ffbiomejungle",
+      "wet" : "ffbiomejunglewater"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/tropical/jungleheatweather.statuseffect"
   },
-  "defaultDuration" : 2,
+  "defaultDuration" : 5,
 
   "scripts" : [
     "jungleheatweather.lua"

@@ -8,7 +8,16 @@
 
   "animation" : "adultpoptopfire.animation",
 
-  "dropPools" : [ { "default" : "ashgolemLoot", "bow" : "ashgolemLoot" } ],
+  "dropPools" : [ { "default" : "ashgolemLoot",
+    "bow" : "ashgolemLoot",
+    "firebow" : "ashgolemLoot",
+    "icebow" : "ashgolemLoot",
+    "poisonbow" : "ashgolemLoot",
+    "electricbow" : "ashgolemLoot",
+    "cosmicbow" : "ashgolemLoot",
+    "radioactivebow" : "ashgolemLoot",
+    "shadowbow" : "ashgolemLoot",
+  		"brain" : "madnessBrainHarvestingGreat"   } ],
 
   "baseParameters" : {
     "scripts" : [
@@ -316,7 +325,10 @@
         "physicalResistance" : { "baseValue" : 0.8 },
         "shadowResistance" : { "baseValue" : 0.6 },
         "cosmicResistance" : { "baseValue" : 0.6 },
-        "radioactiveResistance" : { "baseValue" : 0.8 }
+        "radioactiveResistance" : { "baseValue" : 0.8 },
+        "captureImmunity" : {
+          "baseValue" : 1
+        }  
       },
 
       "resources" : {
@@ -337,6 +349,7 @@
     "capturable" : true,
     "captureHealthFraction" : 0.5,
     "nametagColor" : [64, 200, 255],
+    "capturedMonsterType" : "adultpoptopfirepet", // turn into an adultpoptop when captured    
     "captureCollectables" : { "fu_monster" : "adultpoptopfire" }
   }
 }

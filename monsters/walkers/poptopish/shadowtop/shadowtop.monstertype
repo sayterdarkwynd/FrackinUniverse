@@ -8,7 +8,20 @@
 
   "animation" : "shadowtop.animation",
 
-  "dropPools" : [ { "default" : "poptopTreasure", "bow" : "poptopHunting" } ],
+  "dropPools" : [
+    {
+    "default" : "poptopTreasure",
+    "bow" : "poptopHunting",
+    "firebow" : "poptopHunting",
+    "icebow" : "poptopHunting",
+    "poisonbow" : "poptopHunting",
+    "electricbow" : "poptopHunting",
+    "cosmicbow" : "poptopHunting",
+    "radioactivebow" : "poptopHunting",
+    "shadowbow" : "poptopHunting",
+      "brain" : "madnessBrainHarvesting"     
+    }
+  ], 
 
   "baseParameters" : {
     "scripts" : [
@@ -17,6 +30,7 @@
       "/scripts/golemancer/gol_monstermain.lua"
     ],
   "tickEvoTime" : 5,
+  "agingEvoTime" : 500,
   "evolutions" : [ "/scripts/golemancer/evolutions/adultshadowtop.evo" ],
   
     "behavior" : "monster",

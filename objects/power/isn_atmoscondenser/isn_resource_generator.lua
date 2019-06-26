@@ -14,6 +14,7 @@ function init()
     transferUtil.init()
     object.setInteractive(true)
     self.powerConsumption = config.getParameter("isn_requiredPower")
+    productionTime = (config.getParameter("productionTime",120))/60
     power.init()
 
     self.maxWeight = {}
@@ -44,41 +45,61 @@ function update(dt)
 	
 	-- Notify ITD but no faster than once per second.
 	if not deltaTime or (deltaTime > 1) then
-		deltaTime = 0
 		transferUtil.loadSelfContainer()
-		deltaTime = deltaTime + dt
+		wellRange=config.getParameter("wellRange",20)
+		wellInit()
+		deltaTime = 0
+	else
+		deltaTime=deltaTime+dt
 	end
 
-	local worldtype = world.type()
-	if worldtype == 'unknown' then
-		worldtype = world.getProperty("ship.celestial_type") or worldtype
+	if not storage.timer then
+		storage.timer=0
 	end
-	if not self.outputMap[worldtype] then
-		initMap(worldtype)
+	if storage.timer>=productionTime then
+		
+		local worldtype = world.type()
+		if worldtype == 'unknown' then
+			worldtype = world.getProperty("ship.celestial_type") or worldtype
+		end
+		if not self.outputMap[worldtype] then
+			initMap(worldtype)
+		end
+		
+		local output = nil
+		local rarityroll = math.random(1, self.maxWeight[worldtype])
+
+		-- Goes through the list adding values to the range as it goes.
+		-- This keeps the chance ratios while allowing the list to be in any order.
+		local total = 0
+		for weight,table in pairs(self.outputMap[worldtype]) do
+			total = total + weight
+			if rarityroll <= total then
+				output = util.randomFromList(table)
+				break
+			end
+		end
+
+		if output and clearSlotCheck(output) and power.consume(self.powerConsumption) then
+			animator.setAnimationState("machineState", "active")
+			world.containerAddItems(entity.id(), output)
+		else
+			animator.setAnimationState("machineState", "idle")
+		end
+		storage.timer=0
+	else
+		storage.timer=storage.timer+(dt/wellsDrawing)
 	end
-	
-    local output = nil
-    local rarityroll = math.random(1, self.maxWeight[worldtype])
-
-    -- Goes through the list adding values to the range as it goes.
-    -- This keeps the chance ratios while allowing the list to be in any order.
-    local total = 0
-    for weight,table in pairs(self.outputMap[worldtype]) do
-        total = total + weight
-        if rarityroll <= total then
-            output = util.randomFromList(table)
-            break
-        end
-    end
-
-    if output and clearSlotCheck(output) and power.consume(self.powerConsumption) then
-        animator.setAnimationState("machineState", "active")
-        world.containerAddItems(entity.id(), output)
-    else
-        animator.setAnimationState("machineState", "idle")
-    end
 end
 
 function clearSlotCheck(checkname)
-  return world.containerItemsCanFit(entity.id(), checkname) > 0
+	return world.containerItemsCanFit(entity.id(), checkname) > 0
 end
+
+
+
+function wellInit()
+	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAirWell"}) or {})
+end
+
+function fu_isAirWell() return (animator.animationState("machineState")=="active") end

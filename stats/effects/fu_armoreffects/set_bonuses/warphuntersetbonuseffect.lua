@@ -12,7 +12,8 @@ armorBonus={
 	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},		
 	{stat = "breathProtection", amount = 1},
-	{stat = "asteroidImmunity", amount = 1}
+	{stat = "asteroidImmunity", amount = 1},
+	{stat = "gravrainImmunity", amount = 1}
 }
 
 setName="fu_warphunterset"

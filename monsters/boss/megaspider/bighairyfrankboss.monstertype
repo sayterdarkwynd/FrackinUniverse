@@ -73,7 +73,7 @@
             "fireDelay" : 0.2,
             "fireSound" : "fire",
 		"projectileParameters" : {
-		  "statusEffects" : [ "webstick", "weakpoison" ],
+		  "statusEffects" : [ "webstick", "weakpoison","madnessgain" ],
 		  "speed" : 40,
 		  "animationCycle" : 1,
 		  "timeToLive" : 1
@@ -144,9 +144,9 @@
 	{
 	"name":"action-spawncompanions", 
 	"parameters":{
-	  "spawnCooldown":0.5, 
+	  "spawnCooldown":1, 
 	  "monsterType":"bighairyfrankbaby", 
-	  "maxCount":15, 
+	  "maxCount":6, 
 	  "monsterParameters":{ "level":[3] }
 	  }
 	},    
@@ -158,9 +158,9 @@
 	{
 	"name":"action-spawncompanions", 
 	"parameters":{
-	  "spawnCooldown":0.5, 
+	  "spawnCooldown":1, 
 	  "monsterType":"bighairyfrankbaby", 
-	  "maxCount":15, 
+	  "maxCount":6, 
 	  "monsterParameters":{ "level":[3] }
 	  }
 	},      
@@ -181,20 +181,6 @@
             "offset" : [-0.5,0],
             "monsterType" : "bighairyfrankbaby"
           }
-        },      
-        {
-          "name" : "action-spawnmonster",
-          "parameters" : {
-            "offset" : [0.5,0],
-            "monsterType" : "bighairyfrankbaby"
-          }
-        },
-        {
-          "name" : "action-spawnmonster",
-          "parameters" : {
-            "offset" : [-0.5,0],
-            "monsterType" : "bighairyfrankbaby"
-          }
         },        
         {
           "name" : "action-spawnmonster",
@@ -237,21 +223,7 @@
             "offset" : [-0.5,0],
             "monsterType" : "bighairyfrankbaby"
           }
-        },      
-        {
-          "name" : "action-spawnmonster",
-          "parameters" : {
-            "offset" : [0.5,0],
-            "monsterType" : "bighairyfrankbaby"
-          }
-        },
-        {
-          "name" : "action-spawnmonster",
-          "parameters" : {
-            "offset" : [-0.5,0],
-            "monsterType" : "bighairyfrankbaby"
-          }
-        },      
+        },           
         {
           "name" : "action-projectile",
           "parameters" : {
@@ -355,7 +327,7 @@
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.4
+          "baseValue" : 0.9
         },
         "electricStatusImmunity" : {
           "baseValue" : 0.0
@@ -375,6 +347,15 @@
         "shadowResistance" : {
          "baseValue" : 0.75 
         },
+        "penaltyBlock" : {
+          "baseValue" : 1.0
+        },      
+        "captureImmunity" : {
+          "baseValue" : 1.0
+        },        
+        "critImmunity" : {
+          "baseValue" : 1.0
+        },          
         "shadowImmunity" : {
          "baseValue" : 1
         },
@@ -385,8 +366,18 @@
           "baseValue" : 1
         },
         "radioactiveResistance" : { 
-          "baseValue" : 0.5
-        }
+          "baseValue" : -0.14
+        },
+        "bleedingImmunity" : { "baseValue" : 1 },
+        "linerifleResistance" : { "baseValue" : 0.9 },
+        "linerifleStatusImmunity" : { "baseValue" : 1 },
+        "centensianenergyResistance" : { "baseValue" : 0.9 },
+        "centensianenergyStatusImmunity" : { "baseValue" : 0.9 },
+        "xanafianResistance" : { "baseValue" : 0.9 },
+        "xanafianStatusImmunity" : { "baseValue" : 1 },
+        "akkimariacidResistance" : { "baseValue" : 0.9 },
+        "akkimariacidStatusImmunity" : { "baseValue" : 1 },
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 }        
       },
 
       "resources" : {

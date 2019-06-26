@@ -10,9 +10,9 @@ require "/zb/zb_util.lua"
 --	Small additions to already present functions
 
 textTyper.initOrig = textTyper.init
-function textTyper.init(textData, str)
+function textTyper.init(textData, str, sound)
 	doneTalking = false
-	textTyper.initOrig(textData, str)
+	textTyper.initOrig(textData, str, sound)
 end
 
 textTyper.skipOrig = textTyper.skip
@@ -20,6 +20,7 @@ function textTyper.skip(textData, wd)
 	doneTalking = false
 	textTyper.skipOrig(textData, wd)
 end
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 --	UNSAFE FUNCTIONS
@@ -47,6 +48,18 @@ function init()
 		local status, err = pcall(customDatainit)
 		if not status then
 			enableFailsafe(err)
+		end
+	end
+end
+
+function uninit()
+	if cfg.TextData then
+		if type(cfg.TextData.soundPlaying) == "table" then
+			for _, snd in ipairs(cfg.TextData.soundPlaying) do
+				pane.stopAllSounds(snd)
+			end
+		elseif cfg.TextData.soundPlaying then
+			pane.stopAllSounds(cfg.TextData.soundPlaying)
 		end
 	end
 end
@@ -134,7 +147,7 @@ function initSafe()
 	widget.setImage("windowIcon", cfg.GUI.titleIcon)
 	
 	buildCurrencyList()
-	textTyper.init(cfg.TextData, cfg.TextData.strings.intro)
+	textTyper.init(cfg.TextData, cfg.TextData.strings.intro, customData.chatterSound or cfg.TextData.sound)
 end
 
 function resetGUI()
@@ -179,6 +192,8 @@ function resetGUI()
 	GUI.dismissConfirmTimer = 0
 	GUI.talker.frameTimer = 0
 	GUI.talker.frame = 0
+	
+	fuResetGUI()
 end
 
 function updateSafe(dt)
@@ -228,6 +243,8 @@ function updateSafe(dt)
 					end
 				end
 				
+				fuCrewViewing()
+				
 			else
 				GUI.list.viewing = nil
 			end
@@ -245,7 +262,7 @@ function updateSafe(dt)
 		charDeltaCounter = charDeltaCounter + (dt * GUI.talker.speedModifier)
 		if 1 / (customData.charactersPerSecond or GUI.talker.charactersPerSecond) <= charDeltaCounter then
 			textTyper.scrambling(cfg.TextData)
-			textTyper.update(cfg.TextData, "root.text", customData.chatterSound or cfg.TextData.sound, cfg.TextData.volume, false)
+			textTyper.update(cfg.TextData, "root.text")
 			charDeltaCounter = 0
 		end
 	end
@@ -311,6 +328,8 @@ end
 
 function buttonMainSafe(wd)
 	if not customDataInited then return end
+	textTyper.stopSounds(cfg.TextData)
+	
 	if wd == "buttonMain" then
 		resetGUI()
 		
@@ -343,6 +362,8 @@ function buttonMainSafe(wd)
 		populateMissionList()
 		widget.setText("buttonScreenRight", " GO! >")
 		
+		fuButtonMissions()
+		
 	elseif wd == "switchMissionMain" then
 		resetGUI()
 		widget.setSize("root", {144,118})
@@ -357,6 +378,8 @@ function buttonMainSafe(wd)
 		
 		GUI.missionViewing = "main"
 		populateMissionList()
+		
+		fuSwitchMissionMain()
 		
 	elseif wd == "switchMissionSecondary" then
 		resetGUI()
@@ -373,6 +396,8 @@ function buttonMainSafe(wd)
 		GUI.missionViewing = "secondary"
 		populateMissionList()
 		
+		fuSwitchMissionSecondary()
+		
 	elseif wd == "buttonScreenRight" then
 		if widget.active("root.missionList") then
 			resetGUI()
@@ -387,6 +412,8 @@ function buttonMainSafe(wd)
 				widget.setData("buttonScreenRight", nil)
 				buttonMainSafe("buttonCrew")
 				widget.clearListItems("root.missionList")
+				
+				fuDismissConfirm()
 			else
 				widget.setData("buttonScreenRight", "dismissConfirm")
 				widget.setText("buttonScreenRight", "CONFIRM")
@@ -425,6 +452,8 @@ function buttonMainSafe(wd)
 		GUI.talker.emote = "unique"
 		GUI.list.viewing = "crew"
 		GUI.crewRequestTimer = GUI.crewRequestDelay -- Start the whole crew retrieval process
+		
+		fuButtonCrew()
 		
 	elseif wd == "buttonMisc" then
 		resetGUI()
@@ -588,11 +617,11 @@ function populateMissionList()
 		widget.setVisible("root.text", true)
 		
 		if customData.noMissionsSpeech then
-			textTyper.init(cfg.TextData, customData.noMissionsSpeech.text or cfg.Speech.noMissionsSpeech.text)
+			textTyper.init(cfg.TextData, customData.noMissionsSpeech.text or cfg.Speech.noMissionsSpeech.text, customData.chatterSound or cfg.TextData.sound)
 			GUI.talker.emote = customData.noMissionsSpeech.animation or cfg.Speech.noMissionsSpeech.animation
 			GUI.talker.speedModifier = customData.noMissionsSpeech.speedModifier or cfg.Speech.noMissionsSpeech.speedModifier
 		else
-			textTyper.init(cfg.TextData, cfg.Speech.noMissionsSpeech.text)
+			textTyper.init(cfg.TextData, cfg.Speech.noMissionsSpeech.text, customData.chatterSound or cfg.TextData.sound)
 			GUI.talker.emote = cfg.Speech.noMissionsSpeech.animation
 			GUI.talker.speedModifier = cfg.Speech.noMissionsSpeech.speedModifier
 		end
@@ -624,7 +653,7 @@ function missionSelectedSafe()
 					text = customData.missionsText[dat.missionName].selectSpeech.text or text
 				end
 				
-				textTyper.init(cfg.TextData, text)
+				textTyper.init(cfg.TextData, text, customData.chatterSound or cfg.TextData.sound)
 				
 				if customData.missionsText and customData.missionsText[dat.missionName] and customData.missionsText[dat.missionName].selectSpeech then
 					GUI.talker.emote = customData.missionsText[dat.missionName].selectSpeech.animation or "talk"
@@ -673,16 +702,18 @@ function populateCrewList()
 		else
 			widget.setVisible("root.text", true)
 			
-			textTyper.init(cfg.TextData, cfg.TextData.strings.noCrew)
+			textTyper.init(cfg.TextData, cfg.TextData.strings.noCrew, customData.chatterSound or cfg.TextData.sound)
 			if customData.noCrewSpeech then
-				textTyper.init(cfg.TextData, customData.noCrewSpeech.text or cfg.Speech.noCrewSpeech.text)
+				textTyper.init(cfg.TextData, customData.noCrewSpeech.text or cfg.Speech.noCrewSpeech.text, customData.chatterSound or cfg.TextData.sound)
 				GUI.talker.emote = customData.noCrewSpeech.animation or cfg.Speech.noCrewSpeech.animation
 				GUI.talker.speedModifier = customData.noCrewSpeech.speedModifier or cfg.Speech.noCrewSpeech.speedModifier
 			else
-				textTyper.init(cfg.TextData, cfg.Speech.noCrewSpeech.text)
+				textTyper.init(cfg.TextData, cfg.Speech.noCrewSpeech.text, customData.chatterSound or cfg.TextData.sound)
 				GUI.talker.emote = cfg.Speech.noCrewSpeech.animation
 				GUI.talker.speedModifier = cfg.Speech.noCrewSpeech.speedModifier
 			end
+			
+			fuPopulateCrewList()
 		end
 	end
 end
@@ -703,7 +734,7 @@ function crewSelectedSafe()
 			local crew = cfg.Data.crew[listData.index]
 			if crew then
 				local text = crew.description.."\n^cyan;> Species:^white; "..crew.config.species.."\n^cyan;> Level:^white; "..crew.config.parameters.level
-				textTyper.init(cfg.TextData, text)
+				textTyper.init(cfg.TextData, text, customData.chatterSound or cfg.TextData.sound)
 
 				widget.setText("path", "root/sail/ui/crew/"..crew.name)
 				widget.clearListItems("root.crewList")
@@ -718,6 +749,8 @@ function crewSelectedSafe()
 				end
 				
 				cfg.Data.selectedCrewID = crew.podUuid
+				
+				fuCrewSelectedSafe(crew)
 			end
 		end
 	end
@@ -774,7 +807,7 @@ function miscSelectedSafe()
 			elseif listData[1] == "customAI" then
 				if root.itemConfig("apexancientaichip") then
 					resetGUI()
-					textTyper.init(cfg.TextData, cfg.TextData.strings.customAI)
+					textTyper.init(cfg.TextData, cfg.TextData.strings.customAI, customData.chatterSound or cfg.TextData.sound)
 					GUI.talker.emote = "talk"
 					
 					for i = 1, 3 do
@@ -786,7 +819,7 @@ function miscSelectedSafe()
 					widget.setText("buttonScreenRight", "CRAFT >")
 				else
 					resetGUI()
-					textTyper.init(cfg.TextData, cfg.TextData.strings.noCustomAIMod)
+					textTyper.init(cfg.TextData, cfg.TextData.strings.noCustomAIMod, customData.chatterSound or cfg.TextData.sound)
 					GUI.talker.emote = "refuse"
 				end
 			end
@@ -939,4 +972,160 @@ function openAIChipCraft()
 
 	player.interact("OpenCraftingInterface", interactData, pane.sourceEntity())
 	pane.dismiss()
+end
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+--	FU Crew Stuff
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+function fuResetGUI()
+	widget.setText("switchMissionSecondary", "Secondary")
+	widget.setText("switchMissionMain", "Main")
+end
+
+function fuButtonCrew()
+	widget.setSize("root", {144,118})
+		
+	widget.setText("path", "root/sail/ui/crew/active")
+	GUI.crewViewing = GUI.crewViewing or "active"
+	if GUI.crewViewing == "active" then
+		widget.setButtonEnabled("switchMissionSecondary", true)
+		widget.setButtonEnabled("switchMissionMain", false)
+	else
+		widget.setButtonEnabled("switchMissionSecondary", false)
+		widget.setButtonEnabled("switchMissionMain", true)
+	end
+	widget.setVisible("switchMissionSecondary", true)
+	widget.setVisible("switchMissionMain", true)
+	widget.setText("switchMissionSecondary", "Inactive")
+	widget.setText("switchMissionMain", "Active")
+	
+	GUI.crewInView = true
+end
+
+function fuButtonMissions()
+	GUI.crewInView = false
+end
+
+function fuSwitchMissionMain()
+	if GUI.crewInView then
+		resetGUI()
+		
+		textTyper.stopSounds(cfg.TextData)
+		
+		local listItem = "root.crewList."..widget.addListItem("root.crewList")
+		widget.setText(listItem..".name", "Loading Crew...")
+		widget.setVisible(listItem..".portraitCanvas", false)
+		widget.setVisible(listItem..".pseudobutton", false)
+		widget.setVisible(listItem..".background", false)
+		widget.setVisible(listItem..".portraitBG", false)
+		
+		widget.setVisible("root.text", false)
+		widget.setVisible("root.crewList", true)
+		widget.setText("path", "root/sail/ui/crew/active")
+		widget.setText("buttonScreenRight", "DISMISS")
+		widget.setData("buttonScreenRight", nil)
+		
+		GUI.talker.emote = "unique"
+		GUI.list.viewing = "crew"
+		GUI.crewRequestTimer = GUI.crewRequestDelay -- Start the whole crew retrieval process
+		
+		cfg.Data.crewPromise = nil
+		GUI.crewViewing = "active"
+		
+		widget.setSize("root", {144,118})
+		widget.setButtonEnabled("switchMissionSecondary", true)
+		widget.setButtonEnabled("switchMissionMain", false)
+		widget.setVisible("switchMissionSecondary", true)
+		widget.setVisible("switchMissionMain", true)
+		widget.setText("switchMissionSecondary", "Inactive")
+		widget.setText("switchMissionMain", "Active")
+		
+		GUI.missionViewing = GUI.previousMissionViewing
+	else
+		GUI.previousMissionViewing = "main"
+	end
+end
+
+function fuSwitchMissionSecondary()
+	if GUI.crewInView then
+		resetGUI()
+		
+		textTyper.stopSounds(cfg.TextData)
+		
+		local listItem = "root.crewList."..widget.addListItem("root.crewList")
+		widget.setText(listItem..".name", "Loading Crew...")
+		widget.setVisible(listItem..".portraitCanvas", false)
+		widget.setVisible(listItem..".pseudobutton", false)
+		widget.setVisible(listItem..".background", false)
+		widget.setVisible(listItem..".portraitBG", false)
+		
+		widget.setVisible("root.text", false)
+		widget.setVisible("root.crewList", true)
+		widget.setText("path", "root/sail/ui/crew/inactive")
+		widget.setText("buttonScreenRight", "DISMISS")
+		widget.setData("buttonScreenRight", nil)
+		
+		GUI.talker.emote = "unique"
+		GUI.list.viewing = "crew"
+		GUI.crewRequestTimer = GUI.crewRequestDelay -- Start the whole crew retrieval process
+		
+		cfg.Data.crewPromise = nil
+		GUI.crewViewing = "inactive"
+		
+		widget.setSize("root", {144,118})
+		widget.setButtonEnabled("switchMissionSecondary", false)
+		widget.setButtonEnabled("switchMissionMain", true)
+		widget.setVisible("switchMissionSecondary", true)
+		widget.setVisible("switchMissionMain", true)
+		widget.setText("switchMissionSecondary", "Inactive")
+		widget.setText("switchMissionMain", "Active")
+		
+		GUI.missionViewing = GUI.previousMissionViewing
+	else
+		GUI.previousMissionViewing = "secondary"
+	end
+end
+
+function fuCrewViewing()
+	if GUI.crewViewing == "inactive" then
+		if cfg.Data.crew == "pending" then
+			cfg.Data.crew = "pendingInactive"
+			cfg.Data.crewPromise = nil
+		elseif cfg.Data.crew == "pendingInactive" then
+			if cfg.Data.crewPromise == nil then
+				cfg.Data.crewPromise = world.sendEntityMessage(player.id(), "returnStoredCompanions")
+			elseif cfg.Data.crewPromise:succeeded() then
+				widget.setVisible("root.crewList", true)
+				cfg.Data.crew = cfg.Data.crewPromise:result()
+				cfg.Data.crewPromise = nil
+				populateCrewList()
+			end
+		end
+	end
+end
+
+function fuDismissConfirm()
+	if GUI.crewViewing == "inactive" then
+		world.sendEntityMessage(player.id(), 'dismissStoredCompanion', cfg.Data.selectedCrewID)
+	end
+end
+
+function fuCrewSelectedSafe(crew)
+	widget.setText("path", "root/sail/ui/crew/"..GUI.crewViewing.."/"..crew.name)
+end
+
+function fuPopulateCrewList()
+	if GUI.crewViewing == "inactive" then
+		textTyper.init(cfg.TextData, cfg.TextData.strings.noStoredCrew, customData.chatterSound or cfg.TextData.sound)
+		if customData.noStoredCrewSpeech then
+			textTyper.init(cfg.TextData, customData.noStoredCrewSpeech.text or cfg.Speech.noStoredCrewSpeech.text, customData.chatterSound or cfg.TextData.sound)
+			GUI.talker.emote = customData.noStoredCrewSpeech.animation or cfg.Speech.noStoredCrewSpeech.animation
+			GUI.talker.speedModifier = customData.noStoredCrewSpeech.speedModifier or cfg.Speech.noStoredCrewSpeech.speedModifier
+		else
+			textTyper.init(cfg.TextData, cfg.Speech.noStoredCrewSpeech.text, customData.chatterSound or cfg.TextData.sound)
+			GUI.talker.emote = cfg.Speech.noStoredCrewSpeech.animation
+			GUI.talker.speedModifier = cfg.Speech.noStoredCrewSpeech.speedModifier
+		end
+	end
 end

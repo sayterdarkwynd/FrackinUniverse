@@ -8,8 +8,20 @@
 
   "animation" : "wattsper.animation",
 
-  "dropPools" : [ { "default" : "extraMonsterElectric", "bow" : "extraMonsterElectricHunting" } ],
-
+  "dropPools" : [ 
+    { 
+      "default" : "extraMonsterElectric", 
+      "bow" : "extraMonsterElectricHunting",
+      "firebow" : "extraMonsterElectricHunting",
+      "icebow" : "extraMonsterElectricHunting",
+      "poisonbow" : "extraMonsterElectricHunting",
+      "electricbow" : "extraMonsterElectricHunting",
+      "cosmicbow" : "extraMonsterElectricHunting",
+      "radioactivebow" : "extraMonsterElectricHunting",
+      "shadowbow" : "extraMonsterElectricHunting"
+    } 
+  ],
+  
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -180,10 +192,10 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.55
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.55
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
@@ -195,17 +207,20 @@
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.5
+          "baseValue" : 1.0
         },
         "electricStatusImmunity" : {
           "baseValue" : 1.0
         },
         "poisonResistance" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.2
         },
         "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        }
+          "baseValue" : 0
+        },
+        "shadowResistance" : { "baseValue" : -0.5 },
+        "radioactiveResistance" : { "baseValue" : 0.1 },
+        "cosmicResistance" : { "baseValue" : -0.2 }             
       },
 
       "resources" : {

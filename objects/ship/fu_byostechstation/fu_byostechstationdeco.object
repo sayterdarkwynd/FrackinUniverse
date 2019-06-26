@@ -6,10 +6,13 @@
 
   "interactAction" : "ScriptPane",
   "interactData" : "/zb/newSail/newSail.config",
+  
+  "planetInteractAction" : "ScriptPane",
+  "planetInteractData" : "/interface/scripted/fu_planetsail/fu_planetsail.config",
 
   "category" : "decorative",
 
-  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short.",
+  "description" : "Ship-based Artificial Intelligence Lattice, or S.A.I.L for short. Does not come with a pet.",
   "shortdescription" : "S.A.I.L Interface",
   "race" : "generic",
 
@@ -61,7 +64,8 @@
   
   "scripts" : [
   	"/objects/ship/fu_byosobjectdeath.lua",
-    	"/objects/scripts/customtechstation.lua"
+    "/objects/scripts/customtechstation.lua",
+	"/objects/ship/fu_shipobjectplanetinteraction.lua"
    ],
   "animation" : "/objects/ship/techstation.animation",
   "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],

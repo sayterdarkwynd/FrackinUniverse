@@ -8,7 +8,20 @@
 
   "animation" : "fualien.animation",
 
-  "dropPools" : [ { "default" : "furobotTreasure", "bow" : "huntingminiboss" } ],
+  "dropPools" : [
+    {
+    "default" : "furobotTreasure",
+    "bow" : "huntingminiboss",
+    "firebow" : "huntingminiboss",
+    "icebow" : "huntingminiboss",
+    "poisonbow" : "huntingminiboss",
+    "electricbow" : "huntingminiboss",
+    "cosmicbow" : "huntingminiboss",
+    "radioactivebow" : "huntingminiboss",
+    "shadowbow" : "huntingminiboss",
+  		"brain" : "madnessBrainHarvestingGreat"     
+    }
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -50,7 +63,8 @@
             "projectileCount" : 1,
             "projectileParameters" : { 
               "speed" : 90, 
-              "timeToLive" : 0.1
+              "timeToLive" : 0.1,
+              "statusEffects" : ["madnessgain"]
               },
             "projectileInterval" : 1,
             "aimDirection" : [-0.3,-1],

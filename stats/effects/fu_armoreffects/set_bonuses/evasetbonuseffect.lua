@@ -4,7 +4,7 @@ weaponBonus={}
 
 armorBonus={
 	{stat = "pusImmunity", amount = 1},
-	{stat = "biomeradiationImmunity", amount = 1},
+	{stat = "liquidnitrogenImmunity", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "radiationburnImmunity", amount = 1}	
 }

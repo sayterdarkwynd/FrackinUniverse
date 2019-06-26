@@ -72,7 +72,7 @@ function update(dt)
 		end
 	end
 	
-	if object.getInputNodeLevel(storage.logicNode) or not object.isInputNodeConnected(storage.logicNode) then
+	if object.getInputNodeLevel(transferUtil.vars.logicNode) or not object.isInputNodeConnected(transferUtil.vars.logicNode) then
 		if not launchStartTimer or launchStartTimer > 1 then
 			launchStartTimer=0
 			startLaunch()

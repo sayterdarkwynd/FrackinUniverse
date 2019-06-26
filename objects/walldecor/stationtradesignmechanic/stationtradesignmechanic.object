@@ -1,0 +1,68 @@
+{
+  "objectName" : "stationtradesignmechanic",
+  "colonyTags" : ["station","electronic"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 0,
+
+  "lightColor" : [62, 84, 89],
+
+  "flickerPeriod" : 0.4,
+  "flickerMinIntensity" : 0.97,
+  "flickerMaxIntensity" : 1.0,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+  
+  "description" : "A sign with an image of a wrench, indicating a mechanic's station.",
+  "shortdescription" : "Mechanic Station Sign",
+  "race" : "generic",
+
+  "apexDescription" : "This sign is meant to indicate a mechanic's station.",
+  "avianDescription" : "This sign denotes a mechanic's station.",
+  "floranDescription" : "Floran doesssn't need fancy tools for mechanicsss.",
+  "glitchDescription" : "Informed. The image of this symbol is meant to indicate a mechanic's station.",
+  "humanDescription" : "A sign which marks a mechanic's station.",
+  "hylotlDescription" : "Signs like this usually mean there is a nearby mechanic's station.",
+  "novakidDescription" : "Reckon this sign means there's meant to be a mechanic's station 'round here.",
+
+  "inventoryIcon" : "stationtradesignmechanicicon.png",
+  "orientations" : [
+    {
+      "image" : "stationtradesignmechanic.png:<color>.<frame>",
+      "imagePosition" : [-8, -8],
+      "animationPosition" : [-8, -8],
+      
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "stationtradesignmechanic.png:<color>.<frame>",
+      "imagePosition" : [-8, -8],
+      "animationPosition" : [-8, -8],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  // "soundEffect" : "/sfx/objects/tv_static.ogg",
+
+  "animation" : "stationtradesignmechanic.animation",
+  "animationParts" : {
+    "bg" : "stationtradesignmechanic.png",
+    "fg" : "stationtradesignmechaniclit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+
+  "interactive" : false
+}

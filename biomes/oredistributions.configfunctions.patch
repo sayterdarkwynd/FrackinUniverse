@@ -89,9 +89,12 @@
 { "op":"add", "path":"/core/3/1/-","value": [ "magnesium", 0.80] },
 { "op":"add", "path":"/core/4/1/-","value": [ "magnesium", 0.80] },
 { "op":"add", "path":"/core/5/1/-","value": [ "magnesium", 0.90] },
-{ "op":"add", "path":"/moon/0/1/-","value": [ "moonstone", 0.25] },
-{ "op":"add", "path":"/moon/0/1/-","value": [ "plutonium", 0.30] },
-{ "op":"add", "path":"/moon/0/1/-","value": [ "moonstone", 0.85] },
+{ "op": "add","path": "/moon/0/1/-","value": ["magnesium",0.5] },
+{ "op": "add","path": "/moon/0/1/-","value": [ "plutonium", 0.35] },
+{ "op": "add","path": "/moon/0/1/-","value": [ "iron", 0.5 ] },
+{ "op": "add","path": "/moon/0/1/-","value": [ "copper", 0.5 ] },
+{ "op": "add","path": "/moon/0/1/-", "value": [ "moonstone", 0.75 ] },
+{ "op": "add","path": "/moon/0/1/-","value": [ "uranium",0.15]},
 { "op":"add", "path":"/surface/2/1/-","value": [ "neptunium", 0.20] },
 { "op":"add", "path":"/surface/3/1/-","value": [ "neptunium", 0.20] },
 { "op":"add", "path":"/surface/4/1/-","value": [ "neptunium", 0.20] },
@@ -372,6 +375,23 @@
       [8.5, [ [ "uranium", 0.21],[ "diamond", 0.10], [ "crystal", 0.55], [ "prisilite", 0.45], [ "cinnabar", 0.20],[ "lunariore", 1] ] ]
     ]
 },
+
+{"op":"add",
+"path":"/ff_crystalmoonOresSpecial",
+"value": 
+    [
+      [0.5, [ [ "plutonium", 0.21],[ "diamond", 0.10], [ "crystal", 0.30], [ "cinnabar", 0.20],[ "lunariore", 0.30], [ "sivite", 0.30], [ "koanite", 0.30] ] ],
+      [1.5, [ [ "plutonium", 0.27],[ "diamond", 0.10], [ "crystal", 0.35], [ "cinnabar", 0.20],[ "lunariore", 0.30], [ "sivite", 0.30], [ "koanite", 0.30] ] ],
+      [2.5, [ [ "plutonium", 0.35],[ "diamond", 0.10], [ "crystal", 0.40], [ "prisilite", 0.35], [ "cinnabar", 0.20],[ "lunariore", 0.35], [ "sivite", 0.30], [ "koanite", 0.30] ] ],
+      [3.5, [ [ "plutonium", 0.40],[ "diamond", 0.10], [ "crystal", 0.40], [ "prisilite", 0.35], [ "cinnabar", 0.20],[ "lunariore", 0.40], [ "sivite", 0.30], [ "koanite", 0.30] ] ],
+      [4.5, [ [ "plutonium", 0.46],[ "diamond", 0.10], [ "crystal", 0.50], [ "prisilite", 0.45], [ "cinnabar", 0.20],[ "lunariore", 0.45], [ "sivite", 0.30], [ "koanite", 0.30] ] ],
+      [5.5, [ [ "plutonium", 0.52],[ "diamond", 0.10], [ "crystal", 0.55], [ "prisilite", 0.45], [ "cinnabar", 0.20],[ "lunariore", 0.50], [ "sivite", 0.30], [ "koanite", 0.30] ] ],
+      [6.5, [ [ "plutonium", 0.66],[ "diamond", 0.10], [ "crystal", 0.55], [ "prisilite", 0.45], [ "cinnabar", 0.20],[ "lunariore", 0.55], [ "sivite", 0.30], [ "koanite", 0.30] ] ],
+      [7.5, [ [ "plutonium", 0.72],[ "diamond", 0.10], [ "crystal", 0.55], [ "prisilite", 0.45], [ "cinnabar", 0.20],[ "lunariore", 0.60], [ "sivite", 0.30], [ "koanite", 0.30] ] ],
+      [8.5, [ [ "plutonium", 0.80],[ "diamond", 0.10], [ "crystal", 0.55], [ "prisilite", 0.45], [ "cinnabar", 0.20],[ "lunariore", 0.65], [ "sivite", 0.30], [ "koanite", 0.30] ] ]
+    ]
+},
+
 {"op":"add",
 "path":"/ff_deepcrystalmoonOres",
 "value": 
@@ -853,7 +873,7 @@
     [5.5, [ [ "lead", 0.40],  [ "copper", 0.80], [ "silver", 0.80], [ "gold", 0.80],  [ "diamond", 0.10], [ "aegisalt", 0.80], [ "ferozium", 0.80], [ "violium", 0.80], [ "sulphur", 0.80],[ "magnesium", 0.85], [ "densinium", 0.20] ] ],
     [6.5, [ [ "lead", 0.40],  [ "copper", 0.80], [ "silver", 0.80], [ "gold", 0.80],  [ "diamond", 0.10], [ "aegisalt", 0.80], [ "ferozium", 0.80], [ "violium", 0.80], [ "sulphur", 0.80],[ "magnesium", 0.85], [ "densinium", 0.20] ] ],
     [7.5, [ [ "lead", 0.40],  [ "copper", 0.80], [ "silver", 0.80], [ "gold", 0.80],  [ "diamond", 0.10], [ "aegisalt", 0.80], [ "ferozium", 0.80], [ "violium", 0.80], [ "sulphur", 0.80],[ "magnesium", 0.85], [ "densinium", 0.20] ] ],
-    [8.5, [ [ "lead", 0.40],  [ "copper", 0.80], [ "silver", 0.80], [ "gold", 0.80],  [ "diamond", 0.10], [ "aegisalt", 0.80], [ "ferozium", 0.80], [ "violium", 0.80], [ "sulphur", 0.80],[ "magnesium", 0.85], [ "densinium", 0.20] ] ]
+    [8.5, [ [ "lead", 0.40],  [ "copper", 0.80], [ "silver", 0.80], [ "gold", 0.80],  [ "diamond", 0.10], [ "aegisalt", 0.80], [ "ferozium", 0.80], [ "violium", 0.80], [ "sulphur", 0.80],[ "magnesium", 0.85], [ "densinium", 0.25] ] ]
   ]
 },
 
@@ -867,9 +887,9 @@
     [3.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62],  [ "diamond", 0.20], [ "iron", 0.41], [ "durasteel", 0.62], [ "magnesium", 0.50], [ "densinium", 0.35] ] ],
     [4.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62], [ "diamond", 0.20], [ "aegisalt", 0.62], [ "ferozium", 0.62], [ "violium", 0.62], [ "sulphur", 0.60],[ "magnesium", 0.50], [ "densinium", 0.45] ] ],
     [5.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62],  [ "diamond", 0.20], [ "aegisalt", 0.62], [ "ferozium", 0.62], [ "violium", 0.62], [ "sulphur", 0.60],[ "magnesium", 0.50], [ "densinium", 0.55] ] ],
-    [6.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62],  [ "diamond", 0.20], [ "aegisalt", 0.62], [ "ferozium", 0.62], [ "violium", 0.62], [ "sulphur", 0.60],[ "magnesium", 0.50], [ "densinium", 0.55] ] ],
-    [7.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62],  [ "diamond", 0.20], [ "aegisalt", 0.62], [ "ferozium", 0.62], [ "violium", 0.62], [ "sulphur", 0.60],[ "magnesium", 0.50], [ "densinium", 0.55] ] ],
-    [8.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62],  [ "diamond", 0.20], [ "aegisalt", 0.62], [ "ferozium", 0.62], [ "violium", 0.62], [ "sulphur", 0.60],[ "magnesium", 0.50], [ "densinium", 0.55] ] ]
+    [6.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62],  [ "diamond", 0.20], [ "aegisalt", 0.62], [ "ferozium", 0.62], [ "violium", 0.62], [ "sulphur", 0.60],[ "magnesium", 0.50], [ "densinium", 0.65] ] ],
+    [7.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62],  [ "diamond", 0.20], [ "aegisalt", 0.62], [ "ferozium", 0.62], [ "violium", 0.62], [ "sulphur", 0.60],[ "magnesium", 0.50], [ "densinium", 0.75] ] ],
+    [8.5, [ [ "lead", 0.40],  [ "copper", 0.62], [ "silver", 0.62], [ "gold", 0.62],  [ "diamond", 0.20], [ "aegisalt", 0.62], [ "ferozium", 0.62], [ "violium", 0.62], [ "sulphur", 0.60],[ "magnesium", 0.50], [ "densinium", 0.85] ] ]
   ]
 },
 
@@ -991,7 +1011,7 @@
 "path":"/gasgiantSurface",
 "value": 
   [
-    [0.5, [ [ "densinium", 0.3], [ "moonstone", 0.5], [ "erchius", 0.5], [ "trianglium", 0.8], [ "solarium", 0.75], [ "irradium", 0.8], [ "prisilite", 0.8],[ "effigium", 0.5] ] ]
+    [0.5, [ [ "densinium", 0.3], [ "moonstone", 0.5], [ "erchius", 0.5], [ "trianglium", 0.8], [ "solarium", 0.75], [ "irradium", 0.4], [ "prisilite", 0.6],[ "effigium", 0.25] ] ]
   ]
 },
 

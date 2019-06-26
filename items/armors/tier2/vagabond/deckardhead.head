@@ -3,10 +3,11 @@
   "price" : 450,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Set Bonus:
-^cyan;+7.5% Damage (per Pistol or Machine Pistol)^reset;
-^green;+12% Electric Resist^reset;",
+  "rarity" : "Common",
+  "description" : "^red;+4% Electric Resist^reset;
+Set Bonus:
+^green;Pistol/Machine Pistol: +7.5% Dmg each^reset;",
+
   "shortdescription" : "Vagabond's Visor",
   "category" : "t2armor",
   "tooltipKind" : "armor",
@@ -15,7 +16,7 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-   "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorranged" : "deckardhead" },
   "leveledStatusEffects" : [
@@ -42,20 +43,20 @@
   ],
 
   "statusEffects" : [
-    "vagabondsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_vagabondset_head",
+      "stat" : "vagabondsetcount",
       "amount" : 1
     },
     {
       "stat" : "electricResistance",
       "amount" : 0.04
-    }      
+    }
   ],
 
   "colorOptions" : [
     /* BROWN */
-    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },  
+    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },
     /* GREY */
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
     /* BLACK */

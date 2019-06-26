@@ -1,0 +1,113 @@
+[
+  {
+    "op": "add",
+    "path": "/hasStaffPrimary",
+    "value": {
+      "type": "action",
+      "name": "hasStaffPrimary",
+      "title": "",
+      "properties": {},
+      "category": "npc",
+      "script": "/scripts/actions/npc.lua",
+      "output": {}
+    }
+  },
+  {
+    "op": "add",
+    "path": "/hasStaffSheathed",
+    "value": {
+      "type": "action",
+      "name": "hasStaffSheathed",
+      "title": "",
+      "properties": {},
+      "category": "npc",
+      "output": {}
+    }
+  },
+  {
+    "op": "add",
+    "path": "/setPersistent",
+    "value": {
+      "type": "action",
+      "name": "setPersistent",
+      "title": "",
+      "properties": {
+        "persistent": {
+          "type": "bool",
+          "value": null
+        }
+      },
+      "category": "npc",
+      "script": "/scripts/actions/npc.lua",
+      "output": {}
+    }
+  },
+  {
+    "op": "add",
+    "path": "/unequipSlot",
+    "value": {
+      "type": "action",
+      "name": "unequipSlot",
+      "title": "",
+      "properties": {
+        "slot": {
+          "type": "string",
+          "value": null
+        }
+      },
+      "category": "npc",
+      "script": "/scripts/actions/npc.lua",
+      "output": {}
+    }
+  },
+  {
+    "op": "add",
+    "path": "/getItemFromTreasure",
+    "value": {
+      "type": "action",
+      "name": "getItemFromTreasure",
+      "title": "",
+      "properties": {
+        "pool": {
+          "type": "string",
+          "value": null
+        },
+        "level": {
+          "type": "number",
+          "value": null
+        }
+      },
+      "category": "npc",
+      "script": "/scripts/actions/merchant.lua",
+      "output": {
+        "item": {
+          "type": "table",
+          "key": null
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/level",
+    "value": {
+      "type": "action",
+      "name": "level",
+      "title": "",
+      "properties": {},
+      "category": "npc",
+      "script": "/scripts/actions/npc.lua",
+      "output": {
+        "level": {
+          "type": "number",
+          "key": null
+        }
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/setItemSlot/properties/itemName/value",
+    "value": "uncommonrocketlauncher"
+  }
+]

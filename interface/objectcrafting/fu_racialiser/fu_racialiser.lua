@@ -79,7 +79,9 @@ end
 
 function getNewParameters(pet, treasure)
 	itemConfig = root.itemConfig(itemNew)
-	info = raceInfo[count]
+	if count ~= 0 then
+		info = raceInfo[count]
+	end
 	newParameters = {}
 	if itemConfig then
 		if item then
@@ -106,6 +108,9 @@ function getNewParameters(pet, treasure)
 	if treasure then
 		treasurePoolsNew = info.starterTreasure.name
 		newParameters = util.mergeTable(newParameters, {treasurePools = {treasurePoolsNew}})
+	end
+	if itemNew then
+		newParameters.racialisedTo = itemNew.name
 	end
 	return newParameters
 end
@@ -158,18 +163,54 @@ function getBYOSParameters(BYOSItemType, pet, treasure)
 		countOld = nil
 	end
 	if itemType then
+		if count == 0 then
+			getNotSupportedRaceParameters(itemType, pet, treasure)
+		else
+			info = raceInfo[count]
+			value = info[itemType]
+			if not value then
+				countOld = count
+				count = 1
+				info = raceInfo[count]
+				value = info[itemType]
+			end
+			if root.itemConfig(value.name) then
+				itemNew = value
+			end
+			item = root.itemConfig("fu_byos" .. itemType)
+		end
+	end
+	return getNewParameters(pet, treasure)
+end
+
+function getNotSupportedRaceParameters(itemType, pet, treasure)
+	value = {}
+	value.name = race .. itemType
+	if root.itemConfig(value.name) then
+		itemNew = value
+	else
+		countOld = count
+		count = 1
 		info = raceInfo[count]
 		value = info[itemType]
-		if not value then
+		itemNew = value
+	end
+	info = { pet = {}, starterTreasure = {}, [itemType] = {} }
+	info.name = race
+	if pet then
+		info.pet.name = root.itemConfig(itemNew).config.shipPetType
+		info.petName = info.pet.name
+	end
+	if treasure then
+		starterTreasureName = race .. "StarterTreasure"
+		if not root.isTreasurePool(starterTreasureName) then
 			countOld = count
 			count = 1
 			info = raceInfo[count]
-			value = info[itemType]
+			starterTreasureName = info.starterTreasure.name
 		end
-		if root.itemConfig(value.name) then
-			itemNew = value
-		end
-		item = root.itemConfig("fu_byos" .. itemType)
+		info.starterTreasure.name = starterTreasureName
 	end
-	return getNewParameters(pet, treasure)
+	item = root.itemConfig("fu_byos" .. itemType)
+	count = 0
 end

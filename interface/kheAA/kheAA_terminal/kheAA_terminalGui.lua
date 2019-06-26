@@ -4,8 +4,7 @@ local deltatime=0;
 
 function init()
 	promise=nil
-	storage={}
-	storage.inContainers={}
+	self={}
 	items = {};
 	deltatime=30;
 	pos = world.entityPosition(pane.containerEntityId());
@@ -21,7 +20,7 @@ function update(dt)
 	if promise~=nil and promise:finished() then
 		if promise:succeeded() then
 			local res=promise:result();
-			storage=res
+			self=res
 			promise=nil;
 			if deltatime > 30 then
 				refresh();
@@ -41,19 +40,19 @@ end
 
 
 function refresh()
-	if storage==nil then
+	if not self then
 		init()
 	end
 
 	local blankList=false
-	if storage.inContainers==nil then
+	if self.inContainers==nil then
 		blankList=true
-	elseif util.tableSize(storage.inContainers) == 0 then
+	elseif util.tableSize(self.inContainers) == 0 then
 		blankList=true
 	end
 	items={};
 	if not blankList then
-		for entId,pos in pairs(storage.inContainers) do
+		for entId,pos in pairs(self.inContainers) do
 			containerFound(entId,pos)
 		end
 	end
@@ -70,14 +69,16 @@ function containerFound(containerID,pos)
 	if containerID == nil then return false end
 	--if not world.regionActive(rectPos) then return false end
 	if not world.entityExists(containerID) then return false end
-
+	
 	local containerItems = world.containerItems(containerID)
+	if not containerItems then return false end
+	
 	for index,item in pairs(containerItems) do
 		local conf = root.itemConfig(item, item.level or nil, item.seed or nil)
 		table.insert(items, {{containerID, index}, item, conf,pos})
 	end
 	refreshList()
-	return true;
+	return true
 end
 
 
@@ -163,6 +164,16 @@ function request()
 	end
 end
 
+function updateListItem(selectedItem, count)
+	if count > 0 then
+		widget.setText(itemList .. "." .. selectedItem .. ".amount", "x" .. count);
+		deltatime=0
+	else
+		deltatime=29.9
+		refreshList();
+	end
+end
+
 function requestAllButOne()
 	--pane.playerEntityId()
 	local selected = widget.getListSelected(itemList)
@@ -177,8 +188,7 @@ function requestAllButOne()
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 				--table.remove(items, i);
 				items[i][2].count=1
-				deltatime=29.9
-				refreshList();
+				updateListItem(selected, 1)
 				return;
 			end
 		end
@@ -208,7 +218,10 @@ end
 
 function requestOne()
 	local text = widget.getText("requestAmount")
-	if text ~= "" and tonumber(text) >= 0 then
+	if text == "" then
+		text = "1"
+	end
+	if tonumber(text) >= 0 then
 		--pane.playerEntityId()
 		--itemData={containerID, index}, itemDescriptor, itemConfig,pos
 		local selected = widget.getListSelected(itemList)
@@ -218,14 +231,12 @@ function requestOne()
 					local itemToSend=copy(items[i])
 					--sb.logInfo("%s",itemToSend)
 					itemToSend[2].count=math.min(tonumber(text),itemToSend[2].count)
+					items[i][2].count = items[i][2].count - itemToSend[2].count
 
 					table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
 					--sb.logInfo(sb.printJson({playerPos=temp}))
 					world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
-					--table.remove(items, i);
-					items[i][2].count=items[i][2].count-1
-					deltatime=29.9
-					refreshList();
+					updateListItem(selected, items[i][2].count)
 					return;
 				end
 			end

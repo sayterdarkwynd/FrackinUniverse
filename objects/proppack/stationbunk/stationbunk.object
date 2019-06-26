@@ -1,0 +1,69 @@
+{
+  "objectName" : "stationbunk",
+  "colonyTags" : ["station","misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "A space station themed bunk bed.",
+  "shortdescription" : "Station Bunk",
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 0,
+  "lightColor" : [20, 29, 33],
+
+  "apexDescription" : "A compact yet comfortable bunk bed.",
+  "avianDescription" : "A bed made for a space station. It's surprisingly comfortable.",
+  "floranDescription" : "Beds can be sstacked on top of one another.",
+  "glitchDescription" : "Surprised. For something made for compact convenience, this bed is actually rather comfortable.",
+  "humanDescription" : "Aw, it's like sleeping in a little box.",
+  "hylotlDescription" : "It's not the prettiest looking bed, but the design is rather ingenious.",
+  "novakidDescription" : "A bed made for stacking'.",
+
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : true,
+  
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage" : "/objects/proppack/stationbunk/stationbunkcover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed1"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+  "inventoryIcon" : "stationbunkicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "stationbunk.png:<color>", "fullbright" : true }, { "image" : "stationbunklit.png:<color>" } ],
+      "flipImages" : true,
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      
+      "lightPosition" : [-3, 1],
+      
+      "sitPosition" : [-4, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "stationbunk.png:<color>", "fullbright" : true }, { "image" : "stationbunklit.png:<color>"} ],
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      
+      "lightPosition" : [3, 1],
+      
+      "sitPosition" : [-12, 14.3],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "collision" : "platform"
+    }
+    
+  ]
+}

@@ -4,13 +4,13 @@
   "inventoryIcon" : "batterypack_eridianicon.png",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "rarity" : "rare",
-  "description" : "An advanced energy pack. Grants +30 energy, 12% energy regen and a slight glow.",
+  "description" : "An advanced energy pack. Blocks electrical storms and grants +20% energy, +30% energy regen and a slight glow.",
   "shortdescription" : "Antimatter Energy Pack",
   "tooltipKind" : "baseaugment",
   "category" : "^#e43774;Upgradeable EPP^reset;",
   "acceptsAugmentType" : "back",
   "radioMessagesOnPickup" : [ "pickupepp" ],
-  
+
   "maxStack" : 1,
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
@@ -19,10 +19,14 @@
     "energyregenfu_morphite",
     {
       "stat" : "maxEnergy",
-      "amount" : 30
+      "effectiveMultiplier" : 1.20
     },
-    "glowpurple2"
+    "glowpurple2",
+    {
+      "stat" : "biomeelectricImmunity",
+      "amount" : 1.0
+    }
   ]
-  
-  
+
+
 }

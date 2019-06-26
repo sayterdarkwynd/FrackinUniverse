@@ -8,8 +8,20 @@
 
   "animation" : "eyejelly2.animation",
 
-  "dropPools" : [ { "default" : "extraMonsterPoison", "bow" : "extraMonsterPoisonHunting" } ],
-
+  "dropPools" : [ 
+    { 
+      "default" : "extraMonsterPoison", 
+      "bow" : "extraMonsterPoisonHunting",
+      "firebow" : "extraMonsterPoisonHunting",
+      "icebow" : "extraMonsterPoisonHunting",
+      "poisonbow" : "extraMonsterPoisonHunting",
+      "electricbow" : "extraMonsterPoisonHunting",
+      "cosmicbow" : "extraMonsterPoisonHunting",
+      "radioactivebow" : "extraMonsterPoisonHunting",
+      "shadowbow" : "extraMonsterPoisonHunting"
+    } 
+  ],
+  
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -175,17 +187,20 @@
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.7
         },
         "electricStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.0
         },
         "poisonResistance" : {
           "baseValue" : 0.5
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
-        }
+        },
+        "shadowResistance" : { "baseValue" : -0.2 },
+        "cosmicResistance" : { "baseValue" : 0 },
+        "radioactiveResistance" : { "baseValue" : -0.7 }        
       },
 
       "resources" : {

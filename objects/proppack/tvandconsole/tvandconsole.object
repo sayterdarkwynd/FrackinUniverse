@@ -1,0 +1,57 @@
+{
+  "objectName": "tvandconsole",
+  "colonyTags": ["electronic"],
+  "printable" : false,
+  "rarity": "Common",
+  "description": "Grab a friend, kick up a seat and turn on your good ol' Funtendo Entrainment Station!",
+  "shortdescription": "TV & Console",
+  "race": "generic",
+  "category": "furniture",
+  "price": 0,
+
+  "apexDescription": "A vintage human gaming console! How novel! A pity my hand are too big for the controllers...",
+  "avianDescription": "I've yet to see Kluex come up with anything as brilliant as the FES!",
+  "floranDescription": "Floran abssstain from gaming. Threw last console at wall in anger.",
+  "glitchDescription": "Delighted. Is this one loaded with a copy of 'The Epic of Zaida'?",
+  "humanDescription": "I hope this one doesn't come with a 3rd party controller...",
+  "hylotlDescription": "Hmph! PC will ALWAYS be superior.",
+  "novakidDescription": "Got any point-'n-shooty games? Love me some point-'n-shooty games.",
+
+  "inventoryIcon": "tvandconsoleicon.png",
+  "orientations": [{
+    "dualImage": "tvandconsole.png:default",
+    "imagePosition": [-16, -8],
+    "frames": 1,
+    "animationCycle": 1.0,
+    "spaces": [
+      [0, 0],
+      [0, 1],
+      [0, 2],
+      [1, 0],
+      [1, 1],
+      [1, 2],
+      [-1, 0],
+      [-1, 1],
+      [-2, 0]
+    ],
+    "anchors": ["bottom"]
+  }],
+
+  "scripts": ["/scripts/npcToyObject.lua"],
+  "npcToy": {
+    "influence": ["videogame", "videogame", "videogameComplete"],
+    "defaultReactions": {
+      "videogame": [
+        [1.0, "typing"]
+      ],
+      "videogameComplete": [
+        [1.0, "smile"],
+        [1.0, "annoyed"],
+        [1.0, "punch"]
+      ]
+    },
+    "preciseStandPositionLeft": [-0.5, 0.0],
+    "preciseStandPositionRight": [2.0, 0.0],
+    "maxNpcs": 1
+  }
+}

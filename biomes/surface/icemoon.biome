@@ -168,10 +168,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/hizzaque.ogg","/music/shores_of_tranquility.ogg", "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/frost.ogg","/music/GlacialHorizon.ogg","/music/viaAurora.ogg","/music/ultramarine.ogg","/music/scorian-flow.ogg", "/music/hizzaque.ogg","/music/shores_of_tranquility.ogg", "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/ambient_dark.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/frost.ogg","/music/GlacialHorizon.ogg","/music/viaAurora.ogg","/music/ultramarine.ogg","/music/scorian-flow.ogg","/music/ambient_dark.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -187,7 +187,26 @@
 
           "type" : "microdungeon",
           "microdungeons" : [ "block1platforms", "loops", "spiralspikes", "blocks", "stripeblocks", "blockpile", "flats", "spikes", "rods", "wiggles", "rockyshapes", "layeredspire", "blank", "none", "ice" ]
-        },      
+        },    
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "icefloor1" ],
+              [0.35, "icefloor2" ],
+              [0.35, "icefloor3" ], 
+              [0.35, "icefloor4" ]            
+              ],
+              "parameters" : { }
+            }
+          ]
+        },        
         {
           "mode" : "floor",
           "priority" : 1.0,
@@ -408,6 +427,48 @@
       "grassMod" : [ "snow" ],
       "grassModDensity" : 0.2,
       "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "icefloor1" ],
+              [0.35, "icefloor2" ],
+              [0.35, "icefloor3" ], 
+              [0.35, "icefloor4" ],
+              [0.35, "icepillar1" ],
+              [0.35, "icepillar2" ],
+              [0.35, "icepillar3" ], 
+              [0.35, "icepillar4" ]              
+              ],
+              "parameters" : { }
+            }
+          ]
+        }, 
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "iceceiling1" ],
+              [0.35, "iceceiling2" ],
+              [0.35, "iceceiling3" ], 
+              [0.35, "iceceiling4" ]             
+              ],
+              "parameters" : { }
+            }
+          ]
+        },           
         {
           "mode" : "floor",
           "priority" : 1.0,

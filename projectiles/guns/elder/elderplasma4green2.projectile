@@ -12,16 +12,39 @@
   "lightColor" : [79, 128, 78],
     "fullbright" : true,
   "damageKind" : "shadowplasma",
-  "actionOnHit" : [
+  "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+      "file" : "/projectiles/explosions/eldercarbineexplosion/eldercarbineexplosionnospawn.config"
     },
     {
       "action" : "projectile",
-      "type" : "elderflamethrowerflameff",
-      "inheritDamageFactor" : 0.15
-    }
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
+    },
+    {
+      "action" : "projectile",
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
+    },
+    {
+      "action" : "projectile",
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
+    },
+    {
+      "action" : "projectile",
+      "type" : "shadowguardianpellet",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "config" : { "timeToLive" : 0.15}
+    }    
   ],
   "statusEffects" : [ "paralysis" ]
 }

@@ -8,7 +8,19 @@
 
   "animation" : "fearmoth.animation",
 
-  "dropPools" : [ { "default" : "bobfaeTreasure", "bow" : "huntingflyingchitin" } ],
+  "dropPools" : [ 
+    { 
+      "default" : "bobfaeTreasure", 
+      "bow" : "huntingflyingchitin",
+      "firebow" : "huntingflyingchitin",
+      "icebow" : "huntingflyingchitin",
+      "poisonbow" : "huntingflyingchitin",
+      "electricbow" : "huntingflyingchitin",
+      "cosmicbow" : "huntingflyingchitin",
+      "radioactivebow" : "huntingflyingchitin",
+      "shadowbow" : "huntingflyingchitin"
+    } 
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -191,7 +203,15 @@
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
-        }
+        },
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "poisonResistance" : { "baseValue" : -0.2 },
+        "cosmicResistance" : { "baseValue" : -0.25 },
+        "radioactiveResistance" : { "baseValue" : -0.2 },
+        "iceResistance" : { "baseValue" : 0.2 },
+        "fireResistance" : { "baseValue" : -0.4 },
+        "physicalResistance" : { "baseValue" : 0.7 },
+        "electricResistance" : { "baseValue" : 0.7 }          
       },
 
       "resources" : {

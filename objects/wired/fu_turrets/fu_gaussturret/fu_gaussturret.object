@@ -11,7 +11,10 @@
   "frameCooldown" : 5,
   "autoCloseCooldown" : 3600,
   "health" : 5,
-  "description" : "Turret for your protection!",
+  "description" : "Base Damage: 1, ^orange;AoE^reset;
+Fire Rate: 0.1
+Energy per Shot: 5
+Range: Mid",
   "shortdescription" : "Gauss Turret",
   "subtitle" : "Automatic Base Defense",
   "race" : "generic",
@@ -134,7 +137,7 @@
   "animation" : "standingturret.animation",
 
   "scripts" : [
-    "/objects/wired/fu_turrets/fu_gaussturret/standingturret.lua",
+    "/objects/wired/fu_turrets/standingturret.lua",
     "/scripts/npcToyObject.lua",
     "/scripts/stateMachine.lua",
     "/scripts/util.lua",
@@ -165,11 +168,10 @@
   "targetAngleRange" : 75,
 
   "maxFireAngle" : 5,
-
-  "energyUsage" : 4,
+  "projectileType" : "gausspistolshot",
+  "energyUsage" : 5,
   "power" : 1,
   "fireTime" : 0.1,
-
   "maxEnergy" : 100,
   "energyRegen" : 25,
   "energyRegenBlock" : 1.0,

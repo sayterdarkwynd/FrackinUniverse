@@ -2,6 +2,7 @@ setName="fu_phaseset"
 
 armorBonus={
 	{stat ="electricStatusImmunity" , amount = 1 },
+	{stat ="biomeelectricImmunity" , amount = 1 },
 	{stat ="pressureProtection" , amount = 1 },
 	{stat ="extremepressureProtection" , amount = 1 },
 	{stat ="critChance" , amount = 3 }

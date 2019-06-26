@@ -1,0 +1,59 @@
+{
+  "objectName" : "borealdoor",
+  "colonyTags" : ["boreal","door"],
+  "rarity" : "Uncommon",
+  "category" : "door",
+  "price" : 0,
+  "printable" : false,
+  "description" : "A lovingly carved pine wood door. It easily keeps the cold winds at bay.",
+  "shortdescription" : "Boreal Door",
+  "race" : "generic",
+
+  "apexDescription" : "A sturdy wooden door.",
+  "avianDescription" : "This pine door is expertly detailed.",
+  "floranDescription" : "Fancy wood door.",
+  "glitchDescription" : "Impressed. The carvings along this door are incredibly intricate.",
+  "humanDescription" : "Sturdy, yet elegant!",
+  "hylotlDescription" : "An expertly treated and carved wooden door.",
+  "novakidDescription" : "Now that there's a pretty fancy door.",
+
+  "inventoryIcon" : "borealdooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "borealdoor.png:right",
+  
+  "orientations" : [
+    {
+      "dualImage" : "borealdoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/wooddoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/wooddoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "borealdoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}
