@@ -7,18 +7,18 @@
   "description" : "Set Bonus:
 ^cyan;+25% Shield Regen, Stamina, Block^reset;
 ^green;10% Physical Resist^reset;
-^c74eff;+8% Physical Resist with Shield and Sword^reset;", 
+^c74eff;+8% Physical Resist with Shield and Sword^reset;",
 "shortdescription" : "Evader Greaves",
   "category" : "t3armoru",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  
-"learnBlueprintsOnPickup" : [
-"fumantizitier5spants",
-"fumantizitier5shead",
-"fumantizitier5schest"
-],
+
+  "learnBlueprintsOnPickup" : [
+    "fumantizitier5spants",
+    "fumantizitier5shead",
+    "fumantizitier5schest"
+  ],
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
   "collectablesOnPickup" : { "fu_armortank" : "fuplatinumarmorpants" },
@@ -45,10 +45,10 @@
     }
   ],
 
-  "statusEffects" : [   
-    "evadersetbonus",
+  "statusEffects" : [
+    "fusetbonusmanager",
     {
-      "stat" : "fu_evaderset_legs",
+      "stat" : "evadersetcount",
       "amount" : 1
     },
     {

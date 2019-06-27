@@ -4,7 +4,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Set Bonus: 
+  "description" : "Set Bonus:
 ^cyan;30% Electric Resist^reset;
 ^#e43774;Immune: Oxygen, Gas^reset;
 ^green;+15% Speed^reset;",
@@ -15,7 +15,7 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-    "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
   "collectablesOnPickup" : { "fu_armorexplorer" : "rusthead2" },
   "leveledStatusEffects" : [
@@ -42,19 +42,15 @@
   ],
 
   "statusEffects" : [
-    "shieldedsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_shieldedset_head",
+      "stat" : "shieldedsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "breathProtection",
-      "amount" : 1.0
     },
     {
       "stat" : "electricResistance",
       "amount" : 0.1
-    }    
+    }
   ],
 
   "colorOptions" : [
