@@ -1,0 +1,31 @@
+{
+  "name" : "researchsetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "breathProtection" : {},
+      "gasImmunity" : {},
+      "poisonStatusImmunity": {},
+      "sulphuricImmunity" : {}
+    },
+
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "magnorb" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.25 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "Immune: Breath, Gas, Acid, Poison. Magnorbs: +25% Dmg",
+  "icon" : "/interface/statuses/defense.png"
+}

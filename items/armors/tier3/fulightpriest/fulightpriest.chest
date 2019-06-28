@@ -6,7 +6,7 @@
   "rarity" : "Common",
   "description" : "Set Bonus:
 ^cyan;+20% Wand and Staff/Quarterstaff damage, Glow^reset;
-^green;24% Cosmic Resist, Daylight Regen^reset;",  
+^green;24% Cosmic Resist, +0.4% Health Regen^reset;",
   "shortdescription" : "Light Priest Robes",
   "category" : "t3armoru",
   "tooltipKind" : "armornew2",
@@ -24,11 +24,11 @@
   },
 
   "learnBlueprintsOnPickup" : [
-  "fuprophetpants",
-  "fuprophethead",
-  "fuprophetchest"
+    "fuprophetpants",
+    "fuprophethead",
+    "fuprophetchest"
   ],
-  
+
   "level" : 3,
   "collectablesOnPickup" : { "fu_armorpowerranged" : "fulightpriestchest" },
     "leveledStatusEffects" : [
@@ -55,9 +55,9 @@
   ],
 
   "statusEffects" : [
-    "lightpriestsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_lightpriestset_chest",
+      "stat" : "lightpriestsetcount",
       "amount" : 1
     },
     {

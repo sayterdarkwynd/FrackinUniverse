@@ -5,14 +5,14 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Set Bonus: 
-^cyan;+800s Oxygen^reset;
-^#e43774;15% Physical Resist, Immunity: Acid^reset;
-^green;+15% Damage (Grenade Launcher)^reset;",
+  "description" : "Set Bonus:
+^cyan;Immune: Acid, Gas^reset;
+^#e43774;+800s Oxygen, +15% Energy Regen^reset;
+^green;+25% Damage (Grenade Launcher)^reset;",
   "shortdescription" : "Junker Greaves",
   "category" : "t3armor",
   "tooltipKind" : "armornew2",
-  
+
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
@@ -39,11 +39,11 @@
       "amount" : 2
     }
   ],
-  
+
   "statusEffects" : [
-    "junkersetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_junkerset_legs",
+      "stat" : "junkersetcount",
       "amount" : 1
     }
   ],

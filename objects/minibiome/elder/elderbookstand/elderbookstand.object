@@ -2,12 +2,16 @@
   "objectName" : "elderbookstand",
   "colonyTags" : ["madness","insanity","storage","elder"],
   "rarity" : "legendary",
-  "objectType" : "container",
-  "tooltipKind" : "container",
-  "description" : "Among the most ancient of any discovered knowledge in all of history.",
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/tomedais.config",
+    "filter" : [ "tomedais","tomedais1","tomedais2","tomedais3" ]
+  },  
+  
+  "description" : "Compel entities beyond understanding to gift you with knowledge.",
   "shortdescription" : "Antediluvian Texts",
-  "race" : "generic",
-  "category" : "storage",
+
   "price" : 12120,
   "lightColor" : [16, 23, 26],
 
@@ -42,13 +46,5 @@
       "anchors" : [ "bottom" ],
       "collision" : "platform"
     }
-  ],
-
-  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
-  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
-  "slotCount" : 24,
-  "uiConfig" : "/interface/chests/chest<slots>.config",
-  "frameCooldown" : 5,
-  "autoCloseCooldown" : 3600
-
+  ]
 }
