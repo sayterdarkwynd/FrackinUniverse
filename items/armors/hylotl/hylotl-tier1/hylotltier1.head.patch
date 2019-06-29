@@ -7,5 +7,23 @@
 	[
 	{ "op": "test", "path": "/itemTags", "inverse" : true },
 	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
-	]	
+	],
+	[
+	  {
+	    "op": "replace",
+	    "path": "/description",
+	    "value": "Set Bonus:\Electric Resistance ^green;+15%^reset;\n^green;+1%^reset; Crit Chance (Katana)"
+	  },	
+	  {
+	    "op": "add",
+	    "path": "/statusEffects",
+	    "value": [
+	      "fusetbonusmanager",
+	      {
+		"stat": "hylotltier1setcount",
+		"amount": 1
+	      }
+	    ]
+	  }	
+	]		
 ]

@@ -7,5 +7,23 @@
 	[
 	{ "op": "test", "path": "/itemTags", "inverse" : true },
 	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
+	],
+	[
+	  {
+	    "op": "replace",
+	    "path": "/description",
+	    "value": "Set Bonus:\nElectric Resistance ^green;+15%^reset;\n^green;+15%^reset; Max Energy (Shield)"
+	  },	
+	  {
+	    "op": "add",
+	    "path": "/statusEffects",
+	    "value": [
+	      "fusetbonusmanager",
+	      {
+		"stat": "glitchtier1setcount",
+		"amount": 1
+	      }
+	    ]
+	  }	
 	]	
 ]
