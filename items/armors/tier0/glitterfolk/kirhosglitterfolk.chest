@@ -4,7 +4,7 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Look stylish at dinner parties.",
+  "description" : "Look stylish at dinner parties. Increases Energy Regen speed.",
   "shortdescription" : "Elite Top",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
@@ -35,14 +35,15 @@
     {
       "stat" : "maxHealth",
       "amount" : 3
-    },
-
-    {
-      "stat" : "maxHealth",
-      "amount" : 3
     }
   ],
-
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "energyRegenBlock",
+      "effectiveMultiplier" : 0.90
+    }
+  ],
   "colorOptions" : [
     /* BLACK */
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },

@@ -4,7 +4,7 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "A draped top made of fine cloth.",
+  "description" : "A draped top made of fine cloth. Gives ^green;+5%^reset; to Charisma.",
   "shortdescription" : "Toga Top",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
@@ -29,12 +29,19 @@
 
     {
       "stat" : "protection",
-      "amount" : 2
+      "amount" : 1
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 3
+      "effectiveMultiplier" : 1.12
+    }
+  ],
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "fuCharisma",
+      "amount" : 0.05
     }
   ],
 
