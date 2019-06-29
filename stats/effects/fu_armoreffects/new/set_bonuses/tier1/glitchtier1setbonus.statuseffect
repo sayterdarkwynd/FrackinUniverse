@@ -1,0 +1,29 @@
+{
+  "name" : "glitchtier1setbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "shield" ],
+        "stats" : {
+          "maxEnergy" : { "effectiveMultiplier" : 1.2 }
+        }
+      }
+    ],
+    
+    "armorBonuses" : {
+      "electricResistance" : { "amount" : 0.15 }
+    }
+  },
+
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta": 5,
+
+  "label" : "+15% Electric Resistance. Shield: +20% Max Energy.",
+  "icon" : "/interface/statuses/defense.png"
+}

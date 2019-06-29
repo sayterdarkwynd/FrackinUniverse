@@ -4,7 +4,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Look good while obliterating reality.",
+  "description" : "Look good while obliterating reality. ^green;+5%^reset; Knockback Resist.",
   "shortdescription" : "Mad Science Goggles",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -17,6 +17,13 @@
     {
       "stat" : "protection",
       "amount" : 4
+    }
+  ],
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "grit",
+      "amount" : 0.2
     }
   ]
 
