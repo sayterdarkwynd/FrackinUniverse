@@ -4,10 +4,11 @@
   "price" : 0,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;Immune: Poison. Bio-Ooze. +21% Poison Resist^reset;
-^#e43774;+15% Damage, +3% Crit (Sniper Rifles, Bow/Crossbow)^reset;
-^green;+8% Speed, +25% Fall Damage Reduction^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
++21%^reset; Poison Resist^reset;
+Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^reset;
+^green;+8%^reset; Speed, ^#a94db3;+25%^reset; Fall Damage Reduction^reset;
+^cyan;Immune^reset;: Poison. Bio-Ooze",
   "shortdescription" : "Stalker's Robe",
   "category" : "t3armor",
   "tooltipKind" : "armornew2",
@@ -49,10 +50,10 @@
     }
   ],
 
-  "statusEffects" : [   
-      "stalkersetbonus",
+  "statusEffects" : [
+    "fusetbonusmanager",
     {
-      "stat" : "fu_stalkerset_chest",
+      "stat" : "stalkersetcount",
       "amount" : 1
     },
     {

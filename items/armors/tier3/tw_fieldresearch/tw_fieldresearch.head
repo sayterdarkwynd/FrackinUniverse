@@ -5,10 +5,10 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "category" : "headwear",
-  "description" : "Set Bonus: 
-^cyan;Immunity: Oxygen, Poison, Gas, Acid^reset;
-^#e43774;15% Radiation Resist^reset;
-^green;+25% Damage (Magnorbs)^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^cyan;15%^reset; Radiation Resist
+Magnorbs: ^#a94db3;+25%^reset; Dmg
+^cyan;Immunity^reset;: Oxygen, Poison, Gas, Acid",
   "shortdescription" : "Researcher's Helm",
   "tooltipKind" : "armor",
 
@@ -39,16 +39,20 @@
       "amount" : 3
     }
   ],
-  
+
   "statusEffects" : [
-    "headlamp2",   
-    "researchsetbonus",
+    "headlamp2",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_researchset_head",
+      "stat" : "researchsetcount",
       "amount" : 1
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.05
     }
   ],
-  
+
   "colorOptions" : [
     // WHITE
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },

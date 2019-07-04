@@ -4,8 +4,8 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Simple, multi-layered top made of delicate fabrics.",
-  "shortdescription" : "Merchant Top",
+  "description" : "Simple, multi-layered top made of delicate fabrics. Grants ^green;5%^reset; Charisma.",
+  "shortdescription" : "Hawker's Top",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
 
@@ -29,15 +29,21 @@
 
     {
       "stat" : "protection",
-      "amount" : 2
+      "effectiveMultiplier" : 1.05
     },
 
     {
       "stat" : "maxHealth",
-      "amount" : 3
+      "effectiveMultiplier" : 1.03
     }
   ],
-
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "fuCharisma",
+      "amount" : 0.05
+    }
+  ],
   "colorOptions" : [
     /* WHITE */
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },

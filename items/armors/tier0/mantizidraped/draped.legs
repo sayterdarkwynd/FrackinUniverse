@@ -4,7 +4,7 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Thick, layered cloth.",
+  "description" : "Thick, layered cloth. Increase Energy Regen rate.",
   "shortdescription" : "Draped Skirt",
   "category" : "legarmour",
   "tooltipKind" : "armor",
@@ -29,6 +29,14 @@
     }
   ],
 
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "energyRegenBlockTime",
+      "effectiveMultiplier" : 0.2
+    }
+  ],
+  
   "colorOptions" : [
     /* WHITE */
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
