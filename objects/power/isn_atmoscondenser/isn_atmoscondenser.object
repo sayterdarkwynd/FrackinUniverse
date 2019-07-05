@@ -2,7 +2,7 @@
     "objectName" : "isn_atmoscondenser",
     "rarity" : "rare",
     "colonyTags" : [ "science" ],
-    "description" : "Condenses the atmosphere into usable reagents. Requires 15W of power.",
+    "description" : "Condenses the atmosphere into usable reagents. Requires 15W of power. Less effective when stacked. Scan for Info.",
     "shortdescription" : "^cyan;Atmospheric Condenser^white;",
     "race" : "generic",
     "category" : "storage",
@@ -43,6 +43,9 @@
         "uncommon" : 20,
         "rare" : 1
     },
+	
+	//rarities to show up to, on the scan tooltip. 0=none,1=common,2=uncommon,3=rare
+	"rarityInfoLevel":2,
 
     // Outputs per biome
     "outputs" : {
