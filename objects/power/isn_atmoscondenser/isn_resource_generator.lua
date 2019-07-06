@@ -24,6 +24,7 @@ function init()
 	wellRange=config.getParameter("wellRange",20)
 	wellInit()
 	self.rarityInfoLevel=config.getParameter("rarityInfoLevel",0)
+	self.overrideScanTooltip=config.getParameter("overrideScanTooltip",false)
 	setDesc()
 end
 
@@ -102,6 +103,8 @@ end
 
 
 function setDesc()
+	if not self.overrideScanTooltip then return end
+	
 	local color="^yellow;"
 	local info="Standby."
 
