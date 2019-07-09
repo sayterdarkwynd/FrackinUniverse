@@ -31,6 +31,10 @@ function applyDamageRequest(damageRequest)
     damage = damage + root.evalFunction2("protection", damageRequest.damage, status.stat("protection"))
   elseif damageRequest.damageType == "IgnoresDef" then
     damage = damage + damageRequest.damage
+  elseif damageRequest.damageType == "Status" then
+    -- only apply status effects
+    status.addEphemeralEffects(damageRequest.statusEffects, damageRequest.sourceEntityId)
+    return {}
   elseif damageRequest.damageType == "Environment" then
     return {}
   end

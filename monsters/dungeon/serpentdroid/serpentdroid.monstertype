@@ -9,7 +9,19 @@
   "animation" : "serpentdroid.animation",
   "reversed" : false,
 
-  "dropPools" : [ { "default" : "furobotTreasure", "bow" : "furobotHunting" } ],
+  "dropPools" : [ 
+    { 
+      "default" : "furobotTreasure", 
+      "bow" : "furobotHunting",
+      "firebow" : "furobotHunting",
+      "icebow" : "furobotHunting",
+      "poisonbow" : "furobotHunting",
+      "electricbow" : "furobotHunting",
+      "cosmicbow" : "furobotHunting",
+      "radioactivebow" : "furobotHunting",
+      "shadowbow" : "furobotHunting"
+    } 
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -50,8 +62,8 @@
           "name" : "action-fire",
           "cooldown" : 0.3,
           "parameters" : {
-            "maximumRange" : 15,
-            "minimumRange" : 2,
+            "maximumRange" : 20,
+            "minimumRange" : 1,
             "windupState" : "",
             "windupTime" : 0.0,
 
@@ -76,8 +88,9 @@
       "invulnerableActions" : [
         {
           "name" : "action-fire",
+          "cooldown" : 6,
           "parameters" : {
-            "maximumRange" : 15,
+            "maximumRange" : 20,
             "minimumRange" : 2,
             "windupState" : "",
             "windupTime" : 0.0,

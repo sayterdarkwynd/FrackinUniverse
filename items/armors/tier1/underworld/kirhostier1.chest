@@ -4,9 +4,11 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+6% Ice, Electric Resistance^reset;
-^green;+2% Crit Chance (Per Machine Pistol or Pistol), +4% with Rifles^reset;", 
+  "description" : "^green;2%^reset; Ice and Electric Resist
+\n^orange;Set Bonuses^reset;:
+Pistol/Machine Pistol: ^green;+1%^reset; Crit 
+Rifles: ^green;+2%^reset; Crit^reset;",
+
 "shortdescription" : "Underworld Chestpiece",
   "category" : "t1armor",
   "tooltipKind" : "armornew2",
@@ -24,6 +26,7 @@
   },
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 1,
+
   "collectablesOnPickup" : { "fu_armorpowerranged" : "kirhostier1chest" },
   "leveledStatusEffects" : [
     {
@@ -49,9 +52,9 @@
   ],
 
   "statusEffects" : [
-    "underworldsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_underworldset_chest",
+      "stat" : "underworldsetcount",
       "amount" : 1
     },
     {
@@ -61,7 +64,7 @@
     {
       "stat" : "electricResistance",
       "amount" : 0.02
-    }       
+    }
   ],
 
   "colorOptions" : [
@@ -89,9 +92,5 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ],
-
-    "learnBlueprintsOnPickup" : [
-    "kirhostier2chest"
   ]
 }

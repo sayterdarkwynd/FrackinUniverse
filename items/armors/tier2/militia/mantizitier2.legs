@@ -4,8 +4,10 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+15% Damage (Shotgun, Assault Rifle)^reset;",
+  "description" : "^green;+5%^reset; Poison Resist
+\n^orange;Set Bonuses^reset;:
+Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
+
   "shortdescription" : "Telebrium Skirt",
   "category" : "t2armor",
   "tooltipKind" : "armornew2",
@@ -39,12 +41,15 @@
   ],
 
   "statusEffects" : [
-    "militiasetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_militiaset_legs",
+      "stat" : "militiasetcount",
       "amount" : 1
     },
-    { "stat" : "poisonResistance", "amount" : 0.05}
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.05
+    }
   ],
 
   "colorOptions" : [

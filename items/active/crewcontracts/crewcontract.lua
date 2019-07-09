@@ -19,13 +19,17 @@ function update(dt, fireMode, shiftHeld)
 			self.active=false
 			return
 		end
-		raceroller()
-		item.consume(1)
-		local crewtype = config.getParameter("crewtype.crewname")
-		local seed = math.random(255)
-		local parameters = {}
-		local crewrace = self.crewrace
-		world.spawnNpc(mcontroller.position(), crewrace, crewtype, 1, seed, parameters)
+					
+			raceroller()
+				if shiftHeld then
+				self.crewrace = player.species()
+				end
+			item.consume(1)
+			local crewtype = config.getParameter("crewtype.crewname")
+			local seed = math.random(255)
+			local parameters = {}
+			local crewrace = self.crewrace
+			world.spawnNpc(mcontroller.position(), crewrace, crewtype, 1, seed, parameters)
 	end
 end
 
@@ -82,50 +86,9 @@ function raceroller()
 
 	if self.isUnique then
 		self.crewrace = config.getParameter("race")
-	end
-
-	if not self.isUnique then 
-		self.raceroller = math.random(19)
-		if self.raceroller == 1 then 
-			self.crewrace = "apex"
-		elseif self.raceroller == 2 then
-			self.crewrace = "avian"
-		elseif self.raceroller == 3 then
-			self.crewrace = "floran"
-		elseif self.raceroller == 4 then
-			self.crewrace = "glitch"
-		elseif self.raceroller == 5 then
-			self.crewrace = "human"
-		elseif self.raceroller == 6 then
-			self.crewrace = "hylotl"
-		elseif self.raceroller == 7 then
-			self.crewrace = "novakid"
-		elseif self.raceroller == 8 then
-			self.crewrace = "fenerox"
-		elseif self.raceroller == 9 then
-			self.crewrace = "shadow"    
-		elseif self.raceroller == 10 then
-			self.crewrace = "fuanodyne" 
-		elseif self.raceroller == 11 then
-			self.crewrace = "fudarkizku" 
-		elseif self.raceroller == 12 then
-			self.crewrace = "fuizku" 
-		elseif self.raceroller == 13 then
-			self.crewrace = "fukirhos" 
-		elseif self.raceroller == 14 then
-			self.crewrace = "fumantis" 
-		elseif self.raceroller == 15 then
-			self.crewrace = "fumantizi" 
-		elseif self.raceroller == 16 then
-			self.crewrace = "precursor" 
-		elseif self.raceroller == 17 then
-			self.crewrace = "radien" 
-		elseif self.raceroller == 18 then
-			self.crewrace = "thelusian"
-		elseif self.raceroller == 19 then
-			self.crewrace = "fupeglaci"        
-		else
-			self.crewrace = "human"
-		end
-	end    
+	else
+		local crewNpcList = root.assetJson("/items/active/crewcontracts/crewcontract.activeitem").crewNpcTypes or {}
+		self.raceroller = math.random(#crewNpcList)
+		self.crewrace = crewNpcList[self.raceroller] or "human"
+	end  
 end

@@ -3,10 +3,13 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Immune to slush. Set Bonus:
-^cyan;+3.5 Crit Chance, +15% Dmg with 2-handed melee and axes^reset;
-^green;+15% Ice Resistance, Ice status effects.",
+  "rarity" : "Common",
+  "description" : "^green;+5%^reset; Ice Resist
+\n^orange;Set Bonuses^reset;:
+^cyan;+20% Knockback Resist
+2H melee/Axes: ^green;+3.5%^reset; Crit Chance, ^cyan;+15%^reset; Dmg
+^cyan;Immune^reset;: Slush, Chill",
+
   "shortdescription" : "Battle Totem Mask",
   "learnBlueprintsOnPickup" : [ "fubearhead2" ],
   "category" : "t2armoru",
@@ -39,14 +42,17 @@
       "stat" : "maxHealth",
       "amount" : 5
     }
-  ],  
+  ],
   "statusEffects" : [
-    "bearsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_bearset_head",
+      "stat" : "bearsetcount",
       "amount" : 1
     },
-    { "stat" : "iceResistance", "amount" : 0.05}
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.05
+    }
   ],
 
   "colorOptions" : [

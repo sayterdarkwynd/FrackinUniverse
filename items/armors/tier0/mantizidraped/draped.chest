@@ -4,7 +4,7 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "A mass of cloth draped over the shoulder and around the hips.",
+  "description" : "A mass of cloth draped over the shoulder and around the hips.  Increase Energy Regen rate.",
   "shortdescription" : "Draped Top",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
@@ -35,6 +35,14 @@
     {
       "stat" : "maxHealth",
       "amount" : 3
+    }
+  ],
+
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "energyRegenBlockTime",
+      "effectiveMultiplier" : 0.2
     }
   ],
 

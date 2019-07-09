@@ -4,10 +4,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Set Bonus:
-^cyan;+18% Poison/Radiation Resist, +10% Damage, +6% Crit (Slime weapons). ^reset;
-^#e43774;Immune: Poison, Bioooze, Slime. Spawns minions. +Slime Weapon Damage^reset;
-^green;Immune: Mud, Slime, Mud and Clay tiles^reset;",   
+  "description" : "^orange;Set Bonuses^reset;:
+^cyan;+21%^reset; Poison/Radiation Resist 
+^green;Spawns minions^reset;
+Slime Weapons: ^cyan;+15%^reset; Damage, ^green;+5%^reset; Crit 
+^cyan;Immune^reset;: Poison, Bioooze, Mud, Snow, Ice, Slime, Clay",
   "shortdescription" : "Black Slime Chest",
   "category" : "t3armoru",
   "tooltipKind" : "armornew2",
@@ -50,18 +51,18 @@
   ],
 
   "statusEffects" : [
-    "slimesetbonus2",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_slimeset2_chest",
+      "stat" : "slime2setcount",
       "amount" : 1
     },
     {
       "stat" : "poisonResistance",
-      "amount" : 0.06
+      "amount" : 0.07
     },
     {
       "stat" : "radioactiveResistance",
-      "amount" : 0.06
+      "amount" : 0.07
     }
   ],
 

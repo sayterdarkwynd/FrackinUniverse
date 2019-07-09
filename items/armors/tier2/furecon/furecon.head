@@ -5,17 +5,24 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+15% Damage (Rifle, Sniper Rifle), +5% Speed^reset;
-^green;+12% Radioactive Resist, Immune: Rad Burn^reset;", 
+  "description" : "^green;+4%^reset; Radioactive Resist
+^orange;Set Bonuses:^reset;
+^green;+5%^reset; Speed
+Rifle/Sniper Rifle: ^cyan;+15%^reset; Dmg
+^cyan;Immune^reset;: Rad Burn^reset;",
+
   "shortdescription" : "Recon Headgear",
   "category" : "t2armoru",
   "tooltipKind" : "armor",
-  "learnBlueprintsOnPickup" : [ "fureconhead2", "fureconchest2", "fureconpants2" ],
+  "learnBlueprintsOnPickup" : [
+    "fureconhead2",
+    "fureconchest2",
+    "fureconpants2"
+  ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  
+
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorranged" : "fureconhead" },
   "leveledStatusEffects" : [
@@ -42,15 +49,15 @@
   ],
 
   "statusEffects" : [
-     "reconsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_reconset_head",
+      "stat" : "reconsetcount",
       "amount" : 1
     },
     {
-      "stat" : "pradioactiveResistance",
+      "stat" : "radioactiveResistance",
       "amount" : 0.04
-    }  
+    }
   ],
 
   "colorOptions" : [

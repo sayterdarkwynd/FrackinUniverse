@@ -4,20 +4,23 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;Immune: Burns, Deserts. +15% Fire Resist^reset;
-^#e43774;+20% Shield Regen, +15% Damage (Dagger,Shortspear)^reset;
-^green;Desert biomes: +15% Fire Resist^reset;",
+  "description" : "^green;+5%^reset; Fire Resist
+\n^orange;Set Bonuses^reset;:
+^cyan;+20%^reset; Shield Regen^reset;
+Dagger/Shortspear: ^cyan;+15%^reset; Dmg
+\n^#e43774;Deserts: ^cyan;+15%^reset; Fire Resist
+\n^cyan;Immune^reset;: Burning, Deserts",
+
   "shortdescription" : "Nomad Hood",
   "category" : "t2armoru",
   "tooltipKind" : "armornew2",
 
   "learnBlueprintsOnPickup" : [
-	"chitinchest", 
-	"chitinlegs", 
-	"chitinhead"   
+    "chitinchest",
+    "chitinlegs",
+    "chitinhead"
   ],
-  
+
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
@@ -48,15 +51,15 @@
   ],
 
   "statusEffects" : [
-    "nomadsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_nomadset_head",
+      "stat" : "nomadsetcount",
       "amount" : 1
     },
     {
       "stat" : "fireResistance",
       "amount" : 0.05
-    }          
+    }
   ],
 
  "colorOptions" : [

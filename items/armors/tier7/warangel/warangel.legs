@@ -5,10 +5,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "Set Bonus:
-^cyan;+35% Physical Resist, +250% Chain Sword damage/+2% Crit^reset;
-^#e43774;100% Fall Reduction and Knockback Resistance^reset;
-^green;Immunity: Breath Pressure, Cold, Heat, Radiation, ^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^#a94db3;+30%^reset; Physical Resist
+^cyan;24%^reset; Ice, Fire, Rad Resist
+^#a94db3;80%^reset; Fall Reduction and Knockback Resistance
+\nChain Sword: ^#a94db3;+150%^reset;Dmg, ^green;+2%^reset; Crit
+\n^cyan;Immune^reset;: Breath, Pressure",
   "shortdescription" : "War Angel Greaves",
     "itemTags" : [ "upgradeableWeapon" ],
   "category" : "t7armor",
@@ -27,7 +29,7 @@
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.3
+      "amount" : 0.32
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -49,7 +51,19 @@
     },
     {
       "stat" : "physicalResistance",
-      "amount" : 0.11
+      "amount" : 0.10
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.08
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.08
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.08
     }
   ],
 

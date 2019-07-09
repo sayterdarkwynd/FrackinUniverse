@@ -5,10 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "category" : "legarmour",
-  "description" : "Set Bonus:
-^cyan;+5% Physical Resistance^reset; 
-^#e43774;Katana: +15% Damage, +3% Crit, +10% Crit Damage^reset;
-^green;Katana + Dagger: +1% Crit Chance, +14% Protection^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^green;+5%^reset; Physical Resistance
+Katana: ^cyan;+15%^reset; Dmg, ^green;+3%^reset; Crit, ^green;+10%^reset; Crit Damage^reset;
+Katana + Dagger: ^green;+1%^reset; Crit Chance, ^green;+14%^reset; Protection^reset;",
   "shortdescription" : "Neishin Greaves",
   "tooltipKind" : "armor",
 
@@ -39,15 +39,14 @@
     }
   ],
 
-  "statusEffects" : [ 
-
-    "samuraisetbonus2",
+  "statusEffects" : [
+    "fusetbonusmanager",
     {
-      "stat" : "fu_samuraiset2_legs",
+      "stat" : "samurai2setcount",
       "amount" : 1
-    }  
+    }
   ],
-  
+
   "colorOptions" : [
     // LIGHT GREY
     { "ffca8a" : "cccccc", "e0975c" : "9e9e9e", "a85636" : "616161", "6f2919" : "383838" },

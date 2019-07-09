@@ -8,7 +8,7 @@
 
   "animation" : "precursorwarbot.animation",
 
-  "dropPools" : [ { "default" : "fuprecursorLootBoss", "bow" : "fuprecursorLootBoss" } ],
+  "dropPools" : [ { "default" : "fuprecursorLootBoss", "brain" : "madnessBrainHarvestingRobot"} ],
 
   "baseParameters" : {
     "scripts" : [
@@ -102,7 +102,7 @@
         },         
         {
           "name" : "action-fire",
-	        "cooldown" : 1,
+	  "cooldown" : 1,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 25,
@@ -112,6 +112,7 @@
 
             "projectileType" : "precursorshot2a",
             "projectileParameters" : {
+              "statusEffects" : [ "madnessgain" ],
               "actionOnReap" : [
 		    {
 		      "action" : "config",
@@ -151,6 +152,7 @@
 
             "projectileType" : "precursorball",
             "projectileParameters" : {
+                  "statusEffects" : [ "madnessgain3" ],
 		  "periodicActions" : [
 		    {
 		      "time" : 0.05,
@@ -229,7 +231,7 @@
 
             "projectileType" : "waveblast",
             "power" : 7,
-            "projectileParameters" : { "speed" : 80 },
+            "projectileParameters" : { "statusEffects" : [ "madnessgain2" ], "speed" : 80 },
             
             "fireOffset" : [1.0, 0],
             "aimAtTarget" : true,
@@ -448,7 +450,17 @@
           "baseValue" : 1
         },
         "stunImmunity" : {"baseValue" : 1},
-        "bleedingImmunity" : {"baseValue" : 1}        
+        "bleedingImmunity" : { "baseValue" : 1 },
+        "linerifleResistance" : { "baseValue" : 0.9 },
+        "linerifleStatusImmunity" : { "baseValue" : 1 },
+        "centensianenergyResistance" : { "baseValue" : 0.9 },
+        "centensianenergyStatusImmunity" : { "baseValue" : 0.9 },
+        "xanafianResistance" : { "baseValue" : 0.9 },
+        "xanafianStatusImmunity" : { "baseValue" : 1 },
+        "akkimariacidResistance" : { "baseValue" : 0.9 },
+        "akkimariacidStatusImmunity" : { "baseValue" : 1 },
+        "ucObliteratingBurnImmunity" : { "baseValue" : 1 },
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 }       
       },
 
       "resources" : {

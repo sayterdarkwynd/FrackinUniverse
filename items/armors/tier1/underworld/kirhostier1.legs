@@ -4,9 +4,11 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+6% Ice, Electric Resistance^reset;
-^green;+2% Crit Chance (Per Machine Pistol or Pistol), +4% with Rifles^reset;",   
+  "description" : "^green;2%^reset; Ice and Electric Resist
+\n^orange;Set Bonuses^reset;:
+Pistol/Machine Pistol: ^green;+1%^reset; Crit 
+Rifles: ^green;+2%^reset; Crit^reset;",
+
 "shortdescription" : "Underworld Greaves",
   "category" : "t1armor",
   "tooltipKind" : "armornew2",
@@ -40,9 +42,9 @@
   ],
 
   "statusEffects" : [
-    "underworldsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_underworldset_legs",
+      "stat" : "underworldsetcount",
       "amount" : 1
     },
     {
@@ -52,7 +54,7 @@
     {
       "stat" : "electricResistance",
       "amount" : 0.02
-    }      
+    }
   ],
 
   "colorOptions" : [

@@ -3,13 +3,13 @@
   "rarity" : "essential",
   "colonyTags" : [ "science" ],
   "category" : "furniture",
-  "description" : "An ftl drive for a space ship. Allows you to travel through space. ^orange;Mass +1^reset;",
+  "description" : "An ftl drive for a space ship. Allows interstellar travel. ^orange;Mass +1, Speed +3.^reset;. ^red;BYOS Only^reset;",
   "shortdescription" : "^cyan;Small FTL Drive^white;",
   "race" : "generic",
   "printable" : false,
-  "learnBlueprintsOnPickup" : [ "fu_ftldrive", "fu_ftldrive2", "fu_ftldrive3" ],
+  "learnBlueprintsOnPickup" : [ "fu_ftldrive", "fu_ftldrive2", "fu_ftldrive3", "fu_ftldriveupgrade" ],
 
-  "inventoryIcon" : "fu_ftldrivesmallicon.png",
+  "inventoryIcon" : "/objects/ship/fu_ftldriveicon.png",
   "orientations" : [
     {
       "dualImage" : "fu_ftldrivesmall.png",
@@ -30,6 +30,7 @@
   "scriptDelta" : 60,
   
   "stats" : {
+    "shipSpeed" : 3,
     "shipMass" : 1
   },
   "capabilities" : [

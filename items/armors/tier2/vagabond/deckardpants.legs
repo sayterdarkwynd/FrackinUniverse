@@ -3,10 +3,11 @@
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Set Bonus:
-^cyan;+7.5% Damage (per Pistol or Machine Pistol)^reset;
-^green;+12% Electric Resist^reset;",
+  "rarity" : "Common",
+  "description" : "^green;+4%^reset; Electric Resist
+^orange;Set Bonus:^reset;
+Pistol/Machine Pistol: ^green;+7.5%^reset; Dmg each",
+
   "shortdescription" : "Vagabond's Pants",
   "category" : "t2armor",
   "tooltipKind" : "armor",
@@ -40,21 +41,20 @@
   ],
 
   "statusEffects" : [
-    "vagabondsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_vagabondset_legs",
+      "stat" : "vagabondsetcount",
       "amount" : 1
     },
     {
       "stat" : "electricResistance",
       "amount" : 0.04
-    }      
+    }
   ],
-
 
   "colorOptions" : [
     /* BROWN */
-    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },  
+    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },
     /* GREY */
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
     /* BLACK */

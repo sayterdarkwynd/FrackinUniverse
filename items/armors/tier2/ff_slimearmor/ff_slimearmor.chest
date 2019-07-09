@@ -3,14 +3,20 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Rare",
-  "description" : "Set Bonus:
-^cyan;+21% Poison Resist, Immune: Slime. Spawns minions.^reset;
-^#e43774;+10% Damage, +6% Crit (Slime weapons)^reset;
-^green;Immune: Mud, Slime, Mud and Clay tiles^reset;", 
+  "rarity" : "Common",
+  "description" : "^green;+7%^reset; Poison Resist^reset;
+\n^orange;Set Bonuses^reset;:
+^#a00000;Spawns minions^reset;
+Slime weapons: ^green;+10%^reset Dmg, ^green;+5%^reset Crit Chance;
+^cyan;Immune^reset;: Slime, Mud, Clay",
+
   "shortdescription" : "Slime Chest",
   "category" : "t2armoru",
-  "learnBlueprintsOnPickup" : [ "ff_slimechest2" ],
+  "learnBlueprintsOnPickup" : [
+    "ff_slimechest2",
+    "ff_slimehead2",
+    "ff_slimelegs2"
+  ],
   "tooltipKind" : "armornew2",
   "maleFrames" : {
     "body" : "chestm.png",
@@ -50,15 +56,15 @@
   ],
 
   "statusEffects" : [
-    "slimesetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_slimeset_chest",
+      "stat" : "slimesetcount",
       "amount" : 1
     },
     {
       "stat" : "poisonResistance",
       "amount" : 0.07
-    } 
+    }
   ],
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },

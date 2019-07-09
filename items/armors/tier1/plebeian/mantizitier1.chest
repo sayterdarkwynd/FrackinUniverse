@@ -4,10 +4,11 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^green;+15% Shield Regen, Blocking, and Stamina^reset;
-^#e43774;Sword/Mace and Shield: +20% Health^reset;
-^cyan;+6% Fire Resist. 15% Knockback Resist^reset;",
+  "description" : "^green;+2%^reset; Fire Resist
+\n^orange;Set Bonuses^reset;:
+^cyan;+15%^reset; Shield Health and Regen, ^cyan;+15%^reset; Knockback Resist
+Sword/Mace + Shield: ^#a94db3;+20%^reset; Health",
+
   "shortdescription" : "Plebeian Plates",
   "category" : "t1armoru",
   "tooltipKind" : "armornew2",
@@ -24,11 +25,11 @@
     "frontSleeve" : "fsleeve.png"
   },
 
-"learnBlueprintsOnPickup" : [
- "fuplatinumarmorhead",
- "fuplatinumarmorchest",
- "fuplatinumarmorpants"
-],
+  "learnBlueprintsOnPickup" : [
+    "fuplatinumarmorhead",
+    "fuplatinumarmorchest",
+    "fuplatinumarmorpants"
+  ],
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 1,
   "collectablesOnPickup" : { "fu_armortank" : "fumantizitier1chest" },
@@ -56,15 +57,15 @@
   ],
 
   "statusEffects" : [
-    "plebiansetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_plebianset_chest",
+      "stat" : "plebiansetcount",
       "amount" : 1
     },
     {
       "stat" : "fireResistance",
       "amount" : 0.02
-    }      
+    }
   ],
 
   "colorOptions" : [

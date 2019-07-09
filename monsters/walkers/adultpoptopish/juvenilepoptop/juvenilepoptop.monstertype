@@ -8,12 +8,20 @@
 
   "animation" : "juvenilepoptop.animation",
 
-  "dropPools" : [ { "default" : "adultpoptopTreasure", "bow" : "adultpoptopHunting" } ],
+  "dropPools" : [ { 
+  "default" : "adultpoptopTreasure", 
+  "bow" : "adultpoptopHunting",
+  "brain" : "madnessBrainHarvesting"  
+  }],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/scripts/golemancer/gol_monstermain.lua"
     ],
+  "tickEvoTime" : 3,
+  "agingEvoTime" : 1500,
+  "evolutions" : [ "/scripts/golemancer/evolutions/poptopgrow3.evo" ],
 
     "behavior" : "monster",
 

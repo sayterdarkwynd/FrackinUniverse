@@ -2,7 +2,7 @@
   "objectName" : "fu_precursorspawner",
   "colonyTags" : ["precursor","ancient"],
   "rarity" : "Legendary",
-  "description" : "Spawns monsters based on a capture pod's contents. Uses precursor quantum fluid as fuel. Requires ^orange;100W ^cyan;power.^reset; ^blue;Input^reset;1: Power Switch",
+  "description" : "Spawns monsters based on a capture pod's contents. Uses beer as fuel. Requires ^orange;100W ^cyan;power.^reset; ^blue;Input^reset;1: Power Switch",
   "shortdescription" : "Precursor Spawner",
   "race" : "precursor",
   "printable" : false,
@@ -34,7 +34,9 @@
   "inputNodes" : [ [-1, 0], [0, 0] ],
 
   "spawner" : {
-    "fuelType" : "precursorfluid",
+    "fuelType" : "liquidbeer",
+	"fuelMultiplier" : 0.1,
+	"defaultFuelAmount" : 10,
 	"podType" : "filledcapturepod",
 	"spawnTimeMultiplier" : 0.1,
 	"defaultSpawnTime" : 10

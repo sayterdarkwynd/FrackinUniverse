@@ -1,5 +1,6 @@
 [
-	{ "op": "add", "path": "/species/-", "value" : "thelusian" },
+{ "op" : "add", "path" : "/defaultCodexes/skath", "value" : [ "protectorate1", "protectorate2", "skathachievement1", "skathbiology1", "skathbiology2", "skathcouncil1", "skathcruiser1", "skathfighting1", "skathfortress1", "skathhonor1", "skathhostile1", "skathlog1", "skathmertah1", "skathmertah2", "skathorders1", "skathoutcast1", "skathsurvivor1", "skathwar1", "skathwar2", "skathwar3", "skathwar4" ] },
+        { "op": "add", "path": "/species/-", "value" : "thelusian" },
 	{ "op": "add", "path": "/species/-", "value" : "fukirhos" },
 	{ "op": "add", "path": "/species/-", "value" : "radien" },
 	{ "op": "add", "path": "/species/-", "value" : "shadow" },
@@ -11,6 +12,35 @@
 	{ "op": "add", "path": "/species/-", "value" : "fumantis" },
 	{ "op" : "add","path" : "/species/-","value" : "slimeperson" },	
 	{ "op" : "add","path" : "/species/-","value" : "elduukhar" },
+	{ "op" : "add","path" : "/species/-","value" : "fenerox" },
+	{ "op" : "add","path" : "/species/-","value" : "veluu" },
+	{ "op" : "add","path" : "/species/-","value" : "fupeglaci" },
+	{ "op" : "add","path" : "/species/-","value" : "skath" },
+	{ "op" : "add","path" : "/species/-","value" : "juux" },
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/skath",
+		"value" : "mechbodyfuorbusproto"
+	},
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/fupeglaci",
+		"value" : "mechbodyfuorbusproto"
+	},	
+	{ "op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/veluu",
+		"value" : "mechbodycatproto"
+	},
+	{ "op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/elduukhar",
+		"value" : "mechbodyfuorbusproto"
+	},	
+	{ "op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/cat",
+		"value" : "mechbodycatproto"
+	},
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/fenerox",
+		"value" : "mechbodyfloranproto"
+	},	
 	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/slimeperson",
@@ -56,6 +86,14 @@
 		"path" : "/deploymentConfig/speciesStarterMechBody/fuanodyne",
 		"value" : "mechbodynovakidproto"
 	},
+	{"op" : "add",
+		"path" : "/deploymentConfig/speciesStarterMechBody/juux",
+		"value" : "mechbodyemissaryproto"
+	},
+	{ "op" : "add",
+		"path" : "/defaultCodexes/fupeglaci",
+		"value" : ["protectorate1", "protectorate2"] 
+	},		
 	{ "op" : "add",
 		"path" : "/defaultCodexes/slimeperson",
 		"value" : ["protectorate1", "protectorate2", "slimepersondiary"] 
@@ -97,13 +135,38 @@
 		"value" : [ "protectorate1", "protectorate2" ]
 	},
 	{"op" : "add",
+		"path" : "/defaultCodexes/fenerox",
+		"value" : [ "protectorate1", "protectorate2" ]
+	},	
+	{"op" : "add",
 		"path" : "/defaultCodexes/radien",
 		"value" : [ "protectorate1", "protectorate2" ]
 	},
 	{"op" : "add",
 		"path" : "/defaultCodexes/shadow",
 		"value" : [ "shadow1", "shadow2" ]
-	},	
+	},
+	{ "op" : "add",
+	  "path" : "/defaultCodexes/veluu",
+	    "value" : [ "protectorate1", "protectorate2", "catdiary" ]
+	},
+	{
+		"op": "add",
+		"path": "/defaultCodexes/cat",
+		"value": [ "protectorate1", "protectorate2", "catdiary" ]
+	},
+	{
+		"op": "add",
+		"path": "/defaultCodexes/juux",
+		"value": [ "protectorate1", "protectorate2" ]
+	},
+	
+	{
+		"op": "add",
+		"path": "/statusControllerSettings/primaryScriptSources/-",
+		"value": "/stats/cat_primary.lua"
+	},
+	
 	{
 	"op" : "add",
 	"path" : "/collisionParams",
@@ -115,7 +178,7 @@
 		"gravityDiffFactor" : 0.00111111
 	}
 	},
-
+       
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-", "value": "/scripts/mm_player_primary.lua" },
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/basictilegroundeffects.lua" },
 	{ "op": "add", "path" : "/statusControllerSettings/primaryScriptSources/-" , "value" : "/scripts/fu_tilegroundeffects.lua" },
@@ -131,8 +194,11 @@
 	{ "op": "add", "path": "/statusControllerSettings/resources/biomeelectricsurfacewarning", "value": { "maxValue": 60, "deltaValue": -1, "initialPercentage": 0 } },
 	{ "op": "add", "path": "/statusControllerSettings/resources/biomeelectricwaterwarning", "value": { "maxValue": 60, "deltaValue": -1, "initialPercentage": 0 } },
 	//end biome warnings
-	
-	
+  	
+  	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "painteasel"} },
+  	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "paintingrandom"} },
+  	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "glassball"} },	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avalipart1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "avaligun1"} },
 	{ "op": "add","path":"/defaultBlueprints/tier1/-","value": { "item" : "funeontube"}},
@@ -144,6 +210,11 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotltechstation"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotlshiplocker"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tw_hylotlfuelhatch"} },
+	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futram"} },
+
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fossildisplay6"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fossildisplay7"} },
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "futoolbox2"} },
@@ -186,6 +257,21 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "crewcontract_science"} },
 
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "flashlight_new"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "generalgoodsstore" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "platingtable" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "apexkitchencounter" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "tribalkitchencounter" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "plantkitchencounter" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "medievalkitchencounter" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "humankitchencounter" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "hylotlclassickitchencounter" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "frontierkitchencounter" } },
+	
+	{ "op": "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "scb-pipelamp" } },
+	{ "op": "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "scb-flametrap" } },
+	{ "op": "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "scb-poisontrap" } },
+	{ "op": "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "scb-watertrap" } },
+	{ "op": "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "scb-sewerpipe-end" } },
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "radrebelchest"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "radrebelpants"} },
@@ -303,7 +389,6 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "labdoorhuge"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "labhatchhuge"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "labhatchplatformhuge"} },
-
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "aex"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "prototyper"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "polymer"} },
@@ -317,7 +402,6 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "woodencentrifuge" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "boozekit" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "heavypipe" } },
-
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "celestaruniform1chest"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "celestaruniform1pants"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "celestaruniform2chest"} },
@@ -326,10 +410,8 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "celestaruniform3pants"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "celestaruniform4chest"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "celestaruniform4pants"} },
-
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "nightardagger"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "nightarshortsword"} },
-	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodencrossbow"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodenboomerang"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "woodenkatana"} },
@@ -424,7 +506,6 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fubonehammer"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fubonesword"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fubonescythe"} },
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fubonescythe" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fuboneshield" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "bonebow" } } ,
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "friendmaker"} },
@@ -490,11 +571,21 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fumantizitier4chest"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fumantizitier4pants"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "iceaxe"} },
-
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "phaseshake" }},
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "solusjam" }},
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "plasmangoicecream" }},
+        { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "violirootplate" }},
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "orangestim" }},
 	//Kherae's turrets
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_autoBeamer"} },
 
-
+	// coffee
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "americancoffee" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "espresso" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "pitchblack" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "filteredcoffee" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "coffee" } },
+	
 	//ShadowWolf TJCs Wired Pack
 	//Basic Logic Gates
 
@@ -743,7 +834,8 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_purpledye" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_reddye" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_whitedye" } },	
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_yellowdye" } },	
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_yellowdye" } },
+	
 	// mechs
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechlegssimpleupgrade"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechboostersimpleupgrade"} },
@@ -762,6 +854,7 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodythelusianproto"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodyemissaryproto"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "mechbodystomper"} },
+	
 	//basic
 
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "longjump_tech"} },
@@ -779,8 +872,8 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "magnesiumsulfate"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "electromagnet"} },	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "oredetector1"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tunableoredetector1"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_alternatorgenerator"} },
-
 	
 	//Pointless Crap
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_funsign1"} },
@@ -790,7 +883,6 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_funsign5"} },
 	
 	// BYOS
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_crewbed0" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_byoscaptainschair2" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fu_byoscaptainschair2deco" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "thruster_apex1"} },
@@ -845,11 +937,26 @@
 	// New SAIL helper for getting player companions
 	{ "op": "add", "path": "/companionsConfig/scripts/-", "value": "/scripts/companionhandler.lua" },
 	
-	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"flagmantizi"}},
-	
+	// Crew overflow scripts
+	{ "op": "add", "path": "/companionsConfig/scripts/-", "value": "/scripts/fu_crewoverflow.lua" },
 
-	
-{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimesword"} },
+	//Skies912 tiles
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "avianmetalceiling" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "avianmetalfloor" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "avianmetaltrim" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "avianmetaltrim2" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "fu_blockIrradium" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "fu_blockUranium" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "fu_blockPlutonium" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "metallicbrick" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "metallicbrick2" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "metallicbrick3" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "metallicslab" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "slopedavianhullpanel" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "fu_copperladder" }},
+	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "fu_copperplatform" }},
+
+    { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimesword"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "wavyslimesword"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimewhip"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimetendrils"} },
@@ -896,5 +1003,5 @@
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimenpcsmallstorage"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimenpclargestorage"} },
     { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimenpchangstorage"} },
-    { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimegem"} }	
+    { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "slimegem"} }    
 ]

@@ -8,7 +8,20 @@
 
   "animation" : "darkmetroid.animation",
 
-  "dropPools" : [ { "default" : "darkmetroidTreasure", "bow" : "huntingDarkMetroid" } ],
+  "dropPools" : [ 
+    { 
+      "default" : "darkmetroidTreasure", 
+      "bow" : "huntingDarkMetroid",
+      "firebow" : "huntingDarkMetroid",
+      "icebow" : "huntingDarkMetroid",
+      "poisonbow" : "huntingDarkMetroid",
+      "electricbow" : "huntingDarkMetroid",
+      "cosmicbow" : "huntingDarkMetroid",
+      "radioactivebow" : "huntingDarkMetroid",
+      "shadowbow" : "huntingDarkMetroid",
+      "brain" : "madnessBrainHarvesting"  
+    } 
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -143,7 +156,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "shadow",
       "knockback" : 0,
-      "statusEffects" : [ "stun" ]
+      "statusEffects" : [ "stun","madness" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -205,22 +218,25 @@
           "baseValue" : 0.1
         },
         "fireResistance" : {
-          "baseValue" : -0.4
+          "baseValue" : 0.4
         },
+        "iceResistance" : {
+          "baseValue" : -0.4
+        },        
         "physicalResistance" : {
-          "baseValue" : -0.2
+          "baseValue" : 0.6
         },        
         "electricResistance" : {
-          "baseValue" : -0.3
+          "baseValue" : 0.6
         },
         "radioactiveResistance" : {
-          "baseValue" : 0.75
+          "baseValue" : -0.15
         },        
         "poisonResistance" : {
           "baseValue" : -0.2
         },
         "shadowResistance" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.8
         },
         "cosmicResistance" : {
           "baseValue" : 1.0

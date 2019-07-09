@@ -4,8 +4,8 @@
   "inventoryIcon" : "icons.png:chest",
   "rarity" : "Common",
   "category" : "chestwear",
-  "description" : "A crop top worn by Radien war rebels.",
-  "shortdescription" : "Radien Rebel Shirt",
+  "description" : "A crop top worn by X'i war rebels. ^reset;+5%^resset; to Mental Protection.",
+  "shortdescription" : "X'i Tailored Shirt",
   "tooltipKind" : "armor",
 
   "maleFrames" : {
@@ -21,6 +21,29 @@
   },
   "maxStack" : 1,
 
+  "statusEffects" : [
+    {
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.05
+    },
+
+    {
+      "stat" : "protection",
+      "amount" : 1
+    },
+    {
+      "stat" : "maxEnergy",
+      "effectiveMultiplier" : 1.12
+    }
+  ],
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "mentalProtection",
+      "amount" : 0.05
+    }
+  ],
+  
   "colorOptions" : [
 	// DEFAULT
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },

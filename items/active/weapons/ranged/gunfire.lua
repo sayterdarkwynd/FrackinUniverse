@@ -6,7 +6,9 @@ require "/items/active/weapons/crits.lua"
 GunFire = WeaponAbility:new()
 
 function GunFire:init()
-self.isReloader = config.getParameter("isReloader",0)
+-- FU additions
+  self.isReloader = config.getParameter("isReloader",0)  -- is this a shotgun style reload? 
+  
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
@@ -93,7 +95,7 @@ function GunFire:cooldown()
 end
 
 function GunFire:muzzleFlash()
-  animator.setPartTag("muzzleFlash", "variant", math.random(1, 3))
+  animator.setPartTag("muzzleFlash", "variant", math.random(1, self.muzzleFlashVariants or 3))
   animator.setAnimationState("firing", "fire")
   animator.burstParticleEmitter("muzzleFlash")
   animator.playSound("fire")
@@ -147,9 +149,8 @@ function GunFire:energyPerShot()
 end
 
 function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
-    return Crits.setCritDamage(self, self.baseDamage or (self.baseDps * self.fireTime) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount)
+    return Crits.setCritDamage(self, (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount)
 end
-
 
 function GunFire:uninit()
 end

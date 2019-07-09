@@ -4,24 +4,24 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Set Bonus:
-^cyan;+10% Jump, +10% Speed^reset; 
-^#e43774;+15% Crit Damage^reset;
-^green;+25% damage (Dual Fist or Quarterstaff)^reset;",
-  "shortdescription" : "Monks Hood",
+  "description" : "^orange;Set Bonuses^reset;:
+^green;+5%^reset; Speed and Jump, ^green;+5%^reset; Crit Dmg^reset;
+Dual Fist/Quarterstaff: ^cyan;+15%^reset; Dmg",
+
+  "shortdescription" : "Monk's Hood",
   "category" : "t1armoru",
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  
+
   "learnBlueprintsOnPickup" : [
-        "fulightpriesthead", 
-        "fulightpriestchest", 
-        "fulightpriestpants"	
+    "fulightpriesthead",
+    "fulightpriestchest",
+    "fulightpriestpants"
   ],
-  "itemTags" : [ "upgradeableWeapon" ],  
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 1,
   "leveledStatusEffects" : [
     {
@@ -47,9 +47,9 @@
   ],
 
   "statusEffects" : [
-    "missionarysetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_missionaryset_head",
+      "stat" : "missionarysetcount",
       "amount" : 1
     }
   ],
@@ -81,4 +81,3 @@
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
   ]
 }
-

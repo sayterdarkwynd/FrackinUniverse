@@ -25,7 +25,7 @@ function build(directory, config, parameters, level, seed)
   if config.altAbility and config.altAbility.elementalConfig then
     --The difference is here, i added an if null-coalescing operation that checks if the alt ability has the elementalType in the elementalConfig list and replaces it with the physical type if it doesn't exist.
     util.mergeTable(config.altAbility, config.altAbility.elementalConfig[elementalType] or config.altAbility.elementalConfig["physical"])
-                                                                                       
+	
   end
 
   -- calculate damage level multiplier
@@ -72,6 +72,22 @@ function build(directory, config, parameters, level, seed)
       config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
       config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)
       
+    
+    -- weapon abilities
+    
+    --overheating
+    if config.primaryAbility.overheatLevel then
+	    config.tooltipFields.overheatLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatGain, 1)
+	    config.tooltipFields.cooldownLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatLossRateMax, 1)    
+    end
+    
+    -- Recoil
+    if config.primaryAbility.recoilVelocity then
+	    config.tooltipFields.isCrouch = configParameter("crouchReduction",false)
+	    config.tooltipFields.recoilStrength = util.round(configParameter("recoilVelocity",0), 0)
+	    config.tooltipFields.recoilCrouchStrength = util.round(configParameter("crouchRecoilVelocity",0), 0)    
+    end
+    
     -- *******************************
     if elementalType ~= "physical" then
       config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"

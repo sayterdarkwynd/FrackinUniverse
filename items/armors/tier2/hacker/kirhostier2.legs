@@ -4,12 +4,14 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+25% Energy Regen^reset;
-^yellow;+1% Crit (Striker)^reset;
-^green;Gas Immunity^reset;",  
+  "description" : "^green;+4%^reset; Electric Resist
+\n^orange;Set Bonuses^reset;:  
+^#a94db3;+25%^reset; Energy Regen
+Striker: ^green;+1%^reset; Crit
+^cyan;Immune^reset;: Gas",
+
   "shortdescription" : "Hacker Pants",
-  "category" : "t2armor",
+  "category" : "t2armoru",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -17,10 +19,10 @@
 
   "itemTags" : [ "upgradeableWeapon" ],
   "learnBlueprintsOnPickup" : [
-    "masqueradechest", 
-    "masqueradehead", 
-    "masqueradepants"   
-  ],  
+    "masqueradechest",
+    "masqueradehead",
+    "masqueradepants"
+  ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorranged" : "kirhostier2pants" },
   "leveledStatusEffects" : [
@@ -47,11 +49,15 @@
   ],
 
   "statusEffects" : [
-    "hackersetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_hackerset_legs",
+      "stat" : "hackersetcount",
       "amount" : 1
-    } 
+    },
+    {
+      "stat" : "eletricResistance",
+      "amount" : 0.04
+    }    
   ],
 
   "colorOptions" : [

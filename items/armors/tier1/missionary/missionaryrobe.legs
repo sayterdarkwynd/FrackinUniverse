@@ -4,23 +4,23 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Set Bonus:
-^cyan;+10% Jump, +10% Speed^reset; 
-^#e43774;+15% Crit Damage^reset;
-^green;+25% damage (Dual Fist or Quarterstaff)^reset;",
-  "shortdescription" : "Monks Leggings",
+  "description" : "^orange;Set Bonuses^reset;:
+^green;+5%^reset; Speed and Jump, ^green;+5%^reset; Crit Dmg^reset;
+Dual Fist/Quarterstaff: ^cyan;+15%^reset; Dmg",
+
+  "shortdescription" : "Monk's Leggings",
   "category" : "t1armoru",
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
-  
+
   "learnBlueprintsOnPickup" : [
-        "fulightpriesthead", 
-        "fulightpriestchest", 
-        "fulightpriestpants"	
+    "fulightpriesthead",
+    "fulightpriestchest",
+    "fulightpriestpants"
   ],
-  "itemTags" : [ "upgradeableWeapon" ],    
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 1,
   "leveledStatusEffects" : [
     {
@@ -43,11 +43,11 @@
       "stat" : "maxHealth",
       "amount" : 1
     }
-  ],  
+  ],
   "statusEffects" : [
-    "missionarysetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_missionaryset_legs",
+      "stat" : "missionarysetcount",
       "amount" : 1
     }
   ],

@@ -1,0 +1,35 @@
+{
+  "itemName" : "phaseshake",
+  "rarity" : "Rare",
+  "price" : 270,
+  "category" : "drink",
+  "inventoryIcon" : "phaseshake.png",
+  "description" : "A plasma shake. As dangeorus as tasty.",
+  "shortdescription" : "Phaseshake",
+  "effects" : [ [
+    {
+        "effect" : "maxenergyscalingboostfood",
+        "duration" : 175
+    },
+    {
+        "effect" : "runboostfood",
+        "duration" : 50
+    },
+    {
+        "effect" : "burning",
+        "duration" : 5
+    }
+  ] ],
+  "foodValue" : 27,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 4,
+  "blockingEffects" : [
+    "wellfed"
+  ],
+  "emitters" : [ "drinking" ],
+  "learnBlueprintsOnPickup" : [ "glowburger" ]
+
+}

@@ -9,6 +9,7 @@ end
 
 function DrillCharge:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
+
   if self.weapon.currentAbility == nil
       and self.fireMode == "alt"
       and not status.statPositive("activeMovementAbilities")
@@ -47,12 +48,20 @@ function DrillCharge:charge()
 
   self.tileDamageTimer = 0
 
-  
   while self.fireMode == "alt" and status.overConsumeResource("energy", self.energyUsage * self.dt) do
     self.weapon:updateAim()
 
     local boostAngle = mcontroller.facingDirection() == 1 and self.weapon.aimAngle or math.pi - self.weapon.aimAngle
-    mcontroller.controlApproachVelocityAlongAngle(boostAngle, self.boostSpeed, self.boostForce, true)
+    local vel = mcontroller.velocity()
+    local speed = vec2.mag(vel)
+    if speed <= self.boostSpeed then
+      mcontroller.controlApproachVelocity(vec2.withAngle(boostAngle, self.boostSpeed), self.boostForce)
+    else
+      local angleDiff = math.abs(util.angleDiff(boostAngle, vec2.angle(vel)))
+      local boostSpeedFactor = math.min(1, angleDiff / (math.pi * 0.5))
+      local targetSpeed = boostSpeedFactor * self.boostSpeed + (1 - boostSpeedFactor) * speed
+      mcontroller.controlApproachVelocity(vec2.withAngle(boostAngle, targetSpeed), self.boostForce)
+    end
 
     local damageArea = partDamageArea("drillenergy")
     self.weapon:setDamage(self.damageConfig, damageArea, self.damageTimeout)
@@ -105,8 +114,8 @@ function DrillCharge:damageTiles()
     local sourcePosition = vec2.add(pos, activeItem.handPosition(animator.partPoint("drillenergy", "drillSource" .. i)))
     local drillTiles = world.collisionBlocksAlongLine(sourcePosition, tipPosition, nil, self.damageTileDepth)
     if #drillTiles > 0 then
-      world.damageTiles(drillTiles, "foreground", sourcePosition, "blockish", self.tileDamage, 99)
-      world.damageTiles(drillTiles, "background", sourcePosition, "blockish", self.tileDamage, 99)
+      world.damageTiles(drillTiles, "foreground", sourcePosition, "blockish", self.tileDamage, 99, activeItem.ownerEntityId())
+      world.damageTiles(drillTiles, "background", sourcePosition, "blockish", self.tileDamage, 99, activeItem.ownerEntityId())
     end
   end
 end

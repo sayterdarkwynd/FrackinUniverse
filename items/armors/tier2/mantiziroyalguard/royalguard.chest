@@ -4,9 +4,11 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+15% Damage (Short Spear, Spear,Lance)^reset; 
-^green;+15% Knockback Resistance^reset;", 
+  "description" : "
+\n^orange;Set Bonuses^reset;:  
+^cyan;+15%^reset; Knockback Resist
+Spear/Shortspear: ^cyan;+15%^reset; Dmg",
+
   "shortdescription" : "Stalwart Top",
   "category" : "t2armor",
   "tooltipKind" : "armornew2",
@@ -49,11 +51,11 @@
   ],
 
   "statusEffects" : [
-    "stalwartsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_stalwartset_chest",
+      "stat" : "stalwartsetcount",
       "amount" : 1
-    }  
+    }
   ],
 
   "colorOptions" : [

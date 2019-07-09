@@ -1,0 +1,64 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "parasol" : {
+        "default" : "closed",
+        "states" : {
+          "closed" : {},
+          "open" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "end"
+          },
+          "close" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "end"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "parasol" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0, 1.375],
+          "rotationGroup" : "parasol",
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "parasol" : {
+            "closed" : {
+              "properties" : {
+                "image" : "floatleaf.png:close.2"
+              }
+            },
+            "open" : {
+              "properties" : {
+                "image" : "floatleaf.png:open.<frame>"
+              }
+            },
+            "close" : {
+              "properties" : {
+                "image" : "floatleaf.png:close.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "parasol" : {
+      "angularVelocity" : 8
+    }
+  },
+
+  "sounds" : {
+    "open" : [ "/sfx/npc/monsters/crabcano_windup3.ogg"  ]
+  }
+}

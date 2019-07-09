@@ -6,7 +6,20 @@
 
   "animation" : "ghastbrain.animation",
 
-  "dropPools" : [ { "default" : "fleshreaperLoot", "bow" : "huntingghost" } ],
+  "dropPools" : [ 
+    { 
+      "default" : "fleshreaperLoot", 
+      "bow" : "huntingghost",
+      "firebow" : "huntingghost",
+      "icebow" : "huntingghost",
+      "poisonbow" : "huntingghost",
+      "electricbow" : "huntingghost",
+      "cosmicbow" : "huntingghost",
+      "radioactivebow" : "huntingghost",
+      "shadowbow" : "huntingghost",
+  		"brain" : "madnessBrainHarvestingGreat"  
+    } 
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -221,13 +234,13 @@
           "baseValue" : 1.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.0
         },
         "electricStatusImmunity" : {
           "baseValue" : 1.0
         },
         "poisonResistance" : {
-          "baseValue" : 0.45
+          "baseValue" : -0.2
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
@@ -239,7 +252,7 @@
           "baseValue" : 0.5
         },
         "radioactiveResistance" : {
-          "baseValue" : 1.0
+          "baseValue" : -0.2
         }       
       },
 

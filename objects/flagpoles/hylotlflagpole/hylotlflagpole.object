@@ -1,0 +1,52 @@
+{
+  "objectName" : "hylotlflagpole",
+  "colonyTags" : ["hylotl"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 0,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+  
+  "description" : "The Hylotl flag. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Hylotl Flag",
+  "race" : "hylotl",
+
+  "apexDescription" : "A Hylotl flag. Pretty plain.",
+  "avianDescription" : "A Hylotl flag. There may be Hylotl around.",
+  "floranDescription" : "Floran think this mean 'down with fish'.",
+  "glitchDescription" : "Derision. A Hylotl flag.",
+  "humanDescription" : "A Hylotl flag. Fishy.",
+  "hylotlDescription" : "The Hylotl flag flies proud. I could weep.",
+  "novakidDescription" : "Apparently this is the Hylotl flag, not some newfound modern art piece.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "hylotlflagpoleicon.png",
+  "orientations" : [
+    {
+      "image" : "hylotlflagpole.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "hylotlflagpole.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

@@ -4,14 +4,15 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Set Bonus:
-^cyan;Immune: Acid, Poison, Gas. +12% Ice Resist^reset;
-^#e43774;Swim Boost, +700s Air, Breath Regen +50%^reset;
-^green;Ocean biomes: +15% Damage, +5% Speed, +3% Crit Damage^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^green;+12% Ice Resist^reset;
+Swim Boost, ^green;+700s Air, Breath Regen ^#a94db3;+50%^reset;
+\n^#e43774;Oceans^reset;: ^cyan;+15%^reset; Dmg, ^green;+5%^reset; Speed, ^green;+3%^reset; Crit Dmg
+\n^cyan;Immune^reset;: Acid, Poison, Gas",
   "shortdescription" : "Nautilus Leggings",
   "category" : "t3armoru",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "fudiverhead2", "fudiverchest2", "fudiverlegs2" ], 
+  "learnBlueprintsOnPickup" : [ "fudiverhead2", "fudiverchest2", "fudiverlegs2" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
@@ -41,13 +42,9 @@
   ],
 
   "statusEffects" : [
+    "fusetbonusmanager",
     {
-      "stat" : "wetImmunity",
-      "amount" : 1
-    },
-    "nautilussetbonus",
-    {
-      "stat" : "fu_nautilusset_legs",
+      "stat" : "nautilussetcount",
       "amount" : 1
     },
     {
@@ -55,7 +52,7 @@
       "amount" : 0.04
     }
   ],
-  
+
   "colorOptions" : [
     /* YELLOW */
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },
@@ -70,7 +67,7 @@
     /* RED */
     { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
     /* ORANGE */
-    { "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },    
+    { "ffca8a" : "ffd495", "e0975c" : "ea9931", "a85636" : "af4e00", "6f2919" : "6e2900" },
     /* GREEN */
     { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216" },
     /* BLUE */

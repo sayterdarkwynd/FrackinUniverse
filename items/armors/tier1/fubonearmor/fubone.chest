@@ -4,20 +4,25 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+7.5% Fall Damage Resist, +5 Health^reset; 
-^green;(Lush/Forest biomes) +5 Health, 5% Power, 5% Physical Resistance^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^green;+5^reset; HP, ^cyan;+15%^reset; Fall Dmg Resist^reset;
+^#e43774;(Lush/Forest biomes) ^green;+5^reset; HP, ^green;+5%^reset; Damage, ^green;+5%^reset; Physical Resist^reset;",
+
   "shortdescription" : "Bone Chest",
   "category" : "t1armoru",
-  "tooltipKind" : "armor",
-  "learnBlueprintsOnPickup" : [ "fubonearmor2chest" ],
+  "tooltipKind" : "armornew2",
+  "learnBlueprintsOnPickup" : [
+    "fubonearmor2head",
+    "fubonearmor2chest",
+    "fubonearmor2legs"
+  ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-  
- 
+
+
   "femaleFrames" : {
     "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
@@ -48,13 +53,13 @@
       "amount" : 6
     }
   ],
-  
+
   "statusEffects" : [
-    "bonesetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_boneset_chest",
+      "stat" : "bonesetcount",
       "amount" : 1
-    }           
+    }
   ]
-  
+
 }
