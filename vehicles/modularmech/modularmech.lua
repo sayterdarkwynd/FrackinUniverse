@@ -560,6 +560,12 @@ function update(dt)
   end
   self.driverId = driverId
  
+ 
+  -- NPC Mechs compatbility
+  if self.driverId ~= self.ownerEntityId then
+    storage.energy = self.energyMax
+  end
+  
   -- read controls or do deployment
  
   local newControls = {}
