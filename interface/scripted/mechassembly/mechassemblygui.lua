@@ -73,7 +73,8 @@ function init()
   self.previewCanvas = widget.bindCanvas("cvsPreview")
   
   --compat fix added for cosmetic mech parts july 20 2019
-  for partType,_ in pairs({rightArm = "", leftArm = "", body = "", booster = "",legs = "", booster_social = "", body_social = "", legs_social = ""}) do
+  for partType, itemDescriptor in pairs(self.itemSet) do
+  --for partType,_ in pairs({rightArm = "", leftArm = "", body = "", booster = "",legs = "", booster_social = "", body_social = "", legs_social = ""}) do
     widget.setItemSlotItem("itemSlot_" .. partType, itemDescriptor)
   end
 
