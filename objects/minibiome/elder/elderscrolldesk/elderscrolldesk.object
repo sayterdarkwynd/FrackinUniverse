@@ -2,15 +2,26 @@
   "objectName" : "elderscrolldesk",
   "colonyTags" : ["madness","insanity","storage","elder"],
   "rarity" : "legendary",
-  "objectType" : "container",
-  "tooltipKind" : "container",
-  "description" : "A collection of ancient scrolls containing indescipherable text.",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingesoteric.config",
+    "filter" : [ "esoteric","esoteric2","esoteric3" ],
+    "initialRecipeUnlocks" : ["snarshedgarflipps","butteronastick","microwave","sourmilkandbees"]
+  },  
+  
+  "description" : "A great place to sit down and uncover the blasphemous truths of the cosmos.",
   "shortdescription" : "Esoteric Research",
   "race" : "generic",
-  "category" : "storage",
+  "category" : "crafting",
   "price" : 5120,
-  "lightColor" : [7, 40, 7],
-
+  
+  "lightColor" : [7, 60, 7],
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+  
   "inventoryIcon" : "elderscrolldeskicon.png",
   "orientations" : [
     {
@@ -42,13 +53,5 @@
       "anchors" : [ "bottom" ],
       "collision" : "platform"
     }
-  ],
-
-  "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
-  "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
-  "slotCount" : 24,
-  "uiConfig" : "/interface/chests/chest<slots>.config",
-  "frameCooldown" : 5,
-  "autoCloseCooldown" : 3600
-
+  ]
 }

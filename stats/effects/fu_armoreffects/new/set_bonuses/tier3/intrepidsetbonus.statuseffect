@@ -1,0 +1,34 @@
+{
+  "name" : "intrepidsetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "grit" : { "amount" : 0.15 }
+    },
+
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "hammer", "flail" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.2 },
+          "critChance" : { "amount" : 2 }
+        }
+      }
+    ],
+
+    "biomeTags" : [ "mountainous", "mountainous2", "mountainous3", "mountainous4" ],
+    "biomeBonuses" : {
+      "grit" : { "amount" : 0.12 }
+    }
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "+15% KB Resist. Hammer/Striker: +20% Dmg, +2% Crit Chance. Mountainous: +12% KB Resist",
+  "icon" : "/interface/statuses/set_axe.png"
+}

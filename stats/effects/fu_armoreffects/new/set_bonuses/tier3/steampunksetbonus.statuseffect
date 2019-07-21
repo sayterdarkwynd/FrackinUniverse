@@ -1,0 +1,34 @@
+{
+  "name" : "steampunksetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "breathProtection" : {},
+      "fireStatusImmunity" : {},
+      "electricStatusImmunity": {}
+    },
+    "armorMovementModifiers" : {
+      "speed" : 1.05
+    },
+
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "energy", "electric", "tesla" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.2 },
+          "maxEnergy" : { "baseMultiplier" : 1.25 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "Immune: Breath, Burning, Electrified. +5% Speed. Energy/Electric weapons: +20% Dmg, +25 Energy",
+  "icon" : "/interface/statuses/electric.png"
+}

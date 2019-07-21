@@ -1,0 +1,34 @@
+{
+  "name" : "corsairsetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "pusImmunity" : {},
+      "blacktarImmunity": {},
+      "maxBreath" : { "amount" : 400 }
+    },
+    "armorMovementModifiers" : {
+      "speed" : 1.05,
+      "jump" : 1.05
+    },
+
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "assaultrifle", "pistol", "machinepistol" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.15 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "Immune: Pus, Black Tar. +400s Oxygen. Assault Rifle/Pistol/Machine Pistol: +15% Dmg",
+  "icon" : "/interface/statuses/set_ranged.png"
+}

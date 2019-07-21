@@ -14,7 +14,10 @@ function init()
 	end
 	
   self.randVal = math.random(1,12) 
-  world.spawnItem("fumadnessresource",entity.position(),self.randVal)	
+  self.randVal2 = math.random(1,100)
+  if (self.randVal2 >= 75) then
+    world.spawnItem("fumadnessresource",entity.position(),self.randVal)	
+  end
 end
 
 function update(dt)

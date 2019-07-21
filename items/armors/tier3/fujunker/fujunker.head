@@ -5,10 +5,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Set Bonus: 
-^cyan;+800s Oxygen^reset;
-^#e43774;15% Physical Resist, Immunity: Acid^reset;
-^green;+15% Damage (Grenade Launcher)^reset;",
+  "description" : "Built-in head lamp
+\n^orange;Set Bonuses^reset;:
+^cyan;+800s^reset; Oxygen, ^cyan;+15%^reset; Energy Regen^reset;
+Grenade Launcher: ^#a94db3;+25%^reset; Dmg
+\n^cyan;Immune^reset;: Acid, Gas",
   "shortdescription" : "Junker Helm",
   "category" : "t3armor",
   "tooltipKind" : "armornew2",
@@ -40,12 +41,12 @@
       "amount" : 3
     }
   ],
-  
+
   "statusEffects" : [
-    "headlamp2",   
-    "junkersetbonus",
+    "headlamp2",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_junkerset_head",
+      "stat" : "junkersetcount",
       "amount" : 1
     }
   ],

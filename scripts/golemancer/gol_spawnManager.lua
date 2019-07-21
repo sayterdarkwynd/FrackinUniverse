@@ -6,12 +6,16 @@ end
 
 function evolve(evolution)
   local eType = entity.entityType()
+  local myType = config.getParameter("isMultiplier",0)
+  
   if eType == "monster" then
     monster.setDropPool()
   elseif eType == "npc" then
     npc.setDropPool()
   end
-  status.setResource("health", 0)
+  if myType == 0 then  --Unless the monster is set to isMultiplier, they die on spawning the new variant. 
+    status.setResource("health", 0)
+  end
   spawnResult(evolution, self.position)
 end
 
