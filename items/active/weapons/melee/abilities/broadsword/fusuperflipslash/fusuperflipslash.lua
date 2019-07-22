@@ -44,7 +44,7 @@ function FlipSlash:windupair()
 	  {stat = "activeMovementAbilities", amount = 1}
   })
 
-  util.wait(self.stances.windup.duration*1.5, function(dt)  --was / 2
+  util.wait(self.stances.windup.duration*1.5, function(dt)  --was / 4
       mcontroller.controlCrouch()
     end)
 
