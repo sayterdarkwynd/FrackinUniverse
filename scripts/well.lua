@@ -4,7 +4,7 @@ function init()
   transferUtil.init()
 	wellRange=config.getParameter("wellRange",20)
   wellInit()
-
+	setDesc()
 end
 
 function update(dt)
@@ -13,6 +13,7 @@ function update(dt)
 			deltaTime=0
 			transferUtil.loadSelfContainer()
 			wellInit()
+			setDesc()
 		else
 			deltaTime=deltaTime+dt
 		end
@@ -62,3 +63,7 @@ function wellInit()
 end
 
 function fu_isWell() return true end
+
+function setDesc()
+	object.setConfigParameter('description',"^red;Range:^gray; "..wellRange.."\n^red;Wells in range:^gray; "..((wellsDrawing or 0)-1).."^reset;")
+end

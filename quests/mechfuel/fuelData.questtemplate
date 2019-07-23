@@ -1,15 +1,17 @@
 {
     "id" : "fuelDataQuest",
-    "title" : "quest for saving mech fuel data.",
-    "text" : "Go with the player.",
+    "title" : "Mech Fuel Tracker",
+    "text" : "Tracks mech data. Do not cancel.",
     "completionText" : "Should never be completed, nor fail!",
 	"conditions" : [],
 	"rewards" : [],
 	"followUp" : "fuelDataQuest",
     "moneyRange" : [0, 0],
     "canBeAbandoned" : false,
-    "invisible" : true,
-    "logOnly" : true,
+  "showInLog" : false,
+  "showAcceptDialog" : false,
+  "showCompleteDialog" : false,
+  "showFailDialog" : false,
     "updateDelta" : 10,
     "script" : "/quests/mechfuel/mechfueldata.lua"
 }

@@ -1,23 +1,14 @@
 {
   "objectName": "fu_mediumthruster",
-  "colonyTags": [],
-  "scannable": false,
-  "rarity": "Common",
-  "description": "A thruster used for FTL travel. Reduces ship mass slightly. ^red;BYOS Only^reset;",
-  "shortdescription": "Medium Ship Thruster",
+  "colonyTags": ["decoration","decor"],
+  "scannable": true,
+  "printable" : true,
+  "rarity": "common",
+  "description": "Medium-sized, decorative booster to represent FTL travel. Can be placed anywhere.",
+  "shortdescription": "Medium Decorative FTL Booster",
   "race": "generic",
-  "apexDescription": "A booster. These have been known to malfunction and explode.",
-  "avianDescription": "A booster, the wings of a ship.",
-  "floranDescription": "Ssscary fire.",
-  "glitchDescription": "Analyse. Temperature too high to measure.",
-  "humanDescription": "This thing eats through fuel.",
-  "hylotlDescription": "Propulsion.",
   "category": "light",
-  "lightColor": [
-    59,
-    183,
-    255
-  ],
+  "lightColor": [59, 183, 255],
   "pointLight": true,
   "flickerDistance": 0.2,
   "flickerStrength": 0.05,
@@ -26,78 +17,19 @@
   "orientations": [
     {
       "image": "fu_mediumthruster.png:on.1",
-      "imagePosition": [
-        0,
-        0
-      ],
+      "imagePosition": [0, 0],
+      "animationParts": {"booster": "fu_mediumthruster.png"},
+      "animationPosition": [0, 0],
       "fullbright": true,
-      "spaceScan": 0.1,
-      "anchors": [
-        "right"
-      ],
+      "spaceScan" : 0.1,
+      "anchors": ["right"],
       "direction": "right"
-    },
-    {
-      "image": "fu_mediumthruster.png:on.1",
-      "imagePosition": [
-        0,
-        0
-      ],
-      "fullbright": true,
-      "spaceScan": 0.1,
-      "anchors": [
-        "left"
-      ],
-      "direction": "left",
-      "flipped": true
     }
   ],
   "animation": "/objects/ship/boosters/boosterflame.animation",
-  "animationParts": {
-    "booster": "fu_mediumthruster.png"
-  },
-  "animationPosition": [
-    0,
-    0
-  ],
   "soundEffect": "/sfx/objects/boosterflame.ogg",
   "scripts": [
-    "/objects/ship/boosters/boosterflame.lua",
-    "/objects/ship/fu_shipstatmodifier.lua"
-  ],
-  "scriptDelta": 60,
-  "stats": {
-    "shipMass": -3
-  },
-  "touchDamage": {
-    "poly": [
-      [
-        2,
-        0
-      ],
-      [
-        4,
-        0
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        4,
-        4
-      ]
-    ],
-    "damage": 150,
-    "knockback": 75,
-    "damageType": "Environment",
-    "damageSourceKind": "plasma"
-  },
-  "flyingBoosterStates": {
-    "none": "off",
-    "disembarking": "off",
-    "warp": "turnOn",
-    "arriving": "turnOff"
-  },
-  "byosOnly": true
+		"/objects/ship/boosters/boosterflame.lua",
+		"/objects/ship/fu_shipstatmodifier.lua"
+	]
 }

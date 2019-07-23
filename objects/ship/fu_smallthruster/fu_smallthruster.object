@@ -1,23 +1,14 @@
 {
   "objectName": "fu_smallthruster",
-  "colonyTags": [],
-  "scannable": false,
-  "rarity": "Common",
-  "description": "A thruster used for non-FTL travel. Increases ship speed slightly. ^red;BYOS Only^reset;",
-  "shortdescription": "Small Ship Thruster",
+  "colonyTags": ["decoration","decor"],
+  "scannable": true,
+  "printable" : true,
+  "rarity": "common",
+  "description": "Small, decorative booster to represent interplanetary travel. Can be placed anywhere.",
+  "shortdescription": "Small Decorative Ship Booster",
   "race": "generic",
-  "apexDescription": "A booster. These have been known to malfunction and explode.",
-  "avianDescription": "A booster, the wings of a ship.",
-  "floranDescription": "Ssscary fire.",
-  "glitchDescription": "Analyse. Temperature too high to measure.",
-  "humanDescription": "This thing eats through fuel.",
-  "hylotlDescription": "Propulsion.",
   "category": "light",
-  "lightColor": [
-    59,
-    183,
-    255
-  ],
+  "lightColor": [59, 183, 255],
   "pointLight": true,
   "flickerDistance": 0.2,
   "flickerStrength": 0.05,
@@ -26,107 +17,18 @@
   "orientations": [
     {
       "image": "fu_smallthruster.png:on.1",
-      "imagePosition": [
-        -11,
-        -21
-      ],
-      "animationParts": {
-        "booster": "fu_smallthruster.png"
-      },
-      "animationPosition": [
-        -11,
-        -21
-      ],
-      "fullbright": true,
-      "direction": "left",
+      "imagePosition": [-16, -10],
+      "animationPosition": [-16, -10],
+      "animationParts": {"booster": "fu_smallthruster.png"},
       "flipImages": true,
-      "spaceScan" : 0.1,
-      "anchors": [
-        "top"
-      ]
-    },
-    {
-      "image": "fu_smallthruster.png:on.1",
-      "imagePosition": [
-        -10,
-        -21
-      ],
-      "animationParts": {
-        "booster": "fu_smallthruster.png"
-      },
-      "animationPosition": [
-        -10,
-        -21
-      ],
-      "fullbright": true,
-      "direction": "right",
-      "spaceScan" : 0.1,
-      "anchors": [
-        "top"
-      ]
-    },
-    {
-      "image": "fu_smallthrusterflip.png:on.1",
-      "imagePosition": [
-        -11,
-        1
-      ],
-      "animationParts": {
-        "booster": "fu_smallthrusterflip.png"
-      },
-      "animationPosition": [
-        -11,
-        1
-      ],
-      "fullbright": true,
-      "direction": "left",
-      "flipImages": true,
-      "spaceScan" : 0.1,
-      "anchors": [
-        "bottom"
-      ]
+      "anchors": ["top"],
+      "fullbright": true
     }
   ],
   "animation": "/objects/ship/boosters/boosterflame.animation",
   "soundEffect": "/sfx/objects/smallboosterflame.ogg",
-  "soundEffectRangeMultiplier": 0.5,
   "scripts": [
-    "/objects/ship/boosters/boosterflame.lua",
-    "/objects/ship/fu_shipstatmodifier.lua"
-  ],
-  "scriptDelta": 10,
-  "stats": {
-    "shipSpeed": 1
-  },
-  "flyingBoosterStates": {
-    "none": "turnOff",
-    "disembarking": "turnOn",
-    "warp": "turnOff",
-    "arriving": "turnOn"
-  },
-  "touchDamage": {
-    "poly": [
-      [
-        -0.75,
-        1
-      ],
-      [
-        -0.75,
-        0.5
-      ],
-      [
-        1.75,
-        0.5
-      ],
-      [
-        1.75,
-        1
-      ]
-    ],
-    "damage": 100,
-    "knockback": 50,
-    "damageType": "Environment",
-    "damageSourceKind": "plasma"
-  },
-  "byosOnly": true
+		"/objects/ship/boosters/boosterflame.lua",
+		"/objects/ship/fu_shipstatmodifier.lua"
+	]
 }
