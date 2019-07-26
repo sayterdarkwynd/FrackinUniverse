@@ -107,7 +107,7 @@ function update(dt, fireMode, shiftHeld)
 			end
 		end
 		return
-	elseif worldType == "outpost" then
+	elseif worldType == "outpost" or worldType == "allianceoutpost" or worldType == "avikanoutpost" or worldType == "alliancefestivalhall" then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("Gregdonkeybow. GREG! Greg. greg...$!@#$!@% GREG.")
 			storage.fireTimer = 1
@@ -119,7 +119,7 @@ function update(dt, fireMode, shiftHeld)
 			storage.fireTimer = 1
 		end
 		return
-	elseif worldType == "protectorate" or worldType == "felinintro" then
+	elseif worldType == "protectorate" or worldType == "felinintro"or worldType == "avikanmission-intro" then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("...donkey...")
 			storage.fireTimer = 6
