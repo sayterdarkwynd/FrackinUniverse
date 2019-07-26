@@ -1,0 +1,52 @@
+{
+  "objectName" : "pirateflagpole",
+  "colonyTags" : ["corsair"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 0,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+  
+  "description" : "A pirate's flag. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Pirate Flag",
+  "race" : "generic",
+
+  "apexDescription" : "A pirate's flag... I need to stay on guard.",
+  "avianDescription" : "Grounded are no stranger to pirates. But these ones friends or foe?",
+  "floranDescription" : "Floran will make off with pirate richesss.",
+  "glitchDescription" : "Cautious. Space pirates must be in the area.",
+  "humanDescription" : "Oh sweet, pirates! Wait no, that's a bad thing.",
+  "hylotlDescription" : "The flag of scourges and bullies that take to the seas and sky.",
+  "novakidDescription" : "Pirates? Guess I oughta be prepared for a fight.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "pirateflagpoleicon.png",
+  "orientations" : [
+    {
+      "image" : "pirateflagpole.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "pirateflagpole.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}
