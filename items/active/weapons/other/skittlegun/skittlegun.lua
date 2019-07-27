@@ -188,7 +188,7 @@ function fire(ability,fireMode,throttle)
 	elseif special == 111 and throttle and not world.getProperty("ship.fuel") then
 		--Marvin. Arguably worse than sayter. It will not end until the person dies.
 		--Since they will have no resistances and will be immune to most healing, death is highly likely
-		--second unluckiest card in deck.
+		--unluckiest card in deck.
 		effectUtil.messageParticle(firePosition(),"Marvin.",{0,1,0},0.6,nil,4,nil)
 		effectUtil.effectSelf("marvinSkittles")
 	elseif special == 3 or special == 33 or special == 333 then
@@ -197,7 +197,7 @@ function fire(ability,fireMode,throttle)
 		effectUtil.effectSelf("partytime2",special)
 		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
 	elseif special == 666 then
-		--unluckiest card in deck
+		--second unluckiest card in deck
 		--immune to healing, no resistances, a slew of horrible damaging statuses including one that is basically lava.
 		special=math.floor(math.random(1,13))
 		effectUtil.effectSelf("vulnerability",special)
