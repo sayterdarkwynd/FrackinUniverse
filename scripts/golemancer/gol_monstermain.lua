@@ -27,7 +27,7 @@ function update(dt)
     end
   end
   if self.tickEvoTimerAging <= 0 then
-    self.tickEvoTimerAging = self.tickEvoTimerAging
+    self.tickEvoTimerAging = self.baseEvoTime
     self.position = mcontroller.position()
     for _, v in ipairs(self.evolutions) do
       local evolution = root.assetJson(v)
