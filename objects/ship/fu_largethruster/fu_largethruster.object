@@ -27,5 +27,15 @@
     }
   ],
   "animation": "/objects/ship/boosters/boosterflame.animation",
-  "soundEffect": "/sfx/objects/boosterflame.ogg"
+  "soundEffect": "/sfx/objects/boosterflame.ogg",
+  "scripts": [
+		"/objects/ship/boosters/boosterflame.lua",
+		"/objects/ship/fu_shipstatmodifier.lua"
+	],
+  "flyingBoosterStates": {
+    "none": "off",
+    "disembarking": "off",
+    "warp": "turnOn",
+    "arriving": "turnOff"
+  }
 }

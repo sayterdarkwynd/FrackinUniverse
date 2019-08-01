@@ -31,6 +31,8 @@ function init()
   self.imageBasePath = config.getParameter("imageBasePath")
   
   local getUnlockedMessage = world.sendEntityMessage(player.id(), "mechUnlocked")
+  self.unlocked = player.getProperty("mechUnlocked", false)
+  
   if getUnlockedMessage:finished() and getUnlockedMessage:succeeded() then
     local unlocked = getUnlockedMessage:result()
     if not unlocked then
@@ -69,8 +71,10 @@ function init()
   end
 
   self.previewCanvas = widget.bindCanvas("cvsPreview")
-
+  
+  --compat fix added for cosmetic mech parts july 20 2019
   for partType, itemDescriptor in pairs(self.itemSet) do
+  --for partType,_ in pairs({rightArm = "", leftArm = "", body = "", booster = "",legs = "", booster_social = "", body_social = "", legs_social = ""}) do
     widget.setItemSlotItem("itemSlot_" .. partType, itemDescriptor)
   end
 

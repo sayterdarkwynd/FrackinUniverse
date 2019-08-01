@@ -8,14 +8,22 @@
 
   "animation" : "poptop.animation",
 
-  "dropPools" : [ { "default" : "poptopTreasure", "bow" : "poptopHunting" } ],
+  "dropPools" : [ {   "brain" : "madnessBrainHarvesting"   } ],
 
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua","/scripts/golemancer/gol_monstermain.lua"
     ],
     
-    "evolutions" : [ "/scripts/golemancer/evolutions/poptopgrowmadness2.evo" ],
+    "evolutions" : [ 
+    "/scripts/golemancer/evolutions/poptopgrowmadness2.evo",
+    "/scripts/golemancer/evolutions/poptopconvertfire.evo",
+    "/scripts/golemancer/evolutions/poptopconvertfrost.evo",
+    "/scripts/golemancer/evolutions/poptopconvertslime.evo",
+    "/scripts/golemancer/evolutions/poptopconvertshadow.evo",
+    "/scripts/golemancer/evolutions/poptopconvertshock.evo",
+    "/scripts/golemancer/evolutions/poptopconvertknife.evo"
+    ],
     "tickEvoTime":3,
     "agingEvoTime" : 900,
     
