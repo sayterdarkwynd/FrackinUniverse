@@ -5,7 +5,7 @@ local oldInit=init
 function init()
 	self.matSpaces = {}
 	
-	local imageData = config.getParameter("imageConfig", {})
+	local imageData = config.getParameter("imageConfig", {{}})
 	local collisionType=imageData[1].collision or "empty"
 	local collisionSpaces=imageData[1].collisionSpaces or {}
 	
