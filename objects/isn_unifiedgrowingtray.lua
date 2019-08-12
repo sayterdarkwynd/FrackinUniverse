@@ -233,7 +233,7 @@ function doWaterIntake(fluidNeed)
 		storage.water = self.liquidInputs[water.name]
 		local amt = math.min(water.count, math.ceil(fluidNeed / storage.water.value))
 		storage.fluid = storage.fluid + (amt * storage.water.value)
-		world.containerConsume(entity.id(), {name = water.name, count = amt})
+		world.containerConsumeAt(entity.id(),waterslot,amt)
 		return true
 	end
 	storage.water = {}
@@ -335,11 +335,11 @@ function doSeedIntake()
 
 	--Consume a unit of fertilizer.
 	if fertName then
-		world.containerConsume(entity.id(), {name = fertName, count = 1, data={}})
+		world.containerConsumeAt(entity.id(),fertslot,1)
 	end
 
 	--Consume seed.
-	world.containerConsume(entity.id(), {name = seed.name, count = getFertSum("seedUse"), data={}})
+	world.containerConsumeAt(entity.id(),seedslot,getFertSum("seedUse"))
 
 	return true
 end
