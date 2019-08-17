@@ -46,8 +46,8 @@ function update(dt, fireMode, shiftHeld)
 				local monsterParams=root.monsterParameters(world.monsterType(target))
 				local monsterName=world.entityName(target)
 				local monsterDesc=world.entityDescription(target)
-				local message=(monsterName or "???") .."\n".. (monsterDesc or "")
-				message=message..(monsterParams.capturable and "\nCapturable" or "\nNot capturable.")
+				local message="^yellow;"..(monsterName or "???") .."^reset;\n".. (monsterDesc or "")
+				message=message..(monsterParams.capturable and "\n^green;Capturable^reset;" or "\n^red;Not capturable.^reset;")
 				
 				--sb.logInfo("%s",message)
 				
