@@ -49,9 +49,11 @@ function update(dt, fireMode, shiftHeld)
 				local message=(monsterName or "???") .."\n".. (monsterDesc or "")
 				message=message..(monsterParams.capturable and "\nCapturable" or "\nNot capturable.")
 				
-				sb.logInfo("%s",message)
+				--sb.logInfo("%s",message)
 				
-				parseResult(message,position)
+				world.spawnStagehand(position, "fugenericmonstersaystagehand", {scanParams={monsterId=target,message=message}})
+				
+				--parseResult(message,position)
 			end
 		else
 			if firing then
