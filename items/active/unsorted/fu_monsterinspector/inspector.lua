@@ -47,13 +47,20 @@ function update(dt, fireMode, shiftHeld)
 				local monsterName=world.entityName(target)
 				local monsterDesc=world.entityDescription(target)
 				local message="^yellow;"..(monsterName or "???") .."^reset;\n".. (monsterDesc or "")
-				message=message..(monsterParams.capturable and "\n^green;Capturable^reset;" or "\n^red;Not capturable.^reset;")
 				
-				--sb.logInfo("%s",message)
+				if monsterParams.capturable then
+					if monsterParams.relocatable then
+						message=message.."\n^green;Capturable^reset;, ^green;Relocatable^reset;."
+					else
+						message=message.."\n^green;Capturable^reset;."
+					end
+				else
+					if monsterParams.relocatable then
+						message=message.."\n^green;Relocatable^reset;."
+					end
+				end
 				
 				world.spawnStagehand(position, "fugenericmonstersaystagehand", {messageData={monsterId=target,message=message}})
-				
-				--parseResult(message,position)
 			end
 		else
 			if firing then
@@ -65,48 +72,8 @@ function update(dt, fireMode, shiftHeld)
 end
 
 
-function parseResult(message,coords,color)
-	if coords and message then
-		messageParticle(coords,message,nil,0.5,nil,self.cooldownTime)
-		playSound("scan")
-	else
-		playSound("error")
-	end
-end
-
 function playSound(soundKey)
 	if animator.hasSound(soundKey) then
 		animator.playSound(soundKey)
 	end
-end
-
-function messageParticle(position, text, color, size, offset, duration, layer)
-world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false,  {
-        timeToLive = 0, damageType = "NoDamage", actionOnReap =
-        {
-            {
-                action = "particle",
-                specification = {
-                    text =  text or "default Text",
-                    color = color or {255, 255, 255, 255},  -- white
-                    destructionImage = "/particles/acidrain/1.png",
-                    destructionAction = "fade", --"shrink", "fade", "image" (require "destructionImage")
-                    destructionTime = duration or 0.8,
-                    layer = layer or "front",   -- 'front', 'middle', 'back' 
-                    position = offset or {0, 2},
-                    size = size or 0.7,  
-                    approach = {0,0},    -- dunno what it is
-                    initialVelocity = {0, 0.0},   -- vec2 type (x,y) describes initial velocity
-                    finalVelocity = {0,0.0},
-                    -- variance = {initialVelocity = {3,10}},  -- 'jitter' of included parameter
-                    angularVelocity = 0,                                   
-                    flippable = false,
-                    timeToLive = duration or 2,
-                    rotation = 0,
-                    type = "text"                 -- our best luck
-                }
-            } 
-        }
-    }
-    )
 end
