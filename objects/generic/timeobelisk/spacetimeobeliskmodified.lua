@@ -3,7 +3,7 @@ require "/scripts/effectUtil.lua"
 itemList={
 	bluegravball={{status="gravrain",team="enemy",}},
 	orangegravball={{status="orangegravrain",team="enemy"}},
-	killpod={{status="fu_death",team="enemy"}},
+	killpod={{status="killpod",team="enemy"}},
 	quantumball={{status="timefreeze",team="enemy"}},
 	gregskittlegun={{status="timefreezeSkittles",team="enemy"}},
 	gregskittlegunfake={{status="marvinSkittles",team="enemy"},{status="nude",team="all"}},
