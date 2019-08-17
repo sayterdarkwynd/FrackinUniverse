@@ -1,7 +1,7 @@
 require "/scripts/util.lua"
 
 function init()
-	self = config.getParameter("scanParams")
+	self = config.getParameter("messageData")
 end
 
 function update(dt)

@@ -51,7 +51,7 @@ function update(dt, fireMode, shiftHeld)
 				
 				--sb.logInfo("%s",message)
 				
-				world.spawnStagehand(position, "fugenericmonstersaystagehand", {scanParams={monsterId=target,message=message}})
+				world.spawnStagehand(position, "fugenericmonstersaystagehand", {messageData={monsterId=target,message=message}})
 				
 				--parseResult(message,position)
 			end
