@@ -13,12 +13,12 @@ function update(dt)
     animator.setAnimationState("switchState", "on")
 	if storage.effects then
 	  for _,effect in pairs(storage.effects) do
-		effectUtil.effectTypesInRange(effect,self.range,{"player", "npc"},5)
+		effectUtil.effectAllInRange(effect,self.range,5)
 	  end
 	end
 	if self.objectEffects then
 	  for _,effect in pairs (self.objectEffects) do
-		effectUtil.effectTypesInRange(effect,self.range,{"player", "npc"},5)
+		effectUtil.effectAllInRange(effect,self.range,5)
 	  end
 	end
   else

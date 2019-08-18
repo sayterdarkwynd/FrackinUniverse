@@ -1,7 +1,7 @@
 require "/scripts/effectUtil.lua"
 
 itemList={
-	bluegravball={{status="gravrain",team="enemy",}},
+	bluegravball={{status="gravrain",team="enemy"}},
 	orangegravball={{status="orangegravrain",team="enemy"}},
 	killpod={{status="killpod",team="enemy"}},
 	quantumball={{status="timefreeze",team="enemy"}},
@@ -9,7 +9,7 @@ itemList={
 	gregskittlegunfake={{status="marvinSkittles",team="enemy"},{status="nude",team="all"}},
 	perfectlygenericitem={{status="vulnerability",team="enemy"}},
 	gyrostabilizer={{status="gyrostat",team="enemy"}},
-	madnesstoken3={{status="autowarp",team="enemy"}},
+	madnesstoken3={{status="autowarp",team="enemy",durationMod=0.99}},
 	vaashcontainer={{status="akkimariacidburn",team="enemy"}}
 }
 
@@ -26,14 +26,14 @@ function update(dt)
 			for _,item in pairs(items) do
 				if itemList[item.name] then
 					for _,buffer in pairs(itemList[item.name]) do
-						 effectUtil.effectTypesInRange(buffer.status,self.range,{"creature"},storage.deltaTime*2,buffer.team)
+						 effectUtil.effectAllOfTeamInRange(buffer.status,self.range,(storage.deltaTime or 1)*(buffer.durationMod or 2),buffer.team)
 					end
 				end
 			end
 		else
 			animator.setAnimationState("switchState","off")
 		end
-	storage.deltaTime=0.0
+		storage.deltaTime=0.0
 	else
 		storage.deltaTime=storage.deltaTime+dt
 	end
