@@ -26,8 +26,31 @@ end
 
 function explode()
 	if not self.exploded then
+		monsterParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
+		monsterData=root.monsterParameters(world.monsterType(entity.id()))
+		if monsterData and monsterData.behaviorConfig then
+			for _,piece in pairs(monsterData.behaviorConfig) do
+				if type(piece)=="table" then
+					for _,shard in pairs(piece) do
+						if shard.name then
+							if shard.name:find("spawn") then
+								self.exploded=true
+								return
+							end
+						end
+					end
+				end
+			end
+			
+		end
+		
+		monsterParams.level=world.callScriptedEntity(entity.id(),"monster.level")
+		monsterParams.seed=world.callScriptedEntity(entity.id(),"monster.seed")
+		monsterParams.familyIndex=world.callScriptedEntity(entity.id(),"monster.familyIndex")
+		monsterParams.aggressive=world.entityAggressive(entity.id())
+		
 		for _=1,config.getParameter("count",1) do
-			world.spawnMonster(world.monsterType(entity.id()),entity.position(),world.callScriptedEntity(entity.id(),"monster.uniqueParameters"))
+			world.spawnMonster(world.monsterType(entity.id()),entity.position(),monsterParams)
 		end
 		self.exploded = true
 	end
