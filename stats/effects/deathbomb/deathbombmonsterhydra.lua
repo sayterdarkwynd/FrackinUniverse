@@ -26,8 +26,8 @@ end
 
 function explode()
 	if not self.exploded then
-		monsterParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
-		monsterData=root.monsterParameters(world.monsterType(entity.id()))
+		local monsterParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
+		local monsterData=root.monsterParameters(world.monsterType(entity.id()))
 		if monsterData and monsterData.behaviorConfig then
 			for _,piece in pairs(monsterData.behaviorConfig) do
 				if type(piece)=="table" then
