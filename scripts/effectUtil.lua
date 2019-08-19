@@ -127,8 +127,12 @@ end
 
 function effectUtil.effectTarget(id,effect,duration)
 	if world.entityExists(id) then
-		world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
-		return true
+		if not effect or effect=="" then
+			return false
+		else
+			world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
+			return true
+		end
 	else
 		return false
 	end
