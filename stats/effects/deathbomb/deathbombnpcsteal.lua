@@ -56,6 +56,7 @@ function explode()
 						local point=math.random(1,util.tableSize(dropPool))
 						world.spawnItem(dropPool[usedSlots[point]],entity.position())
 						dropPool[usedSlots[point]]=nil
+						world.callScriptedEntity(entity.id(),"npc.setItemSlot",usedSlots[point],nil)
 						table.remove(usedSlots,point)
 					end
 				else
