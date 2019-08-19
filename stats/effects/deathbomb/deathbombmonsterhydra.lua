@@ -1,5 +1,5 @@
 function init()
-	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or entity.entityType() ~="monster" then
+	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) then
 		effect.expire()
 	end
 	self.blinkTimer = 0
@@ -25,6 +25,9 @@ function uninit()
 end
 
 function explode()
+	if world.entityType(entity.id()) ~= "monster" then
+		self.exploded=true
+	end
 	if not self.exploded then
 		local monsterParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
 		local monsterData=root.monsterParameters(world.monsterType(entity.id()))
