@@ -35,27 +35,49 @@ itemList={
 }
 
 function init()
-	object.setInteractive(true)
-	self.range=config.getParameter("range",20)
+	power.init()
+	if not config.getParameter("slotCount") then
+		object.setInteractive(false)
+	end
+	self=config.getParameter("atmos")
 end
 
 function update(dt)
-	if not storage.deltaTime or storage.deltaTime > 1.0 then
-		local items=world.containerItems(entity.id())
-		if items and #items>0 then
-			animator.setAnimationState("switchState","on")
-			for _,item in pairs(items) do
-				if itemList[item.name] then
-					for _,buffer in pairs(itemList[item.name]) do
-						 effectUtil.effectAllOfTeamInRange(buffer.status,self.range,(storage.deltaTime or 1)*(buffer.durationMod or 2),buffer.team)
-					end
-				end
+	if self and self.range and (storage.effects or self.objectEffects) and power.consume(config.getParameter('isn_requiredPower')) then
+		animator.setAnimationState("switchState", "on")
+		if storage.effects then
+			for _,effect in pairs(storage.effects) do
+				effectUtil.effectAllOfTeamInRange(effect.status,self.range,dt*(effect.durationMod or 2),effect.team)
 			end
-		else
-			animator.setAnimationState("switchState","off")
 		end
-		storage.deltaTime=0.0
+		if self.objectEffects then
+			for _,effect in pairs (self.objectEffects) do
+				effectUtil.effectAllInRange(effect,self.range,5)
+			end
+		end
 	else
-		storage.deltaTime=storage.deltaTime+dt
+		animator.setAnimationState("switchState", "off")
 	end
+end
+
+function containerCallback()
+	local effects = {}
+	for _,item in pairs(world.containerItems(entity.id(), slot)) do
+		if item and itemList[item.name] then
+			for _,effect in pairs(itemList[item.name]) do
+				table.insert(effects,effect)
+			end
+		end
+	end
+	for i=1,#effects - 1 do
+		for j=i+1,#effects do
+			if effects[j] == effects[i] then
+				effects[j] = nil
+			end
+		end
+		if effects[i]=="" then
+			effects[i] = nil
+		end
+	end
+	storage.effects = #effects > 0 and effects or nil
 end
