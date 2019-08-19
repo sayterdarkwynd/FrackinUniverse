@@ -1,6 +1,7 @@
 require "/scripts/vec2.lua"
 
 function init()
+	isInstance=world.getProperty("ephemeral")
 	self.inputLocation = object.position()
 	storage.currentState = setCurrentOutput() and (not object.isOutputNodeConnected(0) or object.getInputNodeLevel(0))
 	animate()
@@ -27,18 +28,18 @@ function setCurrentOutput()
         local var -- set to null
 		
         if outputId then
-            storage.outputLocation = world.entityPosition(outputId)
-            storage.outputProtected = world.isTileProtected(storage.outputLocation)
-			storage.liquidStandard = not isPressure
-			storage.liquidPressurized = isPressure
+            self.outputLocation = world.entityPosition(outputId)
+            self.outputProtected = world.isTileProtected(self.outputLocation)
+			self.liquidStandard = not isPressure
+			self.liquidPressurized = isPressure
 			return true
 		end
 	end
 	
-	storage.liquidStandard=false
-	storage.liquidPressurized=false
-	storage.outputLocation=nil
-	storage.outputProtected=nil
+	self.liquidStandard=false
+	self.liquidPressurized=false
+	self.outputLocation=nil
+	self.outputProtected=nil
 	return false
 end
 
@@ -48,17 +49,18 @@ function moveLiquid(inputLocation,outputLocation)
     if inputLiquid and inputLiquid[2] > 0.1 then  
         local outputLiquid = world.liquidAt(outputLocation)
 		
-        if (storage.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inputLiquid[1] and outputLiquid[2] < 1))) then 
+        if (self.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inputLiquid[1] and outputLiquid[2] < 1))) then 
             
-			if storage.outputProtected then 
-				world.setTileProtection(world.dungeonId(storage.outputLocation), false) 
+			if self.outputProtected then 
+				world.setTileProtection(world.dungeonId(self.outputLocation), false) 
             end
 			
             world.destroyLiquid(inputLocation)
+			
             world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
            
-            if storage.outputProtected then 
-				world.setTileProtection(world.dungeonId(storage.outputLocation), true) 
+            if self.outputProtected then 
+				world.setTileProtection(world.dungeonId(self.outputLocation), true) 
             end
             
             return true
@@ -85,16 +87,24 @@ function update(dt)
 		self.timer = self.timer - dt
     end
 
-    local hasMovedLiquid = false
-	
-    if storage.currentState then
-        if storage.liquidStandard or storage.liquidPressurized then
-            hasMovedLiquid = moveLiquid(self.inputLocation,storage.outputLocation)
-            hasMovedLiquid = moveLiquid(vec2.add(self.inputLocation,{1,0}),vec2.add(storage.outputLocation,{1,0})) or hasMovedLiquid
-			world.callScriptedEntity(world.objectAt(storage.outputLocation),"receivedLiquidPumpInput")
-        end
+	if not self.timer2 or self.timer2 <= 0 then
+		local hasMovedLiquid = false
+		
+		if storage.currentState then
+			if self.liquidStandard or self.liquidPressurized then
+				local buffer=world.objectAt(self.outputLocation)
+				if buffer then
+					hasMovedLiquid = moveLiquid(self.inputLocation,self.outputLocation)
+					hasMovedLiquid = moveLiquid(vec2.add(self.inputLocation,{1,0}),vec2.add(self.outputLocation,{1,0})) or hasMovedLiquid
+
+					world.callScriptedEntity(buffer,"receivedLiquidPumpInput")
+				end
+			end
+		end
+		self.timer2 = dt * ((hasMovedLiquid and not isInstance) and 1 or 0)
+		object.setAllOutputNodes(storage.currentState)
+		animate()
+	else
+		self.timer2 = self.timer2 - dt
 	end
-	
-	object.setAllOutputNodes(storage.currentState)
-    animate()
 end

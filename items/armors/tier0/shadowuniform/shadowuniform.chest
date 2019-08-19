@@ -4,7 +4,7 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Dignity and honor all rolled into one lovely package.",
+  "description" : "Dignity and honor all rolled into one lovely package. Gives ^green;+5%^reset; Shadow Resistance.",
   "shortdescription" : "Shadekin Top",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
@@ -37,7 +37,15 @@
       "amount" : 2
     }
   ],
-
+  
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.05
+    }
+  ],
+  
   "colorOptions" : [
     /* BLACK */
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },

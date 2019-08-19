@@ -1,0 +1,63 @@
+{
+  "objectName" : "zerchesiumcratelarge",
+  "colonyTags" : ["zerchesium","storage"],
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A crate made from Zerchesium.",
+  "shortdescription" : "Zerchesium Crate",
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 180,
+  "lightColor" : [255, 249, 140],
+  "health" : 1.5,
+
+  "apexDescription" : "An extremely cold crate.",
+  "avianDescription" : "This is very cold to touch.",
+  "floranDescription" : "Cold box!",
+  "glitchDescription" : "Uncomfortable. This crate is very cold.",
+  "humanDescription" : "This crate would be better as a fridge!",
+  "hylotlDescription" : "This crate is cold to the touch.",
+  "novakidDescription" : "This crate is mighty cold.",
+
+  "inventoryIcon" : "zerchesiumcratelargeicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "zerchesiumcratelarge.png:<color>", "fullbright" : true }, { "image" : "zerchesiumcratelargelit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "zerchesiumcratelarge.png:<color>", "fullbright" : true }, { "image" : "zerchesiumcratelargelit.png:<color>" } ],
+      "direction" : "right",
+
+      "lightPosition" : [0, 2],
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 32,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}

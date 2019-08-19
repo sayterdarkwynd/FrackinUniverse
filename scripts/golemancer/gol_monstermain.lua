@@ -10,7 +10,8 @@ function init()
   self.evolutions = config.getParameter("evolutions")
   self.tickEvoTime = config.getParameter("tickEvoTime") or 5.0
   self.tickEvoTimer = self.tickEvoTime
-  self.tickEvoTimerAging = config.getParameter("agingEvoTime") or 5000
+  self.baseEvoTime=config.getParameter("agingEvoTime") or 5000
+  self.tickEvoTimerAging = self.baseEvoTime
   self.consumedTable = {}
 end
 
@@ -27,7 +28,7 @@ function update(dt)
     end
   end
   if self.tickEvoTimerAging <= 0 then
-    self.tickEvoTimerAging = self.tickEvoTimerAging
+    self.tickEvoTimerAging = self.baseEvoTime
     self.position = mcontroller.position()
     for _, v in ipairs(self.evolutions) do
       local evolution = root.assetJson(v)

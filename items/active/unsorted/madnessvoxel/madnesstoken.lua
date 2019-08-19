@@ -9,6 +9,11 @@ function init()
 
   self.active = false
   storage.fireTimer = storage.fireTimer or 0
+  
+  --make sure Madness quest is on, this is a safe place to do so
+  if not player.hasQuest("madnessquestdata") then
+  	player.startQuest("madnessquestdata")
+  end
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -56,6 +61,7 @@ function activate(fireMode, shiftHeld)
   if not storage.firing then
     self.active = true
   end
+  animator.playSound("active")
 end
 
 function updateAim()

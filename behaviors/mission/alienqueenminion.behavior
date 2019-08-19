@@ -1,0 +1,329 @@
+{
+  "name": "alienqueenminion",
+  "description": "",
+  "scripts": [
+    "/scripts/behavior.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/status.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {
+    "projectileOffset": [-2, -0.5]
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "entityConfigParameter",
+        "type": "action",
+        "name": "entityConfigParameter",
+        "parameters": {
+          "default": {"value": true},
+          "path": {"value": "aggressive"}
+        },
+        "output": {
+          "bool": "aggressive"
+        }
+      },
+      {
+        "title": "setAggressive",
+        "type": "action",
+        "name": "setAggressive",
+        "parameters": {
+          "aggressive": {"key": "aggressive"}
+        }
+      },
+      {
+        "title": "random",
+        "type": "action",
+        "name": "random",
+        "parameters": {
+          "max": {"value": 35},
+          "min": {"value": 25}
+        },
+        "output": {
+          "number": "flyHeight"
+        }
+      },
+      {
+        "title": "setDying",
+        "type": "action",
+        "name": "setDying",
+        "parameters": {
+          "shouldDie": {"value": false}
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "monster-targeting",
+            "type": "module",
+            "name": "monster-targeting",
+            "parameters": {
+              "targetQueryRange": {"value": 80},
+              "queryTargets": {"key": "aggressive"},
+              "targetOnDamage": {"value": true}
+            }
+          },
+          {
+            "title": "dynamic",
+            "type": "composite",
+            "name": "dynamic",
+            "parameters": {},
+            "children": [
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "resourcePercentage",
+                    "type": "action",
+                    "name": "resourcePercentage",
+                    "parameters": {
+                      "percentage": {"value": 0},
+                      "resource": {"value": "health"}
+                    }
+                  },
+                  {
+                    "title": "dynamic",
+                    "type": "composite",
+                    "name": "dynamic",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "cooldown",
+                        "type": "decorator",
+                        "name": "cooldown",
+                        "parameters": {
+                          "cooldown": {"value": 10},
+                          "onFail": {"value": false},
+                          "onSuccess": {"value": true}
+                        },
+                        "child": {
+                          "title": "parallel",
+                          "type": "composite",
+                          "name": "parallel",
+                          "parameters": {
+                            "fail": {"value": -1},
+                            "success": {"value": -1}
+                          },
+                          "children": [
+                            {
+                              "title": "controlApproachVelocity",
+                              "type": "action",
+                              "name": "controlApproachVelocity",
+                              "parameters": {
+                                "force": {"value": 10},
+                                "velocity": {"value": [0, 0]}
+                              }
+                            },
+                            {
+                              "title": "sequence",
+                              "type": "composite",
+                              "name": "sequence",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "timer",
+                                  "type": "action",
+                                  "name": "timer",
+                                  "parameters": {
+                                    "time": {"value": 0.3}
+                                  }
+                                },
+                                {
+                                  "title": "setAnimationState",
+                                  "type": "action",
+                                  "name": "setAnimationState",
+                                  "parameters": {
+                                    "state": {"value": "throw"},
+                                    "type": {"value": "body"}
+                                  }
+                                },
+                                {
+                                  "title": "random",
+                                  "type": "action",
+                                  "name": "random",
+                                  "parameters": {
+                                    "max": {"value": 0.5},
+                                    "min": {"value": -0.5}
+                                  },
+                                  "output": {
+                                    "number": "randXVelocity"
+                                  }
+                                },
+                                {
+                                  "title": "vecMultiply",
+                                  "type": "action",
+                                  "name": "vecMultiply",
+                                  "parameters": {
+                                    "first": {"key": "<projectileOffset>"},
+                                    "second": {"value": ["facingDirection", 1]}
+                                  },
+                                  "output": {
+                                    "vector": "projectileOffset"
+                                  }
+                                },
+                                {
+                                  "title": "spawnProjectile",
+                                  "type": "action",
+                                  "name": "spawnProjectile",
+                                  "parameters": {
+                                    "aimVector": {"value": ["randXVelocity", 1]},
+                                    "offset": {"key": "projectileOffset"},
+                                    "position": {"key": "self"},
+                                    "projectileType": {"value": "alienspawn2"},
+                                    "scalePower": {"value": true},
+                                    "sourceEntity": {"key": "self"},
+                                    "trackSource": {"value": false}
+                                  }
+                                },
+                                {
+                                  "title": "timer",
+                                  "type": "action",
+                                  "name": "timer",
+                                  "parameters": {
+                                    "time": {"value": 0.2}
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "title": "wander-fly",
+                        "type": "module",
+                        "name": "wander-fly",
+                        "parameters": {
+                          "wanderTime": {"value": 6},
+                          "groundDistance": {"key": "flyHeight"},
+                          "ceilingDistance": {"value": 20},
+                          "xVelocity": {"value": 10},
+                          "yVelocity": {"value": 12}
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "vecAngle",
+                    "type": "action",
+                    "name": "vecAngle",
+                    "parameters": {
+                      "vector": {"value": ["facingDirection", 0]}
+                    },
+                    "output": {
+                      "angle": "crashAngle"
+                    }
+                  },
+                  {
+                    "title": "setParticleEmitterActive",
+                    "type": "action",
+                    "name": "setParticleEmitterActive",
+                    "parameters": {
+                      "active": {"value": true},
+                      "emitter": {"value": "flames"}
+                    }
+                  },
+                  {
+                    "title": "setAnimationState",
+                    "type": "action",
+                    "name": "setAnimationState",
+                    "parameters": {
+                      "state": {"value": "throw"},
+                      "type": {"value": "body"}
+                    }
+                  },
+                  {
+                    "title": "parallel",
+                    "type": "composite",
+                    "name": "parallel",
+                    "parameters": {
+                      "fail": {"value": -1},
+                      "success": {"value": -1}
+                    },
+                    "children": [
+                      {
+                        "title": "controlParameters",
+                        "type": "action",
+                        "name": "controlParameters",
+                        "parameters": {
+                          "parameters": {"value": {"gravityEnabled": true, "airFriction": 0}}
+                        }
+                      },
+                      {
+                        "title": "controlApproachVelocityAlongAngle",
+                        "type": "action",
+                        "name": "controlApproachVelocityAlongAngle",
+                        "parameters": {
+                          "angle": {"key": "crashAngle"},
+                          "force": {"value": 0},
+                          "velocity": {"value": 0}
+                        }
+                      },
+                      {
+                        "title": "onGround",
+                        "type": "action",
+                        "name": "onGround",
+                        "parameters": {}
+                      }
+                    ]
+                  },
+                  {
+                    "title": "burstParticleEmitter",
+                    "type": "action",
+                    "name": "burstParticleEmitter",
+                    "parameters": {
+                      "emitter": {"value": "blood"}
+                    }
+                  },
+                  {
+                    "title": "setDying",
+                    "type": "action",
+                    "name": "setDying",
+                    "parameters": {
+                      "shouldDie": {"value": true}
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "runner",
+                "type": "action",
+                "name": "runner",
+                "parameters": {}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

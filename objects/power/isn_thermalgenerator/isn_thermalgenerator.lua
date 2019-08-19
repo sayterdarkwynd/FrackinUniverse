@@ -22,6 +22,7 @@ function onInputNodeChange(args)
 end
 
 function update(dt)
+world.spawnItem("fu_carbondioxide", entity.position())
 	if deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()

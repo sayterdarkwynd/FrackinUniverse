@@ -25,7 +25,7 @@ function build(directory, config, parameters, level, seed)
   if config.altAbility and config.altAbility.elementalConfig then
     --The difference is here, i added an if null-coalescing operation that checks if the alt ability has the elementalType in the elementalConfig list and replaces it with the physical type if it doesn't exist.
     util.mergeTable(config.altAbility, config.altAbility.elementalConfig[elementalType] or config.altAbility.elementalConfig["physical"])
-                                                                                       
+	
   end
 
   -- calculate damage level multiplier

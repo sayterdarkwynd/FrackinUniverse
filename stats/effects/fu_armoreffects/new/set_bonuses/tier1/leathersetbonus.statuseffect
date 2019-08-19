@@ -4,7 +4,7 @@
 
   "effectConfig" : {
     "armorBonuses" : {
-      "critChance" : { "amount" : 2 }
+      "critChance" : { "amount" : 1 }
     },
     "armorMovementModifiers" : {
       "speed" : 1.05
@@ -15,16 +15,16 @@
         "type" : "any",
         "tags" : [ "bow", "crossbow" ],
         "stats" : {
-          "critChance" : { "amount" : 5 },
-          "powerMultiplier" : { "effectiveMultiplier" : 1.05 }
+          "critChance" : { "amount" : 2 },
+          "powerMultiplier" : { "effectiveMultiplier" : 1.08 }
         }
       }
     ],
 
     "biomeTags" : [ "garden", "forest" ],
     "biomeBonuses" : {
-      "maxEnergy" : { "amount" : 5 },
-      "grit" : { "amount" : 0.05 }
+      "maxEnergy" : { "effectiveMultiplier" : 1.05 },
+      "grit" : { "effectiveMultiplier" : 1.05 }
     }
   },
 
@@ -33,6 +33,6 @@
   ],
   "scriptDelta": 5,
 
-  "label" : "+5% Speed, +2% Crit Chance. Bow/Crossbow: +5% Crit Chance, +5% Dmg. Lush/Forest: +5% Knockback Resist, +5% Energy",
+  "label" : "+5% Speed, +1% Crit Chance. Bow/Crossbow: +2% Crit Chance, +8% Dmg. Lush/Forest: +5% Knockback Resist, +5% Energy",
   "icon" : "/interface/statuses/set_bow.png"
 }

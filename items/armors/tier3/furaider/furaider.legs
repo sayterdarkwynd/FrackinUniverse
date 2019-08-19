@@ -4,9 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+7.5% Machine Pistol Damage, +25% Crit Damage(Dagger)^reset;
-^green;+12% Speed^reset;", 
+  "description" : "^orange;Set Bonuses^reset;:
+^green;+12% Speed^reset;  
+Machine Pistol: ^green;+7.5%^reset; Dmg, 
+Dagger: ^#a94db3;+25%^reset; Crit Dmg",
   "shortdescription" : "Raider Legs",
   "category" : "t3armor",
   "tooltipKind" : "armornew2",
@@ -39,10 +40,10 @@
     }
   ],
 
-  "statusEffects" : [    
-    "raidersetbonus",
+  "statusEffects" : [
+    "fusetbonusmanager",
     {
-      "stat" : "fu_raiderset_legs",
+      "stat" : "raidersetcount",
       "amount" : 1
     }
   ],

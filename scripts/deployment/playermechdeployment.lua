@@ -5,7 +5,7 @@ function init()
   message.setHandler("unlockMech", function()
       if not self.unlocked then
         self.unlocked = true
-        status.setStatusProperty("mechUnlocked", true)
+        player.setProperty("mechUnlocked", true)
 
         local starterSet = config.getParameter("starterMechSet")
         local speciesBodies = config.getParameter("speciesStarterMechBody")
@@ -18,7 +18,14 @@ function init()
           player.giveBlueprint(item)
         end
 
+        -- added july 20th 2019
+        for _,item in pairs(starterSet) do
+          player.giveBlueprint(item)
+        end 
+        --
+        
         setMechItemSet(starterSet)
+        
       end
     end)
 
@@ -80,11 +87,11 @@ function init()
   if not player.hasQuest("fuelDataQuest") then
     player.startQuest( { questId = "fuelDataQuest" , templateId = "fuelDataQuest", parameters = {}} )
   end
-
-  self.unlocked = status.statusProperty("mechUnlocked", false)
-  self.itemSet = status.statusProperty("mechItemSet", {})
-  self.primaryColorIndex = status.statusProperty("mechPrimaryColorIndex", 0)
-  self.secondaryColorIndex = status.statusProperty("mechSecondaryColorIndex", 0)
+  
+  self.unlocked = player.getProperty("mechUnlocked", false)
+  self.itemSet = player.getProperty("mechItemSet", {})
+  self.primaryColorIndex = player.getProperty("mechPrimaryColorIndex", 0)
+  self.secondaryColorIndex = player.getProperty("mechSecondaryColorIndex", 0)
 
   self.partManager = MechPartManager:new()
 
@@ -93,7 +100,13 @@ function init()
   self.secondaryColorIndex = self.partManager:validateColorIndex(self.secondaryColorIndex)
 
   buildMechParameters()
-
+  
+  -- added july 20th 2019
+  if self.itemSet.body and not self.unlocked then
+    unlockMech()
+  end  
+  --
+  
   self.beaconCheck = world.findUniqueEntity("mechbeacon")
 
   self.beaconFlashTimer = 0
@@ -152,15 +165,37 @@ end
 
 function setMechItemSet(newItemSet)
   self.itemSet = self.partManager:validateItemSet(newItemSet)
-  status.setStatusProperty("mechItemSet", self.itemSet)
+  player.setProperty("mechItemSet", self.itemSet)
   buildMechParameters()
 end
+
+-- added july 20th 2019
+function unlockMech()
+  if not self.unlocked then
+    self.unlocked = true
+    player.setProperty("mechUnlocked", true)
+
+    local starterSet = config.getParameter("starterMechSet")
+    local speciesBodies = config.getParameter("speciesStarterMechBody")
+    local playerSpecies = player.species()
+    if speciesBodies[playerSpecies] then
+      starterSet.body = speciesBodies[playerSpecies]
+    end
+
+    for _,item in pairs(starterSet) do
+      player.giveBlueprint(item)
+    end
+
+    setMechItemSet(starterSet)
+  end
+end
+--
 
 function setMechColorIndexes(primaryIndex, secondaryIndex)
   self.primaryColorIndex = self.partManager:validateColorIndex(primaryIndex)
   self.secondaryColorIndex = self.partManager:validateColorIndex(secondaryIndex)
-  status.setStatusProperty("mechPrimaryColorIndex", self.primaryColorIndex)
-  status.setStatusProperty("mechSecondaryColorIndex", self.secondaryColorIndex)
+  player.setProperty("mechPrimaryColorIndex", self.primaryColorIndex)
+  player.setProperty("mechSecondaryColorIndex", self.secondaryColorIndex)
   buildMechParameters()
 end
 

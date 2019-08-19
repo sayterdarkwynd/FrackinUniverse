@@ -925,8 +925,10 @@ function retrieveCustomData()
 		draw()
 		customDataInited = true
 		-- re-enable shit
+	elseif customDataPromise:finished() then
+		error("^green;"..cfg.TextData.strings.promiseError.."^reset;")
 	else
-		if not customDataPromise:finished() then return end
+		return
 	end
 	
 	customDataPromise = nil

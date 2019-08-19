@@ -1,0 +1,24 @@
+{
+  "name" : "chitinsetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "sulphuricImmunity" : {}
+    },
+
+    "biomeTags" : [ "sulphuric", "sulphuricdark", "sulphuricocean" ],
+    "biomeBonuses" : {
+      "maxHealth" : { "amount" : 12 },
+      "powerMultiplier" : { "effectiveMultiplier" : 1.12 }
+    }
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "Immune: Acid. Sulphuric biomes: +12 HP, +12% Dmg",
+  "icon" : "/interface/statuses/attack.png"
+}

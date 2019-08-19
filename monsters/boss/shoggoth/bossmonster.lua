@@ -48,6 +48,7 @@ function init()
   monster.setDeathParticleBurst("deathPoof")
   monster.setName("The Shoggoth, Formless Horror")
   monster.setDamageBar("special")
+  monster.setUniqueId(config.getParameter("uniqueId"))
 end
 
 function update(dt)
@@ -90,6 +91,10 @@ function update(dt)
   end
 
   self.hadTarget = hasTarget()
+end
+
+function die()
+  world.setProperty("fu_shoggothDied", true)
 end
 
 function damage(args)

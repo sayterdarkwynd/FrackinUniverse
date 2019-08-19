@@ -27,10 +27,11 @@ function transferUtil.init()
 		sb.logInfo("transferUtil automation functions are disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
 		return
 	end
-	storage.position=entity.position()
-	storage.logicNode=config.getParameter("kheAA_logicNode")
-	storage.inDataNode=config.getParameter("kheAA_inDataNode");
-	storage.outDataNode=config.getParameter("kheAA_outDataNode");
+	storage.position=storage.position or entity.position()
+	transferUtil.vars={}
+	transferUtil.vars.logicNode=config.getParameter("kheAA_logicNode")
+	transferUtil.vars.inDataNode=config.getParameter("kheAA_inDataNode");
+	transferUtil.vars.outDataNode=config.getParameter("kheAA_outDataNode");
 end
 
 function transferUtil.initTypes()
@@ -144,15 +145,15 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 end
 
 function transferUtil.updateInputs()
-	storage.input={}
-	storage.inContainers={}
+	transferUtil.vars.input={}
+	transferUtil.vars.inContainers={}
 	if storage.disabled then return end
-	if not storage.inDataNode then
+	if not transferUtil.vars.inDataNode then
 		return
 	end
-	storage.input=object.getInputNodeIds(storage.inDataNode);
+	transferUtil.vars.input=object.getInputNodeIds(transferUtil.vars.inDataNode);
 	local buffer={}
-	for inputSource,nodeValue in pairs(storage.input) do
+	for inputSource,nodeValue in pairs(transferUtil.vars.input) do
 		local temp=world.callScriptedEntity(inputSource,"transferUtil.sendContainerInputs")
 		if temp ~= nil then
 			for entId,position in pairs(temp) do
@@ -160,19 +161,19 @@ function transferUtil.updateInputs()
 			end
 		end
 	end
-	storage.inContainers=buffer
+	transferUtil.vars.inContainers=buffer
 end
 
 function transferUtil.updateOutputs()
-	storage.output={}
-	storage.outContainers={}
+	transferUtil.vars.output={}
+	transferUtil.vars.outContainers={}
 	if storage.disabled then return end
-	if not storage.outDataNode then
+	if not transferUtil.vars.outDataNode then
 		return
 	end
-	storage.output=object.getOutputNodeIds(storage.outDataNode);
+	transferUtil.vars.output=object.getOutputNodeIds(transferUtil.vars.outDataNode);
 	local buffer={}
-	for outputSource,nodeValue in pairs(storage.output) do
+	for outputSource,nodeValue in pairs(transferUtil.vars.output) do
 		local temp=world.callScriptedEntity(outputSource,"transferUtil.sendContainerOutputs")
 		if temp then
 			for entId,position in pairs(temp) do
@@ -180,49 +181,7 @@ function transferUtil.updateOutputs()
 			end
 		end
 	end
-	storage.outContainers=buffer
-end
-
-function transferUtil.checkFilter(item)
-	if not transferUtil.itemTypes then
-		transferUtil.initTypes()
-	end
-	routerItems=world.containerItems(entity.id())
-	if util.tableSize(routerItems) == 0 then
-		return true, 1
-	end
-	local invertcheck = nil     -- Inverted conditions are match-all
-	local noninvertcheck = nil  -- Non-inverted conditions are match-any
-	local mod = nil             -- Stack comparison check is match-any (first match has priority)
-	for slot,rItem in pairs(routerItems) do
-		if not noninvertcheck or storage.filterInverted[slot] then
-			local result = false
-			local fType = storage.filterType[slot]
-			if fType == -1 and transferUtil.compareItems(rItem, item) then
-				result = true
-			elseif fType == 0 and transferUtil.compareTypes(rItem, item) then
-				result = true
-			elseif fType == 1 and transferUtil.compareCategories(rItem, item) then
-				result = true
-			else
-				result = false
-			end
-			if storage.filterInverted[slot] then
-				result = not result
-				invertcheck = result
-				if not result then return false end
-			else
-				noninvertcheck = result
-			end
-			if result and not mod then
-				mod = rItem.count
-			end
-		end
-	end
-	return (noninvertcheck and invertcheck)
-		or (noninvertcheck == nil and invertcheck)
-		or (noninvertcheck and invertcheck == nil),
-		mod or 1
+	transferUtil.vars.outContainers=buffer
 end
 
 function transferUtil.findNearest(source,sourcePos,targetList)
@@ -262,17 +221,6 @@ function transferUtil.tFirstIndex(entry,t1)
 	return 0
 end
 
-function transferUtil.validInputSlot(slot)
-	if util.tableSize(storage.inputSlots) == 0 then return true end
-	return (transferUtil.tFirstIndex(slot,storage.inputSlots)>0) == not storage.invertSlots[1]
-end
-
-function transferUtil.validOutputSlot(slot)
-	if util.tableSize(storage.outputSlots) == 0 then return true end
-	return (transferUtil.tFirstIndex(slot,storage.outputSlots)>0) == not storage.invertSlots[2]
-end
-
-
 function transferUtil.compareItems(itemA, itemB)
 	if not itemA or not itemB then
 		return false;
@@ -311,11 +259,11 @@ function transferUtil.recvConfig(conf)
 end
 
 function transferUtil.sendContainerInputs()
-	return storage.inContainers
+	return transferUtil.vars.inContainers
 end
 
 function transferUtil.sendContainerOutputs()
-	return storage.outContainers
+	return transferUtil.vars.outContainers
 end
 
 function transferUtil.powerLevel(node,explicit)
@@ -374,15 +322,15 @@ function transferUtil.getCategory(item)
 end
 
 function transferUtil.loadSelfContainer()
-	storage.containerId=entity.id()
+	transferUtil.vars.containerId=entity.id()
 	transferUtil.unloadSelfContainer()
-	storage.inContainers[storage.containerId]=storage.position
-	storage.outContainers[storage.containerId]=storage.position
+	transferUtil.vars.inContainers[transferUtil.vars.containerId]=storage.position
+	transferUtil.vars.outContainers[transferUtil.vars.containerId]=storage.position
 end
 
 function transferUtil.unloadSelfContainer()
-	storage.inContainers={}
-	storage.outContainers={}
+	transferUtil.vars.inContainers={}
+	transferUtil.vars.outContainers={}
 end
 
 function dbg(args)

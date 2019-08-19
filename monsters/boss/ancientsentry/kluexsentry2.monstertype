@@ -40,7 +40,7 @@
             "windupStopForce" : 200,
 
             "projectileType" : "energycrystal",
-            "projectileParameters" : { "power":9 },
+            "projectileParameters" : { "power":9,"statusEffects":["madnessgain"] },
             
             "fireOffset" : [0, -2.0],
             "fireSound" : "fire",
@@ -266,7 +266,17 @@
         },
         "bleedingImmunity" : {
           "baseValue" : 1
-        }  
+        },
+        "shadowResistance" : { "baseValue" : -0.2 },
+        "poisonResistance" : { "baseValue" : 1 },
+        "cosmicResistance" : { "baseValue" : -0.2 },
+        "radioactiveResistance" : { "baseValue" : 0.6 },
+        "iceResistance" : { "baseValue" : 0.8 },
+        "fireResistance" : { "baseValue" : 0.5 },
+        "physicalResistance" : { "baseValue" : 0.8 },
+        "electricResistance" : { "baseValue" : 0 },
+        "ucObliteratingBurnImmunity" : { "baseValue" : 1 }
+        
       },
 
       "resources" : {

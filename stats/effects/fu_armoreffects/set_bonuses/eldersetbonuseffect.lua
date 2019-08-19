@@ -31,7 +31,7 @@ function update(dt)
 	if self.timer <= 0 then
 	    local p = entity.position()
 	    local parameters = {}
-	    local type = "squidbeast"
+	    local type = "squidbeastnodrop"
 	    --sb.logInfo("Spawning a slime from Slime armor. Type is %s",type)
 	    parameters.persistent = false
 	    parameters.damageTeamType = "friendly"

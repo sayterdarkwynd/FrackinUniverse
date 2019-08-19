@@ -1,0 +1,54 @@
+{
+  "name" : "rotatingalienlasersAttack",
+  "label" : "OVERLOAD",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/alienboss/skills/rotatingalienlasersAttack.lua" ],
+    "rotatingalienlasersAttack" : {
+      "riseHeight" : 5,
+      "riseSpeed" : 20,
+
+      "skillDuration" : 15,
+      "winddownTime" : 1,
+      "angleCycle" : 6,
+      "maxFireAngle" : 0.75,
+
+      "fireInterval" : 0.0001,
+      "projectileCount" : 6,
+      "projectile" : {
+        "type" : "giantalienlaser",
+        "config" : {
+          "power" : 40,
+          "speed" : 60,
+          "bounces" : 0,
+          "physics" : "default",
+          "timeToLive" : 10.0
+        },
+        "innerRadius" : 2
+      }
+    }
+  },
+
+  "animationParameters" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "electricBurst" : {
+          "default" : "off",
+          "states" : {
+            "off" : {
+            },
+            "on" : {
+              "properties" : {
+                "persistentSound" : "/sfx/objects/plasmadisc.ogg"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "electricBurst" : [ "/sfx/npc/boss/crystalboss_beamout.ogg" ]
+    }
+  }
+}

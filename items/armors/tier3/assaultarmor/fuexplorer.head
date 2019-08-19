@@ -4,10 +4,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Set Bonus: 
-^cyan;Immune: Gas, Breath, Cold, Liq.Nitrogen^reset;
-^#e43774;+15% Damage (Assault/Energy Rifles)^reset;
-^green;+20% Jump. +18% Ice Resist, 15% Phys. Resist^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^cyan;+20%^reset; Jump
+^cyan;+18%^reset; Ice Resist, ^cyan;15%^reset; Phys. Resist  
+Assault/Energy Rifles: ^cyan;+15%^reset; Dmg^reset;
+^cyan;Immune^reset;: Gas, Breath, Cold, Liq.Nitrogen",
   "shortdescription" : "Assault Helmet",
   "category" : "t3armoru",
   "tooltipKind" : "armornew2",
@@ -17,12 +18,12 @@
   "mask" : "mask.png",
 
   "learnBlueprintsOnPickup" : [
-  "xenochest", 
-  "xenolegs", 
-  "xenohead", 
-  "xenoshield"
+    "xenochest",
+    "xenolegs",
+    "xenohead",
+    "xenoshield"
   ],
-    "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
   "collectablesOnPickup" : { "fu_armortank" : "fuexplorerhead" },
   "leveledStatusEffects" : [
@@ -50,9 +51,9 @@
 
   "statusEffects" : [
     "headlamp3",
-    "assaultsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_assaultset_head",
+      "stat" : "assaultsetcount",
       "amount": 1
     },
     {
@@ -65,7 +66,7 @@
     }
   ],
 
-  "colorOptions" : [ 
+  "colorOptions" : [
     { "ffca8a" : "727272", "e0975c" : "414141", "a85636" : "1c1c1c", "6f2919" : "060606" },
     { "ffca8a" : "e9e9e9", "e0975c" : "727272", "a85636" : "333333", "6f2919" : "161616" },
     { "ffca8a" : "e6a49e", "e0975c" : "ac3b37", "a85636" : "521010", "6f2919" : "200407" },

@@ -1,20 +1,21 @@
 {
   "itemName" : "kahla2",
+  "price" : 50,
   "rarity" : "Common",
-  "price" : 115,
   "category" : "drink",
   "inventoryIcon" : "kahla2.png",
-  "description" : "An alcoholic drink made from pearlpeas. It tastes remarkably of root beer.",
-  "shortdescription" : "Kahla Tankard",
-  "handPosition" : [-1, 3],
-  "armFrameOverride" : "run.3",
+  "description" : "What looks to be liquified Oceanite. Contains healing properties.",
+  "shortdescription" : "Liquid Oceanite",
+  "maxStack" : 1,
   "effects" : [ [
-      {
-        "effect" : "regeneration1",
-        "duration" : 60
-      }
-    ] ],
-  //"emote" : "",
-  //"emitters" : [ "drinkinghealing" ]
-  "emitters" : [ "drinking" ]
+    {
+      "effect" : "healingwater",
+      "duration" : 60
+    }
+  ] ],
+  "blockingEffects" : [
+    "healingwater"
+  ],
+  "emote" : "",
+  "emitters" : [ "drinkinghealing" ]
 }

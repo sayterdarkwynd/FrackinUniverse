@@ -35,7 +35,7 @@ function hasMonsterHarvest(args, board)
 end
 
 function isMonsterHarvestable(args, board)
-  if not storage.producePercent then
+  if (not storage.producePercent) or (not storage.produceRequired) then
     resetMonsterHarvest()
   end
   --storage.producePercent = storage.producePercent + 0.333333333 * ((storage.happiness or 50)/100) * math.max(math.min(((storage.food or 100)-10)/10,1),0)
@@ -219,6 +219,8 @@ function displayFoodType()
 		  world.spawnProjectile("fu_herbivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
 	  elseif diet == 'lunar' then
 		  world.spawnProjectile("fu_lunar", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
+	  elseif diet == 'robo' then
+		  world.spawnProjectile("fu_robo", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
 	  end
 	  self.timer2 = 180
   end	  

@@ -5,12 +5,12 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "category" : "chestwear",
-  "description" : "Set Bonus: 
-^cyan;Immunity: Oxygen, Poison, Gas, Acid^reset;
-^#e43774;15% Radiation Resist^reset;
-^green;+25% Damage (Magnorbs)^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^cyan;15%^reset; Radiation Resist
+Magnorbs: ^#a94db3;+25%^reset; Dmg
+^cyan;Immunity^reset;: Oxygen, Poison, Gas, Acid",
   "shortdescription" : "Researcher's Breastplate",
-  
+
   "tooltipKind" : "armor",
 
   "maleFrames" : {
@@ -25,7 +25,7 @@
     "frontSleeve" : "fsleeve.png"
   },
   "itemTags" : [ "upgradeableWeapon" ],
-  "level" : 3,  
+  "level" : 3,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -50,13 +50,17 @@
   ],
 
   "statusEffects" : [
-    "researchsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_researchset_chest",
+      "stat" : "researchsetcount",
       "amount" : 1
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.05
     }
   ],
-  
+
   "colorOptions" : [
     // WHITE
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },

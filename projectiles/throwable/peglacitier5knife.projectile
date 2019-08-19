@@ -1,0 +1,24 @@
+{
+  "projectileName" : "peglacitier5knife",
+  "image" : "peglacitier5knife.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 10,
+  "physics" : "stickybullet",
+  "bounces" : 0,
+  "frameNumber" : 4,
+  "lightColor" : [0, 200, 200],
+  "speed" : 450,
+  "piercing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    }
+  ],
+  "damageKind" : "dagger",
+  "statusEffects" : [
+    {"effect" : "energydrainpeglaci"}
+  ],
+  "emitters" : [ "peglacitraillong" ],
+  "damagePoly" : [ [-2, -3], [1, -3], [10, 1], [1, 4], [-2, 4] ]
+}

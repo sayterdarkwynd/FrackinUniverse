@@ -8,7 +8,8 @@ armorEffect={
 	{stat = "snowslowImmunity", amount = 1},
 	{stat = "slushslowImmunity", amount = 1},
 	{stat = "ffextremecoldImmunity", amount = 1},
-	{stat = "biomecoldImmunity", amount = 1}
+	{stat = "biomecoldImmunity", amount = 1},
+	{stat = "lethalcoldImmunity", amount = 1}
 }
 
 setName="fu_arcticset"

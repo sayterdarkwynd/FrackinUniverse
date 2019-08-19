@@ -1,6 +1,8 @@
 function init()
   script.setUpdateDelta(3)
   rescuePosition = mcontroller.position()
+  self.randVal = math.random(1,24)
+  world.spawnItem("fumadnessresource",entity.position(),self.randVal)  
 end
 
 function update(dt)

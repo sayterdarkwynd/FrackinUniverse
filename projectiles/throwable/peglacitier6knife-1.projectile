@@ -1,0 +1,55 @@
+{
+  "projectileName" : "peglacitier6knife-1",
+  "image" : "peglaciiceball.png",
+  "animationCycle" : 0.5,
+  "armorPenetration" : 3,
+  "physics" : "laser",
+  "bounces" : 3,
+  "frameNumber" : 4,
+  "pointLight" : false,
+  "speed" : 30,
+  "timeToLive" : 0.3,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "peglacitier6knife-1a",
+      "inheritDamageFactor" :0.5,
+      "angleAdjust" : 90
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier6knife-1a",
+      "inheritDamageFactor" :0.5,
+      "angleAdjust" : -90
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier6knife-1a",
+      "inheritDamageFactor" :0.5,
+      "angleAdjust" : 180
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier6knife-2",
+      "inheritDamageFactor" :0.05,
+      "angleAdjust" : 90
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier6knife-2",
+      "inheritDamageFactor" :0.05,
+      "angleAdjust" : -90
+    },
+	{
+      "action" : "projectile",
+      "type" : "peglacitier6knife-2",
+      "inheritDamageFactor" :0.05,
+      "angleAdjust" : 180
+    }
+  ],
+  "statusEffects" : [
+  ],
+  "damageKind" : "dagger",
+  "emitters" : [ "peglacitrail" ],
+  "damagePoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ]
+}

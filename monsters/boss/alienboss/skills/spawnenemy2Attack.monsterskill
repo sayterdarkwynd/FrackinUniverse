@@ -1,0 +1,54 @@
+{
+  "name" : "spawnenemy2Attack",
+  "label" : "OVERLOAD",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/alienboss/skills/spawnenemy2Attack.lua" ],
+    "spawnenemy2Attack" : {
+      "riseHeight" : 5,
+      "riseSpeed" : 20,
+
+      "skillDuration" : 1,
+      "winddownTime" : 1,
+      "angleCycle" : 6,
+      "maxFireAngle" : 0.75,
+
+      "fireInterval" : 1.50,
+      "projectileCount" : 8,
+      "projectile" : {
+        "type" : "alienspitterspawn",
+        "config" : {
+          "power" : 0,
+          "speed" : 30,
+          "bounces" : 0,
+          "physics" : "default",
+          "timeToLive" : 2.2
+        },
+        "innerRadius" : 2
+      }
+    }
+  },
+
+  "animationParameters" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "electricBurst" : {
+          "default" : "off",
+          "states" : {
+            "off" : {
+            },
+            "on" : {
+              "properties" : {
+                "persistentSound" : "/sfx/objects/plasmadisc.ogg"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "electricBurst" : [ "/sfx/npc/boss/crystalboss_beamout.ogg" ]
+    }
+  }
+}

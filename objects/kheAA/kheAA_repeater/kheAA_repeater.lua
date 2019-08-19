@@ -2,8 +2,8 @@ require "/scripts/kheAA/transferUtil.lua"
 
 function init()
 	transferUtil.init()
-	storage.inContainers={}
-	storage.outContainers={}
+	transferUtil.vars.inContainers={}
+	transferUtil.vars.outContainers={}
 end
 
 function update(dt)
@@ -14,5 +14,5 @@ function update(dt)
 	deltatime=0
 	transferUtil.updateInputs();
 	transferUtil.updateOutputs();
-	object.setOutputNodeLevel(storage.inDataNode,util.tableSize(storage.outContainers))
+	object.setOutputNodeLevel(transferUtil.vars.inDataNode,util.tableSize(transferUtil.vars.outContainers))
 end

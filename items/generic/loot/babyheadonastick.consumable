@@ -7,18 +7,17 @@
   "description" : "Floran delicacy.",
   "shortdescription" : "Baby Head (on a stick)",
   "maxStack" : 1000,
-  "foodValue" : 50,
+  "foodValue" : 30,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 15,
   "effects" : [ [
+    "madnessgain05",
     {
         "effect" : "negativehealth5",
         "duration" : 10
     }
   ] ],
-  "blockingEffects" : [
-     "wellfed"
-  ]
+  "blockingEffects" : ["wellfed","negativehealth5"]
 }
