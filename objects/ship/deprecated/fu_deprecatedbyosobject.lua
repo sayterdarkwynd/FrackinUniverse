@@ -7,6 +7,15 @@ function init()
 end
 
 function onInteraction(args)
+	object.smash(true)
+end
+
+function die(...)
+	if oldDie then oldDie(...) end
+	dispense()
+end
+
+function dispense()
 	object.setConfigParameter("breakDropPool", "empty")
 	object.setInteractive(false)
 	
@@ -18,11 +27,4 @@ function onInteraction(args)
 		end
 		break
 	end
-	
-	object.smash(true)
-end
-
-function die(...)
-	if oldDie then oldDie(...) end
-	onInteraction(...)
 end
