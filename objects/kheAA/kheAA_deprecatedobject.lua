@@ -17,3 +17,8 @@ function onInteraction(args)
 	
 	object.smash(true)
 end
+
+
+function die(...)
+	onInteraction(...)
+end
