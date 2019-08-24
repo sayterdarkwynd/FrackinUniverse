@@ -1,10 +1,10 @@
 {
-  "objectName": "fu_booster_tiny",
+  "objectName": "fu_booster_medium",
   "colonyTags": ["byos"],
   "scannable": false,
-  "rarity": "Common",
-  "description": "^red;This item was deprecated. Place and interact or break to get the items used to make this back.^reset;",
-  "shortdescription": "^red;DEPRECATED OBJECT^reset;",
+  "rarity": "uncommon",
+  "description": "^red;This item was deprecated. Place and break to get the items used to make this back.^reset;",
+  "shortdescription": "^red;DEPRECATED^reset; Medium Ship Booster",
   "race": "generic",
   
   "apexDescription": "A booster. These have been known to malfunction and explode.",
@@ -24,14 +24,33 @@
   "inventoryIcon": "/objects/ship/fu_thrustericon.png",
   "orientations": [
     {
-      "image": "/objects/ship/fu_booster_tiny/fu_booster_tiny.png:on.1",
-      "imagePosition": [0, -16],
-      "animationPosition": [0, -16],
-      "animationParts": {"booster": "/objects/ship/fu_booster_tiny/fu_booster_tiny.png"},
+      "image": "/objects/ship/fu_booster_medium/fu_booster_medium.png:on.1",
+      "imagePosition": [-32, -32],
+      "animationPosition": [-32, -32],
+      "animationParts": {"booster": "/objects/ship/fu_booster_medium/fu_booster_medium.png"},
       "flipImages": true,
       "anchors": ["top"],
       "spaces":[
-         [ 0,  0],[ 0, -1],[ 0, -2]
+         [-4, 0],[-4, -1],[-4, -2],[-4, -3],[-4, -4],
+         [-3, 0],[-3, -1],[-3, -2],[-3, -3],[-3, -4],
+         [-2, 0],[-2, -1],[-2, -2],[-2, -3],[-2, -4],
+         [-1, 0],[-1, -1],[-1, -2],[-1, -3],[-1, -4],
+         [ 0, 0],[ 0, -1],[ 0, -2],[ 0, -3],[ 0, -4]
+      ]
+    },
+    {
+      "image": "/objects/ship/fu_booster_medium/fu_booster_mediumFlip.png:on.1",
+      "imagePosition": [-32, 0],
+      "animationPosition": [-32, 0],
+      "animationParts": {"booster": "/objects/ship/fu_booster_medium/fu_booster_mediumFlip.png"},
+      "flipImages": true,
+      "anchors": ["bottom"],
+      "spaces":[
+         [-4, 0],[-4, 1],[-4, 2],[-4, 3],[-4, 4],
+         [-3, 0],[-3, 1],[-3, 2],[-3, 3],[-3, 4],
+         [-2, 0],[-2, 1],[-2, 2],[-2, 3],[-2, 4],
+         [-1, 0],[-1, 1],[-1, 2],[-1, 3],[-1, 4],
+         [ 0, 0],[ 0, 1],[ 0, 2],[ 0, 3],[ 0, 4]
       ]
     }
   ],
@@ -41,7 +60,7 @@
   "animation": "/objects/ship/boosters/boosterflame.animation",
   
   "soundEffect": "/sfx/objects/smallboosterflame.ogg",
-  "soundEffectRangeMultiplier": 0.25,
+  "soundEffectRangeMultiplier": 1.0,
   
   "scripts": [
     "/objects/ship/boosters/boosterflame.lua",
@@ -57,8 +76,8 @@
       [1.75, 0.5],
       [1.75, 1]
     ],
-    "damage": 50,
-    "knockback": 25,
+    "damage": 400,
+    "knockback": 128,
     "damageType": "Environment",
     "damageSourceKind": "plasma"
   },
@@ -70,7 +89,7 @@
     "arriving": "turnOn"
   },
   "stats": {
-    "shipSpeed": 8
+    "shipSpeed": 48
   }, 
   "byosOnly": true
 }

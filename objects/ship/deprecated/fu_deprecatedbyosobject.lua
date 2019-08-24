@@ -3,12 +3,12 @@ local oldDie=die
 
 function init()
 	if oldInit then oldInit() end
-	object.setInteractive(true)
+	--object.setInteractive(true)
 end
 
-function onInteraction(args)
+--[[function onInteraction(args)
 	object.smash(true)
-end
+end]]
 
 function die(...)
 	if oldDie then oldDie(...) end
