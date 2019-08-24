@@ -12,11 +12,7 @@ end
 
 function die(...)
 	if oldDie then oldDie(...) end
-	dispense()
-end
-
-function dispense()
-	object.setConfigParameter("breakDropPool", "empty")
+		object.setConfigParameter("breakDropPool", "empty")
 	object.setInteractive(false)
 	
 	local dummy=root.recipesForItem(object.name())
