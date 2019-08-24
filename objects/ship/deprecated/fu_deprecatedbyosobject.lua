@@ -1,4 +1,5 @@
 local oldInit=init
+local oldDie=die
 
 function init()
 	if oldInit then oldInit() end
@@ -19,4 +20,9 @@ function onInteraction(args)
 	end
 	
 	object.smash(true)
+end
+
+function die(...)
+	if oldDie then oldDie(...) end
+	onInteraction(...)
 end
