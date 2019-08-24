@@ -1,22 +1,22 @@
 {
-  "itemName" : "woodenmace",
-  "price" : 5,
+  "itemName" : "fu_wrenchweapon",
+  "price" : 80,
   "level" : 1,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "It's a piece of wood. You whack things with it.",
-  "shortdescription" : "Wooden Club",
-  "tooltipKind" : "hammervanilla",
+  "description" : "Delivers a hefty whack, perfect for beating disobedient machinery into order.",
+
+  "shortdescription" : "Wrench",
+  "tooltipKind" : "hammer",
   "category" : "mace",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
 
-  "inventoryIcon" : "woodenclub_ashey.png",
-  "collectablesOnPickup" : { "fu_weaponmace" : "woodenmace" },
+  "inventoryIcon" : "wrench.png",
   "animation" : "combomace.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "woodenclub_ashey.png"
+    "blade" : "wrench.png"
   },
   "animationCustom":{},
 
@@ -26,12 +26,12 @@
 
   "primaryAbilityType" : "macecombo",
   "primaryAbility":{
-    "fireTime":0.75, 
-    "baseDps":8.2
+    "fireTime":0.83, 
+    "baseDps":5.8
   },
-  "critChance" : 1,
-  "critBonus" : 3,
-  "stunChance" : 20,
+  "critChance" : 3,
+  "critBonus" : 0,
+  "stunChance" : 100,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }
