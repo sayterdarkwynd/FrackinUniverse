@@ -1,24 +1,24 @@
 {
-  "itemName" : "telebriumrifle",
+  "itemName" : "telebriumsniperrifle",
   "price" : 102,
-  "inventoryIcon" : "telebriumrifle.png",
+  "inventoryIcon" : "telebriumsniperrifle.png",
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "Poisonous rounds are handy in a pinch.
 ^cyan;Fast projectiles^reset;",
-  "shortdescription" : "Telebrium Carbine",
-  "category" : "assaultRifle",
+  "shortdescription" : "Telebrium Sniper Rifle",
+  "category" : "sniperRifle",
   "level" : 2,
   "tooltipKind" : "gun2",
-  "weaponType" : "assaultRifle",
-  "itemTags" : ["weapon","ranged","upgradeableWeapon", "assaultrifle"],
+  "weaponType" : "sniperRifle",
+  "itemTags" : ["weapon","ranged","upgradeableWeapon", "sniperrifle"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "telebriumrifle.png",
-    "middlefullbright" : "telebriumriflefullbright.png",
+    "middle" : "telebriumsniperrifle.png",
+    "middlefullbright" : "telebriumsniperriflefullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/greenstuffmuzzle.png"
   },
@@ -56,17 +56,17 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.2,
-    "baseDps" : 8.45,
-    "energyUsage" : 30.0,
-    "inaccuracy" : 0.005,
+    "fireTime" : 2,
+    "baseDps" : 8,
+    "energyUsage" : 50.0,
+    "inaccuracy" : 0,
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "poisonguardianpellet",
     "projectileParameters" : {
-      "speed" : 75,
-      "knockback" : 3
+      "speed" : 125,
+      "knockback" : 12
     },
 	  "stances" : {
 	    "idle" : {
@@ -113,19 +113,19 @@
 
 
   "altAbility" : {
-    "name" : "Telebrium Bomb",
+    "name" : "Telebrium Blast",
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : 1,
-    "baseDps" : 10,
-    "energyUsage" : 44,
-    "inaccuracy" : 0,
+    "fireTime" : 3,
+    "baseDps" : 6,
+    "energyUsage" : 100,
+    "inaccuracy" : 0.07,
     "fireType" : "auto",
     "timeToLive" : 1.5,
     "projectileType" : "magnorbmoonstone",
 
-    "projectileCount" : 1,
+    "projectileCount" : 6,
 
     "stances" : {
       "idle" : {

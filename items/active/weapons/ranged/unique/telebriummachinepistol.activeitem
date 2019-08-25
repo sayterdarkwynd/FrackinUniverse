@@ -1,24 +1,23 @@
 {
-  "itemName" : "telebriumpistol",
+  "itemName" : "telebriummachinepistol",
   "price" : 80,
-  "inventoryIcon" : "telebriumpistol.png",
+  "inventoryIcon" : "telebriummachinepistol.png",
     "maxStack" : 1,
     "rarity" : "common",
-  "shortdescription" : "Telebrium Pistol",
-  "description" : "Poisonous rounds are handy in a pinch.
-^cyan;Fast projectiles^reset;",
+  "shortdescription" : "Telebrium SMG",
+  "description" : "Rapid fire poison-tipped rounds.",
   "level" : 2,
-  "category" : "Pistol",
-  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon"],
+  "category" : "machinePistol",
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
-  "weaponType" : "Pistol",
+  "weaponType" : "machinePistol",
   
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "telebriumpistol.png",
-    "middlefullbright" : "telebriumpistolfullbright.png",
+    "middle" : "telebriummachinepistol.png",
+    "middlefullbright" : "telebriummachinepistolfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/greenstuffmuzzle.png"
   },      
@@ -57,17 +56,13 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.5,
-    "baseDps" : 5,
+    "fireTime" : 0.08,
+    "baseDps" : 3,
     "energyUsage" : 22,
     "fireType" : "auto",
-    "inaccuracy" : 0.001,
+    "inaccuracy" : 0.004,
     "projectileCount" : 1,
-    "projectileType" : "poisonguardianpellet",
-    "projectileParameters" : {
-      "speed" : 75,
-      "knockback" : 3
-    },
+    "projectileType" : "telebriumbouncer2",
     "stances" : {
       "idle" : {
         "armRotation" : 0,
