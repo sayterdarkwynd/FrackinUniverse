@@ -101,6 +101,10 @@ function effectUtil.effectAllInRange(effect,range,duration)
 	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration)
 end
 
+function effectUtil.effectAllOfTeamInRange(effect,range,duration,team)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,team)
+end
+
 function effectUtil.effectAllEnemiesInRange(effect,range,duration)
 	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"enemy")
 end
@@ -123,8 +127,12 @@ end
 
 function effectUtil.effectTarget(id,effect,duration)
 	if world.entityExists(id) then
-		world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
-		return true
+		if not effect or effect=="" then
+			return false
+		else
+			world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
+			return true
+		end
 	else
 		return false
 	end

@@ -1,0 +1,624 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 2,
+            "properties" : {
+              //"immediateSound" : "/sfx/npc/boss/robotboss_idle1.ogg",
+              //"immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOff" : [ "chargeUp", "teslaUp","rocketUp" ]
+            }            
+          },
+          "hurt" : {
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/boss/robotboss_pain1.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOff" : [ "chargeUp", "teslaUp","rocketUp" ]
+            }            
+          },          
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 1.2,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "teslaUp","rocketUp" ]
+            }            
+          },
+          "jump" : {
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/tech/mech_jump1.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOff" : [ "chargeUp", "teslaUp","rocketUp" ]
+            }
+          },
+          "fall" : {
+            "frames" : 1
+          },
+          "chargewindup" : {
+            "frames" : 3,
+            "cycle" : 0.45,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "chargeUp", "teslaUp","rocketUp" ],
+              "immediateSound" : "/sfx/melee/charge_traildash1.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            }            
+          },           
+          "charge" : {
+            "frames" : 4,
+            "cycle" : 0.6,
+
+            "mode" : "loop",
+            "properties" : {
+            "immediateSound" : "/sfx/npc/boss/robotboss_turnhostile.ogg",
+            "immediateSoundRangeMultiplier" : 0.5,
+            "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
+            }
+          },          
+          "chargewinddown" : {
+            "frames" : 3,
+            "cycle" : 0.45,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/tech/mech_powerdown.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
+            }            
+          },
+          "firewindup" : {
+            "frames" : 3,
+            "cycle" : 1.58,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_up1.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOn" : [ "chargeUp" ],
+              "particleEmittersOff" : [ "teslaUp","rocketUp" ]
+            }
+          },
+          "fire" : {
+            "frames" : 1,
+            "cycle" : 0.5,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/tech/mech_powerdown.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
+            }
+          },
+          "firewinddown" : {
+            "frames" : 3,
+            "cycle" : 0.45,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/tech/mech_powerdown.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOff" : [ "chargeUp", "teslaUp", "rocketUp" ]
+            }
+          }, 
+          "teslawindup" : {
+            "frames" : 3,
+            "cycle" : 1.32,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_up8.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOn" : [ "teslaUp" ],
+              "particleEmittersOff" : [ "chargeUp","rocketUp" ]
+            }
+          }, 
+          "wavewindup" : {
+            "frames" : 3,
+            "cycle" : 1.58,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/melee/charge_up5.ogg",
+              "immediateSoundRangeMultiplier" : 0.5,
+              "particleEmittersOn" : [ "rocketUp" ],
+              "particleEmittersOff" : [ "teslaUp","chargeUp" ]
+            }
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1,
+            "cycle" : 0.01
+          },
+          "stunned" : {
+            "frames" : 1,
+            "cycle" : 0.01
+          }
+        }
+      },
+
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "zLevel" : 10,
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.5, 0.75]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            },            
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:firewindup.<frame>"
+              }
+            },             
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },       
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
+              }
+            },
+            "teslawindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            }, 
+            "wavewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      } 
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "particleEmitters" : {
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "electricswoosh1" },
+        { "particle" : "electricswoosh2" },
+        { "particle" : "electricswoosh1" },
+        { "particle" : "electricswoosh2" },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/plasmapoof/plasmapoof.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/robotshock/robotshock.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.75,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/yellowrobotshard.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [-8, 8],
+            "finalVelocity" : [-3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [-4, 2],
+              "finalVelocity" : [-3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/yellowrobotshard.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [8, 8],
+            "finalVelocity" : [3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4, 2],
+              "finalVelocity" : [3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/yellowrobotshard.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [-8, 8],
+            "finalVelocity" : [-3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [-4, 2],
+              "finalVelocity" : [-3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/yellowrobotshard.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [8, 8],
+            "finalVelocity" : [3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4, 2],
+              "finalVelocity" : [3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/yellowrobotshard.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [-8, 8],
+            "finalVelocity" : [-3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [-4, 2],
+              "finalVelocity" : [-3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/yellowrobotshard.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [8, 8],
+            "finalVelocity" : [3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4, 2],
+              "finalVelocity" : [3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/yellowrobotshard.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [-8, 8],
+            "finalVelocity" : [-3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [-4, 2],
+              "finalVelocity" : [-3, -4]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/shards/yellowrobotshard.animation",
+            "size" : 1,
+            "angularVelocity" : 20,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [8, 8],
+            "finalVelocity" : [3, -4],
+            "approach" : [15, 15],
+            "timeToLive" : 3.45,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [4, 2],
+              "finalVelocity" : [3, -4]
+            }
+          }
+        }
+      ]
+    },
+    "chargeUp" : {
+      "particles" : [
+        { "particle" : "fireaura" },
+        { "particle" : "iceaura" },
+        { "particle" : "yellowgas" },
+        { "particle" : "yellowgas" },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/energybeamimpact/basicminerimpact.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 0.7,
+            "destructionTime" : 1,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/energybeamimpact/hybridminerimpact3.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 0.7,
+            "destructionTime" : 1,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.75,
+            "layer" : "middle"
+          }
+        }
+      ]
+    },  
+    "teslaUp" : {
+      "particles" : [
+        { "particle" : "discardedbullet" },
+        { "particle" : "discardedbullet" },
+        { "particle" : "discardedbullet" },
+        { "particle" : "discardedbullet" },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/firecharge/firecharge.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/crystaltrail/crystaltrail.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.75,
+            "layer" : "middle"
+          }
+        }
+      ]
+    },    
+    "rocketUp" : {
+      "particles" : [
+        { "particle" : "discardedbullet" },
+        { "particle" : "discardedbullet" },
+        { "particle" : "discardedbullet" },
+        { "particle" : "discardedbullet" },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/electriccharge/electriccharge.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.4,
+            "layer" : "middle"
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/erchiussmoke/erchiussmoke.animation",
+            "size" : 1,
+            "angularVelocity" : 35,
+            "fade" : 1,
+            "destructionTime" : 7,
+            "position" : [0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1, 1],
+            "timeToLive" : 0.75,
+            "layer" : "middle"
+          }
+        }
+      ]
+    },     
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    
+    
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "levelUp" : {
+      "particles" : [
+        { "particle" : "monsterlevelup" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ "/sfx/npc/boss/robotboss_turnhostile.ogg" ],
+    "idle" :["/sfx/npc/boss/robotboss_idle1.ogg"],
+    "attack" :["/sfx/weapons/dark-explosion.ogg"],
+    "melee" :["/sfx/npc/boss/robotboss_turnhostile.ogg"],
+    "wallCrash" :["/sfx/npc/boss/robotboss_pain2.ogg"],
+    "pain1" :["/sfx/npc/boss/robotboss_pain1.ogg"],
+    "pain2" :["/sfx/npc/boss/robotboss_pain2.ogg"],
+    "pain3" :["/sfx/npc/boss/robotboss_pain3.ogg"],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg"  ]
+    
+  }
+}

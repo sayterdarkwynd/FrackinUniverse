@@ -3,8 +3,8 @@
   "colonyTags": ["byos"],
   "scannable": false,
   "rarity": "rare",
-  "description": "A large sub-light thruster. Greatly increases interplanetary travel speed.\n^yellow;Ship Speed: +96\n^cyan;BYOS Only^white;",
-  "shortdescription": "Large Ship Booster",
+  "description": "^red;This item was deprecated. Place and break to get the items used to make this back.^reset;",
+  "shortdescription": "^red;DEPRECATED^reset; Large Ship Booster",
   "race": "generic",
   
   "apexDescription": "A booster. These have been known to malfunction and explode.",
@@ -24,10 +24,10 @@
   "inventoryIcon": "/objects/ship/fu_thrustericon.png",
   "orientations": [
     {
-      "image": "fu_booster_large.png:on.1",
+      "image": "/objects/ship/fu_booster_large/fu_booster_large.png:on.1",
       "imagePosition": [-56, -40],
       "animationPosition": [-56, -40],
-      "animationParts": {"booster": "fu_booster_large.png"},
+      "animationParts": {"booster": "/objects/ship/fu_booster_large/fu_booster_large.png"},
       "flipImages": true,
       "anchors": ["top"],
       "spaces":[
@@ -43,10 +43,10 @@
       ]
     },
     {
-      "image": "fu_booster_largeFlip.png:on.1",
+      "image": "/objects/ship/fu_booster_large/fu_booster_largeFlip.png:on.1",
       "imagePosition": [-56, 0],
       "animationPosition": [-56, 0],
-      "animationParts": {"booster": "fu_booster_largeFlip.png"},
+      "animationParts": {"booster": "/objects/ship/fu_booster_large/fu_booster_largeFlip.png"},
       "flipImages": true,
       "anchors": ["bottom"],
       "spaces":[
@@ -72,7 +72,8 @@
   
   "scripts": [
     "/objects/ship/boosters/boosterflame.lua",
-    "/objects/ship/fu_shipstatmodifier.lua"
+    "/objects/ship/fu_shipstatmodifier.lua",
+    "/objects/ship/deprecated/fu_deprecatedbyosobject.lua"
   ],
   "scriptDelta": 32,
   

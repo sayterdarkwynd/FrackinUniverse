@@ -14,6 +14,8 @@ function init()
     {stat = "physicalResistance", amount = 100.0},
     {stat = "radioactiveResistance", amount = 100.0},
     {stat = "shadowResistance", amount = 100.0},
+    {stat = "akkimariacidResistance", amount = 100.0},
+    {stat = "centensianenergyResistance", amount = 100.0},
     {stat = "cosmicResistance", amount = 100.0}
   })
 end

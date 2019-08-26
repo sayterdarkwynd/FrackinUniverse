@@ -1,0 +1,47 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "base" : {
+        "default" : "off",
+        "states" : {
+          "off" : {"frames" : 1, "mode" : "loop"},
+          "powerup" : {"frames" : 1, "mode" : "transition", "transition" : "powered"},
+          "powered" : {"frames" : 4, "mode" : "loop"},
+		  "powerdown" : {"frames" : 1, "mode" : "transition", "transition" : "off"}
+        }
+      }
+    },
+
+    "parts" : {
+      "base" : {
+	"properties" : {
+	"zLevel" : 2,
+	"centered" : false,
+	"fullbright" : true 
+	},
+        "partStates" : {
+          "base" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+            "powerup" : {"properties" : {"image" : "<partImage>:powerup.<frame>"}},
+            "powered" : {"properties" : {"image" : "<partImage>:powered.<frame>"}},
+			"powerdown" : {"properties" : {"image" : "<partImage>:powerdown.<frame>"}}
+          }
+        }
+      },
+      "fullbright" : {
+	"properties" : {
+	"zLevel" : 3,
+	"centered" : false
+	},
+        "partStates" : {
+          "base" : {
+            "off" : {"properties" : {"image" : "<partImage>:off"}},
+            "powerup" : {"properties" : {"image" : "<partImage>:powerup.<frame>"}},
+            "powered" : {"properties" : {"image" : "<partImage>:powered.<frame>"}},
+			"powerdown" : {"properties" : {"image" : "<partImage>:powerdown.<frame>"}}
+          }
+        }
+      }      
+    }
+  }
+}
