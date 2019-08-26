@@ -1,25 +1,25 @@
 {
-  "itemName" : "densiniumrifle",
+  "itemName" : "densiniumsniper",
   "price" : 160,
-  "inventoryIcon" : "densiniumrifle.png",
+  "inventoryIcon" : "densiniumsniper.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Superior weaponry offering unsurpassed utility.
-^yellow;4-round bursts^reset;
+  "description" : "Two high-powered energy shots to ensure a confirmed kill.
+^yellow;2-round high powered bursts^reset;
 ^green;Piercing alt-fire^reset;",
-    "shortdescription" : "Densinium Rifle",
-  "category" : "energy",
+    "shortdescription" : "Densinium Sniper Rifle",
+  "category" : "sniperRifle",
   "level" : 6,
   "tooltipKind" : "gun2",
-  "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "densinium", "upgradeableWeapon"],
+  "weaponType" : "Sniper Rifle",
+  "itemTags" : ["weapon","ranged","sniperrifle","energy","densinium", "upgradeableWeapon"],
   "twoHanded" : true,
   
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "densiniumrifle.png",
-    "middlefullbright" : "densiniumriflefullbright.png",
+    "middle" : "densiniumsniper.png",
+    "middlefullbright" : "densiniumsniper_fullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
@@ -28,7 +28,7 @@
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-		    "offset" : [1.25, 0.1875]
+		    "offset" : [1.1875, 0.1875]
 		  }
 		}
       }
@@ -38,31 +38,32 @@
     }
   },
 
-  "baseOffset" : [1.25, 0.1875],
-  "muzzleOffset" : [2.375, 0.25],
+  "baseOffset" : [1.1875, 0.1875],
+  "muzzleOffset" : [3.0625, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
-    "class" : "GunFireFixed",
-    "fireTime" : 0.11,
-    "baseDps" : 8.7,
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.1,
+    "baseDps" : 10.5,
     "useEnergy" : true,
-    "energyUsage" : 30.5,
+    "energyUsage" : 42.5,
     "runSlowWhileShooting" : true,
-    "burstCooldown" : 0.4,
-    "inaccuracy" : 0.012,
-    "burstTime" : 0.075,
-    "burstCount" : 4,
+    "burstCooldown" : 0.35,
+    "inaccuracy" : 0,
+    "burstTime" : 0.065,
+    "burstCount" : 2,
     "projectileCount" : 1,
     "fireType" : "burst",
 
     "projectileType" : "densiniumrifleshot",
     "projectileParameters" : { 
-      "knockback" : 4
+	  "speed" : 100,
+	  "knockback" : 8
     },
 	  "stances" : {
 	    "idle" : {
@@ -75,17 +76,17 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 4,
-	      "weaponRotation" : 4,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
 	      "twoHanded" : true,
 
 	      "allowRotate" : true,
 	      "allowFlip" : true
 	    },
 	    "cooldown" : {
-	      "duration" : 0.055,
-	      "armRotation" : 4,
-	      "weaponRotation" : 4,
+	      "duration" : 0.065,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -94,9 +95,9 @@
 	  }
   },
 
-  "critChance" : 3,
-  "critBonus" : 6,
-  "altAbilityType" : "densiniumaltshot",
+  "critChance" : 4,
+  "critBonus" : 8,
+  "altAbilityType" : "markedshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
