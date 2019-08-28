@@ -1,4 +1,7 @@
-require("/scripts/vec2.lua")
+require "/scripts/util.lua"
+require "/scripts/rect.lua"
+require "/scripts/vec2.lua"
+
 function init()
   self.tookDamage = false
   self.dead = false
@@ -15,7 +18,7 @@ function init()
   self.willFall = false
   self.hadTarget = false
 
-  self.queryTargetDistance = config.getParameter("queryTargetDistance", 30)
+  self.queryTargetDistance = config.getParameter("queryTargetDistance", 120)
   self.trackTargetDistance = config.getParameter("trackTargetDistance")
   self.switchTargetDistance = config.getParameter("switchTargetDistance")
   self.keepTargetInSight = config.getParameter("keepTargetInSight", true)

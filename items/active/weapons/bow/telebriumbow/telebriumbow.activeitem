@@ -1,0 +1,66 @@
+{
+  "itemName" : "telebriumbow",
+  "level" : 2,
+  "price" : 100,
+  "inventoryIcon" : "telebriumbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "common",
+  "tooltipKind" : "bow",
+  "weaponType" : "Bow",
+  "description" : "Poison-tipped arrows.
+^cyan;Alt-Fire redirects arrow",
+  "shortdescription" : "Telebrium Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
+  "animationParts" : {
+    "bow" : "telebriumbow.png",
+    "bowfullbright" : "telebriumbowfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { 
+    "parts" : { 
+     "bow" : { 
+       "properties" : {
+          "offset" : [-0.1, 0]
+          }
+        },
+     "bowfullbright" : { 
+       "properties" : {
+          "offset" : [-0.1, 0]
+          }
+        }        
+      }     
+    },
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "poison",
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "bowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "telebriumarrow",
+    "powerProjectileType" : "telebriumchargedarrow",
+    "projectileParameters" : {
+      "power" : 6.8
+    }
+  },
+
+  "altAbilityType" : "zenshot",
+
+  "critChance" : 3,
+  "critBonus" : 3,
+  "builder" : "/items/buildscripts/buildbow.lua"
+}
