@@ -11,12 +11,18 @@ function init()
 	widget.addListItem("scrollArea.itemList")
 	filterText = "";
 	--widget.focus("filterBox")
+	maxChecksPerUpdate = config.getParameter("maxChecksPerUpdate", 1000)
 	refresh()
 end
 
 
 function update(dt)
 	deltatime=deltatime+dt;
+	
+	if refreshingList and coroutine.status(refreshingList) ~= "dead" then
+		coroutine.resume(refreshingList)
+	end
+	
 	if promise~=nil and promise:finished() then
 		if promise:succeeded() then
 			local res=promise:result();
@@ -56,13 +62,13 @@ function refresh()
 			containerFound(entId,pos)
 		end
 	end
-	refreshList()
+	refreshingList = coroutine.create(refreshList)
 end
 
 function clearInputs()
 	widget.setText("filterBox", "");
 	widget.setText("requestAmount", "");
-	refreshList();
+	refreshingList = coroutine.create(refreshList);
 end
 
 function containerFound(containerID,pos)
@@ -77,7 +83,7 @@ function containerFound(containerID,pos)
 		local conf = root.itemConfig(item, item.level or nil, item.seed or nil)
 		table.insert(items, {{containerID, index}, item, conf,pos})
 	end
-	refreshList()
+	refreshingList = coroutine.create(refreshList)
 	return true
 end
 
@@ -137,12 +143,16 @@ function refreshList()
 			pcall(getIcon, item, conf, listItem);
 			listItems[listItem] = items[i];
 		end
+		
+		if i % maxChecksPerUpdate == 0 then
+			coroutine.yield()
+		end
 	end
 end
 
 function filterBox()
 	filterText = widget.getText("filterBox");
-	refreshList();
+	refreshingList = coroutine.create(refreshList);
 end
 
 function request()
@@ -157,7 +167,7 @@ function request()
 
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 				table.remove(items, i);
-				refreshList();
+				refreshingList = coroutine.create(refreshList);
 				return;
 			end
 		end
@@ -170,7 +180,7 @@ function updateListItem(selectedItem, count)
 		deltatime=0
 	else
 		deltatime=29.9
-		refreshList();
+		refreshingList = coroutine.create(refreshList);
 	end
 end
 
