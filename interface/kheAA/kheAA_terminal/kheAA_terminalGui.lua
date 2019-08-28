@@ -11,7 +11,7 @@ function init()
 	widget.addListItem("scrollArea.itemList")
 	filterText = "";
 	--widget.focus("filterBox")
-	maxChecksPerUpdate = config.getParameter("maxChecksPerUpdate", 1000)
+	maxItemsAddedPerUpdate = config.getParameter("maxItemsAddedPerUpdate", 1000)
 	refresh()
 end
 
@@ -144,7 +144,7 @@ function refreshList()
 			listItems[listItem] = items[i];
 		end
 		
-		if i % maxChecksPerUpdate == 0 then
+		if i % maxItemsAddedPerUpdate == 0 then
 			coroutine.yield()
 		end
 	end
