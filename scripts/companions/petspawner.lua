@@ -156,23 +156,64 @@ function Pet:getPersistentEffects()
   -- The player's armor takes effect if the player is spawning the pet:
   if getPetPersistentEffects then
     util.appendLists(effects, getPetPersistentEffects())
+    
     -- ~Psi:  Provide a bonus to the pet's base max health, and some minor regen, so it sucks less:
     -- ~Psi:  Total bonus is x4, but we only multiply by 3, since the player's bonusHealth has already been added once
     local playerHealthBonus = world.entityHealth(player.id())[2]
     playerHealthBonus = playerHealthBonus - 100
     if playerHealthBonus < 10 then playerHealthBonus = 10 end
     local petHealthBonus = playerHealthBonus * 3
+    
+    
+    
+    --************* FU special pet stats
+    local playerProtectionBonus = 0
+    for _, armourEffect in ipairs (effects) do
+        if armourEffect.stat == "protection" then
+            playerProtectionBonus = playerProtectionBonus + armourEffect.amount
+            petHealthBonus = (playerHealthBonus + playerProtectionBonus ) * 1.5 --we add the current Protection of the player x1.5 as bonus health
+        end
+    end
+    
+    --below stats are currently unused, as they need to be linked to update, or they will be permanent after summon, which isnt the intent for them
+    if config.getParameter("isNocturnal") then  --is it nocturnal?
+      if  world.lightLevel <=0.5 then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end       
+    end
+    if config.getParameter("isDiurnal") then -- does it prefer the day?
+      if world.lightLevel > 0.5 then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end    
+    end
+    if config.getParameter("isSurface") then -- does it prefer the surface?
+      if world.inSurfaceLayer then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end    
+    end    
+    if config.getParameter("isSubterrain") then -- does it prefer being underground?
+      if world.underground then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end
+    end	
+    if config.getParameter("isWindy") then -- does it prefer windy worlds?
+      if world.windLevel >=10 then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end
+    end	    
+    
     -- New Regen formula
     -- https://www.desmos.com/calculator/mmv4okrc6f
     local petRegenBonus = math.log(playerHealthBonus * 0.05 + 1) / math.log(10) * 5
-    -- Old Regen formula
-    -- local petRegenBonus = playerHealthBonus * 0.05
+    
     -- Health Bonus
     util.appendLists(effects, {{stat="maxHealth",amount=petHealthBonus},{stat="healthRegen",amount=petRegenBonus}})
+    
     -- ~Psi:  Debugging info
     sb.setLogMap("~[Pet Stats] playerHealthBonus", "%s", tostring(playerHealthBonus))
     sb.setLogMap("~[Pet Stats] petHealthBonus", "%s", tostring(petHealthBonus + playerHealthBonus))
     sb.setLogMap("~[Pet Stats] petRegenBonus", "%s", tostring(petRegenBonus))
+    
   end
 
   -- Collars applied to the capturepod also take effect:

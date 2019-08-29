@@ -1,21 +1,21 @@
 {
-  "itemName" : "fushadowdagger",
-  "price" : 40,
+  "itemName" : "penumbritedagger",
+  "price" : 90,
   "maxStack" : 1,
   "level" : 3,
-  "rarity" : "rare",
-  "description" : "Shadow-forged dagger
+  "rarity" : "uncommon",
+  "description" : "Forged from lustrous penumbrite.
 ^cyan;Shadow Damage^reset;",
-  "shortdescription" : "Shadeclaw",
+  "shortdescription" : "Penumbral Dagger",
   "tooltipKind" : "sword2",
   "category" : "dagger",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","shadow", "upgradeableWeapon"],
-  "inventoryIcon" : "shadowdagger.png",
+  "itemTags" : ["weapon","melee","dagger","penumbrite", "upgradeableWeapon"],
+  "inventoryIcon" : "penumbritedagger.png",
   "animation" : "daggerglow.animation",
   "animationParts" : {
-    "blade" : "shadowdagger.png",
-    "bladefullbright" : "shadowdagger.png",
+    "blade" : "penumbritedagger.png",
+    "bladefullbright" : "penumbritedaggerfullbright.png",
     "handle" : ""
   },
   "animationCustom" : {
@@ -37,11 +37,10 @@
     "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
     "class" : "MeleeSlash",
     "fireTime" : 0.35,
-    "baseDps" : 7.24,
+    "baseDps" : 6.5,
     "damageConfig" : {
       "knockback" : 10,
-	  "damageSourceKind" : "shadowdagger",
-      "statusEffects" : [ "shadowgasfx" ]
+      "damageSourceKind" : "shadow"
     },
     "stances" : {
       "idle" : {
