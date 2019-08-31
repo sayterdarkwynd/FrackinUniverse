@@ -11,12 +11,20 @@ function init()
 	widget.addListItem("scrollArea.itemList")
 	filterText = "";
 	--widget.focus("filterBox")
+	maxItemsAddedPerUpdate = config.getParameter("maxItemsAddedPerUpdate", 5000)
+	maxSortsPerUpdate = config.getParameter("maxSortsPerUpdate", 50000)
 	refresh()
 end
 
 
 function update(dt)
 	deltatime=deltatime+dt;
+	
+	if refreshingList and coroutine.status(refreshingList) ~= "dead" then
+		local a, b = coroutine.resume(refreshingList)
+		--sb.logInfo(tostring(a).." : "..tostring(b))
+	end
+	
 	if promise~=nil and promise:finished() then
 		if promise:succeeded() then
 			local res=promise:result();
@@ -56,13 +64,13 @@ function refresh()
 			containerFound(entId,pos)
 		end
 	end
-	refreshList()
+	refreshingList = coroutine.create(refreshList)
 end
 
 function clearInputs()
 	widget.setText("filterBox", "");
 	widget.setText("requestAmount", "");
-	refreshList();
+	refreshingList = coroutine.create(refreshList);
 end
 
 function containerFound(containerID,pos)
@@ -77,17 +85,8 @@ function containerFound(containerID,pos)
 		local conf = root.itemConfig(item, item.level or nil, item.seed or nil)
 		table.insert(items, {{containerID, index}, item, conf,pos})
 	end
-	refreshList()
+	refreshingList = coroutine.create(refreshList)
 	return true
-end
-
-
-function sortByName(itemA, itemB)
-	local sort = getName(itemA[3].config.shortdescription) < getName(itemB[3].config.shortdescription);
-	if itemA[3].config.shortdescription == itemB[3].config.shortdescription then
-		sort = itemA[2].count < itemB[2].count;
-	end
-	return sort;
 end
 
 function getName(fullName)
@@ -118,7 +117,8 @@ end
 function refreshList()
 	listItems = {};
 	widget.clearListItems(itemList);
-	table.sort(items, sortByName);
+	j = 1
+	quicksort(items, 1, #items)
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
@@ -137,12 +137,16 @@ function refreshList()
 			pcall(getIcon, item, conf, listItem);
 			listItems[listItem] = items[i];
 		end
+		
+		if i % maxItemsAddedPerUpdate == 0 then
+			coroutine.yield()
+		end
 	end
 end
 
 function filterBox()
 	filterText = widget.getText("filterBox");
-	refreshList();
+	refreshingList = coroutine.create(refreshList);
 end
 
 function request()
@@ -157,7 +161,7 @@ function request()
 
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 				table.remove(items, i);
-				refreshList();
+				refreshingList = coroutine.create(refreshList);
 				return;
 			end
 		end
@@ -170,7 +174,7 @@ function updateListItem(selectedItem, count)
 		deltatime=0
 	else
 		deltatime=29.9
-		refreshList();
+		refreshingList = coroutine.create(refreshList);
 	end
 end
 
@@ -269,4 +273,43 @@ function formatpattern(str)
   local str = string.gsub(str,"%^","%%^")
   local str = string.gsub(str,"%$","%%$")
   return str
+end
+
+--Sorting code (copyed from https://github.com/mirven/lua_snippets/blob/master/lua/quicksort.lua and modifed slightly)
+function partition(array, left, right, pivotIndex)
+	local pivotValue = array[pivotIndex]
+	array[pivotIndex], array[right] = array[right], array[pivotIndex]
+	
+	local storeIndex = left
+	
+	for i =  left, right-1 do
+    	if sortByName(items[i], pivotValue) then
+	        array[i], array[storeIndex] = array[storeIndex], array[i]
+	        storeIndex = storeIndex + 1
+		end
+		array[storeIndex], array[right] = array[right], array[storeIndex]
+		
+		if j % maxSortsPerUpdate == 0 then
+			coroutine.yield()
+		end
+		j = j + 1
+	end
+	
+   return storeIndex
+end
+
+function quicksort(array, left, right)
+	if right > left then
+	    local pivotNewIndex = partition(array, left, right, left)
+	    quicksort(array, left, pivotNewIndex - 1)
+	    quicksort(array, pivotNewIndex + 1, right)
+	end
+end
+
+function sortByName(itemA, itemB)
+	local sort = getName(itemA[3].config.shortdescription) < getName(itemB[3].config.shortdescription);
+	if itemA[3].config.shortdescription == itemB[3].config.shortdescription then
+		sort = itemA[2].count < itemB[2].count;
+	end
+	return sort;
 end
