@@ -17,7 +17,7 @@ end
 
 function upgradeCost(itemConfig)
 	if itemConfig == nil then return 0 end
-	local newValue = (itemConfig.parameters.level or itemConfig.config.level) --cost is current level in upgrade modules
+	local newValue = (itemConfig.parameters.level or itemConfig.config.level) or 1--cost is current level in upgrade modules
 	return math.floor(newValue)
 end
 
