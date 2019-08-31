@@ -4,9 +4,7 @@ function init()
 	activeItem.setScriptedAnimationParameter(mementomori.deathPositionKey,status.statusProperty(mementomori.deathPositionKey))
 	script.setUpdateDelta(5)
 	promise=world.sendEntityMessage(activeItem.ownerEntityId(),"player.worldId")
-	--doesnt work...
-	--animator.setSoundPool("chime",{"/sfx/weapons/elderchime1.ogg"})
-	--animator.setSoundPool("break",{"/sfx/objects/vase_break_large1.ogg"})
+
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -25,23 +23,17 @@ function update(dt, fireMode, shiftHeld)
 		else
 			if fireMode=="primary" then
 				if teleportTimer == 0 then
-					 --[[if animator.hasSound("chime") then
-						animator.playSound("chime")
-					--else
-						--sb.logInfo("Chime missing")
-					end]]
+				  animator.playSound("chime")
 				end
 				teleportTimer=teleportTimer and teleportTimer+dt or dt
 				if teleportTimer >= 3 then
-					--[[if animator.hasSound("chime") then
-						animator.stopAllSounds("chime")
-					end]]
+					animator.stopAllSounds("chime")
 					local buffer=status.statusProperty(mementomori.deathPositionKey)
 					firing=(not not buffer) and (world.magnitude(buffer.position,world.entityPosition(activeItem.ownerEntityId())) > 20)
 					if firing then
-						--[[if animator.hasSound("break") then
-							animator.playSound("break")
-						end]]
+						
+						animator.playSound("break")
+						
 						status.addEphemeralEffect("blink")
 						status.addEphemeralEffect("cultistshieldAlwaysHidden",2.5)
 						status.addEphemeralEffect("nofalldamage",2.5)
@@ -58,9 +50,7 @@ function update(dt, fireMode, shiftHeld)
 					end
 				end
 			else
-				--[[if animator.hasSound("chime") then
-					animator.stopAllSounds("chime")
-				end]]
+				animator.stopAllSounds("chime")
 				teleportTimer=0
 			end
 		end
