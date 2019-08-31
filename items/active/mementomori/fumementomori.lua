@@ -25,23 +25,23 @@ function update(dt, fireMode, shiftHeld)
 		else
 			if fireMode=="primary" then
 				if teleportTimer == 0 then
-					 if animator.hasSound("chime") then
+					 --[[if animator.hasSound("chime") then
 						animator.playSound("chime")
-					else
-						sb.logInfo("Chime missing")
-					 end
+					--else
+						--sb.logInfo("Chime missing")
+					end]]
 				end
 				teleportTimer=teleportTimer and teleportTimer+dt or dt
 				if teleportTimer >= 3 then
-					if animator.hasSound("chime") then
+					--[[if animator.hasSound("chime") then
 						animator.stopAllSounds("chime")
-					end
+					end]]
 					local buffer=status.statusProperty(mementomori.deathPositionKey)
 					firing=(not not buffer) and (world.magnitude(buffer.position,world.entityPosition(activeItem.ownerEntityId())) > 20)
 					if firing then
-						if animator.hasSound("break") then
+						--[[if animator.hasSound("break") then
 							animator.playSound("break")
-						end
+						end]]
 						status.addEphemeralEffect("blink")
 						status.addEphemeralEffect("cultistshieldAlwaysHidden",2.5)
 						status.addEphemeralEffect("nofalldamage",2.5)
@@ -54,14 +54,13 @@ function update(dt, fireMode, shiftHeld)
 						status.addEphemeralEffect("nude",2.5)
 						status.addEphemeralEffect("energy_negative_100_hidden",2.5)
 						mcontroller.setPosition(buffer.position)
-						--uncomment after testin
 						item.consume(1)
 					end
 				end
 			else
-				if animator.hasSound("chime") then
+				--[[if animator.hasSound("chime") then
 					animator.stopAllSounds("chime")
-				end
+				end]]
 				teleportTimer=0
 			end
 		end
