@@ -31,7 +31,7 @@ end
 function explode()
 	if not exploded then
 		if poolData then
-			local stub=poolData[entType] and poolData[entType][subType] or poolData[entType] and poolData[entType]["all"] or poolData["all"]
+			local stub=poolData[entType] and poolData[entType][subType] or poolData[entType] and poolData[entType]["default"] or poolData["default"]
 			world.spawnTreasure(entity.position(),stub,world.threatLevel())
 		end
 		exploded = true
