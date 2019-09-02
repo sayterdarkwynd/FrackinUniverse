@@ -4,9 +4,8 @@
   "inventoryIcon" : "brainharvester.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Extracts a targets brain at the moment of death. Definitely illegal.
-^cyan;Extremely short range^reset;
-^yellow;Collects Brains from NPCs/Monsters^reset;",
+  "description" : "Extracts a targets brain at the moment of death.
+^cyan;Collects Brains from NPCs/Monsters^reset;",
   "shortdescription" : "Brain Extractor",
   "level" : 3,
   "category" : "Bio-Weapon",
@@ -31,7 +30,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "shadow",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -74,7 +73,12 @@
     }
   },
 
-
+  "altAbilityType" : "lance",
+  "altAbility" : {
+    "name" : "Shadow Lance",
+    "fireTime" : 2
+  },
+  
   "critChance" : 3,
   "critBonus" : 10,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
