@@ -4,7 +4,7 @@ itemList={
 	bluegravball={{status="gravrain",team="enemy"}},
 	orangegravball={{status="orangegravrain",team="enemy"}},
 	killpod={{status="killpod",team="enemy"}},
-	quantumball={{status="timefreeze",team="enemy"}},
+	quantumball={{status="timefreeze2totalinvuln",team="enemy"}},
 	gregskittlegun={{status="timefreezeSkittles",team="enemy"}},
 	gregskittlegunfake={{status="marvinSkittles",team="enemy"},{status="nude",team="all"}},
 	perfectlygenericitem={{status="vulnerability",team="enemy"}},
@@ -31,7 +31,8 @@ itemList={
 	cryonicextract={{status="slow",team="enemy"},{status="frozenburning",team="enemy"}},
 	venomsample={{status="biooozepoison2",team="enemy"}},
 	phasematter={{status="ghostlyglow",team="enemy"},{status="invisible",team="enemy"},{status="invulnerable",team="enemy"}},
-	fu_precursorspawner={{status="deathbombmonsterhydra1",team="enemy"}}
+	fu_precursorspawner={{status="deathbombmonsterhydra1",team="enemy"}},
+	brainharvester={{status="deathbombbrainharvest",team="enemy"}}
 }
 
 function init()
