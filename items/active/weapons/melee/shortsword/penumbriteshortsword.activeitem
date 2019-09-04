@@ -1,0 +1,41 @@
+{
+  "itemName" : "penumbriteshortsword",
+  "price" : 100,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "This keen edge is laced with shadow power.
+^cyan;Shadow damage^reset;",
+  "shortdescription" : "Penumbral Shortsword",
+  "tooltipKind" : "sword2",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword","penumbrite", "upgradeableWeapon"],
+
+  "inventoryIcon" : "penumbriteshortsword.png",
+  "animation" : "comboglowshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "penumbriteshortsword.png",
+    "bladefullbright" : "penumbriteshortswordfullbright.png"
+  },
+
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.45,
+    "baseDps" : 7,
+    "damageConfig" : {
+      "damageSourceKind" : "shadow"
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 5,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

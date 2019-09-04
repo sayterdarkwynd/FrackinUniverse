@@ -1,6 +1,6 @@
 {
   "itemName" : "penumbralscythe",
-  "price" : 1000,
+  "price" : 200,
   "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
@@ -10,7 +10,7 @@
   "tooltipKind" : "sword2",
   "category" : "scythe",
   "twoHanded" : true,
-  "itemTags" : [ "weapon", "melee","scythe", "upgradeableWeapon"],
+  "itemTags" : [ "weapon", "melee","scythe", "penumbrite","upgradeableWeapon"],
 
   "inventoryIcon" : "penumbralscythe.png",
 
@@ -24,15 +24,14 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "shadow",
 
   "primaryAbilityType" : "largeedgedcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
     "baseDps" : 9,
     "damageConfig" : {
-      "damageSourceKind" : "poison",
-      "statusEffects" : ["weakpoison"]
+      "damageSourceKind" : "shadow"
     },
     "stances" : {
       "idle" : {
