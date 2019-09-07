@@ -1,28 +1,26 @@
 {
-  "projectileName" : "lunarishot2",
+  "projectileName" : "lunarishotsniper",
   "image" : "lunarishot.png",
   "animationCycle" : 0.25,
-  "physics" : "laser",
+  "physics" : "lunari",
   "frameNumber" : 2,
   "lightColor" : [155, 147, 27],
   "animationLoops" : true,
-  "speed" : 60,
-  "timeToLive" : 0.35,
+  "speed" : 50,
+  "timeToLive" : 0,
    "fullbright" : true,
-  "power" : 1,
+  "power" : 1.0,
   "damagePoly" : [ [-2, 2], [-2, -2], [2, -2], [2, 2] ],
   "supportsProcessing" : true,
   "damageKind" : "iceplasma",
   "emitters" : [ "lunariyellow" ],
   "actionOnReap" : [
     {
-      "action" : "projectile",
-      "type" : "lunarishot3",
-      "inheritDamageFactor" : 1,
-      "fuzzAngle" : 5,
-      "angleAdjust" : 0
+      "time" : 0.3,
+      "loop" : true,		    
+      "action" : "config",
+      "file" : "/projectiles/explosions/teslaboom/teslaboomsmalllunari.config"
     }
   ]
+
 }
-
-
