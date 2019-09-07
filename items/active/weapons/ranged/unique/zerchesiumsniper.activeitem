@@ -5,8 +5,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Put your enemies on ice.
-^green;Undetermined-Alt^reset;
-^yellow;Todo^reset;",
+^green;Generate drones^reset;
+^cyan;Slows enemies^reset;",
     "shortdescription" : "Zerchesium Sniper Rifle",
   "category" : "sniperRifle",
   "level" : 4,
@@ -33,7 +33,7 @@
       }
     },  
     "sounds" : {
-      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/marauder6.wav" ]
     }
   },
 
@@ -55,7 +55,7 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "fuicebullet",
+    "projectileType" : "fuicebulletzerch",
     "projectileParameters" : { 
       "knockback" : 8
     },
@@ -91,6 +91,7 @@
 
   "critChance" : 2,
   "critBonus" : 4,
+  "altAbilityType" : "fudronelauncher",
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

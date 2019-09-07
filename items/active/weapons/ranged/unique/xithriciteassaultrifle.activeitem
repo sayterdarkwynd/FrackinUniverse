@@ -5,8 +5,7 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Cosmic power stabilized into high powered shots.
-^green;Undetermined Alt-Fire^reset;
-^yellow;Heavy weapon^reset;",
+^cyan;Cosmic blasts^reset;",
     "shortdescription" : "Xithricite Assault Rifle",
   "category" : "assaultRifle",
   "level" : 6,
@@ -34,7 +33,7 @@
       }
     },  
     "sounds" : {
-      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/marauder8.wav" ]
     }
   },
 
@@ -48,8 +47,8 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
     "class" : "GunFireFixed",
-    "fireTime" : 0.25,
-    "baseDps" : 10.2,
+    "fireTime" : 0.165,
+    "baseDps" : 6.5,
     "useEnergy" : true,
     "energyUsage" : 28,
     "runSlowWhileShooting" : true,
@@ -57,7 +56,7 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "densiniumrifleshot",
+    "projectileType" : "xithshot",
     "projectileParameters" : { 
       "knockback" : 6
     },
@@ -94,5 +93,7 @@
   "critChance" : 2,
   "critBonus" : 6,
 
+  "altAbilityType" : "forcebubble", 
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

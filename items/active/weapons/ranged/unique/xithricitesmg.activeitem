@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Morse code except its cosmic bullets.
-^yellow;Todo^reset;",
+^cyan;Cosmic blasts^reset;",
     "shortdescription" : "Xithricite SMG",
   "category" : "machinePistol",
   "level" : 6,
@@ -26,17 +26,17 @@
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-		    "offset" : [0.1875, 0.0625]
+		    "offset" : [-0.1075, 0.0625]
 		  }
 		}
       }
     },  
     "sounds" : {
-      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/marauder7.wav" ]
     }
   },
 
-  "baseOffset" : [0.1875, 0.0625],
+  "baseOffset" : [-0.1075, 0.0625],
   "muzzleOffset" : [1.1875, 0.375],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
@@ -46,15 +46,15 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.125,
+    "fireTime" : 0.08,
     "baseDps" : 6.2,
     "useEnergy" : true,
-    "energyUsage" : 39.5,
-    "inaccuracy" : 0.078,
+    "energyUsage" : 25.5,
+    "inaccuracy" : 0.05,
 	
     "projectileCount" : 1,
     "fireType" : "auto",
-    "projectileType" : "densiniumrifleshot",
+    "projectileType" : "xithshot",
 	
     "projectileParameters" : { 
       "knockback" : 3
