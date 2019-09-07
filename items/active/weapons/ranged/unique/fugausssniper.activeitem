@@ -4,9 +4,10 @@
 	"inventoryIcon" : "fugausssniper.png",
 	"maxStack" : 1,
 	"rarity" : "uncommon",
-	"description" : "Brutally effective magnet-based weaponry
+	"description" : "Powerful capacitors with several coil stages.
 ^yellow;Area damage^reset;
-^yellow;Hunting weapon^reset;",
+^yellow;Hunting weapon^reset;
+^yellow;High velocity projectile^reset;",
 	"shortdescription" : "Gauss Sniper Rifle",
 	"category" : "sniperRifle",
 	"level" : 4,
@@ -57,7 +58,7 @@
 	"primaryAbility" : {
 		"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
 		"class" : "GunFire",
-		"fireTime" : 0.85,
+		"fireTime" : 0.9,
 		"baseDps" : 8.5,
 		"energyUsage" : 38.0,
 		"inaccuracy" : 0,
@@ -67,8 +68,8 @@
 		
 		"projectileType" : "gausssnipershot",
 		"projectileParameters" : {
-			"speed" : 100,
-			"knockback" : 10
+			"speed" : 125,
+			"knockback" : 6
 		},
 			"stances" : {
 				"idle" : {
@@ -114,5 +115,30 @@
 	"critBonus" : 6,
 	"altAbilityType" : "piercingshot",
 	
-	"builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
+	
+	"upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "description" : "Overclocked capacitors take Gaussian mechanics to the extreme.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;
+^yellow;High velocity projectile^reset;",
+ "animationParts" : {
+    "middle" : "fugausssniper2.png",
+    "middlefullbright" : "fugausssniper2_fullbright.png"},
+
+  "inventoryIcon" : [ { "image" : "fugausssniper2.png" } ],    
+    "primaryAbility" : {
+        "fireTime" : 0.85,
+        "baseDps" : 9,
+        "energyUsage" : 34.0,
+        "inaccuracy" : 0,     
+    
+        "projectileType" : "gausssnipershot",
+        "projectileParameters" : {
+            "speed" : 175,
+            "knockback" : 10
+            }
+        }
+    }
 }
