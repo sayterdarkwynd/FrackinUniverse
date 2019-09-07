@@ -8,7 +8,6 @@
 ^yellow;Area damage^reset;
 ^yellow;Hunting weapon^reset;",
   "shortdescription" : "Gauss Pistol",
-
   "level" : 4,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
@@ -55,8 +54,8 @@
     "projectileCount" : 1,
     "projectileType" : "gausspistolshot",
     "projectileParameters" : {
-      "speed" : 100,
-      "knockback" : 8
+      "speed" : 90,
+      "knockback" : 7
     },
     "stances" : {
       "idle" : {
@@ -91,5 +90,30 @@
   "critChance" : 1,
   "critBonus" : 3,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+   	"upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "description" : "Overclocked capacitors take Gaussian mechanics to the extreme.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;",
+ "animationParts" : {
+   "middle" : "fugausspistol2.png",
+   "middlefullbright" : "fugausspistol2_fullbright.png"},
+ 
+    "inventoryIcon" : [ { "image" : "fugausspistol2.png" } ],
+
+    "primaryAbility" : {
+        "fireTime" : 0.18,
+        "baseDps" : 7.2,
+        "energyUsage" : 28.0,
+        "inaccuracy" : 0,
+		
+		"projectileType" : "gausspistolshot",
+        "projectileParameters" : {
+            "speed" : 100,
+            "knockback" : 9
+            }		
+        }
+    }
 }
