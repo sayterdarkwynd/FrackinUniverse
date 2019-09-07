@@ -1,15 +1,15 @@
 {
-  "projectileName" : "lunarishot2",
+  "projectileName" : "lunarishotrifle",
   "image" : "lunarishot.png",
   "animationCycle" : 0.25,
-  "physics" : "laser",
+  "physics" : "lunari",
   "frameNumber" : 2,
   "lightColor" : [155, 147, 27],
   "animationLoops" : true,
-  "speed" : 60,
-  "timeToLive" : 0.35,
+  "speed" : 50,
+  "timeToLive" : 0,
    "fullbright" : true,
-  "power" : 1,
+  "power" : 1.0,
   "damagePoly" : [ [-2, 2], [-2, -2], [2, -2], [2, 2] ],
   "supportsProcessing" : true,
   "damageKind" : "iceplasma",
@@ -17,12 +17,10 @@
   "actionOnReap" : [
     {
       "action" : "projectile",
-      "type" : "lunarishot3",
-      "inheritDamageFactor" : 1,
-      "fuzzAngle" : 5,
+      "type" : "lunarishotwobblerifle",
+      "inheritDamageFactor" : 0.6,
+      "fuzzAngle" : 9,
       "angleAdjust" : 0
     }
   ]
 }
-
-
