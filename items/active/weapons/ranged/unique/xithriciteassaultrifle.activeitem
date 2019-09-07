@@ -1,25 +1,25 @@
 {
-  "itemName" : "densiniumsniper",
+  "itemName" : "xithriciteassaultrifle",
   "price" : 160,
-  "inventoryIcon" : "densiniumsniper.png",
+  "inventoryIcon" : "xithriciteassaultrifle.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Two high-powered energy shots to ensure a confirmed kill.
-^yellow;2-round high powered bursts^reset;
-^green;Targeting computer alt-fire^reset;",
-    "shortdescription" : "Densinium Sniper Rifle",
-  "category" : "sniperRifle",
+  "description" : "Cosmic power stabilized into high powered shots.
+^green;Undetermined Alt-Fire^reset;
+^yellow;Heavy weapon^reset;",
+    "shortdescription" : "Xithricite Assault Rifle",
+  "category" : "assaultRifle",
   "level" : 6,
   "tooltipKind" : "gun2",
-  "weaponType" : "Sniper Rifle",
-  "itemTags" : ["weapon","ranged","sniperrifle","energy","densinium", "upgradeableWeapon"],
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
   
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "densiniumsniper.png",
-    "middlefullbright" : "densiniumsniper_fullbright.png",
+    "middle" : "xithriciteassaultrifle.png",
+    "middlefullbright" : "xithriciteassaultriflefullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
@@ -28,7 +28,7 @@
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-		    "offset" : [1.1875, 0.4375]
+		    "offset" : [-0.0625, 0.3125]
 		  }
 		}
       }
@@ -38,32 +38,28 @@
     }
   },
 
-  "baseOffset" : [1.1875, 0.4375],
-  "muzzleOffset" : [3.0625, 0],
+  "baseOffset" : [-0.0625, 0.3125],
+  "muzzleOffset" : [2.625, 0.375],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "cosmic",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-    "fireTime" : 1.1,
-    "baseDps" : 10.5,
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
+    "fireTime" : 0.25,
+    "baseDps" : 10.2,
     "useEnergy" : true,
-    "energyUsage" : 42.5,
+    "energyUsage" : 28,
     "runSlowWhileShooting" : true,
-    "burstCooldown" : 0.35,
-    "inaccuracy" : 0,
-    "burstTime" : 0.065,
-    "burstCount" : 2,
+    "inaccuracy" : 0.01,
     "projectileCount" : 1,
-    "fireType" : "burst",
+    "fireType" : "auto",
 
     "projectileType" : "densiniumrifleshot",
     "projectileParameters" : { 
-	  "speed" : 100,
-	  "knockback" : 8
+      "knockback" : 6
     },
 	  "stances" : {
 	    "idle" : {
@@ -76,7 +72,7 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
+	      "armRotation" : 4,
 	      "weaponRotation" : 5,
 	      "twoHanded" : true,
 
@@ -84,8 +80,8 @@
 	      "allowFlip" : true
 	    },
 	    "cooldown" : {
-	      "duration" : 0.065,
-	      "armRotation" : 5,
+	      "duration" : 0.055,
+	      "armRotation" : 4,
 	      "weaponRotation" : 5,
 	      "twoHanded" : true,
 
@@ -95,9 +91,8 @@
 	  }
   },
 
-  "critChance" : 4,
-  "critBonus" : 8,
-  "altAbilityType" : "markedshot",
+  "critChance" : 2,
+  "critBonus" : 6,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

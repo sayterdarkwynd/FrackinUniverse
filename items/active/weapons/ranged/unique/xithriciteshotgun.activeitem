@@ -1,25 +1,25 @@
 {
-  "itemName" : "densiniumsniper",
+  "itemName" : "xithriciteshotgun",
   "price" : 160,
-  "inventoryIcon" : "densiniumsniper.png",
+  "inventoryIcon" : "xithriciteshotgun.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Two high-powered energy shots to ensure a confirmed kill.
-^yellow;2-round high powered bursts^reset;
-^green;Targeting computer alt-fire^reset;",
-    "shortdescription" : "Densinium Sniper Rifle",
-  "category" : "sniperRifle",
+  "description" : "Reach into infinity and channel the power of a dying star.
+^green;Undetermined Alt-Fire^reset;
+^yellow;Todo^reset;",
+  "shortdescription" : "Xithricite Shotgun",
+  "category" : "shotgun",
   "level" : 6,
   "tooltipKind" : "gun2",
-  "weaponType" : "Sniper Rifle",
-  "itemTags" : ["weapon","ranged","sniperrifle","energy","densinium", "upgradeableWeapon"],
+  "weaponType" : "Energy",
+  "itemTags" : ["weapon","ranged","shotgun", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
   
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "densiniumsniper.png",
-    "middlefullbright" : "densiniumsniper_fullbright.png",
+    "middle" : "xithriciteshotgun.png",
+    "middlefullbright" : "xithriciteshotgunfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/densiniummuzzle.png"
   },
@@ -28,42 +28,39 @@
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-		    "offset" : [1.1875, 0.4375]
+		    "offset" : [0.8125, 0.1875]
 		  }
 		}
       }
     },  
     "sounds" : {
-      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ],
+	  "cooldown": [ "/sfx/weapons/shotgunreload.ogg" ]
     }
   },
 
-  "baseOffset" : [1.1875, 0.4375],
-  "muzzleOffset" : [3.0625, 0],
+  "baseOffset" : [0.8125, 0.1875],
+  "muzzleOffset" : [2.625, 0.375],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "cosmic",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.1,
-    "baseDps" : 10.5,
+    "fireTime" : 1.25,
+    "baseDps" : 9.25,
     "useEnergy" : true,
-    "energyUsage" : 42.5,
-    "runSlowWhileShooting" : true,
-    "burstCooldown" : 0.35,
-    "inaccuracy" : 0,
-    "burstTime" : 0.065,
-    "burstCount" : 2,
-    "projectileCount" : 1,
-    "fireType" : "burst",
-
+    "energyUsage" : 39.5,
+    "inaccuracy" : 0.095,
+	
+    "projectileCount" : 8,
+    "fireType" : "auto",
     "projectileType" : "densiniumrifleshot",
+	
     "projectileParameters" : { 
-	  "speed" : 100,
-	  "knockback" : 8
+      "knockback" : 6
     },
 	  "stances" : {
 	    "idle" : {
@@ -76,17 +73,17 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 3,
+	      "weaponRotation" : 8,
 	      "twoHanded" : true,
 
 	      "allowRotate" : true,
 	      "allowFlip" : true
 	    },
 	    "cooldown" : {
-	      "duration" : 0.065,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "duration" : 0.25,
+	      "armRotation" : -7,
+	      "weaponRotation" : -360,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -95,9 +92,9 @@
 	  }
   },
 
-  "critChance" : 4,
-  "critBonus" : 8,
-  "altAbilityType" : "markedshot",
+  "critChance" : 2,
+  "critBonus" : 6,
+  "isReloader" : 1,
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
