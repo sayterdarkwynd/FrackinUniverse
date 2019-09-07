@@ -5,8 +5,7 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Reach into infinity and channel the power of a dying star.
-^green;Undetermined Alt-Fire^reset;
-^yellow;Todo^reset;",
+^cyan;Cosmic blasts^reset;",
   "shortdescription" : "Xithricite Shotgun",
   "category" : "shotgun",
   "level" : 6,
@@ -34,7 +33,7 @@
       }
     },  
     "sounds" : {
-      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ],
+      "fire" : [ "/sfx/weapons/marauder9.wav" ],
 	  "cooldown": [ "/sfx/weapons/shotgunreload.ogg" ]
     }
   },
@@ -50,14 +49,14 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1.25,
-    "baseDps" : 9.25,
+    "baseDps" : 8.65,
     "useEnergy" : true,
     "energyUsage" : 39.5,
     "inaccuracy" : 0.095,
 	
     "projectileCount" : 8,
     "fireType" : "auto",
-    "projectileType" : "densiniumrifleshot",
+    "projectileType" : "xithshot",
 	
     "projectileParameters" : { 
       "knockback" : 6
@@ -96,5 +95,7 @@
   "critBonus" : 6,
   "isReloader" : 1,
 
+  "altAbilityType" : "swtjc_ewg_globelauncher",
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
