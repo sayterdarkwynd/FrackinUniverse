@@ -5,8 +5,7 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Reach into infinity and channel the power of a dying star.
-^green;Undetermined Alt-Fire^reset;
-^yellow;Todo^reset;",
+^cyan;Cosmic blasts^reset;",
     "shortdescription" : "Xithricite DMR",
   "category" : "sniperRifle",
   "level" : 6,
@@ -34,7 +33,7 @@
       }
     },  
     "sounds" : {
-      "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
+      "fire" : [ "/sfx/weapons/marauder9.wav" ]
     }
   },
 
@@ -49,7 +48,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1,
-    "baseDps" : 10,
+    "baseDps" : 11,
     "useEnergy" : true,
     "energyUsage" : 42,
     "runSlowWhileShooting" : true,
@@ -57,7 +56,7 @@
 
     "projectileCount" : 1,
     "fireType" : "auto",
-    "projectileType" : "densiniumrifleshot",
+    "projectileType" : "xithshot",
 
     "projectileParameters" : {
       "speed" : 100,	
@@ -96,5 +95,8 @@
   "critChance" : 3,
   "critBonus" : 8,
 
+  "altAbilityType" : "hailstrikealt",
+  "altAbility" : {"projectileParameters" : { "speed" : 60}},
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
