@@ -1,26 +1,37 @@
 require "/scripts/util.lua"
 
 function init()
-	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) then
-		effect.expire()
-	end
-	
-	poolData=config.getParameter("poolData")
-	entType=world.entityType(entity.id())
-	canExplode=(not (status.resourceMax("health") < config.getParameter("minMaxHealth", 0))) and poolData
-	
-	if not canExplode then return end
-	
-	if entType=="monster" then
-		local eConfig=root.monsterParameters(world.entityTypeName(entity.id()))
-		subType=eConfig.bodyMaterialKind
-	elseif entType=="npc" then
-		subType=world.entitySpecies(entity.id())
+	canExplode=false
+	if (status.resourceMax("health") >= config.getParameter("minMaxHealth", 0)) then
+		poolData=config.getParameter("poolData")
+		entType=world.entityType(entity.id())
+		if poolData then
+			if entType=="monster" then
+				local minBaseHealth=config.getParameter("minBaseHealth",10)
+				local eConfig=root.monsterParameters(world.entityTypeName(entity.id()))
+				
+				if minBaseHealth then
+					local baseHealth=eConfig.statusSettings and eConfig.statusSettings.stats and eConfig.statusSettings.stats.maxHealth and eConfig.statusSettings.stats.maxHealth.baseValue or 0
+					if baseHealth > minBaseHealth then
+						subType=eConfig.bodyMaterialKind
+						canExplode=true
+					end
+				else
+					subType=eConfig.bodyMaterialKind
+					canExplode=true
+				end
+			elseif entType=="npc" then
+				subType=world.entitySpecies(entity.id())
+				canExplode=true
+			end
+		else
+			sb.logInfo("deathbombcomplextreasurepool: missing pool data on status effect!")
+		end
 	end
 end
 
 function update(dt)
-	if canExplode and not status.resourcePositive("health") and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
+	if canExplode and not status.resourcePositive("health") then
 		explode()
 	end
 end

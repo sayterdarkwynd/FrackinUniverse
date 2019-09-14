@@ -54,15 +54,18 @@ function randomEvent()
 		status.addEphemeralEffect("runboost15",self.curseDuration_status) -- run boost!
 	    end   
     elseif storage.madnessCount > 1000 then
- 	    if self.randEvent == 40 then --swap tech
- 		player.equipTech("distortionsphere")
- 	    end      
- 	    if self.randEvent == 41 then --swap tech
- 		player.equipTech("doublejump")
- 	    end   
- 	    if self.randEvent == 42 then --swap tech
- 		player.equipTech("dash")
- 	    end  
+		if self.randEvent == 40 or self.randEvent == 41 or self.randEvent == 42 then
+			local enabledtechs=player.enabledTechs()
+			if self.randEvent == 40 and enabledtechs:contains("distortionsphere") then --swap tech
+				player.equipTech("distortionsphere")
+			end      
+			if self.randEvent == 41 and enabledtechs:contains("doublejump") then --swap tech
+				player.equipTech("doublejump")
+			end   
+			if self.randEvent == 42 and enabledtechs:contains("dash") then --swap tech
+				player.equipTech("dash")
+			end  
+		end
  	    if self.randEvent == 43 then
  	      player.consumeCurrency("fuscienceresource", 1) 
  	      player.radioMessage("sanitygain")
