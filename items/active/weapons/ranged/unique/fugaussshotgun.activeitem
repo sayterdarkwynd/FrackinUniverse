@@ -42,10 +42,11 @@
 			]
 		}
 	},
-		"sounds" : {
-			"fire" : ["/sfx/weapons/fugausspistol.ogg"],
-			"cooldown" : ["/sfx/weapons/shotgunreload.ogg"]
-		}
+	"sounds" : {
+		"fire" : ["/sfx/weapons/fugausspistol.ogg"],
+		"cooldown" : ["/sfx/weapons/shotgunreload.ogg"]
+	},
+        "lights" : { "muzzleFlash" : {"color" : [175, 135, 50] } }
 	},
 	
 	"baseOffset" : [1.625, -0.1875],
@@ -68,7 +69,7 @@
 		
 		"projectileType" : "gausspistolshot",
 		"projectileParameters" : {
-			"speed" : 100,
+			"speed" : 80,
 			"knockback" : 7
 		},
 			"stances" : {
@@ -81,18 +82,18 @@
 					"allowFlip" : true
 				},
 				"fire" : {
-					"duration" : 0,
+					"duration" : 0.5,
 					"armRotation" : 6,
-					"weaponRotation" : 6,
+					"weaponRotation" : 7,
 					"twoHanded" : true,
 					
 					"allowRotate" : false,
 					"allowFlip" : false
 				},
 				"cooldown" : {
-					"duration" : 0.1,
+					"duration" : 0.09,
 					"armRotation" : 6,
-					"weaponRotation" : 6,
+					"weaponRotation" : 7,
 					"twoHanded" : true,
 					
 					"allowRotate" : false,
@@ -116,5 +117,30 @@
 	"isReloader" : 1,
 	"altAbilityType" : "swtjc_ewg_slowgrenades",
 	
-	"builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
+	
+	"upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "description" : "Overclocked capacitors take Gaussian mechanics to the extreme.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;",
+ "animationParts" : {
+    "middle" : "fugaussshotgun2.png",
+	"middlefullbright" : "fugaussshotgun2_fullbright.png"},
+	
+  "inventoryIcon" : [ { "image" : "fugaussshotgun2.png" } ],
+  
+    "primaryAbility" : {
+		"fireTime" : 0.9,
+		"baseDps" : 7.9,
+		"energyUsage" : 36.0,
+		"inaccuracy" : 0.11,  
+    
+        "projectileType" : "gausspistolshot",
+        "projectileParameters" : {
+            "speed" : 90,
+            "knockback" : 10
+            }
+        }
+    }
 }

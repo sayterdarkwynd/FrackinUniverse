@@ -8,7 +8,6 @@
 ^yellow;Area damage^reset;
 ^yellow;Hunting weapon^reset;",
   "shortdescription" : "Gauss Pistol",
-
   "level" : 4,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
@@ -34,7 +33,7 @@
       }
     },   
     "sounds" : { "fire" : [ "/sfx/weapons/fugausspistol.ogg" ] },
-    "lights" : { "muzzleFlash" : {"color" : [44, 104, 164] } }
+    "lights" : { "muzzleFlash" : {"color" : [175, 135, 50] } }
   },
 
   "baseOffset" : [0.7, 0.24],
@@ -47,16 +46,18 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.2,
+    "fireTime" : 0.24,
     "baseDps" : 6,
     "energyUsage" : 30,
-    "fireType" : "auto",
     "inaccuracy" : 0.001,
+	
     "projectileCount" : 1,
+	"fireType" : "auto",
+	
     "projectileType" : "gausspistolshot",
     "projectileParameters" : {
-      "speed" : 100,
-      "knockback" : 8
+      "speed" : 85,
+      "knockback" : 7
     },
     "stances" : {
       "idle" : {
@@ -68,18 +69,18 @@
         "allowFlip" : true
       },
       "fire" : {
-        "duration" : 0.02,
-        "armRotation" : 2,
-        "weaponRotation" : 2,
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : 4,
         "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.0,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "duration" : 0.03,
+        "armRotation" : 3,
+        "weaponRotation" : 4,
         "twoHanded" : false,
 
         "allowRotate" : false,
@@ -91,5 +92,30 @@
   "critChance" : 1,
   "critBonus" : 3,
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+   	"upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "description" : "Overclocked capacitors take Gaussian mechanics to the extreme.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;",
+ "animationParts" : {
+   "middle" : "fugausspistol2.png",
+   "middlefullbright" : "fugausspistol2_fullbright.png"},
+ 
+    "inventoryIcon" : [ { "image" : "fugausspistol2.png" } ],
+
+    "primaryAbility" : {
+        "fireTime" : 0.2,
+        "baseDps" : 8.7,
+        "energyUsage" : 28.8,
+        "inaccuracy" : 0,
+		
+		"projectileType" : "gausspistolshot",
+        "projectileParameters" : {
+            "speed" : 100,
+            "knockback" : 13
+            }		
+        }
+    }
 }
