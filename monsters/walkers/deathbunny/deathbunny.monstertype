@@ -52,7 +52,7 @@
 
             "aimAtTarget" : false,
             "aimDirection" : [1, 0.52],
-            "chargeTime" : [0.3, 0.3],
+            "chargeTime" : [0.25, 0.25],
             "chargeSpeed" : 55,
             "chargeControlForce" : 400,
             "wallCrashSound" : "",
@@ -121,9 +121,9 @@
       "wanderActions" : [
         {
           "name" : "wander-walk",
-          "cooldown" : 3.0,
+          "cooldown" : 6.0,
           "parameters" : {
-            "moveState" : "jump",
+            "moveState" : "walk",
             "wanderTime" : [5, 20]
           }
         },
@@ -131,8 +131,8 @@
           "name" : "wander-walk",
           "cooldown" : 6.0,
           "parameters" : {
-            "moveState" : "walk",
-            "wanderTime" : [5, 5]
+            "moveState" : "run",
+            "wanderTime" : [1, 12]
           }
         }
       ]
@@ -152,7 +152,7 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-0.2, -0.3],[-0.5, -0.3], [0.5, -0.3],[0.2, -0.3], [0.8, 0.8], [0.5, 1.2], [-0.5, 1.2],[-0.8, 0.8] ],
+      "collisionPoly" : [ [-0.2, 0],[-0.5, 0], [0.5, 0],[0.2, 0], [0.8, 0.8], [0.5, 1.2], [-0.5, 1.2],[-0.8, 0.8] ],
 
       "mass" : 1.0,
       "walkSpeed" : 10,
