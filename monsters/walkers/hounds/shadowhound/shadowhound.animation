@@ -6,7 +6,7 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 2,
+            "frames" : 8,
             "cycle" : 0.35
           },
           "hurt" : {
@@ -15,7 +15,7 @@
             "mode" : "loop"
           },          
           "walk" : {
-            "frames" : 4,
+            "frames" : 5,
             "cycle" : 0.5,
             "mode" : "loop"
           },
@@ -35,14 +35,14 @@
             "mode" : "loop"
           },
           "chargewindup" : {
-            "frames" : 4,
+            "frames" : 8,
             "cycle" : 0.5,
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/arrowhead_pain1.ogg"
             }
           },
           "chargewinddown" : {
-            "frames" : 4,
+            "frames" : 2,
             "cycle" : 0.1,
             "mode" : "transition",
             "transition" : "idle",
@@ -51,14 +51,14 @@
             }
           },        
           "charge" : {
-            "frames" : 4,
+            "frames" : 5,
             "cycle" : 0.3,
             "properties" : {
               "immediateSound" : "/sfx/npc/quadruped/arrowhead_attack2.ogg"
             }
           },
            "fire" : {
-            "frames" : 4,
+            "frames" : 5,
             "cycle" : 0.3,
             "properties" : {
               "immediateSound" : "/sfx/npc/quadruped/arrowhead_attack2.ogg"
@@ -155,7 +155,7 @@
             },
             "chargewindup" : {
               "properties" : {
-                "image" : "<partImage>:move.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "chargewinddown" : {
@@ -165,12 +165,12 @@
             },
             "charge" : {
               "properties" : {
-                "image" : "<partImage>:move.<frame>"
+                "image" : "<partImage>:attack.<frame>"
               }
             },
             "firewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:jump.<frame>"
               }
             },
             "firewinddown" : {
