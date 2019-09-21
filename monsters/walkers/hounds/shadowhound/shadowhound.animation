@@ -7,11 +7,11 @@
         "states" : {
           "idle" : {
             "frames" : 8,
-            "cycle" : 0.35
+            "cycle" : 1
           },
           "hurt" : {
             "frames" : 1,
-            "cycle" : 0.5,
+            "cycle" : 0.25,
             "mode" : "loop"
           },          
           "walk" : {
@@ -36,14 +36,14 @@
           },
           "chargewindup" : {
             "frames" : 8,
-            "cycle" : 0.5,
+            "cycle" : 1,
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/arrowhead_pain1.ogg"
             }
           },
           "chargewinddown" : {
             "frames" : 2,
-            "cycle" : 0.1,
+            "cycle" : 0.2,
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
@@ -52,14 +52,14 @@
           },        
           "charge" : {
             "frames" : 5,
-            "cycle" : 0.3,
+            "cycle" : 0.5,
             "properties" : {
               "immediateSound" : "/sfx/npc/quadruped/arrowhead_attack2.ogg"
             }
           },
            "fire" : {
             "frames" : 5,
-            "cycle" : 0.3,
+            "cycle" : 0.5,
             "properties" : {
               "immediateSound" : "/sfx/npc/quadruped/arrowhead_attack2.ogg"
             }
@@ -155,7 +155,7 @@
             },
             "chargewindup" : {
               "properties" : {
-                "image" : "<partImage>:jump.<frame>"
+                "image" : "<partImage>:move.<frame>"
               }
             },
             "chargewinddown" : {
@@ -175,7 +175,7 @@
             },
             "firewinddown" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:fall.<frame>"
               }
             },            
             "fire" : {
