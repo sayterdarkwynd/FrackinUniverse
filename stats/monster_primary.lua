@@ -18,6 +18,10 @@ function init()
   message.setHandler("applyStatusEffect", function(_, _, effectConfig, duration, sourceEntityId)
       status.addEphemeralEffect(effectConfig, duration, sourceEntityId)
     end)
+	
+	if root.hasTech("stardustlib:enable-extenders") then -- stardustlib shim
+    require "/sys/stardust/statusext.lua"
+  end
 end
 
 function applyDamageRequest(damageRequest)
@@ -188,7 +192,7 @@ function inLiquid() --no fall damage while submerged in liquids
     local liquidID = 0
     if mcontroller.liquidPercentage() > 0.1 then
     liquidID = mcontroller.liquidId()
-       liquidID = excludeLiquidIds[liquidID] and 0 or liquidID 
+       liquidID = excludeLiquidIds[liquidID] and 0 or liquidID
     end
     return liquidID > 0
 end

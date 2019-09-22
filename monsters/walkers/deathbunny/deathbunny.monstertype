@@ -52,7 +52,7 @@
 
             "aimAtTarget" : false,
             "aimDirection" : [1, 0.52],
-            "chargeTime" : [0.3, 0.3],
+            "chargeTime" : [0.25, 0.25],
             "chargeSpeed" : 55,
             "chargeControlForce" : 400,
             "wallCrashSound" : "",
@@ -121,9 +121,9 @@
       "wanderActions" : [
         {
           "name" : "wander-walk",
-          "cooldown" : 3.0,
+          "cooldown" : 6.0,
           "parameters" : {
-            "moveState" : "jump",
+            "moveState" : "walk",
             "wanderTime" : [5, 20]
           }
         },
@@ -131,28 +131,28 @@
           "name" : "wander-walk",
           "cooldown" : 6.0,
           "parameters" : {
-            "moveState" : "walk",
-            "wanderTime" : [5, 5]
+            "moveState" : "run",
+            "wanderTime" : [1, 12]
           }
         }
       ]
     },
 
     "touchDamage" : {
-      "poly" : [ [-0.2, -0.3],[-0.5, -0.3], [0.5, -0.3],[0.2, -0.3], [0.8, 0.8], [0.5, 1.2], [-0.5, 1.2],[-0.8, 0.8] ],
+      "poly" : [ [-0.2, -0.4],[-0.5, -0.4], [0.5, -0.4],[0.2, -0.4], [0.8, 0.8], [0.5, 1.2], [-0.5, 1.2],[-0.8, 0.8] ],
       "damage" : 14,
 
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ "madnessgain" ]
+      "statusEffects" : [ "bunnyinfection", "bleedingbunny" ]
     },
 
     "metaBoundBox" : [-0.3, -0.3, 0.5, 0.5],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [-0.2, -0.3],[-0.5, -0.3], [0.5, -0.3],[0.2, -0.3], [0.8, 0.8], [0.5, 1.2], [-0.5, 1.2],[-0.8, 0.8] ],
+      "collisionPoly" : [ [-0.2, 0],[-0.5, 0], [0.5, 0],[0.2, 0], [0.8, 0.8], [0.5, 1.2], [-0.5, 1.2],[-0.8, 0.8] ],
 
       "mass" : 1.0,
       "walkSpeed" : 10,
@@ -213,25 +213,34 @@
           "baseValue" : 0.3
         },
         "fireResistance" : {
-          "baseValue" : 1
-        },
-        "fireStatusImmunity" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.2
         },
         "iceResistance" : {
           "baseValue" : -0.5
+        },  
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.2
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.2
+        },        
+        "shadowResistance" : {
+          "baseValue" : 0.2
+        },  
+        "cosmicResistance" : {
+          "baseValue" : 0.2
+        },        
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
         },
-        "electricResistance" : {
-          "baseValue" : 0.5
-        },
         "electricStatusImmunity" : {
           "baseValue" : 0.0
-        },
-        "poisonResistance" : {
-          "baseValue" : 0.2
         },
         "poisonStatusImmunity" : {
           "baseValue" : 0
@@ -265,7 +274,7 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
+    "capturable" : false,
     "captureHealthFraction" : 0.07,
     "nametagColor" : [64, 200, 255]
   }

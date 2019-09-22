@@ -18,6 +18,10 @@ function init()
   message.setHandler("applyStatusEffect", function(_, _, effectConfig, duration, sourceEntityId)
       status.addEphemeralEffect(effectConfig, duration, sourceEntityId)
     end)
+	
+	if root.hasTech("stardustlib:enable-extenders") then -- stardustlib shim
+    require "/sys/stardust/statusext.lua"
+  end
 end
 
 function applyDamageRequest(damageRequest)
