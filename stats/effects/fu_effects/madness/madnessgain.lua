@@ -5,7 +5,8 @@ function init()
 end
 
 function update(dt)
-  self.baseVal = self.baseVal or math.random(1,4)
+  self.penalty = status.stat("mentalProtection") or 0
+  self.baseVal = self.baseVal or math.random(1,4) - self.penalty
   self.randVal = self.baseVal * self.valBonus
   world.spawnItem("fumadnessresource",entity.position(),self.randVal)
   effect.expire()
