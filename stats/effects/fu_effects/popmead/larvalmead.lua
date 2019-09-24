@@ -7,7 +7,7 @@ function init()
 end
 
 function update(dt)
- if timer == 0 then
+ if timer <= 0 then
   world.spawnMonster("maggotcritter",mcontroller.position())
   timer = 2
  else
