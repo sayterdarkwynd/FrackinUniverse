@@ -1,14 +1,16 @@
 {
   "itemName" : "plasmango",
   "inventoryIcon" : "plasmango.png",
-  "shortdescription" : "Plasmango",
-  "description" : "'Everything is gonna be fine' - said the last seen non-novakid humanoid trying to eat a plasmango.",
-  "price" : 42,
-  "foodValue" : 15,
   "rarity" : "Uncommon",
-  "tooltipKind" : "food",
+  "price" : 42,
   "category" : "food",
+  "tooltipKind" : "food",
   "eventCategory" : "eventCrop",
+  
+  "shortdescription" : "Plasmango",
+  "description" : "^cyan;+^white;20% ^cyan;Jump Boost ^gray;for ^white;40 seconds^gray;.^reset;
+^brown;'Everything is gonna be fine' - the last non-novakid before eating a Plasmango.^reset",
+  
   "builder" : "/items/buildscripts/buildfood.lua",
   "effects" : [ [
     {
@@ -17,7 +19,7 @@
     },
     {
         "effect" : "burning",
-        "duration" : 15
+        "duration" : 10
     }
   ] ],
   "blockingEffects" : [
