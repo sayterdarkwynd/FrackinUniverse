@@ -1,23 +1,21 @@
 {
   "itemName" : "sweetscoop",
   "inventoryIcon" : "sweetscoop.png",
+  "category" : "food",
   "rarity" : "Common",
   "price" : 60,
-  "category" : "food",
-  "tooltipKind" : "food",
-  "eventCategory" : "eventCrop",
+  "foodValue": 40,
   
+  "description" : "^cyan;+^white;20% ^cyan;Max Energy ^gray;(^white;6m^gray;)",
   "shortdescription" : "Sweetscoop",
-  "description" : "^cyan;+^white;20% ^cyan;Max Energy ^gray;for ^white;6m",
   
+  "eventCategory" : "eventCrop",
   "builder" : "/items/buildscripts/buildfood.lua",
   "effects" : [ [
     {
-        "effect" : "maxenergyscalingboostfood",
-        "duration" : 360
+      "effect" : "maxenergyscalingboostfood",
+      "duration" : 360
     }
   ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+  "blockingEffects" : [ "wellfed" ]
 }
