@@ -1,0 +1,66 @@
+{
+  "objectName" : "thelusianceilingmonitor",
+  "colonyTags" : ["thelusian","electronic"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 90,
+  "lightColor" : [50, 160, 50],
+  "pointLight" : true,
+  "pointBeam" : 2.25,
+  "beamAmbience" : 0.7,
+  
+  "flickerPeriod" : 0.2,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.0,
+  "flickerIntensityVariance" : 0.05,
+  
+  "description" : "A creepy monitor made of bio-mechanical materials.",
+  "shortdescription" : "Ceiling Display",
+  "race" : "apex",
+
+  "apexDescription" : "There is one of these in every Apex home. They're full of 'educational' broadcasts. If you watch long enough you might spot an image of yourself... watching the television.",  
+  "avianDescription" : "Avians have not yet achieved picture windows with such clarity.",
+  "floranDescription" : "Ssso much flickering from picture box.",
+  "glitchDescription" : "Sympathetic. These creatures have less freedom than the Glitch.",
+  "humanDescription" : "Such thinly-veiled propaganda.",
+  "hylotlDescription" : "The Apex are just as trapped as we.",
+  "novakidDescription" : "I don't think it broadcasts entertainment.",
+
+  "inventoryIcon" : "thelusianceilingmonitoricon.png",
+  "orientations" : [
+    {
+      "image" : "thelusianceilingmonitor.png:<color>.<frame>",
+      "flipImages" : true,
+      "imagePosition" : [-8, -16],
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+      "direction" : "left",
+      "lightPosition" : [0, -2],
+      "beamAngle" : 225
+    },
+    {
+      "image" : "thelusianceilingmonitor.png:<color>.<frame>",
+      "imagePosition" : [-8, -16],
+      "spaceScan" : 0.1,
+      "anchors" : [ "top" ],
+      "direction" : "right",
+      "lightPosition" : [0, -2],
+      "beamAngle" : 315
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/tv_static.ogg",
+
+  "animation" : "thelusianceilingmonitor.animation",
+  "animationParts" : {
+    "bg" : "thelusianceilingmonitor.png",
+    "fg" : "thelusianceilingmonitorlit.png"
+  },
+  "animationPosition" : [-8, -16],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, -2] ]
+}

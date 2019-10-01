@@ -32,6 +32,8 @@ function fuInsanityWeather.init(self, config_file)
   self.darknessImmunityDelay = effectConfig.darknessImmunityDelay
   self.darknessImmunityTimer = nil
   self.madTimer = 0
+  self.unBlockable = config.getParameter("isUnblockable") or 0
+  effect.addStatModifierGroup({{stat = "isUnblockable", amount = self.unBlockable}})  
 end
 
 function fuInsanityWeather.update(self, dt)
