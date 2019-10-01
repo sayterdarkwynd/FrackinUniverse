@@ -120,9 +120,9 @@ function init()
   self.healthBarFrameOffset = {0, 4.8}
   self.healthBarOffset = {self.healthBarFrameOffset[1] - self.healthBarSize[1] / 16, self.healthBarFrameOffset[2] - self.healthBarSize[2] / 16}
   --end
-
+  
   self.energyBarSize = root.imageSize("/scripts/deployment/energybar.png")
-  self.energyBarFrameOffset = {0, 4.0}
+  self.energyBarFrameOffset = {0, 3.94}
   self.energyBarOffset = {self.energyBarFrameOffset[1] - self.energyBarSize[1] / 16, self.energyBarFrameOffset[2] - self.energyBarSize[2] / 16}
 
   --health bar variables
@@ -225,7 +225,7 @@ function update(dt)
   if self.mechParameters then
     --local energyMax = self.mechParameters.parts.body.energyMax
     checkEnergyBonus()
-    local energyMax = 100 + self.mechParameters.parts.body.energyMax *(self.mechParameters.parts.body.stats.energyBonus or 1)  + (self.energyBoost)
+    local energyMax = ((100 + self.mechParameters.parts.body.energyMax) *(self.mechParameters.parts.body.stats.energyBonus or 1))  + (self.energyBoost or 0)
     world.sendEntityMessage(self.playerId, "setCurrentMaxFuel", energyMax)
   end
 
