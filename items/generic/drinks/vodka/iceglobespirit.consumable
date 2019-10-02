@@ -4,18 +4,19 @@
   "rarity" : "Common",
   "category" : "drink",
   "inventoryIcon" : "iceglobespirit.png",
-  "description" : "A chilling drink. Har har.",
+  "description" : "A chilling drink. Har har.\n\n^red;Drunk^gray;, ^cyan;+^white;20% ^pink;Ice ^cyan;Res ^gray;(^white;1m^gray;)",
   "shortdescription" : "Ice Spirits",
   "handPosition" : [0, -2],
+  "tooltipKind" : "food",
   "effects" : [ [
+		{ 
+      "effect" : "fuiceresistance2", 
+      "duration" : 60 
+    },
 		{
-		"effect" : "fuiceresistance2",
-		"duration" : 60
-		},
-		{
-		"effect" : "booze",
-		"amount" : 3,
-		"duration" : 60
-        }
-    ] ]
+      "effect" : "booze",
+      "amount" : 3,
+      "duration" : 60
+    }
+  ] ]
 }

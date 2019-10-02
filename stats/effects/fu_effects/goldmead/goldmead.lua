@@ -2,7 +2,7 @@ function init()
 	fTickRate = config.getParameter("tickRate", 60)
 	fTickAmount = config.getParameter("tickAmount", 1)
 	species = world.entitySpecies(entity.id())
-        script.setUpdateDelta(fTickRate)  
+  script.setUpdateDelta(fTickRate)  
 end
 
 function update(dt)
@@ -32,7 +32,7 @@ function update(dt)
   elseif randval == 10 and self.leatherOn then
     self.itemName = "leather"
     self.baseMath = 1     
-  elseif randval >=8 then
+  elseif randval >= 8 then
     self.itemName = "fuscienceresource"
     self.baseMath = math.random(30)
   elseif randval < 8 then

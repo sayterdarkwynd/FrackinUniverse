@@ -1,17 +1,18 @@
 {
   "itemName" : "orange",
-  "inventoryIcon" : "orange.png",
-  "category" : "food",
   "rarity" : "Common",
   "price" : 20,
-  "foodValue" : 5,
-
-  "tooltipKind": "food",
-  "description" : "What came first: the fruit or the color?",
+  "category" : "food",
+  "inventoryIcon" : "orange.png",
+  "description" : "It's an orange.",
   "shortdescription" : "Orange",
-
+  "foodValue" : 5,
+  "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 1.0,
-  "blockingEffects" : [ "wellfed" ]
+  "blockingEffects" : [
+    "wellfed"
+  ]
 }
