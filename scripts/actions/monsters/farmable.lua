@@ -39,9 +39,12 @@ function isMonsterHarvestable(args, board)
     resetMonsterHarvest()
   end
   --storage.producePercent = storage.producePercent + 0.333333333 * ((storage.happiness or 50)/100) * math.max(math.min(((storage.food or 100)-10)/10,1),0)
-  if storage.producePercent >= storage.produceRequired then
+  if (storage.producePercent and storage.produceRequired) and storage.producePercent >= storage.produceRequired then
     return true
   else
+	if not storage.producePercent or not storage.produceRequired then
+		sb.logError("Farmable.lua: monster=<%s>, storage.producePercent=<%s>, storage.produceRequired=<%s>, configured harvest time: <%s>",world.monsterType(entity.id()),storage.producePercent,storage.produceRequired,config.getParameter("harvestTime"))
+	end
     return false
   end
 end
