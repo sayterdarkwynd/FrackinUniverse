@@ -1,21 +1,20 @@
 {
   "itemName" : "miraclegrass",
+  "inventoryIcon" : "miraclegrass.png",
+  "category" : "food",
   "rarity" : "Common",
   "price" : 5,
-  "inventoryIcon" : "miraclegrass.png",
-  "description" : "Effect:
-^cyan;Long-Term Weak Regeneration^reset;",
+
+  "tooltipKind": "food",
+  "description" : "^cyan;Health Regeneration ^gray;(^white;220s^gray;)",
   "shortdescription" : "Miracle Grass Root",
-  "category" : "food",
 
   "learnBlueprintsOnPickup" : [ "healingliquidgun", "furegenaugment1" ],
   "effects" : [ [
-      {
-        "effect" : "regenerationmiraclegrass",
-        "duration" : 220
-      }
-    ] ],
-  "blockingEffects" : [
-    "regenerationmiraclegrass"
-  ]
+    {
+      "effect" : "regenerationmiraclegrass",
+      "duration" : 220
+    }
+  ] ],
+  "blockingEffects" : [ "regenerationmiraclegrass" ]
 }

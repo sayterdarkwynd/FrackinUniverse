@@ -1,0 +1,40 @@
+{
+  "objectName" : "thelusianfuelhatch",
+  "colonyTags" : ["thelusian"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "container",
+  "category" : "container",
+  "description" : "Accepts fuel for the ship's FTL dive.",
+  "shortdescription" : "FTL Fuel Hatch",
+  "race" : "thelusian",
+  "lightColor" : [103, 191, 166],
+
+  "inventoryIcon" : "fuelhatchicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "thelusianfuelhatch.png:<color>.<frame>", "fullbright" : true }, { "image" : "thelusianfuelhatchlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [-8, -16],
+      "frames" : 4,
+      "animationCycle" : 0.7,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "hasWindowIcon" : false,
+  "recipeGroup" : "fuel",
+  "slotCount" : 6,
+  "uiConfig" : "/interface/fuel/fuel.config",
+  "autoCloseCooldown" : 3600,
+  "frameCooldown" : 5,
+
+  "itemTags" : [ "newfuelhatch" ],
+
+  "scripts" : ["/stagehands/radiomessage.lua"],
+  "scriptDelta" : 30,
+  "broadcastArea" : [-5, -5, 5, 5],
+  "radioMessage" : "fuel"
+}
