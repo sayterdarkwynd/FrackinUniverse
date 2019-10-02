@@ -1,0 +1,59 @@
+{
+  "objectName" : "telebriumslidingdoor1",
+  "colonyTags" : ["door","telebrium"],
+  "rarity" : "uncommon",
+
+  "category" : "door",
+  "price" : 125,
+  "description" : "Telebrium force-field barrier. Opens... Closes...",
+  "shortdescription" : "Telebrium Force Door",
+  "race" : "generic",
+
+  "apexDescription" : "A door made of energy and Telebrium. It appears to phase open from the middle.",
+  "avianDescription" : "This door is energy.",
+  "floranDescription" : "Sssilly door confuse Floran.",
+  "glitchDescription" : "Appreciation. The technology required to create this is impressive.",
+  "humanDescription" : "The barrier hums quietly.",
+  "hylotlDescription" : "I have not seen any door like this before.",
+  "novakidDescription" : "It's an energy door.",
+
+  "inventoryIcon" : "telebriumslidingdoor1icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "telebriumslidingdoor1.png:default",
+      "imagePosition" : [0, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "default.animation",
+  "animationCustom" : {
+    "sounds" : {
+	  "idle" : {
+        "pool" : [ "/sfx/objects/terraformer_idle_loop.ogg" ],
+        "rangeMultiplier" : 0.25
+      },
+      "open" : {
+        "pool" : [ "/sfx/objects/energy_door_open.ogg" ],
+        "rangeMultiplier" : 0.75
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/energy_door_close.ogg" ],
+        "rangeMultiplier" : 0.75
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "telebriumslidingdoor1.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}
