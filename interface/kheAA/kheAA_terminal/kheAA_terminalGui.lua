@@ -110,7 +110,7 @@ end
 function refreshList()
 	listItems = {};
 	widget.clearListItems("scrollArea.itemList");
-	quicksort(items, 1, #items)
+	quicksort(items)
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
@@ -140,7 +140,7 @@ function comparableFilter()
 end
 
 function comparableName(name)
-	return name and name:gsub('%^#?%w+;', ''):gsub('ū', 'u'):gsub('ₑ', 'e'):upper()
+	return name:gsub('%^#?%w+;', ''):gsub('ū', 'u'):gsub('ₑ', 'e'):upper()
 end
 
 function request()
@@ -275,6 +275,8 @@ function partition(A, l, r, p)
 end
 
 function quicksort(A, l, r)
+	l = l or 1
+	r = r or #A
 	numSorts = 1
 	if r > l then
 		local p = partition(A, l, r, l)
@@ -286,9 +288,5 @@ end
 function compareByName(itemA, itemB)
 	local a = comparableName(itemA[3].config.shortdescription)
 	local b = comparableName(itemB[3].config.shortdescription)
-	if a == b then
-		return itemA[2].count < itemB[2].count
-	else
-		return a < b
-	end
+	return a == b and itemA[2].count < itemB[2].count or a < b
 end

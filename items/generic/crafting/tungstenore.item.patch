@@ -1,10 +1,14 @@
 [
   [
-    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse": true },
     { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
   ],
   [
-    { "op" : "replace", "path" : "/category", "value" : "craftingOre" },
-    { "op": "replace", "path": "/shortdescription", "value": "Tungsten Ore ^gray;(^reset;W^gray;)"}
+    { "op": "replace", "path": "/category", "value": "craftingOre" },
+    {
+      "op": "replace",
+      "path": "/shortdescription",
+      "value": "Tungsten Ore ^gray;(^reset;W^gray;)^reset;"
+    }
   ]
 ]
