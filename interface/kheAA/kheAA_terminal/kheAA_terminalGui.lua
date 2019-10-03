@@ -89,12 +89,6 @@ function containerFound(containerID,pos)
 	return true
 end
 
-function getName(fullName)
-	pattern = "%^#%w%w%w%w%w%w;"
-	name = string.gsub(fullName, pattern, "")
-	return (fullName:gsub("^%l", string.upper))
-end
-
 function getIcon(item, conf, listItem)
 	local icon = item.parameters.inventoryIcon or conf.config.inventoryIcon or conf.config[(conf.config.category or "").."Icon"] or conf.config.icon
 	if icon then
@@ -126,7 +120,7 @@ function refreshList()
 		local name = item.parameters.shortdescription or conf.config.shortdescription
 
 		if filterText ~= "" then
-			if string.find(string.upper(name), string.upper(formatpattern(filterText))) == nil then
+			if comparableName(name):find(filterText:gsub('([%(%)%%%.%+%-%*%[%]%?%^%$])', '%%%1'):upper()) == nil then
 				filterOk = false;
 			end
 		end
@@ -149,6 +143,21 @@ function filterBox()
 	refreshingList = coroutine.create(refreshList);
 end
 
+function comparableName(name)
+	return name and name:gsub('%^#?%w+;', '')
+		:gsub('[₀°]', '0')
+		:gsub('[₁¹]', '1')
+		:gsub('[₂²]', '2')
+		:gsub('[₃³]', '3')
+		:gsub('[₄⁴]', '4')
+		:gsub('[₅⁵]', '5')
+		:gsub('[₆⁶]', '6')
+		:gsub('[₇⁷]', '7')
+		:gsub('[₈⁸]', '8')
+		:gsub('[₉⁹]', '9')
+		:upper()
+end
+
 function request()
 	--pane.playerEntityId()
 	local selected = widget.getListSelected(itemList)
@@ -157,7 +166,6 @@ function request()
 			if items[i] == listItems[selected] then
 				local itemToSend=items[i]
 				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
-				--sb.logInfo(sb.printJson({playerPos=temp}))
 
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 				table.remove(items, i);
@@ -259,22 +267,6 @@ function absolutePath(directory, path)
 	end
 end
 
-function formatpattern(str)
-  local str = string.gsub(str,"%(","%%(")
-  local str = string.gsub(str,"%)","%%)")
-  local str = string.gsub(str,"%.","%%.")
-  local str = string.gsub(str,"%%","%%%%")
-  local str = string.gsub(str,"%+","%%+")
-  local str = string.gsub(str,"%-","%%-")
-  local str = string.gsub(str,"%*","%%*")
-  local str = string.gsub(str,"%?","%%?")
-  local str = string.gsub(str,"%[","%%[")
-  local str = string.gsub(str,"%]","%%]")
-  local str = string.gsub(str,"%^","%%^")
-  local str = string.gsub(str,"%$","%%$")
-  return str
-end
-
 --Sorting code (copyed from https://github.com/mirven/lua_snippets/blob/master/lua/quicksort.lua and modifed slightly)
 function partition(array, left, right, pivotIndex)
 	local pivotValue = array[pivotIndex]
@@ -307,7 +299,7 @@ function quicksort(array, left, right)
 end
 
 function sortByName(itemA, itemB)
-	local sort = getName(itemA[3].config.shortdescription) < getName(itemB[3].config.shortdescription);
+	local sort = comparableName(itemA[3].config.shortdescription) < comparableName(itemB[3].config.shortdescription);
 	if itemA[3].config.shortdescription == itemB[3].config.shortdescription then
 		sort = itemA[2].count < itemB[2].count;
 	end
