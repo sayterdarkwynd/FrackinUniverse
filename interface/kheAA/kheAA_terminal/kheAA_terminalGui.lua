@@ -1,5 +1,4 @@
 require "/scripts/util.lua"
-local itemList = "scrollArea.itemList";
 local deltatime=0;
 
 function init()
@@ -94,15 +93,15 @@ function getIcon(item, conf, listItem)
 	if icon then
 		if type(icon) == "string" then
 			icon = absolutePath(conf.directory, icon)
-			widget.setImage(itemList .. "." .. listItem .. ".itemIcon", icon)
+			widget.setImage("scrollArea.itemList." .. listItem .. ".itemIcon", icon)
 			--local imageSize = rect.size(root.nonEmptyRegion(icon))
 			--local scaleDown = math.max(math.ceil(imageSize[1] / iconSize[1]), math.ceil(imageSize[2] / iconSize[2]))
 			--widget.setImageScale(string.format("%s.%s.icon", self.list, item), 1 / scaleDown)
 		elseif type(icon) == "table" then
 			--sb.logInfo("%s",icon)
 			for i,v in pairs(icon) do
-				local item = widget.addListItem(itemList .. "." .. listItem .. ".compositeIcon")
-				widget.setImage(itemList .. "." .. listItem .. ".compositeIcon." .. item ..".icon", absolutePath(conf.directory, v.image))
+				local item = widget.addListItem("scrollArea.itemList" .. "." .. listItem .. ".compositeIcon")
+				widget.setImage("scrollArea.itemList." .. listItem .. ".compositeIcon." .. item ..".icon", absolutePath(conf.directory, v.image))
 			end
 		end
 	end
@@ -110,24 +109,17 @@ end
 
 function refreshList()
 	listItems = {};
-	widget.clearListItems(itemList);
-	j = 1
+	widget.clearListItems("scrollArea.itemList");
 	quicksort(items, 1, #items)
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
-		local filterOk = true;
 		local name = item.parameters.shortdescription or conf.config.shortdescription
 
-		if filterText ~= "" then
-			if comparableName(name):find(filterText:gsub('([%(%)%%%.%+%-%*%[%]%?%^%$])', '%%%1'):upper()) == nil then
-				filterOk = false;
-			end
-		end
-		if filterOk then
-			local listItem = widget.addListItem(itemList)
-			widget.setText(itemList .. "." .. listItem .. ".itemName", name);
-			widget.setText(itemList .. "." .. listItem .. ".amount", "x" .. item.count);
+		if filterText == "" or comparableName(name):find(comparableFilter()) then
+			local listItem = widget.addListItem("scrollArea.itemList")
+			widget.setText("scrollArea.itemList." .. listItem .. ".itemName", name);
+			widget.setText("scrollArea.itemList." .. listItem .. ".amount", "x" .. item.count);
 			pcall(getIcon, item, conf, listItem);
 			listItems[listItem] = items[i];
 		end
@@ -143,24 +135,17 @@ function filterBox()
 	refreshingList = coroutine.create(refreshList);
 end
 
+function comparableFilter()
+	return filterText:gsub('([%(%)%%%.%+%-%*%[%]%?%^%$])', '%%%1'):upper()
+end
+
 function comparableName(name)
-	return name and name:gsub('%^#?%w+;', '')
-		:gsub('[₀°]', '0')
-		:gsub('[₁¹]', '1')
-		:gsub('[₂²]', '2')
-		:gsub('[₃³]', '3')
-		:gsub('[₄⁴]', '4')
-		:gsub('[₅⁵]', '5')
-		:gsub('[₆⁶]', '6')
-		:gsub('[₇⁷]', '7')
-		:gsub('[₈⁸]', '8')
-		:gsub('[₉⁹]', '9')
-		:upper()
+	return name and name:gsub('%^#?%w+;', ''):gsub('ū', 'u'):gsub('ₑ', 'e'):upper()
 end
 
 function request()
 	--pane.playerEntityId()
-	local selected = widget.getListSelected(itemList)
+	local selected = widget.getListSelected("scrollArea.itemList")
 	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
 		for i = 1, #items do
 			if items[i] == listItems[selected] then
@@ -178,7 +163,7 @@ end
 
 function updateListItem(selectedItem, count)
 	if count > 0 then
-		widget.setText(itemList .. "." .. selectedItem .. ".amount", "x" .. count);
+		widget.setText("scrollArea.itemList." .. selectedItem .. ".amount", "x" .. count);
 		deltatime=0
 	else
 		deltatime=29.9
@@ -187,8 +172,7 @@ function updateListItem(selectedItem, count)
 end
 
 function requestAllButOne()
-	--pane.playerEntityId()
-	local selected = widget.getListSelected(itemList)
+	local selected = widget.getListSelected("scrollArea.itemList")
 	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
 		for i = 1, #items do
 			if items[i] == listItems[selected] then
@@ -197,8 +181,7 @@ function requestAllButOne()
 				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
 				--sb.logInfo(sb.printJson({playerPos=temp}))
 
-				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
-				--table.remove(items, i);
+				world.sendEntityMessage(pane.containerEntityId(), "transferItem", itemToSend)
 				items[i][2].count=1
 				updateListItem(selected, 1)
 				return;
@@ -236,7 +219,7 @@ function requestOne()
 	if tonumber(text) >= 0 then
 		--pane.playerEntityId()
 		--itemData={containerID, index}, itemDescriptor, itemConfig,pos
-		local selected = widget.getListSelected(itemList)
+		local selected = widget.getListSelected("scrollArea.itemList")
 		if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
 			for i = 1, #items do
 				if items[i] == listItems[selected] then
@@ -268,40 +251,44 @@ function absolutePath(directory, path)
 end
 
 --Sorting code (copyed from https://github.com/mirven/lua_snippets/blob/master/lua/quicksort.lua and modifed slightly)
-function partition(array, left, right, pivotIndex)
-	local pivotValue = array[pivotIndex]
-	array[pivotIndex], array[right] = array[right], array[pivotIndex]
+function partition(A, l, r, p)
+	local pivot = A[p]
+	A[p], A[r] = A[r], A[p]
 	
-	local storeIndex = left
+	p = l
 	
-	for i =  left, right-1 do
-    	if sortByName(items[i], pivotValue) then
-	        array[i], array[storeIndex] = array[storeIndex], array[i]
-	        storeIndex = storeIndex + 1
+	for i = l, r-1 do
+		if compareByName(items[i], pivot) then
+			A[i], A[p] = A[p], A[i]
+			p = p + 1
 		end
-		array[storeIndex], array[right] = array[right], array[storeIndex]
+		A[p], A[r] = A[r], A[p]
 		
-		if j % maxSortsPerUpdate == 0 then
+		if numSorts % maxSortsPerUpdate == 0 then
 			coroutine.yield()
+		else
+			numSorts = numSorts + 1
 		end
-		j = j + 1
 	end
 	
-   return storeIndex
+   return p
 end
 
-function quicksort(array, left, right)
-	if right > left then
-	    local pivotNewIndex = partition(array, left, right, left)
-	    quicksort(array, left, pivotNewIndex - 1)
-	    quicksort(array, pivotNewIndex + 1, right)
+function quicksort(A, l, r)
+	numSorts = 1
+	if r > l then
+		local p = partition(A, l, r, l)
+		quicksort(A, l, p - 1)
+		quicksort(A, p + 1, r)
 	end
 end
 
-function sortByName(itemA, itemB)
-	local sort = comparableName(itemA[3].config.shortdescription) < comparableName(itemB[3].config.shortdescription);
-	if itemA[3].config.shortdescription == itemB[3].config.shortdescription then
-		sort = itemA[2].count < itemB[2].count;
+function compareByName(itemA, itemB)
+	local a = comparableName(itemA[3].config.shortdescription)
+	local b = comparableName(itemB[3].config.shortdescription)
+	if a == b then
+		return itemA[2].count < itemB[2].count
+	else
+		return a < b
 	end
-	return sort;
 end
