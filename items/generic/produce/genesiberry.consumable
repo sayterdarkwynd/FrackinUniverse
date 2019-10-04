@@ -1,17 +1,14 @@
 {
   "itemName" : "genesiberry",
+  "inventoryIcon" : "genesiberry.png",
+  "category" : "food",
   "rarity" : "legendary",
   "price" : 95,
-  "inventoryIcon" : "genesiberry.png",
-  "description" : "Effect:
-^cyan;Heal 85 health and restores hunger for 2 minutes.^reset;",
+  
+  "tooltipKind": "food",
+  "description" : "^cyan;Heal +^white;85 ^cyan;Health\nRestores Hunger ^gray;(^white;2m^gray;)",
   "shortdescription" : "Genesiberry",
-   "category" : "food",
 
-  "effects" : [ [
-      "heal_tier7","genesifeed"
-    ] ],
-  "blockingEffects" : [
-    "heal_tier7"
-  ]
+  "effects" : [ [ "heal_tier7", "genesifeed" ] ],
+  "blockingEffects" : [ "heal_tier7" ]
 }

@@ -1,0 +1,42 @@
+{
+  "projectileName" : "catapultshot",
+  "physics" : "grenade",
+  "bounces" : 0,
+  "timeToLive" : 3,
+  "damageKindImage" : "icon.png",
+  
+  "image" : "catapultshot.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 4,
+  
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [ 
+        "/sfx/humanoid/cathurt_female.ogg",
+        "/sfx/humanoid/cathurt_male.ogg"     
+      ]
+    },
+    {
+      "action" : "sound",
+      "options" : [ 
+        "/sfx/blocks/footstep_brains.ogg",
+        "/sfx/projectiles/goocluster_pop.ogg"  
+      ]
+    }     
+  ],
+  
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fugoreexplosion/fugoreexplosionsmall.config"
+    },  
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/humanoid/catscream.ogg" ]
+    }
+  ],
+  "power" : 12,
+  
+  "damageKind" : "default"
+}
