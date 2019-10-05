@@ -140,7 +140,9 @@ function comparableFilter()
 end
 
 function comparableName(name)
-	return name:gsub('%^#?%w+;', ''):gsub('ū', 'u'):gsub('ₑ', 'e'):upper()
+	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> M
+		:gsub('ū', 'u')
+		:upper()
 end
 
 function request()
