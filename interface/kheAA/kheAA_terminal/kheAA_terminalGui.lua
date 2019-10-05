@@ -1,91 +1,62 @@
 require "/scripts/util.lua"
-local deltatime=0;
+local deltatime=0
 
 function init()
 	promise=nil
 	self={}
-	items = {};
-	deltatime=30;
-	pos = world.entityPosition(pane.containerEntityId());
+	items = {}
+	deltatime=30
+	pos = world.entityPosition(pane.containerEntityId())
 	widget.addListItem("scrollArea.itemList")
-	filterText = "";
+	filterText = ""
 	--widget.focus("filterBox")
 	maxItemsAddedPerUpdate = config.getParameter("maxItemsAddedPerUpdate", 5000)
 	maxSortsPerUpdate = config.getParameter("maxSortsPerUpdate", 50000)
 	refresh()
 end
 
+function refresh()
+	if not self then init() end
+
+	items={}
+	if self.inContainers then
+		for id, pos in pairs(self.inContainers) do
+			if id and world.entityExists(id) then
+				for i, item in pairs(world.containerItems(id) or {}) do
+					table.insert(items, {{id, i}, item, root.itemConfig(item, item.level, item.seed), pos})
+				end
+			end
+		end
+	end
+	refreshingList = coroutine.create(refreshList)
+end
 
 function update(dt)
-	deltatime=deltatime+dt;
+	deltatime=deltatime+dt
 	
 	if refreshingList and coroutine.status(refreshingList) ~= "dead" then
 		local a, b = coroutine.resume(refreshingList)
 		--sb.logInfo(tostring(a).." : "..tostring(b))
 	end
 	
-	if promise~=nil and promise:finished() then
+	promise = promise or world.sendEntityMessage(pane.containerEntityId(), "transferUtil.sendConfig")
+
+	if promise:finished() then
 		if promise:succeeded() then
-			local res=promise:result();
-			self=res
-			promise=nil;
+			self = promise:result()
 			if deltatime > 30 then
-				refresh();
-				deltatime=0;
+				refresh()
+				deltatime=0
 			end
 		end
-		promise=nil
-	else
-		if promise==nil then
-			promise=world.sendEntityMessage(pane.containerEntityId(),"transferUtil.sendConfig")
-		end
-		if not promise:finished() then
-		end
+		promise = nil
 	end
-end
-
-
-
-function refresh()
-	if not self then
-		init()
-	end
-
-	local blankList=false
-	if self.inContainers==nil then
-		blankList=true
-	elseif util.tableSize(self.inContainers) == 0 then
-		blankList=true
-	end
-	items={};
-	if not blankList then
-		for entId,pos in pairs(self.inContainers) do
-			containerFound(entId,pos)
-		end
-	end
-	refreshingList = coroutine.create(refreshList)
 end
 
 function clearInputs()
-	widget.setText("filterBox", "");
-	widget.setText("requestAmount", "");
-	refreshingList = coroutine.create(refreshList);
-end
-
-function containerFound(containerID,pos)
-	if containerID == nil then return false end
-	--if not world.regionActive(rectPos) then return false end
-	if not world.entityExists(containerID) then return false end
-	
-	local containerItems = world.containerItems(containerID)
-	if not containerItems then return false end
-	
-	for index,item in pairs(containerItems) do
-		local conf = root.itemConfig(item, item.level or nil, item.seed or nil)
-		table.insert(items, {{containerID, index}, item, conf,pos})
-	end
+	widget.setText("filterBox", "")
+	widget.setText("requestAmount", "")
 	refreshingList = coroutine.create(refreshList)
-	return true
 end
 
 function getIcon(item, conf, listItem)
@@ -108,8 +79,8 @@ function getIcon(item, conf, listItem)
 end
 
 function refreshList()
-	listItems = {};
-	widget.clearListItems("scrollArea.itemList");
+	listItems = {}
+	widget.clearListItems("scrollArea.itemList")
 	quicksort(items)
 	for i = 1, #items do
 		local item = items[i][2]
@@ -118,10 +89,10 @@ function refreshList()
 
 		if filterText == "" or comparableName(name):find(comparableFilter()) then
 			local listItem = widget.addListItem("scrollArea.itemList")
-			widget.setText("scrollArea.itemList." .. listItem .. ".itemName", name);
-			widget.setText("scrollArea.itemList." .. listItem .. ".amount", "x" .. item.count);
-			pcall(getIcon, item, conf, listItem);
-			listItems[listItem] = items[i];
+			widget.setText("scrollArea.itemList." .. listItem .. ".itemName", name)
+			widget.setText("scrollArea.itemList." .. listItem .. ".amount", "x" .. item.count)
+			pcall(getIcon, item, conf, listItem)
+			listItems[listItem] = items[i]
 		end
 		
 		if i % maxItemsAddedPerUpdate == 0 then
@@ -131,8 +102,8 @@ function refreshList()
 end
 
 function filterBox()
-	filterText = widget.getText("filterBox");
-	refreshingList = coroutine.create(refreshList);
+	filterText = widget.getText("filterBox")
+	refreshingList = coroutine.create(refreshList)
 end
 
 function comparableFilter()
@@ -155,9 +126,9 @@ function request()
 				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
 
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
-				table.remove(items, i);
-				refreshingList = coroutine.create(refreshList);
-				return;
+				table.remove(items, i)
+				refreshingList = coroutine.create(refreshList)
+				return
 			end
 		end
 	end
@@ -165,11 +136,11 @@ end
 
 function updateListItem(selectedItem, count)
 	if count > 0 then
-		widget.setText("scrollArea.itemList." .. selectedItem .. ".amount", "x" .. count);
+		widget.setText("scrollArea.itemList." .. selectedItem .. ".amount", "x" .. count)
 		deltatime=0
 	else
 		deltatime=29.9
-		refreshingList = coroutine.create(refreshList);
+		refreshingList = coroutine.create(refreshList)
 	end
 end
 
@@ -186,7 +157,7 @@ function requestAllButOne()
 				world.sendEntityMessage(pane.containerEntityId(), "transferItem", itemToSend)
 				items[i][2].count=1
 				updateListItem(selected, 1)
-				return;
+				return
 			end
 		end
 	end
@@ -197,16 +168,16 @@ end
 function addInputSlot()
 	local text = widget.getText("inputSlotCount")
 	if text ~= "" and tonumber(text) >= 0 then
-		local slot = tonumber(text);
+		local slot = tonumber(text)
 		for _,v in pairs(inputSlots) do
 			if v[1] == slot then
-				return;
+				return
 			end
 		end
-		local item = widget.addListItem(inputList);
-		widget.setText(inputList .. "." .. item .. ".slotNr", slot .. "");
+		local item = widget.addListItem(inputList)
+		widget.setText(inputList .. "." .. item .. ".slotNr", slot .. "")
 		table.insert(inputSlots, {slot, item})
-		syncInputSlots();
+		syncInputSlots()
 	end
 end
 
@@ -234,7 +205,7 @@ function requestOne()
 					--sb.logInfo(sb.printJson({playerPos=temp}))
 					world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
 					updateListItem(selected, items[i][2].count)
-					return;
+					return
 				end
 			end
 		end
@@ -243,7 +214,7 @@ end
 
 function absolutePath(directory, path)
 	if type(path) ~= "string" then
-		return false;
+		return false
 	end
 	if string.sub(path, 1, 1) == "/" then
 		return path
