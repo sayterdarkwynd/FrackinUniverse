@@ -65,11 +65,7 @@ function getIcon(item, conf, listItem)
 		if type(icon) == "string" then
 			icon = absolutePath(conf.directory, icon)
 			widget.setImage("scrollArea.itemList." .. listItem .. ".itemIcon", icon)
-			--local imageSize = rect.size(root.nonEmptyRegion(icon))
-			--local scaleDown = math.max(math.ceil(imageSize[1] / iconSize[1]), math.ceil(imageSize[2] / iconSize[2]))
-			--widget.setImageScale(string.format("%s.%s.icon", self.list, item), 1 / scaleDown)
 		elseif type(icon) == "table" then
-			--sb.logInfo("%s",icon)
 			for i,v in pairs(icon) do
 				local item = widget.addListItem("scrollArea.itemList" .. "." .. listItem .. ".compositeIcon")
 				widget.setImage("scrollArea.itemList." .. listItem .. ".compositeIcon." .. item ..".icon", absolutePath(conf.directory, v.image))
@@ -90,7 +86,7 @@ function refreshList()
 		if filterText == "" or comparableName(name):find(comparableFilter()) then
 			local listItem = widget.addListItem("scrollArea.itemList")
 			widget.setText("scrollArea.itemList." .. listItem .. ".itemName", name)
-			widget.setText("scrollArea.itemList." .. listItem .. ".amount", "x" .. item.count)
+			widget.setText("scrollArea.itemList." .. listItem .. ".amount", "×" .. item.count)
 			pcall(getIcon, item, conf, listItem)
 			listItems[listItem] = items[i]
 		end
@@ -111,7 +107,7 @@ function comparableFilter()
 end
 
 function comparableName(name)
-	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> M
+	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> Madness
 		:gsub('ū', 'u')
 		:upper()
 end
@@ -136,7 +132,7 @@ end
 
 function updateListItem(selectedItem, count)
 	if count > 0 then
-		widget.setText("scrollArea.itemList." .. selectedItem .. ".amount", "x" .. count)
+		widget.setText("scrollArea.itemList." .. selectedItem .. ".amount", "×" .. count)
 		deltatime=0
 	else
 		deltatime=29.9
