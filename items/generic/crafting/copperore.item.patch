@@ -1,11 +1,16 @@
 [
   [
-    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse": true },
     { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
   ],
   [
-    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "copperbar" },
-    { "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "polymer" },
-    { "op" : "replace", "path" : "/category", "value" : "craftingOre" }
+    {
+      "op": "replace",
+      "path": "shortdescription",
+      "value": "Copper Ore ^gray;Cu^reset;"
+    },
+    { "op": "add", "path": "/learnBlueprintsOnPickup/-", "value": "copperbar" },
+    { "op": "add", "path": "/learnBlueprintsOnPickup/-", "value": "polymer" },
+    { "op": "replace", "path": "/category", "value": "craftingOre" }
   ]
 ]

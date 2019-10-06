@@ -1,29 +1,29 @@
 {
-  "itemName" : "kadavanmeatjuice",
-  "rarity" : "Common",
-  "price" : 120,
-  "category" : "drink",
-  "inventoryIcon" : "kadavanmeatjuice.png",
-  "description" : "Prickly cactus juice blended with poorly cooked meat. What could go wrong?",
-  "shortdescription" : "Kadavan Meat Juice",
-  "effects" : [ [
-    {
-        "effect" : "thorns",
-        "duration" : 120
-    },
-	{
-        "effect" : "maxhealthscalingboostfood",
-        "duration" : 150
-    }
-  ] ],
-  "foodValue" : 40,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 1.0,
-  "blockingEffects" : [
-    "wellfed"
+  "itemName": "kadavanmeatjuice",
+  "rarity": "Common",
+  "price": 120,
+  "category": "drink",
+  "inventoryIcon": "kadavanmeatjuice.png",
+  "description": "Prickly cactus juice blended with poorly cooked meat. What could go wrong?\nyan;+^white;20% ^cyan;HP ^gray;(^white;150s^gray;)\n^cyan;+^white;100% ^pink;Physical ^cyan;Thorns ^gray;(^white;2m^gray;)^reset;",
+  "shortdescription": "Kadavan Meat Juice",
+  "effects": [
+    [
+      {
+        "effect": "thorns",
+        "duration": 120
+      },
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 150
+      }
+    ]
   ],
-  "emitters" : [ "drinking" ]
+  "foodValue": 40,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"],
+  "emitters": ["drinking"]
 }

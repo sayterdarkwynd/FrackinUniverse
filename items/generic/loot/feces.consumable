@@ -4,10 +4,15 @@
   "category" : "medicine",
   "price" : 0,
   "inventoryIcon" : "feces.png",
-  "description" : "Fecal matter. I doubt you require more description.",
+  "description" : "Fecal matter. I doubt you require more description\n^red;Poisoned ^gray;(^white;5s^gray;)\n^blue;+^white;1 ^blue;Madness^reset;",
   "shortdescription" : "Fecal Matter",
-  "effects" : [ ["madnessgain","weakpoison"] ],
+  "effects" : [ [
+    "madnessgain",
+    "weakpoison"
+  ] ],
+  "tooltipKind" : "food",
   "blockingEffects" : [
-     "wellfed","weakpoison"
+    "wellfed",
+    "weakpoison"
   ]
 }
