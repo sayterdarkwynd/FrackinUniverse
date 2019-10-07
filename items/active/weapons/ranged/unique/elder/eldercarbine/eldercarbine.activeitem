@@ -47,7 +47,7 @@
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
     "fireTime" : 0.10,
-    "baseDps" : 10,
+    "baseDps" : 11,
     "energyUsage" : 40.0,
     "inaccuracy" : 0.005,
     "projectileCount" : 1,
@@ -112,8 +112,18 @@
   "altAbilityType" : "eldergrenadelauncher",
   "altAbility" : {
     "name" : "Unfocused Blast",
-    "fireTime" : 1,
-    "baseDps" : 11.25
+    "fireTime" : 3,
+    "baseDps" : 16,
+    "elementalConfig" : {
+      "physical" : { "projectileType" : "impactgrenade" },
+      "fire" : { "projectileType" : "firecloudgrenade" },
+      "electric" : { "projectileType" : "bubbleblast" }, //needs to remain as is for backwards compatibility.
+      "ice" : { "projectileType" : "icecloudgrenade" },
+      "poison" : { "projectileType" : "tentacleburst" },
+      "shadow" : { "projectileType" : "floatydeathballeldergun" }        // apperantly don't need more elements
+    },
+    "projectileCount" : 1,
+    "projectileParameters" : { "speed" : 15}
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
