@@ -1,31 +1,30 @@
 {
-  "itemName" : "flaillunari",
-  "level" : 2,
-  "price" : 90,
+  "itemName" : "flailzerchesium",
+  "level" : 4,
+  "price" : 350,
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "Pulsing with crystalline energy.
-^cyan;Breaks blocks^reset;
-^yellow;Spawns microbursts^reset;",
-  "shortdescription" : "Lunari Striker",
+  "rarity" : "uncommon",
+  "description" : "Freezing cold impact hammer.
+^cyan;Breaks blocks^reset;",
+  "shortdescription" : "Zerchesium Striker",
   "tooltipKind" : "gun2",
   "category" : "Striker",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","flail","lunari","upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","flail","zerchesium","upgradeableWeapon"],
 
-  "inventoryIcon" : "lunariflail.png",
+  "inventoryIcon" : "zerchesiumflail.png",
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "lunariflail.png",
+    "middle" : "zerchesiumflail.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
   "animationCustom" : {
     "sounds" : {
-      "throw" : ["/sfx/gun/magnorbs_fire8.ogg"],
-      "fire" : [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ],
+      "throw" : ["/sfx/tools/axe_chop_heavy.ogg"],
+      "fire" : [ "/sfx/melee/whip_swing1.ogg","/sfx/melee/whip_swing2.ogg","/sfx/melee/whip_swing3.ogg" ],
       "altFire" : [ "/sfx/gun/wormgun_burst.ogg" ]
     }
   },
@@ -46,62 +45,38 @@
     "chain" : {
       "arcRadiusRatio" : [8, 8],    
       "taper" : 0.0, 
-      "segmentImage" : "/items/active/weapons/melee/flail/flailchainlunari.png?scale=1",
-      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballlunari.png",
+      "segmentImage" : "/items/active/weapons/melee/flail/flailchainzerchesium.png?scale=1",
+      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballzerchesium.png",
       "segmentSize" : 0.70
     },
 
     "guideProjectiles" : true,
-    "maxLength" : 3,
+    "maxLength" : 2.5,
 
-    "baseDps" : 9.25,
+    "baseDps" : 11.25,
     "chainDps" : 6,
-    "fireTime" : 0.58,
+    "fireTime" : 0.6,
     "maxProjectiles" : 1,
-    "energyUsage" : 8,
-    "inaccuracy" : 0.02,
+    "energyUsage" : 10,
+    "inaccuracy" : 0,
 
     "projectileType" : "invisibletentaclefist",
     "projectileParameters" : {
-      "controlForce":300,
+      "controlForce":350,
       "targetTrackingForce":0,
-      "processing":"?hueshift=44",
+      "processing":"?hueshift=15",
       
-      "knockback" : 20,
-      "piercing":true,
+      "knockback" : 30,
+      "piercing":false,
       "speed" : 90,
       "bounces":-1, 
-      "timeToLive" : 0.9, 
-      "damageSourceKind" : "cosmic",
+      "timeToLive" : 0.8, 
+      "damageSourceKind" : "iceplasma",
       
       "statusEffects" : [ ],
       
       "periodicActions" : [
-    {
-      "action":"particle",
-      "repeat":true,
-      "rotate":true,
-      "specification":{
-	"destructionAction":"fade",
-	"destructionTime":0.1,
-	"fullbright":true,
-	"image":"/items/active/weapons/melee/flail/flailballlunari.png",
-	"layer":"front",
-	"position":[0,0],
-	"timeToLive":0,
-	"type":"textured"
-	},
-      "time":0
-    },      
-      {
-        "time":0.1, 
-        "action":"explosion", 
-        "foregroundRadius":1.5, 
-        "backgroundRadius":0, 
-        "explosiveDamageAmount":0.1, 
-        "delaySteps":2, 
-        "harvestLevel":1
-      },
+
       {
         "time":0.0,
         "action":"projectile",
@@ -134,17 +109,15 @@
         }      
       ],
       "actionOnCollide":[
-        {
-          "action" : "projectile",
-          "type" : "lunarimicro2",
-          "fuzzAngle" : 0,
-          "inheritDamageFactor" : 0.1,
-          "config" : {
-            "timeToLive" : 1,
-            "speed" : 0
-          },
-          "angleAdjust" : 0
-        },    
+      {
+        "time":0.01, 
+        "action":"explosion", 
+        "foregroundRadius":2, 
+        "backgroundRadius":0, 
+        "explosiveDamageAmount":5.2, 
+        "delaySteps":2, 
+        "harvestLevel":1
+      },      
         {
           "action":"sound","options":["/sfx/objects/rock_big_break1.ogg"], 
           "time":0.05, 
