@@ -91,10 +91,10 @@ function Controlledteleport:discharge()
 
   activeItem.setCursor("/cursors/reticle0.cursor")
   
-  local permittedWorld = ((world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost") and world.dayLength() ~= 100000) or (status.statPositive("admin") )
+  local permittedWorld = ((world.terrestrial() or world.type() == "outpost" or world.type() == "unknown") and world.dayLength() ~= 100000) or (status.statPositive("admin") )
   local lineOfSightActive = not world.lineTileCollision(activeItem.ownerAimPosition(), mcontroller.position())  
   
-  if (permittedWorld and lineOfSightActive) then --make sure they can see destination so they cant cheat
+  if (permittedWorld) then --and lineOfSightActive) then --make sure they can see destination so they cant cheat
 	  local finalLocation=self:targetValid(mcontroller.collisionPoly(),activeItem.ownerAimPosition());
 	  if finalLocation and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
 	    animator.playSound(self.elementalType.."activate")

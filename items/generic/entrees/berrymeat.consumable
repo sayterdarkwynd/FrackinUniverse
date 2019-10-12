@@ -1,22 +1,25 @@
 {
-  "itemName" : "berrymeat",
-  "rarity" : "Common",
-  "price" : 25,
-  "inventoryIcon" : "berrymeat.png",
-  "description" : "The combination of a poisonous berry and a frozen steak ends up with a surprisingly tasty meal!",
-  "shortdescription" : "Berrymeat",
-  "handPosition" : [0, 4],
-  "effects" : [ [
-        {
-        "effect" : "heal_tier2",
-        "duration" : 2
-    },
-     {
-        "effect" : "wellfed",
-        "duration" : 120
-    }
-    ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+  "itemName": "berrymeat",
+  "inventoryIcon": "berrymeat.png",
+  "rarity": "Common",
+  "price": 25,
+
+  "description": "The combination of a poisonous berry and a frozen steak ends up with a surprisingly tasty meal!\n^green;Heal ^white;30 ^gray;(^white;2s^gray;)^reset;",
+  "shortdescription": "Berrymeat",
+
+  "tooltipKind": "food",
+  "handPosition": [0, 4],
+  "effects": [
+    [
+      {
+        "effect": "heal_tier2",
+        "duration": 2
+      },
+      {
+        "effect": "wellfed",
+        "duration": 120
+      }
+    ]
+  ],
+  "blockingEffects": ["wellfed"]
 }

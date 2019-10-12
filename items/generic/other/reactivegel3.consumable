@@ -1,19 +1,22 @@
 {
-  "itemName" : "reactivegel3",
-  "rarity" : "uncommon",
-  "price" : 160,
-  "category" : "medicine",
-  "inventoryIcon" : "reactivegel.png",
-  "description" : "Restores 100 health. An indespensible item for a X'i.",
-  "shortdescription" : "Reactive Gel III",
-  "effects" : [ [
+  "itemName": "reactivegel3",
+  "rarity": "uncommon",
+  "price": 160,
+  "category": "medicine",
+  "inventoryIcon": "reactivegel.png",
+  "description": "An indespensible item for a X'i\n^green;Heal ^white;100 ^gray;(^white;1s^gray;)^reset;",
+  "shortdescription": "Reactive Gel III",
+  "effects": [
+    [
       {
-        "effect" : "radienheal"
+        "effect": "radienheal",
+        "healAmount": 100
       }
-    ] ],
-  "emote" : "",
-  "emitters" : [ "bandageuse" ],
-  "blockingEffects" : [
+    ]
+  ],
+  "emote": "",
+  "emitters": ["bandageuse"],
+  "blockingEffects": [
     "heal_tier0",
     "heal_tier1",
     "heal_tier2",
