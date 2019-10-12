@@ -59,8 +59,7 @@ function GunFire:auto()
     animator.playSound("cooldown") -- adds new sound to reload
   end
   if (self.isCrossbow) >= 1 then --crossbows give lowered defense on reload, but increase Crit chance?
-    --status.stat(`String` statName)
-    status.addEphemeralEffect("stun", 1)
+    status.addEphemeralEffect("stun", 0.2)
   end  
 end
 
@@ -83,6 +82,10 @@ function GunFire:burst()
 end
 
 function GunFire:cooldown()
+          self.isCrossbow = config.getParameter("isCrossbow",0)
+	  if (self.isCrossbow) >= 1 then --crossbows give defense and power on reload
+	    status.addEphemeralEffect("crossbowFire", 2)
+	  end 
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
 
