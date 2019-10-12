@@ -1,18 +1,19 @@
 {
   "itemName" : "pear",
-  "rarity" : "Common",
   "inventoryIcon" : "pear.png",
+  "category" : "food",
+  "price" : 3,
+  "rarity" : "Common",
+  "foodValue" : 4,
+  "maxStack" : 100,
+
+  "tooltipKind": "food",
   "description" : "A fresh pear, ripe for baking or consuming with my face!",
   "shortdescription" : "Pear",
-  "category" : "food",
+  
   "eventCategory" : "eventCrop",
-  "foodValue" : 4,
-  "price" : 3,
-  "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 100,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "itemAgingScripts" : [ "/scripts/items/rotting.lua" ],
   "rottingMultiplier" : 1.0,
-  "effects" : [ ],
   "learnBlueprintsOnPickup" : [ "fupearpie", "thelusianwine" ]
 }

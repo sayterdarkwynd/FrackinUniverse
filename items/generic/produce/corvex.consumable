@@ -1,22 +1,25 @@
 {
-  "itemName" : "corvex",
-  "rarity" : "rare",
-  "foodValue" : 20,
-  "price" : 20,
-  "inventoryIcon" : "corvex.png",
-  "description" : "Effect:
-^cyan;30s Health Vampire^reset;",
-  "shortdescription" : "Corvex Blob",
-  "category" : "food",
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 10,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 3.0,
-  "effects" : [ [
-    {
-        "effect" : "drain",
-        "duration" : 30
-    }
-  ] ]
+  "itemName": "corvex",
+  "inventoryIcon": "corvex.png",
+  "category": "food",
+  "rarity": "rare",
+  "foodValue": 20,
+  "price": 20,
+  "maxStack": 10,
+
+  "tooltipKind": "food",
+  "description": "^green;+^white;100% ^green;Life Steal ^gray;(^white;30s^gray;)^reset;",
+  "shortdescription": "Corvex Blob",
+
+  "builder": "/items/buildscripts/buildfood.lua",
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 3.0,
+  "effects": [
+    [
+      {
+        "effect": "drain",
+        "duration": 30
+      }
+    ]
+  ]
 }

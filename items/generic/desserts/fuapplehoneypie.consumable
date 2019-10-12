@@ -1,31 +1,31 @@
 {
-  "itemName" : "fuapplehoneypie",
-  "rarity" : "rare",
-  "price" : 35,
-  "category" : "preparedFood",
-  "inventoryIcon" : "fuapplehoneypie.png",
-  "description" : "Pie.",
-  "shortdescription" : "Apple Honey Pie",
-  "effects" : [ [
-    {
-        "effect" : "maxhealthscalingboostfood",
-        "duration" : 90,
-	"healthModifier" : 1.25
-    },
-	{
-        "effect" : "maxenergyscalingboostfood",
-        "duration" : 90,
-	"energyModifier" : 1.25
-    }
-  ] ],
-  "foodValue" : 20,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 2.0,
-  "blockingEffects" : [
-    "wellfed"
+  "itemName": "fuapplehoneypie",
+  "rarity": "rare",
+  "price": 35,
+  "category": "preparedFood",
+  "inventoryIcon": "fuapplehoneypie.png",
+  "description": "Pie.",
+  "shortdescription": "Apple Honey Pie\n^cyan;+^white;25%^cyan;HP ^gray;& ^cyan;EP ^gray;(^white;90s^gray;)^reset;",
+  "effects": [
+    [
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 90,
+        "healthModifier": 1.25
+      },
+      {
+        "effect": "maxenergyscalingboostfood",
+        "duration": 90,
+        "energyModifier": 1.25
+      }
+    ]
   ],
-  "learnBlueprintsOnPickup" : [ "fuapplehoneypieplate" ]
+  "foodValue": 20,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 2.0,
+  "blockingEffects": ["wellfed"],
+  "learnBlueprintsOnPickup": ["fuapplehoneypieplate"]
 }

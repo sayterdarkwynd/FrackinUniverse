@@ -1,16 +1,18 @@
 {
   "itemName" : "violiroot",
-  "rarity" : "Uncommon",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
   "inventoryIcon" : "violiroot.png",
-  "description" : "Both tasty and useful! Just kidding, this cannot be tasty.",
-  "shortdescription" : "Violiroot",
+  "category" : "food",
+  "rarity" : "Uncommon",
   "price" : 40,
   "foodValue" : 7,
-  "tooltipKind" : "food",
+  "maxStack" : 20,
+  
+  "tooltipKind": "food",
+  "description" : "Both tasty and useful! Just kidding, this cannot be tasty.\n^cyan;+^white;25% ^cyan;HP\n^red;Burning ^gray;(^white;10s^gray;)^reset;",
+  "shortdescription" : "Violiroot",
+
+  "eventCategory" : "eventCrop",
   "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 5,
   "effects" : [ [
@@ -23,7 +25,5 @@
         "duration" : 10
     }
   ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+  "blockingEffects" : [ "wellfed" ]
 }

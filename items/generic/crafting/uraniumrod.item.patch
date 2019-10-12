@@ -1,14 +1,27 @@
 [
   [
-    { "op": "test", "path": "/itemTags", "inverse" : true },
+    { "op": "test", "path": "/itemTags", "inverse": true },
     { "op": "add", "path": "/itemTags", "value": [] }
   ],
   [
-    { "op" : "replace", "path" : "/price", "value" : 250 },
-    {"op":"replace","path":"/description","value": "This radioactive isotope is typically found on Irradiated planets."},
-    {"op":"add","path":"/fuelAmount","value": 9},
-    {"op":"add", "path":"/itemTags/-", "value":"reagent"},
-    {"op":"replace", "path":"/category", "value":"fuel"},
-    {"op": "add", "path": "/collectablesOnPickup", "value": { "fu_isotopes" : "uraniumrod" } }
+    { "op": "replace", "path": "/price", "value": 250 },
+    {
+      "op": "replace",
+      "path": "/description",
+      "value": "Enriched Uranium ^gray;235-U^reset; isotope\n^blue;+^white;9 ^blue;Fuel"
+    },
+    {
+      "op": "replace",
+      "path": "/shortdescription",
+      "value": "Uranium Rod"
+    },
+    { "op": "add", "path": "/fuelAmount", "value": 9 },
+    { "op": "add", "path": "/itemTags/-", "value": "reagent" },
+    { "op": "replace", "path": "/category", "value": "fuel" },
+    {
+      "op": "add",
+      "path": "/collectablesOnPickup",
+      "value": { "fu_isotopes": "uraniumrod" }
+    }
   ]
 ]

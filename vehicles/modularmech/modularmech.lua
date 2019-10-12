@@ -182,7 +182,8 @@ function init()
   setHealthValue()
   storage.health = storage.health or (config.getParameter("startHealthRatio", 1.0) * self.healthMax)
 
-  self.energyMax = self.parts.body.energyMax
+  --self.energyMax = self.parts.body.energyMax
+  self.energyMax =((100 + self.parts.body.energyMax)*(self.parts.body.stats.energyBonus or 1)) + (self.energyBoost or 0)
   storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
   self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
@@ -407,7 +408,7 @@ function setEnergyValue()
   if self.massTotal > 22 then
     self.energyBoost = self.energyBoost * (self.massTotal/50)
   end
-  self.energyMax = ((100 + self.parts.body.energyMax)*(self.parts.body.stats.energyBonus or 1)) + ( self.energyBoost or 0)
+  self.energyMax = ((100 + self.parts.body.energyMax)*(self.parts.body.stats.energyBonus or 1)) + (self.energyBoost or 0)
 end
 
 -- this function activates all the relevant stats that FU needs to call on for mech parts

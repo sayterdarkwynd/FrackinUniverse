@@ -33,5 +33,37 @@
     "op": "add",
     "path": "/dropPools/0/shadowbow",
     "value": "miasmopHunting"
+  },
+  
+  {
+    "op": "replace",
+    "path": "/baseParameters/touchDamage/damageSourceKind",
+    "value": "radioactive"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/touchDamage/statusEffects/-",
+    "value": "negativemiasmamiasmop"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/radioactiveResistance",
+    "value": {
+      "baseValue": 0.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/cosmicResistance",
+    "value": {
+      "baseValue": 0
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/shadowResistance",
+    "value": {
+      "baseValue": -0.5
+    }
   }
 ]

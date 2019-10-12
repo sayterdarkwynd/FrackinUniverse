@@ -116,7 +116,11 @@ function update(dt)
   if storage.fuelCount and storage.fuelCount < 0 then
     storage.fuelCount = 0
   end
-
+  
+  if storage.fuelCount > storage.currentMaxFuel then
+    storage.fuelCount = storage.currentMaxFuel
+  end
+  
   if storage.fuelType and storage.fuelCount and storage.fuelCount <= 0 then
     storage.fuelType = nil
   end

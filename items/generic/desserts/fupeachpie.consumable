@@ -1,25 +1,25 @@
 {
-  "itemName" : "fupeachpie",
-  "rarity" : "uncommon",
-  "price" : 35,
-  "category" : "preparedFood",
-  "inventoryIcon" : "fupeachpie.png",
-  "description" : "Pie.",
-  "shortdescription" : "Peach Pie",
-  "effects" : [ [
-    {
-        "effect" : "maxhealthscalingboostfood",
-        "duration" : 90,
-	"healthModifier" : 1.25
-    }
-  ] ],
-  "foodValue" : 20,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 2.0,
-  "blockingEffects" : [
-    "wellfed"
-  ]
+  "itemName": "fupeachpie",
+  "rarity": "uncommon",
+  "price": 35,
+  "category": "preparedFood",
+  "inventoryIcon": "fupeachpie.png",
+  "description": "Pie.",
+  "shortdescription": "Peach Pie\n^cyan;+^white;25% ^cyan;HP ^gray;(^white;90s^gray;)^reset;",
+  "effects": [
+    [
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 90,
+        "healthModifier": 1.25
+      }
+    ]
+  ],
+  "foodValue": 20,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 2.0,
+  "blockingEffects": ["wellfed"]
 }

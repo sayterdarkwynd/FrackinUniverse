@@ -1,22 +1,23 @@
 {
-  "itemName" : "frostburntmeat",
-  "rarity" : "Common",
-  "price" : 25,
-  "inventoryIcon" : "frostburntmeat.png",
-  "description" : "A Peglaci delicacy. An accident for everyone else.",
-  "shortdescription" : "Frostburnt Alien Meat",
-  "effects" : [ [
-  {
-        "effect" : "wellfed",
-        "duration" : 80
-    },
-	    {
-        "effect" : "heal_tier0",
-        "duration" : 2
-    }
-    ] ],
-  "blockingEffects" : [
-    "wellfed"
+  "itemName": "frostburntmeat",
+  "inventoryIcon": "frostburntmeat.png",
+  "category": "preparedFood",
+  "rarity": "Common",
+  "price": 25,
+
+  "description": "A Peglaci delicacy. An accident for everyone else.\n^green;Heal ^white;10 ^gray;(^white;2s^gray;)^reset;",
+  "shortdescription": "Frostburnt Alien Meat",
+
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "wellfed",
+        "duration": 80
+      },
+      "heal_tier0"
+    ]
   ],
-  "learnBlueprintsOnPickup" : [ "coldmarrowpanini" ]
+  "blockingEffects": ["wellfed"],
+  "learnBlueprintsOnPickup": ["coldmarrowpanini"]
 }
