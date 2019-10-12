@@ -17,6 +17,7 @@ GunFireFixed = WeaponAbility:new()
 function GunFireFixed:init()
 -- FU additions
   self.isReloader = config.getParameter("isReloader",0)  -- is this a shotgun style reload?
+  self.isCrossbow = config.getParameter("isCrossbow",0)  -- is this a crossbow?
   
   self.weapon:setStance(self.stances.idle)
 
