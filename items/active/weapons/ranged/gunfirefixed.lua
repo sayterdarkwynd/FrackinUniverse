@@ -135,7 +135,8 @@ function GunFireFixed:burst() -- burst auto should be a thing here
   end
 end
 
-function GunFireFixed:cooldown()
+function GunFireFixed:cooldown()   
+  
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
 
