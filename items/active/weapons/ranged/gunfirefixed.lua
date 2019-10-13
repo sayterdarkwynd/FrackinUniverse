@@ -61,6 +61,7 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 
 		if self.weaponBonus >= 50 then --limit max value for crits and let player know they maxed
 			self.weaponBonus = 50
+			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
 			status.addEphemeralEffect("critReady", 0.25)
 		end
 		status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
@@ -85,6 +86,7 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 
 		if self.weaponBonus >= 80 then --limit max value for crits and let player know they maxed
 			self.weaponBonus = 80
+			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
 			status.addEphemeralEffect("critReady", 0.25)
 		end
 		status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
@@ -161,12 +163,14 @@ function GunFireFixed:auto()
   	  if (self.isCrossbow) >= 1 then 
 	    self.firedWeapon = 1
 	    self.timeBeforeCritBoost = 1
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 
     --Snipers	  
   	self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
   	  if (self.isSniper) >= 1 then 
 	    self.firedWeapon = 1
 	    self.timeBeforeCritBoost = 2
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 	  
 	  
   self:fireProjectile()
@@ -192,13 +196,15 @@ function GunFireFixed:burst() -- burst auto should be a thing here
   	  if (self.isCrossbow) >= 1 then 
 	    self.firedWeapon = 1
 	    self.timeBeforeCritBoost = 1
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 
     --Snipers	  
   	self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
   	  if (self.isSniper) >= 1 then 
 	    self.firedWeapon = 1
 	    self.timeBeforeCritBoost = 2
-	  end 
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
+	  end 	
 	  
   local shots = self.burstCount
   while shots > 0 and status.overConsumeResource("energy", self:energyPerShot()) do

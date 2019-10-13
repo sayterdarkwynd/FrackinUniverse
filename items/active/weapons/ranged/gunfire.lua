@@ -46,7 +46,8 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
 		if self.weaponBonus >= 50 then --limit max value for crits and let player know they maxed
 			self.weaponBonus = 50
-			status.addEphemeralEffect("critReady", 0.25)
+			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
+			status.addEphemeralEffect("critReady", 0.25)	
 		end
 		status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
 	  end
@@ -70,6 +71,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
 		if self.weaponBonus >= 80 then --limit max value for crits and let player know they maxed
 			self.weaponBonus = 80
+			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
 			status.addEphemeralEffect("critReady", 0.25)
 		end
 		status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
@@ -105,12 +107,14 @@ function GunFire:auto()
   	  if (self.isCrossbow) >= 1 then 
 	    self.firedWeapon = 1
 	    self.timeBeforeCritBoost = 1
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 
     --Snipers	  
   	self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
   	  if (self.isSniper) >= 1 then 
 	    self.firedWeapon = 1
 	    self.timeBeforeCritBoost = 2
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 	
 	
   self.weapon:setStance(self.stances.fire)
@@ -136,13 +140,15 @@ function GunFire:burst()
   	  if (self.isCrossbow) >= 1 then 
 	    self.firedWeapon = 1
 	    self.timeBeforeCritBoost = 1
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 
     --Snipers	  
   	self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
   	  if (self.isSniper) >= 1 then 
 	    self.firedWeapon = 1
 	    self.timeBeforeCritBoost = 2
-	  end 
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
+	  end 	
   self.weapon:setStance(self.stances.fire)
 
   local shots = self.burstCount
