@@ -1,5 +1,5 @@
 function init()
-  activateVisualEffects()
+ -- activateVisualEffects()
   effect.setParentDirectives("fade=770000=0.25")
   script.setUpdateDelta(10)
 end
