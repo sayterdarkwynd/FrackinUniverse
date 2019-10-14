@@ -169,6 +169,7 @@ end
 
 
 function GunFireFixed:auto()
+	self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?
   self.weapon:setStance(self.stances.fire)
 
     --Crossbows
