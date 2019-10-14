@@ -110,9 +110,11 @@ function build(directory, config, parameters, level, seed)
     end
     
     -- *******************************
-    --if elementalType ~= "physical" then
-    --  config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
-    --end
+    if elementalType ~= "physical" then
+      config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
+    else
+      config.tooltipFields.damageKindImage = "/interface/elements/physical.png"
+    end
     if config.primaryAbility then
       config.tooltipFields.primaryAbilityTitleLabel = "Primary:"
       config.tooltipFields.primaryAbilityLabel = config.primaryAbility.name or "unknown"
