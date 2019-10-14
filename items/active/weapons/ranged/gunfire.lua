@@ -7,8 +7,17 @@ GunFire = WeaponAbility:new()
 
 function GunFire:init()
 -- FU additions
-  self.isCrossbow = config.getParameter("isCrossbow",0)  -- is this a shotgun style reload? 
-  self.isReloader = config.getParameter("isReloader",0)  -- is this a crossbow? 
+  self.isReloader = config.getParameter("isReloader",0)  		-- is this a shotgun style reload?
+  self.isCrossbow = config.getParameter("isCrossbow",0)  		-- is this a crossbow?
+  self.isSniper = config.getParameter("isSniper",0)  			-- is this a sniper rifle?
+  self.isAmmoBased = config.getParameter("isAmmoBased",0)  		-- is this a ammo based gun?
+  self.isMachinePistol = config.getParameter("isMachinePistol",0)  	-- is this a machine pistol?
+  self.isShotgun = config.getParameter("isShotgun",0)  			-- is this a shotgun?
+  -- params
+  self.countdownDelay = 0 						-- how long till it regains damage bonus?
+  self.timeBeforeCritBoost = 2 						-- how long before it starts accruing bonus again?
+  self.magazineSize = config.getParameter("magazineSize",1) 		-- total count of the magazine
+  self.magazineAmount = (self.magazineSize or 0)			-- current number of bullets in the magazine
   
   self.weapon:setStance(self.stances.idle)
 
@@ -21,7 +30,67 @@ end
 
 function GunFire:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
+-- *** FU Weapon Additions
 
+  if self.magazineAmount < 0 then
+     self.magazineAmount = 0 
+  end
+  if self.timeBeforeCritBoost <= 0 then
+  	  self.isCrossbow = config.getParameter("isCrossbow",0) -- is this a crossbow?
+	  if self.isCrossbow >= 1 then
+		self.countdownDelay = (self.countdownDelay or 0) + 1
+		self.weaponBonus = (self.weaponBonus or 0)
+		self.firedWeapon = (self.firedWeapon or 0)
+		if self.firedWeapon > 0 then
+			if self.countdownDelay > 20 then
+				self.weaponBonus = 0
+				self.countdownDelay = 0
+				self.firedWeapon = 0
+			end 	
+		else
+			if self.countdownDelay > 20 then
+				self.weaponBonus = (self.weaponBonus or 0) + (config.getParameter("critBonus") or 1)
+				self.countdownDelay = 0
+			end 	
+		end
+
+		if self.weaponBonus >= 50 then --limit max value for crits and let player know they maxed
+			self.weaponBonus = 50
+			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
+			status.addEphemeralEffect("critReady", 0.25)	
+		end
+		status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
+	  end
+	  self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
+	  if self.isSniper >= 1 then
+		self.countdownDelay = (self.countdownDelay or 0) + 1
+		self.weaponBonus = (self.weaponBonus or 0)
+		self.firedWeapon = (self.firedWeapon or 0)
+		if self.firedWeapon > 0 then
+			if self.countdownDelay > 10 then
+				self.weaponBonus = 0
+				self.countdownDelay = 0
+				self.firedWeapon = 0
+			end 	
+		else
+			if self.countdownDelay > 10 then
+				self.weaponBonus = (self.weaponBonus or 0) + (config.getParameter("critBonus") or 1)
+				self.countdownDelay = 0
+			end 	
+		end
+
+		if self.weaponBonus >= 80 then --limit max value for crits and let player know they maxed
+			self.weaponBonus = 80
+			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
+			status.addEphemeralEffect("critReady", 0.25)
+		end
+		status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
+
+	  end   
+  else
+    self.timeBeforeCritBoost = self.timeBeforeCritBoost -dt
+  end
+  
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 
   if animator.animationState("firing") ~= "fire" then
@@ -43,6 +112,33 @@ function GunFire:update(dt, fireMode, shiftHeld)
 end
 
 function GunFire:auto()
+    --Crossbows
+  	self.isCrossbow = config.getParameter("isCrossbow",0) -- is this a crossbow?
+  	  if (self.isCrossbow) >= 1 then 
+	    self.firedWeapon = 1
+	    self.timeBeforeCritBoost = 1
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
+	  end 
+    --Snipers	  
+  	self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
+  	  if (self.isSniper) >= 1 then 
+	    self.firedWeapon = 1
+	    self.timeBeforeCritBoost = 2
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
+	  end 	
+    --ammo		
+	  self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a pistol?	  
+	  if (self.isAmmoBased == 1) then 
+	    self.magazineAmount = self.magazineAmount - 1
+	    if self.magazineAmount < 0 then
+	        self.magazineAmount = 0 
+	    end   	    
+	    if self.magazineAmount == 0 then
+	        self.weapon:setStance(self.stances.cooldown)
+		self:setState(self.cooldown)
+	    end
+	  end
+	  
   self.weapon:setStance(self.stances.fire)
 
   self:fireProjectile()
@@ -53,17 +149,54 @@ function GunFire:auto()
   end
 
   self.cooldownTimer = self.fireTime
+  
+  	if self.isReloader >= 1 then
+  	  animator.playSound("cooldown") -- adds sound to shotgun reload
+		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
+		    animator.playSound("fuReload") -- adds new sound to reload 
+		end  	  
+	end	
+	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
+	    if self.isShotgun == 1 then
+	        self.cooldownTimer = self.fireTime * 2
+	    else
+	        self.cooldownTimer = self.fireTime * 3
+	    end
+	    self.magazineAmount = self.magazineSize
+	    animator.playSound("fuReload") -- adds new sound to reload 
+	end
+	
   self:setState(self.cooldown)
-  self.isReloader = config.getParameter("isReloader",0)
-  if (self.isReloader) >= 1 then
-    animator.playSound("cooldown") -- adds new sound to reload
-  end
-  --if (self.isCrossbow) >= 1 then --crossbows give lowered defense on reload, but increase Crit chance?
-  --  status.addEphemeralEffect("stun", 0.2)
-  --end  
 end
 
 function GunFire:burst()
+    --Crossbows
+  	self.isCrossbow = config.getParameter("isCrossbow",0) -- is this a crossbow?
+  	  if (self.isCrossbow) >= 1 then 
+	    self.firedWeapon = 1
+	    self.timeBeforeCritBoost = 1
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
+	  end 
+    --Snipers	  
+  	self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
+  	  if (self.isSniper) >= 1 then 
+	    self.firedWeapon = 1
+	    self.timeBeforeCritBoost = 2
+	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
+	  end 
+    --ammo		  
+	  self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a pistol?	  
+	  if (self.isAmmoBased == 1) then 
+	    self.magazineAmount = self.magazineAmount - 1
+	    if self.magazineAmount < 0 then
+	        self.magazineAmount = 0 
+	    end   	    
+	    if self.magazineAmount == 0 then
+	        self.weapon:setStance(self.stances.cooldown)
+		self:setState(self.cooldown)
+	    end
+	  end
+
   self.weapon:setStance(self.stances.fire)
 
   local shots = self.burstCount
@@ -74,19 +207,31 @@ function GunFire:burst()
 
     self.weapon.relativeWeaponRotation = util.toRadians(interp.linear(1 - shots / self.burstCount, 0, self.stances.fire.weaponRotation))
     self.weapon.relativeArmRotation = util.toRadians(interp.linear(1 - shots / self.burstCount, 0, self.stances.fire.armRotation))
-
+  
     util.wait(self.burstTime)
   end
 
   self.cooldownTimer = (self.fireTime - self.burstTime) * self.burstCount
+  
+  	if self.isReloader >= 1 then
+  	  animator.playSound("cooldown") -- adds sound to shotgun reload
+		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
+		    animator.playSound("fuReload") -- adds new sound to reload 
+		end  	  
+	end	
+	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
+	    if self.isShotgun == 1 then
+	        self.cooldownTimer = ((self.fireTime - self.burstTime) * self.burstCount) * 2
+	    else
+	        self.cooldownTimer = ((self.fireTime - self.burstTime) * self.burstCount) * 3
+	    end
+	    self.magazineAmount = self.magazineSize
+	    animator.playSound("fuReload") -- adds new sound to reload 
+	end
 end
 
 function GunFire:cooldown()
-          --self.isCrossbow = config.getParameter("isCrossbow",0)
-	  --if (self.isCrossbow) >= 1 then --crossbows give defense and power on reload
-	  --  status.addEphemeralEffect("crossbowFire", self.fireTime + 0.15)
-	  --  status.addEphemeralEffect("defense6", self.fireTime)
-	  --end 
+
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
 
@@ -154,7 +299,11 @@ function GunFire:aimVector(inaccuracy)
 end
 
 function GunFire:energyPerShot()
-  return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
+  if self.isAmmoBased then
+    return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
+  else
+    return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
+  end
 end
 
 function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
@@ -162,4 +311,5 @@ function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps
 end
 
 function GunFire:uninit()
+  status.clearPersistentEffects("weaponBonus")
 end
