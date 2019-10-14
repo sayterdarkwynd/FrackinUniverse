@@ -43,12 +43,16 @@
   "elementalType" : "physical",
   "collectablesOnPickup" : { "fu_weaponbow" : "autocrossbow" },
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
-
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
     "fireTime" : 0.2,
-    "baseDps" : 9,
-    "energyUsage" : 28,
+    
+    "baseDps" : 10,
+    "energyUsage" : 60,
+    "muzzleNoFlash" : true,    
+    "runSlowWhileShooting" : true,
+    "useEnergy" : true,    
+    
     "inaccuracy" : 0.008,
 
     "projectileCount" : 1,
@@ -89,6 +93,7 @@
   "altAbilityType" : "flashlight",
   "critChance" : 3,
   "critBonus" : 3,
+  "isCrossbow" : 1,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   
   

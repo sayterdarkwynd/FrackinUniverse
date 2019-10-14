@@ -179,7 +179,7 @@ function randomEvent()
 		status.addEphemeralEffect("staffslow2",self.curseDuration_status)
 	    end      
 	    if self.randEvent == 13 then 
-		status.addEphemeralEffect("toxiccloud",self.curseDuration)
+		status.addEphemeralEffect("medicaltoxiccloud",self.curseDuration)
 	    end
 	    if self.randEvent == 14 then 
 		status.addEphemeralEffect("loweredshadow",self.curseDuration_status) --more succeptible to shadow

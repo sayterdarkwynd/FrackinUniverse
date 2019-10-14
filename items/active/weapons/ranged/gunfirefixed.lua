@@ -17,6 +17,7 @@ GunFireFixed = WeaponAbility:new()
 function GunFireFixed:init()
 -- FU additions
   self.isReloader = config.getParameter("isReloader",0)  -- is this a shotgun style reload?
+  self.isCrossbow = config.getParameter("isCrossbow",0)  -- is this a crossbow?
   
   self.weapon:setStance(self.stances.idle)
 
@@ -134,7 +135,8 @@ function GunFireFixed:burst() -- burst auto should be a thing here
   end
 end
 
-function GunFireFixed:cooldown()
+function GunFireFixed:cooldown()   
+  
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
 
