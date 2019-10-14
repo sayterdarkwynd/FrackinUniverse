@@ -184,10 +184,33 @@ function build(directory, config, parameters, level, seed)
 
     -- *******************************
     -- FU ADDITIONS 
+      if (configParameter("isAmmoBased")) then
+	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
+	  config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
+	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
+	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0      
+          config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",1), 0)
+          config.tooltipFields.reloadTimeLabel = util.round(configParameter("reloadTime",1),1)
+      else
+        config.tooltipFields.magazineSizeLabel = "--"
+        config.tooltipFields.reloadTimeLabel = "--"
+      end      
+      if (configParameter("critChance")) then
+        config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)  
+      else
+        config.tooltipFields.critChanceLabel = "--"
+      end
+      if (configParameter("critBonus")) then
+        config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)  
+      else
+        config.tooltipFields.critBonusLabel = "--"
+      end
+      if (configParameter("stunChance")) then
+        config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)   
+      else
+        config.tooltipFields.stunChanceLabel = "--"        
+      end   
 
-      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
-      config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
-      config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)
       
     -- *******************************
     

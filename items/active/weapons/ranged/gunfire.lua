@@ -160,7 +160,7 @@ function GunFire:auto()
 	end	
 	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
 	    self.cooldownTimer = self.fireTime  + self.reloadTime
-	    status.addEphemeralEffect("reloadReady", self.cooldownTimer)
+	    status.addEphemeralEffect("reloadReady", 0.25)
 	    self.magazineAmount = self.magazineSize
 	    animator.playSound("fuReload") -- adds new sound to reload 
 	    self.weapon:setStance(self.stances.cooldown)
@@ -223,7 +223,7 @@ function GunFire:burst()
 	end	
 	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
 	    self.cooldownTimer = ((self.fireTime - self.burstTime) * self.burstCount)  + self.reloadTime
-	    status.addEphemeralEffect("reloadReady", self.cooldownTimer)
+	    status.addEphemeralEffect("reloadReady", 0.25)
 	    self.magazineAmount = self.magazineSize
 	    animator.playSound("fuReload") -- adds new sound to reload 
 	    self.weapon:setStance(self.stances.cooldown)
@@ -300,11 +300,11 @@ function GunFire:aimVector(inaccuracy)
 end
 
 function GunFire:energyPerShot()
-  if self.isAmmoBased then
-    return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
-  else
+  --if self.isAmmoBased then
+  --  return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
+  --else
     return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
-  end
+  --end
 end
 
 function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount

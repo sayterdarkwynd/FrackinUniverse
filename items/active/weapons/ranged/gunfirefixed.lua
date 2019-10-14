@@ -214,7 +214,7 @@ function GunFireFixed:auto()
  	end	
  	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
  	    self.cooldownTimer = self.fireTime + self.reloadTime
- 	    status.addEphemeralEffect("reloadReady", self.cooldownTimer)
+ 	    status.addEphemeralEffect("reloadReady", 0.25)
  	    self.magazineAmount = self.magazineSize
  	    animator.playSound("fuReload") -- adds new sound to reload 
 	    self.weapon:setStance(self.stances.cooldown)
@@ -279,7 +279,7 @@ function GunFireFixed:burst() -- burst auto should be a thing here
 	end	
 	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
 	    self.cooldownTimer = self.burstCooldown + self.reloadTime
-	    status.addEphemeralEffect("reloadReady", self.cooldownTimer)
+	    status.addEphemeralEffect("reloadReady", 0.25)
 	    self.magazineAmount = self.magazineSize
 	    animator.playSound("fuReload") -- adds new sound to reload 
 	    self.weapon:setStance(self.stances.cooldown)
@@ -359,8 +359,8 @@ end
 function GunFireFixed:energyPerShot()
   if self.useEnergy == "nil" or self.useEnergy then -- key "useEnergy" defaults to true.
     return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
-  elseif self.isAmmoBased then  --ammo based guns use 1/2 as much energy
-    return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
+  --elseif self.isAmmoBased then  --ammo based guns use 1/2 as much energy
+  --  return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
   else
     return 0
   end

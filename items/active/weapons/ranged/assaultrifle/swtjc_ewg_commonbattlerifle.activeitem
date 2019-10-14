@@ -3,9 +3,9 @@
   "price" : 900,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "An automatic rifle that fires more powerful rounds than an ordinary assault rifle, with better accuracy, at the cost of rate-of-fire.",
+  "description" : "Fires more powerful rounds than an ordinary assault rifle, with better accuracy, at the cost of rate-of-fire.",
   "shortdescription" : "Common Battle Rifle",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_battleRifle",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
@@ -29,6 +29,13 @@
 
   "elementalType" : "physical",
 
+  "critChance": 1,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : [6,24],
+  "reloadTime" : [0.8,2.2],
+  "isAssaultRifle" : 1,
+  
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -128,7 +135,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 3
+  }]  
 }
