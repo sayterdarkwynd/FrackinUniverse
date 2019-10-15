@@ -190,7 +190,7 @@ function build(directory, config, parameters, level, seed)
 	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
 	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0      
           config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",1), 0)
-          config.tooltipFields.reloadTimeLabel = util.round(configParameter("reloadTime",1),1)
+          config.tooltipFields.reloadTimeLabel = util.round(configParameter("reloadTime",1),1)  .. "s"
       else
         config.tooltipFields.magazineSizeLabel = "--"
         config.tooltipFields.reloadTimeLabel = "--"

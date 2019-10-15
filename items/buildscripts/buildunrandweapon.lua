@@ -73,7 +73,7 @@ function build(directory, config, parameters, level, seed)
         config.tooltipFields.magazineSizeLabel = "--"
       end
       if (configParameter("reloadTime")) then
-        config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1)
+        config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"
       else
         config.tooltipFields.reloadTimeLabel = "--"
       end      
