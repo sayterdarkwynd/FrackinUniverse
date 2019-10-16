@@ -10,7 +10,7 @@ function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("reloadText", statusTextRegion)
   animator.burstParticleEmitter("reloadText")
   effect.setParentDirectives("fade=0055aa=0.2")
-  animator.burstParticleEmitter("smoke")
+  --animator.burstParticleEmitter("smoke")
 end
 
 
