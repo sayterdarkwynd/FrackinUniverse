@@ -5,7 +5,7 @@
   "rarity" : "Common",
   "description" : "A compact shotgun that sacrifices accuracy for the ability to be easily-concealable and held in one hand.",
   "shortdescription" : "Common Short-Barreled Shotgun",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_sawedOffShotgun",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
@@ -80,6 +80,13 @@
   },
   "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg", "/sfx/gun/dragonhead_fire1.ogg" ],
 
+  "critChance" : 3,
+  "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : [2,5],
+  "reloadTime" : [1.5,2.5],
+  "isShotgun" : 1,
+  
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_sawedoffnames.config:nameGen",
@@ -105,7 +112,5 @@
     "altAbilities" : [ ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 5,
-  "critBonus" : 1
+  }]
 }

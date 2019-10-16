@@ -27,6 +27,7 @@ function GunFireFixed:init()
   self.timeBeforeCritBoost = 2 						-- how long before it starts accruing bonus again?
   self.magazineSize = config.getParameter("magazineSize",1) 		-- total count of the magazine
   self.magazineAmount = (self.magazineSize or 0)			-- current number of bullets in the magazine
+  self.reloadTime = config.getParameter("reloadTime",1)			-- how long does reloading mag take?
   
   self.weapon:setStance(self.stances.idle)
 
@@ -47,7 +48,10 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 -- *** FU Weapon Additions
 
-
+  if self.magazineAmount < 0 or not self.magazineAmount then --make certain that ammo never ends up in negative numbers
+    self.magazineAmount = 0 
+  end
+  
   if self.timeBeforeCritBoost <= 0 then
   	  self.isCrossbow = config.getParameter("isCrossbow",0) -- is this a crossbow?
 	  if self.isCrossbow >= 1 then
@@ -165,6 +169,7 @@ end
 
 
 function GunFireFixed:auto()
+	self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?
   self.weapon:setStance(self.stances.fire)
 
     --Crossbows
@@ -182,7 +187,8 @@ function GunFireFixed:auto()
 	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 	  
     --ammo		
-	  self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a pistol?	  
+          self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
+	  self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a pistol?	   
 	  if (self.isAmmoBased == 1) then 
 	    if self.magazineAmount <= 0 then
 	        self.weapon:setStance(self.stances.cooldown)
@@ -200,7 +206,7 @@ function GunFireFixed:auto()
   end
 
   self.cooldownTimer = self.fireTime
-	  
+	self.isReloader = config.getParameter("isReloader",0)  		-- is this a shotgun style reload?
    	if self.isReloader >= 1 then
    	  animator.playSound("cooldown") -- adds sound to shotgun reload
  		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
@@ -208,13 +214,23 @@ function GunFireFixed:auto()
  		end  	  
  	end	
  	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
- 	    if self.isShotgun == 1 then
- 	        self.cooldownTimer = self.fireTime * 2
- 	    else
- 	        self.cooldownTimer = self.fireTime * 3
- 	    end
+ 	    self.cooldownTimer = self.fireTime + self.reloadTime
+ 	    status.addEphemeralEffect("reloadReady", 0.5)
  	    self.magazineAmount = self.magazineSize
- 	    animator.playSound("fuReload") -- adds new sound to reload 
+	    self.reloadTime = config.getParameter("reloadTime",0)
+	    if (self.reloadTime < 0.08) then
+	       animator.playSound("fuReload") -- adds new sound to reload 
+	    elseif (self.reloadTime >= 2.5) then
+	       animator.playSound("fuReload5") -- adds new sound to reload 
+	    elseif (self.reloadTime >= 2) then
+	       animator.playSound("fuReload4") -- adds new sound to reload 
+	    elseif (self.reloadTime >= 1.5) then
+	       animator.playSound("fuReload3") -- adds new sound to reload 	       
+	    elseif (self.reloadTime >= 1) then
+	       animator.playSound("fuReload2") -- adds new sound to reload 
+	    end
+	    self.weapon:setStance(self.stances.cooldown)
+	    self:setState(self.cooldown) 	    
 	end
 	  
   self:setState(self.cooldown)
@@ -238,7 +254,8 @@ function GunFireFixed:burst() -- burst auto should be a thing here
 	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 	
     --ammo		
-	  self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a pistol?	  
+          self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
+	  self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a pistol?	   
 	  if (self.isAmmoBased == 1) then 
 	    if self.magazineAmount <= 0 then
 	        self.weapon:setStance(self.stances.cooldown)
@@ -265,7 +282,7 @@ function GunFireFixed:burst() -- burst auto should be a thing here
   else
     self.cooldownTimer = self.burstCooldown
   end
-  
+        self.isReloader = config.getParameter("isReloader",0)  		-- is this a shotgun style reload?
   	if self.isReloader >= 1 then
   	  animator.playSound("cooldown") -- adds sound to shotgun reload
 		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
@@ -273,13 +290,23 @@ function GunFireFixed:burst() -- burst auto should be a thing here
 		end  	  
 	end	
 	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
-	    if self.isShotgun == 1 then
-	        self.cooldownTimer = self.burstCooldown * 2
-	    else
-	        self.cooldownTimer = self.burstCooldown * 3
-	    end
+	    self.cooldownTimer = self.burstCooldown + self.reloadTime
+	    status.addEphemeralEffect("reloadReady", 0.5)
 	    self.magazineAmount = self.magazineSize
-	    animator.playSound("fuReload") -- adds new sound to reload 
+	    self.reloadTime = config.getParameter("reloadTime",0)
+	    if (self.reloadTime < 0.08) then
+	       animator.playSound("fuReload") -- adds new sound to reload 
+	    elseif (self.reloadTime >= 1) then
+	       animator.playSound("fuReload2") -- adds new sound to reload 
+	    elseif (self.reloadTime >= 1.5) then
+	       animator.playSound("fuReload3") -- adds new sound to reload 
+	    elseif (self.reloadTime >= 2) then
+	       animator.playSound("fuReload4") -- adds new sound to reload 
+	    elseif (self.reloadTime >= 2.5) then
+	       animator.playSound("fuReload5") -- adds new sound to reload 
+	    end
+	    self.weapon:setStance(self.stances.cooldown)
+	    self:setState(self.cooldown)	    
 	end  
 end
 
@@ -355,8 +382,8 @@ end
 function GunFireFixed:energyPerShot()
   if self.useEnergy == "nil" or self.useEnergy then -- key "useEnergy" defaults to true.
     return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
-  elseif self.isAmmoBased then  --ammo based guns use 1/2 as much energy
-    return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
+  --elseif self.isAmmoBased then  --ammo based guns use 1/2 as much energy
+  --  return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
   else
     return 0
   end
