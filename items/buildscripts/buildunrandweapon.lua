@@ -72,21 +72,26 @@ function build(directory, config, parameters, level, seed)
       else
         config.tooltipFields.magazineSizeLabel = "--"
       end
+      config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
       if (configParameter("reloadTime")) then
         config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"
       else
         config.tooltipFields.reloadTimeLabel = "--"
       end      
+      config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"  
       if (configParameter("critChance")) then
-        config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)  
+        config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)    
       else
         config.tooltipFields.critChanceLabel = "--"
       end
+      config.tooltipFields.critChanceImage = "/interface/statuses/crit.png"  
+      
       if (configParameter("critBonus")) then
-        config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)  
+        config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)   
       else
         config.tooltipFields.critBonusLabel = "--"
       end
+      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"  
       if (configParameter("stunChance")) then
         config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)   
       else
@@ -108,6 +113,8 @@ function build(directory, config, parameters, level, seed)
 	    config.tooltipFields.recoilStrength = util.round(configParameter("recoilVelocity",0), 0)
 	    config.tooltipFields.recoilCrouchStrength = util.round(configParameter("crouchRecoilVelocity",0), 0)    
     end
+    
+
     
     -- *******************************
     if elementalType ~= "physical" then

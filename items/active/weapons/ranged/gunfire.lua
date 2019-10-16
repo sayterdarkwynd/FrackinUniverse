@@ -139,7 +139,6 @@ function GunFire:auto()
 	    else
 	      self.magazineAmount = self.magazineAmount - 1
 	    end
-	    sb.logInfo(self.magazineAmount)
 	  end	
 	  
   self.weapon:setStance(self.stances.fire)
