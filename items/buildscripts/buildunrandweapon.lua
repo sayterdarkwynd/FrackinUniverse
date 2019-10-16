@@ -84,7 +84,7 @@ function build(directory, config, parameters, level, seed)
       else
         config.tooltipFields.critChanceLabel = "--"
       end
-      config.tooltipFields.critChanceImage = "/interface/statuses/crit.png"  
+      config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"  
       
       if (configParameter("critBonus")) then
         config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)   

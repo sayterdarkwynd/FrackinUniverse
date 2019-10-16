@@ -1,8 +1,6 @@
 function init()
-  if status.stat("isCharged") == 1 then 
-    activateVisualEffects() 
-  end
-  self.timer = 0.5
+  activateVisualEffects() 
+  self.timer = 1
   script.setUpdateDelta(5)
 end
 
@@ -20,11 +18,11 @@ end
 
 
 function update(dt)
-  if self.timer > 0 then
-    self.timer = self.timer - dt
-  else
-    effect.die()
-  end
+--  if self.timer > 0 then
+--    self.timer = self.timer - dt
+--  else
+--    effect.die()
+--  end
 end
 
 
