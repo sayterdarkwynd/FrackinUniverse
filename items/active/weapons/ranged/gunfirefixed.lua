@@ -16,18 +16,19 @@ GunFireFixed = WeaponAbility:new()
 
 function GunFireFixed:init()
 -- FU additions
-  self.isReloader = config.getParameter("isReloader",0)  		-- is this a shotgun style reload?
-  self.isCrossbow = config.getParameter("isCrossbow",0)  		-- is this a crossbow?
-  self.isSniper = config.getParameter("isSniper",0)  			-- is this a sniper rifle?
-  self.isAmmoBased = config.getParameter("isAmmoBased",0)  		-- is this a ammo based gun?
-  self.isMachinePistol = config.getParameter("isMachinePistol",0)  	-- is this a machine pistol?
-  self.isShotgun = config.getParameter("isShotgun",0)  			-- is this a shotgun?  
+  self.isReloader = config.getParameter("isReloader",0)  					-- is this a shotgun style reload?
+  self.isCrossbow = config.getParameter("isCrossbow",0)  					-- is this a crossbow?
+  self.isSniper = config.getParameter("isSniper",0)  						-- is this a sniper rifle?
+  self.isAmmoBased = config.getParameter("isAmmoBased",0)  					-- is this a ammo based gun?
+  self.isMachinePistol = config.getParameter("isMachinePistol",0)  				-- is this a machine pistol?
+  self.isShotgun = config.getParameter("isShotgun",0)  						-- is this a shotgun?
   -- params
-  self.countdownDelay = 0 						-- how long till it regains damage bonus?
-  self.timeBeforeCritBoost = 2 						-- how long before it starts accruing bonus again?
-  self.magazineSize = config.getParameter("magazineSize",1) 		-- total count of the magazine
-  self.magazineAmount = (self.magazineSize or 0)			-- current number of bullets in the magazine
-  self.reloadTime = config.getParameter("reloadTime",1)			-- how long does reloading mag take?
+  self.countdownDelay = 0 									-- how long till it regains damage bonus?
+  self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
+  self.magazineSize = config.getParameter("magazineSize",1) + status.stat("magazineSize", 0)	-- total count of the magazine
+  self.magazineAmount = (self.magazineSize or 0) 						-- current number of bullets in the magazine
+  self.reloadTime = config.getParameter("reloadTime",1)	+ status.stat("reloadTime", 0)		-- how long does reloading mag take?
+  
   
   self.weapon:setStance(self.stances.idle)
 

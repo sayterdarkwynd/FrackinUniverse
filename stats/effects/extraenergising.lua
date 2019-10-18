@@ -3,6 +3,10 @@ function init()
 	currentPercent=1.0
 	script.setUpdateDelta(5)
 	self.healingRate = 1.0 / config.getParameter("energyTime", 10)
+	effect.addStatModifierGroup({
+	  {stat = "maxEnergy", effectiveMultiplier = 1.25},
+	  {stat = "energyRegenBlockTime", effectiveMultiplier = 0.85}
+	})
 end
 
 function update(dt)
