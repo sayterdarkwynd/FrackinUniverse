@@ -102,8 +102,18 @@ function build(directory, config, parameters, level, seed)
   -- build palette swap directives
   config.paletteSwaps = ""
   if builderConfig.palette then
-    local palette = root.assetJson(util.absolutePath(directory, builderConfig.palette))
-    local selectedSwaps = randomFromList(palette.swaps, seed, "paletteSwaps")
+    local selectedSwaps = {}
+    if parameters.WA_customPalettes then
+      local layers = root.assetJson(util.absolutePath(directory,"/items/active/weapons/colors/WA_layers.weaponcolors"))
+      local weaponPalette = string.match(builderConfig.palette, "/([^/]+)%.weaponcolors")
+      for layer, targetColors in pairs(parameters.WA_customPalettes) do
+        local sourceColors = layers[weaponPalette .. layer]
+        for i in ipairs(sourceColors) do selectedSwaps[ sourceColors[i] ] = targetColors[i] end
+      end
+    else
+      local palette = root.assetJson(util.absolutePath(directory, builderConfig.palette))
+      selectedSwaps = randomFromList(palette.swaps, seed, "paletteSwaps")
+    end
     for k, v in pairs(selectedSwaps) do
       config.paletteSwaps = string.format("%s?replace=%s=%s", config.paletteSwaps, k, v)
     end
@@ -179,10 +189,15 @@ function build(directory, config, parameters, level, seed)
   config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
   config.tooltipFields.dpsLabel = util.round(baseDps * config.damageLevelMultiplier, 1)
   config.tooltipFields.speedLabel = util.round(1 / fireTime, 1)
-  config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
+  --config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
+  --config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
+  --
+    local damagePerShot = baseDps * fireTime * config.damageLevelMultiplier
+    local energyPerShot = energyUsage * fireTime
+config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
   config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
 
-    -- *******************************
+    -- ***ORIGINAL CODE BY ALBERO-ROTA and SAYTER, edited by ROBUR VELVETCLAW of BEELIM SOLUTIONS***
     -- FU ADDITIONS 
       if (configParameter("isAmmoBased")) then
 	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
@@ -210,14 +225,14 @@ function build(directory, config, parameters, level, seed)
       else
         config.tooltipFields.stunChanceLabel = "--"        
       end   
-
-      
-    -- *******************************
-    
+    config.tooltipFields.damagePerEnergyLabel = util.round(damagePerShot / energyPerShot, 1)
+  --
   if elementalType ~= "physical" then
     config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
+
   else
     config.tooltipFields.damageKindImage = "/interface/elements/physical.png"
+
   end
   if config.primaryAbility then
     config.tooltipFields.primaryAbilityTitleLabel = "Primary:"
