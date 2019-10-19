@@ -201,9 +201,11 @@ config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config
     -- FU ADDITIONS 
       if (configParameter("isAmmoBased")) then
 	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
-	  config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
 	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
-	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0      
+	  
+	  config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
+	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0     
+	  
           config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",1), 0)
           config.tooltipFields.reloadTimeLabel = util.round(configParameter("reloadTime",1),1)  .. "s"
       else
@@ -226,7 +228,15 @@ config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config
         config.tooltipFields.stunChanceLabel = "--"        
       end   
     config.tooltipFields.damagePerEnergyLabel = util.round(damagePerShot / energyPerShot, 1)
+    
+	      config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
+    	      config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png" 
+    	      config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"  
+    	      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"     
   --
+  
+
+    	      
   if elementalType ~= "physical" then
     config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
 
