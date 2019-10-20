@@ -8,7 +8,7 @@
 ^yellow;Extremely fast rounds^reset;",
     "shortdescription" : "Tk-4 Keter",
   "category" : "machinePistol",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Machine Pistol",
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
@@ -38,7 +38,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.08,
-    "baseDps" : 5,
+    "baseDps" : 7,
     "energyUsage" : 20,
     "inaccuracy" : 0.03,
 
@@ -89,7 +89,11 @@
       }
     },
 
-  "critChance" : 1,
+  "critChance" : 2,
   "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 32,
+  "reloadTime" : 1,   
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

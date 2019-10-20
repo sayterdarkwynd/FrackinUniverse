@@ -3,9 +3,9 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "A high-powered rifle that sacrifices rate-of-fire for enough firepower to cut through armor like a hot knife through butter.",
+  "description" : "Sacrifices rate-of-fire for enough firepower to cut through armor.",
   "shortdescription" : "Common Anti-Material Rifle",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_antiMaterialRifle",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
@@ -69,6 +69,14 @@
   },
   "fireSounds" : [ "/sfx/gun/mech_gun.ogg", "/sfx/gun/mech_gun2.ogg", "/sfx/gun/mech_gun3.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg", "/sfx/gun/sniper1.ogg", "/sfx/gun/sniper2.ogg", "/sfx/gun/sniper3.ogg", "/sfx/gun/sniper4.ogg", "/sfx/gun/dragonhead_fire1.ogg" ],
 
+  "critChance": 1,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : [2,6],
+  "reloadTime" : [1.7,3.1],
+  "isSniper" : 1,  
+  
+  
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_antimatnames.config:nameGen",
@@ -122,7 +130,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 3
+  }]
 }
