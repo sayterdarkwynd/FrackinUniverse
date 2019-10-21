@@ -4,7 +4,6 @@ function init()
 	activeItem.setScriptedAnimationParameter(mementomori.deathPositionKey,status.statusProperty(mementomori.deathPositionKey))
 	script.setUpdateDelta(5)
 	promise=world.sendEntityMessage(activeItem.ownerEntityId(),"player.worldId")
-
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -25,14 +24,14 @@ function update(dt, fireMode, shiftHeld)
 			firing=(not not buffer) and (world.magnitude(buffer.position,world.entityPosition(activeItem.ownerEntityId())) > 20)
 			
 			if firing then
-				if teleportTimer == 0 then
+				if not teleportTimer then
+					teleportTimer=0
+				elseif teleportTimer == 0 then
 				  animator.playSound("chime")
-				end
-				if (teleportTimer >= 3-dt) and (teleportTimer<=3) and not playOnce then
+				elseif (teleportTimer >= 3-dt) and (teleportTimer<=3) and not playOnce then
 					animator.playSound("break")
 					playOnce=true
-				end
-				if teleportTimer >= 3 then
+				elseif teleportTimer >= 3 then
 					animator.stopAllSounds("chime")
 					status.addEphemeralEffect("blink")
 					status.addEphemeralEffect("cultistshieldAlwaysHidden",2.5)
@@ -48,7 +47,7 @@ function update(dt, fireMode, shiftHeld)
 					mcontroller.setPosition(buffer.position)
 					item.consume(1)
 				end
-				teleportTimer=teleportTimer and teleportTimer+dt or 0
+				teleportTimer=teleportTimer+dt
 			else
 				teleportTimer=0
 				playOnce=false

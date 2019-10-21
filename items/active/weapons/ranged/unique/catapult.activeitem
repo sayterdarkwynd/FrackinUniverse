@@ -32,7 +32,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "meow",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -47,7 +47,8 @@
 
     "projectileType" : "catapultshot",
     "projectileParameters" : { 
-      "knockback" : 20
+      "knockback" : 20,
+      "damageSourceKind" : "meow"
     },
 	  "stances" : {
 	      "idle" : {
@@ -83,6 +84,9 @@
 
   "critChance" : 2,
   "critBonus" : 6, 
-
+  "isAmmoBased" : 1,
+  "magazineSize" : 10,
+  "reloadTime" : 2,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

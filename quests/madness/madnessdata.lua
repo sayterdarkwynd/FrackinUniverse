@@ -56,13 +56,13 @@ function randomEvent()
     elseif storage.madnessCount > 1000 then
 		if self.randEvent == 40 or self.randEvent == 41 or self.randEvent == 42 then
 			local enabledtechs=player.enabledTechs()
-			if self.randEvent == 40 and enabledtechs:contains("distortionsphere") then --swap tech
+			if self.randEvent == 40 and contains(enabledtechs,"distortionsphere") then --swap tech
 				player.equipTech("distortionsphere")
 			end      
-			if self.randEvent == 41 and enabledtechs:contains("doublejump") then --swap tech
+			if self.randEvent == 41 and contains(enabledtechs,"doublejump") then --swap tech
 				player.equipTech("doublejump")
 			end   
-			if self.randEvent == 42 and enabledtechs:contains("dash") then --swap tech
+			if self.randEvent == 42 and contains(enabledtechs,"dash") then --swap tech
 				player.equipTech("dash")
 			end  
 		end

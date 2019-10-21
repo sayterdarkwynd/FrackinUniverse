@@ -1,72 +1,77 @@
 require "/scripts/vec2.lua"
 
 function init()
-  self.chargeTime = config.getParameter("chargeTime")
-  self.boostTime = config.getParameter("boostTime")
-  self.boostSpeed = config.getParameter("boostSpeed")
-  self.boostForce = config.getParameter("boostForce")
-  self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
+	self.chargeTime = config.getParameter("chargeTime")
+	self.boostTime = config.getParameter("boostTime")
+	self.boostSpeed = config.getParameter("boostSpeed")
+	self.boostForce = config.getParameter("boostForce")
+	self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
 
-  idle()
-self.active=false
-  self.available = true
+	idle()
+	self.active=false
+	self.gravActive=false
+	self.available = true
 end
 
 function uninit()
-  idle()
+	idle()
 end
 
 
 function update(args)
-  local jumpActivated = args.moves["jump"] and not self.lastJump
-  self.lastJump = args.moves["jump"]
-  self.stateTimer = math.max(0, self.stateTimer - args.dt)
+	local jumpActivated = args.moves["jump"] and not self.lastJump
+	self.lastJump = args.moves["jump"]
+	self.stateTimer = math.max(0, self.stateTimer - args.dt)
   
-	if args.moves["special1"] and status.overConsumeResource("energy", 0.07) then 
-	  status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2}}
-	  self.boostSpeed = 0
-	  local direction = {0, 0}
-	  boost(direction) 
-
+	--[[if args.moves["special1"] and status.overConsumeResource("energy", 0.07) then 
+		status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2}}
+		self.boostSpeed = 0
+		local direction = {0, 0}
+		boost(direction) 
 	elseif args.moves["special1"] then
-	  self.boostSpeed = 0
+		self.boostSpeed = 0
 	else
-	  self.boostSpeed = config.getParameter("boostSpeed")
+		self.boostSpeed = config.getParameter("boostSpeed")
+	end]]
+	
+	if not args.moves["special1"] and self.specialLast then
+		self.gravActive = not self.gravActive
+	end
+	self.specialLast=args.moves["special1"]
+	
+	if self.gravActive then
+		if status.overConsumeResource("energy", 0.07) then
+			status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2}}
+		else
+			self.gravActive=false
+		end
 	end
 
-  if self.state == "idle" then
+	if self.state == "idle" then
  
-    if jumpActivated and canRocketJump() then
-      local direction = {0, 0}
-      if args.moves["right"] then direction[1] = direction[1] + 1 end
-      if args.moves["left"] then direction[1] = direction[1] - 1 end
-      if args.moves["up"] then direction[2] = direction[2] + 1 end
-      if args.moves["down"] then direction[2] = direction[2] - 1 end
+		if jumpActivated and canRocketJump() then
+			local direction = {(args.moves["right"] and 1 or 0) + (args.moves["left"] and -1 or 0) , (args.moves["up"] and 1 or 0) + (args.moves["down"] and -1 or 0)}
 
-      if vec2.eq(direction, {0, 0}) then direction = {0, 0} end    
-      boost(direction)
-    end
-  elseif self.state == "boost" then
-      local direction = {0, 0}
-      if args.moves["right"] then direction[1] = direction[1] + 1 end
-      if args.moves["left"] then direction[1] = direction[1] - 1 end
-      if args.moves["up"] then direction[2] = direction[2] + 1 end
-      if args.moves["down"] then direction[2] = direction[2] - 1 end
+			if vec2.eq(direction, {0, 0}) then direction = {0, 0} end    
+				boost(direction)
+			end
+		elseif self.state == "boost" then
+			local direction = {(args.moves["right"] and 1 or 0) + (args.moves["left"] and -1 or 0) , (args.moves["up"] and 1 or 0) + (args.moves["down"] and -1 or 0)}
 
-      if vec2.eq(direction, {0, 0}) then direction = {0, 0} end
-      boost(direction)  
-    if args.moves["jump"] then
-	  if status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
-	    mcontroller.controlApproachVelocity(self.boostVelocity, self.boostForce)
-	  else
-	    idle()
-	  end
-    else
-      idle()
-    end
-  end
+			if vec2.eq(direction, {0, 0}) then direction = {0, 0} end
+			boost(direction)  
+			if args.moves["jump"] then
+			if status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
+				mcontroller.controlApproachVelocity(self.boostVelocity, self.boostForce)
+			else
+				idle()
+			end
+		else
+			idle()
+		end
+	end
 
-  animator.setFlipped(mcontroller.facingDirection() < 0)
+animator.setFlipped(mcontroller.facingDirection() < 0)
 end
 
 function canRocketJump()
