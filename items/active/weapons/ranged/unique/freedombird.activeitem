@@ -112,7 +112,31 @@
      "baseDps" : 8,
      "projectileType" : "freedommissile",
      "knockback" : 120,
-     "reloadTime" : 2
+     "reloadTime" : 2,
+     "projectileParameters" : {
+         "speed" : 40,
+	  "periodicActions" : [
+	    {
+	      "time" : 0.01,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "freedombeam",
+	      "config" : { "damageSourceKind" : "freedom" },
+	      "inheritDamageFactor" : 0.12,
+	      "fuzzAngle" : 360
+	   }
+	  ],    
+       "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/darkmatterboom/darkmatterboom.config"
+	    },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/freedomexplosion.config"
+	    }    
+       ]
+     }
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
