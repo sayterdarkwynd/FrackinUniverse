@@ -48,7 +48,7 @@
   ],
   "periodicActions" : [
     {
-      "time" : 0.015,
+      "time" : 0.01,
       "repeat" : true,
       "action" : "particle",
       "rotate" : true,
@@ -56,7 +56,7 @@
         "type" : "animated",
         "animation" : "/animations/energybeamtrail/energybeamtrail.animation",
         "initialVelocity" : [0.0, 0.0],
-        "timeToLive" : 0.2,
+        "timeToLive" : 0.1,
         "layer" : "middle",
         "position" : [0.0, 0.0]
       }
@@ -64,8 +64,17 @@
   ],
   "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
   "damageKind" : "freedom",
-  "knockback" : 15,
+  "knockback" : 2,
   "knockbackDirectional" : true,
 
-  "speed" : 80
+  "speed" : 60,
+  
+  "scripts" : ["/scripts/projectiles/sinewaveprojectile.lua"],
+  "scriptDelta" : 1,
+
+  "wavePeriod" : 0.2,
+  "waveAmplitude" : 1,
+
+  "persistentAudio" : "/sfx/projectiles/mech_wobbleshot_loop.ogg"
+  
 }
