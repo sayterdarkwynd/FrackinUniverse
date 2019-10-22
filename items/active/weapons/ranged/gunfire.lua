@@ -166,7 +166,7 @@ function GunFire:auto()
 	    status.addEphemeralEffect("reloadReady", 0.5)
 	    self.magazineAmount = self.magazineSize
 	    self.reloadTime = config.getParameter("reloadTime",0)
-	    if (self.reloadTime < 0.08) then
+	    if (self.reloadTime < 1) then
 	       animator.playSound("fuReload") -- adds new sound to reload 
 	    elseif (self.reloadTime >= 2.5) then
 	       animator.playSound("fuReload5") -- adds new sound to reload 
