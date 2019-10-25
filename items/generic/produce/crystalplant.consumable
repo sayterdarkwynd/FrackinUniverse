@@ -1,20 +1,22 @@
 {
   "itemName" : "crystalplantedible",
+  "inventoryIcon" : "crystalplant.png",
+  "category" : "food",
   "rarity" : "Common",
   "price" : 5,
-  "inventoryIcon" : "crystalplant.png",
-  "description" : "Effect:
-^cyan;+Immunity: Poison, Immunity: Sulphuric Acid^reset;",
+  
+  "tooltipKind": "food",
+  "description" : "^pink;Poison^gray;, ^pink;Sulphuric Acid ^cyan;Immunity ^gray;(^white;90s^gray;)",
   "shortdescription" : "Crystal Broccoli",
-  "category" : "food",
+  
   "effects" : [ [ 
-	    {
-		"effect" : "poisonimmunitycrystal",
-		"duration" : 90
-	    },
-	    {
-		"effect" : "sulphuricimmunity",
-		"duration" : 90
-	    }    
-    ]]
+	  {
+		  "effect" : "poisonimmunitycrystal",
+		  "duration" : 90
+    },
+    {
+	  	"effect" : "sulphuricimmunity",
+		  "duration" : 90
+	  }    
+  ] ]
 }
