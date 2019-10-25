@@ -3,9 +3,9 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "A man-portable machine gun that's bigger and meaner, albeit far less accurate, than your average assault rifle.",
+  "description" : "A man-portable machine gun that's bigger and meaner, albeit far less accurate, than an assault rifle.",
   "shortdescription" : "Common Squad Automatic Weapon",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_squadAutomaticWeapon",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
@@ -78,6 +78,14 @@
   },
   "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg", "/sfx/gun/sniper1.ogg", "/sfx/gun/sniper2.ogg", "/sfx/gun/sniper3.ogg", "/sfx/gun/sniper4.ogg", "/sfx/gun/dragonhead_fire1.ogg" ],
 
+  "critChance": 1,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : [18,50],
+  "reloadTime" : [1.5,2.5],
+  "isAssaultRifle" : 1,  
+  
+
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_sawnames.config:nameGen",
@@ -130,7 +138,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 3
+  }]
 }

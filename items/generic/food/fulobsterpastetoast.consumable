@@ -1,23 +1,25 @@
 {
-  "itemName" : "fulobsterpastetoast",
-  "rarity" : "uncommon",
-  "price" : 75,
-  "category" : "preparedFood",
-  "inventoryIcon" : "fulobsterpastetoast.png",
-  "description" : "Because bread isn't bread without mashed crustacean on it.",
-  "shortdescription" : "Lobster Paste on Toast",
-  "effects" : [ [
-    {
-        "effect" : "maxhealthscalingboostfood",
-        "duration" : 180,
-	"healthModifier" : 1.25
-    }
-  ] ],
-  "foodValue" : 20,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 1.0,
-  "blockingEffects" : ["wellfed"]
+  "itemName": "fulobsterpastetoast",
+  "rarity": "uncommon",
+  "price": 75,
+  "category": "preparedFood",
+  "inventoryIcon": "fulobsterpastetoast.png",
+  "description": "Because bread isn't bread without mashed crustacean on it.\n^cyan;+^white;25% ^cyan;HP ^gray;(^white;3m^gray;)^reset;",
+  "shortdescription": "Lobster Paste on Toast",
+  "effects": [
+    [
+      {
+        "effect": "maxhealthscalingboostfood",
+        "duration": 180,
+        "healthModifier": 1.25
+      }
+    ]
+  ],
+  "foodValue": 20,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 1.0,
+  "blockingEffects": ["wellfed"]
 }

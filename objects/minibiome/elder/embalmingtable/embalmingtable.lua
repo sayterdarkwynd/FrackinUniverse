@@ -3,12 +3,20 @@ local recipes =
 --combos
 {inputs = { wrappedbody=1,elderrelic2=1 }, outputs = { inferiorbrain=1,fuscienceresource=520,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidelderfluid=120  }, time = 14.0},
 {inputs = { wrappedbody=1,elderrelic10=1 }, outputs = { inferiorbrain=1,fumadnessresource=520,bone=8,leather=1,alienmeat=12,rawribmeat=2,liquidelderfluid=80  }, time = 14.0},
+{inputs = { wrappedbodyputrid=1,elderrelic2=1 }, outputs = { inferiorbrain=1,fuscienceresource=520,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidelderfluid=120  }, time = 14.0},
+{inputs = { wrappedbodyputrid=1,elderrelic10=1 }, outputs = { inferiorbrain=1,fumadnessresource=520,bone=8,leather=1,alienmeat=12,rawribmeat=2,liquidelderfluid=80  }, time = 14.0},
 
 --mains
-{inputs = { wrappedbody=1 }, outputs = { inferiorbrain=1,fuscienceresource=120,bone=8,leather=1,alienmeat=4,faceskin=1,fumadnessresource=30,liquidblood=40 }, time = 14.0},
-{inputs = { wrappedbodyputrid=1 }, outputs = { inferiorbrain=1,fumadnessresource=60,bone=8,leather=1,rottingfleshmaterial=4,slew2=12,biospore=2,liquidbioooze=40 }, time = 14.0},
-{inputs = { wrappedbodyalien=1 }, outputs = { brain=1,fumadnessresource=80,bone=8,leather=1,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 14.0},
-{inputs = { wrappedbodybirb=1 }, outputs = { brain=1,fuscienceresource=50,blooddiamond=1,goldbar=2,rawribmeat=2,liquidalienjuice=40 }, time = 14.0},
+{inputs = { cadaver=1 }, outputs = { inferiorbrain=1,fuscienceresource=120,bone=24,leather=3,alienmeat=4,faceskin=1,fumadnessresource=30,liquidblood=40 }, time = 14.0},
+{inputs = { cadaverrotting=1 }, outputs = { inferiorbrain=1,fuscienceresource=120,bone=24,leather=3,alienmeat=4,faceskin=1,fumadnessresource=30,liquidblood=40 }, time = 14.0},
+{inputs = { cadaverbirb=1 }, outputs = { brain=1,fuscienceresource=50,blooddiamond=1,goldbar=2,rawribmeat=2,liquidalienjuice=40 }, time = 14.0},
+{inputs = { cadaveralien=1 }, outputs = { brain=1,fumadnessresource=80,bone=24,leather=3,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 15.0},
+
+{inputs = { wrappedbody=1 }, outputs = { cadaver=1,bandage=12,fuscienceresource=40,fumadnessresource=30}, time = 5.0},
+{inputs = { wrappedbodyputrid=1 }, outputs = { cadaverrotting = 1,fumadnessresource=60,bandage=12 }, time = 5.0},
+{inputs = { wrappedbodyalien=1 }, outputs = { cadaveralien = 1,fumadnessresource=80,mutaviskbandage=12 }, time = 5.0},
+{inputs = { wrappedbodybirb=1 }, outputs = { cadaverbirb =1,fuscienceresource=50,fuhoneysilkbandage=12}, time = 5.0},
+
 {inputs = { greghead=1 }, outputs = { fumadnessresource=4,inferiorbrain=1,bone=4,slew2=3}, time = 9.0},
 {inputs = { severedheadplatter=1 }, outputs = { fumadnessresource=1,inferiorbrain=1,bone=4,slew2=3}, time = 9.0},
 {inputs = { faceskin=1 }, outputs = { fumadnessresource=1,liquidblood=2, slew2=1}, time = 7.0},
@@ -21,7 +29,8 @@ local recipes =
 {inputs = { inferiorbrain=1 }, outputs = { fumadnessresource=1,cellmateria=1}, time = 7.0},
 {inputs = { bone=10 }, outputs = { bonemealmaterial=50}, time = 7.0},
 {inputs = { crunchychick=1 }, outputs = { fumadnessresource=3,bonemealmaterial=10,alienmeat=1}, time = 5.0},
-{inputs = { meatpickle=1 }, outputs = { fumadnessresource=2,alienmeat=1}, time = 2.0}
+{inputs = { meatpickle=1 }, outputs = { fumadnessresource=2,alienmeat=1}, time = 2.0},
+{inputs = { milk=1,normaldrone=1 }, outputs = { sourmilkandbees=1}, time = 2.0}
 }
 
 function init()

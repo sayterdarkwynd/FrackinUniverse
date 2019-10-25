@@ -5,7 +5,7 @@
   "rarity" : "Rare",
   "description" : "A compact shotgun that sacrifices accuracy for the ability to be easily-concealable and held in one hand.",
   "shortdescription" : "Rare Short-Barreled Shotgun",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_sawedOffShotgun",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
@@ -75,6 +75,13 @@
     }
   },
 
+  "critChance" : 3,
+  "critBonus" : 12,
+  "isAmmoBased" : 1,
+  "magazineSize" : [2,7],
+  "reloadTime" : [1.2,2.2],
+  "isShotgun" : 1,
+  
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_sawedoffnames.config:nameGen",
@@ -139,7 +146,5 @@
     "altAbilities" : [ ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 7,
-  "critBonus" : 1
+  }]
 }

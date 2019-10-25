@@ -42,7 +42,7 @@
   
   "scripts" : ["/items/active/scripts/thea-gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "freedom",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -102,13 +102,41 @@
 
   "critChance" : 2,
   "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 1,
+  "reloadTime" : 2,
   
   "altAbilityType" : "swtjc_ewg_rocketjump",
   "altAbility" : {
      "projectileCount" : 1,
-     "baseDps" : 8,
+     "baseDps" : 8.4,
      "projectileType" : "freedommissile",
-     "knockback" : 120
+     "knockback" : 120,
+     "reloadTime" : 2,
+     "projectileParameters" : {
+         "speed" : 40,
+	  "periodicActions" : [
+	    {
+	      "time" : 0.005,
+	      "loop" : true,
+	      "action" : "projectile",
+	      "type" : "freedombeam",
+	      "config" : { "damageSourceKind" : "freedom" },
+	      "inheritDamageFactor" : 0.2,
+	      "fuzzAngle" : 360
+	   }
+	  ],    
+       "actionOnReap" : [
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/darkmatterboom/darkmatterboom.config"
+	    },
+	    {
+	      "action" : "config",
+	      "file" : "/projectiles/explosions/freedomexplosion.config"
+	    }    
+       ]
+     }
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

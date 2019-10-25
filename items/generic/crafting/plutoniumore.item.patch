@@ -1,18 +1,31 @@
 [
   [
-    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse" : true },
+    { "op": "test", "path": "/learnBlueprintsOnPickup", "inverse": true },
     { "op": "add", "path": "/learnBlueprintsOnPickup", "value": [] }
   ],
   [
-    { "op": "test", "path": "/itemTags", "inverse" : true },
+    { "op": "test", "path": "/itemTags", "inverse": true },
     { "op": "add", "path": "/itemTags", "value": [] }
   ],
   [
-    { "op": "add", "path": "/learnBlueprintsOnPickup/-", "value": "plutoniumrod" },
-    { "op": "add", "path": "/itemTags/-", "value" : "reagent" },
+    {
+      "op": "add",
+      "path": "/learnBlueprintsOnPickup/-",
+      "value": "plutoniumrod"
+    },
+    { "op": "add", "path": "/itemTags/-", "value": "reagent" },
     { "op": "add", "path": "/fuelAmount", "value": 6 },
     { "op": "replace", "path": "/price", "value": 160 },
+    {
+      "op": "replace",
+      "path": "/description",
+      "value": "It's pretty, but extremely radioactive.\n^blue;+^white;6 ^blue;Fuel^reset;"
+    },
     { "op": "replace", "path": "/category", "value": "craftingOre" },
-    { "op": "add", "path": "/collectablesOnPickup", "value": { "fu_isotopes" : "plutoniumore" } }
+    {
+      "op": "add",
+      "path": "/collectablesOnPickup",
+      "value": { "fu_isotopes": "plutoniumore" }
+    }
   ]
 ]

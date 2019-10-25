@@ -3,19 +3,16 @@
   "rarity" : "Common",
   "price" : 25,
   "inventoryIcon" : "redsnow.png",
-  "description" : "Slow, long-lasting healing in convenient popsicle format. Tastes like medicine.",
+  "description" : "Slow, long-lasting healing in convenient popsicle format. Tastes like medicine.\n^green;Heal ^white;31.5% ^green;HP ^gray;over ^white;1m",
   "shortdescription" : "Red Snow",
   "handPosition" : [0, 4],
   "effects" : [ [
-      {
-        "effect" : "regeneration01"
-      },
-	  {
-        "effect" : "wellfed",
-        "duration" : 80
-    }
-     
-    ] ],
+    "regeneration01",
+    {
+      "effect" : "wellfed",
+      "duration" : 80
+    } 
+  ] ],
   "blockingEffects" : [
     "wellfed"
   ]

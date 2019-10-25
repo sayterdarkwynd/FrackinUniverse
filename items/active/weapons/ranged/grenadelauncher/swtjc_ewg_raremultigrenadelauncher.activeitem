@@ -5,7 +5,7 @@
   "rarity" : "Rare",
   "description" : "For when you need to quickly lob multiple grenades the extra distance.",
   "shortdescription" : "Rare Multi-Grenade Launcher",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_multiGrenadeLauncher",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","grenadelauncher","upgradeableWeapon"],
@@ -88,6 +88,13 @@
   },
   "fireSounds" : [ "/sfx/gun/grenade1.ogg", "/sfx/gun/grenade2.ogg" ],
 
+  "critChance" : 2,
+  "critBonus" : 9,
+  "isAmmoBased" : 1,
+  "magazineSize" : [4,8],
+  "reloadTime" : [1.75,2.55],
+  "isGrenadeLauncher" : 1,
+  
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_multigrenadenames.config:nameGen",
@@ -178,7 +185,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 2,
-  "critBonus" : 7
+  }]
 }

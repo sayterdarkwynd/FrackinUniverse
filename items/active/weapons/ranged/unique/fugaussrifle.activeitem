@@ -36,7 +36,7 @@
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
-          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] },
+		  { "particle" : "fushellcasing", "offset" : [-2.5, 0.0] },
           { "particle" : "dust2", "offset" : [0.4, -0.4] },
           { "particle" : "electricalburn", "offset" : [0.4, -0.4] },
           { "particle" : "electricenergy", "offset" : [0.4, -0.4] }
@@ -49,7 +49,7 @@
 
 
   "baseOffset" : [0.5625, 0.3125],
-  "muzzleOffset" : [2.625, 0.125],
+  "muzzleOffset" : [2.625, 0.187],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -113,6 +113,11 @@
 
   "critChance" : 1,
   "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 25,
+  "reloadTime" : 1.4,
+  "isAssaultRifle" : 1,
+  
   "altAbilityType" : "spray",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
