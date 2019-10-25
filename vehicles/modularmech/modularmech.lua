@@ -26,7 +26,9 @@ function init()
         setEnergyValue()
         local restoreAmount = (base or 0) + self.healthMax * (percentage or 0)
         storage.health = math.min(storage.health + (restoreAmount*0.75), self.healthMax)
-	world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", math.min(storage.energy + (restoreAmount * 0.15), self.energyMax))
+        if self.driverId and world.entityType(self.driverId) == "player" then
+	  world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", math.min(storage.energy + (restoreAmount * 0.15), self.energyMax))
+	end
         animator.playSound("restoreEnergy")
         if storage.energy > self.energyMax then
           storage.energy = self.energyMax
@@ -560,6 +562,12 @@ function update(dt)
   end
   self.driverId = driverId
  
+ 
+  -- NPC Mechs compatbility
+  if self.driverId ~= self.ownerEntityId then
+    storage.energy = self.energyMax
+  end
+  
   -- read controls or do deployment
  
   local newControls = {}
@@ -981,8 +989,11 @@ function update(dt)
       energyDrain = 0
     end
     storage.energy = math.max(0, storage.energy - energyDrain * dt)
-    --set new fuel count on dummy quest
-    world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", storage.energy)
+    
+     if self.driverId and world.entityType(self.driverId) == "player" then
+      --set new fuel count on dummy quest
+      world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", storage.energy)
+    end
   end
  
   local inLiquid = world.liquidAt(mcontroller.position())

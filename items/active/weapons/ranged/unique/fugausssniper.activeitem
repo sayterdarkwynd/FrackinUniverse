@@ -4,9 +4,10 @@
 	"inventoryIcon" : "fugausssniper.png",
 	"maxStack" : 1,
 	"rarity" : "uncommon",
-	"description" : "Brutally effective magnet-based weaponry
+	"description" : "Powerful capacitors with several coil stages.
 ^yellow;Area damage^reset;
-^yellow;Hunting weapon^reset;",
+^yellow;Hunting weapon^reset;
+^yellow;High velocity projectile^reset;",
 	"shortdescription" : "Gauss Sniper Rifle",
 	"category" : "sniperRifle",
 	"level" : 4,
@@ -42,10 +43,10 @@
 			]
 		}
 	},
-		"sounds" : {
-			"fire" : ["/sfx/weapons/fugausspistol.ogg"]
-		}
-	},
+    "sounds" : { "fire" : [ "/sfx/weapons/fugausspistol.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [175, 135, 50] } }
+  },
+
 	
 	"baseOffset" : [1.25, 0.25],
 	"muzzleOffset" : [3, 0.1875],
@@ -57,9 +58,9 @@
 	"primaryAbility" : {
 		"scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
 		"class" : "GunFire",
-		"fireTime" : 0.85,
+		"fireTime" : 0.9,
 		"baseDps" : 8.5,
-		"energyUsage" : 38.0,
+		"energyUsage" : 42,
 		"inaccuracy" : 0,
 		
 		"projectileCount" : 1,
@@ -67,8 +68,8 @@
 		
 		"projectileType" : "gausssnipershot",
 		"projectileParameters" : {
-			"speed" : 100,
-			"knockback" : 10
+			"speed" : 125,
+			"knockback" : 6
 		},
 			"stances" : {
 				"idle" : {
@@ -81,8 +82,8 @@
 				},
 				"fire" : {
 					"duration" : 0,
-					"armRotation" : 5,
-					"weaponRotation" : 5,
+					"armRotation" : 6,
+					"weaponRotation" : 6,
 					"twoHanded" : true,
 					
 					"allowRotate" : false,
@@ -90,8 +91,8 @@
 				},
 				"cooldown" : {
 					"duration" : 0.075,
-					"armRotation" : 5,
-					"weaponRotation" : 5,
+					"armRotation" : 6,
+					"weaponRotation" : 6,
 					"twoHanded" : true,
 					
 					"allowRotate" : false,
@@ -114,5 +115,31 @@
 	"critBonus" : 6,
 	"altAbilityType" : "piercingshot",
 	
-	"builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua",
+	
+	"upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "description" : "Overclocked capacitors take Gaussian mechanics to the extreme.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;
+^yellow;High velocity projectile^reset;",
+ "animationParts" : {
+    "middle" : "fugausssniper2.png",
+	"middlefullbright" : "fugausssniper2_fullbright.png"},
+	
+  "inventoryIcon" : [ { "image" : "fugausssniper2.png" } ],
+  
+    "primaryAbility" : {
+        "fireTime" : 0.85,
+        "baseDps" : 10.4,
+        "energyUsage" : 40.5,
+        "inaccuracy" : 0,     
+    
+        "projectileType" : "gausssnipershot",
+        "projectileParameters" : {
+            "speed" : 175,
+            "knockback" : 11
+            }
+        }
+    }
 }

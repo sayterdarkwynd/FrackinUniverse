@@ -28,7 +28,7 @@
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-		    "offset" : [0.7, 0.3]
+		    "offset" : [0.5625, 0.3125]
 		  }
 		}
       }
@@ -43,13 +43,13 @@
         ]
       }
     },    
-    "sounds" : {
-      "fire" : [ "/sfx/weapons/fugausspistol.ogg" ]
-    }
+    "sounds" : { "fire" : [ "/sfx/weapons/fugausspistol.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [175, 135, 50] } }
   },
 
-  "baseOffset" : [0.7, 0.3],
-  "muzzleOffset" : [2.845, 0.18],
+
+  "baseOffset" : [0.5625, 0.3125],
+  "muzzleOffset" : [2.625, 0.125],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -68,8 +68,8 @@
 
     "projectileType" : "gausspistolshot",
     "projectileParameters" : { 
-      "speed" : 100,
-      "knockback" : 8
+      "speed" : 90,
+      "knockback" : 5
     },
 	  "stances" : {
 	    "idle" : {
@@ -115,5 +115,30 @@
   "critBonus" : 3,
   "altAbilityType" : "spray",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  	"upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "description" : "Overclocked capacitors take Gaussian mechanics to the extreme.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;",
+ "animationParts" : {
+   "middle" : "fugaussrifle2.png",
+   "middlefullbright" : "fugaussrifle2_fullbright.png"},
+ 
+    "inventoryIcon" : [ { "image" : "fugaussrifle2.png" } ],
+	
+    "primaryAbility" : {
+        "fireTime" : 0.20,
+        "baseDps" : 13.6,
+        "energyUsage" : 33.6,
+        "inaccuracy" : 0.011,
+
+		"projectileType" : "gausspistolshot",
+        "projectileParameters" : {
+            "speed" : 100,
+            "knockback" : 9
+            }
+        }
+    }
 }

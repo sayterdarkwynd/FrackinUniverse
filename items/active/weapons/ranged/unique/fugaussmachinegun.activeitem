@@ -28,7 +28,7 @@
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-		    "offset" : [0.7, 0.4]
+		    "offset" : [0.875, 0.4375]
 		  }
 		}
       }
@@ -43,13 +43,13 @@
         ]
       }
     },   
-    "sounds" : {
-      "fire" : [ "/sfx/weapons/fugausspistol.ogg" ]
-    }
+    "sounds" : { "fire" : [ "/sfx/weapons/fugausspistol.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [175, 135, 50] } }
   },
 
-  "baseOffset" : [0.7, 0.4],
-  "muzzleOffset" : [2.6, 0.34],
+
+  "baseOffset" : [0.875, 0.4375],
+  "muzzleOffset" : [3.0, 0.0625],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -68,8 +68,8 @@
 
     "projectileType" : "gausspistolshot",
     "projectileParameters" : { 
-      "speed" : 100,
-      "knockback" : 8
+      "speed" : 85,
+      "knockback" : 4
     },
 	  "stances" : {
 	    "idle" : {
@@ -90,7 +90,7 @@
 	      "allowFlip" : false
 	    },
 	    "cooldown" : {
-	      "duration" : 0.03,
+	      "duration" : 0.04,
 	      "armRotation" : 5,
 	      "weaponRotation" : 5,
 	      "twoHanded" : true,
@@ -115,5 +115,30 @@
   "critBonus" : 3,
   "altAbilityType" : "explosiveburst",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+   	"upgradeParameters" : {
+    "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
+    "description" : "Overclocked capacitors take Gaussian mechanics to the extreme.
+^yellow;Area damage^reset;
+^yellow;Hunting weapon^reset;",
+ "animationParts" : {
+   "middle" : "fugaussmachinegun2.png",
+   "middlefullbright" : "fugaussmachinegun2_fullbright.png"},
+ 
+    "inventoryIcon" : [ { "image" : "fugaussmachinegun2.png" } ],
+
+    "primaryAbility" : {
+        "fireTime" : 0.12,
+        "baseDps" : 14.1,
+        "energyUsage" : 30.5,
+        "inaccuracy" : 0.025,
+		
+		"projectileType" : "gausspistolshot",
+        "projectileParameters" : {
+            "speed" : 95,
+            "knockback" : 8
+            }		
+        }
+    }
 }

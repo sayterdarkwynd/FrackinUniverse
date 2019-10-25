@@ -18,7 +18,14 @@ function init()
           player.giveBlueprint(item)
         end
 
+        -- added july 20th 2019
+        for _,item in pairs(starterSet) do
+          player.giveBlueprint(item)
+        end 
+        --
+        
         setMechItemSet(starterSet)
+        
       end
     end)
 
@@ -93,7 +100,13 @@ function init()
   self.secondaryColorIndex = self.partManager:validateColorIndex(self.secondaryColorIndex)
 
   buildMechParameters()
-
+  
+  -- added july 20th 2019
+  if self.itemSet.body and not self.unlocked then
+    unlockMech()
+  end  
+  --
+  
   self.beaconCheck = world.findUniqueEntity("mechbeacon")
 
   self.beaconFlashTimer = 0
@@ -155,6 +168,28 @@ function setMechItemSet(newItemSet)
   player.setProperty("mechItemSet", self.itemSet)
   buildMechParameters()
 end
+
+-- added july 20th 2019
+function unlockMech()
+  if not self.unlocked then
+    self.unlocked = true
+    player.setProperty("mechUnlocked", true)
+
+    local starterSet = config.getParameter("starterMechSet")
+    local speciesBodies = config.getParameter("speciesStarterMechBody")
+    local playerSpecies = player.species()
+    if speciesBodies[playerSpecies] then
+      starterSet.body = speciesBodies[playerSpecies]
+    end
+
+    for _,item in pairs(starterSet) do
+      player.giveBlueprint(item)
+    end
+
+    setMechItemSet(starterSet)
+  end
+end
+--
 
 function setMechColorIndexes(primaryIndex, secondaryIndex)
   self.primaryColorIndex = self.partManager:validateColorIndex(primaryIndex)
