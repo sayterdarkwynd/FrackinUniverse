@@ -1,0 +1,35 @@
+{
+  "projectileName" : "futranslocatebomb3",
+  "image" : "regularexplosion.png",
+  "animationCycle" : 0.0,
+  "frameNumber" : 1,
+  "timeToLive" : 0.01,
+  "speed" : 0,
+  "power" : 0,
+  "damagePoly" : [ [-48, 0], [-32, -32], [0, -48], [32, -32], [48, 0], [32, 32], [0, 48], [-32, 32] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
+  "damageKind" : "default",
+  
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 0.5,
+      "type" : "crudebombnoblast"
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 6,
+      "backgroundRadius" : 4,
+      "explosiveDamageAmount" : 45,
+      "harvestLevel" : 99,
+      "delaySteps" : 2
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/explosion-large01.ogg" ]
+    }
+  ]
+}

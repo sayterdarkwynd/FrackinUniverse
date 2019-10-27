@@ -2,6 +2,7 @@ require "/scripts/vec2.lua"
 
 function init()
   self.fireOffset = config.getParameter("fireOffset")
+  self.itemLevel = config.getParameter("level")
   updateAim()
 
   storage.fireTimer = storage.fireTimer or 0
@@ -58,7 +59,20 @@ end
 function teleport()
   if storage.projectileId then
     status.setStatusProperty("translocatorDiscId", storage.projectileId)
-    status.addEphemeralEffect("translocateattack")
+    
+    if self.itemLevel == 1 then
+      status.addEphemeralEffect("translocateattack")
+    elseif self.itemLevel == 2 then
+      status.addEphemeralEffect("translocateattack2")
+    elseif self.itemLevel == 4 then
+      status.addEphemeralEffect("translocateattack3")
+    elseif self.itemLevel == 6 then
+      status.addEphemeralEffect("translocateattack4")
+    elseif self.itemLevel == 7 then
+      status.addEphemeralEffect("translocateattack5")
+    else
+      status.addEphemeralEffect("translocateattack5")
+    end
   end
 end
 
