@@ -1,27 +1,15 @@
 {
-  "itemName" : "shellplatechest",
+  "itemName" : "xibasicchest",
+  "price" : 75,
   "inventoryIcon" : "icons.png:chest",
-  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "^green;+2%^reset; Fire and Ice Resists
-^yellow;+10% X'i Bulb Regen Rate^reset;
+  "rarity" : "Common",
+  "description" : "^green;+4%^reset; Fire and Ice Resists
+^yellow;+15%^reset; Bulb Regen Rate (45%)
 \n^orange;Set Bonuses^reset;:
-^green;+5%^reset; Dmg and Speed
-X'i weapons: ^cyan;+15^reset; Health
+^green;+7%^reset; Dmg and ^green;+5%^reset; Speed
+X'i weapons: ^cyan;+20^reset; Health
 \n^#e43774;Lush/Forest biomes: ^green;+5%^reset; Energy and KB Resist",
-
-  "itemTags" : [ "upgradeableWeapon" ],
-
-  "learnBlueprintsOnPickup" : [
-    "mutachitinhead",
-    "mutachitinpants",
-    "mutachitinchest"
-  ],
-
-  "shortdescription" : "X'ian Leather Chest",
-  "category" : "t2armoru",
-  "tooltipKind" : "armornew2",
 
   "maleFrames" : {
     "body" : "chestm.png",
@@ -34,6 +22,18 @@ X'i weapons: ^cyan;+15^reset; Health
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
+
+  "learnBlueprintsOnPickup" : [
+    "mutachitinhead",
+    "mutachitinpants",
+    "mutachitinchest"
+  ],
+  
+  "shortdescription" : "X'ian Armored Chest",
+  "category" : "t2armoru",
+  "tooltipKind" : "armornew2",
+  
+  "itemTags" : [ "upgradeableWeapon" ],
 
   "level" : 2,
   "leveledStatusEffects" : [
@@ -63,27 +63,24 @@ X'i weapons: ^cyan;+15^reset; Health
   "statusEffects" : [
     "fusetbonusmanager",
     {
-      "stat" : "radienleathersetcount",
+      "stat" : "radientungstensetcount",
       "amount" : 1
     },
     {
       "stat" : "iceResistance",
-      "amount" : 0.02
+      "amount" : 0.04
     },
     {
       "stat" : "fireResistance",
-      "amount" : 0.02
+      "amount" : 0.04
     },
     {
       "stat" : "xiBonus",
-      "amount" : 0.1
+      "amount" : 0.15
     }
   ],
-
+  
   "colorOptions" : [
-    /* BROWN */
-    { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" },
-
     /* GREY BLUE */
     { "ffca8a" : "9da8af", "e0975c" : "676f83", "a85636" : "3d3d51", "6f2919" : "24232f" },
     /* BLACK */

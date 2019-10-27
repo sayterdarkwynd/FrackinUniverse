@@ -1,53 +1,64 @@
 {
-  "itemName" : "shellplatehead",
-  "inventoryIcon" : "icons.png:head",
+  "itemName" : "shellplatechest",
+  "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "^green;+2%^reset; Fire and Ice Resists
-^yellow;+10% X'i Bulb Regen Rate^reset;
+^yellow;+10%^reset; X'i Bulb Regen Rate (30%)
 \n^orange;Set Bonuses^reset;:
 ^green;+5%^reset; Dmg and Speed
 X'i weapons: ^cyan;+15^reset; Health
 \n^#e43774;Lush/Forest biomes: ^green;+5%^reset; Energy and KB Resist",
 
   "itemTags" : [ "upgradeableWeapon" ],
+
   "learnBlueprintsOnPickup" : [
-    "mutachitinhead",
-    "mutachitinpants",
-    "mutachitinchest"
+    "xibasiclegs",
+    "xibasicchest",
+    "xibasichead"
   ],
-  "shortdescription" : "X'ian Leather Helm",
-  "category" : "t2armoru",
+
+  "shortdescription" : "X'ian Leather Chest",
+  "category" : "t1armoru",
   "tooltipKind" : "armornew2",
 
-  "maleFrames" : "head.png",
-  "femaleFrames" : "head.png",
-  "mask" : "mask.png",
+  "maleFrames" : {
+    "body" : "chestm.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
 
-  "level" : 2,
+  "femaleFrames" : {
+    "body" : "chestf.png",
+    "backSleeve" : "bsleeve.png",
+    "frontSleeve" : "fsleeve.png"
+  },
+
+  "level" : 1,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.10
+      "baseMultiplier" : 1.15
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.25
+      "amount" : 0.45
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 5
+      "amount" : 7
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 2
+      "amount" : 4
     }
   ],
+
 
   "statusEffects" : [
     "fusetbonusmanager",
