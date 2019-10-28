@@ -2,7 +2,7 @@ require "/scripts/vec2.lua"
 
 function init()
   self.projectile = config.getParameter("baseProjectile")
-  self.damage = config.getParameter("baseDamage")
+  self.damage = config.getParameter("baseDamage",1)
   animator.playSound("activate")
 end
 

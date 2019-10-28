@@ -20,16 +20,54 @@
       "type" : "crudebombnoblast"
     },
     {
-      "action" : "explosion",
-      "foregroundRadius" : 6,
-      "backgroundRadius" : 4,
-      "explosiveDamageAmount" : 45,
-      "harvestLevel" : 99,
-      "delaySteps" : 2
+      "action" : "projectile",
+      "inheritDamageFactor" : 0,
+      "type" : "fudebris",
+      "fuzzAngle" : 360
+    },     
+    {
+      "action" : "loop",
+      "count" : 10,
+      "body" : [
+        {
+          "action" : "option",
+          "options" : [
+            {
+              "action" : "particle",
+              "specification" : {
+                "type" : "animated",
+                "animation" : "/animations/dusttest/dusttest.animation",
+                "approach" : [0.5, 0.5],
+                "timeToLive" : 0.85,
+                "variance" : {
+                  "position" : [1.5, 1.5],
+                  "initialVelocity" : [1, 1],
+                  "rotation" : 180
+                }
+              }
+            }
+          ]
+        },
+        {
+          "action" : "spark"
+        }
+      ]
     },
     {
       "action" : "sound",
-      "options" : [ "/sfx/weapons/explosion-large01.ogg" ]
+      "options" : [ "/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg" ]
+    },
+    {
+      "action" : "light",
+      "color" : "orange"
+    },
+    {
+      "action" : "explosion",
+      "foregroundRadius" : 7,
+      "backgroundRadius" : 4,
+      "explosiveDamageAmount" : 60,
+      "harvestLevel" : 99,
+      "delaySteps" : 2
     }
   ]
 }
