@@ -1,24 +1,25 @@
 {
-  "itemName" : "redhoneyjar",
-  "rarity" : "Common",
-  "category" : "food",
-  "price" : 52,
-  "inventoryIcon" : "redhoneyjar.png",
-  "description" : "A red jar of honey! Exceptional healing ability.",
-  "shortdescription" : "Red Honey Jar",
- 
-  "effects" : [ [
-    {
-        "effect" : "honeyheal3",
-        "duration" :60
-    },
-    {
-        "effect" : "fedhoney",
-        "duration" : 60
-    }
-  ] ],
-  "blockingEffects" : [
-    "fedhoney"
+  "itemName": "redhoneyjar",
+  "rarity": "Common",
+  "category": "food",
+  "price": 52,
+  "inventoryIcon": "redhoneyjar.png",
+  "description": "A red jar of honey! Exceptional healing ability\n^green;Heal ^white;100 ^gray;(^white;1m^gray;)^reset;",
+  "shortdescription": "Red Honey Jar",
+
+  "tooltipKind": "food",
+  "effects": [
+    [
+      {
+        "effect": "honeyheal3",
+        "duration": 60
+      },
+      {
+        "effect": "fedhoney",
+        "duration": 60
+      }
+    ]
   ],
-  "learnBlueprintsOnPickup" : [ "fleshcookie" ]
+  "blockingEffects": ["fedhoney"],
+  "learnBlueprintsOnPickup": ["fleshcookie"]
 }

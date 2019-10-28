@@ -1,29 +1,28 @@
 {
-  "itemName" : "solusberry",
-  "rarity" : "Uncommon",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "inventoryIcon" : "solusberry.png",
-  "description" : "I don't think it's healthy food.",
-  "shortdescription" : "Solusberry",
-  "price" : 35,
-  "foodValue" : 5,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 5,
-  "effects" : [ [
-    {
-        "effect" : "glow",
-        "duration" : 90
-    },
-    {
-        "effect" : "burning",
-        "duration" : 10
-    }
-  ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+  "itemName": "solusberry",
+  "inventoryIcon": "solusberry.png",
+  "category": "food",
+  "rarity": "Uncommon",
+  "price": 35,
+  "foodValue": 5,
+  "maxStack": 20,
+
+  "tooltipKind": "food",
+  "description": "I don't think this is healthy food...\n^#ffd700;Glow ^gray;(^white;90s^gray;)\n^red;Burning ^gray;(^white;10s^gray;)^reset;",
+  "shortdescription": "Solusberry",
+
+  "builder": "/items/buildscripts/buildfood.lua",
+  "effects": [
+    [
+      {
+        "effect": "glow",
+        "duration": 90
+      },
+      {
+        "effect": "burning",
+        "duration": 10
+      }
+    ]
+  ],
+  "blockingEffects": ["wellfed"]
 }

@@ -18,7 +18,14 @@ function init()
           player.giveBlueprint(item)
         end
 
+        -- added july 20th 2019
+        for _,item in pairs(starterSet) do
+          player.giveBlueprint(item)
+        end 
+        --
+        
         setMechItemSet(starterSet)
+        
       end
     end)
 
@@ -93,7 +100,13 @@ function init()
   self.secondaryColorIndex = self.partManager:validateColorIndex(self.secondaryColorIndex)
 
   buildMechParameters()
-
+  
+  -- added july 20th 2019
+  if self.itemSet.body and not self.unlocked then
+    unlockMech()
+  end  
+  --
+  
   self.beaconCheck = world.findUniqueEntity("mechbeacon")
 
   self.beaconFlashTimer = 0
@@ -107,9 +120,9 @@ function init()
   self.healthBarFrameOffset = {0, 4.8}
   self.healthBarOffset = {self.healthBarFrameOffset[1] - self.healthBarSize[1] / 16, self.healthBarFrameOffset[2] - self.healthBarSize[2] / 16}
   --end
-
+  
   self.energyBarSize = root.imageSize("/scripts/deployment/energybar.png")
-  self.energyBarFrameOffset = {0, 4.0}
+  self.energyBarFrameOffset = {0, 3.94}
   self.energyBarOffset = {self.energyBarFrameOffset[1] - self.energyBarSize[1] / 16, self.energyBarFrameOffset[2] - self.energyBarSize[2] / 16}
 
   --health bar variables
@@ -156,6 +169,28 @@ function setMechItemSet(newItemSet)
   buildMechParameters()
 end
 
+-- added july 20th 2019
+function unlockMech()
+  if not self.unlocked then
+    self.unlocked = true
+    player.setProperty("mechUnlocked", true)
+
+    local starterSet = config.getParameter("starterMechSet")
+    local speciesBodies = config.getParameter("speciesStarterMechBody")
+    local playerSpecies = player.species()
+    if speciesBodies[playerSpecies] then
+      starterSet.body = speciesBodies[playerSpecies]
+    end
+
+    for _,item in pairs(starterSet) do
+      player.giveBlueprint(item)
+    end
+
+    setMechItemSet(starterSet)
+  end
+end
+--
+
 function setMechColorIndexes(primaryIndex, secondaryIndex)
   self.primaryColorIndex = self.partManager:validateColorIndex(primaryIndex)
   self.secondaryColorIndex = self.partManager:validateColorIndex(secondaryIndex)
@@ -190,7 +225,7 @@ function update(dt)
   if self.mechParameters then
     --local energyMax = self.mechParameters.parts.body.energyMax
     checkEnergyBonus()
-    local energyMax = 100 + self.mechParameters.parts.body.energyMax *(self.mechParameters.parts.body.stats.energyBonus or 1)  + (self.energyBoost)
+    local energyMax = ((100 + self.mechParameters.parts.body.energyMax) *(self.mechParameters.parts.body.stats.energyBonus or 1))  + (self.energyBoost or 0)
     world.sendEntityMessage(self.playerId, "setCurrentMaxFuel", energyMax)
   end
 

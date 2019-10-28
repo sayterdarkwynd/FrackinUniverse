@@ -1,32 +1,35 @@
 {
-  "itemName" : "neuropod",
-  "rarity" : "legendary",
-  "price" : 95,
-  "inventoryIcon" : "neuropod.png",
-  "description" : "Effect:
-^cyan;+50% Energy Regen, +15% Speed, +15% Low Gravity, +25% Jump^reset;",
-  "shortdescription" : "Neuropod Bulb",
-  "category" : "food",
+  "itemName": "neuropod",
+  "inventoryIcon": "neuropod.png",
+  "category": "food",
+  "rarity": "legendary",
+  "price": 95,
 
-  "effects" : [ [
+  "tooltipKind": "food",
+  "description": "^cyan;+^white;50% ^cyan;Energy Regen^gray;, ^cyan;+^white;12.5% ^cyan;Run^gray; and ^cyan;Low Gravity^gray;, ^cyan;+^white;20% ^cyan;Jump ^gray;(^white;125s^gray;)^reset;",
+  "shortdescription": "Neuropod Bulb",
+
+  "effects": [
+    [
       {
-        "effect" : "energyregenfu50",
-        "duration" : 125
+        "effect": "energyregenfu50",
+        "duration": 125
       },
       {
-        "effect" : "runboost",
-        "amount" : 0.125,
-        "duration" : 125
+        "effect": "runboost",
+        "amount": 0.125,
+        "duration": 125
       },
       {
-        "effect" : "lowgrav",
-        "amount" : 0.125,
-        "duration" : 125
+        "effect": "lowgrav",
+        "amount": 0.125,
+        "duration": 125
       },
       {
-        "effect" : "jumpboost",
-        "amount" : 0.20,
-        "duration" : 125
+        "effect": "jumpboost",
+        "amount": 0.2,
+        "duration": 125
       }
-    ] ]
+    ]
+  ]
 }

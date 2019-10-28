@@ -1,18 +1,16 @@
 {
   "itemName" : "plasmango",
-  "rarity" : "Uncommon",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
   "inventoryIcon" : "plasmango.png",
-  "description" : "'Everything is gonna be fine' - said the last seen non-novakid humanoid trying to eat a plasmango.",
-  "shortdescription" : "Plasmango",
+  "category" : "food",
+  "rarity" : "Uncommon",
   "price" : 42,
-  "foodValue" : 15,
-  "tooltipKind" : "food",
+  "eventCategory" : "eventCrop",
+  
+  "tooltipKind": "food",
+  "shortdescription" : "Plasmango",
+  "description" : "^cyan;+^white;25% ^cyan;Jump ^gray;(^white;40s^gray;)\n^red;Burning ^gray;(^white;10s^gray;)\n\"Everything is gonna be fine\" - non-Novakid prior to eating a Plasmango",
+  
   "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 5,
   "effects" : [ [
     {
         "effect" : "jumpboostfood",
@@ -20,7 +18,7 @@
     },
     {
         "effect" : "burning",
-        "duration" : 15
+        "duration" : 10
     }
   ] ],
   "blockingEffects" : [

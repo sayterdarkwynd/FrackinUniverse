@@ -1,26 +1,26 @@
 {
-  "itemName" : "honeyham",
-  "rarity" : "Common",
-  "category" : "preparedFood",
-  "inventoryIcon" : "honeyham.png",
-  "description" : "A haunch of honey roasted ham.",
-  "shortdescription" : "Honey Ham",
-  "handPosition" : [0, -4],
+  "itemName": "honeyham",
+  "rarity": "Common",
+  "category": "preparedFood",
+  "inventoryIcon": "honeyham.png",
+  "description": "A haunch of honey roasted ham.\n^green;Heal ^white;115 ^gray;(^white;90s^gray;)^reset;",
+  "shortdescription": "Honey Ham",
+  "handPosition": [0, -4],
 
-  "price" : 75,
-  "foodValue" : 25,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 5.0,
-  "effects" : [ [
-    {
-        "effect" : "honeyheal4",
-        "duration" : 90
-    }
-  ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+  "price": 75,
+  "foodValue": 25,
+  "tooltipKind": "food",
+  "builder": "/items/buildscripts/buildfood.lua",
+  "maxStack": 1000,
+  "itemAgingScripts": ["/scripts/items/rotting.lua"],
+  "rottingMultiplier": 5.0,
+  "effects": [
+    [
+      {
+        "effect": "honeyheal4",
+        "duration": 90
+      }
+    ]
+  ],
+  "blockingEffects": ["wellfed"]
 }

@@ -4,14 +4,15 @@
   "price" : 160,
   "category" : "medicine",
   "inventoryIcon" : "reactivegel.png",
-  "description" : "Restores 75 health. An indespensible item for a X'i.",
+  "description" : "An indespensible item for a X'i\n^green;Heal ^white;75 ^gray;(^white;1s^gray;)^reset;",
   "shortdescription" : "Reactive Gel II",
   "learnBlueprintsOnPickup" : ["reactivegel3"],
   "effects" : [ [
-      {
-        "effect" : "radienheal"
-      }
-    ] ],
+    {
+      "effect" : "radienheal",
+      "healAmount": 75
+    }
+  ] ],
   "emote" : "",
   "emitters" : [ "bandageuse" ],
   "blockingEffects" : [

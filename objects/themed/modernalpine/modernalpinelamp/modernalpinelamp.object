@@ -1,0 +1,50 @@
+{
+  "objectName": "modernalpinelamp",
+  "colonyTags": [ "modernalpine", "light" ],
+  "rarity": "Uncommon",
+  "race": "generic",
+  "category": "light",
+  "price": 0,
+  "printable": false,
+
+  "description": "A wooden lamp with a stylishly patterned lampshade.",
+  "shortdescription": "Alpine Lamp",
+
+  "apexDescription": "A light wood table with a pretty lampshade.",
+  "avianDescription": "This lamp appears to be built into the table it's on.",
+  "floranDescription": "Ssstylish lamp.",
+  "glitchDescription": "Happy. The pattern on this lampshade makes the room even brighter to be in.",
+  "humanDescription": "The lampshade on this lamp has a pretty cool looking pattern.",
+  "hylotlDescription": "This stylish lamp is mounted onto the table it sits.",
+  "novakidDescription": "Looks like this lamp's stuck here to the table.",
+
+  "inventoryIcon": "modernalpinelampicon.png",
+  "orientations": [
+    {
+      "dualImage": "modernalpinelamp.png:<color>.<frame>",
+      "imagePosition": [ -12, 0 ],
+      "animationPosition" : [-12, 0],
+      "spaceScan": 0.1,
+      "anchors": [ "bottom" ]
+    }
+  ],
+  
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "modernalpinelamp.png",
+    "fg" : "modernalpinelamplit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+
+  "lightColor" : [217, 217, 190]
+}

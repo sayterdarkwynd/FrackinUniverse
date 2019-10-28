@@ -5,14 +5,14 @@
   "maxStack" : 1,
   "rarity" : "Legendary",
   "description" : "Cross through dimensions at will.",
-  "shortdescription" : "Translocator Staff",
+  "shortdescription" : "Void-Warp Locus",
   "category" : "staff",
   "twoHanded" : true,
   "itemTags" : ["weapon","staff"],
   "tooltipKind" : "staff",
   
-  "blinkCollisionCheckDiameter" : 5,
-  "blinkVerticalGroundCheck" : 10,
+  "blinkCollisionCheckDiameter" : 2,
+  "blinkVerticalGroundCheck" : 0,
 
   // Specific to humanoid
   "blinkFootOffset" : -2.5,
@@ -23,10 +23,8 @@
   "blinkMode" : "cursorPenetrate",
   
   "teleportOffset" : [0, 2.5],
-  "teleportTolerance" : 2.0,
-  
-  
-  
+  "teleportTolerance" : 1.0,
+
   "animation" : "/items/active/weapons/staff/staff.animation",
   "animationParts" : {
     "staff" : "transdim.png",
@@ -55,7 +53,7 @@
       "allowFlip" : true
     },
     "charge" : {
-      "duration" : 0.1,
+      "duration" : 1.3,
       "armRotation" : 20,
       "weaponRotation" : -20,
       "twoHanded" : true,
@@ -93,23 +91,7 @@
 
   "elementalType" : "electric",
 
-  "primaryAbility" : {
-    "type" : "translocatorportal",
-    "name" : "Teleport",
-    "scripts" : ["/items/active/weapons/staff/abilities/transdimensional.lua"],
-    "class" : "Controlledteleport",
-
-    "energyCost" : 500,
-
-    "maxCastRange" : 300,
-
-    "projectileCount" : 1,
-    "projectileDistance" : 2.5,
-    "projectileType" : "balllightning",
-    "projectileParameters" : {
-      "baseDamage" : 0
-    }
-  },
+  "primaryAbilityType" : "transdimensional",
 
   "altAbility" : {
     "type" : "translocatorportal",
