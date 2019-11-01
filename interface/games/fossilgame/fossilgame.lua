@@ -73,7 +73,8 @@ function initGame()
       SquareTool:new(self.level, 2),
       TLeft:new(self.level, 2),
       TRight:new(self.level , 2),
-      Dot:new(self.level, 2)
+      Dot:new(self.level, 2),
+      CrossTool:new(self.level, 2)
     }
   elseif config.getParameter("toolType") == "master" then
     self.tools = {
