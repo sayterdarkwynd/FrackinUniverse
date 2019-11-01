@@ -107,7 +107,7 @@ function initGame()
 end
 
 function initGui(tools)
-  local buttonOrigin = {218, 89}
+  local buttonOrigin = {218, 106}
   local buttonPos = {0, 0}
   local maxWidth = 90
 
@@ -390,17 +390,17 @@ end
 function drawGui()
   self.frame:draw({0, 0})
 
-  gameCanvas:drawText("EXCAVATION", {position = {230, 183}, width = 88}, 12)
-  gameCanvas:drawText("PROGRESS", {position = {235, 171}, width = 88}, 12)
+  gameCanvas:drawText("EXCAVATION", {position = {230, 197}, width = 88}, 12)
+  gameCanvas:drawText("PROGRESS", {position = {235, 185}, width = 88}, 12)
   local progressColor = {255,255,255}
   if self.level.fossilDamaged then
     progressColor = {255, 0, 0}
   end
-  gameCanvas:drawText(self.level.progress .. "/" .. #self.level.fossilTiles, {position = {255, 153}}, 12, progressColor)
-  self.fossilCounter:draw({225, 136})
+  gameCanvas:drawText(self.level.progress .. "/" .. #self.level.fossilTiles, {position = {255, 168}}, 12, progressColor)
+  self.fossilCounter:draw({225, 150})
 
   if (self.treasureComplete) then
-    self.treasureIndicator:draw({285, 140})
+    self.treasureIndicator:draw({285, 160})
   end
 
   self.toolButtonSet:draw()
