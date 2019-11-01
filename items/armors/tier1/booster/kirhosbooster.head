@@ -1,36 +1,48 @@
 {
-  "itemName" : "zaibatsulegs",
-  "price" : 35,
-  "type" : "Legs",
-  "inventoryIcon" : "icons.png:pants",
+  "itemName" : "boosterhead",
+  "price" : 32,
+  "inventoryIcon" : "headicon.png",
   "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "A formal skirt suitable for corporate affairs.",
-  "shortdescription" : "Zaibatsu Skirt",
-  "category" : "legarmour",
+  "rarity" : "common",
+  "category" : "headwear",
+  "description" : "Popular lower-street wear.
+  ^#e43774;+10 Crit Damage^reset;",
+  
+  "shortdescription" : "Booster Shades",
   "tooltipKind" : "armor",
 
-  "maleFrames" : "pants.png",
-  "femaleFrames" : "pants.png",
+  "maleFrames" : "head.png",
+  "femaleFrames" : "head.png",
+  "mask" : "mask.png",
+  "itemTags" : [ "upgradeableWeapon" ],
+  "level" : 1,
+    "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.35
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.12
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 4
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 5
+    }
+  ],
 
   "statusEffects" : [
     {
-      "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.05
-    },
-
-    {
-      "stat" : "protection",
-      "amount" : 2
-    },
-    {
-      "stat" : "maxHealth",
-      "amount" : 4
-    },
-
-    {
-      "stat" : "maxEnergy",
-      "amount" : 4
+      "stat" : "critBonus",
+      "amount" : 10
     }
   ],
 
