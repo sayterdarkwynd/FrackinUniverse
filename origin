@@ -1,0 +1,1039 @@
+Updating fb7d5f535f..695281bd4d
+Fast-forward
+ .metadata                                          |   2 +-
+ _FUversioning.config                               |  65 +-
+ a_notyetadded/catapult.png                         | Bin 0 -> 1104 bytes
+ a_notyetadded/fenerox pet/fennecfox6.png           | Bin 4067 -> 0 bytes
+ .../thelusian/thelu furniture/thelushive.png       | Bin 0 -> 975 bytes
+ .../thelusian/thelu furniture/thelushivesleek.png  | Bin 0 -> 1133 bytes
+ ...tation.png => thelusiantechstationlitTier0.png} | Bin
+ ...on.png => thelusiantechstationlitTier0icon.png} | Bin
+ ...lit.png => thelusiantechstationlitTier0lit.png} | Bin
+ .../objects/thelusian/theluscaptainschair.png      | Bin 473 -> 463 bytes
+ .../wpn/Shini_Weps/lunari/lunarichakram.png        | Bin 361 -> 1540 bytes
+ .../wpn/Shini_Weps/lunari/lunarichakramitem.png    | Bin 0 -> 361 bytes
+ .../Shini_Weps/xithricite/xithricitechakram.png    | Bin 655 -> 1759 bytes
+ .../xithricite/xithricitechakramfullbright.png     | Bin 578 -> 1491 bytes
+ .../xithricite/xithricitechakramitem.png           | Bin 0 -> 655 bytes
+ .../xithricite/xithricitechakramitemfullbright.png | Bin 0 -> 578 bytes
+ .../Shini_Weps/zerchesium/zerchesiumchakram.png    | Bin 376 -> 1590 bytes
+ .../zerchesium/zerchesiumchakramitem.png           | Bin 0 -> 376 bytes
+ a_notyetadded/wpn/densiniumshortspear.png          | Bin 0 -> 476 bytes
+ a_notyetadded/wpn/densiniumspear.png               | Bin 0 -> 557 bytes
+ a_notyetadded/wpn/funightar_vaneblade3.png         | Bin 0 -> 234 bytes
+ ai/portraits/thelusianportrait.png                 | Bin 1693 -> 5012 bytes
+ biomes/oredistributions.configfunctions.patch      |  38 +-
+ codex/precursor/precursor5.codex                   |   5 +-
+ cursors/cursor_freedom.cursor                      |   4 +
+ cursors/cursor_freedom.frames                      |  10 +
+ cursors/cursor_freedom.png                         | Bin 0 -> 366 bytes
+ cursors/freedom2.png                               | Bin 0 -> 253 bytes
+ .../human/shipwreck/shipwreck.dungeon              |  14 +-
+ dungeons/nightar/castle/nightarcastle.dungeon      |   9 +-
+ dungeons/space/outlawmine/outlawmine.dungeon       |  31 +-
+ interface/cockpit/cockpit.config                   |   4 +-
+ interface/mechfuel/mechfuel.lua                    |   2 +-
+ items/active/unsorted/madnessvoxel/beebook.png     | Bin 0 -> 344 bytes
+ .../unsorted/madnessvoxel/bloodritual.activeitem   |  24 +
+ items/active/unsorted/madnessvoxel/bloodritual.png | Bin 0 -> 302 bytes
+ .../madnessvoxel/booksaboutbees.activeitem         |  24 +
+ .../unsorted/madnessvoxel/madequation.activeitem   |  24 +
+ items/active/unsorted/madnessvoxel/madequation.png | Bin 0 -> 349 bytes
+ .../bow/autocrossbow/autocrossbow.activeitem       |  62 +-
+ .../weapons/bow/autocrossbow/autocrossbow.png      | Bin 219 -> 410 bytes
+ .../weapons/bow/autocrossbow/autocrossbow2.frames  |   6 +
+ .../weapons/bow/autocrossbow/autocrossbow2.png     | Bin 0 -> 401 bytes
+ .../autocrossbow/autocrossbow2fullbright.frames    |   6 +
+ .../bow/autocrossbow/autocrossbow2fullbright.png   | Bin 0 -> 129 bytes
+ .../bow/autocrossbow/autocrossbowfullbright.frames |   6 +
+ .../bow/autocrossbow/autocrossbowfullbright.png    | Bin 0 -> 98 bytes
+ .../bow/telebriumbow/telebriumbow.activeitem       |   2 +-
+ .../melee/broadsword/densiniumbroadsword.png       | Bin 0 -> 573 bytes
+ .../weapons/melee/broadsword/densiniumscythe2.png  | Bin 311 -> 719 bytes
+ .../densiniumsword/densiniumsword.activeitem       |   6 +-
+ .../densiniumsword/nightarancientblade.png         | Bin 1001 -> 2129 bytes
+ .../densiniumsword/nightarancientblade_old.png     | Bin 1082 -> 1787 bytes
+ .../nightarancientbladefullbright.png              | Bin 554 -> 1250 bytes
+ .../active/weapons/melee/flail/densiniumflail.png  | Bin 172 -> 251 bytes
+ .../weapons/melee/flail/flailballdensinium.png     | Bin 146 -> 230 bytes
+ .../weapons/melee/flail/flailchaindensinium.png    | Bin 103 -> 122 bytes
+ .../weapons/melee/katana/densiniumkatana.png       | Bin 293 -> 570 bytes
+ .../melee/katana/xithricitekatana.activeitem       |  50 ++
+ .../weapons/melee/katana}/xithricitekatana.png     | Bin
+ .../melee/katana}/xithricitekatanafullbright.png   | Bin
+ .../weapons/melee/mace/densiniummace_gezbo.png     | Bin 284 -> 524 bytes
+ .../melee/mace/densiniummace_gezbofullbright.png   | Bin 206 -> 339 bytes
+ .../melee/quarterstaff/densiniumquarterstaff.png   | Bin 171 -> 295 bytes
+ .../weapons/melee/scythe/densiniumscythe.png       | Bin 458 -> 1167 bytes
+ .../weapons/ranged/abilities/catshot.weaponability |  67 ++
+ .../weapons/ranged/unique/catapult.activeitem      |  88 ++
+ .../ranged/unique/densiniumrifle.activeitem        |   6 +-
+ .../ranged/unique/densiniumshotgun.activeitem      |   8 +-
+ .../ranged/unique/densiniumsniper.activeitem       |   4 +-
+ .../weapons/ranged/unique/freedombird.activeitem   |   5 +-
+ items/active/weapons/ranged/unique/fucatapult.png  | Bin 0 -> 1104 bytes
+ .../weapons/ranged/unique/fugaussrifle.activeitem  |   6 +-
+ .../weapons/ranged/unique/ionrifle.activeitem      |  35 +-
+ items/active/weapons/ranged/unique/ionrifle.png    | Bin 266 -> 308 bytes
+ .../weapons/ranged/unique/ionriflefullbright.png   | Bin 180 -> 193 bytes
+ .../unique/telebriumrocketlauncher.activeitem      |   2 +-
+ .../unique/zerchesiumassaultrifle.activeitem       |   4 +-
+ .../transdimensional.weaponability                 |  23 +
+ .../staff/abilities/crystalstorm/icestorm.lua      | 222 +++++
+ .../abilities/crystalstorm/icestorm.weaponability  |  18 +
+ .../weapons/staff/abilities/transdimensional.lua   |  67 +-
+ .../staff/generated/stone/zerchesiumstaff.png      | Bin 0 -> 213 bytes
+ .../staff/orestaffs/zerchesiumstaff.activeitem     |  86 ++
+ .../weapons/staff/orestaffs}/zerchesiumstaff.png   | Bin
+ .../transdimensional/transdimensional.activeitem   |  26 +-
+ .../back/environment/shadowimmunity1.augment       |   3 +-
+ .../back/resistances/shadowresistance.augment      |   4 +-
+ items/bees/frames/godlyframe.item                  |   2 +-
+ items/buildscripts/weaponabilities.config.patch    |   6 +-
+ items/generic/crafting/attunedpaper.item           |  10 +
+ items/generic/crafting/attunedpaper.png            | Bin 0 -> 229 bytes
+ items/generic/crafting/duskiline.item              |   2 +-
+ items/generic/crafting/emera.item                  |   2 +-
+ items/generic/crafting/exonite.item                |   2 +-
+ items/generic/crafting/feya.item                   |   2 +-
+ .../crafting/fissionfurnace/moonstonebar.item      |  23 +-
+ .../crafting/fissionfurnace/xithricitecrystal.item |   1 +
+ .../crafting/fissionfurnace/zerchesiumbar.item     |   1 +
+ items/generic/crafting/irradiumore.png             | Bin 157 -> 322 bytes
+ items/generic/crafting/irradiumorebak.png          | Bin 0 -> 157 bytes
+ .../crafting/matterassembler/powercore.item        |   3 +-
+ items/generic/crafting/nicepaper.item              |  10 +
+ items/generic/crafting/nicepaper.png               | Bin 0 -> 231 bytes
+ items/generic/crafting/oceanite.item               |   5 +-
+ items/generic/crafting/opul.item                   |   2 +-
+ items/generic/crafting/paper.item.patch            |   1 +
+ items/generic/crafting/phosite.item                |   2 +-
+ items/generic/crafting/phosite.png                 | Bin 237 -> 247 bytes
+ items/generic/crafting/rasiline.item               |   2 +-
+ items/generic/crafting/rekite.item                 |   2 +-
+ items/generic/crafting/thanatite.item              |   4 +-
+ items/generic/crafting/upilite.item                |   2 +-
+ items/generic/meat/deliciousmeat.consumable        |   2 +-
+ items/generic/meat/frostburntmeat.consumable       |   2 +-
+ items/generic/meat/honeyham.consumable             |   2 +-
+ items/generic/meat/meatchunk.consumable            |   2 +-
+ items/generic/other/manipulatormodule.item.patch   |   8 +-
+ items/generic/produce/aquapod.consumable           |  10 +-
+ items/generic/produce/avali/kirifruit.consumable   |  18 +-
+ items/generic/produce/avali/nakatibark.consumable  |  14 +-
+ items/generic/produce/avali/pirufrond.consumable   |  16 +-
+ items/generic/produce/avikanspices.item            |  12 +-
+ items/generic/produce/banana.consumable.patch      |   5 +
+ .../generic/produce/beetlesproutflower.consumable  |  11 +-
+ items/generic/produce/biscorn.consumable           |  10 +-
+ items/generic/produce/blexsap.consumable           |  16 +-
+ .../produce/blisterbushplantfood.consumable        |  20 +-
+ items/generic/produce/blizzberry.consumable        |  12 +-
+ items/generic/produce/bloodroot.consumable         |  12 +-
+ items/generic/produce/bluemelon.consumable         |  13 +-
+ items/generic/produce/bolbohn.consumable           |  20 +-
+ items/generic/produce/capriole.consumable          |  18 +-
+ items/generic/produce/cellpods.consumable          |  17 +-
+ items/generic/produce/cherry.consumable            |  15 +-
+ items/generic/produce/corvex.consumable            |  13 +-
+ items/generic/produce/crystalplant.consumable      |  28 +-
+ items/generic/produce/crystalplant.item.patch      |   2 +-
+ items/generic/produce/diodiahybrid.consumable      |  15 +-
+ items/generic/produce/dragonsbeard.consumable      |  19 +-
+ items/generic/produce/dunestalk.item               |  15 +-
+ items/generic/produce/energiflower.consumable      |  24 +-
+ items/generic/produce/erithianalgae.item           |  15 +-
+ items/generic/produce/fayshroom.consumable         |  13 +-
+ items/generic/produce/floralytcandy.consumable     |  19 +-
+ items/generic/produce/fusnowberry.consumable       |  13 +-
+ items/generic/produce/fuspongeweed.consumable      |  13 +-
+ items/generic/produce/garpberry.consumable         |  15 +-
+ items/generic/produce/gazelemon.consumable         |   9 +-
+ items/generic/produce/gemglow.consumable           |  15 +-
+ items/generic/produce/genesiberry.consumable       |  17 +-
+ items/generic/produce/ghostmushroom.consumable     |  18 +-
+ items/generic/produce/ginseng.consumable           |  15 +-
+ items/generic/produce/glarestalkeye.consumable     |  42 +-
+ items/generic/produce/goldenglowleaf.consumable    |  11 +-
+ items/generic/produce/goldenroot.consumable        |  15 +-
+ items/generic/produce/goldenseasponge.consumable   |  13 +-
+ items/generic/produce/goldshroom.consumable        |   9 +-
+ items/generic/produce/greenleaf.consumable         |  15 +-
+ items/generic/produce/guam.consumable              |  17 +-
+ items/generic/produce/haleflowerpetal.consumable   |  13 +-
+ items/generic/produce/ighantbulb.consumable        |  25 +-
+ items/generic/produce/ise3/aenemapetal.consumable  |  11 +-
+ .../produce/ise3/batterystemcharge.consumable      |  12 +-
+ .../produce/ise3/darklightblossom.consumable       |  10 +-
+ .../generic/produce/ise3/fletchweedstem.consumable |  16 +-
+ .../produce/ise3/garikleafblossom.consumable       |  26 +-
+ .../generic/produce/ise3/herrodbushgem.consumable  |  13 +-
+ items/generic/produce/ise3/kramilspine.consumable  |  20 +-
+ items/generic/produce/ise3/quellstembud.consumable |  18 +-
+ .../generic/produce/ise3/victorleafbud.consumable  |  22 +-
+ .../produce/ise3/whitespineshell.consumable        |  11 +-
+ items/generic/produce/itahead.consumable           |  19 +-
+ items/generic/produce/jillyroot.consumable         |  17 +-
+ items/generic/produce/kadavancactus.consumable     |  12 +-
+ items/generic/produce/kamaranpods.consumable       |  13 +-
+ items/generic/produce/lactariusindigo.consumable   |  13 +-
+ items/generic/produce/lasherstem.consumable        |  42 +-
+ items/generic/produce/leafshell.consumable         |  13 +-
+ items/generic/produce/littlegoodberry.consumable   |  46 +-
+ items/generic/produce/littlerascal.consumable      |  13 +-
+ items/generic/produce/lumivine.consumable          |  13 +-
+ items/generic/produce/melodistar.consumable        |  13 +-
+ items/generic/produce/minkocoapod.consumable       |  21 +-
+ items/generic/produce/mint.consumable              |  13 +-
+ items/generic/produce/miraclegrass.consumable      |  23 +-
+ items/generic/produce/mireurchin.consumable        |  18 +-
+ items/generic/produce/nailery.consumable           |  34 +-
+ items/generic/produce/neuropod.consumable          |  49 +-
+ items/generic/produce/nisscap.consumable           |  13 +-
+ items/generic/produce/nyanifruit.consumable        |  13 +-
+ items/generic/produce/onion.consumable             |  13 +-
+ items/generic/produce/orange.consumable            |  17 +-
+ items/generic/produce/pasaka.consumable            |  13 +-
+ items/generic/produce/peach.consumable             |  15 +-
+ items/generic/produce/pear.consumable              |  19 +-
+ items/generic/produce/pearlfruit.consumable        |  15 +-
+ items/generic/produce/pekkit.consumable            |  17 +-
+ items/generic/produce/petrifiedroot.consumable     |  49 +-
+ .../produce/phasefruit/phasefruit.consumable       |  18 +-
+ items/generic/produce/pinkloom.consumable          |  42 +-
+ .../generic/produce/plasmango/plasmango.consumable |  18 +-
+ items/generic/produce/porphisblossom.consumable    |  40 +-
+ items/generic/produce/rockroot.consumable          |  26 +-
+ items/generic/produce/shadowroot.consumable        |  10 +-
+ items/generic/produce/shinyacorn.consumable        |  13 +-
+ items/generic/produce/shoggothessence.consumable   |   8 +-
+ items/generic/produce/silverleaf.consumable        |  13 +-
+ items/generic/produce/slimeleaf.consumable         |  24 +-
+ .../produce/solusberry/solusberry.consumable       |  17 +-
+ items/generic/produce/springvaultcoil.consumable   |  21 +-
+ items/generic/produce/stranglevineroot.consumable  |  13 +-
+ items/generic/produce/sweetscoop.consumable        |  24 +-
+ items/generic/produce/talonseed.consumable         |  13 +-
+ items/generic/produce/tearnut.consumable           |  23 +-
+ items/generic/produce/tentacleproduce.consumable   |  15 +-
+ items/generic/produce/teratomato.consumable        |  13 +-
+ items/generic/produce/testerplant.consumable       |   7 +-
+ items/generic/produce/tetherhookwheel.consumable   |  15 +-
+ items/generic/produce/thornitox.consumable         |  21 +-
+ items/generic/produce/toxicflower.consumable       |  21 +-
+ items/generic/produce/tyvokkhook.consumable        |  48 +-
+ items/generic/produce/vanusflower.consumable       |  24 +-
+ items/generic/produce/varanberry.consumable        |  17 +-
+ items/generic/produce/vashtaclaw.consumable        |  44 +-
+ items/generic/produce/vextonguestamen.consumable   |  27 +-
+ .../generic/produce/violiroot/violiroot.consumable |  20 +-
+ items/generic/produce/voritcap.consumable          |  14 +-
+ items/generic/produce/wretchel.consumable          |  27 +-
+ items/generic/produce/wubstem.consumable           |  13 +-
+ items/generic/produce/xaxwing.consumable           |  30 +-
+ items/generic/produce/yellowfoot.consumable        |  13 +-
+ items/generic/produce/zathitails.consumable        |  14 +-
+ items/liquids/liquidaether.liqitem                 |   2 +-
+ items/materials/fugirder.matitem                   |   2 +-
+ items/materials/fuheavypipe.matitem                |   2 +-
+ items/materials/fumetalpipe.matitem                |   2 +-
+ items/materials/retexironpipe.matitem              |   2 +-
+ .../flyers/darkmetroid/darkmetroid.monstertype     |   2 +-
+ .../flyers/horrors/horror2/horror2.monstertype     |   8 +-
+ monsters/pets/feneroxpet/feneroxpet.animation      | 993 ++++++++++-----------
+ monsters/pets/feneroxpet/feneroxpet.monstertype    | 416 +++++----
+ monsters/pets/feneroxpet/parts/beige.png           | Bin 6738 -> 0 bytes
+ monsters/pets/feneroxpet/parts/black.png           | Bin 6794 -> 6963 bytes
+ .../parts/{red.monsterpart => blue.monsterpart}    |   4 +-
+ monsters/pets/feneroxpet/parts/blue.png            | Bin 0 -> 7356 bytes
+ monsters/pets/feneroxpet/parts/brown.png           | Bin 7083 -> 0 bytes
+ .../{orange.monsterpart => brown1.monsterpart}     |   4 +-
+ .../pets/feneroxpet/parts/brown1.png               | Bin
+ monsters/pets/feneroxpet/parts/brown2.monsterpart  |   9 +
+ .../pets/feneroxpet/parts/brown2.png               | Bin
+ monsters/pets/feneroxpet/parts/default.frames      |   8 +-
+ .../parts/{grey.monsterpart => gold.monsterpart}   |   4 +-
+ .../pets/feneroxpet/parts/gold.png                 | Bin
+ monsters/pets/feneroxpet/parts/green.png           | Bin 6672 -> 4067 bytes
+ monsters/pets/feneroxpet/parts/green2.monsterpart  |   9 +
+ monsters/pets/feneroxpet/parts/green2.png          | Bin 0 -> 7565 bytes
+ monsters/pets/feneroxpet/parts/grey.png            | Bin 6878 -> 0 bytes
+ .../parts/{beige.monsterpart => grey1.monsterpart} |   4 +-
+ .../pets/feneroxpet/parts/grey1.png                | Bin
+ .../parts/{brown.monsterpart => grey2.monsterpart} |   4 +-
+ .../pets/feneroxpet/parts/grey2.png                | Bin
+ monsters/pets/feneroxpet/parts/orange.png          | Bin 6996 -> 0 bytes
+ monsters/pets/feneroxpet/parts/pink.monsterpart    |   9 -
+ monsters/pets/feneroxpet/parts/pink.png            | Bin 6674 -> 0 bytes
+ monsters/pets/feneroxpet/parts/purple.monsterpart  |   9 -
+ monsters/pets/feneroxpet/parts/purple.png          | Bin 6959 -> 0 bytes
+ monsters/pets/feneroxpet/parts/red.png             | Bin 6520 -> 0 bytes
+ monsters/pets/feneroxpet/parts/white.png           | Bin 6763 -> 7271 bytes
+ monsters/pets/feneroxpet/parts/yellow.monsterpart  |   9 +
+ .../pets/feneroxpet/parts/yellow.png               | Bin
+ .../megaburrower/megaburrower.monstertype          |   3 +
+ .../megaburrower/megaburrower_segment.monstertype  |   3 +
+ .../megaburrower_segment_empty.monstertype         |   3 +
+ .../megaburrower/megaburrower_tail.monstertype     |   3 +
+ npcs/statuses.config.patch                         | 329 +++++--
+ .../carbon/carbondesklamp/carbondesklamp.object    |  14 +-
+ objects/densinium/densiniumlamp.object             |   2 +-
+ objects/farmables/duskiline/duskilineseed.object   |   6 +-
+ objects/farmables/emera/emeraseed.object           |   4 +-
+ objects/farmables/exonite/exoniteseed.object       |   4 +-
+ objects/farmables/feya/feyaseed.object             |   4 +-
+ objects/farmables/oceanite/oceaniteseed.object     |   4 +-
+ objects/farmables/phosite/phositeseed.object       |   2 +-
+ objects/farmables/rasiline/rasilineseed.object     |   4 +-
+ objects/farmables/thanatite/thanatiteseed.object   |   2 +-
+ .../thelusianlargechest/Thelusianlargechest.png    | Bin 0 -> 1114 bytes
+ .../Thelusianlargechesticon.png                    | Bin 0 -> 967 bytes
+ .../thelusiansmallchest/Thelusiansmallchest.png    | Bin 0 -> 1022 bytes
+ .../Thelusiansmallchesticon.png                    | Bin 0 -> 953 bytes
+ .../brokenthelusianfuelhatch.frames                |  14 +
+ .../brokenthelusianfuelhatch.object                |  39 +
+ .../brokenthelusianfuelhatch.png                   | Bin 0 -> 1197 bytes
+ .../brokenthelusianfuelhatchlit.frames             |  14 +
+ .../brokenthelusianfuelhatchlit.png                | Bin 0 -> 1104 bytes
+ .../brokenthelusianfuelhatch/fuelhatchicon.png     | Bin 0 -> 214 bytes
+ .../brokenthelusianteleporter.frames               |  10 +
+ .../brokenthelusianteleporter.object               |  49 +
+ .../brokenthelusianteleporter.png                  | Bin 0 -> 1103 bytes
+ .../brokenthelusianteleportericon.png              | Bin 0 -> 987 bytes
+ objects/ship/elduushiphatch/elduushiphatch.object  |   8 +-
+ .../fu_ftldrive/fu_ftldrivesmalldecobroken.object  |  14 +-
+ .../thelusiancaptainschair.frames                  |  11 +
+ .../thelusiancaptainschair.object                  |  46 +
+ .../thelusiancaptainschair.png                     | Bin 0 -> 463 bytes
+ .../thelusianfuelhatch/thelusianfuelhatch.frames   |  14 +
+ .../thelusianfuelhatch/thelusianfuelhatch.object   |  40 +
+ .../ship/thelusianfuelhatch/thelusianfuelhatch.png | Bin 0 -> 1117 bytes
+ .../thelusianfuelhatch/thelusianfuelhatchicon.png  | Bin 0 -> 938 bytes
+ .../thelusianfuelhatchlit.frames                   |  14 +
+ .../thelusianfuelhatch/thelusianfuelhatchlit.png   | Bin 0 -> 1066 bytes
+ objects/ship/thelusianshipdoor/default.frames      |  22 +
+ .../thelusianshipdoor/thelusianshipdoor.object     |  47 +
+ .../ship/thelusianshipdoor/thelusianshipdoor.png   | Bin 0 -> 1206 bytes
+ .../thelusianshipdoor/thelusianshipdooricon.png    | Bin 0 -> 959 bytes
+ .../thelusianshipdoorBroken/brokendooricon.png     | Bin 0 -> 301 bytes
+ .../brokenthelusianshipdoor.frames                 |  14 +
+ .../brokenthelusianshipdoor.object                 |  33 +
+ .../brokenthelusianshipdoor.png                    | Bin 0 -> 440 bytes
+ .../thelusianshipdoorBroken.frames                 |  14 +
+ .../thelusianshipdoorBroken.object                 |  33 +
+ .../thelusianshipdoorBroken.png                    | Bin 0 -> 440 bytes
+ .../thelusianshipdoorBrokenicon.png                | Bin 0 -> 301 bytes
+ .../thelusianshiplocker/thelusianshiplocker.frames |  14 +
+ .../thelusianshiplocker/thelusianshiplocker.object |  34 +
+ .../thelusianshiplocker/thelusianshiplocker.png    | Bin 0 -> 1194 bytes
+ .../thelusianshiplockericon.png                    | Bin 0 -> 937 bytes
+ .../thelusianshiplockerlit.frames                  |  14 +
+ .../thelusianshiplocker/thelusianshiplockerlit.png | Bin 0 -> 1164 bytes
+ .../thelusiantechstation.frames                    |   4 +-
+ .../thelusiantechstation/thelusiantechstation.png  | Bin 2089 -> 1252 bytes
+ .../thelusiantechstationbak.png                    | Bin 0 -> 2089 bytes
+ .../thelusiantechstationicon.png                   | Bin 275 -> 944 bytes
+ .../thelusiantechstationiconbak.png                | Bin 0 -> 275 bytes
+ .../thelusiantechstationlit.frames                 |   4 +-
+ .../thelusiantechstationlit.png                    | Bin 829 -> 1096 bytes
+ .../thelusiantechstationlitbak.png                 | Bin 0 -> 829 bytes
+ .../thelusiantechstationTier0.png                  | Bin 1803 -> 1352 bytes
+ .../thelusiantechstationTier0bak.png               | Bin 0 -> 1803 bytes
+ .../thelusiantechstationlitTier0.png               | Bin 594 -> 1116 bytes
+ .../thelusiantechstationlitTier0icon.png           | Bin 0 -> 944 bytes
+ .../thelusianteleporter/thelusianteleporter.frames |  13 +
+ .../thelusianteleporter/thelusianteleporter.object |  68 ++
+ .../thelusianteleporter/thelusianteleporter.png    | Bin 0 -> 1103 bytes
+ .../thelusianteleportericon.png                    | Bin 0 -> 987 bytes
+ .../thelusianteleporterlit.frames                  |  13 +
+ .../thelusianteleporter/thelusianteleporterlit.png | Bin 0 -> 1328 bytes
+ objects/telebrium/telebriumbed/telebriumbed.frames |  11 +
+ objects/telebrium/telebriumbed/telebriumbed.object |  46 +
+ objects/telebrium/telebriumbed/telebriumbed.png    | Bin 0 -> 574 bytes
+ .../telebrium/telebriumbed/telebriumbedcover.png   | Bin 0 -> 956 bytes
+ .../telebrium/telebriumbed/telebriumbedicon.png    | Bin 0 -> 337 bytes
+ objects/telebrium/telebriumbookcase.frames         |  11 +
+ objects/telebrium/telebriumbookcase.object         |  41 +
+ objects/telebrium/telebriumbookcase.png            | Bin 0 -> 985 bytes
+ objects/telebrium/telebriumbookcaseicon.png        | Bin 0 -> 373 bytes
+ objects/telebrium/telebriumcabinet.frames          |  13 +
+ objects/telebrium/telebriumcabinet.object          |  41 +
+ objects/telebrium/telebriumcabinet.png             | Bin 0 -> 973 bytes
+ objects/telebrium/telebriumcabineticon.png         | Bin 0 -> 386 bytes
+ .../telebrium/telebriumceilinglamp/default.frames  |  13 +
+ .../telebriumceilinglamp.object                    |  66 ++
+ .../telebriumceilinglamp/telebriumceilinglamp.png  | Bin 0 -> 345 bytes
+ .../telebriumceilinglampicon.png                   | Bin 0 -> 310 bytes
+ .../telebriumceilinglamplit.png                    | Bin 0 -> 348 bytes
+ objects/telebrium/telebriumchair.frames            |  11 +
+ objects/telebrium/telebriumchair.object            |  37 +
+ objects/telebrium/telebriumchair.png               | Bin 0 -> 537 bytes
+ objects/telebrium/telebriumchairicon.png           | Bin 0 -> 358 bytes
+ objects/telebrium/telebriumchestlarge.frames       |  15 +
+ objects/telebrium/telebriumchestlarge.object       |  40 +
+ objects/telebrium/telebriumchestlarge.png          | Bin 0 -> 618 bytes
+ objects/telebrium/telebriumchestlargeicon.png      | Bin 0 -> 400 bytes
+ objects/telebrium/telebriumchestsmall.frames       |  15 +
+ objects/telebrium/telebriumchestsmall.object       |  40 +
+ objects/telebrium/telebriumchestsmall.png          | Bin 0 -> 557 bytes
+ objects/telebrium/telebriumchestsmallicon.png      | Bin 0 -> 349 bytes
+ .../telebrium/telebriumcouch/telebriumcouch.frames |  11 +
+ .../telebrium/telebriumcouch/telebriumcouch.object |  54 ++
+ .../telebrium/telebriumcouch/telebriumcouch.png    | Bin 0 -> 611 bytes
+ .../telebriumcouch/telebriumcouchcover.png         | Bin 0 -> 149 bytes
+ .../telebriumcouch/telebriumcouchicon.png          | Bin 0 -> 370 bytes
+ objects/telebrium/telebriumdesk.frames             |  14 +
+ objects/telebrium/telebriumdesk.object             |  39 +
+ objects/telebrium/telebriumdesk.png                | Bin 0 -> 745 bytes
+ objects/telebrium/telebriumdeskicon.png            | Bin 0 -> 353 bytes
+ objects/telebrium/telebriumdesklamp/default.frames |  13 +
+ .../telebriumdesklamp/telebriumdesklamp.object     |  66 ++
+ .../telebriumdesklamp/telebriumdesklamp.png        | Bin 0 -> 448 bytes
+ .../telebriumdesklamp/telebriumdesklampicon.png    | Bin 0 -> 345 bytes
+ .../telebriumdesklamp/telebriumdesklamplit.png     | Bin 0 -> 431 bytes
+ objects/telebrium/telebriumdrawers.frames          |  13 +
+ objects/telebrium/telebriumdrawers.object          |  39 +
+ objects/telebrium/telebriumdrawers.png             | Bin 0 -> 721 bytes
+ objects/telebrium/telebriumdrawersicon.png         | Bin 0 -> 388 bytes
+ objects/telebrium/telebriumendtable.frames         |  11 +
+ objects/telebrium/telebriumendtable.object         |  35 +
+ objects/telebrium/telebriumendtable.png            | Bin 0 -> 464 bytes
+ objects/telebrium/telebriumendtableicon.png        | Bin 0 -> 297 bytes
+ objects/telebrium/telebriumfridge.frames           |  13 +
+ objects/telebrium/telebriumfridge.object           |  49 +
+ objects/telebrium/telebriumfridge.png              | Bin 0 -> 1255 bytes
+ objects/telebrium/telebriumfridgeicon.png          | Bin 0 -> 422 bytes
+ objects/telebrium/telebriumlamp.frames             |  14 +
+ objects/telebrium/telebriumlamp.object             |  31 +
+ objects/telebrium/telebriumlamp.png                | Bin 0 -> 669 bytes
+ objects/telebrium/telebriumlampicon.png            | Bin 0 -> 382 bytes
+ objects/telebrium/telebriumminifridge.frames       |  14 +
+ objects/telebrium/telebriumminifridge.object       |  49 +
+ objects/telebrium/telebriumminifridge.png          | Bin 0 -> 765 bytes
+ objects/telebrium/telebriumminifridgeicon.png      | Bin 0 -> 396 bytes
+ objects/telebrium/telebriumnightstand.frames       |  14 +
+ objects/telebrium/telebriumnightstand.object       |  39 +
+ objects/telebrium/telebriumnightstand.png          | Bin 0 -> 665 bytes
+ objects/telebrium/telebriumnightstandicon.png      | Bin 0 -> 373 bytes
+ .../telebriumslidingdoor1/default.animation        |  81 ++
+ .../telebriumslidingdoor1.aseprite                 | Bin 0 -> 601 bytes
+ .../telebriumslidingdoor1.frames                   |  28 +
+ .../telebriumslidingdoor1.object                   |  59 ++
+ .../telebriumslidingdoor1.png                      | Bin 0 -> 391 bytes
+ .../telebriumslidingdoor1icon.png                  | Bin 0 -> 344 bytes
+ objects/telebrium/telebriumstool.frames            |  11 +
+ objects/telebrium/telebriumstool.object            |  37 +
+ objects/telebrium/telebriumstool.png               | Bin 0 -> 364 bytes
+ objects/telebrium/telebriumstoolicon.png           | Bin 0 -> 310 bytes
+ objects/telebrium/telebriumtable.frames            |  11 +
+ objects/telebrium/telebriumtable.object            |  35 +
+ objects/telebrium/telebriumtable.png               | Bin 0 -> 456 bytes
+ objects/telebrium/telebriumtableicon.png           | Bin 0 -> 305 bytes
+ objects/telebrium/telebriumwalllamp/default.frames |  13 +
+ .../telebriumwalllamp/telebriumwalllamp.object     |  66 ++
+ .../telebriumwalllamp/telebriumwalllamp.png        | Bin 0 -> 342 bytes
+ .../telebriumwalllamp/telebriumwalllampicon.png    | Bin 0 -> 325 bytes
+ .../telebriumwalllamp/telebriumwalllamplit.png     | Bin 0 -> 331 bytes
+ .../thelusianceilingmonitor.animation              |  64 ++
+ .../thelusianceilingmonitor.frames                 |  12 +
+ .../thelusianceilingmonitor.object                 |  66 ++
+ .../thelusianceilingmonitor.png                    | Bin 0 -> 1215 bytes
+ .../thelusianceilingmonitoricon.png                | Bin 0 -> 967 bytes
+ .../thelusianceilingmonitorlit.frames              |  14 +
+ .../thelusianceilingmonitorlit.png                 | Bin 0 -> 1164 bytes
+ objects/thelusian/thelusianbed/thelusianbed.frames |  10 +
+ objects/thelusian/thelusianbed/thelusianbed.object |  45 +
+ objects/thelusian/thelusianbed/thelusianbed.png    | Bin 0 -> 369 bytes
+ .../thelusian/thelusianbed/thelusianbedcover.png   | Bin 0 -> 318 bytes
+ .../thelusian/thelusianbed/thelusianbedicon.png    | Bin 0 -> 947 bytes
+ .../thelusianbookcase/thelusianbookcase.frames     |  11 +
+ .../thelusianbookcase/thelusianbookcase.object     |  41 +
+ .../thelusianbookcase/thelusianbookcase.png        | Bin 0 -> 1188 bytes
+ .../thelusianbookcase/thelusianbookcaseicon.png    | Bin 0 -> 969 bytes
+ .../thelusian/thelusianceilinglamp/default.frames  |  13 +
+ .../thelusianceilinglamp.object                    |  46 +
+ .../thelusianceilinglamp/thelusianceilinglamp.png  | Bin 0 -> 988 bytes
+ .../thelusianceilinglampicon.png                   | Bin 0 -> 934 bytes
+ .../thelusianceilinglamplit.png                    | Bin 0 -> 1216 bytes
+ .../thelusianconsole/thelusianconsole.frames       |  14 +
+ .../thelusianconsole/thelusianconsole.object       |  72 ++
+ .../thelusianconsole/thelusianconsole.png          | Bin 0 -> 1287 bytes
+ .../thelusianconsole/thelusianconsoleicon.png      | Bin 0 -> 965 bytes
+ .../thelusianconsole/thelusianconsolelit.frames    |  14 +
+ .../thelusianconsole/thelusianconsolelit.png       | Bin 0 -> 1213 bytes
+ .../thelusian/thelusiancouch/thelusiancouch.frames |  11 +
+ .../thelusian/thelusiancouch/thelusiancouch.object |  46 +
+ .../thelusian/thelusiancouch/thelusiancouch.png    | Bin 0 -> 1052 bytes
+ .../thelusiancouch/thelusiancouchcover.png         | Bin 0 -> 201 bytes
+ .../thelusiancouch/thelusiancouchicon.png          | Bin 0 -> 977 bytes
+ .../thelusian/thelusiandesk/thelusiandesk.frames   |  14 +
+ .../thelusian/thelusiandesk/thelusiandesk.object   |  32 +
+ objects/thelusian/thelusiandesk/thelusiandesk.png  | Bin 0 -> 1172 bytes
+ .../thelusian/thelusiandesk/thelusiandeskicon.png  | Bin 0 -> 964 bytes
+ .../thelusiandresser/thelusiandresser.frames       |  13 +
+ .../thelusiandresser/thelusiandresser.object       |  32 +
+ .../thelusiandresser/thelusiandresser.png          | Bin 0 -> 1152 bytes
+ .../thelusiandresser/thelusiandressericon.png      | Bin 0 -> 965 bytes
+ .../thelusianendtable/thelusianendtable.frames     |  11 +
+ .../thelusianendtable/thelusianendtable.object     |  28 +
+ .../thelusianendtable/thelusianendtable.png        | Bin 0 -> 1016 bytes
+ .../thelusianendtable/thelusianendtableicon.png    | Bin 0 -> 958 bytes
+ .../thelusianfridge/thelusianfridge.frames         |  13 +
+ .../thelusianfridge/thelusianfridge.object         |  43 +
+ .../thelusian/thelusianfridge/thelusianfridge.png  | Bin 0 -> 1342 bytes
+ .../thelusianfridge/thelusianfridgeicon.png        | Bin 0 -> 987 bytes
+ .../thelusian/thelusianlamp/thelusianlamp.frames   |  14 +
+ .../thelusian/thelusianlamp/thelusianlamp.object   |  40 +
+ objects/thelusian/thelusianlamp/thelusianlamp.png  | Bin 0 -> 1246 bytes
+ .../thelusian/thelusianlamp/thelusianlampicon.png  | Bin 0 -> 954 bytes
+ .../thelusianlamp/thelusianlamplit.frames          |  14 +
+ .../thelusian/thelusianlamp/thelusianlamplit.png   | Bin 0 -> 1243 bytes
+ .../thelusianminifridge/thelusianminifridge.frames |  14 +
+ .../thelusianminifridge/thelusianminifridge.object |  42 +
+ .../thelusianminifridge/thelusianminifridge.png    | Bin 0 -> 1101 bytes
+ .../thelusianminifridgeicon.png                    | Bin 0 -> 965 bytes
+ .../thelusiannightstand/thelusiannightstand.frames |  14 +
+ .../thelusiannightstand/thelusiannightstand.object |  33 +
+ .../thelusiannightstand/thelusiannightstand.png    | Bin 0 -> 1126 bytes
+ .../thelusiannightstandicon.png                    | Bin 0 -> 962 bytes
+ .../thelusianslidingdoor.frames                    |  22 +
+ .../thelusianslidingdoor.object                    |  47 +
+ .../thelusianslidingdoor/thelusianslidingdoor.png  | Bin 0 -> 1053 bytes
+ .../thelusianslidingdooricon.png                   | Bin 0 -> 942 bytes
+ .../thelusiansmalllamp/thelusiansmalllamp.frames   |  14 +
+ .../thelusiansmalllamp/thelusiansmalllamp.object   |  40 +
+ .../thelusiansmalllamp/thelusiansmalllamp.png      | Bin 0 -> 1196 bytes
+ .../thelusiansmalllamp/thelusiansmalllampicon.png  | Bin 0 -> 945 bytes
+ .../thelusiansmalllamplit.frames                   |  14 +
+ .../thelusiansmalllamp/thelusiansmalllamplit.png   | Bin 0 -> 1191 bytes
+ .../thelusian/thelusianstool/thelusianstool.frames |  11 +
+ .../thelusian/thelusianstool/thelusianstool.object |  30 +
+ .../thelusian/thelusianstool/thelusianstool.png    | Bin 0 -> 946 bytes
+ .../thelusianstool/thelusianstoolicon.png          | Bin 0 -> 949 bytes
+ .../thelusian/thelusiantable/thelusiantable.frames |  11 +
+ .../thelusian/thelusiantable/thelusiantable.object |  29 +
+ .../thelusian/thelusiantable/thelusiantable.png    | Bin 0 -> 1086 bytes
+ .../thelusiantable/thelusiantableicon.png          | Bin 0 -> 968 bytes
+ .../thelusianterminal/thelusianterminal.animation  |  66 ++
+ .../thelusianterminal/thelusianterminal.frames     |  14 +
+ .../thelusianterminal/thelusianterminal.object     |  80 ++
+ .../thelusianterminal/thelusianterminal.png        | Bin 0 -> 1064 bytes
+ .../thelusianterminal/thelusianterminalicon.png    | Bin 0 -> 958 bytes
+ .../thelusianterminal/thelusianterminallit.frames  |  14 +
+ .../thelusianterminal/thelusianterminallit.png     | Bin 0 -> 1045 bytes
+ .../thelusianwalllamp/thelusianwalllamp.frames     |  14 +
+ .../thelusianwalllamp/thelusianwalllamp.object     |  39 +
+ .../thelusianwalllamp/thelusianwalllamp.png        | Bin 0 -> 958 bytes
+ .../thelusianwalllamp/thelusianwalllampicon.png    | Bin 0 -> 956 bytes
+ .../thelusianwalllamp/thelusianwalllamplit.frames  |  14 +
+ .../thelusianwalllamp/thelusianwalllamplit.png     | Bin 0 -> 1198 bytes
+ .../thelusianwardrobe/thelusianwardrobe.frames     |  13 +
+ .../thelusianwardrobe/thelusianwardrobe.object     |  32 +
+ .../thelusianwardrobe/thelusianwardrobe.png        | Bin 0 -> 1329 bytes
+ .../thelusianwardrobe/thelusianwardrobeicon.png    | Bin 0 -> 975 bytes
+ .../burningmandala/burningmandala2.projectile      | 114 +++
+ .../{icestorm.projectile => icestorm2.projectile}  |   0
+ .../staff/plasmablade/shadowblade.frames           |  10 +
+ .../activeitems/staff/plasmablade/shadowblade.png  | Bin 0 -> 247 bytes
+ .../staff/plasmablade/shadowblade.projectile       | 115 +++
+ projectiles/dragonburst/icedragon.config           |   2 +-
+ projectiles/dragonburst/icedragon.projectile       |  24 +-
+ projectiles/dragonburst/icedragon2.config          |   2 +-
+ projectiles/dragonburst/icedragon2.projectile      |  20 +-
+ projectiles/dragonburst/icedragon3.config          |   2 +-
+ projectiles/dragonburst/icedragon3.projectile      |  20 +-
+ projectiles/dragonburst/icedragonstaff.config      |  42 +
+ projectiles/dragonburst/icedragonstaff.projectile  |  59 ++
+ .../fugoreexplosion/fugoreexplosionsmall.config    |  22 +
+ .../fugoreexplosionsmall.projectile                |  55 ++
+ projectiles/guns/arrows/autobolt/autobolt.frames   |  10 +
+ projectiles/guns/arrows/autobolt/autobolt.png      | Bin 0 -> 125 bytes
+ .../guns/arrows/autobolt/autobolt.projectile       |  23 +
+ .../guns/arrows/autobolt/autobolt2.projectile      |  23 +
+ projectiles/guns/arrows/autobolt/icon.png          | Bin 0 -> 186 bytes
+ .../guns/arrows/smokering2/smokering3.projectile   |  16 +
+ projectiles/guns/grenade/catapultshot.frames       |  10 +
+ projectiles/guns/grenade/catapultshot.png          | Bin 0 -> 279 bytes
+ projectiles/guns/grenade/catapultshot.projectile   |  42 +
+ projectiles/guns/icebeam/icestorm.projectile       |  21 +
+ .../weather/bloodrain/bloodrain4.projectile        |  25 +
+ quests/bounty/bounty_monsters.config.patch         |  82 +-
+ quests/mechfuel/mechfueldata.lua                   |   6 +-
+ .../armory/melee/katana/xithricitekatana.recipe    |   8 +
+ .../armory/ranged/staves/zerchesiumstaff.recipe    |  14 +
+ recipes/craftingfurnace/attunedpaper.recipe        |  13 +
+ recipes/craftingfurnace/nicepaper.recipe           |  13 +
+ recipes/emptyhands/thelusian/thelusianbed.recipe   |  12 +
+ .../emptyhands/thelusian/thelusianbookcase.recipe  |  12 +
+ .../thelusian/thelusianceilinglamp.recipe          |  12 +
+ .../thelusian/thelusianceilingmonitor.recipe       |  12 +
+ .../emptyhands/thelusian/thelusianconsole.recipe   |  12 +
+ recipes/emptyhands/thelusian/thelusiancouch.recipe |  12 +
+ recipes/emptyhands/thelusian/thelusiandesk.recipe  |  12 +
+ .../emptyhands/thelusian/thelusiandresser.recipe   |  12 +
+ .../emptyhands/thelusian/thelusianendtable.recipe  |  12 +
+ .../emptyhands/thelusian/thelusianfridge.recipe    |  12 +
+ recipes/emptyhands/thelusian/thelusianlamp.recipe  |  12 +
+ .../thelusian/thelusianminifridge.recipe           |  12 +
+ .../thelusian/thelusianslidingdoor.recipe          |  12 +
+ .../emptyhands/thelusian/thelusiansmalllamp.recipe |  12 +
+ recipes/emptyhands/thelusian/thelusianstool.recipe |  12 +
+ recipes/emptyhands/thelusian/thelusiantable.recipe |  12 +
+ .../emptyhands/thelusian/thelusianterminal.recipe  |  12 +
+ .../emptyhands/thelusian/thelusianwalllamp.recipe  |  12 +
+ .../emptyhands/thelusian/thelusianwardrobe.recipe  |  12 +
+ recipes/furnace3/ingredients/battery.recipe.patch  |   7 +
+ .../furnace3/ingredients/smallbattery.recipe.patch |   7 +
+ recipes/furniture1/telebrium/telebriumbed.recipe   |   9 +
+ .../furniture1/telebrium/telebriumbookcase.recipe  |   9 +
+ .../furniture1/telebrium/telebriumcabinet.recipe   |   9 +
+ .../telebrium/telebriumceilinglamp.recipe          |  10 +
+ recipes/furniture1/telebrium/telebriumchair.recipe |   9 +
+ .../telebrium/telebriumchestlarge.recipe           |   9 +
+ .../telebrium/telebriumchestsmall.recipe           |   9 +
+ recipes/furniture1/telebrium/telebriumcouch.recipe |   9 +
+ recipes/furniture1/telebrium/telebriumdesk.recipe  |   9 +
+ .../furniture1/telebrium/telebriumdesklamp.recipe  |  10 +
+ .../furniture1/telebrium/telebriumdrawers.recipe   |   9 +
+ .../furniture1/telebrium/telebriumendtable.recipe  |   9 +
+ .../furniture1/telebrium/telebriumfridge.recipe    |  10 +
+ recipes/furniture1/telebrium/telebriumlamp.recipe  |  10 +
+ .../telebrium/telebriumminifridge.recipe           |  10 +
+ .../telebrium/telebriumnightstand.recipe           |   9 +
+ .../telebrium/telebriumslidingdoor1.recipe         |   9 +
+ recipes/furniture1/telebrium/telebriumstool.recipe |   9 +
+ recipes/furniture1/telebrium/telebriumtable.recipe |   9 +
+ .../furniture1/telebrium/telebriumwalllamp.recipe  |  10 +
+ recipes/gemstation/seeds/koaniteore.recipe         |   9 +
+ recipes/gemstation/seeds/siviteore.recipe          |   9 +
+ recipes/madness/bloodritual.recipe                 |  13 +
+ recipes/madness/booksaboutbees.recipe              |  13 +
+ recipes/madness/impossibletheories.recipe          |   2 +-
+ recipes/madness/insaneramblings.recipe             |   4 +-
+ recipes/madness/madequation.recipe                 |  16 +
+ recipes/madness/weapons/fucatapult.recipe          |  10 +
+ recipes/materials/bees/goldenglass.recipe          |   4 +-
+ recipes/mech/arm/mecharmdrill2.recipe              |   2 +-
+ recipes/prototyper/labs/tools/bountyboard.recipe   |  14 +
+ .../ingredients/syntheticmaterial.material.patch   |  12 +
+ scripts/actions/monsters/farmable.lua              |   5 +-
+ scripts/deployment/playermechdeployment.lua        |   6 +-
+ sfx/humanoid/catscream.ogg                         | Bin 0 -> 29496 bytes
+ sfx/objects/energy_door_close.ogg                  | Bin 0 -> 13322 bytes
+ sfx/objects/energy_door_open.ogg                   | Bin 0 -> 13357 bytes
+ ships/fenerox/blockkey.config                      |   2 +-
+ ships/thelusian/blockKey.config                    |  18 +-
+ species/thelusian.species                          |  22 +
+ stats/effects/augments/pushback.statuseffect       |   4 +-
+ stats/effects/augments/pushback2.statuseffect      |   4 +-
+ stats/effects/augments/pushback3.statuseffect      |   4 +-
+ .../bunnyinfection/bunnyinfection2.statuseffect    |  17 +
+ stats/effects/fu_effects/madness/madnessgain.lua   |   3 +-
+ .../fu_immunityeffects/shadowimmunity.statuseffect |   4 +-
+ .../fu_weathereffects/new/insanity/insanitynew.lua |  18 +-
+ .../new/insanity/insanitynew3.statuseffect         | 107 +++
+ stats/effects/shadowblock/shadowblock.statuseffect |   2 +-
+ terrain/disperse/mountainVeins.terrain             |  17 +
+ terrain/disperse/mountainVeinsDeep.terrain         |  17 +
+ terrain/disperse/mountainousclumps.ridgeblocks     |   9 +
+ terrestrial_worlds.config.patch                    |  32 +-
+ tiles/materials/fugirder.material                  |   2 +-
+ tiles/materials/fuheavypipe.material               |   2 +-
+ tiles/materials/fumetalpipe.material               |   2 +-
+ tiles/materials/retexironpipe.material             |   2 +-
+ treasure/fuquesttreasure.treasurepools             |   4 +-
+ treasure/futreasurepools.treasurepools             |  67 +-
+ treasure/madness.treasurepools                     |  75 +-
+ vehicles/modularmech/modularmech.lua               |   5 +-
+ zb/researchTree/madness.config                     |  10 +-
+ 646 files changed, 7901 insertions(+), 2242 deletions(-)
+ create mode 100644 a_notyetadded/catapult.png
+ delete mode 100644 a_notyetadded/fenerox pet/fennecfox6.png
+ create mode 100644 a_notyetadded/objects/thelusian/thelu furniture/thelushive.png
+ create mode 100644 a_notyetadded/objects/thelusian/thelu furniture/thelushivesleek.png
+ rename a_notyetadded/objects/thelusian/thelu furniture/{brokenthelusiantechstation.png => thelusiantechstationlitTier0.png} (100%)
+ rename a_notyetadded/objects/thelusian/thelu furniture/{brokenthelusiantechstationicon.png => thelusiantechstationlitTier0icon.png} (100%)
+ rename a_notyetadded/objects/thelusian/thelu furniture/{brokenthelusiantechstationlit.png => thelusiantechstationlitTier0lit.png} (100%)
+ create mode 100644 a_notyetadded/wpn/Shini_Weps/lunari/lunarichakramitem.png
+ create mode 100644 a_notyetadded/wpn/Shini_Weps/xithricite/xithricitechakramitem.png
+ create mode 100644 a_notyetadded/wpn/Shini_Weps/xithricite/xithricitechakramitemfullbright.png
+ create mode 100644 a_notyetadded/wpn/Shini_Weps/zerchesium/zerchesiumchakramitem.png
+ create mode 100644 a_notyetadded/wpn/densiniumshortspear.png
+ create mode 100644 a_notyetadded/wpn/densiniumspear.png
+ create mode 100644 a_notyetadded/wpn/funightar_vaneblade3.png
+ create mode 100644 cursors/cursor_freedom.cursor
+ create mode 100644 cursors/cursor_freedom.frames
+ create mode 100644 cursors/cursor_freedom.png
+ create mode 100644 cursors/freedom2.png
+ create mode 100644 items/active/unsorted/madnessvoxel/beebook.png
+ create mode 100644 items/active/unsorted/madnessvoxel/bloodritual.activeitem
+ create mode 100644 items/active/unsorted/madnessvoxel/bloodritual.png
+ create mode 100644 items/active/unsorted/madnessvoxel/booksaboutbees.activeitem
+ create mode 100644 items/active/unsorted/madnessvoxel/madequation.activeitem
+ create mode 100644 items/active/unsorted/madnessvoxel/madequation.png
+ create mode 100644 items/active/weapons/bow/autocrossbow/autocrossbow2.frames
+ create mode 100644 items/active/weapons/bow/autocrossbow/autocrossbow2.png
+ create mode 100644 items/active/weapons/bow/autocrossbow/autocrossbow2fullbright.frames
+ create mode 100644 items/active/weapons/bow/autocrossbow/autocrossbow2fullbright.png
+ create mode 100644 items/active/weapons/bow/autocrossbow/autocrossbowfullbright.frames
+ create mode 100644 items/active/weapons/bow/autocrossbow/autocrossbowfullbright.png
+ create mode 100644 items/active/weapons/melee/broadsword/densiniumbroadsword.png
+ create mode 100644 items/active/weapons/melee/katana/xithricitekatana.activeitem
+ rename {a_notyetadded/wpn/Shini_Weps/xithricite => items/active/weapons/melee/katana}/xithricitekatana.png (100%)
+ rename {a_notyetadded/wpn/Shini_Weps/xithricite => items/active/weapons/melee/katana}/xithricitekatanafullbright.png (100%)
+ create mode 100644 items/active/weapons/ranged/abilities/catshot.weaponability
+ create mode 100644 items/active/weapons/ranged/unique/catapult.activeitem
+ create mode 100644 items/active/weapons/ranged/unique/fucatapult.png
+ create mode 100644 items/active/weapons/staff/abilities/controlprojectile/transdimensional.weaponability
+ create mode 100644 items/active/weapons/staff/abilities/crystalstorm/icestorm.lua
+ create mode 100644 items/active/weapons/staff/abilities/crystalstorm/icestorm.weaponability
+ create mode 100644 items/active/weapons/staff/generated/stone/zerchesiumstaff.png
+ create mode 100644 items/active/weapons/staff/orestaffs/zerchesiumstaff.activeitem
+ rename {a_notyetadded/wpn/Shini_Weps/zerchesium => items/active/weapons/staff/orestaffs}/zerchesiumstaff.png (100%)
+ create mode 100644 items/generic/crafting/attunedpaper.item
+ create mode 100644 items/generic/crafting/attunedpaper.png
+ create mode 100644 items/generic/crafting/irradiumorebak.png
+ create mode 100644 items/generic/crafting/nicepaper.item
+ create mode 100644 items/generic/crafting/nicepaper.png
+ delete mode 100644 monsters/pets/feneroxpet/parts/beige.png
+ rename monsters/pets/feneroxpet/parts/{red.monsterpart => blue.monsterpart} (62%)
+ create mode 100644 monsters/pets/feneroxpet/parts/blue.png
+ delete mode 100644 monsters/pets/feneroxpet/parts/brown.png
+ rename monsters/pets/feneroxpet/parts/{orange.monsterpart => brown1.monsterpart} (60%)
+ rename a_notyetadded/fenerox pet/fennecfox4.png => monsters/pets/feneroxpet/parts/brown1.png (100%)
+ create mode 100644 monsters/pets/feneroxpet/parts/brown2.monsterpart
+ rename a_notyetadded/fenerox pet/fennecfox2.png => monsters/pets/feneroxpet/parts/brown2.png (100%)
+ rename monsters/pets/feneroxpet/parts/{grey.monsterpart => gold.monsterpart} (62%)
+ rename a_notyetadded/fenerox pet/fennecfox1.png => monsters/pets/feneroxpet/parts/gold.png (100%)
+ create mode 100644 monsters/pets/feneroxpet/parts/green2.monsterpart
+ create mode 100644 monsters/pets/feneroxpet/parts/green2.png
+ delete mode 100644 monsters/pets/feneroxpet/parts/grey.png
+ rename monsters/pets/feneroxpet/parts/{beige.monsterpart => grey1.monsterpart} (61%)
+ rename a_notyetadded/fenerox pet/fennecfox3.png => monsters/pets/feneroxpet/parts/grey1.png (100%)
+ rename monsters/pets/feneroxpet/parts/{brown.monsterpart => grey2.monsterpart} (61%)
+ rename a_notyetadded/fenerox pet/fennecfox5.png => monsters/pets/feneroxpet/parts/grey2.png (100%)
+ delete mode 100644 monsters/pets/feneroxpet/parts/orange.png
+ delete mode 100644 monsters/pets/feneroxpet/parts/pink.monsterpart
+ delete mode 100644 monsters/pets/feneroxpet/parts/pink.png
+ delete mode 100644 monsters/pets/feneroxpet/parts/purple.monsterpart
+ delete mode 100644 monsters/pets/feneroxpet/parts/purple.png
+ delete mode 100644 monsters/pets/feneroxpet/parts/red.png
+ create mode 100644 monsters/pets/feneroxpet/parts/yellow.monsterpart
+ rename a_notyetadded/fenerox pet/fennecfox7.png => monsters/pets/feneroxpet/parts/yellow.png (100%)
+ create mode 100644 objects/generic/thelusianlargechest/Thelusianlargechest.png
+ create mode 100644 objects/generic/thelusianlargechest/Thelusianlargechesticon.png
+ create mode 100644 objects/generic/thelusiansmallchest/Thelusiansmallchest.png
+ create mode 100644 objects/generic/thelusiansmallchest/Thelusiansmallchesticon.png
+ create mode 100644 objects/ship/brokenthelusianfuelhatch/brokenthelusianfuelhatch.frames
+ create mode 100644 objects/ship/brokenthelusianfuelhatch/brokenthelusianfuelhatch.object
+ create mode 100644 objects/ship/brokenthelusianfuelhatch/brokenthelusianfuelhatch.png
+ create mode 100644 objects/ship/brokenthelusianfuelhatch/brokenthelusianfuelhatchlit.frames
+ create mode 100644 objects/ship/brokenthelusianfuelhatch/brokenthelusianfuelhatchlit.png
+ create mode 100644 objects/ship/brokenthelusianfuelhatch/fuelhatchicon.png
+ create mode 100644 objects/ship/brokenthelusianteleporter/brokenthelusianteleporter.frames
+ create mode 100644 objects/ship/brokenthelusianteleporter/brokenthelusianteleporter.object
+ create mode 100644 objects/ship/brokenthelusianteleporter/brokenthelusianteleporter.png
+ create mode 100644 objects/ship/brokenthelusianteleporter/brokenthelusianteleportericon.png
+ create mode 100644 objects/ship/thelusiancaptainschair/thelusiancaptainschair.frames
+ create mode 100644 objects/ship/thelusiancaptainschair/thelusiancaptainschair.object
+ create mode 100644 objects/ship/thelusiancaptainschair/thelusiancaptainschair.png
+ create mode 100644 objects/ship/thelusianfuelhatch/thelusianfuelhatch.frames
+ create mode 100644 objects/ship/thelusianfuelhatch/thelusianfuelhatch.object
+ create mode 100644 objects/ship/thelusianfuelhatch/thelusianfuelhatch.png
+ create mode 100644 objects/ship/thelusianfuelhatch/thelusianfuelhatchicon.png
+ create mode 100644 objects/ship/thelusianfuelhatch/thelusianfuelhatchlit.frames
+ create mode 100644 objects/ship/thelusianfuelhatch/thelusianfuelhatchlit.png
+ create mode 100644 objects/ship/thelusianshipdoor/default.frames
+ create mode 100644 objects/ship/thelusianshipdoor/thelusianshipdoor.object
+ create mode 100644 objects/ship/thelusianshipdoor/thelusianshipdoor.png
+ create mode 100644 objects/ship/thelusianshipdoor/thelusianshipdooricon.png
+ create mode 100644 objects/ship/thelusianshipdoorBroken/brokendooricon.png
+ create mode 100644 objects/ship/thelusianshipdoorBroken/brokenthelusianshipdoor.frames
+ create mode 100644 objects/ship/thelusianshipdoorBroken/brokenthelusianshipdoor.object
+ create mode 100644 objects/ship/thelusianshipdoorBroken/brokenthelusianshipdoor.png
+ create mode 100644 objects/ship/thelusianshipdoorBroken/thelusianshipdoorBroken.frames
+ create mode 100644 objects/ship/thelusianshipdoorBroken/thelusianshipdoorBroken.object
+ create mode 100644 objects/ship/thelusianshipdoorBroken/thelusianshipdoorBroken.png
+ create mode 100644 objects/ship/thelusianshipdoorBroken/thelusianshipdoorBrokenicon.png
+ create mode 100644 objects/ship/thelusianshiplocker/thelusianshiplocker.frames
+ create mode 100644 objects/ship/thelusianshiplocker/thelusianshiplocker.object
+ create mode 100644 objects/ship/thelusianshiplocker/thelusianshiplocker.png
+ create mode 100644 objects/ship/thelusianshiplocker/thelusianshiplockericon.png
+ create mode 100644 objects/ship/thelusianshiplocker/thelusianshiplockerlit.frames
+ create mode 100644 objects/ship/thelusianshiplocker/thelusianshiplockerlit.png
+ create mode 100644 objects/ship/thelusiantechstation/thelusiantechstationbak.png
+ create mode 100644 objects/ship/thelusiantechstation/thelusiantechstationiconbak.png
+ create mode 100644 objects/ship/thelusiantechstation/thelusiantechstationlitbak.png
+ create mode 100644 objects/ship/thelusiantechstationTier0/thelusiantechstationTier0bak.png
+ create mode 100644 objects/ship/thelusiantechstationTier0/thelusiantechstationlitTier0icon.png
+ create mode 100644 objects/ship/thelusianteleporter/thelusianteleporter.frames
+ create mode 100644 objects/ship/thelusianteleporter/thelusianteleporter.object
+ create mode 100644 objects/ship/thelusianteleporter/thelusianteleporter.png
+ create mode 100644 objects/ship/thelusianteleporter/thelusianteleportericon.png
+ create mode 100644 objects/ship/thelusianteleporter/thelusianteleporterlit.frames
+ create mode 100644 objects/ship/thelusianteleporter/thelusianteleporterlit.png
+ create mode 100644 objects/telebrium/telebriumbed/telebriumbed.frames
+ create mode 100644 objects/telebrium/telebriumbed/telebriumbed.object
+ create mode 100644 objects/telebrium/telebriumbed/telebriumbed.png
+ create mode 100644 objects/telebrium/telebriumbed/telebriumbedcover.png
+ create mode 100644 objects/telebrium/telebriumbed/telebriumbedicon.png
+ create mode 100644 objects/telebrium/telebriumbookcase.frames
+ create mode 100644 objects/telebrium/telebriumbookcase.object
+ create mode 100644 objects/telebrium/telebriumbookcase.png
+ create mode 100644 objects/telebrium/telebriumbookcaseicon.png
+ create mode 100644 objects/telebrium/telebriumcabinet.frames
+ create mode 100644 objects/telebrium/telebriumcabinet.object
+ create mode 100644 objects/telebrium/telebriumcabinet.png
+ create mode 100644 objects/telebrium/telebriumcabineticon.png
+ create mode 100644 objects/telebrium/telebriumceilinglamp/default.frames
+ create mode 100644 objects/telebrium/telebriumceilinglamp/telebriumceilinglamp.object
+ create mode 100644 objects/telebrium/telebriumceilinglamp/telebriumceilinglamp.png
+ create mode 100644 objects/telebrium/telebriumceilinglamp/telebriumceilinglampicon.png
+ create mode 100644 objects/telebrium/telebriumceilinglamp/telebriumceilinglamplit.png
+ create mode 100644 objects/telebrium/telebriumchair.frames
+ create mode 100644 objects/telebrium/telebriumchair.object
+ create mode 100644 objects/telebrium/telebriumchair.png
+ create mode 100644 objects/telebrium/telebriumchairicon.png
+ create mode 100644 objects/telebrium/telebriumchestlarge.frames
+ create mode 100644 objects/telebrium/telebriumchestlarge.object
+ create mode 100644 objects/telebrium/telebriumchestlarge.png
+ create mode 100644 objects/telebrium/telebriumchestlargeicon.png
+ create mode 100644 objects/telebrium/telebriumchestsmall.frames
+ create mode 100644 objects/telebrium/telebriumchestsmall.object
+ create mode 100644 objects/telebrium/telebriumchestsmall.png
+ create mode 100644 objects/telebrium/telebriumchestsmallicon.png
+ create mode 100644 objects/telebrium/telebriumcouch/telebriumcouch.frames
+ create mode 100644 objects/telebrium/telebriumcouch/telebriumcouch.object
+ create mode 100644 objects/telebrium/telebriumcouch/telebriumcouch.png
+ create mode 100644 objects/telebrium/telebriumcouch/telebriumcouchcover.png
+ create mode 100644 objects/telebrium/telebriumcouch/telebriumcouchicon.png
+ create mode 100644 objects/telebrium/telebriumdesk.frames
+ create mode 100644 objects/telebrium/telebriumdesk.object
+ create mode 100644 objects/telebrium/telebriumdesk.png
+ create mode 100644 objects/telebrium/telebriumdeskicon.png
+ create mode 100644 objects/telebrium/telebriumdesklamp/default.frames
+ create mode 100644 objects/telebrium/telebriumdesklamp/telebriumdesklamp.object
+ create mode 100644 objects/telebrium/telebriumdesklamp/telebriumdesklamp.png
+ create mode 100644 objects/telebrium/telebriumdesklamp/telebriumdesklampicon.png
+ create mode 100644 objects/telebrium/telebriumdesklamp/telebriumdesklamplit.png
+ create mode 100644 objects/telebrium/telebriumdrawers.frames
+ create mode 100644 objects/telebrium/telebriumdrawers.object
+ create mode 100644 objects/telebrium/telebriumdrawers.png
+ create mode 100644 objects/telebrium/telebriumdrawersicon.png
+ create mode 100644 objects/telebrium/telebriumendtable.frames
+ create mode 100644 objects/telebrium/telebriumendtable.object
+ create mode 100644 objects/telebrium/telebriumendtable.png
+ create mode 100644 objects/telebrium/telebriumendtableicon.png
+ create mode 100644 objects/telebrium/telebriumfridge.frames
+ create mode 100644 objects/telebrium/telebriumfridge.object
+ create mode 100644 objects/telebrium/telebriumfridge.png
+ create mode 100644 objects/telebrium/telebriumfridgeicon.png
+ create mode 100644 objects/telebrium/telebriumlamp.frames
+ create mode 100644 objects/telebrium/telebriumlamp.object
+ create mode 100644 objects/telebrium/telebriumlamp.png
+ create mode 100644 objects/telebrium/telebriumlampicon.png
+ create mode 100644 objects/telebrium/telebriumminifridge.frames
+ create mode 100644 objects/telebrium/telebriumminifridge.object
+ create mode 100644 objects/telebrium/telebriumminifridge.png
+ create mode 100644 objects/telebrium/telebriumminifridgeicon.png
+ create mode 100644 objects/telebrium/telebriumnightstand.frames
+ create mode 100644 objects/telebrium/telebriumnightstand.object
+ create mode 100644 objects/telebrium/telebriumnightstand.png
+ create mode 100644 objects/telebrium/telebriumnightstandicon.png
+ create mode 100644 objects/telebrium/telebriumslidingdoor1/default.animation
+ create mode 100644 objects/telebrium/telebriumslidingdoor1/telebriumslidingdoor1.aseprite
+ create mode 100644 objects/telebrium/telebriumslidingdoor1/telebriumslidingdoor1.frames
+ create mode 100644 objects/telebrium/telebriumslidingdoor1/telebriumslidingdoor1.object
+ create mode 100644 objects/telebrium/telebriumslidingdoor1/telebriumslidingdoor1.png
+ create mode 100644 objects/telebrium/telebriumslidingdoor1/telebriumslidingdoor1icon.png
+ create mode 100644 objects/telebrium/telebriumstool.frames
+ create mode 100644 objects/telebrium/telebriumstool.object
+ create mode 100644 objects/telebrium/telebriumstool.png
+ create mode 100644 objects/telebrium/telebriumstoolicon.png
+ create mode 100644 objects/telebrium/telebriumtable.frames
+ create mode 100644 objects/telebrium/telebriumtable.object
+ create mode 100644 objects/telebrium/telebriumtable.png
+ create mode 100644 objects/telebrium/telebriumtableicon.png
+ create mode 100644 objects/telebrium/telebriumwalllamp/default.frames
+ create mode 100644 objects/telebrium/telebriumwalllamp/telebriumwalllamp.object
+ create mode 100644 objects/telebrium/telebriumwalllamp/telebriumwalllamp.png
+ create mode 100644 objects/telebrium/telebriumwalllamp/telebriumwalllampicon.png
+ create mode 100644 objects/telebrium/telebriumwalllamp/telebriumwalllamplit.png
+ create mode 100644 objects/thelusian/Thelusianceilingmonitor/thelusianceilingmonitor.animation
+ create mode 100644 objects/thelusian/Thelusianceilingmonitor/thelusianceilingmonitor.frames
+ create mode 100644 objects/thelusian/Thelusianceilingmonitor/thelusianceilingmonitor.object
+ create mode 100644 objects/thelusian/Thelusianceilingmonitor/thelusianceilingmonitor.png
+ create mode 100644 objects/thelusian/Thelusianceilingmonitor/thelusianceilingmonitoricon.png
+ create mode 100644 objects/thelusian/Thelusianceilingmonitor/thelusianceilingmonitorlit.frames
+ create mode 100644 objects/thelusian/Thelusianceilingmonitor/thelusianceilingmonitorlit.png
+ create mode 100644 objects/thelusian/thelusianbed/thelusianbed.frames
+ create mode 100644 objects/thelusian/thelusianbed/thelusianbed.object
+ create mode 100644 objects/thelusian/thelusianbed/thelusianbed.png
+ create mode 100644 objects/thelusian/thelusianbed/thelusianbedcover.png
+ create mode 100644 objects/thelusian/thelusianbed/thelusianbedicon.png
+ create mode 100644 objects/thelusian/thelusianbookcase/thelusianbookcase.frames
+ create mode 100644 objects/thelusian/thelusianbookcase/thelusianbookcase.object
+ create mode 100644 objects/thelusian/thelusianbookcase/thelusianbookcase.png
+ create mode 100644 objects/thelusian/thelusianbookcase/thelusianbookcaseicon.png
+ create mode 100644 objects/thelusian/thelusianceilinglamp/default.frames
+ create mode 100644 objects/thelusian/thelusianceilinglamp/thelusianceilinglamp.object
+ create mode 100644 objects/thelusian/thelusianceilinglamp/thelusianceilinglamp.png
+ create mode 100644 objects/thelusian/thelusianceilinglamp/thelusianceilinglampicon.png
+ create mode 100644 objects/thelusian/thelusianceilinglamp/thelusianceilinglamplit.png
+ create mode 100644 objects/thelusian/thelusianconsole/thelusianconsole.frames
+ create mode 100644 objects/thelusian/thelusianconsole/thelusianconsole.object
+ create mode 100644 objects/thelusian/thelusianconsole/thelusianconsole.png
+ create mode 100644 objects/thelusian/thelusianconsole/thelusianconsoleicon.png
+ create mode 100644 objects/thelusian/thelusianconsole/thelusianconsolelit.frames
+ create mode 100644 objects/thelusian/thelusianconsole/thelusianconsolelit.png
+ create mode 100644 objects/thelusian/thelusiancouch/thelusiancouch.frames
+ create mode 100644 objects/thelusian/thelusiancouch/thelusiancouch.object
+ create mode 100644 objects/thelusian/thelusiancouch/thelusiancouch.png
+ create mode 100644 objects/thelusian/thelusiancouch/thelusiancouchcover.png
+ create mode 100644 objects/thelusian/thelusiancouch/thelusiancouchicon.png
+ create mode 100644 objects/thelusian/thelusiandesk/thelusiandesk.frames
+ create mode 100644 objects/thelusian/thelusiandesk/thelusiandesk.object
+ create mode 100644 objects/thelusian/thelusiandesk/thelusiandesk.png
+ create mode 100644 objects/thelusian/thelusiandesk/thelusiandeskicon.png
+ create mode 100644 objects/thelusian/thelusiandresser/thelusiandresser.frames
+ create mode 100644 objects/thelusian/thelusiandresser/thelusiandresser.object
+ create mode 100644 objects/thelusian/thelusiandresser/thelusiandresser.png
+ create mode 100644 objects/thelusian/thelusiandresser/thelusiandressericon.png
+ create mode 100644 objects/thelusian/thelusianendtable/thelusianendtable.frames
+ create mode 100644 objects/thelusian/thelusianendtable/thelusianendtable.object
+ create mode 100644 objects/thelusian/thelusianendtable/thelusianendtable.png
+ create mode 100644 objects/thelusian/thelusianendtable/thelusianendtableicon.png
+ create mode 100644 objects/thelusian/thelusianfridge/thelusianfridge.frames
+ create mode 100644 objects/thelusian/thelusianfridge/thelusianfridge.object
+ create mode 100644 objects/thelusian/thelusianfridge/thelusianfridge.png
+ create mode 100644 objects/thelusian/thelusianfridge/thelusianfridgeicon.png
+ create mode 100644 objects/thelusian/thelusianlamp/thelusianlamp.frames
+ create mode 100644 objects/thelusian/thelusianlamp/thelusianlamp.object
+ create mode 100644 objects/thelusian/thelusianlamp/thelusianlamp.png
+ create mode 100644 objects/thelusian/thelusianlamp/thelusianlampicon.png
+ create mode 100644 objects/thelusian/thelusianlamp/thelusianlamplit.frames
+ create mode 100644 objects/thelusian/thelusianlamp/thelusianlamplit.png
+ create mode 100644 objects/thelusian/thelusianminifridge/thelusianminifridge.frames
+ create mode 100644 objects/thelusian/thelusianminifridge/thelusianminifridge.object
+ create mode 100644 objects/thelusian/thelusianminifridge/thelusianminifridge.png
+ create mode 100644 objects/thelusian/thelusianminifridge/thelusianminifridgeicon.png
+ create mode 100644 objects/thelusian/thelusiannightstand/thelusiannightstand.frames
+ create mode 100644 objects/thelusian/thelusiannightstand/thelusiannightstand.object
+ create mode 100644 objects/thelusian/thelusiannightstand/thelusiannightstand.png
+ create mode 100644 objects/thelusian/thelusiannightstand/thelusiannightstandicon.png
+ create mode 100644 objects/thelusian/thelusianslidingdoor/thelusianslidingdoor.frames
+ create mode 100644 objects/thelusian/thelusianslidingdoor/thelusianslidingdoor.object
+ create mode 100644 objects/thelusian/thelusianslidingdoor/thelusianslidingdoor.png
+ create mode 100644 objects/thelusian/thelusianslidingdoor/thelusianslidingdooricon.png
+ create mode 100644 objects/thelusian/thelusiansmalllamp/thelusiansmalllamp.frames
+ create mode 100644 objects/thelusian/thelusiansmalllamp/thelusiansmalllamp.object
+ create mode 100644 objects/thelusian/thelusiansmalllamp/thelusiansmalllamp.png
+ create mode 100644 objects/thelusian/thelusiansmalllamp/thelusiansmalllampicon.png
+ create mode 100644 objects/thelusian/thelusiansmalllamp/thelusiansmalllamplit.frames
+ create mode 100644 objects/thelusian/thelusiansmalllamp/thelusiansmalllamplit.png
+ create mode 100644 objects/thelusian/thelusianstool/thelusianstool.frames
+ create mode 100644 objects/thelusian/thelusianstool/thelusianstool.object
+ create mode 100644 objects/thelusian/thelusianstool/thelusianstool.png
+ create mode 100644 objects/thelusian/thelusianstool/thelusianstoolicon.png
+ create mode 100644 objects/thelusian/thelusiantable/thelusiantable.frames
+ create mode 100644 objects/thelusian/thelusiantable/thelusiantable.object
+ create mode 100644 objects/thelusian/thelusiantable/thelusiantable.png
+ create mode 100644 objects/thelusian/thelusiantable/thelusiantableicon.png
+ create mode 100644 objects/thelusian/thelusianterminal/thelusianterminal.animation
+ create mode 100644 objects/thelusian/thelusianterminal/thelusianterminal.frames
+ create mode 100644 objects/thelusian/thelusianterminal/thelusianterminal.object
+ create mode 100644 objects/thelusian/thelusianterminal/thelusianterminal.png
+ create mode 100644 objects/thelusian/thelusianterminal/thelusianterminalicon.png
+ create mode 100644 objects/thelusian/thelusianterminal/thelusianterminallit.frames
+ create mode 100644 objects/thelusian/thelusianterminal/thelusianterminallit.png
+ create mode 100644 objects/thelusian/thelusianwalllamp/thelusianwalllamp.frames
+ create mode 100644 objects/thelusian/thelusianwalllamp/thelusianwalllamp.object
+ create mode 100644 objects/thelusian/thelusianwalllamp/thelusianwalllamp.png
+ create mode 100644 objects/thelusian/thelusianwalllamp/thelusianwalllampicon.png
+ create mode 100644 objects/thelusian/thelusianwalllamp/thelusianwalllamplit.frames
+ create mode 100644 objects/thelusian/thelusianwalllamp/thelusianwalllamplit.png
+ create mode 100644 objects/thelusian/thelusianwardrobe/thelusianwardrobe.frames
+ create mode 100644 objects/thelusian/thelusianwardrobe/thelusianwardrobe.object
+ create mode 100644 objects/thelusian/thelusianwardrobe/thelusianwardrobe.png
+ create mode 100644 objects/thelusian/thelusianwardrobe/thelusianwardrobeicon.png
+ create mode 100644 projectiles/activeitems/staff/burningmandala/burningmandala2.projectile
+ rename projectiles/activeitems/staff/elementstorm/{icestorm.projectile => icestorm2.projectile} (100%)
+ create mode 100644 projectiles/activeitems/staff/plasmablade/shadowblade.frames
+ create mode 100644 projectiles/activeitems/staff/plasmablade/shadowblade.png
+ create mode 100644 projectiles/activeitems/staff/plasmablade/shadowblade.projectile
+ create mode 100644 projectiles/dragonburst/icedragonstaff.config
+ create mode 100644 projectiles/dragonburst/icedragonstaff.projectile
+ create mode 100644 projectiles/explosions/fugoreexplosion/fugoreexplosionsmall.config
+ create mode 100644 projectiles/explosions/fugoreexplosion/fugoreexplosionsmall.projectile
+ create mode 100644 projectiles/guns/arrows/autobolt/autobolt.frames
+ create mode 100644 projectiles/guns/arrows/autobolt/autobolt.png
+ create mode 100644 projectiles/guns/arrows/autobolt/autobolt.projectile
+ create mode 100644 projectiles/guns/arrows/autobolt/autobolt2.projectile
+ create mode 100644 projectiles/guns/arrows/autobolt/icon.png
+ create mode 100644 projectiles/guns/arrows/smokering2/smokering3.projectile
+ create mode 100644 projectiles/guns/grenade/catapultshot.frames
+ create mode 100644 projectiles/guns/grenade/catapultshot.png
+ create mode 100644 projectiles/guns/grenade/catapultshot.projectile
+ create mode 100644 projectiles/guns/icebeam/icestorm.projectile
+ create mode 100644 projectiles/weather/bloodrain/bloodrain4.projectile
+ create mode 100644 recipes/armory/melee/katana/xithricitekatana.recipe
+ create mode 100644 recipes/armory/ranged/staves/zerchesiumstaff.recipe
+ create mode 100644 recipes/craftingfurnace/attunedpaper.recipe
+ create mode 100644 recipes/craftingfurnace/nicepaper.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianbed.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianbookcase.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianceilinglamp.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianceilingmonitor.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianconsole.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusiancouch.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusiandesk.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusiandresser.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianendtable.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianfridge.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianlamp.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianminifridge.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianslidingdoor.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusiansmalllamp.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianstool.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusiantable.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianterminal.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianwalllamp.recipe
+ create mode 100644 recipes/emptyhands/thelusian/thelusianwardrobe.recipe
+ create mode 100644 recipes/furnace3/ingredients/battery.recipe.patch
+ create mode 100644 recipes/furnace3/ingredients/smallbattery.recipe.patch
+ create mode 100644 recipes/furniture1/telebrium/telebriumbed.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumbookcase.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumcabinet.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumceilinglamp.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumchair.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumchestlarge.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumchestsmall.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumcouch.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumdesk.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumdesklamp.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumdrawers.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumendtable.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumfridge.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumlamp.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumminifridge.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumnightstand.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumslidingdoor1.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumstool.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumtable.recipe
+ create mode 100644 recipes/furniture1/telebrium/telebriumwalllamp.recipe
+ create mode 100644 recipes/gemstation/seeds/koaniteore.recipe
+ create mode 100644 recipes/gemstation/seeds/siviteore.recipe
+ create mode 100644 recipes/madness/bloodritual.recipe
+ create mode 100644 recipes/madness/booksaboutbees.recipe
+ create mode 100644 recipes/madness/madequation.recipe
+ create mode 100644 recipes/madness/weapons/fucatapult.recipe
+ create mode 100644 recipes/prototyper/labs/tools/bountyboard.recipe
+ create mode 100644 recipes/spinningwheel2/ingredients/syntheticmaterial.material.patch
+ create mode 100644 sfx/humanoid/catscream.ogg
+ create mode 100644 sfx/objects/energy_door_close.ogg
+ create mode 100644 sfx/objects/energy_door_open.ogg
+ create mode 100644 stats/effects/fu_effects/bunnyinfection/bunnyinfection2.statuseffect
+ create mode 100644 stats/effects/fu_weathereffects/new/insanity/insanitynew3.statuseffect
+ create mode 100644 terrain/disperse/mountainVeins.terrain
+ create mode 100644 terrain/disperse/mountainVeinsDeep.terrain
+ create mode 100644 terrain/disperse/mountainousclumps.ridgeblocks
