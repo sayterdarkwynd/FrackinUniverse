@@ -38,8 +38,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.9,
-    "baseDps" : 8.25,
-    "energyUsage" : 15.0,
+    "baseDps" : 8.5,
+    "energyUsage" : 35.0,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
@@ -47,10 +47,11 @@
 
     "projectileType" : "iceplasma",
     "projectileParameters" : { 
-      "speed" : 600,
+      "speed" : 300,
       "timeToLive" : 3,
       "knockback" : 15,
-      "damageKind" : "ice"
+      "damageKind" : "ice",
+      "statusEffects" : [ "slow" ] 
     },
   "stances" : {
     "idle" : {

@@ -4,8 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^orange;Set Bonuses^reset;:
+  "description" : "^green;+3%^reset; Fire and Poison Resist^reset;
+^orange;Set Bonuses^reset;:
 ^green;+5^reset; HP, ^cyan;+15%^reset; Fall Dmg Resist^reset;
+Longsword or Axe: ^cyan;+15%^reset; Damage
 ^#e43774;(Lush/Forest biomes) ^green;+5^reset; HP, ^green;+5%^reset; Damage, ^green;+5%^reset; Physical Resist^reset;",
 
   "shortdescription" : "Bone Legs",
@@ -25,12 +27,12 @@
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1
+      "baseMultiplier" : 1.08
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.25
+      "amount" : 0.28
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -48,6 +50,14 @@
     {
       "stat" : "bonesetcount",
       "amount" : 1
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.03
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.03
     }
   ]
 }

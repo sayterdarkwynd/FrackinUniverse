@@ -1,8 +1,8 @@
 {
   "projectileName" : "catapultshot",
-  "physics" : "grenade",
+  "physics" : "fufelineprojectile",
   "bounces" : 0,
-  "timeToLive" : 3,
+  "timeToLive" : 1.5,
   "damageKindImage" : "icon.png",
   
   "image" : "catapultshot.png",
@@ -13,8 +13,16 @@
     {
       "action" : "sound",
       "options" : [ 
+        "/sfx/humanoid/catscream.ogg",
         "/sfx/humanoid/cathurt_female.ogg",
-        "/sfx/humanoid/cathurt_male.ogg"     
+        "/sfx/humanoid/cathurt_male.ogg", 
+        "/sfx/humanoid/cathurt3.ogg",
+        "/sfx/humanoid/cathurt4.ogg",
+        "/sfx/humanoid/cathurt5.ogg",
+        "/sfx/humanoid/cathurt6.ogg",
+        "/sfx/humanoid/cathurt7.ogg",
+        "/sfx/humanoid/cathurt8.ogg"
+        
       ]
     },
     {
@@ -29,14 +37,28 @@
   "actionOnReap" : [
     {
       "action" : "config",
+      "file" : "/projectiles/explosions/smallregularexplosion/smallregularexplosion.config"
+    },    
+    {
+      "action" : "config",
       "file" : "/projectiles/explosions/fugoreexplosion/fugoreexplosionsmall.config"
     },  
     {
       "action" : "sound",
-      "options" : [ "/sfx/humanoid/catscream.ogg" ]
+      "options" : [ 
+        "/sfx/humanoid/catscream.ogg",
+        "/sfx/humanoid/cathurt_male.ogg", 
+        "/sfx/humanoid/cathurt_female.ogg",
+        "/sfx/humanoid/cathurt3.ogg",
+        "/sfx/humanoid/cathurt4.ogg",
+        "/sfx/humanoid/cathurt5.ogg",
+        "/sfx/humanoid/cathurt6.ogg",
+        "/sfx/humanoid/cathurt7.ogg",
+        "/sfx/humanoid/cathurt8.ogg"      
+      ]
     }
   ],
-  "power" : 12,
+  "power" : 1,
   
-  "damageKind" : "default"
+  "damageKind" : "meow"
 }

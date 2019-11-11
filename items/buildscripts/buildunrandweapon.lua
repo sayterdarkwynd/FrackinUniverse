@@ -68,37 +68,38 @@ function build(directory, config, parameters, level, seed)
     -- *******************************
     -- FU ADDITIONS 
       if (configParameter("isAmmoBased")) then
-        config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",0), 0)
+	config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",0), 0)
+	config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"	      
       else
         config.tooltipFields.magazineSizeLabel = "--"
-      end
-      config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
-      if (configParameter("reloadTime")) then
-        config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"
-      else
         config.tooltipFields.reloadTimeLabel = "--"
-      end      
-      config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"  
+      end
+      
       if (configParameter("critChance")) then
         config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)    
       else
         config.tooltipFields.critChanceLabel = "--"
       end
-      config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"  
+       
       
       if (configParameter("critBonus")) then
         config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)   
       else
         config.tooltipFields.critBonusLabel = "--"
       end
-      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"  
+      
+      
       if (configParameter("stunChance")) then
         config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)   
       else
         config.tooltipFields.stunChanceLabel = "--"        
       end      
-
-    
+      
+	config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
+    	config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"  
+        config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"  
+        config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png" 
+        
     -- weapon abilities
     
     --overheating

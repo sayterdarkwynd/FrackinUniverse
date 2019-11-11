@@ -16,9 +16,11 @@ function GunFire:init()
   -- params
   self.countdownDelay = 0 									-- how long till it regains damage bonus?
   self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
-  self.magazineSize = config.getParameter("magazineSize",1) + status.stat("magazineSize", 0)	-- total count of the magazine
+  self.playerMagBonus = status.stat("magazineSize",0)						-- player  ammo bonuses
+  self.playerReloadBonus = status.stat("reloadTime",0)						-- player reload bonuses
+  self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) 	-- total count of the magazine
   self.magazineAmount = (self.magazineSize or 0) 						-- current number of bullets in the magazine
-  self.reloadTime = config.getParameter("reloadTime",1)	+ status.stat("reloadTime", 0)		-- how long does reloading mag take?
+  self.reloadTime = config.getParameter("reloadTime",1)	+ (self.playerReloadBonus or 0) 	-- how long does reloading mag take?
   
   
   self.weapon:setStance(self.stances.idle)
@@ -130,7 +132,7 @@ function GunFire:auto()
 	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 	
     --ammo		
-  	self.magazineSize = config.getParameter("magazineSize",1) 		-- total count of the magazine    
+	  self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0)		-- total count of the magazine  
           self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	  self.isAmmoBased = config.getParameter("isAmmoBased",0)   
 	  if (self.isAmmoBased == 1) then 
@@ -164,7 +166,7 @@ function GunFire:auto()
 	    status.addEphemeralEffect("reloadReady", 0.5)
 	    self.magazineAmount = self.magazineSize
 	    self.reloadTime = config.getParameter("reloadTime",0)
-	    if (self.reloadTime < 0.08) then
+	    if (self.reloadTime < 1) then
 	       animator.playSound("fuReload") -- adds new sound to reload 
 	    elseif (self.reloadTime >= 2.5) then
 	       animator.playSound("fuReload5") -- adds new sound to reload 
@@ -197,6 +199,7 @@ function GunFire:burst()
 	    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
 	  end 
     --ammo		  
+	  self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0)		-- total count of the magazine      
           self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	  self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a pistol?	      	  
 	  if (self.isAmmoBased == 1) then 
