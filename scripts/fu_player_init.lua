@@ -38,6 +38,9 @@ function uninit()
 	local untieredLootboxes = player.hasCountOfItem({name = "fu_lootbox", parameters = {}}, true)
 	if untieredLootboxes and untieredLootboxes > 0 then
 		local threatLevel = math.floor(world.threatLevel() + 0.5)
+		if threatLevel < 1 then 
+		  threatLevel = 1
+		end
 		for i = 1, untieredLootboxes do
 			player.consumeItem({name = "fu_lootbox", parameters = {}}, true, true)
 			player.giveItem({name = "fu_lootbox", parameters = {level = threatLevel}})
