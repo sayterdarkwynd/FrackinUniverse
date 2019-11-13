@@ -8,7 +8,7 @@ local recipes =
 
 --flesh dissection
 {inputs = { fuflesh=1 }, outputs = { leather=3,faceskin=1,rawribmeat=2,bone=24,alienmeat=4,fufemur=2,futooth=20}, time = 6.0},
-{inputs = { fufleshalien=1 }, outputs = { leather=3,cellmaterial=4,cellmateria=4,rawribmeat=2,bone=24,fufemur=2,futooth=20,gene_void=1}, time = 6.0},
+{inputs = { fufleshalien=1 }, outputs = { leather=3,cellmateria=4,rawribmeat=2,bone=24,fufemur=2,futooth=20,gene_void=1}, time = 6.0},
 
 --heart dissection
 {inputs = { fuheartalien=1 }, outputs = { liquidalienjuice = 5,gene_muscle=2,fleshstrand=5}, time = 6.0},
