@@ -4,15 +4,26 @@
 
   "effectConfig" : {
     "armorBonuses" : {
-      "maxBreath" : { "effectiveMultiplier" : 15.0 }
-    }
+      "maxBreath" : { "effectiveMultiplier" : 2.0 }
+    },
+    
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "longsword","energy" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.12 }
+        }
+      }
+    ]    
   },
 
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
+  
   "scriptDelta": 5,
 
-  "label" : "+1400% Oxygen",
+  "label" : "+100% Max Breath, +12% Longsword and Energy Damage",
   "icon" : "/interface/statuses/air.png"
 }

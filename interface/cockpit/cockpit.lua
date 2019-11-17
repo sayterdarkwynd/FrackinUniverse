@@ -436,24 +436,28 @@ end
 function fuelCost(travel)
   local cost = config.getParameter("jumpFuelCost")
 
-  -- FU needs custom math here for distance-based fuel cost
+-- FU needs custom math here for distance-based fuel cost
     self.one =  celestial.currentSystem()
     self.two =  {location = travel or self.travel.system, planet = 0, satellite = 0, system = self.travel.target}
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
     shipMassFind()
 
     if distanceMath < 30 then
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2 ) -- nearby systems are relatively cheap to travel to
-    else
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 2)) -- but long range jumps are more complicated, and mass plays a factor in efficiency
+      cost = 50 + ((config.getParameter("jumpFuelCost") + distanceMath) * ((self.shipMass or 0)+2)) -- nearby systems are relatively cheap to travel to
+    elseif distanceMath < 200 then
+      cost = 150 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 4)) -- a bit farther out
+    elseif distanceMath < 400 then
+      cost = 300 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 6)) -- mid/long range  
+    else							
+      cost = 600 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 10)) -- long range value
     end
 
 	if cost < 1000 and isConnected(self.one,self.two) then
 	  cost = cost / 2
 	end
 
-    cost = math.min(cost,10000) -- max off 10k fuel travel
-  -- end FU fuel cost calculation
+    cost = math.min(cost,999999) -- max of 999999 fuel travel
+-- end FU fuel cost calculation
 
 
   return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
