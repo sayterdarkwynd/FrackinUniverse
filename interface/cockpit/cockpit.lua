@@ -456,7 +456,7 @@ function fuelCost(travel)
 	  cost = cost / 2
 	end
 
-    cost = math.min(cost,999999) -- max of 20k fuel travel
+    cost = math.min(cost,999999) -- max of 999999 fuel travel
 -- end FU fuel cost calculation
 
 
