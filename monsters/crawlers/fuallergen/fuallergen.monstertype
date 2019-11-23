@@ -127,7 +127,7 @@
         "damage" : 6,
 
         "teamType" : "enemy",
-        "damageSourceKind" : "slash",
+        "damageSourceKind" : "poison",
         "knockback" : 30,
         "statusEffects" : [ "paralysis" ]
       }
@@ -138,9 +138,9 @@
       "damage" : 8,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "poison",
       "knockback" : 0,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "paralysis" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -204,11 +204,29 @@
           "baseValue" : 0.2
         },
         "fireResistance" : {
-          "baseValue" : -0.5
+          "baseValue" : -0.35
         },
         "poisonResistance" : {
           "baseValue" : 0.5
         },
+        "iceResistance" : {
+          "baseValue" : -0.25
+        },  
+        "physicalResistance" : {
+          "baseValue" : 0
+        },   
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },  
+        "shadowResistance" : {
+          "baseValue" : -0.2
+        },   
+        "radioactiveResistance" : {
+          "baseValue" : 0.25
+        },   
+        "cosmicResistance" : {
+          "baseValue" : 0
+        },        
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },

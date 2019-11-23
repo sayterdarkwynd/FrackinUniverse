@@ -8,7 +8,7 @@
 ^yellow;Extremely fast rounds^reset;",
   "shortdescription" : "Tk-98 Kaiju",
   "category" : "sniperRifle",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Sniper Rifle",
   "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
@@ -38,7 +38,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 3,
-    "baseDps" : 8.25,
+    "baseDps" : 7,
     "energyUsage" : 100.0,
     "inaccuracy" : 0,
 
@@ -50,7 +50,8 @@
       "speed" : 600,
       "timeToLive" : 1,
       "knockback" : 50,
-      "damageKind" : "ice"
+      "damageKind" : "ice",
+      "statusEffects" : [ "slow" ]
     },
   "stances" : {
     "idle" : {
@@ -84,7 +85,11 @@
 
   "critChance" : 4,
   "critBonus" : 2,
-
+  "isSniper" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 4,
+  "reloadTime" : 2, 
+  
   "altAbilityType" : "swtjc_ewg_bouncingorbitals",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

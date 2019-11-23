@@ -3,9 +3,9 @@
   "price" : 1440,
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Launches smaller anti-personnel rockets in fairly quick succession (by rocket launcher standards).",
+  "description" : "Launches smaller anti-personnel rockets in fairly quick succession.",
   "shortdescription" : "Rare Mini-Rocket Launcher",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_miniRocketLauncher",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","rocketlauncher","upgradeableWeapon"],
@@ -78,6 +78,13 @@
     }
   },
 
+  "critChance" : 1,
+  "critBonus" : 12,
+  "isAmmoBased" : 1,
+  "magazineSize" : [1,5],
+  "reloadTime" : [1.7,2.8],
+  "isRocketLauncher" : 1,
+  
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_minirocketnames.config:nameGen",
@@ -191,7 +198,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 6
+  }]
 }

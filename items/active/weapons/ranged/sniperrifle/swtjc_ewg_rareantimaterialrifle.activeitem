@@ -3,9 +3,9 @@
   "price" : 1200,
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "A high-powered rifle that sacrifices rate-of-fire for enough firepower to cut through armor like a hot knife through butter.",
+  "description" : "A high-powered rifle that sacrifices rate-of-fire for enough firepower to cut through armor.",
   "shortdescription" : "Rare Anti-Material Rifle",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_antiMaterialRifle",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
@@ -64,6 +64,13 @@
     }
   },
 
+  "critChance" : 1,
+  "critBonus" : 5,
+  "isAmmoBased" : 1,
+  "magazineSize" : [3,9],
+  "reloadTime" : [1.7,3.1],
+  "isSniper" : 1,  
+  
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_antimatnames.config:nameGen",
@@ -174,7 +181,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 5
+  }]   
 }

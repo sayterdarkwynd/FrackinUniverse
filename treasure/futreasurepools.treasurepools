@@ -234,6 +234,7 @@
        {"weight" : 0.005, "item" : "elderpainting9"},
        {"weight" : 0.005, "item" : "elderpainting10"},
        {"weight" : 0.005, "item" : "elderpainting11"},
+       {"weight" : 0.005, "item" : "fu_creepyeyepainting"},
 
 // maps
        {"weight" : 0.01, "item" : "verdantruinsmap"},
@@ -448,7 +449,8 @@
        {"weight" : 0.5, "item" : "wrappedbodybirb"},
        {"weight" : 0.1, "item" : "blooddiamond"},
        {"weight" : 0.1, "item" : "diamond"},
-       {"weight" : 0.3, "item" : "wrappedbody"}
+       {"weight" : 0.3, "item" : "wrappedbody"},
+       {"weight" : 0.03, "item" : "jarredfetus"}
      ]
    }]
   ],       
@@ -463,7 +465,8 @@
        {"weight" : 0.04, "item" : "sanityleech"},
        {"weight" : 0.10, "item" : "humaneyeball"},
        {"weight" : 0.10, "item" : "severedear"},
-       {"weight" : 0.02, "item" : "severedhandinabagaugment"}
+       {"weight" : 0.02, "item" : "severedhandinabagaugment"},
+       {"weight" : 0.06, "item" : "jarredfetus"}
      ]
    }]
  ],  
@@ -482,7 +485,8 @@
        {"weight" : 0.10, "item" : "humaneyeball"},
        {"weight" : 0.10, "item" : "severedear"},
        {"weight" : 0.02, "item" : "severedhandinabagaugment"},
-	   {"weight" : 0.05, "item" : ["orphanpaste", 2]}
+       {"weight" : 0.05, "item" : ["orphanpaste", 2]},
+       {"weight" : 0.03, "item" : "jarredfetus"}
      ]
    }]
  ],
@@ -503,7 +507,8 @@
          {"weight" : 0.10, "item" : ["redwoodbark", 10]},
          {"weight" : 0.05, "item" : ["commonaxe", 10]},
          {"weight" : 0.02, "item" : ["chainsaw", 1]},
-	 {"weight" : 0.05, "item" : ["orphanpaste", 2]}
+	 {"weight" : 0.02, "item" : ["orphanpaste", 2]},
+         {"weight" : 0.05, "item" : "jarredfetus"}
        ]
      }]
    ],  
@@ -618,13 +623,24 @@
         {"weight" : 0.01, "item" : ["universalparking", 1]},
         {"weight" : 0.01, "item" : ["vileconch", 1]},
         {"weight" : 0.01, "item" : ["attunedpaper", 25]},
-        {"weight" : 0.01, "item" : ["nicepaper", 50]}
+        {"weight" : 0.01, "item" : ["nicepaper", 50]},
+         {"weight" : 0.01, "item" : "jarredfetus"}
       ]
     }]
   ],
 
 
-  
+  "fuResearchVoxelTiny" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.4, "item" : ["fuscienceresource", 50]},
+        {"weight" : 0.3, "item" : ["fuscienceresource", 100]},
+        {"weight" : 0.2, "item" : ["fuscienceresource", 150]},
+        {"weight" : 0.05, "item" : ["fuscienceresource", 200]},
+        {"weight" : 0.05, "item" : ["fuscienceresource", 250]}
+      ]
+    }]
+  ],  
   "fuResearchVoxelSmall" : [
     [0, {
       "pool" : [
@@ -784,7 +800,7 @@
 	  {"weight" : 0.04, "item" : "sanityleech"},
           {"weight" : 0.01, "item" : ["attunedpaper", 25]},
           {"weight" : 0.01, "item" : ["nicepaper", 50]},
-
+          {"weight" : 0.05, "item" : "jarredfetus"},
           {"weight" : 0.09, "item" : ["glassmaterial", 5]},
           {"weight" : 0.333, "item" : [ "cryonicextract", 1]},
           {"weight" : 0.333, "item" : [ "hardenedcarapace", 1]},
@@ -896,7 +912,8 @@
         {"weight" : 0.0266, "item" : [ "ff_mercury", 3]},
         {"weight" : 0.1, "item" : [ "oonfortaglobule", 7]},
         {"weight" : 0.1, "item" : [ "erithianalgae", 6]},
-        {"weight" : 0.1, "item" : [ "fuscienceresource", 15]}
+        {"weight" : 0.1, "item" : [ "fuscienceresource", 15]},
+         {"weight" : 0.05, "item" : "jarredfetus"}
       ]
     }]
   ],
@@ -1039,6 +1056,13 @@
         {"weight" : 0.3, "item" : "damagecollar1"},
         {"weight" : 0.3, "item" : "healingcollar1"},
         {"weight" : 0.3, "item" : "healthcollar1"},
+        {"weight" : 0.3, "item" : "fireauracollar"},
+        {"weight" : 0.3, "item" : "iceauracollar"},
+        {"weight" : 0.3, "item" : "poisonauracollar"},
+        {"weight" : 0.3, "item" : "electricauracollar"},
+        {"weight" : 0.3, "item" : "shadowauracollar"},
+        {"weight" : 0.3, "item" : "cosmicauracollar"},
+        {"weight" : 0.3, "item" : "radioactiveauracollar"},
         {"weight" : 0.3, "item" : "lightcollar"},
         {"weight" : 0.3, "item" : "bouncycollar"},
         {"weight" : 0.3, "item" : "swimcollar"},
@@ -1051,13 +1075,13 @@
         {"weight" : 0.6, "item" : "damagecollar2"},
         {"weight" : 0.6, "item" : "healingcollar2"},
         {"weight" : 0.6, "item" : "healthcollar2"},
-        {"weight" : 0.6, "item" : "fireauracollar"},
-        {"weight" : 0.6, "item" : "iceauracollar"},
-        {"weight" : 0.6, "item" : "poisonauracollar"},
-        {"weight" : 0.6, "item" : "electricauracollar"},
-        {"weight" : 0.6, "item" : "shadowauracollar"},
-        {"weight" : 0.6, "item" : "cosmicauracollar"},
-        {"weight" : 0.6, "item" : "radioactiveauracollar"},
+        {"weight" : 0.6, "item" : "fireauracollar2"},
+        {"weight" : 0.6, "item" : "iceauracollar2"},
+        {"weight" : 0.6, "item" : "poisonauracollar2"},
+        {"weight" : 0.6, "item" : "electricauracollar2"},
+        {"weight" : 0.6, "item" : "shadowauracollar2"},
+        {"weight" : 0.6, "item" : "cosmicauracollar2"},
+        {"weight" : 0.6, "item" : "radioactiveauracollar2"},
         {"weight" : 0.3, "item" : "weee"},
         {"weight" : 0.3, "item" : "partytimecollar"}
       ]
@@ -1067,6 +1091,13 @@
         {"weight" : 0.3, "item" : "damagecollar1"},
         {"weight" : 0.3, "item" : "healingcollar1"},
         {"weight" : 0.3, "item" : "healthcollar1"},
+        {"weight" : 0.3, "item" : "fireauracollar"},
+        {"weight" : 0.3, "item" : "iceauracollar"},
+        {"weight" : 0.3, "item" : "poisonauracollar"},
+        {"weight" : 0.3, "item" : "electricauracollar"},
+        {"weight" : 0.3, "item" : "shadowauracollar"},
+        {"weight" : 0.3, "item" : "cosmicauracollar"},
+        {"weight" : 0.3, "item" : "radioactiveauracollar"},
         {"weight" : 0.3, "item" : "lightcollar"},
         {"weight" : 0.3, "item" : "bouncycollar"},
 
@@ -1081,13 +1112,13 @@
         {"weight" : 0.6, "item" : "healthcollar2"},
 
         {"weight" : 0.6, "item" : "obliviouscollar"},
-        {"weight" : 0.6, "item" : "fireauracollar"},
-        {"weight" : 0.6, "item" : "iceauracollar"},
-        {"weight" : 0.6, "item" : "poisonauracollar"},
-        {"weight" : 0.6, "item" : "electricauracollar"},
-        {"weight" : 0.6, "item" : "shadowauracollar"},
-        {"weight" : 0.6, "item" : "cosmicauracollar"},
-        {"weight" : 0.6, "item" : "radioactiveauracollar"},
+        {"weight" : 0.6, "item" : "fireauracollar2"},
+        {"weight" : 0.6, "item" : "iceauracollar2"},
+        {"weight" : 0.6, "item" : "poisonauracollar2"},
+        {"weight" : 0.6, "item" : "electricauracollar2"},
+        {"weight" : 0.6, "item" : "shadowauracollar2"},
+        {"weight" : 0.6, "item" : "cosmicauracollar2"},
+        {"weight" : 0.6, "item" : "radioactiveauracollar2"},
         {"weight" : 0.3, "item" : "weee"},
         {"weight" : 0.3, "item" : "partytimecollar"}
       ]
@@ -1097,6 +1128,13 @@
         {"weight" : 0.1, "item" : "damagecollar1"},
         {"weight" : 0.1, "item" : "healingcollar1"},
         {"weight" : 0.1, "item" : "healthcollar1"},
+        {"weight" : 0.1, "item" : "fireauracollar"},
+        {"weight" : 0.1, "item" : "iceauracollar"},
+        {"weight" : 0.1, "item" : "poisonauracollar"},
+        {"weight" : 0.1, "item" : "electricauracollar"},
+        {"weight" : 0.1, "item" : "shadowauracollar"},
+        {"weight" : 0.1, "item" : "cosmicauracollar"},
+        {"weight" : 0.1, "item" : "radioactiveauracollar"},
         {"weight" : 0.1, "item" : "lightcollar"},
         {"weight" : 0.1, "item" : "bouncycollar"},
 
@@ -1108,6 +1146,13 @@
         {"weight" : 0.3, "item" : "damagecollar2"},
         {"weight" : 0.3, "item" : "healingcollar2"},
         {"weight" : 0.3, "item" : "healthcollar2"},
+        {"weight" : 0.3, "item" : "fireauracollar2"},
+        {"weight" : 0.3, "item" : "iceauracollar2"},
+        {"weight" : 0.3, "item" : "poisonauracollar2"},
+        {"weight" : 0.3, "item" : "electricauracollar2"},
+        {"weight" : 0.3, "item" : "shadowauracollar2"},
+        {"weight" : 0.3, "item" : "cosmicauracollar2"},
+        {"weight" : 0.3, "item" : "radioactiveauracollar2"},
 
         {"weight" : 0.3, "item" : "obliviouscollar"},
         {"weight" : 0.5, "item" : "shadowcollar"},
@@ -1115,13 +1160,13 @@
         {"weight" : 0.6, "item" : "damagecollar3"},
         {"weight" : 0.6, "item" : "healingcollar3"},
         {"weight" : 0.6, "item" : "healthcollar3"},
-        {"weight" : 0.6, "item" : "fireauracollar"},
-        {"weight" : 0.6, "item" : "iceauracollar"},
-        {"weight" : 0.6, "item" : "poisonauracollar"},
-        {"weight" : 0.6, "item" : "electricauracollar"},
-        {"weight" : 0.6, "item" : "shadowauracollar"},
-        {"weight" : 0.6, "item" : "cosmicauracollar"},
-        {"weight" : 0.6, "item" : "radioactiveauracollar"},
+        {"weight" : 0.6, "item" : "fireauracollar3"},
+        {"weight" : 0.6, "item" : "iceauracollar3"},
+        {"weight" : 0.6, "item" : "poisonauracollar3"},
+        {"weight" : 0.6, "item" : "electricauracollar3"},
+        {"weight" : 0.6, "item" : "shadowauracollar3"},
+        {"weight" : 0.6, "item" : "cosmicauracollar3"},
+        {"weight" : 0.6, "item" : "radioactiveauracollar3"},
         {"weight" : 0.3, "item" : "weee"},
         {"weight" : 0.3, "item" : "partytimecollar"}
 
@@ -1132,6 +1177,13 @@
         {"weight" : 0.1, "item" : "damagecollar1"},
         {"weight" : 0.1, "item" : "healingcollar1"},
         {"weight" : 0.1, "item" : "healthcollar1"},
+        {"weight" : 0.1, "item" : "fireauracollar"},
+        {"weight" : 0.1, "item" : "iceauracollar"},
+        {"weight" : 0.1, "item" : "poisonauracollar"},
+        {"weight" : 0.1, "item" : "electricauracollar"},
+        {"weight" : 0.1, "item" : "shadowauracollar"},
+        {"weight" : 0.1, "item" : "cosmicauracollar"},
+        {"weight" : 0.1, "item" : "radioactiveauracollar"},
         {"weight" : 0.1, "item" : "lightcollar"},
         {"weight" : 0.1, "item" : "bouncycollar"},
         {"weight" : 0.5, "item" : "shadowcollar"},
@@ -1144,19 +1196,26 @@
         {"weight" : 0.3, "item" : "damagecollar2"},
         {"weight" : 0.3, "item" : "healingcollar2"},
         {"weight" : 0.3, "item" : "healthcollar2"},
+        {"weight" : 0.3, "item" : "fireauracollar2"},
+        {"weight" : 0.3, "item" : "iceauracollar2"},
+        {"weight" : 0.3, "item" : "poisonauracollar2"},
+        {"weight" : 0.3, "item" : "electricauracollar2"},
+        {"weight" : 0.3, "item" : "shadowauracollar2"},
+        {"weight" : 0.3, "item" : "cosmicauracollar2"},
+        {"weight" : 0.3, "item" : "radioactiveauracollar2"},
 
         {"weight" : 0.3, "item" : "obliviouscollar"},
 
         {"weight" : 0.6, "item" : "damagecollar3"},
         {"weight" : 0.6, "item" : "healingcollar3"},
         {"weight" : 0.6, "item" : "healthcollar3"},
-        {"weight" : 0.6, "item" : "fireauracollar"},
-        {"weight" : 0.6, "item" : "iceauracollar"},
-        {"weight" : 0.6, "item" : "poisonauracollar"},
-        {"weight" : 0.6, "item" : "electricauracollar"},
-        {"weight" : 0.6, "item" : "shadowauracollar"},
-        {"weight" : 0.6, "item" : "cosmicauracollar"},
-        {"weight" : 0.6, "item" : "radioactiveauracollar"},
+        {"weight" : 0.6, "item" : "fireauracollar3"},
+        {"weight" : 0.6, "item" : "iceauracollar3"},
+        {"weight" : 0.6, "item" : "poisonauracollar3"},
+        {"weight" : 0.6, "item" : "electricauracollar3"},
+        {"weight" : 0.6, "item" : "shadowauracollar3"},
+        {"weight" : 0.6, "item" : "cosmicauracollar3"},
+        {"weight" : 0.6, "item" : "radioactiveauracollar3"},
         {"weight" : 0.3, "item" : "weee"},
         {"weight" : 0.3, "item" : "partytimecollar"}
       ]
@@ -1169,7 +1228,7 @@
         {"weight" : 0.003, "pool" : "artifactloot" },
         {"weight" : 0.08, "item" : "quantumball"},
         {"weight" : 0.08, "item" : "bluegravball"},
-        {"weight" : 0.08, "item" : "orangegravball"},
+        {"weight" : 0.08, "item" : "orangegravball"},   
         {"weight" : 0.04, "item"  : [ "mantizanwine", 1]},
         {"weight" : 0.04, "item"  : [ "duncecap", 1]},
         {"weight" : 0.01, "item" : [ "labroof-recipe", 1]},

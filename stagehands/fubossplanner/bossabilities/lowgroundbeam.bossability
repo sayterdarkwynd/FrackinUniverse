@@ -1,0 +1,77 @@
+{
+  "name" : "fulowgroundbeam",
+  "preconditions" : [
+    ["!Danger", 0, 1],
+    ["!Danger", 1, 1],
+    ["!Danger", 2, 1],
+    ["!Danger", 3, 1],
+    ["!Danger", 4, 1],
+    ["!Danger", 5, 1],
+    ["!Danger", 6, 1],
+    ["!Danger", 7, 1],
+    ["Ability", "MovingAbility"],
+    ["Move"]
+  ],
+  "postconditions" : [
+    ["!Ability", "MovingAbility"],
+    ["Ability", "StaticAbility"]
+  ],
+  "statemodifiers" : [
+    ["!Floor", 0, 1],
+    ["!Floor", 1, 1],
+    ["!Floor", 2, 1],
+    ["!Floor", 3, 1],
+    ["!Floor", 4, 1],
+    ["!Floor", 5, 1],
+    ["!Floor", 6, 1],
+    ["!Floor", 7, 1],
+    ["!Floor", 0, 2],
+    ["!Floor", 1, 2],
+    ["!Floor", 2, 2],
+    ["!Floor", 3, 2],
+    ["!Floor", 4, 2],
+    ["!Floor", 5, 2],
+    ["!Floor", 6, 2],
+    ["!Floor", 7, 2],
+    ["!Floor", 0, 3],
+    ["!Floor", 1, 3],
+    ["!Floor", 2, 3],
+    ["!Floor", 3, 3],
+    ["!Floor", 4, 3],
+    ["!Floor", 5, 3],
+    ["!Floor", 6, 3],
+    ["!Floor", 7, 3],
+    ["Danger", 0, 1],
+    ["Danger", 1, 1],
+    ["Danger", 2, 1],
+    ["Danger", 3, 1],
+    ["Danger", 4, 1],
+    ["Danger", 5, 1],
+    ["Danger", 6, 1],
+    ["Danger", 7, 1],
+    ["Boss", 0, 0, "CertainPosition"],
+    ["Boss", 7, 0, "CertainPosition"],
+    ["Boss", 0, 1, "CertainPosition"],
+    ["Boss", 7, 1, "CertainPosition"],
+    ["Ability", "LongRange"]
+  ],
+
+  "actions" : [ "guardian-lowgroundbeam" ], // actions to apply the binding to
+  "behaviorHandler" : "doubleGroundBeamConfig",
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-lowgroundbeam",
+      "parameters" : {
+        "power" : 10,
+        "duration" : 6,
+        "startOffset" : [-6, 4],
+        "lowerAmount" : -9,
+
+        // populated by handler
+        "leftPosition" : null,
+        "rightPosition" : null
+      }
+    }
+  ]
+}

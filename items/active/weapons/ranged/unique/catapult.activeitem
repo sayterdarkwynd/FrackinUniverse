@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Reliably shoots cats.
-^green;Explosive cats.^reset;",
+^cyan;Explosive cats^reset;
+^yellow;Multiple damage types^reset;",
   "shortdescription" : "Cat-A-Pult",
   "category" : "grenadeLauncher",
   "level" : 4,
@@ -32,14 +33,14 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "meow",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.3,
-    "baseDps" : 9,
-    "energyUsage" : 40.0,
+    "fireTime" : 0.2,
+    "baseDps" : 8.6,
+    "energyUsage" : 34.0,
     "inaccuracy" : 0.0,
 
     "projectileCount" : 1,
@@ -47,7 +48,9 @@
 
     "projectileType" : "catapultshot",
     "projectileParameters" : { 
-      "knockback" : 20
+      "knockback" : 20,
+      "damageSourceKind" : "meow",
+      "speed" : 60
     },
 	  "stances" : {
 	      "idle" : {
@@ -80,9 +83,16 @@
   },
   
   "altAbilityType" : "catshot",
+  "altAbility" : {
+    "name" : "Toxic Kitten Blast",
+    "inaccuracy" : 0.0
+  },
 
   "critChance" : 2,
   "critBonus" : 6, 
-
+  "isAmmoBased" : 1,
+  "magazineSize" : 10,
+  "reloadTime" : 2,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

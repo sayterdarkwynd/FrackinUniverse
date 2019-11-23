@@ -1,0 +1,60 @@
+{
+  "name" : "fugroundDash",
+  "preconditions" : [
+    ["ReachableIn", [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1]]],
+    ["!BossDanger", 0, 0],
+    ["!BossDanger", 1, 0],
+    ["!BossDanger", 2, 0],
+    ["!BossDanger", 3, 0],
+    ["!BossDanger", 4, 0],
+    ["!BossDanger", 5, 0],
+    ["!BossDanger", 6, 0],
+    ["!BossDanger", 7, 0],
+    ["!Danger", 0, 0],
+    ["!Danger", 1, 0],
+    ["!Danger", 2, 0],
+    ["!Danger", 3, 0],
+    ["!Danger", 4, 0],
+    ["!Danger", 5, 0],
+    ["!Danger", 6, 0],
+    ["!Danger", 7, 0],
+    ["Ability", "StaticAbility"]
+  ],
+  "postconditions" : [
+    ["!Ability", "StaticAbility"],
+    ["Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Danger", 0, 0],
+    ["Danger", 1, 0],
+    ["Danger", 2, 0],
+    ["Danger", 3, 0],
+    ["Danger", 4, 0],
+    ["Danger", 5, 0],
+    ["Danger", 6, 0],
+    ["Danger", 7, 0],
+    ["Boss", 0, 0, "CertainPosition"],
+    ["Boss", 1, 0, "CertainPosition"],
+    ["Boss", 2, 0, "CertainPosition"],
+    ["Boss", 3, 0, "CertainPosition"],
+    ["Boss", 4, 0, "CertainPosition"],
+    ["Boss", 5, 0, "CertainPosition"],
+    ["Boss", 6, 0, "CertainPosition"],
+    ["Boss", 7, 0, "CertainPosition"],
+    //["Ability", "CloseRange"], // hack, force planner to find another close range attack, eliminate 2-attack-plans
+    ["WeaponEquipped"]
+  ],
+
+  "actions" : [ "guardiandash" ], // actions to apply the binding to
+  "behaviorHandler" : "groundDashConfig",
+
+  "sequenceActions" : [
+    {
+      "name" : "guardiandash",
+      "parameters" : {
+        "firstPosition" : null, // populated by groundDashConfig
+        "secondPosition" : null // populated by groundDashConfig
+      }
+    }
+  ]
+}
