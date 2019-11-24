@@ -8,7 +8,7 @@
 ^yellow;Extremely fast, accurate rounds^reset;",
     "shortdescription" : "Tk-4 Euclid",
   "category" : "pistol",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Pistol",
   "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon"],
@@ -37,7 +37,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.5,
+    "fireTime" : 0.42,
     "baseDps" : 8,
     "energyUsage" : 20,
     "inaccuracy" : 0,
@@ -48,7 +48,8 @@
     "projectileType" : "iceplasma",
     "projectileParameters" : { 
       "speed" : 110,
-      "knockback" : 2
+      "knockback" : 6,
+	  "statusEffects" : [ "slow" ] 
     },
 	  "stances" : {
 	    "idle" : {
@@ -91,5 +92,9 @@
 
   "critChance" : 1,
   "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 14,
+  "reloadTime" : 1, 
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

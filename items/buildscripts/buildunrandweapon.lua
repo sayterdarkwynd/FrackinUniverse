@@ -67,12 +67,39 @@ function build(directory, config, parameters, level, seed)
     config.tooltipFields.energyPerShotLabel = util.round((config.primaryAbility.energyUsage or 0) * (config.primaryAbility.fireTime or 1.0), 1)
     -- *******************************
     -- FU ADDITIONS 
-    
-      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
-      config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
-      config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)
+      if (configParameter("isAmmoBased")) then
+	config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",0), 0)
+	config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"	      
+      else
+        config.tooltipFields.magazineSizeLabel = "--"
+        config.tooltipFields.reloadTimeLabel = "--"
+      end
       
-    
+      if (configParameter("critChance")) then
+        config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)    
+      else
+        config.tooltipFields.critChanceLabel = "--"
+      end
+       
+      
+      if (configParameter("critBonus")) then
+        config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)   
+      else
+        config.tooltipFields.critBonusLabel = "--"
+      end
+      
+      
+      if (configParameter("stunChance")) then
+        config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)   
+      else
+        config.tooltipFields.stunChanceLabel = "--"        
+      end      
+      
+	config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
+    	config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"  
+        config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"  
+        config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png" 
+        
     -- weapon abilities
     
     --overheating
@@ -88,9 +115,13 @@ function build(directory, config, parameters, level, seed)
 	    config.tooltipFields.recoilCrouchStrength = util.round(configParameter("crouchRecoilVelocity",0), 0)    
     end
     
+
+    
     -- *******************************
     if elementalType ~= "physical" then
       config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
+    else
+      config.tooltipFields.damageKindImage = "/interface/elements/physical.png"
     end
     if config.primaryAbility then
       config.tooltipFields.primaryAbilityTitleLabel = "Primary:"

@@ -1,6 +1,43 @@
 [
 {
 "op": "add",
+"path": "/disc_attack",
+"value": {
+    "mass" : 1.0,
+    "gravityMultiplier" : 0.3,
+    "bounceFactor" : 0.04,
+    "stopOnFirstBounce" : true,
+    "maxMovementPerStep" : 0.4,
+
+    "collisionPoly" : [ [-0.5, -0.25], [0.5, -0.25], [0.5, 0.25], [-0.5, 0.25] ],
+    "ignorePlatformCollision" : false,
+
+    "airFriction" : 0.0,
+    "liquidFriction" : 8.0,
+    "groundFriction" : 35.0,
+    "maximumCorrection" : 0.75
+  }
+},
+{
+"op": "add",
+"path": "/fufelineprojectile",
+"value": {
+    "mass" : 0.8,
+    "gravityMultiplier" : 0.06,
+    "bounceFactor" : 0.0,
+    "maxMovementPerStep" : 0.4,
+    "collisionPoly" : [ [0.3, -0.1], [0.5, -0.1], [0.3, 0.1], [0.5, 0.1] ],
+    "ignorePlatformCollision" : true,
+    "stickyCollision" : false,
+    "airFriction" : 0.0,
+    "liquidFriction" : 6.0,
+    "groundFriction" : 7.0,
+    "maximumCorrection" : 0.75
+  }
+},
+
+{
+"op": "add",
 "path": "/fuarrownew",
 "value": {
     "mass" : 1.0,

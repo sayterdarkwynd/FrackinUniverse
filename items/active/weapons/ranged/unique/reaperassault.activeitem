@@ -8,7 +8,7 @@
 ^cyan;Spawns defensive drones",
   "shortdescription" : "Tk-12 Akasha",
   "category" : "assaultRifle",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Assault Rifle",
   "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
@@ -38,7 +38,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.12,
-    "baseDps" : 6.5,
+    "baseDps" : 7.6,
     "energyUsage" : 30,
     "inaccuracy" : 0.03,
     "projectileCount" : 1,
@@ -46,8 +46,9 @@
 
     "projectileType" : "iceplasma",
     "projectileParameters" : { 
-      "speed" : 120,
-      "knockback" : 2
+      "speed" : 97,
+      "knockback" : 2,
+	  "statusEffects" : [ "slow" ] 
     },
 	  "stances" : {
 	    "idle" : {
@@ -89,8 +90,11 @@
     },
 
   "critChance" : 1,
-  "critBonus" : 3,
-
+  "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "magazineSize" : 32,
+  "reloadTime" : 1.2, 
+  
   "altAbilityType" : "fudronelauncherakasha",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

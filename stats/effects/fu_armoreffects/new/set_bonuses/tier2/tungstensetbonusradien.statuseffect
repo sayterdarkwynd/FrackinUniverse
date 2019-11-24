@@ -1,0 +1,37 @@
+{
+  "name" : "tungstensetbonusradien",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "powerMultiplier" : { "effectiveMultiplier" : 1.07 }
+    },
+    "armorMovementModifiers" : {
+      "speed" : 1.05
+    },
+
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "radien" ],
+        "stats" : {
+          "maxHealth" : { "effectiveMultiplier" : 1.20 }
+        }
+      }
+    ],
+
+    "biomeTags" : [ "garden", "forest" ],
+    "biomeBonuses" : {
+      "grit" : { "amount" : 0.05 },
+      "maxEnergy" : { "effectiveMultiplier" : 1.05 }
+    }
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta": 5,
+
+  "label" : "+5% Speed & +7% Dmg. X'i Weapons: +20 Health. Lush/Forest: +5% Energy and Knockback Resist",
+  "icon" : "/interface/statuses/set_bow.png"
+}

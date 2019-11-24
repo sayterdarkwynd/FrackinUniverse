@@ -27,7 +27,9 @@
         ]
       }
     },    
-    "sounds" : { "fire" : [ "/sfx/gun/pistol1.ogg" ] },
+    "sounds" : { 
+      "fire" : [ "/sfx/gun/pistol1.ogg" ]
+    },
     "lights" : { "muzzleFlash" : {"color" : [70, 70, 70] } } 
   },
   
@@ -62,18 +64,18 @@
         "allowFlip" : true
       },
       "fire" : {
-        "duration" : 0.0,
-        "armRotation" : 1,
-        "weaponRotation" : 1,
+        "duration" : 0.01,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : false,
 
         "allowRotate" : false,
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.02,
-        "armRotation" : 0,
-        "weaponRotation" : 0,
+        "duration" : 0.04,
+        "armRotation" : 4,
+        "weaponRotation" : 4,
         "twoHanded" : false,
 
         "allowRotate" : false,
@@ -84,6 +86,9 @@
 
   "critChance" : 2,
   "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 10,
+  "reloadTime" : 1.0,
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   
   "improvedParameters" : {
@@ -131,18 +136,18 @@
 		"allowFlip" : true
 	      },
 	      "fire" : {
-		"duration" : 0,
-		"armRotation" : 1,
-		"weaponRotation" : 1,
+		"duration" : 0.01,
+		"armRotation" : 2,
+		"weaponRotation" : 2,
 		"twoHanded" : false,
 
 		"allowRotate" : false,
 		"allowFlip" : false
 	      },
 	      "cooldown" : {
-		"duration" : 0.03,
-		"armRotation" : 1,
-		"weaponRotation" : 1,
+		"duration" : 0.04,
+		"armRotation" : 4,
+		"weaponRotation" : 4,
 		"twoHanded" : false,
 
 		"allowRotate" : false,
@@ -164,6 +169,9 @@
   },    
     "critChance" : 3,
     "critBonus" : 4,
+    "isAmmoBased" : 1,
+    "magazineSize" : 12,    
+    "reloadTime" : 0.95,
 	  "primaryAbility" : {
 	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
 	    "class" : "GunFire",
@@ -196,18 +204,18 @@
 		"allowFlip" : true
 	      },
 	      "fire" : {
-		"duration" : 0,
-		"armRotation" : 1,
-		"weaponRotation" : 1,
+		"duration" : 0.01,
+		"armRotation" : 2,
+		"weaponRotation" : 2,
 		"twoHanded" : false,
 
 		"allowRotate" : false,
 		"allowFlip" : false
 	      },
 	      "cooldown" : {
-		"duration" : 0.03,
-		"armRotation" : 1,
-		"weaponRotation" : 1,
+		"duration" : 0.04,
+		"armRotation" : 4,
+		"weaponRotation" : 4,
 		"twoHanded" : false,
 
 		"allowRotate" : false,
@@ -230,6 +238,9 @@
   },    
     "critChance" : 4,
     "critBonus" : 6,
+    "isAmmoBased" : 1,
+    "magazineSize" : 16,   
+    "reloadTime" : 0.9,
 	  "primaryAbility" : {
 	    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
 	    "class" : "GunFire",
