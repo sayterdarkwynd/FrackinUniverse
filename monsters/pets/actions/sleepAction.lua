@@ -5,6 +5,11 @@ sleepAction = {
 function sleepAction.enterWith(args)
 
   if not args.sleepAction and not args.sleepTarget then return nil end
+  
+  if not args.sleepSpot then
+    sb.logWarn("Pet with no sleeping spot set tried to go to sleep - args:%s",args)
+    return nil
+  end
 
   if args.sleepAction and status.resourcePercentage("sleepy") < 1 then
     return nil
