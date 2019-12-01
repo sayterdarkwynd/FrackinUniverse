@@ -14,8 +14,8 @@ function Crits:setCritDamage(damage)
 
 	local crit = math.random(100) <= critChance            -- Chance out of 100
 
-    -- Crit damage bonus is 100% + critDamage%, with a flat damage increase of critBonus
-	damage = crit and (damage * (2 + critDamage) + critBonus) or damage -- Inherent 100% damage boost further increased by critBonus
+    -- Crit damage bonus is 50% + critDamage bonus, with a flat damage increase of critBonus
+	damage = crit and (damage * (1.5 + critDamage) + critBonus) or damage -- Inherent 50% damage boost further increased by critBonus
 
 	if crit then
         if heldItem then

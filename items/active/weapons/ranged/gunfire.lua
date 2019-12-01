@@ -96,7 +96,14 @@ function GunFire:update(dt, fireMode, shiftHeld)
   end
   
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
-
+  if self.loadingUp then
+    self.loadupTimer = math.max(0, self.loadupTimer - self.dt)
+  end
+  if self.cooldownTimer == 0 then 
+    -- set the cursor to the Reload cursor
+    activeItem.setCursor("/cursors/reticle0.cursor")
+  end
+  
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)
   end
@@ -166,6 +173,8 @@ function GunFire:auto()
 	    status.addEphemeralEffect("reloadReady", 0.5)
 	    self.magazineAmount = self.magazineSize
 	    self.reloadTime = config.getParameter("reloadTime",0)
+            -- set the cursor to the Reload cursor
+            activeItem.setCursor("/cursors/cursor_reload.cursor")	    
 	    if (self.reloadTime < 1) then
 	       animator.playSound("fuReload") -- adds new sound to reload 
 	    elseif (self.reloadTime >= 2.5) then
@@ -238,6 +247,8 @@ function GunFire:burst()
 	    status.addEphemeralEffect("reloadReady", 0.5)
 	    self.magazineAmount = self.magazineSize
 	    self.reloadTime = config.getParameter("reloadTime",0)
+            -- set the cursor to the Reload cursor
+            activeItem.setCursor("/cursors/cursor_reload.cursor")	    
 	    if (self.reloadTime < 0.08) then
 	       animator.playSound("fuReload") -- adds new sound to reload 
 	    elseif (self.reloadTime >= 2.5) then
