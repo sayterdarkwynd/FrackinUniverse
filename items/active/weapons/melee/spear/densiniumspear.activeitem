@@ -1,25 +1,24 @@
 {
-  "itemName" : "isogenspear",
+  "itemName" : "densiniumspear",
   "price" : 1200,
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Chillingly cold metal. Loves the taste of flesh.
-^cyan;Inflicts Freezing^reset;
+  "description" : "Superior craftsmanship. Also, purple.
+^cyan;Inflicts Electrified^reset;
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Isogen Spear",
+  "shortdescription" : "Densinium Spear",
   "tooltipKind" : "sword2",
-  "category" : "lance",
+  "category" : "spear",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","isogen", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","spear","densinium", "upgradeableWeapon"],
 
-  "inventoryIcon" : "isogenspear.png",
-  "collectablesOnPickup" : { "fu_weaponspear" : "isogenspear" },
+  "inventoryIcon" : "densiniumspear.png",
   "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "isogenspear.png",
-    "bladefullbright" : "isogenspearfullbright.png"
+    "blade" : "densiniumspear.png",
+    "bladefullbright" : "densiniumspearfullbright.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -29,18 +28,18 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "electric",
 
   "aimOffset" : -1.0,
-  "primaryAbilityType" : "heavyspearcombo",
+  "primaryAbilityType" : "spearstab",
   "primaryAbility" : {
     "scripts" : [],
 
-    "fireTime" : 1,
-    "baseDps" : 12.5,
+    "fireTime" : 0.85,
+    "baseDps" : 11.95,
     "damageConfig" : {
-      "damageSourceKind" : "icebow",
-      "statusEffects" : [ "freezefu" ],
+      "damageSourceKind" : "electricbow",
+      "statusEffects" : [ "electrified" ],
       "knockback" : 45
     }
   },
