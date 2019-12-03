@@ -5,6 +5,13 @@ function init()
   self.baseDamage = config.getParameter("healthDown",0)
   self.baseTime = setEffectTime()
   activateVisualEffects()
+  
+  effect.addStatModifierGroup({
+      { stat = "shadowResistance", effectiveMultiplier = 0.75 },
+      { stat = "fireResistance", effectiveMultiplier = 0.75 },
+      { stat = "iceResistance", effectiveMultiplier = 0.75 }
+  })    
+  
 end
 
 function setEffectTime()
@@ -24,22 +31,20 @@ function deactivateVisualEffects()
 end
 
 function update(dt)
-
-  	if ( status.stat("poisonResistance",0)  >= 0.5 ) then
-  	  deactivateVisualEffects()
-	  effect.expire()
-	end
+  if ( status.stat("poisonResistance",0)  >= 0.5 ) then
+    deactivateVisualEffects()
+    effect.expire()
+  end
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-    status.applySelfDamageRequest({
-        damageType = "IgnoresDef",
-        damage = self.baseDamage,
-        damageSourceKind = "poison",
-        sourceEntityId = entity.id()
-      })
   end
-
+  mcontroller.controlModifiers({
+      groundMovementModifier = 0.80,
+      runModifier = 0.80,
+      jumpModifier = 0.80
+    })
+    
   effect.setParentDirectives("fade=AA00AA="..self.tickTimer * 0.4)
 end
 
