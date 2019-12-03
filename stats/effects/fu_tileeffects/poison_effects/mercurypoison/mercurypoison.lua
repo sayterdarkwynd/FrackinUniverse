@@ -1,13 +1,13 @@
 function init()
-  script.setUpdateDelta(5)
+  script.setUpdateDelta(20)
   self.tickTime = 3.0
   self.tickTimer = self.tickTime
   self.baseTime = setEffectTime()
   activateVisualEffects()
   
   effect.addStatModifierGroup({
-      { stat = "fallDamageMultiplier", effectiveMultiplier = 0.5 },
-      { stat = "cosmicResistance", effectiveMultiplier = 0.75 },
+      { stat = "fallDamageMultiplier", amount = -0.5 },
+      { stat = "cosmicResistance", amount = -0.25 },
       { stat = "grit", effectiveMultiplier = 0 }
   })    
 end

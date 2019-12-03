@@ -7,7 +7,7 @@ function init()
   activateVisualEffects()
 
   effect.addStatModifierGroup({
-      { stat = "poisonResistance", effectiveMultiplier = self.baseDamage },
+      { stat = "poisonResistance", amount = -self.baseDamage },
       { stat = "mentalProtection", effectiveMultiplier = 0 }
   })  
 end

@@ -7,9 +7,9 @@ function init()
   activateVisualEffects()
   
   effect.addStatModifierGroup({
-      { stat = "shadowResistance", effectiveMultiplier = 0.75 },
-      { stat = "fireResistance", effectiveMultiplier = 0.75 },
-      { stat = "iceResistance", effectiveMultiplier = 0.75 }
+      { stat = "shadowResistance", amount = -0.25 },
+      { stat = "fireResistance", amount = -0.25 },
+      { stat = "iceResistance", amount = -0.25 }
   })    
   
 end

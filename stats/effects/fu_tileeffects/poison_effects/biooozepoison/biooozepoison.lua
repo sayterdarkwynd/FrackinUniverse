@@ -6,6 +6,10 @@ function init()
   self.tickTimer = self.tickTime
   self.baseDamage = config.getParameter("healthDown",0)
   self.baseTime = setEffectTime()
+  effect.addStatModifierGroup({
+      { stat = "electricResistance", amount = -self.baseDamage },
+      { stat = "physicalResistance", amount = -self.baseDamage }
+  })   
 end
 
 function setEffectTime()

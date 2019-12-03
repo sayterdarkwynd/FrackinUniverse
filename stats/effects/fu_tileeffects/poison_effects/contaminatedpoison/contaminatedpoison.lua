@@ -7,8 +7,8 @@ function init()
   self.baseDamage = config.getParameter("healthDown",0)
   self.baseTime = setEffectTime()
   effect.addStatModifierGroup({
-      { stat = "physicalResistance", effectiveMultiplier = self.baseDamage },
-      { stat = "radioactiveResistance", effectiveMultiplier = self.baseDamage }
+      { stat = "physicalResistance", amount = -self.baseDamage },
+      { stat = "radioactiveResistance", amount = -self.baseDamage }
   })  
 end
 
