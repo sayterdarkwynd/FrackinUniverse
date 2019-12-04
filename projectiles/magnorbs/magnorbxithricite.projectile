@@ -7,7 +7,7 @@
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
   "power" : 1.5,
   "speed" : 75,
-  "damageKind" : "fire",
+  "damageKind" : "cosmic",
   "physics" : "laser",
   "fullbright" : true,
   "bounces" : 6,
@@ -35,40 +35,13 @@
   ],
 
     "periodicActions":[
-    {
-      "action":"particle",
-      "repeat":true,
-      "rotate":true,
-      "specification":{
-	"destructionAction":"fade",
-	"destructionTime":0.2,
-	"fullbright":true,
-	"image":"/projectiles/magnorbs/magnorbxithricite.png",
-	"layer":"back",
-	"position":[0,0],
-	"timeToLive":0,
-	"type":"textured"
-	},
-      "time":0
-    },
-
-    {
-      "action":"particle",
-      "repeat":true,
-      "rotate":true,
-      "specification":{
-	"destructionAction":"fade",
-	"destructionTime":0.2,
-	"fullbright":true,
-	"image":"/projectiles/magnorbs/magnorbxithricite.png",
-	"layer":"back",
-	"position":[0,0],
-	"timeToLive":0.03,
-	"type":"textured"
-	},
-      "time":0.05
-      }
+    
     ],
-            
-  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
+     
+  "zigZagTime" : 0.1,
+  "zigZagAngle" : 0.7,     
+  "scripts" : [ 
+    "/projectiles/activeitems/boomerang/boomerangprojectile.lua",
+    "/scripts/projectiles/zigzagprojectile.lua"
+    ]
 }
