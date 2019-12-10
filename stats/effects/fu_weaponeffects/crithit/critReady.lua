@@ -1,31 +1,24 @@
 function init()
-  if status.stat("isCharged") == 1 then
+  self.used = 0
+  if (status.stat("isCharged") == 1) and (self.used == 0) then
+    self.used = 1
     activateVisualEffects()
+    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
   end
-  self.timer = 10
-  script.setUpdateDelta(10)
 end
 
-
 function activateVisualEffects()
- if status.stat("isCharged") == 1 then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("critText", statusTextRegion)
   animator.burstParticleEmitter("critText")
   animator.playSound("burn")
-  -- animator.burstParticleEmitter("smoke") 
   effect.setParentDirectives("fade=008800=0.2")
- end
-
 end
-
 
 
 function update(dt)
 
 end
 
-
 function uninit()
- 
 end

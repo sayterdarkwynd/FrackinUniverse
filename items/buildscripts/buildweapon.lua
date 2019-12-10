@@ -189,17 +189,20 @@ function build(directory, config, parameters, level, seed)
   config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
   config.tooltipFields.dpsLabel = util.round(baseDps * config.damageLevelMultiplier, 1)
   config.tooltipFields.speedLabel = util.round(1 / fireTime, 1)
-  --config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
-  --config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
-  --
-    local damagePerShot = baseDps * fireTime * config.damageLevelMultiplier
-    local energyPerShot = energyUsage * fireTime
-config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
+
+  local damagePerShot = baseDps * fireTime * config.damageLevelMultiplier
+  local energyPerShot = energyUsage * fireTime
+  
+  config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
   config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
 
-    -- ***ORIGINAL CODE BY ALBERO-ROTA and SAYTER, edited by ROBUR VELVETCLAW of BEELIM SOLUTIONS***
+    -- ***ORIGINAL CODE BY ALBERO-ROTA and SAYTER***
     -- FU ADDITIONS 
-      if (configParameter("isAmmoBased")) then
+    
+    parameters.isAmmoFactor = randomIntInRange(parameters.isAmmoFactor, 0, "isAmmoFactor")
+    config.isAmmoBased = scaleConfig(parameters.isAmmoFactor, config.magazineSize) or 0
+    
+      if (configParameter("isAmmoBased") ==1 ) then
 	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
 	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
 	  
@@ -234,9 +237,7 @@ config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config
     	      config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"  
     	      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"     
   --
-  
-
-    	      
+      
   if elementalType ~= "physical" then
     config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
 
