@@ -67,7 +67,8 @@ function build(directory, config, parameters, level, seed)
     config.tooltipFields.energyPerShotLabel = util.round((config.primaryAbility.energyUsage or 0) * (config.primaryAbility.fireTime or 1.0), 1)
     -- *******************************
     -- FU ADDITIONS 
-      if (configParameter("isAmmoBased")) then
+      if (configParameter("isAmmoBased")==1) then
+        config.tooltipFields.energyPerShotLabel = util.round(((config.primaryAbility.energyUsage or 0) * (config.primaryAbility.fireTime or 1.0)/2), 1)
 	config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",0), 0)
 	config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"	      
       else

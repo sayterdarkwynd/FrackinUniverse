@@ -339,7 +339,7 @@ function GunFireFixed:checkAmmo()
 	    self.reloadTime = config.getParameter("reloadTime",0)
             -- set the cursor to the Reload cursor
             activeItem.setCursor("/cursors/cursor_reload.cursor")	    
-	    if (self.reloadTime < 0.08) then
+	    if (self.reloadTime < 1) then
 	       animator.playSound("fuReload") -- adds new sound to reload 
 	    elseif (self.reloadTime >= 2.5) then
 	       animator.playSound("fuReload5") -- adds new sound to reload 

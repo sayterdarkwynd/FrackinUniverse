@@ -196,24 +196,29 @@ function build(directory, config, parameters, level, seed)
   config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
   config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
 
-    -- ***ORIGINAL CODE BY ALBERO-ROTA and SAYTER***
+    -- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***
     -- FU ADDITIONS 
     
-    parameters.isAmmoFactor = randomIntInRange(parameters.isAmmoFactor, 0, "isAmmoFactor")
-    config.isAmmoBased = scaleConfig(parameters.isAmmoFactor, config.magazineSize) or 0
-    
-      if (configParameter("isAmmoBased") ==1 ) then
+    if math.random(0,1) > 0.5 then  -- if over 0.5 the weapon is ammo-based, and swaps to the necessary tooltip if so.
+       config.isAmmoBased = 1
+       config.tooltipKind = "gun2"
+    else
+      config.isAmmoBased = 0
+    end
+
+      if (config.isAmmoBased ==1 ) then   -- if its ammo based, we set the relevant data to the tooltip
 	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
 	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
-	  
 	  config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
-	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0     
-	  
-          config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",1), 0)
+	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0  
+	  config.tooltipFields.energyPerShotLabel = util.round((energyUsage * fireTime)/2, 1)  -- these weapons have 50% energy cost
+          config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",1), 0) --
           config.tooltipFields.reloadTimeLabel = util.round(configParameter("reloadTime",1),1)  .. "s"
       else
+	config.magazineSize = 0
+	config.reloadTime = 0       
         config.tooltipFields.magazineSizeLabel = "--"
-        config.tooltipFields.reloadTimeLabel = "--"
+        config.tooltipFields.reloadTimeLabel = "--"        
       end      
       if (configParameter("critChance")) then
         config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)  

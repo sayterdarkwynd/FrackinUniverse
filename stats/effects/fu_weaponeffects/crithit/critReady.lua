@@ -3,7 +3,6 @@ function init()
   if (status.stat("isCharged") == 1) and (self.used == 0) then
     self.used = 1
     activateVisualEffects()
-    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
   end
 end
 
