@@ -2,7 +2,7 @@
   "type" : "mimic_gramophone",
   "shortdescription" : "Mimic",
   "description" : "This hellish abomination has no business existing. But, here it is anyhow.",
-
+  "reversed" : true,
   "categories" : [ "mimic_gramophone" ],
   "parts" : [ "body" ],
 
@@ -62,18 +62,28 @@
           }
         }
       ],
-
+      
+      "concurrentHostileActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "wanderTime" : [2, 3]
+          }
+        }      
+      ],
+      
       "periodicActions" : [
         {
           "name" : "action-invulnerable",
           "cooldown" : [6, 12],
           "parameters" : {
             "windupTime" : 0,
-            "windupState" : "",
-            "winddownTime" : 0.7,
+            "windupState" : "windup",
+            "winddownTime" : 1.2,
             "winddownState" : "winddown",
 
-            "invulnerableState" : "windup",
+            "invulnerableState" : "idle2",
             "invulnerableTime" : 0.0
           }
         }

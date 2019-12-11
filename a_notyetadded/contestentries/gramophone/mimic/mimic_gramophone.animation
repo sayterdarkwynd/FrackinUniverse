@@ -7,20 +7,28 @@
         "states" : {
           "idle" : {
             "frames" : 1
-          },
+          },  
+          "idle2" : {
+            "frames" : 1
+          },           
           "windup" : {
-            "frames" : 14,
-            "cycle" : 0.9
+            "frames" : 15,
+            "cycle" : 1.2
           },
           "winddown" : {
-            "frames" : 14,
-            "cycle" : 0.5
+            "frames" : 15,
+            "cycle" : 1.2
           },
           "slash" : {
-            "frames" : 4,
-            "cycle" : 0.4,
+            "frames" : 8,
+            "cycle" : 1.2,
             "mode" : "transition",
             "transition" : "idle"
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 1.2,
+            "mode" : "loop"
           }
         }
       },
@@ -71,6 +79,11 @@
                 "image" : "<partImage>:idle.<frame>"
               }
             },
+            "idle2" : {
+              "properties" : {
+                "image" : "<partImage>:idle2.<frame>"
+              }
+            },            
             "windup" : {
               "properties" : {
                 "image" : "<partImage>:windup.<frame>"
@@ -81,10 +94,15 @@
                 "image" : "<partImage>:winddown.<frame>"
               }
             },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },             
             "slash" : {
               "properties" : {
                 "image" : "<partImage>:slash.<frame>"
-              },
+              },             
               "frameProperties" : {
                 "damageArea" : [
                   null,
