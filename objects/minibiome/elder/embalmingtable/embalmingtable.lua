@@ -6,6 +6,10 @@ local recipes =
 {inputs = { wrappedbodyputrid=1,elderrelic2=1 }, outputs = { inferiorbrain=1,fuscienceresource=520,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidelderfluid=120  }, time = 14.0},
 {inputs = { wrappedbodyputrid=1,elderrelic10=1 }, outputs = { inferiorbrain=1,fumadnessresource=520,bone=8,leather=1,alienmeat=12,rawribmeat=2,liquidelderfluid=80  }, time = 14.0},
 
+--trashbag
+{inputs = { mysterioustrashbag=1 }, outputs = { cadaverrotting = 1}, time = 1.0},
+{inputs = { fumysterioustrashbag=1 }, outputs = { cadaverrotting = 1}, time = 1.0},
+
 --flesh dissection
 {inputs = { fuflesh=1 }, outputs = { leather=3,faceskin=1,rawribmeat=2,bone=24,alienmeat=4,fufemur=2,futooth=20}, time = 6.0},
 {inputs = { fufleshalien=1 }, outputs = { leather=3,cellmateria=4,rawribmeat=2,bone=24,fufemur=2,futooth=20,gene_void=1}, time = 6.0},
