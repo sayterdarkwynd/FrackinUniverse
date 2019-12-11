@@ -1,0 +1,47 @@
+{
+  "objectName" : "fustarbucks",
+  "colonyTags" : [ "crafting", "coffee" ],
+  "rarity" : "rare",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fustarbucks.config",
+    "filter" : [ "fustarbucks" ]
+  },
+  "printable" : false,
+  "description" : "Overpriced, crappy coffee and baked goods.",
+  "shortdescription" : "^orange;Starbucks^white;",
+  "race" : "radien",
+  "category" : "crafting",
+  "price" : 0,
+  "inventoryIcon" : "silene_shopicon.png",
+
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fustarbucks.png:<color>.<frame>"} ],
+      "imagePosition" : [-32, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "fustarbucks.png:<color>.<frame>"} ],
+      "imagePosition" : [-32, 0],
+
+      "direction" : "right",
+
+      "frames" : 1,
+      "animationCycle" : 1,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/aquarium1.ogg"
+}

@@ -9,9 +9,7 @@
             "frames" : 1
           },  
           "idle2" : {
-            "frames" : 1,
-            "mode" : "transition",
-            "transition" : "winddown"
+            "frames" : 1
           },           
           "windup" : {
             "frames" : 15,
@@ -19,19 +17,19 @@
           },
           "winddown" : {
             "frames" : 15,
-            "cycle" : 1.2
+            "cycle" : 1.2,
+            "mode" : "transition",
+            "transition" : "idle"
           },
           "slash" : {
             "frames" : 8,
             "cycle" : 1.2,
             "mode" : "transition",
-            "transition" : "idle2"
+            "transition" : "walk"
           },
           "walk" : {
             "frames" : 8,
-            "cycle" : 1.2,
-            "mode" : "transition",
-            "transition" : "winddown"
+            "cycle" : 1.2
           }
         }
       },
