@@ -198,7 +198,7 @@ function GunFire:aimVector(inaccuracy)
 end
 
 function GunFire:energyPerShot()
-  if self.isAmmoBased then
+  if (self.isAmmoBased == 1) and not (self.fireMode == "alt") then
     return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
   else
     return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)

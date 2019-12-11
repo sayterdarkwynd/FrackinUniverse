@@ -246,10 +246,10 @@ function GunFireFixed:aimVector(inaccuracy)
 end
 
 function GunFireFixed:energyPerShot()
-  if self.useEnergy == "nil" or self.useEnergy then -- key "useEnergy" defaults to true.
-    return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
-  elseif self.isAmmoBased then  --ammo based guns use 1/2 as much energy
+  if (self.isAmmoBased == 1) and not (self.fireMode == "alt") then  --ammo based guns use 1/2 as much energy
     return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
+  elseif self.useEnergy == "nil" or self.useEnergy then -- key "useEnergy" defaults to true.
+    return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)    
   else
     return 0
   end
