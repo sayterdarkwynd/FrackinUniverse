@@ -57,7 +57,7 @@ local recipes =
 {inputs = { blobbushjelly=1 }, outputs = { fumadnessresource=1,cellmateria=1}, time = 2.0},
 {inputs = { brain=1 }, outputs = { fumadnessresource=2,cellmateria=2}, time = 2.0},
 {inputs = { inferiorbrain=1 }, outputs = { fumadnessresource=1,cellmateria=1}, time = 2.0},
-{inputs = { bone=10 }, outputs = { bonemealmaterial=50}, time = 2.0},
+{inputs = { bone=50 }, outputs = { bonemealmaterial=50}, time = 2.0},
 {inputs = { crunchychick=1 }, outputs = { fumadnessresource=3,bonemealmaterial=10,alienmeat=1}, time = 3.0},
 {inputs = { meatpickle=1 }, outputs = { fumadnessresource=2,alienmeat=1}, time = 2.0},
 {inputs = { milk=1,normaldrone=1 }, outputs = { sourmilkandbees=1}, time = 2.0},
