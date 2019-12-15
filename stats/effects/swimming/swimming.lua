@@ -43,14 +43,14 @@ function update(dt)
   end
 	  
   if not (allowedType()) then  -- if not the allowed type of entity (a monster that isnt a fish), different effects play
-    mcontroller.controlModifiers( 
-      {speedModifier = 2.735}    -- slower than players in water
-    )   
-    mcontroller.controlParameters({  --sets monster movement to be floaty but otherwise identical to player on land
-	gravityMultiplier = 0.6,
-	liquidImpedance = 0.5,
-	liquidForce = 80.0
-    })
+	    mcontroller.controlModifiers( 
+	      {speedModifier = 2.735}    -- slower than players in water
+	    )   
+	    mcontroller.controlParameters({  --sets monster movement to be floaty but otherwise identical to player on land
+		gravityMultiplier = 0.6,
+		liquidImpedance = 0.5,
+		liquidForce = 80.0
+	    })
   else
 	  if mcontroller.liquidPercentage() >= 0.62 then  --approximately shoulder height
 		effect.modifyDuration(script.updateDt())
