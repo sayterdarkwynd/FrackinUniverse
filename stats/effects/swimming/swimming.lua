@@ -64,6 +64,8 @@ function update(dt)
 			liquidForce = 100 * self.finalValue  -- get more swim force the better your boost is?
 		    }
 		)
+		
+		
 
 	  else
 		effect.expire() -- we could do effect.expire here, but its probably pointless
