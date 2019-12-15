@@ -16,7 +16,7 @@
 	{ "op" : "add","path" : "/species/-","value" : "veluu" },
 	{ "op" : "add","path" : "/species/-","value" : "fupeglaci" },
 	{ "op" : "add","path" : "/species/-","value" : "skath" },
-	{ "op" : "add","path" : "/species/-","value" : "juux" },
+	{ "op" : "add","path" : "/species/-","value" : "juux" },	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/skath",
 		"value" : "mechbodyfuorbusproto"
@@ -166,7 +166,25 @@
 		"path": "/statusControllerSettings/primaryScriptSources/-",
 		"value": "/stats/cat_primary.lua"
 	},
-	
+	{
+		"op": "add",
+		"path": "/statusControllerSettings/stats/boostAmount",
+		"value": { "baseValue": 1 }
+	},
+	{
+		"op": "remove",
+		"path": "/statusControllerSettings/resources/food/maxValue"
+	},
+	{
+		"op": "add",
+		"path": "/statusControllerSettings/resources/food/maxStat",
+		"value": "maxFood"
+	},
+	{
+		"op": "add",
+		"path": "/statusControllerSettings/stats/maxFood",
+		"value": { "baseValue": 70 }
+	},	
 	{
 	"op" : "add",
 	"path" : "/collisionParams",
