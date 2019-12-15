@@ -11,7 +11,7 @@ end
 function applyBonusSpeed() --apply Speed Booost
   if status.statPositive("boostAmount") then --this value gets applied in update to the player speedModifier when in water, to calc the total speed + boost
     self.finalValue = 5.735 * (status.stat("boostAmount",1) or 1)   --this does not get passed fine
-    sb.logInfo(self.finalValue)    
+    sb.logInfo("the current swim speed is "..self.finalValue)    
   else
     effect.addStatModifierGroup({{stat = "boostAmount", effectiveMultiplier = 1}}) -- add the swim boost stat if it isn't present so we never multiply by 0
     self.finalValue = 5.735   -- this gets passed fine.
@@ -52,7 +52,7 @@ function update(dt)
 	liquidForce = 80.0
     })
   else
-	  if mcontroller.liquidPercentage() >= 0.62 then
+	  if mcontroller.liquidPercentage() >= 0.62 then  --approximately shoulder height
 		effect.modifyDuration(script.updateDt())
 		mcontroller.controlModifiers( 
 		  { speedModifier = self.finalValue }   -- we have to increase player speed or they wont move fast enough. add the boost value to it. 
@@ -61,7 +61,7 @@ function update(dt)
 		    {
 			gravityMultiplier = 0,
 			liquidImpedance = 0,
-			liquidForce = 100
+			liquidForce = 100 * self.finalValue  -- get more swim force the better your boost is?
 		    }
 		)
 
