@@ -4,7 +4,7 @@ function init()
   self.mouthBounds = {self.mouthPosition[1], self.mouthPosition[2], self.mouthPosition[1], self.mouthPosition[2]}
   self.boostAmount = config.getParameter("boostAmount", 1)
   effect.addStatModifierGroup({{stat = "boostAmount", effectiveMultiplier = self.boostAmount}}) -- add the swim boost stat
-  sb.logInfo("ive applied swimboost of x"..status.stat("boostAmount"))
+ -- sb.logInfo("ive applied swimboost of x"..status.stat("boostAmount"))
 end
 
 function update(dt)
