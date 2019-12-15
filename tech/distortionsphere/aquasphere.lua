@@ -33,12 +33,15 @@ function update(args)
     if self.pressDown and self.bombTimer == 0 then
       self.bombTimer = 1.1
       local configBombDrop = { power = 2 }
+      local configBombDrop2 = { power = 20 }
       animator.playSound("bombdrop")
-      world.spawnProjectile("pullshot2", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
+      world.spawnProjectile("ngravityexplosion", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
+      world.spawnProjectile("gravexplosion2", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop2)
     end    
     ----------------------------------------------------
     
     if inLiquid then  -- if immersed in liquid do this 
+      status.addEphemeralEffect("airimmunity") 	
       self.transformedMovementParameters.gravityMultiplier = -0.005 	-- upwards drag if idle    
       if args.moves["up"] and args.moves["down"] then  			-- pushing both up and down cancels out momentum
         self.transformedMovementParameters.liquidForce = 0
@@ -48,6 +51,7 @@ function update(args)
       self.transformedMovementParameters.runSpeed = self.ballLiquidSpeed  -- failsafes
       self.transformedMovementParameters.walkSpeed = self.ballLiquidSpeed -- failsafes
     else 
+      status.removeEphemeralEffect("airimmunity") 
       status.removeEphemeralEffect("swimboost2")
       status.removeEphemeralEffect("waterimmunity")
       self.transformedMovementParameters.gravityMultiplier = 1.5	-- reset to default gravity, juuuuust in case
