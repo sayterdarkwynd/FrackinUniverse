@@ -90,7 +90,14 @@ function setMonsterAbilities()
 			liquidForce = 30.0
 		    })		    
 		elseif status.stat("isJellyfishCreature")==1 then
-		   
+		    mcontroller.controlModifiers( 
+		      {speedModifier = 0.1}   
+		    )   
+		    mcontroller.controlParameters({  
+			gravityMultiplier = -2,
+			liquidImpedance = 0.5,
+			liquidForce = 2.0
+		    })	
 		end
 	  else
 	    if not mcontroller.baseParameters().gravityEnabled then
