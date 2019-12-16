@@ -43,6 +43,64 @@ function update(dt)
   end
 	  
   if not (allowedType()) then  -- if not the allowed type of entity (a monster that isnt a fish), different effects play
+    setMonsterAbilities()	    
+  else
+    if mcontroller.liquidPercentage() >= 0.62 then  --approximately shoulder height
+	effect.modifyDuration(script.updateDt())
+	mcontroller.controlModifiers( 
+	  { speedModifier = self.finalValue }   -- we have to increase player speed or they wont move fast enough. add the boost value to it. 
+	) 
+	mcontroller.controlParameters(
+	    {
+		gravityMultiplier = 0,
+		liquidImpedance = 0,
+		liquidForce = 100 * self.finalValue  -- get more swim force the better your boost is?
+	    }
+	)
+
+
+
+    else
+	effect.expire() -- we could do effect.expire here, but its probably pointless
+    end    
+  end  
+end
+
+function onExpire()
+  if self.setWet then
+    status.addEphemeralEffect("wet")
+  end
+end
+
+function setMonsterAbilities()
+	if (entity.id("atropusfish")) or (entity.id("veilendrex")) or (entity.id("dolphin1")) then
+	    mcontroller.controlModifiers( 
+	      {speedModifier = 5.735}    -- slower than players in water
+	    )   
+	    mcontroller.controlParameters({  --sets monster movement to be floaty but otherwise identical to player on land
+		gravityMultiplier = 1,
+		liquidImpedance = 0.5,
+		liquidForce = 80.0
+	    })	
+	elseif entity.id("atropuseye") then
+	    mcontroller.controlModifiers( 
+	      {speedModifier = 2.735}    -- slower than players in water
+	    )   
+	    mcontroller.controlParameters({  --sets monster movement to be floaty but otherwise identical to player on land
+		gravityMultiplier = 0,
+		liquidImpedance = 0.5,
+		liquidForce = 30.0
+	    })		    
+	elseif entity.id("deathjelly") then
+	    mcontroller.controlModifiers( 
+	      {speedModifier = 2.735}    -- slower than players in water
+	    )   
+	    mcontroller.controlParameters({  --sets monster movement to be floaty but otherwise identical to player on land
+		gravityMultiplier = 0,
+		liquidImpedance = 0.5,
+		liquidForce = 80.0
+	    })	
+	else
 	    mcontroller.controlModifiers( 
 	      {speedModifier = 2.735}    -- slower than players in water
 	    )   
@@ -51,30 +109,5 @@ function update(dt)
 		liquidImpedance = 0.5,
 		liquidForce = 80.0
 	    })
-  else
-	  if mcontroller.liquidPercentage() >= 0.62 then  --approximately shoulder height
-		effect.modifyDuration(script.updateDt())
-		mcontroller.controlModifiers( 
-		  { speedModifier = self.finalValue }   -- we have to increase player speed or they wont move fast enough. add the boost value to it. 
-		) 
-		mcontroller.controlParameters(
-		    {
-			gravityMultiplier = 0,
-			liquidImpedance = 0,
-			liquidForce = 100 * self.finalValue  -- get more swim force the better your boost is?
-		    }
-		)
-		
-		
-
-	  else
-		effect.expire() -- we could do effect.expire here, but its probably pointless
-	  end    
-  end  
-end
-
-function onExpire()
-  if self.setWet then
-    status.addEphemeralEffect("wet")
-  end
+	end
 end

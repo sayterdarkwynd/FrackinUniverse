@@ -22,28 +22,41 @@
 
     "behavior" : "monster",
 
-    "renderLayer" : "foregroundEntity",
+    //"renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 35,
+      "targetQueryRange" : 90,
       "targetOnDamage" : true,
       "targetEntityTypes" : [ "player", "npc", "monster" ],
       "keepTargetInSight" : false,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.0,
+      "keepTargetInRange" : 120,
+      "targetOutOfSightTime" : 25.0,
 
       "hurtTime" : 0.25,
       "hurtWaitForGround" : false,
 
-      "damageTakenActions" : [],
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 1,
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "bone",
+            "projectileParameters" : { },
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }        
+      ],
 
-      "foundTargetActions" : [ ],
+      "foundTargetActions" : [],
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [
+      "hostileActions" : [      
         {
           "name" : "action-charge",
           "cooldown" : 5.0,
@@ -64,7 +77,19 @@
             "winddownStopForce" : 25,
             "winddownTime" : 0.05
           }
-        }
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "projectileCount" : 4,
+            "projectileType" : "magnorbatropus",
+            "projectileParameters" : {},
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 1,
+            "fireOffset" : [0, 0]
+          }
+        }        
       ],
 
       "periodicActions" : [ 
@@ -76,7 +101,7 @@
             "spawnCooldown" : 5.0,
             "monsterType" : "atropuseye",
             "state" : "fire"
-            }
+          }
         }        
       ],
 
@@ -118,7 +143,18 @@
         }       
       ],
 
-      "concurrentHostileActions" : [ ]
+      "concurrentHostileActions" : [
+        {
+          "name" : "action-spawncompanions",
+          "cooldown" : 4,
+          "parameters" : {
+            "maxCount" : 2,
+            "spawnCooldown" : 5.0,
+            "monsterType" : "atropuseye",
+            "state" : "fire"
+            }
+        }          
+      ]
     },
 
     "touchDamage" : {
@@ -128,7 +164,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "shadow",
       "knockback" : 20,
-      "statusEffects" : [ "madnessgain" ]
+      "statusEffects" : [ "madnessgain", "waterimmunity" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -140,12 +176,14 @@
       "collisionPoly" : [ [6.25, 2.75], [6.625, 2.375], [6.625, -2.375], [6.25, -2.75], [-6.25, -2.75], [-6.625, -2.375], [-6.625, 2.375], [-6.25, 2.75] ],
 
       "mass" : 12.0,
-      "walkSpeed" : 2,
-      "runSpeed" : 5,
+      "walkSpeed" : 3,
+      "runSpeed" : 6,
       "gravityEnabled" : false,
-
-      "airForce" : 50,
-      "flySpeed" : 6
+      "liquidBuoyancy" : 1.0,
+      "flySpeed" : 13,
+      "liquidFriction" : 2.0,
+      "liquidForce" : 100.0,
+      "airForce" : 50
     },
 
     "bodyMaterialKind" : "organic",
@@ -217,7 +255,8 @@
         "xanafianStatusImmunity" : { "baseValue" : 1 },
         "akkimariacidResistance" : { "baseValue" : 0.9 },
         "akkimariacidStatusImmunity" : { "baseValue" : 1 },
-        "ignoreInvisibilityEffects" : { "baseValue" : 1 }       
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 },
+        "stunImmunity" : { "baseValue" : 1 }
       },
 
       "resources" : {

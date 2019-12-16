@@ -10,7 +10,6 @@ function update(dt)
       groundMovementModifier = 0.5,
       speedModifier = 0.5,
       airJumpModifier = 0.7
-      //new
       facingSuppressed = true,
       movementSuppressed = true,
       ToolUsageSuppressed = true      
