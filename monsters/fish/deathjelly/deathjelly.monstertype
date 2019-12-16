@@ -24,14 +24,12 @@
   ],
 
   "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua"
-    ],
+    "scripts" : [ "/monsters/monster.lua" ],
 
     "behavior" : "monster",
 
-    "renderLayer" : "foregroundEntity",
-
+   // "renderLayer" : "foregroundEntity",
+    
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -137,7 +135,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+      "poly" : [ [0.65, 1.75], [0.925, 1.375], [0.925, -1.375], [0.65, -1.75], [-0.65, -1.75], [-0.925, -1.375], [-0.925, 1.375], [-0.65, 1.75] ],
       "damage" : 9,
 
       "teamType" : "enemy",
@@ -149,18 +147,31 @@
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
-    "selfDamagePoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+    "selfDamagePoly" : [ [0.65, 1.75], [0.925, 1.375], [0.925, -1.375], [0.65, -1.75], [-0.65, -1.75], [-0.925, -1.375], [-0.925, 1.375], [-0.65, 1.75] ],
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+      "collisionPoly" : [ [0.65, 1.75], [0.925, 1.375], [0.925, -1.375], [0.65, -1.75], [-0.65, -1.75], [-0.925, -1.375], [-0.925, 1.375], [-0.65, 1.75] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 3,
-      "runSpeed" : 6,
+      "walkSpeed" : 0,
+      "runSpeed" : 0,
       "gravityEnabled" : false,
 
       "airForce" : 50,
-      "flySpeed" : 8
+      "airFriction" : 1000,
+      "flySpeed" : 0,
+      
+	  "airJumpProfile" : {
+	    "jumpSpeed" : 0.0,
+	    "jumpControlForce" : 0.0,
+	    "jumpInitialPercentage" : 0.0,
+	    "jumpHoldTime" : 0.0,
+
+	    "multiJump" : false,
+	    "reJumpDelay" : 999,
+	    "autoJump" : false,
+	    "collisionCancelled" : true
+	  }      
     },
 
     "bodyMaterialKind" : "organic",
@@ -213,6 +224,9 @@
         },        
         "powerMultiplier" : {
           "baseValue" : 1.0
+        },        
+        "isWaterCreature" : {
+          "baseValue" : 1.0
         }
       },
 
@@ -228,7 +242,7 @@
         }
       }
     },
-
+    
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
