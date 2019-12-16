@@ -51,6 +51,7 @@
     "parts" : {
       "body" : {
         "properties" : {
+          "transformationGroups" : [ "body" ],
           "zIndex" : 10,
           "rotationGroup" : "body"
         },
@@ -71,6 +72,7 @@
       },
       "bodylit" : {
         "properties" : {
+          "transformationGroups" : [ "body" ],
           "zIndex" : 20,
           "fullbright" : true,
           "rotationGroup" : "body"
@@ -89,12 +91,13 @@
             }
           }
         }
-      }     
-      
-      
+      }      
     }
   },
 
+  "transformationGroups" : {
+    "body" : { "interpolated" : true }
+  },
   "rotationGroups" : {
     "body" : {
       "rotationCenter" : [0, 0],
