@@ -1,7 +1,7 @@
 {
-  "type" : "deathjelly",
-  "shortdescription" : "Shockjelli",
-  "description" : "Shockingly shocking. Do not touch.",
+  "type" : "deathjellypeaceful",
+  "shortdescription" : "Jelli",
+  "description" : "Relatively harmless.",
   "reversed" : true,
   
   "categories" : [ "deathjelly" ],
@@ -26,136 +26,7 @@
   "baseParameters" : {
     "scripts" : [ "/monsters/monster.lua" ],
 
-    "behavior" : "monster",
-
-   // "renderLayer" : "foregroundEntity",
-    
-    "behaviorConfig" : {
-      "damageOnTouch" : true,
-
-      "targetQueryRange" : 25,
-      "targetOnDamage" : true,
-      "targetEntityTypes" : [ "player", "npc", "monster" ],
-      "keepTargetInSight" : false,
-      "keepTargetInRange" : 12,
-      "targetOutOfSightTime" : 12.0,
-
-      "hurtTime" : 0.25,
-      "hurtWaitForGround" : false,
-
-      "damageTakenActions" : [],
-
-      "foundTargetActions" : [ ],
-
-      "fleeActions" : [ ],
-
-      "hostileActions" : [  
-        {
-          "name" : "action-charge",
-          "cooldown" : 3,
-          "parameters" : {
-            "minimumRange" : 1,
-            "maximumRange" : 20,
-            "windupStopForce" : 1,
-            "windupTime" : 1,
-
-            "onGround" : false,
-            "wallCollide" : false,
-            "aimAtTarget" : false,
-            "chargeTime" : 0.23,
-            "chargeSpeed" : 7,
-            "chargeControlForce" : 20,
-
-            "winddownState" : "fly",
-            "winddownStopForce" : 1,
-            "winddownTime" : 0.05
-          }
-        },      
-        {
-          "name" : "action-fire",
-          "cooldown" : 5.0,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 1,
-            "onGround" : false,
-            "windupStopForce" : 50,
-            "windupTime" : 0.8,
-
-            "projectileType" : "ffteslasmall",
-            "projectileCount" : 1,
-            "projectileInterval" : 0.15,             
-            "projectileParameters" : {
-              "speed" : 30,
-              "timeToLive" : 0.3
-            },
-            "power" : 12,
-            "fireOffset" : [0.0, 0.0],
-            "aimAtTarget" : true,
-            "inaccuracy" : 0.03,
-            "fireState" : "fire",
-            "fireDelay" : 0.1,
-            "fireSound" : "",
-
-            "winddownState" : "",
-            "winddownTime" : 0.5
-          }
-        }
-      ],
-
-      "periodicActions" : [ 
-        {
-          "name" : "action-charge",
-          "cooldown" : 3,
-          "parameters" : {
-            "minimumRange" : 1,
-            "maximumRange" : 20,
-            "windupStopForce" : 1,
-            "windupTime" : 1,
-
-            "onGround" : false,
-            "wallCollide" : false,
-            "aimAtTarget" : false,
-            "chargeTime" : 0.23,
-            "chargeSpeed" : 7,
-            "chargeControlForce" : 20,
-
-            "winddownState" : "fly",
-            "winddownStopForce" : 1,
-            "winddownTime" : 0.05
-          }
-        }      
-      ],
-
-      "approachActions" : [
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-            "usePathfinding" : false
-          }
-        }
-      ],
-
-      "wanderActions" : [
-        {
-          "name" : "emerge-fly"
-        },
-        {
-          "name" : "wander-fly",
-          "parameters" : {
-            "wanderTime" : 2,
-            "groundDistance" : 4,
-            "ceilingDistance" : 4,
-            "xVelocity" : 2,
-            "yVelocity" : 2
-          }
-        }        
-      ],
-
-      "concurrentActions" : [ ],
-
-      "concurrentHostileActions" : [ ]
-    },
+    "behavior" : "blooping",
 
     "touchDamage" : {
       "poly" : [ [0.65, 1.75], [0.925, 1.375], [0.925, -1.375], [0.65, -1.75], [-0.65, -1.75], [-0.925, -1.375], [-0.925, 1.375], [-0.65, 1.75] ],
@@ -168,7 +39,7 @@
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 1.0,
+    "scale" : 0.5,
 
     "selfDamagePoly" : [ [0.65, 1.75], [0.925, 1.375], [0.925, -1.375], [0.65, -1.75], [-0.65, -1.75], [-0.925, -1.375], [-0.925, 1.375], [-0.65, 1.75] ],
 

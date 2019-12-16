@@ -34,7 +34,7 @@ function update(dt)
   local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
   local liquidAtMouth = world.liquidAt(worldMouthPosition)
   
-  if liquidAtMouth and (liquidAtMouth[1] == 1 or liquidAtMouth[1] == 2) then  --activate bubble particles if at mouth level with water
+  if liquidAtMouth and (liquidAtMouth[1] == 1 or liquidAtMouth[1] == 2) and not (status.stat("breathProtection")) then  --activate bubble particles if at mouth level with water
     animator.setParticleEmitterActive("bubbles", true)
     self.setWet = true
   else
@@ -71,7 +71,7 @@ end
 function setMonsterAbilities()
 	if status.stat("isWaterCreature") then
 	  if (mcontroller.liquidPercentage() >= 0.80) then
-		if (entity.id("atropusfish")) or (entity.id("veilendrex")) or (entity.id("dolphin1")) then
+		if status.stat("isBossCreature")==1 then
 		    mcontroller.controlModifiers( 
 		      {speedModifier = 4.735}    
 		    )   
@@ -80,7 +80,7 @@ function setMonsterAbilities()
 			liquidImpedance = 0.5,
 			liquidForce = 80.0
 		    })	
-		elseif entity.id("atropuseye") then
+		elseif status.stat("isSpawnedCreature")==1 then
 		    mcontroller.controlModifiers( 
 		      {speedModifier = 2.735}   
 		    )   
@@ -89,20 +89,12 @@ function setMonsterAbilities()
 			liquidImpedance = 0.5,
 			liquidForce = 30.0
 		    })		    
-		elseif entity.id("deathjelly") then
-		    mcontroller.controlModifiers( 
-		      {speedModifier = 1.735}   
-		    )   
-		    mcontroller.controlParameters({  
-			gravityMultiplier = 0,
-			liquidImpedance = 0.2,
-			liquidForce = 80.0
-		    })	
+		elseif status.stat("isJellyfishCreature")==1 then
+		   
 		end
 	  else
-
 	    if not mcontroller.baseParameters().gravityEnabled then
-	     mcontroller.setYVelocity(-5)
+	      mcontroller.setYVelocity(-5)
 	    end	  
 	    mcontroller.controlModifiers({speedModifier = 0})   
 	    mcontroller.controlParameters({ 
