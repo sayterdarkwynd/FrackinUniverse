@@ -25,14 +25,12 @@ function init()
 	liquidForce = 100 * self.finalValue  				-- get more swim force the better your boost is? 
   }   
   
-
   self.monsterWaterParameters = {  					-- most monsters use these values , simulating slow movement and such
 	gravityMultiplier = 0.6,
 	liquidImpedance = 0.5,
 	liquidForce = 80.0
   }
   
-
   self.bossWaterParameters = {  					-- Veilendrex and Deep Seer
 	gravityMultiplier = 1,
 	liquidImpedance = 0.5,
@@ -45,7 +43,6 @@ function init()
 	liquidForce = 30.0
   }
   
-
   self.jellyfishWaterParameters = {  					-- Jellyfish
 	gravityMultiplier = -2,
 	liquidImpedance = 0.5,
@@ -99,7 +96,6 @@ function update(dt)
     setMonsterAbilities()	    
   else
     if (mcontroller.liquidPercentage() >= self.shoulderHeight) then  --approximately shoulder height
-	effect.modifyDuration(script.updateDt())
 	mcontroller.controlModifiers({speedModifier = self.finalValue})-- we have to increase player speed or they wont move fast enough. add the boost value to it.  
 	mcontroller.controlParameters(self.basicWaterParameters)
     else
