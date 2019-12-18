@@ -102,8 +102,8 @@ function setMonsterAbilities()
 	  else
 	    if not mcontroller.baseParameters().gravityEnabled then
 	      mcontroller.setYVelocity(-5)
-	    end	  
-	    mcontroller.controlModifiers({speedModifier = 0})   
+	    end	 
+	    mcontroller.controlModifiers( {speedModifier = 1} )   	    
 	    mcontroller.controlParameters({ 
 		gravityMultiplier = 1.5,
 		liquidImpedance = 0.5,
