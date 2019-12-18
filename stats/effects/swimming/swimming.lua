@@ -8,13 +8,13 @@ function init()
   
 
   
-  //basic water locomotion stats
+  --basic water locomotion stats
   self.shoulderHeight = 0.62  						-- roughly shoulder depth
   self.fishHeight = 0.85 						-- almost all of the creature is submerged
   self.defaultSpeed = 1  						-- the default movement speed
   self.defaultWaterSpeed = 5.735  					-- the basic water speed
 
-  
+ 
  self.finalValue = 1							-- always ensure it at least multiplies by 1
  self.basicWaterParameters = {  					-- generic values
 	gravityMultiplier = 0,
