@@ -95,7 +95,7 @@ function update(dt)
   if not (allowedType()) then  -- if not the allowed type of entity (a monster that isn't a fish)
     setMonsterAbilities()	    
   else
-    if mcontroller.liquidPercentage() >= self.shoulderHeight then  --approximately shoulder height
+    if (mcontroller.liquidPercentage() >= self.shoulderHeight) then  --approximately shoulder height
 	effect.modifyDuration(script.updateDt())
 	mcontroller.controlModifiers({speedModifier = self.finalValue})-- we have to increase player speed or they wont move fast enough. add the boost value to it.  
 	mcontroller.controlParameters(self.basicWaterParameters)
@@ -113,15 +113,15 @@ function onExpire()
 end
 
 function setMonsterAbilities()
-	if status.stat("isWaterCreature") then
+	if (status.stat("isWaterCreature")) then
 	  if (mcontroller.liquidPercentage() >= self.fishHeight) then
-		if status.stat("isBossCreature")==1 then
+		if (status.stat("isBossCreature"))==1 then
 		    mcontroller.controlModifiers(self.bossMonsterSpeed)  
 		    mcontroller.controlParameters(self.bossWaterParameters)	
-		elseif status.stat("isSpawnedCreature")==1 then
+		elseif (status.stat("isSpawnedCreature"))==1 then
 		    mcontroller.controlModifiers(self.basicMonsterSpeed)   
 		    mcontroller.controlParameters(self.spawnedWaterParameters)		    
-		elseif status.stat("isJellyfishCreature")==1 then
+		elseif (status.stat("isJellyfishCreature"))==1 then
 		    mcontroller.controlModifiers(self.jellyfishMonsterSpeed)   
 		    mcontroller.controlParameters(jellyfishWaterParameters)	
 		end
