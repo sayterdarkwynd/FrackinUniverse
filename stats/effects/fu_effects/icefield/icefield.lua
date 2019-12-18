@@ -7,9 +7,11 @@ end
 function update(dt)
 
 local distanceCheck = world.entityQuery(mcontroller.position(),4)
-  for key, value in pairs(distanceCheck) do
-   world.sendEntityMessage(value,"applyStatusEffect","freeze")
-  end  
+  if (status.stat("iceResistance")<0.75)
+	  for key, value in pairs(distanceCheck) do
+	   world.sendEntityMessage(value,"applyStatusEffect","slow")
+	  end  
+  end
 end
 
 function uninit()
