@@ -5,12 +5,11 @@ function init()
   self.mouthBounds = {self.mouthPosition[1], self.mouthPosition[2], self.mouthPosition[1], self.mouthPosition[2]}
   self.setWet = false -- doesnt start wet
   animator.setParticleEmitterOffsetRegion("bubbles", self.mouthBounds)
-  
 
-  
   --basic water locomotion stats
   self.shoulderHeight = 0.62  						-- roughly shoulder depth
   self.fishHeight = 0.85 						-- almost all of the creature is submerged
+  self.baseSpeed = 5.735						-- base liquid speed outside of a controlModifier call
   self.defaultSpeed = {speedModifier = 1} 				-- the default movement speed
   self.defaultWaterSpeed = {speedModifier = 5.735 } 			-- the basic water speed
   self.basicMonsterSpeed = {speedModifier = 2.65 } 			-- most monsters speed
@@ -49,7 +48,7 @@ function init()
 	liquidForce = 2.0
   } 
   
-  self.submergedParameters = {  						-- generic values in water for non-specials
+  self.submergedParameters = {  					-- generic values in water for non-specials
 	gravityMultiplier = 1.5,
 	liquidImpedance = 0.5,
 	liquidForce = 80.0,
@@ -61,10 +60,10 @@ end
 
 function applyBonusSpeed() --apply Speed Booost
   if status.statPositive("boostAmount") then --this value gets applied in update to the player speedModifier when in water, to calc the total speed + boost
-    self.finalValue = 5.735 * (status.stat("boostAmount",1) or 1)  
+    self.finalValue = self.baseSpeed * (status.stat("boostAmount",1) or 1)  
   else
     effect.addStatModifierGroup({{stat = "boostAmount", effectiveMultiplier = 1}}) -- add the swim boost stat if it isn't present so we never multiply by 0
-    self.finalValue = 5.735   
+    self.finalValue = self.baseSpeed   
   end  
 end
 
