@@ -11,25 +11,28 @@ function init()
   --basic water locomotion stats
   self.shoulderHeight = 0.62  						-- roughly shoulder depth
   self.fishHeight = 0.85 						-- almost all of the creature is submerged
-  self.defaultSpeed = 1  						-- the default movement speed
-  self.defaultWaterSpeed = 5.735  					-- the basic water speed
-
- 
- self.finalValue = 1							-- always ensure it at least multiplies by 1
- self.basicWaterParameters = {  					-- generic values
+  self.defaultSpeed = {speedModifier = 1} 				-- the default movement speed
+  self.defaultWaterSpeed = {speedModifier = 5.735 } 			-- the basic water speed
+  self.basicMonsterSpeed = {speedModifier = 2.65 } 			-- most monsters speed
+  self.jellyfishMonsterSpeed = {speedModifier = 0.1 } 			-- jellyfish are slow as molasses
+  self.bossMonsterSpeed = {speedModifier = 4.735 } 			-- Veilendrex and Deep Seer speed
+  
+  self.finalValue = 1							-- speed boost modifier default to always ensure it at least multiplies by 1
+  
+  self.basicWaterParameters = {  					-- generic values
 	gravityMultiplier = 0,
 	liquidImpedance = 0,
 	liquidForce = 100 * self.finalValue  				-- get more swim force the better your boost is? 
   }   
   
-  self.basicMonsterSpeed = 2.735
+
   self.monsterWaterParameters = {  					-- most monsters use these values , simulating slow movement and such
 	gravityMultiplier = 0.6,
 	liquidImpedance = 0.5,
 	liquidForce = 80.0
   }
   
-  self.bossMonsterSpeed = 4.735
+
   self.bossWaterParameters = {  					-- Veilendrex and Deep Seer
 	gravityMultiplier = 1,
 	liquidImpedance = 0.5,
@@ -42,7 +45,7 @@ function init()
 	liquidForce = 30.0
   }
   
-  self.jellyfishMonsterSpeed = 0.1
+
   self.jellyfishWaterParameters = {  					-- Jellyfish
 	gravityMultiplier = -2,
 	liquidImpedance = 0.5,
