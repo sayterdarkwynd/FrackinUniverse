@@ -50,11 +50,29 @@
       "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 2.5,
 
-      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+      "foundTargetActions" : [ 
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 10,
+          "parameters" : {
+          "effect" : "icefield",
+          "duration" : 10
+          }
+        },      
+      { "name" : "action-aggrohop" } 
+      ],
 
       "fleeActions" : [],
 
-      "hostileActions" : [   
+      "hostileActions" : [  
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 10,
+          "parameters" : {
+          "effect" : "icefield",
+          "duration" : 10
+          }
+        },       
         {
           "name" : "action-fire",
           "cooldown" : 6.0,
@@ -112,7 +130,7 @@
       "periodicActions" : [   
         {
          "name":"action-projectile",
-         "cooldown" : 2,
+         "cooldown" : 1,
          "parameters" : {
           "projectileType" : "icegas",
           "projectileParameters" : { "timeToLive" : 8, "speed" : 1 },

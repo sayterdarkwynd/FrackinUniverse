@@ -57,7 +57,7 @@ function update(dt)
 	    }
 	)
     else
-	effect.expire() -- we could do effect.expire here, but its probably pointless
+	effect.expire()
     end    
   end  
 end
