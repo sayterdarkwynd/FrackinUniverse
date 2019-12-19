@@ -76,7 +76,7 @@ function build(directory, config, parameters, level, seed)
         config.tooltipFields.reloadTimeLabel = "--"
       end
       
-      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",1), 0)    
+      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",1), 0)    -- rather than not applying a bonus to non-crit-enabled weapons, we just set it to always be at least 1
       
       if (configParameter("critBonus")) then
         config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)   

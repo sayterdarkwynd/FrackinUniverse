@@ -7,7 +7,7 @@ function init()
   animator.setParticleEmitterOffsetRegion("bubbles", self.mouthBounds)
 
   --basic water locomotion stats
-  self.shoulderHeight = 0.62  						-- roughly shoulder depth
+  self.shoulderHeight = 0.575  						-- roughly shoulder depth
   self.fishHeight = 0.85 						-- almost all of the creature is submerged
   self.baseSpeed = 5.735						-- base liquid speed outside of a controlModifier call
   self.defaultSpeed = {speedModifier = 1} 				-- the default movement speed
@@ -16,8 +16,9 @@ function init()
   self.jellyfishMonsterSpeed = {speedModifier = 0.1 } 			-- jellyfish are slow as molasses
   self.bossMonsterSpeed = {speedModifier = 4.735 } 			-- Veilendrex and Deep Seer speed
   
-  self.finalValue = 1							-- speed boost modifier default to always ensure it at least multiplies by 1
+  self.boostAmount = status.stat("boostAmount")
   
+  applyBonusSpeed()
   self.basicWaterParameters = {  					-- generic values
 	gravityMultiplier = 0,
 	liquidImpedance = 0,
@@ -59,12 +60,7 @@ function init()
 end
 
 function applyBonusSpeed() --apply Speed Booost
-  if status.statPositive("boostAmount") then --this value gets applied in update to the player speedModifier when in water, to calc the total speed + boost
     self.finalValue = self.baseSpeed * (status.stat("boostAmount",1) or 1)  
-  else
-    effect.addStatModifierGroup({{stat = "boostAmount", effectiveMultiplier = 1}}) -- add the swim boost stat if it isn't present so we never multiply by 0
-    self.finalValue = self.baseSpeed   
-  end  
 end
 
 function allowedType() -- check entity type from provided list
@@ -84,17 +80,19 @@ function update(dt)
   local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
   local liquidAtMouth = world.liquidAt(worldMouthPosition)
   
-  if liquidAtMouth and (liquidAtMouth[1] == 1 or liquidAtMouth[1] == 2) and not (status.stat("breathProtection")) then  --activate bubble particles if at mouth level with water
-    animator.setParticleEmitterActive("bubbles", true)
-    self.setWet = true
-  else
-    animator.setParticleEmitterActive("bubbles", false)
+  if not (status.stat("breathProtection")) then
+	  if liquidAtMouth and (liquidAtMouth[1] == 1 or liquidAtMouth[1] == 2) then  --activate bubble particles if at mouth level with water
+	    animator.setParticleEmitterActive("bubbles", true)
+	    self.setWet = true
+	  else
+	    animator.setParticleEmitterActive("bubbles", false)
+	  end  
   end
-	  
+  
   if not (allowedType()) then  -- if not the allowed type of entity (a monster that isn't a fish)
     setMonsterAbilities()	    
   else
-    if (mcontroller.liquidPercentage() >= self.shoulderHeight) then  --approximately shoulder height
+    if (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() > 0.4) and (status.stat("boostAmount") > 1)) then  --approximately shoulder height
 	mcontroller.controlModifiers({speedModifier = self.finalValue})-- we have to increase player speed or they wont move fast enough. add the boost value to it.  
 	mcontroller.controlParameters(self.basicWaterParameters)
     else
@@ -105,8 +103,7 @@ end
 
 function onExpire()
   if self.setWet then
-    status.addEphemeralEffect("wet")
-    mcontroller.controlModifiers(self.defaultSpeed) -- reset to base speed so they don't remain at high speeds. 	
+    status.addEphemeralEffect("wet")	
   end
 end
 
