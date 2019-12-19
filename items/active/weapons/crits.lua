@@ -1,7 +1,7 @@
 Crits = {}
 
 function Crits:setCritDamage(damage)
-	local critChance = config.getParameter("critChance", 0) + status.stat("critChance", 0)  -- Integer % chance to activate crit
+    local critChance = config.getParameter("critChance", 1) + status.stat("critChance", 0)  -- Integer % chance to activate crit
     local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus", 0)     -- Flat damage bonus to critical hits
     local critDamage = status.stat("critDamage", 0)  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
 

@@ -76,12 +76,7 @@ function build(directory, config, parameters, level, seed)
         config.tooltipFields.reloadTimeLabel = "--"
       end
       
-      if (configParameter("critChance")) then
-        config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)    
-      else
-        config.tooltipFields.critChanceLabel = "--"
-      end
-       
+      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",1), 0)    
       
       if (configParameter("critBonus")) then
         config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)   
