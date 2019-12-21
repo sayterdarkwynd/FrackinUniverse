@@ -10,11 +10,11 @@ function init()
   self.shoulderHeight = 0.575  						-- roughly shoulder depth
   self.fishHeight = 0.85 						-- almost all of the creature is submerged
   self.baseSpeed = 5.735						-- base liquid speed outside of a controlModifier call
-  self.defaultSpeed = {speedModifier = 1} 				-- the default movement speed
-  self.defaultWaterSpeed = {speedModifier = 5.735 } 			-- the basic water speed
-  self.basicMonsterSpeed = {speedModifier = 2.65 } 			-- most monsters speed
-  self.jellyfishMonsterSpeed = {speedModifier = 0.1 } 			-- jellyfish are slow as molasses
-  self.bossMonsterSpeed = {speedModifier = 4.735 } 			-- Veilendrex and Deep Seer speed
+  self.defaultSpeed = { speedModifier = 1 } 				-- the default movement speed
+  self.defaultWaterSpeed = { speedModifier = 5.735 } 			-- the basic water speed
+  self.basicMonsterSpeed = { speedModifier = 2.65 } 			-- most monsters speed
+  self.jellyfishMonsterSpeed = { speedModifier = 0.1 } 			-- jellyfish are slow as molasses
+  self.bossMonsterSpeed = { speedModifier = 4.735 } 			-- Veilendrex and Deep Seer speed
   
   self.boostAmount = status.stat("boostAmount")
   
