@@ -7,7 +7,7 @@ function init()
   animator.setParticleEmitterOffsetRegion("bubbles", self.mouthBounds)
 
   --basic water locomotion stats
-  self.shoulderHeight = 0.575  						-- roughly shoulder depth
+  self.shoulderHeight = 0.65  						-- roughly shoulder depth
   self.fishHeight = 0.85 						-- almost all of the creature is submerged
   self.baseSpeed = 5.735						-- base liquid speed outside of a controlModifier call
   self.defaultSpeed = { speedModifier = 1 } 				-- the default movement speed
@@ -89,30 +89,53 @@ function update(dt)
   local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
   local liquidAtMouth = world.liquidAt(worldMouthPosition)
   
-  if not (status.stat("breathProtection")) then
-	  if liquidAtMouth and (liquidAtMouth[1] == 1 or liquidAtMouth[1] == 2) then  --activate bubble particles if at mouth level with water
+  checkLiquidType()
+  
+  if (status.stat("breathProtection") < 1) then
+	  if liquidAtMouth and (liquidAtMouth[1] == 1 or liquidAtMouth[1] == 2 or liquidAtMouth[1] == 6 or liquidAtMouth[1] == 40) then  --activate bubble particles if at mouth level with water
 	    animator.setParticleEmitterActive("bubbles", true)
 	    self.setWet = true
 	  else
 	    animator.setParticleEmitterActive("bubbles", false)
 	  end  
+
   end
   
   if not (allowedType()) then  -- if not the allowed type of entity (a monster that isn't a fish)
     setMonsterAbilities()	    
   else
-    if (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() > 0.4) and (status.stat("boostAmount") > 1)) then  
-	mcontroller.controlModifiers({speedModifier = self.finalValue})-- we have to increase player speed or they wont move fast enough. add the boost value to it.  
+  
+    if (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() > 0.4) and (status.stat("boostAmount") > 1)) then  --if the player is shoulder depth, or shallow depth+boosted
+	mcontroller.controlModifiers({speedModifier = self.finalValue})			
 	mcontroller.controlParameters(self.basicWaterParameters)
+    elseif (mcontroller.liquidPercentage() < self.shoulderHeight) and (status.stat("boostAmount") < 1) then --are half submerged and not boosted
+      mcontroller.controlModifiers({speedModifier = self.basicMonsterSpeed})	
+      mcontroller.controlParameters(self.monsterWaterParameters)	
+    elseif (mcontroller.liquidPercentage() < 0.25) and (status.stat("boostAmount") < 1) then --are we barely in the water?
+      mcontroller.controlParameters(self.submergedParameters)
     else
-	effect.expire()
+      effect.expire()
     end    
+  end  
+end
+
+function checkLiquidType()
+  local position = mcontroller.position()   
+  local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
+  local liquidAtMouth = world.liquidAt(worldMouthPosition)
+  
+  if liquidAtMouth and (liquidAtMouth[1] == 40) then -- check if the Blood effect for Wet needs to play
+    self.isBlood = 1
   end  
 end
 
 function onExpire()
   if self.setWet then
-    status.addEphemeralEffect("wet")	
+    if not self.isBlood then
+    	status.addEphemeralEffect("wet")
+    else
+    	status.addEphemeralEffect("wetblood")
+    end
   end
 end
 

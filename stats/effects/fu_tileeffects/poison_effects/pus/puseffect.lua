@@ -27,8 +27,8 @@ function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
   
-  local distanceCheck = world.entityQuery(mcontroller.position(),60)
-  for key, value in pairs(distanceCheck) do
+  local distanceFromEntity = world.entityQuery(mcontroller.position(),60)
+  for key, value in pairs(distanceFromEntity) do
    world.sendEntityMessage(value,"applyStatusEffect","slimebioluminescence")
   end
   
