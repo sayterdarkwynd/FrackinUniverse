@@ -17,8 +17,10 @@ function init()
   self.bossMonsterSpeed = { speedModifier = 4.735 } 			-- Veilendrex and Deep Seer speed
   
   self.boostAmount = status.stat("boostAmount")
-  
+  self.riseAmount = status.stat("riseAmount")
+
   applyBonusSpeed()
+
   self.basicWaterParameters = {  					-- generic values
 	gravityMultiplier = 0,
 	liquidImpedance = 0,
@@ -60,7 +62,13 @@ function init()
 end
 
 function applyBonusSpeed() --apply Speed Booost
-    self.finalValue = self.baseSpeed * (status.stat("boostAmount",1) or 1)  
+  self.boostAmount = status.stat("boostAmount",1)
+  if self.boostAmount > 2.5 then
+    self.boostAmount = 2.5
+  end
+  
+  self.finalValue = self.baseSpeed * (status.stat("boostAmount",1) or 1)  
+  
 end
 
 function allowedType() -- check entity type from provided list
@@ -75,6 +83,7 @@ end
 function update(dt)
   -- params
   applyBonusSpeed() -- check if bonus speed is active
+
   
   local position = mcontroller.position()   
   local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
@@ -92,11 +101,11 @@ function update(dt)
   if not (allowedType()) then  -- if not the allowed type of entity (a monster that isn't a fish)
     setMonsterAbilities()	    
   else
-    if (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() > 0.4) and (status.stat("boostAmount") > 1)) then  --approximately shoulder height
+    if (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() > 0.4) and (status.stat("boostAmount") > 1)) then  
 	mcontroller.controlModifiers({speedModifier = self.finalValue})-- we have to increase player speed or they wont move fast enough. add the boost value to it.  
 	mcontroller.controlParameters(self.basicWaterParameters)
     else
-	effect.expire() --failsafe in case things don't terminate
+	effect.expire()
     end    
   end  
 end
