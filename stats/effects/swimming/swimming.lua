@@ -110,7 +110,7 @@ function update(dt)
     elseif (mcontroller.liquidPercentage() < self.shoulderHeight) and (status.stat("boostAmount") < 1) then --are half submerged and not boosted
       mcontroller.controlModifiers({speedModifier = self.basicMonsterSpeed})	
       mcontroller.controlParameters(self.monsterWaterParameters)	
-    elseif (mcontroller.liquidPercentage() < 0.25) and (status.stat("boostAmount") < 1) then --are we barely in the water?
+    elseif (mcontroller.liquidPercentage() < 0.25) and (status.stat("boostAmount") <= 1) then --are we barely in the water?
       mcontroller.controlParameters(self.submergedParameters)
     else
       effect.expire()
@@ -139,24 +139,18 @@ function checkLiquidType()
 end
 
 function onExpire()
- 
-    if self.isBlood == 1 then
-        clearWetEffects()    
+    if self.isBlood == 1 then   
     	status.addEphemeralEffect("wetblood")
-    elseif self.isPus == 1 then
-        clearWetEffects()    
+    elseif self.isPus == 1 then 
     	status.addEphemeralEffect("wetpus") 
     elseif self.isHealingWater == 1 then
-        clearWetEffects()
     	status.addEphemeralEffect("wethealingwater") 
     elseif self.isElder == 1 then
-        clearWetEffects()
     	status.addEphemeralEffect("wetelder")
     else          	
-        clearWetEffects()
     	status.addEphemeralEffect("wet")
     end
-  
+    clearWetEffects()
 end
 
 function clearWetEffects()
