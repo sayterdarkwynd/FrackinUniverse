@@ -84,7 +84,6 @@ function update(dt)
   -- params
   applyBonusSpeed() -- check if bonus speed is active
 
-  
   local position = mcontroller.position()   
   local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
   local liquidAtMouth = world.liquidAt(worldMouthPosition)
@@ -97,6 +96,7 @@ function update(dt)
 	    self.setWet = true
 	  else
 	    animator.setParticleEmitterActive("bubbles", false)
+	    self.setWet = false
 	  end  
 
   end
@@ -104,10 +104,9 @@ function update(dt)
   if not (allowedType()) then  -- if not the allowed type of entity (a monster that isn't a fish)
     setMonsterAbilities()	    
   else
-  
     if (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() > 0.4) and (status.stat("boostAmount") > 1)) then  --if the player is shoulder depth, or shallow depth+boosted
-	mcontroller.controlModifiers({speedModifier = self.finalValue})			
-	mcontroller.controlParameters(self.basicWaterParameters)
+      mcontroller.controlModifiers({speedModifier = self.finalValue})			
+      mcontroller.controlParameters(self.basicWaterParameters)
     elseif (mcontroller.liquidPercentage() < self.shoulderHeight) and (status.stat("boostAmount") < 1) then --are half submerged and not boosted
       mcontroller.controlModifiers({speedModifier = self.basicMonsterSpeed})	
       mcontroller.controlParameters(self.monsterWaterParameters)	
@@ -123,20 +122,48 @@ function checkLiquidType()
   local position = mcontroller.position()   
   local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
   local liquidAtMouth = world.liquidAt(worldMouthPosition)
-  
+  clearWetEffects()
+
   if liquidAtMouth and (liquidAtMouth[1] == 40) then -- check if the Blood effect for Wet needs to play
     self.isBlood = 1
   end  
+  if liquidAtMouth and (liquidAtMouth[1] == 53) then -- check if the Pus effect for Wet needs to play
+    self.isPus = 1
+  end   
+  if liquidAtMouth and (liquidAtMouth[1] == 6) then -- check if the Pus effect for Wet needs to play
+    self.isHealingWater = 1
+  end 
+  if liquidAtMouth and (liquidAtMouth[1] == 45) then -- check if the Pus effect for Wet needs to play
+    self.isHealingWater = 1
+  end   
 end
 
 function onExpire()
-  if self.setWet then
-    if not self.isBlood then
-    	status.addEphemeralEffect("wet")
-    else
+ 
+    if self.isBlood == 1 then
+        clearWetEffects()    
     	status.addEphemeralEffect("wetblood")
+    elseif self.isPus == 1 then
+        clearWetEffects()    
+    	status.addEphemeralEffect("wetpus") 
+    elseif self.isHealingWater == 1 then
+        clearWetEffects()
+    	status.addEphemeralEffect("wethealingwater") 
+    elseif self.isElder == 1 then
+        clearWetEffects()
+    	status.addEphemeralEffect("wetelder")
+    else          	
+        clearWetEffects()
+    	status.addEphemeralEffect("wet")
     end
-  end
+  
+end
+
+function clearWetEffects()
+        self.isBlood = 0
+    	self.isPus = 0
+    	self.isHealingWater = 0
+    	self.isElder = 0
 end
 
 function setMonsterAbilities()
