@@ -9,7 +9,7 @@ function update(dt)
   mcontroller.controlModifiers({
       groundMovementModifier = 0.5,
       speedModifier = 0.5,
-      airJumpModifier = 0.7
+      airJumpModifier = 0.7,
       facingSuppressed = true,
       movementSuppressed = true,
       ToolUsageSuppressed = true      
