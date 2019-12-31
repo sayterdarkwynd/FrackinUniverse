@@ -124,30 +124,36 @@ function checkLiquidType()
   local liquidAtMouth = world.liquidAt(worldMouthPosition)
   clearWetEffects()
 
-  if liquidAtMouth and (liquidAtMouth[1] == 40) then -- check if the Blood effect for Wet needs to play
-    self.isBlood = 1
+  if liquidAtMouth then -- is liquid at least up to our mouth? if so set the tags below
+    if liquidAtMouth[1] == 1 or liquidAtMouth[1] == 12 or liquidAtMouth[1] == 58 or liquidAtMouth[1] == 69 then -- check if its a 'normal' water
+      self.isWater = 1 
+    elseif liquidAtMouth[1] == 40 then -- check if the Blood effect for Wet needs to play
+      self.isBlood = 1      
+    elseif liquidAtMouth[1] == 53 then -- check if the Pus effect for Wet needs to play
+      self.isPus = 1 
+      self.isBlood = 0
+    elseif liquidAtMouth[1] == 6 then -- check if the healing water effect for Wet needs to play
+      self.isHealingWater = 1
+    elseif liquidAtMouth[1] == 45 then -- check if the Elder effect for Wet needs to play
+      self.isElder = 1   
+    end
   end  
-  if liquidAtMouth and (liquidAtMouth[1] == 53) then -- check if the Pus effect for Wet needs to play
-    self.isPus = 1
-  end   
-  if liquidAtMouth and (liquidAtMouth[1] == 6) then -- check if the Pus effect for Wet needs to play
-    self.isHealingWater = 1
-  end 
-  if liquidAtMouth and (liquidAtMouth[1] == 45) then -- check if the Pus effect for Wet needs to play
-    self.isHealingWater = 1
-  end   
 end
 
-function onExpire()
+function onExpire()   --now we call on the set tags above to produce corresponding wet effect
     if self.isBlood == 1 then   
     	status.addEphemeralEffect("wetblood")
-    elseif self.isPus == 1 then 
+    end
+    if self.isPus == 1 then 
     	status.addEphemeralEffect("wetpus") 
-    elseif self.isHealingWater == 1 then
+    end
+    if self.isHealingWater == 1 then
     	status.addEphemeralEffect("wethealingwater") 
-    elseif self.isElder == 1 then
+    end	
+    if self.isElder == 1 then
     	status.addEphemeralEffect("wetelder")
-    else          	
+    end
+    if self.isWater == 1 then
     	status.addEphemeralEffect("wet")
     end
     clearWetEffects()
@@ -158,6 +164,7 @@ function clearWetEffects()
     	self.isPus = 0
     	self.isHealingWater = 0
     	self.isElder = 0
+    	self.isWater = 0
 end
 
 function setMonsterAbilities()
