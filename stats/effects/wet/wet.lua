@@ -1,6 +1,6 @@
 function init()
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
-  it (mcontroller.liquidPercentage() < 0.30) then
+  if (mcontroller.liquidPercentage() < 0.30) then
     animator.setParticleEmitterActive("drips", true)
   else
     animator.setParticleEmitterActive("drips", false)
