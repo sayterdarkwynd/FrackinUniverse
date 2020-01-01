@@ -4,9 +4,9 @@ end
 
 function update(dt)
 
-local distanceCheck = world.entityQuery(mcontroller.position(),60)
+local distanceFromEntity = world.entityQuery(mcontroller.position(),60)
 
-  for key, value in pairs(distanceCheck) do
+  for key, value in pairs(distanceFromEntity) do
    world.sendEntityMessage(value,"applyStatusEffect","drain")
   end
 end
