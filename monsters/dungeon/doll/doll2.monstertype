@@ -18,14 +18,12 @@
 
     "behavior" : "monster",
 
-    "facingMode" : "transformation",
-
     "renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 100,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
       "keepTargetInRange" : 100,
@@ -36,14 +34,31 @@
 
       "damageTakenActions" : [
         {
-          "name" : "action-invulnerable",
+          "name" : "action-fire",
+          "cooldown" : 1,
           "parameters" : {
-            "windupTime" : 0,
-            "windupState" : "",
-            "winddownTime" : 0.6,
-            "winddownState" : "",
+            "requireLineOfSight" : false,
+            "maximumRange" : 120,
+            "minimumRange" : 1,
+            "maxYRange" : 40,
+            
+            "windupTime" : 0.05,
+            "windupState" : "fly",
+            "aimAtTarget" : true,
+            "projectileType" : "rocktrollswoosh",
+            "power" : 6,
+            "projectileCount" : 4,
+            "projectileInterval" : 0.15,
+            "inaccuracy" : 3,
+            "projectileParameters" : {
+              "speed": 60,
+              "knockback" : 10
+            },
+            "fireState" : "invulnerable",
+            "fireSound" : "aggroHop",
 
-            "invulnerableTime" : 1
+            "winddownState" : "fly",
+            "winddownTime" : 0.3
           }
         }
       ],
@@ -75,16 +90,19 @@
       "hostileActions" : [
         {
           "name" : "action-charge",
-          "cooldown" : 6.0,
+          "cooldown" : 4.0,
           "parameters" : {
-            "windupState": "charge",
-            "winddownState": "fly",
-            "chargeSpeed": 40,
-            "chargeControlForce": 100,
-            "chargeTime": 0.3,
-            "wallCollide": false,
-            "aimAtTarget": true,
-            "damageOnTouch": true
+            "maximumRange" : 40,
+            "windupState" : "charge",
+
+            "chargeTime" : 1,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 300,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownStopForce" : 1000,
+            "winddownState" : "fly"
           }
         }
       ],
@@ -92,9 +110,11 @@
       "wanderActions" : [
         {
           "name" : "emerge-fly"
-        }
+        }      
       ],
 
+
+      
       "approachActions" : [
         {
           "name" : "approach-fly",
@@ -112,9 +132,7 @@
           "parameters" : {
             "projectileCount" : 1,
             "projectileType" : "bluefire",
-            "projectileParameters" : {
-              "power" : 4
-            },
+            "projectileParameters" : {"power" : 4},
             "aimDirection" : [0, 0],
             "inaccuracy" : 0,
             "fireOffset" : [0, 1.75]

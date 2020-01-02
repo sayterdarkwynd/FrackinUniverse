@@ -18,17 +18,15 @@
 
     "behavior" : "monster",
 
-    "facingMode" : "transformation",
-
     "renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 50,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
-      "keepTargetInRange" : 100,
+      "keepTargetInRange" : 50,
       "targetOutOfSightTime" : 10.0,
 
       "hurtTime" : 0.25,
@@ -72,19 +70,22 @@
         }
       ],
 
-      "hostileActions" : [
+      "hostileActions" : [     
         {
           "name" : "action-charge",
-          "cooldown" : 6.0,
+          "cooldown" : 3.0,
           "parameters" : {
-            "windupState": "charge",
-            "winddownState": "fly",
-            "chargeSpeed": 40,
-            "chargeControlForce": 100,
-            "chargeTime": 1.5,
-            "wallCollide": false,
-            "aimAtTarget": true,
-            "damageOnTouch": true
+            "maximumRange" : 50,
+            "windupState" : "charge",
+
+            "chargeTime" : 1,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 100,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownStopForce" : 1000,
+            "winddownState" : "fly"
           }
         }
       ],
@@ -92,9 +93,12 @@
       "wanderActions" : [
         {
           "name" : "emerge-fly"
-        }
+        },
+        {"name":"wander-fly", "cooldown":[5,20], "parameters":{"wanderTime":[10,40], "groundDistance":20, "ceilingDistance":10, "xVelocity":8, "yVelocity":12}}
       ],
+      
 
+      
       "approachActions" : [
         {
           "name" : "approach-fly",
@@ -103,7 +107,7 @@
           }
         }
       ],
-
+   
       "concurrentActions" : [],
 
       "concurrentHostileActions" : [
@@ -112,9 +116,7 @@
           "parameters" : {
             "projectileCount" : 1,
             "projectileType" : "bluefire",
-            "projectileParameters" : {
-              "power" : 2
-            },
+            "projectileParameters" : {"power" : 2},
             "aimDirection" : [0, 1],
             "inaccuracy" : 0,
             "fireOffset" : [0, 1.75]
@@ -130,7 +132,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 10,
-      "statusEffects" : []
+      "statusEffects" : [ "darkstalker" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -145,9 +147,9 @@
       "runSpeed" : 12,
       "gravityEnabled" : false,
 
-      "airFriction" : 1,
+      "airFriction" : 0.5,
       "airForce" : 10,
-      "flySpeed" : 15
+      "flySpeed" : 8
     },
 
     "bodyMaterialKind" : "organic",
@@ -165,7 +167,7 @@
       },
 
       "appliesEnvironmentStatusEffects" : false,
-      "appliesWeatherStatusEffects" : true,
+      "appliesWeatherStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
