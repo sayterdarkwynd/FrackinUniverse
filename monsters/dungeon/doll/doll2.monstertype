@@ -48,7 +48,7 @@
             "projectileType" : "rocktrollswoosh",
             "power" : 6,
             "projectileCount" : 4,
-            "projectileInterval" : 0.15,
+            "projectileInterval" : 0.05,
             "inaccuracy" : 3,
             "projectileParameters" : {
               "speed": 60,
@@ -92,15 +92,17 @@
           "name" : "action-charge",
           "cooldown" : 4.0,
           "parameters" : {
+            "requireLineOfSight" : false,
             "maximumRange" : 40,
             "windupState" : "charge",
-
-            "chargeTime" : 1,
-            "chargeSpeed" : 40,
-            "chargeControlForce" : 300,
+            "windupTime" : 0.5,
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 120,
+            "aimAtTarget" : true,
+            "chargeControlForce" : 400,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
-
+            "wallCollide": false,
             "winddownStopForce" : 1000,
             "winddownState" : "fly"
           }
@@ -110,7 +112,19 @@
       "wanderActions" : [
         {
           "name" : "emerge-fly"
-        }      
+        },
+        {
+        "name":"wander-fly", 
+        "cooldown":[5,20], 
+        "parameters":{
+          "wanderTime":[10,40], 
+          "groundDistance":20, 
+          "ceilingDistance":10, 
+          "usePathfinding" : false,
+          "xVelocity":8, 
+          "yVelocity":12
+          }
+        }   
       ],
 
 
@@ -119,7 +133,7 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "usePathfinding" : true
+            "usePathfinding" : false
           }
         }
       ],
@@ -131,11 +145,11 @@
           "name" : "action-projectile",
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "bluefire",
-            "projectileParameters" : {"power" : 4},
+            "projectileType" : "icegas",
+            "projectileParameters" : {"power" : 4,"timeToLive" : 0.4},
             "aimDirection" : [0, 0],
             "inaccuracy" : 0,
-            "fireOffset" : [0, 1.75]
+            "fireOffset" : [0, 0]
           }
         }
       ]
@@ -146,9 +160,9 @@
       "damage" : 8,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "ice",
       "knockback" : 10,
-      "statusEffects" : []
+      "statusEffects" : [  ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -195,27 +209,50 @@
         "knockbackStunTime" : {
           "baseValue" : 0.25
         },
-        "grit" : {
-          "baseValue" : 0.1
+        "knockbackThreshold" : {
+          "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 44
+          "baseValue" : 60
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.25
         },
         "healthRegen" : {
           "baseValue" : 0.0
         },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "insanityImmunity" : {
+          "baseValue" : 1.0
+        },        
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "biooozeImmunity" : {
+          "baseValue" : 1.0
+        },   
+        "sulphuricImmunity" : {
+          "baseValue" : 1.0
+        },        
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
-        "physicalResistance" : {
-          "baseValue" : 0.5
-        },
-        "cosmicResistance" : {
-          "baseValue" : -0.5
-        }
+        "shadowResistance" : { "baseValue" : 1.0 },
+        "poisonResistance" : { "baseValue" : 1.0 },
+        "cosmicResistance" : { "baseValue" : -1.0 },
+        "radioactiveResistance" : { "baseValue" : 0.7 },
+        "iceResistance" : { "baseValue" : 1 },
+        "fireResistance" : { "baseValue" : -0.5 },
+        "physicalResistance" : { "baseValue" : 1.0 },
+        "electricResistance" : { "baseValue" : 0.7 }
       },
 
       "resources" : {
