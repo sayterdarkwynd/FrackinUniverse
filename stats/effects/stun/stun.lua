@@ -8,9 +8,9 @@ function update(dt)
       ToolUsageSuppressed = true,   
       facingSuppressed = true,
       movementSuppressed = true,  
-      groundMovementModifier = 0.65,
-      speedModifier = 0.45,
-      airJumpModifier = 0.60
+      groundMovementModifier = 0.5,
+      speedModifier = 0.5,
+      airJumpModifier = 0.7
     })
 end
 
