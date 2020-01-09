@@ -42,9 +42,7 @@ end
 
 function GunFire:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-
--- *** FU Weapon Additions
-
+  
   if self.magazineAmount < 0 or not self.magazineAmount then --make certain that ammo never ends up in negative numbers
     self.magazineAmount = 0 
   end
@@ -59,8 +57,12 @@ function GunFire:update(dt, fireMode, shiftHeld)
     self.loadupTimer = math.max(0, self.loadupTimer - self.dt)
   end
   if self.cooldownTimer == 0 then 
-    -- set the cursor to the Reload cursor
-    activeItem.setCursor("/cursors/reticle0.cursor")
+    -- set the cursor to the FU White cursor
+    if (self.isAmmoBased == 1) then
+      activeItem.setCursor("/cursors/fureticle0.cursor")
+    else
+      activeItem.setCursor("/cursors/reticle0.cursor")
+    end
   end
   
   if animator.animationState("firing") ~= "fire" then
@@ -290,6 +292,36 @@ function GunFire:hasShotgunReload()
 end
 
 function GunFire:checkAmmo()	
+             -- set the cursor to the Reload cursor
+	if (self.isAmmoBased==1) then  -- ammo bar color check
+		if self.currentAmmoPercent <= 0 then
+			self.barColor = {0,0,0,255}
+		end	
+		if self.currentAmmoPercent > 0.75 then
+			self.barColor = {0,250,112,125}
+			activeItem.setCursor("/cursors/fureticle1.cursor")
+		end	
+		if self.currentAmmoPercent <= 0.75 then
+			self.barColor = {130,201,49,125}
+			activeItem.setCursor("/cursors/fureticle1.cursor")
+		end	
+		if self.currentAmmoPercent <= 0.65 then
+			self.barColor = {167,201,49,125}
+			activeItem.setCursor("/cursors/fureticle2.cursor")
+		end		
+		if self.currentAmmoPercent <= 0.55 then
+			self.barColor = {201,179,49,125}
+			activeItem.setCursor("/cursors/fureticle3.cursor")
+		end		
+		if self.currentAmmoPercent <= 0.45 then
+			self.barColor = {201,133,49,125}
+			activeItem.setCursor("/cursors/fureticle4.cursor")
+		end	
+		if self.currentAmmoPercent <= 0.25 then
+			self.barColor = {201,49,49,125}	
+			activeItem.setCursor("/cursors/fureticle5.cursor")
+		end 	
+        end	
 	if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
 	    if self.burstCooldown then
 	      self.cooldownTimer = self.burstCooldown + self.reloadTime
