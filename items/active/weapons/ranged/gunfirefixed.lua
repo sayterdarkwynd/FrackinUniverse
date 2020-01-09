@@ -32,7 +32,7 @@ function GunFireFixed:init()
   self.reloadTime = config.getParameter("reloadTime",1)	+ (self.playerReloadBonus or 0) 	-- how long does reloading mag take?
   
   self.playerId = entity.id()
-  self.currentAmmoPercent = (self.magazineAmount * self.magazineSize) / 100
+  self.currentAmmoPercent = self.magazineAmount / self.magazineSize
   if self.currentAmmoPercent > 1.0 then
     self.currentAmmoPercent = 1
   end  
@@ -382,10 +382,7 @@ function GunFireFixed:checkMagazine()
   if (self.isAmmoBased == 1) then 
   
   	--check current ammo and create an ammo bar to inform the user
-  	self.currentAmmoPercent = (self.magazineAmount * self.magazineSize) / 100
-	if self.currentAmmoPercent > 1.0 then
-	  self.currentAmmoPercent = 1
-	end  
+  	self.currentAmmoPercent = self.magazineAmount / self.magazineSize
 	if self.currentAmmoPercent <= 0 then
 		self.barColor = {0,0,0,125}
   	elseif self.currentAmmoPercent > 0.75 then
