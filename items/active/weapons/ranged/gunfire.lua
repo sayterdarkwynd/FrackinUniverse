@@ -29,10 +29,17 @@ function GunFire:init()
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
+  
+  self.playerId = entity.id()
+  self.currentAmmoPercent = (self.magazineAmount * self.magazineSize) / 100
+  self.barName = "ammoBar"
+  self.barColor = {200,200,200,255}
+  
 end
 
 function GunFire:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
+
 -- *** FU Weapon Additions
 
   if self.magazineAmount < 0 or not self.magazineAmount then --make certain that ammo never ends up in negative numbers
@@ -211,6 +218,7 @@ end
 
 function GunFire:uninit()
   status.clearPersistentEffects("weaponBonus")
+  world.sendEntityMessage(self.playerId,"removeBar","ammoBar")   --clear ammo bar  
 end
 
 
@@ -301,6 +309,18 @@ function GunFire:checkAmmo()
 	    elseif (self.reloadTime >= 1) then
 	       animator.playSound("fuReload2") -- adds new sound to reload 
 	    end
+	    
+  	--check current ammo and create an ammo bar to inform the user
+  	self.currentAmmoPercent = 1.0
+  	self.barColor = {255,255,255,255}
+
+  	world.sendEntityMessage(
+  	  self.playerId,
+  	  "setBar",
+  	  "ammoBar",
+  	  self.currentAmmoPercent,
+  	  self.barColor
+	)  	    
 	    self.weapon:setStance(self.stances.cooldown)
 	    self:setState(self.cooldown)
 	end
@@ -311,6 +331,28 @@ function GunFire:checkMagazine()
   self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
   self.isAmmoBased = config.getParameter("isAmmoBased",0)   
   if (self.isAmmoBased == 1) then 
+  	--check current ammo and create an ammo bar to inform the user
+  	self.currentAmmoPercent = (self.magazineAmount * self.magazineSize) / 100
+
+	if self.currentAmmoPercent <= 0 then
+		self.barColor = {0,0,0,255}
+  	elseif self.currentAmmoPercent > 0.75 then
+  		self.barColor = {0,255,0,255}
+  	elseif self.currentAmmoPercent <= 0.75 then
+		self.barColor = {125,255,0,255}  
+	elseif self.currentAmmoPercent <= 0.50 then
+		self.barColor = {255,255,0,255}	
+	elseif self.currentAmmoPercent <= 0.25 then
+		self.barColor = {255,0,0,255}		
+	end           
+
+  	world.sendEntityMessage(
+  	  self.playerId,
+  	  "setBar",
+  	  "ammoBar",
+  	  self.currentAmmoPercent,
+  	  self.barColor
+	)    
     if self.magazineAmount <= 0 then
 	self.weapon:setStance(self.stances.cooldown)
 	self:setState(self.cooldown)

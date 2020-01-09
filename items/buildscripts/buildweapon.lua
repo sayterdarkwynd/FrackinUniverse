@@ -199,14 +199,27 @@ function build(directory, config, parameters, level, seed)
     -- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***
     -- FU ADDITIONS 
     
-    if math.random(0,1) > 0.5 then  -- if over 0.5 the weapon is ammo-based, and swaps to the necessary tooltip if so.
-       config.isAmmoBased = 1
-       config.tooltipKind = "gun2"
-    else
-      config.isAmmoBased = 0
-    end
+    
+        sb.logInfo("ammoLocked if entry, ammoLocked is %s", parameters.ammoLocked)
+	if (parameters.ammoLocked == nil) then
+	    if (math.random(0,1) > 0.5) then  -- 50% change for the weapon to be Ammo based or Energy based
+	      parameters.isAmmoBased = 1
+	      config.tooltipKind = "gun2"
+	    else
+	      parameters.isAmmoBased = 0
+	    end 
+	    parameters.ammoLocked = 1 --set it to 1 so this step never repeats
+	    sb.logInfo("set to 1 : "..parameters.ammoLocked) -- make sure it is 1   	    
+	end    
+	
+   -- if math.random(0,1) > 0.5 then  -- if over 0.5 the weapon is ammo-based, and swaps to the necessary tooltip if so.
+   --    parameters.isAmmoBased = 1
+   --    config.tooltipKind = "gun2"
+   -- else
+   --   parameters.isAmmoBased = 0
+   -- end
 
-      if (config.isAmmoBased ==1 ) then   -- if its ammo based, we set the relevant data to the tooltip
+      if (parameters.isAmmoBased ==1 ) then   -- if its ammo based, we set the relevant data to the tooltip
 	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
 	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
 	  config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
