@@ -32,6 +32,9 @@ function GunFire:init()
   
   self.playerId = entity.id()
   self.currentAmmoPercent = (self.magazineAmount * self.magazineSize) / 100
+  if self.currentAmmoPercent > 1.0 then
+    self.currentAmmoPercent = 1
+  end  
   self.barName = "ammoBar"
   self.barColor = {200,200,200,255}
   
@@ -312,7 +315,7 @@ function GunFire:checkAmmo()
 	    
   	--check current ammo and create an ammo bar to inform the user
   	self.currentAmmoPercent = 1.0
-  	self.barColor = {255,255,255,255}
+  	self.barColor = {255,0,0,125}
 
   	world.sendEntityMessage(
   	  self.playerId,
@@ -333,17 +336,19 @@ function GunFire:checkMagazine()
   if (self.isAmmoBased == 1) then 
   	--check current ammo and create an ammo bar to inform the user
   	self.currentAmmoPercent = (self.magazineAmount * self.magazineSize) / 100
-
+	if self.currentAmmoPercent > 1.0 then
+	  self.currentAmmoPercent = 1
+	end  
 	if self.currentAmmoPercent <= 0 then
-		self.barColor = {0,0,0,255}
+		self.barColor = {0,0,0,125}
   	elseif self.currentAmmoPercent > 0.75 then
-  		self.barColor = {0,255,0,255}
+  		self.barColor = {0,255,0,125}
   	elseif self.currentAmmoPercent <= 0.75 then
-		self.barColor = {125,255,0,255}  
+		self.barColor = {125,255,0,125}  
 	elseif self.currentAmmoPercent <= 0.50 then
-		self.barColor = {255,255,0,255}	
+		self.barColor = {255,255,0,125}	
 	elseif self.currentAmmoPercent <= 0.25 then
-		self.barColor = {255,0,0,255}		
+		self.barColor = {255,0,0,125}		
 	end           
 
   	world.sendEntityMessage(
