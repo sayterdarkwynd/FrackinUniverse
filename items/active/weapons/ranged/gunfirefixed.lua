@@ -30,6 +30,7 @@ function GunFireFixed:init()
   self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) 	-- total count of the magazine
   self.magazineAmount = (self.magazineSize or 0) 						-- current number of bullets in the magazine
   self.reloadTime = config.getParameter("reloadTime",1)	+ (self.playerReloadBonus or 0) 	-- how long does reloading mag take?
+  self.timerReloadBar = 5
   
   self.playerId = entity.id()
   self.currentAmmoPercent = self.magazineAmount / self.magazineSize
@@ -37,7 +38,7 @@ function GunFireFixed:init()
     self.currentAmmoPercent = 1
   end  
   self.barName = "ammoBar"
-  self.barColor = {200,200,200,255}
+  self.barColor = {0,250,112,125}
   
   self.weapon:setStance(self.stances.idle)
 
@@ -57,6 +58,17 @@ end
 function GunFireFixed:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
   -- *** FU Weapon Additions
+  
+  --check if ammo bar should vanish
+  self.timerReloadBar = self.timerReloadBar + dt
+  if (self.timerReloadBar >=5) then
+    self.timerReloadBar = 5
+  end
+  if (self.timerReloadBar == 5) then -- is reload bar timer expired?
+    world.sendEntityMessage(self.playerId,"removeBar","ammoBar")   --clear ammo bar  
+    self.timerReloadBar = 0
+  end
+  
   if self.magazineAmount < 0 or not self.magazineAmount then --make certain that ammo never ends up in negative numbers
     self.magazineAmount = 0 
   end
@@ -395,7 +407,7 @@ function GunFireFixed:checkAmmo()
 	    
   	--check current ammo and create an ammo bar to inform the user
   	self.currentAmmoPercent = 1.0
-  	self.barColor = {255,0,0,125}
+  	self.barColor = {0,250,112,125}
 
   	world.sendEntityMessage(
   	  self.playerId,
