@@ -287,6 +287,9 @@ end
 
 function GunFireFixed:uninit()
   status.clearPersistentEffects("weaponBonus")
+    if (self.isAmmoBased == 1) then
+      world.sendEntityMessage(self.playerId,"removeBar","ammoBar")   --clear ammo bar  
+    end  
 end
 
 function GunFireFixed:isResetting()
