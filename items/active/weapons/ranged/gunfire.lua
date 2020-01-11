@@ -42,7 +42,7 @@ end
 
 function GunFire:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-  
+  self.currentFireMode = fireMode
   -- *** FU Weapon Additions
   
   --check if ammo bar should vanish
@@ -51,7 +51,9 @@ function GunFire:update(dt, fireMode, shiftHeld)
     self.timerReloadBar = 5
   end
   if (self.timerReloadBar == 5) then -- is reload bar timer expired?
-    world.sendEntityMessage(self.playerId,"removeBar","ammoBar")   --clear ammo bar  
+    if (self.isAmmoBased == 1) then
+      world.sendEntityMessage(self.playerId,"removeBar","ammoBar")   --clear ammo bar  
+    end
     self.timerReloadBar = 0
   end
   
@@ -234,8 +236,7 @@ function GunFire:damagePerShot()      --return (self.baseDamage or (self.baseDps
 end
 
 function GunFire:uninit()
-  status.clearPersistentEffects("weaponBonus")
-  world.sendEntityMessage(self.playerId,"removeBar","ammoBar")   --clear ammo bar  
+  status.clearPersistentEffects("weaponBonus") 
 end
 
 
@@ -360,14 +361,16 @@ function GunFire:checkAmmo()
   	--check current ammo and create an ammo bar to inform the user
   	self.currentAmmoPercent = 1.0
   	self.barColor = {0,250,112,125}
-
+	
+	if (self.fireMode == "primary") then
   	world.sendEntityMessage(
   	  self.playerId,
   	  "setBar",
   	  "ammoBar",
   	  self.currentAmmoPercent,
   	  self.barColor
-	)  	    
+	)
+	end
 	    self.weapon:setStance(self.stances.cooldown)
 	    self:setState(self.cooldown)
 	end
@@ -391,14 +394,15 @@ function GunFire:checkMagazine()
 	elseif self.currentAmmoPercent <= 0.25 then
 		self.barColor = {255,0,0,125}		
 	end           
-
+        if (self.fireMode == "primary") then
   	world.sendEntityMessage(
   	  self.playerId,
   	  "setBar",
   	  "ammoBar",
   	  self.currentAmmoPercent,
   	  self.barColor
-	)    
+	)  
+	end
     if self.magazineAmount <= 0 then
 	self.weapon:setStance(self.stances.cooldown)
 	self:setState(self.cooldown)

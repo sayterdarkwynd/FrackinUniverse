@@ -422,17 +422,14 @@ function update(dt)
 	      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
 	    end
 	    self.bonusTimer = 20
-	    if (storage.madnessCount >= 1) then
-	      world.sendEntityMessage(self.playerId,"setBar","madnessBar",self.madnessPercent,self.barColor)  
-	    else
-	      world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
-	    end   	    
+	    displayBar() 	    
 	end	
 end
 
+
 function displayBar()
-  if (storage.madnessCount >= 500) then
-    world.sendEntityMessage(self.playerId,"setBar","madnessBar",self.madnessPercent,self.barColor)  
+  if (storage.madnessCount >= 50) then
+    world.sendEntityMessage(self.playerId,"setBar","madnessBar",self.madnessPercent,self.barColor)
   else
     world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
   end
