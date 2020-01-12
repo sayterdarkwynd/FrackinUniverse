@@ -29,13 +29,13 @@ function GunFire:init()
     self.weapon:setStance(self.stances.idle)
   end
   
-  if (self.isAmmoBased == 1) then
-    self.timerRemoveAmmoBar = 0 
-  end
   self.playerId = entity.id()
   self.currentAmmoPercent = self.magazineAmount / self.magazineSize
   if self.currentAmmoPercent > 1.0 then
     self.currentAmmoPercent = 1
+  end  
+  if (self.isAmmoBased == 1) then
+    self.timerRemoveAmmoBar = 0 
   end  
   self.barName = "ammoBar"
   self.barColor = {0,250,112,125}

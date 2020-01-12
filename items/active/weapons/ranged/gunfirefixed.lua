@@ -35,6 +35,9 @@ function GunFireFixed:init()
   self.currentAmmoPercent = self.magazineAmount / self.magazineSize
   if self.currentAmmoPercent > 1.0 then
     self.currentAmmoPercent = 1
+  end 
+  if (self.isAmmoBased == 1) then
+    self.timerRemoveAmmoBar = 0 
   end  
   self.barName = "ammoBar"
   self.barColor = {0,250,112,125}
@@ -58,7 +61,6 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
   -- *** FU Weapon Additions
-  
   if self.magazineAmount < 0 or not self.magazineAmount then --make certain that ammo never ends up in negative numbers
     self.magazineAmount = 0 
   end
