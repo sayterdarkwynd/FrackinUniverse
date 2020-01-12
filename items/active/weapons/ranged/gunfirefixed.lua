@@ -30,7 +30,7 @@ function GunFireFixed:init()
   self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) 	-- total count of the magazine
   self.magazineAmount = (self.magazineSize or 0) 						-- current number of bullets in the magazine
   self.reloadTime = config.getParameter("reloadTime",1)	+ (self.playerReloadBonus or 0) 	-- how long does reloading mag take?
-  self.timerReloadBar = 5
+  self.timerReloadBar = 0
   
   self.playerId = entity.id()
   self.currentAmmoPercent = self.magazineAmount / self.magazineSize

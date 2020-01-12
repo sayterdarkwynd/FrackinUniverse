@@ -14,19 +14,18 @@ function init()
     self.timerRemoveAmmoBar = 0
 end
 
-function update(dt)
-    if self.timerRemoveAmmoBar > 10 then
-      world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
-      self.timerRemoveAmmoBar = 0
-    else
-      self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + dt
-    end 
-end
 
 function overheadBars()
 
   local bars = {}
-
+  
+    --if self.timerRemoveAmmoBar > 10 then
+    --  world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
+    --  self.timerRemoveAmmoBar = 0
+    --else
+    --  self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + 1
+    --end 
+    
   if status.statPositive("shieldHealth") then
     table.insert(bars, {
       percentage = status.resource("shieldStamina"),
