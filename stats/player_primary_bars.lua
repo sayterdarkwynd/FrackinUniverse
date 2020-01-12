@@ -11,7 +11,16 @@ function init()
 		if not l then return end
 		removeBar(barName)
     end)
-	
+    self.timerRemoveAmmoBar = 0
+end
+
+function update(dt)
+    if self.timerRemoveAmmoBar > 10 then
+      world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
+      self.timerRemoveAmmoBar = 0
+    else
+      self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + dt
+    end 
 end
 
 function overheadBars()
