@@ -12,7 +12,7 @@
   "level" : 2,
   "tooltipKind" : "gun2",
   "weaponType" : "Crystalline Rifle",
-  "itemTags" : ["weapon","ranged","assaultrifle", "energy","lunari", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","assaultrifle","lunari", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -20,12 +20,12 @@
     "butt" : "",
     "middle" : "lunaririfle.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/weapons/beam.ogg" ]
-    }
+      "fire" : [ "/sfx/weapons/beam.ogg" ] },
+    "lights" : { "muzzleFlash" : {"color" : [143, 131, 98] } } 
   },
 
   "baseOffset" : [0.56, 0.2],
@@ -33,7 +33,7 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "ice",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -46,7 +46,7 @@
     "projectileCount" : 2,
     "fireType" : "auto",
 
-    "projectileType" : "lunarishotinitiate",
+    "projectileType" : "lunarishotrifle",
     "projectileParameters" : { 
       "speed" : 40,
       "knockback" : 2

@@ -1,0 +1,38 @@
+{
+  "objectName" : "pumpoutputStandard",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "^cyan;Blue - connect to Liquid Pump^reset;",
+  "shortdescription" : "DONKEY",
+  "race" : "generic",
+  "health" : 2.5,
+  "category" : "wire",
+  "price" : 100,
+
+    "inventoryIcon" : "pumpoutfuicon.png",
+    "orientations" : [
+        {
+            "image" : "pumpoutfu.png:<color>.off",
+            "imagePosition" : [0, 0],
+            "spaceScan" : 0.1,
+            "anchors" : [ "background" ]
+        }
+    ],
+
+  "scripts" : [ "/objects/wired/pumps/fuPumpOutput.lua" ],
+  "scriptDelta" : 10,
+
+  "animation" : "/objects/wired/pumps/fuPumpOutput.animation",
+
+  "animationParts" : {
+    "outputPump" : "pumpoutfu.png"
+  },
+  "animationPosition" : [0, 0],
+  "pumpOutputStandard" : true,
+
+  "inputNodes" : [ [0, 0] ],
+  "outputNodes" : [ [1, 0] ],
+  "interval" : 5
+
+}

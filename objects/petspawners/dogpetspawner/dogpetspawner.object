@@ -1,0 +1,33 @@
+{
+  "objectName" : "dogpetspawner",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "legendary",
+  "category" : "furniture",
+  "price" : 0,
+
+  "description" : "Spawns in a pet dog! \n^orange;To locate it after placing, toggle wire mode.",
+  "shortdescription" : "^orange;Dog Spawner^white;",
+  "race" : "generic",
+
+  "inventoryIcon" : "dogpetspawnericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "dogpetspawner.png:<color>",
+
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : []
+    }
+  ],
+
+  "scripts" : [
+    "/objects/spawner/techstation.lua"
+  ],
+  "scriptDelta" : 20,
+  "shipPetType" : "petdog",
+  "spawnOffset" : [0, 0],
+
+  "inputNodes" : [ [0, 0] ]
+}

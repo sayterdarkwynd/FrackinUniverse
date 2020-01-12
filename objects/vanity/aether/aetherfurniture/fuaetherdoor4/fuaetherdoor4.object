@@ -1,0 +1,49 @@
+{
+  "objectName" : "fuaetherdoor4",
+  "colonyTags" : ["fu","aether","pretty","valuable","door"],
+  "rarity" : "Legendary",
+  "printable" : false,
+  "category" : "door",
+  "price" : 125,
+  "description" : "This door is made of hardened and compressed aether materials.",
+  "shortdescription" : "Aether Gem Door",
+  "race" : "generic",
+  "closedLight" : [120, 20, 180],
+  "inventoryIcon" : "fuaetherdoor4icon.png",
+  "orientations" : [
+    {
+      "image" : "fuaetherdoor4.png:default",
+      "flipImages" : true,
+      "imagePosition" : [-20, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "left"
+    },
+    {
+      "image" : "fuaetherdoor4.png:default",
+      "imagePosition" : [-20, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ],
+      "direction" : "right"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/doorglow.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+      "close" : [ "/sfx/objects/apexcooldoor_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "door" : "fuaetherdoor4.png",
+	"doorfullbright" : "fuaetherdoor4fullbright.png"
+  },
+  "animationPosition" : [-20, 0],
+
+  "inputNodes" : [ [-1, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

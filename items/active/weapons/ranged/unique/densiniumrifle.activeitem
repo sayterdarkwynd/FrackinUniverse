@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Superior weaponry offering unsurpassed utility.
-^yellow;3-round bursts^reset;
+^yellow;4-round bursts^reset;
 ^green;Piercing alt-fire^reset;",
     "shortdescription" : "Densinium Rifle",
   "category" : "energy",
@@ -14,7 +14,7 @@
   "weaponType" : "Energy",
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "densinium", "upgradeableWeapon"],
   "twoHanded" : true,
-
+  
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
@@ -28,8 +28,7 @@
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-			//Same as BaseOffset
-		    "offset" : [0.68, -0.22]
+		    "offset" : [1.25, 0.1875]
 		  }
 		}
       }
@@ -39,22 +38,26 @@
     }
   },
 
-  "baseOffset" : [0.68, -0.22],
-  "muzzleOffset" : [2.845, 0.325],
+  "baseOffset" : [1.25, 0.1875],
+  "muzzleOffset" : [2.375, 0.25],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "electric",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
     "fireTime" : 0.11,
-    "baseDps" : 9.95,
+    "baseDps" : 8.7,
+    "useEnergy" : true,
     "energyUsage" : 30.5,
+    "runSlowWhileShooting" : true,
+    
     "inaccuracy" : 0.012,
+    "burstCooldown" : 0.4,
     "burstTime" : 0.075,
-    "burstCount" : 3,
+    "burstCount" : 4,
     "projectileCount" : 1,
     "fireType" : "burst",
 
@@ -73,21 +76,21 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 4,
+	      "weaponRotation" : 4,
 	      "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
+	      "allowRotate" : true,
+	      "allowFlip" : true
 	    },
 	    "cooldown" : {
-	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "duration" : 0.055,
+	      "armRotation" : 4,
+	      "weaponRotation" : 4,
 	      "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
+	      "allowRotate" : true,
+	      "allowFlip" : true
 	    }
 	  }
   },

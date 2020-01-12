@@ -1,0 +1,68 @@
+{
+	"itemName": "gregskittlegunfake",
+	"price": 150,
+	"level": 1,
+	"maxStack": 1,
+	"rarity": "rare",
+	"description": "An unupgraded Skittles. You should try it.",
+	"shortdescription": "Skittles",
+	"tooltipKind": "gunkevin",
+	"category": "uniqueWeapon",
+	"twoHanded": true,
+	"itemTags": ["weapon", "ranged", "grenadelauncher"],
+
+	"inventoryIcon": "skittlegun.png",
+	"animation": "skittlegun.animation",
+	"animationParts": {
+		"gun": "skittlegun.png"
+	},
+
+	"scripts": ["skittlegunfake.lua"],
+
+	"fireOffset": [3.25, 0.625],
+
+	"critChance": 0,
+	"critBonus": 0,
+	"elementalType": "cosmic",
+
+	"primaryAbility": {
+		"energyUsage": 95,
+		"baseDps": 5.0,
+		"fireTime": 2.25,
+		"inaccuracy": 0.13,
+		"projectileParameters": {
+			"inheritDamageFactor": 0.12
+		}
+	},
+	"primaryAbilityShift": {
+		"energyUsage": 25,
+		"baseDps": 5.0,
+		"fireTime": 0.225,
+		"inaccuracy": 0.0,
+		"projectileParameters": {
+			"inheritDamageFactor": 0.012
+		}
+	},
+
+	"altAbility": {
+	        "name" : "Greg",
+		"energyUsage": 95,
+		"baseDps": 5.0,
+		"fireTime": 2.25,
+		"inaccuracy": 0.13,
+		"projectileParameters": {
+			"inheritDamageFactor": 0.12
+		}
+	},
+	"altAbilityShift": {
+		"energyUsage": 25,
+		"baseDps": 5.0,
+		"fireTime": 0.225,
+		"inaccuracy": 0.0,
+		"projectileParameters": {
+			"inheritDamageFactor": 0.012
+		}
+	},
+
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+}

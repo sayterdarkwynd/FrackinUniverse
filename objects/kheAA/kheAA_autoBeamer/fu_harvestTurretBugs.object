@@ -10,7 +10,7 @@
 	"frameCooldown": 5,
 	"autoCloseCooldown": 3600,
 	"health": 5,
-	"description": "Harvester turret modified to grab bugs instead.",
+	"description": "A specialized turret designed to grab bugs.",
 	"shortdescription": "Bug Harvester Turret",
 	"subtitle": "Automatic Harvesting",
 	"race": "generic",
@@ -149,7 +149,7 @@
 	"animation": "standingturretbug.animation",
 
 	"scripts": [
-		"/objects/kheAA/kheAA_autoBeamer/standingturretbug.lua",
+		"/objects/kheAA/kheAA_autoBeamer/harvestTurret.lua",
 		"/scripts/npcToyObject.lua",
 		"/scripts/stateMachine.lua"
 	],
@@ -171,6 +171,13 @@
 	
 	"fireTime": 1,
 
+	"targetEntityTypes":[
+		"monster"
+	],
+	"validTargetTypes":{
+		"bug":true
+	},
+	
 	"npcToy": {
 		"influence": [
 			"turret"

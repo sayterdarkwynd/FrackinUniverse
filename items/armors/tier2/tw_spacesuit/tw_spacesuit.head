@@ -1,15 +1,17 @@
 {
   "itemName" : "tw_spacesuithead",
-  "price" : 1440,
+  "price" : 140,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "category" : "t2armoru",
-  "description" : "Built-in Head Lamp.
-Set Bonus:
-^cyan;+600s Oxygen Supply, Reduced breath rate^reset;
-^green;+15% Fire/Ice/Poison/Radiation/Electric Resistance^reset;",    
+  "rarity" : "Common",
+  "description" : "^green;+5%^reset; Fire, Ice, Poison, Radiation and Electric Resists
+\n^orange;Set Bonus^reset;:
+^#a94db3;+100%^reset; Max Breath
+Longsword: ^cyan;+12%^reset; Damage
+Energy: ^cyan;+12%^reset; Damage",
+
   "shortdescription" : "Hazard Helmet",
+  "category" : "t2armoru",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -17,11 +19,14 @@ Set Bonus:
   "mask" : "mask.png",
 
   "learnBlueprintsOnPickup" : [
-  	"spacefarerchest",
-        "spacefarerhead",
-        "spacefarerpants"
+    "tw_spacepunkhead",
+    "tw_spacepunklegs",
+    "tw_spacepunkchest",
+    "spacefarerchest",
+    "spacefarerhead",
+    "spacefarerpants"
   ],
-    "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorexplorer" : "tw_spacesuithead" },
   "leveledStatusEffects" : [
@@ -33,7 +38,7 @@ Set Bonus:
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.3
+      "amount" : 0.32
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -46,12 +51,11 @@ Set Bonus:
       "amount" : 4
     }
   ],
-  
+
   "statusEffects" : [
-    "headlamp",
-    "tw_spacesuitsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "tw_spacesuitset_head",
+      "stat" : "tw_spacesuitsetcount",
       "amount" : 1
     },
     {
@@ -73,14 +77,15 @@ Set Bonus:
     {
       "stat" : "radioactiveResistance",
       "amount" : 0.05
-    }   
-  ],  
-  
+    },
+    "headlamp"
+  ],
+
   "colorOptions" : [
     /* WHITE */
-    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },  
+    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
     /* BROWN */
-    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },  
+    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },
     /* GREY */
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
     /* BLACK */

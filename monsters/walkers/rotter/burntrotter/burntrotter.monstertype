@@ -8,8 +8,20 @@
 
   "animation" : "burntrotter.animation",
 
-  "dropPools" : [ "rocktrollLoot" ],
-
+  "dropPools" : [
+    {
+    "default" : "rocktrollLoot",
+    "bow" : "rocktrollLoot",
+    "firebow" : "rocktrollLoot",
+    "icebow" : "rocktrollLoot",
+    "poisonbow" : "rocktrollLoot",
+    "electricbow" : "rocktrollLoot",
+    "cosmicbow" : "rocktrollLoot",
+    "radioactivebow" : "rocktrollLoot",
+    "shadowbow" : "rocktrollLoot"      
+    }
+  ], 
+  
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -191,7 +203,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "burning", "infection" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],

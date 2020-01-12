@@ -1,99 +1,170 @@
-require "/scripts/util.lua"
-require "/scripts/pathutil.lua"
-require "/scripts/stagehandutil.lua"
+
+
 
 function init()
 	self.players = {}
-	wired = wireCheck()
-	setLightState(wired)
-	message.setHandler("changeMusic", function(_, _, music, musicName)
-		object.setConfigParameter("soundEffect", music)
-		storage.musicName = musicName
-	end)
+	self.lastWireModified = 0
+	
+	message.setHandler("changeMusic", changeMusic)
+	message.setHandler("turnOff", turnOff)
+	message.setHandler("toggleLabel", toggleLabel)
+	message.setHandler("setMusicRange", setMusicRange)
+	
+	if storage.isPlaying then
+		animator.setAnimationState("light", "on")
+	end
 end
 
 function update()
+	if storage.isPlaying then
+		for pid, _ in pairs(self.players) do
+			if not playerInRange(pid) then
+				self.players[pid] = nil
+				world.sendEntityMessage(pid, "stopAltMusic", 2.0)
+			end
+		end
+		
+		local newPlayers = world.playerQuery(object.position(), (storage.range or config.getParameter("musicRadius", 30)))
+		for _, pid in ipairs(newPlayers) do
+			if not self.players[pid] then
+				self.players[pid] = true
+			end
+		end
+		
+		if not storage.hideLabel then
+			object.say(storage.musicName or "")
+		end
+		
+		for playerId, _ in pairs(self.players) do
+			world.sendEntityMessage(playerId, "playAltMusic", {storage.musicDir}, 2.0)
+		end
+	else
+		uninit()
+	end
+end
+
+-- Called via update to turn off music, as well as when broken
+function uninit() 
 	for playerId, _ in pairs(self.players) do
-		playerNearby = playerInRange(playerId)
-		if not playerNearby then
-			self.players[playerId] = nil
-			world.sendEntityMessage(playerId, "stopAltMusic", 2.0)
+		world.sendEntityMessage(playerId, "stopAltMusic", 2.0)
+	end
+	self.players = {}
+end
+
+function changeMusic(_,_, dir, name, direction, time)
+	if self.lastWireModified ~= time then
+		self.lastWireModified = time or os.time()
+		
+		storage.isPlaying = true
+		storage.musicName = name
+		storage.musicDir = dir
+		animator.setAnimationState("light", "on")
+		
+		object.setOutputNodeLevel(0, true)
+		local output = object.getOutputNodeIds(0)
+		if not direction or direction == "output" then
+			for id, _ in pairs(output) do
+				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
+					world.sendEntityMessage(id, "changeMusic", dir, name, "output", self.lastWireModified)
+				end
+			end
+		end
+		
+		local input = object.getInputNodeIds(0)
+		if not direction or direction == "input" then
+			for id, _ in pairs(input) do
+				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
+					world.sendEntityMessage(id, "changeMusic", dir, name, "input", self.lastWireModified)
+				end
+			end
 		end
 	end
-	local newPlayers = broadcastAreaQuery({ includedTypes = {"player"} })
-	for _, playerId in pairs(newPlayers) do
-		if not self.players[playerId] then
-			self.players[playerId] = true
+end
+
+function turnOff(_,_, direction, time)
+	if self.lastWireModified ~= time then
+		self.lastWireModified = time or os.time()
+		
+		if storage.musicName and not storage.hideLabel then
+			object.say("Shutting down...")
+		end
+		
+		storage.isPlaying = nil
+		storage.musicName = nil
+		storage.musicDir = nil
+		animator.setAnimationState("light", "off")
+		
+		object.setOutputNodeLevel(0, false)
+		local output = object.getOutputNodeIds(0)
+		if not direction or direction == "output" then
+			for id, _ in pairs(output) do
+				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
+					world.sendEntityMessage(id, "turnOff", "output", self.lastWireModified)
+				end
+			end
+		end
+		
+		local input = object.getInputNodeIds(0)
+		if not direction or direction == "input" then
+			for id, _ in pairs(input) do
+				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
+					world.sendEntityMessage(id, "turnOff", "input", self.lastWireModified)
+				end
+			end
 		end
 	end
-	wired = wireCheck()
-	setLightState(wired)
-	if wired and storage.musicName then
-		object.say(storage.musicName)
+end
+
+function toggleLabel(_,_, state, direction, time)
+	if self.lastWireModified ~= time then
+		self.lastWireModified = time or os.time()
+		
+		if state == nil then
+			if storage.hideLabel then
+				storage.hideLabel = nil
+			else
+				storage.hideLabel = true
+				if storage.musicName then
+					object.say("Hiding label...")
+				end
+			end
+		else
+			storage.hideLabel = state
+			if state and storage.musicName then
+				object.say("Hiding label...")
+			end
+		end
+		
+		local output = object.getOutputNodeIds(0)
+		if not direction or direction == "output" then
+			for id, _ in pairs(output) do
+				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
+					world.sendEntityMessage(id, "toggleLabel", storage.hideLabel, "output", self.lastWireModified)
+				end
+			end
+		end
+		
+		local input = object.getInputNodeIds(0)
+		if not direction or direction == "input" then
+			for id, _ in pairs(input) do
+				if world.entityName(id) == "fm_musicplayer" or world.entityName(id) == "fm_musicplayerwall" then
+					world.sendEntityMessage(id, "toggleLabel", storage.hideLabel, "input", self.lastWireModified)
+				end
+			end
+		end
 	end
 end
 
-function setLightState(newState)
-  if newState then
-    animator.setAnimationState("light", "on")
-    object.setSoundEffectEnabled(true)
-	startMusic()
-	if animator.hasSound("on") then
-      animator.playSound("on");
-    end
-  else
-    animator.setAnimationState("light", "off")
-    object.setSoundEffectEnabled(false)
-	stopMusic()
-	if animator.hasSound("off") then
-      animator.playSound("off");
-    end
-  end
-end
-
-function startMusic()
-  for playerId, _ in pairs(self.players) do
-    world.sendEntityMessage(playerId, "playAltMusic", config.getParameter("soundEffect"), 2.0)
-  end
-end
-
-function stopMusic()
-  for playerId, _ in pairs(self.players) do
-    world.sendEntityMessage(playerId, "stopAltMusic", 2.0)
-  end
+function setMusicRange(_,_, range)
+	if config.getParameter("musicRadius", 30) == range then
+		storage.range = nil
+	else
+		storage.range = range
+	end
 end
 
 function playerInRange(id)
-	if not world.entityExists(id) then
-		-- Player died or left the mission
-		return false
-	end
-	local newPlayers = broadcastAreaQuery({ includedTypes = {"player"} })
-	for _, playerId in pairs(newPlayers) do
-		if id == playerId then
-			return true
-		end
-	end
-	return false
-end
-
-function uninit()
-	stopMusic()
-end
-
-function die()
-	stopMusic()
-end
-
-function wireCheck()
-	if object.isInputNodeConnected(0) == true then
-		if object.getInputNodeLevel(0) == true then
-			return true
-		else
-			return false
-		end
-	else
-	return false
-	end
-	return false
+	if not world.entityExists(id) or world.magnitude(object.position(), world.entityPosition(id)) > (storage.range or config.getParameter("musicRadius", 30)) then
+		return false end
+	return true
 end

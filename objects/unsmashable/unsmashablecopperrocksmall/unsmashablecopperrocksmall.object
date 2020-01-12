@@ -1,0 +1,56 @@
+{
+  "objectName" : "unsmashablecopperrocksmall",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "printable" : false,
+
+  "description" : "A cracked rock full of copper. Unbreakable!",
+  "shortdescription" : "Small Copper Rock",
+  "race" : "generic",
+
+  "apexDescription" : "There appears to be copper within this fragile rock.",
+  "avianDescription" : "If I break this rock I should be able to gather the copper ore within it.",
+  "floranDescription" : "Glittery rock. Sssmash it!",
+  "glitchDescription" : "Observant. This rock contains copper, and is covered in cracks.",
+  "humanDescription" : "A rock full of copper! Maybe I can break it.",
+  "hylotlDescription" : "A swift blow to this rock would free the copper within.",
+  "novakidDescription" : "A rock rich with copper. I should break it.",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.4,
+    "emissionVariance" : 0.2,
+    "pixelOrigin" : [8, 8],
+
+    "particle" : {
+      "type" : "animated",
+      "animation" : "/animations/sparkles/sparkle2.animation",
+      "size" : 1.0,
+      "fade" : 0,
+      "destructionAction" : "shrink",
+      "destructionTime" : 3,
+      "initialVelocity" : [0, 0],
+      "finalVelocity" : [0, 0],
+      "timeToLive" : 1,
+      "layer" : "front"
+    },
+
+    "particleVariance" : {
+      "position" : [0.5, 0.5]
+    }
+  },
+
+  "inventoryIcon" : "unsmashablecopperrocksmallicon.png",
+  "orientations" : [
+    {
+      "image" : "unsmashablecopperrocksmall.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "objectName" : "unsmashableplatinumrock",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "printable" : false,
+
+  "description" : "A cracked rock full of platinum. Unbreakable!",
+  "shortdescription" : "Platinum Rock",
+  "race" : "generic",
+
+  "apexDescription" : "There appears to be platinum within this fragile rock.",
+  "avianDescription" : "If I break this rock I should be able to gather the platinum ore within it.",
+  "floranDescription" : "Glittery rock. Sssmash it!",
+  "glitchDescription" : "Observant. This rock contains platinum, and is covered in cracks.",
+  "humanDescription" : "A rock full of platinum! Maybe I can break it.",
+  "hylotlDescription" : "A swift blow to this rock would free the platinum within.",
+  "novakidDescription" : "A rock rich with platinum. I should break it.",
+
+  "particleEmitter" : {
+    "emissionRate" : 0.5,
+    "emissionVariance" : 0.2,
+    "pixelOrigin" : [12, 12],
+
+    "particle" : {
+      "type" : "animated",
+      "animation" : "/animations/sparkles/sparkle1.animation",
+      "size" : 1.0,
+      "fade" : 0,
+      "destructionAction" : "shrink",
+      "destructionTime" : 3,
+      "initialVelocity" : [0, 0],
+      "finalVelocity" : [0, 0],
+      "timeToLive" : 1,
+      "layer" : "front"
+    },
+
+    "particleVariance" : {
+      "position" : [1.0, 1.0]
+    }
+  },
+
+  "inventoryIcon" : "unsmashableplatinumrockicon.png",
+  "orientations" : [
+    {
+      "image" : "unsmashableplatinumrock.png:<color>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ]
+}

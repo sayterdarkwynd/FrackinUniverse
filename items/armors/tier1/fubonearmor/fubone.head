@@ -4,13 +4,20 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+7.5% Fall Damage Resist, +5 Health^reset; 
-^green;(Lush/Forest biomes) +5 Health, 5% Power, 5% Physical Resistance^reset;", 
+  "description" : "^green;+3%^reset; Fire and Poison Resist^reset;
+^orange;Set Bonuses^reset;:
+^green;+5^reset; HP, ^cyan;+15%^reset; Fall Dmg Resist^reset;
+Longsword or Axe: ^cyan;+15%^reset; Damage
+^#e43774;(Lush/Forest biomes) ^green;+5^reset; HP, ^green;+5%^reset; Damage, ^green;+5%^reset; Physical Resist^reset;",
+
   "shortdescription" : "Bone Mask",
   "category" : "t1armoru",
-  "tooltipKind" : "armor",
-  "learnBlueprintsOnPickup" : [ "fubonearmor2head" ],
+  "tooltipKind" : "armornew2",
+  "learnBlueprintsOnPickup" : [
+    "fubonearmor2head",
+    "fubonearmor2chest",
+    "fubonearmor2legs"
+  ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
@@ -21,12 +28,12 @@
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
+      "baseMultiplier" : 1.135
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.35
+      "amount" : 0.37
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -40,10 +47,18 @@
     }
   ],
   "statusEffects" : [
-    "bonesetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_boneset_head",
+      "stat" : "bonesetcount",
       "amount" : 1
-    }         
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.03
+    },
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.03
+    }
   ]
 }

@@ -1,0 +1,31 @@
+{
+  "name" : "bearsetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "iceStatusImmunity" : {},
+      "slushslowimmunity" : {},
+      "grit" : { "amount" : 0.20 }
+    },
+
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "axe", "hammer", "broadsword", "spear", "scythe", "greataxe", "quarterstaff" ],
+        "stats" : {
+          "critChance" : { "amount" : 3.5 },
+          "powerMultiplier" : { "effectiveMultiplier" : 1.15 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta": 5,
+
+  "label" : "+20% Knockback Resist. 2H melee/Axe: +3.5% Crit Chance, +15% Dmg",
+  "icon" : "/interface/statuses/rage.png"
+}

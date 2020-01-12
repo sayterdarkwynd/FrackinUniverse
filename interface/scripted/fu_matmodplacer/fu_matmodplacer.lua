@@ -12,7 +12,7 @@ function init()
     self.currentFilter = ""
     self.availableFilter = false
     self.currentSearch = ""
-
+	categories()
     populateItemList()
 end
 

@@ -1,0 +1,45 @@
+{
+  "objectName" : "vinapainting",
+  "colonyTags" : [ "elder", "hideous","madness" ],
+  "rarity" : "rare",
+  "category" : "decorative",
+  "price" : 1350,
+  "description" : "A rare species, immortalized in art.",
+  "shortdescription" : "A Xariwiek",
+  "race" : "glitch",
+
+  "inventoryIcon" : "vinapainting.png",
+  "orientations" : [
+    {
+      "dualImage" : "vinapainting.png:<color>",
+      "imagePosition" : [-32, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ],
+      "metaBoundBox" : [-10, -10, 10, 10]
+
+    }
+  ],
+  "npcToy" : {
+    "influence" : [
+      "sink",
+      "sinkComplete"
+    ],
+    "defaultReactions" : {
+      "sink" : [
+        [0.25, "nosebleed"],
+        [0.25, "flee"],
+        [0.25, "creepyfollow"],
+        [0.25, "cry"]
+      ],
+      "sinkComplete" : [
+        [1.0, "smile"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 2
+  }
+}

@@ -4,12 +4,12 @@
   "inventoryIcon" : "razorneedler.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "A black market customized special needler with razor sharp frozen crystals.",
-  "shortdescription" : "^cyan;Crystalline Needler^reset;",
+  "description" : "A black market customized special needler with razor sharp crystal shards.",
+  "shortdescription" : "^cyan;Shard Needler^reset;",
   "level" : 3,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -29,13 +29,12 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.1,
-    "baseDps" : 7,
+    "fireTime" : 0.12,
+    "baseDps" : 6,
     "energyUsage" : 26,
     "fireType" : "auto",
     "inaccuracy" : 0.001,
@@ -75,5 +74,9 @@
   },
   "critChance" : 2,
   "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "isMachinePistol" : 1,
+  "reloadTime": 1, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -87,6 +87,14 @@ function equipArmor(args, output)
   return true
 end
 
+-- param slot
+function unequipSlot(args, output)
+  npc.setItemSlot(args.slot, nil)
+  storage.itemSlots = storage.itemSlots or {}
+  storage.itemSlots[string.lower(args.slot)] = args.itemTable
+  return true
+end
+
 -- param position
 -- param offset
 function setAimPosition(args, board)
@@ -138,6 +146,11 @@ end
 -- param dance
 function dance(args, board)
   npc.dance(args.dance)
+  return true
+end
+
+function setPersistent(args, board)
+  npc.setPersistent(args.persistent)
   return true
 end
 
@@ -380,4 +393,8 @@ function friendlyTargeting(args, board, nodeId, dt)
     dt = coroutine.yield(nil, {target = targets[1] or outOfSight[1], attackOnSight = attackOnSight})
     attackOnSight = args.attackOnSight or {}
   end
+end
+
+function level(args, board)
+  return true, {level = npc.level()}
 end

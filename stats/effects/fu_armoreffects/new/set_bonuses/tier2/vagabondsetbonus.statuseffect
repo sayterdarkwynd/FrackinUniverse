@@ -1,0 +1,34 @@
+{
+  "name" : "vagabondsetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {},
+
+    "weaponBonuses" : [
+      {
+        "type" : "dual",
+        "tags" : [ "pistol", "machinepistol" ],
+        "altTags" : [ "pistol", "machinepistol" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.15 }
+        }
+      },
+      {
+        "type" : "any",
+        "tags" : [ "pistol", "machinepistol" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.075 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta": 5,
+
+  "label" : "Pistol/Machine Pistol: +7.5% Dmg each",
+  "icon" : "/interface/statuses/set_ranged.png"
+}

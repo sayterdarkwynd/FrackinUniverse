@@ -1,7 +1,8 @@
 local recipes =
 {
-
---liquids
+{inputs = { wrappedbody=1 }, outputs = { brain=1,fuscienceresource=120,bone=8,leather=1,alienmeat=4,faceskin=1,rawribmeat=2,liquidblood=40 }, time = 5.0},
+{inputs = { wrappedbodyputrid=1 }, outputs = { brain=1,fumadnessresource=5,bone=8,leather=1,rottingfleshmaterial=4,slew2=12,biospore=2,liquidbioooze=40 }, time = 5.0},
+{inputs = { wrappedbodyalien=1 }, outputs = { brain=1,fuprecursorresource=5,bone=8,leather=1,slew4=12,rawribmeat=2,cellmateria=4,liquidalienjuice=40 }, time = 5.0},
 {inputs = { cthulureward=1,elderrelic7=1,elderrelic11=1 }, outputs = { elderripper=1 }, time = 15.0},
 {inputs = { cthulureward=1, elderrelic5=1, elderrelic11=1 }, outputs = { eldercarbine=1 }, time = 15.0},
 {inputs = { cthulureward=1, elderrelic12=1, elderrelic11=1 }, outputs = { elderpistol=1 }, time = 15.0 },
@@ -25,7 +26,9 @@ local recipes =
 {inputs = { nocxiumbar=5, elderrelic8=1, elderrelic14=1 }, outputs = { cultarmorpants=1 }, time = 15.0 },
 {inputs = { cthulureward=1, elderrelic3=2, elderrelic14=1 }, outputs = { eldermace=1 }, time = 15.0 },
 {inputs = { elderrelic12=5, elderrelic4=1, elderrelic8=1 }, outputs = { eldershotgun=1 }, time = 15.0 },
-{inputs = { cthulureward=1, elderrelic1=3, elderrelic11=2 }, outputs = { eldergrenadelauncher=1 }, time = 15.0 }
+{inputs = { cthulureward=1, elderrelic1=3, elderrelic11=2 }, outputs = { eldergrenadelauncher=1 }, time = 15.0 },
+{inputs = { shoggothessence=5}, outputs = { shoggothflesh=1 }, time = 1.0 },
+{inputs = { shoggothflesh=1}, outputs = { essence=1000,fuscienceresource=1000 }, time = 1.0 }
 }
 
 function init()
@@ -131,6 +134,7 @@ function update(dt)
             self.output = {}
             self.timer = self.mintick --reset timer to a safe minimum
             animator.setAnimationState("samplingarrayanim", "idle")
+            animator.playSound("active")
         end
 
         if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
@@ -142,9 +146,9 @@ end
 
 
 function startCrafting(result)
+    
     if next(result) == nil then return false
     else _,result = next(result)
-
         for k,v in pairs(result.inputs) do
             if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
         end
@@ -153,7 +157,6 @@ function startCrafting(result)
         self.timer = result.time
         self.output = result.outputs
         animator.setAnimationState("samplingarrayanim", "working")
-
         return true
     end
 end

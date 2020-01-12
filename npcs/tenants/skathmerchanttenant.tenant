@@ -1,0 +1,26 @@
+{
+  "name" : "skathmerchant",
+  "priority" : 4,
+
+  "colonyTagCriteria" : {
+    "light" : 1,
+    "door" : 1,
+    "skath" : 3,
+    "storage" : 4
+  },
+
+  "tenants" : [{
+      "spawn" : "npc",
+      "species" : "skath",
+      "type" : "merchant",
+      "overrides" : {
+        "damageTeamType" : "friendly"
+      }
+    }
+  ],
+
+  "rent" : {
+    "periodRange" : [900.0, 1800.0],
+    "pool" : "merchantGift"
+  }
+}

@@ -1,0 +1,332 @@
+{
+
+// This custom behaviour is a copy of the walk-approach behaviour for monsters. The direction towards the target is reversed, making the monster move away from the target instead of towards it. The behaviour should be placed in the "approachActions" list in a .monstertype file, and "targetOnDamage" should be set to true, so that the monster will always flee the last target that it was attacked by.
+
+  "name": "thea-fleetarget",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "canJump": true,
+    "maxJumps": 3,
+    "jumpXVelocity": 15,
+    "jumpYVelocity": 35,
+    "jumpState": "jump",
+    "fallState": "fall",
+    "jumpXControlForce": 50,
+    "moveState": "walk",
+    "run": false,
+    "idleState": "idle"
+  },
+  "root": {
+    "title": "sequence",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "entityDirection",
+        "type": "action",
+        "name": "entityDirection",
+        "parameters": {
+          "entity": {"key": "self"},
+          "target": {"key": "target"}
+        },
+        "output": {
+          "direction": "targetDirection"
+        }
+      },
+	  //BEGIN MODIFICATIONS
+	  //Reverse the target direction
+	  {
+		"title": "reverseDirection",
+		"type": "action",
+		"name": "reverseDirection",
+		"parameters": {
+		  "direction": {"key": "targetDirection"}
+		},
+		"output": {
+		  "direction": "targetDirection"
+		}
+	  },
+	  //END MODIFICATIONS
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": 1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "succeeder",
+            "type": "decorator",
+            "name": "succeeder",
+            "parameters": {},
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "entityInSight",
+                  "type": "action",
+                  "name": "entityInSight",
+                  "parameters": {
+                    "entity": {"key": "target"}
+                  }
+                },
+                {
+                  "title": "entityDirection",
+                  "type": "action",
+                  "name": "entityDirection",
+                  "parameters": {
+                    "entity": {"key": "self"},
+                    "target": {"key": "target"}
+                  },
+                  "output": {
+                    "direction": "targetDirection",
+                    "yDirection": "targetYDir"
+                  }
+                },
+				//BEGIN MODIFICATIONS
+				//Reverse the target direction
+				{
+				  "title": "reverseDirection",
+				  "type": "action",
+				  "name": "reverseDirection",
+				  "parameters": {
+					"direction": {"key": "targetDirection"}
+				  },
+				  "output": {
+					"direction": "targetDirection"
+				  }
+				}
+				//END MODIFICATIONS
+              ]
+            }
+          },
+          {
+            "title": "succeeder",
+            "type": "decorator",
+            "name": "succeeder",
+            "parameters": {},
+            "child": {
+              "title": "sequence",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "inverter",
+                  "type": "decorator",
+                  "name": "inverter",
+                  "parameters": {},
+                  "child": {
+                    "title": "greaterThan",
+                    "type": "action",
+                    "name": "greaterThan",
+                    "parameters": {
+                      "first": {"key": "targetYDir"},
+                      "second": {"value": 0}
+                    }
+                  }
+                },
+                {
+                  "title": "controlDown",
+                  "type": "action",
+                  "name": "controlDown",
+                  "parameters": {}
+                }
+              ]
+            }
+          },
+          {
+            "title": "dynamic",
+            "type": "composite",
+            "name": "dynamic",
+            "parameters": {},
+            "children": [
+              {
+                "title": "sequence",
+                "type": "composite",
+                "name": "sequence",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "onGround",
+                    "type": "action",
+                    "name": "onGround",
+                    "parameters": {}
+                  },
+                  {
+                    "title": "parallel",
+                    "type": "composite",
+                    "name": "parallel",
+                    "parameters": {
+                      "fail": {"value": 1},
+                      "success": {"value": -1}
+                    },
+                    "children": [
+                      {
+                        "title": "animate",
+                        "type": "action",
+                        "name": "animate",
+                        "parameters": {
+                          "fallback": {"value": "<idleState>"},
+                          "state": {"value": "<moveState>"},
+                          "type": {"value": "body"}
+                        }
+                      },
+                      {
+                        "title": "move",
+                        "type": "action",
+                        "name": "move",
+                        "parameters": {
+                          "direction": {"key": "targetDirection"},
+                          "run": {"key": "<run>"}
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "selector",
+                "type": "composite",
+                "name": "selector",
+                "parameters": {},
+                "children": [
+                  {
+                    "title": "sequence",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "greaterThan",
+                        "type": "action",
+                        "name": "greaterThan",
+                        "parameters": {
+                          "first": {"key": "targetYDir"},
+                          "second": {"value": 0}
+                        }
+                      },
+                      {
+                        "title": "failer",
+                        "type": "decorator",
+                        "name": "failer",
+                        "parameters": {},
+                        "child": {
+                          "title": "optional",
+                          "type": "decorator",
+                          "name": "optional",
+                          "parameters": {
+                            "shouldRun": {"key": "<canJump>"}
+                          },
+                          "child": {
+                            "title": "repeater",
+                            "type": "decorator",
+                            "name": "repeater",
+                            "parameters": {
+                              "maxLoops": {"key": "<maxJumps>"},
+                              "untilSuccess": {"value": false}
+                            },
+                            "child": {
+                              "title": "sequence",
+                              "type": "composite",
+                              "name": "sequence",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "dynamic",
+                                  "type": "composite",
+                                  "name": "dynamic",
+                                  "parameters": {},
+                                  "children": [
+                                    {
+                                      "title": "onGround",
+                                      "type": "action",
+                                      "name": "onGround",
+                                      "parameters": {}
+                                    },
+                                    {
+                                      "title": "timer",
+                                      "type": "action",
+                                      "name": "timer",
+                                      "parameters": {
+                                        "time": {"value": 1}
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "title": "jump",
+                                  "type": "module",
+                                  "name": "jump",
+                                  "parameters": {
+                                    "jumpXVelocity": {"value": "<jumpXVelocity>"},
+                                    "jumpYVelocity": {"value": "<jumpYVelocity>"},
+                                    "jumpState": {"value": "<jumpState>"},
+                                    "fallState": {"value": "<fallState>"},
+                                    "jumpXControlForce": {"value": "<jumpXControlForce>"}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "parallel",
+                    "type": "composite",
+                    "name": "parallel",
+                    "parameters": {
+                      "fail": {"value": 1},
+                      "success": {"value": -1}
+                    },
+                    "children": [
+                      {
+                        "title": "controlMove",
+                        "type": "action",
+                        "name": "controlMove",
+                        "parameters": {
+                          "direction": {"key": "targetDirection"},
+                          "run": {"key": "<run>"}
+                        }
+                      },
+                      {
+                        "title": "runner",
+                        "type": "action",
+                        "name": "runner",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "setAnimationState",
+        "type": "action",
+        "name": "setAnimationState",
+        "parameters": {
+          "state": {"value": "<idleState>"},
+          "type": {"value": "body"}
+        }
+      }
+    ]
+  }
+}

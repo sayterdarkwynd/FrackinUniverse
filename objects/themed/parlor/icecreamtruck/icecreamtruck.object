@@ -1,0 +1,38 @@
+{
+  "objectName" : "icecreamtruck",
+  "printable" : false,
+  "colonyTags" : ["parlor","cooking"],
+  "rarity" : "Common",
+  "description" : "You can hear it coming!",
+  "shortdescription" : "Ice Cream Truck",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 100,
+
+  "apexDescription" : "A jolly little tune plays from this vendor's vehicle.",
+  "avianDescription" : "What an adorable tune. I might just whistle along!",
+  "floranDescription" : "Sssong means icy cream is near!",
+  "glitchDescription" : "Excited. That sound must mean frozen treats await!",
+  "humanDescription" : "Huh. This music sounds a little familiar, actually.",
+  "hylotlDescription" : "The music this truck makes... it's putting me on edge for some reason...",
+  "novakidDescription" : "That tune... It's annoyin' alright. But catchy too.",
+
+  "inventoryIcon" : "icecreamtruckicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "icecreamtruck.png:<color>",
+      "imagePosition" : [-32, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+	"animation": "/objects/noisy/noisy.animation",
+
+	"scripts": [
+		"/objects/noisy/noisy.lua",
+		"/scripts/npcToyObject.lua"
+	],
+
+	"sounds": ["/sfx/objects/icecreamtruckjingle.ogg"]
+
+}

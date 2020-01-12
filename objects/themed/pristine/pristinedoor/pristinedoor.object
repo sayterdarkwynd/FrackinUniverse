@@ -1,0 +1,57 @@
+{
+  "objectName" : "pristinedoor",
+  "colonyTags" : ["pristine","pretty","door"],
+  "rarity" : "Uncommon",
+  "description" : "A prim and proper screen door. Light, airy, and welcoming!",
+  "shortdescription" : "Pristine Door",
+  "race" : "generic",
+  "category" : "door",
+  "price" : 0,
+  "printable" : false,
+
+  "apexDescription" : "A tall white door.",
+  "avianDescription" : "This door is certainly well crafted.",
+  "floranDescription" : "Floran likes nice little door.",
+  "glitchDescription" : "Concerned. It's nice, but this story isn't terribly sturdy, is it?",
+  "humanDescription" : "I feel like I'm stepping into my grandma's house.",
+  "hylotlDescription" : "This is certainly a well-kept door.",
+  "novakidDescription" : "A door. A little too clean for my tastes.",
+
+  "inventoryIcon" : "pristinedooricon.png",
+  "tooltipKind" : "door",
+  "largeImage" : "pristinedoor.png:right",
+  "orientations" : [
+    {
+      "image" : "pristinedoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/wooddoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/wooddoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "pristinedoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

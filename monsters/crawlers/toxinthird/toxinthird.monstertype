@@ -1,14 +1,26 @@
 {
   "type" : "toxinthird",
   "shortdescription" : "toxinthird",
-  "description" : "A sentient mass of fluids resulting from the division of a toxin",
+  "description" : "A sentient mass of fluids resulting from the division of a toxin.",
 
   "categories" : [ "toxinthird" ],
   "parts" : [ "body" ],
 
   "animation" : "toxinthird.animation",
 
-  "dropPools" : [ { "default" : "extraMonsterPoison", "bow" : "extraMonsterPoison" } ],
+  "dropPools" : [ 
+    { 
+      "default" : "extraMonsterPoison", 
+      "bow" : "extraMonsterPoisonHunting",
+      "firebow" : "extraMonsterPoisonHunting",
+      "icebow" : "extraMonsterPoisonHunting",
+      "poisonbow" : "extraMonsterPoisonHunting",
+      "electricbow" : "extraMonsterPoisonHunting",
+      "cosmicbow" : "extraMonsterPoisonHunting",
+      "radioactivebow" : "extraMonsterPoisonHunting",
+      "shadowbow" : "extraMonsterPoisonHunting"
+    } 
+  ],
 
   "baseParameters" : {
     "scripts" : [

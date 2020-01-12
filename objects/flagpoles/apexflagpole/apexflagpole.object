@@ -1,0 +1,52 @@
+{
+  "objectName" : "apexflagpole",
+  "colonyTags" : ["apex"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 0,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+  
+  "description" : "An Apex flag. The symbol of the Miniknog. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Apex Flag",
+  "race" : "apex",
+
+  "apexDescription" : "This Apex flag is not one us Resistance types respond well to.",
+  "avianDescription" : "The Apex flag of oppression.",
+  "floranDescription" : "Floran think this monkey flag mean ssspeed boost!",
+  "glitchDescription" : "Statement. An Apex flag.",
+  "humanDescription" : "This Apex flag is somewhat familiar.",
+  "hylotlDescription" : "This Apex flag reminds us of their barbaric hierarchy.",
+  "novakidDescription" : "This ain't the flag of no civil Apex folk, that's for sure.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "apexflagpoleicon.png",
+  "orientations" : [
+    {
+      "image" : "apexflagpole.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "apexflagpole.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

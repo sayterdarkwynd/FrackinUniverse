@@ -12,15 +12,16 @@
   "itemTags" : ["weapon", "fist", "upgradeableWeapon", "precursor", "energy"],
 
   "inventoryIcon" : "precursorfist.png:front",
-  "animation" : "fistweapon.animation",
+  "animation" : "fistweaponglow.animation",
   "animationParts" : {
     "weapon" : "precursorfist.png",
+    "weaponfullbright" : "precursorfistfullbright.png",
     "swoosh" : "swoosh/precursorswoosh.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
-      "damageArea" : [[-3.5, -1.1], [4.5, -0.6], [4.5, 0.8], [-3.5, 1.3]]
-    }}}}}}},
+    "animatedParts" : { 
+      "parts" : { 
+      "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {"damageArea" : [[-3.5, -1.1], [4.5, -0.6], [4.5, 0.8], [-3.5, 1.3]]}}}}}}},
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
     }
@@ -35,7 +36,7 @@
   "comboCooldown" : 0.3,
   "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/supernovarush.combofinisher",
 
-  "freezeLimit" : 0,
+  "freezeLimit" : 1.4,
   "elementalType" : "radioactive",
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/fist/punch.lua"],

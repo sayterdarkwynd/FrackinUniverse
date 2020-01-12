@@ -4,7 +4,9 @@
   "inventoryIcon" : "lasrifle.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "The most popular weapon in the galaxy^yellow;Reliable^reset;",
+  "description" : "The most popular weapon in the galaxy
+^yellow;Reliable^reset;
+^tellow;Counts as 'Energy' for set bonuses^reset;",
     "shortdescription" : "Laser Rifle",
   "category" : "assaultRifle",
   "level" : 2,
@@ -30,14 +32,14 @@
       "parts" : {
         "middlefullbright" : {
 		  "properties" : {
-		    "offset" : [1.5, 0.1]
+		    "offset" : [1.25, 0.25]
 		  }
 		}
       }
     }
   },
-  "baseOffset" : [1.4, 0.2],
-  "muzzleOffset" : [1.5, 0.1],
+  "baseOffset" : [1.25, 0.25],
+  "muzzleOffset" : [1.75, 0.875],
 
   "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
 
@@ -111,12 +113,13 @@
       "animatedParts" : {
         "parts" : {
           "middlefullbright" : {
-            "properties" : { "offset" : [1.5, 0.1] }
+            "properties" : { "offset" : [1.25, 0.25] }
           }
         }
       }
     },
-
+    "muzzleOffset" : [1.75, 0.875],
+    
       "primaryAbility" : {
 	    "fireTime" : 0.15,
 	    "baseDps" : 10,

@@ -1,0 +1,52 @@
+{
+  "objectName" : "atropuslavalamp",
+  "colonyTags" : ["atropus","light"],
+  "rarity" : "legendary",
+  "category" : "light",
+  "price" : 500,
+  "description" : "A lamp filled with what looks to be pus. The outer flesh pulses.",
+  "shortdescription" : "Flesh Lava Lamp",
+  "race" : "generic",
+
+  "lightColor" : [189, 168, 65],
+  "lightPosition" : [0, 1],
+
+  "flickerPeriod" : 0.5,
+  "flickerMinIntensity" : 0.725,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+
+  "inventoryIcon" : "atropuslavalampicon.png",
+  "orientations" : [
+    {
+      "image" : "atropuslavalamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "atropuslavalamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "default.animation",
+  "animationParts" : {
+    "bg" : "atropuslavalamp.png",
+    "fg" : "atropuslavalamplit.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

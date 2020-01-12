@@ -1,0 +1,36 @@
+{
+  "objectName" : "lobstertrap",
+  "rarity" : "Common",
+  "description" : "Occasionally catches delicious lobsters when placed in ocean water. Can hold 3 lobsters.",
+  "shortdescription" : "Lobster Trap",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 25,
+  "printable" : false,
+  "objectType" : "container",
+
+  "inventoryIcon" : "lobstertrap.png",
+  "orientations" : [
+    {
+      "dualImage" : "lobstertrap.png:<color>",
+
+      "imagePosition" : [-12, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "outputNodes" : [ [0, 0] ],
+  "scripts" : [ "/scripts/lobstertrap.lua" ],
+  "scriptDelta" : 300,
+  "slotCount" : 1,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "wellslots" : [
+    {"name" : "fulobster","ratio" : 100,"max" : 3}
+  ]
+}

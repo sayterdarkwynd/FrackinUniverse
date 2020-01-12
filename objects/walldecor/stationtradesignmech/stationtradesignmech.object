@@ -1,0 +1,68 @@
+{
+  "objectName" : "stationtradesignmech",
+  "colonyTags" : ["station","electronic"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 0,
+
+  "lightColor" : [62, 84, 89],
+
+  "flickerPeriod" : 0.4,
+  "flickerMinIntensity" : 0.97,
+  "flickerMaxIntensity" : 1.0,
+  "flickerPeriodVariance" : 0,
+  "flickerIntensityVariance" : 0,
+  
+  "description" : "A sign with an image of mech, indicating a mech station.",
+  "shortdescription" : "Mech Station Sign",
+  "race" : "generic",
+
+  "apexDescription" : "This sign is meant to indicate a mech based goods.",
+  "avianDescription" : "This sign denotes a mech station.",
+  "floranDescription" : "Floran doesssn't need fancy tools for mechsss.",
+  "glitchDescription" : "Informed. The image of this symbol is meant to indicate a mech station.",
+  "humanDescription" : "A sign which marks a mech station.",
+  "hylotlDescription" : "Signs like this usually mean there is a nearby mech station.",
+  "novakidDescription" : "Reckon this sign means there's meant to be a mech station 'round here.",
+
+  "inventoryIcon" : "stationtradesignmechicon.png",
+  "orientations" : [
+    {
+      "image" : "stationtradesignmech.png:<color>.<frame>",
+      "imagePosition" : [-8, -8],
+      "animationPosition" : [-8, -8],
+      
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "stationtradesignmech.png:<color>.<frame>",
+      "imagePosition" : [-8, -8],
+      "animationPosition" : [-8, -8],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  // "soundEffect" : "/sfx/objects/tv_static.ogg",
+
+  "animation" : "stationtradesignmech.animation",
+  "animationParts" : {
+    "bg" : "stationtradesignmech.png",
+    "fg" : "stationtradesignmechlit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+
+  "interactive" : false
+}

@@ -15,25 +15,27 @@
   "mask" : "mask.png",
   "level" : 4,
   "itemTags" : [ "upgradeableWeapon" ],
-  "statusEffects" : [
+  "statusEffects" : [ "defense3" ],
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "critChance",
       "amount" : 5
-    },    
+    },
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 10
+      "amount" : 0.5
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 8
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 14
-    },
-    "defense3"
+      "amount" : 8
+    }
   ]
 }

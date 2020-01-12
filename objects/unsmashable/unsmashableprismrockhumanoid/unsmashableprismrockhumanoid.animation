@@ -1,0 +1,110 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "sensorState" : {
+        "default" : "min",
+        "states" : {
+          "min" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "prismrays" ]
+            }
+          },
+          "med" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "prismrays" ]
+            }
+          },
+          "max" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOn" : [ "prismrays" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "prism" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "sensorState" : {
+            "min" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.min"
+              }
+            },
+            "med" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.med"
+              }
+            },
+            "max" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.max"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  
+  "particleEmitters" : {
+    "prismrays" : {
+      "emissionRate" : 2,
+      "emissionVariance" : 0,
+
+      "particles" : [
+        {
+          "particle" : {
+          "type" : "textured",
+          "image" : "/objects/biome/prism/prismrock4/pink.png",
+          "size" : 2.0,
+          "initialVelocity" : [0, 0],
+          "timeToLive" : 0.51,
+          "fullbright" : true,
+          "light" : [100, 0, 0],
+          "layer" : "back",
+          "position" : [2, 2.5],
+          "collidesForeground" : false
+        }
+        },
+        {
+          "particle" : {
+          "type" : "textured",
+          "image" : "/objects/biome/prism/prismrock4/green.png",
+          "size" : 2.0,
+          "initialVelocity" : [0, 0],
+          "timeToLive" : 0.51,
+          "fullbright" : true,
+          "light" : [0, 50, 0],
+          "layer" : "back",
+          "position" : [2, 2.5],
+          "collidesForeground" : false
+        }
+        },
+        {
+          "particle" : {
+          "type" : "textured",
+          "image" : "/objects/biome/prism/prismrock4/blue.png",
+          "size" : 2.0,
+          "initialVelocity" : [0, 0],
+          "timeToLive" : 0.51,
+          "fullbright" : true,
+          "light" : [0, 0, 50],
+          "layer" : "back",
+          "position" : [2, 2.5],
+          "collidesForeground" : false
+        }
+        }
+      ]
+    }
+  }
+}
+

@@ -51,7 +51,7 @@ end
 function update(dt, fireMode, shiftHeld)
 	if sayterG then
 		if sayterG < 0.0 then
-			effectUtil.effectNonPlayersInRange(100,"l6doomed",7*activeItem.ownerPowerMultiplier())--yes, this is intentional.
+			effectUtil.effectNonPlayersInRange("l6doomed",100,7*activeItem.ownerPowerMultiplier())--yes, this is intentional.
 			sayterG=nil
 		else
 			sayterG=sayterG-dt
@@ -59,7 +59,7 @@ function update(dt, fireMode, shiftHeld)
 	end
 	if sayterE then
 		if sayterE < 0.0 then
-			status.addEphemeralEffect("l6doomed",7*activeItem.ownerPowerMultiplier())
+			effectUtil.effectSelf("l6doomed",7*activeItem.ownerPowerMultiplier())
 			sayterE=nil
 		else
 			sayterE=sayterE-dt
@@ -79,7 +79,7 @@ function update(dt, fireMode, shiftHeld)
 	
 	local worldType=world.type()
 
-	if  not shipwarning and world.getProperty("ship.fuel") then
+	if not shipwarning and world.getProperty("ship.fuel") then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("Greg? Greg greg? GREG?!?")
 			storage.fireTimer = 1
@@ -107,7 +107,7 @@ function update(dt, fireMode, shiftHeld)
 			end
 		end
 		return
-	elseif worldType == "outpost" then
+	elseif worldType == "outpost" or worldType == "allianceoutpost" or worldType == "avikanoutpost" or worldType == "alliancefestivalhall" then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("Gregdonkeybow. GREG! Greg. greg...$!@#$!@% GREG.")
 			storage.fireTimer = 1
@@ -119,7 +119,7 @@ function update(dt, fireMode, shiftHeld)
 			storage.fireTimer = 1
 		end
 		return
-	elseif worldType == "protectorate" or worldType == "felinintro" then
+	elseif worldType == "protectorate" or worldType == "felinintro"or worldType == "avikanmission-intro" then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("...donkey...")
 			storage.fireTimer = 6
@@ -164,22 +164,54 @@ function fire(ability,fireMode,throttle)
 		params.pickupDistance=1.5
 		params.snapDistance=4
 	end
+	--current list:
+	--1: Doom player
+	--222: massive recoil
+	--3/33/333: party
+	-- x<10 fallback: alt-throttle:phoenix,alt-reg:cultistshield,primary-throttle:damagebonus,primary-reg:gregfreezeAOE
+	--666: massive status effect spam. very likely to kill.
+	--1000: Doom everything in range.
 	
 	if special == 1 then
-		--someone just drew the unluckiest card in the deck.
-		local message="Sayter."
-		local color={0,0,0}
-		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+		--someone just drew the third unluckiest card in the deck.
 		if sayterE then
 			sayterE=sayterE/2.0
 		else
 			sayterE=4.0
 		end
+		effectUtil.messageParticle(firePosition(),"Sayter.",{0,0,0},0.6,nil,4,nil)
+	elseif special == 222 then
+		local aimVec=aimVector(ability)
+		local aimAngle=vec2.angle(vec2.mul(aimVec,-1))
+		mcontroller.controlApproachVelocityAlongAngle(aimAngle, 1557*projectileCount, 1557*ability.fireTime*projectileCount, true)
+		effectUtil.messageParticle(firePosition(),"Donkey!",{150,75,0},0.6,nil,4,nil)
+	elseif special == 111 and throttle and not world.getProperty("ship.fuel") then
+		--Marvin. Arguably worse than sayter. It will not end until the person dies.
+		--Since they will have no resistances and will be immune to most healing, death is highly likely
+		--unluckiest card in deck.
+		effectUtil.messageParticle(firePosition(),"Marvin.",{0,1,0},0.6,nil,4,nil)
+		effectUtil.effectSelf("marvinSkittles")
 	elseif special == 3 or special == 33 or special == 333 then
 		message="Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!"
 		color={238,130,238}
 		effectUtil.effectSelf("partytime2",special)
 		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+	elseif special == 666 then
+		--second unluckiest card in deck
+		--immune to healing, no resistances, a slew of horrible damaging statuses including one that is basically lava.
+		special=math.floor(math.random(1,13))
+		effectUtil.effectSelf("vulnerability",special)
+		effectUtil.effectSelf("melting",special)
+		effectUtil.effectSelf("negativemiasma",special)
+		effectUtil.effectSelf("darkwaterpoison",special)
+		effectUtil.effectSelf("moltenmetal3",special)
+		effectUtil.effectSelf("radiationburn",special)
+		effectUtil.effectSelf("nitrogenfreeze3",special)
+		effectUtil.effectSelf("sulphuricacideffect",special)
+		effectUtil.effectSelf("blacktarslow",special)
+		effectUtil.effectSelf("fu_nooxygen",special)
+		effectUtil.effectSelf("mad",special)
+		effectUtil.messageParticle(firePosition(),"Kevin.",{0,0,0},0.6,nil,4,nil)
 	elseif special < 10 then
 		local aimVec=aimVector(ability)
 		local projectileType=""
@@ -205,7 +237,7 @@ function fire(ability,fireMode,throttle)
 				color={255,255,0}
 				message="BANANA! BANANA! BANANA!"
 			else
-				effectUtil.effectNonPlayersInRange(100,"timefreezeSkittles",math.max(0,activeItem.ownerPowerMultiplier()))
+				effectUtil.effectNonPlayersInRange("timefreezeSkittles",100,math.max(0,activeItem.ownerPowerMultiplier()))
 				message="Banana? Heh. Rainbow."
 				color={238,130,238}
 			end

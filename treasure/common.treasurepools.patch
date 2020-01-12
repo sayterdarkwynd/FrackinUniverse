@@ -585,5 +585,123 @@
       "weight": 0.005,
       "item": "ancientspear-recipe"
     }
+  },
+  
+//improved bounty loot
+  {
+    "op": "replace",
+    "path": "/valuableTreasure/0/1/pool/1/weight",
+    "value": 0.4
+  },
+  {
+    "op": "add",
+    "path": "/valuableTreasure/0/1/pool/-",
+    "value": {
+      "weight": 0.05,
+      "pool": "fuGenericQuestLoot"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/valuableTreasure/1/1/pool/1/weight",
+    "value": 0.3
+  },
+  {
+    "op": "add",
+    "path": "/valuableTreasure/1/1/pool/-",
+    "value": {
+      "weight": 0.05,
+      "pool": "fuGenericQuestLoot"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/valuableTreasure/2/1/pool/1/weight",
+    "value": 0.3
+  },
+  {
+    "op": "replace",
+    "path": "/valuableTreasure/2/1/pool/3/weight",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/valuableTreasure/2/1/pool/7/weight",
+    "value": 0.03
+  },
+  {
+    "op": "add",
+    "path": "/valuableTreasure/2/1/pool/-",
+    "value": {
+      "weight": 0.05,
+      "pool": "fuGenericQuestLootMid"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/valuableTreasure/3/1/pool/3/weight",
+    "value": 0.1
+  },
+  {
+    "op": "add",
+    "path": "/valuableTreasure/3/1/pool/-",
+    "value": {
+      "weight": 0.05,
+      "pool": "fuGenericQuestLootMid"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/valuableTreasure/-",
+    "value": [
+      4.9,
+      {
+        "pool": [
+          {
+            "weight": 0.25,
+            "item": "techcard"
+          },
+          {
+            "weight": 0.3,
+            "item": "manipulatormodule"
+          },
+          {
+            "weight": 0.1,
+            "item": [
+              "manipulatormodule",
+              2
+            ]
+          },
+          {
+            "weight": 0.1,
+            "item": "upgrademodule"
+          },
+          {
+            "weight": 0.05,
+            "item": "teleportercore"
+          },
+          {
+            "weight": 0.06,
+            "pool": "augments"
+          },
+          {
+            "weight": 0.06,
+            "pool": "petcollars"
+          },
+          {
+            "weight": 0.03,
+            "pool": "uniqueWeapon"
+          },
+          {
+            "weight": 0.02,
+            "pool": "uniqueWeaponRecipe"
+          },
+          {
+            "weight": 0.05,
+            "pool": "fuGenericQuestLootHigh"
+          }
+        ]
+      }
+    ]
   }
 ]

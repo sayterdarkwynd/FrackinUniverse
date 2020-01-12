@@ -1,0 +1,25 @@
+{
+  "projectileName" : "gausssnipershot",
+  "image" : "gausssnipershot.png",
+  "animationCycle" : 0.6,
+  "level" : 6,
+  "frameNumber" : 6,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [165, 120, 40],
+  "power" : 5,
+  "speed" : 100,
+  "timeToLive" : 2,
+  "knockback" : 3,
+  "knockbackDirectional" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smallregularexplosion/smallregularexplosionnodmg.config"
+    }
+  ],
+  //"damageKind" : "fireplasma",
+  "damageKind" : "electricbow",
+  "physics" : "bullet",
+  "emitters" : [ "sparks" ]
+}

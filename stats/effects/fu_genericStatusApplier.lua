@@ -4,6 +4,27 @@ local oldInitStatusApplier=init
 local oldUninitStatusApplier=uninit
 local oldUpdateStatusApplier=update
 
+--[[sample table, pretend it is a 7 second duration effect. this is a doom poison with microstuns every second and ends with a 3 second stun.
+{
+	"statusApplierValues":
+	{
+		"init":[
+			["weakpoison",7]
+			["l6doomed",7]
+		],
+		--update rate is in seconds
+		"updateRate":1
+		--update has no effect unless updateRate is set
+		"update":[
+			["paralysis",0.1]
+		],
+		--careful with uninit, it can be iffy, as dying entities can unload before it is fully called.
+		"uninit":[
+			["paralysis",3]
+		]
+	}
+]]
+
 function init()
 	statusApplierValues=config.getParameter("statusApplierValues",{})
 	if oldInitStatusApplier then oldInitStatusApplier() end

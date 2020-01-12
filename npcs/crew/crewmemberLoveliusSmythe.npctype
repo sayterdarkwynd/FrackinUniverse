@@ -1,7 +1,7 @@
 {
   "type" : "crewmemberLoveliusSmythe",
   "baseType" : "base",
-  "npcname" : "Lovelius Smythe",
+  "npcname" : "Occult Researcher",
   "dropPools" : [ "villagertreasure" ],
 
   "damageTeamType" : "friendly",
@@ -11,7 +11,7 @@
 
   "persistent" : true,
 
-"defenseAmount" : 25,
+  "defenseAmount" : 25,
 
   "scriptConfig" : {
     "behavior" : "crewmember",
@@ -133,7 +133,8 @@
                 "default" : [
               "I'M FREE! AT LONG LAST! Sire, I would travel with you as thanks!",
               "Glorious, wonderful oxygen. Do yourself a favor: Don't be friends with Avians. That sucked ass. I'll follow you now, if you'll have me.",
-              "Let us unravel secrets together, now that you've so graciously freed me."       
+              "Let us unravel secrets together, now that you've so graciously freed me.",
+              "I suppose they meant it literally when they said they intended to keep me forever. Avian hospitality is rather poor."
                 ]
               }
             },
@@ -240,8 +241,11 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "durasteelrevolver" ],
-            "secondary" : [ "fuflashlight" ]
+            "primary" : [ "protopistol","nitrogenpistol","durasteelrevolver","swtjc_ewg_rarebeampistol","swtjc_ewg_rarerevolver","aegisaltpistol3","biopistol","blisterpistol","fusteampunkgun" ],
+            "secondary" : [ "fuflashlight" ],
+			"head" :  [{ "name" : "randolphcarterhat", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
+			"chest" : [ { "name" : "smartchest", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
+            "legs" : [ { "name" : "smartpants", "count" :1, "parameters" : { "colorIndex" : 3 } } ]
           }
         ] ]
     ]
@@ -262,7 +266,7 @@
         "baseValue" : 220.0
       },
       "powerMultiplier" : {
-        "baseValue" : 0.32
+        "baseValue" : 1.0
       },
       "healthRegen" : {
         "baseValue" : 2.0

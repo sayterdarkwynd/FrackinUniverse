@@ -173,7 +173,7 @@ function fire(orbIndex)
 	    animator.playSound("fire")
 	  end
    -- fu energy cost
-     self.energyCost = 5 * config.getParameter("level", 1)
+     self.energyCost = config.parameter("fireEnergyCost",1) * config.getParameter("level", 1)
      status.overConsumeResource("energy", self.energyCost)
   end
 

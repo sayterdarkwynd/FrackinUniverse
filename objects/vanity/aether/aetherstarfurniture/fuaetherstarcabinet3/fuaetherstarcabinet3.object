@@ -1,0 +1,48 @@
+{
+	"objectName": "fuaetherstarcabinet3",
+	"colonyTags": ["fu", "aether", "pretty", "valuable", "storage"],
+	"rarity": "Legendary",
+	"objectType": "container",
+	"tooltipKind": "container",
+	"category": "storage",
+	"price": 160,
+	"description": "A large pretty dresser.",
+	"shortdescription": "Cosmic Aether Dresser",
+	"race": "generic",
+	"health": 1.5,
+	"lightColor" : [120, 20, 180],
+
+	"inventoryIcon": "fuaetherstarcabinet3icon.png",
+	"orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fuaetherstarcabinet3.png" }, { "image" : "fuaetherstarcabinet3_fullbright.png", "fullbright" : true } ],
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fuaetherstarcabinet3.png" }, { "image" : "fuaetherstarcabinet3_fullbright.png", "fullbright" : true } ],
+      "imagePosition" : [-16, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+	"openSounds": ["/sfx/objects/woodendoor_open.ogg"],
+	"closeSounds": ["/sfx/objects/woodendoor_close.ogg"],
+	"slotCount": 32,
+	"uiConfig": "/interface/chests/chest<slots>.config",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600
+}

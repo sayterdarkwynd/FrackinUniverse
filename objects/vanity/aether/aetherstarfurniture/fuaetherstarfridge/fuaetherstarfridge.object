@@ -1,0 +1,50 @@
+{
+  "objectName" : "fuaetherstarfridge",
+  "colonyTags" : ["fu","aether","pretty","valuable","storage","cooking"],
+  "rarity" : "Legendary",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "category" : "fridgeStorage",
+  "price" : 110,
+  "description" : "A pretty fridge for keeping food cold.",
+  "shortdescription" : "Cosmic Aether Fridge",
+  "race" : "generic",
+  "health" : 1.5,
+  "lightColor" : [120, 20, 180],
+
+  "inventoryIcon" : "fuaetherstarfridgeicon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "fuaetherstarfridgeleft.png" }, { "image" : "fuaetherstarfridgeleft_fullbright.png", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+      "flipImages" : false,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "fuaetherstarfridgeright.png" }, { "image" : "fuaetherstarfridgeright_fullbright.png", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/fridge_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/fridge_close.ogg" ],
+  "slotCount" : 48,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "itemAgeMultiplier" : 0.0
+}

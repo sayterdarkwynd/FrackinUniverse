@@ -1,0 +1,54 @@
+{
+	"name": "marvinSkittles",
+	"effectConfig": {
+		"controlModifiers": {
+			"facingSuppressed": true,
+			"movementSuppressed": true
+		},
+		"stats": [
+			{
+				"stat": "healingStatusImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "negativeMiasma",
+				"amount": 1
+			},
+			{
+				"stat": "damageMultiplier",
+				"effectiveMultiplier": 0
+			}
+		],
+		"statusApplierValues": {
+			"init": [
+				[
+					"vulnerability",1.1
+				],
+				[
+					"activemovementdummy",1.1
+				]
+			],
+			"update": [
+				[
+					"vulnerability",1.1
+				],
+				[
+					"activemovementdummy",1.1
+				]
+			],
+			"updateRate":1
+		}
+	},
+	"defaultDuration": 1,
+
+	"scripts": [
+		"marvinSkittles.lua",
+		"/stats/effects/fu_genericStatApplier.lua",
+		"/stats/effects/fu_genericControlModifiers.lua",
+		"/stats/effects/fu_genericStatusApplier.lua"
+	],
+
+	"label": "Dunce Rage",
+	"icon": "/interface/statuses/doomed.png"
+
+}

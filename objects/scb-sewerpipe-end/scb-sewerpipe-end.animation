@@ -1,0 +1,97 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dripping" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "dribble" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "particleEmittersOn" : [ "dribble" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "bg" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "dripping" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            }
+          }
+        }
+      },
+      "fg" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1
+        },
+
+        "partStates" : {
+          "dripping" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dribble" : {
+      "emissionRate" : 1,
+      "emissionRateVariance" : 0.3,
+      "renderLayer" : "foregroundentity+2",
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip2.animation",
+            "position" : [1, -0.1],
+            "initialVelocity" : [0, -10],
+            "finalVelocity" : [0, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "size" : 1.0,
+            "timeToLive" : 1,
+            "variance" : {
+//              "initialVelocity" : [0, 4],
+              "position" : [0.1, 0]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

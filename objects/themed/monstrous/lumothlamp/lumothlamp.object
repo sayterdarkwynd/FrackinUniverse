@@ -1,0 +1,48 @@
+{
+  "objectName" : "lumothlamp",
+  "colonyTags" : ["monstrous", "light"],
+  "printable" : false,
+  "rarity" : "Uncommon",
+  "description" : "A lamp modeled after a Lumoth. All of the charm and efficiency with none of the fluttering!",
+  "shortdescription" : "Monstrous Lamp",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 0,
+  "lightColor" : [217, 217, 190],
+
+  "apexDescription" : "How cute... Though I suppose actual Lumoth are as well.",
+  "avianDescription" : "Lumoth are interesting creatures. It's a shame they all seem to be so hostile.",
+  "floranDescription" : "Lumoth light issn't powered by fire. Floran could use them to light their entire village!",
+  "glitchDescription" : "Smitten. An absolutely adorable lamp of an absolutely adorable creature. Just look at those little wings!",
+  "humanDescription" : "I guess the base of this lamp is to keep it from flying away?",
+  "hylotlDescription" : "A rather clever idea for lighting... And adorable to boot.",
+  "novakidDescription" : "A Lumoth shaped lamp. Where do Lumoth come from anyhow?",
+
+  "inventoryIcon" : "lumothlampicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "lumothlamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "lumothlamp.png",
+    "fg" : "lumothlamplit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+  "amimationPosition" : [0, 0]
+
+}

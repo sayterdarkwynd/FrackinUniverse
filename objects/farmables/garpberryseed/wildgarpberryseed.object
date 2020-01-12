@@ -3,7 +3,7 @@
   "colonyTags" : [ "nature" ],
   "rarity" : "Rare",
   "category" : "seed",
-  "description" : "A strange radioactive stalk.",
+  "description" : "A strange, toxic radioactive stalk.",
   "shortdescription" : "Garp Berry Plant",
   "objectType" : "farmable",
   "printable" : false, 
@@ -44,6 +44,16 @@
   ],
     "maxImmersion" : 0.4,
     "consumeSoilMoisture" : true,
+    
+          "touchDamage" : {
+            "poly" : [ [0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0] ],
+            "damage" : 8,
+
+            "damageType" : "IgnoresDef",
+            "damageSourceKind" : "radioactive",
+            "statusEffects" : [ "radiationburn" ]
+          },
+          
   "breakDropOptions" : [
     [ [ "garpberryseed", 1, { } ] ]
   ]

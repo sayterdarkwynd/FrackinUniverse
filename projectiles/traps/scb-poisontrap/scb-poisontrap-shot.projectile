@@ -1,0 +1,29 @@
+{
+  "projectileName" : "scb-poisontrap-shot",
+  "image" : "scb-poisontrap-shot.png",
+  "physics" : "grenade",
+  "animationCycle" : 1,
+  "frameNumber" : 5,
+  "timeToLive" : 1.0,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/poisonrain_impact.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "acidexplosion",
+      "fuzzAngle" : 3,
+      "inheritDamageFactor" : 1,
+      "inheritSpeedFactor" : 0.9,
+      "angleAdjust" : -5
+    }
+  ],
+  "power" : 10.0,
+  "speed" : 50,
+  "damageKind" : "acid",
+  "emitters" : [ "poisonslowdrip" ]
+
+}

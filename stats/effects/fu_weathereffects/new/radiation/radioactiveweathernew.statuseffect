@@ -1,26 +1,54 @@
 {
   "name" : "radioactiveweathernew",
-  "blockingStat" : "biomeradiationImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "radioactiveResistance",
-          "effectCutoffValue" : 0.2,   
-	  "biomeTemp" : 1.1, 
-	  "biomeThreshold" : 0.5,
-	  "baseRate" : 5,
-	  "baseDebuffPerTick" : 3,
-	  "baseDmgPerTick" : 3,
-	  "situationPenalty" : 1.2,
-	  "liquidPenalty" : 0.7,
-	  "biomeNight" : 1.1
+    "resistanceTypes" : {
+      "radioactiveResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.2,
+    "immunityStats" : [
+      "biomeradiationImmunity",
+      "ffextremeradiationImmunity"
+    ],
+
+    "healthDrain" : 2,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0,
+    "jumpPenalty" : 0,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {
+      "maxHealth" : {
+        "amount" : -3.0
+      },
+      "maxEnergy" : {
+        "amount" : -3.0,
+        "cap" : -1
+      }
+    },
+
+    "modifiers" : {
+      "windy" : 1.2
+    },
+
+    "messages" : {
+      "intro" : "biomeradiation",
+      "windy" : "ffbiomeradiationwind"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/radiation/radioactiveweathernew.statuseffect"
   },
-  "defaultDuration" : 120,
+  "defaultDuration" : 20,
 
   "scripts" : [
     "radioactiveweathernew.lua"
   ],
 
   "animationConfig" : "radioactiveweathernew.animation",
+  
   "label" : "Severe Radiation",
   "icon" : "/interface/statuses/radiation1.png"
 }

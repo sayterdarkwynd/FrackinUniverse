@@ -6,7 +6,7 @@ function activate(fireMode, shiftHeld)
 		activeItem.interact("ScriptPane", "/interface/scripted/statWindow/statWindow.config")
 		animator.playSound("activate")
 	elseif fireMode == "alt" then
-		activeItem.interact("ScriptPane", "/interface/scripted/fu_tutorialQuestList/fu_tutorialQuestList.config")
+		activeItem.interact("ScriptPane", "/zb/questList/questList.config")
 		animator.playSound("activate2")
     end
     

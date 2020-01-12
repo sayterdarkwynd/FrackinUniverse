@@ -16,6 +16,7 @@ function init()
   self.state:set(wakeSail)
 
   self.interactTimer = 0
+  self.activationTimer = 1
 end
 
 function questInteract(entityId)
@@ -37,9 +38,24 @@ function update(dt)
   self.interactTimer = math.max(self.interactTimer - dt, 0)
   
   promises:update()
+  
+  if self.questComplete and not self.techstationFound then
+    promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
+      self.techstationFound = true
+	end)
+    if self.activationTimer <= 0 then
+      self.techstationFound = true
+    else
+      self.activationTimer = self.activationTimer - dt
+    end	
+  end
+  
+  if self.techstationFound then
+    quest.complete()
+  end
 end
 
-function wakeSail()
+function wakeSail(dt)
   quest.setCompassDirection(nil)
   quest.setObjectiveList({
     {self.descriptions.wakeSail, false}
@@ -69,17 +85,13 @@ function wakeSail()
 
     local shipUpgrades = player.shipUpgrades()
     if shipUpgrades.shipLevel > 0 or player.hasQuest("fu_byos") then
-        --promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
-        --  quest.complete()
-	--  end, function()
-	--end)   
-	  quest.complete()
-	  world.sendEntityMessage(self.techstationUid, "activateShip")
+        self.questComplete = true
     end
     coroutine.yield()
   end
 end
 
 function questComplete()
+  status.addEphemeralEffect("fu_byosfindship", 10)
   questutil.questCompleteActions()
 end

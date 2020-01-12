@@ -5,10 +5,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-   "description" : "Set Bonus:
-^cyan;Immune: Heat, Lava, Burning^reset;
-^#e43774;60% Fire Resist^reset;
-^green;+15% Physical Resist and +3% Crit (Isogen weapons)^reset;", 
+  "description" : "^green;10%^reset; Fire Resist
+^orange;Set Bonuses^reset;:
+Isogen weapons: ^cyan;+15%^reset; Phys Resist ,^green;+3%^reset; Crit
+\n^cyan;Immune^reset;: Heat, Lava, Burning, Breath",
+
   "shortdescription" : "Isogen Greaves",
   "category" : "t6armor",
   "tooltipKind" : "armornew2",
@@ -42,9 +43,9 @@
   ],
 
   "statusEffects" : [
-    "isogensetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_isogenset_legs",
+      "stat" : "isogensetcount",
       "amount" : 1
     },
     {

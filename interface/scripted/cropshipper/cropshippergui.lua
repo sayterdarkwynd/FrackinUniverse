@@ -2,12 +2,14 @@ function init()
   local acceptItems = config.getParameter("acceptItems")
   local sellFactor = config.getParameter("sellFactor")
   self.itemValues = {}
-  for _, itemName in pairs(acceptItems) do
+  
+  for _, itemName in ipairs(acceptItems) do
     local itemConfig = root.itemConfig(itemName)
-    if itemConfig.config.price and itemConfig.config.price > 0 then
-      self.itemValues[itemName] = math.ceil(itemConfig.config.price * sellFactor)
+    if itemConfig then
+        self.itemValues[itemName] = math.ceil((itemConfig.config.price or 0) * sellFactor)
     end
   end
+  
 end
 
 function update(dt)

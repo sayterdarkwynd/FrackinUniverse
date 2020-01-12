@@ -1,0 +1,33 @@
+{
+  "objectName" : "nightarmedievalarmorswitch",
+  "colonyTags" : ["nightar","glitchcastle","combat","pretty","wired"],
+  "rarity" : "Common",
+  "description" : "Shiny armour stands resolute. Hmm... The shield looks loose.",
+  "shortdescription" : "Suspicious Display Armour",
+  "race" : "nightar",
+  "category" : "wire",
+  "price" : 195,
+
+  "inventoryIcon" : "medievalarmorswitchicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "medievalarmorswitch.png:<color>.off",
+      "imagePosition" : [-16, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/switch/switch.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle2.animation",
+  "animationParts" : {
+    "switch" : "medievalarmorswitch.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "outputNodes" : [ [0, 0] ]
+}

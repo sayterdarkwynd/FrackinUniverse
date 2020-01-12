@@ -1,0 +1,76 @@
+{
+  "objectName" : "borealcounter",
+  "colonyTags" : ["boreal","cooking"],
+  "rarity" : "Uncommon",
+  "category" : "crafting",
+  "description" : "A lovingly carved pine wood counter with a pot bellied stove. Enough firewood is key to surviving bitter winter nights.",
+  "shortdescription" : "Boreal Counter",
+  "race" : "generic",
+  "printable" : false,
+
+  "lightColor" : [179, 149, 107],
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "apexDescription" : "An old wood burning stove. There's a cozy charm about it.",
+  "avianDescription" : "This kind of stove must be invaluable in frigid regions.",
+  "floranDescription" : "Metal door should keep Floran ssafe from fire inside.",
+  "glitchDescription" : "Relaxed. The crackling of the fire in this stove is calming.",
+  "humanDescription" : "Looks like there's enough wood here to keep this fire going all night long!",
+  "hylotlDescription" : "A primitive source of heat, but charming nonetheless.",
+  "novakidDescription" : "A warm pot belly stove.",
+
+  "inventoryIcon" : "borealcountericon.png",
+  "orientations" : [
+    {
+      "image" : "borealcounter.png:<color>.<frame>",
+      "imagePosition" : [-24, 0],
+      "animationPosition" : [-24, 0],
+      "direction" : "left",
+      "flipImages" : true,      
+
+      "spaceScan" : 0.7,
+      "interactiveSpaces": [ 
+        [-1, 0], [0, 0], [1, 0], [2, 0], [-1, 1], [0, 1], [1, 1], [2, 1]
+      ],
+      "collision" : "platform",
+      "collisionSpaces": [ 
+        [-1, 0], [0, 0], [1, 0], [2, 0], [-1, 1], [0, 1], [1, 1], [2, 1]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "borealcounter.png:<color>.<frame>",
+      "imagePosition" : [-24, 0],
+      "animationPosition" : [-24, 0],
+      "direction" : "right",
+      
+      "spaceScan" : 0.7,
+      "interactiveSpaces": [ 
+        [0, 0], [-1, 0], [-2, 0], [-3, 0], [0, 1], [-1, 1], [-2, 1], [-3, 1]
+      ],
+      "collision" : "platform",
+      "collisionSpaces": [ 
+        [0, 0], [-1, 0], [-2, 0], [-3, 0], [0, 1], [-1, 1], [-2, 1], [-3, 1]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "soundEffect" : "/sfx/objects/furnace.ogg",
+  "animation" : "borealcounter.animation",
+  "animationParts" : {
+    "bg" : "borealcounter.png",
+    "fg" : "borealcounterlit.png"
+  },
+
+  "inputNodes" : [ [0, 0] ],
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/craftingfood.config",
+    "filter" : [ "craftingfood" ]
+  }
+}

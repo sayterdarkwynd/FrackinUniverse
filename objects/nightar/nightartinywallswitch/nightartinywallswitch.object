@@ -1,0 +1,62 @@
+{
+  "objectName" : "nightartinywallswitch",
+  "colonyTags" : ["wired","nightar"],
+  "printable" : false,
+  "rarity" : "legendary",
+  "description" : "A compact switch that can be flipped on or off.",
+  "shortdescription" : "Nightar Tiny Switch",
+  "race" : "nightar",
+
+  "apexDescription" : "A switch. It activates something.",
+  "avianDescription" : "This tiny switch must activate something.",
+  "floranDescription" : "Ssswitch!",
+  "glitchDescription" : "Surprised. This small switch doesn't look that powerful.",
+  "humanDescription" : "How many times can I flip this switch on and off I wonder.",
+  "hylotlDescription" : "A basic switch. It can be used to activate something.",
+  "novakidDescription" : "I can flip this here switch!",
+
+  "category" : "wire",
+  "price" : 100,
+
+  "inventoryIcon" : "nightartinywallswitchicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "nightartinywallswitch.png:<color>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "nightartinywallswitch.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy": {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallswitch"
+    ],
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "defaultReactions" : {},
+    "maxNpcs" : 1
+  }
+}

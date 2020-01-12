@@ -36,12 +36,15 @@ function FlipSlash:windupground()
   self:setState(self.flip)
 end
 
+--nerfed july 21 2019 : increased delay
 function FlipSlash:windupair()
   self.weapon:setStance(self.stances.windup)
 
-  status.setPersistentEffects("weaponMovementAbility", {{stat = "activeMovementAbilities", amount = 1}})
+  status.setPersistentEffects("weaponMovementAbility", {
+	  {stat = "activeMovementAbilities", amount = 1}
+  })
 
-  util.wait(self.stances.windup.duration/4, function(dt)
+  util.wait(self.stances.windup.duration*1.5, function(dt)  --was / 4
       mcontroller.controlCrouch()
     end)
 

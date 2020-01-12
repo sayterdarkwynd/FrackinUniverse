@@ -15,6 +15,6 @@ function update(dt)
 end
 
 function pulse()
-	effectUtil.effectAllInRange(range,"orangegravrainHiddenNoBlock",effect.duration())
-	effectUtil.effectAllInRange(range,"staffslow2",effect.duration())
+	effectUtil.effectAllInRange("orangegravrainHiddenNoBlock",range,effect.duration())
+	effectUtil.effectAllInRange("staffslow2",range,effect.duration())
 end

@@ -1,0 +1,191 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+          "jump" : {
+            "frames" : 3,
+            "cycle" : 0.3
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.2
+          },
+          "walk" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop"
+          },
+          "firewindup" : {
+            "frames" : 3,
+            "cycle" : 0.3
+          },
+          "fire" : {
+            "frames" : 1
+          },
+          "firewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.2
+          }
+        }
+      },
+      "damage" : {
+        "priority" : 3,
+        "default" : "none",
+        "states" : {
+          "none" : {
+            "frames" : 1
+          },
+          "stunned" : {
+            "frames" : 1
+          }
+        }
+      },
+      "releaseParticles" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "releaseParticles" ]
+            }
+          },
+          "on" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOn" : [ "releaseParticles" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "offset" : [0, 0.5],
+          "transformationGroups" : [ "facing", "body" ]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:firewindup.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "firewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:firewinddown.<frame>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "body" : { "interpolated" : true },
+    "facing" : { "interpolated" : false }
+  },
+
+  "particleEmitters" : {
+    "captureParticles" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "releaseParticles" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "teleportOut" : {
+      "particles" : [
+        { "particle" : "monstercapture" }
+      ]
+    },
+    "teleportIn" : {
+      "particles" : [
+        { "particle" : "monsterrelease" }
+      ]
+    },
+    "deathPoof" : {
+      "particles" : [
+        { "particle" : "monstersplosion" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathember" },
+        { "particle" : "deathfizz1left" },
+        { "particle" : "deathfizz1right" },
+        { "particle" : "deathfizz2left" },
+        { "particle" : "deathfizz2right" },
+        { "particle" : "deathfizz3left" },
+        { "particle" : "deathfizz3right" },
+        { "particle" : "deathfizz4left" },
+        { "particle" : "deathfizz4right" }
+      ]
+    }
+  },
+
+  "effects" : {
+    "blink" : {
+      "type" : "flash",
+      "time" : 0.25,
+      "directives" : "fade=ffffff;0.5"
+    }
+  },
+
+  "sounds" : {
+    "aggroHop" : [ ],
+    "fire" : [ "/sfx/gun/pulserifle2.ogg" ],
+    "fire2" : [ "/items/active/weapons/ranged/unique/science/flamepistol/isn_flamethrower.wav" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
+  }
+}

@@ -51,12 +51,14 @@ end
 function questStart()
   player.upgradeShip(config.getParameter("shipUpgrade"))
   self.gateUid = "ancientgate"
+  if not player.hasQuest("madnessquestdata") then
+  	player.startQuest("madnessquestdata")
+  end  
 end
 
 function update(dt)
   self.state:update(dt)
   checkGate()
-
   if storage.stage < 5 and gateActive() then
     storage.stage = 5
     self.state:set(gateRepaired)
@@ -97,7 +99,7 @@ function explore()
       -- Gate is on this world, put buffer onto the exploration timer
       storage.exploreTimer = storage.exploreTimer + buffer
       buffer = 0
-      if world.magnitude(mcontroller.position(), gatePosition) < 200 then
+      if world.magnitude(mcontroller.position(), gatePosition) < 60 then
         self.state:set(gateFound)
         coroutine.yield()
       end
@@ -172,11 +174,11 @@ function collectRepairItem()
   local findGate = util.uniqueEntityTracker("ancientgate2", self.compassUpdate)
   while storage.stage == 3 do
 
-    if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
+    if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
       quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)       
       storage.stage = 4
-    elseif not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
+    elseif not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
       quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)    
     end
@@ -207,10 +209,10 @@ function repairGate()
     questutil.pointCompassAt(findGate())
 
     -- Go back to last stage if player loses core fragments
-    if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) and player.hasItem({name = "statustablet", count = 1}) then
+    if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       storage.stage = 3
       self.state:set(self.stages[storage.stage])
-    elseif not player.hasItem({name = "statustablet", count = 1}) then
+    else 
       storage.stage = 3
       quest.setObjectiveList({{self.descriptions.makeTable, false}})    
       player.radioMessage("fu_start_needstricorder")
@@ -234,7 +236,7 @@ function gateRepaired()
 
   player.radioMessage("gaterepair-gateOpened1")
   player.radioMessage("gaterepair-gateOpened2")
-  player.giveItem("sciencebrochure")
+  player.startQuest("fu_scienceoutpost")
   player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
   player.radioMessage("fu_outpost1")  
   player.radioMessage("fu_outpost2")  
@@ -276,4 +278,16 @@ end
 function questComplete()
   setPortraits()
   questutil.questCompleteActions()
+  
+  
+  if player.hasCompletedQuest("fu_byos") then
+    quest.addReward(config.getParameter("BYOSRewards"))
+    quest.setCompletionText(config.getParameter("BYOSCompletionText"))
+  else
+    player.upgradeShip(config.getParameter("shipUpgrade2"))
+    player.playCinematic(config.getParameter("shipUpgradeCinema"))
+  end 
+  
+  world.sendEntityMessage(player.id(), "setQuestFuelCount", 500)
+
 end

@@ -37,6 +37,16 @@
 
     "dialog" : {
       "crewmember" : {
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Want to swim faster?!!?",
+              "Let me help you out!",
+              "Looks like you could use my assistance!",
+              "I can help!"
+            ]
+          }
+        },
         "roleDescription" : {
           "default" : {
             "default" : [
@@ -88,7 +98,10 @@
       [0, [
           {
             "primary" : [ "randomharpoongun" ],
-            "sheathedprimary" : [ "coralspear" ]          
+            "sheathedprimary" : [ "coralspear" ],
+			"head" :  [{ "name" : "fudiverhead", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
+			"chest" : [ { "name" : "fudiverchest", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
+            "legs" : [ { "name" : "fudiverlegs", "count" :1, "parameters" : { "colorIndex" : 6 } } ]          
           }
         ] ]
     ]

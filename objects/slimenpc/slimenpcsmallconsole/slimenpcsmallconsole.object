@@ -1,0 +1,69 @@
+{
+  "objectName" : "slimenpcsmallconsole",
+  "colonyTags" : ["wired","tier3", "slimenpc", "slimenpchuman"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 50,
+  "lightColor" : [90, 211, 133],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+  "description" : "A slime control console. Press all the buttons!",
+  "shortdescription" : "Small Slime Console",
+  "race" : "slimenpc",
+
+  "slimepersonDescription" : "I feel like I'm one with this console and can control anything with it.",
+  "apexDescription" : "This slimy console offers a large degree of control.",
+  "avianDescription" : "A useful but slimy console.",
+  "floranDescription" : "Floran push buttons. Make thingsss happen!",
+  "glitchDescription" : "Impressed. A single blob can control so many different mechanisms at once.",
+  "humanDescription" : "A control blob. It's just gotta be played with.",
+  "hylotlDescription" : "A gooey control blob.",
+  "novakidDescription" : "Some kinda control console that oozes with goo, I'll only push a few buttons...",
+  "slimenpcDescription" : "Boop boop!",
+  "slimenpchumanDescription" : "A fully-functional control console made of slime.",
+
+  "inventoryIcon" : "slimenpcsmallconsoleicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "slimenpcsmallconsole.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "slimenpcsmallconsole.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallbutton"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

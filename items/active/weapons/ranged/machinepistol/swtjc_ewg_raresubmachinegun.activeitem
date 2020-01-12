@@ -5,7 +5,7 @@
   "rarity" : "Rare",
   "description" : "The power of an assault rifle in a compact one-handed package. Shame that it isn't anywhere nearly as accurate...",
   "shortdescription" : "Rare Submachine Gun",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_submachineGun",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","machinepistol","upgradeableWeapon"],
@@ -65,6 +65,13 @@
       }
     }
   },
+
+  "critChance" : 1,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : [16,32],
+  "reloadTime" : [0.85,1.5],
+  "isMachinePistol" : 1,  
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -130,7 +137,5 @@
     "altAbilities" : [ ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 5
+  }]
 }

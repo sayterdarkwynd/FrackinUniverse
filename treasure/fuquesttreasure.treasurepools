@@ -1,31 +1,67 @@
 {
   "fuStarterDungeonTreasure" : [
-    [1, {  
+    [1, {
       "fill" : [
         {"weight" : 1.0, "pool" : "salvageComponent" },
         {"weight" : 1.0, "pool" : "salvageComponent" },
         {"weight" : 1.0, "pool" : "salvageComponent" },
-        {"weight" : 1.0, "pool" : "challengeChestTreasure" }
+        {"weight" : 1.0, "pool" : "fucodexRandom" },
+        {"weight" : 0.5, "pool" : "challengeChestTreasure" }
       ],
       "allowDuplication" : true
     }]
+  ],
+
+"starterRope" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1, "item" : ["climbingrope", 8]}
+      ]
+    } ]
   ],
   
 "starterExplosive" : [
     [1, {
       "fill" : [
         {"weight" : 1, "item" : ["climbingrope", 8]}
-      ],    
+      ],
       "pool" : [
         {"weight" : 0.10, "item" : "commonrocketlauncher"},
         {"weight" : 0.90, "item" : ["bomb", 5]}
       ]
     } ]
+  ],
+"starterMechTablet" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1, "item" : ["mechtablet", 1]}
+      ],
+      "pool" : [
+        {"weight" : 0.90, "item" : ["unrefinedliquidmechfuel", 20]}
+      ]
+    } ]
+  ],  
+"starterMechFuel" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1, "item" : ["unrefinedliquidmechfuel", 100]}
+      ]
+    } ]
   ],    
-  
-  
+"starterTechTablet" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1, "item" : ["techtablet", 1]}
+      ],
+      "pool" : [
+        {"weight" : 0.10, "item" : "commonpistol"},
+        {"weight" : 0.90, "item" : ["bomb", 5]}
+      ]
+    } ]
+  ],
+
   "thelusianTreasure" : [
-    [1, {  
+    [1, {
       "pool" : [
         {"weight" : 0.2, "item" : ["thelusian1-codex", 1]},
         {"weight" : 0.2, "item" : ["thelusian2-codex", 1]},
@@ -33,7 +69,7 @@
         {"weight" : 0.2, "item" : ["thelusian4-codex", 1]},
         {"weight" : 0.2, "item" : ["thelusian5-codex", 1]},
         {"weight" : 0.2, "item" : ["thelusian6-codex", 1]},
-        {"weight" : 0.2, "item" : ["thelusian7-codex", 1]}      
+        {"weight" : 0.2, "item" : ["thelusian7-codex", 1]}
       ],
         "poolRounds" : [
           [1.0, 1]
@@ -41,16 +77,17 @@
       "allowDuplication" : true
     }]
   ],
-  
-  
+
+
   "fuWastesBookTreasure" : [
-	    [1, 
-	      { "fill" : [ {"weight" : 1, "item" : ["fugrimoire", 1]} 
-	    ] 
+	    [1,
+	      { "fill" : [ {"weight" : 1, "pool" : "fuprecursorLoot"}
+	    ]
     }]
   ],
+  
   "gregbookTreasure" : [
-    [1, {  
+    [1, {
       "pool" : [
         {"weight" : 0.2, "item" : ["greg1-codex", 1]},
         {"weight" : 0.2, "item" : ["greg2-codex", 1]},
@@ -61,7 +98,7 @@
         {"weight" : 0.2, "item" : ["greg7-codex", 1]},
         {"weight" : 0.2, "item" : ["greg8-codex", 1]},
         {"weight" : 0.2, "item" : ["greg9-codex", 1]},
-        {"weight" : 0.2, "item" : ["greg10-codex", 1]}        
+        {"weight" : 0.2, "item" : ["greg10-codex", 1]}
       ],
         "poolRounds" : [
           [1.0, 1]
@@ -69,7 +106,7 @@
       "allowDuplication" : true
     }]
   ],
-  
+
   "wagnerTreasure" : [
     [1, {
       "fill" : [
@@ -80,25 +117,25 @@
       ]
     }]
   ],
-  
- 
-  
+
+
+
 "precursorUnlock" : [
     [1, {
       "fill" : [
         {"item" : ["sciencebrochure2", 1]}
       ]
     } ]
-  ],  
-  
+  ],
+
 "titanLoot" : [
     [1, {
       "fill" : [
         {"item" : ["stormwarden", 1]}
       ]
     } ]
-  ],  
-  
+  ],
+
 "fuprecursorLoottechQuestSpecial" : [
     [1, {
       "fill" : [
@@ -107,7 +144,7 @@
       ]
     } ]
   ],
-  
+
   "fuprecursorResources" : [
     [1, {
       "pool" : [
@@ -118,7 +155,7 @@
         {"weight" : 0.05, "item" : "teleportercore"},
     	{"weight" : 0.05, "item" : ["ff_spareparts", 1]},
     	{"weight" : 0.05, "item" : ["laserdiode", 1]},
-    	{"weight" : 0.05, "item" : ["fuprocessor", 1]}, 
+    	{"weight" : 0.05, "item" : ["fuprocessor", 1]},
         {"weight" : 0.05, "item" : "precursorbattery"},
         {"weight" : 0.05, "item" : "precursorcharger"},
         {"weight" : 0.05, "item" : "precursorchip"},
@@ -126,8 +163,8 @@
         {"weight" : 0.05, "item" : "precursordatadrive"},
         {"weight" : 0.05, "item" : "precursorfluid"},
         {"weight" : 0.05, "item" : "precursorfuelcell"},
-        {"weight" : 0.05, "item" : "precursorgel"},
-        {"weight" : 0.05, "item" : "precursorgrease"},
+        {"weight" : 0.1, "item" : "precursorgel"},
+        {"weight" : 0.1, "item" : "precursorgrease"},
         {"weight" : 0.05, "item" : "precursorram"},
         {"weight" : 0.05, "item" : "exoticmatter"},
         {"weight" : 0.05, "item" : "honedlunari"}
@@ -140,7 +177,7 @@
       "allowDuplication" : true
     } ]
   ],
-  
+
   "fuprecursorMedical" : [
     [1, {
       "pool" : [
@@ -170,9 +207,10 @@
     	  {"weight" : 0.2, "item" : "sentrybotcraft2-recipe"},
     	  {"weight" : 0.1, "item" : "sentrybotcraft3-recipe"},
     	  {"weight" : 0.3, "item" : "sentrybotdeathdroid-recipe"},
-        {"weight" : 0.1, "item" : "fuprecursorhead-recipe"},
-        {"weight" : 0.1, "item" : "fuprecursorchest-recipe"},
-        {"weight" : 0.1, "item" : "fuprecursorpants-recipe"},      
+          {"weight" : 0.1, "item" : "fuprecursorhead-recipe"},
+          {"weight" : 0.1, "item" : "fuprecursorchest-recipe"},
+          {"weight" : 0.1, "item" : "fuprecursorpants-recipe"},
+          {"weight" : 0.1, "item" : "fu_byosteleporterprecursor-recipe"},
     	  {"weight" : 0.3, "item" : "precursorcodex1-codex"},
     	  {"weight" : 0.3, "item" : "precursorcodex2-codex"},
     	  {"weight" : 0.3, "item" : "precursorcodex3-codex"},
@@ -223,6 +261,7 @@
         {"weight" : 0.05, "item" : [ "precursorpistolshock", 1]},
         {"weight" : 0.005, "item" : [ "precursorcannonnew", 1]},
         {"weight" : 0.05, "item" : [ "chargesmg", 1]},
+        {"weight" : 0.05, "item" : [ "precursorrapier", 1]},
         {"weight" : 0.05, "item" : [ "mechgun", 1]},
         {"weight" : 0.05, "item" : [ "mechpistol", 1]},
         {"weight" : 0.05, "item" : [ "precursorboomerang", 1]}
@@ -235,8 +274,8 @@
       "allowDuplication" : true
     } ]
   ],
-  
-  
+
+
   "fuprecursorLoot" : [
     [1, {
       "pool" : [
@@ -247,10 +286,10 @@
         {"weight" : 0.007, "pool" : "artifactloot" },
         {"weight" : 0.07, "pool" : "augments"},
         {"weight" : 0.07, "pool" : "petcollars2"},
-        {"weight" : 0.04, "item" : "precursoraltar"},        
-        {"weight" : 0.04, "item" : "precursoraltar2"}, 
-        {"weight" : 0.03, "item" : "precursordatabox"}, 
-        {"weight" : 0.02, "item" : "precursormatrix"}, 
+        {"weight" : 0.04, "item" : "precursoraltar"},
+        {"weight" : 0.04, "item" : "precursoraltar2"},
+        {"weight" : 0.03, "item" : "precursordatabox"},
+        {"weight" : 0.02, "item" : "precursormatrix"},
         {"weight" : 0.05, "item" : "precursormonitor"},
         {"weight" : 0.05, "item" : "precursormonitorhuge"},
         {"weight" : 0.05, "item" : "precursorobelisk"},
@@ -262,17 +301,17 @@
         {"weight" : 0.05, "item" : "precursorchair2"},
         {"weight" : 0.05, "item" : "precursorpillar1"},
         {"weight" : 0.05, "item" : "precursorpillar2"},
-        {"weight" : 0.05, "item" : "precursorshelf"},
+        {"weight" : 0.07, "item" : "precursorshelf"},
         {"weight" : 0.01, "item" : "precursorsmelter"},
-        {"weight" : 0.05, "item" : "precursortable"},
-        {"weight" : 0.04, "item" : "precursordoor"},
-        {"weight" : 0.04, "item" : "precursordoor2"},
-        {"weight" : 0.04, "item" : "precursorweaponrack"},
-        {"weight" : 0.04, "item" : "precursorverticaldoor2"},
-        {"weight" : 0.04, "item" : "precursortinyswitch"},
-        {"weight" : 0.03, "item" : "precursorforcelift"},
-        {"weight" : 0.02, "item" : "precursorlightstrip"},
-        {"weight" : 0.02, "item" : "precursorlightstripdim"},
+        {"weight" : 0.07, "item" : "precursortable"},
+        {"weight" : 0.07, "item" : "precursordoor"},
+        {"weight" : 0.07, "item" : "precursordoor2"},
+        {"weight" : 0.06, "item" : "precursorweaponrack"},
+        {"weight" : 0.07, "item" : "precursorverticaldoor2"},
+        {"weight" : 0.07, "item" : "precursortinyswitch"},
+        {"weight" : 0.05, "item" : "precursorforcelift"},
+        {"weight" : 0.07, "item" : "precursorlightstrip"},
+        {"weight" : 0.07, "item" : "precursorlightstripdim"},
         {"weight" : 0.05, "item" : "precursorbackgrounddoor"},
         {"weight" : 0.07, "item" : ["precursorrailing",20]},
         {"weight" : 0.02, "item" : ["precursortallpipe",3]},
@@ -280,11 +319,15 @@
         {"weight" : 0.05, "item" : ["precursorlight",2]},
         {"weight" : 0.05, "item" : ["precursorlightorb",2]},
         {"weight" : 0.01, "item" : "fu_precursorduplicator"},
-        {"weight" : 0.01, "item" : "fu_precursorduplicator"},
-        {"weight" : 0.015, "item" : "fu_precursorspawner"},        
-        {"weight" : 0.01, "item" :  "precursorconverter" },
-        {"weight" : 0.025, "item" :  "precursorconverter2" },
-        {"weight" : 0.003, "item" : [ "cuddlehorse", 1]}
+        {"weight" : 0.01, "item" : "fu_precursorspawner"},
+        {"weight" : 0.01, "item" : "fu_fuelpurifiert5"},
+        {"weight" : 0.008, "item" :  "precursorconverter" },
+        {"weight" : 0.005, "item" :  "precursorconverter2" },
+        {"weight" : 0.003, "item" : [ "cuddlehorse", 1]},
+        {"weight" : 0.009, "item" :  [ "fubonearmor3head-recipe", 1]},
+        {"weight" : 0.009, "item" :  [ "fubonearmor3chest-recipe", 1]},
+        {"weight" : 0.009, "item" :  [ "fubonearmor3legs-recipe", 1]},
+        {"weight" : 0.04, "item" :  [ "precursorbed2", 1]}        
       ],
       "poolRounds" : [
         [0.33, 1],
@@ -294,14 +337,14 @@
       "allowDuplication" : true
     } ]
   ],
-  
-  
+
+
   "fuprecursorLootBoss" : [
     [1, {
       "fill" : [
         {"weight" : 1.0, "item" : ["essence", 1500]},
         {"weight" : 1.0, "item" : ["mecharmmegacannon-recipe", 1]}
-      ],    
+      ],
       "pool" : [
         {"weight" : 0.1, "pool" :  "fuEssence" },
         {"weight" : 0.2, "pool" :  "fuprecursorLore" },
@@ -322,8 +365,8 @@
       "allowDuplication" : true
     } ]
   ],
-  
-  
+
+
   "fuStrangeFood" : [
     [1, {
       "pool" : [
@@ -331,6 +374,7 @@
         {"weight" : 0.07, "item" :  [ "crunchychick", 1]},
         {"weight" : 0.07, "item" :  [ "alienmeat", 1]},
         {"weight" : 0.07, "item" :  [ "honeyham", 1]},
+		{"weight" : 0.07, "item" : ["orphanpaste", 1]},
         {"weight" : 0.03, "pool" : "foodTreasureMedium"}
       ],
       "poolRounds" : [
@@ -350,7 +394,8 @@
         {"weight" : 1.0, "item" : ["severedear", 1]},
         {"weight" : 1.0, "item" : ["severedear", 1]},
         {"weight" : 1.0, "item" : ["faceskin", 1]},
-        {"weight" : 1.0, "item" : ["rawribmeat", 1]}
+        {"weight" : 1.0, "item" : ["rawribmeat", 1]},
+		{"weight" : 1.0, "item" : ["orphanpaste", 1]}
       ]
     }]
   ],
@@ -418,7 +463,7 @@
         {"weight" : 1.0, "item" : ["blackbook3k-codex", 1]}
       ]
     }]
-  ],  
+  ],
   "evilbooktreasure4" : [
     [1, {
       "fill" : [
@@ -461,7 +506,9 @@
         {"weight" : 0.02, "item" :  [ "elderstaffbook2-codex", 1]},
         {"weight" : 0.02, "item" :  [ "elderstaffbook3-codex", 1]},
         {"weight" : 0.02, "item" :  [ "elderbowbook-codex", 1]},
-        {"weight" : 0.02, "item" :  [ "elderbroadswordbook-codex", 1]}
+        {"weight" : 0.02, "item" :  [ "elderbroadswordbook-codex", 1]},
+          {"weight" : 0.01, "item" : ["attunedpaper", 15]},
+          {"weight" : 0.01, "item" : ["nicepaper", 20]}
       ],
       "poolRounds" : [
         [0.23, 1],

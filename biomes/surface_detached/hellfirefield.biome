@@ -47,9 +47,30 @@
       }
     }
   },
+  
+    "parallax" : "/parallax/surface/infernus.parallax",
+
+  "ambientNoises" : {
+    "day" : {
+      "tracks" : [ "/sfx/environmental/magma_day.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/sfx/environmental/magma_night.ogg" ]
+    }
+  },
+
+  "musicTrack" : {
+    "day" : {
+      "tracks" : [ "/music/darkambient2a.ogg","/music/ambient_dark.ogg","/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/desert-exploration2.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/nomads.ogg", "/music/psyche.ogg" ]
+    },
+    "night" : {
+      "tracks" : [ "/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/nomads.ogg", "/music/psyche.ogg", "/music/casiopeia.ogg", "/music/error-0xbfaf000.ogg", "/music/accretion-disc.ogg" ]
+    }
+  },
+  
     "mainBlock" : "magmatile4",
     "subBlocks" : [ "magmatile1", "magmatile2", "protorock", "glasssand" ],
-    "ores" : "surface",
+    "ores" : "ff_surfaceinfernusOres",
 
   "surfacePlaceables" : {
     "grassMod" : [ "blackash" ],
@@ -81,6 +102,7 @@
             {
               "pool" : [ 
               [0.35, "wildhellfireplantseed" ],
+              [0.35, "wildplasmangoseed" ],
               [0.35, "wildignuschiliseed" ],
               [0.35, "wildoonfortaseed" ],
               [0.35, "volcanicrockseed4" ],

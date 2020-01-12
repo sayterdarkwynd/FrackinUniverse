@@ -1,0 +1,57 @@
+{
+	"objectName": "fuprotectorategardentree1",
+	"rarity": "Rare",
+	"category": "decorative",
+	"price": 50,
+	"printable": false,
+
+	"description": "A cherry blossom tree that is almost identical to the one found in the Protectorate.",
+	"shortdescription": "Protectorate Tree",
+	"race": "generic",
+
+	"apexDescription": "A big tree seemingly identical to the old Protectorate garden's tree.",
+	"avianDescription": "Seems to be identical to the tree back at the Protectorate.",
+	"floranDescription": "Big tree isss old and wissse. Floran wishesss to grow as old and wissse asss tree.",
+	"glitchDescription": "Nostalgic. It feels like forever since I saw a tree like this.",
+	"humanDescription": "This is very familiar...",
+	"hylotlDescription": "If I had my notebook, I'd have an amazing haiku to write about this.",
+	"novakidDescription": "The big ol' tree almost feels familiar. Almost.",
+
+	"particleEmitters": [{
+		"emissionRate": 3,
+		"emissionVariance": 0.5,
+		"pixelOrigin": [0, 21],
+
+		"particle": {
+			"type": "animated",
+			"animation": "/animations/petals/petals.animation",
+			"size": 0.5,
+			"position": [10, 12],
+			"fade": 0.9,
+			"destructionAction": "shrink",
+			"destructionTime": 0.5,
+			"initialVelocity": [-3, -1.5],
+			"finalVelocity": [-6, -3],
+			"approach": [10, 10],
+			"angularVelocity": 20,
+			"timeToLive": 6.0,
+			"layer": "back"
+		},
+		"particleVariance": {
+			"position": [10, 2],
+			"finalVelocity": [2.5, 1]
+		}
+	}],
+
+	"inventoryIcon": "fuprotectorategardentree1icon.png",
+	"orientations": [{
+		"image": "fuprotectorategardentree1.png:<color>",
+		"imagePosition": [1, -0],
+		"frames": 1,
+		"animationCycle": 0.5,
+
+		"spaceScan": 0.1,
+		"anchors" : [ "bottom" ]
+
+	}]
+}

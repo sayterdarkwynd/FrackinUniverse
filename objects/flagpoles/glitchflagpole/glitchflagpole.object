@@ -1,0 +1,52 @@
+{
+  "objectName" : "glitchflagpole",
+  "colonyTags" : ["glitch"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 0,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+  
+  "description" : "The flag of the Glitch. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Glitch Flag",
+  "race" : "glitch",
+
+  "apexDescription" : "A Glitch flag. Quite striking.",
+  "avianDescription" : "I like the Glitch's flag.",
+  "floranDescription" : "Floran think this mean metal people nearby!",
+  "glitchDescription" : "Pride. The flag of the Glitch. Outcast or not, we all turn to this flag.",
+  "humanDescription" : "This flag belongs to the Glitch.",
+  "hylotlDescription" : "Oh look, it's the Glitch's basic, childish flag.",
+  "novakidDescription" : "A nice, simple flag. I like it.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "glitchflagpoleicon.png",
+  "orientations" : [
+    {
+      "image" : "glitchflagpole.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "glitchflagpole.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

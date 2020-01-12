@@ -1,0 +1,52 @@
+{
+  "objectName" : "shadowconsole",
+  "colonyTags" : ["shadow","wired"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 95,
+  "lightColor" : [216, 0, 0],
+  "flickerDistance" : 0.2,
+  "flickerStrength" : 0.05,
+  "flickerTiming" : 4,
+  "description" : "A touch-screen console with all sorts of fun buttons.",
+  "shortdescription" : "Shadowy Console",
+  "race" : "shadow",
+
+  "apexDescription" : "I wonder what happens if I press... This button?",
+  "avianDescription" : "It's very tempting to press the buttons...",
+  "floranDescription" : "Floran wants to presss all the nice buttonss.",
+  "glitchDescription" : "Curious. I'm very tempted to press all these buttons.",
+  "humanDescription" : "Maybe pressing a button or two will lead to something interesting.",
+  "hylotlDescription" : "I should avoid pressing buttons... Who knows what might happen?",
+  "novakidDescription" : "A console with several temptin' buttons. Should I...?",
+
+  "inventoryIcon" : "shadowconsoleicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "shadowconsole.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "frames" : 3,
+      "animationCycle" : 0.8,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/switch/switch.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "shadowconsole.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ]
+}

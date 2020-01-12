@@ -1,0 +1,92 @@
+{
+  "objectName" : "jojavendingmachine",
+  "colonyTags" : ["joja","mechanical","commerce"],
+  "rarity" : "Common",
+  "category" : "other",
+  "price" : 0,
+  "printable" : false,
+  "description" : "It keeps pumping out the good stuff.",
+  "shortdescription" : "^blue;Joja^white; Vending Machine",
+  "race" : "generic",
+
+  "apexDescription" : "... Does this vending machine seriously only sell one drink?",
+  "avianDescription" : "A very blue vending machine. Somehow I still don't feel all that thirsty.",
+  "floranDescription" : "Sssoda dispenser.",
+  "glitchDescription" : "Observant. This vending machine is giving off a gentle hum.",
+  "humanDescription" : "Do they have to stamp their name on everything like this? Are they worried we'd forget their brand's name?",
+  "hylotlDescription" : "I believe this machine only dispenses one brand of soda.",
+  "novakidDescription" : "I ain't wastin' 75 pixels on this.",
+
+  "interactAction" : "OpenMerchantInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/vendingmachine.config",
+    "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " ^blue;Joja^white; Vending Machine",
+        "subtitle" : " Tasty Snacks"
+      }
+    },
+    "buyFactor" : 3.0,
+    "sellFactor" : 1.0,
+    "items" : [
+      { "item" : "jojacola" },
+      { "item" : "jojacolaobject" }
+    ]
+  },
+
+  "inventoryIcon" : "jojavendingmachineicon.png",
+  "orientations" : [
+    {
+      "image" : "jojavendingmachineleft.png:<color>",
+      "imagePosition" : [-16, -0],
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : ["bottom"],
+      "collision" : "platform"
+    },
+    {
+      "image" : "jojavendingmachineright.png:<color>",
+      "imagePosition" : [-16, -0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : ["bottom"],
+      "collision" : "platform"
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/fluorescent_light_loud.ogg",
+  "soundEffectRangeMultiplier" : 0.5,
+
+  "scripts" : [
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 60,
+
+  "npcToy" : {
+    "influence" : [
+      "vendingmachineActivate",
+      "vendingmachineCollect",
+      "vendingmachineConsume",
+      "vendingmachineComplete"
+    ],
+    "defaultReactions" : {
+      "vendingmachineActivate" : [
+        [1.0, "pressbutton"]
+      ],
+      "vendingmachineCollect" : [
+        [1.0, "crouchcollect"]
+      ],
+      "vendingmachineConsume" : [
+        [1.0, "drink"]
+      ],
+      "vendingmachineComplete" : [
+        [1.0, "vomit"]
+      ]
+    },
+    "preciseStandPositionLeft" : [-2.0, 1.0],
+    "preciseStandPositionRight" : [2.0, 1.0],
+    "maxNpcs" : 1
+  }
+}

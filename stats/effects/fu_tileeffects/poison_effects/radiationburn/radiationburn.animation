@@ -2,6 +2,30 @@
   "particleEmitters" : {
     "fx" : {
       "enabled" : true,
+      "emissionRate" : 3.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "mode" : "LoopForever",
+            "animation" : "/animations/shadowcloudpuff/shadowcloudpuff.animation",
+            "size" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 1.0],
+            "finalVelocity" : [0, 5.0],
+            "approach" : [0, 10],
+            "timeToLive" : 0.85,
+            "variance" : {
+              "initialVelocity" : [0.5, 1.0],
+              "size" : 0.3
+            }
+          }
+        }
+      ]
+    },  
+    "fx1" : {
+      "enabled" : true,
       "emissionRate" : 1.0,
       "particles" : [
         {
@@ -39,7 +63,7 @@
     "glow" : {
       "active" : true,
       "position" : [0, 0],
-      "color" : [0, 192, 0]
+      "color" : [75, 75, 30]
     }
   },
   "sounds" : {

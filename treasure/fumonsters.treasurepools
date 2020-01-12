@@ -1,4 +1,40 @@
 {
+  "cockblockTreasure": [
+    [1, {
+      "pool" : [
+      {"weight" : 0.05, "item" : [ "cockblock", 1]},
+      {"weight" : 0.25, "item" : [ "bone", 2]},
+      {"weight" : 0.7, "item" : [ "rawpoultry", 1]}
+      ],
+      "poolRounds" : [
+        [0.9, 0],
+        [0.25, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "alienWoodSapTreasure": [
+    [1, {
+      "pool" : [
+      {"weight" : 0.25, "item" : [ "alienwoodsap", 1]},
+      {"weight" : 0.25, "item" : [ "bone", 2]},
+      {"weight" : 0.25, "item" : [ "alienmeat", 1]},
+      {"weight" : 0.25, "item" : [ "greenslime", 1]}
+      ],
+      "poolRounds" : [
+        [0.9, 0],
+        [0.1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],  
+  "lobsterLoot": [
+    [1, 
+      {"fill" : [ 
+        {"item" : "fulobster" } 
+      ]}
+    ]
+  ],
   "meatlumpLoot": [
     [1, 
       {"fill" : [ 
@@ -46,6 +82,10 @@
   ],
   "darkmetroidTreasure" : [
     [1, {
+      "fill" : [
+        {"item" : "unknowngene", "amount" : 1},
+        {"item" : "blobbushjelly", "amount" : 1}
+      ],    
       "pool" : [
         {"weight" : 0.05, "pool" : "fuEssence"},
         {"weight" : 0.05, "pool" : "petcollars2"},
@@ -67,8 +107,8 @@
         "pool" : [
           {"weight" : 0.0333, "item" : [ "liquidmetallichydrogen", 150]},
           {"weight" : 0.0333, "item" : [ "fuscienceresource", 150]},
-          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
+          {"weight" : 0.0200, "item" : [ "unknowngene", 3]},
+          {"weight" : 0.0200, "item" : [ "cell_mutated", 50]},
           {"weight" : 0.0366, "item" : [ "fuscienceresource", 15]},
           {"weight" : 0.0366, "item" : [ "iodine", 4]},
           {"weight" : 0.0366, "item" : [ "ff_mercury", 6]}
@@ -252,8 +292,9 @@
   "webberhuntTreasure" : [
     [1, {
       "pool" : [
-        {"weight" : 0.50, "item" : "hardenedcarapace"},
-        {"weight" : 0.50, "item" : "bugshell"}
+        {"weight" : 0.33, "item" : "hardenedcarapace"},
+        {"weight" : 0.33, "item" : "bugshell"},
+        {"weight" : 0.33, "item" : "blobbushjelly"}
       ],
       "poolRounds" : [
         [0.20, 0],
@@ -367,81 +408,17 @@
   "ffcannibalTreasure" : [
     [1, {
       "pool" : [
-        {"weight" : 0.03, "pool" : "augments"},
-        {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 0.20, "pool" : "money"},
-        {"weight" : 0.333, "item" : [ "polymer", 10]},
-        {"weight" : 0.5, "item" : ["darkwoodmaterial", 10]},
-        {"weight" : 0.5, "item" : ["plantfibre", 10]},
-        {"weight" : 0.5, "item" : ["bandage", 3]},
-        {"weight" : 0.5, "item" : ["throwingspear", 3]},
-        {"weight" : 0.5, "item" : ["flare", 5]},
-        {"weight" : 0.5, "item" : ["throwingdagger", 5]},
-        {"weight" : 0.8, "item" : ["climbingrope", 3]},
-        {"weight" : 0.5, "item" : ["throwingspear", 5]},
-        {"weight" : 0.5, "item" : ["throwingaxe", 5]},
-        {"weight" : 0.5, "item" : ["woodenmask", 5]},
-        {"weight" : 0.09, "item" : ["glassmaterial", 5]},
-        {"weight" : 0.09, "item" : ["thornfruit", 5]},
-        {"weight" : 0.05, "item" : ["thorngrenade", 3]},
-        {"weight" : 0.1, "item" : "thornjuice"},
-        {"weight" : 0.3, "item" : "medkit"},
-        {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.1, "pool" : "weapon"},
-        {"weight" : 0.1, "pool" : "food"},
-        {"weight" : 0.05, "pool" : "seed"},
-        {"weight" : 0.04, "pool" : "tool"},
-        {"weight" : 0.04, "pool" : "shield"},
-        {"weight" : 0.012, "pool" : "instrument"},
-        {"weight" : 0.005, "pool" : "costume"},
-        {"weight" : 0.003, "item" : "teleportercore"},
-        {"weight" : 0.025, "item" : "torch" },
-        {"weight" : 0.05, "item" : [ "hardenedcarapace", 1]},
-        {"weight" : 0.05, "item" : [ "vanusflower", 1]},
-        {"weight" : 0.05, "item" : [ "sharpenedclaw", 1]},
-        {"weight" : 0.05, "item" : [ "venomsample", 1]},
-        {"weight" : 0.05, "item" : [ "fuscienceresource", 5]},
-        {"weight" : 0.05, "item" : [ "volatilepowder", 9]},
-        {"weight" : 0.1, "item" : [ "agaranichor", 12]},
-        {"weight" : 0.05, "item" : [ "glassmaterial", 25]},
-        {"weight" : 0.05, "item" : [ "liquidwater", 3]},
-        {"weight" : 0.05, "item" : [ "liquidwater", 5]},
-        {"weight" : 0.05, "item" : [ "metalchunk", 5]},
-        {"weight" : 0.05, "item" : [ "bamboo", 25]},
-        {"weight" : 0.05, "item" : [ "algaegreen", 5]},
-        {"weight" : 0.05, "item" : [ "biospore", 5]},
-        {"weight" : 0.05, "item" : [ "silk", 5]},
-        {"weight" : 0.05, "item" : [ "silk", 10]},
-        {"weight" : 0.05, "item" : [ "aquapod", 5]},
-        {"weight" : 0.05, "item" : [ "blizzberry", 3]},
-        {"weight" : 0.05, "item" : [ "leafshell", 3]},
-        {"weight" : 0.05, "item" : [ "blexsap", 3]},
-        {"weight" : 0.05, "item" : [ "blisterbushplantfood", 3]},
-        {"weight" : 0.05, "item" : [ "oonfortaglobule", 7]},
-        {"weight" : 0.05, "item" : [ "capriole", 5]},
-        {"weight" : 0.05, "item" : [ "erithianalgae", 6]},
-        {"weight" : 0.05, "item" : [ "ignuschili", 4]},
-        {"weight" : 0.05, "item" : [ "gazelemon", 3]},
-        {"weight" : 0.05, "item" : [ "glarestalkeye", 2]},
-        {"weight" : 0.05, "item" : [ "goldenglowleaf", 1]},
-        {"weight" : 0.05, "item" : [ "lasherstem", 1]},
-        {"weight" : 0.05, "item" : [ "diodiahybrid", 3]},
-        {"weight" : 0.05, "item" : [ "miraclegrass", 3]},
-        {"weight" : 0.05, "item" : [ "mireurchin", 3]},
-        {"weight" : 0.05, "item" : [ "slimeleaf", 2]},
-        {"weight" : 0.05, "item" : [ "pasaka", 3]},
-        {"weight" : 0.05, "item" : [ "thornitox", 3]},
-        {"weight" : 0.05, "item" : [ "tyvokkhook", 1]},
-        {"weight" : 0.05, "item" : [ "vashtaclaw", 1]},
-        {"weight" : 0.02, "item" : [ "crunchychick", 1]},
-        {"weight" : 0.04, "item" : [ "crunchychick", 1]},
-        {"weight" : 0.01, "item" : [ "honeyboon", 1]},
-        {"weight" : 0.01, "item" : [ "pincerspear", 1]},
-        {"weight" : 0.01, "item" : [ "fubonepickaxe", 1]},
-        {"weight" : 0.01, "item" : [ "ffwizardhat", 1]},
-        {"weight" : 0.007, "item" : [ "bloodyknife", 1]},
-        {"weight" : 0.04, "item" : "randomharpoongun"},
-        {"weight" : 0.004, "item" : [ "druidstaff-recipe", 1]}
+        {"weight" : 0.20, "item" : "cadaver"},       
+        {"weight" : 0.15, "pool" : "healingItem"}, 
+        {"weight" : 0.15, "pool" : "thrownWeapon"},  
+        {"weight" : 0.05, "pool" : "weapon"},
+        {"weight" : 0.05, "pool" : "weapon"},
+        {"weight" : 0.15, "pool" : "deadBodies"},           
+        {"weight" : 0.03, "pool" : "augments"},
+        {"weight" : 0.03, "pool" : "petcollars2"},    
+        {"weight" : 0.03, "pool" : "fuLootStims"},
+        {"weight" : 0.01, "pool" : "fuspecialLoot"}
       ],
       "poolRounds" : [
         [0.23, 1],
@@ -454,68 +431,36 @@
       }
     ]
   ],
-  "fleshreaperLoot" : [
+  "fleshreaperhuntLoot" : [
     [1, {
         "pool" : [
-          {"weight" : 0.20, "pool" : "money"},
-          {"weight" : 0.0333, "item" : [ "monsterplating", 15]},
-          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-	  {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-          {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
-          {"weight" : 0.0333, "item" : [ "laboil", 1]},
-          {"weight" : 0.0211, "item" : [ "volatilepowder", 9]},
-          {"weight" : 0.0211, "item" : [ "magnesiumore", 9]},
-          {"weight" : 0.0211, "item" : [ "mascagniteore", 9]},
-          {"weight" : 0.0210, "item" : [ "cinnabarore", 5]},
-          {"weight" : 0.0210, "item" : [ "sulphur", 5]},
-          {"weight" : 0.0210, "item" : [ "lead", 7]},
-          {"weight" : 0.0211, "item" : [ "glassmaterial", 25]},
-          {"weight" : 0.0211, "item" : [ "protociteore", 5]},
-          {"weight" : 0.0211, "item" : [ "penumbriteore", 5]},
-          {"weight" : 0.0211, "item" : [ "tungstenore", 5]},
-          {"weight" : 0.0211, "item" : [ "ff_spareparts", 5]},
-          {"weight" : 0.0250, "item" : [ "fleshstrand", 50]},
-          {"weight" : 0.0200, "item" : [ "fleshstrand", 100]},
-          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-          {"weight" : 0.0200, "item" : [ "cellmatter", 50]},
-          {"weight" : 0.0366, "item" : [ "biospore", 5]},
-          {"weight" : 0.0366, "item" : [ "cellmatter", 5]},
-          {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
-          {"weight" : 0.0366, "item" : [ "fuscienceresource", 5]},
-          {"weight" : 0.0366, "item" : [ "methanol", 30]},
-          {"weight" : 0.0366, "item" : [ "phosphorus", 3]},
-          {"weight" : 0.0366, "item" : [ "silk", 15]},
-          {"weight" : 0.0366, "item" : [ "agaranichor", 12]},
-          {"weight" : 0.0326, "item" : [ "agaranichor", 24]},
-          {"weight" : 0.0366, "item" : [ "ff_plastic", 6]},
-          {"weight" : 0.0366, "item" : [ "iodine", 4]},
-          {"weight" : 0.0366, "item" : [ "ff_mercury", 6]},
-          {"weight" : 0.012, "item" : [ "targetinggoggles", 1]},
-          {"weight" : 0.005, "item" :  [ "yellowguardianback-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "blueguardianback-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "pinkguardianback-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "greenguardianback-recipe", 1]},
-          {"weight" : 0.012, "item" :  [ "atropuschest-recipe", 1]},
-          {"weight" : 0.012, "item" :  [ "longarmpistol-recipe", 1]},
-          {"weight" : 0.012, "item" :  [ "longarm-recipe", 1]},
-          {"weight" : 0.005, "item" :  [ "eldertome", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic1", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic2", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic3", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic4", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic5", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic6", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic7", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic8", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic9", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic10", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic11", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic12", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic13", 1]},
-          {"weight" : 0.005, "item" :  [ "elderrelic14", 1]},
-          {"weight" : 0.008, "item" :  [ "brainslug", 1]}
+          {"weight" : 0.20, "item" : [ "monsterplating", 4]},
+          {"weight" : 0.20, "item" : [ "cellmatter", 4]},
+          {"weight" : 0.05, "item" : [ "unknowngene", 1]},
+          {"weight" : 0.05, "item" : [ "cell_mutated", 5]},
+          {"weight" : 0.20, "item" : [ "biospore", 5]},
+          {"weight" : 0.20, "item" : [ "cellmatter", 5]},
+          {"weight" : 0.05, "item" : "alienwoodsap"}
+        ],
+        "poolRounds" : [
+          [0.63, 1],
+          [0.33, 2]
+        ],
+      "allowDuplication" : true
+      }
+    ]
+  ],  
+  "fleshreaperLoot" : [
+    [1, {
+      "fill" : [
+        {"item" : [ "liquidelderfluid", 12]}
+      ],   
+        "pool" : [
+          {"weight" : 0.60, "pool" : "money"},
+          {"weight" : 0.05, "item" : [ "cell_mutated", 5]},
+          {"weight" : 0.05, "item" : [ "biospore", 5]},
+          {"weight" : 0.05, "item" : [ "cellmatter", 5]},
+          {"weight" : 0.05, "item" : [ "essence", 25]}
         ],
         "poolRounds" : [
           [0.63, 1],
@@ -527,12 +472,13 @@
   ],
   "deeponeTreasure" : [
     [1, {
+      "fill" : [
+        {"item" : [ "liquidelderfluid", 24]}
+      ],      
       "pool" : [
-        {"weight" : 0.83, "pool" : "money"},
-        {"weight" : 0.05, "item" : "goldbar"},
-        {"weight" : 0.25, "item" : "venomsample"},
-        {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.01, "pool" : "basicTreasure"}
+        {"weight" : 0.43, "pool" : "money"},
+        {"weight" : 0.2, "item" : "venomsample"},
+        {"weight" : 0.2, "pool" : "basicTreasure"}
       ],
       "poolRounds" : [
         [0.20, 0],
@@ -544,11 +490,16 @@
   ],
   "ffelderStarspawnTreasure" : [
     [1, {
+      "fill" : [
+        {"item" : [ "liquidelderfluid", 24]}
+      ],     
       "pool" : [
         {"weight" : 0.001, "pool" : "artifactloot" },
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 0.20, "pool" : "money"},
+        {"weight" : 0.01, "item" : "unknowngene"},
+        {"weight" : 0.0333, "item" : [ "cell_mutated", 1]},
         {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
         {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
         {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
@@ -640,7 +591,9 @@
         {"weight" : 0.005, "item" :  [ "elderpainting9", 1]},
         {"weight" : 0.005, "item" :  [ "elderpainting10", 1]},
         {"weight" : 0.005, "item" :  [ "elderpainting11", 1]},
-        {"weight" : 0.005, "item" :  [ "fubonearmor3head", 1]}
+        {"weight" : 0.008, "item" :  [ "fubonearmor3head-recipe", 1]},
+        {"weight" : 0.008, "item" :  [ "fubonearmor3chest-recipe", 1]},
+        {"weight" : 0.008, "item" :  [ "fubonearmor3legs-recipe", 1]}
       ],
       "poolRounds" : [
         [0.13, 1],
@@ -656,7 +609,8 @@
   "ffelderStarspawnTreasureBoss" : [
     [1, {
       "fill" : [
-        { "item" : "eldertome" }
+        { "item" : "eldertome" },
+        {"item" : [ "liquidelderfluid", 24]}
       ],
       "pool" : [
         {"weight" : 0.2, "pool" : "fuEssenceHigh" },
@@ -718,7 +672,9 @@
         {"weight" : 0.005, "item" :  [ "elderpainting9", 1]},
         {"weight" : 0.005, "item" :  [ "elderpainting10", 1]},
         {"weight" : 0.005, "item" :  [ "elderpainting11", 1]},
-        {"weight" : 0.005, "item" :  [ "fubonearmor3head", 1]}
+        {"weight" : 0.008, "item" :  [ "fubonearmor3head-recipe", 1]},
+        {"weight" : 0.008, "item" :  [ "fubonearmor3chest-recipe", 1]},
+        {"weight" : 0.008, "item" :  [ "fubonearmor3legs-recipe", 1]}
       ],
       "poolRounds" : [
         [0.13, 1],
@@ -737,7 +693,8 @@
         {"weight" : 0.53, "pool" : "money"},
         {"weight" : 0.47, "item" : "phasematter"},
         {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.9, "item" : "sharpenedclaw"}
+        {"weight" : 0.9, "item" : "sharpenedclaw"},
+        {"weight" : 0.15, "item" : "alienwoodsap"}
       ],
       "poolRounds" : [
         [0.20, 0],
@@ -749,11 +706,16 @@
   ],
   "minishoggothLoot" : [
     [1, {
+      "fill" : [
+        {"item" : [ "liquidelderfluid", 12]}
+      ],    
       "pool" : [
-        {"weight" : 0.83, "pool" : "money"},
-        {"weight" : 0.01, "item" : "shoggothflesh"},
+        {"weight" : 0.30, "pool" : "money"},
+        {"weight" : 0.03, "item" : "cell_viral"},
+        {"weight" : 0.008, "item" : "unknowngene"},
+        {"weight" : 0.33, "item" : "shoggothessence"},
         {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.9, "item" : "sharpenedclaw"}
+        {"weight" : 0.30, "item" : "sharpenedclaw"}
       ],
       "poolRounds" : [
         [0.20, 0],
@@ -765,7 +727,9 @@
   "shoggothFlesh" : [
     [0, {
       "fill" : [ { "item" : [ "shoggothflesh", 30 ] },
-                 { "item" : [ "essence", 2000 ] } ],
+      		 {"item" : [ "liquidelderfluid", 500]},
+                 { "item" : [ "essence", 2000 ] },
+        	 {"item" : [ "fumadnessresource", 3200]} ],
       "pool" : [
         {"weight" : 0.20, "pool" : "money"},
         {"weight" : 0.02, "pool" : "artifactloot" },
@@ -831,7 +795,9 @@
         {"weight" : 0.025, "item" :  [ "elderpainting9", 1]},
         {"weight" : 0.025, "item" :  [ "elderpainting10", 1]},
         {"weight" : 0.025, "item" :  [ "elderpainting11", 1]},
-        {"weight" : 0.005, "item" :  [ "fubonearmor3head", 1]}
+        {"weight" : 0.008, "item" :  [ "fubonearmor3head-recipe", 1]},
+        {"weight" : 0.008, "item" :  [ "fubonearmor3chest-recipe", 1]},
+        {"weight" : 0.008, "item" :  [ "fubonearmor3legs-recipe", 1]}
       ],
       "poolRounds" : [
         [1.0, 1],
@@ -936,6 +902,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.70, "pool" : "money"},
+          {"weight" : 0.03, "item" : "cell_viral"},
           {"weight" : 0.2, "item" : [ "liquiddarkwater", 2]},
           {"weight" : 0.3, "item" : [ "endomorphicjelly", 1]}
         ],
@@ -951,6 +918,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.70, "pool" : "money"},
+          {"weight" : 0.03, "item" : "cell_viral"},
           {"weight" : 0.2, "item" : [ "liquidlava", 2]},
           {"weight" : 0.3, "item" : [ "volatilepowder", 1]}
         ],
@@ -1201,33 +1169,20 @@
   "ffslimebanditTreasure" : [
     [1, {
       "pool" : [
+        {"weight" : 0.20, "pool" : "money"},      
+        {"weight" : 0.14, "pool" : "healingItem"}, 
+        {"weight" : 0.14, "pool" : "thrownWeapon"},  
+        {"weight" : 0.07, "pool" : "weapon"},
+        {"weight" : 0.08, "pool" : "food"},           
         {"weight" : 0.03, "pool" : "augments"},
-        {"weight" : 0.03, "pool" : "petcollars2"},
-        {"weight" : 0.20, "pool" : "money"},
-        {"weight" : 0.25, "pool" : "healingItem"},
-        {"weight" : 0.3, "pool" : "food"},
-        {"weight" : 0.04, "item" : [ "basicminertest", 1]},
-        {"weight" : 0.04, "item" : [ "laspistol", 1]},
-        {"weight" : 0.04, "item" : [ "bloodyknife", 1]},
-        {"weight" : 0.04, "item" : [ "carbonblade", 1]},
-        {"weight" : 0.04, "item" : [ "hardenedsteelblade", 1]},
-        {"weight" : 0.04, "item" : [ "ultrastim", 1]},
-        {"weight" : 0.04, "item" : [ "thesauce", 1]},
-        {"weight" : 0.04, "item" : [ "uberstim", 1]},
-        {"weight" : 0.04, "item" : [ "shieldpatch", 1]},
-        {"weight" : 0.04, "item" : [ "waterstim", 1]},
-        {"weight" : 0.04, "item" : [ "protostim", 1]},
-        {"weight" : 0.04, "item" : [ "serumstim", 1]},
-        {"weight" : 0.04, "item" : [ "gravstim", 1]},
-        {"weight" : 0.04, "item" : [ "portaljuice", 1]},
-        {"weight" : 0.04, "item" : [ "crunchychick", 1]},
-        {"weight" : 0.04, "item" : [ "portablelight", 1]},
-        {"weight" : 0.04, "item" : [ "honeyboon", 1]},
-        {"weight" : 0.04, "item" : "slimelauncher"},
-        {"weight" : 0.04, "item" : "slimesword"},
-        {"weight" : 0.04, "item" : "slimedagger"},
-        {"weight" : 0.04, "item" : "slimegrapplinghook"},
-        {"weight" : 0.04, "item" : "wavyslimesword"}
+        {"weight" : 0.03, "pool" : "petcollars2"},    
+        {"weight" : 0.03, "pool" : "fuLootStims"},
+        {"weight" : 0.01, "pool" : "fuspecialLoot"},
+        {"weight" : 0.02, "item" : "slimelauncher"},
+        {"weight" : 0.02, "item" : "slimesword"},
+        {"weight" : 0.02, "item" : "slimedagger"},
+        {"weight" : 0.02, "item" : "slimegrapplinghook"},
+        {"weight" : 0.02, "item" : "wavyslimesword"}
       ],
       "poolRounds" : [
         [0.70, 1],
@@ -1240,39 +1195,17 @@
   "ffbanditTreasure" : [
     [1, {
       "pool" : [
-        {"weight" : 0.03, "pool" : "augments"},
-        {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 0.20, "pool" : "money"},
-        {"weight" : 0.25, "pool" : "healingItem"},
-        {"weight" : 0.5, "item" : ["throwingspear", 12]},
-        {"weight" : 0.5, "item" : ["flare", 10]},
-        {"weight" : 0.5, "item" : ["throwingdagger", 12]},
-        {"weight" : 0.8, "item" : ["climbingrope", 8]},
-        {"weight" : 0.05, "item" : ["molotov", 4]},
-        {"weight" : 0.5, "item" : ["throwingspear", 12]},
-        {"weight" : 0.5, "item" : ["throwingaxe", 12]},
+        {"weight" : 0.20, "item" : "cadaver"},       
+        {"weight" : 0.15, "pool" : "healingItem"}, 
+        {"weight" : 0.15, "pool" : "thrownWeapon"},  
         {"weight" : 0.05, "pool" : "weapon"},
-        {"weight" : 0.3, "pool" : "food"},
-        {"weight" : 0.04, "item" : [ "basicminertest", 1]},
-        {"weight" : 0.04, "item" : [ "laspistol", 1]},
-        {"weight" : 0.04, "item" : [ "bloodyknife", 1]},
-        {"weight" : 0.04, "item" : [ "carbonblade", 1]},
-        {"weight" : 0.04, "item" : [ "hardenedsteelblade", 1]},
-        {"weight" : 0.04, "item" : [ "ultrastim", 1]},
-        {"weight" : 0.04, "item" : [ "thesauce", 1]},
-        {"weight" : 0.04, "item" : [ "uberstim", 1]},
-        {"weight" : 0.04, "item" : [ "shieldpatch", 1]},
-        {"weight" : 0.04, "item" : [ "waterstim", 1]},
-        {"weight" : 0.04, "item" : [ "protostim", 1]},
-        {"weight" : 0.04, "item" : [ "serumstim", 1]},
-        {"weight" : 0.04, "item" : [ "gravstim", 1]},
-        {"weight" : 0.04, "item" : [ "portaljuice", 1]},
-        {"weight" : 0.04, "item" : [ "crunchychick", 1]},
-        {"weight" : 0.04, "item" : [ "portablelight", 1]},
-        {"weight" : 0.04, "item" : [ "honeyboon", 1]},
-        {"weight" : 0.04, "item" : "randomharpoongun"},
-        {"weight" : 0.04, "item" : "dblade"},
-        {"weight" : 0.04, "item" : "dbladelong"}
+        {"weight" : 0.10, "pool" : "food"},     
+        {"weight" : 0.01, "item" : "fumysterioustrashbag"},         
+        {"weight" : 0.03, "pool" : "augments"},
+        {"weight" : 0.03, "pool" : "petcollars2"},    
+        {"weight" : 0.03, "pool" : "fuLootStims"},
+        {"weight" : 0.01, "pool" : "fuspecialLoot"}
       ],
       "poolRounds" : [
         [0.70, 1],
@@ -1282,6 +1215,23 @@
       }
     ]
   ],
+  "ffelitegregTreasure" : [
+    [1, {
+      "pool" : [
+        {"weight" : 0.20, "item" : "greghead"},
+        {"weight" : 0.20, "item" : "cadaver"},
+        {"weight" : 0.20, "pool" : "fuResearchPool"},
+        {"weight" : 0.20, "pool" : "fuGenericQuestLootHigh"},       
+        {"weight" : 0.20, "pool" : "weapon"}
+      ],
+      "poolRounds" : [
+        [0.50, 1],
+        [0.20, 2]
+      ],
+      "allowDuplication" : true
+      }
+    ]
+  ],  
   "ffeliteTreasure" : [
     [1, {
       "pool" : [
@@ -1410,7 +1360,8 @@
         {"weight" : 0.55, "item" : [ "livingroot", 1]},
         {"weight" : 0.30, "item" : [ "cellmatter", 4]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.01, "pool" : "basicTreasure"}
+        {"weight" : 0.01, "pool" : "basicTreasure"},
+        {"weight" : 0.15, "item" : "blobbushjelly"}
       ],
       "poolRounds" : [
         [0.23, 1],
@@ -1532,7 +1483,8 @@
         {"weight" : 0.30, "item" : [ "cellmatter", 4]},
         {"weight" : 0.20, "item" : [ "laboil", 24]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.01, "pool" : "ffbasicTreasure"}
+        {"weight" : 0.01, "pool" : "ffbasicTreasure"},
+        {"weight" : 0.15, "item" : "blobbushjelly"}
       ],
       "poolRounds" : [
         [0.23, 1],
@@ -1725,7 +1677,8 @@
         {"weight" : 0.40, "pool" : "money"},
         {"weight" : 0.25, "item" : [ "venomsample", 1]},
         {"weight" : 0.06, "item" : "manipulatormodule"},
-        {"weight" : 0.01, "pool" : "basicTreasure"}
+        {"weight" : 0.01, "pool" : "basicTreasure"},
+        {"weight" : 0.15, "item" : "blobbushjelly"}
       ],
       "poolRounds" : [
         [0.75, 1]
@@ -2131,7 +2084,7 @@
   ],
   "frankLootBoss" : [
     [1, {
-      "fill" : [ { "item" : [ "websnapper", 1]  }, { "item" : [ "venomsample", 10]}  ],
+      "fill" : [{"item" : [ "websnapper", 1]  }, {"item" : [ "venomsample", 10]}],
       "pool" : [
         {"weight" : 0.33, "pool" : "money"},
         {"weight" : 0.33, "item" : [ "liquidpus", 10]},
@@ -2141,5 +2094,18 @@
       "allowDuplication" : true
       }
     ]
+  ],
+  "fu_precursorspawnerloot" : [
+    [1, { 
+	  "pool" : [ 
+	    {"weight" : 0.001, "item" : [ "gregskittlegunfake", 1]  }
+	  ],
+	  "poolRounds" : [
+		[0.999, 0],
+        [0.001, 1]
+      ],
+      "allowDuplication" : false
+	  } 
+	]
   ]
 }

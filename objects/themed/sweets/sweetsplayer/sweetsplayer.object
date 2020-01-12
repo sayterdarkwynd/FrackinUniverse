@@ -1,0 +1,74 @@
+{
+  "objectName" : "sweetsplayer",
+  "colonyTags" : ["sweets","musical"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "decorative",
+  "price" : 0,
+  "lightColor" : [0, 0, 0],
+  "description" : "A macaroon themed record player. It plays a sweet little song.",
+  "shortdescription" : "Sweets Music Player",
+  "race" : "generic",
+
+  "apexDescription" : "Ah. It's nice to hear recorded music without subliminal messaging.",
+  "avianDescription" : "What a pleasant little music player. And it smells divine!",
+  "floranDescription" : "Floran wants to eat this, but the ssong is so nice...",
+  "glitchDescription" : "Relaxed. This is the kind of music one would hear in a bistro.",
+  "humanDescription" : "What a nice song... It sounds a little familiar, actually.",
+  "hylotlDescription" : "I suppose this record player is rather cute... It's tolerable.",
+  "novakidDescription" : "A sweet shaped player playin' a relaxin' tune.",
+
+  "inventoryIcon" : "sweetsplayericon.png",
+  "orientations" : [
+    {
+      "dualImage" : "sweetsplayer.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, 0],
+      "animationParts" : {
+        "image" : "sweetsplayer.png"
+      },
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+
+  "animation" : "sweetsplayer.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/recordscratch2.ogg" ],
+      "off" : [ "/sfx/objects/recordscratch1.ogg" ]
+    }
+  },
+
+  "scripts" : [
+    "/objects/wired/light/light.lua",
+    "/scripts/npcToyObject.lua",
+    "/objects/human/jukebox/jukebox.lua"
+  ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "influence" : [
+      "music",
+      "music",
+      "music",
+      "musicFinished"
+    ],
+    "defaultReactions" : {
+      "musicFinished" : [
+        [1.0, "smile"],
+        [1.0, "laugh"]
+      ]
+    },
+    "randomStandXRange" : [-8, 8]
+  },
+
+  "defaultLightState" : false,
+
+  "soundEffect" : "/sfx/objects/sweetsplayer.ogg",
+  "soundEffectRangeMultiplier" : 1.0
+}

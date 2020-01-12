@@ -6,7 +6,7 @@
   "rarity" : "common",
   "description" : "Heavy as air.",
   "shortdescription" : "Telebrium Mace",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "hammer",
   "category" : "mace",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
@@ -26,11 +26,13 @@
   "primaryAbilityType" : "macecombo",
   "primaryAbility":{
     "fireTime":0.75, 
-    "baseDps":6
+    "baseDps":6,"damageConfig":{
+      "damageSourceKind" : "poison"
+    } 
   },
   "critChance" : 1,
   "critBonus" : 2,
-  "stunChance" : 3,
+  "stunChance" : 60,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 
 }

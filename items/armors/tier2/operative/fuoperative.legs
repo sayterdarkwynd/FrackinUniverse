@@ -4,8 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Set Bonus:
-^cyan;+4% Crit Chance, +20% Crit Damage^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^green;+4%^reset; Crit, ^cyan;+20%^reset; Crit Dmg",
+
   "shortdescription" : "Operative Leg Armor",
   "category" : "t2armoru",
   "tooltipKind" : "armor",
@@ -13,11 +14,12 @@
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-"learnBlueprintsOnPickup" : [
-"agilitysuithead",
-"agilitysuitchest",
-"agilitysuitlegs"
-],
+  "learnBlueprintsOnPickup" : [
+    "agilitysuithead",
+    "agilitysuitchest",
+    "agilitysuitlegs"
+  ],
+  
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorpowerranged" : "fuoperativelegs" },
@@ -44,12 +46,12 @@
     }
   ],
 
-  "statusEffects" : [ 
-    "operativesetbonus",
+  "statusEffects" : [
+    "fusetbonusmanager",
     {
-      "stat" : "fu_operativeset_legs",
+      "stat" : "operativesetcount",
       "amount" : 1
-    }  
+    }
   ],
 
   "colorOptions" : [

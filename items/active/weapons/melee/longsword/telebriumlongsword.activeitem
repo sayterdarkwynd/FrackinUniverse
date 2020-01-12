@@ -1,12 +1,12 @@
 {
   "itemName" : "telebriumlongsword",
-  "price" : 1500,
-  "level" : 1,
+  "price" : 200,
+  "level" : 2,
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "Pure honed Telebrium. Ribbed for her pleasure.",
   "shortdescription" : "Telebrium Longsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "longsword",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","longsword", "upgradeableWeapon"],
@@ -32,11 +32,15 @@
 
   "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
-    "fireTime" : 0.70,
-    "baseDps" : 10
+    "fireTime" : 0.75,
+    "baseDps" : 6.9,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }    
   },
 
-  "critChance" : 2, 
-  "critBonus" : 3, 
+  "critChance" : 1, 
+  "critBonus" : 8, 
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,0 +1,62 @@
+{
+  "objectName" : "poptopmusicbox",
+  "colonyTags" : ["monstrous","pretty"],
+  "printable" : false,
+  "rarity" : "Uncommon",
+  "description" : "A music box modeled after a Poptop. A much less dangerous way to listen to its cheerful melody.",
+  "shortdescription" : "Monstrous Music Box",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 0,
+
+  "apexDescription" : "Oh what a gentle little song...",
+  "avianDescription" : "I quite like music boxes... especially ones like these.",
+  "floranDescription" : "Poptop sssong without the Poptop!",
+  "glitchDescription" : "Relaxed. This song is very pleasant when I don't have to worry about being gnawed on.",
+  "humanDescription" : "What a nice tune! It sounds a little familiar, actually...",
+  "hylotlDescription" : "It's a shame Poptop are so volatile... I'd imagine they'd make fine pets if domesticated.",
+  "novakidDescription" : "I've heard of some strange folks farmin' Poptops for \"ambiance\". Guess I can see why now.",
+
+  "inventoryIcon" : "poptopmusicboxicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "poptopmusicbox.png:<color>.off",
+      "imagePosition" : [-8, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/switch/switch.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle2.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/musicbox_open.ogg" ],
+      "off" : [ "/sfx/objects/musicbox_close.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "poptopmusicbox.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "soundEffect" : "/sfx/objects/musicbox1.ogg",
+
+  "npcToy": {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallswitch"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

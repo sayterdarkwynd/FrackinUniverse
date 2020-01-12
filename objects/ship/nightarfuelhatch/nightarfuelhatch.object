@@ -1,0 +1,46 @@
+{
+  "objectName" : "nightarfuelhatch",
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "container",
+  "category" : "container",
+  "description" : "A Complicated Nightar fuel hatch.",
+  "shortdescription" : "Nightar Fuel Hatch",
+  "race" : "nightar",
+  "lightColor" : [102, 61, 61],
+
+  "apexDescription" : "Converts fuel into freedom.",
+  "avianDescription" : "Let's load it up and take to the stars!",
+  "floranDescription" : "Let'ss get going!",
+  "glitchDescription" : "Excited. Once filled, we may visit another planet.",
+  "humanDescription" : "A fuel panel. We can fill this up and explore.",
+  "hylotlDescription" : "Fuel is the lifeblood of exploration.",
+
+  "inventoryIcon" : "nightarfuelhatchicon.png",
+  "orientations" : [
+    {
+      "imageLayers" :  [ { "image" : "nightarfuelhatch.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarfuelhatchlit.png:<color>.<frame>" } ],
+
+      "imagePosition" : [-8, -16],
+      "frames" : 8,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "hasWindowIcon" : false,
+  "recipeGroup" : "fuel",
+  "slotCount" : 6,
+  "uiConfig" : "/interface/fuel/fuel.config",
+  "autoCloseCooldown" : 3600,
+  "frameCooldown" : 5,
+
+  "itemTags" : [ "newfuelhatch" ],
+
+  "scripts" : ["/stagehands/radiomessage.lua"],
+  "scriptDelta" : 30,
+  "broadcastArea" : [-5, -5, 5, 5],
+  "radioMessage" : "fuel"
+}

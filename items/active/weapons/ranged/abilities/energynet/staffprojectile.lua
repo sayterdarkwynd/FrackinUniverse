@@ -20,10 +20,7 @@ function init()
 end
 
 function update(dt)
-
-      sb.logInfo("set rotation")
-      rotateTo(self.aimPosition, dt)
-      
+  rotateTo(self.aimPosition, dt)
   if self.aimPosition then
     if self.controlMovement then
       controlTo(self.aimPosition)

@@ -1,0 +1,283 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "trapState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "image" : "<image>:<color>.on",
+              "particleEmittersOff" : [ "drip-up", "drip-right", "drip-down", "drip-left",
+              "drip-ul", "drip-ll", "drip-lr", "drip-ur" ]
+            }
+          },
+          "upOn" : {
+            "properties" : {
+              "image" : "<image>:<color>.on"
+//              "particleEmittersOn" : [ "drip-up" ]
+            }
+          },
+          "rightOn" : {
+            "properties" : {
+              "image" : "<image>:<color>.on",
+              "particleEmittersOn" : [ "drip-right" ]
+            }
+          },
+          "downOn" : {
+            "properties" : {
+              "image" : "<image>:<color>.on",
+              "particleEmittersOn" : [ "drip-down" ]
+            }
+          },
+          "leftOn" : {
+            "properties" : {
+              "image" : "<image>:<color>.on",
+              "particleEmittersOn" : [ "drip-left" ]
+            }
+          },
+          "upperLOn" : {
+            "properties" : {
+              "image" : "<image>:<color>.on",
+              "particleEmittersOn" : [ "drip-ul" ]
+            }
+          },
+          "lowerLOn" : {
+            "properties" : {
+              "image" : "<image>:<color>.on",
+              "particleEmittersOn" : [ "drip-ll" ]
+            }
+          },
+          "lowerROn" : {
+            "properties" : {
+              "image" : "<image>:<color>.on",
+              "particleEmittersOn" : [ "drip-lr" ]
+            }
+          },
+          "upperROn" : {
+            "properties" : {
+              "image" : "<image>:<color>.on",
+              "particleEmittersOn" : [ "drip-ur" ]
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "drip-up" : {
+      "emissionRate" : 5.0,
+      "emissionRateVariance" : 0.5,
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "position" : [0.5, 0],
+            "size" : 1.0,
+            "color" : [255, 100, 0, 255],
+            "light" : [150, 50, 50],
+            "fade" : 0.9,
+            "initialVelocity" : [0, 5.0],
+            "finalVelocity" : [0.0, 3.0],
+            "approach" : [0, 20],
+            "timeToLive" : 2,
+            "layer" : "middle",
+            "variance" : {
+//              "initialVelocity" : [0.5, 2.0],
+              "position" : [0.4, 0]
+            }
+          }
+        }
+      ]
+    },
+    "drip-right" : {
+      "emissionRate" : 2.2,
+      "emissionRateVariance" : 1.5,
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "position" : [0.2, 0],
+            "initialVelocity" : [0.5, -10],
+            "finalVelocity" : [0, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" :  2,
+            "size" : 1.0,
+            "timeToLive" : 1,
+            "variance" : {
+//              "initialVelocity" : [0, 4],
+              "position" : [0, 0]
+            }
+          }
+        }
+      ]
+    },
+    "drip-down" : {
+      "emissionRate" : 2.6,
+      "emissionRateVariance" : 1.5,
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip2.animation",
+            "position" : [0.5, 1],
+            "initialVelocity" : [0, -10],
+            "finalVelocity" : [0, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "size" : 1.0,
+            "timeToLive" : 1,
+            "variance" : {
+//              "initialVelocity" : [0, 4],
+              "position" : [0.4, 0]
+            }
+          }
+        }
+      ]
+    },
+    "drip-left" : {
+      "emissionRate" : 2.2,
+      "emissionRateVariance" : 1.5,
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "position" : [0.8, 0],
+            "initialVelocity" : [-0.5, -10],
+            "finalVelocity" : [0.1, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "size" : 1.0,
+            "timeToLive" : 1,
+            "variance" : {
+//              "initialVelocity" : [0, 4],
+              "position" : [0, 0]
+            }
+          }
+        }
+      ]
+    },
+    "drip-ul" : {
+      "emissionRate" : 2.0,
+      "emissionRateVariance" : 1.5,
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "position" : [0.8, 0],
+            "initialVelocity" : [-0.5, -10],
+            "finalVelocity" : [0.1, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "size" : 1.0,
+            "timeToLive" : 1,
+            "variance" : {
+//              "initialVelocity" : [0, 4],
+              "position" : [0, 0]
+            }
+          }
+        }
+      ]
+    },
+    "drip-ll" : {
+      "emissionRate" : 2.4,
+      "emissionRateVariance" : 1.5,
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "position" : [1.0, 0.2],
+            "initialVelocity" : [-0.5, -10],
+            "finalVelocity" : [0.1, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "size" : 1.0,
+            "timeToLive" : 1,
+            "variance" : {
+//              "initialVelocity" : [0, 4],
+              "position" : [0, 0]
+            }
+          }
+        }
+      ]
+    },
+    "drip-lr" : {
+      "emissionRate" : 2.4,
+      "emissionRateVariance" : 0.5,
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "position" : [0, 0.2],
+            "initialVelocity" : [0.5, -10],
+            "finalVelocity" : [0, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" :  2,
+            "size" : 1.0,
+            "timeToLive" : 1,
+            "variance" : {
+//              "initialVelocity" : [0, 4],
+              "position" : [0, 0]
+            }
+          }
+        }
+      ]
+    },
+    "drip-ur" : {
+      "emissionRate" : 2.0,
+      "emissionRateVariance" : 0.5,
+      "active" : false,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/poisondrip/poisondrip1.animation",
+            "position" : [0.2, 0],
+            "initialVelocity" : [0.5, -10],
+            "finalVelocity" : [0, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" :  2,
+            "size" : 1.0,
+            "timeToLive" : 1,
+            "variance" : {
+//              "initialVelocity" : [0, 4],
+              "position" : [0, 0]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "shoot" : [ ],
+    "on" : [ ],
+    "off" : [ ]
+  }
+}

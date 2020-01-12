@@ -16,10 +16,11 @@
   "twoHanded" : true,
 
   
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "energycutter.png",
+    "middlefullbright" : "",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -43,18 +44,20 @@
   "elementalType" : "physical",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
     "fireTime" : 0.01,
     "baseDps" : 5,
+    "useEnergy" : true,
     "energyUsage" : 80,
+    "runSlowWhileShooting" : true,
     "inaccuracy" : 0,
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "plasmatorpedo2",
     "projectileParameters" : { 
-      "statusEffects" : [ "stun" ],
+      "statusEffects" : [ "slow" ],
       "periodicActions":[  
         {
           "time":0,
@@ -179,6 +182,7 @@
 
   "critChance" : 5,
   "critBonus" : 13,
+  
   "altAbilityType":"explosiveshot",
   "altAbility":{  
     "firePositionPart":"barrel",

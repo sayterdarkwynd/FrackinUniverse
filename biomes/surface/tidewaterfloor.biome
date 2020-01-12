@@ -5,21 +5,24 @@
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 1,
+        "select" : 2,
         "pool" : [
           [ 0.05, "deathjelly" ],
-          [ 0.05, "seaclam" ]
+          [ 0.1, "seaclam" ],
+          [ 0.1, "deathjellypeaceful" ]
         ]
       },    
       {
         "select" : 6,
         "pool" : [
-          [ 1, "smallFishOcean1" ],
-          [ 1, "smallFishOcean2" ],
-          [ 1, "passiveLargeFish" ],
-          [ 1, "aggroLargeFish" ],
-          [ 1, "squidcritter" ],
-          [ 1, "jellycritter" ]
+          [ 0.07, "smallFishOcean1" ],
+          [ 0.07, "smallFishOcean2" ],
+          [ 0.06, "passiveLargeFish" ],
+          [ 0.05, "aggroLargeFish" ],
+          [ 0.05, "squidcritter" ],
+          [ 0.25, "jellycritter" ],
+          [ 0.15, "clearjelly" ],
+          [ 0.25, "fufish" ]
         ]
       }
     ],
@@ -53,10 +56,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/arctic-exploration1.ogg", "/music/arctic-exploration2.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/lava-exploration2.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/crystal-exploration2.ogg", "/music/forsaken-grotto.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/the-deep.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/mercury.ogg", "/music/procyon.ogg" ]
     }
   },
 
@@ -242,6 +245,7 @@
             [0.5, "wildcoralcreepseed" ],
             [0.25, "wildcellpodsplant" ], 
             [0.25, "wildkamaranpodsplant" ],
+            [0.35, "wildphasefruitseed" ], 
             [0.35, "wildnakatiseed" ],
             [0.25, "wildaquapodseed" ]             
             ],
@@ -296,8 +300,16 @@
             }
           }
         ]
-      }    
-    
+      },    
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "tidewatermini", "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "sandstone", "blockpile", "loops", "flats", "spikes", "rods", "spiralspikes", "stripeblocks", "wiggles" ]
+        }    
     ]
   }  
 }

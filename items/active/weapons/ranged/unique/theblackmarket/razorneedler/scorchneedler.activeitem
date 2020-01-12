@@ -9,7 +9,7 @@
   "shortdescription" : "^red;Scorch Needler^reset;",
   "level" : 3,
   "category" : "machinePistol",
-  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","machinepistol", "fire", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -30,18 +30,17 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "fire",
-  "learnBlueprintsOnPickup" : [ "armcannonexplosive", "armcannonfire", "armcannonproto", "armcannonice", "armcannonshock" ], 
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.1,
-    "baseDps" : 5.7,
+    "fireTime" : 0.12,
+    "baseDps" : 6,
     "energyUsage" : 25,
     "fireType" : "auto",
     "inaccuracy" : 0.001,
     "projectileCount" : 1,
-    "projectileType" : "razorneedlerthorns2",
+    "projectileType" : "razorneedlerthornsfire",
     "projectileParameters" : {
       "speed" : 65
     },
@@ -76,5 +75,9 @@
   },
   "critChance" : 2,
   "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "isMachinePistol" : 1,
+  "reloadTime": 1, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

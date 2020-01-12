@@ -3,17 +3,23 @@ local fu_monsters_update = update
 local fu_monsters_uninit = uninit
  
 function init()
-  fu_monsters_init()
+  	if fu_monsters_init then
+		fu_monsters_init()
+	end
 end
  
- 
+
  
 function update(dt)
-  fu_monsters_update(dt)
+	if fu_monsters_update then
+		fu_monsters_update(dt)
+	end
 end
  
  
  
 function uninit()
-  --fu_monsters_uninit()
+	if fu_monsters_uninit then
+		fu_monsters_uninit()
+	end
 end

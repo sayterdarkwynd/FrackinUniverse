@@ -25,7 +25,7 @@ function build(directory, config, parameters, level, seed)
   if config.altAbility and config.altAbility.elementalConfig then
     --The difference is here, i added an if null-coalescing operation that checks if the alt ability has the elementalType in the elementalConfig list and replaces it with the physical type if it doesn't exist.
     util.mergeTable(config.altAbility, config.altAbility.elementalConfig[elementalType] or config.altAbility.elementalConfig["physical"])
-                                                                                       
+	
   end
 
   -- calculate damage level multiplier
@@ -67,12 +67,57 @@ function build(directory, config, parameters, level, seed)
     config.tooltipFields.energyPerShotLabel = util.round((config.primaryAbility.energyUsage or 0) * (config.primaryAbility.fireTime or 1.0), 1)
     -- *******************************
     -- FU ADDITIONS 
+      if (configParameter("isAmmoBased")==1) then
+        config.tooltipFields.energyPerShotLabel = util.round(((config.primaryAbility.energyUsage or 0) * (config.primaryAbility.fireTime or 1.0)/2), 1)
+	config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",0), 0)
+	config.tooltipFields.reloadTimeLabel = configParameter("reloadTime",1) .. "s"	      
+      else
+        config.tooltipFields.magazineSizeLabel = "--"
+        config.tooltipFields.reloadTimeLabel = "--"
+      end
+      
+      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",1), 0)    -- rather than not applying a bonus to non-crit-enabled weapons, we just set it to always be at least 1
+      
+      if (configParameter("critBonus")) then
+        config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)   
+      else
+        config.tooltipFields.critBonusLabel = "--"
+      end
+      
+      
+      if (configParameter("stunChance")) then
+        config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)   
+      else
+        config.tooltipFields.stunChanceLabel = "--"        
+      end      
+      
+	config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
+    	config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png"  
+        config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"  
+        config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png" 
+        
+    -- weapon abilities
     
-      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
-      config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
+    --overheating
+    if config.primaryAbility.overheatLevel then
+	    config.tooltipFields.overheatLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatGain, 1)
+	    config.tooltipFields.cooldownLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatLossRateMax, 1)    
+    end
+    
+    -- Recoil
+    if config.primaryAbility.recoilVelocity then
+	    config.tooltipFields.isCrouch = configParameter("crouchReduction",false)
+	    config.tooltipFields.recoilStrength = util.round(configParameter("recoilVelocity",0), 0)
+	    config.tooltipFields.recoilCrouchStrength = util.round(configParameter("crouchRecoilVelocity",0), 0)    
+    end
+    
+
+    
     -- *******************************
     if elementalType ~= "physical" then
       config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
+    else
+      config.tooltipFields.damageKindImage = "/interface/elements/physical.png"
     end
     if config.primaryAbility then
       config.tooltipFields.primaryAbilityTitleLabel = "Primary:"

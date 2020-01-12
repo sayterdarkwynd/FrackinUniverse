@@ -14,7 +14,7 @@
   "animation" : "/items/active/weapons/staff/staff.animation",
   "animationParts" : {
     "staff" : "prismaticstaff.png",
-    "stone" : "",
+    "stone" : "/items/active/weapons/staff/generated/stone/prismaticstaff.png",
     "chargeEffect" : "/items/active/weapons/staff/generated/glow/physical.png"
   },
   "animationCustom" : {
@@ -75,12 +75,16 @@
     }
   },
 
-  "elementalType" : "physical",
+  "elementalType" : "cosmic",
 
   "primaryAbilityType" : "plasmabladebarrage",
   "primaryAbility" : {
     "name" : "Crystal Blade",
-    "projectileType" : "crystalblade"
+    "projectileType" : "crystalblade",
+    "projectileParameters" : {
+      "damageSourceKind" : "cosmic",
+      "baseDamage" : 30
+    }    
   },
   "altAbilityType" : "crystalstorm",
   "altAbility" : {},

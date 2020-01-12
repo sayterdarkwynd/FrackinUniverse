@@ -2,10 +2,10 @@
   "id" : "create_clothingfabricator2",
   "prerequisites" : [ "create_clothingfabricator" ],
   "title" : "I just don't know...",
-  "text" : "I need a ^orange;candy automato^reset;, slave. Get me one.",
-  "completionText" : "Thanks. Have this a toothpick or some crap like that. Go way now, shoo.",
+  "text" : "5 ^orange;Biofuel Canisters^reset; would be all that I needed to create a ^cyan;rocket-powered guinea pig^reset;. With some ^orange;Algae^reset; found in a ^orange;Bog^reset; biome you'd have no problem making some. I promise to ^red;not^reset; reward you with deadly bees this time!",
+  "completionText" : "Thanks. You look like you could use some ^orange;party time^reset;! It's dangerous to go alone! Take ^green;this^reset;! Also, if you feel up to it and want to die, I could use help testing my newest invention. It's called a ^orange;Kill Pod^reset; and it's super neat!",
   "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "bone", 1 ], [ "crewcontract_plur", 1 ] ] ],
+  "rewards" : [ [ [ "killpod", 1 ], [ "crewcontract_plur", 1 ] ] ],
   "speaker" : "questGiver",
 
   "updateDelta" : 10,
@@ -20,15 +20,15 @@
     "canBeAbandoned" : true,
     "requireTurnIn" : false,
 
-    "turnInDescription" : "Bring ^orange;Kevin, your overlord^reset; a ^green;Candy Automato^reset;",
+    "turnInDescription" : "Bring the Glorious ^red;Kevin^reset; 5 ^orange;Biofuel Canisters^reset;",
 
 
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "candyautomato",
-        "count" : 1,
-        "consume" : false
+        "itemName" : "biofuelcannister",
+        "count" : 5,
+        "consume" : true
       }
     ]
   }

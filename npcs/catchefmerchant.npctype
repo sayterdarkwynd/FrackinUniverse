@@ -1,0 +1,178 @@
+{
+  "type" : "catchefmerchant",
+  "baseType" : "merchant",
+
+  "scriptConfig" : {
+    "questGenerator" : {
+      "pools" : ["common"]
+    },
+
+    "merchant" : {
+      "waitTime" : 10,
+      "storeRadius" : -1,
+      "categories" : {
+        "default" : [ "chefmerchant" ],
+        "human" : ["chefmerchant" ],
+        "apex" : ["chefmerchant" ],
+        "hylotl" : ["chefmerchant" ],
+        "floran" : ["chefmerchant" ],
+        "glitch" : ["chefmerchant" ],
+        "avian" : ["chefmerchant" ],
+        "novakid" : ["chefmerchant" ]
+      },
+      "buyFactorRange" : [ 1.0, 1.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 7,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Chef",
+          "subtitle" : "  Sells delicious food!"
+        }
+      }
+    },
+
+    "dialog" : {
+      "merchant" : {
+        "start" : {
+          "default" : {
+            "default" : [
+              "Meow! Hungry? I've got plenty of fresh produce right here!"
+            ]
+          },
+          "apex" : {
+            "default" : [
+              "If you want food, get it here.",
+              "My supplies come from secure sources.",
+              "My produce is delicious, you won't find better.",
+              "I hope you like bananas.",
+              "I hope you are hungry!"
+            ]
+          },
+          "avian" : {
+            "default" : [
+              "I'm sure you'll love my food.",
+              "What can I get you?",
+              "Please, try my produce. I know you'll love it.",
+              "Can I interest you in some very fine supplies?",
+              "Fresh produce for all your cooking needs!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran sssell food!",
+              "Floran's food is the besst! Buy it all!",
+              "Greenfinger says Floran is \"liability in the kitchen\", but good produce merchant.",
+              "You look like poor hunter, so Floran ssell you dinner.",
+              "Floran is at your sservice."
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Affable. All your cooking needs, right here.",
+              "Confident. My produce is of excellent quality!",
+              "Friendly. If you're hungry, you have come to the right person.",
+              "Genial. Best produce around! What can I get you?",
+              "Proud. Glitch grow the best produce."
+            ]
+          },
+          "human" : {
+            "default" : [
+              "What can I interest you in?",
+              "What can I get you? Have a look at my range.",
+              "In need of fresh suppplies? Look no further!",
+              "You won't find better food! Not around here anyway.",
+              "This grub is genuinely delicious."
+
+            ]
+          },
+          "hylotl" : {
+            "default" : [
+              "My produce is simply delectable.",
+              "My produce is more than palatable - it is a delight!",
+              "I doubt you'll find food more toothsome than what I have available here.",
+              "Everything I sell has been grown with love. And compost.",
+              "Come, sample my ambrosial fare!"
+            ]
+          },
+          "novakid" : {
+            "default" : [
+              "You hankerin' to fill yer belly?",
+              "I serve up the best food this side o' the solar system!",
+              "My meals are ace-high!",
+              "My mighty fine food will send you to the stars!"
+            ]
+          }
+        },
+        "end" : {
+          "default" : {
+            "default" : [
+              "Come back anytime!"
+            ]
+          },
+          "apex" : {
+            "default" : [
+              "Come back whenever you are hungry.",
+              "Don't be a stranger.",
+              "Fresh produce every day!"
+            ]
+          },
+          "avian" : {
+            "default" : [
+              "See you soon!",
+              "Always a pleasure. Enjoy the food!",
+              "Come back again, won't you?"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Come back sssoon for more food!",
+              "Floran will see you again!",
+              "Floran can't wait to sssell more food!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Happy. Come back any time.",
+              "Encouraging. Go forth and become hungry.",
+              "Pleased. I'm sure you will enjoy that."
+            ]
+          },
+          "human" : {
+            "default" : [
+              "Enjoy it, you won't find better!",
+              "Come back whenever you're hungry!",
+              "Pleasure to be of service!"
+            ]
+          },
+          "hylotl" : {
+            "default" : [
+              "I look forward to your future custom.",
+              "I can see you are a connoisseur.",
+              "I do hope you enjoy the food."
+            ]
+          },
+          "novakid" : {
+            "default" : [
+              // -todo-
+              "I look forward to your future custom.",
+              "I can see you are a connoisseur.",
+              "I do hope you enjoy the food."
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ "hiderhead" ],
+            "chest" : [ "hiderchest" ],
+            "legs" : [ "hiderlegs" ]
+          }
+        ] ]
+    ]
+  }
+}

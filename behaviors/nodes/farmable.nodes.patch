@@ -1,0 +1,105 @@
+[
+  {
+    "op": "add",
+    "path": "/eatFood",
+    "value": {
+      "type": "action",
+      "name": "eatFood",
+      "title": "eatFood",
+      "properties": {
+        "entity": {
+          "type": "entity",
+          "value": null
+        }
+      },
+      "category": "farmable",
+      "script": "/scripts/actions/monsters/farmable.lua",
+      "output": {}
+    }
+  },
+  {
+    "op": "add",
+    "path": "/getFood",
+    "value": {
+      "type": "action",
+      "name": "getFood",
+      "title": "getFood",
+      "properties": {},
+      "category": "farmable",
+      "script": "/scripts/actions/monsters/farmable.lua",
+      "output": {
+        "food": {
+          "type": "number",
+          "key": null
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/findTrough",
+    "value": {
+      "type": "action",
+      "name": "findTrough",
+      "title": "",
+      "properties": {
+        "position": {
+          "type": "position",
+          "key": "self"
+        }
+      },
+      "category": "farmable",
+      "script": "/scripts/actions/monsters/farmable.lua",
+      "output": {
+        "entity": {
+          "type": "entity",
+          "key": null
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/removeFood",
+    "value": {
+      "type": "action",
+      "name": "removeFood",
+      "title": "removeFood",
+      "properties": {},
+      "category": "farmable",
+      "script": "/scripts/actions/monsters/farmable.lua",
+      "output": {}
+    }
+  },
+  {
+    "op": "add",
+    "path": "/getHappiness",
+    "value": {
+      "type": "action",
+      "name": "getHappiness",
+      "title": "getHappiness",
+      "properties": {},
+      "category": "farmable",
+      "script": "/scripts/actions/monsters/farmable.lua",
+      "output": {
+        "happiness": {
+          "type": "number",
+          "key": null
+        }
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/happinessCalculation",
+    "value": {
+      "type": "action",
+      "name": "happinessCalculation",
+      "title": "happinessCalculation",
+      "properties": {},
+      "category": "farmable",
+      "script": "/scripts/actions/monsters/farmable.lua",
+      "output": {}
+    }
+  }
+]

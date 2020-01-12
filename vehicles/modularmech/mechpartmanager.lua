@@ -78,7 +78,16 @@ function MechPartManager:new()
       energy = {
         energyDrain = "mechArmEnergyDrain"
       }
-    }
+    },
+    horn = {
+      horn1 = {
+	--mechPower = "mechPowerModifier",
+        mechMass = "mechBodyMass"       
+      },
+      horn2 = {
+        energyDrain = "mechArmEnergyDrain"
+      }
+    }    
   }
 
   -- load part configurations

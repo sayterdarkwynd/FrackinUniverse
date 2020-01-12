@@ -83,14 +83,18 @@
     }
   ],
   
-  "scripts" : [ "/objects/ship/fu_byoscaptainschair/fu_byoscaptainschair.lua", "/objects/ship/fu_byosobjectdeath.lua" ],
+  "scripts" : [ "/objects/ship/fu_shipobjectplanetinteraction.lua", "/objects/ship/fu_byosobjectdeath.lua" ],
   "animationScripts" : ["/objects/ship/fu_byosobjectanimation.lua"],
   "scriptDelta" : 20,
 
   "interactAction" : "ScriptPane",
   "interactData" : "/interface/cockpit/cockpit.config",
+  
+  "planetInteractAction" : "ScriptPane",
+  "planetInteractData" : "/interface/scripted/fu_planetcockpit/fu_planetcockpit.config",
 
   "sitFlipDirection" : false,
   "racialiserType" : "captainschair",
-  "retainObjectParametersInItem" : true
+  "retainObjectParametersInItem" : true,
+  "byosBootupReplacement" : "fu_byoscaptainschair"
 }

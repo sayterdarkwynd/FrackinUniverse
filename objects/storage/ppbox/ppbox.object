@@ -1,0 +1,47 @@
+{
+  "objectName" : "ppbox",
+  "colonyTags" : ["storage"],
+  "printable" : false,
+  "rarity" : "Uncommon",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "The signature bright green and yellow cardboard box of Prop Packaging.",
+  "shortdescription" : "Prop Packaging Box",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 0,
+
+  "apexDescription" : "A delivery box. But of what?",
+  "avianDescription" : "A bright package, left unopened.",
+  "floranDescription" : "What iss in pretty yellow box?",
+  "glitchDescription" : "Curious. What is a package doing out here? Is it for me...?",
+  "humanDescription" : "I didn't even know they made cardboard in these colors.",
+  "hylotlDescription" : "Whoever shipped this package out certainly is dedicated to their brand.",
+  "novakidDescription" : "Well don't mind if I do.",
+
+  "inventoryIcon" : "ppboxicon.png",
+  "orientations" : [
+    {
+      "image" : "ppboxleft.png:<color>",
+      "imagePosition" : [-16, 0],
+      "spaceScan" : 0.1,
+      "direction" : "right",
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "image" : "ppboxright.png:<color>",
+      "imagePosition" : [-16, 0],
+      "spaceScan" : 0.1,
+      "direction" : "left",
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+  "openSounds" : [ "/sfx/objects/cardboardbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/cardboardbox_close.ogg" ],
+  "slotCount" : 16,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+}

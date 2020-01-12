@@ -1,20 +1,47 @@
 {
   "name" : "heatwave1",
-  "blockingStat" : "sandstormImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "fireResistance",
-          "effectCutoffValue" : 0.3,     
-	  "biomeTemp" : 0.8, 
-	  "biomeThreshold" : 0.32,
-	  "baseRate" : 6.65,
-	  "baseDebuffPerTick" : 1,
-	  "baseDmgPerTick" : 0.35,
-	  "situationPenalty" : 1,
-	  "liquidPenalty" : 0.35,
-	  "biomeNight" : 0.45	    
+    "resistanceTypes" : {
+      "fireResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.3,
+    "immunityStats" : [
+      "sandstormImmunity",
+      "biomeheatImmunity",
+      "ffextremeheatImmunity"
+    ],
+
+    "healthDrain" : 0.4,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0,
+    "jumpPenalty" : 0,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "bright" : 1.25,
+      "night" : 0,
+      "wet" : 0,
+      "underground" : 0
+    },
+
+    "messages" : {
+      "intro" : "ffbiomedesert",
+      "sunrise" : "ffbiomedesertsunrise",
+      "noon" : "ffbiomedesertnoon",
+      "night" : "ffbiomedesertnight",
+      "wet" : "ffbiomedesertwater",
+      "underground" : "ffbiomedesertunderground"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/desert/heatwave1.statuseffect"
   },
-  "defaultDuration" : 2,
+  "defaultDuration" : 5,
 
   "scripts" : [
     "desertweathernew.lua"

@@ -22,7 +22,7 @@ function update(dt)
     if selected ~= self.collectionName then
       populateList(selected)
       self.customCollectionName = selected
-      widget.setSelectedOption("collectionTabs", 6)
+      widget.setSelectedOption("collectionTabs", 7)
     end
     return
   end
@@ -44,13 +44,13 @@ end
 
 function populateList(collectionName)
 -- BEGIN CUSTOM CODE
+  widget.clearListItems(self.customList)
   local collectionName = collectionName or widget.getSelectedData("collectionTabs")
   local isCustomCollection = collectionName ~= nil and string.match(collectionName, "customCollections");
   if collectionName ~= nil and string.match(collectionName, "Visible") then
     return
   end -- special case: do nothing
-
-  widget.clearListItems(self.customList)
+  
 -- END CUSTOM CODE
   widget.clearListItems(self.list)
   self.collectionName = collectionName

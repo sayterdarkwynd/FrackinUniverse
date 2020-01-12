@@ -37,10 +37,21 @@
       "comboSteps":10
     }, 
     
-  "altAbilityType" : "parrykatana",
+  "altAbilityType" : "fuwaterslash",
   "altAbility" : {
-    "parryTime" : 0.225,
-    "cooldownTime" : 0.2
+    "projectileTimesAndAngles" : [
+      [0.005, 40],
+      [0.013, 20],
+      [0.021, 10],
+      [0.025, 0],
+      [0.029, -10],
+      [0.032, -20],
+      [0.037, -40]
+    ],
+    "name" : "Shock Eruption",
+    "projectileType" : "alienblast",
+    "projectileParameters" : { "damageSourceKind" : "radioactive" },
+    "baseDpg" : 7
   },
   "critChance" : 1,
   "critBonus" : 12,

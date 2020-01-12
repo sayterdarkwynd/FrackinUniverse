@@ -8,7 +8,19 @@
 
   "animation" : "doomspirit.animation",
 
-  "dropPools" : [ { "default" : "spookitTreasure", "bow" : "huntingghost" } ],
+  "dropPools" : [ 
+    { 
+      "default" : "spookitTreasure", 
+      "bow" : "huntingghost",
+      "firebow" : "huntingghost",
+      "icebow" : "huntingghost",
+      "poisonbow" : "huntingghost",
+      "electricbow" : "huntingghost",
+      "cosmicbow" : "huntingghost",
+      "radioactivebow" : "huntingghost",
+      "shadowbow" : "huntingghost"
+    } 
+  ],
 
   "baseParameters" : {
     "scripts" : [
@@ -25,7 +37,7 @@
       "targetQueryRange" : 70,
       "targetOnDamage" : true,
       "keepTargetInSight" : false,
-      "keepTargetInRange" : 50,
+      "keepTargetInRange" : 70,
       "targetOutOfSightTime" : 10.0,
 
       "hurtTime" : 0.25,
@@ -224,7 +236,7 @@
         "targetMaterialKind" : "organic"
       },
 
-      "appliesWeatherStatusEffects" : true,
+      "appliesWeatherStatusEffects" : false,
       "appliesEnvironmentStatusEffects" : false,
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
@@ -280,7 +292,7 @@
         "iceResistance" : { "baseValue" : 0.6 },
         "fireResistance" : { "baseValue" : -0.5 },
         "physicalResistance" : { "baseValue" : 1.0 },
-        "electricResistance" : { "baseValue" : -0.7 }
+        "electricResistance" : { "baseValue" : 0.7 }
       },
 
       "resources" : {

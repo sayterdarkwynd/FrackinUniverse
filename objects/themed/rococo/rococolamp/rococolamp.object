@@ -1,0 +1,47 @@
+{
+  "objectName" : "rococolamp",
+  "colonyTags" : ["rococo","pretty","valuable","light"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "description" : "A fancy vintage light.",
+  "shortdescription" : "Rococo Lamp",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 0,
+  "lightColor" : [217, 217, 190],
+
+  "apexDescription" : "A pretty little lamp.",
+  "avianDescription" : "The lampshade on this lamp looks like an overturned flower.",
+  "floranDescription" : "Lamp is not fire powered. Floran likess this one.",
+  "glitchDescription" : "Relaxed. A very charming lamp.",
+  "humanDescription" : "A fancy little lamp. Old, but definitely fancy.",
+  "hylotlDescription" : "What an interesting shape on this lampshade.",
+  "novakidDescription" : "A fancier than usual table lamp.",
+
+  "inventoryIcon" : "rococolampicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "rococolamp.png:<color>.<frame>",
+      "animationPosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "rococolamp.png",
+    "fg" : "rococolamplit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+  
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ],
+  "amimationPosition" : [0, 0]
+}

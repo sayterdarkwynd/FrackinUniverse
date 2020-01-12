@@ -1,23 +1,48 @@
 {
   "name" : "desertweathernewdeadly",
-  "blockingStat" : "sandstormImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "fireResistance",
-          "effectCutoffValue" : 0.6,    
-	  "biomeTemp" : 0.75, 
-	  "biomeThreshold" : 0.75,
-	  "baseRate" : 6,
-	  "baseDebuffPerTick" : 3,
-	  "baseDmgPerTick" : 6,
-	  "situationPenalty" : 1,
-	  "liquidPenalty" : 0.45,
-	  "biomeNight" : 0.01	    
+    "resistanceTypes" : {
+      "fireResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.6,
+    "immunityStats" : [
+      "ffextremeheatImmunity"
+    ],
+
+    "healthDrain" : 6,
+    "hungerDrain" : 0,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.3,
+    "jumpPenalty" : 0.3,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "bright" : 1.75,
+      "night" : 0,
+      "wet" : 0,
+      "underground" : 0
+    },
+
+    "messages" : {
+      "intro" : "ffbiomedesert",
+      "sunrise" : "ffbiomedesertsunrise",
+      "noon" : "ffbiomedesertnoon",
+      "night" : "ffbiomedesertnight",
+      "wet" : "ffbiomedesertwater",
+      "underground" : "ffbiomedesertunderground"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/desert/desertweathernewdeadly.statuseffect"
   },
-  "defaultDuration" : 2,
+  "defaultDuration" : 5,
 
   "scripts" : [
-    "desertweathernewdeadly.lua"
+    "desertweathernew.lua"
   ],
 
   "animationConfig" : "desertweathernew.animation",

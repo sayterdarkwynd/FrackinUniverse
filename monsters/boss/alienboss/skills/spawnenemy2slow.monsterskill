@@ -1,0 +1,49 @@
+{
+  "name" : "spawnalienspitterslow",
+  "label" : "FLAMETHROWER",
+  "image" : "/monsters/generated/ground/skills/icon.png",
+
+  "parameters" : {
+    "scripts" : [ "/monsters/boss/alienboss/skills/spawnenemy2slow.lua" ],
+    "spawnenemy2slow" : {
+      "distanceRange" : [25, 16],
+
+      "windupTime" : 0.5,
+      "winddownTime" : 0.5,
+
+      "skillDuration" : 3,
+      "angleCycle" : 0.1,
+      "maxFireAngle" : 1.0,
+      "fireInterval" : 1.0,
+
+      "changeFacingTime" : 0.5,
+
+      "moveSpeed" : 9,
+
+      "projectile" : {
+        "type" : "alienspitter2spawn",
+        "config" : {
+          "power" : 0.0,
+          "speed" : 40.0,
+          "damageRepeatTimeout" : 0.0
+        }
+      }
+    }
+  },
+
+  "animationParameters" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "flameSound" : {
+          "default" : "off",
+          "states" : {
+            "off" : {
+            },
+            "on" : {
+            }
+          }
+        }
+      }
+    }
+  }
+}

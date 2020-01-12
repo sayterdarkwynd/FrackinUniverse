@@ -1,0 +1,59 @@
+{
+  "objectName" : "neondoor",
+  "colonyTags" : ["door","neon"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "door",
+  "price" : 0,
+  "description" : "A neon geometric door. Sturdy!",
+  "shortdescription" : "Neon Door",
+  "race" : "generic",
+
+  "apexDescription" : "A sturdy door.",
+  "avianDescription" : "A sturdy door.",
+  "floranDescription" : "Door!",
+  "glitchDescription" : "Calm. A very strong door.",
+  "humanDescription" : "A strong, awesome door.",
+  "hylotlDescription" : "A simple yet strong door.",
+  "novakidDescription" : "This door sure is sturdy.",
+
+  "inventoryIcon" : "neondooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "neondoor.png:right",
+   
+  "orientations" : [
+    {
+      "image" : "neondoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/wooddoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/wooddoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "neondoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

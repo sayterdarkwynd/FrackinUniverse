@@ -31,5 +31,6 @@ function build(directory, config, parameters, level, seed)
   config.tooltipFields.critChanceLabel = configParameter("critChance",0)
   config.tooltipFields.shieldBashLabel = configParameter("shieldBash",0)
   config.tooltipFields.shieldBashPushLabel = configParameter("shieldBashPush",0)  
+  config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
   return config, parameters
 end

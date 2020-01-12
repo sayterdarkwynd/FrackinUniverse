@@ -1,0 +1,47 @@
+{
+  "objectName" : "parlorlamp",
+  "printable" : false,
+  "colonyTags" : ["parlor","cooking","light"],
+  "rarity" : "Common",
+  "description" : "A cutesy lamp, fashioned to look like a double scoop.",
+  "shortdescription" : "Parlor Lamp",
+  "race" : "generic",
+  "category" : "light",
+  "price" : 100,
+  "lightColor" : [179, 136, 167],
+
+  "apexDescription" : "What an innovative idea! And adorable to boot.",
+  "avianDescription" : "A charming little light, shaped like ice cream.",
+  "floranDescription" : "Light won't melt plasstic ice cream.",
+  "glitchDescription" : "Enamored. An adorable ice cream shaped light.",
+  "humanDescription" : "Aw, it's an ice cream lamp! That's pretty cute.",
+  "hylotlDescription" : "I admit, this lamp has a novel sort of charm.",
+  "novakidDescription" : "Ice cream that lights up and don't melt.",
+
+  "inventoryIcon" : "parlorlampicon.png",
+  "orientations" : [
+    {
+      "image" : "parlorlamp.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "bgAnchors" : [ [0, 0] ],
+      "animationParts" : {
+        "bg" : "parlorlamp.png",
+        "fg" : "parlorlamplit.png"
+      },
+      "animationPosition" : [0, 0]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+  "inputNodes" : [ [0, 0] ]
+}

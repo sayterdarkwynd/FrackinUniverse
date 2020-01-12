@@ -76,6 +76,48 @@
     "grassMod" : [ "icegrass2" ],
     "grassModDensity" : 0.9,
     "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "icefloor1" ],
+              [0.35, "icefloor2" ],
+              [0.35, "icefloor3" ], 
+              [0.35, "icefloor4" ],
+              [0.35, "icepillar1" ],
+              [0.35, "icepillar2" ],
+              [0.35, "icepillar3" ], 
+              [0.35, "icepillar4" ]              
+              ],
+              "parameters" : { }
+            }
+          ]
+        }, 
+        {
+          "mode" : "ceiling",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.35, "iceceiling1" ],
+              [0.35, "iceceiling2" ],
+              [0.35, "iceceiling3" ], 
+              [0.35, "iceceiling4" ]             
+              ],
+              "parameters" : { }
+            }
+          ]
+        },     
       {
         "mode" : "background",
         "priority" : 1.0,

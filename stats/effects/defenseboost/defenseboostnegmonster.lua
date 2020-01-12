@@ -5,14 +5,14 @@ function init()
   if (world.entityType(entity.id()) == "player") or (world.entityType(entity.id()) == "npc") then
 	   effect.addStatModifierGroup({
 	     {stat = "protection", baseMultiplier = status.stat("protection") * config.getParameter("defenseAmount", 0)},
-	     {stat = "physicalResistance", amount = config.getParameter("defenseAmount2", 0)},
-	     {stat = "fireResistance", amount = config.getParameter("defenseAmount2", 0)},
-	     {stat = "iceResistance", amount = config.getParameter("defenseAmount2", 0)},
-	     {stat = "poisonResistance", amount = config.getParameter("defenseAmount2", 0)},
-	     {stat = "electricResistance", amount = config.getParameter("defenseAmount2", 0)},
-	     {stat = "radioactiveResistance", amount = config.getParameter("defenseAmount2", 0)},
-	     {stat = "shadowResistance", amount = config.getParameter("defenseAmount2", 0)},
-	     {stat = "cosmicResistance", amount = config.getParameter("defenseAmount2", 0)},
+	     {stat = "physicalResistance", amount = config.getParameter("resistanceAmount", 0)},
+	     {stat = "fireResistance", amount = config.getParameter("resistanceAmount", 0)},
+	     {stat = "iceResistance", amount = config.getParameter("resistanceAmount", 0)},
+	     {stat = "poisonResistance", amount = config.getParameter("resistanceAmount", 0)},
+	     {stat = "electricResistance", amount = config.getParameter("resistanceAmount", 0)},
+	     {stat = "radioactiveResistance", amount = config.getParameter("resistanceAmount", 0)},
+	     {stat = "shadowResistance", amount = config.getParameter("resistanceAmount", 0)},
+	     {stat = "cosmicResistance", amount = config.getParameter("resistanceAmount", 0)},
 	     {stat = "healingStatusImmunity", amount = 1 }
 	   })
 	   makeAlert()	   

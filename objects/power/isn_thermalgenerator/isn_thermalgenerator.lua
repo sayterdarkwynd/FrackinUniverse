@@ -22,6 +22,7 @@ function onInputNodeChange(args)
 end
 
 function update(dt)
+world.spawnItem("fu_carbondioxide", entity.position())
 	if deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
@@ -61,7 +62,7 @@ function update(dt)
 		-- Decrement our current fuel by one
 		storage.fueledticks = storage.fueledticks - 1
 		-- Increase power but cap it at a 0-100 range
-		storage.currentpowerprod = isn_numericRange((storage.currentpowerprod + storage.decayrate),0,100)
+		storage.currentpowerprod = util.clamp((storage.currentpowerprod + storage.decayrate),0,100)
 	else -- oh no we've got no fuel
 		-- if the generator isn't active don't bother trying to refuel
 		
@@ -70,7 +71,7 @@ function update(dt)
 			local contents = world.containerItems(entity.id())
 			if contents[1] == nil then
 				-- if there's nothing in storage just skip straight to cutting power
-				storage.currentpowerprod = isn_numericRange((storage.currentpowerprod - storage.decayrate),0,100)
+				storage.currentpowerprod = util.clamp((storage.currentpowerprod - storage.decayrate),0,100)
 				return
 			end
 			
@@ -86,7 +87,7 @@ function update(dt)
 		
 		-- since the loop ends this update if it finds fuel, if we've reached this point
 		-- it means we didn't find any fuel so now we decrease power gradually
-		storage.currentpowerprod = isn_numericRange((storage.currentpowerprod - storage.decayrate),0,100)
+		storage.currentpowerprod = util.clamp((storage.currentpowerprod - storage.decayrate),0,100)
 	end
 end
 

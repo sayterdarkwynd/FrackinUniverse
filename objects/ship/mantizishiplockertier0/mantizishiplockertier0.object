@@ -1,0 +1,61 @@
+{
+  "objectName" : "mantizishiplockerTier0",
+  "colonyTags" : ["mantizi","storage"],
+  "printable" : false,
+  "rarity" : "Common",
+  
+  "category" : "decorative",
+  "description" : "A valuable locker, for storing valuable things.",
+  "shortdescription" : "Ship locker",
+  "race" : "mantizi",
+
+  "lightColor" : [61, 88, 102],
+
+  "apexDescription" : "The ship's storage system. It's not currently functional.",
+  "avianDescription" : "A device that holds many items. It appears to function differently from our own. This one is not on.",
+  "floranDescription" : "Sssstorage. It'sss not on.",
+  "glitchDescription" : "Stating the obvious. A  storage system. It is not on.",
+  "humanDescription" : "A ship's locker. It's not working.",
+  "hylotlDescription" : "An elegant storage solution. It's not currently powered.",
+  "mantiziDescription" : "There may be valuables inside. It's not working, though.",
+
+  "particleEmitter" : {
+    "emissionRate" : 1,
+    "pixelOrigin" : [164, 27],
+
+    "particle" : {
+      "type" : "textured",
+      "image" : "/objects/ship/emid.png",
+      "size" : 1,
+      "color" : [255, 255, 255, 255],
+      "fade" : 0.0,
+      "initialVelocity" : [0.0, 0],
+      "finalVelocity" : [0.0, 0],
+      "approach" : [0, 0],
+      "timeToLive" : 0.5,
+      "layer" : "front",
+      "fullbright" : true
+    }
+  },
+
+  "inventoryIcon" : "mantizishiplockericonTier0.png",
+  "orientations" : [
+    {
+      "image" : "mantizishiplockerTier0.png:<color>.<frame>",
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "animation" : "/objects/noisy/noisy.animation",
+
+  "scripts" : [
+    "/objects/noisy/noisy.lua"
+  ],
+  
+  "sounds" : [ "/sfx/interface/ship_error1.ogg" ]
+  
+}

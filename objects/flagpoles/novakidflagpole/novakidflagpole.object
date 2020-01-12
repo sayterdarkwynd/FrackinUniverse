@@ -1,0 +1,52 @@
+{
+  "objectName" : "novakidflagpole",
+  "colonyTags" : ["novakid"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 0,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+  
+  "description" : "The Novakid flag. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Novakid Flag",
+  "race" : "novakid",
+
+  "apexDescription" : "The Novakid flag. Their memories are so short they probably don't remember planting it.",
+  "avianDescription" : "A Novakid flag. How appropriate for star people to bear stars on their flag.",
+  "floranDescription" : "Florann not ssuure what Novakid isss. Glowwwy, Gasssbagss.",
+  "glitchDescription" : "Statement. A Novakid flag, bearing a sheriff symbol.",
+  "humanDescription" : "A Novakid flag. There's a sheriff badge on it.",
+  "hylotlDescription" : "The Novakid flag. Strange, but interesting creatures.",
+  "novakidDescription" : "There's a new sheriff in town!",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "novakidflagpoleicon.png",
+  "orientations" : [
+    {
+      "image" : "novakidflagpole.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "novakidflagpole.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

@@ -1,10 +1,12 @@
-_init=init
+local _init=init
 
 function init()
-	--sb.logInfo("\n%s\n%s",message,player)
-	--if true then return end
+	if _init then
+		_init()
+	end
 	message.setHandler("player.uniqueId",player.uniqueId)
 	message.setHandler("player.worldId",player.worldId)
-	--sb.logInfo("FU Deployment hacks initialized!")
-	_init()
+	message.setHandler("player.availableTechs", player.availableTechs)
+	message.setHandler("player.enabledTechs", player.enabledTechs)
+	message.setHandler("player.shipUpgrades", player.shipUpgrades)
 end

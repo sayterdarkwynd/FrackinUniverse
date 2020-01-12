@@ -1,0 +1,100 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "light" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "torch" ]
+            }
+          },
+          "on" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "torch" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "bg" : {
+        "properties" : {
+          "centered" : false
+        },
+
+        "partStates" : {
+          "light" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>",
+                "fullbright" : true
+              }
+            }
+          }
+        }
+      },
+      "fg" : {
+        "properties" : {
+          "centered" : false,
+          "zLevel" : 1
+        },
+
+        "partStates" : {
+          "light" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.off"
+              }
+            },
+
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "torch" : {
+      "emissionRate" : 1.0,
+      "emissionVariance" : 0.5,
+      "active" : true,
+
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "position" : [0.4, 2.5 ],
+            "size" : 1.0,
+            "color" : [255, 100, 0, 255],
+            "light" : [150, 50, 50],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 5.0],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [0, 20],
+            "timeToLive" : 0.6,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [1.5, 2.0]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -3,7 +3,40 @@
   "friendlyName" : "Gas Giant Underground",
 
   "spawnProfile" : {
-    "groups" : []
+    "groups" : [
+      {
+        "select" : 1,
+        "pool" : [ 
+          [ 0.45, "gasbag" ],
+          [ 0.05, "gasbagstat" ],
+          [ 0.50, "skywhale" ],
+          [ 0.1, "skywhale2" ],
+          [ 0.1, "fleshreaper" ],
+          [ 0.05, "darkmetroid" ]
+        ]
+      }
+    ],
+    "monsterParameters" : {
+      "statusSettings" : {
+        "stats" : {
+          "gasImmunity" : {
+            "baseValue" : 1.0
+          },
+          "poisonStatusImmunity" : {
+            "baseValue" : 1.0
+          },
+          "pressureProtection" : {
+            "baseValue" : 1.0
+          },
+          "extremepressureProtection" : {
+            "baseValue" : 1.0
+          },
+          "sandstormImmunity" : {
+            "baseValue" : 1.0
+          }            
+        }
+      }
+    }
   },
 
 

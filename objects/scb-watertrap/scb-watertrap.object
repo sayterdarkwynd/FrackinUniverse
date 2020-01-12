@@ -1,0 +1,154 @@
+{
+  "objectName" : "scb-watertrap",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "common",
+  "description" : "Much fresh, such wet, so dripping~ \n^blue;Input 1^white; : Water Spray. \n^blue;Input 2^white; : Particles.^reset;",
+  "shortdescription" : "SCB Water Emitter",
+  "race" : "generic",
+
+  "category" : "trap",
+  "price" : 0,
+
+  "inventoryIcon" : "scb-watertrap-icon.png",
+
+  "fireTime" : 0.115,
+  "fireTimeVariance" : 0.015,
+  "inaccuracy" : 0.1,
+  "projectile" : "scb-watertrap-shot",
+  "projectileConfig" : {
+    "damageTeam" : { "type" : "environment" },
+    "power" : 0,
+    "speed" : 10
+  },
+
+  "orientations" : [
+    {
+      "image" : "scb-watertrap.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [0, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, -1] ],
+      "scb-direction" : "up",
+      "projectileConfig" : {
+        "speed" : 30
+      }
+    },
+    {
+      "image" : "scb-watertrap-right.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, 0],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 0] ],
+      "scb-direction" : "right"
+    },
+    {
+      "image" : "scb-watertrap.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [0, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [0, 1] ],
+      "scb-direction" : "down"
+    },
+    {
+      "image" : "scb-watertrap-left.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, 0],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 0] ],
+      "scb-direction" : "left"
+    },
+    {
+      "image" : "scb-watertrap-ul.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, -1] ],
+      "scb-direction" : "upperL",
+      "projectileConfig" : {
+        "speed" : 20
+      }
+    },
+    {
+      "image" : "scb-watertrap-ur.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, 1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, -1] ],
+      "scb-direction" : "upperR",
+      "projectileConfig" : {
+        "speed" : 20
+      }
+    },
+    {
+      "image" : "scb-watertrap-ur.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [1, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [-1, 1] ],
+      "scb-direction" : "lowerR"
+    },
+    {
+      "image" : "scb-watertrap-ul.png:<color>.<frame>?flipy",
+      "imagePosition" : [0, 0],
+      "direction" : "right",
+
+      "projectileDirection" : [-1, -1],
+      "projectilePosition" : [0.5, 0.5],
+
+      "spaceScan" : 0.1,
+      "fgAnchors" : [ [1, 1] ],
+      "scb-direction" : "lowerL"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/scb-projectiletrap/scb-projectiletrap.lua" ],
+  "scriptDelta" : 2,
+
+  "animation" : "scb-watertrap.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "shoot" : [ ],
+      "on" : [  ],
+      "off" : [  ]
+    }
+  },
+
+//  "soundEffect" : "/sfx/objects/flametrap_loop.ogg", // this is a thing that also works
+
+  "inputNodes" : [ [0, 0], [1, 0] ],
+
+  "inactiveLightColor" : [0, 0, 0], // light color to emit when the object is 'off'
+  "activeLightColor" : [0, 0, 0], // light color to emit when the object is 'on'
+
+  "health" : 5
+
+}

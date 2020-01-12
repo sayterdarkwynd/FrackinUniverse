@@ -149,7 +149,7 @@
 	"animation": "standingturret.animation",
 
 	"scripts": [
-		"/objects/kheAA/kheAA_autoBeamer/standingturret.lua",
+		"/objects/kheAA/kheAA_autoBeamer/harvestTurret.lua",
 		"/scripts/npcToyObject.lua",
 		"/scripts/stateMachine.lua"
 	],
@@ -170,6 +170,13 @@
 	"maxFireAngle": 1,
 	
 	"fireTime": 1,
+
+	"targetEntityTypes":[
+		"object","plant"
+	],
+	"validTargetTypes":{
+		"farmable":true
+	},
 
 	"npcToy": {
 		"influence": [

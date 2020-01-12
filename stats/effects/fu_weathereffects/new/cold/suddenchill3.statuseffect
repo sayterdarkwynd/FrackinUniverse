@@ -1,18 +1,41 @@
 {
   "name" : "suddenchill3",
-  "blockingStat" : "biomecoldImmunity",
+  "blockingStat" : "",
 
   "effectConfig" : {
-          "effectCutoff" : "iceResistance",
-          "effectCutoffValue" : 0.65,     
-	  "biomeTemp" : 1.3, 
-	  "biomeThreshold" : 1.12,
-	  "baseRate" : 5,
-	  "baseDebuffPerTick" : 4,
-	  "baseDmgPerTick" : 4,
-	  "situationPenalty" : 1.5,
-	  "liquidPenalty" : 1.5,
-	  "biomeNight" : 1.5
+    "resistanceTypes" : {
+      "iceResistance" : 1.0
+    },
+    "resistanceThreshold" : 0.65,
+    "immunityStats" : [
+      "biomecoldImmunity",
+      "ffextremecoldImmunity"
+    ],
+
+    "healthDrain" : 4,
+    "hungerDrain" : 0.4,
+    "energyDrain" : 0,
+    "speedPenalty" : 0.6,
+    "jumpPenalty" : 0.6,
+
+    "debuffRate" : 5,
+    "debuffStartDelay" : 0,
+    "debuffs" : {},
+
+    "modifiers" : {
+      "night" : 1.5,
+      "wet" : 1.5,
+      "windy" : 1.2
+    },
+
+    "messages" : {
+      "intro" : "biomecold",
+      "night" : "ffbiomecoldnight",
+      "wet" : "ffbiomecoldwater",
+      "windy" : "fubiomecoldwind"
+    },
+
+    "configPath" : "/stats/effects/fu_weathereffects/new/cold/suddenchill3.statuseffect"
   },
   "defaultDuration" : 5,
 
@@ -22,6 +45,6 @@
 
   "animationConfig" : "coldweathernew.animation",
 
-  "label" : "Cold Snap III",
-  "icon" : "/interface/statuses/cold1.png"
+  "label" : "Deadly Cold Snap",
+  "icon" : "/interface/statuses/cold3.png"
 }

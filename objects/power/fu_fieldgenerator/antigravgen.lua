@@ -1,4 +1,5 @@
 --require "/scripts/epoch.lua"
+--require "/scripts/effectUtil.lua"
 
 function init()
 	if storage.init==nil then
@@ -26,7 +27,7 @@ function update(dt)
 		--end
 		
 		--for x in effectList do
-		--isn_effectAllInRange(x,30)
+		--effectUtil.effectAllInRange(x,30)
 		--end
 	end	
 end

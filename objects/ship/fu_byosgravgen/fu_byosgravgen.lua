@@ -1,17 +1,23 @@
+require "/scripts/effectUtil.lua"
+
 function init()
-	if storage.init==nil then
-		storage.init=true
-		storage.state=true
-	end
+	power()
 end
 
 function update(dt)
-	if object.isInputNodeConnected(0) then
-		storage.state=object.getInputNodeLevel(0)
-	else
-		storage.state=true
-	end
 	if storage.state then
-		isn_effectAllInRange("fu_byosgravgenfield",config.getParameter("range"), 2)
+		effectUtil.effectAllInRange("fu_byosgravgenfield",config.getParameter("range"), 2)
 	end	
+end
+
+function onInputNodeChange()
+	power()
+end
+
+function onNodeConnectionChange()
+	power()
+end
+
+function power()
+	storage.state=not object.isInputNodeConnected(0) or object.isInputNodeConnected(0) and object.getInputNodeLevel(0)
 end

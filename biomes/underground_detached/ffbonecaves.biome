@@ -13,7 +13,9 @@
       {
         "select" : 3,
         "pool" : [ 
-          [ 0.1111, "fleshleech" ],     
+          [ 0.1111, "fleshleech" ],   
+          [ 0.1111, "doll" ], 
+          [ 0.1111, "doll2" ], 
           [ 0.1111, "paratail" ],
           [ 0.07, "smallshroom" ],
           [ 0.1111, "hemogoblin" ]
@@ -91,6 +93,20 @@
     "grassModDensity" : 0.8,
 
     "items" : [
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ [0.35, "carbonrock" ], [0.35, "carbonrocksmall" ], [0.35, "goldrock" ], [0.35, "goldrocksmall" ], [0.35, "silverrock" ], [0.35, "silverrocksmall" ], [0.35, "copperrock" ], [0.35, "copperrocksmall" ], [0.35, "diamondrock" ], [0.35, "diamondrocksmall" ] ],
+              "parameters" : { }
+            }
+          ]
+        },     
       {
         "mode" : "background",
         "priority" : 1.0,

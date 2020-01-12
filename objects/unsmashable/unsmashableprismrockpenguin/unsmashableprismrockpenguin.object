@@ -1,0 +1,53 @@
+{
+  "objectName" : "unsmashableprismrockpenguin",
+  "colonyTags" : ["prism"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "decorative",
+  "description" : "A highly refractive prism. There appears to be something inside. Unsmashable!",
+  "shortdescription" : "Prism Crystal",
+  "race" : "generic",
+
+  
+  "apexDescription" : "Is that a penguin?",
+  "avianDescription" : "There's a penguin encased in this crystal.",
+  "floranDescription" : "Rock has something inside! Floran wantsss to smash rock!",
+  "glitchDescription" : "Puzzled. How could a penguin possibly be inside this prism?",
+  "humanDescription" : "A petrified penguin.",
+  "hylotlDescription" : "A penguin in a prism. Where does one begin to unravel this mystery?",
+  "novakidDescription":  "Hey there, lil' buddy.",
+
+
+  "inventoryIcon" : "unsmashableprismrockpenguinicon.png",
+  "orientations" : [
+    {
+      "image" : "unsmashableprismrockpenguin.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "unsmashableprismrockpenguin.png:<color>.<frame>",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/lightsensor/unwiredlightsensor.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "unsmashableprismrockpenguin.animation",
+  "animationParts" : {
+    "prism" : "unsmashableprismrockpenguin.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "detectThresholdLow" : 10,
+  "detectThresholdHigh" : 30
+}

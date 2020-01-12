@@ -1,0 +1,45 @@
+{
+  "type" : "catcrewmemberjanitor",
+  "baseType" : "catcrewmember",
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : true
+    },
+
+    "crew" : {
+      "role" : {
+        "type" : "janitor",
+        "name" : "Janitor",
+        "field" : "Cleanliness",
+        "uniformColorIndex" : 11
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "cat" : {
+            "default" : [
+              "Meow! I'm <selfname>, the kitty Janitor! What? No, I'm not using my tail to sweep!",
+              "Meow. Don't mind me. I'm just doing what nobody else wants to do around here."
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "chest" : [ { "name" : "hiderchest" } ],
+            "legs" : [ { "name" : "hiderlegs" } ],
+            "primary" : [ "broom" ],
+            "sheathedprimary" : [ "npcpistol", "veluushortsword3" ]
+          }
+        ] ]
+    ]
+  }
+}

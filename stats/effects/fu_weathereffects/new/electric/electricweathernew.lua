@@ -1,222 +1,104 @@
 require("/scripts/vec2.lua")
+require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
+
+--================================== NOTES ==================================--
+--[[
+I got bored and revamped the lightning storm weather effects. What they now do:
+- Apply a fixed penalty to energy regen rate and regen delay
+- At semi-random intervals, cause your energy supply to "overload". This deals
+    a small amount of shock damage, and drains a random percentage (depending
+    on tier) of your total energy.
+All of these values scale with your electric resistance. So higher electric
+resistance reduces the energy regen penalties, HP and total energy damage on
+overload, and frequency of the overloads.
+
+Additional note: The electric storm status effect is only applied when outside.
+Going inside (somewhere with a background wall) or underwater (I think, need to
+confirm) will remove the effect. Hence the wet effect and warning do not seem
+to occur very often in practice.
+
+Additional note 2: Effects applied by weather events (electric storms, poison
+gas etc.) seem to be initialised by Starbound every tick. This doesn't actually
+cause problems, as it seems the new instance it uninitialised instantly...
+However, it's pretty poor form performance-wise. Not sure if there's any way
+to fix it.
+
+-Wannas (Wannas16)
+]]--
+
+--============================= CLASS DEFINITION ============================--
+--[[ This instantiates a child class of fuWeatherBase. The child's metatable
+    is set to the parent's, so that any missing indexes (methods) are looked
+    up from fuWeatherBase. The methods can also be accessed manually (in cases
+    that extend the parent method) through the child.parent attribute. ]]--
+
+fuElectricWeather = fuWeatherBase:new({})
+
+--============================= CLASS EXTENSIONS ============================--
+--[[ Any methods which need to be overridden from fuWeatherBase should be
+    defined in this section. ]]--
+
+--[[ NOTE: When calling parent methods, use the syntax
+        self.parent.method(self)
+    rather than the conventional "syntactic sugar version"
+        self.parent:method()
+    The latter will pass the parent class as the "self" parameter, preventing
+    any attributes overwritten by the child from being used. ]]--
+
+function fuElectricWeather.init(self, config_file)
+  local effectConfig = self.parent.init(self, config_file)
+  self.shockParams = effectConfig.shockParams
+  self.shockTimer = self.shockParams.baseDelay + math.random() * self.shockParams.randomDelay
+end
+
+function fuElectricWeather.applyShock(self, modifier)
+  -- Cap modifier between 0.25 and 1.25.
+  local cappedMod = math.max(math.min(modifier, 1.25), 0.25)
+  local rMulti = math.random()
+  local healthDamage = (self.shockParams.baseHealth + rMulti * self.shockParams.randomHealth) * cappedMod
+  local energyPercent = (self.shockParams.baseEnergy + rMulti * self.shockParams.randomEnergy) * cappedMod
+  -- Apply health damage (as shock) and energy damage.
+  self:applySelfDamage(healthDamage, "electric")
+  if status.isResource("energy") then
+    local energyDrain = math.min(status.resource("energy"), status.stat("maxEnergy", 0) * energyPercent)
+    status.modifyResource("energy", -energyDrain)
+  end
+end
+
+function fuElectricWeather.update(self, dt)
+  local modifier = self.parent.update(self, dt)
+  -- Stop if the modifier was zero (the player is not affected).
+  if (modifier == 0) then
+    return
+  end
+  -- Shock the player (damage HP and energy) at semi-random intervals.
+  self.shockTimer = math.max(self.shockTimer - dt, 0)
+  if (self.shockTimer == 0) then
+    self:applyShock(modifier)
+    self.shockTimer = self.shockParams.baseDelay + math.random() * self.shockParams.randomDelay
+  end
+end
+
+
+--============================= GRAPHICAL EFFECTS ============================--
+
+--============================== INIT AND UNINIT =============================--
+--[[ Starbound calls these non-class functions when handling status effects.
+    They should not need to be modified (apart from the class name). ]]--
+
 function init()
-  self.timerRadioMessage = 0  -- initial delay for secondary radiomessages
-    
-  -- Environment Configuration --
-  --base values
-  self.effectCutoff = config.getParameter("effectCutoff",0)
-  self.effectCutoffValue = config.getParameter("effectCutoffValue",0)
-  self.baseRate = config.getParameter("baseRate",0)                
-  self.baseDmg = config.getParameter("baseDmgPerTick",0)        
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
-  self.biomeTemp = config.getParameter("biomeTemp",0)              
-  
-  --timers
-  self.biomeTimer = self.baseRate
-  self.biomeTimer2 = (self.baseRate * (1 + status.stat("electricResistance",0)) *10)
-  
-  --conditionals
-
-  self.windLevel =  world.windLevel(mcontroller.position())        -- is there wind? we note that too
-  self.biomeThreshold = config.getParameter("biomeThreshold",0)    -- base Modifier (tier)
-  self.biomeNight = config.getParameter("biomeNight",0)            -- is this effect worse at night? how much?
-  self.situationPenalty = config.getParameter("situationPenalty",0)-- situational modifiers are seldom applied...but provided if needed
-  self.liquidPenalty = config.getParameter("liquidPenalty",0)      -- does liquid make things worse? how much?  
-  checkEffectValid()
-
-  script.setUpdateDelta(5)
+  local config_file = config.getParameter("configPath")
+  fuElectricWeather:init(tostring(config_file))
 end
-
---******* check effect and cancel ************
-function checkEffectValid()
-	  if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
-	    deactivateVisualEffects()
-	    effect.expire()
-	  end	 
-	  if (status.stat("electricResistance",0)  >= self.effectCutoffValue) or status.statPositive("biomeelectricImmunity") or world.type()=="unknown" or world.entityType(entity.id()) ~= "player" then
-	    deactivateVisualEffects()
-	    effect.expire()
-	  end
-end
-
--- *******************Damage effects
-function setEffectDamage()
-  return ( ( self.baseDmg ) *  (1 -status.stat("electricResistance",0) ) * self.biomeThreshold  )
-end
-
-function setEffectDebuff()
-  return ( ( ( self.baseDebuff) * self.biomeTemp ) * (1 -status.stat("electricResistance",0) * self.biomeThreshold) )
-end
-
-function setEffectTime()
-  return (  self.baseRate *  math.min(   1 - math.min( status.stat("electricResistance",0) ),0.45))
-end
-
--- ******** Applied bonuses and penalties
-function setNightPenalty()
-  if (self.biomeNight > 1) then
-    self.baseDmg = self.baseDmg + self.biomeNight
-    self.baseDebuff = self.baseDebuff + self.biomeNight
-  end
-end
-
-function setSituationPenalty()
-  if (self.situationPenalty > 1) then
-    self.baseDmg = self.baseDmg + self.situationPenalty
-    self.baseDebuff = self.baseDebuff + self.situationPenalty 
-  end
-end
-
-function setLiquidPenalty()
-  if (self.liquidPenalty > 1) then
-    self.baseDmg = self.baseDmg * 4
-    self.baseDebuff = self.baseDebuff + self.liquidPenalty 
-  end
-end
-
-function setWindPenalty()
-  self.windLevel =  world.windLevel(mcontroller.position())
-  if (self.windLevel > 1) then
-    self.biomeThreshold = self.biomeThreshold + (self.windLevel / 100)
-  end  
-end
-
--- ********************************
-
---**** Other functions
-function getLight()
-  local position = mcontroller.position()
-  position[1] = math.floor(position[1])
-  position[2] = math.floor(position[2])
-  local lightLevel = world.lightLevel(position)
-  lightLevel = math.floor(lightLevel * 100)
-  return lightLevel
-end
-
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position()) 
-end
-
-
-function isDry()
-local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-	if not world.liquidAt(mouthPosition) then
-	    inWater = 0
-	end
-end
-
-function hungerLevel()
-  if status.isResource("food") then
-   return status.resource("food")
-  else
-   return 50
-  end
-end
-
-function toHex(num)
-  local hex = string.format("%X", math.floor(num + 0.5))
-  if num < 16 then hex = "0"..hex end
-  return hex
-end
-
---**** Alert the player
-function activateVisualEffects()
-  --effect.setParentDirectives("fade=0099cc=0.3")
-end
-
-function deactivateVisualEffects()
-  --effect.setParentDirectives("fade=0099cc=0.0")
-end
-
-function makeAlert()
-        --world.spawnProjectile("fireinvis",mcontroller.position(),entity.id(),directionTo,false,{power = 0,damageTeam = sourceDamageTeam})
-        animator.playSound("bolt")
-end
-
-function update(dt)
-checkEffectValid()
- if not status.isResource("energy") or not entity.entityType("player") or entity.entityType("npc") then
-	    deactivateVisualEffects()
-	    effect.expire()
- end	
-self.biomeTimer = self.biomeTimer - dt 
-self.biomeTimer2 = self.biomeTimer2 - dt 
-self.timerRadioMessage = self.timerRadioMessage - dt
-
---set the base stats
-  self.baseRate = config.getParameter("baseRate",0)                
-  self.baseDmg = config.getParameter("baseDmgPerTick",0)        
-  self.baseDebuff = config.getParameter("baseDebuffPerTick",0)     
-  self.biomeTemp = config.getParameter("biomeTemp",0)  
-  self.biomeThreshold = config.getParameter("biomeThreshold",0)    
-  self.biomeNight = config.getParameter("biomeNight",0)            
-  self.situationPenalty = config.getParameter("situationPenalty",0)
-  self.liquidPenalty = config.getParameter("liquidPenalty",0)   
-  
-  self.baseRate = setEffectTime()
-  self.damageApply = setEffectDamage()   
-  self.debuffApply = setEffectDebuff() 
-   
-  -- environment checks
-  daytime = daytimeCheck()
-  underground = undergroundCheck()
-  local lightLevel = getLight() 
-  
-  if not underground then  
-    if not self.usedSurface then
-      world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricsurface", 300.0) -- send player a warning
-      self.usedSurface = 1
-      self.timerRadioMessage = 10
-    end
-    setSituationPenalty()
-  end  
-
-  self.damageApply = setEffectDamage()   
-  self.debuffApply = setEffectDebuff() 
-  
-      if self.biomeTimer <= 0 and status.stat("electricResistance",0) < self.effectCutoffValue  and status.isResource("energy") then
-	  --makeAlert()
-	  activateVisualEffects()
-          self.biomeTimer = setEffectTime()
-          self.timerRadioMessage = self.timerRadioMessage - dt 
-
-        -- are they in liquid?
-        
-        local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-        local mouthful = world.liquidAt(mouthposition)        
-        if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 58) or (mcontroller.liquidId()== 12) then
-		setLiquidPenalty()
-		if (self.timerRadioMessage <= 0) and not self.usedWater then
-		    world.sendEntityMessage(entity.id(), "queueRadioMessage", "ffbiomeelectricwater", 1.0) -- send player a warning
-		    self.usedWater = 1
-		    self.timerRadioMessage = 10
-		end
-	    inWater = 1
-	else
-	  isDry()
-        end 
-       
-      end 
-	  self.damageApply = setEffectDamage()   
-	  self.debuffApply = setEffectDebuff()
-	  self.debuffApply = self.debuffApply / 120
-      
-      if self.isOn == 0 then
-	  effect.addStatModifierGroup({
-	    {stat = "maxEnergy", baseMultiplier = 0.5},
-	    {stat = "energyRegenPercentageRate", amount = status.stat("energyRegenPercentageRate") -self.debuffApply },
-	    {stat = "energyRegenBlockTime", amount = status.stat("energyRegenBlockTime") + self.debuffApply }
-	  }) 
-	  self.isOn = 1
-      end
-
-      self.biomeTimer = self.biomeTimer - dt     
-end       
 
 function uninit()
+  fuElectricWeather:uninit()
+end
 
+--=========================== MAIN UPDATE FUNCTION ==========================--
+--[[ Starbound calls this non-class function when updating status effects. It
+    shouldn't need to be modified (apart from the class name). ]]--
+
+function update(dt)
+  fuElectricWeather:update(dt)
 end

@@ -1,0 +1,56 @@
+{
+  "objectName" : "hylotlslidingdoor1",
+  "colonyTags" : ["outpost","door"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 95,
+  "description" : "Sliding door fit for any Hylotl base!",
+  "shortdescription" : "Hylotl Sliding Door",
+  "race" : "hylotl",
+
+  "apexDescription" : "A sliding door. Exciting.",
+  "avianDescription" : "Some cultures believe that if you have no soul, these doors won't react to you.",
+  "floranDescription" : "Floran's not one hundred percent sssure how these doors work.",
+  "glitchDescription" : "Hypnotised. There is something fascinating about the movement of these doors.",
+  "humanDescription" : "Once, I ran at a door like this and it didn't open in time and... Yeah.",
+  "hylotlDescription" : "A sleek sliding door. Colors are pretty!",
+  "novakidDescription" : "I like these sleek slidin' doors.",
+
+
+  "inventoryIcon" : "hylotlslidingdoor1.png:closed",
+  "orientations" : [
+    {
+      "dualImage" : "hylotlslidingdoor1.png:closed",
+      "imagePosition" : [0, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/bunkerslidingdoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "hylotlslidingdoor1.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

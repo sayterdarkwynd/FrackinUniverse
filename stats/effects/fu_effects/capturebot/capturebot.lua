@@ -11,7 +11,7 @@ function init()
 end
 
 function update(dt)
-	if world.entityType(entity.id()) ~= "monster" then
+	if world.entityType(entity.id()) ~= "monster" or status.stat("captureImmunity") then
 	  effect.expire()
 	else
 	  status.setResourcePercentage("health", math.min(status.resourcePercentage("health"), self.healthPercentage))

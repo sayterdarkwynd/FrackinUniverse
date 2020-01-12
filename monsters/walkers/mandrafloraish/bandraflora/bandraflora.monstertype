@@ -8,8 +8,20 @@
 
   "animation" : "bandraflora.animation",
 
-  "dropPools" : [ { "default" : "mandrafloraTreasure", "bow" : "mandrafloraHunting" } ],
-
+  "dropPools" : [
+    {
+    "default" : "mandrafloraTreasure",
+    "bow" : "mandrafloraHunting",
+    "firebow" : "mandrafloraHunting",
+    "icebow" : "mandrafloraHunting",
+    "poisonbow" : "mandrafloraHunting",
+    "electricbow" : "mandrafloraHunting",
+    "cosmicbow" : "mandrafloraHunting",
+    "radioactivebow" : "mandrafloraHunting",
+    "shadowbow" : "mandrafloraHunting"     
+    }
+  ], 
+   
   "baseParameters" : {
     "scripts" : [
       "/monsters/monster.lua"
@@ -66,9 +78,9 @@
             "windupTime" : 0.6,
 
             "aimAtTarget" : true,
-            "chargeTime" : 2,
-            "chargeSpeed" : 10,
-            "chargeControlForce" : 300,
+            "chargeTime" : 1,
+            "chargeSpeed" : 32,
+            "chargeControlForce" : 500,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
@@ -151,7 +163,7 @@
       "teamType" : "enemy",
       "damageSourceKind" : "slash",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "timefreeze2" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
@@ -231,7 +243,7 @@
           "baseValue" : 1
         },
         "electricResistance" : {
-          "baseValue" : -0.5
+          "baseValue" : 0.5
         },
         "electricStatusImmunity" : {
           "baseValue" : 1.0

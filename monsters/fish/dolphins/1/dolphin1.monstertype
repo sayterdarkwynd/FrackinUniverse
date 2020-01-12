@@ -9,7 +9,7 @@
 
   "animation" : "dolphin1.animation",
 
-  "dropPools" : [ { "default" : "dolphinTreasure", "bow" : "dolphinTreasure" } ],
+  "dropPools" : [ { "default" : "dolphinTreasure"} ],
 
   "baseParameters" : {
     "scripts" : [
@@ -321,7 +321,11 @@
         },
         "radioactiveResistance" : {
           "baseValue" : 0.5
-        }       
+        },
+        "isWaterCreature" : {"baseValue": 1},
+        "isBossCreature" : {
+          "baseValue" : 1.0
+        }        
       },
 
       "resources" : {

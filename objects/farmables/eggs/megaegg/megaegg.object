@@ -1,0 +1,40 @@
+{
+  "objectName" : "megaegg",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "farmBeastEgg",
+  "price" : 12660,
+
+  "description" : "This egg is at least twice as big as most.",
+  "shortdescription" : "Unknown Egg",
+  "race" : "generic",
+
+  "inventoryIcon" : "megaegg.png:idle.1",
+  "orientations" : [
+    {
+      "image" : "megaegg.png:idle.1",
+      "imagePosition" : [-7, -3],
+
+      "spaces" : [ [-1, 0], [-1, 1], [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "anchors" : [ "bottom" ],
+
+      "direction" : "right"
+    }
+  ],
+
+  "animation" : "/objects/farmables/eggs/farmableegg.animation",
+  "animationPosition" : [-7, -3],
+  "animationParts" : {
+    "egg" : "megaegg.png"
+  },
+
+  "scripts" : ["/objects/farmables/eggs/farmableegg.lua"],
+  "scriptDelta" : 60,
+
+  "hatchTime" : 2900,
+  "forceHatchTime" : 2900,
+
+  "spawnMonster" : "fuhugebiped",
+  "spawnOffset" : [0.5, 12.5]
+}

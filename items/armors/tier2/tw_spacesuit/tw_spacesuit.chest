@@ -1,14 +1,17 @@
 {
   "itemName" : "tw_spacesuitchest",
-  "price" : 2400,
+  "price" : 200,
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "category" : "t2armoru",
-  "description" : "Set Bonus:
-^cyan;+600s Oxygen Supply, Reduced breath rate^reset;
-^green;+15% Fire/Ice/Poison/Radiation/Electric Resistance^reset;",     
+  "rarity" : "Common",
+  "description" : "^green;+5%^reset; Fire, Ice, Poison, Radiation and Electric Resists
+\n^orange;Set Bonus^reset;:
+^#a94db3;+100%^reset; Max Breath
+Longsword: ^cyan;+12%^reset; Damage
+Energy: ^cyan;+12%^reset; Damage",
+
   "shortdescription" : "Hazard Breastplate",
+  "category" : "t2armoru",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -24,11 +27,14 @@
   },
 
   "learnBlueprintsOnPickup" : [
-  	"spacefarerchest",
-        "spacefarerhead",
-        "spacefarerpants"
+    "tw_spacepunkhead",
+    "tw_spacepunklegs",
+    "tw_spacepunkchest",
+    "spacefarerchest",
+    "spacefarerhead",
+    "spacefarerpants"
   ],
-    "itemTags" : [ "upgradeableWeapon" ],
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorexplorer" : "tw_spacesuitchest" },
   "leveledStatusEffects" : [
@@ -40,7 +46,7 @@
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.5
+      "amount" : 0.52
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -53,11 +59,11 @@
       "amount" : 6
     }
   ],
-  
+
   "statusEffects" : [
-	"tw_spacesuitsetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "tw_spacesuitset_chest",
+      "stat" : "tw_spacesuitsetcount",
       "amount" : 1
     },
     {
@@ -79,14 +85,14 @@
     {
       "stat" : "radioactiveResistance",
       "amount" : 0.05
-    }            
+    }
   ],
-  
+
   "colorOptions" : [
     /* WHITE */
-    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },  
+    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
     /* BROWN */
-    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },  
+    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },
     /* GREY */
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
     /* BLACK */

@@ -57,8 +57,8 @@ function build(directory, config, parameters, level, seed)
       end
     end
     
-    partConfig.stats.mechMass = partConfig.stats.mechMass or 0  -- make sure there is no nil    
-    config.tooltipFields.mechMassStatLabel = partConfig.stats.mechMass or 0
+    partConfig.stats.mechMass = partConfig.stats.mechMass or 1  -- make sure there is no nil    
+    config.tooltipFields.mechMassStatLabel = partConfig.stats.mechMass or 1
     
     if config.mechPart[1] == "arm" then
       local energyDrain = root.evalFunction("mechArmEnergyDrain", partConfig.stats.energy or 0)

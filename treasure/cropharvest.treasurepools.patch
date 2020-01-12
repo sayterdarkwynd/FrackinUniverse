@@ -1,5 +1,71 @@
 [
 {
+	"op" : "add",
+	"path" : "/phasefruitHarvest",
+	"value" : [ [0, {
+			"pool" : [
+			{"weight" : 0.95, "item" : "phasefruit"},
+			{"weight" : 0.04, "item" : "phasefruitseed"},
+			{"weight" : 0.01, "item" : "plantfibre"}
+                          ],
+			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] 
+} ] ]
+},
+{
+	"op" : "add",
+	"path" : "/violirootHarvest",
+	"value" : [ [0, {
+			"pool" : [
+			{"weight" : 0.90, "item" : "violiroot"},
+			{"weight" : 0.50, "item" : "violirootseed"},
+			{"weight" : 0.04, "item" : "phasematter"}
+                          ],
+			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] 
+} ] ]
+},
+{
+	"op" : "add",
+	"path" : "/plasmangoHarvest",
+	"value" : [ [0, {
+			"pool" : [
+			{"weight" : 0.92, "item" : "plasmango"},
+			{"weight" : 0.50, "item" : "plasmangoseed"},
+			{"weight" : 0.02, "item" : "durasteelore"}
+                          ],
+			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] 
+} ] ]
+},
+{
+	"op" : "add",
+	"path" : "/solusberryHarvest",
+	"value" : [ [0, {
+			"pool" : [
+			{"weight" : 0.85, "item" : "solusberry"},
+			{"weight" : 0.05, "item" : "solusberryseed"},
+			{"weight" : 0.10, "item" : "coalore"}
+                          ],
+			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] 
+} ] ]
+},
+{
+	"op":"add",
+	"path":"/tombstoneHarvest",
+	"value":[[0,{
+		      "fill" : [
+			{"item" : [ "cobblestonematerial", 3]}
+		      ],
+			"pool":[
+			{"weight":0.25, "item":[ "fuscienceresource", 10] },
+			{"weight":0.25, "item":[ "essence", 10] },
+			{"weight":0.25, "item":[ "fumadnessresource", 10] },
+			{"weight":0.25, "item":[ "bone", 10] },
+			{"weight":0.08, "item":[ "wrappedbody", 1] },
+			{"weight":0.01, "item":[ "wrappedbodyalien", 1] },
+			{"weight":0.02, "item":[ "wrappedbodyputrid", 1] }
+			],
+			"poolRounds":[[1,1]]}]]
+},
+{
 	"op":"add",
 	"path":"/silkHarvest2",
 	"value":[[0,{
@@ -829,7 +895,7 @@
 
  {"op":"add",
  	"path":"/fucrystalplantHarvest", 
- 	"value":[[0, {"fill":[{"item":"crystalplantedible"}, {"item":"plantfibre"} ],
+ 	"value":[[0, {"fill":[{"item":"crystalplantedible"}, {"item":"plantfibre"}, {"item":"crystalplantseed"}],
  	"pool":[ {"weight":0.45, "item":"crystalplantseed"},{"weight":0.5, "item":"crystalplantedible"} ],
  	"poolRounds":[[0.5,0],[0.5,1]]}
  		]]
@@ -975,7 +1041,8 @@
 		"value" : [
 			[0, {
 			  "fill":[
-			    {"item":"bolbohn"}
+			    {"item":"bolbohn"},
+			    {"item":"bolbohnseed"}
 			  ],			
 			  "pool" : [
 				{"weight" : 0.45, "item" : "bolbohnseed"},
@@ -993,7 +1060,8 @@
 		"value" : [
 			[0, {
 			  "fill":[
-			    {"item":"dunestalk"}
+			    {"item":"dunestalk"},
+			    {"item":"dunestalkseed"}
 			  ],			
 			  "pool" : [
 				{"weight" : 0.45, "item" : "dunestalkseed"},

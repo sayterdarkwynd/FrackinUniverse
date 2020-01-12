@@ -5,7 +5,7 @@
   "rarity" : "Common",
   "description" : "A face-whacker!",
   "shortdescription" : "Common Mace",
-  "tooltipKind" : "sword2",
+  "tooltipKind" : "hammer",
   "category" : "mace",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee", "mace", "upgradeableWeapon"],
@@ -21,13 +21,14 @@
   "primaryAbilityType" : "macecombo",
   "primaryAbility" : {
     "fireTime" : [0.8, 1.3],
-    "baseDps" : [6.0, 7.8]
+    "baseDps" : [6.0, 6.76]
   },
   "fireSounds" : [ "/sfx/melee/swing_hammer.ogg" ],
 
   "critChance" : 1,
   "critBonus" : 1, 
-  
+    "stunChance" : 50,
+    
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "macenames.config:nameGen",

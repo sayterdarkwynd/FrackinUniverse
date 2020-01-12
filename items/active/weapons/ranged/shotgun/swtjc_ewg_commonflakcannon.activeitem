@@ -5,7 +5,7 @@
   "rarity" : "Common",
   "description" : "The bane of flocks of space birds throughout the galaxy (among other things).",
   "shortdescription" : "Common Flak Cannon",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_flakCannon",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
@@ -79,6 +79,13 @@
   },
   "fireSounds" : [ "/sfx/gun/grenadeblast1.ogg", "/sfx/gun/rocketblast1.ogg", "/sfx/gun/rocketblast2.ogg", "/sfx/gun/rocketblast3.ogg" ],
 
+  "critChance" : 3,
+  "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : [2,6],
+  "reloadTime" : [1.25,3],
+  "isShotgun" : 1,
+  
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_flakcannonnames.config:nameGen",
@@ -136,7 +143,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 3,
-  "critBonus" : 3
+  }]
 }

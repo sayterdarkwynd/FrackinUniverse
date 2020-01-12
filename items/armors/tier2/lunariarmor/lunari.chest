@@ -3,11 +3,12 @@
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Set Bonus:
-^cyan;+15% Damage and +4% Crit (Lunari weapons)^reset; 
-^#e43774;+15% Cosmic Resist^reset;
-^green;+12% Energy Regen, 10% Fuel Cost Reduction^reset;",
+  "rarity" : "Common",
+  "description" : "^green;+5%^reset; Cosmic Resist
+\n^orange;Set Bonuses^reset;:
+^cyan;+12%^reset; Energy Regen, ^green;10%^reset; Fuel Cost Reduction^reset;
+Lunari weapons: ^cyan;+15%^reset; Dmg, ^green;+4%^reset; Crit^reset;",
+
   "shortdescription" : "Lunari Armor",
   "category" : "t2armor",
   "tooltipKind" : "armornew2",
@@ -19,7 +20,7 @@
   },
 
   "femaleFrames" : {
-    "body" : "chestm.png",
+    "body" : "chestf.png",
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
@@ -50,24 +51,24 @@
   ],
 
   "statusEffects" : [
-    "lunarisetbonus",
+    "fusetbonusmanager",
     {
-      "stat" : "fu_lunariset_chest",
+      "stat" : "lunarisetcount",
       "amount" : 1
     },
     {
       "stat" : "cosmicResistance",
       "amount" : 0.05
-    }  
+    }
   ],
 
   "colorOptions" : [
     /* YELLOW */
-    { "ffca8a" : "fffca4", "e0975c" : "ffea00", "a85636" : "ccb009", "6f2919" : "a18d12" },  
+    { "ffca8a" : "fffca4", "e0975c" : "ffea00", "a85636" : "ccb009", "6f2919" : "a18d12" },
     /* WHITE */
-    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },  
+    { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },
     /* BROWN */
-    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },  
+    { "ffca8a" : "a58571", "e0975c" : "896c5a", "a85636" : "53453a", "6f2919" : "403434" },
     /* GREY */
     { "ffca8a" : "b5b5b5", "e0975c" : "808080", "a85636" : "555555", "6f2919" : "303030" },
     /* BLACK */
