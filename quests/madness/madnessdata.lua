@@ -26,6 +26,7 @@ function init()
   self.barName = "madnessBar"
   self.barColor = {250,0,250,125}
   self.timerReloadBar = 0  
+  self.timerRemoveAmmoBar = 0
 end
 
 function randomEvent()
@@ -298,7 +299,15 @@ function randomEvent()
 end
 
 function update(dt)
-
+    --we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
+   if (self.timerRemoveAmmoBar >=6) then
+       world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
+       self.timerRemoveAmmoBar = 0
+   else
+       self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + dt
+   end   
+       
+  
    storage.madnessCount = player.currency("fumadnessresource")
    self.paintTimer = self.paintTimer - 1
    if self.paintTimer == 0 then
