@@ -247,7 +247,11 @@ function winState()
   end
 
   world.sendEntityMessage(pane.sourceEntity(), "addDrop", self.fossilItem)
-
+  -- FU research drop
+  -- I chose to use a useable item rather than spawning a # of research simply to give the player 
+  -- the satisfaction of using the item and getting the particle effects and sound
+  world.sendEntityMessage(pane.sourceEntity(), "addDrop", "smalldata")
+  --
   clearBoard()
 
   util.wait(0.5)

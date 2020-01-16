@@ -1,0 +1,75 @@
+{
+  "itemName" : "zerchesiumbow",
+  "level" : 4,
+  "price" : 350,
+  "inventoryIcon" : "zerchesiumbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "tooltipKind" : "bow2",
+  "weaponType" : "Bow",
+  "description" : "Full of frosty menace.
+^cyan;Slows enemies^reset;",
+  "shortdescription" : "Zerchesium Bow",
+  "category" : "bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "zerchesium", "upgradeableWeapon"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+  "baseOffset" : [1.0, 1.0],
+  "animation" : "/items/active/weapons/bow/bowglow.animation",
+  "animationParts" : {
+    "bow" : "zerchesiumbowfull.png",
+    "bowfullbright" : "zerchesiumbowfullfullbright.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.25, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    },
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.75, 0.5],
+      "color" : [66, 20, 66],
+      "flickerPeriod" : 0.3,
+      "flickerMinIntensity" : 0.95,
+      "flickerMaxIntensity" : 1,
+      "flickerPeriodVariance" : 0.075,
+      "flickerIntensityVariance" : 0.025
+    }}
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "poisonBowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "zerchesiumarrow",
+    "powerProjectileType" : "chargedzerchesiumarrow",
+    "projectileParameters" : {
+      "power" : 6.8
+    }
+  },
+
+  "altAbilityType" : "bowshot",
+  "altAbility" : {
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "zerchesiumarrow",
+    "powerProjectileType" : "coldblast2",
+    "projectileParameters" : {
+      "power" : 4.525
+    }
+  },
+  "critChance" : 3, 
+  "critBonus" : 6, 
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

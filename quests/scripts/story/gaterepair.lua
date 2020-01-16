@@ -236,7 +236,7 @@ function gateRepaired()
 
   player.radioMessage("gaterepair-gateOpened1")
   player.radioMessage("gaterepair-gateOpened2")
-  player.giveItem("sciencebrochure")
+  player.startQuest("fu_scienceoutpost")
   player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
   player.radioMessage("fu_outpost1")  
   player.radioMessage("fu_outpost2")  
