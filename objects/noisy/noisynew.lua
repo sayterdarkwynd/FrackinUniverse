@@ -18,6 +18,7 @@ function onInteraction()
     local crewrace = "human"
     self.count = self.count +1
     world.spawnNpc(object.position(), crewrace, crewtype, 1, seed, parameters)  
+    object.smash(true)
   end
 end
 
