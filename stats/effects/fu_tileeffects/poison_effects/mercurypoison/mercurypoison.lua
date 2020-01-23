@@ -1,10 +1,15 @@
 function init()
-  script.setUpdateDelta(5)
+  script.setUpdateDelta(20)
   self.tickTime = 3.0
   self.tickTimer = self.tickTime
-  self.baseDamage = config.getParameter("healthDown",0)
   self.baseTime = setEffectTime()
   activateVisualEffects()
+  
+  effect.addStatModifierGroup({
+      { stat = "fallDamageMultiplier", amount = -0.5 },
+      { stat = "cosmicResistance", amount = -0.25 },
+      { stat = "grit", effectiveMultiplier = 0 }
+  })    
 end
 
 function setEffectTime()
@@ -24,19 +29,14 @@ function deactivateVisualEffects()
 end
 
 function update(dt)
-  	if ( status.stat("poisonResistance",0)  >= 0.50 ) and ( status.stat("radioactiveResistance",0)  >= 0.25 ) then
-  	  deactivateVisualEffects()
-	  effect.expire()
-	end
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-    status.applySelfDamageRequest({
-        damageType = "IgnoresDef",
-        damage = self.baseDamage,
-        damageSourceKind = "radioactive",
-        sourceEntityId = entity.id()
-      })
+  end
+
+  if ( status.stat("poisonResistance",0)  >= 0.50 ) and ( status.stat("radioactiveResistance",0)  >= 0.25 ) then
+    deactivateVisualEffects()
+    effect.expire()
   end
 
   effect.setParentDirectives("fade=EEEEEE="..self.tickTimer * 0.4)

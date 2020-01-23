@@ -445,11 +445,11 @@ function fuelCost(travel)
     if distanceMath < 30 then
       cost = 50 + ((config.getParameter("jumpFuelCost") + distanceMath) * ((self.shipMass or 0)+2)) -- nearby systems are relatively cheap to travel to
     elseif distanceMath < 200 then
-      cost = 150 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 4)) -- a bit farther out
+      cost = 70 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 4)) -- a bit farther out
     elseif distanceMath < 400 then
-      cost = 300 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 6)) -- mid/long range  
+      cost = 140 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 6)) -- mid/long range  
     else							
-      cost = 600 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 10)) -- long range value
+      cost = 300 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 10)) -- long range value
     end
 
 	if cost < 1000 and isConnected(self.one,self.two) then

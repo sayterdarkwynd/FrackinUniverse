@@ -1,0 +1,48 @@
+{
+  "itemName" : "penumbritegreataxe",
+  "level" : 3,
+  "price" : 350,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Fantastically stylish.",
+  "shortdescription" : "Penumbrite Greataxe",
+  "tooltipKind" : "hammer",
+  "category" : "greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","greataxe","penumbrite","upgradeableWeapon"],
+
+  "inventoryIcon" : "penumbritegreataxe.png",
+
+  "animation" : "/items/active/weapons/melee/greataxe/greataxeglow.animation",
+  "animationParts" : {
+    "blade" : "penumbritegreataxe.png",
+    "bladefullbright" : "penumbritegreataxefullbright.png",
+    "handle" : ""
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "cosmic",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.8,
+    "baseDps" : 12,
+    "damageConfig" : {
+      "damageSourceKind" : "shadowaxe"
+    }
+  },
+
+  "altAbilityType" : "shockwave",
+  "altAbility" : {
+    "elementalConfig" : { "shadow" : {
+      "projectileType" : "elderblast1"
+    }}
+  },
+
+  "critChance" : 3,
+  "critBonus" : 6,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 6
+}

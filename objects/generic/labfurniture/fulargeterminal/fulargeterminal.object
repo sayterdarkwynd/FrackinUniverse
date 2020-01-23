@@ -1,0 +1,50 @@
+{
+  "objectName" : "fulargeterminal",
+  "colonyTags" : ["tech","science","donkey","computer","research"],
+  "rarity" : "rare",
+
+  //"interactAction" : "OpenCraftingInterface",
+  //"interactData" : {
+  //  "config" : "/interface/windowconfig/tomedais.config",
+  //  "filter" : [ "tomedais","tomedais1","tomedais2","tomedais3" ]
+  //},  
+  
+  "description" : "A huge central mainframe accessing multiple simultaneous data streams.",
+  "shortdescription" : "Central Research Mainframe",
+
+  "price" : 5120,
+  "lightColor" : [16, 23, 90],
+
+  "inventoryIcon" : "fulargeterminal.png",
+  "orientations" : [
+    {
+    
+      "imageLayers" : [ { "image" : "fulargeterminal.png:<color>", "fullbright" : true }, { "image" : "fulargeterminallit.png:<color>" } ],
+      "flipImages" : true,
+      "direction" : "left",
+      "lightPosition" : [-1, 1],
+
+      "imagePosition" : [-52, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+    
+      "imageLayers" : [ { "image" : "fulargeterminal.png:<color>", "fullbright" : true }, { "image" : "fulargeterminallit.png:<color>" } ],
+      "direction" : "right",
+      "lightPosition" : [0, 1],
+
+      "imagePosition" : [-52, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ]
+}

@@ -10,17 +10,40 @@
   }
 },
 
+{"op":"add","path":"/surfacePlaceables/items/-","value":{
+  "mode" : "floor",
+  "priority" : 1.0,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+  "type" : "object",
+  "objectSets" : [
+    {
+      "pool" : [ 
+      [0.33, "emeraseed" ],
+      [0.33, "feyaseed" ],
+      [0.33, "oceaniteseed" ]
+      ],
+      "parameters" : { "startingStage" : 3 }
+    }
+  ]
+}
+},
+	
 {"op":"add","path":"/spawnProfile/groups/-",
 "value":{ 
       
-        "select" : 2,
+        "select" : 5,
         "pool" : [ 
           [ 0.05, "fufirecrabocean" ],
           [ 0.05, "pulpinocean" ],
           [ 0.05, "snagglerocean" ],
-          [ 0.05, "aquamantle" ],
+          [ 0.02, "aquamantle" ],
           [ 0.05, "dolphin1" ],
-          [ 0.05, "lobster" ]
+          [ 0.05, "lobster" ],
+          [ 0.01, "deathjellypeaceful" ],
+          [ 0.05, "clearjelly" ],
+          [ 0.25, "fufish" ]
         ]
       }
 },

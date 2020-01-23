@@ -1,5 +1,5 @@
 setName="fu_phaseset"
-setStatEffects={"phasesetbonuseffect", "movementprotection"}
+setStatEffects={"phasesetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

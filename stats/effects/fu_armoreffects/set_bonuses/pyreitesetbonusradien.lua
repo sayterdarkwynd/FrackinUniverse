@@ -1,4 +1,4 @@
-setName="fu_pyreitesetradien"
+setName="pyreitesetradien"
 setStatEffects={"pyreitesetbonuseffectradien"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

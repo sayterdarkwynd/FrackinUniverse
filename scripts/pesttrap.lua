@@ -5,15 +5,12 @@ function init()
 end
 
 function update(dt)
-    self.depth = world.oceanLevel(entity.position())
-    --sb.logInfo("depth is = "..self.depth)
-     
-    if world.liquidAt(entity.position()) or self.depth > 1 then  --cannot work unless in out of liquid
-      return 
-    end   
 
-
-
+	  self.depth = world.oceanLevel(entity.position())
+	  if world.liquidAt(entity.position()) or self.depth > 1 then  --cannot work unless in out of liquid and above ground
+	    return 
+	  end  	 
+	  
 	  transferUtil.loadSelfContainer()
 	  storage.waterCount = math.min((storage.waterCount or 0) + dt,1200)
 	  
@@ -43,7 +40,7 @@ function update(dt)
 	  storage.waterCount = storage.waterCount - amount * config.getParameter('wellslots')[1].ratio
 	  
 	  if amount > 0 and #config.getParameter('wellslots') > 1 then
-	    for i=(storage.count or 0)+1,(storage.count or 0)+amount do
+	    for i=(storage.count or 0)+1,(storage.count or 0) + amount do
 	      for j=2,#config.getParameter('wellslots') do
 		amountmod = math.min(math.floor(math.max(config.getParameter('wellslots')[j].count/config.getParameter('wellslots')[j].amount,1)),config.getParameter('wellslots')[j].amount)
 		if config.getParameter('wellslots')[j].chance > 0 and math.fmod(i,config.getParameter('wellslots')[j].count/amountmod) == 0 and math.random() <= config.getParameter('wellslots')[j].chance then
@@ -53,8 +50,4 @@ function update(dt)
 	    end
 	    storage.count = (storage.count or 0) + amount
 	  end
-  
-
-  
-
 end
