@@ -5,6 +5,11 @@ sleepAction = {
 function sleepAction.enterWith(args)
 
   if not args.sleepAction and not args.sleepTarget then return nil end
+  
+  if not args.sleepSpot then
+    --sb.logWarn("Pet with no sleeping spot set tried to go to sleep - args:%s",args)
+    return nil
+  end
 
   if args.sleepAction and status.resourcePercentage("sleepy") < 1 then
     return nil
@@ -16,6 +21,7 @@ function sleepAction.enterWith(args)
 
   return {
     targetId  = args.sleepTarget,
+    sleepSpot = args.sleepSpot,
     sleepAnimation = args.sleepAnimation,
     sleepRate = -5,
     sleeping  = false,
@@ -42,7 +48,8 @@ function sleepAction.update(dt, stateData)
       --0.125 * 1 box = 1 pixel
       local targetPosition = world.entityPosition(stateData.targetId)
       targetPosition = 
-        {targetPosition[1], targetPosition[2]}
+        {targetPosition[1] + (0.125 * stateData.sleepSpot[1]),
+         targetPosition[2]}
       
       if not approachPoint(dt, targetPosition, 1.5, false) then
         if self.pathing.stuck then
@@ -52,7 +59,8 @@ function sleepAction.update(dt, stateData)
       end
       --X offset was all ready applied for the path destination so only need y offset now
       targetPosition = 
-        {targetPosition[1], targetPosition[2]}
+        {targetPosition[1], 
+        targetPosition[2] + (0.125 * stateData.sleepSpot[2])}
       stateData.petFloat = targetPosition
       stateData.sleeping = true
       animator.setParticleEmitterActive("sleep", true)

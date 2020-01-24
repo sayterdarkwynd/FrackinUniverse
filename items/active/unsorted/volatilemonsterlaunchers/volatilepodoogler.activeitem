@@ -1,0 +1,93 @@
+{
+  "itemName" : "volatilepodoogler",
+  "price" : 1000,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "category" : "uniqueWeapon",
+  "description" : "Fires...gleaps?",
+  "shortdescription" : "Volatile Oogler Pod",
+  "tooltipKind" : "gununique",
+  "twoHanded" : false,
+  "itemTags" : ["weapon"],
+
+  "inventoryIcon" : "volatilepodicon.png",
+  "animation" : "volatilepod.animation",
+  "animationParts" : {
+    "volatilepod" : "volatilepod.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["volatilepod.lua"],
+
+  "icons" : {
+    "healthy" : "/items/active/unsorted/volatilemonsterlaunchers/volatilepodicon.png"
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "monsterEnergyCatch" : {
+      "duration" : 1.5,
+      "transition" : "podTeleportCatch",
+      "transitionFunction" : "showEnergyBall",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "podTeleportCatch" : {
+      "duration" : 0.3,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "projectileType" : "volatilepod",
+  "projectileParameters" : {
+    "speed" : 40,
+    "level" : 1,
+	"monsterType":"oogler",
+	"monsterLevel":7
+  }
+}

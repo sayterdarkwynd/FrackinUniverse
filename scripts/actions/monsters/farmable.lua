@@ -35,13 +35,16 @@ function hasMonsterHarvest(args, board)
 end
 
 function isMonsterHarvestable(args, board)
-  if not storage.producePercent then
+  if (not storage.producePercent) or (not storage.produceRequired) then
     resetMonsterHarvest()
   end
   --storage.producePercent = storage.producePercent + 0.333333333 * ((storage.happiness or 50)/100) * math.max(math.min(((storage.food or 100)-10)/10,1),0)
-  if storage.producePercent >= storage.produceRequired then
+  if (storage.producePercent and storage.produceRequired) and storage.producePercent >= storage.produceRequired then
     return true
   else
+	if not storage.producePercent or not storage.produceRequired then
+		sb.logError("Farmable.lua: monster=<%s>, storage.producePercent=<%s>, storage.produceRequired=<%s>, configured harvest time: <%s>",world.monsterType(entity.id()),storage.producePercent,storage.produceRequired,config.getParameter("harvestTime"))
+	end
     return false
   end
 end
@@ -219,6 +222,8 @@ function displayFoodType()
 		  world.spawnProjectile("fu_herbivore", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
 	  elseif diet == 'lunar' then
 		  world.spawnProjectile("fu_lunar", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
+	  elseif diet == 'robo' then
+		  world.spawnProjectile("fu_robo", mcontroller.position(), entity.id(), {0, 30}, false, configBombDrop)
 	  end
 	  self.timer2 = 180
   end	  
@@ -248,7 +253,7 @@ function checkMate()
   if not self.eggType then self.eggType = "henegg" end
   
   -- Happier pets breed more often. At 100% food they don't even suffer a food penalty for breeding.
-  if storage.mateTimer <= 0 and self.randChance <= 0 and self.canMate == 1 then 
+  if (storage.mateTimer <= 0) and (self.randChance <= 1) and (self.canMate) then 
     if storage.happiness == 100 then  
 	    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
 	    storage.mateTimer = 20  -- full happiness pets mate sooner

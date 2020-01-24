@@ -40,8 +40,8 @@
             "windupTime" : 1.0,
 
             "chargeTime" : 1.0,
-            "chargeSpeed" : 125,
-            "chargeControlForce" : 450,
+            "chargeSpeed" : 85,
+            "chargeControlForce" : 350,
             "wallKnockback" : true,
             "wallCrashSound" : "wallCrash",
             "wallCrashEmitter" : "",
@@ -112,29 +112,22 @@
 
             "projectileType" : "precursorshot2a",
             "projectileParameters" : {
-              "statusEffects" : [ "madnessgain" ],
               "actionOnReap" : [
 		    {
 		      "action" : "config",
 		      "file" : "/projectiles/explosions/precursorexplosion/precursorexplosion2.config"
-		    },              
-		    {
-		      "action" : "explosion",
-		      "foregroundRadius" : 3,
-		      "backgroundRadius" : 0,
-		      "explosiveDamageAmount" : 5,
-		      "delaySteps" : 0
-		    }              
-              ]
+		    }             
+              ],
+              "power" : 6,
+              "speed" : 30
             },
             "power" : 6,
             
-            "fireOffset" : [1.0, 1],
+	    "fireOffsets" : [[1.0, 1], [1, -1], [1, 2]],
             "aimAtTarget" : true,
             "projectileCount" : 3,
             "projectileInterval" : 0.1,
             "fireSound" : "attack",
-            "range": 8,
             "fireState" : "hurt",
             "winddownState" : "chargewinddown",
             "winddownTime" : 0.45
@@ -459,6 +452,8 @@
         "xanafianStatusImmunity" : { "baseValue" : 1 },
         "akkimariacidResistance" : { "baseValue" : 0.9 },
         "akkimariacidStatusImmunity" : { "baseValue" : 1 },
+        "ucObliteratingBurnImmunity" : { "baseValue" : 1 },
+		"specialStatusImmunity" : {"baseValue" : 1.0},
         "ignoreInvisibilityEffects" : { "baseValue" : 1 }       
       },
 

@@ -3,8 +3,8 @@
   "colonyTags": ["byos"],
   "scannable": false,
   "rarity": "Common",
-  "description": "A tiny thruster used for non-FTL travel. Increases ship speed slightly. Mostly for show.\n^yellow;Ship Speed: +8\n^cyan;BYOS Only^white;",
-  "shortdescription": "Tiny Ship Booster",
+  "description": "^red;This item was deprecated. Place and break to get the items used to make this back.^reset;",
+  "shortdescription": "^red;DEPRECATED^reset; Tiny Ship Booster",
   "race": "generic",
   
   "apexDescription": "A booster. These have been known to malfunction and explode.",
@@ -13,6 +13,7 @@
   "glitchDescription": "Analyse. Temperature too high to measure.",
   "humanDescription": "This thing eats through fuel.",
   "hylotlDescription": "Propulsion.",
+  "novakidDescription": "This flame 'ere has a powerful kick.",
   
   "category": "light",
   "lightColor": [59, 183, 255],
@@ -23,10 +24,10 @@
   "inventoryIcon": "/objects/ship/fu_thrustericon.png",
   "orientations": [
     {
-      "image": "fu_booster_tiny.png:on.1",
+      "image": "/objects/ship/fu_booster_tiny/fu_booster_tiny.png:on.1",
       "imagePosition": [0, -16],
       "animationPosition": [0, -16],
-      "animationParts": {"booster": "fu_booster_tiny.png"},
+      "animationParts": {"booster": "/objects/ship/fu_booster_tiny/fu_booster_tiny.png"},
       "flipImages": true,
       "anchors": ["top"],
       "spaces":[
@@ -44,7 +45,8 @@
   
   "scripts": [
     "/objects/ship/boosters/boosterflame.lua",
-    "/objects/ship/fu_shipstatmodifier.lua"
+    "/objects/ship/fu_shipstatmodifier.lua",
+    "/objects/ship/deprecated/fu_deprecatedbyosobject.lua"
   ],
   "scriptDelta": 32,
   

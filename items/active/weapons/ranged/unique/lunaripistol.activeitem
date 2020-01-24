@@ -9,8 +9,8 @@
 ^green;Long-lived projectiles",
     "shortdescription" : "Lunari Pistol",
   "level" : 2,
-  "category" : "machinePistol",
-  "itemTags" : ["weapon","ranged","machinepistol", "energy","lunari", "upgradeableWeapon"],
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol","lunari", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -18,7 +18,7 @@
     "butt" : "",
     "middle" : "lunaripistol.png",
     "barrel" : "",
-    "muzzleFlash" : ""
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },      
   "animationCustom" : {
     "sounds" : { "fire" : [ "/sfx/weapons/beam.ogg" ] },
@@ -30,18 +30,18 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "electric",
+  "elementalType" : "ice",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.32,
-    "baseDps" : 6.0,
-    "energyUsage" : 24.3,
+    "fireTime" : 0.9,
+    "baseDps" : 5.0,
+    "energyUsage" : 27.5,
     "fireType" : "auto",
-    "inaccuracy" : 0,
+    "inaccuracy" : 0.001,
     "projectileCount" : 1,
-    "projectileType" : "lunarishotinitiate",
+    "projectileType" : "lunarimicro3",
     "projectileParameters" : {
       "speed" : 52
     },

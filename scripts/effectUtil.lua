@@ -71,16 +71,27 @@ end
 
 
 
-function effectUtil.effectTypesInRange(effect,range,types,duration)
+function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 	if type(effect)~="string" then
 		return 0
 	end
 	local pos=effectUtil.getPos()
 	local buffer=world.entityQuery(pos,range,{includedTypes=types})
 	local rVal=0
+	teamType=teamType or "all"
+
 	for _,id in pairs(buffer) do
-		if effectUtil.effectTarget(id,effect,duration) then
-			rVal=rVal+1
+		if teamType == "all" then
+			if effectUtil.effectTarget(id,effect,duration) then
+				rVal=rVal+1
+			end
+		else
+			local teamData=world.entityDamageTeam(id)
+			if teamData.type==teamType then
+				if effectUtil.effectTarget(id,effect,duration) then
+					rVal=rVal+1
+				end
+			end
 		end
 	end
 	return rVal
@@ -88,6 +99,18 @@ end
 
 function effectUtil.effectAllInRange(effect,range,duration)
 	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration)
+end
+
+function effectUtil.effectAllOfTeamInRange(effect,range,duration,team)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,team)
+end
+
+function effectUtil.effectAllEnemiesInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"enemy")
+end
+
+function effectUtil.effectAllFriendliesInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"friendly")
 end
 
 function effectUtil.effectNonPlayersInRange(effect,range,duration)
@@ -104,8 +127,12 @@ end
 
 function effectUtil.effectTarget(id,effect,duration)
 	if world.entityExists(id) then
-		world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
-		return true
+		if not effect or effect=="" then
+			return false
+		else
+			world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
+			return true
+		end
 	else
 		return false
 	end

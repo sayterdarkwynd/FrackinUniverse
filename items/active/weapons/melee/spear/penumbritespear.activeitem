@@ -1,0 +1,51 @@
+{
+  "itemName" : "penumbritespear",
+  "price" : 120,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "The shadowy tip is great for poking.
+^cyan;Shadow damage^reset;",
+  "shortdescription" : "Penumbral Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear","penumbrite", "upgradeableWeapon"],
+
+  "inventoryIcon" : "penumbritespear.png",
+  "animation" : "/items/active/weapons/melee/spear/glowspear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "penumbritespear.png",
+    "bladefullbright" : "penumbritespearfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "shadow",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+
+    "fireTime" : 0.875,
+    "baseDps" : 9.65,
+    "damageConfig" : {
+      "damageSourceKind" : "shadowbow",
+      "knockback" : 35
+    }
+  },
+  "altAbilityType" : "barrier",
+  "altAbility" : { },
+
+  "critChance" : 1,
+  "critBonus" : 8,
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

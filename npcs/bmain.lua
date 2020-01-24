@@ -140,8 +140,9 @@ function update(dt)
         type = self.typename,
         team = self.randomTeamName 
       }) 
-  else
-    npc.setDamageTeam(self.preInsaneDamageTeam)   
+      --disabled the check below, as it shouldnt be firing the way it is
+      --else  
+      --  npc.setDamageTeam(self.preInsaneDamageTeam)   
   end
 --
 

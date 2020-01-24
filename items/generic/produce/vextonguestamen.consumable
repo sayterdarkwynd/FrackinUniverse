@@ -1,21 +1,20 @@
 {
   "itemName" : "vextonguestamen",
+  "inventoryIcon" : "vextonguestamen.png",
+  "category" : "food",
   "rarity" : "Common",
   "price" : 5,
-  "inventoryIcon" : "vextonguestamen.png",
-  "description" : "Effect:
-^cyan;Regen 2, Proto-Poison Immunity^reset;",
+  
+  "description" : "^pink;Proto-Poison ^cyan;Immunity ^gray;(^white;5m^gray;)\n^green;Heal ^white;60% ^green;HP ^gray;(^white;90s^gray;)^reset;",
   "shortdescription" : "Vextongue Stamen",
-  "category" : "food",
 
-      "effects" : [ [
-      {
-        "effect" : "regeneration2",
-	"duration" : 90
-      },
-      "protoimmunity"
-    ] ],
-  "blockingEffects" : [
-    "regeneration01"
-  ]
+  "tooltipKind": "food",
+  "effects" : [ [
+    {
+      "effect" : "regeneration2",
+      "duration" : 90
+    },
+    "protoimmunity"
+  ] ],
+  "blockingEffects" : [ "regeneration01" ]
 }

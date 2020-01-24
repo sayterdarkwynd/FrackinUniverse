@@ -36,11 +36,11 @@ function init()
 	storage.timer = storage.timer or 1
 	power.init()
 	power.update()
-	setDesc()
 	storage.outputPos=entity.position()
 	storage.outputPos[1]=storage.outputPos[1]+2+util.clamp(object.direction(),-1,0)
 	wellRange=config.getParameter("airWellRange",20)
 	wellInit()
+	setDesc()
 end
 
 function update(dt)
@@ -106,7 +106,7 @@ function setDesc()
 			info="Atmosphere: "..color..info.name.."^reset;"
 		end
 	end
-	object.setConfigParameter('description',baseMessage.."\n"..info)
+	object.setConfigParameter('description',baseMessage.."\n"..info.."\n^red;Range:^gray; "..wellRange.."^reset;")
 end
 
 function toHex(num)

@@ -102,8 +102,18 @@ function build(directory, config, parameters, level, seed)
   -- build palette swap directives
   config.paletteSwaps = ""
   if builderConfig.palette then
-    local palette = root.assetJson(util.absolutePath(directory, builderConfig.palette))
-    local selectedSwaps = randomFromList(palette.swaps, seed, "paletteSwaps")
+    local selectedSwaps = {}
+    if parameters.WA_customPalettes then
+      local layers = root.assetJson(util.absolutePath(directory,"/items/active/weapons/colors/WA_layers.weaponcolors"))
+      local weaponPalette = string.match(builderConfig.palette, "/([^/]+)%.weaponcolors")
+      for layer, targetColors in pairs(parameters.WA_customPalettes) do
+        local sourceColors = layers[weaponPalette .. layer]
+        for i in ipairs(sourceColors) do selectedSwaps[ sourceColors[i] ] = targetColors[i] end
+      end
+    else
+      local palette = root.assetJson(util.absolutePath(directory, builderConfig.palette))
+      selectedSwaps = randomFromList(palette.swaps, seed, "paletteSwaps")
+    end
     for k, v in pairs(selectedSwaps) do
       config.paletteSwaps = string.format("%s?replace=%s=%s", config.paletteSwaps, k, v)
     end
@@ -179,20 +189,69 @@ function build(directory, config, parameters, level, seed)
   config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
   config.tooltipFields.dpsLabel = util.round(baseDps * config.damageLevelMultiplier, 1)
   config.tooltipFields.speedLabel = util.round(1 / fireTime, 1)
+
+  local damagePerShot = baseDps * fireTime * config.damageLevelMultiplier
+  local energyPerShot = energyUsage * fireTime
+  
   config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
   config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
 
-    -- *******************************
+    -- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***
     -- FU ADDITIONS 
-
-      config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
-      config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
-      config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)
-      
-    -- *******************************
+        parameters.isAmmoBased = configParameter("isAmmoBased")
+      if (parameters.ammoLocked == nil) then
+	    if (math.random(0,1) > 0.5) then  -- 50% change for the weapon to be Ammo based or Energy based
+	      parameters.isAmmoBased = 1
+	      config.tooltipKind = "gun2"
+	      parameters.tooltipKind = "gun2"
+	    else
+	      parameters.isAmmoBased = 0
+	    end 
+	    parameters.ammoLocked = 1 --set it to 1 so this step never repeats	    
+      end    
+      if (parameters.isAmmoBased ==1 ) then   -- if its ammo based, we set the relevant data to the tooltip
+	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
+	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
+	  config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
+	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0  
+	  config.tooltipFields.energyPerShotLabel = util.round((energyUsage * fireTime)/2, 1)  -- these weapons have 50% energy cost
+          config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",1), 0) --
+          config.tooltipFields.reloadTimeLabel = util.round(configParameter("reloadTime",1),1)  .. "s"
+      else
+	config.magazineSize = 0
+	config.reloadTime = 0       
+        config.tooltipFields.magazineSizeLabel = "--"
+        config.tooltipFields.reloadTimeLabel = "--"        
+      end      
+      if (configParameter("critChance")) then
+        config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)  
+      else
+        config.tooltipFields.critChanceLabel = "--"
+      end
+      if (configParameter("critBonus")) then
+        config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)  
+      else
+        config.tooltipFields.critBonusLabel = "--"
+      end
+      if (configParameter("stunChance")) then
+        config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)   
+      else
+        config.tooltipFields.stunChanceLabel = "--"        
+      end   
+    config.tooltipFields.damagePerEnergyLabel = util.round(damagePerShot / energyPerShot, 1)
     
+	      config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
+    	      config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png" 
+    	      config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"  
+    	      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"     
+  --
+      
   if elementalType ~= "physical" then
     config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
+
+  else
+    config.tooltipFields.damageKindImage = "/interface/elements/physical.png"
+
   end
   if config.primaryAbility then
     config.tooltipFields.primaryAbilityTitleLabel = "Primary:"

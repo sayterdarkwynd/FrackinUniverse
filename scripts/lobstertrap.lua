@@ -6,8 +6,6 @@ end
 
 function update(dt)
     self.depth = world.oceanLevel(entity.position())
-    --sb.logInfo("depth is = "..self.depth)
-     
     if not world.liquidAt(entity.position()) or self.depth < 50 then  --cannot work unless in ocean liquid
       return 
     end   
@@ -15,7 +13,7 @@ function update(dt)
     if world.type() == "ocean" or world.type() == "arctic" or world.type() == "tidewater" then
 
 	  transferUtil.loadSelfContainer()
-	  storage.waterCount = math.min((storage.waterCount or 0) + dt,100)
+	  storage.waterCount = math.min((storage.waterCount or 0) + dt,1200)
 	  
 	  for i=2,#config.getParameter('wellslots') do
 	    if world.containerItemAt(entity.id(),i-1) and world.containerItemAt(entity.id(),i-1).name ~= config.getParameter('wellslots')[i].name then

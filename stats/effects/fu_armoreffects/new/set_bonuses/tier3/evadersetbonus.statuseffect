@@ -1,0 +1,31 @@
+{
+  "name" : "evadersetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "shieldStaminaRegen" : { "baseMultiplier" : 1.25 },
+      "shieldBonusShield" : { "amount" : 0.25 },
+      "perfectBlockLimitRegen" : { "baseMultiplier" : 1.25 }
+    },
+
+    "weaponBonuses" : [
+      {
+        "type" : "dual",
+        "tags" : [ "shortsword", "longsword" ],
+        "altTags" : [ "shield" ],
+        "stats" : {
+          "physicalResistance" : { "amount" : 0.08 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "+25% Shield Health and Regen. Sword & Shield: +8% Physical Resist",
+  "icon" : "/interface/statuses/defense4.png"
+}

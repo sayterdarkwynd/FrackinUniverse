@@ -23,8 +23,8 @@ end
 
 function update(dt)
 	mcontroller.controlModifiers({
-		speedModifier = 1.3,
-		airJumpModifier = 1.3
+		speedModifier = 1.12,
+		airJumpModifier = 1.12
 	})
 	
 	if not checkSetWorn(self.setBonusCheck) then

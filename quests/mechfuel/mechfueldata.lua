@@ -18,7 +18,7 @@ function init()
   message.setHandler("getQuestFuelCount", function()
     if storage.fuelCount then
 	    return storage.fuelCount
-	  end
+    end
   end)
 
   message.setHandler("addQuestFuelCount", function(_, _, value)
@@ -108,7 +108,7 @@ end
 
 function update(dt)
   if storage.currentMaxFuel and storage.fuelCount then
-    if storage.fuelCount > storage.currentMaxFuel then
+        if storage.fuelCount > storage.currentMaxFuel then
 	    storage.fuelCount = storage.currentMaxFuel
   	end
   end
@@ -116,7 +116,11 @@ function update(dt)
   if storage.fuelCount and storage.fuelCount < 0 then
     storage.fuelCount = 0
   end
-
+  
+  if storage.fuelCount > storage.currentMaxFuel then
+    storage.fuelCount = storage.currentMaxFuel
+  end
+  
   if storage.fuelType and storage.fuelCount and storage.fuelCount <= 0 then
     storage.fuelType = nil
   end

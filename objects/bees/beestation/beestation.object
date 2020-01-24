@@ -1,33 +1,42 @@
 {
-  "objectName" : "beestation",
-  "colonyTags" : [ "bees", "insects" ],
-  "rarity" : "Common",
-  "interactAction" : "OpenCraftingInterface",
-  "interactData" : {
-    "config" : "/interface/windowconfig/beestation.config",
-    "filter" : [ "beestation" ]
-  },
-  "learnBlueprintsOnPickup" : [ "normalalveary", "normalapiary", "beerefuge", "honeytable", "honeytable", "honeyjarrer", "honeyextractor", "basicframe" ],
-  "printable" : false,
-  "description" : "Craft all sorts of bee related items!",
-  "shortdescription" : "^orange;Apiary Crafting Station^white;",
-  "race" : "generic",
-  "category" : "crafting",
-  "price" : 50,
-
-  "inventoryIcon" : "beestationicon.png",
-  "orientations" : [
-    {
-      "dualImage" : "beestation.png:<color>",
-
-      "imagePosition" : [-16, 0],
-      "frames" : 1,
-      "animationCycle" : 1.0,
-
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
-
-    }
-  ]
+	"objectName" : "beestation",
+	"colonyTags" : [ "bees", "insects" ],
+	"rarity" : "Common",
+	"interactAction" : "OpenCraftingInterface",
+	"interactData" : {
+		"config" : "/interface/windowconfig/beestation.config",
+		"filter" : [ "beestation" ]
+	},
+	
+	"learnBlueprintsOnPickup" : [
+		"normalalveary",
+		"normalapiary",
+		"beerefuge",
+		"honeytable",
+		"honeyjarrer",
+		"honeyextractor",
+		"basicframe"
+	],
+	
+	"printable" : false,
+	"description" : "Craft all sorts of bee related items!",
+	"shortdescription" : "^orange;Apiary Crafting Station^white;",
+	"race" : "generic",
+	"category" : "crafting",
+	"price" : 50,
+	
+	"inventoryIcon" : "beestationicon.png",
+	"orientations" : [
+		{
+		"dualImage" : "beestation.png:<color>",
+		
+		"imagePosition" : [-16, 0],
+		"frames" : 1,
+		"animationCycle" : 1.0,
+		
+		"spaceScan" : 0.1,
+		"anchors" : [ "bottom" ],
+		"collision" : "platform"
+		}
+	]
 }

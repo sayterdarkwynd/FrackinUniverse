@@ -1,0 +1,31 @@
+{
+  "projectileName" : "shadowguardiandamagearea",
+  "image" : "shadowguardiandamagearea.png",
+  "animationCycle" : 0.6,
+  "frameNumber" : 8,
+  "windupFrames" : 2,
+  "fullbright" : true,
+  "intangibleWindup" : true,
+  "damagePoly" : [ [-27, 0], [-19, -19], [0, -27], [19, -19], [27, 0], [19, 19], [0, 27], [-19, 19] ],
+  "animationLoops" : true,
+  "flippable" : true,
+  "damageKind" : "shadow",
+  "statusEffects" : ["shadowgasfx"],
+
+  "movementSettings" : {
+    "bounceFactor" : 1.0,
+    "collisionPoly" : [ [3.25, 3.25], [3.25, -3.25], [-3.25, -3.25], [-3.25, 3.25] ]
+  },
+  "knockback" : 40,
+  "bounces" : -1,
+  "speed" : 20,
+  "piercing" : true,
+  "timeToLive" : 14.0,
+  "persistentAudio" : "/sfx/projectiles/poisonorb_loop1.ogg",
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/impact_plasma.ogg" ]
+    }
+  ]
+}

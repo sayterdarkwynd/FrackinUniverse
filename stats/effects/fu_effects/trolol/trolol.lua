@@ -10,6 +10,9 @@ function init()
     {stat = "cosmicResistance", amount = 1},
     {stat = "radioactiveResistance", amount = 1},
     {stat = "shadowResistance", amount = 1},
+    {stat = "akkimariacidResistance", amount = 1},
+    {stat = "centensianenergyResistance", amount = 1},
+    {stat = "shadowResistance", amount = 1},
     {stat = "protection", amount = 100.0}
   })
   animator.playSound("trolol")

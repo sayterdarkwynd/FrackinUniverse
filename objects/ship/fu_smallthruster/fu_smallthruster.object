@@ -17,12 +17,17 @@
   "orientations": [
     {
       "image": "fu_smallthruster.png:on.1",
-      "imagePosition": [-16, -10],
-      "animationPosition": [-16, -10],
+      "imagePosition": [-16, -16],
+      "animationPosition": [-16, -16],
       "animationParts": {"booster": "fu_smallthruster.png"},
       "flipImages": true,
       "anchors": ["top"],
-      "fullbright": true
+      "fullbright": true,
+	  "spaces":[
+         [-2,  0],[-2, -1],[-2, -2],
+         [-1,  0],[-1, -1],[-1, -2],
+         [ 0,  0],[ 0, -1],[ 0, -2]
+      ]
     }
   ],
   "animation": "/objects/ship/boosters/boosterflame.animation",
@@ -30,5 +35,11 @@
   "scripts": [
 		"/objects/ship/boosters/boosterflame.lua",
 		"/objects/ship/fu_shipstatmodifier.lua"
-	]
+	],
+  "flyingBoosterStates": {
+    "none": "turnOff",
+    "disembarking": "turnOn",
+    "warp": "turnOff",
+    "arriving": "turnOn"
+  }
 }

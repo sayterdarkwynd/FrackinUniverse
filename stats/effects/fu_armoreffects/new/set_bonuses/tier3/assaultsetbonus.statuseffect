@@ -1,0 +1,34 @@
+{
+  "name" : "assaultsetbonus",
+  "defaultDuration" : 15,
+
+  "effectConfig" : {
+    "armorBonuses" : {
+      "breathProtection" : {},
+      "gasImmunity" : {},
+      "liquidnitrogenImmunity": {},
+      "biomecoldImmunity" : {}
+    },
+    "armorMovementModifiers" : {
+      "jump" : 1.2
+    },
+
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "assaultrifle", "energy" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.2 }
+        }
+      }
+    ]
+  },
+
+  "scripts" : [
+    "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "label" : "Immune: Breath, Gas, Liq. Nitrogen, Cold. +20% Jump. Assault Rifle/Energy Weapons: +20% Dmg",
+  "icon" : "/interface/statuses/set_assault.png"
+}

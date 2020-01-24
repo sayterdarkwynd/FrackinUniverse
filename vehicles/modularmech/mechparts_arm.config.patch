@@ -2,7 +2,7 @@
     [
   {
     "op": "add",
-    "path": "/soluskatana/stats/mass",
+    "path": "/soluskatana/stats/mechMass",
     "value": 5
   },
   {
@@ -17,7 +17,7 @@
   },  
   {
     "op": "add",
-    "path": "/neolaser/stats/mass",
+    "path": "/neolaser/stats/mechMass",
     "value": 7
   },{
     "op": "add",
@@ -272,7 +272,11 @@
             "op": "add",
             "path": "/drill/stats/mechMass",
             "value": 1
-        }, {
+        },  {
+   	    "op": "replace",
+    	    "path": "/drill/partParameters/tileDamage",
+    	    "value": 1
+  	}, {
             "op": "add",
             "path": "/plasmadronelauncher/stats/mechMass",
             "value": 4
@@ -1664,7 +1668,7 @@
                     "script": "/vehicles/modularmech/armscripts/gunarm.lua",
                     "armClass": "GunArm",
                     "rotationLimits": [-1.75, 1.75],
-                    "fireOffset": [6, -0.325],
+                    "fireOffset": [7, -0.5],
                     "extendTime": 1,
                     "fireTime": 0.15,
                     "projectileType": "densiniumrifleshotmech",
@@ -1789,7 +1793,7 @@
 				}
 			      },
 			      "sounds" : {
-				"<armName>Fire" : ["/sfx/weapons/rifle2.ogg"]
+				"<armName>Fire" : ["/sfx/weapons/fugauss.ogg"]
 			      }                
                 }
             }
@@ -2711,7 +2715,7 @@
                     "fireOffset": [7.8, 0],
                     "extendTime": 0.725,
                     "fireTime": 0.725,
-                    "projectileType": "fulaserpistol",
+                    "projectileType": "fulaserpistolhunting",
                     "projectileInaccuracy": 0,
                     "projectileCount": 1,
                     "projectileParameters": {
@@ -2761,7 +2765,7 @@
                     "fireOffset": [7.8, 0],
                     "extendTime": 0.725,
                     "fireTime": 0.725,
-                    "projectileType": "fulaserpistol",
+                    "projectileType": "fulaserpistolhunting",
                     "projectileInaccuracy": 0,
                     "projectileCount": 1,
                     "projectileParameters": {
@@ -3178,8 +3182,8 @@
 		    2
 		  ]
 		],
-		"tileDamage": 1.35,
-		"tileDamageRate": 0.15,
+		"tileDamage": 1.5,
+		"tileDamageRate": 0.18,
 		"damageTileDepth": 6,
 		"spinUpDownTime": 0.6
 	      },
@@ -3342,8 +3346,8 @@
 		    2
 		  ]
 		],
-		"tileDamage": 2.35,
-		"tileDamageRate": 0.15,
+		"tileDamage": 2.5,
+		"tileDamageRate": 0.2,
 		"damageTileDepth": 10,
 		"spinUpDownTime": 0.6
 	      },
@@ -3506,8 +3510,8 @@
 		    2
 		  ]
 		],
-		"tileDamage": 3.35,
-		"tileDamageRate": 0.15,
+		"tileDamage": 3.5,
+		"tileDamageRate": 0.25,
 		"damageTileDepth": 12,
 		"spinUpDownTime": 0.6
 	      },
@@ -5780,7 +5784,7 @@
         },{
             "op": "replace",
             "path": "/ue_armsmg/stats/power",
-            "value": 6
+            "value": 3
         },{
             "op": "replace",
             "path": "/ue_armsmg/stats/energy",
@@ -5788,7 +5792,73 @@
         },{
             "op": "replace",
             "path": "/ue_armsmg/partParameters/projectileParameters/power",
-            "value": 9
+            "value": 3
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/mechflamert0"
+        },{
+            "op": "add",
+            "path": "/mechflamert0/stats/mechMass",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/power",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/energy",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/partParameters/projectileParameters/power",
+            "value": 0.05
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/mechflamert1"
+        },{
+            "op": "add",
+            "path": "/mechflamert0/stats/mechMass",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/power",
+            "value": 4
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/energy",
+            "value": 4
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/partParameters/projectileParameters/power",
+            "value": 0.05
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/mechflamert2"
+        },{
+            "op": "add",
+            "path": "/mechflamert0/stats/mechMass",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/power",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/energy",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/partParameters/projectileParameters/power",
+            "value": 0.07
         }
     ]
     

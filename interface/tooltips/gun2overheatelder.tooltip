@@ -6,52 +6,138 @@
       "fileFooter" : "/interface/tooltips/footerwideelder.png"    
   },
 
-  "levelLabel" : {
-      "type" : "label",
-      "position" : [146, 188],
-      "hAnchor" : "right",
-      "vAnchor" : "top",
-      "wrapWidth" : 134
-  },  
+  "moneyIcon" : {
+    "type" : "image",
+    "position" : [97, 23],
+    "file" : "/interface/money.png"
+  },
+  "priceLabel" : {
+    "type" : "label",
+    "position" : [110, 23],
+    "hAnchor" : "left",
+    "value" : "tree"
+  },
+
   "descriptionLabel" : {
     "type" : "label",
-    "position" : [10, 120],
-    "hAnchor" : "left",
-    "vAnchor" : "top",
-    "wrapWidth" : 140,
-    "fontSize" : 7
-  },
-  
-  "critChanceTitleLabel" : {
-    "type" : "label",
-    "position" : [13, 176],
-    "hAnchor" : "left",
-    "vAnchor" : "top",
-    "wrapWidth" : 134,
-    "value" : "^orange;Crit %^reset;"
-  },  
-  "critChanceLabel" : {
-    "type" : "label",
-    "position" : [23, 166],
+    "position" : [13, 122],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 134
-  },  
-  "critBonusTitleLabel" : {
+  },
+  "magazineSizeImage" : {
+    "type" : "image",
+    "position" : [48, 170],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [16, 16],
+    "minSize" : [16, 16]
+  }, 
+  "reloadTimeImage" : {
+    "type" : "image",
+    "position" : [48, 145],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [16, 16],
+    "minSize" : [16, 16]
+  },   
+  "critChanceImage" : {
+    "type" : "image",
+    "position" : [18, 170],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [16, 16],
+    "minSize" : [16, 16]
+  }, 
+  "critBonusImage" : {
+    "type" : "image",
+    "position" : [18, 145],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [16, 16],
+    "minSize" : [16, 16]
+  },   
+  
+  //"magazineSizeTitleLabel" : {
+  //  "type" : "label",
+  //  "position" : [39, 176],
+  //  "hAnchor" : "left",
+  //  "vAnchor" : "top",
+  //  "wrapWidth" : 134,
+  //  "value" : "^#61be3f;Ammo^reset;",
+  //  "fontSize" : 6
+  //},  
+  "magazineSizeLabel" : {
     "type" : "label",
-    "position" : [13, 156],
+    "position" : [61, 174],
     "hAnchor" : "left",
     "vAnchor" : "top",
-    "wrapWidth" : 134,
-    "value" : "^yellow;Dmg +^reset;"
-  },  
+    "wrapWidth" : 134
+  },   
+  //"reloadTimeTitleLabel" : {
+  //  "type" : "label",
+  //  "position" : [36, 152],
+  //  "hAnchor" : "left",
+  //  "vAnchor" : "top",
+  //  "wrapWidth" : 134,
+  //  "value" : "^#3e911f;Reload^reset;",
+  //  "fontSize" : 6
+  //},  
+  "reloadTimeLabel" : {
+    "type" : "label",
+    "position" : [61, 149],
+    "hAnchor" : "left",
+    "vAnchor" : "top",
+    "wrapWidth" : 134
+  }, 
+
+  //"critChanceTitleLabel" : {
+  //  "type" : "label",
+  //  "position" : [14, 176],
+  //  "hAnchor" : "left",
+  //  "vAnchor" : "top",
+  //  "wrapWidth" : 134,
+  //  "value" : "^#ee1414;Crit %^reset;",
+  //  "fontSize" : 6
+  //},  
+  "critChanceLabel" : {
+    "type" : "label",
+    "position" : [28, 174],
+    "hAnchor" : "left",
+    "vAnchor" : "top",
+    "wrapWidth" : 134
+  },   
+  //"critBonusTitleLabel" : {
+  //  "type" : "label",
+  //  "position" : [14, 152],
+  //  "hAnchor" : "left",
+  //  "vAnchor" : "top",
+  //  "wrapWidth" : 134,
+  //  "value" : "^yellow;Dmg +^reset;",
+  //  "fontSize" : 6
+  //},  
   "critBonusLabel" : {
     "type" : "label",
-    "position" : [23, 146],
+    "position" : [28, 149],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 134
   },    
+    "levelLabelTitle" : {
+      "type" : "label",
+      "position" : [13, 196],
+      "hAnchor" : "left",
+      "vAnchor" : "top",
+      "value" : "^yellow;Tier^reset;",
+      "wrapWidth" : 134
+  },  
+    "levelLabel" : {
+      "type" : "label",
+      "position" : [34, 196],
+      "hAnchor" : "left",
+      "vAnchor" : "top",
+      "wrapWidth" : 134
+  }, 
   
   "handednessTitleLabel" : {
     "type" : "label",
@@ -107,7 +193,7 @@
     "type" : "label",
     "position" : [9, 43],
     "hAnchor" : "left",
-    "value" : "^orange;Charge Time^reset;:"
+    "value" : "^#ee1414;Charge Time^reset;:"
   },
   "cooldownLabel" : {
     "type" : "label",
@@ -130,26 +216,6 @@
     "wrapWidth" : 126
   },
 
- 
-  //"rarityLabel" : {
-  //  "type" : "label",
-  //  "position" : [9, 25],
-  //  "hAnchor" : "left",
-  //  "centered" : true,
-  //  "wrapWidth" : 126
-  //},
-  //"moneyIcon" : {
-  //  "type" : "image",
-  //  "position" : [97, 25],
-  //  "file" : "/interface/money.png"
-  //},
-  //"priceLabel" : {
-  //  "type" : "label",
-  //  "position" : [110, 25],
-  //  "hAnchor" : "left",
-  //  "value" : "tree"
-  //}, 
-  
   "damageKindImage" : {
     "type" : "image",
     "position" : [136, 142],

@@ -16,6 +16,17 @@ function init()
   status.removeEphemeralEffect("partytime2")
   
   self.paintTimer = 0
+  
+  self.playerId = entity.id()
+  self.maxMadnessValue = 15000 
+  self.madnessPercent = storage.madnessCount / self.maxMadnessValue
+  if self.madnessPercent > 1.0 then
+    self.madnessPercent = 1
+  end  
+  self.barName = "madnessBar"
+  self.barColor = {250,0,250,125}
+  self.timerReloadBar = 0  
+  self.timerRemoveAmmoBar = 0
 end
 
 function randomEvent()
@@ -54,15 +65,18 @@ function randomEvent()
 		status.addEphemeralEffect("runboost15",self.curseDuration_status) -- run boost!
 	    end   
     elseif storage.madnessCount > 1000 then
- 	    if self.randEvent == 40 then --swap tech
- 		player.equipTech("distortionsphere")
- 	    end      
- 	    if self.randEvent == 41 then --swap tech
- 		player.equipTech("doublejump")
- 	    end   
- 	    if self.randEvent == 42 then --swap tech
- 		player.equipTech("dash")
- 	    end  
+		if self.randEvent == 40 or self.randEvent == 41 or self.randEvent == 42 then
+			local enabledtechs=player.enabledTechs()
+			if self.randEvent == 40 and contains(enabledtechs,"distortionsphere") then --swap tech
+				player.equipTech("distortionsphere")
+			end      
+			if self.randEvent == 41 and contains(enabledtechs,"doublejump") then --swap tech
+				player.equipTech("doublejump")
+			end   
+			if self.randEvent == 42 and contains(enabledtechs,"dash") then --swap tech
+				player.equipTech("dash")
+			end  
+		end
  	    if self.randEvent == 43 then
  	      player.consumeCurrency("fuscienceresource", 1) 
  	      player.radioMessage("sanitygain")
@@ -176,7 +190,7 @@ function randomEvent()
 		status.addEphemeralEffect("staffslow2",self.curseDuration_status)
 	    end      
 	    if self.randEvent == 13 then 
-		status.addEphemeralEffect("toxiccloud",self.curseDuration)
+		status.addEphemeralEffect("medicaltoxiccloud",self.curseDuration)
 	    end
 	    if self.randEvent == 14 then 
 		status.addEphemeralEffect("loweredshadow",self.curseDuration_status) --more succeptible to shadow
@@ -285,7 +299,15 @@ function randomEvent()
 end
 
 function update(dt)
-
+    --we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
+   if (self.timerRemoveAmmoBar >=6) then
+       world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
+       self.timerRemoveAmmoBar = 0
+   else
+       self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + dt
+   end   
+       
+  
    storage.madnessCount = player.currency("fumadnessresource")
    self.paintTimer = self.paintTimer - 1
    if self.paintTimer == 0 then
@@ -294,11 +316,15 @@ function update(dt)
    
   -- Core Adjustments Functions
   self.timer = self.timer - 1
-  
-  --debug
-  --sb.logInfo("timer = "..self.timer)
-  --sb.logInfo("degrade = "..self.degradeTotal)
-  
+  self.timerReloadBar = self.timerReloadBar + dt
+  if (self.timerReloadBar >=5) then
+    self.timerReloadBar = 5
+  end
+  if (self.timerReloadBar == 5) then -- is reload bar timer expired?
+    world.sendEntityMessage(self.playerId,"removeBar","madnessBar")   --clear ammo bar  
+    self.timerReloadBar = 0
+  end
+
   if self.timer < 1 then 
   	  if storage.madnessCount > 12000 then
 	        storage.madnessCount = 12000
@@ -393,7 +419,8 @@ function update(dt)
 	if (self.timerDegrade <= 0) and (storage.madnessCount >= 50) then --high madness is harder to hold onto, and less farmable, if it always reduces
 	    self.timerDegradePenalty = self.timerDegradePenalty or 0
 	    player.consumeCurrency("fumadnessresource", self.degradeTotal)
-	    self.timerDegrade= 30 - self.timerDegradePenalty        
+	    self.timerDegrade= 30 - self.timerDegradePenalty   
+	    displayBar()
 	end 
  	-- apply bonus loss from anti-madness effects even if not above 500 madness
 	self.bonusTimer = self.bonusTimer -1
@@ -404,9 +431,17 @@ function update(dt)
 	      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
 	    end
 	    self.bonusTimer = 20
+	    displayBar() 	    
 	end	
+end
 
 
+function displayBar()
+  if (storage.madnessCount >= 50) then
+    world.sendEntityMessage(self.playerId,"setBar","madnessBar",self.madnessPercent,self.barColor)
+  else
+    world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
+  end
 end
 
 function checkMadnessArt()
@@ -510,4 +545,5 @@ end
 
 function uninit()
 	status.clearPersistentEffects("madnessEffectsMain")
+	world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
 end

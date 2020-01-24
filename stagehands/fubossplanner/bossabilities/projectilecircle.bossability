@@ -1,0 +1,53 @@
+{
+  "name" : "fuprojectileCircle",
+  "preconditions" : [
+    ["Ability", "StaticAbility"]
+  ],
+  "postconditions" : [
+    ["Ability", "MovingAbility"],
+    ["!Ability", "StaticAbility"]
+  ],
+  "statemodifiers" : [
+    ["!WeaponEquipped"],
+    ["Ability", "CloseRange"] // uses projectiles but is effectively close range
+  ],
+
+  "actions" : [ "guardian-projectilecircle" ], // actions to apply the binding to
+  "behaviorHandler" : "projectileCircleHandler",
+
+  "projectileConfig" : {
+    "<element>guardianpellet" : {
+      "count" : 30,
+      "speed" : 35,
+      "explosion" : "/projectiles/boss/guardianboss/guardianexplosion/<element>guardianexplosion.config",
+      "radius" : 1.5
+    },
+    "<element>guardianbullet" : {
+      "count" : 20,
+      "speed" : 35,
+      "explosion" : "/projectiles/boss/guardianboss/guardianlargeexplosion/<element>guardianlargeexplosion.config",
+      "radius" : 2.75
+    }
+  },
+
+  "repeatCount" : 10,
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-projectilecircle",
+      "parameters" : {
+        "duration": 1.0,
+        "innerRange": 5,
+        "outerRange": 20,
+        "distance" : 12.5,
+
+        // below populated by handler
+        "interval": null,
+        "fuzzAimPosition": null,
+        "projectileCount": null,
+        "projectileType": null,
+        "projectileParameters": {}
+      }
+    }
+  ]
+}

@@ -272,6 +272,11 @@ function addShieldEffect()
       {stat = "aetherImmunity", amount = 1},
       {stat = "cosmicResistance", amount = 0.25}
     })
+  elseif self.shieldPower == "Cosmic Absorbtion" then
+    status.setPersistentEffects("neutronmagnorb", {
+      {stat = "aetherImmunity", amount = 1},
+      {stat = "cosmicResistance", amount = 0.25}
+    })    
   elseif self.shieldPower == "Force Field" then
     status.addEphemeralEffect("mage_shield_lvl1")
     status.setPersistentEffects("protomagnorb", {

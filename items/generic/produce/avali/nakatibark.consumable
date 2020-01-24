@@ -1,27 +1,31 @@
 {
-  "itemName" : "nakatibark",
-  "price" : 5,
-  "rarity" : "Common",
-  "inventoryIcon" : "avaliproduce2.png",
-  "description" : "Effect:
-^cyan;+7 Defense, Proto-Poison Immunity^reset;",
-  "shortdescription" : "Nakati Bark",
-  "category" : "food",
+  "itemName": "nakatibark",
+  "inventoryIcon": "avaliproduce2.png",
+  "category": "food",
+  "rarity": "Common",
+  "price": 5,
+  "foodValue": 40,
 
-      "effects" : [ [
-    "protoimmunity",
-    {
-        "effect" : "defense5",
-        "duration" : 125
-    }
-  ] ],
-    
-  "blockingEffects" : [
-         "defense1",
-         "defense2",
-         "defense3",
-         "defense4",
-         "defense6",
-         "defenseboost10"
+  "tooltipKind": "food",
+  "description": "^cyan;+^white;7 ^cyan;Defense, ^pink;Proto-Poison ^cyan;Immunity ^gray;(^white;125s^gray;)^reset;",
+  "shortdescription": "Nakati Bark",
+
+  "effects": [
+    [
+      "protoimmunity",
+      {
+        "effect": "defense5",
+        "duration": 125
+      }
+    ]
+  ],
+
+  "blockingEffects": [
+    "defense1",
+    "defense2",
+    "defense3",
+    "defense4",
+    "defense6",
+    "defenseboost10"
   ]
 }

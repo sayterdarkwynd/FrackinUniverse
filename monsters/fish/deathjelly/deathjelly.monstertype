@@ -5,33 +5,31 @@
   "reversed" : true,
   
   "categories" : [ "deathjelly" ],
-  "parts" : [ "body" ],
+  "parts" : [ "body", "bodyfullbright" ],
 
   "animation" : "deathjelly.animation",
 
   "dropPools" : [ 
     { 
-      "default" : "wisperTreasure", 
-      "bow" : "wisperHunting",
-      "firebow" : "wisperHunting",
-      "icebow" : "wisperHunting",
-      "poisonbow" : "wisperHunting",
-      "electricbow" : "wisperHunting",
-      "cosmicbow" : "wisperHunting",
-      "radioactivebow" : "wisperHunting",
-      "shadowbow" : "wisperHunting"
+      "default" : "jellyfishTreasure", 
+      "bow" : "jellyfishTreasure",
+      "firebow" : "jellyfishTreasure",
+      "icebow" : "jellyfishTreasure",
+      "poisonbow" : "jellyfishTreasure",
+      "electricbow" : "jellyfishTreasure",
+      "cosmicbow" : "jellyfishTreasure",
+      "radioactivebow" : "jellyfishTreasure",
+      "shadowbow" : "jellyfishTreasure"
     } 
   ],
 
   "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua"
-    ],
+    "scripts" : [ "/monsters/monster.lua" ],
 
     "behavior" : "monster",
 
-    "renderLayer" : "foregroundEntity",
-
+   // "renderLayer" : "foregroundEntity",
+    
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -39,8 +37,8 @@
       "targetOnDamage" : true,
       "targetEntityTypes" : [ "player", "npc", "monster" ],
       "keepTargetInSight" : false,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.0,
+      "keepTargetInRange" : 12,
+      "targetOutOfSightTime" : 12.0,
 
       "hurtTime" : 0.25,
       "hurtWaitForGround" : false,
@@ -51,25 +49,25 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [
+      "hostileActions" : [  
         {
           "name" : "action-charge",
-          "cooldown" : 0.5,
+          "cooldown" : 3,
           "parameters" : {
             "minimumRange" : 1,
             "maximumRange" : 20,
-            "windupStopForce" : 25,
+            "windupStopForce" : 1,
             "windupTime" : 1,
 
             "onGround" : false,
             "wallCollide" : false,
-            "aimAtTarget" : true,
+            "aimAtTarget" : false,
             "chargeTime" : 0.23,
             "chargeSpeed" : 7,
-            "chargeControlForce" : 250,
+            "chargeControlForce" : 20,
 
             "winddownState" : "fly",
-            "winddownStopForce" : 25,
+            "winddownStopForce" : 1,
             "winddownTime" : 0.05
           }
         },      
@@ -78,7 +76,7 @@
           "cooldown" : 5.0,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 8,
+            "maximumRange" : 30,
             "minimumRange" : 1,
             "onGround" : false,
             "windupStopForce" : 50,
@@ -88,7 +86,8 @@
             "projectileCount" : 1,
             "projectileInterval" : 0.15,             
             "projectileParameters" : {
-              "speed" : 30
+              "speed" : 30,
+              "timeToLive" : 1
             },
             "power" : 12,
             "fireOffset" : [0.0, 0.0],
@@ -104,7 +103,29 @@
         }
       ],
 
-      "periodicActions" : [ ],
+      "periodicActions" : [ 
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "minimumRange" : 1,
+            "maximumRange" : 20,
+            "windupStopForce" : 1,
+            "windupTime" : 1,
+
+            "onGround" : false,
+            "wallCollide" : false,
+            "aimAtTarget" : false,
+            "chargeTime" : 0.23,
+            "chargeSpeed" : 7,
+            "chargeControlForce" : 20,
+
+            "winddownState" : "fly",
+            "winddownStopForce" : 1,
+            "winddownTime" : 0.05
+          }
+        }      
+      ],
 
       "approachActions" : [
         {
@@ -122,11 +143,11 @@
         {
           "name" : "wander-fly",
           "parameters" : {
-            "wanderTime" : 10,
+            "wanderTime" : 2,
             "groundDistance" : 4,
             "ceilingDistance" : 4,
             "xVelocity" : 2,
-            "yVelocity" : 12
+            "yVelocity" : 2
           }
         }        
       ],
@@ -137,7 +158,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+      "poly" : [ [0.65, 1.75], [0.925, 1.375], [0.925, -1.375], [0.65, -1.75], [-0.65, -1.75], [-0.925, -1.375], [-0.925, 1.375], [-0.65, 1.75] ],
       "damage" : 9,
 
       "teamType" : "enemy",
@@ -149,18 +170,31 @@
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
-    "selfDamagePoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+    "selfDamagePoly" : [ [0.65, 1.75], [0.925, 1.375], [0.925, -1.375], [0.65, -1.75], [-0.65, -1.75], [-0.925, -1.375], [-0.925, 1.375], [-0.65, 1.75] ],
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+      "collisionPoly" : [ [0.65, 1.75], [0.925, 1.375], [0.925, -1.375], [0.65, -1.75], [-0.65, -1.75], [-0.925, -1.375], [-0.925, 1.375], [-0.65, 1.75] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 3,
-      "runSpeed" : 6,
+      "walkSpeed" : 1,
+      "runSpeed" : 2,
       "gravityEnabled" : false,
 
       "airForce" : 50,
-      "flySpeed" : 8
+      "airFriction" : 2,
+      "flySpeed" : 3,
+      
+	  "airJumpProfile" : {
+	    "jumpSpeed" : 0.5,
+	    "jumpControlForce" : 25,
+	    "jumpInitialPercentage" : 0.5,
+	    "jumpHoldTime" : 0.0,
+
+	    "multiJump" : false,
+	    "reJumpDelay" : 999,
+	    "autoJump" : false,
+	    "collisionCancelled" : true
+	  }      
     },
 
     "bodyMaterialKind" : "organic",
@@ -213,6 +247,18 @@
         },        
         "powerMultiplier" : {
           "baseValue" : 1.0
+        },        
+        "isWaterCreature" : {
+          "baseValue" : 1.0
+        },   
+        "isJellyfishCreature" : {
+          "baseValue" : 1.0
+        },        
+        "breathProtection" : {
+          "baseValue" : 1.0
+        },        
+        "wetImmunity" : {
+          "baseValue" : 1.0
         }
       },
 
@@ -228,7 +274,7 @@
         }
       }
     },
-
+    
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
     "capturable" : true,
