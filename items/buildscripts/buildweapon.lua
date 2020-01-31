@@ -200,7 +200,7 @@ function build(directory, config, parameters, level, seed)
     -- FU ADDITIONS 
         parameters.isAmmoBased = configParameter("isAmmoBased")
       if (parameters.ammoLocked == nil) then
-	    if (math.random(0,1) > 0.5) then  -- 50% change for the weapon to be Ammo based or Energy based
+	    if (math.random(0,1) > 0.5) and (config.muzzleOffset)then  -- 50% chance for the weapon to be Ammo based or Energy based
 	      parameters.isAmmoBased = 1
 	      config.tooltipKind = "gun2"
 	      parameters.tooltipKind = "gun2"
