@@ -8,40 +8,76 @@
           "idle" : {
             "frames" : 5,
             "cycle" : 1,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "flames" ],
+              "particleEmittersOn" : [ "gore" ]
+            }
           },
           "hurt" : {
             "frames" : 1,
             "cycle" : 0.1,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/bigfish1.ogg",
+              "persistentSoundStopTime" : 1.0,            
+              "particleEmittersOff" : [ "flames" ],
+              "particleEmittersOn" : [ "gore" ]
+            }
           },          
           "fly" : {
             "frames" : 8,
             "cycle" : 1.2,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {         
+              "particleEmittersOff" : [ "flames" ],
+              "particleEmittersOn" : [ "gore" ]
+            }
           },
           "firewindup" : {
             "frames" : 8,
-            "cycle" : 1.2
+            "cycle" : 1.2,
+            "properties" : {
+              "particleEmittersOff" : [ "gore" ],
+              "particleEmittersOn" : [ "flames" ]
+            }
           },
           "fire" : {
             "frames" : 4,
-            "cycle" : 0.5
+            "cycle" : 0.5,
+            "properties" : {
+              "particleEmittersOff" : [ "gore" ],
+              "particleEmittersOn" : [ "flames" ]
+            }
           },
           "chargewindup" : {
             "frames" : 2,
             "cycle" : 1.2,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/monsters/bigfish1.ogg",
+              "persistentSoundStopTime" : 1.0,                   
+              "particleEmittersOff" : [ "flames" ],
+              "particleEmittersOn" : [ "gore" ]
+            }
           },
           "chargewinddown" : {
             "frames" : 2,
             "cycle" : 1.2,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "flames" ],
+              "particleEmittersOn" : [ "gore" ]
+            }
           },
           "charge" : {
             "frames" : 8,
             "cycle" : 0.6,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "flames" ],
+              "particleEmittersOn" : [ "gore" ]
+            }
           }         
         }
       },
@@ -152,6 +188,33 @@
   //"lights" : {},
 
   "particleEmitters" : {
+    "gore" : {
+      "active" : true,
+      "emissionRate" : 5.0,
+      "offsetRegion" : [-2.5, -2.5, 2.5, 2.5],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [225, 12, 12, 230],
+            "fade" : 2.3,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2.2,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 2,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        }
+      ]
+    },  
     "flames" : {
       "active" : true,
       "emissionRate" : 5.0,

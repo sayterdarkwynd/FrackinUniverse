@@ -11,7 +11,7 @@ armorBonus={
 
 armorEffect={}
 
-setName="fu_chitinsetradien"
+setName="chitinsetradien"
 
 function init()
 	setSEBonusInit(setName)

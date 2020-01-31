@@ -5,13 +5,14 @@ function init()
 end
 
 function update(dt)
-          self.depth = world.oceanLevel(entity.position())
-	  if world.liquidAt(entity.position()) or self.depth > 1 then  --cannot work unless in out of liquid
+
+	  self.depth = world.oceanLevel(entity.position())
+	  if world.liquidAt(entity.position()) or self.depth > 1 then  --cannot work unless in out of liquid and above ground
 	    return 
-	  end  
+	  end  	 
 	  
 	  transferUtil.loadSelfContainer()
-	  storage.waterCount = math.min((storage.waterCount or 0) + dt,3)
+	  storage.waterCount = math.min((storage.waterCount or 0) + dt,1200)
 	  
 	  for i=2,#config.getParameter('wellslots') do
 	    if world.containerItemAt(entity.id(),i-1) and world.containerItemAt(entity.id(),i-1).name ~= config.getParameter('wellslots')[i].name then
@@ -49,8 +50,4 @@ function update(dt)
 	    end
 	    storage.count = (storage.count or 0) + amount
 	  end
-  
-
-  
-
 end

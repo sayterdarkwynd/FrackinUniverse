@@ -253,7 +253,7 @@ function checkMate()
   if not self.eggType then self.eggType = "henegg" end
   
   -- Happier pets breed more often. At 100% food they don't even suffer a food penalty for breeding.
-  if storage.mateTimer <= 0 and self.randChance <= 0 and self.canMate == 1 then 
+  if (storage.mateTimer <= 0) and (self.randChance <= 1) and (self.canMate) then 
     if storage.happiness == 100 then  
 	    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
 	    storage.mateTimer = 20  -- full happiness pets mate sooner

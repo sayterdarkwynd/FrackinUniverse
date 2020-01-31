@@ -3,12 +3,12 @@ function init()
   animator.setParticleEmitterActive("flames", true)
   animator.setParticleEmitterActive("fx", true)
   effect.setParentDirectives("fade=00FF33=0.15")
-  script.setUpdateDelta(5)
+  script.setUpdateDelta(20)
   self.tickDamagePercentage = 0.04
   self.tickTime = 0.2
   self.tickTimer = self.tickTime
   self.currentDebuff = 0.0
-  self.debuffPerSec = -0.25 -- Lose 25% phys resist per second
+  self.debuffPerSec = -0.20 -- Lose 20% phys resist per second
   self.maxDebuff = -status.stat("physicalResistance",0)
 end
 
@@ -21,13 +21,16 @@ function update(dt)
   self.currentDebuff = self.currentDebuff + self.debuffPerSec * dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
+    
     -- Incrementally debuff target's physical resistance. --
     status.setPersistentEffects("aciddust2", { {stat = "physicalResistance", amount = self.currentDebuff } })
+    
     -- Apply damage if target's physical resistance is zero (otherwise, just make the 'hurt' SFX). --
     local dmg = 0.1
     if (self.currentDebuff == self.maxDebuff) then
       dmg = math.floor(status.resourceMax("health") * self.tickDamagePercentage)
     end
+    
     status.applySelfDamageRequest({
       damageType = "IgnoresDef",
       damage = dmg,

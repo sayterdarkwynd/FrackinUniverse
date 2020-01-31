@@ -189,28 +189,39 @@ function build(directory, config, parameters, level, seed)
   config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
   config.tooltipFields.dpsLabel = util.round(baseDps * config.damageLevelMultiplier, 1)
   config.tooltipFields.speedLabel = util.round(1 / fireTime, 1)
-  --config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
-  --config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
-  --
-    local damagePerShot = baseDps * fireTime * config.damageLevelMultiplier
-    local energyPerShot = energyUsage * fireTime
-config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
+
+  local damagePerShot = baseDps * fireTime * config.damageLevelMultiplier
+  local energyPerShot = energyUsage * fireTime
+  
+  config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
   config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
 
-    -- ***ORIGINAL CODE BY ALBERO-ROTA and SAYTER, edited by ROBUR VELVETCLAW of BEELIM SOLUTIONS***
+    -- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***
     -- FU ADDITIONS 
-      if (configParameter("isAmmoBased")) then
+        parameters.isAmmoBased = configParameter("isAmmoBased")
+      if (parameters.ammoLocked == nil) then
+	    if (math.random(0,1) > 0.5) then  -- 50% change for the weapon to be Ammo based or Energy based
+	      parameters.isAmmoBased = 1
+	      config.tooltipKind = "gun2"
+	      parameters.tooltipKind = "gun2"
+	    else
+	      parameters.isAmmoBased = 0
+	    end 
+	    parameters.ammoLocked = 1 --set it to 1 so this step never repeats	    
+      end    
+      if (parameters.isAmmoBased ==1 ) then   -- if its ammo based, we set the relevant data to the tooltip
 	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
 	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
-	  
 	  config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
-	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0     
-	  
-          config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",1), 0)
+	  config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0  
+	  config.tooltipFields.energyPerShotLabel = util.round((energyUsage * fireTime)/2, 1)  -- these weapons have 50% energy cost
+          config.tooltipFields.magazineSizeLabel = util.round(configParameter("magazineSize",1), 0) --
           config.tooltipFields.reloadTimeLabel = util.round(configParameter("reloadTime",1),1)  .. "s"
       else
+	config.magazineSize = 0
+	config.reloadTime = 0       
         config.tooltipFields.magazineSizeLabel = "--"
-        config.tooltipFields.reloadTimeLabel = "--"
+        config.tooltipFields.reloadTimeLabel = "--"        
       end      
       if (configParameter("critChance")) then
         config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)  
@@ -234,9 +245,7 @@ config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config
     	      config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"  
     	      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"     
   --
-  
-
-    	      
+      
   if elementalType ~= "physical" then
     config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
 

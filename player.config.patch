@@ -1,5 +1,10 @@
 [
-{ "op" : "add", "path" : "/defaultCodexes/skath", "value" : [ "protectorate1", "protectorate2", "skathachievement1", "skathbiology1", "skathbiology2", "skathcouncil1", "skathcruiser1", "skathfighting1", "skathfortress1", "skathhonor1", "skathhostile1", "skathlog1", "skathmertah1", "skathmertah2", "skathorders1", "skathoutcast1", "skathsurvivor1", "skathwar1", "skathwar2", "skathwar3", "skathwar4" ] },
+	{
+	    "op": "add",
+	    "path": "/statusControllerSettings/primaryScriptSources/-",
+	    "value": "/stats/player_primary_bars.lua"
+	},
+        { "op" : "add", "path" : "/defaultCodexes/skath", "value" : [ "protectorate1", "protectorate2", "skathachievement1", "skathbiology1", "skathbiology2", "skathcouncil1", "skathcruiser1", "skathfighting1", "skathfortress1", "skathhonor1", "skathhostile1", "skathlog1", "skathmertah1", "skathmertah2", "skathorders1", "skathoutcast1", "skathsurvivor1", "skathwar1", "skathwar2", "skathwar3", "skathwar4" ] },
         { "op": "add", "path": "/species/-", "value" : "thelusian" },
 	{ "op": "add", "path": "/species/-", "value" : "fukirhos" },
 	{ "op": "add", "path": "/species/-", "value" : "radien" },
@@ -16,7 +21,7 @@
 	{ "op" : "add","path" : "/species/-","value" : "veluu" },
 	{ "op" : "add","path" : "/species/-","value" : "fupeglaci" },
 	{ "op" : "add","path" : "/species/-","value" : "skath" },
-	{ "op" : "add","path" : "/species/-","value" : "juux" },
+	{ "op" : "add","path" : "/species/-","value" : "juux" },	
 	{"op" : "add",
 		"path" : "/deploymentConfig/speciesStarterMechBody/skath",
 		"value" : "mechbodyfuorbusproto"
@@ -166,7 +171,16 @@
 		"path": "/statusControllerSettings/primaryScriptSources/-",
 		"value": "/stats/cat_primary.lua"
 	},
-	
+	{
+		"op": "add",
+		"path": "/statusControllerSettings/stats/boostAmount",
+		"value": { "baseValue": 1 }
+	},
+	{
+		"op": "add",
+		"path": "/statusControllerSettings/stats/maxFood",
+		"value": { "baseValue": 70 }
+	},	
 	{
 	"op" : "add",
 	"path" : "/collisionParams",
@@ -429,6 +443,7 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "ironmace"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "bonemace"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stonemace"} },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "stonemace2"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "tungstenmace"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "titaniummace"} },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "durasteelmace"} },
@@ -750,6 +765,10 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fulightwood" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fulightwoodenwindow1" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fulightwoodenwindow2" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fulightwoodbaseboard" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fulightwoodbridge" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fulightwoodshojiscreenpanel" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fulightwoodenplatform" } },
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkcrosshatch" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkfence" } },
@@ -761,6 +780,10 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkwood" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkwoodenwindow1" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkwoodenwindow2" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkwoodbaseboard" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkwoodbridge" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkwoodshojiscreenpanel" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudarkwoodenplatform" } },
 
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastcrosshatch" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastfence" } },
@@ -772,6 +795,10 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastwood" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastwoodenwindow1" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastwoodenwindow2" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastwoodbaseboard" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastwoodbridge" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastwoodshojiscreenpanel" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fudynastwoodenplatform" } },
 	
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "futreatedcrosshatch" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "futreatedfence" } },
@@ -784,6 +811,9 @@
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "furawornatetiles" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "furawornatewall" } },
 	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "furawornatewood" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "furawwoodbaseboard" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "furawwoodshojiscreenpanel" } },
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "furawwoodenplatform" } },
 	
 	
 	//Dyes
@@ -924,6 +954,14 @@
 	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"fuinvisible"}},
 	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"toiletpaperroll"}},
 	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"furustediron"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"veluugoldenpanel"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"veluugoldensloppedpanel"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"veluugoldensolarpanel"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"veluuornatemetalplating"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"veluuornatemetalplating2"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"veluusloppedpanel"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"veluustripedpanel"}},
+	{"op":"add","path":"/defaultBlueprints/tier1/-","value":{"item":"slopedshinygold"}},
 	
 	//Shreddys' Tiles
 	{"op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : { "item" : "furibboncable" }},
