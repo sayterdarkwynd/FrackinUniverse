@@ -49,7 +49,7 @@ function init()
   end
 
   monster.setDeathParticleBurst("deathPoof")
-  monster.setName("The Shoggoth, Formless Horror")
+  monster.setName("Shoggoth, Formless Horror")
   monster.setDamageBar("special")
   monster.setUniqueId(config.getParameter("uniqueId"))
 end
