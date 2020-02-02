@@ -29,6 +29,7 @@ function update(dt)
   self.timerReloadBar = self.timerReloadBar + dt
   if (self.timerReloadBar >=5) then
     self.timerReloadBar = 5
+    world.sendEntityMessage(self.playerId,"removeBar","mageShieldBar")   --clear ammo bar 
   end
   if (self.timerReloadBar == 5) then -- is reload bar timer expired?
     world.sendEntityMessage(self.playerId,"removeBar","mageShieldBar")   --clear ammo bar  
