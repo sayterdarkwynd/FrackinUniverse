@@ -16,7 +16,7 @@ function update(dt)
   
   self.powerModifier = status.resource("energy")/status.stat("maxEnergy")
   effect.addStatModifierGroup({
-      {stat = "powerMultiplier", baseMultiplier = 2 - self.powerModifier}
+      {stat = "powerMultiplier", effectiveMultiplier = 2 - self.powerModifier}
   })  
 
 end
