@@ -7,6 +7,7 @@ local recipes =
 {inputs = { bottle=1,aridcomb=1 }, outputs = { stronghoneyjar=1 }, time = 1.0},
 {inputs = { bottle=1,coppercomb=1 }, outputs = { honeyjar=1 }, time = 1.0},
 {inputs = { bottle=1,durasteelcomb=1 }, outputs = {shellhoneyjar=1 }, time = 1.0},
+{inputs = { bottle=1,exceptionalcomb=1 }, outputs = { honeyjar=1,liquidwastewater=1 }, time = 1.0},
 {inputs = { bottle=1,flowercomb=1 }, outputs = { floralhoneyjar=1 }, time = 1.0},
 {inputs = { bottle=1,forestcomb=1 }, outputs = { greenhoneyjar=1 }, time = 1.0},
 {inputs = { bottle=1,godlycomb=1 }, outputs = { mythicalhoneyjar=1 }, time = 1.0},
