@@ -198,9 +198,12 @@ function build(directory, config, parameters, level, seed)
 
     -- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***
     -- FU ADDITIONS 
-        parameters.isAmmoBased = configParameter("isAmmoBased")
+      parameters.isAmmoBased = configParameter("isAmmoBased")
+      if (config.elementalType == "jumpweapon" )then --if Elithian jumprifle, do not use ammo
+         parameters.isAmmoBased = 0
+      end        
       if (parameters.ammoLocked == nil) then
-	    if (math.random(0,1) > 0.5) and (config.muzzleOffset)then  -- 50% chance for the weapon to be Ammo based or Energy based
+	    if (math.random(0,1) > 0.5) and (config.muzzleOffset) then  -- 50% chance for the weapon to be Ammo based or Energy based
 	      parameters.isAmmoBased = 1
 	      config.tooltipKind = "gun2"
 	      parameters.tooltipKind = "gun2"
