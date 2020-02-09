@@ -6,9 +6,10 @@
   "description" : "A powerful bow.",
   "shortdescription" : "Rare Bow",
   "tooltipKind" : "neb-randombow",
-  "category" : "Bow",
+  "weaponType" : "Bow",
+  "category" : "bow",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","bow"],
+  "itemTags" : ["weapon","ranged","bow","upgradeableWeapon"],
   
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
@@ -96,6 +97,9 @@
     }
   },
 
+  "critChance" : 3,
+  "critBonus" : 15,
+  
   "builder" : "/items/buildscripts/neb-buildrandombow.lua",
   "builderConfig" : [{
     "elementalType" : [
