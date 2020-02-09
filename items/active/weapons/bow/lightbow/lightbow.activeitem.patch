@@ -5,7 +5,28 @@
     "op": "add",
     "path": "/primaryAbility/projectileParameters",
     "value": {
-      "power": 8.5
+      "power": 8.5, 
+    "drawTime" : 0.9,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/builder",
+    "value": "/items/buildscripts/neb-buildbow.lua"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/powerProjectileParameters",
+    "value": {
+      "power": 8.3
     }
   }
 ]

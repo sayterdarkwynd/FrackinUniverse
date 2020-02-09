@@ -33,13 +33,18 @@
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
   "elementalType" : "physical",
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "projectileType" : "cultisarrow",
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.9,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"projectileType" : "cultisarrow",
     "powerProjectileType" : "cultisarrow",
     "projectileParameters" : {
       "power" : 8.65
+    },
+    "powerProjectileParameters" : {
+      "power" : 9
     }
   },
 
@@ -57,5 +62,5 @@
   
   "critChance" : 7,
   "critBonus" : 4, 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }
