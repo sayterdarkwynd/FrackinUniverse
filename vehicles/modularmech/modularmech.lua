@@ -989,30 +989,37 @@ function update(dt)
  
       energyDrain = 0
     end
+
     storage.energy = math.max(0, storage.energy - energyDrain * dt)
-    
-     if self.driverId and world.entityType(self.driverId) == "player" then
-      --set new fuel count on dummy quest
-      world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", storage.energy)
-    end
   end
  
   local inLiquid = world.liquidAt(mcontroller.position())
   if inLiquid then
     local liquidName = root.liquidName(inLiquid[1])
     if self.liquidVulnerabilities[liquidName] then
-      --lower health and explode on liquid hazard
-      storage.health = math.max(0, storage.health - self.liquidVulnerabilities[liquidName].energyDrain * dt)
-      if storage.health == 0 then
-        explode()
-        return
-      end
- 
-      if not self.liquidVulnerabilities[liquidName].warned then
-        world.sendEntityMessage(self.ownerEntityId, "queueRadioMessage", self.liquidVulnerabilities[liquidName].message)
-        self.liquidVulnerabilities[liquidName].warned = true
+      -- check to see if we're actually vulnerable
+      local liquidImmunities = self.parts.body.liquidImmunities or {}
+      if not liquidImmunities[liquidName] then
+        -- apply energy drain / fill
+        storage.energy = math.max(0, storage.energy - ((self.liquidVulnerabilities[liquidName].energyDrain or 0) * dt))
+        storage.energy = math.min(storage.energy, self.energyMax)
+
+        -- apply health drain
+        storage.health = math.max(0, storage.health - ((self.liquidVulnerabilities[liquidName].healthDrain or 0) * dt))
+
+        -- only warn once, only warn when not immune
+        if not self.liquidVulnerabilities[liquidName].warned then
+          world.sendEntityMessage(self.ownerEntityId, "queueRadioMessage", self.liquidVulnerabilities[liquidName].message)
+          self.liquidVulnerabilities[liquidName].warned = true
+        end
       end
     end
+  end
+
+  -- this has to happen after the last time we edit storage.energy
+  if self.driverId and world.entityType(self.driverId) == "player" then
+    --set new fuel count on dummy quest
+    world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", storage.energy)
   end
  
   --explode on 0 health
