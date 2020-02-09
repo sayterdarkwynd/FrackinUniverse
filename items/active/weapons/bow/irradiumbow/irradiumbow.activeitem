@@ -34,14 +34,19 @@
 
   "elementalType" : "radioactive",
   "collectablesOnPickup" : { "fu_weaponbow" : "irradiumbow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "drawFrameSelector" : "poisonBowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.9,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	
     "projectileType" : "irradiumarrow",
     "powerProjectileType" : "chargedirradiumarrow",
     "projectileParameters" : {
       "power" : 8.7
+    },
+    "powerProjectileParameters" : {
+      "power" : 9
     }
   },
 
@@ -58,5 +63,5 @@
   "critChance" : 4,
   "critBonus" : 5,
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

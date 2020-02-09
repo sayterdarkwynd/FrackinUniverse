@@ -900,6 +900,41 @@
 			"groundFriction" : 15.0,
 			"maximumCorrection" : 0.75
 		}
-	}
+	},
+	
+  //======================================================================================================================
+  //	RNG BOW ARROW PHYSICS			BY NEBULOX
+  //======================================================================================================================
+  {"op" : "add",
+	"path" : "/nebsrngarrow",
+	"value" : {
+	  "mass" : 1.0,
+	  "gravityMultiplier" : 0.4,
+	  "bounceFactor" : 0.0,
+	  "stopOnFirstBounce" : true,
+	  "maxMovementPerStep" : 0.4,
+	  "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+	  "ignorePlatformCollision" : true,
+
+	  "airFriction" : 0.0,
+	  "liquidFriction" : 1.75,
+	  "groundFriction" : 15.0
+	}	
+  },
+  {"op" : "add",
+	"path" : "/nebsrngarrowbounce",
+	"value" : {
+	  "mass" : 1.0,
+	  "gravityMultiplier" : 0.5,
+	  "bounceFactor" : 0.9,
+	  "maxMovementPerStep" : 0.2,
+	  "collisionPoly" : [ [-0.25, -0.25], [0.25, -0.25], [0.25, 0.25], [-0.25, 0.25] ],
+	  "ignorePlatformCollision" : true,
+
+	  "airFriction" : 0.15,
+	  "liquidFriction" : 1.75,
+	  "groundFriction" : 15.0
+	}	
+  }
 ]
 
