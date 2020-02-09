@@ -34,30 +34,30 @@
     }
   },
   "ability" : {
-    "name" : "Backpedal II",
-    "type" : "rngbows_backpedal3",
+    "name" : "Combat Flip",
+    "type" : "rngbows_flip",
     "scripts" : ["/items/active/weapons/bow/abilities/rngbows/backpedal/neb-backpedal.lua"],
     "class" : "FlipSlash",
 
-    "cooldownTime" : 0.4,
+    "cooldownTime" : 0.5,
 
     "flipMovementParameters" : {
       "collisionPoly" : [ [-2.0, -1.0], [-1.0, -2.0], [1.0, -2.0], [2.0, -1.0], [2.0, 1.0], [1.0, 2.0], [-1.0, 2.0], [-2.0, 1.0] ]
     },
 
-    "energyUsage" : 40.0,
+    "energyUsage" : 10.0,
     "rotations" : 1,	//Max player rotation factor. From 1.0 (rotate full 360 degrees) to 0.0 (no rotation)
-    "rotationTime" : 0.25,
+    "rotationTime" : 0.35,
 
-    "jumpVelocity" : [-40.5, 15],
-    "jumpDuration" : 0.35,
+    "jumpVelocity" : [33.5, 15],
+    "jumpDuration" : 0.15,
     "flipControlForce" : 0.5,
   
     "stopAfterFlip" : false,
     "slowAfterFlip" : true,
     "slowDownFactor" : 0.75,
     "groundOnly" : false,
-    "cooldownOnGroundOnly" : false,
+    "cooldownOnGroundOnly" : true,
   
     "stances" : {
       "windup" : {

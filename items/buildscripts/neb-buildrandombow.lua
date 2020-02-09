@@ -134,9 +134,9 @@ function build(directory, config, parameters, level, seed)
 		end
 		config.tooltipFields.drawEnergyLabel = util.round(config.primaryAbility.energyPerShot, 2) or 0
 		config.tooltipFields.holdEnergyLabel = util.round(config.primaryAbility.holdEnergyUsage, 2) or 0
-		if elementalType ~= "physical" then
+		--if elementalType ~= "physical" then
 			config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
-		end
+		--end
 		if config.altAbility then
 			config.tooltipFields.altAbilityTitleLabel = "Special:"
 			config.tooltipFields.altAbilityLabel = config.altAbility.name or "unknown"

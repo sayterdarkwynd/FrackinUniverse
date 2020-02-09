@@ -47,16 +47,15 @@
     "cooldownTime" : 0.2,											//Time between firing and drawing the next arrow
     "inaccuracy" : 0.0,												//Inaccuracy of the shot
 	
-		"walkWhileFiring" : true,									//If true, prevents the player from running while drawing the bow
-		"useQuiverDamageBonus" : true,						//If true, allows this bow to use quiver damage bonuses
-	
-		"drainEnergyWhilePowerful" : false,				//If true, consume energy while at max power
-		"staticDamageMultiplier" : null,					//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
-		"dynamicDamageMultiplier" : 1.0,					//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+    "walkWhileFiring" : true,									//If true, prevents the player from running while drawing the bow
+    "useQuiverDamageBonus" : true,						//If true, allows this bow to use quiver damage bonuses	
+    "drainEnergyWhilePowerful" : false,				//If true, consume energy while at max power
+    "staticDamageMultiplier" : null,					//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
+    "dynamicDamageMultiplier" : 1.0,					//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
 
     "drawArmFrames" : ["rotation", "run.2", "swim.2", "swimIdle.1", "swim.1", "swim.1"],
 
-		"projectileCount" : 1,										//Amount of arrows to shoot at once
+    "projectileCount" : 1,										//Amount of arrows to shoot at once
     "projectileParameters" : {
       "knockbackRange" : [2,4],
       "speed" : 85,
@@ -103,12 +102,20 @@
   "builder" : "/items/buildscripts/neb-buildrandombow.lua",
   "builderConfig" : [{
     "elementalType" : [
+      "physical",
       "fire",
       "ice",
       "electric",
-      "poison"
+      "poison",
+      "cosmic",
+      "radioactive",
+      "shadow" 
     ],
     "elementalConfig" : {
+      "physical" : {
+	    "primaryAbility" : { "powerProjectileParameters" : { "statusEffects" : [ ] } },
+        "perfectRelease" : [ "/sfx/gun/firebow_loose_perfect.ogg" ]
+      },    
       "fire" : {
 	    "primaryAbility" : { "powerProjectileParameters" : { "statusEffects" : [ "burning" ] } },
         "perfectRelease" : [ "/sfx/gun/firebow_loose_perfect.ogg" ]
@@ -124,6 +131,18 @@
       "electric" : {
 	    "primaryAbility" : { "powerProjectileParameters" : { "statusEffects" : [ "electrified" ] } },
         "perfectRelease" : [ "/sfx/gun/electricbow_loose_perfect.ogg" ]
+      },
+      "cosmic" : {
+	    "primaryAbility" : { "powerProjectileParameters" : { "statusEffects" : [ "defenseboostneg20" ] } },
+        "perfectRelease" : [ "/sfx/gun/electricbow_loose_perfect.ogg" ]
+      },
+      "shadow" : {
+	    "primaryAbility" : { "powerProjectileParameters" : { "statusEffects" : [ "shadowgasfx2" ] } },
+        "perfectRelease" : [ "/sfx/gun/electricbow_loose_perfect.ogg" ]
+      },
+      "radioactive" : {
+	"primaryAbility" : { "powerProjectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+        "perfectRelease" : [ "/sfx/gun/poisonbow_loose_perfect.ogg" ]
       }
     },
     "nameGenerator" : "bownames.config:nameGen",
@@ -161,7 +180,8 @@
       "rngbows_healarrow",
       "rngbows_energyarrow",
       "rngbows_backpedal2",
-      "rngbows_backpedal3"
+      "rngbows_backpedal3",
+      "rngbows_flip"
     ],
     "palette" : "/items/active/weapons/colors/melee.weaponcolors",
     "iconDrawables" : [ "topLimb", "bottomLimb", "string", "arrow" ]
