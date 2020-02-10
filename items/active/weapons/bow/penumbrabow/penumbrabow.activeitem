@@ -5,7 +5,7 @@
   "inventoryIcon" : "penumbrabowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "weaponType" : "Bow",
   "description" : "Made of penumbrite and rage.",
   "shortdescription" : "Enigma Bow",
@@ -47,10 +47,12 @@
   "collectablesOnPickup" : { "fu_weaponbow" : "penumbrabow" },
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
-    "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+    "drawTime" : 0.921,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.255,	//After fully drawing, the bow is super-charged for this long
 	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	
+	"energyPerShot" : 35,			
+	"holdEnergyUsage" : 7,				
+	"airborneBonus" : 1.243, 	
     "projectileType" : "penumbraarrow",
     "powerProjectileType" : "penumbralwave",
     "projectileParameters" : {

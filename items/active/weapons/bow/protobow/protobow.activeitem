@@ -5,7 +5,7 @@
   "inventoryIcon" : "protobowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "weaponType" : "Bow",
   "description" : "Made of protocite and other high quality materials. Awesome.",
   "shortdescription" : "Protocite Bow",
@@ -36,17 +36,19 @@
   "collectablesOnPickup" : { "fu_weaponbow" : "protobow" },
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
-    "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	
+    "drawTime" : 0.75,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.322,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.05,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 65,			
+	"holdEnergyUsage" : 12,				
+	"airborneBonus" : 1.21, 	
     "projectileType" : "lesserprotoarrow",
     "powerProjectileType" : "protoarrow",
     "projectileParameters" : {
-      "power" : 7
+      "power" : 6
     },
     "powerProjectileParameters" : {
-      "power" : 8.65
+      "power" : 7.65
     }
   },
 
@@ -58,13 +60,13 @@
     "projectileCount" : 3,
     "projectileType" : "protoarrow",
     "projectileParameters" : {
-      "power" : 8.325
+      "power" : 6.325
     },
     "splitDelay" : 0.2,
     "splitAngle" : 2
   },
 
-  "critChance" : 8,
-  "critBonus" : 4, 
+  "critChance" : 4,
+  "critBonus" : 15, 
   "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

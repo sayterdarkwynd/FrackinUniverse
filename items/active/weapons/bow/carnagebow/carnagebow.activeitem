@@ -5,7 +5,7 @@
   "inventoryIcon" : "carnagebowicon.png",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "category" : "bow",
   "description" : "Fires homing arrows",
   "shortdescription" : "Carnage Bow",
@@ -36,16 +36,19 @@
   
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
-    "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	"projectileType" : "carnagearrow",
+    "drawTime" : 1.2,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.165,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows		
+	"energyPerShot" : 65,			
+	"holdEnergyUsage" : 10,				
+	"airborneBonus" : 1.15,    
+    "projectileType" : "carnagearrow",
     "powerProjectileType" : "carnagearrow",
     "projectileParameters" : {
-      "power" : 6.5
+      "power" : 6.67
     },
     "powerProjectileParameters" : {
-      "power" : 8.65
+      "power" : 9.2
     }
   },
 
@@ -60,7 +63,7 @@
     }
   },
 
-  "critChance" : 3,
+  "critChance" : 5,
   "critBonus" : 3,
   "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

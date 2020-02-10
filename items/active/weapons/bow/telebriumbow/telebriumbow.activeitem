@@ -5,7 +5,7 @@
   "inventoryIcon" : "telebriumbowicon.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "tooltipKind" : "bow",
+  "tooltipKind" : "neb-randombow",
   "weaponType" : "Bow",
   "description" : "Poison-tipped arrows.
 ^cyan;Triple-Arrow Rain",
@@ -48,23 +48,25 @@
   "elementalType" : "poison",
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
-    "drawTime" : 0.9,				//Time to fully draw the bow
+    "drawTime" : 0.86,				//Time to fully draw the bow
 	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
 	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	
+	"energyPerShot" : 30,			
+	"holdEnergyUsage" : 4,				
+	"airborneBonus" : 1.10, 	
     "projectileType" : "telebriumarrow",
     "powerProjectileType" : "telebriumchargedarrow",
     "projectileParameters" : {
       "power" : 6.8
     },
     "powerProjectileParameters" : {
-      "power" : 8.65
+      "power" : 7.85
     }
   },
 
   "altAbilityType" : "zenshot",
 
   "critChance" : 3,
-  "critBonus" : 3,
+  "critBonus" : 20,
   "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

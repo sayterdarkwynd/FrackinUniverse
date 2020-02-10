@@ -4,7 +4,7 @@
   "inventoryIcon" : "irradiumbowicon.png",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "category" : "bow",
   "description" : "Radioactive Hunting",
   "shortdescription" : "Irradium Bow",
@@ -37,9 +37,11 @@
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
     "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"powerProjectileTime" : 0.31,	//After fully drawing, the bow is super-charged for this long
 	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	
+	"energyPerShot" : 67,			
+	"holdEnergyUsage" : 15,				
+	"airborneBonus" : 1.20, 	
     "projectileType" : "irradiumarrow",
     "powerProjectileType" : "chargedirradiumarrow",
     "projectileParameters" : {
@@ -61,7 +63,7 @@
   },
 
   "critChance" : 4,
-  "critBonus" : 5,
+  "critBonus" : 9,
 
   "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

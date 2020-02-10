@@ -4,7 +4,7 @@
   "inventoryIcon" : "yorunoyumiicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "category" : "bow",
   "description" : "Pulsing with cosmic energy",
   "shortdescription" : "Prismatic Bow",
@@ -43,12 +43,12 @@
   "collectablesOnPickup" : { "fu_weaponbow" : "prismaticbow" },
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
-    "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+    "drawTime" : 0.89,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.250,	//After fully drawing, the bow is super-charged for this long
 	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
 	
-    "projectileType" : "energyarrow",
-    "powerProjectileType" : "chargedenergyarrow",
+    "projectileType" : "green_energyarrow",
+    "powerProjectileType" : "green_hargedenergyarrow",
     "projectileParameters" : {
       "power" : 6.5
     },
@@ -59,14 +59,14 @@
 
   "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : { 
-    "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+    "drawTime" : 1.4,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.425,	//After fully drawing, the bow is super-charged for this long
 	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
 	
     "name" : "Chaos Arrow",
     "energyPerShot" : 100,
-    "projectileType" : "energyarrow",
-    "powerProjectileType" : "energyarrow",
+    "projectileType" : "green_energyarrow",
+    "powerProjectileType" : "green_chargedenergyarrow",
     "projectileParameters" : {
       "power" : 8,
       "speed" : 100,

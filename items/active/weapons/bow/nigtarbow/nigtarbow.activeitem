@@ -4,7 +4,7 @@
   "inventoryIcon" : "nigtarbowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "category" : "bow",
   "description" : "Harvests meat and other goods from monsters.",
   "shortdescription" : "Frostmoon Bow",
@@ -37,9 +37,11 @@
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
     "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	
+	"powerProjectileTime" : 0.305,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 20,			
+	"holdEnergyUsage" : 10,				
+	"airborneBonus" : 1.33, 
     "projectileType" : "icearrow",
     "powerProjectileType" : "chargedicearrow",
     "projectileParameters" : {

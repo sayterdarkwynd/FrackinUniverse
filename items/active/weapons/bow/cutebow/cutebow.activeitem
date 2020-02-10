@@ -5,7 +5,7 @@
   "inventoryIcon" : "cutebowicon.png",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "tooltipKind" : "bow",
+  "tooltipKind" : "neb-randombow",
   "category" : "bow",
   "description" : "This bow will break your foes hearts
 ^yellow;Counts as 'energy' for set bonuses^reset;",
@@ -42,9 +42,12 @@
 
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
-    "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+    "drawTime" : 1.0,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.242,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.05,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 32,			
+	"holdEnergyUsage" : 8,				
+	"airborneBonus" : 1.32, 	
 	"projectileType" : "cutearrow",
     "powerProjectileType" : "chargedcutearrow",
     "projectileParameters" : {

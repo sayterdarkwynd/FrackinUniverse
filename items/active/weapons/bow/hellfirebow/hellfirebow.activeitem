@@ -5,7 +5,7 @@
   "inventoryIcon" : "hellfirebowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "weaponType" : "Bow",
   "description" : "Burn your hunt targets to cinders. Counterproductive, but fun.",
   "shortdescription" : "Hellfire Bow",
@@ -47,14 +47,16 @@
   "collectablesOnPickup" : { "fu_weaponbow" : "hellfirebow" },
   "primaryAbilityType" : "rngbows_enhancedbowshot",
   "primaryAbility" : { 
-    "drawTime" : 0.9,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+    "drawTime" : 0.75,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.30,	//After fully drawing, the bow is super-charged for this long
 	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	
+	"energyPerShot" : 55,			
+	"holdEnergyUsage" : 12,				
+	"airborneBonus" : 1.12, 	
     "projectileType" : "flamearrow",
     "powerProjectileType" : "hellfirearrow",
     "projectileParameters" : {
-      "power" : 8.25
+      "power" : 6.25
     },
     "powerProjectileParameters" : {
       "power" : 8.65
@@ -70,7 +72,7 @@
     }
   },
 
-  "critChance" : 7,
-  "critBonus" : 6, 
+  "critChance" : 2,
+  "critBonus" : 12, 
   "builder" : "/items/buildscripts/neb-buildbow.lua"
 }
