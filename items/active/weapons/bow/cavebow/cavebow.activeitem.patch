@@ -6,11 +6,13 @@
     "op": "add",
     "path": "/primaryAbility/projectileParameters",
     "value": {
-      "power": 9.25, 
-       "drawTime" : 1.2,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.200,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.0	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	
+      "power": 9.25 ,
+      "dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+      "drawTime" : 0.9,				//Time to fully draw the bow
+      "powerProjectileTime" : 0.225,		//After fully drawing, the bow is super-charged for this long
+      "energyPerShot" : 30,				//Total energy consumption for a full draw
+      "holdEnergyUsage" : 5,			//Energy consumption per second while fully drawn
+      "airborneBonus" : 1.15				//A dmg multiplier for when airborne
     }
   },
   {
@@ -22,5 +24,12 @@
     "op": "replace",
     "path": "/builder",
     "value": "/items/buildscripts/neb-buildbow.lua"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/powerProjectileParameters",
+    "value": {
+      "power": 10
+    }
   }
 ]
