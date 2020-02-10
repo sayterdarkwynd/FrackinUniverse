@@ -7,6 +7,10 @@ NebBowShot = WeaponAbility:new()
 function NebBowShot:init()
   self.energyPerShot = self.energyPerShot or 0
   self.drawTimer = 0
+  
+  self.bonusSpeed = status.stat("bowDrawTimeBonus",0)
+  self.drawTime = self.drawTime - self.bonusSpeed
+  
   animator.setGlobalTag("drawFrame", "0")
   animator.setAnimationState("bow", "idle")
   self.cooldownTimer = 0
@@ -66,7 +70,7 @@ function NebBowShot:draw()
 			mcontroller.controlModifiers({runningSuppressed = true})
 		end
 
-		self.drawTimer = (self.drawTimer - status.stat("bowDrawTime")) + self.dt
+		self.drawTimer = self.drawTimer + self.dt
 
 		local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer / self.drawTime * (#self.drawArmFrames - 1)))
 		
@@ -175,7 +179,7 @@ function NebBowShot:currentProjectileParameters()
   projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer / self.drawTime)) * speedMultiplier
   
   --Bonus damage calculation for quiver users
-  local damageBonus = 1.0
+  local damageBonus = 1.0 + status.stat("bowDrawTimeBonus",0) --adds the bow draw bonus back to damage to keep it on par, otherwise we lose damage
   if self.useQuiverDamageBonus == true and status.statPositive("nebsrngbowdamagebonus") then
 		damageBonus = status.stat("nebsrngbowdamagebonus")
   end
