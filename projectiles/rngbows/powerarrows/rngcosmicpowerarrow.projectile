@@ -2,7 +2,7 @@
   "projectileName" : "rngcosmicpowerarrow",
   "physics" : "nebsrngarrow",
   "bounces" : 0,
-  "image" : "rngphysicalpowerarrow.png",
+  "image" : "rngcosmicpowerarrow.png",
   "animationCycle" : 0.5,
   "frameNumber" : 4,
   "emitters" : [ ],
@@ -14,9 +14,15 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+      "file" : "/projectiles/explosions/elementimpact/cosmicimpact.config"
     }
   ],
-  "damageKind" : "bow",
-  "hydrophobic" : false
+  "damageKind" : "cosmicbow",
+  "hydrophobic" : false,  
+  
+  //SCRIPT CONFIG
+  "scripts" : [ "/projectiles/rngbows/electricarcing.lua" ],
+  "tickTime" : 0.15,
+  "boltSpeed" : 100,
+  "jumpDistance" : 15
 }
