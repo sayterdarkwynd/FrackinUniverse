@@ -38,12 +38,12 @@
 			  },
 			  "charging" : {
 				"properties" : {
-				  "image" : "/items/active/weapons/bow/abilities/rngbows/energyarrow/energyarrowcharge.png:<frame>"
+				  "image" : "/items/active/weapons/bow/abilities/rngbows/blastarrow/blastarrowcharge.png:<frame>"
 				}
 			  },
 			  "charged" : {
 				"properties" : {
-				  "image" : "/items/active/weapons/bow/abilities/rngbows/energyarrow/energyarrowcharge.png:charged.<frame>"
+				  "image" : "/items/active/weapons/bow/abilities/rngbows/blastarrow/blastarrowcharge.png:charged.<frame>"
 				}
 			  }
 			}
@@ -67,9 +67,9 @@
   },
   
   "ability" : {
-    "type" : "rngbows_energyarrow",
+    "type" : "rngbows_blastarrow",
     "class" : "NebRNGBowShot",
-    "name" : "Energy Arrow",
+    "name" : "Blast Arrow",
     "scripts" : ["/items/active/weapons/bow/abilities/rngbows/rngbowshot.lua"],	
     "fireOffset" : [0.75, 0],
     //Config for animated cursor
@@ -101,15 +101,15 @@
     "drawArmFrames" : ["rotation", "run.2", "swim.2", "swimIdle.1", "swim.1", "swim.1"],
 
     "projectileCount" : 1,										//Amount of arrows to shoot at once
-    "projectileType" : "fuenergyArrow",
+    "projectileType" : "blastArrow",
     "projectileParameters" : {
-      "knockbackRange" : [2,4],
+      "knockbackRange" : [12,14],
       "speed" : 85,
       "power" : 10
     },
-    "powerProjectileType" : "fuenergyArrow",
+    "powerProjectileType" : "blastArrow",
     "powerProjectileParameters" : {
-      "knockbackRange" : [2,4],
+      "knockbackRange" : [22,32],
       "speed" : 100,
       "power" : 11.5
     },

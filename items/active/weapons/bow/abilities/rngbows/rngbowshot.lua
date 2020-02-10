@@ -57,9 +57,10 @@ function NebRNGBowShot:reset()
 end
 
 function NebRNGBowShot:draw()
+  self.energyBonus = status.stat("bowEnergyBonus") or 0
   self.weapon:setStance(self.stances.draw)
 
-	animator.setSoundPitch("draw", 1, self.drawTime)
+  animator.setSoundPitch("draw", 1, self.drawTime)
   animator.playSound("draw", -1)
   local readySoundPlayed = false
 
@@ -68,13 +69,13 @@ function NebRNGBowShot:draw()
 			mcontroller.controlModifiers({runningSuppressed = true})
 		end
 
-		self.drawTimer = self.drawTimer + self.dt
+		self.drawTimer = (self.drawTimer - status.stat("bowDrawTime")) + self.dt
 
 		local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer / self.drawTime * (#self.drawArmFrames - 1)))
 		
 		--If not yet fully drawn, drain energy quickly
 		if self.drawTimer < self.drawTime then
-			status.overConsumeResource("energy", self.energyPerShot / self.drawTime * self.dt)
+			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus) / self.drawTime * self.dt)
 		
 		--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
 		elseif self.drawTimer > self.drawTime and self.drawTimer <= (self.drawTime + (self.powerProjectileTime or 0)) then
@@ -235,7 +236,7 @@ function NebRNGBowShot:currentProjectileParameters()
 		* drawTimeMultiplier
 		* (self.dynamicDamageMultiplier or 1)
 		* damageBonus
-		* (mcontroller.onGround() and 1 or self.airborneBonus)
+		* (mcontroller.onGround() and 1 or (self.airborneBonus + status.stat("bowAirBonus")))
 		/ (self.projectileCount or 1)
   projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
 

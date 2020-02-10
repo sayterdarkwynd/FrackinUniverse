@@ -6,7 +6,6 @@ NebBowShot = WeaponAbility:new()
 
 function NebBowShot:init()
   self.energyPerShot = self.energyPerShot or 0
-
   self.drawTimer = 0
   animator.setGlobalTag("drawFrame", "0")
   animator.setAnimationState("bow", "idle")
@@ -54,6 +53,8 @@ function NebBowShot:reset()
 end
 
 function NebBowShot:draw()
+  self.energyBonus = status.stat("bowEnergyBonus") or 0
+  
   self.weapon:setStance(self.stances.draw)
 
   animator.setSoundPitch("draw", 1, self.drawTime)
@@ -65,13 +66,13 @@ function NebBowShot:draw()
 			mcontroller.controlModifiers({runningSuppressed = true})
 		end
 
-		self.drawTimer = self.drawTimer + self.dt
+		self.drawTimer = (self.drawTimer - status.stat("bowDrawTime")) + self.dt
 
 		local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer / self.drawTime * (#self.drawArmFrames - 1)))
 		
 		--If not yet fully drawn, drain energy quickly
 		if self.drawTimer < self.drawTime then
-			status.overConsumeResource("energy", self.energyPerShot / self.drawTime * self.dt)
+			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus) / self.drawTime * self.dt)
 		
 		--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
 		elseif self.drawTimer > self.drawTime and self.drawTimer <= (self.drawTime + (self.powerProjectileTime or 0)) then
