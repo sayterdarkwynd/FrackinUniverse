@@ -25,18 +25,20 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [0.02, 0.1],
-    "baseDps" : [6.5, 6.65],
-    "energyUsage" : [18, 19.5],
+    "fireTime" : [0.25, 0.6],
+    "baseDps" : [3, 4.3],
+    "energyUsage" : [24, 32],
     "inaccuracy" : 0.00,
 
-    "burstTime" : [0.0025, 0.005],
-    "burstCount" : [10, 20],
-    "fireType" : "burst",
+    "fireType" : "auto",
 
     "projectileType" : "standardbullet",
     "projectileParameters" : {
-      "knockbackRange" : [0.1,0.2]
+      "knockbackRange" : [0.1,0.2],
+      "fullbright" : true,
+      "timeToLive" : 1,
+      "speed" : 60,
+      "periodicActions" : [{"time" : 0.006,"loop" : true,"action" : "projectile","type" : "standardbullet","inheritDamageFactor" :0.1,"fuzzAngle" : 0,"projectileParameters" : { "speed" : 0, "damageSourceKind" : "default" }}]
     },
 
     "stances" : {
@@ -99,7 +101,7 @@
   "critChance": 1,
   "critBonus" : 2,
   
-  "magazineSize" : [4,12],
+  "magazineSize" : [5,9],
   "reloadTime" : [0.5,1.5],
   "isAmmoBased" : 1
 }
