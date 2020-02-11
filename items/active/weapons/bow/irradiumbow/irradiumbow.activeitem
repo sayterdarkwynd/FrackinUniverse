@@ -52,13 +52,15 @@
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "drawTime" : 1.5,				//Time to fully draw the bow
+    "powerProjectileTime" : 0.325,	//After fully drawing, the bow is super-charged for this long
+    "name" : "Debilitator",
     "projectileType" : "irradiumarrow",
+    "powerProjectileType" : "farsightshotbow",
     "projectileParameters" : {
-      "power" : 8.125
+      "power" : 9
     }
   },
 

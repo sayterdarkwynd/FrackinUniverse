@@ -18,12 +18,15 @@
   "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
     "bow" : "hellfirebowfull.png",
-    "bowfullbright" : "hellfirebowfullfullbright.png"
+    "bowFullbright" : "hellfirebowfullfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "bow" : { "properties" : {
-      "offset" : [0.25, 0]
-    }}}},
+    "animatedParts" : { 
+      "parts" : {
+        "bow" : { "properties" : {"offset" : [0.25, 0]}},
+        "bowFullbright" : { "properties" : { "offset" : [0.25, 0]}}
+      }
+    },
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
       "release" : [ "/sfx/projectiles/fireball_spit.ogg" ],
@@ -65,6 +68,9 @@
 
   "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
+    "drawTime" : 1.35,				//Time to fully draw the bow
+    "powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long  
+    "name" : "Burning Death",
     "projectileType" : "flamearrow",
     "powerProjectileType" : "dragonprojectile2",
     "projectileParameters" : {

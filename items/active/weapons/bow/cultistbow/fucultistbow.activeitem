@@ -51,16 +51,20 @@
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "tripleshot",
   "altAbility" : {
+    "name" : "Shadow Bulbs",
     "fireOffset" : [1.75, 0.125],
-    "projectileType" : "cultisarrow",
+    "drawSpeedMultiplier" : "constant",
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "shadowtravelingswoosh",
     "projectileParameters" : {
-      "power" : 8.125,
-      "actionOnReap" : []
+      "emitters" : [ "shadowsmoke"],
+      "power" : 6.0
     },
-    "splitDelay" : 0.2,
-    "splitAngle" : 2
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
   },
   
   "critChance" : 7,

@@ -52,17 +52,19 @@
     }
   },
 
-  "altAbilityType" : "bowshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "drawTime" : 2,
+    "powerProjectileTime" : 0.5,	//After fully drawing, the bow is super-charged for this long
+    "energyPerShot" : 100,
+    "name" : "Power Arrow",
     "projectileType" : "carnagearrow",
+    "powerProjectileType" : "carnagearrow",
     "projectileParameters" : {
       "power" : 10
     }
   },
-
+  
   "critChance" : 5,
   "critBonus" : 3,
   "builder" : "/items/buildscripts/neb-buildbow.lua"

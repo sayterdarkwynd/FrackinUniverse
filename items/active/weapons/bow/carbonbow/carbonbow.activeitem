@@ -49,24 +49,25 @@
       "power" : 8.65
     },
     "powerProjectileParameters" : {
-      "power" : 9
+      "power" : 9.23
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "tripleshot",
   "altAbility" : {
     "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
+    "drawSpeedMultiplier" : "constant",
+    "drawFrameSelector" : "bowImageSelectorNoPower",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "poisonarrow",
+    "projectileType" : "ironarrow",
     "projectileParameters" : {
-      "power" : 8.125
+      "power" : 7.0
     },
-    "splitDelay" : 0.2,
-    "splitAngle" : 2
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
   },
   
-  "critChance" : 3,
-  "critBonus" : 15, 
+  "critChance" : 4,
+  "critBonus" : 13, 
   "builder" : "/items/buildscripts/neb-buildbow.lua"
 }
