@@ -2,6 +2,7 @@
 {"op": "replace","path": "/tooltipKind","value": "bow2"},
 {"op": "add","path": "/critChance","value": 6},
 {"op": "add","path": "/critBonus","value": 4},
+{"op": "add","path": "/elementalType","value": "physical"},
   {
     "op": "add",
     "path": "/primaryAbility",
@@ -27,8 +28,32 @@
     "value": "rngbows_enhancedbowshot"
   },
   {
+    "op": "add",
+    "path": "/primaryAbility/powerProjectileParameters",
+    "value": {
+      "power": 10
+    }
+  },   
+  {
     "op": "replace",
     "path": "/builder",
     "value": "/items/buildscripts/neb-buildbow.lua"
-  }
+  },
+  {
+    "op": "replace",
+    "path": "/altAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/altAbility",
+    "value": {
+      "name" : "Heal Arrow",
+      "projectileType": "healArrow",
+      "powerProjectileType": "healArrow",
+      "projectileParameters": {
+        "power": 10
+      }
+    }
+  } 
 ]
