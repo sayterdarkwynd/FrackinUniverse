@@ -4,6 +4,18 @@
 {"op": "add","path": "/critBonus","value": 4},
   {
     "op": "add",
+    "path": "/primaryAbility",
+    "value": {
+      "dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+      "drawTime" : 1.0,				//Time to fully draw the bow
+      "powerProjectileTime" : 0.20,		//After fully drawing, the bow is super-charged for this long
+      "energyPerShot" : 27,				//Total energy consumption for a full draw
+      "holdEnergyUsage" : 9,			//Energy consumption per second while fully drawn
+      "airborneBonus" : 1.25				//A dmg multiplier for when airborne
+    }
+  },
+  {
+    "op": "add",
     "path": "/primaryAbility/projectileParameters",
     "value": {
       "power": 8.25
