@@ -59,8 +59,8 @@ function GunFireFixed:init()
   end
   
   self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
-  self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
-  self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
+  self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
+  self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
 
 function GunFireFixed:update(dt, fireMode, shiftHeld)

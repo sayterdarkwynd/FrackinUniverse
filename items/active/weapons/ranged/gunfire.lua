@@ -46,8 +46,8 @@ function GunFire:init()
   
 
   self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
-  self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
-  self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
+  self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
+  self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
   
 end
 
@@ -108,8 +108,8 @@ function GunFire:auto()
     self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?	
     self:checkMagazine()--ammo system magazine check
     -- recoil
-    self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
-    self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire    
+    self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
+    self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire    
 	  
   self.weapon:setStance(self.stances.fire)
 
@@ -141,8 +141,8 @@ function GunFire:burst()
     self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?	
     self:checkMagazine()--ammo system magazine check	
     -- recoil stats reset every time we shoot so that it is consistent
-    self.recoilSpeed = (config.getParameter("recoilSpeed",200))
-    self.recoilForce = (config.getParameter("recoilForce",100)) 
+    self.recoilSpeed = (config.getParameter("recoilSpeed",0))
+    self.recoilForce = (config.getParameter("recoilForce",0)) 
     
   self.weapon:setStance(self.stances.fire)
 
