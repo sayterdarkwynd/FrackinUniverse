@@ -5,7 +5,7 @@
   "inventoryIcon" : "cutebowicon.png",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "tooltipKind" : "bow",
+  "tooltipKind" : "neb-randombow",
   "category" : "bow",
   "description" : "This bow will break your foes hearts
 ^yellow;Counts as 'energy' for set bonuses^reset;",
@@ -20,13 +20,13 @@
   "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
     "bow" : "cutebow.png",
-    "bowfullbright" : "cutebowfullbright.png"
+    "bowFullbright" : "cutebowfullbright.png"
   },
   "animationCustom" : {
     "animatedParts" : { 
     	"parts" : { 
     		"bow" : {"properties" : {"offset" : [0.26, 0] } },
-    		"bowfullbright" : {"properties" : {"offset" : [0.26, 0] } }
+    		"bowFullbright" : {"properties" : {"offset" : [0.26, 0] } }
     	}
     },
     "sounds" : {
@@ -40,16 +40,22 @@
 
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "cutearrow",
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 1.0,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.242,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.05,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 32,			
+	"holdEnergyUsage" : 8,				
+	"airborneBonus" : 1.32, 	
+	"projectileType" : "cutearrow",
     "powerProjectileType" : "chargedcutearrow",
     "projectileParameters" : {
       "emitters" : [ "arrowcute"],
       "power" : 8.24
+    },
+    "powerProjectileParameters" : {
+      "power" : 9
     }
   },
 
@@ -71,5 +77,5 @@
   "critChance" : 5,
   "critBonus" : 3,
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

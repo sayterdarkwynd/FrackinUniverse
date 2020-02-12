@@ -5,7 +5,7 @@
   "inventoryIcon" : "lunaribowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "weaponType" : "Bow",
   "description" : "Crystalline bow for hunting extra dangerous game.",
   "shortdescription" : "Lunari Bow",
@@ -34,15 +34,21 @@
 
   "elementalType" : "cosmic",
   "collectablesOnPickup" : { "fu_weaponbow" : "lunaribow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.8,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.40,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 25,			
+	"holdEnergyUsage" : 4,					
+	"airborneBonus" : 1.35,	
     "projectileType" : "lunariarrow",
     "powerProjectileType" : "chargedlunariarrow",
     "projectileParameters" : {
       "power" : 6.8
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.65
     }
   },
 
@@ -60,5 +66,6 @@
   },
   "critChance" : 5,
   "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildbow.lua"
+
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

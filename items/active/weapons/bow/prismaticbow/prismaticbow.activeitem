@@ -4,7 +4,7 @@
   "inventoryIcon" : "yorunoyumiicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "category" : "bow",
   "description" : "Pulsing with cosmic energy",
   "shortdescription" : "Prismatic Bow",
@@ -41,23 +41,32 @@
   "critChance" : 3,
   "critBonus" : 9,
   "collectablesOnPickup" : { "fu_weaponbow" : "prismaticbow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "drawSpeedMultiplier" : "constant",
-    "projectileType" : "energyarrow",
-    "powerProjectileType" : "chargedenergyarrow",
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.89,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.250,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	
+    "projectileType" : "green_energyarrow",
+    "powerProjectileType" : "green_hargedenergyarrow",
     "projectileParameters" : {
-      "power" : 6.5
+      "power" : 7.5
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.65
     }
   },
 
-  "altAbilityType" : "bowshot",
-  "altAbility" : {
+  "altAbilityType" : "rngbows_enhancedbowshot",
+  "altAbility" : { 
+    "drawTime" : 1.4,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.425,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	
     "name" : "Chaos Arrow",
     "energyPerShot" : 100,
-    "drawSpeedMultiplier" : "constant",
-    "projectileType" : "energyarrow",
-    "powerProjectileType" : "energyarrow",
+    "projectileType" : "green_energyarrow",
+    "powerProjectileType" : "green_chargedenergyarrow",
     "projectileParameters" : {
       "power" : 8,
       "speed" : 100,
@@ -101,5 +110,5 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

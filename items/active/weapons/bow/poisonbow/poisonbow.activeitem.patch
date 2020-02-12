@@ -1,11 +1,61 @@
 [
+{"op": "replace","path": "/tooltipKind","value": "bow2"},
 {"op": "add","path": "/critChance","value": 5},
 {"op": "add","path": "/critBonus","value": 4},
+{"op": "add","path": "/elementalType","value": "poison"},
+  {
+    "op": "add",
+    "path": "/primaryAbility",
+    "value": {
+      "dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+      "drawTime" : 1.0,				//Time to fully draw the bow
+      "powerProjectileTime" : 0.210,		//After fully drawing, the bow is super-charged for this long
+      "energyPerShot" : 45,				//Total energy consumption for a full draw
+      "holdEnergyUsage" : 16,			//Energy consumption per second while fully drawn
+      "airborneBonus" : 1.35,				//A dmg multiplier for when airborne
+      "projectileType": "poisonarrow",
+      "powerProjectileType": "rngpoisonpowerarrow"      
+    }
+  },
   {
     "op": "add",
     "path": "/primaryAbility/projectileParameters",
     "value": {
-      "power": 8.7
+      "power": 7	
+      }
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/builder",
+    "value": "/items/buildscripts/neb-buildbow.lua"
+  },
+  {
+    "op": "add",
+    "path": "/primaryAbility/powerProjectileParameters",
+    "value": {
+      "power": 9
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/altAbilityType",
+    "value": "rngbows_enhancedbowshot"
+  },
+  {
+    "op": "replace",
+    "path": "/altAbility",
+    "value": {
+      "name" : "Putrefaction",
+      "projectileType": "bioblast3",
+      "powerProjectileType": "bioblast3",
+      "projectileParameters": {
+        "power": 12
+      }
     }
   }
 ]

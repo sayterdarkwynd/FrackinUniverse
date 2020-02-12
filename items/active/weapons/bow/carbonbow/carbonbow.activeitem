@@ -5,7 +5,7 @@
   "inventoryIcon" : "carbonbowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "weaponType" : "Bow",
   "description" : "A carbon hunting bow, monsters killed with a bow drop tasty meat.",
   "shortdescription" : "Carbon Hunting Bow",
@@ -34,32 +34,40 @@
 
   "elementalType" : "physical",
   "collectablesOnPickup" : { "fu_weaponbow" : "carbonbow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+  
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {    
+    "drawTime" : 1.0,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.215,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows	
+	"energyPerShot" : 42,			
+	"holdEnergyUsage" : 4,				
+	"airborneBonus" : 1.45,	
     "projectileType" : "ironarrow",
     "powerProjectileType" : "chargedironarrow",
     "projectileParameters" : {
       "power" : 8.65
+    },
+    "powerProjectileParameters" : {
+      "power" : 9.23
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "tripleshot",
   "altAbility" : {
     "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
+    "drawSpeedMultiplier" : "constant",
+    "drawFrameSelector" : "bowImageSelectorNoPower",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "poisonarrow",
+    "projectileType" : "ironarrow",
     "projectileParameters" : {
-      "power" : 8.125
+      "power" : 7.0
     },
-    "splitDelay" : 0.2,
-    "splitAngle" : 2
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
   },
   
-  "critChance" : 7,
-  "critBonus" : 4, 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "critChance" : 4,
+  "critBonus" : 13, 
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

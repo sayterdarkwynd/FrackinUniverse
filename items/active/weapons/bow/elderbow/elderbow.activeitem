@@ -5,7 +5,7 @@
   "inventoryIcon" : "elderbowicon.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "tooltipKind" : "bowelder",
+  "tooltipKind" : "bowelder2",
   "weaponType" : "Bow",
   "description" : "Ripe with malice.
 ^cyan;Alt-Fire redirects arrow",
@@ -19,7 +19,7 @@
   "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
     "bow" : "elderbow.png",
-    "bowfullbright" : "elderbowfullbright.png"
+    "bowFullbright" : "elderbowfullbright.png"
   },
   "animationCustom" : {
     "animatedParts" : { 
@@ -29,7 +29,7 @@
           "offset" : [-0.1, 0]
           }
         },
-     "bowfullbright" : { 
+     "bowFullbright" : { 
        "properties" : {
           "offset" : [-0.1, 0]
           }
@@ -47,21 +47,25 @@
 
   "elementalType" : "shadow",
   "collectablesOnPickup" : { "fu_weaponbow" : "elderbow" },
-  "primaryAbilityType" : "elderbowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "bowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "elderarrow",
+  
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.93,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.4,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.25,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"projectileType" : "elderarrow",
     "powerProjectileType" : "chargedelderarrow",
     "projectileParameters" : {
       "power" : 6.8
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.65
     }
   },
 
   "altAbilityType" : "elderreaim",
 
   "critChance" : 8,
-  "critBonus" : 8,
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "critBonus" : 25,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

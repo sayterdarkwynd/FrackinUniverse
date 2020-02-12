@@ -5,7 +5,7 @@
   "inventoryIcon" : "fucultistbowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "weaponType" : "Bow",
   "description" : "Because who doesn't want a bow that can aim with its own eye?",
   "shortdescription" : "Cultist Bow",
@@ -33,29 +33,41 @@
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
   "elementalType" : "physical",
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 1.2,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.425,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 45,			
+	"holdEnergyUsage" : 6,				
+	"airborneBonus" : 1.22,       
     "projectileType" : "cultisarrow",
     "powerProjectileType" : "cultisarrow",
     "projectileParameters" : {
       "power" : 8.65
+    },
+    "powerProjectileParameters" : {
+      "power" : 9
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "tripleshot",
   "altAbility" : {
+    "name" : "Shadow Wave",
     "fireOffset" : [1.75, 0.125],
-    "projectileType" : "cultisarrow",
+    "drawSpeedMultiplier" : "constant",
+    "drawFrameSelector" : "bowImageSelectorNoPower",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "shadowtravelingswoosh",
     "projectileParameters" : {
-      "power" : 8.125,
-      "actionOnReap" : []
+      "emitters" : [ "shadowsmoke"],
+      "power" : 6.0
     },
-    "splitDelay" : 0.2,
-    "splitAngle" : 2
+    "splitDelay" : 0.04,
+    "splitAngle" : 5
   },
   
   "critChance" : 7,
   "critBonus" : 4, 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

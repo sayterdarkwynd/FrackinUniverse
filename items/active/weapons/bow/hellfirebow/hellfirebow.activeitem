@@ -5,7 +5,7 @@
   "inventoryIcon" : "hellfirebowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "weaponType" : "Bow",
   "description" : "Burn your hunt targets to cinders. Counterproductive, but fun.",
   "shortdescription" : "Hellfire Bow",
@@ -18,12 +18,15 @@
   "animation" : "/items/active/weapons/bow/bowglow.animation",
   "animationParts" : {
     "bow" : "hellfirebowfull.png",
-    "bowfullbright" : "hellfirebowfullfullbright.png"
+    "bowFullbright" : "hellfirebowfullfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "bow" : { "properties" : {
-      "offset" : [0.25, 0]
-    }}}},
+    "animatedParts" : { 
+      "parts" : {
+        "bow" : { "properties" : {"offset" : [0.25, 0]}},
+        "bowFullbright" : { "properties" : { "offset" : [0.25, 0]}}
+      }
+    },
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
       "release" : [ "/sfx/projectiles/fireball_spit.ogg" ],
@@ -45,23 +48,29 @@
 
   "elementalType" : "physical",
   "collectablesOnPickup" : { "fu_weaponbow" : "hellfirebow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.75,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.30,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 55,			
+	"holdEnergyUsage" : 12,				
+	"airborneBonus" : 1.12, 	
     "projectileType" : "flamearrow",
     "powerProjectileType" : "hellfirearrow",
     "projectileParameters" : {
-      "power" : 8.25
+      "power" : 6.25
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.65
     }
   },
 
-  "altAbilityType" : "bowshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "drawTime" : 1.35,				//Time to fully draw the bow
+    "powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long  
+    "name" : "Burning Death",
     "projectileType" : "flamearrow",
     "powerProjectileType" : "dragonprojectile2",
     "projectileParameters" : {
@@ -69,7 +78,7 @@
     }
   },
 
-  "critChance" : 7,
-  "critBonus" : 6, 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "critChance" : 2,
+  "critBonus" : 12, 
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

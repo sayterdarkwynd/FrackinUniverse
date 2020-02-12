@@ -4,7 +4,7 @@
   "inventoryIcon" : "xithricitebowicon.png",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "tooltipKind" : "bow2",
+  "tooltipKind" : "neb-randombow",
   "category" : "bow",
   "description" : "Interdimensional Hunting",
   "shortdescription" : "Xithricite Bow",
@@ -21,14 +21,12 @@
     "bowFullbright" : "xithricitebowfullbright.png"
   },
   "animationCustom" : {
-    "animatedParts" : { "parts" : {
-      "bow" : { "properties" : {
-        "offset" : [0, 0]
-      }},
-      "bowFullbright" : { "properties" : {
-        "offset" : [0, 0]
-      }}
-    }},
+    "animatedParts" : { 
+      "parts" : {
+        "bow" : { "properties" : {"offset" : [0, 0]}},
+        "bowFullbright" : { "properties" : { "offset" : [0, 0]}}
+      }
+    },
     "sounds" : {
       "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
       "release" : [ "/sfx/melee/laser_weapon_swing2.ogg" ],
@@ -38,13 +36,19 @@
   "elementalType" : "cosmic",
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
   "collectablesOnPickup" : { "fu_weaponbow" : "xithricitebow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "drawSpeedMultiplier" : "constant",
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 1.1,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.225,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+
     "projectileType" : "cosmicarrow",
     "powerProjectileType" : "chargedcosmicarrow",
     "projectileParameters" : {
       "power" : 8
+    },
+    "powerProjectileParameters" : {
+      "power" : 9.65
     }
   },
 
@@ -58,6 +62,6 @@
   },
 
   "critChance" : 6,
-  "critBonus" : 5,
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "critBonus" : 30,
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }
