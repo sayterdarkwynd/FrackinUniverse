@@ -14,13 +14,9 @@ function update(dt, fireMode, shiftHeld, moves)
       liquidJumpModifier = 0,
       liquidForce = 300,
       liquidImpedance = 0.1
-    })      
-      --animator.playSound("flashlight2", 1)
-      --animator.setParticleEmitterActive("activatedLight", true)      
+    })          
 end
 
 function uninit()
-  status.removeEphemeralEffect("pocketanchorstat")  
-  --animator.stopAllSounds("flashlight2")
-  --animator.setParticleEmitterActive("activatedLight", false)  
+  status.removeEphemeralEffect("pocketanchorstat")   
 end
