@@ -36,15 +36,17 @@ function GunFireFixed:init()
   if self.currentAmmoPercent > 1.0 then
     self.currentAmmoPercent = 1
   end 
+  
   if (self.isAmmoBased == 1) then
     self.timerRemoveAmmoBar = 0 
   end  
+  
   self.barName = "ammoBar"
   self.barColor = {0,250,112,125}
-  
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
+  
   if self.loadupTime then
     self.loadupTimer = self.loadupTime
   else
@@ -55,6 +57,10 @@ function GunFireFixed:init()
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
+  
+  self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
+  self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
+  self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
 
 function GunFireFixed:update(dt, fireMode, shiftHeld)
@@ -126,6 +132,16 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
       end
     end
   end
+  --Recoil here
+  if (self.hasRecoil == 1) then
+    if self.fireMode ~= "alt" then
+      self.recoilForce = self.recoilForce * self.fireTime
+    else
+      self.recoilForce * 0.15
+    end
+    local recoilDirection = mcontroller.facingDirection() == 1 and self.weapon.aimAngle + math.pi or -self.weapon.aimAngle
+    mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)    
+  end  
 end
 
 function GunFireFixed:chargeup()
@@ -138,6 +154,9 @@ function GunFireFixed:auto()
     --ammo	
     self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?	
     self:checkMagazine()--ammo system magazine check	
+    -- recoil
+    self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
+    self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire    
     
   self.weapon:setStance(self.stances.fire)
   
@@ -161,6 +180,10 @@ function GunFireFixed:burst() -- burst auto should be a thing here
     --ammo	
     self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?	
     self:checkMagazine()--ammo system magazine check	
+    -- recoil stats reset every time we shoot so that it is consistent
+    self.recoilSpeed = (config.getParameter("recoilSpeed",200))
+    self.recoilForce = (config.getParameter("recoilForce",100)) 
+    
   self.weapon:setStance(self.stances.fire)
 	  
   local shots = self.burstCount
@@ -245,6 +268,8 @@ function GunFireFixed:fireProjectile(projectileType, projectileParams, inaccurac
   end
 
   return projectileId
+  --Recoil here
+  self:applyRecoil()  
 end
 
 function GunFireFixed:firePosition()
@@ -446,4 +471,28 @@ function GunFireFixed:checkMagazine()
       self.magazineAmount = self.magazineAmount - 1
     end
   end
+end
+
+function GunFire:applyRecoil()
+  --Recoil here
+  if (self.hasRecoil == 1) then  						--does the weapon have recoil?
+    if (self.fireMode == "primary") then					--is it primary fire?
+      self.recoilForce = self.recoilForce * self.fireTime
+      self:adjustRecoil()
+    else
+      self.recoilForce = self.recoilForce * 0.15
+      self:adjustRecoil()
+    end
+    local recoilDirection = mcontroller.facingDirection() == 1 and self.weapon.aimAngle + math.pi or -self.weapon.aimAngle
+    mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)    
+  end
+end
+
+function GunFire:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil				
+    if not mcontroller.onGround() then						
+     self.recoilForce = self.recoilForce * 0.5
+    end      
+    if mcontroller.crouching() then
+     self.recoilForce = self.recoilForce * 0.25
+    end          
 end
