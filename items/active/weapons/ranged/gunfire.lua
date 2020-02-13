@@ -24,7 +24,7 @@ function GunFire:init()
   
   self.isRecoil = 0--when fired, has recoil
   self.recoilSpeed = 0-- speed of recoil
-  self.recoildForce = 0--force of recoil
+  self.recoilForce = 0--force of recoil
   
   self.weapon:setStance(self.stances.idle)
   self.cooldownTimer = self.fireTime
