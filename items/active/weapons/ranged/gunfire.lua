@@ -90,17 +90,6 @@ function GunFire:update(dt, fireMode, shiftHeld)
       self:setState(self.burst)
     end
   end
-  
-  --Recoil here
-  if (self.hasRecoil == 1) then
-    if self.fireMode ~= "alt" then
-      self.recoilForce = self.recoilForce * self.fireTime
-    else
-      self.recoilForce = self.recoilForce * 0.15
-    end
-    local recoilDirection = mcontroller.facingDirection() == 1 and self.weapon.aimAngle + math.pi or -self.weapon.aimAngle
-    mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)    
-  end
 end
 
 function GunFire:auto()

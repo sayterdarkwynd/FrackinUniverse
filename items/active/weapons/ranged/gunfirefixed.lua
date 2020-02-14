@@ -132,16 +132,6 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
       end
     end
   end
-  --Recoil here
-  if (self.hasRecoil == 1) then
-    if self.fireMode ~= "alt" then
-      self.recoilForce = self.recoilForce * self.fireTime
-    else
-      self.recoilForce * 0.15
-    end
-    local recoilDirection = mcontroller.facingDirection() == 1 and self.weapon.aimAngle + math.pi or -self.weapon.aimAngle
-    mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)    
-  end  
 end
 
 function GunFireFixed:chargeup()
