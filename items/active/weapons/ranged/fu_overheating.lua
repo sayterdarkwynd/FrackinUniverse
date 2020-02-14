@@ -94,6 +94,7 @@ function playSoundCooldown()
 end
 
 function FUOverHeating:auto()
+	self:applyRecoil()
     -- recoil stats reset every time we shoot so that it is consistent
     self.recoilSpeed = (config.getParameter("recoilSpeed",0))
     self.recoilForce = (config.getParameter("recoilForce",0)) 
@@ -135,6 +136,7 @@ function FUOverHeating:auto()
 end
 
 function FUOverHeating:burst()
+	self:applyRecoil()
     -- recoil stats reset every time we shoot so that it is consistent
     self.recoilSpeed = (config.getParameter("recoilSpeed",0))
     self.recoilForce = (config.getParameter("recoilForce",0)) 

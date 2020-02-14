@@ -266,10 +266,10 @@ function GunFireFixed:fireProjectile(projectileType, projectileParams, inaccurac
         params
       )
   end
-
-  return projectileId
   --Recoil here
-  self:applyRecoil()  
+  self:applyRecoil() 
+  return projectileId
+ 
 end
 
 function GunFireFixed:firePosition()
