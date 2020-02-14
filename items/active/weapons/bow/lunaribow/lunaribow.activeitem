@@ -66,16 +66,15 @@
     }
   },
 
-  "altAbilityType" : "tripleshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
     "drawFrameSelector" : "poisonBowImageSelectorNoPower",
     "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-     "drawTime" : 1.3,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.40,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	"energyPerShot" : 40,			
-	"holdEnergyUsage" : 8,					   
+    "drawTime" : 1.3,				//Time to fully draw the bow
+    "powerProjectileTime" : 0.40,	//After fully drawing, the bow is super-charged for this long
+    "dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+    "energyPerShot" : 40,			
+    "holdEnergyUsage" : 8,					   
     "projectileType" : "chargedlunariarrow",
     "powerProjectileType" : "chargedlunariarrow",
     "projectileParameters" : {
@@ -83,7 +82,31 @@
       "speed" : 70
     },
     "powerProjectileParameters" : {
-      "power" : 7.2
+      "power" : 7.2,
+      "timeToLive" : 0.05,
+      "actionOnReap" : [
+        {
+          "action" : "projectile",
+          "type" : "chargedlunariarrow",
+          "angleAdjust" : -25,
+          "inheritDamageFactor" : 0.33,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedlunariarrow",
+          "angleAdjust" : 0,
+          "inheritDamageFactor" : 0.33,
+          "inheritSpeedFactor" : 1
+        },
+        {
+          "action" : "projectile",
+          "type" : "chargedlunariarrow",
+          "angleAdjust" : 25,
+          "inheritDamageFactor" : 0.33,
+          "inheritSpeedFactor" : 1
+        }      
+      ]
     },
     "splitDelay" : 0.04,
     "splitAngle" : 5
