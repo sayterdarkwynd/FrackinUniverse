@@ -221,10 +221,10 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
         params
       )
   end
-	  
-  return projectileId
   --Recoil here
-  self:applyRecoil()  
+  self:applyRecoil()  	  
+  return projectileId
+
 end
 
 function GunFire:firePosition()
