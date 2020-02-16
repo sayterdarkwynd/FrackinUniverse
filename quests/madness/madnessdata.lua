@@ -419,7 +419,7 @@ function update(dt)
 	if (self.timerDegrade <= 0) and (storage.madnessCount >= 50) then --high madness is harder to hold onto, and less farmable, if it always reduces
 	    self.timerDegradePenalty = self.timerDegradePenalty or 0
 	    player.consumeCurrency("fumadnessresource", self.degradeTotal)
-	    self.timerDegrade= 30 - self.timerDegradePenalty   
+	    self.timerDegrade= 60 - self.timerDegradePenalty   
 	    displayBar()
 	end 
  	-- apply bonus loss from anti-madness effects even if not above 500 madness
@@ -430,7 +430,7 @@ function update(dt)
 	    if (status.statPositive("mentalProtection")) then 
 	      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
 	    end
-	    self.bonusTimer = 20
+	    self.bonusTimer = 40
 	    displayBar() 	    
 	end	
 end

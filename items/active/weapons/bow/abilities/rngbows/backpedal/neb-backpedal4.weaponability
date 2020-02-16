@@ -34,30 +34,30 @@
     }
   },
   "ability" : {
-    "name" : "Backpedal III",
-    "type" : "rngbows_backpedal2",
+    "name" : "Gravity Backpedal",
+    "type" : "rngbows_backpedal4",
     "scripts" : ["/items/active/weapons/bow/abilities/rngbows/backpedal/neb-backpedal.lua"],
     "class" : "FlipSlash",
 
-    "cooldownTime" : 0.6,
+    "cooldownTime" : 0.68,
 
     "flipMovementParameters" : {
       "collisionPoly" : [ [-2.0, -1.0], [-1.0, -2.0], [1.0, -2.0], [2.0, -1.0], [2.0, 1.0], [1.0, 2.0], [-1.0, 2.0], [-2.0, 1.0] ]
     },
 
-    "energyUsage" : 50.0,
-    "rotations" : 2,	//Max player rotation factor. From 1.0 (rotate full 360 degrees) to 0.0 (no rotation)
+    "energyUsage" : 40.0,
+    "rotations" : 1,	//Max player rotation factor. From 1.0 (rotate full 360 degrees) to 0.0 (no rotation)
     "rotationTime" : 0.25,
 
-    "jumpVelocity" : [-47.5, 15],
+    "jumpVelocity" : [-37.5, 15],
     "jumpDuration" : 0.35,
     "flipControlForce" : 0.5,
   
     "stopAfterFlip" : false,
     "slowAfterFlip" : true,
-    "slowDownFactor" : 0.75,
+    "slowDownFactor" : 0.65,
     "groundOnly" : false,
-    "cooldownOnGroundOnly" : true,
+    "cooldownOnGroundOnly" : false,
   
     "stances" : {
       "windup" : {
