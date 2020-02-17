@@ -23,7 +23,7 @@ function open()
 	object.setInteractive(false)
 	
 	--Make sure that, if the object is broken after having been collected, nothing drops
-	object.setConfigParameter("breakDropPool", "empty")
+	--object.setConfigParameter("breakDropPool", "empty")
 end
 
 function onInteraction(args)
