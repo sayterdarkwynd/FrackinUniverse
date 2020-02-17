@@ -5,10 +5,6 @@
 
 -- Because starbound needs to up their game, like damn
 
-
-
-
-
 -- To reference any ScrollArea children widgets in Lua scripts (widget.* table) use the following format: <ScrollArea name>.<Children widget name>.
 
 local print, warn, error, assertwarn, assert, tostring; -- Specify these as locals
@@ -19,6 +15,7 @@ require("/scripts/xcore_customcodex/LoggingOverride.lua") -- tl;dr I can use pri
 ---------------------------
 
 -- A template for one of the buttons displayed in the list of codex entries.
+-- This template is no longer used. It was only used when name abbreviations were displayed in place of images.
 local TEMPLATE_CODEX_ENTRY_BUTTON = {
 	type = "button",
 	caption = "",
@@ -29,6 +26,8 @@ local TEMPLATE_CODEX_ENTRY_BUTTON = {
 	callback = "ListButtonClicked"
 }
 
+-- This template data is only created on GUI instantiation.
+-- This may be a better fit for simply having in the raw .config file itself.
 local TEMPLATE_CODEX_RACE_CATEGORY = {
 	type = "list",
 	callback = "RaceButtonClicked",
@@ -72,18 +71,30 @@ local TEMPLATE_CODEX_RACE_CATEGORY = {
 ------ CORE DATA ------
 -----------------------
 
+-- Data binding [X] codex button to [Y] codex JSON
 local CodexButtonBindings = {}
+
+-- A registry of the categories we already have created in the GUI.
 local ExistingCategoryButtons = {}
+
+-- The current page we're on in the codex.
 local CurrentPage = 1
+
+-- The currently open codex entry.
 local CurrentCodex = nil
+
+-- Is the next/prev button enabled? This exists because Starbound literally has a `setButtonEnabled` but NOT a `getButtonEnabled`. Intelligence 100000000000000000000000
 local NextButtonEnabled = false
 local PrevButtonEnabled = false
-local IsFirstTimeOpening = true
 
 ------------------------------
 ------ HELPER FUNCTIONS ------
 ------------------------------
 
+-- Receives a list of pages as well as the current page index.
+-- Using this information, it updates the enabled status of the next and previous buttons.
+-- It then updates the display text at the bottom to read "Page X of Y"
+-- Finally, it alters the displayed text for said page in the UI so that you can read the new page.
 local function UpdateBasedOnPage(pages, currentPage)
 	local numPages = #pages
 	local nextEnabled = currentPage < numPages
@@ -103,27 +114,63 @@ local function UpdateBasedOnPage(pages, currentPage)
 	widget.setText("codexText.textElement", pageText)
 end
 
+-- This method is a bit complicated.
+-- It goes through all of the chars of a given name (arg 1) and picks out the uppercase levels.
+-- The second argument, existingAbbreviations, is a table of data this function has already spit out. More on this in the body of the function.
+-- The third argument is used by this function only which is for recursive calling and the disambiguation method, which ties into ^.
+-- The last argument is the maximum string length from this function.
 local function GetNameAbbreviation(name, existingAbbreviations, startSub, maxLen)
+	-- Start out by getting default values.
 	local maxLen = maxLen or 4
 	local startSub = startSub or 1
+	
+	-- Now we want to make sure our maximum length is also not going to be longer than the text since this will throw an error.
+	local newAvailableMax = math.min(maxLen, #name)
+	
+	-- Likewise, if our disambiguation string (which is where we grab more letters from the start of the name) is longer than the actual text, just return what we can and abort.
+	if startSub > newAvailableMax then
+		return name:sub(1, newAvailableMax)
+	end
+	
+	-- So now, we start out our returned abbreviation with the first [startSub] characters of the name.
 	local abv = name:sub(1, startSub)
 	for i = 2, #name do
-		-- Yes, #name works on top of name:len() or whatever.
+		-- Starting from the second character onward, we test if each char is uppercase as well as alphabetical.
 		local chr = name:sub(i, i)
-		if chr:upper() == chr and chr ~= " " then
+		
+		-- Bet you didn't know you could use > and < on strings, did you?
+		if chr:upper() == chr and (chr:upper() >= "A" and chr:upper() <= "Z") then
+			-- If it is uppercase and alphabetical, add it to the abbreviation.
 			abv = abv .. chr
 		end
-		if #abv > maxLen then
-			break
+		
+		-- And if the length of this abbreviation is equal to or exceeds the maximum available length, we need to abort and return immediately -- disambiguation isn't possible.
+		if #abv >= maxLen then
+			return abv
 		end
 	end
 	
+	-- If we have made it here, we have gotten an appropriate abbreviation for the name (e.g. "A" for "Apex")
+	-- Now we need to look at our other outputs from this function in the race button population cycle.
+	-- What if we also have an Avian codex? That starts with "A" too, and would result in the same abbreviation!
 	for index, abbreviation in ipairs(existingAbbreviations) do
 		if abv == abbreviation then
+			-- So if we meet this condition, we see that "Oh, our result right now is something this function has already given!"
+			-- So we tell it to give the result of calling this function again, with one more added to startSub.
+			-- This means that Avian will now return "Av" (one character after the first is now included), and since this is different than "A" for Apex, this condition won't run again...
 			return GetNameAbbreviation(name, existingAbbreviations, startSub + 1)
 		end
 	end
+	-- And we'll make it here.
 	return abv
+end
+
+-- Gets the first element in a dictionary-style table (where the keys are non-numeric)
+function GetFirstInTable(tbl)
+	-- Basically just run one iteration and immediately return the first value.
+	for _, value in pairs(tbl) do
+		return value
+	end
 end
 
 -------------------------------
@@ -131,26 +178,26 @@ end
 -------------------------------
 
 
--- Creates a button on the left-most list to view this codex
+-- Creates a button on the left-hand list to view this codex.
+-- This is only called when we select a category (so that the buttons pertaining to the various codex entries for said category are created)
 local function CreateButtonToReadCodex(codexData, codexFileInfo, index)
+	-- Create a unique button name.
 	local buttonName = "cdx_" .. codexData.id
 	
+	-- Grab our button template and populate the necessary data.
 	local button = TEMPLATE_CODEX_ENTRY_BUTTON
 	button.caption = codexData.title or "ERR_NO_TITLE"
 	button.position = {0, index * -22}
+	
+	-- Now let's store this button's existence.
 	CodexButtonBindings[buttonName] = codexData
+	widget.addChild("codexList", button, buttonName)
 	
-	local codexFilePath = codexFileInfo[2]
-	if codexData.icon:sub(1, 1) ~= "/" then
-		-- This is a relative filepath to the same folder.
-		-- Translate the icon parameter to use an absolute path instead.
-		CodexButtonBindings[buttonName].icon = codexFilePath .. CodexButtonBindings[buttonName].icon
-	end
-	
-	widget.addChild("codexList", button, buttonName)	
 	--print("Button " .. buttonName .. " added to codex list children.")
 end
 
+-- Sets the title text to the codex's title, resets the page to the given page number (or 1 if it was not specified), then calls UpdateBasedOnPage.
+-- This also populates the "CurrentCodex" field.
 local function OpenCodex(codexData, page)
 	CurrentPage = page or 1
 	widget.setText("codexTitle", codexData.title)
@@ -158,115 +205,159 @@ local function OpenCodex(codexData, page)
 	CurrentCodex = codexData
 end
 
-local function PopulateCodexEntriesForCategory(categoryData)
+-- This is run when we click on a category button.
+local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
+	-- First off, let's clean up the list of old codex entries in case we had a previous category open already.
 	widget.removeAllChildren("codexList")
 	
-	local targetCategory = categoryData[1]
-	local speciesName = categoryData[2]
+	-- Update the display data to reflect on the new category we have selected. Remember, speciesName will be "Ambiguous" for the category that has no associated race.
+	widget.setText("codexListRace", "Selected Category: " .. speciesName)
 	
-	widget.setText("codexListRace", "Selected Race / Category: " .. speciesName)
-	
+	-- We're going to iterate through our known codex entries again. Same thing, get the entries or a default empty table.
 	local knownCodexEntries = player.getProperty("xcodex.knownCodexEntries") or {}
+	
+	-- posIndex is a value used to store the actual button number for this category (e.g. "codex #posIndex in category (speciesName)")
+	-- We use this to find out the position of the button.
 	local posIndex = 0
 	for index = 1, #knownCodexEntries do
 		local codexInfo = knownCodexEntries[index]
 		-- {codexRawName, codexJsonPath}
 		
-		-- TEST: Does this even exist?
+		-- Same test as in PopulateCategories. Make sure the codex isn't one we no longer have access to in the game files.
 		local rawCodexData = nil
 		local exists = pcall(function ()
 			rawCodexData = root.assetJson(codexInfo[2] .. codexInfo[1] .. ".codex")
-		end) -- If this errors the pcall will return false.
+		end)
 		
 		if exists then
-			local category = rawCodexData.species or ""
-			if category == targetCategory then
+			local codexSpecies = rawCodexData.species or ""
+			-- Is the category of this codex the same as the category we want to push?
+			if codexSpecies == targetSpecies then
 				--print("Creating button for codex " .. tostring(codexInfo[1]))
 				
+				-- Did we specify a longCodexPages key, and more importantly, does that key have content (if it's empty, we might be using it as a placeholder!)
 				if rawCodexData.longContentPages ~= nil and #rawCodexData.longContentPages > 0 then
+					-- Yep! Let's replace the contentPages value we have stored here internally.
 					rawCodexData.contentPages = rawCodexData.longContentPages
 				end
+				
+				-- Now make the actual button that you click on to read the codex.
 				CreateButtonToReadCodex(rawCodexData, codexInfo, posIndex)
 				
 				posIndex = posIndex + 1
 			end
 		end
 	end
-	
-	if positionalIndex == 1 and widget.getText("codexText.textElement") == "" then
-		widget.setText("codexTitle", "No Known Codex Entries :(")
-	end
 end
 
+-- Populates all of the data for the left-most part of the menu where the buttons representing the available races are located.
 local function PopulateCategories()
+	-- Let's access our known codex entries, or give an empty table if we haven't defined it yet.
 	local knownCodexEntries = player.getProperty("xcodex.knownCodexEntries") or {}
 	
 	-- I want to order the buttons alphabetically.
 	local buttonInfo = {}
 	local existingAbbreviations = {}
 	
+	-- Create a new list element.
 	local listTemplate = TEMPLATE_CODEX_RACE_CATEGORY
 	widget.addChild("racialCategoryList", listTemplate, "racelist")
 	
+	-- Iterate through our known codex entries.
 	for index = 1, #knownCodexEntries do
 		local codexInfo = knownCodexEntries[index]
-		-- {codexRawName, codexJsonPath}
+		-- codexInfo = {codexRawName, codexJsonPath}
+		-- So for instance, {"protectorate2", "/codex/human/"}
 		
-		-- TEST: Does this even exist?
+		-- Our first test is very important! What if we had a modded codex and have since uninstalled the applicable mod?
 		local rawCodexData = nil
 		local exists = pcall(function ()
+			-- This pcall will attempt to use root.assetJson to read the raw codex file. It will error (and subsequently return false) if this codex file no longer exists.
 			rawCodexData = root.assetJson(codexInfo[2] .. codexInfo[1] .. ".codex")
-		end) -- If this errors the pcall will return false.
+		end)
 		
+		-- If the codex entry exists in the current context then we need to process it some more.
 		if exists then
+			-- The display name is the text shown on the button in the event that no race icon could be found. This is the text created via the GetNameAbbreviation function. It may not always be populated.
 			local displayName = ""
-			local category = rawCodexData.species or ""
+			
+			-- This is the species data included in the codex, or an empty string if it's not included as part of the codex.
+			local codexSpecies = rawCodexData.species or ""
+			
+			-- The actual race name is the literal *display name* of the race from the .species file. Its default value is "Ambiguous".
+			-- This value is given to the menu to display text that reflects on what the current selected category is. The "Ambiguous" category is for things without an associated race.
 			local actualRaceName = "Ambiguous"
+			
+			-- Raw JSON of the .species file.
 			local speciesData
 			
-			if category ~= "" then
+			-- The first available preview image for the specified race, gathered via the race's defined genders (which must exist for a functional race).
+			-- inb4 angry feminist because all the icons are male due to most ppl defining male first. ecksdee.
+			local firstAvailableGenderImage = ""
+			
+			if codexSpecies ~= "" then
+				-- First off -- Is the species specified? If it is, we need to see if we can find the .species file.
 				local speciesDataExists = pcall(function ()
-					speciesData = root.assetJson("/species/" .. category .. ".species")
+					-- Same thing as the rawCodexData thing above. This will work, or error and return false.
+					speciesData = root.assetJson("/species/" .. codexSpecies .. ".species")
 				end)
 				if speciesDataExists then
-					local ct = speciesData.charCreationTooltip
-					if ct and ct.title and #ct.title >= 1 then
-						displayName = GetNameAbbreviation(ct.title, existingAbbreviations)
-						table.insert(existingAbbreviations, displayName)
-						actualRaceName = ct.title
+					-- If we've made it here, the species data exists.
+					local speciesDisplayData = speciesData.charCreationTooltip
+					if speciesDisplayData and speciesDisplayData.title and #speciesDisplayData.title >= 1 then
+						-- If this is true, the species' display name is adequately populated.
+						-- This is where we MAY need to edit displayName. First things first -- Do we have an available image?
+						local firstGender = GetFirstInTable(speciesData.genders)
+						firstAvailableGenderImage = firstGender.characterImage or ""
+						
+						-- Uh-oh! We don't. We'll have to fall back to using an abbreviation.
+						if firstAvailableGenderImage == "" then
+							displayName = GetNameAbbreviation(speciesDisplayData.title, existingAbbreviations)
+							table.insert(existingAbbreviations, displayName)
+						end
+						
+						-- Oh, and populate the display name of the race. That one's important.
+						actualRaceName = speciesDisplayData.title
 					end
 				end
 			end
 			
-			local buttonName = "race-" .. actualRaceName
-			local i = 1
-			if not ExistingCategoryButtons[buttonName] then
+			-- Have we already made a button for this race? The player is probably going to have more than one codex entry for a given race.
+			if not ExistingCategoryButtons[actualRaceName] then
+			
+				-- If we make it here, no, we don't already have a button. Tell Starbound to add a new list element.
 				local newElement = widget.addListItem("racialCategoryList.racelist")
-				--print(tostring(newElement))
 				
+				-- Again, test if we had species data.
 				if speciesData ~= nil then
-					local genderTable
-					for index, tbl in pairs(speciesData.genders) do genderTable = tbl break end -- This is a hacky method of getting the first element of a table with non-integer keys.
-					if genderTable and genderTable.characterImage then
-						--print("Set button icon to", genderTable.characterImage)
-						widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", genderTable.characterImage)
+					-- If we do, we need to set the pictures, so long as we actually have them
+					if firstAvailableGenderImage ~= "" then
+						-- print("Setting race image to", firstAvailableGenderImage)
+						--widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", genderTable.characterImage)
 						widget.setButtonImages("racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton", 
 							{
-								base = genderTable.characterImage,
-								hover = genderTable.characterImage .. "?brightness=30",
-								hover = genderTable.characterImage .. "?brightness=30",
+								base = firstAvailableGenderImage,
+								hover = firstAvailableGenderImage .. "?brightness=30",
+								pressed = firstAvailableGenderImage .. "?brightness=30",
 								disabled = ""
 							}
 						)
+					else
+						-- We don't have the pictures! Let's use the displayName.
+						-- print("Setting race image to nothing and using the abbreviated display name instead, which is", displayName)
+						widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", displayName)
 					end
 				else
 					--print("Could not set button icon -- race doesn't exist (this is the ambiguous table) or the race was unable to resolve an appropriate icon.")
 					widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", "*")
 				end
 				
-				widget.setData("racialCategoryList.racelist." .. tostring(newElement), {buttonName})
-			
-				ExistingCategoryButtons[buttonName] = {category, actualRaceName}
+				-- Lastly, let's set the data of this specific new list element (the cumulative representation of the picture, display name, and button elements) to the actual race name.
+				-- We use this data to associate buttons with actual race categories.
+				widget.setData("racialCategoryList.racelist." .. tostring(newElement), {actualRaceName})
+				
+				-- Now populate this data.
+				ExistingCategoryButtons[actualRaceName] = codexSpecies
 			end
 		end
 	end
@@ -276,18 +367,23 @@ end
 ------ CALLBACKS ------
 -----------------------
 
--- Run when a button for the codex list is clicked.
+-- Run when a button for the codex list is clicked, that is, the title of an actual codex in the list of available known titles.
 function ListButtonClicked(widgetName, widgetData)
+	-- Do we have button data bindings for this button? If so, call OpenCodex with that data.
+	-- Said data is the raw JSON of the codex file (including any edits we've made here on the fly, e.g. the longContentPages value population)
 	local data = CodexButtonBindings[widgetName]
 	if data then OpenCodex(data) end
 end
 
+-- Run when one of the racial category buttons are clicked.
 function RaceButtonClicked(widgetName, widgetData)
-	-- widgetName is the racedata, the list
 	local itemId = widget.getListSelected("racialCategoryList.racelist")
-	local raceButtonName = widget.getData("racialCategoryList.racelist." .. tostring(itemId))[1]
-	local data = ExistingCategoryButtons[raceButtonName]
-	if data then PopulateCodexEntriesForCategory(data) end
+	
+	-- Now get the data associated with said list item. This was set near the bottom of PopulateCategories()
+	local actualRaceName = widget.getData("racialCategoryList.racelist." .. tostring(itemId))[1]
+	
+	local codexSpecies = ExistingCategoryButtons[actualRaceName]
+	if codexSpecies then PopulateCodexEntriesForCategory(codexSpecies, actualRaceName) end
 end
 
 -- Run when the "Previous Page" button is clicked.
@@ -312,16 +408,7 @@ end
 function postinit()
 	print, warn, error, assertwarn, assert, tostring = CreateLoggingOverride("[High-Fidelity Codex GUI]")
 	
-	--local subtitle = "The best reading experience you'll ever get"
-	--local chance = math.random()
-	--if chance < 0.005 and not IsFirstTimeOpening then
-	--	subtitle = subtitle .. " - From Protostar!"
-		-- https://youtu.be/ScEliEh2_Xo?t=12
-	--end
-	IsFirstTimeOpening = false
-	
-	-- Set UI to be completely disabled.
-	widget.setText("windowSubtitle", subtitle)
+	-- Set UI to appear completely disabled, disabling the next and previous buttons.
 	widget.setButtonEnabled("nextButton", false)
 	widget.setButtonEnabled("prevButton", false)
 	widget.setFontColor("nextButton", "#666666")
