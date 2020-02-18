@@ -26,6 +26,10 @@ function FUOverHeating:init()
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
+    self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
+    self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
+    self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire  
+
 end
 
 function FUOverHeating:update(dt, fireMode, shiftHeld)
@@ -90,6 +94,10 @@ function playSoundCooldown()
 end
 
 function FUOverHeating:auto()
+	self:applyRecoil()
+    -- recoil stats reset every time we shoot so that it is consistent
+    self.recoilSpeed = (config.getParameter("recoilSpeed",0))
+    self.recoilForce = (config.getParameter("recoilForce",0)) 
   self.weapon:setStance(self.stances.fire)
 
   self:fireProjectile()
@@ -128,6 +136,10 @@ function FUOverHeating:auto()
 end
 
 function FUOverHeating:burst()
+	self:applyRecoil()
+    -- recoil stats reset every time we shoot so that it is consistent
+    self.recoilSpeed = (config.getParameter("recoilSpeed",0))
+    self.recoilForce = (config.getParameter("recoilForce",0)) 
   self.weapon:setStance(self.stances.fire)
 
   local shots = self.burstCount
@@ -248,4 +260,28 @@ end
 
 
 function FUOverHeating:uninit()
+end
+
+function FUOverHeating:applyRecoil()
+  --Recoil here
+  if (self.hasRecoil == 1) then  						--does the weapon have recoil?
+    if (self.fireMode == "primary") then					--is it primary fire?
+      self.recoilForce = self.recoilForce * self.fireTime
+      self:adjustRecoil()
+    else
+      self.recoilForce = self.recoilForce * 0.15
+      self:adjustRecoil()
+    end
+    local recoilDirection = mcontroller.facingDirection() == 1 and self.weapon.aimAngle + math.pi or -self.weapon.aimAngle
+    mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)    
+  end
+end
+
+function FUOverHeating:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil				
+    if not mcontroller.onGround() then						
+     self.recoilForce = self.recoilForce * 0.5
+    end      
+    if mcontroller.crouching() then
+     self.recoilForce = self.recoilForce * 0.25
+    end          
 end

@@ -48,12 +48,15 @@
   "elementalType" : "shadow",
   "collectablesOnPickup" : { "fu_weaponbow" : "elderbow" },
   
-  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbilityType" : "rngbows_enhancedbowshotelder",
   "primaryAbility" : { 
     "drawTime" : 0.93,				//Time to fully draw the bow
-	"powerProjectileTime" : 0.4,	//After fully drawing, the bow is super-charged for this long
-	"dynamicDamageMultiplier" : 1.25,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
-	"projectileType" : "elderarrow",
+    "powerProjectileTime" : 0.4,	//After fully drawing, the bow is super-charged for this long
+    "dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 40,			
+	"holdEnergyUsage" : 4,				
+	"airborneBonus" : 1.50,	    
+    "projectileType" : "elderarrow",
     "powerProjectileType" : "chargedelderarrow",
     "projectileParameters" : {
       "power" : 6.8
@@ -63,8 +66,28 @@
     }
   },
 
-  "altAbilityType" : "elderreaim",
-
+  //"altAbilityType" : "elderreaim",
+  "altAbilityType" : "rngbows_enhancedbowshot",
+  "altAbility" : {
+    "staticDamageMultiplier" : 0.65,	
+    "dynamicDamageMultiplier" : 0.5,
+    "drawTime" : 3,
+    "energyPerShot" : 70,
+    "holdEnergyUsage" : 25,
+    "name" : "Rift Arrow",
+    "projectileType" : "elderarrow",
+    "inaccuracy": 0.0,
+    "powerProjectileTime" : 0.4,
+    "powerProjectileType" : "floatydeathballelderbowcharged",
+    "projectileParameters" : {
+      "speed" : 120
+    },
+    "powerProjectileParameters" : {
+      "speed" : 50
+    }    
+  },
+  
+  
   "critChance" : 8,
   "critBonus" : 25,
   "builder" : "/items/buildscripts/neb-buildbow.lua"

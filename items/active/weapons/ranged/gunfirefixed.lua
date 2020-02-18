@@ -59,8 +59,8 @@ function GunFireFixed:init()
   end
   
   self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
-  self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
-  self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
+  self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
+  self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
 
 function GunFireFixed:update(dt, fireMode, shiftHeld)
@@ -132,16 +132,6 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
       end
     end
   end
-  --Recoil here
-  if (self.hasRecoil == 1) then
-    if self.fireMode ~= "alt" then
-      self.recoilForce = self.recoilForce * self.fireTime
-    else
-      self.recoilForce * 0.15
-    end
-    local recoilDirection = mcontroller.facingDirection() == 1 and self.weapon.aimAngle + math.pi or -self.weapon.aimAngle
-    mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)    
-  end  
 end
 
 function GunFireFixed:chargeup()
@@ -266,10 +256,10 @@ function GunFireFixed:fireProjectile(projectileType, projectileParams, inaccurac
         params
       )
   end
-
-  return projectileId
   --Recoil here
-  self:applyRecoil()  
+  self:applyRecoil() 
+  return projectileId
+ 
 end
 
 function GunFireFixed:firePosition()
@@ -473,7 +463,7 @@ function GunFireFixed:checkMagazine()
   end
 end
 
-function GunFire:applyRecoil()
+function GunFireFixed:applyRecoil()
   --Recoil here
   if (self.hasRecoil == 1) then  						--does the weapon have recoil?
     if (self.fireMode == "primary") then					--is it primary fire?
@@ -488,7 +478,7 @@ function GunFire:applyRecoil()
   end
 end
 
-function GunFire:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil				
+function GunFireFixed:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil				
     if not mcontroller.onGround() then						
      self.recoilForce = self.recoilForce * 0.5
     end      

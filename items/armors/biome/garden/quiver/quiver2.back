@@ -3,9 +3,14 @@
   "price" : 400,
   "inventoryIcon" : "icon.png",
   "rarity" : "uncommon",
-  "category" : "backwear",
   "shortdescription" : "Quality Quiver",
-  "tooltipKind" : "back",
+  "description": "+^cyan;15^reset;% damage (Bows)
+-^green;0.15s^reset; Draw Time (Bows)
++^green;4^reset; Airborne Damage (Bows)
+-^green;3^reset; Energy Per Shot (Bows)",
+  "category" : "enviroProtectionPack",
+  "tooltipKind" : "baseaugment",
+  "acceptsAugmentType" : "back",
 
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
@@ -20,16 +25,12 @@
   	"quiverbackair",
   	"quiverbackenergy"
   ],
-  
-  "value": "+^cyan;25^reset;% damage (Bows)
-^green;0.2s^reset; Draw Time (Bows)
-+^green;4^reset; Airborne Damage (Bows)
-^green;4^reset; Energy Per Shot (Bows)",
+
 
   "statusEffects" : [
     {
       "stat" : "bowDrawTimeBonus",
-      "amount" : 0.2
+      "amount" : 0.15
     },  
     {
       "stat" : "nebsrngbowdamagebonus",
@@ -41,7 +42,7 @@
     },
     {
       "stat" : "bowEnergyBonus",
-      "amount" : 4
+      "amount" : 3
     }       
   ],
   

@@ -51,3 +51,24 @@ end
 function expand()
 	player.interact("ScriptPane", "/interface/scripted/statWindow/extraStatsWindow.config", player.id())
 end
+
+function loreBook()
+	player.interact("ScriptPane", "/interface/scripted/xcustomcodex/xcodexui.config", player.id())
+end
+function research()
+	player.interact("ScriptPane", "/zb/researchTree/researchTree.config", player.id())
+end
+
+function mechEquip()
+	player.interact("ScriptPane", "/interface/scripted/mechassembly/mechassemblygui.config", player.id())
+end
+function mechFuel()
+	player.interact("ScriptPane", "/interface/mechfuel/mechfuel.config", player.id())
+end
+
+function techBuild()
+	player.interact("ScriptPane", "/interface/scripted/techshop/techshop.config", player.id())
+end
+function techEquip()
+	player.interact("ScriptPane", "/interface/scripted/techupgrade/techupgradegui.config", player.id())
+end

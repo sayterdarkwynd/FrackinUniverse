@@ -8,9 +8,11 @@ FlipSlash = WeaponAbility:new()
 function FlipSlash:init()
   self.cooldownTimer = self.cooldownTime
   self.wasOnGround = false
+  self.energyUsage = self.energyUsage or 20
 end
 
 function FlipSlash:update(dt, fireMode, shiftHeld)
+sb.logInfo(self.energyUsage)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
   
   if mcontroller.onGround() or mcontroller.liquidMovement() or mcontroller.zeroG() then
@@ -44,6 +46,9 @@ function FlipSlash:windup()
 end
 
 function FlipSlash:flip()
+-- consume energy
+  status.overConsumeResource("energy", self.energyUsage)
+
   self.facingDirection = mcontroller.facingDirection()
   self.weapon:setStance(self.stances.flip)
   self.weapon:updateAim()
