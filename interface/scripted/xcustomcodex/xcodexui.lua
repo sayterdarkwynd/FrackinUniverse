@@ -14,6 +14,9 @@ require("/scripts/xcore_customcodex/LoggingOverride.lua") -- tl;dr I can use pri
 ------ TEMPLATE DATA ------
 ---------------------------
 
+-- This is the text that displays on the "Ambiguous Race" button.
+local TEXT_AMBIGUOUS_BUTTON = "?"
+
 -- A template for one of the buttons displayed in the list of codex entries.
 -- This template is no longer used. It was only used when name abbreviations were displayed in place of images.
 local TEMPLATE_CODEX_ENTRY_BUTTON = {
@@ -216,9 +219,9 @@ local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
 	-- We're going to iterate through our known codex entries again. Same thing, get the entries or a default empty table.
 	local knownCodexEntries = player.getProperty("xcodex.knownCodexEntries") or {}
 	
-	-- posIndex is a value used to store the actual button number for this category (e.g. "codex #posIndex in category (speciesName)")
-	-- We use this to find out the position of the button.
-	local posIndex = 0
+	-- NEW UPDATE: Alphabetical sorting on these too.
+	-- To accomplish this we need to go over the elements and create "pseudo-buttons". We can then use table.sort to order these.
+	local codexDataRegistry = {}
 	for index = 1, #knownCodexEntries do
 		local codexInfo = knownCodexEntries[index]
 		-- {codexRawName, codexJsonPath}
@@ -241,12 +244,28 @@ local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
 					rawCodexData.contentPages = rawCodexData.longContentPages
 				end
 				
-				-- Now make the actual button that you click on to read the codex.
-				CreateButtonToReadCodex(rawCodexData, codexInfo, posIndex)
+				-- Now we need the title of this codex.
+				local displayName = rawCodexData.title
+				table.insert(codexDataRegistry, {displayName, {rawCodexData, codexInfo}})
 				
-				posIndex = posIndex + 1
 			end
 		end
+	end
+	
+	-- Now let's call table.sort to get this done easily.
+	table.sort(codexDataRegistry, function (alpha, bravo)
+		local aName = alpha[1]
+		local bName = bravo[1]
+		
+		-- Yes, it is possible to use < and > (and similar) on strings.
+		-- Specifically < and > are used for alphabetical order. How convenient!
+		return aName < bName
+	end)
+	
+	for index = 1, #codexDataRegistry do
+		local dataEntry = codexDataRegistry[index]
+		local info = dataEntry[2]
+		CreateButtonToReadCodex(info[1], info[2], index)
 	end
 end
 
@@ -349,7 +368,7 @@ local function PopulateCategories()
 					end
 				else
 					--print("Could not set button icon -- race doesn't exist (this is the ambiguous table) or the race was unable to resolve an appropriate icon.")
-					widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", "*")
+					widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", TEXT_AMBIGUOUS_BUTTON)
 				end
 				
 				-- Lastly, let's set the data of this specific new list element (the cumulative representation of the picture, display name, and button elements) to the actual race name.
