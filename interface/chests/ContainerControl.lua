@@ -1,68 +1,66 @@
 -- Appended by Xan the Dragon
 -- Main controller script for the "Read All" button added by /chest/cdx/chest<slots>.config
 
-----------------------------------------------
------- Duplicated from RemotePlayer.lua ------
-----------------------------------------------
-
-local function TableAlreadyContains(tbl, entry)
-	for _, value in pairs(tbl) do
-		if value[1] == entry[1] and value[2] == entry[2] then
-			return true
-		end
-	end
-	return false
-end
-
-local function LearnCodex(itemName)
-	local existingKnownEntries = player.getProperty("xcodex.knownCodexEntries") or {}
-	local data = root.itemConfig(itemName)		
-	if itemName:sub(-6) ~= "-codex" then
-		return -- Abort. Don't warn and try to continue anyway. This condition was already checked anyway.
-	else
-		itemName = itemName:sub(1, -7)
-	end
-	
-	-- Now one more thing I want to add here for ContainerControl and NOT in stock RemotePlayer is determining if the item is actually a codex.
-	-- Knowing people, some guy is gonna make a gun or something and name it "roflcopter-codex", and if that passes this gateway, shit's gonna hit the fan.
-	-- The actual codex UI protects against this but it's gonna be stored as a readable codex which means doing that check every time the player opens the UI. Not fun!
-	local foundCodexFile = pcall(function ()
-		root.assetJson(data.directory .. itemName .. ".codex")
-	end)
-	
-	if not foundCodexFile then
-		if sb then sb.logWarn("An item ended in -codex but was NOT a codex! Ignoring this item.") end
-		return
-	end
-	
-	-- This is for sanity checking. The interface itself will actually remove null codex entries from player data persistence.
-	local codexCache = {tostring(itemName), tostring(data.directory)}
-	
-	-- If our internal cache here says we don't know it then we need to learn it.
-	if not TableAlreadyContains(existingKnownEntries, codexCache) then
-		table.insert(existingKnownEntries, codexCache)
-		player.setProperty("xcodex.knownCodexEntries", existingKnownEntries)
-		if sb then sb.logInfo("Player has learned codex " .. table.concat(codexCache, ", ") .. ".") end
-	else
-		if sb then sb.logInfo("Player attempted to learn codex " .. table.concat(codexCache, ", ") .. " but they already know it in the new registry.") end
-	end
-end
-
-----------------------------------------------
-----------------------------------------------
-----------------------------------------------
+require("/scripts/xcore_customcodex/LearnCodexRoutine.lua") -- Defines LearnCodex(string name)
 
 function CodexButtonClicked()
 	--player.interact("ScriptPane", "/interface/scripted/xcustomcodex/xcodexui.config", player.id())
+	local numLearned = 0
+	local numAlreadyKnew = 0
+	local numErrored = 0
+	
 	local items = widget.itemGridItems("itemGrid")
 	for index, item in pairs(items) do
 		local itemName = item.name
 		-- Simple test: Does it end in -codex? We can easily scrap items that aren't codexes this way.
-		 if itemName:sub(-6) == "-codex" then
-			LearnCodex(itemName)
-		 end
+		if #itemName > 6 and itemName:sub(-6) == "-codex" then
+		
+			-- Reiteration: 0 = Learned it, 1 = Didn't learn it (but it was because we already knew it), 2 = Something errored out and we had to abort the process.
+			local learnStatus = LearnCodex(itemName)
+			if learnStatus == 0 then
+				numLearned = numLearned + 1
+			elseif learnStatus == 1 then
+				numAlreadyKnew = numAlreadyKnew + 1
+			elseif learnStatus == 2 then
+				numErrored = numErrored + 1
+			end
+		end
 	end
 	widget.playSound("/sfx/interface/item_equip.ogg") -- Give the player some feedback that they learned the entries.
+	
+	-- Now let's give them feedback.
+	local statusText = ""
+	
+	if numLearned ~= 0 then
+		-- We learned at least one. Append this information.
+		statusText = statusText .. "^cornflowerblue;Read " .. tostring(numLearned) .. "^reset;"
+	end
+	if numAlreadyKnew ~= 0 then
+		-- We already knew at least one. But...
+		if numLearned ~= 0 then
+			-- If we ALSO learned at least one, add a separator bar, then the necessary text.
+			statusText = statusText .. " ^gray;/^reset; " .. "^cornflowerblue;Knew " .. tostring(numAlreadyKnew) .. "^reset;"
+		else
+			-- But here we have a bit of a strange condition.
+			-- If the user has read at least one of these entries, then "Read X | Knew Y" makes sense linguistically.
+			-- Alternatively, just "Knew Y" doesn't, so I will use the extra space I have from NOT putting the "Read X" to make this more descriptive
+			-- It will say "Already Knew Y" if it can now.
+			
+			statusText = statusText .. "^cornflowerblue;Already Knew " .. tostring(numAlreadyKnew) .. "^reset;"
+		end
+	end
+	if numErrored ~= 0 then
+		-- Similar case with the number of errored codex entries. If something has added text before this, add the separator bar.
+		if numLearned ~= 0 or numAlreadyKnew ~= 0 then
+			statusText = statusText .. " ^gray;/^reset; "
+		end
+		
+		-- Direct people to the log.
+		statusText = statusText .. "^red;" .. tostring(numErrored) .. " failed (see log)"
+	end
+	
+	-- Reflect on this information.
+	widget.setText("statusMessage", statusText)
 end
 
 -- gg ez
