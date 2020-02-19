@@ -353,14 +353,15 @@ local function PopulateCategories()
 					if firstAvailableGenderImage ~= "" then
 						-- print("Setting race image to", firstAvailableGenderImage)
 						--widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", genderTable.characterImage)
-						widget.setButtonImages("racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton", 
+						--[[widget.setButtonImages("racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton", 
 							{
 								base = firstAvailableGenderImage,
 								hover = firstAvailableGenderImage .. "?brightness=30",
 								pressed = firstAvailableGenderImage .. "?brightness=30",
 								disabled = ""
 							}
-						)
+						)]]--
+						widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", firstAvailableGenderImage)
 					else
 						-- We don't have the pictures! Let's use the displayName.
 						-- print("Setting race image to nothing and using the abbreviated display name instead, which is", displayName)
