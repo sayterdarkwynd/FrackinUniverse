@@ -8,7 +8,6 @@ NebRNGWarpPoint = WeaponAbility:new()
 
 function NebRNGWarpPoint:init()
   self.energyPerShot = self.energyPerShot or 0
-  sb.logInfo( type(self.drawTime) )
   animator.setGlobalTag("directives", config.getParameter("directives", ""))
   self.paletteSwaps = config.getParameter("paletteSwaps")
   self.elementalType = config.getParameter("elementalType")

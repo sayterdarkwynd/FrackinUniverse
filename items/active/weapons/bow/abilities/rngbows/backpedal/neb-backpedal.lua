@@ -12,7 +12,6 @@ function FlipSlash:init()
 end
 
 function FlipSlash:update(dt, fireMode, shiftHeld)
-sb.logInfo(self.energyUsage)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
   
   if mcontroller.onGround() or mcontroller.liquidMovement() or mcontroller.zeroG() then
