@@ -1,7 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/scripts/versioningutils.lua"
-require "/scripts/staticrandom.lua"
 
 function build(directory, config, parameters, level, seed)
   local configParameter = function(keyName, defaultValue)
@@ -47,11 +46,16 @@ function build(directory, config, parameters, level, seed)
   end
 
 
+  
     
   config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1))
   config.tooltipFields = {}
   
   config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
+
+  if configParameter("upgrades") == 1 then
+    config.tooltipFields.upgradeLabel = "^cyan;Upgradeable^reset;"
+  end
   
   if config.leveledStatusEffects then 
           config.tooltipFields.priceLabel = config.price
