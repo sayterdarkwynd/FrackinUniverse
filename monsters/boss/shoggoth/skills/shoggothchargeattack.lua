@@ -51,7 +51,7 @@ function shoggothChargeAttack.update(dt, stateData)
       animator.playSound("shoggothChomp")
       world.damageTiles(crashTiles, "foreground", monster.toAbsolutePosition({10, 0}), "plantish", 30)
     end
-      -- shoggothChargeAttack.chomp(targetDir)
+      shoggothChargeAttack.chomp(targetDir)
       stateData.currentPeriod = stateData.intervalTime
     else
       stateData.currentPeriod = stateData.currentPeriod - dt
