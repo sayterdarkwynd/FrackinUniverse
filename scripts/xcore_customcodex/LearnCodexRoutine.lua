@@ -6,7 +6,7 @@ local print, warn, error, assertwarn, assert, tostring;
 
 local function GetLoggingOverridesIfNecessary()
 	if HasLoggingOverride then return end
-	print, warn, error, assertwarn, assert, tostring = CreateLoggingOverride("[XCustomCodex Systems] ")
+	print, warn, error, assertwarn, assert, tostring = CreateLoggingOverride("[XCustomCodex Systems]")
 	
 	HasLoggingOverride = true
 end
@@ -42,7 +42,7 @@ function LearnCodex(itemName)
 	------------------------------------
 	
 	-- Second sanity check: Item exists?
-	local data = root.itemConfig(itemName) -- Kind of counterintuitive but oh well.
+	local data = root.itemConfig(itemName)
 	if data == nil or data.directory == nil then
 		warn("Player attempted to learn a codex from the item [" .. tostring(itemName) .. "], but root.itemConfig() returned nil data on this item! Aborting the learning procedure.")
 		return 2
@@ -71,7 +71,20 @@ function LearnCodex(itemName)
 		print("Player has learned codex " .. table.concat(codexCache, ", ") .. ".")
 		return 0
 	else
-		print("Player attempted to learn codex " .. table.concat(codexCache, ", ") .. " but they already know it, so we don't need to learn it again.")
+		-- print("Player attempted to learn codex " .. table.concat(codexCache, ", ") .. " but they already know it, so we don't need to learn it again.")
 		return 1
 	end
+end
+
+-- Cleans up the player's stored codex entries to get rid of any that no longer exist.
+function CleanUpCodexEntries()
+	local newKnownEntries = {}
+	local existingKnownEntries = player.getProperty("xcodex.knownCodexEntries") or {}
+	for index, cdx in ipairs(existingKnownEntries) do
+		local data = root.itemConfig(cdx[1] or "ERR_NULL_ITEM_NAME")
+		if data ~= nil and data.directory ~= nil then
+			table.insert(newKnownEntries, cdx)
+		end
+	end
+	player.setProperty("xcodex.knownCodexEntries", newKnownEntries)
 end
