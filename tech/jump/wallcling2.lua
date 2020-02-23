@@ -34,7 +34,12 @@ function uninit()
   releaseWall()
 end
 
+function applyTechBonus()
+  self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+end
+
 function update(args)
+  applyTechBonus()
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
 

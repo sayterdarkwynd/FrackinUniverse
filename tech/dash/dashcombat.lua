@@ -39,6 +39,7 @@ function applyTechBonus()
   self.dashBonus = 1 + status.stat("dashtechBonus",0) -- apply bonus from certain items and armor
   self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
   self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
+   self.dodgetechBonus = 0 + status.stat("dodgetechBonus",0) -- apply bonus to defense from items and armor
 end
 
 function update(args)
@@ -92,11 +93,15 @@ function startDash(direction)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
+  -- defense bonus is applied if the player has the relevant stat. Otherwise we apply the basic small boost granted by the default tech
+  if self.dodgetechBonus > 0.01 then
+    status.setPersistentEffects("dodgeDefenseBoost", {{stat = "protection", effectiveMultiplier = (1 + self.dodgetechBonus)}}) 
+  end  
 end
 
 function endDash()
   status.clearPersistentEffects("movementAbility")
-  
+  status.clearPersistentEffects("dodgeDefenseBoost")
   if self.stopAfterDash then
     self.specialModifier = status.resource("energy") / status.stat("maxEnergy")
     if status.resource("energy") > 20 then -- give bonus damage!!!!!! 
