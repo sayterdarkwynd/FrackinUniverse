@@ -49,8 +49,14 @@ function uninit()
 end
 
 
-function update(args)
+function applyTechBonus()
+  self.dashBonus = 1 + status.stat("dashtechBonus",0) -- apply bonus from certain items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
+end
 
+function update(args)
+  applyTechBonus()
   if self.dashCooldownTimer > 0 then
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
     if self.dashCooldownTimer == 0 then

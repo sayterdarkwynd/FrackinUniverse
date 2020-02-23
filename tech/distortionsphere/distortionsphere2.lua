@@ -56,7 +56,7 @@ function update(args)
       end
     if self.pressDown and self.bombTimer == 0 then
       self.bombTimer = 1.1
-      self.bombbonus = 1 + (status.stat("bombtechBonus") or 0)
+      self.bombbonus = (status.stat("bombtechBonus") or 1)
       local configBombDrop = { power = 10 * self.bombbonus }
       animator.playSound("bombdrop")
       world.spawnProjectile("distortionbomb", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
