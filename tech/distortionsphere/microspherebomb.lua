@@ -56,10 +56,10 @@ function update(args)
         self.bombTimer = math.max(0, self.bombTimer - args.dt)
       end
     
-    if self.pressDown and self.bombTimer == 0 then
+    if self.pressDown and self.bombTimer == 0 and status.overConsumeResource("energy", 70)then
       self.bombTimer = 1.6
       self.bombbonus = 1 + (status.stat("bombtechBonus") or 0)
-      local configBombDrop = { power = 20 * self.bombbonus }
+      local configBombDrop = { power = 30 * self.bombbonus }
       animator.playSound("bombdrop")
       world.spawnProjectile("distortionbomb", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
     end
