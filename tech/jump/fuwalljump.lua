@@ -1,68 +1,43 @@
+require "/tech/jump/multijump.lua"
 require "/scripts/vec2.lua"
 require "/scripts/poly.lua"
 
 function init()
-	self.doingAbility = false
-	self.jumpSpeedMultiplier = config.getParameter("jumpSpeedMultiplier")
-	self.fallGravityMultiplier = config.getParameter("fallGravityMultiplier")
-	self.fallDamageMultiplier = config.getParameter("fallDamageMultiplier")
-	self.flutterXVelocity = config.getParameter("flutterXVelocity")
-	self.flutterYVelocity = config.getParameter("flutterYVelocity")
-	self.flutterTime = config.getParameter("flutterTime")
-	self.flutterAfterFall = config.getParameter("flutterAfterFall")
-	self.flutterFall = config.getParameter("flutterFall")
-	self.flutterTimer = 0
-	self.flutterAble = false
-	
-	self.wallSlideParameters = config.getParameter("wallSlideParameters")
-	self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
-	self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime")
-	self.wallGrabFreezeTimer = 0
-	self.wallReleaseTime = config.getParameter("wallReleaseTime")
-	self.wallReleaseTimer = 0
-	
-	self.lastJumpKey = false
+  self.multiJumpCount = config.getParameter("multiJumpCount")
+  self.multiJumpModifier = config.getParameter("multiJumpModifier")
 
-	buildSensors()
-	self.wallDetectThreshold = config.getParameter("wallDetectThreshold")
-	self.wallCollisionSet = {"Dynamic", "Block"}
-	releaseWall()
+  self.wallSlideParameters = config.getParameter("wallSlideParameters")
+  self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
+  self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime")
+  self.wallGrabFreezeTimer = 0
+  self.wallReleaseTime = config.getParameter("wallReleaseTime")
+  self.wallReleaseTimer = 0
+
+  buildSensors()
+  self.wallDetectThreshold = config.getParameter("wallDetectThreshold")
+  self.wallCollisionSet = {"Dynamic", "Block"}
+
+  refreshJumps()
+  releaseWall()
+end
+
+function uninit()
+  releaseWall()
 end
 
 function applyTechBonus()
   self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+  self.multiJumpModifier = config.getParameter("multiJumpModifier") * self.jumpBonus
+  self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity") * self.jumpBonus
 end
 
 function update(args)
   applyTechBonus()
-	if not disabled(args) and args.moves["jump"] and canAbility(args) then
-		if not self.doingAbility then 
-			self.doingAbility = true
-			startAbility(args)
-		end
-		updateAbility(args)
-	elseif self.doingAbility then
-		self.doingAbility = false
-		stopAbility(args)
-	end
-	
-	if not disabled(args) and not self.doingAbility then
-		if mcontroller.jumping() then
-			updateJumping(args)
-		end
-		if mcontroller.falling() then
-			updateFalling(args)
-		end
-		if mcontroller.groundMovement() or mcontroller.liquidMovement() then
-			landed(args)
-		end
-	end
-	
-	if not disabled(args) then updateAlways(args)
-	end
-	
-  local jumpActivated = args.moves["jump"] and not self.lastJumpKey
-  self.lastJumpKey = args.moves["jump"]
+  local jumpActivated = args.moves["jump"] and not self.lastJump
+  self.lastJump = args.moves["jump"]
+
+  updateJumpModifier()
+
   local lrInput
   if args.moves["left"] and not args.moves["right"] then
     lrInput = "left"
@@ -71,6 +46,7 @@ function update(args)
   end
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
+    refreshJumps()
     if self.wall then
       releaseWall()
     end
@@ -105,57 +81,10 @@ function update(args)
   elseif not status.statPositive("activeMovementAbilities") then
     if lrInput and not mcontroller.jumping() and checkWall(lrInput) then
       grabWall(lrInput)
+    elseif jumpActivated and canMultiJump() then
+      doMultiJump()
     end
   end
-end
-
-function disabled(args)
-	return mcontroller.liquidMovement()
-		or status.statPositive("activeMovementAbilities")
-end
-
-function canAbility(args)
-	return not mcontroller.jumping()
-		and not mcontroller.canJump()
-		and args.moves["jump"] 
-		and ( not ( mcontroller.velocity()[2] > 0 ) or self.doingAbility )
-end
-
-function landed(args)
-	tech.setParentState()
-	if self.doingAbility then
-		self.doingAbility = false
-		stopAbility(args)
-	end
-end
-
-function startAbility(args)
-    self.doingAbility = false
-end
-
-function stopAbility(args)
-
-end
-
-function updateAbility(args)
-		self.doingAbility = false
-end
-
-function updateJumping(args)
-	local params = mcontroller.baseParameters()
-	params.airJumpProfile.jumpSpeed = (params.airJumpProfile.jumpSpeed * self.jumpSpeedMultiplier) * self.jumpBonus
-	mcontroller.controlParameters(params)
-end
-
-function updateFalling(args)
-	tech.setParentState()
-	local params = mcontroller.baseParameters()
-	params.gravityMultiplier = params.gravityMultiplier * self.fallGravityMultiplier
-	mcontroller.controlParameters(params)
-end
-
-function updateAlways(args)
-	 status.setPersistentEffects ( "movementAbility", { {stat = "fallDamageMultiplier", effectiveMultiplier = self.fallDamageMultiplier } } )
 end
 
 function buildSensors()
@@ -191,20 +120,18 @@ function doWallJump()
 end
 
 function grabWall(wall)
-  self.doingAbility = false
-  stopAbility(nil)
   self.wall = wall
   self.wallGrabFreezeTimer = self.wallGrabFreezeTime
   self.wallReleaseTimer = 0
   mcontroller.setVelocity({0, 0})
-  --tech.setToolUsageSuppressed(true)
+  tech.setToolUsageSuppressed(true)
   tech.setParentState("fly")
   animator.playSound("wallGrab")
 end
 
 function releaseWall()
   self.wall = nil
-  --tech.setToolUsageSuppressed(false)
+  tech.setToolUsageSuppressed(false)
   tech.setParentState()
   animator.setParticleEmitterActive("wallSlide.left", false)
   animator.setParticleEmitterActive("wallSlide.right", false)

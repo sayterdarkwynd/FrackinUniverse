@@ -30,6 +30,9 @@ end
 
 function applyTechBonus()
   self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+  self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity") * self.jumpBonus
+  self.wallJumpYVelocity = config.getParameter("wallJumpYVelocity") * self.jumpBonus
+  self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime") * self.jumpBonus
 end
 
 function update(args)
@@ -106,7 +109,6 @@ function checkWall(wall)
   local pos = mcontroller.position()
   local wallCheck = 0
   for _, offset in pairs(self.wallSensors[wall]) do
-    -- world.debugPoint(vec2.add(pos, offset), world.pointCollision(vec2.add(pos, offset), self.wallCollisionSet) and "yellow" or "blue")
     if world.pointCollision(vec2.add(pos, offset), self.wallCollisionSet) then
       wallCheck = wallCheck + 1
     end

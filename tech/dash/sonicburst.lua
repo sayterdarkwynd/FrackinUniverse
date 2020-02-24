@@ -45,6 +45,7 @@ end
 
 
 function applyTechBonus()
+  self.damageBonus = 1 + status.stat("bombtechBonus",0) -- apply bonus from certain items and armor
   self.dashBonus = 1 + status.stat("dashtechBonus",0) -- apply bonus from certain items and armor
   self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
   self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
@@ -121,7 +122,7 @@ function startDash(direction)
 
 -- ***spawn projectile
     local damageConfig = { 
-      power = (status.stat("maxEnergy")/5),
+      power = (status.stat("maxEnergy")/5) * self.damageBonus,
       damageSourceKind = "default" 
     } 
     world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)

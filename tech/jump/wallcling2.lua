@@ -36,6 +36,9 @@ end
 
 function applyTechBonus()
   self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+  self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity") * self.jumpBonus
+  self.wallJumpYVelocity = config.getParameter("wallJumpYVelocity") * self.jumpBonus
+  self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime") * self.jumpBonus  
 end
 
 function update(args)

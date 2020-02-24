@@ -210,7 +210,7 @@ function activate()
   tech.setToolUsageSuppressed(true)
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   self.active = true
-  status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 20}})
+  status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 20 * ( 1+ status.stat("defensetechBonus") or 1) }})
   
   status.addEphemeralEffect("waterimmunity",1)  --disable spike sphere insanity-speed in liquid
 end

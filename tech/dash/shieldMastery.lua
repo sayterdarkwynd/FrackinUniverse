@@ -36,6 +36,7 @@ function uninit()
 end
 
 function applyTechBonus()
+  self.defensetechBonus = 1 + status.stat("defensetechBonus",0) -- apply bonus from certain items and armor
   self.dashBonus = 1 + status.stat("dashtechBonus",0) -- apply bonus from certain items and armor
   self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
   self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
@@ -85,6 +86,11 @@ function groundValid()
 end
 
 function startDash(direction)
+
+  if self.shieldtechBonus > 1 then
+  
+  end
+  
   self.dashDirection = direction
   self.dashTimer = self.dashDuration
   self.airDashing = not mcontroller.groundMovement()
@@ -93,15 +99,15 @@ function startDash(direction)
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
 
-
+  if self.shieldtechBonus > 1 then  -- do we have tech bonuses to this ability on the race or gear or consumable status effects?
+    
+  else
     if status.resource("energy") > 50 then -- requires at least 50 energy
       status.addEphemeralEffect("shieldmastery") 
       animator.playSound("chargebonus")
       status.consumeResource("energy", 50)
-    end
-    
-  
-  
+    end  
+  end
 end
 
 function endDash()

@@ -164,7 +164,7 @@ end
 
 function updateJumping(args)
 	local params = mcontroller.baseParameters()
-	params.airJumpProfile.jumpSpeed = params.airJumpProfile.jumpSpeed * self.jumpSpeedMultiplier
+	params.airJumpProfile.jumpSpeed = (params.airJumpProfile.jumpSpeed * self.jumpSpeedMultiplier) * self.jumpBonus
 	mcontroller.controlParameters(params)
 end
 
