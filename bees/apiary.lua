@@ -6,10 +6,6 @@ require "/zb/zb_util.lua"
 
 --[[		Comments:
 
---[[	TO DO:
-	Implement queen lifespan
---]]
-
 --[[	Updating tooltips:
 
 	You must "rebuild" the item.
@@ -26,8 +22,12 @@ require "/zb/zb_util.lua"
 		leafcutter = {"tunguskudae", "sandprowler", "goldensaint"},
 		carpenter = {"artisan", "carpenter", "inventor", "scoria"},
 		squash = {"cuckoo", "loamzipper", "stalwart", "rimewing"},
-		honey = {"honey", "ghost", "bumble", "orchid"},
-		mason = {"gelid", "digger", "oremason"}  -- ADD 'crystalwing' bee, produces crystals , now that we have many types
+		honey = {"honey", "exspiravit", "bumblebee", "orchid"},
+		mason = {"gelid", "digger", "oremason"}  
+		-- ADD 'crystalwing' bee, produces crystals , now that we have many types
+		-- add 'cyberneticbee'
+		-- add 'devoratrix' bee (Flesh bee)
+		-- add aquarum bee (oceanic)
 	}
 
 	Progress increases by the bees production stat multiplied by the hives production efficiency with a small random factor which applies for each product separetly
