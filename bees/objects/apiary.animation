@@ -1,0 +1,74 @@
+{
+	"animatedParts" : {
+		"stateTypes" : {
+			"base" : {
+				"default" : "default",
+				"states" :
+				{
+					"default"	: { "frames" : 1 },
+					"disabled"	: { "frames" : 1 }
+				}
+			},
+			"bees" : {
+				"default" : "off",
+				"states" : {
+					"off" : {},
+					"on" : {
+						"frames" : 9,
+						"cycle" : 1.2,
+						"mode" : "loop",
+						"properties" : {
+							"persistentSound" : "/sfx/bees/hive.ogg"
+						}
+					}
+				}
+			},
+			"loading" : {
+				"default" : "off",
+				"states" :
+				{
+					"off" : { "frames" : 1 },
+					"on"	: {
+						"frames" : 7,
+						"cycle" : 0.8,
+						"mode" : "loop"
+					}
+				}
+			}
+		},
+
+		"parts" : {
+			"base" : {
+				"properties" : { "centered" : false },
+				"partStates" : {
+					"base" : {
+						"default"	: { "properties" : { "image" : "<partImage>:default" } },
+						"disabled"	: { "properties" : { "image" : "<partImage>:disabled" } }
+					}
+				}
+			},
+			"bees" : {
+				"properties" : { 
+					"zLevel" : 1,
+					"centered" : false
+				},
+				"partStates" : {
+					"bees" : {
+						"on" : { "properties" : { "image" : "<partImage>:<frameIndex>" } }
+					}
+				}
+			},
+			"loading" : {
+				"properties" : { 
+					"zLevel" : 2,
+					"centered" : false
+				},
+				"partStates" : {
+					"loading" : {
+						"on" : { "properties" : { "image" : "<partImage>:<frameIndex>" } }
+					}
+				}
+			}
+		}
+	}
+}
