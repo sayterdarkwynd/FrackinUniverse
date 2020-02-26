@@ -14,6 +14,17 @@ require("/scripts/xcore_customcodex/LoggingOverride.lua") -- tl;dr I can use pri
 ------ TEMPLATE DATA ------
 ---------------------------
 
+local CODEX_BUTTON_STOCK = "/interface/scripted/xcustomcodex/codexbutton.png"
+local CODEX_BUTTON_HOVER = "/interface/scripted/xcustomcodex/codexbuttonhover.png"
+
+local RACE_BUTTON_STOCK = "/interface/scripted/xcustomcodex/racebutton.png"
+local RACE_BUTTON_HOVER =  "/interface/scripted/xcustomcodex/racebuttonhover.png"
+
+-- local NO_RACE_ICON = "/interface/scripted/xcustomcodex/icon_none.png"
+-- local NO_RACE_ICON_HOVER = "/interface/scripted/xcustomcodex/icon_none_hover.png"
+
+local QUESTION_MARK = "/interface/scripted/xcustomcodex/question_mark.png"
+
 -- This is the text that displays on the "Ambiguous Race" button.
 local TEXT_AMBIGUOUS_BUTTON = "?"
 
@@ -23,9 +34,10 @@ local TEMPLATE_CODEX_ENTRY_BUTTON = {
 	type = "button",
 	caption = "",
 	textAlign = "center",
-	base = "/interface/scripted/xcustomcodex/codexbutton.png",
-	hover = "/interface/scripted/xcustomcodex/codexbuttonhover.png",
-	pressed = "/interface/scripted/xcustomcodex/codexbuttonhover.png",
+	pressedOffset = {1, -1},
+	base = CODEX_BUTTON_STOCK,
+	hover = CODEX_BUTTON_HOVER,
+	pressed = CODEX_BUTTON_HOVER,
 	callback = "ListButtonClicked"
 }
 
@@ -35,14 +47,14 @@ local TEMPLATE_CODEX_RACE_CATEGORY = {
 	type = "list",
 	callback = "RaceButtonClicked",
 	schema = {
-		selectedBG = "/interface/scripted/xcustomcodex/racebuttonhover.png",
-		unselectedBG = "/interface/scripted/xcustomcodex/racebutton.png",
+		selectedBG = RACE_BUTTON_HOVER,
+		unselectedBG = RACE_BUTTON_STOCK,
 		spacing = {0, 0},
 		memberSize = {24, 24},
 		listTemplate = {
 			constBG = {
 				type = "image",
-				file = "/interface/scripted/xcustomcodex/racebutton.png"
+				file = RACE_BUTTON_HOVER
 			},
 			raceIcon = {
 				type = "image",
@@ -53,9 +65,10 @@ local TEMPLATE_CODEX_RACE_CATEGORY = {
 				type = "button",
 				caption = "",
 				textAlign = "center",
-				base = "/interface/scripted/xcustomcodex/racebutton.png",
-				hover = "/interface/scripted/xcustomcodex/racebuttonhover.png",
-				pressed = "/interface/scripted/xcustomcodex/racebuttonhover.png",
+				base = RACE_BUTTON_STOCK,
+				hover = RACE_BUTTON_HOVER,
+				pressed = RACE_BUTTON_HOVER,
+				pressedOffset = {0, 0}, -- The text and image don't move with this button so it looks bad when it moves. Disable this.
 				callback = "null"
 			},
 			buttonLabel = {
@@ -74,11 +87,14 @@ local TEMPLATE_CODEX_RACE_CATEGORY = {
 ------ CORE DATA ------
 -----------------------
 
--- Data binding [X] codex button to [Y] codex JSON
+-- Data that binds [X] codex button to [Y] codex JSON
 local CodexButtonBindings = {}
 
 -- A registry of the categories we already have created in the GUI.
 local ExistingCategoryButtons = {}
+
+-- The names of every element in the race category. This is used for updating the button graphics.
+local CategoryElementNames = {}
 
 -- The current page we're on in the codex.
 local CurrentPage = 1
@@ -93,6 +109,23 @@ local PrevButtonEnabled = false
 ------------------------------
 ------ HELPER FUNCTIONS ------
 ------------------------------
+
+-- Makes it so that the given button has a yellow border around it, and resets all other buttons in the codex list to not have the border
+-- This gives the appearance of a persistent selection on the buttons.
+local function SetActiveEntryButton(activeName)
+	for bName in pairs(CodexButtonBindings) do
+		widget.setButtonImage("codexList." .. bName, CODEX_BUTTON_STOCK)
+	end
+	widget.setButtonImage("codexList." .. activeName, CODEX_BUTTON_HOVER)
+end
+
+-- Same as above, but it goes to the category list.
+local function SetActiveRaceButton(activeName)
+	for _, bName in pairs(CategoryElementNames) do
+		widget.setButtonImage(bName, RACE_BUTTON_STOCK)
+	end
+	widget.setButtonImage(activeName, RACE_BUTTON_HOVER)
+end
 
 -- Receives a list of pages as well as the current page index.
 -- Using this information, it updates the enabled status of the next and previous buttons.
@@ -353,14 +386,15 @@ local function PopulateCategories()
 					if firstAvailableGenderImage ~= "" then
 						-- print("Setting race image to", firstAvailableGenderImage)
 						--widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", genderTable.characterImage)
-						widget.setButtonImages("racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton", 
+						--[[widget.setButtonImages("racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton", 
 							{
 								base = firstAvailableGenderImage,
 								hover = firstAvailableGenderImage .. "?brightness=30",
 								pressed = firstAvailableGenderImage .. "?brightness=30",
 								disabled = ""
 							}
-						)
+						)]]--
+						widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", firstAvailableGenderImage)
 					else
 						-- We don't have the pictures! Let's use the displayName.
 						-- print("Setting race image to nothing and using the abbreviated display name instead, which is", displayName)
@@ -368,7 +402,8 @@ local function PopulateCategories()
 					end
 				else
 					--print("Could not set button icon -- race doesn't exist (this is the ambiguous table) or the race was unable to resolve an appropriate icon.")
-					widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", TEXT_AMBIGUOUS_BUTTON)
+					-- widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", TEXT_AMBIGUOUS_BUTTON)
+					widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", QUESTION_MARK)
 				end
 				
 				-- Lastly, let's set the data of this specific new list element (the cumulative representation of the picture, display name, and button elements) to the actual race name.
@@ -377,6 +412,7 @@ local function PopulateCategories()
 				
 				-- Now populate this data.
 				ExistingCategoryButtons[actualRaceName] = codexSpecies
+				table.insert(CategoryElementNames, "racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton")
 			end
 		end
 	end
@@ -391,7 +427,10 @@ function ListButtonClicked(widgetName, widgetData)
 	-- Do we have button data bindings for this button? If so, call OpenCodex with that data.
 	-- Said data is the raw JSON of the codex file (including any edits we've made here on the fly, e.g. the longContentPages value population)
 	local data = CodexButtonBindings[widgetName]
-	if data then OpenCodex(data) end
+	if data then 
+		OpenCodex(data)
+		SetActiveEntryButton(widgetName)
+	end
 end
 
 -- Run when one of the racial category buttons are clicked.
@@ -402,7 +441,10 @@ function RaceButtonClicked(widgetName, widgetData)
 	local actualRaceName = widget.getData("racialCategoryList.racelist." .. tostring(itemId))[1]
 	
 	local codexSpecies = ExistingCategoryButtons[actualRaceName]
-	if codexSpecies then PopulateCodexEntriesForCategory(codexSpecies, actualRaceName) end
+	if codexSpecies then 
+		PopulateCodexEntriesForCategory(codexSpecies, actualRaceName)
+		SetActiveRaceButton("racialCategoryList.racelist." .. tostring(itemId) .. ".raceButton")
+	end
 end
 
 -- Run when the "Previous Page" button is clicked.

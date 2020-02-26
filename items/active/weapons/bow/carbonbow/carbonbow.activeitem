@@ -5,7 +5,7 @@
   "inventoryIcon" : "carbonbowicon.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "tooltipKind" : "neb-randombow",
+  "tooltipKind" : "bow2",
   "weaponType" : "Bow",
   "description" : "A carbon hunting bow, monsters killed with a bow drop tasty meat.",
   "shortdescription" : "Carbon Hunting Bow",
@@ -40,31 +40,37 @@
     "drawTime" : 1.0,				//Time to fully draw the bow
 	"powerProjectileTime" : 0.215,	//After fully drawing, the bow is super-charged for this long
 	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows	
-	"energyPerShot" : 36,			
+	"energyPerShot" : 40,			
 	"holdEnergyUsage" : 4,				
 	"airborneBonus" : 1.45,	
     "projectileType" : "ironarrow",
     "powerProjectileType" : "chargedironarrow",
     "projectileParameters" : {
-      "power" : 8.65
+      "power" : 8,
+      "piercing" : false
     },
     "powerProjectileParameters" : {
-      "power" : 9.23
+      "power" : 8.5,
+      "piercing" : true
     }
   },
 
-  "altAbilityType" : "tripleshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawSpeedMultiplier" : "constant",
-    "drawFrameSelector" : "bowImageSelectorNoPower",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "name" : "Explosive Arrow",
+    "drawTime" : 1.5,
+    "powerProjectileTime" : 0.3,	//After fully drawing, the bow is super-charged for this long
+    "energyPerShot" : 70,
     "projectileType" : "ironarrow",
+    "powerProjectileType" : "explosivebolt",
     "projectileParameters" : {
-      "power" : 7.0
+      "power" : 8.5,
+      "piercing" : false
     },
-    "splitDelay" : 0.04,
-    "splitAngle" : 5
+    "powerProjectileParameters" : {
+      "power" : 9,
+      "piercing" : false
+    }
   },
   
   "critChance" : 4,

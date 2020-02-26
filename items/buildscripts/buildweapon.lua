@@ -251,7 +251,30 @@ function build(directory, config, parameters, level, seed)
 	      config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
     	      config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png" 
     	      config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"  
-    	      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"     
+    	      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"   
+    -- Staff and Wand specific --
+    if config.primaryAbility.projectileParameters then
+	    if config.primaryAbility.projectileParameters.baseDamage then
+		    config.tooltipFields.staffDamageLabel = config.primaryAbility.projectileParameters.baseDamage  
+	    end	     
+    end    
+
+    if config.primaryAbility.energyCost then
+	    config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyCost
+    end 
+    if config.primaryAbility.energyPerShot then
+	    config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyPerShot
+    end       
+    if config.primaryAbility.maxCastRange then
+	    config.tooltipFields.staffRangeLabel = config.primaryAbility.maxCastRange
+    else
+    	    config.tooltipFields.staffRangeLabel = 25
+    end  
+    if config.primaryAbility.projectileCount then
+	    config.tooltipFields.staffProjectileLabel = config.primaryAbility.projectileCount
+    else
+    	    config.tooltipFields.staffProjectileLabel = 1
+    end        
   --
       
   if elementalType ~= "physical" then

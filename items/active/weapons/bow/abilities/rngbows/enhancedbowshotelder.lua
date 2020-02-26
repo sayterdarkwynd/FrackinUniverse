@@ -193,6 +193,8 @@ function NebBowShotElder:currentProjectileParameters()
 		damageBonus = status.stat("nebsrngbowdamagebonus")
   end
   
+  -- are we in the air? if so, add airborne damage bonus. if not, we do not apply it
+  
   --Calculate projectile power based on draw time and projectile parameters
   local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer / self.drawTime))
   projectileParameters.power = projectileParameters.power or projectileConfig.power 
@@ -202,7 +204,7 @@ function NebBowShotElder:currentProjectileParameters()
 		* drawTimeMultiplier
 		* (self.dynamicDamageMultiplier or 1)
 		* damageBonus
-		* (mcontroller.onGround() and 1 or self.airborneBonus)
+		* (mcontroller.onGround() and 1 or (mcontroller.liquidMovement() and 1 or mcontroller.zeroG() and 1 or (self.airborneBonus + status.stat("bowAirBonus"))))
 		/ (self.projectileCount or 1)
   projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
 

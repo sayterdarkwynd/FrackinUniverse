@@ -40,20 +40,20 @@
 		],
 		
     "drawTime" : [0.5, 1.4],				//Time to fully draw the bow
-    "powerProjectileTime" : [0.185, 0.365],		//After fully drawing, the bow is super-charged for this long
-    "energyPerShot" : [25, 40],				//Total energy consumption for a full draw
-    "holdEnergyUsage" : [3, 12],			//Energy consumption per second while fully drawn
+    "powerProjectileTime" : [0.105, 0.35],		//After fully drawing, the bow is super-charged for this long
+    "energyPerShot" : [30, 60],				//Total energy consumption for a full draw
+    "holdEnergyUsage" : [3, 18],			//Energy consumption per second while fully drawn
     "airborneBonus" : 1.25,				//A dmg multiplier for when airborne
 	
     "cooldownTime" : 0.2,				//Time between firing and drawing the next arrow
     "inaccuracy" : 0.0,					//Inaccuracy of the shot
 	
-		"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
-		"useQuiverDamageBonus" : true,		//If true, allows this bow to use quiver damage bonuses
-	
-		"drainEnergyWhilePowerful" : false,	//If true, consume energy while at max power
-		"staticDamageMultiplier" : null,	//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
-		"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"walkWhileFiring" : true,		//If true, prevents the player from running while drawing the bow
+	"useQuiverDamageBonus" : true,		//If true, allows this bow to use quiver damage bonuses
+
+	"drainEnergyWhilePowerful" : false,	//If true, consume energy while at max power
+	"staticDamageMultiplier" : null,	//If this value is set, arrow damage is independent of draw time and is instead multiplied by this value
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
 
     "drawArmFrames" : ["rotation", "run.2", "swim.2", "swimIdle.1", "swim.1", "swim.1"],
 
@@ -67,7 +67,7 @@
     "powerProjectileParameters" : {
       "knockbackRange" : [3,6],
       "speed" : 100,
-      "power" : 9.25
+      "power" : 9
     },
 
     "stances" : {

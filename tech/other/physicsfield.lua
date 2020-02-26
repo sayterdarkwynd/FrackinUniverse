@@ -17,8 +17,14 @@ function uninit()
 	idle()
 end
 
+function applyTechBonus()
+  self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+  self.boostSpeed = config.getParameter("boostSpeed") * self.jumpBonus
+  self.boostForce = config.getParameter("boostForce") * self.jumpBonus
+end
 
 function update(args)
+  applyTechBonus()
 	local jumpActivated = args.moves["jump"] and not self.lastJump
 	self.lastJump = args.moves["jump"]
 	self.stateTimer = math.max(0, self.stateTimer - args.dt)
@@ -41,7 +47,7 @@ function update(args)
 	
 	if self.gravActive then
 		if status.overConsumeResource("energy", 0.07) then
-			status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2}}
+			status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2 * self.jumpBonus}}
 		else
 			self.gravActive=false
 		end
@@ -76,9 +82,7 @@ end
 
 function canRocketJump()
   return self.available
-      --and not mcontroller.jumping()
       and not mcontroller.canJump()
-      --and not mcontroller.liquidMovement()
       and not status.statPositive("activeMovementAbilities")
 end
 
