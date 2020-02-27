@@ -18,12 +18,12 @@ require "/zb/zb_util.lua"
 
 	beeSubtypeIDs = {
 		plasterer = {"isovapitdae", "harlequin", "shrouded", "stellar","cybernetic"},
-		sweat = {"xenodaemonae", "redbanded", "assassin", "killer"},
+		sweat = {"xenodaemonae", "redbanded", "assassin", "reaper"},
 		leafcutter = {"tunguskudae", "sandprowler", "goldensaint"},
 		carpenter = {"artisan", "carpenter", "inventor", "scoria","crystalwing"},
 		squash = {"cuckoo", "loamzipper", "stalwart", "rimewing"},
 		honey = {"honey", "exspiravit", "bumblebee", "orchid"},
-		mason = {"gelid", "digger", "oremason","aquarum","devoratrix"}  
+		mason = {"gelidBurrower", "digger", "oremason","aquarum","devoratrix"}  
 	}
 
 	Progress increases by the bees production stat multiplied by the hives production efficiency with a small random factor which applies for each product separetly

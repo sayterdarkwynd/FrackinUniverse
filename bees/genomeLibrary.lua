@@ -315,3 +315,13 @@ genelib.evolveGenome = function(genome, modifier)
 	
 	return newGenome
 end
+
+
+--setStat
+-- Modify a stat string by a number (+2/-5)
+-- Use this to modify stat values.
+genelib.modifyStatString = function(str, mod)
+    local val = genelib.statToDecimal(str)
+    val = val + mod
+    return genelib.numberToStat(val)
+end
