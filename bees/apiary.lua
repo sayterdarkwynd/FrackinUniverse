@@ -24,10 +24,6 @@ require "/zb/zb_util.lua"
 		squash = {"cuckoo", "loamzipper", "stalwart", "rimewing"},
 		honey = {"honey", "exspiravit", "bumblebee", "orchid"},
 		mason = {"gelid", "digger", "oremason","aquarum","devoratrix"}  
-		-- ADD 'crystalwing' bee, produces crystals , now that we have many types
-		-- add 'cyberneticbee'
-		-- add 'devoratrix' bee (Flesh bee)
-		-- add aquarum bee (oceanic)
 	}
 
 	Progress increases by the bees production stat multiplied by the hives production efficiency with a small random factor which applies for each product separetly
