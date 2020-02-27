@@ -768,6 +768,19 @@ end
 -- Roll for mite infestation, or increment mite count if there's an infestation
 function miteGrowth()
 	if storage.mites > 0 then
+	        
+	        --display an infested hive image over the normal hive appearance if its infested enough
+		if storage.mites > 50 then  --if mites pass 100, display a rotten looking apiary
+		  animator.setAnimationState("base", "infested", true)
+		  animator.setAnimationState("warning", "on", true)
+		elseif storage.mites > 200 then  --if mites pass 200, display a really rotten looking apiary
+		  animator.setAnimationState("base", "infested2", true)	
+		  animator.setAnimationState("warning", "on", true)
+		else
+		  animator.setAnimationState("base", "default", true)
+		  animator.setAnimationState("warning", "off", true)
+		end
+		
 		-- The growth multiplier. responsible for increasing mites by [current amount of mites] * this value
 		local mult = beeData.mites.growthPercentile
 		
@@ -789,20 +802,27 @@ function miteGrowth()
 		if droneCount > 0 then
 			hiveMiteResistance = hiveMiteResistance / droneCount
 			
+			-- we create a little function that improves as resistance does
 			if hiveMiteResistance > 0 then
 				mult = math.max(mult / (hiveMiteResistance*100), beeData.mites.growthPercentileMinimum)
 			elseif hiveMiteResistance < 0 then
 				mult = mult + mult * math.abs(hiveMiteResistance)
 			end
+			
+			--sb.logInfo("current total Mites in hive = "..storage.mites)
+			--sb.logInfo("amount that will subtract from Hive Resistance = "..hiveMiteResistance)
 		end
 		
-		storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
+		-- remove the hive resistance from the mite total if over a certain threshold, otherwise increment them
+		if hiveMiteResistance > 0 then
+		  storage.mites = storage.mites - (hiveMiteResistance)
+		else
+		  storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic       
+		end
+		
 	elseif math.random() <= beeData.mites.infestationChance then
-	  --self.chanceGrow = math.random(100)  
-	  --if self.chanceGrow >= 99 then   -- further reduce the chance for mites by a d100 roll
 	    storage.mites = beeData.mites.growthStatic
-	  --end
-	end
+	end	
 end
 
 -- Check for rivalries within the hive
@@ -916,14 +936,12 @@ function getBiomeFavor(name)
 end
 
 -- Used to handled animation. Base = the apiary itself, bees = the bees flying around, loading = loading sign
-function setAnimationStates(base, bees, loading)
+function setAnimationStates(base, bees, loading, warning)
 	if oldBaseState ~= base then
 		oldBaseState = base
 		
 		if base then
 			animator.setAnimationState("base", "default", true)
-		--elseif storage.mites and storage.mites > 0 then
-		--  	animator.setAnimationState("base", "infested", true)
 		else
 			animator.setAnimationState("base", "disabled", true)
 		end
