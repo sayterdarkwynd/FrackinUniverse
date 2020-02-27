@@ -768,7 +768,6 @@ end
 -- Roll for mite infestation, or increment mite count if there's an infestation
 function miteGrowth()
 	if storage.mites > 0 then
-		
 		-- The growth multiplier. responsible for increasing mites by [current amount of mites] * this value
 		local mult = beeData.mites.growthPercentile
 		
@@ -798,13 +797,11 @@ function miteGrowth()
 		end
 		
 		storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
-		
-		
 	elseif math.random() <= beeData.mites.infestationChance then
-	self.chanceGrow = math.random(100)  
-	  if self.chanceGrow >= 99 then   -- further reduce the chance for mites by a d100 roll
+	  --self.chanceGrow = math.random(100)  
+	  --if self.chanceGrow >= 99 then   -- further reduce the chance for mites by a d100 roll
 	    storage.mites = beeData.mites.growthStatic
-	  end
+	  --end
 	end
 end
 
@@ -925,6 +922,8 @@ function setAnimationStates(base, bees, loading)
 		
 		if base then
 			animator.setAnimationState("base", "default", true)
+		--elseif storage.mites and storage.mites > 0 then
+		--  	animator.setAnimationState("base", "infested", true)
 		else
 			animator.setAnimationState("base", "disabled", true)
 		end
