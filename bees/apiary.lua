@@ -17,13 +17,13 @@ require "/zb/zb_util.lua"
 --[[	Misc.
 
 	beeSubtypeIDs = {
-		plasterer = {"isovapitdae", "harlequin", "shrouded", "stellar"},
+		plasterer = {"isovapitdae", "harlequin", "shrouded", "stellar","cybernetic"},
 		sweat = {"xenodaemonae", "redbanded", "assassin", "killer"},
 		leafcutter = {"tunguskudae", "sandprowler", "goldensaint"},
-		carpenter = {"artisan", "carpenter", "inventor", "scoria"},
+		carpenter = {"artisan", "carpenter", "inventor", "scoria","crystalwing"},
 		squash = {"cuckoo", "loamzipper", "stalwart", "rimewing"},
 		honey = {"honey", "exspiravit", "bumblebee", "orchid"},
-		mason = {"gelid", "digger", "oremason"}  
+		mason = {"gelid", "digger", "oremason","aquarum","devoratrix"}  
 		-- ADD 'crystalwing' bee, produces crystals , now that we have many types
 		-- add 'cyberneticbee'
 		-- add 'devoratrix' bee (Flesh bee)
