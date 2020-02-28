@@ -393,6 +393,7 @@ function getFrames()
 		if contents[frameSlot] and root.itemHasTag(contents[frameSlot].name, "apiaryFrame") then
 			hasFrame = true
 			local cfg = root.itemConfig(contents[frameSlot].name)
+			local amountcheck = contents[frameSlot].count
 			
 			for stat, value in pairs(frameBonuses) do
 				if stat == "allowDay" or stat == "allowNight" then
@@ -400,10 +401,13 @@ function getFrames()
 						frameBonuses[stat] = true
 					end
 				elseif cfg.config[stat] then
-					frameBonuses[stat] = frameBonuses[stat] + cfg.config[stat]
+				        -- the total frame count influences the overall stats. Take the current frame bonus and add the amount in the stack to the provided bonus
+					frameBonuses[stat] = (frameBonuses[stat] + cfg.config[stat]) * (1 + ((contents[frameSlot].count/100) * 0.5 )) --add total frames to total
 				end
 			end
-			
+			-- Re-enable these when you need to test frame stacking bonuses totals
+			--sb.logInfo(amountcheck)
+			--sb.logInfo("production = "..frameBonuses.baseProduction)
 			if specialFrameFunctions[cfg.config.specialFunction] then
 				specialFrameFunctions[cfg.config.specialFunction](cfg.config.functionParams)
 			end
