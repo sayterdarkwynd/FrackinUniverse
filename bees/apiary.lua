@@ -808,16 +808,13 @@ function miteGrowth()
 			elseif hiveMiteResistance < 0 then
 				mult = mult + mult * math.abs(hiveMiteResistance)
 			end
-			
-			--sb.logInfo("current total Mites in hive = "..storage.mites)
-			--sb.logInfo("amount that will subtract from Hive Resistance = "..hiveMiteResistance)
 		end
 		
 		-- remove the hive resistance from the mite total if over a certain threshold, otherwise increment them
 		if hiveMiteResistance > 0 then
 		  storage.mites = storage.mites - (hiveMiteResistance)
 		else
-		  storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic       
+	          storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic       
 		end
 		
 	elseif math.random() <= beeData.mites.infestationChance then
