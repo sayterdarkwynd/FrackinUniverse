@@ -91,9 +91,19 @@ specialFrameFunctions = {
 		elseif antimiteFrameTimer <= 0 then
 			world.spawnItem("vmite",entity.position(),self.randAmount)
 			antimiteFrameTimer = math.random(60,240)
-			sb.logInfo(antimiteFrameTimer)
 		else
 			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
+		end
+	end,
+	copperFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("copperore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
 		end
 	end,
 	ironFrame = function(data)
@@ -101,14 +111,46 @@ specialFrameFunctions = {
 		if not ironFrameTimer then
 			ironFrameTimer = data[1]
 		elseif ironFrameTimer <= 0 then
-			sb.logInfo(data[2])
 			world.spawnItem("ironore",entity.position(),self.randAmount) 
 			ironFrameTimer = math.random(60,240)
-			sb.logInfo(ironFrameTimer)
 		else
 			ironFrameTimer = ironFrameTimer - beeTickDelta
 		end
-	end	
+	end,
+	tungstenFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("tungstenore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
+		end
+	end,
+	titaniumFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("titaniumore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
+		end
+	end,
+	durasteelFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("durasteelore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
+		end
+	end		
+	
 }
 
 -- Variables responsible for holding old animation states to prevent restarting animations
