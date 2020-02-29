@@ -79,11 +79,21 @@ specialFrameFunctions = {
 			advancedFrameTimer = data[1]
 		elseif advancedFrameTimer <= 0 then
 			sb.logInfo(data[2])
+			advancedFrameTimer = data[1]
 		else
 			advancedFrameTimer = advancedFrameTimer - beeTickDelta
 		end
-	end
-	
+	end,
+	antimiteFrame = function(data)
+		if not antimiteFrameTimer then
+			antimiteFrameTimer = data[1]
+		elseif antimiteFrameTimer <= 0 then
+			world.spawnItem("fuscienceresource",entity.position(),25) -- Gain research as this is used
+			antimiteFrameTimer = data[1]
+		else
+			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
+		end
+	end	
 }
 
 -- Variables responsible for holding old animation states to prevent restarting animations
