@@ -86,6 +86,8 @@ function randomEvent()
 	      if root.itemHasTag(storage.currentPrimary, "dagger") or root.itemHasTag(storage.currentSecondary, "dagger") then
 		status.addEphemeralEffect("bleeding05",self.curseDuration_status) -- You just can't stop stabbing yourself
 		player.radioMessage("madnessharm")
+	      else
+		self.timerDegradePenalty = 10
 	      end
 	    end   
 	    if self.randEvent == 38 and storage.madnessCount > 800 then 
