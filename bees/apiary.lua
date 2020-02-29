@@ -85,13 +85,28 @@ specialFrameFunctions = {
 		end
 	end,
 	antimiteFrame = function(data)
+		self.randAmount = math.random(1,8)
 		if not antimiteFrameTimer then
 			antimiteFrameTimer = data[1]
 		elseif antimiteFrameTimer <= 0 then
-			world.spawnItem("fuscienceresource",entity.position(),25) -- Gain research as this is used
-			antimiteFrameTimer = data[1]
+			world.spawnItem("vmite",entity.position(),self.randAmount)
+			antimiteFrameTimer = math.random(60,240)
+			sb.logInfo(antimiteFrameTimer)
 		else
 			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
+		end
+	end,
+	ironFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			sb.logInfo(data[2])
+			world.spawnItem("ironore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+			sb.logInfo(ironFrameTimer)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
 		end
 	end	
 }

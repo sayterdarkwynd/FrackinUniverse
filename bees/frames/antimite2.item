@@ -20,5 +20,8 @@
 	"mutationChance" : 0.1,					// 15 = +15% chance
 	"miteResistance" : 0.25,				// Note that (currently) the normal range is -6.48 to 6.48, so use values smaller than 1 for balanced frames
 	"frameWorktimeModifierDay" : false,			// Set to true to enable bees working at day. Setting to false does not disable day time work.
-	"frameWorktimeModifierNight" : false			// Set to true to enable bees working at night. Setting to false does not disable night time work.
+	"frameWorktimeModifierNight" : false,			// Set to true to enable bees working at night. Setting to false does not disable night time work.
+	"specialFunction" : "antimiteFrame",		// The function you want the frame to call every bee tick. Must define the function within the 'specialFrameFunctions' table inside 'apiary.lua'
+	"functionParams" : [100.0085, "distributing research"]	// The parameters to pass the function. Make sure the function in the 'apiary.lua' script fits the would-be passed data
+
 }
