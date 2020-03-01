@@ -1053,7 +1053,9 @@ end
 -- Attempt spawning a bee entity to roam about
 function tryBeeSpawn(family, genome)
 	if math.random() <= beeData.beeSpawnChance and spaceForBees() then
-		world.spawnMonster(string.format("bee_%s", family), object.toAbsolutePosition({ 2, 3 }), { genome = genome })
+		if math.random(20)>= 10 then  --50% chance roll
+			world.spawnMonster(string.format("bee_%s", family), object.toAbsolutePosition({ 2, 3 }), { genome = genome })
+		end
 	end
 end
 
