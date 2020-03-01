@@ -450,9 +450,11 @@ function states.pump(dt)
 				end
 			end
 		end
+		--[[
 		for k,v in pairs(storage.liquids) do
 			if v >= 1 then
 				local level=10^math.floor(math.log(v,10))
+				sb.logInfo("t %s",excavatorCommon.vars.liquidOuts)
 				if util.tableSize(excavatorCommon.vars.liquidOuts)>0 then
 				--findNearest(source,sourcePos,targetList)
 					local outputPipe=transferUtil.findNearest(entity.id(),entity.position(),excavatorCommon.vars.liquidOuts)
@@ -467,7 +469,7 @@ function states.pump(dt)
 		end
 		for k,v in pairs(storage.liquids) do
 
-		end
+		end]]
 	end
 	
 	if excavatorCommon.vars.throttleInfinite or (storage.pumpThrottler > (tempDelta * 10 * excavatorCommon.vars.excavatorRate)) then
