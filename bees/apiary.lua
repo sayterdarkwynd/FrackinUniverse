@@ -210,7 +210,6 @@ end
 -- First update, used to do some things we don't need every update. Switches to update2 when its not needed anymore
 function update(dt)
 	-- Doing this here because if the object initializes with the planet, world.time() returns 0
-	
 	if not ticksToSimulate then
 		-- Get amount of ticks the apiary should simulate. (off-screen production simulation)
 		if storage.lastActive then
@@ -453,7 +452,7 @@ function getFrames()
 		allowDay = false,
 		allowNight = false
 	}
-	
+
 	-- Iterate through frame slots, set 'hasFrame' to true if there's a frame, and add bonuses to the table
 	-- Also call their special function from the 'specialFrameFunctions' table if they have one
 	for _, frameSlot in ipairs(frameSlots) do
@@ -472,15 +471,23 @@ function getFrames()
 					frameBonuses[stat] = (frameBonuses[stat] + cfg.config[stat]) * (1 + ((contents[frameSlot].count/100) * 0.5 )) --add total frames to total
 				end
 			end
-			-- Re-enable these when you need to test frame stacking bonuses totals
-			--sb.logInfo(amountcheck)
-			--sb.logInfo("production = "..frameBonuses.baseProduction)
+
 			if specialFrameFunctions[cfg.config.specialFunction] then
 				specialFrameFunctions[cfg.config.specialFunction](cfg.config.functionParams)
+			end
+			
+			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting
+			-- this should make automation less fire-and-forget, requiring at least a little maintenance and work
+			-- frames, in this way, can be made 'expensive' to ensure bees are costly but worthwhile
+			local randomChanceToTake = math.random(100)
+			if randChanceToTake == 1 then
+				world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
+				contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)			
 			end
 		end
 	end
 end
+
 
 -- Function used by external sources to get current time remaining until next bee production
 function GetUpdateTimer() return beeUpdateTimer end
@@ -491,7 +498,7 @@ function isSameQueen(q1, q2)
 		q1 = q1.parameters
 		q2 = q2.parameters
 		
-		if 		q1.genome == q2.genome
+		if 	q1.genome == q2.genome
 			and q1.age == q2.age
 			and q1.hatedPlants == q2.hatedPlants
 			and q1.dislikedPlants == q2.dislikedPlants
