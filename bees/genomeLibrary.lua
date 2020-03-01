@@ -1,4 +1,3 @@
-
 genelib = {}
 
 --[[	Genome explanation:
@@ -325,3 +324,5 @@ genelib.modifyStatString = function(str, mod)
     val = val + mod
     return genelib.numberToStat(val)
 end
+
+require("/bees/TEMPLATE_CHANGE.lua")
