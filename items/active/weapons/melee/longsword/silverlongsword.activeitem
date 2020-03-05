@@ -4,7 +4,7 @@
   "level" : 2,
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Gorgeous to look at, even if its a softer metal.",
+  "description" : "Silver is capable of harming even non-corporeal beasts.",
   "shortdescription" : "Silver Longsword",
   "tooltipKind" : "sword",
   "category" : "longsword",
@@ -31,11 +31,13 @@
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
   "elementalType" : "physical",
-
+  "damageKindImage" : "/interface/elements/silverweapon.png",
   "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 6.8
+    "baseDps" : 6.8,
+    "damageKindImage" : "/interface/elements/silverweapon.png",
+    "damageConfig" : { "damageSourceKind" : "silverweapon" }
   },
   
   "critChance" : 1.25,
