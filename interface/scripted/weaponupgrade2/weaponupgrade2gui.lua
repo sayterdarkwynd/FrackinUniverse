@@ -226,14 +226,22 @@ function doUpgrade()
 					
 					upgradedItem.parameters.primaryAbility = {}   
 			  
+					-- is it a bow
+					if (itemConfig.config.category == "bow") then
+					--	upgradedItem.parameters.primaryAbility = {} 
+					--	upgradedItem.parameters.primaryAbility.drawTime = (itemConfig.parameters.primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime or 0) - 0.05 
+					--	upgradedItem.parameters.primaryAbility.powerProjectileTime = (itemConfig.parameters.primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime or 0) - 0.05 
+					--	upgradedItem.parameters.primaryAbility.energyPerShot = (itemConfig.parameters.primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot or 0.15) - 0.5 
+					--	upgradedItem.parameters.primaryAbility.holdEnergyUsage = (itemConfig.parameters.primaryAbility.holdEnergyUsage or itemConfig.config.primaryAbility.holdEnergyUsage or 1) - 1 
+					--	upgradedItem.parameters.primaryAbility.airborneBonus = (itemConfig.parameters.primaryAbility.airborneBonus or itemConfig.config.primaryAbility.airborneBonus or 0) + 0.1
+					end 
 					-- is it a staff or wand?
 					if (itemConfig.config.category == "staff") or (itemConfig.config.category == "wand") then
 						upgradedItem.parameters.primaryAbility = {} 
 						if (itemConfig.config.baseDamageFactor) then
 							upgradedItem.parameters.baseDamageFactor = (itemConfig.parameters.baseDamageFactor or itemConfig.config.baseDamageFactor or 1) * 1.15 
 						end	    
-					end 
-					
+					end 					
 					-- magnorbs
 					if (upgradedItem.parameters.orbitRate) then
 						upgradedItem.parameters.shieldKnockback = (itemConfig.parameters.shieldKnockback or itemConfig.config.shieldKnockback or 1) + 1 

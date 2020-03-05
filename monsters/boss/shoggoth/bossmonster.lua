@@ -49,14 +49,14 @@ function init()
   end
 
   monster.setDeathParticleBurst("deathPoof")
-  monster.setName("The Shoggoth, Formless Horror")
+  monster.setName("Shoggoth, Formless Horror")
   monster.setDamageBar("special")
   monster.setUniqueId(config.getParameter("uniqueId"))
 end
 
 function update(dt)
   self.tookDamage = false
-  world.spawnProjectile("pushzone2",mcontroller.position(),entity.id(),{0,-60},false,params)
+  --world.spawnProjectile("pushzone2",mcontroller.position(),entity.id(),{0,-60},false,params)
   trackTargets(self.keepTargetInSight, self.queryTargetDistance, self.trackTargetDistance, self.switchTargetDistance)
 
   for skillName, params in pairs(self.skillParameters) do

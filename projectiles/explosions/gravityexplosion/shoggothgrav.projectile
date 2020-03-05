@@ -1,0 +1,31 @@
+{
+  "projectileName" : "shoggothgrav",
+  "image" : "ngravityexplosion.png",
+  "animationCycle" : 0.6,
+  "animationLoops" : false,
+  "physics" : "illusion",
+  "frameNumber" : 6,
+  "pointLight" : false,
+  "speed" : 0,
+  "power" : 0.0,
+
+  "bounces" : -1,
+
+  "timeToLive" : 0.6,
+
+  "orientationLocked" : true,
+
+  "boundBox" : [-35, -35, 35, 35],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 35,
+      "innerRadius" : 35,
+      "targetRadialVelocity" : 70,
+      "controlForce" : 900,
+      "categoryWhitelist" : [ "player" ]
+    }
+  },
+
+  "clientEntityMode" : "ClientSlaveOnly"
+}

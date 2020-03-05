@@ -3,40 +3,54 @@
   "colonyTags" : ["nightar"],
   "rarity" : "Common",
   "category" : "decorative",
+  "price" : 250,
 
 
-  "description" : "An altar holding the ultimate nightar blade.. which looks kinda broken.",
+  "description" : "An altar dedicated to the purity of the blade. Standing near slightly increases your defense.",
   "shortdescription" : "Nightar Blade Altar",
   "printable" : false,
   "race" : "nightar",
 
-  "apexDescription" : "An altar holding the ultimate nightar blade.. which looks kinda broken.",
-  "avianDescription" : "An altar holding the ultimate nightar blade.. which looks kinda broken.",
-  "floranDescription" : "An altar holding the ultimate nightar blade.. which looks kinda broken.",
-  "glitchDescription" : "An altar holding the ultimate nightar blade.. which looks kinda broken.",
-  "humanDescription" : "An altar holding the ultimate nightar blade.. which looks kinda broken.",
-  "hylotlDescription" : "An altar holding the ultimate nightar blade.. which looks kinda broken.",
-  "novakidDescription" : "An altar holding the ultimate nightar blade.. which looks kinda broken.",
-
   "inventoryIcon" : "nightarbladealtaricon.png",
-  "orientations" : [
-    {
-      "dualImage" : "nightarbladealtar.png:<color>.<frame>",
-	  "frames" : 12,
-	  "animationCycle" : 1,
-      "imagePosition" : [-16, 0],
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-    }
+   "orientations" : [
+     {
+ 	"imageLayers" : [ { "image" : "nightarbladealtar.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarbladealtarlit.png:<color>.<frame>" } ],
+       "imagePosition" : [0, 0],
+       "frames" : 12,
+       "animationCycle" : 0.8,
+ 
+       "spaceScan" : 0.1,
+       "anchors" : [ "bottom" ],
+       "flipImages" : true,
+       "direction" : "left"
+     },
+     {
+ 	"imageLayers" : [ { "image" : "nightarbladealtar.png:<color>.<frame>", "fullbright" : true }, { "image" : "nightarbladealtarlit.png:<color>.<frame>" } ],
+       "imagePosition" : [0, 0],
+       "frames" : 12,
+       "animationCycle" : 0.8,
+ 
+       "spaceScan" : 0.1,
+       "anchors" : [ "bottom" ],
+       "direction" : "right"
+     }
   ],
   
- 
-
-  "scripts" : ["/objects/scripts/breakoninteract.lua"],
-  "scriptDelta" : 0,
-
   "breakDropOptions" : [
-    [ [ "brokennightarblade", 1, { } ] ]
-  ]
+    [ [ "nightarbladealtar", 1, { } ] ]
+  ],   
+
+  "scripts" : ["/objects/scripts/fu-interactpickuptimed.lua"],
+  "scriptDelta" : 5,
+  
+  "spawnableItem" : "honorcoin",
+  "timedSpawner" : 1,
+  "waitDuration" : 240,
+  "animation" : "nightarbladealtar.animation",
+  "animationParts" : {
+    "interactiveObject" : "nightarbladealtar.png",
+    "interactiveObjectlit" : "nightarbladealtarlit.png"
+  },
+  "animationPosition" : [0, 0]
 }

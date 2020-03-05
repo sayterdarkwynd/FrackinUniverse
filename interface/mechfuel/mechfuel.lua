@@ -9,6 +9,7 @@ function init()
       self.disabled = true
       widget.setVisible("imgLockedOverlay", true)
       widget.setButtonEnabled("btnUpgrade", false)
+      widget.setButtonEnabled("btnEmpty", false)
 	    widget.setText("lblLocked", "^red;Unauthorized user")
     else
       widget.setVisible("imgLockedOverlay", false)
@@ -153,7 +154,29 @@ function fuel()
 
   world.sendEntityMessage(id, "setFuelType", localFuelType)
   world.sendEntityMessage(id, "setQuestFuelCount", addFuelCount)
+  pane.playSound("/sfx/tech/mech_activate2.ogg")
+  
 end
+
+
+function emptyfuel()
+  if self.disabled then return end
+  if self.currentFuel > 0 then
+  	local item = widget.itemSlotItem("itemSlot_fuel")
+  	local id = player.id()
+  	local fuelData = nil
+  	localFuelType = nil
+  	local addFuelCount = 10000 
+  	self.currentFuel = 0
+    	widget.setText("lblEfficiency", "^red;Emptying Fuel.^white;")   
+    	widget.setText("lblFuelType", "CURRENT FUEL: ^red;EMPTY^reset;")   
+    	world.sendEntityMessage(id, "setFuelSlotItem", nil)
+    	world.sendEntityMessage(id, "setFuelType", nil)
+    	world.sendEntityMessage(id, "removeQuestFuelCount", addFuelCount)
+    	pane.playSound("/sfx/tech/mech_powerdown.ogg")
+  end
+end
+
 
 function swapItem(widgetName)
   local currentItem = widget.itemSlotItem(widgetName)
@@ -190,9 +213,6 @@ function setEfficiencyText(currentItem)
 end
 
 function fuelCountPreview(item)
-
-
-  
   if not item then
     widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
     return
