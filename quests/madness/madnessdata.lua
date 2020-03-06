@@ -301,13 +301,14 @@ function randomEvent()
 end
 
 function update(dt)
-    --we control the madness bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
-  -- if (self.timerRemoveAmmoBar >=6) then
-  --     world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
-  --     self.timerRemoveAmmoBar = 0
-  -- else
-  --     self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + dt
-  -- end   
+   -- we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
+   -- there are better places to put it, bbut this at least keeps it contained
+   if (self.timerRemoveAmmoBar >=6) then
+       world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
+       self.timerRemoveAmmoBar = 0
+   else
+       self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + dt
+   end   
        
   
    storage.madnessCount = player.currency("fumadnessresource")
