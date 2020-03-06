@@ -19,15 +19,27 @@
     "handle" : "",
     "blade" : "silverlongsword.png"
   },
-  "animationCustom" : { 
+  "animationCustom" : { //override default swoosh and particles cause cuteness.
 	  "sounds" : {
 	    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
 	    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
-	  }  
+	  },    
+    "particleEmitters" : {
+      "shadowswoosh" : {
+        "active" : false,
+        "transformationGroups" : ["swoosh"],
+        "emissionRate" : 40,
+        "particles" : [
+          { "particle" : "shadowswoosh1"},
+          { "particle" : "shadowswoosh2"},
+          { "particle" : "shadowswoosh3"}
+        ]
+      }
+    }
   },
-
+  
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
   "elementalType" : "physical",
