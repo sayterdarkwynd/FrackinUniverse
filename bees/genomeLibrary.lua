@@ -325,4 +325,4 @@ genelib.modifyStatString = function(str, mod)
     return genelib.numberToStat(val)
 end
 
-require("/bees/TEMPLATE_CHANGE.lua")
+--require("/bees/TEMPLATE_CHANGE.lua")
