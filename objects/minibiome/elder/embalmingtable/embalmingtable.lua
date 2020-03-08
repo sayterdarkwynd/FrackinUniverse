@@ -42,6 +42,7 @@ local recipes =
 {inputs = { giantfloranpod=1 }, outputs = {  agaranichor=30, fuscienceresource=90, fumadnessresource=40, time = 8.0},
 {inputs = { floranpod1=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
 {inputs = { floranpod2=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
+{inputs = { floranpod3=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
 		
 --wrapped bodies
 {inputs = { frontiercoffin=1 }, outputs = { cadaver=1,darkwoodmaterial=12,fuscienceresource=40,fumadnessresource=30}, time = 5.0},
