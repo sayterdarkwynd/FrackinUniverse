@@ -37,8 +37,8 @@ local recipes =
 {inputs = { cadaverrotting=1 }, outputs = { fuflesh=1, fuhair=1, fubrain=1,fuscienceresource=70,fleshstrand=1,liquidpoison = 20,}, time = 8.0},
 {inputs = { cadaverbirb=1 }, outputs = { fuflesh=1, fuhair=1, fubrain=1, blooddiamond=1, goldbar=2, fuscienceresource=90,fleshstrand=3 }, time = 8.0},
 {inputs = { cadaveralien=1 }, outputs = { fufleshalien=1,fubrain=1,fuheartalien=1,fuscienceresource=120, fumadnessresource=30,fleshstrand=6,liquidalienjuice = 40, }, time = 8.0},
-{inputs = { apexpod=1 }, outputs = { liquidbiooze=30, siliconboard=1, fuscienceresource=30,fumadnessresource=30, fuflesh=1, fuhair=1, fubrain=1, wire=2, glass=2}, time = 8.0},
-{inputs = { apexpod2=1 }, outputs = { liquidbiooze=40, siliconboard=1, fuscienceresource=30,fumadnessresource=30, wire=2, glass=2}, time = 8.0},
+{inputs = { apexpod=1 }, outputs = { liquidbiooze=30, cadaver=1, apexpod2=1}, time = 8.0},
+
 	
 --wrapped bodies
 {inputs = { frontiercoffin=1 }, outputs = { cadaver=1,darkwoodmaterial=12,fuscienceresource=40,fumadnessresource=30}, time = 5.0},
