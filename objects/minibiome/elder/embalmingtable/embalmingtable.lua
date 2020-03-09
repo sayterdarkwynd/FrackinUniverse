@@ -37,13 +37,20 @@ local recipes =
 {inputs = { cadaverrotting=1 }, outputs = { fuflesh=1, fuhair=1, fubrain=1,fuscienceresource=70,fleshstrand=1,liquidpoison = 20,}, time = 8.0},
 {inputs = { cadaverbirb=1 }, outputs = { fuflesh=1, fuhair=1, fubrain=1, blooddiamond=1, goldbar=2, fuscienceresource=90,fleshstrand=3 }, time = 8.0},
 {inputs = { cadaveralien=1 }, outputs = { fufleshalien=1,fubrain=1,fuheartalien=1,fuscienceresource=120, fumadnessresource=30,fleshstrand=6,liquidalienjuice = 40, }, time = 8.0},
-
+{inputs = { apexpod=1 }, outputs = { liquidbiooze=30, cadaver=1, apexpod2=1}, time = 8.0},
+{inputs = { floranpodapex=1 }, outputs = { cadaver=1, agaranichor=5, fuscienceresource=60, fumadnessresource=10, time = 8.0},
+{inputs = { giantfloranpod=1 }, outputs = {  agaranichor=30, fuscienceresource=90, fumadnessresource=40, time = 8.0},
+{inputs = { floranpod1=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
+{inputs = { floranpod2=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
+{inputs = { floranpod3=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
+		
 --wrapped bodies
 {inputs = { frontiercoffin=1 }, outputs = { cadaver=1,darkwoodmaterial=12,fuscienceresource=40,fumadnessresource=30}, time = 5.0},
 {inputs = { wrappedbody=1 }, outputs = { cadaver=1,bandage=12,fuscienceresource=40,fumadnessresource=30}, time = 5.0},
 {inputs = { wrappedbodyputrid=1 }, outputs = { cadaverrotting = 1,fumadnessresource=60,bandage=12 }, time = 5.0},
 {inputs = { wrappedbodyalien=1 }, outputs = { cadaveralien = 1,fumadnessresource=80,mutaviskbandage=12 }, time = 5.0},
 {inputs = { wrappedbodybirb=1 }, outputs = { cadaverbirb =1,fuscienceresource=50,fuhoneysilkbandage=12}, time = 5.0},
+
 
 --miscellaneous
 {inputs = { larva=10 }, outputs = { liquidpus=1,cellmatter=1}, time = 2.0},
@@ -62,7 +69,12 @@ local recipes =
 {inputs = { meatpickle=1 }, outputs = { fumadnessresource=2,alienmeat=1}, time = 2.0},
 {inputs = { milk=1,normaldrone=1 }, outputs = { sourmilkandbees=1}, time = 2.0},
 {inputs = { endomorphicjelly=1 }, outputs = { holidayspirit=50}, time = 2.0},
-{inputs = { monsterhide=1 }, outputs = { leather=1}, time = 1.0}
+{inputs = { monsterhide=1 }, outputs = { leather=1}, time = 1.0},
+{inputs = { avalisample3=1 }, outputs = { inferiorbrain=1}, time = 1.0},
+{inputs = { apexbrainjar=1 }, outputs = { inferiorbrain=1}, time = 1.0},
+{inputs = { apexbrainjar2=1 }, outputs = { brain=1}, time = 1.0},
+{inputs = { apexbrainjar3=1 }, outputs = { artificialbrain=1}, time = 1.0},	
+{inputs = { apexbrainjar4=1 }, outputs = { brainpeerless=1}, time = 1.0}
 }
 
 function init()
