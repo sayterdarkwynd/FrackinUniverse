@@ -61,7 +61,10 @@ frameBonuses = {
 	mutationChance = 0,
 	miteResistance = 0,
 	frameWorktimeModifierDay = false,
-	frameWorktimeModifierNight = false
+	frameWorktimeModifierNight = false,
+	frameWorktimeModifierHeat = false,
+	frameWorktimeModifierCold = false,
+	frameWorktimeModifierRadiation = false
 }
 
 -- Table storing functions called by unique frames every bee tick
@@ -89,7 +92,7 @@ specialFrameFunctions = {
 		if not antimiteFrameTimer then
 			antimiteFrameTimer = data[1]
 		elseif antimiteFrameTimer <= 0 then
-			world.spawnItem("vmite",entity.position(),self.randAmount)
+			--world.spawnItem("vmite",entity.position(),self.randAmount)
 			antimiteFrameTimer = math.random(60,240)
 		else
 			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
@@ -479,7 +482,7 @@ function getFrames()
 			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting
 			-- this should make automation less fire-and-forget, requiring at least a little maintenance and work
 			-- frames, in this way, can be made 'expensive' to ensure bees are costly but worthwhile
-			local randomChanceToTake = math.random(100)
+			local randomChanceToTake = math.random(50)
 			if randChanceToTake == 1 then
 				world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
 				contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)			
@@ -1053,7 +1056,7 @@ end
 -- Attempt spawning a bee entity to roam about
 function tryBeeSpawn(family, genome)
 	if math.random() <= beeData.beeSpawnChance and spaceForBees() then
-		if math.random(20)>= 10 then  --50% chance roll
+		if math.random(20)>= 15 then  
 			world.spawnMonster(string.format("bee_%s", family), object.toAbsolutePosition({ 2, 3 }), { genome = genome })
 		end
 	end

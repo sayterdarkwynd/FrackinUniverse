@@ -25,7 +25,7 @@ function update(dt)
 		if currentItem == nil then
 			status = "^yellow;Waiting for a subject..."
 			
-		elseif compare(currentItem, oldItem) then
+		elseif compare(currentItem, oldItem) then	
 			if root.itemHasTag(oldItem.name, "queen") or root.itemHasTag(oldItem.name, "youngQueen") then
 				if oldItem.parameters.genomeInspected then
 					status = "^green;Queen identified"
@@ -47,18 +47,22 @@ function update(dt)
 						world.containerPutItemsAt(entity.id(), oldItem, 0)
 					else
 						status = "^cyan;"..progress.."%"
-						world.spawnItem("fuscienceresource",entity.position(),1) -- Gain research as this is used
+						-- ***** chance to gain research *****
+						local randCheck = math.random(10)
+						if randCheck == 1 then
+						 world.spawnItem("fuscienceresource",entity.position(),5) -- Gain research as this is used
+						end
 					end
-				end
+				end					
 			else
-				status = "^red;Not a queen bee"
+				status = "^red;Invalid sample detected"
 			end
 		
 		else
 			progress = 0
 			if not (root.itemHasTag(currentItem.name, "queen") or root.itemHasTag(currentItem.name, "youngQueen")) then
-				status = "^red;Not a queen bee"
-			end
+				status = "^red;Invalid sample detected"
+			end			
 		end
 		
 		oldItem = currentItem
