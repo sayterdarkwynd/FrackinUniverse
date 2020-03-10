@@ -1,9 +1,9 @@
 {
-	"objectName" : "beeexaminer",
+	"objectName" : "beeexaminer2",
 	"colonyTags" : [ "bees" ], // TO DO
 	"rarity" : "common",
-	"description" : "A basic microscope designed to inspect queen bees. User must be present.",
-	"shortdescription" : "^orange;Basic^reset; Microscope",
+	"description" : "A basic microscope designed to inspect queen bees. Works automatically.",
+	"shortdescription" : "^orange;Advanced^reset; Microscope",
 	"race" : "generic",
 	"subtitle" : "Inspect Bees",
 	"category" : "crafting",
@@ -11,12 +11,11 @@
 	"objectType" : "container",
 	"printable" : false,
 	"health" : 0.1,
-	"learnBlueprintsOnPickup" : [ "beeexaminer2" ],
 	
-	"inventoryIcon" : "icon.png",
+	"inventoryIcon" : "icon3.png",
 	"orientations" : [
 		{
-			"dualImage" : "object.png",
+			"dualImage" : "object3.png",
 			"imagePosition" : [0, 0],
 			"spaceScan" : 0.1,
 			"anchors" : [ "bottom" ]
@@ -29,13 +28,13 @@
 	"frameCooldown" : 67,
 	"autoCloseCooldown" : 3600,
 	
-	"selfWorking" : false, // Whether it can work while the player is not interacting with it
-	"selfWorkingEfficiency" : 5, // 5 per sec up to 100
-	"playerWorkingEfficiency" : 10, // 10 per sec up to 100
+	"selfWorking" : true, // Whether it can work while the player is not interacting with it
+	"selfWorkingEfficiency" : 7, // 5 per sec up to 100
+	"playerWorkingEfficiency" : 20, // 10 per sec up to 100
 	
 	"uiConfig" : "/bees/interface/beeexaminer/beeexaminer.config",
 	"slotCount" : 1,
 	
-    "scripts" : ["/bees/beeExaminer.lua"],
+        "scripts" : ["/bees/beeExaminer.lua"],
 	"scriptDelta" : 10
 }
