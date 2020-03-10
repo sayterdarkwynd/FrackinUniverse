@@ -1003,7 +1003,7 @@ function getBiomeFavor(name)
 	end
 	
 	-- That feeling when no enums/switch case
-	local favor = beeData.biomeLikeness[name][biome] or 1
+	local favor = beeData.biomeLikeness[name][biome] or 2 --was 1, but I want default to be "liked" with 0 bonus rather than penalty by default. It's more fun for the player.
 	if favor == 0 then return -1 end -- deadly - halts production
 	if favor == 1 then return beeData.biomeDisliked end
 	if favor == 2 then return beeData.biomeLiked end
