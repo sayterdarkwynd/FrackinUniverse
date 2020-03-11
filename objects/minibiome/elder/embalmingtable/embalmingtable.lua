@@ -38,11 +38,11 @@ local recipes =
 {inputs = { cadaverbirb=1 }, outputs = { fuflesh=1, fuhair=1, fubrain=1, blooddiamond=1, goldbar=2, fuscienceresource=90,fleshstrand=3 }, time = 8.0},
 {inputs = { cadaveralien=1 }, outputs = { fufleshalien=1,fubrain=1,fuheartalien=1,fuscienceresource=120, fumadnessresource=30,fleshstrand=6,liquidalienjuice = 40, }, time = 8.0},
 {inputs = { apexpod=1 }, outputs = { liquidbiooze=30, cadaver=1, apexpod2=1}, time = 8.0},
-{inputs = { floranpodapex=1 }, outputs = { cadaver=1, agaranichor=5, fuscienceresource=60, fumadnessresource=10, time = 8.0},
-{inputs = { giantfloranpod=1 }, outputs = {  agaranichor=30, fuscienceresource=90, fumadnessresource=40, time = 8.0},
-{inputs = { floranpod1=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
-{inputs = { floranpod2=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
-{inputs = { floranpod3=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20, time = 8.0},
+{inputs = { floranpodapex=1 }, outputs = { cadaver=1, agaranichor=5, fuscienceresource=60, fumadnessresource=10}, time = 8.0},
+{inputs = { giantfloranpod=1 }, outputs = {  agaranichor=30, fuscienceresource=90, fumadnessresource=40}, time = 8.0},
+{inputs = { floranpod1=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20}, time = 8.0},
+{inputs = { floranpod2=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20}, time = 8.0},
+{inputs = { floranpod3=1 }, outputs = {  agaranichor=10, fuscienceresource=20, fumadnessresource=20}, time = 8.0},
 		
 --wrapped bodies
 {inputs = { frontiercoffin=1 }, outputs = { cadaver=1,darkwoodmaterial=12,fuscienceresource=40,fumadnessresource=30}, time = 5.0},
