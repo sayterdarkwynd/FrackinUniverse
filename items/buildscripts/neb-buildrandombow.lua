@@ -121,7 +121,7 @@ function build(directory, config, parameters, level, seed)
   --Populate tooltip fields
   if config.tooltipKind ~= "base" then
 		config.tooltipFields = {}
-    config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
+                config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
 		config.tooltipFields.subtitle = parameters.category
 		config.tooltipFields.damageLabel = util.round(config.primaryAbility.projectileParameters.power * config.primaryAbility.dynamicDamageMultiplier * config.primaryAbility.drawTime * config.damageLevelMultiplier, 2) or 0
 		config.tooltipFields.perfectDrawTimeLabel = util.round(config.primaryAbility.powerProjectileTime, 2)
