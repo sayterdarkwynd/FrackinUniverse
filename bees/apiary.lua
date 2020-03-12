@@ -48,7 +48,7 @@ delayedInit = true		-- Used to delay some things initialization due to how some 
 biome = nil				-- The world type/biome
 beeTickDelta = 0		-- Variable holding delta between bee ticks.
 noQueenTimer = 0		-- Time left before drones start dying without a queen
-noQueenTimeAllowed = 3	-- Time before drones start dying without a queen
+noQueenTimeAllowed = 60	-- Time before drones start dying without a queen
 
 -- Whether the hive has a frame, and the bonus stats it provides
 hasFrame = false
@@ -385,7 +385,11 @@ function beeTick()
 			else
 				-- Kill drones if there's no queen present, and the no queen timer ran out
 				if noQueenTimer <= 0 then
-					droneDecay(slot)
+					local chanceRemove = math.random(100) --remove chance of drones
+					if chanceRemove > 50 then
+					  droneDecay(slot)
+					end				
+					--droneDecay(slot)
 				end
 			end
 			
@@ -725,7 +729,25 @@ function randomMod(num)
 	
 	return num
 end
-
+	local workTime = genelib.statFromGenomeToValue(queen.parameters.genome, "workTime")
+	local timeOfDay = world.timeOfDay()
+	
+	if workTime == "both" then
+		hiveQueenActive = true
+		return true
+		
+	elseif timeOfDay <= 0.5 then
+		if workTime == "day" or frameBonuses.allowDay then
+			hiveQueenActive = true
+			return true
+		end
+		
+	else
+		if workTime == "night" or frameBonuses.allowNight then
+			hiveQueenActive = true
+			return true
+		end
+	end
 -- Returns a queen version of the young queen, with exactly the same stats and parameters
 function youngQueenToQueen(youngQueen)
 	local newQueen = root.createItem(string.gsub(youngQueen.name, "youngQueen", "queen"))
@@ -818,7 +840,6 @@ function droneProduction(drone)
 	
 	local productionStat = genelib.statFromGenomeToValue(drone.parameters.genome, "baseProduction") + frameBonuses.baseProduction
 	local production = productionStat * (((drone.count / 1000) + math.min(1 / ((1 + hivesAroundHive) * 0.75), 1) + flowerFavor + biomeFavor) / 4)
-	
 	
 	for product, requirement in pairs(beeData.stats[family][subtypeID].production) do
 		if not droneProductionProgress[product] then
