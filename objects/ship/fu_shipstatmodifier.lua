@@ -37,9 +37,9 @@ function applyStats(multiplier)
 		for objectStat, statAmount in pairs (storage.appliedStats.stats) do
 			statChange(objectStat, statAmount, multiplier)
 		end
-	end
-	if storage.appliedStats.stats.fuelEfficiency > 0.99 then  --ensure max fuel purification of 99%
-	  storage.appliedStats.stats.fuelEfficiency = 0.99
+	--if storage.appliedStats.stats.fuelEfficiency > 0.99 then  --ensure max fuel purification of 99%
+	--  storage.appliedStats.stats.fuelEfficiency = 0.99
+	--end		
 	end
 end
 
