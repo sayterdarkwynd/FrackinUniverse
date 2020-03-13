@@ -730,7 +730,6 @@ function randomMod(num)
 	return num
 end
 
-
 -- Returns a queen version of the young queen, with exactly the same stats and parameters
 function youngQueenToQueen(youngQueen)
 	local newQueen = root.createItem(string.gsub(youngQueen.name, "youngQueen", "queen"))
