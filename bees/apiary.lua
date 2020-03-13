@@ -729,25 +729,8 @@ function randomMod(num)
 	
 	return num
 end
-	local workTime = genelib.statFromGenomeToValue(queen.parameters.genome, "workTime")
-	local timeOfDay = world.timeOfDay()
-	
-	if workTime == "both" then
-		hiveQueenActive = true
-		return true
-		
-	elseif timeOfDay <= 0.5 then
-		if workTime == "day" or frameBonuses.allowDay then
-			hiveQueenActive = true
-			return true
-		end
-		
-	else
-		if workTime == "night" or frameBonuses.allowNight then
-			hiveQueenActive = true
-			return true
-		end
-	end
+
+
 -- Returns a queen version of the young queen, with exactly the same stats and parameters
 function youngQueenToQueen(youngQueen)
 	local newQueen = root.createItem(string.gsub(youngQueen.name, "youngQueen", "queen"))
