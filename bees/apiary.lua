@@ -674,12 +674,13 @@ end
 -- By default ages the queen by 1, but can use any other number or negative ones to make her last longer
 -- Can be called from other places (Like the frame scripts)
 function ageQueen(amount)
-	--queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
-	queen.parameters.queenLifespan = queen.parameters.queenLifespan - (amount or 1)
-	
+	if not queen.parameters.lifespan or queen.parameters.lifespan == 0 then 
+	  queen.parameters.lifespan = 500 
+	end
+	queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
 	world.containerTakeAt(entity.id(), queenSlot-1)
 	
-	if (queen.parameters.queenLifespan > 0) then
+	if (queen.parameters.lifespan > 0) then
 		world.containerPutItemsAt(entity.id(), queen, queenSlot-1)
 	else
 		contents[queenSlot] = nil
