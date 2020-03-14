@@ -675,11 +675,11 @@ end
 -- Can be called from other places (Like the frame scripts)
 function ageQueen(amount)
 	--queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
-	queen.parameters.lifespan = queen.parameters.queenLifespan - (amount or 1)
+	queen.parameters.queenLifespan = queen.parameters.queenLifespan - (amount or 1)
 	
 	world.containerTakeAt(entity.id(), queenSlot-1)
 	
-	if (queen.parameters.lifespan > 0) then
+	if (queen.parameters.queenLifespan > 0) then
 		world.containerPutItemsAt(entity.id(), queen, queenSlot-1)
 	else
 		contents[queenSlot] = nil
