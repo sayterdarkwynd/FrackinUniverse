@@ -674,7 +674,7 @@ end
 -- By default ages the queen by 1, but can use any other number or negative ones to make her last longer
 -- Can be called from other places (Like the frame scripts)
 function ageQueen(amount)
-	if not queen.parameters.lifespan or queen.parameters.lifespan == 0 then 
+	if not queen.parameters.lifespan or queen.parameters.lifespan <= 0 then 
 	  queen.parameters.lifespan = 500 
 	end
 	queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
