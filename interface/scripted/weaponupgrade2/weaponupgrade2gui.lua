@@ -192,7 +192,9 @@ function doUpgrade()
 							
 						-- hoe, chainsaw, etc
 						if upgradedItem.parameters.fireTime then
-							upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
+							if not (itemConfig.config.category == "Gun Staff") or (itemConfig.config.category == "gunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
+							  upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
+							end
 						end
 
 						if upgradedItem.parameters.blockRadius then
