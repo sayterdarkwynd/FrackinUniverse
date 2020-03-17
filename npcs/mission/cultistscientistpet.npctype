@@ -1,0 +1,29 @@
+{
+  "type" : "cultistscientistpet",
+  "baseType" : "hostile",
+
+  "persistent" : true,
+
+  "dropPools" : [ "cultisttreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : "/dialog/cultist.config:attack"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "scientisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcpetcapturepod" ],
+            "sheathedprimary" : [  "npcmachinepistol", "npcmachinepistol", "npcmachinepistol", "laspistol", "lunarismg", "telebriummachinepistol",  "zerchesiumsmg"  ],
+			"alt" : [  "fucultistkatana", "zerchesiumkatana", "ironkatana", "lunarikatana", "telebriumkatana", "titaniumkatana", "tungstenkatana" ]
+          }
+        ] ]
+    ]
+  }
+}
