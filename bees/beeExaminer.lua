@@ -79,12 +79,13 @@ function update(dt)
 						-- ***** chance to gain research *****
 						local randCheck = math.random(10)
 						if randCheck == 1 then						
-						  local bonusValue = config.getParameter("bonusResearch",0)
-						  world.spawnItem("essence",entity.position(),15+bonusValue) -- Gain research as this is used
+						  local rank = config.getParameter("rank",0)
+						  world.spawnItem("essence",entity.position(),1+rank) -- Gain research as this is used
 						end
 						if randCheck ==2 then
-						 local bonusValue = config.getParameter("bonusResearch",0)
-						 world.spawnItem("fuscienceresource",entity.position(),1+bonusValue) -- Gain research as this is used
+						 local rank = config.getParameter("rank",0)
+						 rank = 1 + rank
+						 world.spawnItem("fuscienceresource",entity.position(),25+rank) -- Gain research as this is used
 						end						
 					end
 				end				
