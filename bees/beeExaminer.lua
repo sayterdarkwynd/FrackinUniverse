@@ -48,13 +48,46 @@ function update(dt)
 					else
 						status = "^cyan;"..progress.."%"
 						-- ***** chance to gain research *****
-						local randCheck = math.random(10)
+						local randCheck = math.random(25)
 						if randCheck == 1 then
 						 local bonusValue = config.getParameter("bonusResearch",0)
 						 world.spawnItem("fuscienceresource",entity.position(),5+bonusValue) -- Gain research as this is used
 						end
 					end
-				end					
+				end
+			elseif root.itemHasTag(oldItem.name, "artifact") then
+				if oldItem.parameters.genomeInspected then
+					status = "^green;Artifact identified"
+				else
+					if playerUsing then
+						progress = progress + (playerWorkingEfficiency * dt)
+					else
+						progress = progress + (selfWorkingEfficiency * dt)
+					end
+					
+					progress = math.floor(progress * 100) * 0.01
+					
+					if progress >= 100 then
+						progress = 0
+						status = "^green;Artifact identified"
+						oldItem.parameters.category = "^cyan;Researched Artifact^reset;"
+						oldItem.parameters.genomeInspected = true
+						world.containerTakeAt(entity.id(), 0)
+						world.containerPutItemsAt(entity.id(), oldItem, 0)
+					else
+						status = "^cyan;"..progress.."%"
+						-- ***** chance to gain research *****
+						local randCheck = math.random(10)
+						if randCheck == 1 then						
+						  local bonusValue = config.getParameter("bonusResearch",0)
+						  world.spawnItem("essence",entity.position(),15+bonusValue) -- Gain research as this is used
+						end
+						if randCheck ==2 then
+						 local bonusValue = config.getParameter("bonusResearch",0)
+						 world.spawnItem("fuscienceresource",entity.position(),1+bonusValue) -- Gain research as this is used
+						end						
+					end
+				end				
 			else
 				status = "^red;Invalid sample detected"
 			end
