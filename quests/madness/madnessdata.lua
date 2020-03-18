@@ -59,7 +59,7 @@ function randomEvent()
     if storage.madnessCount > 1500 then
 	    if self.randEvent == 44 then 
 		status.addEphemeralEffect("eatself",20) -- You just can't stop eating yourself.
-		status.addEphemeralEffect("bleeding05",20) -- You just can't stop eating yourself.
+		--status.addEphemeralEffect("bleeding05",20) -- You just can't stop eating yourself.
 	    end  
 	    if self.randEvent == 45 then 
 		status.addEphemeralEffect("runboost15",self.curseDuration_status) -- run boost!
