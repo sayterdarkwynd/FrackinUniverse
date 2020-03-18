@@ -169,7 +169,7 @@ function init()
 	biome = world.type()
 	
 	-- Disabled on ship and player space stations
-	if biome == "unknown" or biome == "playerstation" then
+	if biome == "unknown" then   --or biome == "playerstation" then
 		script.setUpdateDelta(-1)
 		return
 	end
