@@ -1,6 +1,6 @@
 {
   "type" : "sentryminidronemine",
-  "shortdescription" : "Shield Drone",
+  "shortdescription" : "Micro Drone",
   "description" : "Swift, protected and reliable.",
 
   "categories" : [ "sentryminidrone2" ],
@@ -100,15 +100,7 @@
           "effect" : "glow",
           "duration" : 220
           }
-        },      
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 10,
-          "parameters" : {
-          "effect" : "cultistshield",
-          "duration" : 5
-          }
-        },         
+        },             
         {
           "name" : "action-statuseffect",
           "cooldown" : 200,
@@ -132,20 +124,9 @@
         }        
       ],
 
-      "concurrentActions" : [
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 5,
-          "parameters" : {
-          "effect" : "cultistshield",
-          "duration" : 5
-          }
-        }        
-      ],
+      "concurrentActions" : [],
       
-      "concurrentHostileActions" : [
-       
-      ],
+      "concurrentHostileActions" : [],
       
       "damageTakenActions" : [],
       
@@ -182,8 +163,8 @@
       "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
 
       "mass" : 0.5,
-      "walkSpeed" : 20,
-      "runSpeed" : 25,
+      "walkSpeed" : 16,
+      "runSpeed" : 16,
       "gravityEnabled" : false,
 
       "airFriction" : 4,
@@ -222,10 +203,10 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 35
+          "baseValue" : 40
         },
         "protection" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.0
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -258,7 +239,7 @@
           "baseValue" : 1
         },
         "physicalResistance" : {
-          "baseValue" : 0.25
+          "baseValue" : 0.35
         },        
         "cosmicResistance" : {
           "baseValue" : 0.25
