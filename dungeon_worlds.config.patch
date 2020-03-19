@@ -1,21 +1,27 @@
 [
   {
-    "op" : "add",
-    "path" : "/testlunar",
-    "value" : {
-      "primaryDungeon":"testlunar",
-      "weatherPool" : [ [1.0, "fog"] ],
-      "threatLevel" : 3,
-      "airless" : false,
-      "gravity" : 80,
-      "worldSize" : [2000, 2000],
-      "dungeonBaseHeight" : 1500,
-      "ambientLightLevel" : [32, 32, 32],
-      "biome" : "lunarbase",
-      "musicTrack" : "/sfx/environmental/moon_surface.ogg",
-      "environmentStatusEffects" : []
-    }
+    "op": "remove",
+    "path": "/lunarbase/environmentStatusEffects/0"
+  },
+  {
+    "op": "replace",
+    "path": "/lunarbase/musicTrack",
+    "value": "/sfx/environmental/moon_surface.ogg"
   },  
+  {
+    "op": "replace",
+    "path": "/lunarbase/threatLevel",
+    "value": 3
+  },
+  {
+    "op": "replace",
+    "path": "/lunarbase/musicTrack",
+    "value": "/sfx/environmental/moon_surface.ogg"
+  },
+  {
+    "op": "remove",
+    "path": "/lunarbase/environmentStatusEffects/0"
+  }, 
   {
     "op" : "add",
     "path" : "/nightfort",
