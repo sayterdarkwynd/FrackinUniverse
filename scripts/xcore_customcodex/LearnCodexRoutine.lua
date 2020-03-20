@@ -44,7 +44,7 @@ function LearnCodex(itemName)
 	-- Second sanity check: Item exists?
 	local data = root.itemConfig(itemName)
 	if data == nil or data.directory == nil then
-		warn("Player attempted to learn a codex from the item [" .. tostring(itemName) .. "], but root.itemConfig() returned nil data on this item! Aborting the learning procedure.")
+		warn("Player attempted to learn a codex from the item [" .. tostring(itemName) .. "], but root.itemConfig() returned nil data on this item! This item was likely added by a mod and no longer exists. Aborting the learning procedure.")
 		return 2
 	end
 	
@@ -53,7 +53,7 @@ function LearnCodex(itemName)
 	
 	local foundCodexFile = pcall(root.assetJson, data.directory .. itemName .. ".codex")
 	if not foundCodexFile then
-		warn("An item's ID ended in -codex, but it was not located as a codex in the game data files -- this item is violating naming conventions! Aborting the learning procedure. (Attempted to locate the file [" .. data.directory .. itemName .. ".codex], which doesn't exist.")
+		warn("An item's ID ended in -codex, but it was not located as a codex in the game data files -- this item is violating standard naming conventions! Aborting the learning procedure. (Attempted to locate the file [" .. data.directory .. itemName .. ".codex], which doesn't exist.")
 		return 2
 	end
 	------------------------------------

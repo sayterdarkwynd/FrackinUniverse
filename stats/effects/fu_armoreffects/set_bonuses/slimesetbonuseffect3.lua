@@ -13,7 +13,7 @@ armorBonus={
 	{stat = "slimeImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},
-	{stat = "mudslowImmunity", amount = 1}
+	{stat = "fumudslowImmunity", amount = 1}
 }
 
 setName="fu_slimeset3"

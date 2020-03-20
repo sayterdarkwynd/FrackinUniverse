@@ -1,0 +1,28 @@
+{
+  "type" : "cultistbasic",
+  "baseType" : "hostile",
+
+  "persistent" : true,
+
+  "dropPools" : [ "cultisttreasure" ],
+
+  "scriptConfig" : {
+    "dialog" : {
+      "attack" : "/dialog/cultist.config:attack"
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "cultisthead" } ],
+            "chest" : [ { "name" : "cultistchest" } ],
+            "legs" : [ { "name" : "cultistlegs" } ],
+            "primary" : [ "npcpistol", "npcpistol", "npcpistol", "npcmachinepistol", "laspistol", "lunaripistol" , "lunarismg", "telebriummachinepistol", "telebriumpistol", "zerchesiumsmg", "zerchesiumpistol"  ],
+            "sheathedprimary" : [  "npccultistbroadsword", "npccultistbroadsword", "fucultistkatana", "npccultistbroadsword", "npccultistbroadsword", "fucultistkatana", "ironkatana", "titaniumkatana", "tungstenkatana" ]
+          }
+        ] ]
+    ]
+  }
+}

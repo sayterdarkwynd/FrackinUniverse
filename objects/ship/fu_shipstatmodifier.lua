@@ -36,7 +36,7 @@ function applyStats(multiplier)
 	if storage.appliedStats.stats then
 		for objectStat, statAmount in pairs (storage.appliedStats.stats) do
 			statChange(objectStat, statAmount, multiplier)
-		end
+		end	
 	end
 end
 

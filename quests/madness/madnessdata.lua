@@ -59,7 +59,7 @@ function randomEvent()
     if storage.madnessCount > 1500 then
 	    if self.randEvent == 44 then 
 		status.addEphemeralEffect("eatself",20) -- You just can't stop eating yourself.
-		status.addEphemeralEffect("bleeding05",20) -- You just can't stop eating yourself.
+		--status.addEphemeralEffect("bleeding05",20) -- You just can't stop eating yourself.
 	    end  
 	    if self.randEvent == 45 then 
 		status.addEphemeralEffect("runboost15",self.curseDuration_status) -- run boost!
@@ -86,6 +86,8 @@ function randomEvent()
 	      if root.itemHasTag(storage.currentPrimary, "dagger") or root.itemHasTag(storage.currentSecondary, "dagger") then
 		status.addEphemeralEffect("bleeding05",self.curseDuration_status) -- You just can't stop stabbing yourself
 		player.radioMessage("madnessharm")
+	      else
+		self.timerDegradePenalty = 10
 	      end
 	    end   
 	    if self.randEvent == 38 and storage.madnessCount > 800 then 
@@ -299,7 +301,8 @@ function randomEvent()
 end
 
 function update(dt)
-    --we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
+   -- we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
+   -- there are better places to put it, bbut this at least keeps it contained
    if (self.timerRemoveAmmoBar >=6) then
        world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
        self.timerRemoveAmmoBar = 0
@@ -316,14 +319,14 @@ function update(dt)
    
   -- Core Adjustments Functions
   self.timer = self.timer - 1
-  self.timerReloadBar = self.timerReloadBar + dt
-  if (self.timerReloadBar >=5) then
-    self.timerReloadBar = 5
-  end
-  if (self.timerReloadBar == 5) then -- is reload bar timer expired?
-    world.sendEntityMessage(self.playerId,"removeBar","madnessBar")   --clear ammo bar  
-    self.timerReloadBar = 0
-  end
+  --self.timerReloadBar = self.timerReloadBar + dt
+  --if (self.timerReloadBar >=5) then
+  --  self.timerReloadBar = 5
+  --end
+  --if (self.timerReloadBar == 5) then -- is reload bar timer expired?
+    --world.sendEntityMessage(self.playerId,"removeBar","madnessBar")   --clear ammo bar  
+  --  self.timerReloadBar = 0
+  --end
 
   if self.timer < 1 then 
   	  if storage.madnessCount > 12000 then
@@ -420,7 +423,7 @@ function update(dt)
 	    self.timerDegradePenalty = self.timerDegradePenalty or 0
 	    player.consumeCurrency("fumadnessresource", self.degradeTotal)
 	    self.timerDegrade= 60 - self.timerDegradePenalty   
-	    displayBar()
+	    --displayBar()
 	end 
  	-- apply bonus loss from anti-madness effects even if not above 500 madness
 	self.bonusTimer = self.bonusTimer -1
@@ -431,7 +434,7 @@ function update(dt)
 	      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
 	    end
 	    self.bonusTimer = 40
-	    displayBar() 	    
+	    --displayBar() 	    
 	end	
 end
 

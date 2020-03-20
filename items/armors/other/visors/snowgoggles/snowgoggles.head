@@ -1,17 +1,49 @@
 {
   "itemName" : "snowgoggles",
-  "price" : 2500,
+  "price" : 100,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "common",
   "category" : "headwear",
-  "description" : "This will protect your eyes in blizzards.",
+  "description" : "This will protect your eyes in blizzards.
++^cyan;8^reset;% Ice Resist",
   "shortdescription" : "Snow Goggles",
   "tooltipKind" : "armor",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
+  "itemTags" : [ "upgradeableWeapon" ],
+  "level" : 1,
+  "leveledStatusEffects" : [
+    {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 1.12
+    },
+    {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "stat" : "protection",
+      "amount" : 0.15
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 2
+    },
+    {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 1
+    }
+  ],
+  "statusEffects" : [
+      {
+        "stat" : "iceResistance",
+        "amount" : 0.08
+      }
+  ],
+  
   "colorOptions" : [
     // DEFAULT BROWN
     { "ffca8a" : "000000", "e0975c" : "a38354", "a85636" : "735d3e", "6f2919" : "4c3d29" },

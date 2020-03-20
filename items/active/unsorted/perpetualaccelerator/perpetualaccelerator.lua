@@ -7,8 +7,7 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld, moves)
-self.increase = self.increase + 0.005  --constantly increases speed when held
---sb.logInfo(self.increase)
+  self.increase = self.increase + 0.005  --constantly increases speed when held
   mcontroller.controlModifiers({
       groundMovementModifier = self.increase,
       speedModifier = self.increase
@@ -17,7 +16,6 @@ self.increase = self.increase + 0.005  --constantly increases speed when held
 end
 
 function uninit()
-  animator.stopAllSounds("flashlight2")
   animator.setParticleEmitterActive("activatedLight", false)  
 end
 

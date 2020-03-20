@@ -6,7 +6,9 @@
 				"states" :
 				{
 					"default"	: { "frames" : 1 },
-					"disabled"	: { "frames" : 1 }
+					"disabled"	: { "frames" : 1 },
+					"infested"	: { "frames" : 1 },
+					"infested2"	: { "frames" : 1 }
 				}
 			},
 			"bees" : {
@@ -34,6 +36,14 @@
 						"mode" : "loop"
 					}
 				}
+			},
+			"warning" : {
+				"default" : "off",
+				"states" :
+				{
+					"off"	: {},
+					"on"	: { "frames" : 1 }
+				}
 			}
 		},
 
@@ -43,7 +53,9 @@
 				"partStates" : {
 					"base" : {
 						"default"	: { "properties" : { "image" : "<partImage>:default" } },
-						"disabled"	: { "properties" : { "image" : "<partImage>:disabled" } }
+						"disabled"	: { "properties" : { "image" : "<partImage>:disabled" } },
+						"infested"	: { "properties" : { "image" : "<partImage>:infested" } },
+						"infested2"	: { "properties" : { "image" : "<partImage>:infested2" } }
 					}
 				}
 			},
@@ -68,7 +80,18 @@
 						"on" : { "properties" : { "image" : "<partImage>:<frameIndex>" } }
 					}
 				}
-			}
+			},
+			"warning" : {
+				"properties" : { 
+					"zLevel" : 3,
+					"centered" : false
+				},
+				"partStates" : {
+					"warning" : {
+						"on" : { "properties" : { "image" : "<partImage>:<frameIndex>" } }
+					}
+				}
+			}			
 		}
 	}
 }

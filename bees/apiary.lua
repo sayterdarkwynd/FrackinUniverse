@@ -17,17 +17,13 @@ require "/zb/zb_util.lua"
 --[[	Misc.
 
 	beeSubtypeIDs = {
-		plasterer = {"isovapitdae", "harlequin", "shrouded", "stellar"},
-		sweat = {"xenodaemonae", "redbanded", "assassin", "killer"},
+		plasterer = {"isovapitdae", "harlequin", "shrouded", "stellar","cybernetic"},
+		sweat = {"xenodaemonae", "redbanded", "assassin", "reaper"},
 		leafcutter = {"tunguskudae", "sandprowler", "goldensaint"},
-		carpenter = {"artisan", "carpenter", "inventor", "scoria"},
+		carpenter = {"artisan", "carpenter", "inventor", "scoria","crystalwing"},
 		squash = {"cuckoo", "loamzipper", "stalwart", "rimewing"},
 		honey = {"honey", "exspiravit", "bumblebee", "orchid"},
-		mason = {"gelid", "digger", "oremason"}  
-		-- ADD 'crystalwing' bee, produces crystals , now that we have many types
-		-- add 'cyberneticbee'
-		-- add 'devoratrix' bee (Flesh bee)
-		-- add aquarum bee (oceanic)
+		mason = {"gelidBurrower", "digger", "oremason","aquarum","devoratrix"}  
 	}
 
 	Progress increases by the bees production stat multiplied by the hives production efficiency with a small random factor which applies for each product separetly
@@ -52,7 +48,7 @@ delayedInit = true		-- Used to delay some things initialization due to how some 
 biome = nil				-- The world type/biome
 beeTickDelta = 0		-- Variable holding delta between bee ticks.
 noQueenTimer = 0		-- Time left before drones start dying without a queen
-noQueenTimeAllowed = 3	-- Time before drones start dying without a queen
+noQueenTimeAllowed = 60	-- Time before drones start dying without a queen
 
 -- Whether the hive has a frame, and the bonus stats it provides
 hasFrame = false
@@ -65,7 +61,10 @@ frameBonuses = {
 	mutationChance = 0,
 	miteResistance = 0,
 	frameWorktimeModifierDay = false,
-	frameWorktimeModifierNight = false
+	frameWorktimeModifierNight = false,
+	frameWorktimeModifierHeat = false,
+	frameWorktimeModifierCold = false,
+	frameWorktimeModifierRadiation = false
 }
 
 -- Table storing functions called by unique frames every bee tick
@@ -83,10 +82,77 @@ specialFrameFunctions = {
 			advancedFrameTimer = data[1]
 		elseif advancedFrameTimer <= 0 then
 			sb.logInfo(data[2])
+			advancedFrameTimer = data[1]
 		else
 			advancedFrameTimer = advancedFrameTimer - beeTickDelta
 		end
-	end
+	end,
+	antimiteFrame = function(data)
+		self.randAmount = math.random(1,8)
+		if not antimiteFrameTimer then
+			antimiteFrameTimer = data[1]
+		elseif antimiteFrameTimer <= 0 then
+			--world.spawnItem("vmite",entity.position(),self.randAmount)
+			antimiteFrameTimer = math.random(60,240)
+		else
+			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
+		end
+	end,
+	copperFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("copperore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
+		end
+	end,
+	ironFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("ironore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
+		end
+	end,
+	tungstenFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("tungstenore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
+		end
+	end,
+	titaniumFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("titaniumore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
+		end
+	end,
+	durasteelFrame = function(data)
+	        self.randAmount = math.random(1,2)
+		if not ironFrameTimer then
+			ironFrameTimer = data[1]
+		elseif ironFrameTimer <= 0 then
+			world.spawnItem("durasteelore",entity.position(),self.randAmount) 
+			ironFrameTimer = math.random(60,240)
+		else
+			ironFrameTimer = ironFrameTimer - beeTickDelta
+		end
+	end		
 	
 }
 
@@ -103,7 +169,7 @@ function init()
 	biome = world.type()
 	
 	-- Disabled on ship and player space stations
-	if biome == "unknown" or biome == "playerstation" then
+	if biome == "unknown" then   --or biome == "playerstation" then
 		script.setUpdateDelta(-1)
 		return
 	end
@@ -147,13 +213,12 @@ end
 -- First update, used to do some things we don't need every update. Switches to update2 when its not needed anymore
 function update(dt)
 	-- Doing this here because if the object initializes with the planet, world.time() returns 0
-	
 	if not ticksToSimulate then
 		-- Get amount of ticks the apiary should simulate. (off-screen production simulation)
 		if storage.lastActive then
 			setAnimationStates(false, false, true)
 			object.setInteractive(false)
-			ticksToSimulate = (storage.unfinishedTicks or 0) + math.floor((world.time() - storage.lastActive) / beeData.unloadedUpdateInterval)
+			ticksToSimulate = beeData and beeData.unloadedUpdateInterval and (storage.unfinishedTicks or 0) + math.floor((world.time() - storage.lastActive) / beeData.unloadedUpdateInterval) or 0
 			storage.unfinishedTicks = nil
 		else
 			object.setInteractive(true)
@@ -320,7 +385,11 @@ function beeTick()
 			else
 				-- Kill drones if there's no queen present, and the no queen timer ran out
 				if noQueenTimer <= 0 then
-					droneDecay(slot)
+					local chanceRemove = math.random(100) --remove chance of drones
+					if chanceRemove > 50 then
+					  droneDecay(slot)
+					end				
+					--droneDecay(slot)
 				end
 			end
 			
@@ -390,13 +459,14 @@ function getFrames()
 		allowDay = false,
 		allowNight = false
 	}
-	
+
 	-- Iterate through frame slots, set 'hasFrame' to true if there's a frame, and add bonuses to the table
 	-- Also call their special function from the 'specialFrameFunctions' table if they have one
 	for _, frameSlot in ipairs(frameSlots) do
 		if contents[frameSlot] and root.itemHasTag(contents[frameSlot].name, "apiaryFrame") then
 			hasFrame = true
 			local cfg = root.itemConfig(contents[frameSlot].name)
+			local amountcheck = contents[frameSlot].count
 			
 			for stat, value in pairs(frameBonuses) do
 				if stat == "allowDay" or stat == "allowNight" then
@@ -404,16 +474,27 @@ function getFrames()
 						frameBonuses[stat] = true
 					end
 				elseif cfg.config[stat] then
-					frameBonuses[stat] = frameBonuses[stat] + cfg.config[stat]
+				        -- the total frame count influences the overall stats. Take the current frame bonus and add the amount in the stack to the provided bonus
+					frameBonuses[stat] = (frameBonuses[stat] + cfg.config[stat]) * (1 + ((contents[frameSlot].count/100) * 0.5 )) --add total frames to total
 				end
 			end
-			
+
 			if specialFrameFunctions[cfg.config.specialFunction] then
 				specialFrameFunctions[cfg.config.specialFunction](cfg.config.functionParams)
+			end
+			
+			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting
+			-- this should make automation less fire-and-forget, requiring at least a little maintenance and work
+			-- frames, in this way, can be made 'expensive' to ensure bees are costly but worthwhile
+			local randomChanceToTake = math.random(50)
+			if randChanceToTake == 1 then
+				world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
+				contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)			
 			end
 		end
 	end
 end
+
 
 -- Function used by external sources to get current time remaining until next bee production
 function GetUpdateTimer() return beeUpdateTimer end
@@ -424,7 +505,7 @@ function isSameQueen(q1, q2)
 		q1 = q1.parameters
 		q2 = q2.parameters
 		
-		if 		q1.genome == q2.genome
+		if 	q1.genome == q2.genome
 			and q1.age == q2.age
 			and q1.hatedPlants == q2.hatedPlants
 			and q1.dislikedPlants == q2.dislikedPlants
@@ -593,6 +674,9 @@ end
 -- By default ages the queen by 1, but can use any other number or negative ones to make her last longer
 -- Can be called from other places (Like the frame scripts)
 function ageQueen(amount)
+	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then 
+	  queen.parameters.lifespan = 500 
+	end
 	queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
 	world.containerTakeAt(entity.id(), queenSlot-1)
 	
@@ -742,7 +826,6 @@ function droneProduction(drone)
 	local productionStat = genelib.statFromGenomeToValue(drone.parameters.genome, "baseProduction") + frameBonuses.baseProduction
 	local production = productionStat * (((drone.count / 1000) + math.min(1 / ((1 + hivesAroundHive) * 0.75), 1) + flowerFavor + biomeFavor) / 4)
 	
-	
 	for product, requirement in pairs(beeData.stats[family][subtypeID].production) do
 		if not droneProductionProgress[product] then
 			droneProductionProgress[product] = production
@@ -772,6 +855,18 @@ end
 -- Roll for mite infestation, or increment mite count if there's an infestation
 function miteGrowth()
 	if storage.mites > 0 then
+	        
+	        --display an infested hive image over the normal hive appearance if its infested enough
+		if storage.mites > 50 then  --if mites pass 100, display a rotten looking apiary
+		  animator.setAnimationState("base", "infested", true)
+		  animator.setAnimationState("warning", "on", true)
+		elseif storage.mites > 200 then  --if mites pass 200, display a really rotten looking apiary
+		  animator.setAnimationState("base", "infested2", true)	
+		  animator.setAnimationState("warning", "on", true)
+		else
+		  animator.setAnimationState("base", "default", true)
+		  animator.setAnimationState("warning", "off", true)
+		end
 		
 		-- The growth multiplier. responsible for increasing mites by [current amount of mites] * this value
 		local mult = beeData.mites.growthPercentile
@@ -794,6 +889,7 @@ function miteGrowth()
 		if droneCount > 0 then
 			hiveMiteResistance = hiveMiteResistance / droneCount
 			
+			-- we create a little function that improves as resistance does
 			if hiveMiteResistance > 0 then
 				mult = math.max(mult / (hiveMiteResistance*100), beeData.mites.growthPercentileMinimum)
 			elseif hiveMiteResistance < 0 then
@@ -801,15 +897,16 @@ function miteGrowth()
 			end
 		end
 		
-		storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
-		
+		-- remove the hive resistance from the mite total if over a certain threshold, otherwise increment them
+		if hiveMiteResistance > 0 then
+		  storage.mites = storage.mites - (hiveMiteResistance)
+		else
+	          storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic       
+		end
 		
 	elseif math.random() <= beeData.mites.infestationChance then
-	self.chanceGrow = math.random(100)  
-	  if self.chanceGrow >= 99 then   -- further reduce the chance for mites by a d100 roll
 	    storage.mites = beeData.mites.growthStatic
-	  end
-	end
+	end	
 end
 
 -- Check for rivalries within the hive
@@ -915,7 +1012,7 @@ function getBiomeFavor(name)
 	end
 	
 	-- That feeling when no enums/switch case
-	local favor = beeData.biomeLikeness[name][biome] or 1
+	local favor = beeData.biomeLikeness[name][biome] or 2 --was 1, but I want default to be "liked" with 0 bonus rather than penalty by default. It's more fun for the player.
 	if favor == 0 then return -1 end -- deadly - halts production
 	if favor == 1 then return beeData.biomeDisliked end
 	if favor == 2 then return beeData.biomeLiked end
@@ -923,7 +1020,7 @@ function getBiomeFavor(name)
 end
 
 -- Used to handled animation. Base = the apiary itself, bees = the bees flying around, loading = loading sign
-function setAnimationStates(base, bees, loading)
+function setAnimationStates(base, bees, loading, warning)
 	if oldBaseState ~= base then
 		oldBaseState = base
 		
@@ -965,7 +1062,9 @@ end
 -- Attempt spawning a bee entity to roam about
 function tryBeeSpawn(family, genome)
 	if math.random() <= beeData.beeSpawnChance and spaceForBees() then
-		world.spawnMonster(string.format("bee_%s", family), object.toAbsolutePosition({ 2, 3 }), { genome = genome })
+		if math.random(20)>= 15 then  
+			world.spawnMonster(string.format("bee_%s", family), object.toAbsolutePosition({ 2, 3 }), { genome = genome })
+		end
 	end
 end
 

@@ -1,7 +1,6 @@
 function init()
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.multiJumpModifier = config.getParameter("multiJumpModifier")
-
   refreshJumps()
 end
 
@@ -13,9 +12,7 @@ function update(args)
   applyTechBonus()
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
-
   updateJumpModifier()
-
   if jumpActivated and canMultiJump() then
     doMultiJump()
   else
@@ -31,11 +28,11 @@ function updateJumpModifier()
     if not self.applyJumpModifier
         and not mcontroller.jumping()
         and not mcontroller.groundMovement() then
-
-      self.applyJumpModifier = true
+        self.applyJumpModifier = true
     end
-
-    if self.applyJumpModifier then mcontroller.controlModifiers({airJumpModifier = self.multiJumpModifier * self.jumpBonus}) end
+    if self.applyJumpModifier then 
+      mcontroller.controlModifiers({airJumpModifier = self.multiJumpModifier * self.jumpBonus}) 
+    end
   end
 end
 

@@ -192,7 +192,9 @@ function doUpgrade()
 							
 						-- hoe, chainsaw, etc
 						if upgradedItem.parameters.fireTime then
-							upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
+							if not (itemConfig.config.category == "Gun Staff") or (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
+							  upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
+							end
 						end
 
 						if upgradedItem.parameters.blockRadius then
@@ -258,51 +260,54 @@ function doUpgrade()
 					end   
 		  
 					if (itemConfig.config.primaryAbility) then	 
-						
-						-- beams and miners
-						if (itemConfig.config.primaryAbility.beamLength) then
-							upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
-						end
-						
-						-- wands/staves	
-						if (itemConfig.config.primaryAbility.maxCastRange) then
-							upgradedItem.parameters.primaryAbility = {
-								maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
-							}
-						end
-						
-						if (itemConfig.config.primaryAbility.energyCost) then
-							upgradedItem.parameters.primaryAbility = {
-								energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3)
-							}
-						end
-						
-						-- we reduce fire time slightly as long as the weapon isnt already too fast firing. 
-						if (itemConfig.config.primaryAbility.fireTime) then
-						  local fireTimeBase = itemConfig.config.primaryAbility.fireTime
-						  local fireTimeMod = ( upgradedItem.parameters.level/20 * 0.25)
-						  local fireTimeFinal = fireTimeBase * fireTimeMod 
-						  local fireTimeFinal2 = fireTimeBase - fireTimeFinal	
-						  
-						  if (itemConfig.config.category == "Rapier") or (itemConfig.config.category == "rapier") or (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "scythe") or (itemConfig.config.primaryAbility.fireTime <= 0.1) then
-						    upgradedItem.parameters.primaryAbility.fireTime = fireTimeBase	
-						  else
-						    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2  
-						  end
-						  
-						end
-						    
-						-- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
-						if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
-							local baseDpsBase = itemConfig.config.primaryAbility.baseDps
-							local baseDpsMod = (upgradedItem.parameters.level/80)
-							local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
-							upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
-						end							
-						
-						-- Can it STUN?	
-						if (itemConfig.config.category == "hammer") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "quarterstaff") then
-							upgradedItem.parameters.stunChance = (itemConfig.parameters.stunChance or itemConfig.config.stunChance or 1) + 0.5 + self.baseValueMod                    
+						if not (itemConfig.config.category == "Gun Staff") or (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
+							-- beams and miners
+							if (itemConfig.config.primaryAbility.beamLength) then
+								upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
+							end
+
+							-- wands/staves	
+							if (itemConfig.config.primaryAbility.maxCastRange) then
+								upgradedItem.parameters.primaryAbility = {
+									maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
+								}
+							end
+
+							if (itemConfig.config.primaryAbility.energyCost) then
+								upgradedItem.parameters.primaryAbility = {
+									energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3)
+								}
+							end
+
+							-- we reduce fire time slightly as long as the weapon isnt already too fast firing. 
+							if (itemConfig.config.primaryAbility.fireTime) then
+							  local fireTimeBase = itemConfig.config.primaryAbility.fireTime
+							  local fireTimeMod = ( upgradedItem.parameters.level/20 * 0.25)
+							  local fireTimeFinal = fireTimeBase * fireTimeMod 
+							  local fireTimeFinal2 = fireTimeBase - fireTimeFinal	
+
+							  if (itemConfig.config.category == "Rapier") or (itemConfig.config.category == "rapier") or (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "scythe") or (itemConfig.config.primaryAbility.fireTime <= 0.1) then
+							    upgradedItem.parameters.primaryAbility.fireTime = fireTimeBase	
+							  else
+							    upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2  
+							  end
+
+							end
+
+							-- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
+							if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
+								local baseDpsBase = itemConfig.config.primaryAbility.baseDps
+								local baseDpsMod = (upgradedItem.parameters.level/80)
+								local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
+								upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
+							end							
+
+							-- Can it STUN?	
+							if (itemConfig.config.category == "hammer") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "quarterstaff") then
+								upgradedItem.parameters.stunChance = (itemConfig.parameters.stunChance or itemConfig.config.stunChance or 1) + 0.5 + self.baseValueMod                    
+							end
+						else
+						 --gunblade upgrade data here
 						end
 					end
 	  
