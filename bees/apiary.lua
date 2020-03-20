@@ -93,7 +93,7 @@ specialFrameFunctions = {
 			antimiteFrameTimer = data[1]
 		elseif antimiteFrameTimer <= 0 then
 			--world.spawnItem("vmite",entity.position(),self.randAmount)
-			antimiteFrameTimer = math.random(60,240)
+			antimiteFrameTimer = math.random(100,540)
 		else
 			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
 		end
@@ -104,7 +104,7 @@ specialFrameFunctions = {
 			ironFrameTimer = data[1]
 		elseif ironFrameTimer <= 0 then
 			world.spawnItem("copperore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(60,240)
+			ironFrameTimer = math.random(100,540)
 		else
 			ironFrameTimer = ironFrameTimer - beeTickDelta
 		end
@@ -115,7 +115,7 @@ specialFrameFunctions = {
 			ironFrameTimer = data[1]
 		elseif ironFrameTimer <= 0 then
 			world.spawnItem("ironore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(60,240)
+			ironFrameTimer = math.random(100,540)
 		else
 			ironFrameTimer = ironFrameTimer - beeTickDelta
 		end
@@ -126,7 +126,7 @@ specialFrameFunctions = {
 			ironFrameTimer = data[1]
 		elseif ironFrameTimer <= 0 then
 			world.spawnItem("tungstenore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(60,240)
+			ironFrameTimer = math.random(100,540)
 		else
 			ironFrameTimer = ironFrameTimer - beeTickDelta
 		end
@@ -137,7 +137,7 @@ specialFrameFunctions = {
 			ironFrameTimer = data[1]
 		elseif ironFrameTimer <= 0 then
 			world.spawnItem("titaniumore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(60,240)
+			ironFrameTimer = math.random(100,540)
 		else
 			ironFrameTimer = ironFrameTimer - beeTickDelta
 		end
@@ -148,7 +148,7 @@ specialFrameFunctions = {
 			ironFrameTimer = data[1]
 		elseif ironFrameTimer <= 0 then
 			world.spawnItem("durasteelore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(60,240)
+			ironFrameTimer = math.random(100,540)
 		else
 			ironFrameTimer = ironFrameTimer - beeTickDelta
 		end
