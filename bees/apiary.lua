@@ -42,13 +42,13 @@ require "/zb/zb_util.lua"
 --]]
 
 
-queen = nil				-- Contains the queen or nil if there's no queen
+queen = nil			-- Contains the queen or nil if there's no queen
 hivesAroundHive = 0		-- Active hives around the hive
 delayedInit = true		-- Used to delay some things initialization due to how some SBs functions work
-biome = nil				-- The world type/biome
+biome = nil			-- The world type/biome
 beeTickDelta = 0		-- Variable holding delta between bee ticks.
 noQueenTimer = 0		-- Time left before drones start dying without a queen
-noQueenTimeAllowed = 60	-- Time before drones start dying without a queen
+noQueenTimeAllowed = 60		-- Time before drones start dying without a queen
 
 -- Whether the hive has a frame, and the bonus stats it provides
 hasFrame = false
@@ -60,11 +60,13 @@ frameBonuses = {
 	queenLifespan = 0,
 	mutationChance = 0,
 	miteResistance = 0,
-	frameWorktimeModifierDay = false,
-	frameWorktimeModifierNight = false,
-	frameWorktimeModifierHeat = false,
-	frameWorktimeModifierCold = false,
-	frameWorktimeModifierRadiation = false
+	allowDay = false,
+	allowNight = false,
+	heatResistance = false,
+	coldResistance = false,
+	radResistance = false,
+	cosmicResistance = false,
+	physicalResistance = false
 }
 
 -- Table storing functions called by unique frames every bee tick
@@ -457,7 +459,12 @@ function getFrames()
 		mutationChance = 0,
 		miteResistance = 0,
 		allowDay = false,
-		allowNight = false
+		allowNight = false,
+		heatResistance = false,
+		coldResistance = false,
+		radResistance = false,
+		cosmicResistance = false,
+		physicalResistance = false
 	}
 
 	-- Iterate through frame slots, set 'hasFrame' to true if there's a frame, and add bonuses to the table
@@ -469,7 +476,7 @@ function getFrames()
 			local amountcheck = contents[frameSlot].count
 			
 			for stat, value in pairs(frameBonuses) do
-				if stat == "allowDay" or stat == "allowNight" then
+				if stat == "allowDay" or stat == "allowNight" or stat== "frameWorktimeModifierDay" or stat=="frameWorktimeModifierNight" or stat == "coldResistance" or stat=="heatResistance" or stat=="radResistance" or stat=="physicalResistance" or stat=="cosmicResistance" then
 					if cfg.config[stat] then
 						frameBonuses[stat] = true
 					end
@@ -677,8 +684,17 @@ function ageQueen(amount)
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then 
 	  queen.parameters.lifespan = 500 
 	end
-	queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
-	world.containerTakeAt(entity.id(), queenSlot-1)
+	
+	-- original
+	--queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
+	--world.containerTakeAt(entity.id(), queenSlot-1)
+	
+	--updated
+	self.randQueenAge = math.random(1,2)  --kill queens half as fast as before
+	if self.randQueenAge == 1 then
+		queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
+		world.containerTakeAt(entity.id(), queenSlot-1)	
+	end
 	
 	if (queen.parameters.lifespan > 0) then
 		world.containerPutItemsAt(entity.id(), queen, queenSlot-1)
@@ -1012,11 +1028,40 @@ function getBiomeFavor(name)
 	end
 	
 	-- That feeling when no enums/switch case
-	local favor = beeData.biomeLikeness[name][biome] or 2 --was 1, but I want default to be "liked" with 0 bonus rather than penalty by default. It's more fun for the player.
+	local favor = beeData.biomeLikeness[name][biome] or 2 --default is "liked" with no bonus to production 
+
 	if favor == 0 then return -1 end -- deadly - halts production
 	if favor == 1 then return beeData.biomeDisliked end
 	if favor == 2 then return beeData.biomeLiked end
 	if favor == 3 then return beeData.biomeFavorite end
+
+	--frame immunity to biomes
+	if frameBonuses.radResistance then
+		if (biome == "alien") or (biome == "jungle") or (biome == "barren") or (biome == "barren2") or (biome == "barren3") or (biome == "chromatic") or (biome == "irradiated") or (biome == "metallicmoon") then
+		  if (favor < 2) then
+		    favor = 2
+		  end
+		end
+	elseif frameBonuses.coldResistance then
+		if (biome == "snow") or (biome == "arctic") or (biome == "snowdark") or (biome == "arcticdark") or (biome == "tundra") or (biome == "tundradark") or (biome == "crystalmoon") or (biome == "frozenvolcanic") or (biome == "icemoon") or (biome == "icewaste") or (biome == "icewastedark") or (biome == "nitrogensea") then
+		  if (favor < 2) then
+		    favor = 2
+		  end
+		end	
+	elseif frameBonuses.heatResistance then
+		if (biome == "desert") or (biome == "volcanic") or (biome == "volcanicdark") or (biome == "magma") or (biome == "magmadark") or (biome == "desertwastes") or (biome == "desertwastesdark") or (biome == "infernus") or (biome == "infernusdark") or (biome == "frozenvolcanic") then
+		  if (favor < 2) then
+		    favor = 2
+		  end
+		end
+	elseif frameBonuses.physicalResistance then
+		if (biome == "toxic") or (biome == "moon") or (biome == "scorched") or (biome == "scorchedcity") or (biome == "volcanic") or (biome == "volcanicdark") or (biome == "savannah")  or (biome == "jungle") or (biome == "thickjungle") or (biome == "sulphuric") or (biome == "sulphuricdark") or (biome == "tidewater") then
+		  if (favor < 2) then
+		    favor = 2
+		  end
+		end		
+	end
+	
 end
 
 -- Used to handled animation. Base = the apiary itself, bees = the bees flying around, loading = loading sign
