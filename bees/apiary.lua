@@ -690,7 +690,7 @@ function ageQueen(amount)
 	--world.containerTakeAt(entity.id(), queenSlot-1)
 	
 	--updated
-	self.randQueenAge = math.random(1,2)  --kill queens half as fast as before
+	self.randQueenAge = math.random(0,1)  --kill queens half as fast as before
 	if self.randQueenAge == 1 then
 		queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
 		world.containerTakeAt(entity.id(), queenSlot-1)	
