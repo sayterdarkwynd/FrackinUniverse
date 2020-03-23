@@ -2,6 +2,7 @@
 require "/scripts/util.lua"
 require "/bees/genomeLibrary.lua"
 require "/zb/zb_util.lua"
+require "/scripts/kheAA/transferUtil.lua"
 
 
 --[[		Comments:
@@ -210,6 +211,7 @@ function init()
 		beeUpdateTimer = beeUpdateTimer + timerIncrement
 		sameTimers = world.objectQuery(entity.position(), 10, {withoutEntityId = entity.id(), callScript = "GetUpdateTimer", callScriptResult = beeUpdateTimer})
 	until (not sameTimers or #sameTimers == 0)
+	transferUtil.init()
 end
 
 -- First update, used to do some things we don't need every update. Switches to update2 when its not needed anymore
@@ -248,6 +250,12 @@ end
 
 -- Called as update when the first update is done
 function update2(dt)
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
+	end
 	beeUpdateTimer = beeUpdateTimer - dt
 	beeTickDelta = beeTickDelta + dt
 	
