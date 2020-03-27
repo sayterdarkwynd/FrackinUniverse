@@ -3,8 +3,8 @@
   "price" : 200,
   "maxStack" : 1,
   "level" : 2,
-  "rarity" : "Common",
-  "description" : "Shiny and wonderful. Whack your foes.",
+  "rarity" : "uncommon",
+  "description" : "Damage any elemental defense type.",
   "shortdescription" : "Silver Quarterstaff",
   "tooltipKind" : "sword2",
   "category" : "Quarterstaff",
@@ -22,7 +22,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "silverweapon",
 
   "aimOffset" : -1.0,
 
@@ -32,7 +32,7 @@
     "baseDps" : 5.4,
     "damageConfig":{
       "knockback":10,
-      "damageSourceKind" : "poison"
+      "damageSourceKind" : "silverweapon"
       }, 
       "comboSteps":6, 
       "swooshOffsetRegions":[
@@ -216,7 +216,7 @@
       }
   },
   
-  "altAbilityType" : "staffelementalspin",
+  "altAbilityType" : "staffspin",
   
   "fireSounds" : [ "/sfx/melee/swing_spear.ogg" ],
 
