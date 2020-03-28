@@ -26,19 +26,19 @@
     "class" : "GunFire",
 
     "fireTime" : [0.25, 0.6],
-    "baseDps" : [3, 4.3],
+    "baseDps" : [4, 5.2],
     "energyUsage" : [24, 32],
     "inaccuracy" : 0.00,
 
     "fireType" : "auto",
 
-    "projectileType" : "standardbullet",
+    "projectileType" : "standardbulletbeam",
     "projectileParameters" : {
       "knockbackRange" : [0.1,0.2],
       "fullbright" : true,
-      "timeToLive" : 0.6,
+      "timeToLive" : 0.2,
       "speed" : 90,
-      "periodicActions" : [{"time" : 0.006,"loop" : true,"action" : "projectile","type" : "standardbullet","inheritDamageFactor" :0.1,"fuzzAngle" : 0,"projectileParameters" : { "speed" : 0, "damageSourceKind" : "default" }}]
+      "periodicActions" : [{"time" : 0.006,"loop" : true,"action" : "projectile","type" : "standardbulletbeam","inheritDamageFactor" :0.1,"fuzzAngle" : 0,"projectileParameters" : { "speed" : 0, "damageSourceKind" : "default", "timeToLive" : 0.2 }}]
     },
 
     "stances" : {
