@@ -2,6 +2,10 @@ function init()
   if status.resourceMax("health") < config.getParameter("minMaxHealth", 0) then
     effect.expire()
   end
+  
+  if world.callScriptedEntity(entity.id(),"getClass") == 'bee' then
+	effect.expire()
+  end
 
   self.blinkTimer = 0
 end
@@ -44,5 +48,8 @@ function explode()
     }
     world.spawnProjectile("invisibleprojectile", mcontroller.position(), 0, {0, 0}, false, projectileConfig)
     self.exploded = true
+	if status.isResource("stunned") then
+		status.setResource("stunned",0)
+	end
   end
 end

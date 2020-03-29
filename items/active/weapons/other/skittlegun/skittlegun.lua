@@ -92,7 +92,7 @@ function update(dt, fireMode, shiftHeld)
 			storage.fireTimer = 1 * scienceWarning
 			effectUtil.effectSelf("nude",storage.fireTimer)
 			if scienceWarning >= 3 then
-				effectUtil.effectSelf("paralysis",storage.fireTimer)
+				effectUtil.effectSelf("fuparalysis",storage.fireTimer)
 				effectUtil.effectSelf("activemovementdummy",storage.fireTimer)
 				if scienceWarning >= 13 then
 					effectUtil.effectSelf("vulnerability",storage.fireTimer)
