@@ -985,6 +985,7 @@ function areRivals(name1, name2)
 	-- Return false if the bees are of the same family
 	if name1 == name2 then return false end
 	
+	--sb.logInfo("names: %s",{name1,name2})
 	if string.find(name1, "_") then
 		name1 = family(name1)
 	end
@@ -992,14 +993,14 @@ function areRivals(name1, name2)
 	if string.find(name2, "_") then
 		name2 = family(name2)
 	end
-	
+	--sb.logInfo("families: %s",{name1,name2})
 	-- Check if the first bee is the rival for the second
-	if type(beeData.beeFamilyRivalries[name1]) == "string" then
-		if beeData.beeFamilyRivalries[name1][name1] == name2 then
+	if type(beeData.rivals[name1]) == "string" then
+		if beeData.rivals[name1] == name2 then
 			return true
 		end
-	elseif type(beeData.beeFamilyRivalries[name1][name1]) == "table" then
-		for _, rival in ipairs(beeData.beeFamilyRivalries[name1][name1]) do
+	elseif type(beeData.rivals[name1]) == "table" then
+		for _, rival in ipairs(beeData.rivals[name1]) do
 			if name2 == rival then
 				return true
 			end
@@ -1007,12 +1008,12 @@ function areRivals(name1, name2)
 	end
 	
 	-- Check if the second bee is the rival to the first
-	if type(beeData.beeFamilyRivalries[name1][name2]) == "string" then
-		if beeData.beeFamilyRivalries[name1][name2] == name1 then
+	if type(beeData.rivals[name2]) == "string" then
+		if beeData.rivals[name2] == name1 then
 			return true
 		end
-	elseif type(beeData.beeFamilyRivalries[name1][name2]) == "table" then
-		for _, rival in ipairs(beeData.beeFamilyRivalries[name1][name1]) do
+	elseif type(beeData.rivals[name2]) == "table" then
+		for _, rival in ipairs(beeData.rivals[name2]) do
 			if name1 == rival then
 				return true
 			end
