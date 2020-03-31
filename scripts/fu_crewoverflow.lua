@@ -16,7 +16,7 @@ function init()
 	end)
 	message.setHandler("openCrewDeedInterface", function(_, _, args) 
 		if world.entityExists(args.objectId) and player.worldId() == player.ownShipWorldId() then
-			player.interact("ShowPopup", {message = "Crew room managing not yet implemented"}, args.objectId)
+			player.interact("ShowPopup", {message = "Room is valid. Increasing max crew"}, args.objectId)
 		else
 			player.interact("ShowPopup", {message = args.notOwnShipMessage}, args.objectId)
 		end
