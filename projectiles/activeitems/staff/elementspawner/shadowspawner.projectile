@@ -1,16 +1,19 @@
 {
   "projectileName" : "shadowspawner",
-  "physics" : "nocollision",
+  "piercing" : true,
   "timeToLive" : 5,
   "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
   "speed" : 0,
   "power" : 30,
-  "damageKind" : "default",
+  "damageKind" : "nodamage",
   "damagePoly" : [ ],
   "orientationLocked" : true,
   "bounces" : -1,
   "scripts" : [ "/projectiles/activeitems/staff/elementspawner/elementspawner.lua" ],
   "scriptDelta" : 1,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
 
   "control" : {},
 
