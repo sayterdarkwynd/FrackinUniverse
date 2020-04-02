@@ -10,7 +10,6 @@ function NebArrowRain:init()
   self.paletteSwaps = config.getParameter("paletteSwaps")
   self.elementalType = config.getParameter("elementalType")
   self.arrowVariant = config.getParameter("animationParts")
-
   self.drawTimer = 0
   animator.setAnimationState("bow", "idle")
   self.cooldownTimer = 0
@@ -18,20 +17,10 @@ function NebArrowRain:init()
   self.aimOutOfReach = false
   self.aimTypeSwitchTimer = 0
   self.actionOnReapParameters = {}
-
   self:reset()
-  
   self.projectileParameters = self.projectileParameters or {}
-
-  --local projectileConfig = root.projectileConfig(self.altProjectileType)
-  --self.projectileParameters.speed = self.projectileParameters.speed or projectileConfig.speed
-  --self.projectileParameters.power = self.projectileParameters.power or projectileConfig.power
-  --self.projectileParameters.power = self.projectileParameters.power * self.weapon.damageLevelMultiplier
-
   self.projectileParameters.timeToLive = self.timeUntilSplit + (self.timeUntilSplit/5)
-
   self.projectileGravityMultiplier = self.projectileMovementParameters.gravityMultiplier or root.projectileGravityMultiplier(self.powerProjectileType or self.altProjectileType)
-
   self.weapon.onLeaveAbility = function()
     self:reset()
   end
@@ -62,27 +51,21 @@ end
 
 function NebArrowRain:windup()
   self.weapon:setStance(self.stances.windup)
-
   activeItem.emote("sleep")
-
   util.wait(self.stances.windup.duration)
-
   self:setState(self.draw)
 end
 
 function NebArrowRain:draw()
   self.weapon:setStance(self.stances.draw)
-
   animator.playSound("draw", -1)
   local readySoundPlayed = false
 
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") do
     if self.walkWhileFiring then
-			mcontroller.controlModifiers({runningSuppressed = true})
-		end
-
+		mcontroller.controlModifiers({runningSuppressed = true})
+    end
     self.drawTimer = self.drawTimer + self.dt
-
     local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer / self.drawTime * (#self.drawArmFrames - 1)))
 	
 		--If not yet fully drawn, drain energy quickly
@@ -123,40 +106,36 @@ function NebArrowRain:draw()
       activeItem.setCursor(self.cursorFrames[#self.cursorFrames])
     end
 	
-	local aimVec = self:idealAimVector()
+    local aimVec = self:idealAimVector()
     if self.aimOutOfReach or self.aimTypeSwitchTimer > 0 then
 	  local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
 	  self.weapon.aimAngle = aimAngle
-	  
 	  self.weapon:updateAim()
-	  
 	  world.debugLine(self:firePosition(), vec2.add(self:firePosition(), vec2.mul(vec2.norm(self:idealAimVector()), 3)), "yellow")
-	else
+    else
 	  aimVec[1] = aimVec[1] * self.weapon.aimDirection
-	  --self.weapon.aimAngle = 0 --Reset the aimAngle every frame to prevent values from continously stacking, causing the weapon to spasm
-      self.weapon.aimAngle = (4 * self.weapon.aimAngle + vec2.angle(aimVec)) / 5
-	
+          self.weapon.aimAngle = (4 * self.weapon.aimAngle + vec2.angle(aimVec)) / 5
 	  world.debugLine(self:firePosition(), vec2.add(self:firePosition(), vec2.mul(vec2.norm(self:idealAimVector()), 3)), "green")
-	end
+    end
 	
     animator.setGlobalTag("drawFrame", drawFrame)
 	
     if drawFrame == 5 then --or whatever the frame is
       animator.setGlobalTag("directives", "?fade=FFFFFFFF=0.1")
-		else
-			animator.setGlobalTag("directives", "")
-		end
-		
+    else
+      animator.setGlobalTag("directives", "")
+    end
     self.stances.draw.frontArmFrame = self.drawArmFrames[drawFrame + 1]
-		
-		--world.debugText(drawFrame .. " | " .. sb.printJson(self:perfectTiming()), mcontroller.position(), "red")
-		world.debugText(sb.printJson(self:currentProjectileParameters(), 1), mcontroller.position(), "yellow")
-	
+    world.debugText(sb.printJson(self:currentProjectileParameters(), 1), mcontroller.position(), "yellow")
     coroutine.yield()
   end
 
   animator.stopAllSounds("draw")
-  self:setState(self.fire)
+  if self.drawTimer < self.drawTime then
+    self:setState(self.reset)
+  else
+    self:setState(self.fire)
+  end  
 end
 
 function NebArrowRain:fire()
@@ -227,23 +206,18 @@ function NebArrowRain:fire()
       )
 	  
 	  world.callScriptedEntity(projectileId, "setMovementParameters", self.projectileMovementParameters)
-
 	  if self:perfectTiming() then
 		animator.playSound("perfectRelease")
 	  else
 		animator.playSound("release")
 	  end
 	end
-	
 	animator.setAnimationState("bow", "loosed")
-
     self.drawTimer = 0
-
     util.wait(self.stances.fire.duration)
   else
     animator.setGlobalTag("drawFrame", "0")
   end
-  
   self.projectileParameters.periodicActions = nil
   self.cooldownTimer = self.cooldownTime
   animator.setGlobalTag("directives", "")
