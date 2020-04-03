@@ -100,7 +100,23 @@
           }
         }
       ],
-
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-projectile",
+          "cooldown" : 2,
+          "parameters" : {
+            "projectileCount" : 4,
+            "projectileType" : "gasburst",
+            "inaccuracy" : 3.14,
+            "projectileParameters" : {},
+            "power" : 15,
+            "aimDirection" : [0, -1],
+            "fireOffset" : [0, 1]
+          }
+        } 
+      ],
+      
       "wanderActions" : [
         {
           "name" : "action-hop",
@@ -173,13 +189,13 @@
       "collisionPoly" : [ [0.75, 2], [2.5, 1], [2.5, -2.25], [0.75, -3.35], [-0.75, -3.35], [-2.5, -2.25], [-2.5, 1], [-0.75, 2]  ],
 
       "mass" : 1.0,
-      "walkSpeed" : 6,
-      "runSpeed" : 20,
+      "walkSpeed" : 3,
+      "runSpeed" : 5,
 
       "airFriction" : 0,
 
       "airJumpProfile" : {
-        "jumpSpeed" : 45.0,
+        "jumpSpeed" : 1.0,
         "jumpInitialPercentage" : 1.0,
         "jumpHoldTime" : 0.0
       }
@@ -216,10 +232,10 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 80
+          "baseValue" : 380
         },
         "protection" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.20
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -227,21 +243,15 @@
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
-        "iceResistance" : {
+        "electricResistance" : {
+          "baseValue" : 0.9
+        },
+        "cosmicResistance" : {
           "baseValue" : 0.5
         },
-        "iceStatusImmunity" : {
-          "baseValue" : 1
-        },        
-	"iceslipImmunity" : {
-          "baseValue" : 1
-        },
-	"snowslowImmunity" : {
-          "baseValue" : 1
-        },
-	"liquidnitrogenImmunity" : {
-          "baseValue" : 1
-        } 
+        "iceResistance" : {
+          "baseValue" : -0.5
+        }        
       },
 
       "resources" : {
