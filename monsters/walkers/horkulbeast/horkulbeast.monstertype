@@ -10,8 +10,8 @@
 
   "dropPools" : [     
     {
-      "default" : "empty",
-      "bow" : "horkulbeastTreasure",
+      "default" : "horkulbeastTreasure",
+      "bow" : "horkulbeasthuntTreasure",
       "brain" : "brain"
     }
   ],
@@ -38,20 +38,7 @@
       "hostileActions" : [],
 
       "periodicActions" : [
-        {
-          "name" : "action-hop",
-          "cooldown" : 5.0,
-          "parameters" : {
-            "verticalSpeed" : 30,
-            "horizontalSpeed" : 20,
-            "hopSequence" : 1,
-            "timeBetweenHops" : 0.0,
-            "windupTime" : 0.1,
-            "landTime" : 0.1,
-            "hopAwayFromWall" : false,
-            "wallVerticalSpeed" : 45
-          }
-        }       
+      
       ],
 
       "approachActions" : [
@@ -104,6 +91,19 @@
       "damageTakenActions" : [
         {
           "name" : "action-projectile",
+          "cooldown" : 1,
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "extraessence",
+            "inaccuracy" : 0,
+            "projectileParameters" : {},
+            "power" : 2,
+            "aimDirection" : [0, -1],
+            "fireOffset" : [0, 1]
+          }
+        },       
+        {
+          "name" : "action-projectile",
           "cooldown" : 2,
           "parameters" : {
             "projectileCount" : 4,
@@ -117,21 +117,7 @@
         } 
       ],
       
-      "wanderActions" : [
-        {
-          "name" : "action-hop",
-          "cooldown" : 3.0,
-          "parameters" : {
-            "verticalSpeed" : 30,
-            "horizontalSpeed" : 20,
-            "hopSequence" : 1,
-            "timeBetweenHops" : 0.0,
-            "windupTime" : 0.1,
-            "landTime" : 0.1,
-            "hopAwayFromWall" : false,
-            "wallVerticalSpeed" : 45
-          }
-        },       
+      "wanderActions" : [      
 	    {
           "name" : "wander-walk",
           "cooldown" : 3.0,
@@ -149,7 +135,7 @@
 			"run": true
           }
         },
-		{
+	{
           "name" : "action-animate",
           "cooldown" : 12,
           "parameters" : {
@@ -173,7 +159,7 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [0.75, 2], [2.5, 1], [2.5, -2.25], [0.75, -3.35], [-0.75, -3.35], [-2.5, -2.25], [-2.5, 1], [-0.75, 2]  ],
+      "poly" : [ [1.75, 2], [5.5, 1], [5.5, -1.25], [1.75, -2.35], [-1.75, -2.35], [-5.5, -1.25], [-5.5, 1], [-1.75, 2]  ],
       "damage" : 8,
 
       "teamType" : "enemy",
@@ -186,7 +172,7 @@
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.75, 2], [2.5, 1], [2.5, -2.25], [0.75, -3.35], [-0.75, -3.35], [-2.5, -2.25], [-2.5, 1], [-0.75, 2]  ],
+      "collisionPoly" : [ [1.75, 2], [5.5, 1], [5.5, -1.25], [1.75, -2.35], [-1.75, -2.35], [-5.5, -1.25], [-5.5, 1], [-1.75, 2]  ],
 
       "mass" : 1.0,
       "walkSpeed" : 3,
@@ -251,6 +237,9 @@
         },
         "iceResistance" : {
           "baseValue" : -0.5
+        },
+        "healingStatusImmunity" : {
+          "baseValue" : 1
         }        
       },
 
@@ -269,9 +258,9 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.5,
-    "capturedMonsterName" : "Meliope",
-    "nametagColor" : [64, 200, 255]
+    "capturable" : false,
+    "captureHealthFraction" : 0.0000005,
+    "capturedMonsterName" : "Horkulbeast",
+    "nametagColor" : [20, 200, 77]
   }
 }
