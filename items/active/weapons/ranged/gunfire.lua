@@ -116,7 +116,10 @@ function GunFire:auto()
   	if self.isReloader >= 1 then
   	  animator.playSound("cooldown") -- adds sound to shotgun reload
 		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then 
-		    animator.playSound("fuReload") -- adds new sound to reload 
+			if animator.hasSound("fuReload") then
+				animator.playSound("fuReload") -- adds new sound to reload 
+				
+			end
 		end  	  
 	end
         self:checkAmmo() --is it an ammo user?
