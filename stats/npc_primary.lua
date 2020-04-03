@@ -1,4 +1,5 @@
 require "/scripts/kit/falldamagesettings.lua"
+require "/scripts/vec2.lua"
 
 function init()
   --fall damage code
@@ -26,8 +27,15 @@ end
 
 function applyDamageRequest(damageRequest)
   --modified next line
-  if damageRequest.damageSourceKind ~= "falling" and (self.hitInvulnerabilityTime > 0 or self.hitInvulnerabilityTime > 0 or world.getProperty("nonCombat")) then
+  if world.getProperty("nonCombat") then
     return {}
+  end
+  if damageRequest.damageSourceKind ~= "falling" then
+    if status.resourcePositive("health") and self.hitInvulnerabilityTime > 0 then
+      return {}
+	elseif self.hitInvulnerabilityTime > 0 and not status.resourcePositive("health") then
+	  self.hitInvulnerabilityTime = 0
+	end
   end
 
   local damage = 0
@@ -184,6 +192,12 @@ function update(dt)
 
   if mcontroller.atWorldLimit(true) then
     status.setResourcePercentage("health", 0)
+  end
+  
+  if status.resourcePercentage("health") <= 0 then
+	if status.isResource("stunned") and status.resourcePositive("stunned") then
+	  status.setResource("stunned",0)
+	end
   end
 
   -- drawDebugResources()
