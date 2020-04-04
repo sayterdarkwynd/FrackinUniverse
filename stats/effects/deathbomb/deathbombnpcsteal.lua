@@ -1,11 +1,7 @@
 require "/scripts/util.lua"
 
 function init()
-	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) then
-		effect.expire()
-	end
-	
-	if world.callScriptedEntity(entity.id(),"getClass") == 'bee' then
+	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or (world.entityType(entity.id())~= "monster") or (world.callScriptedEntity(entity.id(),"getClass") == 'bee') then
 		effect.expire()
 	end
 
