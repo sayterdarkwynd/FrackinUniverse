@@ -6,10 +6,11 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "Brings merriment and joy ^red;(not murder)^reset; to young camp counsellors everywhere.
-+^green;5^reset;% Crit Chance
-+^green;20^reset;% Physical Resistance",
++^cyan;5^reset;% Crit Chance
++^cyan;20^reset;% Physical Resistance
+-^red;20^reset;% Electric Resistance",
   "shortdescription" : "Friendship Mask",
-  "category" : "headarmour",
+  "category" : "t4armor",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -20,19 +21,19 @@
   
   "leveledStatusEffects" : [
     {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "amount" : 1.15
+      "baseMultiplier" : 1.25
     },  
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.5
+      "amount" : 0.35
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 4
+      "amount" : 6
     }
   ],   
   "statusEffects" : [
@@ -43,6 +44,10 @@
     {
       "stat" : "physicalResistance",
       "effectiveMultiplier" : 1.2
+    },    
+    {
+      "stat" : "electricResistance",
+      "effectiveMultiplier" : 0.8
     }
   ]
 }
