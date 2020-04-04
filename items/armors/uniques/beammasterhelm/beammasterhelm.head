@@ -15,13 +15,12 @@
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "statusEffects" : [
-    "insanityimmunity",
+  "leveledStatusEffects" : [
     {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "powerMultiplier",
-      "amount" : 1.05
-    },
+      "amount" : 1.12
+    },  
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
@@ -30,12 +29,16 @@
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 10
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 10
+      "amount" : 5
     }
+  ],
+  
+  "statusEffects" : [
+    "insanityimmunity"
   ]
 }

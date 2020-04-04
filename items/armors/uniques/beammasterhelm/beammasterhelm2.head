@@ -14,29 +14,31 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-
-  "statusEffects" : [
-    "booze",
+  
+  "leveledStatusEffects" : [
     {
-      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "powerMultiplier",
-      "amount" : 1.05
-    },
+      "amount" : 1.08
+    },  
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.6
+      "amount" : 0.8
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 30
+      "amount" : 5
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 10
     }
+  ],
+  "statusEffects" : [
+    "insanityimmunity"
   ]
 
 }
