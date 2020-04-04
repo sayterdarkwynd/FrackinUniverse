@@ -111,6 +111,9 @@ end
 
 function power.getTotalEnergy()
   local energy = 0
+  if not storage.entitylist then
+	return 0
+  end
   for i=1,#storage.entitylist.output do
 	energy = energy + power.getEnergy(storage.entitylist.output[i])
   end

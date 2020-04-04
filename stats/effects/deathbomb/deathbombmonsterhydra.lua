@@ -38,11 +38,16 @@ function explode()
 			for _,piece in pairs(monsterData.behaviorConfig) do
 				if type(piece)=="table" then
 					for _,shard in pairs(piece) do
-						if shard.name then
-							if shard.name:find("spawn") then
-								self.exploded=true
-								return
+						if type(shard)=="table" then
+							if shard.name then
+								if shard.name:find("spawn") then
+									self.exploded=true
+									return
+								end
 							end
+						else
+							sb.logInfo("Monster.behaviorConfig: %s\nFORCING ERROR! CALL KHE!",monster.behaviorConfig)
+							local dummy = 100 / 0
 						end
 					end
 				end
