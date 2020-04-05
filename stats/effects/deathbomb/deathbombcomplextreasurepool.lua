@@ -32,7 +32,7 @@ function init()
 end
 
 function update(dt)
-	if canExplode and not status.resourcePositive("health") then
+	if canExplode and not status.resourcePositive("health") and not (status.stat("deathbombDud") > 0) then
 		explode()
 	end
 end

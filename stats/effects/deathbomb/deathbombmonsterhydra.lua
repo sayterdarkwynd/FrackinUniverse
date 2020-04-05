@@ -1,5 +1,5 @@
 function init()
-	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or ((world.entityType(entity.id())== "monster") and (world.callScriptedEntity(entity.id(),"getClass") == 'bee')) then
+	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or (world.entityType(entity.id())~= "monster") or (world.callScriptedEntity(entity.id(),"getClass") == 'bee') then
 		effect.expire()
 	end
 
@@ -26,10 +26,8 @@ function uninit()
 end
 
 function explode()
-	if world.entityType(entity.id()) ~= "monster" then
-		self.exploded=true
-	end
-	if not self.exploded then
+	--sb.logInfo("%s",status.stat("deathbombDud"))
+	if not self.exploded and not (status.stat("deathbombDud") > 0) then
 		local monsterParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
 		local monsterData=root.monsterParameters(world.monsterType(entity.id()))
 		if monsterData and monsterData.behaviorConfig then
@@ -44,7 +42,7 @@ function explode()
 								end
 							end
 						else
-							sb.logInfo("Monster.behaviorConfig: %s\nFORCING ERROR! CALL KHE!",monster.behaviorConfig)
+							sb.logInfo("monsterData.behaviorConfig: %s\nFORCING ERROR! CALL KHE!",monsterData.behaviorConfig)
 							local dummy = 100 / 0
 						end
 					end
@@ -62,8 +60,8 @@ function explode()
 			world.spawnMonster(world.monsterType(entity.id()),entity.position(),monsterParams)
 		end
 		self.exploded = true
-	if status.isResource("stunned") then
-		status.setResource("stunned",0)
-	end
+		if status.isResource("stunned") then
+			status.setResource("stunned",0)
+		end
 	end
 end

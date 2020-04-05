@@ -19,6 +19,7 @@ function hit()
 		podData=world.callScriptedEntity(entity.id(), "capturable.attemptCapture", entity.id())
 		
 		if podData then
+			effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
 			spawnFilledPod(podData)
 			self.hit=true
 			world.callScriptedEntity(entity.id(),"monster.setDropPool",nil)
