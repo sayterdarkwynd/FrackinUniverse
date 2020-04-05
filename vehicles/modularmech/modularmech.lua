@@ -22,7 +22,6 @@ function init()
 
   message.setHandler("restoreEnergy", function(_, _, base, percentage)
       if alive() then
-        setHealthValue()
         setEnergyValue()
         local restoreAmount = (base or 0) + self.healthMax * (percentage or 0)
         storage.health = math.min(storage.health + (restoreAmount*0.75), self.healthMax)
@@ -845,17 +844,17 @@ function update(dt)
   --energy drain
     local energyDrain = self.energyDrain
  
-      --set energy drain x2 on manual flight mode
-      if self.flightMode and world.gravity(mcontroller.position()) == 0 then
+    --set energy drain x2 on manual flight mode
+    if self.flightMode and world.gravity(mcontroller.position()) == 0 then
         energyDrain = self.energyDrain
-      elseif self.flightMode and world.gravity(mcontroller.position()) ~= 0 then
+    elseif self.flightMode and world.gravity(mcontroller.position()) ~= 0 then --flying in Gravity takes x2 fuel
         energyDrain = self.energyDrain*2
-    elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then
-        energyDrain = self.energyDrain
+    elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then  --walking consumes 80% fuel
+        energyDrain = self.energyDrain * 0.8
     end
  
     --set energy drain to 0 if null movement
-    if not hasTouched(newControls) and not hasTouched(oldControls) and not self.manualFlightMode then --(not hasFired) then
+    if not hasTouched(newControls) and not hasTouched(oldControls) and not self.manualFlightMode then
  
       eMult = vec2.mag(newVelocity) < 1.2 and 1 or 0 -- mag of vel in grav while idle = 1.188~
       eMult = eMult
@@ -1309,7 +1308,7 @@ function update(dt)
       self.baseDamageMechfall = math.min(math.abs(mcontroller.velocity()[2]) * self.mechMass)/2
  
     if self.mechMass >= 15 and (self.baseDamageMechfall) >= 220 and (self.jumpBoostTimer) == 0 then    --mech takes damage from stomps
-      storage.health = math.max(0, storage.health - (self.baseDamage /200))
+      storage.health = math.max(0, storage.health - (self.baseDamage /100))
     end
  
     if self.mechMass > 0 and time <= 0 then
@@ -1330,13 +1329,13 @@ function update(dt)
         }
  
         if self.mechMass >= 20 then
-        thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / (6 - (self.mechMass/24))
-        thumpParamsBig.actionOnReap[1].backgroundRadius = thumpParamsBig.actionOnReap[1].backgroundRadius / 6
-        thumpParamsBig.actionOnReap[1].explosiveDamageAmount = thumpParamsBig.actionOnReap[1].explosiveDamageAmount * 1.5
+          thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / (6 - (self.mechMass/24))
+          thumpParamsBig.actionOnReap[1].backgroundRadius = thumpParamsBig.actionOnReap[1].backgroundRadius / 6
+          thumpParamsBig.actionOnReap[1].explosiveDamageAmount = thumpParamsBig.actionOnReap[1].explosiveDamageAmount * 1.5
         elseif self.mechMass >= 11 then
-        thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 7.4
+          thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 7.4
         else
-        thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 10
+          thumpParamsBig.actionOnReap[1].foregroundRadius = thumpParamsBig.actionOnReap[1].foregroundRadius / 10
         end
  
         world.spawnProjectile("mechThumpLarge", mcontroller.position(), nil, {3,-6}, false, thumpParamsBig)
@@ -1388,9 +1387,7 @@ function applyDamage(damageRequest)
 
   self.massProtection = self.parts.body.stats.protection * ((self.parts.body.stats.mechMass)/10)
   self.rand= math.random(10)
-  if (self.parts.body.stats.protection) >=4
-    and (energyLost) <= (self.massProtection)
-    and (self.rand) <= 1 then
+  if (self.parts.body.stats.protection >=4) and (energyLost <= self.massProtection) and (self.rand <= 1) then
       energyLost = 0
       animator.playSound("landingThud")
       animator.burstParticleEmitter("blockDamage")
