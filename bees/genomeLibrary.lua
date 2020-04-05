@@ -187,6 +187,9 @@ genelib.generateDefaultGenome = function(beeName)
 	
 	-- Clear potential additions to the name.
 	local underscore1 = string.find(beeName, "_")
+	if not underscore1 then 
+		sb.logWarn("FU/bees/genomelibrary: error in %s",beeName)
+	end
 	local underscore2 = string.find(beeName, "_", underscore1+1)
 	beeName = string.sub(beeName, underscore1+1, underscore2-1)
 	
