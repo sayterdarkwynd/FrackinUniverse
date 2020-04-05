@@ -3,7 +3,8 @@ require "/scripts/companions/util.lua"
 require "/scripts/messageutil.lua"
 
 function init()
-  effect.setParentDirectives(config.getParameter("directives", ""))
+	effect.setParentDirectives(config.getParameter("directives", ""))
+	effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
 end
 
 
@@ -19,7 +20,7 @@ function hit()
 		podData=world.callScriptedEntity(entity.id(), "capturable.attemptCapture", entity.id())
 		
 		if podData then
-			effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
+			--effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
 			spawnFilledPod(podData)
 			self.hit=true
 			world.callScriptedEntity(entity.id(),"monster.setDropPool",nil)

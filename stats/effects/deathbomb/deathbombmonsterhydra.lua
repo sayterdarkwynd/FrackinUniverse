@@ -41,9 +41,6 @@ function explode()
 									return
 								end
 							end
-						else
-							sb.logInfo("monsterData.behaviorConfig: %s\nFORCING ERROR! CALL KHE!",monsterData.behaviorConfig)
-							local dummy = 100 / 0
 						end
 					end
 				end
