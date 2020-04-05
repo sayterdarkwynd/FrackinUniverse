@@ -26,7 +26,7 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded then
+	if not self.exploded and not (status.stat("deathbombDud") > 0) then
 		local projectileData=config.getParameter("projectile","invisibleprojectile")
 		
 		if type(projectileData)=="table" then

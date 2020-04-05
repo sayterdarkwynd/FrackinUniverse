@@ -25,7 +25,7 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded then
+	if not self.exploded and not (status.stat("deathbombDud") > 0) then
 		local healthMultiplier=config.getParameter("healthMultiplier",1)
 		local healthMax=status.resourceMax("health")
 		local item=config.getParameter("item","money")

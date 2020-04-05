@@ -28,10 +28,7 @@ function uninit()
 end
 
 function explode()
-	if world.entityType(entity.id()) ~= "npc" then
-		self.exploded=true
-	end
-	if not self.exploded then
+	if not self.exploded and not (status.stat("deathbombDud") > 0) then
 		local chance=config.getParameter("chance",100)
 		local dropPool={}
 		local slotList={"head","headCosmetic","chest","chestCosmetic","legs","legsCosmetic","back","backCosmetic","primary","alt"}

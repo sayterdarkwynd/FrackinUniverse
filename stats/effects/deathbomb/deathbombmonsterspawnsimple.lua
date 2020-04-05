@@ -26,7 +26,7 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded then
+	if not self.exploded and not (status.stat("deathbombDud") > 0) then
 		local monsters=config.getParameter("monsters")
 		--sb.logInfo("%s",monsters)
 		if monsters then
