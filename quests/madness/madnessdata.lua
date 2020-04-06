@@ -59,6 +59,13 @@ function randomEvent()
     if storage.madnessCount > 1500 then
 	    if self.randEvent == 44 then 
 		status.addEphemeralEffect("eatself",20) -- You just can't stop eating yourself.
+		status.addEphemeralEffect("healingimmunitydummy",20) -- healing won't work on you
+		if status.isResource("food") then
+			status.addEphemeralEffect("food_healconversion_100_1-10_inefficient",20) -- You just can't stop eating yourself.
+			status.addEphemeralEffect("feedpackneg",self.curseDuration_status)-- hunger isn't abating either
+		else
+			status.addEphemeralEffect("heal_neg20",20) -- You just can't stop eating yourself.
+		end
 		--status.addEphemeralEffect("bleeding05",20) -- You just can't stop eating yourself.
 	    end  
 	    if self.randEvent == 45 then 
@@ -98,7 +105,7 @@ function randomEvent()
 		status.addEphemeralEffect("rootfu",10) -- unable to move
 		player.radioMessage("madnessroot")
 	    end       
-	    if self.randEvent == 53 then --max food reduction
+	    if self.randEvent == 53 then --all res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "cosmicResistance", amount = status.stat("cosmicResistance")-penaltyValue },
@@ -118,7 +125,7 @@ function randomEvent()
 		  })    
 	    end 
 	    if self.randEvent == 31 then --increased hunger
-		status.addEphemeralEffect("feedpackneg",self.curseDuration_status) --player feels hot
+		status.addEphemeralEffect("feedpackneg",self.curseDuration_status) --more hunger
 		player.radioMessage("madnessfood")
 	    end      
 	    if self.randEvent == 32 then 
@@ -142,43 +149,43 @@ function randomEvent()
 		status.addEphemeralEffect("jumpboost25neg",self.curseDuration_status) -- You suddenly suck at jumping
 		player.radioMessage("madness2")
 	    end         
-	    if self.randEvent == 46 then --max food reduction
+	    if self.randEvent == 46 then --fire res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "fireResistance", amount = status.stat("fireResistance")-penaltyValue }
 		  })    
 	    end  
-	    if self.randEvent == 47 then --max food reduction
+	    if self.randEvent == 47 then --ice res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "iceResistance", amount = status.stat("iceResistance")-penaltyValue }
 		  })    
 	    end  
-	    if self.randEvent == 48 then --max food reduction
+	    if self.randEvent == 48 then --poison res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "poisonResistance", amount = status.stat("poisonResistance")-penaltyValue }
 		  })    
 	    end  
-	    if self.randEvent == 49 then --max food reduction
+	    if self.randEvent == 49 then --elec res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "electricResistance", amount = status.stat("electricResistance")-penaltyValue }
 		  })    
 	    end
-	    if self.randEvent == 50 then --max food reduction
+	    if self.randEvent == 50 then --shadow res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "shadowResistance", amount = status.stat("shadowResistance")-penaltyValue }
 		  })    
 	    end 
-	    if self.randEvent == 51 then --max food reduction
+	    if self.randEvent == 51 then --rad res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "radioactiveResistance", amount = status.stat("radioactiveResistance")-penaltyValue }
 		  })    
 	    end 
-	    if self.randEvent == 52 then --max food reduction
+	    if self.randEvent == 52 then --cosmic res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "cosmicResistance", amount = status.stat("cosmicResistance")-penaltyValue }
@@ -232,7 +239,7 @@ function randomEvent()
 		status.addEphemeralEffect("swimboost1",self.curseDuration_status) -- Swim boost!
 	    end  	
 	    if self.randEvent == 26 then 
-		status.addEphemeralEffect("vulnerability",self.curseDuration_status) --player feels drunk
+		status.addEphemeralEffect("vulnerability",self.curseDuration_status) --p
 	    end 	    
 	    if self.randEvent == 27 then 
 	      local penaltyValue = math.random(6,40)
