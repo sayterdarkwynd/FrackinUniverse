@@ -1,4 +1,5 @@
 function init()
+	resource=config.getParameter("resource","health")
 	-- Heal percent is the configParameter in the json statuseffects file
 	flat = config.getParameter("flat")--healPercent is per second if this is true
 	self.healingRate = config.getParameter("healPercent", 0)
@@ -8,5 +9,7 @@ function init()
 end
 
 function update(dt)
-	status.modifyResourcePercentage("health", self.healingRate * dt)
+	if(status.isResource(resource)) then
+		status.modifyResourcePercentage(resource, self.healingRate * dt)
+	end
 end
