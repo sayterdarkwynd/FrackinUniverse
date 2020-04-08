@@ -21,6 +21,12 @@ self.timer = self.timer - dt
 if self.timer <= 0 then
 
   if isn_hasRequiredPower() == false then
+	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,false)
+	end
+	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,false)
+	end
     animator.setAnimationState("machineState", "idle")
 	return
   end
@@ -28,7 +34,9 @@ if self.timer <= 0 then
   if world.liquidAt(entity.position()) == true and config.getParameter("isn_liquidCollector") == false then 
     return 
   end
-  
+  	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,true)
+	end
   animator.setAnimationState("machineState", "active")
   
   local output = nil

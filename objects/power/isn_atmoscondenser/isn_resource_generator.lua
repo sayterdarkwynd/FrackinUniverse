@@ -86,14 +86,20 @@ function update(dt)
 		end
 
 		if output and clearSlotCheck(output) and power.consume(self.powerConsumption) then
+			if object.outputNodeCount() > 0 then
+				object.setOutputNodeLevel(0,true)
+			end
 			animator.setAnimationState("machineState", "active")
 			world.containerAddItems(entity.id(), output)
 		else
+			if object.outputNodeCount() > 0 then
+				object.setOutputNodeLevel(0,false)
+			end
 			animator.setAnimationState("machineState", "idle")
 		end
 		storage.timer=0
 	else
-		storage.timer=storage.timer+(dt/wellsDrawing)
+		storage.timer=storage.timer+(dt/math.sqrt(1+wellsDrawing))
 	end
 end
 
