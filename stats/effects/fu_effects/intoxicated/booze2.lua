@@ -17,9 +17,11 @@ function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
   animator.setParticleEmitterActive("smoke", true)
   effect.setParentDirectives("fade=edcd5c=0.2")
+  if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
+  end
 end
 
 function uninit()

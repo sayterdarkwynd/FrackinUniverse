@@ -44,11 +44,13 @@ function fuSulphuricWeather.deactivateVisualEffects(self)
 end
 
 function fuSulphuricWeather.createAlert(self)
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")
-  -- Hurt the player as an extra warning.
-  self:applySelfDamage(0.1)
+	if entity.entityType()=="player" then
+		local statusTextRegion = { 0, 1, 0, 1 }
+		animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+		animator.burstParticleEmitter("statustext")
+	end
+	-- Hurt the player as an extra warning.
+	self:applySelfDamage(0.1)
 end
 
 --============================== INIT AND UNINIT =============================--
