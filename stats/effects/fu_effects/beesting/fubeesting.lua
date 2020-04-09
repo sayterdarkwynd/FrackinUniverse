@@ -10,9 +10,11 @@ end
 function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("bees", mcontroller.boundBox())
   animator.setParticleEmitterActive("bees", true)
+  if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
+  end
 end
 
 function update(dt)

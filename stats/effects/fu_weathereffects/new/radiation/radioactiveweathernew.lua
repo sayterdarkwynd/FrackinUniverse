@@ -34,12 +34,14 @@ function fuRadioactiveWeather.deactivateVisualEffects(self)
 end
 
 function fuRadioactiveWeather.createAlert(self)
-  animator.playSound("bolt")
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")
-  configBombDrop = {}
-  world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+	if entity.entityType()=="player" then
+		animator.playSound("bolt")
+		local statusTextRegion = { 0, 1, 0, 1 }
+		animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+		animator.burstParticleEmitter("statustext")
+		configBombDrop = {}
+		world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+	end
 end
 
 --============================== INIT AND UNINIT =============================--
