@@ -260,7 +260,7 @@ function doUpgrade()
 					end   
 		  
 					if (itemConfig.config.primaryAbility) then	 
-						if not (itemConfig.config.category == "Gun Staff") or (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
+						if not (itemConfig.config.category == "Gun Staff") or not (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
 							-- beams and miners
 							if (itemConfig.config.primaryAbility.beamLength) then
 								upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
