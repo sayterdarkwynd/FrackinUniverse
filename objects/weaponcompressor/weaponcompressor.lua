@@ -14,6 +14,7 @@ function craftingRecipe(items)
 		"chargeeffect",--want to keep
 		"muzzleflash",--want to keep
 		"specialarrow","arrow",--these cause bow transform to fail
+		"orb1","orb2","orb3","orb4","orb5","orb6","orb7","orb8","orb9",--magnorb 'ammo' display
 		"IGNORETHIS"
 	}
 	--[[local allowedParts={
