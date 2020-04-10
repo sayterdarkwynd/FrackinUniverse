@@ -6,9 +6,12 @@ function craftingRecipe(items)
 	if not item then return end
 	local newParams = copy(item.parameters) or {}
 	local itemBaseParams=root.itemConfig(item.name)
-	--local oldParts=newParams.animationParts or itemBaseParams.config.animationParts or {}
 	local oldParts=util.mergeTable(itemBaseParams.config.animationParts or {},newParams.animationParts or {})
 	if not (util.tableSize(oldParts)>0) then return end
+	
+	local itemLevel=item.parameters.level or itemBaseParams.config.level
+	
+	
 	
 	local bannedParts={
 		"chargeeffect",--want to keep
@@ -26,19 +29,29 @@ function craftingRecipe(items)
 		"shield","weapon","boomerang","chakram",--genericweaponstuff
 		"IGNORETHIS"
 	}]]
-	local bannedDbg={}
-	local allowedDbg={}
+	--local bannedDbg={}
+	--local allowedDbg={}
 	
 	if newParams.compressed then
 		newParams.compressed=nil
 		newParams.muzzleOffset=nil
-		newParams.animationCustom=nil
-		newParams.animationParts=nil
+
+		if itemBaseParams.config.upgradeParameters8 and itemLevel>1 then--mining laser handling
+			if itemLevel==2 then
+				newParams.animationParts=itemBaseParams.config.upgradeParameters.animationParts
+			else
+				newParams.animationParts=itemBaseParams.config["upgradeParameters"..math.min(itemLevel-1,8)].animationParts
+			end
+		elseif itemLevel>6 and itemBaseParams.config.upgradeParameters2 then
+			newParams.animationParts=itemBaseParams.config.upgradeParameters2.animationParts
+		elseif itemLevel>4 and itemBaseParams.config.upgradeParameters then
+			newParams.animationParts=itemBaseParams.config.upgradeParameters.animationParts
+		else
+			newParams.animationParts=nil
+		end
 	else
 		newParams.compressed=true
 		newParams.muzzleOffset={0,0}
-		--newParams.animationCustom=newParams.animationCustom or {}
-		--newParams.animationCustom.animatedParts={}
 		newParams.animationParts=newParams.animationParts or {}
 		if oldParts then
 			for partName,partImg in pairs(oldParts) do
@@ -46,18 +59,17 @@ function craftingRecipe(items)
 				lPartName=string.lower(partName)
 				for _,bannedEntry in pairs(bannedParts) do
 					if bannedEntry==lPartName or bannedEntry.."fullbright"==lPartName then
-						bannedDbg[partName]=false
+						--bannedDbg[partName]=false
 						failed=true
 						break
 					end
 				end
 				if not failed then
 					newParams.animationParts[partName]="/objects/weaponcompressor/invis.png"
-					allowedDbg[partName]=true
+					--allowedDbg[partName]=true
 				end
 			
 			end
-			--newParams.animationParts={muzzleFlash=oldParts.muzzleFlash}
 		end
 		
 		if util.tableSize(newParams.animationParts) == 0 then
@@ -76,12 +88,7 @@ function craftingRecipe(items)
 	if not doOnce then
 		doOnce=true
 		animator.setAnimationState("tetherState", powerTimer and powerTimer > 0 and "on" or "off")
-		
-		--dbg(util.tableSize(oldParts))
-		--dbg(allowedDbg)
-		--dbgJ(item)
-		--dbgJ(itemBaseParams)
-		--dbgJ(retData)
+
 	end
 	
 	return retData
