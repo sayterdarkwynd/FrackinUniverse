@@ -95,7 +95,6 @@ specialFrameFunctions = {
 		if not antimiteFrameTimer then
 			antimiteFrameTimer = data[1]
 		elseif antimiteFrameTimer <= 0 then
-			--world.spawnItem("vmite",entity.position(),self.randAmount)
 			antimiteFrameTimer = math.random(100,540)
 		else
 			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
