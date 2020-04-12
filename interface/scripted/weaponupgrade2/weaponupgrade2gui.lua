@@ -226,7 +226,7 @@ function doUpgrade()
 						end
 					end
 					
-					--upgradedItem.parameters.primaryAbility = {}   
+					upgradedItem.parameters.primaryAbility = {}   
 			  
 					-- is it a staff or wand?
 					if (itemConfig.config.category == "staff") or (itemConfig.config.category == "wand") then
