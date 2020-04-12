@@ -226,17 +226,8 @@ function doUpgrade()
 						end
 					end
 					
-					upgradedItem.parameters.primaryAbility = {}   
+					--upgradedItem.parameters.primaryAbility = {}   
 			  
-					-- is it a bow
-					if (itemConfig.config.category == "bow") then
-					--	upgradedItem.parameters.primaryAbility = {} 
-					--	upgradedItem.parameters.primaryAbility.drawTime = (itemConfig.parameters.primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime or 0) - 0.05 
-					--	upgradedItem.parameters.primaryAbility.powerProjectileTime = (itemConfig.parameters.primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime or 0) - 0.05 
-					--	upgradedItem.parameters.primaryAbility.energyPerShot = (itemConfig.parameters.primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot or 0.15) - 0.5 
-					--	upgradedItem.parameters.primaryAbility.holdEnergyUsage = (itemConfig.parameters.primaryAbility.holdEnergyUsage or itemConfig.config.primaryAbility.holdEnergyUsage or 1) - 1 
-					--	upgradedItem.parameters.primaryAbility.airborneBonus = (itemConfig.parameters.primaryAbility.airborneBonus or itemConfig.config.primaryAbility.airborneBonus or 0) + 0.1
-					end 
 					-- is it a staff or wand?
 					if (itemConfig.config.category == "staff") or (itemConfig.config.category == "wand") then
 						upgradedItem.parameters.primaryAbility = {} 
@@ -261,6 +252,25 @@ function doUpgrade()
 		  
 					if (itemConfig.config.primaryAbility) then	 
 						if not (itemConfig.config.category == "Gun Staff") or not (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
+							-- bows
+							if (itemConfig.config.category == "bow") then
+							upgradedItem.parameters.primaryAbility = {} 
+								if (itemConfig.config.primaryAbility.drawTime) then
+								    upgradedItem.parameters.primaryAbility.drawTime = (itemConfig.config.primaryAbility.drawTime or 0) - 0.05 
+								end
+								if (itemConfig.config.primaryAbility.powerProjectileTime) then
+								    upgradedItem.parameters.primaryAbility.powerProjectileTime = (itemConfig.config.primaryAbility.powerProjectileTime or 0) + 0.05 
+								end
+								if (itemConfig.config.primaryAbility.energyPerShot) then
+								    upgradedItem.parameters.primaryAbility.energyPerShot = (itemConfig.config.primaryAbility.energyPerShot or 0.15) - 2
+								end
+								if (itemConfig.config.primaryAbility.holdEnergyUsage) then
+								    upgradedItem.parameters.primaryAbility.holdEnergyUsage = (itemConfig.config.primaryAbility.holdEnergyUsage or 1) - 0.5 
+								end
+								if (itemConfig.config.primaryAbility.airborneBonus) then
+								    upgradedItem.parameters.primaryAbility.airborneBonus = (itemConfig.config.primaryAbility.airborneBonus or 0) + 0.02
+								end								
+							end 							
 							-- beams and miners
 							if (itemConfig.config.primaryAbility.beamLength) then
 								upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level 
@@ -314,7 +324,7 @@ function doUpgrade()
 					sb.logInfo("Pre-Upgrade Stats : ")	  
 					sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug 
 					
-					if (itemConfig.config.upgradeParameters)  and (upgradedItem.parameters.level) > 4 then
+					if (itemConfig.config.upgradeParameters) and (upgradedItem.parameters.level) > 4 then
 						upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
 					end
 					
