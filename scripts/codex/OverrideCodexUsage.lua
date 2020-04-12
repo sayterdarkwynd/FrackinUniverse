@@ -11,8 +11,8 @@ function TryGetPlayerId()
 	elseif #entities > 1 then
 		sb.logInfo("More than one player entity located. Checking player held items...")
 		for _, id in ipairs(entities) do
-			local itemL = world.entityHandItem(id, "left")
-			local itemR = world.entityHandItem(id, "right")
+			local itemL = world.entityHandItem(id, "primary")
+			local itemR = world.entityHandItem(id, "alt")
 			
 			if itemL == item.name() or itemR == item.name() then
 				sb.logInfo("Player " .. tostring(id) .. " is holding an item with this item's name. Assuming this is the right player. This might be inaccurate!")
