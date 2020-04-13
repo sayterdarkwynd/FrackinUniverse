@@ -254,7 +254,6 @@ function doUpgrade()
 						if not (itemConfig.config.category == "Gun Staff") or not (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
 							-- bows
 							if (itemConfig.config.category == "bow") then
-							upgradedItem.parameters.primaryAbility = {} 
 								if (itemConfig.config.primaryAbility.drawTime) then
 								    upgradedItem.parameters.primaryAbility.drawTime = (itemConfig.config.primaryAbility.drawTime or 0) - 0.05 
 								end

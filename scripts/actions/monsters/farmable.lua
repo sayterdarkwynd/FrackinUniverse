@@ -247,12 +247,11 @@ function displayHappiness()
 end
 
 function checkMate()
-  self.randChance = math.random(100)
+  self.randChance = math.random(100) * (1 - storage.food/1000)  --current happiness level determines breeding chances
   self.eggType = config.getParameter("eggType")	
-  if not self.eggType then self.eggType = "henegg" end --make sure anything can lay an egg as a failsafe
-  
-  -- Happier pets breed more often. Breeding removes most of their food. 
-  if (storage.mateTimer <= 0) and (self.randChance <= 1) and (self.canMate) and (storage.happiness >= 70) then 
+  if not self.eggType then self.eggType = "henegg" end
+  -- Fed livestock breed more often. Breeding removes most of their current food. 
+  if (storage.mateTimer <= 0) and (self.randChance == 0) and (self.canMate) and (storage.happiness >= 70) then 
       world.spawnItem( self.eggType, mcontroller.position(), 1 )
       storage.mateTimer = 60 - (storage.food/5)
       world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
