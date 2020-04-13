@@ -92,69 +92,80 @@ specialFrameFunctions = {
 	end,
 	antimiteFrame = function(data)
 		self.randAmount = math.random(1,8)
-		if not antimiteFrameTimer then
-			antimiteFrameTimer = data[1]
-		elseif antimiteFrameTimer <= 0 then
-			--world.spawnItem("vmite",entity.position(),self.randAmount)
-			antimiteFrameTimer = math.random(100,540)
-		else
-			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not antimiteFrameTimer then
+				antimiteFrameTimer = data[1]
+			elseif antimiteFrameTimer <= 0 then
+				antimiteFrameTimer = math.random(100,540)
+			else
+				antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
+			end		
 		end
 	end,
 	copperFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("copperore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("copperore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end,
 	ironFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("ironore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("ironore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end,
 	tungstenFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("tungstenore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("tungstenore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end,
 	titaniumFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("titaniumore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("titaniumore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end,
 	durasteelFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("durasteelore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("durasteelore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end		
 	
 }

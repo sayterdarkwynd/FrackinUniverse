@@ -247,33 +247,17 @@ function displayHappiness()
 end
 
 function checkMate()
-  self.randChance = math.random(100)
+  self.randChance = math.random(100) * (1 - storage.food/1000)  --current happiness level determines breeding chances
   self.eggType = config.getParameter("eggType")	
-  
   if not self.eggType then self.eggType = "henegg" end
-  
-  -- Happier pets breed more often. At 100% food they don't even suffer a food penalty for breeding.
-  if (storage.mateTimer <= 0) and (self.randChance <= 1) and (self.canMate) then 
-    if storage.happiness == 100 then  
-	    world.spawnItem( self.eggType, mcontroller.position(), math.random(1,2) )
-	    storage.mateTimer = 20  -- full happiness pets mate sooner
-	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	    animator.playSound("harvest")
-    elseif storage.happiness > 90 then
-	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
-	    storage.mateTimer = 40
-	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	    animator.playSound("harvest")
-	    storage.food = storage.food - 10
-    elseif storage.happiness > 70 then
-	    world.spawnItem( self.eggType, mcontroller.position(), 1 )
-	    storage.mateTimer = config.getParameter("mateTime")
-	    world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
-	    animator.playSound("harvest")
-	    storage.food = storage.food - 25
-    end
+  -- Fed livestock breed more often. Breeding removes most of their current food. 
+  if (storage.mateTimer <= 0) and (self.randChance == 0) and (self.canMate) and (storage.happiness >= 70) then 
+      world.spawnItem( self.eggType, mcontroller.position(), 1 )
+      storage.mateTimer = 60 - (storage.food/5)
+      world.spawnProjectile("fu_egglay",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop) 
+      animator.playSound("harvest")
+      storage.food = storage.food - 45
   end 
-  
 end
 
 function checkPoop() -- poop to fertilize trays , pee to water soil, etc   
