@@ -192,7 +192,7 @@ function doUpgrade()
 							
 						-- hoe, chainsaw, etc
 						if upgradedItem.parameters.fireTime then
-							if not (itemConfig.config.category == "Gun Staff") or not (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
+							if not (itemConfig.config.category == "Gun Staff") and not (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
 							  upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
 							end
 						end
@@ -251,7 +251,7 @@ function doUpgrade()
 					end   
 		  
 					if (itemConfig.config.primaryAbility) then	 
-						if not (itemConfig.config.category == "Gun Staff") or not (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
+						if not (itemConfig.config.category == "Gun Staff") and not (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
 							-- bows
 							if (itemConfig.config.category == "bow") then
 								if (itemConfig.config.primaryAbility.drawTime) then
