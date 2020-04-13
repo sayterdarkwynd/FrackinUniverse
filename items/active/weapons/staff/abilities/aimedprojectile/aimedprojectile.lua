@@ -83,7 +83,8 @@ function AimedProjectile:discharge()
 
   animator.playSound(self.elementalType.."activate")
   --sb.logInfo("%s",self)
-  if status.overConsumeResource("energy",60) then
+  if status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
+	
 	self:createProjectiles()
 	  util.wait(self.stances.discharge.duration, function(dt)
 		status.setResourcePercentage("energyRegenBlock", 1.0)
