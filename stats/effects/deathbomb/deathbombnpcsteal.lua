@@ -28,7 +28,7 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded and not (status.stat("deathbombDud") > 0) then
+	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat("npcstealdeathbombblocker") > 0) then
 		local chance=config.getParameter("chance",100)
 		local dropPool={}
 		local slotList={"head","headCosmetic","chest","chestCosmetic","legs","legsCosmetic","back","backCosmetic","primary","alt"}
@@ -62,10 +62,10 @@ function explode()
 				end
 			end
 		end
-		
+		status.addPersistentEffect("npcstealdeathbombblocker",{stat="npcstealdeathbombblocker",amount=1})
 		self.exploded = true
-	if status.isResource("stunned") then
-		status.setResource("stunned",0)
-	end
+		if status.isResource("stunned") then
+			status.setResource("stunned",0)
+		end
 	end
 end
