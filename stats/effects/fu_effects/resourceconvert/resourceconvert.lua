@@ -16,7 +16,6 @@ end
 function update(dt)
 	if active then
 		if status.isResource(resource2) and ratio ~= 0.0 then
-			sb.logInfo("%s",{dt*self.healingRate/ratio,self.healingRate*dt*ratio})
 			if (not efficient) or lethal then
 				if status.consumeResource(resource2, status.resourceMax(resource2)*self.healingRate*dt*ratio) then
 					status.modifyResourcePercentage(resource1, self.healingRate * dt)
