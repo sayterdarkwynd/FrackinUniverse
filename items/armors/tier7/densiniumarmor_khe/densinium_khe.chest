@@ -5,10 +5,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "+^green;14^reset;% Physical Resist\n
+   "description" : "+^green;9^reset;% Physical, +^green;8^reset; Fire, Ice, Rad Resists. ^green;20^reset;% Poison Resist.\n
 Set Bonus:
-^green;25^reset;% More Damage, +^green;4^reset;% Crit with Densinium weapons
-^cyan;Immune^reset;: Heat, Rads, Poison, Oxygen, Pressure, Falling",
+^purple;Auto-Medic^reset;
+^green;25^reset;% More Damage, +^green;4^reset;% Crit with Densinium weapons, Snipers, or Chainswords
+^green;75^reset;% less Fall Damage. +^green;75^reset;% Knockback Resistance.
+^cyan;Immune^reset;: Heat, Rads, Poison, Oxygen, Pressure",
   "shortdescription" : "Densinium EVA Armor",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -26,7 +28,6 @@ Set Bonus:
   },
 
   "level" : 7,
-  "collectablesOnPickup" : { "fu_armortank" : "densiniumchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -62,7 +63,23 @@ Set Bonus:
     },
     {
       "stat" : "physicalResistance",
-      "amount" : 0.14
+      "amount" : 0.09
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.08
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.08
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.08
+    }
+    {
+      "stat" : "poisonResistance",
+      "amount" : 0.2
     }
   ],
 

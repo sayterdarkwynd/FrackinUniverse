@@ -3,13 +3,14 @@ function init()
 	resource1=config.getParameter("resource1","health")
 	resource2=config.getParameter("resource2","food")
 	efficient=config.getParameter("efficient",true)
-	lethal=config.getParameter("lethal",true)--if this is true, efficient doesn't matter.
+	lethal=config.getParameter("lethal",false)--if this is true, efficient doesn't matter.
 	ratio = config.getParameter("ratio", 1.0)--resource2 per resource1 (both percentages)
 	flat = config.getParameter("flat")--healPercent is per second if this is true
 	self.healingRate = config.getParameter("healPercent", 0)
 	if not flat then
 		self.healingRate=self.healingRate / effect.duration()
 	end
+	sb.logInfo("%s",{resource1,resource2,efficient,lethal,ratio,flat})
 end
 
 function update(dt)

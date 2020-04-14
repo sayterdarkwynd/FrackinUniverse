@@ -5,10 +5,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "+^green;9^reset;% Physical Resist\n
+   "description" : "+^green;8^reset;% Physical, +^green;7^reset; Fire, Ice, Rad Resists
+^green;Headlamp^reset;\n
 Set Bonus:
-^green;25^reset;% More Damage, +^green;4^reset;% Crit with Densinium weapons
-^cyan;Immune^reset;: Heat, Rads, Poison, Oxygen, Pressure, Falling",
+^purple;Auto-Medic^reset;
+^green;25^reset;% More Damage, +^green;4^reset;% Crit with Densinium weapons, Snipers, or Chainswords
+^green;75^reset;% less Fall Damage. +^green;75^reset;% Knockback Resistance.
+^cyan;Immune^reset;: Heat, Rads, Poison, Oxygen, Pressure",
   "shortdescription" : "Densinium EVA Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -18,7 +21,6 @@ Set Bonus:
   "mask" : "mask.png",
 
   "level" : 7,
-  "collectablesOnPickup" : { "fu_armortank" : "densiniumhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -43,6 +45,7 @@ Set Bonus:
   ],
 
   "statusEffects" : [
+	"headlamp",
     "densiniumsetbonuskhe",
     {
       "stat" : "fu_densiniumsetkhe_head",
@@ -54,7 +57,19 @@ Set Bonus:
     },
     {
       "stat" : "physicalResistance",
-      "amount" : 0.09
+      "amount" : 0.08
+    },
+    {
+      "stat" : "fireResistance",
+      "amount" : 0.07
+    },
+    {
+      "stat" : "iceResistance",
+      "amount" : 0.07
+    },
+    {
+      "stat" : "radioactiveResistance",
+      "amount" : 0.07
     }
   ],
   
