@@ -10,19 +10,27 @@ function init()
 	if not flat then
 		self.healingRate=self.healingRate / effect.duration()
 	end
-	sb.logInfo("%s",{resource1,resource2,efficient,lethal,ratio,flat})
+	active=status.isResource(resource1) and status.isResource(resource2)
 end
 
 function update(dt)
-	if status.isResource(resource2) and ratio ~= 0.0 then
-		if (not efficient) or lethal or status.resourcePercentage(resource1) < 1.0 then
-			if status.consumeResource(resource2, status.resourceMax(resource2)*self.healingRate*dt*ratio) then
-				status.modifyResourcePercentage(resource1, self.healingRate * dt)
-			elseif lethal then
-				status.modifyResourcePercentage(resource1, self.healingRate * dt*-1)
+	if active then
+		if status.isResource(resource2) and ratio ~= 0.0 then
+			sb.logInfo("%s",{dt*self.healingRate/ratio,self.healingRate*dt*ratio})
+			if (not efficient) or lethal then
+				if status.consumeResource(resource2, status.resourceMax(resource2)*self.healingRate*dt*ratio) then
+					status.modifyResourcePercentage(resource1, self.healingRate * dt)
+				elseif lethal then
+					status.modifyResourcePercentage(resource1, self.healingRate * dt*-1)
+				end
+			else
+				local delta=math.min(1.0-status.resourcePercentage(resource1),self.healingRate*dt)/(self.healingRate*dt)
+				if status.consumeResource(resource2, status.resourceMax(resource2)*self.healingRate*dt*ratio*delta) then
+					status.modifyResourcePercentage(resource1, self.healingRate * dt  * delta)
+				end
 			end
+		else
+			status.modifyResourcePercentage(resource1, self.healingRate*dt)
 		end
-	else
-		status.modifyResourcePercentage(resource1, self.healingRate*dt)
 	end
 end
