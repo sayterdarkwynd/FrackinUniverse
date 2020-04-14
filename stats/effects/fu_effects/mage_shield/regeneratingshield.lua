@@ -10,6 +10,7 @@ function init()
 end
 
 function update(dt) 
+	self.damageListener:update()
 	if self.shieldBlockTimer and self.shieldBlockTimer>0 then
 		self.shieldBlockTimer = self.shieldBlockTimer-dt
 	else status.resource("damageAbsorption") < capCalc() then

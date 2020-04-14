@@ -1,5 +1,5 @@
 setName="fu_densiniumsetkhe"
-setStatEffects={"densiniumsetbonuseffectkhe","heal_energyconvert_10_1-1"}
+setStatEffects={"densiniumsetbonuseffectkhe","convert_energy-health_10_1-1"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

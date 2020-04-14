@@ -35,7 +35,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		self.damageListener:update()
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 
 		checkWeapons()
