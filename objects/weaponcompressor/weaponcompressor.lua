@@ -14,8 +14,8 @@ function craftingRecipe(items)
 	
 	if itemBaseParams.config.objectName then--no objects!
 		return
-	elseif itemBaseParams.liquidId then--handle liquids
-		
+	elseif itemBaseParams.liquidId then--handle liquids. later this will make a nifty explodey projectile toy.
+		return
 	elseif itemBaseParams.config.itemName and (util.tableSize(oldParts)>0) then--handle weapons/tools. must be an item!
 		
 		local bannedParts={
