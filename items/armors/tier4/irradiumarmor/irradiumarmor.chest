@@ -4,12 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+35%^reset; Radioactive Resist
-Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
+  "description" : "+^green;12^reset;% Radioactive Resist\n
+^orange;Set Bonuses^reset;: 
+Irradium weapons: +^green;3^reset;% Crit, +^green;10^reset;% Rad Resist\n
 ^cyan;Immune^reset;: All radiation",
   "shortdescription" : "Irradium Chest",
-  "category" : "t4armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -61,6 +61,7 @@ Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
     }      
   ],
 
-"effectSources" : [ "icetrail" ]
+"effectSources" : [ "icetrail" ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 
 }
