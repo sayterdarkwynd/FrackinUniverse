@@ -321,11 +321,13 @@ function upgradeTool(upgradeItem,price)
 		upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
 		upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 )
 		upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 3
+		upgradedItem.parameters.rarity = "legendary"
 	elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and (itemConfig.config.category == "bugnet") then
 		upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 		upgradedItem.parameters.primaryAbility.energyUsage= 1 + ( upgradedItem.parameters.level /20 )
 		upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 )
-		upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 3		
+		upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 3
+		upgradedItem.parameters.rarity = "legendary"
 	end
 	
 	  if (itemConfig.config.category == "repairgun") and (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
