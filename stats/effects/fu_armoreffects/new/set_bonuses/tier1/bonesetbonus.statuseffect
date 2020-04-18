@@ -4,8 +4,8 @@
 
   "effectConfig" : {
     "armorBonuses" : {
-      "maxHealth" : { "amount" : 5 },
-      "fallDamageMultiplier" : { "baseMultiplier" : 0.85 }
+      "maxHealth" : { "effectiveMultiplier" : 1.05 },
+      "fallDamageMultiplier" : { "effectiveMultiplier" : 0.85 }
     },
     
     "weaponBonuses" : [
@@ -20,7 +20,7 @@
     
     "biomeTags" : [ "garden", "forest" ],
     "biomeBonuses" : {
-      "maxHealth" : { "amount" : 5 },
+      "maxHealth" : { "effectiveMultiplier" : 1.05 },
       "powerMultiplier" : { "effectiveMultiplier" : 1.05 },
       "physicalResistance" : { "amount" : 0.05 }
     }
@@ -32,6 +32,6 @@
   ],
   "scriptDelta": 5,
 
-  "label" : "+5 HP, +15% Fall Resist. Lush/Forest: +5 HP, +5% Dmg, +5% Phys. Resist",
+  "label" : "5% More HP, 15% Less Fall Damage. Lush/Forest: 5% More HP, 5% More Dmg, +5% Phys. Resist",
   "icon" : "/interface/statuses/defense.png"
 }
