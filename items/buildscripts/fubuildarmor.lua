@@ -2,7 +2,7 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/scripts/versioningutils.lua"
 
-local resistances={physicalResistance="physicalResLabel",fireResistance="fireResLabel",iceResistance="iceResLabel",poisonResistance="poisonResLabel",electricResistance="electricResLabel",cosmicResistance="cosmicResLabel",shadowResistance="shadowResLabel",radiationResistance="radiationResLabel"}
+local resistances={physicalResistance="physicalResLabel",fireResistance="fireResLabel",iceResistance="iceResLabel",poisonResistance="poisonResLabel",electricResistance="electricResLabel",cosmicResistance="cosmicResLabel",shadowResistance="shadowResLabel",radioactiveResistance="radiationResLabel"}
 
 function build(directory, config, parameters, level, seed)
 	local configParameter = function(keyName, defaultValue)
