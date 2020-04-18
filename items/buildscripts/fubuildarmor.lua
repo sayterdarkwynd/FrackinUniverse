@@ -2,66 +2,83 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/scripts/versioningutils.lua"
 
+local resistances={physicalResistance="physicalResLabel",fireResistance="fireResLabel",iceResistance="iceResLabel",poisonResistance="poisonResLabel",electricResistance="electricResLabel",cosmicResistance="cosmicResLabel",shadowResistance="shadowResLabel",radiationResistance="radiationResLabel"}
+
 function build(directory, config, parameters, level, seed)
-  local configParameter = function(keyName, defaultValue)
-    if parameters[keyName] ~= nil then
-      return parameters[keyName]
-    elseif config[keyName] ~= nil then
-      return config[keyName]
-    else
-      return defaultValue
-    end
-  end
+	local configParameter = function(keyName, defaultValue)
+		if parameters[keyName] ~= nil then
+			return parameters[keyName]
+		elseif config[keyName] ~= nil then
+			return config[keyName]
+		else
+			return defaultValue
+		end
+	end
 
-  if level and not configParameter("fixedLevel", false) then
-    parameters.level = level
-  end
+	if level and not configParameter("fixedLevel", false) then
+		parameters.level = level
+	end
 
-  config.description = configParameter("description",0)
-  config.shortdescription = configParameter("shortdescription",0)
-  config.inventoryIcon = configParameter("inventoryIcon",0)
+		config.description = configParameter("description",0)
+		config.shortdescription = configParameter("shortdescription",0)
+		config.inventoryIcon = configParameter("inventoryIcon",0)
 
 
-  if config.level < 3 then
-    config.rarity = "common"
-  elseif config.level == 3 then
-    config.rarity = "uncommon"
-  elseif config.level >= 4 then
-    config.rarity = "rare"
-  elseif config.level >= 6 then 
-    config.rarity = "legendary"
-  elseif config.level == 8 then
-    config.rarity = "essential"
-  end
+	if config.level < 3 then
+		config.rarity = "common"
+	elseif config.level == 3 then
+		config.rarity = "uncommon"
+	elseif config.level >= 4 then
+		config.rarity = "rare"
+	elseif config.level >= 6 then 
+		config.rarity = "legendary"
+	elseif config.level == 8 then
+		config.rarity = "essential"
+	end
 
-  config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1))
-  config.tooltipFields = {}
-  
-  config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
+		config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1))
+		config.tooltipFields = {}
 
-  if configParameter("upgrades") == 1 then
-    config.tooltipFields.upgradeLabel = "^cyan;Upgradeable^reset;"
-  end
-  
-  if config.leveledStatusEffects then 
-          config.tooltipFields.priceLabel = config.price
-	  config.tooltipFields.cooldownLabel = parameters.cooldownTime or config.cooldownTime
-	  config.tooltipFields.rarity = configParameter("rarity")
-	  config.tooltipFields.blockLabel = configParameter("perfectBlockTime",0)
-	  config.tooltipFields.stamLabel = configParameter("shieldStamina",0) * 100
-	  config.tooltipFields.hpLabel = configParameter("shieldHealthBonus",0) * 100 
-	  config.tooltipFields.energyLabel = configParameter("shieldEnergyBonus",0) * 100
-	  config.tooltipFields.critBonusLabel = configParameter("critBonus,0")
-	  config.tooltipFields.critChanceLabel = configParameter("critChance",0)
-	  config.tooltipFields.shieldBashLabel = configParameter("shieldBash",0)
-	  config.tooltipFields.shieldBashPushLabel = configParameter("shieldBashPush",0)  
-	  config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)    
-  end
-  
-  if config.statusEffects then
-  -- this area should display Immunities, Resistances
-  end
+		config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
 
-  return config, parameters
+	if configParameter("upgrades") == 1 then
+		config.tooltipFields.upgradeLabel = "^cyan;Upgradeable^reset;"
+	end
+
+	for _,label in pairs(resistances) do
+		config.tooltipFields[label]=(0.0).."%"
+	end
+
+	if config.leveledStatusEffects then 
+		config.tooltipFields.priceLabel = config.price
+		config.tooltipFields.cooldownLabel = parameters.cooldownTime or config.cooldownTime
+		config.tooltipFields.rarity = configParameter("rarity")
+		config.tooltipFields.blockLabel = configParameter("perfectBlockTime",0)
+		config.tooltipFields.stamLabel = configParameter("shieldStamina",0) * 100
+		config.tooltipFields.hpLabel = configParameter("shieldHealthBonus",0) * 100 
+		config.tooltipFields.energyLabel = configParameter("shieldEnergyBonus",0) * 100
+		config.tooltipFields.critBonusLabel = configParameter("critBonus,0")
+		config.tooltipFields.critChanceLabel = configParameter("critChance",0)
+		config.tooltipFields.shieldBashLabel = configParameter("shieldBash",0)
+		config.tooltipFields.shieldBashPushLabel = configParameter("shieldBashPush",0)  
+		config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
+		
+		for _,v in pairs(config.leveledStatusEffects) do
+			if resistances[v.stat] then
+				config.tooltipFields[resistances[v.stat]]=(util.round((v.amount or 0)*root.evalFunction(v.levelFunction,configParameter("level", 1)),3)*100).."%"
+			end
+		end
+	end
+	
+	--debug thing
+	--[[for _,label in pairs(resistances) do
+		config.tooltipFields[label]=(100.0).."%"
+	end]]
+
+	if config.statusEffects then
+	-- this area should display Immunities, Resistances
+	end
+
+	return config, parameters
 end
 
