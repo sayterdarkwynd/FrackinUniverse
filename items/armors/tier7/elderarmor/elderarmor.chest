@@ -5,12 +5,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "+^green;25^reset;% Shadow Resist\n
-^orange;Set Bonus^reset;:
-Summons Minions 
-Darkness Regen   
-Elder Weapons: ^green;25^reset;% More Dmg
-\n^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid", 
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Summons Minions
+^yellow;^reset; Darkness Regen  
+^yellow;^reset; Elder Weapons: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid", 
   "shortdescription" : "Elder Chestpiece",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -50,6 +49,11 @@ Elder Weapons: ^green;25^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.0625
     }
   ],
 
@@ -58,10 +62,6 @@ Elder Weapons: ^green;25^reset;% More Dmg
     {
       "stat" : "fu_elderset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.25
     }
   ],
 

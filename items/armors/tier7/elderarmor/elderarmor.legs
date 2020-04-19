@@ -5,12 +5,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "+^green;7^reset;% Shadow Resist\n
-^orange;Set Bonus^reset;:
-Summons Minions 
-Darkness Regen   
-Elder Weapons: ^green;25^reset;% More Dmg
-\n^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid", 
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Summons Minions
+^yellow;^reset; Darkness Regen  
+^yellow;^reset; Elder Weapons: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid", 
   "shortdescription" : "Elder Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -41,6 +40,11 @@ Elder Weapons: ^green;25^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.0175
     }
   ],
   "statusEffects" : [

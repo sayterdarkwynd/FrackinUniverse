@@ -5,12 +5,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "+^green;7^reset;% Physical, +^green;5^reset; Fire, Ice, Rad Resists. ^cyan;Immune^reset; to most tile effects.\n
-^orange;Set Bonus^reset;:
-^cyan;Auto-Medic^reset;
-^green;25^reset;% More Dmg, +^green;4^reset;% Crit with Densinium weapons, Snipers, or Chainswords
-^green;75^reset;% less Fall Damage. +^green;75^reset;% Knockback Resist.
-^cyan;Immune^reset;: Heat, Rads, Poison, Oxygen, Pressure",
+   "description" : "^cyan;Immune^reset; to most tile effects.
+^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Auto-Medic^reset;
+^yellow;^reset; ^green;25^reset;% More Dmg, +^green;4^reset;% Crit with Densinium weapons, Snipers, or Chainswords
+^yellow;^reset; ^green;75^reset;% less Fall Damage. +^green;75^reset;% Knockback Resist.
+^yellow;^reset; ^cyan;Immune^reset;: Heat, Rads, Poison, Oxygen, Pressure",
   "shortdescription" : "Densinium EVA Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +39,26 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6.86
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.0125
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.0125
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.0125
     }
   ],
 
@@ -52,25 +72,8 @@
       "stat" : "fu_densiniumset_legs",
       "amount" : 1
     },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.05
-    },
 	"movementprotection"
-  ]
-  ,
+  ],
   "colorOptions" : [
 
     /* BLACK */
