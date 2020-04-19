@@ -46,7 +46,7 @@ function build(directory, config, parameters, level, seed)
 	end
 
 	for _,label in pairs(resistances) do
-		config.tooltipFields[label]=(0.0).."%"
+		config.tooltipFields[label]="0%"
 	end
 
 	if config.leveledStatusEffects then 
@@ -66,6 +66,7 @@ function build(directory, config, parameters, level, seed)
 		for _,v in pairs(config.leveledStatusEffects) do
 			if resistances[v.stat] then
 				config.tooltipFields[resistances[v.stat]]=(util.round((v.amount or 0)*root.evalFunction(v.levelFunction,configParameter("level", 1)),3)*100).."%"
+				config.tooltipFields[resistances[v.stat]]=string.gsub(config.tooltipFields[resistances[v.stat]],"%.0%%","%%")
 			end
 		end
 	end
