@@ -17,16 +17,6 @@ require "/scripts/kheAA/transferUtil.lua"
 
 --[[	Misc.
 
-	beeSubtypeIDs = {
-		plasterer = {"isovapitdae", "harlequin", "shrouded", "stellar","cybernetic"},
-		sweat = {"xenodaemonae", "redbanded", "assassin", "reaper"},
-		leafcutter = {"tunguskudae", "sandprowler", "goldensaint"},
-		carpenter = {"artisan", "carpenter", "inventor", "scoria","crystalwing"},
-		squash = {"cuckoo", "loamzipper", "stalwart", "rimewing"},
-		honey = {"honey", "exspiravit", "bumblebee", "orchid"},
-		mason = {"gelidBurrower", "digger", "oremason","aquarum","devoratrix"}  
-	}
-
 	Progress increases by the bees production stat multiplied by the hives production efficiency with a small random factor which applies for each product separetly
 	Same applies to the queens production as well, but does not take drones into account
 	Full formula:
@@ -41,7 +31,6 @@ require "/scripts/kheAA/transferUtil.lua"
 --]]
 
 --]]
-
 
 queen = nil			-- Contains the queen or nil if there's no queen
 hivesAroundHive = 0		-- Active hives around the hive
@@ -178,7 +167,7 @@ oldLoadingState = nil
 -- Method to differentiate between apiaries and other objects
 function getClass() return "apiary" end
 
--- LET IT BEGIIIIIIIIIIIIN
+-- Begin script
 function init()
 	biome = world.type()
 	
@@ -1146,11 +1135,11 @@ function getFlowerLikeness(beeSubtype)
 		local stage = world.farmableStage(id)
 		if stage then
 			local stages = world.getObjectParameter(id, "stages", nil)
-			local linekessTable = world.getObjectParameter(id, "beeLikeness", nil)
+			local likenessTable = world.getObjectParameter(id, "beeLikeness", nil)
 			local addition = 0
 			
-			if linekessTable and linekessTable[beeSubtype] then
-				addition = linekessTable[beeSubtype]
+			if likenessTable and likenessTable[beeSubtype] then
+				addition = likenessTable[beeSubtype]
 			else
 				addition = beeData.flowerDefaultLikeness
 			end
