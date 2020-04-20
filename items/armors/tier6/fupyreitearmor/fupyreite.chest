@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-   "description" : "^green;30^reset;% Ice Resist\n
-^orange;Set Bonus^reset;:
-Pyreite weapons: ^green;25^reset;% More Dmg
-^cyan;Immune^reset;: Oxygen, Deadly Cold, Ice Slip, Snow, Freeze, Nitrogen", 
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Pyreite weapons: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Deadly Cold, Ice Slip, Snow, Freeze, Nitrogen", 
   "shortdescription" : "Pyreite Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -47,6 +46,11 @@ Pyreite weapons: ^green;25^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.085714
     }
   ],
 
@@ -55,10 +59,6 @@ Pyreite weapons: ^green;25^reset;% More Dmg
     {
       "stat" : "fu_pyreiteset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.3
     }
   ],
 
