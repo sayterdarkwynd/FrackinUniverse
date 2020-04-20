@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "+^green;8^reset;% Physical, +^green;7^reset; Fire, Ice, Rad Resists\n
-^orange;Set Bonus^reset;:
-Densinium Weapons: +^green;2^reset;% Crit, ^green;25^reset;% More Dmg
-^cyan;Immune^reset;: Poison, Oxygen, Gas, Pressure",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Densinium Weapons: +^green;2^reset;% Crit, ^green;25^reset;% More Dmg
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Oxygen, Gas, Pressure",
   "shortdescription" : "Densinium Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +38,26 @@ Densinium Weapons: +^green;2^reset;% Crit, ^green;25^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.022857
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -47,22 +66,6 @@ Densinium Weapons: +^green;2^reset;% Crit, ^green;25^reset;% More Dmg
     {
       "stat" : "fu_densiniumset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.07
     }
   ],
   

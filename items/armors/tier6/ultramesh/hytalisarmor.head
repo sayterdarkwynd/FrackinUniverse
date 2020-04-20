@@ -5,11 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-   "description" : "+^green;10^reset;% Electric Resist\n
-^orange;Set Bonus^reset;: 
-^green;Swim Boost 2^reset;
-+^green;35^reset;% Shield Stamina, Block, Shield Regen
-^cyan;Immune^reset;: Pressure, Insanity, Aether", 
+   "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;Swim Boost 2^reset;
+^yellow;^reset; +^green;35^reset;% Shield Stamina, Block, Shield Regen
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Insanity, Aether",
   "shortdescription" : "Ultra-Mesh Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -40,6 +39,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.028571
     }
   ],
 
@@ -48,10 +52,6 @@
     {
       "stat" : "fu_ultrameshset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.10
     }
   ],
 

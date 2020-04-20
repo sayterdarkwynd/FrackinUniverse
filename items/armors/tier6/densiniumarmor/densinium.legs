@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "+^green;7^reset;% Physical, +^green;5^reset; Fire, Ice, Rad Resists\n
-^orange;Set Bonus^reset;:
-Densinium Weapons: +^green;2^reset;% Crit, ^green;25^reset;% More Dmg
-^cyan;Immune^reset;: Poison, Oxygen, Gas, Pressure",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Densinium Weapons: +^green;2^reset;% Crit, ^green;25^reset;% More Dmg
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Oxygen, Gas, Pressure",
   "shortdescription" : "Densinium Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,26 @@ Densinium Weapons: +^green;2^reset;% Crit, ^green;25^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 8
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.01428571428571428571428571428571
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.01428571428571428571428571428571
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.01428571428571428571428571428571
     }
   ],
 
@@ -46,22 +65,6 @@ Densinium Weapons: +^green;2^reset;% Crit, ^green;25^reset;% More Dmg
     {
       "stat" : "fu_densiniumset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.05
     }
   ]
   ,

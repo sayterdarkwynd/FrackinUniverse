@@ -4,11 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Legendary",
-   "description" : "^green;8^reset;% Phys. Resist\n
-^orange;Set Bonus^reset;: 
-^green;Thorns^reset;
-Fist: ^green;20^reset;% More Dmg, +^green;20^reset;% Knockback
-^cyan;Immune^reset;: Sandstorms, Liq. Nitrogen",  
+   "description" : "^yellow;^reset; ^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;Thorns^reset;
+^yellow;^reset; Fist: ^green;20^reset;% More Dmg, +^green;20^reset;% Knockback
+^yellow;^reset; ^cyan;Immune^reset;: Sandstorms, Liq. Nitrogen", 
   "shortdescription" : "Gladiator Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +38,11 @@ Fist: ^green;20^reset;% More Dmg, +^green;20^reset;% Knockback
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.022857
     }
   ],
 
@@ -47,11 +51,7 @@ Fist: ^green;20^reset;% More Dmg, +^green;20^reset;% Knockback
     {
       "stat" : "fu_gladiatorset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.08
-    }  
+    }
   ],
 
   "colorOptions" : [

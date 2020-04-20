@@ -4,11 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Legendary",
-   "description" : "^green;10^reset;% Phys. Resist\n
-^orange;Set Bonus^reset;: 
-^green;Thorns^reset;
-Fist: ^green;20^reset;% More Dmg, +^green;20^reset;% Knockback
-^cyan;Immune^reset;: Sandstorms, Liq. Nitrogen", 
+   "description" : "^yellow;^reset; ^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;Thorns^reset;
+^yellow;^reset; Fist: ^green;20^reset;% More Dmg, +^green;20^reset;% Knockback
+^yellow;^reset; ^cyan;Immune^reset;: Sandstorms, Liq. Nitrogen", 
   "shortdescription" : "Gladiator Hardsuit",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -47,6 +46,11 @@ Fist: ^green;20^reset;% More Dmg, +^green;20^reset;% Knockback
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.028571
     }
   ],
 
@@ -55,11 +59,7 @@ Fist: ^green;20^reset;% More Dmg, +^green;20^reset;% Knockback
     {
       "stat" : "fu_gladiatorset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.10
-    }      
+    }     
   ],
 
   "colorOptions" : [

@@ -4,11 +4,10 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "+^green;10^reset;% Shadow Resist\n
-^orange;Set Bonus^reset;: 
-Sword x 1: +^green;2^reset;% Crit, 
-Swords x 2: ^green;25^reset;% More Dmg
-\n^cyan;Immune^reset;: Gas, Shadow, Tar^reset;",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Sword x 1: +^green;2^reset;% Crit, 
+^yellow;^reset; Swords x 2: ^green;25^reset;% More Dmg
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Shadow, Tar^reset;",
   "shortdescription" : "Replicant's Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,11 @@ Swords x 2: ^green;25^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 8
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.028571
     }
   ],
 
@@ -46,10 +50,6 @@ Swords x 2: ^green;25^reset;% More Dmg
     {
       "stat" : "fu_replicantset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.1
     }
   ],
 
