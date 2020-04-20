@@ -8,7 +8,17 @@ function liquidLib.init()
 end
 
 function liquidLib.itemToLiquidId(item)
-	return tonumber(root.liquidConfig(root.itemConfig(item).config.liquid).config.liquidId)
+	if item then
+		local dump1=root.itemConfig(item).config.liquid
+		if dump1 then
+			local dump2=root.liquidConfig(dump1).config.liquidId
+			return tonumber(dump2 or 0)
+		else
+			return 0
+		end
+	else
+		return 0
+	end
 end
 
 function liquidLib.itemToLiquidLevel(item)
