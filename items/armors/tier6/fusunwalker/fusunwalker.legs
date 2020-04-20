@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-   "description" : "^green;10^reset;% Radiation Resist\n
-^orange;Set Bonus^reset;: 
-Plasma Weapons: ^green;15^reset;% More Dmg
-^cyan;Immune^reset;: Radiation, Heat, Cold, Pressure, Oxygen", 
+   "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Plasma Weapons: ^green;15^reset;% More Dmg
+^yellow;^reset; ^cyan;Immune^reset;: Radiation, Heat, Cold, Pressure, Oxygen", 
   "shortdescription" : "Sunwalker Robes",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,11 @@ Plasma Weapons: ^green;15^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.028571
     }
   ],
 
@@ -46,10 +50,6 @@ Plasma Weapons: ^green;15^reset;% More Dmg
     {
       "stat" : "fu_sunwalkerset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.10
     }
   ],
 

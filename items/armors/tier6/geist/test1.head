@@ -4,11 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "+^green;11^reset;% Poison and Phys. Resist\n
-^orange;Set Bonus^reset;: 
-^green;25^reset;% More Health^reset;
-Melee: +^green;1.5/3^reset;% Crit Chance
-\n^cyan;Immune^reset;: Acid, Oxygen",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;25^reset;% More Health^reset;
+^yellow;^reset; Melee: +^green;1.5^reset;/^green;3^reset;% Crit Chance
+^yellow;^reset;^cyan;Immune^reset;: Acid, Oxygen",
   "shortdescription" : "Geist Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,16 @@ Melee: +^green;1.5/3^reset;% Crit Chance
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.031428
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.031428
     }
   ],
 
@@ -46,14 +55,6 @@ Melee: +^green;1.5/3^reset;% Crit Chance
     {
       "stat" : "fu_geistset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.11
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.11
     }
   ],
   "colorOptions" : [

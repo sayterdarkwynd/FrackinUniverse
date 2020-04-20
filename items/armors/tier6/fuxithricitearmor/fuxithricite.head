@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-   "description" : "^green;15^reset;% Cosmic Resist, ^green;9^reset;% Radiation Resist\n
-^orange;Set Bonus^reset;: 
-Xithricite Weapons: +^green;3^reset;% Crit 
-^cyan;Immune^reset;: Shadow, Aether, Radiation, Pressure, Insanity", 
+   "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit 
+^yellow;^reset; ^cyan;Immune^reset;: Shadow, Aether, Radiation, Pressure, Insanity", 
   "shortdescription" : "Xithricite Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +38,16 @@ Xithricite Weapons: +^green;3^reset;% Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.042857
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.025714
     }
   ],
 
@@ -47,14 +56,6 @@ Xithricite Weapons: +^green;3^reset;% Crit
     {
       "stat" : "fu_xithriciteset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.15
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.09
     }
   ],
 
