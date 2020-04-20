@@ -5,11 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "+^green;10^reset;% Radioactive Resist\n
-^orange;Set Bonus^reset;: 
-+^green;15^reset;% Speed
-Sniper Rifle: +^green;3^reset;% Crit, ^green;22^reset;% More Dmg
-^cyan;Immune^reset;: Rad Burn, Deadly Rads", 
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; +^green;15^reset;% Speed
+^yellow;^reset; Sniper Rifle: +^green;3^reset;% Crit, ^green;22^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: ALL Rads", 
   "shortdescription" : "Type-3 Recon Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -40,6 +39,11 @@ Sniper Rifle: +^green;3^reset;% Crit, ^green;22^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.028571
     }
   ],
 
@@ -48,10 +52,6 @@ Sniper Rifle: +^green;3^reset;% Crit, ^green;22^reset;% More Dmg
     {
       "stat" : "fu_reconset3_head",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.1
     }
   ],
 
