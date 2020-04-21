@@ -4,7 +4,7 @@
   "inventoryIcon" : "mechgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "A rifle popular in ages long-past by those known as the Precursors",
+  "description" : "A rifle popular in ages long-past by those known as the Precursors.",
   "shortdescription" : "Precursor Rifle",
   "category" : "assaultRifle",
   "level" : 5,
@@ -94,17 +94,18 @@
     "name" : "Spread Shot",
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.114,
-    "baseDps" : 6,
+    "fireTime" : 0.15,
+    "baseDps" : 12,
     "energyUsage" : 54.5,
-    "inaccuracy" : 0.2,
+    "inaccuracy" : 0.09,
 
     "projectileCount" : 4,
     "fireType" : "auto",
 
     "projectileType" : "precursorshot2",
     "projectileParameters" : { 
-      "knockback" : 3
+      "knockback" : 3,
+      "statusEffects" : [ "radiationburn" ]
     },
 	  "stances" : {
 	    "idle" : {

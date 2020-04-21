@@ -1,7 +1,8 @@
 function init()
-	if status.resourceMax("health") < config.getParameter("minMaxHealth", 0) then
+	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or ((world.entityType(entity.id())== "monster") and (world.callScriptedEntity(entity.id(),"getClass") == 'bee')) then
 		effect.expire()
 	end
+	
 	self.blinkTimer = 0
 end
 
@@ -25,7 +26,7 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded then
+	if not self.exploded and not (status.stat("deathbombDud") > 0) then
 		local monsters=config.getParameter("monsters")
 		--sb.logInfo("%s",monsters)
 		if monsters then
@@ -34,5 +35,9 @@ function explode()
 			end
 		end
 		self.exploded = true
+		
+		if status.isResource("stunned") then
+			status.setResource("stunned",0)
+		end
 	end
 end

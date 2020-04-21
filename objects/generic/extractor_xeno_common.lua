@@ -13,14 +13,18 @@ function init()
   end
   transferUtil.init()
   self.mintick = config.getParameter("fu_mintick", 1)
-  self.timer = self.timer or self.mintick
-  self.crafting = false
-  self.output = nil
+  storage.timer = storage.timer or self.mintick
+  storage.crafting = storage.crafting or false
+
   self.light = config.getParameter("lightColor")
 
   self.techLevel = config.getParameter("fu_stationTechLevel", 1)
 
-  storage.activeConsumption = false
+  storage.activeConsumption = storage.activeConsumption or false
+	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,storage.activeConsumption)
+	end
+	
   if self.light then
 	object.setLightColor({0, 0, 0, 0})
   end
@@ -98,14 +102,14 @@ function update(dt)
 		deltaTime=deltaTime+dt
 	end
 
-	self.timer = self.timer - dt
-	if self.timer <= 0 then
-		if self.output then
-			for k,v in pairs(self.output) do
+	storage.timer = storage.timer - dt
+	if storage.timer <= 0 then
+		if storage.output then
+			for k,v in pairs(storage.output) do
 				fu_sendOrStoreItems(0, {name = k, count = techlevelMap(v)}, {0, 1, 2}, true)
 			end
-			self.output = nil
-			self.timer = self.mintick --reset timer to a safe minimum
+			storage.output = nil
+			storage.timer = self.mintick --reset timer to a safe minimum
 		else
 			if not startCrafting(getValidRecipes(getInputContents())) then
 				--set timeout and indicate not crafting if there were no recipes
@@ -113,8 +117,11 @@ function update(dt)
 				if self.light then
 					object.setLightColor({0, 0, 0, 0})
 				end
-				self.timer = self.mintick
+				storage.timer = self.mintick
 				storage.activeConsumption = false
+				if object.outputNodeCount() > 0 then
+					object.setOutputNodeLevel(0,storage.activeConsumption)
+				end
 			end
 		end
 	end
@@ -128,22 +135,39 @@ function startCrafting(result)
 		return false
 	else
 		_, result = next(result)
-
+		storage.inputs={}
 		for k, v in pairs(result.inputs) do
 			-- if we ever do multiple inputs, FIXME undo partial consumption on failure
-			if not (world.containerAvailable(entity.id(),{item = k}) >= techlevelMap(v) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), {item = k , count = techlevelMap(v)})) then
+			local itemData={item = k , count = techlevelMap(v)}
+			if not (world.containerAvailable(entity.id(),{item = k}) >= techlevelMap(v) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), itemData)) then
+				for _,v in pairs(storage.inputs) do
+					local i=0
+					for i=0,world.containerSize(entity.id())-1 do
+						if v then
+						v=world.containerPutItemsAt(entity.id(),v,i)
+						else
+							break
+						end
+					end
+				end
+				storage.inputs={}
 				return false
 			end
+			table.insert(storage.inputs,itemData)
 		end
-                self.timerMod = config.getParameter("fu_timerMod")
-		self.timer = ((techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)) + self.timerMod
-		self.output = result.outputs
+		
+		storage.timerMod = config.getParameter("fu_timerMod")
+		storage.timer = ((techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)) + storage.timerMod
+		storage.output = result.outputs
 		animator.setAnimationState("samplingarrayanim", "working")
 		if self.light then
 			object.setLightColor(self.light)
 		end
 
 		storage.activeConsumption = true
+		if object.outputNodeCount() > 0 then
+			object.setOutputNodeLevel(0,storage.activeConsumption)
+		end
 		return true
 	end			  
 end
@@ -295,4 +319,12 @@ function validateRecipes(testData)
 		if not pair[i] then huntOutput({i}) end
 	end
 	huntOutput({table.getn(testData)}) -- last entry
+end
+
+function die()
+	if storage.inputs and #storage.inputs>0 then
+		for _,v in pairs(storage.inputs) do
+			world.spawnItem(v,entity.position())
+		end
+	end
 end

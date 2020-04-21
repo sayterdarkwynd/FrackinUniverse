@@ -23,7 +23,11 @@ recipeExclusionList = {
 		terraforge=true,
 		beakeasy=true,
 		teleshop=true,
-		treasuredtrophies=true
+		treasuredtrophies=true,
+		esoteric = true,
+		esoteric1 = true,
+		esoteric2 = true,
+		esoteric3 = true
 	}
 }
 
@@ -34,6 +38,12 @@ outputExclusionList = {
 	tags={
 		--could put stuff here
 	},
+	crunchychick = true,
+	crunchychickdeluxe = true,
+	evilchick = true,
+	fumadnessresource=true,
+	fuscienceresource=true,
+	money=true,
 	copperbar=true,
 	ironbar=true,
 	silverbar=true,

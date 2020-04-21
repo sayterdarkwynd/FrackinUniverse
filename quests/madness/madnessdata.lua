@@ -59,7 +59,14 @@ function randomEvent()
     if storage.madnessCount > 1500 then
 	    if self.randEvent == 44 then 
 		status.addEphemeralEffect("eatself",20) -- You just can't stop eating yourself.
-		status.addEphemeralEffect("bleeding05",20) -- You just can't stop eating yourself.
+		status.addEphemeralEffect("healingimmunitydummy",20) -- healing won't work on you
+		if status.isResource("food") then
+			status.addEphemeralEffect("food_healconversion_100_1-10_lethal",20) -- You just can't stop eating yourself.
+			status.addEphemeralEffect("feedpackneg",self.curseDuration_status)-- hunger isn't abating either
+		else
+			status.addEphemeralEffect("heal_neg20",20) -- You just can't stop eating yourself.
+		end
+		--status.addEphemeralEffect("bleeding05",20) -- You just can't stop eating yourself.
 	    end  
 	    if self.randEvent == 45 then 
 		status.addEphemeralEffect("runboost15",self.curseDuration_status) -- run boost!
@@ -86,6 +93,8 @@ function randomEvent()
 	      if root.itemHasTag(storage.currentPrimary, "dagger") or root.itemHasTag(storage.currentSecondary, "dagger") then
 		status.addEphemeralEffect("bleeding05",self.curseDuration_status) -- You just can't stop stabbing yourself
 		player.radioMessage("madnessharm")
+	      else
+		self.timerDegradePenalty = 10
 	      end
 	    end   
 	    if self.randEvent == 38 and storage.madnessCount > 800 then 
@@ -96,7 +105,7 @@ function randomEvent()
 		status.addEphemeralEffect("rootfu",10) -- unable to move
 		player.radioMessage("madnessroot")
 	    end       
-	    if self.randEvent == 53 then --max food reduction
+	    if self.randEvent == 53 then --all res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "cosmicResistance", amount = status.stat("cosmicResistance")-penaltyValue },
@@ -116,7 +125,7 @@ function randomEvent()
 		  })    
 	    end 
 	    if self.randEvent == 31 then --increased hunger
-		status.addEphemeralEffect("feedpackneg",self.curseDuration_status) --player feels hot
+		status.addEphemeralEffect("feedpackneg",self.curseDuration_status) --more hunger
 		player.radioMessage("madnessfood")
 	    end      
 	    if self.randEvent == 32 then 
@@ -140,43 +149,43 @@ function randomEvent()
 		status.addEphemeralEffect("jumpboost25neg",self.curseDuration_status) -- You suddenly suck at jumping
 		player.radioMessage("madness2")
 	    end         
-	    if self.randEvent == 46 then --max food reduction
+	    if self.randEvent == 46 then --fire res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "fireResistance", amount = status.stat("fireResistance")-penaltyValue }
 		  })    
 	    end  
-	    if self.randEvent == 47 then --max food reduction
+	    if self.randEvent == 47 then --ice res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "iceResistance", amount = status.stat("iceResistance")-penaltyValue }
 		  })    
 	    end  
-	    if self.randEvent == 48 then --max food reduction
+	    if self.randEvent == 48 then --poison res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "poisonResistance", amount = status.stat("poisonResistance")-penaltyValue }
 		  })    
 	    end  
-	    if self.randEvent == 49 then --max food reduction
+	    if self.randEvent == 49 then --elec res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "electricResistance", amount = status.stat("electricResistance")-penaltyValue }
 		  })    
 	    end
-	    if self.randEvent == 50 then --max food reduction
+	    if self.randEvent == 50 then --shadow res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "shadowResistance", amount = status.stat("shadowResistance")-penaltyValue }
 		  })    
 	    end 
-	    if self.randEvent == 51 then --max food reduction
+	    if self.randEvent == 51 then --rad res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "radioactiveResistance", amount = status.stat("radioactiveResistance")-penaltyValue }
 		  })    
 	    end 
-	    if self.randEvent == 52 then --max food reduction
+	    if self.randEvent == 52 then --cosmic res reduction
 	      local penaltyValue = math.random(1,100)/100
 		  status.setPersistentEffects("madnessEffectsMain", {  
 			{stat = "cosmicResistance", amount = status.stat("cosmicResistance")-penaltyValue }
@@ -230,7 +239,7 @@ function randomEvent()
 		status.addEphemeralEffect("swimboost1",self.curseDuration_status) -- Swim boost!
 	    end  	
 	    if self.randEvent == 26 then 
-		status.addEphemeralEffect("vulnerability",self.curseDuration_status) --player feels drunk
+		status.addEphemeralEffect("vulnerability",self.curseDuration_status) --p
 	    end 	    
 	    if self.randEvent == 27 then 
 	      local penaltyValue = math.random(6,40)
@@ -290,152 +299,64 @@ function randomEvent()
 		end      
 	    end    
     end
-    
-
-    
-    
-    
     self.randEvent = math.random(1,100)
 end
 
 function update(dt)
-    --we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
+   -- we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
+   -- there are better places to put it, bbut this at least keeps it contained
    if (self.timerRemoveAmmoBar >=6) then
        world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
        self.timerRemoveAmmoBar = 0
    else
        self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + dt
    end   
-       
   
    storage.madnessCount = player.currency("fumadnessresource")
+   
+   -- timing refresh for sculptures, painting effects
    self.paintTimer = self.paintTimer - 1
    if self.paintTimer == 0 then
      checkMadnessArt()
    end
    
-  -- Core Adjustments Functions
+  -- Core Adjustment Function
   self.timer = self.timer - 1
-  self.timerReloadBar = self.timerReloadBar + dt
-  if (self.timerReloadBar >=5) then
-    self.timerReloadBar = 5
-  end
-  if (self.timerReloadBar == 5) then -- is reload bar timer expired?
-    world.sendEntityMessage(self.playerId,"removeBar","madnessBar")   --clear ammo bar  
-    self.timerReloadBar = 0
-  end
-
   if self.timer < 1 then 
-  	  if storage.madnessCount > 12000 then
-	        storage.madnessCount = 12000
-	        self.timer = 10
-	        randomEvent()
-		self.degradeTotal = 32
-		self.timerDegradePenalty = 10   
-  	  elseif storage.madnessCount > 10000 then
-	        storage.madnessCount = 10000
-	        self.timer = 10
-	        randomEvent()
-		self.degradeTotal = 22
-		self.timerDegradePenalty = 10 
-  	  elseif storage.madnessCount > 8000 then
-		self.timer = 20
-		randomEvent() --apply random effect
-		self.timerDegradePenalty = 9
-		self.degradeTotal = 16
-  	  elseif storage.madnessCount > 6000 then
-		self.timer = 25
-		randomEvent() --apply random effect
-		self.timerDegradePenalty = 8
-		self.degradeTotal = 6 
-  	  elseif storage.madnessCount > 5000 then
-		self.timer = 30
-		randomEvent() --apply random effect
-		self.timerDegradePenalty = 7
-		self.degradeTotal = 5
-  	  elseif storage.madnessCount > 4000 then
-		self.timer = 40
-		randomEvent() --apply random effect
-		self.timerDegradePenalty = 6
-		self.degradeTotal = 4  
-  	  elseif storage.madnessCount > 3000 then
-		self.timer = 50
-		randomEvent() --apply random effect
-		self.timerDegradePenalty = 5
-		self.degradeTotal = 3
-  	  elseif storage.madnessCount > 2000 then
-		self.timer = 60
-		randomEvent() --apply random effect
-		self.timerDegradePenalty = 4
-		self.degradeTotal = 2  
-  	  elseif storage.madnessCount > 1000 then
-		self.timer = 80
-		randomEvent() --apply random effect
-		self.timerDegradePenalty = 3
-		self.degradeTotal = 2 	   
-  	  elseif storage.madnessCount > 700 then
-		self.timer = 90
-		self.degradeTotal = 1
-		self.timerDegradePenalty = 2
-		randomEvent() --apply random effect    
-  	  elseif storage.madnessCount > 500 then
-		self.timer = 100
-		self.degradeTotal = 1
-		self.timerDegradePenalty = 2
-		randomEvent() --apply random effect
-  	  elseif storage.madnessCount > 400 then
-		self.timer = 120
-		self.degradeTotal = 1
-		self.timerDegradePenalty = 1
-		randomEvent() --apply random effect 
-  	  elseif storage.madnessCount > 300 then
-		self.timer = 150
-		self.degradeTotal = 1
-		self.timerDegradePenalty = 1
-		randomEvent() --apply random effect	
-  	  elseif storage.madnessCount > 200 then
-		self.timer = 200
-		self.degradeTotal = 1
-		randomEvent() --apply random effect  
-  	  elseif storage.madnessCount > 100 then
-		self.timer = 250
-		self.degradeTotal = 1
-		randomEvent() --apply random effect 
-  	  elseif storage.madnessCount > 50 then
-		self.timer = 300
-		self.degradeTotal = 1
-		randomEvent() --apply random effect
-	  else
-		self.timer = 300
-		self.degradeTotal = 1	  
-	  end	  
-	  
-	  
+      if storage.madnessCount > 50 then
+	 self.degradeTotal = storage.madnessCount / 300 -- max is 50
+	 self.timerDegradePenalty = (storage.madnessCount / 500) 
+	 if self.timerDegradePenalty < 0 then
+	     self.timerDegradePenalty = 0
+	 end
+	 self.timer = (300 - (storage.madnessCount/100) ) + (status.stat("mentalProtection") * 100)
+	 randomEvent() --apply random effect 
+      else
+	 self.timer = 300
+	 self.degradeTotal = 1	  
+      end	  	
   end
-  -- end CORE
-
- 	self.timerDegrade = self.timerDegrade -1
- 	--gradually reduce Madness over time
-	if (self.timerDegrade <= 0) and (storage.madnessCount >= 50) then --high madness is harder to hold onto, and less farmable, if it always reduces
-	    self.timerDegradePenalty = self.timerDegradePenalty or 0
-	    player.consumeCurrency("fumadnessresource", self.degradeTotal)
-	    self.timerDegrade= 30 - self.timerDegradePenalty   
-	    displayBar()
-	end 
- 	-- apply bonus loss from anti-madness effects even if not above 500 madness
-	self.bonusTimer = self.bonusTimer -1
-	if self.bonusTimer <= 0 then
-	    self.protectionBonus = status.stat("mentalProtection")/5 + math.random(1,12) -- 1d12 + their Mental Protection / 5
-	    --mentalProtection can make it harder to be affected
-	    if (status.statPositive("mentalProtection")) then 
-	      player.consumeCurrency("fumadnessresource", self.protectionBonus)   
-	    end
-	    self.bonusTimer = 20
-	    displayBar() 	    
-	end	
+  self.timerDegrade = self.timerDegrade -1
+  --gradually reduce Madness over time
+  if (self.timerDegrade <= 0) then --no more limit to when it can degrade
+      self.timerDegradePenalty = self.timerDegradePenalty or 0
+      player.consumeCurrency("fumadnessresource", self.degradeTotal)
+      self.timerDegrade= 60 - self.timerDegradePenalty  
+      --displayBar()
+  end 
+  -- apply bonus loss from anti-madness effects even if not above 500 madness
+  self.bonusTimer = self.bonusTimer -1
+  if self.bonusTimer <= 0 then
+      self.protectionBonus = status.stat("mentalProtection")/5 + math.random(1,12) 
+      if (status.statPositive("mentalProtection")) then 
+        player.consumeCurrency("fumadnessresource", self.protectionBonus)   
+      end
+      self.bonusTimer = 40
+      --displayBar() 	    
+  end	
 end
 
-
+--display madness bar
 function displayBar()
   if (storage.madnessCount >= 50) then
     world.sendEntityMessage(self.playerId,"setBar","madnessBar",self.madnessPercent,self.barColor)
@@ -444,101 +365,46 @@ function displayBar()
   end
 end
 
-function checkMadnessArt()
-    if player.hasItem("demiurgepainting") then
-	player.addCurrency("fumadnessresource", 2) 
-	player.giveItem("fumadnessresource")
-    end    
-    if player.hasItem("dreamspainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end    
-    if player.hasItem("fleshpainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end           
-    if player.hasItem("homepainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end           
-    if player.hasItem("hordepainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end           
-    if player.hasItem("nightmarepainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end           
-    if player.hasItem("theexpansepainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end    
-    if player.hasItem("thefishpainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end         
-    if player.hasItem("thehuntpainting") then
+function checkMadnessArt()       
+    if player.hasItem("thehuntpainting") or
+    player.hasItem("demiurgepainting") or
+    player.hasItem("elderhugepainting") then
 	player.addCurrency("fumadnessresource", 5) 
-    end         
-    if player.hasItem("thepalancepainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end         
-    if player.hasItem("theroompainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end         
-    if player.hasItem("thingsinthedarkpainting") then
-	player.addCurrency("fumadnessresource", 2) 
-    end         
-    if player.hasItem("elderhugepainting") then
-	player.addCurrency("fumadnessresource", 5) 
-    end         
-    if player.hasItem("elderpainting1") then
-	player.addCurrency("fumadnessresource", 2) 
-    end         
-    if player.hasItem("elderpainting2") then
-	player.addCurrency("fumadnessresource", 2) 
     end  
-    if player.hasItem("elderpainting3") then
-	player.addCurrency("fumadnessresource", 2) 
-    end           
-    if player.hasItem("elderpainting4") then
-	player.addCurrency("fumadnessresource", 2) 
-    end           
-    if player.hasItem("elderpainting5") then
-	player.addCurrency("fumadnessresource", 2) 
-    end           
-    if player.hasItem("elderpainting6") then
-	player.addCurrency("fumadnessresource", 2) 
-    end    
-    if player.hasItem("elderpainting7") then
-	player.addCurrency("fumadnessresource", 2) 
-    end                   
-    if player.hasItem("elderpainting8") then
-	player.addCurrency("fumadnessresource", 2) 
-    end            
-    if player.hasItem("elderpainting9") then
-	player.addCurrency("fumadnessresource", 2) 
-    end           
-    if player.hasItem("elderpainting10") then
-	player.addCurrency("fumadnessresource", 2) 
-    end       
-    if player.hasItem("elderpainting11") then
-	player.addCurrency("fumadnessresource", 2) 
+
+    if player.hasItem("dreamspainting") or
+    player.hasItem("fleshpainting") or
+    player.hasItem("homepainting") or
+    player.hasItem("hordepainting") or
+    player.hasItem("nightmarepainting") or
+    player.hasItem("theexpansepainting") or
+    player.hasItem("thefishpainting") or
+    player.hasItem("thepalancepainting") or
+    player.hasItem("theroompainting") or
+    player.hasItem("thingsinthedarkpainting") or
+    player.hasItem("elderpainting1") or
+    player.hasItem("elderpainting2") or
+    player.hasItem("elderpainting3") or
+    player.hasItem("elderpainting4") or
+    player.hasItem("elderpainting5") or
+    player.hasItem("elderpainting6") or
+    player.hasItem("elderpainting7") or
+    player.hasItem("elderpainting8") or
+    player.hasItem("elderpainting9") or
+    player.hasItem("elderpainting10") or
+    player.hasItem("elderpainting11") then
+        player.addCurrency("fumadnessresource", 2) 
     end
-    
-    self.paintTimer = 20
+    self.paintTimer = 20 + (status.stat("mentalProtection") * 25)
 end
 
 function isWeirdStuff()
-    if player.hasItem("faceskin") then
-	player.addCurrency("fumadnessresource", 2) 
-    end
-    if player.hasItem("greghead") then
-	player.addCurrency("fumadnessresource", 2) 
-    end
-    if player.hasItem("gregnog") then
-	player.addCurrency("fumadnessresource", 2) 
-    end    
-    if player.hasItem("babyheadonastick") then
-	player.addCurrency("fumadnessresource", 2) 
-    end
-    if player.hasItem("greghead") then
-	player.addCurrency("fumadnessresource", 2) 
-    end    
-    if player.hasItem("meatpickle") then
+    if player.hasItem("faceskin") or 
+    player.hasItem("greghead") or 
+    player.hasItem("gregnog") or
+    player.hasItem("babyheadonastick") or 
+    player.hasItem("greghead") or 
+    player.hasItem("meatpickle") then
 	player.addCurrency("fumadnessresource", 2) 
     end
 end

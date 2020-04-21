@@ -6,11 +6,11 @@ transferUtil.itemTypes = nil
 
 --[[
 function update(dt)
-	if not deltaTime or (deltaTime > 1) then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 end
 ]]

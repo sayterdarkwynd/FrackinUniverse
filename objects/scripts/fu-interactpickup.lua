@@ -9,6 +9,7 @@ function init()
 	end
 	
 	self.spawnableItem = config.getParameter("spawnableItem")
+	self.timedObject = config.getParameter("timedSpawner")
 end
 
 function open()
@@ -31,5 +32,5 @@ function onInteraction(args)
 end
 
 function update(dt) 
-	
+
 end

@@ -163,12 +163,14 @@ function doUpgrade()
 		  upgradedItem.parameters.primaryAbility.projectileParameters.restoreBase= (upgradedItem.parameters.level) + 3
 		  upgradedItem.parameters.primaryAbility.projectileParameters.speed= (upgradedItem.parameters.level)+1
 		  upgradedItem.parameters.primaryAbility.energyUsage= 10 + ( upgradedItem.parameters.level /10 )
+		  upgradedItem.parameters.rarity = "legendary"	
 	  -- catch leftovers  
 	  elseif (itemConfig.config.category == "detector") and (upgradedItem.parameters.level) >=8 then -- ore detectors and cave detectors
 		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 		  upgradedItem.parameters.pingRange= upgradedItem.parameters.pingRange + 1
 		  upgradedItem.parameters.pingDuration= upgradedItem.parameters.pingDuration + 0.15
 		  upgradedItem.parameters.pingCooldown= upgradedItem.parameters.pingCooldown - 0.05  
+		  upgradedItem.parameters.rarity = "legendary"	
 	  elseif (itemConfig.config.category == "parasol") and (upgradedItem.parameters.level) >=3 then -- parasol
 		  upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
 		  upgradedItem.parameters.level = 20	

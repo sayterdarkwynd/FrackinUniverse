@@ -198,17 +198,21 @@ function build(directory, config, parameters, level, seed)
 
     -- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***
     -- FU ADDITIONS 
-        parameters.isAmmoBased = configParameter("isAmmoBased")
-      if (parameters.ammoLocked == nil) then
-	    if (math.random(0,1) > 0.5) then  -- 50% change for the weapon to be Ammo based or Energy based
-	      parameters.isAmmoBased = 1
-	      config.tooltipKind = "gun2"
-	      parameters.tooltipKind = "gun2"
-	    else
-	      parameters.isAmmoBased = 0
-	    end 
-	    parameters.ammoLocked = 1 --set it to 1 so this step never repeats	    
-      end    
+      parameters.isAmmoBased = configParameter("isAmmoBased")
+      
+      if not (config.category == "Jumprifle") then --exclude these weapon types
+	      if (parameters.ammoLocked == nil) then
+		    if (math.random(0,1) > 0.5) and (config.muzzleOffset) then  -- 50% chance for the weapon to be Ammo based or Energy based
+		      parameters.isAmmoBased = 1
+		      config.tooltipKind = "gun2"
+		      parameters.tooltipKind = "gun2"
+		    else
+		      parameters.isAmmoBased = 0
+		    end 
+		    parameters.ammoLocked = 1 --set it to 1 so this step never repeats	    
+	      end  
+      end
+   
       if (parameters.isAmmoBased ==1 ) then   -- if its ammo based, we set the relevant data to the tooltip
 	  parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
 	  parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
@@ -233,6 +237,10 @@ function build(directory, config, parameters, level, seed)
       else
         config.tooltipFields.critBonusLabel = "--"
       end
+      if (config.category == "Jumprifle") then
+        config.tooltipFields.critBonusLabel = 3
+        config.tooltipFields.critChanceLabel = 1 
+      end      
       if (configParameter("stunChance")) then
         config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)   
       else
@@ -243,7 +251,30 @@ function build(directory, config, parameters, level, seed)
 	      config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"  
     	      config.tooltipFields.reloadTimeImage = "/interface/statuses/reload.png" 
     	      config.tooltipFields.critChanceImage = "/interface/statuses/crit2.png"  
-    	      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"     
+    	      config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"   
+    -- Staff and Wand specific --
+    if config.primaryAbility.projectileParameters then
+	    if config.primaryAbility.projectileParameters.baseDamage then
+		    config.tooltipFields.staffDamageLabel = config.primaryAbility.projectileParameters.baseDamage  
+	    end	     
+    end    
+
+    if config.primaryAbility.energyCost then
+	    config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyCost
+    end 
+    if config.primaryAbility.energyPerShot then
+	    config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyPerShot
+    end       
+    if config.primaryAbility.maxCastRange then
+	    config.tooltipFields.staffRangeLabel = config.primaryAbility.maxCastRange
+    else
+    	    config.tooltipFields.staffRangeLabel = 25
+    end  
+    if config.primaryAbility.projectileCount then
+	    config.tooltipFields.staffProjectileLabel = config.primaryAbility.projectileCount
+    else
+    	    config.tooltipFields.staffProjectileLabel = 1
+    end        
   --
       
   if elementalType ~= "physical" then

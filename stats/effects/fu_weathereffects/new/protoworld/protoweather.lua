@@ -35,12 +35,14 @@ end
 
 function fuProtoWeather.createAlert(self)
   -- Status text
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")
-  -- Emit a "HP down" symbol to make it extra obvious.
-  configBombDrop = {}
-  world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+  if entity.entityType()=="player" then
+	  local statusTextRegion = { 0, 1, 0, 1 }
+	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+	  animator.burstParticleEmitter("statustext")
+	  -- Emit a "HP down" symbol to make it extra obvious.
+	  configBombDrop = {}
+	  world.spawnProjectile("maxhealthdown", mcontroller.position(), entity.id(), {0, 60}, false, configBombDrop)
+  end
   -- Finally, hurt the player for an audio warning.
   self:applySelfDamage(0.1)
 end

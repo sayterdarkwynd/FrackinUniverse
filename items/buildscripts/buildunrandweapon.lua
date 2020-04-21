@@ -103,6 +103,30 @@ function build(directory, config, parameters, level, seed)
 	    config.tooltipFields.overheatLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatGain, 1)
 	    config.tooltipFields.cooldownLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatLossRateMax, 1)    
     end
+
+    -- Staff and Wand specific --
+    if config.primaryAbility.projectileParameters then
+	    if config.primaryAbility.projectileParameters.baseDamage then
+		    config.tooltipFields.staffDamageLabel = config.primaryAbility.projectileParameters.baseDamage  
+	    end	     
+    end    
+
+    if config.primaryAbility.energyCost then
+	    config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyCost
+    end 
+    if config.primaryAbility.energyPerShot then
+	    config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyPerShot
+    end       
+    if config.primaryAbility.maxCastRange then
+	    config.tooltipFields.staffRangeLabel = config.primaryAbility.maxCastRange
+    else
+    	    config.tooltipFields.staffRangeLabel = 25
+    end  
+    if config.primaryAbility.projectileCount then
+	    config.tooltipFields.staffProjectileLabel = config.primaryAbility.projectileCount
+    else
+    	    config.tooltipFields.staffProjectileLabel = 1
+    end 
     
     -- Recoil
     if config.primaryAbility.recoilVelocity then

@@ -1,7 +1,7 @@
 setName="fu_millenionset"
 
 weaponBonus={
-	{stat = "maxHealth", baseMultiplier = 1.20},
+	{stat = "maxHealth", effectiveMultiplier = 1.20},
 	{stat="grit", amount=0.25}
 }
 
@@ -35,7 +35,7 @@ end
 
 
 function checkWeapons()
-	local weaponSword=weaponCheck({"shortsword"})
+	local weaponSword=weaponCheck({"shortsword","longsword","rapier","katana"})
 	local weaponShield=weaponCheck({"shield"})
 	--local weapons=weaponCheck({"shortsword","shield"})
 	

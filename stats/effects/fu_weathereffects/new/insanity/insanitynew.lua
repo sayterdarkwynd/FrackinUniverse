@@ -32,12 +32,29 @@ function fuInsanityWeather.init(self, config_file)
   self.darknessImmunityDelay = effectConfig.darknessImmunityDelay
   self.darknessImmunityTimer = nil
   self.madTimer = 0
+  self.afk = 0
+  self.myspeed = 0
   self.unBlockable = config.getParameter("isUnblockable") or 0
   effect.addStatModifierGroup({{stat = "isUnblockable", amount = self.unBlockable}})  
 end
 
 function fuInsanityWeather.update(self, dt)
+
   self.parent.update(self, dt)
+
+  self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking 
+  if self.myspeed < 1 then
+    if self.afk > 300 then -- do not go higher than this value
+      self.afk = 300
+    end
+    self.afk = self.afk + 1
+  else
+    self.afk = self.afk -2  --movement decrements the penalty
+    if self.afk < 0 then
+      self.afk = 0
+    end    
+  end
+  
   if self.effectActive then
     -- Tick down extra timers.
     self.darknessImmunityTimer = math.max(self.darknessImmunityTimer - dt, 0)
@@ -93,15 +110,17 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
     newGroup[i] = {stat = "darknessImmunity", amount = 1}
     i = i + 1
   end
-
-  if (i > 1) then
-    effect.setStatModifierGroup(self.debuffGroup, newGroup)
-    if (status.stat("mentalProtection") < 1) and (self.madTimer < 200) then
-    	self.randMadness = math.random(2,8) * (math.random(1,2) - status.stat("mentalProtection"))-- spawn madness randomly when this effect is active
-    	world.spawnItem("fumadnessresource",entity.position(),self.randMadness )  
-    	self.madTimer = self.madTimer + 1
-    end
-    self:createAlert()
+  
+  if world.entityType(entity.id())=="player" then --only if its a player do we run this
+	  if (i > 1) and (self.afk < 200) then  --cannot gain madness unless you are not AFK macroing
+	    effect.setStatModifierGroup(self.debuffGroup, newGroup)
+	    if (status.stat("mentalProtection") < 1) and (self.madTimer < 200) then
+		self.randMadness = math.random(2,8) * (math.random(1,2) - status.stat("mentalProtection"))-- spawn madness randomly when this effect is active
+		world.spawnItem("fumadnessresource",entity.position(),self.randMadness )  
+		self.madTimer = self.madTimer + 1
+	    end
+	    self:createAlert()
+	  end
   end
   
 end
@@ -187,9 +206,11 @@ function fuInsanityWeather.deactivateVisualEffects(self)
 end
 
 function fuInsanityWeather.createAlert(self)
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")
+	if entity.entityType()=="player" then
+	  local statusTextRegion = { 0, 1, 0, 1 }
+	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+	  animator.burstParticleEmitter("statustext")
+	 end
 end
 
 --============================== INIT AND UNINIT =============================--

@@ -11,7 +11,14 @@
       "allowDuplication" : true
     }]
   ],
-
+  "ancientpowerconduitLoot" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1.0, "item" : "ancientpowerconduit" }
+      ],
+      "allowDuplication" : true
+    }]
+  ],
 "starterRope" : [
     [1, {
       "fill" : [
@@ -33,9 +40,6 @@
   ],
 "starterMechTablet" : [
     [1, {
-      "fill" : [
-        {"weight" : 1, "item" : ["mechtablet", 1]}
-      ],
       "pool" : [
         {"weight" : 0.90, "item" : ["unrefinedliquidmechfuel", 20]}
       ]
@@ -50,12 +54,9 @@
   ],    
 "starterTechTablet" : [
     [1, {
-      "fill" : [
-        {"weight" : 1, "item" : ["techtablet", 1]}
-      ],
       "pool" : [
         {"weight" : 0.10, "item" : "commonpistol"},
-        {"weight" : 0.90, "item" : ["bomb", 5]}
+        {"weight" : 0.90, "item" : ["bomb", 1]}
       ]
     } ]
   ],
@@ -330,7 +331,9 @@
         {"weight" : 0.04, "item" :  [ "precursorbed2", 1]},
         {"weight" : 0.04, "item" :  [ "precursorcrate", 1]},
         {"weight" : 0.04, "item" :  [ "precursorcratesmall", 1]},
-        {"weight" : 0.01, "item" :  [ "precursormainframe", 1]}    
+        {"weight" : 0.01, "item" :  [ "precursormainframe", 1]},
+        {"weight" : 0.01, "item" : "perpetualaccelerator"}  ,
+        {"weight" : 0.05, "item" : [ "precursorhookshot", 1]}  
       ],
       "poolRounds" : [
         [0.33, 1],

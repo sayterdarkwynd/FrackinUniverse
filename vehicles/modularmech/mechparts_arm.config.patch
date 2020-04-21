@@ -1898,7 +1898,7 @@
             "path": "/fumeltaarm",
             "value": {
                 "stats": {
-                    "power": 2,
+                    "power": 3,
                     "energy": 3,
                     "rapidFire" : 8,
                     "mechMass" : 3
@@ -4026,13 +4026,13 @@
 			    "rotationLimits": [-1.75, 1.75],
 			    "fireOffset": [4, 0],
 			    "extendTime": 1,
-			    "fireTime": 2,
+			    "fireTime": 1,
 			    "projectileType": "energyshard",
 			    "projectileCount": 6,
-			    "projectileSpread": 0.4,
+			    "projectileSpread": 0.25,
 			    "projectileRandomOffset": [1.5, 0.75],			    
 			    "projectileParameters": {
-				"power": 8
+				"power": 10
 			    }
 			},
 			"partImages": {
@@ -4076,19 +4076,17 @@
 			"partParameters": {
 				"script": "/vehicles/modularmech/armscripts/missileburstarm.lua",
 				"armClass": "MissileBurst",
-				"rotationLimits": [-1.75,
-				1.75],
-				"fireOffset": [3.5,
-				-0.25],
+				"rotationLimits": [-1.75,1.75],
+				"fireOffset": [3.5,-0.25],
 				"windupTime": 0.2,
 				"fireTime": 0.1,
 				"cooldownTime": 0.5,
 				"projectileType": "sawchakram",
 				"projectileParameters": {
-				  "power": 3
+				  "power": 7
 				},
 				"projectileCount": 3,
-				"projectileSpread": 0.4,
+				"projectileSpread": 0.22,
 				"projectileRandomOffset": [1.5,0.75]
 			},
 			"partImages": {
@@ -4526,7 +4524,7 @@
 	{"op":"add","path":"/sinshotgun","value":
 	  {
 	    "stats" : {
-	      "power" : 4,
+	      "power" : 3,
 	      "energy" : 4,
 	      "multicount" : 6,
 	      "mechMass" : 6
@@ -4541,16 +4539,16 @@
 	      "windupTime" : 0.4,
 	      "fireTime" : 1,
 
-	      "projectileType" : "heavybullet",
+	      "projectileType" : "bullet-1",//"heavybullet"
 	      "projectileParameters" : {
-		"power" : 15,
-		"knockback" : 8
+		"power" : 24,
+		"knockback" : 20
 	      },
 
-	      "projectileCount" : 9,
+	      "projectileCount" : 6,
 	      "projectileSpacing" : [0, 0.1],
 
-	      "projectileInaccuracy" : 0.15
+	      "projectileInaccuracy" : 0.1
 	    },
 	    "partImages" : {
 	      "<armName>" : "arm/sinshotgun.png",
@@ -4589,9 +4587,9 @@
 	{"op":"add","path":"/sinshotgun2","value":
 	  {
 	    "stats" : {
-	      "power" : 6,
+	      "power" : 5,
 	      "energy" : 8,
-	      "multicount" : 10,
+	      "multicount" : 9,
 	      "mechMass" : 8
 	    },
 	    "partParameters" : {
@@ -4602,15 +4600,15 @@
 	      "fireOffset" : [6.5, -0.3],
 
 	      "windupTime" : 0.4,
-	      "fireTime" : 1.4,
+	      "fireTime" : 1.2,
 
 	      "projectileType" : "gausspistolshot",
 	      "projectileParameters" : {
-		"power" : 35,
-		"knockback" : 15
+		"power" : 32,
+		"knockback" : 30
 	      },
 
-	      "projectileCount" : 15,
+	      "projectileCount" : 9,
 	      "projectileSpacing" : [0, 0.1],
 
 	      "projectileInaccuracy" : 0.12

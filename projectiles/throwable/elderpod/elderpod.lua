@@ -47,13 +47,14 @@ function update(dt)
   else
     projectile.die()
   end
+  releaseMonsters()
 end
 
-function hit(entityId)
-  if self.releaseOnHit and not self.returning then
-    releaseMonsters()
-  end
-end
+--function hit(entityId)
+--  if self.releaseOnHit and not self.returning then
+--    releaseMonsters()
+--  end
+--end
 
 function releaseMonsters()
   if self.podUuid then

@@ -26,103 +26,8 @@
 
     "phases" : [
       {
-        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "fleshBombAttack" ]
-      },     
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.95,      
-        "skills" : [ "shoggothChargeAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.90,
-        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "fleshBombAttack" ]
-      },        
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.85,
-        "skills" : [ "shoggothChargeAttack" ]
-      },                  
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.80,
-        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack", "fleshBombAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.75,
-        "skills" : [ "shoggothChargeAttack" ]
-      },       
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.70,
-        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack2", "miniShoggothSpawnAttack"  ]
-      },   
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.65,
-        "skills" : [ "shoggothChargeAttack" ]
-      },       
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.60,
-        "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack2", "miniShoggothSpawnAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.55,
-        "skills" : [ "shoggothChargeAttack" ]
-      },       
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.50,
-        "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack2", "fleshBombAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.45,
-        "skills" : [ "shoggothChargeAttack" ]
-      },      
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.40,
-        "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2", "miniShoggothSpawnAttack" ]
-      },        
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.35,
-        "skills" : [ "shoggothChargeAttack" ]
-      },       
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.30,
-        "skills" : [ "eyeBeamAttack", "tentacleSwipeAttack", "shoggothAcidAttack", "shoggothAcidAttack2", "fleshBombAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.25,
-        "skills" : [ "shoggothChargeAttack" ]
-      },       
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.20,
-        "skills" : [ "tentacleSwipeAttack", "eyeBeamAttack", "shoggothAcidAttack", "miniShoggothSpawnAttack2" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.15,
-        "skills" : [ "shoggothChargeAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.10,
-        "skills" : [ "tentacleSwipeAttack", "eyeBeamAttack" ]
-      },
-      {
-        "trigger" : "healthPercentage",
-        "healthPercentage" : 0.05,
-        "skills" : [ "eyeBeamAttack", "miniShoggothSpawnAttack2" ]
-      }       
+        "skills" : [ "tentacleSwipeAttack", "shoggothAcidAttack" ]
+      }     
     ],
 
     "scale" : 1,
@@ -130,8 +35,8 @@
     "movementSettings" : {
       "collisionPoly" : [ [-14, -16], [14, -16], [14, 0], [-14, 0] ],
       "mass" : 10,
-      "walkSpeed" : 4,
-      "runSpeed" : 8,
+      "walkSpeed" : 5,
+      "runSpeed" : 9,
       "jumpSpeed" : 0,
       "airforce" : 0
     },
@@ -144,7 +49,7 @@
       "targetQueryRange" : 180,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 180,
+      "keepTargetInRange" : 10,
       "targetOutOfSightTime" : 180.0,
       
       
@@ -169,7 +74,7 @@
 
       "teamType" : "enemy",
       "damageSourceKind" : "cosmic",
-      "statusEffects" : [ "percentarmorboostneg3" ]
+      "statusEffects" : [ "percentarmorboostneg3", "madnessgain3" ]
     },
 
     "statusSettings" : {
@@ -240,7 +145,8 @@
         },   
         "critImmunity" : {
           "baseValue" : 1.0
-        },          
+        },   
+        "stunImmunity" : { "baseValue": 1.0 },
         "poisonResistance" : { "baseValue" : 0.4 },
         "fireResistance" : { "baseValue" :0.5 },
         "iceResistance" : { "baseValue" : 0.5 },
@@ -261,7 +167,8 @@
         "akkimariacidStatusImmunity" : { "baseValue" : 1 },
         "ucObliteratingBurnImmunity" : { "baseValue" : 1 },
 	"specialStatusImmunity" : {"baseValue" : 1.0},
-        "ignoreInvisibilityEffects" : { "baseValue" : 1 }
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 },
+        "silverResistance" : { "baseValue" : 0.5 }
       },
       
       "resources" : {

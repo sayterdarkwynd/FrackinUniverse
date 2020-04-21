@@ -91,7 +91,7 @@ function update(dt)
 					else
 						params.deathBehavior = "monster-death"
 						params.behaviorConfig.deathActions = params.behaviorConfig.deathActions or {}
-						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
+						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {aimDirection={0,-1},projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
 					end
 					
 					for actionType, actions in pairs (params.behaviorConfig) do

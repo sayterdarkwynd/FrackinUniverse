@@ -25,19 +25,20 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [0.02, 0.1],
-    "baseDps" : [9, 11],
-    "energyUsage" : [27, 30],
+    "fireTime" : [0.25, 1],
+    "baseDps" : [4.75, 5.6],
+    "energyUsage" : [34, 45],
     "inaccuracy" : 0.0,
 
-    "burstTime" : [0.002, 0.005],
-    "burstCount" : [6, 12],
-    "fireType" : "burst",
+    "fireType" : "auto",
 
-    "projectileType" : "standardbullet",
+    "projectileType" : "standardbulletbeam",
     "projectileParameters" : {
       "knockbackRange" : [0.1,0.2],
-      "fullbright" : true
+      "fullbright" : true,
+      "speed" : 100,
+      "timeToLive" : 0.5,
+      "periodicActions" : [{"time" : 0.006,"loop" : true,"action" : "projectile","type" : "standardbulletbeam","inheritDamageFactor" :0.1,"fuzzAngle" : 0,"projectileParameters" : { "speed" : 0, "damageSourceKind" : "default", "timeToLive" : 0.6 }}]
     },
 
     "stances" : {
@@ -69,7 +70,7 @@
       }
     }
   },
-  "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ],
+  "fireSounds" : [ "/sfx/weapons/laserblast.ogg" ],
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -102,8 +103,6 @@
       "grenadelauncher",
       "piercingshot",
       "shrapnelbomb",
-      "spray",
-      "stickyshot",
 
       "swtjc_ewg_clusterbomb",
       "swtjc_ewg_markedshotweak",
@@ -128,7 +127,7 @@
   "critChance": 1,
   "critBonus" : 3,
   
-  "magazineSize" : [12,24],
+  "magazineSize" : [6,12],
   "reloadTime" : [0.5,3],
   "isAmmoBased" : 1
 }

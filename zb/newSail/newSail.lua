@@ -733,7 +733,7 @@ function crewSelectedSafe()
 			
 			local crew = cfg.Data.crew[listData.index]
 			if crew then
-				local text = crew.description.."\n^cyan;> Species:^white; "..crew.config.species.."\n^cyan;> Level:^white; "..crew.config.parameters.level
+				local text = crew.description.."\n^cyan;> Species:^white; "..crew.config.species.."\n^cyan;>" --Level:^white; "..crew.config.parameters.level
 				textTyper.init(cfg.TextData, text, customData.chatterSound or cfg.TextData.sound)
 
 				widget.setText("path", "root/sail/ui/crew/"..crew.name)

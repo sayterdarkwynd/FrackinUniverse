@@ -30,9 +30,10 @@
     "energyUsage" : [27, 30],
     "inaccuracy" : 0.005,
 
-    "projectileType" : "standardbullet",
+    "projectileType" : "fuphysicalbeam",
     "projectileParameters" : {
-      "knockbackRange" : [20, 40]
+      "knockbackRange" : [20, 40],
+      "statusEffects" : [ "slow" ]
     },
 
     "stances" : {
@@ -75,7 +76,10 @@
   "magazineSize" : [2,6],
   "reloadTime" : [1.7,3.1],
   "isSniper" : 1,  
-  
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1500, 
   
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
