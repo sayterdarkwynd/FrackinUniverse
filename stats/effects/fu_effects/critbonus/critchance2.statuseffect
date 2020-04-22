@@ -1,13 +1,16 @@
 {
   "name" : "critchance2",
-  "effectConfig" : {
-    "critChanceMultiplier" : 1.10,
-    "itemName" : "critmeter"
-  },
+ 	"effectConfig": {
+		"stats": [{
+				"stat": "critChance",
+				"amount": 0.1
+			}
+		]
+	},
   "defaultDuration" : 60,
 
   "scripts" : [
-    "critchance2.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
 
   "animationConfig" : "critchance.animation",

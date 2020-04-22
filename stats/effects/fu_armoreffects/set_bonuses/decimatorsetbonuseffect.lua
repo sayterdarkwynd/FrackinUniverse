@@ -2,7 +2,7 @@ setName="fu_decimatorset"
 
 weaponBonus={
 	{stat = "critChance", amount = 3},
-	{stat = "critBonus", baseMultiplier = 1.15}
+	{stat = "critDamage", amount = 0.15}
 }
 
 armorBonus={

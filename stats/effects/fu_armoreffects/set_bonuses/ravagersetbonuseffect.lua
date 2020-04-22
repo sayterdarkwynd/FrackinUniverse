@@ -4,7 +4,7 @@ setName="fu_ravagerset"
 
 weaponBonus={ 
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25},
-	{stat = "critBonus", baseMultiplier = 1.2} 
+	{stat = "critDamage", amount = 0.2} 
 }
 
 armorBonus2={}

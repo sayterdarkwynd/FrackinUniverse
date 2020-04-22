@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critBonus", baseMultiplier = 1.20}
+	{stat = "critDamage", amount = 0.20}
 }
 armorBonus={
 	{stat = "iceStatusImmunity", amount = 1},

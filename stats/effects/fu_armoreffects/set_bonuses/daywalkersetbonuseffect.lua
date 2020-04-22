@@ -2,7 +2,7 @@ setName="fu_daywalkerset"
 
 weaponBonus={
 	{stat = "critChance", amount = 1.5},
-	{stat = "critBonus", effectiveMultiplier = 1.25}
+	{stat = "critDamage", amount = 0.25}
 }
 
 armorBonus={
