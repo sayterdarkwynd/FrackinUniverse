@@ -196,7 +196,7 @@ function NebBowShot:currentProjectileParameters()
 		* (mcontroller.onGround() and 1 or (mcontroller.liquidMovement() and 1 or mcontroller.zeroG() and 1 or (self.airborneBonus + status.stat("bowAirBonus"))))
 		/ (self.projectileCount or 1)
   projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
-
+  projectileParameters.power = Crits.setCritDamage(self,projectileParameters.power)
   return projectileParameters
 end
 

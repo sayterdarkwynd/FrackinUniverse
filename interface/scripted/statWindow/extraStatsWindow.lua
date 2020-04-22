@@ -31,6 +31,10 @@ function update()
 			value = "+"..tostring(math.floor(value + 0.5)).."%"
 			widget.setText(stat, value)
 			
+		elseif type == "critmult" then
+			value = tostring(average((1.5+value)*100)).."%"
+			widget.setText(stat, value)
+			
 		elseif type == "food" then
 			value = tostring(math.abs(shorten(1 / (value / status.resourceMax("food")) * 0.01)))
 			if value % 1 == 0 then

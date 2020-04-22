@@ -99,7 +99,7 @@ function BowShot:currentProjectileParameters()
   --projectileParameters.power = projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime) + BowShot:setCritDamage(damage)
   projectileParameters.power = Crits.setCritDamage(self, projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime))
   projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
-
+	sb.logInfo("FU currentProjectileParameters: crit damage included: %s",{Crits.setCritDamage(self, projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime))})
   return projectileParameters
 end
 
