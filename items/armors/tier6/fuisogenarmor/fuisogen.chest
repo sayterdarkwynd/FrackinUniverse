@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "^green;30^reset;% Fire Resist\n
-^orange;Set Bonus^reset;:
-Isogen weapons: +^green;15^reset;% Phys. Resist ,+^green;3^reset;% Crit
-^cyan;Immune^reset;: Deadly Heat, Lava, Burning, Oxygen",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Isogen weapons: +^green;15^reset;% Phys. Resist, +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: ALL Heat, Lava, Oxygen",
 
   "shortdescription" : "Isogen Chestplate",
   "category" : "chestarmour",
@@ -48,6 +47,11 @@ Isogen weapons: +^green;15^reset;% Phys. Resist ,+^green;3^reset;% Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.085714
     }
   ],
 
@@ -56,10 +60,6 @@ Isogen weapons: +^green;15^reset;% Phys. Resist ,+^green;3^reset;% Crit
     {
       "stat" : "isogensetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.3
     }
   ],
 
