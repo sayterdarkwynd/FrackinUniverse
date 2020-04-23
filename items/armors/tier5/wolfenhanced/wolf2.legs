@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^green;10^reset;% Ice Resist
-^orange;Set Bonus^reset;: 
-Daggers: +^cyan;15^reset; to ^green;25^reset;% Crit Dmg
-^cyan;Immune^reset;: Snow, Slush, Ice, Cold",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Daggers: +^green;20^reset;/^green;40^reset;% Crit Dmg
+^yellow;^reset; ^cyan;Immune^reset;: Snow, Slush, Ice, Cold",
   "shortdescription" : "Wolf Leggings",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,11 @@ Daggers: +^cyan;15^reset; to ^green;25^reset;% Crit Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -46,11 +50,7 @@ Daggers: +^cyan;15^reset; to ^green;25^reset;% Crit Dmg
     {
       "stat" : "fu_wolfset2_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.1
-    }  
+    }
   ],
 
   "colorOptions" : [
