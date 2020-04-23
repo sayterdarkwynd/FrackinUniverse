@@ -788,7 +788,7 @@ function isDroneActive(drone)
 		return false
 	end
 	
-	-- Always active for simulated ticks. Whether anything actually ahppens is determined within the production function
+	-- Always active for simulated ticks. Whether anything actually happens is determined within the production function
 	if ticksToSimulate then return true end
 	
 	-- Get the worktime stat, and check if the drones should be active, taking work time modifying frames into account
