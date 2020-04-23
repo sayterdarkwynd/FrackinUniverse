@@ -1,5 +1,5 @@
 setName="fu_wretchelset"
-setStatEffects={"wretchelsetbonuseffect", "lowgrav_wretchel"}
+setStatEffects={"wretchelsetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

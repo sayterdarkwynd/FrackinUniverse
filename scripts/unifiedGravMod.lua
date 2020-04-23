@@ -2,6 +2,7 @@ unifiedGravMod={}
 unifiedGravMod.gravHandler=nil
 
 function init()
+	--sb.logInfo("unifiedGravMod:init")
 	unifiedGravMod.init()
 	unifiedGravMod.initSoft()
 	script.setUpdateDelta(5)
@@ -20,10 +21,11 @@ function update(dt)
 end
 
 function unifiedGravMod.initSoft()
+	--sb.logInfo("unifiedGravMod:initSoft")
 	self.gravityMod = config.getParameter("gravityMod",0.0)
 	self.gravityNormalize = config.getParameter("gravityNorm",false)
 	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
-	--sb.logInfo(sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
+	--sb.logInfo("initsoft: %s",sb.printJson({self.gravityMod,self.gravityNormalize,self.gravityBaseMod}))
 	if not unifiedGravMod.gravHandler then
 		unifiedGravMod.gravHandler=effect.addStatModifierGroup({{stat = "gravityMod", amount=self.gravityMod},{stat = "gravityBaseMod", amount=self.gravityBaseMod}})
 	end
@@ -43,9 +45,9 @@ end
 function unifiedGravMod.refreshGrav(dt)
 	if not self.ghosting then  --ignore effect if ghost
 		local gravMod=status.stat("gravityMod")--most multipliers are gonna be this. this is where gravity increases and decreases go.
-		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature.
+		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature. 
 		
-		local newGrav=(gravMod*(self.gravMult2-gravBaseMod))--new effective gravity
+		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
 		local gravNorm=status.stat("gravityNorm")
 		if 0==world.gravity(entity.position()) then
 			--mcontroller.addMomentum({0,-1*80*newGrav*0.2*dt})
@@ -57,7 +59,7 @@ function unifiedGravMod.refreshGrav(dt)
 			newGrav=newGrav+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
 		end
-		--sb.logInfo("%s",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,newGrav=newGrav,gravNorm=gravNorm})
+		--sb.logInfo("%s",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,newGrav=newGrav,gravNorm=gravNorm,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod})
 	end
 end
 

@@ -1,16 +1,16 @@
 {
   "itemName" : "biomorphchest",
+  "price" : 750,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "+^green;8^reset;% Fire and Ice Resists
-+^yellow;40^reset;% X'i Bulb Regen Rate (120%)
-\n^orange;Set Bonus^reset;: 
-^green;5^reset;% Speed, ^green;7^reset;% More Dmg, ^green;25^reset;% More Health, ^green;20^reset;% More Max Energy^reset;
-Xi Weapons: ^green;10^reset;% More Protection
-Sulphuric Biome: ^green;5^reset;% More Energy, +^green;5^reset;% Knockback Resist 
-^cyan;Immune^reset;: Burning, All Radiation, Snow, Slush, Ice, Oxygen",
+  "description" : "+^green;40^reset;% X'i Bulb Regen Rate (120%)
+^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;5^reset;% Speed, ^green;7^reset;% More Damage, ^green;25^reset;% More Health, ^green;20^reset;% More Max Energy^reset;
+^yellow;^reset; Xi Weapons: ^green;10^reset;% More Protection
+^yellow;^reset; Sulphuric Biome: ^green;5^reset;% More Energy, +^green;5^reset;% Knockback Resist 
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Deadly Radiation, Snow, Slush, Ice, Oxygen",
   "itemTags" : [ "upgradeableWeapon" ],
   "shortdescription" : "Biomorphic Plate",
   "category" : "chestarmour",
@@ -49,6 +49,16 @@ Sulphuric Biome: ^green;5^reset;% More Energy, +^green;5^reset;% Knockback Resis
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.022857
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.022857
     }
   ],
 
@@ -57,14 +67,6 @@ Sulphuric Biome: ^green;5^reset;% More Energy, +^green;5^reset;% Knockback Resis
     {
       "stat" : "radienpyreitesetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.08
     },
     {
       "stat" : "xiBonus",

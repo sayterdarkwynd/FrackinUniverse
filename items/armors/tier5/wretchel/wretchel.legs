@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^green;5^reset;% Shadow Resist
-^orange;Set Bonus^reset;:
-^cyan;Gravity Field^reset;
-^cyan;Immune^reset;: Poison, Pus, Bio-Ooze", 
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Low Gravity^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Pus, Bio-Ooze", 
   "shortdescription" : "Wretchel Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.016666
     }
   ],
 
@@ -47,11 +51,7 @@
     {
       "stat" : "fu_wretchelset_legs",
       "amount" : 1
-    },
-     {
-      "stat" : "shadowResistance",
-      "amount" : 0.05
-    } 
+    }
   ],
 
   "colorOptions" : [
