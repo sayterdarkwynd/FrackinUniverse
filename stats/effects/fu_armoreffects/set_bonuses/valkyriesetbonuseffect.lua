@@ -5,6 +5,7 @@ setName="fu_valkyrieset"
 weaponBonus={}
 
 armorBonus={
+	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},

@@ -5,11 +5,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-   "description" : "+^green;10^reset;% Fire Resist\n
-^orange;Set Bonus^reset;:
-Fire Nova on hit
-Flamethrower: ^green;25^reset;% More Dmg
-^cyan;Immune^reset;: Heat, Burning",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;Fire Nova when hit^reset;
+^yellow;^reset; ^green;Glow^reset;
+^yellow;^reset; Flamethrower: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Deadly Heat, Burning",
   "shortdescription" : "Hellfire Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +39,11 @@ Flamethrower: ^green;25^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 8
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -47,10 +52,6 @@ Flamethrower: ^green;25^reset;% More Dmg
     {
       "stat" : "fu_hellfireset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.10
     }
 ],
   //"upgrades" : 1 ,

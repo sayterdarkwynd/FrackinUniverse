@@ -1,9 +1,8 @@
-setName="fu_hellfireset"
-setStatEffects={"hellfiresetbonuseffect","gloworangeset","fireburstset"}
-
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
+	setName=config.getParameter("setName","generic")
+	setStatEffects=config.getParameter("setStatEffects",{})
 	setSEBonusInit(setName,setStatEffects)
 end
 
