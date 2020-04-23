@@ -8,7 +8,7 @@ weaponBonus={
 armorEffect={
 	{stat = "protoImmunity", amount = 1.0},
 	{stat = "gasImmunity", amount = 1.0},
-	{stat = "fallDamageMultiplier", baseMultiplier = 0.75}
+	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.75}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

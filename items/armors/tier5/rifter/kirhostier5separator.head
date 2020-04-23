@@ -4,11 +4,10 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "+^green;10^reset;% Cosmic Resist\n
-^orange;Set Bonus^reset;: 
-^green;25^reset;% Less Fall Damage
-Magnorb, Chakram, Boomerang: ^green;25^reset;% More Dmg, +^green;3^reset;% Crit
-^cyan;Immune^reset;: Gas, Proto-Poison",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;25^reset;% Less Fall Damage
+^yellow;^reset; Magnorb, Chakram, Boomerang: ^green;25^reset;% More Damage, +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Proto-Poison",
   "shortdescription" : "Rifter Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +38,11 @@ Magnorb, Chakram, Boomerang: ^green;25^reset;% More Dmg, +^green;3^reset;% Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -47,10 +51,6 @@ Magnorb, Chakram, Boomerang: ^green;25^reset;% More Dmg, +^green;3^reset;% Crit
     {
       "stat" : "fu_rifterset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.1
     }
   ],
 
