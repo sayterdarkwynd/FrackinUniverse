@@ -1,7 +1,7 @@
 setName="fu_guardianset"
 
 weaponBonus={
-	{stat = "grit", baseMultiplier = 1.25}
+	{stat = "grit", amount = 0.25}
 }
 weaponBonus2={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
