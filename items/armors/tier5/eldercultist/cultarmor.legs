@@ -5,11 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "+^green;6^reset;% Cosmic Resist\n
-^orange;Set Bonus^reset;:
-+^cyan;0.8^reset;% HP Regen
-Wand/Staff: ^green;15^reset;% More Dmg
-^cyan;Immune^reset;: Shadow Taint,Darkness,Insanity", 
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;0.8^reset;% HP Regen
+^yellow;^reset; Wand/Staff: ^green;15^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint, Darkness, Insanity", 
   "shortdescription" : "Cultist Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,11 @@ Wand/Staff: ^green;15^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -47,11 +51,7 @@ Wand/Staff: ^green;15^reset;% More Dmg
     {
       "stat" : "fu_cultistset_legs",
       "amount" : 1
-    },
-     {
-      "stat" : "cosmicResistance",
-      "amount" : 0.06
-    } 
+    }
   ],
 
   "colorOptions" : [
