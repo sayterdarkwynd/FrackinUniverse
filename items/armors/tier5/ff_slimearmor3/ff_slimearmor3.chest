@@ -5,12 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "+^green;13^reset;% Poison/Radiation Resist\n
-^orange;Set Bonus^reset;:
-^cyan;Spawns minions^reset;
-+^green;20^reset;% More Dmg, 
-Slime weapons: +^green;6^reset;% Crit
-^cyan;Immune ^reset;: Poison, Bioooze, Mud, Slime, Mud and Clay", 
+  "description" : "^orange;Set Bonuses^reset;:
+^green;Spawns minions^reset;
+Slime weapons: +^green;6^reset;% Crit, +^green;20^reset;% More Damage
+^cyan;Immune ^reset;: Poison, Bio-Ooze, Slime, Mud, Clay, Snow, Ice Slip", 
   "shortdescription" : "Red Slime Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -49,6 +47,16 @@ Slime weapons: +^green;6^reset;% Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.043333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.043333
     }
   ],
 
@@ -57,14 +65,6 @@ Slime weapons: +^green;6^reset;% Crit
     {
       "stat" : "fu_slimeset3_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.13
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.13
     }
   ],
 
