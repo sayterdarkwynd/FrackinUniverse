@@ -5,10 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "+^green;10^reset;% Radiation & Cosmic Resist\n
-^orange;Set Bonus^reset;: 
-Energy/Precursor: +^green;5^reset;% Crit, ^green;15^reset;% More Dmg
-^cyan;Immune^reset;: Oxygen, Pressure",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; +^green;5^reset;% Crit Chance
+^yellow;^reset; Energy/Precursor: ^green;15^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Pressure",
   "shortdescription" : "Precursor Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +38,16 @@ Energy/Precursor: +^green;5^reset;% Crit, ^green;15^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 0
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.016666
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.016666
     }
   ],
 
@@ -46,15 +56,7 @@ Energy/Precursor: +^green;5^reset;% Crit, ^green;15^reset;% More Dmg
     {
       "stat" : "fu_precursorset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.1
-    }  
+    }
   ],
 
   "colorOptions" : [

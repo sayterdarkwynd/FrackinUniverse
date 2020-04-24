@@ -1,33 +1,57 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
-weaponBonus={
-	{stat = "critChance", amount = 2}
-}
-
-
-armorBonus={
-	{stat = "shadowImmunity", amount = 1},
-	{stat = "aetherImmunity", amount = 1},
-	{stat = "gasImmunity", amount = 1}
-}
-
-
-setName="fu_assassiniset"
-
-
 function init()
-
-	weaponBonuses=config.getParameter("weaponBonus",
+	setName=config.getParameter("setName","generic")
+	weaponBonuses=config.getParameter("weaponBonuses",
 		{
-			{bonus={stat = "critChance", amount = 0},
+			{
+				statEffects={}
+				bonus={stat = "critChance", amount = 1},
+				controlModifiers={},
 				conditions={
 					{allowedHands={"either"},bannedHands={"both"},tags={"pistol", "machinepistol"}}}
-				}
+			},
+			{
+				statEffects={}
+				bonus={stat = "critDamage", amount = 0.01},
+				controlModifiers={},
+				conditions={
+					{allowedHands={"both"},bannedHands={},tags={"pistol", "machinepistol"}}}
+			}
 		}
 	)
 	
+	biomeBonuses=config.getParameter("biomeBonuses",
+		{
+			{
+				bonus={stat = "maxHealth", effectiveMultiplier = 1.1},
+				controlModifiers={},
+				conditions={
+					{allowedBiomes={"ocean"},allowedTimes={"day"},bannedBiomes={"lush",bannedTimes={"night"}}},
+					{allowedBiomes={"lush"},allowedTimes={"night"},bannedBiomes={"ocean",bannedTimes={"day"}}}
+				
+				}
+			},
+			{
+				bonus={stat = "maxEnergy", effectiveMultiplier = 1.1},
+				controlModifiers={},
+				conditions={
+					{allowedBiomes={"ocean"},allowedTimes={"night"},bannedBiomes={"lush",bannedTimes={"day"}}},
+					{allowedBiomes={"lush"},allowedTimes={"day"},bannedBiomes={"ocean",bannedTimes={"night"}}}
+				}
+			}
+			
+		}
+	)
 	
-	armorBonus=config.getParameter("armorBonus",{})
+	armorBonuses=config.getParameter("armorBonus",
+		{
+			statModifiers={},
+			statuses={},
+			controlModifiers={}
+		}
+	)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	
 	setSEBonusInit(setName)
 	
@@ -35,23 +59,29 @@ function init()
 		effectHandlerList["weaponBonusHandle"..index]=effect.addStatModifierGroup({})
 	end
 	
-	checkWeapons()
-	checkBiome()
-	
-	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	checkSet(0)
 end
 
 function update(dt)
-	if not checkSetWorn(self.setBonusCheck) then
-		effect.expire()
-	else
-		checkWeapons()
-		checkBiome()
-	end
+	checkSet(dt)
 end
 
+function checkSet(dt)
+	local check=checkSetWorn(self.setBonusCheck)
+	doArmorBonus(check)
+	checkWeapons(check)
+	checkBiome(check)
+end
 
-function checkWeapons()
+function doArmorBonus()
+	effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
+
+
+
+end
+
+function checkWeapons(autofail)
 	for index,set in pairs(weaponBonuses) do
 		local whitelistPass={}
 		local blacklistFail={}
@@ -76,14 +106,15 @@ function checkWeapons()
 
 		if #blacklistFail=0 and (#whitelistPass==#setconditions) then
 			effect.setStatModifierGroup(effectHandlerList["weaponBonusHandle"..index],set.bonus)
+			mcontroller.controlModifiers(set.controlModifiers)
 		else
 			effect.setStatModifierGroup(effectHandlerList["weaponBonusHandle"..index],{})
 		end
 	end
 end
 
-function checkBiome()
-
-
+function checkBiome(autofail)
+	local wType=world.type()
+	local timeOfDay=world.timeOfDay()
 
 end

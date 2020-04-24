@@ -12,7 +12,7 @@ armorBonus={
 	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},		
 	{stat = "breathProtection", amount = 1},
-	{stat = "asteroidImmunity", amount = 1},
+	--{stat = "asteroidImmunity", amount = 1},--currently only affects an unused effect
 	{stat = "gravrainImmunity", amount = 1}
 }
 

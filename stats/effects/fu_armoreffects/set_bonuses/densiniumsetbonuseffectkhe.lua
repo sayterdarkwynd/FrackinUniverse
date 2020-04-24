@@ -41,8 +41,10 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("convert_energy-health_10_1-1")
 		effect.expire()
 	else
+		status.addEphemeralEffect("convert_energy-health_10_1-1")
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		mcontroller.controlModifiers({
 			speedModifier = 1.10

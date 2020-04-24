@@ -28,8 +28,10 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("swimboost2")
 		effect.expire()
 	else
+		status.addEphemeralEffect("swimboost2")
 		checkWeapons()
 	end
 end

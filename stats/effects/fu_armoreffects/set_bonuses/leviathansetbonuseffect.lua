@@ -12,7 +12,8 @@ armorBonus={
 	{stat = "poisonStatusImmunity", amount = 1},
 	{stat = "biooozeImmunity", amount = 1},
 	{stat = "breathProtection", amount = 1},
-	{stat = "extremepressureProtection", amount = 1}
+	{stat = "extremepressureProtection", amount = 1},
+	{stat = "pressureProtection", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

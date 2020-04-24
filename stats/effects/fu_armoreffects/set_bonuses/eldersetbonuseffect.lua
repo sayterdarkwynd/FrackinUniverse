@@ -43,10 +43,11 @@ function update(dt)
 		self.timer = math.random(220)+40
 	end
     
-	level=checkSetLevel(self.setBonusCheck)
-	if level==0 then
+	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("darkregen")
 		effect.expire()
 	else
+		status.addEphemeralEffect("darkregen")
 		checkArmor()
 		checkWeapons()
 	end

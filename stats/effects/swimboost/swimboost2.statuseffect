@@ -1,15 +1,17 @@
 {
   "name" : "swimboost2",
-  "effectConfig" : {
-    "boostAmount" : 1.4,
-    "riseAmount" : 1.4
-  },
+   	"effectConfig": {
+		"stats": [
+			{"stat": "boostAmount","effectiveMultiplier": 1.4},
+			{"stat": "riseAmount","effectiveMultiplier": 1.4}
+		]
+	},
   "defaultDuration" : 220,
 
   "scripts" : [
-    "swimboost1.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
-  "animationConfig" : "swimboost1.animation",
+  "animationConfig" : "swimboost2.animation",
   "label" : "Swim 2",
   "icon" : "/interface/statuses/swimboost.png"
 }

@@ -1,5 +1,5 @@
 setName="fu_gladiatorset"
-setStatEffects={"gladiatorsetbonuseffect", "thornsset"}
+setStatEffects={"gladiatorsetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

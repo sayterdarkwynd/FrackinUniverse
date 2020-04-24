@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "+^green;10^reset;% Electric, +^green;9^reset;% Phys. Resist\n
-^orange;Set Bonus^reset;:
-Mining Laser: ^green;340^reset;% More Dmg
-^cyan;Immune^reset;: Burning, Proto, Pressure, Oxygen, Gas", 
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Mining Laser: ^green;240^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Proto-Poison, Pressure, Oxygen, Gas, Ice Slip, Grav-Rain", 
   "shortdescription" : "Warp Miner Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +38,16 @@ Mining Laser: ^green;340^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.033333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.03
     }
   ],
 
@@ -48,14 +57,6 @@ Mining Laser: ^green;340^reset;% More Dmg
     {
       "stat" : "fu_warphunterset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.09
     }
   ],
 

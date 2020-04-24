@@ -22,7 +22,9 @@ end
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
+		status.removeEphemeralEffect("fuslowfallset")
 	else
+		status.addEphemeralEffect("fuslowfallset")
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	end
 end
