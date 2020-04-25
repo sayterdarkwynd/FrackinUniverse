@@ -43,13 +43,27 @@ function update(dt)
 	end
 end
 
-function upgradeCost(itemConfig)
+function upgradeCost(itemConfig,doMax)
 	if itemConfig == nil or self.isUpgradeKit then return 0 end
+	local iLvl=itemConfig.parameters.level or itemConfig.config.level or 1
+	local currentValue=0
 	
-	local prevValue = root.evalFunction("weaponEssenceValue", itemConfig.parameters.level or itemConfig.config.level or 1)
-	local newValue = (root.evalFunction("weaponEssenceValue", self.upgradeLevel) * (itemConfig.parameters.level or itemConfig.config.level or 1)/3) + 200
+	if doMax then
+		while iLvl<self.upgradeLevel do
+			currentValue=currentValue+costMath(iLvl)
+			iLvl=iLvl+1
+		end
+	else
+		currentValue=costMath(iLvl)
+	end
 	
-	return math.floor(newValue - prevValue)
+	return math.floor(currentValue)
+end
+
+function costMath(iLvl)
+	local prevValue = root.evalFunction("weaponEssenceValue", iLvl)
+	local newValue = (root.evalFunction("weaponEssenceValue", self.upgradeLevel) * (iLvl)/3) + 200
+	return math.floor(newValue-prevValue)
 end
 
 function populateItemList(forceRepop)
@@ -78,7 +92,8 @@ function populateItemList(forceRepop)
 				widget.setItemSlotItem(string.format("%s.itemIcon", listItem), item)
 				
 				local price = upgradeCost(config)
-				widget.setData(listItem, { index = i, price = price })
+				local priceMax=upgradeCost(config,true)
+				widget.setData(listItem, { index = i, price = price, priceMax = priceMax })
 			
 				widget.setVisible(string.format("%s.unavailableoverlay", listItem), price > playerEssence)
 			end
@@ -89,20 +104,23 @@ function populateItemList(forceRepop)
 	end
 end
 
-function showWeapon(item, price)
+function showWeapon(item, price, priceMax)
 	local playerEssence = player.currency("essence")
 	local enableButton = false
+	local enableButtonMax = false
 	
 	if not self.isUpgradeKit then
 		if item then
 			enableButton = playerEssence >= price
+			enableButtonMax = playerEssence >= priceMax
 			local directive = enableButton and "^green;" or "^red;"
-			widget.setText("essenceCost", string.format("%s%s / %s", directive, playerEssence, price))
+			local directive2 = enableButtonMax and "^green;" or "^red;"
+			widget.setText("essenceCost", string.format("%s / %s%s^reset; (%s%s^reset;)", playerEssence,directive, price or "--",directive2, priceMax or "--"))
 		else
-			widget.setText("essenceCost", string.format("%s / --", playerEssence))
+			widget.setText("essenceCost", string.format("%s / -- (--)", playerEssence))
 		end
 	end
-	
+	widget.setButtonEnabled("btnUpgradeMax",enableButtonMax)
 	widget.setButtonEnabled("btnUpgrade", enableButton)
 end
 
@@ -113,7 +131,7 @@ function itemSelected()
 	if listItem then
 		local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
 		local weaponItem = self.upgradeableWeaponItems[itemData.index]
-		showWeapon(weaponItem, itemData.price)
+		showWeapon(weaponItem, itemData.price, itemData.priceMax)
 	end
 end
 
@@ -124,7 +142,12 @@ function isArmor()
 	end
 end
 
-function doUpgrade()
+function doUpgradeMax()
+	if self.selectedItem and self.isUpgradeKit then return end
+	doUpgrade(true)
+end
+
+function doUpgrade(doMax)
 	if self.selectedItem then
 		if self.isUpgradeKit and not player.consumeItem({name = "cuddlehorse", count = 1}, true) then
 			widget.setButtonEnabled("btnUpgrade", false)
@@ -138,13 +161,16 @@ function doUpgrade()
 		if upgradeItem then
 			local consumedItem = player.consumeItem(upgradeItem, false, true)
 			if consumedItem then
-				local consumedCurrency = player.consumeCurrency("essence", selectedData.price)
+				local consumedCurrency = player.consumeCurrency("essence", (doMax and selectedData.priceMax or selectedData.price))
 				local upgradedItem = copy(consumedItem)
 				if consumedCurrency then
 					
 					local itemConfig = root.itemConfig(upgradedItem)  
 					self.baseValueMod = itemConfig.config.level or 1 -- store the original level in case we need it for calculations
 					upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
+					if doMax then
+						upgradedItem.parameters.level=math.max(upgradedItem.parameters.level,self.upgradeLevel)
+					end
 					if (itemConfig.parameters.baseDps) or (itemConfig.config.baseDps) then
 						upgradedItem.parameters.baseDps = (itemConfig.parameters.baseDps or itemConfig.config.baseDps or 1) * (1 + (upgradedItem.parameters.level/80) )  -- increase DPS a bit
 					end
