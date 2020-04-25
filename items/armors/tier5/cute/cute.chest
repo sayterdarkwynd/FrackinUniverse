@@ -4,10 +4,9 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "+^green;7^reset;% Shadow Resist\n
-^orange;Set Bonus^reset;:
-Cute Weapons: +^green;20^reset;% More Dmg
-^cyan;Immune^reset;: Shadow Taint",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Cute Weapons: +^green;20^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint",
   "shortdescription" : "Cute Blouse",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -45,6 +44,11 @@ Cute Weapons: +^green;20^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.028
     }
   ],
 
@@ -53,10 +57,6 @@ Cute Weapons: +^green;20^reset;% More Dmg
     {
       "stat" : "fu_cuteset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.7
     }
   ],
 

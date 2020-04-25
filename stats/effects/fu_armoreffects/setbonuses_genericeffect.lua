@@ -2,53 +2,59 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setName=config.getParameter("setName","generic")
-	weaponBonuses=config.getParameter("weaponBonuses",
+	
+	specialBonuses=config.getParameter("specialBonuses",
 		{
 			{
+				conditions={
+					{conditionType="hands",allowedHands={"either"},bannedHands={"both"},tags={"pistol", "machinepistol"}}
+				},
 				statEffects={}
 				bonus={stat = "critChance", amount = 1},
 				controlModifiers={},
-				conditions={
-					{allowedHands={"either"},bannedHands={"both"},tags={"pistol", "machinepistol"}}}
-			},
-			{
-				statEffects={}
-				bonus={stat = "critDamage", amount = 0.01},
-				controlModifiers={},
-				conditions={
-					{allowedHands={"both"},bannedHands={},tags={"pistol", "machinepistol"}}}
-			}
-		}
-	)
-	
-	biomeBonuses=config.getParameter("biomeBonuses",
-		{
-			{
-				bonus={stat = "maxHealth", effectiveMultiplier = 1.1},
-				controlModifiers={},
-				conditions={
-					{allowedBiomes={"ocean"},allowedTimes={"day"},bannedBiomes={"lush",bannedTimes={"night"}}},
-					{allowedBiomes={"lush"},allowedTimes={"night"},bannedBiomes={"ocean",bannedTimes={"day"}}}
-				
+				regen={
+					{resource="health",amount=0.8},
+					{resource="stunned",amount=-0.01}
 				}
 			},
 			{
-				bonus={stat = "maxEnergy", effectiveMultiplier = 1.1},
+				conditions={
+					{conditionType="hands",allowedHands={"both"},bannedHands={},tags={"pistol", "machinepistol"}}
+				},
+				statEffects={"critReady"}
+				bonus={stat = "critDamage", amount = 0.01},
 				controlModifiers={},
+				regen={
+					{resource="energy",amount=0.8}
+				}
+			},
+			{
+				conditions={
+					{conditionType="biome",allowedBiomes={"ocean"},bannedBiomes={"lush"}},
+					{conditionType="timeOfDay",allowedTimes={"night"},bannedTimes={"day"}}}
+				},
+				statEffects={"swimboost3"}
+				bonus={stat = "maxHealth", effectiveMultiplier = 1.1},
+				controlModifiers={}
+			},
+			{
 				conditions={
 					{allowedBiomes={"ocean"},allowedTimes={"night"},bannedBiomes={"lush",bannedTimes={"day"}}},
 					{allowedBiomes={"lush"},allowedTimes={"day"},bannedBiomes={"ocean",bannedTimes={"night"}}}
-				}
+				},
+				bonus={stat = "maxEnergy", effectiveMultiplier = 1.1},
+				controlModifiers={}
 			}
 			
 		}
 	)
 	
-	armorBonuses=config.getParameter("armorBonus",
+	baseBonuses=config.getParameter("baseBonuses",
 		{
 			statModifiers={},
 			statuses={},
 			controlModifiers={}
+			regen={}
 		}
 	)
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
@@ -69,16 +75,22 @@ end
 function checkSet(dt)
 	local check=checkSetWorn(self.setBonusCheck)
 	doArmorBonus(check)
-	checkWeapons(check)
-	checkBiome(check)
+	checkSpecial(check)
 end
 
-function doArmorBonus()
-	effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
-
-
-
-
+function doArmorBonus(fail)
+	if fail then
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
+		for _,status in pairs(baseBonuses.statuses) do 
+			status.removeEphemeralEffect(status)
+		end
+	else
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,baseBonuses.statModifiers)
+		for _,status in pairs(baseBonuses.statuses) do 
+			status.addEphemeralEffect(status)
+		end
+		mcontroller.controlModifiers(baseBonuses.controlModifiers)
+	end
 end
 
 function checkWeapons(autofail)
@@ -113,7 +125,7 @@ function checkWeapons(autofail)
 	end
 end
 
-function checkBiome(autofail)
+function checkSpecial(autofail)
 	local wType=world.type()
 	local timeOfDay=world.timeOfDay()
 

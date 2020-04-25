@@ -1,6 +1,6 @@
 --going to phase out the 'handler' since tooltips are going away.
 
---[[require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setName=config.getParameter("setName","generic")
@@ -12,7 +12,7 @@ function update()
 	if checkSetWorn(self.setBonusCheck) then
 		applySetEffects()
 	end
-end]]
+end
 
 
 function init()

@@ -4,10 +4,9 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "+^green;6^reset;% Shadow Resist\n
-^orange;Set Bonus^reset;:
-Cute Weapons: +^green;20^reset;% More Dmg
-^cyan;Immune^reset;: Shadow Taint",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Cute Weapons: +^green;20^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint",
   "shortdescription" : "Cute Leggings",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -36,7 +35,12 @@ Cute Weapons: +^green;20^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
-    }
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.024
+}
   ],
 
   "statusEffects" : [
@@ -44,10 +48,6 @@ Cute Weapons: +^green;20^reset;% More Dmg
     {
       "stat" : "fu_cuteset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.6
     }
   ],
 
