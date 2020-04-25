@@ -1,11 +1,12 @@
 {
   "itemName" : "silverslayer",
   "price" : 360,
-  "inventoryIcon" : "silverslayer.png",
+  "inventoryIcon" : "penumbriteslayer.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Damages all elements equally.",
-  "shortdescription" : "Silverbolt Slayer",
+  "description" : "Specially treated rounds harm any element equally.
+^yellow;Universal Damage^reset;",
+  "shortdescription" : "Penumbrite Carbine",
   "category" : "assaultRifle",
   "level" : 3,
   "tooltipKind" : "gun2",
@@ -15,7 +16,7 @@
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "silverslayer.png",
+    "middle" : "penumbriteslayer.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/muzzleflash2.png"
   },
@@ -33,12 +34,13 @@
   "elementalType" : "silverweapon",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
-    "class" : "GunFire",
+    "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
+    "class" : "GunFireFixed",
     "fireTime" : 0.15,
     "baseDps" : 6.5,
     "useEnergy" : true,
-    "energyUsage" : 23.8,
+    "energyUsage" : 24,
+    "runSlowWhileShooting" : true,
     "inaccuracy" : 0.03,
     "projectileCount" : 1,
     "fireType" : "auto",
