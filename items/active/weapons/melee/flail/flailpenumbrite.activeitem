@@ -1,23 +1,23 @@
 {
-  "itemName" : "flailzerchesium",
-  "level" : 4,
-  "price" : 350,
+  "itemName" : "flailpenumbrite",
+  "level" : 3,
+  "price" : 90,
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "Freezing cold impact hammer.
-^cyan;Breaks blocks^reset;",
-  "shortdescription" : "Zerchesium Striker",
+  "description" : "Heavy, cumbersome and awesome.
+^yellow;Universal Damage^reset;",
+  "shortdescription" : "Penumbrite Striker",
   "tooltipKind" : "gun2",
   "category" : "Striker",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","flail","zerchesium","upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","flail","silver","upgradeableWeapon"],
 
-  "inventoryIcon" : "zerchesiumflail.png",
+  "inventoryIcon" : "penumbriteflail.png",
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "zerchesiumflail.png",
+    "middle" : "penumbriteflail.png",
     "barrel" : "",
     "muzzleFlash" : ""
   },
@@ -38,29 +38,29 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementType" : "ice",
+  "elementType" : "silverweapon",
   
   "primaryAbilityType" : "tentaclegun",
   "primaryAbility" : {
     "chain" : {
       "arcRadiusRatio" : [8, 8],    
       "taper" : 0.0, 
-      "segmentImage" : "/items/active/weapons/melee/flail/flailchainzerchesium.png?scale=1",
-      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballzerchesium.png",
+      "segmentImage" : "/items/active/weapons/melee/flail/flailchainpenumbrite.png?scale=1",
+      "endSegmentImage" : "/items/active/weapons/melee/flail/flailballpenumbrite.png",
       "segmentSize" : 0.70
     },
 
     "guideProjectiles" : true,
-    "maxLength" : 2.5,
+    "maxLength" : 2,
 
-    "baseDps" : 11.25,
+    "baseDps" : 9,
     "chainDps" : 6,
     "fireTime" : 0.6,
     "maxProjectiles" : 1,
-    "energyUsage" : 10,
+    "energyUsage" : 9,
     "inaccuracy" : 0,
 
-    "projectileType" : "invisibleicetentaclefist",
+    "projectileType" : "invisibletentaclefistsilver",
     "projectileParameters" : {
       "controlForce":350,
       "targetTrackingForce":0,
@@ -71,12 +71,10 @@
       "speed" : 90,
       "bounces":-1, 
       "timeToLive" : 0.8, 
-      "damageSourceKind" : "iceplasma",
       
       "statusEffects" : [ ],
       
       "periodicActions" : [
-
       {
         "time":0.0,
         "action":"projectile",
@@ -114,7 +112,7 @@
         "action":"explosion", 
         "foregroundRadius":2, 
         "backgroundRadius":0, 
-        "explosiveDamageAmount":5.2, 
+        "explosiveDamageAmount":4, 
         "delaySteps":2, 
         "harvestLevel":1
       },      
