@@ -1,6 +1,31 @@
 [
   {
     "op": "add",
+    "path": "/animationCustom/sounds/shadowcharge",
+    "value" : [ "/sfx/melee/shockwave_charge_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowfull",
+    "value" : [ "/sfx/melee/shockwave_full_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowactivate",
+    "value" : [ "/sfx/melee/elemental_aura_activate.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowactive",
+    "value" : [ "/sfx/melee/elemental_aura_poison.ogg" ]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/shadowdeactivate",
+    "value" : [ "/sfx/gun/impact_plasma.ogg" ]
+  },
+  {
+    "op": "add",
     "path": "/animationCustom/sounds/radioactivecharge",
     "value" : [ "/sfx/melee/shockwave_charge_poison.ogg" ]
   },
@@ -51,6 +76,31 @@
   },
   {
     "op": "add",
+    "path": "/animationCustom/particleEmitters/shadowCharge",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 25,
+      "offsetRegion" : [-1.0, -2.5, 1.0, 1.5],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke2"},
+        { "particle" : "shadowsmoke1"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/shadow",
+    "value" : {
+      "damageConfig" : { "statusEffects" : [ "shadowgasfx" ] }
+    }
+  },
+  {
+    "op": "add",
     "path": "/animationCustom/particleEmitters/radioactiveCharge",
     "value" : {
       "active" : false,
@@ -98,10 +148,6 @@
       "damageConfig" : { "statusEffects" : [ "defenseboostneg20" ] }
     }
   },
-  
-  
-  
-  
   {
     "op": "add",
     "path": "/animationCustom/sounds/bioweaponcharge",
@@ -252,5 +298,5 @@
     "value" : {
       "damageConfig" : { "statusEffects" : [ "burning" ] }
     }
-  }  
+  }    
 ]
