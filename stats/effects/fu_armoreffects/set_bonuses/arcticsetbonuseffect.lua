@@ -3,6 +3,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 armorBonus={}
 
 armorEffect={
+	{stat = "iceStatusImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},
 	{stat = "liquidnitrogenImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},

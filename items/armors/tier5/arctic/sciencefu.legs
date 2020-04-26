@@ -5,9 +5,8 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-   "description" : "+^green;10^reset;% Ice Resist\n
-^orange;Set Bonus^reset;: 
-^cyan;Immune^reset;: Ice, Snow, Liq. Nitrogen, ^green;ALL^reset; Cold,", 
+   "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^cyan;Immune^reset;: All Cold", 
   "shortdescription" : "Arctic Snowpants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -37,6 +36,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -45,10 +49,6 @@
     {
       "stat" : "fu_arcticset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.10
     }
   ],
 
