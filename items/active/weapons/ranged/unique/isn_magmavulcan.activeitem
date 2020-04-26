@@ -56,7 +56,7 @@
   "/items/active/scripts/heavyweapon.lua"
   ],
 
-  "elementalType" : "fire",
+  "elementalType" : "hellfire",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -70,6 +70,7 @@
 
     "projectileType" : "isn_magmavulcantiny",
     "projectileParameters" : { 
+      "damageSourceKind" : "hellfire",
       "speed" : 70,
       "knockback" : 6.5,
       "periodicActions" : [
@@ -80,8 +81,8 @@
 	"angleAdjust":180,
 	"fuzzAngle":80,
 	"config":{
-	  "knockback":-20,
-	  "power":3,
+	  "knockback":-10,
+	  "power":1,
 	  "speed":400,
 	  "timeToLive":0.03,
 	  "periodicActions":[],
@@ -89,7 +90,8 @@
 	  "actionOnReap":[],
 	  "processing":"?scalenearest=0",
 	  "bounces":-1,
-	  "piercing":true
+	  "piercing":true,
+	  "damageSourceKind" : "hellfire"
 	  }
         }    
       ]  

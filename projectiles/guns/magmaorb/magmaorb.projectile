@@ -11,7 +11,7 @@
   "speed" : 55,
   "timeToLive" : 1.2,
   "damagePoly" : [ [-40, 0], [-40, -12], [0, -12], [40, -12], [40, 0], [40, 12], [0, 12], [-40, 12] ],
-  "damageKind" : "fire",
+  "damageKind" : "hellfire",
   "physics" : "grenadezbomb",
   "emitters" : [ "flamesfast" ],
   
@@ -46,7 +46,7 @@
 		"angle":50,
 		"fuzzAngle":10,
 		"config":{
-		  "power":20,
+		  "power":10,
 		  "processing":"?scalenearest=4.5",
 		  "knockback":24,
 		  "animationCycle":0.2,
@@ -69,7 +69,7 @@
 		      "angle":50,
 		      "fuzzAngle":10,
 		      "config":{
-			"power":20,
+			"power":10,
 			"processing":"?scalenearest=6",
 			"knockback":150,
 			"animationCycle":0.4,
@@ -91,7 +91,8 @@
 				  "actionOnReap":[],
 				  "processing":"?scalenearest=0",
 				  "bounces":-1,
-				  "piercing":true
+				  "piercing":true,
+		  		  "damageSourceKind" : "hellfire"
 				  }
 			      }
 			]
@@ -118,7 +119,8 @@
 		  "actionOnReap":[],
 		  "processing":"?scalenearest=0",
 		  "bounces":-1,
-		  "piercing":true
+		  "piercing":true,
+		  "damageSourceKind" : "hellfire"
 		  }
 	      }    
 	    ]
