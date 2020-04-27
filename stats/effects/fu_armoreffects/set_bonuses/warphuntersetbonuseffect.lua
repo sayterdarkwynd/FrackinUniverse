@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+require "/scripts/unifiedGravMod.lua"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 3.4}
@@ -28,12 +29,15 @@ function init()
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	unifiedGravMod.init()
+	unifiedGravMod.initSoft()
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
+		unifiedGravMod.update(dt)
 		--status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end
@@ -52,3 +56,8 @@ function checkWeapons()
 end
 
 
+
+function uninit()
+	unifiedGravMod.uninit()
+	setBonusUninit()
+end

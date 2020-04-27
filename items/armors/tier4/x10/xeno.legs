@@ -4,10 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-   "description" : "+^green;6.5^reset;% Ice and Phys. Resist\n
-^orange;Set Bonus^reset;: 
-Assault/Energy Rifle: ^green;25^reset;% More Dmg and +^green;2^reset;% Crit
-^cyan;Immune^reset;: Oxygen, Liq. Nitrogen, Cold", 
+   "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;30^reset;% Less Fall Damage
+^yellow;^reset; Assault/Energy Rifle: ^green;25^reset;% More Damage and +^green;2^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Gas, Liq. Nitrogen, Cold", 
   "shortdescription" : "X10 Power Legs",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -37,6 +37,16 @@ Assault/Energy Rifle: ^green;25^reset;% More Dmg and +^green;2^reset;% Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.026
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.026
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -45,15 +55,7 @@ Assault/Energy Rifle: ^green;25^reset;% More Dmg and +^green;2^reset;% Crit
     {
       "stat" : "fu_x10set_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.065
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.065
-    } 
+    }
   ],
 
   "colorOptions" : [

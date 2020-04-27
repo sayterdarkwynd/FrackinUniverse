@@ -4,11 +4,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "+^green;10^reset;% Electric, +^green;7^reset;% Phys. Resist^reset;\n
-^orange;Set Bonus^reset;: 
-Mining Laser: ^green;240^reset;% More Dmg
-+^cyan;50^reset;% Defense Tech Efficiency
-^cyan;Immune^reset;: Burning, Proto, Pressure, Gas, Ice Slip, Oxygen", 
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;Gravity Normalization^reset;
+^yellow;^reset; Mining Laser: ^green;240^reset;% More Damage
+^yellow;^reset; +^cyan;50^reset;% Defense Tech Efficiency
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Proto-Poison, Pressure, Gas, Ice Slip, Oxygen", 
   "shortdescription" : "Spacefarer mk2 Greaves",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -44,6 +44,16 @@ Mining Laser: ^green;240^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.04
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.028
     }
   ],
 
@@ -52,14 +62,6 @@ Mining Laser: ^green;240^reset;% More Dmg
     {
       "stat" : "fu_spacefarerset2_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
     }
 ],
   //"upgrades" : 1 ,

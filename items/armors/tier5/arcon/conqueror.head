@@ -5,10 +5,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-   "description" : "+^green;4^reset;% Phys. Resist\n
-^orange;Set Bonus^reset;:
-Electric/Plasma: +^green;1^reset; Crit, +^green;25^reset;% Crit Dmg, ^green;15^reset;% More Dmg
-^cyan;Immune^reset;: Cold, Radiation, Poison, Oxygen",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Electric/Plasma: +^green;1^reset;% Crit Chance, +^green;25^reset;% Crit Damage, ^green;15^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Deadly Cold/Rads, Poison, Oxygen",
   "shortdescription" : "ArCon Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +38,11 @@ Electric/Plasma: +^green;1^reset; Crit, +^green;25^reset;% Crit Dmg, ^green;15^r
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.013333
     }
   ],
 
@@ -47,10 +51,6 @@ Electric/Plasma: +^green;1^reset; Crit, +^green;25^reset;% Crit Dmg, ^green;15^r
     {
       "stat" : "fu_conquerorset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
     }
   ],
   "colorOptions" : [

@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+require "/scripts/unifiedGravMod.lua"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 2.4}
@@ -12,8 +13,8 @@ armorBonus={
 	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},		
 	{stat = "breathProtection", amount = 1},
-	{stat = "asteroidImmunity", amount = 1},
-        {stat = "defensetechBonus", amount = 0.5},
+	--{stat = "asteroidImmunity", amount = 1},--deprecated. removing.
+	{stat = "defensetechBonus", amount = 0.5},
 }
 
 setName="fu_spacefarerset2"
@@ -27,13 +28,18 @@ function init()
 
 	checkWeapons()
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	
+		
+	unifiedGravMod.init()
+	unifiedGravMod.initSoft()
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-	       -- status.addEphemeralEffect("gravgenfieldarmor2",5)
+		unifiedGravMod.update(dt)
+	   -- status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
 	end
 end
@@ -47,4 +53,9 @@ function checkWeapons()
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
+end
+
+function uninit()
+	unifiedGravMod.uninit()
+	setBonusUninit()
 end

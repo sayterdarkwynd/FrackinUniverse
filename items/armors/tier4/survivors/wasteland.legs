@@ -4,11 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "+^green;7^reset;% Resists (Fire/Poison/Elec/Ice)\n
-^orange;Set Bonus^reset;: 
--^green;50^reset;% Hunger Drain Rate
-Grenade/Rocket Launchers,(Cross)Bows: +^green;6^reset;% Crit Damage, ^green;20^reset;% More Dmg
-^cyan;Immune^reset;: Gas, Poison, Proto-Poison",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;50^reset;% Less Hunger Drain Rate
+^yellow;^reset; Grenade/Rocket Launchers, (Cross)Bows: +^green;6^reset;% Crit Damage, ^green;20^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Poison, Proto-Poison",
   "shortdescription" : "Survivor's Pants",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,26 @@ Grenade/Rocket Launchers,(Cross)Bows: +^green;6^reset;% Crit Damage, ^green;20^r
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.028
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -46,22 +65,6 @@ Grenade/Rocket Launchers,(Cross)Bows: +^green;6^reset;% Crit Damage, ^green;20^r
     {
       "stat" : "fu_survivorset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.07
     }
 ],
   //"upgrades" : 1 ,

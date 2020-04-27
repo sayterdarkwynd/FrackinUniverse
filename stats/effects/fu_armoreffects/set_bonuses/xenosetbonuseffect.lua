@@ -5,10 +5,6 @@ weaponBonus={
 	{stat = "critChance", amount = 2}
 }
 
-armorBonus={
-
-}
-
 armorEffect={
 	{stat = "breathProtection", amount = 1.0},
 	{stat = "gasImmunity", amount = 1.0},
