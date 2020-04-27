@@ -7,7 +7,7 @@ weaponBonus={
 }
 
 armorBonus={
-
+	{stat = "maxHealth", effectiveMultiplier = 1.10}
 }
 
 function init()
@@ -25,12 +25,14 @@ function update(dt)
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		checkWeapons()
+		mcontroller.controlModifiers({
+			speedModifier = 1.10
+		})
 	end
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({"shortsword","broadsword","whip","axe","hammer","spear","shortspear","dagger","longsword","rapier","mace","scythe","quarterstaff","katana"})
-	
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

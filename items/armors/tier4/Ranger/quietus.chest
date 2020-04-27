@@ -4,10 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "+^green;5^reset;% Fire Resist\n
-^orange;Set Bonus^reset;: 
-Quietus weapons: ^green;30^reset;% More Dmg
-^cyan;Immune^reset;: Burning, Insanity",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Quietus weapons: ^green;30^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Insanity",
   "shortdescription" : "Ranger Plate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -46,6 +45,11 @@ Quietus weapons: ^green;30^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -54,11 +58,7 @@ Quietus weapons: ^green;30^reset;% More Dmg
     {
       "stat" : "fu_rangerset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
-    }  
+    }
 ],
   //"upgrades" : 1 ,
   "builder" : "/items/buildscripts/fubuildarmor.lua" 
