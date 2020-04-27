@@ -8,7 +8,6 @@ armorEffect={
 	{stat = "liquidnitrogenImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},
 	{stat = "slushslowImmunity", amount = 1},
-	{stat = "ffextremecoldImmunity", amount = 1},
 	{stat = "biomecoldImmunity", amount = 1},
 	{stat = "lethalColdImmunity", amount = 1}
 }

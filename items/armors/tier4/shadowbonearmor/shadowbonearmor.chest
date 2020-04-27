@@ -4,9 +4,8 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "+^green;10^reset;% Shadow Resist\n
-^orange;Set Bonus^reset;:  
-Axe/Hammer/Scythe: ^green;30^reset;% More Dmg",
+  "description" : "^orange;Set Bonuses^reset;:  
+^yellow;^reset; Axe/Hammer/Scythe: ^green;30^reset;% More Damage",
   "shortdescription" : "Shadow Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -45,6 +44,11 @@ Axe/Hammer/Scythe: ^green;30^reset;% More Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 9
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.04
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -53,10 +57,6 @@ Axe/Hammer/Scythe: ^green;30^reset;% More Dmg",
     {
       "stat" : "fu_shadowboneset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.1
     }
   ],
 

@@ -4,9 +4,8 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^green;4^reset;% Phys. Resist, +^green;3^reset;% Electric Resist\n
-^orange;Set Bonus^reset;: 
-Melee: ^green;10^reset;% More Dmg",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Melee: ^green;10^reset;% More Damage",
   "shortdescription" : "Warrior Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -37,6 +36,16 @@ Melee: ^green;10^reset;% More Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.016
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.012
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -45,14 +54,6 @@ Melee: ^green;10^reset;% More Dmg",
     {
       "stat" : "fu_warriorset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.03
     }
 ],
   //"upgrades" : 1 ,
