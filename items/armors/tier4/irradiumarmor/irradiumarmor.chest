@@ -4,10 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "+^green;12^reset;% Radioactive Resist\n
-^orange;Set Bonus^reset;: 
-Irradium weapons: +^green;3^reset;% Crit, +^green;10^reset;% Rad Resist\n
-^cyan;Immune^reset;: All radiation",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Irradium weapons: +^green;3^reset;% Crit Chance, +^green;10^reset;% Rad Resist
+^yellow;^reset; ^cyan;Immune^reset;: All Rads",
   "shortdescription" : "Irradium Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -46,6 +45,11 @@ Irradium weapons: +^green;3^reset;% Crit, +^green;10^reset;% Rad Resist\n
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.048
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -54,11 +58,7 @@ Irradium weapons: +^green;3^reset;% Crit, +^green;10^reset;% Rad Resist\n
     {
       "stat" : "fu_irradiumset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.12
-    }      
+    }
   ],
 
 "effectSources" : [ "icetrail" ],

@@ -4,11 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "+^green;5^reset;% Fire and Ice Resists
-^yellow;+20^reset;% X'i Bulb Regen Rate (60%)
-\n^orange;Set Bonus^reset;:
-^green;25^reset;% More HP, ^green;20^reset;% More Max Energy
-^cyan;Immune^reset;: Acid",
+  "description" : "^yellow;+20^reset;% X'i Bulb Regen Rate (60%)
+^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;25^reset;% More HP, ^green;20^reset;% More Energy, ^green;7^reset;% More Damage
+^yellow;^reset; Xi Weapons: ^green;10^reset;% More Protection
+^yellow;^reset; Sulphuric biomes: ^green;5^reset;% More Energy, +^green;5^reset;% Knockback Resistance
+^yellow;^reset; ^cyan;Immune^reset;: Acid",
   "shortdescription" : "Muta-Chitin Helm",
     "itemTags" : [ "upgradeableWeapon" ],
   "category" : "headarmour",
@@ -39,6 +40,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -49,17 +60,9 @@
       "amount" : 1
     },
     {
-      "stat" : "shadowResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
-    },
-    {
       "stat" : "xiBonus",
       "amount" : 0.20
-    }   
+    }
   ],
   //"directives":"?replace;ffca8a=20d20b;e0975c=1b9b0c;a85636=127406;6f2919=244326;ffffa7=ff586e;e2c344=a32c1c;5b6364=1b9b0c;3a3f42=127406;181c1d=244326;9da8af=58596f;676f83=2f3344;3d3d51=24232f;99919e=58596f;6a6d7c=2f3344;474b56=24232f;585c60=1b9b0c",
 

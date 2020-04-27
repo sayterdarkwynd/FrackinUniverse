@@ -4,10 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "+^green;5^reset;% Phys. Resist\n
-^orange;Set Bonus^reset;:  
-Bow/Crossbow: +^green;15^reset;% More Damage, +^green;5^reset;% Crit
-^cyan;Immune^reset;: Acid, Tar, Stings",
+  "description" : "^orange;Set Bonuses^reset;:  
+^yellow;^reset; Bow/Crossbow: +^green;15^reset;% More Damage, +^green;5^reset;% Crit
+^yellow;^reset; ^cyan;Immune^reset;: Acid, Tar, Bee Stings, Jungle/Mud Slows",
   "shortdescription" : "Monster Plate Helmet",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,11 @@ Bow/Crossbow: +^green;15^reset;% More Damage, +^green;5^reset;% Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.02
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -46,11 +50,7 @@ Bow/Crossbow: +^green;15^reset;% More Damage, +^green;5^reset;% Crit
     {
       "stat" : "fu_monsterplateset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
-    }  
+    }
 ],
   //"upgrades" : 1 ,
   "builder" : "/items/buildscripts/fubuildarmor.lua" 
