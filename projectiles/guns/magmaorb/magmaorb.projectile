@@ -14,10 +14,7 @@
   "damageKind" : "hellfire",
   "physics" : "grenadezbomb",
   "emitters" : [ "flamesfast" ],
-  
-  
-  
-  
+
 	"actionOnReap" : [
 	    {
 	      "action" : "config",
@@ -39,19 +36,19 @@
 	      "delaySteps":2, 
 	      "harvestLevel":10
 	    },	    
-	    { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 18 },
+	    { "action" : "liquid", "liquid" : "fuironliquid", "quantity" : 10 },
 	      {
 		"action":"projectile",
 		"type":"mechexplosion",
 		"angle":50,
 		"fuzzAngle":10,
 		"config":{
-		  "power":10,
+		  "power":5,
 		  "processing":"?scalenearest=4.5",
 		  "knockback":24,
 		  "animationCycle":0.2,
 		  "timeToLive":0.2,
-		  
+		  "damageSourceKind" : "hellfire",
 		  "actionOnReap" : [
 		    {
 		      "time":0.1,
@@ -69,11 +66,12 @@
 		      "angle":50,
 		      "fuzzAngle":10,
 		      "config":{
-			"power":10,
+			"power":5,
 			"processing":"?scalenearest=6",
 			"knockback":150,
 			"animationCycle":0.4,
 			"timeToLive":0.4,
+			"damageSourceKind" : "hellfire",
 			"periodicActions":[
 			      {
 				"time":0.05,
@@ -83,7 +81,7 @@
 				"fuzzAngle":80,
 				"config":{
 				  "knockback":-20,
-				  "power":3,
+				  "power":1,
 				  "speed":400,
 				  "timeToLive":0.03,
 				  "periodicActions":[],
@@ -111,7 +109,7 @@
 		"fuzzAngle":80,
 		"config":{
 		  "knockback":-20,
-		  "power":3,
+		  "power":1,
 		  "speed":900,
 		  "timeToLive":0.03,
 		  "periodicActions":[],
