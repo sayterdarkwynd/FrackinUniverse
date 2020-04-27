@@ -53,7 +53,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -70,7 +70,8 @@
     "projectileParameters" : { 
       "speed" : 50,
       "bounces" : 1,
-      "knockback" : 10
+      "knockback" : 10,
+      "statusEffects" : [ "weakpoison" ]
     },
 	  "stances" : {
 	    "idle" : {

@@ -55,7 +55,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -68,7 +68,8 @@
     "projectileCount" : 1,
     "projectileType" : "blisterpistolshot",
     "projectileParameters" : {
-      "speed" : 32
+      "speed" : 32,
+      "statusEffects" : [ "weakpoison" ]
     },
     "stances" : {
       "idle" : {

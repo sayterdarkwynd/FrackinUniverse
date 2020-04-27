@@ -31,7 +31,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -47,7 +47,8 @@
     "projectileType" : "cellblast",
     "projectileParameters" : { 
       "speed" : 30,
-      "knockback" : 5
+      "knockback" : 5,
+      "statusEffects" : [ "weakpoison" ]
     },
 	  "stances" : {
 	    "idle" : {

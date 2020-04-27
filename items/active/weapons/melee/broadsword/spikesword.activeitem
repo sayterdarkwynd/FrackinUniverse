@@ -21,12 +21,16 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.73,
-    "baseDps" : 9.77
+    "baseDps" : 9.77,
+    "damageConfig" : {
+      "damageSourceKind": "bioweaponbroadsword",
+      "statusEffects" : [ "weakpoison" ]
+    }
   },
 
   "altAbilityType" : "traildash",
