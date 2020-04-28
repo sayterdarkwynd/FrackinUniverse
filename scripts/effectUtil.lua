@@ -108,7 +108,11 @@ function effectUtil.messageTypesInRange(effect,range,types,teamType,args)
 
 	for _,id in pairs(buffer) do
 		if teamType == "all" then
-			if world.sendEntityMessage(id,effect,unpack(args or {})) then
+			if args then
+				if world.sendEntityMessage(id,effect,args:unpack()) then
+					rVal=rVal+1
+				end
+			elseif world.sendEntityMessage(id,effect) then
 				rVal=rVal+1
 			end
 		else
@@ -121,6 +125,29 @@ function effectUtil.messageTypesInRange(effect,range,types,teamType,args)
 				elseif world.sendEntityMessage(id,effect) then
 					rVal=rVal+1
 				end
+			end
+		end
+	end
+	return rVal
+end
+
+function effectUtil.messageMechsInRange(effect,range,args)
+	if type(effect)~="string" then
+		return 0
+	end
+	local pos=effectUtil.getPos()
+	local buffer=world.entityQuery(pos,range,{includedTypes={"Vehicle"}})
+	local rVal=0
+
+	for _,id in pairs(buffer) do
+		if world.entityName(id) == "modularmech" then
+			sb.logInfo("mechmsgs %s",{a=effect,b=range,c=args})
+			if args then
+				if world.sendEntityMessage(id,effect,args:unpack()) then
+					rVal=rVal+1
+				end
+			elseif world.sendEntityMessage(id,effect) then
+				rVal=rVal+1
 			end
 		end
 	end
