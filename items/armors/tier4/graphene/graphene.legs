@@ -4,10 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-   "description" : "+^green;8^reset;% Electric Resist\n
-^orange;Set Bonus^reset;: 
-Energy weapons: ^green;25^reset;% More Dmg
-^cyan;Immune^reset;: Stun, Electrify", 
+   "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Energy weapons: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Stun, Electrify", 
   "shortdescription" : "Graphene Leggings",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -37,6 +36,11 @@ Energy weapons: ^green;25^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.032
     }
   ],
 
@@ -46,11 +50,7 @@ Energy weapons: ^green;25^reset;% More Dmg
     {
       "stat" : "fu_grapheneset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.08
-    }    
+    }
 ],
   //"upgrades" : 1 ,
   "builder" : "/items/buildscripts/fubuildarmor.lua" 

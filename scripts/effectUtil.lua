@@ -76,7 +76,7 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 		return 0
 	end
 	local pos=effectUtil.getPos()
-	local buffer=world.entityQuery(pos,range,{includedTypes=types})
+	local buffer=world.entityQuery(pos,range,{includedTypes=types or {"creature"}})
 	local rVal=0
 	teamType=teamType or "all"
 
@@ -89,6 +89,36 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 			local teamData=world.entityDamageTeam(id)
 			if teamData.type==teamType then
 				if effectUtil.effectTarget(id,effect,duration) then
+					rVal=rVal+1
+				end
+			end
+		end
+	end
+	return rVal
+end
+
+function effectUtil.messageTypesInRange(effect,range,types,teamType,args)
+	if type(effect)~="string" then
+		return 0
+	end
+	local pos=effectUtil.getPos()
+	local buffer=world.entityQuery(pos,range,{includedTypes=types or {"creature"}})
+	local rVal=0
+	teamType=teamType or "all"
+
+	for _,id in pairs(buffer) do
+		if teamType == "all" then
+			if world.sendEntityMessage(id,effect,unpack(args or {})) then
+				rVal=rVal+1
+			end
+		else
+			local teamData=world.entityDamageTeam(id)
+			if teamData.type==teamType then
+				if args then
+					if world.sendEntityMessage(id,effect,args:unpack()) then
+						rVal=rVal+1
+					end
+				elseif world.sendEntityMessage(id,effect) then
 					rVal=rVal+1
 				end
 			end
