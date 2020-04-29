@@ -6,8 +6,8 @@ weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.15} }
 
 armorBonus={
 	{stat = "pusImmunity", amount = 1},
-	{stat = "energyRegenPercentageRate", amount = 1.05},
-	{stat = "energyRegenBlockDischarge", amount = -2}
+	{stat = "energyRegenPercentageRate", baseMultiplier = 1.05},
+	{stat = "energyRegenBlockTime", baseMultiplier = 0.95}
 }
 
 
@@ -21,29 +21,19 @@ function init()
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
-function update(dt)
-	mcontroller.controlModifiers({
-		speedModifier = 1.12,
-		airJumpModifier = 1.12
-	})
-	
+function update(dt)	
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-
+		mcontroller.controlModifiers({
+			speedModifier = 1.12,
+			airJumpModifier = 1.12
+		})
 		checkWeapons()
+		if status.resourcePercentage("health") < 0.5 then
+		  status.modifyResourcePercentage("health", (((status.resourcePercentage("health") < 0.25) and 0.02) or 0.01)*dt)
+		end
 	end
-
-	local hPerc = world.entityHealth(entity.id())
-	if hPerc[1] == 0 or hPerc[2] == 0 then return end
-	
-	if ((hPerc[1] / hPerc[2]) * 100) >= 50 then 
-	  return 
-	else
-	  status.modifyResourcePercentage("health", 0.01)
-	end
-	script.setUpdateDelta(60)
-
 end
 
 function checkWeapons()
