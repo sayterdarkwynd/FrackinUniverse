@@ -4,7 +4,7 @@ gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pf
 
 
 function init()
-	if world.getProperty("ship.fuel") then
+	if world.getProperty("ship.fuel") not status.resourcePositive("health") then
 		effect.expire()
 		return
 	end
@@ -19,7 +19,8 @@ function init()
 end
 
 function update(dt)
-	if world.getProperty("ship.fuel") then
+	if world.getProperty("ship.fuel") or not status.resourcePositive("health") then
+		stun(true)
 		effect.expire()
 		return
 	else
@@ -94,15 +95,15 @@ function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
 end
 
-function stun()
+function stun(expire)
 	if status.isResource("stunned") then
-		if status.resourcePositive("health") then
+		if status.resourcePositive("health") and not expire then
 			status.setResource("stunned",status.resourceMax("stunned") or math.huge)
 		else
 			status.setResource("stunned",0)
 		end
 	end
-	if status.resourcePositive("health") then
+	if status.resourcePositive("health") and not expire then
 		if status.isResource("energyRegenBlock") then
 			status.setResource("energyRegenBlock",status.resourceMax("energyRegenBlock") or 60)
 		end
