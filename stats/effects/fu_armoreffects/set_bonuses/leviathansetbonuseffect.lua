@@ -2,8 +2,7 @@ setName="fu_leviathanset"
 
 armorBonus2={
 	{stat = "critChance", amount = 5},
-	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
-	{stat = "swimboost3", amount = 1}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorBonus={

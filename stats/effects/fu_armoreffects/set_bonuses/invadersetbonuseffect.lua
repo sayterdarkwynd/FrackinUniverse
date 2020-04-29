@@ -21,9 +21,11 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("slowfall")
 		effect.expire()
 	else
 		checkWeapons()
+		status.addEphemeralEffect("slowfall")
 	end
 end
 

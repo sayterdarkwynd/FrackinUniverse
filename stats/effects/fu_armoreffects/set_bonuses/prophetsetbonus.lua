@@ -1,5 +1,5 @@
 setName="fu_prophetset"
-setStatEffects={"prophetsetbonuseffect", "glowyellow2"}
+setStatEffects={"prophetsetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
