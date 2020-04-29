@@ -1,16 +1,19 @@
 {
   "name" : "percenthealthboost40",
-  "effectConfig" : {
-    "healthDown" : 0.40
-  },
+	"effectConfig": {
+		"stats": [{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.4
+		}]
+	},
   "defaultDuration" : 30,
 
   "scripts" : [
-    "percenthealthboost.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
   
   "animationConfig" : "percenthealthboost.animation",
   
-  "label" : "HP +40%",
+  "label" : "40% More HP",
   "icon" : "/interface/statuses/maxhealth2.png"
 }

@@ -1,11 +1,29 @@
 {
-  "name" : "corvexputty",
-  "effectConfig" : {},
-  "defaultDuration" : 120,
+	"name": "corvexputty",
+	"effectConfig": {
+		"stats": [{
+				"stat": "fumudslowImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "slimestickImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "iceslipImmunity",
+				"amount": 1
+			},
+			{
+				"stat": "snowslowImmunity",
+				"amount": 1
+			}
+		]
+	},
+	"defaultDuration": 120,
 
-  "scripts" : [
-    "corvexputty.lua"
-  ],
-  "label" : "No Stick",
-  "icon" : "/interface/statuses/nostick.png"
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
+	"label": "No Stick",
+	"icon": "/interface/statuses/nostick.png"
 }

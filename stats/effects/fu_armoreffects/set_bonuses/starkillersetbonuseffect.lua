@@ -7,7 +7,10 @@ armorBonus={
    { stat = "protection", effectiveMultiplier = 1.25}
 }
 
-armorEffect={}
+armorEffect={
+	{stat="breathProtection",amount= 1},{stat= "extremepressureProtection",amount= 1},{stat= "waterbreathProtection",amount= 1},
+	{stat = "fumudslowImmunity", amount = 1},{stat = "slimestickImmunity", amount = 1},{stat = "iceslipImmunity", amount = 1},{stat = "snowslowImmunity", amount = 1}
+}
 
 setName="fu_starkillerset"
 
