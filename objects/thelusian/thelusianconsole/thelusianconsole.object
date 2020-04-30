@@ -1,6 +1,6 @@
 {
   "objectName" : "thelusianconsole",
-  "colonyTags" : ["thelusian","electronic"],
+  "colonyTags" : ["thelusian","electronic","wired"],
   "rarity" : "Common",
   "category" : "wire",
   "price" : 120,
@@ -8,16 +8,13 @@
   "shortdescription" : "Thelusian Console",
   "race" : "thelusian",
 
-  "apexDescription" : "Apparently this planet was going to explode. I think it was a false alarm.",
-  "avianDescription" : "A team was sent out to recover a cursed artifact. They never returned. Maybe they just got sidetracked?",
-  "floranDescription" : "Hunting... partiesss.... Floran have parties on hunt too.",
-  "glitchDescription" : "Concerned. It appears as if the previous user of this console went insane. There are a number of alarming messages.",
-  "humanDescription" : "Ooh, secret data. Turns out the government was spying on us! Who knew?",
-  "hylotlDescription" : "Detailed here is an alarming plan to drain this world's oceans. Thankfully, it was vetoed.",
-  "novakidDescription" : "There's some info here about a petition to ban moon walkin'. Followed by a recipe for onion soup.",
-
   "lightColor" : [77, 99, 128],
-
+  "flickerPeriod" : 0.55,
+  "flickerMinIntensity" : 0.45,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.1,
+  "flickerIntensityVariance" : 0.15,
+  
   "inventoryIcon" : "thelusianconsoleicon.png",
   "orientations" : [
     {
@@ -41,32 +38,23 @@
     }
   ],
 
-  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animation" : "thelusianconsole.animation",
   "animationParts" : {
     "bg" : "thelusianconsole.png",
     "fg" : "thelusianconsolelit.png"
   },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },  
   "animationPosition" : [-16, 0],
 
-  "scripts" : [
-    "/objects/wired/light/light.lua",
-    "/scripts/npcToyObject.lua"
-  ],
+  "scripts" : ["/objects/wired/switch/switch.lua","/scripts/npcToyObject.lua"],
   "scriptDelta" : 60,
-  
   "interactive" : false,
-
-  "inputNodes" : [ [0, 2] ],
-
+  "outputNodes" : [ [0, 0] ],
   "soundEffect" : "/sfx/objects/bunkerconsole.ogg",
-
-  "npcToy" : {
-    "influence" : [
-      "wallbutton"
-    ],
-    "defaultReactions" : {},
-    "preciseStandPositionLeft" : [-1.0, 0.0],
-    "preciseStandPositionRight" : [1.5, 0.0],
-    "maxNpcs" : 1
-  }
+  "npcToy" : {"influence" : ["wallbutton"],"defaultReactions" : {},"preciseStandPositionLeft" : [-1.0, 0.0],"preciseStandPositionRight" : [1.5, 0.0],"maxNpcs" : 1}
 }
