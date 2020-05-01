@@ -39,7 +39,6 @@ function handleDarkStats(terminate)
 			dP=darkpriority
 		end
 	else
-		sb.logInfo("hds terminate")
 		status.setStatusProperty("darkpriority",0)
 		status.setStatusProperty("darklevel",0)
 	end
