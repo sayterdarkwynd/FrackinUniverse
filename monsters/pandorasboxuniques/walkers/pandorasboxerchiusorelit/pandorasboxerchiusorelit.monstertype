@@ -72,7 +72,22 @@
             "invulnerableEffect": "highprotection",
             "invulnerableTime" : 4
           }
-        }
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 15,
+          "parameters" : {
+            "windupState" : "windup",
+            "windupTime" : 2,          
+            "projectileCount" : 1,
+            "projectileType" : "ancientenergy",
+            "projectileParameters" : { "timeToLive" : 0.1 },
+            "power" : 0,
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }         
       ],
 
       "approachActions" : [
@@ -120,13 +135,20 @@
 
       "concurrentHostileActions" : [
         {
-          "name" : "action-spawncompanions",
+          "name" : "action-projectile",
+          "cooldown" : 3,
           "parameters" : {
-            "maxCount" : 3,
-            "spawnCooldown" : 4,
-            "monsterType" : "pandorasboxerchlingspawn"
+            "windupState" : "windup",
+            "windupTime" : 2,          
+            "projectileCount" : 1,
+            "projectileType" : "smallpoisoncloud",
+            "projectileParameters" : { "timeToLive" : 2 },
+            "power" : 1,
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
           }
-        }
+        } 
       ]
     },
 
@@ -245,10 +267,6 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : false//,
-    //"captureHealthFraction" : 0.5,
-    //"capturedMonsterType" : "pandorasboxerchiusorelitcaptive", // turn into a captive Erchius Orelit due to potential abuse of it's minion spawns.
-    //"nametagColor" : [64, 200, 255]//,
-    //"captureCollectables" : { "pandorasboxmonsters" : "pandorasboxerchiusorelit" }
+    "capturable" : false
   }
 }

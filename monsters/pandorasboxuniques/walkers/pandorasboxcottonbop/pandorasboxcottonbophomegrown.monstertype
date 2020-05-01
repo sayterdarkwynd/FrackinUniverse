@@ -1,21 +1,28 @@
 {
-  "type" : "pandorasboxshroombop",
-  "shortdescription" : "Shroombop",
-  "description" : "They stay in groups, to ensure they can safely spread their spores.",
+  "type" : "pandorasboxcottonbophomegrown",
+  "shortdescription" : "Cottonbop",
+  "description" : "They're able to trap air in their cotton fibres, allowing them to float on the slightest breeze.",
 
-  "categories" : [ "pandorasboxshroombop" ],
+  "categories" : [ "pandorasboxcottonbop" ],
   "parts" : [ "body" ],
 
-  "animation" : "pandorasboxshroombop.animation",
+  "animation" : "pandorasboxcottonbop.animation",
 
-  "dropPools" : [ { "default" : "pandorasboxshroombopTreasure", "bow" : "pandorasboxshroombopHunting" } ],
+  "dropPools" : [ { "default" : "pandorasboxcottonbopTreasure", "bow" : "pandorasboxcottonbopHunting" } ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/monsters/pandorasboxmonsterscripts/pandorasboxsimplefarmablemonster.lua"
     ],
 
+    "persistent" : true,
+
     "behavior" : "monster",
+
+    "harvestTime" : [500, 900],
+    "harvestSpawnOffset" : [0, 0],
+    "harvestPool" : "pandorasboxcottonbopHarvest",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -28,7 +35,10 @@
 
       "foundTargetActions" : [
         {
-          "name" : "action-aggrohop"
+          "name" : "action-aggrohop",
+          "parameters" : {
+            "onGround": false
+          }
         }
       ],
 
@@ -43,11 +53,11 @@
             "windupState" : "",
             "windupTime" : 0.0,
 
-            "projectileType" : "sporeseed",
+            "projectileType" : "pandorasboxcottonpuff",
             "projectileParameters" : {
-              "power" : 5,
+              "power" : 8,
               "knockback" : 0,
-              "speed" : 40
+              "speed" : 185
             },
             "fireOffset" : [0.0, 0.0],
             "aimAtTarget" : false,
@@ -67,30 +77,16 @@
         },
         {
           "name" : "action-hop",
-          "cooldown" : 8.0,
+          "cooldown" : 5.0,
           "parameters" : {
-            "verticalSpeed" : 30,
-            "horizontalSpeed" : 20,
+            "verticalSpeed" : 15,
+            "horizontalSpeed" : 10,
             "hopSequence" : 5,
             "timeBetweenHops" : 0.0,
             "windupTime" : 0.1,
             "landTime" : 0.1,
             "hopAwayFromWall" : false,
-            "wallVerticalSpeed" : 30
-          }
-        },
-        {
-          "name" : "action-hop",
-          "cooldown" : 6.0,
-          "parameters" : {
-            "verticalSpeed" : 25,
-            "horizontalSpeed" : 20,
-            "hopSequence" : 5,
-            "timeBetweenHops" : 0.0,
-            "windupTime" : 0.1,
-            "landTime" : 0.1,
-            "hopAwayFromWall" : false,
-            "wallVerticalSpeed" : 30
+            "wallVerticalSpeed" : 15
           }
         }
       ],
@@ -106,11 +102,11 @@
             "windupState" : "",
             "windupTime" : 0.0,
 
-            "projectileType" : "sporeseed",
+            "projectileType" : "pandorasboxcottonpuff",
             "projectileParameters" : {
-              "power" : 5,
+              "power" : 8,
               "knockback" : 0,
-              "speed" : 30
+              "speed" : 85
             },
             "fireOffset" : [0.0, 0.0],
             "aimAtTarget" : false,
@@ -133,36 +129,96 @@
       "periodicActions" : [
         {
           "name" : "action-hop",
-          "cooldown" : 0.0,
+          "cooldown" : 20.0,
           "parameters" : {
-            "verticalSpeed" : 25,
-            "horizontalSpeed" : 20,
+            "verticalSpeed" : 15,
+            "horizontalSpeed" : 10,
             "hopSequence" : 3,
-            "timeBetweenHops" : 0.10,
+            "timeBetweenHops" : 0.0,
             "windupTime" : 0.1,
             "landTime" : 0.1,
             "hopAwayFromWall" : true,
-            "wallVerticalSpeed" : 30
+            "wallVerticalSpeed" : 15
           }
         }
       ],
 
-      "approachActions" : [],
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "approachTime" : 8.0,
+            "groundDistance" : 4
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 4,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
+        }
+      ],
 
       "followActions" : [
         {
           "name" : "approach-teleport",
           "parameters" : {
           }
+        },
+        {
+          "name" : "approach-fly",
+          "cooldown" : 4.0,
+          "parameters" : {
+            "approachTime" : 8.0
+          }
+        },
+        {
+          "name" : "land-fly",
+          "cooldown" : 4,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [1,2],
+            "landState" : "idle"
+          }
         }
       ],
 
-      "wanderActions" : []
+      "wanderActions" : [
+        {
+          "name" : "land-fly",
+          "cooldown" : 4,
+          "parameters" : {
+            "landDirection" : [0, -1],
+            "flySpeed" : 12,
+            "flyControlForce" : 20,
+            "idleTime" : [2,4],
+            "landState" : "idle"
+          }
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [40,50],
+            "groundDistance" : 4,
+            "ceilingDistance" : 2,
+            "xVelocity" : 4,
+            "yVelocity" : 4
+          }
+        }
+      ]
     },
 
     "touchDamage" : {
       "poly" : [ [-0.6875, -0.775], [-0.4375, -1.025], [0.4375, -1.025], [0.6875, -0.775], [0.6875, 0.25], [0.4375, 0.5], [-0.4375, 0.5], [-0.6875, 0.25] ],
-      "damage" : 8,
+      "damage" : 10,
 
       "teamType" : "enemy",
       "damageSourceKind" : "lash",
@@ -179,7 +235,17 @@
       "mass" : 1.0,
       "walkSpeed" : 5,
       "runSpeed" : 5,
-      "jumpSpeed" : 5
+      "jumpSpeed" : 5,
+      "flySpeed" : 15,
+      "airForce" : 40,
+
+      "airBuoyancy" : 0.9,
+      "airFriction" : 0.0,
+
+      "liquidForce" : 350,
+      "liquidFriction" : 2.5,
+      "minimumLiquidPercentage" : 0.1,
+      "liquidImpedance" : 0.2
     },
 
     "aggressive" : false,
@@ -215,7 +281,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 65
+          "baseValue" : 110
         },
         "protection" : {
           "baseValue" : 0.0
@@ -227,16 +293,16 @@
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.1
+          "baseValue" : 0.2
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "fireStatusImmunity" : {
           "baseValue" : 0.0
         },
         "iceResistance" : {
-          "baseValue" : -0.15
+          "baseValue" : -0.5
         },
         "iceStatusImmunity" : {
           "baseValue" : 0.0
@@ -268,11 +334,13 @@
       }
     },
 
+    "wildHarvestable" : true,
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : false//,
+    "capturable" : false,
+    "relocatable" : true//,
     //"captureHealthFraction" : 0.5,
     //"nametagColor" : [64, 200, 255],
-    //"captureCollectables" : { "pandorasboxmonsters" : "pandorasboxshroombop" }
+    //"captureCollectables" : { "pandorasboxmonsters" : "pandorasboxcottonbop" }
   }
 }
