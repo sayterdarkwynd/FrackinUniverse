@@ -4,11 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "+^green;10^reset;% Electric Resist\n
-^orange;Set Bonus^reset;:
-+^green;5^reset;% Speed^reset;
-Electric/Energy: ^green;20^reset;% More Dmg, +^green;25^reset;% Energy
-^cyan;Immune^reset;: Breath, Burning, Electrified",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;5^reset;% Speed^reset;
+^yellow;^reset; Electric/Energy: ^green;20^reset;% More Damage, ^green;25^reset;% More Energy
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Burning, Electrified",
   "shortdescription" : "Steampunk Slacks",
   "category" : "legarmour",
   "tooltipKind" : "armornew2",
@@ -38,6 +37,11 @@ Electric/Energy: ^green;20^reset;% More Dmg, +^green;25^reset;% Energy
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 0
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.05
     }
   ],
 
@@ -46,10 +50,6 @@ Electric/Energy: ^green;20^reset;% More Dmg, +^green;25^reset;% Energy
     {
       "stat" : "steampunksetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
     }
   ],
 

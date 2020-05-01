@@ -38,7 +38,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"longsword","rapier","katana","shortsword","dagger"})
-	if weapons["either"] then
+	if weapons["either"] and not weapons["twoHanded"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})

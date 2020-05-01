@@ -4,10 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "^green;5^reset;% Shadow Resist^reset;\n
-^orange;Set Bonus^reset;: 
-Scythe/Bio-Weapon: +^green;3^reset;% Crit
-^cyan;Immune^reset;: Insanity",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; Scythe/Bio-Weapon: +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Insanity",
   "shortdescription" : "Flesh Chestplate",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -46,6 +45,11 @@ Scythe/Bio-Weapon: +^green;3^reset;% Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -54,10 +58,6 @@ Scythe/Bio-Weapon: +^green;3^reset;% Crit
     {
       "stat" : "fu_fleshset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.05
     }
   ],
   "builder" : "/items/buildscripts/fubuildarmor.lua" 
