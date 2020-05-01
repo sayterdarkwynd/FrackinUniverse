@@ -5,10 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+20%^reset; Wand/Staff/Quarterstaff Dmg^reset;
-^cyan;24%^reset; Cosmic Resist, ^cyan;+0.4%^reset; Health Regen",
+^yellow;^reset; +^green;0.4^reset;% HP Regen
+^yellow;^reset; ^green;20^reset;% More Wand/Staff/Quarterstaff Damage",
   "shortdescription" : "Light Priest Robes",
-  "category" : "t3armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -22,7 +22,7 @@
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
-
+"itemTags":["upgradeableWeapon"],
   "learnBlueprintsOnPickup" : [
     "fuprophetpants",
     "fuprophethead",
@@ -51,6 +51,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.04
     }
   ],
 
@@ -59,10 +64,6 @@
     {
       "stat" : "lightpriestsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.08
     }
   ],
 
