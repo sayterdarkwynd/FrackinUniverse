@@ -69,13 +69,22 @@
     "value": 0.95
   },
   {
-    "op": "add",
-    "path": "/baseParameters/statusSettings/stats/shadowResistance/baseValue",
-    "value": 0.95
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/fireResistance/baseValue",
+    "value": 0.55
   },
   {
     "op": "add",
-    "path": "/baseParameters/statusSettings/stats/radioactiveResistance/baseValue",
-    "value": 0.95
-  }      
+    "path": "/baseParameters/statusSettings/stats/shadowResistance",
+    "value": {
+      "baseValue": 0.95
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/radioactiveResistance",
+    "value": {
+      "baseValue": 0.95
+    }
+  }   
 ]
