@@ -33,7 +33,7 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -47,7 +47,9 @@
     "fireType" : "auto",
 
     "projectileType" : "fuiceshotmistral",
-    "projectileParameters" : {},
+    "projectileParameters" : {
+    	"damageSourceKind" : "hoarfrost"
+    },
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0,

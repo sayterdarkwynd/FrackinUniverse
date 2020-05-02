@@ -4,7 +4,8 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Masterful crafting, deadly edges.",
+  "description" : "Masterful crafting, deadly edges.
+^cyan;Inflicts Napalm^reset;",
   "shortdescription" : "Pyreite Mace",
   "tooltipKind" : "hammer",
   "category" : "mace",
@@ -23,14 +24,14 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "fire",
-
+  "elementalType" : "hellfire",
+  "damageKindImage" : "/interface/statuses/hellfire.png",
   "primaryAbilityType" : "macecombo",
   "primaryAbility":{
     "fireTime":1.1, 
     "baseDps":7.7,
     "damageConfig" : {
-      "damageSourceKind" : "firehammer",
+      "damageSourceKind" : "hellfire",
       "statusEffects" : [ "burning" ]
     }
   },

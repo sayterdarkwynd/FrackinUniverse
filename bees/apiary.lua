@@ -17,16 +17,6 @@ require "/scripts/kheAA/transferUtil.lua"
 
 --[[	Misc.
 
-	beeSubtypeIDs = {
-		plasterer = {"isovapitdae", "harlequin", "shrouded", "stellar","cybernetic"},
-		sweat = {"xenodaemonae", "redbanded", "assassin", "reaper"},
-		leafcutter = {"tunguskudae", "sandprowler", "goldensaint"},
-		carpenter = {"artisan", "carpenter", "inventor", "scoria","crystalwing"},
-		squash = {"cuckoo", "loamzipper", "stalwart", "rimewing"},
-		honey = {"honey", "exspiravit", "bumblebee", "orchid"},
-		mason = {"gelidBurrower", "digger", "oremason","aquarum","devoratrix"}  
-	}
-
 	Progress increases by the bees production stat multiplied by the hives production efficiency with a small random factor which applies for each product separetly
 	Same applies to the queens production as well, but does not take drones into account
 	Full formula:
@@ -41,7 +31,6 @@ require "/scripts/kheAA/transferUtil.lua"
 --]]
 
 --]]
-
 
 queen = nil			-- Contains the queen or nil if there's no queen
 hivesAroundHive = 0		-- Active hives around the hive
@@ -92,69 +81,80 @@ specialFrameFunctions = {
 	end,
 	antimiteFrame = function(data)
 		self.randAmount = math.random(1,8)
-		if not antimiteFrameTimer then
-			antimiteFrameTimer = data[1]
-		elseif antimiteFrameTimer <= 0 then
-			--world.spawnItem("vmite",entity.position(),self.randAmount)
-			antimiteFrameTimer = math.random(100,540)
-		else
-			antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not antimiteFrameTimer then
+				antimiteFrameTimer = data[1]
+			elseif antimiteFrameTimer <= 0 then
+				antimiteFrameTimer = math.random(100,540)
+			else
+				antimiteFrameTimer = antimiteFrameTimer - beeTickDelta
+			end		
 		end
 	end,
 	copperFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("copperore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("copperore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end,
 	ironFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("ironore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("ironore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end,
 	tungstenFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("tungstenore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("tungstenore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end,
 	titaniumFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("titaniumore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("titaniumore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end,
 	durasteelFrame = function(data)
 	        self.randAmount = math.random(1,2)
-		if not ironFrameTimer then
-			ironFrameTimer = data[1]
-		elseif ironFrameTimer <= 0 then
-			world.spawnItem("durasteelore",entity.position(),self.randAmount) 
-			ironFrameTimer = math.random(100,540)
-		else
-			ironFrameTimer = ironFrameTimer - beeTickDelta
-		end
+		if isHiveQueenActive(true) and areDronesActive() then
+			if not ironFrameTimer then
+				ironFrameTimer = data[1]
+			elseif ironFrameTimer <= 0 then
+				world.spawnItem("durasteelore",entity.position(),self.randAmount) 
+				ironFrameTimer = math.random(100,540)
+			else
+				ironFrameTimer = ironFrameTimer - beeTickDelta
+			end		
+		end	        
 	end		
 	
 }
@@ -167,7 +167,7 @@ oldLoadingState = nil
 -- Method to differentiate between apiaries and other objects
 function getClass() return "apiary" end
 
--- LET IT BEGIIIIIIIIIIIIN
+-- Begin script
 function init()
 	biome = world.type()
 	
@@ -788,7 +788,7 @@ function isDroneActive(drone)
 		return false
 	end
 	
-	-- Always active for simulated ticks. Whether anything actually ahppens is determined within the production function
+	-- Always active for simulated ticks. Whether anything actually happens is determined within the production function
 	if ticksToSimulate then return true end
 	
 	-- Get the worktime stat, and check if the drones should be active, taking work time modifying frames into account
@@ -985,6 +985,7 @@ function areRivals(name1, name2)
 	-- Return false if the bees are of the same family
 	if name1 == name2 then return false end
 	
+	--sb.logInfo("names: %s",{name1,name2})
 	if string.find(name1, "_") then
 		name1 = family(name1)
 	end
@@ -992,14 +993,14 @@ function areRivals(name1, name2)
 	if string.find(name2, "_") then
 		name2 = family(name2)
 	end
-	
+	--sb.logInfo("families: %s",{name1,name2})
 	-- Check if the first bee is the rival for the second
-	if type(beeData.beeFamilyRivalries[name1]) == "string" then
-		if beeData.beeFamilyRivalries[name1][name1] == name2 then
+	if type(beeData.rivals[name1]) == "string" then
+		if beeData.rivals[name1] == name2 then
 			return true
 		end
-	elseif type(beeData.beeFamilyRivalries[name1][name1]) == "table" then
-		for _, rival in ipairs(beeData.beeFamilyRivalries[name1][name1]) do
+	elseif type(beeData.rivals[name1]) == "table" then
+		for _, rival in ipairs(beeData.rivals[name1]) do
 			if name2 == rival then
 				return true
 			end
@@ -1007,12 +1008,12 @@ function areRivals(name1, name2)
 	end
 	
 	-- Check if the second bee is the rival to the first
-	if type(beeData.beeFamilyRivalries[name1][name2]) == "string" then
-		if beeData.beeFamilyRivalries[name1][name2] == name1 then
+	if type(beeData.rivals[name2]) == "string" then
+		if beeData.rivals[name2] == name1 then
 			return true
 		end
-	elseif type(beeData.beeFamilyRivalries[name1][name2]) == "table" then
-		for _, rival in ipairs(beeData.beeFamilyRivalries[name1][name1]) do
+	elseif type(beeData.rivals[name2]) == "table" then
+		for _, rival in ipairs(beeData.rivals[name2]) do
 			if name1 == rival then
 				return true
 			end
@@ -1134,11 +1135,11 @@ function getFlowerLikeness(beeSubtype)
 		local stage = world.farmableStage(id)
 		if stage then
 			local stages = world.getObjectParameter(id, "stages", nil)
-			local linekessTable = world.getObjectParameter(id, "beeLikeness", nil)
+			local likenessTable = world.getObjectParameter(id, "beeLikeness", nil)
 			local addition = 0
 			
-			if linekessTable and linekessTable[beeSubtype] then
-				addition = linekessTable[beeSubtype]
+			if likenessTable and likenessTable[beeSubtype] then
+				addition = likenessTable[beeSubtype]
 			else
 				addition = beeData.flowerDefaultLikeness
 			end

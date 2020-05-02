@@ -1,5 +1,5 @@
 function init()
-	if status.resourceMax("health") < config.getParameter("minMaxHealth", 0) then
+	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or ((world.entityType(entity.id())== "monster") and (world.callScriptedEntity(entity.id(),"getClass") == 'bee')) then
 		effect.expire()
 	end
 	self.blinkTimer = 0
@@ -25,7 +25,7 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded then
+	if not self.exploded and not (status.stat("deathbombDud") > 0) then
 		local healthMultiplier=config.getParameter("healthMultiplier",1)
 		local healthMax=status.resourceMax("health")
 		local item=config.getParameter("item","money")
@@ -35,5 +35,8 @@ function explode()
 			world.spawnItem(item, mcontroller.position(),math.max(1,math.floor(healthMax*healthMultiplier)))
 		end
 		self.exploded = true
+	if status.isResource("stunned") then
+		status.setResource("stunned",0)
+	end
 	end
 end

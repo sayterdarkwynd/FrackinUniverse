@@ -22,6 +22,8 @@ end
 
 function activateVisualEffects(directives)
 	effect.setParentDirectives(directives)
+	if entity.entityType()=="player" then
 	animator.setParticleEmitterOffsetRegion("statustext", { 0, 1, 0, 1 })
 	animator.burstParticleEmitter("statustext")
+	end
 end

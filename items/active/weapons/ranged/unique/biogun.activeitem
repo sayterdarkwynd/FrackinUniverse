@@ -33,7 +33,7 @@
   
   "scripts" : [ "/items/active/weapons/ranged/gun.lua" ],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
@@ -49,7 +49,8 @@
     "projectileType" : "bioblast3",
     "projectileParameters" : { 
       "speed" : 30,
-      "knockback" : 1
+      "knockback" : 1,
+      "statusEffects" : [ "weakpoison" ]
     },
 	  "stances" : {
 	    "idle" : {

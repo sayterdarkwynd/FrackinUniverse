@@ -67,7 +67,12 @@ function update(dt)
 	if not storage.currentseed then
 		if not doSeedIntake() then
 			-- Player feedback, when not growing, turn off the lights.
-			if self.requiredPower then animator.setAnimationState("powlight", "off") end
+			if self.requiredPower then
+				animator.setAnimationState("powlight", "off")
+				if object.outputNodeCount() > 0 then
+					object.setOutputNodeLevel(0,false)
+				end
+			end
 			return
 		end
 	end
@@ -77,7 +82,9 @@ function update(dt)
 	growPlant(growthmod, dt)
 
 	storage.activeConsumption = true
-
+	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,true)
+	end
 	updateState()
 end
 

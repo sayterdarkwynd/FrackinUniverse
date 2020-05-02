@@ -45,8 +45,6 @@ genelib.miteResistanceStep = 0.01
 -- A legit genome, but with all values set to 00
 -- genelib.emptyGenome = "000000000000000000"
 
-
-
 -- Modify a stat string by a number (+2/-5)
 -- Use this to modify stat values.
 genelib.modifyStatString = function(str, mod)
@@ -187,6 +185,9 @@ genelib.generateDefaultGenome = function(beeName)
 	
 	-- Clear potential additions to the name.
 	local underscore1 = string.find(beeName, "_")
+	if not underscore1 then 
+		sb.logWarn("FU/bees/genomelibrary: error in %s",beeName)
+	end
 	local underscore2 = string.find(beeName, "_", underscore1+1)
 	beeName = string.sub(beeName, underscore1+1, underscore2-1)
 	
@@ -220,7 +221,7 @@ genelib.returnFullGenomeStats = function(genome)
 	return stats
 end
 
--- Receives the queens genome, and a table of genomes, and returns the genome representing the avarage stats values
+-- Receives the queens genome, and a table of genomes, and returns the genome representing the average stats values
 -- Queens genome dictates subtype and workTime
 genelib.getAvarageGenome = function(queenGenome, genomeTable)
 	-- Add the queens genome to the pool
@@ -314,15 +315,3 @@ genelib.evolveGenome = function(genome, modifier)
 	
 	return newGenome
 end
-
-
---setStat
--- Modify a stat string by a number (+2/-5)
--- Use this to modify stat values.
-genelib.modifyStatString = function(str, mod)
-    local val = genelib.statToDecimal(str)
-    val = val + mod
-    return genelib.numberToStat(val)
-end
-
---require("/bees/TEMPLATE_CHANGE.lua")

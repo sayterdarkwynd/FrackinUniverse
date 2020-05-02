@@ -55,6 +55,35 @@ function update(dt)
 						end
 					end
 				end
+			elseif root.itemHasTag(oldItem.name, "drone") then
+				if oldItem.parameters.genomeInspected then
+					status = "^green;Drone identified"
+				else
+					if playerUsing then
+						progress = progress + (playerWorkingEfficiency * dt)
+					else
+						progress = progress + (selfWorkingEfficiency * dt)
+					end
+					
+					progress = math.floor(progress * 100) * 0.01
+					
+					if progress >= 100 then
+						progress = 0
+						status = "^green;Drone identified"
+						
+						oldItem.parameters.genomeInspected = true
+						world.containerTakeAt(entity.id(), 0)
+						world.containerPutItemsAt(entity.id(), oldItem, 0)
+					else
+						status = "^cyan;"..progress.."%"
+						-- ***** chance to gain research *****
+						local randCheck = math.random(100) --1% chance, compared to a 25% for the queen
+						if randCheck == 1 then
+						 local bonusValue = config.getParameter("bonusResearch",0)
+						 world.spawnItem("fuscienceresource",entity.position(),2+bonusValue) -- Gain less research than via queen 
+						end
+					end
+				end				
 			elseif root.itemHasTag(oldItem.name, "artifact") then
 				if oldItem.parameters.genomeInspected then
 					status = "^green;Artifact identified"
@@ -95,7 +124,7 @@ function update(dt)
 		
 		else
 			progress = 0
-			if not (root.itemHasTag(currentItem.name, "queen") or root.itemHasTag(currentItem.name, "youngQueen")) then
+			if not (root.itemHasTag(currentItem.name, "queen") or root.itemHasTag(currentItem.name, "youngQueen") or root.itemHasTag(currentItem.name, "drone") or root.itemHasTag(currentItem.name, "artifact") ) then
 				status = "^red;Invalid sample detected"
 			end			
 		end
