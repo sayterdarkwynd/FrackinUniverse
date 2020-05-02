@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+15%^reset; Poison, Phys Resist
-\n^#e43774;Cyber/Wasteland^reset;: ^cyan;+24%^reset; Health, ^cyan;+12%^reset; Dmg
-\n^cyan;Immune^reset;: Acid.",
+^yellow;^reset; Cyber/Wasteland: ^green;24^reset;% More Health, ^green;12^reset;% More Damage, 10% Phys./Poison Resist
+^yellow;^reset; ^cyan;Immune^reset;: Acid.",
   "shortdescription" : "Battleborn Greaves",
-  "category" : "t3armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -42,6 +41,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.025
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -50,14 +59,6 @@
     {
       "stat" : "battlebornsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
     }
   ],
   "colorOptions" : [

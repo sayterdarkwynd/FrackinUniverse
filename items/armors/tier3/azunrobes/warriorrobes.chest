@@ -4,11 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "+^green;4^reset;% Shadow, Cosmic.
-^orange;Set Bonus^reset;:
--^green;20^reset;% Hunger Drain Rate
-+^green;8^reset;% Spd, Jump. +^green;0.5^reset;% Crit Chance
-^cyan;Immune ^reset;: Shadow Taint, Insanity",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; -^green;20^reset;% Hunger Drain Rate
+^yellow;^reset; +^green;8^reset;% Speed, Jump. +^green;0.5^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune ^reset;: Shadow Taint, Insanity",
   "shortdescription" : "Azun Chest",
   "tooltipKind" : "armornew2",
   "category" : "chestarmour",
@@ -47,6 +46,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -55,14 +64,6 @@
     {
       "stat" : "warriorrobessetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.04
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.04
     }
   ],
 
