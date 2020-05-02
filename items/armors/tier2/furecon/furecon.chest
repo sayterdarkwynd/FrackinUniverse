@@ -5,11 +5,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "+^green;4^reset;% Radioactive Resist
-^orange;^orange;Set Bonus^reset;: ^reset;
-+^green;5^reset;% Speed
-Rifle/Sniper Rifle: ^green;15^reset;% More Dmg
-^cyan;Immune^reset;: Rad Burn^reset;",
+  "description" : "^orange;^orange;Set Bonuses^reset;: ^reset;
+^yellow;^reset; +^green;5^reset;% Speed
+^yellow;^reset; (Sniper) Rifle: ^green;15^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Rad Burn^reset;",
 
   "shortdescription" : "Recon Vest",
   "category" : "chestarmour",
@@ -24,6 +23,7 @@ Rifle/Sniper Rifle: ^green;15^reset;% More Dmg
     "backSleeve" : "bsleeve.png",
     "frontSleeve" : "fsleeve.png"
   },
+  "itemTags" : [ "upgradeableWeapon" ],
 
   "femaleFrames" : {
     "body" : "chestf.png",
@@ -53,6 +53,11 @@ Rifle/Sniper Rifle: ^green;15^reset;% More Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.026666
     }
   ],
 
@@ -61,10 +66,6 @@ Rifle/Sniper Rifle: ^green;15^reset;% More Dmg
     {
       "stat" : "reconsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.04
     }
   ],
 

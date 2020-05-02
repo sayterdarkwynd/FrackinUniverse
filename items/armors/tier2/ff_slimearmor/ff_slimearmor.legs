@@ -4,14 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+7%^reset; Poison Resist^reset;
-\n^orange;Set Bonuses^reset;:
-^#a00000;Spawns minions^reset;
-Slime weapons: ^green;+10%^reset; Dmg, ^green;+5%^reset Crit Chance;
-^cyan;Immune^reset;: Slime, Mud, Clay",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Spawns minions^reset;
+^yellow;^reset; Slime weapons: ^green;10^reset;% More Damage, +^green;5%^reset; Crit Chance;
+^yellow;^reset; ^cyan;Immune^reset;: Slime, Mud, Clay",
 
   "shortdescription" : "Slime Greaves",
-  "category" : "t2armoru",
+  "category" : "legarmour",
   "learnBlueprintsOnPickup" : [
     "ff_slimechest2",
     "ff_slimehead2",
@@ -43,6 +42,11 @@ Slime weapons: ^green;+10%^reset; Dmg, ^green;+5%^reset Crit Chance;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.046666
     }
   ],
 
@@ -51,10 +55,6 @@ Slime weapons: ^green;+10%^reset; Dmg, ^green;+5%^reset Crit Chance;
     {
       "stat" : "slimesetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
     }
   ],
   "colorOptions" : [
