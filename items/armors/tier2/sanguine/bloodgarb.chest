@@ -4,11 +4,11 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "+^green;0.5^reset;% HP Regen\n
-^orange;Set Bonus^reset;:
-+^green;10^reset;% Speed
-+^green;10^reset;% Shadow Resist
-Dagger/Whip/Striker: +^green;4^reset;% Crit",
+  "description" : "+^green;0.5^reset;% HP Regen
+^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;10^reset;% Speed
+^yellow;^reset; +^green;0.5^reset;% HP Regen
+^yellow;^reset; Dagger/Whip/Striker: +^green;4^reset;% Crit Chance",
 
   "shortdescription" : "Sanguine Vest",
   "category" : "chestarmour",
@@ -55,6 +55,11 @@ Dagger/Whip/Striker: +^green;4^reset;% Crit",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.022222
     }
   ],
 
