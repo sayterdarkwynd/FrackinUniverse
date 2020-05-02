@@ -1,6 +1,7 @@
 require "/scripts/status.lua"
 
 function init()
+	if not trackerHandler then trackerHandler=effect.addStatModifierGroup({}) end
 	self.damageListener = damageListener("damageTaken", checkDamage)
 	self.shieldCap=config.getParameter("shieldCap",1.0)
 	self.resource=config.getParameter("resource","health")
@@ -11,23 +12,27 @@ end
 
 function update(dt) 
 	self.damageListener:update()
+	
 	if self.shieldBlockTimer and self.shieldBlockTimer>0 then
-		self.shieldBlockTimer = self.shieldBlockTimer-dt
-	else status.resource("damageAbsorption") < capCalc() then
+		self.shieldBlockTimer = (self.shieldBlockTimer-dt)
+	elseif status.resource("damageAbsorption") < capCalc() then
 		status.modifyResource("damageAbsorption",math.min(dt*self.shieldRegenRate*capCalc(),capCalc()-status.resource("damageAbsorption")))
-	else status.resource("damageAbsorption") > (status.resourceMax("health")*shieldCap) then
+	elseif status.resource("damageAbsorption") > capCalc() then
 		status.modifyResource("damageAbsorption",capCalc()*dt*self.shieldRegenRate)
 	end
 	updateShield()
 end
 
 function uninit()
-	status.modifyResource("damageAbsorption", -status.resource("damageAbsorption"))
+	if trackerHandler then status.removeStatModifierGroup(trackerHandler) end
+	effect.modifyResource("damageAbsorption", -status.resource("damageAbsorption"))
 end
 
 
 function updateShield()
-	world.sendEntityMessage(entity.id(),"setBar","mageShieldBar",status.resource("damageAbsorption") / capCalc(),{250,0,250,200}) 
+	local shieldPercent=status.resource("damageAbsorption") / capCalc()
+	world.sendEntityMessage(entity.id(),"setBar","mageShieldBar",shieldPercent,{250,0,250,200})
+	effect.setStatModifierGroup(trackerHandler,{{stat="regeneratingshieldpercent",amount=shieldPercent}})
 end
 
 function checkDamage(notifications)
@@ -35,5 +40,5 @@ function checkDamage(notifications)
 end
 
 function capCalc()
-	self.shieldCap*status.resourceMax(self.resource)
+	return self.shieldCap*status.resourceMax(self.resource)
 end
