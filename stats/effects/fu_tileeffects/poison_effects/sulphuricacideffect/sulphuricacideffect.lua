@@ -22,7 +22,7 @@ function update(dt)
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
         damage = self.baseDamage,
-        damageSourceKind = "default",
+        damageSourceKind = "corrosive",
         sourceEntityId = entity.id()
       })
   end
