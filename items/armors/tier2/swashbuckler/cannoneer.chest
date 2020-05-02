@@ -4,10 +4,9 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "+^green;5^reset;% Electric Resist\n
-^orange;Set Bonus^reset;:
-+^green;8^reset;% Jump, -^green;20^reset;% Hunger Drain
-Rapier/Pistol: ^green;7.5^reset;% More Dmg each.",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;8^reset;% Jump, -^green;20^reset;% Hunger Drain
+^yellow;^reset; Rapier/Pistol: ^green;7.5^reset;/^green;15^reset;% More Damage.",
 
 "shortdescription" : "Swashbuckler Coat",
   "category" : "chestarmour",
@@ -47,6 +46,11 @@ Rapier/Pistol: ^green;7.5^reset;% More Dmg each.",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -55,10 +59,6 @@ Rapier/Pistol: ^green;7.5^reset;% More Dmg each.",
     {
       "stat" : "swashbucklersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.05
     }
   ],
 
