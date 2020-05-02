@@ -4,10 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "+^green;7^reset;% Phys. Resist\n
-^orange;Set Bonus^reset;:
-+^green;8^reset;% Crit and +^green;3^reset; Crit Damage, ^green;20^reset;% More Dmg with Bee Weapons;
-^cyan;Immune^reset;: Beestings, Deadly Radiation",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;25^reset;% Speed, +^green;15^reset;% Jump
+^yellow;^reset; Bee Weapons: +^green;8^reset;% Crit Chance and +^green;50^reset; Crit Damage, ^green;20^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Beestings, Deadly Radiation",
   "shortdescription" : "Queen's Head",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -39,6 +39,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.023333
     }
   ],
   
@@ -47,10 +52,6 @@
     {
       "stat" : "fu_queenset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
     }
   ],  
  "colorOptions" : [

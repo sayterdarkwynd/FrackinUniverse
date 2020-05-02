@@ -13,7 +13,8 @@ armorBonus={
 	{stat = "slimestickImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},
-	{stat = "slushslowImmunity", amount = 1}
+	{stat = "slushslowImmunity", amount = 1},
+	{stat = "maxEnergy", effectiveMultiplier = 1.1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
