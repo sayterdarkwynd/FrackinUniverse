@@ -31,7 +31,7 @@ end
 
 function updateShield()
 	local shieldPercent=status.resource("damageAbsorption") / capCalc()
-	world.sendEntityMessage(entity.id(),"setBar","mageShieldBar",shieldPercent,{250,0,250,200})
+	--world.sendEntityMessage(entity.id(),"setBar","mageShieldBar",shieldPercent,{250,0,250,200})--we let the using armor set the indicator
 	effect.setStatModifierGroup(trackerHandler,{{stat="regeneratingshieldpercent",amount=shieldPercent}})
 end
 
