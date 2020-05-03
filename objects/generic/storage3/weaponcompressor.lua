@@ -58,7 +58,7 @@ function craftingRecipe(items)
 						end
 					end
 					if not failed then
-						newParams.animationParts[partName]="/objects/weaponcompressor/invis.png"
+						newParams.animationParts[partName]="/objects/generic/storage3/invis.png"
 					end
 				
 				end
@@ -79,7 +79,7 @@ function craftingRecipe(items)
 	
 	if not doOnce then
 		doOnce=true
-		animator.setAnimationState("tetherState", powerTimer and powerTimer > 0 and "on" or "off")
+		--animator.setAnimationState("tetherState", powerTimer and powerTimer > 0 and "on" or "off")
 		--dbgJ(itemBaseParams)
 	end
 	
@@ -93,7 +93,7 @@ end
 
 function update(dt)
 	powerTimer=(powerTimer and powerTimer > 0) and (powerTimer-dt) or 0
-	animator.setAnimationState("tetherState", powerTimer and powerTimer > 0 and "on" or "off")
+	--animator.setAnimationState("tetherState", powerTimer and powerTimer > 0 and "on" or "off")
 	doOnce=(powerTimer and powerTimer > 0)
 end
 
