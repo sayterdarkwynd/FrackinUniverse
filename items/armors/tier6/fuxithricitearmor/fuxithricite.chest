@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#e43774;40% Cosmic Resist, ^#e43774;25%^reset; Radiation Resist^reset;
-Xithricite Weapons: ^green;+3%^reset; Crit 
-^cyan;Immune^reset;: Shadow, Aether, Radiation, Pressure, Insanity", 
+^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit 
+^yellow;^reset; ^cyan;Immune^reset;: All Rads, Pressure, Shadow, Aether, Insanity", 
   "shortdescription" : "Xithricite Chestplate",
-  "category" : "t6armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -47,6 +46,16 @@ Xithricite Weapons: ^green;+3%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.042857
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.025714
     }
   ],
 
@@ -55,14 +64,6 @@ Xithricite Weapons: ^green;+3%^reset; Crit
     {
       "stat" : "fu_xithriciteset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.15
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.09
     }
   ],
 

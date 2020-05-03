@@ -4,11 +4,10 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "category" : "t2armor",
+  "category" : "chestarmour",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;15%^reset; Radiation Resist
-Magnorbs: ^#a94db3;+25%^reset; Dmg
-^cyan;Immunity^reset;: Oxygen, Poison, Gas",
+^yellow;^reset; Magnorbs: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Poison, Gas",
   "shortdescription" : "Researcher's Breastplate",
 
   "tooltipKind" : "armornew2",
@@ -46,6 +45,11 @@ Magnorbs: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -54,10 +58,6 @@ Magnorbs: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "researchsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.05
     }
   ],
 

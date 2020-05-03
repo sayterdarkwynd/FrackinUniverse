@@ -6,7 +6,7 @@ weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.30}
 }
 
-armorBonus={}
+armorBonus={{stat="shadowImmunity",amount=1}}
 
 function init()
 	setSEBonusInit(setName)
@@ -23,6 +23,9 @@ function update(dt)
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		checkWeapons()
+		mcontroller.controlModifiers({
+			speedModifier = 1.10
+		})
 	end
 end
 

@@ -5,10 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+30%^reset; Shield Regen, Block, Stamina\n
-Shield + Sword: ^cyan;+20%^reset; Health, ^cyan;+25%^reset; Knockback Resist",
+^yellow;^reset; +^green;30^reset;% Shield Regen, Block, Stamina
+^yellow;^reset; Shield + Sword: ^green;20^reset;% More HP, +^green;25^reset;% Knockback Resist
+^yellow;^reset; ^cyan;Immune^reset;: Tar, Gas",
   "shortdescription" : "Millenion's Greaves",
-  "category" : "t5armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
@@ -36,6 +37,11 @@ Shield + Sword: ^cyan;+20%^reset; Health, ^cyan;+25%^reset; Knockback Resist",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.03
     }
   ],
 
@@ -44,11 +50,7 @@ Shield + Sword: ^cyan;+20%^reset; Health, ^cyan;+25%^reset; Knockback Resist",
     {
       "stat" : "fu_millenionset_legs",
       "amount" : 1
-    },
-     {
-      "stat" : "fireResistance",
-      "amount" : 0.09
-    } 
+    }
   ],
   
   "colorOptions" : [

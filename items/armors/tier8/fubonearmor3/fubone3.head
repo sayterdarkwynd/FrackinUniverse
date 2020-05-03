@@ -6,12 +6,11 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+250% Oxygen, 
-Elder/Precursor: ^green;+3.5%^reset; Crit
-^#a94db3;50%^reset; Cosmic and ^#a94db3;50%^reset; Shadow resistance
-^cyan;Immune^reset;: All radiation, Gas, Shadow",
+^yellow;^reset; +^green;250^reset;% Oxygen, 
+^yellow;^reset; Elder/Precursor: +^green;3.5^reset;% Crit Chance, ^green;25^reset;% More HP
+^yellow;^reset; ^cyan;Immune^reset;: All Rads, Gas, Shadow",
   "shortdescription" : "Necrontir Mask",
-  "category" : "t8armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -39,7 +38,17 @@ Elder/Precursor: ^green;+3.5%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
-    }  
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.044444
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.044444
+    }
   ],
   
   "statusEffects" : [

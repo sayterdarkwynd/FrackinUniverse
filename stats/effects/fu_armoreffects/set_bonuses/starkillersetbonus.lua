@@ -1,5 +1,5 @@
 setName="fu_starkillerset"
-setStatEffects={"starkillersetbonuseffect", "extremepressureimmunity", "corvexputty"}
+setStatEffects={"starkillersetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

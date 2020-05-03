@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;30%^reset; Radioactive Resist
-^#a94db3;25%^reset; Fall Damage Reduction
-^cyan;Immune^reset;: Deadly Radiation",
+^yellow;^reset; ^green;25^reset;% Less Fall Damage
+^yellow;^reset; ^cyan;Immune^reset;: All Rads",
   "shortdescription" : "Mutavisk Helm",
-  "category" : "t3armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
@@ -37,6 +36,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.05
     }
   ],
 
@@ -45,10 +49,6 @@
     {
       "stat" : "mutavisksetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.1
     }
   ],
 

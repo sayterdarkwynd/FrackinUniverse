@@ -3,13 +3,13 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_ravagerset"
 
 weaponBonus={ 
-	{stat = "powerMultiplier", effectiveMultiplier = 1.25},
-	{stat = "critBonus", baseMultiplier = 1.2} 
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
-armorBonus2={}
-
-armorBonus={}
+armorBonus={
+	{stat = "critDamage", amount = 0.2},
+	{stat = "maxHealth", effectiveMultiplier = 1.05}
+}
 
 function init()
 	setSEBonusInit(setName)
@@ -24,7 +24,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		checkWeapons()
 	end
 end

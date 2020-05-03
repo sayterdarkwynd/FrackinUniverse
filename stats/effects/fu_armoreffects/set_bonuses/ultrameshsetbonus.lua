@@ -1,5 +1,5 @@
 setName="fu_ultrameshset"
-setStatEffects={"ultrameshsetbonuseffect","swimboost2"}
+setStatEffects={"ultrameshsetbonuseffect"}
 
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

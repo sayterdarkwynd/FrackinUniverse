@@ -5,7 +5,7 @@ weaponBonus={
 }
 
 armorEffect={
-	{stat = "maxHealth", baseMultiplier = 1.25},
+	{stat = "maxHealth", effectiveMultiplier = 1.25},
 	{stat = "sulphuricImmunity", amount = 1},
 	{stat = "breathProtection", amount = 1}
 }
@@ -30,7 +30,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"dagger","broadsword","axe","hammer","shortsword","greataxe","spear","shortspear","quarterstaff","katana","flail","scythe","mace","longsword"})
+	local weapons=weaponCheck({"dagger","broadsword","axe","hammer","shortsword","greataxe","spear","shortspear","quarterstaff","katana","flail","scythe","mace","longsword","daikatana"})
 	
 	if (weapons["either"] and weapons["twoHanded"]) or (weapons["primary"] and weapons["alt"]) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,2))

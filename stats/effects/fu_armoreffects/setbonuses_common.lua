@@ -13,9 +13,9 @@
 
 require "/scripts/util.lua"
 
-weaponCheckResults={}
-heldItemPrimary=nil
-heldItemAlt=nil
+--weaponCheckResults={}
+--heldItemPrimary=nil
+--heldItemAlt=nil
 
 function setBonusInit(setBonusName, setBonusStats, callbacks)
 	self.statGroup = nil
@@ -63,7 +63,7 @@ function update()
 
 		--effect.setParentDirectives("fade="..config.getParameter("color").."=0.5")
 
-		sb.logInfo("Set bonus active: %s", self.setBonusName)
+		--sb.logInfo("Set bonus active: %s", self.setBonusName)
 	else
 		removeSetBonus()
 	end
@@ -112,24 +112,15 @@ function removeSetBonus()
 
 		--effect.setParentDirectives(nil)
 
-		sb.logInfo("Set bonus removed: %s", self.setBonusName)
+		--sb.logInfo("Set bonus removed: %s", self.setBonusName)
 	end
 end
 
 function weaponCheck(tags)
-	local tempPrimary=world.entityHandItem(entity.id(), "primary")
-	local tempAlt=world.entityHandItem(entity.id(), "alt")
-	local doThing=false
-	if tempPrimary~=heldItemPrimary then
-		heldItemPrimary = tempPrimary
-		doThing=true
-	end
-	if tempAlt~=heldItemAlt then
-		heldItemAlt = tempAlt
-		doThing=true
-	end
-	if not doThing then return weaponCheckResults end
-	
+	local weaponCheckResults={}
+	local heldItemPrimary=world.entityHandItem(entity.id(), "primary")
+	local heldItemAlt=world.entityHandItem(entity.id(), "alt")
+
 	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
 
 	weaponCheckResults["either"]=false
@@ -137,6 +128,7 @@ function weaponCheck(tags)
 	weaponCheckResults["alt"]=false
 	weaponCheckResults["both"]=false
 	weaponCheckResults["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
+	
 	if heldItemPrimary~=nil and heldItemAlt~=nil then
 		for _,tag in pairs(tags) do
 			if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
@@ -167,6 +159,7 @@ function weaponCheck(tags)
 			end
 		end
 	end
+	
 	return weaponCheckResults
 end
 

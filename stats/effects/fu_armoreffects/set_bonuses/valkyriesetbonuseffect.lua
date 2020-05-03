@@ -5,6 +5,7 @@ setName="fu_valkyrieset"
 weaponBonus={}
 
 armorBonus={
+	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "ffextremeradiationImmunity", amount = 1},
@@ -21,7 +22,9 @@ end
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
+		status.removeEphemeralEffect("fuslowfallset")
 	else
+		status.addEphemeralEffect("fuslowfallset")
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	end
 end

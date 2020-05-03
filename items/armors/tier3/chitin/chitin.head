@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+15%^reset; Poison, Phys Resist 
-\n^#e43774;Sulphuric^reset;: ^green;+12%^reset;  Health, ^green;+12%^reset; Dmg
-\n^cyan;Immune^reset;: Acid",
+^yellow;^reset; Sulphuric: ^green;12^reset;% More HP, ^green;12^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Acid",
   "shortdescription" : "Chitin Helm",
-  "category" : "t3armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -44,6 +43,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.025
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -52,14 +61,6 @@
     {
       "stat" : "chitinsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
     }
   ],
   "colorOptions" : [

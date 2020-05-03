@@ -72,3 +72,6 @@ end
 function techEquip()
 	player.interact("ScriptPane", "/interface/scripted/techupgrade/techupgradegui.config", player.id())
 end
+function upgradeEquipmentMenu()
+	player.interact("ScriptPane", "/interface/scripted/fu_multiupgrade/fu_multiupgrade.config", player.id())
+end

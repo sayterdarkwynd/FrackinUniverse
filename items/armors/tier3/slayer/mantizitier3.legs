@@ -5,11 +5,9 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;21%^reset; Shadow Resist
-Fist/Axe: ^#a94db3;+25%^reset; Dmg
-^green;Thorns^reset;",
+Fist/Axe: ^green;25^reset;% More Damage",
   "shortdescription" : "Slayer Boots",
-  "category" : "t3armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -37,6 +35,11 @@ Fist/Axe: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.035
     }
   ],
 
@@ -45,10 +48,6 @@ Fist/Axe: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "slayersetcount",
       "amount": 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
     }
   ],
 

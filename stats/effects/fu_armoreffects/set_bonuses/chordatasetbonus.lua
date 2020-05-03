@@ -1,5 +1,5 @@
 setName="fu_chordataset"
-setStatEffects={"chordatasetbonuseffect", "swimboost1"}
+setStatEffects={"chordatasetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

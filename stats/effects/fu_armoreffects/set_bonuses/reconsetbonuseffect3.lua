@@ -7,7 +7,8 @@ weaponBonus={
 
 armorBonus={
 		{stat = "ffextremeradiationImmunity", amount = 1.0},
-		{stat = "radiationburnImmunity", amount = 1.0}
+		{stat = "radiationburnImmunity", amount = 1.0},
+	{stat = "biomeradiationImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

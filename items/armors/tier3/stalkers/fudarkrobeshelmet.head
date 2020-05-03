@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-+21%^reset; Poison Resist^reset;
-Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^reset;
-^green;+8%^reset; Speed, ^#a94db3;+25%^reset; Fall Damage Reduction^reset;
-^cyan;Immune^reset;: Poison. Bio-Ooze",
+^yellow;^reset; +^green;8^reset;% Speed, ^green;25^reset;% Less Fall Damage
+^yellow;^reset; Bows/Crossbows,(Sniper) Rifles: ^green;15^reset;% More Damage, +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Poison. Bio-Ooze",
   "shortdescription" : "Stalker's Hood",
-  "category" : "t3armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -39,6 +38,11 @@ Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^rese
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.035
     }
   ],
 
@@ -47,10 +51,6 @@ Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^rese
     {
       "stat" : "stalkersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
     }
   ],
 

@@ -6,10 +6,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;:  
-^green;+12%^reset; Physical Resist, ^green;12%^reset; Fall Damage Reduction
-Flamethrower/Rocket Launcher: ^cyan;+20%^reset; Dmg", 
+^yellow;^reset; ^green;88^reset;% Less Fall Damage
+^yellow;^reset; Flamethrower/Rocket Launcher: ^green;20^reset;% More Damage", 
   "shortdescription" : "Bounty Hunter Pants",
-  "category" : "t4armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -37,6 +37,11 @@ Flamethrower/Rocket Launcher: ^cyan;+20%^reset; Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 0
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.016
     }
   ],
 
@@ -45,10 +50,6 @@ Flamethrower/Rocket Launcher: ^cyan;+20%^reset; Dmg",
     {
       "stat" : "fu_bountyhunterset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
     }
   ],
 

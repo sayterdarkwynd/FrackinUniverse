@@ -14,7 +14,12 @@ function update(dt)
 		animator.setAnimationState("switchState", "on")
 		if storage.effects then
 			for _,effect in pairs(storage.effects) do
-				effectUtil.effectAllOfTeamInRange(effect.status,self.range,dt*(effect.durationMod or 2),effect.team)
+				effectUtil.effectTypesInRange(effect.status,self.range,effect.types,dt*(effect.durationMod or 2),effect.team)
+			end
+		end
+		if storage.messages then
+			for _,effect in pairs(storage.messages) do
+				effectUtil.messageTypesInRange(effect.message,self.range,effect.types,effect.team,effect.args)
 			end
 		end
 		if self.objectEffects then
@@ -29,10 +34,14 @@ end
 
 function containerCallback()
 	local effects = {}
+	local messageList={}
 	for _,item in pairs(world.containerItems(entity.id(), slot)) do
 		if item and itemList[item.name] then
-			for _,effect in pairs(itemList[item.name]) do
-				table.insert(effects,effect)
+			for _,data in pairs(itemList[item.name].messages or {}) do
+				table.insert(messageList,data)
+			end
+			for _,data in pairs(itemList[item.name].effects or {}) do
+				table.insert(effects,data)
 			end
 		end
 	end
@@ -47,4 +56,7 @@ function containerCallback()
 		end
 	end
 	storage.effects = #effects > 0 and effects or nil
+	storage.messages = #messageList > 0 and messageList or nil
 end
+
+--effectUtil.effectTypesInRange(effect,range,types,duration,teamType)

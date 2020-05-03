@@ -6,10 +6,9 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;30%^reset; Ice Resist
-\n^cyan;Immune^reset;: Ice, Snow, Liq. Nitrogen, ^green;ALL^reset;Cold,", 
+^yellow;^reset; ^cyan;Immune^reset;: All Cold", 
   "shortdescription" : "Arctic Parka",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -46,6 +45,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -54,10 +58,6 @@
     {
       "stat" : "fu_arcticset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.15
     }
   ],
 

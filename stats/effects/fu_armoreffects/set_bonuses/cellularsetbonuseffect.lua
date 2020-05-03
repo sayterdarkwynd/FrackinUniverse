@@ -7,7 +7,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "fallDamageMultiplier", baseMultiplier = 0.12}
+	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.88}
 }
 
 function init()
@@ -21,10 +21,12 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("glowyellow2")
 		effect.expire()
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		checkWeapons()	
+		status.addEphemeralEffect("glowyellow2")
 		
 		status.modifyResourcePercentage("health", 0.0006 * dt)
 		

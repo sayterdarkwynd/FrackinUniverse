@@ -2,11 +2,12 @@ setName="fu_primusset"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25},
-	{stat = "critChance", amount = 3},
-	{stat = "grit", amount = 0.5}
+	{stat = "critChance", amount = 3}
 }
 
-armorBonus={}
+armorBonus={
+	{stat = "grit", amount = 0.5}
+}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

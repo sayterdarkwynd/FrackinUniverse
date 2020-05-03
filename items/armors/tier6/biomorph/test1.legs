@@ -1,17 +1,19 @@
 {
   "itemName" : "biomorphpants",
+  "price" : 750,
   "inventoryIcon" : "icons.png:pants",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "^green;+8%^reset; Fire and Shadow Resists
-^yellow;+40%^reset; X'i Bulb Regen Rate (120%)
-\n^orange;Set Bonuses^reset;: 
-^cyan;25%^reset; Health, ^green;20%^reset; Max Energy^reset;
-^cyan;Immune^reset;: Burning, All Radiation, Snow, Slush, Ice, Air",
+  "description" : "+^green;40^reset;% X'i Bulb Regen Rate (120%)
+^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;5^reset;% Speed, ^green;7^reset;% More Damage, ^green;25^reset;% More HP, ^green;20^reset;% More Max Energy^reset;
+^yellow;^reset; Xi Weapons: ^green;10^reset;% More Protection
+^yellow;^reset; Sulphuric Biome: ^green;5^reset;% More Energy, +^green;5^reset;% Knockback Resist 
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Deadly Radiation, Snow, Slush, Ice, Oxygen",
   "itemTags" : [ "upgradeableWeapon" ],
   "shortdescription" : "Biomorphic Greaves",
-  "category" : "t6armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -39,6 +41,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.022857
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.022857
     }
   ],
 
@@ -47,14 +59,6 @@
     {
       "stat" : "radienpyreitesetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.08
     },
     {
       "stat" : "xiBonus",

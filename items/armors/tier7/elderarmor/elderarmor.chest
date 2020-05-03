@@ -6,13 +6,12 @@
   "maxStack" : 1,
   "rarity" : "legendary",
    "description" : "^orange;Set Bonuses^reset;:
-Summons minions 
-Darkness Regen   
-^#a94db3;40%^reset; Shadow Resist
-Elder Weapons: ^#a94db3;+25^reset; Damage
-\n^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid", 
+^yellow;^reset; ^cyan;Summons Minions^reset;
+^yellow;^reset; ^cyan;Darkness Regen^reset;
+^yellow;^reset; Elder Weapons: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid, Liq. Nitrogen", 
   "shortdescription" : "Elder Chestpiece",
-  "category" : "t7armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
     "itemTags" : [ "upgradeableWeapon" ],
   "effectSources" : [ "shadowsmoke2" ],  
@@ -50,6 +49,11 @@ Elder Weapons: ^#a94db3;+25^reset; Damage
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.0625
     }
   ],
 
@@ -58,10 +62,6 @@ Elder Weapons: ^#a94db3;+25^reset; Damage
     {
       "stat" : "fu_elderset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.25
     }
   ],
 

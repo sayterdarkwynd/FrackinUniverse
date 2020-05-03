@@ -5,12 +5,12 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+21%^reset; Electric, ^green;9%^reset; Phys Resist
-^#a94db3;+100%^reset; Mining Laser damage, ^#a94db3;+175s^reset; Oxygen
-+^cyan;50^reset;% Defense Tech Efficiency
-\n^#e43774;Immune ^reset;: Burning, Proto Poison, Gas",
+^yellow;^reset; Mining Laser: ^green;100^reset;% More Damage
+^yellow;^reset; +^green;175^reset;s Oxygen
+^yellow;^reset; +^green;50^reset;% Defense Tech Efficiency
+^cyan;Immune ^reset;: Burning, Proto-Poison, Gas",
   "shortdescription" : "Spacefarer Chest",
-  "category" : "t3armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [ "spacefarerchestadv" ],
 
@@ -48,6 +48,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.035
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.015
     }
   ],
 
@@ -56,14 +66,6 @@
     {
       "stat" : "spacefarersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.03
     }
 ],
   //"upgrades" : 1 ,

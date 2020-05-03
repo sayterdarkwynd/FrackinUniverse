@@ -1,5 +1,5 @@
 setName="fu_hellfireset"
-setStatEffects={"hellfiresetbonuseffect", "fireburst", "gloworange"}
+setStatEffects={"hellfiresetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

@@ -4,11 +4,10 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Ice Resist
-\n^orange;Set Bonuses^reset;:
-^cyan;+20% Knockback Resist
-2H melee/Axes: ^green;+3.5%^reset; Crit Chance, ^cyan;+15%^reset; Dmg
-^cyan;Immune^reset;: Slush, Chill",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;20^reset;% Knockback Resist
+^yellow;^reset; Axes, Two-handed Melee: +^green;3.5^reset;% Crit Chance, ^green;15^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Slush, Chill",
 
   "shortdescription" : "Battle Totem Jerkin",
   "learnBlueprintsOnPickup" : [
@@ -16,8 +15,8 @@
     "fubearhead2",
     "fubearlegs2"
   ],
-  "category" : "t2armoru",
-  "tooltipKind" : "armor",
+  "category" : "chestarmour",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : {
     "body" : "chestm.png",
@@ -53,6 +52,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -61,10 +65,6 @@
     {
       "stat" : "bearsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.05
     }
   ],
 

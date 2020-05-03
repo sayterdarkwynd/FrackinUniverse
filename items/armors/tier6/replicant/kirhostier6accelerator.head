@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Legendary",
   "description" : "^orange;Set Bonuses^reset;: 
-Sword x 1: ^green;+2%^reset; Crit, 
-Swords x 2: ^#a94db3;+25%^reset; Dmg
-^cyan;30% Shadow Resistance^reset;
-\n^cyan;Immune^reset;: Gas, Shadow, Tar^reset;",
+^yellow;^reset; Single Sword: +^green;2^reset;% Crit, 
+^yellow;^reset; Dual Swords: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Shadow, Tar^reset;",
   "shortdescription" : "Replicant's Helm",
-  "category" : "t6armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -39,6 +38,11 @@ Swords x 2: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.028571
     }
   ],
 
@@ -47,10 +51,6 @@ Swords x 2: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "fu_replicantset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.1
     }
   ],
 

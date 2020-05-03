@@ -4,16 +4,14 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Fire Resist
-\n^orange;Set Bonuses^reset;:
-^cyan;+20%^reset; Shield Regen^reset;
-Dagger/Shortspear: ^cyan;+15%^reset; Dmg
-Rifle/Assault Rifle: ^cyan;+8%^reset; Dmg
-^#e43774;Deserts: ^cyan;+15%^reset; Fire Resist
-^cyan;Immune^reset;: Burning, Deserts",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;20^reset;% Shield Regen^reset;
+^yellow;^reset; Dagger/Shortspear: ^green;15^reset;% More Damage
+^yellow;^reset; (Assault/Sniper) Rifle: ^green;8^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Deserts",
 
   "shortdescription" : "Nomad Hood",
-  "category" : "t2armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "learnBlueprintsOnPickup" : [
@@ -48,6 +46,11 @@ Rifle/Assault Rifle: ^cyan;+8%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -56,10 +59,6 @@ Rifle/Assault Rifle: ^cyan;+8%^reset; Dmg
     {
       "stat" : "nomadsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
     }
   ],
 

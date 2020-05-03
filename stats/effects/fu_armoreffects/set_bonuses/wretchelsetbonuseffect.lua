@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+require "/scripts/unifiedGravMod.lua"
 
 setName="fu_wretchelset"
 
@@ -17,12 +18,16 @@ function init()
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	
+	unifiedGravMod.init()
+	unifiedGravMod.initSoft()
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
+		unifiedGravMod.update(dt)
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		checkWeapons()
 	end
@@ -35,4 +40,9 @@ function checkWeapons()
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
+end
+
+function uninit()
+	unifiedGravMod.uninit()
+	setBonusUninit()
 end

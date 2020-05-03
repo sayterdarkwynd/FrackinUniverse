@@ -5,9 +5,10 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "critChance", amount = 5},
-	{stat = "asteroidImmunity", amount = 1},
+	--{stat = "asteroidImmunity", amount = 1},--asteroid effect deprecated
 	{stat = "breathProtection", amount = 1},
+	{stat = "critChance", amount = 5},
+	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1}
 }
 

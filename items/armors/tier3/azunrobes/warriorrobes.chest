@@ -5,13 +5,12 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;:
-^green;+12%^reset; Shadow, Cosmic.
-Reduced Hunger
-^green;+8%^reset; Spd, Jump. ^green;+0.5%^reset; Crit Chance
-^cyan;Immune ^reset;: Shadow Taint, Insanity",
+^yellow;^reset; -^green;20^reset;% Hunger Drain Rate
+^yellow;^reset; +^green;8^reset;% Speed, Jump. +^green;0.5^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune ^reset;: Shadow Taint, Insanity",
   "shortdescription" : "Azun Chest",
-  "tooltipKind" : "armor",
-  "category" : "t3armor",
+  "tooltipKind" : "armornew2",
+  "category" : "chestarmour",
 
   "maleFrames" : {
     "body" : "chestm.png",
@@ -47,6 +46,16 @@ Reduced Hunger
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -55,14 +64,6 @@ Reduced Hunger
     {
       "stat" : "warriorrobessetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.04
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.04
     }
   ],
 

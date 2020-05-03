@@ -1,5 +1,5 @@
 setName="fu_invaderset"
-setStatEffects={"invadersetbonuseffect", "slowfall"}
+setStatEffects={"invadersetbonuseffect"}
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 

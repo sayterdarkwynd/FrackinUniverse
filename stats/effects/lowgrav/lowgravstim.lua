@@ -1,5 +1,5 @@
 function init()
-  effect.addStatModifierGroup({ {stat = "asteroidImmunity", amount = 1} })
+  --effect.addStatModifierGroup({ {stat = "asteroidImmunity", amount = 1} })--currently only affects a deprecated effect
   self.liquidMovementParameter = {
     gravityEnabled = true,
     gravity = 90,

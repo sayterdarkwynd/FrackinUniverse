@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-^green;+5%^reset; Physical Resist
-Katana: ^cyan;+15%^reset; Dmg, ^green;+2%^reset; Crit
-Katana + Dagger:^green;+1%^reset; Crit, ^green;+10%^reset; Protection",
+^yellow;^reset; Katana: ^green;15^reset;% More Damage, +^green;2^reset;% Crit Chance
+^yellow;^reset; Katana + Dagger:+^green;1^reset;% Crit Chance, ^green;10^reset;% More Protection",
 
   "shortdescription" : "Samurai Pants",
-  "category" : "t2armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [
     "samurai2pants",
@@ -43,6 +42,11 @@ Katana + Dagger:^green;+1%^reset; Crit, ^green;+10%^reset; Protection",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.02
     }
   ],
 

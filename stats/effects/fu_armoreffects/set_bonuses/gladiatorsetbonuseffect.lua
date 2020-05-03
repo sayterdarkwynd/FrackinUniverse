@@ -21,8 +21,10 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("thorns")
 		effect.expire()
 	else
+		status.addEphemeralEffect("thorns")
 		checkWeapons()
 	end
 

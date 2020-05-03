@@ -26,8 +26,10 @@ function Crits:setCritDamage(damage)
                 if world.entitySpecies(activeItem.ownerEntityId()) == "glitch" and (root.itemHasTag(heldItem, "mace") or root.itemHasTag(heldItem, "axe") or root.itemHasTag(heldItem, "greataxe")) then
                     damage = damage + math.random(10) + 2  -- 1d10 + 2 bonus damage
                 end
-
-                status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
+				
+				--disabled because eyesore visualfatigue
+                --status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
+				
                 -- *****************************************************************
                 --	weapon specific crit abilities!
                 -- *****************************************************************

@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+20%^reset; Jump
-^cyan;+18%^reset; Ice Resist, ^cyan;15%^reset; Phys. Resist  
-Assault/Energy Rifles: ^cyan;+15%^reset; Dmg^reset;
-^cyan;Immune^reset;: Gas, Breath, Cold, Liq.Nitrogen",
+^yellow;^reset; +^green;20^reset;% Jump
+^yellow;^reset; Assault Rifles, Energy: ^green;20^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Gas, Cold, Liq.Nitrogen",
   "shortdescription" : "Assault Greaves",
-  "category" : "t3armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -45,6 +44,16 @@ Assault/Energy Rifles: ^cyan;+15%^reset; Dmg^reset;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -53,14 +62,6 @@ Assault/Energy Rifles: ^cyan;+15%^reset; Dmg^reset;
     {
       "stat" : "assaultsetcount",
       "amount": 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.06
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
     }
   ],
 
