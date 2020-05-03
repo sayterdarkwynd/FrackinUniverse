@@ -56,6 +56,7 @@ function checkShell()
 	local rsp=status.stat("regeneratingshieldpercent")
 	if rsp > 0.05 then
 		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
+		if rsp>1.0 then rsp=1.0 elseif rsp<0 then rsp=0 end
 		local opacity=string.format("%x",math.floor(rsp*255))
 		if string.len(opacity)==1 then
 			opacity="0"..opacity
