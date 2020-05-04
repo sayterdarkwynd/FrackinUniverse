@@ -81,7 +81,8 @@ function build(directory, config, parameters, level, seed)
 			if resistances[v.stat] then
 				local label=resistances[v.stat].label
 				local friendly=resistances[v.stat].friendly
-				config.tooltipFields[label]=(util.round((v.amount or 0)*root.evalFunction(v.levelFunction,configParameter("level", 1)),3)*100).."%"
+				--config.tooltipFields[label]=(util.round((v.amount or 0)*root.evalFunction(v.levelFunction,configParameter("level", 1)),3)*100).."%"
+				config.tooltipFields[label]=(math.floor((v.amount or 0)*root.evalFunction(v.levelFunction,configParameter("level", 1)))*100).."%"
 				config.tooltipFields[label]=string.gsub(config.tooltipFields[label],"%.0%%","%%")
 				table.insert(resistanceInfo,friendly..config.tooltipFields[label])
 			end
