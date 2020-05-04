@@ -14,6 +14,12 @@ function init()
 
   if self.ignoreTerrain then mcontroller.applyParameters({collisionEnabled=false}) end
 
+  message.setHandler("projectileIds", projectileIds)
+
+  message.setHandler("setTargetPosition", function(_, _, targetPosition)
+      self.targetPosition = targetPosition
+    end)
+
   if boomerangExtra then
     boomerangExtra:init()
   end
@@ -31,10 +37,10 @@ function update(dt)
         self.returning = true
       end
     else
-      local toTarget = world.distance(world.entityPosition(self.ownerId), mcontroller.position())
+      local toTarget = world.distance(self.targetPosition or world.entityPosition(self.ownerId), mcontroller.position())
       if self.pickupDistance and (vec2.mag(toTarget) < self.pickupDistance) then
         projectile.die()
-       elseif self.timeToLive and (projectile.timeToLive() < self.timeToLive * 0.5) then
+      elseif self.timeToLive and (projectile.timeToLive() < self.timeToLive * 0.5) then
         mcontroller.applyParameters({collisionEnabled=false})
         mcontroller.approachVelocity(vec2.mul(vec2.norm(toTarget), self.speed), 500)
       elseif self.snapDistance and (vec2.mag(toTarget) < self.snapDistance) then
@@ -52,10 +58,14 @@ function hit(entityId)
   if self.returnOnHit then self.returning = true end
 end
 
-function boomerangProjectileIds()
-  if boomerangExtra and boomerangExtra.boomerangProjectileIds then
-    return boomerangExtra:boomerangProjectileIds()
+function projectileIds()
+  if boomerangExtra and boomerangExtra.projectileIds then
+    return boomerangExtra:projectileIds()
   else
     return {entity.id()}
   end
+end
+
+function setTargetPosition(targetPosition)
+  self.targetPosition = targetPosition
 end

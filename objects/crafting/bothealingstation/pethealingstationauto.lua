@@ -41,7 +41,7 @@ function update(dt)
 					animator.setAnimationState("healState", "on")
 				else
 					output=heal(world.containerItemAt(entity.id(),0))
-					sb.logInfo("%s",output)
+					--sb.logInfo("%s",output)
 					world.containerTakeAt(entity.id(),0,1)
 					world.containerPutItemsAt(entity.id(),output,1)
 					animator.setAnimationState("healState", "off")
