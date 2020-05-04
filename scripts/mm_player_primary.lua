@@ -13,6 +13,7 @@ function applyDamageRequest(damageRequest)
     if next(r) ~= nil and r[1].hitType == "kill" then
 		status.setStatusProperty("fuEnhancerActive", false)
 		status.setStatusProperty(mementomori.deathPositionKey,{position=mcontroller.position(),worldId=worldId})
+		sb.logInfo("mm_player-primary.lua:applyDamageRequest:recording death: %s",{mementomori.deathPositionKey={position=mcontroller.position(),worldId=worldId}})
     end
     return r
 end
