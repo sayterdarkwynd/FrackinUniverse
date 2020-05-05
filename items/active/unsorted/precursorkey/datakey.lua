@@ -17,7 +17,7 @@ function update(dt, fireMode, shiftHeld)
 	self.cooldownTimer = math.max(self.cooldownTimer - dt, 0.0)
 
 	local position = activeItem.ownerAimPosition()
-	local eList = world.entityQuery(position,1) or {}
+	local eList = world.entityQuery(position,1/16) or {}
 	
 	local target = nil
 	for _,v in pairs(eList) do
