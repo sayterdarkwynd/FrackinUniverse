@@ -1,4 +1,5 @@
-require "/scripts/vec2.lua"
+require "/scripts/poly.lua"
+require "/scripts/rect.lua"
 
 function init()
 	self=config.getParameter("scanSettings",{maxRange=15,cooldownTime=1.0})
@@ -16,18 +17,45 @@ function update(dt, fireMode, shiftHeld)
 
 	self.cooldownTimer = math.max(self.cooldownTimer - dt, 0.0)
 
-	local position = activeItem.ownerAimPosition()
-	local eList = world.entityQuery(position,1/16) or {}
+	local aimPos = activeItem.ownerAimPosition()
+	local eList = world.entityQuery(aimPos,1/16) or {}
 	
 	local target = nil
+	local targetPositions={}
+	
 	for _,v in pairs(eList) do
 		if world.getObjectParameter(v,"acceptsprecursorkey") then
 			--sb.logInfo("target: %s",v)
-			target=v
+			targetPositions[v]={spaces=poly.boundBox(world.objectSpaces(v)),pos=world.entityPosition(v)}
 		end
-		break
 	end
-	local rangecheck = world.magnitude(mcontroller.position(), position) <= self.maxRange and not world.lineTileCollision(vec2.add(mcontroller.position(), activeItem.handPosition(self.baseOffset)), position)
+	
+	eList=targetPositions
+	
+	for target,data in pairs(eList) do
+		local size=rect.size(data.spaces)
+		local center={(size[1]+1)/2.0,(size[2]+1)/2.0}
+		local centerpos=vec2.add(data.pos,center)
+		targetPositions[target]={centerpos=centerpos}
+	end
+	
+	local nearestID=nil
+	local nearestDistance=-1
+	
+	local wSize=world.size()
+	for target,data in pairs(targetPositions) do
+		local dist=vec2.mag(world.distance(data.centerpos,aimPos))
+		if nearestDistance<0 then
+			nearestDistance=dist
+			nearestID=target
+		elseif dist<nearestDistance then
+			nearestDistance=dist
+			nearestID=target
+		end
+	end
+	
+	target=nearestID
+	local rangecheck = world.magnitude(mcontroller.position(), aimPos) <= self.maxRange and not world.lineTileCollision(vec2.add(mcontroller.position(), activeItem.handPosition(self.baseOffset)), aimPos)
 	local firing=(fireMode=="primary" or fireMode=="alt")
 
 	if rangecheck then
