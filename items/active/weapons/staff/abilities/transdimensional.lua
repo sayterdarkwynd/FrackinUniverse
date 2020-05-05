@@ -93,7 +93,7 @@ function Controlledteleport:discharge()
   local wType=world.type()
   local permittedWorld =
   (status.statPositive("admin") or player.isAdmin())
-	or ((world.terrestrial() or wType == "outpost" or wType == "unknown" or wType == "playerstation") and world.dayLength() ~= 100000)
+	or ((world.terrestrial() or wType == "asteroids" or wType == "outpost" or wType == "unknown" or wType == "playerstation") and world.dayLength() ~= 100000)
 	or (wType=="scienceoutpost" and player.hasCountOfItem("sciencebrochure2")>0)
   local lineOfSightActive = not world.lineTileCollision(activeItem.ownerAimPosition(), mcontroller.position())  
   
