@@ -56,15 +56,16 @@ function moveLiquid(inputLocation,outputLocation)
 				world.setTileProtection(world.dungeonId(self.outputLocation), false)
 				protectCheckOutput=true
             end
-			
+			local destroyed=false
 			if world.isTileProtected(inputLocation) then
-				world.forceDestroyLiquid(isTileProtected)
+				destroyed=world.forceDestroyLiquid(isTileProtected)
 			else
-				world.destroyLiquid(inputLocation)
+				destroyed=world.destroyLiquid(inputLocation)
 			end
 			
-            world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
-           
+			if destroyed then
+				world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
+           end
             if protectCheckOutput then 
 				world.setTileProtection(world.dungeonId(self.outputLocation), true) 
             end
