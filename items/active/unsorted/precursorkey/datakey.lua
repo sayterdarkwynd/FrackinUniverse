@@ -42,7 +42,7 @@ function update(dt, fireMode, shiftHeld)
 	local nearestID=nil
 	local nearestDistance=-1
 	
-	local wSize=world.size()
+	--local wSize=world.size()
 	for target,data in pairs(targetPositions) do
 		local dist=vec2.mag(world.distance(data.centerpos,aimPos))
 		if nearestDistance<0 then

@@ -29,7 +29,7 @@ function setCurrentOutput()
 		
         if outputId then
             self.outputLocation = world.entityPosition(outputId)
-            self.outputProtected = world.isTileProtected(self.outputLocation)
+            --self.outputProtected = world.isTileProtected(self.outputLocation)
 			self.liquidStandard = not isPressure
 			self.liquidPressurized = isPressure
 			return true
@@ -39,7 +39,7 @@ function setCurrentOutput()
 	self.liquidStandard=false
 	self.liquidPressurized=false
 	self.outputLocation=nil
-	self.outputProtected=nil
+	--self.outputProtected=nil
 	return false
 end
 
@@ -50,16 +50,23 @@ function moveLiquid(inputLocation,outputLocation)
         local outputLiquid = world.liquidAt(outputLocation)
 		
         if (self.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inputLiquid[1] and outputLiquid[2] < 1))) then 
-            
-			if self.outputProtected then 
-				world.setTileProtection(world.dungeonId(self.outputLocation), false) 
+
+			local protectCheckOutput=false
+			if world.isTileProtected(self.outputLocation) then
+				world.setTileProtection(world.dungeonId(self.outputLocation), false)
+				protectCheckOutput=true
             end
+			local destroyed=false
+			if world.isTileProtected(inputLocation) then
+				destroyed=world.forceDestroyLiquid(isTileProtected)
+			else
+				destroyed=world.destroyLiquid(inputLocation)
+			end
 			
-            world.destroyLiquid(inputLocation)
-			
-            world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
-           
-            if self.outputProtected then 
+			if destroyed then
+				world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
+           end
+            if protectCheckOutput then 
 				world.setTileProtection(world.dungeonId(self.outputLocation), true) 
             end
             
