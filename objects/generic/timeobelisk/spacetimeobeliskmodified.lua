@@ -8,21 +8,26 @@ end
 
 function update(dt)
 	if self and self.range and itemList and (storage.effects) then
-		animator.setAnimationState("switchState", "on")
-		if storage.effects then
-			for _,effect in pairs(storage.effects) do
-				effectUtil.effectTypesInRange(effect.status,self.range,effect.types,dt*(effect.durationMod or 4),effect.team)
+		if not deltaTime or deltaTime > 1 then
+			animator.setAnimationState("switchState", "on")
+			if storage.effects then
+				for _,effect in pairs(storage.effects) do
+					effectUtil.effectTypesInRange(effect.status,self.range,effect.types,(deltaTime or 1.0)*(effect.durationMod or 2),effect.team)
+				end
 			end
-		end
-		if storage.messages then
-			for _,effect in pairs(storage.messages) do
-				effectUtil.messageTypesInRange(effect.message,self.range,effect.types,effect.team,effect.args)
+			if storage.messages then
+				for _,effect in pairs(storage.messages) do
+					effectUtil.messageTypesInRange(effect.message,self.range,effect.types,effect.team,effect.args)
+				end
 			end
-		end
-		if self.objectEffects then
-			for _,effect in pairs (self.objectEffects) do
-				effectUtil.effectAllInRange(effect,self.range,5)
+			if self.objectEffects then
+				for _,effect in pairs (self.objectEffects) do
+					effectUtil.effectAllInRange(effect,self.range,5)
+				end
 			end
+			deltaTime=0
+		else
+			deltaTime=deltaTime+dt
 		end
 	else
 		animator.setAnimationState("switchState", "off")
