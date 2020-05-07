@@ -11,7 +11,7 @@ function update(dt)
 		animator.setAnimationState("switchState", "on")
 		if storage.effects then
 			for _,effect in pairs(storage.effects) do
-				effectUtil.effectTypesInRange(effect.status,self.range,effect.types,dt*(effect.durationMod or 2),effect.team)
+				effectUtil.effectTypesInRange(effect.status,self.range,effect.types,dt*(effect.durationMod or 4),effect.team)
 			end
 		end
 		if storage.messages then
