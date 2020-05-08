@@ -1,6 +1,10 @@
 local CSAILoldInit = init
 
 function init()
+	if (not world.getProperty("ship.fuel")) and config.getParameter("uniqueId") then
+		object.smash()
+	end
+
 	if CSAILoldInit then CSAILoldInit() end
 	object.setConfigParameter("retainScriptStorageInItem", true)
 	self.fallback = false
