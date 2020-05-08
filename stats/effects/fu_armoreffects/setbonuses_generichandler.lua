@@ -9,12 +9,9 @@ function init()
 end
 
 function update()
-	if checkSetWorn(self.setBonusCheck) then
+	if self.setBonusCheck and checkSetWorn(self.setBonusCheck) then
 		applySetEffects()
+	elseif not self.setBonusCheck then
+		setSEBonusInit(setName,setStatEffects)
 	end
-end
-
-
-function init()
-	effect.expire()
 end
