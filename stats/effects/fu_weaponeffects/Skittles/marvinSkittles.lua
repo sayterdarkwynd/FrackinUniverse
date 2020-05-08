@@ -4,7 +4,7 @@ gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pf
 
 
 function init()
-	if world.getProperty("ship.fuel") not status.resourcePositive("health") then
+	if world.getProperty("ship.fuel") or (not status.resourcePositive("health")) then
 		effect.expire()
 		return
 	end
