@@ -12,6 +12,8 @@ function init()
 	self.drainInterval=config.getParameter("drainInterval", 0)
 	self.spawnInterval=config.getParameter("spawnInterval", 0)
 	self.spawnBaseDamage = config.getParameter("spawnBaseDamage", 5)
+	self.controlForce=config.getParameter("controlForce",30)
+	self.maxSpeed=config.getParameter("maxSpeed",14)
 	baseInit()
 end
 
@@ -27,11 +29,11 @@ function update(dt)
 	end
 	if self.spawnTimer <= 0 then
 		local damageCalc=(status.stat("maxHealth")*(self.spawnBaseDamage*self.healthDrainPcnt*(self.spawnInterval/self.drainInterval))) * (((status.stat("powerMultiplier")-1.0)*0.5)+1.0)
-		local monsters = world.monsterQuery(entity.position(), self.spawnSearchRadius, { order = "nearest" })
+		local monsters = world.entityQuery(entity.position(), self.spawnSearchRadius, { order = "nearest",includedTypes={"creature"}})
 		for i, monsterID in ipairs(monsters) do
-			if entity.entityInSight(monsterID) then
+			if entity.isValidTarget(monsterID) and entity.entityInSight(monsterID) then
 				local dir =  vec2.rotate({1, 0}, vec2.angle(vec2.sub(world.entityPosition(monsterID), entity.position())))
-				world.spawnProjectile("hivemindspawn", entity.position(), entity.id(), dir, nil, {controlForce=30,maxSpeed=14,spawnSearchRadius=self.spawnSearchRadius,target=monsterID,power = damageCalc})
+				world.spawnProjectile("hivemindspawn", entity.position(), entity.id(), dir, nil, {controlForce=self.controlForce,maxSpeed=self.maxSpeed,spawnSearchRadius=self.spawnSearchRadius,target=monsterID,power = damageCalc})
 				break
 			end
 		end
