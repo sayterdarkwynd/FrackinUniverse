@@ -108,7 +108,7 @@ function update(dt)
       mcontroller.controlParameters(self.submergedParameters)  
     elseif (mcontroller.liquidPercentage() < self.shoulderHeight) and (status.stat("boostAmount") <=1) then --are half submerged and not boosted
       mcontroller.controlParameters(self.monsterWaterParameters)
-    elseif (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() > 0.4) and (status.stat("boostAmount") > 1)) then  --if the player is shoulder depth, or shallow depth+boosted
+    elseif (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() >= self.shoulderHeight) and (status.stat("boostAmount") > 1)) then  --if the player is shoulder depth, or shallow depth+boosted
       mcontroller.controlModifiers({speedModifier = self.finalValue})			
       mcontroller.controlParameters(self.basicWaterParameters)      
     else
