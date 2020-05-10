@@ -11,7 +11,9 @@
 		"minHealthPcnt" : 0.10,//drains down to
 		"drainInterval" : 0.5,//drain every x seconds
 		"spawnInterval" : 1,//spawn every x seconds
-		"spawnSearchRadius" : 500,
+		"spawnSearchRadius" : 42,//should never be greater than maxSpeed * timeToLive
+		"controlForce" : 30,
+		"maxSpeed" : 14,
 		"spawnBaseDamage" : 5//actually used as a multiplier now.
 		//formula: spawnbasedamage * hp drain percent * (spawn interval/drain interval) * power * hp * spawnbasedamage
 	}

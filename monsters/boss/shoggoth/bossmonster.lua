@@ -69,6 +69,7 @@ function update(dt)
     if self.hadTarget == false then
       self.hadTarget = true
     end
+	monster.setAggressive(true)
     script.setUpdateDelta(1)
     updatePhase(dt)
   else
@@ -77,6 +78,7 @@ function update(dt)
       if currentPhase() then
         self.phaseStates[currentPhase()].endState()
       end
+	  monster.setAggressive(false)
       self.hadTarget = false
       self.phase = nil
       self.lastPhase = nil
