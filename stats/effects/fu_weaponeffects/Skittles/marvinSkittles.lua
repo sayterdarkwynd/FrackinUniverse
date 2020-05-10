@@ -20,14 +20,18 @@ function init()
 end
 
 function update(dt)
-	if not adminCheck and not (world.isMonster(entity.id()) or world.isNpc(entity.id())) then
-		adminCheck=world.sendEntityMessage(entity.id(),"player.isAdmin")
-	end
-	if adminCheck and not adminCheckDone then
-		if adminCheck:finished() and adminCheck:succeeded() then
-			self.isAdmin=adminCheck:result()
+	if not adminCheckDone then
+		if not adminCheck and not (world.isMonster(entity.id()) or world.isNpc(entity.id())) then
+			adminCheck=world.sendEntityMessage(entity.id(),"player.isAdmin")
+		elseif (world.isMonster(entity.id()) or world.isNpc(entity.id())) then
 			adminCheckDone=true
-			if self.isAdmin then effect.expire() return end
+		end
+		if adminCheck then
+			if adminCheck:finished() and adminCheck:succeeded() then
+				self.isAdmin=adminCheck:result()
+				adminCheckDone=true
+				if self.isAdmin then effect.expire() return end
+			end
 		end
 	end
 	--sb.logInfo("%s",{adminCheck,adminCheckDone,adminCheck:finished(),adminCheck:succeeded(),adminCheck:result(),self.isAdmin})
