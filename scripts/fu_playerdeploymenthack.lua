@@ -4,6 +4,7 @@ function init()
 	if _init then
 		_init()
 	end
+	message.setHandler("player.isAdmin",player.isAdmin)
 	message.setHandler("player.uniqueId",player.uniqueId)
 	message.setHandler("player.worldId",player.worldId)
 	message.setHandler("player.availableTechs", player.availableTechs)
