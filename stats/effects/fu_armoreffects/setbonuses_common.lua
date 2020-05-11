@@ -71,7 +71,7 @@ end
 
 function checkSetWorn(mySet)
 	--used everywhere
-	return status.stat(mySet[1]) == 1 and status.stat(mySet[2]) == 1 and status.stat(mySet[3]) == 1
+	return status.statPositive(mySet[1]) and status.statPositive(mySet[2]) and status.statPositive(mySet[3])
 end
 
 function checkSetLevel(mySet)
