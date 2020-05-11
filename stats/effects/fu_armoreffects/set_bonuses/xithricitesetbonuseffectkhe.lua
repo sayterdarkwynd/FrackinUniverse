@@ -57,11 +57,11 @@ function checkShell()
 	if rsp > 0.05 then
 		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
 		if rsp>1.0 then rsp=1.0 elseif rsp<0 then rsp=0 end
-		local opacity=string.format("%x",math.floor(rsp*255))
+		local opacity=string.format("%x",math.floor(rsp*255*0.5))
 		if string.len(opacity)==1 then
 			opacity="0"..opacity
 		end
-		effect.setParentDirectives("border=1;FF00FF"..opacity..";00000000")
+		effect.setParentDirectives("border=1;4EFDF2"..opacity..";00000000")
 	else
 		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
 		effect.setParentDirectives("")

@@ -8,17 +8,33 @@ function init()
 		effect.expire()
 		return
 	end
+
 	self.tickDamagePercentage = 0.025
 	self.tickTime = 1.0
 	self.tickTimer = self.tickTime
-	spaz(1)
+	--[[spaz(1)
 	stun()
 	if status.isResource("energy") then
 		status.setResourcePercentage("energy",0)
-	end
+	end]]
 end
 
 function update(dt)
+	if not adminCheckDone then
+		if not adminCheck and not (world.isMonster(entity.id()) or world.isNpc(entity.id())) then
+			adminCheck=world.sendEntityMessage(entity.id(),"player.isAdmin")
+		elseif (world.isMonster(entity.id()) or world.isNpc(entity.id())) then
+			adminCheckDone=true
+		end
+		if adminCheck then
+			if adminCheck:finished() and adminCheck:succeeded() then
+				self.isAdmin=adminCheck:result()
+				adminCheckDone=true
+				if self.isAdmin then effect.expire() return end
+			end
+		end
+	end
+	--sb.logInfo("%s",{adminCheck,adminCheckDone,adminCheck:finished(),adminCheck:succeeded(),adminCheck:result(),self.isAdmin})
 	if world.getProperty("ship.fuel") or not status.resourcePositive("health") then
 		stun(true)
 		effect.expire()
