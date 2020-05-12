@@ -1,8 +1,8 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
-	{stat = "critChance", amount = 6},
-	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
+	{stat = "critChance", amount = 5},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorBonus={
@@ -16,7 +16,7 @@ armorBonus={
 	{stat = "fumudslowImmunity", amount = 1}
 }
 
-setName="fu_slimeset3"
+setName="fu_slimeset2"
 
 function init()
 	self.timer = math.max(math.random(6),math.random(6))
@@ -37,9 +37,9 @@ function update(dt)
 	
     if self.timer <= 0 then
    	    if math.random(1000) <= util.round(status.stat("critChance")*1000,0) then
-   	      self.type = "magmaslimespawned"
+   	      self.type = "tarslimespawned"
    	    else
-   	      self.type = "magmamicroslimespawned"
+   	      self.type = "tarmicroslimespawned"
 	    end
 	    local parameters = {}
 	    parameters.persistent = false

@@ -6,7 +6,7 @@
   "maxStack" : 1,
   "rarity" : "legendary",
    "description" : "^orange;Set Bonuses^reset;:
-^yellow;^reset; ^cyan;Summons Minions^reset;
+^yellow;^reset; ^cyan;Dark Commander^reset;: 30%
 ^yellow;^reset; ^cyan;Darkness Regen^reset;
 ^yellow;^reset; Elder Weapons: ^green;25^reset;% More Damage
 ^yellow;^reset; ^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid, Liq. Nitrogen", 
@@ -45,18 +45,15 @@
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "shadowResistance",
       "amount" : 0.0175
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_elderset_legs",
+      "amount" : 1
     }
   ],
   "statusEffects" : [
-    "eldersetbonus",
-    {
-      "stat" : "fu_elderset_legs",
-      "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.07
-    }
+    "eldersetbonus"
   ],
 
   "questTags" : [ "elderarmor" ],

@@ -6,9 +6,9 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;:
-^green;Spawns minions^reset;
-Slime weapons: +^green;6^reset;% Crit, +^green;20^reset;% More Damage
-^cyan;Immune ^reset;: Poison, Bio-Ooze, Slime, Mud, Clay, Snow, Ice Slip", 
+^yellow;^reset; ^cyan;Spawns Minions^reset;: Magma Slime
+^yellow;^reset; Slime weapons: +^green;6^reset;% Crit, +^green;20^reset;% More Damage
+^yellow;^reset; ^cyan;Immune ^reset;: Poison, Bio-Ooze, Slime, Mud, Clay, Snow, Ice Slip", 
   "shortdescription" : "Red Slime Chest",
   "category" : "chestarmour",
   "tooltipKind" : "armornew2",
@@ -57,15 +57,16 @@ Slime weapons: +^green;6^reset;% Crit, +^green;20^reset;% More Damage
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "radioactiveResistance",
       "amount" : 0.043333
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset3_chest",
+      "amount" : 1
     }
   ],
 
   "statusEffects" : [
-    "slimesetbonus3",
-    {
-      "stat" : "fu_slimeset3_chest",
-      "amount" : 1
-    }
+    "slimesetbonus3"
   ],
 
 
