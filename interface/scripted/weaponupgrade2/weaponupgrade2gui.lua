@@ -112,8 +112,8 @@ function showWeapon(item, price, priceMax)
 	
 	if not self.isUpgradeKit then
 		if item then
-			enableButton = playerEssence >= price
-			enableButtonMax = playerEssence >= priceMax
+			enableButton = price and (playerEssence >= price)
+			enableButtonMax = priceMax and (playerEssence >= priceMax)
 			local directive = enableButton and "^green;" or "^red;"
 			local directive2 = enableButtonMax and "^green;" or "^red;"
 			widget.setText("essenceCost", string.format("%s / %s%s^reset; (%s%s^reset;)", playerEssence,directive, price or "--",directive2, priceMax or "--"))
