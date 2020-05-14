@@ -30,7 +30,7 @@ function update(dt)
 		if not self.timer or self.timer >= 1 then
 			for _,id in pairs(world.monsterQuery(entity.position(),50)) do
 				if not entity.isValidTarget(id) then
-					world.sendEntityMessage(id, "applyStatusEffect", "fudarkcommander30", self.timer*1.01, entity.id())
+					world.sendEntityMessage(id, "applyStatusEffect", "fudarkcommander30", (self.timer or 1.0)*2, entity.id())
 				end
 			end
 			self.timer = 0
