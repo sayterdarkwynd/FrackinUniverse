@@ -8,7 +8,7 @@ function init()
 	poolData=config.getParameter("poolData")
 	entType=world.entityType(entity.id())
 	if poolData then
-		blocker=config.getParameter("blocker","deathbombcomplextreasurepool")
+		if not blocker then blocker=config.getParameter("blocker","deathbombcomplextreasurepool") end
 		if entType=="monster" then
 			local minBaseHealth=config.getParameter("minBaseHealth",10)
 			local eConfig=root.monsterParameters(world.entityTypeName(entity.id()))
@@ -42,6 +42,7 @@ function uninit()
 end
 
 function explode()
+	if not blocker then blocker=config.getParameter("blocker","deathbombcomplextreasurepool") end
 	if not exploded then
 		if not (status.stat(blocker) > 0) and poolData then
 			local stub=poolData[entType] and poolData[entType][subType] or poolData[entType] and poolData[entType]["default"] or poolData["default"]

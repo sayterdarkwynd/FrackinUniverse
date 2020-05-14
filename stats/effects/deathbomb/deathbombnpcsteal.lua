@@ -6,6 +6,7 @@ function init()
 	end
 
 	self.blinkTimer = 0
+	if not blocker then blocker=config.getParameter("blocker","deathbombnpcsteal") end
 end
 
 function update(dt)
@@ -28,7 +29,8 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat("npcstealdeathbombblocker") > 0) then
+	if not blocker then blocker=config.getParameter("blocker","deathbombnpcsteal") end
+	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat(blocker) > 0) then
 		local chance=config.getParameter("chance",100)
 		local dropPool={}
 		local slotList={"head","headCosmetic","chest","chestCosmetic","legs","legsCosmetic","back","backCosmetic","primary","alt"}
@@ -62,7 +64,7 @@ function explode()
 				end
 			end
 		end
-		status.addPersistentEffect("npcstealdeathbombblocker",{stat="npcstealdeathbombblocker",amount=1})
+		status.addPersistentEffect(blocker,{stat=blocker,amount=1})
 		self.exploded = true
 		if status.isResource("stunned") then
 			status.setResource("stunned",0)

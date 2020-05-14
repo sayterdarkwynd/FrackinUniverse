@@ -3,7 +3,7 @@ function init()
 		effect.expire()
 	end
 	self.blinkTimer = 0
-	blocker=config.getParameter("blocker","deathbombitemblocker")
+	if not blocker then blocker=config.getParameter("blocker","deathbombitem") end
 end
 
 function update(dt)
@@ -26,7 +26,7 @@ function uninit()
 end
 
 function explode()
-	if not blocker then blocker=config.getParameter("blocker","deathbombitemblocker") end
+	if not blocker then blocker=config.getParameter("blocker","deathbombitem") end
 	
 	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat(blocker) > 0) then
 		local healthMultiplier=config.getParameter("healthMultiplier",1)

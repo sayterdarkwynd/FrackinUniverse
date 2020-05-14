@@ -4,6 +4,7 @@ function init()
 	end
 	
 	self.blinkTimer = 0
+	if not blocker then blocker=config.getParameter("blocker","deathbombsimpleprojectile") end
 end
 
 function update(dt)
@@ -26,7 +27,8 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded and not (status.stat("deathbombDud") > 0) then
+	if not blocker then blocker=config.getParameter("blocker","deathbombsimpleprojectile") end
+	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat(blocker) > 0) then
 		local projectileData=config.getParameter("projectile","invisibleprojectile")
 		
 		if type(projectileData)=="table" then
@@ -37,6 +39,7 @@ function explode()
 			world.spawnProjectile(projectileData, mcontroller.position(), 0, {0, 0}, false)
 		end
 		self.exploded = true
+		status.addPersistentEffect(blocker,{stat=blocker,amount=1})
 		if status.isResource("stunned") then
 			status.setResource("stunned",0)
 		end

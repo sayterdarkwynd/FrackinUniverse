@@ -4,6 +4,7 @@ function init()
 	end
 	
 	self.blinkTimer = 0
+	if not blocker then blocker=config.getParameter("blocker","deathbombmonsterspawnsimple") end
 end
 
 function update(dt)
@@ -26,7 +27,9 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded and not (status.stat("deathbombDud") > 0) then
+	if not blocker then blocker=config.getParameter("blocker","deathbombmonsterspawnsimple") end
+	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat(blocker) > 0) then
+		status.addPersistentEffect(blocker,{stat=blocker,amount=1})
 		local monsters=config.getParameter("monsters")
 		--sb.logInfo("%s",monsters)
 		if monsters then
