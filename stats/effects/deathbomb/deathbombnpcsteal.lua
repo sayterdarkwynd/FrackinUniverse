@@ -19,7 +19,7 @@ function update(dt)
 		effect.setParentDirectives("")
 	end
 
-	if not status.resourcePositive("health") and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
+	if (status.resourcePercentage("health") <= 0.05) and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
 		explode()
 	end
 end
@@ -30,7 +30,7 @@ end
 
 function explode()
 	if not blocker then blocker=config.getParameter("blocker","deathbombnpcsteal") end
-	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat(blocker) > 0) then
+	if not self.exploded and not status.statPositive("deathbombDud") and not status.statPositive(blocker) then
 		local chance=config.getParameter("chance",100)
 		local dropPool={}
 		local slotList={"head","headCosmetic","chest","chestCosmetic","legs","legsCosmetic","back","backCosmetic","primary","alt"}
