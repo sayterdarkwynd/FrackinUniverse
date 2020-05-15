@@ -5,8 +5,9 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-^yellow;^reset; ^cyan;Spawns minions^reset;
-^yellow;^reset; Slime weapons: ^green;10^reset;% More Damage, +^green;5%^reset; Crit Chance;
+^yellow;^reset; ^cyan;Spawns Minions^reset;: Slimes
+^yellow;^reset; ^green;10^reset;% More HP
+^yellow;^reset; Slime weapons: ^green;10^reset;/^green;20^reset;% More Damage, +^green;5%^reset; Crit Chance;
 ^yellow;^reset; ^cyan;Immune^reset;: Slime, Mud, Clay",
 
   "shortdescription" : "Slime Helm",
@@ -48,15 +49,16 @@
       "levelFunction" : "fuArmorResistMultiplier",
       "stat" : "poisonResistance",
       "amount" : 0.046666
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset_head",
+      "amount" : 1
     }
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "slimesetcount",
-      "amount" : 1
-    }
+    "slimesetbonus"
   ],
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },

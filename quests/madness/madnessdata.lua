@@ -410,6 +410,6 @@ function isWeirdStuff()
 end
 
 function uninit()
-	status.clearPersistentEffects("madnessEffectsMain")
+	status.setPersistentEffects("madnessEffectsMain",{})
 	world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
 end

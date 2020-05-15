@@ -5,7 +5,9 @@ function init()
 		effect.expire()
 	else
 		canRun=true
+		if not blocker then blocker=config.getParameter("blocker","deathbombmonsterhydra") end
 	end
+	
 	self.blinkTimer = 0
 end
 
@@ -20,7 +22,7 @@ function update(dt)
 			effect.setParentDirectives("")
 		end
 
-		if not status.resourcePositive("health") and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
+		if (status.resourcePercentage("health") <= 0.05) and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
 			explode()
 		end
 	end
@@ -31,8 +33,9 @@ function uninit()
 end
 
 function explode()
+	if not blocker then blocker=config.getParameter("blocker","deathbombmonsterhydra") end
 	--sb.logInfo("%s",status.stat("deathbombDud"))
-	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat("monsterhydradeathbombblocker") > 0) then
+	if not self.exploded and not status.statPositive("deathbombDud") and not status.statPositive(blocker) then
 		local monsterParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
 		local monsterData=root.monsterParameters(world.monsterType(entity.id()))
 		if monsterData and monsterData.behaviorConfig then
@@ -61,7 +64,7 @@ function explode()
 		for _=1,config.getParameter("count",1) do
 			world.spawnMonster(world.monsterType(entity.id()),entity.position(),monsterParams)
 		end
-		status.addPersistentEffect("monsterhydradeathbombblocker",{stat="monsterhydradeathbombblocker",amount=1})
+		status.addPersistentEffect(blocker,{stat=blocker,amount=1})
 		self.exploded = true
 		if status.isResource("stunned") then
 			status.setResource("stunned",0)

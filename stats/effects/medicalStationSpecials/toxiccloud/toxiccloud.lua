@@ -5,9 +5,9 @@ function init()
 	self.cloudInterval = 0
 	self.onShip = false
 	
-	self.modifierGroupID = effect.addStatModifierGroup({
+	--[[self.modifierGroupID = effect.addStatModifierGroup({
 		{stat = "foodDelta", amount = config.getParameter("foodConsumption", 0)}
-	})
+	})]]
 	
 	local data = root.assetJson("/projectiles/medicalStationSpecials/toxicCloud/toxiccloud.projectile")
 	self.baseDamage = data.power
@@ -42,5 +42,5 @@ function update(dt)
 end
 
 function uninit()
-	baseUninit(self.modifierGroupID)
+	--baseUninit(self.modifierGroupID)
 end

@@ -45,6 +45,7 @@ function update(dt, fireMode, shiftHeld)
 					status.addEphemeralEffect("nude",2.5)
 					status.addEphemeralEffect("energy_negative_100_hidden",2.5)
 					mcontroller.setPosition(buffer.position)
+					sb.logInfo("fumementomori.lua:update:firingblock:recording use: %s",buffer)
 					item.consume(1)
 				end
 				teleportTimer=teleportTimer+dt

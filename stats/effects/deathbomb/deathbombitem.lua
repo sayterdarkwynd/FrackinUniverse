@@ -3,7 +3,7 @@ function init()
 		effect.expire()
 	end
 	self.blinkTimer = 0
-	blocker=config.getParameter("blocker","deathbombitemblocker")
+	if not blocker then blocker=config.getParameter("blocker","deathbombitem") end
 end
 
 function update(dt)
@@ -16,7 +16,7 @@ function update(dt)
 		effect.setParentDirectives("")
 	end
 
-	if not status.resourcePositive("health") and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
+	if (status.resourcePercentage("health") <= 0.05) and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
 		explode()
 	end
 end
@@ -26,9 +26,9 @@ function uninit()
 end
 
 function explode()
-	if not blocker then blocker=config.getParameter("blocker","deathbombitemblocker") end
+	if not blocker then blocker=config.getParameter("blocker","deathbombitem") end
 	
-	if not self.exploded and not (status.stat("deathbombDud") > 0) and not (status.stat(blocker) > 0) then
+	if not self.exploded and not status.statPositive("deathbombDud") and not status.statPositive(blocker) then
 		local healthMultiplier=config.getParameter("healthMultiplier",1)
 		local healthMax=status.resourceMax("health")
 		local item=config.getParameter("item","money")

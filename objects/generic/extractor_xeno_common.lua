@@ -109,6 +109,7 @@ function update(dt)
 				fu_sendOrStoreItems(0, {name = k, count = techlevelMap(v)}, {0, 1, 2}, true)
 			end
 			storage.output = nil
+			storage.inputs = nil
 			storage.timer = self.mintick --reset timer to a safe minimum
 		else
 			if not startCrafting(getValidRecipes(getInputContents())) then

@@ -1,6 +1,6 @@
 function build(directory, config, parameters, level, seed)
 	if not parameters.timeToRot then
-		if not config.itemAgingScripts then
+		if config.itemAgingScripts then
 			local rottingMultiplier = parameters.rottingMultiplier or config.rottingMultiplier or 1.0
 			parameters.timeToRot = root.assetJson("/items/rotting.config:baseTimeToRot") * rottingMultiplier
 		end
