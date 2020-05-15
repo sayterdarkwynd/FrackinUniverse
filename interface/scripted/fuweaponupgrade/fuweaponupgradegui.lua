@@ -219,13 +219,14 @@ function upgrade(fullUpgrade)
 					if upgradedItem.parameters.maxFallSpeed then
 						upgradedItem.parameters.maxFallSpeed = (itemConfig.parameters.maxFallSpeed or itemConfig.config.maxFallSpeed or 1) - 4 
 					end	 		
-						
+					
+					--[[removing all fire rate modifiers due to the annoying bugs and scaling issues
 					-- hoe, chainsaw, etc
 					if upgradedItem.parameters.fireTime then
 						if not (itemConfig.config.category == "Gun Staff") and not (itemConfig.config.category == "sggunstaff") then --exclude Shellguard gunblades from this bit to not break their rotation
 						  upgradedItem.parameters.fireTime = (itemConfig.parameters.fireTime or itemConfig.config.fireTime or 1) * 1.15 
 						end
-					end
+					end]]
 
 					if upgradedItem.parameters.blockRadius then
 						upgradedItem.parameters.blockRadius = (itemConfig.parameters.blockRadius or itemConfig.config.blockRadius or 1) + 1
@@ -318,6 +319,8 @@ function upgrade(fullUpgrade)
 							}
 						end
 
+
+						--[[removing all fire rate modifiers due to the annoying bugs and scaling issues
 						-- we reduce fire time slightly as long as the weapon isnt already too fast firing. 
 						if (itemConfig.config.primaryAbility.fireTime) then
 						  local fireTimeBase = itemConfig.config.primaryAbility.fireTime
@@ -331,12 +334,12 @@ function upgrade(fullUpgrade)
 							upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2  
 						  end
 
-						end
+						end]]
 
 						-- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
 						if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then    
 							local baseDpsBase = itemConfig.config.primaryAbility.baseDps
-							local baseDpsMod = (upgradedItem.parameters.level/80)
+							local baseDpsMod = (upgradedItem.parameters.level/79)
 							local baseDpsFinal = baseDpsBase * (1 + baseDpsMod )
 							upgradedItem.parameters.primaryAbility.baseDps = baseDpsFinal 
 						end							

@@ -37,6 +37,7 @@ function setSEBonusInit(setBonusName, SetBonusEffects)
 	self.setBonusName = setBonusName
 	self.setBonusCheck = { setBonusName .. '_head', setBonusName .. '_chest', setBonusName .. '_legs' }
 	self.setBonusEffects = SetBonusEffects
+	self.SETagCache=self.SETagCache or {}
 end
 
 function update()
@@ -109,10 +110,6 @@ function removeSetBonus()
 		for _, callback in pairs(self.callbacks) do
 			if callback.uninit then callback.uninit() end
 		end
-
-		--effect.setParentDirectives(nil)
-
-		--sb.logInfo("Set bonus removed: %s", self.setBonusName)
 	end
 end
 
@@ -129,37 +126,39 @@ function weaponCheck(tags)
 	weaponCheckResults["both"]=false
 	weaponCheckResults["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
 	
-	if heldItemPrimary~=nil and heldItemAlt~=nil then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
-				weaponCheckResults["primary"]=true
-				weaponCheckResults["alt"]=true
-				weaponCheckResults["both"]=true
-				weaponCheckResults["either"]=true
-			elseif root.itemHasTag(heldItemPrimary,tag) then
-				weaponCheckResults["primary"]=true
-				weaponCheckResults["either"]=true
-			elseif root.itemHasTag(heldItemAlt,tag) then
-				weaponCheckResults["alt"]=true
-				weaponCheckResults["either"]=true
-			end
+	if heldItemPrimary and not self.SETagCache[heldItemPrimary] then
+		local buffer=root.itemConfig(heldItemPrimary)
+		buffer=util.mergeTable(buffer.config,buffer.parameters)
+		local buffer2=buffer.elementalType
+		buffer=buffer.itemTags or {}
+		if buffer2 then table.insert(buffer,buffer2) end
+		buffer2={}
+		for _,v in pairs(buffer) do
+			buffer2[v]=true
 		end
-	elseif heldItemPrimary~=nil then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemPrimary,tag) then
-				weaponCheckResults["primary"]=true
-				weaponCheckResults["either"]=true
-			end
+		self.SETagCache[heldItemPrimary]=buffer2
+	end
+
+	if heldItemAlt and not self.SETagCache[heldItemAlt] then
+		local buffer=root.itemConfig(heldItemAlt)
+		buffer=util.mergeTable(buffer.config,buffer.parameters)
+		buffer=buffer.itemTags or {}
+		local buffer2={}
+		for _,v in pairs(buffer) do
+			buffer2[v]=true
 		end
-	elseif heldItemAlt~=nil	then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemAlt,tag) then
-				weaponCheckResults["alt"]=true
-				weaponCheckResults["either"]=true
-			end
-		end
+		self.SETagCache[heldItemAlt]=buffer2
 	end
 	
+	for _,tag in pairs(tags) do
+		local primaryHasTag=heldItemPrimary and self.SETagCache[heldItemPrimary][tag]
+		local altHasTag=heldItemAlt and self.SETagCache[heldItemAlt][tag]
+		weaponCheckResults["primary"]=weaponCheckResults["primary"] or primaryHasTag
+		weaponCheckResults["alt"]=weaponCheckResults["primary"] or altHasTag
+		weaponCheckResults["both"]=weaponCheckResults["primary"] or (primaryHasTag and altHasTag)
+		weaponCheckResults["either"]=weaponCheckResults["primary"] or primaryHasTag or altHasTag
+	end
+
 	return weaponCheckResults
 end
 

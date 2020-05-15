@@ -6,14 +6,13 @@
   "rarity" : "rare",
   "description" : "Ghostly as a spirit.
 ^cyan;Inflicts Shadow Gas^reset;",
-  "shortdescription" : "Phantasm Blade",
+  "shortdescription" : "Phantasm Greatblade",
   "tooltipKind" : "sword2",
-  "category" : "longsword",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","broadsword","longsword","effigium", "upgradeableWeapon"],
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","effigium", "upgradeableWeapon","shadow"],
   "inventoryIcon" : "effigiumbroadsword.png",
-  "collectablesOnPickup" : { "fu_weaponlongsword" : "effigiumbroadsword" },
-  "animation" : "combolongswordglow.animation",
+  "animation" : "combobroadswordglow.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "effigiumbroadsword.png",
@@ -33,8 +32,8 @@
 
   "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
-    "fireTime" : 0.93,
-    "baseDps" : 6.8,
+    "fireTime" : 0.89,
+    "baseDps" : 10,
     "damageConfig" : {
       "damageSourceKind": "shadowbroadsword",
       "statusEffects" : [ "shadowgasfx" ]
