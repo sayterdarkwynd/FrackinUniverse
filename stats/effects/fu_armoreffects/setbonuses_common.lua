@@ -154,9 +154,9 @@ function weaponCheck(tags)
 		local primaryHasTag=heldItemPrimary and self.SETagCache[heldItemPrimary][tag]
 		local altHasTag=heldItemAlt and self.SETagCache[heldItemAlt][tag]
 		weaponCheckResults["primary"]=weaponCheckResults["primary"] or primaryHasTag
-		weaponCheckResults["alt"]=weaponCheckResults["primary"] or altHasTag
-		weaponCheckResults["both"]=weaponCheckResults["primary"] or (primaryHasTag and altHasTag)
-		weaponCheckResults["either"]=weaponCheckResults["primary"] or primaryHasTag or altHasTag
+		weaponCheckResults["alt"]=weaponCheckResults["alt"] or altHasTag
+		weaponCheckResults["both"]=weaponCheckResults["both"] or (primaryHasTag and altHasTag)
+		weaponCheckResults["either"]=weaponCheckResults["either"] or primaryHasTag or altHasTag
 	end
 
 	return weaponCheckResults
