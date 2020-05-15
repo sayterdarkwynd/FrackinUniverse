@@ -11,7 +11,11 @@ end
 
 function update(dt)
 	if oldUpdate then oldUpdate(dt) end
-	status.modifyResourcePercentage("health",-dt*(1/(ghostLostPetData.ghostDuration or 30)))
+	
+	if ghostLostPetData.ghostDuration then
+		status.modifyResourcePercentage("health",-dt*(1/(ghostLostPetData.ghostDuration)))
+	end
+	
 	if not ghostLostPetDelta or ghostLostPetDelta > 1.0 then
 		status.addEphemeralEffects({{effect="ghostlyglow",duration=60},{effect="invisible",duration=60},{effect="cultistshieldAlwaysHidden",duration=60},{effect="nodamagedummy",duration=60},{effect="nofalldamage",duration=60},{effect="invulnerable",duration=60}})
 
@@ -32,7 +36,7 @@ function update(dt)
 				if math.random(100) < (ghostLostPetData.ghostGiftChance or 10) then
 					world.spawnTreasure(entity.position(),(ghostLostPetData.ghostGiftPool) or "fulostghostgeneric",1,os.time())
 				else
-					world.spawnItem("poop",entity.position())
+					world.spawnItem("endomorphicjelly",entity.position())
 				end
 				status.setResourcePercentage("hunger",1)
 			end
