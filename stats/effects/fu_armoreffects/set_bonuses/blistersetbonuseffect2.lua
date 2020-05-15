@@ -35,7 +35,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"blister"})
+	local weapons=weaponCheck({"blister","bioweapon"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

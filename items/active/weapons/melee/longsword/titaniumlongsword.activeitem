@@ -1,23 +1,25 @@
 {
-  "itemName" : "tungstenbroadsword",
-  "price" : 450,
-  "level" : 2,
+  "itemName" : "titaniumlongsword",
+  "price" : 550,
+  "level" : 3,
   "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "A large, heavy tungsten blade.",
-  "shortdescription" : "Tungsten Longsword",
+  "rarity" : "Uncommon",
+  "description" : "A lightweight, yet strong blade.",
+  "shortdescription" : "Titanium Longsword",
   "tooltipKind" : "sword",
   "category" : "longsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee", "longsword", "broadsword", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee", "longsword", "upgradeableWeapon"],
 
-  "inventoryIcon" : "tungstenbroadsword.png",
+  "inventoryIcon" : "titaniumlongsword.png",
 
   "animation" : "combolongsword.animation",
 
+  "collectablesOnPickup" : { "fu_weaponlongsword" : "titaniumlongsword" },
+  
   "animationParts" : {
     "handle" : "",
-    "blade" : "tungstenbroadsword.png"
+    "blade" : "titaniumlongsword.png"
   },
   "animationCustom" : { 
 	  "sounds" : {
@@ -34,12 +36,11 @@
 
   "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
-    "fireTime" : 0.91,
-    "baseDps" : 6.8
+    "fireTime" : 0.897,
+    "baseDps" : 6.82
   },
+  
   "critChance" : 1,
   "critBonus" : 9,  
-
-  "builder" : "/items/buildscripts/buildunrandweapon.lua",
-    "collectablesOnPickup" : { "fu_weaponlongsword" : "tungstenbroadsword" }
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
