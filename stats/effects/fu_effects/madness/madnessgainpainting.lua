@@ -3,7 +3,8 @@ function init()
   self.baseValue = config.getParameter("baseValue")
   self.valBonus = config.getParameter("valBonus") - ((config.getParameter("mentalProtection") or 0) * 10)
   self.timer = 10
-  
+  self.afk = 0
+  self.myspeed = 0
   animator.setParticleEmitterOffsetRegion("insane", mcontroller.boundBox())
   animator.setParticleEmitterEmissionRate("insane", config.getParameter("emissionRate", 3))
   animator.setParticleEmitterActive("insane", true)
@@ -24,24 +25,35 @@ function allowedType()
 end
 
 function update(dt)
-        
   	self.timer = self.timer - dt
 	if (status.stat("maxEnergy")) then
 		if (self.timer <= 0) then
 			self.healthDamage = ((status.stat("mentalProtection") or 0)*10) + status.stat("madnessModifier")
 			self.timer = 30
 			self.totalValue = self.baseValue + self.valBonus + math.random(1,6)
-		if  entity.entityType() =="player" then
-			world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
-		end
-			animator.playSound("madness")
-			activateVisualEffects()
-			    status.applySelfDamageRequest({
-			      damageType = "IgnoresDef",
-			      damage = self.healthDamage,
-			      damageSourceKind = "shadow",
-			      sourceEntityId = entity.id()
-			    })
+      self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking
+  		if  entity.entityType() =="player" then
+        if self.myspeed < 5 then
+          if self.afk > 2000 then -- do not go higher than this value
+            self.afk = 2000 
+          end
+          self.afk = self.afk + 1
+          world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
+          animator.playSound("madness")
+          activateVisualEffects()
+          status.applySelfDamageRequest({
+            damageType = "IgnoresDef",
+            damage = self.healthDamage,
+            damageSourceKind = "shadow",
+            sourceEntityId = entity.id()
+          })          
+        else
+          self.afk = self.afk -50  --movement decrements the penalty
+          if self.afk < 1 then
+            self.afk = 0
+          end
+        end       
+  		end
 		end
 	else
 		effect.expire()
