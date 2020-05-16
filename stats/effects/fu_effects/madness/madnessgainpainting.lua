@@ -24,15 +24,26 @@ function allowedType()
 end
 
 function update(dt)
-        
   	self.timer = self.timer - dt
 	if (status.stat("maxEnergy")) then
 		if (self.timer <= 0) then
 			self.healthDamage = ((status.stat("mentalProtection") or 0)*10) + status.stat("madnessModifier")
 			self.timer = 30
 			self.totalValue = self.baseValue + self.valBonus + math.random(1,6)
+      self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking
 		if  entity.entityType() =="player" then
-			world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
+      if self.myspeed < 1 then
+        if self.afk > 300 then -- do not go higher than this value
+          self.afk = 300 
+        end
+        self.afk = self.afk + 1
+        world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
+      else
+        self.afk = self.afk -2  --movement decrements the penalty
+        if self.afk < 0 then
+          self.afk = 0
+        end
+      end       
 		end
 			animator.playSound("madness")
 			activateVisualEffects()
