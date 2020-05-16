@@ -84,9 +84,8 @@ function build(directory, config, parameters, level, seed)
 	if root.itemHasTag(config.itemName, "queen") then
 		require "/bees/genomeLibrary.lua"
 		local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan")
-		
 		if not parameters.lifespan then
-			parameters.lifespan = fullLifespan
+			parameters.lifespan = fullLifespan * 2 -- added a x2 so queen duration is 2x as high as previously due to overwhelming demand for longer-lived monarchs
 		end
 		
 		if parameters.genomeInspected then
