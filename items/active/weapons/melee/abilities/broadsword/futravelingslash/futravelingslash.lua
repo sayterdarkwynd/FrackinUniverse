@@ -37,7 +37,9 @@ function TravelingSlash:fire()
   }
   world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), self:aimVector(), false, params)
 
-  animator.playSound(self:slashSound())
+  if self:slashSound() then
+	animator.playSound(self:slashSound())
+  end
 
   util.wait(self.stances.fire.duration)
   self.cooldownTimer = self.cooldownTime
