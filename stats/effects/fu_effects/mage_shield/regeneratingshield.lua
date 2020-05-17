@@ -31,7 +31,7 @@ function update(dt)
 end
 
 function uninit()
-	effect.modifyResource("damageAbsorption", -status.resource("damageAbsorption"))
+	status.modifyResource("damageAbsorption", - status.resource("damageAbsorption"))
 	if trackerHandler then effect.removeStatModifierGroup(trackerHandler) end
 end
 
