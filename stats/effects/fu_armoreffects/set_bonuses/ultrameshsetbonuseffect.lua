@@ -28,15 +28,17 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("swimboost2")
 		effect.expire()
 	else
+		status.addEphemeralEffect("swimboost2")
 		checkWeapons()
 	end
 end
 
 
 function checkWeapons()
-	local weaponSword=weaponCheck({"shortsword","rapier","katana"})
+	local weaponSword=weaponCheck({"shortsword","rapier","katana","longsword"})
 	local weaponShield=weaponCheck({"shield"})
 	--local weapons=weaponCheck({"shortsword","shield"})
 	

@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#e43774;40% Cosmic Resist, ^#e43774;25%^reset; Radiation Resist^reset;
-Xithricite Weapons: ^green;+3%^reset; Crit 
-^cyan;Immune^reset;: Shadow, Aether, Radiation, Pressure, Insanity", 
+^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit 
+^yellow;^reset; ^cyan;Immune^reset;: All Rads, Pressure, Shadow, Aether, Insanity", 
   "shortdescription" : "Xithricite Greaves",
-  "category" : "t6armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
@@ -38,6 +37,16 @@ Xithricite Weapons: ^green;+3%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.028571
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -46,14 +55,6 @@ Xithricite Weapons: ^green;+3%^reset; Crit
     {
       "stat" : "fu_xithriciteset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.10
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.07
     }
   ],
 

@@ -21,7 +21,18 @@
     "muzzleFlash" : ""
   },
   "animationCustom" : {
-    "lights" : { "muzzleFlash" : {"color" : [204, 159, 5] } }   
+    "lights" : { "muzzleFlash" : {"color" : [204, 159, 5] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "radioactiveaura", "offset" : [0.0, 0.0] },
+          { "particle" : "smallradioactivecloud1", "offset" : [0.0, 0.0] },
+          { "particle" : "smallradioactivecloud2", "offset" : [0.0, 0.0] },
+          { "particle" : "fastrisingradioactive1", "offset" : [0.0, 0.0] }
+        ]
+      }
+    }    
   },
   "muzzleOffset" : [6, -0.4],
 

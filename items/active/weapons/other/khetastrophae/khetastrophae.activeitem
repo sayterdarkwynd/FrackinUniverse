@@ -25,26 +25,6 @@
   "critBonus" : 8, 
   "elementalType" : "fire",
   "primaryAbility" : {
-    "energyUsage" : 95,
-    "baseDps" : 5.5,
-    "fireTime" : 2.25,
-    "inaccuracy" : 0.13,
-	
-    "projectileType" : "fireproximityminestatus",
-    "projectileCount" : 8,
-    "projectileParameters" : { "inheritDamageFactor" : 0.12 }
-  },
-  
-  "altAbility" : {
-    "energyUsage" : 125,
-    "baseDps" : 1,
-    "fireTime" : 3.25,
-    "projectileType" : "kheraegrenade",
-    "projectileCount" : 1,
-    "projectileParameters" : { "inheritDamageFactor" : 0.15},
-    "name" : "Erupting Bomb"
-  },
-  "primaryAbilityShift" : {
 	"recoil":{ "speed" : 26.6, "force" : 200.0 },
     "energyUsage" : 95,
     "baseDps" : 5.5,
@@ -56,11 +36,34 @@
     "projectileParameters" : { "inheritDamageFactor" : 0.12 }
   },
   
-  "altAbilityShift" : {
+  "altAbility" : {
     "recoil":{ "speed" : 100.0, "force" : 750.0 },
     "energyUsage" : 125,
     "baseDps" : 1,
     "fireTime" : 3.25,
+    "projectileType" : "kheraegrenade",
+    "projectileCount" : 1,
+    "projectileParameters" : { "inheritDamageFactor" : 0.15},
+    "name" : "Erupting Bomb"
+  },
+  "primaryAbilityShift" : {
+    "energyUsage" : 95,
+    "baseDps" : 11.0,
+    "fireTime" : 2.25,
+    "inaccuracy" : 0.13,
+	"selfEffects":["melting","lavaglow"],
+	
+    "projectileType" : "fireproximityminestatus",
+    "projectileCount" : 8,
+    "projectileParameters" : { "inheritDamageFactor" : 0.12 }
+  },
+  
+  "altAbilityShift" : {
+    "energyUsage" : 125,
+    "baseDps" : 2,
+    "fireTime" : 3.25,
+	"selfEffects":["melting","lavaglow"],
+	
     "projectileType" : "kheraegrenade",
     "projectileCount" : 1,
     "projectileParameters" : { "inheritDamageFactor" : 0.15},

@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;: 
-^green;12%^reset; Phys Resistance
-Assault Rifle/ Shotgun: ^cyan;+20%^reset; Dmg
-^cyan;Immune^reset;: Liq.Nitrogen, Darkness",
+^yellow;^reset; Assault Rifle/ Shotgun: ^green;20^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Liq.Nitrogen, Darkness",
   "shortdescription" : "Enforcer Chestplate",
-  "category" : "t4armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -46,6 +45,11 @@ Assault Rifle/ Shotgun: ^cyan;+20%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.016
     }
   ],
 
@@ -54,10 +58,6 @@ Assault Rifle/ Shotgun: ^cyan;+20%^reset; Dmg
     {
       "stat" : "fu_enforcerset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
     }
   ],
 

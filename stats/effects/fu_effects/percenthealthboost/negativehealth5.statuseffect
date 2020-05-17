@@ -1,16 +1,19 @@
 {
   "name" : "negativehealth5",
-  "effectConfig" : {
-    "healthDown" : -0.05
-  },
+	"effectConfig": {
+		"stats": [{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 0.95
+		}]
+	},
   "defaultDuration" : 30,
 
   "scripts" : [
-    "percenthealthboost.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
   
   "animationConfig" : "percenthealthboost.animation",
   
-  "label" : "HP -5%",
+  "label" : "5% Less HP",
   "icon" : "/interface/statuses/hpdown.png"
 }

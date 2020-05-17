@@ -6,12 +6,11 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;: 
-Fire Nova on hit  
-^#a94db3;27%^reset; Fire Resist
-Flamethrower: ^#a94db3;+25%^reset; Dmg
-^green;Immune^reset;: Heat I, Burning",
+^yellow;^reset; ^cyan;Fire Nova when hit^reset;
+^yellow;^reset; Flamethrower: ^green;30^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Heat I, Burning",
   "shortdescription" : "Inferno Pants",
-  "category" : "t4armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -46,6 +45,11 @@ Flamethrower: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.036
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -54,11 +58,7 @@ Flamethrower: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "fu_infernoset_legs",
       "amount" : 1
-    },
-     {
-      "stat" : "fireResistance",
-      "amount" : 0.09
-    } 
+    }
   ],
 
 

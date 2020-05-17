@@ -4,13 +4,13 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+2%^reset; Fire Resist
-\n^orange;Set Bonuses^reset;:
-^cyan;+15%^reset; Shield Health and Regen, ^cyan;+15%^reset; Knockback Resist
-Sword/Mace + Shield: ^#a94db3;+20%^reset; Health",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;15^reset;% Shield Health and Regen
+^yellow;^reset; +^green;15^reset;% Knockback Resist
+^yellow;^reset; Sword/Mace + Shield: ^green;20^reset;% More HP",
 
   "shortdescription" : "Plebeian Plates",
-  "category" : "t1armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -53,6 +53,11 @@ Sword/Mace + Shield: ^#a94db3;+20%^reset; Health",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -61,10 +66,6 @@ Sword/Mace + Shield: ^#a94db3;+20%^reset; Health",
     {
       "stat" : "plebiansetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.02
     }
   ],
 

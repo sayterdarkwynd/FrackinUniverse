@@ -6,10 +6,9 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+27%^reset; Fire, Ice and Radiation resistances
-^cyan;+21%^reset; all other resists",
+^yellow;^reset; ^cyan;Immune^reset;: Sulphuric Acid",
   "shortdescription" : "Morphite Helm",
-  "category" : "t5armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [ "fuquantumheadadv" ], 
   "maleFrames" : "head.png",
@@ -38,42 +37,48 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.023333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.023333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.023333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.023333
     }
   ],
 
   "statusEffects" : [
-    "morphitesetbonus",
     {
       "stat" : "fu_morphiteset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.09
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.09
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.09
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.07
     }
   ],
 

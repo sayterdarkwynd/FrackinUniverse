@@ -4,7 +4,7 @@ weaponBonus={
 	{stat = "critChance", amount = 4}
 }
 
-armorBonus={}
+--armorBonus={}
 
 armorEffect={
 	{stat = "grit", amount = 0.20},
@@ -20,11 +20,11 @@ function init()
 	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
-	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
+	--effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 
 
 	checkWeapons()
-	checkArmor()
+	--checkArmor()
 end
 
 function update(dt)
@@ -32,17 +32,17 @@ function update(dt)
 		effect.expire()
 	else
 		checkWeapons()
-		checkArmor()
+		--checkArmor()
 	end
 end
 
-function checkArmor()
+--[[function checkArmor()
 	if (world.type() == "mountainous4") or (world.type() == "mountainous3") or (world.type() == "mountainous2") or (world.type() == "mountainous") then
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
 	end
-end
+end]]
 
 function checkWeapons()
 	local weapons=weaponCheck({"shortspear", "spear"})

@@ -5,11 +5,12 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;:  
-^#a94db3;25%^reset; Electric Resist, ^#a94db3;25%^reset; Fall Damage Reduction
-Magnorbs:^green;+20%^reset; Damage and ^green;+5%^reset; Crit
-^cyan;Immunity^reset;: Proto-Poison",
+^yellow;^reset; ^cyan;Slowfall^reset;
+^yellow;^reset; ^green;25^reset;% Less Fall Damage
+^yellow;^reset; Magnorbs/Energy: ^green;20^reset;% More Damage and +^green;5^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Proto-Poison",
   "shortdescription" : "Invader Visor",
-  "category" : "t4armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
@@ -43,6 +44,11 @@ Magnorbs:^green;+20%^reset; Damage and ^green;+5%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.032
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -51,11 +57,7 @@ Magnorbs:^green;+20%^reset; Damage and ^green;+5%^reset; Crit
     {
       "stat" : "fu_invaderset_head",
       "amount" : 1
-    },
-     {
-      "stat" : "electricResistance",
-      "amount" : 0.08
-    } 
+    }
   ],
 
   "colorOptions" : [

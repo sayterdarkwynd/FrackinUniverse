@@ -4,13 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^green;+7%^reset; Poison Resist
-\n^orange;Set Bonuses^reset;:
-Blister weapons: ^green;+2%^reset; Crit, ^cyan;+15%^reset; Dmg
-\n^cyan;Immune^reset;: Poison, Proto Poison",
+  "description" : "^cyan;Glows^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; Bio/Blister Weapons: +^green;2^reset;% Crit Chance, ^green;15^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Proto Poison",
 
   "shortdescription" : "Blister Chest",
-  "category" : "t2armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [
     "blisterchestalt",
@@ -52,6 +52,11 @@ Blister weapons: ^green;+2%^reset; Crit, ^cyan;+15%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.046666
     }
   ],
 
@@ -61,10 +66,6 @@ Blister weapons: ^green;+2%^reset; Crit, ^cyan;+15%^reset; Dmg
     {
       "stat" : "blistersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
     }
   ],
 

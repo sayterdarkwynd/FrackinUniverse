@@ -4,13 +4,14 @@ setName="fu_diamondset"
 
 
 weaponBonus={
-	{stat = "powerMultiplier", baseMultiplier = 1.25},
-	{stat = "critChance", amount = 2.5},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25},
+	{stat = "critChance", amount = 2.5}
+}
+
+armorBonus={
 	{stat = "sulphuricImmunity", amount = 1},
 	{stat = "biooozeImmunity", amount = 1}
 }
-
-armorBonus={}
 
 
 function init()
@@ -32,7 +33,7 @@ end
 
 
 function checkWeapons()
-	local weaponSingle=weaponCheck({"katana"})
+	local weaponSingle=weaponCheck({"katana","daikatana"})
 
 	if weaponSingle["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)				

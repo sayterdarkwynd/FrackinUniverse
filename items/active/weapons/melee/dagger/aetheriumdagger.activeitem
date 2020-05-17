@@ -1,6 +1,6 @@
 {
   "itemName" : "aetheriumdagger",
-  "price" : 12040,
+  "price" : 1204,
   "maxStack" : 1,
   "level" : 7,
   "rarity" : "legendary",
@@ -10,7 +10,7 @@
   "tooltipKind" : "swordaetherium",
   "category" : "dagger",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","xithricite", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","dagger","aetherium","cosmic", "upgradeableWeapon"],
   "inventoryIcon" : "aetheriumdagger.png",
   "collectablesOnPickup" : { "fu_weapondagger" : "aetheriumdagger" },
   "animation" : "daggerglow.animation",
@@ -30,7 +30,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "aether",
 
   "aimOffset" : -1.0,
 
@@ -38,12 +38,12 @@
     "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
 
     "class" : "MeleeSlash",
-    "fireTime" : 2.215,
-    "baseDps" : 7.6,
+    "fireTime" : 0.6,
+    "baseDps" : 7.4,
     "damageConfig" : {
-      "knockback" : 10,
+      "knockback" : 12,
        "statusEffects" : [ "defenseboostneg20" ],
-       "damageSourceKind" : "cosmicdagger"
+       "damageSourceKind" : "aether"
     },
     "stances" : {
       "idle" : {
@@ -64,7 +64,7 @@
         "allowRotate" : true
       },
       "fire" : {
-        "duration" : 2.2,
+        "duration" : 0.15,
         "armRotation" : -135,
         "weaponRotation" : 40,
         "weaponOffset" : [0.1, 2.5],
@@ -74,8 +74,8 @@
       }
     }
   },
-  "critChance" : 8,
-  "critBonus" : 30,
+  "critChance" : 2,
+  "critBonus" : 12,
   "stunChance" : 50,
   "upgradeParameters": {
     "description" : "Death be thy shadow.",

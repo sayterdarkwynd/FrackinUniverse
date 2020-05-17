@@ -4,14 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Electric Resist
-^orange;Set Bonuses^reset;:
-^green;+8%^reset; Jump, ^cyan;+20%^reset; Max Food
-Rapier/Pistol: ^green;+7.5% Dmg each^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;8^reset;% Jump, -^green;20^reset;% Hunger Drain
+^yellow;^reset; Rapier/Pistol: ^green;7.5^reset;/^green;15^reset;% More Damage.",
 
   "shortdescription" : "Swashbuckler Pants",
-  "category" : "t2armor",
-  "tooltipKind" : "armor",
+  "category" : "legarmour",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "pantsm.png",
   "femaleFrames" : "pantsm.png",
@@ -38,6 +37,11 @@ Rapier/Pistol: ^green;+7.5% Dmg each^reset;",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -46,10 +50,6 @@ Rapier/Pistol: ^green;+7.5% Dmg each^reset;",
     {
       "stat" : "swashbucklersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.05
     }
   ],
 

@@ -4,11 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^orange;Set Bonuses^reset;:
-^cyan;+20%^reset; Wand/Staff/Quarterstaff Dmg^reset;
-^cyan;24%^reset; Cosmic Resist, ^cyan;+0.4%^reset; Health Regen",
+  "description" : "^cyan;Glow^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;0.4^reset;% HP Regen
+^yellow;^reset; ^green;20^reset;% More Wand/Staff/Quarterstaff Damage",
   "shortdescription" : "Light Priest Hood",
-  "category" : "t3armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -20,6 +21,7 @@
     "fuprophethead",
     "fuprophetchest"
   ],
+  "itemTags":["upgradeableWeapon"],
 
   "level" : 3,
   "collectablesOnPickup" : { "fu_armorpowerranged" : "fulightpriesthead" },
@@ -43,6 +45,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.04
     }
   ],
 
@@ -52,10 +59,6 @@
     {
       "stat" : "lightpriestsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.08
     }
   ],
 

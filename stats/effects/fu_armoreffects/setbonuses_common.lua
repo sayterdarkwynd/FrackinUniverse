@@ -13,9 +13,9 @@
 
 require "/scripts/util.lua"
 
-weaponCheckResults={}
-heldItemPrimary=nil
-heldItemAlt=nil
+--weaponCheckResults={}
+--heldItemPrimary=nil
+--heldItemAlt=nil
 
 function setBonusInit(setBonusName, setBonusStats, callbacks)
 	self.statGroup = nil
@@ -37,6 +37,7 @@ function setSEBonusInit(setBonusName, SetBonusEffects)
 	self.setBonusName = setBonusName
 	self.setBonusCheck = { setBonusName .. '_head', setBonusName .. '_chest', setBonusName .. '_legs' }
 	self.setBonusEffects = SetBonusEffects
+	self.SETagCache=self.SETagCache or {}
 end
 
 function update()
@@ -63,7 +64,7 @@ function update()
 
 		--effect.setParentDirectives("fade="..config.getParameter("color").."=0.5")
 
-		sb.logInfo("Set bonus active: %s", self.setBonusName)
+		--sb.logInfo("Set bonus active: %s", self.setBonusName)
 	else
 		removeSetBonus()
 	end
@@ -71,7 +72,7 @@ end
 
 function checkSetWorn(mySet)
 	--used everywhere
-	return status.stat(mySet[1]) == 1 and status.stat(mySet[2]) == 1 and status.stat(mySet[3]) == 1
+	return status.statPositive(mySet[1]) and status.statPositive(mySet[2]) and status.statPositive(mySet[3])
 end
 
 function checkSetLevel(mySet)
@@ -109,27 +110,14 @@ function removeSetBonus()
 		for _, callback in pairs(self.callbacks) do
 			if callback.uninit then callback.uninit() end
 		end
-
-		--effect.setParentDirectives(nil)
-
-		sb.logInfo("Set bonus removed: %s", self.setBonusName)
 	end
 end
 
 function weaponCheck(tags)
-	local tempPrimary=world.entityHandItem(entity.id(), "primary")
-	local tempAlt=world.entityHandItem(entity.id(), "alt")
-	local doThing=false
-	if tempPrimary~=heldItemPrimary then
-		heldItemPrimary = tempPrimary
-		doThing=true
-	end
-	if tempAlt~=heldItemAlt then
-		heldItemAlt = tempAlt
-		doThing=true
-	end
-	if not doThing then return weaponCheckResults end
-	
+	local weaponCheckResults={}
+	local heldItemPrimary=world.entityHandItem(entity.id(), "primary")
+	local heldItemAlt=world.entityHandItem(entity.id(), "alt")
+
 	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
 
 	weaponCheckResults["either"]=false
@@ -137,36 +125,40 @@ function weaponCheck(tags)
 	weaponCheckResults["alt"]=false
 	weaponCheckResults["both"]=false
 	weaponCheckResults["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
-	if heldItemPrimary~=nil and heldItemAlt~=nil then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemPrimary,tag) and root.itemHasTag(heldItemAlt,tag) then
-				weaponCheckResults["primary"]=true
-				weaponCheckResults["alt"]=true
-				weaponCheckResults["both"]=true
-				weaponCheckResults["either"]=true
-			elseif root.itemHasTag(heldItemPrimary,tag) then
-				weaponCheckResults["primary"]=true
-				weaponCheckResults["either"]=true
-			elseif root.itemHasTag(heldItemAlt,tag) then
-				weaponCheckResults["alt"]=true
-				weaponCheckResults["either"]=true
-			end
+	
+	if heldItemPrimary and not self.SETagCache[heldItemPrimary] then
+		local buffer=root.itemConfig(heldItemPrimary)
+		buffer=util.mergeTable(buffer.config,buffer.parameters)
+		local buffer2=buffer.elementalType
+		buffer=buffer.itemTags or {}
+		if buffer2 then table.insert(buffer,buffer2) end
+		buffer2={}
+		for _,v in pairs(buffer) do
+			buffer2[v]=true
 		end
-	elseif heldItemPrimary~=nil then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemPrimary,tag) then
-				weaponCheckResults["primary"]=true
-				weaponCheckResults["either"]=true
-			end
-		end
-	elseif heldItemAlt~=nil	then
-		for _,tag in pairs(tags) do
-			if root.itemHasTag(heldItemAlt,tag) then
-				weaponCheckResults["alt"]=true
-				weaponCheckResults["either"]=true
-			end
-		end
+		self.SETagCache[heldItemPrimary]=buffer2
 	end
+
+	if heldItemAlt and not self.SETagCache[heldItemAlt] then
+		local buffer=root.itemConfig(heldItemAlt)
+		buffer=util.mergeTable(buffer.config,buffer.parameters)
+		buffer=buffer.itemTags or {}
+		local buffer2={}
+		for _,v in pairs(buffer) do
+			buffer2[v]=true
+		end
+		self.SETagCache[heldItemAlt]=buffer2
+	end
+	
+	for _,tag in pairs(tags) do
+		local primaryHasTag=heldItemPrimary and self.SETagCache[heldItemPrimary][tag]
+		local altHasTag=heldItemAlt and self.SETagCache[heldItemAlt][tag]
+		weaponCheckResults["primary"]=weaponCheckResults["primary"] or primaryHasTag
+		weaponCheckResults["alt"]=weaponCheckResults["alt"] or altHasTag
+		weaponCheckResults["both"]=weaponCheckResults["both"] or (primaryHasTag and altHasTag)
+		weaponCheckResults["either"]=weaponCheckResults["either"] or primaryHasTag or altHasTag
+	end
+
 	return weaponCheckResults
 end
 

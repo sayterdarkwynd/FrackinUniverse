@@ -56,9 +56,8 @@ function update(dt)
 	end
 	timer = timer + dt
 
-	-- Check tray inputs/update description
-	checkTrayInputs()
-
+	-- Check tray inputs
+	local water,fert=checkTrayInputs()
 	storage.activeConsumption = false
 
 	if self.requiredPower then power.update(dt) end
@@ -73,13 +72,17 @@ function update(dt)
 					object.setOutputNodeLevel(0,false)
 				end
 			end
+			handleTooltip({water=water,fert=fert,growthmod=nil})--update description
 			return
 		end
 	end
 
 	--growthmod should be nil if we aren't a power consumer
-	local growthmod = self.requiredPower and (consumePower(dt) and 1 or self.unpoweredGrowthRate)
+	local growthmod = self.requiredPower and ((consumePower(dt) and 1) or self.unpoweredGrowthRate)
+	--sb.logInfo("growthmod: %s",growthmod)
 	growPlant(growthmod, dt)
+	
+	handleTooltip({water=water,fert=fert,growthmod=growthmod,seed=storage.currentseed})--update description
 
 	storage.activeConsumption = true
 	if object.outputNodeCount() > 0 then
@@ -122,16 +125,7 @@ function checkTrayInputs()
 	local water = inputWater and self.liquidInputs[inputWater.name] or nil
 	local fert = inputFert and self.fertInputs[inputFert.name] or nil
 
-	-- Generate new description
-	local desc = root.itemConfig(object.name())
-	desc = desc and desc.config and desc.config.description or ''
-	desc = desc .. (desc ~= '' and "\n" or '') .. '^green;'
-		.. ' Seeds Used: ' .. getFertSum('seedUse', fert, water) .. "\n"
-		.. 'Yield Count: ' .. getFertSum('yield', fert, water) .. "\n"
-		.. 'Growth Rate: ' .. getFertSum('growthRate', fert, water) .. "\n"
-		.. '  Water Use: ' .. getFertSum('fluidUse', fert, water) .. "\n"
-		.. '^blue;Water Value: ' .. (water and water.value or '0')
-	object.setConfigParameter('description', desc)
+
 
 	-- Relocate invalid inputs
 	if inputWater and not water then inputWater = fu_relocateItem(waterslot, inputSlots) end
@@ -140,6 +134,86 @@ function checkTrayInputs()
 	-- Update cache
 	storage.cacheWaterName = inputWater and inputWater.name or nil
 	storage.cacheFertName = inputFert and inputFert.name or nil
+	
+	
+	return water,fert
+end
+
+
+function handleTooltip(args)
+	-- Generate new description
+	local desc = ""
+	
+	--growth rate and power calc
+	local growthrate=getFertSum('growthRate', args.fert, args.water)
+	local growthrate2=growthrate*(args.growthmod or 1)
+	growthrate=util.round(growthrate,2)
+	growthrate2=util.round(growthrate2,2)
+	local growthString=""
+	local powerString=""
+	if growthrate~=growthrate2 and self.requiredPower then
+		growthString='Growth Rate: ^red;' .. growthrate2 .. "^reset;\n"
+		powerString=powerString.."Power: ^red;0^reset;/"..self.requiredPower.."\n"
+	elseif self.requiredPower then
+		growthString='Growth Rate: ^green;' .. growthrate .. "^reset;\n"
+		if not args.growthmod then
+			powerString=powerString.."Power: 0/"..self.requiredPower.."\n"
+		else
+			powerString=powerString.."Power: ^green;"..self.requiredPower.."^reset;/"..self.requiredPower.."\n"
+		end
+	else
+		growthString='Growth Rate: ^green;' .. growthrate2 .. "^reset;\n"
+	end
+	
+	--seed use and seed display
+	local seedString=""
+	if args.seed and args.seed.name then
+		seedString=root.itemConfig(args.seed.name).config.shortdescription
+		seedString=" (^yellow;" .. seedString .. "^reset;)"
+	end
+	
+	local seedUseWith=getFertSum('seedUse', args.fert, args.water)
+	local seedUseWithout=getFertSum('seedUse', "absolutelynothing", "absolutelynothing")
+	if seedUseWith<seedUseWithout then
+		seedUseWith="^green;"..seedUseWith.."^reset;"
+	elseif seedUseWith>seedUseWithout then
+		seedUseWith="^red;"..seedUseWith.."^reset;"
+	end
+	seedString='Seeds Used: ' .. seedUseWith .. seedString .. "\n"
+	
+	--yield calc
+	local yieldWith=getFertSum('yield', args.fert, args.water)
+	local yieldWithout=getFertSum('yield', "absolutelynothing", "absolutelynothing")
+	if yieldWith>yieldWithout then
+		yieldWith="^green;"..yieldWith.."^reset;"
+	elseif yieldWith<yieldWithout then
+		yieldWith="^red;"..yieldWith.."^reset;"
+	end
+	local yieldString='Yield Count: ' .. yieldWith .. "\n"
+
+	--water use calc
+	local waterUseWith=getFertSum('fluidUse', args.fert, args.water)
+	local waterUseWithout=getFertSum('fluidUse', "absolutelynothing", "absolutelynothing")
+	local waterUseString='Water Use: ' .. waterUseWith .. "\n"
+	if waterUseWith<waterUseWithout then
+		waterUseWith="^green;"..waterUseWith.."^reset;"
+	elseif waterUseWith>waterUseWithout then
+		waterUseWith="^red;"..waterUseWith.."^reset;"
+	end
+	
+	
+	--water value calc
+	local waterValueString='Water Value: '
+	local waterValue=(args.water and args.water.value or 0)
+	if waterValue>0 then
+		waterValueString=waterValueString.."^green;"..waterValue.."^reset;"
+	else
+		waterValueString=waterValueString..waterValue
+	end
+	
+	--set desc!
+	desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString
+	object.setConfigParameter('description', desc)
 end
 
 --Returns active seed when tray is removed from world

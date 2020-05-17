@@ -5,13 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;: 
-Oxygen System  
-^#a94db3;+32%^reset; Poison and Physical Resist^reset;  
-^#a94db3;+25%^reset; Health^reset;
-Melee: ^green;+1.5%/3%^reset; Crit Chance
-\n^cyan;Immune^reset;: Acid",
+^yellow;^reset; ^green;25^reset;% More HP^reset;
+^yellow;^reset; Melee: +^green;1.5^reset;/^green;3^reset;% Crit Chance
+^yellow;^reset;^cyan;Immune^reset;: Acid, Oxygen",
   "shortdescription" : "Geist Plate",
-  "category" : "t6armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -47,6 +45,16 @@ Melee: ^green;+1.5%/3%^reset; Crit Chance
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.034285
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.034285
     }
   ],
 
@@ -55,14 +63,6 @@ Melee: ^green;+1.5%/3%^reset; Crit Chance
     {
       "stat" : "fu_geistset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.12
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.12
     }
   ],
 

@@ -3,13 +3,13 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 armorBonus={}
 
 armorEffect={
+	{stat = "iceStatusImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},
 	{stat = "liquidnitrogenImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},
 	{stat = "slushslowImmunity", amount = 1},
-	{stat = "ffextremecoldImmunity", amount = 1},
 	{stat = "biomecoldImmunity", amount = 1},
-	{stat = "lethalColdImmunity", amount = 1}
+	{stat = "ffextremecoldImmunity", amount = 1}
 }
 
 setName="fu_arcticset"

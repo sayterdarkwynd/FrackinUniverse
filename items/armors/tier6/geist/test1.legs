@@ -5,13 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;: 
-Oxygen System  
-^#a94db3;+32%^reset; Poison and Physical Resist^reset;  
-^#a94db3;+25%^reset; Health^reset;
-Melee: ^green;+1.5%/3%^reset; Crit Chance
-\n^cyan;Immune^reset;: Acid",
+^yellow;^reset; ^green;25^reset;% More HP^reset;
+^yellow;^reset; Melee: +^green;1.5^reset;/^green;3^reset;% Crit Chance
+^yellow;^reset;^cyan;Immune^reset;: Acid, Oxygen",
   "shortdescription" : "Geist Greaves",
-  "category" : "t6armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
@@ -38,6 +36,16 @@ Melee: ^green;+1.5%/3%^reset; Crit Chance
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.025714
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025714
     }
   ],
 
@@ -46,14 +54,6 @@ Melee: ^green;+1.5%/3%^reset; Crit Chance
     {
       "stat" : "fu_geistset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.09
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.09
     }
   ],
   "colorOptions" : [

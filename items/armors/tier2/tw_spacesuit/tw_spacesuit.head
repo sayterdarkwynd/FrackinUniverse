@@ -4,14 +4,13 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Fire, Ice, Poison, Radiation and Electric Resists
-\n^orange;Set Bonus^reset;:
-^#a94db3;+100%^reset; Max Breath
-Longsword: ^cyan;+12%^reset; Damage
-Energy: ^cyan;+12%^reset; Damage",
+  "description" : "^cyan;Headlamp^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;100^reset;% More Max Breath
+^yellow;^reset; Longsword/Energy: ^green;12^reset;% More Damage",
 
   "shortdescription" : "Hazard Helmet",
-  "category" : "t2armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -49,6 +48,31 @@ Energy: ^cyan;+12%^reset; Damage",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.033333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.033333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.033333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -57,26 +81,6 @@ Energy: ^cyan;+12%^reset; Damage",
     {
       "stat" : "tw_spacesuitsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.05
     },
     "headlamp"
   ],

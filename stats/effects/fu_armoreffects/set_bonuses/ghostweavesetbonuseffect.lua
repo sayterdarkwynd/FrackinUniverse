@@ -7,7 +7,7 @@ weaponBonus={
 }
 
 armorBonus={
-
+	{stat = "maxHealth", effectiveMultiplier = 1.05}
 }
 
 function init()

@@ -17,58 +17,37 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
-	effectHandlerList.weaponBonusHandlePrimary=effect.addStatModifierGroup({})
-	effectHandlerList.weaponBonusHandleAlt=effect.addStatModifierGroup({})
-	self.timer = 0
-        update(0)
+	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
+	checkWeapons()
 end
 
 function update(dt)
-	self.timer = self.timer - dt
-  -- randomly spawn a minion  
-    
-	if self.timer <= 0 then
-	    local p = entity.position()
-	    local parameters = {}
-	    local type = "squidbeastnodrop"
-	    --sb.logInfo("Spawning a slime from Slime armor. Type is %s",type)
-	    parameters.persistent = false
-	    parameters.damageTeamType = "friendly"
-	    parameters.aggressive = true
-	    parameters.damageTeam = 0
-	    parameters.level = getLevel()
-	    --sb.logInfo("Parameters for spawn are: %s",parameters)
-	    world.spawnMonster(type, mcontroller.position(), parameters)    
-		self.timer = math.random(220)+40
-	end
-    
-	level=checkSetLevel(self.setBonusCheck)
-	if level==0 then
+	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("darkregen")
 		effect.expire()
 	else
-		checkArmor()
+		if not self.timer or self.timer >= 1 then
+			for _,id in pairs(world.monsterQuery(entity.position(),50)) do
+				if not entity.isValidTarget(id) then
+					world.sendEntityMessage(id, "applyStatusEffect", "fudarkcommander30", (self.timer or 1.0)*2, entity.id())
+				end
+			end
+			self.timer = 0
+		else
+			self.timer = self.timer + dt
+		end
+		status.addEphemeralEffect("darkregen")
 		checkWeapons()
 	end
-end
-
-function checkArmor()
-	--effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,setBonusMultiply(armorBonus,level))--currently just a waste of cpu time. they're blocking stats in this set.
-	effect.setStatModifierGroup( effectHandlerList.armorBonusHandle,armorBonus)
-end
-
-function getLevel()
-	if world.getProperty("ship.fuel") ~= nil then return 1 end
-	if world.threatLevel then return world.threatLevel() end
-	return 1
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({"elder"})
 	
 	if weapons["either"] then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandleAlt,setBonusMultiply(weaponBonus,level))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandleAlt,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
 end

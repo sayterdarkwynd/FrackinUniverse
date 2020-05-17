@@ -2,9 +2,8 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/vec2.lua"
 
 armorBonus={
-	{stat = "maxHealth", baseMultiplier = 1.25},
-	{stat = "powerMultiplier", effectiveMultiplier = 1.15},
-	{stat = "physicalResistance", amount = 1.25}
+	{stat = "maxHealth", effectiveMultiplier = 1.25},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
 armorEffect={
@@ -22,46 +21,12 @@ function init()
 	checkArmor()
 end
 
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	local lightLevel = world.lightLevel(position)
-	self.lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
-end
-
--- ***********************************************************************************************************
--- FR SPECIALS  Functions for projectile spawning
--- ***********************************************************************************************************
-function firePosition()
-	return vec2.add(mcontroller.position(), entity.position())
-end
-
-function aimVector()  -- fires straight
-	local aimVector = vec2.rotate({1, 0}, mcontroller.facingDirection() )
-	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
-	return aimVector
-end
-
-function aimVectorRand() -- fires wherever it wants
-	local aimVector = vec2.rotate({1, 0},  mcontroller.facingDirection() + sb.nrand(inaccuracy, 0))
-	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
-	return aimVector
-end
-
-
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		getLight()
 		checkArmor()
-		self.randValue = math.random(30)	
-		if (self.randValue < 5) then  -- spawn a projectile
-			params = { power = 10, damageKind = "shadow" }			
-			projectileId = world.spawnProjectile("scouteyecultist",mcontroller.position(),entity.id(), aimVectorRand(),false,params)
-		end			
+		fire(dt)
 	end
 end
 
@@ -70,7 +35,41 @@ function checkArmor()
 		effect.setStatModifierGroup(
 		effectHandlerList.armorBonusHandle,armorBonus)
 	else
-		effect.setStatModifierGroup(
-		effectHandlerList.armorBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
+	end
+end
+
+
+function fire(dt)
+	if not fireDelta or not fireTime then
+		fireTime=1.0+(((math.random(100)*0.1)-0.5))
+		fireDelta=0
+		return
+	elseif fireDelta > fireTime then
+		fireTime=1.0+(((math.random(100)*0.1)-0.5))
+		fireDelta=0
+	else
+		fireDelta=fireDelta+dt
+		return
+	end
+	
+	local buffer=world.entityQuery(entity.position(),20,{includedTypes={"creature"}})
+	local buffer2={}
+	for _,id in pairs(buffer) do
+		local see=entity.entityInSight(id)
+		local team=world.entityDamageTeam(id)
+		if team.type=="enemy" and see then
+			buffer2[id]=world.entityPosition(id)
+		end
+	end
+	buffer=buffer2
+	buffer2={}
+	for id,pos in pairs(buffer) do
+		local quack=math.floor(math.random(100))
+		if quack > 40 then
+			local aimVector=vec2.sub(pos,entity.position())
+			local aimVector={norm=vec2.norm(aimVector),mag=vec2.mag(aimVector)}
+			world.spawnProjectile("scouteyecultist",mcontroller.position(),entity.id(),aimVector.norm,false,{power=status.resourceMax("health")*status.stat("powerMultiplier")*0.02,damageKind="shadow",speed=aimVector.mag*2})
+		end
 	end
 end

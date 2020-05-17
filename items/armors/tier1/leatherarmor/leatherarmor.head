@@ -4,13 +4,11 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "category" : "t1armor",
-  "description" : "^green;+4%^reset; Ice and Electric Resist^reset;
-^orange;Set Bonuses^reset;:
-^green;+1%^reset; Crit, +^green;2.5%^reset; Speed
-^yellow;Bow/XBow^reset;: 
-+^green;2%^reset; Crit Chance, +^cyan;15%^reset; Dmg
--^green;4^reset; En. Per Shot, +^green;5^reset; Air Dmg, -^green;0.1s^reset; Draw",
+  "category" : "headarmour",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;1^reset;% Crit Chance, +^green;2.5^reset;% Speed
+^yellow;^reset; Garden/Forest: ^green;5^reset;% More Energy, +^green;5^reset;% Knockback Resistance
+^yellow;^reset; Bow/XBow^reset;: +^green;2^reset;% Crit Chance, ^green;15^reset;% More Damage, -^green;4^reset; Energy Per Shot, +^green;5^reset; Air Dmg, -^green;0.1^reset;s Draw",
 
   "shortdescription" : "Leather Cap",
   "tooltipKind" : "armornew2",
@@ -41,6 +39,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.04
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.04
     }
   ],
 
@@ -49,14 +57,6 @@
     {
       "stat" : "leathersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.04
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.04
     }
   ],
 

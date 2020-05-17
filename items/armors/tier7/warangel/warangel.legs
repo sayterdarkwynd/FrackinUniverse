@@ -6,14 +6,12 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+30%^reset; Physical Resist
-^cyan;24%^reset; Ice, Fire, Rad Resist
-^#a94db3;80%^reset; Fall Reduction and Knockback Resistance
-\nChain Sword: ^#a94db3;+150%^reset;Dmg, ^green;+2%^reset; Crit
-\n^cyan;Immune^reset;: Breath, Pressure",
+^yellow;^reset; +^green;80^reset;% Knockback Resist. ^green;80^reset;% Less Fall Damage
+^yellow;^reset;Chain Swords: ^green;150^reset;% More Damage, +^green;2^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Breath, Pressure",
   "shortdescription" : "War Angel Greaves",
     "itemTags" : [ "upgradeableWeapon" ],
-  "category" : "t7armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
@@ -40,6 +38,26 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 8
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -48,22 +66,6 @@
     {
       "stat" : "fu_warangelset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.10
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.08
     }
   ],
 

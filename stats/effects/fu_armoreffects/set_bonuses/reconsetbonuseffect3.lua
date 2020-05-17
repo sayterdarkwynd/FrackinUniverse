@@ -6,8 +6,9 @@ weaponBonus={
 }
 
 armorBonus={
-		{stat = "ffextremeradiationImmunity", amount = 1.0},
-		{stat = "radiationburnImmunity", amount = 1.0}
+	{stat = "ffextremeradiationImmunity", amount = 1.0},
+	{stat = "radiationburnImmunity", amount = 1.0},
+	{stat = "biomeradiationImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -28,13 +29,11 @@ else
 	checkWeapons()
 end
 
-	mcontroller.controlModifiers({
-			speedModifier = 1.15
-		})
+	mcontroller.controlModifiers({speedModifier = 1.15})
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"rifle","sniperrifle"})
+	local weapons=weaponCheck({"assaultrifle","sniperrifle"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

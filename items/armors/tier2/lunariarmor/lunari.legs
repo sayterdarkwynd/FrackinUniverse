@@ -4,13 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Cosmic Resist
-\n^orange;Set Bonuses^reset;:
-^cyan;+12%^reset; Energy Regen, ^green;10%^reset; Fuel Cost Reduction^reset;
-Lunari weapons: ^cyan;+15%^reset; Dmg, ^green;+4%^reset; Crit^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;12^reset;% Energy Regen, -^green;10^reset;% Fuel Cost^reset;
+^yellow;^reset; Lunari weapons:^green;15^reset;% More Damage, +^green;4^reset;% Crit Chance",
 
   "shortdescription" : "Lunari Greaves",
-  "category" : "t2armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -38,6 +37,11 @@ Lunari weapons: ^cyan;+15%^reset; Dmg, ^green;+4%^reset; Crit^reset;",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -46,10 +50,6 @@ Lunari weapons: ^cyan;+15%^reset; Dmg, ^green;+4%^reset; Crit^reset;",
     {
       "stat" : "lunarisetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.05
     }
   ],
 

@@ -5,11 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;30%^reset; Electric Resistance, +5%^reset; speed^reset;
-Electric/Energy: ^cyan;+20%^reset; Dmg, ^#a94db3;+25%^reset; Energy
-^cyan;Immune^reset;: Breath, Burning, Electrified",
+^yellow;^reset; +^green;5^reset;% Speed^reset;
+^yellow;^reset; Electric/Energy: ^green;20^reset;% More Damage, ^green;25^reset;% More Energy
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Burning, Electrified",
   "shortdescription" : "Steampunk Slacks",
-  "category" : "t3armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -37,6 +37,11 @@ Electric/Energy: ^cyan;+20%^reset; Dmg, ^#a94db3;+25%^reset; Energy
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 0
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.05
     }
   ],
 
@@ -45,10 +50,6 @@ Electric/Energy: ^cyan;+20%^reset; Dmg, ^#a94db3;+25%^reset; Energy
     {
       "stat" : "steampunksetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
     }
   ],
 

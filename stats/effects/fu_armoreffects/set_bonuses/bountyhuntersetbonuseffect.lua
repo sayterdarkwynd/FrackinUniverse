@@ -7,7 +7,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "fallDamageMultiplier", baseMultiplier = 0.12}
+	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.12}
 }
 
 function init()

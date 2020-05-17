@@ -1,17 +1,17 @@
 function init()
-  self.used = 0
-  if (status.stat("isCharged") == 1) and (self.used == 0) then
-    self.used = 1
-    activateVisualEffects()
-  end
+	activateVisualEffects()
 end
 
 function activateVisualEffects()
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("critText", statusTextRegion)
-  animator.burstParticleEmitter("critText")
-  animator.playSound("burn")
-  effect.setParentDirectives("fade=008800=0.2")
+	if not (world.isMonster(entity.id()) or world.isNpc(entity.id())) then
+		if (status.stat("isCharged") == 1) then
+			  local statusTextRegion = { 0, 1, 0, 1 }
+			  animator.setParticleEmitterOffsetRegion("critText", statusTextRegion)
+			  animator.burstParticleEmitter("critText")
+			  animator.playSound("burn")
+			  --effect.setParentDirectives("fade=008800=0.2")
+		end
+	end
 end
 
 

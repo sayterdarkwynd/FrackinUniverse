@@ -1,11 +1,13 @@
 {
-  "name" : "percentarmorboost5augment",
-  "effectConfig" : {
-    "defenseModifier" : 0.05
-  },
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "percentarmorboost.lua"
-  ]
+	"name": "percentarmorboost5augment",
+	"effectConfig": {
+		"stats": [{
+			"stat": "protection",
+			"effectiveMultiplier": 1.05
+		}]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

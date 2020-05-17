@@ -4,14 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+4%^reset; Physical Resist
-\n^orange;Set Bonuses^reset;:
-^#a94db3;+25%^reset; Fall Damage Resist
-Swords: ^cyan;+15%^reset; Dmg
-\n^#e43774;Sulphuric/Mountainous: ^cyan;+15%^reset; Phys. Resist",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;25^reset;% Less Fall Damage
+^yellow;^reset; Swords: ^green;15^reset;% More Damage",
 
   "shortdescription" : "Bone-Steel Legs",
-  "category" : "t2armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -41,6 +39,11 @@ Swords: ^cyan;+15%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.053333
     }
   ],
 
@@ -49,10 +52,6 @@ Swords: ^cyan;+15%^reset; Dmg
     {
       "stat" : "bonesteelsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
     }
   ],
 

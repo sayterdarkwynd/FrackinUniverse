@@ -4,11 +4,11 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "category" : "t3armor",
-  "description" : "Built-in Head Lamp.
-\n^orange;Set Bonuses^reset;:
-^#a94db3;+2900^reset;s Oxygen Supply
-^green;+20%^reset; Fire/Ice/Poison/Radiation/Electric Resistance",
+  "category" : "headarmour",
+  "description" : "^cyan;Headlamp^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;2900^reset;% More Oxygen",
+"itemTags":["upgradeableWeapon"],
 
   "shortdescription" : "Spacepunk Helmet",
   "tooltipKind" : "armornew2",
@@ -38,6 +38,31 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.03
     }
   ],
 
@@ -47,26 +72,6 @@
     {
       "stat" : "tw_spacesuit2setcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.06
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.06
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.06
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.06
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.06
     }
   ],
 

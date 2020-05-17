@@ -1,5 +1,6 @@
 --Modified bow shot ability that drains energy while drawing and holding, with configurable drain rates. Has an animation state for when arrows have been loosed
 require "/scripts/vec2.lua"
+require "/items/active/weapons/crits.lua"
 
 -- Bow primary ability
 NebBowShotElder = WeaponAbility:new()
@@ -207,7 +208,7 @@ function NebBowShotElder:currentProjectileParameters()
 		* (mcontroller.onGround() and 1 or (mcontroller.liquidMovement() and 1 or mcontroller.zeroG() and 1 or (self.airborneBonus + status.stat("bowAirBonus"))))
 		/ (self.projectileCount or 1)
   projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
-
+  projectileParameters.power = Crits.setCritDamage(self,projectileParameters.power)
   return projectileParameters
 end
 

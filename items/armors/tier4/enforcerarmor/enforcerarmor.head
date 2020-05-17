@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;: 
-^green;12%^reset; Phys Resistance
-Assault Rifle/ Shotgun: ^cyan;+20%^reset; Dmg
-^cyan;Immune^reset;: Liq.Nitrogen, Darkness",
+^yellow;^reset; Assault Rifle/ Shotgun: ^green;20^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Liq.Nitrogen, Darkness",
   "shortdescription" : "Enforcer Helmet",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -38,6 +37,11 @@ Assault Rifle/ Shotgun: ^cyan;+20%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.016
     }
   ],
 
@@ -46,10 +50,6 @@ Assault Rifle/ Shotgun: ^cyan;+20%^reset; Dmg
     {
       "stat" : "fu_enforcerset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
     }
   ],
 

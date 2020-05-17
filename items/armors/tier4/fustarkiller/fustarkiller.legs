@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^#cyan;+24%^reset; Fire and Radiation Resist
-Sunlight increases stats ^#a94db3;25%^reset;
-^cyan;Immune^reset;: Pressure", 
+^yellow;^reset; Sunlight: ^green;25^reset;% More Power/Protection/Energy/HP
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Mud, Slime Stick, Ice Slip, Snow Slow, Drowning", 
   "shortdescription" : "Star-Killer Robes",
-  "category" : "t4armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -37,6 +36,16 @@ Sunlight increases stats ^#a94db3;25%^reset;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.032
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.032
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -45,14 +54,6 @@ Sunlight increases stats ^#a94db3;25%^reset;
     {
       "stat" : "fu_starkillerset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.08
     }
   ],
 
