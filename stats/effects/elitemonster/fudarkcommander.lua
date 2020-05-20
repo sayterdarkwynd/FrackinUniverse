@@ -2,14 +2,15 @@
 
 function init()
 	--source=effect.sourceEntity()
-	if world.isMonster(entity.id()) then
-		overrideParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
+	if not world.isMonster(entity.id()) then
+		--because for some reason these parameters vanish on servers, this condition check is going dodo
+		--[[overrideParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
 		--sb.logInfo("podUuid:%s",overrideParams.podUuid)
 		if not overrideParams.podUuid then
 			effect.expire()
 			return
-		end
-	else
+		end]]
+	--else
 		effect.expire()
 		return
 	end

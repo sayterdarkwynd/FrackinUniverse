@@ -9,9 +9,9 @@ function evolve(evolution)
   local myType = config.getParameter("isMultiplier",0)
   
   if eType == "monster" then
-    monster.setDropPool()
+    monster.setDropPool("empty")
   elseif eType == "npc" then
-    npc.setDropPool()
+    npc.setDropPool("empty")
   end
   if myType == 0 then  --Unless the monster is set to isMultiplier, they die on spawning the new variant. 
     status.setResource("health", 0)
