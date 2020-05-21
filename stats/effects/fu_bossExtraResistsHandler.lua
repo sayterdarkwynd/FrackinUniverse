@@ -9,8 +9,8 @@ function init()
 	local baseParameters=root.monsterParameters(monster.type())
 	local overrideParameters=monster.uniqueParameters()
 	overrideParameters=util.mergeTable(baseParameters,overrideParameters)
-	if overrideParameters.bossExtraResistsHandler then
-		bossExtraResistsValue=overrideParameters.bossExtraResistsHandler
+	if overrideParameters.bossExtraResistsValue then
+		bossExtraResistsValue=overrideParameters.bossExtraResistsValue
 	end
 	local elementaltypes=root.assetJson("/damage/elementaltypes.config")
 	local buffer={}
