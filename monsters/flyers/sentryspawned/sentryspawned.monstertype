@@ -13,7 +13,10 @@
 	"dropPools": [],
 
 	"baseParameters": {
-		"scripts": ["/monsters/monster.lua"],
+		"scripts": ["/monsters/monster.lua",
+			"/stats/effects/fu_bossExtraResistsHandler.lua"
+		],
+		"bossExtraResistsValue": 100,
 
 		"persistent": false,
 
@@ -214,52 +217,7 @@
 				"powerMultiplier": {
 					"baseValue": 1.2
 				},
-				"healingStatusImmunity": {
-					"baseValue": 1
-				},
-				"electricResistance": {
-					"baseValue": 100.0
-				},
-				"fireResistance": {
-					"baseValue": 100.0
-				},
-				"fireStatusImmunity": {
-					"baseValue": 1
-				},
-				"iceResistance": {
-					"baseValue": 100.0
-				},
-				"iceStatusImmunity": {
-					"baseValue": 1
-				},
-				"poisonResistance": {
-					"baseValue": 100.0
-				},
-				"poisonStatusImmunity": {
-					"baseValue": 1
-				},
-				"physicalResistance": {
-					"baseValue": 100.0
-				},
-				"cosmicResistance": {
-					"baseValue": 100.0
-				},
-				"radioactiveResistance": {
-					"baseValue": 100.0
-				},
-				"shadowResistance": {
-					"baseValue": 100.0
-				},
-				"extremepressureImmunity": {
-					"baseValue": 1
-				},
-				"shadowImmunity": {
-					"baseValue": 1
-				},
-				"insanityImmunity": {
-					"baseValue": 1
-				},
-				"darknessImmunity": {
+				"statusImmunity": {
 					"baseValue": 1
 				}
 			},

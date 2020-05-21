@@ -6,22 +6,30 @@ function init()
 			animator.setAnimationState("shield", "hit")
 		end)
 	end
-
-	effect.addStatModifierGroup({
-		{stat = "protection", amount = 100.0},
-		{stat = "fireResistance", amount = 100.0},
-		{stat = "iceResistance", amount = 100.0},
-		{stat = "poisonResistance", amount = 100.0},
-		{stat = "electricResistance", amount = 100.0},
-		{stat = "physicalResistance", amount = 100.0},
-		{stat = "radioactiveResistance", amount = 100.0},
-		{stat = "shadowResistance", amount = 100.0},
-		{stat = "akkimariacidResistance", amount = 100.0},
-		{stat = "centensianenergyResistance", amount = 100.0},
-		{stat = "cosmicResistance", amount = 100.0}
-	})
+	
+	local elementaltypes=root.assetJson("/damage/elementaltypes.config")
+	local buffer={}
+	local resists={}
+	
+	
+	for element,data in pairs(elementaltypes) do
+		if data.resistanceStat then
+			buffer[data.resistanceStat]=true
+		end
+	end
+	
+	table.insert(resists,{stat = "protection", amount = 100.0})
+	
+	for resist,_ in pairs(buffer) do
+		table.insert(resists,{stat = resist, amount = 100.0})
+	end
+	cultistshieldhandler=effect.addStatModifierGroup(resists)
 end
 
 function update(dt)
 	if animator then self.listener:update() end
+end
+
+function uninit()
+	effect.removeStatModifierGroup(cultistshieldhandler)
 end
