@@ -11,7 +11,7 @@ function init()
 			animator.setAnimationState("shield", "hit")
 		end)
 	end
-	
+	animator.playSound("trolol")
 end
 
 function update(dt)
