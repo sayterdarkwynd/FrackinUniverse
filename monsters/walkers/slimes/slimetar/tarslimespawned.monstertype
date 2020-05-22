@@ -2,35 +2,28 @@
 	"type": "tarslimespawned",
 	"shortdescription": "Ecto Slime",
 	"description": "It's all sticky and warm...ew.",
-
 	"categories": ["tarslime"],
 	"parts": ["body"],
-
 	"animation": "tarslime.animation",
-
 	"dropPools": [],
-
 	"baseParameters": {
 		"scripts": [
-			"/monsters/monster.lua"
+			"/monsters/monster.lua",
+			"/monsters/fu_monsterPercentRegen.lua"
 		],
-
+		"fuMonsterRegenPercent": -15,
 		"behavior": "monster",
 		"deathBehavior": "monster-death",
-
 		"behaviorConfig": {
 			"damageOnTouch": true,
-
 			"targetQueryRange": 20,
 			"targetOnDamage": true,
 			"keepTargetInSight": true,
 			"keepTargetInRange": 50,
 			"targetOutOfSightTime": 5.0,
-
 			"foundTargetActions": [{
 				"name": "action-aggrohop"
 			}],
-
 			"hostileActions": [{
 				"name": "action-hop",
 				"cooldown": 0.0,
@@ -45,25 +38,6 @@
 					"wallVerticalSpeed": 35
 				}
 			}],
-
-			"wanderActions": [{
-				"name": "action-statuseffect",
-				"cooldown": 3,
-				"parameters": {
-					"effect": "heal_neg20",
-					"duration": 3
-				}
-			}],
-
-			"concurrentActions": [{
-				"name": "action-statuseffect",
-				"cooldown": 3,
-				"parameters": {
-					"effect": "heal_neg20",
-					"duration": 3
-				}
-			}],
-
 			"periodicActions": [{
 				"name": "action-hop",
 				"cooldown": 0.0,
@@ -75,7 +49,6 @@
 					"hopAwayFromWall": true
 				}
 			}],
-
 			"followActions": [{
 					"name": "approach-teleport",
 					"parameters": {}
@@ -95,7 +68,6 @@
 					}
 				}
 			],
-
 			"deathActions": [{
 					"name": "action-spawnmonster",
 					"parameters": {
@@ -112,18 +84,8 @@
 						"replacement": true
 					}
 				}
-			],
-			"damageTakenActions": [{
-				"name": "action-statuseffect",
-				"cooldown": 3,
-				"parameters": {
-					"effect": "heal_neg20",
-					"duration": 3
-				}
-			}]
-
+			]
 		},
-
 		"touchDamage": {
 			"poly": [
 				[-0.6875, -0.375],
@@ -136,16 +98,13 @@
 				[-0.6875, 0.25]
 			],
 			"damage": 8,
-
 			"teamType": "enemy",
 			"damageSourceKind": "lash",
 			"knockback": 20,
 			"statusEffects": ["tarslow"]
 		},
-
 		"metaBoundBox": [-4, -4, 4, 4],
 		"scale": 1.0,
-
 		"movementSettings": {
 			"collisionPoly": [
 				[-0.6875, -0.375],
@@ -157,36 +116,29 @@
 				[-0.4375, 0.5],
 				[-0.6875, 0.25]
 			],
-
 			"mass": 1.0,
 			"walkSpeed": 5,
 			"runSpeed": 5,
 			"jumpSpeed": 5
 		},
-
 		"bodyMaterialKind": "organic",
-
 		"knockoutTime": 0.3,
 		"knockoutAnimationStates": {
 			"damage": "stunned"
 		},
 		"deathParticles": "deathPoof",
 		"knockoutEffect": "",
-
 		"statusSettings": {
 			"statusProperties": {
 				"targetMaterialKind": "organic"
 			},
-
 			"appliesEnvironmentStatusEffects": false,
 			"appliesWeatherStatusEffects": true,
 			"minimumLiquidStatusEffectPercentage": 0.1,
-
 			"primaryScriptSources": [
 				"/stats/monster_primary.lua"
 			],
 			"primaryScriptDelta": 5,
-
 			"stats": {
 				"grit": {
 					"baseValue": 1.0
@@ -222,7 +174,6 @@
 					"baseValue": 1.0
 				}
 			},
-
 			"resources": {
 				"stunned": {
 					"deltaValue": -1.0,
@@ -235,7 +186,6 @@
 				}
 			}
 		},
-
 		"mouthOffset": [0, 0],
 		"feetOffset": [0, -8],
 		"capturable": false,
