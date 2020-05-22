@@ -13,38 +13,50 @@ function init()
 
 	local baseParameters=root.monsterParameters(monster.type())
 	local overrideParameters=monster.uniqueParameters()
+	--sb.logInfo("b: %s",baseParameters)
+	--sb.logInfo("o: %s",overrideParameters)
 	
-	overrideParameters=util.mergeTable(baseParameters,overrideParameters)
-	baseParameters=overrideParameters.statusSettings.stats
+	local mergedParams=util.mergeTable(baseParameters,overrideParameters)
+	local innateStats=mergedParams.statusSettings.stats
+	baseParameters=nil
+	overrideParameters=nil
+	--sb.logInfo("mP: %s",mergedParams)
+	--sb.logInfo("iS: %s",innateStats)
 	
-	if overrideParameters.bossExtraResistsValue then
-		bossExtraResistsValue=overrideParameters.bossExtraResistsValue
+	if mergedParams.bossExtraResistsValue then
+		bossExtraResistsValue=mergedParams.bossExtraResistsValue
 	end
-	if overrideParameters.bossExtraResistsOverride then
-		bossExtraResistsOverride=overrideParameters.bossExtraResistsOverride
+	if mergedParams.bossExtraResistsOverride then
+		bossExtraResistsOverride=mergedParams.bossExtraResistsOverride
 	end
-	
-	if not bossExtraResistsOverride then
-		for stat,value in pairs(baseParameters) do
-			if value.amount then
-				buffer[stat]=value.amount
-			end
-		end
-		overrideParameters=buffer
-	end
-	buffer={}
+	--sb.logInfo("bERO: %s, bERV: %s",bossExtraResistsOverride,bossExtraResistsValue)
 	
 	for element,data in pairs(elementaltypes) do
 		if data.resistanceStat then
 			buffer[data.resistanceStat]=true
 		end
 	end
+	local globalElements=buffer
+	buffer={}
+	--sb.logInfo("gE: %s",globalElements)
 	
-	for resist,_ in pairs(buffer) do
-		if bossExtraResistsOverride or not overrideParameters[resist] then
+	for stat,value in pairs(innateStats) do
+		if globalElements[stat] then
+			--sb.logInfo("%s:%s",stat,value)
+			buffer[stat]=value.baseValue
+		end
+	end
+	local innateResistances=buffer
+	--sb.logInfo("iR: %s",innateResistances)
+	buffer={}
+	innateStats=nil
+	
+	for resist,_ in pairs(globalElements) do
+		if bossExtraResistsOverride or not innateResistances[resist] then
 			table.insert(resists,{stat = resist, amount = bossExtraResistsValue })
 		end
 	end
+	--sb.logInfo("r:%s",resists)
 	
 	status.setPersistentEffects("bossExtraResistsHandler",resists)
 end
