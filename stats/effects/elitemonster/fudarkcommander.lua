@@ -1,10 +1,13 @@
 function init()
+	sb.logInfo("Dark Commander init on %s. monster comparator: %s.",entity.id(),world.isMonster(id))
 	if not world.isMonster(entity.id()) then
 		--removed 'is pod monster' check due to params not being present on servers
+		sb.logInfo("Dark Commander terminated in init.")
 		effect.expire()
 		return
 	end
 	regenHPPerSecond=config.getParameter("regenHPPerSecond",0)
+	sb.logInfo("Dark Commander init passed comparator. Regen value: %s",regenHPPerSecond)
 end
 
 function update(dt)

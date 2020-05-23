@@ -29,7 +29,9 @@ function update(dt)
 	else
 		if not self.timer or self.timer >= 1 then
 			for _,id in pairs(world.monsterQuery(entity.position(),50)) do
+				sb.logInfo("Elder Set Bonus update for loop. id: %s. Comparator Pre-negation (isValidTarget): %s.",id,entity.isValidTarget(id))
 				if not entity.isValidTarget(id) then
+					sb.logInfo("for loop comparator passed: %s.",id)
 					world.sendEntityMessage(id, "applyStatusEffect", "fudarkcommander30", (self.timer or 1.0)*2, entity.id())
 				end
 			end
