@@ -8,7 +8,7 @@ function init()
 end
 
 function update(dt)
-	if not regenHPPerSecond then return end
+	if not regenHPPerSecond then regenHPPerSecond=config.getParameter("regenHPPerSecond",0) end
 	
 	healthPercent=status.resourcePercentage("health")
 	if not status.statPositive("healingStatusImmunity") then
