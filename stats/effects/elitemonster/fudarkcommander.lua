@@ -12,7 +12,7 @@ end
 
 function update(dt)
 	if not regenHPPerSecond then regenHPPerSecond=config.getParameter("regenHPPerSecond",0) end
-	
+	--donkey
 	healthPercent=status.resourcePercentage("health")
 	if not status.statPositive("healingStatusImmunity") then
 		healthPercent=math.min(healthPercent+(regenHPPerSecond*dt),1.0)
