@@ -1,5 +1,5 @@
 function init()
-	sb.logInfo("Dark Commander init on %s. monster comparator: %s.",entity.id(),world.isMonster(id))
+	sb.logInfo("Dark Commander init on %s. monster comparator: %s.",entity.id(),world.isMonster(entity.id()))
 	if not world.isMonster(entity.id()) then
 		--removed 'is pod monster' check due to params not being present on servers
 		sb.logInfo("Dark Commander terminated in init.")
