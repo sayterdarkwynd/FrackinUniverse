@@ -20,22 +20,30 @@ function init()
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	--sb.logInfo("%s",status.getPersistentEffects("armor"))
+	statusEffectName=config.getParameter("statusEffectName")
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		status.removeEphemeralEffect("darkregen")
+		if type(statusEffectName)=="string" then
+			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
+			if buffer[statusEffectName] then
+				buffer[statusEffectName]=nil
+			end
+			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
+		end
 		effect.expire()
 	else
 		if not self.timer or self.timer >= 1 then
-			for _,id in pairs(world.monsterQuery(entity.position(),50)) do
-				--sb.logInfo("Elder Set Bonus update for loop. id: %s. Comparator Pre-negation (isValidTarget): %s.",id,entity.isValidTarget(id))
-				if not entity.isValidTarget(id) then
-					--sb.logInfo("for loop comparator passed: %s.",id)
-					world.sendEntityMessage(id, "applyStatusEffect", "fudarkcommander30", (self.timer or 1.0)*2, entity.id())
+			if type(statusEffectName)=="string" then
+				local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
+				if not buffer[statusEffectName] then
+					buffer[statusEffectName]={"fudarkcommander30"}
 				end
+				status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
 			end
+			
 			self.timer = 0
 		else
 			self.timer = self.timer + dt
