@@ -1,0 +1,94 @@
+{
+  "type" : "fuhelicultist",
+  "shortdescription" : "Helicultist",
+  "description" : "The mechanism behind their flying contraption is a great mystery.",
+
+  "categories" : [ "fuhelicultist" ],
+  "parts" : [ "body" ],
+
+  "animation" : "fuhelicultist.animation",
+
+  "dropPools" : [ ],
+
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "fuhelicultist",
+
+    "metaBoundBox" : [-8, -8, 8, 8],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-0.875, -4.875], [-5.375, 0.375], [-5.375, 3.25], [0.25, 4.875], [0.25, 4.875], [5.375, 3.25], [5.375, 0.375], [0.875, -4.875] ],
+
+      "gravityEnabled" : false,
+      "mass" : 1.0
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.0,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "wooden"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "grit" : {
+          "baseValue" : 1.0
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 60
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8]
+  }
+}
