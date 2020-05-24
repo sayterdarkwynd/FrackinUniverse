@@ -187,6 +187,8 @@ function Pet:getPersistentEffects()
 	end
 	--we're using the player's stats, rather than just armor stats, now.
 	table.insert(filteredEffects,{stat="powerMultiplier",effectiveMultiplier=status.stat("powerMultiplier")})
+	--doing the same for hp regen with the upcoming changes to it
+	table.insert(filteredEffects,{stat="healthRegen",amount=status.stat("healthRegen")})
     util.appendLists(effects,filteredEffects)
     --util.appendLists(effects, getPetPersistentEffects())
 	
