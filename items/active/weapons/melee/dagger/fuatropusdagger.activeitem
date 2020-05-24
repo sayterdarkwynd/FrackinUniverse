@@ -9,7 +9,7 @@
   "tooltipKind" : "sword2",
   "category" : "dagger",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon","atropus","bioweapon"],
   "level" : 5,
   "inventoryIcon" : "fuatropusdagger.png",
   "collectablesOnPickup" : { "fu_weapondagger" : "fuatropusdagger" },
@@ -29,7 +29,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "aimOffset" : -1.0,
 
@@ -40,7 +40,8 @@
     "baseDps" : 7.72,
     "damageConfig" : {
       "knockback" : 10,
-      "statusEffects" : [ "weakpoison" ]
+      "statusEffects" : [ "weakpoison" ],
+      "damageSourceKind": "bioweaponbroadsword"
     },
     "stances" : {
       "idle" : {

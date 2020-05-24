@@ -1,6 +1,6 @@
 {
   "name" : "reconsetbonus2",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
@@ -16,7 +16,7 @@
     "weaponBonuses" : [
       {
         "type" : "any",
-        "tags" : [ "assaultrifle", "rifle", "sniperrifle" ],
+        "tags" : [ "assaultrifle", "sniperrifle" ],
         "stats" : {
           "powerMultiplier" : { "effectiveMultiplier" : 1.15 },
           "critChance" : { "amount" : 2 }
@@ -28,8 +28,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta" : 5,
-
-  "label" : "Immune: Radiation, Rad Burn, Slowing Terrain. +10% Speed. Rifle/Sniper Rifle: +15% Dmg, +2% Crit Chance",
-  "icon" : "/interface/statuses/recon.png"
+  "scriptDelta" : 5
 }

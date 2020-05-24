@@ -4,13 +4,13 @@
   "maxStack" : 1,
   "level" : 3,
   "rarity" : "uncommon",
-  "description" : "Shadow-infused metal for deaddly power.
-^cyan;Shadow damage^reset;", 
+  "description" : "Shadow-infused metal for deadly power.
+^cyan;Universal Damage^reset;", 
   "shortdescription" : "Penumbral Quarterstaff",
   "tooltipKind" : "sword2",
   "category" : "Quarterstaff",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","quarterstaff", "penumbrite", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","quarterstaff", "penumbrite", "upgradeableWeapon","silver"],
   
   "inventoryIcon" : "penumbritequarterstaff.png",
   "animation" : "combostaffglow.animation",
@@ -23,17 +23,17 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "shadow",
+  "elementalType" : "silverweapon",
 
   "aimOffset" : -1.0,
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.75,
-    "baseDps" : 5.25,
+    "baseDps" : 4.25,
     "damageConfig":{
       "knockback":10,
-      "damageSourceKind" : "shadow"
+      "damageSourceKind" : "silverweapon"
       }, 
       "comboSteps":6, 
       "swooshOffsetRegions":[

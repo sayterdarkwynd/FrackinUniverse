@@ -5,12 +5,12 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Shiny, honed and deadly.
-^cyan;Shadow Damage^reset;",
+^cyan;Universal Damage^reset;",
   "shortdescription" : "Penumbral Katana",
   "tooltipKind" : "sword2",
   "category" : "katana",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","katana", "energy","upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","katana","daikatana", "energy","upgradeableWeapon", "penumbrite","silver"],
 
   "inventoryIcon" : "penumbritekatana.png",
 
@@ -45,15 +45,15 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "shadow",
+  "elementalType" : "silverweapon",
 
   "primaryAbilityType" : "katanacombo",
   "primaryAbility": {
     "comboSteps": 6,
     "fireTime" : 0.75,
-    "baseDps": 7.25,
+    "baseDps": 6.25,
     "damageConfig": {
-      "damageSourceKind" : "shadowshortsword",
+      "damageSourceKind" : "silverweapon",
       "knockback":20
     }
   },

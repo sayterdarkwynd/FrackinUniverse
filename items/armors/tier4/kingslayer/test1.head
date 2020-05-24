@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+25%^reset; Poison and Physical Resist
-^green;+12%^reset; Health
-Melee: ^green;+3%/6%^reset; Crit
-^cyan;Immune^reset;: Acid",
+^yellow;^reset; ^green;12^reset;% More HP
+^yellow;^reset; Melee: +^green;3^reset;%/^green;6^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Acid, Oxygen",
   "shortdescription" : "Kingslayer Helm",
-  "category" : "t4armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -44,6 +43,16 @@ Melee: ^green;+3%/6%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.028
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.028
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -52,14 +61,6 @@ Melee: ^green;+3%/6%^reset; Crit
     {
       "stat" : "fu_kingslayerset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
     }
   ],
   "colorOptions" : [

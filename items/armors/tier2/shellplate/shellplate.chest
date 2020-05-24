@@ -4,12 +4,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "^green;+2%^reset; Fire and Ice Resists
-^yellow;+10%^reset; X'i Bulb Regen Rate (30%)
-\n^orange;Set Bonuses^reset;:
-^green;+5%^reset; Dmg and Speed
-X'i weapons: ^cyan;+15^reset; Health
-\n^#e43774;Lush/Forest biomes: ^green;+5%^reset; Energy and KB Resist",
+  "description" : "^yellow;+10^reset;% X'i Bulb Regen Rate (30%)
+^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;5^reset;% More Damage, +^green;5^reset;% Speed
+^yellow;^reset; X'i weapons: ^green;15^reset;% More HP
+^yellow;^reset; Lush/Forest biomes: ^green;5^reset;% More Energy. +^green5^reset;% Knockback Resist",
 
   "itemTags" : [ "upgradeableWeapon" ],
 
@@ -20,7 +19,7 @@ X'i weapons: ^cyan;+15^reset; Health
   ],
 
   "shortdescription" : "X'ian Leather Chest",
-  "category" : "t1armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -56,6 +55,16 @@ X'i weapons: ^cyan;+15^reset; Health
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.013333
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.013333
     }
   ],
 
@@ -65,14 +74,6 @@ X'i weapons: ^cyan;+15^reset; Health
     {
       "stat" : "radienleathersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.02
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.02
     },
     {
       "stat" : "xiBonus",

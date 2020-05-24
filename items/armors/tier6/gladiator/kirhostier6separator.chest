@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Legendary",
    "description" : "^orange;Set Bonuses^reset;: 
-Thorns when hit
-^#a94db3;25%^reset; Phys Resistance,
-Fist:^cyan;+20%^reset; Damage, ^cyan;+20%^reset; Knockback
-\n^cyan;Immune^reset;:Sandstorms, Liq. Nitrogen", 
+^yellow;^reset; ^cyan;Thorns^reset;
+^yellow;^reset; Fist: ^green;20^reset;% More Damage, +^green;20^reset;% Knockback
+^yellow;^reset; ^cyan;Immune^reset;: Sandstorms, Liq. Nitrogen, Proto-Poison", 
   "shortdescription" : "Gladiator Hardsuit",
-  "category" : "t6armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -47,6 +46,11 @@ Fist:^cyan;+20%^reset; Damage, ^cyan;+20%^reset; Knockback
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.028571
     }
   ],
 
@@ -55,11 +59,7 @@ Fist:^cyan;+20%^reset; Damage, ^cyan;+20%^reset; Knockback
     {
       "stat" : "fu_gladiatorset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.10
-    }      
+    }     
   ],
 
   "colorOptions" : [

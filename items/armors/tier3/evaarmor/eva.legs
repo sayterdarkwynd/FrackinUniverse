@@ -5,10 +5,9 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;
-^cyan;21%^green; all Elemental Resists^reset;
-^cyan;Immune: Radiation, Rad Burns, Pus, Liq. Nitrogen^reset;",
+^yellow;^reset; ^cyan;Immune^reset;: Radiation, Rad Burns, Pus, Liq. Nitrogen",
   "shortdescription" : "E.V.A Pants",
-  "category" : "t3armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
@@ -36,6 +35,26 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.034285
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.034285
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.034285
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.034285
     }
   ],
 
@@ -44,22 +63,6 @@
     {
       "stat" : "evasetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.07
     }
   ],
 

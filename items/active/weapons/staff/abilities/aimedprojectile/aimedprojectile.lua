@@ -82,14 +82,16 @@ function AimedProjectile:discharge()
   activeItem.setCursor("/cursors/reticle0.cursor")
 
   animator.playSound(self.elementalType.."activate")
-  self:createProjectiles()
-
-  util.wait(self.stances.discharge.duration, function(dt)
-    status.setResourcePercentage("energyRegenBlock", 1.0)
-  end)
-
-  animator.playSound(self.elementalType.."discharge")
-  animator.stopAllSounds(self.elementalType.."chargedloop")
+  --sb.logInfo("%s",self)
+  if status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
+	
+	self:createProjectiles()
+	  util.wait(self.stances.discharge.duration, function(dt)
+		status.setResourcePercentage("energyRegenBlock", 1.0)
+		end)
+	animator.playSound(self.elementalType.."discharge")
+	animator.stopAllSounds(self.elementalType.."chargedloop")
+  end
 
   self:setState(self.cooldown)
 end

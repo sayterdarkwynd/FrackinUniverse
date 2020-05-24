@@ -5,11 +5,11 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
    "description" : "^orange;Set Bonuses^reset;: 
-^cyan;20%^reset; Ice and Phys Resist
-Assault/Energy Rifle: ^green;+25%^reset; Dmg and ^green;+2%^reset; Crit
-^cyan;Immune^reset;: Oxygen, Liq. Nitrogen, Cold", 
+^yellow;^reset; ^green;30^reset;% Less Fall Damage
+^yellow;^reset; Assault/Energy Rifle: ^green;25^reset;% More Damage and +^green;2^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Gas, Liq. Nitrogen, Cold",  
   "shortdescription" : "X10 Power Armor",
-  "category" : "t4armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -46,6 +46,16 @@ Assault/Energy Rifle: ^green;+25%^reset; Dmg and ^green;+2%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 9
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.026
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.026
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -54,15 +64,7 @@ Assault/Energy Rifle: ^green;+25%^reset; Dmg and ^green;+2%^reset; Crit
     {
       "stat" : "fu_x10set_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.065
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.065
-    }      
+    } 
   ],
 
   "colorOptions" : [

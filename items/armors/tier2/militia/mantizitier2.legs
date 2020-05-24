@@ -4,12 +4,12 @@
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Poison Resist
-\n^orange;Set Bonuses^reset;:
-Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;10^reset;% More HP
+^yellow;^reset; Shotgun/Assault Rifle: ^green;15^reset;% More Damage",
 
   "shortdescription" : "Telebrium Greaves",
-  "category" : "t2armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -37,6 +37,11 @@ Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -45,10 +50,6 @@ Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
     {
       "stat" : "militiasetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
     }
   ],
 

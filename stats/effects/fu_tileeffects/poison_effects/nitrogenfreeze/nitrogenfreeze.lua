@@ -34,7 +34,7 @@ function update(dt)
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
         damage = self.baseDamage,
-        damageSourceKind = "ice",
+        damageSourceKind = "hoarfrost",
         sourceEntityId = entity.id()
       })
   end

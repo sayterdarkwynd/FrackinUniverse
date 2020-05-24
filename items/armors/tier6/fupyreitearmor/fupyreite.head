@@ -5,12 +5,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-   "description" : "^cyan;20%^reset; Ice Resist
-^orange;Set Bonuses^reset;:
-Pyreite weapons: ^#a94db3;+25%^reset; Dmg
-\n^cyan;Immune^reset;: Cold, Ice Slip, Snow, Freeze, Nitrogen", 
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Pyreite weapons: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, All Cold",
   "shortdescription" : "Pyreite Helm",
-  "category" : "t6armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -39,6 +38,11 @@ Pyreite weapons: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.057142
     }
   ],
 
@@ -47,10 +51,6 @@ Pyreite weapons: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "fu_pyreiteset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.2
     }
   ],
 

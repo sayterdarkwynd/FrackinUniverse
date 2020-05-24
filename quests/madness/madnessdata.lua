@@ -61,7 +61,7 @@ function randomEvent()
 		status.addEphemeralEffect("eatself",20) -- You just can't stop eating yourself.
 		status.addEphemeralEffect("healingimmunitydummy",20) -- healing won't work on you
 		if status.isResource("food") then
-			status.addEphemeralEffect("food_healconversion_100_1-10_lethal",20) -- You just can't stop eating yourself.
+			status.addEphemeralEffect("convert_food-health_100_1-10_lethal",20) -- You just can't stop eating yourself.
 			status.addEphemeralEffect("feedpackneg",self.curseDuration_status)-- hunger isn't abating either
 		else
 			status.addEphemeralEffect("heal_neg20",20) -- You just can't stop eating yourself.
@@ -410,6 +410,6 @@ function isWeirdStuff()
 end
 
 function uninit()
-	status.clearPersistentEffects("madnessEffectsMain")
+	status.setPersistentEffects("madnessEffectsMain",{})
 	world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
 end

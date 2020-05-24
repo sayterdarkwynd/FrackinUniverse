@@ -204,6 +204,9 @@ function init()
 	
 	-- Init timer, and offset update delta to reduce potential lag spikes when they all update at the same time
 	beeUpdateTimer = beeData.beeUpdateInterval
+
+
+
 	local timerIncrement = config.getParameter("scriptDelta") * 0.01
 	
 	local sameTimers
@@ -692,17 +695,10 @@ function ageQueen(amount)
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then 
 	  queen.parameters.lifespan = 500 
 	end
-	
-	-- original
-	--queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
-	--world.containerTakeAt(entity.id(), queenSlot-1)
-	
-	--updated
-	self.randQueenAge = math.random(0,1)  --kill queens half as fast as before
-	if self.randQueenAge == 1 then
-		queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
-		world.containerTakeAt(entity.id(), queenSlot-1)	
-	end
+
+
+	queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
+	world.containerTakeAt(entity.id(), queenSlot-1)	
 	
 	if (queen.parameters.lifespan > 0) then
 		world.containerPutItemsAt(entity.id(), queen, queenSlot-1)
@@ -788,7 +784,7 @@ function isDroneActive(drone)
 		return false
 	end
 	
-	-- Always active for simulated ticks. Whether anything actually ahppens is determined within the production function
+	-- Always active for simulated ticks. Whether anything actually happens is determined within the production function
 	if ticksToSimulate then return true end
 	
 	-- Get the worktime stat, and check if the drones should be active, taking work time modifying frames into account

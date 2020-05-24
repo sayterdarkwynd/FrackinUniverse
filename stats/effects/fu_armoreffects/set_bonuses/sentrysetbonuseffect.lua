@@ -4,7 +4,10 @@ weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
-armorBonus={}
+armorBonus={
+	{stat = "maxEnergy", effectiveMultiplier = 1.15},
+	{stat = "maxHealth", effectiveMultiplier = 1.15}
+}
 
 setName="fu_sentryset"
 

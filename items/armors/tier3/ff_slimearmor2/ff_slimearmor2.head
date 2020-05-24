@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+21%^reset; Poison/Radiation Resist 
-^green;Spawns minions^reset;
-Slime Weapons: ^cyan;+15%^reset; Damage, ^green;+5%^reset; Crit 
-^cyan;Immune^reset;: Poison, Bioooze, Mud, Snow, Ice, Slime, Clay",
+^yellow;^reset; ^cyan;Spawns Minions^reset;: Tar Slime
+^yellow;^reset; Slime Weapons: ^green;15^reset;% More Damage, +^green;5^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Bio-ooze, Mud, Snow, Ice, Slime, Clay",
   "shortdescription" : "Black Slime Helm",
-  "category" : "t3armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [ "ff_slimehead3" ],
   "maleFrames" : "head.png",
@@ -39,23 +38,26 @@ Slime Weapons: ^cyan;+15%^reset; Damage, ^green;+5%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.035
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.035
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset2_head",
+      "amount" : 1
     }
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "slime2setcount",
-      "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.07
-    }
+    "slimesetbonus2"
   ],
 
   "colorOptions" : [

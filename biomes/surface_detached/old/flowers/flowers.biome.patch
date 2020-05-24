@@ -1,12 +1,20 @@
 [
-{
-  "op": "add",
-  "path": "/undergroundPlaceables",
-  "value": {
-    "grassMod" : [ "snow" ],
-    "grassModDensity" : 0.9,
-
-    "items" : []
+ {
+    "op": "add",
+    "path": "/spawnProfile",
+    "value": {
+      "groups": [
+        {
+          "select": 1,
+          "pool": [
+            [ 0.50, "bee_orchid" ],
+            [ 0.20, "bee_honey" ],
+            [ 0.20, "bee_bumblebee" ],
+            [ 0.10, "bee_assassin" ]
+          ]
+        }
+      ]
+    }
   }
-}
 ]
+

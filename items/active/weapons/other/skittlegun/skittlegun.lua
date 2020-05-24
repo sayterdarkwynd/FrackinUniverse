@@ -4,9 +4,11 @@ require "/scripts/epoch.lua"
 require "/scripts/effectUtil.lua"
 
 gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
+blockedWorlds={outpost=true,allianceoutpost=true,avikanoutpost=true,alliancefestivalhall=true,shellguardbase=true,sgfortresscorebase=true,extrachallengelabs=true,ancientgateway=true}
+deathWorlds={protectorate=true,felinintro=true}
 
 function init()
-
+	deathWorlds["avikanmission-intro"]=true
 	local timeData=epoch.currentToTable()
 	if timeData.month == 4 and timeData.day==1 then
 		fool=true
@@ -107,7 +109,7 @@ function update(dt, fireMode, shiftHeld)
 			end
 		end
 		return
-	elseif worldType == "outpost" or worldType == "allianceoutpost" or worldType == "avikanoutpost" or worldType == "alliancefestivalhall" then
+	elseif blockedWorlds[worldType] then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("Gregdonkeybow. GREG! Greg. greg...$!@#$!@% GREG.")
 			storage.fireTimer = 1
@@ -119,7 +121,7 @@ function update(dt, fireMode, shiftHeld)
 			storage.fireTimer = 1
 		end
 		return
-	elseif worldType == "protectorate" or worldType == "felinintro"or worldType == "avikanmission-intro" then
+	elseif deathWorlds[worldType] then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("...donkey...")
 			storage.fireTimer = 6

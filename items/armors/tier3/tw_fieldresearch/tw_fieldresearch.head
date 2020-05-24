@@ -4,11 +4,11 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "category" : "t2armor",
-  "description" : "^orange;Set Bonuses^reset;:
-^cyan;15%^reset; Radiation Resist
-Magnorbs: ^#a94db3;+25%^reset; Dmg
-^cyan;Immunity^reset;: Oxygen, Poison, Gas",
+  "category" : "headarmour",
+    "description" : "^cyan;Headlamp^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; Magnorbs: ^green;25^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Poison, Gas",
   "shortdescription" : "Researcher's Helm",
   "tooltipKind" : "armornew2",
 
@@ -37,6 +37,11 @@ Magnorbs: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -46,10 +51,6 @@ Magnorbs: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "researchsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.05
     }
   ],
 

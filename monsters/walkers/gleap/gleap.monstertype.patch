@@ -1,0 +1,96 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-hop",
+        "cooldown": 4,
+        "parameters": {
+          "verticalSpeed": 20,
+          "horizontalSpeed": 30,
+          "hopSequence": 1,
+          "timeBetweenHops": 0,
+          "windupTime": 0.6,
+          "landTime": 0.1,
+          "hopAwayFromWall": false,
+          "wallVerticalSpeed": 35
+        }
+      },
+      {
+        "name": "action-hop",
+        "cooldown": 4.5,
+        "parameters": {
+          "verticalSpeed": 20,
+          "horizontalSpeed": 10,
+          "hopSequence": 1,
+          "timeBetweenHops": 0,
+          "windupTime": 0.1,
+          "landTime": 0.1,
+          "hopAwayFromWall": false,
+          "wallVerticalSpeed": 35
+        }
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/behaviorConfig/hostileActions/0/cooldown",
+    "value": 0.1
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+      "name": "action-hop",
+      "cooldown": 8,
+      "parameters": {
+        "verticalSpeed": 20,
+        "horizontalSpeed": 30,
+        "hopSequence": 1,
+        "timeBetweenHops": 0,
+        "windupTime": 0.6,
+        "landTime": 0.1,
+        "hopAwayFromWall": false,
+        "wallVerticalSpeed": 35
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrant"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 70
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.1
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/pandorasboxSpecialColors",
+    "value": {
+      "colorPool": [
+        [
+          0.9, { "type": "color", "color": "default" }
+        ],
+        [
+          0.01, { "type": "colorPool", "colorPool": "/monsters/pandorasboxuniquemonstercolors/colors/pandorasboxrarecolors.config" }
+        ],
+        [
+          0.001, { "type": "colorPool", "colorPool": [[0.001, { "type": "color", "color": "albino" }]] }
+        ]
+      ],
+      "colors": [
+        "/monsters/pandorasboxuniquemonstercolors/colors/pandorasboxrarecolors.config",
+        { "albino": "/monsters/walkers/gleap/pandorasboxaltcolors/pandorasboxgleapaltalbino.png" }
+      ],
+      "paletteSwapBaseImage": "/monsters/walkers/gleap/pandorasboxaltcolors/pandorasboxgleapaltrare.png"
+    }
+  }
+]

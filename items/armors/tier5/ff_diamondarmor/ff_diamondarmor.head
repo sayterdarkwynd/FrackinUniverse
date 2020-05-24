@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+30%^reset; Physical Resist
-Katana: ^#a94db3;+25%^reset; Dmg, ^green;+2.5%^reset; Crit 
-^cyan;Immune^reset;: Acid, Bio-ooze", 
+^yellow;^reset; Katana: ^green;25^reset;% More Damage, +^green;2.5^reset;% Crit 
+^yellow;^reset; ^cyan;Immune^reset;: Acid, Bio-ooze", 
   "shortdescription" : "Gishinanki Helmet",
-  "category" : "t5armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
@@ -38,6 +37,11 @@ Katana: ^#a94db3;+25%^reset; Dmg, ^green;+2.5%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.033333
     }
   ],
 
@@ -46,10 +50,6 @@ Katana: ^#a94db3;+25%^reset; Dmg, ^green;+2.5%^reset; Crit
     {
       "stat" : "fu_diamondset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.1
     }
   ],
 

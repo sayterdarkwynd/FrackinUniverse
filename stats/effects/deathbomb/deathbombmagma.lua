@@ -26,7 +26,7 @@ function uninit()
 end
 
 function explode()
-  if not self.exploded and not (status.stat("deathbombDud") > 0) then
+  if not self.exploded and not status.statPositive("deathbombDud") then
     local sourceEntityId = effect.sourceEntity() or entity.id()
     local sourceDamageTeam = world.entityDamageTeam(sourceEntityId)
     local bombPower = status.resourceMax("health") * config.getParameter("healthDamageFactor", 1.0)

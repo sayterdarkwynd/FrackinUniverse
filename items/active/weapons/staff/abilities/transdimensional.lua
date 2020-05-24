@@ -90,8 +90,11 @@ function Controlledteleport:discharge()
   self.weapon:setStance(self.stances.discharge)
 
   activeItem.setCursor("/cursors/reticle0.cursor")
-  
-  local permittedWorld = ((world.terrestrial() or world.type() == "outpost" or world.type() == "unknown") and world.dayLength() ~= 100000) or (status.statPositive("admin") )
+  local wType=world.type()
+  local permittedWorld =
+  (status.statPositive("admin") or player.isAdmin())
+	or ((world.terrestrial() or wType == "asteroids" or wType == "outpost" or wType == "unknown" or wType == "playerstation") and world.dayLength() ~= 100000)
+	or (wType=="scienceoutpost" and player.hasCountOfItem("sciencebrochure2")>0)
   local lineOfSightActive = not world.lineTileCollision(activeItem.ownerAimPosition(), mcontroller.position())  
   
   if (permittedWorld) then --and lineOfSightActive) then --make sure they can see destination so they cant cheat
@@ -123,6 +126,9 @@ function Controlledteleport:discharge()
 	  animator.stopAllSounds(self.elementalType.."chargedloop")
 
 	  self:setState(self.cooldown)
+  else
+    animator.playSound(self.elementalType.."discharge")
+    animator.stopAllSounds(self.elementalType.."chargedloop")
   end
 end
 

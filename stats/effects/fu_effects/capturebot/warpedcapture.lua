@@ -3,26 +3,33 @@ require "/scripts/companions/util.lua"
 require "/scripts/messageutil.lua"
 
 function init()
-	effect.setParentDirectives(config.getParameter("directives", ""))
-	effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
+	if world.isMonster(entity.id()) then
+		effect.setParentDirectives(config.getParameter("directives", ""))
+		effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
+		isMonster=true
+	end
+	if not blocker then blocker=config.getParameter("blocker","warpedcapture") end
 end
 
 
 function update(dt)
-  hit()
+	if isMonster then
+		hit()
+	end
 end
 
 function hit()
-	if self.hit then return end
-	if world.isMonster(entity.id()) then
+	if self.hit or status.statPositive(blocker)then return end
+	if isMonster then
 		-- If a monster doesn't implement pet.attemptCapture or its response is nil
 		-- then it isn't caught.
 		podData=world.callScriptedEntity(entity.id(), "capturable.attemptCapture", entity.id())
 		
 		if podData then
-			--effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
+			if not blocker then blocker=config.getParameter("blocker","warpedcapture") end
 			spawnFilledPod(podData)
 			self.hit=true
+			status.addPersistentEffect(blocker,{stat=blocker,amount=1})
 			world.callScriptedEntity(entity.id(),"monster.setDropPool",nil)
 			status.setResourcePercentage("health",0)
 		end

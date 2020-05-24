@@ -2,7 +2,7 @@ setName="fu_daywalkerset"
 
 weaponBonus={
 	{stat = "critChance", amount = 1.5},
-	{stat = "critBonus", effectiveMultiplier = 1.25}
+	{stat = "critDamage", amount = 0.25}
 }
 
 armorBonus={
@@ -13,7 +13,8 @@ armorBonus={
 	{stat = "slimestickImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},
-	{stat = "slushslowImmunity", amount = 1}
+	{stat = "slushslowImmunity", amount = 1},
+	{stat = "maxEnergy", effectiveMultiplier = 1.1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
@@ -38,7 +39,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"longsword","rapier","katana","shortsword","dagger"})
-	if weapons["either"] then
+	if weapons["either"] and not weapons["twoHanded"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})

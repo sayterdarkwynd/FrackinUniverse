@@ -6,11 +6,11 @@
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+30%^reset; Cosmic Resist
-^#green;0.4%^reset; Regeneration
-^#a94db3;+50%^reset; Crit Dmg", 
+^yellow;^reset; +^green;0.4^reset;% HP Regen
+^yellow;^reset; +^green;50^reset;% Crit Damage
+^yellow;^reset; ^cyan;Immune^reset;: Darkness", 
   "shortdescription" : "Dark Matter Chestpiece",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : {
     "body" : "chest.png",
@@ -46,6 +46,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.043333
     }
   ],
 
@@ -54,11 +59,7 @@
     {
       "stat" : "fu_darkmatterset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.13
-    }      
+    }    
   ],
 
   "colorOptions" : [

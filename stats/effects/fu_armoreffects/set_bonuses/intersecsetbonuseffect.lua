@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
 	{stat = "critChance", amount = 2},
-	{stat = "critBonus", baseMultiplier = 1.25}
+	{stat = "critDamage", amount = 0.25}
 }
 
 armorBonus={
@@ -29,7 +29,7 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"rifle","assaultrifle", "pistol"})
+	local weapons=weaponCheck({"assaultrifle", "pistol"})
 	
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)

@@ -4,14 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+3%^reset; Fire and Poison Resist^reset;
-^orange;Set Bonuses^reset;:
-^green;+5^reset; HP, ^cyan;+15%^reset; Fall Dmg Resist^reset;
-Longsword or Axe: ^cyan;+15%^reset; Damage
-^#e43774;(Lush/Forest biomes) ^green;+5^reset; HP, ^green;+5%^reset; Damage, ^green;+5%^reset; Physical Resist^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;5^reset;% More HP, ^green;15^reset;% Less Fall Damage^reset;
+^yellow;^reset; Longsword or Axe: ^green;15^reset;% More Damage
+^yellow;^reset; ^cyan;Lush/Forest^reset;: ^green;5^reset;% More HP, ^green;5^reset;% More Damage, +^green;5^reset;% Phys. Resist^reset;",
 
   "shortdescription" : "Bone Legs",
-  "category" : "t1armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "learnBlueprintsOnPickup" : [
     "fubonearmor2head",
@@ -43,6 +42,16 @@ Longsword or Axe: ^cyan;+15%^reset; Damage
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.03
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.03
     }
   ],
   "statusEffects" : [
@@ -50,14 +59,6 @@ Longsword or Axe: ^cyan;+15%^reset; Damage
     {
       "stat" : "bonesetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.03
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.03
     }
   ],
   "builder" : "/items/buildscripts/fubuildarmor.lua"

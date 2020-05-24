@@ -4,14 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^orange;Set Bonuses: 
-Oxygen Tank
-^#a94db3;+30%^reset; Electric, ^cyan;20%^reset; Phys Resist^reset;
-^#a94db3;+240%^reset; Mining Laser damage
-+^cyan;50^reset;% Defense Tech Efficiency
-^#e43774;Immune^reset;: Burning, Proto, Pressure, Gas", 
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^cyan;Gravity Normalization^reset;
+^yellow;^reset; Mining Laser: ^green;140^reset;% More Damage
+^yellow;^reset; +^cyan;50^reset;% Defense Tech Efficiency
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Proto-Poison, Pressure, Gas, Ice Slip, Oxygen", 
   "shortdescription" : "Spacefarer mk2 Chest",
-  "category" : "t4armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -54,6 +53,16 @@ Oxygen Tank
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.04
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.028
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -62,14 +71,6 @@ Oxygen Tank
     {
       "stat" : "fu_spacefarerset2_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
     }
 ],
   //"upgrades" : 1 ,

@@ -39,7 +39,10 @@ function update(dt, fireMode, shiftHeld)
 
 	if ability and storage.fireTimer <= 0 and not world.pointTileCollision(firePosition()) and status.overConsumeResource("energy", ability.energyUsage) then
 		storage.fireTimer = ability.fireTime or 1
-		fire(ability)
+		fire(ability,fireMode,shiftHeld)
+		--[[if status.resourceLocked("energy") then
+			
+		end]]
 	end
 
 	activeItem.setRecoil(self.recoilTimer > 0)
@@ -51,7 +54,7 @@ function doRecoil(ability,aimVec,count)
 	mcontroller.controlApproachVelocityAlongAngle(aimAngle, ability.recoil.speed*count, ability.recoil.force * ability.fireTime*count, true)
 end
 
-function fire(ability)
+function fire(ability,fireMode,shiftHeld)
 	--sb.logInfo("%s",ability)
 	local projectileCount = ability.projectileCount or 1
 	if type(projectileCount) == "table" then
@@ -67,7 +70,8 @@ function fire(ability)
 		power = damagePerShot(ability),
 		powerMultiplier = activeItem.ownerPowerMultiplier()
 	}
-	for i = 1, projectileCount do
+	
+	for i = 1, projectileCount do	
 		local aimVec=aimVector(ability)
 		--sb.logInfo("aimVec: %s",aimVec)
 		local projectileId = world.spawnProjectile(
@@ -80,7 +84,12 @@ function fire(ability)
 		)
 		doRecoil(ability,aimVec,projectileCount)
 	end
-  
+	
+	if ability.selfEffects then
+		for _,effect in pairs(ability.selfEffects) do
+			status.addEphemeralEffect(effect,ability.fireTime)
+		end
+	end
 	animator.burstParticleEmitter("fireParticles")
 	animator.playSound("fire")
 	self.recoilTimer = ability.recoilTime or 0.12

@@ -4,6 +4,7 @@ function init()
 	end
 	
 	self.blinkTimer = 0
+	if not blocker then blocker=config.getParameter("blocker","deathbombsimpleprojectile") end
 end
 
 function update(dt)
@@ -16,7 +17,7 @@ function update(dt)
 		effect.setParentDirectives("")
 	end
 
-	if not status.resourcePositive("health") and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
+	if (status.resourcePercentage("health") <= 0.05) and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
 		explode()
 	end
 end
@@ -26,7 +27,8 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded and not (status.stat("deathbombDud") > 0) then
+	if not blocker then blocker=config.getParameter("blocker","deathbombsimpleprojectile") end
+	if not self.exploded and not status.statPositive("deathbombDud") and not status.statPositive(blocker) then
 		local projectileData=config.getParameter("projectile","invisibleprojectile")
 		
 		if type(projectileData)=="table" then
@@ -37,6 +39,7 @@ function explode()
 			world.spawnProjectile(projectileData, mcontroller.position(), 0, {0, 0}, false)
 		end
 		self.exploded = true
+		status.addPersistentEffect(blocker,{stat=blocker,amount=1})
 		if status.isResource("stunned") then
 			status.setResource("stunned",0)
 		end

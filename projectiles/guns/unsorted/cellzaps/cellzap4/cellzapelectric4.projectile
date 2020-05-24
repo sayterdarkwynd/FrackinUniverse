@@ -1,0 +1,32 @@
+{
+  "projectileName" : "cellzapelectric4",
+  "physics" : "hover",
+  "bounces" : 0,
+  "speed" : 50,
+  "timeToLive" : 0.25,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [20, 85, 70],
+  "image" : "cellzapelectric4.png",
+  "animationCycle" : 0.25,
+  "statusEffects" : [ "electrified" ],
+  "frameNumber" : 3,
+  "animationLoops" : false,
+  "power" : 8,
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : true,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/cellexplosion/cellexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "cellzapelectric5",
+      "fuzzAngle" : 40,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "electricplasma"
+}

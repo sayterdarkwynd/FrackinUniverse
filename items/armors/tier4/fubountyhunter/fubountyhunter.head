@@ -5,11 +5,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "^orange;Set Bonuses^reset;:  
-^green;+12%^reset; Physical Resist, ^green;12%^reset; Fall Damage Reduction
-Flamethrower/Rocket Launcher: ^cyan;+20%^reset; Dmg", 
+  "description" : "^cyan;Immune^reset;: Shadow Gas
+^orange;Set Bonuses^reset;:  
+^yellow;^reset; ^green;88^reset;% Less Fall Damage
+^yellow;^reset; Flamethrower/Rocket Launcher: ^green;20^reset;% More Damage", 
   "shortdescription" : "Bounty Hunter Helm",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -38,6 +39,11 @@ Flamethrower/Rocket Launcher: ^cyan;+20%^reset; Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.016
     }
   ],
 
@@ -47,10 +53,6 @@ Flamethrower/Rocket Launcher: ^cyan;+20%^reset; Dmg",
     {
       "stat" : "fu_bountyhunterset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
     }
   ],
 

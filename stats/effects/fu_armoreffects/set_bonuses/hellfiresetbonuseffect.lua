@@ -23,11 +23,14 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("fireburst")
+		status.removeEphemeralEffect("gloworange")
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		effectHandlerList.armorBonusHandle,armorBonus)
+		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		checkWeapons()
+		status.addEphemeralEffect("gloworange")
+		status.addEphemeralEffect("fireburst")
 	end
 end
 

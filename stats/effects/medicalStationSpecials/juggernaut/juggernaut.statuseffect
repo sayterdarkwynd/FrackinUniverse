@@ -4,10 +4,16 @@
 	"icon" : "/interface/statuses/medicalStationSpecials/juggernaut.png",
 
 	"defaultDuration" : 5,
-	"scripts" : [ "juggernaut.lua" ],
+	"scripts" : [ "/stats/effects/medicalStationSpecials/medicalStatusBase.lua","/stats/effects/fu_genericStatApplier.lua","/stats/effects/fu_genericControlModifiers.lua" ],
 	
 	"effectConfig" : {
-		"speedMultiplier" : 0.66,
-		"protection" : 50
+		"stats": [
+			{"stat": "grit","amount": 10},
+			{"stat": "knockbackThreshold","amount": 65535},
+			{"stat": "protection","amount": 50}
+		],
+		"controlModifiers": {
+			"speedModifier": 0.66
+		}
 	}
 }

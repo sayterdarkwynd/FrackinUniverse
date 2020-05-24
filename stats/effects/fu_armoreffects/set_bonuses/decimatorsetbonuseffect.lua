@@ -2,12 +2,13 @@ setName="fu_decimatorset"
 
 weaponBonus={
 	{stat = "critChance", amount = 3},
-	{stat = "critBonus", baseMultiplier = 1.15}
+	{stat = "critDamage", amount = 0.15}
 }
 
 armorBonus={
 	{stat = "protoImmunity", amount = 1},
-	{stat = "ffextremeheatImmunity", amount = 1}
+	{stat = "ffextremeheatImmunity", amount = 1},
+	{stat = "biomeheatImmunity", amount = 1}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"

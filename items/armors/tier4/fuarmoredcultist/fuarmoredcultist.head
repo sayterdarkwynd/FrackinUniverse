@@ -5,12 +5,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-   "description" : "^orange;Set Bonuses^reset;:  
-^#a94db3;+25%^reset; Shadow Resist
-^#a94db3;+30%^reset; chance to spawn Eye Bomb
-^cyan;Immune^reset;: Poison , Acid",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Flings Eyeballs^reset;
+^yellow;^reset; Aether/Lightless Worlds: ^green;15^reset;% More Damage, ^green;25^reset;% More HP
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Acid",
   "shortdescription" : "Corrupted Hood",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -39,6 +39,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.028
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],

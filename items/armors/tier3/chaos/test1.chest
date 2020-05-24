@@ -5,11 +5,12 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-Daggers/Whips/Boomerangs/Chakrams:^cyan;+3%^reset; Crit, ^green;+0.5%^reset; Regen
-^green;+10%^reset; Speed, ^cyan;+15%^reset; Shadow Resist, ^cyan;+21%^reset; Phys Resist",
+^yellow;^reset; +^green;0.5^reset;% HP Regen
+^yellow;^reset; +^green;10^reset;% Speed
+^yellow;^reset; Daggers, Whips, Boomerangs, Chakrams: +^green;3^reset;% Crit Chance",
   "itemTags" : [ "upgradeableWeapon" ],
   "shortdescription" : "Chaos Robe",
-  "category" : "t3armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -45,6 +46,16 @@ Daggers/Whips/Boomerangs/Chakrams:^cyan;+3%^reset; Crit, ^green;+0.5%^reset; Reg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.025
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.03
     }
   ],
 
@@ -53,14 +64,6 @@ Daggers/Whips/Boomerangs/Chakrams:^cyan;+3%^reset; Crit, ^green;+0.5%^reset; Reg
     {
       "stat" : "chaossetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
     }
   ],
 

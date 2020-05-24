@@ -4,12 +4,14 @@
 	"icon" : "/interface/statuses/medicalStationSpecials/renergizer.png",
 
 	"defaultDuration" : 5,
-	"scripts" : [ "renergizer.lua" ],
+	"scripts" : [ "/stats/effects/medicalStationSpecials/medicalStatusBase.lua","/stats/effects/fu_genericStatApplier.lua" ],
 	
 	"effectConfig" : {
-		"energyRegenMult" : 1.33,
-		"energyMax" : 50,
-		"foodDeltaMult" : 1.25,
-		"energyBlockIncrease" : 0.75
+		"stats": [
+			{"stat": "maxEnergy","effectiveMultiplier": 1.5},
+			{"stat": "foodDelta","baseMultiplier": 1.25},
+			{"stat": "energyRegenBlockTime","baseMultiplier": 2.0},
+			{"stat": "energyRegenPercentageRate","effectiveMultiplier": 1.33}
+		]
 	}
 }

@@ -34,7 +34,7 @@ end
 
 function checkSpeed()
   self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking 
-  if self.myspeed < 1 then
+  if self.myspeed < 2 then
     if self.afk > 200 then -- do not go higher than this value
       self.afk = 200
     end

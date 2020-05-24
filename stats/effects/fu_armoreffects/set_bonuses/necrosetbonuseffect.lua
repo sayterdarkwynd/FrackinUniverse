@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 weaponBonus={
 	{stat = "critChance", amount = 3.5},
-	{stat = "maxHealth", baseMultiplier = 1.25}
+	{stat = "maxHealth", effectiveMultiplier = 1.25}
 }
 
 
@@ -12,7 +12,7 @@ armorBonus={
 	{stat = "ffextremeradiationImmunity", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "radiationburnImmunity", amount = 1},
-	{stat = "breathAmount", baseMultiplier = 250}
+	{stat = "breathAmount", baseMultiplier = 3.50}
 }
 
 

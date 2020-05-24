@@ -5,10 +5,11 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:  
-^#a94db3;30%^reset; Shadow Resist
-Axe / Hammer / Scythe: ^#a94db3;+30%^reset; Dmg",
+^yellow;^reset; ^green;10^reset;% More Speed
+^yellow;^reset; Axe/Hammer/Scythe: ^green;30^reset;% More Damage
+^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint",
   "shortdescription" : "Shadow Helmet",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -37,6 +38,11 @@ Axe / Hammer / Scythe: ^#a94db3;+30%^reset; Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.04
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -45,10 +51,6 @@ Axe / Hammer / Scythe: ^#a94db3;+30%^reset; Dmg",
     {
       "stat" : "fu_shadowboneset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.1
     }
   ],
 

@@ -4,6 +4,7 @@ function init()
 	end
 	
 	self.blinkTimer = 0
+	if not blocker then blocker=config.getParameter("blocker","deathbombmonsterspawnsimple") end
 end
 
 function update(dt)
@@ -16,7 +17,7 @@ function update(dt)
 		effect.setParentDirectives("")
 	end
 
-	if not status.resourcePositive("health") and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
+	if (status.resourcePercentage("health") <= 0.05) and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
 		explode()
 	end
 end
@@ -26,7 +27,9 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded and not (status.stat("deathbombDud") > 0) then
+	if not blocker then blocker=config.getParameter("blocker","deathbombmonsterspawnsimple") end
+	if not self.exploded and not status.statPositive("deathbombDud") and not status.statPositive(blocker) then
+		status.addPersistentEffect(blocker,{stat=blocker,amount=1})
 		local monsters=config.getParameter("monsters")
 		--sb.logInfo("%s",monsters)
 		if monsters then

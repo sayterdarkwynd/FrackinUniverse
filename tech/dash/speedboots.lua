@@ -42,9 +42,9 @@ function init()
 end
 
 function uninit()
-  status.clearPersistentEffects("movementAbility")
-  status.clearPersistentEffects("wallClingPenalty")
-  status.clearPersistentEffects("wallClingPenalty2")
+  status.setPersistentEffects("movementAbility",{})
+  status.setPersistentEffects("wallClingPenalty",{})
+  status.setPersistentEffects("wallClingPenalty2",{})
   tech.setParentDirectives()
 end
 

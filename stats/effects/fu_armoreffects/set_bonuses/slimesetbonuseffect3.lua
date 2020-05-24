@@ -19,17 +19,15 @@ armorBonus={
 setName="fu_slimeset3"
 
 function init()
-	self.timer = math.random(60)
+	self.timer = math.max(math.random(6),math.random(6))
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
-
 	checkWeapons()
-
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
-self.timer = self.timer - dt
+    self.timer = self.timer - dt
 
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
@@ -37,34 +35,21 @@ self.timer = self.timer - dt
 		checkWeapons()
 	end
 	
-  -- randomly spawn a slime  
     if self.timer <= 0 then
-            self.slimevar = math.random(2)
-   	    if self.slimevar == 2 then
-   	      self.type = "magmaslime"
+   	    if math.random(1000) <= util.round(status.stat("critChance")*1000,0) then
+   	      self.type = "magmaslimespawned"
    	    else
-   	      self.type = "magmamicroslime"
-	    end      
-	    local p = entity.position()
+   	      self.type = "magmamicroslimespawned"
+	    end
 	    local parameters = {}
-	    local type = self.type
-	    sb.logInfo("Spawning a slime from Slime armor. Type is %s",type)
 	    parameters.persistent = false
 	    parameters.damageTeamType = "friendly"
 	    parameters.aggressive = true
 	    parameters.damageTeam = 0
-	    parameters.level = getLevel()
-	    sb.logInfo("Parameters for spawn are: %s",parameters)
-	    world.spawnMonster(type, mcontroller.position(), parameters)    
-            self.timer = math.random(120)
+	    parameters.level = checkSetLevel(self.setBonusCheck)
+	    world.spawnMonster(self.type, mcontroller.position(), parameters)
+        self.timer = math.max(math.random(12),math.random(12))
     end
-    
-end
-
-function getLevel()
-  if world.getProperty("ship.fuel") ~= nil then return 1 end
-  if world.threatLevel then return world.threatLevel() end
-  return 1
 end
 
 function checkWeapons()

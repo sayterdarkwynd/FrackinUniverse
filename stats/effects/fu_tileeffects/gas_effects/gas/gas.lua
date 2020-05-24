@@ -1,11 +1,8 @@
 require "/scripts/unifiedGravMod.lua"
 
 function init()
-	self.gravityMod = config.getParameter("gravityMod",20.0)
-	self.gravityNormalize = config.getParameter("gravityNorm",false)
-	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
-	self.movementParams = mcontroller.baseParameters()
-	unifiedGravMod.init()
+	--unifiedGravMod.initSoft()
+	--unifiedGravMod.init()
   
   activateVisualEffects()
   self.liquidMovementParameter = {
@@ -43,6 +40,6 @@ function activateVisualEffects()
 end
 
 function update(dt)
-  unifiedGravMod.update(dt)
+  --unifiedGravMod.update(dt)
   mcontroller.controlParameters(self.liquidMovementParameter)
 end

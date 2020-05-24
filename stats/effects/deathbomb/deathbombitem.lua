@@ -3,6 +3,7 @@ function init()
 		effect.expire()
 	end
 	self.blinkTimer = 0
+	if not blocker then blocker=config.getParameter("blocker","deathbombitem") end
 end
 
 function update(dt)
@@ -15,7 +16,7 @@ function update(dt)
 		effect.setParentDirectives("")
 	end
 
-	if not status.resourcePositive("health") and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
+	if (status.resourcePercentage("health") <= 0.05) and status.resourceMax("health") >= config.getParameter("minMaxHealth", 0) then
 		explode()
 	end
 end
@@ -25,7 +26,9 @@ function uninit()
 end
 
 function explode()
-	if not self.exploded and not (status.stat("deathbombDud") > 0) then
+	if not blocker then blocker=config.getParameter("blocker","deathbombitem") end
+	
+	if not self.exploded and not status.statPositive("deathbombDud") and not status.statPositive(blocker) then
 		local healthMultiplier=config.getParameter("healthMultiplier",1)
 		local healthMax=status.resourceMax("health")
 		local item=config.getParameter("item","money")
@@ -34,9 +37,10 @@ function explode()
 		if ((chance<100) and math.random(0,100)<chance) or (chance==100) then
 			world.spawnItem(item, mcontroller.position(),math.max(1,math.floor(healthMax*healthMultiplier)))
 		end
+		status.addPersistentEffect(blocker,{stat=blocker,amount=1})
 		self.exploded = true
-	if status.isResource("stunned") then
-		status.setResource("stunned",0)
-	end
+		if status.isResource("stunned") then
+			status.setResource("stunned",0)
+		end
 	end
 end

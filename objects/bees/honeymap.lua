@@ -38,7 +38,7 @@ function honeyCheck(comb)
 	if not item then
 		item = world.containerItems(entity.id())[self.inputSlot]
 		if item then item = item.name end
-		sb.logInfo("comb is = "..item.name)
+		--sb.logInfo("comb is = "..item.name)
 	end
 	return item and honeyMap[item] -- may be nil
 end

@@ -7,7 +7,6 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "shadowResistance", amount = 0.2},
 	{stat = "shadowImmunity", amount = 1}
 }
 

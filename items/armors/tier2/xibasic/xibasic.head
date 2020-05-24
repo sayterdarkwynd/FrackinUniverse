@@ -4,12 +4,11 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+4%^reset; Fire and Ice Resists
-^yellow;+15% X'i^reset; Bulb Regen Rate (45%)
-\n^orange;Set Bonuses^reset;:
-^green;+7%^reset; Dmg and ^green;+5%^reset; Speed
-X'i weapons: ^cyan;+20^reset; Health
-\n^#e43774;Lush/Forest biomes: ^green;+5%^reset; Energy and KB Resist",
+  "description" : "^yellow;+15^reset;% X'i Bulb Regen Rate (45%)
+^orange;Set Bonuses^reset;:
+^yellow;^reset; ^green;7^reset;% More Damage and +^green;5^reset;% Speed
+^yellow;^reset; X'i weapons: ^green;20^reset;% More HP
+^yellow;^reset; Lush/Forest biomes: ^green;5^reset;% More Energy, +^green;5^reset;% Knockback Resist",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
@@ -22,7 +21,7 @@ X'i weapons: ^cyan;+20^reset; Health
   ],
   
   "shortdescription" : "X'ian Armored Helm",
-  "category" : "t2armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   
   "itemTags" : [ "upgradeableWeapon" ],
@@ -48,6 +47,16 @@ X'i weapons: ^cyan;+20^reset; Health
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.026666
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.026666
     }
   ],
 
@@ -56,14 +65,6 @@ X'i weapons: ^cyan;+20^reset; Health
     {
       "stat" : "radientungstensetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.04
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.04
     },
     {
       "stat" : "xiBonus",

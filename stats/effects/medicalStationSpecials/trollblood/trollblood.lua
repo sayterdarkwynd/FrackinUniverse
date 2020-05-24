@@ -8,10 +8,10 @@ function init()
 	self.damageInstances = {}
 	self.regenInterval = 0
 	
-	self.modifierGroupID = effect.addStatModifierGroup({
+	--[[self.modifierGroupID = effect.addStatModifierGroup({
 		{stat = "maxHealth", amount = config.getParameter("healthReductionPcnt", 0)},
 		{stat = "energyRegenBlockTime", amount = config.getParameter("energyBlockIncrease", 0)}
-	})
+	})]]
 	
 	baseInit()
 end
@@ -51,5 +51,5 @@ function update(dt)
 end
 
 function uninit()
-	baseUninit(self.modifierGroupID)
+	--baseUninit(self.modifierGroupID)
 end

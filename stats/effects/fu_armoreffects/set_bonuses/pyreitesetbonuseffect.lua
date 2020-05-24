@@ -13,7 +13,8 @@ armorBonus={
 	{stat = "slushslowImmunity", amount = 1},
 	{stat = "liquidnitrogenImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},
-	{stat = "ffextremecoldImmunity", amount = 1}
+	{stat = "ffextremecoldImmunity", amount = 1},
+	{stat = "biomecoldImmunity", amount = 1}
 }
 
 function init()
