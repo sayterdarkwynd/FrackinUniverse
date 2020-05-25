@@ -353,11 +353,11 @@ function spawnWave(spawnPoint, wave)
       elseif spawn.entityType == "fuhelicultist" then
         entityId = world.spawnMonster("fuhelicultist", position, { aggressive = true, level = world.threatLevel() })   
       elseif spawn.entityType == "fuhugebiped" then
-        randVal = math.random(8)
-        if randVal == 8 then
+        randVal = math.random(1,4)
+        if randVal == 1 then
           entityId = world.spawnMonster("fuhugebiped", position, { aggressive = true, level = world.threatLevel() })               
         else          
-          entityId = world.spawnMonster("cosmicintruder", position, { aggressive = true, level = 7 }) 
+          entityId = world.spawnMonster("cosmicintruder", position, { aggressive = true, level = 6 }) 
         end             
       elseif spawn.entityType == "dragonboss" then
         entityId = world.spawnMonster("dragonboss", position, { aggressive = true, level = world.threatLevel() })
