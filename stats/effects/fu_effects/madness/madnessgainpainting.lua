@@ -28,7 +28,7 @@ function update(dt)
   	self.timer = self.timer - dt
 	if (status.stat("maxEnergy")) then
 		if (self.timer <= 0) then
-			self.healthDamage = ((status.stat("mentalProtection") or 0)*10) + status.stat("madnessModifier")
+			self.healthDamage = ((math.max(1.0 - status.stat("mentalProtection"),0))*10) + status.stat("madnessModifier")
 			self.timer = 30
 			self.totalValue = self.baseValue + self.valBonus + math.random(1,6)
       self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking
