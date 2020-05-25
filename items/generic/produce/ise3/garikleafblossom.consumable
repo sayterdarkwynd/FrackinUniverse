@@ -6,14 +6,17 @@
   "price": 5,
 
   "tooltipKind": "food",
-  "description": "^cyan;+^white;65% ^cyan;Run ^gray;(^white;1m^gray;)^reset;",
+  "description": "^yellow;^reset;^cyan;+50% Run^reset;, ^cyan;Low Gravity^reset;: 1m",
   "shortdescription": "Garikleaf Blossom",
 
   "effects": [
     [
       {
+        "effect": "lowgrav",
+        "duration": 60
+      },
+      {
         "effect": "runboost",
-        "amount": 0.65,
         "duration": 60
       }
     ]
