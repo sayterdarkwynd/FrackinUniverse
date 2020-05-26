@@ -1,13 +1,24 @@
 {
-  "itemName": "batterystemcharge",
-  "inventoryIcon": "batterystemcharge.png",
-  "category": "food",
-  "rarity": "Common",
-  "price": 5,
+	"itemName": "batterystemcharge",
+	"inventoryIcon": "batterystemcharge.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "tooltipKind": "food",
-  "description": "^yellow;^reset;^cyan;+40 EP^reset;, ^cyan;+3% E Regen^reset;: 2m",
-  "shortdescription": "Battery Stem Charge",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+40 EP^reset;, ^cyan;+3% E Regen^reset;: 2m",
+	"shortdescription": "Battery Stem Charge",
 
-  "effects": [["maxenergyboost5", "energyregenfu05"]]
+	"effects": [
+		[
+			{
+				"effect": "maxenergyboost5",
+				"duration": 120
+			},
+			{
+				"effect": "energyregenfu05",
+				"duration": 120
+			}
+		]
+	]
 }

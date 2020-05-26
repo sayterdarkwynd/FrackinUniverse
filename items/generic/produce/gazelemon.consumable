@@ -1,14 +1,24 @@
 {
-  "itemName": "gazelemon",
-  "inventoryIcon": "gazelemon.png",
-  "category": "food",
-  "rarity": "Common",
-  "price": 5,
+	"itemName": "gazelemon",
+	"inventoryIcon": "gazelemon.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "tooltipKind": "food",
-  "description": "^yellow;^reset;^cyan;Eyes emit light^reset;: 2m\n^cyan;Immunity^reset;: Poison: 90s",
-  "shortdescription": "Gaze Lemon",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Headlamp 2^reset;: 2m\n^yellow;^reset;^cyan;Immunity^reset;: Poison: 90s",
+	"shortdescription": "Gaze Lemon",
 
-  "effects": [["headlamp2", "poisonimmunitycrystal"]],
-  "blockingEffects": ["poisonimmunitycrystal", "headlamp2"]
+	"effects": [
+		[{
+				"effect": "headlamp2",
+				"duration": 120
+			},
+			{
+				"effect": "poisonimmunitycrystal",
+				"duration": 90
+			}
+		]
+	],
+	"blockingEffects": ["poisonimmunitycrystal", "headlamp2"]
 }

@@ -1,14 +1,19 @@
 {
-  "itemName": "cellpods",
-  "category": "food",
-  "inventoryIcon": "cellpods.png",
-  "rarity": "Common",
-  "price": 5,
+	"itemName": "cellpods",
+	"category": "food",
+	"inventoryIcon": "cellpods.png",
+	"rarity": "Common",
+	"price": 5,
 
-  "tooltipKind": "food",
-  "description": "^yellow;^reset;^cyan;Heal 40% HP^reset;: 1m",
-  "shortdescription": "Cell Pods",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Heal 40% HP^reset;: 1m",
+	"shortdescription": "Cell Pods",
 
-  "effects": [["regeneration2"]],
-  "blockingEffects": ["regeneration01"]
+	"effects": [
+		[{
+			"effect": "regeneration2",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": ["regeneration01"]
 }

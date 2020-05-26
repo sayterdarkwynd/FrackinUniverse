@@ -1,13 +1,23 @@
 {
-  "itemName": "ginseng",
-  "inventoryIcon": "ginseng.png",
-  "category": "food",
-  "rarity": "uncommon",
-  "price": 10,
+	"itemName": "ginseng",
+	"inventoryIcon": "ginseng.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
 
-  "tooltipKind": "food",
-  "description": "^yellow;^reset;^cyan;+8 HP^reset;: 3m\n^cyan;+12 EP^reset;: 2m",
-  "shortdescription": "Heartroot",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+8 HP^reset;, ^cyan;+12 EP^reset;: 3m",
+	"shortdescription": "Heartroot",
 
-  "effects": [["maxenergyboost2", "maxhealthboost2"]]
+	"effects": [
+		[{
+				"effect": "maxenergyboost2",
+				"duration": 60
+			},
+			{
+				"effect": "maxhealthboost2",
+				"duration": 300
+			}
+		]
+	]
 }
