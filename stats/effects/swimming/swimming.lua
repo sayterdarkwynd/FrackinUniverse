@@ -3,7 +3,7 @@ function init()
   self.applyToTypes = config.getParameter("applyToTypes") or {"player", "npc"}   --what gets the effect?
   self.mouthPosition = status.statusProperty("mouthPosition") or {0,0}  --mouth position
   self.mouthBounds = {self.mouthPosition[1], self.mouthPosition[2], self.mouthPosition[1], self.mouthPosition[2]}
-  self.setWet = false -- doesnt start wet
+  --self.setWet = false -- doesnt start wet--unused. commenting out
   animator.setParticleEmitterOffsetRegion("bubbles", self.mouthBounds)
 
   --basic water locomotion stats
@@ -88,15 +88,15 @@ function update(dt)
   local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
   local liquidAtMouth = world.liquidAt(worldMouthPosition)
   
-  checkLiquidType()
+  handleWetness()
   
   if (status.stat("breathProtection") < 1) then
 	  if liquidAtMouth and (liquidAtMouth[1] == 1 or liquidAtMouth[1] == 2 or liquidAtMouth[1] == 6 or liquidAtMouth[1] == 40) then  --activate bubble particles if at mouth level with water
 	    animator.setParticleEmitterActive("bubbles", true)
-	    self.setWet = true
+	    --self.setWet = true
 	  else
 	    animator.setParticleEmitterActive("bubbles", false)
-	    self.setWet = false
+	    --self.setWet = false
 	  end  
 
   end
@@ -117,6 +117,11 @@ function update(dt)
   end  
 end
 
+function handleWetness()
+	checkLiquidType()
+	applyWet()
+end
+
 function checkLiquidType()
   local position = mcontroller.position()   
   local worldMouthPosition = {self.mouthPosition[1] + position[1],self.mouthPosition[2] + position[2]}
@@ -134,26 +139,29 @@ function checkLiquidType()
     elseif liquidAtMouth[1] == 6 then -- check if the healing water effect for Wet needs to play
       self.isHealingWater = 1
     elseif liquidAtMouth[1] == 45 then -- check if the Elder effect for Wet needs to play
-      self.isElder = 1   
+      self.isElder = 1
+	else
+		self.isGeneric = 1
     end
   end  
 end
 
-function onExpire()   --now we call on the set tags above to produce corresponding wet effect
+--this function is never actually called usually. let's do something else with it!
+--function onExpire()   --now we call on the set tags above to produce corresponding wet effect
+function applyWet()
     if self.isBlood == 1 then   
     	status.addEphemeralEffect("wetblood")
-    end
-    if self.isPus == 1 then 
+    elseif self.isPus == 1 then 
     	status.addEphemeralEffect("wetpus") 
-    end
-    if self.isHealingWater == 1 then
+    elseif self.isHealingWater == 1 then
     	status.addEphemeralEffect("wethealingwater") 
-    end	
-    if self.isElder == 1 then
+    elseif self.isElder == 1 then
     	status.addEphemeralEffect("wetelder")
-    end
-    if self.isWater == 1 then
+    elseif self.isWater == 1 then
     	status.addEphemeralEffect("wet")
+	elseif self.isGeneric == 1 then
+		--kinda a space filler.
+		status.addEphemeralEffect("wet")
     end
     clearWetEffects()
 end
@@ -164,6 +172,7 @@ function clearWetEffects()
     	self.isHealingWater = 0
     	self.isElder = 0
     	self.isWater = 0
+		self.isGeneric = 0
 end
 
 function setMonsterAbilities()
