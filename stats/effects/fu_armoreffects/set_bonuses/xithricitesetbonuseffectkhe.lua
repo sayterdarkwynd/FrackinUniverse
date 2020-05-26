@@ -39,31 +39,44 @@ function init()
 	checkShell()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	--statusEffectName=config.getParameter("statusEffectName")
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		--doesnt work, monsters dont have the resource damageAbsorption.
+		--[[if type(statusEffectName)=="string" then
+			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
+			if buffer[statusEffectName] then
+				buffer[statusEffectName]=nil
+			end
+			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
+		end]]
 		status.removeEphemeralEffect("regeneratingshield_hp-100-10-3")
+		status.removeEphemeralEffect("regeneratingshieldindicatordreamer")
 		effect.expire()
 	else
+		--doesnt work, monsters dont have the resource damageAbsorption.
+		--[[if type(statusEffectName)=="string" then
+			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
+			if not buffer[statusEffectName] then
+				buffer[statusEffectName]={"regeneratingshield_hp-100-10-3","regeneratingshieldindicatordreamer"}
+			end
+			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
+		end]]
+		checkShell()
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		status.addEphemeralEffect("regeneratingshield_hp-100-10-3")
-		checkShell()
+		status.addEphemeralEffect("regeneratingshieldindicatordreamer")
 	end
 end
 
+
 function checkShell()
-	local rsp=status.stat("regeneratingshieldpercent")
-	if rsp > 0.05 then
-		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
-		if rsp>1.0 then rsp=1.0 elseif rsp<0 then rsp=0 end
-		local opacity=string.format("%x",math.floor(rsp*255*0.5))
-		if string.len(opacity)==1 then
-			opacity="0"..opacity
+		local rsp=status.stat("regeneratingshieldpercent")
+		if rsp > 0.05 then
+			effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
+		else
+			effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
 		end
-		effect.setParentDirectives("border=1;4EFDF2"..opacity..";00000000")
-	else
-		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
-		effect.setParentDirectives("")
-	end
 end
