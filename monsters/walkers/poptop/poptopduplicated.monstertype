@@ -11,9 +11,13 @@
   "dropPools" : [ {"default" : "empty"}],
 
   "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua"
-    ],   
+      "/monsters/monster.lua","/scripts/golemancer/gol_monstermain.lua"
+    ],
+    
+    "evolutions" : ["/scripts/golemancer/evolutions/poptopgrow2.evo"],
+    "tickEvoTime":3,
+    "agingEvoTime" : 900,
+  
 
     "behavior" : "monster",
 
