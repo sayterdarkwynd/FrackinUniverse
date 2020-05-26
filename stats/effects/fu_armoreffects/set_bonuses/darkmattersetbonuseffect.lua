@@ -10,6 +10,7 @@ armorBonus={
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.regenHandler=effect.addStatModifierGroup({})
 end
 
 function update(dt)
@@ -17,6 +18,7 @@ function update(dt)
 		effect.expire()
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
-		status.modifyResourcePercentage("health", 0.004 * dt)
+		effect.setStatModifierGroup(effectHandlerList.regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*0.004}})
+		--status.modifyResourcePercentage("health", 0.004 * dt)
 	end
 end

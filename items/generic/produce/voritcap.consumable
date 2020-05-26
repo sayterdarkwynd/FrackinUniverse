@@ -1,13 +1,22 @@
 {
-  "itemName" : "voritcap",
-  "inventoryIcon" : "voritcap.png",
-  "category" : "food",
-  "rarity" : "Common",
-  "price" : 5,
+	"itemName": "voritcap",
+	"inventoryIcon": "voritcap.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "tooltipKind": "food",
-  "description" : "^cyan;Exceptional Swim Boost ^gray;(^white;220s^gray;)\n^pink;Breathing ^cyan;Immunity ^gray;(^white;5m^gray;)^reset;",
-  "shortdescription" : "Vorit Cap",
-
-  "effects" : [ [ "airimmunity", "swimboost3" ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Swim Boost 3^reset;, ^cyan;Immunity^reset;: Oxygen: 2m",
+	"shortdescription": "Vorit Cap",
+	"effects": [
+		[{
+				"effect": "airimmunity",
+				"duration": 120
+			},
+			{
+				"effect": "swimboost3",
+				"duration": 120
+			}
+		]
+	]
 }

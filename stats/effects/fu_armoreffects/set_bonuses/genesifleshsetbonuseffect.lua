@@ -19,23 +19,36 @@ function init()
 
 	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
+	statusEffectName=config.getParameter("statusEffectName")
 end
 
 function update(dt)	
 	if not checkSetWorn(self.setBonusCheck) then
+		if type(statusEffectName)=="string" then
+			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
+			if buffer[statusEffectName] then
+				buffer[statusEffectName]=nil
+			end
+			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
+		end
+		status.removeEphemeralEffect("immortalresolve05")
 		status.removeEphemeralEffect("genesifeed")
 		effect.expire()
 	else
-		mcontroller.controlModifiers({
+		--[[mcontroller.controlModifiers({
 			speedModifier = 1.07,
 			airJumpModifier = 1.07
-		})
-		checkWeapons()
-		status.addEphemeralEffect("genesifeed")
-		if status.resourcePercentage("health") < 1.0 then
-		  status.modifyResourcePercentage("health", (1-status.resourcePercentage("health"))*0.05*dt)
+		})]]
+		if type(statusEffectName)=="string" then
+			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
+			if not buffer[statusEffectName] then
+				buffer[statusEffectName]={"immortalresolve05"}
+			end
+			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
 		end
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{{stat="maxHealth",effectiveMultiplier=1+(status.stat("powerMultiplier")*0.1)}})
+		checkWeapons()
+		status.addEphemeralEffect("immortalresolve05")
+		status.addEphemeralEffect("genesifeed")
 	end
 end
 

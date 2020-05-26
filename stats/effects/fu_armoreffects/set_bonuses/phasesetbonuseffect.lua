@@ -23,6 +23,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.regenHandler=effect.addStatModifierGroup({})
 end
 
 function update(dt)
@@ -33,6 +34,7 @@ function update(dt)
 			speedModifier = 1.20,
 			airJumpModifier = 1.20
 		})
-		status.modifyResourcePercentage("health", 0.008 * dt)
+		--status.modifyResourcePercentage("health", 0.008 * dt)
+		effect.setStatModifierGroup(effectHandlerList.regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*0.008}})
 	end
 end
