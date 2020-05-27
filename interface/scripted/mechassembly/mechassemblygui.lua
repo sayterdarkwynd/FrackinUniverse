@@ -321,9 +321,9 @@ function updatePreview()
 	  self.fuelCost = 2.5
 	  self.mobilityBoostValue = 80	  
 	end   
-	
+
     --compute energy
-    local energyMax = math.floor(100 + (params.parts.body.energyMax or 0) * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
+    local energyMax = math.floor(50 + (params.parts.body.energyMax or 0) * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
     
     --compute energy drain
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
