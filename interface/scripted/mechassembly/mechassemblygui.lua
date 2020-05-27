@@ -246,31 +246,31 @@ function updatePreview()
     self.fuelBoost = 0
     
 	if params.parts.hornName == 'mechdefensefield' then 
-	  self.defenseBoost = 100
+	  self.defenseBoost = 50
 	elseif params.parts.hornName == 'mechdefensefield2' then 
-	  self.defenseBoost = 200
+	  self.defenseBoost = 100
 	elseif params.parts.hornName == 'mechdefensefield3' then 
-	  self.defenseBoost = 300
+	  self.defenseBoost = 150
 	elseif params.parts.hornName == 'mechdefensefield4' then 
-	  self.defenseBoost = 400
+	  self.defenseBoost = 200
 	elseif params.parts.hornName == 'mechdefensefield5' then 
-	  self.defenseBoost = 500
+	  self.defenseBoost = 250
 	end    
         --total bonus to health from defense
-        self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
+        self.defenseModifier = self.defenseBoost + (massTotal*2) 
         --compute health/defense
-        local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 150
+        local healthMax = math.floor(((((150 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) )
         
 	if params.parts.hornName == 'mechenergyfield' then 
-	  self.energyBoost = 100
+	  self.energyBoost = 50
 	elseif params.parts.hornName == 'mechenergyfield2' then 
-	  self.energyBoost = 200
+	  self.energyBoost = 100
 	elseif params.parts.hornName == 'mechenergyfield3' then 
-	  self.energyBoost = 300
+	  self.energyBoost = 150
 	elseif params.parts.hornName == 'mechenergyfield4' then 
-	  self.energyBoost = 400
+	  self.energyBoost = 200
 	elseif params.parts.hornName == 'mechenergyfield5' then 
-	  self.energyBoost = 500
+	  self.energyBoost = 250
 	end    
 
 	if params.parts.hornName == 'mechchipfeather' then 

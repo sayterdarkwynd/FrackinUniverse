@@ -292,17 +292,17 @@ end
 function setDefenseBoostValue()
   self.defenseboost = self.parts.hornName == 'mechdefensefield' or self.parts.hornName == 'mechdefensefield2' or self.parts.hornName == 'mechdefensefield3' or self.parts.hornName == 'mechdefensefield4' or self.parts.hornName == 'mechdefensefield5'
 	  if self.defenseboost then
-		if self.parts.hornName == 'mechdefensefield' then
-		  self.defenseBoost = 50
-		elseif self.parts.hornName == 'mechdefensefield2' then
-		  self.defenseBoost = 100
-		elseif self.parts.hornName == 'mechdefensefield3' then
-		  self.defenseBoost = 150
-		elseif self.parts.hornName == 'mechdefensefield4' then
-		  self.defenseBoost = 200
-		elseif self.parts.hornName == 'mechdefensefield5' then
-		  self.defenseBoost = 250
-		end
+  		if self.parts.hornName == 'mechdefensefield' then
+  		  self.defenseBoost = 50
+  		elseif self.parts.hornName == 'mechdefensefield2' then
+  		  self.defenseBoost = 100
+  		elseif self.parts.hornName == 'mechdefensefield3' then
+  		  self.defenseBoost = 150
+  		elseif self.parts.hornName == 'mechdefensefield4' then
+  		  self.defenseBoost = 200
+  		elseif self.parts.hornName == 'mechdefensefield5' then
+  		  self.defenseBoost = 250
+  		end
 	  else
 	    self.defenseBoost = 0
 	  end
@@ -394,9 +394,9 @@ end
 function setHealthValue()
   self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
   setDefenseBoostValue()
-  self.defenseModifier = (self.defenseBoost * self.massTotal) * 0.1
+  self.defenseModifier = self.defenseBoost + (massTotal*2) 
   setMassBoostValue()
-  self.healthMax = ((((100 * (self.parts.body.stats.healthBonus or 1)) + self.massTotal) * self.parts.body.stats.protection) + (self.defenseModifier or 0) ) + 100
+  self.healthMax = ((((150 * (self.parts.body.stats.healthBonus or 1)) + self.massTotal) * self.parts.body.stats.protection) + (self.defenseModifier or 0) )
   setMobilityBoostValue() --set other boosts while we are at it
   setFuelBoostValue() --set other boosts while we are at it
 end
@@ -863,15 +863,15 @@ function update(dt)
  
       if self.defenseboost then
         if self.parts.hornName == 'mechdefensefield' then
-          self.defenseBoost = 100
+          self.defenseBoost = 50
         elseif self.parts.hornName == 'mechdefensefield2' then
-          self.defenseBoost = 200
+          self.defenseBoost = 100
         elseif self.parts.hornName == 'mechdefensefield3' then
-          self.defenseBoost = 300
+          self.defenseBoost = 150
         elseif self.parts.hornName == 'mechdefensefield4' then
-          self.defenseBoost = 400
+          self.defenseBoost = 200
         elseif self.parts.hornName == 'mechdefensefield5' then
-          self.defenseBoost = 500
+          self.defenseBoost = 250
         end
       end
  
@@ -896,15 +896,15 @@ function update(dt)
  
       if self.energyboost then
         if self.parts.hornName == 'mechenergyfield' then
-          self.energyBoost = 100
+          self.energyBoost = 50
         elseif self.parts.hornName == 'mechenergyfield2' then
-          self.energyBoost = 200
+          self.energyBoost = 100
         elseif self.parts.hornName == 'mechenergyfield3' then
-          self.energyBoost = 300
+          self.energyBoost = 150
         elseif self.parts.hornName == 'mechenergyfield4' then
-          self.energyBoost = 400
+          self.energyBoost = 200
         elseif self.parts.hornName == 'mechenergyfield5' then
-          self.energyBoost = 500
+          self.energyBoost = 250
         end
       end
  
