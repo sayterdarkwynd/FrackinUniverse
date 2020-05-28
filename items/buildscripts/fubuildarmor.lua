@@ -81,7 +81,7 @@ function build(directory, config, parameters, level, seed)
 			if resistances[v.stat] then
 				local label=resistances[v.stat].label
 				local friendly=resistances[v.stat].friendly
-				local buffer=((v.amount or 0)*root.evalFunction(v.levelFunction,configParameter("level", 1)),3*100)
+				local buffer=((v.amount or 0)*root.evalFunction(v.levelFunction,configParameter("level", 1))*100)
 				buffer=math.floor(buffer)
 				config.tooltipFields[label]=buffer.."%"
 				config.tooltipFields[label]=string.gsub(config.tooltipFields[label],"%.0%%","%%")
