@@ -93,10 +93,10 @@ function build(directory, config, parameters, level, seed)
 			local color="000000"
 			--[[
 				100% green rgb(11,191,0)
-				75% (green/yellow) rgb(172,227,69)
-				50% (yellow) rgb(229,209,0)
-				25%(orange) rgb(229,134,0)
-				5% red rgb(229,4,0)
+				80% (green/yellow) rgb(172,227,69)
+				60% (yellow) rgb(229,209,0)
+				40%(orange) rgb(229,134,0)
+				20% red rgb(229,4,0)
 			]]
 			
 			local pcntLeft = parameters.lifespan / fullLifespan
