@@ -83,15 +83,35 @@ function build(directory, config, parameters, level, seed)
 	-- Add lifespan counter for queens based on their lifespan stat and update their lifebar if their genome was inspected
 	if root.itemHasTag(config.itemName, "queen") then
 		require "/bees/genomeLibrary.lua"
-		local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") * 2
+		local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") * 2.0
 
 		if not parameters.lifespan then
 			parameters.lifespan = fullLifespan -- added a x2 so queen duration is 2x as high as previously due to overwhelming demand for longer-lived monarchs
 		end
-		
+
 		if parameters.genomeInspected then
+			local color="000000"
+			--[[
+				100% green rgb(11,191,0)
+				75% (green/yellow) rgb(172,227,69)
+				50% (yellow) rgb(229,209,0)
+				25%(orange) rgb(229,134,0)
+				5% red rgb(229,4,0)
+			]]
+			
 			local pcntLeft = parameters.lifespan / fullLifespan
-			local lifebar = "/bees/bees/beelifebar.png?replace;000000="..zbutil.ValToHex(1 - pcntLeft)..zbutil.ValToHex(pcntLeft).."00?border=1;000000?fade=007800;0.1"
+			if pcntLeft > 0.8 then
+				color="0bbf00"
+			elseif pcntLeft > 0.6 then
+				color="ace345"
+			elseif pcntLeft >  0.4 then
+				color="e5d100"
+			elseif pcntLeft > 0.2 then
+				color="e58600"
+			else
+				color="e50400"
+			end
+			local lifebar = "/bees/bees/beelifebar.png?replace;000000="..color.."?border=1;000000?fade=007800;0.1"
 			
 			config.inventoryIcon = {
 				{ image = config.inventoryIcon },
