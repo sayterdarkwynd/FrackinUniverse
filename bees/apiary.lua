@@ -692,8 +692,11 @@ end
 -- By default ages the queen by 1, but can use any other number or negative ones to make her last longer
 -- Can be called from other places (Like the frame scripts)
 function ageQueen(amount)
+	--if changing this, make sure it matches in beeBuilder.lua
+	local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * 2.0
+
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then 
-	  queen.parameters.lifespan = 500 
+	  queen.parameters.lifespan = fullLifespan
 	end
 
 

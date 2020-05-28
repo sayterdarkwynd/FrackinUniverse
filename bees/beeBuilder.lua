@@ -83,6 +83,7 @@ function build(directory, config, parameters, level, seed)
 	-- Add lifespan counter for queens based on their lifespan stat and update their lifebar if their genome was inspected
 	if root.itemHasTag(config.itemName, "queen") then
 		require "/bees/genomeLibrary.lua"
+		--if changing this, make sure it matches in apiary.lua
 		local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") * 2.0
 
 		if not parameters.lifespan then
