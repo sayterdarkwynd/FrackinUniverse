@@ -23,17 +23,14 @@ function init()
   message.setHandler("restoreEnergy", function(_, _, base, percentage)
       if alive() then
         setEnergyValue()
-        local restoreAmount = (base or 0) + self.healthMax * (percentage or 0)
-        storage.health = math.min(storage.health + (restoreAmount*0.75), self.healthMax)
+        local restoreAmount = (base or 0) + self.energyMax * (percentage or 0)
+        storage.energy = math.min(storage.energy + (restoreAmount*0.75), self.energyMax)
         if self.driverId and world.entityType(self.driverId) == "player" then
 	  world.sendEntityMessage(self.ownerEntityId, "setQuestFuelCount", math.min(storage.energy + (restoreAmount * 0.15), self.energyMax))
 	end
         animator.playSound("restoreEnergy")
         if storage.energy > self.energyMax then
           storage.energy = self.energyMax
-        end
-        if storage.health > self.healthMax then
-          storage.health = self.healthMax
         end
       end
     end)
@@ -607,7 +604,7 @@ function update(dt)
       -- end
  
       -- self.aimPosition = vehicle.aimPosition("seat")
-            self.aimPosition,newControls = readMechControls(newControls) -- NPC Mechs
+      self.aimPosition,newControls = readMechControls(newControls) -- NPC Mechs
  
       if newControls.Special1 and not self.lastControls.Special1 and storage.energy > 0 then
           if self.parts.hornName == 'mechaimassist' then
@@ -842,7 +839,7 @@ function update(dt)
   -- decay and check energy
   if self.driverId then
   --energy drain
-    local energyDrain = self.energyDrain
+    local energyDrain = self.energyDrain --base rate
  
     --set energy drain x2 on manual flight mode
     if self.flightMode and world.gravity(mcontroller.position()) == 0 then
@@ -850,7 +847,7 @@ function update(dt)
     elseif self.flightMode and world.gravity(mcontroller.position()) ~= 0 then --flying in Gravity takes x2 fuel
         energyDrain = self.energyDrain*2
     elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then  --walking consumes 80% fuel
-        energyDrain = self.energyDrain * 0.8
+        energyDrain = self.energyDrain * 0.3
     end
  
     --set energy drain to 0 if null movement
@@ -1096,27 +1093,26 @@ function update(dt)
  
     if math.floor(self.legCycle * 2) ~= math.floor(newLegCycle * 2) then
       triggerStepSound()
- 
       -- mech ground thump damage (FU)
       self.thumpParamsMini = {
         power = self.mechMass,
         damageTeam = {type = "friendly"},
-      actionOnReap = {
+        actionOnReap = {
           {
-        action='explosion',
-        foregroundRadius=2,
-        backgroundRadius=0,
-        explosiveDamageAmount= 0.25,
-        harvestLevel = 99,
-        delaySteps=2
+            action='explosion',
+            foregroundRadius=2,
+            backgroundRadius=0,
+            explosiveDamageAmount= 0.25,
+            harvestLevel = 99,
+            delaySteps=2
           }
         }
       }
- 
+      
       if self.mechMass > 8 then  -- 8 tonne minimum or tiles dont suffer at all.
         world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
       end
- 
+      animator.burstParticleEmitter("legImpactLight")
     end
  
     self.legCycle = newLegCycle
