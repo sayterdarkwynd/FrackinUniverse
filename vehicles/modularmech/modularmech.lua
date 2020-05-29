@@ -187,10 +187,11 @@ function init()
 
   --factor Mass into energy drain, as a penalty
   self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
-  self.massMod = self.massTotal/100
+  
+  self.massMod = self.massTotal/200
 
   --factor in module bonus/penalty
-  self.energyDrain = (self.energyDrain + self.massMod) * (self.fuelCost or 1)
+  self.energyDrain = (self.energyDrain * (1 + self.massMod)) * (self.fuelCost or 1)
 
   --end
 
@@ -846,8 +847,9 @@ function update(dt)
         energyDrain = self.energyDrain
     elseif self.flightMode and world.gravity(mcontroller.position()) ~= 0 then --flying in Gravity takes x2 fuel
         energyDrain = self.energyDrain*2
-    elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then  --walking consumes 80% fuel
-        energyDrain = self.energyDrain * 0.3
+    elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then  --walking consumes less
+        energyDrain = self.energyDrain * 0.5--its rough, but it works. planet-based mechs consume 50% less energy
+                                            --since it requires extended periods of time, unlike mech missions
     end
  
     --set energy drain to 0 if null movement
@@ -1112,14 +1114,13 @@ function update(dt)
       if self.mechMass > 8 then  -- 8 tonne minimum or tiles dont suffer at all.
         world.spawnProjectile("mechThump", mcontroller.position(), nil, {0,-6}, false, self.thumpParamsMini)
       end
-      animator.burstParticleEmitter("legImpactLight")
+      animator.burstParticleEmitter("legImpactLight")--little puffs of smoke for juicyness
     end
  
     self.legCycle = newLegCycle
   end
  
   -- animate legs, leg joints, and hips
- 
   if self.flightMode then
     -- legs stay locked in place for flight
   else

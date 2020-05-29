@@ -330,11 +330,11 @@ function updatePreview()
     energyDrain = energyDrain * 0.6
     
     --mass affects drain
-    energyDrain = energyDrain + massTotal/100
+    massMod = massTotal/200
     
     --final energy drain after modules
-    energyDrain = energyDrain * (self.fuelCost or 1)
-    
+    energyDrain = (energyDrain * (1 + massMod)) * (self.fuelCost or 1)
+
     --check mobility boosts
     local mobilityMax = self.mobilityBoostValue or 0
     local mobilityBoostMax = self.mobilityBoostValue or 0
