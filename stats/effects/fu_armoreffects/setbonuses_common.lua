@@ -57,17 +57,6 @@ function applySetEffects()
 	end
 end
 
-function removeSetBonus()
-	if self.statGroup then
-		effect.removeStatModifierGroup(self.statGroup)
-		self.statGroup = nil
-
-		for _, callback in pairs(self.callbacks) do
-			if callback.uninit then callback.uninit() end
-		end
-	end
-end
-
 function weaponCheck(tags)
 	local weaponCheckResults={}
 	local heldItemPrimary=world.entityHandItem(entity.id(), "primary")
@@ -147,7 +136,6 @@ function setRegen(regenAmount)
 end
 
 function setBonusUninit()
-	removeSetBonus()
 	for _,v in pairs(effectHandlerList or {}) do
 		effect.removeStatModifierGroup(v)
 	end

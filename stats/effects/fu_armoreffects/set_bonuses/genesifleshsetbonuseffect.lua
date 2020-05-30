@@ -25,7 +25,7 @@ end
 function update(dt)	
 	if not checkSetWorn(self.setBonusCheck) then
 		if type(statusEffectName)=="string" then
-			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
+			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})
 			if buffer[statusEffectName] then
 				buffer[statusEffectName]=nil
 			end
@@ -40,7 +40,7 @@ function update(dt)
 			airJumpModifier = 1.07
 		})]]
 		if type(statusEffectName)=="string" then
-			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
+			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})
 			if not buffer[statusEffectName] then
 				buffer[statusEffectName]={"immortalresolve05"}
 			end

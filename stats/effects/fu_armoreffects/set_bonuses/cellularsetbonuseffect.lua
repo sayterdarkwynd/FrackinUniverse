@@ -13,11 +13,10 @@ armorBonus={
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
-			
+
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
-	effectHandlerList.regenHandler=effect.addStatModifierGroup({})
 end
 
 function update(dt)
@@ -26,17 +25,13 @@ function update(dt)
 		effect.expire()
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
-		checkWeapons()	
+		checkWeapons()
 		status.addEphemeralEffect("glowyellow2")
-		
-		--status.modifyResourcePercentage("health", 0.0006 * dt)
-		effect.setStatModifierGroup(effectHandlerList.regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*0.006}})
-		
+		setRegen(0.006)
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"bioweapon"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)

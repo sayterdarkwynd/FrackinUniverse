@@ -35,9 +35,11 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("gravitynormalizationarmor")
 		effect.expire()
 	else
 		checkWeapons()
+		status.addEphemeralEffect("gravitynormalizationarmor")
 	end
 end
 

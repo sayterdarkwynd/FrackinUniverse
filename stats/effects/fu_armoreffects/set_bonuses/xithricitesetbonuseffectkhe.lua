@@ -39,31 +39,14 @@ function init()
 	checkShell()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
-	--statusEffectName=config.getParameter("statusEffectName")
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
-		--doesnt work, monsters dont have the resource damageAbsorption.
-		--[[if type(statusEffectName)=="string" then
-			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
-			if buffer[statusEffectName] then
-				buffer[statusEffectName]=nil
-			end
-			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
-		end]]
 		status.removeEphemeralEffect("regeneratingshield_hp-100-10-3")
 		status.removeEphemeralEffect("regeneratingshieldindicatordreamer")
 		effect.expire()
 	else
-		--doesnt work, monsters dont have the resource damageAbsorption.
-		--[[if type(statusEffectName)=="string" then
-			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})--thisStatusEffectId={"status1","status2"} format
-			if not buffer[statusEffectName] then
-				buffer[statusEffectName]={"regeneratingshield_hp-100-10-3","regeneratingshieldindicatordreamer"}
-			end
-			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
-		end]]
 		checkShell()
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 		status.addEphemeralEffect("regeneratingshield_hp-100-10-3")

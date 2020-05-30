@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
---require "/scripts/status.lua"
 
 setName="fu_densiniumsetkhe"
 
@@ -46,9 +45,7 @@ function update(dt)
 	else
 		status.addEphemeralEffect("convert_energy-health_10_1-1")
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
-		mcontroller.controlModifiers({
-			speedModifier = 1.10
-		})
+		mcontroller.controlModifiers({speedModifier = 1.10})
 		checkWeapons()
 	end
 	

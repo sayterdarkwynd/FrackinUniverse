@@ -33,7 +33,7 @@ end
 
 
 function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
+	return world.timeOfDay() < 0.5
 end
 
 function undergroundCheck()

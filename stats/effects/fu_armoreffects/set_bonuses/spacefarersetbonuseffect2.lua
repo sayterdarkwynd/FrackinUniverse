@@ -2,7 +2,6 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/unifiedGravMod.lua"
 
 setName="fu_spacefarerset2"
-setEffects={"gravitynormalizationarmor"}
 
 weaponList={"mininglaser"}
 
@@ -32,14 +31,15 @@ function init()
 
 	checkWeapons()
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
-	applySetEffects()
 
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("gravitynormalizationarmor")
 		effect.expire()
 	else
+		status.addEphemeralEffect("gravitynormalizationarmor")
 		checkWeapons()
 	end
 end
