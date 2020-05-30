@@ -1,7 +1,7 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 setName="fu_spacefarerset2"
-setEffects={"gravitynormalization"}
+setEffects={"gravitynormalizationarmor"}
 
 weaponList={"mininglaser"}
 weaponBonus={
