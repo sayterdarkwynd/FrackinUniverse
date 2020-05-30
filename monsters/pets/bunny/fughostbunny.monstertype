@@ -1,17 +1,18 @@
 {
-  "type" : "fughostlostcat",
+  "type" : "fughostlostbunny",
 
-  "categories" : [ "petcat" ],
+  "categories" : [ "petbunny" ],
   "parts" : [ "body" ],
 
-  "animation" : "petcat.animation",
+  "animation" : "petbunny.animation",
 
   "dropPools" : [ ],
 
   "baseParameters" : {
-    "emiteCaptureParticles":true,
+  "dontNeedAnchor":true,
+	"emitCaptureParticles":true,
 	"ghostLostPetData":{
-		"ghostGiftPool":"fulostghostcat",
+		"ghostGiftPool":"fulostghostbunny",
 		"ghostGiftChance":10,
 		"ghostAuraFriendly":["healingwater"],
 		"ghostAuraEnemy":["staffslow"],
@@ -20,7 +21,7 @@
 	},
     "persistent" : false,
     "damageTeamType" : "ghostly",
-	"dontNeedAnchor":true,
+
     "scripts" : [
       "/monsters/pets/groundPet.lua",
       "/scripts/pathing.lua",

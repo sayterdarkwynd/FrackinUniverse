@@ -1,17 +1,18 @@
 {
-  "type" : "fughostlostcat",
+  "type" : "fughostlostweasel",
 
-  "categories" : [ "petcat" ],
+  "categories" : [ "petweasel" ],
   "parts" : [ "body" ],
 
-  "animation" : "petcat.animation",
+  "animation" : "petweasel.animation",
 
   "dropPools" : [ ],
 
   "baseParameters" : {
-    "emiteCaptureParticles":true,
+  "dontNeedAnchor":true,
+  "emiteCaptureParticles":true,
 	"ghostLostPetData":{
-		"ghostGiftPool":"fulostghostcat",
+		"ghostGiftPool":"fulostghostweasel",
 		"ghostGiftChance":10,
 		"ghostAuraFriendly":["healingwater"],
 		"ghostAuraEnemy":["staffslow"],
@@ -20,7 +21,7 @@
 	},
     "persistent" : false,
     "damageTeamType" : "ghostly",
-	"dontNeedAnchor":true,
+
     "scripts" : [
       "/monsters/pets/groundPet.lua",
       "/scripts/pathing.lua",
@@ -43,6 +44,7 @@
 
     "petBehavior" : "petBehavior",
 
+    "anchorName" : "techstation",
     "petResources" : {
       "sleepy" : 10,
       "hunger" : 60,
@@ -108,6 +110,9 @@
       "wanderTime" : [5, 10],
       "changeDirectionTime" : [5, 10],
       "changeDirectionWait" : [1, 3]
+    },
+
+    "follow" : {
     },
 
     "pounce" : {

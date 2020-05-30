@@ -1,17 +1,18 @@
 {
-  "type" : "fughostlostcat",
+  "type" : "fughostlostsnake",
 
-  "categories" : [ "petcat" ],
+  "categories" : [ "petsnake" ],
   "parts" : [ "body" ],
 
-  "animation" : "petcat.animation",
+  "animation" : "petsnake.animation",
 
   "dropPools" : [ ],
 
   "baseParameters" : {
-    "emiteCaptureParticles":true,
+  "dontNeedAnchor":true,
+  "emiteCaptureParticles":true,
 	"ghostLostPetData":{
-		"ghostGiftPool":"fulostghostcat",
+		"ghostGiftPool":"fulostghostsnake",
 		"ghostGiftChance":10,
 		"ghostAuraFriendly":["healingwater"],
 		"ghostAuraEnemy":["staffslow"],
@@ -20,7 +21,7 @@
 	},
     "persistent" : false,
     "damageTeamType" : "ghostly",
-	"dontNeedAnchor":true,
+
     "scripts" : [
       "/monsters/pets/groundPet.lua",
       "/scripts/pathing.lua",
@@ -43,6 +44,7 @@
 
     "petBehavior" : "petBehavior",
 
+    "anchorName" : "florantechstation",
     "petResources" : {
       "sleepy" : 10,
       "hunger" : 60,

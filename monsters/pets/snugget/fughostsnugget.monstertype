@@ -1,26 +1,27 @@
 {
-  "type" : "fughostlostcat",
+  "type" : "fughostlostsnugget",
 
-  "categories" : [ "petcat" ],
+  "categories" : [ "snugget" ],
   "parts" : [ "body" ],
 
-  "animation" : "petcat.animation",
+  "animation" : "snugget.animation",
 
   "dropPools" : [ ],
 
   "baseParameters" : {
+  "dontNeedAnchor":true,
+    "persistent" : false,
     "emiteCaptureParticles":true,
 	"ghostLostPetData":{
-		"ghostGiftPool":"fulostghostcat",
+		"ghostGiftPool":"fulostghostsnugget",
 		"ghostGiftChance":10,
 		"ghostAuraFriendly":["healingwater"],
 		"ghostAuraEnemy":["staffslow"],
 		"ghostAuraRange":5,
 		"ghostDuration":30
 	},
-    "persistent" : false,
     "damageTeamType" : "ghostly",
-	"dontNeedAnchor":true,
+
     "scripts" : [
       "/monsters/pets/groundPet.lua",
       "/scripts/pathing.lua",
@@ -43,6 +44,7 @@
 
     "petBehavior" : "petBehavior",
 
+    "anchorName" : "novakidtechstation",
     "petResources" : {
       "sleepy" : 10,
       "hunger" : 60,
@@ -108,6 +110,9 @@
       "wanderTime" : [5, 10],
       "changeDirectionTime" : [5, 10],
       "changeDirectionWait" : [1, 3]
+    },
+
+    "follow" : {
     },
 
     "pounce" : {

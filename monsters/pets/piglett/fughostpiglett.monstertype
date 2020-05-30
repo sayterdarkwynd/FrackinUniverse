@@ -1,17 +1,18 @@
 {
-  "type" : "fughostlostcat",
+  "type" : "fughostpiglett",
 
-  "categories" : [ "petcat" ],
+  "categories" : [ "piglett" ],
   "parts" : [ "body" ],
 
-  "animation" : "petcat.animation",
+  "animation" : "piglett.animation",
 
   "dropPools" : [ ],
 
   "baseParameters" : {
-    "emiteCaptureParticles":true,
+  "dontNeedAnchor":true,
+  "emiteCaptureParticles":true,
 	"ghostLostPetData":{
-		"ghostGiftPool":"fulostghostcat",
+		"ghostGiftPool":"fulostghostpiglett",
 		"ghostGiftChance":10,
 		"ghostAuraFriendly":["healingwater"],
 		"ghostAuraEnemy":["staffslow"],
@@ -20,14 +21,17 @@
 	},
     "persistent" : false,
     "damageTeamType" : "ghostly",
-	"dontNeedAnchor":true,
+
     "scripts" : [
       "/monsters/pets/groundPet.lua",
       "/scripts/pathing.lua",
+      "/monsters/tenant.lua",
       "/scripts/stateMachine.lua",
       "/scripts/util.lua",
       "/scripts/vec2.lua",
 
+      "/monsters/returnHomeState.lua",
+      "/monsters/grumbleState.lua",
       "/monsters/pets/idleState.lua",
       "/monsters/pets/wanderState.lua",
 
@@ -43,6 +47,7 @@
 
     "petBehavior" : "petBehavior",
 
+    "anchorName" : "glitchtechstation",
     "petResources" : {
       "sleepy" : 10,
       "hunger" : 60,
@@ -93,6 +98,10 @@
         "minScore" : 60,
         "cooldown" : 3
       }
+    },
+
+    "tenant" : {
+      "emoteCooldownTimeRange" : [1.0, 2.0]
     },
 
     "pathing" : {

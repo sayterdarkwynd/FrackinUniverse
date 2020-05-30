@@ -1,26 +1,26 @@
 {
-  "type" : "fughostlostcat",
+  "type" : "fughostlostorbis",
 
-  "categories" : [ "petcat" ],
+  "categories" : [ "petorbis" ],
   "parts" : [ "body" ],
 
-  "animation" : "petcat.animation",
+  "animation" : "petorbis.animation",
 
-  "dropPools" : [ ],
+  "dropPools" : [],
 
   "baseParameters" : {
-    "emiteCaptureParticles":true,
+  "dontNeedAnchor":true,
+    "persistent" : false,
+	    "emiteCaptureParticles":true,
 	"ghostLostPetData":{
-		"ghostGiftPool":"fulostghostcat",
+		"ghostGiftPool":"fulostghostorbis",
 		"ghostGiftChance":10,
 		"ghostAuraFriendly":["healingwater"],
 		"ghostAuraEnemy":["staffslow"],
 		"ghostAuraRange":5,
 		"ghostDuration":30
 	},
-    "persistent" : false,
-    "damageTeamType" : "ghostly",
-	"dontNeedAnchor":true,
+
     "scripts" : [
       "/monsters/pets/groundPet.lua",
       "/scripts/pathing.lua",
@@ -110,6 +110,9 @@
       "changeDirectionWait" : [1, 3]
     },
 
+    "follow" : {
+    },
+
     "pounce" : {
       "maxRange" : 10,
       "minRange" : 5
@@ -132,7 +135,7 @@
 
     "bodyMaterialKind" : "organic",
 
-    "knockoutTime" : 0,
+    "knockoutTime" : 0.3,
     "knockoutEffect" : "blink",
     "deathParticles" : "deathPoof",
 
