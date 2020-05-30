@@ -19,7 +19,6 @@ function init()
 
 	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
-	statusEffectName=config.getParameter("statusEffectName")
 end
 
 function update(dt)	
