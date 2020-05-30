@@ -5,12 +5,12 @@
   "price" : 1600,
   "rarity" : "rare",
   "objectType" : "physics",
-  "description" : "Temporarily disabled.",
-  "shortdescription" : "^orange;Anti-Grav Generator^white;",
+  "description" : "Reduces effects of gravity within 30 tiles.\n^blue;Input^reset; Power Switch.",
+  "shortdescription" : "^orange;Anti-Grav Generator^reset;",
   "race" : "generic",
   "category" : "crafting",
 
-  "inventoryIcon" : "armoryicon.png",
+  "inventoryIcon" : "antigravgenicon.png",
   "orientations" : [
     {
       "imageLayers" : [ { "image" : "antigravgen.png:<color>.<frame>", "fullbright" : true }, { "image" : "antigravgenlit.png:<color>.<frame>" } ],
@@ -40,8 +40,9 @@
   ],
 
   "scripts" : [
-  "/scripts/npcToyObject.lua"
-  //"antigravgen.lua"
+	"/scripts/npcToyObject.lua",
+	"gravgen.lua"
+  
   ],
 
   "npcToy" : {
@@ -61,5 +62,7 @@
     "preciseStandPositionRight" : [1.0, 0.0],
     "maxNpcs" : 1
   },
-  "inputNodes" : [ [0, 0] ]
+  "inputNodes" : [ [0, 0] ],
+	"generatorEffect": "lowgravaugment",
+	"effectRange": 30
 }
