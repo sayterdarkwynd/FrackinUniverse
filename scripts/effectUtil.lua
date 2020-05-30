@@ -8,6 +8,10 @@ function effectUtil.getSelf()
 	return entity and entity.id and entity.id() or activeItem and activeItem.ownerEntityId() or nil
 end
 
+function effectUtil.getSelfType()
+	return world.entityType(effectUtil.getSelf())
+end
+
 function effectUtil.effectOnSource(effect,duration,force)
 	local source=effect and effect.sourceEntity and effect.sourceEntity() or effectUtil.source or nil
 	if source then
@@ -55,9 +59,10 @@ function effectUtil.messageParticle(position, text, color, size, offset, duratio
 end
 
 function effectUtil.say(sentence)
-	if world.entityType(effectUtil.getSelf()) =="npc" then
+	local selfType=effectUtil.getSelfType()
+	if selfType =="npc" then
 		world.callScriptedEntity(effectUtil.getSelf(),"npc.say",sentence)
-	elseif  world.entityType(effectUtil.getSelf())=="monster" then
+	elseif selfType=="monster" then
 		world.callScriptedEntity(effectUtil.getSelf(),"monster.say",sentence)
 	else
 		effectUtil.messageParticle(effectUtil.getPos(),sentence)
@@ -67,9 +72,6 @@ end
 function effectUtil.entityTypeName()
 	return npc and npc.npcType() or monster and monster.type or entity and entity.entityType()
 end
-
-
-
 
 function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 	if type(effect)~="string" then
@@ -141,7 +143,6 @@ function effectUtil.messageMechsInRange(effect,range,args)
 
 	for _,id in pairs(buffer) do
 		if world.entityName(id) == "modularmech" then
-			sb.logInfo("mechmsgs %s",{a=effect,b=range,c=args})
 			if args then
 				if world.sendEntityMessage(id,effect,args:unpack()) then
 					rVal=rVal+1
