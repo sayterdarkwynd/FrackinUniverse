@@ -24,28 +24,12 @@ end
 
 function update(dt)	
 	if not checkSetWorn(self.setBonusCheck) then
-		if type(statusEffectName)=="string" then
-			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})
-			if buffer[statusEffectName] then
-				buffer[statusEffectName]=nil
-			end
-			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
-		end
+		removePetBuffs()
 		status.removeEphemeralEffect("immortalresolve05")
 		status.removeEphemeralEffect("genesifeed")
 		effect.expire()
 	else
-		--[[mcontroller.controlModifiers({
-			speedModifier = 1.07,
-			airJumpModifier = 1.07
-		})]]
-		if type(statusEffectName)=="string" then
-			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})
-			if not buffer[statusEffectName] then
-				buffer[statusEffectName]={"immortalresolve05"}
-			end
-			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
-		end
+		setPetBuffs({"immortalresolve05"})
 		checkWeapons()
 		status.addEphemeralEffect("immortalresolve05")
 		status.addEphemeralEffect("genesifeed")

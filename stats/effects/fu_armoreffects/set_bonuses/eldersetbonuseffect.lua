@@ -26,24 +26,11 @@ end
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		status.removeEphemeralEffect("darkregen")
-		if type(statusEffectName)=="string" then
-			local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})
-			if buffer[statusEffectName] then
-				buffer[statusEffectName]=nil
-			end
-			status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
-		end
+
 		effect.expire()
 	else
 		if not self.timer or self.timer >= 1 then
-			if type(statusEffectName)=="string" then
-				local buffer=status.statusProperty("frackinPetStatEffectsMetatable",{})
-				if not buffer[statusEffectName] then
-					buffer[statusEffectName]={"fudarkcommander30"}
-				end
-				status.setStatusProperty("frackinPetStatEffectsMetatable",buffer)
-			end
-			
+			setPetBuffs({"fudarkcommander30"})
 			self.timer = 0
 		else
 			self.timer = self.timer + dt
