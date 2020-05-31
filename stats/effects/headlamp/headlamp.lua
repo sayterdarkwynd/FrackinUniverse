@@ -15,8 +15,8 @@ function update(dt)
 	]]
 	beamPos=vec2.add(mouthPos,{0.8,0.05})
 	glowPos=vec2.add(mouthPos,{1.5,0.05})
-	animator.animator.setLightPosition("beam",beamPos)
-	animator.animator.setLightPosition("glow",glowPos)
+	animator.setLightPosition("beam",beamPos)
+	animator.setLightPosition("glow",glowPos)
 end
 
 function uninit()
