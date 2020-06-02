@@ -1,10 +1,12 @@
 require "/scripts/util.lua"
 require "/scripts/status.lua"
 require "/items/active/weapons/weapon.lua"
+require("/scripts/FRHelper.lua")
 
 Parry = WeaponAbility:new()
 
 function Parry:init()
+  species = world.entitySpecies(activeItem.ownerEntityId())
   self.cooldownTimer = 0
 end
 
@@ -39,6 +41,12 @@ function Parry:parry()
       if notification.sourceEntityId ~= -65536 and notification.healthLost == 0 then
         animator.playSound("parry")
         animator.setAnimationState("parryShield", "block")
+	  if species == "hylotl" then 
+            animator.burstParticleEmitter("bonusBlock")
+            animator.playSound("bonusEffect")	  
+	    self.blockCountShield = 0.008
+            status.modifyResourcePercentage("health", 0.005 + self.blockCountShield )  --hylotl get a heal when they perfectly block
+          end  
         return
       end
     end
