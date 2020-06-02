@@ -1,0 +1,32 @@
+{
+  "projectileName" : "cellzapshadow1",
+  "physics" : "hover",
+  "bounces" : 0,
+  "speed" : 80,
+  "timeToLive" : 0.1,
+  "damageKindImage" : "icon.png",
+  "lightColor" : [20, 100, 55],
+  "image" : "cellzapshadow1.png",
+  "statusEffects" : [ "shadowgasfx" ],
+  "animationCycle" : 0.1,
+  "frameNumber" : 3,
+  "animationLoops" : false,
+  "power" : 5,
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "piercing" : true,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/cellexplosion/cellexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "cellzapshadow2",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "shadowplasma"
+}

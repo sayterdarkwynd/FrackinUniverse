@@ -35,12 +35,9 @@ function update(dt)
 end
 
 function checkBiome()
-	if (world.type() == "ocean") or (world.type() == "sulphuricocean") or (world.type() == "aethersea") or (world.type() == "nitrogensea") or (world.type() == "strangesea") or (world.type() == "tidewater") then
+	if checkBiome({"ocean","sulphuricocean","aethersea","nitrogensea","strangesea","tidewater"}) then
 		effect.setStatModifierGroup(effectHandlerList.armorBonus2Handle,armorBonus2)
-
-		mcontroller.controlModifiers({
-			speedModifier = 1.05
-		})
+		mcontroller.controlModifiers({speedModifier = 1.05})
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonus2Handle,{})
 	end

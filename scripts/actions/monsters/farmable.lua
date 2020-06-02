@@ -249,7 +249,7 @@ end
 function checkMate()
   self.randChance = math.random(100) * (1 - storage.food/1000)  --current happiness level determines breeding chances
   self.eggType = config.getParameter("eggType")	
-  if not self.eggType then self.eggType = "henegg" end
+  if self.eggType then
   -- Fed livestock breed more often. Breeding removes most of their current food. 
   if (storage.mateTimer <= 0) and (self.randChance == 0) and (self.canMate) and (storage.happiness >= 70) then 
       world.spawnItem( self.eggType, mcontroller.position(), 1 )
@@ -258,6 +258,7 @@ function checkMate()
       animator.playSound("harvest")
       storage.food = storage.food - 45
   end 
+  end
 end
 
 function checkPoop() -- poop to fertilize trays , pee to water soil, etc   

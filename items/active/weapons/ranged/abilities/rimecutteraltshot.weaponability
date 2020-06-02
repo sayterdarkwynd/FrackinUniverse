@@ -1,62 +1,72 @@
 {
-  "animationParts" : { },
-  "animationCustom" : {
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [0, 0, 0, 0],
-        "particles" : [
-          { "particle" : "piercingspark"},
-          { "particle" : "piercingspark"},
-          { "particle" : "piercingspark"},
-          { "particle" : "piercingspark"},
-          { "particle" : "piercingspark"},
-          { "particle" : "piercingspark"}
-        ]
-      }
-    },
-    "sounds" : {
-      "altFire" : [ "/sfx/gun/mp3.ogg" ]
-    }
-  },
+	"animationParts": {},
+	"animationCustom": {
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": [{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					},
+					{
+						"particle": "piercingspark"
+					}
+				]
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/gun/mp3.ogg"]
+		}
+	},
 
-  "ability" : {
-    "name" : "Ice Blade",
-    "type" : "rimecutteraltshot",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
-    
-    "projectileType" : "iceblade",
-    "projectileParameters" : {
-      "piercing" : true
-    },
-    "fireTime" : 1.0,
-    "baseDps" : 4.5,
-    // use baseDps and fireTime from primary fire
+	"ability": {
+		"name": "Ice Blade",
+		"type": "rimecutteraltshot",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
 
-    "energyUsage" : 80.0,
+		"projectileType": "iceblade",
+		"projectileParameters": {
+			"piercing": true
+		},
+		"fireTime": 1.0,
+		"baseDps": 4.5,
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0.15,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+		"energyUsage": 80.0,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.15,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+		"stances": {
+			"fire": {
+				"duration": 0.15,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.15,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

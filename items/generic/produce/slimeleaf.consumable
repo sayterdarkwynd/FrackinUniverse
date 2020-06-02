@@ -1,20 +1,31 @@
 {
-  "itemName" : "slimeleaf",
-  "inventoryIcon" : "slimeleaf.png",
-  "category" : "food",
-  "rarity" : "Common",
-  "price" : 5,
+	"itemName": "slimeleaf",
+	"inventoryIcon": "slimeleaf.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "tooltipKind": "food",
-  "description" : "^cyan;+^white;2 ^cyan;Defense ^gray;(^white;2m^gray;)\n^pink;Slime ^cyan;Immunity ^gray;(^white;5m^gray;)^reset;",
-  "shortdescription" : "Slime Leaf",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+2 Defense^reset;, ^cyan;Immunity^reset;: Slime: 2m",
+	"shortdescription": "Slime Leaf",
 
-  "effects" : [ [ "defense1","slimestickimmunity" ] ],
-  "blockingEffects" : [
-    "defense2",
-    "defense3",
-    "defense4",
-    "defense5",
-    "defense6"
-  ]
+	"effects": [
+		[
+			{
+				"effect": "defense1",
+				"duration": 120
+			},
+			{
+				"effect": "slimestickimmunity",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"defense2",
+		"defense3",
+		"defense4",
+		"defense5",
+		"defense6"
+	]
 }

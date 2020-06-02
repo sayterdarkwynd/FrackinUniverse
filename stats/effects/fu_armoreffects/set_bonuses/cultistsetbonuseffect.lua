@@ -12,8 +12,6 @@ armorBonus={
 	{stat = "darknessImmunity", amount = 1}
 }
 
-
-
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
@@ -29,7 +27,7 @@ function update(dt)
 	else
 
 		checkWeapons()
-		status.modifyResourcePercentage("health", 0.008 * dt)
+		setRegen(0.008)
 	end
 end
 

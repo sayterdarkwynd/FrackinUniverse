@@ -204,6 +204,9 @@ function init()
 	
 	-- Init timer, and offset update delta to reduce potential lag spikes when they all update at the same time
 	beeUpdateTimer = beeData.beeUpdateInterval
+
+
+
 	local timerIncrement = config.getParameter("scriptDelta") * 0.01
 	
 	local sameTimers
@@ -689,20 +692,16 @@ end
 -- By default ages the queen by 1, but can use any other number or negative ones to make her last longer
 -- Can be called from other places (Like the frame scripts)
 function ageQueen(amount)
+	--if changing this, make sure it matches in beeBuilder.lua
+	local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * 2.0
+
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then 
-	  queen.parameters.lifespan = 500 
+	  queen.parameters.lifespan = fullLifespan
 	end
-	
-	-- original
-	--queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
-	--world.containerTakeAt(entity.id(), queenSlot-1)
-	
-	--updated
-	self.randQueenAge = math.random(0,1)  --kill queens half as fast as before
-	if self.randQueenAge == 1 then
-		queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
-		world.containerTakeAt(entity.id(), queenSlot-1)	
-	end
+
+
+	queen.parameters.lifespan = queen.parameters.lifespan - (amount or 1)
+	world.containerTakeAt(entity.id(), queenSlot-1)	
 	
 	if (queen.parameters.lifespan > 0) then
 		world.containerPutItemsAt(entity.id(), queen, queenSlot-1)

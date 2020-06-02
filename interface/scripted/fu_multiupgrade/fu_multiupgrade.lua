@@ -30,7 +30,7 @@ end
 
 function populateItemList(forceRepop)
 	local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon")
-	local upgradeableToolItems = player.itemsWithTag("mininglaser")
+	local upgradeableToolItems = player.itemsWithTag("upgradeableTool")
 	local upgradableItems={}
 	
 	for i = 1, #upgradeableWeaponItems do

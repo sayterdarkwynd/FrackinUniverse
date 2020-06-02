@@ -26,8 +26,8 @@ function handleDarkStats(terminate)
 	darkpriority=config.getParameter("darkpriority",1)
 
 	if not terminate then
-		local dP=status.statusProperty("darkpriority")
-		local dL=status.statusProperty("darklevel")
+		local dP=status.statusProperty("darkpriority") or 0
+		local dL=status.statusProperty("darklevel") or 0
 		if dL<darklevel then
 			status.setStatusProperty("darklevel",darklevel)
 			dL=darklevel
@@ -45,7 +45,7 @@ function handleDarkStats(terminate)
 end
 
 function thisCanRun()
-	local dP=status.statusProperty("darkpriority")
-	local dL=status.statusProperty("darklevel")
+	local dP=status.statusProperty("darkpriority") or 0
+	local dL=status.statusProperty("darklevel") or 0
 	return ((dP==darkpriority) and (dL==darklevel))
 end

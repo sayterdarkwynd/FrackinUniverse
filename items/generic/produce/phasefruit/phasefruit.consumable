@@ -1,27 +1,28 @@
 {
-  "itemName" : "phasefruit",
-  "inventoryIcon" : "phasefruit.png",
-  "category" : "food",
-  "rarity" : "Uncommon",
-  "price" : 40,
-  "foodValue": 40,
+	"itemName": "phasefruit",
+	"inventoryIcon": "phasefruit.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 40,
+	"foodValue": 40,
 
-  "tooltipKind": "food",
-  "description" : "Has it just melted my teeth?!\n^cyan;+^white;25% ^cyan;Run ^gray;(^white;40s^gray;)\n^red;Burning ^gray;(^white;10s^gray;)^reset;",
-  "shortdescription" : "Phasefruit",
+	"tooltipKind": "food",
+	"description": "Has it just melted my teeth?!\n^yellow;^reset;^cyan;+20% Run^reset;: 40s\n^yellow;^reset;^red;Burning^reset;: 10s",
+	"shortdescription": "Phasefruit",
 
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "effects" : [ [
-    {
-        "effect" : "runboostfood",
-        "duration" : 40
-    },
-    {
-        "effect" : "burning",
-        "duration" : 10
-    }
-  ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+	"builder": "/items/buildscripts/buildfood.lua",
+	"effects": [
+		[{
+				"effect": "runboostfood",
+				"duration": 40
+			},
+			{
+				"effect": "burning",
+				"duration": 10
+			}
+		]
+	],
+	"blockingEffects": [
+		"wellfed"
+	]
 }
