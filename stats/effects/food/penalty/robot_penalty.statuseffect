@@ -1,0 +1,25 @@
+{
+	"name" : "robot_penalty",
+
+	"effectConfig" : {
+		"poisonPercent" : 0.01,
+		"stats" : [
+			{ "stat" : "maxHealth", "effectiveMultiplier" : 0.85 },
+			{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.85 },
+			{ "stat" : "energyRegenPercentageRate", "effectiveMultiplier" : 2 }
+		],
+		"controlModifiers" : {
+			"speedModifier" : 0.8
+		}
+	},
+	"defaultDuration" : 120,
+
+	"scripts" : [
+		"foodpenalty.lua"
+	],
+
+	"animationConfig" : "foodpoison.animation",
+
+	"label" : "Uh, was that food? You don't think that was food.",
+	"icon" : "/items/liquids/liquidpoisonicon.png"
+}

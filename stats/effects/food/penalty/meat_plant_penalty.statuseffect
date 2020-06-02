@@ -1,0 +1,24 @@
+{
+	"name" : "meat_plant_penalty",
+
+	"effectConfig" : {
+		"poisonPercent" : 0.01,
+		"stats" : [
+			{ "stat" : "maxHealth", "effectiveMultiplier" : 0.9 },
+			{ "stat" : "protection", "effectiveMultiplier" : 0.8 }
+		],
+		"controlModifiers" : {
+			"speedModifier" : 0.9
+		}
+	},
+	"defaultDuration" : 120,
+
+	"scripts" : [
+		"foodpenalty.lua"
+	],
+
+	"animationConfig" : "foodpoison.animation",
+
+	"label" : "What was that? Nothing you can eat, that's for sure.",
+	"icon" : "/interface/statuses/foodpoison.png"
+}
