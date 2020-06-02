@@ -43,8 +43,11 @@
 	"value": ["erchiusartifactaugment",1]
 	}],
 	[
-		{"op": "test","path": "/scriptConfig/giveBlueprints","inverse":"true"},
+		{"op": "test","path": "/scriptConfig/giveBlueprints","inverse":true},
 		{"op": "add","path": "/scriptConfig/giveBlueprints","value":[]}
 	],
-	[{"op": "add","path": "/scriptConfig/giveBlueprints/-","value":"erchiusartifactaugment"}]
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints"},
+		{"op": "add","path": "/scriptConfig/giveBlueprints/-","value":"erchiusartifactaugment"}
+	]
 ]
