@@ -9,7 +9,6 @@ function init()
 	self.lastYPosition = 0
 	self.lastYVelocity = 0
 	self.fallDistance = 0
-	local bounds = mcontroller.boundBox() --Mcontroller for movement
 
 	message.setHandler("FR_getSpecies", function() return self.species end)
 end

@@ -19,11 +19,11 @@ function uninit()
 end
 
 function checkFood()
-  if status.isResource("food") then
-    self.foodValue = status.resource("food")		
-  else
-    self.foodValue = 15
-  end
+	if status.isResource("food") then
+		return status.resource("food")		
+	else
+		return 15
+	end
 end
 
 function boost(direction)
@@ -49,7 +49,7 @@ function update(args)
   end
   
   if self.active and status.overConsumeResource("energy", 0.0001) and not mcontroller.zeroG() and not mcontroller.liquidMovement() then -- do we have energy and the ability is active?
-    checkFood()
+    --checkFood()
     status.addEphemeralEffects{{effect = "saturnflight", duration = 2}}
     
     self.upVal = args.moves["up"]  --set core movement variables
@@ -77,7 +77,7 @@ function update(args)
     mcontroller.controlApproachVelocity(self.boostVelocity, 30)
     -- end boost
 
-    if self.foodValue > 15 then
+    if checkFood() > 15 then
 	    if self.runVal and not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 		    status.setPersistentEffects("glide", {
 		      {stat = "gliding", amount = 1},

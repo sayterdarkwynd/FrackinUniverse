@@ -10,7 +10,12 @@ function FRHelper:call(args, main, dt, ...)
     end
 
     if nighttime or underground and (foodValue >= args.foodThreshold) then
-        status.modifyResourcePercentage("health", args.healingRate * dt)
+		--special handling for NPCs, to prevent immortality
+		if not (world.isNpc(entity.id()) and status.resource("health") < 1) then
+			status.modifyResourcePercentage("health", args.healingRate * dt)
+		else
+			status.setResource("health",0)
+		end
 
         self:applyStats(args, args.name or "FR_feneroxNightBonus", main, dt, ...)
     else

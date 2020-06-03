@@ -16,11 +16,11 @@ function init()
   self.halted = 0
   checkFood()
 end
-
+--[[
 function uninit()
-
 end
-
+]]
+--[[
 function getLight()
 	local position = mcontroller.position()
 	position[1] = math.floor(position[1])
@@ -28,45 +28,29 @@ function getLight()
 	local lightLevel = world.lightLevel(position)
 	lightLevel = math.floor(lightLevel * 100)
 	return lightLevel
-end
+end]]
 
-function daytimeCheck()
+--[[function daytimeCheck()
 	return world.timeOfDay() < 0.5 -- true if daytime
-end
+end]]
 
-function undergroundCheck()
+--[[function undergroundCheck()
 	return world.underground(mcontroller.position())
-end
+end]]
 
 function checkFood()
+	local foodValue=15
 	if status.isResource("food") then
-		self.foodValue = status.resource("food")		
-	else
-		self.foodValue = 15
+		foodValue = status.resource("food")		
 	end	
-end
-
-function damageConfig()
-  totalVal = (self.foodValue /17)
+	return foodValue
 end
 
 function activeFlight()
-    damageConfig()
-    local damageConfig = { 
-      power = totalVal,
-    
-	  actionOnReap = {
-	      {
-		action='explosion',
-		foregroundRadius=totalVal,
-		backgroundRadius=(totalVal/2),
-		explosiveDamageAmount= (totalVal/2),
-		harvestLevel = 99,
-		delaySteps=2
-	      }
-	    }     
-    }
-    world.spawnProjectile("minerclaw", mcontroller.position(), entity.id(), aimVector(), false, damageConfig)
+    --local damageConfig = 
+    world.spawnProjectile("minerclaw", mcontroller.position(), entity.id(), aimVector(), false,
+		{power = (checkFood() /17),actionOnReap = {{action='explosion',foregroundRadius=totalVal,backgroundRadius=(totalVal/2),explosiveDamageAmount= (totalVal/2),harvestLevel = 99,delaySteps=2}}}
+	)
 end
 
 function aimVector()
@@ -75,24 +59,19 @@ function aimVector()
   return aimVector
 end
 
-function chargeUp()
-    if self.halted == 0 then
-       self.halted = 1
-    end	 
-end
-
-
     
 function update(args)
         local primaryItem = world.entityHandItem(entity.id(), "primary")
         local altItem = world.entityHandItem(entity.id(), "alt")       
         self.firetimer = math.max(0, self.firetimer - args.dt)
-        checkFood()
+        --checkFood()
         
 	  if self.flashCooldownTimer > 0 then
 	    self.flashCooldownTimer = math.max(0, self.flashCooldownTimer - args.dt)  
 	    if self.flashCooldownTimer <= 2 then
-	      chargeUp()
+			if self.halted == 0 then
+				self.halted = 1
+			end	 
 	    end
 	    
 	    if self.flashCooldownTimer == 0 then
@@ -110,7 +89,7 @@ function update(args)
 	  end
 	
 	if args.moves["special1"] and self.firetimer == 0 and not (primaryItem and root.itemHasTag(primaryItem, "weapon")) and not (altItem and root.itemHasTag(altItem, "weapon")) then 
-		if self.foodValue > 10 then
+		if checkFood() > 10 then
 		    status.addEphemeralEffects{{effect = "foodcostclaw", duration = 0.01}}
 		else
 		    status.overConsumeResource("energy", 1)

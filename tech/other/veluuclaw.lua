@@ -50,8 +50,10 @@ end
 function damageConfig()
   foodVal = (self.foodValue / 20)
   healthVal = status.resource("health") / 30
+  damageVal = status.stat("powerMultiplier")
+  damageVal=((damageVal-1.0)*0.5)+1.0
   worldLevel = world.threatLevel()
-  totalVal = (self.currentBonus  + foodVal + healthVal) + worldLevel
+  totalVal = ((self.currentBonus  + foodVal + healthVal) + worldLevel)*damageVal
 end
 
 function activeFlight()

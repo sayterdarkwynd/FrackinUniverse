@@ -27,9 +27,9 @@ end
 
 function checkFood()
 	if status.isResource("food") then
-		self.foodValue = status.resource("food")		
+		return status.resource("food")		
 	else
-		self.foodValue = 15
+		return 15
 	end
 end
 
@@ -61,7 +61,7 @@ end
 
 
 function update(args)
-  checkFood()
+  --checkFood()
   
   if not self.specialLast and args.moves["special1"] then
     attemptActivation()
@@ -115,7 +115,7 @@ function update(args)
 			mcontroller.controlParameters(config.getParameter("fallingParameters2"))
 			mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), config.getParameter("maxFallSpeed2")))
 		  end
-		  if self.foodValue > 15 then
+		  if checkFood() > 15 then
 		      status.addEphemeralEffects{{effect = "foodcost", duration = 0.1}}
 		  else
 		      status.overConsumeResource("energy", config.getParameter("energyCostPerSecond"),1)

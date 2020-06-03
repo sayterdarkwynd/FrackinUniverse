@@ -58,8 +58,14 @@ function FRHelper:call(args, main, dt, ...)
 		local hungerCalc = math.min(1, (hungerPerc - dayConfig.minHunger) / (dayConfig.maxHunger - dayConfig.minHunger))
 		local regenCalc = (dayConfig.maxRegen - dayConfig.minRegen) * hungerCalc + dayConfig.minRegen
 		
-		if hungerPerc >= dayConfig.minHunger then
-			status.modifyResourcePercentage("health", regenCalc * dt)
+		--special handling for NPCs, to prevent immortality
+		status.modifyResourcePercentage("health", regenCalc * dt)
+		if not (world.isNpc(entity.id()) and status.resource("health") < 1) then
+			if hungerPerc >= dayConfig.minHunger then
+				status.modifyResourcePercentage("health", regenCalc * dt)
+			end
+		else
+			status.setResource("health",0)
 		end
 	end
 end

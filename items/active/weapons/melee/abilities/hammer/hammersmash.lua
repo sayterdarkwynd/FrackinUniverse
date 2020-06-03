@@ -12,7 +12,6 @@ function HammerSmash:init()
 
 	MeleeSlash.init(self)
 	self:setupInterpolation()
-	local bounds = mcontroller.boundBox()
 end
 
 function HammerSmash:windup(windupProgress)

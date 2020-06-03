@@ -18,10 +18,10 @@ end
 function getFood()
 	if status.isResource("food") then
 		self.foodValue = status.resource("food")
-		self.energyValue = status.resource("energy")
+		--self.energyValue = status.resource("energy")
 	else
 		self.foodValue = 50
-		self.energyValue = status.resource("energy")
+		--self.energyValue = status.resource("energy")
 	end
 end
 
@@ -104,7 +104,7 @@ function update(args)
 			local configBombDrop = { power = 0 }
 			world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)    
 			self.conshakTimer = 0
-		      elseif (self.foodValue < 10) and self.energyValue > 20 then
+		      elseif (self.foodValue < 10) and status.resource("energy") > 20 then
 			animator.setParticleEmitterActive("bulbStance", false)
 			animator.setParticleEmitterActive("bulb", true)
 			if self.onehundred == 100 then
