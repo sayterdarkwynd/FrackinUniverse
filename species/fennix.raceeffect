@@ -1,0 +1,140 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"baseMultiplier": 0.95
+		},
+		{
+			"stat": "maxEnergy",
+			"baseMultiplier": 1.15
+		},
+		{
+			"stat": "powerMultiplier",
+			"baseMultiplier": 1.1
+		},
+		{
+			"stat": "fireResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "iceResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "fireStatusImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "sandstormImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "biomeheatImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "omnivore",
+	"controlModifiers": {
+		"speedModifier": 1.15,
+		"airJumpModifier": 1.05
+	},
+	"envEffects": [{
+			"biomes": [
+				"hot"
+			],
+			"stats": [{
+					"stat": "maxHealth",
+					"baseMultiplier": 1.2
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 1.2
+				}
+			]
+		},
+		{
+			"biomes": [
+				"cold"
+			],
+			"stats": [{
+					"stat": "maxHealth",
+					"baseMultiplier": 0.8
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 0.8
+				},
+				{
+					"stat": "powerMultiplier",
+					"baseMultiplier": 0.8
+				},
+				{
+					"stat": "fireResistance",
+					"amount": -0.2
+				}
+			]
+		}
+	],
+	"weaponEffects": [{
+			"weapons": [
+				"wand",
+				"staff"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"baseMultiplier": 1.15
+			}]
+		},
+		{
+			"weapons": [
+				"fist"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"baseMultiplier": 0.95
+			}]
+		},
+		{
+			"weapons": [
+				"rapier"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"baseMultiplier": 1.05
+			}]
+		}
+	],
+	"weaponScripts": [{
+		"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
+		"contexts": [
+			"shield-perfectblock"
+		],
+		"args": {
+			"stats": [{
+				"stat": "protection",
+				"amount": 0
+			}],
+			"statCombos": {
+				"powerMultiplier": {
+					"comboBase": 2,
+					"max": 16
+				}
+			},
+			"particles": "bonusBlock4"
+		}
+	}],
+	"liquidEffects": [{
+		"liquids": [
+			2
+		],
+		"stats": [{
+				"stat": "maxEnergy",
+				"baseMultiplier": 1.25
+			},
+			{
+				"stat": "healthRegen",
+				"amount": 1.25
+			}
+		]
+	}]
+}

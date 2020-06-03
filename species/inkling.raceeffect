@@ -1,0 +1,222 @@
+{
+	"stats": [
+		{
+			"stat": "foodDelta",
+			"baseMultiplier": 1.06346
+		},
+		{
+			"stat": "maxEnergy",
+			"baseMultiplier": 1.1
+		},
+		{
+			"stat": "maxBreath",
+			"amount": 220
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "iceResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": 0.1
+		},
+		{
+			"stat": "radioactiveResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "slimeImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "slimestickImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "wetImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "fallDamageMultiplier",
+			"baseMultiplier": 0.65
+		}
+	], // The squid kids like to eat fish, obviously
+	"diet" : [ { "ORGANIC" : false, "MEAT_RAW" : true, "FISH" : true } ],
+	"controlModifiers": {
+		"speedModifier": 1.05,
+		"airJumpModifier": 1.2
+	},
+	"envEffects": [{
+			"biomes": [
+				"ocean",
+				"oceanfloor",
+				"flooded",
+                                "floodedoceanfloor"
+			],
+			"stats": [{
+					"stat": "maxHealth",
+					"baseMultiplier": 1.15
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 1.15
+				},
+				{
+					"stat": "breathProtection",
+					"amount": 1
+				},
+				{
+					"stat": "fallDamageMultiplier",
+					"baseMultiplier": 0
+				}
+			],
+			"controlModifiers": {
+				"speedModifier": 1.05
+			}
+		},
+		{
+			"biomes": "cold",
+			"stats": [{
+					"stat": "maxHealth",
+					"baseMultiplier": 0.9
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 0.9
+				},
+				{
+					"stat": "energyRegenPercentageRate",
+					"baseMultiplier": 0.8
+				}
+			]
+		},
+		{
+			"biomes": "hot",
+			"stats": [{
+					"stat": "maxHealth",
+					"baseMultiplier": 1.05
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 1.05
+				},
+				{
+					"stat": "energyRegenPercentageRate",
+					"baseMultiplier": 1.3
+				}
+			]
+		}
+	],
+	"liquidEffects": [{
+			"liquids": [
+				5,
+				6,
+				13,
+				60
+			],
+			"stats": [{
+					"stat": "maxHealth",
+					"baseMultiplier": 1.1
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 1.1
+				},
+				{
+					"stat": "breathProtection",
+					"amount": 1
+				},
+				{
+					"stat": "fallDamageMultiplier",
+					"baseMultiplier": 0
+				}
+			]
+		},
+		{
+			"liquids": [
+				3,
+				12,
+				58
+			],
+			"stats": [{
+					"stat": "maxHealth",
+					"baseMultiplier": 0.7
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 0.7
+				},
+				{
+					"stat": "maxBreath",
+					"amount": 100
+				}
+			]
+		}
+	],
+	"weaponEffects": [{
+			"weapons": [
+				"pistol",
+				"machinepistol"
+			],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"baseMultiplier": 1.2
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 1.15
+				}
+			]
+		},
+		{
+			"weapons": [
+				"sniperrifle",
+				"rifle"
+			],
+			"stats": [{
+					"stat": "critChance",
+					"amount": 2
+				},
+				{
+					"stat": "critDamage",
+					"amount": 5
+				}
+			]
+		},
+		{
+			"weapons": [
+				"grenadelauncher"
+			],
+			"stats": [{
+					"stat": "critChance",
+					"amount": 2
+				},
+				{
+					"stat": "critDamage",
+					"amount": 5
+				}
+			]
+		},
+		{
+			"weapons": [
+				"energy"
+			],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"baseMultiplier": 1.05
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 1.05
+				}
+			]
+		}
+	],
+	"special": [
+		"swimboost1"
+	]
+}

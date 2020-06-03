@@ -1,0 +1,119 @@
+NOTICE: 
+ > YES, THERE ARE SOME REDUNDANT STATS IN HERE.
+ > YES, THEY ARE ALL NEEDED. For instance, if you want to add immunity to something like mudslow, add fumudslow AND mudslow.
+ > [0-Relative] means that THE STATS ARE ORIENTED AROUND 0. This means that the default state is 0. Values < 0 subtract from this stat, and values > 0 add to this stat. (e.g. -0.2 means "This stat -20% of its base value")
+ > [1-Relative] means that THE STATS ARE ORIENTED AROUND 1. This means that the default state is 1 (100%). Values < 1 subtract from this stat, and values > 1 add to this stat. (e.g. 0.5 means "50% of this stat's value")
+ > [Boolean] means that THE VALUE IS A SWITCH, AND MUST BE OFF (0) OR ON (1). No other values are legal.
+
+FU STATS:
+    fuCharisma                      [baseMultiplier] [1-Relative]
+
+RESISTANCES:
+    RESISTANCES::ELEMENTAL:
+        fireResistance              [amount] [0-Relative]
+        radioactiveResistance       [amount] [0-Relative]
+        poisonResistance            [amount] [0-Relative]
+        iceResistance               [amount] [0-Relative]
+        electricResistance          [amount] [0-Relative]
+        shadowResistance            [amount] [0-Relative]
+        darknessResistance          [amount] [0-Relative]
+        cosmicResistance            [amount] [0-Relative]
+        physicalResistance          [amount] [0-Relative]
+
+IMMUNITIES
+    IMMUNITIES::MOBILITY:
+        fumudslowImmunity           [amount] [Boolean]
+        fuclayslowImmunity          [amount] [Boolean]
+        mudslowImmunity             [amount] [Boolean]
+        jungleslowImmunity          [amount] [Boolean]
+        
+        slushslowImmunity           [amount] [Boolean]
+        snowslowImmunity            [amount] [Boolean]
+        snowslipImmunity            [amount] [Boolean]
+        iceslipImmunity             [amount] [Boolean]
+        
+        tarImmunity                 [amount] [Boolean]
+        tarStatusImmunity           [amount] [Boolean]
+        blacktarImmunity            [amount] [Boolean]
+        quicksandImmunity           [amount] [Boolean]
+        
+        slimefrictionImmunity       [amount] [Boolean]
+        honeyslowImmunity           [amount] [Boolean]
+        webstickImmunity            [amount] [Boolean]
+        slimestickImmunity          [amount] [Boolean]
+        stunImmunity                [amount] [Boolean]
+        
+        
+    IMMUNITIES::ENVIRONMENT_AND_WEATHER:
+        biomecoldImmunity           [amount] [Boolean]
+        biomeheatImmunity           [amount] [Boolean]
+        biomeradiationImmunity      [amount] [Boolean]
+        sandstormImmunity           [amount] [Boolean]
+        breathProtection            [amount] [Boolean]
+        waterbreathProtection       [amount] [Boolean]
+        pressureProtection          [amount] [Boolean]
+        extremepressureProtection   [amount] [Boolean]
+        beestingImmunity            [amount] [Boolean]
+        erchiusImmunity             [amount] [Boolean]
+        lavaImmunity                [amount] [Boolean]
+        biooozeImmunity             [amount] [Boolean]
+        slimeImmunity               [amount] [Boolean]
+        waterImmunity               [amount] [Boolean]
+        wetImmunity                 [amount] [Boolean]
+        
+        
+    IMMUNITIES::ELEMENTAL:
+        poisonStatusImmunity        [amount] [Boolean]
+        
+        ffextremeradiationImmunity  [amount] [Boolean]
+        radiationburnImmunity       [amount] [Boolean]
+        
+        fireStatusImmunity          [amount] [Boolean]
+        
+        iceStatusImmunity           [amount] [Boolean]
+        ffextremecoldImmunity       [amount] [Boolean]
+        liquidnitrogenImmunity      [amount] [Boolean]
+        coldimmunity                [amount] [Boolean]
+        
+        electricStatusImmunity      [amount] [Boolean]
+        
+        aetherImmunity              [amount] [Boolean]
+    
+        shadowImmunity              [amount] [Boolean]
+        
+        darknessImmunity            [amount] [Boolean]
+        insanityImmunity            [amount] [Boolean]
+        
+        
+    IMMUNITIES::MISC:
+        specialStatusImmunity       [amount] [Boolean]
+        healingStatusImmunity       [amount] [Boolean]     
+    
+
+OTHER:
+    maxHealth                       [baseMultiplier]      [1-Relative]
+    maxEnergy                       [baseMultiplier]      [1-Relative]
+    maxFood                         [effectiveMultiplier] [1-Relative]
+    maxBreath                       [amount]              [Static Number]
+    
+    noFood                          [amount]              [Boolean]
+    foodDelta                       [baseMultiplier]      [1-Relative]
+    
+    energyRegenBlockTime            [baseMultiplier]      [1-Relative]
+    shieldRegen                     [amount]              [Unknown]
+    perfectBlockLimitRegen          [amount]              [Unknown]
+    energyRegenPercentageRate       [baseMultiplier]      [1-Relative]
+    
+    healthRegen                     [amount]              [Boolean]
+    
+    fallDamageMultiplier            [baseMultiplier]      [1-Relative]
+    protection                      [effectiveMultiplier] [1-Relative]
+    grit                            [amount]              [Unknown, and I don't even know what this stat does]
+    powerMultiplier                 [baseMultiplier]      [1-Relative]
+    
+    bowDrawTimeBonus                [amount]              [Unknown.]
+    
+    breathDepletionRate             [baseMultiplier]      [1-Relative]
+    breathRegenerationRate          [amount]              [Static Number. Unit unknown. Breath/sec?]
+    
+    mentalProtection                [amount]              [Unknown. Probably boolean?]
