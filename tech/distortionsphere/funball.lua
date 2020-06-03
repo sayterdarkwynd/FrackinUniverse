@@ -199,7 +199,7 @@ function activate()
   tech.setParentHidden(true)
   tech.setParentOffset({0, positionOffset()})
   tech.setToolUsageSuppressed(true)
-  status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
+  status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1},{stat="fallDamageMultiplier",effectiveMultiplier=0}})
   self.active = true
 end
 
