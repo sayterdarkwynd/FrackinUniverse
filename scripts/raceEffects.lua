@@ -15,7 +15,7 @@ end
 
 function update(dt)
 	FR_old_update(dt)
-	
+	self.isNpc=world.isNpc(entity.id())
 	local enabled = status.statusProperty("fr_enabled")
 	local race = enabled and status.statusProperty("fr_race") or "_default"
 	if enabled == nil then
@@ -53,6 +53,10 @@ function update(dt)
 			for _,thing in pairs(self.helper.speciesConfig.special) do
 				status.addEphemeralEffect(thing,math.huge)
 			end
+		end	
+		
+		if self.isNpc then
+			status.addEphemeralEffect("frnpcspecialhandler",math.huge)
 		end
 	end
 	
