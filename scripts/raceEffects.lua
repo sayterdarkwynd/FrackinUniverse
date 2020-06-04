@@ -20,10 +20,11 @@ function update(dt)
 	local race = enabled and status.statusProperty("fr_race") or "_default"
 	if enabled == nil then
 		status.setStatusProperty("fr_enabled", true)
-		status.setStatusProperty("fr_race", world.entitySpecies(entity.id()))
+		race = world.entitySpecies(entity.id())
+		status.setStatusProperty("fr_race", race)
 	end
 	
-	if not self.species or self.species ~= race then
+	if not self.helper or not self.species or self.species ~= race then
 		-- If we've done this before, then we're switching races and need to clear these
 		if self.helper then
 			for _, eff in pairs(self.helper.speciesConfig.special or {}) do
