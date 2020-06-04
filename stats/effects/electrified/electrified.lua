@@ -30,10 +30,10 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
-  self.tickTimer = self.tickTimer - dt
+  self.tickTimer = (self.tickTimer or 0) - dt
   local boltPower = util.clamp(status.resourceMax("health") * config.getParameter("healthDamageFactor", 1.0), self.damageClampRange[1], self.damageClampRange[2])
   if self.tickTimer <= 0 then
-    self.tickTimer = self.tickTime
+    self.tickTimer = (self.tickTime or 1.0)
     local targetIds = world.entityQuery(mcontroller.position(), config.getParameter("jumpDistance", 8), {
       withoutEntityId = entity.id(),
       includedTypes = {"creature"}
