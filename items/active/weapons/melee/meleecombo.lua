@@ -196,8 +196,9 @@ function MeleeCombo:fire()
 		self.helper = FRHelper:new(self.species:result(), world.entityGender(activeItem.ownerEntityId()))
 		self.helper:loadWeaponScripts("meleecombo-fire")
 	end
-    self.helper:runScripts("meleecombo-fire", self)
-
+	if self.helper then
+    	self.helper:runScripts("meleecombo-fire", self)
+	end
 	--**************************************
 
 	util.wait(stance.duration, function()
