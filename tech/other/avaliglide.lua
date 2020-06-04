@@ -10,7 +10,7 @@ function initCommonParameters()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.active=false
   self.available = true
-  self.species = world.entitySpecies(entity.id())
+  --self.species = world.entitySpecies(entity.id())
   self.timer = 0  
   self.active2 = 0
   self.active3 = 0

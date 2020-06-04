@@ -6,7 +6,7 @@ function init()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.active=false
   self.available = true
-  self.species = world.entitySpecies(entity.id())
+  --self.species = world.entitySpecies(entity.id())
   self.firetimer = 0
   self.rechargeDirectives = "?fade=CC22CCFF=0.1"
   self.rechargeDirectivesNil = nil
@@ -48,24 +48,21 @@ function checkFood()
 end
 
 function damageConfig()
-  foodVal = (self.foodValue / 20)
-  healthVal = status.resource("health") / 30
-  damageVal = status.stat("powerMultiplier")
+  local foodVal = (self.foodValue / 20)
+  local healthVal = status.resource("health") / 30
+  local damageVal = status.stat("powerMultiplier")
   damageVal=((damageVal-1.0)*0.5)+1.0
-  worldLevel = world.threatLevel()
-  totalVal = ((self.currentBonus  + foodVal + healthVal) + worldLevel)*damageVal
+  local worldLevel = world.threatLevel()
+  return ((self.currentBonus  + foodVal + healthVal) + worldLevel)*damageVal
 end
 
 function activeFlight()
-    damageConfig()
-    local damageConfig = { power = totalVal}
+	world.spawnProjectile("veluuclaw", spawnPos(), entity.id(), aimVector(), false, { power = damageConfig()})
     if self.currentBonus < 6 then
-      world.spawnProjectile("veluuclaw", mcontroller.position(), entity.id(), aimVector(), false, damageConfig) 
-      self.currentBonus = self.currentBonus +1
+		self.currentBonus = self.currentBonus +1
     else
-      animator.playSound("powerAttack")
-      world.spawnProjectile("veluuclaw2", mcontroller.position(), entity.id(), aimVector(), false, damageConfig) 
-      self.currentBonus = 0
+		animator.playSound("powerAttack")
+		self.currentBonus = 0
     end   
 end
 
@@ -79,6 +76,17 @@ function chargeUp()
     if self.halted == 0 then
        self.halted = 1
     end	 
+end
+
+
+
+function spawnPos()
+	local sP=mcontroller.position()
+	mP=status.statusProperty("mouthPosition")
+	if mP then
+		sP=vec2.add(sP,mP)
+	end
+	return sP
 end
 
 

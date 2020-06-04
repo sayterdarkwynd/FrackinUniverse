@@ -30,10 +30,10 @@ function update(dt)
   daytime = daytimeCheck()
   underground = undergroundCheck()
   local lightLevel = getLight()
-
-	if (world.type() == "desertwastesdark") or (world.type() == "snowdark") or (world.type() == "magmadark") or (world.type() == "volcanicdark") or (world.type() == "arborealdark") or (world.type() == "arcticdark") or (world.type() == "icewastedark") or (world.type() == "midnight") or (world.type() == "moon_shadow") or (world.type() == "penumbra") or (world.type() == "atropusdark") or (world.type() == "infernusdark") or (world.type() == "lightless") then
+  local worldType=world.type()
+	if (worldType == "desertwastesdark") or (worldType == "snowdark") or (worldType == "magmadark") or (worldType == "volcanicdark") or (worldType == "arborealdark") or (worldType == "arcticdark") or (worldType == "icewastedark") or (worldType == "midnight") or (worldType == "moon_shadow") or (worldType == "penumbra") or (worldType == "atropusdark") or (worldType == "infernusdark") or (worldType == "lightless") then
 	  self.radiantWorld = 0.4
-	elseif (world.type() == "desert") or (world.type() == "desertwastes") or (world.type() == "moon_desert") or (world.type() == "savannah") or (world.type() == "toxic") or (world.type() == "moon_toxic") or (world.type() == "alien") or (world.type() == "magma") or (world.type() == "scorchedcity") or (world.type() == "barren") or (world.type() == "protoworld") or (world.type() == "chromatic") or (world.type() == "irradiated") then
+	elseif (worldType == "desert") or (worldType == "desertwastes") or (worldType == "moon_desert") or (worldType == "savannah") or (worldType == "toxic") or (worldType == "moon_toxic") or (worldType == "alien") or (worldType == "magma") or (worldType == "scorchedcity") or (worldType == "barren") or (worldType == "protoworld") or (worldType == "chromatic") or (worldType == "irradiated") then
 	  self.radiantWorld = -0.4
 	end
   

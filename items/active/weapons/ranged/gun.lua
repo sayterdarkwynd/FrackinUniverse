@@ -7,14 +7,13 @@ function init()
     --*************************************
     -- FU/FR ADDONS
 
-    local species = world.entitySpecies(activeItem.ownerEntityId())
+    local species = status.statusProperty("fr_race") or world.entitySpecies(activeItem.ownerEntityId())
 
     if species then
         self.helper = FRHelper:new(species)
         self.helper:loadWeaponScripts("gun-init")
         self.helper:runScripts("gun-init", self)
     end
-
     --**************************************
     -- END FR BONUSES
     -- *************************************

@@ -82,16 +82,21 @@ function FRHelper:call(args, main, dt, ...)
 		local regenCalc = (dayConfig.maxRegen - dayConfig.minRegen) * lightCalc + dayConfig.minRegen
 		
 		-- When it is sunny and they are well fed, florans regenerate
-		if hungerPerc >= dayConfig.hungerThreshold and lightLevel > dayConfig.minLight then
-			if underground and lightLevel > dayConfig.undergroundLight then
-				if hungerEnabled then
-					status.modifyResourcePercentage("food", -0.005 * dt)
+		--special handling for NPCs, to prevent immortality
+		if not (world.isNpc(entity.id()) and status.resource("health") < 1) then
+			if hungerPerc >= dayConfig.hungerThreshold and lightLevel > dayConfig.minLight then
+				if underground and lightLevel > dayConfig.undergroundLight then
+					if hungerEnabled then
+						status.modifyResourcePercentage("food", -0.005 * dt)
+					end
+					regenCalc = regenCalc * dayConfig.undergroundScale
+					status.modifyResourcePercentage("health", regenCalc * dt)
+				elseif not underground and lightLevel > dayConfig.minLight then
+					status.modifyResourcePercentage("health", regenCalc * dt)
 				end
-				regenCalc = regenCalc * dayConfig.undergroundScale
-				status.modifyResourcePercentage("health", regenCalc * dt)
-			elseif not underground and lightLevel > dayConfig.minLight then
-				status.modifyResourcePercentage("health", regenCalc * dt)
 			end
+		else
+			status.setResource("health",0)
 		end
 	end
 end

@@ -4,7 +4,7 @@ function init()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.active=false
   self.available = true
-  self.species = world.entitySpecies(entity.id())
+  --self.species = world.entitySpecies(entity.id())
   self.timer = 0
   self.boostSpeed = 12
   self.active=false

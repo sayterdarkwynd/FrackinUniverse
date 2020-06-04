@@ -1,11 +1,13 @@
 require "/scripts/vec2.lua"
 
 function init()
+	if not world.entitySpecies(entity.id()) then return end
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.active=false
   self.available = true
-  self.species = world.entitySpecies(entity.id())
+	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
   self.timer = 0
+  self.didInit=true
 end
 
 function uninit()
@@ -44,6 +46,7 @@ function animateFlight()
 end
 
 function update(args)
+	if not self.didInit then init() end
         --checkFood()
 	if args.moves["special1"] and not mcontroller.onGround() and not mcontroller.zeroG() and status.overConsumeResource("energy", 0.001) then 
 		if self.timer then
