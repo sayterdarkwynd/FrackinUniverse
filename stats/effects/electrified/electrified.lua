@@ -1,9 +1,13 @@
 require "/scripts/util.lua"
 
 function init()
+  script.setUpdateDelta(5)
+	if not world.entitySpecies(entity.id()) then return end
   animator.setParticleEmitterOffsetRegion("sparks", mcontroller.boundBox())
   animator.setParticleEmitterActive("sparks", true)
   effect.setParentDirectives("fade=7733AA=0.25")
+	self.frEnabled=status.statusProperty("fr_enabled")
+	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 
 
 
@@ -21,10 +25,11 @@ function init()
   self.damageClampRange = config.getParameter("damageClampRange")
   self.tickTime = config.getParameter("boltInterval", 1.0)
   self.tickTimer = self.tickTime
-  script.setUpdateDelta(5)
+  self.didInit=true
 end
 
 function update(dt)
+	if not self.didInit then init() end
   self.tickTimer = self.tickTimer - dt
   local boltPower = util.clamp(status.resourceMax("health") * config.getParameter("healthDamageFactor", 1.0), self.damageClampRange[1], self.damageClampRange[2])
   if self.tickTimer <= 0 then

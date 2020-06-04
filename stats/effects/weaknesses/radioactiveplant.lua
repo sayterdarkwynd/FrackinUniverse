@@ -1,4 +1,6 @@
 function init()
+  script.setUpdateDelta(5)
+	if not world.entitySpecies(entity.id()) then return end
   self.movementParams = mcontroller.baseParameters()
   self.protectionBonus = config.getParameter("protectionBonus", 0)
   
@@ -12,22 +14,23 @@ function init()
   self.healthRegen = config.getParameter("healthRegen",0)
   
   self.xiBonus = status.stat("xiBonus") --apply racial bonus effect to results
-  
-  self.species = world.entitySpecies(entity.id())
-  if (status.stat("isHerbivore")==1 or status.stat("isRobot")==1 or status.stat("isOmnivore")==1 or status.stat("isSugar")==1) and (not(status.stat("isRadien")==1)) then
+  self.frEnabled=status.statusProperty("fr_enabled")
+	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+  if not self.frEnabled or ((status.stat("isHerbivore")==1 or status.stat("isRobot")==1 or status.stat("isOmnivore")==1 or status.stat("isSugar")==1) and (not(status.stat("isRadien")==1))) then
     world.sendEntityMessage(entity.id(), "queueRadioMessage", "foodtyperad")
   end
   
-  script.setUpdateDelta(5)  
+  self.didInit=true
 end
 
 function update(dt)
-	 if self.species == "radien" or self.species == "novakid" or self.species == "thelusian" then
+	if not self.didInit then init() end
+	 if self.frEnabled and (self.species == "radien" or self.species == "novakid" or self.species == "thelusian") then
 	   applyEffects()
 	   animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
 	   animator.setParticleEmitterActive("healing", true)	   
 	 else
-	   if not self.species == "radien" and (self.tickTimer <= 0) then
+	   if (self.frEnabled or not self.species == "radien") and (self.tickTimer <= 0) then
 	     applyPenalty()
 	     animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
 	     animator.setParticleEmitterActive("drips", true)	     

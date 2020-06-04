@@ -6,7 +6,7 @@ require("/scripts/FRHelper.lua")
 Parry = WeaponAbility:new()
 
 function Parry:init()
-  species = world.entitySpecies(activeItem.ownerEntityId())
+  species = status.statusProperty("fr_race") or world.entitySpecies(activeItem.ownerEntityId())
   self.cooldownTimer = 0
 end
 

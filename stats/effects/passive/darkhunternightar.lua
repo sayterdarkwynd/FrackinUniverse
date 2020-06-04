@@ -1,11 +1,18 @@
 require "/scripts/util.lua"
 
 function init()
-	self.species = world.entitySpecies(entity.id())
+	script.setUpdateDelta(10)
+	if not world.entitySpecies(entity.id()) then return end
+	self.frEnabled=status.statusProperty("fr_enabled")
 	nightarDarkHunterEffects = effect.addStatModifierGroup({})
 	nightarDarkHunterEffects2 = effect.addStatModifierGroup({})
+	if not self.frEnabled then
+		effect.expire()
+		return
+	end
+	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	self.activateDrainTimer = 0
-	script.setUpdateDelta(10)
+	self.didInit=true
 end
 
 function getLight()
@@ -27,6 +34,7 @@ end
 
 
 function update(dt)
+	if not self.didInit then init() end
 	local daytime = daytimeCheck()
 	local underground = undergroundCheck()
 	local lightLevel = getLight()
@@ -81,6 +89,10 @@ end
 
 
 function uninit()
-	effect.removeStatModifierGroup(nightarDarkHunterEffects)
-	effect.removeStatModifierGroup(nightarDarkHunterEffects2)
+	if nightarDarkHunterEffects then
+		effect.removeStatModifierGroup(nightarDarkHunterEffects)
+	end
+	if nightarDarkHunterEffects2 then
+		effect.removeStatModifierGroup(nightarDarkHunterEffects2)
+	end
 end

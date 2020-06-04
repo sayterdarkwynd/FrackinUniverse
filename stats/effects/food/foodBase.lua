@@ -1,10 +1,11 @@
 function init()
+	if not world.entitySpecies(entity.id()) then return end
 	self.foodTypes = config.getParameter("foodTypes")
 	self.badEffects = config.getParameter("badStuff", {})
 	self.bonusEffects = config.getParameter("bonusStuff", {})
+	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	
 	self.dietConfig = root.assetJson("/scripts/fr_diets.config")
-	self.species = world.entitySpecies(entity.id())
 	local success
 	if self.species then
 		success, self.speciesConfig = pcall(
@@ -56,9 +57,11 @@ function init()
 			applyEffect(penalty)
 		end
 	end
+	self.didInit=true
 end
 
 function update(dt)
+	if not self.didInit then init() end
 	effect.expire()
 end
 

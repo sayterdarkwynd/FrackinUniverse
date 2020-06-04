@@ -6,7 +6,7 @@ function init()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.active=false
   self.available = true
-  self.species = world.entitySpecies(entity.id())
+  --self.species = world.entitySpecies(entity.id())
   self.firetimer = 0
   self.rechargeDirectives = "?fade=CC1122FF=0.25"
   self.rechargeDirectivesNil = nil

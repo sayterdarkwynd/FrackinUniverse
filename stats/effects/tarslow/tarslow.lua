@@ -1,4 +1,6 @@
 function init()
+	script.setUpdateDelta(5)
+	if not world.entitySpecies(entity.id()) then return end
 	animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
 	animator.setParticleEmitterActive("drips", true)
 	effect.setParentDirectives("fade=300030=0.8")
@@ -7,12 +9,15 @@ function init()
 	})
 	bonusHandler=effect.addStatModifierGroup({})
 	self.healingRate = 1
-	script.setUpdateDelta(5)
+	self.frEnabled=status.statusProperty("fr_enabled")
+	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+	self.didInit=true
 end
 
 function update(dt)
+	if not self.didInit then init() end
 
-	if world.entitySpecies(entity.id()) == "glitch" then
+	if self.frEnabled and (self.species == "glitch") then
 		self.healingRate = 0.015
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate}})
 		--status.modifyResourcePercentage("health", self.healingRate * dt)
@@ -35,6 +40,10 @@ function update(dt)
 end
 
 function uninit()
-	effect.removeStatModifierGroup(baseHandler)
-	effect.removeStatModifierGroup(bonusHandler)
+	if bonusHandler then
+		effect.removeStatModifierGroup(bonusHandler)
+	end
+	if baseHandler then
+		effect.removeStatModifierGroup(baseHandler)
+	end
 end
