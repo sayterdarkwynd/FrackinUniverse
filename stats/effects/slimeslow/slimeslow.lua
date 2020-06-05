@@ -1,5 +1,5 @@
 function init()
-	if not world.entitySpecies(entity.id()) then return end
+	if not world.entityType(entity.id()) then return end
 	animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
 	animator.setParticleEmitterActive("drips", true)
 	effect.setParentDirectives("fade=347857=0.8")

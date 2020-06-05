@@ -1,6 +1,7 @@
 function init()
 	script.setUpdateDelta(5)
-	if not world.entitySpecies(entity.id()) then return end
+	self.eType=world.entityType(entity.id())
+	if not self.eType then return end
 
 	self.tickDamagePercentage = 0.025
 	self.tickTime = 1.2
@@ -8,8 +9,10 @@ function init()
 
 	self.healingRate = 1.0 / config.getParameter("healTime", 60)
 	bonusHandler=bonusHandler or effect.addStatModifierGroup({})
-	self.frEnabled=status.statusProperty("fr_enabled")
-	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+	if self.eType=="player" or self.eType=="npc" then
+		self.frEnabled=status.statusProperty("fr_enabled")
+		self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
+	end
 	if self.frEnabled and (self.species == "fragmentedruin") then
 		animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
 		animator.setParticleEmitterActive("drips", true)
