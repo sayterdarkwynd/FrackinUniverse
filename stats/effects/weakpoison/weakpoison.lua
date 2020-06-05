@@ -1,5 +1,5 @@
 function init()
-	if not world.entitySpecies(entity.id()) then return end
+	if not world.entityType(entity.id()) then return end
 	self.frEnabled=status.statusProperty("fr_enabled")
 	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	if self.frEnabled and (self.species == "fragmentedruin") then

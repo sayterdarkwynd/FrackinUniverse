@@ -1,6 +1,6 @@
 function init()
   script.setUpdateDelta(5)
-  if not world.entitySpecies(entity.id()) then return end
+  if not world.entityType(entity.id()) then return end
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
   animator.setParticleEmitterActive("drips", true)
   -- floran buff

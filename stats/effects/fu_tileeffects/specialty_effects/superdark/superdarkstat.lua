@@ -1,13 +1,13 @@
 function init()
-	if world.entityType(entity.id()) == "player" then
-		handleDarkStats()
-	else
-		animator.setParticleEmitterActive("smoke", false)
-	end
+	tryRun()
 	script.setUpdateDelta(1)
 end
 
 function update(dt)
+	tryRun()
+end
+
+function tryRun()
 	if world.entityType(entity.id()) == "player" then
 		handleDarkStats()
 		animator.setParticleEmitterActive("smoke", thisCanRun())
