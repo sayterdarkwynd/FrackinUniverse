@@ -1,5 +1,5 @@
 [ 
-	{"op":"remove",
+	[{"op":"remove",
 	"path":"/completionCinema"
 	},
 	{"op":"add",
@@ -41,5 +41,13 @@
 	{"op": "add",
 	"path": "/rewards/0/-",
 	"value": ["erchiusartifactaugment",1]
-	}
+	}],
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints","inverse":true},
+		{"op": "add","path": "/scriptConfig/giveBlueprints","value":[]}
+	],
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints"},
+		{"op": "add","path": "/scriptConfig/giveBlueprints/-","value":"erchiusartifactaugment"}
+	]
 ]

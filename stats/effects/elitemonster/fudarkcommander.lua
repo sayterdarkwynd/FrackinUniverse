@@ -1,26 +1,23 @@
---world.sendEntityMessage(targetEntity, "applyStatusEffect", effectName, effectDuration, sourceEntity)
-
 function init()
-	--source=effect.sourceEntity()
-	if world.isMonster(entity.id()) then
-		overrideParams=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
-		--sb.logInfo("podUuid:%s",overrideParams.podUuid)
-		if not overrideParams.podUuid then
-			effect.expire()
-			return
-		end
-	else
+	--[[sb.logInfo("Dark Commander init on %s. monster comparator: %s.",entity.id(),world.isMonster(entity.id()))
+	if not world.isMonster(entity.id()) then
+		--following is incorrect. actual problem is that starrypy has a blocker plugin that is typically run to 'protect' people. load of shit.--removed 'is pod monster' check due to params not being present on servers
+		sb.logInfo("Dark Commander terminated in init.")
 		effect.expire()
 		return
-	end
+	end]]
+	--new implementation will be to apply via petspawner override
 	regenHPPerSecond=config.getParameter("regenHPPerSecond",0)
+	--sb.logInfo("Dark Commander init passed comparator. Regen value: %s",regenHPPerSecond)
 end
 
-
 function update(dt)
-	if not regenHPPerSecond then return end
-	healthPercent=math.min(status.resourcePercentage("health")+(regenHPPerSecond*dt),1.0)
-	status.setResourcePercentage("health",healthPercent)
+	if not regenHPPerSecond then regenHPPerSecond=config.getParameter("regenHPPerSecond",0) end
+	healthPercent=status.resourcePercentage("health")
+	if not status.statPositive("healingStatusImmunity") then
+		healthPercent=math.min(healthPercent+(regenHPPerSecond*dt),1.0)
+		status.setResourcePercentage("health",healthPercent)
+	end
 
 	if healthPercent>1.0 then healthPercent=1.0 elseif healthPercent<0 then healthPercent=0 end
 	local opacity=string.format("%x",math.floor(healthPercent*255*0.5))
@@ -29,18 +26,3 @@ function update(dt)
 	end
 	effect.setParentDirectives("border=1;000000"..opacity..";00000000")
 end
-
-
-
-
-
-
-
---[[{dink=world.callScriptedEntity(entity.id(),"monster.uniqueParameters")
-	dink: {
-		ownerUuid: db1c0e1297eb9940c3e7d5f0cfc5d,
-		uniqueId: f1edc8e87fad83d8a24014961f22cb84,
-		podUuid: cbf033f8677a435319c422f7e500698,
-	},
-	s: -65536
-}]]

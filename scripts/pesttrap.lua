@@ -51,3 +51,19 @@ function update(dt)
 	    storage.count = (storage.count or 0) + amount
 	  end
 end
+
+
+
+		 -- self.randomCheck = math.random(100)
+		 -- if self.randomCheck == 1 then
+		--	self.check2 = math.random(2)
+		--	if self.check2 == 1 then
+		--		world.spawnMonster("furatthing", entity.position())
+		--	else
+		--		world.spawnMonster("furatthing2", entity.position())
+		--	end
+		  --elseif self.randomCheck <= 49 then
+		--	world.spawnMonster("squeekcritter", entity.position())
+		--  elseif self.randomCheck >= 50 then
+		--	world.spawnMonster("mousecritter", entity.position())
+		--  end

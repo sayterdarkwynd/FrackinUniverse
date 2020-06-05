@@ -1,6 +1,9 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/unifiedGravMod.lua"
 
+setName="fu_warphunterset"
+setEffects={"gravitynormalizationarmor"}
+
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 3.4}
 }
@@ -13,33 +16,31 @@ armorBonus={
 	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},		
 	{stat = "breathProtection", amount = 1},
-	--{stat = "asteroidImmunity", amount = 1},--currently only affects an unused effect
 	{stat = "gravrainImmunity", amount = 1}
 }
 
 setName="fu_warphunterset"
 
 function init()
-	setSEBonusInit("fu_warphunterset")
+	setSEBonusInit("fu_warphunterset",setEffects)
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
 	
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 
 	checkWeapons()
+	applySetEffects()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
-	unifiedGravMod.init()
-	unifiedGravMod.initSoft()
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("gravitynormalizationarmor")
 		effect.expire()
 	else
-		unifiedGravMod.update(dt)
-		--status.addEphemeralEffect("gravgenfieldarmor2",5)
 		checkWeapons()
+		status.addEphemeralEffect("gravitynormalizationarmor")
 	end
 end
 
@@ -53,11 +54,4 @@ function checkWeapons()
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
-end
-
-
-
-function uninit()
-	unifiedGravMod.uninit()
-	setBonusUninit()
 end

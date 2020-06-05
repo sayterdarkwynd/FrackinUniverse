@@ -1,0 +1,69 @@
+{
+	"stats" : [
+		{ "stat" : "maxHealth", "baseMultiplier" : 1.15 },
+		{ "stat" : "maxEnergy", "baseMultiplier" : 1.15 },
+		{ "stat" : "protection", "effectiveMultiplier" : 1.05 },
+		{ "stat" : "fireResistance", "amount" : 0.40 },
+		{ "stat" : "iceResistance", "amount" : -0.40 },
+		{ "stat" : "radioactiveResistance", "amount" : 0.10 },
+		{ "stat" : "grit", "amount" : 0.25 },
+		{ "stat" : "blacktarImmunity", "amount" : 1 },
+		{ "stat" : "tarImmunity", "amount" : 1 },
+		{ "stat" : "fireStatusImmunity", "amount" : 1 },
+		{ "stat" : "sandstormImmunity", "amount" : 1 },
+		{ "stat" : "quicksandImmunity", "amount" : 1 }
+	],
+	"diet" : "omnivore",
+	"envEffects" : [
+		{
+			"biomes" : [ "scorchedcity", "desert", "desertwastes", "desertwastesdark", "magma", "magmadark", "volcanic", "volcanicdark" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "baseMultiplier" : 1.15 },
+				{ "stat" : "protection", "effectiveMultiplier" : 1.05 },
+				{ "stat" : "healthRegen", "amount" : 0.025 }
+			]
+		},
+		{
+			"biomes" : [ "snow", "arctic", "arcticdark", "icemoon", "icewaste", "icewastedark" ],
+			"stats" : [
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 0.5 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [ "dagger", "spear" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "baseMultiplier" : 1.05 },
+				{ "stat" : "critChance", "amount" : 2 }
+			]
+		},
+		{
+			"weapons" : [ "energy" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "baseMultiplier" : 1.15 }
+			]
+		}
+	],
+	"weaponScripts" : [
+		{
+			"script" : "/scripts/fr_weaponscripts/onehandedbonus.lua",
+			"contexts" : [ "meleecombo-fire" ],
+			"args" : {
+				"scripts" : [
+					{
+						"script" : "/scripts/fr_weaponscripts/avikaneffect.lua",
+						"args" : {
+							"mod" : 30,
+							"resource" : "health",
+							"comboMult" : 1,
+							"stats" : [
+								{ "stat" : "protection", "amount" : 0 }
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+}

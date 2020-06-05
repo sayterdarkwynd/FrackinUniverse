@@ -52,11 +52,13 @@ function init()
   monster.setName("Shoggoth, Formless Horror")
   monster.setDamageBar("special")
   monster.setUniqueId(config.getParameter("uniqueId"))
+
+  specialCounter = 0
+  biteCounter = 0
 end
 
 function update(dt)
   self.tookDamage = false
-  --world.spawnProjectile("pushzone2",mcontroller.position(),entity.id(),{0,-60},false,params)
   trackTargets(self.keepTargetInSight, self.queryTargetDistance, self.trackTargetDistance, self.switchTargetDistance)
 
   for skillName, params in pairs(self.skillParameters) do
@@ -105,37 +107,11 @@ end
 function damage(args)
   self.tookDamage = true
   self.healthLevel = status.resource("health") / status.stat("maxHealth")
-  self.randval = math.random(100)
-  self.randval2 = math.random(100)
 
-  spit1={ power = 0, speed = 15, timeToLive = 0.2 }
-
-
-  if (self.randval2 >= 80) then
-    world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
-    animator.playSound("shoggothChomp")    
-  end 
-
-  
   if self.tookDamage and math.random(10)==1 then
     animator.playSound("hurt")
   end
 
-  
-  if (self.randval) >= 99 and (self.healthLevel) <= 0.80 then
-    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1)
-    if self.randval >=2 then animator.playSound("giveBirth") end
-  elseif (self.randval) >= 99 and (self.healthLevel) <= 0.65 then
-    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1) 
-    if self.randval >=2 then animator.playSound("giveBirth") end
-    animator.playSound("giveBirth")
-  elseif (self.randval) >= 99 and (self.healthLevel) <= 0.50 then
-    world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit1) 
-    if self.randval >=2 then animator.playSound("giveBirth") end
-    animator.playSound("giveBirth")
-  end  
-  
-  
   if status.resource("health") <= 0 then
     local inState = self.state.stateDesc()
     animator.playSound("deathPuff")
@@ -148,6 +124,9 @@ function damage(args)
   if args.sourceId and args.sourceId ~= 0 and not inTargets(args.sourceId) then
     table.insert(self.targets, args.sourceId)
   end
+
+  specialCounter = specialCounter + 1
+  biteCounter = biteCounter + 1
 end
 
 function shouldDie()
@@ -201,15 +180,15 @@ function validTarget(targetId, keepInSight, trackingRange)
     return false
   end
 
-  if not world.entityExists(targetId) then 
-    status.addEphemeralEffect("invulnerable",math.huge)
-    return false 
-  end
+  --if not world.entityExists(targetId) then 
+  --  status.addEphemeralEffect("invulnerable",math.huge)
+  --  return false 
+  --end
 
-  if keepInSight and not entity.entityInSight(targetId) then 
-    status.addEphemeralEffect("invulnerable",math.huge)  
-    return false 
-  end
+  --if keepInSight and not entity.entityInSight(targetId) then 
+  --  status.addEphemeralEffect("invulnerable",math.huge)  
+  --  return false 
+  --end
 
   if trackingRange then
     local distance = world.magnitude(mcontroller.position(), world.entityPosition(targetId))
@@ -333,6 +312,49 @@ function move(delta, run, jumpThresholdX)
   checkTerrain(delta[1])
 
   mcontroller.controlMove(delta[1], run)
+
+
+  -- destroy walls, etc
+  self.healthLevel = status.resource("health") / status.stat("maxHealth")
+  self.randval = math.random(200)
+  self.randval2 = math.random(100)
+
+  spit1={ power = 0, speed = 15, timeToLive = 0.2 }
+  spit2={ power = 0, speed = 15, timeToLive = 0.2 }
+  if self.tookDamage and math.random(10)==1 then
+    animator.playSound("hurt")
+  end
+  
+
+  specialCounter = specialCounter + 1--timer so these dont spam
+  biteCounter = biteCounter + 1--timer so these dont spam
+  soundChance = math.random(100)
+  if biteCounter >= 70 then
+    if (self.randval2 >= 70) then
+      world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
+      if soundChance > 50 then
+        animator.playSound("shoggothChomp")    
+      end
+    end     
+    biteCounter = 0
+  end
+
+  specialCounter = specialCounter + 1--timer so these dont spam
+  if specialCounter >= 150 then
+    if (self.randval) >= 190 and (self.healthLevel) <= 0.80 then
+      world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit2)
+      if self.randval >=2 then animator.playSound("giveBirth") end
+    elseif (self.randval) >= 150 and (self.healthLevel) <= 0.65 then
+      world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit2) 
+      if self.randval >=2 then animator.playSound("giveBirth") end
+      animator.playSound("giveBirth")
+    elseif (self.randval) >= 100 and (self.healthLevel) <= 0.50 then
+      world.spawnProjectile("minishoggothspawn2",mcontroller.position(),entity.id(),{0,2},false,spit2) 
+      if self.randval >=2 then animator.playSound("giveBirth") end
+      animator.playSound("giveBirth")
+    end  
+    specialCounter = 0
+  end
 
   if self.jumpTimer > 0 and not self.onGround then
     mcontroller.controlHoldJump()

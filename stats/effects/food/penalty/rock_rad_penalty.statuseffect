@@ -1,0 +1,21 @@
+{
+	"name" : "rock_rad_penalty",
+
+	"effectConfig" : {
+		"poisonPercent" : 0.01,
+		"stats" : [
+			{ "stat" : "healthRegen", "effectiveMultiplier" : 0 },
+			{ "stat" : "maxHealth", "effectiveMultiplier" : 0.75 }
+		]
+	},
+	"defaultDuration" : 200,
+
+	"scripts" : [
+		"foodpenalty.lua"
+	],
+
+	"animationConfig" : "foodpoison.animation",
+
+	"label" : "Congrats, you're dying of internal radiation poisoning. Don't eat fissionable material, genius.",
+	"icon" : "/interface/statuses/biomeradioactive.png"
+}

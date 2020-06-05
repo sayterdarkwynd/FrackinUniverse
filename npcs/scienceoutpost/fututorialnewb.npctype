@@ -12,9 +12,18 @@
 		"personalityArmOffset" : [0, 0]
 	},  
   "damageTeam" : 1,
-    "scriptConfig" : {
+  "scriptConfig" : {
     "offeredQuests" : [ "start_basics", "start_basics2", "start_basics3", "start_basics4", "start_basics5" ],
     "turnInQuests" : [ "start_basics", "start_basics2", "start_basics3", "start_basics4", "start_basics5" ],
+    "questGenerator" : {
+	      "pools" : ["common"],
+	      "enableParticipation" : false,
+	      "timeLimit" : 199930,
+	      "nearbyQuestLimit" : 2,
+	      "nearbyQuestRange" : 50,
+	      "questCountRange" : [9999, 10000],
+	      "graduation" : { "nextNpcType" : [ "fututorialnewb" ] }
+    },  
 
     "wander" : {
       "timeRange" : [2.0, 10.0],
@@ -73,38 +82,34 @@
       ],
       "cooldown" : 10
     },
-        "converse" : {
-            "waitTime" : 0.5,
-            "dialog" : {
+    "converse" : {
+        "waitTime" : 0.5,
+        "dialog" : {
 
-                "default" : [
-                      "Be quiet. Some of these liquids can explode."
-                ]
-                }
+            "default" : [
+                  "Be quiet. Some of these liquids can explode."
+            ]
             }
-        },
+        }
+    },
 
 
     "items" : {
         "override" : [
             [0, [
-          {
-            "chest" : [ "fumantiziplebchest" ],
-            "legs" : [ "fumantizipleblegs" ]
-          }
+                {
+                  "chest" : [ "fumantiziplebchest" ],
+                  "legs" : [ "fumantizipleblegs" ]
+                }
             ] ]
         ]
     },
 
-  "humanoidTiming" : {
-    // Idle, Walk, Run, Jump, Fall, Swim, SwimIdle, Duck, Sit, Lay
-    "stateCycle" : [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],
-    "stateFrames" : [1, 8, 8, 4, 4, 7, 2, 1, 1, 1],
-
-    // EmoteIdle, Blabbering, Shouting, Happy, Sad, NEUTRAL, Laugh, Annoyed, Oh, OOOH, Blink, Wink, Eat, Sleep
-    //          , normal    , caps    , :)   , :'(, :|     , :D   ,        , :o, :O  ,      , ;)
-    "emoteCycle" : [1.0, 0.3, 0.3, 0.3, 1.0, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.3, 1],
-    "emoteFrames" : [1, 2, 2, 2, 5, 2, 2, 2, 2, 3, 3, 5, 2, 2]
+    "humanoidTiming" : {
+      "stateCycle" : [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],
+      "stateFrames" : [1, 8, 8, 4, 4, 7, 2, 1, 1, 1],
+      "emoteCycle" : [1.0, 0.3, 0.3, 0.3, 1.0, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.3, 1],
+      "emoteFrames" : [1, 2, 2, 2, 5, 2, 2, 2, 2, 3, 3, 5, 2, 2]
   },
 
   "statusControllerSettings" : {
@@ -134,7 +139,7 @@
         "baseValue" : 1.0
       },
       "healthRegen" : {
-        "baseValue" : 0.0
+        "baseValue" : 1.0
       },
       "energyRegen" : {
         "baseValue" : 100.0
@@ -143,7 +148,7 @@
         "baseValue" : 0.0
       },
       "invulnerable" : {
-        "baseValue" : 0.0
+        "baseValue" : 1.0
       }
     },
 

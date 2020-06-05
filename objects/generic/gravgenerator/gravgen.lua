@@ -3,17 +3,17 @@ require "/scripts/effectUtil.lua"
 function init()
 	if storage.init==nil then
 		storage.init=true
-		storage.state=true
+		storage.state=(not (object.inputNodeCount() > 0)) or (not object.isInputNodeConnected(0)) or (object.getInputNodeLevel(0))
 	end
+	self.effect=config.getParameter("generatorEffect")
+	self.effectRange=config.getParameter("effectRange",30)
 end
 
 function update(dt)
-	if object.isInputNodeConnected(0) then
-		storage.state=object.getInputNodeLevel(0)
-	else
-		storage.state=true
-	end
+	storage.state=(not (object.inputNodeCount() > 0)) or (not object.isInputNodeConnected(0)) or (object.getInputNodeLevel(0))
 	if storage.state then
-		effectUtil.effectAllInRange("gravgenfield",30)
+		if self.effect then
+			effectUtil.effectAllInRange(self.effect,self.effectRange,3)
+		end
 	end	
 end

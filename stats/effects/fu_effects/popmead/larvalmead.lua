@@ -1,7 +1,7 @@
 function init()
 	fTickRate = config.getParameter("tickRate", 60)
 	fTickAmount = config.getParameter("tickAmount", 1)
-	species = world.entitySpecies(entity.id())
+	--species = world.entitySpecies(entity.id())
 	timer = 20
         script.setUpdateDelta(fTickRate)  
 end
