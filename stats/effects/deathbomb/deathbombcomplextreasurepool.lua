@@ -1,7 +1,7 @@
 require "/scripts/util.lua"
 
 function init()
-	if not world.entityType(entity.id) then return end
+	if not world.entityType(entity.id()) then return end
 	canExplode=false
 	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or ((world.entityType(entity.id())== "monster") and (world.callScriptedEntity(entity.id(),"getClass") == 'bee')) then
 		return
