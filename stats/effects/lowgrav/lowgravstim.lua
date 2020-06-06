@@ -24,6 +24,4 @@ function update(dt)
 end
 
 function uninit()
-  status.removeEphemeralEffect("gravgenfieldarmor")
-  status.removeEphemeralEffect("gravgenfieldarmor2")
 end
