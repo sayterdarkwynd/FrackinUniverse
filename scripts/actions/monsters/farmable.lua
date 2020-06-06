@@ -43,7 +43,8 @@ function isMonsterHarvestable(args, board)
     return true
   else
 	if not storage.producePercent or not storage.produceRequired then
-		sb.logError("Farmable.lua: monster=<%s>, storage.producePercent=<%s>, storage.produceRequired=<%s>, configured harvest time: <%s>",world.monsterType(entity.id()),storage.producePercent,storage.produceRequired,config.getParameter("harvestTime"))
+		--sb.logError("/scripts/actions/monsters/farmable.lua: monster=<%s>, storage.producePercent=<%s>, storage.produceRequired=<%s>, configured harvest time: <%s>",world.monsterType(entity.id()),storage.producePercent,storage.produceRequired,config.getParameter("harvestTime"))
+		--happens primarily with baby mooshi
 	end
     return false
   end
