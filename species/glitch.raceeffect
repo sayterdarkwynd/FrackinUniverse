@@ -24,7 +24,7 @@
 			"weapons": [ "mace", "axe", "greataxe" ],
 			"stats": [
 				{ "stat": "critChance", "amount": 2 },
-				{ "stat": "critBonus", "amount": 5 }
+				{ "stat": "critDamage", "amount": 0.05 }
 			]
 		},
 		{
@@ -36,15 +36,6 @@
 		}
 	],
 	"weaponScripts": [
-		//{
-			//"script": "/scripts/fr_weaponscripts/hungercost.lua",
-			//"contexts": [
-			//	"meleecombo-fire"
-			//],
-			//"args": {
-			//	"food": 0.0025
-			//}
-		//},
 		{
 			"script": "/scripts/fr_weaponscripts/combobonus.lua",
 			"contexts": [ "meleecombo-fire" ],
@@ -55,25 +46,6 @@
 				]
 			}
 		},
-		//{
-		//	"script": "/scripts/fr_weaponscripts/energybonus.lua",
-		//	"contexts": [ "meleecombo-fire" ],
-		//	"weapons": [ "mace","axe","greataxe" ],
-		//	"args": {
-		//		"energyReq": 0.25,
-		//		"stats": [{
-		//			"stat": "critChance",
-		//			"amount": 2
-		//		}]
-		//	}
-		//},
-		//{
-		//	"script": "/scripts/fr_weaponscripts/glitchaxes.lua",
-		//	"contexts": [
-		//		"axecleave-fire",
-		//		"hammersmash-fire"
-		//	]
-		//},
 		{
 			"script": "/scripts/fr_weaponscripts/glitchbash.lua",
 			"contexts": [ "shield-bash" ],
