@@ -23,13 +23,6 @@ function getLight()
 	return lightLevel
 end
 
-          --effect.setParentDirectives("border=1;ff0000ff;00000000")  
-          --effect.setParentDirectives("?multiply=ffffff00")
-        --elseif (self.conshakTimer < 299) then 
-        --  effect.setParentDirectives("border=1;880000ff;00000000") 
-        --elseif (self.conshakTimer < 100) then 
-        --  effect.setParentDirectives("border=1;330000ff;00000000") 
-
 function undergroundCheck()
 	return world.underground(mcontroller.position())
 end
@@ -41,7 +34,7 @@ function checkStance()
       animator.playSound("conshakActivate")
     end
     if self.pressDown then    
-       --animator.setParticleEmitterActive("defenseStance", true)
+       animator.setParticleEmitterActive("defenseStance", true)
        animator.playSound("conshakCharge")  
     else
       animator.setParticleEmitterActive("defenseStance", false)
@@ -92,7 +85,6 @@ function update(args)
           {stat = "chargingConshak", amount = self.conshakTimer}
 	      })
         status.addEphemeralEffects{{effect = "chargeupConshak", duration = 0.1}}
-	      --animator.setParticleEmitterActive("defenseStance", true)
 	      if self.bombTimer == 0 then
 		      checkStance()
 	      end

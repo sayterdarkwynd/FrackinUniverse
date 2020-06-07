@@ -5,20 +5,22 @@ function init()
 end
 
 function update(dt)
-	if status.stat("chargingConshak") >= 480 then
-		effect.setParentDirectives("border=3;ff00ffff;00000000") 
-	elseif status.stat("chargingConshak") >= 370 then
-		effect.setParentDirectives("border=2;cc00ccee;00000000") 	
-	elseif status.stat("chargingConshak") >= 270 then
-		effect.setParentDirectives("border=1;aa00aacc;00000000") 
-	elseif status.stat("chargingConshak") >= 170 then
-		effect.setParentDirectives("border=1;770077aa;00000000") 		
+	if status.stat("chargingConshak") >= 490 then
+		effect.setParentDirectives("border=2;8ff0ffff;00000000") 	
+	elseif status.stat("chargingConshak") >= 420 then
+		effect.setParentDirectives("border=1;5ff0ffff;00000000") 
+	elseif status.stat("chargingConshak") >= 350 then
+		effect.setParentDirectives("border=1;2ac4ffee;00000000") 	
+	elseif status.stat("chargingConshak") >= 220 then
+		effect.setParentDirectives("border=1;2a75ffcc;00000000") 
 	elseif status.stat("chargingConshak") >= 100 then
-		effect.setParentDirectives("border=1;44004488;00000000") 
-	elseif status.stat("chargingConshak") >= 40 then
-		effect.setParentDirectives("border=1;11001155;00000000") 		
+		effect.setParentDirectives("border=1;3c2affaa;00000000") 		
+	elseif status.stat("chargingConshak") >= 50 then
+		effect.setParentDirectives("border=1;b22aff99;00000000") 
+	elseif status.stat("chargingConshak") >= 20 then
+		effect.setParentDirectives("border=1;a300ff55;00000000") 		
 	else
-		effect.setParentDirectives("border=1;00000055;00000000") 														
+		effect.setParentDirectives("border=1;22002255;00000000") 														
 	end
 end
 
