@@ -7,7 +7,7 @@ end
 function initCommonParameters()
   self.energyCost = config.getParameter("energyCostPerSecond")
   self.bombTimer = 0
-  self.conshakTimer = 0
+  self.conshakTimer = 0       
 end
 
 function uninit()
@@ -23,6 +23,13 @@ function getLight()
 	return lightLevel
 end
 
+          --effect.setParentDirectives("border=1;ff0000ff;00000000")  
+          --effect.setParentDirectives("?multiply=ffffff00")
+        --elseif (self.conshakTimer < 299) then 
+        --  effect.setParentDirectives("border=1;880000ff;00000000") 
+        --elseif (self.conshakTimer < 100) then 
+        --  effect.setParentDirectives("border=1;330000ff;00000000") 
+
 function undergroundCheck()
 	return world.underground(mcontroller.position())
 end
@@ -34,8 +41,8 @@ function checkStance()
       animator.playSound("conshakActivate")
     end
     if self.pressDown then    
-       animator.setParticleEmitterActive("defenseStance", true)
-       animator.playSound("conshakCharge")
+       --animator.setParticleEmitterActive("defenseStance", true)
+       animator.playSound("conshakCharge")  
     else
       animator.setParticleEmitterActive("defenseStance", false)
       status.clearPersistentEffects("nightarconshak") 
@@ -70,43 +77,42 @@ function update(args)
 	      self.bombTimer = math.max(0, self.bombTimer - args.dt)
 	    end
 	    if (self.pressDown) and not self.pressLeft and not self.pressRight and not self.pressUp and not self.pressJump then
-
 	      if (self.conshakTimer < 500) then
-		self.conshakTimer = self.conshakTimer + 1   
+		      self.conshakTimer = self.conshakTimer + 1          
 	      else
-		self.conshakTimer = 0
+		      self.conshakTimer = 0
 	      end
-
 	      status.setPersistentEffects("nightarconshak", {
-		{stat = "protection", effectiveMultiplier = 0.01},
-		{stat = "powerMultiplier", effectiveMultiplier = 0.01},
-		{stat = "maxEnergy", effectiveMultiplier = 0.05},
-		{stat = "breathDepletionRate", effectiveMultiplier = 0.25},
-		{stat = "breathRegenerationRate", effectiveMultiplier = 1.25},
-		{stat = "foodDelta", amount = 0.25}
+      		{stat = "protection", effectiveMultiplier = 0.01},
+      		{stat = "powerMultiplier", effectiveMultiplier = 0.01},
+      		{stat = "maxEnergy", effectiveMultiplier = 0.05},
+      		{stat = "breathDepletionRate", effectiveMultiplier = 0.25},
+      		{stat = "breathRegenerationRate", effectiveMultiplier = 1.25},
+      		{stat = "foodDelta", amount = 0.25},
+          {stat = "chargingConshak", amount = self.conshakTimer}
 	      })
-
-	      animator.setParticleEmitterActive("defenseStance", true)
+        status.addEphemeralEffects{{effect = "chargeupConshak", duration = 0.1}}
+	      --animator.setParticleEmitterActive("defenseStance", true)
 	      if self.bombTimer == 0 then
-		checkStance()
+		      checkStance()
 	      end
 
 	      if (self.conshakTimer >= 500) then
-		animator.setParticleEmitterActive("defenseStance", false)
-		animator.setParticleEmitterActive("conshak", true)
-		local configBombDrop = { power = 0 }
-		world.spawnProjectile("activeConshakCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)    
-		status.addEphemeralEffects{{effect = "nightarconshakstat", duration = 60}}
-		status.addEphemeralEffects{{effect = "thorns", duration = 60}}
-		status.addEphemeralEffects{{effect = "detectmonster", duration = 60}}
-		self.conshakTimer = 0
+      		animator.setParticleEmitterActive("defenseStance", false)
+      		animator.setParticleEmitterActive("conshak", true)
+      		local configBombDrop = { power = 0 }
+      		world.spawnProjectile("activeConshakCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)    
+      		status.addEphemeralEffects{{effect = "nightarconshakstat", duration = 60}}
+      		status.addEphemeralEffects{{effect = "thorns", duration = 60}}
+      		status.addEphemeralEffects{{effect = "detectmonsternightar", duration = 60}}
+      		self.conshakTimer = 0
 	      end
 
 	    else
 	      animator.setParticleEmitterActive("defenseStance", false)
 	      animator.setParticleEmitterActive("conshak", false)
 	      status.clearPersistentEffects("nightarconshak")
-	      status.clearPersistentEffects("detectmonster")
+	      status.clearPersistentEffects("detectmonsternightar")
 	      self.conshakTimer = 0
 	    end   
 
