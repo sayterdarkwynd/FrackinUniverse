@@ -8,7 +8,7 @@ end
 function update(dt)
 if not species then species=status.statusProperty("fr_race") or world.entitySpecies(entity.id()) end
   if (species == "kirhos") or (species == "fukirhos") or (species == "shadow") then
-    speciesLuck = status.stat("fuCharisma") + math.random(25)
+    speciesLuck = ((1-status.stat("fuCharisma"))*100) + math.random(25)
   else
     speciesLuck = 0
   end
