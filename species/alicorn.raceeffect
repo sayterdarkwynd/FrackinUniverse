@@ -1,5 +1,5 @@
-[
-		{
+{
+	"stats": [{
 			"stat": "maxHealth",
 			"baseMultiplier": 1.05
 		},
@@ -44,112 +44,102 @@
 			"baseMultiplier": 1.3
 		}
 	],
-	"diet" : "herbivore",
-	"envEffects":
-	[
-		{
-		"biomes": [
-			"garden",
-			"arboreal",
-			"jungle",
-			"forest",
-			"savannah"
-		],
-		"stats": [{
-				"stat": "physicalResistance",
-				"amount": 0.1
-			},
-			{
-				"stat": "maxEnergy",
-				"baseMultiplier": 1.1
-			}
-		],
-		"controlModifiers":
-			{
-					"speedModifier": 1.05,
-					"airJumpModifier": 1.05
+	"diet": "herbivore",
+	"envEffects": [{
+			"biomes": [
+				"garden",
+				"arboreal",
+				"jungle",
+				"forest",
+				"savannah"
+			],
+			"stats": [{
+					"stat": "physicalResistance",
+					"amount": 0.1
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 1.1
+				}
+			],
+			"controlModifiers": {
+				"speedModifier": 1.05,
+				"airJumpModifier": 1.05
 			}
 		},
 		{
-		"biomes": [
-			"alien",
-			"atropus", "atropusdark", "tentacle", "bloodstonesea", "bloodstoneseafloor", "strangesea", "strangeseafloor"
-		],
-		"stats": [
-					{
-						"stat": "maxHealth",
-						"baseMultiplier": 0.85
-					},
-					{
-						"stat": "maxEnergy",
-						"baseMultiplier": 0.9
-					},
-					{
-						"stat": "energyRegenPercentageRate",
-						"baseMultiplier": 0.85
-					},
+			"biomes": [
+				"alien",
+				"atropus", "atropusdark", "tentacle", "bloodstonesea", "bloodstoneseafloor", "strangesea", "strangeseafloor"
+			],
+			"stats": [{
+					"stat": "maxHealth",
+					"baseMultiplier": 0.85
+				},
+				{
+					"stat": "maxEnergy",
+					"baseMultiplier": 0.9
+				},
+				{
+					"stat": "energyRegenPercentageRate",
+					"baseMultiplier": 0.85
+				}
 			]
 		},
 		{
-			"biomes":[
-				"arboreal2","scorchedcity", "desert", "desertwastes", "desertwastesdark", "magma", "magmadark", "volcanic", "volcanicdark", "infernus", "infernusdark",
+			"biomes": [
+				"arboreal2", "scorchedcity", "desert", "desertwastes", "desertwastesdark", "magma", "magmadark", "volcanic", "volcanicdark", "infernus", "infernusdark",
 				"snow", "snowdark", "tundra", "arctic", "arcticdark", "nitrogensea", "icemoon", "frozenvolcanic", "icewaste"
 			],
-			"stats": [
-					{
+			"stats": [{
 					"stat": "maxHealth",
 					"baseMultiplier": 0.9
-					},
-					{
+				},
+				{
 					"stat": "energyRegenPercentageRate",
 					"baseMultiplier": 0.7
-					}
+				}
 			],
-			"controlModifiers":
-			{
-					"speedModifier": 0.88,
-					"airJumpModifier": 0.88
+			"controlModifiers": {
+				"speedModifier": 0.88,
+				"airJumpModifier": 0.88
 			}
 		}
 	],
-	"weaponEffects":
-	[
-		{
-			"weapon": [ "staff" ],
-			"stats": [
-				{
-				"stat": "powerMultiplier",
-				"baseMultiplier": 1.1
+	"weaponEffects": [{
+			"weapon": ["staff"],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"baseMultiplier": 1.1
 				},
 				{
-				"stat": "critChance",
-				"amount": 1.5
+					"stat": "critChance",
+					"amount": 1.5
 				}
 			]
 		},
 		{
-			"weapon": [ "thrown" ],
-			"controlModifiers": {"speedModifier": 1.06}
+			"weapon": ["thrown"],
+			"controlModifiers": {
+				"speedModifier": 1.06
+			}
 		},
 		{
-			"weapon": [ "magnorb" ],
-			"stats": [
-				{
+			"weapon": ["magnorb"],
+			"stats": [{
 				"stat": "critDamage",
 				"amount": 0.15
-				}
-			]
+			}]
 		},
 		{
-			"weapon": [ "rocketlauncher" ],
-			"stats": [
-				{
-				"stat": "powerMultiplier",
-				"baseMultiplier": 1.12
+			"weapon": ["rocketlauncher"],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"baseMultiplier": 1.12
 				},
 				{
-				"stat": "grit",
-				"baseModifier": -0.4
+					"stat": "grit",
+					"baseModifier": -0.4
 				}
 			]
 		}
