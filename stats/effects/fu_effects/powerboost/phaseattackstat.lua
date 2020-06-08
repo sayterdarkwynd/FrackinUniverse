@@ -16,13 +16,13 @@ end
 function update(dt)
 	mcontroller.controlModifiers({speedModifier = 0.75})
 	status.setResourcePercentage("energyRegenBlock", 1.0)
-	local cost=2.5
+	local cost=5
 	local vel=vec2.mag(mcontroller.velocity())/10.0
 	cost=cost+vel
 	cost=dt*((status.resourceMax("energy")*0.01*cost)+cost)
 	
 	if status.overConsumeResource("energy",cost) then
-		self.damageBonus=self.damageBonus*(1+(0.04*dt))
+		self.damageBonus=self.damageBonus*(1+(0.08*dt))
 	end
 
 	effect.setStatModifierGroup(powerHandler,{{stat = "powerMultiplier", effectiveMultiplier = self.damageBonus}})
