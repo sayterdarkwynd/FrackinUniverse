@@ -20,8 +20,7 @@ function uninit()
   deactivate()
 end
 
-
---display madness bar
+--display conshak bar
 function displayBar()
   self.conshakPercent = self.conshakTimer / self.maxConshakValue
   if self.conshakPercent > 1.0 then

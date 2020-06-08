@@ -7,8 +7,15 @@ end
 function initCommonParameters()
   self.energyCost = config.getParameter("energyCostPerSecond")
   self.bombTimer = 0
-  self.conshakTimer = 0
+  self.xibulbTimer = 0
   self.xiBonus = status.stat("xiBonus")
+
+  -- for status bar filling, below are required
+  self.playerId = entity.id() 
+  self.maxXibulbValue = 350 
+  self.barName = "conshakBar"
+  self.barColor = {150,77,250,125}
+  self.timerRemoveXibulbBar = 0     
 end
 
 function uninit()
@@ -26,10 +33,11 @@ function getFood()
 end
 
 function checkStance()
-    if (self.conshakTimer < 350) then
+    if (self.xibulbTimer < 350) then
     	animator.setParticleEmitterActive("bulb", false)
     else
       animator.playSound("xibulbActivate")
+      world.sendEntityMessage(self.playerId,"removeBar","xibulbBar")
     end
     if self.pressDown then    
        animator.setParticleEmitterActive("bulbStance", true)
@@ -41,7 +49,46 @@ function checkStance()
     self.bombTimer = 10  
 end
 
+--display madness bar
+function displayBar()
+  self.xibulbPercent = self.xibulbTimer / self.maxXibulbValue
+  if self.xibulbPercent > 1.0 then
+    self.xibulbPercent = 1
+  end   
+
+  if self.xibulbTimer < 50 then
+    self.barColor = {18,86,32,125}
+  end  
+  if self.xibulbTimer > 50 then
+    self.barColor = {147,71,14,90}
+  end  
+  if self.xibulbTimer > 100 then
+    self.barColor = {179,135,11,125}
+  end  
+  if self.xibulbTimer > 150 then
+    self.barColor = {193,217,11,170}
+  end  
+  if self.xibulbTimer > 250 then
+    self.barColor = {79,217,255,199}
+  end  
+  if self.xibulbTimer > 300 then
+    self.barColor = {71,255,212,222}
+  end        
+
+  if (self.xibulbTimer > 0) then
+    world.sendEntityMessage(self.playerId,"setBar","xibulbBar",self.xibulbPercent,self.barColor)
+  else
+    world.sendEntityMessage(self.playerId,"removeBar","xibulbBar")
+  end
+end
+
 function update(args)
+   if (self.timerRemoveXibulbBar >=25) then
+       world.sendEntityMessage(entity.id(),"removeBar","xibulbBar")   --clear ammo bar  
+       self.timerRemoveXibulbBar = 0
+   else
+       self.timerRemoveXibulbBar = self.timerRemoveXibulbBar + 1
+   end   	
   if not self.specialLast and args.moves["special1"] then
     attemptActivation()
     animator.playSound("activate")
@@ -67,27 +114,29 @@ function update(args)
 	    end
 	    --make sure we are only holding down
 	    if (self.pressDown) and not self.pressLeft and not self.pressRight and not self.pressUp and not self.pressJump then 
-	      if (self.conshakTimer < 350) then
-		self.conshakTimer = self.conshakTimer + 1  
-		--set food to reduce, but never to 0
-		if (self.foodValue >=10) then 
-		  status.setResource("food",self.foodValue -0.05)  
-		else
-		  status.overConsumeResource("energy", config.getParameter("energyCostPerSecond"),1)
-		  status.overConsumeResource("health", 0.035,1)
-		end
+	      if (self.xibulbTimer < 350) then
+	      	displayBar()
+			self.xibulbTimer = self.xibulbTimer + 1  
+			--set food to reduce, but never to 0
+			if (self.foodValue >=10) then 
+			  status.setResource("food",self.foodValue -0.05)  
+			else
+			  status.overConsumeResource("energy", config.getParameter("energyCostPerSecond"),1)
+			  status.overConsumeResource("health", 0.035,1)
+			end
 	      else
-		self.conshakTimer = 0
+			self.xibulbTimer = 0
+			displayBar()
 	      end
 
 	      status.setPersistentEffects("bulbEffect", {})
 
 	      animator.setParticleEmitterActive("bulbStance", true)
 	      if self.bombTimer == 0 then
-		checkStance()
+		    checkStance()
 	      end
 
-	      if (self.conshakTimer >= 350) then
+	      if (self.xibulbTimer >= 350) then
 	      self.rand = math.random(1,3)  -- how many Bulbs can we potentially spawn?
 	      self.onehundred = math.random(1,100)   --chance to spawn rarer bulb types
 		      if (self.foodValue >=10) then    --must have sufficient food to grow a seed
@@ -103,7 +152,7 @@ function update(args)
 			end
 			local configBombDrop = { power = 0 }
 			world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)    
-			self.conshakTimer = 0
+			self.xibulbTimer = 0
 		      elseif (self.foodValue < 10) and status.resource("energy") > 20 then
 			animator.setParticleEmitterActive("bulbStance", false)
 			animator.setParticleEmitterActive("bulb", true)
@@ -116,7 +165,7 @@ function update(args)
 			end
 			local configBombDrop = { power = 0 }
 			world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)    
-			self.conshakTimer = 0		      
+			self.xibulbTimer = 0		      
 		      end
 	      end
 
@@ -124,7 +173,7 @@ function update(args)
 	      animator.setParticleEmitterActive("bulbStance", false)
 	      animator.setParticleEmitterActive("bulb", false)
 	      status.clearPersistentEffects("bulbEffect")
-	      self.conshakTimer = 0
+	      self.xibulbTimer = 0
 	    end   
 
 	    checkForceDeactivate(args.dt)
@@ -153,7 +202,7 @@ function checkForceDeactivate(dt)
       deactivate()
       self.forceTimer = nil
       status.clearPersistentEffects("bulbEffect")   
-      self.conshakTimer = 0
+      self.xibulbTimer = 0
     else
       attemptActivation()
     end
