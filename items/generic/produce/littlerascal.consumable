@@ -1,13 +1,23 @@
 {
-  "itemName" : "littlerascal",
-  "inventoryIcon" : "littlerascal.png",
-  "category" : "food",
-  "rarity" : "uncommon",
-  "price" : 10,
+	"itemName": "littlerascal",
+	"inventoryIcon": "littlerascal.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
 
-  "tooltipKind": "food",
-  "description" : "^cyan;+^white;12 ^cyan;HP ^gray;(^white;3m^gray;)\n^cyan;+^white;20 ^cyan;EP ^gray;(^white;2m^gray;)^reset;",
-  "shortdescription" : "Little Rascal Herb",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+12 HP^reset;, ^cyan;+20 EP^reset;: 2m",
+	"shortdescription": "Little Rascal Herb",
 
-  "effects" : [ [ "maxhealthboost3", "maxenergyboost3" ] ]  
+	"effects": [
+		[{
+				"effect": "maxhealthboost3",
+				"duration": 180
+			},
+			{
+				"effect": "maxenergyboost3",
+				"duration": 180
+			}
+		]
+	]
 }

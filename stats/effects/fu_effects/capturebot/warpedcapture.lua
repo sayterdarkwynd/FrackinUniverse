@@ -3,16 +3,20 @@ require "/scripts/companions/util.lua"
 require "/scripts/messageutil.lua"
 
 function init()
-	if world.isMonster(entity.id()) then
+	eType=world.entityType(entity.id())
+	if not eType then return end
+	if eType=="monster" then
 		effect.setParentDirectives(config.getParameter("directives", ""))
 		effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
 		isMonster=true
 	end
 	if not blocker then blocker=config.getParameter("blocker","warpedcapture") end
+	initDone=true
 end
 
 
 function update(dt)
+	if not initDone then init() end
 	if isMonster then
 		hit()
 	end
@@ -38,5 +42,6 @@ end
 
 function spawnFilledPod(pet)
   local pod = createFilledPod(pet)
-  world.spawnItem(pod.name, mcontroller.position(), pod.count, pod.parameters)
+  --world.spawnItem(pod.name, mcontroller.position(), pod.count, pod.parameters)
+  world.spawnItem(pod, mcontroller.position())
 end

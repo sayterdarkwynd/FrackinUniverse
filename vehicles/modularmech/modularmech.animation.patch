@@ -127,19 +127,47 @@
 	      "emissionRate": 0,
 	      "offsetRegion": [-4,-3.4,4,-3.2],
 	      "particles": [
-		{"particle":"fusmoke"},
-		{"particle":"fusmoke"},
-		{"particle":"fuvolcanopoof"},	
-		{"particle":"fuvolcanopoof"},		
-		{"particle":"fuvolcanopoof"},	
-		{"particle":"fuvolcanopoof"},
-		{"particle":"fuvolcanosmoke"},
-		{"particle": "burningvehiclesmokefront"},
-		{"particle": "burningvehiclesmokefront"}
+			{"particle":"fusmoke"},
+			{"particle":"fusmoke"},
+			{"particle":"fuvolcanopoof"},	
+			{"particle":"fuvolcanopoof"},		
+			{"particle":"fuvolcanopoof"},	
+			{"particle":"fuvolcanopoof"},
+			{"particle":"fuvolcanosmoke"},
+			{"particle": "burningvehiclesmokefront"},
+			{"particle": "burningvehiclesmokemiddle"}
 	      ]
 	    }
 	  },	
-	  
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/legImpactLight",
+	    "value": {
+	      "transformationGroups": ["backLeg","frontLeg"],
+	      "emissionRate": 0,
+	      "offsetRegion": [0,-3.4,0,-4],
+	      "particles": [
+			{"particle": "burningvehiclesmokefrontmech"},
+			{"particle": "burningvehiclesmokemiddlemech"},
+			{"particle": "burningvehiclesmokebackmech"}
+	      ]
+	    }
+	  },
+
+	  {
+	    "op": "add",
+	    "path": "/particleEmitters/gunImpact",
+	    "value": {
+	      "transformationGroups": ["backLeg","frontLeg"],
+	      "emissionRate": 0,
+	      "offsetRegion": [-4,-3.4,4,-3.2],
+	      "particles": [
+			{"particle": "fusmoke"},
+{"particle": "fusmoke"},{"particle": "fusmoke"},{"particle": "fusmoke"},{"particle": "fusmoke"}
+	      ]
+	    }
+	  },
+
 	  {
 	    "op": "add",
 	    "path": "/particleEmitters/legImpact",
@@ -148,9 +176,9 @@
 	      "emissionRate": 0,
 	      "offsetRegion": [-4,-3.4,4,-3.2],
 	      "particles": [
-		{"particle": "fusmoke"},
-		{"particle":"fuvolcanopoof"},
-		{"particle": "burningvehiclesmokefront"}
+			{"particle": "fusmoke"},
+			{"particle":"fuvolcanopoof"},
+			{"particle": "burningvehiclesmokefront"}
 	      ]
 	    }
 	  },
@@ -162,7 +190,7 @@
 	      "emissionRate": 0,
 	      "offsetRegion": [-4,-3.4,4,-3.2],
 	      "particles": [
-		{"particle": "shockwavedust"}
+			{"particle": "shockwavedust"}
 	      ]
 	    }
 	  },	  

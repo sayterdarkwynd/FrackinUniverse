@@ -41,7 +41,7 @@
           "offset" : [0, 2],
           "transformationGroups" : ["weapon"],
           "rotationCenter" : [0, 0],
-          "damageArea" : [ [-0.2, -1.0], [-0.2, 2.5], [0.2, 2.5], [0.2, -1.0] ]
+          "damageArea" : [ [-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0] ]
         }
       },
       "handle" : {
@@ -167,8 +167,8 @@
     "radioactiveswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
       "particles" : [
         { "particle" : "radioactiveswoosh1"},
         { "particle" : "radioactiveswoosh2"},
@@ -178,8 +178,8 @@
     "cosmicswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
       "particles" : [
         { "particle" : "cosmicswoosh1"},
         { "particle" : "cosmicswoosh2"},
@@ -192,23 +192,20 @@
       "emissionRate" : 50,
       "burstCount" : 3,
       "particles" : [
-        { "particle" : "fusmoke"},
-        { "particle" : "fireswoosh2"},
-        { "particle" : "fireswoosh3"}
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
       ]
-    },  
-    "bioweaponswoosh" : {
+    },
+    "hellfireswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 40,
-      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "emissionRate" : 50,
+      "burstCount" : 3,
       "particles" : [
-        { "particle" : "poisonswoosh1"},
-        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh1"},
         { "particle" : "fireswoosh2"},
-        { "particle" : "poisonswoosh1"},
-        { "particle" : "poisonswoosh2"},
-        { "particle" : "fireswoosh2"}
+        { "particle" : "fireswoosh3"}
       ]
     },
     "aetherswoosh" : {
@@ -224,41 +221,28 @@
         { "particle" : "cosmicswoosh2"},
         { "particle" : "cosmicswoosh3"}
       ]
-    },      
-    "hellfireswoosh" : {
-      "active" : false,
-      "transformationGroups" : ["swoosh"],
-      "emissionRate" : 40,
-      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
-      "particles" : [
-        { "particle" : "fireswoosh1"},
-        { "particle" : "fireswoosh2"},
-        { "particle" : "fireswoosh3"},
-        { "particle" : "fireswoosh1"},
-        { "particle" : "fireswoosh2"},
-        { "particle" : "fireswoosh3"}
-      ]
     },    
-    "hoarfrostswoosh" : {
+    "bioweaponswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 40,
-      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "emissionRate" : 50,
+      "burstCount" : 3,
       "particles" : [
-        { "particle" : "iceswoosh1"},
-        { "particle" : "iceswoosh2"},
-        { "particle" : "iceswoosh3"},
-        { "particle" : "iceswoosh1"},
-        { "particle" : "iceswoosh2"},
-        { "particle" : "iceswoosh3"}
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"}
       ]
-    }  
+    }
   },
 
   "sounds" : {
-    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
-    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
-    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+    "fire" : [ ],
+    "fire2" : [ ],
+    "fire3" : [ ],
+    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ],
+    "nightar" : [ "/sfx/weapons/energypew.ogg" ]
   }
 }

@@ -1,0 +1,65 @@
+{
+	"stats" : [
+		{ "stat" : "fireResistance", "amount" : 0.4 },
+		{ "stat" : "shadowResistance", "baseMultiplier" : 0.4 },
+		{ "stat" : "iceResistance", "amount" : -0.4 },
+		{ "stat" : "maxHealth", "baseMultiplier" : 1.15 },
+		{ "stat" : "cosmicResistance", "amount" : -0.4 },
+		{ "stat" : "protection", "baseMultiplier" : 1.1 },
+		{ "stat" : "fireStatusImmunity", "amount" : 1 }
+	],
+	"diet" : "omnivore",
+	"envEffects" : [
+		{
+			"biomes" : "hot",
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 }
+			],
+			"controlModifiers" : {
+				"speedModifier" : 1.15
+			}
+		},
+		{
+			"biomes" : "cold",
+			"stats" : [
+				{ "stat" : "maxHealth", "baseMultiplier" : 0.85 },
+				{ "stat" : "maxEnergy", "baseMultiplier" : 0.9 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [
+				"shortsword, dagger"
+			],
+			"stats" : [
+				{ "stat" : "critDamage", "baseMultiplier" : 1.1 }
+			]
+		},
+		{
+			"weapons" : [ "longsword", "katana", "broadsword" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "baseMultiplier" : 1.1 }
+			]
+		},
+		{
+			"weapons" : [ "spear" ],
+			"stats" : [
+				{ "stat" : "critChance", "amount" : 1.5 },
+				{ "stat" : "critDamage", "baseMultiplier" : 1.15 }
+			]
+		},
+		{
+			"combos" : [
+				[ "shortsword", "shortsword" ],
+				[ "shortsword", "dagger" ],
+				[ "dagger", "dagger" ],
+				[ "katana", "dagger"],
+				[ "rapier", "dagger"] ],
+			"stats" : [
+				{ "stat" : "protection", "effectiveMultiplier" : 1.12 }
+			],
+			"controlModifiers" : {"speedModifier" : 1.05}
+		}
+	]
+}

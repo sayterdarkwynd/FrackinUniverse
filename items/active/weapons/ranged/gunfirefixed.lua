@@ -1,5 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/scripts/FRHelper.lua"
 require "/items/active/weapons/crits.lua"
 
 -- Base gun fire ability, fixed. Includes more options and ways to customize a gun fire.
@@ -25,28 +26,39 @@ function GunFireFixed:init()
   -- params
   self.countdownDelay = 0 									-- how long till it regains damage bonus?
   self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
+  
   self.playerMagBonus = status.stat("magazineSize",0)						-- player  ammo bonuses
   self.playerReloadBonus = status.stat("reloadTime",0)						-- player reload bonuses
+  self.playerSpeedBonus = status.stat("speedBonus",1)						-- player fire rate bonus
+  
+  
   self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) 	-- total count of the magazine
   self.magazineAmount = (self.magazineSize or 0) 						-- current number of bullets in the magazine
   self.reloadTime = config.getParameter("reloadTime",1)	+ (self.playerReloadBonus or 0) 	-- how long does reloading mag take?
-  
+
   self.playerId = entity.id()
   self.currentAmmoPercent = self.magazineAmount / self.magazineSize
   if self.currentAmmoPercent > 1.0 then
     self.currentAmmoPercent = 1
-  end 
-  
+  end  
   if (self.isAmmoBased == 1) then
     self.timerRemoveAmmoBar = 0 
   end  
-  
   self.barName = "ammoBar"
   self.barColor = {0,250,112,125}
+  
+    -- **** FR ADDITIONS
+	daytime = daytimeCheck()
+	underground = undergroundCheck()
+	lightLevel = 1
+
+	-- bonus add for novakids with pistols when sped up, specifically to energy and damage equations at end of file so that they still damage and consume energy at high speed
+	self.energyMax = 1
+    -- ** END FR ADDITIONS
+    
   self.weapon:setStance(self.stances.idle)
 
-  self.cooldownTimer = self.fireTime
-  
+  self.cooldownTimer = self.fireTime * self.playerSpeedBonus
   if self.loadupTime then
     self.loadupTimer = self.loadupTime
   else
@@ -63,17 +75,44 @@ function GunFireFixed:init()
   self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
 
+-- ****************************************
+-- FR FUNCTIONS
+
+
+
+
+function daytimeCheck()
+	return world.timeOfDay() < 0.5 -- true if daytime
+end
+
+function undergroundCheck()
+	return world.underground(mcontroller.position())
+end
+
+function getLight()
+	local position = mcontroller.position()
+	position[1] = math.floor(position[1])
+	position[2] = math.floor(position[2])
+	local lightLevel = world.lightLevel(position)
+	lightLevel = math.floor(lightLevel * 100)
+	return lightLevel
+end
+-- ***********************************************************************************************************
+-- ***********************************************************************************************************
+
+
 function GunFireFixed:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
-  -- *** FU Weapon Additions
-  if self.timeBeforeCritBoost <= 0 then  --check sniper crit bonus
+  -- *** FU Weapon Additions 
+  if self.timeBeforeCritBoost <= 0 then  --check sniper/crossbow crit bonus
       self:isChargeUp()
   else
-      self.timeBeforeCritBoost = self.timeBeforeCritBoost -dt
+    self.timeBeforeCritBoost = self.timeBeforeCritBoost -dt
   end
-
+  
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
+  
   if self.loadingUp then
   self.loadupTimer = math.max(0, self.loadupTimer - self.dt)
   end
@@ -86,6 +125,15 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
     end
   end
   
+    setupHelper(self, {"gunfire-update", "gunfire-auto", "gunfire-postauto", "gunfire-burst", "gunfire-postburst"})
+	if self.helper then
+	  self.helper:runScripts("gunfire-update", self, dt, fireMode, shiftHeld)
+    end
+    
+  if self.loadingUp then
+  self.loadupTimer = math.max(0, self.loadupTimer - self.dt)
+  end
+	
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)
   end
@@ -141,15 +189,22 @@ end
 
 
 function GunFireFixed:auto()
+-- ***********************************************************************************************************
+-- FR SPECIALS	(Weapon speed and other such things)
+-- ***********************************************************************************************************
     --ammo	
     self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?	
     self:checkMagazine()--ammo system magazine check	
-    -- recoil
-    self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
-    self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire    
+    -- recoil stats reset every time we shoot so that it is consistent
+    self.recoilSpeed = (config.getParameter("recoilSpeed",200))
+    self.recoilForce = (config.getParameter("recoilForce",100)) 
     
+    if self.helper then
+      self.helper:runScripts("gunfire-auto", self)
+    end
+	
   self.weapon:setStance(self.stances.fire)
-  
+
   self:fireProjectile()
   self:muzzleFlash()
 
@@ -157,12 +212,14 @@ function GunFireFixed:auto()
     util.wait(self.stances.fire.duration)
   end
 
-  self.cooldownTimer = self.fireTime
-  
+    if self.helper then self.helper:runScripts("gunfire-postauto", self) end
+
+    self.cooldownTimer = self.fireTime --* self.energymax
+ 
  	--FU/FR special checks
         self:hasShotgunReload()--reloads as a shotgun?
         self:checkAmmo() --is it an ammo user?
-	  
+
   self:setState(self.cooldown)
 end
 
@@ -174,8 +231,11 @@ function GunFireFixed:burst() -- burst auto should be a thing here
     self.recoilSpeed = (config.getParameter("recoilSpeed",200))
     self.recoilForce = (config.getParameter("recoilForce",100)) 
     
+    if self.helper then
+      self.helper:runScripts("gunfire-burst", self)
+    end
   self.weapon:setStance(self.stances.fire)
-	  
+
   local shots = self.burstCount
   while shots > 0 and status.overConsumeResource("energy", self:energyPerShot()) do
     self:fireProjectile()
@@ -196,10 +256,11 @@ function GunFireFixed:burst() -- burst auto should be a thing here
  	--FU/FR special checks
         self:hasShotgunReload()--reloads as a shotgun?
         self:checkAmmo() --is it an ammo user?
+	  
 end
 
-function GunFireFixed:cooldown()   
-  
+function GunFireFixed:cooldown()
+
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
 
@@ -228,11 +289,12 @@ function GunFireFixed:muzzleFlash()
 end
 
 function GunFireFixed:fireProjectile(projectileType, projectileParams, inaccuracy, firePosition, projectileCount)
-  local params = sb.jsonMerge(self.projectileParameters, projectileParams or {})
-  params.power = self:damagePerShot()
-  params.powerMultiplier = activeItem.ownerPowerMultiplier()
-  params.speed = util.randomInRange(params.speed)
 
+  local params = sb.jsonMerge(self.projectileParameters, projectileParams or {})
+  params.power = self:damagePerShot() + (params.weaponBonus or 0)
+  params.powerMultiplier = activeItem.ownerPowerMultiplier() 
+  params.speed = util.randomInRange(params.speed)
+  self.timerReloadBar = 0 -- reset reload timer
   self:isResetting() --check if we reset the FU/FR crit bonus for crossbow and sniper
 	  
   if not projectileType then
@@ -257,9 +319,9 @@ function GunFireFixed:fireProjectile(projectileType, projectileParams, inaccurac
       )
   end
   --Recoil here
-  self:applyRecoil() 
+  self:applyRecoil()  	  
   return projectileId
- 
+
 end
 
 function GunFireFixed:firePosition()
@@ -276,7 +338,7 @@ function GunFireFixed:energyPerShot()
   if (self.isAmmoBased == 1) and not (self.fireMode == "alt") then  --ammo based guns use 1/2 as much energy
     return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
   elseif self.useEnergy == "nil" or self.useEnergy then -- key "useEnergy" defaults to true.
-    return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)    
+    return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)  
   else
     return 0
   end
@@ -287,14 +349,14 @@ function GunFireFixed:damagePerShot()
 end
 
 function GunFireFixed:uninit()
-  status.clearPersistentEffects("weaponBonus")  
+  status.clearPersistentEffects("weaponBonus") 
 end
 
 function GunFireFixed:isResetting()
   -- FR/FU crossbow/sniper specials get reset here
   if (self.isSniper == 1) or (self.isCrossbow == 1) then
     self.firedWeapon = 1
-    self.timeBeforeCritBoost = 2   
+    self.timeBeforeCritBoost = 2  
     status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
   end
 end
@@ -354,7 +416,7 @@ function GunFireFixed:hasShotgunReload()
 	end
 end
 
-function GunFireFixed:checkAmmo()	
+function GunFireFixed:checkAmmo()
              -- set the cursor to the Reload cursor
 	if (self.isAmmoBased==1) then  -- ammo bar color check
 		if self.currentAmmoPercent <= 0 then
@@ -411,7 +473,8 @@ function GunFireFixed:checkAmmo()
   	--check current ammo and create an ammo bar to inform the user
   	self.currentAmmoPercent = 1.0
   	self.barColor = {0,250,112,125}
-        if (self.fireMode == "primary") then
+	
+	if (self.fireMode == "primary") then
   	world.sendEntityMessage(
   	  self.playerId,
   	  "setBar",
@@ -434,15 +497,15 @@ function GunFireFixed:checkMagazine()
   	--check current ammo and create an ammo bar to inform the user
   	self.currentAmmoPercent = self.magazineAmount / self.magazineSize
 	if self.currentAmmoPercent <= 0 then
-		self.barColor = {0,0,0,125}
+		self.barColor = {0,0,0,255}
   	elseif self.currentAmmoPercent > 0.75 then
-  		self.barColor = {0,255,0,125}
+  		self.barColor = {0,255,0,255}
   	elseif self.currentAmmoPercent <= 0.75 then
-		self.barColor = {125,255,0,125}  
+		self.barColor = {125,255,0,255}  
 	elseif self.currentAmmoPercent <= 0.50 then
-		self.barColor = {255,255,0,125}	
+		self.barColor = {255,255,0,255}	
 	elseif self.currentAmmoPercent <= 0.25 then
-		self.barColor = {255,0,0,125}		
+		self.barColor = {255,0,0,255}		
 	end           
 	if (self.fireMode == "primary") then
   	world.sendEntityMessage(
@@ -481,8 +544,8 @@ end
 function GunFireFixed:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil				
     if not mcontroller.onGround() then						
      self.recoilForce = self.recoilForce * 0.5
-    end      
+    end    
     if mcontroller.crouching() then
      self.recoilForce = self.recoilForce * 0.25
-    end          
+    end      
 end

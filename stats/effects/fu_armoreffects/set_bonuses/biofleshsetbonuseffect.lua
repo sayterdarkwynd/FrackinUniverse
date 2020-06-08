@@ -19,6 +19,7 @@ function init()
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
+	effectHandlerList.regenHandler=effect.addStatModifierGroup({})
 end
 
 function update(dt)	
@@ -30,9 +31,9 @@ function update(dt)
 			airJumpModifier = 1.12
 		})
 		checkWeapons()
-		if status.resourcePercentage("health") < 0.5 then
-		  status.modifyResourcePercentage("health", (((status.resourcePercentage("health") < 0.25) and 0.02) or 0.01)*dt)
-		end
+		
+		
+		setRegen((0.01)*(((status.resourcePercentage("health") < 0.5) and 1 or 0)+((status.resourcePercentage("health") < 0.25) and 1 or 0)))
 	end
 end
 

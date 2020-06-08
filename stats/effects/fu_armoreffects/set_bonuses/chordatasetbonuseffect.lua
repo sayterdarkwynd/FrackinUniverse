@@ -4,8 +4,6 @@ weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
---armorBonus={}
-
 armorEffect={
 	{ stat = "breathProtection", amount = 1.0 },
 	{ stat = "insanityImmunity", amount = 1.0 },
@@ -18,9 +16,7 @@ function init()
 	setSEBonusInit(setName)
 	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
-	--effectHandlerList.armorBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	--checkArmor()
 end
 
 function update(dt)
@@ -29,19 +25,10 @@ function update(dt)
 		status.removeEphemeralEffect("swimboost1")
 	else
 		checkWeapons()
-		--checkArmor()
 		status.addEphemeralEffect("swimboost1")
 	end
 end
---[[
-function checkArmor()
-	if (world.type() == "bog") or (world.type() == "swamp") then
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
-	else
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})
-	end
-end
-]]
+
 function checkWeapons()
 	local weapons=weaponCheck({"spear","shortspear"})
 	

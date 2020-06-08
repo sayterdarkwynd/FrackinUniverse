@@ -1,13 +1,13 @@
 function init()
-	if world.entityType(entity.id()) == "player" then
-		handleDarkStats()
-	else
-		animator.setParticleEmitterActive("smoke", false)
-	end
+	tryRun()
 	script.setUpdateDelta(1)
 end
 
 function update(dt)
+	tryRun()
+end
+
+function tryRun()
 	if world.entityType(entity.id()) == "player" then
 		handleDarkStats()
 		animator.setParticleEmitterActive("smoke", thisCanRun())
@@ -26,8 +26,8 @@ function handleDarkStats(terminate)
 	darkpriority=config.getParameter("darkpriority",1)
 
 	if not terminate then
-		local dP=status.statusProperty("darkpriority")
-		local dL=status.statusProperty("darklevel")
+		local dP=status.statusProperty("darkpriority") or 0
+		local dL=status.statusProperty("darklevel") or 0
 		if dL<darklevel then
 			status.setStatusProperty("darklevel",darklevel)
 			dL=darklevel
@@ -45,7 +45,7 @@ function handleDarkStats(terminate)
 end
 
 function thisCanRun()
-	local dP=status.statusProperty("darkpriority")
-	local dL=status.statusProperty("darklevel")
+	local dP=status.statusProperty("darkpriority") or 0
+	local dL=status.statusProperty("darklevel") or 0
 	return ((dP==darkpriority) and (dL==darklevel))
 end

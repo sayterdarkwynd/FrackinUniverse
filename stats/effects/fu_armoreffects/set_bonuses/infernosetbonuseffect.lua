@@ -31,8 +31,7 @@ function update(dt)
 	end
 end
 
-function 
-	checkWeapons()
+function checkWeapons()
 	local weapons=weaponCheck({"flamethrower"})
 	
 	if weapons["either"] then

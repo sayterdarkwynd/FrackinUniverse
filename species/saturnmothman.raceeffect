@@ -1,0 +1,104 @@
+{
+	"stats": [
+//a simple blend of the Thaumoths' and Shadows' effects. Note: the Mothman species is NPC only.
+		{
+			"stat": "maxHealth",
+			"baseMultiplier": 1.10
+		},	
+		{
+			"stat": "maxEnergy",
+			"baseMultiplier": 1.05
+		},		
+		{
+			"stat": "physicalResisance",
+			"amount": -0.10
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": 0.30
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.30
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.35
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": -0.25
+		},
+		{
+			"stat": "shadowImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "darknessImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : [ { "ORGANIC" : false, "PLANT" : true, "HIGH_GLUCOSE" : true }, 
+			   { "MEAT" : true } ],
+	"controlModifiers": {
+		"airJumpModifier": 1.15
+	},
+
+	"envEffects": [{
+		"biomes": [
+			"shadow",
+			"penumbra",
+			"lightless",
+			"midnight",
+			"atropusdark",
+			"arborealdark",
+			"magmadark",
+			"volcanicdark",
+			"arcticdark",
+			"desertwastesdark",
+			"sulphuricdark"
+		],
+		"stats": [{
+				"stat": "critChance",
+				"baseMultiplier": 1.02
+			},
+			{
+				"stat": "maxEnergy",
+				"baseMultiplier": 1.15
+			}
+		]
+	}],
+
+	"weaponEffects": [
+			{
+			"weapons": ["wand","staff"],
+			"stats": [{
+				"stat": "protection",
+				"effectiveMultiplier": 1.2
+			}]
+		},
+		{
+			"weapons": ["rapier"],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.06
+			}]
+		},
+		{
+			"weapons": [ "crossbow","bow" ],
+			"stats": [{
+					"stat": "critChance",
+					"amount": 5
+				},
+				{
+					"stat": "critDamage",
+					"amount": 5
+				}
+			]
+		},
+		{
+			"weapons": ["scythe"],
+			"stats": [{"stat": "powerMultiplier","effectiveMultiplier": 1.12}]
+		}
+	]
+}

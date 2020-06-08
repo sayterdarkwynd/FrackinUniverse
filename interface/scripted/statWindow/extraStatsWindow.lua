@@ -8,14 +8,18 @@ function init()
 end
 
 function update()
+	-- Breath calculated separetly
 	local breatRegen = status.stat("breathRegenerationRate")
 	local breathRate = status.stat("breathDepletionRate")
 	local breathMax = status.stat("maxBreath")
+	
+	-- for stat, type in pairs(self.stats) do
 	for stat, type in pairs(self.data.stats) do
 		local value = status.stat(stat)
 		
 		-- Getting rid of the redundant .0's
-		if value % 1 == 0 then
+		local fraction = math.abs(math.floor(value) - value)
+		if fraction == 0 then
 			value = math.floor(value)
 		end
 		
@@ -37,7 +41,7 @@ function update()
 			
 		elseif type == "food" then
 			local foodVal=status.isResource("food") and status.resourceMax("food") or 0
-			if foodVal>0 then
+			if foodVal~=0 then
 				value = tostring(math.abs(shorten(1 / (value / status.resourceMax("food")) * 0.01)))
 				if value % 1 == 0 then
 					widget.setText(stat, math.floor(value))
@@ -47,7 +51,7 @@ function update()
 			else
 				widget.setText(stat, "0")
 			end
-		
+			
 		elseif type == "breath" then
 			breathRate = value
 			if breathMax > 0 then
@@ -65,9 +69,20 @@ function update()
 		local xPos = canvas:mousePosition()[1]
 		local yPos = canvas:mousePosition()[2]
 		for _, box in ipairs(self.data.tooltipBoxes) do
-			if xPos >= box.x1 and xPos <= box.x2 then
-				if yPos >= box.y1 and yPos <= box.y2 then
-					widget.setText("tooltip", box.tooltip)
+			if xPos >= box.x1 and xPos < box.x2 then
+				if yPos >= box.y1 and yPos < box.y2 then
+					local tooltip = box.tooltip
+					local length = string.len(tooltip)
+					if length >= 25 then
+						local findSpace = string.find(tooltip, " ", 25)
+						if findSpace and findSpace < length then
+							local firstHalf = string.sub(tooltip, 1, findSpace - 1)
+							local secondHalf = string.sub(tooltip, findSpace + 1, length)
+							tooltip = firstHalf.."\n"..secondHalf
+						end
+					end
+					widget.setText("tooltip", tooltip)
+					
 					self.lifespanCounter = self.data.tooltipLifespan
 					return
 				end
@@ -82,6 +97,7 @@ function update()
 	else
 		self.delayCounter = self.delayCounter - 1
 	end
+	
 end
 
 function average(num)
@@ -107,7 +123,7 @@ function shorten(val)
 	if type(val) == "number" then
 		if val > 9999 then
 			-- if its a 5 digit number, just let it overflow out of the box. Can't be reached naturaly, and cheaters can go fuck themselves
-			return math.floor(val + 0.5)
+			return average(val)
 		else
 			local str = tostring(val)
 			local dotPoint = string.find(str, "%.", 1)
@@ -122,6 +138,9 @@ function shorten(val)
 			
 			return str
 		end
+	elseif type(val) == "string" then
+		-- nothing yet
+		return val
 	else
 		return tostring(val)
 	end

@@ -1,12 +1,15 @@
+require "/scripts/effectUtil.lua"
+
 function init()
   script.setUpdateDelta(10)
 end
 
 function update(dt)
-  local distanceFromEntity = world.entityQuery(mcontroller.position(),60)
+  effectUtil.effectAllInRange("slimebioluminescence",60)
+  --[[local distanceFromEntity = world.entityQuery(mcontroller.position(),60)
   for key, value in pairs(distanceFromEntity) do
    world.sendEntityMessage(value,"applyStatusEffect","slimebioluminescence")
-  end
+  end]]
 end
 
 function uninit()

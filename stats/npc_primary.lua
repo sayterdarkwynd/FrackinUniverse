@@ -50,6 +50,12 @@ function applyDamageRequest(damageRequest)
   elseif damageRequest.damageType == "Environment" then
     return {}
   end
+  
+  if status.isResource("damageAbsorption") and status.resourcePositive("damageAbsorption") then
+    local damageAbsorb = math.min(damage, status.resource("damageAbsorption"))
+    status.modifyResource("damageAbsorption", -damageAbsorb)
+    damage = damage - damageAbsorb
+  end
 
   if damageRequest.hitType == "ShieldHit" and status.statPositive("shieldHealth") and status.resourcePositive("shieldStamina") then
     status.modifyResource("shieldStamina", -damage / status.stat("shieldHealth"))

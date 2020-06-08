@@ -4,7 +4,7 @@ function init()
   	self.valBonus = config.getParameter("valBonus", 1)
   	self.baseVal = config.getParameter("baseVal", 1)    	
 	self.timer = config.getParameter("timer", 1)	
-	species = world.entitySpecies(entity.id())
+	--species = world.entitySpecies(entity.id())
 	self.randVal = self.baseVal * self.valBonus + math.random(1,4)
 	script.setUpdateDelta(fTickRate) 
 end

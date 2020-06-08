@@ -1,22 +1,36 @@
 {
-  "itemName": "itahead",
-  "inventoryIcon": "itahead.png",
-  "category": "food",
-  "rarity": "Common",
-  "price": 5,
+	"itemName": "itahead",
+	"inventoryIcon": "itahead.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "tooltipKind": "food",
-  "description": "^pink;Poison ^cyan;Immunity ^gray;(^white;1m^gray;)\n^pink;Bee Stings^gray;, ^pink;Bio-Ooze^gray;, ^pink;Pus^gray;, ^pink;Slime ^cyan;Immunity  ^gray;(^white;5m^gray;)^reset;",
-  "shortdescription": "Ita Flower Head",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immunity: Poison & 25% Poison Res^reset;, ^cyan;Immunity ^reset;: Bee Stings, Bio-Ooze, Pus, Slime: 1m",
+	"shortdescription": "Ita Flower Head",
 
-  "effects": [
-    [
-      "poisonblock",
-      "beestingimmunity",
-      "biooozeimmunity",
-      "pusimmunity",
-      "slimestickimmunity"
-    ]
-  ],
-  "blockingEffects": ["antidote"]
+	"effects": [
+		[{
+				"effect": "poisonblock",
+				"duration": 60
+			},
+			{
+				"effect": "beestingimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "biooozeimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "pusimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "slimestickimmunity",
+				"duration": 60
+			}
+		]
+	],
+	"blockingEffects": ["antidote"]
 }

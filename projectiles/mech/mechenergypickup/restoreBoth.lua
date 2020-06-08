@@ -31,7 +31,7 @@ function update(dt)
           world.sendEntityMessage(self.targetEntity, "restoreHealth", self.restoreBase, self.restorePercentage)
         end
         if (self.restoreBase2 > 0) or (self.restorePercentage2 > 0) then
-	  world.sendEntityMessage(self.targetEntity, "restoreEnergy", self.restoreBase2, self.restorePercentage2)        
+	        world.sendEntityMessage(self.targetEntity, "restoreEnergy", self.restoreBase2, self.restorePercentage2)        
         end
 
         self.pickedUp = true

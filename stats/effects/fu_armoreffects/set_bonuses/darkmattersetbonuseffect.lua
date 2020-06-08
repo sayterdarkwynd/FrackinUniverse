@@ -16,7 +16,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
-		status.modifyResourcePercentage("health", 0.004 * dt)
+		setRegen(0.004)
 	end
 end

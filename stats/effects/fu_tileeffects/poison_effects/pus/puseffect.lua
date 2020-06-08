@@ -1,3 +1,5 @@
+require "/scripts/effectUtil.lua"
+
 function init()
   script.setUpdateDelta(5)
   self.tickTime = 3.0
@@ -24,15 +26,17 @@ function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
   animator.setParticleEmitterActive("drips", true)
   if entity.entityType()=="player" then
-  local statusTextRegion = { 0, 1, 0, 1 }
-  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-  animator.burstParticleEmitter("statustext")
+	  local statusTextRegion = { 0, 1, 0, 1 }
+	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+	  animator.burstParticleEmitter("statustext")
   end
   
-  local distanceFromEntity = world.entityQuery(mcontroller.position(),60)
+  --because really, applying it to every creature in 60 tiles is just wasteful and stupid
+  effectUtil.effectSelf("slimebioluminescence")
+  --[[local distanceFromEntity = world.entityQuery(mcontroller.position(),60)
   for key, value in pairs(distanceFromEntity) do
    world.sendEntityMessage(value,"applyStatusEffect","slimebioluminescence")
-  end
+  end]]
   
 end
 
