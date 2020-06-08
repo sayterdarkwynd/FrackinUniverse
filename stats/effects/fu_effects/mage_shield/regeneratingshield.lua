@@ -6,9 +6,22 @@ function init()
 	self.damageListener = damageListener("damageTaken", checkDamage)
 	self.shieldCap=config.getParameter("shieldCap",1.0)
 	self.resource=config.getParameter("resource","health")
-	self.shieldBlockTime=config.getParameter("shieldBlockTime",3)
+	
 	self.shieldRegenRate=config.getParameter("shieldRegenRate",0.1)
-	self.shieldBlockTimer=0.0
+	local useSpecialRegen=config.getParameter("useSpecialRegen")
+	if useSpecialRegen then
+		local specialRegenStat=config.getParameter("specialRegenStat","energyRegenPercentageRate")
+		self.shieldRegenRate=self.shieldRegenRate*status.stat(specialRegenStat)
+	end
+	
+	self.shieldBlockTime=config.getParameter("shieldBlockTime",3)
+	local useSpecialBlock=config.getParameter("useSpecialBlock")
+	if useSpecialBlock then
+		local specialBlockStat=config.getParameter("specialBlockStat","energyRegenBlockTime")
+		self.shieldBlockTime=self.shieldBlockTime*status.stat(specialBlockStat)
+	end
+	
+	self.shieldBlockTimer=self.shieldBlockTime
 end
 
 function update(dt) 
