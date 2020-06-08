@@ -7,11 +7,50 @@ end
 function initCommonParameters()
   self.energyCost = config.getParameter("energyCostPerSecond")
   self.bombTimer = 0
-  self.conshakTimer = 0
+  self.conshakTimer = 0      
+  -- for status bar filling, below are required
+  self.playerId = entity.id() 
+  self.maxConshakValue = 500 
+  self.barName = "conshakBar"
+  self.barColor = {150,77,250,125}
+  self.timerRemoveConshakBar = 0   
 end
 
 function uninit()
   deactivate()
+end
+
+--display conshak bar
+function displayBar()
+  self.conshakPercent = self.conshakTimer / self.maxConshakValue
+  if self.conshakPercent > 1.0 then
+    self.conshakPercent = 1
+  end   
+
+  if self.conshakTimer < 50 then
+    self.barColor = {22,0,70,125}
+  end  
+  if self.conshakTimer > 50 then
+    self.barColor = {116,0,255,90}
+  end  
+  if self.conshakTimer > 150 then
+    self.barColor = {53,0,255,125}
+  end  
+  if self.conshakTimer > 250 then
+    self.barColor = {0,42,255,170}
+  end  
+  if self.conshakTimer > 350 then
+    self.barColor = {0,137,255,199}
+  end  
+  if self.conshakTimer > 450 then
+    self.barColor = {81,217,250,222}
+  end        
+
+  if (self.conshakTimer > 0) then
+    world.sendEntityMessage(self.playerId,"setBar","conshakBar",self.conshakPercent,self.barColor)
+  else
+    world.sendEntityMessage(self.playerId,"removeBar","conshakBar")
+  end
 end
 
 function getLight()
@@ -32,10 +71,11 @@ function checkStance()
     	animator.setParticleEmitterActive("conshak", false)
     else
       animator.playSound("conshakActivate")
+      world.sendEntityMessage(self.playerId,"removeBar","conshakBar")
     end
     if self.pressDown then    
        animator.setParticleEmitterActive("defenseStance", true)
-       animator.playSound("conshakCharge")
+       animator.playSound("conshakCharge")  
     else
       animator.setParticleEmitterActive("defenseStance", false)
       status.clearPersistentEffects("nightarconshak") 
@@ -44,6 +84,13 @@ function checkStance()
 end
 
 function update(args)
+   if (self.timerRemoveConshakBar >=25) then
+       world.sendEntityMessage(entity.id(),"removeBar","conshakBar")   --clear ammo bar  
+       self.timerRemoveConshakBar = 0
+   else
+       self.timerRemoveConshakBar = self.timerRemoveConshakBar + 1
+   end   
+
   local underground = undergroundCheck()
   local lightLevel = getLight()
 	
@@ -70,43 +117,43 @@ function update(args)
 	      self.bombTimer = math.max(0, self.bombTimer - args.dt)
 	    end
 	    if (self.pressDown) and not self.pressLeft and not self.pressRight and not self.pressUp and not self.pressJump then
-
 	      if (self.conshakTimer < 500) then
-		self.conshakTimer = self.conshakTimer + 1   
+          displayBar()
+		      self.conshakTimer = self.conshakTimer + 1          
 	      else
-		self.conshakTimer = 0
+		      self.conshakTimer = 0
+          displayBar()
 	      end
-
 	      status.setPersistentEffects("nightarconshak", {
-		{stat = "protection", effectiveMultiplier = 0.01},
-		{stat = "powerMultiplier", effectiveMultiplier = 0.01},
-		{stat = "maxEnergy", effectiveMultiplier = 0.05},
-		{stat = "breathDepletionRate", effectiveMultiplier = 0.25},
-		{stat = "breathRegenerationRate", effectiveMultiplier = 1.25},
-		{stat = "foodDelta", amount = 0.25}
-	      })
-
-	      animator.setParticleEmitterActive("defenseStance", true)
+      		{stat = "protection", effectiveMultiplier = 0.01},
+      		{stat = "powerMultiplier", effectiveMultiplier = 0.01},
+      		{stat = "maxEnergy", effectiveMultiplier = 0.05},
+      		{stat = "breathDepletionRate", effectiveMultiplier = 0.25},
+      		{stat = "breathRegenerationRate", effectiveMultiplier = 1.25},
+      		{stat = "foodDelta", amount = 0.25},
+          {stat = "chargingConshak", amount = self.conshakTimer}
+	      })  
+        status.addEphemeralEffects{{effect = "chargeupConshak", duration = 0.1}}
 	      if self.bombTimer == 0 then
-		checkStance()
+		      checkStance()
 	      end
 
 	      if (self.conshakTimer >= 500) then
-		animator.setParticleEmitterActive("defenseStance", false)
-		animator.setParticleEmitterActive("conshak", true)
-		local configBombDrop = { power = 0 }
-		world.spawnProjectile("activeConshakCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)    
-		status.addEphemeralEffects{{effect = "nightarconshakstat", duration = 60}}
-		status.addEphemeralEffects{{effect = "thorns", duration = 60}}
-		status.addEphemeralEffects{{effect = "detectmonster", duration = 60}}
-		self.conshakTimer = 0
+      		animator.setParticleEmitterActive("defenseStance", false)
+      		animator.setParticleEmitterActive("conshak", true)
+      		local configBombDrop = { power = 0 }
+      		world.spawnProjectile("activeConshakCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)    
+      		status.addEphemeralEffects{{effect = "nightarconshakstat", duration = 60}}
+      		status.addEphemeralEffects{{effect = "thorns", duration = 60}}
+      		status.addEphemeralEffects{{effect = "detectmonsternightar", duration = 60}}
+      		self.conshakTimer = 0
 	      end
 
 	    else
 	      animator.setParticleEmitterActive("defenseStance", false)
 	      animator.setParticleEmitterActive("conshak", false)
 	      status.clearPersistentEffects("nightarconshak")
-	      status.clearPersistentEffects("detectmonster")
+	      status.clearPersistentEffects("detectmonsternightar")
 	      self.conshakTimer = 0
 	    end   
 
@@ -137,6 +184,7 @@ function checkForceDeactivate(dt)
       self.forceTimer = nil
       status.clearPersistentEffects("nightarconshak")   
       self.conshakTimer = 0
+      world.sendEntityMessage(self.playerId,"removeBar","conshakBar")
     else
       attemptActivation()
     end
