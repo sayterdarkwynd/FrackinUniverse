@@ -1,7 +1,7 @@
 {
 	"stats":[
-		{ "stat":"maxHealth", "baseMultiplier":0.85 },
-		{ "stat":"maxEnergy", "baseMultiplier":1.15 },
+		{ "stat":"maxHealth", "effectiveMultiplier":0.85 },
+		{ "stat":"maxEnergy", "effectiveMultiplier":1.15 },
 		{ "stat":"fireResistance", "amount":-0.4 },
 		{ "stat":"iceResistance", "amount":0.3 },
 		{ "stat":"poisonResistance", "amount":-0.1 },
@@ -21,13 +21,13 @@
 		{
 			"weapons" : [ "assaultrifle", "sniperrifle" ],
 			"stats" : [
-				{ "stat" : "powerMultiplier", "baseMultiplier" : 1.10 }
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.10 }
 			]
 		},
 		{
 			"weapons" : [ "machinepistol", "pistol" ],
 			"stats" : [
-				{ "stat" : "energyRegenPercentageRate", "amount" : 0.25 }
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 0.25 }
 			]
 		},
 		{
@@ -43,7 +43,7 @@
 			"biomes":[ "cold", "arctic", "snow", "arcticoceanfloor", "tundra", "space", "moon", "asteroids", "barrenasteroids" ],
 			"stats":[
 				{ "stat":"protection", "amount" : 10 },
-				{ "stat" : "energyRegenPercentageRate", "amount" : 0.25 }
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 0.25 }
 			],
 			"controlModifiers":{
 				"speedModifier":1.15,
