@@ -1,8 +1,8 @@
 {
 	"stats": [
-		{ "stat": "maxHealth", "baseMultiplier": 0.88 },
-		{ "stat": "maxEnergy", "baseMultiplier": 0.95 },
-		{ "stat": "powerMultiplier", "baseMultiplier": 1.05 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.88 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 0.95 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
 		{ "stat": "poisonResistance", "amount": -0.4 },
 		{ "stat": "shadowResistance", "amount": 0.4 }
 	],
@@ -14,7 +14,7 @@
 		{
 			"biomes": [ "jungle", "thickjungle", "alien", "protoworld", "arboreal", "arborealdark" ],
 			"stats": [
-				{ "stat": "maxEnergy", "baseMultiplier": 1.1 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
 				{ "stat": "protection", "effectiveMultiplier": 1.05 }
 			]
 		}
@@ -22,7 +22,7 @@
 	"weaponEffects": [{
 			"weapons": [ "fist" ],
 			"stats": [
-				{ "stat": "powerMultiplier", "baseMultiplier": 1.12 }
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
 			]
 		},
 		{
@@ -37,8 +37,8 @@
 				[ "dagger", "dagger" ]
 			],
 			"stats": [
-				{ "stat": "powerMultiplier", "baseMultiplier": 1.03 },
-				{ "stat": "critDamage", "amount": 0.1 }
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.03 },
+				{ "stat": "critDamage", "amount": 0.01 }
 			]
 		},
 		{
@@ -53,7 +53,7 @@
 		{
 			"weapons": [ "pistol", "machinepistol" ],
 			"stats": [
-				{ "stat": "critDamage", "baseMultiplier": 1.2 },
+				{ "stat": "critDamage", "amount": 0.2 },
 				{ "stat": "critChance", "amount": 1 }
 			]
 		}
