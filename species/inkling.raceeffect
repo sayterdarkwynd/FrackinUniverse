@@ -2,11 +2,11 @@
 	"stats": [
 		{
 			"stat": "foodDelta",
-			"baseMultiplier": 1.06346
+			"baseMultiplier": 1.06
 		},
 		{
 			"stat": "maxEnergy",
-			"baseMultiplier": 1.1
+			"effectiveMultiplier": 1.1
 		},
 		{
 			"stat": "maxBreath",
@@ -42,7 +42,7 @@
 		},
 		{
 			"stat": "fallDamageMultiplier",
-			"baseMultiplier": 0.65
+			"effectiveMultiplier": 0.65
 		}
 	], // The squid kids like to eat fish, obviously
 	"diet" : [ { "ORGANIC" : false, "MEAT_RAW" : true, "FISH" : true } ],
@@ -55,15 +55,15 @@
 				"ocean",
 				"oceanfloor",
 				"flooded",
-                                "floodedoceanfloor"
+                "floodedoceanfloor"
 			],
 			"stats": [{
 					"stat": "maxHealth",
-					"baseMultiplier": 1.15
+					"effectiveMultiplier": 1.15
 				},
 				{
 					"stat": "maxEnergy",
-					"baseMultiplier": 1.15
+					"effectiveMultiplier": 1.15
 				},
 				{
 					"stat": "breathProtection",
@@ -71,7 +71,7 @@
 				},
 				{
 					"stat": "fallDamageMultiplier",
-					"baseMultiplier": 0
+					"effectiveMultiplier": 0
 				}
 			],
 			"controlModifiers": {
@@ -82,11 +82,11 @@
 			"biomes": "cold",
 			"stats": [{
 					"stat": "maxHealth",
-					"baseMultiplier": 0.9
+					"effectiveMultiplier": 0.9
 				},
 				{
 					"stat": "maxEnergy",
-					"baseMultiplier": 0.9
+					"effectiveMultiplier": 0.9
 				},
 				{
 					"stat": "energyRegenPercentageRate",
@@ -98,11 +98,11 @@
 			"biomes": "hot",
 			"stats": [{
 					"stat": "maxHealth",
-					"baseMultiplier": 1.05
+					"effectiveMultiplier": 1.05
 				},
 				{
 					"stat": "maxEnergy",
-					"baseMultiplier": 1.05
+					"effectiveMultiplier": 1.05
 				},
 				{
 					"stat": "energyRegenPercentageRate",
@@ -120,11 +120,11 @@
 			],
 			"stats": [{
 					"stat": "maxHealth",
-					"baseMultiplier": 1.1
+					"effectiveMultiplier": 1.1
 				},
 				{
 					"stat": "maxEnergy",
-					"baseMultiplier": 1.1
+					"effectiveMultiplier": 1.1
 				},
 				{
 					"stat": "breathProtection",
@@ -132,7 +132,7 @@
 				},
 				{
 					"stat": "fallDamageMultiplier",
-					"baseMultiplier": 0
+					"effectiveMultiplier": 0
 				}
 			]
 		},
@@ -144,15 +144,15 @@
 			],
 			"stats": [{
 					"stat": "maxHealth",
-					"baseMultiplier": 0.7
+					"effectiveMultiplier": 0.7
 				},
 				{
 					"stat": "maxEnergy",
-					"baseMultiplier": 0.7
+					"effectiveMultiplier": 0.7
 				},
 				{
 					"stat": "maxBreath",
-					"amount": 100
+					"amount": -100
 				}
 			]
 		}
@@ -164,31 +164,18 @@
 			],
 			"stats": [{
 					"stat": "powerMultiplier",
-					"baseMultiplier": 1.2
+					"effectiveMultiplier": 1.2
 				},
 				{
 					"stat": "maxEnergy",
-					"baseMultiplier": 1.15
+					"effectiveMultiplier": 1.15
 				}
 			]
 		},
 		{
 			"weapons": [
 				"sniperrifle",
-				"rifle"
-			],
-			"stats": [{
-					"stat": "critChance",
-					"amount": 2
-				},
-				{
-					"stat": "critDamage",
-					"amount": 5
-				}
-			]
-		},
-		{
-			"weapons": [
+				"rifle",
 				"grenadelauncher"
 			],
 			"stats": [{
@@ -197,7 +184,7 @@
 				},
 				{
 					"stat": "critDamage",
-					"amount": 5
+					"amount": 0.05
 				}
 			]
 		},
@@ -207,11 +194,11 @@
 			],
 			"stats": [{
 					"stat": "powerMultiplier",
-					"baseMultiplier": 1.05
+					"effectiveMultiplier": 1.05
 				},
 				{
 					"stat": "maxEnergy",
-					"baseMultiplier": 1.05
+					"effectiveMultiplier": 1.05
 				}
 			]
 		}
