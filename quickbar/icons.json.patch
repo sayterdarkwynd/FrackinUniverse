@@ -1,37 +1,23 @@
 [
-    { "op": "add", "path": "/items/frackinuniverse:status", "value": {
-        "label": "Character Status",
-        "icon": "/items/tools/inspectiontool/inspectionmode.png",
-        "action" : [ "pane", "/interface/scripted/statWindow/statWindow.config" ]
-    } },
-    { "op": "add", "path": "/items/frackinuniverse:questlist", "value": {
-        "label": "Quest List",
-        //"icon": "",
-        "action" : [ "pane", "/zb/questList/questList.config" ]
-    } },
-    { "op": "add", "path": "/items/frackinuniverse:research", "value": {
-        "label": "Research Tree",
-        "icon": "/items/tools/inspectiontool/inspectionmode.png",
-        "action" : [ "pane", "/zb/researchTree/researchTree.config" ]
-    } },
-    { "op": "add", "path": "/items/frackinuniverse:updates", "value": {
-        "label": "Updates",
-        "icon": "/interface/quest.png",
-        "action" : [ "pane", "/zb/updateInfoWindow/updateInfoWindow.config" ]
-    } },
-    { "op": "add", "path": "/items/frackinuniverse:mechfuel", "value": {
-        "label": "Mech Fuel",
-        "icon": "/interface/mechfuel/icon.png",
-        "action" : [ "pane", "/interface/mechfuel/mechfuel.config" ]
-    } },
-//custom codex by xan
+    {
+		"op": "add", "path": "/items/frackinuniverse:status", "value": {
+			"label": "Personal Tricorder",
+			"icon": "/items/tools/inspectiontool/inspectionmode.png",
+			"action" : [ "pane", "/interface/scripted/statWindow/statWindow.config" ]
+		} 
+	},
 	{
-		"op": "add",
-		"path": "/items/xcodex_customcodex",
-		"value": {
-			"label": "High-Fidelity Codex",
-			"icon": "/quickbar/logbook.png",
-			"action": [ "pane", "/interface/scripted/xcustomcodex/xcodexui.config" ]
+		"op": "add", "path": "/items/frackinuniverse:questlist", "value": {
+			"label": "Quest List",
+			//"icon": "",
+			"action" : [ "pane", "/zb/questList/questList.config" ]
+		}
+	},
+    {
+		"op": "add", "path": "/items/frackinuniverse:updates", "value": {
+			"label": "Updates",
+			"icon": "/interface/quest.png",
+			"action" : [ "pane", "/zb/updateInfoWindow/updateInfoWindow.config" ]
 		}
 	}
 ]

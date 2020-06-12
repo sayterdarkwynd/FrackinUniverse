@@ -2,19 +2,17 @@ Crits = {}
 
 function Crits:setCritDamage(damage)
     local critChance = config.getParameter("critChance", 1) + status.stat("critChance", 0)  -- Integer % chance to activate crit
-    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus", 0)     -- Flat damage bonus to critical hits
+    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus", 0)     --  % damage bonus to critical hits
     local critDamage = status.stat("critDamage", 0)  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
-
 	local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-
     -- Magnorbs get an inherent +1% crit chance
     if heldItem and root.itemHasTag(heldItem, "magnorb") then
         critChance = critChance + 1
     end
 
-	local crit = math.random(100) <= critChance            -- Chance out of 100
+	local crit = math.random(100) <= critChance -- Chance out of 100
 
-    -- Crit damage bonus is 50% + critDamage bonus, with a flat damage increase of critBonus
+    -- Crit damage bonus is 50% + critDamage%
 	damage = crit and (damage * (1.5 + critDamage) + critBonus) or damage -- Inherent 50% damage boost further increased by critBonus
 
 	if crit then
@@ -22,14 +20,12 @@ function Crits:setCritDamage(damage)
             -- exclude mining lasers
             if not root.itemHasTag(heldItem, "mininggun") or root.itemHasTag(heldItem, "bugnet") then
 
-                -- Glitch ability
-                if world.entitySpecies(activeItem.ownerEntityId()) == "glitch" and (root.itemHasTag(heldItem, "mace") or root.itemHasTag(heldItem, "axe") or root.itemHasTag(heldItem, "greataxe")) then
+				-- Glitch ability
+				local race = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
+                if race:succeeded() and race:result() == "glitch" and (root.itemHasTag(heldItem, "mace") or root.itemHasTag(heldItem, "axe") or root.itemHasTag(heldItem, "greataxe")) then
                     damage = damage + math.random(10) + 2  -- 1d10 + 2 bonus damage
                 end
-				
-				--disabled because eyesore visualfatigue
-                --status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
-				
+
                 -- *****************************************************************
                 --	weapon specific crit abilities!
                 -- *****************************************************************

@@ -1,32 +1,29 @@
+require "/scripts/vec2.lua"
+
 function init()
-  local alpha = math.floor(config.getParameter("alpha") * 255)
-  effect.setParentDirectives(string.format("?multiply=ffffff%02x", alpha))
-  effect.addStatModifierGroup({{stat = "invulnerable", amount = 1}})
-  effect.addStatModifierGroup({
-      {stat = "energyRegenPercentageRate", amount = -1},
-      {stat = "energyRegenBlockTime", effectiveMultiplier = 0}
-    })
-  script.setUpdateDelta(40)
+	local alpha = math.floor(config.getParameter("alpha") * 255)
+	effect.setParentDirectives(string.format("?multiply=ffffff%02x", alpha))
+	effect.addStatModifierGroup({{stat = "invulnerable", amount = 1}})
+	script.setUpdateDelta(10)
+	self.damageBonus=1.0+(getTechBonus()*0.01)
+	powerHandler=effect.addStatModifierGroup({{stat = "powerMultiplier", effectiveMultiplier = self.damageBonus}})
 end
 
-function applyTechBonus()
-  self.damageBonus = 1 + status.stat("phaseattackBonus",0) -- apply bonus from certain items and armor
+function getTechBonus()
+	return 1 + status.stat("phaseattackBonus",0)
 end
 
 function update(dt)
-  applyTechBonus()
-  mcontroller.controlModifiers({speedModifier = 0.75})
-  
-  self.powerModifier = status.resource("energy")/status.stat("maxEnergy")
-  if self.damageBonus > 1.0 then
-	  effect.addStatModifierGroup({
-	      {stat = "powerMultiplier", effectiveMultiplier = 2 * self.damageBonus - self.powerModifier}
-	  })    
-  else
-	  effect.addStatModifierGroup({
-	      {stat = "powerMultiplier", effectiveMultiplier = 2 - self.powerModifier}
-	  })    
-  end
+	mcontroller.controlModifiers({speedModifier = 0.75})
+	status.setResourcePercentage("energyRegenBlock", 1.0)
+	local cost=5
+	local vel=vec2.mag(mcontroller.velocity())/10.0
+	cost=cost+vel
+	cost=dt*((status.resourceMax("energy")*0.01*cost)+cost)
+	
+	if status.overConsumeResource("energy",cost) then
+		self.damageBonus=self.damageBonus*(1+(0.08*dt))
+	end
 
-  
+	effect.setStatModifierGroup(powerHandler,{{stat = "powerMultiplier", effectiveMultiplier = self.damageBonus}})
 end

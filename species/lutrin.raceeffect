@@ -1,0 +1,79 @@
+{	"stats": [
+		{ "stat": "maxFood", "effectiveMultiplier": 1.5 },
+		{ "stat": "foodDelta", "baseMultiplier": 2.0 },
+		{ "stat": "maxBreath", "amount": 2000 },
+		{ "stat": "breathDepletionRate", "baseMultiplier": 1.5 },
+		{ "stat": "breathRegenerationRate", "amount": 75 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.2 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 0.8 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 },
+		{ "stat": "physicalResistance",	"amount": 0.1 },
+		{ "stat": "iceResistance", "amount": 0.25 },
+		{ "stat": "fireResistance", "amount": -0.25 },
+		{ "stat": "poisonResistance", "amount": -0.1 },
+		{ "stat": "radioactiveResistance", "amount": -0.25 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 1.15 },
+		{ "stat": "wetImmunity", "amount": 1 }
+	],
+	// While these guys are carnivores and thusly shouldn't eat plants and should try for as fresh of a food as possible, their bodies are starting to adapt, so they can handle fruits.
+	"diet" : [{"ORGANIC": false, "MEAT_RAW": true, "FISH": true, "DAIRY": true, "EGG": true, "FRUIT": false },{"PLANT": true}],
+	"controlModifiers": { "speedModifier": 0.95 },
+	"envEffects": [
+		{
+			"biomes": ["alienforest", "bioluminescence", "birchforest", "bog", "bogunderground", "cloudforest", "clourful", "desertoasis", "eden", "extraswampmission", "flowerforest", "flowers", "forest", "giantflowers", "glacial", "hotsprings", "luminouscaves", "oasis", "pineforest", "prism", "rainbowforest", "snowyforest", "spring", "steamspring", "tabularasa", "wilderness"],
+			"stats": [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.1 }],
+			"controlModifiers": {"speedModifier": 1.0}
+		},
+		{
+			"biomes": ["arboreal", "arborealdark", "arborealunderground", "estuary", "estuarydark", "extraalienjungle", "jungle", "primevalforest", "thickjungle", "thickjungleunderground"],
+			"stats": [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.15 }],
+			"controlModifiers": {"speedModifier": 1.0}
+		},
+		{
+			"biomes": ["arctic", "arcticdark", "arcticoceanfloor", "breakwater", "coralreef", "coralreefdark", "deepseavent", "deepseaventdark", "extraoceanfloormission", "ffcoralcave", "flooded", "floodedoceanfloor", "fucoralcavern", "kelpforest", "kelpforestdark", "ocean", "oceanfloor", "tidewater", "tidewaterfloor", "tidewaterunderground"],
+			"stats": [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.2 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.2 }],
+			"controlModifiers": {"speedModifier": 1.05}
+		},
+		{
+			"biomes": ["aliendesert", "ashgarden", "badlands", "bonecaves", "bones", "cactiplace", "deadwood", "desert", "desertwastes", "desertwastesdark", "dryriverbed", "fftarpit", "geode", "metaljungle", "metallicunderground", "metalworks", "metalworks2", "metalworks3", "metalworks4", "metalworksunderground", "metalworksunderground2", "metalworksunderground3", "metalworksunderground4", "pitchfield", "protoworld", "protoworlddark", "protoworldunderground", "reddesert", "rust", "savannah", "tar", "tarball", "tarpit", "toxic", "toxicoceanfloor"],
+			"stats": [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 0.9 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.9 }],
+			"controlModifiers": {"speedModifier": 0.9}
+		},
+		{
+			"biomes": ["arboreal2", "arboreal2underground", "ffvolcanic", "hellfirefield", "infernus", "infernusdark", "infernusunderground", "magma", "magmaoceanfloor", "scorchedcity", "sulphuric", "sulphuricdark", "sulphuricmagma", "sulphuricocean", "sulphuricoceandark", "sulphuricoceanfloor", "sulphuricplain", "sulphuricunderground", "deepseaventsulphur", "volcanic"],
+			"stats": [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 0.8 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.8 }],
+			"controlModifiers": {"speedModifier": 0.9}
+		}
+	],
+	"weaponEffects": [
+		{
+			"weapons": ["fist"],
+			"stats": [
+				{"stat" : "powerMultiplier", "effectiveMultiplier" : 1.1},
+				{"stat" : "critChance", "amount" : 3}
+			]
+		},
+		{
+			"weapons": ["shortspear"],
+			"stats": [
+				{"stat" : "powerMultiplier", "effectiveMultiplier" : 1.1},
+				{"stat" : "protection", "effectiveMultiplier" : 1.1}]
+		},
+		{
+			"weapons": ["spear", "quarterstaff"],
+			"stats": [
+				{"stat" : "powerMultiplier", "effectiveMultiplier" : 1.2},
+				{"stat" : "protection", "effectiveMultiplier" : 1.2}]
+		}],
+	"special": ["swimboost2"]
+}

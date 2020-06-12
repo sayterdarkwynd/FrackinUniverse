@@ -51,7 +51,7 @@ function build(directory, config, parameters, level, seed)
   if builderConfig.elementalConfig then
     util.mergeTable(config, builderConfig.elementalConfig[elementalType])
   end
-  if config.altAbility and config.altAbility.elementalConfig then
+  if config.altAbility and config.altAbility.elementalConfig and config.altAbility.elementalConfig[elementalType] then
     util.mergeTable(config.altAbility, config.altAbility.elementalConfig[elementalType])
   end
 

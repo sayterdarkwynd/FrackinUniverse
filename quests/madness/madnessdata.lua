@@ -242,9 +242,9 @@ function randomEvent()
 		status.addEphemeralEffect("vulnerability",self.curseDuration_status) --p
 	    end 	    
 	    if self.randEvent == 27 then 
-	      local penaltyValue = math.random(6,40)
+	      local penaltyValue = 1.0-(math.random(6,40)/100.0)
 		  status.setPersistentEffects("madnessEffectsMain", {  
-			{stat = "fuCharisma", amount = status.stat("fuCharisma")-penaltyValue }
+			{stat = "fuCharisma", baseMultiplier = penaltyValue }
 		  })
 	    end  
 	    if self.randEvent == 28 then --your hunger total is random

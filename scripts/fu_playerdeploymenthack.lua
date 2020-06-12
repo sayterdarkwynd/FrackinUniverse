@@ -10,4 +10,11 @@ function init()
 	message.setHandler("player.availableTechs", player.availableTechs)
 	message.setHandler("player.enabledTechs", player.enabledTechs)
 	message.setHandler("player.shipUpgrades", player.shipUpgrades)
+	message.setHandler("player.shipUpgrades", player.shipUpgrades)
+	message.setHandler("player.equippedItem",fudeployhackEqItems)
+end
+
+function fudeployhackEqItems(...)
+	local dat={...}
+	return player.equippedItem(dat[3])
 end

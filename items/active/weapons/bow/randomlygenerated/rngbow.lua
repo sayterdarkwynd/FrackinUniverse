@@ -1,6 +1,7 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
+require "/scripts/FRHelper.lua"
 
 function init()
   animator.setGlobalTag("paletteSwaps", config.getParameter("paletteSwaps", ""))
@@ -18,11 +19,18 @@ function init()
     self.weapon:addAbility(secondaryAttack)
   end
 
-  self.weapon:init()
+  self.weapon:init() 
 end
 
 function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
+  --*************************************
+  -- FU/FR ADDONS
+  setupHelper(self, "bow-update")
+  if self.helper then
+    self.helper:loadWeaponScripts("bow-update")
+  end
+  --************************************** 
 end
 
 function uninit()

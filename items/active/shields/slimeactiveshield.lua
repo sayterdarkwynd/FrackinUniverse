@@ -40,7 +40,7 @@ function init()
     setStance(self.stances.idle)
     
     self.blockCountShield = 0
-    species = world.entitySpecies(activeItem.ownerEntityId()) 
+    species = status.statusProperty("fr_race") or world.entitySpecies(activeItem.ownerEntityId())
     
    -- FU special effects
      -- health effects
@@ -86,7 +86,6 @@ function init()
  	  shieldBashPush = config.getParameter("shieldBashPush",0)
   -- end FU special effects
   
-  species = world.entitySpecies(activeItem.ownerEntityId())
   
   animator.setGlobalTag("directives", "")
   animator.setAnimationState("shield", "idle")

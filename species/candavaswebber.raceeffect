@@ -1,0 +1,50 @@
+{
+	"stats" : [
+		{ "stat" : "maxHealth", "effectiveMultiplier" : 1.1 },
+		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.2 },
+		{ "stat" : "radioactiveResistance", "amount" : -0.2 },
+		{ "stat" : "poisonResistance", "amount" : -0.3 },
+		{ "stat" : "fireResistance", "amount" : -0.4 },
+		{ "stat" : "shadowResistance", "amount" : 0.3 },
+		{ "stat" : "cosmicResistance", "amount" : 0.4 },
+		{ "stat" : "webstickImmunity", "amount" : 1 }
+	],
+	"diet" : [ { "HIGH_GLUCOSE" : true, "FRUIT" : true } ],
+	"controlModifiers" : {
+		"speedModifier" : 0.9
+	},
+	"envEffects" : [
+		{
+			"biomes" : [ "cold" ],
+			"stats" : [
+				{ "stat" : "physicalResistance", "amount" : 0.2 }
+			],
+			"controlModifiers" : {
+				"speedModifier" : 1.1
+			}
+		},
+		{
+			"biomes" : [ "aethersea" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.05 }
+			]
+		}
+	],
+	"special" : [
+		"candavaswebberglow"
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [ "staff" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.05 }
+			]
+		},
+		{
+			"weapons" : [ "quarterstaff", "energy" ],
+			"stats" : [
+				{ "stat" : "critChance", "amount" : 3 }
+			]
+		}
+	]
+}

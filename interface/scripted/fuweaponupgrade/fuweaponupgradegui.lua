@@ -68,9 +68,15 @@ end
 
 function populateItemList(forceRepop)
 	local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon")
+	local buffer = {}
 	for i = 1, #upgradeableWeaponItems do
-		upgradeableWeaponItems[i].count = 1
+		if not checkWorn(upgradeableWeaponItems[i]) then
+			upgradeableWeaponItems[i].count = 1
+			table.insert(buffer,upgradeableWeaponItems[i])
+		end
 	end
+	upgradeableWeaponItems=buffer
+	buffer={}
 	
 	widget.setVisible("emptyLabel", #upgradeableWeaponItems == 0)
 	
@@ -158,11 +164,22 @@ function doUpgrade()
 	end
 end
 
+function checkWorn(item)
+	for _,slot in pairs({"head", "chest", "legs", "back", "headCosmetic", "chestCosmetic", "legsCosmetic", "backCosmetic"}) do
+		local compTo=player.equippedItem(slot)
+		if compare(compTo,item) then return true end
+	end
+	return false
+end
+
 function upgrade(fullUpgrade)
 	local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
 	local upgradeItem = self.upgradeableWeaponItems[selectedData.index]
 	
 	if upgradeItem then
+		if checkWorn(upgradeItem) then
+			return
+		end
 		local consumedItem = player.consumeItem(upgradeItem, false, true)
 		if consumedItem then
 			local consumedCurrency = player.consumeCurrency("essence", (fullUpgrade and selectedData.priceMax or selectedData.price))

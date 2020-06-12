@@ -1,16 +1,31 @@
 require "/scripts/status.lua"
 
 function init()
+	if not status.isResource("damageAbsorption") then return end
 	if not trackerHandler then trackerHandler=effect.addStatModifierGroup({}) end
 	self.damageListener = damageListener("damageTaken", checkDamage)
 	self.shieldCap=config.getParameter("shieldCap",1.0)
 	self.resource=config.getParameter("resource","health")
-	self.shieldBlockTime=config.getParameter("shieldBlockTime",3)
+	
 	self.shieldRegenRate=config.getParameter("shieldRegenRate",0.1)
-	self.shieldBlockTimer=0.0
+	local useSpecialRegen=config.getParameter("useSpecialRegen")
+	if useSpecialRegen then
+		local specialRegenStat=config.getParameter("specialRegenStat","energyRegenPercentageRate")
+		self.shieldRegenRate=self.shieldRegenRate*status.stat(specialRegenStat)
+	end
+	
+	self.shieldBlockTime=config.getParameter("shieldBlockTime",3)
+	local useSpecialBlock=config.getParameter("useSpecialBlock")
+	if useSpecialBlock then
+		local specialBlockStat=config.getParameter("specialBlockStat","energyRegenBlockTime")
+		self.shieldBlockTime=self.shieldBlockTime*status.stat(specialBlockStat)
+	end
+	
+	self.shieldBlockTimer=self.shieldBlockTime
 end
 
 function update(dt) 
+	if not status.isResource("damageAbsorption") then return end
 	self.damageListener:update()
 	local capCalc=self.shieldCap*status.resourceMax(self.resource)
 	local shieldPercent=status.resource("damageAbsorption") / capCalc
@@ -31,6 +46,7 @@ function update(dt)
 end
 
 function uninit()
+	if not status.isResource("damageAbsorption") then return end
 	status.modifyResource("damageAbsorption", - status.resource("damageAbsorption"))
 	if trackerHandler then effect.removeStatModifierGroup(trackerHandler) end
 end

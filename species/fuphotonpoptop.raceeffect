@@ -1,0 +1,69 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.15
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 0.88
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.4
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.4
+		},
+		{
+			"stat": "grit",
+			"amount": 0.25
+		},
+		{
+			"stat": "liquidnitrogenImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "iceslipImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "iceStatusImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "omnivore",
+	"controlModifiers": {
+		"speedModifier": 1.05
+	},
+	"weaponScripts": [{
+		"script": "/scripts/fr_weaponscripts/freebonus.lua",
+		"contexts": [
+			"gun-init"
+		],
+		"args": {
+			"stats": [{
+					"stat": "powerMultiplier",
+					"amount": 0.05
+				},
+				{
+					"stat": "critDamage",
+					"amount": 0.05
+				}
+			]
+		}
+	}],
+	"envEffects": [{
+		"biomes": "cold",
+		"stats": [{
+				"stat": "maxHealth",
+				"effectiveMultiplier": 1.15
+			},
+			{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 1.15
+			}
+		]
+	}]
+}

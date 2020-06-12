@@ -1,14 +1,19 @@
 {
-  "itemName": "pekkit",
-  "inventoryIcon": "pekkiticon.png",
-  "category": "food",
-  "price": 5,
-  "rarity": "Common",
+	"itemName": "pekkit",
+	"inventoryIcon": "pekkiticon.png",
+	"category": "food",
+	"price": 5,
+	"rarity": "Common",
 
-  "tooltipKind": "food",
-  "description": "^cyan;+^white;200% ^pink;Ice ^cyan;Thorns ^gray;(^white;1m^gray;)^reset;",
-  "shortdescription": "Pekkit",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;200% Ice Thorns^reset;: 1m",
+	"shortdescription": "Pekkit",
 
-  "learnBlueprintsOnPickup": ["pekkitfreeze_freezegrenade"],
-  "effects": [["iceburst"]]
+	"learnBlueprintsOnPickup": ["pekkitfreeze_freezegrenade"],
+	"effects": [
+		[{
+			"effect": "iceburst",
+			"duration": 60
+		}]
+	]
 }

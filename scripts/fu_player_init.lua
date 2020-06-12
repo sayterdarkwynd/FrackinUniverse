@@ -19,6 +19,7 @@ function init()
 		end
 		return false
 	end)
+	if not status.statusProperty("fu_creationDate") then status.setStatusProperty("fu_creationDate",os.time()) end
 	
 	--[[
 	local goods = {"foodgoods", "medicalgoods", "electronicgoods", "militarygoods"}

@@ -1,14 +1,16 @@
+require "/scripts/effectUtil.lua"
+
 function init()
   script.setUpdateDelta(10)
 end
 
 function update(dt)
-
-  local distanceFromEntity = world.entityQuery(mcontroller.position(),12)
+  effectUtil.effectAllInRange("bizarreglow",12)
+  --[[local distanceFromEntity = world.entityQuery(mcontroller.position(),12)
 
   for key, value in pairs(distanceFromEntity) do
    world.sendEntityMessage(value,"applyStatusEffect","bizarreglow")
-  end
+  end]]
 
 end
 

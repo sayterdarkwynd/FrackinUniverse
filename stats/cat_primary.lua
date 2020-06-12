@@ -16,25 +16,22 @@ function init()
 	if catInit then
 		catInit()
 	end
-	
-	local species=world.entitySpecies(entity.id())
-	catMouthOffset()
-    if species=="cat" then
-		catMouthOffset()
-	elseif not world.entitySpecies(entity.id()) then
-		delayedInit=1
-    end
+	delayedInit=0
 end
 
 function update(dt)
-	catMouthOffset()
+	catMouthOffset(getSpecies())
 	if catUpdate then
 		catUpdate(dt)
 	end
 end
 
-function catMouthOffset()
-	local species=world.entitySpecies(entity.id())
+function getSpecies()
+	if not self.species then self.species=world.entitySpecies(entity.id()) end
+	return self.species
+end
+
+function catMouthOffset(species)
 	if delayedInit and delayedInit < 3 then
 		if species == "cat" then
 			status.setStatusProperty("mouthPosition", valueList["walkingLeft"])

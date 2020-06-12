@@ -1,27 +1,27 @@
 {
-  "itemName" : "plasmango",
-  "inventoryIcon" : "plasmango.png",
-  "category" : "food",
-  "rarity" : "Uncommon",
-  "price" : 42,
-  "eventCategory" : "eventCrop",
-  
-  "tooltipKind": "food",
-  "shortdescription" : "Plasmango",
-  "description" : "^cyan;+^white;25% ^cyan;Jump ^gray;(^white;40s^gray;)\n^red;Burning ^gray;(^white;10s^gray;)\n\"Everything is gonna be fine\" - non-Novakid prior to eating a Plasmango",
-  
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "effects" : [ [
-    {
-        "effect" : "jumpboostfood",
-        "duration" : 40
-    },
-    {
-        "effect" : "burning",
-        "duration" : 10
-    }
-  ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+	"itemName": "plasmango",
+	"inventoryIcon": "plasmango.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 42,
+	"eventCategory": "eventCrop",
+
+	"tooltipKind": "food",
+	"shortdescription": "Plasmango",
+	"description": "^yellow;^reset;^cyan;+20% Jump^reset;: 40s\n^yellow;^reset;^red;Burning^reset;: 10s\n\"Everything is gonna be fine\" - non-Novakid prior to eating a Plasmango",
+
+	"effects": [
+		[{
+				"effect": "jumpboostfood",
+				"duration": 40
+			},
+			{
+				"effect": "burning",
+				"duration": 10
+			}
+		]
+	],
+	"blockingEffects": [
+		"wellfed"
+	]
 }

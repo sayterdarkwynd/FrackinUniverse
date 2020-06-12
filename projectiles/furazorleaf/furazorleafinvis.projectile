@@ -1,0 +1,34 @@
+{
+  "projectileName" : "furazorleafinvis",
+  "image" : "furazorleafinvis.png",
+  "flippable" : true,
+  "animationCycle" : 0.35,
+  "frameNumber" : 4,
+  "timeToLive" : 0.15,
+  "emitters" : [ "poisondrip" ],
+  "damageKindImage" : "icon.png",
+  "physics" : "gas",
+  "speed" : 40,
+  "power" : 6,
+  "damagePoly" : [ [-8, 0], [-5, -5], [0, -8], [5, -5], [8, 0], [5, 5], [0, 8], [-5, 5] ],
+  "damageKind" : "poison",
+  "statusEffects" : [ "weakpoison" ],
+"animationCustom" : {
+    "sounds" : {
+        "fire" : ["/sfx/tools/atom.ogg", "/sfx/tools/atom5.ogg", "/sfx/tools/atom7.ogg"],
+        "altFire" : [ "/sfx/gun/grenade1.ogg" ]
+    }
+},
+
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "snotbubblepop",
+      "inheritDamageFactor" : 0.5
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/weapons/goop.ogg" ]
+    }
+  ]
+}

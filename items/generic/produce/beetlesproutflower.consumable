@@ -1,13 +1,24 @@
 {
-  "itemName": "beetlesproutflower",
-  "inventoryIcon": "beetlesproutflower.png",
-  "category": "food",
-  "rarity": "uncommon",
-  "price": 10,
+	"itemName": "beetlesproutflower",
+	"inventoryIcon": "beetlesproutflower.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
 
-  "tooltipKind": "food",
-  "description": "^cyan;+^white;30% ^cyan;Armor ^gray;(^white;2m^gray;)\n ^cyan;+^white;20% ^cyan;Shield Regen ^gray;(^white;30s^gray;)^reset;",
-  "shortdescription": "Beetle Sprout Flower",
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Defense x1.3^reset;, ^cyan;+20% Shield Regen^reset;: 1m",
+	"shortdescription": "Beetle Sprout Flower",
 
-  "effects": [["percentarmorboost30", "shieldregen1"]]
+	"effects": [
+		[
+			{
+				"effect": "shieldregen1",
+				"duration": 60
+			},
+			{
+				"effect": "percentarmorboost30",
+				"duration": 60
+			}
+		]
+	]
 }

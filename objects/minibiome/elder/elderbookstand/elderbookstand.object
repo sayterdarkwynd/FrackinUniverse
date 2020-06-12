@@ -1,50 +1,65 @@
 {
-  "objectName" : "elderbookstand",
-  "colonyTags" : ["madness","insanity","storage","elder"],
-  "rarity" : "legendary",
+	"objectName": "elderbookstand",
+	"colonyTags": ["madness", "insanity", "elder"],
+	"rarity": "legendary",
+	"category": "crafting",
 
-  "interactAction" : "OpenCraftingInterface",
-  "interactData" : {
-    "config" : "/interface/windowconfig/tomedais.config",
-    "filter" : [ "tomedais","tomedais1","tomedais2","tomedais3" ]
-  },  
-  
-  "description" : "Compel entities beyond understanding to gift you with knowledge.",
-  "shortdescription" : "Antediluvian Texts",
+	"interactAction": "OpenCraftingInterface",
+	"interactData": {
+		"config": "/interface/windowconfig/tomedais.config",
+		"filter": ["tomedais", "tomedais1", "tomedais2", "tomedais3"],
+		"paneLayoutOverride": {
+			"windowtitle": {
+				"title": "Antediluvian Texts"
+			}
+		}
+	},
 
-  "price" : 5120,
-  "lightColor" : [16, 23, 26],
+	"description": "Compel entities beyond understanding to gift you with knowledge.",
+	"shortdescription": "Antediluvian Texts",
 
-  "inventoryIcon" : "elderbookstandicon.png",
-  "orientations" : [
-    {
-    
-      "imageLayers" : [ { "image" : "elderbookstandlit.png:<color>", "fullbright" : true }, { "image" : "elderbookstand.png:<color>" } ],
-      "flipImages" : true,
-      "direction" : "left",
-      "lightPosition" : [-1, 1],
+	"price": 5120,
+	"lightColor": [16, 23, 26],
 
-      "imagePosition" : [-16, 0],
-      "frames" : 1,
-      "animationCycle" : 1.0,
+	"inventoryIcon": "elderbookstandicon.png",
+	"orientations": [{
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
-    },
-    {
-    
-      "imageLayers" : [ { "image" : "elderbookstandlit.png:<color>", "fullbright" : true }, { "image" : "elderbookstand.png:<color>" } ],
-      "direction" : "right",
-      "lightPosition" : [0, 1],
+			"imageLayers": [{
+				"image": "elderbookstandlit.png:<color>",
+				"fullbright": true
+			}, {
+				"image": "elderbookstand.png:<color>"
+			}],
+			"flipImages": true,
+			"direction": "left",
+			"lightPosition": [-1, 1],
 
-      "imagePosition" : [-16, 0],
-      "frames" : 1,
-      "animationCycle" : 1.0,
+			"imagePosition": [-16, 0],
+			"frames": 1,
+			"animationCycle": 1.0,
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
-    }
-  ]
+			"spaceScan": 0.1,
+			"anchors": ["bottom"],
+			"collision": "platform"
+		},
+		{
+
+			"imageLayers": [{
+				"image": "elderbookstandlit.png:<color>",
+				"fullbright": true
+			}, {
+				"image": "elderbookstand.png:<color>"
+			}],
+			"direction": "right",
+			"lightPosition": [0, 1],
+
+			"imagePosition": [-16, 0],
+			"frames": 1,
+			"animationCycle": 1.0,
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"],
+			"collision": "platform"
+		}
+	]
 }

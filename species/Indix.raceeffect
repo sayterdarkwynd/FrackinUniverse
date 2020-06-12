@@ -1,0 +1,85 @@
+{
+	"stats": [{
+			"stat": "noFood",
+			"amount": 1
+		},
+		{
+			"stat": "breathProtection",
+			"amount": 1
+		},
+		{
+			"stat": "foodDelta",
+			"effectiveMultiplier": 0
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.25
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": -0.25
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.4
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "radioactiveResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.2
+		}
+	], // Indix don't eat and therefore can't eat anything
+	"diet" : [ {}, { "ORGANIC" : true, "INORGANIC" : true, "ROBOT_PLANT" : true } ],
+	"controlModifiers": {
+		"speedModifier": 1.15
+	},
+	"envEffects": [],
+	"special": [
+		"indixregen","indixfoodhandler"
+	],
+	"weaponEffects": [
+		{
+			"weapons": [
+				"machinepistol"
+			],
+			"stats": [{
+					"stat": "critDamage",
+					"amount": 0.25
+				},
+				{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.1
+				}
+			]
+		},
+		{
+			"weapons": [
+				"dagger","assaultrifle","whipblade"
+			],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.1
+				},
+				{
+					"stat": "critChance",
+					"amount": 2
+				}
+			]
+		}
+	]
+}
