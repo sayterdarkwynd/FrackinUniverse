@@ -18,6 +18,10 @@ function init()
 		self.healthRangeLoConfig = self.specialConfig.healthRangeLo or nil
     end
 	
+	self.healthRangeHi = self.healthRangeHiConfig or config.getParameter("healthRangeHi")
+	self.healthRangeMi = self.healthRangeMiConfig or config.getParameter("healthRangeMi")
+	self.healthRangeLo = self.healthRangeLoConfig or config.getParameter("healthRangeLo")
+	
 	self.powerMod = 1
 	self.protectionMod = 1
 	self.critMod = 0
@@ -27,51 +31,36 @@ end
 function update(dt)
     if not didit then init() end
 
-    -- check their existing health levels
-	self.healthMin = status.resource("health")
-	self.healthMax = status.stat("maxHealth")
-
-	-- ranges at which the effects start kicking in.
-    local healthRangeHi = self.healthRangeHiConfig or config.getParameter("healthRangeHi")
-	local healthRangeMi = self.healthRangeMiConfig or config.getParameter("healthRangeMi")
-	local healthRangeLo = self.healthRangeLoConfig or config.getParameter("healthRangeLo")
-	self.healthRangeHi = (self.healthMax * healthRangeHi)
-	self.healthRangeMi = (self.healthMax * healthRangeMi)
-	self.healthRangeLo = (self.healthMax * healthRangeLo)
-
+    -- check their existing health level
+	local healthPcnt=status.resourcePercentage("health")
+	
 	--calculate the bonuses that need to be applied
-	if self.healthMin <= self.healthRangeLo then
+	if healthPcnt <= self.healthRangeLo then
 		self.powerMod=1.15
 		self.protectionMod=0.9
 		self.critMod=5
-	elseif self.healthMin <= self.healthRangeMi then
+	elseif healthPcnt <= self.healthRangeMi then
 		self.powerMod=1.10
 		self.protectionMod=0.95
 		self.critMod=2
-	elseif self.healthMin <= self.healthRangeHi then
+	elseif healthPcnt <= self.healthRangeHi then
 		self.powerMod=1.05
 		self.protectionMod=1
 		self.critMod=0
 	end
-		-- make sure it doesn't get wonky by setting limits
-    if (self.powerMod) < 1 then
-        self.powerMod = 1
-	elseif (self.powerMod) >= 1.15 then  -- max 15%
-        self.powerMod = 1.15
-	elseif (self.protectionMod) <= 0.9 then  -- max -10%
-        self.protectionMod = 0.9
-	elseif (self.critMod) >= 5 then  -- max 5
-        self.critMod = 5
-	end
-
+	
+	-- make sure it doesn't get wonky by setting limits
+	self.powerMod=math.min(math.max(1,self.powerMod),1.15)
+	self.protectionMod=math.min(math.max(1,self.protectionMod),0.9)
+	self.critMod=math.min(math.max(0,self.critMod),5)
 
     -- lucario should gain bonuses only when under a certain threshold
-	if (self.healthMin > self.healthRangeHi) then
+	if (healthPcnt > self.healthRangeHi) then
         status.clearPersistentEffects("lucarioAuraBerserk")
 	else
         status.setPersistentEffects("lucarioAuraBerserk", {
-            {stat = "powerMultiplier", baseMultiplier = self.powerMod },
-            {stat = "protection", baseMultiplier = self.protectionMod },
+            {stat = "powerMultiplier", effectiveMultiplier = self.powerMod },
+            {stat = "protection", effectiveMultiplier = self.protectionMod },
             {stat = "critChance", amount = self.critMod }
         })
     end
