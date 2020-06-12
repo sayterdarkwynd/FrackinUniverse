@@ -1,35 +1,14 @@
 require "/scripts/kheAA/transferUtil.lua"
 
-local recipes =
-{
-
---liquids
-{inputs = { solidfuel=100 }, outputs = { precursorgrease=1 }, time = 10.0},
-{inputs = { liquidfuel=200 }, outputs = { precursorgrease=1 }, time = 10.0},
-{inputs = { toxicwaste=100 }, outputs = { precursorgrease=1 }, time = 10.0},
-{inputs = { irradiumbar=5 }, outputs = { precursorfluid=1 }, time = 40.0},
-{inputs = { liquidirradium=25 }, outputs = { precursorfluid=1 }, time = 30.0},
-{inputs = { supermatter=20 }, outputs = { precursorgel=2 }, time = 15.0},
-{inputs = { neptuniumrod=30 }, outputs = { precursorfluid=1 }, time = 70.0},
-{inputs = { thoriumrod=27 }, outputs = { precursorfluid=1 }, time = 60.0},
-{inputs = { uraniumrod=25 }, outputs = { precursorfluid=1 }, time = 40.0},
-{inputs = { plutoniumrod=22 }, outputs = { precursorfluid=1 }, time = 50.0},
-{inputs = { enricheduranium=10 }, outputs = { precursorfluid=2 }, time = 30.0},
-{inputs = { enrichedplutonium=8}, outputs = { precursorfluid=2 }, time = 30.0},
-{inputs = { solariumstar=15 }, outputs = { precursorfluid=2 }, time = 30.0},
-{inputs = { ultronium=1 }, outputs = { precursorfluid=5 }, time = 12.0},
-{inputs = { precursorfluid=50 }, outputs = { essence=1 }, time = 20.0},
-{inputs = { crunchychick=1 }, outputs = { essence=5 }, time = 10.0},
-{inputs = { crunchychickdeluxe=1 }, outputs = { essence=50 }, time = 10.0},
-{inputs = { crunchychickevil=1 }, outputs = { essence=100 }, time = 10.0}
--- should have precursor resources crafted here, too
-}
+local recipes = {}
 
 function init()
-    self.timer = 1
+	recipes = config.getParameter("recipeTable")
+    storage.timer = 1
     self.mintick = 1
-    self.crafting = false
-    self.output = {}
+	storage.crafting = storage.crafting or false
+	storage.output = storage.output or {}
+	storage.inputs = storage.inputs or {}
 	transferUtil.init()
 end
 
@@ -114,10 +93,10 @@ function update(dt)
 	else
 		deltaTime=deltaTime+dt
 	end
-    self.timer = self.timer - dt
-    if self.timer <= 0 then
-        if self.crafting then
-            for k,v in pairs(self.output) do
+    storage.timer = storage.timer - dt
+    if storage.timer <= 0 then
+        if storage.crafting then
+            for k,v in pairs(storage.output) do
                 local leftover = {name = k, count = v}
                 local slots = getOutSlotsFor(k)
                 for _,i in pairs(slots) do
@@ -131,14 +110,15 @@ function update(dt)
                     world.spawnItem(leftover.name, entity.position(), leftover.count)
                 end
             end
-            self.crafting = false
-            self.output = {}
-            self.timer = self.mintick --reset timer to a safe minimum
+            storage.crafting = false
+            storage.output = {}
+			storage.inputs = {}
+            storage.timer = self.mintick --reset timer to a safe minimum
             animator.setAnimationState("samplingarrayanim", "idle")
         end
 
-        if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
-            if not startCrafting(getValidRecipes(getInputContents())) then self.timer = self.mintick end --set timeout if there were no recipes
+        if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
+            if not startCrafting(getValidRecipes(getInputContents())) then storage.timer = self.mintick end --set timeout if there were no recipes
         end
     end
 end
@@ -146,18 +126,31 @@ end
 
 
 function startCrafting(result)
-    if next(result) == nil then return false
-    else _,result = next(result)
+	if next(result) == nil then return false
+	else _,result = next(result)
 
-        for k,v in pairs(result.inputs) do
-            if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
-        end
+		for k,v in pairs(result.inputs) do
+			local buffer = {item = k , count = v}
+			if world.containerConsume(entity.id(), buffer) then
+				storage.inputs = {item = k , count = v}
+			else
+				return false
+			end
+		end
 
-        self.crafting = true
-        self.timer = result.time
-        self.output = result.outputs
-        animator.setAnimationState("samplingarrayanim", "working")
+		storage.crafting = true
+		storage.timer = result.time
+		storage.output = result.outputs
+		animator.setAnimationState("samplingarrayanim", "working")
 
-        return true
-    end
+		return true
+	end
+end
+
+function die()
+	--safety for fringe cases
+	if storage.inputs then
+		world.spawnItem(storage.inputs,entity.position())
+	end
+	storage.inputs=nil
 end
