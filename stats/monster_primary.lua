@@ -105,10 +105,10 @@ function applyDamageRequest(damageRequest)
 	--instead, we take a smarter workaround that functions, albeit annoyingly
 	if string.find(damageRequest.damageSourceKind,"bow") and not (damageRequest.damageSourceKind=="bow") and status then
 		status.setResource("health",1)
-		--sb.logInfo("monster primary: Damage: %s",damage)
-		--we pass the damage value (float) on to the status effect via duration.
-		--sb.logInfo("Damage %s",damage)
-		status.addEphemeralEffect("fuhunterdamage",damage,damageRequest.sourceEntityId)
+		--set resistances to nil so at least the damage number is represented properly
+		status.addEphemeralEffect("vulnerability",1,damageRequest.sourceEntityId)
+		--then spawn a projectile and gib 'em.
+		world.spawnProjectile("invisibleprojectile", entity.position(), entity.id(),nil,nil,{damageType="IgnoresDef",damageKind="bow",damageTeam={type="indiscriminate"},power=damage})
 		return {}
 	end
   end
