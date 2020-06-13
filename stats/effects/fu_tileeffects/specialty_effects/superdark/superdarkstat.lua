@@ -27,7 +27,7 @@ end
 
 function setParticleConfig()
 	particleConfig={type = "textured",position = {0, 0},velocity = {0, 0},approach = {0, 0},destructionAction = "fade",size = 1,layer = "front",variance = {initialVelocity = {0, 0}}}
-	dt=script.updateDt()
+	local dt=script.updateDt()
 	particleConfig.timeToLive = dt*10.0
 	particleConfig.destructionTime = dt*1.0
 	particleConfig.image=particleList[darklevel]

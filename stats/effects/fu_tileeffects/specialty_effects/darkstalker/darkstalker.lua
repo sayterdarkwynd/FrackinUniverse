@@ -11,7 +11,7 @@ function init()
 	activateVisualEffects()
 	self.timers = {}
 
-	local bounds = mcontroller.boundBox()
+	--local bounds = mcontroller.boundBox()
 	setParticleConfig()
 	script.setUpdateDelta(1)
 	effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", baseMultiplier = 0.7 }})
@@ -49,7 +49,7 @@ end
 
 function setParticleConfig()
 	particleConfig={type = "textured",image = "/animations/blur/blurshadow.png",velocity = {0, -2},approach = {15, 15},destructionAction = shrink,size = 1,layer = "front",variance = {initialVelocity = {1.0, 1.0}}}
-	dt=script.updateDt()
+	local dt=script.updateDt()
 	particleConfig.timeToLive = dt*15
 	particleConfig.destructionTime = dt*15.0
 end
