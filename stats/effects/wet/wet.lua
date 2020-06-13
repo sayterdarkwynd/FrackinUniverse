@@ -21,7 +21,7 @@ function update(dt)
 	if self.frEnabled and (self.species == "hylotl") then
 		self.foodRate = 0.001
 		if status.isResource("food") then
-			sb.logInfo("wet")
+			--sb.logInfo("wet")
 			status.modifyResourcePercentage("food", self.foodRate * dt)
 		end
 	end
