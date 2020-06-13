@@ -95,12 +95,22 @@ function applyDamageRequest(damageRequest)
 
   if not status.resourcePositive("health") then
     hitType = "kill"
+	--sb.logInfo("%s",damageRequest)
 	--this sadly doesnt actually cause drops to be hunting drops.
 	--there is ZERO way to interact with monster drop pools from scripts. period. stop trying.
 	--[[
 	if string.find(damageRequest.damageSourceKind,"bow") then
 		damageRequest.damageSourceKind="bow"
 	end]]
+	--instead, we take a smarter workaround that functions, albeit annoyingly
+	if string.find(damageRequest.damageSourceKind,"bow") and not (damageRequest.damageSourceKind=="bow") and status then
+		status.setResource("health",1)
+		--sb.logInfo("monster primary: Damage: %s",damage)
+		--we pass the damage value (float) on to the status effect via duration.
+		--sb.logInfo("Damage %s",damage)
+		status.addEphemeralEffect("fuhunterdamage",damage,damageRequest.sourceEntityId)
+		return {}
+	end
   end
   return {{
     sourceEntityId = damageRequest.sourceEntityId,
