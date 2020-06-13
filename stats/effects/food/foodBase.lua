@@ -1,4 +1,5 @@
 function init()
+	if status.statPositive("foodImmunity") then return end	
 	if not world.entitySpecies(entity.id()) then return end
 	self.foodTypes = config.getParameter("foodTypes")
 	self.badEffects = config.getParameter("badStuff", {})
