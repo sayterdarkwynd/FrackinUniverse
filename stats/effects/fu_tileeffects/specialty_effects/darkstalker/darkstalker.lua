@@ -12,8 +12,6 @@ function init()
 	self.timers = {}
 
 	--local bounds = mcontroller.boundBox()
-	setParticleConfig()
-	script.setUpdateDelta(1)
 	effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", baseMultiplier = 0.7 }})
 end
 
@@ -30,7 +28,7 @@ function activateVisualEffects()
 	  if lightLevel < 40 and world.entityType(entity.id()) == "player" then
 	    --animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
 	    --animator.setParticleEmitterActive("smoke", true)
-		particleConfig.position=entity.position()
+		setParticleConfig(0)
 		world.sendEntityMessage(entity.id(),"fu_specialAnimator.spawnParticle",particleConfig)
 	  else
 	    --animator.setParticleEmitterActive("smoke", false)
@@ -47,11 +45,13 @@ function getLight()
 end
 
 
-function setParticleConfig()
-	particleConfig={type = "textured",image = "/animations/blur/blurshadow.png",velocity = {0, -2},approach = {15, 15},destructionAction = shrink,size = 1,layer = "front",variance = {initialVelocity = {1.0, 1.0}}}
-	local dt=script.updateDt()
-	particleConfig.timeToLive = dt*15
-	particleConfig.destructionTime = dt*15.0
+function setParticleConfig(dt)
+	if not particleConfig then
+		particleConfig={type = "textured",image = "/animations/blur/blurshadow.png",destructionAction = "fade",size = 1,layer = "front",variance = {rotation=360,initialVelocity = {0.0, 0.0}}}
+	end
+	particleConfig.position=entity.position()
+	particleConfig.timeToLive = dt*6.0
+	particleConfig.destructionTime = dt*3.0
 end
 
 function update(dt)
@@ -92,7 +92,7 @@ function update(dt)
 		end
 	end
 	if self.enabled then
-		particleConfig.position=entity.position()
+		setParticleConfig(dt)
 		world.sendEntityMessage(entity.id(),"fu_specialAnimator.spawnParticle",particleConfig)
 	end
 end
