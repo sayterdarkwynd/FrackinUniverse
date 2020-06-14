@@ -6,7 +6,7 @@ function init()
 	script.setUpdateDelta(1)
 	darklevel=config.getParameter("darklevel",1)
 	darkpriority=config.getParameter("darkpriority",1)
-	setParticleConfig()
+	setParticleConfig(0)
 	tryRun(0)
 end
 
@@ -19,15 +19,17 @@ function tryRun(dt)
 	if world.entityType(entity.id()) == "player" then
 		--animator.setParticleEmitterActive("smoke", thisCanRun())
 		if thisCanRun() then
-			particleConfig.position=entity.position()
+			setParticleConfig(dt)
 			world.sendEntityMessage(entity.id(),"fu_specialAnimator.spawnParticle",particleConfig)
 		end
 	end
 end
 
-function setParticleConfig()
-	particleConfig={type = "textured",position = {0, 0},velocity = {0, 0},approach = {0, 0},destructionAction = "fade",size = 1,layer = "front",variance = {initialVelocity = {0, 0}}}
-	local dt=script.updateDt()
+function setParticleConfig(dt)
+	if not particleConfig then
+		particleConfig={type = "textured",position = {0, 0},velocity = {0, 0},approach = {0, 0},destructionAction = "fade",size = 1,layer = "front",variance = {initialVelocity = {0, 0}}}
+	end
+	particleConfig.position=entity.position()
 	particleConfig.timeToLive = dt*10.0
 	particleConfig.destructionTime = dt*1.0
 	particleConfig.image=particleList[darklevel]
