@@ -20,21 +20,22 @@ function init()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 	effectHandlerList.armorBonus2Handle=effect.addStatModifierGroup({})
-	checkBiome()
+	checkBiomeBonus()
 end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		sb.logInfo("Greg")
 		status.removeEphemeralEffect("swimboost2")
 		effect.expire()
 	else
 		status.addEphemeralEffect("swimboost2")
-		checkBiome()
+		checkBiomeBonus()
 	end
 
 end
 
-function checkBiome()
+function checkBiomeBonus()
 	if checkBiome({"ocean","sulphuricocean","aethersea","nitrogensea","strangesea","tidewater"}) then
 		effect.setStatModifierGroup(effectHandlerList.armorBonus2Handle,armorBonus2)
 		mcontroller.controlModifiers({speedModifier = 1.05})
