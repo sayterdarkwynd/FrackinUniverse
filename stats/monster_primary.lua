@@ -108,7 +108,7 @@ function applyDamageRequest(damageRequest)
 		--set resistances to nil so at least the damage number is represented properly
 		status.addEphemeralEffect("vulnerability",1,damageRequest.sourceEntityId)
 		--then spawn a projectile and gib 'em.
-		world.spawnProjectile("invisibleprojectile", entity.position(), entity.id(),nil,nil,{damageType="IgnoresDef",damageKind="bow",damageTeam={type="indiscriminate"},power=damage})
+		world.spawnProjectile("fuinvisibleprojectiletiny", entity.position(), damageRequest.sourceEntityId,nil,nil,{damageType="IgnoresDef",damageKind="bow",damageTeam={type="friendly"},power=damage})
 		return {}
 	end
   end
