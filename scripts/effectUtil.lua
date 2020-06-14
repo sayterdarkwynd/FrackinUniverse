@@ -203,6 +203,12 @@ function effectUtil.effectTarget(id,effect,duration)
 	end
 end
 
+function effectUtil.projectileSelf(projtype,params)
+--sb.logInfo("%s",{pt=projtype, ep=entity.position(), ei=entity.id(), p=params})
+--EntityId world.spawnProjectile(String projectileName, Vec2F position, [EntityId sourceEntityId], [Vec2F direction], [bool trackSourceEntity], [Json parameters])
+	world.spawnProjectile(projtype, entity.position(), entity.id(),nil,nil, params)
+end
+
 function effectUtil.projectileTypesInRange(projtype,tilerange,types)
 	local targetlist = world.entityQuery(entity.position(),tilerange,{includedTypes=types})
 	for key, value in pairs(targetlist) do
