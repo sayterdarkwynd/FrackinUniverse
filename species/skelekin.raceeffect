@@ -1,10 +1,10 @@
 {
 	"stats": [
-		{ "stat": "maxHealth", "baseMultiplier": 1.2 },
-		{ "stat": "maxEnergy", "baseMultiplier": 0.8 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.2 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 0.8 },
 		{ "stat": "protection", "amount": 2 },
-		{ "stat": "powerMultiplier", "amount": 0.05 },
-		{ "stat": "foodDelta", "baseMultiplier": 0.001 },
+		{ "stat": "powerMultiplier", "baseMultiplier": 1.05 },
+		{ "stat": "foodDelta", "effectiveMultiplier": 0.001 },
 		{ "stat": "physicalResistance", "amount": 0.2 },
 		{ "stat": "fireResistance", "amount": -1 },
 		{ "stat": "poisonResistance", "amount": 0.5 },
@@ -19,7 +19,7 @@
 		{
 			"biomes": [ "atropus", "atropusdark" ],
 			"stats": [
-				{ "stat": "powerMultiplier", "baseMultiplier": 1.1 }
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 }
 			]
 		}
 	],
@@ -33,9 +33,9 @@
 				"darkwater"
 			],
 			"stats": [
-				{ "stat" : "maxHealth", "baseMultiplier" : 1.25 },
-				{ "stat" : "maxEnergy", "baseMultiplier" : 1.25 },
-				{ "stat" : "fallDamageMultiplier", "baseMultiplier" : 0 }
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.25 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.25 },
+				{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0 }
 			],
 			"scripts" : [
 				{
@@ -52,8 +52,8 @@
 			"name" : "skelekinBadLiquid",
 			"liquids" : [ "healingwater" ],
 			"stats" : [
-				{ "stat" : "maxHealth", "baseMultiplier" : 0.85 },
-				{ "stat" : "maxEnergy", "baseMultiplier" : 0.85 },
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 0.85 },
+				{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.85 },
 				{ "stat" : "protection", "effectiveMultiplier" : 0.85 }
 			],
 			"scripts" : [

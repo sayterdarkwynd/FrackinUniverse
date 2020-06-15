@@ -2,11 +2,11 @@
 	"stats": [
 		{
 			"stat": "maxHealth",
-			"baseMultiplier": 1.15
+			"effectiveMultiplier": 1.15
 		},
 		{
 			"stat": "maxEnergy",
-			"baseMultiplier": 0.8
+			"effectiveMultiplier": 0.8
 		},
 		{
 			"stat": "radioactiveResistance",
@@ -14,7 +14,7 @@
 		},
 		{
 			"stat": "powerMultiplier",
-			"baseMultiplier": 1.1
+			"effectiveMultiplier": 1.1
 		},
 		{
 			"stat": "physicalResistance",
@@ -33,8 +33,7 @@
 			"amount": -0.4
 		},
 		{
-			"stat": "fuCharisma",
-			"baseMultiplier": 0.75
+			"stat": "fuCharisma","baseMultiplier": 0.75
 		},
 		{
 			"stat": "insanityImmunity",
@@ -42,7 +41,7 @@
 		},
 		{
 			"stat": "fallDamageMultiplier",
-			"baseMultiplier": 0.4
+			"effectiveMultiplier": 0.4
 		}
 	],
 	"diet" : "carnivore",
@@ -52,7 +51,7 @@
 	},
 	"envEffects": [{
 		"biomes": ["hot"],
-		"stats": [{"stat": "maxHealth","baseMultiplier": 1.1}]
+		"stats": [{"stat": "maxHealth","effectiveMultiplier": 1.1}]
 	}],
 	"weaponEffects": [{
 			"weapons": ["crossbow","flail"],
@@ -60,11 +59,11 @@
 		},
 		{
 			"weapons": ["scythe"],
-			"stats": [{"stat": "powerMultiplier","baseMultiplier": 1.15},{"stat": "grit","baseMultiplier": 1.5}]
+			"stats": [{"stat": "powerMultiplier","effectiveMultiplier": 1.15},{"stat": "grit","amount": 0.5}]
 		},
 		{
 			"combos": [["shortspear","shield"],["longsword","shield"]],
-			"stats": [{"stat": "critChance","amount": 0.5},{"stat": "grit","baseMultiplier": 1.5}]
+			"stats": [{"stat": "critChance","amount": 0.5},{"stat": "grit","amount": 0.5}]
 		}
 	],
 	"weaponScripts": [{
