@@ -9,7 +9,7 @@ function init()
   self.tickTimer = self.tickTime
   self.currentDebuff = 0.0
   self.debuffPerSec = -0.10 -- Lose 15% phys resist per second
-  self.maxDebuff = -status.stat("physicalResistance",0)
+  self.maxDebuff = -status.stat("physicalResistance")
 end
 
 function update(dt)

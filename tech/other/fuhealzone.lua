@@ -6,7 +6,7 @@ function init()
 end
 
 function applyTechBonus()
-  self.bonusHeal = 1 + status.stat("healtechBonus",0) -- apply bonus from certain items and armor
+  self.bonusHeal = 1 + status.stat("healtechBonus") -- apply bonus from certain items and armor
 end
 
 function update(args)

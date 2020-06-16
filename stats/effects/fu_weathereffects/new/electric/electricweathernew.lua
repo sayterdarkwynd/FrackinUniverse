@@ -60,7 +60,7 @@ function fuElectricWeather.applyShock(self, modifier)
   -- Apply health damage (as shock) and energy damage.
   self:applySelfDamage(healthDamage, "electric")
   if status.isResource("energy") then
-    local energyDrain = math.min(status.resource("energy"), status.stat("maxEnergy", 0) * energyPercent)
+    local energyDrain = math.min(status.resource("energy"), status.stat("maxEnergy") * energyPercent)
     status.modifyResource("energy", -energyDrain)
   end
 end

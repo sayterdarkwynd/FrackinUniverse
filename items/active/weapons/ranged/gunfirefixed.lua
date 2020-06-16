@@ -27,9 +27,9 @@ function GunFireFixed:init()
 	self.countdownDelay = 0 									-- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
 
-	self.playerMagBonus = status.stat("magazineSize",0)						-- player	ammo bonuses
-	self.playerReloadBonus = status.stat("reloadTime",0)						-- player reload bonuses
-	--self.playerSpeedBonus = status.stat("speedBonus",1)						-- player fire rate bonus
+	self.playerMagBonus = status.stat("magazineSize")						-- player	ammo bonuses
+	self.playerReloadBonus = status.stat("reloadTime")						-- player reload bonuses
+	--self.playerSpeedBonus = status.stat("speedBonus")						-- player fire rate bonus
 	--THAT IS NOT HOW STATUS.STAT WORKS. IT ONLY TAKES ONE ARGUMENT, AND RETURNS 0.0 IF THE STAT DOESN'T EXIST.
 
 	self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) 	-- total count of the magazine

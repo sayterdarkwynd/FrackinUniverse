@@ -23,8 +23,8 @@ function GunFire:init()
 	self.countdownDelay = 0 									-- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
 
-	self.playerMagBonus = status.stat("magazineSize",0)						-- player	ammo bonuses
-	self.playerReloadBonus = status.stat("reloadTime",0)						-- player reload bonuses
+	self.playerMagBonus = status.stat("magazineSize")						-- player	ammo bonuses
+	self.playerReloadBonus = status.stat("reloadTime")						-- player reload bonuses
 
 	self.magazineSize = (config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) or 6) -- total count of the magazine
 	self.magazineAmount = config.getParameter("magazineAmount",-1) 						-- current number of bullets in the magazine

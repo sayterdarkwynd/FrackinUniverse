@@ -48,7 +48,7 @@ end
 
 
 function applyTechBonus()
-  self.bonusDamage = 1 + status.stat("bombtechBonus",0) -- apply bonus from certain items and armor
+  self.bonusDamage = 1 + status.stat("bombtechBonus") -- apply bonus from certain items and armor
 end
 
 function update(args)

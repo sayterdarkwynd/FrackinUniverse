@@ -13,7 +13,7 @@ function init()
 end
 
 function setEffectTime()
-  return self.tickTimer * math.min(1 - status.stat("poisonResistance",0), 0.45)
+  return self.tickTimer * math.min(1 - status.stat("poisonResistance"), 0.45)
 end
 
 function activateVisualEffects()
@@ -36,7 +36,7 @@ function update(dt)
     self.tickTimer = self.tickTime
   end
 
-  if ( status.stat("poisonResistance",0)  >= 0.50 ) and ( status.stat("radioactiveResistance",0)  >= 0.25 ) then
+  if ( status.stat("poisonResistance")  >= 0.50 ) and ( status.stat("radioactiveResistance")  >= 0.25 ) then
     deactivateVisualEffects()
     effect.expire()
   end

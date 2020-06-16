@@ -1,5 +1,5 @@
 function init()
-  self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
   self.armRotation = 0
   self.rotations = 3
   self.rotationTime = 0.15
@@ -35,7 +35,7 @@ function uninit()
 end
 
 function applyTechBonus()
-  self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
 end
 
 function update(args)
