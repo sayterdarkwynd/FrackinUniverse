@@ -15,10 +15,12 @@ function init()
 	
 	message.setHandler("fu_specialAnimator.playAudio",function (_,_,...) localAnimator.playAudio(...) end)
 	message.setHandler("fu_specialAnimator.spawnParticle",function (_,_,...) localAnimator.spawnParticle(...) end)
-	message.setHandler("fu_specialAnimator.addDrawable",function (_,_,...) localAnimator.addDrawable(...) end)
-	message.setHandler("fu_specialAnimator.clearDrawables",function (_,_,...) localAnimator.clearDrawables(...) end)
-	message.setHandler("fu_specialAnimator.addLightSource",function (_,_,...) localAnimator.addLightSource(...) end)
-	message.setHandler("fu_specialAnimator.clearLightSources",function (_,_,...) localAnimator.clearLightSources(...) end)
+	
+	--unfortuantely, the game calls clearDrawables and clearLightSources every fucking update so these aren't usable.
+	--message.setHandler("fu_specialAnimator.addDrawable",function (_,_,...) localAnimator.addDrawable(...) end)
+	--message.setHandler("fu_specialAnimator.clearDrawables",function (_,_,...) localAnimator.clearDrawables(...) end)
+	--message.setHandler("fu_specialAnimator.addLightSource",function (_,_,...) localAnimator.addLightSource(...) end)
+	--message.setHandler("fu_specialAnimator.clearLightSources",function (_,_,...) localAnimator.clearLightSources(...) end)
 end
 
 --[[
