@@ -9,11 +9,11 @@ function init()
 end
 
 function setEffectTime()
-  return self.tickTimer * math.min(1 - status.stat("iceResistance",0), 0.45)
+  return self.tickTimer * math.min(1 - status.stat("iceResistance"), 0.45)
 end
 
 function update(dt)
-  	if ( status.stat("iceResistance",0)  >= 0.75 ) then
+  	if ( status.stat("iceResistance")  >= 0.75 ) then
 	  effect.expire()
 	end
   mcontroller.controlModifiers({

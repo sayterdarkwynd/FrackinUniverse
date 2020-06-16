@@ -13,7 +13,7 @@ function NebRNGBowShot:init()
   self.arrowVariant = config.getParameter("animationParts")
 
   self.drawTimer = 0
-  self.bonusSpeed = status.stat("bowDrawTimeBonus",0)
+  self.bonusSpeed = status.stat("bowDrawTimeBonus")
   self.drawTime = self.drawTime - self.bonusSpeed
   
   animator.setAnimationState("bow", "idle")
@@ -227,7 +227,7 @@ function NebRNGBowShot:currentProjectileParameters()
   end
   
   --Bonus damage calculation for quiver users
-  local damageBonus = 1.0  + status.stat("bowDrawTimeBonus",0) --adds the bow draw bonus back to damage to keep it on par, otherwise we lose damage
+  local damageBonus = 1.0  + status.stat("bowDrawTimeBonus") --adds the bow draw bonus back to damage to keep it on par, otherwise we lose damage
   if self.useQuiverDamageBonus == true and status.statPositive("nebsrngbowdamagebonus") then
 		damageBonus = status.stat("nebsrngbowdamagebonus")
   end

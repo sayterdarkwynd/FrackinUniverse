@@ -66,7 +66,7 @@ end
 function fuWeatherBase.totalResist(self)
   local totalResist = 0
   for resist, multiplier in pairs(self.resistanceTypes) do
-    totalResist = totalResist + (status.stat(resist,0) * multiplier)
+    totalResist = totalResist + (status.stat(resist) * multiplier)
   end
   return totalResist
 end

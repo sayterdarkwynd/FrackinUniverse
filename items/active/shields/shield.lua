@@ -284,7 +284,7 @@ function raiseShield()
     	for _,notification in pairs(notifications) do
             if notification.hitType == "ShieldHit" then
                 -- *** set up shield bash values *** --
-                self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash",0)
+                self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash")
                 if not status.resource("energy") then
                     self.energyval= 0
                 else
@@ -354,16 +354,16 @@ function bashEnemy()
     if self.raisedhelper then self.raisedhelper:runScripts("shield-bash", self) end
 
 	-- lets limit how much damage they can do
-	self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.random(6) + (status.stat("shieldBashBonus",0))
+	self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.random(6) + (status.stat("shieldBashBonus"))
 
 	if status.resourcePositive("perfectBlock") then
-        self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
+        self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 6
 		if self.stunValue >=100 then
             local params2 = { speed=20, power = 0 , damageKind = "default", knockback = 0 } -- Stun
             world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params2)
 		end
 	else
-		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 2
+		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 2
 	end
     local params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash
     world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
