@@ -11,7 +11,7 @@ function init()
 	else
 		storage.onboard=config.getParameter("onboard")
 	end
-	
+
 	storage.onboardMax=math.max(config.getParameter("altAbility",{energyUsage=0}).energyUsage,config.getParameter("primaryAbility",{energyUsage=0}).energyUsage)*2
 	activeItem.setScriptedAnimationParameter("markerImage", "/items/active/weapons/other/angryrocket/targetoverlay.png")
 	self.fireOffset = config.getParameter("fireOffset")
@@ -24,7 +24,9 @@ function init()
 	reset()
 
 	setToolTipValues(config.getParameter("primaryAbility"))
-	
+	self.timerRemoveAmmoBar = 0
+	  self.barName = "ammoBar"
+  self.barColor = {0,250,112,125}
 end
 
 function uninit()
@@ -55,8 +57,9 @@ function update(dt, fireMode, shiftHeld)
 			if status.consumeResource("energy",amt) then
 				storage.onboard=storage.onboard+amt
 				--[[ progressing sound fx
-				      if (storage.onboard == storage.onboardMax) then animator.playSound("reload2")	
+				      if (storage.onboard == storage.onboardMax) then animator.playSound("reload2")
 				--]]
+
 				if (storage.onboard >= (storage.onboardMax * 0.9)) and (storage.onboard <= ((storage.onboardMax * 0.9)+amt)) then
 					animator.playSound("reload2")
 					animator.playSound("reloadsound")
@@ -65,13 +68,16 @@ function update(dt, fireMode, shiftHeld)
 				elseif (storage.onboard >= (storage.onboardMax * 0.7)) and (storage.onboard <= ((storage.onboardMax * 0.7)+amt)) then
 					animator.playSound("reload1")
 				elseif (storage.onboard >= (storage.onboardMax * 0.6)) and (storage.onboard <= ((storage.onboardMax * 0.6)+amt)) then
-					animator.playSound("reload1")	
+					animator.playSound("reload1")
 				elseif (storage.onboard >= (storage.onboardMax * 0.5)) and (storage.onboard <= ((storage.onboardMax * 0.5)+amt)) then
 					animator.playSound("reload1")
 					animator.playSound("reloadsound")
 				elseif (storage.onboard >= (storage.onboardMax *0.4)) and (storage.onboard <= ((storage.onboardMax * 0.4)+amt)) then
 					animator.playSound("reload1")
-				end				
+				end
+				local ammoPercent=storage.onboard/storage.onboardMax
+				ammoPercent=util.clamp(ammoPercent,0.0,1.0)
+				world.sendEntityMessage(activeItem.ownerEntityId(),"setBar","ammoBar",ammoPercent,{(1.0-ammoPercent)*255,ammoPercent*255,0})
 			end
 		end
 		deltaPowerup=0
@@ -85,11 +91,11 @@ function update(dt, fireMode, shiftHeld)
 			self.target=nil
 		end
 	end
-	
+
 	storage.fireTimer = math.max(storage.fireTimer - dt, 0)
 	self.recoilTimer = math.max(self.recoilTimer - dt, 0)
 	local ability = config.getParameter(fireMode.."Ability")
-	
+
 	if fireMode == "alt" then
 		gotLockTime=2
 		if lockTime==nil then
@@ -149,6 +155,9 @@ end
 
 
 function altFire(ability)
+	local ammoPercent=storage.onboard/storage.onboardMax
+	ammoPercent=util.clamp(ammoPercent,0.0,1.0)
+	world.sendEntityMessage(activeItem.ownerEntityId(),"setBar","ammoBar",ammoPercent,{(1.0-ammoPercent)*255,ammoPercent*255,0})
 	if storage.onboard > ability.energyUsage then
 		storage.onboard=storage.onboard-ability.energyUsage
 		local projectileId = fireProjectile(ability,{power = damagePerShot(ability),powerMultiplier = activeItem.ownerPowerMultiplier(),target = self.target,maxSpeed=70})
@@ -157,6 +166,9 @@ function altFire(ability)
 end
 
 function primaryFire(ability)
+	local ammoPercent=storage.onboard/storage.onboardMax
+	ammoPercent=util.clamp(ammoPercent,0.0,1.0)
+	world.sendEntityMessage(activeItem.ownerEntityId(),"setBar","ammoBar",ammoPercent,{(1.0-ammoPercent)*255,ammoPercent*255,0})
 	local params = {
 		power = damagePerShot(ability),
 	powerMultiplier = activeItem.ownerPowerMultiplier()
@@ -228,3 +240,5 @@ function findTarget()
 	end
 	return false
 end
+
+
