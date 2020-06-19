@@ -475,17 +475,26 @@ function GunFireFixed:checkAmmo(force)
 			self.magazineAmount = self.magazineSize
 			self.reloadTime = config.getParameter("reloadTime",0)
 						-- set the cursor to the Reload cursor
-						activeItem.setCursor("/cursors/cursor_reload.cursor")
 			if (self.reloadTime < 1) then
-				 animator.playSound("fuReload") -- adds new sound to reload
+				if animator.hasSound("fuReload") then
+					animator.playSound("fuReload") -- adds new sound to reload
+				end
 			elseif (self.reloadTime >= 2.5) then
-				 animator.playSound("fuReload5") -- adds new sound to reload
+				if animator.hasSound("fuReload5") then
+					animator.playSound("fuReload5") -- adds new sound to reload
+				end
 			elseif (self.reloadTime >= 2) then
-				 animator.playSound("fuReload4") -- adds new sound to reload
+				if animator.hasSound("fuReload4") then
+					animator.playSound("fuReload4") -- adds new sound to reload
+				end
 			elseif (self.reloadTime >= 1.5) then
-				 animator.playSound("fuReload3") -- adds new sound to reload
+				if animator.hasSound("fuReload3") then
+					animator.playSound("fuReload3") -- adds new sound to reload
+				end
 			elseif (self.reloadTime >= 1) then
-				 animator.playSound("fuReload2") -- adds new sound to reload
+				if animator.hasSound("fuReload2") then
+					animator.playSound("fuReload2") -- adds new sound to reload
+				end
 			end
 
 		--check current ammo and create an ammo bar to inform the user

@@ -32,10 +32,14 @@
 			"stats": [{
 					"stat": "protection",
 					"amount": 8
-				},
+				}
+			],
+			"scripts" : [
 				{
-					"stat": "healthRegen",
-					"amount": 0.3//health regen is flat.
+					"script" : "/scripts/fr_scripts/healthRegen.lua",
+					"args" : {
+						"healingRate" : 0.003
+					}
 				}
 			]
 		},

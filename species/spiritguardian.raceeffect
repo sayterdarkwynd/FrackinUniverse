@@ -20,9 +20,7 @@
 		{ "stat": "radioactiveResistance", "amount": -0.23 },
 		{ "stat": "poisonResistance", "amount": -0.23 },
 		{ "stat": "electricResistance", "amount": -0.23 },
-		{ "stat": "fireResistance", "amount": -0.23 },
-		
-		{ "stat": "healthRegen", "amount": 1 }//health regen is flat.
+		{ "stat": "fireResistance", "amount": -0.23 }
 	],
 	"diet" : "herbivore",
 	
@@ -44,6 +42,14 @@
 			"stats": [
 				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
 			]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/healthRegen.lua",
+			"args" : {
+				"healingRate" : 0.01
+			}
 		}
 	]
 	//Note: Species patch mentions Glow in the Dark / Bioluminescense.

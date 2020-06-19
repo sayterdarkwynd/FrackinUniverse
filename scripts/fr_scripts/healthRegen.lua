@@ -10,6 +10,7 @@
 
 function FRHelper:call(args, main, dt, ...)
 	--special handling for NPCs, to prevent immortality
+	if not dt then dt = script.updateDt() end
 	if not (world.isNpc(entity.id()) and status.resource("health") < 1) then
 		status.modifyResourcePercentage("health", args.healingRate * dt)
 	else
