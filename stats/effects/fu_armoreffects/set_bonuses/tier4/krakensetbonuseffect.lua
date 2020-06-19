@@ -25,7 +25,6 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
-		sb.logInfo("Greg")
 		status.removeEphemeralEffect("swimboost2")
 		effect.expire()
 	else
