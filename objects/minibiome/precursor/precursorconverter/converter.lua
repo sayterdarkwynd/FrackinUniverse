@@ -112,8 +112,8 @@ function update(dt)
                 end
             end
             storage.crafting = false
-            storage.output = {}
-			storage.inputs = {}
+            storage.output = nil
+			storage.inputs = nil
             storage.timer = self.mintick --reset timer to a safe minimum
         end
 
