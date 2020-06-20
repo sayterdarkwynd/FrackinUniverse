@@ -94,6 +94,7 @@ function update(dt)
 		deltaTime=deltaTime+dt
 	end
     storage.timer = storage.timer - dt
+	
     if storage.timer <= 0 then
         if storage.crafting then
             for k,v in pairs(storage.output) do
@@ -114,13 +115,13 @@ function update(dt)
             storage.output = {}
 			storage.inputs = {}
             storage.timer = self.mintick --reset timer to a safe minimum
-            animator.setAnimationState("samplingarrayanim", "idle")
         end
 
         if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
             if not startCrafting(getValidRecipes(getInputContents())) then storage.timer = self.mintick end --set timeout if there were no recipes
         end
     end
+	animator.setAnimationState("samplingarrayanim", storage.crafting and "working" or "idle")
 end
 
 
@@ -141,7 +142,7 @@ function startCrafting(result)
 		storage.crafting = true
 		storage.timer = result.time
 		storage.output = result.outputs
-		animator.setAnimationState("samplingarrayanim", "working")
+		--animator.setAnimationState("samplingarrayanim", "working")
 
 		return true
 	end
