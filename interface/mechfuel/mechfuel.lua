@@ -121,7 +121,11 @@ function fuel()
   if self.disabled then return end
 
   local item = widget.itemSlotItem("itemSlot_fuel")
-  if not item then return end
+  if (not item) then return end
+  if (self.currentFuel >= self.maxFuel)  then
+    widget.setText("lblEfficiency", "^red;The tank is full.^white;")
+	return
+  end
   local id = player.id()
 
   local fuelMultiplier = 1
@@ -133,46 +137,50 @@ function fuel()
     fuelMultiplier = fuelData.fuelMultiplier
     localFuelType = fuelData.fuelType 
   end
+  if fuelMultiplier == 0 then return end
 
   if self.currentFuelType and localFuelType ~= self.currentFuelType then
     widget.setText("lblEfficiency", "^red;The tank has a different type of fuel, empty it first.^white;")
     return
   end
 
-  local addFuelCount = self.currentFuel + (item.count * fuelMultiplier) 
-
-  if addFuelCount > self.maxFuel then
-    item.count = addFuelCount - self.maxFuel
-	  if fuelMultiplier > 1 then
-      item.count = (addFuelCount - self.maxFuel) / fuelMultiplier
-    end
+  local fuelCanAdd=item.count*fuelMultiplier
+  local fuelWillAdd=math.min(fuelCanAdd,math.max(self.maxFuel-self.currentFuel,0))
+  local fuelItemConsume=fuelWillAdd/fuelMultiplier
+  local shimmy = fuelItemConsume%1
+  if shimmy > 0 then
+	shimmy=fuelItemConsume
+	fuelItemConsume=math.floor(fuelItemConsume)
+	shimmy=fuelItemConsume/shimmy
+	fuelWillAdd=shimmy*fuelWillAdd
+  end
+  
+  if fuelWillAdd > 0 then
+	  item.count=item.count-fuelItemConsume
 	  self.setItemMessage = world.sendEntityMessage(id, "setFuelSlotItem", item)
-	  addFuelCount = self.maxFuel
+	  self.currentFuel=fuelWillAdd+self.currentFuel
   else
-    self.setItemMessage = world.sendEntityMessage(id, "setFuelSlotItem", nil)
+	return
   end
 
   world.sendEntityMessage(id, "setFuelType", localFuelType)
-  world.sendEntityMessage(id, "setQuestFuelCount", addFuelCount)
+  world.sendEntityMessage(id, "setQuestFuelCount", self.currentFuel)
   pane.playSound("/sfx/tech/mech_activate2.ogg")
-  
 end
 
 
 function emptyfuel()
   if self.disabled then return end
   if self.currentFuel > 0 then
-  	local item = widget.itemSlotItem("itemSlot_fuel")
+  	--local item = widget.itemSlotItem("itemSlot_fuel")
   	local id = player.id()
-  	local fuelData = nil
   	localFuelType = nil
-  	local addFuelCount = 10000 
   	self.currentFuel = 0
     	widget.setText("lblEfficiency", "^red;Emptying Fuel.^white;")   
     	widget.setText("lblFuelType", "CURRENT FUEL: ^red;EMPTY^reset;")   
-    	world.sendEntityMessage(id, "setFuelSlotItem", nil)
+    	--world.sendEntityMessage(id, "setFuelSlotItem", nil)
     	world.sendEntityMessage(id, "setFuelType", nil)
-    	world.sendEntityMessage(id, "removeQuestFuelCount", addFuelCount)
+    	world.sendEntityMessage(id, "removeQuestFuelCount", self.currentFuel * 10.0)
     	pane.playSound("/sfx/tech/mech_powerdown.ogg")
   end
 end
