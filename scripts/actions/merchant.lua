@@ -5,11 +5,23 @@ function buildTradingConfig()
   local level = npc.level()
   local items = {}
   self.merchantPools = root.assetJson(config.getParameter("merchant.poolsFile", "/npcs/merchantpools.config"))
+  
   local buffer=getCategories()
   if not buffer then
-	sb.logError("/scripts/actions/merchant.lua: npc (%s) of species (%s) failed to load merchant pools!",npc.npcType(),npc.species())
-	return {}
+	sb.logError("/scripts/actions/merchant.lua: npc (%s) of species (%s) failed to load merchant pools. Merchant Config: %s",npc.npcType(),npc.species(),{config.getParameter("merchant.categories")})
+	--return {}
+	--[[function getCategories()
+	  local species = npc.species()
+	  if config.getParameter("merchant.categories.override") then
+		return config.getParameter("merchant.categories.override")
+	  elseif config.getParameter("merchant.categories."..species) then
+		return config.getParameter("merchant.categories."..species)
+	  else
+		return config.getParameter("merchant.categories.default")
+	  end
+	end]]
   end
+  
   for _, category in pairs(buffer) do
     local levelSets = self.merchantPools[category]
     if levelSets ~= nil then
@@ -102,7 +114,6 @@ function buildTradingConfig()
 
   -- Reset RNG
   math.randomseed(util.seedTime())
-
   return tradingConfig
 end
 
