@@ -63,6 +63,8 @@ function weaponCheck(tags)
 	local heldItemAlt=world.entityHandItem(entity.id(), "alt")
 
 	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
+	
+	--if heldItemPrimary and heldItemPrimary.name=="sapling" or heldItemAlt and heldItemAlt.name=="sapling" then return weaponCheckResults end
 
 	weaponCheckResults["either"]=false
 	weaponCheckResults["primary"]=false
@@ -71,11 +73,15 @@ function weaponCheck(tags)
 	weaponCheckResults["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
 	
 	if heldItemPrimary and not self.SETagCache[heldItemPrimary] then
-		local buffer=root.itemConfig(heldItemPrimary)
-		buffer=util.mergeTable(buffer.config,buffer.parameters)
-		local buffer2=buffer.elementalType
-		buffer=buffer.itemTags or {}
-		if buffer2 then table.insert(buffer,string.lower(buffer2)) end
+		local result,buffer=pcall(root.itemConfig,heldItemPrimary)
+		if result and buffer then
+			buffer=util.mergeTable(buffer.config,buffer.parameters)
+			local buffer2=buffer.elementalType
+			buffer=buffer.itemTags or {}
+			if buffer2 then table.insert(buffer,string.lower(buffer2)) end
+		else
+			buffer={}
+		end
 		buffer2={}
 		for _,v in pairs(buffer) do
 			buffer2[string.lower(v)]=true
@@ -84,10 +90,16 @@ function weaponCheck(tags)
 	end
 
 	if heldItemAlt and not self.SETagCache[heldItemAlt] then
-		local buffer=root.itemConfig(heldItemAlt)
-		buffer=util.mergeTable(buffer.config,buffer.parameters)
-		buffer=buffer.itemTags or {}
-		local buffer2={}
+		local result,buffer=pcall(root.itemConfig,heldItemAlt)
+		if result and buffer then
+			buffer=util.mergeTable(buffer.config,buffer.parameters)
+			local buffer2=buffer.elementalType
+			buffer=buffer.itemTags or {}
+			if buffer2 then table.insert(buffer,string.lower(buffer2)) end
+		else
+			buffer={}
+		end
+		buffer2={}
 		for _,v in pairs(buffer) do
 			buffer2[string.lower(v)]=true
 		end
