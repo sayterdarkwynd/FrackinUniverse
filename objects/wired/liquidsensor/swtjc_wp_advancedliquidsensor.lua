@@ -10,32 +10,25 @@ function init()
   self.defaultOffAnimation = config.getParameter("defaultOffAnimation","off")
 end
 
-function sampleLiquid()
-  return world.liquidAt(object.position())
-end
-
 -- Compares the stored object's 'liquid' field against the sampled liquid's name.
 function isOn()
   local predicateId = predicateLiquidId()
   local sampleId = sampleLiquidId()
-  local result = sampleId and predicateId == sampleId
-  return result
+  local on = sampleId and predicateId == sampleId
+  return on
 end
 
 function sampleLiquidId()
-  local sample = sampleLiquid()
+  local sample = world.liquidAt(object.position())
   if (sample == nil) then
-    sb.logInfo("sample nil")
     return nil 
   end
   return sample[1]
 end
 
 function predicateLiquidId()
-  local id = entity.id()
-  local predicate = world.containerItemAt(id, 0)
+  local predicate = world.containerItemAt(entity.id(), 0)
   if (predicate == nil) then 
-    sb.logInfo("predicate nil")
     return nil 
   end
   return liquidLib.itemToLiquidId(predicate)
@@ -48,7 +41,6 @@ function update(dt)
     transferUtil.loadSelfContainer()
   end
 
-
   local on = isOn()
 
   if on then 
@@ -58,5 +50,4 @@ function update(dt)
     object.setOutputNodeLevel(0, false)
     animator.setAnimationState("sensorState", self.defaultOffAnimation)
   end
-
 end
