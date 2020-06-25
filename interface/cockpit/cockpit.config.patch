@@ -1,0 +1,12 @@
+[
+//Patch for More Planet Info
+
+	//Adds icons and description to cultist lair. But also checks to make sure MPI is actually installed.
+	[
+		{ "op": "test", "path": "/displayDungeons" },	
+		{ "op": "add", "path": "/displayDungeons/cultistlair", "value": 
+		{"description" : "A fortified military bunker occupied by the Occassus.", "icon" : "/interface/cockpit/dungeons/fu_cultist.png" }
+		}
+	]
+	
+]
