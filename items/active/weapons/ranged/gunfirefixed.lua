@@ -568,9 +568,9 @@ end
 
 function GunFireFixed:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil
 	if not mcontroller.onGround() then
-	 self.recoilForce = self.recoilForce * 0.5
+		self.recoilForce = self.recoilForce * 0.5
 	end
 	if mcontroller.crouching() then
-	 self.recoilForce = self.recoilForce * 0.25
+		self.recoilForce = self.recoilForce * 0.25
 	end
 end
