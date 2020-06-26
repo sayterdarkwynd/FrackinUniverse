@@ -455,19 +455,19 @@ function GunFire:checkAmmo(force)
 		self.barColor = {0,250,112,125}
 
 		if (self.fireMode == "primary") then
-			world.sendEntityMessage(
-				activeItem.ownerEntityId(),
-				"setBar",
-				"ammoBar",
-				self.currentAmmoPercent,
-				self.barColor
-			)
-			if (self.isAmmoBased == 1) then
-				if self.magazineAmount then
-					activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
-				end
-				activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
+			if self.magazineAmount and self.magazineSize and (self.magazineSize > 1) then
+				world.sendEntityMessage(
+					activeItem.ownerEntityId(),
+					"setBar",
+					"ammoBar",
+					self.currentAmmoPercent,
+					self.barColor
+				)
 			end
+			if self.magazineAmount then
+				activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
+			end
+			activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
 		end
 		self.weapon:setStance(self.stances.cooldown)
 		self:setState(self.cooldown)
@@ -483,13 +483,15 @@ function GunFire:checkMagazine(evalOnly)
 		self.currentAmmoPercent = self.magazineAmount / self.magazineSize
 
 		if (self.fireMode == "primary") then
-			world.sendEntityMessage(
-				activeItem.ownerEntityId(),
-				"setBar",
-				"ammoBar",
-				self.currentAmmoPercent,
-				self.barColor
-		)
+			if self.magazineAmount and self.magazineSize and (self.magazineSize > 1) then
+				world.sendEntityMessage(
+					activeItem.ownerEntityId(),
+					"setBar",
+					"ammoBar",
+					self.currentAmmoPercent,
+					self.barColor
+				)
+			end
 		end
 
 		if not evalOnly then
