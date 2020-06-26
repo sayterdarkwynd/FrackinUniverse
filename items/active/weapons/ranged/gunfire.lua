@@ -11,7 +11,6 @@ GunFire = WeaponAbility:new()
 
 function GunFire:init()
 -- FU additions
-
 	--weapon types
 	self.isReloader = config.getParameter("isReloader",0)						-- is this a shotgun style reload?
 	self.isCrossbow = config.getParameter("isCrossbow",0)						-- is this a crossbow?
@@ -34,7 +33,7 @@ function GunFire:init()
 	if (self.isAmmoBased == 1) then
 		self.timerRemoveAmmoBar = 0
 		self.currentAmmoPercent = util.clamp(self.magazineAmount / self.magazineSize,0.0,1.0)
-		self.isReloading=(self.magazineAmount <= 0) or config.getParameter("isReloading",true)
+		self.isReloading=(self.magazineAmount <= 0) or config.getParameter("isReloading"..self.abilitySlot,true)
 	end
 	self.barName = "ammoBar"
 	self.barColor = {0,250,112,125}
@@ -317,7 +316,7 @@ function GunFire:uninit()
 	if (self.isAmmoBased == 1) then
 		if self.magazineAmount then
 			activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
-			activeItem.setInstanceValue("isReloading",self.isReloading)
+			activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
 		end
 	end
 end
@@ -416,62 +415,62 @@ function GunFire:checkAmmo(force)
 	end
 
 	if (self.isAmmoBased==1) and (force or (self.magazineAmount <= 0)) then
-			self.isReloading=true
-			activeItem.setInstanceValue("isReloading",self.isReloading)
-			if self.burstCooldown then
-				self.cooldownTimer = self.burstCooldown / 10.0 + self.reloadTime
-			else
-				self.cooldownTimer = self.fireTime + self.reloadTime
-			end
-			status.addEphemeralEffect("reloadReady", 0.5)
-			self.magazineAmount = self.magazineSize
-			self.reloadTime = config.getParameter("reloadTime",0)
+		self.isReloading=true
+		activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
+		if self.burstCooldown then
+			self.cooldownTimer = self.burstCooldown / 10.0 + self.reloadTime
+		else
+			self.cooldownTimer = self.fireTime + self.reloadTime
+		end
+		status.addEphemeralEffect("reloadReady", 0.5)
+		self.magazineAmount = self.magazineSize
+		self.reloadTime = config.getParameter("reloadTime",0)
 
-						-- set the cursor to the Reload cursor
-						activeItem.setCursor("/cursors/cursor_reload.cursor")
+					-- set the cursor to the Reload cursor
+					activeItem.setCursor("/cursors/cursor_reload.cursor")
 
-			if (self.reloadTime < 1) then
-				if animator.hasSound("fuReload") then
-					animator.playSound("fuReload") -- adds new sound to reload
-				end
-			elseif (self.reloadTime >= 2.5) then
-				if animator.hasSound("fuReload5") then
-					animator.playSound("fuReload5") -- adds new sound to reload
-				end
-			elseif (self.reloadTime >= 2) then
-				if animator.hasSound("fuReload4") then
-					animator.playSound("fuReload4") -- adds new sound to reload
-				end
-			elseif (self.reloadTime >= 1.5) then
-				if animator.hasSound("fuReload3") then
-					animator.playSound("fuReload3") -- adds new sound to reload
-				end
-			elseif (self.reloadTime >= 1) then
-				if animator.hasSound("fuReload2") then
-					animator.playSound("fuReload2") -- adds new sound to reload
-				end
+		if (self.reloadTime < 1) then
+			if animator.hasSound("fuReload") then
+				animator.playSound("fuReload") -- adds new sound to reload
 			end
+		elseif (self.reloadTime >= 2.5) then
+			if animator.hasSound("fuReload5") then
+				animator.playSound("fuReload5") -- adds new sound to reload
+			end
+		elseif (self.reloadTime >= 2) then
+			if animator.hasSound("fuReload4") then
+				animator.playSound("fuReload4") -- adds new sound to reload
+			end
+		elseif (self.reloadTime >= 1.5) then
+			if animator.hasSound("fuReload3") then
+				animator.playSound("fuReload3") -- adds new sound to reload
+			end
+		elseif (self.reloadTime >= 1) then
+			if animator.hasSound("fuReload2") then
+				animator.playSound("fuReload2") -- adds new sound to reload
+			end
+		end
 		--check current ammo and create an ammo bar to inform the user
 		self.currentAmmoPercent = 1
 		self.barColor = {0,250,112,125}
 
-	if (self.fireMode == "primary") then
-		world.sendEntityMessage(
-			activeItem.ownerEntityId(),
-			"setBar",
-			"ammoBar",
-			self.currentAmmoPercent,
-			self.barColor
-	)
-	if (self.isAmmoBased == 1) then
-		if self.magazineAmount then
-			activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
+		if (self.fireMode == "primary") then
+			world.sendEntityMessage(
+				activeItem.ownerEntityId(),
+				"setBar",
+				"ammoBar",
+				self.currentAmmoPercent,
+				self.barColor
+			)
+			if (self.isAmmoBased == 1) then
+				if self.magazineAmount then
+					activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
+				end
+				activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
+			end
 		end
-		activeItem.setInstanceValue("isReloading",self.isReloading)
-	end
-	end
-			self.weapon:setStance(self.stances.cooldown)
-			self:setState(self.cooldown)
+		self.weapon:setStance(self.stances.cooldown)
+		self:setState(self.cooldown)
 	end
 end
 

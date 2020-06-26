@@ -41,7 +41,7 @@ function GunFireFixed:init()
 	if (self.isAmmoBased == 1) then
 		self.timerRemoveAmmoBar = 0
 		self.currentAmmoPercent = util.clamp(self.magazineAmount / self.magazineSize,0.0,1.0)
-		self.isReloading=(self.magazineAmount <= 0) or config.getParameter("isReloading",true)
+		self.isReloading=(self.magazineAmount <= 0) or config.getParameter("isReloading"..self.abilitySlot,true)
 	end
 	self.barName = "ammoBar"
 	self.barColor = {0,250,112,125}
@@ -368,7 +368,7 @@ function GunFireFixed:uninit()
 	if (self.isAmmoBased == 1) then
 		if self.magazineAmount then
 			activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
-			activeItem.setInstanceValue("isReloading",self.isReloading)
+			activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
 		end
 	end
 end
@@ -465,7 +465,7 @@ function GunFireFixed:checkAmmo(force)
 	end
 	if (self.isAmmoBased==1) and (force or (self.magazineAmount <= 0)) then
 			self.isReloading=true
-			activeItem.setInstanceValue("isReloading",self.isReloading)
+			activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
 			if self.burstCooldown then
 				self.cooldownTimer = self.burstCooldown + self.reloadTime
 			else
@@ -513,7 +513,7 @@ function GunFireFixed:checkAmmo(force)
 				if self.magazineAmount then
 					activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
 				end
-				activeItem.setInstanceValue("isReloading",self.isReloading)
+				activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
 			end
 		end
 			self.weapon:setStance(self.stances.cooldown)
