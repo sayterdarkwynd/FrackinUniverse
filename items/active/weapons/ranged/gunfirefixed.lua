@@ -41,19 +41,19 @@ function GunFireFixed:init()
 	if (self.isAmmoBased == 1) then
 		self.timerRemoveAmmoBar = 0
 		self.currentAmmoPercent = util.clamp(self.magazineAmount / self.magazineSize,0.0,1.0)
-		self.isReloading=(self.magazineAmount <= 0) or config.getParameter("isReloading",true)
+		self.isReloading=(self.magazineAmount <= 0) or config.getParameter("isReloading"..self.abilitySlot,true)
 	end
 	self.barName = "ammoBar"
 	self.barColor = {0,250,112,125}
 
-		-- **** FR ADDITIONS
+	-- **** FR ADDITIONS
 	daytime = daytimeCheck()
 	underground = undergroundCheck()
 	lightLevel = 1
 
 	-- bonus add for novakids with pistols when sped up, specifically to energy and damage equations at end of file so that they still damage and consume energy at high speed
 	self.energyMax = 1
-		-- ** END FR ADDITIONS
+	-- ** END FR ADDITIONS
 
 	self.weapon:setStance(self.stances.idle)
 
@@ -118,7 +118,7 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 
 	-- *** FU Weapon Additions
 	if self.timeBeforeCritBoost <= 0 then	--check sniper/crossbow crit bonus
-			self:isChargeUp()
+		self:isChargeUp()
 	else
 		self.timeBeforeCritBoost = self.timeBeforeCritBoost -dt
 	end
@@ -151,9 +151,7 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 		animator.setLightActive("muzzleFlash", false)
 	end
 
-	if self.fireMode == (self.activatingFireMode or self.abilitySlot)
-	and not status.resourceLocked("energy")
-	and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
+	if self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 		if self.runSlowWhileShooting then
 			mcontroller.controlModifiers({groundMovementModifier = 0.5,
 			speedModifier = 0.65,
@@ -163,9 +161,7 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 	if (not self.fireMode) and self.runSlowWhileShooting then
 		mcontroller.clearControls()
 	end
-	if not (self.fireMode == (self.activatingFireMode or self.abilitySlot)
-	and not status.resourceLocked("energy")
-	and not world.lineTileCollision(mcontroller.position(), self:firePosition())) then
+	if not (self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") and not world.lineTileCollision(mcontroller.position(), self:firePosition())) then
 		if self.loadupTime then
 			self.loadupTimer = self.loadupTime
 		else
@@ -174,13 +170,7 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 		self.loadingUp = false
 	end
 
-	if self.fireMode == (self.activatingFireMode or self.abilitySlot)
-		and not self.weapon.currentAbility
-		and self.cooldownTimer == 0
-		and not status.resourceLocked("energy")
-		and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-
-
+	if self.fireMode == (self.activatingFireMode or self.abilitySlot) and not self.weapon.currentAbility and self.cooldownTimer == 0 and not status.resourceLocked("energy") and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 		if self.loadupTimer == 0 then
 			if self.fireType == "auto" and status.overConsumeResource("energy", self:energyPerShot()) then
 				self:setState(self.auto)
@@ -204,19 +194,19 @@ end
 
 
 function GunFireFixed:auto()
--- ***********************************************************************************************************
--- FR SPECIALS	(Weapon speed and other such things)
--- ***********************************************************************************************************
-		--ammo
-		self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?
-		self:checkMagazine()--ammo system magazine check
-		-- recoil stats reset every time we shoot so that it is consistent
-		self.recoilSpeed = (config.getParameter("recoilSpeed",200))
-		self.recoilForce = (config.getParameter("recoilForce",100))
+	-- ***********************************************************************************************************
+	-- FR SPECIALS	(Weapon speed and other such things)
+	-- ***********************************************************************************************************
+	--ammo
+	self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?
+	self:checkMagazine()--ammo system magazine check
+	-- recoil stats reset every time we shoot so that it is consistent
+	self.recoilSpeed = (config.getParameter("recoilSpeed",200))
+	self.recoilForce = (config.getParameter("recoilForce",100))
 
-		if self.helper then
-			self.helper:runScripts("gunfire-auto", self)
-		end
+	if self.helper then
+		self.helper:runScripts("gunfire-auto", self)
+	end
 
 	self.weapon:setStance(self.stances.fire)
 
@@ -227,28 +217,28 @@ function GunFireFixed:auto()
 		util.wait(self.stances.fire.duration)
 	end
 
-		if self.helper then self.helper:runScripts("gunfire-postauto", self) end
+	if self.helper then self.helper:runScripts("gunfire-postauto", self) end
 
-		self.cooldownTimer = self.fireTime --* self.energymax
+	self.cooldownTimer = self.fireTime --* self.energymax
 
- 	--FU/FR special checks
-				self:hasShotgunReload()--reloads as a shotgun?
-				self:checkAmmo() --is it an ammo user?
+	--FU/FR special checks
+	self:hasShotgunReload()--reloads as a shotgun?
+	self:checkAmmo() --is it an ammo user?
 
 	self:setState(self.cooldown)
 end
 
 function GunFireFixed:burst() -- burst auto should be a thing here
-		--ammo
-		self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?
-		self:checkMagazine()--ammo system magazine check
-		-- recoil stats reset every time we shoot so that it is consistent
-		self.recoilSpeed = (config.getParameter("recoilSpeed",200))
-		self.recoilForce = (config.getParameter("recoilForce",100))
+	--ammo
+	self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?
+	self:checkMagazine()--ammo system magazine check
+	-- recoil stats reset every time we shoot so that it is consistent
+	self.recoilSpeed = (config.getParameter("recoilSpeed",200))
+	self.recoilForce = (config.getParameter("recoilForce",100))
 
-		if self.helper then
-			self.helper:runScripts("gunfire-burst", self)
-		end
+	if self.helper then
+		self.helper:runScripts("gunfire-burst", self)
+	end
 	self.weapon:setStance(self.stances.fire)
 
 	local shots = self.burstCount
@@ -294,11 +284,11 @@ end
 
 function GunFireFixed:muzzleFlash()
 	if not self.muzzleNoFlash then
-	animator.setPartTag("muzzleFlash", "variant", math.random(1, 3))
-	animator.setAnimationState("firing", "fire")
-	animator.burstParticleEmitter("muzzleFlash")
+		animator.setPartTag("muzzleFlash", "variant", math.random(1, 3))
+		animator.setAnimationState("firing", "fire")
+		animator.burstParticleEmitter("muzzleFlash")
 
-	animator.setLightActive("muzzleFlash", true)
+		animator.setLightActive("muzzleFlash", true)
 	end
 	animator.playSound("fire")
 end
@@ -325,13 +315,13 @@ function GunFireFixed:fireProjectile(projectileType, projectileParams, inaccurac
 			params.timeToLive = util.randomInRange(params.timeToLive)
 		end
 		projectileId = world.spawnProjectile(
-				projectileType,
-				vec2.add((firePosition or self:firePosition()), (self.fireOffset or {0,0})),
-				activeItem.ownerEntityId(),
-				self:aimVector(inaccuracy or self.inaccuracy),
-				false,
-				params
-			)
+			projectileType,
+			vec2.add((firePosition or self:firePosition()), (self.fireOffset or {0,0})),
+			activeItem.ownerEntityId(),
+			self:aimVector(inaccuracy or self.inaccuracy),
+			false,
+			params
+		)
 	end
 	--Recoil here
 	self:applyRecoil()
@@ -368,7 +358,7 @@ function GunFireFixed:uninit()
 	if (self.isAmmoBased == 1) then
 		if self.magazineAmount then
 			activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
-			activeItem.setInstanceValue("isReloading",self.isReloading)
+			activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
 		end
 	end
 end
@@ -428,9 +418,9 @@ function GunFireFixed:isChargeUp()
 end
 
 function GunFireFixed:hasShotgunReload()
-				self.isReloader = config.getParameter("isReloader",0)			-- is this a shotgun style reload?
-		if self.isReloader >= 1 then
-			animator.playSound("cooldown") -- adds sound to shotgun reload
+	self.isReloader = config.getParameter("isReloader",0)			-- is this a shotgun style reload?
+	if self.isReloader >= 1 then
+		animator.playSound("cooldown") -- adds sound to shotgun reload
 		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then
 				animator.playSound("fuReload") -- adds new sound to reload
 		end
@@ -438,7 +428,7 @@ function GunFireFixed:hasShotgunReload()
 end
 
 function GunFireFixed:checkAmmo(force)
-						 -- set the cursor to the Reload cursor
+	 -- set the cursor to the Reload cursor
 	if (self.isAmmoBased==1) then	-- ammo bar color check
 		if self.currentAmmoPercent <= 0 then
 			self.barColor = {0,0,0,255}
@@ -464,60 +454,60 @@ function GunFireFixed:checkAmmo(force)
 		end
 	end
 	if (self.isAmmoBased==1) and (force or (self.magazineAmount <= 0)) then
-			self.isReloading=true
-			activeItem.setInstanceValue("isReloading",self.isReloading)
-			if self.burstCooldown then
-				self.cooldownTimer = self.burstCooldown + self.reloadTime
-			else
-				self.cooldownTimer = self.fireTime + self.reloadTime
+		self.isReloading=true
+		activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
+		if self.burstCooldown then
+			self.cooldownTimer = self.burstCooldown + self.reloadTime
+		else
+			self.cooldownTimer = self.fireTime + self.reloadTime
+		end
+		status.addEphemeralEffect("reloadReady", 0.5)
+		self.magazineAmount = self.magazineSize
+		self.reloadTime = config.getParameter("reloadTime",0)
+		-- set the cursor to the Reload cursor
+		if (self.reloadTime < 1) then
+			if animator.hasSound("fuReload") then
+				animator.playSound("fuReload") -- adds new sound to reload
 			end
-			status.addEphemeralEffect("reloadReady", 0.5)
-			self.magazineAmount = self.magazineSize
-			self.reloadTime = config.getParameter("reloadTime",0)
-						-- set the cursor to the Reload cursor
-			if (self.reloadTime < 1) then
-				if animator.hasSound("fuReload") then
-					animator.playSound("fuReload") -- adds new sound to reload
-				end
-			elseif (self.reloadTime >= 2.5) then
-				if animator.hasSound("fuReload5") then
-					animator.playSound("fuReload5") -- adds new sound to reload
-				end
-			elseif (self.reloadTime >= 2) then
-				if animator.hasSound("fuReload4") then
-					animator.playSound("fuReload4") -- adds new sound to reload
-				end
-			elseif (self.reloadTime >= 1.5) then
-				if animator.hasSound("fuReload3") then
-					animator.playSound("fuReload3") -- adds new sound to reload
-				end
-			elseif (self.reloadTime >= 1) then
-				if animator.hasSound("fuReload2") then
-					animator.playSound("fuReload2") -- adds new sound to reload
-				end
+		elseif (self.reloadTime >= 2.5) then
+			if animator.hasSound("fuReload5") then
+				animator.playSound("fuReload5") -- adds new sound to reload
 			end
+		elseif (self.reloadTime >= 2) then
+			if animator.hasSound("fuReload4") then
+				animator.playSound("fuReload4") -- adds new sound to reload
+			end
+		elseif (self.reloadTime >= 1.5) then
+			if animator.hasSound("fuReload3") then
+				animator.playSound("fuReload3") -- adds new sound to reload
+			end
+		elseif (self.reloadTime >= 1) then
+			if animator.hasSound("fuReload2") then
+				animator.playSound("fuReload2") -- adds new sound to reload
+			end
+		end
 
 		--check current ammo and create an ammo bar to inform the user
 		self.currentAmmoPercent = 1.0
 		self.barColor = {0,250,112,125}
 
 		if (self.fireMode == "primary") then
-			world.sendEntityMessage(
-				activeItem.ownerEntityId(),
-				"setBar",
-				"ammoBar",
-				self.currentAmmoPercent,
-				self.barColor
-			)
-			if (self.isAmmoBased == 1) then
-				if self.magazineAmount then
-					activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
-				end
-				activeItem.setInstanceValue("isReloading",self.isReloading)
+			if self.magazineAmount and self.magazineSize and (self.magazineSize > 1) then
+				world.sendEntityMessage(
+					activeItem.ownerEntityId(),
+					"setBar",
+					"ammoBar",
+					self.currentAmmoPercent,
+					self.barColor
+				)
 			end
+			if self.magazineAmount then
+				activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
+			end
+			activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
 		end
-			self.weapon:setStance(self.stances.cooldown)
-			self:setState(self.cooldown)
+		self.weapon:setStance(self.stances.cooldown)
+		self:setState(self.cooldown)
 	end
 end
 
@@ -541,13 +531,15 @@ function GunFireFixed:checkMagazine(evalOnly)
 			self.barColor = {0,255,0,255}
 		end
 		if (self.fireMode == "primary") then
-			world.sendEntityMessage(
-				activeItem.ownerEntityId(),
-				"setBar",
-				"ammoBar",
-				self.currentAmmoPercent,
-				self.barColor
-		)
+			if self.magazineAmount and self.magazineSize and (self.magazineSize > 1) then
+				world.sendEntityMessage(
+					activeItem.ownerEntityId(),
+					"setBar",
+					"ammoBar",
+					self.currentAmmoPercent,
+					self.barColor
+				)
+			end
 		end
 		if not evalOnly then
 			if self.magazineAmount <= 0 then
@@ -577,10 +569,10 @@ function GunFireFixed:applyRecoil()
 end
 
 function GunFireFixed:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil
-		if not mcontroller.onGround() then
-		 self.recoilForce = self.recoilForce * 0.5
-		end
-		if mcontroller.crouching() then
-		 self.recoilForce = self.recoilForce * 0.25
-		end
+	if not mcontroller.onGround() then
+		self.recoilForce = self.recoilForce * 0.5
+	end
+	if mcontroller.crouching() then
+		self.recoilForce = self.recoilForce * 0.25
+	end
 end
