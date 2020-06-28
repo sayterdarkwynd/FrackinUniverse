@@ -6,14 +6,8 @@ function init()
 	self = config.getParameter("duplicator")
 	self.craftTime = config.getParameter("craftTime")
 	storage.timer = storage.timer or self.craftTime -- making this, storage.crafting, etc. persistent so that on server terminus, nothing is lost.
+	storage.timer2 = storage.timer2 or 1.0
 	math.randomseed(os.time())
-end
-
-function orphanDebug()
-	for item,val in pairs(self.fuel) do
-		local buffer=root.itemConfig(item).config.fuelAmount
-		sb.logInfo("%s: internal=%s, itemval=%s",item,val,buffer or 0)
-	end
 end
 
 function update(dt)
@@ -34,10 +28,12 @@ function update(dt)
 		end
 		self.fuel[fuelSlot]=fuelValue
 	end
-	--item parameter for ship fuel is "fuelAmount"
-	local fuelValueBonus = 0  -- bonus output
 
 	if not storage.crafting then--no point doing further comparisons unless we actually need them.
+		storage.timer2=(storage.timer2 and storage.timer2 - dt) or 1.0
+		if storage.timer2 > 0 then
+			return
+		end
 		if wireCheck() then -- logic wires on? neutronium and antineutronium in?
 			if self.fuel[fuelSlot] > 0 then -- fueled?
 				if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
@@ -85,6 +81,7 @@ function update(dt)
 				end
 			end
 		end
+		storage.timer2=1.0
 	end
 	
 	if storage.timer <= 0 then
