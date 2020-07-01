@@ -104,17 +104,22 @@ function populateRacialDescription(race)
 	local char = ""
 	
 	str=string.gsub(str,"\r\n","\n")
+	local str2=str
+	while str~=string.gsub(str," \n","\n") do
+		str=string.gsub(str," \n","\n")
+	end
+	--[[str=string.gsub(str,"    \n","\n")
 	str=string.gsub(str,"  \n","\n")
-	str=string.gsub(str,"  ",">")
+	str=string.gsub(str," \n","\n")]]
+	str=string.gsub(str,"\n  ","\n>")
 	local wordWall={}
 	local line={}
 	local sentence=""
 	
 	for i = 1, string.len(str) do
 		local c = string.sub(str, i, i)
-		if c ~= "\n" then
-			table.insert(line,c)
-		else
+		if c == "\n" or i==string.len(str) then
+			if (i==(string.len(str))) then table.insert(line,c) end
 			if util.tableSize(line) > 0 then
 				local sentenceSize=0
 				local word={}
@@ -177,6 +182,8 @@ function populateRacialDescription(race)
 				sentence=""
 			end
 			line={}
+		else
+			table.insert(line,c)
 		end
 	end
 	--sb.logInfo("%s",wordWall)
