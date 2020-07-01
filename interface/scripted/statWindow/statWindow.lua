@@ -1,4 +1,5 @@
 -- THIS IS THE FRACKIN RACES ONE
+require "/scripts/util.lua"
 
 function init()
 	self.data = root.assetJson("/interface/scripted/statWindow/statWindow.config")
@@ -81,6 +82,7 @@ function techEquip()
 	player.interact("ScriptPane", "/interface/scripted/techupgrade/techupgradegui.config", player.id())
 end
 
+
 function populateRacialDescription(race)
 	widget.clearListItems("racialDesc.textList")
 	
@@ -101,10 +103,92 @@ function populateRacialDescription(race)
 	local firstskip = false
 	local char = ""
 	
+	str=string.gsub(str,"\r\n","\n")
+	str=string.gsub(str,"  \n","\n")
+	str=string.gsub(str,"  ",">")
+	local wordWall={}
+	local line={}
+	local sentence=""
+	
+	for i = 1, string.len(str) do
+		local c = string.sub(str, i, i)
+		if c ~= "\n" then
+			table.insert(line,c)
+		else
+			if util.tableSize(line) > 0 then
+				local sentenceSize=0
+				local word={}
+				local wordTest=""
+				local colorTest=""
+				for i = 1, #line do
+					local c2=line[i]
+					if i==#line or c2==" " then
+						if i==#line and not (c2==" ") then
+							table.insert(word,c2)
+						end
+						local heightened=false
+						for k = 1, #word do
+							local c3 = word[k]
+							if c3=="^" then
+								heightened=true
+								colorTest=c3
+							elseif heightened and c3==";" then
+								colorTest=colorTest..c3
+								heightened=false
+							elseif not heightened then
+								wordTest=wordTest..c3
+							else
+								colorTest=colorTest..c3
+							end
+						end
+						sb.logInfo("%s::%s",wordTest,colorTest)
+						--sb.logInfo("%s",wordTest)
+						--sb.logInfo("%s",colorTest)
+						if (string.len(sentence) + string.len(wordTest)) > 60 then
+							table.insert(wordWall,sentence)
+							sentence=colorTest
+						end
+						if string.len(sentence) > 0 then sentence = sentence.." " end
+						sentence=sentence..table.concat(word)
+						word={}
+						wordTest=""
+					else
+						table.insert(word,c2)
+					end
+				end
+				
+				--[[local heightened=false
+				for j = 1, #line do
+					local c2 =line[j]
+					if c2=="^" then
+						heightened=true
+					elseif heightened and c2==";" then
+						heightened=false
+					elseif heightened then
+						--ignore
+					else
+						
+					end
+				end
+				local cat=table.concat(line)
+				local uncat
+				table.insert(wordWall,cat)]]
+				table.insert(wordWall,sentence)
+				sentence=""
+			end
+			line={}
+		end
+	end
+	--sb.logInfo("%s",wordWall)
+	for i = 1, #wordWall do
+		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
+		widget.setText(listItem..".trait", wordWall[i])
+	end
+	return
 	--Some text editors use the windows line ending, like notepad++
 	--We need to normalize this to just use the unix style ending (\n), as Windows line endings are CRLF (\r\n) and cause double-newlines.
 	
-	for i = 1, string.len(str) do
+	--[[for i = 1, string.len(str) do
 		char = string.sub(str, i, i)
 		
 		if char == "\n" then
@@ -149,13 +233,14 @@ function populateRacialDescription(race)
 			char = string
 			str = string.format("%s%s", str, char) -- At this moment, I learned how important string.format truly is. Its all mightyness is able to merge % without breaking!
 		end
-	end
+	end]]
 	
 	-- using 'for i' loop because 'i/pairs' tends to fuck up the order
+	--[[
 	for i = 1, #lists do
 		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
 		widget.setText(listItem..".trait", lists[i])
-	end
+	end]]
 end
 
 function upgradeEquipmentMenu()
