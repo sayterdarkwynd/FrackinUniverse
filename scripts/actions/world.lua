@@ -206,7 +206,7 @@ function interactObject(args)
   if not world.entityExists(args.entity) then return false end
   if not (world.entityType(args.entity) == "object") then return false end
   local pass,result=pcall(world.callScriptedEntity,args.entity, "onInteraction", {sourceId = entity.id()})
-  return (pass and result) or nil
+  return (pass and result) or false
 end
 
 -- param objectEntity
