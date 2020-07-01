@@ -4,10 +4,15 @@ function init()
 	self.foodTypes = config.getParameter("foodTypes")
 	self.badEffects = config.getParameter("badStuff", {})
 	self.bonusEffects = config.getParameter("bonusStuff", {})
+	self.frEnabled=status.statusProperty("fr_enabled")
 	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	
 	self.dietConfig = root.assetJson("/scripts/fr_diets.config")
 	local success
+	if not self.frEnabled then
+		effect.expire()
+		return
+	end
 	if self.species then
 		success, self.speciesConfig = pcall(
 			function () 
