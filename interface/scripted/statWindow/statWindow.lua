@@ -108,9 +108,8 @@ function populateRacialDescription(race)
 	while str~=string.gsub(str," \n","\n") do
 		str=string.gsub(str," \n","\n")
 	end
-	--[[str=string.gsub(str,"    \n","\n")
-	str=string.gsub(str,"  \n","\n")
-	str=string.gsub(str," \n","\n")]]
+	str=string.gsub(str,"\n      ","\n>>>")
+	str=string.gsub(str,"\n    ","\n>>")
 	str=string.gsub(str,"\n  ","\n>")
 	local wordWall={}
 	local line={}
@@ -146,9 +145,6 @@ function populateRacialDescription(race)
 								colorTest=colorTest..c3
 							end
 						end
-						sb.logInfo("%s::%s",wordTest,colorTest)
-						--sb.logInfo("%s",wordTest)
-						--sb.logInfo("%s",colorTest)
 						if (string.len(sentence) + string.len(wordTest)) > 60 then
 							table.insert(wordWall,sentence)
 							sentence=colorTest
@@ -161,23 +157,6 @@ function populateRacialDescription(race)
 						table.insert(word,c2)
 					end
 				end
-				
-				--[[local heightened=false
-				for j = 1, #line do
-					local c2 =line[j]
-					if c2=="^" then
-						heightened=true
-					elseif heightened and c2==";" then
-						heightened=false
-					elseif heightened then
-						--ignore
-					else
-						
-					end
-				end
-				local cat=table.concat(line)
-				local uncat
-				table.insert(wordWall,cat)]]
 				table.insert(wordWall,sentence)
 				sentence=""
 			end
@@ -186,68 +165,10 @@ function populateRacialDescription(race)
 			table.insert(line,c)
 		end
 	end
-	--sb.logInfo("%s",wordWall)
 	for i = 1, #wordWall do
 		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
 		widget.setText(listItem..".trait", wordWall[i])
 	end
-	return
-	--Some text editors use the windows line ending, like notepad++
-	--We need to normalize this to just use the unix style ending (\n), as Windows line endings are CRLF (\r\n) and cause double-newlines.
-	
-	--[[for i = 1, string.len(str) do
-		char = string.sub(str, i, i)
-		
-		if char == "\n" then
-			if firstskip == true then
-				skip = true
-				if startFound then
-					skipped = skipped + 1
-					table.insert(splitters, i-skipped)
-				else
-					startFound = true
-				end
-			else
-				firstskip = true
-			end
-		end
-		
-		if startFound then
-			if skip then
-				skip = false
-			else
-				table.insert(strTbl, char)
-			end
-		else
-			skipped = skipped + 1
-		end
-	end
-	
-	str = ""
-	for loc, string in ipairs(strTbl) do
-		if loc == #strTbl then
-			str = string.gsub(str..string, "- ", "", 1)
-			table.insert(lists, str)
-		else
-			for _,loc2 in ipairs(splitters) do
-				if loc == loc2 then
-					str = string.gsub(str, "- ", "", 1)
-					table.insert(lists, str)
-					str = ""
-				end
-			end
-			
-			char = string
-			str = string.format("%s%s", str, char) -- At this moment, I learned how important string.format truly is. Its all mightyness is able to merge % without breaking!
-		end
-	end]]
-	
-	-- using 'for i' loop because 'i/pairs' tends to fuck up the order
-	--[[
-	for i = 1, #lists do
-		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
-		widget.setText(listItem..".trait", lists[i])
-	end]]
 end
 
 function upgradeEquipmentMenu()
