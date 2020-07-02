@@ -53,8 +53,10 @@ function spawn()
     if not self.outOfSight or not world.isVisibleToPlayer({spawnPosition[1] - 3, spawnPosition[2] - 3, spawnPosition[1] + 3, spawnPosition[2] + 3}) then
       local npcType = util.randomFromList(self.npcTypes)
       local npcSpecies = util.randomFromList(self.npcSpecies)      
+      local spawnchance = self.spawnchance
+	  local chanceofnone = math.random(1, 100)
 	  self.npcParams.level = self.npcLevel and util.randomInRange(self.npcLevel) or world.threatLevel()
-	  if npcType ~= "nada" then
+	  if chanceofnone < spawnchance then
 		npcId = world.spawnNpc(spawnPosition, npcSpecies, npcType, self.npcParams.level, nil, npcParameter or {})
 	  else
         storage.stock = storage.stock - 1
