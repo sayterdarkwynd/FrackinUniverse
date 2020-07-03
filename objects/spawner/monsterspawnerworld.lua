@@ -52,8 +52,10 @@ function spawn()
 
     if not self.outOfSight or not world.isVisibleToPlayer({spawnPosition[1] - 3, spawnPosition[2] - 3, spawnPosition[1] + 3, spawnPosition[2] + 3}) then
       local monsterType = util.randomFromList(self.monsterTypes)
+      local spawnchance = self.spawnchance
+	  local chanceofnone = math.random(1, 100)
       self.monsterParams.level = self.monsterLevel and util.randomInRange(self.monsterLevel) or world.threatLevel()
-      if monsterType ~= "nada" then
+	  if chanceofnone < spawnchance then
          monsterId = world.spawnMonster(monsterType, spawnPosition, self.monsterParams or {})
 	  else 
         storage.stock = storage.stock - 1
