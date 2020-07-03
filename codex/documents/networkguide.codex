@@ -13,7 +13,13 @@
 
 	"Storage bridges work with more than just ordinary containers. Almost any object which can be interacted with that has item slots can be linked to a storage bridge. This includes some FrackinUniverse crafting stations and a few misc. objects that might already have power nodes (but no input/output nodes). If you find yourself uncertain about which nodes to use, remember that storage bridge nodes always function as ITN input/output nodes.",
 
+	"Point Sensor: Made in the nanofabricator. Detects object placement points, to allow for more precise placement of Storage Bridges. Bridges select a single container based on the distance between themselves and object placement points.",
+
 	"Item Transference Devices (ITDs) are additional core components of the ITN system. While ITDs are capable of moving all items by default, you will need special token items to filter for currencies or items the ITD does not recognize. You can place them wherever you want as long as you can keep their wiring straight. Mastery of the ITD will bring mastery over the entire ITN system.",
+
+	"Overflow: ITDs will sound off alarms if you are trying to move too much into a container that does not have space. They will also slow down their processing speed. If you have alarms sounding and periodic lag, you should work on improving flow control.",
+
+	"Stack Move: To move stacks of specific sizes, place the desired stack size in your filter area. This works well with Even Split and Slot Split, as it will only move stacks there are enough to do so equally. It does not, however, account for amounts in the destination.",
 
 	"In order to set up a basic ITN network, connect the red output node for a container's storage bridge to the second blue input node for an ITD, and then connect the ITD's red output node to the blue input node of a second container's storage bridge. Now all items put into the first container will be automatically moved to the second one.",
 
@@ -41,7 +47,7 @@
   Armor (Including back items & augments)
   Unhandled (Anything not in the other categories)",
 
-	"Once you have a basic ITN setup (described on page 6), you can make a terminal at the electronics/power center. By connecting the output of a container's storage bridge to a terminal's input node, you can see and search through every item stored in that container, and pull them into your inventory - but you cannot send items back through the terminal. A single terminal can be connected to multiple containers this way, letting you view and pull items from multiple containers at once.",
+	"Once you have a basic ITN setup (described on page 9), you can make a terminal at the electronics/power center. By connecting the output of a container's storage bridge to a terminal's input node, you can see and search through every item stored in that container, and pull them into your inventory - but you cannot send items back through the terminal. A single terminal can be connected to multiple containers this way, letting you view and pull items from multiple containers at once.",
 
 	"A common, useful storage setup is to have rows of containers and storage bridges all linked to a single terminal (or series of terminals) so you can pull from all of them, with a chest nearby and its storage bridge linked to multiple ITDs that will automatically sort any items you dump into it into specific containers in the network without you having to do anything else.",
 
@@ -50,8 +56,8 @@
 	"Dos & Don'ts:
 
   Do daisy-chain multiple containers. Use ITDs to draw items out of a container dumped to by another ITD to help automatically compress item stacks where possible and to give you more item-specific storage space.
-
-  Do Not link the output and input nodes of ITDs directly to one another. This is redundant and can be a source of lag, and ITD configurations do not stack without a separating container.",
+  
+  Do not try to move large amounts of items into a container which already has many items in it. Do not daisy-chain ITDs. These are sources of lag, and ITD configurations do not stack without a separating container.",
 
 	"Dos & Don'ts:
 
