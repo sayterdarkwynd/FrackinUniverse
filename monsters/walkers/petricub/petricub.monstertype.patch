@@ -33,5 +33,37 @@
     "op": "add",
     "path": "/dropPools/0/shadowbow",
     "value": "petricubHunting"
-  }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-leap",
+        "cooldown": 4,
+        "parameters": {
+          "minimumRange": 5,
+          "maximumRange": 20,
+          "windupState": "idle",
+          "windupTime": 0.5,
+          "leapVelocity": 30,
+          "collisionCheck": true,
+          "highArc": false,
+          "leapState": "leapjump",
+          "fallState": "leapfall",
+          "winddownTime": 2
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrantfull"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 75
+  }  
 ]
