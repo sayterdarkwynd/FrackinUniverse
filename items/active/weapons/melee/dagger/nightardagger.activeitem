@@ -74,7 +74,7 @@
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
 
   "improvedParameters" : {
-          "animation" : "daggerglow.animation",
+    "animation" : "daggerglow.animation",
 	  "animationParts" : {
 	    "handle" : "",
 	    "blade" : "nightardagger.png",
@@ -82,11 +82,17 @@
 	  },  
 	  "inventoryIcon" : "nightardagger.png",
 	  "shortdescription" : "Honed Nightar Knife",
-	  "description" : "Sharpened and improved."  
+	  "description" : "Sharpened and improved.",
+    "critBonus" : 3,
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }        
   },
   
   "upgradeParameters" : {
-          "animation" : "daggerglow.animation",
+    "animation" : "daggerglow.animation",
 	  "animationParts" : {
 	    "handle" : "",
 	    "blade" : "nightardagger.png",
@@ -96,7 +102,11 @@
 	  "shortdescription" : "Peerless Nightar Knife",
 	  "description" : "The finest edge possible.",
 	  "critChance" : 2,
-	  "critBonus" : 5	  
+	  "critBonus" : 5,
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }   	  
   }
-  
 }
