@@ -31,7 +31,7 @@ function update(dt)
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=(self.healingRate - self.penaltyRate)}})
 		--status.modifyResource("health", (self.healingRate - self.penaltyRate) * dt)
 	else
-		if (status.stat("poisonResistance",0) <= 0.45) then
+		if (status.stat("poisonResistance") <= 0.45) then
 			self.tickTimer = self.tickTimer - dt
 			if self.tickTimer <= 0 then
 				self.tickTimer = self.tickTime

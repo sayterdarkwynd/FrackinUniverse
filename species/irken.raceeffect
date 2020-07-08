@@ -9,10 +9,6 @@
 			"effectiveMultiplier": 1.15
 		},
 		{
-			"stat": "healthRegen",
-			"amount": 0.03
-		},
-		{
 			"stat": "mentalProtection",
 			"amount": 0.30
 		},
@@ -55,8 +51,15 @@
 			"biomes": [ "snow", "snowdark", "tundra", "arctic", "arcticdark", "nitrogensea", "icemoon", "frozenvolcanic", "icewaste", "icewastedark" ],
 			"stats": [
 				{ "stat": "protection", "effectiveMultiplier": 0.4 },
-				{ "stat": "maxHealth", "effectiveMultiplier": 0.75 },
-				{ "stat": "healthRegen", "amount": -0.03 }
+				{ "stat": "maxHealth", "effectiveMultiplier": 0.75 }
+			],
+			"scripts" : [
+				{
+					"script" : "/scripts/fr_scripts/healthRegen.lua",
+					"args" : {
+						"healingRate" : -0.003
+					}
+				}
 			]
 		}
 	],
@@ -86,6 +89,14 @@
 				"stat": "powerMultiplier",
 				"effectiveMultiplier": 1.2
 			}]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/healthRegen.lua",
+			"args" : {
+				"healingRate" : 0.003
+			}
 		}
 	]
 }

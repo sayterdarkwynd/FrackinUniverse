@@ -4,7 +4,7 @@ function init()
 	slows["booze2"] = 0.65
 	status.setStatusProperty("slows", slows)
 	script.setUpdateDelta(1)
-	setParticleConfig()
+	setParticleConfig(0)
 end
 
 function update(dt)
@@ -13,16 +13,17 @@ function update(dt)
 		runModifier = 0.75,
 		jumpModifier = 0.65
 	})
-	particleConfig.position=entity.position()
+	setParticleConfig(dt)
 	world.sendEntityMessage(entity.id(),"fu_specialAnimator.spawnParticle",particleConfig)
 end
 
-
-function setParticleConfig()
-	particleConfig={type = "textured",image = "/animations/blur/blur2.png",velocity = {0, -2},approach = {15, 15},destructionAction = "shrink",size = 1,layer = front,variance = {initialVelocity = {1.0, 1.0}}}
-	local dt=script.updateDt()
-	particleConfig.timeToLive = dt*15
-	particleConfig.destructionTime = dt*15.0
+function setParticleConfig(dt)
+	if not particleConfig then
+		particleConfig={type = "textured",image = "/animations/blur/blur2.png",destructionAction = "fade",size = 1,layer = "front",variance = {rotation=360,initialVelocity = {0.0, 0.0}}}
+	end
+	particleConfig.position=entity.position()
+	particleConfig.timeToLive = dt*7.5
+	particleConfig.destructionTime = dt*3.75
 end
 
 function activateVisualEffects()

@@ -7,6 +7,6 @@ function init()
 		status.modifyResource("damageAbsorption",-status.resource("damageAbsorption"))
 	end
 	if status.isResource("shieldStamina") then
-		status.modifyResource("damageAbsorption",-status.resource("damageAbsorption"))
+		status.modifyResource("shieldStamina",-status.resource("shieldStamina"))
 	end
 end

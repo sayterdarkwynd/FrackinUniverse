@@ -74,7 +74,7 @@
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
 
   "improvedParameters" : {
-          "animation" : "daggerglow.animation",
+    "animation" : "daggerglow.animation",
 	  "animationParts" : {
 	    "handle" : "",
 	    "blade" : "nightardagger.png",
@@ -82,21 +82,46 @@
 	  },  
 	  "inventoryIcon" : "nightardagger.png",
 	  "shortdescription" : "Honed Nightar Knife",
-	  "description" : "Sharpened and improved."  
+	  "description" : "Sharpened and improved.",
+    "critBonus" : 3,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }        
   },
-  
+
   "upgradeParameters" : {
-          "animation" : "daggerglow.animation",
-	  "animationParts" : {
-	    "handle" : "",
-	    "blade" : "nightardagger.png",
-	    "bladefullbright" : "nightardaggerfullbright.png"
-	  },  
-	  "inventoryIcon" : "nightardagger.png",
-	  "shortdescription" : "Peerless Nightar Knife",
+    "animation" : "comboglowshortsword.animation",
+    "animationParts" : {
+      "handle" : "",
+      "blade" : "nightarshortsword.png",
+      "bladefullbright" : "nightarshortswordfullbright.png"  
+    },  
+    "inventoryIcon" : "nightarshortsword.png",
+    "shortdescription" : "Peerless Nightar Blade",
+    "description" : "Gleams with a bright darkness.",
+    "critChance" : 2,
+    "critBonus" : 3.5,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }       
+  },
+
+  "upgradeParameters2" : { 
+	  "shortdescription" : "Legendary Nightar Knife",
 	  "description" : "The finest edge possible.",
 	  "critChance" : 2,
-	  "critBonus" : 5	  
+	  "critBonus" : 5,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }   	  
   }
-  
 }

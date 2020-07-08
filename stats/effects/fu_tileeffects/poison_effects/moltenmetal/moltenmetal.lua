@@ -30,11 +30,11 @@ function activateVisualEffects()
 end
 
 function setEffectTime()
-  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.5))
+  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("fireResistance") ),0.5))
 end
 
 function update(dt)
-  	if ( status.stat("fireResistance",0)  >= 1.0 ) then
+  	if ( status.stat("fireResistance")  >= 1.0 ) then
   	  deactivateVisualEffects()
 	  effect.expire()
 	end

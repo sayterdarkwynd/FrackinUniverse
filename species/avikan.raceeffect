@@ -19,8 +19,15 @@
 			"biomes" : [ "scorchedcity", "desert", "desertwastes", "desertwastesdark", "magma", "magmadark", "volcanic", "volcanicdark" ],
 			"stats" : [
 				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.15 },
-				{ "stat" : "protection", "effectiveMultiplier" : 1.05 },
-				{ "stat" : "healthRegen", "amount" : 0.025 }
+				{ "stat" : "protection", "effectiveMultiplier" : 1.05 }
+			],
+			"scripts" : [
+				{
+					"script" : "/scripts/fr_scripts/healthRegen.lua",
+					"args" : {
+						"healingRate" : 0.005
+					}
+				}
 			]
 		},
 		{

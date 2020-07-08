@@ -10,7 +10,7 @@ function init()
 end
 
 function getTechBonus()
-	return 1 + status.stat("phaseattackBonus",0)
+	return 1 + status.stat("phasetechBonus")
 end
 
 function update(dt)

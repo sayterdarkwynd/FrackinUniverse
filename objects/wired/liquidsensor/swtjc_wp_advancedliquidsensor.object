@@ -2,15 +2,16 @@
   "objectName" : "swtjc_wp_advancedliquidsensor",
   "colonyTags" : ["wired"],
   "printable" : false,
+  "objectType" : "container",
   "rarity" : "Common",
-  "description" : "This can detect and discriminate between the presence of various liquids.",
+  "description" : "This can detect the presence of a specific liquid.",
   "shortdescription" : "Advanced Liquid Sensor",
   "race" : "generic",
   "category" : "wire",
   "price" : 10,
 
-  "floranDescription" : "Thisss can detect and dissscriminate between the presssence of variousss liquidsss.",
-  "glitchDescription" : "Impressed. This can detect and discriminate between the presence of various liquids.",
+  "floranDescription" : "Thiss detectss the pressence of a sspecific liquid.",
+  "glitchDescription" : "Impressed. This can detect the presence of a specific liquid.",
 
   "inventoryIcon" : "liquidsensoricon.png",
 
@@ -57,6 +58,16 @@
     }
   ],
 
+  "inputSlot" : 1,
+  "acceptsItems" : true,
+  "itemAgeMultiplier" : 0.0,
+  
+  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
+	"slotCount" : 1,
+  "uiConfig" : "/interface/swtjc_wp_advancedliquidsensor/swtjc_wp_advancedliquidsensor.config",
+  "frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+
   "scripts" : [ "swtjc_wp_advancedliquidsensor.lua" ],
   "scriptDelta" : 2,
 
@@ -66,13 +77,5 @@
   },
   "animationPosition" : [0, 0],
 
-  "outputNodes" : [ [0, 0], [-1, 1], [0, 1], [1, 1], [-1, 0], [1, 0], [-1, -1], [0, -1], [1, -1] ], //1st node in this array is reserved for miscellaneous liquids that are not defined below.
-
-//  "defaultOnAnimation" : "other",
-//  "defaultOffAnimation" : "off",
-  "liquidCount" : 9, //Total number of liquids to discriminate between. All others will be treated as "miscellaneous", and will be handled by the "default" node.
-
-  "liquidArrayIDs" : [1, 6, 12, 2, 8, 3, 11, 5, 13], //These are the IDs of liquids to specifically discriminate. For example, 1=water, 2=lava, 3=poison, etc.
-  "liquidArrayNodes" : [1, 2, 3, 4, 4, 5, 6, 7, 8], //Each discriminated liquid will be associated with one or more output nodes.
-  "liquidArrayAnimations" : ["water", "water", "water", "lava", "lava", "poison", "other", "other", "other"] //Determines which animation frame to use when the sensor detects a particular liquid.
+  "outputNodes" : [ [0, 0] ]
 }

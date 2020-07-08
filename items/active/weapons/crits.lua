@@ -3,7 +3,8 @@ Crits = {}
 function Crits:setCritDamage(damage)
     local critChance = config.getParameter("critChance", 1) + status.stat("critChance", 0)  -- Integer % chance to activate crit
     local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus", 0)     --  % damage bonus to critical hits
-    local critDamage = status.stat("critDamage", 0)  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
+    local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
+	--status.stat ONLY accepts ONE argument. and returns 0.0 if it is not found
 	local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
     -- Magnorbs get an inherent +1% crit chance
     if heldItem and root.itemHasTag(heldItem, "magnorb") then

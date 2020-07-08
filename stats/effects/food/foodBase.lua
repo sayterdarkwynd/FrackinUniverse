@@ -1,13 +1,18 @@
 function init()
-	if status.statPositive("foodImmunity") then return end	
-	if not world.entitySpecies(entity.id()) then return end
+	if status.statPositive("foodImmunity") then effect.expire() return end	
+	if not world.entitySpecies(entity.id()) then self.originalDuration=effect.duration() effect.modifyDuration(script.updateDt()*2) return end
 	self.foodTypes = config.getParameter("foodTypes")
 	self.badEffects = config.getParameter("badStuff", {})
 	self.bonusEffects = config.getParameter("bonusStuff", {})
+	self.frEnabled=status.statusProperty("fr_enabled")
 	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	
 	self.dietConfig = root.assetJson("/scripts/fr_diets.config")
 	local success
+	if not self.frEnabled then
+		effect.expire()
+		return
+	end
 	if self.species then
 		success, self.speciesConfig = pcall(
 			function () 
@@ -18,7 +23,6 @@ function init()
 	if not success then self.speciesConfig = {} end
 	self.diet = self.speciesConfig.diet
 	if self.diet == nil then self.diet = "omnivore" end -- Treat races without diets as omnivores
-	
 	-- TODO: load scripts here
 	
 	-- Grab premade diet
@@ -58,11 +62,14 @@ function init()
 			applyEffect(penalty)
 		end
 	end
+	if self.originalDuration then
+		effect.modifyDuration(self.originalDuration()-self.duration())
+	end
 	self.didInit=true
 end
 
 function update(dt)
-	if not self.didInit then init() end
+	if not self.didInit then init() return end
 	effect.expire()
 end
 

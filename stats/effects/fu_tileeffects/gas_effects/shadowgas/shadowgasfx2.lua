@@ -29,7 +29,7 @@ function init()
       collisionCancelled = false
     }
   }
-	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") or ( status.stat("shadowResistance",0) > 0.5) then
+	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") or ( status.stat("shadowResistance") > 0.5) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	end
@@ -51,7 +51,7 @@ end
 
 
 function update(dt)
-	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") or ( status.stat("shadowResistance",0) > 0.5) then
+	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") or ( status.stat("shadowResistance") > 0.5) then
 	  deactivateVisualEffects()
 	  effect.expire()
 	end

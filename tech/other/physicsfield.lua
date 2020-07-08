@@ -18,7 +18,7 @@ function uninit()
 end
 
 function applyTechBonus()
-  self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
   self.boostSpeed = config.getParameter("boostSpeed") * self.jumpBonus
   self.boostForce = config.getParameter("boostForce") * self.jumpBonus
 end

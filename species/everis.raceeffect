@@ -33,8 +33,15 @@
 		{
 			"weapons" : [ "shield" ],
 			"stats" : [
-				{ "stat" : "protection", "amount" : 15 },
-				{ "stat" : "healthRegen", "amount" : 0.35 }
+				{ "stat" : "protection", "amount" : 15 }
+			],
+			"scripts" : [
+				{
+					"script" : "/scripts/fr_scripts/healthRegen.lua",
+					"args" : {
+						"healingRate" : 0.0035
+					}
+				}
 			]
 		}
 	],

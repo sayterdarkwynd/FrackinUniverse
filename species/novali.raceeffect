@@ -2,11 +2,11 @@
 	"stats": [
 		{
 			"stat": "maxHealth",
-			"baseMultiplier": 0.95
+			"effectiveMultiplier": 0.95
 		},
 		{
 			"stat": "maxEnergy",
-			"baseMultiplier": 1.1
+			"effectiveMultiplier": 1.1
 		},	
 		{
 			"stat": "physicalResistance",
@@ -46,7 +46,7 @@
 		},
 		{
 			"stat": "fallDamageMultiplier",
-			"baseMultiplier": 0.30
+			"effectiveMultiplier": 0.30
 		},
 		{
 			"stat": "iceStatusImmunity",
@@ -71,8 +71,8 @@
 		{
 			"biomes": [ "alien", "jungle", "irradiated", "chromatic" ],
 			"stats": [
-				{ "stat": "maxHealth", "baseMultiplier": 1.15 },
-				{ "stat": "maxEnergy", "baseMultiplier": 1.15 }
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.15 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 }
 			]
 		}
 	],
@@ -89,7 +89,7 @@
 			],
 			"stats": [{
 				"stat": "powerMultiplier",
-				"baseMultiplier": 1.12
+				"effectiveMultiplier": 1.12
 			}]
 		},
 		{
@@ -119,7 +119,7 @@
 				},
 				"nightConfig" : {
 					"stats" : [                  // Applied at night
-						{ "stat" : "maxEnergy", "baseMultiplier" : 0.75 },
+						{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.75 },
 						{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.0 }
 					],
 					"hungerThreshold" : 0.5,     // Hunger% at which regeneration is allowed at night

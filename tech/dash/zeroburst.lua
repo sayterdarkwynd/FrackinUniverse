@@ -45,7 +45,7 @@ end
 
 
 function applyTechBonus()
-  self.dashBonus = 1 + status.stat("dashtechBonus",0) -- apply bonus from certain items and armor
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
   self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
   self.dashYVel = config.getParameter("dashYVel") * self.dashBonus
   self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus

@@ -72,6 +72,27 @@
 		},
 		{
 			"action": "projectile",
+			"type": "neutronbombgrav1",
+			"time": 1,
+			"loop": true,
+			"inheritDamageFactor": 0
+		},
+		{
+			"action": "projectile",
+			"type": "neutronbombgrav2",
+			"time": 1,
+			"loop": true,
+			"inheritDamageFactor": 0
+		},
+		{
+			"action": "projectile",
+			"type": "neutronbombgrav3",
+			"time": 1,
+			"loop": true,
+			"inheritDamageFactor": 0
+		},
+		{
+			"action": "projectile",
 			"type": "twistingpulse",
 			"time": 0.3,
 			"loop": true,
@@ -143,16 +164,6 @@
 	"persistentAudio": "/sfx/melee/barrier_create_electric.ogg",
 
 	"orientationLocked": true,
-	"physicsForces": {
-		"vacuum": {
-			"type": "RadialForceRegion",
-			"outerRadius": 100,
-			"innerRadius": 100,
-			"targetRadialVelocity": -220,
-			"controlForce": 2200,
-			"categoryWhitelist": ["monster", "player", "npc", "vehicle", "itemdrop"]
-		}
-	},
 	"clientEntityMode": "ClientSlaveOnly"
 
 }

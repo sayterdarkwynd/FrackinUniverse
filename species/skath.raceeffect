@@ -15,7 +15,7 @@
 	"weaponEffects": [{
 			"weapons": ["energy"],
 			"stats": [
-				{"stat": "powerMultiplier","baseMultiplier": 1.15},
+				{"stat": "powerMultiplier","effectiveMultiplier": 1.15},
 				{"stat": "critChance","amount": 2}
 			]
 		},
@@ -27,17 +27,24 @@
 		}
 	],
 	"liquidEffects": [{
-		"liquids": [1,6,58,12],
+		"liquids": [1,6,58,12],//water,healing water,wastewater,swampwater
 		"stats": [
-			{"stat": "maxHealth","baseMultiplier": 1.15},
-			{"stat": "physicalResistance","amount": 0.15},
-			{"stat": "healthRegaen","amount": 0.005}
+			{"stat": "maxHealth","effectiveMultiplier": 1.15},
+			{"stat": "physicalResistance","amount": 0.15}
+		],
+		"scripts" : [
+			{
+				"script" : "/scripts/fr_scripts/healthRegen.lua",
+				"args" : {
+					"healingRate" : 0.005
+				}
+			}
 		]
 	}],
 	"envEffects": [{
 			"biomes": ["ocean","oceanfloor"],
 			"stats": [
-				{"stat": "maxHealth","baseMultiplier": 1.25},
+				{"stat": "maxHealth","effectiveMultiplier": 1.25},
 				{"stat": "protection","amount": 6}
 			]
 		},

@@ -30,7 +30,7 @@ function init()
 end
 
 function applyTechBonus()
-  self.jumpBonus = 1 + status.stat("jumptechBonus",0) -- apply bonus from certain items and armor
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
 end
 
 function update(args)

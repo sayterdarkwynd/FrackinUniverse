@@ -103,8 +103,15 @@
 			"args": {
 				"name": "FR_glitchShieldRaised",
 				"stats": [
-					{ "stat": "protection", "amount": 3 },
-					{ "stat": "healthRegen", "amount": 0.15 }
+					{ "stat": "protection", "amount": 3 }
+				],
+				"scripts" : [
+					{
+						"script" : "/scripts/fr_scripts/healthRegen.lua",
+						"args" : {
+							"healingRate" : 0.0015
+						}
+					}
 				]
 			}
 		},
@@ -124,7 +131,7 @@
 			"stats": [
 				{ "stat": "maxEnergy", "effectiveMultiplier": 1.25 },
 				{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.484 },
-				{ "stat": "healthRegen", "amount": 0.484 }
+				{ "stat": "healthRegen", "amount": 0.484 }//health regen is flat.
 			]
 		}
 	]
