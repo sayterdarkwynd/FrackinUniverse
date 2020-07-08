@@ -25,13 +25,17 @@ function allowedType()
 end
 
 function update(dt)
+	if world.getProperty("invinciblePlayers") or status.statPositive("invulnerable") then
+		--don't work if players are invuln
+		return {}
+	end
 	self.timer = self.timer - dt
 	if (status.stat("maxEnergy")) then
 		if (self.timer <= 0) then
-		self.healthDamage = ((math.max(1.0 - status.stat("mentalProtection"),0))*10) + status.stat("madnessModifier")
-		self.timer = 30
-		self.totalValue = self.baseValue + self.valBonus + math.random(1,6)
-		self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking
+			self.healthDamage = ((math.max(1.0 - status.stat("mentalProtection"),0))*10) + status.stat("madnessModifier")
+			self.timer = 30
+			self.totalValue = self.baseValue + self.valBonus + math.random(1,6)
+			self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking
 			if  entity.entityType() =="player" then
 				if self.myspeed < 5 then
 					if self.afk > 2000 then -- do not go higher than this value
@@ -52,7 +56,9 @@ function update(dt)
 					if self.afk < 1 then
 						self.afk = 0
 					end
-				end       
+				end   
+			else
+				effect.expire()
 			end
 		end
 	else

@@ -7,7 +7,7 @@ shellBonus={
 	{stat = "grit", amount = 0.25},
 	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.75},
 	{stat = "shadowImmunity", amount = 1},
-	{stat = "poisonImmunity", amount = 1},
+	{stat = "poisonStatusImmunity", amount = 1},
 
     {stat = "snowslowImmunity", amount = 1},
     {stat = "slushslowImmunity", amount = 1},
