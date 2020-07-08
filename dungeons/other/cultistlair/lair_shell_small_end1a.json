@@ -753,6 +753,59 @@
                  "width":48,
                  "x":640,
                  "y":200
+                }, 
+                {
+                 "gid":7704,
+                 "height":16,
+                 "id":829,
+                 "name":"Cultist General 1x (VERY rare)",
+                 "properties":[
+                        {
+                         "name":"object",
+                         "type":"string",
+                         "value":"extrainvisiblenpcspawnerworld"
+                        }, 
+                        {
+                         "name":"parameters",
+                         "type":"string",
+                         "value":"{ \"spawner\" : { \"npcSpecies\" : [\"human\"], \"npcTypes\" : [\"cultistgeneral\" ], \"npcParams\" : { \"aggressive\" : true, \"persistent\" : true }, \"position\" : [0, 2], \"positionVariance\" : [0, 0], \"spawnchance\" : 10, \"frequency\" : [0.2, 0.2], \"stock\" : 1, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":680,
+                 "y":184
+                }, 
+                {
+                 "gid":7240,
+                 "height":8,
+                 "id":830,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"parameters",
+                         "type":"string",
+                         "value":"{ \"detectArea\" : [ [-9999, -9999], [9999, 9999] ], \"detectEntityTypes\" : [ \"player\" ]}"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":696,
+                 "y":160
+                }, 
+                {
+                 "gid":7339,
+                 "height":16,
+                 "id":831,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":712,
+                 "y":168
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -789,7 +842,47 @@
          "draworder":"topdown",
          "id":7,
          "name":"wiring - locked door",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":832,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":8,
+                         "y":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":704,
+                 "y":152
+                }, 
+                {
+                 "height":0,
+                 "id":833,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":-40,
+                         "y":8
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":720,
+                 "y":160
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -866,7 +959,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":829,
+ "nextobjectid":834,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.3.3",
@@ -971,6 +1064,10 @@
         {
          "firstgid":7643,
          "source":"..\/..\/..\/..\/..\/assets\/packed\/tilesets\/packed\/objects-by-type\/teleporter.json"
+        }, 
+        {
+         "firstgid":7670,
+         "source":"..\/..\/..\/..\/frackin\/tilesets\/extradungeons-custom\/modstuff.json"
         }],
  "tilewidth":8,
  "type":"map",

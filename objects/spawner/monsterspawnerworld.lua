@@ -55,7 +55,7 @@ function spawn()
       local spawnchance = self.spawnchance
 	  local chanceofnone = math.random(1, 100)
       self.monsterParams.level = self.monsterLevel and util.randomInRange(self.monsterLevel) or world.threatLevel()
-	  if chanceofnone < spawnchance then
+	  if chanceofnone <= spawnchance then
          monsterId = world.spawnMonster(monsterType, spawnPosition, self.monsterParams or {})
 	  else 
         storage.stock = storage.stock - 1
