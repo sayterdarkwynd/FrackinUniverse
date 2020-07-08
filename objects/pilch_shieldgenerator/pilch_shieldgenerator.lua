@@ -64,6 +64,7 @@ function init(args)
 	message.setHandler("setProtected", setProtected)
 	message.setHandler("setGravity", setGravity)
 	message.setHandler("hide", setHideMode)
+	message.setHandler("setDebugMode", setDebugMode)
 	
 	-- set up coroutine for area checking
 	self.cor = coroutine.create(function() end)
@@ -74,6 +75,11 @@ end
 function die()
 	removeField()
 	releaseDungeonId()
+end
+
+function setDebugMode(msgName, isLocal, debugMode)
+	storage.debugMode=debugMode
+	object.setConfigParameter("pilch_shieldgenerator_debug", storage.debugMode)
 end
 
 -- set hide mode (-1 = not hidden, 0 = look like blocks, 1 = invisible)
@@ -163,7 +169,9 @@ function claimDungeonId()
 	
 	local pos = entity.position()
 	local value = tostring(pos[1]) .. ", " .. tostring(pos[2])
-	sb.logWarn("Pilchenstein's Field Generator at " .. value .. " failed to find suitable dungeonId")
+	if storage.debugMode then
+		sb.logWarn("Pilchenstein's Field Generator at " .. value .. " failed to find suitable dungeonId")
+	end
 	setStatus("Error: No Suitable DungeonID", "red")
 	return -1
 end
@@ -179,7 +187,9 @@ end
 function removeField()
 	if (storage.fieldActive) then
 		if (world.loadRegion(storage.fieldActive) == false) then
-			sb.logWarn("Pilchenstein's Field Generator failed to load field region before deactivation: " .. tostring(storage.fieldActive[1]) .. ", " .. tostring(storage.fieldActive[2]) .. " -> " .. tostring(storage.fieldActive[3]) .. ", " .. tostring(storage.fieldActive[4]))
+			if storage.debugMode then
+				sb.logWarn("Pilchenstein's Field Generator failed to load field region before deactivation: " .. tostring(storage.fieldActive[1]) .. ", " .. tostring(storage.fieldActive[2]) .. " -> " .. tostring(storage.fieldActive[3]) .. ", " .. tostring(storage.fieldActive[4]))
+			end
 			setStatus("Error: Failed to load field region", "red")
 			incDirty()
 		else
@@ -199,7 +209,9 @@ end
 -- apply the field effects and set the area's dungeonId
 function applyField()
 	if (world.loadRegion(storage.targetRect) == false) then
-		sb.logWarn("Pilchenstein's Field Generator failed to load field region before activation: " .. tostring(storage.targetRect[1]) .. ", " .. tostring(storage.targetRect[2]) .. " -> " .. tostring(storage.targetRect[3]) .. ", " .. tostring(storage.targetRect[4]))
+		if storage.debugMode then
+			sb.logWarn("Pilchenstein's Field Generator failed to load field region before activation: " .. tostring(storage.targetRect[1]) .. ", " .. tostring(storage.targetRect[2]) .. " -> " .. tostring(storage.targetRect[3]) .. ", " .. tostring(storage.targetRect[4]))
+		end
 		setStatus("Error: Failed to load field region", "red")
 		incDirty()
 	else
@@ -225,12 +237,15 @@ function checkArea()
 		return
 	end
 	local overlaps, dId, iterations = 0, 0, 0
+	local overlapList={}
 	for y = storage.targetRect[2], storage.targetRect[4] - 1 do
 		for x = storage.targetRect[1], storage.targetRect[3] - 1 do
 			dId = world.dungeonId({x, y})
 			if (dId >= LOWID) and (dId <= HIGHID) then
 				overlaps = overlaps + 1
-				sb.logWarn("Field overlap: " .. tostring(dId) .. " @ " .. tostring(x) .. ", " .. tostring(y))
+				if storage.debugMode then
+					table.insert("\n"..overlapList,tostring(dId) .. " @ " .. tostring(x) .. ", " .. tostring(y))
+				end
 			end
 			iterations = iterations + 1
 			if (iterations % YIELDPOINT == 0) then coroutine.yield() end
@@ -241,7 +256,10 @@ function checkArea()
 	elseif (overlaps > 0) then
 		local pos = entity.position()
 		local value = tostring(pos[1]) .. ", " .. tostring(pos[2])
-		sb.logWarn("Pilchenstein's Field Generator at " .. value .. " overlapped with " .. tostring(overlaps) .. " tiles containing fields from other generators")
+		if storage.debugMode then
+			sb.logWarn("Pilchenstein's Field Generator at " .. value .. " overlapped with " .. tostring(overlaps) .. " tiles containing fields from other generators")
+			sb.logWarn("Overlapping Tiles: %s",table.concat(overlapList))
+		end
 		setStatus("Error: Overlapping Fields", "red")
 		incDirty()
 		return

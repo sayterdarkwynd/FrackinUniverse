@@ -24,12 +24,14 @@ function loadOptions()
 	fieldOptions.applyGravity = gravity.applyGravity or false
 	fieldOptions.gravityLevel = gravity.gravityLevel or 80
 	fieldOptions.hideMode = world.getObjectParameter(pane.sourceEntity(), "pilch_shieldgenerator_hidden") or -1
+	fieldOptions.debugEnabled = world.getObjectParameter(pane.sourceEntity(), "pilch_shieldgenerator_debug") or false
 	fieldOptions.active = world.getObjectParameter(pane.sourceEntity(), "pilch_shieldgenerator_active") or false
 	
 	gravityLevelSanityCheck()
 	
 	widget.setChecked("applyProtectedCheckBox", fieldOptions.applyProtected)
 	widget.setChecked("applyBreathableCheckBox", fieldOptions.applyBreathable)
+	widget.setChecked("debugCheckBox", fieldOptions.debugEnabled)
 	widget.setChecked("applyGravityCheckBox", fieldOptions.applyGravity)
 	widget.setSelectedOption("hideRadioGroup", fieldOptions.hideMode)
 	widget.setChecked("activateButton", fieldOptions.active)
@@ -39,6 +41,7 @@ function saveOptions()
 	world.sendEntityMessage(pane.sourceEntity(), "setProtected", fieldOptions.applyProtected)
 	world.sendEntityMessage(pane.sourceEntity(), "setBreathable", fieldOptions.applyBreathable)
 	world.sendEntityMessage(pane.sourceEntity(), "setGravity", fieldOptions.applyGravity, fieldOptions.gravityLevel)
+	world.sendEntityMessage(pane.sourceEntity(), "setDebugMode", fieldOptions.debugEnabled)
 end
 
 function checkRelationships()
@@ -129,6 +132,11 @@ end
 
 function applyBreathableCheckBox()
 	fieldOptions.applyBreathable = widget.getChecked("applyBreathableCheckBox")
+	saveOptions()
+end
+
+function debugCheckBox()
+	fieldOptions.debugEnabled = widget.getChecked("debugCheckBox")
 	saveOptions()
 end
 
