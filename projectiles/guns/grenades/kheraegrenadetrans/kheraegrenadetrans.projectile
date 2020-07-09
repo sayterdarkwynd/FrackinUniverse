@@ -1,0 +1,25 @@
+{
+  "projectileName" : "kheraegrenadetrans",
+  "physics" : "grenade",
+  "bounces" : -1,
+  "timeToLive" : 0.01,
+  "image" : "kheraegrenadetrans.png",
+  "damageKindImage" : "firedamage.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "damageKind" : "fireplasma",
+  
+  "pointLight" : true,
+  "lightColor" : [100, 0, 0],
+  "fullbright" : true,
+  
+  "onlyHitTerrain" : true,
+  
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "kheraegrenadesmall",
+      "inheritDamageFactor" : 1
+    }
+  ]
+}
