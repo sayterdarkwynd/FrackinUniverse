@@ -1,0 +1,646 @@
+{
+  "metadata" : {
+    "name" : "cultistlair",
+    "species" : "human",
+    "rules" : [
+    ],
+    "protected" : true,
+    "anchor" : [ "lair_entrance1a", "lair_entrance1b" ],
+    "gravity" : 80,
+    "maxRadius" : 1000,
+    "maxParts" : 3,
+    "extendSurfaceFreeSpace" : 100,
+    "breathable" : true
+  },
+
+  "parts" : [
+
+    // ENTRANCES
+    {
+      "name" : "lair_entrance1a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_entrance1a", "lair_entrance1b" ] ]
+      ],
+      "def" : [ "tmx", "lair_entrance1a.json" ],
+      "chance" : 100
+    },
+    {
+      "name" : "lair_entrance1b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_entrance1a", "lair_entrance1b" ] ]
+      ],
+      "def" : [ "tmx", "lair_entrance1b.json" ],
+      "chance" : 100
+    },
+
+
+    // LAYOUT SHELL PIECES
+    {
+      "name" : "lair_shell_big1a",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big1a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big2a",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big2a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big3a",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big3a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big4a",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big4a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big5a",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big5a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big6a",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big6a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big1b",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big1b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big2b",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big2b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big3b",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big3b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big4b",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big4b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big5b",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big5b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big6b",
+      "rules" : [
+        [ "doNotCombineWith", [
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ]
+      ],
+      "def" : [ "tmx", "lair_shell_big6b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_medium1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium1a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "lair_shell_medium2a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium2a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "lair_shell_medium3a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium3a.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "lair_shell_medium1b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium1b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "lair_shell_medium2b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium2b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "lair_shell_medium3b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium3b.json" ],
+      "chance" : 1
+    },
+    {
+      "name" : "lair_shell_small1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lair_shell_small1a.json" ],
+      "chance" : 3
+    },
+    {
+      "name" : "lair_shell_small1b",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lair_shell_small1b.json" ],
+      "chance" : 3
+    },
+
+
+    // LAYOUT END SHELL PIECES
+    {
+      "name" : "lair_shell_big_end1a",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "doNotCombineWith", [ 
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_big_end1a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big_end2a",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "doNotCombineWith", [ 
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_big_end2a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big_end3a",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "doNotCombineWith", [ 
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_big_end3a.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big_end1b",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "doNotCombineWith", [ 
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_big_end1b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big_end2b",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "doNotCombineWith", [ 
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_big_end2b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_big_end3b",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "doNotCombineWith", [ 
+          "lair_shell_big1a", "lair_shell_big2a", "lair_shell_big3a", "lair_shell_big4a", "lair_shell_big5a", "lair_shell_big6a",
+          "lair_shell_big1b", "lair_shell_big2b", "lair_shell_big3b", "lair_shell_big4b", "lair_shell_big5b", "lair_shell_big6b"
+        ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_big_end3b.json" ],
+      "chance" : 0.5
+    },
+    {
+      "name" : "lair_shell_medium_end1a",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium_end1a.json" ],
+      "chance" : 0.75
+    },
+    {
+      "name" : "lair_shell_medium_end2a",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium_end2a.json" ],
+      "chance" : 0.75
+    },
+    {
+      "name" : "lair_shell_medium_end1b",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium_end1b.json" ],
+      "chance" : 0.75
+    },
+    {
+      "name" : "lair_shell_medium_end2b",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_medium_end2b.json" ],
+      "chance" : 0.75
+    },
+    {
+      "name" : "lair_shell_small_end1a",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "doNotCombineWith", [ 
+          "lair_shell_small1a", "lair_shell_small1b"
+        ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_small_end1a.json" ],
+      "chance" : 1.5
+    },
+    {
+      "name" : "lair_shell_small_end1b",
+      "rules" : [
+        [ "doNotConnectToPart", [ "lair_entrance1a", "lair_entrance1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_shell_small_end1b.json" ],
+      "chance" : 1.5
+    },
+
+
+    // ROOM FILLERS
+    {
+      "name" : "lair_room1a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room1a", "lair_room1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room1a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room1b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room1a", "lair_room1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room1b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room2a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room2a", "lair_room2b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room2a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room2b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room2a", "lair_room2b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room2b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room3a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room3a", "lair_room3b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room3a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room3b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room3a", "lair_room3b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room3b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room4a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room4a", "lair_room4aClone", "lair_room5a", "lair_room5b", "lair_room5c", "lair_room5cClone" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room4a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room4aClone",
+      // THIS IS HERE TO ENSURE ROOM HAS AN EQUAL CHANCE OF APPEARING VERSUS THE MIRRORED ROOMS.
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room4a", "lair_room4aClone", "lair_room5a", "lair_room5b", "lair_room5c", "lair_room5cClone" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room4a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room5a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room4a", "lair_room4aClone", "lair_room5a", "lair_room5b", "lair_room5c", "lair_room5cClone" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room5a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room5b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room4a", "lair_room4aClone", "lair_room5a", "lair_room5b", "lair_room5c", "lair_room5cClone" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room5b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room5c",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room4a", "lair_room4aClone", "lair_room5a", "lair_room5b", "lair_room5c", "lair_room5cClone" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room5c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room5cClone",
+      // THIS IS HERE TO ENSURE ROOM HAS AN EQUAL CHANCE OF APPEARING VERSUS THE MIRRORED ROOMS.
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room4a", "lair_room4aClone", "lair_room5a", "lair_room5b", "lair_room5c", "lair_room5cClone" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room5c.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room6a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room6a", "lair_room6b", "lair_room7a", "lair_vertical3a", "lair_vertical4a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room6a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room6b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room6a", "lair_room6b", "lair_room7b", "lair_vertical3b", "lair_vertical4b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room6b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room7a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room6a", "lair_room7a", "lair_room7b", "lair_vertical3a", "lair_vertical4a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room7a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_room7b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_room6b", "lair_room7a", "lair_room7b", "lair_vertical3b", "lair_vertical4b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_room7b.json" ],
+      "chance" : 0
+    },
+
+
+    // VERTICAL ROOM FILLERS
+    {
+      "name" : "lair_vertical1a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical1a", "lair_vertical1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical1a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical1b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical1a", "lair_vertical1b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical1b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical2a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical2a", "lair_vertical2b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical2a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical2b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical2a", "lair_vertical2b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical2b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical3a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical3a", "lair_vertical3b", "lair_room6a", "lair_room7a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical3a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical3b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical3a", "lair_vertical3b", "lair_room6b", "lair_room7b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical3b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical4a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical4a", "lair_vertical4b", "lair_room6a", "lair_room7a" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical4a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical4b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical4a", "lair_vertical4b", "lair_room6b", "lair_room7b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical4b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical5a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical5a", "lair_vertical5b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical5a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical5b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical5a", "lair_vertical5b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical5b.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical6a",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical6a", "lair_vertical6b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical6a.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "lair_vertical6b",
+      "rules" : [
+        [ "doNotCombineWith", [ "lair_vertical6a", "lair_vertical6b" ] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_vertical6b.json" ],
+      "chance" : 0
+    },
+
+
+    // END ROOMS
+    {
+      "name" : "lair_chamber1",
+      "rules" : [
+        // [ "doNotCombineWith", [] ],
+        // [ "doNotConnectToPart", [] ]
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "lair_chamber1.json" ],
+      "chance" : 0
+    }
+  ]
+}
