@@ -95,7 +95,10 @@ function update(args)
 	            status.overConsumeResource("energy", 0.008)
 	            status.setPersistentEffects("glide", {
 		      {stat = "fallDamageResistance", effectiveMultiplier = 1.65}
-		    })     
+		    })   
+      elseif self.downVal then 
+          status.overConsumeResource("energy", 0.1)
+          status.setPersistentEffects("glide", {{stat = "fallDamageResistance", effectiveMultiplier = 1.65}})           
 	    else
 	            status.overConsumeResource("energy", 0.65)
 		    status.setPersistentEffects("glide", {
