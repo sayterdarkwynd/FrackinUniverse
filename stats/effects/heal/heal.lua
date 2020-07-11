@@ -13,7 +13,7 @@ function init()
 	self.healingBonus = status.stat("healingBonus") or 0
 	self.healingRate = self.healingRate + self.healingBonus
 	bonusHandler=effect.addStatModifierGroup({{stat="healthRegen",amount=(self.healingRate - self.penaltyRate)}})
-	self.cooldown=(60-self.duration)/2
+	self.cooldown=math.max(30-self.duration,0)
 	effect.modifyDuration(self.cooldown)
 	self.timer=0.0
 end
