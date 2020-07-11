@@ -70,6 +70,7 @@ function update(args)
     if self.rightVal then direction[1] = direction[1] - 1 end 
     
     self.boostSpeed = self.boostSpeed + args.dt
+   
     boost(direction) 
     if vec2.eq(direction, {0, 0}) then 
       direction = {0, 0} 		    
@@ -78,7 +79,7 @@ function update(args)
     -- end boost
 
     if self.foodValue > 15 then
-	    if self.runVal and not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
+	    if not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 		    status.setPersistentEffects("glide", {
 		      {stat = "gliding", amount = 1},
 		      {stat = "fallDamageResistance", effectiveMultiplier = 1.65}
@@ -91,16 +92,13 @@ function update(args)
 		    })     
 	    end
     else
-	    if self.runVal and not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
-	            status.overConsumeResource("energy", 0.008)
-	            status.setPersistentEffects("glide", {
+	    if not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
+	      status.overConsumeResource("energy", 0.008)
+	      status.setPersistentEffects("glide", {
 		      {stat = "fallDamageResistance", effectiveMultiplier = 1.65}
-		    })   
-      elseif self.downVal then 
-          status.overConsumeResource("energy", 0.1)
-          status.setPersistentEffects("glide", {{stat = "fallDamageResistance", effectiveMultiplier = 1.65}})           
+		    })           
 	    else
-	            status.overConsumeResource("energy", 0.65)
+	      status.overConsumeResource("energy", 0.65)
 		    status.setPersistentEffects("glide", {
 		      {stat = "fallDamageResistance", effectiveMultiplier = 1.65}
 		    })     
