@@ -24,9 +24,14 @@ status.clearPersistentEffects("combobonusdmg")
 	end
 
 -- **************************************************
+-- FU EFFECTS
+
+    primaryItem = world.entityHandItem(entity.id(), "primary")  --check what they have in hand
+    altItem = world.entityHandItem(entity.id(), "alt")
+
+-- **************************************************
 -- FR EFFECTS
 -- **************************************************
-
 	self.species = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
 	if status.isResource("food") then
 		self.foodValue = status.resource("food")	--check our Food level
@@ -43,6 +48,7 @@ status.clearPersistentEffects("combobonusdmg")
 	end
 
 end
+-- **************************************************
 
 -- Ticks on every update regardless if this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
@@ -51,6 +57,104 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if not attackSpeedUp then
         attackSpeedUp = 0
 	end
+
+    --longswords are way less effective when dual wielding, and much more effective when using with a shield
+    if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) then --longsword check (is worn)
+      if not (altItem) then --longsword check (1 handed)
+ 	    status.setPersistentEffects("longswordbonus", {{stat = "powerMultiplier", effectiveMultiplier = 1.05},{stat = "critChance", amount = 1}})     		
+      else
+    	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
+ 	        status.setPersistentEffects("longswordbonus", {
+		    	{stat = "shieldBash", amount = 4},
+		    	{stat = "shieldBashPush", amount = 1},
+		    	{stat = "protection", effectiveMultiplier = 1.15},
+		    	{stat = "critChance", amount = 0.5}
+	        })     		
+    	end  
+    	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) and (altItem and root.itemHasTag(altItem, "weapon")) or 
+    	   (altItem and root.itemHasTag(altItem, "longsword")) and (primaryItem and root.itemHasTag(primaryItem, "weapon")) then
+    	    status.setPersistentEffects("longswordbonus", {
+		        {stat = "powerMultiplier", effectiveMultiplier = 0.80},
+		        {stat = "maxEnergy", effectiveMultiplier =  1.12},
+		    	{stat = "protection", effectiveMultiplier = 0.80},
+		    	{stat = "critChance", baseMultiplier = 0.50}
+	      	}) 
+	      	status.addEphemeralEffects{{effect = "runboostdebuff10", duration = 0.02}}  
+    	end      	   	    	
+      end		
+	end
+
+    --maces are way less effective when dual wielding, and much more effective when using with a shield
+    if (primaryItem and root.itemHasTag(primaryItem, "mace")) or (altItem and root.itemHasTag(altItem, "mace")) then --mace check (is worn)
+      if not (altItem) then --longsword check (1 handed)
+ 	    status.setPersistentEffects("macebonus", {{stat = "powerMultiplier", effectiveMultiplier = 1.10},{stat = "stunChance", amount = 2}})     		
+      else
+    	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
+ 	        status.setPersistentEffects("macebonus", {
+		    	{stat = "shieldBash", amount = 7},
+		    	{stat = "shieldBashPush", amount = 3},
+		    	{stat = "protection", effectiveMultiplier = 1.10},
+		    	{stat = "maxHealth", effectiveMultiplier = 1.15}
+	        })     		
+    	end  
+    	if (primaryItem and root.itemHasTag(primaryItem, "mace")) and (altItem and root.itemHasTag(altItem, "weapon")) or 
+    	   (altItem and root.itemHasTag(altItem, "mace")) and (primaryItem and root.itemHasTag(primaryItem, "weapon")) then
+    	    status.setPersistentEffects("macebonus", {
+		        {stat = "powerMultiplier", effectiveMultiplier = 0.80},
+		        {stat = "maxEnergy", effectiveMultiplier =  0.80},
+		    	{stat = "critChance", baseMultiplier = 0.85},
+		    	{stat = "stunChance", baseMultiplier = 0.50}
+	      	})  
+    	end      	   	    	
+      end		
+	end
+
+    --katanas are not great for shield use
+    if (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem, "katana")) then --mace check (is worn)
+      if not (altItem) then --katana check (1 handed)
+ 	    status.setPersistentEffects("katanabonus", {{stat = "powerMultiplier", effectiveMultiplier = 1.10},{stat = "critChance", amount = 2}})     		
+      else
+    	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
+ 	        status.setPersistentEffects("katanabonus", {
+		    	{stat = "protection", effectiveMultiplier = 0.9},
+		    	{stat = "critChance", baseMultiplier = 0.5},
+		    	{stat = "powerMultiplier", effectiveMultiplier = 0.85}
+	        })     		
+    	end  
+    	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) or  --suck with large dual-wields
+    	   (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem, "katana")) or
+    	   (primaryItem and root.itemHasTag(primaryItem, "axe")) or (altItem and root.itemHasTag(altItem, "axe")) or
+    	   (primaryItem and root.itemHasTag(primaryItem, "flail")) or (altItem and root.itemHasTag(altItem, "flail")) or
+    	   (primaryItem and root.itemHasTag(primaryItem, "shortspear")) or (altItem and root.itemHasTag(altItem, "shortspear")) or
+    	   (primaryItem and root.itemHasTag(primaryItem, "mace")) or (altItem and root.itemHasTag(altItem, "mace")) then
+    	    status.setPersistentEffects("katanabonus", {
+		        {stat = "protection", effectiveMultiplier =  0.75},
+		        {stat = "powerMultiplier", amount = 0.75},
+		        {stat = "protection", amount = 0.90}
+	      	}) 
+	      	status.addEphemeralEffects{{effect = "runboostdebuff10", duration = 0.02}} 
+    	end     	
+    	if (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem, "shortsword")) or  --increased crit damage and energy
+    	   (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) or
+    	   (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem, "rapier")) then
+    	    status.setPersistentEffects("katanabonus", {
+		        {stat = "maxEnergy", effectiveMultiplier =  1.15},
+		        {stat = "critDamage", amount = 0.25}
+	      	}) 
+		    status.addEphemeralEffects{{effect = "runboost10", duration = 0.02}}
+    	end 
+    	if (primaryItem and root.itemHasTag(primaryItem, "ranged")) or (altItem and root.itemHasTag(altItem, "ranged")) then
+    	    status.setPersistentEffects("katanabonus", {
+		        {stat = "maxEnergy", effectiveMultiplier =  1.10},
+		        {stat = "critDamage", amount = 0.125},
+		    	{stat = "powerMultiplier", effectiveMultiplier = 0.85}
+	      	}) 
+		    status.addEphemeralEffects{{effect = "runboost5", duration = 0.02}}
+    	end     	     	   	    	
+      end		
+	end
+
+
 	if self.cooldownTimer > 0 then
         self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
         if self.cooldownTimer == 0 then
@@ -103,10 +207,6 @@ function MeleeCombo:aimVectorRand() -- fires wherever it wants
 	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
 	return aimVector
 end
-	-- ***********************************************************************************************************
-	-- END FR SPECIALS
-	-- ***********************************************************************************************************
-
 -- *****************************************
 
 -- State: windup
@@ -169,9 +269,6 @@ function MeleeCombo:preslash()
 	self:setState(self.fire)
 end
 
-
-
-
 -- State: fire
 function MeleeCombo:fire()
 	local stance = self.stances["fire"..self.comboStep]
@@ -186,8 +283,6 @@ function MeleeCombo:fire()
 	local swooshKey = self.animKeyPrefix .. (self.elementalType or self.weapon.elementalType) .. "swoosh"
 	animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep])
 	animator.burstParticleEmitter(swooshKey)
-
-
 
     --*************************************
     -- FU/FR ABILITIES
@@ -267,6 +362,8 @@ end
 
 
 function MeleeCombo:uninit()
+	status.clearPersistentEffects("longswordbonus")
+	status.clearPersistentEffects("macebonus")
     if self.helper then
         self.helper:clearPersistent()
     end

@@ -64,8 +64,6 @@ function weaponCheck(tags)
 
 	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
 	
-	--if heldItemPrimary and heldItemPrimary.name=="sapling" or heldItemAlt and heldItemAlt.name=="sapling" then return weaponCheckResults end
-
 	weaponCheckResults["either"]=false
 	weaponCheckResults["primary"]=false
 	weaponCheckResults["alt"]=false

@@ -98,31 +98,9 @@ function MeleeSlash:fire()
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
-	-- ******************************************************************************************************************
-	-- FR RACIAL BONUSES FOR WEAPONS	--- Bonus effect when attacking
-	-- ******************************************************************************************************************
-	-- *** ABILITY TYPES
-	-- attackSpeedUp = attackSpeedUp+(self.foodValue/120)	-- Attack Speed increase based on food. easily modified
-	-- activeItem.setInstanceValue("critChance",math )	-- crit chance:
-	-- activeItem.setInstanceValue("critBonus",math )	-- Crit Bonus increase
-	-- activeItem.setInstanceValue("elementalType","element" )	-- attack element type
-	-- activeItem.setInstanceValue("primaryAbility","ability" )	-- ability
-	-- projectileId = world.spawnProjectile("hellfireprojectile",self:firePosition(),activeItem.ownerEntityId(),self:aimVector(),false,params)	-- spawn a projectile
-
-	-- Primary hand, or single-hand equip
-	--local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-	--used for checking dual-wield setups
-	--local opposedhandHeldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand() == "primary" and "alt" or "primary")
-	--local randValue = math.random(100)	-- chance for projectile
-
-
     if self.helper then
         self.helper:runScripts("meleeslash-fire", self)
     end
-
-	-- ***********************************************************************************************************
-	-- END FR SPECIALS
-	-- ***********************************************************************************************************
 
 	animator.setAnimationState("swoosh", "fire")
 	animator.playSound(self.fireSound or "fire")
@@ -133,9 +111,6 @@ function MeleeSlash:fire()
 	self.weapon:setDamage(self.damageConfig, damageArea, self.fireTime)
 	end)
 
-	-- ***********************************************************************************************************
-	-- END FR SPECIALS
-	-- ***********************************************************************************************************
 	--vanilla cooldown rate
 	self.cooldownTimer = self:cooldownTime()
 
