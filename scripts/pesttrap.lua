@@ -4,6 +4,7 @@ function init()
   transferUtil.init()
 	  self.isLiquidBased = config.getParameter("isLiquidBased",0) -- can this generate creatures in water? default 0
 	  self.timer = math.random(600,5000) --hard time cap
+	  self.randomCheck = math.random(100) -- rat spawn chance
 end
 
 function update(dt)
@@ -44,6 +45,12 @@ function update(dt)
 		    world.spawnItem(dropitem,entity.position())
 		    world.containerConsumeAt(entity.id(),0,dropitem.count)
 		    item.count = config.getParameter('wellslots')[1].max
+            --does a rat spawn?
+			if self.randomCheck == 1 then
+				world.spawnMonster("squeekcritter", entity.position())
+			elseif self.randomCheck == 2 then
+				world.spawnMonster("mousecritter", entity.position())
+			end		    
 		  end
 		  
 		  local amount = math.min(math.floor(storage.waterCount/config.getParameter('wellslots')[1].ratio),config.getParameter('wellslots')[1].max - item.count)
