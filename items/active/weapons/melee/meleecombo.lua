@@ -87,7 +87,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     --maces are way less effective when dual wielding, and much more effective when using with a shield
     if (primaryItem and root.itemHasTag(primaryItem, "mace")) or (altItem and root.itemHasTag(altItem, "mace")) then --mace check (is worn)
       if not (altItem) then --longsword check (1 handed)
- 	    status.setPersistentEffects("macebonus", {{stat = "powerMultiplier", effectiveMultiplier = 1.10},{stat = "stunChance", amount = 2}})     		
+ 	    status.setPersistentEffects("macebonus", {{stat = "powerMultiplier", effectiveMultiplier = 1.05},{stat = "stunChance", amount = 2}})     		
       else
     	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
  	        status.setPersistentEffects("macebonus", {
@@ -112,7 +112,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     --katanas are not great for shield use
     if (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem, "katana")) then --mace check (is worn)
       if not (altItem) then --katana check (1 handed)
- 	    status.setPersistentEffects("katanabonus", {{stat = "powerMultiplier", effectiveMultiplier = 1.10},{stat = "critChance", amount = 2}})     		
+ 	    status.setPersistentEffects("katanabonus", {{stat = "powerMultiplier", effectiveMultiplier = 1.05},{stat = "critChance", amount = 1.25}})     		
       else
     	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
  	        status.setPersistentEffects("katanabonus", {
