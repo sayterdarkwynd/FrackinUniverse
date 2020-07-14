@@ -9,8 +9,6 @@ function init()
 	self.penaltyRate = config.getParameter("penaltyRate",0)
 	self.duration=effect.duration()
 	self.healingRate = config.getParameter("healAmount", 5) / self.duration
-	self.healingBonus = status.stat("healingBonus") or 0
-	self.healingRate = self.healingRate + self.healingBonus
 	bonusHandler=effect.addStatModifierGroup({{stat="healthRegen",amount=(self.healingRate - self.penaltyRate)}})
 	self.cooldown=math.max(15-self.duration,0)--base time is 15 seconds
 	effect.modifyDuration(self.cooldown)
@@ -26,6 +24,7 @@ function update(dt)
 		effect.setStatModifierGroup(bonusHandler,{})
 		animator.setParticleEmitterActive("healing", false)	
 	else
+		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=((self.healingRate*math.max(0, 1 + status.stat("healingBonus") )) - self.penaltyRate)}})
 		animator.setParticleEmitterActive("cantheal2", false)
 	    animator.setParticleEmitterOffsetRegion("cantheal", mcontroller.boundBox())
 	    animator.setParticleEmitterEmissionRate("cantheal", 0.5 )
