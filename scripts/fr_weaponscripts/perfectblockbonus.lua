@@ -42,6 +42,9 @@ function FRHelper:call(args, main, ...)
             if resource == "shieldStamina" then
                 status.setResource(resource, status.resource(resource) * (amount + 1))
             else
+				if resource=="health" then
+					amount=amount*math.max(0,1+status.stat("healingBonus"))
+				end
                 status.modifyResourcePercentage(resource, amount)
             end
         end
