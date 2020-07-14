@@ -38,7 +38,7 @@ status.clearPersistentEffects("combobonusdmg")
 	else
 		self.foodValue = 60  --never at max power if Food is disabled. Max effects (70 food) are for Survival and Hardcore only.
 	end
-	attackSpeedUp = 0 -- base attackSpeed
+	attackSpeedUp = 0 -- base attackSpeed. This acts as the timer between *combos* , not individual attacks
 
 	if self.meleeCount == nil then
 		self.meleeCount = 0
@@ -57,16 +57,70 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if not attackSpeedUp then
         attackSpeedUp = 0 
     else
-    	attackSpeedUp = attackSpeedUp + status.stat("attackSpeedUp")
+    	--attackSpeedUp = attackSpeedUp + status.stat("attackSpeedUp")
+    	attackSpeedUp = status.stat("attackSpeedUp")
 	end
-sb.logInfo(attackSpeedUp)
+
+     --rapiers are fast and furious
+    if (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem, "rapier")) then --shortspear check (is worn)
+      --rapier check (1 handed) : +3 Crit Damage, +25% Dash and Dodge Tech Efficiency
+      if not (altItem) then 
+ 	    status.setPersistentEffects("rapierbonus", {
+ 	    	{stat = "critBonus", amount = 3},
+	        --tech bonuses
+	        {stat = "dodgetechBonus", amount = 0.25},
+	        {stat = "dashtechBonus", amount = 0.25} 	    	
+ 	    })     		
+      else
+    	-- rapier check (rapier + dagger) : +5% Move Speed, +25% Dash and Dodge Tech Efficiency, +15% Protection
+    	if (primaryItem and root.itemHasTag(primaryItem, "rapier")) and (altItem and root.itemHasTag(altItem, "dagger")) or 
+    	   (altItem and root.itemHasTag(altItem, "rapier")) and (primaryItem and root.itemHasTag(primaryItem, "dagger")) then
+    	    status.setPersistentEffects("rapierbonus", {
+		    	{stat = "protection", effectiveMultiplier = 1.15},
+		        --tech bonuses
+		        {stat = "dodgetechBonus", amount = 0.25},
+		        {stat = "dashtechBonus", amount = 0.25}
+	      	})  
+    	end      	   	    	
+      end		
+	end
+
+    --shortspears are THE weapon for shield users
+    if (primaryItem and root.itemHasTag(primaryItem, "shortspear")) or (altItem and root.itemHasTag(altItem, "shortspear")) then --shortspear check (is worn)
+      --shortspear check (1 handed) : +30% Crit Damage
+      if not (altItem) then 
+ 	    status.setPersistentEffects("shortspearbonus", {
+ 	    	{stat = "critDamage", amount = 0.3}
+ 	    })     		
+      else
+      	--shortspear check (w / shield) : +10 Shield Bash, +50% Efficiency to Defensive Techs, +5% Damage, 20% Shield Regen
+    	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
+ 	        status.setPersistentEffects("shortspearbonus", {
+		    	{stat = "shieldBash", amount = 10},
+		    	{stat = "shieldBashPush", amount = 2},
+		    	{stat = "shieldStaminaRegen", effectiveMultiplier = 1.2},
+		    	{stat = "powerMultiplier", effectiveMultiplier = 1.05},
+		    	--tech bonuses
+		        {stat = "defensetechBonus", amount = 0.50}
+	        })     		
+    	end  
+    	-- shortspear check (dual shortspear) : -20% Protection, -50% Crit Chance
+    	if (primaryItem and root.itemHasTag(primaryItem, "shortspear")) and (altItem and root.itemHasTag(altItem, "shortspear")) then
+    	    status.setPersistentEffects("shortspearbonus", {
+		    	{stat = "protection", effectiveMultiplier = 0.80},
+		    	{stat = "critChance", baseMultiplier = 0.50}
+	      	})  
+    	end      	   	    	
+      end		
+	end
+
     --longswords are way less effective when dual wielding, and much more effective when using with a shield
     if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) then --longsword check (is worn)
-      --longsword check (1 handed) : -0.50s between combos, +0.25% Crit Chance
+      --longsword check (1 handed) : 70% Combo Cooldown, +0.25% Crit Chance
       if not (altItem) then 
  	    status.setPersistentEffects("longswordbonus", {
  	    	{stat = "critChance", amount = 0.25},
- 	    	{stat = "attackSpeedUp", amount = 0.50}
+ 	    	{stat = "attackSpeedUp", amount = 0.7}
  	    })     		
       else
       	--longsword check (w / shield) : +4 Shield Bash and +1 Push, +0.5% crit chance increase, +25% Efficiency to Defensive Techs and +15% Efficiency to Heal techs
@@ -146,7 +200,7 @@ sb.logInfo(attackSpeedUp)
     	   (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem, "rapier")) then
     	    status.setPersistentEffects("katanabonus", {
 		        {stat = "maxEnergy", effectiveMultiplier =  1.15},
-		        {stat = "critDamage", amount = 0.25},
+		        {stat = "critChance", amount = 0.25},
 		        --tech bonuses
 		        {stat = "dodgetechBonus", amount = 0.25},
 		        {stat = "dashtechBonus", amount = 0.25}
@@ -363,6 +417,9 @@ end
 function MeleeCombo:uninit()
 	status.clearPersistentEffects("longswordbonus")
 	status.clearPersistentEffects("macebonus")
+	status.clearPersistentEffects("katanabonus")
+	status.clearPersistentEffects("rapierbonus")
+	status.clearPersistentEffects("shortspearbonus")
     if self.helper then
         self.helper:clearPersistent()
     end
