@@ -38,7 +38,7 @@ function update(dt)
 	  end    
     else
 	  if (healthLevel < healthMax) then
-	    adjustedHealth = healthLevel + (healthLevel * 0.015)
+	    adjustedHealth = healthLevel + (healthLevel * 0.015*math.max(0,1+status.stat("healingBonus")))
 	    status.setResource("health", adjustedHealth)
 	  end    
     end

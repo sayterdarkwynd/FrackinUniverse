@@ -19,7 +19,7 @@ function update(dt)
 
 	if self.frEnabled and (self.species == "glitch") then
 		self.healingRate = 0.015
-		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate}})
+		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 		--status.modifyResourcePercentage("health", self.healingRate * dt)
 
 		--sb.logInfo("tarslow")

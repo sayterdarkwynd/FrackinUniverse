@@ -6,11 +6,11 @@ function init()
 	script.setUpdateDelta(10)
 	healPerSecond=config.getParameter("healPerSecond",0)
 	regenHandler=effect.addStatModifierGroup({})
-	effect.setStatModifierGroup(regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*healPerSecond}})
+	effect.setStatModifierGroup(regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*healPerSecond*math.max(0,1+status.stat("healingBonus"))}})
 end
 
 function update(dt)
-	effect.setStatModifierGroup(regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*healPerSecond}})
+	effect.setStatModifierGroup(regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*healPerSecond*math.max(0,1+status.stat("healingBonus"))}})
 end
 
 function uninit()

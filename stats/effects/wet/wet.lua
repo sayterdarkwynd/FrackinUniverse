@@ -28,7 +28,7 @@ function update(dt)
 	if self.frEnabled and (self.species == "floran") then
 		self.healingRate = 0.001
 		self.foodRate = 0.001
-		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate}})
+		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 		--status.modifyResourcePercentage("health", self.healingRate * dt)
 		if status.isResource("food") then
 			status.modifyResourcePercentage("food", self.foodRate * dt)

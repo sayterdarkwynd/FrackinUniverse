@@ -26,7 +26,7 @@ function update(dt)
 		effectHandlerList.armorBonusHandle,armorBonus)
 		checkWeapons()
 		status.addEphemeralEffect("glowyellow2")
-		status.modifyResourcePercentage("health", 0.006 * dt)
+		setRegen(0.006)
 	end
 end
 
