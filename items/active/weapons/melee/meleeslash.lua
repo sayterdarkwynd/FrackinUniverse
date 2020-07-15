@@ -23,16 +23,13 @@ end
 -- Ticks on every update regardless if this is the active ability
 function MeleeSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
-
+	
 	-- FR
 	setupHelper(self, "meleeslash-fire")
-
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
-
 	if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) then
         self:setState(self.windup)
 	end
-
 end
 
 -- State: windup
