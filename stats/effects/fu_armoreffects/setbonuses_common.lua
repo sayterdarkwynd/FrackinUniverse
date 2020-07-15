@@ -142,7 +142,7 @@ function setRegen(regenAmount)
 	if not effectHandlerList.regenHandler then
 		effectHandlerList.regenHandler=effect.addStatModifierGroup({})
 	end
-	effect.setStatModifierGroup(effectHandlerList.regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*regenAmount}})
+	effect.setStatModifierGroup(effectHandlerList.regenHandler,{{stat="healthRegen",amount=regenAmount*status.resourceMax("health")*math.max(0,1+status.stat("healingBonus"))}})
 end
 
 function setBonusUninit()

@@ -7,7 +7,7 @@
 --     args.scripts            -- Activate other scripts?!
 
 function FRHelper:call(args, ...)
-    if status.resource("health") / status.stat("maxHealth") >= (args.healthReq or 0.75) then
+    if status.resourcePercentage("health") >= (args.healthReq or 0.75) then
         self:applyStats(args, args.name or "FR_healthyBonus", ...)
     else
         self:clearPersistent(args.name or "FR_healthyBonus")

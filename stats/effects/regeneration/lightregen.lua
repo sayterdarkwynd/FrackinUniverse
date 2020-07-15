@@ -5,6 +5,7 @@ require "/scripts/interp.lua"
 function init()
 	self.healingRate = 1.01 / config.getParameter("healTime", 320)
 	script.setUpdateDelta(5)
+	self.healTime=config.getParameter("healTime", 140)
 	bonusHandler=effect.addStatModifierGroup({})
 end
 
@@ -33,34 +34,20 @@ function update(dt)
 
 	if daytime then
 		if underground and lightLevel < 40 then
-			self.healingRate = 1.0009 / config.getParameter("healTime", 260)  
+			self.healingRate = 1.0009 / self.healTime
 		elseif underground and lightLevel > 40 then
-			self.healingRate = 1.001 / config.getParameter("healTime", 260)
-		elseif lightLevel > 95 then
-			self.healingRate = 1.01 / config.getParameter("healTime", 140)
-		elseif lightLevel > 90 then
-			self.healingRate = 1.008 / config.getParameter("healTime", 180)
-		elseif lightLevel > 80 then
-			self.healingRate = 1.007 / config.getParameter("healTime", 220)
-		elseif lightLevel > 70 then
-			self.healingRate = 1.006 / config.getParameter("healTime", 220)
-		elseif lightLevel > 65 then
-			self.healingRate = 1.005 / config.getParameter("healTime", 220)
-		elseif lightLevel > 55 then
-			self.healingRate = 1.004 / config.getParameter("healTime", 240)
-		elseif lightLevel > 45 then
-			self.healingRate = 1.003 / config.getParameter("healTime", 260)
-		elseif lightLevel > 35 then
-			self.healingRate = 1.002 / config.getParameter("healTime", 280)
-		elseif lightLevel > 25 then
-			self.healingRate = 1.001 / config.getParameter("healTime", 320)
+			self.healingRate = 1.001 / self.healTime
 		else
-			self.healingRate=0.0
+		    if lightLevel > 25 then
+				self.healingRate=((((lightLevel-25.0)/37.5)+1.0)/self.healTime)
+			else
+				self.healingRate=0.0
+			end
 		end
 	else
 		self.healingRate=0.0
 	end
-	effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate}})
+	effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.resourceMax("health")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 end
 
 function uninit()

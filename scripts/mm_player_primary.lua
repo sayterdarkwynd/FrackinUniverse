@@ -12,8 +12,8 @@ function applyDamageRequest(damageRequest)
     local r = _applyDamageRequest(damageRequest)
     if (not playerIsAdmin) and next(r) ~= nil and r[1].hitType == "kill" then
 		status.setStatusProperty("fuEnhancerActive", false)
-		status.setStatusProperty(mementomori.deathPositionKey,{position=mcontroller.position(),worldId=worldId})
-		sb.logInfo("mm_player-primary.lua:applyDamageRequest:recording death: %s",{data={dkey=mementomori.deathPositionKey,position=mcontroller.position(),worldId=worldId}})
+		status.setStatusProperty(mementomori.deathPositionKey.."."..worldId,{position=mcontroller.position()})
+		--sb.logInfo("mm_player-primary.lua:applyDamageRequest:recording death: %s",{data={dkey=mementomori.deathPositionKey.."."..worldId,position=mcontroller.position()}})
     end
     return r
 end

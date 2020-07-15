@@ -2,7 +2,7 @@ function init()
   animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
   animator.setParticleEmitterEmissionRate("healing", config.getParameter("emissionRate", 3))
   animator.setParticleEmitterActive("healing", false)
-
+  self.baseDrainMult=config.getParameter("drainMultiplier") or 0.01
   self.visualDuration = config.getParameter("visualDuration") or 0.2
 
   self.damageMultiplier = config.getParameter("damageMultiplier") or 0.01
@@ -42,8 +42,7 @@ function update(dt)
   local lightLevel = getLight()
   local lightMutator = (1 - (lightLevel / 100))/4
   if lightMutator < 0 then lightMutator = 0 end
-  self.drainMultiplier = config.getParameter("drainMultiplier") or 0.01
-  self.drainMultiplier = self.drainMultiplier + lightMutator
+  self.drainMultiplier = (self.baseDrainMult + lightMutator)*math.max(0,1+status.stat("healingBonus"))
   
   if lightLevel <= 50 then
   

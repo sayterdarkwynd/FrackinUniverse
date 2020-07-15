@@ -7,7 +7,12 @@
 --     args.sound              -- Overrides the sound used
 
 function FRHelper:call(args, ...)
-    status.modifyResource(args.resource or "health", args.healthRecover or 1.2 )
+	local res=args.resource or "health"
+	local amount=args.healthRecover or 1.2
+	if res=="health" then
+		amount=amount*math.max(0,1+status.stat("healingBonus"))
+	end
+    status.modifyResource(res,amount)
     animator.burstParticleEmitter(args.particles or "bonusBlock3")
     animator.playSound(args.sound or "bonusEffect")
 end

@@ -9,16 +9,15 @@ end
 
 function update(dt)
   if world.type() ~= 'unknown' and world.type() ~= 'playerstation' then
-		if not deltaTime or (deltaTime > 1) then
-			deltaTime=0
+		if not scanTimer or (scanTimer > 1) then
+			scanTimer=0
 			transferUtil.loadSelfContainer()
 			wellInit()
 			setDesc()
 		else
-			deltaTime=deltaTime+dt
+			scanTimer=scanTimer+dt
 		end
-	
-	  storage.waterCount = math.min((storage.waterCount or 0) + dt/wellsDrawing,100)
+	  storage.waterCount = math.min((storage.waterCount or 0) + (dt/math.sqrt(1+wellsDrawing)),100)
 	  for i=2,#config.getParameter('wellslots') do
 	    if world.containerItemAt(entity.id(),i-1) and world.containerItemAt(entity.id(),i-1).name ~= config.getParameter('wellslots')[i].name then
 	      world.containerConsumeAt(entity.id(),i-1,world.containerItemAt(entity.id(),i-1).count)

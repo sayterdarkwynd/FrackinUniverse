@@ -90,9 +90,9 @@ function FRHelper:call(args, main, dt, ...)
 						status.modifyResourcePercentage("food", -0.005 * dt)
 					end
 					regenCalc = regenCalc * dayConfig.undergroundScale
-					status.modifyResourcePercentage("health", regenCalc * dt)
+					status.modifyResourcePercentage("health", regenCalc * dt * math.max(0,1+status.stat("healingBonus")))
 				elseif not underground and lightLevel > dayConfig.minLight then
-					status.modifyResourcePercentage("health", regenCalc * dt)
+					status.modifyResourcePercentage("health", regenCalc * dt * math.max(0,1+status.stat("healingBonus")))
 				end
 			end
 		else
