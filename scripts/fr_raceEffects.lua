@@ -4,8 +4,10 @@ require("/scripts/FRHelper.lua")
 local FR_old_init = init
 local FR_old_update = update
 
-function init()
-	FR_old_init()
+function init(...)
+	if FR_old_init then
+		FR_old_init(...)
+	end
 	self.lastYPosition = 0
 	self.lastYVelocity = 0
 	self.fallDistance = 0
@@ -14,7 +16,9 @@ function init()
 end
 
 function update(dt)
-	FR_old_update(dt)
+	if FR_old_update then
+		FR_old_update(dt)
+	end
 	self.isNpc=world.isNpc(entity.id())
 	local enabled = status.statusProperty("fr_enabled")
 	local race = enabled and status.statusProperty("fr_race") or "_default"
