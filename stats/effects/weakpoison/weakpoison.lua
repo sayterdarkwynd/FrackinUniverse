@@ -18,8 +18,6 @@ function init()
 
 	self.penaltyRate = config.getParameter("penaltyRate",0)
 	self.healingRate = config.getParameter("healAmount", 5) / effect.duration()
-	self.healingBonus = status.stat("healingBonus") or 0
-	self.healingRate = self.healingRate + self.healingBonus
 	bonusHandler=effect.addStatModifierGroup({})
 	self.didInit=true
 end
@@ -28,7 +26,7 @@ function update(dt)
 	if not self.didInit then init() end
 	if self.frEnabled and (self.species == "fragmentedruin") then
 		--sb.logInfo("weakpoison")
-		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=(self.healingRate - self.penaltyRate)}})
+		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=((self.healingRate*( 1 + status.stat("healingBonus") )) - self.penaltyRate)}})
 		--status.modifyResource("health", (self.healingRate - self.penaltyRate) * dt)
 	else
 		if (status.stat("poisonResistance") <= 0.45) then

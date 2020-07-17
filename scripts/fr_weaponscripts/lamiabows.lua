@@ -22,16 +22,16 @@ function FRHelper:call(args, main)
             params = { power = energyValue/12 , damageKind = "ice", speed = 30, timeToLive = 1 }
             projectileId = world.spawnProjectile("magentaglobelamia",main:firePosition(),activeItem.ownerEntityId(),main:aimVector(),false,params)
         elseif (attackType) == 4 and (energyValue) >= 100 then
-            params = { power = energyValue/12 , damageKind = "poison", speed = 50, timeToLive = 1 }
+            params = { power = energyValue/12 , damageKind = "shadow", speed = 50, timeToLive = 1 }
             projectileId = world.spawnProjectile("poisonplasma",main:firePosition(),activeItem.ownerEntityId(),main:aimVector(),false,params)
         elseif (attackType) == 5 and (energyValue) >= 100 then
             params = { power = energyValue/12 , damageKind = "electric", speed = 50, timeToLive = 1 }
             projectileId = world.spawnProjectile("ngravitybolt",main:firePosition(),activeItem.ownerEntityId(),main:aimVector(),false,params)
         elseif (attackType) == 6 and (energyValue) >= 100 then
-            params = { power = energyValue/12 , damageKind = "ice", speed = 30, timeToLive = 1 }
+            params = { power = energyValue/12 , damageKind = "radioactive", speed = 30, timeToLive = 1 }
             projectileId = world.spawnProjectile("orangeglobelamia",main:firePosition(),activeItem.ownerEntityId(),main:aimVector(),false,params)
         else
-            params = { power = energyValue/12 , damageKind = "fire", speed = energyValue/3, timeToLive = 3 }
+            params = { power = energyValue/12 , damageKind = "cosmic", speed = energyValue/3, timeToLive = 3 }
             projectileId = world.spawnProjectile("purplearrow",main:firePosition(),activeItem.ownerEntityId(),main:aimVector(),false,params)
         end
     end

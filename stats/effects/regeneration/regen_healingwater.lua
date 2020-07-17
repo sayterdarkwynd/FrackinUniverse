@@ -17,7 +17,7 @@ function init()
 		animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
 		animator.setParticleEmitterActive("drips", true)
 	else
-		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate}})
+		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.resourceMax("health")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 		animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
 		animator.setParticleEmitterActive("healing", config.getParameter("particles", true))  
 	end
@@ -40,7 +40,7 @@ function update(dt)
 		end
 		effect.setParentDirectives(string.format("fade=00AA00=%.1f", self.tickTimer * 0.4))
 	else
-		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate}})
+		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.resourceMax("health")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 
 		--status.modifyResourcePercentage("health", self.healingRate * dt)
 	end

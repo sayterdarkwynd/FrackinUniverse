@@ -10,10 +10,10 @@ end
 
 function applyDamageRequest(damageRequest)
     local r = _applyDamageRequest(damageRequest)
-    if next(r) ~= nil and r[1].hitType == "kill" then
+    if (not playerIsAdmin) and next(r) ~= nil and r[1].hitType == "kill" then
 		status.setStatusProperty("fuEnhancerActive", false)
-		status.setStatusProperty(mementomori.deathPositionKey,{position=mcontroller.position(),worldId=worldId})
-		sb.logInfo("mm_player-primary.lua:applyDamageRequest:recording death: %s",{data={dkey=mementomori.deathPositionKey,position=mcontroller.position(),worldId=worldId}})
+		status.setStatusProperty(mementomori.deathPositionKey.."."..worldId,{position=mcontroller.position()})
+		--sb.logInfo("mm_player-primary.lua:applyDamageRequest:recording death: %s",{data={dkey=mementomori.deathPositionKey.."."..worldId,position=mcontroller.position()}})
     end
     return r
 end
@@ -28,6 +28,7 @@ function update(dt)
 		mm_timer=0.0
 	elseif mm_timer > 5.0 then
 		promise=world.sendEntityMessage(entity.id(),"player.worldId")
+		promise2=world.sendEntityMessage(entity.id(),"player.isAdmin")
 		mm_timer=0.0
 	else
 		mm_timer=mm_timer+dt
@@ -36,6 +37,13 @@ function update(dt)
 		if promise:finished() then
 			if promise:succeeded() then
 				worldId=promise:result()
+			end
+		end
+	end
+	if promise2 then
+		if promise2:finished() then
+			if promise2:succeeded() then
+				playerIsAdmin=promise2:result()
 			end
 		end
 	end

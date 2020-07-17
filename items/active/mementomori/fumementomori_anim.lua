@@ -20,12 +20,10 @@ function update()
     if not deathData then
         return
     end
-	if (not deathData.position) or (not deathData.worldId) then
+	if (not deathData.position) then
 		return
 	end
-	if deathData.worldId~=worldId then
-		return
-	end
+
     if math.random() > get("baseDensity") then
         return
     end

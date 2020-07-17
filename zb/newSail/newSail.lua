@@ -403,7 +403,7 @@ function buttonMainSafe(wd)
 			resetGUI()
 			
 			if cfg.Data.missionWorld then
-				player.warp("InstanceWorld:"..cfg.Data.missionWorld, "beam")
+				player.warp("InstanceWorld:"..cfg.Data.missionWorld, cfg.Data.warpAnimation or "beam", cfg.Data.warpDeploy)
 				pane.dismiss()
 			end
 		elseif widget.active("root.crewList") then
@@ -669,6 +669,8 @@ function missionSelectedSafe()
 				widget.clearListItems("root.missionList")
 				
 				cfg.Data.missionWorld = dat.missionWorld
+				cfg.Data.warpAnimation = dat.warpAnimation
+				cfg.Data.warpDeploy = dat.warpDeploy
 				
 				local listItem = "root.missionList."..widget.addListItem("root.missionList")
 				widget.setVisible(listItem..".pseudobutton", false)
