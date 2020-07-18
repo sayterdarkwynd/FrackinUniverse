@@ -1,54 +1,65 @@
 {
-  "itemName" : "aetheriumdagger",
-  "price" : 1204,
-  "maxStack" : 1,
-  "level" : 7,
-  "rarity" : "legendary",
-  "description" : "Assassination. With style.
-^cyan;Inflicts Vulnerability^reset;",
-  "shortdescription" : "Aetherium Punyal",
-  "tooltipKind" : "swordaetherium",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","aetherium","cosmic", "upgradeableWeapon"],
-  "inventoryIcon" : "aetheriumdagger.png",
-  "collectablesOnPickup" : { "fu_weapondagger" : "aetheriumdagger" },
-  "animation" : "daggercomboglow.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "aetheriumdagger.png",
-    "bladefullbright" : "aetheriumdaggerfullbright.png"
-  },
-
-
+  "animationParts" : { },
   "animationCustom" : {
-    "animatedParts" : { 
-      "parts" : { 
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}      
-      }
-    },
     "sounds" : {
-      "fire" : [ "/sfx/melee/energywhip_swing1.ogg", "/sfx/melee/energywhip_swing2.ogg" , "/sfx/melee/energywhip_swing3.ogg"  ]
-    }    
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_spear.ogg" ],
+      "fire4" : [ "/sfx/melee/swing_shortsword.ogg" ]
+    }
   },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+  "ability" : {
+    "name" : "Combo Slash",
+    "type" : "daggercombo",
+    "scripts" : ["/items/active/weapons/melee/meleecombo.lua"],
+    "class" : "MeleeCombo",
 
-  "elementalType" : "aether",
+    "comboSteps" : 4,
 
-  "aimOffset" : -1.0,
-  
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.6,
-    "baseDps" : 7.4,
+    "flashTime" : 0.15,
+    "flashDirectives" : "fade=FFFFFFFF=0.15",
+
+    "swooshOffsetRegions" : [
+      [1.5, -1.0, 5.5, 1.0],
+      [1.5, -1.0, 5.5, 2.0],
+      [1.5, -1.0, 5.5, 1.0],
+      [1.5, -1.0, 5.5, 1.0]
+    ],
+
+    // cooldown time multiplier for steps after the first, compounded per combo step
+    "comboSpeedFactor" : 0.45,
+
+    "edgeTriggerGrace" : 2,
+
+    "fireTime" : 0.4,
+    "baseDps" : 5.7,
+
     "damageConfig" : {
-      "knockback" : 12,
-       "statusEffects" : [ "defenseboostneg20" ],
-       "damageSourceKind" : "aetherdagger"
+      "damageSourceKind" : "slash",
+      "statusEffects" : [ ],
+      "knockbackMode" : "facing",
+      "timeout" : 0.2
     },
+    "stepDamageConfig" : [
+      {
+        "baseDamageFactor" : 0.8,
+        "knockback" : 10
+      },
+      {
+        "baseDamageFactor" : 0.85,
+        "knockback" : 10
+      },
+	    {
+        "baseDamageFactor" : 1,
+        "knockback" : 11
+      },
+      {
+        "baseDamageFactor" : 0.92,
+        "knockback" : 12
+      }
+    ],
+
     "stances" : {
       "idle" : {
         "armRotation" : -20,
@@ -163,21 +174,5 @@
         "weaponAngularVelocity":-360
       }    
     } 
-  },
-  "critChance" : 2,
-  "critBonus" : 12,
-  "stunChance" : 50,
-  "upgradeParameters": {
-    "description" : "Death be thy shadow.",
-	"shortdescription" : "Aetherium Godkiller",
-	"inventoryIcon" : "aetheriumdaggert8.png",
-	"animationParts" : {
-      "blade" : "aetheriumdaggert8.png",
-      "bladefullbright" : "aetheriumdaggerfullbrightt8.png",
-	  "handle" : ""
-    },
-	"critChance" : 13,
-	"critBonus" : 60
-  },
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  }
 }
