@@ -148,6 +148,27 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		end      	   	    	
 	
 	end
+
+    --scythes are all about crits
+    if (primaryItem and root.itemHasTag(primaryItem, "scythe")) or (altItem and root.itemHasTag(altItem, "scythe")) then --longsword check (is worn)
+      if self.comboStep == 1 then
+ 	    status.setPersistentEffects("scythebonus", {
+ 	    	{stat = "critDamage", amount = 0.15},
+ 	    	{stat = "critChance", amount = 2}
+ 	    })
+      elseif self.comboStep == 2 then
+ 	    status.setPersistentEffects("scythebonus", {
+ 	    	{stat = "critDamage", amount = 0.25},
+ 	    	{stat = "critChance", amount = 3}
+ 	    })	            
+ 	  else
+ 	    status.setPersistentEffects("scythebonus", {
+ 	    	{stat = "critDamage", amount = 0.05},
+ 	    	{stat = "critChance", amount = 1}
+ 	    }) 	       	
+      end
+	end
+
     --longswords are way less effective when dual wielding, and much more effective when using with a shield
     if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) then --longsword check (is worn)
       if self.comboStep >=3 then
@@ -174,7 +195,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		        {stat = "defensetechBonus", amount = 0.25},
 		        {stat = "healtechBonus", amount = 0.15}
 	        })     		
-	        sb.logInfo(status.stat("shieldBash"))
     	end  
     	-- longsword check (dual wielded) : -20% Protection, -50% Crit Chance, +5% movement speed
     	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) and (altItem and root.itemHasTag(altItem, "weapon")) or 
@@ -459,6 +479,7 @@ function MeleeCombo:uninit()
 	status.clearPersistentEffects("rapierbonus")
 	status.clearPersistentEffects("shortspearbonus")
 	status.clearPersistentEffects("daggerbonus")
+	status.clearPersistentEffects("scythesbonus")
 
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")
