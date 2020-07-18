@@ -9,6 +9,7 @@ armorBonus={
 	{stat = "pusImmunity", amount = 1},
 	{stat = "slimestickImmunity", amount = 1},
 	{stat = "slimefrictionImmunity", amount = 1},
+	{stat = "slimeImmunity", amount = 1},
 	{stat = "liquidnitrogenImmunity", amount = 1}
 }
 
