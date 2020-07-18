@@ -61,13 +61,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     	attackSpeedUp = status.stat("attackSpeedUp")
 	end
 
-    -- test : combo Energy drain to prevent ridiculous spam
-	    if self.comboStep then 
-	    	if self.comboStep > 1 then
-	    		status.overConsumeResource("energy", 0.1)
-	    	end         	
-	    end   
-
      --rapiers are fast and furious
     if (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem, "rapier")) then --shortspear check (is worn)
       --rapier check (1 handed) : +15% Crit Damage, +35% Dash and Dodge Tech Efficiency
@@ -114,7 +107,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     	if (primaryItem and root.itemHasTag(primaryItem, "shortspear")) and (altItem and root.itemHasTag(altItem, "shortspear")) then
     	    status.setPersistentEffects("shortspearbonus", {
 		    	{stat = "protection", effectiveMultiplier = 0.80},
-		    	{stat = "critChance", effectiveMultiplier = 0.5)}
+		    	{stat = "critChance", effectiveMultiplier = 0.5}
 	      	})  
     	end      	   	    	
       end		
@@ -236,7 +229,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end   
 
     if (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem, "katana")) then --mace check (is worn)
-      if self.comboStep >=1 then  --katanas increase mvoement speed with each combo strike
+      if self.comboStep >=1 then  --katanas increase movement speed with each combo strike
  	  	mcontroller.controlModifiers({speedModifier = 1 + (self.comboStep / 10)})       	
       end 
       if not (altItem) then --katana check (1 handed)
@@ -323,29 +316,38 @@ end
 -- *****************************************
 
 -- State: windup
+
+-- *** FU ------------------------------------
+-- FU adds an encapsulating check in Windup, for energy. If there is no energy to consume, the combo weapon cannot attack
 function MeleeCombo:windup()
-	local stance = self.stances["windup"..self.comboStep]
+	self.energyTotal = (status.stat("maxEnergy") * 0.01)
+	if status.overConsumeResource("energy", self.energyTotal) then  
+		
+		local stance = self.stances["windup"..self.comboStep]
 
-	self.weapon:setStance(stance)
-	self.edgeTriggerTimer = 0
+		self.weapon:setStance(stance)
+		self.edgeTriggerTimer = 0
 
-	if stance.hold then
-        while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
-            coroutine.yield()
-        end
+		if stance.hold then
+	        while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
+	            coroutine.yield()
+	        end
+		else
+	        util.wait(stance.duration)
+		end
+
+		if self.energyUsage then
+	        status.overConsumeResource("energy", self.energyUsage)
+		end
+
+		if self.stances["preslash"..self.comboStep] then
+	        self:setState(self.preslash)
+		else
+	        self:setState(self.fire)
+		end
 	else
-        util.wait(stance.duration)
-	end
-
-	if self.energyUsage then
-        status.overConsumeResource("energy", self.energyUsage)
-	end
-
-	if self.stances["preslash"..self.comboStep] then
-        self:setState(self.preslash)
-	else
-        self:setState(self.fire)
-	end
+		return
+	end    
 end
 
 -- State: wait
