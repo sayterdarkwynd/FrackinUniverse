@@ -117,8 +117,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     if (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then --dagger check (is worn)
  	    status.setPersistentEffects("dodgebonus", {
 	        {stat = "dodgetechBonus", amount = 0.25}	    	
- 	    })        
- 	    
+ 	    })         
 	    if self.comboStep > 1 then --daggers increase defense through combos, as well as incrementally increase Crit chance
 	      	self.valueModifier = 1 + (1 / self.comboStep)
 	 	    status.setPersistentEffects("multiplierbonus", {
@@ -139,7 +138,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	      	})  
 	      	status.addEphemeralEffects{{effect = "runboost5", duration = 0.02}} 
 		end      	   	    	
-	
 	end
 
     --scythes are all about crits
