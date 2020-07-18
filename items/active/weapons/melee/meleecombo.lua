@@ -174,6 +174,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		        {stat = "defensetechBonus", amount = 0.25},
 		        {stat = "healtechBonus", amount = 0.15}
 	        })     		
+	        sb.logInfo(status.stat("shieldBash"))
     	end  
     	-- longsword check (dual wielded) : -20% Protection, -50% Crit Chance, +5% movement speed
     	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) and (altItem and root.itemHasTag(altItem, "weapon")) or 
