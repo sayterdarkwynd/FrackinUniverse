@@ -114,7 +114,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     	if (primaryItem and root.itemHasTag(primaryItem, "shortspear")) and (altItem and root.itemHasTag(altItem, "shortspear")) then
     	    status.setPersistentEffects("shortspearbonus", {
 		    	{stat = "protection", effectiveMultiplier = 0.80},
-		    	{stat = "critChance", baseMultiplier = 0.50}
+		    	{stat = "critChance", effectiveMultiplier = 0.5)}
 	      	})  
     	end      	   	    	
       end		
@@ -227,8 +227,8 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     	if (primaryItem and root.itemHasTag(primaryItem, "mace")) and (altItem and root.itemHasTag(altItem, "weapon")) or 
     	   (altItem and root.itemHasTag(altItem, "mace")) and (primaryItem and root.itemHasTag(primaryItem, "weapon")) then
     	    status.setPersistentEffects("macebonus", {
-		    	{stat = "critChance", baseMultiplier = 0.85},
-		    	{stat = "stunChance", baseMultiplier = 0.50}
+		    	{stat = "critChance", effectiveMultiplier = 0.85},
+		    	{stat = "stunChance", effectiveMultiplier = 0.50}
 	      	})  
 	      	status.addEphemeralEffects{{effect = "runboost5", duration = 0.02}} 
     	end      	   	    	
