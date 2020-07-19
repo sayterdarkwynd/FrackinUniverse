@@ -63,6 +63,10 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 
      --rapiers are fast and furious
     if (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem, "rapier")) then 
+	  if self.comboStep > 1 then
+	  	status.clearPersistentEffects("multiplierbonus")   --reset dagger bonus stacking when it shouldnt
+	  	status.clearPersistentEffects("daggerbonus")  
+	  end	
       --rapier check (1 handed) : +15% Crit Damage, +35% Dash and Dodge Tech Efficiency
       if not (altItem) then 
  	    status.setPersistentEffects("rapierbonus", {
@@ -72,38 +76,32 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	        {stat = "dashtechBonus", amount = 0.35} 	    	
  	    })     		
       else
-    	-- rapier check (rapier + dagger) : +5% Move Speed, +15% Dash and Dodge Tech Efficiency, +15% Protection
+    	-- rapier check (rapier + dagger) : +12% Protection, +25% Dash and Dodge Tech Efficiency
     	if (primaryItem and root.itemHasTag(primaryItem, "rapier")) and (altItem and root.itemHasTag(altItem, "dagger")) or 
     	   (altItem and root.itemHasTag(altItem, "rapier")) and (primaryItem and root.itemHasTag(primaryItem, "dagger")) then
     	    status.setPersistentEffects("rapierbonus", {
-		    	{stat = "protection", effectiveMultiplier = 1.15},
-		        --tech bonuses
-		        {stat = "dodgetechBonus", amount = 0.15},
-		        {stat = "dashtechBonus", amount = 0.15}
+		        {stat = "dodgetechBonus", amount = 0.25},
+		        {stat = "protection", effectiveMultiplier = 1.12},
+		        {stat = "dashtechBonus", amount = 0.25}
 	      	})  
     	end      	   	    	
       end		
 	end
 
-    --shortspears are THE weapon for shield users
     if (primaryItem and root.itemHasTag(primaryItem, "shortspear")) or (altItem and root.itemHasTag(altItem, "shortspear")) then 
-      --shortspear check (1 handed) : +30% Crit Damage
       if not (altItem) then 
  	    status.setPersistentEffects("shortspearbonus", {
  	    	{stat = "critDamage", amount = 0.3}
  	    })     		
       else
-      	--shortspear check (w / shield) : +10 Shield Bash, +50% Efficiency to Defensive Techs, +5% Damage, 20% Shield Regen
     	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
  	        status.setPersistentEffects("shortspearbonus", {
 		    	{stat = "shieldBash", amount = 10},
 		    	{stat = "shieldBashPush", amount = 2},
 		    	{stat = "shieldStaminaRegen", effectiveMultiplier = 1.2},
-		    	--tech bonuses
 		        {stat = "defensetechBonus", amount = 0.50}
 	        })     		
     	end  
-    	-- shortspear check (dual shortspear) : -20% Protection, -50% Crit Chance
     	if (primaryItem and root.itemHasTag(primaryItem, "shortspear")) and (altItem and root.itemHasTag(altItem, "shortspear")) then
     	    status.setPersistentEffects("shortspearbonus", {
 		    	{stat = "protection", effectiveMultiplier = 0.80},
@@ -113,34 +111,27 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
       end		
 	end
 
-     --daggers are super close-in, and dangerous
     if (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then 
  	    status.setPersistentEffects("dodgebonus", {
 	        {stat = "dodgetechBonus", amount = 0.25}	    	
  	    })         
-	    if self.comboStep > 1 then --daggers increase defense through combos, as well as incrementally increase Crit chance
+	    if self.comboStep > 1 then 
 	      	self.valueModifier = 1 + (1 / self.comboStep)
 	 	    status.setPersistentEffects("multiplierbonus", {
 	 	    	{stat = "protection", effectiveMultiplier = self.valueModifier},
 	 	    	{stat = "critChance", amount = self.comboStep}
 	 	    })	
-	 	else   
+	 	elseif self.comboStep == 1 or self.comboStep == 0 or not self.comboStep then
 	 	    status.setPersistentEffects("multiplierbonus", {
-	 	    	{stat = "protection", effectiveMultiplier = 1},
 	 	    	{stat = "critChance", amount = self.comboStep}
-	 	    })		 	          	
+	 	    })		 		 	          	
 	    end      
-      --daggers check (1 handed) : +5% speed, +10% protection
 		if (primaryItem and root.itemHasTag(primaryItem, "dagger")) and (altItem and root.itemHasTag(altItem, "melee")) or 
 		   (altItem and root.itemHasTag(altItem, "dagger")) and (primaryItem and root.itemHasTag(primaryItem, "melee")) then
-		    status.setPersistentEffects("daggerbonus", {
-		    	{stat = "protection", effectiveMultiplier = 1.10},
-	      	})  
-	      	status.addEphemeralEffects{{effect = "runboost5", duration = 0.02}} 
+	      	status.addEphemeralEffects{{effect = "runboost5", duration = 0.02}} 	      	
 		end      	   	    	
 	end
 
-    --scythes are all about crits
     if (primaryItem and root.itemHasTag(primaryItem, "scythe")) or (altItem and root.itemHasTag(altItem, "scythe")) then 
       if self.comboStep == 1 then
  	    status.setPersistentEffects("scythebonus", {
@@ -160,7 +151,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
       end
 	end
 
-    --longswords are way less effective when dual wielding, and much more effective when using with a shield
     if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) then 
       if self.comboStep >=3 then
  	    status.setPersistentEffects("multiplierbonus", {
@@ -171,23 +161,20 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
  	    	{stat = "critDamage", amount = 0}
  	    }) 	         	
       end
-      --longsword check (1 handed) : 70% Combo Cooldown
       if not (altItem) then 
  	    status.setPersistentEffects("longswordbonus", {
  	    	{stat = "attackSpeedUp", amount = 0.7}
  	    })     		
       else
-      	--longsword check (w / shield) : +4 Shield Bash and +1 Push, +0.5% crit chance increase, +25% Efficiency to Defensive Techs and +15% Efficiency to Heal techs
     	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
  	        status.setPersistentEffects("longswordbonus", {
 		    	{stat = "shieldBash", amount = 4},
 		    	{stat = "shieldBashPush", amount = 1},
-		    	--tech bonuses
 		        {stat = "defensetechBonus", amount = 0.25},
 		        {stat = "healtechBonus", amount = 0.15}
 	        })     		
     	end  
-    	-- longsword check (dual wielded) : -20% Protection, -50% Crit Chance, +5% movement speed
+
     	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) and (altItem and root.itemHasTag(altItem, "weapon")) or 
     	   (altItem and root.itemHasTag(altItem, "longsword")) and (primaryItem and root.itemHasTag(primaryItem, "weapon")) then
     	    status.setPersistentEffects("longswordbonus", {
@@ -198,15 +185,12 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
       end		
 	end
 
-    --maces are way less effective when dual wielding, and much more effective when using with a shield
     if (primaryItem and root.itemHasTag(primaryItem, "mace")) or (altItem and root.itemHasTag(altItem, "mace")) then 
-      --mace check (1 handed) : +2% Stun Chance 
       if not (altItem) then 
  	    status.setPersistentEffects("macebonus", {
  	    	{stat = "stunChance", amount = 2}
  	    })     		
       else
-      	--mace check (w / shield) : +7 Shield Bash and +3 Push, +10% Protection
     	if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
  	        status.setPersistentEffects("macebonus", {
 		    	{stat = "shieldBash", amount = 3},
@@ -214,7 +198,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		    	{stat = "protection", effectiveMultiplier = 1.10}
 	        })     		
     	end  
-    	--mace check (dual wielded) : -15% Crit Chance, -50% Stun Chance, +5% Movement Speed
     	if (primaryItem and root.itemHasTag(primaryItem, "mace")) and (altItem and root.itemHasTag(altItem, "weapon")) or 
     	   (altItem and root.itemHasTag(altItem, "mace")) and (primaryItem and root.itemHasTag(primaryItem, "weapon")) then
     	    status.setPersistentEffects("macebonus", {
@@ -227,10 +210,10 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end   
 
     if (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem, "katana")) then 
-      if self.comboStep >=1 then  --katanas increase movement speed with each combo strike
+      if self.comboStep >=1 then 
  	  	mcontroller.controlModifiers({speedModifier = 1 + (self.comboStep / 10)})       	
       end 
-      if not (altItem) then --katana check (1 handed)
+      if not (altItem) then 
  	    status.setPersistentEffects("katanabonus", { {stat = "defensetechBonus", amount = 0.15} })     		
       else
     	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) or  
@@ -250,7 +233,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     	    status.setPersistentEffects("katanabonus", {
 		        {stat = "maxEnergy", effectiveMultiplier =  1.15},
 		        {stat = "critDamage", amount = 0.2},
-		        --tech bonuses
 		        {stat = "dodgetechBonus", amount = 0.25},
 		        {stat = "dashtechBonus", amount = 0.25}
 	      	})
@@ -344,6 +326,7 @@ function MeleeCombo:windup()
 	        self:setState(self.fire)
 		end
 	else
+		cancelEffects()
 		return
 	end    
 end
@@ -473,6 +456,14 @@ end
 
 
 function MeleeCombo:uninit()
+	cancelEffects()
+    if self.helper then
+        self.helper:clearPersistent()
+    end
+	self.weapon:setDamage()
+end
+
+function cancelEffects()
 	status.clearPersistentEffects("longswordbonus")
 	status.clearPersistentEffects("macebonus")
 	status.clearPersistentEffects("katanabonus")
@@ -482,9 +473,5 @@ function MeleeCombo:uninit()
 	status.clearPersistentEffects("scythesbonus")
 
 	status.clearPersistentEffects("multiplierbonus")
-	status.clearPersistentEffects("dodgebonus")
-    if self.helper then
-        self.helper:clearPersistent()
-    end
-	self.weapon:setDamage()
+	status.clearPersistentEffects("dodgebonus")		
 end

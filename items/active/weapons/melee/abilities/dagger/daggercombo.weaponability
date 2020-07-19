@@ -28,11 +28,11 @@
     ],
 
     // cooldown time multiplier for steps after the first, compounded per combo step
-    "comboSpeedFactor" : 0.45,
+    "comboSpeedFactor" : 0.75,
 
-    "edgeTriggerGrace" : 2,
+    "edgeTriggerGrace" : 1.2,
 
-    "fireTime" : 0.4,
+    "fireTime" : 0.5,
     "baseDps" : 5.7,
 
     "damageConfig" : {
@@ -44,19 +44,19 @@
     "stepDamageConfig" : [
       {
         "baseDamageFactor" : 0.8,
-        "knockback" : 10
+        "knockback" : 7
       },
       {
         "baseDamageFactor" : 0.85,
-        "knockback" : 10
+        "knockback" : 8
       },
 	    {
         "baseDamageFactor" : 1,
-        "knockback" : 11
+        "knockback" : 9
       },
       {
         "baseDamageFactor" : 0.92,
-        "knockback" : 12
+        "knockback" : 10
       }
     ],
 
@@ -68,16 +68,16 @@
         "allowFlip" : true
       },
       "windup1" : {
-        "duration" : 0.1,
+        "duration" : 0.12,
         "armRotation" : -30,
         "weaponRotation" : 170,
         "twoHanded" : false,
-        "weaponAngularVelocity":360,
+        "weaponAngularVelocity":640,
         "allowRotate" : true,
         "allowFlip" : true
       },
       "fire1" : {
-        "duration" : 0.12,
+        "duration" : 0.1,
         "armRotation" : 60,
         "weaponRotation" : 170,
         "twoHanded" : false,
@@ -94,9 +94,10 @@
         "twoHanded" : false
       },
       "windup2" : {
-        "duration" : 0.1,
+        "duration" : 0.12,
         "armRotation" : -15,
         "weaponRotation" : -60,
+        "weaponAngularVelocity":-640,
         "weaponOffset" : [0, 0],
         "twoHanded" : false,
         "allowFlip" : true,
@@ -121,7 +122,7 @@
         "twoHanded" : false
       },
       "windup3" : {
-        "duration" : 0.1,
+        "duration" : 0.12,
         "armRotation" : -150,
         "weaponRotation" : 55,
         "twoHanded" : false,
@@ -147,7 +148,7 @@
         "twoHanded" : false
       },
       "windup4" : {
-        "duration" : 0.1,
+        "duration" : 0.12,
         "armRotation" : -150,
         "weaponRotation" : 55,
         "twoHanded" : false,
