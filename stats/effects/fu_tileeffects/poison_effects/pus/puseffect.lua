@@ -9,7 +9,7 @@ function init()
   activateVisualEffects()
 
   effect.addStatModifierGroup({
-      { stat = "poisonResistance", amount = -self.baseDamage },
+      { stat = "poisonResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
       { stat = "mentalProtection", effectiveMultiplier = 0 }
   })  
 end

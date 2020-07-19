@@ -7,8 +7,8 @@ function init()
   self.baseDamage = config.getParameter("healthDown",0)
   self.baseTime = setEffectTime()
   effect.addStatModifierGroup({
-      { stat = "electricResistance", amount = -self.baseDamage },
-      { stat = "physicalResistance", amount = -self.baseDamage }
+      { stat = "electricResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
+      { stat = "physicalResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) }
   })   
 end
 
@@ -20,19 +20,14 @@ function update(dt)
   if ( status.stat("poisonResistance",0)  >= 0.4 ) then
     effect.expire()
   end
-  
-  if status.isResource("food") then
-      hungerLevel = status.resource("food")
-  else
-      hungerLevel = 50
-  end
 
   self.tickTimer = self.tickTimer - dt
 
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
     if status.isResource("food") then
-      adjustedHunger = hungerLevel - (hungerLevel * 0.0095)
+	  hungerLevel = status.resource("food")
+      adjustedHunger = hungerLevel * 0.9905
       status.setResource("food", adjustedHunger)
     end
   end
