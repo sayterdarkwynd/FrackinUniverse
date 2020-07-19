@@ -13,12 +13,12 @@ function init()
 end
 
 function update(dt)
-  if (status.stat("radioactiveResistance",0)  >= 0.4) or status.statPositive("biomeradiationImmunity") or status.statPositive("ffextremeradiationImmunity") then
+  if (status.stat("radioactiveResistance")  >= 0.4) or status.statPositive("biomeradiationImmunity") or status.statPositive("ffextremeradiationImmunity") then
     effect.expire()
   end
 
   self.tickTimer = self.tickTimer - dt
-  self.currentDebuff = math.max(self.currentDebuff + self.debuffPerSec * dt, self.maxDebuff)
+  self.currentDebuff = math.max(self.currentDebuff + self.debuffPerSec * dt, self.maxDebuff*((status.statPositive("specialStatusImmunity") and 0.25) or 1))
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
     
@@ -28,7 +28,11 @@ function update(dt)
     -- Apply damage if target's physical resistance is zero (otherwise, just make the 'hurt' SFX). --
     local dmg = 0.1
     if (self.currentDebuff == self.maxDebuff) then
-      dmg = math.floor(status.resourceMax("health") * self.tickDamagePercentage)
+	  if status.statPositive("specialStatusImmunity") then
+        dmg = math.floor(world.threatLevel() * self.tickDamagePercentage * 100)
+      else
+	    dmg = math.floor(status.resourceMax("health") * self.tickDamagePercentage)
+	  end
     end
     
     status.applySelfDamageRequest({

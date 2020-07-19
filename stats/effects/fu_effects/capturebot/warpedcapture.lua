@@ -3,6 +3,10 @@ require "/scripts/companions/util.lua"
 require "/scripts/messageutil.lua"
 
 function init()
+	if status.statPositive("specialStatusImmunity") then
+		effect.expire()
+		return
+	end
 	eType=world.entityType(entity.id())
 	if not eType then return end
 	if eType=="monster" then
