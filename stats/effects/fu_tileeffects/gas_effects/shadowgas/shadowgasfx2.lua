@@ -1,7 +1,5 @@
 function init()
   animator.setParticleEmitterOffsetRegion("shadowgaseffect", mcontroller.boundBox())
-  animator.setParticleEmitterActive("shadowgaseffect", true)
-  effect.setParentDirectives("fade=000000=0.15")
   activateVisualEffects()
   script.setUpdateDelta(5)
   self.tickDamagePercentage = 0.01
@@ -32,7 +30,10 @@ function init()
 	if status.statPositive("shadowImmunity") or status.statPositive("shadowgasImmunity") or ( status.stat("shadowResistance") > 0.5) then
 	  deactivateVisualEffects()
 	  effect.expire()
+	  return
 	end
+  animator.setParticleEmitterActive("shadowgaseffect", true)
+  effect.setParentDirectives("fade=000000=0.15")
 end
 
 function deactivateVisualEffects()
@@ -60,9 +61,15 @@ mcontroller.controlParameters(self.liquidMovementParameter)
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
+	local damageVal=0
+	if status.statPositive("specialStatusImmunity") then
+		damageVal=math.ceil(world.threatLevel() * self.tickDamagePercentage * 100)
+	else
+		damageVal=math.ceil(status.resourceMax("health") * self.tickDamagePercentage) + 1
+	end
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
-        damage = math.ceil(status.resourceMax("health") * self.tickDamagePercentage),
+        damage = damageVal,
         damageSourceKind = "shadow",
         sourceEntityId = entity.id()
       })
