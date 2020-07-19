@@ -21,6 +21,8 @@ status.clearPersistentEffects("combobonusdmg")
 
 	self.weapon.onLeaveAbility = function()
 	self.weapon:setStance(self.stances.idle)
+
+
 	end
 
 -- **************************************************
@@ -28,7 +30,8 @@ status.clearPersistentEffects("combobonusdmg")
 
     primaryItem = world.entityHandItem(entity.id(), "primary")  --check what they have in hand
     altItem = world.entityHandItem(entity.id(), "alt")
-
+    self.rapierTimerBonus = 0
+    self.effectTimer = 0
 -- **************************************************
 -- FR EFFECTS
 -- **************************************************
@@ -63,20 +66,24 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 
      --rapiers are fast and furious
     if (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem, "rapier")) then 
+      if self.rapierTimerBonus > 5 then
+      	self.rapierTimerBonus = 5 
+      	
+      else
+      	self.rapierTimerBonus = self.rapierTimerBonus + 0.05
+      end
+
 	  if self.comboStep > 1 then
-	  	status.clearPersistentEffects("multiplierbonus")   --reset dagger bonus stacking when it shouldnt
+	  	status.clearPersistentEffects("multiplierbonus")
 	  	status.clearPersistentEffects("daggerbonus")  
 	  end	
-      --rapier check (1 handed) : +15% Crit Damage, +35% Dash and Dodge Tech Efficiency
       if not (altItem) then 
  	    status.setPersistentEffects("rapierbonus", {
- 	    	{stat = "critDamage", amount = 0.15},
-	        --tech bonuses
+ 	    	{stat = "critChance", amount = self.rapierTimerBonus},
 	        {stat = "dodgetechBonus", amount = 0.35},
 	        {stat = "dashtechBonus", amount = 0.35} 	    	
  	    })     		
       else
-    	-- rapier check (rapier + dagger) : +12% Protection, +25% Dash and Dodge Tech Efficiency
     	if (primaryItem and root.itemHasTag(primaryItem, "rapier")) and (altItem and root.itemHasTag(altItem, "dagger")) or 
     	   (altItem and root.itemHasTag(altItem, "rapier")) and (primaryItem and root.itemHasTag(primaryItem, "dagger")) then
     	    status.setPersistentEffects("rapierbonus", {
@@ -116,13 +123,22 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	        {stat = "dodgetechBonus", amount = 0.25}	    	
  	    })         
 	    if self.comboStep > 1 then 
-	      	self.valueModifier = 1 + (1 / self.comboStep)
-	 	    status.setPersistentEffects("multiplierbonus", {
-	 	    	{stat = "protection", effectiveMultiplier = self.valueModifier},
-	 	    	{stat = "critChance", amount = self.comboStep}
-	 	    })	
+	    	self.valueModifier = 1 + (1 / (self.comboStep * 2))
+	        if (primaryItem and root.itemHasTag(primaryItem, "dagger")) and (altItem and root.itemHasTag(altItem, "melee")) then
+	        	if self.valueModifier > 1.125 then self.valueModifier = 1.125 end
+		 	    status.setPersistentEffects("daggerbonus"..activeItem.hand(), {
+		 	    	{stat = "protection", effectiveMultiplier = self.valueModifier},
+		 	    	{stat = "critChance", amount = self.comboStep}
+		 	    })	
+	        else
+	        	if self.valueModifier > 1.25 then self.valueModifier = 1.25 end
+		 	    status.setPersistentEffects("daggerbonus", {
+		 	    	{stat = "protection", effectiveMultiplier = self.valueModifier},
+		 	    	{stat = "critChance", amount = self.comboStep}
+		 	    })	
+	        end
 	 	elseif self.comboStep == 1 or self.comboStep == 0 or not self.comboStep then
-	 	    status.setPersistentEffects("multiplierbonus", {
+	 	    status.setPersistentEffects("daggerbonus"..activeItem.hand(), {
 	 	    	{stat = "critChance", amount = self.comboStep}
 	 	    })		 		 	          	
 	    end      
@@ -313,8 +329,16 @@ end
 -- FU adds an encapsulating check in Windup, for energy. If there is no energy to consume, the combo weapon cannot attack
 function MeleeCombo:windup()
 	self.energyTotal = (status.stat("maxEnergy") * 0.01)
-	if status.overConsumeResource("energy", self.energyTotal) then  
-		
+		if status.resource("energy") <= 1 then 
+			status.modifyResource("energy",1) 
+			cancelEffects()
+			self.comboStep = 1	
+
+		end 
+		if status.resource("energy") == 1 then 
+			cancelEffects() 
+		end
+	if status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal)) then 
 		local stance = self.stances["windup"..self.comboStep]
 
 		self.weapon:setStance(stance)
@@ -337,9 +361,6 @@ function MeleeCombo:windup()
 		else
 	        self:setState(self.fire)
 		end
-	else
-		cancelEffects()
-		return
 	end    
 end
 
@@ -360,8 +381,10 @@ function MeleeCombo:wait()
 	self.cooldownTimer = math.max(0, self.cooldowns[self.comboStep - 1] - stance.duration)
 	-- *** FR
 	self.cooldownTimer = math.max(0, self.cooldownTimer * attackSpeedUp)
+	if status.resource("energy") < 1 then
+		self.cooldownTimer = self.cooldownTimer + 0.1
+	end	
 	self.comboStep = 1
-
 end
 
 -- State: preslash
@@ -383,7 +406,7 @@ function MeleeCombo:fire()
 
 	self.weapon:setStance(stance)
 	self.weapon:updateAim()
-
+    self.rapierTimerBonus = 0
 	local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
 	animator.setAnimationState("swoosh", animStateKey)
 	animator.playSound(animStateKey)
@@ -485,5 +508,6 @@ function cancelEffects()
 	status.clearPersistentEffects("scythesbonus")
 
 	status.clearPersistentEffects("multiplierbonus")
-	status.clearPersistentEffects("dodgebonus")		
+	status.clearPersistentEffects("dodgebonus")	
+	self.rapierTimerBonus = 0	
 end

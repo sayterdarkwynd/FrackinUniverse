@@ -12,17 +12,10 @@
   "twoHanded" : false,
   "itemTags" : ["weapon","melee", "longsword","effigium", "upgradeableWeapon"],
   "inventoryIcon" : "advalloylongsword.png",
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animation" : "combolongsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "advalloylongsword.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -33,9 +26,7 @@
   "primaryAbility" : {
     "fireTime" : 1,
     "baseDps" : 6.43,
-    "damageConfig" : {
-      "statusEffects" : [ "bleedingshort" ]
-    }
+    "damageConfig" : { "statusEffects" : [ "bleedingshort" ] }
   },
 
   "critChance" : 0.5,
