@@ -493,8 +493,9 @@ function cancelEffects()
 	status.clearPersistentEffects("rapierbonus")
 	status.clearPersistentEffects("shortspearbonus")
 	status.clearPersistentEffects("daggerbonus")
-	status.clearPersistentEffects("scythesbonus")
-
+	status.clearPersistentEffects("scythebonus")
+    status.clearPersistentEffects("axebonus")
+    status.clearPersistentEffects("hammerbonus")
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")	
 	self.rapierTimerBonus = 0	

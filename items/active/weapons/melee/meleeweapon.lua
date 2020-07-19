@@ -40,10 +40,24 @@ function update(dt, fireMode, shiftHeld)
 	self.weapon:update(dt, fireMode, shiftHeld)
 end
 
-
 function uninit()
     if self.helper then
         self.helper:clearPersistent()
     end
 	self.weapon:uninit()
+end
+
+function cancelEffects()
+	status.clearPersistentEffects("longswordbonus")
+	status.clearPersistentEffects("macebonus")
+	status.clearPersistentEffects("katanabonus")
+	status.clearPersistentEffects("rapierbonus")
+	status.clearPersistentEffects("shortspearbonus")
+	status.clearPersistentEffects("daggerbonus")
+	status.clearPersistentEffects("scythebonus")
+    status.clearPersistentEffects("axebonus")
+    status.clearPersistentEffects("hammerbonus")
+	status.clearPersistentEffects("multiplierbonus")
+	status.clearPersistentEffects("dodgebonus")	
+	self.rapierTimerBonus = 0	
 end
