@@ -10,44 +10,67 @@ HammerSmash = MeleeSlash:new()
 function HammerSmash:init()
 	self.stances.windup.duration = self.fireTime - self.stances.preslash.duration - self.stances.fire.duration
 
+	self.timerHammer = 0
+
 	MeleeSlash.init(self)
 	self:setupInterpolation()
 end
 
 function HammerSmash:windup(windupProgress)
-	self.weapon:setStance(self.stances.windup)
-	--*************************************
-	-- FU/FR ADDONS
-	setupHelper(self, "hammersmash-fire")
-	--**************************************
-
-	local windupProgress = windupProgress or 0
-	local bounceProgress = 0
-	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
-        if windupProgress < 1 then
-
-            windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
-            self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
-        else
-            bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
-            self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:bounceWeaponAngle(bounceProgress)
-
-	--**************************************
-
-	--**************************************
-
-        end
-        coroutine.yield()
+	-- every 10 hits, this resets. Acts as a nice bonus to using this weapon type
+	if self.timerHammer <= 10 then
+	    status.setPersistentEffects("hammerbonus", {
+			{stat = "stunChance", amount = self.timerHammer * 2 },
+			{stat = "critChance", amount = self.timerHammer}
+		})  			
+	end
+	if self.timerHammer > 10 then
+		self.timerHammer = 0
 	end
 
-	if windupProgress >= 1.0 then
-        if self.stances.preslash then
-            self:setState(self.preslash)
-        else
-            self:setState(self.fire)
-        end
-    else
-        self:setState(self.winddown, windupProgress)
+	self.energyTotal = (status.stat("maxEnergy") * 0.10)
+		if status.resource("energy") <= 1 then 
+			status.modifyResource("energy",1) 
+			cancelEffects()
+		end 
+		if status.resource("energy") == 1 then 
+			cancelEffects() 
+		end
+	if status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal)) then 
+
+		self.weapon:setStance(self.stances.windup)
+		--*************************************
+		-- FU/FR ADDONS
+		setupHelper(self, "hammersmash-fire")
+		--**************************************
+
+		local windupProgress = windupProgress or 0
+		local bounceProgress = 0
+		while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
+	        if windupProgress < 1 then
+	            windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
+	            self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
+	        else
+	            bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
+	            self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:bounceWeaponAngle(bounceProgress)
+
+		--**************************************
+
+		--**************************************
+
+	        end
+	        coroutine.yield()
+		end
+
+		if windupProgress >= 1.0 then
+	        if self.stances.preslash then
+	            self:setState(self.preslash)
+	        else
+	            self:setState(self.fire)
+	        end
+	    else
+	        self:setState(self.winddown, windupProgress)
+		end
 	end
 end
 
@@ -66,6 +89,8 @@ function HammerSmash:winddown(windupProgress)
 end
 
 function HammerSmash:fire()
+	self.timerHammer = self.timerHammer + 1
+
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
@@ -143,8 +168,24 @@ end
 
 
 function HammerSmash:uninit()
+	cancelEffects()
 	if self.helper then
         self.helper:clearPersistent()
     end
 	self.blockCount = 0
+end
+
+function cancelEffects()
+	status.clearPersistentEffects("longswordbonus")
+	status.clearPersistentEffects("macebonus")
+	status.clearPersistentEffects("katanabonus")
+	status.clearPersistentEffects("rapierbonus")
+	status.clearPersistentEffects("shortspearbonus")
+	status.clearPersistentEffects("daggerbonus")
+	status.clearPersistentEffects("scythebonus")
+    status.clearPersistentEffects("axebonus")
+    status.clearPersistentEffects("hammerbonus")
+	status.clearPersistentEffects("multiplierbonus")
+	status.clearPersistentEffects("dodgebonus")	
+	self.rapierTimerBonus = 0	
 end
