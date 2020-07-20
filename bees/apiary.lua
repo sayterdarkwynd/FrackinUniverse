@@ -779,7 +779,7 @@ function miteDamage(slot)
 	-- Having this be 0 will instantly kill all drones as soon as a mite is added
 	local toughness = math.max(genelib.statFromGenomeToValue(contents[slot].parameters.genome, "droneToughness") + frameBonuses.droneToughness, 1)
 	
-	world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor((storage.mites / toughness)/2))
+	world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(storage.mites / toughness))
 	contents[slot] = world.containerItemAt(entity.id(), slot-1)
 end
 
