@@ -7,9 +7,28 @@
 	  	 "fire" : [],
 	  	 "fire2" : [],
 	  	 "groundImpact" : [ "/sfx/melee/hammer_hit_ground3.ogg", "/sfx/melee/hammer_hit_ground4.ogg" ],
+       "charged" : [ "/sfx/tech/tricorder2.ogg" ],
 	     "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
 	  }
   },
+  {
+    "op" : "add",
+    "path" : "/particleEmitters/charged",
+    "value" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+        { "particle" : "shadowswoosh1"},
+        { "particle" : "shadowswoosh2"},
+        { "particle" : "shadowswoosh3"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke1"},
+        { "particle" : "shadowsmoke2"}
+      ]
+    }
+  },  
   {
     "op" : "add",
     "path" : "/particleEmitters/shadowswoosh",
