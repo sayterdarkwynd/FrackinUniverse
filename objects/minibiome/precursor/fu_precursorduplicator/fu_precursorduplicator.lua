@@ -40,8 +40,6 @@ function update(dt)
 					
 					if contains(self.inputs,inputSlot) then
 						--sb.logInfo("input fuel dat: %s %s",self.fuel[inputSlot],self.fuel[fuelSlot])
-						local fuelValueModified = ((((self.fuel[inputSlot] or 0) > 0) and 2.0) or 1.0) * self.fuel[fuelSlot]
-						--sb.logInfo("fuelValueModified: %s",fuelValueModified)
 						--sb.logInfo("%s",root.itemConfig(inputSlot))
 						local pass,itemOre = pcall(root.itemConfig,inputSlot)
 
@@ -49,7 +47,7 @@ function update(dt)
 							local outputCount=1
 							itemValue = itemOre.parameters.price or itemOre.config.price
 							--sb.logInfo("itemValue %s",itemValue)
-							local fuelCost=itemValue/fuelValueModified
+							local fuelCost=itemValue/self.fuel[fuelSlot]
 							
 							sb.logInfo("fuelCost: %s",fuelCost)
 							if fuelCost>1 then
