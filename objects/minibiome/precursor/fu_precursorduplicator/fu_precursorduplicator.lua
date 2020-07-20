@@ -47,7 +47,7 @@ function update(dt)
 							local fuelCost=itemValue/self.fuel[fuelSlot]
 							
 							if fuelCost>1 then
-								local leftovers=1.0-(fuelCost%1)
+								local leftovers=fuelCost-math.floor(fuelCost)
 								fuelCost=math.ceil(fuelCost)
 								leftovers=math.random()<leftovers
 								if leftovers then outputCount=outputCount+1 end
