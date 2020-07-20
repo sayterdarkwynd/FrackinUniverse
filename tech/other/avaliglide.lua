@@ -86,7 +86,7 @@ function update(args)
 	    if self.pressDown or self.pressDown and self.active2== 1 then  --slowfall stance	
 	      if not mcontroller.onGround() and not mcontroller.zeroG() then
 		      status.setPersistentEffects("glide", {
-			{stat = "fallDamageResistance", effectiveMultiplier = 1.65},
+			{stat = "fallDamageMultiplier", amount = 0.65},
 			{stat = "gliding", amount = 0}
 		      })	      
 	      end
