@@ -39,29 +39,33 @@ function update(dt)
 				if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
 					
 					if contains(self.inputs,inputSlot) then
+						--sb.logInfo("input fuel dat: %s %s",self.fuel[inputSlot],self.fuel[fuelSlot])
 						local fuelValueModified = ((((self.fuel[inputSlot] or 0) > 0) and 2.0) or 1.0) * self.fuel[fuelSlot]
+						--sb.logInfo("fuelValueModified: %s",fuelValueModified)
 						--sb.logInfo("%s",root.itemConfig(inputSlot))
 						local pass,itemOre = pcall(root.itemConfig,inputSlot)
 
 						if pass and itemOre then
 							local outputCount=1
 							itemValue = itemOre.parameters.price or itemOre.config.price
-							
+							--sb.logInfo("itemValue %s",itemValue)
 							local fuelCost=itemValue/fuelValueModified
 							
+							sb.logInfo("fuelCost: %s",fuelCost)
 							if fuelCost>1 then
-								local leftovers=1-(fuelCost%1)
+								local leftovers=1.0-(fuelCost%1)
+								--sb.logInfo("leftovers: %s",leftovers)
 								fuelCost=math.ceil(fuelCost)
 								leftovers=math.random()<leftovers
 								if leftovers then outputCount=outputCount+1 end
 							elseif fuelCost < 1 then
-								--massive fuel item. pretending fuel value of 8000 and item price 637, resulting fuel cost is under 1
-								outputCount=1/fuelCost
-								--flipped, it becomes 12.5588
+								--massive fuel item. assuming fuel value of 8000 (hyddrogen core) and item price 840 (densinium bar), resulting in: 0.105
+								outputCount=1.0/fuelCost
+								--flipped, it becomes 9.52380952
 								local leftovers=outputCount%1
-								--0.57
+								-- ~0.52
 								leftovers=math.random()<leftovers
-								--55% chance for one more
+								-- ~52% chance for one more
 								if leftovers then outputCount=outputCount+1 end
 								fuelCost=1
 								
