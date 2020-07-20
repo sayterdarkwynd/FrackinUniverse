@@ -149,7 +149,10 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end
 
     if (primaryItem and root.itemHasTag(primaryItem, "scythe")) or (altItem and root.itemHasTag(altItem, "scythe")) then
-	  --[[could use this instead for easier maths
+ 	    status.setPersistentEffects("scythebonus", {
+ 	    	{stat = "critDamage", amount = 0.05+(self.comboStep*0.1)},
+ 	    	{stat = "critChance", amount = 1+(self.comboStep)}
+ 	    })	
 	  if self.comboStep then
  	    status.setPersistentEffects("scythebonus", {
  	    	{stat = "critDamage", amount = 0.05+(self.comboStep*0.1)},
@@ -160,23 +163,8 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
  	    	{stat = "critDamage", amount = 0.05},
  	    	{stat = "critChance", amount = 1}
  	    })
-	  end]]
-      if self.comboStep == 1 then
- 	    status.setPersistentEffects("scythebonus", {
- 	    	{stat = "critDamage", amount = 0.15},
- 	    	{stat = "critChance", amount = 2}
- 	    })
-      elseif self.comboStep == 2 then
- 	    status.setPersistentEffects("scythebonus", {
- 	    	{stat = "critDamage", amount = 0.25},
- 	    	{stat = "critChance", amount = 3}
- 	    })	            
- 	  else
- 	    status.setPersistentEffects("scythebonus", {
- 	    	{stat = "critDamage", amount = 0.05},
- 	    	{stat = "critChance", amount = 1}
- 	    }) 	       	
-      end
+	  end
+
 	end
 
     if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) then 
