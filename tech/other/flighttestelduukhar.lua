@@ -112,24 +112,24 @@ function update(args)
 	    if self.runVal and not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 		    status.setPersistentEffects("glide", {
 		      --{stat = "gliding", amount = 1},
-		      {stat = "fallDamageMultiplier", amount = 0.65}
+		      {stat = "fallDamageMultiplier", baseMultiplier = 0.35}
 		    })     
 	    else
 		    status.setPersistentEffects("glide", {
 		      {stat = "gliding", amount = 0},
-		      {stat = "fallDamageMultiplier", amount = 0.65}
+		      {stat = "fallDamageMultiplier", baseMultiplier = 0.35}
 		    })  
 	    end
     else
 	    if self.runVal and not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 	            status.overConsumeResource("energy", self.fuelCostLesser)
 	            status.setPersistentEffects("glide", {
-		      {stat = "fallDamageMultiplier", amount = 0.65}
+		      {stat = "fallDamageMultiplier", baseMultiplier = 0.35}
 		    })     
 	    else
 	            status.overConsumeResource("energy", self.fuelCostExhausted)
 		    status.setPersistentEffects("glide", {
-		      {stat = "fallDamageMultiplier", amount = 0.65}
+		      {stat = "fallDamageMultiplier", baseMultiplier = 0.35}
 		    })     
 	    end  
 	    
