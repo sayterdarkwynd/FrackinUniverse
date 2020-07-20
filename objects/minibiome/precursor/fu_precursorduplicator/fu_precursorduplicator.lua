@@ -39,20 +39,15 @@ function update(dt)
 				if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
 					
 					if contains(self.inputs,inputSlot) then
-						--sb.logInfo("input fuel dat: %s %s",self.fuel[inputSlot],self.fuel[fuelSlot])
-						--sb.logInfo("%s",root.itemConfig(inputSlot))
 						local pass,itemOre = pcall(root.itemConfig,inputSlot)
 
 						if pass and itemOre then
 							local outputCount=1
 							itemValue = itemOre.parameters.price or itemOre.config.price
-							--sb.logInfo("itemValue %s",itemValue)
 							local fuelCost=itemValue/self.fuel[fuelSlot]
 							
-							sb.logInfo("fuelCost: %s",fuelCost)
 							if fuelCost>1 then
 								local leftovers=1.0-(fuelCost%1)
-								--sb.logInfo("leftovers: %s",leftovers)
 								fuelCost=math.ceil(fuelCost)
 								leftovers=math.random()<leftovers
 								if leftovers then outputCount=outputCount+1 end
