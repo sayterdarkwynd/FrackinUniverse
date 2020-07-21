@@ -31,7 +31,7 @@ function update(dt)
 	    animator.setParticleEmitterEmissionRate("cantheal", 0.5 )
 	    animator.setParticleEmitterActive("cantheal", true)	      
 	end
-	if effect.duration <= 0.2 then
+	if effect.duration() <= 0.2 then
 		animator.setParticleEmitterActive("cantheal", false)
 		animator.setParticleEmitterOffsetRegion("cantheal2", mcontroller.boundBox())
 	    animator.setParticleEmitterEmissionRate("cantheal2", 3 )
