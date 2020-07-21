@@ -1,6 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 local requiredPower = 0
 
 function init()
