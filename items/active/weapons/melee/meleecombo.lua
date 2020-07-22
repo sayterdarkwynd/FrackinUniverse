@@ -388,6 +388,29 @@ function MeleeCombo:preslash()
 	self:setState(self.fire)
 end
 
+-- ***********************************************************************************************************
+-- FR SPECIALS	Functions for projectile spawning
+-- ***********************************************************************************************************
+function MeleeCombo:firePosition()
+	return vec2.add(mcontroller.position(), activeItem.handPosition(self.weapon.muzzleOffset))
+end
+
+function MeleeCombo:aimVector()	-- fires straight
+	local aimVector = vec2.rotate({1, 0}, self.weapon.aimAngle )
+	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
+	return aimVector
+end
+
+function MeleeCombo:aimVectorRand() -- fires wherever it wants
+	local aimVector = vec2.rotate({1, 0}, self.weapon.aimAngle + sb.nrand(inaccuracy, 0))
+	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
+	return aimVector
+end
+	-- ***********************************************************************************************************
+	-- END FR SPECIALS
+	-- ***********************************************************************************************************
+
+
 -- State: fire
 function MeleeCombo:fire()
 	local stance = self.stances["fire"..self.comboStep]
@@ -483,6 +506,8 @@ function MeleeCombo:uninit()
     if self.helper then
         self.helper:clearPersistent()
     end
+    status.clearPersistentEffects("floranFoodPowerBonus")
+	status.clearPersistentEffects("slashbonusdmg")
 	self.weapon:setDamage()
 end
 
