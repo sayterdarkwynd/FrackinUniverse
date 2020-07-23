@@ -135,7 +135,24 @@ function startCrafting(result)
 	if next(result) == nil then
 		return false
 	else
-		_, result = next(result)
+		local tempResult=false
+		for _,resEntry in pairs(result) do
+			if not tempResult then
+				tempResult=resEntry
+			else
+				if not resEntry.inputs then sb.logInfo("%s",result) return false end
+				--sb.logInfo("v: %s",v)
+				--v: {inputs: {genesiberryseed: 100}, outputs: {genesiextract: 1}}
+				for resEntryInputItem,resEntryItemCount in pairs(resEntry.inputs) do
+					if tempResult.inputs[resEntryInputItem] < resEntryItemCount then
+						tempResult=resEntry
+						--sb.logInfo("%s",tempResult)
+					end
+				end
+			end
+		end
+		result=tempResult
+		--_, result = next(result)
 		storage.inputs={}
 		for k, v in pairs(result.inputs) do
 			-- if we ever do multiple inputs, FIXME undo partial consumption on failure
