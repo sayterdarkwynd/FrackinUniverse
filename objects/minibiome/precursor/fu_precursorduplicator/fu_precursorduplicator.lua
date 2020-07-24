@@ -1,4 +1,4 @@
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
 function init()

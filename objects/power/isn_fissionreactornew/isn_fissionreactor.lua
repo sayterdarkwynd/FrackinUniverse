@@ -1,5 +1,5 @@
 require "/scripts/kheAA/transferUtil.lua"
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 require "/scripts/effectUtil.lua"
 
 function init()

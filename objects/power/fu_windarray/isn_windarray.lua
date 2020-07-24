@@ -1,4 +1,4 @@
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 
 function update(dt)
   storage.checkticks = (storage.checkticks or 0) + dt
