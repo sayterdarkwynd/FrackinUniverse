@@ -1,6 +1,6 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
-require "/scripts/mementomori.lua"
+require "/scripts/fumementomori.lua"
 
 function get(param)
     return animationConfig.animationParameter(param)

@@ -1,6 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
-require "/scripts/researchGenerators.lua"
+require "/scripts/furesearchGenerators.lua"
 
 function init()
 	self.itemList = "itemScrollArea.itemList"

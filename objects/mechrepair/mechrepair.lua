@@ -1,5 +1,5 @@
 require "/scripts/vec2.lua"
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 
 function init()
   power.init()

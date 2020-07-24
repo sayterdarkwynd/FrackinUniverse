@@ -1,4 +1,4 @@
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 require "/scripts/effectUtil.lua"
 
 function update(dt)

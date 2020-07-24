@@ -1,4 +1,4 @@
-require'/scripts/power.lua'
+require'/scripts/fupower.lua'
 
 function update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")

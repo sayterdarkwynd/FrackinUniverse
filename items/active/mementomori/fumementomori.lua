@@ -1,4 +1,4 @@
-require "/scripts/mementomori.lua"
+require "/scripts/fumementomori.lua"
 
 function init()
 	script.setUpdateDelta(5)
