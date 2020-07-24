@@ -1,4 +1,4 @@
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 
 function init()
   self.powerLevel = config.getParameter("powerLevel",1)

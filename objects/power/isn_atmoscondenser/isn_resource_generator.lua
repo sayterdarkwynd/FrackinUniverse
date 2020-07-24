@@ -1,6 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/kheAA/transferUtil.lua"
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 
 -- You might notice there's no timer here.
 -- The time between outputs and power consumption is determined by

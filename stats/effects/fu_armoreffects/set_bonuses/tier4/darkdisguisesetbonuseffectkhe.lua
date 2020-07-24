@@ -18,6 +18,7 @@ shellBonus={
     {stat = "quicksandImmunity", amount = 1},
     {stat = "honeyslowImmunity", amount = 1},
     {stat = "iceslipImmunity", amount = 1},
+    {stat = "slimeImmunity", amount = 1},
     {stat = "slimestickImmunity", amount = 1}
 }
 

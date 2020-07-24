@@ -8,7 +8,7 @@ tileEffects = {}
 currentTile = {}
 collisionParams = {}
 
-require "/scripts/researchGenerators.lua"
+require "/scripts/furesearchGenerators.lua"
 
 function init()
   tileMaterials()

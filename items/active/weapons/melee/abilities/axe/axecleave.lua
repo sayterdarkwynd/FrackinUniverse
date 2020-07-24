@@ -15,36 +15,45 @@ function AxeCleave:init()
 end
 
 function AxeCleave:windup(windupProgress)
+	self.energyTotal = (status.stat("maxEnergy") * 0.07)
+		if status.resource("energy") <= 1 then 
+			status.modifyResource("energy",1) 
+			cancelEffects()
+		end 
+		if status.resource("energy") == 1 then 
+			cancelEffects() 
+		end
+	if status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal)) then 
+		--*************************************
+		-- FU/FR ADDONS
+		setupHelper(self, "axecleave-fire")
+		--**************************************
 
-	--*************************************
-	-- FU/FR ADDONS
-	setupHelper(self, "axecleave-fire")
-	--**************************************
+		self.weapon:setStance(self.stances.windup)
 
-	self.weapon:setStance(self.stances.windup)
+		local windupProgress = windupProgress or 0
+		local bounceProgress = 0
+		while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
+	        if windupProgress < 1 then
+	            windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
+	            self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
+	        else
+	            bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
+	            self.weapon.relativeWeaponRotation = self:bounceWeaponAngle(bounceProgress)
+	        end
+	        coroutine.yield()
+		end
 
-	local windupProgress = windupProgress or 0
-	local bounceProgress = 0
-	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
-        if windupProgress < 1 then
-            windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
-            self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
-        else
-            bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
-            self.weapon.relativeWeaponRotation = self:bounceWeaponAngle(bounceProgress)
-        end
-        coroutine.yield()
+		if windupProgress >= 1.0 then
+	        if self.stances.preslash then
+	            self:setState(self.preslash)
+	        else
+	            self:setState(self.fire)
+	        end
+	    else
+	        self:setState(self.winddown, windupProgress)
+	    end
 	end
-
-	if windupProgress >= 1.0 then
-        if self.stances.preslash then
-            self:setState(self.preslash)
-        else
-            self:setState(self.fire)
-        end
-    else
-        self:setState(self.winddown, windupProgress)
-    end
 end
 
 function AxeCleave:winddown(windupProgress)
@@ -113,4 +122,19 @@ function AxeCleave:uninit()
         self.helper:clearPersistent()
     end
 	self.blockCount = 0
+end
+
+function cancelEffects()
+	status.clearPersistentEffects("longswordbonus")
+	status.clearPersistentEffects("macebonus")
+	status.clearPersistentEffects("katanabonus")
+	status.clearPersistentEffects("rapierbonus")
+	status.clearPersistentEffects("shortspearbonus")
+	status.clearPersistentEffects("daggerbonus")
+	status.clearPersistentEffects("scythebonus")
+    status.clearPersistentEffects("axebonus")
+    status.clearPersistentEffects("hammerbonus")
+	status.clearPersistentEffects("multiplierbonus")
+	status.clearPersistentEffects("dodgebonus")	
+	self.rapierTimerBonus = 0	
 end

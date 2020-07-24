@@ -1,4 +1,4 @@
-require "/scripts/mementomori.lua"
+require "/scripts/fumementomori.lua"
 
 if not _mm_wrapped then
 	_applyDamageRequest = applyDamageRequest

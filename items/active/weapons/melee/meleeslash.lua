@@ -34,25 +34,36 @@ end
 
 -- State: windup
 function MeleeSlash:windup()
-	self.weapon:setStance(self.stances.windup)
 
-	if self.stances.windup.hold then
-        while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
-            coroutine.yield()
-        end
-	else
-        util.wait(self.stances.windup.duration)
-	end
+	self.energyTotal = (status.stat("maxEnergy") * 0.05)
+		if status.resource("energy") <= 1 then 
+			status.modifyResource("energy",1) 
+			cancelEffects()
+		end 
+		if status.resource("energy") == 1 then 
+			cancelEffects() 
+		end
+	if status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal)) then 
+		self.weapon:setStance(self.stances.windup)
 
-	if self.energyUsage then
-        status.overConsumeResource("energy", self.energyUsage)
-	end
+		if self.stances.windup.hold then
+	        while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
+	            coroutine.yield()
+	        end
+		else
+	        util.wait(self.stances.windup.duration)
+		end
 
-	if self.stances.preslash then
-        self:setState(self.preslash)
-	else
-        self:setState(self.fire)
-	end
+		if self.energyUsage then
+	        status.overConsumeResource("energy", self.energyUsage)
+		end
+
+		if self.stances.preslash then
+	        self:setState(self.preslash)
+		else
+	        self:setState(self.fire)
+		end
+	end	
 end
 
 -- State: preslash
@@ -64,8 +75,6 @@ function MeleeSlash:preslash()
 	util.wait(self.stances.preslash.duration)
 	self:setState(self.fire)
 end
-
-
 
 -- ***********************************************************************************************************
 -- FR SPECIALS	Functions for projectile spawning
@@ -121,8 +130,25 @@ function MeleeSlash:cooldownTime()
 end
 
 function MeleeSlash:uninit()
+	cancelEffects()
 	self.weapon:setDamage()
 	status.clearPersistentEffects("floranFoodPowerBonus")
 	status.clearPersistentEffects("slashbonusdmg")
 	self.meleeCountslash = 0
+end
+
+
+function cancelEffects()
+	status.clearPersistentEffects("longswordbonus")
+	status.clearPersistentEffects("macebonus")
+	status.clearPersistentEffects("katanabonus")
+	status.clearPersistentEffects("rapierbonus")
+	status.clearPersistentEffects("shortspearbonus")
+	status.clearPersistentEffects("daggerbonus")
+	status.clearPersistentEffects("scythebonus")
+    status.clearPersistentEffects("axebonus")
+    status.clearPersistentEffects("hammerbonus")
+	status.clearPersistentEffects("multiplierbonus")
+	status.clearPersistentEffects("dodgebonus")	
+	self.rapierTimerBonus = 0	
 end
