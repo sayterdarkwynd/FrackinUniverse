@@ -5,7 +5,7 @@ require "/scripts/status.lua" --for damage listener
 MeleeCombo = WeaponAbility:new()
 
 function MeleeCombo:init()
-status.clearPersistentEffects("combobonusdmg")
+    status.clearPersistentEffects("combobonusdmg")
 	self.comboStep = 1
 
 	self.energyUsage = self.energyUsage or 0
@@ -22,6 +22,9 @@ status.clearPersistentEffects("combobonusdmg")
 
 	self.weapon.onLeaveAbility = function()
 	self.weapon:setStance(self.stances.idle)
+
+	self.newValue = 0
+
 	end
 
 -- **************************************************
@@ -57,45 +60,58 @@ end
 
 function checkDamage(notifications)
   for _,notification in pairs(notifications) do
+    --check for individual combo hits
     if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
-        --sb.logInfo("did a hit")
+	    
+	    if not status.resourcePositive("health") then --count total kills
+	    	notification.hitType = "Kill"
+	    end  
+	    local hitType = notification.hitType
+	    --sb.logInfo(hitType)
+
+        --kill computation
+	    if notification.hitType == "Kill" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
+
+	    end   
+
+        --check hit types and calculate any that apply
         if not self.inflictedHitCounter then self.inflictedHitCounter = 0 end
 
         self.inflictedHitCounter = self.inflictedHitCounter + 1
-
-        if (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem, "katana")) then 
-        	--each hit with a combo using a katana increases its knockback resistance
-	 	    status.setPersistentEffects("listenerBonus", {
-	 	    	{stat = "grit", effectiveMultiplier = 1 + self.inflictedHitCounter/20}	    	
-	 	    })          	
-        end
-        if (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem, "shortsword")) then 
-        	--each hit with a combo using a shortsword increases its crit damage
-	 	    status.setPersistentEffects("listenerBonus", {
-	 	    	{stat = "critDamage", amount = 1 + (self.inflictedHitCounter * 5)}	    	
-	 	    })          	
-        end        
-        if (primaryItem and root.itemHasTag(primaryItem, "quarterstaff")) or (altItem and root.itemHasTag(altItem, "quarterstaff")) then 
-        	--each hit with a combo using a quarterstaff increases its defense output
-        	self.finalBonus = self.inflictedHitCounter / 5
-
-        	if self.finalBonus < 1.25 then
+        if self.inflictedHitCounter > 0 then
+	        if (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem, "katana")) then 
+	        	--each hit with a combo using a katana increases its knockback resistance
 		 	    status.setPersistentEffects("listenerBonus", {
-		 	    	{stat = "protection", effectiveMultiplier = 1 + self.finalBonus}	    	
-		 	    })  
-		 	else 
+		 	    	{stat = "grit", effectiveMultiplier = 1 + self.inflictedHitCounter/20}	    	
+		 	    })          	
+	        end
+	        if (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem, "shortsword")) then 
+	        	--each hit with a combo using a shortsword increases its crit damage
 		 	    status.setPersistentEffects("listenerBonus", {
-		 	    	{stat = "protection", effectiveMultiplier = 1.5}	--cap the bonus so they cant spin it forever    	
-		 	    }) 		 		
-	 	    end       	
-        end        
-        if (primaryItem and root.itemHasTag(primaryItem, "mace")) or (altItem and root.itemHasTag(altItem, "mace")) then 
-        	--each hit with a combo using a mace increases its stun chance
-	 	    status.setPersistentEffects("listenerBonus", {
-	 	    	{stat = "stunChance", amount = self.inflictedHitCounter*2}	    	
-	 	    })          	
-        end   
+		 	    	{stat = "critDamage", amount = 1 + (self.inflictedHitCounter * 5)}	    	
+		 	    })          	
+	        end        
+	        if (primaryItem and root.itemHasTag(primaryItem, "quarterstaff")) or (altItem and root.itemHasTag(altItem, "quarterstaff")) then 
+	        	--each hit with a combo using a quarterstaff increases its defense output
+	        	self.finalBonus = self.inflictedHitCounter / 5
 
+	        	if self.finalBonus < 1.25 then
+			 	    status.setPersistentEffects("listenerBonus", {
+			 	    	{stat = "protection", effectiveMultiplier = 1 + self.finalBonus}	    	
+			 	    })  
+			 	else 
+			 	    status.setPersistentEffects("listenerBonus", {
+			 	    	{stat = "protection", effectiveMultiplier = 1.5}	--cap the bonus so they cant spin it forever    	
+			 	    }) 		 		
+		 	    end       	
+	        end        
+	        if (primaryItem and root.itemHasTag(primaryItem, "mace")) or (altItem and root.itemHasTag(altItem, "mace")) then 
+	        	--each hit with a combo using a mace increases its stun chance
+		 	    status.setPersistentEffects("listenerBonus", {
+		 	    	{stat = "stunChance", amount = self.inflictedHitCounter*2}	    	
+		 	    })          	
+	        end   
+    	end
       return
     end
   end
