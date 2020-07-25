@@ -4,7 +4,7 @@ wanderState = {}
 function wanderState.enter()
   if hasTarget() then return nil end
 
-  math.randomseed(os.time())
+  math.randomseed( tonumber(tostring(os.time()):reverse():sub(1,6)) )
 
   return {
     wanderDirection = mcontroller.facingDirection(),
