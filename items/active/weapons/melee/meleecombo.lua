@@ -85,15 +85,24 @@ function checkDamage(notifications)
 
         --kill computation
 	    if notification.hitType == "Kill" or notification.hitType == "kill" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
-	    	--sb.logInfo("i made kill")
-	        if (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then 
-	        	--each consequtive kill inn rapid succession increases damage
-	        	self.totalKillsValue = 1 + self.inflictedHitCounter/10
+	    	--each consequtive kill in rapid succession increases damage for weapons in this grouping. Per kill. Resets automatically very soon after to prevent abuse.
+	        if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) or (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then 
+	        	self.totalKillsValue = 1 + self.inflictedHitCounter/15
+	        	sb.logInfo(self.totalKillsValue)
 		 	    status.setPersistentEffects("listenerBonus", {
 		 	    	{stat = "powerMultiplier", effectiveMultiplier = self.totalKillsValue}	    	
-		 	    })   
-		 	    --sb.logInfo("dagger bonus is "..self.totalKillsValue)       	
+		 	    })       	
 	        end	
+	        -- broadswords increase defense on consecutive kills
+	        if (primaryItem and root.itemHasTag(primaryItem, "broadsword")) or (altItem and root.itemHasTag(altItem, "broadsword"))  then 
+	        	self.totalKillsValue = 1 + self.inflictedHitCounter/20
+	        	if self.totalKillsValue > 1.35 then
+	        		self.totalKillsValue = 1.35
+	        	end
+		 	    status.setPersistentEffects("listenerBonus", {
+		 	    	{stat = "protection", effectiveMultiplier = self.totalKillsValue}	    	
+		 	    })         	
+	        end		        
 	    end  
 
 	    --hit computation 

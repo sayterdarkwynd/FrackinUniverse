@@ -1,4 +1,5 @@
 require "/scripts/FRHelper.lua"
+require "/scripts/status.lua" --for damage listener
 
 -- Melee primary ability
 MeleeSlash = WeaponAbility:new()
@@ -14,10 +15,37 @@ function MeleeSlash:init()
 	end
 
     -- **************************
-    -- FR values
+    -- FR and FU values
 	attackSpeedUp = 0 -- base attackSpeed bonus
+    self.hitsListener = damageListener("inflictedHits", checkDamage)  --listen for damage
+    self.damageListener = damageListener("inflictedDamage", checkDamage)  --listen for damage
+    self.killListener = damageListener("Kill", checkDamage)  --listen for kills	
     -- ************************************************
+  
+end
 
+function checkDamage(notifications)
+  for _,notification in pairs(notifications) do
+    --check for individual hits
+    if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
+	    if not status.resourcePositive("health") then --count total kills
+	    	notification.hitType = "Kill"
+	    end  
+	    local hitType = notification.hitType
+	    --sb.logInfo(hitType)
+
+        --kill computation
+	    if notification.hitType == "Kill" or notification.hitType == "kill" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
+	        
+	    end  
+
+	    --hit computation 
+	    if notification.hitType == "Hit" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
+
+	    end 
+      return
+    end
+  end
 end
 
 -- Ticks on every update regardless if this is the active ability
@@ -26,6 +54,10 @@ function MeleeSlash:update(dt, fireMode, shiftHeld)
 	
 	-- FR
 	setupHelper(self, "meleeslash-fire")
+    self.hitsListener:update()
+    self.damageListener:update()
+    self.killListener:update()
+
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 	if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) then
         self:setState(self.windup)
@@ -150,5 +182,7 @@ function cancelEffects()
     status.clearPersistentEffects("hammerbonus")
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")	
+	status.clearPersistentEffects("listenerBonus")	
 	self.rapierTimerBonus = 0	
+	self.inflictedHitCounter = 0
 end
