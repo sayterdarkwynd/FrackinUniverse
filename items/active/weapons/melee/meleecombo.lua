@@ -87,6 +87,7 @@ function checkDamage(notifications)
 	    if notification.hitType == "Kill" or notification.hitType == "kill" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
 	    	--each consequtive kill in rapid succession increases damage for weapons in this grouping. Per kill. Resets automatically very soon after to prevent abuse.
 	        if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) or (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then 
+	        	if not self.inflictedHitCounter then self.inflictedHitCounter = 0 end
 	        	self.totalKillsValue = 1 + self.inflictedHitCounter/15
 		 	    status.setPersistentEffects("listenerBonus", {
 		 	    	{stat = "powerMultiplier", effectiveMultiplier = self.totalKillsValue}	    	
