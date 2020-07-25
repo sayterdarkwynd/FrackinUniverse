@@ -188,7 +188,7 @@ function randomEvent()
 		elseif self.randEvent == 25 then
 			status.addEphemeralEffect("swimboost1",self.curseDuration_status) -- Swim boost 1!
 		elseif self.randEvent == 26 then
-			status.addEphemeralEffect("vulnerability",self.curseDuration_status/4.0) --vulnerability multiplies all resists and defense by 0.01, biiiig ouch. severely reducing the max duration of this.
+			status.addEphemeralEffect("vulnerability",self.curseDuration_fast) --vulnerability multiplies all resists and defense by 0.01, biiiig ouch. severely reducing the max duration of this.
 		elseif self.randEvent == 27 then
 			status.setPersistentEffects("madnessEffectsMain", {{stat = "fuCharisma", baseMultiplier = (1.0-(math.random(6,40)/100.0)) }}) --random charisma penalty.
 		elseif self.randEvent == 28 then
