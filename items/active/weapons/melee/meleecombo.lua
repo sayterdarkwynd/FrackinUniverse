@@ -92,7 +92,7 @@ function checkDamage(notifications)
 		 	    status.setPersistentEffects("listenerBonus", {
 		 	    	{stat = "powerMultiplier", effectiveMultiplier = self.totalKillsValue}	    	
 		 	    })   
-		 	    sb.logInfo("dagger bonus is "..self.totalKillsValue)       	
+		 	    --sb.logInfo("dagger bonus is "..self.totalKillsValue)       	
 	        end	
 	    end  
 
