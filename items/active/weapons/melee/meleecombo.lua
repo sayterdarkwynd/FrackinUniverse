@@ -35,8 +35,10 @@ function MeleeCombo:init()
     self.rapierTimerBonus = 0
     self.effectTimer = 0
 
-    self.damageListener = damageListener("inflictedHits", checkDamage)  --listen for damage
-
+    self.hitsListener = damageListener("inflictedHits", checkDamage)  --listen for damage
+    self.damageListener = damageListener("inflictedDamage", checkDamage)  --listen for damage
+    self.killListener = damageListener("Kill", checkDamage)  --listen for kills
+    --self.hitsListener = damageListener("damageTaken", checkDamage)  --listen for kills
 -- **************************************************
 -- FR EFFECTS
 -- **************************************************
@@ -60,18 +62,38 @@ end
 
 function checkDamage(notifications)
   for _,notification in pairs(notifications) do
+
+  	-- defense
+  	--if notification.targetEntityId then
+  	--	if notification.hitType == "ShieldHit" or notification.hitType == "Knockback" then
+    --			sb.logInfo("i blocked with a shield")
+  	--	end
+  	--	if notification.damageType == "Damage" then
+  	--		sb.logInfo("i was hit")
+  	--		--reset special counters when hit
+	--		self.rapierTimerBonus = 0	
+	--		self.inflictedHitCounter = 0  
+  	--	end
+  	--end
     --check for individual combo hits
     if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
-	    
 	    if not status.resourcePositive("health") then --count total kills
 	    	notification.hitType = "Kill"
 	    end  
 	    local hitType = notification.hitType
-	    sb.logInfo(hitType)
+	    --sb.logInfo(hitType)
 
         --kill computation
 	    if notification.hitType == "Kill" or notification.hitType == "kill" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
-
+	    	--sb.logInfo("i made kill")
+	        if (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then 
+	        	--each consequtive kill inn rapid succession increases damage
+	        	self.totalKillsValue = 1 + self.inflictedHitCounter/10
+		 	    status.setPersistentEffects("listenerBonus", {
+		 	    	{stat = "powerMultiplier", effectiveMultiplier = self.totalKillsValue}	    	
+		 	    })   
+		 	    sb.logInfo("dagger bonus is "..self.totalKillsValue)       	
+	        end	
 	    end  
 
 	    --hit computation 
@@ -126,7 +148,10 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
     
 	setupHelper(self, "meleecombo-fire")
+    self.hitsListener:update()
     self.damageListener:update()
+    self.killListener:update()
+    --self.hitsListener:update()
 
 	if not attackSpeedUp then
         attackSpeedUp = 0 
