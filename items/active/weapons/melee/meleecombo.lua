@@ -88,7 +88,6 @@ function checkDamage(notifications)
 	    	--each consequtive kill in rapid succession increases damage for weapons in this grouping. Per kill. Resets automatically very soon after to prevent abuse.
 	        if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) or (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then 
 	        	self.totalKillsValue = 1 + self.inflictedHitCounter/15
-	        	sb.logInfo(self.totalKillsValue)
 		 	    status.setPersistentEffects("listenerBonus", {
 		 	    	{stat = "powerMultiplier", effectiveMultiplier = self.totalKillsValue}	    	
 		 	    })       	

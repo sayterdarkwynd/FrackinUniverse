@@ -164,11 +164,7 @@ end
 function MeleeSlash:uninit()
 	cancelEffects()
 	self.weapon:setDamage()
-	status.clearPersistentEffects("floranFoodPowerBonus")
-	status.clearPersistentEffects("slashbonusdmg")
-	self.meleeCountslash = 0
 end
-
 
 function cancelEffects()
 	status.clearPersistentEffects("longswordbonus")
@@ -183,6 +179,9 @@ function cancelEffects()
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")	
 	status.clearPersistentEffects("listenerBonus")	
+	status.clearPersistentEffects("floranFoodPowerBonus")
+	status.clearPersistentEffects("slashbonusdmg")
+	self.meleeCountslash = 0	
 	self.rapierTimerBonus = 0	
 	self.inflictedHitCounter = 0
 end
