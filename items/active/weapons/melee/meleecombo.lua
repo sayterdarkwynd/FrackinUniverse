@@ -1,4 +1,5 @@
 require("/scripts/FRHelper.lua")
+require "/scripts/status.lua" --for damage listener
 
 -- Melee primary ability
 MeleeCombo = WeaponAbility:new()
@@ -21,8 +22,6 @@ status.clearPersistentEffects("combobonusdmg")
 
 	self.weapon.onLeaveAbility = function()
 	self.weapon:setStance(self.stances.idle)
-
-
 	end
 
 -- **************************************************
@@ -32,6 +31,9 @@ status.clearPersistentEffects("combobonusdmg")
     altItem = world.entityHandItem(entity.id(), "alt")
     self.rapierTimerBonus = 0
     self.effectTimer = 0
+
+    self.damageListener = damageListener("inflictedHits", checkDamage)  --listen for damage
+
 -- **************************************************
 -- FR EFFECTS
 -- **************************************************
@@ -53,10 +55,60 @@ status.clearPersistentEffects("combobonusdmg")
 end
 -- **************************************************
 
+function checkDamage(notifications)
+  for _,notification in pairs(notifications) do
+    if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
+        --sb.logInfo("did a hit")
+        if not self.inflictedHitCounter then self.inflictedHitCounter = 0 end
+
+        self.inflictedHitCounter = self.inflictedHitCounter + 1
+
+        if (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem, "katana")) then 
+        	--each hit with a combo using a katana increases its knockback resistance
+	 	    status.setPersistentEffects("listenerBonus", {
+	 	    	{stat = "grit", effectiveMultiplier = 1 + self.inflictedHitCounter/20}	    	
+	 	    })          	
+        end
+        if (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem, "shortsword")) then 
+        	--each hit with a combo using a shortsword increases its crit damage
+	 	    status.setPersistentEffects("listenerBonus", {
+	 	    	{stat = "critDamage", amount = 1 + (self.inflictedHitCounter * 5)}	    	
+	 	    })          	
+        end        
+        if (primaryItem and root.itemHasTag(primaryItem, "quarterstaff")) or (altItem and root.itemHasTag(altItem, "quarterstaff")) then 
+        	--each hit with a combo using a quarterstaff increases its defense output
+        	self.finalBonus = self.inflictedHitCounter / 5
+
+        	if self.finalBonus < 1.25 then
+		 	    status.setPersistentEffects("listenerBonus", {
+		 	    	{stat = "protection", effectiveMultiplier = 1 + self.finalBonus}	    	
+		 	    })  
+		 	else 
+		 	    status.setPersistentEffects("listenerBonus", {
+		 	    	{stat = "protection", effectiveMultiplier = 1.5}	--cap the bonus so they cant spin it forever    	
+		 	    }) 		 		
+	 	    end       	
+        end        
+        if (primaryItem and root.itemHasTag(primaryItem, "mace")) or (altItem and root.itemHasTag(altItem, "mace")) then 
+        	--each hit with a combo using a mace increases its stun chance
+	 	    status.setPersistentEffects("listenerBonus", {
+	 	    	{stat = "stunChance", amount = self.inflictedHitCounter*2}	    	
+	 	    })          	
+        end   
+
+      return
+    end
+  end
+end
+
 -- Ticks on every update regardless if this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
-
+    
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
+    
+	setupHelper(self, "meleecombo-fire")
+    self.damageListener:update()
+
 	if not attackSpeedUp then
         attackSpeedUp = 0 
     else
@@ -417,6 +469,11 @@ function MeleeCombo:fire()
 
 	self.weapon:setStance(stance)
 	self.weapon:updateAim()
+
+	if self.helper then
+        self.helper:runScripts("meleecombo-fire", self)
+    end
+
     self.rapierTimerBonus = 0
 	local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
 	animator.setAnimationState("swoosh", animStateKey)
@@ -523,5 +580,7 @@ function cancelEffects()
     status.clearPersistentEffects("hammerbonus")
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")	
+	status.clearPersistentEffects("listenerBonus")	
 	self.rapierTimerBonus = 0	
+	self.inflictedHitCounter = 0
 end
