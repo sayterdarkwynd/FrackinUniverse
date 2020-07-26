@@ -1,17 +1,26 @@
 {
-  "name" : "precursorregeneration",
-  "blockingStat" : "healingStatusImmunity",
+	"name": "precursorregeneration",
+	"blockingStat": "healingStatusImmunity",
 
 
-  "effectConfig" : { "healPercent" : 0.2,"ratio":1.5,"resource1":"health","resource2":"energy"},
-  
-  "defaultDuration" : 3,
+	"effectConfig": {
+		"healPercent": 0.2,
+		"ratio": 1.5,
+		"resource1": "health",
+		"resource2": "energy",
+		"stats": [{
+			"stat": "protection",
+			"effectiveMultiplier": 1.25
+		}]
+	},
 
-  "scripts" : [
-    "resourceconvert.lua"
-  ],
+	"defaultDuration": 3,
+
+	"scripts": [
+		"resourceconvert.lua", "/stats/effects/fu_genericStatApplier.lua"
+	],
 
 
-  "label" : "Precursor Regeneration",
-  "icon" : "/interface/statuses/heal.png"
+	"label": "Precursor Regeneration",
+	"icon": "/interface/statuses/heal.png"
 }
