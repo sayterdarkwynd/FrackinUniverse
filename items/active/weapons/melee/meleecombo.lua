@@ -185,14 +185,16 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     	attackSpeedUp = status.stat("attackSpeedUp")
 	end
 
-	-- **** Weapon Masteries ****
+	-- ************************************************ Weapon Masteries ************************************************
+	-- ******************************************************************************************************************
 	-- only apply the following if the character has a Mastery trait. These are ONLY obtained from specific types of gear or loot.
+
 
     if (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem, "shortsword")) then
       self.shortswordMastery = 1 + status.stat("shortswordMastery") or 0    		
 	  if self.comboStep and self.shortswordMastery > 1 then
- 	    status.setPersistentEffects("shortswordbonus", {
- 	    	{stat = "critChance", amount = 1+(self.comboStep * self.shortswordMastery)}
+ 	    status.setPersistentEffects("masterybonus", {
+ 	    	{stat = "critChance", amount = 1 + (self.comboStep * self.shortswordMastery)}
  	    })
 	  else
 		status.setPersistentEffects("shortswordbonus", {
@@ -201,8 +203,43 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	  end
 	end
 
-	-- ****Weapon Abilities ****
-     --rapiers are fast and furious
+    if (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem, "rapier")) then
+      self.rapierMastery = 1 + status.stat("rapierMastery") or 0    		
+	  if self.comboStep and self.rapierMastery > 1 then
+ 	    status.setPersistentEffects("masterybonus", {
+ 	    	{stat = "dodgetechBonus", effectiveMultiplier = (self.rapierMastery/2)},
+ 	    	{stat = "dashtechBonus", effectiveMultiplier = (self.rapierMastery/2)}
+ 	    })
+	  end
+	end	
+
+    if (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then
+      self.daggerMastery = 1 + status.stat("daggerMastery") or 0    		
+	  if self.comboStep and self.daggerMastery > 1 then
+ 	    status.setPersistentEffects("masterybonus", {
+ 	    	{stat = "powerMultiplier", amount = 1 + self.daggerMastery}
+ 	    })
+	  end
+	end
+
+    if (primaryItem and root.itemHasTag(primaryItem, "longsword")) then
+      self.longswordMastery = 1 + status.stat("longswordMastery") or 0    		
+ 	    status.setPersistentEffects("masterybonus", {
+ 	    	{stat = "shieldBash", amount = 1 + ((self.longswordMastery/8) * 40)}
+ 	    })
+	end	
+
+    if (primaryItem and root.itemHasTag(primaryItem, "broadsword")) then
+      self.broadswordMastery = 1 + status.stat("broadswordMastery") or 0    		
+	  if self.comboStep and self.daggerMastery > 1 then
+ 	    status.setPersistentEffects("masterybonus", {
+ 	    	{stat = "powerMultiplier", amount = 1 + self.broadswordMastery}
+ 	    })
+	  end
+	end
+    -- ************************************************ END Weapon Masteries ************************************************
+
+	-- ************************************************ Weapon Abilities ************************************************
     if (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem, "rapier")) then 
       self.rapierMastery = 1 + status.stat("rapierMastery") or 0 
       if self.rapierTimerBonus > 5 then
@@ -399,7 +436,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
     	end     	     	   	    	
       end		
 	end
-
+    -- ************************************************ END Weapon Abilities ************************************************
 
 	if self.cooldownTimer > 0 then
         self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
@@ -682,6 +719,7 @@ function cancelEffects()
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")	
 	status.clearPersistentEffects("listenerBonus")	
+	status.clearPersistentEffects("masteryBonus")	
 	self.rapierTimerBonus = 0	
 	self.inflictedHitCounter = 0
 end

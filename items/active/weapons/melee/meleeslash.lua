@@ -193,6 +193,7 @@ function cancelEffects()
 	status.clearPersistentEffects("listenerBonus")	
 	status.clearPersistentEffects("floranFoodPowerBonus")
 	status.clearPersistentEffects("slashbonusdmg")
+	status.clearPersistentEffects("masteryBonus")	
 	self.meleeCountslash = 0	
 	self.rapierTimerBonus = 0	
 	self.inflictedHitCounter = 0

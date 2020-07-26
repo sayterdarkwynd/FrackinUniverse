@@ -9,6 +9,7 @@ weaponBonus={
 }
 
 armorBonus={
+	{stat = "katanaMastery", amount = 0.4},
 	{stat = "sulphuricImmunity", amount = 1},
 	{stat = "biooozeImmunity", amount = 1}
 }

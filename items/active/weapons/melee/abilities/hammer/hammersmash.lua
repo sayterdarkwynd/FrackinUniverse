@@ -241,6 +241,7 @@ function cancelEffects()
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")	
 	status.clearPersistentEffects("listenerBonus")	
+	status.clearPersistentEffects("masteryBonus")	
 	self.rapierTimerBonus = 0	
 	self.inflictedHitCounter = 0
 	self.timerHammer = 0
