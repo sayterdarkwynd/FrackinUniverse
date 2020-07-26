@@ -13,18 +13,31 @@ function MeleeSlash:init()
 	self.weapon.onLeaveAbility = function()
 	self.weapon:setStance(self.stances.idle)
 	end
-
     -- **************************
     -- FR and FU values
 	attackSpeedUp = 0 -- base attackSpeed bonus
     self.hitsListener = damageListener("inflictedHits", checkDamage)  --listen for damage
     self.damageListener = damageListener("inflictedDamage", checkDamage)  --listen for damage
     self.killListener = damageListener("Kill", checkDamage)  --listen for kills	
-    -- ************************************************
-  
+end
+
+function calculateMasteries()
+	self.shortswordMastery = 1 + status.stat("shortswordMastery")
+	self.longswordMastery = 1 + status.stat("longswordMastery")
+	self.rapierMastery = 1 + status.stat("rapierMastery") 
+	self.katanaMastery = 1 + status.stat("katanaMastery") 
+	self.daggerMastery = 1 + status.stat("daggerMastery") 
+	self.broadswordMastery = 1 + status.stat("broadswordMastery") 	
+	self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")  	
+	self.maceMastery = 1 + status.stat("maceMastery") 
+	self.shortspearMastery = 1 + status.stat("shortspearMastery") 
+	self.hammerMastery = 1 + status.stat("hammerMastery") 
+	self.axeMastery = 1 + status.stat("axeMastery") 
+	self.spearMastery = 1 + status.stat("spearMastery") 
 end
 
 function checkDamage(notifications)
+		
   for _,notification in pairs(notifications) do
     --check for individual hits
     if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
@@ -66,7 +79,6 @@ end
 
 -- State: windup
 function MeleeSlash:windup()
-
 	self.energyTotal = (status.stat("maxEnergy") * 0.05)
 		if status.resource("energy") <= 1 then 
 			status.modifyResource("energy",1) 

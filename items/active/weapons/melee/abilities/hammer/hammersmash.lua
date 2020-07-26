@@ -12,7 +12,7 @@ function HammerSmash:init()
 
 	self.timerHammer = 0 --for hammer crit/stun bonus (FU)
 	self.overCharged = 0 -- overcharged default
-	self.hammerMastery = status.stat("hammerMastery") or 0 -- new stat for applying bonuses to hammer functions
+	self.hammerMastery = 1 + status.stat("hammerMastery") or 0 -- new stat for applying bonuses to hammer functions
 
 	MeleeSlash.init(self)
 	self:setupInterpolation()
@@ -64,7 +64,7 @@ function HammerSmash:windup(windupProgress)
 				else
 					if self.timerHammer < 100 then --otherwise, add bonus
 						self.timerHammer = self.timerHammer + 0.5
-					    status.setPersistentEffects("hammerbonus", {{stat = "stunChance", amount = self.timerHammer * 1.2 + self.hammerMastery },{stat = "critChance", amount = self.timerHammer + self.hammerMastery }})  			
+					    status.setPersistentEffects("hammerbonus", {{stat = "stunChance", amount = ((self.timerHammer * 1.2) * self.hammerMastery) },{stat = "critChance", amount = (self.timerHammer * self.hammerMastery)}})  			
 					end
 					if self.timerHammer == 100 then  --at 101, play a sound
 						animator.playSound("overCharged")
@@ -146,7 +146,7 @@ function HammerSmash:fire()
                     animator.playSound("groundImpact")
                     if self.timerHammer > 75 and self.timerHammer < 101 then                  	
 				      self.bombbonus = (status.stat("bombtechBonus") or 1)
-				      self.hammerMastery = (status.stat("hammerMastery") or 0)
+				      self.hammerMasteryCheck = (status.stat("hammerMastery") or 0)
 				      local primaryStrike = { power = (self.timerHammer / 4) * self.bombbonus}
 				      local secondaryStrike = { power = 0 + self.bombbonus}
 				      world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+2,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, primaryStrike)
@@ -155,27 +155,27 @@ function HammerSmash:fire()
 					  world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-1,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, secondaryStrike) 					      
 					  world.spawnProjectile("rapierCrit", {mcontroller.position()[1]+2,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 					  world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-2,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike) 				      
-					      if self.hammerMastery > 0.5 then
+					      if self.hammerMasteryCheck > 0.5 then
 					      	world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 					      	world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike) 
 					  		world.spawnProjectile("rapierCrit", {mcontroller.position()[1]+3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 					  		world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike) 						      	
 					      end
-					      if self.hammerMastery > 0.7 then
+					      if self.hammerMasteryCheck > 0.7 then
 					      	world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 					      	world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 					      	world.spawnProjectile("rapierCrit", {mcontroller.position()[1]+4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 					  		world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)  
 					      end
-					      if self.hammerMastery > 0.9 then		
+					      if self.hammerMasteryCheck > 0.9 then		
 					  		world.spawnProjectile("rapierCrit", {mcontroller.position()[1]+5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 					  		world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike) 					      			      	
 					      	world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 					      	world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike) 
 					      end					      
 					  status.setPersistentEffects("hammerbonus", {
-							{stat = "protection", effectiveMultiplier = 1.2 + (self.hammerMastery /10) },
-							{stat = "grit", effectiveMultiplier = 1.2 + (self.hammerMastery /10)}
+							{stat = "protection", effectiveMultiplier = 1.2 + (self.hammerMasteryCheck /10) },
+							{stat = "grit", effectiveMultiplier = 1.2 + (self.hammerMasteryCheck /10)}
 					  }) 
 					else
 						cancelEffects()	
