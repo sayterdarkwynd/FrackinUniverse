@@ -95,6 +95,7 @@ function checkDamage(notifications)
 	        end	
 	        -- broadswords increase defense on consecutive kills
 	        if (primaryItem and root.itemHasTag(primaryItem, "broadsword")) or (altItem and root.itemHasTag(altItem, "broadsword"))  then 
+	        	if not self.inflictedHitCounter then self.inflictedHitCounter = 0 end
 	        	self.totalKillsValue = 1 + self.inflictedHitCounter/20
 	        	if self.totalKillsValue > 1.35 then
 	        		self.totalKillsValue = 1.35
