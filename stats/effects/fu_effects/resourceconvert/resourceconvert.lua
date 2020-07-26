@@ -11,7 +11,7 @@ function init()
 	flat = config.getParameter("flat",false)--healPercent is per second instead of over the duration if this is false
 	self.healingRate = config.getParameter("healPercent", 0)
 	
-	if not flat then
+	if (not flat) and effect.duration() and (effect.duration()>0) then
 		self.healingRate=self.healingRate / effect.duration()
 	end
 	active=status.isResource(resource1) and status.isResource(resource2)
