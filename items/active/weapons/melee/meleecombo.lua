@@ -88,7 +88,7 @@ function checkDamage(notifications)
 	    	--each consequtive kill in rapid succession increases damage for weapons in this grouping. Per kill. Resets automatically very soon after to prevent abuse.
 	        if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) or (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem, "dagger")) then 
 	        	if not self.inflictedHitCounter then self.inflictedHitCounter = 0 end
-	        	self.totalKillsValue = 1 + self.inflictedHitCounter/15
+	        	self.totalKillsValue = 1 + self.inflictedHitCounter/50
 		 	    status.setPersistentEffects("listenerBonus", {
 		 	    	{stat = "powerMultiplier", effectiveMultiplier = self.totalKillsValue}	    	
 		 	    })       	
@@ -120,7 +120,7 @@ function checkDamage(notifications)
 		        if (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem, "shortsword")) then 
 		        	--each hit with a combo using a shortsword increases its crit damage
 			 	    status.setPersistentEffects("listenerBonus", {
-			 	    	{stat = "critDamage", amount = 1 + (self.inflictedHitCounter * 5)}	    	
+			 	    	{stat = "critDamage", amount = ((self.inflictedHitCounter/100) * 5)}	    	
 			 	    })          	
 		        end        
 		        if (primaryItem and root.itemHasTag(primaryItem, "quarterstaff")) or (altItem and root.itemHasTag(altItem, "quarterstaff")) then 
