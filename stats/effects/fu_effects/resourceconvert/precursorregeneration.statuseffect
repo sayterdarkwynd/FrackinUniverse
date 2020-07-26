@@ -2,19 +2,16 @@
   "name" : "precursorregeneration",
   "blockingStat" : "healingStatusImmunity",
 
-  "effectConfig" : {
-    "healTime" : 15,
-    "energyCost" : 2
-  },
+
+  "effectConfig" : { "healPercent" : 0.2,"ratio":1.5,"resource1":"health","resource2":"energy"},
   
   "defaultDuration" : 3,
 
   "scripts" : [
-    "regenerationprecursorgun.lua"
+    "resourceconvert.lua"
   ],
 
-  "animationConfig" : "regeneration.animation",
 
-  "label" : "Regeneration",
+  "label" : "Precursor Regeneration",
   "icon" : "/interface/statuses/heal.png"
 }
