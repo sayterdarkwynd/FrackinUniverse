@@ -530,7 +530,11 @@ function MeleeCombo:fire()
     self.rapierTimerBonus = 0
 	local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
 	animator.setAnimationState("swoosh", animStateKey)
-	animator.playSound(animStateKey)
+	if animator.hasSound(animStateKey) then
+		animator.playSound(animStateKey)
+	elseif animator.hasSound("fire") then
+		animator.playSound("fire")
+	end
 
 	local swooshKey = self.animKeyPrefix .. (self.elementalType or self.weapon.elementalType) .. "swoosh"
 	animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep])
