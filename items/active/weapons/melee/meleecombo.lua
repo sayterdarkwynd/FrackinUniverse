@@ -422,7 +422,13 @@ end
 -- *** FU ------------------------------------
 -- FU adds an encapsulating check in Windup, for energy. If there is no energy to consume, the combo weapon cannot attack
 function MeleeCombo:windup()
-	self.energyTotal = (status.stat("maxEnergy") * 0.01)
+	
+	if (primaryItem and root.itemHasTag(primaryItem, "melee")) and (altItem and root.itemHasTag(altItem, "melee")) then 
+		self.energyTotal = (status.stat("maxEnergy") * 0.025)											
+	else
+		self.energyTotal = (status.stat("maxEnergy") * 0.01)
+	end
+
 		if status.resource("energy") <= 1 then 
 			status.modifyResource("energy",1) 
 			cancelEffects()
