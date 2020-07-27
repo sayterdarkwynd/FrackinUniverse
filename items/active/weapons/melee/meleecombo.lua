@@ -563,6 +563,7 @@ function MeleeCombo:wait()
 	if stance then
 		self.weapon:setStance(stance)
 	else
+		stance={}
 		stance.duration=0.12
 	end
 	
