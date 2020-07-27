@@ -231,7 +231,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 
     if (primaryItem and root.itemHasTag(primaryItem, "broadsword")) then
       self.broadswordMastery = 1 + status.stat("broadswordMastery") or 0    		
-	  if self.comboStep and self.daggerMastery > 1 then
+	  if self.comboStep and self.broadswordMastery > 1 then
  	    status.setPersistentEffects("masterybonus", {
  	    	{stat = "powerMultiplier", amount = 1 + self.broadswordMastery}
  	    })

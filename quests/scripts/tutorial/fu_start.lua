@@ -85,6 +85,8 @@ function updateStage(dt)
   elseif self.missionStage == 3 then
     if hasElectromagnet() then
       player.consumeItem("electromagnet")
+      player.startQuest("fu_scienceoutpost")
+      player.addTeleportBookmark(config.getParameter("outpostBookmark2"))      
       setStage(4)
     end
   elseif self.missionStage == 4 then
