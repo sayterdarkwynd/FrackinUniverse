@@ -1,4 +1,5 @@
 require "/scripts/FRHelper.lua"
+require "/scripts/status.lua" --for damage listener
 
 -- Melee primary ability
 MeleeSlash = WeaponAbility:new()
@@ -12,12 +13,52 @@ function MeleeSlash:init()
 	self.weapon.onLeaveAbility = function()
 	self.weapon:setStance(self.stances.idle)
 	end
-
     -- **************************
-    -- FR values
+    -- FR and FU values
 	attackSpeedUp = 0 -- base attackSpeed bonus
-    -- ************************************************
+    self.hitsListener = damageListener("inflictedHits", checkDamage)  --listen for damage
+    self.damageListener = damageListener("inflictedDamage", checkDamage)  --listen for damage
+    self.killListener = damageListener("Kill", checkDamage)  --listen for kills	
+end
 
+function calculateMasteries()
+	self.shortswordMastery = 1 + status.stat("shortswordMastery")
+	self.longswordMastery = 1 + status.stat("longswordMastery")
+	self.rapierMastery = 1 + status.stat("rapierMastery") 
+	self.katanaMastery = 1 + status.stat("katanaMastery") 
+	self.daggerMastery = 1 + status.stat("daggerMastery") 
+	self.broadswordMastery = 1 + status.stat("broadswordMastery") 	
+	self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")  	
+	self.maceMastery = 1 + status.stat("maceMastery") 
+	self.shortspearMastery = 1 + status.stat("shortspearMastery") 
+	self.hammerMastery = 1 + status.stat("hammerMastery") 
+	self.axeMastery = 1 + status.stat("axeMastery") 
+	self.spearMastery = 1 + status.stat("spearMastery") 
+end
+
+function checkDamage(notifications)
+		
+  for _,notification in pairs(notifications) do
+    --check for individual hits
+    if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
+	    if not status.resourcePositive("health") then --count total kills
+	    	notification.hitType = "Kill"
+	    end  
+	    local hitType = notification.hitType
+	    --sb.logInfo(hitType)
+
+        --kill computation
+	    if notification.hitType == "Kill" or notification.hitType == "kill" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
+	        
+	    end  
+
+	    --hit computation 
+	    if notification.hitType == "Hit" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
+
+	    end 
+      return
+    end
+  end
 end
 
 -- Ticks on every update regardless if this is the active ability
@@ -26,6 +67,10 @@ function MeleeSlash:update(dt, fireMode, shiftHeld)
 	
 	-- FR
 	setupHelper(self, "meleeslash-fire")
+    self.hitsListener:update()
+    self.damageListener:update()
+    self.killListener:update()
+
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 	if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) then
         self:setState(self.windup)
@@ -34,7 +79,6 @@ end
 
 -- State: windup
 function MeleeSlash:windup()
-
 	self.energyTotal = (status.stat("maxEnergy") * 0.05)
 		if status.resource("energy") <= 1 then 
 			status.modifyResource("energy",1) 
@@ -132,11 +176,7 @@ end
 function MeleeSlash:uninit()
 	cancelEffects()
 	self.weapon:setDamage()
-	status.clearPersistentEffects("floranFoodPowerBonus")
-	status.clearPersistentEffects("slashbonusdmg")
-	self.meleeCountslash = 0
 end
-
 
 function cancelEffects()
 	status.clearPersistentEffects("longswordbonus")
@@ -150,5 +190,11 @@ function cancelEffects()
     status.clearPersistentEffects("hammerbonus")
 	status.clearPersistentEffects("multiplierbonus")
 	status.clearPersistentEffects("dodgebonus")	
+	status.clearPersistentEffects("listenerBonus")	
+	status.clearPersistentEffects("floranFoodPowerBonus")
+	status.clearPersistentEffects("slashbonusdmg")
+	status.clearPersistentEffects("masteryBonus")	
+	self.meleeCountslash = 0	
 	self.rapierTimerBonus = 0	
+	self.inflictedHitCounter = 0
 end

@@ -12,7 +12,7 @@ function getLight()
 	local position = mcontroller.position()
 	position[1] = math.floor(position[1])
 	position[2] = math.floor(position[2])
-	local lightLevel = world.lightLevel(position)
+	local lightLevel = math.min(world.lightLevel(position),1.0)
 	lightLevel = math.floor(lightLevel * 100)
 	return lightLevel
 end
@@ -38,7 +38,7 @@ function update(dt)
 		self.foodValue = 70
 	end
 
-	local lightLevel = getLight()
+	--local lightLevel = getLight()--not actually used
 
 	if nighttime or underground and (self.foodValue >= 45) then
 		self.healingRate = 1.007 / config.getParameter("healTime", 220)

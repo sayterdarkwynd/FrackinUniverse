@@ -87,7 +87,7 @@ function getLight()
 	local position = mcontroller.position()
 	position[1] = math.floor(position[1])
 	position[2] = math.floor(position[2])
-	local lightLevel = world.lightLevel(position)
+	local lightLevel = math.min(world.lightLevel(position),1.0)
 	lightLevel = math.floor(lightLevel * 100)
 	return lightLevel
 end

@@ -22,7 +22,9 @@ function update(dt)
 	cost=dt*((status.resourceMax("energy")*0.01*cost)+cost)
 	
 	if status.overConsumeResource("energy",cost) then
-		self.damageBonus=self.damageBonus*(1+(0.08*dt))
+		if status.resourcePositive("energyRegenBlock") then
+			self.damageBonus=self.damageBonus*(1+(0.08*dt))
+		end
 	end
 
 	effect.setStatModifierGroup(powerHandler,{{stat = "powerMultiplier", effectiveMultiplier = self.damageBonus}})

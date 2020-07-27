@@ -27,7 +27,7 @@ function getLight()
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
   position[2] = math.floor(position[2])
-  local lightLevel = world.lightLevel(position)
+  local lightLevel = math.min(world.lightLevel(position),1.0)
   lightLevel = math.floor(lightLevel * 100)
   return lightLevel
 end
@@ -54,17 +54,17 @@ function update(dt)
     self.foodValue = status.resource("food")
     
     if daytime and lightLevel then --if its day, a saturnian can regen their food if flying stationary. More light = more regen
-    		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
-    			self.tickTimer = self.tickTime
-    			adjustedHunger = hungerLevel + (lightLevel * 0.008)
-    			status.setResource("food", adjustedHunger)
+		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
+			self.tickTimer = self.tickTime
+			adjustedHunger = hungerLevel + (lightLevel * 0.008)
+			status.setResource("food", adjustedHunger)
 		end	
     end 
     if not daytime and lightLevel >= 60 then --if its night and they are in bright light, a saturnian can regen their food if flying stationary
-    		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
-    			self.tickTimer = self.tickTime
-    			adjustedHunger = hungerLevel + (lightLevel * 0.0075)
-    			status.setResource("food", adjustedHunger)
+		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
+			self.tickTimer = self.tickTime
+			adjustedHunger = hungerLevel + (lightLevel * 0.0075)
+			status.setResource("food", adjustedHunger)
 		end	
     end    
 end
