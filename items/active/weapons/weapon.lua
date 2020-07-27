@@ -253,6 +253,7 @@ function Weapon:damageSource(damageConfig, damageArea, damageTimeout)
 end
 
 function Weapon:setStance(stance)
+  stance=stance or {}
   self.stance = stance
   self.weaponOffset = stance.weaponOffset or {0,0}
   self.relativeWeaponRotation = util.toRadians(stance.weaponRotation or 0)
