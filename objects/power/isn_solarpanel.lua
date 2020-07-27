@@ -15,7 +15,7 @@ function update(dt)
     else
       local location = isn_getTruePosition()
       local light = (world.type() ~= 'playerstation' and getLight(location) or 0.0) / 100.0
-	sb.logInfo("l: light %s",light)
+	--sb.logInfo("l: light %s",light)
       local genmult = 1
       if world.type() == 'playerstation' then
         genmult = 3.75 -- player space station always counts as high power, but never MAX power.
@@ -30,13 +30,13 @@ function update(dt)
       elseif light <= 0 then
         genmult = 0
       end
-	sb.logInfo("a: genmult %s",genmult)
+	--sb.logInfo("a: genmult %s",genmult)
       if world.liquidAt(location)then genmult = genmult * 0.05 end -- water significantly reduces the output
-	sb.logInfo("b: genmult %s",genmult)
+	--sb.logInfo("b: genmult %s",genmult)
 
       local generated = self.powerLevel * genmult
 	  
-	sb.logInfo("c: generated %s powerLevel %s",self.powerLevel,generated)
+	--sb.logInfo("c: generated %s powerLevel %s",self.powerLevel,generated)
       if genmult >= 4 then
         animator.setAnimationState("meter", "4")
       elseif genmult >= 3 then
