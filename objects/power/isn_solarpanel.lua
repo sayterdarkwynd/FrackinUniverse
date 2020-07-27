@@ -14,8 +14,7 @@ function update(dt)
 			power.setPower(0)
 		else
 			local location = isn_getTruePosition()
-			local light = world.type() ~= 'playerstation' and getLight(location)
-			local light = math.min(2.0,(world.type() ~= 'playerstation' and getLight(location) or 0.0)) --via 'compressing' liquids like lava it is possible to get exhorbitant values on light level, over 100x the expected range.
+			local light = (world.type() ~= 'playerstation' and getLight(location) or 0.0)
 			local genmult = 1
 			if world.type() == 'playerstation' then
 				genmult = 3.75 -- player space station always counts as high power, but never MAX power.
@@ -61,7 +60,7 @@ function getLight(location)
 			world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/3,light[2]/3,light[3]/3})
 		end
 	end
-	local light = world.lightLevel(location)
+	local light = math.min(world.lightLevel(location),1.0) --via 'compressing' liquids like lava it is possible to get exhorbitant values on light level, over 100x the expected range.
 	for key,value in pairs(lights) do
 		world.callScriptedEntity(key,'object.setLightColor',value)
 	end
