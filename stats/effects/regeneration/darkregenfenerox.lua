@@ -38,7 +38,7 @@ function update(dt)
 		self.foodValue = 70
 	end
 
-	local lightLevel = getLight()
+	--local lightLevel = getLight()--not actually used
 
 	if nighttime or underground and (self.foodValue >= 45) then
 		self.healingRate = 1.007 / config.getParameter("healTime", 220)

@@ -44,12 +44,6 @@ function update(dt)
 	  {stat = "energyRegenPercentageRate", amount = self.sunIntensity + 0.24},
 	  {stat = "maxHealth", amount = self.sunIntensity + 1.12}
 	  })
-    elseif lightLevel > 0 then
-	  effect.setStatModifierGroup(underWorlderEffects, {
-	  {stat = "radioactiveResistance", amount = self.sunIntensity + self.radiantWorld + 0.1},
-	  {stat = "energyRegenPercentageRate", amount = self.sunIntensity + 0.23},
-	  {stat = "maxHealth", amount = self.sunIntensity + 1.12}
-	  })
     elseif lightLevel > 95 then
 	  effect.setStatModifierGroup(underWorlderEffects, {
 	  {stat = "radioactiveResistance", amount = self.sunIntensity + self.radiantWorld + 0.001},
@@ -103,6 +97,12 @@ function update(dt)
 	  {stat = "radioactiveResistance", amount = self.sunIntensity + self.radiantWorld + 0.009},
 	  {stat = "energyRegenPercentageRate", amount = self.sunIntensity + 0.22},
 	  {stat = "maxHealth", amount = self.sunIntensity + 1.1}
+	  })
+    elseif lightLevel >= 0 then
+	  effect.setStatModifierGroup(underWorlderEffects, {
+	  {stat = "radioactiveResistance", amount = self.sunIntensity + self.radiantWorld + 0.1},
+	  {stat = "energyRegenPercentageRate", amount = self.sunIntensity + 0.23},
+	  {stat = "maxHealth", amount = self.sunIntensity + 1.12}
 	  })
 	else
 	  effect.setStatModifierGroup(underWorlderEffects,{})

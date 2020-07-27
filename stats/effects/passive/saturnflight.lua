@@ -54,17 +54,17 @@ function update(dt)
     self.foodValue = status.resource("food")
     
     if daytime and lightLevel then --if its day, a saturnian can regen their food if flying stationary. More light = more regen
-    		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
-    			self.tickTimer = self.tickTime
-    			adjustedHunger = hungerLevel + (lightLevel * 0.008)
-    			status.setResource("food", adjustedHunger)
+		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
+			self.tickTimer = self.tickTime
+			adjustedHunger = hungerLevel + (lightLevel * 0.008)
+			status.setResource("food", adjustedHunger)
 		end	
     end 
     if not daytime and lightLevel >= 60 then --if its night and they are in bright light, a saturnian can regen their food if flying stationary
-    		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
-    			self.tickTimer = self.tickTime
-    			adjustedHunger = hungerLevel + (lightLevel * 0.0075)
-    			status.setResource("food", adjustedHunger)
+		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
+			self.tickTimer = self.tickTime
+			adjustedHunger = hungerLevel + (lightLevel * 0.0075)
+			status.setResource("food", adjustedHunger)
 		end	
     end    
 end
