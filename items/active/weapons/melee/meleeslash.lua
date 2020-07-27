@@ -64,7 +64,11 @@ end
 -- Ticks on every update regardless if this is the active ability
 function MeleeSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
-	
+	if (status.resource("energy") <= 1) or (status.resourceLocked("energy")) then
+		status.setPersistentEffects("meleeEnergyLowPenalty",{{stat = "powerMultiplier", effectiveMultiplier = 0.75}})
+	else
+		status.clearPersistentEffects("meleeEnergyLowPenalty")
+	end
 	-- FR
 	setupHelper(self, "meleeslash-fire")
     self.hitsListener:update()
@@ -79,43 +83,34 @@ end
 
 -- State: windup
 function MeleeSlash:windup()
-	self.energyMax = status.resourceMax("energy")
-	self.energyCurrent = status.resource("energy")
-	self.energyTotal = math.min(math.max(1,(self.energyCurrent-1)), (self.energyMax * 0.05))
+	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
+	self.energyTotal = math.min(math.max(0,(status.resource("energy")-1.0)), (self.energyMax * 0.05))
 	
-	
-	if self.energyCurrent <= 1 then
-		if self.energyMax >= 1 then -- due to weather and other cases it is possible to have a maximum of under 1.
-			status.modifyResource("energy",1)
-			self.energyCurrent = status.resource("energy")
-			self.energyTotal = math.min(math.max(1,(self.energyCurrent-1)), (self.energyMax * 0.05))
-		end
+	if (not status.consumeResource("energy",self.energyTotal)) or (status.resource("energy") <= 1) then
+		status.setPersistentEffects("meleeEnergyLowPenalty",{{stat = "powerMultiplier", effectiveMultiplier = 0.75}})
 		cancelEffects()
-	end 
-	if status.resource("energy") == 1 then 
-		cancelEffects() 
+	else
+		status.clearPersistentEffects("meleeEnergyLowPenalty")
 	end
-	if (self.energyCurrent > 1) and status.consumeResource("energy",self.energyTotal) then 
-		self.weapon:setStance(self.stances.windup)
+	self.weapon:setStance(self.stances.windup)
 
-		if self.stances.windup.hold then
-	        while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
-	            coroutine.yield()
-	        end
-		else
-	        util.wait(self.stances.windup.duration)
+	if self.stances.windup.hold then
+		while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
+			coroutine.yield()
 		end
+	else
+		util.wait(self.stances.windup.duration)
+	end
 
-		if self.energyUsage then
-	        status.overConsumeResource("energy", self.energyUsage)
-		end
+	if self.energyUsage then
+		status.overConsumeResource("energy", self.energyUsage)
+	end
 
-		if self.stances.preslash then
-	        self:setState(self.preslash)
-		else
-	        self:setState(self.fire)
-		end
-	end	
+	if self.stances.preslash then
+		self:setState(self.preslash)
+	else
+		self:setState(self.fire)
+	end
 end
 
 -- State: preslash
@@ -182,11 +177,14 @@ function MeleeSlash:cooldownTime()
 end
 
 function MeleeSlash:uninit()
-	cancelEffects()
+	cancelEffects(true)
 	self.weapon:setDamage()
 end
 
-function cancelEffects()
+function cancelEffects(fullClear)
+	if fullClear then
+		status.clearPersistentEffects("meleeEnergyLowPenalty")
+	end
 	status.clearPersistentEffects("longswordbonus")
 	status.clearPersistentEffects("macebonus")
 	status.clearPersistentEffects("katanabonus")
