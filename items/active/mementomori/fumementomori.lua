@@ -22,8 +22,7 @@ function update(dt, fireMode, shiftHeld)
 	else
 		if fireMode=="primary" then
 			local buffer=status.statusProperty(mementomori.deathPositionKey.."."..self.worldId)
-			firing=(not not buffer) and (buffer.worldId==self.worldId) and (world.magnitude(buffer.position,world.entityPosition(activeItem.ownerEntityId())) > 20)
-			--sb.logInfo("fumementomori.lua:update:firingblock:initial:recording use: %s, firing: %s: %s",buffer,firing,{buffer})
+			firing=(not not buffer) and (buffer.position) and (world.magnitude(buffer.position,world.entityPosition(activeItem.ownerEntityId())) > 20)
 			if firing then
 				if not teleportTimer then
 					teleportTimer=0
