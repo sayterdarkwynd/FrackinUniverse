@@ -15,7 +15,7 @@ function update(dt)
 		else
 			local location = isn_getTruePosition()
 			local light = world.type() ~= 'playerstation' and getLight(location)
-			local light = math.min(2.0,(world.type() ~= 'playerstation' and getLight(location) or 0.0)) --addressing some special cases that can be made where light will vastly exceed expected values	
+			local light = math.min(2.0,(world.type() ~= 'playerstation' and getLight(location) or 0.0)) --via 'compressing' liquids like lava it is possible to get exhorbitant values on light level, over 100x the expected range.
 			local genmult = 1
 			if world.type() == 'playerstation' then
 				genmult = 3.75 -- player space station always counts as high power, but never MAX power.
