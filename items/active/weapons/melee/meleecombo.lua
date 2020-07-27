@@ -559,14 +559,14 @@ end
 -- waiting for next combo input
 function MeleeCombo:wait()
 	local stance = self.stances["wait"..(self.comboStep - 1)] or self.stances["wait"] or self.stances["wait".."0"] or self.stances["wait".."1"] or self.stances["wait".."2"] or self.stances["wait".."3"]
-	
+
 	if stance then
 		self.weapon:setStance(stance)
 	else
 		stance={}
 		stance.duration=0.12
 	end
-	
+
 	util.wait(stance.duration, function()
         if self:shouldActivate() then
             self:setState(self.windup)
