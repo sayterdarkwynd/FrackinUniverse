@@ -79,15 +79,23 @@ end
 
 -- State: windup
 function MeleeSlash:windup()
-	self.energyTotal = (status.stat("maxEnergy") * 0.05)
-		if status.resource("energy") <= 1 then 
-			status.modifyResource("energy",1) 
-			cancelEffects()
-		end 
-		if status.resource("energy") == 1 then 
-			cancelEffects() 
+	self.energyMax = status.resourceMax("energy")
+	self.energyCurrent = status.resource("energy")
+	self.energyTotal = math.min(math.max(1,(self.energyCurrent-1)), (self.energyMax * 0.05))
+	
+	
+	if self.energyCurrent <= 1 then
+		if self.energyMax >= 1 then -- due to weather and other cases it is possible to have a maximum of under 1.
+			status.modifyResource("energy",1)
+			self.energyCurrent = status.resource("energy")
+			self.energyTotal = math.min(math.max(1,(self.energyCurrent-1)), (self.energyMax * 0.05))
 		end
-	if status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal)) then 
+		cancelEffects()
+	end 
+	if status.resource("energy") == 1 then 
+		cancelEffects() 
+	end
+	if (self.energyCurrent > 1) and status.consumeResource("energy",self.energyTotal) then 
 		self.weapon:setStance(self.stances.windup)
 
 		if self.stances.windup.hold then
