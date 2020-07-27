@@ -15,7 +15,7 @@ end
 
 function update()
 	localAnimator.clearDrawables()
-	local lightLevel = world.lightLevel(self.position)
+	local lightLevel = math.min(world.lightLevel(self.position),1.0)
 	if self.state == "turningOn" or self.state == "turningOff" then
 		--Makes it work
 	elseif lightLevel < self.maxLight then

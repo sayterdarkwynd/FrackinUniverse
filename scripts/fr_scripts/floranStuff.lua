@@ -40,7 +40,7 @@ function FRHelper:call(args, main, dt, ...)
 	end
 	
 	local daytime = world.timeOfDay() < 0.5
-	local lightLevel = world.lightLevel(mcontroller.position())
+	local lightLevel = math.min(world.lightLevel(mcontroller.position()),1.0)
 	
 	-- Night penalties
 	if not daytime then
