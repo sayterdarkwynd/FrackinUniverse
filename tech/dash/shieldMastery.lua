@@ -36,8 +36,8 @@ function uninit()
 end
 
 function applyTechBonus()
-  self.defensetechBonus = 1 + status.stat("defensetechBonus",0) -- apply bonus from certain items and armor
-  self.dashBonus = 1 + status.stat("dashtechBonus",0) -- apply bonus from certain items and armor
+  self.defensetechBonus = 1 + status.stat("defensetechBonus") -- apply bonus from certain items and armor
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
   self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
   self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
 end

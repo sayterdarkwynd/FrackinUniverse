@@ -1,4 +1,4 @@
-require'/scripts/power.lua'
+require'/scripts/fupower.lua'
 require'/scripts/util.lua'
 
 liquids = {
@@ -54,16 +54,17 @@ function update(dt)
 		return
 	end
 	if not object.isInputNodeConnected(0) or object.getInputNodeLevel(0) then
-		if not deltaTime or deltaTime > 1 then
+		if not scanTimer or scanTimer > 1 then
 			wellInit()
-			deltaTime=0
+			scanTimer=0
 		else
-			deltaTime=deltaTime+dt
+			scanTimer=scanTimer+dt
 		end
 		if storage.timer > 0 then
 			if power.consume(config.getParameter('isn_requiredPower')*dt) then
 				animator.setAnimationState("machineState", "active")
-				storage.timer = storage.timer - (dt/wellsDrawing)
+				--storage.timer = storage.timer - (dt/wellsDrawing)
+				storage.timer=storage.timer-(dt/math.sqrt(1+wellsDrawing))
 			else
 				animator.setAnimationState("machineState", "idle")
 			end

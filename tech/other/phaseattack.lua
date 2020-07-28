@@ -16,13 +16,7 @@ function uninit()
 	deactivate()
 end
 
-
-function applyTechBonus()
-	self.bonusDamage = 1 + status.stat("phasetechBonus",0) -- apply bonus from certain items and armor
-end
-
 function update(args)
-	applyTechBonus()
 	if not self.specialLast and args.moves["special1"] then
 		attemptActivation()
 	end

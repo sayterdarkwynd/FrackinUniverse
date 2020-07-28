@@ -95,20 +95,22 @@ function applyDamageRequest(damageRequest)
 
   if not status.resourcePositive("health") then
     hitType = "kill"
-    --bows should cause hunting drops regardless of damageKind
+	--sb.logInfo("%s",damageRequest)
+	--this sadly doesnt actually cause drops to be hunting drops.
+	--there is ZERO way to interact with monster drop pools from scripts. period. stop trying.
+	--[[
 	if string.find(damageRequest.damageSourceKind,"bow") then
 		damageRequest.damageSourceKind="bow"
+	end]]
+	--instead, we take a smarter workaround that functions, albeit annoyingly
+	if string.find(damageRequest.damageSourceKind,"bow") and not (damageRequest.damageSourceKind=="bow") and status then
+		status.setResource("health",1)
+		--set resistances to nil so at least the damage number is represented properly
+		status.addEphemeralEffect("vulnerability",1,damageRequest.sourceEntityId)
+		--then spawn a projectile and gib 'em.
+		world.spawnProjectile("fuinvisibleprojectiletiny", entity.position(), damageRequest.sourceEntityId,nil,nil,{damageType="IgnoresDef",damageKind="bow",damageTeam={type="friendly"},power=damage})
+		return {}
 	end
-	--this whole block does nothing.
-    --[[if elementalStat and (type(elementalStat) == "string") and string.find(elementalStat, "bow") then
-      string.gsub(elementalStat, "fire", "")
-      string.gsub(elementalStat, "ice", "")
-      string.gsub(elementalStat, "electric", "")
-      string.gsub(elementalStat, "poison", "")
-      string.gsub(elementalStat, "shadow", "")
-      string.gsub(elementalStat, "radioactive", "")
-      string.gsub(elementalStat, "cosmic", "")
-    end]]
   end
   return {{
     sourceEntityId = damageRequest.sourceEntityId,

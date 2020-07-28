@@ -9,11 +9,11 @@ function init()
 end
 
 function setEffectTime()
-  return self.tickTimer * math.min(1 - status.stat("physicalResistance",0),0.45 )
+  return self.tickTimer * math.min(1 - status.stat("physicalResistance"),0.45 )
 end
 
 function update(dt)
-  	if ( status.stat("physicalResistance",0)  >= 0.90 ) then
+  	if ( status.stat("physicalResistance")  >= 0.90 ) then
 	  effect.expire()
 	end
   self.tickTimer = self.tickTimer - dt

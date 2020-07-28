@@ -7,15 +7,15 @@ function init()
   activateVisualEffects()
   
   effect.addStatModifierGroup({
-      { stat = "shadowResistance", amount = -0.25 },
-      { stat = "fireResistance", amount = -0.25 },
-      { stat = "iceResistance", amount = -0.25 }
+      { stat = "shadowResistance", amount = -0.25*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
+      { stat = "fireResistance", amount = -0.25*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
+      { stat = "iceResistance", amount = -0.25*((status.statPositive("specialStatusImmunity") and 0.25) or 1) }
   })    
   
 end
 
 function setEffectTime()
-  return self.tickTimer * math.min(1 - status.stat("poisonResistance",0), 0.45)
+  return self.tickTimer * math.min(1 - status.stat("poisonResistance"), 0.45)
 end
 
 function activateVisualEffects()
@@ -33,7 +33,7 @@ function deactivateVisualEffects()
 end
 
 function update(dt)
-  if ( status.stat("poisonResistance",0)  >= 0.5 ) then
+  if ( status.stat("poisonResistance")  >= 0.5 ) then
     deactivateVisualEffects()
     effect.expire()
   end

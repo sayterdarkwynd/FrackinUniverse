@@ -40,7 +40,7 @@ function update(dt)
 			table.remove(self.damageInstances, #finishedIndexes - i + 1)
 		end
 		
-		status.modifyResource("health", totalRegen * self.regenPcnt)
+		status.modifyResource("health", totalRegen * self.regenPcnt * math.max(0,1+status.stat("healingBonus")))
 		self.regenInterval = config.getParameter("regenInterval", 0)
 	else
 		self.regenInterval = self.regenInterval - dt

@@ -33,5 +33,66 @@
     "op": "add",
     "path": "/dropPools/0/shadowbow",
     "value": "gosmetHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-swoop",
+        "cooldown": 4,
+        "parameters": {
+          "minimumRange": 3,
+          "maximumRange": 10,
+          "onGround": false,
+          "windupTime": 0.6,
+          "gravityMultiplier": -0.5,
+          "swoopVelocity": 25,
+          "collisionCheck": false,
+          "highArc": false,
+          "swoopTime": 0.5,
+          "winddownTime": 0.5,
+          "winddownState": "fly",
+          "winddownStopForce": 20
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/hostileActions/-",
+    "value": {
+      "name": "action-swoop",
+      "cooldown": 1,
+      "parameters": {
+        "minimumRange": 3,
+        "maximumRange": 10,
+        "onGround": false,
+        "windupTime": 0.6,
+        "gravityMultiplier": -0.5,
+        "swoopVelocity": 25,
+        "collisionCheck": true,
+        "highArc": false,
+        "swoopTime": 0.5,
+        "winddownTime": 0.5,
+        "winddownState": "fly",
+        "winddownStopForce": 20
+      }
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/touchDamage/damage",
+    "value": 8
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 110
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/healthRegen/baseValue",
+    "value": 1
   }
 ]

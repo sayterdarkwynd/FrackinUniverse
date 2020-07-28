@@ -28,7 +28,7 @@ end
 
 function fuSulphuricWeather.applyHealthDrain(self, modifier, dt)
   -- Only drain health once player's protection is depleted.
-  if status.stat("protection", 0) < 1 then
+  if status.stat("protection") < 1 then
     self.parent.applyHealthDrain(self, modifier, dt)
   end
 end

@@ -31,7 +31,7 @@ function RegenSetBonus.update(self, dt)
   self.parent.update(self)
   --local healPercent = self.healthRegen * dt
   --status.modifyResourcePercentage("health", healPercent)
-  effect.setStatModifierGroup(self.regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healthRegen}})
+  effect.setStatModifierGroup(self.regenHandler,{{stat="healthRegen",amount=status.resourceMax("health")*self.healthRegen*math.max(0,1+status.stat("healingBonus"))}})
 end
 
 function RegenSetBonus.uninit(self)

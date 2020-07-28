@@ -44,7 +44,7 @@ function update(dt)
     self.damageListener3:update()
     
         
-    local stealthTransparency = string.format("%X", math.max(math.floor(100 - 50*world.lightLevel(mcontroller.position())), 50))
+    local stealthTransparency = string.format("%X", math.max(math.floor(100 - 50*math.min(1.0,world.lightLevel(mcontroller.position()))), 50))
     if string.len(stealthTransparency) == 1 then stealthTransparency = "0"..stealthTransparency end
     effect.setParentDirectives("multiply=ffffff"..stealthTransparency)
     --sb.logInfo("Light: %s, Speed: %s, Sum: %s", world.lightLevel(mcontroller.position()), vec2.mag(mcontroller.velocity()), stealthCost/args.dt)

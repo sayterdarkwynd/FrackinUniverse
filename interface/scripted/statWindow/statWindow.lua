@@ -1,4 +1,5 @@
 -- THIS IS THE FRACKIN RACES ONE
+require "/scripts/util.lua"
 
 function init()
 	self.data = root.assetJson("/interface/scripted/statWindow/statWindow.config")
@@ -81,6 +82,7 @@ function techEquip()
 	player.interact("ScriptPane", "/interface/scripted/techupgrade/techupgradegui.config", player.id())
 end
 
+
 function populateRacialDescription(race)
 	widget.clearListItems("racialDesc.textList")
 	
@@ -101,61 +103,71 @@ function populateRacialDescription(race)
 	local firstskip = false
 	local char = ""
 	
-	--Some text editors use the windows line ending, like notepad++
-	--We need to normalize this to just use the unix style ending (\n), as Windows line endings are CRLF (\r\n) and cause double-newlines.
-	str = str:gsub("\r\n", "\n")
+	str=string.gsub(str,"\r\n","\n")
+	local str2=str
+	while str~=string.gsub(str," \n","\n") do
+		str=string.gsub(str," \n","\n")
+	end
+	str=string.gsub(str,"\n      ","\n>>>")
+	str=string.gsub(str,"\n    ","\n>>")
+	str=string.gsub(str,"\n  ","\n>")
+	local wordWall={}
+	local line={}
+	local sentence=""
 	
 	for i = 1, string.len(str) do
-		char = string.sub(str, i, i)
-		
-		if char == "\n" then
-			if firstskip == true then
-				skip = true
-				if startFound then
-					skipped = skipped + 1
-					table.insert(splitters, i-skipped)
-				else
-					startFound = true
+		local c = string.sub(str, i, i)
+		if c == "\n" or i==string.len(str) then
+			if (i==(string.len(str))) then table.insert(line,c) end
+			if util.tableSize(line) > 0 then
+				local sentenceSize=0
+				local word={}
+				local wordTest=""
+				local colorTest=""
+				for i = 1, #line do
+					local c2=line[i]
+					if i==#line or c2==" " then
+						if i==#line and not (c2==" ") then
+							table.insert(word,c2)
+						end
+						local heightened=false
+						for k = 1, #word do
+							local c3 = word[k]
+							if c3=="^" then
+								heightened=true
+								colorTest=c3
+							elseif heightened and c3==";" then
+								colorTest=colorTest..c3
+								heightened=false
+							elseif not heightened then
+								wordTest=wordTest..c3
+							else
+								colorTest=colorTest..c3
+							end
+						end
+						if (string.len(sentence) + string.len(wordTest)) > 60 then
+							table.insert(wordWall,sentence)
+							sentence=colorTest
+						end
+						if string.len(sentence) > 0 then sentence = sentence.." " end
+						sentence=sentence..table.concat(word)
+						word={}
+						wordTest=""
+					else
+						table.insert(word,c2)
+					end
 				end
-			else
-				firstskip = true
+				table.insert(wordWall,sentence)
+				sentence=""
 			end
-		end
-		
-		if startFound then
-			if skip then
-				skip = false
-			else
-				table.insert(strTbl, char)
-			end
+			line={}
 		else
-			skipped = skipped + 1
+			table.insert(line,c)
 		end
 	end
-	
-	str = ""
-	for loc, string in ipairs(strTbl) do
-		if loc == #strTbl then
-			str = string.gsub(str..string, "- ", "", 1)
-			table.insert(lists, str)
-		else
-			for _,loc2 in ipairs(splitters) do
-				if loc == loc2 then
-					str = string.gsub(str, "- ", "", 1)
-					table.insert(lists, str)
-					str = ""
-				end
-			end
-			
-			char = string
-			str = string.format("%s%s", str, char) -- At this moment, I learned how important string.format truly is. Its all mightyness is able to merge % without breaking!
-		end
-	end
-	
-	-- using 'for i' loop because 'i/pairs' tends to fuck up the order
-	for i = 1, #lists do
+	for i = 1, #wordWall do
 		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
-		widget.setText(listItem..".trait", lists[i])
+		widget.setText(listItem..".trait", wordWall[i])
 	end
 end
 

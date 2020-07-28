@@ -9,7 +9,7 @@
 			"baseMultiplier": 1.1
 		},
 		{
-			"stat":	"radioactiveResistance",
+			"stat": "radioactiveResistance",
 			"amount": 0.15
 		},
 		{
@@ -26,7 +26,7 @@
 		},
 		{
 			"stat": "fireResistance",
-			"amount": -1
+			"amount": -1.0
 		},
 		{
 			"stat": "biomeradiationImmunity",
@@ -41,14 +41,14 @@
 	"controlModifiers": {
 		"speedModifier": 1.05
 	},
-	"envEffects":
+	"envEffects": 
 	[
 		{
 			"biomes": [ "irradiated" ],
 			"stats": [
 				{
 					"stat": "maxEnergy"
-					"baseMultiplier": 1.15
+					"effectiveMultiplier": 1.15
 				},
 				{
 					"stat": "energyRegenPercentageRate",
@@ -60,12 +60,12 @@
 				},
 				{
 					"stat": "powerMultiplier"
-					"baseMultiplier": 0.95
+					"effectiveMultiplier": 0.95
 				},
 			]
 		}
 	],
-	"weaponEffects":
+	"weaponEffects": 
 	[
 		{
 		"weapon": [ "yoyo" ],
@@ -76,7 +76,7 @@
 		"stats": [ 
 				{
 					"stat": "powerMultiplier",
-					"baseMultiplier": 1.125
+					"effectiveMultiplier": 1.125
 				},
 				{
 					"stat": "critChance",

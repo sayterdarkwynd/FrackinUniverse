@@ -40,7 +40,7 @@ function FRHelper:call(args, main, dt, ...)
 	end
 	
 	local daytime = world.timeOfDay() < 0.5
-	local lightLevel = world.lightLevel(mcontroller.position())
+	local lightLevel = math.min(world.lightLevel(mcontroller.position()),1.0)
 	
 	-- Night penalties
 	if not daytime then
@@ -90,9 +90,9 @@ function FRHelper:call(args, main, dt, ...)
 						status.modifyResourcePercentage("food", -0.005 * dt)
 					end
 					regenCalc = regenCalc * dayConfig.undergroundScale
-					status.modifyResourcePercentage("health", regenCalc * dt)
+					status.modifyResourcePercentage("health", regenCalc * dt * math.max(0,1+status.stat("healingBonus")))
 				elseif not underground and lightLevel > dayConfig.minLight then
-					status.modifyResourcePercentage("health", regenCalc * dt)
+					status.modifyResourcePercentage("health", regenCalc * dt * math.max(0,1+status.stat("healingBonus")))
 				end
 			end
 		else

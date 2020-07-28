@@ -9,13 +9,13 @@ function init()
   activateVisualEffects()
 
   effect.addStatModifierGroup({
-      { stat = "poisonResistance", amount = -self.baseDamage },
+      { stat = "poisonResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
       { stat = "mentalProtection", effectiveMultiplier = 0 }
   })  
 end
 
 function setEffectTime()
-  return self.tickTimer * math.min(1 - status.stat("physicalResistance",0), 0.45)
+  return self.tickTimer * math.min(1 - status.stat("physicalResistance"), 0.45)
 end
 
 function deactivateVisualEffects()
@@ -46,7 +46,7 @@ function update(dt)
     self.tickTimer = self.tickTime
   end
   
-  if ( status.stat("physicalResistance",0)  >= 0.45 ) then
+  if ( status.stat("physicalResistance")  >= 0.45 ) then
       deactivateVisualEffects()
       effect.expire()
   end

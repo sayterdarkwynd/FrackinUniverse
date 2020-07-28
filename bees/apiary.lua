@@ -310,12 +310,16 @@ function beeTick()
 		-- If its not, clear the index, marking the hive as queenless, and init the noQueenTimer
 		if contents[queenSlot] and root.itemHasTag(contents[queenSlot].name, "bee") then
 			if root.itemHasTag(contents[queenSlot].name, "queen") then
-				if isSameQueen(queen, contents[queenSlot]) then
+				sameStats,sameAge=isSameQueen(queen, contents[queenSlot])--returns sameQueen only if sameStats is true
+				if sameStats then
+					if not sameAge then
+						queen = contents[queenSlot]	-- If its not identical, replace indexed queen with the one in the slot
+					end
 					if isHiveQueenActive() and hasDrones and not haltProduction then
 						queenProduction() -- Progress queen production if its the same queen, and she's active, and there are drones in the hive (doesn't matter if they're active)
 					end
 				else
-					queen = contents[queenSlot]	-- If its not the same queen, replace indexed queen with the one in the slot
+					queen = contents[queenSlot]	-- If its not identical, replace indexed queen with the one in the slot
 					youngQueenProgress = 0		-- And reset queen production progress
 					droneProgress = 0
 				end
@@ -531,7 +535,7 @@ function isSameQueen(q1, q2)
 			and q1.deadlyBiomes == q2.deadlyBiomes
 			and q1.hatedBiomes == q2.hatedBiomes
 			and q1.favoriteBiomes == q2.favoriteBiomes then
-			return true
+			return true, (q1.lifespan == q2.lifespan)
 		end
 	end
 	return false

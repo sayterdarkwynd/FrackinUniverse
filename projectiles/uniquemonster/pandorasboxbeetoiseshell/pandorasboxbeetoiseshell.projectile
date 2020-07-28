@@ -1,0 +1,59 @@
+{
+  "projectileName" : "pandorasboxbeetoiseshell",
+  "image" : "pandorasboxbeetoiseshell.png",
+  "physics" : "largeGrenade",
+  "animationCycle" : 2,
+  "frameNumber" : 1,
+  "renderLayer" : "Object+1",
+  "power" : 0,
+  "speed" : 20,
+  "piercing" : true,
+  "initialVelocity" : 20,
+  "timeToLive" : 100,
+  "bounces" : 7,
+  "flippable" : true,
+  "orientationLocked" : true,
+
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/tools/wiretool.ogg" ]
+    }
+  ],
+
+  "actionOnReap" : [
+      {
+      "action" : "loop",
+      "count" : 4,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+              "type" : "textured",
+              "image" : "/monsters/pandorasboxuniques/crawlers/pandorasboxbeetoise/pandorasboxbeetoiseshard.png",
+              "size" : 1,
+              "color" : [255, 255, 255, 255],
+              "fade" : 0,
+              "initialVelocity" : [0.0, 0.0],
+              "finalVelocity" : [0.0, -20],
+              "approach" : [0, 20],
+              "rotation" : 0,
+              "angularVelocity" : 0,
+              "timeToLive" : 0.2,
+              "destructionAction" : "shrink",
+              "destructionTime" : 0.5,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [8,8],
+                "size" : 0.2,
+                "rotation" : 180,
+                "angularVelocity" : 180
+              }
+          }
+        }
+      ]
+    }
+  ],
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

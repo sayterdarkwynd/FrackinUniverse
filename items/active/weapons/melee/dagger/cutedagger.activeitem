@@ -14,16 +14,21 @@
 
   "inventoryIcon" : "cutedagger.png",
 
-  "animation" : "/items/active/weapons/melee/dagger/daggerglow.animation",
+  "animation" : "daggercomboglow.animation",
   "animationParts" : {
     "blade" : "cutedagger.png",
     "bladefullbright" : "cutedaggerfullbright.png",
     "handle" : ""
   },
+
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "partStates" : { "swoosh" : {
-      "fire" : { "properties" : { "image" : "/items/active/weapons/melee/dagger/swoosh/cuteswoosh.png:<frame>" }}
-    }}}}},
+    "animatedParts" : { 
+      "parts" : { 
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}      
+      }
+    },
     "particleEmitters" : {
       "cosmicswoosh" : {
         "active" : false,
@@ -43,11 +48,8 @@
   "elementalType" : "cosmic",
 
   "aimOffset" : 0.0,
-
+  "primaryAbilityType" : "daggercombo",
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
-    "class" : "MeleeSlash",
-
     "fireTime" : 0.42,
     "baseDps" : 9.0,
     "damageConfig" : {
@@ -56,34 +58,6 @@
       "knockbackMode" : "aim",
       "knockback" : 15,
       "timeoutGroup" : "primary"
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      },
-      "windup" : {
-        "duration" : 0.05,
-        "armRotation" : -20,
-        "weaponRotation" : -20,
-        "weaponOffset" : [0, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      },
-      "fire" : {
-        "duration" : 0.2,
-        "armRotation" : -135,
-        "weaponRotation" : 40,
-        "weaponOffset" : [0, 2.5],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      }
     }
   },
 

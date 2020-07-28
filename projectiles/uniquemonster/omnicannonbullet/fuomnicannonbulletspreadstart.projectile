@@ -1,0 +1,41 @@
+{
+  "projectileName" : "fuomnicannonbulletspreadstart",
+  "image" : "omnicannonbullet.png",
+  "animationCycle" : 0.3,
+  "animationLoops" : true,
+  "lightColor" : [150, 100, 50],
+  "frameNumber" : 5,
+  "flippable" : false,
+  "fullbright" : true,
+  "renderLayer" : "Monster+1",
+  "damageKindImage" : "icon.png",
+  "physics" : "laser",
+  "emitters" : [ ],
+  "damageKind" : "slash",
+  "speed" : 0,
+  "timeToLive" : 0.0,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "omnicannonbullet",
+      "inheritDamageFactor" : 1,
+	  "angleAdjust" : 25,
+      "directional" : "true"
+    },
+    {
+      "action" : "projectile",
+      "type" : "omnicannonbullet",
+      "inheritDamageFactor" : 1,
+	  "angleAdjust" : 0,
+      "directional" : "true"
+    },
+	{
+      "action" : "projectile",
+      "type" : "omnicannonbullet",
+      "inheritDamageFactor" : 1,
+	  "angleAdjust" : -25,
+      "directional" : "true"
+    }
+],
+  "damageRepeatTimeout" : 0.0
+}

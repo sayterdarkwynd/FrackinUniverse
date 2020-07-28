@@ -6,10 +6,10 @@ end
 
 function update(dt)
 	--not switching to an hp regen effect as it's instead being applied via petspawner implementation
-	--effect.setStatModifierGroup(regenHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*(1-status.resourcePercentage("health"))*regenPercent}})
+	--effect.setStatModifierGroup(regenHandler,{{stat="healthRegen",amount=status.resourceMax("health")*(1-status.resourcePercentage("health"))*regenPercent}})
 	if not (world.isNpc(entity.id()) and status.resource("health")<1) then--just in case we DO use it on npcs. no idea why we would.
 		if status.resourcePercentage("health") < 1.0 then
-			status.modifyResourcePercentage("health", (1-status.resourcePercentage("health"))*regenPercent*dt)
+			status.modifyResourcePercentage("health", (1-status.resourcePercentage("health"))*regenPercent*dt*math.max(0,1+status.stat("healingBonus")))
 		end
 	else
 		status.setResource("health",0)

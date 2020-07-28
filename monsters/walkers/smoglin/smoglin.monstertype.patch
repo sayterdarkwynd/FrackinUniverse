@@ -33,5 +33,50 @@
     "op": "add",
     "path": "/dropPools/0/shadowbow",
     "value": "smoglinHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-fire",
+        "cooldown": 4,
+        "parameters": {
+          "requireLineOfSight": true,
+          "maxYRange": 2,
+          "maximumRange": 10,
+          "minimumRange": 2,
+          "windupState": "firewindup",
+          "windupTime": 2,
+          "fireDelay": 1,
+          "projectileType": "smoglingas",
+          "fireOffset": [
+            3.5,
+            0.35
+          ],
+          "projectileCount": 1,
+          "projectileInterval": 0.01,
+          "aimDirection": [
+            1,
+            0
+          ],
+          "aimAtTarget": false,
+          "fireSound": "fire",
+          "fireState": "fire",
+          "winddownState": "firewinddown",
+          "winddownTime": 1
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrant"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 70
   }
 ]

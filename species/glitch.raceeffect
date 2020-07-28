@@ -36,6 +36,15 @@
 		}
 	],
 	"weaponScripts": [
+		//{
+			//"script": "/scripts/fr_weaponscripts/hungercost.lua",
+			//"contexts": [
+			//	"meleecombo-fire"
+			//],
+			//"args": {
+			//	"food": 0.0025
+			//}
+		//},
 		{
 			"script": "/scripts/fr_weaponscripts/combobonus.lua",
 			"contexts": [ "meleecombo-fire" ],
@@ -46,6 +55,25 @@
 				]
 			}
 		},
+		//{
+		//	"script": "/scripts/fr_weaponscripts/energybonus.lua",
+		//	"contexts": [ "meleecombo-fire" ],
+		//	"weapons": [ "mace","axe","greataxe" ],
+		//	"args": {
+		//		"energyReq": 0.25,
+		//		"stats": [{
+		//			"stat": "critChance",
+		//			"amount": 2
+		//		}]
+		//	}
+		//},
+		//{
+		//	"script": "/scripts/fr_weaponscripts/glitchaxes.lua",
+		//	"contexts": [
+		//		"axecleave-fire",
+		//		"hammersmash-fire"
+		//	]
+		//},
 		{
 			"script": "/scripts/fr_weaponscripts/glitchbash.lua",
 			"contexts": [ "shield-bash" ],
@@ -75,8 +103,15 @@
 			"args": {
 				"name": "FR_glitchShieldRaised",
 				"stats": [
-					{ "stat": "protection", "amount": 3 },
-					{ "stat": "healthRegen", "amount": 0.15 }
+					{ "stat": "protection", "amount": 3 }
+				],
+				"scripts" : [
+					{
+						"script" : "/scripts/fr_scripts/healthRegen.lua",
+						"args" : {
+							"healingRate" : 0.0015
+						}
+					}
 				]
 			}
 		},
@@ -95,8 +130,8 @@
 			"liquids": [ "oil", "liquidprotocite", "erchius" ],
 			"stats": [
 				{ "stat": "maxEnergy", "effectiveMultiplier": 1.25 },
-				{ "stat": "energyRegenPercentageRate", "amount": 0.484 },
-				{ "stat": "healthRegen", "amount": 0.484 }
+				{ "stat": "energyRegenPercentageRate", "baseMultiplier": 1.484 },
+				{ "stat": "healthRegen", "amount": 0.484 }//health regen is flat.
 			]
 		}
 	]

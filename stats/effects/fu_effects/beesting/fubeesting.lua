@@ -20,10 +20,16 @@ end
 function update(dt)
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
+	local damageVal=0
+	if status.statPositive("specialStatusImmunity") then
+		damageVal=math.floor(world.threatLevel() * self.tickDamagePercentage * 100)
+	else
+		damageVal=math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1
+	end
     self.tickTimer = self.tickTime
     status.applySelfDamageRequest({
         damageType = "IgnoresDef",
-        damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
+        damage = damageVal,
         damageSourceKind = "beesting",
         sourceEntityId = entity.id()
       })

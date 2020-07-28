@@ -1,4 +1,4 @@
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 
 function init()
   self.powerLevel = config.getParameter("powerLevel",1)
@@ -60,7 +60,7 @@ function getLight(location)
       world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/3,light[2]/3,light[3]/3})
     end
   end
-  local light = world.lightLevel(location)
+  local light = math.min(world.lightLevel(location),1.0)
   for key,value in pairs(lights) do
     world.callScriptedEntity(key,'object.setLightColor',value)
   end

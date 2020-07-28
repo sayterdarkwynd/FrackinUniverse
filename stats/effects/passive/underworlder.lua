@@ -13,7 +13,7 @@ function getLight()
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
   position[2] = math.floor(position[2])
-  local lightLevel = world.lightLevel(position)
+  local lightLevel = math.min(world.lightLevel(position),1.0)
   lightLevel = math.floor(lightLevel * 100)
   return lightLevel
 end
@@ -42,12 +42,6 @@ function update(dt)
 	  effect.setStatModifierGroup(underWorlderEffects, {
 	  {stat = "radioactiveResistance", amount = self.sunIntensity + self.radiantWorld + 0.2},
 	  {stat = "energyRegenPercentageRate", amount = self.sunIntensity + 0.24},
-	  {stat = "maxHealth", amount = self.sunIntensity + 1.12}
-	  })
-    elseif lightLevel > 0 then
-	  effect.setStatModifierGroup(underWorlderEffects, {
-	  {stat = "radioactiveResistance", amount = self.sunIntensity + self.radiantWorld + 0.1},
-	  {stat = "energyRegenPercentageRate", amount = self.sunIntensity + 0.23},
 	  {stat = "maxHealth", amount = self.sunIntensity + 1.12}
 	  })
     elseif lightLevel > 95 then
@@ -103,6 +97,12 @@ function update(dt)
 	  {stat = "radioactiveResistance", amount = self.sunIntensity + self.radiantWorld + 0.009},
 	  {stat = "energyRegenPercentageRate", amount = self.sunIntensity + 0.22},
 	  {stat = "maxHealth", amount = self.sunIntensity + 1.1}
+	  })
+    elseif lightLevel >= 0 then
+	  effect.setStatModifierGroup(underWorlderEffects, {
+	  {stat = "radioactiveResistance", amount = self.sunIntensity + self.radiantWorld + 0.1},
+	  {stat = "energyRegenPercentageRate", amount = self.sunIntensity + 0.23},
+	  {stat = "maxHealth", amount = self.sunIntensity + 1.12}
 	  })
 	else
 	  effect.setStatModifierGroup(underWorlderEffects,{})

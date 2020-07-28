@@ -1,7 +1,7 @@
 require "/objects/generic/centrifuge_recipes.lua"
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 local deltaTime=0
 
 
