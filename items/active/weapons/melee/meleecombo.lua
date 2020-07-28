@@ -8,30 +8,7 @@ function MeleeCombo:init()
     status.clearPersistentEffects("combobonusdmg")
 	self.comboStep = 1
 
-	self.swooshList={}
-	local animationCustom=config.getParameter("animationCustom") --first, we check if it has custom animation overrides.
-	if animationCustom and animationCustom.animatedParts and animationCustom.animatedParts.stateTypes and animationCustom.animatedParts.stateTypes.swoosh and animationCustom.animatedParts.stateTypes.swoosh.states then
-		for swoosh,_ in pairs(animationCustom.animatedParts.stateTypes.swoosh.states) do
-			self.swooshList[swoosh]=true
-		end
-	else -- if there are no custom animation overrides we go to the animation file
-		local animationData=config.getParameter("animation")
-		if type(animationData)=="string" and animationData:sub(1,1)=="/" then
-			animationData=root.assetJson(animationData)
-		elseif type(animationData)=="string" then
-			local buffer=world.entityHandItem(activeItem.ownerEntityId(),activeItem.hand())
-			buffer=root.itemConfig(buffer).directory..animationData
-			animationData=root.assetJson(buffer)
-		else
-			animationData=nil
-		end
-		if animationData then
-			local buffer = animationData.animatedParts and animationData.animatedParts.stateTypes and animationData.animatedParts.stateTypes.swoosh and animationData.animatedParts.stateTypes.swoosh.states
-			for swoosh,_ in pairs(buffer) do
-				self.swooshList[swoosh]=true
-			end
-		end
-	end
+	fuLoadAnimations(self)
 	self.energyUsage = self.energyUsage or 0
 
 	self:computeDamageAndCooldowns()
@@ -187,7 +164,9 @@ end
 
 -- Ticks on every update regardless if this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
-
+	if self.delayLoad then
+		fuLoadAnimations(self)
+	end
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	setupHelper(self, "meleecombo-fire")
@@ -751,4 +730,38 @@ function cancelEffects()
 	status.clearPersistentEffects("masteryBonus")
 	self.rapierTimerBonus = 0
 	self.inflictedHitCounter = 0
+end
+
+
+function fuLoadAnimations(self)
+	self.swooshList={}
+	local animationCustom=config.getParameter("animationCustom") --first, we check if it has custom animation overrides.
+	if animationCustom and animationCustom.animatedParts and animationCustom.animatedParts.stateTypes and animationCustom.animatedParts.stateTypes.swoosh and animationCustom.animatedParts.stateTypes.swoosh.states then
+		for swoosh,_ in pairs(animationCustom.animatedParts.stateTypes.swoosh.states) do
+			self.swooshList[swoosh]=true
+		end
+	else -- if there are no custom animation overrides we go to the animation file
+		local animationData=config.getParameter("animation")
+		if type(animationData)=="string" and animationData:sub(1,1)=="/" then
+			animationData=root.assetJson(animationData)
+		elseif type(animationData)=="string" then
+			if world.entityType(activeItem.ownerEntityId()) then
+				local buffer=world.entityHandItem(activeItem.ownerEntityId(),activeItem.hand())
+				buffer=root.itemConfig(buffer).directory..animationData
+				animationData=root.assetJson(buffer)
+			else
+				self.delayLoad=true
+				return
+			end
+		else
+			animationData=nil
+		end
+		if animationData then
+			local buffer = animationData.animatedParts and animationData.animatedParts.stateTypes and animationData.animatedParts.stateTypes.swoosh and animationData.animatedParts.stateTypes.swoosh.states
+			for swoosh,_ in pairs(buffer) do
+				self.swooshList[swoosh]=true
+			end
+		end
+	end
+	self.delayLoad=false
 end
