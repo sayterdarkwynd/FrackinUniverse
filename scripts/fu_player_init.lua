@@ -30,6 +30,8 @@ function init(...)
 	message.setHandler("player.enabledTechs", player.enabledTechs)
 	message.setHandler("player.shipUpgrades", player.shipUpgrades)
 	message.setHandler("player.isAdmin", player.isAdmin)
+	message.setHandler("player.isLounging", player.isLounging)
+	message.setHandler("player.loungingIn", player.loungingIn)
 	message.setHandler("player.equippedItem",function (_,_,...) return player.equippedItem(...) end)
 	
 	message.setHandler("fu_specialAnimator.playAudio",function (_,_,...) localAnimator.playAudio(...) end)
