@@ -58,7 +58,7 @@ function checkDamage(notifications)
        		--check hit types and calculate any that apply
        		if not self.inflictedHitCounter then self.inflictedHitCounter = 1 end
        		self.inflictedHitCounter = self.inflictedHitCounter + 1
-	        sb.logInfo("axe hit counter : "..self.inflictedHitCounter)
+	        --sb.logInfo("axe hit counter : "..self.inflictedHitCounter)
 	        if self.inflictedHitCounter > 5 then
 				status.clearPersistentEffects("listenerBonus")	
 				self.inflictedHitCounter = 0
