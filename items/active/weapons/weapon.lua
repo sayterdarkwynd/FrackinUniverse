@@ -146,10 +146,10 @@ function Weapon:updateAim()
   elseif self.stance.aimAngle then
     self.aimAngle = self.stance.aimAngle
   end
-  
+
   --activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation)
   activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation, not self.stance.noAimCompensation)   -- StardustLib edit; added allowRotate parameter
-  
+
   local isPrimary = activeItem.hand() == "primary"
   if isPrimary then
     -- primary hand weapons should set their aim direction whenever they can be flipped,
@@ -253,6 +253,7 @@ function Weapon:damageSource(damageConfig, damageArea, damageTimeout)
 end
 
 function Weapon:setStance(stance)
+  stance=stance or {}
   self.stance = stance
   self.weaponOffset = stance.weaponOffset or {0,0}
   self.relativeWeaponRotation = util.toRadians(stance.weaponRotation or 0)
