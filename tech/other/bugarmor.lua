@@ -1,175 +1,127 @@
 require "/scripts/vec2.lua"
 
 function init()
-  initCommonParameters()
+	attemptActivation(true)
 end
 
-function initCommonParameters()
-  self.energyCost = config.getParameter("energyCostPerSecond")
-  self.bombTimer = 0
+function checkStance(moves)
+	local swapped=false
+	if moves["down"] then
+		self.stance = "defense"
+		swapped=true
+	elseif moves["up"] then
+		self.stance = "shield"
+		swapped=true
+	elseif moves["primaryFire"] or moves["altFire"] then
+		self.stance = "attack"
+		swapped=true
+	elseif moves["jump"] then
+		self.stance = "jump"
+		swapped=true
+	end
+	
+	if swapped then
+		if self.stanceSoundCooldown <= 0.0 then
+			local sound=""
+			if self.stance ==  "defense" then
+				sound="activate"
+			elseif self.stance ==  "shield" then
+				sound="activate2"
+			elseif self.stance ==  "attack" then
+				sound="activate3"
+			elseif self.stance ==  "jump" then
+				sound="activate3"
+			end
+			if animator.hasSound(sound) then
+				animator.playSound(sound)
+			end
+		end
+		self.stanceSoundCooldown = 3
+	end
 end
 
-function uninit()
-  deactivate()
-end
-
-
-function checkStance()
-    if self.pressDown then
-      self.active2 = 1
-      self.active3 = 0
-      self.active4 = 0    
-       animator.setParticleEmitterActive("shieldStance", false)
-       animator.setParticleEmitterActive("powerStance", false)	    
-       animator.setParticleEmitterActive("defenseStance", true)
-       animator.playSound("activate")
-    elseif self.pressUp then
-      self.active2 = 0
-      self.active3 = 1
-      self.active4 = 0	     
-       animator.setParticleEmitterActive("defenseStance", false)
-       animator.setParticleEmitterActive("powerStance", false)	    
-       animator.setParticleEmitterActive("shieldStance", true)
-       animator.playSound("activate2")
-    elseif self.pressJump then
-      self.active2 = 0
-      self.active3 = 0
-      self.active4 = 1    
-       animator.setParticleEmitterActive("defenseStance", false)
-       animator.setParticleEmitterActive("shieldStance", false)	    
-       animator.setParticleEmitterActive("powerStance", true)
-       animator.playSound("activate3")
-    end 
-    --local configBombDrop = { power = 0 }
-    --world.spawnProjectile("activeStance", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
-    self.bombTimer = 3   
+function setStance()
+	--these use dummy statuses to display stats. these are located in  /stats/effects/fu_effects/fu_dummyeffects/thelusiantechdummies. they are purely for display.
+	if self.stance == "defense" then
+		status.setPersistentEffects("bugarmor", {
+			"foodcostarmor",
+			"thelusiantechdummyarmor",
+			{stat = "protection", effectiveMultiplier = 1.3},
+			{stat = "powerMultiplier", effectiveMultiplier = 0.85},
+			{stat = "maxEnergy", effectiveMultiplier = 0.85}
+		})
+	elseif self.stance == "shield" then
+		status.setPersistentEffects("bugarmor", {
+			"foodcostarmor",
+			"thelusiantechdummyshield",
+			{stat = "shieldBash", amount = 25},
+			{stat = "shieldStaminaRegenBlock", effectiveMultiplier = 0.5},
+			{stat = "perfectBlockLimit", effectiveMultiplier = 2},
+			{stat = "shieldBashPush", amount = 5},
+			{stat = "maxEnergy", effectiveMultiplier = 0.50}
+		})
+	elseif self.stance == "attack" then
+		status.setPersistentEffects("bugarmor", {
+			"foodcostarmor",
+			"thelusiantechdummyweapon",
+			{stat = "protection", effectiveMultiplier = 0.85},
+			{stat = "powerMultiplier", effectiveMultiplier = 1.25},
+			{stat = "maxEnergy", effectiveMultiplier = 0.85}
+		})
+	elseif self.stance == "jump" then
+		status.setPersistentEffects("bugarmor", {
+			"foodcostarmor",
+			"thelusiantechdummyjump",
+			{stat = "protection", effectiveMultiplier = 0.85},
+			{stat = "maxEnergy", effectiveMultiplier = 0.85}
+		})
+	end
 end
 
 function update(args)
-  if not self.specialLast and args.moves["special1"] then
-    attemptActivation()
-  end
-  
-  self.specialLast = args.moves["special1"]
-  self.pressJump = args.moves["jump"]
-  self.pressUp = args.moves["up"]
-  self.pressDown = args.moves["down"]
-  
-  if not args.moves["special1"] then
-    self.forceTimer = nil
-  end
+	if args.moves["special1"] and self.stanceResetTimer then
+		checkStance(args.moves)
+		setStance()
+		if self.stanceResetTimer < 3 then
+			self.stanceResetTimer = math.min(3, self.stanceResetTimer + args.dt)
+		else
+			attemptActivation(true)
+		end
+	else
+		self.stanceResetTimer = 0.0
+	end
+	
+	if self.stanceSoundCooldown and self.stanceSoundCooldown > 0 then
+		self.stanceSoundCooldown = math.max(0, self.stanceSoundCooldown - args.dt)
+	else
+		self.stanceSoundCooldown = 0
+	end
 
-
-  if self.active2 == 1 then  -- in defense stance, we are slow
-	      mcontroller.controlModifiers({
-	        speedModifier = 0.75
-	      })
-  elseif self.active3 == 1 then -- in shield stance we are slightly slower
-	      mcontroller.controlModifiers({
-	        speedModifier = 0.90
-	      })  
-  elseif self.active4 == 1 then -- in attack stance we are faster
-	      mcontroller.controlModifiers({
-	        speedModifier = 1.1
-	      })  
-  end
-  
-  if self.active then
-	    if self.bombTimer > 0 then
-	      self.bombTimer = math.max(0, self.bombTimer - args.dt)
-	    end
-
-	    if self.pressDown or self.pressDown and self.active2== 1 then  --defense stance	    
-	      status.setPersistentEffects("bugarmor", {
-		{stat = "protection", effectiveMultiplier = 1.25},
-		{stat = "powerMultiplier", effectiveMultiplier = 0.75},
-		{stat = "maxEnergy", effectiveMultiplier = 0.75}
-	      })
-	      if self.bombTimer == 0 then
-	        checkStance()
-	      end
-	    end
-	    if self.pressUp or self.pressUp and self.active3== 1 then  -- shielding stance
-	      status.setPersistentEffects("bugarmor", {
-		{stat = "shieldBash", amount = 25},
-		{stat = "shieldStaminaRegenBlock", effectiveMultiplier = 0.5},
-		{stat = "perfectBlockLimit", effectiveMultiplier = 2},
-		{stat = "shieldBashPush", amount = 5},
-		{stat = "maxEnergy", effectiveMultiplier = 0.50}
-	      })  
-	      if self.bombTimer == 0 then
-	        checkStance()
-	      end	      
-	    end
-	    if self.pressJump or self.pressJump and self.active4== 1 then -- power stance	  
-	      status.setPersistentEffects("bugarmor", {
-		{stat = "protection", effectiveMultiplier = 0.75},
-		{stat = "powerMultiplier", effectiveMultiplier = 1.25},
-		{stat = "maxEnergy", effectiveMultiplier = 0.75}
-	      })    
-	      if self.bombTimer == 0 then
-	        checkStance()
-	      end	      
-	    end      
-    checkForceDeactivate(args.dt)
-  end
+	if self.stance == "defense" then -- in defense stance, we are slow
+		mcontroller.controlModifiers({speedModifier = 0.75})
+	elseif self.stance == "shield" then -- in shield stance we are slightly slower
+		mcontroller.controlModifiers({speedModifier = 0.90})
+	elseif self.stance == "attack" then -- in attack stance we are faster
+		mcontroller.controlModifiers({speedModifier = 1.1})
+	elseif self.stance == "jump" then -- in jump stance we are faster and jump higher
+		mcontroller.controlModifiers({speedModifier = 1.1, airJumpModifier = 1.1})
+	end
 end
 
-function attemptActivation()
-  if not self.active then
-    activate()
-    local configBombDrop = { power = 0 }
-    world.spawnProjectile("activeStance", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)    
-  elseif self.active then
-      deactivate()
-    if not self.forceTimer then
-      self.forceTimer = 0
-    end
-  end
+function attemptActivation(active)
+	if active then
+		if not self.stanceSoundCooldown then self.stanceSoundCooldown = 0.0 end
+		if self.stanceSoundCooldown <= 0.0 then
+			world.spawnProjectile("activeStance", mcontroller.position(), entity.id(), {0, 0}, false, { power = 0 })
+		end
+		self.stanceSoundCooldown = 3
+		status.setPersistentEffects("bugarmor",{"foodcostarmor"})
+		self.stance="neutral"
+	else
+		status.setPersistentEffects("bugarmor",{})
+	end
 end
 
-function checkForceDeactivate(dt)
-  if self.forceTimer then
-    self.forceTimer = self.forceTimer + dt
-    if self.forceTimer >= self.forceDeactivateTime then
-      deactivate()
-      self.forceTimer = nil
-      status.clearPersistentEffects("bugarmor")
-      animator.setParticleEmitterActive("defenseStance", false)
-      animator.setParticleEmitterActive("shieldStance", false)
-      animator.setParticleEmitterActive("powerStance", false)        
-    else
-      attemptActivation()
-    end
-    return true
-  else
-    return false
-  end
-end
-
-function activate()
-  if not self.active then
-        status.addEphemeralEffects{{effect = "foodcostarmor", duration = 900}}
-	animator.setParticleEmitterActive("defenseStance", false)
-	animator.setParticleEmitterActive("shieldStance", false)
-	animator.setParticleEmitterActive("powerStance", false)    	
-  else
-        status.clearPersistentEffects("bugarmor")
-	animator.setParticleEmitterActive("defenseStance", false)
-	animator.setParticleEmitterActive("shieldStance", false)
-	animator.setParticleEmitterActive("powerStance", false)        
-        deactivate()
-  end
-  self.active = true
-end
-
-function deactivate()
-  if self.active then
-    status.removeEphemeralEffect("foodcostarmor")
-    status.clearPersistentEffects("bugarmor")
-    animator.setParticleEmitterActive("defenseStance", false)
-    animator.setParticleEmitterActive("shieldStance", false)
-    animator.setParticleEmitterActive("powerStance", false)    
-  end
-  self.active = false
+function uninit()
+	attemptActivation(false)
 end
