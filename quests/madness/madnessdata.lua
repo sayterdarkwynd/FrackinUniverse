@@ -106,7 +106,7 @@ function randomEvent()
 	end
 	if self.madnessCount > 750 then
 		if self.randEvent == 37 and self.madnessCount > 800 then
-			if (self.currentPrimary and root.itemHasTag(self.currentPrimary, "dagger")) or (root.itemHasTag(self.currentSecondary, "dagger") and self.currentSecondary) then --if holding a knife, cut yourself
+			if (self.currentPrimary and root.itemHasTag(self.currentPrimary, "dagger")) or (self.currentSecondary and root.itemHasTag(self.currentSecondary, "dagger")) then --if holding a knife, cut yourself
 				status.addEphemeralEffect("bleeding05",self.curseDuration_status) -- You just can't stop stabbing yourself
 				player.radioMessage("madnessharm")
 			else
