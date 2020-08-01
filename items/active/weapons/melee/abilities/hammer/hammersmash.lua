@@ -69,12 +69,20 @@ function HammerSmash:windup(windupProgress)
 					if self.timerHammer == 100 then	--at 101, play a sound
 						if animator.hasSound("overCharged") then
 							animator.playSound("overCharged")
+						elseif animator.hasSound("groundImpact") then
+							animator.playSound("groundImpact")
+						elseif animator.hasSound("fire") then
+							animator.playSound("fire")
 						end
-						--animator.burstParticleEmitter("charged")--maybe swap to 'groundImpact' and play multiple times?
+						--animator.burstParticleEmitter("charged")
 					end
 					if self.timerHammer == 75 then	--at 75, play a sound
 						if animator.hasSound("charged") then
 							animator.playSound("charged")
+						elseif animator.hasSound("groundImpact") then
+							animator.playSound("groundImpact")
+						elseif animator.hasSound("fire") then
+							animator.playSound("fire")
 						end
 						status.addEphemeralEffects{{effect = "hammerbonus", duration = 0.4}}
 					end
