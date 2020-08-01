@@ -42,9 +42,10 @@ end
 function loadElemental()
 	if not self.resistanceList then return {} end
 	local buffer={}
-	local threatLevel=(world.threatLevel())*0.04
+	local threatLevel=(world.threatLevel())*0.08
 	for stat,_ in pairs(self.resistanceList) do
 		table.insert(buffer,{stat=stat,amount=threatLevel})
+		table.insert(buffer,{stat=stat,effectiveMultiplier=0.5})
 	end
 	
 	return buffer
