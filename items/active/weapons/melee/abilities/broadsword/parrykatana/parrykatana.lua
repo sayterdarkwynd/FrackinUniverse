@@ -49,6 +49,8 @@ function Parry:parry()
 
 					if animator.hasSound("bonusEffect") then
 						animator.playSound("bonusEffect")
+					elseif animator.hasSound("parry") then
+						animator.playSound("parry")
 					end
 					self.blockCountShield = 0.008
 					status.modifyResourcePercentage("health", 0.005 + self.blockCountShield )	--hylotl get a heal when they perfectly block
