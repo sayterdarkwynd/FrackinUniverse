@@ -44,7 +44,7 @@ function update(dt)
 	end
 end
 
-function onInteract(args)
+function onInteraction(args)
 	if (not self.itemHasSpawned) and (not self.itemCheck) then
 		if world.entityType(args.sourceId)=="player" then
 			self.itemCheck=world.sendEntityMessage(args.sourceId,"player.hasItem",self.spawnableItem)
