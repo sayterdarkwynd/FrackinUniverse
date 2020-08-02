@@ -627,7 +627,6 @@ function MeleeCombo:fire()
 
     self.rapierTimerBonus = 0
 	local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
-
 	local swooshCheckA=self.swooshList[animStateKey] and animStateKey
 	local swooshCheckB=self.swooshList["fire"] and "fire"
 	if swooshCheckA or swooshCheckB then
@@ -731,10 +730,6 @@ function MeleeCombo:uninit()
 end
 
 function cancelEffects(fullClear)
-	if fullClear then
-		--disabling this penalty for now, since instead combo weapons disable combo steps
-		--status.clearPersistentEffects("meleeEnergyLowPenalty")
-	end
 	status.clearPersistentEffects("longswordbonus")
 	status.clearPersistentEffects("macebonus")
 	status.clearPersistentEffects("katanabonus")
@@ -770,18 +765,15 @@ function fuLoadAnimations(self)
 	else
 		animationData=nil
 	end
-	if animationData then
-		local buffer = animationData.animatedParts and animationData.animatedParts.stateTypes and animationData.animatedParts.stateTypes.swoosh and animationData.animatedParts.stateTypes.swoosh.states
-		for swoosh,_ in pairs(buffer) do
+	if animationData and animationData.animatedParts and animationData.animatedParts.stateTypes and animationData.animatedParts.stateTypes.swoosh and animationData.animatedParts.stateTypes.swoosh.states then
+		for swoosh,_ in pairs(animationData.animatedParts.stateTypes.swoosh.states) do
 			self.swooshList[swoosh]=true
 		end
 	end
 	local animationCustom=config.getParameter("animationCustom")
 	if animationCustom and animationCustom.animatedParts and animationCustom.animatedParts.stateTypes and animationCustom.animatedParts.stateTypes.swoosh and animationCustom.animatedParts.stateTypes.swoosh.states then
-		for swoosh,_ in pairs(animationCustom.animatedParts.stateTypes.swoosh.states) do
-			if type(swoosh) == "table" then
-				self.swooshList[swoosh]=true
-			end
+		for swooshkey,_ in pairs(animationCustom.animatedParts.stateTypes.swoosh.states) do
+			self.swooshList[swooshkey]=true
 		end
 	end
 	self.delayLoad=false
