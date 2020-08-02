@@ -33,6 +33,8 @@ function init(...)
 	message.setHandler("player.isLounging", player.isLounging)
 	message.setHandler("player.loungingIn", player.loungingIn)
 	message.setHandler("player.equippedItem",function (_,_,...) return player.equippedItem(...) end)
+	message.setHandler("player.hasItem",function (_,_,...) return player.hasItem(...) end)
+	message.setHandler("player.hasCountOfItem",function (_,_,...) return player.hasCountOfItem(...) end)
 	
 	message.setHandler("fu_specialAnimator.playAudio",function (_,_,...) localAnimator.playAudio(...) end)
 	message.setHandler("fu_specialAnimator.spawnParticle",function (_,_,...) localAnimator.spawnParticle(...) end)
