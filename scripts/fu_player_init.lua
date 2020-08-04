@@ -7,6 +7,7 @@ function init(...)
 	if origInit then
 		origInit(...)
 	end
+	didInit=true
 	sb.logInfo("----- FU player init -----")
 	
 	message.setHandler("fu_key", function(_, _, requiredItem)
