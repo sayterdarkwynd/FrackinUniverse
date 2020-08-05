@@ -32,6 +32,12 @@ function init()
 	    storage.fuelCount = storage.fuelCount - value
 	  end
   end)
+  
+  message.setHandler("emptyQuestFuelCount", function(_, _, _)
+    if storage.fuelCount then
+	    storage.fuelCount = 0
+	  end
+  end)
 
   message.setHandler("setFuelSlotItem", function(_, _, value)
 	  storage.itemSlot = value
