@@ -64,11 +64,15 @@ end
 -- Ticks on every update regardless if this is the active ability
 function MeleeSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
+
+	
 	if (status.resource("energy") <= 1) or (status.resourceLocked("energy")) then
 		status.setPersistentEffects("meleeEnergyLowPenalty",{{stat = "powerMultiplier", effectiveMultiplier = 0.75}})
 	else
 		status.clearPersistentEffects("meleeEnergyLowPenalty")
-	end
+	end	
+
+
 	-- FR
 	setupHelper(self, "meleeslash-fire")
     self.hitsListener:update()
@@ -84,14 +88,21 @@ end
 -- State: windup
 function MeleeSlash:windup()
 	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
-	self.energyTotal = math.min(math.max(0,(status.resource("energy")-1.0)), (self.energyMax * 0.05))
-	
+
+	if not (primaryItem and root.itemHasTag(primaryItem, "bugnet")) or (altItem and root.itemHasTag(altItem, "bugnet")) then --it isnt a bugnet
+		 self.energyTotal = 0.01
+	else
+		self.energyTotal = math.min(math.max(0,(status.resource("energy")-1.0)), (self.energyMax * 0.05))
+	end
+
 	if (not status.consumeResource("energy",self.energyTotal)) or (status.resource("energy") <= 1) then
 		status.setPersistentEffects("meleeEnergyLowPenalty",{{stat = "powerMultiplier", effectiveMultiplier = 0.75}})
 		cancelEffects()
 	else
 		status.clearPersistentEffects("meleeEnergyLowPenalty")
-	end
+	end		
+	
+
 	self.weapon:setStance(self.stances.windup)
 
 	if self.stances.windup.hold then
