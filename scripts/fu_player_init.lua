@@ -1,11 +1,13 @@
-
+local didInit=false
 local origInit = init
 local origUninit = uninit
+local oldUpdate=update
 
 function init(...)
 	if origInit then
 		origInit(...)
 	end
+	didInit=true
 	sb.logInfo("----- FU player init -----")
 	
 	message.setHandler("fu_key", function(_, _, requiredItem)
@@ -57,6 +59,22 @@ function init(...)
 		end
 	end
 	--]]
+end
+
+function update(...)
+	if oldUpdate then oldUpdate(...) end
+	if didInit then
+		if world.entityType(entity.id()) == "player" then --can't send radio messages to nonexistent entities. this is the case when players are loading in.
+			local idiotitem=root.itemConfig("idiotitem") -- FR detection.
+			if idiotitem then
+				world.sendEntityMessage(entity.id(),"queueRadioMessage","fufrdetectedmessage") -- tell them they're a grounded idiot.
+				if (not world.getProperty("ship.fuel")) then
+					player.warp("ownship")
+				end
+			end
+			didInit=false
+		end
+	end
 end
 
 function uninit(...)
