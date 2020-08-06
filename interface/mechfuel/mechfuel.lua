@@ -124,6 +124,8 @@ function update(dt)
 	
 	if self.currentFuel > self.maxFuel then
 		self.currentFuel = self.maxFuel
+	elseif self.currentFuel < 0 then
+		emptyfuel(true)
 	end
 	
 end
@@ -174,6 +176,9 @@ function fuel()
 	
 	if fuelWillAdd > 0 then
 		item.count=item.count-fuelItemConsume
+		if item.count == 0 then
+			item=nil
+		end
 		self.setItemMessage = world.sendEntityMessage(id, "setFuelSlotItem", item)
 		self.currentFuel=fuelWillAdd+self.currentFuel
 	else
@@ -186,19 +191,21 @@ function fuel()
 end
 
 
-function emptyfuel()
+function emptyfuel(hidden)
 	if not ((world.type()=="mechtestbasic") or self.enabled) then return end
-	if self.currentFuel > 0 then
+	if (self.currentFuel > 0) or (self.currentFuel < 0) then
 		--local item = widget.itemSlotItem("itemSlot_fuel")
 		local id = player.id()
 		localFuelType = nil
-		self.currentFuel = 0
 		widget.setText("lblEfficiency", "^red;Emptying Fuel.^white;")	 
 		widget.setText("lblFuelType", "CURRENT FUEL: ^red;EMPTY^reset;")	 
 		--world.sendEntityMessage(id, "setFuelSlotItem", nil)
 		world.sendEntityMessage(id, "setFuelType", nil)
-		world.sendEntityMessage(id, "removeQuestFuelCount", self.currentFuel * 10.0)
-		pane.playSound("/sfx/tech/mech_powerdown.ogg")
+		world.sendEntityMessage(id, "emptyQuestFuelCount")
+		self.currentFuel = 0
+		if not hidden then
+			pane.playSound("/sfx/tech/mech_powerdown.ogg")
+		end
 	end
 end
 
