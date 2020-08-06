@@ -30,11 +30,7 @@ function build(directory, config, parameters, level, seed)
 	
 	parameters.shortdescription=""..(stemName or "Unknown")
 	
-	if parameters.shortdescription == "Unknown" then
-		parameters.shortdescription=parameters.shortdescription..((foliageName and " "..foliageName) or "")
-	else
-		parameters.shortdescription=parameters.shortdescription..((foliageName and " "..foliageName) or " Unknown")
-	end
+	parameters.shortdescription=parameters.shortdescription..((foliageName and " "..foliageName) or "")
 	
 	parameters.shortdescription=parameters.shortdescription.." Sapling"
 	
