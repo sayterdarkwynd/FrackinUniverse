@@ -33,7 +33,7 @@ function build(directory, config, parameters, level, seed)
 	if parameters.shortdescription == "Unknown" then
 		parameters.shortdescription=parameters.shortdescription..((foliageName and " "..foliageName) or "")
 	else
-		parameters.shortdescription=parameters.shortdescription..((foliageName and " "..foliageName) or "Unknown")
+		parameters.shortdescription=parameters.shortdescription..((foliageName and " "..foliageName) or " Unknown")
 	end
 	
 	parameters.shortdescription=parameters.shortdescription.." Sapling"
