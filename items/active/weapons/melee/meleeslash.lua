@@ -89,10 +89,13 @@ end
 function MeleeSlash:windup()
 	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
 	
-	local item=world.entityHandItemDescriptor(activeItem.ownerEntityId(),activeItem.hand())
+	local item
+	if world.entityType(activeItem.ownerEntityId()) then
+		item=world.entityHandItemDescriptor(activeItem.ownerEntityId(),activeItem.hand())
+	end
 	item=item and item.name
 	
-	if not item or not root.itemHasTag(item, "weapon") then --it isnt a weapon or we can't figure out what kind it is.
+	if not item or not root.itemHasTag(item, "weapon") then --it isnt a weapon or we can't figure out what kind it is right now.
 		 self.energyTotal = 0.00
 	else
 		self.energyTotal = math.min(math.max(0,(status.resource("energy")-1.0)), (self.energyMax * 0.05))
