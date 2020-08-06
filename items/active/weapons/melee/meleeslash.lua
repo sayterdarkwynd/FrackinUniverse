@@ -88,9 +88,12 @@ end
 -- State: windup
 function MeleeSlash:windup()
 	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
-
-	if not (primaryItem and root.itemHasTag(primaryItem, "bugnet")) or (altItem and root.itemHasTag(altItem, "bugnet")) then --it isnt a bugnet
-		 self.energyTotal = 0.01
+	
+	local item=world.entityHandItemDescriptor(activeItem.ownerEntityId(),activeItem.hand())
+	item=item and item.name
+	
+	if not item or not root.itemHasTag(item, "weapon") then --it isnt a weapon or we can't figure out what kind it is.
+		 self.energyTotal = 0.00
 	else
 		self.energyTotal = math.min(math.max(0,(status.resource("energy")-1.0)), (self.energyMax * 0.05))
 	end
