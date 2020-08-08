@@ -517,7 +517,7 @@ function MeleeCombo:windup()
 		self.energyTotal = (self.energyMax * 0.01)
 	end
 	
-	if (not status.consumeResource("energy",self.energyTotal)) or (status.resource("energy") <= 1) then
+	if (self.energyTotal<=0) or (status.resource("energy") <= 1) or (not status.consumeResource("energy",self.energyTotal)) then
 		--disabling this penalty for now, since instead combo weapons disable combo steps
 		--status.setPersistentEffects("meleeEnergyLowPenalty",{{stat = "powerMultiplier", effectiveMultiplier = 0.75}})
 		cancelEffects()

@@ -129,8 +129,9 @@ function GunFire:update(dt, fireMode, shiftHeld)
 	if animator.animationState("firing") ~= "fire" then
 					animator.setLightActive("muzzleFlash", false)
 	end
-
-	if self.fireMode == (self.activatingFireMode or self.abilitySlot)
+	if (self.isAmmoBased==1) and shiftHeld and ((fireMode == "primary") or (fireMode == "alt")) and self.currentAmmoPercent and (self.currentAmmoPercent < 1.0) then
+		self:checkAmmo(true)
+	elseif self.fireMode == (self.activatingFireMode or self.abilitySlot)
 		and not self.weapon.currentAbility
 		and self.cooldownTimer == 0
 		and not status.resourceLocked("energy")
