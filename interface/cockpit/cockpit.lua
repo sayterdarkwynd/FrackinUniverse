@@ -1281,7 +1281,7 @@ function planetScreenState(planet)
             orbiting = shipLocation[2]
           end
           if orbiting and compare(coordinatePlanet(orbiting), coordinatePlanet(self.travel.target[2])) then
-            celestial.flyShip(self.travel.system, self.travel.target)
+            flyShip(self.travel.system, self.travel.target)
             self.travel = {}
           end
         end
