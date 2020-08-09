@@ -2,6 +2,7 @@ require "/scripts/util.lua"
 require "/scripts/poly.lua"
 require "/scripts/interp.lua"
 require "/items/active/weapons/melee/meleeslash.lua"
+require("/scripts/FRHelper.lua")
 
 -- Hammer primary attack
 -- Extends default melee attack and overrides windup and fire
@@ -9,44 +10,102 @@ HammerSmash = MeleeSlash:new()
 function HammerSmash:init()
 	self.stances.windup.duration = self.fireTime - self.stances.preslash.duration - self.stances.fire.duration
 
+	self.timerHammer = 0 --for hammer crit/stun bonus (FU)
+	self.overCharged = 0 -- overcharged default
+	self.hammerMastery = 1 + status.stat("hammerMastery") or 0 -- new stat for applying bonuses to hammer functions
+
 	MeleeSlash.init(self)
 	self:setupInterpolation()
 end
 
 function HammerSmash:windup(windupProgress)
-	self.weapon:setStance(self.stances.windup)
-
-	local windupProgress = windupProgress or 0
-	local bounceProgress = 0
-	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
-		if windupProgress < 1 then
-			windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
-			self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
-		else
-			bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
-			self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:bounceWeaponAngle(bounceProgress)
-		end
-		coroutine.yield()
+	self.energyTotal = (status.stat("maxEnergy") * 0.10)
+	if status.resource("energy") <= 1 then
+		status.modifyResource("energy",1)
+		cancelEffects()
 	end
+	if status.resource("energy") == 1 then
+		cancelEffects()
+	end
+	if status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal)) then
 
-	if windupProgress >= 1.0 then
-		if math.abs(world.gravity(mcontroller.position())) > 0 then
+		self.weapon:setStance(self.stances.windup)
+		--*************************************
+		-- FU/FR ADDONS
+		setupHelper(self, "hammersmash-fire")
+		--**************************************
+		self.timerHammer = 0--clear the values each time we swing the hammer
+		self.overCharged = 0
+
+		local windupProgress = windupProgress or 0
+		local bounceProgress = 0
+		while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
+			if windupProgress < 1 then
+				windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
+				self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
+			else
+				bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
+				self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:bounceWeaponAngle(bounceProgress)
+
+		--**************************************
+
+				-- increase "charge" the longer it is held. cannot pass 100.
+				self.bombbonus = (status.stat("bombtechBonus") or 1)
+				mcontroller.controlModifiers({speedModifier = 0.7 + (self.bombbonus/10)}) --slow down when charging
+
+				if self.timerHammer >=100 then --if we havent overcharged but hit 100 bonus, overcharge and reset
+					self.overCharged = 1
+					self.timerHammer = 0
+					status.setPersistentEffects("hammerbonus", {})
+				end
+				if self.overCharged > 0 then --reset if overCharged
+					self.timerHammer = 0
+					status.setPersistentEffects("hammerbonus", {})
+				else
+					if self.timerHammer < 100 then --otherwise, add bonus
+						self.timerHammer = self.timerHammer + 0.5
+						status.setPersistentEffects("hammerbonus", {{stat = "critChance", amount = ((self.timerHammer * 1.05) + (self.hammerMastery/2)) },{stat = "critDamage", amount = (self.timerHammer/100) + (self.hammerMastery/100)}})
+					end
+					if self.timerHammer == 100 then	--at 101, play a sound
+						if animator.hasSound("overCharged") then
+							animator.playSound("overCharged")
+						elseif animator.hasSound("groundImpact") then
+							animator.playSound("groundImpact")
+						elseif animator.hasSound("fire") then
+							animator.playSound("fire")
+						end
+						--animator.burstParticleEmitter("charged")
+					end
+					if self.timerHammer == 75 then	--at 75, play a sound
+						if animator.hasSound("charged") then
+							animator.playSound("charged")
+						elseif animator.hasSound("groundImpact") then
+							animator.playSound("groundImpact")
+						elseif animator.hasSound("fire") then
+							animator.playSound("fire")
+						end
+						status.addEphemeralEffects{{effect = "hammerbonus", duration = 0.4}}
+					end
+				end
+		--**************************************
+			end
+			coroutine.yield()
+		end
+
+		if windupProgress >= 1.0 then
 			if self.stances.preslash then
 				self:setState(self.preslash)
 			else
 				self:setState(self.fire)
 			end
 		else
-			self:setState(self.spin)
+			self:setState(self.winddown, windupProgress)
 		end
-	else
-		self:setState(self.winddown, windupProgress)
 	end
 end
 
 function HammerSmash:winddown(windupProgress)
 	self.weapon:setStance(self.stances.windup)
-
 	while windupProgress > 0 do
 		if self.fireMode == "primary" then
 			self:setState(self.windup, windupProgress)
@@ -56,6 +115,7 @@ function HammerSmash:winddown(windupProgress)
 		windupProgress = math.max(0, windupProgress - (self.dt / self.stances.windup.duration))
 		self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
 		coroutine.yield()
+		cancelEffects()
 	end
 end
 
@@ -73,6 +133,12 @@ function HammerSmash:fire()
 	smashMomentum[1] = smashMomentum[1] * mcontroller.facingDirection()
 	mcontroller.addMomentum(smashMomentum)
 
+
+	-- ******************* FR ADDONS FOR HAMMER SWINGS
+	if self.helper then
+		self.helper:runScripts("hammersmash-fire", self)
+	end
+	-- ***********************************************
 	local smashTimer = self.stances.fire.smashTimer
 	local duration = self.stances.fire.duration
 	while smashTimer > 0 or duration > 0 do
@@ -81,7 +147,7 @@ function HammerSmash:fire()
 
 		local damageArea = partDamageArea("swoosh")
 		if not damageArea and smashTimer > 0 then
-			damageArea = partDamageArea("blade")
+				damageArea = partDamageArea("blade")
 		end
 		self.weapon:setDamage(self.damageConfig, damageArea, self.fireTime)
 
@@ -94,52 +160,50 @@ function HammerSmash:fire()
 					if animator.hasSound("groundImpact") then
 						animator.playSound("groundImpact")
 					end
+					if self.timerHammer > 75 and self.timerHammer < 101 then
+						self.bombbonus = (status.stat("bombtechBonus") or 1)
+						self.hammerMasteryCheck = (status.stat("hammerMastery") or 0)
+						local primaryStrike = { power = (self.timerHammer / 4) * self.bombbonus}
+						local secondaryStrike = { power = 0 + self.bombbonus}
+						world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+2,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, primaryStrike)
+						world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-2,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, primaryStrike)
+						world.spawnProjectile("spearCrit", {mcontroller.position()[1]+1,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, secondaryStrike)
+						world.spawnProjectile("spearCrit", {mcontroller.position()[1]-1,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, secondaryStrike)
+						world.spawnProjectile("spearCrit", {mcontroller.position()[1]+2,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+						world.spawnProjectile("spearCrit", {mcontroller.position()[1]-2,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+						if self.hammerMasteryCheck > 0.5 then
+							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("spearCrit", {mcontroller.position()[1]+3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("spearCrit", {mcontroller.position()[1]-3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+						end
+						if self.hammerMasteryCheck > 0.7 then
+							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("spearCrit", {mcontroller.position()[1]+4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("spearCrit", {mcontroller.position()[1]-4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+						end
+						if self.hammerMasteryCheck > 0.9 then
+							world.spawnProjectile("spearCrit", {mcontroller.position()[1]+5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("spearCrit", {mcontroller.position()[1]-5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
+						end
+						status.setPersistentEffects("hammerbonus", {
+							{stat = "protection", effectiveMultiplier = 1.2 + (self.hammerMasteryCheck /10) },
+							{stat = "grit", effectiveMultiplier = 1.2 + (self.hammerMasteryCheck /10)}
+						})
+					else
+						cancelEffects()
+
+					end
 				end
 			end
 		end
 		coroutine.yield()
-	end
-
-	self.cooldownTimer = self:cooldownTime()
-end
-
-function HammerSmash:spin()
-	self.weapon:setStance(self.stances.fire)
-	self.weapon:updateAim()
-
-	animator.setAnimationState("swoosh", "fire")
-	if animator.hasSound("fire") then
-		animator.playSound("fire")
-	end
-	animator.burstParticleEmitter(self.weapon.elementalType .. "swoosh")
-
-	local direction = -mcontroller.facingDirection()
-
-	local spinTimer = self.stances.spin.spinTimer
-	while spinTimer > 0 do
-		spinTimer = spinTimer - self.dt
-
-		local ratio = 1 - ((spinTimer / self.stances.spin.spinTimer) ^ 2)
-		local angle = ratio * self.stances.spin.spinAngle * direction
-		mcontroller.setRotation(angle)
-
-		local damageArea = partDamageArea("swoosh")
-		if damageArea then
-			self.weapon:setDamage(self.damageConfig, poly.rotate(damageArea, angle), self.fireTime)
 		end
 
-		coroutine.yield()
-	end
-
-	mcontroller.setRotation(0)
 	self.cooldownTimer = self:cooldownTime()
-end
-
-function HammerSmash:uninit()
-	MeleeSlash.uninit(self)
-	if self.weapon.currentState == self.spin then
-		mcontroller.setRotation(0)
-	end
 end
 
 function HammerSmash:setupInterpolation()
@@ -169,4 +233,32 @@ function HammerSmash:windupAngle(ratio)
 	local armRotation = interp.ranges(ratio, self.stances.windup.armAngle)
 
 	return util.toRadians(weaponRotation), util.toRadians(armRotation)
+end
+
+
+function HammerSmash:uninit()
+	cancelEffects()
+	if self.helper then
+		self.helper:clearPersistent()
+	end
+	self.blockCount = 0
+end
+
+function cancelEffects()
+	status.clearPersistentEffects("longswordbonus")
+	status.clearPersistentEffects("macebonus")
+	status.clearPersistentEffects("katanabonus")
+	status.clearPersistentEffects("rapierbonus")
+	status.clearPersistentEffects("shortspearbonus")
+	status.clearPersistentEffects("daggerbonus")
+	status.clearPersistentEffects("scythebonus")
+	status.clearPersistentEffects("axebonus")
+	status.clearPersistentEffects("hammerbonus")
+	status.clearPersistentEffects("multiplierbonus")
+	status.clearPersistentEffects("dodgebonus")
+	status.clearPersistentEffects("listenerBonus")
+	status.clearPersistentEffects("masteryBonus")
+	self.rapierTimerBonus = 0
+	self.inflictedHitCounter = 0
+	self.timerHammer = 0
 end
