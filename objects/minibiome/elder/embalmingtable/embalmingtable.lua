@@ -35,9 +35,9 @@ local recipes =
 {inputs = { fuhair=1 }, outputs = { fuscienceresource = 5 }, time = 6.0},
 
 --brains
-{inputs = { fubrain=1 }, outputs = { inferiorbrain=1,fuscienceresource=5}, time = 6.0},
-{inputs = { fubrain=1,methanol=1 }, outputs = { brain=1,fuscienceresource=10,fumadnessresource=15}, time = 6.0},
 {inputs = { fubrain=1,methanol=1,liquidhealing=5 }, outputs = { brainpeerless=1,fuscienceresource=25,fumadnessresource=45}, time = 6.0},
+{inputs = { fubrain=1,methanol=1 }, outputs = { brain=1,fuscienceresource=10,fumadnessresource=15}, time = 6.0},
+{inputs = { fubrain=1 }, outputs = { inferiorbrain=1,fuscienceresource=5}, time = 6.0},
 
 --cadavers
 {inputs = { cadaver=1 }, outputs = { fuflesh=1, fuhair=1, fubrain=1, fuscienceresource=120, fumadnessresource=30,fleshstrand=4,liquidblood = 40,}, time = 8.0},
@@ -112,8 +112,11 @@ function getInputContents()
 
 function map(l,f)
     local res = {}
-    for k,v in pairs(l) do
-        res[k] = f(v)
+    for k,v in ipairs(l) do
+        local val = f(v)
+        if val ~= nil then
+          table.insert(res, val)
+        end
     end
     return res
 end
