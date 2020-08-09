@@ -27,7 +27,8 @@ recipeExclusionList = {
 		esoteric = true,
 		esoteric1 = true,
 		esoteric2 = true,
-		esoteric3 = true
+		esoteric3 = true,
+		paintingeasel = true
 	}
 }
 
