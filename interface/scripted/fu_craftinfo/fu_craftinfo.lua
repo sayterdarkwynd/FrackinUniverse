@@ -48,6 +48,7 @@ function init()
 	xenoLab = root.assetJson('/objects/generic/xenostation_recipes.config') -- {inputs}, {outputs}
 	centrifugeLab = root.assetJson("/objects/generic/centrifuge_recipes.config")  -- it's more complicated than the above two & also includes sifter
 	liquidLab = root.assetJson("/objects/power/fu_liquidmixer/fu_liquidmixer_recipes.config")
+	autopsyLab = root.assetJson('/objects/minibiome/elder/embalmingtable/embalmingtable_recipes.config')
 
 	self.matfilter = getFilter()
 	-- script.setUpdateDelta(1) -- is there even a reason for this ? commented out
@@ -88,7 +89,8 @@ function init()
 		"fu_woodensifter",
 		"isn_arcsmelter",
 		"fu_blastfurnace",
-		"fu_liquidmixer"
+		"fu_liquidmixer",
+		"embalmingtable"
 	}
 	recognisedObjectsKey = { -- true is a dummy value, this table was added as a convenience to avoid looping through
 		["quantumextractor"] = true,
@@ -105,7 +107,8 @@ function init()
 		["fu_woodensifter"] = true,
 		["isn_arcsmelter"] = true,
 		["fu_blastfurnace"] = true,
-		["fu_liquidmixer"] = true
+		["fu_liquidmixer"] = true,
+		["embalmingtable"] = true
 	}
 	nearbystationsfound = getNearbyStations() -- this should limit the searching for stations nearby everytime the lists are updated
 	-- however it also means if a new station is added, you need to exit & reenter the lab directory//craftinfo for it to show
@@ -142,6 +145,8 @@ function init()
 		processObjects["fu_blastfurnace"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace } end
 	if found["fu_liquidmixer"] then
 		processObjects["fu_liquidmixer"]		= { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab } end
+	if found["embalmingtable"] then
+		processObjects["embalmingtable"]		= { mats = getExtractionMats, spew = doAutopsy, data = autopsyLab } end
 
 --[[	processObjects = {
 		extractionlab         = { mats = getExtractionMats, spew = doExtraction, data = extractionLab },
@@ -519,6 +524,73 @@ function concatLiquid(list, resultquantity, sep)
 	return out
 end
 
+-- Autopsy Table
+
+function doAutopsy(list, recipes, itemIn, itemOut, objectName)
+	local conf = root.itemConfig({name = objectName})
+	local output = false
+
+	addHeadingItem(conf, list)
+
+	if itemIn then
+		local listresults = {}
+		for index, recipe in pairs(recipes) do
+			if recipe.inputs[itemIn] and isValid(recipe) then
+				if getTableSize(recipe.inputs) > 1 then
+					output = addTextItem("=", concatLiquid(recipe.inputs, nil," & ") .. " >> " .. concatLiquid(recipe.outputs, nil), list)
+				else
+					for item, _ in pairs(recipe.outputs) do
+						listresults[item] = index
+					end
+				end
+			end
+		end
+		if next(listresults) then
+			output = addTextItem("=>", concatExtracted(listresults, recipes, 1, nil, itemIn, true), list)
+		end
+	elseif itemOut then
+		local listresults={}
+		for index, recipe in pairs(recipes) do
+			if recipe.outputs[itemOut] and isValid(recipe) then
+				if getTableSize(recipe.inputs) > 1 then
+					output = addTextItem("=", concatLiquid(recipe.inputs, nil," & ") .. " >> " .. concatLiquid(recipe.outputs, nil), list)
+				else
+					listresults[next(recipe.inputs)] = index
+				end
+			end
+		end
+		if next(listresults) then
+			output = addTextItem("<=", concatExtracted(listresults, recipes, 1, nil, itemOut), list)
+		end
+	end
+
+	if not output then doNothing(itemIn, list) end
+end
+
+function isValid(recipe)
+	if not recipe.inputs or not recipe.outputs then
+		return false
+	end
+	for item, _ in pairs(recipe.inputs) do
+		if materialsMissing[item] then
+			return false
+		end
+	end
+	for item, _ in pairs(recipe.outputs) do
+		if materialsMissing[item] then
+			return false
+		end
+	end
+	return true
+end
+
+function getTableSize(t)
+    local count = 0
+    for _, __ in pairs(t) do
+        count = count + 1
+    end
+    return count
+end
 
 -- Separators and smelters
 
