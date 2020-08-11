@@ -67,13 +67,16 @@ function update(...)
 		if world.entityType(entity.id()) == "player" then --can't send radio messages to nonexistent entities. this is the case when players are loading in.
 			local idiotitem=root.itemConfig("idiotitem") -- FR detection.
 			if idiotitem then
-				world.sendEntityMessage(entity.id(),"queueRadioMessage","fufrdetectedmessage") -- tell them they're a grounded idiot.
+				world.sendEntityMessage(entity.id(),"queueRadioMessage","fu_frdetectedmessage") -- tell them they're a grounded idiot.
 				if (not world.getProperty("ship.fuel")) then
-					player.warp("ownship")
+					queueWarp=true
 				end
 			end
 			didInit=false
 		end
+	elseif queueWarp then
+		player.warp("ownship")
+		queueWarp=false
 	end
 end
 
