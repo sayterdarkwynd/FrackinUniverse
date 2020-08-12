@@ -25,6 +25,13 @@ function MeleeCombo:init()
 	self.weapon:setStance(self.stances.idle)
 	calculateMasteries() --determine any active Masteries
 	end
+	
+	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
+	if (primaryItem and root.itemHasTag(primaryItem, "melee")) and (altItem and root.itemHasTag(altItem, "melee")) then
+		self.energyTotal = (self.energyMax * 0.025)
+	else
+		self.energyTotal = (self.energyMax * 0.01)
+	end
 
 -- **************************************************
 -- FU EFFECTS
@@ -168,6 +175,13 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		fuLoadAnimations(self)
 	end
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
+	
+	--disabling this penalty for now, since instead combo weapons disable combo steps
+	--[[if (status.resource("energy") <= 1) or (status.resourceLocked("energy")) then
+		status.setPersistentEffects("meleeEnergyLowPenalty",{{stat = "powerMultiplier", effectiveMultiplier = 0.75}})
+	else
+		status.clearPersistentEffects("meleeEnergyLowPenalty")
+	end]]
 
 	setupHelper(self, "meleecombo-fire")
     self.hitsListener:update()
@@ -452,6 +466,9 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot) and fireMode == (self.activatingFireMode or self.abilitySlot) then
         self.edgeTriggerTimer = self.edgeTriggerGrace
 	end
+	if (status.resourceLocked("energy")) or (status.resource("energy") <= 1) then
+		self.edgeTriggerTimer = 0.0
+	end
 	self.lastFireMode = fireMode
 
 	if not self.weapon.currentAbility and self:shouldActivate() then
@@ -493,44 +510,43 @@ end
 -- *** FU ------------------------------------
 -- FU adds an encapsulating check in Windup, for energy. If there is no energy to consume, the combo weapon cannot attack
 function MeleeCombo:windup()
+	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
 	if (primaryItem and root.itemHasTag(primaryItem, "melee")) and (altItem and root.itemHasTag(altItem, "melee")) then
-		self.energyTotal = (status.stat("maxEnergy") * 0.025)
+		self.energyTotal = (self.energyMax * 0.025)
 	else
-		self.energyTotal = (status.stat("maxEnergy") * 0.01)
+		self.energyTotal = (self.energyMax * 0.01)
+	end
+	
+	if (self.energyTotal<=0) or (status.resource("energy") <= 1) or (not status.consumeResource("energy",self.energyTotal)) then
+		--disabling this penalty for now, since instead combo weapons disable combo steps
+		--status.setPersistentEffects("meleeEnergyLowPenalty",{{stat = "powerMultiplier", effectiveMultiplier = 0.75}})
+		cancelEffects()
+		self.comboStep = 1
+	else
+		status.clearPersistentEffects("meleeEnergyLowPenalty")
 	end
 
-		if status.resource("energy") <= 1 then
-			status.modifyResource("energy",1)
-			cancelEffects()
-			self.comboStep = 1
+	local stance = self.stances["windup"..self.comboStep]
 
-		end
-		if status.resource("energy") == 1 then
-			cancelEffects()
-		end
-	if status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal)) then
-		local stance = self.stances["windup"..self.comboStep]
+	self.weapon:setStance(stance)
+	self.edgeTriggerTimer = 0
 
-		self.weapon:setStance(stance)
-		self.edgeTriggerTimer = 0
-
-		if stance.hold then
-	        while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
-	            coroutine.yield()
-	        end
-		else
-	        util.wait(stance.duration)
+	if stance.hold then
+		while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
+			coroutine.yield()
 		end
+	else
+		util.wait(stance.duration)
+	end
 
-		if self.energyUsage then
-	        status.overConsumeResource("energy", self.energyUsage)
-		end
+	if self.energyUsage then
+		status.overConsumeResource("energy", self.energyUsage)
+	end
 
-		if self.stances["preslash"..self.comboStep] then
-	        self:setState(self.preslash)
-		else
-	        self:setState(self.fire)
-		end
+	if self.stances["preslash"..self.comboStep] then
+		self:setState(self.preslash)
+	else
+		self:setState(self.fire)
 	end
 end
 
@@ -611,7 +627,6 @@ function MeleeCombo:fire()
 
     self.rapierTimerBonus = 0
 	local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
-
 	local swooshCheckA=self.swooshList[animStateKey] and animStateKey
 	local swooshCheckB=self.swooshList["fire"] and "fire"
 	if swooshCheckA or swooshCheckB then
@@ -705,7 +720,7 @@ end
 
 
 function MeleeCombo:uninit()
-	cancelEffects()
+	cancelEffects(true)
     if self.helper then
         self.helper:clearPersistent()
     end
@@ -714,7 +729,7 @@ function MeleeCombo:uninit()
 	self.weapon:setDamage()
 end
 
-function cancelEffects()
+function cancelEffects(fullClear)
 	status.clearPersistentEffects("longswordbonus")
 	status.clearPersistentEffects("macebonus")
 	status.clearPersistentEffects("katanabonus")
@@ -750,18 +765,15 @@ function fuLoadAnimations(self)
 	else
 		animationData=nil
 	end
-	if animationData then
-		local buffer = animationData.animatedParts and animationData.animatedParts.stateTypes and animationData.animatedParts.stateTypes.swoosh and animationData.animatedParts.stateTypes.swoosh.states
-		for swoosh,_ in pairs(buffer) do
+	if animationData and animationData.animatedParts and animationData.animatedParts.stateTypes and animationData.animatedParts.stateTypes.swoosh and animationData.animatedParts.stateTypes.swoosh.states then
+		for swoosh,_ in pairs(animationData.animatedParts.stateTypes.swoosh.states) do
 			self.swooshList[swoosh]=true
 		end
 	end
 	local animationCustom=config.getParameter("animationCustom")
 	if animationCustom and animationCustom.animatedParts and animationCustom.animatedParts.stateTypes and animationCustom.animatedParts.stateTypes.swoosh and animationCustom.animatedParts.stateTypes.swoosh.states then
-		for swoosh,_ in pairs(animationCustom.animatedParts.stateTypes.swoosh.states) do
-			if type(swoosh) == "table" then
-				self.swooshList[swoosh]=true
-			end
+		for swooshkey,_ in pairs(animationCustom.animatedParts.stateTypes.swoosh.states) do
+			self.swooshList[swooshkey]=true
 		end
 	end
 	self.delayLoad=false

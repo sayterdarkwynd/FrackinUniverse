@@ -40,7 +40,7 @@ function update(dt)
 	    end
 	    if checkBonus then
 		  for key, value in pairs(storage.bonusoutputtable) do
-		    if clearSlotCheck(key) and math.random(1,100) <= value then 
+		    if clearSlotCheck(key) and math.random(0,100) <= value then 
 			  fu_sendOrStoreItems(0, {name = key, count = 1, data = {}}, {0}, true)
 		    end
 		  end

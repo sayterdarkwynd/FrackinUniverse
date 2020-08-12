@@ -14,7 +14,7 @@ armorEffect={
 	{stat = "gasImmunity", amount = 1.0},
 	{stat = "liquidnitrogenImmunity", amount = 1.0},
 	{stat = "biomecoldImmunity", amount = 1.0},
-	{stat = "fallDamageMultiplier", amount = 0.70}
+	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.70}
 }
 
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
