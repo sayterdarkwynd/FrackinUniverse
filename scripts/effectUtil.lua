@@ -28,34 +28,34 @@ function effectUtil.effectOnSource(effect,duration,force)
 end
 
 function effectUtil.messageParticle(position, text, color, size, offset, duration, layer)
-	world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false,  {
-        timeToLive = 0, damageType = "NoDamage", actionOnReap =
-        {
-            {
-                action = "particle",
-                specification = {
-                    text =  text or "default Text",
-                    color = color or {255, 255, 255, 255},  -- white
-                    destructionImage = "/particles/acidrain/1.png",
-                    destructionAction = "fade", --"shrink", "fade", "image" (require "destructionImage")
-                    destructionTime = duration or 0.8,
-                    layer = layer or "front",   -- 'front', 'middle', 'back' 
-                    position = offset or {0, 2},
-                    size = size or 0.7,  
-                    approach = {0,20},    -- dunno what it is
-                    initialVelocity = {0, 0.8},   -- vec2 type (x,y) describes initial velocity
-                    finalVelocity = {0,0.5},
-                    -- variance = {initialVelocity = {3,10}},  -- 'jitter' of included parameter
-                    angularVelocity = 0,                                   
-                    flippable = false,
-                    timeToLive = duration or 2,
-                    rotation = 0,
-                    type = "text"                 -- our best luck
-                }
-            } 
-        }
-    }
-    )
+	world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false, {
+		timeToLive = 0, damageType = "NoDamage", actionOnReap =
+			{
+				{
+					action = "particle",
+					specification = {
+						text =	text or "default Text",
+						color = color or {255, 255, 255, 255},	-- white
+						destructionImage = "/particles/acidrain/1.png",
+						destructionAction = "fade", --"shrink", "fade", "image" (require "destructionImage")
+						destructionTime = duration or 0.8,
+						layer = layer or "front",	 -- 'front', 'middle', 'back' 
+						position = offset or {0, 2},
+						size = size or 0.7,	
+						approach = {0,20},		-- dunno what it is
+						initialVelocity = {0, 0.8},	 -- vec2 type (x,y) describes initial velocity
+						finalVelocity = {0,0.5},
+						-- variance = {initialVelocity = {3,10}},	-- 'jitter' of included parameter
+						angularVelocity = 0,																	 
+						flippable = false,
+						timeToLive = duration or 2,
+						rotation = 0,
+						type = "text"	-- our best luck
+					}
+				} 
+			}
+		}
+	)
 end
 
 function effectUtil.say(sentence)
@@ -94,7 +94,15 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 					rVal=rVal+1
 				end
 			else
-				local teamData=world.entityDamageTeam(id)
+				local valid=entity and entity.isValidTarget and entity.isValidTarget(id)
+				local teamData={}
+				if valid==false then
+					teamData.type="friendly"
+				elseif valid == true then
+					teamData.type="enemy"
+				else
+					teamData=world.entityDamageTeam(id)
+				end
 				if teamData.type==teamType then
 					if effectUtil.effectTarget(id,effect,duration) then
 						rVal=rVal+1
