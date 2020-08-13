@@ -18,7 +18,8 @@ function init()
 		mcontroller.setVelocity({0, 0})
 		mcontroller.controlModifiers({facingSuppressed = true,movementSuppressed = true})
 	end
-	
+	self.usePercent=config.getParameter("usePercent")
+
 	message.setHandler("podPower",podPower)
 	message.setHandler("podSource",podSource)
 end
@@ -33,7 +34,7 @@ function update(dt)
 			mcontroller.setVelocity({0, 0})
 			mcontroller.controlModifiers({facingSuppressed = true,movementSuppressed = true})
 		end
-		
+
 		if capturePromise and capturePromise:finished() and capturePromise:succeeded() and capturePromise:result() then
 			self.pet=capturePromise:result()
 		elseif (not capturePromise) or (capturePromise and capturePromise:finished()) then
@@ -41,9 +42,15 @@ function update(dt)
 		end
 
 		if self and self.isCapturable and self.podPower and not (self.didDamage or self.pet) then
-			--status.setResource("health", math.max(status.resource("health")-(status.resourceMax("health")*self.podPower),1))--alternative scaling: percentage
-			local damage=math.max(0,math.min(self.podPower,status.resource("health")-1.0))
-			if damage >= 1.0 then
+			local damage=0.0
+
+			if self.usePercent then --alternative scaling: percentage
+				damage=math.min(status.resource("health")-1.0,status.resourceMax("health")*self.podPower*0.01)
+			else
+				damage=math.max(0,math.min(self.podPower,status.resource("health")-1.0))
+			end
+
+			if damage > 0.0 then
 				status.applySelfDamageRequest({damageType = "IgnoresDef",damage = damage,damageSourceKind = "default",sourceEntityId = self.podSource})
 			end
 			self.didDamage=true
@@ -74,7 +81,6 @@ function spawnFilledPod(pet)
 end
 
 function podPower(_,_,powerStats)
-	--self.podPower=math.max(0,powerStats.power * powerStats.powerMultiplier * 0.01)--alternative scaling: percentage
 	self.podPower=math.max(0,powerStats.power * powerStats.powerMultiplier)
 	self.didDamage=false
 	return self.podPower
