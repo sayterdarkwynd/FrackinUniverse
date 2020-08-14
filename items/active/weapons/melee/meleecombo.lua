@@ -510,14 +510,14 @@ end
 -- *** FU ------------------------------------
 -- FU adds an encapsulating check in Windup, for energy. If there is no energy to consume, the combo weapon cannot attack
 function MeleeCombo:windup()
-	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
+	self.energyMax = math.max(status.resourceMax("energy"),0) -- due to weather and other cases it is possible to have a maximum of under 0.
 	if (primaryItem and root.itemHasTag(primaryItem, "melee")) and (altItem and root.itemHasTag(altItem, "melee")) then
 		self.energyTotal = (self.energyMax * 0.025)
 	else
 		self.energyTotal = (self.energyMax * 0.01)
 	end
 	
-	if (self.energyTotal<=0) or (status.resource("energy") <= 1) or (not status.consumeResource("energy",self.energyTotal)) then
+	if (status.resource("energy") <= 1) or (not status.consumeResource("energy",self.energyTotal)) then
 		--disabling this penalty for now, since instead combo weapons disable combo steps
 		--status.setPersistentEffects("meleeEnergyLowPenalty",{{stat = "powerMultiplier", effectiveMultiplier = 0.75}})
 		cancelEffects()

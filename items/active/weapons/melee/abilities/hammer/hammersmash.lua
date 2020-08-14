@@ -19,88 +19,85 @@ function HammerSmash:init()
 end
 
 function HammerSmash:windup(windupProgress)
-	self.energyTotal = (status.stat("maxEnergy") * 0.10)
-	if status.resource("energy") <= 1 then
-		status.modifyResource("energy",1)
+	self.energyTotal = math.max(status.stat("maxEnergy") * 0.10,0) -- due to weather and other cases it is possible to have a maximum of under 0.
+	if (status.resource("energy") <= 1) or not (status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal))) then
 		cancelEffects()
+		self.lowEnergy=true
+	else
+		self.lowEnergy=false
 	end
-	if status.resource("energy") == 1 then
-		cancelEffects()
-	end
-	if status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal)) then
 
-		self.weapon:setStance(self.stances.windup)
-		--*************************************
-		-- FU/FR ADDONS
-		setupHelper(self, "hammersmash-fire")
-		--**************************************
-		self.timerHammer = 0--clear the values each time we swing the hammer
-		self.overCharged = 0
+	self.weapon:setStance(self.stances.windup)
+	--*************************************
+	-- FU/FR ADDONS
+	setupHelper(self, "hammersmash-fire")
+	--**************************************
+	self.timerHammer = 0--clear the values each time we swing the hammer
+	self.overCharged = 0
 
-		local windupProgress = windupProgress or 0
-		local bounceProgress = 0
-		while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
-			if windupProgress < 1 then
-				windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
-				self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
-			else
-				bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
-				self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:bounceWeaponAngle(bounceProgress)
-
-		--**************************************
-
-				-- increase "charge" the longer it is held. cannot pass 100.
-				self.bombbonus = (status.stat("bombtechBonus") or 1)
-				mcontroller.controlModifiers({speedModifier = 0.7 + (self.bombbonus/10)}) --slow down when charging
-
-				if self.timerHammer >=100 then --if we havent overcharged but hit 100 bonus, overcharge and reset
-					self.overCharged = 1
-					self.timerHammer = 0
-					status.setPersistentEffects("hammerbonus", {})
-				end
-				if self.overCharged > 0 then --reset if overCharged
-					self.timerHammer = 0
-					status.setPersistentEffects("hammerbonus", {})
-				else
-					if self.timerHammer < 100 then --otherwise, add bonus
-						self.timerHammer = self.timerHammer + 0.5
-						status.setPersistentEffects("hammerbonus", {{stat = "stunChance", amount = ((self.timerHammer * 1.2) * self.hammerMastery) },{stat = "critChance", amount = (self.timerHammer * self.hammerMastery)}})
-					end
-					if self.timerHammer == 100 then	--at 101, play a sound
-						if animator.hasSound("overCharged") then
-							animator.playSound("overCharged")
-						elseif animator.hasSound("groundImpact") then
-							animator.playSound("groundImpact")
-						elseif animator.hasSound("fire") then
-							animator.playSound("fire")
-						end
-						--animator.burstParticleEmitter("charged")
-					end
-					if self.timerHammer == 75 then	--at 75, play a sound
-						if animator.hasSound("charged") then
-							animator.playSound("charged")
-						elseif animator.hasSound("groundImpact") then
-							animator.playSound("groundImpact")
-						elseif animator.hasSound("fire") then
-							animator.playSound("fire")
-						end
-						status.addEphemeralEffects{{effect = "hammerbonus", duration = 0.4}}
-					end
-				end
-		--**************************************
-			end
-			coroutine.yield()
-		end
-
-		if windupProgress >= 1.0 then
-			if self.stances.preslash then
-				self:setState(self.preslash)
-			else
-				self:setState(self.fire)
-			end
+	local windupProgress = windupProgress or 0
+	local bounceProgress = 0
+	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
+		if windupProgress < 1 then
+			windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
+			self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
 		else
-			self:setState(self.winddown, windupProgress)
+			bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
+			self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:bounceWeaponAngle(bounceProgress)
+
+	--**************************************
+
+			-- increase "charge" the longer it is held. cannot pass 100.
+			self.bombbonus = (status.stat("bombtechBonus") or 1)
+			mcontroller.controlModifiers({speedModifier = 0.7 + (self.bombbonus/10)}) --slow down when charging
+
+			if self.lowEnergy or (self.timerHammer >=100) then --if we havent overcharged but hit 100 bonus, overcharge and reset
+				self.overCharged = 1
+				self.timerHammer = 0
+				status.setPersistentEffects("hammerbonus", {})
+			end
+			if self.overCharged > 0 then --reset if overCharged
+				self.timerHammer = 0
+				status.setPersistentEffects("hammerbonus", {})
+			else
+				if self.timerHammer < 100 then --otherwise, add bonus
+					self.timerHammer = self.timerHammer + 0.5
+					status.setPersistentEffects("hammerbonus", {{stat = "stunChance", amount = ((self.timerHammer * 1.2) * self.hammerMastery) },{stat = "critChance", amount = (self.timerHammer * self.hammerMastery)}})
+				end
+				if self.timerHammer == 100 then	--at 101, play a sound
+					if animator.hasSound("overCharged") then
+						animator.playSound("overCharged")
+					elseif animator.hasSound("groundImpact") then
+						animator.playSound("groundImpact")
+					elseif animator.hasSound("fire") then
+						animator.playSound("fire")
+					end
+					--animator.burstParticleEmitter("charged")
+				end
+				if self.timerHammer == 75 then	--at 75, play a sound
+					if animator.hasSound("charged") then
+						animator.playSound("charged")
+					elseif animator.hasSound("groundImpact") then
+						animator.playSound("groundImpact")
+					elseif animator.hasSound("fire") then
+						animator.playSound("fire")
+					end
+					status.addEphemeralEffects{{effect = "hammerbonus", duration = 0.4}}
+				end
+			end
+	--**************************************
 		end
+		coroutine.yield()
+	end
+
+	if windupProgress >= 1.0 then
+		if self.stances.preslash then
+			self:setState(self.preslash)
+		else
+			self:setState(self.fire)
+		end
+	else
+		self:setState(self.winddown, windupProgress)
 	end
 end
 

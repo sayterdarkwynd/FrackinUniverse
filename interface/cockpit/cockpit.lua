@@ -459,10 +459,12 @@ function fuelCost(travel)
 	end
 
     cost = math.min(cost,999999) -- max of 999999 fuel travel
+	
+	cost = math.max(0,util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0)))
 -- end FU fuel cost calculation
 
 
-  return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
+  return cost
 end
 
 function canFlyShip(system)
