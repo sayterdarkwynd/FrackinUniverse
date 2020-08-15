@@ -2,6 +2,11 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 
 function init()
+	-- passive research gain
+	self.researchCount = player.currency("fuscienceresource") or 0
+	self.baseVal = config.getParameter("baseValue") or 1
+    self.timerCounter = 0
+
 	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
 	self.player = entity.id()
@@ -232,8 +237,20 @@ function randomEvent()
 end
 
 function update(dt)
+    self.motionX = mcontroller.xVelocity()
+	--passive research gain
+	--if status.statusProperty("fu_creationDate") then
+	--	self.bonus = status.stat("researchBonus") or 1
+	--	if self.timerCounter >= 1 then
+	--		player.addCurrency("fuscienceresource",1 + self.bonus)
+	--		self.timerCounter = 0
+	--	else
+	--		self.timerCounter = self.timerCounter + 1
+	--	end			
+	--end
+
 	-- we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
-	-- there are better places to put it, bbut this at least keeps it contained
+	-- there are better places to put it, but this at least keeps it contained
 	if (self.timerRemoveAmmoBar >=6) then
 		world.sendEntityMessage(entity.id(),"removeBar","ammoBar")	--clear ammo bar
 		self.timerRemoveAmmoBar = 0
@@ -242,6 +259,7 @@ function update(dt)
 	end
 
 	self.madnessCount = player.currency("fumadnessresource")
+	self.researchCount = player.currency("fuscienceresource") --passive research gain
 
 	-- timing refresh for sculptures, painting effects
 	self.paintTimer = math.max(0,self.paintTimer - dt)
@@ -270,7 +288,7 @@ function update(dt)
 		self.timerDegrade= 60.0 - self.timerDegradePenalty
 		--displayBar()
 	end
-	-- apply bonus loss from anti-madness effects even if not above 500 madness
+	-- apply bonus loss from anti-madness effects even if not above X madness
 	self.bonusTimer = math.max(self.bonusTimer - dt,0)
 	if self.bonusTimer <= 0.0 then
 		self.protectionBonus = status.stat("mentalProtection")/5.0 + math.random(1,12)
