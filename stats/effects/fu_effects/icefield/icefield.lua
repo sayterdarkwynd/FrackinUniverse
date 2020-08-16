@@ -7,16 +7,7 @@ function init()
 end
 
 function update(dt)
-	if (status.stat("iceResistance")<0.75) then
-		effectUtil.effectAllInRange("slow",4)
-	end
---[[
-local distanceFromEntity = world.entityQuery(mcontroller.position(),4)
-  if (status.stat("iceResistance")<0.75) then
-	  for key, value in pairs(distanceFromEntity) do
-	   world.sendEntityMessage(value,"applyStatusEffect","slow")
-	  end  
-  end]]
+	effectUtil.effectAllEnemiesInRange("icySlow",6,1)
 end
 
 function uninit()

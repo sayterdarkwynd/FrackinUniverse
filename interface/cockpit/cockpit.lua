@@ -10,6 +10,8 @@ require "/interface/cockpit/cockpitutil.lua"
 
 function init()
   View:init()
+  self.flyShip = celestial.flyShip
+  celestial.flyShip = flyShip
 
   self.clickEvents = {}
   self.input = {
@@ -457,10 +459,12 @@ function fuelCost(travel)
 	end
 
     cost = math.min(cost,999999) -- max of 999999 fuel travel
+	
+	cost = math.max(0,util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0)))
 -- end FU fuel cost calculation
 
 
-  return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
+  return cost
 end
 
 function canFlyShip(system)
@@ -782,7 +786,7 @@ function universeMoveState(startPosition, systems, toPosition, travel, queued)
     if not player.isAdmin() then
             world.setProperty("ship.fuel", world.getProperty("ship.fuel") - fuelCost(travel.system))
           end
-    flyShip(travel.system, travel.target)
+    celestial.flyShip(travel.system, travel.target)
     while not celestial.skyFlying() do
       coroutine.yield()
     end
@@ -1074,7 +1078,7 @@ function systemScreenState(system, warpIn)
       if isCurrent and compare(self.travel.system, system.location) then
         if self.travel.target then
           if self.travel.target[1] ~= "coordinate" or celestial.visitableParameters(self.travel.target[2]) then
-            flyShip(self.travel.system, self.travel.target)
+            celestial.flyShip(self.travel.system, self.travel.target)
           end
         end
         self.travel = {}
@@ -1281,7 +1285,7 @@ function planetScreenState(planet)
             orbiting = shipLocation[2]
           end
           if orbiting and compare(coordinatePlanet(orbiting), coordinatePlanet(self.travel.target[2])) then
-            flyShip(self.travel.system, self.travel.target)
+            celestial.flyShip(self.travel.system, self.travel.target)
             self.travel = {}
           end
         end
@@ -1358,7 +1362,7 @@ function planetSystemTransition(fromPlanet)
 end
 
 function flyShip(system, target)
-    celestial.flyShip(system, target)
+    self.flyShip(system, target)
 	if target and target[1] == "coordinate" and celestial.visitableParameters(target[2]) then
 		world.setProperty("ship.celestial_type", celestial.visitableParameters(target[2]).typeName)
 	else
