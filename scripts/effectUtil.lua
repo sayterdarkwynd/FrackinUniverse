@@ -94,7 +94,9 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 					rVal=rVal+1
 				end
 			else
-				local valid=entity and entity.isValidTarget and entity.isValidTarget(id)
+				local validTypes=entity and entity.entityType and {monster=true,npc=true,player=true,currentType=entity.entityType()}
+				local valid=validTypes and validTypes[validTypes["currentType"]] and (entity.isValidTarget and entity.isValidTarget(id))
+				--sb.logInfo("%s:%s",valid,validTypes)
 				local teamData={}
 				if valid==false then
 					teamData.type="friendly"
@@ -103,6 +105,7 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 				else
 					teamData=world.entityDamageTeam(id)
 				end
+				
 				if teamData.type==teamType then
 					if effectUtil.effectTarget(id,effect,duration) then
 						rVal=rVal+1
