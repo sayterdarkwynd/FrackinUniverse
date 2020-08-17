@@ -69,12 +69,14 @@ end
 function populateItemList(forceRepop)
 	local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon")
 	local buffer = {}
+	
 	for i = 1, #upgradeableWeaponItems do
-		if not checkWorn(upgradeableWeaponItems[i]) then
+		if (not (upgradeableWeaponItems[i].parameters and upgradeableWeaponItems[i].parameters.currentAugment)) and (not checkWorn(upgradeableWeaponItems[i])) then
 			upgradeableWeaponItems[i].count = 1
 			table.insert(buffer,upgradeableWeaponItems[i])
 		end
 	end
+	
 	upgradeableWeaponItems=buffer
 	buffer={}
 
