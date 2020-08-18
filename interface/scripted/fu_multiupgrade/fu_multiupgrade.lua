@@ -34,13 +34,17 @@ function populateItemList(forceRepop)
 	local upgradableItems={}
 	
 	for i = 1, #upgradeableWeaponItems do
-		upgradeableWeaponItems[i].count = 1
-		table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon"})
+		if not (upgradeableWeaponItems[i].parameters and upgradeableWeaponItems[i].parameters.currentAugment) then
+			upgradeableWeaponItems[i].count = 1
+			table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon"})
+		end
 	end
 	
 	for i = 1, #upgradeableToolItems do
-		upgradeableToolItems[i].count = 1
-		table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool"})
+		if not (upgradeableToolItems[i].parameters and upgradeableToolItems[i].parameters.currentAugment) then
+			upgradeableToolItems[i].count = 1
+			table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool"})
+		end
 	end
 	
 	

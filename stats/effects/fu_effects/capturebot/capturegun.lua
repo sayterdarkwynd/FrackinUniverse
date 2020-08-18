@@ -2,8 +2,15 @@ require "/scripts/util.lua"
 require "/scripts/companions/util.lua"
 
 function init()
-	self.isCapturable=world.callScriptedEntity(entity.id(),"config.getParameter","capturable")
-	if not self.isCapturable or  status.statPositive("captureImmunity") or status.statPositive("specialStatusImmunity") then
+	if world.entityType(entity.id()) ~= "monster" then
+		effect.expire()
+		return
+	end
+	
+	local pass,result=pcall(world.callScriptedEntity,entity.id(),"config.getParameter","capturable")
+	self.isCapturable=pass and result
+	
+	if not self.isCapturable or status.statPositive("captureImmunity") or status.statPositive("specialStatusImmunity") then
 		effect.expire()
 		return
 	end
