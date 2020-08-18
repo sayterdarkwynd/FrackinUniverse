@@ -202,17 +202,6 @@ function build(directory, config, parameters, level, seed)
 	local oldCTooltip = config.tooltipKind
 	local oldPTooltip = parameters.tooltipKind
 
-	if (not parameters.isAmmoBased) or (parameters.ammoLocked == nil) then
-		if (math.random(0,1) > 0.5) and (config.muzzleOffset) then	-- 50% chance for the weapon to be Ammo based or Energy based
-			parameters.isAmmoBased = 1
-			config.tooltipKind = "gun2"
-			parameters.tooltipKind = "gun2"
-		else
-			parameters.isAmmoBased = 0
-		end
-		parameters.ammoLocked = 1 --set it to 1 so this step never repeats
-	end
-
 	if ( parameters.isAmmoBased == 1 ) then -- if its ammo based, we set the relevant data to the tooltip
 		parameters.magazineSizeFactor = valueOrRandom(parameters.magazineSizeFactor, seed, "magazineSizeFactor")
 		parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
@@ -235,6 +224,8 @@ function build(directory, config, parameters, level, seed)
 		end
 	end
 	if (parameters.isAmmoBased == 1) and (newMagSize >= 1) then
+		config.tooltipKind = "gun2"
+		parameters.tooltipKind = "gun2"
 		config.magazineSize = newMagSize
 		config.reloadTime = scaleConfig(parameters.reloadTimeFactor, config.reloadTime) or 0
 		config.tooltipFields.energyPerShotLabel = util.round((energyUsage * fireTime)/2, 1)	-- these weapons have 50% energy cost
