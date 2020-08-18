@@ -196,7 +196,7 @@ function build(directory, config, parameters, level, seed)
 	config.tooltipFields.damagePerShotLabel = util.round(baseDps * fireTime * config.damageLevelMultiplier, 1)
 	config.tooltipFields.energyPerShotLabel = util.round(energyUsage * fireTime, 1)
 
-	-- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***
+	-- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***--and Khe
 	-- FU ADDITIONS
 	parameters.isAmmoBased = configParameter("isAmmoBased")
 	local oldCTooltip = config.tooltipKind
