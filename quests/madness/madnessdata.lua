@@ -60,9 +60,9 @@ function randomEvent()
 	if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal <= status.stat("mentalProtection")) then
 		self.randEvent = self.randEvent - (self.currentProtection * 10) --math.random(10,70)	--it doesnt *remove* the effect, it just moves it further up the list, and potentially off of it.
 	end
-
+	
 	-- are we currently carrying any really weird stuff?
-	isWeirdStuff()
+	isWeirdStuff(self.timer)
 
 	--set duration of curse
 	self.curseDuration = math.min(self.timer,self.madnessCount / 5) --this value will be adjusted based on effect type. Clamping this because it's too much otherwise.
@@ -75,6 +75,7 @@ function randomEvent()
 	self.curseDuration_stat = self.curseDuration * 2.5
 	self.curseDuration_fast = self.curseDuration *0.25
 	status.addEphemeralEffect("mad",self.timer)
+
 
 	if self.randEvent < 0 then --failsafe
 		self.randEvent = 0
@@ -310,46 +311,39 @@ function displayBar()
 end
 
 function checkMadnessArt()
-	if player.hasItem("thehuntpainting") or
-		player.hasItem("demiurgepainting") or
-		player.hasItem("elderhugepainting") then
-		player.addCurrency("fumadnessresource", 5)
+	local greatMadnessArt={"thehuntpainting","demiurgepainting","elderhugepainting"}
+	local hasPainting=false
+	for _,art in pairs(greatMadnessArt) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource", 5)
+			hasPainting=true
+			break
+		end
 	end
-
-	if player.hasItem("dreamspainting") or
-		player.hasItem("fleshpainting") or
-		player.hasItem("homepainting") or
-		player.hasItem("hordepainting") or
-		player.hasItem("nightmarepainting") or
-		player.hasItem("theexpansepainting") or
-		player.hasItem("thefishpainting") or
-		player.hasItem("thepalancepainting") or
-		player.hasItem("theroompainting") or
-		player.hasItem("thingsinthedarkpainting") or
-		player.hasItem("elderpainting1") or
-		player.hasItem("elderpainting2") or
-		player.hasItem("elderpainting3") or
-		player.hasItem("elderpainting4") or
-		player.hasItem("elderpainting5") or
-		player.hasItem("elderpainting6") or
-		player.hasItem("elderpainting7") or
-		player.hasItem("elderpainting8") or
-		player.hasItem("elderpainting9") or
-		player.hasItem("elderpainting10") or
-		player.hasItem("elderpainting11") then
-		player.addCurrency("fumadnessresource", 2)
+	
+	local madnessArt={"dreamspainting","fleshpainting","homepainting","hordepainting","nightmarepainting","theexpansepainting","thefishpainting","thepalancepainting","theroompainting","thingsinthedarkpainting","elderpainting1","elderpainting2","elderpainting3","elderpainting4","elderpainting5","elderpainting6","elderpainting7","elderpainting8","elderpainting9","elderpainting10","elderpainting11"}
+	for _,art in pairs(madnessArt) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource", 2)
+			hasPainting=true
+			break
+		end
 	end
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
+	if hasPainting then
+		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
+	end
+	
 end
 
-function isWeirdStuff()
-	if player.hasItem("faceskin") or
-		player.hasItem("greghead") or
-		player.hasItem("gregnog") or
-		player.hasItem("babyheadonastick") or
-		player.hasItem("greghead") or
-		player.hasItem("meatpickle") then
-		player.addCurrency("fumadnessresource", 2)
+function isWeirdStuff(duration)
+	local weirdStuff={"faceskin","greghead","greggnog","babyheadonastick","meatpickle"}
+	for _,art in pairs(weirdStuff) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource", 2)
+			status.addEphemeralEffect("madnessfoodindicator",duration)
+			break
+		end
 	end
 end
 
