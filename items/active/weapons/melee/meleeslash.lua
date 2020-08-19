@@ -85,7 +85,7 @@ end
 
 -- State: windup
 function MeleeSlash:windup()
-	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
+	self.energyMax = math.max(status.resourceMax("energy"),0) -- due to weather and other cases it is possible to have a maximum of under 0.
 
 	local item
 	if world.entityType(activeItem.ownerEntityId()) then
@@ -99,7 +99,7 @@ function MeleeSlash:windup()
 		self.energyTotal = math.min(math.max(0,(status.resource("energy")-1.0)), (self.energyMax * 0.05))
 	end
 
-	self.lowEnergy=(not status.consumeResource("energy",self.energyTotal)) or (status.resource("energy") <= 1)
+	self.lowEnergy=(status.resource("energy") <= 1) or (not status.consumeResource("energy",self.energyTotal))
 
 	status.clearPersistentEffects("meleeEnergyLowPenalty")
 
