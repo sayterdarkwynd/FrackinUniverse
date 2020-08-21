@@ -280,21 +280,22 @@ function update(dt)
 		end
 	end
 	self.timerDegrade = math.max(self.timerDegrade - dt,0.0) 
+	self.freudBonus = status.stat("freudBonus")
 	--gradually reduce Madness over time
 	if (self.timerDegrade <= 0) then --no more limit to when it can degrade
 		self.timerDegradePenalty = self.timerDegradePenalty or 0.0
 		player.consumeCurrency("fumadnessresource", self.degradeTotal)
-		self.timerDegrade= (60.0 - self.timerDegradePenalty) / status.stat("freudBonus")
+		self.timerDegrade= (60.0 - self.timerDegradePenalty) / (1.0+self.freudBonus)
 		--displayBar()
 	end
 	-- apply bonus loss from anti-madness effects even if not above X madness
 	self.bonusTimer = math.max(self.bonusTimer - dt,0)
 	if self.bonusTimer <= 0.0 then
-		self.protectionBonus = status.stat("mentalProtection")/5.0 + math.random(1,12)
+		self.protectionBonus = status.stat("mentalProtection")* 20 + math.random(1,12)
 		if (status.statPositive("mentalProtection")) then
 			player.consumeCurrency("fumadnessresource", self.protectionBonus)
 		end
-		self.bonusTimer = 40.0 / status.stat("freudBonus")
+		self.bonusTimer = 40.0 / (1.0+self.freudBonus)
 		--displayBar()
 	end
 end
