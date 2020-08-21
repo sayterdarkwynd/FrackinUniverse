@@ -16,7 +16,7 @@ function update(dt)
 	self.randVal = self.baseVal * self.valBonus
 	self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking
 	if world.entityType(entity.id())=="player" then
-		if self.myspeed < 1 then
+		if self.myspeed == 0 then
 			if self.afk > 300 then -- do not go higher than this value
 				self.afk = 300
 			end
@@ -39,12 +39,11 @@ end
 
 function checkSpeed()
 	self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking
-	if self.myspeed < 2 then
+	if self.myspeed == 0 then
 		if self.afk > 200 then -- do not go higher than this value
 			self.afk = 200
 		end
 		self.afk = self.afk + 1
-		sb.logInfo(self.afk)
 	else
 		self.afk = self.afk -2	--movement decrements the penalty
 	end
