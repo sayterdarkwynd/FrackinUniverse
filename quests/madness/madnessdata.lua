@@ -156,9 +156,7 @@ function randomEvent()
 			status.addEphemeralEffect("jumpboost25neg",self.curseDuration_status) -- You suddenly suck at jumping
 			player.radioMessage("madness2")
 		elseif (self.randEvent >= 46 and self.randEvent <= 52) then
-			status.setPersistentEffects("madnessEffectsMain", {{stat = self.resistList[math.random(1,#self.resistList)], amount = ((math.random()>0.75 and 1) or (-1))*math.random(1,20)/100.0}}) -- pick one from all available resistances, and reduce it by 1-X%. was 100, but that's too much.
-			--old formula. it's whack. with 0 res, it could do nothing or give -100...at 100 it could do nothing or increase it to 200. at 50? double or reduce to nil. at -60? -60 to -160 (leaving you at -120 to -220).
-			--status.setPersistentEffects("madnessEffectsMain", {{stat = resist, amount = status.stat(resist)-penaltyValue}})
+			status.setPersistentEffects("madnessEffectsMain", {{stat = self.resistList[math.random(1,#self.resistList)], amount = ((math.random()>0.75 and 1) or (-1))*math.random(1,20)/100.0}}) -- pick one from all available resistances, and reduce it by 1-X%
 		end
 	end
 	if self.madnessCount > 200 then
@@ -281,12 +279,12 @@ function update(dt)
 			self.degradeTotal = 1
 		end
 	end
-	self.timerDegrade = math.max(self.timerDegrade - dt,0.0)
+	self.timerDegrade = math.max(self.timerDegrade - dt,0.0) 
 	--gradually reduce Madness over time
 	if (self.timerDegrade <= 0) then --no more limit to when it can degrade
 		self.timerDegradePenalty = self.timerDegradePenalty or 0.0
 		player.consumeCurrency("fumadnessresource", self.degradeTotal)
-		self.timerDegrade= 60.0 - self.timerDegradePenalty
+		self.timerDegrade= (60.0 - self.timerDegradePenalty) / status.stat("freudBonus")
 		--displayBar()
 	end
 	-- apply bonus loss from anti-madness effects even if not above X madness
@@ -296,7 +294,7 @@ function update(dt)
 		if (status.statPositive("mentalProtection")) then
 			player.consumeCurrency("fumadnessresource", self.protectionBonus)
 		end
-		self.bonusTimer = 40.0
+		self.bonusTimer = 40.0 / status.stat("freudBonus")
 		--displayBar()
 	end
 end
@@ -316,6 +314,7 @@ function checkMadnessArt()
 	for _,art in pairs(greatMadnessArt) do
 		if player.hasItem(art) then
 			player.addCurrency("fumadnessresource", 5)
+			player.radioMessage("crazycarry")
 			hasPainting=true
 			break
 		end
@@ -325,6 +324,7 @@ function checkMadnessArt()
 	for _,art in pairs(madnessArt) do
 		if player.hasItem(art) then
 			player.addCurrency("fumadnessresource", 2)
+			player.radioMessage("crazycarry")
 			hasPainting=true
 			break
 		end
@@ -342,6 +342,7 @@ function isWeirdStuff(duration)
 		if player.hasItem(art) then
 			player.addCurrency("fumadnessresource", 2)
 			status.addEphemeralEffect("madnessfoodindicator",duration)
+			player.radioMessage("crazycarry")
 			break
 		end
 	end
