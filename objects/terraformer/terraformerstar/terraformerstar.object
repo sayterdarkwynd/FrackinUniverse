@@ -1,0 +1,59 @@
+{
+  "objectName" : "terraformerstar",
+  "colonyTags" : [],
+  "rarity" : "Legendary",
+  "description" : "A modified terraformer to make a star-like landscape. ^#c80000;WARNING: HIGHLY UNPREDICTABLE^white;",
+  "shortdescription" : "Astral Terraformer",
+  "race" : "ancient",
+  "category" : "terraformer",
+  "price" : 5000,
+  "printable" : false,
+
+  "inventoryIcon" : "terraformericon_star.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "terraformerfullbright_star.png:inactive", "fullbright" : true }, { "image" : "terraformer.png:inactive" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "terraformerfullbright_star.png:inactive", "fullbright" : true }, { "image" : "terraformer.png:inactive" } ],
+      "imagePosition" : [-16, 0],
+
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "health" : 8,
+  "rooting" : true,
+
+  "animation" : "terraformer.animation",
+  "animationPosition" : [-16, 0],
+  "animationParts" : {
+    "base" : "terraformer.png",
+    "baseFullbright" : "terraformerfullbright_star.png",
+    "beam" : "/beam/terraformer_beam_star.png"
+  },
+
+  "scripts" : ["terraformer.lua"],
+  "scriptDelta" : 10,
+
+  "terraformOffset" : [-15, 0],
+
+  "minPregenerateTime" : 5,
+  "basePregenerateTime" : 10,
+  "pregenerateTimePerTile" : 0.1,
+
+  "planetTypeChangeThreshold" : 0.5,
+
+  "terraformBiome" : "star",
+  "terraformPlanetType" : "midnight"
+}
