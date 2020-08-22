@@ -315,7 +315,9 @@ function checkMadnessArt()
 	for _,art in pairs(greatMadnessArt) do
 		if player.hasItem(art) then
 			player.addCurrency("fumadnessresource", 5)
-			player.radioMessage("crazycarry")
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
+		    end
 			hasPainting=true
 			break
 		end
@@ -325,7 +327,9 @@ function checkMadnessArt()
 	for _,art in pairs(madnessArt) do
 		if player.hasItem(art) then
 			player.addCurrency("fumadnessresource", 2)
-			player.radioMessage("crazycarry")
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
+		    end
 			hasPainting=true
 			break
 		end
@@ -343,7 +347,9 @@ function isWeirdStuff(duration)
 		if player.hasItem(art) then
 			player.addCurrency("fumadnessresource", 2)
 			status.addEphemeralEffect("madnessfoodindicator",duration)
-			player.radioMessage("crazycarry")
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
+		    end
 			break
 		end
 	end
