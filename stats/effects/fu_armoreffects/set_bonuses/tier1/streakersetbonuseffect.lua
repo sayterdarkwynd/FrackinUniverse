@@ -56,7 +56,9 @@ function loadElemental(capeLevel)
 			table.insert(buffer,{stat=stat,effectiveMultiplier=1.0+(capeLevel*0.1)})
 		end
 		
-		threatLevel=threatLevel+(capeLevel*0.5)
+		--sb.logInfo("a tl %s, cl %s",threatLevel,capeLevel)
+		threatLevel=threatLevel*(1+(capeLevel*0.5))
+		--sb.logInfo("b tl %s, cl %s",threatLevel,capeLevel)
 	elseif lastCapeLevel and lastCapeLevel>0 then
 		status.setResource("breath",0)
 		table.insert(buffer,{stat="breathRegenerationRate",effectiveMultiplier=0})
