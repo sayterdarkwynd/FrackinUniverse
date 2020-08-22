@@ -109,7 +109,8 @@ end
 function update(dt)
 	if not storage.questStarted then
 		if storage.queueStart then
-			questStart()
+			--questStart()
+			storage.questStarted=true
 			storage.queueStart=false
 		elseif storage.queueFail then
 			quest.setFailureText("Due to code changes from an exploit fix you need to pick up the quest again. Sorry for the inconvenience. -Kherae")
