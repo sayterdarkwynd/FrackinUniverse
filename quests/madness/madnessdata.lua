@@ -280,7 +280,7 @@ function update(dt)
 		end
 	end
 	self.timerDegrade = math.max(self.timerDegrade - dt,0.0) 
-	self.freudBonus = status.stat("freudBonus")
+	self.freudBonus = math.max(status.stat("freudBonus"),-0.8) -- divide by zero is bad. as this approaches -1, the timer approaches infinity. -0.5 turns the timer into 80s instead of 40s. cappin it at -0.8, which is 400s or 10x
 	--gradually reduce Madness over time
 	if (self.timerDegrade <= 0) then --no more limit to when it can degrade
 		self.timerDegradePenalty = self.timerDegradePenalty or 0.0
