@@ -7,8 +7,10 @@ local checkingMod = "ztarbound"
 zbInited = false
 zbUninited = false
 
-function init()
-	origInit()
+function init(...)
+	if origInit then
+		origInit(...)
+	end
 	if zbInited then return end
 	zbInited = true
 	
@@ -69,8 +71,10 @@ function updateInfoWindow()
 	end
 end
 
-function uninit()
-	origUninit()
+function uninit(...)
+	if origUninit then
+		origUninit(...)
+	end
 	if zbUninited then return end
 	zbUninited = true
 	

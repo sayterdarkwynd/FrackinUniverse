@@ -7,7 +7,7 @@
 		{ "stat": "shadowResistance", "amount": -0.1 }
 	],   // Omnivores, but these like fish!
 	"diet" : [ { "ORGANIC" : false, "FISH" : true }, { "MEAT_RAW" : true } ],
-	"special" : ["swimboost1"],
+	
 	"envEffects": [
 		{
 			"biomes": [ "ocean", "oceanfloor" ],
@@ -93,17 +93,19 @@
 			}
 		}
 	],
+
+	"special" : ["swimboost1"],
 	"liquidEffects": [
-		{
-			"controlModifiers" : {
-				"liquidImpedance" : 0.3,
-				"liquidForce" : 130,
-				"liquidJumpProfile" : {
-					"jumpSpeed" : 70.0
-				},
-				"speedModifier" : 1.8
-			}
-		},
+		//{
+		//	"controlModifiers" : {
+		//		"liquidImpedance" : 0.2,
+		//		"liquidForce" : 100,
+		//		"liquidJumpProfile" : {
+		//			"jumpSpeed" : 70.0
+		//		},
+		//		"speedModifier" : 1.15
+		//	}
+		//},
 		{
 			"liquids": [ "water", "healingwater", "wastewater", "swampwater" ],
 			"stats": [

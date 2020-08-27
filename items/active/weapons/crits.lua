@@ -2,19 +2,18 @@ Crits = {}
 
 function Crits:setCritDamage(damage)
     local critChance = config.getParameter("critChance", 1) + status.stat("critChance", 0)  -- Integer % chance to activate crit
-    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus", 0)     -- Flat damage bonus to critical hits
-    local critDamage = status.stat("critDamage", 0)  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
-
+    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus", 0)     --  % damage bonus to critical hits
+    local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
+	--status.stat ONLY accepts ONE argument. and returns 0.0 if it is not found
 	local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
-
     -- Magnorbs get an inherent +1% crit chance
     if heldItem and root.itemHasTag(heldItem, "magnorb") then
         critChance = critChance + 1
     end
 
-	local crit = math.random(100) <= critChance            -- Chance out of 100
+	local crit = math.random(100) <= critChance -- Chance out of 100
 
-    -- Crit damage bonus is 50% + critDamage%, with a flat damage increase of critBonus
+    -- Crit damage bonus is 50% + critDamage%
 	damage = crit and (damage * (1.5 + critDamage) + critBonus) or damage -- Inherent 50% damage boost further increased by critBonus
 
 	if crit then
@@ -28,9 +27,6 @@ function Crits:setCritDamage(damage)
                     damage = damage + math.random(10) + 2  -- 1d10 + 2 bonus damage
                 end
 
-
-				--disabled because eyesore
-                --status.addEphemeralEffect("crithit", 0.3, activeItem.ownerEntityId())
                 -- *****************************************************************
                 --	weapon specific crit abilities!
                 -- *****************************************************************

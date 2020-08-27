@@ -2,7 +2,7 @@ require "/scripts/util.lua"
 
 function init()
   script.setUpdateDelta(5)
-	if not world.entitySpecies(entity.id()) then return end
+	if not world.entityType(entity.id()) then return end
   animator.setParticleEmitterOffsetRegion("sparks", mcontroller.boundBox())
   animator.setParticleEmitterActive("sparks", true)
   effect.setParentDirectives("fade=7733AA=0.25")

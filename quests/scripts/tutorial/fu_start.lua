@@ -84,7 +84,7 @@ function updateStage(dt)
     end
   elseif self.missionStage == 3 then
     if hasElectromagnet() then
-      player.consumeItem("electromagnet")
+      player.consumeItem("electromagnet")     
       setStage(4)
     end
   elseif self.missionStage == 4 then

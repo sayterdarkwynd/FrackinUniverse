@@ -6,6 +6,7 @@ function init()
   local bounds = mcontroller.boundBox()
   self.healingRate = 1.01 / config.getParameter("healTime", 420)
   script.setUpdateDelta(10)
+  self.healTime=config.getParameter("healTime", 180)
 end
 
 
@@ -13,16 +14,16 @@ function activateVisualEffects()
   local lightLevel = getLight()
   if lightLevel <= 25 then
     animator.setParticleEmitterOffsetRegion("blood", mcontroller.boundBox())
-    animator.setParticleEmitterActive("blood", true)  
+    animator.setParticleEmitterActive("blood", true)
   end
 
 end
-  
+
 function getLight()
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
   position[2] = math.floor(position[2])
-  local lightLevel = world.lightLevel(position)
+  local lightLevel = math.min(world.lightLevel(position),1.0)
   lightLevel = math.floor(lightLevel * 100)
   return lightLevel
 end
@@ -32,7 +33,7 @@ function nighttimeCheck()
 end
 
 function undergroundCheck()
-	return world.underground(mcontroller.position()) 
+	return world.underground(mcontroller.position())
 end
 
 function update(dt)
@@ -40,36 +41,15 @@ function update(dt)
   underground = undergroundCheck()
   local lightLevel = getLight()
   if nighttime or underground then
-	if lightLevel <= 1 then
-	    self.healingRate = 1.01 / config.getParameter("healTime", 180)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	elseif lightLevel <= 2 then
-	    self.healingRate = 1.008 / config.getParameter("healTime", 200)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	elseif lightLevel <= 5 then
-	    self.healingRate = 1.007 / config.getParameter("healTime", 220)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	elseif lightLevel <= 7 then
-	    self.healingRate = 1.006 / config.getParameter("healTime", 240)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	elseif lightLevel <= 12 then
-	    self.healingRate = 1.005 / config.getParameter("healTime", 280)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	elseif lightLevel <= 15 then
-	    self.healingRate = 1.004 / config.getParameter("healTime", 320)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	elseif lightLevel <= 18 then
-	    self.healingRate = 1.003 / config.getParameter("healTime", 350)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	elseif lightLevel <= 22 then
-	    self.healingRate = 1.002 / config.getParameter("healTime", 380)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	elseif lightLevel <= 25 then
-	    self.healingRate = 1.001 / config.getParameter("healTime", 420)
-	    status.modifyResourcePercentage("health", self.healingRate * dt)
-	end  
+    if lightLevel <= 25 then
+	  self.healingRate=((((26.0-lightLevel)/125.0)+1.0)/self.healTime)
+	else
+	  self.healingRate=0.0
+	end
+	--sb.logInfo("darkheal:"..lightLevel..":"..(self.healingRate*dt)..":".. math.max(0,1+status.stat("healingBonus"))..":"..(self.healingRate * dt * math.max(0,1+status.stat("healingBonus"))))
+	status.modifyResourcePercentage("health", self.healingRate * dt * math.max(0,1+status.stat("healingBonus")))
   end
-		
+
 end
 
 function uninit()

@@ -47,7 +47,7 @@ function FRHelper:call(args, main, dt, ...)
 			if hungerEnabled then
 				status.modifyResourcePercentage("food", nightConfig.hungerLoss * dt)
 			end
-			status.modifyResourcePercentage("health", nightConfig.regen * dt)
+			status.modifyResourcePercentage("health", nightConfig.regen * dt * math.max(0,1+status.stat("healingBonus")))
 		end
 	else
 	-- Daytime Abilities
@@ -61,7 +61,7 @@ function FRHelper:call(args, main, dt, ...)
 		--special handling for NPCs, to prevent immortality
 		if not (world.isNpc(entity.id()) and status.resource("health") < 1) then
 			if hungerPerc >= dayConfig.minHunger then
-				status.modifyResourcePercentage("health", regenCalc * dt)
+				status.modifyResourcePercentage("health", regenCalc * dt * math.max(0,1+status.stat("healingBonus")))
 			end
 		else
 			status.setResource("health",0)

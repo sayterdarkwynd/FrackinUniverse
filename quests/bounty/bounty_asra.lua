@@ -4,17 +4,17 @@ local asraFixQuestComplete=questComplete
 local asraFixQuestStart=questStart
 local asraFixQuestFail=questFail
 
-function questStart()
-	if asraFixQuestStart then asraFixQuestStart() end
+function questStart(...)
+	if asraFixQuestStart then asraFixQuestStart(...) end
 	player.startQuest("fu_asraNoxSailFix")
 end
 
-function questFail(abandoned)
+function questFail(...)
     world.sendEntityMessage(entity.id(),"swansongFailed")
-	if asraFixQuestFail then asraFixQuestFail() end
+	if asraFixQuestFail then asraFixQuestFail(...) end
 end
 
-function questComplete()
+function questComplete(...)
 	world.sendEntityMessage(entity.id(),"swansongComplete")
-	if asraFixQuestComplete then asraFixQuestComplete() end
+	if asraFixQuestComplete then asraFixQuestComplete(...) end
 end

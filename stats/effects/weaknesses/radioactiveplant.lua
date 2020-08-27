@@ -56,7 +56,7 @@ end
 function applyEffects()
     self.appliedHeal = self.healthRegen + self.xiBonus
     self.appliedHunger = 1.08 + self.xiBonus
-    status.setPersistentEffects("floranpower1", { {stat = "healthRegen", amount = self.appliedHeal },{stat = "foodDelta", effectiveMultiplier = -self.appliedHunger} })
+    status.setPersistentEffects("floranpower1", { {stat = "healthRegen", amount = self.appliedHeal*math.max(0,1+status.stat("healingBonus")) },{stat = "foodDelta", effectiveMultiplier = -self.appliedHunger} })
 
     --radiens dont get full when near these plants. eat up!
     if status.isResource("food") then

@@ -9,7 +9,8 @@ local valueList={
 	swimmingLeft={-0.675,-0.7},
 	swimmingRight={0.675,-0.7},
 	walkingLeft={-0.6,-1.3},
-	walkingRight={0.6,-1.3}
+	walkingRight={0.6,-1.3},
+	lounging={0,0.75}
 }
 
 function init()
@@ -17,10 +18,11 @@ function init()
 		catInit()
 	end
 	delayedInit=0
+	eType=world.entityType(entity.id())
 end
 
 function update(dt)
-	catMouthOffset(getSpecies())
+	catMouthOffset(dt,getSpecies())
 	if catUpdate then
 		catUpdate(dt)
 	end
@@ -31,9 +33,27 @@ function getSpecies()
 	return self.species
 end
 
-function catMouthOffset(species)
+function catMouthOffset(dt,species)
+	if eType=="player" then
+		if loungeQuery then
+			if loungeQuery:finished() then
+				if loungeQuery:succeeded() then
+					lounging=loungeQuery:result()
+				end
+				loungeQuery=nil
+			end
+		else
+			if loungeQueryTimer and loungeQueryTimer >= 1.0 then
+				loungeQueryTimer=0.0
+				loungeQuery=world.sendEntityMessage(entity.id(),"player.isLounging")
+			else
+				loungeQueryTimer=(loungeQueryTimer or 0)+dt
+			end
+		end
+	end
 	if delayedInit and delayedInit < 3 then
 		if species == "cat" then
+			if not eType then eType=world.entityType(entity.id()) end
 			status.setStatusProperty("mouthPosition", valueList["walkingLeft"])
 			status.setPersistentEffects("CatPersistantEffects",{{stat = "fallDamageMultiplier", effectiveMultiplier = 0.70}})
 			delayedInit=nil
@@ -51,7 +71,10 @@ function catMouthOffset(species)
 			local swimming=mcontroller.liquidMovement()
 			local facing=mcontroller.facingDirection()
 			local catMouthPos=valueList["walkingLeft"]
-			if swimming then
+			if lounging then
+				catMouthPos=valueList["lounging"]
+				mouthPos=catMouthPos
+			elseif swimming then
 				if facing<0 then
 					catMouthPos=valueList["swimmingLeft"]
 					mouthPos=catMouthPos

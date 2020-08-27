@@ -1,6 +1,6 @@
 require "/scripts/fu_storageutils.lua"
 require "/scripts/KheAA/transferUtil.lua"
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 
 
 -- list of items to exlude from prototyping
@@ -27,7 +27,8 @@ recipeExclusionList = {
 		esoteric = true,
 		esoteric1 = true,
 		esoteric2 = true,
-		esoteric3 = true
+		esoteric3 = true,
+		paintingeasel = true
 	}
 }
 

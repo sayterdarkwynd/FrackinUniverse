@@ -1,4 +1,4 @@
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 
 function init()
 	heat = config.getParameter('heat')

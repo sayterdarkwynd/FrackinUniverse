@@ -2,11 +2,7 @@
 	"stats": [
 		{
 			"stat": "foodDelta",
-			"effectiveMultiplier": 1.25
-		},
-		{
-			"stat": "healthRegen",
-			"amount": 1
+			"baseMultiplier": 1.25
 		},
 		{
 			"stat": "slimeImmunity",
@@ -22,7 +18,7 @@
 		},
 		{
 			"stat": "fallDamageMultiplier",
-			"baseMultiplier": 0.85
+			"effectiveMultiplier": 0.85
 		},
 		{
 			"stat": "electricResistance",
@@ -63,7 +59,7 @@
 			],
 			"stats": [{
 				"stat": "maxHealth",
-				"baseMultiplier": 0.75
+				"effectiveMultiplier": 0.75
 			}],
 			"controlModifiers": {
 				"speedModifier": 1.15
@@ -77,7 +73,7 @@
 			],
 			"stats": [{
 				"stat": "maxHealth",
-				"baseMultiplier": 1.25
+				"effectiveMultiplier": 1.25
 			}],
 			"controlModifiers": {
 				"speedModifier": 1.15
@@ -90,7 +86,7 @@
 			],
 			"stats": [{
 					"stat": "powerMultiplier",
-					"baseMultiplier": 1.2
+					"effectiveMultiplier": 1.2
 				},
 				{
 					"stat": "protection",
@@ -104,14 +100,22 @@
 			],
 			"stats": [{
 					"stat": "powerMultiplier",
-					"baseMultiplier": 1.15
+					"effectiveMultiplier": 1.15
 				},
 				{
 					"stat": "critDamage",
-					"amount": 2
+					"amount": 0.2
 				}
 			]
 		}
 	],
-	"special": []
+	"special": [],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/healthRegen.lua",
+			"args" : {
+				"healingRate" : 0.01
+			}
+		}
+	]
 }

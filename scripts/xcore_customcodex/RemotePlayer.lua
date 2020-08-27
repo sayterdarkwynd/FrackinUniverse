@@ -6,9 +6,9 @@ require("/scripts/xcore_customcodex/LearnCodexRoutine.lua") -- Defines LearnCode
 
 local OldInit = init
 
-function init()
+function init(...)
 	if OldInit then
-		OldInit()
+		OldInit(...)
 	end
 	message.setHandler("xcodexLearnCodex", localHandler(LearnCodex))
 end

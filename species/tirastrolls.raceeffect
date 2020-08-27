@@ -6,7 +6,7 @@
 		},
 		{
 			"stat": "maxHealth",
-			"baseMultiplier": 1.1
+			"effectiveMultiplier": 1.1
 		},
 		{
 			"stat": "poisonResistance",
@@ -32,10 +32,14 @@
 			"stats": [{
 					"stat": "protection",
 					"amount": 8
-				},
+				}
+			],
+			"scripts" : [
 				{
-					"stat": "healthRegen",
-					"amount": 0.3
+					"script" : "/scripts/fr_scripts/healthRegen.lua",
+					"args" : {
+						"healingRate" : 0.003
+					}
 				}
 			]
 		},
@@ -48,7 +52,7 @@
 			],
 			"stats": [{
 				"stat": "powerMultiplier",
-				"baseMultiplier": 1.125
+				"effectiveMultiplier": 1.125
 			}]
 		}
 	],
@@ -61,7 +65,7 @@
 		],
 		"stats": [{
 				"stat": "maxHealth",
-				"baseMultiplier": 1.05
+				"effectiveMultiplier": 1.05
 			},
 			{
 				"stat": "protection",

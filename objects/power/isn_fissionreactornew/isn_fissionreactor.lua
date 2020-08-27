@@ -1,5 +1,5 @@
 require "/scripts/kheAA/transferUtil.lua"
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 require "/scripts/effectUtil.lua"
 
 function init()
@@ -41,6 +41,10 @@ function onInputNodeChange(args)
 	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
 end
 
+function onNodeConnectionChange(args)
+	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
+end
+
 
 
 function update(dt)
@@ -61,6 +65,7 @@ function update(dt)
 	if (not storage.active) or (not storage.active2) then
 		storage.radiation = math.max(storage.radiation - dt*5,0)
 		animator.setAnimationState("screen", "off")
+		power.setPower(0)
 		power.update(dt)
 		return
 	end

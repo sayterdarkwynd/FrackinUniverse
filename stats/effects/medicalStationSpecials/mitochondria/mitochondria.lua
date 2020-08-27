@@ -13,7 +13,7 @@ function update(dt)
 		local health = status.resource("health")
 		if health < status.resourceMax("health") then
 			if status.consumeResource("energy", self.energyToHealth) then
-				status.giveResource("health", 1)
+				status.giveResource("health", 1*math.max(0,1+status.stat("healingBonus")))
 			end
 			
 			status.setResourcePercentage("energyRegenBlock", 1)

@@ -23,14 +23,34 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld)
+  --*************************************
+  -- FU/FR ADDONS
+  if not self.species or not self.species:succeeded() then
+    self.species = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
+  end
+  if not self.helper and self.species:succeeded() then
+    self.helper = FRHelper:new(self.species:result())
+    self.helper:loadWeaponScripts("bow-update")
+  end
+
+  if self.helper then
+    self.helper:clearPersistent()
+    self.helper:runScripts("bow-update", self, dt, fireMode, shiftHeld)
+  end
+  --**************************************  
   self.weapon:update(dt, fireMode, shiftHeld)
   --*************************************
   -- FU/FR ADDONS
-  setupHelper(self, "bow-update")
-  if self.helper then
-    self.helper:loadWeaponScripts("bow-update")
-  end
+  --if not self.species or not self.species:succeeded() then
+  --  self.species = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
+  --end
+  
+  --setupHelper(self, "bow-update")
+  --if self.helper then
+  --  self.helper:loadWeaponScripts("bow-update")
+  --end
   --************************************** 
+
 end
 
 function uninit()

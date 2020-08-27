@@ -2,6 +2,12 @@ require "/scripts/util.lua"
 require "/scripts/status.lua"
 require "/scripts/FRHelper.lua"
 
+
+-- to-to : move stats for always-on effects to an array
+-- and do the same for raised-only stats/effect
+-- investigate bash chance math
+-- current system really doesn't do a good job of handling stats that exist only on the item and stats that exist globally on the player
+
 function init()
 	self.debug = false
 	if self.debug then sb.logInfo("(FR) shield.lua init() for %s", activeItem.hand()) end
@@ -84,11 +90,8 @@ function init()
 	stunChance = config.getParameter("stunChance", 0)
 	shieldBash = config.getParameter("shieldBash",0)
 	shieldBashPush = config.getParameter("shieldBashPush",0)
-
- 	        --shieldBonusApply()
+ 	--shieldBonusApply()
 	-- end FU special effects
-        
-
 
 	animator.setGlobalTag("directives", "")
 	animator.setAnimationState("shield", "idle")
@@ -163,19 +166,17 @@ function isShield(name) -- detect if they have a shield equipped for racial tag 
 end
 
 function update(dt, fireMode, shiftHeld)
-shieldBonusApplyPartial()
+
+    shieldBonusApplyPartial()
+
     if not self.species:succeeded() then init() end
     if self.helper then self.helper:runScripts("shield-update", self, dt, fireMode, shiftHeld) end
 
-    --**************************************
-
 	self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
 
-	--**************************************	setting default
 	if self.blockCountShield == nil then
         self.blockCountShield = 0
 	end
-	--**************************************
 
 	if not self.active and fireMode == "primary" and self.cooldownTimer == 0 and status.resourcePositive("shieldStamina") then
         raiseShield()
@@ -185,13 +186,10 @@ shieldBonusApplyPartial()
         self.activeTimer = self.activeTimer + dt
 
         self.damageListener:update()
-
 	
         -- ************************************** FU SPECIALS **************************************
         status.modifyResourcePercentage("health", self.shieldHealthRegen * dt)
         -- *****************************************************************************************
-
-
 
         if status.resourcePositive("perfectBlock") then
             animator.setGlobalTag("directives", self.perfectBlockDirectives)
@@ -261,7 +259,9 @@ function raiseShield()
 	status.setPersistentEffects(activeItem.hand().."Shield", {{stat = "shieldHealth", amount = shieldHealth()}})
 	local shieldPoly = animator.partPoly("shield", "shieldPoly")
 	activeItem.setItemShieldPolys({shieldPoly})
-        shieldBonusApply()
+    
+    shieldBonusApply()
+    
 	if self.knockback > 0 then
         local knockbackDamageSource = {
             poly = shieldPoly,
@@ -284,7 +284,7 @@ function raiseShield()
     	for _,notification in pairs(notifications) do
             if notification.hitType == "ShieldHit" then
                 -- *** set up shield bash values *** --
-                self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash",0)
+                self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash")
                 if not status.resource("energy") then
                     self.energyval= 0
                 else
@@ -304,9 +304,9 @@ function raiseShield()
 						animator.burstParticleEmitter("perfectBlock")
 					end
 
-
                     -- *******************************************************
                     self.blockCountShield = self.blockCountShield + 1
+
                     -- *******************************************************
                     -- Begin racial Perfect Blocking scripts
                     -- *******************************************************
@@ -354,16 +354,16 @@ function bashEnemy()
     if self.raisedhelper then self.raisedhelper:runScripts("shield-bash", self) end
 
 	-- lets limit how much damage they can do
-	self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.random(6) + (status.stat("shieldBashBonus",0))
+	self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.random(6) + (status.stat("shieldBashBonus"))
 
 	if status.resourcePositive("perfectBlock") then
-        self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
+        self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 6
 		if self.stunValue >=100 then
             local params2 = { speed=20, power = 0 , damageKind = "default", knockback = 0 } -- Stun
             world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params2)
 		end
 	else
-		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 2
+		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 2
 	end
     local params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash
     world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)

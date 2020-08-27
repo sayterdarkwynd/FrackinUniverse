@@ -62,12 +62,12 @@ function init()
 end
 
 function applyBonusSpeed() --apply Speed Booost
-  self.boostAmount = status.stat("boostAmount",1)
+  self.boostAmount = status.stat("boostAmount")
   if self.boostAmount > 2.5 then
     self.boostAmount = 2.5
   end
   
-  self.finalValue = self.baseSpeed * (status.stat("boostAmount",1) or 1)  
+  self.finalValue = self.baseSpeed * (status.stat("boostAmount") or 1)  
   
 end
 

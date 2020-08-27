@@ -29,15 +29,14 @@ function update(dt)
 
   self.tickTimer = self.tickTimer - dt
 
-  self.baseModifier = status.stat("fireResistance",0)
-  if status.stat("fireResistance",0) >= 60.0 then
+  self.baseModifier = status.stat("fireResistance")
+  if self.baseModifier >= 0.6 then
     self.baseModifier = 2.5
-  elseif status.stat("fireResistance",0) >= 40.0 then
+  elseif self.baseModifier >= 0.4 then
     self.baseModifier = 1.75
-  elseif status.stat("fireResistance",0) >= 20.0 then
+  elseif self.baseModifier >= 0.2 then
     self.baseModifier = 1
-  end
-  if self.baseModifier < 0 then
+  else
    self.baseModifier = 0
   end 
   

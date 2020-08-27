@@ -13,17 +13,18 @@
   "level" : 5,
   "inventoryIcon" : "fuatropusdagger.png",
   "collectablesOnPickup" : { "fu_weapondagger" : "fuatropusdagger" },
-  "animation" : "dagger.animation",
+  "animation" : "daggercombo.animation",
   "animationParts" : {
-    "blade" : "fuatropusdagger.png",
-    "handle" : ""
+    "handle" : "",
+    "blade" : "fuatropusdagger.png"
   },
+
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
+    "animatedParts" : { 
+      "parts" : { 
+        "blade" : { "properties" : {"offset" : [0.4, 2.5]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}      
+      }
     }
   },
 
@@ -32,44 +33,14 @@
   "elementalType" : "bioweapon",
 
   "aimOffset" : -1.0,
-
+  "primaryAbilityType" : "daggercombo",
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
-    "class" : "MeleeSlash",
     "fireTime" : 0.3,
     "baseDps" : 7.72,
     "damageConfig" : {
       "knockback" : 10,
       "statusEffects" : [ "weakpoison" ],
       "damageSourceKind": "bioweaponbroadsword"
-    },
-    "stances" : {
-      "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.8, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      },
-      "windup" : {
-        "duration" : 0.05,
-        "armRotation" : -20,
-        "weaponRotation" : -20,
-        "weaponOffset" : [0.8, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      },
-      "fire" : {
-        "duration" : 0.2,
-        "armRotation" : -135,
-        "weaponRotation" : 40,
-        "weaponOffset" : [0.8, 2.5],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      }
     }
   },
   "critChance" : 2, 

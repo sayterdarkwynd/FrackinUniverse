@@ -1,6 +1,6 @@
 {
 	"stats" : [
-		{ "stat" : "fuCharisma", "amount" : 0.15 },
+		{ "stat" : "fuCharisma", "baseMultiplier" : 1.15 },
 		{ "stat" : "physicalResistance", "amount" : -0.2 },
 		{ "stat" : "shadowResistance", "amount" : -0.2 },
 		{ "stat" : "poisonResistance", "amount" : -0.2 },
@@ -30,13 +30,13 @@
 			"weapons" : [ "chakram", "boomerang" ],
 			"stats" : [
 				{ "stat" : "critChance", "amount" : 1.5 },
-				{ "stat" : "critBonus", "amount" : 5 }
+				{ "stat" : "critDamage", "amount" : 0.05 }
 			]
 		},
 		{
 			"weapons" : [ "axe", "spear" ],
 			"stats" : [
-				{ "stat" : "grit", "effectiveMultiplier" : 1.25 },
+				{ "stat" : "grit", "amount" : 0.25 },
 				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.05 }
 			]
 		},
@@ -44,7 +44,7 @@
 			"weapons" : [ "bow" ],
 			"stats" : [
 				{ "stat" : "protection", "effectiveMultiplier" : 1.18 },
-				{ "stat" : "powerMultiplier", "baseMultiplier" : 1.15 }
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 }
 			]
 		}
 	],
@@ -58,7 +58,7 @@
 				"chance" : 3,
 				"params" : {
 					"hungermod" : 12,
-					"damageKind" : "ice"
+					"damageKind" : "hoarfrost"
 				}
 			}
 		}

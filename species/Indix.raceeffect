@@ -9,11 +9,11 @@
 		},
 		{
 			"stat": "foodDelta",
-			"baseMultiplier": 0
+			"effectiveMultiplier": 0
 		},
 		{
 			"stat": "maxEnergy",
-			"baseMultiplier": 1.25
+			"effectiveMultiplier": 1.25
 		},
 		{
 			"stat": "physicalResistance",
@@ -50,43 +50,30 @@
 	},
 	"envEffects": [],
 	"special": [
-		"indixregen"
+		"indixregen","indixfoodhandler"
 	],
-	"weaponEffects": [{
-			"weapons": [
-				"assaultrifle"
-			],
-			"stats": [{
-					"stat": "critChance",
-					"amount": 2
-				},
-				{
-					"stat": "powerMultiplier",
-					"baseMultiplier": 1.1
-				}
-			]
-		},
+	"weaponEffects": [
 		{
 			"weapons": [
 				"machinepistol"
 			],
 			"stats": [{
-					"stat": "critBonus",
-					"baseMultiplier": 1.25
+					"stat": "critDamage",
+					"amount": 0.25
 				},
 				{
 					"stat": "powerMultiplier",
-					"baseMultiplier": 1.1
+					"effectiveMultiplier": 1.1
 				}
 			]
 		},
 		{
 			"weapons": [
-				"dagger"
+				"dagger","assaultrifle","whipblade"
 			],
 			"stats": [{
 					"stat": "powerMultiplier",
-					"baseMultiplier": 1.1
+					"effectiveMultiplier": 1.1
 				},
 				{
 					"stat": "critChance",

@@ -6,16 +6,17 @@ function zb_sailInfo()
 end
 
 function zb_skipStarterCrap()
-	local quests = {"gaterepair", "shiprepair", "human_mission1", "mechunlock", "outpostclue"}
-	local str = "Quest IDs:"
-	
-	for _, quest in ipairs(quests) do
-		if not player.hasCompletedQuest(quest) then
-			player.startQuest(quest)
-			str = str.."\n"..quest
+	if false then--disabling this function until someone can make it not cause issues.
+		local quests = {"gaterepair", "shiprepair", "human_mission1", "mechunlock", "outpostclue"}
+		local str = "Quest IDs:"
+		
+		for _, quest in ipairs(quests) do
+			if not player.hasCompletedQuest(quest) then
+				player.startQuest(quest)
+				str = str.."\n"..quest
+			end
 		end
 	end
-	
 	resetGUI()
 	textTyper.init(cfg.TextData, "[(instant)"..str.."]")
 end

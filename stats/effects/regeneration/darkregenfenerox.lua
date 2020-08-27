@@ -12,7 +12,7 @@ function getLight()
 	local position = mcontroller.position()
 	position[1] = math.floor(position[1])
 	position[2] = math.floor(position[2])
-	local lightLevel = world.lightLevel(position)
+	local lightLevel = math.min(world.lightLevel(position),1.0)
 	lightLevel = math.floor(lightLevel * 100)
 	return lightLevel
 end
@@ -38,12 +38,12 @@ function update(dt)
 		self.foodValue = 70
 	end
 
-	local lightLevel = getLight()
+	--local lightLevel = getLight()--not actually used
 
 	if nighttime or underground and (self.foodValue >= 45) then
 		self.healingRate = 1.007 / config.getParameter("healTime", 220)
 		--status.modifyResourcePercentage("health", self.healingRate * dt)
-		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate}})
+		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.stat("maxHealth")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 
 		status.setPersistentEffects("feneroxEffects", {
 			{stat = "energyRegenPercentageRate", amount = config.getParameter("powerBonus",0)},
