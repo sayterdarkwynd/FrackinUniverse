@@ -9,7 +9,13 @@ function update(dt)
 		local buffer=world.entityQuery(pos,self.range,{includedTypes={"vehicle"}})
 
 		for _,id in pairs(buffer) do
-			world.callScriptedEntity(id,"vehicle.destroy")
+			pass,result=pcall(world.callScriptedEntity,id,"vehicle.destroy")
+			if not pass then
+				local owner=world.getObjectParameter(id,"ownerKey")
+				if owner then
+					world.sendEntityMessage(id,"store",owner)
+				end
+			end
 		end
 	else
 		animator.setAnimationState("switchState", "off")

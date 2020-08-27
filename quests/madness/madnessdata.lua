@@ -2,6 +2,11 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 
 function init()
+	-- passive research gain
+	self.researchCount = player.currency("fuscienceresource") or 0
+	self.baseVal = config.getParameter("baseValue") or 1
+    self.timerCounter = 0
+
 	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
 	self.player = entity.id()
@@ -55,9 +60,9 @@ function randomEvent()
 	if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal <= status.stat("mentalProtection")) then
 		self.randEvent = self.randEvent - (self.currentProtection * 10) --math.random(10,70)	--it doesnt *remove* the effect, it just moves it further up the list, and potentially off of it.
 	end
-
+	
 	-- are we currently carrying any really weird stuff?
-	isWeirdStuff()
+	isWeirdStuff(self.timer)
 
 	--set duration of curse
 	self.curseDuration = math.min(self.timer,self.madnessCount / 5) --this value will be adjusted based on effect type. Clamping this because it's too much otherwise.
@@ -70,6 +75,7 @@ function randomEvent()
 	self.curseDuration_stat = self.curseDuration * 2.5
 	self.curseDuration_fast = self.curseDuration *0.25
 	status.addEphemeralEffect("mad",self.timer)
+
 
 	if self.randEvent < 0 then --failsafe
 		self.randEvent = 0
@@ -150,9 +156,7 @@ function randomEvent()
 			status.addEphemeralEffect("jumpboost25neg",self.curseDuration_status) -- You suddenly suck at jumping
 			player.radioMessage("madness2")
 		elseif (self.randEvent >= 46 and self.randEvent <= 52) then
-			status.setPersistentEffects("madnessEffectsMain", {{stat = self.resistList[math.random(1,#self.resistList)], amount = ((math.random()>0.75 and 1) or (-1))*math.random(1,20)/100.0}}) -- pick one from all available resistances, and reduce it by 1-X%. was 100, but that's too much.
-			--old formula. it's whack. with 0 res, it could do nothing or give -100...at 100 it could do nothing or increase it to 200. at 50? double or reduce to nil. at -60? -60 to -160 (leaving you at -120 to -220).
-			--status.setPersistentEffects("madnessEffectsMain", {{stat = resist, amount = status.stat(resist)-penaltyValue}})
+			status.setPersistentEffects("madnessEffectsMain", {{stat = self.resistList[math.random(1,#self.resistList)], amount = ((math.random()>0.75 and 1) or (-1))*math.random(1,20)/100.0}}) -- pick one from all available resistances, and reduce it by 1-X%
 		end
 	end
 	if self.madnessCount > 200 then
@@ -232,8 +236,20 @@ function randomEvent()
 end
 
 function update(dt)
+    self.motionX = mcontroller.xVelocity()
+	--passive research gain
+	--if status.statusProperty("fu_creationDate") then
+	--	self.bonus = status.stat("researchBonus") or 1
+	--	if self.timerCounter >= 1 then
+	--		player.addCurrency("fuscienceresource",1 + self.bonus)
+	--		self.timerCounter = 0
+	--	else
+	--		self.timerCounter = self.timerCounter + 1
+	--	end			
+	--end
+
 	-- we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
-	-- there are better places to put it, bbut this at least keeps it contained
+	-- there are better places to put it, but this at least keeps it contained
 	if (self.timerRemoveAmmoBar >=6) then
 		world.sendEntityMessage(entity.id(),"removeBar","ammoBar")	--clear ammo bar
 		self.timerRemoveAmmoBar = 0
@@ -242,6 +258,7 @@ function update(dt)
 	end
 
 	self.madnessCount = player.currency("fumadnessresource")
+	self.researchCount = player.currency("fuscienceresource") --passive research gain
 
 	-- timing refresh for sculptures, painting effects
 	self.paintTimer = math.max(0,self.paintTimer - dt)
@@ -262,22 +279,23 @@ function update(dt)
 			self.degradeTotal = 1
 		end
 	end
-	self.timerDegrade = math.max(self.timerDegrade - dt,0.0)
+	self.timerDegrade = math.max(self.timerDegrade - dt,0.0) 
+	self.freudBonus = math.max(status.stat("freudBonus"),-0.8) -- divide by zero is bad. as this approaches -1, the timer approaches infinity. -0.5 turns the timer into 80s instead of 40s. cappin it at -0.8, which is 400s or 10x
 	--gradually reduce Madness over time
 	if (self.timerDegrade <= 0) then --no more limit to when it can degrade
 		self.timerDegradePenalty = self.timerDegradePenalty or 0.0
 		player.consumeCurrency("fumadnessresource", self.degradeTotal)
-		self.timerDegrade= 60.0 - self.timerDegradePenalty
+		self.timerDegrade= (60.0 - self.timerDegradePenalty) / (1.0+self.freudBonus)
 		--displayBar()
 	end
-	-- apply bonus loss from anti-madness effects even if not above 500 madness
+	-- apply bonus loss from anti-madness effects even if not above X madness
 	self.bonusTimer = math.max(self.bonusTimer - dt,0)
 	if self.bonusTimer <= 0.0 then
-		self.protectionBonus = status.stat("mentalProtection")/5.0 + math.random(1,12)
+		self.protectionBonus = status.stat("mentalProtection")* 20 + math.random(1,12)
 		if (status.statPositive("mentalProtection")) then
 			player.consumeCurrency("fumadnessresource", self.protectionBonus)
 		end
-		self.bonusTimer = 40.0
+		self.bonusTimer = 40.0 / (1.0+self.freudBonus)
 		--displayBar()
 	end
 end
@@ -292,46 +310,48 @@ function displayBar()
 end
 
 function checkMadnessArt()
-	if player.hasItem("thehuntpainting") or
-		player.hasItem("demiurgepainting") or
-		player.hasItem("elderhugepainting") then
-		player.addCurrency("fumadnessresource", 5)
+	local greatMadnessArt={"thehuntpainting","demiurgepainting","elderhugepainting"}
+	local hasPainting=false
+	for _,art in pairs(greatMadnessArt) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource", 5)
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
+		    end
+			hasPainting=true
+			break
+		end
 	end
-
-	if player.hasItem("dreamspainting") or
-		player.hasItem("fleshpainting") or
-		player.hasItem("homepainting") or
-		player.hasItem("hordepainting") or
-		player.hasItem("nightmarepainting") or
-		player.hasItem("theexpansepainting") or
-		player.hasItem("thefishpainting") or
-		player.hasItem("thepalancepainting") or
-		player.hasItem("theroompainting") or
-		player.hasItem("thingsinthedarkpainting") or
-		player.hasItem("elderpainting1") or
-		player.hasItem("elderpainting2") or
-		player.hasItem("elderpainting3") or
-		player.hasItem("elderpainting4") or
-		player.hasItem("elderpainting5") or
-		player.hasItem("elderpainting6") or
-		player.hasItem("elderpainting7") or
-		player.hasItem("elderpainting8") or
-		player.hasItem("elderpainting9") or
-		player.hasItem("elderpainting10") or
-		player.hasItem("elderpainting11") then
-		player.addCurrency("fumadnessresource", 2)
+	
+	local madnessArt={"dreamspainting","fleshpainting","homepainting","hordepainting","nightmarepainting","theexpansepainting","thefishpainting","thepalancepainting","theroompainting","thingsinthedarkpainting","elderpainting1","elderpainting2","elderpainting3","elderpainting4","elderpainting5","elderpainting6","elderpainting7","elderpainting8","elderpainting9","elderpainting10","elderpainting11"}
+	for _,art in pairs(madnessArt) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource", 2)
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
+		    end
+			hasPainting=true
+			break
+		end
 	end
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
+	if hasPainting then
+		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
+	end
+	
 end
 
-function isWeirdStuff()
-	if player.hasItem("faceskin") or
-		player.hasItem("greghead") or
-		player.hasItem("gregnog") or
-		player.hasItem("babyheadonastick") or
-		player.hasItem("greghead") or
-		player.hasItem("meatpickle") then
-		player.addCurrency("fumadnessresource", 2)
+function isWeirdStuff(duration)
+	local weirdStuff={"faceskin","greghead","greggnog","babyheadonastick","meatpickle"}
+	for _,art in pairs(weirdStuff) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource", 2)
+			status.addEphemeralEffect("madnessfoodindicator",duration)
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
+		    end
+			break
+		end
 	end
 end
 

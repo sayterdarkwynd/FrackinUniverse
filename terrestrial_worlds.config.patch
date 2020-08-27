@@ -6609,7 +6609,7 @@
        "threatRange" : [5, 8],
        "layers" : {
         "surface" : {
-          "primaryRegion" : [ "aethersea" ],
+          "primaryRegion" : [ "aethersea", "astral" ],
           "secondaryRegions" : [ "energyorbforestaether", "aetherbreakwater", "estuaryaether", "supermatterzoneaether2", "crystalswampaether", "cellfieldaether", "bioluminescence", "elder", "hellhive" ],
           "dungeons" : [
           [0.5, "fuwreck"],
@@ -6618,7 +6618,7 @@
           ]
         },
         "subsurface" : {
-          "primaryRegion" : [ "aetherseafloor" ],
+          "primaryRegion" : [ "aetherseafloor", "aetherseaunderground" ],
           "secondaryRegions" : [ "energyorbforestaether2", "deepseaventaether", "crystaldesertaether", "supermatterzoneaether"  ],
 
           "dungeons" : [
@@ -6645,7 +6645,6 @@
        }
      }
    },
-
  {"op" : "add",
  "path": "/regionTypes/aethersea",
  "value" :
@@ -6660,8 +6659,7 @@
        "biome" : [ [0, [ "aethersea" ] ] ]
  	}
  },
-
-
+ 
   {"op" : "add",
   "path" : "/regionTypes/aetherseafloor",
   "value" :
@@ -6680,7 +6678,7 @@
   "path" : "/regionTypes/aetherseaunderground",
   "value" :
   {
-       "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "mercuryliquid" ],
+      "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "mercuryliquid" ],
       "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
       "biome" : [ [0, [ "aetherseaunderground" ] ] ]
@@ -7002,6 +7000,19 @@
       ]
     }
   },
+ {"op" : "add",
+  "path" : "/regionTypes/astral",
+  "value" :
+  {
+        "caveLiquid" : [  "organicsoup", "fuel", "liquidaether", "crystalliquid"  ],
+        "caveLiquidChanceRange" : [25, 85],
+        "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedCanyonsSurface"  ],
+      "fgCaveSelector" : [ "denseCaves" ],
+      "biome" : [
+        [0, [ "astral" ]]
+      ]
+    }
+  },  
   {"op" : "add",
   "path" : "/regionTypes/precursorsurface",
   "value" :
