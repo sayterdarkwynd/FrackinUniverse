@@ -2,6 +2,11 @@ require "/scripts/util.lua"
 require "/scripts/interp.lua"
 require "/scripts/furesearchGenerators.lua"
 
+local cosmeticList={legwear=true,chestwear=true,headwear=true,backwear=true}
+local armorList={legarmour=true,chestarmour=true,headarmour=true,enviroProtectionPack=true}
+local cosmeticSlotList={"headCosmetic", "chestCosmetic", "legsCosmetic", "backCosmetic"}
+local armorSlotList={"head", "chest", "legs", "back"}
+
 function init()
 	self.itemList = "itemScrollArea.itemList"
 	self.isUpgradeKit = true
@@ -19,36 +24,26 @@ function init()
 	end
 
 	self.upgradeLevel = 8
+	self.maxEssenceValue=root.evalFunction("weaponEssenceValue", self.upgradeLevel)
 	self.upgradeableWeaponItems = {}
 	self.selectedItem = nil
 	populateItemList()
+	
+	widget.setText("warningLabel","")
 end
 
 function update(dt)
 	populateItemList()
-
-	if self.isUpgradeKit then
-		if (player.hasCountOfItem({name = "cuddlehorse", count = 1}) or 0) > 0 then
-			widget.setText("essenceCost", "^green;FREE FROM UPGRADE KIT")
-
-			if self.selectedItem then
-				widget.setButtonEnabled("btnUpgrade", true)
-			else
-				widget.setButtonEnabled("btnUpgrade", false)
-			end
-		else
-			widget.setText("essenceCost", "^red;MISSING UPGRADE KIT")
-			widget.setButtonEnabled("btnUpgrade", false)
-		end
-	end
+	itemSelected()
 end
 
 function upgradeCost(itemConfig,fullUpgrade)
-	if itemConfig == nil or self.isUpgradeKit then return 0 end
+	if (not itemConfig) or self.isUpgradeKit then return 0 end
 	local iLvl=itemConfig.parameters.level or itemConfig.config.level or 1
 	local currentValue=0
 
 	if fullUpgrade then
+	--61841 from 1 to 8
 		while iLvl<self.upgradeLevel do
 			currentValue=currentValue+costMath(iLvl)
 			iLvl=iLvl+1
@@ -60,9 +55,9 @@ function upgradeCost(itemConfig,fullUpgrade)
 	return math.floor(currentValue)
 end
 
-function costMath(iLvl)
+function costMath(iLvl,targetILvl)
 	local prevValue = root.evalFunction("weaponEssenceValue", iLvl)
-	local newValue = (root.evalFunction("weaponEssenceValue", self.upgradeLevel) * (iLvl)/3) + 200
+	local newValue = (self.maxEssenceValue * iLvl / 3) + 200
 	return math.floor(newValue-prevValue)
 end
 
@@ -70,11 +65,9 @@ function populateItemList(forceRepop)
 	local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon")
 	local buffer = {}
 	
-	for i = 1, #upgradeableWeaponItems do
-		if (not (upgradeableWeaponItems[i].parameters and upgradeableWeaponItems[i].parameters.currentAugment)) and (not checkWorn(upgradeableWeaponItems[i])) then
-			upgradeableWeaponItems[i].count = 1
-			table.insert(buffer,upgradeableWeaponItems[i])
-		end
+	for i = 1, #upgradeableWeaponItems do		
+		upgradeableWeaponItems[i].count = 1
+		table.insert(buffer,upgradeableWeaponItems[i])
 	end
 	
 	upgradeableWeaponItems=buffer
@@ -101,8 +94,7 @@ function populateItemList(forceRepop)
 				widget.setItemSlotItem(string.format("%s.itemIcon", listItem), item)
 
 				local price = upgradeCost(config)
-				local priceMax=upgradeCost(config,true)
-				widget.setData(listItem, { index = i, price = price, priceMax = priceMax })
+				widget.setData(listItem, { index = i })
 
 				widget.setVisible(string.format("%s.unavailableoverlay", listItem), price > playerEssence)
 			end
@@ -117,42 +109,54 @@ function showWeapon(item, price, priceMax)
 	local playerEssence = player.currency("essence")
 	local enableButton = false
 	local enableButtonMax = false
+	local isWorn = item and checkWorn(item)
 
+	widget.setText("warningLabel",isWorn and "Error: "..isWorn or "")
+	
 	if not self.isUpgradeKit then
 		if item then
-			enableButton = price and (playerEssence >= price)
-			enableButtonMax = priceMax and (playerEssence >= priceMax)
+			
+			enableButton = price and (playerEssence >= price) and not isWorn
+			enableButtonMax = priceMax and (playerEssence >= priceMax) and not isWorn
 			local directive = enableButton and "^green;" or "^red;"
 			local directive2 = enableButtonMax and "^green;" or "^red;"
 			widget.setText("essenceCost", string.format("%s / %s%s^reset; (%s%s^reset;)", playerEssence,directive, price or "--",directive2, priceMax or "--"))
 		else
 			widget.setText("essenceCost", string.format("%s / -- (--)", playerEssence))
 		end
+	else
+		local hasKit=(player.hasCountOfItem({name = "cuddlehorse", count = 1}) or 0) > 0
+		widget.setText("essenceCost",hasKit and "^green;FREE FROM UPGRADE KIT" or "^red;MISSING UPGRADE KIT")
+		enableButton=hasKit and not isWorn
 	end
 	widget.setButtonEnabled("btnUpgradeMax",enableButtonMax)
 	widget.setButtonEnabled("btnUpgrade", enableButton)
 end
 
-function itemSelected()
-	local listItem = widget.getListSelected(self.itemList)
-	self.selectedItem = listItem
-
-	if listItem then
-		local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
-		local weaponItem = self.upgradeableWeaponItems[itemData.index]
-		showWeapon(weaponItem, itemData.price, itemData.priceMax)
-	end
+function getSelectedItem()
+	if not self.selectedItem then return end
+	return self.upgradeableWeaponItems[widget.getData(string.format("%s.%s", self.itemList, self.selectedItem)).index]
 end
 
-function isArmor()
-	if (upgradedItem.parameters.category == "legarmor") or (upgradedItem.parameters.category == "chestarmor") or (upgradedItem.parameters.category == "headarmor") then
-		isArmorSet = 1
-		return isArmorSet
+function itemSelected()
+	self.selectedItem = widget.getListSelected(self.itemList)
+
+	if self.selectedItem then
+		local weaponItem = getSelectedItem()
+		showWeapon(weaponItem, upgradeCost(root.itemConfig(weaponItem)), upgradeCost(root.itemConfig(weaponItem),true))
 	end
 end
 
 function doUpgradeMax()
 	if self.selectedItem and self.isUpgradeKit then return end
+	
+	local isWorn=checkWorn(getSelectedItem())
+	if isWorn then
+		widget.setText("warningLabel",isWorn and "Error: "..isWorn or "")
+		widget.setButtonEnabled("btnUpgrade", false)
+		return
+	end
+	
 	upgrade(true)
 end
 
@@ -162,21 +166,49 @@ function doUpgrade()
 			widget.setButtonEnabled("btnUpgrade", false)
 			return
 		end
+		
+		local isWorn=checkWorn(getSelectedItem())
+		if isWorn then
+			widget.setText("warningLabel",isWorn and "Error: "..isWorn or "")
+			widget.setButtonEnabled("btnUpgrade", false)
+			widget.setButtonEnabled("btnUpgradeMax", false)
+			return
+		end
+		
 		upgrade(false)
 	end
 end
 
 function checkWorn(item)
-	for _,slot in pairs({"head", "chest", "legs", "back", "headCosmetic", "chestCosmetic", "legsCosmetic", "backCosmetic"}) do
-		local compTo=player.equippedItem(slot)
-		if compare(compTo,item) then return true end
+	if not item then return "no item selected" end
+	local itemCat=root.itemConfig(item)
+	if itemCat and itemCat.parameters and itemCat.parameters.category then
+		itemCat=itemCat.parameters.category
+	elseif itemCat and itemCat.config and itemCat.config.category then
+		itemCat=itemCat.config.category
+	else
+		return "category missing"
 	end
+	local swapSlotItem=player.swapSlotItem()
+	local isCosmeticArmor=cosmeticList[itemCat]
+	local isArmor=armorList[itemCat]
+	if isCosmeticArmor then
+		for _,slot in pairs(cosmeticSlotList) do
+			local compTo=player.equippedItem(slot)
+			if compare(compTo,item) then return "equipped in cosmetic slot" end
+		end
+	elseif isArmor then
+		for _,slot in pairs(armorSlotList) do
+			local compTo=player.equippedItem(slot)
+			if compare(compTo,item) then return "equipped in armor slot" end
+		end
+	end
+	if compare(swapSlotItem,item) then return "held by mouse" end
 	return false
 end
 
 function upgrade(fullUpgrade)
-	local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
-	local upgradeItem = self.upgradeableWeaponItems[selectedData.index]
+	local upgradeItem=getSelectedItem()
 
 	if upgradeItem then
 		if checkWorn(upgradeItem) then
@@ -184,7 +216,7 @@ function upgrade(fullUpgrade)
 		end
 		local consumedItem = player.consumeItem(upgradeItem, false, true)
 		if consumedItem then
-			local consumedCurrency = player.consumeCurrency("essence", (fullUpgrade and selectedData.priceMax or selectedData.price))
+			local consumedCurrency = player.consumeCurrency("essence", (fullUpgrade and upgradeCost(root.itemConfig(upgradeItem),true) or upgradeCost(root.itemConfig(upgradeItem))))
 			local upgradedItem = copy(consumedItem)
 			if consumedCurrency then
 
