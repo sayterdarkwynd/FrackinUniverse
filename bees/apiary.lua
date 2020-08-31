@@ -610,10 +610,15 @@ function queenProduction()
 	
 	-- Queen production is unaffected by hives around hive
 	local productionDrone = genelib.statFromGenomeToValue(queen.parameters.genome, "droneBreedRate") + frameBonuses.droneBreedRate * ((flowerFavor + biomeFavor) / 2)
-	local productionQueen = genelib.statFromGenomeToValue(queen.parameters.genome, "queenBreedRate") + frameBonuses.queenBreedRate * ((flowerFavor + biomeFavor) / 2)
-	youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)
-	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)
-	
+	-- below, a base value of 0.01 was added so that even 0 Queen Breed bees have a low chance
+	local productionQueen = 0.01 + genelib.statFromGenomeToValue(queen.parameters.genome, "queenBreedRate") + frameBonuses.queenBreedRate * ((flowerFavor + biomeFavor) / 2)
+
+	--the final divider on youngQueenProgress (/4) was added later as a means to reduce the frequency at which queens appeared
+	-- also added a divider to the droneProgress so drone births are 75% less frequent. This will lower production rates as a consequence as bees breed.
+	youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25 
+	sb.logInfo(youngQueenProgress)
+	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)  * 0.25
+
 	if youngQueenProgress >= beeData.youngQueenProductionRequirement then
 		local produced = math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement)
 		youngQueenProgress = youngQueenProgress % beeData.youngQueenProductionRequirement
@@ -625,7 +630,6 @@ function queenProduction()
 				contents[j] = world.containerItemAt(entity.id(), j-1)
 				if not youngQueen then break end
 			end
-			
 			-- Do nothing if there's no room for a young queen in the apiaries inventory
 		end
 	end
@@ -851,8 +855,8 @@ function droneProduction(drone)
 	end
 	
 	local productionStat = genelib.statFromGenomeToValue(drone.parameters.genome, "baseProduction") + frameBonuses.baseProduction
-	local production = productionStat * (((drone.count / 1000) + math.min(1 / ((1 + hivesAroundHive) * 0.75), 1) + flowerFavor + biomeFavor) / 4)
-	
+	local production = productionStat * (((drone.count / 1000) + math.min(1 / ((1 + hivesAroundHive) * 0.75), 1) + flowerFavor + biomeFavor) / 4) * 0.5
+	--sb.logInfo(production)
 	for product, requirement in pairs(beeData.stats[family][subtypeID].production) do
 		if not droneProductionProgress[product] then
 			droneProductionProgress[product] = production
