@@ -10,8 +10,8 @@ function init()
 	widget.addListItem("scrollArea.itemList")
 	filterText = ""
 	--widget.focus("filterBox")
-	maxItemsAddedPerUpdate = config.getParameter("maxItemsAddedPerUpdate", 5000)
-	maxSortsPerUpdate = config.getParameter("maxSortsPerUpdate", 50000)
+	maxLoopsPerUpdate = config.getParameter("maxLoopsPerUpdate", 5000)
+	loops = 1
 	refresh()
 end
 
@@ -77,7 +77,7 @@ end
 function refreshList()
 	listItems = {}
 	widget.clearListItems("scrollArea.itemList")
-	quicksort(items)
+	sortItems()
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
@@ -91,8 +91,10 @@ function refreshList()
 			listItems[listItem] = items[i]
 		end
 		
-		if i % maxItemsAddedPerUpdate == 0 then
+		if loops % maxItemsAddedPerUpdate == 0 then
 			coroutine.yield()
+		else
+			loops = loops + 1
 		end
 	end
 end
@@ -219,39 +221,35 @@ function absolutePath(directory, path)
 	end
 end
 
---Sorting code (copyed from https://github.com/mirven/lua_snippets/blob/master/lua/quicksort.lua and modifed slightly)
-function partition(A, l, r, p)
-	local pivot = A[p]
-	A[p], A[r] = A[r], A[p]
-	
-	p = l
-	
-	for i = l, r-1 do
-		if compareByName(items[i], pivot) then
-			A[i], A[p] = A[p], A[i]
-			p = p + 1
-		end
-		A[p], A[r] = A[r], A[p]
-		
-		if numSorts % maxSortsPerUpdate == 0 then
-			coroutine.yield()
-		else
-			numSorts = numSorts + 1
-		end
+--sorting stuff
+function sortItems(start, finish)
+	start = start or 1
+	finish = finish or #items
+	sb.logInfo(#items)
+	if finish > start then
+		local partitionPoint = partition(start, finish)
+		sortItems(start, partitionPoint -1)
+		sortItems(partitionPoint + 1, finish)
 	end
-	
-   return p
 end
 
-function quicksort(A, l, r)
-	l = l or 1
-	r = r or #A
-	numSorts = 1
-	if r > l then
-		local p = partition(A, l, r, l)
-		quicksort(A, l, p - 1)
-		quicksort(A, p + 1, r)
+function partition(start, finish)
+	pivot = start
+	items[pivot], items[finish] = items[finish], items[pivot]
+	for i = start, finish - 1 do
+		if compareByName(items[i], items[pivot]) then
+			items[i], items[pivot] = items[pivot], items[i]
+			pivot = pivot + 1
+		end
+		items[pivot], items[finish] = items[finish], items[pivot]
+		if loops % maxSortsPerUpdate == 0 then
+			coroutine.yield()
+		else
+			loops = loops + 1
+		end
 	end
+	
+	return pivot
 end
 
 function compareByName(itemA, itemB)
