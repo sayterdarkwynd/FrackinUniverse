@@ -10,8 +10,8 @@ function init()
 	widget.addListItem("scrollArea.itemList")
 	filterText = ""
 	--widget.focus("filterBox")
-	maxLoopsPerUpdate = config.getParameter("maxLoopsPerUpdate", 5000)
-	loops = 1
+	maxItemsAddedPerUpdate = config.getParameter("maxItemsAddedPerUpdate", 5000)
+	maxSortsPerUpdate = config.getParameter("maxSortsPerUpdate", 50000)
 	refresh()
 end
 
@@ -77,7 +77,7 @@ end
 function refreshList()
 	listItems = {}
 	widget.clearListItems("scrollArea.itemList")
-	sortItems()
+	quicksort(items)
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
@@ -91,10 +91,8 @@ function refreshList()
 			listItems[listItem] = items[i]
 		end
 		
-		if loops % maxItemsAddedPerUpdate == 0 then
+		if i % maxItemsAddedPerUpdate == 0 then
 			coroutine.yield()
-		else
-			loops = loops + 1
 		end
 	end
 end
@@ -115,20 +113,9 @@ function comparableName(name)
 end
 
 function request()
-	--pane.playerEntityId()
 	local selected = widget.getListSelected("scrollArea.itemList")
 	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-		for i = 1, #items do
-			if items[i] == listItems[selected] then
-				local itemToSend=items[i]
-				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
-
-				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
-				table.remove(items, i)
-				refreshingList = coroutine.create(refreshList)
-				return
-			end
-		end
+		requestItem(listItems[selected], listItems[selected][2].count, selected)
 	end
 end
 
@@ -145,19 +132,7 @@ end
 function requestAllButOne()
 	local selected = widget.getListSelected("scrollArea.itemList")
 	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-		for i = 1, #items do
-			if items[i] == listItems[selected] then
-				local itemToSend=items[i]
-				itemToSend[2].count=itemToSend[2].count-1
-				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
-				--sb.logInfo(sb.printJson({playerPos=temp}))
-
-				world.sendEntityMessage(pane.containerEntityId(), "transferItem", itemToSend)
-				items[i][2].count=1
-				updateListItem(selected, 1)
-				return
-			end
-		end
+		requestItem(listItems[selected], listItems[selected][2].count - 1, selected)
 	end
 end
 
@@ -188,24 +163,9 @@ function requestOne()
 		text = "1"
 	end
 	if tonumber(text) >= 0 then
-		--pane.playerEntityId()
-		--itemData={containerID, index}, itemDescriptor, itemConfig,pos
 		local selected = widget.getListSelected("scrollArea.itemList")
 		if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-			for i = 1, #items do
-				if items[i] == listItems[selected] then
-					local itemToSend=copy(items[i])
-					--sb.logInfo("%s",itemToSend)
-					itemToSend[2].count=math.min(tonumber(text),itemToSend[2].count)
-					items[i][2].count = items[i][2].count - itemToSend[2].count
-
-					table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
-					--sb.logInfo(sb.printJson({playerPos=temp}))
-					world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
-					updateListItem(selected, items[i][2].count)
-					return
-				end
-			end
+			requestItem(listItems[selected], math.min(tonumber(text), listItems[selected][2].count), selected)
 		end
 	end
 end
@@ -221,35 +181,57 @@ function absolutePath(directory, path)
 	end
 end
 
---sorting stuff
-function sortItems(start, finish)
-	start = start or 1
-	finish = finish or #items
-	sb.logInfo(#items)
-	if finish > start then
-		local partitionPoint = partition(start, finish)
-		sortItems(start, partitionPoint -1)
-		sortItems(partitionPoint + 1, finish)
+function requestItem(item, amount, selected) --Save the index or add this loop to a coroutine
+	for i = 1, #items do
+		if items[i] == item then
+			local itemToSend=items[i]
+			itemToSend[2].count=amount
+			table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
+			world.sendEntityMessage(pane.containerEntityId(), "transferItem", itemToSend)
+			local newCount = items[i][2].count - amount
+			items[i][2].count = newCount
+			if newCount == 0 then
+				table.remove(items, i)
+			end
+			updateListItem(selected, newCount)
+			return
+		end
 	end
 end
 
-function partition(start, finish)
-	pivot = start
-	items[pivot], items[finish] = items[finish], items[pivot]
-	for i = start, finish - 1 do
-		if compareByName(items[i], items[pivot]) then
-			items[i], items[pivot] = items[pivot], items[i]
-			pivot = pivot + 1
+--Sorting code (copyed from https://github.com/mirven/lua_snippets/blob/master/lua/quicksort.lua and modifed slightly)
+function partition(A, l, r, p)
+	local pivot = A[p]
+	A[p], A[r] = A[r], A[p]
+	
+	p = l
+	
+	for i = l, r-1 do
+		if compareByName(items[i], pivot) then
+			A[i], A[p] = A[p], A[i]
+			p = p + 1
 		end
-		items[pivot], items[finish] = items[finish], items[pivot]
-		if loops % maxSortsPerUpdate == 0 then
+		A[p], A[r] = A[r], A[p]
+		
+		if numSorts % maxSortsPerUpdate == 0 then
 			coroutine.yield()
 		else
-			loops = loops + 1
+			numSorts = numSorts + 1
 		end
 	end
 	
-	return pivot
+   return p
+end
+
+function quicksort(A, l, r)
+	l = l or 1
+	r = r or #A
+	numSorts = 1
+	if r > l then
+		local p = partition(A, l, r, l)
+		quicksort(A, l, p - 1)
+		quicksort(A, p + 1, r)
+	end
 end
 
 function compareByName(itemA, itemB)
