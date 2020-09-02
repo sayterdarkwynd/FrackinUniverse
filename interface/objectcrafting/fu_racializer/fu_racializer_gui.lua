@@ -260,12 +260,17 @@ function buildRaceTable()
 	local races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
 	for _, race in pairs (races) do
 		local raceName = race:gsub(race:sub(0,1),race:sub(0,1):upper(),1)
+		local raceData = root.assetJson("/species/" .. race .. ".species")	--could potentially cause errors?
 		if self.raceTableOverride[raceName] and self.raceTableOverride[raceName].race then
 			race = self.raceTableOverride[raceName].race
 			raceName = self.raceTableOverride[raceName].race:gsub(race:sub(0,1),race:sub(0,1):upper(),1)
 		end
 		tempRaceTable[raceName] = {}
 		tempRaceTable[raceName].icon = race .. "male.png"
+		if raceData and raceData.charCreationTooltip then
+			tempRaceTable[raceName].name = raceData.charCreationTooltip.title
+			sb.logInfo(tostring(tempRaceTable[raceName].name))
+		end
 		tempRaceTable[raceName].items = {}
 		for _, objectType in pairs (raceObjects) do
 			local objectInfo = root.itemConfig(race .. objectType)
@@ -289,7 +294,7 @@ function buildRaceTable()
 		end
 		if tempRaceTable[race] then
 			tempRaceTable[race].icon = info.icon or tempRaceTable[race].icon
-			tempRaceTable[race].name = info.name
+			tempRaceTable[race].name = info.name or tempRaceTable[race].name
 			if info.items then
 				for item, itemInfo in pairs (info.items) do
 					if root.itemConfig(item) then
