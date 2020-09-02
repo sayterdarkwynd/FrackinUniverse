@@ -77,9 +77,7 @@ end
 
 function refreshList()
 	widget.clearListItems("scrollArea.itemList")
-	sb.logInfo(#items)
 	if #items <= maxItemsForSorting then
-		sb.logInfo("Sorting... " .. maxItemsForSorting)
 		sortItems()
 	end
 	for i = 1, #items do
