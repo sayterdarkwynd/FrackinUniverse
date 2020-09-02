@@ -269,7 +269,6 @@ function buildRaceTable()
 		tempRaceTable[raceName].icon = race .. "male.png"
 		if raceData and raceData.charCreationTooltip then
 			tempRaceTable[raceName].name = raceData.charCreationTooltip.title
-			sb.logInfo(tostring(tempRaceTable[raceName].name))
 		end
 		tempRaceTable[raceName].items = {}
 		for _, objectType in pairs (raceObjects) do
