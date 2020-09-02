@@ -12,6 +12,7 @@ function init()
 	--widget.focus("filterBox")
 	maxItemsAddedPerUpdate = config.getParameter("maxItemsAddedPerUpdate", 5000)
 	maxSortsPerUpdate = config.getParameter("maxSortsPerUpdate", 50000)
+	maxItemsForSorting = config.getParameter("maxItemsForSorting", 1000)
 	refresh()
 end
 
@@ -75,9 +76,12 @@ function getIcon(item, conf, listItem)
 end
 
 function refreshList()
-	listItems = {}
 	widget.clearListItems("scrollArea.itemList")
-	quicksort(items)
+	sb.logInfo(#items)
+	if #items <= maxItemsForSorting then
+		sb.logInfo("Sorting... " .. maxItemsForSorting)
+		sortItems()
+	end
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
@@ -88,7 +92,7 @@ function refreshList()
 			widget.setText("scrollArea.itemList." .. listItem .. ".itemName", name)
 			widget.setText("scrollArea.itemList." .. listItem .. ".amount", "×" .. item.count)
 			pcall(getIcon, item, conf, listItem)
-			listItems[listItem] = items[i]
+			widget.setData("scrollArea.itemList." .. listItem, items[i])
 		end
 		
 		if i % maxItemsAddedPerUpdate == 0 then
@@ -114,8 +118,9 @@ end
 
 function request()
 	local selected = widget.getListSelected("scrollArea.itemList")
-	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-		requestItem(listItems[selected], listItems[selected][2].count, selected)
+	local data = widget.getData("scrollArea.itemList." .. tostring(selected))
+	if data then
+		requestItem(selected, data[2].count)
 	end
 end
 
@@ -131,8 +136,9 @@ end
 
 function requestAllButOne()
 	local selected = widget.getListSelected("scrollArea.itemList")
-	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-		requestItem(listItems[selected], listItems[selected][2].count - 1, selected)
+	local data = widget.getData("scrollArea.itemList." .. tostring(selected))
+	if data then
+		requestItem(selected, data[2].count - 1)
 	end
 end
 
@@ -164,8 +170,9 @@ function requestOne()
 	end
 	if tonumber(text) >= 0 then
 		local selected = widget.getListSelected("scrollArea.itemList")
-		if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-			requestItem(listItems[selected], math.min(tonumber(text), listItems[selected][2].count), selected)
+		local data = widget.getData("scrollArea.itemList." .. tostring(selected))
+		if data then
+			requestItem(selected, math.min(tonumber(text), data[2].count))
 		end
 	end
 end
@@ -181,57 +188,48 @@ function absolutePath(directory, path)
 	end
 end
 
-function requestItem(item, amount, selected) --Save the index or add this loop to a coroutine
-	for i = 1, #items do
-		if items[i] == item then
-			local itemToSend=items[i]
-			itemToSend[2].count=amount
-			table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
-			world.sendEntityMessage(pane.containerEntityId(), "transferItem", itemToSend)
-			local newCount = items[i][2].count - amount
-			items[i][2].count = newCount
-			if newCount == 0 then
-				table.remove(items, i)
-			end
-			updateListItem(selected, newCount)
-			return
-		end
+function requestItem(selected, amount)
+	local data = widget.getData("scrollArea.itemList." .. selected)
+	if data then
+		local itemToSend = copy(data)
+		itemToSend[2].count = amount
+		table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
+		world.sendEntityMessage(pane.containerEntityId(), "transferItem", itemToSend)
+		local newCount = data[2].count - amount
+		data[2].count = newCount
+		updateListItem(selected, newCount)
+		return
 	end
 end
 
---Sorting code (copyed from https://github.com/mirven/lua_snippets/blob/master/lua/quicksort.lua and modifed slightly)
-function partition(A, l, r, p)
-	local pivot = A[p]
-	A[p], A[r] = A[r], A[p]
-	
-	p = l
-	
-	for i = l, r-1 do
-		if compareByName(items[i], pivot) then
-			A[i], A[p] = A[p], A[i]
-			p = p + 1
+--Quicksort code (based on https://www.geeksforgeeks.org/quick-sort/ )
+function sortItems(low, high)
+	low = low or 1
+	high = high or #items
+	numSorts = numSorts or 1
+	if low < high then
+		local part = partition(low, high)
+		sortItems(low, part - 1)
+		sortItems(part + 1, high)
+	end
+end
+
+function partition(low, high)
+	pivot = items[high]
+	i = (low - 1)
+	for j = low, high - 1 do
+		if compareByName(items[j], pivot) then
+			i = i + 1
+			items[i], items[j] = items[j], items[i]
 		end
-		A[p], A[r] = A[r], A[p]
 		
+		numSorts = numSorts + 1
 		if numSorts % maxSortsPerUpdate == 0 then
 			coroutine.yield()
-		else
-			numSorts = numSorts + 1
 		end
 	end
-	
-   return p
-end
-
-function quicksort(A, l, r)
-	l = l or 1
-	r = r or #A
-	numSorts = 1
-	if r > l then
-		local p = partition(A, l, r, l)
-		quicksort(A, l, p - 1)
-		quicksort(A, p + 1, r)
-	end
+	items[i + 1], items[high] = items[high], items[i + 1]
+	return i + 1
 end
 
 function compareByName(itemA, itemB)
