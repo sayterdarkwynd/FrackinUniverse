@@ -31,9 +31,13 @@ function populateList()
   for race, _ in pairs (raceTable) do
     table.insert(raceArray, race)
   end
-  table.sort(raceArray)
+  table.sort(raceArray, function(raceA, raceB)
+	a = raceTable[raceA].name or raceA
+	b = raceTable[raceB].name or raceB
+	return a < b
+  end)
   for _, race in ipairs (raceArray) do
-	if race ~= "Fu_byos" then
+	if race ~= "fu_byos" then
       local item = string.format("%s.%s", self.raceList, widget.addListItem(self.raceList))
 	  widget.setText(string.format("%s.title", item), raceTable[race].name or race)
       widget.setImage(string.format("%s.icon", item), "/interface/title/"..raceTable[race].icon)
@@ -63,14 +67,13 @@ function update(dt)
 		if itemOldRace == "" then
 			itemOldRace = "apex"
 		end
-        local raceStr = itemOldRace:gsub(itemOldRace:sub(0,1),itemOldRace:sub(0,1):upper(),1) -- Meh, this mess is to make the first letter uppercase to match the list item.
         --sb.logInfo(itemOldCfg.objectName)
         --sb.logInfo(itemOldCfg.race)
         --sb.logInfo(raceStr)
-        if raceTable[raceStr] and raceTable[raceStr]["items"][itemOldCfg.objectName] then
+        if raceTable[itemOldRace] and raceTable[itemOldRace]["items"][itemOldCfg.objectName] then
 			local oldObjectCfg = util.mergeTable(itemOldCfg, itemOld.parameters)
             widget.setImage("imgPreviewIn", oldObjectCfg.placementImage or getPlacementImage(oldObjectCfg.imageConfig or oldObjectCfg.defaultImageConfig or oldObjectCfg.orientations, itemOldInfo.directory))
-            widget.setText(string.format("%s",  "races1Label"), "Supported Races  |  Input: "..raceStr)
+            widget.setText(string.format("%s",  "races1Label"), "Supported Races  |  Input: "..raceTable[itemOldRace].name or itemOldRace)
 			oldItemOld = itemOld.name
 			self.newName = nil
 			self.newItem = {}
@@ -185,7 +188,9 @@ function btnUseAll_Clicked(widgetName)
 	else
 		self.useAll = false
 	end
-	updateCostLbl()
+	if itemOld then
+		updateCostLbl()
+	end
 end
 
 function round(num, numDecimalPlaces)
@@ -210,13 +215,13 @@ function raceList_SelectedChanged()
             self.selectedText = itemData.title
             if (itemOld and itemPGI and self.selectedText) or ((itemOld and not itemPGI) and self.selectedText) then
                 --update the preview output image with the value of the associated race.
-                widget.setText(string.format("%s",  "preview_lbl2"), "Output ("..self.selectedText..")" )
+                widget.setText(string.format("%s",  "preview_lbl2"), "Output ("..(raceTable[self.selectedText].name or self.selectedText)..")" )
                 local oldName = itemOldCfg.objectName
                 local oldRace = itemOldRace
                 local base = oldName:gsub(oldRace, ""):gsub("deco", ""):gsub("crew", "")		--Figure out a better way to handle "deco" and "crew" objects
-                self.newName = string.lower(self.selectedText)..base
+                self.newName = self.selectedText..base
 				self.newItem.type = self.itemConversions[oldName] or self.itemConversions[base]
-				self.newItem.name = root.itemConfig(self.newItem.type).config.shortdescription .. " (" .. self.selectedText .. ")"
+				self.newItem.name = root.itemConfig(self.newItem.type).config.shortdescription.. " (" .. (raceTable[self.selectedText].name or self.selectedText) .. ")"
 				local newItemData = raceTable[self.selectedText].items[self.newName]
 				if type(newItemData) == "table" then
 					self.newItem.positionOverride = newItemData
@@ -229,7 +234,7 @@ function raceList_SelectedChanged()
 				local itemNewCfg = itemNewInfo.config
 				if itemNewCfg then
 					widget.setImage("imgPreviewOut", itemNewCfg.placementImage or getPlacementImage(itemNewCfg.orientations, itemNewInfo.directory))
-				elseif string.lower(self.selectedText) == "apex" then
+				elseif self.selectedText == "apex" then
 					self.newName = base
 					itemNewInfo = root.itemConfig(self.newName) or {}
 					local itemNewCfg = itemNewInfo.config
@@ -259,36 +264,34 @@ function buildRaceTable()
 	local raceObjects = config.getParameter("raceObjects")
 	local races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
 	for _, race in pairs (races) do
-		local raceName = race:gsub(race:sub(0,1),race:sub(0,1):upper(),1)
-		local raceData = root.assetJson("/species/" .. race .. ".species")	--could potentially cause errors?
-		if self.raceTableOverride[raceName] and self.raceTableOverride[raceName].race then
-			race = self.raceTableOverride[raceName].race
-			raceName = self.raceTableOverride[raceName].race:gsub(race:sub(0,1),race:sub(0,1):upper(),1)
+		local succeded, raceData = pcall(root.assetJson, "/species/" .. race .. ".species")
+		if self.raceTableOverride[race] and self.raceTableOverride[race].race then
+			race = self.raceTableOverride[race].race
 		end
-		tempRaceTable[raceName] = {}
-		tempRaceTable[raceName].icon = race .. "male.png"
-		if raceData and raceData.charCreationTooltip then
-			tempRaceTable[raceName].name = raceData.charCreationTooltip.title
+		tempRaceTable[race] = {}
+		tempRaceTable[race].icon = race .. "male.png"
+		if succeded and raceData and raceData.charCreationTooltip then
+			tempRaceTable[race].name = raceData.charCreationTooltip.title
 		end
-		tempRaceTable[raceName].items = {}
+		tempRaceTable[race].items = {}
 		for _, objectType in pairs (raceObjects) do
 			local objectInfo = root.itemConfig(race .. objectType)
 			if objectInfo then
-				tempRaceTable[raceName].items[race .. objectType] = true
+				tempRaceTable[race].items[race .. objectType] = true
 			end
 		end
 		local hasObjects = false
-		for object, _ in pairs (tempRaceTable[raceName].items) do
+		for object, _ in pairs (tempRaceTable[race].items) do
 			hasObjects = true
 			break
 		end
 		if not hasObjects then
-			tempRaceTable[raceName] = nil
-			--sb.logInfo("Removing " .. tostring(raceName))
+			tempRaceTable[race] = nil
+			--sb.logInfo("Removing " .. tostring(race))
 		end
 	end
 	for race, info in pairs (self.raceTableOverride) do
-		if race == "Fu_byos" then
+		if race == "fu_byos" then
 			tempRaceTable[race] = {items = {}}
 		end
 		if tempRaceTable[race] then
@@ -298,7 +301,6 @@ function buildRaceTable()
 				for item, itemInfo in pairs (info.items) do
 					if root.itemConfig(item) then
 						tempRaceTable[race].items[item] = itemInfo
-						hasObjects = true
 					end
 				end
 			end
