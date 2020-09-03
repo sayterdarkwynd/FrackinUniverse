@@ -85,6 +85,8 @@ function update(dt)
 
 	if self.maxFuel and self.currentFuel then	
 		widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
+	else
+		widget.setText("lblModuleCount", "<Loading>")
 	end
 
 	if self.setItemMessage and self.setItemMessage:finished() then
@@ -141,6 +143,7 @@ function fuel()
 
 	local item = widget.itemSlotItem("itemSlot_fuel")
 	if (not item) then return end
+	if (not self.currentFuel) or (not self.maxFuel) then return end
 	if (self.currentFuel >= self.maxFuel) then
 		widget.setText("lblEfficiency", "^red;The tank is full.^white;")
 		return
@@ -193,7 +196,7 @@ end
 
 function emptyfuel(hidden)
 	if not ((world.type()=="mechtestbasic") or self.enabled) then return end
-	if (self.currentFuel > 0) or (self.currentFuel < 0) then
+	if self.currentFuel and ((self.currentFuel > 0) or (self.currentFuel < 0)) then
 		--local item = widget.itemSlotItem("itemSlot_fuel")
 		local id = player.id()
 		localFuelType = nil
@@ -246,7 +249,9 @@ end
 
 function fuelCountPreview(item)
 	if not item then
-		widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
+		if self.currentFuel and self.maxFuel then
+			widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
+		end
 		return
 	end
 
