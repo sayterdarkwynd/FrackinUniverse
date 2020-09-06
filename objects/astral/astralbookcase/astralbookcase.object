@@ -1,0 +1,49 @@
+{
+	"objectName": "astralbookcase",
+	"colonyTags": ["fu", "aether", "pretty", "valuable", "knowledge", "storage"],
+	"rarity": "Legendary",
+	"objectType": "container",
+	"tooltipKind": "container",
+	"description": "A stellar bookcase, perfect for storing your mad ramblings about physics.",
+	"shortdescription": "Aen Bookcase",
+	"race": "generic",
+	"category": "storage",
+	"price": 110,
+	"health": 1.5,
+	"lightColor" : [120, 20, 180],
+
+	"inventoryIcon": "icon.png",
+	"orientations" : [
+    {
+      "imageLayers" : [ { "image" : "astralbookcase.png:<color>" }, { "image" : "astralbookcasefullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    },
+    {
+      "imageLayers" : [ { "image" : "astralbookcase.png:<color>" }, { "image" : "astralbookcasefullbright.png:<color>", "fullbright" : true } ],
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+	"openSounds": ["/sfx/objects/bookcase_open.ogg"],
+	"closeSounds": ["/sfx/objects/bookcase_close.ogg"],
+	"slotCount": 32,
+	"uiConfig" : "/interface/chests/cdx/chest<slots>.config",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600
+
+}
