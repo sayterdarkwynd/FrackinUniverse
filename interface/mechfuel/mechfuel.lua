@@ -84,7 +84,7 @@ function update(dt)
 	end
 
 	if self.maxFuel and self.currentFuel then	
-		widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
+		widget.setText("lblModuleCount", string.format("%.02f", self.currentFuel) .. " / " .. self.maxFuel)
 	else
 		widget.setText("lblModuleCount", "<Loading>")
 	end
@@ -150,13 +150,13 @@ function fuel()
 	end
 	local id = player.id()
 
-	local fuelMultiplier = 1
+	local fuelMultiplier = 0
 	local fuelBonus = 0
 	local localFuelType = ""
 	
 	local fuelData = self.fuels[item.name]
 	if fuelData then
-		fuelMultiplier = fuelData.fuelMultiplier
+		fuelMultiplier = fuelData.fuelMultiplier or fuelMultiplier
 		localFuelType = fuelData.fuelType 
 	end
 	if fuelMultiplier == 0 then return end
@@ -170,13 +170,16 @@ function fuel()
 	local fuelWillAdd=math.min(fuelCanAdd,math.max(self.maxFuel-self.currentFuel,0))
 	local fuelItemConsume=fuelWillAdd/fuelMultiplier
 	local shimmy = fuelItemConsume%1
-	if shimmy > 0 then
-	shimmy=fuelItemConsume
-	fuelItemConsume=math.floor(fuelItemConsume)
-	shimmy=fuelItemConsume/shimmy
-	fuelWillAdd=shimmy*fuelWillAdd
+
+	if (fuelItemConsume == shimmy) and (fuelCanAdd > 0) then
+		fuelItemConsume=1
+	elseif shimmy > 0 then
+		shimmy=fuelItemConsume
+		fuelItemConsume=math.floor(fuelItemConsume)
+		shimmy=fuelItemConsume/shimmy
+		fuelWillAdd=shimmy*fuelWillAdd
 	end
-	
+
 	if fuelWillAdd > 0 then
 		item.count=item.count-fuelItemConsume
 		if item.count == 0 then
@@ -250,7 +253,7 @@ end
 function fuelCountPreview(item)
 	if not item then
 		if self.currentFuel and self.maxFuel then
-			widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
+			widget.setText("lblModuleCount", string.format("%.02f",self.currentFuel) .. " / " .. self.maxFuel)
 		end
 		return
 	end
@@ -270,7 +273,7 @@ function fuelCountPreview(item)
 		addFuelCount = self.maxFuel
 	end
 
-	widget.setText("lblModuleCount", "^" .. textColor .. ";" .. string.format("%.02f", addFuelCount) .. "^white; / " .. math.floor(self.maxFuel))
+	widget.setText("lblModuleCount", "^" .. textColor .. ";" .. string.format("%.02f", addFuelCount) .. "^white; / " .. self.maxFuel)
 end
 
 function setFuelTypeText(type)
