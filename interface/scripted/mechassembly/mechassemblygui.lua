@@ -31,10 +31,10 @@ function init()
   self.imageBasePath = config.getParameter("imageBasePath")
   
   local getUnlockedMessage = world.sendEntityMessage(player.id(), "mechUnlocked")
-  self.unlocked = true
+  self.unlocked = true   --player.getProperty("mechUnlocked", false)
   
   if getUnlockedMessage:finished() and getUnlockedMessage:succeeded() then
-    local unlocked = true
+    local unlocked = true  --getUnlockedMessage:result()
     if not unlocked then
       self.disabled = true
       widget.setVisible("imgDisabledOverlay", true)
