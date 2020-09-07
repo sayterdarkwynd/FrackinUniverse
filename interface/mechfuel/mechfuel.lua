@@ -11,7 +11,7 @@ function init()
 	self.getUnlockedMessage = self.getUnlockedMessage or world.sendEntityMessage(player.id(), "mechUnlocked")
 	if self.getUnlockedMessage:finished() then
 		if self.getUnlockedMessage:succeeded() then
-			local unlocked = self.getUnlockedMessage:result()
+			local unlocked = true --self.getUnlockedMessage:result()
 			self.enabled=not not unlocked
 			lockDisplay(not (self.enabled or (world.type()=="mechtestbasic")))
 			self.didInit=true
