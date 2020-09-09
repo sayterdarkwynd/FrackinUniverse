@@ -2,98 +2,171 @@ require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
 require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
 require "/zb/zb_textTyper.lua"
+require "/zb/zb_util.lua"
 
 function init()
 	textData = {}
 	textUpdateDelay = config.getParameter("textUpdateDelay")
 	chatterSound = config.getParameter("chatterSound")
+	local sailImages = root.assetJson("/ai/ai.config").species
+	local race = player.species()
+	sailImage = config.getParameter("sailImage")
+	sailImage.aiImage.image = sailImage.aiImage.image:gsub("<fileName>", sailImages[race].aiFrames)
+	sailImage.aiImage.defaultUpdateTime = sailImage.aiImage.updateTime
+	sailImage.aiImage.currentFrame = 0
+	sailImage.scanlines.defaultUpdateTime = sailImage.scanlines.updateTime
+	sailImage.scanlines.currentFrame = 0
+	sailImage.static.image = sailImage.static.image:gsub("<fileName>", sailImages[race].staticFrames)
+	sailImage.static.defaultUpdateTime = sailImage.static.updateTime
+	sailImage.static.currentFrame = 0
+	sailImage.aiFaceCanvas = widget.bindCanvas("aiFaceCanvas")
+	updateAiImage()
+	states = config.getParameter("states")
+	state = {}
+	if world.getProperty("fuChosenShip") then
+		changeState("shipChosen")
+	else
+		changeState("initial")
+	end
+	
+	pane.playSound(chatterSound, -1)
+	
 	defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
 	byosItems = config.getParameter("byosItems")
-	aiFaceCanvas = widget.bindCanvas("aiFaceCanvas")
-	aiImage = {image = config.getParameter("aiImage")}
-	aiImage.frames = config.getParameter("aiFrames") - 1
-	aiImage.updateTime = config.getParameter("aiUpdateTime")
-	aiImage.currentFrame = 0
-	scanlines = {image = config.getParameter("scanlinesImage")}
-	scanlines.frames = config.getParameter("scanlinesFrames") - 1
-	scanlines.updateTime = config.getParameter("scanlinesUpdateTime")
-	scanlines.currentFrame = 0
-	static = {image = config.getParameter("staticImage")}
-	static.frames = config.getParameter("staticFrames") - 1
-	static.updateTime = config.getParameter("staticUpdateTime")
-	static.currentFrame = 0
-	updateAiImage()
-	local sailText
-	if world.getProperty("fuChosenShip") then
-		sailText = config.getParameter("shipChosen")
-	else
-		sailText = config.getParameter("shipStatus")
-	end
-	textTyper.init(textData, sailText)
-	widget.setButtonEnabled("showMissions", false)
-	widget.setButtonEnabled("showCrew", false)
-	pane.playSound(chatterSound, -1)
 end
 
 function update(dt)
+	-- Text typing and AI animation
 	if not textData.isFinished then
 		if textUpdateDelay <= 0 then
-			textTyper.update(textData, "shipStatusText")
+			textTyper.update(textData, "root.text")
 			textUpdateDelay = config.getParameter("textUpdateDelay")
 		else
 			textUpdateDelay = textUpdateDelay - 1
 		end
-		if aiImage.updateTime <= 0 then
-			aiImage.currentFrame = updateFrame(aiImage)
-			aiImage.updateTime = config.getParameter("aiUpdateTime")
+		if sailImage.aiImage.updateTime <= 0 then
+			sailImage.aiImage.currentFrame = updateFrame(sailImage.aiImage)
+			sailImage.aiImage.updateTime = sailImage.aiImage.defaultUpdateTime
 		else
-			aiImage.updateTime = aiImage.updateTime - dt
+			sailImage.aiImage.updateTime = sailImage.aiImage.updateTime - dt
 		end
 	else
 		pane.stopAllSounds(chatterSound)
-		if aiImage.currentFrame ~= aiImage.frames and aiImage.updateTime <= 0 then
-			aiImage.currentFrame = updateFrame(aiImage)
-			aiImage.updateTime = config.getParameter("aiUpdateTime")
+		-- change the ai image to the idle one if there is no text being typed
+		if sailImage.aiImage.updateTime <= 0 then
+			sailImage.aiImage.currentFrame = 0
+			sailImage.aiImage.image = sailImage.aiImage.image:gsub(":talk", ":idle")
+			sailImage.aiImage.updateTime = sailImage.aiImage.defaultUpdateTime
 		else
-			aiImage.updateTime = aiImage.updateTime - dt
+			sailImage.aiImage.updateTime = sailImage.aiImage.updateTime - dt
 		end
 		if not world.getProperty("fuChosenShip") then
 			widget.setButtonEnabled("showMissions", true)
 			widget.setButtonEnabled("showCrew", true)
 		end
 	end
-	if scanlines.updateTime <= 0 then
-		scanlines.currentFrame = updateFrame(scanlines)
-		scanlines.updateTime = config.getParameter("scanlinesUpdateTime")
+	
+	-- Scan lines animation
+	if sailImage.scanlines.updateTime <= 0 then
+		sailImage.scanlines.currentFrame = updateFrame(sailImage.scanlines)
+		sailImage.scanlines.updateTime = sailImage.scanlines.defaultUpdateTime
 	else
-		scanlines.updateTime = scanlines.updateTime - dt
+		sailImage.scanlines.updateTime = sailImage.scanlines.updateTime - dt
 	end
-	if static.updateTime <= 0 then
-		static.currentFrame = updateFrame(static)
-		static.updateTime = config.getParameter("staticUpdateTime")
+	
+	-- Static animation
+	if sailImage.static.updateTime <= 0 then
+		sailImage.static.currentFrame = updateFrame(sailImage.static)
+		sailImage.static.updateTime = sailImage.static.defaultUpdateTime
 	else
-		static.updateTime = static.updateTime - dt
+		sailImage.static.updateTime = sailImage.static.updateTime - dt
 	end
+	
 	updateAiImage()
+end
+
+function changeState(newState)
+	if states[newState] then
+		-- Generic state change stuff
+		state = states[newState]
+		if state.previousState then
+			widget.setButtonEnabled("buttonBack", true)
+		else
+			widget.setButtonEnabled("buttonBack", false)
+		end
+		if state.buttons then
+			for i = 1, 3 do
+				if state.buttons[i] then
+					widget.setButtonEnabled("button" .. i, true)
+					widget.setText("button" .. i, state.buttons[i].name)
+				else
+					widget.setButtonEnabled("button" .. i, false)
+					widget.setText("button" .. i, "")
+				end
+			end
+		else
+			for i = 1, 3 do
+				widget.setButtonEnabled("button" .. i, false)
+				widget.setText("button" .. i, "")
+			end
+		end
+		
+		-- State specific state change stuff
+		if newState == "fuShipChosen" then
+			byos()
+			changeState("shipChosen")
+		elseif newState == "vanillaShipChosen" then
+			racial()
+			changeState("shipChosen")
+		end
+		
+		textData = {}
+		textTyper.init(textData, state.text or "WARNING! MISSING TEXT FOR STATE " .. tostring(newState))
+	else
+		textData = {}
+		textTyper.init(textData, state.text or "ERROR! " .. tostring(newState) .. "STATE NOT DEFINED")
+	end
 end
 
 function updateFrame(imageTable)
 	imageTable.currentFrame = imageTable.currentFrame + 1
-	if imageTable.currentFrame > imageTable.frames then
+	if imageTable.currentFrame >= imageTable.frames then
 		imageTable.currentFrame = 0
 	end
 	return imageTable.currentFrame
 end
 
 function updateAiImage()
-	aiFaceCanvas:clear()
-	aiFaceCanvas:drawImage(aiImage.image:gsub("<frame>", aiImage.currentFrame), vec2.div(aiFaceCanvas:size(), 2), 2, nil, true)
-	aiFaceCanvas:drawImage(scanlines.image:gsub("<frame>", scanlines.currentFrame), vec2.div(aiFaceCanvas:size(), 2), 1, nil, true)
-	aiFaceCanvas:drawImage(static.image:gsub("<frame>", static.currentFrame), vec2.div(aiFaceCanvas:size(), 2), 1, nil, true)
+	sailImage.aiFaceCanvas:clear()
+	sailImage.aiFaceCanvas:drawImage(sailImage.aiImage.image:gsub("<frame>", sailImage.aiImage.currentFrame), {0,0})
+	sailImage.aiFaceCanvas:drawImage(sailImage.scanlines.image:gsub("<frame>", sailImage.scanlines.currentFrame), {0,0}, nil, "#FFFFFF"..zbutil.ValToHex(sailImage.scanlines.opacity), false)
+	sailImage.aiFaceCanvas:drawImage(sailImage.static.image:gsub("<frame>", sailImage.static.currentFrame), {0,0}, nil, "#FFFFFF"..zbutil.ValToHex(sailImage.static.opacity), false)
 end
 
 function uninit()
 	pane.stopAllSounds(chatterSound)
+end
+
+function buttonPress(button)
+	if button then
+		local buttonType = button:gsub("button", "")
+		if buttonType == "1" then
+			changeState(state.buttons[1].newState)
+		elseif buttonType == "2" then
+			changeState(state.buttons[2].newState)
+		elseif buttonType == "3" then
+			changeState(state.buttons[3].newState)
+		elseif buttonType == "Back" then
+			changeState(state.previousState)
+		elseif buttonType == "Byos" then
+		
+		elseif buttonType == "Racial" then
+		
+		else
+			textData = {}
+			textTyper.init(textData, state.text or "ERROR! INVALID BUTTON PRESSED")
+		end
+	end
 end
 
 function byos()
