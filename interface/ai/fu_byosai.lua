@@ -5,22 +5,24 @@ require "/zb/zb_textTyper.lua"
 require "/zb/zb_util.lua"
 
 function init()
-	textData = {}
 	textUpdateDelay = config.getParameter("textUpdateDelay")
 	chatterSound = config.getParameter("chatterSound")
 	local sailImages = root.assetJson("/ai/ai.config").species
 	local race = player.species()
+	local aiImageFile = sailImages[race].aiFrames
 	sailImage = config.getParameter("sailImage")
-	sailImage.aiImage.image = sailImage.aiImage.image:gsub("<fileName>", sailImages[race].aiFrames)
-	sailImage.aiImage.defaultUpdateTime = sailImage.aiImage.updateTime
-	sailImage.aiImage.currentFrame = 0
+	sailImage.aiImage.talk.image = sailImage.aiImage.talk.image:gsub("<fileName>", aiImageFile)
+	sailImage.aiImage.talk.defaultUpdateTime = sailImage.aiImage.talk.updateTime
+	sailImage.aiImage.talk.currentFrame = 0
+	sailImage.aiImage.idle.image = sailImage.aiImage.idle.image:gsub("<fileName>", aiImageFile)
+	sailImage.aiImage.idle.defaultUpdateTime = sailImage.aiImage.idle.updateTime
+	sailImage.aiImage.idle.currentFrame = 0
 	sailImage.scanlines.defaultUpdateTime = sailImage.scanlines.updateTime
 	sailImage.scanlines.currentFrame = 0
 	sailImage.static.image = sailImage.static.image:gsub("<fileName>", sailImages[race].staticFrames)
 	sailImage.static.defaultUpdateTime = sailImage.static.updateTime
 	sailImage.static.currentFrame = 0
 	sailImage.aiFaceCanvas = widget.bindCanvas("aiFaceCanvas")
-	updateAiImage()
 	states = config.getParameter("states")
 	state = {}
 	if world.getProperty("fuChosenShip") then
@@ -28,9 +30,12 @@ function init()
 	else
 		changeState("initial")
 	end
+	updateAiImage()
 	
 	pane.playSound(chatterSound, -1)
 	
+	-- temp stuff for pre-choosable BYOS
+	selectedShip = {name = "Default BYOS", mode = "Buildable"}
 	defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
 	byosItems = config.getParameter("byosItems")
 end
@@ -44,21 +49,21 @@ function update(dt)
 		else
 			textUpdateDelay = textUpdateDelay - 1
 		end
-		if sailImage.aiImage.updateTime <= 0 then
-			sailImage.aiImage.currentFrame = updateFrame(sailImage.aiImage)
-			sailImage.aiImage.updateTime = sailImage.aiImage.defaultUpdateTime
+		if sailImage.aiImage[sailImage.aiImage.mode].updateTime <= 0 then
+			sailImage.aiImage[sailImage.aiImage.mode].currentFrame = updateFrame(sailImage.aiImage[sailImage.aiImage.mode])
+			sailImage.aiImage[sailImage.aiImage.mode].updateTime = sailImage.aiImage[sailImage.aiImage.mode].defaultUpdateTime
 		else
-			sailImage.aiImage.updateTime = sailImage.aiImage.updateTime - dt
+			sailImage.aiImage[sailImage.aiImage.mode].updateTime = sailImage.aiImage[sailImage.aiImage.mode].updateTime - dt
 		end
 	else
 		pane.stopAllSounds(chatterSound)
 		-- change the ai image to the idle one if there is no text being typed
-		if sailImage.aiImage.updateTime <= 0 then
-			sailImage.aiImage.currentFrame = 0
-			sailImage.aiImage.image = sailImage.aiImage.image:gsub(":talk", ":idle")
-			sailImage.aiImage.updateTime = sailImage.aiImage.defaultUpdateTime
+		if sailImage.aiImage[sailImage.aiImage.mode].updateTime <= 0 then
+			sailImage.aiImage.mode = "idle"
+			sailImage.aiImage[sailImage.aiImage.mode].currentFrame = updateFrame(sailImage.aiImage[sailImage.aiImage.mode])
+			sailImage.aiImage[sailImage.aiImage.mode].updateTime = sailImage.aiImage[sailImage.aiImage.mode].defaultUpdateTime
 		else
-			sailImage.aiImage.updateTime = sailImage.aiImage.updateTime - dt
+			sailImage.aiImage[sailImage.aiImage.mode].updateTime = sailImage.aiImage[sailImage.aiImage.mode].updateTime - dt
 		end
 		if not world.getProperty("fuChosenShip") then
 			widget.setButtonEnabled("showMissions", true)
@@ -118,14 +123,29 @@ function changeState(newState)
 		elseif newState == "vanillaShipChosen" then
 			racial()
 			changeState("shipChosen")
+		elseif newState == "fuShipSelected" then
+			if state.text then
+				state.text = state.text:gsub("<shipName>", tostring(selectedShip.name)):gsub("<shipMode>", tostring(selectedShip.mode))
+			end
+			if state.path then
+				state.path = state.path:gsub("<shipMode>", string.lower(tostring(selectedShip.mode)))
+			end
 		end
 		
-		textData = {}
-		textTyper.init(textData, state.text or "WARNING! MISSING TEXT FOR STATE " .. tostring(newState))
+		if state.path then
+			widget.setText("path", state.path)
+		end
+		typeText(state.text or "WARNING! MISSING TEXT FOR STATE " .. tostring(newState))
 	else
-		textData = {}
-		textTyper.init(textData, state.text or "ERROR! " .. tostring(newState) .. "STATE NOT DEFINED")
+		typeText(textData, state.text or "ERROR! " .. tostring(newState) .. "STATE NOT DEFINED")
 	end
+end
+
+function typeText(text)
+	sailImage.aiImage.mode = "talk"
+	textData = {}
+	textTyper.init(textData, text)
+	pane.playSound(chatterSound, -1)
 end
 
 function updateFrame(imageTable)
@@ -138,7 +158,7 @@ end
 
 function updateAiImage()
 	sailImage.aiFaceCanvas:clear()
-	sailImage.aiFaceCanvas:drawImage(sailImage.aiImage.image:gsub("<frame>", sailImage.aiImage.currentFrame), {0,0})
+	sailImage.aiFaceCanvas:drawImage(sailImage.aiImage[sailImage.aiImage.mode].image:gsub("<frame>", sailImage.aiImage[sailImage.aiImage.mode].currentFrame), {0,0})
 	sailImage.aiFaceCanvas:drawImage(sailImage.scanlines.image:gsub("<frame>", sailImage.scanlines.currentFrame), {0,0}, nil, "#FFFFFF"..zbutil.ValToHex(sailImage.scanlines.opacity), false)
 	sailImage.aiFaceCanvas:drawImage(sailImage.static.image:gsub("<frame>", sailImage.static.currentFrame), {0,0}, nil, "#FFFFFF"..zbutil.ValToHex(sailImage.static.opacity), false)
 end
@@ -163,8 +183,7 @@ function buttonPress(button)
 		elseif buttonType == "Racial" then
 		
 		else
-			textData = {}
-			textTyper.init(textData, state.text or "ERROR! INVALID BUTTON PRESSED")
+			typeText("ERROR! INVALID BUTTON PRESSED")
 		end
 	end
 end
@@ -183,7 +202,6 @@ function byos()
 		end
 		world.sendEntityMessage("bootup", "byos", player.species())
 		world.setProperty("fuChosenShip", true)
-		pane.dismiss()
 	end
 end
 
@@ -196,7 +214,6 @@ function racial()
 		player.startQuest("fu_shipupgrades")
 		player.upgradeShip(defaultShipUpgrade)
 		world.setProperty("fuChosenShip", true)
-		pane.dismiss()
 	end
 end
 
