@@ -34,9 +34,11 @@ function init()
   
   self.ableToSystemTravel = contains(player.shipUpgrades().capabilities, "planetTravel") or (world.getProperty("fu_byos.systemTravel") or 0) > 0
   self.fu_text = config.getParameter("fu_text")
+  self.onOwnShip = player.ownShipWorldId() == player.worldId()
+  local canTravel = contains(player.shipUpgrades().capabilities, "planetTravel") or (world.getProperty("fu_byos.planetTravel") or 0) > 0
 
   self.state = FSM:new()
-  if not contains(player.shipUpgrades().capabilities, "planetTravel") and (world.getProperty("fu_byos.planetTravel") or 0) <= 0 then
+  if (not canTravel or not self.onOwnShip) and not player.isAdmin() then
     self.state:set(disabledState)
   elseif celestial.skyInHyperspace() and celestial.currentSystem() then
     self.state:set(transitState)
@@ -483,8 +485,10 @@ end
 function disabledState()
   View:reset()
   widget.setVisible("disabledLabel", true)
-
-  if player.hasCompletedQuest("human_mission1") then
+  
+  if not self.onOwnShip then
+	widget.setText("disabledLabel", tostring(self.fu_text.notOnOwnShip))
+  elseif player.hasCompletedQuest("human_mission1") then
     widget.setText("disabledLabel", tostring(self.fu_text.noFTL))
   else
     widget.setText("disabledLabel", tostring(self.fu_text.navOffline))
