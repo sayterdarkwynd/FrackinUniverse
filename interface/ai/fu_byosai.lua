@@ -117,9 +117,11 @@ function changeState(newState)
 				widget.setText("button" .. i, "")
 			end
 		end
+		widget.setVisible("root", true)
 		widget.setVisible("buttonByos", false)
-		widget.setVisible("buttonRacial", false)
+		widget.setVisible("buttonUpgradable", false)
 		widget.setVisible("root.shipList", false)
+		widget.setVisible("preview", false)
 		widget.setSize("root", {144,136})
 		widget.clearListItems("root.shipList")
 		
@@ -132,26 +134,32 @@ function changeState(newState)
 			changeState("shipChosen")
 		elseif newState == "fuShipSelected" then
 			-- temp (remove when choosable byos is added)
-			ship.selectedShip = ship.shipConfig.byosShips[1]
-			ship.selectedShip.mode = "Buildable"
-			if state.text then
+			--ship.selectedShip = ship.shipConfig.byosShips[1]
+			--ship.selectedShip.mode = "Buildable"
+			if state.text and ship.selectedShip then	-- improve this later
 				state.text = state.text:gsub("<shipName>", tostring(ship.selectedShip.name)):gsub("<shipMode>", tostring(ship.selectedShip.mode))
 			end
-			if state.path then
+			if state.path and ship.selectedShip then
 				state.path = state.path:gsub("<shipMode>", string.lower(tostring(ship.selectedShip.mode)))
 			end
 		elseif newState == "fuShipChoice" then
 			widget.setVisible("buttonByos", true)
-			widget.setVisible("buttonRacial", true)
+			widget.setVisible("buttonUpgradable", true)
 			widget.setVisible("root.shipList", true)
 			for i = 1, 3 do
 				widget.setButtonEnabled("button" .. i, false)
 			end
 			widget.setSize("root", {144,118})
-			if selectedShip and selectedShip.mode == "racial" then
-				buttonPress("buttonRacial")
+			if ship.selectedShip and ship.selectedShip.mode == "Racial" then
+				buttonPress("buttonUpgradable")
 			else
 				buttonPress("buttonByos")
+			end
+		elseif newState == "fuShipPreview" then
+			widget.setVisible("root", false)
+			if ship.selectedShip then
+				widget.setVisible("preview", true)
+				widget.setImage("preview", ship.selectedShip.previewImage or "")
 			end
 		end
 		
@@ -203,20 +211,31 @@ function buttonPress(button)
 			changeState(state.previousState)
 		elseif buttonType == "Byos" then
 			widget.setButtonEnabled("buttonByos", false)
-			widget.setButtonEnabled("buttonRacial", true)
+			widget.setButtonEnabled("buttonUpgradable", true)
 			if not ship.byosShips then
 				generateByosShipList()
 			end
 			populateShipList(ship.byosShips)
-		elseif buttonType == "Racial" then
+		elseif buttonType == "Upgradable" then
 			widget.setButtonEnabled("buttonByos", true)
-			widget.setButtonEnabled("buttonRacial", false)
+			widget.setButtonEnabled("buttonUpgradable", false)
 			if not ship.racialShips then
 				generateRacialShipList()
 			end
 			populateShipList(ship.racialShips)
 		else
 			typeText("ERROR! INVALID BUTTON PRESSED")
+		end
+	end
+end
+
+function shipSelected(args)
+	local selected = widget.getListSelected("root.shipList")
+	if selected then
+		selected = "root.shipList."..selected
+		ship.selectedShip = widget.getData(selected)
+		for i = 1, 2 do
+			widget.setButtonEnabled("button" .. i, true)
 		end
 	end
 end
@@ -243,7 +262,8 @@ function generateRacialShipList()
 	end
 	for _, race in pairs (races) do
 		local shipData = {}
-		shipData.type = racialShipData[race][ship.shipConfig.racialShips.shipLevel]
+		shipData.type = racialShipData[race]
+		shipData.startingLevel = ship.shipConfig.racialShips.shipLevel
 		local succeded, raceData = pcall(root.assetJson, "/species/" .. race .. ".species")
 		if succeded and raceData then
 			shipData.name = raceData.charCreationTooltip.title
@@ -251,7 +271,12 @@ function generateRacialShipList()
 			shipData.name = race
 		end
 		shipData.icon = race .. "male.png"
-		shipData.previewImage = ""	-- make it grab the ship image
+		local succeded2, previewImage = pcall(getStructureShipImage, shipData.type[shipData.startingLevel])
+		if succeded2 then
+			shipData.previewImage = previewImage
+		else
+			sb.logInfo(sb.printJson(previewImage))
+		end
 		shipData.mode = "Racial"
 		if raceOverrides[race] then
 			shipData.name = raceOverrides[race].name or shipData.name
@@ -267,12 +292,31 @@ end
 function populateShipList(shipList)
 	widget.clearListItems("root.shipList")
 	for _, shipData in ipairs (shipList) do
-		local listItem = "root.shipList."..widget.addListItem("root.shipList")		
+		local listItemName = widget.addListItem("root.shipList")
+		local listItem = "root.shipList."..listItemName	
 		widget.setText(listItem..".name", shipData.name)
 		widget.setData(listItem, shipData)
 		if shipData.icon then
 			widget.setImage(listItem..".icon", shipData.icon)
 		end
+		if ship.selectedShip and ship.selectedShip.type == shipData.type and ship.selectedShip.name == shipData.name then
+			widget.setListSelected("root.shipList", listItemName)
+			shipSelected("shipList")
+		end
+	end
+end
+
+function getStructureShipImage(file)
+	if file then
+		local shipConfig = root.assetJson(file)
+		local reversedFile = string.reverse(file)
+		local snipLocation = string.find(reversedFile, "/")
+		local shipImagePathGsub = string.sub(file, -snipLocation + 1)
+		local shipImage = shipConfig.backgroundOverlays[1].image
+		if not string.find(shipImage, "/") then
+			shipImage = file:gsub(shipImagePathGsub, shipImage)
+		end
+		return shipImage
 	end
 end
 
