@@ -61,7 +61,8 @@ function checkDamage(notifications)
   end
 end
 ]]
--- Ticks on every update regardless if this is the active ability
+
+-- Ticks on every update regardless of whether this is the active ability
 function MeleeSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
