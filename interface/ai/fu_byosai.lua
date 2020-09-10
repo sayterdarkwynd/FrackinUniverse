@@ -134,8 +134,8 @@ function changeState(newState)
 			changeState("shipChosen")
 		elseif newState == "fuShipSelected" then
 			-- temp (remove when choosable byos is added)
-			--ship.selectedShip = ship.shipConfig.byosShips[1]
-			--ship.selectedShip.mode = "Buildable"
+			ship.selectedShip = ship.shipConfig.byosShips[1]
+			ship.selectedShip.mode = "Buildable"
 			if state.text and ship.selectedShip then	-- improve this later
 				state.text = state.text:gsub("<shipName>", tostring(ship.selectedShip.name)):gsub("<shipMode>", tostring(ship.selectedShip.mode))
 			end
