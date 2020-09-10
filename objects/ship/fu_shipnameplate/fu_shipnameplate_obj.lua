@@ -5,21 +5,21 @@ function init()
     object.setInteractive(true)
     
     message.setHandler("unsetIdent", function()
-        onOwnShip = true
-        sb.logInfo("Player is on their own ship!")
+        storage.onOwnShip = true
+        --sb.logInfo("Player is on their own ship!")
     end)
     
-    --temp
-    --onOwnShip = true
+	shipOwner = world.getProperty("fu_byos.owner")
+	text = config.getParameter("text")
 end
 
-function die()
-    if(onOwnShip == true) then
+function die(args)
+	sb.logInfo(sb.printJson(args))
+    if(storage.onOwnShip == true) then
         -- Reset so players show lack of ship indent.
         world.setProperty("byosShipName", nil)
         world.setProperty("byosShipType", nil)
         world.setProperty("byosShipDate", nil)
-        hasBeenSet = false
     end
 end
 
@@ -28,20 +28,19 @@ function update(dt)
 end
 
 function onInteraction(args)
-    shipName = world.getProperty("byosShipName")
-    shipType = world.getProperty("byosShipType")
-    shipDate = world.getProperty("byosShipDate")
-	sb.logInfo(sb.printJson(args))
+    local shipName = world.getProperty("byosShipName")
+    local shipType = world.getProperty("byosShipType")
+    local shipDate = world.getProperty("byosShipDate")
     
-    if(shipName ~= nil and shipType ~= nil and shipDate ~= nil) then 
-        hasBeenSet = true
+    if (shipName ~= nil and shipType ~= nil and shipDate ~= nil) then
+		local displayText = tostring(text.shipNamed):gsub("<shipName>", tostring(shipName)):gsub("<shipDate>", tostring(shipDate)):gsub("<shipType>", tostring(shipType))
+        --return { "ShowPopup", {message = displayText:gsub("<shipName>", shipName):gsub("<shipDate>", shipDate):gsub("<shipType>", shipType), title = "Ship Commemoration Plaque", sound = ""}}
+        object.say(displayText)
     else
-        hasBeenSet = false
-    end
-    if hasBeenSet == true then
-        --return { "ShowPopup", {message = "Reading the plaque, it says the ship name is: ^red;"..shipName.."^white;.\nConstructed On: ^green;"..shipDate.."\n^white;It's classification is ^cyan;"..shipType, title = "Ship Commemoration Plaque", sound = ""}}
-        object.say("Reading the plaque, it says the ship name is: ^red;"..shipName.."^white;.\nConstructed On: ^green;"..shipDate.."\n^white;It's classification is ^cyan;"..shipType)
-    else
-        return { "ScriptPane", "/interface/shipnameplate/fu_shipnameplate.config" }
+		if world.entityUniqueId(args.sourceId) == shipOwner then
+			return { "ScriptPane", "/interface/shipnameplate/fu_shipnameplate.config"}
+		else
+			return { "ShowPopup", {message = tostring(text.notOnOwnShip)}}
+		end
     end
 end

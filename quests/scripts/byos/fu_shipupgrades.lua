@@ -12,10 +12,6 @@ function init()
 	fuelEfficiencyShipOld = 0
 	shipSpeedShipOld = 0
 	beamDownTimer = 0
-	
-	if player.worldId() == player.ownShipWorldId() then
-		world.setProperty("fu_byos.owner", player.uniqueId())
-	end
 end
 
 function update(dt)
@@ -69,6 +65,7 @@ function update(dt)
 					player.giveBlueprint(recipe)
 				end
 			end
+			world.setProperty("fu_byos.owner", player.uniqueId())
 		end
 		if shipLevel == 0 then
 			shipCrewSize = status.statusProperty("byosCrewSize", 0)
