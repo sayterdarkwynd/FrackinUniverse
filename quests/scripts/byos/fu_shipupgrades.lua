@@ -65,6 +65,7 @@ function update(dt)
 					player.giveBlueprint(recipe)
 				end
 			end
+			world.setProperty("fu_byos.owner", player.uniqueId())
 		end
 		if shipLevel == 0 then
 			shipCrewSize = status.statusProperty("byosCrewSize", 0)
