@@ -34,8 +34,10 @@ function init()
 	
 	pane.playSound(chatterSound, -1)
 	
+	ship = {}
+	ship.shipConfig = root.assetJson("/ships/fu_ship.config")
+	
 	-- temp stuff for pre-choosable BYOS
-	selectedShip = {name = "Default BYOS", mode = "Buildable"}
 	defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
 	byosItems = config.getParameter("byosItems")
 end
@@ -115,6 +117,11 @@ function changeState(newState)
 				widget.setText("button" .. i, "")
 			end
 		end
+		widget.setVisible("buttonByos", false)
+		widget.setVisible("buttonRacial", false)
+		widget.setVisible("root.shipList", false)
+		widget.setSize("root", {144,136})
+		widget.clearListItems("root.shipList")
 		
 		-- State specific state change stuff
 		if newState == "fuShipChosen" then
@@ -124,11 +131,27 @@ function changeState(newState)
 			racial()
 			changeState("shipChosen")
 		elseif newState == "fuShipSelected" then
+			-- temp (remove when choosable byos is added)
+			ship.selectedShip = ship.shipConfig.byosShips[1]
+			ship.selectedShip.mode = "Buildable"
 			if state.text then
-				state.text = state.text:gsub("<shipName>", tostring(selectedShip.name)):gsub("<shipMode>", tostring(selectedShip.mode))
+				state.text = state.text:gsub("<shipName>", tostring(ship.selectedShip.name)):gsub("<shipMode>", tostring(ship.selectedShip.mode))
 			end
 			if state.path then
-				state.path = state.path:gsub("<shipMode>", string.lower(tostring(selectedShip.mode)))
+				state.path = state.path:gsub("<shipMode>", string.lower(tostring(ship.selectedShip.mode)))
+			end
+		elseif newState == "fuShipChoice" then
+			widget.setVisible("buttonByos", true)
+			widget.setVisible("buttonRacial", true)
+			widget.setVisible("root.shipList", true)
+			for i = 1, 3 do
+				widget.setButtonEnabled("button" .. i, false)
+			end
+			widget.setSize("root", {144,118})
+			if selectedShip and selectedShip.mode == "racial" then
+				buttonPress("buttonRacial")
+			else
+				buttonPress("buttonByos")
 			end
 		end
 		
@@ -137,7 +160,7 @@ function changeState(newState)
 		end
 		typeText(state.text or "WARNING! MISSING TEXT FOR STATE " .. tostring(newState))
 	else
-		typeText(textData, state.text or "ERROR! " .. tostring(newState) .. "STATE NOT DEFINED")
+		typeText(textData, "ERROR! " .. tostring(newState) .. " STATE NOT DEFINED")
 	end
 end
 
@@ -179,13 +202,91 @@ function buttonPress(button)
 		elseif buttonType == "Back" then
 			changeState(state.previousState)
 		elseif buttonType == "Byos" then
-		
+			widget.setButtonEnabled("buttonByos", false)
+			widget.setButtonEnabled("buttonRacial", true)
+			if not ship.byosShips then
+				generateByosShipList()
+			end
+			populateShipList(ship.byosShips)
 		elseif buttonType == "Racial" then
-		
+			widget.setButtonEnabled("buttonByos", true)
+			widget.setButtonEnabled("buttonRacial", false)
+			if not ship.racialShips then
+				generateRacialShipList()
+			end
+			populateShipList(ship.racialShips)
 		else
 			typeText("ERROR! INVALID BUTTON PRESSED")
 		end
 	end
+end
+
+function generateByosShipList()
+	ship.byosShips = {}
+	for _, shipInfo in pairs (ship.shipConfig.byosShips) do
+		local shipData = shipInfo
+		shipData.mode = "Buildable"
+		table.insert(ship.byosShips, shipData)
+	end
+	table.sort(ship.byosShips, compareByName)
+end
+
+function generateRacialShipList()
+	ship.racialShips = {}
+	local racialShipData = root.assetJson("/universe_server.config").speciesShips
+	local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
+	local races
+	if ship.shipConfig.racialShips.allowOtherRaceShips then
+		races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
+	else
+		races = {player.species()}
+	end
+	for _, race in pairs (races) do
+		local shipData = {}
+		shipData.type = racialShipData[race][ship.shipConfig.racialShips.shipLevel]
+		local succeded, raceData = pcall(root.assetJson, "/species/" .. race .. ".species")
+		if succeded and raceData then
+			shipData.name = raceData.charCreationTooltip.title
+		else
+			shipData.name = race
+		end
+		shipData.icon = race .. "male.png"
+		shipData.previewImage = ""	-- make it grab the ship image
+		shipData.mode = "Racial"
+		if raceOverrides[race] then
+			shipData.name = raceOverrides[race].name or shipData.name
+			shipData.icon = raceOverrides[race].icon or shipData.icon
+		end
+		shipData.name = shipData.name .. " Racial Ship"
+		shipData.icon = "/interface/title/" .. shipData.icon
+		table.insert(ship.racialShips, shipData)
+	end
+	table.sort(ship.racialShips, compareByName)
+end
+
+function populateShipList(shipList)
+	widget.clearListItems("root.shipList")
+	for _, shipData in ipairs (shipList) do
+		local listItem = "root.shipList."..widget.addListItem("root.shipList")		
+		widget.setText(listItem..".name", shipData.name)
+		widget.setData(listItem, shipData)
+		if shipData.icon then
+			widget.setImage(listItem..".icon", shipData.icon)
+		end
+	end
+end
+
+-- Copied from terminal code
+function compareByName(shipA, shipB)
+	local a = comparableName(shipA.name)
+	local b = comparableName(shipB.name)
+	return a < b
+end
+
+function comparableName(name)
+	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> Madness
+		:gsub('ū', 'u')
+		:upper()
 end
 
 function byos()
