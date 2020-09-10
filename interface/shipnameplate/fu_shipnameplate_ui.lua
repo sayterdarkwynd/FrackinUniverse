@@ -1,14 +1,13 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
 
-local shipTypes = {"Battleship","Cargo","Cruiser","Explorer","Fighter","Recon","Transport","Shuttle"}
+local shipTypes
 local currTypeIndex
-local typeLen
 local stardate
 
 function init()
+	shipTypes = config.getParameter("shipTypes")
     currTypeIndex = 7
-    typeLen = getTableLength(shipTypes)
    
     --widget.setText("tboxName","Starship")
     widget.setText("lblType", shipTypes[currTypeIndex])
@@ -29,9 +28,7 @@ end
 -- widget functions
 function btnAccept_Click()
     local name = widget.getText("tboxName")    
-    -- Since objects can't access player.* do it here and send it to the object lua.
-    val = player.ownShipWorldId() == player.worldId()
-    if(name ~= nil and val == true) then
+    if name ~= nil and name ~= "" then
         world.setProperty("byosShipName", name)
         world.setProperty("byosShipType", shipTypes[currTypeIndex])
         world.setProperty("byosShipDate", stardate)
@@ -43,22 +40,17 @@ end
 function btnPickLeft_Click()
    if currTypeIndex > 1 then
       currTypeIndex =currTypeIndex - 1
-      widget.setText("lblType",shipTypes[currTypeIndex])
-   end   
+   else
+      currTypeIndex = #shipTypes
+   end
+   widget.setText("lblType",shipTypes[currTypeIndex])
 end
 
 function btnPickRight_Click()
-   if currTypeIndex < typeLen then
+   if currTypeIndex < #shipTypes then
       currTypeIndex = currTypeIndex + 1
-      widget.setText("lblType",shipTypes[currTypeIndex])
-   end   
-end
-
---util
-function getTableLength(t)
-   count = 0
-   for k,v in pairs(t) do
-        count = count + 1
+   else
+      currTypeIndex = 1
    end
-   return count
+   widget.setText("lblType",shipTypes[currTypeIndex])
 end
