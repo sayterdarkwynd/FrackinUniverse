@@ -32,7 +32,7 @@ function init()
   self.sounds = config.getParameter("sounds")
   self.playTyping = true
   
-  self.ableToSystemTravel = contains(player.shipUpgrades().capabilities, "planetTravel") or (world.getProperty("fu_byos.systemTravel") or 0) > 0
+  self.ableToSystemTravel = contains(player.shipUpgrades().capabilities, "planetTravel") or (world.getProperty("fu_byos.systemTravel") or 0) > 0 or player.isAdmin()
   self.fu_text = config.getParameter("fu_text")
   self.onOwnShip = player.ownShipWorldId() == player.worldId()
   local canTravel = contains(player.shipUpgrades().capabilities, "planetTravel") or (world.getProperty("fu_byos.planetTravel") or 0) > 0
