@@ -342,6 +342,7 @@ function byos()
 		world.sendEntityMessage("bootup", "byos", player.species())
 		world.setProperty("fuChosenShip", true)
 	end
+	pane.dismiss()
 end
 
 function racial()
@@ -354,6 +355,7 @@ function racial()
 		player.upgradeShip(defaultShipUpgrade)
 		world.setProperty("fuChosenShip", true)
 	end
+	pane.dismiss()
 end
 
 function racialiserBootUp()
