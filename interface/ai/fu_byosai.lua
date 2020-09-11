@@ -35,7 +35,7 @@ function init()
 	pane.playSound(chatterSound, -1)
 	
 	ship = {}
-	ship.shipConfig = root.assetJson("/ships/fu_ship.config")
+	ship.shipConfig = root.assetJson("/frackinship/configs/ships.config")
 	
 	-- temp stuff for pre-choosable BYOS
 	defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
@@ -126,28 +126,28 @@ function changeState(newState)
 		widget.clearListItems("root.shipList")
 		
 		-- State specific state change stuff
-		if newState == "fuShipChosen" then
+		if newState == "frackinShipChosen" then
 			byos()
 			changeState("shipChosen")
 		elseif newState == "vanillaShipChosen" then
 			racial()
 			changeState("shipChosen")
-		elseif newState == "fuShipSelected" then
+		elseif newState == "frackinShipSelected" then
 			-- temp (remove when choosable byos is added)
-			ship.selectedShip = ship.shipConfig.byosShips[1]
-			ship.selectedShip.mode = "Buildable"
+			--ship.selectedShip.name = "Default BYOS"
+			--ship.selectedShip.mode = "Buildable"
 			if state.text and ship.selectedShip then	-- improve this later
 				state.text = state.text:gsub("<shipName>", tostring(ship.selectedShip.name)):gsub("<shipMode>", tostring(ship.selectedShip.mode))
 			end
 			if state.path and ship.selectedShip then
 				state.path = state.path:gsub("<shipMode>", string.lower(tostring(ship.selectedShip.mode)))
 			end
-		elseif newState == "fuShipChoice" then
+		elseif newState == "frackinShipChoice" then
 			widget.setVisible("buttonByos", true)
 			widget.setVisible("buttonUpgradable", true)
 			widget.setVisible("root.shipList", true)
 			for i = 1, 3 do
-				widget.setButtonEnabled("button" .. i, false)
+				--widget.setButtonEnabled("button" .. i, false)
 			end
 			widget.setSize("root", {144,118})
 			if ship.selectedShip and ship.selectedShip.mode == "Racial" then
@@ -155,7 +155,7 @@ function changeState(newState)
 			else
 				buttonPress("buttonByos")
 			end
-		elseif newState == "fuShipPreview" then
+		elseif newState == "frackinShipPreview" then
 			widget.setVisible("root", false)
 			if ship.selectedShip then
 				widget.setVisible("preview", true)
@@ -212,17 +212,11 @@ function buttonPress(button)
 		elseif buttonType == "Byos" then
 			widget.setButtonEnabled("buttonByos", false)
 			widget.setButtonEnabled("buttonUpgradable", true)
-			if not ship.byosShips then
-				generateByosShipList()
-			end
-			populateShipList(ship.byosShips)
+			--populateShipList(ship.byosShips)
 		elseif buttonType == "Upgradable" then
 			widget.setButtonEnabled("buttonByos", true)
 			widget.setButtonEnabled("buttonUpgradable", false)
-			if not ship.racialShips then
-				generateRacialShipList()
-			end
-			populateShipList(ship.racialShips)
+			--populateShipList(ship.racialShips)
 		else
 			typeText("ERROR! INVALID BUTTON PRESSED")
 		end
