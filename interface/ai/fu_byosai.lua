@@ -133,10 +133,7 @@ function changeState(newState)
 			racial()
 			changeState("shipChosen")
 		elseif newState == "frackinShipSelected" then
-			-- temp (remove when choosable byos is added)
-			--ship.selectedShip.name = "Default BYOS"
-			--ship.selectedShip.mode = "Buildable"
-			if state.text and ship.selectedShip then	-- improve this later
+			if state.text and ship.selectedShip then
 				state.text = state.text:gsub("<shipName>", tostring(ship.selectedShip.name)):gsub("<shipMode>", tostring(ship.selectedShip.mode))
 			end
 			if state.path and ship.selectedShip then
@@ -161,6 +158,12 @@ function changeState(newState)
 				widget.setVisible("preview", true)
 				widget.setImage("preview", ship.selectedShip.previewImage or "")
 			end
+		elseif newState == "tempByos" then
+			ship.selectedShip = {}
+			ship.selectedShip.name = "Default BYOS"
+			ship.selectedShip.mode = "Buildable"
+			changeState("frackinShipSelected")
+			state.previousState = "initial"
 		end
 		
 		if state.path then
