@@ -27,7 +27,6 @@ function questInteract(entityId)
 		if player.isAdmin() then
 			local interface = root.assetJson("/interface/ai/fu_byosai.config")
 			interface.states.initial.buttons[3] = {name = "BYOS Test DO NOT USE", newState = "frackinShipChoice"}
-			interface.byosTest = true
 			player.interact("ScriptPane", interface)
 		else
 			player.interact("ScriptPane", "/interface/ai/fu_byosai.config")

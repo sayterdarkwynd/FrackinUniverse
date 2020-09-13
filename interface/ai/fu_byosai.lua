@@ -36,10 +36,22 @@ function init()
 	
 	ship = {}
 	ship.shipConfig = root.assetJson("/frackinship/configs/ships.config")
+	generateShipLists()
 	
 	-- temp stuff for pre-choosable BYOS
-	defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
 	byosItems = config.getParameter("byosItems")
+end
+
+function generateShipLists()
+	for id, data in pairs (ship.shipConfig) do
+		if id == "vanilla" then
+			ship.vanillaShip = data
+		elseif id == "racial" then
+		
+		else
+		
+		end
+	end
 end
 
 function update(dt)
@@ -130,7 +142,7 @@ function changeState(newState)
 			byos()
 			changeState("shipChosen")
 		elseif newState == "vanillaShipChosen" then
-			racial()
+			createShip(true)
 			changeState("shipChosen")
 		elseif newState == "frackinShipSelected" then
 			if state.text and ship.selectedShip then
@@ -144,7 +156,7 @@ function changeState(newState)
 			widget.setVisible("buttonUpgradable", true)
 			widget.setVisible("root.shipList", true)
 			for i = 1, 3 do
-				--widget.setButtonEnabled("button" .. i, false)
+				widget.setButtonEnabled("button" .. i, false)
 			end
 			widget.setSize("root", {144,118})
 			if ship.selectedShip and ship.selectedShip.mode == "Racial" then
@@ -162,6 +174,7 @@ function changeState(newState)
 			ship.selectedShip = {}
 			ship.selectedShip.name = "Default BYOS"
 			ship.selectedShip.mode = "Buildable"
+			ship.selectedShip.useOld = true
 			changeState("frackinShipSelected")
 			state.previousState = "initial"
 		end
@@ -303,6 +316,25 @@ function populateShipList(shipList)
 	end
 end
 
+function createShip(vanilla)
+	if not world.getProperty("fuChosenShip") then
+		world.setProperty("fuChosenShip", true)
+		player.startQuest("fu_shipupgrades")
+		if vanilla then
+			player.upgradeShip(ship.vanillaShip.shipUpgrades)
+			-- remove after restoring T0 ships
+			race = player.species()
+			count = racialiserBootUp()
+			parameters = getBYOSParameters("techstation", true, _)
+			player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
+		else
+			-- maybe try make this unnecessary?
+			player.startQuest("fu_byos")
+		end
+	end
+	pane.dismiss()
+end
+
 function getStructureShipImage(file)
 	if file then
 		local shipConfig = root.assetJson(file)
@@ -343,19 +375,6 @@ function byos()
 			end
 		end
 		world.sendEntityMessage("bootup", "byos", player.species())
-		world.setProperty("fuChosenShip", true)
-	end
-	pane.dismiss()
-end
-
-function racial()
-	if not world.getProperty("fuChosenShip") then
-		race = player.species()
-		count = racialiserBootUp()
-		parameters = getBYOSParameters("techstation", true, _)
-		player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
-		player.startQuest("fu_shipupgrades")
-		player.upgradeShip(defaultShipUpgrade)
 		world.setProperty("fuChosenShip", true)
 	end
 	pane.dismiss()
