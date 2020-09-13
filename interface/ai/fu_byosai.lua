@@ -100,9 +100,10 @@ function generateShipLists()
 				table.insert(ship.upgradableShips, shipData)
 			end
 		else
+			-- make this less bad
 			if data.raceWhitelist and not data.raceWhitelist[playerRace] then
-				-- not the best way to do this, but the easiest way i could think of to get the effect i want
-			elseif data.raceBlacklist and data.raceBlacklist[playerRace] then
+				
+			elseif data.raceBlacklist and data.raceBlacklist[playerRace]  and not data.raceWhitelist then
 			
 			else
 				data.id = id
@@ -349,7 +350,6 @@ end
 function createShip(vanilla)
 	if not world.getProperty("fuChosenShip") then
 		world.setProperty("fuChosenShip", true)
-		player.startQuest("fu_shipupgrades")
 		if vanilla then
 			player.upgradeShip(ship.vanillaShip.shipUpgrades)
 			-- remove after restoring T0 ships
@@ -366,6 +366,7 @@ function createShip(vanilla)
 					if string.find(ship.selectedShip.ship, "/") then
 						sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
 					else
+						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip)
 						-- Implement ship placing
 					end
 				elseif ship.selectedShip.mode == "Upgradable" then
@@ -373,8 +374,7 @@ function createShip(vanilla)
 				else
 					sb.logError("INVALID SHIP MODE DETECTED")
 				end
-				world.setProperty("fuChosenShip", false) --for testing before the ship creation is implemented
-				--player.startQuest("fu_byos")
+				player.startQuest("fu_byos")
 			end
 		end
 	end

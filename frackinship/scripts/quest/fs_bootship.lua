@@ -17,6 +17,9 @@ function init()
 
   self.interactTimer = 0
   self.activationTimer = 1
+  
+  --temp until it's no longer a quest
+  player.startQuest("fu_shipupgrades")
 end
 
 function questInteract(entityId)
