@@ -17,6 +17,9 @@ function init()
 
   self.interactTimer = 0
   self.activationTimer = 1
+  
+  --temp until it's no longer a quest
+  player.startQuest("fu_shipupgrades")
 end
 
 function questInteract(entityId)
@@ -24,7 +27,13 @@ function questInteract(entityId)
 
   if world.entityUniqueId(entityId) == self.techstationUid then
     if world.entityTypeName(entityId) == "fu_byostechstationdeco" then
-		player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
+		if player.isAdmin() then
+			local interface = root.assetJson("/interface/ai/fu_byosai.config")
+			interface.states.initial.buttons[3] = {name = "BYOS Test DO NOT USE", newState = "frackinShipChoice"}
+			player.interact("ScriptPane", interface)
+		else
+			player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
+		end
 	else
 		local interface = root.assetJson("/interface/ai/fu_byosai.config")
 		-- can't be bothered making it a json value since it's temp anyway
