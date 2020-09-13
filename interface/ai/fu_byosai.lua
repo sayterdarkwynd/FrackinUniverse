@@ -45,6 +45,7 @@ end
 function generateShipLists()
 	ship.buildableShips = {}
 	ship.upgradableShips = {}
+	local playerRace = player.species()
 	for id, data in pairs (ship.shipConfig) do
 		if id == "vanilla" then
 			ship.vanillaShip = data
@@ -53,10 +54,9 @@ function generateShipLists()
 			local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
 			local races
 			if data.disallowOtherRaceShips then
-				races = {player.species()}
+				races = {playerRace}
 			elseif data.whitelistedRaces or data.blacklistedRaces then
 				local allRaces = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
-				local playerRace = player.species()
 				races = {}
 				for _, race in ipairs (allRaces) do
 					if data.whitelistedRaces then
@@ -100,9 +100,26 @@ function generateShipLists()
 				table.insert(ship.upgradableShips, shipData)
 			end
 		else
-			data.mode = "Buildable"
-			data.id = id
-			table.insert(ship.buildableShips, data)
+			if data.raceWhitelist and not data.raceWhitelist[playerRace] then
+				-- not the best way to do this, but the easiest way i could think of to get the effect i want
+			elseif data.raceBlacklist and data.raceBlacklist[playerRace] then
+			
+			else
+				data.id = id
+				if type(data.ship) == "table" then
+					data.mode = "Upgradable"
+					data.previewImage = getStructureShipImage(data.ship[1])
+					table.insert(ship.upgradableShips, data)
+				else
+					data.mode = "Buildable"
+					if string.find(data.ship, "/") then
+						data.previewImage = getStructureShipImage(data.ship)
+						data = nil
+						sb.logWarn("Structure file BYOS ships not yet implemented, removing " .. id)
+					end
+					table.insert(ship.buildableShips, data)
+				end
+			end
 		end
 	end
 
@@ -213,13 +230,13 @@ function changeState(newState)
 				path = path:gsub("<shipMode>", string.lower(tostring(ship.selectedShip.mode)))
 			end
 		elseif newState == "frackinShipChoice" then
-			widget.setVisible("buttonByos", true)
-			widget.setVisible("buttonUpgradable", true)
+			--widget.setVisible("buttonByos", true)
+			--widget.setVisible("buttonUpgradable", true)
 			widget.setVisible("root.shipList", true)
 			for i = 1, 3 do
 				widget.setButtonEnabled("button" .. i, false)
 			end
-			widget.setSize("root", {144,118})
+			--widget.setSize("root", {144,118})
 			if ship.selectedShip and ship.selectedShip.mode == "Upgradable" then
 				buttonPress("buttonUpgradable")
 			else
@@ -345,6 +362,17 @@ function createShip(vanilla)
 			if ship.selectedShip.useOld then
 				byos()
 			else
+				if ship.selectedShip.mode == "Buildable" then
+					if string.find(ship.selectedShip.ship, "/") then
+						sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
+					else
+						-- Implement ship placing
+					end
+				elseif ship.selectedShip.mode == "Upgradable" then
+					sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
+				else
+					sb.logError("INVALID SHIP MODE DETECTED")
+				end
 				world.setProperty("fuChosenShip", false) --for testing before the ship creation is implemented
 				--player.startQuest("fu_byos")
 			end
