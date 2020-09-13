@@ -157,11 +157,13 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 			speedModifier = 0.65,
 			airJumpModifier = 0.80})
 		end
-	end
-	if (not self.fireMode) and self.runSlowWhileShooting then
+	elseif (not self.fireMode) and self.runSlowWhileShooting then
 		mcontroller.clearControls()
 	end
-	if not (self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") and not world.lineTileCollision(mcontroller.position(), self:firePosition())) then
+
+	if (self.isAmmoBased==1) and shiftHeld and ((fireMode == "primary") or (fireMode == "alt")) and self.currentAmmoPercent and (self.currentAmmoPercent < 1.0) then
+		self:checkAmmo(true)
+	elseif not (self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") and not world.lineTileCollision(mcontroller.position(), self:firePosition())) then
 		if self.loadupTime then
 			self.loadupTimer = self.loadupTime
 		else
@@ -429,7 +431,7 @@ end
 
 function GunFireFixed:checkAmmo(force)
 	 -- set the cursor to the Reload cursor
-	if (self.isAmmoBased==1) then	-- ammo bar color check
+	if (self.isAmmoBased==1) then -- ammo bar color check
 		if self.currentAmmoPercent <= 0 then
 			self.barColor = {0,0,0,255}
 			activeItem.setCursor("/cursors/fureticle5.cursor")
@@ -516,20 +518,9 @@ function GunFireFixed:checkMagazine(evalOnly)
 	self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	self.isAmmoBased = config.getParameter("isAmmoBased",0)
 	if (self.isAmmoBased == 1) then
-
 		--check current ammo and create an ammo bar to inform the user
 		self.currentAmmoPercent = self.magazineAmount / self.magazineSize
-		if self.currentAmmoPercent <= 0 then
-			self.barColor = {0,0,0,255}
-		elseif self.currentAmmoPercent <= 0.25 then
-			self.barColor = {255,0,0,255}
-		elseif self.currentAmmoPercent <= 0.50 then
-			self.barColor = {255,255,0,255}
-		elseif self.currentAmmoPercent <= 0.75 then
-			self.barColor = {125,255,0,255}
-		else
-			self.barColor = {0,255,0,255}
-		end
+
 		if (self.fireMode == "primary") then
 			if self.magazineAmount and self.magazineSize and (self.magazineSize > 1) then
 				world.sendEntityMessage(
@@ -541,6 +532,7 @@ function GunFireFixed:checkMagazine(evalOnly)
 				)
 			end
 		end
+
 		if not evalOnly then
 			if self.magazineAmount <= 0 then
 				self.weapon:setStance(self.stances.cooldown)
