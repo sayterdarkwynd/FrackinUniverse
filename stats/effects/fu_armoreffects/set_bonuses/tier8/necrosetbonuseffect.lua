@@ -1,10 +1,9 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_necroset"
 
 weaponBonus={
-	{stat = "critChance", amount = 3.5},
-	{stat = "maxHealth", effectiveMultiplier = 1.25}
+	{stat = "critChance", amount = 3.5}
 }
-
 
 armorBonus={
 	{stat = "shadowImmunity", amount = 1},
@@ -15,10 +14,6 @@ armorBonus={
 	{stat = "breathAmount", baseMultiplier = 3.50}
 }
 
-
-setName="fu_necroset"
-
-
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
@@ -28,12 +23,15 @@ end
 
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
+		status.removeEphemeralEffect("undyingresolve30")
+		removePetBuffs()
 		effect.expire()
 	else
+		setPetBuffs({"immortalresolve05"})
+		status.addEphemeralEffect("undyingresolve30")
 		checkWeapons()
 	end
 end
-
 
 function checkWeapons()
 	local weaponSword=weaponCheck({"elder","precursor"})
