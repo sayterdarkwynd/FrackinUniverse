@@ -16,7 +16,6 @@ function update()
 end
 
 function createShip(_, _, ship, racialiseRace, replaceMode)
-	sb.logInfo(tostring(ship))
 	replaceMode = replaceMode or {dungeon = "fu_byosblankquarter", size = {512, 512}}
 	if ship then
 		world.placeDungeon(replaceMode.dungeon, getReplaceModePosition(replaceMode.size))
