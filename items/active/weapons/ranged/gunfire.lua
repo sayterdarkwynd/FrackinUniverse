@@ -99,7 +99,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
 	-- *** FU Weapon Additions
 	if self.timeBeforeCritBoost <= 0 then	--check sniper/crossbow crit bonus
-			self:isChargeUp()
+		self:isChargeUp()
 	else
 		self.timeBeforeCritBoost = self.timeBeforeCritBoost -dt
 	end
@@ -121,28 +121,28 @@ function GunFire:update(dt, fireMode, shiftHeld)
 		end
 	end
 
-		setupHelper(self, {"gunfire-update", "gunfire-auto", "gunfire-postauto", "gunfire-burst", "gunfire-postburst"})
+	setupHelper(self, {"gunfire-update", "gunfire-auto", "gunfire-postauto", "gunfire-burst", "gunfire-postburst"})
 	if self.helper then
 		self.helper:runScripts("gunfire-update", self, dt, fireMode, shiftHeld)
-		end
+	end
 
 	if animator.animationState("firing") ~= "fire" then
-					animator.setLightActive("muzzleFlash", false)
+		animator.setLightActive("muzzleFlash", false)
 	end
+
 	if (self.isAmmoBased==1) and shiftHeld and ((fireMode == "primary") or (fireMode == "alt")) and self.currentAmmoPercent and (self.currentAmmoPercent < 1.0) then
 		self:checkAmmo(true)
 	elseif self.fireMode == (self.activatingFireMode or self.abilitySlot)
-		and not self.weapon.currentAbility
-		and self.cooldownTimer == 0
-		and not status.resourceLocked("energy")
-		and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-	
+	and not self.weapon.currentAbility
+	and self.cooldownTimer == 0
+	and not status.resourceLocked("energy")
+	and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 		if self.fireType == "auto" and status.overConsumeResource("energy", self:energyPerShot()) then
-				self:setState(self.auto)
-				self:checkMagazine(true)
+			self:setState(self.auto)
+			self:checkMagazine(true)
 		elseif self.fireType == "burst" then
-				self:setState(self.burst)
-				self:checkMagazine(true)
+			self:setState(self.burst)
+			self:checkMagazine(true)
 		end
 	end
 end
