@@ -1425,9 +1425,9 @@ function updatePrice(basePrice, baseAmount, stock, isBuying)
 	end
 	
 	if isBuying then
-		rate = rate * 1.1
+		rate = rate * 1.2
 	else
-		rate = rate * 0.9
+		rate = rate * 0.8
 	end
 	
 	local price = basePrice * rate
@@ -1835,7 +1835,7 @@ end
 -- Prints to log all items in all shop lists, letting you easily find the broken/non-existant ones
 -- Has to be manually added somewhere to the code as its not called anywhere
 function checkShopIntegrity()
-	sb.logError("")
+	--sb.logError("")
 	for type, t in pairs(stationData.shop.potentialStock) do
 		for _, item in ipairs(t) do
 			local config = root.itemConfig(item)
