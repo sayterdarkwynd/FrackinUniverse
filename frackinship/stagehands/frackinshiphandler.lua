@@ -37,14 +37,30 @@ end
 function racialiseShip()
 	-- put treasure generating stuff here
 	local objects = world.objectQuery(entity.position(), config.getParameter("racialiseRadius", 128))
+	local raceTableOverride = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
+	if raceTableOverride[self.racialiseRace] and raceTableOverride[self.racialiseRace].race then
+		self.racialiseRace = raceTableOverride[self.racialiseRace].race
+	end
 	for _, object in ipairs (objects) do
 		local racialiserType = world.getObjectParameter(object, "racialiserType")
 		if racialiserType then
-			local newItem = root.itemConfig(self.racialiseRace .. racialiserType)	--add race table override support later
+			local newItem
+			local positionOverride
+			if raceTableOverride[self.racialiseRace] and raceTableOverride[self.racialiseRace].items then
+				for item, extra in pairs (raceTableOverride[self.racialiseRace].items) do
+					if string.find(item, racialiserType) then
+						newItem = root.itemConfig(item)
+						if type(extra) == "table" then
+							positionOverride = extra
+						end
+					end
+				end
+			end
+			newItem = newItem or root.itemConfig(self.racialiseRace .. racialiserType)
 			if newItem then
-				sb.logInfo(self.racialiseRace .. racialiserType .. " exists")
+				sb.logInfo(newItem.config.itemName .. " exists")
 			else
-				sb.logInfo(self.racialiseRace .. racialiserType .. " does not exist")
+				sb.logInfo(newItem.config.itemName .. " does not exist")
 			end
 		end
 		-- put treasure placing stuff here
