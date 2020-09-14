@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_sentryset"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
@@ -8,8 +9,6 @@ armorBonus={
 	{stat = "maxEnergy", effectiveMultiplier = 1.15},
 	{stat = "maxHealth", effectiveMultiplier = 1.15}
 }
-
-setName="fu_sentryset"
 
 function init()
 	setSEBonusInit(setName)

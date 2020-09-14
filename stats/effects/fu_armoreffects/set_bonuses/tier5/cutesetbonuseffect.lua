@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_cuteset"
 
 weaponBonus={
@@ -9,8 +8,6 @@ weaponBonus={
 armorBonus={
 	{stat = "shadowImmunity", amount = 1}
 }
-
-
 
 function init()
 	setSEBonusInit(setName)
@@ -33,9 +30,7 @@ function checkWeapons()
 	local weapons=weaponCheck({"energy"})
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
-		return true
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
-		return false
 	end
 end

@@ -1,14 +1,13 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/unifiedGravMod.lua"
-
 setName="fu_wretchelset"
 
 weaponBonus={ }
 
 armorBonus={ 
-  {stat = "biooozeImmunity", amount = 1},
-  {stat = "pusImmunity", amount = 1},
-  {stat = "poisonStatusImmunity", amount = 1}
+	{stat = "biooozeImmunity", amount = 1},
+	{stat = "pusImmunity", amount = 1},
+	{stat = "poisonStatusImmunity", amount = 1}
 }
 
 function init()

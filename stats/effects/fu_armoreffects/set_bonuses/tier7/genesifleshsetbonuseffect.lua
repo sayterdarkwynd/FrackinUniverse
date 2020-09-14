@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_genesifleshset"
 
 weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.15} }
@@ -8,8 +7,6 @@ armorEffect={
 	{stat = "pusImmunity", amount = 1},
 	{stat = "breathProtection", amount = 1}
 }
-
-
 
 function init()
 	setSEBonusInit(setName)
