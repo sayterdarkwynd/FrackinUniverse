@@ -1425,9 +1425,9 @@ function updatePrice(basePrice, baseAmount, stock, isBuying)
 	end
 	
 	if isBuying then
-		rate = rate * 1.05
+		rate = rate * 1.1
 	else
-		rate = rate * 0.95
+		rate = rate * 0.9
 	end
 	
 	local price = basePrice * rate
@@ -1734,7 +1734,7 @@ function calcBuySell(isGoods)
 	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - (objectData.specialsTable.investLevel or 0) * (stationData.trading.buyPriceReductionPerLevel or 0)) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
 	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + (objectData.specialsTable.investLevel or 0) * (stationData.trading.sellPriceIncreasePerLevel or 0)) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
 	
-	--sb.logInfo("cs %s,csp %s,cb %s,cs %s,bp %s,sp %s,cbpr %s, cspi %s",charismaStat,charismaStatProp,charismaBuy,charismaSell,buyPcnt,sellPcnt,stationData.trading.charismaBuyPriceReduction,stationData.trading.charismaSellPriceIncrease)
+	--sb.logInfo("cs %s,csp %s,cb %s,cs %s,bp %s,sp %s,cbpr %s, cspi %s, isGoods %s",charismaStat,charismaStatProp,charismaBuy,charismaSell,buyPcnt,sellPcnt,stationData.trading.charismaBuyPriceReduction,stationData.trading.charismaSellPriceIncrease,isGoods)
 	return {buyPcnt=buyPcnt,sellPcnt=sellPcnt}
 end
 
