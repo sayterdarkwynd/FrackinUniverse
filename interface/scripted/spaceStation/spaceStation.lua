@@ -1284,7 +1284,7 @@ function populateGoodsList()
 			
 		local buyPrice, buyRate = updatePrice(data.basePrice, data.baseAmount, stock, true)
 		local sellPrice, sellRate = updatePrice(data.basePrice, data.baseAmount, stock)
-		local pricePcnt=calcBuySell(true)
+		local pricePcnt=calcBuySell()
 		pricePcnt.buyPcnt=(((pricePcnt.buyPcnt/100.0)-stationData.shop.initBuyMult)/3.0)+1.0
 		pricePcnt.sellPcnt=(((pricePcnt.sellPcnt/100.0)-stationData.shop.initSellMult)/3.0)+1.0
 		--sb.logInfo("pP=%s,bP=%s,sP=%s",pricePcnt,buyPrice,sellPrice)
@@ -1719,13 +1719,9 @@ function specialsTableInit()
 	end
 end
 
-function calcBuySell(isGoods)
-	--to prevent charisma being too powerful on goods, reducing its effectiveness severely.
+function calcBuySell()
 	local charismaStat=(status.stat("fuCharisma")-1.0)
-	if isGoods then
-		charismaStat=charismaStat/10.0
-	end
-	
+
 	--bonus from maxed stations is capped at 10 and the stat itself has 0.1 multiplier.
 	local charismaStatProp=(math.min(status.statusProperty("fuCharisma",0),10))*0.1
 	local charismaBuy = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaBuyPriceReduction * 10
