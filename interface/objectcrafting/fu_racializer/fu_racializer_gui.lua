@@ -15,7 +15,6 @@ function init()
   self.costModifier = config.getParameter("costModifier", 4)
   self.itemConversions = config.getParameter("objectConversions", {})
   self.newItem = {}
-  self.raceTableOverride = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
   self.useAll = true
   raceTable = buildRaceTable()
   populateList()
@@ -259,14 +258,15 @@ function raceList_SelectedChanged()
     end
 end
 
-function buildRaceTable()
+function buildRaceTable(races)
+	local raceTableOverride = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
 	local tempRaceTable = {}
 	local raceObjects = config.getParameter("raceObjects")
-	local races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
+	races = races or root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
 	for _, race in pairs (races) do
 		local succeded, raceData = pcall(root.assetJson, "/species/" .. race .. ".species")
-		if self.raceTableOverride[race] and self.raceTableOverride[race].race then
-			race = self.raceTableOverride[race].race
+		if raceTableOverride[race] and raceTableOverride[race].race then
+			race = raceTableOverride[race].race
 		end
 		tempRaceTable[race] = {}
 		tempRaceTable[race].icon = race .. "male.png"
@@ -290,7 +290,7 @@ function buildRaceTable()
 			--sb.logInfo("Removing " .. tostring(race))
 		end
 	end
-	for race, info in pairs (self.raceTableOverride) do
+	for race, info in pairs (raceTableOverride) do
 		if race == "fu_byos" then
 			tempRaceTable[race] = {items = {}}
 		end
