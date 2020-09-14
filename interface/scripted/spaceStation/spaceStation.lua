@@ -1255,29 +1255,14 @@ function shopSell()
 end
 
 function calculateShopPrice(base, isBuying,pricePcnt)
-	local tradingOutpostMult = 0
-	local totalMult = 0
-	--local charismaStat=(1-status.stat("fuCharisma"))*100
-	--local charismaStatProp=status.statusProperty("fuCharisma",0)
+	local buyPrice=closestWhole(base * (pricePcnt.buyPcnt/100.0))
+	local sellPrice=closestWhole(base * (pricePcnt.sellPcnt/100.0))
+	--sb.logInfo("%s:%s:%s:%s:%s",base,isBuying,pricePcnt,buyPrice,sellPrice)
+
 	if isBuying then
-		--[[if objectData.stationType == "trading" then 
-			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel
-		end
-		totalMult = stationData.shop.initBuyMult - ((charismaStat)+(charismaStatProp)) * stationData.trading.charismaBuyPriceReduction - tradingOutpostMult
-		totalMult = math.max(totalMult, stationData.shop.minBuyMult)]]
-		totalMult=pricePcnt.buyPcnt/100.0
-		--sb.logInfo("cSP base=%s tM=%s cW(b*tM)=%s",base,totalMult,closestWhole(base * totalMult))
-		return closestWhole(base * totalMult)
+		return buyPrice
 	else
-		--[[if objectData.stationType == "trading" then 
-			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel
-		end
-		
-		totalMult = stationData.shop.initSellMult + ((charismaStat)+(charismaStatProp)) * stationData.trading.charismaSellPriceIncrease + tradingOutpostMult
-		totalMult = math.max(math.min(totalMult, stationData.shop.maxSellMult), 0)]]
-		totalMult=pricePcnt.sellPcnt/100.0
-		--sb.logInfo("cSP base=%s tM=%s cW(b*tM)=%s",base,totalMult,closestWhole(base * totalMult))
-		return closestWhole(base * totalMult)
+		return sellPrice
 	end
 end
 
@@ -1299,13 +1284,12 @@ function populateGoodsList()
 			
 		local buyPrice, buyRate = updatePrice(data.basePrice, data.baseAmount, stock, true)
 		local sellPrice, sellRate = updatePrice(data.basePrice, data.baseAmount, stock)
-		local pricePcnt=calcBuySell()
+		local pricePcnt=calcBuySell(true)
 		pricePcnt.buyPcnt=(((pricePcnt.buyPcnt/100.0)-stationData.shop.initBuyMult)/3.0)+1.0
 		pricePcnt.sellPcnt=(((pricePcnt.sellPcnt/100.0)-stationData.shop.initSellMult)/3.0)+1.0
 		--sb.logInfo("pP=%s,bP=%s,sP=%s",pricePcnt,buyPrice,sellPrice)
 		buyPrice=closestWhole(buyPrice * pricePcnt.buyPcnt)
 		sellPrice=closestWhole(sellPrice * pricePcnt.sellPcnt)
-		--sb.logInfo("bP=%s,sP=%s",buyPrice,sellPrice)
 		
 		if buyRate >= 1.5 then
 			widget.setImage(listItem..".buyRate", "/interface/scripted/spaceStation/tradeRate.png:-2")
@@ -1735,9 +1719,15 @@ function specialsTableInit()
 	end
 end
 
-function calcBuySell()
-	local charismaStat=status.stat("fuCharisma")-1
-	local charismaStatProp=status.statusProperty("fuCharisma",0)*0.1
+function calcBuySell(isGoods)
+	--to prevent charisma being too powerful on goods, reducing its effectiveness severely.
+	local charismaStat=(status.stat("fuCharisma")-1.0)
+	if isGoods then
+		charismaStat=charismaStat/10.0
+	end
+	
+	--bonus from maxed stations is capped at 10 and the stat itself has 0.1 multiplier.
+	local charismaStatProp=(math.min(status.statusProperty("fuCharisma",0),10))*0.1
 	local charismaBuy = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaBuyPriceReduction * 10
 	local charismaSell = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaSellPriceIncrease * 10
 	
