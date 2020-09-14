@@ -6,10 +6,6 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "jumptechBonus", amount = 0.5},
-	{stat = "dashtechBonus", amount = 0.5},
-	{stat = "dodgetechBonus", amount = 0.5},
-	{stat = "phasetechBonus", amount = 0.5}
 }
 
 function init()
