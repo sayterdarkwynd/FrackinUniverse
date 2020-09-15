@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_xenoset"
 
 weaponBonus={
@@ -12,8 +13,6 @@ armorEffect={
 	{stat = "biomecoldImmunity", amount = 1.0},
 	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.70}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

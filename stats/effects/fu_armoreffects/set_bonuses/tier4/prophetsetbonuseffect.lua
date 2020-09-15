@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_prophetset"
 
 weaponBonus={
