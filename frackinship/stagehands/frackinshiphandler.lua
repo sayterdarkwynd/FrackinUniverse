@@ -58,9 +58,8 @@ function racialiseShip()
 			end
 			newItem = newItem or root.itemConfig(self.racialiseRace .. racialiserType)
 			if newItem then
-				sb.logInfo(newItem.config.itemName .. " exists")
-			else
-				sb.logInfo(newItem.config.itemName .. " does not exist")
+				local newParameters = getNewParameters(newItem, positionOverride)
+				world.sendEntityMessage(object, "racialise", newParameters)
 			end
 		end
 		-- put treasure placing stuff here
