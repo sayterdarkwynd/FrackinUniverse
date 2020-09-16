@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_warframeset"
 
 weaponBonus={
@@ -9,8 +10,6 @@ armorBonus={
 	{stat = "extremepressureProtection", amount = 1},
 	{stat = "gasImmunity", amount = 1}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_reptileset"
 
 weaponBonus={
 	{stat = "physicalResistance", amount = 0.1}
@@ -15,8 +16,6 @@ armorBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.16}
 }
 
-setName="fu_reptileset"
-
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
@@ -30,7 +29,6 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-
 		checkWeapons()
 	end
 end

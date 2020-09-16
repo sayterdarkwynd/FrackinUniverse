@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_decimatorset"
 
 weaponBonus={
@@ -10,8 +11,6 @@ armorBonus={
 	{stat = "ffextremeheatImmunity", amount = 1},
 	{stat = "biomeheatImmunity", amount = 1}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

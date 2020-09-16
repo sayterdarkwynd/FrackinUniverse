@@ -1,5 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
+setName="fu_streakerset"
 
 armorBonus={
 	{stat="powerMultiplier",effectiveMultiplier=1.7},
@@ -7,8 +7,6 @@ armorBonus={
 	{stat="maxEnergy",effectiveMultiplier=1.4},
 	{stat="protection",effectiveMultiplier=2.0}
 }
-
-setName="fu_streakerset"
 
 function init()
 	setSEBonusInit(setName)

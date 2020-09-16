@@ -366,8 +366,7 @@ function createShip(vanilla)
 					if string.find(ship.selectedShip.ship, "/") then
 						sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
 					else
-						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip)
-						-- Implement ship placing
+						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
 					end
 				elseif ship.selectedShip.mode == "Upgradable" then
 					sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")

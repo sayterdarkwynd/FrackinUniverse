@@ -1,8 +1,10 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_wolfset2"
 
 weaponBonus={
 	{stat = "critDamage", amount = 0.20}
 }
+
 armorBonus={
 	{stat = "iceStatusImmunity", amount = 1},
 	{stat = "snowslowImmunity", amount = 1},
@@ -10,8 +12,6 @@ armorBonus={
 	{stat = "biomecoldImmunity", amount = 1},
 	{stat = "ffextremecoldImmunity", amount = 1}
 }
-
-setName="fu_wolfset2"
 
 function init()
 	setSEBonusInit(setName)
