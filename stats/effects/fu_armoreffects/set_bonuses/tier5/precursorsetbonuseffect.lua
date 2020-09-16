@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_precursorset"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
@@ -10,8 +11,6 @@ armorBonus={
 	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1}
 }
-
-setName="fu_precursorset"
 
 function init()	
 	setSEBonusInit("fu_precursorset")

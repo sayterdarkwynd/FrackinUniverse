@@ -18,6 +18,18 @@ function update(dt)
 	promises:update()
 	
 	if world.type() == "unknown" then
+		-- make sure the ship handler stagehand exists
+		if handlerPromise then
+			if handlerPromise:finished() then
+				if not handlerPromise:succeeded() then
+					world.spawnStagehand({1024, 1024}, "frackinshiphandler")
+				end
+				handlerPromise = world.findUniqueEntity("frackinshiphandler")
+			end
+		else
+			handlerPromise = world.findUniqueEntity("frackinshiphandler")
+		end
+		
 		shipLevel = world.getProperty("ship.level")
 		if shipLevel == 0 then
 			if world.getProperty("fu_byos.newAtmosphereSystem") then

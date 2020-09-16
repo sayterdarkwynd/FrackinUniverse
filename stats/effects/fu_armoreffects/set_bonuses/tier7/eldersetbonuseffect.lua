@@ -1,7 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_elderset"
-
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}

@@ -1,8 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/unifiedGravMod.lua"
-
 setName="fu_warphunterset"
-setEffects={"gravitynormalizationarmor"}
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 3.4}
@@ -18,8 +16,6 @@ armorBonus={
 	{stat = "breathProtection", amount = 1},
 	{stat = "gravrainImmunity", amount = 1}
 }
-
-setName="fu_warphunterset"
 
 function init()
 	setSEBonusInit("fu_warphunterset",setEffects)

@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_geistset"
 
 weaponBonus={
@@ -9,8 +10,6 @@ armorEffect={
 	{stat = "sulphuricImmunity", amount = 1},
 	{stat = "breathProtection", amount = 1}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

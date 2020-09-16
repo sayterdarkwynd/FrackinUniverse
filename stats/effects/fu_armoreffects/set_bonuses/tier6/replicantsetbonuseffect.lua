@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_replicantset"
 
 weaponBonus={
 	{stat = "critChance", amount = 2}
@@ -13,9 +14,6 @@ armorBonus={
 	{stat = "shadowImmunity", amount = 1},
 	{stat = "blacktarImmunity", amount = 1}
 }
-
-setName="fu_replicantset"
-
 
 function init()
 	setSEBonusInit(setName)
@@ -33,7 +31,6 @@ function update(dt)
 		checkWeapons()
 	end
 end
-
 
 function checkWeapons()
 	local weaponSword=weaponCheck({"shortsword","broadsword","rapier","longsword","katana","daikatana"})

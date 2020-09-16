@@ -36,10 +36,96 @@ function init()
 	
 	ship = {}
 	ship.shipConfig = root.assetJson("/frackinship/configs/ships.config")
+	generateShipLists()
 	
 	-- temp stuff for pre-choosable BYOS
-	defaultShipUpgrade = config.getParameter("defaultShipUpgrade")
 	byosItems = config.getParameter("byosItems")
+end
+
+function generateShipLists()
+	ship.buildableShips = {}
+	ship.upgradableShips = {}
+	local playerRace = player.species()
+	for id, data in pairs (ship.shipConfig) do
+		if id == "vanilla" then
+			ship.vanillaShip = data
+		elseif id == "racial" then
+			local racialShipData = root.assetJson("/universe_server.config").speciesShips
+			local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
+			local races
+			if data.disallowOtherRaceShips then
+				races = {playerRace}
+			elseif data.whitelistedRaces or data.blacklistedRaces then
+				local allRaces = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
+				races = {}
+				for _, race in ipairs (allRaces) do
+					if data.whitelistedRaces then
+						if data.whitelistedRaces[race] or race == playerRace then
+							table.insert(races, race)
+						end
+					else	-- blacklistedRaces
+						if not data.blacklistedRaces[race] or race == playerRace then
+							table.insert(races, race)
+						end
+					end
+				end
+			else
+				races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
+			end
+			for _, race in ipairs (races) do
+				local shipData = {}
+				shipData.type = racialShipData[race]
+				shipData.startingLevel = ship.shipConfig.racial.shipLevel + 1
+				local succeded, raceData = pcall(root.assetJson, "/species/" .. race .. ".species")
+				if succeded and raceData then
+					shipData.name = raceData.charCreationTooltip.title
+				else
+					shipData.name = race
+				end
+				shipData.icon = race .. "male.png"
+				local succeded2, previewImage = pcall(getStructureShipImage, shipData.type[shipData.startingLevel])
+				if succeded2 then
+					shipData.previewImage = previewImage
+				else
+					sb.logInfo(sb.printJson(previewImage))
+				end
+				shipData.mode = "Upgradable"
+				if raceOverrides[race] then
+					shipData.name = raceOverrides[race].name or shipData.name
+					shipData.icon = raceOverrides[race].icon or shipData.icon
+				end
+				shipData.name = shipData.name .. " Racial Ship"
+				shipData.icon = "/interface/title/" .. shipData.icon
+				shipData.id = race .. "racial"
+				table.insert(ship.upgradableShips, shipData)
+			end
+		else
+			-- make this less bad
+			if data.raceWhitelist and not data.raceWhitelist[playerRace] then
+				
+			elseif data.raceBlacklist and data.raceBlacklist[playerRace]  and not data.raceWhitelist then
+			
+			else
+				data.id = id
+				if type(data.ship) == "table" then
+					data.mode = "Upgradable"
+					data.previewImage = getStructureShipImage(data.ship[1])
+					table.insert(ship.upgradableShips, data)
+				else
+					data.mode = "Buildable"
+					if string.find(data.ship, "/") then
+						data.previewImage = getStructureShipImage(data.ship)
+						data = nil
+						sb.logWarn("Structure file BYOS ships not yet implemented, removing " .. id)
+					end
+					table.insert(ship.buildableShips, data)
+				end
+			end
+		end
+	end
+
+	table.sort(ship.buildableShips, compareByName)
+	table.sort(ship.upgradableShips, compareByName)
 end
 
 function update(dt)
@@ -124,33 +210,35 @@ function changeState(newState)
 		widget.setVisible("preview", false)
 		widget.setSize("root", {144,136})
 		widget.clearListItems("root.shipList")
+		-- to allow gsubing without changing the original value
+		local text = state.text
+		local path = state.path
 		
 		-- State specific state change stuff
 		if newState == "frackinShipChosen" then
-			byos()
+			createShip()
 			changeState("shipChosen")
+			return
 		elseif newState == "vanillaShipChosen" then
-			racial()
+			createShip(true)
 			changeState("shipChosen")
+			return
 		elseif newState == "frackinShipSelected" then
-			-- temp (remove when choosable byos is added)
-			--ship.selectedShip.name = "Default BYOS"
-			--ship.selectedShip.mode = "Buildable"
-			if state.text and ship.selectedShip then	-- improve this later
-				state.text = state.text:gsub("<shipName>", tostring(ship.selectedShip.name)):gsub("<shipMode>", tostring(ship.selectedShip.mode))
+			if text and ship.selectedShip then
+				text = text:gsub("<shipName>", tostring(ship.selectedShip.name)):gsub("<shipMode>", tostring(ship.selectedShip.mode))
 			end
-			if state.path and ship.selectedShip then
-				state.path = state.path:gsub("<shipMode>", string.lower(tostring(ship.selectedShip.mode)))
+			if path and ship.selectedShip then
+				path = path:gsub("<shipMode>", string.lower(tostring(ship.selectedShip.mode)))
 			end
 		elseif newState == "frackinShipChoice" then
-			widget.setVisible("buttonByos", true)
-			widget.setVisible("buttonUpgradable", true)
+			--widget.setVisible("buttonByos", true)
+			--widget.setVisible("buttonUpgradable", true)
 			widget.setVisible("root.shipList", true)
 			for i = 1, 3 do
-				--widget.setButtonEnabled("button" .. i, false)
+				widget.setButtonEnabled("button" .. i, false)
 			end
-			widget.setSize("root", {144,118})
-			if ship.selectedShip and ship.selectedShip.mode == "Racial" then
+			--widget.setSize("root", {144,118})
+			if ship.selectedShip and ship.selectedShip.mode == "Upgradable" then
 				buttonPress("buttonUpgradable")
 			else
 				buttonPress("buttonByos")
@@ -161,12 +249,20 @@ function changeState(newState)
 				widget.setVisible("preview", true)
 				widget.setImage("preview", ship.selectedShip.previewImage or "")
 			end
+		elseif newState == "tempByos" then
+			ship.selectedShip = {}
+			ship.selectedShip.name = "Default BYOS"
+			ship.selectedShip.mode = "Buildable"
+			ship.selectedShip.useOld = true
+			changeState("frackinShipSelected")
+			state.previousState = "initial"
+			return
 		end
 		
-		if state.path then
-			widget.setText("path", state.path)
+		if path then
+			widget.setText("path", path)
 		end
-		typeText(state.text or "WARNING! MISSING TEXT FOR STATE " .. tostring(newState))
+		typeText(text or "WARNING! MISSING TEXT FOR STATE " .. tostring(newState))
 	else
 		typeText(textData, "ERROR! " .. tostring(newState) .. " STATE NOT DEFINED")
 	end
@@ -212,11 +308,11 @@ function buttonPress(button)
 		elseif buttonType == "Byos" then
 			widget.setButtonEnabled("buttonByos", false)
 			widget.setButtonEnabled("buttonUpgradable", true)
-			--populateShipList(ship.byosShips)
+			populateShipList(ship.buildableShips)
 		elseif buttonType == "Upgradable" then
 			widget.setButtonEnabled("buttonByos", true)
 			widget.setButtonEnabled("buttonUpgradable", false)
-			--populateShipList(ship.racialShips)
+			populateShipList(ship.upgradableShips)
 		else
 			typeText("ERROR! INVALID BUTTON PRESSED")
 		end
@@ -234,55 +330,6 @@ function shipSelected(args)
 	end
 end
 
-function generateByosShipList()
-	ship.byosShips = {}
-	for _, shipInfo in pairs (ship.shipConfig.byosShips) do
-		local shipData = shipInfo
-		shipData.mode = "Buildable"
-		table.insert(ship.byosShips, shipData)
-	end
-	table.sort(ship.byosShips, compareByName)
-end
-
-function generateRacialShipList()
-	ship.racialShips = {}
-	local racialShipData = root.assetJson("/universe_server.config").speciesShips
-	local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
-	local races
-	if ship.shipConfig.racialShips.allowOtherRaceShips then
-		races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
-	else
-		races = {player.species()}
-	end
-	for _, race in pairs (races) do
-		local shipData = {}
-		shipData.type = racialShipData[race]
-		shipData.startingLevel = ship.shipConfig.racialShips.shipLevel
-		local succeded, raceData = pcall(root.assetJson, "/species/" .. race .. ".species")
-		if succeded and raceData then
-			shipData.name = raceData.charCreationTooltip.title
-		else
-			shipData.name = race
-		end
-		shipData.icon = race .. "male.png"
-		local succeded2, previewImage = pcall(getStructureShipImage, shipData.type[shipData.startingLevel])
-		if succeded2 then
-			shipData.previewImage = previewImage
-		else
-			sb.logInfo(sb.printJson(previewImage))
-		end
-		shipData.mode = "Racial"
-		if raceOverrides[race] then
-			shipData.name = raceOverrides[race].name or shipData.name
-			shipData.icon = raceOverrides[race].icon or shipData.icon
-		end
-		shipData.name = shipData.name .. " Racial Ship"
-		shipData.icon = "/interface/title/" .. shipData.icon
-		table.insert(ship.racialShips, shipData)
-	end
-	table.sort(ship.racialShips, compareByName)
-end
-
 function populateShipList(shipList)
 	widget.clearListItems("root.shipList")
 	for _, shipData in ipairs (shipList) do
@@ -293,11 +340,44 @@ function populateShipList(shipList)
 		if shipData.icon then
 			widget.setImage(listItem..".icon", shipData.icon)
 		end
-		if ship.selectedShip and ship.selectedShip.type == shipData.type and ship.selectedShip.name == shipData.name then
+		if ship.selectedShip and shipData.id == ship.selectedShip.id then
 			widget.setListSelected("root.shipList", listItemName)
 			shipSelected("shipList")
 		end
 	end
+end
+
+function createShip(vanilla)
+	if not world.getProperty("fuChosenShip") then
+		world.setProperty("fuChosenShip", true)
+		if vanilla then
+			player.upgradeShip(ship.vanillaShip.shipUpgrades)
+			-- remove after restoring T0 ships
+			race = player.species()
+			count = racialiserBootUp()
+			parameters = getBYOSParameters("techstation", true, _)
+			player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
+		else
+			-- maybe try make this unnecessary?
+			if ship.selectedShip.useOld then
+				byos()
+			else
+				if ship.selectedShip.mode == "Buildable" then
+					if string.find(ship.selectedShip.ship, "/") then
+						sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
+					else
+						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
+					end
+				elseif ship.selectedShip.mode == "Upgradable" then
+					sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
+				else
+					sb.logError("INVALID SHIP MODE DETECTED")
+				end
+				player.startQuest("fu_byos")
+			end
+		end
+	end
+	pane.dismiss()
 end
 
 function getStructureShipImage(file)
@@ -340,19 +420,6 @@ function byos()
 			end
 		end
 		world.sendEntityMessage("bootup", "byos", player.species())
-		world.setProperty("fuChosenShip", true)
-	end
-	pane.dismiss()
-end
-
-function racial()
-	if not world.getProperty("fuChosenShip") then
-		race = player.species()
-		count = racialiserBootUp()
-		parameters = getBYOSParameters("techstation", true, _)
-		player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
-		player.startQuest("fu_shipupgrades")
-		player.upgradeShip(defaultShipUpgrade)
 		world.setProperty("fuChosenShip", true)
 	end
 	pane.dismiss()
