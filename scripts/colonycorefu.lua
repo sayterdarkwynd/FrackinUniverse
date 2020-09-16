@@ -81,6 +81,9 @@ function tallyHappiness()
 	local objectIds = world.objectQuery(storage.position, wellRange, { order = "nearest" })
 	
 	for _, objectId in pairs(objectIds) do
+			if (world.callScriptedEntity(objectId,"fu_isColonyCore") and objectId ~= entity.id()) then
+				object.smash()
+			end
 			if world.callScriptedEntity(objectId,"providesHappiness") then
 				bonusHappiness = (bonusHappiness + (world.callScriptedEntity(objectId,"amountHappiness") or 0))
 			end
