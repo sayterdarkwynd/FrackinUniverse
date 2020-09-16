@@ -2,6 +2,7 @@ require "/scripts/util.lua"
 require "/quests/scripts/questutil.lua"
 require "/quests/scripts/portraits.lua"
 require "/scripts/messageutil.lua"
+require "/scripts/vec2.lua"
 
 function init()
 	upgradeConfig = root.assetJson("/frackinship/configs/shipupgrades.config")
@@ -12,6 +13,11 @@ function init()
 	fuelEfficiencyShipOld = 0
 	shipSpeedShipOld = 0
 	beamDownTimer = 0
+	
+	message.setHandler("fs_respawn", function()
+		local spawn = world.getProperty("fu_byos.spawn", {1024, 1025})
+		mcontroller.setPosition(vec2.add(spawn, {0, 2}))
+	end)
 end
 
 function update(dt)

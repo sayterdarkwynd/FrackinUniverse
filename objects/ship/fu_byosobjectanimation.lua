@@ -28,7 +28,7 @@ end
 function update()
 	local dt = script.updateDt()
 	localAnimator.clearDrawables()
-	if config.getParameter("fu_racialiseUpdate") and self.racialiseTimer > self.racialiseCooldown then
+	if config.getParameter("fs_racialiseUpdate") and self.racialiseTimer > self.racialiseCooldown then
 		init()
 		self.racialiseTimer = 0
 	end
