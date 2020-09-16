@@ -14,9 +14,10 @@ function update()
 	end
 end
 
-function createShip(_, _, ship, playerRace, replaceMode)
+function createShip(_, _, ship, playerRace, playerName, replaceMode)
 	self.playerRace = playerRace or "apex"
 	self.racialiseRace = ship.racialiserOverride or self.playerRace
+	self.playerName = playerName
 	replaceMode = replaceMode or {dungeon = "fu_byosblankquarter", size = {512, 512}}
 	if ship then
 		world.placeDungeon(replaceMode.dungeon, getReplaceModePosition(replaceMode.size))
@@ -59,7 +60,32 @@ function racialiseShip()
 			newItem = newItem or root.itemConfig(self.racialiseRace .. racialiserType)
 			if newItem then
 				local newParameters = getNewParameters(newItem, positionOverride)
-				world.sendEntityMessage(object, "racialise", newParameters)
+				newParameters.fu_racialiseUpdate = true
+				for parameter, data in pairs (newParameters) do
+					world.callScriptedEntity(object, "object.setConfigParameter", parameter, data)
+				end
+			end
+			if world.getObjectParameter(object, "shipPetType") then
+				local uniquePlayerPets = config.getParameter("uniquePlayerPets", {})
+				local newPet
+				if uniquePlayerPets[self.playerName:lower()] then
+					newPet = uniquePlayerPets[self.playerName:lower()]
+				else
+					local newPetObject
+					if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
+						for item, extra in pairs (raceTableOverride[self.playerRace].items) do
+							if string.find(item, "techstation") then
+								newPetObject = root.itemConfig(item)
+							end
+						end
+					end
+					newPetObject = newPetObject or root.itemConfig(self.playerRace .. "techstation") or {config = {}}
+					newPet = newPetObject.config.shipPetType
+				end
+				if newPet then
+					world.callScriptedEntity(object, "object.setConfigParameter", "shipPetType", newPet)
+					world.callScriptedEntity(object, "init")
+				end
 			end
 		end
 		-- put treasure placing stuff here
