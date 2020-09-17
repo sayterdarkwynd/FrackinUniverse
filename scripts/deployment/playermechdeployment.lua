@@ -24,7 +24,7 @@ function init()
 				end
 				--
 
-				setMechItemSet(starterSet)
+				--setMechItemSet(starterSet)
 
 			end
 		end)
