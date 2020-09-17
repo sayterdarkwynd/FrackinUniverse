@@ -10,13 +10,18 @@ function update()
 	if self.placingShip  and world.dungeonId(entity.position()) == self.shipDungeonId then
 		world.setProperty("fu_byos", true)
 		racialiseShip()
+		local players = world.players()
+		for _, player in ipairs (players) do
+			world.sendEntityMessage(player, "fs_respawn")
+		end
 		self.placingShip = false
 	end
 end
 
-function createShip(_, _, ship, playerRace, replaceMode)
+function createShip(_, _, ship, playerRace, playerName, replaceMode)
 	self.playerRace = playerRace or "apex"
 	self.racialiseRace = ship.racialiserOverride or self.playerRace
+	self.playerName = playerName
 	replaceMode = replaceMode or {dungeon = "fu_byosblankquarter", size = {512, 512}}
 	if ship then
 		world.placeDungeon(replaceMode.dungeon, getReplaceModePosition(replaceMode.size))
@@ -58,9 +63,34 @@ function racialiseShip()
 			end
 			newItem = newItem or root.itemConfig(self.racialiseRace .. racialiserType)
 			if newItem then
-				sb.logInfo(newItem.config.itemName .. " exists")
-			else
-				sb.logInfo(newItem.config.itemName .. " does not exist")
+				local newParameters = getNewParameters(newItem, positionOverride)
+				newParameters.fs_racialiseUpdate = true
+				newParameters.shortdescription = world.getObjectParameter(object, "shortdescription") .. " (" .. self.racialiseRace .. ")"
+				for parameter, data in pairs (newParameters) do
+					world.callScriptedEntity(object, "object.setConfigParameter", parameter, data)
+				end
+			end
+		end
+		if world.getObjectParameter(object, "shipPetType") then
+			--local uniquePlayerPets = config.getParameter("uniquePlayerPets", {})
+			--local newPet
+			--if uniquePlayerPets[self.playerName:lower()] then
+				--newPet = uniquePlayerPets[self.playerName:lower()]
+			--else
+				local newPetObject
+				if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
+					for item, extra in pairs (raceTableOverride[self.playerRace].items) do
+						if string.find(item, "techstation") then
+							newPetObject = root.itemConfig(item)
+						end
+					end
+				end
+				newPetObject = newPetObject or root.itemConfig(self.playerRace .. "techstation") or {config = {}}
+				newPet = newPetObject.config.shipPetType
+			--end
+			if newPet then
+				world.callScriptedEntity(object, "object.setConfigParameter", "shipPetType", newPet)
+				world.callScriptedEntity(object, "init")
 			end
 		end
 		-- put treasure placing stuff here
