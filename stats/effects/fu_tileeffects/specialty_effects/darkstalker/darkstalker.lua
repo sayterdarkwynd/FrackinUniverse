@@ -13,6 +13,9 @@ function init()
 
 	--local bounds = mcontroller.boundBox()
 	effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", baseMultiplier = 0.7 }})
+
+	--test
+	effect.setParentDirectives("fade=000000=0.9?border=0;121212FF;44444400?saturation=-60")
 end
 
 
