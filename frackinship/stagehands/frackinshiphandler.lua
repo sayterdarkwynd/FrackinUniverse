@@ -114,8 +114,11 @@ function racialiseShip()
 		-- Treasure placing (can be placed in any object with enough space that isn't a fuel hatch (this part isn't tested))
 		if treasure then
 			local containerSize = world.containerSize(object)
-			if containerSize and (racialiserType and racialiserType == "fuelhatch") and not string.find(world.entityName(object), "fuelhatch") then
-				sb.logInfo(tostring(#treasure))
+			if containerSize and containerSize > #treasure and not (racialiserType and racialiserType == "fuelhatch") and not string.find(world.entityName(object), "fuelhatch") then
+				for _, item in ipairs (treasure) do
+					world.containerAddItems(object, item)
+				end
+				treasure = nil
 			end
 		end
 	end
