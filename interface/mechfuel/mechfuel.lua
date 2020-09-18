@@ -123,13 +123,9 @@ function update(dt)
 		end
 		self.fuelTypeMessage = nil
 	end
-
-	if self.currentFuel > self.maxFuel then
-		self.currentFuel = self.maxFuel
-	elseif self.currentFuel < 0 then
+	if self.currentFuel and self.currentFuel < 0 then
 		emptyfuel(true)
 	end
-
 end
 
 function insertFuel()
