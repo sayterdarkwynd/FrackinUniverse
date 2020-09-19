@@ -289,18 +289,18 @@ function update(dt)
 		self.afkCheckTimer=self.afkCheckTimer+dt
 	end
 
-	--if not status.statusProperty("fu_afk_120s") then --can use this to only do research when not afk. supported flags are defined above update block.
-	--passive research gain
-	--if status.statusProperty("fu_creationDate") then
-	--	self.bonus = status.stat("researchBonus") or 1
-	--	if self.timerCounter >= 1 then
-	--		player.addCurrency("fuscienceresource",1 + self.bonus)
-	--		self.timerCounter = 0
-	--	else
-	--		self.timerCounter = self.timerCounter + 1
-	--	end			
-	--end
-	--end
+	if not status.statusProperty("fu_afk_120s") then --can use this to only do research when not afk. supported flags are defined above update block.
+		--passive research gain
+		if status.statusProperty("fu_creationDate") then
+			self.bonus = status.stat("researchBonus") or 1
+			if self.timerCounter >= 1 then
+				player.addCurrency("fuscienceresource",1 + self.bonus)
+				self.timerCounter = 0
+			else
+				self.timerCounter = self.timerCounter + 1
+			end			
+		end
+	end
 
 	-- we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
 	-- there are better places to put it, but this at least keeps it contained
