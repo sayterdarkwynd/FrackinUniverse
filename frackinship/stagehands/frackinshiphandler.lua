@@ -22,6 +22,7 @@ end
 function createShip(_, _, ship, playerRace, replaceMode)
 	self.playerRace = playerRace or "apex"
 	self.racialiseRace = ship.racialiserOverride or self.playerRace
+	self.ship = ship.ship
 	replaceMode = replaceMode or {dungeon = "fu_byosblankquarter", size = {512, 512}}
 	if ship then
 		world.placeDungeon(replaceMode.dungeon, getReplaceModePosition(replaceMode.size))
@@ -60,6 +61,7 @@ function racialiseShip()
 		local newTreasure = root.createTreasure(treasurePool, 0)
 		treasure = util.mergeTable(treasure, newTreasure)
 	end
+	local activateShip = true
 	
 	-- Object racialisation
 	local objects = world.objectQuery(entity.position(), config.getParameter("racialiseRadius", 128))
@@ -87,6 +89,9 @@ function racialiseShip()
 				local newParameters = getNewParameters(newItem, positionOverride)
 				newParameters.fs_racialiseUpdate = true
 				newParameters.shortdescription = world.getObjectParameter(object, "shortdescription") .. " (" .. self.racialiseRace .. ")"
+				if racialiserType == "techstation" then
+					newParameters.dialog = newItem.config.dialog
+				end
 				for parameter, data in pairs (newParameters) do
 					world.callScriptedEntity(object, "object.setConfigParameter", parameter, data)
 				end
@@ -121,6 +126,15 @@ function racialiseShip()
 				treasure = nil
 			end
 		end
+		
+		-- Trigger activate ship SAIL text
+		if activateShip and ((racialiserType and racialiserType == "techstation") or string.find(world.entityName(object), "techstation")) then
+			world.sendEntityMessage(object, "activateShip")
+			activateShip = false	--to make it only do it for one techstation if there are multiple
+		end
+	end
+	if treasure then
+		sb.logError("Could not find container that can hold " .. tostring(#treasure) .. " items from treasure pools " .. sb.printJson(treasurePools) .. " in ship " .. tostring(self.ship))
 	end
 end
 
