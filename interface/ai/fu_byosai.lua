@@ -3,6 +3,7 @@ require "/scripts/pathutil.lua"
 require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
 require "/zb/zb_textTyper.lua"
 require "/zb/zb_util.lua"
+require "/frackinship/scripts/fs_util.lua"
 
 function init()
 	textUpdateDelay = config.getParameter("textUpdateDelay")
@@ -83,7 +84,7 @@ function generateShipLists()
 					shipData.name = race
 				end
 				shipData.icon = race .. "male.png"
-				local succeded2, previewImage = pcall(getStructureShipImage, shipData.type[shipData.startingLevel])
+				local succeded2, previewImage = pcall(getShipImage, shipData.type[shipData.startingLevel])
 				if succeded2 then
 					shipData.previewImage = previewImage
 				else
@@ -109,12 +110,12 @@ function generateShipLists()
 				data.id = id
 				if type(data.ship) == "table" then
 					data.mode = "Upgradable"
-					data.previewImage = getStructureShipImage(data.ship[1])
+					data.previewImage = getShipImage(data.ship[1])
 					table.insert(ship.upgradableShips, data)
 				else
 					data.mode = "Buildable"
 					if string.find(data.ship, "/") then
-						data.previewImage = getStructureShipImage(data.ship)
+						data.previewImage = getShipImage(data.ship)
 						data = nil
 						sb.logWarn("Structure file BYOS ships not yet implemented, removing " .. id)
 					end
@@ -370,20 +371,6 @@ function createShip(vanilla)
 		end
 	end
 	pane.dismiss()
-end
-
-function getStructureShipImage(file)
-	if file then
-		local shipConfig = root.assetJson(file)
-		local reversedFile = string.reverse(file)
-		local snipLocation = string.find(reversedFile, "/")
-		local shipImagePathGsub = string.sub(file, -snipLocation + 1)
-		local shipImage = shipConfig.backgroundOverlays[1].image
-		if not string.find(shipImage, "/") then
-			shipImage = file:gsub(shipImagePathGsub, shipImage)
-		end
-		return shipImage
-	end
 end
 
 -- Copied from terminal code
