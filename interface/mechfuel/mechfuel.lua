@@ -123,13 +123,14 @@ function update(dt)
 		end
 		self.fuelTypeMessage = nil
 	end
-
-	if self.currentFuel > self.maxFuel then
-		self.currentFuel = self.maxFuel
-	elseif self.currentFuel < 0 then
+	if self.currentFuel and self.currentFuel < 0 then
 		emptyfuel(true)
+	elseif not self.currentFuel then
+		if not player.hasQuest("fuelDataQuest") then
+			--player.startQuest( { questId = "fuelDataQuest" , templateId = "fuelDataQuest", parameters = {}} )
+			sb.logWarn("FU Mech Fuel UI: Something may be overwriting FU's version of playermechdeployment.lua.")
+		end
 	end
-
 end
 
 function insertFuel()
