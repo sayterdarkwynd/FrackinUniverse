@@ -27,13 +27,7 @@ function questInteract(entityId)
 
   if world.entityUniqueId(entityId) == self.techstationUid then
     if world.entityTypeName(entityId) == "fu_byostechstationdeco" then
-		if player.isAdmin() then
-			local interface = root.assetJson("/interface/ai/fu_byosai.config")
-			interface.states.initial.buttons[3] = {name = "BYOS Test DO NOT USE", newState = "frackinShipChoice"}
-			player.interact("ScriptPane", interface)
-		else
-			player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
-		end
+		player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
 	else
 		local interface = root.assetJson("/interface/ai/fu_byosai.config")
 		-- can't be bothered making it a json value since it's temp anyway

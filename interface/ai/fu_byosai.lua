@@ -249,14 +249,6 @@ function changeState(newState)
 				widget.setVisible("preview", true)
 				widget.setImage("preview", ship.selectedShip.previewImage or "")
 			end
-		elseif newState == "tempByos" then
-			ship.selectedShip = {}
-			ship.selectedShip.name = "Default BYOS"
-			ship.selectedShip.mode = "Buildable"
-			ship.selectedShip.useOld = true
-			changeState("frackinShipSelected")
-			state.previousState = "initial"
-			return
 		end
 		
 		if path then
@@ -405,24 +397,6 @@ function comparableName(name)
 	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> Madness
 		:gsub('ū', 'u')
 		:upper()
-end
-
-function byos()
-	if not world.getProperty("fuChosenShip") then
-		player.startQuest("fu_byos")
-		player.startQuest("fu_shipupgrades")
-		for _, recipe in pairs (root.assetJson("/interface/ai/fu_byosrecipes.config")) do
-			player.giveBlueprint(recipe)
-		end
-		if byosItems then
-			for _,byosItem in pairs (byosItems) do
-				player.giveItem(byosItem)
-			end
-		end
-		world.sendEntityMessage("bootup", "byos", player.species())
-		world.setProperty("fuChosenShip", true)
-	end
-	pane.dismiss()
 end
 
 function racialiserBootUp()
