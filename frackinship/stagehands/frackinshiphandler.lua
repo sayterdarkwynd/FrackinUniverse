@@ -61,6 +61,7 @@ function racialiseShip()
 		local newTreasure = root.createTreasure(treasurePool, 0)
 		treasure = util.mergeTable(treasure, newTreasure)
 	end
+	local activateShip = true
 	
 	-- Object racialisation
 	local objects = world.objectQuery(entity.position(), config.getParameter("racialiseRadius", 128))
@@ -121,6 +122,12 @@ function racialiseShip()
 				end
 				treasure = nil
 			end
+		end
+		
+		-- Trigger activate ship SAIL text
+		if activateShip and ((racialiserType and racialiserType == "techstation") or string.find(world.entityName(object), "techstation")) then
+			world.sendEntityMessage(object, "activateShip")
+			activateShip = false	--to make it only do it for one techstation if there are multiple
 		end
 	end
 	if treasure then
