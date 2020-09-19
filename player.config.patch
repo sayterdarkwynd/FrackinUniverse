@@ -57,6 +57,9 @@
 	// Custom ZB player init functions
 	[ { "op": "add", "path": "/deploymentConfig/scripts/-", "value": "/zb/zb_player_init.lua" } ],
 	
+	// T0 ship rendering
+	//[ { "op": "add", "path": "/deploymentConfig/scripts/-", "value": "/frackinship/scripts/fs_shiprender.lua" } ],
+	
 	
 	//starter mechs
 	[ { "op": "add", "path": "/deploymentConfig/speciesStarterMechBody/skath","value": "mechbodyfuorbusproto" } ],
@@ -1066,8 +1069,15 @@
 	//pilchenstein's field generator
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-","value": { "item" : "pilch_shieldgenerator" }} ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-","value": { "item" : "pilch_shieldmarker" }} ],
-	[ { "op": "add", "path": "/defaultBlueprints/tier1/-","value": { "item" : "pilch_shieldextender" }} ]
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-","value": { "item" : "pilch_shieldextender" }} ],
 
 	//end starting blueprints
+	
+	//begin inventoryFilter edits
+	
+	[ { "op": "add", "path": "/inventoryFilters/reagentBag/tagWhitelist/-", "value": "bee" } ],
+	[ { "op": "add", "path": "/inventoryFilters/mainBag/tagBlacklist/-", "value": "bee" } ]
+	
+	//end inventoryFilter edits
 
 ]

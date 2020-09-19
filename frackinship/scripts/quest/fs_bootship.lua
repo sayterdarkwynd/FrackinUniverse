@@ -1,7 +1,6 @@
 require "/scripts/util.lua"
 require "/quests/scripts/questutil.lua"
 require "/quests/scripts/portraits.lua"
-require "/scripts/messageutil.lua"
 
 function init()
   storage.complete = storage.complete or false
@@ -27,13 +26,7 @@ function questInteract(entityId)
 
   if world.entityUniqueId(entityId) == self.techstationUid then
     if world.entityTypeName(entityId) == "fu_byostechstationdeco" then
-		if player.isAdmin() then
-			local interface = root.assetJson("/interface/ai/fu_byosai.config")
-			interface.states.initial.buttons[3] = {name = "BYOS Test DO NOT USE", newState = "frackinShipChoice"}
-			player.interact("ScriptPane", interface)
-		else
-			player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
-		end
+		player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
 	else
 		local interface = root.assetJson("/interface/ai/fu_byosai.config")
 		-- can't be bothered making it a json value since it's temp anyway
@@ -54,20 +47,8 @@ function update(dt)
   
   self.interactTimer = math.max(self.interactTimer - dt, 0)
   
-  promises:update()
-  
-  if self.questComplete and not self.techstationFound then
-    promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
-      self.techstationFound = true
-	end)
-    if self.activationTimer <= 0 then
-      self.techstationFound = true
-    else
-      self.activationTimer = self.activationTimer - dt
-    end	
-  end
-  
-  if self.techstationFound then
+  if self.questComplete then
+	world.sendEntityMessage(self.techstationUid, "activateShip")
     quest.complete()
   end
 end
@@ -101,7 +82,7 @@ function wakeSail(dt)
     questutil.pointCompassAt(findTechStation())
 
     local shipUpgrades = player.shipUpgrades()
-    if shipUpgrades.shipLevel > 0 or player.hasQuest("fu_byos") then
+    if shipUpgrades.shipLevel > 0 or world.getProperty("fu_byos") then
         self.questComplete = true
     end
     coroutine.yield()

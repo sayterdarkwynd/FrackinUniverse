@@ -75,12 +75,11 @@ function BeamArm:fireState()
 	  self:statSet()  
 	  self.mechTier = self.stats.power
 	  self.basePower = self.stats.basePower
-	  
-          pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
-          self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+    self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
+    self.applyBeamDamage = self.basePower * (1 + self.mechTier/10); 	  
+    pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
 
-          self.applyBeamDamage = self.basePower * self.mechTier; 
-          --Mech critical hits
+    --Mech critical hits
 		if (self.stats.rapidFire) then 
 		  self.critMod = self.stats.rapidFire / 10
 		  self.critChance = self.critChance * self.critMod
@@ -89,15 +88,15 @@ function BeamArm:fireState()
 		  self.mechBonus = self.mechBonus * 2
 		end
 
-        --apply final damage
+    --apply final damage  
+    if (self.mechBonus) >= (self.mechBonusWeapon) then
+      self.randbonus = (self.mechBonus/100) * self.mechTier
+      self.mechBonus = self.mechBonus * (1 + self.randbonus)
+    end          
         
-        if (self.mechBonus) >= (self.mechBonusWeapon) then
-          self.randbonus = (self.mechBonus/100) * self.mechTier
-          self.mechBonus = self.mechBonus * (1 + self.randbonus)
-        end          
-        
-        self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
+    self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
   -- ********************************************************************
+
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
   local endPoint, beamCollision, beamLength = self:updateBeam()

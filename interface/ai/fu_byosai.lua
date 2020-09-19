@@ -3,6 +3,7 @@ require "/scripts/pathutil.lua"
 require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
 require "/zb/zb_textTyper.lua"
 require "/zb/zb_util.lua"
+require "/frackinship/scripts/fs_util.lua"
 
 function init()
 	textUpdateDelay = config.getParameter("textUpdateDelay")
@@ -83,7 +84,7 @@ function generateShipLists()
 					shipData.name = race
 				end
 				shipData.icon = race .. "male.png"
-				local succeded2, previewImage = pcall(getStructureShipImage, shipData.type[shipData.startingLevel])
+				local succeded2, previewImage = pcall(getShipImage, shipData.type[shipData.startingLevel])
 				if succeded2 then
 					shipData.previewImage = previewImage
 				else
@@ -109,12 +110,12 @@ function generateShipLists()
 				data.id = id
 				if type(data.ship) == "table" then
 					data.mode = "Upgradable"
-					data.previewImage = getStructureShipImage(data.ship[1])
+					data.previewImage = getShipImage(data.ship[1])
 					table.insert(ship.upgradableShips, data)
 				else
 					data.mode = "Buildable"
 					if string.find(data.ship, "/") then
-						data.previewImage = getStructureShipImage(data.ship)
+						data.previewImage = getShipImage(data.ship)
 						data = nil
 						sb.logWarn("Structure file BYOS ships not yet implemented, removing " .. id)
 					end
@@ -249,14 +250,6 @@ function changeState(newState)
 				widget.setVisible("preview", true)
 				widget.setImage("preview", ship.selectedShip.previewImage or "")
 			end
-		elseif newState == "tempByos" then
-			ship.selectedShip = {}
-			ship.selectedShip.name = "Default BYOS"
-			ship.selectedShip.mode = "Buildable"
-			ship.selectedShip.useOld = true
-			changeState("frackinShipSelected")
-			state.previousState = "initial"
-			return
 		end
 		
 		if path then
@@ -366,7 +359,7 @@ function createShip(vanilla)
 					if string.find(ship.selectedShip.ship, "/") then
 						sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
 					else
-						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species(), world.entityName(player.id()))
+						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
 					end
 				elseif ship.selectedShip.mode == "Upgradable" then
 					sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
@@ -380,20 +373,6 @@ function createShip(vanilla)
 	pane.dismiss()
 end
 
-function getStructureShipImage(file)
-	if file then
-		local shipConfig = root.assetJson(file)
-		local reversedFile = string.reverse(file)
-		local snipLocation = string.find(reversedFile, "/")
-		local shipImagePathGsub = string.sub(file, -snipLocation + 1)
-		local shipImage = shipConfig.backgroundOverlays[1].image
-		if not string.find(shipImage, "/") then
-			shipImage = file:gsub(shipImagePathGsub, shipImage)
-		end
-		return shipImage
-	end
-end
-
 -- Copied from terminal code
 function compareByName(shipA, shipB)
 	local a = comparableName(shipA.name)
@@ -405,24 +384,6 @@ function comparableName(name)
 	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> Madness
 		:gsub('ū', 'u')
 		:upper()
-end
-
-function byos()
-	if not world.getProperty("fuChosenShip") then
-		player.startQuest("fu_byos")
-		player.startQuest("fu_shipupgrades")
-		for _, recipe in pairs (root.assetJson("/interface/ai/fu_byosrecipes.config")) do
-			player.giveBlueprint(recipe)
-		end
-		if byosItems then
-			for _,byosItem in pairs (byosItems) do
-				player.giveItem(byosItem)
-			end
-		end
-		world.sendEntityMessage("bootup", "byos", player.species())
-		world.setProperty("fuChosenShip", true)
-	end
-	pane.dismiss()
 end
 
 function racialiserBootUp()
