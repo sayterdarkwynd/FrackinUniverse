@@ -22,6 +22,7 @@ end
 function createShip(_, _, ship, playerRace, replaceMode)
 	self.playerRace = playerRace or "apex"
 	self.racialiseRace = ship.racialiserOverride or self.playerRace
+	self.ship = ship.ship
 	replaceMode = replaceMode or {dungeon = "fu_byosblankquarter", size = {512, 512}}
 	if ship then
 		world.placeDungeon(replaceMode.dungeon, getReplaceModePosition(replaceMode.size))
@@ -121,6 +122,9 @@ function racialiseShip()
 				treasure = nil
 			end
 		end
+	end
+	if treasure then
+		sb.logError("Could not find container that can hold " .. tostring(#treasure) .. " items from treasure pools " .. sb.printJson(treasurePools) .. " in ship " .. tostring(self.ship))
 	end
 end
 
