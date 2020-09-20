@@ -137,12 +137,18 @@ function GunFire:update(dt, fireMode, shiftHeld)
 	and self.cooldownTimer == 0
 	and not status.resourceLocked("energy")
 	and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
+		if self.weaponBonus and fireMode=="primary" then
+			status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
+		end
 		if self.fireType == "auto" and status.overConsumeResource("energy", self:energyPerShot()) then
 			self:setState(self.auto)
 			self:checkMagazine(true)
 		elseif self.fireType == "burst" then
 			self:setState(self.burst)
 			self:checkMagazine(true)
+		end
+		if self.weaponBonus and fireMode=="primary" then
+			status.setPersistentEffects("weaponBonus", {})
 		end
 	end
 end
@@ -362,7 +368,6 @@ function GunFire:isChargeUp()
 				self.countdownDelay = 0
 			end
 		end
-
 		if (self.isSniper == 1) and (self.weaponBonus >= 80) then --limit max value for crits and let player know they maxed
 			self.weaponBonus = 80
 			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
@@ -374,7 +379,8 @@ function GunFire:isChargeUp()
 			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
 			status.addEphemeralEffect("critReady")
 		end
-		status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}}) -- set final bonus value
+		--this section's stat changes were moved to the update block to address unintended effects.
+		--status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}}) -- set final bonus value
 	end
 end
 
