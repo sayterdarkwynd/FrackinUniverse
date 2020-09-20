@@ -28,16 +28,17 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; Nothing. You're generic!"
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; AR/Shortsword: Dmg x^green;1.1^reset;"
 		},
 		{
 			"op": "add",
 			"path": "/statusEffects",
 			"value": [
-				"fusetbonusmanager",
+				    "humantier1setbonusnew",
 				{
-					"stat": "humantier1setcount",
-					"amount": 1
+					"stat" : "fu_humantier1setnew_legs",
+					"amount" : 1
 				}
 			]
 		},
@@ -81,7 +82,44 @@
 				"stat": "poisonResistance",
 				"amount": 0.016667
 			}
-		}, {
+		}, 
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "radioactiveResistance",
+				"amount": 0.016667
+			}
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "physicalResistance",
+				"amount": 0.016667
+			}
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "shadowResistance",
+				"amount": 0.016667
+			}
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "cosmicResistance",
+				"amount": 0.016667
+			}
+		}, 		
+		{
 			"op": "add",
 			"path": "/builder",
 			"value": "/items/buildscripts/fubuildarmor.lua"
