@@ -1,11 +1,91 @@
 [
-	[
-	{ "op": "test", "path": "/itemTags", "inverse" : false },
-	{"op": "add","path": "/itemTags","value": []},
-	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
+	[{
+			"op": "test",
+			"path": "/itemTags",
+			"inverse": true
+		},
+		{
+			"op": "add",
+			"path": "/itemTags",
+			"value": []
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
 	],
-	[
-	{ "op": "test", "path": "/itemTags", "inverse" : true },
-	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
-	]	
+	[{
+			"op": "test",
+			"path": "/itemTags"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
+	],
+	[{
+			"op": "replace",
+			"path": "/description",
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Whip/Rapier: Damage x^green;1.25^reset;"
+		},
+		{
+			"op": "add",
+			"path": "/statusEffects",
+			"value": [
+				    "bonussetbonusnew",
+				{
+					"stat" : "fu_bonussetnew_chest",
+					"amount" : 1
+				}
+			]
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "shadowResistance",
+				"amount": 0.04
+			}
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "cosmicResistance",
+				"amount": 0.04
+			}
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "fireResistance",
+				"amount": 0.04
+			}
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "iceResistance",
+				"amount": 0.04
+			}
+		},		
+		{
+			"op": "replace",
+			"path": "/tooltipKind",
+			"value": "armornew2"
+		}, {
+			"op": "add",
+			"path": "/builder",
+			"value": "/items/buildscripts/fubuildarmor.lua"
+		}
+	]
 ]
