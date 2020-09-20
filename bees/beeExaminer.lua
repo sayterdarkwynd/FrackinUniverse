@@ -50,8 +50,30 @@ function update(dt)
 					progress = math.floor(progress * 100) * 0.01
 
 					if progress >= 100 then
-						if bonusResearch>0 then world.spawnItem("fuscienceresource",entity.position(),bonusResearch) end
-						if bonusEssence>0 then world.spawnItem("essence",entity.position(),bonusEssence) end
+						if bonusResearch>0 then
+							local slotItem=world.containerItemAt(entity.id(),1)
+							if slotItem and slotItem.name~="fuscienceresource" then
+								if world.containerConsumeAt(entity.id(),1) then
+									world.spawnItem(entity.position(),slotItem)
+								end
+							end
+							local leftovers=world.containerPutItemsAt(entity.id(),{name="fuscienceresource",count=bonusResearch},1)
+							if leftovers then
+								world.spawnItem("fuscienceresource",entity.position(),bonusResearch)
+							end
+						end
+						if bonusEssence>0 then
+							local slotItem=world.containerItemAt(entity.id(),2)
+							if slotItem and slotItem.name~="essence" then
+								if world.containerConsumeAt(entity.id(),2) then
+									world.spawnItem(entity.position(),slotItem)
+								end
+							end
+							local leftovers=world.containerPutItemsAt(entity.id(),{name="essence",count=bonusEssence},2)
+							if leftovers then
+								world.spawnItem("essence",entity.position(),bonusEssence)
+							end
+						end
 						bonusEssence=0
 						bonusResearch=0
 						progress = 0
@@ -59,7 +81,7 @@ function update(dt)
 
 						oldItem.parameters.genomeInspected = true
 						world.containerTakeAt(entity.id(), 0)
-						world.containerPutItemsAt(entity.id(), oldItem, 0)
+						world.containerPutItemsAt(entity.id(), oldItem, 3)
 					else
 						status = "^cyan;"..progress.."%"
 						-- ***** chance to gain research *****
