@@ -48,11 +48,11 @@ function update(dt)
 			if root.itemHasTag(futureItem.name, "queen") or root.itemHasTag(futureItem.name, "youngQueen") then
 				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
 					status = statusList.queenID
-					if not itemsDropped then return end
+					shoveTimer=(shoveTimer or 0.0) + dt
+					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local slotItem=world.containerItemAt(entity.id(),3)
 					if slotItem and not compare(slotItem,futureItem) then return end
-					world.containerTakeAt(entity.id(), 0)
-					shoveItem(futureItem,3)
+					nudgeItem(0,3)
 					futureItem=nil
 					currentItem=nil
 				else
@@ -63,7 +63,7 @@ function update(dt)
 						local slotItem=world.containerItemAt(entity.id(),3)
 						if slotItem and not compare(slotItem,futureItem) then return end
 						world.containerTakeAt(entity.id(), 0)
-						shoveItem(futureItem, 3)
+						shoveItem(0, 3)
 						futureItem=nil
 						handleBonuses()
 						progress = 0
@@ -82,11 +82,11 @@ function update(dt)
 			elseif root.itemHasTag(futureItem.name, "drone") then
 				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
 					status = statusList.droneID
-					if not itemsDropped then return end
+					shoveTimer=(shoveTimer or 0.0) + dt
+					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local slotItem=world.containerItemAt(entity.id(),3)
 					if slotItem and not compare(slotItem,futureItem) then return end
-					world.containerTakeAt(entity.id(), 0)
-					shoveItem(futureItem,3)
+					nudgeItem(futureItem,3)
 					futureItem=nil
 					currentItem=nil
 				else
@@ -97,7 +97,7 @@ function update(dt)
 						local slotItem=world.containerItemAt(entity.id(),3)
 						if slotItem and not compare(slotItem,futureItem) then return end
 						world.containerTakeAt(entity.id(), 0)
-						shoveItem(futureItem, 3)
+						nudgeItem(0, 3)
 						futureItem=nil
 						handleBonuses()
 						progress = 0
@@ -116,7 +116,8 @@ function update(dt)
 			elseif root.itemHasTag(futureItem.name, "artifact") then
 				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
 					status = statusList.artifactID
-					if not itemsDropped then return end
+					shoveTimer=(shoveTimer or 0.0) + dt
+					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local slotItem=world.containerItemAt(entity.id(),3)
 					if slotItem and not compare(slotItem,futureItem) then return end
 					world.containerTakeAt(entity.id(), 0)
@@ -193,6 +194,19 @@ function shoveItem(item,slot)
 	local leftovers=world.containerPutItemsAt(entity.id(),item,slot)
 	if leftovers then
 		world.spawnItem(leftovers,entity.position())
+	end
+end
+
+function nudgeItem(startSlot,endSlot)
+--world.containerTakeAt(entity.id(), 0)
+	if (not startSlot) or (not endSlot) then return end
+	local startItem=world.containerItemAt(entity.id(),startSlot)
+	local endItem=world.containerItemAt(entity.id(),endSlot)
+	
+	local leftovers=world.containerPutItemsAt(entity.id(),startItem,endSlot)
+	if not compare(startItem,leftovers) then
+		world.containerTakeAt(entity.id(),startSlot)
+		world.containerPutItemsAt(entity.id(),leftovers,startSlot)
 	end
 end
 
