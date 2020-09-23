@@ -27,15 +27,14 @@ function GunFireFixed:init()
 	self.countdownDelay = 0 									-- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
 
-	self.playerMagBonus = status.stat("magazineSize")						-- player	ammo bonuses
-	self.playerReloadBonus = status.stat("reloadTime")						-- player reload bonuses
+	--self.playerMagBonus = status.stat("magazineSize")						-- player	ammo bonuses
+	--self.playerReloadBonus = status.stat("reloadTime")						-- player reload bonuses
 	--self.playerSpeedBonus = status.stat("speedBonus")						-- player fire rate bonus
 	--THAT IS NOT HOW STATUS.STAT WORKS. IT ONLY TAKES ONE ARGUMENT, AND RETURNS 0.0 IF THE STAT DOESN'T EXIST.
 
-	self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) 	-- total count of the magazine
-	self.magazineAmount = config.getParameter("magazineAmount",-1) 						-- current number of bullets in the magazine
-	self.reloadTime = config.getParameter("reloadTime",1)	+ (self.playerReloadBonus or 0) 	-- how long does reloading mag take?
-
+	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")) 	-- total count of the magazine
+	self.magazineAmount = math.min(config.getParameter("magazineAmount",-1),self.magazineSize) 						-- current number of bullets in the magazine
+	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) 	-- how long does reloading mag take?
 	self.playerId = activeItem.ownerEntityId()
 
 	if (self.isAmmoBased == 1) then
@@ -506,7 +505,7 @@ function GunFireFixed:checkAmmo(force)
 					activeItem.ownerEntityId(),
 					"setBar",
 					"ammoBar",
-					self.currentAmmoPercent,
+					util.clamp(self.currentAmmoPercent,0.0,1.0),
 					self.barColor
 				)
 			end
@@ -521,7 +520,7 @@ function GunFireFixed:checkAmmo(force)
 end
 
 function GunFireFixed:checkMagazine(evalOnly)
-	self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0)		-- total count of the magazine
+	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize"))		-- total count of the magazine
 	self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	self.isAmmoBased = config.getParameter("isAmmoBased",0)
 	if (self.isAmmoBased == 1) then
@@ -534,7 +533,7 @@ function GunFireFixed:checkMagazine(evalOnly)
 					activeItem.ownerEntityId(),
 					"setBar",
 					"ammoBar",
-					self.currentAmmoPercent,
+					util.clamp(self.currentAmmoPercent,0.0,1.0),
 					self.barColor
 				)
 			end
