@@ -3,7 +3,6 @@ require "/scripts/pathutil.lua"
 require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
 require "/zb/zb_textTyper.lua"
 require "/zb/zb_util.lua"
-require "/frackinship/scripts/fs_util.lua"
 
 function init()
 	textUpdateDelay = config.getParameter("textUpdateDelay")
@@ -371,6 +370,20 @@ function createShip(vanilla)
 		end
 	end
 	pane.dismiss()
+end
+
+function getShipImage(file)
+	if file then
+		local shipConfig = root.assetJson(file)
+		local shipImage = shipConfig.backgroundOverlays[1].image
+		if string.sub(shipImage, 1, 1) ~= "/" then
+			local reversedFile = string.reverse(file)
+			local snipLocation = string.find(reversedFile, "/")
+			local shipImagePathGsub = string.sub(file, -snipLocation + 1)
+			shipImage = file:gsub(shipImagePathGsub, shipImage)
+		end
+		return shipImage
+	end
 end
 
 -- Copied from terminal code

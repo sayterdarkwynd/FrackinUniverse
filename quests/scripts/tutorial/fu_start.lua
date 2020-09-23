@@ -53,9 +53,9 @@ function setStage(newStage)
 	  player.radioMessage("fu_start_greetings0", 1)
 	  player.radioMessage("fu_start_greetings1", 1)
 	  player.radioMessage("fu_start_greetings2", 1)    
-          quest.setObjectiveList({{config.getParameter("descriptions.makeTable"), false}})
-    elseif newStage == 2 then  -- has Wires
-       player.radioMessage("fu_start_makeTable", 1)
+    quest.setObjectiveList({{config.getParameter("descriptions.makeTable"), false}})
+    elseif newStage == 2 then  -- has Wires      
+      player.radioMessage("fu_start_makeTable", 1)
       quest.setObjectiveList({{config.getParameter("descriptions.makeWire"), false}})
     elseif newStage == 3 then
       player.radioMessage("fu_start_makeWire", 1)
@@ -63,7 +63,6 @@ function setStage(newStage)
     elseif newStage == 4 then
       player.radioMessage("fu_start_makeElectromagnet", 1)
       player.radioMessage("fu_start_Complete", 1)  
-      player.radioMessage("fu_start_Complete2", 1) 
       quest.setObjectiveList({{config.getParameter("descriptions.cavern"), false}})
     end
     self.missionStage = newStage
@@ -88,8 +87,6 @@ function updateStage(dt)
       setStage(4)
     end
   elseif self.missionStage == 4 then
-    player.giveItem("statustablet")
-    player.interact("ScriptPane", "/zb/questList/questList.config")
     player.upgradeShip(config.getParameter("shipUpgrade"))
     quest.complete()     
   end

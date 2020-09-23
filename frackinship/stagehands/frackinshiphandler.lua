@@ -44,7 +44,7 @@ function racialiseShip()
 	-- Ship treasure generation
 	local raceShipFile = root.assetJson("/universe_server.config").speciesShips[self.playerRace][2]		--get the blockKey from the T1 ship (since T0 was still BYOS when this was implemented)
 	local blockKeyFile = root.assetJson(raceShipFile).blockKey
-	if not string.find(blockKeyFile, "/") then
+	if string.sub(blockKeyFile, 1, 1) ~= "/" then
 		blockKeyFile = getBlockKeyPath(raceShipFile, blockKeyFile)
 	end
 	local blockKey = root.assetJson(blockKeyFile)
@@ -101,6 +101,9 @@ function racialiseShip()
 		-- Ship pet setting (works on all objects with ship pets)
 		if world.getObjectParameter(object, "shipPetType") then
 			local newPetObject
+			if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].race then
+				self.playerRace = raceTableOverride[self.playerRace].race
+			end
 			if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
 				for item, extra in pairs (raceTableOverride[self.playerRace].items) do
 					if string.find(item, "techstation") then
