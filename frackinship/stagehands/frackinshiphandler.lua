@@ -44,7 +44,7 @@ function racialiseShip()
 	-- Ship treasure generation
 	local raceShipFile = root.assetJson("/universe_server.config").speciesShips[self.playerRace][2]		--get the blockKey from the T1 ship (since T0 was still BYOS when this was implemented)
 	local blockKeyFile = root.assetJson(raceShipFile).blockKey
-	if not string.find(blockKeyFile, "/") then
+	if string.sub(blockKeyFile, 1, 1) ~= "/" then
 		blockKeyFile = getBlockKeyPath(raceShipFile, blockKeyFile)
 	end
 	local blockKey = root.assetJson(blockKeyFile)
