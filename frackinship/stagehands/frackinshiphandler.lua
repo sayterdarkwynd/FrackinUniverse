@@ -101,6 +101,9 @@ function racialiseShip()
 		-- Ship pet setting (works on all objects with ship pets)
 		if world.getObjectParameter(object, "shipPetType") then
 			local newPetObject
+			if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].race then
+				self.playerRace = raceTableOverride[self.playerRace].race
+			end
 			if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
 				for item, extra in pairs (raceTableOverride[self.playerRace].items) do
 					if string.find(item, "techstation") then
