@@ -1,7 +1,7 @@
 {
   "objectName" : "sciencelaptop2",
   "rarity" : "uncommon",
-  "description" : "Slowly generates up to 500 research.",
+  "description" : "Performs more advanced research on items.",
   "shortdescription" : "Advanced Computer",
   "race" : "generic",
   "category" : "storage",
@@ -34,18 +34,18 @@
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
 
-    }   
+    }
   ],
   "outputNodes" : [ [2, 1] ],
   "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
-  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ], 
-  "scripts" : [ "/scripts/fusciencelaptop.lua" ],
-  "scriptDelta" : 320,
-  "slotCount" : 1,
-  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
+  "scripts" : [ "/objects/generic/extractor_research.lua" ],
+  "scriptDelta" : 10,
+  "slotCount" : 2,
+  "uiConfig" : "/bees/interface/beeexaminer/beeexaminer2.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  "wellslots" : [
-    {"name" : "fuscienceresource","ratio" : 15,"max" : 500}
-  ]
+  "fu_timerMod":1.5,
+  "fu_researchMult":0.02,
+  "fu_essenceMult":0.0
 }

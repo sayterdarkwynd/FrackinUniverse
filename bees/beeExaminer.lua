@@ -44,7 +44,7 @@ function update(dt)
 			futureItem=nil
 		else
 			if not futureItem then futureItem=currentItem end
-			
+
 			if root.itemHasTag(futureItem.name, "queen") or root.itemHasTag(futureItem.name, "youngQueen") then
 				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
 					status = statusList.queenID
@@ -202,7 +202,7 @@ function nudgeItem(startSlot,endSlot)
 	if (not startSlot) or (not endSlot) then return end
 	local startItem=world.containerItemAt(entity.id(),startSlot)
 	local endItem=world.containerItemAt(entity.id(),endSlot)
-	
+
 	local leftovers=world.containerPutItemsAt(entity.id(),startItem,endSlot)
 	if not compare(startItem,leftovers) then
 		world.containerTakeAt(entity.id(),startSlot)
