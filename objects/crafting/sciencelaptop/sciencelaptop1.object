@@ -1,14 +1,14 @@
 {
   "objectName" : "sciencelaptop1",
   "rarity" : "Common",
-  "description" : "Slowly generates up to 200 research.",
+  "description" : "Performs basic research on items.",
   "shortdescription" : "Personal Computer",
   "race" : "generic",
   "category" : "storage",
   "price" : 750,
   "printable" : false,
   "objectType" : "container",
-  "learnBlueprintsOnPickup" : [ "sciencelaptop2" ],
+//  "learnBlueprintsOnPickup" : [ "sciencelaptop2" ],
 
   "inventoryIcon" : "sciencelaptop1icon.png",
   "orientations" : [
@@ -35,18 +35,18 @@
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
 
-    } 
+    }
   ],
   "outputNodes" : [ [2, 1] ],
   "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
-  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ], 
-  "scripts" : [ "/scripts/fusciencelaptop.lua" ],
-  "scriptDelta" : 320,
-  "slotCount" : 1,
-  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
+  "scripts" : [ "/objects/generic/extractor_research.lua" ],
+  "scriptDelta" : 10,
+  "slotCount" : 2,
+  "uiConfig" : "/bees/interface/beeexaminer/beeexaminer2.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  "wellslots" : [
-    {"name" : "fuscienceresource","ratio" : 20,"max" : 200}
-  ]
+  "fu_timerMod":2.0,
+  "fu_researchMult":0.01,
+  "fu_essenceMult":0.0
 }
