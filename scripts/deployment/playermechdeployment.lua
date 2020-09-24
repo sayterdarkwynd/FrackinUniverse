@@ -7,21 +7,21 @@ function init()
 			self.unlocked = true
 			player.setProperty("mechUnlocked", true)
 
-			local starterSet = config.getParameter("starterMechSet")
-			local speciesBodies = config.getParameter("speciesStarterMechBody")
-			local playerSpecies = player.species()
-			if speciesBodies[playerSpecies] then
-				starterSet.body = speciesBodies[playerSpecies]
-			end
-
-			for _,item in pairs(starterSet) do
-				player.giveBlueprint(item)
-			end
+		--	local starterSet = config.getParameter("starterMechSet")
+		--	local speciesBodies = config.getParameter("speciesStarterMechBody")
+		--	local playerSpecies = player.species()
+		--	if speciesBodies[playerSpecies] then
+		--		starterSet.body = speciesBodies[playerSpecies]
+		--	end
+--
+		--	for _,item in pairs(starterSet) do
+	--			player.giveBlueprint(item)
+	--		end
 
 			-- added july 20th 2019
-			for _,item in pairs(starterSet) do
-				player.giveBlueprint(item)
-			end
+	--		for _,item in pairs(starterSet) do
+	--			player.giveBlueprint(item)
+	--		end
 			--setMechItemSet(starterSet)
 		end
 	end)
@@ -172,18 +172,18 @@ function unlockMech()
 		self.unlocked = true
 		player.setProperty("mechUnlocked", true)
 
-		local starterSet = config.getParameter("starterMechSet")
-		local speciesBodies = config.getParameter("speciesStarterMechBody")
-		local playerSpecies = player.species()
-		if speciesBodies[playerSpecies] then
-			starterSet.body = speciesBodies[playerSpecies]
-		end
+	--	local starterSet = config.getParameter("starterMechSet")
+	--	local speciesBodies = config.getParameter("speciesStarterMechBody")
+	--	local playerSpecies = player.species()
+	--	if speciesBodies[playerSpecies] then
+	--		starterSet.body = speciesBodies[playerSpecies]
+	--	end
+--
+	--	for _,item in pairs(starterSet) do
+	--		player.giveBlueprint(item)
+	--	end
 
-		for _,item in pairs(starterSet) do
-			player.giveBlueprint(item)
-		end
-
-		setMechItemSet(starterSet)
+	--	setMechItemSet(starterSet)
 	end
 end
 --
