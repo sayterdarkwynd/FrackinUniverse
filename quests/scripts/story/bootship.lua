@@ -22,7 +22,6 @@ function questInteract(entityId)
 
   if world.entityUniqueId(entityId) == self.techstationUid then
     player.upgradeShip(config.getParameter("shipUpgrade"))
-    player.giveItem("statustablet")
     world.sendEntityMessage(self.techstationUid, "activateShip")
     self.interactTimer = 1.0
     return true

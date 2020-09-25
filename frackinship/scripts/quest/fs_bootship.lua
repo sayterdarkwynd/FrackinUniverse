@@ -48,7 +48,8 @@ function update(dt)
   self.interactTimer = math.max(self.interactTimer - dt, 0)
   
   if self.questComplete then
-	world.sendEntityMessage(self.techstationUid, "activateShip")
+	  world.sendEntityMessage(self.techstationUid, "activateShip")
+    player.giveItem("statustablet")
     quest.complete()
   end
 end
