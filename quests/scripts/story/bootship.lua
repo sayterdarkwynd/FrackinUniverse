@@ -15,25 +15,14 @@ function init()
   self.state:set(wakeSail)
 
   self.interactTimer = 0
-  self.activationTimer = 1
-  
-  --temp until it's no longer a quest
-  player.startQuest("fu_shipupgrades")
 end
 
 function questInteract(entityId)
   if self.interactTimer > 0 then return true end
 
   if world.entityUniqueId(entityId) == self.techstationUid then
-    if world.entityTypeName(entityId) == "fu_byostechstationdeco" then
-		player.interact("ScriptPane", "/interface/ai/fu_byosai.config")
-	else
-		local interface = root.assetJson("/interface/ai/fu_byosai.config")
-		-- can't be bothered making it a json value since it's temp anyway
-		interface.states.initial.buttons = {{name = "Vanilla", newState = "vanillaShipSelected"}}
-		interface.states.initial.text = "Ship has sustained major damage when escaping earth. Please select which ship type you want:\n\nVanilla Ship:\nThe default starbound ship for your race."
-		player.interact("ScriptPane", interface)
-	end
+    player.upgradeShip(config.getParameter("shipUpgrade"))
+    world.sendEntityMessage(self.techstationUid, "activateShip")
     self.interactTimer = 1.0
     return true
   end
@@ -44,22 +33,15 @@ end
 
 function update(dt)
   self.state:update(dt)
-  
+
   self.interactTimer = math.max(self.interactTimer - dt, 0)
-  
-  if self.questComplete then
-	  world.sendEntityMessage(self.techstationUid, "activateShip")
-    player.giveItem("statustablet")
-    quest.complete()
-  end
 end
 
-function wakeSail(dt)
+function wakeSail()
   quest.setCompassDirection(nil)
   quest.setObjectiveList({
     {self.descriptions.wakeSail, false}
   })
-
   -- try to lounge in the teleporter for a bit
   util.wait(1.0, function()
     local teleporters = world.entityQuery(mcontroller.position(), 100, {includedTypes = {"object"}})
@@ -83,14 +65,13 @@ function wakeSail(dt)
     questutil.pointCompassAt(findTechStation())
 
     local shipUpgrades = player.shipUpgrades()
-    if shipUpgrades.shipLevel > 0 or world.getProperty("fu_byos") then
-        self.questComplete = true
+    if shipUpgrades.shipLevel > 0 then
+      quest.complete()
     end
     coroutine.yield()
   end
 end
 
 function questComplete()
-  status.addEphemeralEffect("fu_byosfindship", 10)
   questutil.questCompleteActions()
 end
