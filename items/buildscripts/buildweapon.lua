@@ -201,7 +201,7 @@ function build(directory, config, parameters, level, seed)
 	parameters.isAmmoBased = configParameter("isAmmoBased")
 	if type(parameters.isAmmoBased)=="table"  then
 		if (#parameters.isAmmoBased >= 2) and (type(parameters.isAmmoBased[1]) == "number") and (type(parameters.isAmmoBased[2]) == "number") then
-			parameters.isAmmoBased=util.lerp(util.round(math.random()),parameters.isAmmoBased)
+			parameters.isAmmoBased=math.random(parameters.isAmmoBased[1],parameters.isAmmoBased[2])
 		elseif (#parameters.isAmmoBased == 1) and (type(parameters.isAmmoBased[1]) == "number") then
 			parameters.isAmmoBased=parameters.isAmmoBased[1]
 		else
