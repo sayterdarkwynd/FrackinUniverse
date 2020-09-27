@@ -42,6 +42,7 @@ function update(dt)
 			progress=0
 			status = statusList.invalid
 			futureItem=nil
+			currentItem=nil
 		else
 			if not futureItem then futureItem=currentItem end
 
@@ -66,6 +67,7 @@ function update(dt)
 						world.containerTakeAt(entity.id(), 0)
 						shoveItem(futureItem,3)
 						futureItem=nil
+						currentItem=nil
 						handleBonuses()
 						progress = 0
 						status = statusList.queenID
@@ -101,6 +103,7 @@ function update(dt)
 						world.containerTakeAt(entity.id(), 0)
 						shoveItem(futureItem,3)
 						futureItem=nil
+						currentItem=nil
 						handleBonuses()
 						progress = 0
 						status = statusList.droneID
