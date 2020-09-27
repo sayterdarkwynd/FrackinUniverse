@@ -52,7 +52,8 @@ function update(dt)
 					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local slotItem=world.containerItemAt(entity.id(),3)
 					if slotItem and not compare(slotItem,futureItem) then return end
-					nudgeItem(0,3)
+					world.containerTakeAt(entity.id(), 0)
+					shoveItem(futureItem,3)
 					futureItem=nil
 					currentItem=nil
 				else
@@ -63,7 +64,7 @@ function update(dt)
 						local slotItem=world.containerItemAt(entity.id(),3)
 						if slotItem and not compare(slotItem,futureItem) then return end
 						world.containerTakeAt(entity.id(), 0)
-						shoveItem(0, 3)
+						shoveItem(futureItem,3)
 						futureItem=nil
 						handleBonuses()
 						progress = 0
@@ -86,7 +87,8 @@ function update(dt)
 					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local slotItem=world.containerItemAt(entity.id(),3)
 					if slotItem and not compare(slotItem,futureItem) then return end
-					nudgeItem(futureItem,3)
+					world.containerTakeAt(entity.id(), 0)
+					shoveItem(futureItem,3)
 					futureItem=nil
 					currentItem=nil
 				else
@@ -97,7 +99,7 @@ function update(dt)
 						local slotItem=world.containerItemAt(entity.id(),3)
 						if slotItem and not compare(slotItem,futureItem) then return end
 						world.containerTakeAt(entity.id(), 0)
-						nudgeItem(0, 3)
+						shoveItem(futureItem,3)
 						futureItem=nil
 						handleBonuses()
 						progress = 0
@@ -196,7 +198,7 @@ function shoveItem(item,slot)
 		world.spawnItem(leftovers,entity.position())
 	end
 end
-
+--[[
 function nudgeItem(startSlot,endSlot)
 --world.containerTakeAt(entity.id(), 0)
 	if (not startSlot) or (not endSlot) then return end
@@ -209,6 +211,7 @@ function nudgeItem(startSlot,endSlot)
 		world.containerPutItemsAt(entity.id(),leftovers,startSlot)
 	end
 end
+]]
 
 -- Straight outta util.lua
 -- because NOPE to copying an ENTIRE script just for one function
