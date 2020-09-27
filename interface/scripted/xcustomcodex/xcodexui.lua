@@ -22,6 +22,10 @@ local FU_GUIDE_RACE_NAME = "fu"
 -- FU "race" image. To make things easier, I've isolated the "FU" text from the button image and it will be treated as one of the race's gender icons.
 local FU_RACE_IMAGE = "/interface/scripted/xcustomcodex/fu_text.png"
 
+-- If true, and if a guide entry starts with three digits and a space ("000 guide name here"), the script will omit the numbers at the start (resulting in "guide name here")
+-- The numbers will be used to sort the entries, but they will display in the list without them, allowing for entries in any desired order rather than alphabetical order.
+local FU_GUIDE_ENTRIES_OMIT_STARTING_DIGITS = true
+
 local CODEX_BUTTON_STOCK = "/interface/scripted/xcustomcodex/codexbutton.png"
 local CODEX_BUTTON_HOVER = "/interface/scripted/xcustomcodex/codexbuttonhover.png"
 
@@ -223,9 +227,11 @@ end
 
 -- Creates a button on the left-hand list to view this codex.
 -- This is only called when we select a category (so that the buttons pertaining to the various codex entries for said category are created)
-local function CreateButtonToReadCodex(codexData, codexFileInfo, index)
+local function CreateButtonToReadCodex(codexDisplayName, codexData, codexFileInfo, index)
 	-- Create a unique button name.
 	local buttonName = "cdx_" .. codexData.id
+	
+	codexData.title = codexDisplayName
 	
 	-- Grab our button template and populate the necessary data.
 	local button = TEMPLATE_CODEX_ENTRY_BUTTON
@@ -304,8 +310,18 @@ local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
 	
 	for index = 1, #codexDataRegistry do
 		local dataEntry = codexDataRegistry[index]
+		local name = dataEntry[1]
 		local info = dataEntry[2]
-		CreateButtonToReadCodex(info[1], info[2], index)
+		
+		-- NEW BEHAVIOR: Custom sorting?
+		if FU_GUIDE_ENTRIES_OMIT_STARTING_DIGITS then
+			local digits = name:sub(1, 3)
+			if tonumber(digits) ~= nil and name:sub(4, 4) == " " then
+				dataEntry[1] = name:sub(5)
+			end
+		end
+		
+		CreateButtonToReadCodex(dataEntry[1], info[1], info[2], index)
 	end
 end
 
