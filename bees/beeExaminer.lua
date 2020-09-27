@@ -1,3 +1,5 @@
+require "/scripts/util.lua"
+
 local statusList={--progress status doesnt matter, but for any other status indicators, this should be used. it's used for the item network variant to determine completion state
 	waiting="^yellow;Waiting for subject...",
 	queenID="^green;Queen identified",
@@ -53,8 +55,9 @@ function update(dt)
 					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local slotItem=world.containerItemAt(entity.id(),3)
 					if slotItem and not compare(slotItem,futureItem) then return end
+					if not nudgeItem(futureItem,3,slotItem) then return end
 					world.containerTakeAt(entity.id(), 0)
-					shoveItem(futureItem,3)
+					nudgeItem(futureItem,3,slotItem)
 					futureItem=nil
 					currentItem=nil
 				else
@@ -64,8 +67,8 @@ function update(dt)
 						futureItem.parameters.genomeInspected = true
 						local slotItem=world.containerItemAt(entity.id(),3)
 						if slotItem and not compare(slotItem,futureItem) then return end
+						if not nudgeItem(futureItem,3,slotItem) then return end
 						world.containerTakeAt(entity.id(), 0)
-						shoveItem(futureItem,3)
 						futureItem=nil
 						currentItem=nil
 						handleBonuses()
@@ -89,8 +92,8 @@ function update(dt)
 					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local slotItem=world.containerItemAt(entity.id(),3)
 					if slotItem and not compare(slotItem,futureItem) then return end
+					if not nudgeItem(futureItem,3,slotItem) then return end
 					world.containerTakeAt(entity.id(), 0)
-					shoveItem(futureItem,3)
 					futureItem=nil
 					currentItem=nil
 				else
@@ -100,8 +103,8 @@ function update(dt)
 						futureItem.parameters.genomeInspected = true
 						local slotItem=world.containerItemAt(entity.id(),3)
 						if slotItem and not compare(slotItem,futureItem) then return end
+						if not nudgeItem(futureItem,3,slotItem) then return end
 						world.containerTakeAt(entity.id(), 0)
-						shoveItem(futureItem,3)
 						futureItem=nil
 						currentItem=nil
 						handleBonuses()
@@ -125,8 +128,8 @@ function update(dt)
 					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local slotItem=world.containerItemAt(entity.id(),3)
 					if slotItem and not compare(slotItem,futureItem) then return end
+					if not nudgeItem(futureItem,3,slotItem) then return end
 					world.containerTakeAt(entity.id(), 0)
-					shoveItem(futureItem,3)
 					futureItem=nil
 					currentItem=nil
 				else
@@ -137,8 +140,8 @@ function update(dt)
 						futureItem.parameters.genomeInspected = true
 						local slotItem=world.containerItemAt(entity.id(),3)
 						if slotItem and not compare(slotItem,futureItem) then return end
+						if not nudgeItem(futureItem,3,slotItem) then return end
 						world.containerTakeAt(entity.id(), 0)
-						shoveItem(futureItem, 3)
 						futureItem=nil
 						handleBonuses()
 						progress = 0
@@ -201,31 +204,42 @@ function shoveItem(item,slot)
 		world.spawnItem(leftovers,entity.position())
 	end
 end
---[[
-function nudgeItem(startSlot,endSlot)
---world.containerTakeAt(entity.id(), 0)
-	if (not startSlot) or (not endSlot) then return end
-	local startItem=world.containerItemAt(entity.id(),startSlot)
-	local endItem=world.containerItemAt(entity.id(),endSlot)
 
-	local leftovers=world.containerPutItemsAt(entity.id(),startItem,endSlot)
-	if not compare(startItem,leftovers) then
-		world.containerTakeAt(entity.id(),startSlot)
-		world.containerPutItemsAt(entity.id(),leftovers,startSlot)
+function nudgeItem(item,slot,slotItem)
+	if not item then return end
+	if not slotItem then
+		world.containerPutItemsAt(entity.id(),item,slot)
+		return true
 	end
+	local itemConfig=root.itemConfig(item)
+	if itemConfig then
+		itemConfig=util.mergeTable(itemConfig.config,itemConfig.parameters)
+		itemConfig=itemConfig.maxStack
+	end
+	local slotItemConfig=slotItem and root.itemConfig(slotItem)
+	if slotItemConfig then
+		slotItemConfig=util.mergeTable(slotItemConfig.config,slotItemConfig.parameters)
+		slotItemConfig=slotItemConfig.maxStack
+	end
+	if (slotItem and (itemConfig~=slotItemConfig)) or (item.count+slotItem.count > slotItemConfig) then return false end
+	if not slotItem or ((itemConfig==slotItemConfig) and (item.count+slotItem.count > slotItemConfig)) then
+		world.containerPutItemsAt(entity.id(),item,slot)
+		return true
+	end
+	return
 end
-]]
 
+-- khe's note: use 'requires' and stop being stupid
 -- Straight outta util.lua
 -- because NOPE to copying an ENTIRE script just for one function
-function compare(t1, t2)
+--[[function compare(t1, t2)
 	if t1 == t2 then return true end
 	if type(t1) ~= type(t2) then return false end
 	if type(t1) ~= "table" then return false end
 	for k,v in pairs(t1) do if not compare(v, t2[k]) then return false end end
 	for k,v in pairs(t2) do if not compare(v, t1[k]) then return false end end
 	return true
-end
+end]]
 
 function paneOpened()
 	script.setUpdateDelta(config.getParameter("scriptDelta"))
