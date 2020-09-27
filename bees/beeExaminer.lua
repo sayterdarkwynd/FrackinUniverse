@@ -15,6 +15,7 @@ function init()
 	shoveTimer = 0.0
 
 	rank=config.getParameter("rank",0)
+	defaultDelta=config.getParameter("scriptDelta")
 	playerWorkingEfficiency = nil
 	selfWorkingEfficiency = nil
 	status = statusList.waiting
@@ -77,21 +78,36 @@ function update(dt)
 					futureItem=nil
 					currentItem=nil
 				else
-					handleProgress(dt)
+					if playerUsing then
+						progress = math.min(100,progress + (playerWorkingEfficiency * dt))
+					else
+						progress = math.min(100,progress + (selfWorkingEfficiency * dt))
+					end
+					progress = math.floor(progress * 100) * 0.01
 					if progress >= 100 then
+						status = "^cyan;"..progress.."%"
 						if isArtifact then futureItem.parameters.category = "^cyan;Researched Artifact^reset;" end
 						futureItem.parameters.genomeInspected = true
 						local slotItem=world.containerItemAt(entity.id(),3)
 						local singleCountFutureItem=copy(futureItem)
 						local singleCountSlotItem=copy(slotItem)
 						singleCountFutureItem.count=1
-						singleCountSlotItem.count=1
+						if singleCountSlotItem then
+							singleCountSlotItem.count=1
+						end
 						if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
 						if not nudgeItem(futureItem,3,slotItem) then return end
 						world.containerTakeAt(entity.id(), 0)
 						futureItem=nil
 						currentItem=nil
-						handleBonuses()
+						if bonusResearch>0 then
+							shoveItem({name="fuscienceresource",count=bonusResearch},1)
+						end
+						if bonusEssence>0 then
+							shoveItem({name="essence",count=bonusEssence},2)
+						end
+						bonusEssence=0
+						bonusResearch=0
 						progress = 0
 						if isQueen then
 							status = statusList.queenID
@@ -137,26 +153,6 @@ function update(dt)
 	end
 end
 
-function handleProgress(dt)
-	if playerUsing then
-		progress = math.min(100,progress + (playerWorkingEfficiency * dt))
-	else
-		progress = math.min(100,progress + (selfWorkingEfficiency * dt))
-	end
-	progress = math.floor(progress * 100) * 0.01
-end
-
-function handleBonuses()
-	if bonusResearch>0 then
-		shoveItem({name="fuscienceresource",count=bonusResearch},1)
-	end
-	if bonusEssence>0 then
-		shoveItem({name="essence",count=bonusEssence},2)
-	end
-	bonusEssence=0
-	bonusResearch=0
-end
-
 function shoveItem(item,slot)
 	if not item then return end
 	local slotItem=world.containerItemAt(entity.id(),slot)
@@ -172,7 +168,6 @@ function shoveItem(item,slot)
 end
 
 function nudgeItem(item,slot,slotItem)
-	sb.logInfo("%s",{item,slot,slotItem})
 	--assumptive: compare(item,slotItem) prior to usage returns true, or slotItem is nil
 	if not item then return end
 	if not slotItem then
@@ -184,26 +179,13 @@ function nudgeItem(item,slot,slotItem)
 		slotItemConfig=util.mergeTable(slotItemConfig.config,slotItemConfig.parameters)
 		slotItemConfig=slotItemConfig.maxStack or defaultMaxStack
 	end
-	sb.logInfo("%s::%s::%s",item.count,slotItem.count,slotItemConfig)
 	if (item.count+slotItem.count > slotItemConfig) then return false end
 	world.containerPutItemsAt(entity.id(),item,slot)
 	return true
 end
 
--- khe's note: use 'requires' and stop being stupid
--- Straight outta util.lua
--- because NOPE to copying an ENTIRE script just for one function
---[[function compare(t1, t2)
-	if t1 == t2 then return true end
-	if type(t1) ~= type(t2) then return false end
-	if type(t1) ~= "table" then return false end
-	for k,v in pairs(t1) do if not compare(v, t2[k]) then return false end end
-	for k,v in pairs(t2) do if not compare(v, t1[k]) then return false end end
-	return true
-end]]
-
 function paneOpened()
-	script.setUpdateDelta(config.getParameter("scriptDelta"))
+	script.setUpdateDelta(defaultDelta)
 	playerUsing = true
 end
 
