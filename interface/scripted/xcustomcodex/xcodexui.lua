@@ -13,6 +13,15 @@ require("/scripts/xcore_customcodex/LoggingOverride.lua") -- tl;dr I can use pri
 ------ TEMPLATE DATA ------
 ---------------------------
 
+-- Displays on the header when the guide button is pressed. "Selected Category: (this)"
+local FU_GUIDE_CATEGORY_NAME = "Guides"
+
+-- The species name that should be defined in FU guidebook entries.
+local FU_GUIDE_RACE_NAME = "fu"
+
+-- FU "race" image. To make things easier, I've isolated the "FU" text from the button image and it will be treated as one of the race's gender icons.
+local FU_RACE_IMAGE = "/interface/scripted/xcustomcodex/fu_text.png"
+
 local CODEX_BUTTON_STOCK = "/interface/scripted/xcustomcodex/codexbutton.png"
 local CODEX_BUTTON_HOVER = "/interface/scripted/xcustomcodex/codexbuttonhover.png"
 
@@ -21,7 +30,6 @@ local RACE_BUTTON_HOVER =  "/interface/scripted/xcustomcodex/racebuttonhover.png
 
 -- local NO_RACE_ICON = "/interface/scripted/xcustomcodex/icon_none.png"
 -- local NO_RACE_ICON_HOVER = "/interface/scripted/xcustomcodex/icon_none_hover.png"
-
 local QUESTION_MARK = "/interface/scripted/xcustomcodex/question_mark.png"
 
 -- This is the text that displays on the "Ambiguous Race" button.
@@ -314,6 +322,25 @@ local function PopulateCategories()
 	local listTemplate = TEMPLATE_CODEX_RACE_CATEGORY
 	widget.addChild("racialCategoryList", listTemplate, "racelist")
 	
+	-- New behavior: Append the FU category up top.
+	if not ExistingCategoryButtons[FU_GUIDE_CATEGORY_NAME] then
+		-- If we make it here, no, we don't already have a button. Tell Starbound to add a new list element.
+		local newElement = widget.addListItem("racialCategoryList.racelist")
+		
+		-- Unlike below, this is trivial. Just set the image. No conditions.
+		widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", FU_RACE_IMAGE)
+		
+		-- Lastly, let's set the data of this specific new list element (the cumulative representation of the picture, display name, and button elements) to the actual race name.
+		-- We use this data to associate buttons with actual race categories.
+		widget.setData("racialCategoryList.racelist." .. tostring(newElement), {FU_GUIDE_CATEGORY_NAME})
+		
+		-- Now populate this data.
+		ExistingCategoryButtons[FU_GUIDE_CATEGORY_NAME] = FU_GUIDE_RACE_NAME
+		table.insert(CategoryElementNames, "racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton")
+		
+		-- That's all that needs to be done here.
+	end
+	
 	-- Iterate through our known codex entries.
 	for index = 1, #knownCodexEntries do
 		local codexInfo = knownCodexEntries[index]
@@ -346,7 +373,7 @@ local function PopulateCategories()
 			-- inb4 angry feminist because all the icons are male due to most ppl defining male first. ecksdee.
 			local firstAvailableGenderImage = ""
 			
-			if codexSpecies ~= "" then
+			if codexSpecies ~= "" and codexSpecies ~= "fu" then
 				-- First off -- Is the species specified? If it is, we need to see if we can find the .species file.
 				local speciesDataExists = pcall(function ()
 					-- Same thing as the rawCodexData thing above. This will work, or error and return false.
@@ -371,6 +398,8 @@ local function PopulateCategories()
 						actualRaceName = speciesDisplayData.title
 					end
 				end
+			elseif codexSpecies == "fu" then
+				actualRaceName = FU_GUIDE_CATEGORY_NAME -- A bit of a hack but this is what's done.
 			end
 			
 			-- Have we already made a button for this race? The player is probably going to have more than one codex entry for a given race.
