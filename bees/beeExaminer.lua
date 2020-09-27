@@ -9,13 +9,14 @@ local statusList={--progress status doesnt matter, but for any other status indi
 }
 
 function init()
-	defaultMaxStack=root.assetJson("/items/defaultParameters.config").defaultMaxStack
 	playerUsing = nil
 	selfWorking = nil
 	shoveTimer = 0.0
 
+	defaultMaxStack=root.assetJson("/items/defaultParameters.config").defaultMaxStack
 	rank=config.getParameter("rank",0)
 	defaultDelta=config.getParameter("scriptDelta")
+	
 	playerWorkingEfficiency = nil
 	selfWorkingEfficiency = nil
 	status = statusList.waiting
@@ -54,6 +55,7 @@ function update(dt)
 			local isQueen=root.itemHasTag(futureItem.name, "queen") or root.itemHasTag(futureItem.name, "youngQueen")
 			local isDrone=root.itemHasTag(futureItem.name, "drone")
 			local isArtifact=root.itemHasTag(futureItem.name, "artifact")
+			
 			if isQueen or isDrone or isArtifact then
 				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
 					if isQueen then
@@ -63,17 +65,21 @@ function update(dt)
 					elseif isArtifact then
 						status = statusList.artifactID
 					end
+					
 					shoveTimer=(shoveTimer or 0.0) + dt
 					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
-					local slotItem=world.containerItemAt(entity.id(),3)
 					local singleCountFutureItem=copy(futureItem)
-					local singleCountSlotItem=copy(slotItem)
 					singleCountFutureItem.count=1
+					
+					local slotItem=world.containerItemAt(entity.id(),3)
+					local singleCountSlotItem=slotItem and copy(slotItem)
 					if singleCountSlotItem then
 						singleCountSlotItem.count=1
 					end
+					
 					if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
 					if not nudgeItem(futureItem,3,slotItem) then return end
+					
 					world.containerTakeAt(entity.id(), 0)
 					futureItem=nil
 					currentItem=nil
@@ -84,19 +90,25 @@ function update(dt)
 						progress = math.min(100,progress + (selfWorkingEfficiency * dt))
 					end
 					progress = math.floor(progress * 100) * 0.01
+					
 					if progress >= 100 then
 						status = "^cyan;"..progress.."%"
+						
 						if isArtifact then futureItem.parameters.category = "^cyan;Researched Artifact^reset;" end
 						futureItem.parameters.genomeInspected = true
-						local slotItem=world.containerItemAt(entity.id(),3)
+						
 						local singleCountFutureItem=copy(futureItem)
-						local singleCountSlotItem=copy(slotItem)
 						singleCountFutureItem.count=1
+						
+						local slotItem=world.containerItemAt(entity.id(),3)
+						local singleCountSlotItem=slotItem and copy(slotItem)
 						if singleCountSlotItem then
 							singleCountSlotItem.count=1
 						end
+						
 						if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
 						if not nudgeItem(futureItem,3,slotItem) then return end
+						
 						world.containerTakeAt(entity.id(), 0)
 						futureItem=nil
 						currentItem=nil
@@ -109,6 +121,7 @@ function update(dt)
 						bonusEssence=0
 						bonusResearch=0
 						progress = 0
+						
 						if isQueen then
 							status = statusList.queenID
 						elseif isDrone then
@@ -116,14 +129,18 @@ function update(dt)
 						elseif isArtifact then
 							status = statusList.artifactID
 						end
+						
 						itemsDropped=true
 					else
 						status = "^cyan;"..progress.."%"
 						-- ***** chance to gain research *****
 						local randCheck = 0
-						if isQueen then randCheck=math.random(25)
-						elseif isDrone then randCheck=math.random(100)
-						elseif isArtifact then randCheck=math.random(10)
+						if isQueen then
+							randCheck=math.random(25)
+						elseif isDrone then
+							randCheck=math.random(100)
+						elseif isArtifact then
+							randCheck=math.random(10)
 						end
 						if randCheck == 1 then
 							local bonusValue=0
@@ -155,12 +172,14 @@ end
 
 function shoveItem(item,slot)
 	if not item then return end
+	
 	local slotItem=world.containerItemAt(entity.id(),slot)
 	if slotItem and slotItem.name~=item.name then
 		if world.containerTakeAt(entity.id(),slot) then
 			world.spawnItem(slotItem,entity.position())
 		end
 	end
+	
 	local leftovers=world.containerPutItemsAt(entity.id(),item,slot)
 	if leftovers then
 		world.spawnItem(leftovers,entity.position())
@@ -170,16 +189,20 @@ end
 function nudgeItem(item,slot,slotItem)
 	--assumptive: compare(item,slotItem) prior to usage returns true, or slotItem is nil
 	if not item then return end
+	
 	if not slotItem then
 		world.containerPutItemsAt(entity.id(),item,slot)
 		return true
 	end
+	
 	local slotItemConfig=slotItem and root.itemConfig(slotItem)
 	if slotItemConfig then
 		slotItemConfig=util.mergeTable(slotItemConfig.config,slotItemConfig.parameters)
 		slotItemConfig=slotItemConfig.maxStack or defaultMaxStack
 	end
+	
 	if (item.count+slotItem.count > slotItemConfig) then return false end
+	
 	world.containerPutItemsAt(entity.id(),item,slot)
 	return true
 end
