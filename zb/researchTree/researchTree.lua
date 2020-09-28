@@ -654,7 +654,7 @@ function draw()
 									if canAfford(child) then
 										color = "#00FFFF"
 									else
-										color = "#FFFF00"
+										color = "#df7126"--ffff00
 									end
 								end
 							
@@ -679,12 +679,12 @@ function draw()
 					if not tbl.state or tbl.state == "unavailable" then
 						color = "#FF5555"
 					elseif tbl.state == "researched" then
-						color = "#55FF55"
+						color = "#37db42"
 					elseif tbl.state == "available" then
 						if canAfford(research) then
 							color = "#55FFFF"
 						else
-							color = "#FFFF55"
+							color = "#dfb326"
 						end
 					end
 				
