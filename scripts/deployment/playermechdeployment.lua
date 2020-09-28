@@ -17,7 +17,7 @@ function init()
 			for _,item in pairs(starterSet) do
 				player.giveBlueprint(item)
 			end
-			setMechItemSet(starterSet)
+			--setMechItemSet(starterSet)
 		end
 	end)
 
