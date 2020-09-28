@@ -8,6 +8,7 @@ weaponBonus2={
 
 armorBonus={
 	{stat="fuCharisma",baseMultiplier=0},
+	{stat="erchiusImmunity",amount=1},
 	{stat="insanityImmunity",effectiveMultiplier=0},
 	{stat="mentalProtection",effectiveMultiplier=0}
 }
