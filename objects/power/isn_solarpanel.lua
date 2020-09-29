@@ -28,7 +28,7 @@ function getPowerLevel()
 	--local light = (world.type() ~= 'playerstation' and getLight(storage.randomizedPos) or 0.0)
 	local light = getLight(storage.randomizedPos)
 	local genmult = 1
-	if self.onStation then
+	if self.onStation or self.onShip then
 		-- player space stations and ships always counts as high power, but never MAX power.
 		genmult = 3.5
 	elseif light >= 0.85 then
