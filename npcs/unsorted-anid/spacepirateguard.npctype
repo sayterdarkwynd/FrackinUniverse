@@ -1,0 +1,73 @@
+{
+  "type" : "spacepirateguard",
+  "baseType" : "friendlyguardtenant",
+
+
+  "scriptConfig" : {
+  
+	"dialogue" : {
+  
+	 "tenant" : {
+        "arrivedHome" : {
+				  "beacon" : {
+						"default" : {
+							"default" : [
+								"What's so important?",
+								"If it's really that important, what is it?"
+										]
+									}
+								},
+					"rent" : {
+						"default" : {
+							"default" : [
+								"Here, your share of the goods.",
+								"It's nice not having to worry about the Space Police for once. Here, a thank-you.",
+								"Well, it beats being on the run. Thanks, I guess."
+										]
+									}
+								}											
+					}
+				},
+	"converse" : {
+		"default" : {
+			"default" : [
+            "Got something for me to kill?",
+            "Got an itchy trigger finger, and I am just DYING to scratch it.",
+            "So long as you aren't fond of the Space Police, I think we can be friends.",
+            "All space cops are bastards.",
+            "If you see any space cops, be sure to shoot 'em for me.",
+            "You're Protectorate, aren't you? Can't say I like 'em much. Glad they're gone.",
+            "Today's a new day, ripe with easy pickings.",
+            "I get to stay out of jail here AND shoot trespassers? Sign me up!",
+            "You look like the sort of person I'd regret trying to rob. I like that.",
+            "I hope there aren't any Avali around here. I hate those things.",
+            "Ever since the Protectorate collapsed, business has been good. I hope you aren't bitter.",
+            "A space pirate's life for me!",
+            "If you need something shot, I'm your space pirate."				
+          ]
+		  }
+        }
+	}
+  },
+
+   "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "fujunkerhead" }
+            ],		  
+            "chest" : [
+              { "name" : "fujunkerchest" }
+            ],
+            "legs" : [
+              { "name" : "fujunkerpants" }
+            ],
+            "primary" : [
+              "npcassaultrifle"
+            ]		
+          }
+      ]]
+    ]
+  }
+}
