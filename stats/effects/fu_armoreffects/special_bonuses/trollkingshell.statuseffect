@@ -1,0 +1,22 @@
+{
+	"name": "trollkingshell",
+	"effectConfig": {
+		"buffs": [
+			{
+				"comparisonValue": 0.13,
+				"comparisonDirection": "leq",
+				"comparatorType": "resource",
+				"comparator":"health",
+				"comparatorIsPercent":true,
+				"buffType":"status",
+				"buff":["trolol","nodamagedummy","noenergyregendummy","activemovementdummy"],
+				"buffDuration":1
+			}
+		]
+	},
+	"defaultDuration": 1,
+	"scriptDelta":10,
+	"scripts": [
+		"thresholdbuffs.lua"
+	]
+}

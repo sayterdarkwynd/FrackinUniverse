@@ -435,21 +435,126 @@ function populateSearchList()
 	end
 end
 
+--http://lua-users.org/wiki/SortedIteration
+--------------------------------------
+-- Insert value of any type into array
+--------------------------------------
+local function arrayInsert( ary, val, idx )
+    -- Needed because table.insert has issues
+    -- An "array" is a table indexed by sequential
+    -- positive integers (no empty slots)
+    local lastUsed = #ary + 1
+    local nextAvail = lastUsed + 1
+
+    -- Determine correct index value
+    local index = tonumber(idx) -- Don't use idx after this line!
+    if (index == nil) or (index > nextAvail) then
+        index = nextAvail
+    elseif (index < 1) then
+        index = 1
+    end
+
+    -- Insert the value
+    if ary[index] == nil then
+        ary[index] = val
+    else
+        -- TBD: Should we try to allow for skipped indices?
+        for j = nextAvail,index,-1 do
+            ary[j] = ary[j-1]
+        end
+        ary[index] = val
+    end
+end
+--http://lua-users.org/wiki/SortedIteration
+--------------------------------
+-- Compare two items of any type
+--------------------------------
+local function compareAnyTypes( op1, op2 ) -- Return the comparison result
+    -- Inspired by http://lua-users.org/wiki/SortedIteration
+    local type1, type2 = type(op1),     type(op2)
+    local num1,  num2  = tonumber(op1), tonumber(op2)
+    
+    if ( num1 ~= nil) and (num2 ~= nil) then  -- Number or numeric string
+        return  num1 < num2                     -- Numeric compare
+    elseif type1 ~= type2 then                -- Different types
+        return type1 < type2                    -- String compare of type name
+    -- From here on, types are known to match (need only single compare)
+    elseif type1 == "string"  then            -- Non-numeric string
+        return op1 < op2                        -- Default compare
+    elseif type1 == "boolean" then
+        return op1                              -- No compare needed!
+         -- Handled above: number, string, boolean
+    else -- What's left:   function, table, thread, userdata
+        return tostring(op1) < tostring(op2)  -- String representation
+    end
+end
+--http://lua-users.org/wiki/SortedIteration
+-------------------------------------------
+-- Iterate over a table in sorted key order
+-------------------------------------------
+local function pairsByKeys (tbl, func)
+    -- Inspired by http://www.lua.org/pil/19.3.html
+    -- and http://lua-users.org/wiki/SortedIteration
+
+    if func == nil then
+        func = compareAnyTypes
+    end
+
+    -- Build a sorted array of the keys from the passed table
+    -- Use an insertion sort, since table.sort fails on non-numeric keys
+    local ary = {}
+    local lastUsed = 0
+    for key --[[, val--]] in pairs(tbl) do
+        if (lastUsed == 0) then
+            ary[1] = key
+        else
+            local done = false
+            for j=1,lastUsed do  -- Do an insertion sort
+                if (func(key, ary[j]) == true) then
+                    arrayInsert( ary, key, j )
+                    done = true
+                    break
+                end
+            end
+            if (done == false) then
+                ary[lastUsed + 1] = key
+            end
+        end
+        lastUsed = lastUsed + 1
+    end
+
+    -- Define (and return) the iterator function
+    local i = 0                -- iterator variable
+    local iter = function ()   -- iterator function
+        i = i + 1
+        if ary[i] == nil then
+            return nil
+        else
+            return ary[i], tbl[ary[i]]
+        end
+    end
+    return iter
+end
+
 function populateTreeList()
 	widget.clearListItems("treeList.list")
 	local listItem = ""
-	
+	local buffer={}
 	for tree, _ in pairs(data.researchTree) do
+		buffer[(data.strings.trees[tree] and data.strings.trees[tree]) or tree]=tree
+	end
+	local iter=0
+	for label, tree in pairsByKeys(buffer) do
+		iter=iter+1
+		--sb.logInfo("%s:%s:%s",iter,label,tree)
 		listItem = "treeList.list."..widget.addListItem("treeList.list")
 		widget.setData(listItem, tree)
-		
-		if data.strings.trees[tree] then
-			widget.setText(listItem..".title", data.strings.trees[tree])
-		else
-			widget.setText(listItem..".title", tree)
-		end
+		widget.setText(listItem..".title", label)
 	end
 end
+
+
+--table.sort(tTable, function(a, b) return a:upper() < b:upper() end)
 
 function researchSelected()
 	local wdata = widget.getListSelected("searchList.list")
@@ -549,7 +654,7 @@ function draw()
 									if canAfford(child) then
 										color = "#00FFFF"
 									else
-										color = "#FFFF00"
+										color = "#df7126"--ffff00
 									end
 								end
 							
@@ -574,12 +679,12 @@ function draw()
 					if not tbl.state or tbl.state == "unavailable" then
 						color = "#FF5555"
 					elseif tbl.state == "researched" then
-						color = "#55FF55"
+						color = "#37db42"
 					elseif tbl.state == "available" then
 						if canAfford(research) then
 							color = "#55FFFF"
 						else
-							color = "#FFFF55"
+							color = "#dfb326"
 						end
 					end
 				
