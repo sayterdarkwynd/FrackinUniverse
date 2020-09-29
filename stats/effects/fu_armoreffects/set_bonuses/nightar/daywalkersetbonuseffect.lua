@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_daywalkerset"
 
 weaponBonus={
@@ -16,8 +17,6 @@ armorBonus={
 	{stat = "slushslowImmunity", amount = 1},
 	{stat = "maxEnergy", effectiveMultiplier = 1.1}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

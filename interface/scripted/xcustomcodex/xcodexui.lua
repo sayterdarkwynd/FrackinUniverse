@@ -14,6 +14,19 @@ require("/scripts/xcore_customcodex/LoggingOverride.lua") -- tl;dr I can use pri
 ------ TEMPLATE DATA ------
 ---------------------------
 
+-- Displays on the header when the guide button is pressed. "Selected Category: (this)"
+local FU_GUIDE_CATEGORY_NAME = "Guides"
+
+-- The species name that should be defined in FU guidebook entries.
+local FU_GUIDE_RACE_NAME = "fu"
+
+-- FU "race" image. To make things easier, I've isolated the "FU" text from the button image and it will be treated as one of the race's gender icons.
+local FU_RACE_IMAGE = "/interface/scripted/xcustomcodex/fu_text.png"
+
+-- If true, and if a guide entry starts with three digits and a space ("000 guide name here"), the script will omit the numbers at the start (resulting in "guide name here")
+-- The numbers will be used to sort the entries, but they will display in the list without them, allowing for entries in any desired order rather than alphabetical order.
+local FU_GUIDE_ENTRIES_OMIT_STARTING_DIGITS = true
+
 local CODEX_BUTTON_STOCK = "/interface/scripted/xcustomcodex/codexbutton.png"
 local CODEX_BUTTON_HOVER = "/interface/scripted/xcustomcodex/codexbuttonhover.png"
 
@@ -22,7 +35,6 @@ local RACE_BUTTON_HOVER =  "/interface/scripted/xcustomcodex/racebuttonhover.png
 
 -- local NO_RACE_ICON = "/interface/scripted/xcustomcodex/icon_none.png"
 -- local NO_RACE_ICON_HOVER = "/interface/scripted/xcustomcodex/icon_none_hover.png"
-
 local QUESTION_MARK = "/interface/scripted/xcustomcodex/question_mark.png"
 
 -- This is the text that displays on the "Ambiguous Race" button.
@@ -216,9 +228,11 @@ end
 
 -- Creates a button on the left-hand list to view this codex.
 -- This is only called when we select a category (so that the buttons pertaining to the various codex entries for said category are created)
-local function CreateButtonToReadCodex(codexData, codexFileInfo, index)
+local function CreateButtonToReadCodex(codexDisplayName, codexData, codexFileInfo, index)
 	-- Create a unique button name.
 	local buttonName = "cdx_" .. codexData.id
+	
+	codexData.title = codexDisplayName
 	
 	-- Grab our button template and populate the necessary data.
 	local button = TEMPLATE_CODEX_ENTRY_BUTTON
@@ -297,8 +311,18 @@ local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
 	
 	for index = 1, #codexDataRegistry do
 		local dataEntry = codexDataRegistry[index]
+		local name = dataEntry[1]
 		local info = dataEntry[2]
-		CreateButtonToReadCodex(info[1], info[2], index)
+		
+		-- NEW BEHAVIOR: Custom sorting?
+		if FU_GUIDE_ENTRIES_OMIT_STARTING_DIGITS then
+			local digits = name:sub(1, 3)
+			if tonumber(digits) ~= nil and name:sub(4, 4) == " " then
+				dataEntry[1] = name:sub(5)
+			end
+		end
+		
+		CreateButtonToReadCodex(dataEntry[1], info[1], info[2], index)
 	end
 end
 
@@ -314,6 +338,25 @@ local function PopulateCategories()
 	-- Create a new list element.
 	local listTemplate = TEMPLATE_CODEX_RACE_CATEGORY
 	widget.addChild("racialCategoryList", listTemplate, "racelist")
+	
+	-- New behavior: Append the FU category up top.
+	if not ExistingCategoryButtons[FU_GUIDE_CATEGORY_NAME] then
+		-- If we make it here, no, we don't already have a button. Tell Starbound to add a new list element.
+		local newElement = widget.addListItem("racialCategoryList.racelist")
+		
+		-- Unlike below, this is trivial. Just set the image. No conditions.
+		widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", FU_RACE_IMAGE)
+		
+		-- Lastly, let's set the data of this specific new list element (the cumulative representation of the picture, display name, and button elements) to the actual race name.
+		-- We use this data to associate buttons with actual race categories.
+		widget.setData("racialCategoryList.racelist." .. tostring(newElement), {FU_GUIDE_CATEGORY_NAME})
+		
+		-- Now populate this data.
+		ExistingCategoryButtons[FU_GUIDE_CATEGORY_NAME] = FU_GUIDE_RACE_NAME
+		table.insert(CategoryElementNames, "racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton")
+		
+		-- That's all that needs to be done here.
+	end
 	
 	-- Iterate through our known codex entries.
 	for index = 1, #knownCodexEntries do
@@ -347,7 +390,7 @@ local function PopulateCategories()
 			-- inb4 angry feminist because all the icons are male due to most ppl defining male first. ecksdee.
 			local firstAvailableGenderImage = ""
 			
-			if codexSpecies ~= "" then
+			if codexSpecies ~= "" and codexSpecies ~= "fu" then
 				-- First off -- Is the species specified? If it is, we need to see if we can find the .species file.
 				local speciesDataExists = pcall(function ()
 					-- Same thing as the rawCodexData thing above. This will work, or error and return false.
@@ -372,6 +415,8 @@ local function PopulateCategories()
 						actualRaceName = speciesDisplayData.title
 					end
 				end
+			elseif codexSpecies == "fu" then
+				actualRaceName = FU_GUIDE_CATEGORY_NAME -- A bit of a hack but this is what's done.
 			end
 			
 			-- Have we already made a button for this race? The player is probably going to have more than one codex entry for a given race.

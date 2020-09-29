@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_arcticset"
 
 armorBonus={}
 
@@ -11,8 +12,6 @@ armorEffect={
 	{stat = "biomecoldImmunity", amount = 1},
 	{stat = "ffextremecoldImmunity", amount = 1}
 }
-
-setName="fu_arcticset"
 
 function init()
 	setSEBonusInit(setName)

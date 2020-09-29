@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_sunwalkerset"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
@@ -14,8 +15,6 @@ armorBonus={
 	{stat = "ffextremecoldImmunity", amount = 1},
 	{stat = "breathProtection", amount = 1}	
 }
-
-setName="fu_sunwalkerset"
 
 function init()
 	setSEBonusInit(setName)

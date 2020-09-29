@@ -166,6 +166,7 @@ function init()
   self.mobilityJumpValue = 0
   self.fuelCost = 1
   self.fuelBoost = 0
+  
   --
   require(self.parts.leftArm.script)
   self.leftArm = _ENV[self.parts.leftArm.armClass]:new(self.parts.leftArm, "leftArm", {2.375, 2.0}, self.ownerUuid)

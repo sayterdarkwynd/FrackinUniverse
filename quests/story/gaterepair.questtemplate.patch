@@ -12,7 +12,7 @@
   {
     "op": "add",
     "path": "/scriptConfig/descriptions/makeTable",
-    "value": "Obtain a ^orange;Personal Tricorder^reset; from ^green;Vinalisj^reset;."
+    "value": "Complete the objectives given by ^green;Vinalisj^reset;."
   },
   {
     "op": "replace",
@@ -47,16 +47,16 @@
       "capabilities" : [ "planetTravel" ]
     }
   },
+
 	{"op":"add",
 	"path":"/scriptConfig/shipUpgradeCinema",
 	"value":"/cinematics/repair/repair.cinematic" 
-	},  
+	}, 
+
 	{"op":"add",
 	"path":"/scriptConfig/BYOSCompletionText",
-	"value":"Welcome back to the ^orange;Protectorate^reset;, Agent. With your help I know we can triumph. We can't fix your ^red;broken FTL drive^reset; here! You'll have to ^green;build it on your own^reset;. Take this ^green;warp manifold^reset;! With it you can finish ^green;building your FTL drive^reset; at a ^orange;Machining Table^reset;." 
+	"value":"Welcome back to the ^orange;Protectorate^reset;, Agent. With your help I know we can triumph. You need to fix that ^red;broken FTL drive^reset; first, though! ^cyan;Research Engineering^reset; and ^green;build your FTL drive^reset; at a ^orange;Machining Table^reset;." 
 	},	
-	{"op":"add",
-	"path":"/scriptConfig/BYOSRewards",
-	"value":["warpmanifold", 1] 
-	}
+  
+	{"op":"add","path":"/scriptConfig/BYOSRewards","value":["fuscienceresource", 250] }
 ]

@@ -14,11 +14,13 @@ function update(dt)
 			power.setPower(0)
 		else
 			local location = isn_getTruePosition()
-			local light = (world.type() ~= 'playerstation' and getLight(location) or 0.0)
+			--local light = (world.type() ~= 'playerstation' and getLight(location) or 0.0)
+			local light = getLight(location)
 			local genmult = 1
-			if world.type() == 'playerstation' then
-				genmult = 3.75 -- player space station always counts as high power, but never MAX power.
-			elseif light >= 0.85 then
+			--if world.type() == 'playerstation' or then
+			--	genmult = 3.75 -- player space station always counts as high power, but never MAX power.
+			--elseif
+			if light >= 0.85 then
 				genmult = 4 * (1 + light)
 			elseif light >= 0.75 then
 				genmult = 4
@@ -69,7 +71,7 @@ end
 
 function isn_powerGenerationBlocked()
 	local location = isn_getTruePosition()
-	return world.underground(location) or world.lightLevel(location) < 0.2 or (world.timeOfDay() > 0.55 and world.type() ~= 'playerstation') --or world.type == 'unknown'
+	return world.underground(location) or world.lightLevel(location) < 0.2 or world.timeOfDay() > 0.55 --(world.timeOfDay() > 0.55 and world.type() ~= 'playerstation') --or world.type == 'unknown'
 end
 
 function isn_getTruePosition()

@@ -1,29 +1,27 @@
 function init()
 	if world.entityType(entity.id()) == "player" then
 		animator.setAnimationState("aura", "on")
-		self.valuea = status.stat("protection") * 0.25
-		effect.addStatModifierGroup({
-			{stat = "protection", amount = self.valuea }
-		}) 
-	else
+		effect.addStatModifierGroup({{stat = "protection", effectiveMultiplier = 1.25 }})
+		if (math.random(1,100) >= 75) then
+			world.spawnItem("fumadnessresource",entity.position(),math.random(1,12))
+		end
+	elseif not status.statPositive("shadowImmunity") then
 		status.addEphemeralEffect("l6doomed", 6, entity.id())
 		status.addEphemeralEffect("blacktarslow", 6, entity.id())
 		status.addEphemeralEffect("insanity", 6, entity.id())
 		animator.setAnimationState("aura", "on")
-		effect.addStatModifierGroup({{stat = "physicalResistance", amount = config.getParameter("resistanceAmount", 0)}})          
-	end
-
-	self.randVal = math.random(1,12) 
-	self.randVal2 = math.random(1,100)
-	if world.entityType(entity.id()) == "player" then
-		if (self.randVal2 >= 75) then
-			world.spawnItem("fumadnessresource",entity.position(),self.randVal)	
-		end
+		effect.addStatModifierGroup({{stat = "physicalResistance", amount = config.getParameter("resistanceAmount", 0)}})
+	else
+		effect.expire()
+		return
 	end
 end
 
 function update(dt)
-
+	if (world.entityType(entity.id()) ~= "player") and status.statPositive("shadowImmunity") then
+		effect.expire()
+		return
+	end
 end
 
 function uninit()

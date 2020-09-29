@@ -3,86 +3,78 @@ require "/scripts/vec2.lua"
 
 function init()
 	message.setHandler("unlockMech", function()
-			if not self.unlocked then
-				self.unlocked = true
-				player.setProperty("mechUnlocked", true)
+		if not self.unlocked then
+			self.unlocked = true
+			player.setProperty("mechUnlocked", true)
 
-				local starterSet = config.getParameter("starterMechSet")
-				local speciesBodies = config.getParameter("speciesStarterMechBody")
-				local playerSpecies = player.species()
-				if speciesBodies[playerSpecies] then
-					starterSet.body = speciesBodies[playerSpecies]
-				end
-
-				for _,item in pairs(starterSet) do
-					player.giveBlueprint(item)
-				end
-
-				-- added july 20th 2019
-				for _,item in pairs(starterSet) do
-					player.giveBlueprint(item)
-				end
-				--
-
-				setMechItemSet(starterSet)
-
+			local starterSet = config.getParameter("starterMechSet")
+			local speciesBodies = config.getParameter("speciesStarterMechBody")
+			local playerSpecies = player.species()
+			if speciesBodies[playerSpecies] then
+				starterSet.body = speciesBodies[playerSpecies]
 			end
-		end)
+			-- added july 20th 2019
+			for _,item in pairs(starterSet) do
+				player.giveBlueprint(item)
+			end
+			--setMechItemSet(starterSet)
+		end
+	end)
 
 	message.setHandler("mechUnlocked", function()
-			return self.unlocked
-		end)
+		return self.unlocked
+	end)
 
 	message.setHandler("getMechItemSet", function()
-			return self.itemSet
-		end)
+		return self.itemSet
+	end)
 
 	message.setHandler("getMechParams", function()
 		if self.mechParameters then
-		return self.mechParameters
-	end
+			return self.mechParameters
+		end
 	end)
 
 
 	message.setHandler("setMechItemSet", function(_, _, newItemSet)
-			setMechItemSet(newItemSet)
-		end)
+		setMechItemSet(newItemSet)
+	end)
 
 	message.setHandler("getMechColorIndexes", function()
-			return {
-					primary = self.primaryColorIndex,
-					secondary = self.secondaryColorIndex
-				}
-		end)
+		return {
+			primary = self.primaryColorIndex,
+			secondary = self.secondaryColorIndex
+		}
+	end)
 
 	message.setHandler("setMechColorIndexes", function(_, _, primaryIndex, secondaryIndex)
 			setMechColorIndexes(primaryIndex, secondaryIndex)
 		end)
 
 	message.setHandler("deployMech", function(_, _, tempItemSet)
-			if tempItemSet then
-				tempItemSet = self.partManager:validateItemSet(tempItemSet)
-				if self.partManager:itemSetComplete(tempItemSet) then
-					deploy(tempItemSet)
-					return true
-				end
-			elseif canDeploy() then
-				deploy()
+		if tempItemSet then
+			tempItemSet = self.partManager:validateItemSet(tempItemSet)
+			if self.partManager:itemSetComplete(tempItemSet) then
+				deploy(tempItemSet)
 				return true
 			end
+		elseif canDeploy() then
+			deploy()
+			return true
+		end
 
-			return false
-		end)
+		return false
+	end)
 
 	message.setHandler("despawnMech", despawnMech)
 
 	message.setHandler("toggleMech", function()
-			if storage.vehicleId then
-				despawnMech()
-			elseif canDeploy() then
-				deploy()
-			end
-		end)
+		if storage.vehicleId then
+			despawnMech()
+		elseif canDeploy() then
+			deploy()
+		end
+	end)
 
 	if not player.hasQuest("fuelDataQuest") then
 		player.startQuest( { questId = "fuelDataQuest" , templateId = "fuelDataQuest", parameters = {}} )
@@ -175,18 +167,18 @@ function unlockMech()
 		self.unlocked = true
 		player.setProperty("mechUnlocked", true)
 
-		local starterSet = config.getParameter("starterMechSet")
-		local speciesBodies = config.getParameter("speciesStarterMechBody")
-		local playerSpecies = player.species()
-		if speciesBodies[playerSpecies] then
-			starterSet.body = speciesBodies[playerSpecies]
-		end
+	--	local starterSet = config.getParameter("starterMechSet")
+	--	local speciesBodies = config.getParameter("speciesStarterMechBody")
+	--	local playerSpecies = player.species()
+	--	if speciesBodies[playerSpecies] then
+	--		starterSet.body = speciesBodies[playerSpecies]
+	--	end
+--
+	--	for _,item in pairs(starterSet) do
+	--		player.giveBlueprint(item)
+	--	end
 
-		for _,item in pairs(starterSet) do
-			player.giveBlueprint(item)
-		end
-
-		setMechItemSet(starterSet)
+	--	setMechItemSet(starterSet)
 	end
 end
 --

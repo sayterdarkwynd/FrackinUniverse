@@ -1255,29 +1255,14 @@ function shopSell()
 end
 
 function calculateShopPrice(base, isBuying,pricePcnt)
-	local tradingOutpostMult = 0
-	local totalMult = 0
-	--local charismaStat=(1-status.stat("fuCharisma"))*100
-	--local charismaStatProp=status.statusProperty("fuCharisma",0)
+	local buyPrice=closestWhole(base * (pricePcnt.buyPcnt/100.0))
+	local sellPrice=closestWhole(base * (pricePcnt.sellPcnt/100.0))
+	--sb.logInfo("%s:%s:%s:%s:%s",base,isBuying,pricePcnt,buyPrice,sellPrice)
+
 	if isBuying then
-		--[[if objectData.stationType == "trading" then 
-			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel
-		end
-		totalMult = stationData.shop.initBuyMult - ((charismaStat)+(charismaStatProp)) * stationData.trading.charismaBuyPriceReduction - tradingOutpostMult
-		totalMult = math.max(totalMult, stationData.shop.minBuyMult)]]
-		totalMult=pricePcnt.buyPcnt/100.0
-		--sb.logInfo("cSP base=%s tM=%s cW(b*tM)=%s",base,totalMult,closestWhole(base * totalMult))
-		return closestWhole(base * totalMult)
+		return buyPrice
 	else
-		--[[if objectData.stationType == "trading" then 
-			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel
-		end
-		
-		totalMult = stationData.shop.initSellMult + ((charismaStat)+(charismaStatProp)) * stationData.trading.charismaSellPriceIncrease + tradingOutpostMult
-		totalMult = math.max(math.min(totalMult, stationData.shop.maxSellMult), 0)]]
-		totalMult=pricePcnt.sellPcnt/100.0
-		--sb.logInfo("cSP base=%s tM=%s cW(b*tM)=%s",base,totalMult,closestWhole(base * totalMult))
-		return closestWhole(base * totalMult)
+		return sellPrice
 	end
 end
 
@@ -1305,7 +1290,6 @@ function populateGoodsList()
 		--sb.logInfo("pP=%s,bP=%s,sP=%s",pricePcnt,buyPrice,sellPrice)
 		buyPrice=closestWhole(buyPrice * pricePcnt.buyPcnt)
 		sellPrice=closestWhole(sellPrice * pricePcnt.sellPcnt)
-		--sb.logInfo("bP=%s,sP=%s",buyPrice,sellPrice)
 		
 		if buyRate >= 1.5 then
 			widget.setImage(listItem..".buyRate", "/interface/scripted/spaceStation/tradeRate.png:-2")
@@ -1441,9 +1425,9 @@ function updatePrice(basePrice, baseAmount, stock, isBuying)
 	end
 	
 	if isBuying then
-		rate = rate * 1.05
+		rate = rate * 1.2
 	else
-		rate = rate * 0.95
+		rate = rate * 0.8
 	end
 	
 	local price = basePrice * rate
@@ -1736,15 +1720,17 @@ function specialsTableInit()
 end
 
 function calcBuySell()
-	local charismaStat=status.stat("fuCharisma")-1
-	local charismaStatProp=status.statusProperty("fuCharisma",0)*0.1
+	local charismaStat=(status.stat("fuCharisma")-1.0)
+
+	--bonus from maxed stations is capped at 10 and the stat itself has 0.1 multiplier.
+	local charismaStatProp=(math.min(status.statusProperty("fuCharisma",0),10))*0.1
 	local charismaBuy = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaBuyPriceReduction * 10
 	local charismaSell = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaSellPriceIncrease * 10
 	
 	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - (objectData.specialsTable.investLevel or 0) * (stationData.trading.buyPriceReductionPerLevel or 0)) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
 	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + (objectData.specialsTable.investLevel or 0) * (stationData.trading.sellPriceIncreasePerLevel or 0)) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
 	
-	--sb.logInfo("cs %s,csp %s,cb %s,cs %s,bp %s,sp %s,cbpr %s, cspi %s",charismaStat,charismaStatProp,charismaBuy,charismaSell,buyPcnt,sellPcnt,stationData.trading.charismaBuyPriceReduction,stationData.trading.charismaSellPriceIncrease)
+	--sb.logInfo("cs %s,csp %s,cb %s,cs %s,bp %s,sp %s,cbpr %s, cspi %s, isGoods %s",charismaStat,charismaStatProp,charismaBuy,charismaSell,buyPcnt,sellPcnt,stationData.trading.charismaBuyPriceReduction,stationData.trading.charismaSellPriceIncrease,isGoods)
 	return {buyPcnt=buyPcnt,sellPcnt=sellPcnt}
 end
 
@@ -1845,7 +1831,7 @@ end
 -- Prints to log all items in all shop lists, letting you easily find the broken/non-existant ones
 -- Has to be manually added somewhere to the code as its not called anywhere
 function checkShopIntegrity()
-	sb.logError("")
+	--sb.logError("")
 	for type, t in pairs(stationData.shop.potentialStock) do
 		for _, item in ipairs(t) do
 			local config = root.itemConfig(item)

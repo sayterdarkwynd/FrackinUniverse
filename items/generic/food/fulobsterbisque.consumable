@@ -4,13 +4,16 @@
   "price" : 100,
   "category" : "preparedFood",
   "inventoryIcon" : "fulobsterbisque.png",
-  "description" : "Sinfully delicious.",
+  "description" : "Sinfully delicious.\n^green;Type: Cooked Seafood^reset;",
   "shortdescription" : "Lobster Bisque",
   "foodValue" : 70,
   "tooltipKind" : "food",
   "builder" : "/items/buildscripts/buildfood.lua",
   "maxStack" : 99,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+	"effects" : [ [
+		{ "effect" : "fish_food" }    
+	] ],
 
   "rottingMultiplier" : 0.6,
   "blockingEffects" : [

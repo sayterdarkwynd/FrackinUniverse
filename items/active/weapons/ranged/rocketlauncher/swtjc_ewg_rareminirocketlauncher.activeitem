@@ -37,7 +37,7 @@
     "class" : "GunFire",
 
     "fireTime" : [0.5, 1.5],
-    "baseDps" : [8.5, 10.5],
+    "baseDps" : [7.5, 10.5],
     "energyUsage" : [34, 38],
     "inaccuracy" : 0.04,
 
@@ -80,11 +80,11 @@
 
   "critChance" : 1,
   "critBonus" : 12,
-  "isAmmoBased" : 1,
-  "magazineSize" : [1,5],
-  "reloadTime" : [1.7,2.8],
+  "isAmmoBased": [0,1],
+  "magazineSize" : [2,8],
+  "reloadTime" : [1.0,2.5],
   "isRocketLauncher" : 1,
-  
+
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_minirocketnames.config:nameGen",
@@ -125,7 +125,7 @@
       "cosmic" : {
         "primaryAbility" : { "projectileType" : "cosmicplasmarocket" },
         "fireSounds" : [ "/sfx/gun/rocket_electric1.ogg" ]
-      }   
+      }
     },
     "animationParts" : {
       "butt" : {

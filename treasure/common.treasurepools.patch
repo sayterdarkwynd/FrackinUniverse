@@ -1,4 +1,10 @@
 [
+  //reduce occurence of RNG weapons except in weapon chests
+  // but increase other drops to compensate
+  {
+    "op": "remove",
+    "path": "/basicTreasure/0/1/pool/5"
+  },
   {
     "op": "add",
     "path": "/basicTreasure/0/1/pool/-",
@@ -7,6 +13,15 @@
       "pool": "fusalvageComponent"
     }
   }, 
+
+  //small chance for Research chunk
+  {
+    "op": "add",
+    "path": "/basicTreasure/0/1/pool/-",
+    "value": {"weight": 0.005,"item": ["smalldata",1]}
+  },   
+
+  //super ultra rare chance for transmutation matrix
    {
     "op": "add",
     "path": "/tool/0/1/pool/-",

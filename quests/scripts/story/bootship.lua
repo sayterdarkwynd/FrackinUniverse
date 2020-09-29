@@ -1,7 +1,6 @@
 require "/scripts/util.lua"
 require "/quests/scripts/questutil.lua"
 require "/quests/scripts/portraits.lua"
-require "/scripts/messageutil.lua"
 
 function init()
   storage.complete = storage.complete or false
@@ -16,7 +15,6 @@ function init()
   self.state:set(wakeSail)
 
   self.interactTimer = 0
-  self.activationTimer = 1
 end
 
 function questInteract(entityId)
@@ -24,6 +22,7 @@ function questInteract(entityId)
 
   if world.entityUniqueId(entityId) == self.techstationUid then
     player.upgradeShip(config.getParameter("shipUpgrade"))
+    world.sendEntityMessage(self.techstationUid, "activateShip")
     self.interactTimer = 1.0
     return true
   end
@@ -34,33 +33,15 @@ end
 
 function update(dt)
   self.state:update(dt)
-  
+
   self.interactTimer = math.max(self.interactTimer - dt, 0)
-  
-  promises:update()
-  
-  if self.questComplete and not self.techstationFound then
-    promises:add(world.sendEntityMessage(self.techstationUid, "activateShip"), function()
-      self.techstationFound = true
-	end)
-    if self.activationTimer <= 0 then
-      self.techstationFound = true
-    else
-      self.activationTimer = self.activationTimer - dt
-    end	
-  end
-  
-  if self.techstationFound then
-    quest.complete()
-  end
 end
 
-function wakeSail(dt)
+function wakeSail()
   quest.setCompassDirection(nil)
   quest.setObjectiveList({
     {self.descriptions.wakeSail, false}
   })
-
   -- try to lounge in the teleporter for a bit
   util.wait(1.0, function()
     local teleporters = world.entityQuery(mcontroller.position(), 100, {includedTypes = {"object"}})
@@ -84,14 +65,13 @@ function wakeSail(dt)
     questutil.pointCompassAt(findTechStation())
 
     local shipUpgrades = player.shipUpgrades()
-    if shipUpgrades.shipLevel > 0 or player.hasQuest("fu_byos") then
-        self.questComplete = true
+    if shipUpgrades.shipLevel > 0 then
+      quest.complete()
     end
     coroutine.yield()
   end
 end
 
 function questComplete()
-  status.addEphemeralEffect("fu_byosfindship", 10)
   questutil.questCompleteActions()
 end

@@ -24,7 +24,7 @@
     "class" : "GunFire",
 
     "fireTime" : [0.08, 0.15],
-    "baseDps" : [6.5, 7.5],
+    "baseDps" : [5.7, 7.5],
     "energyUsage" : [25.5, 28.5],
     "inaccuracy" : 0.02,
 
@@ -68,15 +68,15 @@
 
   "critChance" : 1,
   "critBonus" : 3,
-  "isAmmoBased" : 1,
+  "isAmmoBased": [0,1],
   "magazineSize" : [16,32],
   "reloadTime" : [0.85,1.5],
-  "isMachinePistol" : 1,  
+  "isMachinePistol" : 1,
   //recoil stats
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
   "recoilForce" : 400, 
-  
+
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_smgnames.config:nameGen",
@@ -117,7 +117,7 @@
       "cosmic" : {
         "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
         "fireSounds" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg" ]
-      }      
+      }    
     },
     "animationParts" : {
       "butt" : {

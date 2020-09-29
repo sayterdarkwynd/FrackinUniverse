@@ -24,8 +24,8 @@
     "class" : "GunFire",
 
     "fireTime" : [1.5, 3.0],
-    "baseDps" : [7.25, 9.6],
-    "energyUsage" : [28.5, 31.5],
+    "baseDps" : [6.25, 9.6],
+    "energyUsage" : [28.5, 37.5],
     "inaccuracy" : 0.005,
     "projectileParameters" : {
       "knockbackRange" : [20, 40]
@@ -66,15 +66,15 @@
 
   "critChance" : 1,
   "critBonus" : 5,
-  "isAmmoBased" : 1,
+  "isAmmoBased": [0,1],
   "magazineSize" : [3,9],
   "reloadTime" : [1.7,3.1],
-  "isSniper" : 1,  
+  "isSniper" : 1,
   //recoil stats
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
   "recoilForce" : 1500,
-  
+
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_antimatnames.config:nameGen",
@@ -92,7 +92,7 @@
       "physical" : {
         "primaryAbility" : { "projectileType" : "fuphysicalbeam", "projectileParameters" : { "statusEffects" : [ "stun" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
-      },    
+      },  
       "fire" : {
         "primaryAbility" : { "projectileType" : "heatbeam", "projectileParameters" : { "statusEffects" : [ "burning" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
@@ -190,5 +190,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }]   
+  }] 
 }

@@ -235,18 +235,72 @@ function randomEvent()
 	end
 end
 
+function afkFlags()
+	local flags={30,60,120}
+	for _,v in pairs(flags) do
+		status.setStatusProperty("fu_afk_"..v.."s",self.afkTimer and (self.afkTimer >= v))
+	end
+end
+
 function update(dt)
-    self.motionX = mcontroller.xVelocity()
-	--passive research gain
-	--if status.statusProperty("fu_creationDate") then
-	--	self.bonus = status.stat("researchBonus") or 1
-	--	if self.timerCounter >= 1 then
-	--		player.addCurrency("fuscienceresource",1 + self.bonus)
-	--		self.timerCounter = 0
-	--	else
-	--		self.timerCounter = self.timerCounter + 1
-	--	end			
-	--end
+	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.
+	--if the player doesn't move enough, a timer will increment. once that timer gets over a certain point, the player is flagged as afk via status property, which is global and thus we only need this code running in one place.
+	--afk timer and recorded points are reset when the script resets.
+	if not self.pointBox or not self.afkCheckTimer then
+		local pos=entity.position()
+		if pos then
+			self.pointBox={topLeft=pos,topRight=pos,bottomLeft=pos,bottomRight=pos,left=pos,right=pos,top=pos,bottom=pos}
+			self.afkCheckTimer=0.0
+			self.afkTimer=0
+		end
+		afkFlags()
+	elseif self.afkCheckTimer >= 1.0 then
+		local wPos=entity.position()
+		if (self.pointBox.topLeft[1] < wPos[1]) and (self.pointBox.topLeft[2] > wPos[2]) and (world.magnitude(self.pointBox.topLeft,wPos) > 1.0) then
+			self.pointBox.topLeft=wPos
+			self.afkTimer=0
+		elseif (self.pointBox.topRight[1] > wPos[1]) and (self.pointBox.topRight[2] > wPos[2]) and (world.magnitude(self.pointBox.topRight,wPos) > 1.0) then
+			self.pointBox.topRight=wPos
+			self.afkTimer=0
+		elseif (self.pointBox.bottomLeft[1] < wPos[1]) and (self.pointBox.bottomLeft[2] < wPos[2]) and (world.magnitude(self.pointBox.bottomLeft,wPos) > 1.0) then
+			self.pointBox.bottomLeft=wPos
+			self.afkTimer=0
+		elseif (self.pointBox.bottomRight[1] > wPos[1]) and (self.pointBox.bottomRight[2] < wPos[2]) and (world.magnitude(self.pointBox.bottomRight,wPos) > 1.0) then
+			self.pointBox.bottomRight=wPos
+			self.afkTimer=0
+		elseif (self.pointBox.left[1] < wPos[1]) and (world.magnitude(self.pointBox.left,wPos) > 1.0) then
+			self.pointBox.left=wPos
+			self.afkTimer=0
+		elseif (self.pointBox.right[1] > wPos[1]) and (world.magnitude(self.pointBox.right,wPos) > 1.0) then
+			self.pointBox.right=wPos
+			self.afkTimer=0
+		elseif (self.pointBox.top[2] > wPos[2]) and (world.magnitude(self.pointBox.top,wPos) > 1.0) then
+			self.pointBox.top=wPos
+			self.afkTimer=0
+		elseif (self.pointBox.bottom[2] < wPos[2]) and (world.magnitude(self.pointBox.bottom,wPos) > 1.0) then
+			self.pointBox.bottom=wPos
+			self.afkTimer=0
+		else
+			self.afkTimer=self.afkTimer+self.afkCheckTimer
+		end
+		self.afkCheckTimer=0.0
+		afkFlags()
+	else
+		self.afkCheckTimer=self.afkCheckTimer+dt
+	end
+
+	if not status.statusProperty("fu_afk_120s") then --can use this to only do research when not afk. supported flags are defined above update block.
+		--passive research gain
+		if status.statusProperty("fu_creationDate") then
+			self.bonus = status.stat("researchBonus") or 1
+			if self.timerCounter >= 1 then
+				player.addCurrency("fuscienceresource",1 + self.bonus)
+				self.timerCounter = 0
+			else
+				self.timerCounter = self.timerCounter + 1
+			end			
+		end
+	end
 
 	-- we control the ammo bar removal from here for now, since its innocuous enough to work without interfering with update() on the player
 	-- there are better places to put it, but this at least keeps it contained
@@ -310,47 +364,51 @@ function displayBar()
 end
 
 function checkMadnessArt()
-	local greatMadnessArt={"thehuntpainting","demiurgepainting","elderhugepainting"}
 	local hasPainting=false
-	for _,art in pairs(greatMadnessArt) do
-		if player.hasItem(art) then
-			player.addCurrency("fumadnessresource", 5)
-			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
-		    end
-			hasPainting=true
-			break
-		end
-	end
+	local greatMadnessArt={"thehuntpainting","demiurgepainting","elderhugepainting"}
 	
-	local madnessArt={"dreamspainting","fleshpainting","homepainting","hordepainting","nightmarepainting","theexpansepainting","thefishpainting","thepalancepainting","theroompainting","thingsinthedarkpainting","elderpainting1","elderpainting2","elderpainting3","elderpainting4","elderpainting5","elderpainting6","elderpainting7","elderpainting8","elderpainting9","elderpainting10","elderpainting11"}
-	for _,art in pairs(madnessArt) do
-		if player.hasItem(art) then
-			player.addCurrency("fumadnessresource", 2)
-			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
-		    end
-			hasPainting=true
-			break
+	if not status.statusProperty("fu_afk_120s") then
+		for _,art in pairs(greatMadnessArt) do
+			if player.hasItem(art) then
+				player.addCurrency("fumadnessresource", 5)
+				if math.random(2) == 5 then
+				  player.radioMessage("crazycarry")
+				end
+				hasPainting=true
+				break
+			end
+		end
+		
+		local madnessArt={"dreamspainting","fleshpainting","homepainting","hordepainting","nightmarepainting","theexpansepainting","thefishpainting","thepalancepainting","theroompainting","thingsinthedarkpainting","elderpainting1","elderpainting2","elderpainting3","elderpainting4","elderpainting5","elderpainting6","elderpainting7","elderpainting8","elderpainting9","elderpainting10","elderpainting11"}
+		for _,art in pairs(madnessArt) do
+			if player.hasItem(art) then
+				player.addCurrency("fumadnessresource", 2)
+				if math.random(2) == 5 then
+				  player.radioMessage("crazycarry")
+				end
+				hasPainting=true
+				break
+			end
 		end
 	end
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
 	if hasPainting then
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
 	end
-	
 end
 
 function isWeirdStuff(duration)
-	local weirdStuff={"faceskin","greghead","greggnog","babyheadonastick","meatpickle"}
-	for _,art in pairs(weirdStuff) do
-		if player.hasItem(art) then
-			player.addCurrency("fumadnessresource", 2)
-			status.addEphemeralEffect("madnessfoodindicator",duration)
-			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
-		    end
-			break
+	if not status.statusProperty("fu_afk_120s") then
+		local weirdStuff={"faceskin","greghead","greggnog","babyheadonastick","meatpickle"}
+		for _,art in pairs(weirdStuff) do
+			if player.hasItem(art) then
+				player.addCurrency("fumadnessresource", 2)
+				status.addEphemeralEffect("madnessfoodindicator",duration)
+				if math.random(2) == 5 then
+				  player.radioMessage("crazycarry")
+				end
+				break
+			end
 		end
 	end
 end

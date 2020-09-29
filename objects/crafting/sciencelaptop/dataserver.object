@@ -1,7 +1,7 @@
 {
   "objectName" : "dataserver",
   "rarity" : "rare",
-  "description" : "Quickly generates up to 1000 research.",
+  "description" : "Performs much more advanced research on items.",
   "shortdescription" : "Research Server",
   "race" : "generic",
   "category" : "storage",
@@ -9,7 +9,7 @@
   "printable" : false,
   "objectType" : "container",
 
-  "inventoryIcon" : "sciencelaptop2icon.png",
+  "inventoryIcon" : "astroservericon.png",
   "orientations" : [
     {
       "direction" : "left",
@@ -34,18 +34,18 @@
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
 
-    }   
+    }
   ],
   "outputNodes" : [ [2, 1] ],
   "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
-  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ], 
-  "scripts" : [ "/scripts/fusciencelaptop.lua" ],
-  "scriptDelta" : 320,
-  "slotCount" : 1,
-  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
+  "scripts" : [ "/objects/generic/extractor_research.lua" ],
+  "scriptDelta" : 10,
+  "slotCount" : 2,
+  "uiConfig" : "/bees/interface/beeexaminer/beeexaminer2.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  "wellslots" : [
-    {"name" : "fuscienceresource","ratio" : 10,"max" : 1000}
-  ]
+  "fu_timerMod":1.0,
+  "fu_researchMult":0.03,
+  "fu_essenceMult":0.0
 }

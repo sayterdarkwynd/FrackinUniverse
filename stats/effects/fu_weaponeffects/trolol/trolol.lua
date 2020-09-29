@@ -16,5 +16,8 @@ end
 
 function update(dt)
 	if oldUpdate then oldUpdate(dt) end
-	if animator then self.listener:update() end
+	if animator then
+		self.listener:update()
+		animator.setFlipped(mcontroller.facingDirection() > 0)
+	end
 end

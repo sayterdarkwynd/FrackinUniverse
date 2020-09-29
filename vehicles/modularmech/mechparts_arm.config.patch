@@ -1084,10 +1084,10 @@
             "path": "/fumechmining0",
             "value": {
                 "stats": {
-                    "power": 3,
+                    "power": 2,
                     "energy": 3,
                     "basePower": 0.15,
-                    "rapidFire": 2,
+                    "rapidFire": 12,
                     "mechMass": 2
                 },
                 "partParameters": {
@@ -1233,10 +1233,10 @@
             "path": "/fumechmining1",
             "value": {
                 "stats": {
-                    "power": 4,
+                    "power": 3,
                     "energy": 4,
-                    "basePower": 1.5,
-                    "rapidFire": 3,
+                    "basePower": 1,
+                    "rapidFire": 12,
                     "mechMass": 3
                 },
                 "partParameters": {
@@ -1403,10 +1403,10 @@
             "path": "/fumechmining2",
             "value": {
                 "stats": {
-                    "power": 6,
+                    "power": 4,
                     "energy": 6,
-                    "basePower": 3,
-                    "rapidFire": 3,
+                    "basePower": 1.5,
+                    "rapidFire": 12,
                     "mechMass": 4
                 },
                 "partParameters": {
@@ -3147,6 +3147,171 @@
                 }
             }
         },
+
+    {
+        "op": "add",
+        "path": "/drill0",
+        "value": {
+          "stats": {
+          "power": 1,
+          "energy": 2,
+          "mechMass": 2
+          },
+          "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/drillarm.lua",
+        "armClass": "DrillArm",
+        "rotationLimits": [
+          -1,
+          1
+        ],
+        "drillTipOffset": [
+          8,
+          0
+        ],
+        "drillSourceOffsets": [
+          [
+            1,
+            -2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "tileDamage": 1.0,
+        "tileDamageRate": 0.15,
+        "damageTileDepth": 5,
+        "spinUpDownTime": 0.5
+          },
+          "damageSources": {
+        "<armName>Drill": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "poly": [
+            [
+              8,
+              2.5
+            ],
+            [
+              2,
+              0.75
+            ],
+            [
+              2,
+              4.25
+            ]
+          ],
+          "damage": 14,
+          "damageSourceKind": "fire",
+          "damageRepeatTimeout": 0.2,
+          "damageRepeatGroup": "<armName>Drill",
+          "knockback": 30,
+          "rayCheck": true
+        }
+          },
+          "physicsCollisions": {
+        "<armName>Drill": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "collision": [
+            [
+              7,
+              2.5
+            ],
+            [
+              1,
+              0.75
+            ],
+            [
+              1,
+              4.25
+            ]
+          ],
+          "collisionKind": "slippery",
+          "categoryWhitelist": [
+            "monster"
+          ]
+        }
+          },
+          "partImages": {
+        "<armName>": "arm/drill0.png",
+        "<armName>Fullbright": "arm/drill_fullbright.png"
+          },
+          "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+          ],
+          "defaultSecondaryColors": [
+        "838383",
+        "555555",
+        "383838",
+        "151515"
+          ],
+          "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+            "windup": {
+              "mode": "loop",
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_windup2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            },
+            "active": {
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_active2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            },
+            "winddown": {
+              "mode": "loop",
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_winddown2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            }
+              }
+            }
+          },
+          "parts": {
+            "<armName>": {
+              "partStates": {
+            "<armName>": {
+              "winddown": {
+                "properties": {
+                  "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+                }
+              }
+            }
+              }
+            },
+            "<armName>Fullbright": {
+              "partStates": {
+            "<armName>": {
+              "winddown": {
+                "properties": {
+                  "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+                }
+              }
+            }
+              }
+            }
+          }
+        }
+          }
+        }
+      },
 
 	{
 	    "op": "add",

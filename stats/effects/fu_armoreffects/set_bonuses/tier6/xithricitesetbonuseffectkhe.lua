@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_xithricitesetkhe"
 
 shellBonus={
@@ -54,12 +53,11 @@ function update(dt)
 	end
 end
 
-
 function checkShell()
-		local rsp=status.stat("regeneratingshieldpercent")
-		if rsp > 0.05 then
-			effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
-		else
-			effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
-		end
+	local rsp=status.stat("regeneratingshieldpercent")
+	if rsp > 0.05 then
+		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
+	else
+		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
+	end
 end

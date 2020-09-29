@@ -8,12 +8,12 @@
 	"maxStack": 100,
 
 	"tooltipKind": "food",
-	"description": "A fresh, juicy peach, ripe for baking or consuming with my face!",
+	"description": "A fresh, juicy peach, ripe for baking or consuming with my face! ^green;Type: Plant^reset;",
 	"shortdescription": "Peach",
-
+    "effects" : [ [ "plant_food" ] ],
 	"eventCategory": "eventCrop",
 	"builder": "/items/buildscripts/buildfood.lua",
 	"itemAgingScripts": ["/scripts/items/rotting.lua"],
-	"rottingMultiplier": 1.0,
-	"learnBlueprintsOnPickup": ["fupeachpie"]
+	"rottingMultiplier": 1.0//,
+	//"learnBlueprintsOnPickup": ["fupeachpie"]
 }
