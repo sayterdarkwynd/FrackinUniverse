@@ -2,7 +2,7 @@ require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
 
 local deltaTime=0
-local rarityMult={common=1.0, uncommon=1.25, rare=1.5, legendary=1.75,essential=1.75}
+local rarityMult={common=1.0, uncommon=1.15, rare=1.25, legendary=1.50,essential=1.50}
 
 function init()
 	if config.getParameter('powertype') then
@@ -136,15 +136,15 @@ function paneClosed()
 end
 
 function getStatus()
-	if self.playerUsing then
-		self.meowCooldown=(self.meowCooldown or 0)-script.updateDt()
-		if self.meowCooldown < 0 then
-			self.meowActive=(math.random(1,100) >= 95)
-			self.meowCooldown=1.0
-		end
-		if self.meowActive then
-			return "^cyan;Meow."
-		end
-	end
+	--if self.playerUsing then
+		--self.meowCooldown=(self.meowCooldown or 0)-script.updateDt()
+		--if self.meowCooldown < 0 then
+		--	self.meowActive=(math.random(1,100) >= 95)
+		--	self.meowCooldown=1.0
+		--end
+		--if self.meowActive then
+		--	return "^cyan;Meow."
+		--end
+	--end
 	return ((storage.input) and "^green;Scanning...") or ("^yellow;Waiting for subject...")
 end
