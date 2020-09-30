@@ -1,9 +1,4 @@
 [
-  {
-    "op": "add",
-    "path": "/itemTags",
-    "value": [
-      "geode"
-    ]
-  }
+	[{ "op": "test", "path": "/itemTags", "inverse": true },{ "op": "add", "path": "/itemTags", "value": [] }],
+	[{"op": "add","path": "/itemTags/-","value": "geode"}]
 ]
