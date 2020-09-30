@@ -1,0 +1,51 @@
+{
+  "objectName" : "sciencelaptop0",
+  "rarity" : "Common",
+  "description" : "A bulky and simple computer which slowly reserarches items.",
+  "shortdescription" : "Basic Computer",
+  "race" : "generic",
+  "category" : "storage",
+  "price" : 250,
+  "printable" : false,
+  "objectType" : "container",
+
+  "inventoryIcon" : "sciencelaptop0icon.png",
+  "orientations" : [
+    {
+      "direction" : "left",
+      "imageLayers" : [ { "image" : "basiccomputer.png:<color>.<frame>", "fullbright" : true }, { "image" : "basiccomputer.png:<color>.<frame>" } ],
+      "flipImages" : true,
+      "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 4.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    },
+    {
+      "direction" : "right",
+      "imageLayers" : [ { "image" : "basiccomputer.png:<color>.<frame>", "fullbright" : true }, { "image" : "basiccomputer.png:<color>.<frame>" } ],
+
+      "imagePosition" : [0, 0],
+      "frames" : 5,
+      "animationCycle" : 4.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+
+    }
+  ],
+  "outputNodes" : [ [2, 1] ],
+  "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
+  "scripts" : [ "/objects/generic/extractor_research.lua" ],
+  "scriptDelta" : 10,
+  "slotCount" : 2,
+  "uiConfig" : "/bees/interface/beeexaminer/beeexaminer2.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+  "fu_timerMod":10.0,
+  "fu_researchMult":0.01,
+  "fu_essenceMult":0.0
+}
