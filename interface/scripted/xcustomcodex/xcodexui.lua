@@ -2,7 +2,6 @@
 -- Proposed by Sayter, approved of by Xan
 -- And then made by Xan
 
-
 -- Because starbound needs to up their game, like damn
 
 -- To reference any ScrollArea children widgets in Lua scripts (widget.* table) use the following format: <ScrollArea name>.<Children widget name>.
@@ -14,16 +13,16 @@ require("/scripts/xcore_customcodex/LoggingOverride.lua") -- tl;dr I can use pri
 ------ TEMPLATE DATA ------
 ---------------------------
 
--- Displays on the header when the guide button is pressed. "Selected Category: (this)"
+-- Displays on the header when the Frackin' Universe guide button is pressed. "Selected Category: (this string)"
 local FU_GUIDE_CATEGORY_NAME = "Guides"
 
--- The species name that should be defined in FU guidebook entries.
+-- The species name that should be defined in FU guidebook entries' codex json files.
 local FU_GUIDE_RACE_NAME = "fu"
 
 -- FU "race" image. To make things easier, I've isolated the "FU" text from the button image and it will be treated as one of the race's gender icons.
 local FU_RACE_IMAGE = "/interface/scripted/xcustomcodex/fu_text.png"
 
--- If true, and if a guide entry starts with three digits and a space ("000 guide name here"), the script will omit the numbers at the start (resulting in "guide name here")
+-- If true, and if a FU guide entry starts with three digits and a space ("000 guide name here"), the script will omit the numbers at the start (resulting in "guide name here")
 -- The numbers will be used to sort the entries, but they will display in the list without them, allowing for entries in any desired order rather than alphabetical order.
 local FU_GUIDE_ENTRIES_OMIT_STARTING_DIGITS = true
 
@@ -38,10 +37,9 @@ local RACE_BUTTON_HOVER =  "/interface/scripted/xcustomcodex/racebuttonhover.png
 local QUESTION_MARK = "/interface/scripted/xcustomcodex/question_mark.png"
 
 -- This is the text that displays on the "Ambiguous Race" button.
-local TEXT_AMBIGUOUS_BUTTON = "?"
+-- local TEXT_AMBIGUOUS_BUTTON = "?"
 
--- A template for one of the buttons displayed in the list of codex entries.
--- This template is no longer used. It was only used when name abbreviations were displayed in place of images.
+-- A template for one of the buttons displayed in the list of codex titles.
 local TEMPLATE_CODEX_ENTRY_BUTTON = {
 	type = "button",
 	caption = "",
@@ -102,10 +100,10 @@ local TEMPLATE_CODEX_RACE_CATEGORY = {
 -- Data that binds [X] codex button to [Y] codex JSON
 local CodexButtonBindings = {}
 
--- A registry of the categories we already have created in the GUI.
+-- A registry of the races (categories) we already have created in the GUI and do not need to create again.
 local ExistingCategoryButtons = {}
 
--- The names of every element in the race category. This is used for updating the button graphics.
+-- The names of every button in the race list. This is used for updating the button graphics for races.
 local CategoryElementNames = {}
 
 -- The current page we're on in the codex.
@@ -165,8 +163,8 @@ end
 -- This method is a bit complicated.
 -- It goes through all of the chars of a given name (arg 1) and picks out the uppercase levels.
 -- The second argument, existingAbbreviations, is a table of data this function has already spit out. More on this in the body of the function.
--- The third argument is used by this function only which is for recursive calling and the disambiguation method, which ties into ^.
--- The last argument is the maximum string length from this function.
+-- The third argument is used by this function only, which is for recursive calling and the disambiguation method (which prevents two races from having the same abbreviation), which ties into ^. Its default value is 1 if undefined.
+-- The last argument is the maximum string length from this function. Its default value is 4 if undefined.
 local function GetNameAbbreviation(name, existingAbbreviations, startSub, maxLen)
 	-- Start out by getting default values.
 	local maxLen = maxLen or 4
@@ -214,6 +212,7 @@ local function GetNameAbbreviation(name, existingAbbreviations, startSub, maxLen
 end
 
 -- Gets the first element in a dictionary-style table (where the keys are non-numeric)
+-- TODO: Change to getting the first non-nil entry?
 function GetFirstInTable(tbl)
 	-- Basically just run one iteration and immediately return the first value.
 	for _, value in pairs(tbl) do
@@ -225,9 +224,8 @@ end
 ------ PRIMARY FUNCTIONS ------
 -------------------------------
 
-
--- Creates a button on the left-hand list to view this codex.
--- This is only called when we select a category (so that the buttons pertaining to the various codex entries for said category are created)
+-- Called by PopulateCodexEntriesForCategory for each individual codex entry associated with a given race.
+-- This creates a button on the middle-column list to view a given codex entry. This button will be the title of the entry. Clicking it will view its content.
 local function CreateButtonToReadCodex(codexDisplayName, codexData, codexFileInfo, index)
 	-- Create a unique button name.
 	local buttonName = "cdx_" .. codexData.id
@@ -241,7 +239,7 @@ local function CreateButtonToReadCodex(codexDisplayName, codexData, codexFileInf
 	
 	-- Now let's store this button's existence.
 	CodexButtonBindings[buttonName] = codexData
-	widget.addChild("codexList", button, buttonName)
+	widget.addListItem("codexList", button, buttonName)
 	
 	--print("Button " .. buttonName .. " added to codex list children.")
 end
@@ -255,7 +253,7 @@ local function OpenCodex(codexData, page)
 	CurrentCodex = codexData
 end
 
--- This is run when we click on a category button.
+-- This is run when we click on a race button. It is responsible for populating the list of codex entries that can be selected from for that given race.
 local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
 	-- First off, let's clean up the list of old codex entries in case we had a previous category open already.
 	widget.removeAllChildren("codexList")
@@ -267,7 +265,8 @@ local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
 	local knownCodexEntries = player.getProperty("xcodex.knownCodexEntries") or {}
 	
 	-- NEW UPDATE: Alphabetical sorting on these too.
-	-- To accomplish this we need to go over the elements and create "pseudo-buttons". We can then use table.sort to order these.
+	-- To accomplish this we need to go over the elements and create "pseudo-buttons" - that is, the *data* for a button, but not na actual GUI element. 
+	-- We can then use table.sort to order these, and *then* create the buttons.
 	local codexDataRegistry = {}
 	for index = 1, #knownCodexEntries do
 		local codexInfo = knownCodexEntries[index]
@@ -430,15 +429,6 @@ local function PopulateCategories()
 					-- If we do, we need to set the pictures, so long as we actually have them
 					if firstAvailableGenderImage ~= "" then
 						-- print("Setting race image to", firstAvailableGenderImage)
-						--widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", genderTable.characterImage)
-						--[[widget.setButtonImages("racialCategoryList.racelist." .. tostring(newElement) .. ".raceButton", 
-							{
-								base = firstAvailableGenderImage,
-								hover = firstAvailableGenderImage .. "?brightness=30",
-								pressed = firstAvailableGenderImage .. "?brightness=30",
-								disabled = ""
-							}
-						)]]--
 						widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", firstAvailableGenderImage)
 					else
 						-- We don't have the pictures! Let's use the displayName.
@@ -446,7 +436,7 @@ local function PopulateCategories()
 						widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", displayName)
 					end
 				else
-					--print("Could not set button icon -- race doesn't exist (this is the ambiguous table) or the race was unable to resolve an appropriate icon.")
+					-- print("Could not set button icon -- race doesn't exist (this is the ambiguous table) or the race was unable to resolve an appropriate icon.")
 					-- widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", TEXT_AMBIGUOUS_BUTTON)
 					widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", QUESTION_MARK)
 				end
@@ -478,7 +468,7 @@ function ListButtonClicked(widgetName, widgetData)
 	end
 end
 
--- Run when one of the racial category buttons are clicked.
+-- Run when one of the racial category buttons are clicked. This should populate the list of codex entries for that specified race.
 function RaceButtonClicked(widgetName, widgetData)
 	local itemId = widget.getListSelected("racialCategoryList.racelist")
 	
