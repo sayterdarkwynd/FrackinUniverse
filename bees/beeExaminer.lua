@@ -5,6 +5,7 @@ local statusList={--progress status doesnt matter, but for any other status indi
 	queenID="^green;Queen identified",
 	droneID="^green;Drone identified",
 	artifactID="^green;Artifact identified",
+	geodeID="^green;Artifact identified",
 	invalid="^red;Invalid sample detected"
 }
 
@@ -55,8 +56,9 @@ function update(dt)
 			local isQueen=root.itemHasTag(futureItem.name, "queen") or root.itemHasTag(futureItem.name, "youngQueen")
 			local isDrone=root.itemHasTag(futureItem.name, "drone")
 			local isArtifact=root.itemHasTag(futureItem.name, "artifact")
+			local isGeode=root.itemHasTag(futureItem.name, "geode")
 			
-			if isQueen or isDrone or isArtifact then
+			if isQueen or isDrone or isArtifact or isGeode then
 				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
 					if isQueen then
 						status = statusList.queenID
@@ -64,6 +66,8 @@ function update(dt)
 						status = statusList.droneID
 					elseif isArtifact then
 						status = statusList.artifactID
+					elseif isGeode then
+						status = statusList.geodeID	
 					end
 					
 					shoveTimer=(shoveTimer or 0.0) + dt
@@ -95,6 +99,7 @@ function update(dt)
 						status = "^cyan;"..progress.."%"
 						
 						if isArtifact then futureItem.parameters.category = "^cyan;Researched Artifact^reset;" end
+						if isGeode then futureItem.parameters.category = "^cyan;Researched Geode^reset;" end
 						futureItem.parameters.genomeInspected = true
 						
 						local singleCountFutureItem=copy(futureItem)
@@ -128,6 +133,8 @@ function update(dt)
 							status = statusList.droneID
 						elseif isArtifact then
 							status = statusList.artifactID
+						elseif isGeode then
+							status = statusList.geodeID							
 						end
 						
 						itemsDropped=true
@@ -141,6 +148,8 @@ function update(dt)
 							randCheck=math.random(100)
 						elseif isArtifact then
 							randCheck=math.random(10)
+						elseif isGeode then
+							randCheck=math.random(15)							
 						end
 						if randCheck == 1 then
 							local bonusValue=0
@@ -150,6 +159,8 @@ function update(dt)
 								bonusValue=2
 							elseif isArtifact then
 								bonusValue=25
+							elseif isGeode then
+								bonusValue=5								
 							end
 							bonusResearch=bonusResearch+((bonusValue+rank)*currentItem.count) -- Gain research as this is used
 						elseif randCheck == 2 then
@@ -157,6 +168,9 @@ function update(dt)
 							if isArtifact then
 								bonusValue=1
 							end
+							if isGeode then
+								bonusValue=1
+							end							
 							bonusEssence=bonusEssence+((1+rank)*currentItem.count)
 						end
 					end
