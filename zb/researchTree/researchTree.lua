@@ -1007,8 +1007,8 @@ function canAfford(research, consume)
 		for _, tbl in ipairs(researchTree[research].price) do
 			if currencyTable[tbl[1]] then
 				player.consumeCurrency(tbl[1], tbl[2])
-			else
-				player.consumeItem({name = tbl[1], count = tbl[2]}, true)
+			--else
+				--player.consumeItem({name = tbl[1], count = tbl[2]}, true)
 			end
 		end
 	end
