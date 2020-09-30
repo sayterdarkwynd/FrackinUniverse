@@ -93,6 +93,30 @@ local TEMPLATE_CODEX_RACE_CATEGORY = {
 	}
 }
 
+local TEMPLATE_CODEX_ENTRY_LIST = {
+	type = "list",
+	callback = "ListButtonClicked",
+	schema = {
+		selectedBG = CODEX_BUTTON_HOVER,
+		unselectedBG = CODEX_BUTTON_STOCK,
+		spacing = {0, 0},
+		memberSize = {147, 23},
+		listTemplate = {
+			entryButton = {
+				type = "button",
+				caption = "",
+				textAlign = "center",
+				pressedOffset = {1, -1},
+				base = CODEX_BUTTON_STOCK,
+				hover = CODEX_BUTTON_HOVER,
+				pressed = CODEX_BUTTON_HOVER,
+				-- callback = "ListButtonClicked"
+				callback = "null",
+			}
+		}
+	}
+}
+
 -----------------------
 ------ CORE DATA ------
 -----------------------
@@ -123,10 +147,11 @@ local PrevButtonEnabled = false
 -- Makes it so that the given button has a yellow border around it, and resets all other buttons in the codex list to not have the border
 -- This gives the appearance of a persistent selection on the buttons.
 local function SetActiveEntryButton(activeName)
-	for bName in pairs(CodexButtonBindings) do
-		widget.setButtonImage("codexList." .. bName, CODEX_BUTTON_STOCK)
+	for _, data in pairs(CodexButtonBindings) do
+		local bName = data[2]
+		widget.setButtonImage("codexList.entrylist." .. bName, CODEX_BUTTON_STOCK)
 	end
-	widget.setButtonImage("codexList." .. activeName, CODEX_BUTTON_HOVER)
+	widget.setButtonImage(activeName, CODEX_BUTTON_HOVER)
 end
 
 -- Same as above, but it goes to the category list.
@@ -229,18 +254,20 @@ end
 local function CreateButtonToReadCodex(codexDisplayName, codexData, codexFileInfo, index)
 	-- Create a unique button name.
 	local buttonName = "cdx_" .. codexData.id
-	
 	codexData.title = codexDisplayName
 	
 	-- Grab our button template and populate the necessary data.
-	local button = TEMPLATE_CODEX_ENTRY_BUTTON
-	button.caption = codexData.title or "ERR_NO_TITLE"
-	button.position = {0, index * -22}
+	--local button = TEMPLATE_CODEX_ENTRY_BUTTON
+	--button.caption = codexData.title or "ERR_NO_TITLE"
+	--button.position = {0, index * -22}
 	
 	-- Now let's store this button's existence.
-	CodexButtonBindings[buttonName] = codexData
-	widget.addListItem("codexList", button, buttonName)
 	
+	local newButton = widget.addListItem("codexList.entrylist")
+	widget.setData("codexList.entrylist." .. tostring(newButton), {buttonName})
+	widget.setText("codexList.entrylist." .. tostring(newButton) .. ".entryButton", codexData.title or "ERR_NO_TITLE")
+	
+	CodexButtonBindings[buttonName] = {codexData, tostring(newButton)}
 	--print("Button " .. buttonName .. " added to codex list children.")
 end
 
@@ -256,7 +283,7 @@ end
 -- This is run when we click on a race button. It is responsible for populating the list of codex entries that can be selected from for that given race.
 local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
 	-- First off, let's clean up the list of old codex entries in case we had a previous category open already.
-	widget.removeAllChildren("codexList")
+	widget.clearListItems("codexList.entrylist")
 	
 	-- Update the display data to reflect on the new category we have selected. Remember, speciesName will be "Ambiguous" for the category that has no associated race.
 	widget.setText("codexListRace", "Selected Category: " .. speciesName)
@@ -461,10 +488,21 @@ end
 function ListButtonClicked(widgetName, widgetData)
 	-- Do we have button data bindings for this button? If so, call OpenCodex with that data.
 	-- Said data is the raw JSON of the codex file (including any edits we've made here on the fly, e.g. the longContentPages value population)
-	local data = CodexButtonBindings[widgetName]
-	if data then 
-		OpenCodex(data)
-		SetActiveEntryButton(widgetName)
+	local selectedId = widget.getListSelected("codexList.entrylist")
+	if selectedId == nil then return end -- This happens if we swap races, and is expected.
+	
+	local infoContainer = widget.getData("codexList.entrylist." .. tostring(selectedId))
+	if (infoContainer == nil) then
+		warn("WARNING: Failed to load " .. tostring(selectedId) .. " -- widget.getData returned nil!")
+		return
+	end
+	local info = infoContainer[1]
+	
+	local data = CodexButtonBindings[info]
+	if data ~= nil then 
+		OpenCodex(data[1])
+		-- SetActiveEntryButton("codexList.entrylist." .. tostring(selectedId))
+		-- ^ Doesn't seem to work right now (it just does nothing). Not super important.
 	end
 end
 
@@ -511,6 +549,7 @@ function postinit()
 	widget.setFontColor("prevButton", "#666666")
 	
 	PopulateCategories()
+	widget.addChild("codexList", TEMPLATE_CODEX_ENTRY_LIST, "entrylist")
 end
 
 
