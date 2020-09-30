@@ -17,7 +17,7 @@ function init()
 	defaultMaxStack=root.assetJson("/items/defaultParameters.config").defaultMaxStack
 	rank=config.getParameter("rank",0)
 	defaultDelta=config.getParameter("scriptDelta")
-	
+
 	playerWorkingEfficiency = nil
 	selfWorkingEfficiency = nil
 	status = statusList.waiting
@@ -35,29 +35,45 @@ function init()
 	selfWorking = config.getParameter("selfWorking")
 end
 
+function checkTags(item,tagList)
+	for _,tag in pairs(tagList) do
+		if root.itemHasTag(item,tag) then return true end
+	end
+	return false
+end
+
+function resetStats()
+	bonusEssence=0
+	bonusResearch=0
+	itemsDropped=false
+	progress=0
+	futureItem=nil
+end
+
 function update(dt)
 	if playerUsing or selfWorking then
 		local currentItem = world.containerItemAt(entity.id(), 0)
 
 		if currentItem == nil then
-			bonusEssence=0
-			bonusResearch=0
 			status = statusList.waiting
-			itemsDropped=false
-			progress=0
-			futureItem=nil
-		elseif not (root.itemHasTag(currentItem.name, "queen") or root.itemHasTag(currentItem.name, "youngQueen") or root.itemHasTag(currentItem.name, "drone") or root.itemHasTag(currentItem.name, "artifact") ) then
-			progress=0
+		elseif (futureItem and ((futureItem.name~=currentItem.name) or (futureItem.count~=currentItem.count))) then
+			--no hot-swapping exploit allowed
+			status = statusList.waiting
+			resetStats()
+		elseif (not ( checkTags(currentItem.name, {"queen","youngQueen","drone","geode","artifact"}) )) then
 			status = statusList.invalid
-			futureItem=nil
-			currentItem=nil
+			resetStats()
+		elseif futureItem and (currentItem.parameters.genome and futureItem.parameters.genome and (currentItem.parameters.genome~=futureItem.parameters.genome)) then
+			--no hot-swapping exploit allowed
+			status = statusList.waiting
+			resetStats()
 		else
 			if not futureItem then futureItem=currentItem end
 			local isQueen=root.itemHasTag(futureItem.name, "queen") or root.itemHasTag(futureItem.name, "youngQueen")
 			local isDrone=root.itemHasTag(futureItem.name, "drone")
 			local isArtifact=root.itemHasTag(futureItem.name, "artifact")
 			local isGeode=root.itemHasTag(futureItem.name, "geode")
-			
+
 			if isQueen or isDrone or isArtifact or isGeode then
 				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
 					if isQueen then
@@ -67,23 +83,23 @@ function update(dt)
 					elseif isArtifact then
 						status = statusList.artifactID
 					elseif isGeode then
-						status = statusList.geodeID	
+						status = statusList.geodeID
 					end
-					
+
 					shoveTimer=(shoveTimer or 0.0) + dt
 					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local singleCountFutureItem=copy(futureItem)
 					singleCountFutureItem.count=1
-					
+
 					local slotItem=world.containerItemAt(entity.id(),3)
 					local singleCountSlotItem=slotItem and copy(slotItem)
 					if singleCountSlotItem then
 						singleCountSlotItem.count=1
 					end
-					
+
 					if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
 					if not nudgeItem(futureItem,3,slotItem) then return end
-					
+
 					world.containerTakeAt(entity.id(), 0)
 					futureItem=nil
 					currentItem=nil
@@ -94,26 +110,26 @@ function update(dt)
 						progress = math.min(100,progress + (selfWorkingEfficiency * dt))
 					end
 					progress = math.floor(progress * 100) * 0.01
-					
+
 					if progress >= 100 then
 						status = "^cyan;"..progress.."%"
-						
+
 						if isArtifact then futureItem.parameters.category = "^cyan;Researched Artifact^reset;" end
 						if isGeode then futureItem.parameters.category = "^cyan;Researched Geode^reset;" end
 						futureItem.parameters.genomeInspected = true
-						
+
 						local singleCountFutureItem=copy(futureItem)
 						singleCountFutureItem.count=1
-						
+
 						local slotItem=world.containerItemAt(entity.id(),3)
 						local singleCountSlotItem=slotItem and copy(slotItem)
 						if singleCountSlotItem then
 							singleCountSlotItem.count=1
 						end
-						
+
 						if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
 						if not nudgeItem(futureItem,3,slotItem) then return end
-						
+
 						world.containerTakeAt(entity.id(), 0)
 						futureItem=nil
 						currentItem=nil
@@ -126,7 +142,7 @@ function update(dt)
 						bonusEssence=0
 						bonusResearch=0
 						progress = 0
-						
+
 						if isQueen then
 							status = statusList.queenID
 						elseif isDrone then
@@ -134,9 +150,9 @@ function update(dt)
 						elseif isArtifact then
 							status = statusList.artifactID
 						elseif isGeode then
-							status = statusList.geodeID							
+							status = statusList.geodeID
 						end
-						
+
 						itemsDropped=true
 					else
 						status = "^cyan;"..progress.."%"
@@ -149,7 +165,7 @@ function update(dt)
 						elseif isArtifact then
 							randCheck=math.random(10)
 						elseif isGeode then
-							randCheck=math.random(15)							
+							randCheck=math.random(15)
 						end
 						if randCheck == 1 then
 							local bonusValue=0
@@ -160,7 +176,7 @@ function update(dt)
 							elseif isArtifact then
 								bonusValue=25
 							elseif isGeode then
-								bonusValue=5								
+								bonusValue=5
 							end
 							bonusResearch=bonusResearch+((bonusValue+rank)*currentItem.count) -- Gain research as this is used
 						elseif randCheck == 2 then
@@ -170,7 +186,7 @@ function update(dt)
 							end
 							if isGeode then
 								bonusValue=1
-							end							
+							end
 							bonusEssence=bonusEssence+((1+rank)*currentItem.count)
 						end
 					end
@@ -186,14 +202,14 @@ end
 
 function shoveItem(item,slot)
 	if not item then return end
-	
+
 	local slotItem=world.containerItemAt(entity.id(),slot)
 	if slotItem and slotItem.name~=item.name then
 		if world.containerTakeAt(entity.id(),slot) then
 			world.spawnItem(slotItem,entity.position())
 		end
 	end
-	
+
 	local leftovers=world.containerPutItemsAt(entity.id(),item,slot)
 	if leftovers then
 		world.spawnItem(leftovers,entity.position())
@@ -203,20 +219,20 @@ end
 function nudgeItem(item,slot,slotItem)
 	--assumptive: compare(item,slotItem) prior to usage returns true, or slotItem is nil
 	if not item then return end
-	
+
 	if not slotItem then
 		world.containerPutItemsAt(entity.id(),item,slot)
 		return true
 	end
-	
+
 	local slotItemConfig=slotItem and root.itemConfig(slotItem)
 	if slotItemConfig then
 		slotItemConfig=util.mergeTable(slotItemConfig.config,slotItemConfig.parameters)
 		slotItemConfig=slotItemConfig.maxStack or defaultMaxStack
 	end
-	
+
 	if (item.count+slotItem.count > slotItemConfig) then return false end
-	
+
 	world.containerPutItemsAt(entity.id(),item,slot)
 	return true
 end
