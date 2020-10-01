@@ -237,8 +237,21 @@ end
 
 function afkFlags()
 	local flags={30,60,120}
+	local highestFlag
 	for _,v in pairs(flags) do
-		status.setStatusProperty("fu_afk_"..v.."s",self.afkTimer and (self.afkTimer >= v))
+		local isAfk=self.afkTimer and (self.afkTimer >= v)
+		status.setStatusProperty("fu_afk_"..v.."s",isAfk)
+		if isAfk then highestFlag=v end
+	end
+	--statuses are defined in /stats/effects/fu_effects/fu_dummyeffects/afkdummy.
+	--they must match the AFK flag's string.
+	--they are purely indicators and have no function.
+	for _,v in pairs(flags) do
+		if v==highestFlag then
+			status.addEphemeralEffect("fu_afk_"..v.."s")
+		else
+			status.removeEphemeralEffect("fu_afk_"..v.."s")
+		end
 	end
 end
 
