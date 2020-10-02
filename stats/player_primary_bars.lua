@@ -1,7 +1,8 @@
 local barsOldInit = init
+--local barsOldupdate = update
 
 function init()
-	barsOldInit()
+	if barsOldInit then barsOldInit() end
 	self.barsList = {}
 	message.setHandler("setBar", function(_, l, barName, barPercentage, barColor)
 		if not l then return end
@@ -54,3 +55,9 @@ function setBar(barName,barPercentage,barColor)
 		stat = barStat
 	}
 end
+
+--[[
+function update(...)
+	if barsOldupdate then barsOldupdate(...) end
+end
+]]

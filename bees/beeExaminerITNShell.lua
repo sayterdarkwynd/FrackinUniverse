@@ -37,10 +37,10 @@ function outputnodes()
 		self.containerItems=world.containerItems(transferUtil.vars.containerId) or {}
 		--self.containerFill=util.tableSize(self.containerItems)
 		if self.outPartialFillNode then
-			object.setOutputNodeLevel(self.outPartialFillNode,self.containerItems[1])
+			object.setOutputNodeLevel(self.outPartialFillNode,self.containerItems[self.inputSlot+1])
 		end
 		if self.outCompleteFillNode then
-			object.setOutputNodeLevel(self.outCompleteFillNode,self.containerItems[4])
+			object.setOutputNodeLevel(self.outCompleteFillNode,self.containerItems[self.outputSlot+1])
 		end
 	end
 end

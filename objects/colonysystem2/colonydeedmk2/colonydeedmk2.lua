@@ -662,6 +662,8 @@ function scanHouseIntegrity()
   return grumbles
 end
 
+
+
 function fuDeedCheck(housePoly)
   local objects = world.objectQuery(self.position, self.position, {poly = housePoly or storage.house.boundary, boundMode = "Position"})
   local fuDeed = false

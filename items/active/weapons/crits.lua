@@ -1,8 +1,8 @@
 Crits = {}
 
 function Crits:setCritDamage(damage)
-    local critChance = config.getParameter("critChance", 1) + status.stat("critChance", 0)  -- Integer % chance to activate crit
-    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus", 0)     --  % damage bonus to critical hits
+    local critChance = config.getParameter("critChance", 1) + status.stat("critChance")  -- Integer % chance to activate crit
+    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  % damage bonus to critical hits
     local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
 	--status.stat ONLY accepts ONE argument. and returns 0.0 if it is not found
 	local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
@@ -30,8 +30,8 @@ function Crits:setCritDamage(damage)
                 -- *****************************************************************
                 --	weapon specific crit abilities!
                 -- *****************************************************************
-                local stunChance = math.random(100) + status.stat("stunChance",0) + config.getParameter("stunChance",0)
-                local daggerChance = math.random(100) + status.stat("daggerChance",0) + config.getParameter("daggerChance",0)
+                local stunChance = math.random(100) + status.stat("stunChance") + config.getParameter("stunChance",0)
+                local daggerChance = math.random(100) + status.stat("daggerChance") + config.getParameter("daggerChance",0)
 
                 if stunChance >= 95 and root.itemHasTag(heldItem, "dagger") then
                     params = { speed=14, power = 1, damageKind = "default"}

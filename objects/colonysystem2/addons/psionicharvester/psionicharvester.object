@@ -11,40 +11,21 @@
   "inventoryIcon" : "psionicharvestericon.png",
   "description" : "Steals your tenants' negative thoughts and emotions to create psionic energy. Requires 200W of power. ^yellow;+10 Happiness^reset;",
   "shortdescription" : "^cyan;Psionic Harvester^white;",
-   "orientations" : [
-     {
-      "imageLayers" : [ { "image" : "psionicharvester.png:<color>.<frame>", "fullbright" : true }, { "image" : "psionicharvesterlit.png:<color>.<frame>" } ],
-      "direction" : "left",
-      "flipImages" : true,
-      "animationParts" : {
-          "samplingarrayanim" : "psionicharvester.png"
-        },
-      "imagePosition" : [0, 0],
-      "frames" : 6,
-      "animationCycle" : 2,
-      "collision" : "platform",
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-    },
+  "orientations" : [
     {
-      "imageLayers" : [ { "image" : "psionicharvester.png:<color>.<frame>", "fullbright" : true }, { "image" : "psionicharvesterlit.png:<color>.<frame>" } ],
-      "direction" : "right",
-      "animationParts" : {
-          "samplingarrayanim" : "psionicharvester.png"
-        },
+      "dualImage" : "tenantbrainharvester_base.png",
       "imagePosition" : [0, 0],
-      "frames" : 6,
-      "animationCycle" : 2,
-      "collision" : "platform",
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
   ],
 
-  "animation" : "psionicharvester.animation",
+  "animation" : "tenantbrainharvester.animation",
   "animationParts" : {
-    "samplingarrayanim" : "psionicharvester.png"
+    "screen" : "tenantbrainharvester_screen.png",
+    "base" : "tenantbrainharvester_base.png"
   },
+  "animationPosition" : [0, 0],
   
   "scripts" : [ "/scripts/fupower.lua", "/objects/colonysystem2/addons/psionicharvester/psionicharvester.lua" ],
   "scriptDelta" : 60,
@@ -83,8 +64,8 @@
        
         "default" : [
             { "weight" : "common",   "items" : [ "psionicenergy" ] },
-            { "weight" : "uncommon", "items" : [ "psionicenergy", "psionicenergy2" ] },
-            { "weight" : "rare",     "items" : [ "psionicenergy4", "psionicenergy3",  "psionicenergy2", "psionicenergy3" ] }
+            { "weight" : "uncommon", "items" : [ "psionicenergy2" ] },
+            { "weight" : "rare",     "items" : [ "psionicenergy4", "psionicenergy3", "psionicenergy3" ] }
         ]
 		
 	}
