@@ -39,7 +39,7 @@ function update(dt)
 	self.penaltyTimer = (self.penaltyTimer or 0.0) + dt
 	if self.penaltyTimer >= 1 then
 		self.penaltyAmount=self.penaltyAmount-(self.penaltyRate*self.penaltyTimer)
-		status.setStatModifierGroup(penaltyHandler,{{stat = "shadowResistance", amount = self.penaltyAmount}})
+		effect.setStatModifierGroup(penaltyHandler,{{stat = "shadowResistance", amount = self.penaltyAmount}})
 		self.penaltyTimer=0.0
 	end
 end
@@ -55,8 +55,8 @@ function activateVisualEffects()
 end
 
 function uninit()
-	status.removeStatModifierGroup(penaltyHandler)
-	status.removeStatModifierGroup(baseHandler)
+	effect.removeStatModifierGroup(penaltyHandler)
+	effect.removeStatModifierGroup(baseHandler)
 end
 
 function afkLevel()
