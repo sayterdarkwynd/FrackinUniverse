@@ -31,10 +31,10 @@ function init()
 	self.barColor = {250,0,250,125}
 	self.timerReloadBar = 0
 	self.timerRemoveAmmoBar = 0
-	
+
 	local elementalTypes=root.assetJson("/damage/elementaltypes.config")
 	local buffer={}
-	
+
 	for element,data in pairs(elementalTypes) do
 		if data.resistanceStat then
 			buffer[data.resistanceStat]=true
@@ -44,23 +44,25 @@ function init()
 	for stat,_ in pairs(buffer) do
 		table.insert(self.resistList,stat)
 	end
+	status.setPersistentEffects("madnessAFKPenalty",{})
 end
 
 function randomEvent()
 	if not self.madnessCount then init() end
 	status.setPersistentEffects("madnessEffectsMain",{})--reset persistent effects the next time one pops up.
 	self.randEvent=math.random(1,100)
-	self.currentPrimary = world.entityHandItem(entity.id(), "primary")	--what are we carrying in the right hand?
-	self.currentSecondary = world.entityHandItem(entity.id(), "alt")	--what are we carrying in the left hand?
-	self.isProtectedRand = math.random(1,100)
-	self.isProtectedRandVal = self.isProtectedRand / 100
-	self.currentProtection = status.stat("mentalProtection") or 0
-	
+	self.currentPrimary = world.entityHandItem(entity.id(), "primary") --what are we carrying in the right hand?
+	self.currentSecondary = world.entityHandItem(entity.id(), "alt") --what are we carrying in the left hand?
+
+	self.isProtectedRandVal =(math.random(1,100)) / 100
+	self.currentProtection = status.stat("mentalProtection")
+	self.currentProtectionAbs=math.abs(self.currentProtection)
+
 	--mentalProtection can make it harder to be affected
-	if (status.statPositive("mentalProtection")) and (self.isProtectedRandVal <= status.stat("mentalProtection")) then
-		self.randEvent = self.randEvent - (self.currentProtection * 10) --math.random(10,70)	--it doesnt *remove* the effect, it just moves it further up the list, and potentially off of it.
+	if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtectionAbs) then
+		self.randEvent = self.randEvent - util.round(self.currentProtection * 10) --math.random(10,70) --it doesnt *remove* the effect, it just moves it further up (or down) the list, and potentially off of it.
 	end
-	
+
 	-- are we currently carrying any really weird stuff?
 	isWeirdStuff(self.timer)
 
@@ -131,7 +133,7 @@ function randomEvent()
 				table.insert(buffer,{stat=stat,amount=((math.random()>0.75 and 1) or (-1))*(math.random(1,20)/100.0)}) --still, needed to reduce the maximum range to reasonable levels. also added a chance for a bonus
 			end
 			status.setPersistentEffects("madnessEffectsMain", buffer)
-			--same problem as the 'pick random resist' debuff. 
+			--same problem as the 'pick random resist' debuff.
 		end
 	end
 	if self.madnessCount > 500 then
@@ -225,7 +227,7 @@ function randomEvent()
 		elseif self.randEvent == 3 then
 			status.addEphemeralEffect("sandstorm",self.curseDuration_status)--you farted sand
 		elseif self.randEvent == 4 then
-			status.setPersistentEffects("madnessEffectsMain", {{stat = "mentalProtection", amount = status.stat("mentalProtection") + 0.5 }}) --temporary protection from madness
+			status.setPersistentEffects("madnessEffectsMain", {{stat = "mentalProtection", amount = 0.5 }}) --temporary protection from madness
 		elseif self.randEvent == 5 then
 			if player.hasCountOfItem("plantfibre") then -- consume a plant fibre, just to confuse and confound
 				player.consumeItem("plantfibre", true, false)
@@ -236,23 +238,21 @@ function randomEvent()
 end
 
 function afkFlags()
-	local flags={30,60,120}
-	local highestFlag
+	local removingflags={30,60,120}
+	for _,v in pairs(removingflags) do
+		status.setStatusProperty("fu_afk_"..v.."s",nil)
+	end
+
+	local flags={120,240,360}
 	for _,v in pairs(flags) do
 		local isAfk=self.afkTimer and (self.afkTimer >= v)
 		status.setStatusProperty("fu_afk_"..v.."s",isAfk)
-		if isAfk then highestFlag=v end
 	end
-	--statuses are defined in /stats/effects/fu_effects/fu_dummyeffects/afkdummy.
-	--they must match the AFK flag's string.
-	--they are purely indicators and have no function.
-	for _,v in pairs(flags) do
-		if v==highestFlag then
-			status.addEphemeralEffect("fu_afk_"..v.."s")
-		else
-			status.removeEphemeralEffect("fu_afk_"..v.."s")
-		end
-	end
+end
+
+-- note that this function is reused across multiple scripts. update it here, then copypaste as needed, if modifications are made
+function afkLevel()
+	return ((status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
 end
 
 function update(dt)
@@ -263,55 +263,42 @@ function update(dt)
 		local pos=entity.position()
 		if pos then
 			self.pointBox={topLeft=pos,topRight=pos,bottomLeft=pos,bottomRight=pos,left=pos,right=pos,top=pos,bottom=pos}
+			self.pointDirection={topLeft={-1,1},topRight={1,1},bottomLeft={-1,-1},bottomRight={1,-1},left={-1,0},right={1,0},top={0,1},bottom={0,-1}}
 			self.afkCheckTimer=0.0
 			self.afkTimer=0
 		end
 		afkFlags()
 	elseif self.afkCheckTimer >= 1.0 then
 		local wPos=entity.position()
-		if (self.pointBox.topLeft[1] < wPos[1]) and (self.pointBox.topLeft[2] > wPos[2]) and (world.magnitude(self.pointBox.topLeft,wPos) > 1.0) then
-			self.pointBox.topLeft=wPos
-			self.afkTimer=0
-		elseif (self.pointBox.topRight[1] > wPos[1]) and (self.pointBox.topRight[2] > wPos[2]) and (world.magnitude(self.pointBox.topRight,wPos) > 1.0) then
-			self.pointBox.topRight=wPos
-			self.afkTimer=0
-		elseif (self.pointBox.bottomLeft[1] < wPos[1]) and (self.pointBox.bottomLeft[2] < wPos[2]) and (world.magnitude(self.pointBox.bottomLeft,wPos) > 1.0) then
-			self.pointBox.bottomLeft=wPos
-			self.afkTimer=0
-		elseif (self.pointBox.bottomRight[1] > wPos[1]) and (self.pointBox.bottomRight[2] < wPos[2]) and (world.magnitude(self.pointBox.bottomRight,wPos) > 1.0) then
-			self.pointBox.bottomRight=wPos
-			self.afkTimer=0
-		elseif (self.pointBox.left[1] < wPos[1]) and (world.magnitude(self.pointBox.left,wPos) > 1.0) then
-			self.pointBox.left=wPos
-			self.afkTimer=0
-		elseif (self.pointBox.right[1] > wPos[1]) and (world.magnitude(self.pointBox.right,wPos) > 1.0) then
-			self.pointBox.right=wPos
-			self.afkTimer=0
-		elseif (self.pointBox.top[2] > wPos[2]) and (world.magnitude(self.pointBox.top,wPos) > 1.0) then
-			self.pointBox.top=wPos
-			self.afkTimer=0
-		elseif (self.pointBox.bottom[2] < wPos[2]) and (world.magnitude(self.pointBox.bottom,wPos) > 1.0) then
-			self.pointBox.bottom=wPos
-			self.afkTimer=0
-		else
-			self.afkTimer=self.afkTimer+self.afkCheckTimer
+		local afk=true
+		for direction,v in pairs(self.pointDirection) do
+			if world.magnitude(self.pointBox[direction],wPos) > 1.0 then
+				local bufferPoint={self.pointBox[direction][1],self.pointBox[direction][2]}
+				local distance=world.distance(wPos,bufferPoint)
+				if (distance[1]*v[1] >= math.abs(v[1])) and (distance[2]*v[2] >= math.abs(v[2])) then
+					afk=false
+					self.pointBox[direction]=wPos
+				end
+			end
 		end
+		if afk then self.afkTimer=self.afkTimer+self.afkCheckTimer else self.afkTimer=0.0 end
 		self.afkCheckTimer=0.0
 		afkFlags()
+		local afkLvl=afkLevel()
+		self.afkPenaltyValue=math.max(-1.0,((self.afkPenaltyValue and (afkLvl > 0) and (self.afkPenaltyValue - (afkLvl*0.001)))) or 0.0)
+		status.setPersistentEffects("madnessAFKPenalty",{{stat="mentalProtection",amount=self.afkPenaltyValue}})
 	else
 		self.afkCheckTimer=self.afkCheckTimer+dt
 	end
 
-	if not status.statusProperty("fu_afk_120s") then --can use this to only do research when not afk. supported flags are defined above update block.
-		--passive research gain
-		if status.statusProperty("fu_creationDate") then
-			self.bonus = status.stat("researchBonus") or 1
-			if self.timerCounter >= 1 then
-				player.addCurrency("fuscienceresource",1 + self.bonus)
-				self.timerCounter = 0
-			else
-				self.timerCounter = self.timerCounter + 1
-			end			
+	--passive research gain
+	if status.statusProperty("fu_creationDate") then
+		self.bonus = status.stat("researchBonus")
+		if self.timerCounter >= (1+afkLevel()) then
+			player.addCurrency("fuscienceresource",1 + self.bonus)
+			self.timerCounter = 0
+		else
+			self.timerCounter = self.timerCounter + 1
 		end
 	end
 
@@ -346,7 +333,7 @@ function update(dt)
 			self.degradeTotal = 1
 		end
 	end
-	self.timerDegrade = math.max(self.timerDegrade - dt,0.0) 
+	self.timerDegrade = math.max(self.timerDegrade - dt,0.0)
 	self.freudBonus = math.max(status.stat("freudBonus"),-0.8) -- divide by zero is bad. as this approaches -1, the timer approaches infinity. -0.5 turns the timer into 80s instead of 40s. cappin it at -0.8, which is 400s or 10x
 	--gradually reduce Madness over time
 	if (self.timerDegrade <= 0) then --no more limit to when it can degrade
@@ -379,31 +366,29 @@ end
 function checkMadnessArt()
 	local hasPainting=false
 	local greatMadnessArt={"thehuntpainting","demiurgepainting","elderhugepainting"}
-	
-	if not status.statusProperty("fu_afk_120s") then
-		for _,art in pairs(greatMadnessArt) do
-			if player.hasItem(art) then
-				player.addCurrency("fumadnessresource", 5)
-				if math.random(2) == 5 then
-				  player.radioMessage("crazycarry")
-				end
-				hasPainting=true
-				break
+	for _,art in pairs(greatMadnessArt) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource",5-afkLevel())
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
 			end
-		end
-		
-		local madnessArt={"dreamspainting","fleshpainting","homepainting","hordepainting","nightmarepainting","theexpansepainting","thefishpainting","thepalancepainting","theroompainting","thingsinthedarkpainting","elderpainting1","elderpainting2","elderpainting3","elderpainting4","elderpainting5","elderpainting6","elderpainting7","elderpainting8","elderpainting9","elderpainting10","elderpainting11"}
-		for _,art in pairs(madnessArt) do
-			if player.hasItem(art) then
-				player.addCurrency("fumadnessresource", 2)
-				if math.random(2) == 5 then
-				  player.radioMessage("crazycarry")
-				end
-				hasPainting=true
-				break
-			end
+			hasPainting=true
+			break
 		end
 	end
+
+	local madnessArt={"dreamspainting","fleshpainting","homepainting","hordepainting","nightmarepainting","theexpansepainting","thefishpainting","thepalancepainting","theroompainting","thingsinthedarkpainting","elderpainting1","elderpainting2","elderpainting3","elderpainting4","elderpainting5","elderpainting6","elderpainting7","elderpainting8","elderpainting9","elderpainting10","elderpainting11"}
+	for _,art in pairs(madnessArt) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource",2-math.min(1,afkLevel()))
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
+			end
+			hasPainting=true
+			break
+		end
+	end
+
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
 	if hasPainting then
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
@@ -411,22 +396,21 @@ function checkMadnessArt()
 end
 
 function isWeirdStuff(duration)
-	if not status.statusProperty("fu_afk_120s") then
-		local weirdStuff={"faceskin","greghead","greggnog","babyheadonastick","meatpickle"}
-		for _,art in pairs(weirdStuff) do
-			if player.hasItem(art) then
-				player.addCurrency("fumadnessresource", 2)
-				status.addEphemeralEffect("madnessfoodindicator",duration)
-				if math.random(2) == 5 then
-				  player.radioMessage("crazycarry")
-				end
-				break
+	local weirdStuff={"faceskin","greghead","greggnog","babyheadonastick","meatpickle"}
+	for _,art in pairs(weirdStuff) do
+		if player.hasItem(art) then
+			player.addCurrency("fumadnessresource", 2-math.min(1,afkLevel()))
+			status.addEphemeralEffect("madnessfoodindicator",duration)
+			if math.random(2) == 5 then
+			  player.radioMessage("crazycarry")
 			end
+			break
 		end
 	end
 end
 
 function uninit()
 	status.setPersistentEffects("madnessEffectsMain",{})
+	status.setPersistentEffects("madnessAFKPenalty",{})
 	world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
 end

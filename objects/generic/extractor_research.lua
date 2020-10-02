@@ -23,15 +23,15 @@ function init()
 	self.eMult = config.getParameter("fu_essenceMult",0.0)--this is a multiplier of the research yield, after calculation
 
 	storage.activeConsumption = storage.activeConsumption or false
-	
+
 	if object.outputNodeCount() > 0 then
 		object.setOutputNodeLevel(0,storage.activeConsumption)
 	end
-	
+
 	if self.light then
 		object.setLightColor({0, 0, 0, 0})
 	end
-	
+
 	message.setHandler("paneOpened", paneOpened)
 	message.setHandler("paneClosed", paneClosed)
 	message.setHandler("getStatus", getStatus)
@@ -57,7 +57,7 @@ function update(dt)
 			end
 			storage.output=nil
 			storage.input = nil
-			
+
 			craftingState(false)
 		else
 			local items=world.containerItems(entity.id())
@@ -66,14 +66,20 @@ function update(dt)
 				craftingState(false)
 			else
 				local itemData=root.itemConfig(items[1])
-				
+
 				local itemMaterial=(itemData.parameters and itemData.parameters.materialId) or (itemData.config and itemData.config.materialId)
 				local itemLiquid=(itemData.parameters and itemData.parameters.liquid) or (itemData.config and itemData.config.liquid)
-				if itemMaterial or itemLiquid then
+
+				itemData={price=(itemData.parameters and itemData.parameters.price) or (itemData.config and itemData.config.price) or 0,rarity=string.lower((itemData.parameters and itemData.parameters.rarity) or (itemData.config and itemData.config.rarity) or "common")}
+				itemData.rarityMult=rarityMult[itemData.rarity] or rarityMult["common"]
+
+				local rVal=self.rMult*itemData.price*(itemData.rarityMult)
+
+				if itemMaterial or itemLiquid or (rVal<1) then
 					craftingState(false)
 					return
 				end
-				
+
 				if not world.containerConsumeAt(entity.id(),0,1) then--this should never return
 					return
 				else
@@ -81,16 +87,13 @@ function update(dt)
 					item.count=1
 					storage.input=item
 				end
-				
-				itemData={price=(itemData.parameters and itemData.parameters.price) or (itemData.config and itemData.config.price) or 0,rarity=string.lower((itemData.parameters and itemData.parameters.rarity) or (itemData.config and itemData.config.rarity) or "common")}
-				itemData.rarityMult=rarityMult[itemData.rarity] or rarityMult["common"]
-				local rVal=self.rMult*itemData.price*(itemData.rarityMult)
-				local timerValue=((rVal<=1.0) and 0.1 or 1.0) * storage.timerMod * itemData.rarityMult
+
+				local timerValue=storage.timerMod * itemData.rarityMult
 				local eVal=rVal*self.eMult
-				rVal=math.max(math.floor(rVal),1)
+				rVal=math.floor(rVal)
 				eVal=math.floor(eVal)
 				storage.output={research=rVal,essence=eVal}
-				
+
 				craftingState(true,timerValue)
 			end
 		end
