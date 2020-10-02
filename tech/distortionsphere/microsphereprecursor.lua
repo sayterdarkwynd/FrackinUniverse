@@ -5,9 +5,9 @@ require "/scripts/status.lua"
 
 function init()
   initCommonParameters()
-  
+
   self.energyCost = config.getParameter("energyCost")
-  
+
   self.ignorePlatforms = config.getParameter("ignorePlatforms")
   self.damageDisableTime = config.getParameter("damageDisableTime")
   self.damageDisableTimer = 0
@@ -30,7 +30,7 @@ function init()
     end
   end)
   self.pressDown = false
-  self.bombTimer = 0  
+  self.bombTimer = 0
 end
 
 function update(args)
@@ -41,7 +41,7 @@ function update(args)
   end
   self.specialLast = args.moves["special1"]
   self.pressDown = args.moves["primaryFire"]
-  
+
   if not args.moves["special1"] then
     self.forceTimer = nil
   end
@@ -55,16 +55,16 @@ function update(args)
       if self.bombTimer > 0 then
         self.bombTimer = math.max(0, self.bombTimer - args.dt)
       end
-    if self.pressDown and self.bombTimer == 0 and status.overConsumeResource("energy", self.energyCost) then 
+    if self.pressDown and self.bombTimer == 0 and status.overConsumeResource("energy", self.energyCost) then
       self.bombTimer = 1.5
-      self.bombbonus = 1 + (status.stat("bombtechBonus") or 0)  
+      self.bombbonus = 1 + status.stat("bombtechBonus")
       local configBombDrop = { power = (status.stat("maxEnergy")/3.5) * self.bombbonus }
       local configBombDrop2 = { power = 0 }
       animator.playSound("bombdrop")
       world.spawnProjectile("shieldBashStunProjectile", mcontroller.position(), entity.id(), {0, 1}, false, configBombDrop2)
       world.spawnProjectile("fungravityexplosionprecursor", mcontroller.position(), entity.id(), {0, 1}, false, configBombDrop)
     end
-    
+
     local groundDirection
     if self.damageDisableTimer == 0 then
       groundDirection = findGroundDirection()

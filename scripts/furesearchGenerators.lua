@@ -1,5 +1,5 @@
 function checkResearchBonus()
-  self.researchBonus = status.stat("researchBonus") or 0
+  self.researchBonus = status.stat("researchBonus")
   self.randomChanceResearch = math.random(1000) - self.researchBonus
   if self.randomChanceResearch < 1 then
       world.spawnItem("fuscienceresource",mcontroller.position(),math.random(30))
