@@ -13,11 +13,11 @@ function init()
 end
 
 function setEffectTime()
-  return self.tickTimer * math.min(1 - status.stat("poisonResistance",0), 0.45)
+  return self.tickTimer * math.min(1 - status.stat("poisonResistance"), 0.45)
 end
 
 function update(dt)
-  if ( status.stat("poisonResistance",0)  >= 0.4 ) then
+  if ( status.stat("poisonResistance")  >= 0.4 ) then
     effect.expire()
   end
 

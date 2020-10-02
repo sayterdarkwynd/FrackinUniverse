@@ -49,18 +49,18 @@ function update(args)
 
     updateAngularVelocity(args.dt)
     updateRotationFrame(args.dt)
-    
+
     if self.bombTimer > 0 then
       self.bombTimer = math.max(0, self.bombTimer - args.dt)
     end
     if self.pressDown and self.bombTimer == 0 and status.overConsumeResource("energy", 45) then
 	      self.bombTimer = 1.1
-	      self.bombbonus = (status.stat("bombtechBonus") or 1)
+	      self.bombbonus = status.stat("bombtechBonus")
 	      local configBombDrop = { power = 15 * self.bombbonus }
 	      animator.playSound("bombdrop")
 	      world.spawnProjectile("distortionbomb", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
     end
-    
+
     checkForceDeactivate(args.dt)
   end
 

@@ -94,7 +94,7 @@ function update(dt)
 			if object.outputNodeCount() > 0 then
 				object.setOutputNodeLevel(0,true)
 			end
-			animator.setAnimationState("samplingarrayanim", "working")
+            animator.setAnimationState("screen", "on")
 		
 			world.containerAddItems(entity.id(), output)
 			hasPower = 1
@@ -102,7 +102,7 @@ function update(dt)
 			if object.outputNodeCount() > 0 then
 				object.setOutputNodeLevel(0,false)
 			end
-			animator.setAnimationState("samplingarrayanim", "idle")
+			animator.setAnimationState("screen", "off")
 			hasPower = 0
 		end
 		storage.timer=0
