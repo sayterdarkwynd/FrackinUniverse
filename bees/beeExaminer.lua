@@ -25,6 +25,7 @@ function init()
 	futureItem = nil
 	bonusEssence=0
 	bonusResearch=0
+    bonusProtheon=0
 
 	message.setHandler("paneOpened", paneOpened)
 	message.setHandler("paneClosed", paneClosed)
@@ -45,6 +46,7 @@ end
 function resetStats()
 	bonusEssence=0
 	bonusResearch=0
+	bonusProtheon=0
 	itemsDropped=false
 	progress=0
 	futureItem=nil
@@ -136,11 +138,19 @@ function update(dt)
 						if bonusResearch>0 then
 							shoveItem({name="fuscienceresource",count=bonusResearch},1)
 						end
-						if bonusEssence>0 then
-							shoveItem({name="essence",count=bonusEssence},2)
+						if isArtifact then
+							if bonusEssence>0 then
+								shoveItem({name="essence",count=bonusEssence},2)
+							end
 						end
+						if isArtifact then
+							if bonusProtheon>0 then
+								shoveItem({name="fuprecursorresource",count=bonusProtheon},2)
+							end								
+						end					
 						bonusEssence=0
 						bonusResearch=0
+						bonusProtheon=0
 						progress = 0
 
 						if isQueen then
@@ -170,11 +180,11 @@ function update(dt)
 						if randCheck == 1 then
 							local bonusValue=0
 							if isQueen then
-								bonusValue=5
+								bonusValue=3
 							elseif isDrone then
-								bonusValue=2
+								bonusValue=0
 							elseif isArtifact then
-								bonusValue=25
+								bonusValue=75
 							elseif isGeode then
 								bonusValue=5
 							end
@@ -188,6 +198,7 @@ function update(dt)
 								bonusValue=1
 							end
 							bonusEssence=bonusEssence+((1+rank)*currentItem.count)
+							bonusProtheon=bonusProtheon+((1+rank)*currentItem.count)
 						end
 					end
 				end
