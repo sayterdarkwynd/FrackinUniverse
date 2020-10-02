@@ -1,44 +1,46 @@
 function init()
-	self.applyToTypes = {"player", "npc"}
-	self.baseValue = config.getParameter("baseValue")
-	self.valBonus = config.getParameter("valBonus") - ((config.getParameter("mentalProtection") or 0) * 10)
+	script.setUpdateDelta(3)
+	self.baseValue = config.getParameter("baseValue",0)
+	self.valBonus = config.getParameter("valBonus",0)
+
 	self.timer = 10
+
 	animator.setParticleEmitterOffsetRegion("insane", mcontroller.boundBox())
 	animator.setParticleEmitterEmissionRate("insane", config.getParameter("emissionRate", 3))
 	animator.setParticleEmitterActive("insane", true)
 	activateVisualEffects()
 
-	effect.addStatModifierGroup({{stat = "madnessModifier", amount = status.stat("madnessModifier") * 1.25}})
+	baseHandler=effect.addStatModifierGroup({{stat = "madnessModifier", amount = 1.25}})
 
-	script.setUpdateDelta(3)
+	penaltyHandler=effect.addStatModifierGroup({})
+	self.penaltyAmount=0.0
+	self.penaltyRate=0.01 -- -1% shadow resistance per second
 end
 
-function allowedType()
-	local entityType = entity.entityType()
-	for _,applyType in ipairs(self.applyToTypes) do
-		if entityType == applyType then
-			return true
-		end
-	end
-end
 
 function update(dt)
 	if world.getProperty("invinciblePlayers") or status.statPositive("invulnerable") or (entity.entityType() ~= "player") then
 		return
 	end
+
 	self.timer = self.timer - dt
 	if (self.timer <= 0) then
-		if not status.statusProperty("fu_afk_30s") then
-			self.healthDamage = ((math.max(1.0 - status.stat("mentalProtection"),0))*10) + status.stat("madnessModifier")
-			self.timer = 30
-			self.totalValue = self.baseValue + self.valBonus + math.random(1,6)
-			if (math.abs(mcontroller.xVelocity()) < 5) and (math.abs(mcontroller.yVelocity()) < 5) then
-				world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
-				animator.playSound("madness")
-				activateVisualEffects()
-				status.applySelfDamageRequest({damageType = "IgnoresDef",damage = self.healthDamage,damageSourceKind = "shadow",sourceEntityId = entity.id()})
-			end
+		self.healthDamage = ((math.max(1.0 - status.stat("mentalProtection"),0))*10) + status.stat("madnessModifier")
+		self.timer = 30
+		self.totalValue = self.baseValue + self.valBonus + math.random(1,6-afkLevel())
+		if (math.abs(mcontroller.xVelocity()) < 5) and (math.abs(mcontroller.yVelocity()) < 5) then
+			world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
+			animator.playSound("madness")
+			activateVisualEffects()
+			status.applySelfDamageRequest({damageType = "IgnoresDef",damage = self.healthDamage,damageSourceKind = "shadow",sourceEntityId = entity.id()})
 		end
+	end
+
+	self.penaltyTimer = (self.penaltyTimer or 0.0) + dt
+	if self.penaltyTimer >= 1 then
+		self.penaltyAmount=self.penaltyAmount-(self.penaltyRate*self.penaltyTimer)
+		status.setStatModifierGroup(penaltyHandler,{{stat = "shadowResistance", amount = self.penaltyAmount}})
+		self.penaltyTimer=0.0
 	end
 end
 
@@ -50,4 +52,13 @@ function activateVisualEffects()
 		animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
 		animator.burstParticleEmitter("statustext")
 	end
+end
+
+function uninit()
+	status.removeStatModifierGroup(penaltyHandler)
+	status.removeStatModifierGroup(baseHandler)
+end
+
+function afkLevel()
+	return ((status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
 end
