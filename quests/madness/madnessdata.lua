@@ -4,7 +4,6 @@ require "/scripts/vec2.lua"
 -- ideas for additional Research gain
 
 --planet based:
--- be sure to check for it being a terrestrial world, then we dont need to worry about shipworlds
 -- distance travelled on a given biome equates to a direct bonus to research output
 --more dangerous ocean types return more research as well. use world.oceanLevel(postiion) and then check liquid type and apply bonus?
 -- check object type using world.objectAt(tilePosition). if its a Laptop/Computer, apply a small research bonus so long as youre nearby
@@ -15,13 +14,12 @@ require "/scripts/vec2.lua"
 function init()
 	-- passive research gain
 	self.threatBonus=0
-	self.tricorderEquipped = 0
 	self.madnessResearchBonus = 0
 	self.researchBonus = 0
 	self.researchCount = player.currency("fuscienceresource") or 0
 	self.baseVal = config.getParameter("baseValue") or 1
     self.timerCounter = 0
-    self.environmentTimer = 300 -- how long players get environment bonuses to Research. default is 5 mins
+    self.environmentTimer = 0 
 
 	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
@@ -311,21 +309,22 @@ function update(dt)
 	--passive research gain
 	if status.statusProperty("fu_creationDate") then
 		self.threatBonus=0
-		self.tricorderEquipped = 0
 		self.madnessResearchBonus = 0
 		self.researchBonus = 0
 		
 		--is the world a higher threat level? if so, apply a bonus to research gain for 5 minutes
 		if world.threatLevel() > 1 then
-		  if self.environmentTimer > 0 then
+		  if self.environmentTimer > 300 then
 			  self.threatBonus = world.threatLevel() / 2
 			  if self.threatBonus < 2 then   -- make sure its not giving too high a bonus, to a max of +3
 			  	self.threatBonus = 1
 			  elseif self.threatBonus > 3 then
 			  	self.threatBonus = 3
+			  elseif self.threatBonus > 6 and self.environmentTimer > 1500 then
+			  	self.threatBonus = 4			  	
 			  end		
 		  end
-		  self.environmentTimer = self.environmentTimer - 1	
+		  self.environmentTimer = self.environmentTimer + 1	
 	    end
 		-- how crazy are we?
 		if player.currency("fumadnessresource") then
@@ -335,7 +334,7 @@ function update(dt)
 			end
 		end
 	    -- apply the total
-		self.researchBonus = self.threatBonus + self.madnessResearchBonus + self.tricorderEquipped
+		self.researchBonus = self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLevel()) then
