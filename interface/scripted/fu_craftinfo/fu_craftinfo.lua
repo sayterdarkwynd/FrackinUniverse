@@ -87,6 +87,7 @@ function init()
 		"woodencentrifuge",
 		"isn_powdersifter",
 		"fu_woodensifter",
+		"fu_rockcrusher",
 		"isn_arcsmelter",
 		"fu_blastfurnace",
 		"fu_liquidmixer",
@@ -105,6 +106,7 @@ function init()
 		["woodencentrifuge"] = true,
 		["isn_powdersifter"] = true,
 		["fu_woodensifter"] = true,
+		["fu_rockcrusher"] = true,
 		["isn_arcsmelter"] = true,
 		["fu_blastfurnace"] = true,
 		["fu_liquidmixer"] = true,
@@ -139,6 +141,8 @@ function init()
 		processObjects["isn_powdersifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["fu_woodensifter"] then
 		processObjects["fu_woodensifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["fu_rockcrusher"] then
+		processObjects["fu_rockcrusher"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["isn_arcsmelter"] then
 		processObjects["isn_arcsmelter"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter } end
 	if found["fu_blastfurnace"] then

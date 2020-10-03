@@ -5,8 +5,18 @@ local statusList={--progress status doesnt matter, but for any other status indi
 	queenID="^green;Queen identified",
 	droneID="^green;Drone identified",
 	artifactID="^green;Artifact identified",
+	artifactProtheonID="^green;Artifact identified",
 	geodeID="^green;Artifact identified",
 	invalid="^red;Invalid sample detected"
+}
+
+local tagList={
+	--FORMAT: <itemTag>={range=<math.rand max>,currencies={<currency variable name 1>=<bonusValue>,...},<optional override parameter>
+	queen={range=25,currencies={bonusResearch=3}},
+	youngQueen={range=25,currencies={bonusResearch=3}},
+	drone={range=100,currencies={bonusResearch=0}},
+	geode={range=15,currencies={bonusResearch=5,bonusEssence=1},overrideCategory="geodeResearched"},
+	artifact={range=9,currencies={bonusResearch=75,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"}
 }
 
 function init()
@@ -15,16 +25,26 @@ function init()
 	shoveTimer = 0.0
 
 	defaultMaxStack=root.assetJson("/items/defaultParameters.config").defaultMaxStack
-	rank=config.getParameter("rank",0)
 	defaultDelta=config.getParameter("scriptDelta")
+	
+	microscopeRank=config.getParameter("microscopeRank",0) -- currently not defined on microscopes, so does nothing
 
 	playerWorkingEfficiency = nil
 	selfWorkingEfficiency = nil
 	status = statusList.waiting
 	progress = 0
 	futureItem = nil
+	
 	bonusEssence=0
 	bonusResearch=0
+    bonusProtheon=0
+	
+	--these are declared here, but can be moved to object parameters later as needed
+	self.inputSlot=0
+	self.outputSlot=4
+	self.researchSlot=1
+	self.essenceSlot=2
+	self.protheonSlot=3
 
 	message.setHandler("paneOpened", paneOpened)
 	message.setHandler("paneClosed", paneClosed)
@@ -33,18 +53,27 @@ function init()
 	playerWorkingEfficiency = config.getParameter("playerWorkingEfficiency")
 	selfWorkingEfficiency = config.getParameter("selfWorkingEfficiency")
 	selfWorking = config.getParameter("selfWorking")
+	math.randomseed(util.seedTime())
 end
 
-function checkTags(item,tagList)
-	for _,tag in pairs(tagList) do
-		if root.itemHasTag(item,tag) then return true end
+function checkTags(item)
+	if (not item) or (not item.itemTags) then return end
+	local buffer=nil
+	for tag,values in pairs(tagList) do
+		for _,t in pairs(item.itemTags) do
+			if t==tag then
+				buffer=tag
+				break
+			end
+		end
 	end
-	return false
+	return buffer
 end
 
 function resetStats()
 	bonusEssence=0
 	bonusResearch=0
+	bonusProtheon=0
 	itemsDropped=false
 	progress=0
 	futureItem=nil
@@ -52,15 +81,17 @@ end
 
 function update(dt)
 	if playerUsing or selfWorking then
-		local currentItem = world.containerItemAt(entity.id(), 0)
-
+		local currentItem = world.containerItemAt(entity.id(), self.inputSlot)
+		local currentItemParameters=currentItem and mergedParams(root.itemConfig(currentItem))
+		local lastTag=checkTags(currentItemParameters)
+		
 		if currentItem == nil then
 			status = statusList.waiting
 		elseif (futureItem and ((futureItem.name~=currentItem.name) or (futureItem.count~=currentItem.count))) then
 			--no hot-swapping exploit allowed
 			status = statusList.waiting
 			resetStats()
-		elseif (not ( checkTags(currentItem.name, {"queen","youngQueen","drone","geode","artifact"}) )) then
+		elseif not lastTag then
 			status = statusList.invalid
 			resetStats()
 		elseif futureItem and (currentItem.parameters.genome and futureItem.parameters.genome and (currentItem.parameters.genome~=futureItem.parameters.genome)) then
@@ -69,38 +100,26 @@ function update(dt)
 			resetStats()
 		else
 			if not futureItem then futureItem=currentItem end
-			local isQueen=root.itemHasTag(futureItem.name, "queen") or root.itemHasTag(futureItem.name, "youngQueen")
-			local isDrone=root.itemHasTag(futureItem.name, "drone")
-			local isArtifact=root.itemHasTag(futureItem.name, "artifact")
-			local isGeode=root.itemHasTag(futureItem.name, "geode")
 
-			if isQueen or isDrone or isArtifact or isGeode then
+			if lastTag then
 				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
-					if isQueen then
-						status = statusList.queenID
-					elseif isDrone then
-						status = statusList.droneID
-					elseif isArtifact then
-						status = statusList.artifactID
-					elseif isGeode then
-						status = statusList.geodeID
-					end
+					status=statusList[lastTag.."ID"]
 
 					shoveTimer=(shoveTimer or 0.0) + dt
 					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
 					local singleCountFutureItem=copy(futureItem)
 					singleCountFutureItem.count=1
 
-					local slotItem=world.containerItemAt(entity.id(),3)
+					local slotItem=world.containerItemAt(entity.id(),self.outputSlot)
 					local singleCountSlotItem=slotItem and copy(slotItem)
 					if singleCountSlotItem then
 						singleCountSlotItem.count=1
 					end
 
 					if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
-					if not nudgeItem(futureItem,3,slotItem) then return end
+					if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
 
-					world.containerTakeAt(entity.id(), 0)
+					world.containerTakeAt(entity.id(), self.inputSlot)
 					futureItem=nil
 					currentItem=nil
 				else
@@ -114,80 +133,57 @@ function update(dt)
 					if progress >= 100 then
 						status = "^cyan;"..progress.."%"
 
-						if isArtifact then futureItem.parameters.category = "^cyan;Researched Artifact^reset;" end
-						if isGeode then futureItem.parameters.category = "^cyan;Researched Geode^reset;" end
+						if tagList[lastTag].overrideCategory then futureItem.parameters.category = tagList[lastTag].overrideCategory end
 						futureItem.parameters.genomeInspected = true
 
 						local singleCountFutureItem=copy(futureItem)
 						singleCountFutureItem.count=1
 
-						local slotItem=world.containerItemAt(entity.id(),3)
+						local slotItem=world.containerItemAt(entity.id(),self.outputSlot)
 						local singleCountSlotItem=slotItem and copy(slotItem)
 						if singleCountSlotItem then
 							singleCountSlotItem.count=1
 						end
 
 						if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
-						if not nudgeItem(futureItem,3,slotItem) then return end
+						if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
 
-						world.containerTakeAt(entity.id(), 0)
+						world.containerTakeAt(entity.id(), self.inputSlot)
 						futureItem=nil
 						currentItem=nil
 						if bonusResearch>0 then
-							shoveItem({name="fuscienceresource",count=bonusResearch},1)
+							shoveItem({name="fuscienceresource",count=bonusResearch},self.researchSlot)
 						end
 						if bonusEssence>0 then
-							shoveItem({name="essence",count=bonusEssence},2)
+							shoveItem({name="essence",count=bonusEssence},self.essenceSlot)
+						end
+						if bonusProtheon>0 then
+							shoveItem({name="fuprecursorresource",count=bonusProtheon},self.protheonSlot)
 						end
 						bonusEssence=0
 						bonusResearch=0
+						bonusProtheon=0
 						progress = 0
 
-						if isQueen then
-							status = statusList.queenID
-						elseif isDrone then
-							status = statusList.droneID
-						elseif isArtifact then
-							status = statusList.artifactID
-						elseif isGeode then
-							status = statusList.geodeID
-						end
+						status=statusList[lastTag.."ID"]
 
 						itemsDropped=true
 					else
 						status = "^cyan;"..progress.."%"
-						-- ***** chance to gain research *****
+						-- ***** chance to gain currencies *****
 						local randCheck = 0
-						if isQueen then
-							randCheck=math.random(25)
-						elseif isDrone then
-							randCheck=math.random(100)
-						elseif isArtifact then
-							randCheck=math.random(10)
-						elseif isGeode then
-							randCheck=math.random(15)
-						end
-						if randCheck == 1 then
-							local bonusValue=0
-							if isQueen then
-								bonusValue=5
-							elseif isDrone then
-								bonusValue=2
-							elseif isArtifact then
-								bonusValue=25
-							elseif isGeode then
-								bonusValue=5
-							end
-							bonusResearch=bonusResearch+((bonusValue+rank)*currentItem.count) -- Gain research as this is used
-						elseif randCheck == 2 then
-							local bonusValue=0
-							if isArtifact then
-								bonusValue=1
-							end
-							if isGeode then
-								bonusValue=1
-							end
-							bonusEssence=bonusEssence+((1+rank)*currentItem.count)
+						randCheck=math.random(tagList[lastTag].range or 100)
+						local rank=(currentItemParameters.rank or 0)
+						--prev., the 'rank' parameter on the items did nothing, might need rebalancing
+						--also, config.getParameter gets info from the calling object. if you're reading this: whoever used this function to try to get rank off ITEMS needs a catfish shoved down their pants.
+						--near the start of update is a currentItemPArameters declaration to use.
+						
+						if (randCheck == self.researchSlot) and (tagList[lastTag].currencies.bonusResearch) then
+							bonusResearch=bonusResearch+((tagList[lastTag].currencies.bonusResearch+rank+microscopeRank)*currentItem.count) -- Gain research as this is used
+						elseif (randCheck == self.essenceSlot) and (tagList[lastTag].currencies.bonusEssence) then
+							bonusEssence=bonusEssence+((tagList[lastTag].currencies.bonusEssence+rank+microscopeRank)*currentItem.count) -- Gain essence as this is used
+						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusProtheon) then
+							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+rank+microscopeRank)*currentItem.count) -- Gain protheon as this is used
 						end
 					end
 				end
@@ -227,7 +223,7 @@ function nudgeItem(item,slot,slotItem)
 
 	local slotItemConfig=slotItem and root.itemConfig(slotItem)
 	if slotItemConfig then
-		slotItemConfig=util.mergeTable(slotItemConfig.config,slotItemConfig.parameters)
+		slotItemConfig=mergedParams(slotItemConfig)
 		slotItemConfig=slotItemConfig.maxStack or defaultMaxStack
 	end
 
@@ -235,6 +231,12 @@ function nudgeItem(item,slot,slotItem)
 
 	world.containerPutItemsAt(entity.id(),item,slot)
 	return true
+end
+
+function mergedParams(item)
+	if not item or not item.config then return end
+	if item.config and not item.parameters then return item.config end
+	return util.mergeTable(item.config,item.parameters)
 end
 
 function paneOpened()
