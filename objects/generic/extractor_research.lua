@@ -1,5 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
+require "/scripts/fupower.lua"
 
 local deltaTime=0
 local rarityMult={common=1.0, uncommon=1.15, rare=1.25, legendary=1.50,essential=1.50}
@@ -60,8 +61,12 @@ function update(dt)
 
 			craftingState(false)
 		else
+			if self.errorCooldown and self.errorCooldown > 0.0 then
+				self.errorCooldown=self.errorCooldown - dt
+				return
+			end
 			local items=world.containerItems(entity.id())
-			if (not items[1]) then
+			if (not items) or (not items[1]) then
 				--animator.setAnimationState("samplingarrayanim", "idle")
 				craftingState(false)
 			else
@@ -69,29 +74,60 @@ function update(dt)
 
 				local itemMaterial=(itemData.parameters and itemData.parameters.materialId) or (itemData.config and itemData.config.materialId)
 				local itemLiquid=(itemData.parameters and itemData.parameters.liquid) or (itemData.config and itemData.config.liquid)
-
+				local itemContainer=((itemData.parameters and itemData.parameters.objectType) or (itemData.config and itemData.config.objectType)) == "container"
 				itemData={price=(itemData.parameters and itemData.parameters.price) or (itemData.config and itemData.config.price) or 0,rarity=string.lower((itemData.parameters and itemData.parameters.rarity) or (itemData.config and itemData.config.rarity) or "common")}
 				itemData.rarityMult=rarityMult[itemData.rarity] or rarityMult["common"]
-
-				local rVal=self.rMult*itemData.price*(itemData.rarityMult)
-
-				if itemMaterial or itemLiquid or (rVal<1) then
+				
+				if itemMaterial or itemLiquid or itemContainer then
 					craftingState(false)
 					return
 				end
+				
+				local rVal=self.rMult*itemData.price*(itemData.rarityMult)
+				local count=1
+				
+				if rVal == 0.0 then
+					count=1000
+					rVal=self.rMult*100.0*(itemData.rarityMult)
+					if rVal==0.0 then
+						craftingState(false)
+						return
+					elseif rVal < 1.0 then
+						count=math.ceil(count/rVal)
+						rVal=1.0
+					elseif rVal > 1.0 then
+						count=math.ceil(count/rVal)
+						rVal=1.0
+					end
+				elseif rVal < 1 then
+					count=math.ceil(1/rVal)
+					rVal=rVal*count
+				end
+				
+				local eVal=rVal*self.eMult
+				rVal=math.floor(rVal)
+				eVal=math.floor(eVal)
 
-				if not world.containerConsumeAt(entity.id(),0,1) then--this should never return
+				local powerConversion=math.max(rVal/10.0,1)
+				powerConversion=math.floor(powerConversion)
+				
+				if (powered and not power.consume(powerConversion)) then
+					self.errorCooldown = 2.0
+					self.errorString="^red;Need power: "..powerConversion
+					craftingState(false)
+					return
+				elseif (not world.containerConsumeAt(entity.id(),0,count)) then
+					self.errorCooldown = 2.0
+					self.errorString="^red;Insufficient, need: "..count
+					craftingState(false)
 					return
 				else
 					local item=items[1]
-					item.count=1
+					item.count=count
 					storage.input=item
 				end
 
 				local timerValue=storage.timerMod * itemData.rarityMult
-				local eVal=rVal*self.eMult
-				rVal=math.floor(rVal)
-				eVal=math.floor(eVal)
 				storage.output={research=rVal,essence=eVal}
 
 				craftingState(true,timerValue)
@@ -154,5 +190,5 @@ function getStatus()
 		--	return "^cyan;Meow."
 		--end
 	--end
-	return ((storage.input) and "^green;Scanning...") or ("^yellow;Waiting for subject...")
+	return (self.errorCooldown and (self.errorCooldown>0) and self.errorString) or ((storage.input) and "^green;Scanning...") or ("^yellow;Waiting for subject...")
 end
