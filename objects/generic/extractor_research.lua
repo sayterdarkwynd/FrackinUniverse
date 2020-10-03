@@ -108,7 +108,7 @@ function update(dt)
 				rVal=math.floor(rVal)
 				eVal=math.floor(eVal)
 
-				local powerConversion=math.max(rVal/10.0,1)
+				local powerConversion=math.max(rVal,1)
 				powerConversion=math.floor(powerConversion)
 				
 				if (powered and not power.consume(powerConversion)) then
