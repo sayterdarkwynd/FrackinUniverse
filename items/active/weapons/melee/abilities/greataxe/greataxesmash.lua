@@ -12,7 +12,7 @@ function HammerSmash:init()
 
 	self.timerHammer = 0 --for hammer crit/stun bonus (FU)
 	self.overCharged = 0 -- overcharged default
-	self.hammerMastery = 1 + status.stat("hammerMastery") or 0 -- new stat for applying bonuses to hammer functions
+	self.hammerMastery = 1 + status.stat("hammerMastery") -- new stat for applying bonuses to hammer functions
 
 	MeleeSlash.init(self)
 	self:setupInterpolation()
@@ -48,7 +48,7 @@ function HammerSmash:windup(windupProgress)
 	--**************************************
 
 			-- increase "charge" the longer it is held. cannot pass 100.
-			self.bombbonus = (status.stat("bombtechBonus") or 1)
+			self.bombbonus = status.stat("bombtechBonus")
 			mcontroller.controlModifiers({speedModifier = 0.7 + (self.bombbonus/10)}) --slow down when charging
 
 			if self.lowEnergy or (self.timerHammer >=100) then --if we havent overcharged but hit 100 bonus, overcharge and reset
@@ -158,8 +158,8 @@ function HammerSmash:fire()
 						animator.playSound("groundImpact")
 					end
 					if self.timerHammer > 75 and self.timerHammer < 101 then
-						self.bombbonus = (status.stat("bombtechBonus") or 1)
-						self.hammerMasteryCheck = (status.stat("hammerMastery") or 0)
+						self.bombbonus = status.stat("bombtechBonus")
+						self.hammerMasteryCheck = status.stat("hammerMastery")
 						local primaryStrike = { power = (self.timerHammer / 4) * self.bombbonus}
 						local secondaryStrike = { power = 0 + self.bombbonus}
 						world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+2,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, primaryStrike)
