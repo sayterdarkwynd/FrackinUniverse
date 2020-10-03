@@ -3,6 +3,7 @@ require "/scripts/util.lua"
 local statusList={--progress status doesnt matter, but for any other status indicators, this should be used. it's used for the item network variant to determine completion state
 	waiting="^yellow;Waiting for subject...",
 	queenID="^green;Queen identified",
+	youngQueenID="^green;Larva identified",
 	droneID="^green;Drone identified",
 	artifactID="^green;Artifact identified",
 	artifactProtheonID="^green;Artifact identified",
