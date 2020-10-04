@@ -2,6 +2,7 @@ require("/quests/scripts/portraits.lua")
 require("/quests/scripts/questutil.lua")
 
 function init()
+  self.hasPickaxe = 0
   setPortraits()
   setStage(1)
   message.setHandler("fu_completeTutorial", function()
@@ -42,7 +43,10 @@ function setStage(newStage)
 	      player.radioMessage("fu_start_greetings2", 1)  
         player.radioMessage("fu_start_greetingspickaxe", 1) 
         quest.setObjectiveList({{config.getParameter("descriptions.makeFurnace"), false}})
-        player.giveItem("pickaxe")       
+        if self.hasPickaxe == 0 then
+          player.giveItem("pickaxe")  
+          self.hasPickaxe = 1
+        end        
     elseif newStage == 2 then
         player.radioMessage("fu_start_makeFurnace", 1)
         quest.setObjectiveList({{config.getParameter("descriptions.makeForaging"), false}})
