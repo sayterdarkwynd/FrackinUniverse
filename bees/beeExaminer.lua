@@ -3,8 +3,10 @@ require "/scripts/util.lua"
 local statusList={--progress status doesnt matter, but for any other status indicators, this should be used. it's used for the item network variant to determine completion state
 	waiting="^yellow;Waiting for subject...",
 	queenID="^green;Queen identified",
+	youngQueenID="^green;Larva identified",
 	droneID="^green;Drone identified",
 	artifactID="^green;Artifact identified",
+	artifactElderID="^green;Artifact identified",
 	artifactProtheonID="^green;Artifact identified",
 	geodeID="^green;Artifact identified",
 	invalid="^red;Invalid sample detected"
@@ -16,7 +18,8 @@ local tagList={
 	youngQueen={range=25,currencies={bonusResearch=3}},
 	drone={range=100,currencies={bonusResearch=0}},
 	geode={range=15,currencies={bonusResearch=5,bonusEssence=1},overrideCategory="geodeResearched"},
-	artifact={range=9,currencies={bonusResearch=75,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"}
+	artifact={range=9,currencies={bonusResearch=75,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"},
+	artifactElder={range=9,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"}
 }
 
 function init()
@@ -175,8 +178,8 @@ function update(dt)
 						randCheck=math.random(tagList[lastTag].range or 100)
 						local rank=(currentItemParameters.rank or 0)
 						--prev., the 'rank' parameter on the items did nothing, might need rebalancing
-						--also, config.getParameter gets info from the calling object. if you're reading this: whoever used this function to try to get rank off ITEMS needs a catfish shoved down their pants.
-						--near the start of update is a currentItemPArameters declaration to use.
+						--also, config.getParameter gets info from the calling object. 
+						--near the start of update is a currentItemParameters declaration to use.
 						
 						if (randCheck == self.researchSlot) and (tagList[lastTag].currencies.bonusResearch) then
 							bonusResearch=bonusResearch+((tagList[lastTag].currencies.bonusResearch+rank+microscopeRank)*currentItem.count) -- Gain research as this is used

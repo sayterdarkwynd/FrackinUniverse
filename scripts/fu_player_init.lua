@@ -95,6 +95,8 @@ function uninit(...)
 	if origUninit then
 		origUninit(...)
 	end
+	
+	status.setPersistentEffects("flightpower",{})--this should be removed after a month.
 end
 
 

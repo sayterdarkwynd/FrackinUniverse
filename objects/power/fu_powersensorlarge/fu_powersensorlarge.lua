@@ -2,7 +2,7 @@ require'/scripts/fupower.lua'
 
 function update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
-  local powerLevel = tostring(math.floor(power.getTotalEnergy()))
+  local powerLevel = tostring(math.floor(power.getTotalEnergyNoBattery()))
   ---sb.logInfo("PSRD: powerLevel is " .. powerLevel)
   if #powerLevel < 3 then
     powerLevel = string.rep('0',3-#powerLevel)..powerLevel

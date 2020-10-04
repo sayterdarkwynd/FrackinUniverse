@@ -1,11 +1,25 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 
+-- ideas for additional Research gain
+
+--planet based:
+-- distance travelled on a given biome equates to a direct bonus to research output
+--more dangerous ocean types return more research as well. use world.oceanLevel(postiion) and then check liquid type and apply bonus?
+-- check object type using world.objectAt(tilePosition). if its a Laptop/Computer, apply a small research bonus so long as youre nearby
+-- Scientist tenants that give Research ?
+-- certain dungeons might return different bonus rates
+
+
 function init()
 	-- passive research gain
+	self.threatBonus=0
+	self.madnessResearchBonus = 0
+	self.researchBonus = 0
 	self.researchCount = player.currency("fuscienceresource") or 0
 	self.baseVal = config.getParameter("baseValue") or 1
     self.timerCounter = 0
+    self.environmentTimer = 0 
 
 	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
@@ -259,6 +273,7 @@ function update(dt)
 	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.
 	--if the player doesn't move enough, a timer will increment. once that timer gets over a certain point, the player is flagged as afk via status property, which is global and thus we only need this code running in one place.
 	--afk timer and recorded points are reset when the script resets.
+
 	if not self.pointBox or not self.afkCheckTimer then
 		local pos=entity.position()
 		if pos then
@@ -293,7 +308,35 @@ function update(dt)
 
 	--passive research gain
 	if status.statusProperty("fu_creationDate") then
-		self.bonus = status.stat("researchBonus")
+		self.threatBonus=0
+		self.madnessResearchBonus = 0
+		self.researchBonus = 0
+		
+		--is the world a higher threat level? if so, apply a bonus to research gain for 5 minutes
+		if world.threatLevel() > 1 then
+		  if self.environmentTimer > 300 then
+			  self.threatBonus = world.threatLevel() / 2
+			  if self.threatBonus < 2 then   -- make sure its not giving too high a bonus, to a max of +3
+			  	self.threatBonus = 1
+			  elseif self.threatBonus > 3 then
+			  	self.threatBonus = 3
+			  elseif self.threatBonus > 6 and self.environmentTimer > 1500 then
+			  	self.threatBonus = 4			  	
+			  end		
+		  end
+		  self.environmentTimer = self.environmentTimer + 1	
+	    end
+		-- how crazy are we?
+		if player.currency("fumadnessresource") then
+			self.madnessResearchBonus = player.currency("fumadnessresource") / 4777  --3.14
+			if self.madnessResearchBonus < 1 then
+				self.madnessResearchBonus = 0
+			end
+		end
+	    -- apply the total
+		self.researchBonus = self.threatBonus + self.madnessResearchBonus
+
+		self.bonus = status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLevel()) then
 			player.addCurrency("fuscienceresource",1 + self.bonus)
 			self.timerCounter = 0
@@ -312,7 +355,7 @@ function update(dt)
 	end
 
 	self.madnessCount = player.currency("fumadnessresource")
-	self.researchCount = player.currency("fuscienceresource") --passive research gain
+	self.researchCount = player.currency("fuscienceresource") 
 
 	-- timing refresh for sculptures, painting effects
 	self.paintTimer = math.max(0,self.paintTimer - dt)
@@ -353,6 +396,8 @@ function update(dt)
 		--displayBar()
 	end
 end
+
+
 
 --display madness bar
 function displayBar()
