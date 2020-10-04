@@ -19,7 +19,7 @@ end]]
 function update(dt)
 	object.setConfigParameter('description', isn_makeBatteryDescription())
 	power.update(dt)
-	power.setPower(maxPowerSendable())
+	power.setPower(power.getStoredEnergy())
 	local powerlevel = math.floor(power.getStoredEnergy() / power.getMaxEnergy() * 10)
 	animator.setAnimationState("meter", power.getStoredEnergy() == 0 and 'd' or tostring(math.floor(powerlevel)))
 end
@@ -96,10 +96,6 @@ function string.split(str, pat)
       table.insert(t, cap)
    end
    return t
-end
-
-function maxPowerSendable()
-	return(power.getStoredEnergy())
 end
 
 function isPower() return
