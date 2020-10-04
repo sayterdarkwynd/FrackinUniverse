@@ -7,7 +7,7 @@ end
 function update()
 	if statusPromise ~= nil and statusPromise:finished() then
 		if statusPromise:succeeded() then
-			widget.setText("status", statusPromise:result())
+			widget.setText("status", statusPromise:result() or "<^red;MISSING STRING^reset;>")
 			statusPromise = world.sendEntityMessage(pane.containerEntityId(), "getStatus")
 		else
 			print(statusPromise:error())
