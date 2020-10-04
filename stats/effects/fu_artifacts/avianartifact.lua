@@ -1,17 +1,16 @@
 function init()
-  script.setUpdateDelta(10)
+	script.setUpdateDelta(10)
+	handler=effect.addStatModifierGroup({})
 end
 
 function update(dt)
 	if not mcontroller.onGround() then
-	    status.setPersistentEffects("flightpower", {
-	      {stat = "powerMultiplier", effectiveMultiplier = 1.10}
-	    }) 
+		effect.setStatModifierGroup(handler, {{stat = "powerMultiplier", effectiveMultiplier = 1.10}})
 	else
-	    status.clearPersistentEffects("flightpower")
+		effect.setStatModifierGroup(handler,{})
 	end
 end
 
 function uninit()
-
+	effect.removeStatModifierGroup(handler)
 end

@@ -123,11 +123,33 @@ function power.getTotalEnergy()
 	return energy
 end
 
+function power.getTotalEnergyNoBattery()
+	local energy = 0
+	if not storage.entitylist then
+		return 0
+	end
+	for i=1,#storage.entitylist.output do
+		energy = energy + power.getEnergyNoBattery(storage.entitylist.output[i])
+	end
+	for i=1,#storage.entitylist.battery do
+		energy = energy + power.getEnergyNoBattery(storage.entitylist.battery[i])
+	end
+	return energy
+end
+
 function power.getEnergy(id)
 	if not id or id == entity.id() then
 		return storage.energy or 0
 	else
 		return callEntity(id,'power.getEnergy') or 0
+	end
+end
+
+function power.getEnergyNoBattery(id)
+	if not id or id == entity.id() then
+		return ((config.getParameter('powertype') ~= 'battery') and storage.energy) or 0
+	else
+		return callEntity(id,'power.getEnergyNoBattery') or 0
 	end
 end
 

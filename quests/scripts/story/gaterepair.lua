@@ -289,5 +289,4 @@ function questComplete()
   end 
   
   world.sendEntityMessage(player.id(), "setQuestFuelCount", 500)
-
 end
