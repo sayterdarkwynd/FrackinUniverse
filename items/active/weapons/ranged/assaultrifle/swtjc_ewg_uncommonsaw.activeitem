@@ -20,7 +20,7 @@
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    }    
+    }  
   },
   "baseOffset" : [-1.0, 0.25],
   "muzzleOffset" : [0.0, 0.3125],
@@ -31,8 +31,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [0.07, 0.14],
-    "baseDps" : [9, 10],
+    "fireTime" : [0.07, 0.12],
+    "baseDps" : [10, 12],
     "energyUsage" : [34.5, 37.5],
     "inaccuracy" : 0.08,
 
@@ -63,9 +63,9 @@
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.20,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "duration" : 0.1,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -74,7 +74,7 @@
     }
   },
 
-  "isAmmoBased" : 1,
+  "isAmmoBased": [0,1],
   "magazineSize" : [24,60],
   "reloadTime" : [1.5,2.5],
   "isAssaultRifle" : 1, 
@@ -82,7 +82,7 @@
   "hasRecoil" : 1,
   "recoilSpeed" : 200,
   "recoilForce" : 700, 
-  
+
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_sawnames.config:nameGen",

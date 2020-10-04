@@ -84,6 +84,10 @@ function update(dt)
 					params.statusSettings = baseParams.statusSettings or {}
 					params.statusSettings.stats = baseParams.statusSettings.stats or {}
 					params.statusSettings.stats.boozeImmunity = {baseValue = 1.0}
+					params.statusSettings.statusProperties = params.statusSettings.stats.statusProperties or {}
+					params.statusSettings.statusProperties.fu_precursorSpawned = true
+					
+					params.anchorName = object.name() --to make ship pets spawned by it not despawn
 					
 					params.behaviorConfig = util.mergeTable(baseParams.behaviorConfig or {}, params.behaviorConfig or {})
 					
@@ -116,7 +120,8 @@ function update(dt)
 					end
 					
 					if monsterType and params.seed then
-						world.spawnMonster(monsterType, spawnPosition, params);
+						local monsterId = world.spawnMonster(monsterType, spawnPosition, params);
+						world.callScriptedEntity(monsterId, "setAnchor", entity.id())	--to allow ship pets to be spawned
 					end
 				end
 				storage.crafting = false

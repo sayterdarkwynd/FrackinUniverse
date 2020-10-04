@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_chordataset"
 
 weaponBonus={
@@ -10,8 +11,6 @@ armorEffect={
 	{ stat = "insanityImmunity", amount = 1.0 },
 	{ stat = "poisonStatusImmunity", amount = 1.0 }
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

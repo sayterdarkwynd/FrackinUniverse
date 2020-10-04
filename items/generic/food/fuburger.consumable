@@ -4,7 +4,7 @@
   "price" : 35,
   "category" : "preparedFood",
   "inventoryIcon" : "fuburger.png",
-  "description" : "Meaty and delicious.",
+  "description" : "Meaty and delicious. ^orange;Type: Cooked Meat + Vegetables^reset;",
   "shortdescription" : "Burger",
   "foodValue" : 15,
   "tooltipKind" : "food",
@@ -12,5 +12,6 @@
   "maxStack" : 1000,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 0.7,
-  "blockingEffects" : ["wellfed"]
+  "blockingEffects" : ["wellfed"],
+  "effects" : [ [  { "effect": "meatc_plant_meal" } ] ]
 }

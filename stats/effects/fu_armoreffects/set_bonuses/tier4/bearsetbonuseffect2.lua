@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_bearset2"
 
 weaponBonus={
 	{stat = "critChance", amount = 4.5},
@@ -9,8 +10,6 @@ armorBonus={
 	{stat = "iceStatusImmunity", amount = 1},
 	{stat = "grit", amount = 0.3}
 }
-
-setName="fu_bearset2"
 
 function init()
 	setSEBonusInit(setName)

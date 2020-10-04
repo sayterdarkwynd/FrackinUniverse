@@ -28,7 +28,8 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;: \n^yellow;^reset; No bonuss, only sstab!"
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Spear/Bow: Dmg x^green;1.1^reset;"
 		},
 		{
 			"op": "replace",
@@ -39,10 +40,10 @@
 			"op": "add",
 			"path": "/statusEffects",
 			"value": [
-				"fusetbonusmanager",
+				    "florantier1setbonusnew",
 				{
-					"stat": "florantier1setcount",
-					"amount": 1
+					"stat" : "fu_florantier1setnew_head",
+					"amount" : 1
 				}
 			]
 		},
@@ -52,7 +53,7 @@
 			"value": {
 				"levelFunction": "fuArmorResistMultiplier",
 				"stat": "fireResistance",
-				"amount": 0.033334
+				"amount": 0.05
 			}
 		}, {
 			"op": "add",

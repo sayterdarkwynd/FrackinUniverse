@@ -1,17 +1,14 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_enforcerset"
 
 weaponBonus1={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
 }
 
 armorBonus={
-  {stat = "liquidnitrogenImmunity", amount = 1.0},
-  {stat = "darknessImmunity", amount = 1}
+	{stat = "liquidnitrogenImmunity", amount = 1.0},
+	{stat = "darknessImmunity", amount = 1}
 }
-
-
-setName="fu_enforcerset"
-
 
 function init()
 	setSEBonusInit(setName)
@@ -28,14 +25,13 @@ function update(dt)
 	end
 end
 
-
 function checkWeapons()
 	local weaponShotgun=weaponCheck({"shotgun","assaultrifle"})
 
 	if (weaponShotgun["primary"] and weaponShotgun["alt"]) or (weaponShotgun["twoHanded"] and weaponShotgun["primary"]) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus1,2))
 	elseif weaponShotgun ["either"] then
-	    effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus1)
+			effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus1)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end

@@ -28,7 +28,8 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;: \n^yellow;^reset; Shield: Energy x^green;1.15^reset;"
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Blunt/Axe: Dmg x^green;1.1^reset;"
 		},
 		{
 			"op": "replace",
@@ -41,20 +42,30 @@
 			"value": {
 				"levelFunction": "fuArmorResistMultiplier",
 				"stat": "electricResistance",
-				"amount": 0.05
+				"amount": 0.033334
 			}
 		},
 		{
 			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "cosmicResistance",
+				"amount": 0.033334
+			}
+		},	
+		{
+			"op": "add",
 			"path": "/statusEffects",
 			"value": [
-				"fusetbonusmanager",
+				    "glitchtier1setbonusnew",
 				{
-					"stat": "glitchtier1setcount",
-					"amount": 1
+					"stat" : "fu_glitchtier1setnew_chest",
+					"amount" : 1
 				}
 			]
-		}, {
+		},
+		{
 			"op": "add",
 			"path": "/builder",
 			"value": "/items/buildscripts/fubuildarmor.lua"

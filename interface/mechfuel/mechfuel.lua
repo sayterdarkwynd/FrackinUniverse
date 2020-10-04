@@ -11,7 +11,7 @@ function init()
 	self.getUnlockedMessage = self.getUnlockedMessage or world.sendEntityMessage(player.id(), "mechUnlocked")
 	if self.getUnlockedMessage:finished() then
 		if self.getUnlockedMessage:succeeded() then
-			local unlocked = self.getUnlockedMessage:result()
+			local unlocked = true --self.getUnlockedMessage:result()
 			self.enabled=not not unlocked
 			lockDisplay(not (self.enabled or (world.type()=="mechtestbasic")))
 			self.didInit=true
@@ -71,20 +71,22 @@ function update(dt)
 	if self.maxFuelMessage and self.maxFuelMessage:finished() then
 		if self.maxFuelMessage:succeeded() then
 			if self.maxFuelMessage:result() then
-				local params = self.maxFuelMessage:result() 
+				local params = self.maxFuelMessage:result()
 				local massTotal = (params.parts.body.stats.mechMass or 0) + (params.parts.booster.stats.mechMass or 0) + (params.parts.legs.stats.mechMass or 0) + (params.parts.leftArm.stats.mechMass or 0) + (params.parts.rightArm.stats.mechMass or 0)
 				self.energyBoost = self.mechHornEnergyBoosts[params.parts.hornName] or 0
 				-- check mass. If its too high, we reduce the amount of boosted energy given to the player to keep heavy mechs heavy, not energy batteries
 				if massTotal > 22 then
 					self.energyBoost = self.energyBoost * (massTotal/50)
 				end
-				self.maxFuel = ((100 + params.parts.body.energyMax) *(params.parts.body.stats.energyBonus or 1))	+ (self.energyBoost or 0) 
+				self.maxFuel = ((100 + params.parts.body.energyMax) *(params.parts.body.stats.energyBonus or 1))	+ (self.energyBoost or 0)
 			end
 		end
 	end
 
-	if self.maxFuel and self.currentFuel then	
-		widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
+	if self.maxFuel and self.currentFuel then
+		widget.setText("lblModuleCount", string.format("%.02f", self.currentFuel) .. " / " .. self.maxFuel)
+	else
+		widget.setText("lblModuleCount", "<Loading>")
 	end
 
 	if self.setItemMessage and self.setItemMessage:finished() then
@@ -121,13 +123,14 @@ function update(dt)
 		end
 		self.fuelTypeMessage = nil
 	end
-	
-	if self.currentFuel > self.maxFuel then
-		self.currentFuel = self.maxFuel
-	elseif self.currentFuel < 0 then
+	if self.currentFuel and self.currentFuel < 0 then
 		emptyfuel(true)
+	elseif not self.currentFuel then
+		if not player.hasQuest("fuelDataQuest") then
+			--player.startQuest( { questId = "fuelDataQuest" , templateId = "fuelDataQuest", parameters = {}} )
+			sb.logWarn("FU Mech Fuel UI: Something may be overwriting FU's version of playermechdeployment.lua.")
+		end
 	end
-	
 end
 
 function insertFuel()
@@ -141,20 +144,21 @@ function fuel()
 
 	local item = widget.itemSlotItem("itemSlot_fuel")
 	if (not item) then return end
+	if (not self.currentFuel) or (not self.maxFuel) then return end
 	if (self.currentFuel >= self.maxFuel) then
 		widget.setText("lblEfficiency", "^red;The tank is full.^white;")
 		return
 	end
 	local id = player.id()
 
-	local fuelMultiplier = 1
+	local fuelMultiplier = 0
 	local fuelBonus = 0
 	local localFuelType = ""
-	
+
 	local fuelData = self.fuels[item.name]
 	if fuelData then
-		fuelMultiplier = fuelData.fuelMultiplier
-		localFuelType = fuelData.fuelType 
+		fuelMultiplier = fuelData.fuelMultiplier or fuelMultiplier
+		localFuelType = fuelData.fuelType
 	end
 	if fuelMultiplier == 0 then return end
 
@@ -164,16 +168,34 @@ function fuel()
 	end
 
 	local fuelCanAdd=item.count*fuelMultiplier
-	local fuelWillAdd=math.min(fuelCanAdd,math.max(self.maxFuel-self.currentFuel,0))
-	local fuelItemConsume=fuelWillAdd/fuelMultiplier
-	local shimmy = fuelItemConsume%1
-	if shimmy > 0 then
-	shimmy=fuelItemConsume
-	fuelItemConsume=math.floor(fuelItemConsume)
-	shimmy=fuelItemConsume/shimmy
-	fuelWillAdd=shimmy*fuelWillAdd
-	end
+	local fuelDifference=self.maxFuel-self.currentFuel
+	local fuelWillAdd=0
+	local fuelItemConsume=0
+	local roundingBuffer = 0
 	
+	if fuelDifference>0 then
+		if (fuelDifference > fuelCanAdd) or (item.count == 1 ) then
+			fuelWillAdd=fuelCanAdd
+		else
+			if item.count > 1 then
+				fuelWillAdd=fuelMultiplier*math.ceil(fuelDifference/(fuelCanAdd/item.count))
+			end
+		end
+	else
+		return
+	end
+	fuelItemConsume=fuelWillAdd/fuelMultiplier
+	roundingBuffer = fuelItemConsume%1
+
+	if (fuelItemConsume == roundingBuffer) and (fuelCanAdd > 0) then
+		fuelItemConsume=1
+	elseif roundingBuffer > 0 then
+		roundingBuffer=fuelItemConsume
+		fuelItemConsume=math.floor(fuelItemConsume)
+		roundingBuffer=fuelItemConsume/roundingBuffer
+		fuelWillAdd=roundingBuffer*fuelWillAdd
+	end
+
 	if fuelWillAdd > 0 then
 		item.count=item.count-fuelItemConsume
 		if item.count == 0 then
@@ -193,13 +215,11 @@ end
 
 function emptyfuel(hidden)
 	if not ((world.type()=="mechtestbasic") or self.enabled) then return end
-	if (self.currentFuel > 0) or (self.currentFuel < 0) then
-		--local item = widget.itemSlotItem("itemSlot_fuel")
+	if self.currentFuel and ((self.currentFuel > 0) or (self.currentFuel < 0)) then
 		local id = player.id()
 		localFuelType = nil
-		widget.setText("lblEfficiency", "^red;Emptying Fuel.^white;")	 
-		widget.setText("lblFuelType", "CURRENT FUEL: ^red;EMPTY^reset;")	 
-		--world.sendEntityMessage(id, "setFuelSlotItem", nil)
+		widget.setText("lblEfficiency", "^red;Emptying Fuel.^white;")
+		widget.setText("lblFuelType", "CURRENT FUEL: ^red;EMPTY^reset;")
 		world.sendEntityMessage(id, "setFuelType", nil)
 		world.sendEntityMessage(id, "emptyQuestFuelCount")
 		self.currentFuel = 0
@@ -233,7 +253,7 @@ function setEfficiencyText(currentItem)
 		widget.setText("lblEfficiency", "")
 		return
 	end
-	
+
 	local fuelData = self.fuels[currentItem.name]
 	local effeciencyText = "Detected fuel type: ^<color>;<fuelName>^white;, Efficiency: x<fuelMultiplier>"	--Make json value
 	local currentItemCfg = root.itemConfig(currentItem.name).config
@@ -246,33 +266,43 @@ end
 
 function fuelCountPreview(item)
 	if not item then
-		widget.setText("lblModuleCount", string.format("%.02f", math.floor(self.currentFuel)) .. " / " .. math.floor(self.maxFuel))
+		if self.currentFuel and self.maxFuel then
+			widget.setText("lblModuleCount", string.format("%.02f",self.currentFuel) .. " / " .. self.maxFuel)
+		end
 		return
 	end
 
 	local fuelMultiplier = 1
 	local textColor = "white"
-	
+
 	local fuelData = self.fuels[item.name]
 	if fuelData then
 		fuelMultiplier = fuelData.fuelMultiplier
-		textColor = fuelData.textColor or textColor 
+		textColor = fuelData.textColor or textColor
+	end
+	
+	local fuelCanAdd=item.count*fuelMultiplier
+	local fuelDifference=self.maxFuel-self.currentFuel
+	local fuelWillAdd=0
+	
+	if fuelDifference>0 then
+		if (fuelDifference > fuelCanAdd) or (item.count == 1 ) then
+			fuelWillAdd=fuelCanAdd
+		else
+			if item.count > 1 then
+				fuelWillAdd=fuelMultiplier*math.ceil(fuelDifference/(fuelCanAdd/item.count))
+			end
+		end
 	end
 
-	local addFuelCount = self.currentFuel + (item.count * fuelMultiplier)
-
-	if addFuelCount > self.maxFuel then
-		addFuelCount = self.maxFuel
-	end
-
-	widget.setText("lblModuleCount", "^" .. textColor .. ";" .. string.format("%.02f", addFuelCount) .. "^white; / " .. math.floor(self.maxFuel))
+	widget.setText("lblModuleCount", "^" .. textColor .. ";" .. string.format("%.02f", self.currentFuel + fuelWillAdd) .. "^white; / " .. self.maxFuel)
 end
 
 function setFuelTypeText(type)
 	local textColor = ""
 	local fuelTypeData = self.fuelTypes[type]
 	if fuelTypeData then
-		textColor = fuelTypeData.textColor			 
+		textColor = fuelTypeData.textColor
 	else
 		textColor = nil
 	end

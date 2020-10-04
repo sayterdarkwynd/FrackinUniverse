@@ -1,9 +1,9 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_ultrameshset"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.20}
 }
-
 
 armorBonus={
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.35},
@@ -14,8 +14,6 @@ armorBonus={
 	{stat = "pressureProtection", amount = 1},
 	{stat = "insanityImmunity", amount = 1}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -35,7 +33,6 @@ function update(dt)
 		checkWeapons()
 	end
 end
-
 
 function checkWeapons()
 	local weaponSword=weaponCheck({"shortsword","rapier","katana","longsword"})

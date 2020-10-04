@@ -22,12 +22,12 @@ function GunFire:init()
 	self.countdownDelay = 0 									-- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
 
-	self.playerMagBonus = status.stat("magazineSize")						-- player	ammo bonuses
-	self.playerReloadBonus = status.stat("reloadTime")						-- player reload bonuses
+	--self.playerMagBonus = status.stat("magazineSize")						-- player	ammo bonuses
+	--self.playerReloadBonus = status.stat("reloadTime")						-- player reload bonuses
 
-	self.magazineSize = (config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) or 6) -- total count of the magazine
-	self.magazineAmount = config.getParameter("magazineAmount",-1) 						-- current number of bullets in the magazine
-	self.reloadTime = config.getParameter("reloadTime",1)	+ (self.playerReloadBonus or 0) 	-- how long does reloading mag take?
+	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
+	self.magazineAmount = math.min(config.getParameter("magazineAmount",-1),self.magazineSize) 						-- current number of bullets in the magazine
+	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) 	-- how long does reloading mag take?
 	self.playerId = activeItem.ownerEntityId()
 
 	if (self.isAmmoBased == 1) then
@@ -99,7 +99,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
 	-- *** FU Weapon Additions
 	if self.timeBeforeCritBoost <= 0 then	--check sniper/crossbow crit bonus
-			self:isChargeUp()
+		self:isChargeUp()
 	else
 		self.timeBeforeCritBoost = self.timeBeforeCritBoost -dt
 	end
@@ -121,28 +121,34 @@ function GunFire:update(dt, fireMode, shiftHeld)
 		end
 	end
 
-		setupHelper(self, {"gunfire-update", "gunfire-auto", "gunfire-postauto", "gunfire-burst", "gunfire-postburst"})
+	setupHelper(self, {"gunfire-update", "gunfire-auto", "gunfire-postauto", "gunfire-burst", "gunfire-postburst"})
 	if self.helper then
 		self.helper:runScripts("gunfire-update", self, dt, fireMode, shiftHeld)
-		end
+	end
 
 	if animator.animationState("firing") ~= "fire" then
-					animator.setLightActive("muzzleFlash", false)
+		animator.setLightActive("muzzleFlash", false)
 	end
+
 	if (self.isAmmoBased==1) and shiftHeld and ((fireMode == "primary") or (fireMode == "alt")) and self.currentAmmoPercent and (self.currentAmmoPercent < 1.0) then
 		self:checkAmmo(true)
 	elseif self.fireMode == (self.activatingFireMode or self.abilitySlot)
-		and not self.weapon.currentAbility
-		and self.cooldownTimer == 0
-		and not status.resourceLocked("energy")
-		and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-	
+	and not self.weapon.currentAbility
+	and self.cooldownTimer == 0
+	and not status.resourceLocked("energy")
+	and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
+		if self.weaponBonus and fireMode=="primary" then
+			status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
+		end
 		if self.fireType == "auto" and status.overConsumeResource("energy", self:energyPerShot()) then
-				self:setState(self.auto)
-				self:checkMagazine(true)
+			self:setState(self.auto)
+			self:checkMagazine(true)
 		elseif self.fireType == "burst" then
-				self:setState(self.burst)
-				self:checkMagazine(true)
+			self:setState(self.burst)
+			self:checkMagazine(true)
+		end
+		if self.weaponBonus and fireMode=="primary" then
+			status.setPersistentEffects("weaponBonus", {})
 		end
 	end
 end
@@ -362,7 +368,6 @@ function GunFire:isChargeUp()
 				self.countdownDelay = 0
 			end
 		end
-
 		if (self.isSniper == 1) and (self.weaponBonus >= 80) then --limit max value for crits and let player know they maxed
 			self.weaponBonus = 80
 			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
@@ -374,7 +379,8 @@ function GunFire:isChargeUp()
 			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
 			status.addEphemeralEffect("critReady")
 		end
-		status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}}) -- set final bonus value
+		--this section's stat changes were moved to the update block to address unintended effects.
+		--status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}}) -- set final bonus value
 	end
 end
 
@@ -461,7 +467,7 @@ function GunFire:checkAmmo(force)
 					activeItem.ownerEntityId(),
 					"setBar",
 					"ammoBar",
-					self.currentAmmoPercent,
+					util.clamp(self.currentAmmoPercent,0.0,1.0),
 					self.barColor
 				)
 			end
@@ -476,7 +482,7 @@ function GunFire:checkAmmo(force)
 end
 
 function GunFire:checkMagazine(evalOnly)
-	self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0)		-- total count of the magazine
+	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize"))		-- total count of the magazine
 	self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	self.isAmmoBased = config.getParameter("isAmmoBased",0)
 	if (self.isAmmoBased == 1) then
@@ -489,7 +495,7 @@ function GunFire:checkMagazine(evalOnly)
 					activeItem.ownerEntityId(),
 					"setBar",
 					"ammoBar",
-					self.currentAmmoPercent,
+					util.clamp(self.currentAmmoPercent,0.0,1.0),
 					self.barColor
 				)
 			end

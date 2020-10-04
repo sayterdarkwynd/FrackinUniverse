@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_guardianset"
 
 weaponBonus={
@@ -7,14 +8,11 @@ weaponBonus2={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
-
 armorBonus={
 	{stat = "shieldBash", amount = 20},
 	{stat = "shieldStaminaRegen", baseMultiplier = 1.25},
 	{stat = "shieldBonusShield", amount = 0.25}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -31,7 +29,6 @@ function update(dt)
 		checkWeapons()
 	end
 end
-
 
 function checkWeapons()
 	local weaponShield=weaponCheck({"shield"})

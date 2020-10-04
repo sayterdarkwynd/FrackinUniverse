@@ -77,7 +77,9 @@ function BowShot:fire()
 
 	--*************************************
 	-- FU/FR ADDONS
-	self.helper:runScripts("bowshot-fire", self)
+	if self and self.helper then
+		self.helper:runScripts("bowshot-fire", self)
+	end
 	--*************************************
 
 	if not world.pointTileCollision(self:firePosition()) and status.overConsumeResource("energy", self.energyPerShot) then

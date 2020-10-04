@@ -5,43 +5,43 @@ local recipes
 local deltaTime=0
 
 function init()
-  if config.getParameter('powertype') then
-    power.init()
-	powered = true
-  else
-    powered = false
-  end
-  transferUtil.init()
-  self.mintick = config.getParameter("fu_mintick", 1)
-  storage.timer = storage.timer or self.mintick
-  storage.crafting = storage.crafting or false
+	if config.getParameter('powertype') then
+		power.init()
+		powered = true
+	else
+		powered = false
+	end
+	transferUtil.init()
+	self.mintick = config.getParameter("fu_mintick", 1)
+	storage.timer = storage.timer or self.mintick
+	storage.crafting = storage.crafting or false
 
-  self.light = config.getParameter("lightColor")
+	self.light = config.getParameter("lightColor")
 
-  self.techLevel = config.getParameter("fu_stationTechLevel", 1)
+	self.techLevel = config.getParameter("fu_stationTechLevel", 1)
 
-  storage.activeConsumption = storage.activeConsumption or false
+	storage.activeConsumption = storage.activeConsumption or false
 	if object.outputNodeCount() > 0 then
 		object.setOutputNodeLevel(0,storage.activeConsumption)
 	end
-	
-  if self.light then
-	object.setLightColor({0, 0, 0, 0})
-  end
 
-  recipes = getRecipes()
+	if self.light then
+		object.setLightColor({0, 0, 0, 0})
+	end
+
+	recipes = getRecipes()
 
 	-- generate reversed recipes here to avoid complicating the other code
-  local reversed = {}
-  for _, recipe in pairs(recipes) do
-	if recipe.reversible then
-	  recipe.reversible = nil -- unmark it :-)
-	  table.insert(reversed, { inputs = recipe.outputs, outputs = recipe.inputs, timeScale = recipe.timeScale })
+	local reversed = {}
+	for _, recipe in pairs(recipes) do
+		if recipe.reversible then
+			recipe.reversible = nil -- unmark it :-)
+			table.insert(reversed, { inputs = recipe.outputs, outputs = recipe.inputs, timeScale = recipe.timeScale })
+		end
 	end
-  end
-  for _, recipe in pairs(reversed) do
-	table.insert(recipes, recipe)
-  end
+	for _, recipe in pairs(reversed) do
+		table.insert(recipes, recipe)
+	end
 end
 
 function techlevelMap(v)
@@ -127,7 +127,7 @@ function update(dt)
 		end
 	end
 	if powered then
-	  power.update(dt)
+		power.update(dt)
 	end
 end
 
@@ -195,7 +195,7 @@ function doCrafting(result)
 			end
 			table.insert(storage.inputs,itemData)
 		end
-		
+
 		storage.timerMod = config.getParameter("fu_timerMod")
 		storage.timer = ((techlevelMap(result.timeScale) or 1) * getTimer(self.techLevel)) + storage.timerMod
 		storage.output = result.outputs
@@ -209,7 +209,7 @@ function doCrafting(result)
 			object.setOutputNodeLevel(0,storage.activeConsumption)
 		end
 		return true
-	end			  
+	end
 end
 
 --[[	Validation code - run only from a command shell

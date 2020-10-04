@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_irradiumset"
 
 weaponBonus1={
@@ -10,8 +11,6 @@ armorBonus={
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "radiationburnImmunity", amount = 1}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

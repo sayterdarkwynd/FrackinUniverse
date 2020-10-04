@@ -2,6 +2,14 @@
 [
   {
     "op": "add",
+    "path": "/starterTreasure/0/1/fill/0",
+    "value": {
+      "item": "statustablet"
+    }
+  },
+   
+  {
+    "op": "add",
     "path": "/fuxiStarterTreasure",
     "value": [[0, {
       "fill" : [
@@ -27,11 +35,10 @@
     "value": [[0, {
       "fill" : [
         {"pool" : "starterTreasure"},
-        {"item" : [ "slimesword", 1 ]},
-        {"item" : [ "wavyslimesword", 1 ]},
-        {"item" : [ "greenslime", 30 ]},
-        {"item" : [ "slimewhip", 1 ]}
-    
+       // {"item" : [ "slimesword", 1 ]},
+        //{"item" : [ "wavyslimesword", 1 ]},
+        {"item" : [ "greenslime", 30 ]}//,
+        //{"item" : [ "slimewhip", 1 ]}
       ]
     }]]
   },
@@ -44,6 +51,10 @@
       ]
     }]]
   },
+  {
+    "op": "remove",
+    "path": "/starterTreasure/0/1/fill/0"
+  },  
   {"op": "replace","path": "/starterTreasure/0/1/fill/0/item","value": "flashlight_new"},
   {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "aegisaltpistol2", 1]}},
   {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "pandorasboxprotectorateshield", 1]}},
@@ -55,7 +66,7 @@
   {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide6-codex", 1]}},
   {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguidebattle-codex", 1]}},
   {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "networkguide2-codex", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "networkguide-codex", 1]}}
+  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "networkguide-codex", 1]}}   
 ],
     [{
             "op": "test",

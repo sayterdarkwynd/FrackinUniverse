@@ -1,6 +1,6 @@
 {
   "name" : "aethersea",
-  "friendlyName" : "Aether Sea",
+  "friendlyName" : "Aether World",
   "statusEffects" : [ "aetherweathernew"  ],
 
   "airless" : false,
@@ -84,7 +84,7 @@
 
   "skyOptions" : [
     {
-      // light reddish
+   
       "mainColor" : [55, 0, 0],
 
       "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
@@ -98,7 +98,7 @@
       "nightLightColor" : [70, 20, 0]
     },
     {
-      // pinkish all around
+ 
       "mainColor" : [75, 25, 0],
 
       "morningColors" : [ [255, 167, 152], [255, 163, 208] ],
@@ -112,7 +112,7 @@
       "nightLightColor" : [70, 20, 0]
     },
     {
-      // dark peachy massacre
+     
       "mainColor" : [0, 0, 0],
 
       "morningColors" : [ [200, 24, 0], [252, 30, 0] ],
@@ -126,7 +126,7 @@
       "nightLightColor" : [70, 20, 0]
     },
     {
-      // pretty in pink
+  
       "mainColor" : [90, 0, 0],
 
       "morningColors" : [ [230, 129, 204], [230, 164, 210] ],
@@ -178,7 +178,7 @@
       "eveningLightColor" : [50, 50, 100],
       "nightLightColor" : [12, 12, 50]
     },
-//white
+
     {
       "mainColor" : [0, 0, 0],
 
@@ -274,10 +274,10 @@
 
 
     "mainBlock" : "retexaetherdust",
-    "subBlocks" : [ "blackslime", "fuaetherstone" ],
+    "subBlocks" : [ "plasmamaterial", "fuaetherstone" ],
     "ores" : "aethersurface",
 
-  "parallax" : "/parallax/surface/aether.parallax",
+  "parallax" : "/parallax/surface/aethernew.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -661,6 +661,17 @@
         "treeStemList" : [ "darkvine" ],
         "treeFoliageList" : [ "" ]
       },
+      {
+        "mode": "floor",
+        "priority": 1.0,
+        "variants": 1,
+        "distribution": "/biomes/distributions.config:ffunCommon",
+        "type": "tree",
+        "treeFoliageHueShiftMax": 15,
+        "treeStemHueShiftMax": 25,
+        "treeStemList": ["astral"],
+        "treeFoliageList": ["nebula"]
+      },     
         {
           "mode" : "floor",
           "priority" : 1.0,

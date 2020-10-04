@@ -8,12 +8,12 @@
 	"maxStack": 100,
 
 	"tooltipKind": "food",
-	"description": "A fresh pear, ripe for baking or consuming with my face!",
+	"description": "A fresh pear, ripe for baking or consuming with my face! ^green;Type: Plant^reset;",
 	"shortdescription": "Pear",
-
+    "effects" : [ [ "plant_food" ] ],
 	"eventCategory": "eventCrop",
 	"builder": "/items/buildscripts/buildfood.lua",
 	"itemAgingScripts": ["/scripts/items/rotting.lua"],
-	"rottingMultiplier": 1.0,
-	"learnBlueprintsOnPickup": ["fupearpie", "thelusianwine"]
+	"rottingMultiplier": 1.0//,
+	//"learnBlueprintsOnPickup": ["fupearpie", "thelusianwine"]
 }

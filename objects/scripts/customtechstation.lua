@@ -1,7 +1,7 @@
 local CSAILoldInit = init
 
 function init()
-	if (not world.getProperty("ship.fuel")) and config.getParameter("uniqueId") then
+	if world.type() ~= "unknown" and config.getParameter("uniqueId") then
 		object.smash()
 	end
 

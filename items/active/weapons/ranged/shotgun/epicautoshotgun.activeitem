@@ -13,14 +13,14 @@
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : { },
-  "animationCustom" : { 
+  "animationCustom" : {
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    }    
+    }
   },
   "baseOffset" : [-1.25, 0.25],
   "muzzleOffset" : [0.0, 0.3125],
@@ -73,11 +73,11 @@
 
   "critChance" : 4,
   "critBonus" : 12,
-  "isAmmoBased" : 1,
+  "isAmmoBased" : [0,1],
   "magazineSize" : [5,24],
   "reloadTime" : [1.85,4.4],
   "isShotgun" : 1,
-  
+
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_autoshotgunnames.config:nameGen",
@@ -118,7 +118,7 @@
       "cosmic" : {
         "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
        "fireSounds" : [ "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg" ]
-      } 
+      }
     },
     "animationParts" : {
       "butt" : {

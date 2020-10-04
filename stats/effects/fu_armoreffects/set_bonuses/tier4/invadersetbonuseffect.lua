@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_invaderset"
 
 weaponBonus={
@@ -9,8 +10,6 @@ armorEffect={
 	{stat = "protoImmunity", amount = 1.0},
 	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.75}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -28,7 +27,6 @@ function update(dt)
 		status.addEphemeralEffect("slowfall")
 	end
 end
-
 
 function checkWeapons()
 	local weapons=weaponCheck({"magnorb", "magnorbs", "energy"})

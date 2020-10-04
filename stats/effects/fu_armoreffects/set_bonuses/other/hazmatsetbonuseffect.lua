@@ -1,12 +1,10 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
+setName="fu_hazmatset"
 
 armorBonus={
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "radioactiveResistance", amount = 0.5}
 }
-
-setName="fu_hazmatset"
 
 function init()
 	setSEBonusInit(setName)

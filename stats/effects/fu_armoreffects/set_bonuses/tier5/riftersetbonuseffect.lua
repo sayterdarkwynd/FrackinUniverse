@@ -1,8 +1,9 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_rifterset"
 
 weaponBonus={
 	{stat = "critChance", amount = 3},
-        {stat = "powerMultiplier", effectiveMultiplier = 1.25}
+				{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorEffect={
@@ -10,8 +11,6 @@ armorEffect={
 	{stat = "gasImmunity", amount = 1.0},
 	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.75}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -27,7 +26,6 @@ function update(dt)
 		checkWeapons()
 	end
 end
-
 
 function checkWeapons()
 	local weapons=weaponCheck({"magnorb", "magnorbs", "boomerang","chakram"})

@@ -1,10 +1,9 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_densiniumsetkhe"
 
 weaponBonus={
-  {stat = "critChance", amount = 3},
-  {stat = "powerMultiplier", effectiveMultiplier = 1.25}
+	{stat = "critChance", amount = 3},
+	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
 armorBonus={

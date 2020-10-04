@@ -1,14 +1,13 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_amberset"
 
 weaponBonus={
-  {stat = "powerMultiplier", effectiveMultiplier = 1.10}
+	{stat = "powerMultiplier", effectiveMultiplier = 1.10}
 }
 
 armorBonus={
-  {stat = "beestingImmunity", amount = 1},
-  {stat = "honeyslowImmunity", amount = 1}
+	{stat = "beestingImmunity", amount = 1},
+	{stat = "honeyslowImmunity", amount = 1}
 }
 
 function init()

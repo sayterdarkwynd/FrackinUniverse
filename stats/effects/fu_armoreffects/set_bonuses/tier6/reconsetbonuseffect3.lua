@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_reconset3"
 
 weaponBonus={
@@ -11,8 +12,6 @@ armorBonus={
 	{stat = "biomeradiationImmunity", amount = 1}
 }
 
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
@@ -23,11 +22,11 @@ function init()
 end
 
 function update(dt)
-if not checkSetWorn(self.setBonusCheck) then
-	effect.expire()
-else
-	checkWeapons()
-end
+	if not checkSetWorn(self.setBonusCheck) then
+		effect.expire()
+	else
+		checkWeapons()
+	end
 
 	mcontroller.controlModifiers({speedModifier = 1.15})
 end

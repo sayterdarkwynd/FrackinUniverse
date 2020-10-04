@@ -53,7 +53,7 @@ function LearnCodex(itemName)
 	
 	local foundCodexFile = pcall(root.assetJson, data.directory .. itemName .. ".codex")
 	if not foundCodexFile then
-		warn("An item's ID ended in -codex, but it was not located as a codex in the game data files -- this item is violating standard naming conventions! Aborting the learning procedure. (Attempted to locate the file [" .. data.directory .. itemName .. ".codex], which doesn't exist.")
+		warn("An item's ID ended in -codex, but it was not located as a codex in the game data files. Is this item violating standard naming conventions? Is the ID of the codex different than the file name of the codex? Aborting the learning procedure. (Attempted to locate the file [" .. data.directory .. itemName .. ".codex], which doesn't exist.")
 		return 2
 	end
 	------------------------------------

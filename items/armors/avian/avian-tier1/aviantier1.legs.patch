@@ -28,7 +28,8 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;: \n^yellow;^reset; Wand/Staff: Energy x^green;1.15^reset;"
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Wand/Staff: Dmg x^green;1.1^reset;"
 		},
 		{
 			"op": "replace",
@@ -39,10 +40,10 @@
 			"op": "add",
 			"path": "/statusEffects",
 			"value": [
-				"fusetbonusmanager",
+				    "aviantier1setbonusnew",
 				{
-					"stat": "aviantier1setcount",
-					"amount": 1
+					"stat" : "fu_aviantier1setnew_legs",
+					"amount" : 1
 				}
 			]
 		},
@@ -54,7 +55,20 @@
 				"stat": "iceResistance",
 				"amount": 0.033334
 			}
-		}, {
+		}, 
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "poisonResistance",
+				"amount": 0.033334
+			}
+		}, 	
+		
+		
+		
+		{
 			"op": "add",
 			"path": "/builder",
 			"value": "/items/buildscripts/fubuildarmor.lua"

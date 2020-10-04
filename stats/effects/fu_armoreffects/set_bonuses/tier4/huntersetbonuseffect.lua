@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_hunterset"
 
 weaponBonus={
@@ -8,8 +9,6 @@ weaponBonus={
 armorEffect={
 	{stat = "maxEnergy", effectiveMultiplier = 1.10}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

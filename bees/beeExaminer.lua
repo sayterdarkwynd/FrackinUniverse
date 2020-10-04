@@ -1,22 +1,53 @@
+require "/scripts/util.lua"
+
 local statusList={--progress status doesnt matter, but for any other status indicators, this should be used. it's used for the item network variant to determine completion state
-	waiting="^yellow;Waiting for a subject...",
+	waiting="^yellow;Waiting for subject...",
 	queenID="^green;Queen identified",
+	youngQueenID="^green;Larva identified",
 	droneID="^green;Drone identified",
 	artifactID="^green;Artifact identified",
+	artifactElderID="^green;Artifact identified",
+	artifactProtheonID="^green;Artifact identified",
+	geodeID="^green;Artifact identified",
 	invalid="^red;Invalid sample detected"
+}
+
+local tagList={
+	--FORMAT: <itemTag>={range=<math.rand max>,currencies={<currency variable name 1>=<bonusValue>,...},<optional override parameter>
+	queen={range=25,currencies={bonusResearch=3}},
+	youngQueen={range=25,currencies={bonusResearch=3}},
+	drone={range=100,currencies={bonusResearch=0}},
+	geode={range=15,currencies={bonusResearch=5,bonusEssence=1},overrideCategory="geodeResearched"},
+	artifact={range=9,currencies={bonusResearch=75,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"},
+	artifactElder={range=9,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"}
 }
 
 function init()
 	playerUsing = nil
 	selfWorking = nil
+	shoveTimer = 0.0
+
+	defaultMaxStack=root.assetJson("/items/defaultParameters.config").defaultMaxStack
+	defaultDelta=config.getParameter("scriptDelta")
+	
+	microscopeRank=config.getParameter("microscopeRank",0) -- currently not defined on microscopes, so does nothing
 
 	playerWorkingEfficiency = nil
 	selfWorkingEfficiency = nil
 	status = statusList.waiting
 	progress = 0
-	oldItem = nil
+	futureItem = nil
+	
 	bonusEssence=0
 	bonusResearch=0
+    bonusProtheon=0
+	
+	--these are declared here, but can be moved to object parameters later as needed
+	self.inputSlot=0
+	self.outputSlot=4
+	self.researchSlot=1
+	self.essenceSlot=2
+	self.protheonSlot=3
 
 	message.setHandler("paneOpened", paneOpened)
 	message.setHandler("paneClosed", paneClosed)
@@ -25,152 +56,194 @@ function init()
 	playerWorkingEfficiency = config.getParameter("playerWorkingEfficiency")
 	selfWorkingEfficiency = config.getParameter("selfWorkingEfficiency")
 	selfWorking = config.getParameter("selfWorking")
+	math.randomseed(util.seedTime())
+end
+
+function checkTags(item)
+	if (not item) or (not item.itemTags) then return end
+	local buffer=nil
+	for tag,values in pairs(tagList) do
+		for _,t in pairs(item.itemTags) do
+			if t==tag then
+				buffer=tag
+				break
+			end
+		end
+	end
+	return buffer
+end
+
+function resetStats()
+	bonusEssence=0
+	bonusResearch=0
+	bonusProtheon=0
+	itemsDropped=false
+	progress=0
+	futureItem=nil
 end
 
 function update(dt)
 	if playerUsing or selfWorking then
-	local currentItem = world.containerItemAt(entity.id(), 0)
+		local currentItem = world.containerItemAt(entity.id(), self.inputSlot)
+		local currentItemParameters=currentItem and mergedParams(root.itemConfig(currentItem))
+		local lastTag=checkTags(currentItemParameters)
+		
+		if currentItem == nil then
+			status = statusList.waiting
+		elseif (futureItem and ((futureItem.name~=currentItem.name) or (futureItem.count~=currentItem.count))) then
+			--no hot-swapping exploit allowed
+			status = statusList.waiting
+			resetStats()
+		elseif not lastTag then
+			status = statusList.invalid
+			resetStats()
+		elseif futureItem and (currentItem.parameters.genome and futureItem.parameters.genome and (currentItem.parameters.genome~=futureItem.parameters.genome)) then
+			--no hot-swapping exploit allowed
+			status = statusList.waiting
+			resetStats()
+		else
+			if not futureItem then futureItem=currentItem end
 
-	if currentItem == nil then
-		bonusEssence=0
-		bonusResearch=0
-		status = statusList.waiting
+			if lastTag then
+				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
+					status=statusList[lastTag.."ID"]
 
-		elseif compare(currentItem, oldItem) then	
-			if root.itemHasTag(oldItem.name, "queen") or root.itemHasTag(oldItem.name, "youngQueen") then
-				if oldItem.parameters.genomeInspected then
-					status = statusList.queenID
-				else
-					if playerUsing then
-						progress = progress + (playerWorkingEfficiency * dt)
-					else
-						progress = progress + (selfWorkingEfficiency * dt)
+					shoveTimer=(shoveTimer or 0.0) + dt
+					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
+					local singleCountFutureItem=copy(futureItem)
+					singleCountFutureItem.count=1
+
+					local slotItem=world.containerItemAt(entity.id(),self.outputSlot)
+					local singleCountSlotItem=slotItem and copy(slotItem)
+					if singleCountSlotItem then
+						singleCountSlotItem.count=1
 					end
 
+					if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
+					if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
+
+					world.containerTakeAt(entity.id(), self.inputSlot)
+					futureItem=nil
+					currentItem=nil
+				else
+					if playerUsing then
+						progress = math.min(100,progress + (playerWorkingEfficiency * dt))
+					else
+						progress = math.min(100,progress + (selfWorkingEfficiency * dt))
+					end
 					progress = math.floor(progress * 100) * 0.01
 
 					if progress >= 100 then
-						if bonusResearch>0 then world.spawnItem("fuscienceresource",entity.position(),bonusResearch) end
-						if bonusEssence>0 then world.spawnItem("essence",entity.position(),bonusEssence) end
+						status = "^cyan;"..progress.."%"
+
+						if tagList[lastTag].overrideCategory then futureItem.parameters.category = tagList[lastTag].overrideCategory end
+						futureItem.parameters.genomeInspected = true
+
+						local singleCountFutureItem=copy(futureItem)
+						singleCountFutureItem.count=1
+
+						local slotItem=world.containerItemAt(entity.id(),self.outputSlot)
+						local singleCountSlotItem=slotItem and copy(slotItem)
+						if singleCountSlotItem then
+							singleCountSlotItem.count=1
+						end
+
+						if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
+						if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
+
+						world.containerTakeAt(entity.id(), self.inputSlot)
+						futureItem=nil
+						currentItem=nil
+						if bonusResearch>0 then
+							shoveItem({name="fuscienceresource",count=bonusResearch},self.researchSlot)
+						end
+						if bonusEssence>0 then
+							shoveItem({name="essence",count=bonusEssence},self.essenceSlot)
+						end
+						if bonusProtheon>0 then
+							shoveItem({name="fuprecursorresource",count=bonusProtheon},self.protheonSlot)
+						end
 						bonusEssence=0
 						bonusResearch=0
+						bonusProtheon=0
 						progress = 0
-						status = statusList.queenID
 
-						oldItem.parameters.genomeInspected = true
-						world.containerTakeAt(entity.id(), 0)
-						world.containerPutItemsAt(entity.id(), oldItem, 0)
+						status=statusList[lastTag.."ID"]
+
+						itemsDropped=true
 					else
 						status = "^cyan;"..progress.."%"
-						-- ***** chance to gain research *****
-						local randCheck = math.random(25)
-						if randCheck == 1 then
-							local bonusValue = config.getParameter("bonusResearch",0)
-							bonusResearch=bonusResearch+((5+bonusValue)*currentItem.count) -- Gain research as this is used
+						-- ***** chance to gain currencies *****
+						local randCheck = 0
+						randCheck=math.random(tagList[lastTag].range or 100)
+						local rank=(currentItemParameters.rank or 0)
+						--prev., the 'rank' parameter on the items did nothing, might need rebalancing
+						--also, config.getParameter gets info from the calling object. 
+						--near the start of update is a currentItemParameters declaration to use.
+						
+						if (randCheck == self.researchSlot) and (tagList[lastTag].currencies.bonusResearch) then
+							bonusResearch=bonusResearch+((tagList[lastTag].currencies.bonusResearch+rank+microscopeRank)*currentItem.count) -- Gain research as this is used
+						elseif (randCheck == self.essenceSlot) and (tagList[lastTag].currencies.bonusEssence) then
+							bonusEssence=bonusEssence+((tagList[lastTag].currencies.bonusEssence+rank+microscopeRank)*currentItem.count) -- Gain essence as this is used
+						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusProtheon) then
+							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+rank+microscopeRank)*currentItem.count) -- Gain protheon as this is used
 						end
 					end
 				end
-			elseif root.itemHasTag(oldItem.name, "drone") then
-				if oldItem.parameters.genomeInspected then
-					status = statusList.droneID
-				else
-					if playerUsing then
-						progress = progress + (playerWorkingEfficiency * dt)
-					else
-						progress = progress + (selfWorkingEfficiency * dt)
-					end
-
-					progress = math.floor(progress * 100) * 0.01
-
-					if progress >= 100 then
-						if bonusResearch>0 then world.spawnItem("fuscienceresource",entity.position(),bonusResearch) end
-						if bonusEssence>0 then world.spawnItem("essence",entity.position(),bonusEssence) end
-						bonusEssence=0
-						bonusResearch=0
-						progress = 0
-						status = statusList.droneID
-
-						oldItem.parameters.genomeInspected = true
-						world.containerTakeAt(entity.id(), 0)
-						world.containerPutItemsAt(entity.id(), oldItem, 0)
-					else
-						status = "^cyan;"..progress.."%"
-						-- ***** chance to gain research *****
-						local randCheck = math.random(100) --1% chance, compared to a 25% for the queen
-						if randCheck == 1 then
-							local bonusValue = config.getParameter("bonusResearch",0)
-							bonusResearch=bonusResearch+((2+bonusValue)*currentItem.count) -- Gain less research than via queen 
-						end
-					end
-				end				
-			elseif root.itemHasTag(oldItem.name, "artifact") then
-				if oldItem.parameters.genomeInspected then
-					status = statusList.artifactID
-				else
-					if playerUsing then
-						progress = progress + (playerWorkingEfficiency * dt)
-					else
-						progress = progress + (selfWorkingEfficiency * dt)
-					end
-
-					progress = math.floor(progress * 100) * 0.01
-
-					if progress >= 100 then
-						if bonusResearch>0 then world.spawnItem("fuscienceresource",entity.position(),bonusResearch) end
-						if bonusEssence>0 then world.spawnItem("essence",entity.position(),bonusEssence) end
-						bonusEssence=0
-						bonusResearch=0
-						progress = 0
-						status = statusList.artifactID
-						oldItem.parameters.category = "^cyan;Researched Artifact^reset;"
-						oldItem.parameters.genomeInspected = true
-						world.containerTakeAt(entity.id(), 0)
-						world.containerPutItemsAt(entity.id(), oldItem, 0)
-					else
-						status = "^cyan;"..progress.."%"
-						-- ***** chance to gain research *****
-						local randCheck = math.random(10)
-						if randCheck == 1 then						
-							local rank = config.getParameter("rank",0)
-							bonusEssence=bonusEssence+((1+rank)*currentItem.count) -- Gain research as this is used
-						end
-						if randCheck ==2 then
-							local rank = config.getParameter("rank",0)
-							rank = 1 + rank
-							bonusResearch=bonusResearch+((25+rank)*currentItem.count)
-						end						
-					end
-				end				
 			else
 				status = statusList.invalid
 			end
-
-		else
-			progress = 0
-			if not (root.itemHasTag(currentItem.name, "queen") or root.itemHasTag(currentItem.name, "youngQueen") or root.itemHasTag(currentItem.name, "drone") or root.itemHasTag(currentItem.name, "artifact") ) then
-				status = statusList.invalid
-			end			
 		end
-
-		oldItem = currentItem
 	else
 		script.setUpdateDelta(-1)
 	end
 end
 
--- Straight outta util.lua
--- because NOPE to copying an ENTIRE script just for one function
-function compare(t1, t2)
-	if t1 == t2 then return true end
-	if type(t1) ~= type(t2) then return false end
-	if type(t1) ~= "table" then return false end
-	for k,v in pairs(t1) do if not compare(v, t2[k]) then return false end end
-	for k,v in pairs(t2) do if not compare(v, t1[k]) then return false end end
+function shoveItem(item,slot)
+	if not item then return end
+
+	local slotItem=world.containerItemAt(entity.id(),slot)
+	if slotItem and slotItem.name~=item.name then
+		if world.containerTakeAt(entity.id(),slot) then
+			world.spawnItem(slotItem,entity.position())
+		end
+	end
+
+	local leftovers=world.containerPutItemsAt(entity.id(),item,slot)
+	if leftovers then
+		world.spawnItem(leftovers,entity.position())
+	end
+end
+
+function nudgeItem(item,slot,slotItem)
+	--assumptive: compare(item,slotItem) prior to usage returns true, or slotItem is nil
+	if not item then return end
+
+	if not slotItem then
+		world.containerPutItemsAt(entity.id(),item,slot)
+		return true
+	end
+
+	local slotItemConfig=slotItem and root.itemConfig(slotItem)
+	if slotItemConfig then
+		slotItemConfig=mergedParams(slotItemConfig)
+		slotItemConfig=slotItemConfig.maxStack or defaultMaxStack
+	end
+
+	if (item.count+slotItem.count > slotItemConfig) then return false end
+
+	world.containerPutItemsAt(entity.id(),item,slot)
 	return true
 end
 
+function mergedParams(item)
+	if not item or not item.config then return end
+	if item.config and not item.parameters then return item.config end
+	return util.mergeTable(item.config,item.parameters)
+end
+
 function paneOpened()
-	script.setUpdateDelta(config.getParameter("scriptDelta"))
+	script.setUpdateDelta(defaultDelta)
 	playerUsing = true
 end
 

@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_darkdisguisesetkhe"
 
 shellBonus={
@@ -9,17 +8,17 @@ shellBonus={
 	{stat = "shadowImmunity", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1},
 
-    {stat = "snowslowImmunity", amount = 1},
-    {stat = "slushslowImmunity", amount = 1},
-    {stat = "clayslowImmunity", amount = 1},
-    {stat = "blacktarImmunity", amount = 1},
-    {stat = "fumudslowImmunity", amount = 1},
-    {stat = "jungleslowImmunity", amount = 1},
-    {stat = "quicksandImmunity", amount = 1},
-    {stat = "honeyslowImmunity", amount = 1},
-    {stat = "iceslipImmunity", amount = 1},
-    {stat = "slimeImmunity", amount = 1},
-    {stat = "slimestickImmunity", amount = 1}
+	{stat = "snowslowImmunity", amount = 1},
+	{stat = "slushslowImmunity", amount = 1},
+	{stat = "clayslowImmunity", amount = 1},
+	{stat = "blacktarImmunity", amount = 1},
+	{stat = "fumudslowImmunity", amount = 1},
+	{stat = "jungleslowImmunity", amount = 1},
+	{stat = "quicksandImmunity", amount = 1},
+	{stat = "honeyslowImmunity", amount = 1},
+	{stat = "iceslipImmunity", amount = 1},
+	{stat = "slimeImmunity", amount = 1},
+	{stat = "slimestickImmunity", amount = 1}
 }
 
 armorBonus={}
@@ -47,14 +46,13 @@ function update(dt)
 	end
 end
 
-
 function checkShell()
-		local rsp=status.stat("regeneratingshieldpercent")
-		if rsp > 0.05 then
-			effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
-			status.addEphemeralEffect("camouflage25")
-		else
-			effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
-			status.removeEphemeralEffect("camouflage25")
-		end
+	local rsp=status.stat("regeneratingshieldpercent")
+	if rsp > 0.05 then
+		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,shellBonus)
+		status.addEphemeralEffect("camouflage25")
+	else
+		effect.setStatModifierGroup(effectHandlerList.shellBonusHandle,{})
+		status.removeEphemeralEffect("camouflage25")
+	end
 end

@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_geologistset"
 
 weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.5} }
@@ -7,8 +8,6 @@ armorBonus={
 	{stat = "poisonStatusImmunity", amount = 1},
 	{stat = "pusImmunity", amount = 1}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

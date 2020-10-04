@@ -1,9 +1,10 @@
 function init()
-	self.magazineSize = config.getParameter("magazineSize",1)
-	self.reloadTime = config.getParameter("reloadTime",1)
+	self.magazineSize = config.getParameter("magazineSize",0)
+	self.reloadTime = config.getParameter("reloadTime",0)
 	
 	effect.addStatModifierGroup({
-	  {stat = "magazineSize", amount = self.magazineSize}
+		{stat = "magazineSize", amount = self.magazineSize},
+		{stat = "reloadTime", amount = self.reloadTime}
 	})
 end
 

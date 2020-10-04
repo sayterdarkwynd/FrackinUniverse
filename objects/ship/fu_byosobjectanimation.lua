@@ -21,13 +21,22 @@ function init()
 	self.direction = objectAnimator.direction()
 	self.objectType = config.getParameter("racialiserType")
 	self.doorState = config.getParameter("doorState")
+	self.racialiseCooldown = 5 --Make a config value later
+	self.racialiseTimer = 6 --Set to 0 if used
 end
 
 function update()
+	local dt = script.updateDt()
 	localAnimator.clearDrawables()
+	if config.getParameter("fs_racialiseUpdate") and self.racialiseTimer > self.racialiseCooldown then
+		init()
+		self.racialiseTimer = 0
+	end
+	--enable if i add a script to unset the racialise update parameter
+	--if self.racialiseTimer <= self.racialiseCooldown then
+		--self.racialiseCooldown = self.racialiseCooldown + dt
+	--end
 	if self.imageconfig then
-		dt = script.updateDt()
-		
 		if self.imageconfig[1].animationCycle and self.imageconfig[1].frames then
 			frame = math.floor((self.animationTimer / self.imageconfig[1].animationCycle) * self.imageconfig[1].frames)
 			if self.animationTimer == 0 then frame = 0 end

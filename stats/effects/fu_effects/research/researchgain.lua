@@ -11,7 +11,7 @@ function update(dt)
 		return {}
 	end
 
-	self.bonus = status.stat("researchBonus") or 0
+	self.bonus = status.stat("researchBonus")
 	self.baseVal = self.baseVal + self.bonus
 	self.myspeed = mcontroller.xVelocity() --check speed, dont drop madness if we are afking
 
