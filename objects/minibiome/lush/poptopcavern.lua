@@ -3,10 +3,6 @@ require "/scripts/messageutil.lua"
 
 function init()
 	self.warnOnce={}
-	--unnecessary,unused
-	--self.detectArea = config.getParameter("detectArea")
-	--self.detectArea[1] = object.toAbsolutePosition(self.detectArea[1])
-	--self.detectArea[2] = object.toAbsolutePosition(self.detectArea[2])
 
 	storage.uuid = storage.uuid or sb.makeUuid()
 	storage.tricorder = storage.tricorder or {}
@@ -28,7 +24,8 @@ function update(dt)
 	if messagePlayers then
 		for _, playerId in pairs (messagePlayers) do
 			promises:add(
-				world.sendEntityMessage(playerId, "fu_key", "statustablet"),
+				--world.sendEntityMessage(playerId, "fu_key", "statustablet"),
+				world.sendEntityMessage(playerId, "fu_key", "fuancientkey"),
 				function(successful)
 					if world.entityUniqueId(playerId) then
 						if successful then
@@ -49,8 +46,6 @@ function update(dt)
 			)
 		end
 	end
-	--unnecessary, unused
-	--local players = world.playerQuery(self.detectArea[1], self.detectArea[2], {boundMode = "CollisionArea"})
 end
 
 function onInteraction(args)
