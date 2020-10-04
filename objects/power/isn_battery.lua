@@ -98,8 +98,8 @@ function string.split(str, pat)
    return t
 end
 
-function isPower() return
-	"battery"
+function isPower()
+	return "battery"
 end
 function power.onNodeConnectionChange(arg)
 	return arg
