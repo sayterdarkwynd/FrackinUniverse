@@ -94,25 +94,48 @@ function init()
 
 				local researches = stringToAcronyms(dataString)
 				for i, acr in ipairs(researches) do
-
-					-- Remove acronyms that don't have a linked research
-					if not data.acronyms[tree][acr] then
+					local testBuffer=data.acronyms[tree][acr]
+					local acronymCheck=false
+					local acronymInTreeCheck=false
+					local unlockExistsCheck=false
+					local unlockType
+					
+					if testBuffer then
+						--test that the data for the relevant 'acronym' exists. if so, load research tree data for it.
+						acronymCheck=true
+						testBuffer=data.researchTree[tree][testBuffer]
+					end
+					if testBuffer then
+						--test that the acronym actually has tree data. if so, set it to the unlocks.
+						testBuffer=testBuffer.unlocks
+						acronymInTreeCheck=true
+					end
+					if testBuffer then
+						--check that the unlocks actually exist.
+						unlockExistsCheck=true
+						unlockType=type(testBuffer)
+					end
+					
+					if (not acronymCheck) or (not acronymInTreeCheck) then
+						-- Remove acronyms that don't have a linked research
+						-- in case of incomplete acronym pairing, remove and banana.
 						if i == 1 then
 							dataString = string.gsub(dataString, acr..",", "")
 						else
 							dataString = string.gsub(dataString, ","..acr..",", ",")
 						end
-
-					elseif type(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) == "table" then
+						--[[if acronymCheck or acronymInTreeCheck then
+							sb.logWarn("researchTree.lua: Acronym %s, exist=%s, exists in tree=%s. Pruning.",acr,acronymCheck,acronymInTreeCheck)
+						end]]
+					elseif unlockType == "table" then
 						for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
 							player.giveBlueprint(blueprint)
 						end
-
-					elseif data.researchTree[tree][data.acronyms[tree][acr]].unlocks then
+					elseif unlockType == "string" then
 						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
 					end
+					
 				end
-
 				researchedTable[tree] = data.versions[tree]..data.versionSplitString..dataString
 			end
 		end
