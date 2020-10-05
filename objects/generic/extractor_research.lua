@@ -36,6 +36,7 @@ function init()
 	message.setHandler("paneOpened", paneOpened)
 	message.setHandler("paneClosed", paneClosed)
 	message.setHandler("getStatus", getStatus)
+	math.randomseed(os.time())
 end
 
 function update(dt)
@@ -74,10 +75,9 @@ function update(dt)
 
 				local itemMaterial=(itemData.parameters and itemData.parameters.materialId) or (itemData.config and itemData.config.materialId)
 				local itemLiquid=(itemData.parameters and itemData.parameters.liquid) or (itemData.config and itemData.config.liquid)
-				local itemContainer=((itemData.parameters and itemData.parameters.objectType) or (itemData.config and itemData.config.objectType)) == "container"
+				local itemContainer=string.lower(((itemData.parameters and itemData.parameters.objectType) or (itemData.config and itemData.config.objectType)) or "") == "container"
 				itemData={price=(itemData.parameters and itemData.parameters.price) or (itemData.config and itemData.config.price) or 0,rarity=string.lower((itemData.parameters and itemData.parameters.rarity) or (itemData.config and itemData.config.rarity) or "common")}
-				itemData.rarityMult=rarityMult[itemData.rarity] or rarityMult["common"]
-				
+				itemData.rarityMult=rarityMult[string.lower(itemData.rarity)] or rarityMult["common"]
 				if itemMaterial or itemLiquid or itemContainer then
 					craftingState(false)
 					return
@@ -105,10 +105,19 @@ function update(dt)
 				end
 				
 				local eVal=rVal*self.eMult
+				local rValBuffer=rVal
+				local eValBuffer=eVal
+				
 				rVal=math.floor(rVal)
 				eVal=math.floor(eVal)
-
+				
 				local powerConversion=math.max(rVal,1)
+				
+				rValBuffer=rValBuffer-rVal
+				eValBuffer=eValBuffer-eVal
+				if rValBuffer > 0 then rVal=((math.random()>=rValBuffer) and (rVal+1)) or rVal end
+				if eValBuffer > 0 then eVal=((math.random()>=eValBuffer) and (eVal+1)) or eVal end
+				
 				powerConversion=math.floor(powerConversion)
 				
 				if (powered and not power.consume(powerConversion)) then
