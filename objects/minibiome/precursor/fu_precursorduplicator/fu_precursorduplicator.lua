@@ -1,3 +1,4 @@
+require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
@@ -11,6 +12,14 @@ function init()
 end
 
 function update(dt)
+
+	if deltaTime > 1 then
+		deltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		deltaTime=deltaTime+dt
+	end
+
 	local fuelSlot = world.containerItemAt(entity.id(),1)
 	fuelSlot = fuelSlot and fuelSlot.name or ""
 
