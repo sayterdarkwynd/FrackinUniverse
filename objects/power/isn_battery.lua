@@ -1,4 +1,5 @@
 require '/scripts/fupower.lua'
+require '/scripts/util.lua'
 
 function init()
 	power.init()
@@ -75,7 +76,7 @@ function isn_makeBatteryDescription(desc, charge)
 	-- append charge state to default description; ensure that it's on a line of its own
 	local str=string.split(desc,"^truncate;")
 	if str[1] then str=str[1] else str="" end
-	str = str .. (desc ~= '' and "\n" or '') .. "Power Stored: ^yellow;"..power.getStoredEnergy().."^reset;/^green;"..power.getMaxEnergy().."^reset;J (^yellow;" .. charge .. '^reset;%)'
+	str = str .. (desc ~= '' and "\n" or '') .. "Power Stored: ^yellow;"..util.round(power.getStoredEnergy(),1).."^reset;/^green;"..util.round(power.getMaxEnergy(),1).."^reset;J (^yellow;" .. charge .. '^reset;%)'
 	return str
 end
 
