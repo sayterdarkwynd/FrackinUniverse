@@ -5,7 +5,12 @@ function init()
 end
 
 function update(dt)
-	transferUtil.loadSelfContainer()
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
+	end
 	excavatorCommon.cycle(dt)
 end
 

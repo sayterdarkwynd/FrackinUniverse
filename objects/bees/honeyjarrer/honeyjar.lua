@@ -1,11 +1,9 @@
 require "/scripts/kheAA/transferUtil.lua"
-local deltaTime=0
 
 
 -- This code relies on scriptDelta(jarrer) == scriptDelta(ind.centrifuge) * craftDelay(ind.centrifuge).
 -- If this is not the case, then jars may be produced at a lower rate or not at all.
 function init()
-	transferUtil.init()
 	storage.combsProcessed = storage.combsProcessed or { count = 0 }
 	--sb.logInfo("jarrer: %s", storage.combsProcessed)
 	animator.setAnimationState("jar", "idle")
@@ -14,12 +12,13 @@ function init()
 end
 
 function update(dt)
-	if deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
+	
 	local contents = world.containerItems(entity.id())
 	local ents = world.objectQuery(entity.position(), 5, {name="industrialcentrifuge", order="nearest"})
 

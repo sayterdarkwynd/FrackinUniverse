@@ -15,7 +15,6 @@ local hasPower
 local parentCore --save the colony core as a local so you don't have to look for it every time
 
 function init()
-    transferUtil.init()
     object.setInteractive(true)
 	self.powerConsumption = config.getParameter("isn_requiredPower")
     productionTime = (config.getParameter("productionTime",120))/60

@@ -6,7 +6,6 @@ local rentTimer
 local rentGoal
 
 function init()
-  transferUtil.init()
 	wellRange=config.getParameter("wellRange",128)
 	rentGoal=config.getParameter("productionTime",150)
 	bonusHappiness = 10
@@ -26,7 +25,7 @@ function update(dt)
 		scanTimer=scanTimer+dt
 
 	end
-			rentTimer = rentTimer + 1
+	rentTimer = rentTimer + 1
 
 --	  for i=2,#config.getParameter('wellslots') do
 --	    if world.containerItemAt(entity.id(),i-1) and world.containerItemAt(entity.id(),i-1).name ~= config.getParameter('wellslots')[i].name then

@@ -2,7 +2,6 @@ require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
 require "/scripts/fupower.lua"
 
-local deltaTime=0
 local rarityMult={common=1.0, uncommon=1.15, rare=1.25, legendary=1.50,essential=1.50}
 
 function init()
@@ -12,7 +11,6 @@ function init()
 	else
 		powered = false
 	end
-	transferUtil.init()
 	self.mintick = 1.0
 	storage.timer = storage.timer or self.mintick
 	storage.crafting = storage.crafting or false
@@ -41,11 +39,11 @@ end
 
 function update(dt)
 	if not self.mintick then init() end
-	if deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
 	storage.timer = math.max(0,storage.timer - dt)

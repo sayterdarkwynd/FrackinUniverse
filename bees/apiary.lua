@@ -214,7 +214,6 @@ function init()
 		beeUpdateTimer = beeUpdateTimer + timerIncrement
 		sameTimers = world.objectQuery(entity.position(), 10, {withoutEntityId = entity.id(), callScript = "GetUpdateTimer", callScriptResult = beeUpdateTimer})
 	until (not sameTimers or #sameTimers == 0)
-	transferUtil.init()
 end
 
 -- First update, used to do some things we don't need every update. Switches to update2 when its not needed anymore

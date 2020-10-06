@@ -3,7 +3,6 @@ require "/scripts/kheAA/liquidLib.lua"
 local deltaTime = 0
 
 function init()
-  transferUtil.init()
   object.setInteractive(true)
 
   self.defaultOnAnimation = config.getParameter("defaultOnAnimation","other")
@@ -35,11 +34,12 @@ function predicateLiquidId()
 end
 
 function update(dt)
-  deltaTime = deltaTime + dt
-  if deltaTime > 1 then
-    deltaTime = 0
-    transferUtil.loadSelfContainer()
-  end
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
+	end
 
   local on = isOn()
 
