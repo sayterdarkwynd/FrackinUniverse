@@ -322,6 +322,9 @@ function transferUtil.getCategory(item)
 end
 
 function transferUtil.loadSelfContainer()
+	if not transferUtil.vars then
+		transferUtil.init()
+	end
 	transferUtil.vars.containerId=entity.id()
 	transferUtil.unloadSelfContainer()
 	transferUtil.vars.inContainers[transferUtil.vars.containerId]=storage.position
