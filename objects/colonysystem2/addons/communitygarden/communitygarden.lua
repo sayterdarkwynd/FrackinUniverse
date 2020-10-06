@@ -43,8 +43,6 @@ function init()
 		power.init()
 	end
 
-	transferUtil.init()
-
 	wellRange=config.getParameter("wellRange",256)
 	tenantNumber = 0
 	happinessAmount = (config.getParameter("happiness",0))

@@ -41,7 +41,6 @@ function init()
 		power.init()
 	end
 
-	transferUtil.init()
 	object.setInteractive(true)
 
 	storage.growth = storage.growth or 0 				--Plant growth completed

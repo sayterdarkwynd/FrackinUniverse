@@ -4,7 +4,6 @@ require "/scripts/kheAA/transferUtil.lua"
 -- This code relies on scriptDelta(jarrer) == scriptDelta(ind.centrifuge) * craftDelay(ind.centrifuge).
 -- If this is not the case, then jars may be produced at a lower rate or not at all.
 function init()
-	transferUtil.init()
 	storage.combsProcessed = storage.combsProcessed or { count = 0 }
 	--sb.logInfo("jarrer: %s", storage.combsProcessed)
 	animator.setAnimationState("jar", "idle")

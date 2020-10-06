@@ -4,7 +4,6 @@ require "/scripts/kheAA/transferUtil.lua"
 function init()
 	heat = config.getParameter('heat')
 	power.init()
-	transferUtil.init()
 end
 function update(dt)
 	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then

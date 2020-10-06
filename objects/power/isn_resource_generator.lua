@@ -2,7 +2,6 @@ require "/scripts/util.lua"
 require "/scripts/kheAA/transferUtil.lua"
 
 function init()
-	transferUtil.init()
 	object.setInteractive(true)
 	self.timer = 1
 end
