@@ -1,4 +1,4 @@
-require "/scripts/kheAA/transferUtil.lua"
+wrequire "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
@@ -13,7 +13,7 @@ end
 
 function update(dt)
 
-	if deltaTime > 1 then
+	if not deltaTime or deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
 	else
