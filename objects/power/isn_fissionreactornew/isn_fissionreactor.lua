@@ -4,7 +4,6 @@ require "/scripts/effectUtil.lua"
 
 function init()
     power.init()
-	transferUtil.init()
 	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	tritiumstack = world.containerSwapItems(entity.id(),{name = "tritium", count = 1, data={}},5)
 	object.setInteractive(true)
@@ -48,11 +47,11 @@ end
 
 
 function update(dt)
-	if not deltaTime or deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
 	for _,dink in pairs(radiationStates) do

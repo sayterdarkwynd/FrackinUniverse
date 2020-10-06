@@ -2,7 +2,6 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
 local recipes
-local deltaTime=0
 
 function init()
 	if config.getParameter('powertype') then
@@ -11,7 +10,6 @@ function init()
 	else
 		powered = false
 	end
-	transferUtil.init()
 	self.mintick = config.getParameter("fu_mintick", 1)
 	storage.timer = storage.timer or self.mintick
 	storage.crafting = storage.crafting or false
@@ -95,11 +93,11 @@ end
 function update(dt)
 
 	if not self.mintick then init() end
-	if deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
 	storage.timer = storage.timer - dt

@@ -2,8 +2,6 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/fupower.lua"
 
-timer = 0
-
 seedslot = 0
 waterslot = 1
 fertslot = 2
@@ -57,11 +55,12 @@ end
 --Updates the state of the object.
 function update(dt)
 	-- Updates container status (for ITD management)
-	if timer >= 1 then
-		timer = 0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	timer = timer + dt
 
 	-- Check tray inputs
 	local water,fert=checkTrayInputs()

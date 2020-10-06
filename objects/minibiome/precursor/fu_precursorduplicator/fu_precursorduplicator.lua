@@ -3,7 +3,6 @@ require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
 function init()
-	transferUtil.init()
 	power.init()
 	self = config.getParameter("duplicator")
 	self.craftTime = config.getParameter("craftTime")
@@ -14,11 +13,11 @@ end
 
 function update(dt)
 
-	if not deltaTime or deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
 	local fuelSlot = world.containerItemAt(entity.id(),1)
@@ -26,9 +25,9 @@ function update(dt)
 
 	local inputSlot = world.containerItemAt(entity.id(),0)
 	inputSlot = inputSlot and inputSlot.name or ""
-	
+
 	if not self.fuel then self.fuel={} end
-	
+
 	if not self.fuel[fuelSlot] then
 		local pass,fuelValue=pcall(root.itemConfig,fuelSlot)
 		if pass and fuelValue and fuelValue.config and fuelValue.config.fuelAmount then
@@ -47,7 +46,7 @@ function update(dt)
 		if wireCheck() then -- logic wires on? neutronium and antineutronium in?
 			if self.fuel[fuelSlot] > 0 then -- fueled?
 				if power.getTotalEnergy() >= config.getParameter('isn_requiredPower') then
-					
+
 					if contains(self.inputs,inputSlot) then
 						local pass,itemOre = pcall(root.itemConfig,inputSlot)
 
@@ -55,7 +54,7 @@ function update(dt)
 							local outputCount=1
 							itemValue = itemOre.parameters.price or itemOre.config.price
 							local fuelCost=itemValue/self.fuel[fuelSlot]
-							
+
 							if fuelCost>1 then
 								local leftovers=fuelCost-math.floor(fuelCost)
 								fuelCost=math.ceil(fuelCost)
@@ -71,7 +70,7 @@ function update(dt)
 								-- ~52% chance for one more
 								if leftovers then outputCount=outputCount+1 end
 								fuelCost=1
-								
+
 							end
 							if world.containerConsumeAt(entity.id(),1,fuelCost) then
 								animator.setAnimationState("base", "on")
@@ -90,7 +89,7 @@ function update(dt)
 		end
 		storage.timer2=1.0
 	end
-	
+
 	if storage.timer <= 0 then
 		if storage.crafting then
 
@@ -101,12 +100,12 @@ function update(dt)
 				if storage.output then
 					storage.output=world.containerPutItemsAt(entity.id(), storage.output, 0)
 				end
-				
+
 				if storage.output then
 					world.spawnItem(storage.output, entity.position())
 					storage.output=nil
 				end
-				
+
 				storage.fuelTaken=nil
 				storage.crafting = false
 			else
@@ -145,9 +144,9 @@ function wireCheck()
 	--since we're only really using them here these neutronium parts got added here. can easily be moved out if needed.
 	local neutronium = world.containerItemAt(entity.id(),2)
 	neutronium=neutronium and (neutronium.name=="neutronium")
-	
+
 	local antineutronium = world.containerItemAt(entity.id(),3)
 	antineutronium=antineutronium and (antineutronium.name=="antineutronium")
-	
+
 	return (neutronium and antineutronium) and (object.inputNodeCount() < 1 or not object.isInputNodeConnected(0) or object.getInputNodeLevel(0))
 end
