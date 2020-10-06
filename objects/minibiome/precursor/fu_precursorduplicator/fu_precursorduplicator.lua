@@ -1,4 +1,4 @@
-wrequire "/scripts/kheAA/transferUtil.lua"
+require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
