@@ -13,7 +13,7 @@ end
 
 function update(dt)
 
-	if deltaTime > 1 then
+	if not deltaTime or deltaTime > 1 then
 		deltaTime=0
 		transferUtil.loadSelfContainer()
 	else
