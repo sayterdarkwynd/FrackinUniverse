@@ -36,7 +36,6 @@ function init()
 		power.init()
 	end
 
-	transferUtil.init()
 	object.setInteractive(true)
 
 	storage.growth = storage.growth or 0 				--Plant growth completed
@@ -50,11 +49,12 @@ end
 --Updates the state of the object.
 function update(dt)
 	-- Updates container status (for ITD management)
-	if timer >= 1 then
-		timer = 0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	timer = timer + dt
 
 	-- Check tray inputs
 	local water,fert=checkTrayInputs()

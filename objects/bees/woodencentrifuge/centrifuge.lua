@@ -1,9 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 
-local deltaTime=0
-
 function init()
-	transferUtil.init()
 	self.itemChances = config.getParameter("itemChances")
 	self.inputSlot = config.getParameter("inputSlot")
 
@@ -74,11 +71,11 @@ function update(dt)
 	if not storage.init then
 		init()
 	end
-	if deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 	local input = world.containerItems(entity.id())[self.inputSlot]
 

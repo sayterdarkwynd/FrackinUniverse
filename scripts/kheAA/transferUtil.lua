@@ -145,6 +145,9 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 end
 
 function transferUtil.updateInputs()
+	if not transferUtil.vars then
+		transferUtil.init()
+	end
 	transferUtil.vars.input={}
 	transferUtil.vars.inContainers={}
 	if storage.disabled then return end
@@ -165,6 +168,9 @@ function transferUtil.updateInputs()
 end
 
 function transferUtil.updateOutputs()
+	if not transferUtil.vars then
+		transferUtil.init()
+	end
 	transferUtil.vars.output={}
 	transferUtil.vars.outContainers={}
 	if storage.disabled then return end
@@ -322,6 +328,9 @@ function transferUtil.getCategory(item)
 end
 
 function transferUtil.loadSelfContainer()
+	if not transferUtil.vars then
+		transferUtil.init()
+	end
 	transferUtil.vars.containerId=entity.id()
 	transferUtil.unloadSelfContainer()
 	transferUtil.vars.inContainers[transferUtil.vars.containerId]=storage.position
@@ -329,6 +338,9 @@ function transferUtil.loadSelfContainer()
 end
 
 function transferUtil.unloadSelfContainer()
+	if not transferUtil.vars then
+		transferUtil.init()
+	end
 	transferUtil.vars.inContainers={}
 	transferUtil.vars.outContainers={}
 end

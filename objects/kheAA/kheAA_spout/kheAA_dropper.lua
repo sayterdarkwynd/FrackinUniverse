@@ -1,7 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 
 function init()
-	transferUtil.init()
 	transferUtil.loadSelfContainer()
 end
 

@@ -3,7 +3,6 @@ require "/scripts/rect.lua"
 require "/scripts/kheAA/transferUtil.lua"
 
 function init()
-	transferUtil.init()
 	sellFactor = config.getParameter("sellFactor")
 	if not sellFactor then
 		animator.setAnimationState("shipper", "error")
@@ -35,11 +34,11 @@ function update(dt)
 		return
 	end
 
-	if not containerUpdateTimer or containerUpdateTimer > 1 then
-		containerUpdateTimer=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		containerUpdateTimer=containerUpdateTimer+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 	
 	if checkSurface then

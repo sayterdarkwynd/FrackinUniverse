@@ -1,7 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 
 function init()
-	transferUtil.init()
 	self=config.getParameter("wellConfig")
 	self.timer = math.random(self.timeRange.min or (300),self.timeRange.max or (600)) --spawn interval in seconds
 	--old numbers: script update 300 frames (5s) times 600 to 5000: 3000 to 25000 seconds. 50 to 416 minutes.

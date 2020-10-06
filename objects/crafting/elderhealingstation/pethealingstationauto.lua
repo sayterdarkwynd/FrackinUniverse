@@ -2,7 +2,6 @@ require "/scripts/kheAA/transferUtil.lua"
 
 function init()
 	self.acceptedPods = config.getParameter("acceptedPods")
-	transferUtil.init()
 end
 
 function heal(item)
