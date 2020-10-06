@@ -3,6 +3,7 @@ require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
 function init()
+	transferUtil.init()
 	power.init()
 	self = config.getParameter("duplicator")
 	self.craftTime = config.getParameter("craftTime")
