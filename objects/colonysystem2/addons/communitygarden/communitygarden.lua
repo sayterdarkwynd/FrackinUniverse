@@ -3,14 +3,12 @@ require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require "/scripts/fupower.lua"
 
-timer = 0
-
 seedslot = 0
 waterslot = 1
 fertslot = 2
 
 inputSlots = {seedslot, waterslot, fertslot}
-local tenantNumber 
+local tenantNumber
 local happinessAmount
 local scanTimer
 local parentCore --save the colony core as a local so you don't have to look for it every time
@@ -28,9 +26,9 @@ function init()
 		-- ??
 		-- ??
 	}
-	
-	
-	
+
+
+
 	multipliers = { growthRate=true } -- Which stats should be calculated as multipliers
 
 	if not storage.fert then storage.fert = {} end
@@ -45,18 +43,16 @@ function init()
 		power.init()
 	end
 
-	transferUtil.init()
-	
 	wellRange=config.getParameter("wellRange",256)
 	tenantNumber = 0
 	happinessAmount = (config.getParameter("happiness",0))
 	wellsDrawing = 0
 	scanTimer = 0
-	
+
 	getTenantNumber()
 	wellInit()
-	
-	
+
+
 	object.setInteractive(true)
 
 	storage.growth = storage.growth or 0 				--Plant growth completed
@@ -70,13 +66,14 @@ end
 --Updates the state of the object.
 function update(dt)
 	-- Updates container status (for ITD management)
-	if timer >= 1 then
-		timer = 0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	timer = timer + dt
-	
-	
+
+
 	-- Check tray inputs
 	local water,fert=checkTrayInputs()
 	storage.activeConsumption = false
@@ -104,8 +101,8 @@ function update(dt)
 		--sb.logInfo("growthmod: %s",growthmod)
 		growPlant(growthmod, dt)
 	end
-	
-	
+
+
 	handleTooltip({water=water,fert=fert,growthmod=growthmod,seed=storage.currentseed})--update description
 
 	storage.activeConsumption = true
@@ -158,8 +155,8 @@ function checkTrayInputs()
 	-- Update cache
 	storage.cacheWaterName = inputWater and inputWater.name or nil
 	storage.cacheFertName = inputFert and inputFert.name or nil
-	
-	
+
+
 	return water,fert
 end
 
@@ -169,8 +166,8 @@ function handleTooltip(args)
 	local desc = ""
 	wellInit()
 	getTenantNumber()
-	
-	
+
+
 	--growth rate and power calc
 	local growthrate=getFertSum('growthRate', args.fert, args.water)
 	local growthrate2=growthrate*(args.growthmod or 1)
@@ -191,14 +188,14 @@ function handleTooltip(args)
 	else
 		growthString='Growth Rate: ^green;' .. growthrate2*tenantNumber .. "^reset;\n"
 	end
-	
+
 	--seed use and seed display
 	local seedString=""
 	if args.seed and args.seed.name then
 		seedString=root.itemConfig(args.seed.name).config.shortdescription
 		seedString=" (^yellow;" .. seedString .. "^reset;)"
 	end
-	
+
 	local seedUseWith=getFertSum('seedUse', args.fert, args.water)
 	local seedUseWithout=getFertSum('seedUse', "absolutelynothing", "absolutelynothing")
 	if seedUseWith<seedUseWithout then
@@ -207,7 +204,7 @@ function handleTooltip(args)
 		seedUseWith="^red;"..seedUseWith.."^reset;"
 	end
 	seedString='Seeds Used: ' .. seedUseWith .. seedString .. "\n"
-	
+
 	--yield calc
 	local yieldWith=getFertSum('yield', args.fert, args.water)
 	local yieldWithout=getFertSum('yield', "absolutelynothing", "absolutelynothing")
@@ -227,8 +224,8 @@ function handleTooltip(args)
 	elseif waterUseWith>waterUseWithout then
 		waterUseWith="^red;"..waterUseWith.."^reset;"
 	end
-	
-	
+
+
 	--water value calc
 	local waterValueString='Water Value: '
 	local waterValue=(args.water and args.water.value or 0)
@@ -237,13 +234,13 @@ function handleTooltip(args)
 	else
 		waterValueString=waterValueString..waterValue
 	end
-	
-	
+
+
 	--colony stuff calc
 	local tenantsString = "\n^red;Tenants:^gray; "..tenantNumber
 	local similarObjectsString = "\n^red;Similar Objects:^gray; "..(wellsDrawing - 1)
 	local happinessString = "\n^red;Happiness Factor:^gray; "..happinessAmount
-	
+
 	--set desc!
 	desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString..similarObjectsString..tenantsString..happinessString
 	object.setConfigParameter('description', desc)
@@ -491,7 +488,7 @@ function getTenantNumber()
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange/2, { order = "nearest" })
-	
+
 		for _, objectId in pairs(objectIds) do
 				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
 					tenantNumber = world.callScriptedEntity(objectId,"getTenants")
@@ -499,16 +496,16 @@ function getTenantNumber()
 				end
 		end
 	end
-	
+
 end
 
 function providesHappiness() return true end
 
-function amountHappiness() 
+function amountHappiness()
 	if wellsDrawing == 1 then
-		return happinessAmount 
+		return happinessAmount
 	else
-		return 0 
+		return 0
 	end
-	
+
 end

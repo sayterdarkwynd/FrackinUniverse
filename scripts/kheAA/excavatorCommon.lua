@@ -24,7 +24,6 @@ node list:
 
 function excavatorCommon.init()
 	local buffer=""
-	transferUtil.init()
 	transferUtil.loadSelfContainer()
 	if storage.disabled then
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
