@@ -130,7 +130,7 @@ function fu_isAddonBloodDonation() return true end
 
 function getTenantNumber()
 	tenantNumber = 0
-	if parentCore then
+	if parentCore and world.entityExists(parentCore) then
 		tenantNumber = world.callScriptedEntity(parentCore,"getTenants")
 	else
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
