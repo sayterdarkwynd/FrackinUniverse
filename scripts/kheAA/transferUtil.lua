@@ -32,6 +32,7 @@ function transferUtil.init()
 	transferUtil.vars.logicNode=config.getParameter("kheAA_logicNode")
 	transferUtil.vars.inDataNode=config.getParameter("kheAA_inDataNode");
 	transferUtil.vars.outDataNode=config.getParameter("kheAA_outDataNode");
+	transferUtil.vars.didInit=true
 end
 
 function transferUtil.initTypes()
@@ -70,6 +71,10 @@ end
 
 function transferUtil.zoneAwake(targetBox)
 	if storage.disabled then return end
+	if not targetBox then return end
+	if not transferUtil.vars or not transferUtil.vars.didInit then
+		transferUtil.init()
+	end
 	if type(targetBox) ~= "table" then
 		dbg({"zoneawake failure, invalid input:",targetBox})
 		return nil
@@ -145,7 +150,7 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 end
 
 function transferUtil.updateInputs()
-	if not transferUtil.vars then
+	if not transferUtil.vars or not transferUtil.vars.didInit then
 		transferUtil.init()
 	end
 	transferUtil.vars.input={}
@@ -168,7 +173,7 @@ function transferUtil.updateInputs()
 end
 
 function transferUtil.updateOutputs()
-	if not transferUtil.vars then
+	if not transferUtil.vars or not transferUtil.vars.didInit then
 		transferUtil.init()
 	end
 	transferUtil.vars.output={}
@@ -328,7 +333,7 @@ function transferUtil.getCategory(item)
 end
 
 function transferUtil.loadSelfContainer()
-	if not transferUtil.vars then
+	if not transferUtil.vars or not transferUtil.vars.didInit then
 		transferUtil.init()
 	end
 	transferUtil.vars.containerId=entity.id()
@@ -338,7 +343,7 @@ function transferUtil.loadSelfContainer()
 end
 
 function transferUtil.unloadSelfContainer()
-	if not transferUtil.vars then
+	if not transferUtil.vars or not transferUtil.vars.didInit then
 		transferUtil.init()
 	end
 	transferUtil.vars.inContainers={}

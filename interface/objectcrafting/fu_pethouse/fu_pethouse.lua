@@ -73,12 +73,25 @@ end
 function getPetList()
 	petListTemp = {}
 	local races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
+	local raceTableOverride = root.assetJson("/frackinship/configs/racetableoverride.config")
 	for _, race in pairs (races) do
-		local techstationInfo = root.itemConfig(race .. "techstation")
+		if raceTableOverride[race] and raceTableOverride[race].race then
+			race = raceTableOverride[race].race
+		end
+		local techstation = race .. "techstation"
+		if raceTableOverride[race] and raceTableOverride[race].items then
+			for item, _ in pairs (raceTableOverride[race].items) do
+				if string.find(item, "techstation") then
+					techstation = item
+					break
+				end
+			end
+		end
+		local techstationInfo = root.itemConfig(techstation)
 		if techstationInfo and techstationInfo.config.shipPetType then
 			local shipPetType = techstationInfo.config.shipPetType
 			if not petListTemp[shipPetType] then
-				petListTemp[shipPetType] = race .. "techstation"
+				petListTemp[shipPetType] = techstation
 			end
 		end
 	end
@@ -91,7 +104,8 @@ function getPetList()
 		petListTemp.slimecritter = nil
 	end
 	
-	petListTemp = util.mergeTable(petListTemp, status.statusProperty("fu_byospethouseAddedPets", {}))
+	petListTemp = util.mergeTable(status.statusProperty("fu_byospethouseAddedPets", {}), petListTemp)
+	petListTemp = util.mergeTable(root.assetJson("/frackinship/configs/nontechstationshippetlist.config"), petListTemp)
 	
 	return petListTemp
 end
