@@ -29,7 +29,6 @@ function fu_configureShipPet()
 		petConfigPane.gui.itemGrid = nil
 		petConfigPane.gui.changeObjectPet.disabled = true
 		petConfigPane.gui.addObjectPetToList.disabled = true
-		--petConfigPane.gui.title = "Pet Configuration"
 		petConfigPane.containerId = pane.sourceEntity()
 		player.interact("ScriptPane", petConfigPane)
 	end
