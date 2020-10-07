@@ -3,7 +3,6 @@ require "/scripts/poly.lua"
 require "/scripts/vec2.lua"
 
 function init()
-	transferUtil.init()
 	wellRange=config.getParameter("wellRange",20)
 	wellInit()
 	setDesc()

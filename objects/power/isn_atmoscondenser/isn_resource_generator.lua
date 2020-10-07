@@ -13,7 +13,6 @@ require "/scripts/fupower.lua"
 local scanTimer	-- Making it local is faster than leaving it global.
 
 function init()
-    transferUtil.init()
     object.setInteractive(true)
     self.powerConsumption = config.getParameter("isn_requiredPower")
     productionTime = (config.getParameter("productionTime",120))/60

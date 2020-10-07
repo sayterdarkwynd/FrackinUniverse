@@ -2801,6 +2801,56 @@
             }
         },{
             "op": "add",
+            "path": "/fuhuntergun0",
+            "value": {
+                "stats": {
+                    "power": 2,
+                    "energy": 2,
+                    "mechMass": 2
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [7.8, 0],
+                    "extendTime": 0.725,
+                    "fireTime": 0.75,
+                    "projectileType": "gausspistolshot",
+                    "projectileInaccuracy": 0,
+                    "projectileCount": 1,
+                    "projectileParameters": {
+              "speed" : 120,
+              "damageKind" : "bow",
+              "piercing" : false,
+              "power" : 8
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/fusniperrifle2.png",
+                    "<armName>Fullbright": "arm/fusniperriflefullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "c44f4f",
+                    "953f3f",
+                    "723434",
+                    "470c0c"
+                ],
+                "defaultSecondaryColors": [
+                    "b0b0b0",
+                    "8b8b8b",
+                    "5c5c5c",
+                    "444444"
+                ],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/gun/rifle1.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
             "path": "/fumechswordbreaker",
             "value": {
                 "stats": {
