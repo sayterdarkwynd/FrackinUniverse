@@ -108,7 +108,7 @@ function routeItems(dt)
 	local outputSizeG = util.tableSize(transferUtil.vars.outContainers)
 	if outputSizeG == 0 then return end
 
-	for sourceContainer,sourcePos in pairs(transferUtil.vars.inContainers) do
+	for sourceContainer,sourcePos in pairs(transferUtil.vars.inContainers or {}) do
 		local outputSize = outputSizeG
 		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
 		if ping1 ~= nil then
@@ -118,7 +118,7 @@ function routeItems(dt)
 		local sourceItems=world.containerItems(sourceContainer)
 		
 		if sourceItems then
-			for indexIn,item in pairs(sourceItems) do
+			for indexIn,item in pairs(sourceItems or {}) do
 				local pass,mod = checkFilter(item)
 				if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
 					local outputSlotCountG = util.tableSize(storage.outputSlots)
@@ -137,7 +137,7 @@ function routeItems(dt)
 						item.count = math.floor(buffer)
 					end
 					item.count = item.count - (item.count % mod)
-					for targetContainer,targetPos in pairs(transferUtil.vars.outContainers) do
+					for targetContainer,targetPos in pairs(transferUtil.vars.outContainers or {}) do
 						local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
 						if ping2 ~= nil then
 							targetContainer=ping2
