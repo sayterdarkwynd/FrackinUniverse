@@ -315,13 +315,13 @@ function update(dt)
 		--is the world a higher threat level? if so, apply a bonus to research gain for 5 minutes
 		if world.threatLevel() > 1 then
 		  if self.environmentTimer > 300 then
-			  self.threatBonus = world.threatLevel() / 2
+			  self.threatBonus = world.threatLevel() / 1.5
 			  if self.threatBonus < 2 then   -- make sure its not giving too high a bonus, to a max of +3
 			  	self.threatBonus = 1
 			  elseif self.threatBonus > 3 then
 			  	self.threatBonus = 3
 			  elseif self.threatBonus > 6 and self.environmentTimer > 1500 then
-			  	self.threatBonus = 4			  	
+			  	self.threatBonus = 5			  	
 			  end		
 		  end
 		  self.environmentTimer = self.environmentTimer + 1	
