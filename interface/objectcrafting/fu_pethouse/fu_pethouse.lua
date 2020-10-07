@@ -73,7 +73,7 @@ end
 function getPetList()
 	petListTemp = {}
 	local races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
-	local raceTableOverride = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
+	local raceTableOverride = root.assetJson("/frackinship/configs/racetableoverride.config")
 	for _, race in pairs (races) do
 		if raceTableOverride[race] and raceTableOverride[race].race then
 			race = raceTableOverride[race].race

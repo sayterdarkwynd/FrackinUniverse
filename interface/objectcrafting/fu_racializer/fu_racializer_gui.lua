@@ -15,7 +15,7 @@ function init()
   self.costModifier = config.getParameter("costModifier", 4)
   self.itemConversions = config.getParameter("objectConversions", {})
   self.newItem = {}
-  self.raceTableOverride = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
+  self.raceTableOverride = root.assetJson("/frackinship/configs/racetableoverride.config")
   self.useAll = true
   raceTable = buildRaceTable()
   populateList()

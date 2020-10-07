@@ -65,7 +65,7 @@ function racialiseShip()
 	
 	-- Object racialisation
 	local objects = world.objectQuery(entity.position(), config.getParameter("racialiseRadius", 128))
-	local raceTableOverride = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
+	local raceTableOverride = root.assetJson("/frackinship/configs/racetableoverride.config")
 	if raceTableOverride[self.racialiseRace] and raceTableOverride[self.racialiseRace].race then
 		self.racialiseRace = raceTableOverride[self.racialiseRace].race
 	end
