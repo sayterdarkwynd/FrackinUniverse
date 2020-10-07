@@ -37,7 +37,7 @@ function update(dt)
 		end
 		
 		shipLevel = world.getProperty("ship.level")
-		if shipLevel == 0 then
+		if shipLevel == 0 and world.getProperty("fu_byos") then
 			if world.getProperty("fu_byos.newAtmosphereSystem") then
 				self.position = entity.position()
 				if roomCheckId then
