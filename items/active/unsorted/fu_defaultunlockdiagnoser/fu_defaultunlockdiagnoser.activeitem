@@ -1,11 +1,11 @@
 {
     "itemName" : "fu_defaultunlockdiagnoser",
-    "price" : 800,
+    "price" : 0,
     "inventoryIcon" : "fu_defaultunlockdiagnoser.png",
     "maxStack" : 1,
-    "rarity" : "Uncommon",
-    "description" : "Shows missing unlocks and ones that are where the vanilla ones should be in a pop-up, also prints it to your log.",
-    "shortdescription" : "Default Unlock Diagnoser",
+    "rarity" : "Essential",
+    "description" : "Use to check if you have any missing default unlocks. Prints items that could be causing the issue to the log.",
+    "shortdescription" : "^cyan;Default Unlock Checker",
     "category" : "Tool",
 
     "twoHanded" : true,
@@ -13,6 +13,12 @@
 	"animation" : "fu_defaultunlockdiagnoser.animation",
 
     "scripts" : ["fu_defaultunlockdiagnoser.lua"],
+	
+	"strings" : {
+		"numMissingUnlocks" : "There are <numMissing> default unlocks missing.",
+		"missingUnlocksPresent" : "Check your log for a list of default unlocks that are likely causing the issue.",
+		"logString" : "Default unlocks that are likely causing issues: "
+	},
 	
 	"defaultUnlocks" : [
 		"campfire",
