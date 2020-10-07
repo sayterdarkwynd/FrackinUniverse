@@ -4,7 +4,7 @@ require "/scripts/companions/util.lua"
 
 function init()
 	petList = getPetList()
-	containerId = pane.containerEntityId()
+	containerId = config.getParameter("containerId") or pane.containerEntityId()
 	baseButtonTimer = config.getParameter("buttonTimer", 1)
 	buttonTimer = baseButtonTimer
 	popupMessages = config.getParameter("popupMessages", {})
@@ -37,6 +37,9 @@ function updatePetParams()
 			end
 		end
 		setFoodLikings(petParams.foodLikings)
+	end, function()
+		player.interact("ShowPopup", {message = popupMessages.invalidTechstation or ""})
+		pane.dismiss()
 	end)
 end
 
