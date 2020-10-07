@@ -1,0 +1,52 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "fireKunai" : [ "/sfx/gun/plasma_pistol1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Trianglium Shards",
+    "type" : "triangliumblast",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/kunaiblast/kunaiblast.lua"],
+    "class" : "KunaiBlast",
+
+    // timing and angle adjust to launch projectiles during fire stance
+    "projectileTimesAndAngles" : [
+      [0.01, 20],
+      [0.02, 0],
+      [0.03, -20]
+    ],
+    "projectileOffset" : [0, 0],
+    "projectileType" : "triangliumshard",
+    "projectileParameters" : {
+      "baseDamage" : 4
+    },
+
+    "baseDamage" : 4,
+    "energyUsage" : 120,
+    "cooldownTime" : 3,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.2,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.25,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}
