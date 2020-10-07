@@ -14,6 +14,8 @@ function init()
 	self.monsterType = config.getParameter("shipPetType", "petweasel")
 	self.spawnOffset = config.getParameter("spawnOffset", {0, 2})
 	
+	self.hasInputNode = config.getParameter("inputNodes")
+	
 	message.setHandler("getPetParams", function()
 		return storage.petParams
 	end)
@@ -28,7 +30,10 @@ function init()
 		if petName ~= storage.petParams.shortdescription then
 			storage.petParams.shortdescription = petName
 			if petName ~= "" then
-				object.setConfigParameter("shortdescription", "Pet House (" .. petName .. ")")
+				local item = root.itemConfig(object.name())
+				if item then
+					object.setConfigParameter("shortdescription", item.config.shortdescription .. " (" .. petName .. ")")
+				end
 			end
 			if self.petId then
 				world.callScriptedEntity(self.petId, "monster.setName", petName)
@@ -98,7 +103,7 @@ function respawnPet()
 end
 
 function wireCheck()
-	if object.isInputNodeConnected(0) then
+	if self.hasInputNode and object.isInputNodeConnected(0) then
 		return object.getInputNodeLevel(0)
 	else
 		return false
