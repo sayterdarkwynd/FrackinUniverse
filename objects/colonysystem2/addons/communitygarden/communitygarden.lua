@@ -15,6 +15,8 @@ local parentCore --save the colony core as a local so you don't have to look for
 
 
 function init()
+	transferUtil.loadSelfContainer()
+
 	defaults = {
 		growthRate = config.getParameter("baseGrowthPerSecond", 4),  -- Multiplier on vanilla plant growth speed
 		seedUse = config.getParameter("defaultSeedUse", 3),          -- Amount of seeds consumed per plant (for perennials, starting cost)
@@ -164,8 +166,9 @@ end
 function handleTooltip(args)
 	-- Generate new description
 	local desc = ""
+
 	wellInit()
-	getTenantNumber()
+
 
 
 	--growth rate and power calc
@@ -474,6 +477,8 @@ function resetBonuses()
 end
 
 function wellInit()
+	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+	getTenantNumber()
 	if not wellRange then wellRange=config.getParameter("wellRange",256) end
 	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAddonCommunityFarm"}) or {})
 end
