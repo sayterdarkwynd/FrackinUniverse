@@ -109,7 +109,7 @@ function update(dt)
 				rVal=math.floor(rVal)
 				eVal=math.floor(eVal)
 				
-				local powerConversion=math.max(rVal,1)
+				local powerConversion=math.max(rVal*0.42,1)
 				
 				rValBuffer=rValBuffer-rVal
 				eValBuffer=eValBuffer-eVal
