@@ -1,6 +1,12 @@
 require "/scripts/util.lua"
 
 function init()
+	--Set the image of the object
+	local petHouseType = config.getParameter("petHouseType", "default")
+	local petHouseDirectory = config.getParameter("petHouseDirectory", "/")
+	animator.setGlobalTag("petHouseType", petHouseType)
+	animator.setGlobalTag("petHouseDirectory", petHouseDirectory)
+
 	--Restore stored storage
 	if config.getParameter("storageData") then
 		storage = config.getParameter("storageData")
