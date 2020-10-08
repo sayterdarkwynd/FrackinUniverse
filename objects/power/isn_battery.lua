@@ -18,11 +18,10 @@ end
 end]]
 
 function update(dt)
-	object.setConfigParameter('description', isn_makeBatteryDescription())
-	power.update(dt)
-	power.setPower(power.getStoredEnergy())
-	local powerlevel = math.floor(power.getStoredEnergy() / power.getMaxEnergy() * 10)
-	animator.setAnimationState("meter", power.getStoredEnergy() == 0 and 'd' or tostring(math.floor(powerlevel)))
+    object.setConfigParameter('description', isn_makeBatteryDescription())
+    power.update(dt)
+    power.setPower(power.getStoredEnergy())
+    animator.setAnimationState("meter", power.getStoredEnergy() == 0 and 'd' or tostring(math.floor(math.min(power.getStoredEnergy() / power.getMaxEnergy(),1.0) * 10),10))
 end
 
 function die()
