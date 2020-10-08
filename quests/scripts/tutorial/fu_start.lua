@@ -4,12 +4,11 @@ require("/quests/scripts/questutil.lua")
 function init()
 	storage.hasPickaxe = storage.hasPickaxe or 0
 	setPortraits()
-	setStage(1)
 	message.setHandler("fu_completeTutorial", function() setStage(4) end)
 end
 
 function questStart()
-
+	setStage(1)
 end
 
 function questComplete()

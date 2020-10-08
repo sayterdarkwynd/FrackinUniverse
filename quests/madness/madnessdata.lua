@@ -19,7 +19,7 @@ function init()
 	self.researchCount = player.currency("fuscienceresource") or 0
 	self.baseVal = config.getParameter("baseValue") or 1
     self.timerCounter = 0
-    self.environmentTimer = 0 
+    self.environmentTimer = 0
 
 	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
@@ -109,6 +109,8 @@ function randomEvent()
 			end
 		elseif self.randEvent == 45 then
 			status.addEphemeralEffect("runboost15",self.curseDuration_status) -- run boost!
+		elseif self.randEvent == 46 then
+			player.radioMessage("madnesscat") -- completely harmless, purely to confuse
 		end
 	end
 	if self.madnessCount > 1000 then
@@ -155,6 +157,11 @@ function randomEvent()
 			status.addEphemeralEffect("percentarmorboostneg"..tostring(math.random(1,5)),self.curseDuration_status)--randomly get a penalty multiplier of 0.9 to 0.5 for defense
 		elseif self.randEvent == 31 then
 			status.addEphemeralEffect("feedpackneg",self.curseDuration_status) --more hunger
+			if math.random() >= 0.85 then
+				status.addEphemeralEffect("wellfed")
+			else
+				status.removeEphemeralEffect("wellfed")
+			end
 			player.radioMessage("madnessfood")
 		elseif self.randEvent == 32 then
 			status.addEphemeralEffect("runboostdebuff",self.curseDuration_status) -- run boost!
@@ -179,9 +186,12 @@ function randomEvent()
 		if self.randEvent == 11 then
 			status.addEphemeralEffect("nude",self.curseDuration_status) --harmless, but silly. YOU ARE NAKEY!
 		elseif self.randEvent == 12 then
-			status.addEphemeralEffect("staffslow2",self.curseDuration_status) -- obnoxious.
+			status.addEphemeralEffect("madnessslow1",self.curseDuration_status) -- old one (staffslow2) was too strong and easily cheated.
+			player.radioMessage("madness2")
 		elseif self.randEvent == 13 then
-			status.addEphemeralEffect("medicaltoxiccloud",self.curseDuration) -- should probably swap for a madness specific variant.
+			status.addEphemeralEffect("toxiccloudmadness",self.curseDuration) -- swapped for a madness specific variant.
+			status.addEphemeralEffect("madnessslow2",self.curseDuration_status)
+			player.radioMessage("madnessbeans")
 		elseif self.randEvent == 14 then
 			status.addEphemeralEffect("loweredshadow",self.curseDuration_status) --more susceptible to shadow
 		elseif self.randEvent == 15 then
@@ -191,7 +201,7 @@ function randomEvent()
 		elseif self.randEvent == 17 then
 			status.addEphemeralEffect("insanity",self.curseDuration_status) --player feels insane
 		elseif self.randEvent == 18 then
-			status.addEphemeralEffect("slow",self.curseDuration_status) --slows the player for a while
+			status.addEphemeralEffect("madnessslow2",self.curseDuration_status) --slows the player for a while
 			player.radioMessage("madness2")
 		elseif self.randEvent == 19 then
 			status.addEphemeralEffect("runboost5",curseDuration_fast) -- run boost 5!
@@ -209,15 +219,31 @@ function randomEvent()
 			status.addEphemeralEffect("swimboost1",self.curseDuration_status) -- Swim boost 1!
 		elseif self.randEvent == 26 then
 			status.addEphemeralEffect("vulnerability",self.curseDuration_fast) --vulnerability multiplies all resists and defense by 0.01, biiiig ouch. severely reducing the max duration of this.
+			player.radioMessage("madnessvuln")
 		elseif self.randEvent == 27 then
 			status.setPersistentEffects("madnessEffectsMain", {{stat = "fuCharisma", baseMultiplier = (1.0-(math.random(6,40)/100.0)) }}) --random charisma penalty.
 		elseif self.randEvent == 28 then
 			if status.isResource("food") then
+				status.removeEphemeralEffect("wellfed")
 				status.setResource("food",math.random(1.0,status.stat("maxFood"))) --your current hunger is randomized
+				if status.resourcePercentage("food") >= 1.0 then
+					if math.random()>=0.5 then
+						status.addEphemeralEffect("wellfed")
+					end
+				end
+				player.radioMessage("madnessfood")
+			else
+				status.setResource("energy",math.random(1.0,status.stat("maxEnergy")))
+				player.radioMessage("madnessenergy")
 			end
-			player.radioMessage("madnessfood")
 		elseif self.randEvent == 29 then --max food reduction
-			status.setPersistentEffects("madnessEffectsMain", {{stat = "maxFood", amount = -1*math.random(1,8)}})
+			if status.isResource("food") then
+				status.setPersistentEffects("madnessEffectsMain", {{stat = "maxFood", amount = -1*math.random(1,8)}})
+			else
+				status.addEphemeralEffect("toxiccloudmadness",self.curseDuration_status)
+				status.addEphemeralEffect("madnessslow2",self.curseDuration_status)
+				player.radioMessage("madnessbeans")
+			end
 		end
 	end
 	if self.madnessCount > 150 then
@@ -311,20 +337,20 @@ function update(dt)
 		self.threatBonus=0
 		self.madnessResearchBonus = 0
 		self.researchBonus = 0
-		
-		--is the world a higher threat level? if so, apply a bonus to research gain for 5 minutes
+
+		--is the world a higher threat level? if so, apply a bonus to research gain after 5 minutes, increased further after 25 minutes if over tier 6
 		if world.threatLevel() > 1 then
 		  if self.environmentTimer > 300 then
 			  self.threatBonus = world.threatLevel() / 1.5
 			  if self.threatBonus < 2 then   -- make sure its not giving too high a bonus, to a max of +3
 			  	self.threatBonus = 1
+			  elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
+			  	self.threatBonus = 5
 			  elseif self.threatBonus > 3 then
 			  	self.threatBonus = 3
-			  elseif self.threatBonus > 6 and self.environmentTimer > 1500 then
-			  	self.threatBonus = 5			  	
-			  end		
+			  end
 		  end
-		  self.environmentTimer = self.environmentTimer + 1	
+		  self.environmentTimer = self.environmentTimer + dt
 	    end
 		-- how crazy are we?
 		if player.currency("fumadnessresource") then
@@ -341,7 +367,7 @@ function update(dt)
 			player.addCurrency("fuscienceresource",1 + self.bonus)
 			self.timerCounter = 0
 		else
-			self.timerCounter = self.timerCounter + 1
+			self.timerCounter = self.timerCounter + dt
 		end
 	end
 
@@ -355,7 +381,7 @@ function update(dt)
 	end
 
 	self.madnessCount = player.currency("fumadnessresource")
-	self.researchCount = player.currency("fuscienceresource") 
+	self.researchCount = player.currency("fuscienceresource")
 
 	-- timing refresh for sculptures, painting effects
 	self.paintTimer = math.max(0,self.paintTimer - dt)

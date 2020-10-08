@@ -6,6 +6,7 @@ local rentTimer
 local rentGoal
 
 function init()
+	transferUtil.loadSelfContainer()
 	wellRange=config.getParameter("wellRange",128)
 	rentGoal=config.getParameter("productionTime",150)
 	bonusHappiness = 10
@@ -70,6 +71,7 @@ function update(dt)
 end
 
 function wellInit()
+	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 	wellsDrawing= #(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="isOccupiedMk2", callScriptResult = true}) or {})
 	tallyHappiness()
 end
