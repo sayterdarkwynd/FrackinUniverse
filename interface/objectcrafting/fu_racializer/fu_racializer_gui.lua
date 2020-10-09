@@ -317,7 +317,12 @@ function getPlacementImage(objectOrientations, objectDirectory, positionOverride
 	else
 		objectImage = objectOrientation.dualImage or objectOrientation.image
 	end
-	local newPlacementImage = objectDirectory .. objectImage
+	local newPlacementImage
+	if string.sub(objectImage, 1, 1) ~= "/" then
+		newPlacementImage = objectDirectory .. objectImage
+	else
+		newPlacementImage = objectImage
+	end
 
 	local newPlacementImagePosition = objectOrientation.imagePosition
 	if positionOverride then
@@ -329,7 +334,11 @@ end
 function getNewParameters(newItemInfo, positionOverride)
 	local newParameters = {}
 	if newItemInfo then
-		newParameters.inventoryIcon = newItemInfo.directory .. newItemInfo.config.inventoryIcon
+		if string.sub(newItemInfo.config.inventoryIcon, 1, 1) ~= "/" then
+			newParameters.inventoryIcon = newItemInfo.directory .. newItemInfo.config.inventoryIcon
+		else
+			newParameters.inventoryIcon = newItemInfo.config.inventoryIcon
+		end
 		newParameters.placementImage, newParameters.placementImagePosition = getPlacementImage(newItemInfo.config.orientations, newItemInfo.directory, positionOverride)
 		newParameters.imageConfig = getNewOrientations(newItemInfo, positionOverride)
 		newParameters.imageFlipped = newItemInfo.config.sitFlipDirection
@@ -344,16 +353,28 @@ function getNewOrientations(newItemInfo, positionOverride)
 		if imageLayers then
 			for num2, _ in pairs (imageLayers) do
 				local imageLayer = imageLayers[num2].image
-				newOrientations[num].imageLayers[num2].image = newItemInfo.directory .. imageLayer
+				if string.sub(imageLayer, 1, 1) ~= "/" then
+					newOrientations[num].imageLayers[num2].image = newItemInfo.directory .. imageLayer
+				else
+					newOrientations[num].imageLayers[num2].image = imageLayer
+				end
 			end
 		end
 		local dualImage = newOrientations[num].dualImage
 		if dualImage then
-			newOrientations[num].dualImage = newItemInfo.directory .. dualImage
+			if string.sub(dualImage, 1, 1) ~= "/" then
+				newOrientations[num].dualImage = newItemInfo.directory .. dualImage
+			else
+				newOrientations[num].dualImage = dualImage
+			end
 		end
 		local image = newOrientations[num].image
 		if image and not imageLayers then --Avali teleporter fix
-			newOrientations[num].image = newItemInfo.directory .. image
+			if string.sub(image, 1, 1) ~= "/" then
+				newOrientations[num].image = newItemInfo.directory .. image
+			else
+				newOrientations[num].image = image
+			end
 		end
 	end
 	if positionOverride then
