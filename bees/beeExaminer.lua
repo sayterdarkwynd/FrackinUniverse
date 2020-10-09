@@ -8,6 +8,7 @@ local statusList={--progress status doesnt matter, but for any other status indi
 	artifactID="^green;Artifact identified",
 	artifactElderID="^green;Artifact identified",
 	artifactProtheonID="^green;Artifact identified",
+	artifactBasicID="^green;Artifact identified",
 	geodeID="^green;Artifact identified",
 	invalid="^red;Invalid sample detected"
 }
@@ -19,7 +20,8 @@ local tagList={
 	drone={range=100,currencies={bonusResearch=0}},
 	geode={range=20,currencies={bonusResearch=5,bonusEssence=1},overrideCategory="geodeResearched"},
 	artifact={range=35,currencies={bonusResearch=50,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"},
-	artifactElder={range=25,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"}
+	artifactElder={range=25,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"},
+	artifactBasic={range=50,currencies={bonusResearch=15,bonusEssence=0},overrideCategory="artifactResearched"}
 }
 
 function init()
