@@ -131,9 +131,8 @@ controllerChain = {
 }
 
 function init()
-	-- Commit lifen't on non-players
+	-- Do nothing if the entity is not a player. (Don't expire the status effect as it might have other functionality)
 	if world.entityType(entity.id()) ~= "player" then
-		effect.expire()
 		return
 	end
 
