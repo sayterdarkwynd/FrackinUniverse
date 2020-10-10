@@ -2,20 +2,14 @@ require "/objects/generic/centrifuge_recipes.lua"
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
-local deltaTime=0
-
 
 function init()
 	if config.getParameter('powertype') then
 		power.init()
-	powered = true
+		powered = true
 	else
 		powered = false
 	end
-	transferUtil.init()
-	--storage.currentinput = nil
-	--storage.currentoutput = nil
-	--storage.bonusoutputtable = nil
 	storage.activeConsumption = storage.activeConsumption or false
 
 	self.centrifugeType = config.getParameter("centrifugeType") or error("centrifugeType is undefined in .object file") -- die horribly
@@ -48,13 +42,12 @@ function deciding(item)
 end
 
 function update(dt)
-	if deltaTime>1 then
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
-		deltaTime=0
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	
 	
 	if not storage.input then
 		local input

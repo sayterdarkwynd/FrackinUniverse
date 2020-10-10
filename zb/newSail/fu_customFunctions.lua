@@ -14,3 +14,22 @@ function fu_toggleAtmosphereMode()
 	resetGUI()
 	textTyper.init(cfg.TextData, text)
 end
+
+function fu_configureShipPet()
+	local shipPet = world.getObjectParameter(pane.sourceEntity(), "shipPetType")
+	if not shipPet then
+		text = "This feature only works on SAILs that have a pet."
+		resetGUI()
+		textTyper.init(cfg.TextData, text)
+		return
+	end
+	
+	local petConfigPane = root.assetJson("/interface/objectcrafting/fu_pethouse/fu_pethouse.config")
+	if petConfigPane and petConfigPane.gui then
+		petConfigPane.gui.itemGrid = nil
+		petConfigPane.gui.changeObjectPet.disabled = true
+		petConfigPane.gui.addObjectPetToList.disabled = true
+		petConfigPane.containerId = pane.sourceEntity()
+		player.interact("ScriptPane", petConfigPane)
+	end
+end

@@ -1,7 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 local deltaTime=0
 function init()
-	transferUtil.init()
 	-- these are items wich will be used for upgrade
 	upgradeItemsList = {
 		["upgrademodule"] = true
@@ -22,11 +21,11 @@ end
 
 
 function update(dt)
-	if deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
 	local itemForUpgrade = world.containerItemAt(entity.id(), 0)

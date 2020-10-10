@@ -15,7 +15,7 @@ function init()
 		self.image = self.image .. "?flipx"
 	end
 	self.imageLayers = self.imageconfig[1].imageLayers
-	imageSize = root.imageSize(self.image:gsub("<frame>", 1):gsub("<color>", "default"):gsub("<key>", 1))
+	imageSize = root.imageSize(self.image:gsub("<frame>", 0):gsub("<color>", "default"):gsub("<key>", 1))
 	imageOffset = self.imageconfig[1].imagePosition
 	self.imagePosition = vec2.sub(self.position, vec2.div(vec2.sub(vec2.div(imageSize, 2), vec2.add(imageSize, imageOffset)), 8))
 	self.direction = objectAnimator.direction()

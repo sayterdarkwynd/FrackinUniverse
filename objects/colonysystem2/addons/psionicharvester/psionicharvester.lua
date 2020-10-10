@@ -15,7 +15,8 @@ local hasPower
 local parentCore --save the colony core as a local so you don't have to look for it every time
 
 function init()
-    transferUtil.init()
+	transferUtil.loadSelfContainer()
+
     object.setInteractive(true)
 	self.powerConsumption = config.getParameter("isn_requiredPower")
     productionTime = (config.getParameter("productionTime",120))/60
@@ -94,7 +95,7 @@ function update(dt)
 			if object.outputNodeCount() > 0 then
 				object.setOutputNodeLevel(0,true)
 			end
-			animator.setAnimationState("samplingarrayanim", "working")
+            animator.setAnimationState("screen", "on")
 		
 			world.containerAddItems(entity.id(), output)
 			hasPower = 1
@@ -102,7 +103,7 @@ function update(dt)
 			if object.outputNodeCount() > 0 then
 				object.setOutputNodeLevel(0,false)
 			end
-			animator.setAnimationState("samplingarrayanim", "idle")
+			animator.setAnimationState("screen", "off")
 			hasPower = 0
 		end
 		storage.timer=0
@@ -126,16 +127,17 @@ end
 
 
 function wellInit()
+	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
+	getTenantNumber()
 	if not wellRange then wellRange=config.getParameter("wellRange",256) end
 	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAddonPsionicHarvester"}) or {})
-	getTenantNumber()
 end
 
 function fu_isAddonPsionicHarvester() return true end
 
 function getTenantNumber()
 	tenantNumber = 0
-	if parentCore then
+	if parentCore and world.entityExists(parentCore) then
 		tenantNumber = world.callScriptedEntity(parentCore,"getTenants")
 	else
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))

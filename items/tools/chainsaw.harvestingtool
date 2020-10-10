@@ -10,11 +10,11 @@
   "largeImage" : "chainsawbig.png",
   "image" : "chainsaw.png:{frame}",
   "frames" : 5,
-  "animationCycle" : 1,
+  "animationCycle" : 0.1,
   "tooltipKind" : "tool",
 //  "learnBlueprintsOnPickup" : [ "HarvesterBeam" ],
   "handPosition" : [-6, 3],
-  "fireTime" : 0.1,
+  "fireTime" : 0.08,
   "blockRadius" : 5,
   "altBlockRadius" : 2,
   "tileDamage" : 55.5,
@@ -22,28 +22,13 @@
 
   "durability" : 5000,
   "durabilityPerUse" : 1,
-  
+   "swingStart" : 0,
+  "swingFinish" : 0, 
   "twoHanded" : true,
   "idleSound" : "/sfx/tools/chainsaw_idle.ogg",
-  "strikeSounds" : [ "/sfx/melee/mech_chainsaw_swing1.ogg" ],
+  "strikeSounds" : [ "/sfx/tools/chainsaw_swing.ogg" ],
   "stances" : {
         "idle" : {
-          "armRotation" : -90,
-          "weaponRotation" : -10,
-          "weaponOffset" : [0.8, 2.25],
-  
-          "allowFlip" : true,
-          "allowRotate" : false
-        },
-        "windup" : {
-          "armRotation" : -90,
-          "weaponRotation" : -10,
-          "weaponOffset" : [0.8, 2.25],
-  
-          "allowFlip" : true,
-          "allowRotate" : false
-        },
-        "fire" : {
           "armRotation" : -90,
           "weaponRotation" : -10,
           "weaponOffset" : [0.8, 2.25],

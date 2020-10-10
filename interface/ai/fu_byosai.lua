@@ -50,7 +50,7 @@ function generateShipLists()
 		if id == "vanilla" then
 			ship.vanillaShip = data
 		elseif id == "racial" then
-			local racialShipData = root.assetJson("/universe_server.config").speciesShips
+			--[[local racialShipData = root.assetJson("/universe_server.config").speciesShips
 			local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
 			local races
 			if data.disallowOtherRaceShips then
@@ -98,7 +98,7 @@ function generateShipLists()
 				shipData.icon = "/interface/title/" .. shipData.icon
 				shipData.id = race .. "racial"
 				table.insert(ship.upgradableShips, shipData)
-			end
+			end ]]--
 		else
 			-- make this less bad
 			if data.raceWhitelist and not data.raceWhitelist[playerRace] then

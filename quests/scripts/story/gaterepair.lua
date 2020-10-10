@@ -121,7 +121,7 @@ end
 
 
 function checkGate()
-  if player.hasItem({name = "statustablet", count = 1}) then
+  if player.hasItem({name = "fuancientkey", count = 1}) then
     self.gateUid = "ancientgate2"
   else
     self.gateUid = "ancientgate"
@@ -289,5 +289,4 @@ function questComplete()
   end 
   
   world.sendEntityMessage(player.id(), "setQuestFuelCount", 500)
-
 end

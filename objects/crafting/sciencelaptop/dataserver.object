@@ -1,51 +1,53 @@
 {
-  "objectName" : "dataserver",
-  "rarity" : "rare",
-  "description" : "Performs much more advanced research on items.",
-  "shortdescription" : "Research Server",
-  "race" : "generic",
-  "category" : "storage",
-  "price" : 2750,
-  "printable" : false,
-  "objectType" : "container",
+	"objectName" : "dataserver",
+	"rarity" : "rare",
+	"description" : "Performs much more advanced research on items.\n^cyan;Research Rate^reset;: 3%, 1s",
+	"shortdescription" : "Research Server",
+	"race" : "generic",
+	"category" : "^orange;Extraction Device",
+	"price" : 2750,
+	"printable" : false,
+	"objectType" : "container",
 
-  "inventoryIcon" : "astroservericon.png",
-  "orientations" : [
-    {
-      "direction" : "left",
-      "imageLayers" : [ { "image" : "dataserver.png:<color>.<frame>", "fullbright" : true }, { "image" : "dataserverlit.png:<color>.<frame>" } ],
-      "flipImages" : true,
-      "imagePosition" : [0, 0],
-      "frames" : 5,
-      "animationCycle" : 6.0,
+	"inventoryIcon" : "astroservericon.png",
+	"orientations" : [
+		{
+			"direction" : "left",
+			"imageLayers" : [ { "image" : "dataserver.png:<color>.<frame>", "fullbright" : true }, { "image" : "dataserverlit.png:<color>.<frame>" } ],
+			"flipImages" : true,
+			"imagePosition" : [0, 0],
+			"frames" : 5,
+			"animationCycle" : 6.0,
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
 
-    },
-    {
-      "direction" : "right",
-      "imageLayers" : [ { "image" : "dataserver.png:<color>.<frame>", "fullbright" : true }, { "image" : "dataserverlit.png:<color>.<frame>" } ],
+		},
+		{
+			"direction" : "right",
+			"imageLayers" : [ { "image" : "dataserver.png:<color>.<frame>", "fullbright" : true }, { "image" : "dataserverlit.png:<color>.<frame>" } ],
 
-      "imagePosition" : [0, 0],
-      "frames" : 5,
-      "animationCycle" : 6.0,
+			"imagePosition" : [0, 0],
+			"frames" : 5,
+			"animationCycle" : 6.0,
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
+			"spaceScan" : 0.1,
+			"anchors" : [ "bottom" ]
 
-    }
-  ],
-  "outputNodes" : [ [2, 1] ],
-  "openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
-  "closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
-  "scripts" : [ "/objects/generic/extractor_research.lua" ],
-  "scriptDelta" : 10,
-  "slotCount" : 2,
-  "uiConfig" : "/bees/interface/beeexaminer/beeexaminer2.config",
-  "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600,
-  "fu_timerMod":1.0,
-  "fu_researchMult":0.03,
-  "fu_essenceMult":0.0
+		}
+	],
+	"powertype" : "input",
+	"inputNodes" : [ [2, 1] ],
+	"outputNodes" : [ [2, 2] ],
+	"openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+	"closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],
+	"scripts" : [ "/objects/generic/extractor_research.lua" ],
+	"scriptDelta" : 10,
+	"slotCount" : 2,
+	"uiConfig" : "/bees/interface/beeexaminer/beeexaminer2.config",
+	"frameCooldown" : 67,
+	"autoCloseCooldown" : 3600,
+	"fu_timerMod":1.0,
+	"fu_researchMult":0.03,
+	"fu_essenceMult":0.0
 }

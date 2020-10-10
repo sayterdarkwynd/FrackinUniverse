@@ -4,7 +4,7 @@
     "colonyTags" : [ "science","elder","macabre" ],
   "category" : "wire",
   "price" : 12500,
-  "description" : "Use brains to store and transfer electrical energy! Great transfer rates, and substantial storage! (8W output, 5000J storage)",
+  "description" : "Use brains to store and transfer electrical energy! Substantial storage!^truncate;\nStorage Capacity: ^green;5000^reset;J",
   "shortdescription" : "^cyan;Psionic Battery^reset;",
   "race" : "generic",
   "printable" : false,
@@ -33,10 +33,9 @@
   "scripts" : [ "/scripts/fupower.lua","/objects/power/isn_battery.lua" ],
   "scriptDelta" : 60,
 
-  "outputNodes" : [ [1, 3] ],
-  "inputNodes" : [ [0, 1], [2, 1] ],
+  "outputNodes" : [ [1, 2] ],
+  "inputNodes" : [ [0, 1], [1, 1] ],
 
   "isn_batteryCapacity" : 5000,
-  "isn_batteryVoltage" : 8,
   "powertype" : "battery"
 }
