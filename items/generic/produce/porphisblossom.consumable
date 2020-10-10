@@ -1,30 +1,38 @@
 {
-  "itemName" : "porphisblossom",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "porphisblossom.png",
-  "description" : "Effect:
-^cyan;+20% Damage, +25% Max Health^reset;",
-  "shortdescription" : "Porphis Blossom",
-  "category" : "food",
+	"itemName": "porphisblossom",
+	"inventoryIcon": "porphisblossom.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "effects" : [ [
-      "damagebonus3", "percenthealthboost25"
-    ] ],
-    
-  "blockingEffects" : [
-         "rage",
-         "rage_base",
-         "rage20fu",
-         "rage30",
-         "rage40",
-         "rage60",
-         "rage75",
-         "rage100",
-         "damagebonus01",
-         "damagebonus2",
-         "damagebonus4",
-         "damagebonus5",
-         "damagebonus6"
-  ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Damage x1.15^reset;, ^cyan;Health x1.25^reset;: 1m",
+	"shortdescription": "Porphis Blossom",
+
+	"effects": [
+		[{
+				"effect": "damagebonus2",
+				"duration": 60
+			},
+			{
+				"effect": "percenthealthboost25",
+				"duration": 60
+			}
+		]
+	],
+	"blockingEffects": [
+		"rage",
+		"rage_base",
+		"rage20fu",
+		"rage30",
+		"rage40",
+		"rage60",
+		"rage75",
+		"rage100",
+		"damagebonus01",
+		"damagebonus3",
+		"damagebonus4",
+		"damagebonus5",
+		"damagebonus6"
+	]
 }

@@ -3,9 +3,9 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "A man-portable machine gun that's bigger and meaner, albeit far less accurate, than your average assault rifle.",
+  "description" : "A man-portable machine gun that's bigger and meaner, albeit far less accurate, than an assault rifle.",
   "shortdescription" : "Common Squad Automatic Weapon",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_squadAutomaticWeapon",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
@@ -20,7 +20,7 @@
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    }    
+    }  
   },
   "baseOffset" : [-1.0, 0.25],
   "muzzleOffset" : [0.0, 0.3125],
@@ -33,8 +33,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [0.08, 0.14],
-    "baseDps" : [9, 10],
+    "fireTime" : [0.08, 0.12],
+    "baseDps" : [10, 12],
     "energyUsage" : [33, 36],
     "inaccuracy" : 0.08,
 
@@ -66,9 +66,9 @@
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.20,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "duration" : 0.1,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -77,6 +77,17 @@
     }
   },
   "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg", "/sfx/gun/sniper1.ogg", "/sfx/gun/sniper2.ogg", "/sfx/gun/sniper3.ogg", "/sfx/gun/sniper4.ogg", "/sfx/gun/dragonhead_fire1.ogg" ],
+
+  "critChance": 1,
+  "critBonus" : 3,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [18,50],
+  "reloadTime" : [1.5,2.5],
+  "isAssaultRifle" : 1,
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 700,  
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -120,7 +131,7 @@
 
       "swtjc_ewg_cellspray",
       "swtjc_ewg_darkplasma",
-      
+    
       "swtjc_ewg_forceshield",
       "swtjc_ewg_globelauncher",
       "swtjc_ewg_phaseburst",
@@ -130,7 +141,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 3
+  }]
 }

@@ -10,6 +10,8 @@ require "/interface/cockpit/cockpitutil.lua"
 
 function init()
   View:init()
+  self.flyShip = celestial.flyShip
+  celestial.flyShip = flyShip
 
   self.clickEvents = {}
   self.input = {
@@ -29,9 +31,14 @@ function init()
 
   self.sounds = config.getParameter("sounds")
   self.playTyping = true
+  
+  self.ableToSystemTravel = contains(player.shipUpgrades().capabilities, "planetTravel") or (world.getProperty("fu_byos.systemTravel") or 0) > 0 or player.isAdmin()
+  self.fu_text = config.getParameter("fu_text")
+  self.onOwnShip = player.ownShipWorldId() == player.worldId()
+  local canTravel = contains(player.shipUpgrades().capabilities, "planetTravel") or (world.getProperty("fu_byos.planetTravel") or 0) > 0
 
   self.state = FSM:new()
-  if not contains(player.shipUpgrades().capabilities, "planetTravel") and (not world.getProperty("fu_byos.planetTravel") or world.getProperty("fu_byos.planetTravel") <= 0) then
+  if (not canTravel or not self.onOwnShip) and not player.isAdmin() then
     self.state:set(disabledState)
   elseif celestial.skyInHyperspace() and celestial.currentSystem() then
     self.state:set(transitState)
@@ -436,27 +443,33 @@ end
 function fuelCost(travel)
   local cost = config.getParameter("jumpFuelCost")
 
-  -- FU needs custom math here for distance-based fuel cost
+-- FU needs custom math here for distance-based fuel cost
     self.one =  celestial.currentSystem()
     self.two =  {location = travel or self.travel.system, planet = 0, satellite = 0, system = self.travel.target}
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
     shipMassFind()
 
     if distanceMath < 30 then
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * 2 ) -- nearby systems are relatively cheap to travel to
-    else
-      cost = ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 2)) -- but long range jumps are more complicated, and mass plays a factor in efficiency
+      cost = 50 + ((config.getParameter("jumpFuelCost") + distanceMath) * ((self.shipMass or 0)+2)) -- nearby systems are relatively cheap to travel to
+    elseif distanceMath < 200 then
+      cost = 70 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 4)) -- a bit farther out
+    elseif distanceMath < 400 then
+      cost = 140 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 6)) -- mid/long range  
+    else							
+      cost = 300 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 10)) -- long range value
     end
 
 	if cost < 1000 and isConnected(self.one,self.two) then
 	  cost = cost / 2
 	end
 
-    cost = math.min(cost,10000) -- max off 10k fuel travel
-  -- end FU fuel cost calculation
+    cost = math.min(cost,999999) -- max of 999999 fuel travel
+	
+	cost = math.max(0,util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0)))
+-- end FU fuel cost calculation
 
 
-  return util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0))
+  return cost
 end
 
 function canFlyShip(system)
@@ -472,11 +485,13 @@ end
 function disabledState()
   View:reset()
   widget.setVisible("disabledLabel", true)
-
-  if player.hasCompletedQuest("human_mission1") then
-    widget.setText("disabledLabel", "FTL DRIVE NOT INSTALLED")
+  
+  if not self.onOwnShip then
+	widget.setText("disabledLabel", tostring(self.fu_text.notOnOwnShip))
+  elseif player.hasCompletedQuest("human_mission1") then
+    widget.setText("disabledLabel", tostring(self.fu_text.noFTL))
   else
-    widget.setText("disabledLabel", "NAVIGATION OFFLINE")
+    widget.setText("disabledLabel", tostring(self.fu_text.navOffline))
   end
 
   local flickerTime = config.getParameter("disabledFlickerTime")
@@ -520,46 +535,55 @@ function transitState()
 end
 
 function systemUniverseTransition(fromSystem)
-  widget.setVisible("zoomOut", false)
-  widget.setVisible("remoteTitle", false)
-  widget.setVisible("remoteDescription", false)
-  widget.setVisible("systemName", false)
+  if self.ableToSystemTravel then
+    widget.setVisible("zoomOut", false)
+    widget.setVisible("remoteTitle", false)
+    widget.setVisible("remoteDescription", false)
+    widget.setVisible("systemName", false)
 
-  View:reset()
-  pane.playSound(self.sounds.zoom, -1)
-  View.drawSystem = true
-  View.system.system = fromSystem
-  View.system.planets = celestial.children(fromSystem)
-  View.system.scaleObjects = true
+    View:reset()
+    pane.playSound(self.sounds.zoom, -1)
+    View.drawSystem = true
+    View.system.system = fromSystem
+    View.system.planets = celestial.children(fromSystem)
+    View.system.scaleObjects = true
 
-  if compare(fromSystem, celestial.currentSystem()) then
-    View.drawShip = true
+    if compare(fromSystem, celestial.currentSystem()) then
+      View.drawShip = true
+    end
+    View.drawStars = true
+    View.stars.currentSystem = fromSystem
+
+    local timer = 0
+    local transitionTime = 1.0
+    local position = systemPosition(fromSystem)
+    local systemScale = View:systemScale(fromSystem)
+    while timer < transitionTime do
+      local ratio = 1 - ((1 - timer / transitionTime) ^ 4)
+      View:transitionCamera("universe", ratio, {position, position}, {systemScale, "universe"})
+      View:transitionCamera("system", ratio, {{0, 0}, {0, 0}}, {systemScale, "universe"})
+      View.backgroundScale = interp.linear(ratio, View:bgScale("system"), View:bgScale("universe"))
+
+      View.stars.systems = celestial.scanSystems(View:systemScanRegion())
+      View.stars.lines = celestial.scanConstellationLines(View:systemScanRegion())
+      View.stars.currentOpacity = math.max(0.0, (timer / transitionTime - 0.7) / 0.3)
+      View.stars.lineOpacity = timer / transitionTime
+      View.ship.scale = View.systemCamera.scale / systemScale
+
+      coroutine.yield()
+      timer = timer + script.updateDt()
+    end
+
+    pane.stopAllSounds(self.sounds.zoom)
+    self.state:set(universeScreenState, fromSystem)
+  else
+	self.zoomOut = false
+	self.viewCoordinate = nil
+	self.travel = {}
+	self.focus = {}
+	player.interact("ShowPopup", {message = tostring(self.fu_text.noSystemTravel)})
+	return self.state:set(systemScreenState, fromSystem, false)
   end
-  View.drawStars = true
-  View.stars.currentSystem = fromSystem
-
-  local timer = 0
-  local transitionTime = 1.0
-  local position = systemPosition(fromSystem)
-  local systemScale = View:systemScale(fromSystem)
-  while timer < transitionTime do
-    local ratio = 1 - ((1 - timer / transitionTime) ^ 4)
-    View:transitionCamera("universe", ratio, {position, position}, {systemScale, "universe"})
-    View:transitionCamera("system", ratio, {{0, 0}, {0, 0}}, {systemScale, "universe"})
-    View.backgroundScale = interp.linear(ratio, View:bgScale("system"), View:bgScale("universe"))
-
-    View.stars.systems = celestial.scanSystems(View:systemScanRegion())
-    View.stars.lines = celestial.scanConstellationLines(View:systemScanRegion())
-    View.stars.currentOpacity = math.max(0.0, (timer / transitionTime - 0.7) / 0.3)
-    View.stars.lineOpacity = timer / transitionTime
-    View.ship.scale = View.systemCamera.scale / systemScale
-
-    coroutine.yield()
-    timer = timer + script.updateDt()
-  end
-
-  pane.stopAllSounds(self.sounds.zoom)
-  self.state:set(universeScreenState, fromSystem)
 end
 
 function universeScreenState(startSystem)
@@ -743,9 +767,7 @@ function universeScreenState(startSystem)
           self.travel = {}
         end
       elseif self.travel.confirmed == nil then
-		if contains(player.shipUpgrades().capabilities, "planetTravel") or world.getProperty("fu_byos.systemTravel") > 0 then
-		  showJumpDialog(self.travel.system, self.travel.target)
-		end
+		showJumpDialog(self.travel.system, self.travel.target)
       end
     end
 
@@ -778,7 +800,7 @@ function universeMoveState(startPosition, systems, toPosition, travel, queued)
     if not player.isAdmin() then
             world.setProperty("ship.fuel", world.getProperty("ship.fuel") - fuelCost(travel.system))
           end
-    flyShip(travel.system, travel.target)
+    celestial.flyShip(travel.system, travel.target)
     while not celestial.skyFlying() do
       coroutine.yield()
     end
@@ -907,7 +929,11 @@ function universeSystemTransition(systems, lines, toSystem, warpIn)
 end
 
 function systemScreenState(system, warpIn)
-  widget.setVisible("zoomOut", true)
+  if self.ableToSystemTravel then
+    widget.setVisible("zoomOut", true)
+  else
+    widget.setVisible("zoomOut", false)
+  end
 
   View:reset()
   local planets = util.untilNotEmpty(function() return celestial.children(system) end)
@@ -1070,7 +1096,7 @@ function systemScreenState(system, warpIn)
       if isCurrent and compare(self.travel.system, system.location) then
         if self.travel.target then
           if self.travel.target[1] ~= "coordinate" or celestial.visitableParameters(self.travel.target[2]) then
-            flyShip(self.travel.system, self.travel.target)
+            celestial.flyShip(self.travel.system, self.travel.target)
           end
         end
         self.travel = {}
@@ -1354,7 +1380,7 @@ function planetSystemTransition(fromPlanet)
 end
 
 function flyShip(system, target)
-    celestial.flyShip(system, target)
+    self.flyShip(system, target)
 	if target and target[1] == "coordinate" and celestial.visitableParameters(target[2]) then
 		world.setProperty("ship.celestial_type", celestial.visitableParameters(target[2]).typeName)
 	else

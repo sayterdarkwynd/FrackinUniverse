@@ -1,0 +1,35 @@
+{
+  "id" : "neb-damageTypeKills",
+  "prerequisites" : [],
+  "title" : "^orange;Hi, I'm Bob",
+  "text" : "Heya, I'm bobbery bobbus.",
+  "completionText" : "Drown.",
+  "moneyRange" : [10, 100000],
+  "rewards" : [
+    [ [ "manipulatormodule", 10 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/neb-main.lua",
+  "scriptConfig" : {
+	"portraits" : {
+      "default" : "questGiver"
+    },
+    "requireTurnIn" : true,
+    "conditions" : [
+      {
+        "type" : "damageTypeKills",
+        "displayDamageTypeName" : "fire damage",
+        "damageTypes" : [
+		  "firespear",
+		  "firedagger",
+		  "firehammer",
+		  "firebroadsword",
+		  "fire"
+		],
+        "count" : 20
+      }
+    ],
+	"turnInDescription" : "Return to bob"
+  }
+}

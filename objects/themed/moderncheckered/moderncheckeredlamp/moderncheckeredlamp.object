@@ -1,0 +1,49 @@
+{
+  "objectName": "moderncheckeredlamp",
+  "colonyTags": [ "moderncheckered", "light" ],
+  "rarity": "Uncommon",
+  "race": "generic",
+  "category": "light",
+  "lightColor" : [ 176, 176, 121 ],
+  "price": 0,
+  "printable": false,
+
+  "description": "A cool lamp with a black and white checkered lampshade.",
+  "shortdescription": "Modern Lamp",
+
+  "apexDescription": "Compared to the lamps back home, this pattern is a breath of fresh air.",
+  "avianDescription": "Thankfully the light this lamp gives off isn't checkered itself.",
+  "floranDescription": "Lamp with little sssquares.",
+  "glitchDescription": "Neutral. A lamp with a black and white lampshade.",
+  "humanDescription": "A lamp with a checkered pattern.",
+  "hylotlDescription": "What an interesting showcase of light and dark in this pattern.",
+  "novakidDescription": "A funky lamp. Looks a li'l like a chessboard.",
+
+  "inventoryIcon": "moderncheckeredlampicon.png",
+  "orientations": [
+    {
+      "dualImage": "moderncheckeredlamp.png:<color>.<frame>",
+      "imagePosition": [ -8, 0 ],
+      "animationPosition" : [-8, 0],
+      "spaceScan": 0.1,
+      "anchors": [ "bottom" ]
+    }
+  ],
+  
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "moderncheckeredlamp.png",
+    "fg" : "moderncheckeredlamplit.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+}

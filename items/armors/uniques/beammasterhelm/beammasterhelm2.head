@@ -5,7 +5,8 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "High energy reserve. Immune to Insanity.",
+  "description" : "High health reserve.
+^cyan;Immune^reset;: Insanity.",
   "shortdescription" : "Tek-Knight Helm",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -14,28 +15,29 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "statusEffects" : [ "booze" ],
+  
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "amount" : 1.2
-    },
+      "baseMultiplier" : 1.12
+    },  
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.6
+      "amount" : 0.25
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 15
+      "amount" : 2
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 10
     }
-  ]
-
+  ],
+  "statusEffects" : ["insanityimmunityhidden"],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

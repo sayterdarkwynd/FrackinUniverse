@@ -4,16 +4,15 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Ice Resist
-\n^orange;Set Bonuses^reset;:
-^cyan;+20% Knockback Resist
-2H melee/Axes: ^green;+3.5%^reset; Crit Chance, ^cyan;+15%^reset; Dmg
-^cyan;Immune^reset;: Slush, Chill",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;20^reset;% Knockback Resist
+^yellow;^reset; Axes, Two-handed Melee: +^green;3.5^reset;% Crit Chance, Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Slush, Chill",
 
   "shortdescription" : "Battle Totem Greaves",
-  "learnBlueprintsOnPickup" : [ "fubearlegs2" ],
-  "category" : "t2armoru",
-  "tooltipKind" : "armor",
+//  "learnBlueprintsOnPickup" : [ "fubearlegs2" ],
+  "category" : "legarmour",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
@@ -40,6 +39,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033334
     }
   ],
   "statusEffects" : [
@@ -47,10 +51,6 @@
     {
       "stat" : "bearsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.05
     }
   ],
 
@@ -90,5 +90,7 @@
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

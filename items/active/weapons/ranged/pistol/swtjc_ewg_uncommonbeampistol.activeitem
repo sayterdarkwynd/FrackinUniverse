@@ -3,7 +3,7 @@
   "price" : 770,
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "A small handgun that fires streams of energy at distant targets with pinpoint accuracy, it's only as accurate as the one wielding it.",
+  "description" : "A small handgun that fires streams of energy at distant targets with pinpoint accuracy.",
   "shortdescription" : "Uncommon Beam Pistol",
   "tooltipKind" : "gun",
   "category" : "swtjc_ewg_beamPistol",
@@ -23,17 +23,17 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [0.02, 0.1],
-    "baseDps" : [6.5, 6.75],
-    "energyUsage" : [19.5, 21],
+    "fireTime" : [0.25, 0.6],
+    "baseDps" : [4.2, 5.3],
+    "energyUsage" : [25, 35],
+    "fireType" : "auto",
     "inaccuracy" : 0.00,
-
-    "burstTime" : [0.0025, 0.005],
-    "burstCount" : [10, 20],
-    "fireType" : "burst",
-
+  
     "projectileParameters" : {
-      "knockbackRange" : [0.1,0.2]
+      "knockbackRange" : [0.1,0.2],
+      "fullbright" : true,
+      "timeToLive" : 0.05,
+      "speed" : 90
     },
 
     "stances" : {
@@ -70,6 +70,7 @@
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_beampistolnames.config:nameGen",
     "elementalType" : [
+      "physical",
       "fire",
       "ice",
       "electric",
@@ -79,34 +80,38 @@
       "cosmic"
     ],
     "elementalConfig" : {
+      "physical" : {
+        "primaryAbility" : { "projectileType" : "standardbulletbeamphysical"},
+        "fireSounds" : [ "/sfx/weapons/laserblast.ogg" ]
+      },  
       "fire" : {
-        "primaryAbility" : { "projectileType" : "fireplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ]
+        "primaryAbility" : { "projectileType" : "standardbulletbeamfire"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "ice" : {
-        "primaryAbility" : { "projectileType" : "iceplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ]
+        "primaryAbility" : { "projectileType" : "standardbulletbeamice"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "poison" : {
-        "primaryAbility" : { "projectileType" : "poisonplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ]
+        "primaryAbility" : { "projectileType" : "standardbulletbeampoison"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "electric" : {
-        "primaryAbility" : { "projectileType" : "electricplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ]
+        "primaryAbility" : { "projectileType" : "standardbulletbeamelectric"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "radioactive" : {
-        "primaryAbility" : { "projectileType" : "radioactiveplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ]
+        "primaryAbility" : { "projectileType" : "standardbulletbeamradioactive"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "shadow" : {
-        "primaryAbility" : { "projectileType" : "shadowplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ]
+        "primaryAbility" : { "projectileType" : "standardbulletbeamshadow"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
       },
       "cosmic" : {
-        "primaryAbility" : { "projectileType" : "cosmicplasma" },
-        "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ]
-      }
+        "primaryAbility" : { "projectileType" : "standardbulletbeamcosmic"},
+        "fireSounds" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_ar1.ogg", "/sfx/gun/plasma_ar2.ogg", "/sfx/gun/plasma_ar3.ogg", "/sfx/gun/pulsecannon1.ogg", "/sfx/gun/elemental_lance.ogg" ]
+      } 
     },
     "animationParts" : {
       "butt" : {
@@ -131,6 +136,10 @@
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
   }],
-  "critChance": 3,
-  "critBonus" : 3
+  "critChance": 1,
+  "critBonus" : 3,
+
+  "magazineSize" : [5,9],
+  "reloadTime" : [0.4,1.4],
+  "isAmmoBased": [0,1]
 }

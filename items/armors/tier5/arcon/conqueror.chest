@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "^orange;Set Bonuses^reset;:
-^green;+12%^reset; Phys Resistance
-Electric/Plasma: ^green;+1^reset; Crit, ^#a94db3;+25%^reset; Crit Dmg, ^cyan;+15%^reset; Dmg
-^cyan;Immune^reset;: Cold, Radiation, Poison, Oxygen",
+^yellow;^reset; Electric/Plasma: +^green;1^reset;% Crit Chance, +^green;25^reset;% Crit Damage, Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Deadly Cold/Rads, Poison, Oxygen",
   "shortdescription" : "ArCon Armor",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -47,6 +46,11 @@ Electric/Plasma: ^green;+1^reset; Crit, ^#a94db3;+25%^reset; Crit Dmg, ^cyan;+15
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.013334
     }
   ],
 
@@ -55,10 +59,6 @@ Electric/Plasma: ^green;+1^reset; Crit, ^#a94db3;+25%^reset; Crit Dmg, ^cyan;+15
     {
       "stat" : "fu_conquerorset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
     }
   ],
   "colorOptions" : [
@@ -86,5 +86,6 @@ Electric/Plasma: ^green;+1^reset; Crit, ^#a94db3;+25%^reset; Crit Dmg, ^cyan;+15
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]  
+  ]  ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

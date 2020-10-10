@@ -4,7 +4,7 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "Thick gloves and little else. Gives ^green;+5%^reset; Damage.",
+  "description" : "Thick gloves and little else. Gives +^green;5^reset;% Damage.",
   "shortdescription" : "Ruffian Gloves",
   "category" : "chestarmour",
   "tooltipKind" : "armor",
@@ -24,26 +24,18 @@
   "statusEffects" : [
     {
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.05
-    },
-
+      "amount" : 0.05
+    },    
     {
       "stat" : "protection",
       "amount" : 2
     },
-
     {
       "stat" : "maxHealth",
       "amount" : 3
     }
   ],
-  "leveledStatusEffects" : [
-    {
-      "levelFunction" : "standardArmorLevelProtectionMultiplier",
-      "stat" : "powerMultiplier",
-      "amount" : 0.05
-    }
-  ],
+
   "colorOptions" : [
     /* WHITE */
     { "ffca8a" : "e6e6e6", "e0975c" : "b6b6b6", "a85636" : "7b7b7b", "6f2919" : "373737" },

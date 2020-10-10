@@ -23,8 +23,8 @@ function init()
 			table.insert(modifierTable, {stat = immunity, amount = 1})
 		end
 	end
-	
 	self.modifierGroupID = effect.addStatModifierGroup(modifierTable)
+
 	baseInit()
 end
 

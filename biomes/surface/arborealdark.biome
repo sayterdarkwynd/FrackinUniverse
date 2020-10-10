@@ -6,13 +6,12 @@
     "spawnProfile" : {
     "groups" : [
       {
-        "select" : 4,
+        "select" : 5,
         "pool" : [
           [ 0.4, "aggroHugeGround" ],
           [ 0.6, "passiveHugeGround" ],
           [ 0.2, "anglure4" ],
-          [ 0.2, "iguarmor" ],
-          [ 0.2, "pteropod" ],
+          [ 0.1, "horkulbeast" ],
           [ 0.1, "bulbopfriendly" ],
           [ 0.2, "mandraflora" ],
 	  [ 0.2, "fuallergen" ],
@@ -28,10 +27,7 @@
         "pool" : [
 	  [ 0.3, "fireflyspawner" ],
 	  [ 0.3, "futinycockroach" ],
-          [ 0.4, "blackbeetle" ],
-          [ 0.4, "forestbee" ],
-          [ 0.3, "normalbee" ],
-          [ 0.1, "minerbee" ],
+          [ 0.4, "bee_gelidburrower" ],
           [ 0.111, "pangolin" ],
           [ 0.111, "pangobaby" ],
           [ 0.111, "fuspidercritter" ],
@@ -39,6 +35,18 @@
 	  [ 0.3, "aurorabee" ]
         ]
       },
+      {
+        "select" : 2,
+        "pool" : [
+          [ 0.2, "bee_oremason" ],
+          [ 0.2, "bee_plasterer" ],
+          [ 0.2, "bee_digger" ],
+          [ 0.1, "bee_mason" ],
+          [ 0.1, "bee_honey" ],
+          [ 0.1, "bee_reaper" ],
+          [ 0.1, "bee_assassin" ] 
+        ]
+      },       
       {
         "select" : 2,
         "pool" : "nightTerrors"
@@ -229,10 +237,10 @@
 
     "musicTrack" : {
       "day" : {
-        "tracks" : [ "/music/ForestExploration1.ogg","/music/ForestExploration2.ogg","/music/ForestBattle1.ogg","/music/forsaken-grotto.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/vast-immortal-suns.ogg", "/music/drosera.ogg", "/music/mira.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/horsehead-nebula.ogg", "/music/on-the-beach-at-night.ogg" ]
+        "tracks" : [ "/music/MelodyOfMisery.ogg","/music/ForestExploration1.ogg","/music/ForestExploration2.ogg","/music/ForestBattle1.ogg","/music/forsaken-grotto.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/vast-immortal-suns.ogg", "/music/drosera.ogg", "/music/mira.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/horsehead-nebula.ogg", "/music/on-the-beach-at-night.ogg" ]
       },
       "night" : {
-        "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg" ]
+        "tracks" : [ "/music/SomethingIntoDarkness.ogg","/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg" ]
       }
      },
 
@@ -542,7 +550,7 @@
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fubandits", "fulabs", "fuencounters", "newhumanmicro", "newavianmicro", "minigreenruins", "fuencountercultist", "fuhives", "furedhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
+          "microdungeons" : [ "fu_dae_microdungeons", "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fubandits", "fulabs", "fuencounters", "newhumanmicro", "newavianmicro", "minigreenruins", "fuencountercultist", "fuhives", "furedhives", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
         },
         {
           "mode" : "floor",

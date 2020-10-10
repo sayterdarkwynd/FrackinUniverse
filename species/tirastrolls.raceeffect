@@ -1,0 +1,76 @@
+{
+	"stats": [
+		{
+			"stat": "physicalResistance",
+			"amount": 0.1
+		},
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.1
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.1
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": -0.4
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.15
+		}
+	],
+	"diet" : "omnivore",
+	"weaponEffects": [{
+			"combos": [
+				[
+					"fist",
+					"fist"
+				]
+			],
+			"stats": [{
+					"stat": "protection",
+					"amount": 8
+				}
+			],
+			"scripts" : [
+				{
+					"script" : "/scripts/fr_scripts/healthRegen.lua",
+					"args" : {
+						"healingRate" : 0.003
+					}
+				}
+			]
+		},
+		{
+			"combos": [
+				[
+					"rapier",
+					"rapier"
+				]
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.125
+			}]
+		}
+	],
+	"special": [
+		"trolllighteffect"
+	],
+	"envEffects": [{
+		"biomes": [
+			"alien"
+		],
+		"stats": [{
+				"stat": "maxHealth",
+				"effectiveMultiplier": 1.05
+			},
+			{
+				"stat": "protection",
+				"effectiveMultiplier": 1.05
+			}
+		]
+	}]
+}

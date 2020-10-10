@@ -30,16 +30,16 @@
 
     "behavior" : "monster",
 
-    "renderLayer" : "foregroundEntity",
+   // "renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 35,
+      "targetQueryRange" : 65,
       "targetOnDamage" : true,
       "targetEntityTypes" : [ "player", "npc", "monster" ],
-      "keepTargetInSight" : false,
-      "keepTargetInRange" : 50,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 70,
       "targetOutOfSightTime" : 5.0,
 
       "hurtTime" : 0.25,
@@ -56,7 +56,7 @@
           "name" : "action-charge",
           "cooldown" : 5.0,
           "parameters" : {
-            "minimumRange" : 1,
+            "minimumRange" : 7,
             "maximumRange" : 50,
             "windupStopForce" : 25,
             "windupTime" : 1,
@@ -65,8 +65,8 @@
             "wallCollide" : false,
             "aimAtTarget" : true,
             "chargeTime" : 0.5,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 750,
+            "chargeSpeed" : 20,
+            "chargeControlForce" : 250,
 
             "winddownState" : "charge",
             "winddownStopForce" : 25,
@@ -129,9 +129,11 @@
       "walkSpeed" : 3,
       "runSpeed" : 6,
       "gravityEnabled" : false,
-
-      "airForce" : 50,
-      "flySpeed" : 8
+      "liquidBuoyancy" : 1.0,
+      "flySpeed" : 10,
+      "liquidFriction" : 2,
+      "liquidForce" : 80.0,
+      "airForce" : 50
     },
 
     "bodyMaterialKind" : "organic",
@@ -184,7 +186,19 @@
         },        
         "powerMultiplier" : {
           "baseValue" : 1.0
-        }
+        },        
+        "isWaterCreature" : {
+          "baseValue" : 1.0
+        },  
+        "isSpawnedCreature" : {
+          "baseValue" : 1.0
+        },        
+        "breathProtection" : {
+          "baseValue" : 1.0
+        },
+        "wetImmunity" : {
+          "baseValue" : 1.0
+        } 
       },
 
       "resources" : {

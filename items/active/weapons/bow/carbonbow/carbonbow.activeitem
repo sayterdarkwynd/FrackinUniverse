@@ -15,7 +15,7 @@
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
-  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animation" : "/items/active/weapons/bow/fubow.animation",
   "animationParts" : {
     "bow" : "carbonbowfull.png"
   },
@@ -34,32 +34,46 @@
 
   "elementalType" : "physical",
   "collectablesOnPickup" : { "fu_weaponbow" : "carbonbow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+  
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : {    
+  "drawTime" : 1.0,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.215,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows	
+	"energyPerShot" : 40,			
+	"holdEnergyUsage" : 4,				
+	"airborneBonus" : 1.45,	
     "projectileType" : "ironarrow",
     "powerProjectileType" : "chargedironarrow",
     "projectileParameters" : {
-      "power" : 8.65
+      "power" : 8,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.5,
+      "piercing" : true
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "poisonarrow",
+    "name" : "Explosive Arrow",
+    "drawTime" : 1.5,
+    "powerProjectileTime" : 0.3,	//After fully drawing, the bow is super-charged for this long
+    "energyPerShot" : 70,
+    "projectileType" : "ironarrow",
+    "powerProjectileType" : "explosivebolt",
     "projectileParameters" : {
-      "power" : 8.125
+      "power" : 8.5,
+      "piercing" : false
     },
-    "splitDelay" : 0.2,
-    "splitAngle" : 2
+    "powerProjectileParameters" : {
+      "power" : 9,
+      "piercing" : false
+    }
   },
   
-  "critChance" : 7,
-  "critBonus" : 4, 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "critChance" : 4,
+  "critBonus" : 13, 
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

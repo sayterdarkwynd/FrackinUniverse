@@ -5,7 +5,7 @@
   "rarity" : "Uncommon",
   "description" : "A compact shotgun that sacrifices accuracy for the ability to be easily-concealable and held in one hand.",
   "shortdescription" : "Uncommon Short-Barreled Shotgun",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_sawedOffShotgun",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
@@ -20,12 +20,12 @@
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    },    
-      "sounds":{  
-        "cooldown":[  
+    },  
+      "sounds":{
+        "cooldown":[
           "/sfx/weapons/shotgunreload.ogg"
         ]
-    }  
+    }
   },
   "baseOffset" : [-0.25, 0.25],
   "muzzleOffset" : [0,0.375],
@@ -33,7 +33,7 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "isReloader" : 1,
-  
+
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
@@ -50,14 +50,14 @@
     },
 
     "stances" : {
-      "idle":{  
+      "idle":{
         "armRotation":0,
         "weaponRotation":0,
         "twoHanded":false,
         "allowRotate":true,
         "allowFlip":true
       },
-      "fire":{  
+      "fire":{
         "duration":0.1,
         "armRotation":3,
         "weaponRotation":8,
@@ -65,7 +65,7 @@
         "allowRotate":false,
         "allowFlip":true
       },
-      "cooldown":{  
+      "cooldown":{
         "duration":0.3,
         "armRotation":-7,
         "weaponRotation":-360,
@@ -75,6 +75,13 @@
       }
     }
   },
+
+  "critChance" : 3,
+  "critBonus" : 7,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [2,6],
+  "reloadTime" : [1.3,2.3],
+  "isShotgun" : 1,
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -140,7 +147,5 @@
     "altAbilities" : [ ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 6,
-  "critBonus" : 1
+  }]
 }

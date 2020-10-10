@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^cyan;15%^reset; Shadow Resist^reset;
-Scythe/Bio-Weapon: ^green;+3%^reset; Crit
-^cyan;Immune^reset;: Insanity^reset;",
+^yellow;^reset; Scythe/Bio-Weapon: +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Insanity",
   "shortdescription" : "Flesh Helmet",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -38,6 +37,11 @@ Scythe/Bio-Weapon: ^green;+3%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -46,10 +50,8 @@ Scythe/Bio-Weapon: ^green;+3%^reset; Crit
     {
       "stat" : "fu_fleshset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.05
     }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

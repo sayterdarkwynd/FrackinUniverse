@@ -23,9 +23,9 @@ function SlimeSetBonus.spawnSlime(self)
   local rand = math.random(2)
   local slimeType = nil
   if (rand == 2) then
-    slimeType = "slime"
+    slimeType = "slimespawned"
   else
-    slimeType = "microslime"
+    slimeType = "microslimespawned"
   end
   local parameters = {
     persistent = false,

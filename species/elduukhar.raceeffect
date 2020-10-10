@@ -1,0 +1,76 @@
+{
+	"stats": [
+		{ "stat": "maxFood", "effectiveMultiplier": 1.30 },
+		{ "stat": "protection", "amount": 5 },
+		{ "stat": "poisonResistance", "amount": -0.2 },
+		{ "stat": "electricResistance", "amount": -0.2 },
+		{ "stat": "shadowResistance", "amount": -0.1 },
+		{ "stat": "physicalResistance", "amount": 0.20 },
+		{ "stat": "iceResistance", "amount": 0.25 }
+	],
+	"diet" : "entity",
+	"envEffects": [
+		{
+			"biomes": [
+				"aethersea",
+				"aetherseafloor",
+				"crystalmoon",
+				"chromatic",
+				"desertwastes",
+				"crystaldesert",
+				"crystaldesertaether",
+				"crystalplain",
+				"crystalswamp",
+				"crystalswampaether"
+			],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.25 },
+				{ "stat": "critDamage", "amount": 0.1 }
+			]
+		},
+		{
+			"biomes": "hot",
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 0.75 },
+				{ "stat": "protection", "effectiveMultiplier": 1.15 }
+			]
+		},
+		{
+			"biomes": "cold",
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.25 },
+				{ "stat": "protection", "effectiveMultiplier": 0.85 }
+			]
+		}
+	],
+	"weaponEffects": [
+		{
+			"weapons": [ "crystal", "lunari" ],
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.12 },
+				{ "stat": "protection", "effectiveMultiplier": 1.12 }
+			]
+		},
+		{
+			"weapons": [ "whip", "chakram", "boomerang" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.12 }
+			]
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/auraWhenLow.lua",
+			"args" : {
+				"resource" : "health",
+				"auraReload" : 0.5,
+				"threshold" : 0.5,
+				"projType" : "icecloud",
+				"projParameters" : { "power" : 3 },
+				"track" : "false"
+			}
+		}
+	],
+	"tech" : [ "elduukharburst","flight_elduukhar" ]
+}

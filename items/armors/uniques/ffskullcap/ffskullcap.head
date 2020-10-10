@@ -5,7 +5,7 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Dense head protection. Immune to wet effect",
+  "description" : "\n\n\nDense head protection. ^cyan;Immune^reset; to stun.",
   "shortdescription" : "Skullcap",
   "category" : "headarmour",
   "tooltipKind" : "armornew2",
@@ -14,30 +14,35 @@
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
-  "statusEffects" : [
+  
+  "leveledStatusEffects" : [
     {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
-    },
-
+      "baseMultiplier" : 1.05
+    },  
     {
+      "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 4
+      "amount" : 0.35
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
       "amount" : 2
     },
-
     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 8
-    },
+      "amount" : 5
+    }
+  ],  
+  "statusEffects" : [
     {
-      "stat" : "wetImmunity",
+      "stat" : "stunImmunity",
       "amount" : 1
     }  
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 
 }

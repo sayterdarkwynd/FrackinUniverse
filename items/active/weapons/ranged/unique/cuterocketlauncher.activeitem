@@ -11,7 +11,7 @@
   "category" : "rocketLauncher", 
   "tooltipKind" : "gun2",
   "weaponType" : "Rifle",
-  "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "energy", "upgradeableWeapon", "cute","cosmic","explosive"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -29,7 +29,6 @@
 
   "baseOffset" : [0.4, 0.8],
   "muzzleOffset" : [2.65, 0.25],
-  "learnBlueprintsOnPickup" : [  ],
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "physical",
@@ -93,7 +92,10 @@
 
   "critChance" : 2,
   "critBonus" : 3,
-
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 600,
   "altAbilityType" : "swtjc_ewg_bouncingorbitals",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

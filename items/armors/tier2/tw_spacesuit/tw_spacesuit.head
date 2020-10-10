@@ -1,29 +1,30 @@
 {
   "itemName" : "tw_spacesuithead",
-  "price" : 1440,
+  "price" : 140,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Fire, Ice, Poison, Radiation and Electric Resists
-\n^orange;Set Bonus^reset;:
-^#a94db3;+1400%^reset; Oxygen",
+  "description" : "^cyan;Headlamp^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; Max Breath x^green;2^reset;
+^yellow;^reset; Longsword/Energy: Damage x^green;1.12^reset;",
 
   "shortdescription" : "Hazard Helmet",
-  "category" : "t2armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "learnBlueprintsOnPickup" : [
-    "tw_spacepunkhead",
-    "tw_spacepunklegs",
-    "tw_spacepunkchest",
-    "spacefarerchest",
-    "spacefarerhead",
-    "spacefarerpants"
-  ],
+ // "learnBlueprintsOnPickup" : [
+ //   "tw_spacepunkhead",
+//    "tw_spacepunklegs",
+//    "tw_spacepunkchest",
+//    "spacefarerchest",
+//    "spacefarerhead",
+//    "spacefarerpants"
+//  ],
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorexplorer" : "tw_spacesuithead" },
@@ -36,7 +37,7 @@
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.3
+      "amount" : 0.32
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -47,6 +48,31 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.033334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.033334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.033334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -55,26 +81,6 @@
     {
       "stat" : "tw_spacesuitsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.05
     },
     "headlamp"
   ],
@@ -104,5 +110,7 @@
     { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
     /* PINK */
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

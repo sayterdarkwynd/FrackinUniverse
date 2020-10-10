@@ -473,7 +473,7 @@ function cannonFire(spread)
 			damageTeam = {type = "pvp"},
 			damageKind = "default",
 			scripts = { "homingrocket.lua" },
-  			statusEffects = {{effect = "paralysis", duration = 1}, "lowgrav", "lowgravaugment", "stafflowgrav"},
+  			statusEffects = {{effect = "fuparalysis", duration = 1}, "lowgrav", "lowgravaugment", "stafflowgrav"},
 			periodicActions = {
 				{
 					time = 0,

@@ -1,4 +1,5 @@
 require "/scripts/kit/falldamagesettings.lua"
+require "/scripts/vec2.lua"
 
 function init()
   --fall damage code
@@ -18,12 +19,23 @@ function init()
   message.setHandler("applyStatusEffect", function(_, _, effectConfig, duration, sourceEntityId)
       status.addEphemeralEffect(effectConfig, duration, sourceEntityId)
     end)
+	
+	if root.hasTech("stardustlib:enable-extenders") then -- stardustlib shim
+    require "/sys/stardust/statusext.lua"
+  end
 end
 
 function applyDamageRequest(damageRequest)
   --modified next line
-  if damageRequest.damageSourceKind ~= "falling" and (self.hitInvulnerabilityTime > 0 or self.hitInvulnerabilityTime > 0 or world.getProperty("nonCombat")) then
+  if world.getProperty("nonCombat") then
     return {}
+  end
+  if damageRequest.damageSourceKind ~= "falling" then
+    if status.resourcePositive("health") and self.hitInvulnerabilityTime > 0 then
+      return {}
+	elseif self.hitInvulnerabilityTime > 0 and not status.resourcePositive("health") then
+	  self.hitInvulnerabilityTime = 0
+	end
   end
 
   local damage = 0
@@ -37,6 +49,12 @@ function applyDamageRequest(damageRequest)
     return {}
   elseif damageRequest.damageType == "Environment" then
     return {}
+  end
+  
+  if status.isResource("damageAbsorption") and status.resourcePositive("damageAbsorption") then
+    local damageAbsorb = math.min(damage, status.resource("damageAbsorption"))
+    status.modifyResource("damageAbsorption", -damageAbsorb)
+    damage = damage - damageAbsorb
   end
 
   if damageRequest.hitType == "ShieldHit" and status.statPositive("shieldHealth") and status.resourcePositive("shieldStamina") then
@@ -180,6 +198,12 @@ function update(dt)
 
   if mcontroller.atWorldLimit(true) then
     status.setResourcePercentage("health", 0)
+  end
+  
+  if status.resourcePercentage("health") <= 0 then
+	if status.isResource("stunned") and status.resourcePositive("stunned") then
+	  status.setResource("stunned",0)
+	end
   end
 
   -- drawDebugResources()

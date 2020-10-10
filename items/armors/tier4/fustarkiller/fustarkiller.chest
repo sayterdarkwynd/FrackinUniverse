@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^#cyan;+24%^reset; Fire and Radiation Resist
-Sunlight increases stats ^#a94db3;25%^reset;
-^cyan;Immune^reset;: Pressure", 
+^yellow;^reset; Sunlight: Power/Defense/Energy/Health x^green;1.25^reset; 
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Mud, Slime Stick, Ice Slip, Snow Slow, Oxygen", 
   "shortdescription" : "Star-Killer Plate",
-  "category" : "t4armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -46,6 +45,16 @@ Sunlight increases stats ^#a94db3;25%^reset;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.032
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.032
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -54,14 +63,6 @@ Sunlight increases stats ^#a94db3;25%^reset;
     {
       "stat" : "fu_starkillerset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.08
     }
   ],
 
@@ -101,5 +102,7 @@ Sunlight increases stats ^#a94db3;25%^reset;
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

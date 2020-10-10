@@ -403,7 +403,7 @@ function buttonMainSafe(wd)
 			resetGUI()
 			
 			if cfg.Data.missionWorld then
-				player.warp("InstanceWorld:"..cfg.Data.missionWorld, "beam")
+				player.warp("InstanceWorld:"..cfg.Data.missionWorld, cfg.Data.warpAnimation or "beam", cfg.Data.warpDeploy)
 				pane.dismiss()
 			end
 		elseif widget.active("root.crewList") then
@@ -669,6 +669,8 @@ function missionSelectedSafe()
 				widget.clearListItems("root.missionList")
 				
 				cfg.Data.missionWorld = dat.missionWorld
+				cfg.Data.warpAnimation = dat.warpAnimation
+				cfg.Data.warpDeploy = dat.warpDeploy
 				
 				local listItem = "root.missionList."..widget.addListItem("root.missionList")
 				widget.setVisible(listItem..".pseudobutton", false)
@@ -733,7 +735,7 @@ function crewSelectedSafe()
 			
 			local crew = cfg.Data.crew[listData.index]
 			if crew then
-				local text = crew.description.."\n^cyan;> Species:^white; "..crew.config.species.."\n^cyan;> Level:^white; "..crew.config.parameters.level
+				local text = crew.description.."\n^cyan;> Species:^white; "..crew.config.species.."\n^cyan;>" --Level:^white; "..crew.config.parameters.level
 				textTyper.init(cfg.TextData, text, customData.chatterSound or cfg.TextData.sound)
 
 				widget.setText("path", "root/sail/ui/crew/"..crew.name)
@@ -777,7 +779,81 @@ function populateMiscList()
 	
 	for _, tbl in ipairs(cfg.Data.misc) do
 		listItem = "root.miscList."..widget.addListItem("root.miscList")
-		widget.setText(listItem..".name", tbl[2])
+		local textBuffer=tbl[2]
+		local comparatorStr=""
+
+		while true do
+
+			comparatorStr=textBuffer
+			varName=textBuffer:match("%%%%(.+)%%%%")
+			if varName then
+				local varTranslated=""
+				if _ENV[varName] then
+					local t=_ENV[varName]
+					if type(t)=="string" then
+						varTranslated=t
+					elseif type(t)=="function" then
+						local pass,result=pcall(t)
+						if pass then varTranslated=result end
+					elseif type(t)=="boolean" then
+						if t then varTranslated="On" else varTranslated="Off" end
+					else
+						varTranslated=""
+					end
+				else
+					local argStr=varName:match("%((.+)%)")
+					local args={}
+					if type(argStr)=="string" then
+						for k,v in (argStr):gmatch("[^,]+") do
+							if k=="true" then
+								k = true
+							elseif k=="false" then
+								k = false
+							else
+								--we're not going into the migraine of numbers vs strings in this process, thankfully.
+								local v2=k:match("\"(.+)\"")
+								if v2 then k=v2 end
+							end
+							table.insert(args,k)
+						end
+					end
+					
+					local func=varName:gsub("%("..argStr.."%)","")
+					if func=="world.getProperty" then
+						func=world.getProperty
+					elseif func=="status.statusProperty" then
+						func=status.statusProperty
+					end
+					
+					if type(func)=="function" then
+						local result=func(table.unpack(args))
+						if pass or true then
+							if type(result)=="string" then
+								varTranslated=result
+							elseif type(result)=="boolean" then
+								if result then varTranslated="On" else varTranslated="Off" end
+							elseif type(result)=="number" then
+								varTranslated=tostring(result)
+							else
+								varTranslated="-"
+							end
+						else
+							sb.logInfo("newSail misc function label parser:\n%s",result)
+							varTranslated="<ERROR>"
+						end
+					end
+				end
+				varTranslated=varTranslated or ""
+				local varN2=varName:gsub("([^%w])", "%%%1")
+				textBuffer=textBuffer:gsub("%%%%"..varN2.."%%%%",varTranslated or "")
+			end
+
+			if comparatorStr==textBuffer then 
+				break
+			end
+		end
+		
+		widget.setText(listItem..".name", textBuffer)
 		widget.setImage(listItem..".icon", tbl[3])
 		widget.setData(listItem, {tbl[1], tbl[4], tbl[5]})
 	end

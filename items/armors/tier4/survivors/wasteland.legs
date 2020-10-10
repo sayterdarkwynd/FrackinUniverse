@@ -5,11 +5,11 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^cyan;20%^reset; Resists (Fire/Poison/Elec/Ice)
-^#a94db3;+50%^reset; Hunger Reduction
-^cyan;Immunity^reset;: Gas, Poison, Proto-Poison",
+^yellow;^reset; -^green;50^reset;% Hunger Drain Rate
+^yellow;^reset; Grenade/Rocket Launchers, (Cross)Bows: +^green;6^reset;% Crit Damage, Damage x^green;1.2^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Poison, Proto-Poison",
   "shortdescription" : "Survivor's Pants",
-  "category" : "t4armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -37,6 +37,26 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.028
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -45,22 +65,8 @@
     {
       "stat" : "fu_survivorset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.07
     }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

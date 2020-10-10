@@ -9,7 +9,7 @@
   "level" : 8,
   "tooltipKind" : "gun2aetherium",
   "category" : "crossbow",
-  "itemTags" : ["weapon","ranged","crossbow","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","crossbow","upgradeableWeapon","aetherium","cosmic"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
@@ -40,7 +40,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "aether",
   "collectablesOnPickup" : { "fu_weaponbow" : "aetheriumcrossbow" },
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -56,7 +56,8 @@
 
     "projectileType" : "cosmicplasma",
     "projectileParameters" : {
-      "knockback" : 25
+      "knockback" : 25,
+      "damageKind" : "aetherplasma"
     },
     "stances" : {
       "idle" : {
@@ -90,7 +91,8 @@
 
   "altAbilityType" : "markedshot",
 
-  "critChance" : 8,
+  "critChance" : 4,
   "critBonus" : 8,
+  "isCrossbow" : 1,  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

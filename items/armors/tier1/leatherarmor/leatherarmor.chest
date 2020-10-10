@@ -4,15 +4,14 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "category" : "t1armor",
-  "description" : "^green;+2%^reset; Ice and Electric Resist^reset;
-^orange;Set Bonuses^reset;:
-^green;+1%^reset; Crit Chance, ^green;+5%^reset; Speed
-Bow/XBow: ^green;+2%^reset; Crit Chance, ^green;+8%^reset; Dmg
-^#e43774;Lush/Forest: ^green;+5^reset; Energy, ^green;+5%^reset; Knockback Resist^reset;",
+  "category" : "chestarmour",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;1^reset;% Crit Chance, +^green;2.5^reset;% Speed
+^yellow;^reset; Garden/Forest: Energy x^green;1.05^reset;, +^green;5^reset;% Knockback Resistance
+^yellow;^reset; Bow/XBow^reset;: +^green;2^reset;% Crit Chance, Damage x^green;1.15^reset;, -^green;4^reset; Energy Per Shot, +^green;5^reset; Air Dmg, -^green;0.1^reset;s Draw",
 
   "shortdescription" : "Leather Jerkin",
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : {
     "body" : "chest.png",
@@ -32,7 +31,7 @@ Bow/XBow: ^green;+2%^reset; Crit Chance, ^green;+8%^reset; Dmg
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.27
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
@@ -48,6 +47,16 @@ Bow/XBow: ^green;+2%^reset; Crit Chance, ^green;+8%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.04
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.04
     }
   ],
 
@@ -57,14 +66,6 @@ Bow/XBow: ^green;+2%^reset; Crit Chance, ^green;+8%^reset; Dmg
     {
       "stat" : "leathersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.02
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.02
     }
   ],
 
@@ -94,5 +95,7 @@ Bow/XBow: ^green;+2%^reset; Crit Chance, ^green;+8%^reset; Dmg
     { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
     // PINK
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" }
-  ]
+  ],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

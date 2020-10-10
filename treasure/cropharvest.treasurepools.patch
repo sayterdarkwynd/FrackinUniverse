@@ -5,7 +5,7 @@
 	"value" : [ [0, {
 			"pool" : [
 			{"weight" : 0.95, "item" : "phasefruit"},
-			{"weight" : 0.04, "item" : "phasefruitseed"},
+			{"weight" : 0.50, "item" : "phasefruitseed"},
 			{"weight" : 0.01, "item" : "plantfibre"}
                           ],
 			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] 
@@ -17,7 +17,7 @@
 	"value" : [ [0, {
 			"pool" : [
 			{"weight" : 0.90, "item" : "violiroot"},
-			{"weight" : 0.06, "item" : "violirootseed"},
+			{"weight" : 0.50, "item" : "violirootseed"},
 			{"weight" : 0.04, "item" : "phasematter"}
                           ],
 			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] 
@@ -29,7 +29,7 @@
 	"value" : [ [0, {
 			"pool" : [
 			{"weight" : 0.92, "item" : "plasmango"},
-			{"weight" : 0.06, "item" : "plasmangoseed"},
+			{"weight" : 0.50, "item" : "plasmangoseed"},
 			{"weight" : 0.02, "item" : "durasteelore"}
                           ],
 			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] 
@@ -41,7 +41,7 @@
 	"value" : [ [0, {
 			"pool" : [
 			{"weight" : 0.85, "item" : "solusberry"},
-			{"weight" : 0.05, "item" : "solusberryseed"},
+			{"weight" : 0.50, "item" : "solusberryseed"},
 			{"weight" : 0.10, "item" : "coalore"}
                           ],
 			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] 
@@ -822,7 +822,7 @@
  {"op":"add", "path":"/shinyacornHarvest", "value":[[0, {"fill":[{"item":"shinyacorn"}], "pool":[{"weight":0.4, "item":"shinyacornseed"}, {"weight":0.2, "item":"plantfibre"}], "poolRounds":[[0.5,0],[0.5,1]]}]]}, 
  {"op":"add", "path":"/wubstemHarvest", "value":[[0, {"fill":[{"item":"wubstem"}], "pool":[{"weight":0.4, "item":"wubstemseed"}, {"weight":0.2, "item":"plantfibre"}], "poolRounds":[[0.5,0],[0.5,1]]}]]}, 
  {"op":"add", "path":"/genesiberryHarvest", "value":[[0, {"fill":[{"item":"genesiberry"}], "pool":[{"weight":0.5, "item":"genesiberryseed"}, {"weight":0.2, "item":"plantfibre"}], "poolRounds":[[0.5,0],[0.5,1]]}]]}, 
- {"op":"add", "path":"/naileryHarvest", "value":[[0, {"fill":[{"item":"nailery"}], "pool":[{"weight":0.5, "item":"naileryseed"}, {"weight":0.2, "item":"tungstenbar"}], "poolRounds":[[0.5,0],[0.5,1]]}]]}, 
+ {"op":"add", "path":"/naileryHarvest", "value":[[0, {"fill":[{"item":"nailery"}], "pool":[{"weight":0.5, "item":"naileryseed"}], "poolRounds":[[0.5,0],[0.5,1]]}]]}, 
  {"op":"add",
     "path":"/onionHarvest",
 	"value":[[0, {
@@ -895,7 +895,7 @@
 
  {"op":"add",
  	"path":"/fucrystalplantHarvest", 
- 	"value":[[0, {"fill":[{"item":"crystalplantedible"}, {"item":"plantfibre"} ],
+ 	"value":[[0, {"fill":[{"item":"crystalplantedible"}, {"item":"plantfibre"}, {"item":"crystalplantseed"}],
  	"pool":[ {"weight":0.45, "item":"crystalplantseed"},{"weight":0.5, "item":"crystalplantedible"} ],
  	"poolRounds":[[0.5,0],[0.5,1]]}
  		]]
@@ -1041,7 +1041,8 @@
 		"value" : [
 			[0, {
 			  "fill":[
-			    {"item":"bolbohn"}
+			    {"item":"bolbohn"},
+			    {"item":"bolbohnseed"}
 			  ],			
 			  "pool" : [
 				{"weight" : 0.45, "item" : "bolbohnseed"},
@@ -1059,7 +1060,8 @@
 		"value" : [
 			[0, {
 			  "fill":[
-			    {"item":"dunestalk"}
+			    {"item":"dunestalk"},
+			    {"item":"dunestalkseed"}
 			  ],			
 			  "pool" : [
 				{"weight" : 0.45, "item" : "dunestalkseed"},
@@ -1271,5 +1273,13 @@
 			{"weight" : 0.3, "item" : "hopsseed"},
 			{"weight" : 0.10, "item" : "plantfibre"}],
 			"poolRounds" : [ [0.2, 1], [0.6, 2], [0.2, 3] ] } ] ]
+},
+{
+	"op" : "add",
+	"path" : "/xiHarvest",
+	"value" : [ [0, {
+			"fill" : [{"item" :[ "xibulb", 3]}]
+			} 
+		  ] ]
 }
 ]

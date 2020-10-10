@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;:  
-^cyan;+15%^reset; Physical Resist
-Bow/Crossbow: ^green;+15%^reset; Damage, +5%^reset; Crit
-^#e43774;Immune^reset;: Acid, Tar, Stings",
+^yellow;^reset; Bow/Crossbow: Damage x^green;1.15^reset;, +^green;5^reset;% Crit
+^yellow;^reset; ^cyan;Immune^reset;: Acid, Tar, Bee Stings, Jungle/Mud Slows",
   "shortdescription" : "Monster Plate Chestguard",
-  "category" : "t4armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -46,6 +45,11 @@ Bow/Crossbow: ^green;+15%^reset; Damage, +5%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.02
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -54,10 +58,8 @@ Bow/Crossbow: ^green;+15%^reset; Damage, +5%^reset; Crit
     {
       "stat" : "fu_monsterplateset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
-    }      
-  ]
+    }  
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

@@ -1,18 +1,23 @@
 {
-  "itemName" : "mireurchin",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "mireurchin.png",
-  "description" : "Effect:
-^cyan;+25% Ice and +20% Electric Resistance. Blocks electrical storms.^reset;",
-  "shortdescription" : "Mire Urchin",
-  "category" : "food",
+	"itemName": "mireurchin",
+	"inventoryIcon": "mireurchin.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "effects" : [ [
-      "electricblock2", "iceblock"
-    ] ],
-  "blockingEffects" : [
-    "electricblock2", 
-    "iceblock"
-  ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immunity: Freeze & +25% Ice Res^reset;, ^cyan;^cyan;Immunity^reset;: Shock, Electric Storm & +20% Electric Res: 2m",
+	"shortdescription": "Mire Urchin",
+	"effects": [
+		[{
+				"effect": "electricblock2",
+				"duration": 120
+			},
+			{
+				"effect": "iceblock",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": ["electricblock2", "iceblock"]
 }

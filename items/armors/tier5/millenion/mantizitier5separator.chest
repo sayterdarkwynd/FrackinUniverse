@@ -5,10 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+30%^reset; Shield Regen, Block, Stamina
-Shield + Sword: ^cyan;+20%^reset; Health",
+^yellow;^reset; +^green;30^reset;% Shield Regen, Block, Stamina
+^yellow;^reset; Shield + Sword: Health x^green;1.2^reset;, +^green;25^reset;% Knockback Resist
+^yellow;^reset; ^cyan;Immune^reset;: Tar, Gas",
   "shortdescription" : "Millenion's Coat",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -45,6 +46,11 @@ Shield + Sword: ^cyan;+20%^reset; Health",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.03
     }
   ],
 
@@ -53,11 +59,7 @@ Shield + Sword: ^cyan;+20%^reset; Health",
     {
       "stat" : "fu_millenionset_chest",
       "amount" : 1
-    },
-     {
-      "stat" : "fireResistance",
-      "amount" : 0.09
-    } 
+    }
   ],
   
   
@@ -89,7 +91,6 @@ Shield + Sword: ^cyan;+20%^reset; Health",
 
   ],
 
-  "learnBlueprintsOnPickup" : [
-    "fumantizitier6schest"
-  ]
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

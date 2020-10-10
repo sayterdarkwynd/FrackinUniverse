@@ -66,7 +66,7 @@ end
 function fuWeatherBase.totalResist(self)
   local totalResist = 0
   for resist, multiplier in pairs(self.resistanceTypes) do
-    totalResist = totalResist + (status.stat(resist,0) * multiplier)
+    totalResist = totalResist + (status.stat(resist) * multiplier)
   end
   return totalResist
 end
@@ -191,7 +191,7 @@ function fuWeatherBase.lightLevel(self)
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
   position[2] = math.floor(position[2])
-  local lightLevel = world.lightLevel(position)
+  local lightLevel = math.min(world.lightLevel(position),1.0)
   lightLevel = math.floor(lightLevel * 100)
   return lightLevel
 end

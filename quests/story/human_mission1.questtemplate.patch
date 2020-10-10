@@ -1,5 +1,5 @@
 [ 
-	{"op":"remove",
+	[{"op":"remove",
 	"path":"/completionCinema"
 	},
 	{"op":"add",
@@ -8,7 +8,7 @@
 	},
 	{"op":"add",
 	"path":"/scriptConfig/BYOSCompletionText",
-	"value":"My friend...your ^orange;FTL drive ^red;is destroyed^reset;! I can't fix this! You'll have to ^green;build it on your own^reset;. Use your Erchius crystals for it. Check a ^orange;Machining Table^reset; for it." 
+	"value":"Perfect! These'll keep us going fer quite a while. If you haven't already, you should head down to ^green;the maintenance area^reset; below us and talk to ^green;Dr.Akaggy^reset; in the ^green;Mech Hangar^reset;." 
 	},
 	{"op":"replace",
 	"path":"/scriptConfig/descriptions/turnIn",
@@ -41,5 +41,13 @@
 	{"op": "add",
 	"path": "/rewards/0/-",
 	"value": ["erchiusartifactaugment",1]
-	}
+	}],
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints","inverse":true},
+		{"op": "add","path": "/scriptConfig/giveBlueprints","value":[]}
+	],
+	[
+		{"op": "test","path": "/scriptConfig/giveBlueprints"},
+		{"op": "add","path": "/scriptConfig/giveBlueprints/-","value":"erchiusartifactaugment"}
+	]
 ]

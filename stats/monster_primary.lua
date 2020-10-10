@@ -18,6 +18,10 @@ function init()
   message.setHandler("applyStatusEffect", function(_, _, effectConfig, duration, sourceEntityId)
       status.addEphemeralEffect(effectConfig, duration, sourceEntityId)
     end)
+	
+	if root.hasTech("stardustlib:enable-extenders") then -- stardustlib shim
+    require "/sys/stardust/statusext.lua"
+  end
 end
 
 function applyDamageRequest(damageRequest)
@@ -41,6 +45,12 @@ function applyDamageRequest(damageRequest)
     return {}
   elseif damageRequest.damageType == "Environment" then
     return {}
+  end
+  
+  if status.isResource("damageAbsorption") and status.resourcePositive("damageAbsorption") then
+    local damageAbsorb = math.min(damage, status.resource("damageAbsorption"))
+    status.modifyResource("damageAbsorption", -damageAbsorb)
+    damage = damage - damageAbsorb
   end
 
   if status.resourcePositive("shieldHealth") then
@@ -85,16 +95,22 @@ function applyDamageRequest(damageRequest)
 
   if not status.resourcePositive("health") then
     hitType = "kill"
-    --bows should cause hunting drops regardless of damageKind
-    if string.find(elementalStat, "bow") then
-      string.gsub(elementalStat, "fire", "")
-      string.gsub(elementalStat, "ice", "")
-      string.gsub(elementalStat, "electric", "")
-      string.gsub(elementalStat, "poison", "")
-      string.gsub(elementalStat, "shadow", "")
-      string.gsub(elementalStat, "radioactive", "")
-      string.gsub(elementalStat, "cosmic", "")
-    end
+	--sb.logInfo("%s",damageRequest)
+	--this sadly doesnt actually cause drops to be hunting drops.
+	--there is ZERO way to interact with monster drop pools from scripts. period. stop trying.
+	--[[
+	if string.find(damageRequest.damageSourceKind,"bow") then
+		damageRequest.damageSourceKind="bow"
+	end]]
+	--instead, we take a smarter workaround that functions, albeit annoyingly
+	if string.find(damageRequest.damageSourceKind,"bow") and not (damageRequest.damageSourceKind=="bow") and status then
+		status.setResource("health",1)
+		--set resistances to nil so at least the damage number is represented properly
+		status.addEphemeralEffect("vulnerability",1,damageRequest.sourceEntityId)
+		--then spawn a projectile and gib 'em.
+		world.spawnProjectile("fuinvisibleprojectiletiny", entity.position(), damageRequest.sourceEntityId,nil,nil,{damageType="IgnoresDef",damageKind="bow",damageTeam={type="friendly"},power=damage})
+		return {}
+	end
   end
   return {{
     sourceEntityId = damageRequest.sourceEntityId,
@@ -188,7 +204,7 @@ function inLiquid() --no fall damage while submerged in liquids
     local liquidID = 0
     if mcontroller.liquidPercentage() > 0.1 then
     liquidID = mcontroller.liquidId()
-       liquidID = excludeLiquidIds[liquidID] and 0 or liquidID 
+       liquidID = excludeLiquidIds[liquidID] and 0 or liquidID
     end
     return liquidID > 0
 end

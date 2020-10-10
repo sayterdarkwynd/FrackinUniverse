@@ -1,6 +1,6 @@
 {
   "itemName" : "aetheriumdagger",
-  "price" : 12040,
+  "price" : 1204,
   "maxStack" : 1,
   "level" : 7,
   "rarity" : "legendary",
@@ -10,72 +10,163 @@
   "tooltipKind" : "swordaetherium",
   "category" : "dagger",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger","xithricite", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","dagger","aetherium","cosmic", "upgradeableWeapon"],
   "inventoryIcon" : "aetheriumdagger.png",
   "collectablesOnPickup" : { "fu_weapondagger" : "aetheriumdagger" },
-  "animation" : "daggerglow.animation",
+  "animation" : "daggercomboglow.animation",
   "animationParts" : {
+    "handle" : "",
     "blade" : "aetheriumdagger.png",
-    "bladefullbright" : "aetheriumdaggerfullbright.png",
-    "handle" : ""
+    "bladefullbright" : "aetheriumdaggerfullbright.png"
   },
+
+
   "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [0.0, 1.75]
-    }}}},
+    "animatedParts" : { 
+      "parts" : { 
+        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "bladefullbright" : { "properties" : {"offset" : [0.4, 2.2]}},
+        "swoosh" : { "properties" : {"offset" : [1, 2]}}      
+      }
+    },
     "sounds" : {
       "fire" : [ "/sfx/melee/energywhip_swing1.ogg", "/sfx/melee/energywhip_swing2.ogg" , "/sfx/melee/energywhip_swing3.ogg"  ]
-    }
+    }    
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "aether",
 
   "aimOffset" : -1.0,
-
+  
+  "primaryAbilityType" : "daggercombo",
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
-
-    "class" : "MeleeSlash",
-    "fireTime" : 2.215,
-    "baseDps" : 7.6,
+    "fireTime" : 0.6,
+    "baseDps" : 7.4,
     "damageConfig" : {
-      "knockback" : 10,
+      "knockback" : 12,
        "statusEffects" : [ "defenseboostneg20" ],
-       "damageSourceKind" : "cosmicdagger"
+       "damageSourceKind" : "aetherdagger"
     },
     "stances" : {
       "idle" : {
-        "armRotation" : -90,
-        "weaponRotation" : -10,
-        "weaponOffset" : [0.1, 2.25],
-
-        "allowFlip" : true,
-        "allowRotate" : true
-      },
-      "windup" : {
-        "duration" : 0.05,
         "armRotation" : -20,
-        "weaponRotation" : -20,
-        "weaponOffset" : [0.1, 2.25],
+        "weaponRotation" : 170,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "windup1" : {
+        "duration" : 0.1,
+        "armRotation" : -30,
+        "weaponRotation" : 170,
+        "twoHanded" : false,
+        "weaponAngularVelocity":360,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire1" : {
+        "duration" : 0.12,
+        "armRotation" : 60,
+        "weaponRotation" : 170,
+        "twoHanded" : false,
 
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "wait1" : {
+        "duration" : 0.1,
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : false
+      },
+      "windup2" : {
+        "duration" : 0.1,
+        "armRotation" : -15,
+        "weaponRotation" : -60,
+        "weaponOffset" : [0, 0],
+        "twoHanded" : false,
         "allowFlip" : true,
         "allowRotate" : true
       },
-      "fire" : {
-        "duration" : 2.2,
-        "armRotation" : -135,
-        "weaponRotation" : 40,
-        "weaponOffset" : [0.1, 2.5],
-
+      "fire2" : {
+        "duration" : 0.1,
+        "armRotation" : -150,
+        "weaponRotation" : 55,
+        "weaponOffset" : [0, 0],
+        "twoHanded" : false,
         "allowFlip" : true,
         "allowRotate" : true
-      }
-    }
+      },
+      "wait2" : {
+        "duration" : 0.1,
+        "armRotation" : -150,
+        "weaponRotation" : 55,
+        "weaponOffset" : [0, 0],
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : false
+      },
+      "windup3" : {
+        "duration" : 0.1,
+        "armRotation" : -150,
+        "weaponRotation" : 55,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire3" : {
+        "duration" : 0.1,
+        "armRotation" : -10,
+        "weaponRotation" : -90,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "wait3" : {
+        "duration" : 0.1,
+        "armRotation" : -15,
+        "weaponRotation" : -75,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : false
+      },
+      "windup4" : {
+        "duration" : 0.1,
+        "armRotation" : -150,
+        "weaponRotation" : 55,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire4" : {
+        "duration" : 0.1,
+        "armRotation" : 10,
+        "weaponRotation" : -90,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "wait4" : {
+        "duration" : 0.1,
+        "armRotation" : -5,
+        "weaponRotation" : -75,
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : true,
+        "weaponAngularVelocity":-360
+      }    
+    } 
   },
-  "critChance" : 8,
-  "critBonus" : 30,
+  "critChance" : 2,
+  "critBonus" : 12,
+  "stunChance" : 50,
   "upgradeParameters": {
     "description" : "Death be thy shadow.",
 	"shortdescription" : "Aetherium Godkiller",

@@ -1,0 +1,139 @@
+{
+  "type" : "fufish",
+
+  "categories" : [ "fufish" ],
+  "parts" : [ "head" ],
+
+  "animation" : "fufish.animation",
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/generated/swimming/smallfish/smallFish.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+      "/scripts/stateMachine.lua",
+      "/monsters/flocking.lua",
+      "/monsters/generated/swimming/smallfish/scatterState.lua",
+      "/monsters/generated/swimming/smallfish/fleeState.lua",
+      "/monsters/generated/swimming/smallfish/investigateState.lua"
+    ],
+
+    "metaBoundBox" : [-2.0, -2.0, 2.0, 2.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-1.0, -0.5], [0.5, -0.5], [0.5, 0.5], [-1.0, 0.5] ],
+
+      "mass" : 0.6,
+      "liquidBuoyancy" : 1.0,
+      "flySpeed" : 8,
+      "liquidFriction" : 3,
+      "liquidForce" : 50.0
+    },
+
+    "knockoutTime" : 0.25,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "colors" : "generated",
+
+    "wanderChangeDirectionCooldown" : 10.0,
+    "wanderChangeDirectionYRange" : [-0.4, 0.4],
+    "wanderChangeDirectionTime" : 2.0,
+
+    "fleeTriggerDistance" : 5.0,
+    "fleeDistanceRange" : [10.0, 20.0],
+    "fleeMovementWeight" : 7.0,
+
+    "collisionAvoidanceWeight" : 8.0,
+    "collisionAvoidanceTime" : 0.75,
+
+    "investigateTriggerDistance" : 15.0,
+    "investigateStopDistance" : 1.0,
+    "investigateTimeRange" : [10.0, 20.0],
+    "investigateLoseInterestRange" : [20.0, 40.0],
+    "investigateCooldownTime" : 20.0,
+
+    "scatterTime" : 4.0,
+    "scatterDistance" : 10.0,
+    "scatterMovementWeight" : 7.0,
+
+    "flockRegion" : [ [-5.0, -5.0], [5.0, 5.0] ],
+    "flockMovementWeight" : 6.0,
+    "flockLeaderInfluence" : 3.0,
+    "flockSeparationDistance" : 5.0,
+    "flockSeparationFactor" : 0.5,
+    "flockAlignmentDistance" : 7.0,
+    "flockAlignmentFactor" : 0.2,
+    "flockCohesionFactor" : 0.1,
+
+    "blockedSensors" : [ [1.5, -0.4], [1.5, 0.3], [1.5, 1.0] ],
+    "upSensors" : [ [-0.75, -1.5], [0.75, -1.5], [1.5, -1.5] ],
+    "downSensors" : [ [-0.75, 1.5], [0.75, 1.5], [1.5, 1.5] ],
+
+    "damageTeamType" : "passive",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 4
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -4],
+    "capturable" : false,
+    "relocatable" : true,
+    "scaleOffsetPart" : "head",
+    "nametagColor" : [64, 200, 255]
+  },
+
+  "dropPools" : [
+    {
+      "default" : "smallfishtreasure",
+      "bow" : "smallfishtreasure",
+      "fishing" : "smallfishingtreasure"
+    }
+  ]
+}

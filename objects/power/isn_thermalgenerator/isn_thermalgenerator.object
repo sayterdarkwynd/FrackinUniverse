@@ -5,17 +5,18 @@
   "category" : "wire",
   "objectType" : "container",
   "price" : 3500,
-  "description" : "A fuel-burning generator. It can generate roughly 10W or higher based on fuel type used.",
+  "description" : "A fuel-burning generator. It can generate roughly 10W or higher based on fuel type used. ^blue;Left Input^reset;: Power Switch",
   "shortdescription" : "^cyan;Combustion Generator^white;",
   "race" : "generic",
   "printable" : false,
-  "learnBlueprintsOnPickup" : [  "isn_radiostationnew", "isn_fissionreactornew", "isn_atmoscondenser" ],
+//  "learnBlueprintsOnPickup" : [  "isn_fissionreactornew", "isn_atmoscondenser" ],
   "apexDescription" : "Low-class Apex housing is usually near generators like these. The constant noise prevents you from getting any good sleep.",
   "avianDescription" : "I'm not a fan of heavy industry.",
-  "floranDescription" : "Floran not like hot noisssy machine.",
+  "floranDescription" : "Floran not like hot noisssy machine. It makesss BRRRR BRRRRR BRRRR soundss all the time.",
   "glitchDescription" : "Observation. It is designed with replaceable parts to minimize repair costs.",
   "humanDescription" : "This'll generate a lot of power, but it'll eat up fuel.",
   "hylotlDescription" : "Fossil fuel generation. Crass and primitive. It is, however, effective.",
+  "feneroxDescription" : "Loud machine is scare. Not like. Why clank and BRRRR? Just make power, no sound!",
 
   "inventoryIcon" : "isn_thermalgeneratoricon.png",
   "orientations" : [
@@ -41,7 +42,7 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/scripts/power.lua","/scripts/generator.lua"],
+  "scripts" : [ "/scripts/fupower.lua","/scripts/fugenerator.lua"],
   "scriptDelta" : 60,
   
   "inputNodes" : [ [2, 2],[0, 2] ],

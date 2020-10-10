@@ -1,4 +1,10 @@
 [
+  //reduce occurence of RNG weapons except in weapon chests
+  // but increase other drops to compensate
+  {
+    "op": "remove",
+    "path": "/basicTreasure/0/1/pool/5"
+  },
   {
     "op": "add",
     "path": "/basicTreasure/0/1/pool/-",
@@ -7,6 +13,15 @@
       "pool": "fusalvageComponent"
     }
   }, 
+
+  //small chance for Research chunk
+  {
+    "op": "add",
+    "path": "/basicTreasure/0/1/pool/-",
+    "value": {"weight": 0.005,"item": ["smalldata",1]}
+  },   
+
+  //super ultra rare chance for transmutation matrix
    {
     "op": "add",
     "path": "/tool/0/1/pool/-",
@@ -702,6 +717,294 @@
           }
         ]
       }
+    ]
+  },
+  
+  //NEBS BOW TREASUREPOOLS
+  {
+    "op": "replace",
+    "path": "/weapon/0/1/pool/0/weight",
+    "value": 0.35
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/0/1/pool/1/weight",
+    "value": 0.25
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/0/1/pool/2/weight",
+    "value": 0.08
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/0/1/pool/3/weight",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/0/1/pool/4/weight",
+    "value": 0.04
+  },
+  {
+    "op": "add",
+    "path": "/weapon/0/1/pool/-",
+    "value": {
+      "weight": 0.11,
+      "pool": "commonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/weapon/0/1/pool/-",
+    "value": {
+      "weight": 0.04,
+      "pool": "uncommonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/weapon/0/1/pool/-",
+    "value": {
+      "weight": 0.01,
+      "pool": "rareBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/weapon/1/1/pool/-",
+    "value": {
+      "weight": 0.09,
+      "pool": "commonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/weapon/1/1/pool/-",
+    "value": {
+      "weight": 0.05,
+      "pool": "uncommonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/weapon/1/1/pool/-",
+    "value": {
+      "weight": 0.02,
+      "pool": "rareBow"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/2/1/pool/0/weight",
+    "value": 0.19
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/2/1/pool/1/weight",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/2/1/pool/4/weight",
+    "value": 0.11
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/2/1/pool/5/weight",
+    "value": 0.04
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/2/1/pool/6/weight",
+    "value": 0.08
+  },
+  {
+    "op": "replace",
+    "path": "/weapon/2/1/pool/7/weight",
+    "value": 0.08
+  },
+  {
+    "op": "add",
+    "path": "/weapon/2/1/pool/-",
+    "value": {
+      "weight": 0.09,
+      "pool": "commonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/weapon/2/1/pool/-",
+    "value": {
+      "weight": 0.05,
+      "pool": "uncommonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/weapon/2/1/pool/-",
+    "value": {
+      "weight": 0.02,
+      "pool": "rareBow"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/0/1/pool/0/weight",
+    "value": 0.35
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/0/1/pool/1/weight",
+    "value": 0.25
+  },
+  {
+    "op": "add",
+    "path": "/goodWeapon/0/1/pool/-",
+    "value": {
+      "weight": 0.1,
+      "pool": "uncommonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/goodWeapon/0/1/pool/-",
+    "value": {
+      "weight": 0.05,
+      "pool": "rareBow"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/1/1/pool/0/weight",
+    "value": 0.18
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/1/1/pool/1/weight",
+    "value": 0.12
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/1/1/pool/2/weight",
+    "value": 0.18
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/1/1/pool/3/weight",
+    "value": 0.12
+  },
+  {
+    "op": "add",
+    "path": "/goodWeapon/1/1/pool/-",
+    "value": {
+      "weight": 0.15,
+      "pool": "uncommonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/goodWeapon/1/1/pool/-",
+    "value": {
+      "weight": 0.11,
+      "pool": "rareBow"
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/2/1/pool/0/weight",
+    "value": 0.15
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/2/1/pool/1/weight",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/2/1/pool/2/weight",
+    "value": 0.15
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/2/1/pool/3/weight",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/2/1/pool/4/weight",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/2/1/pool/5/weight",
+    "value": 0.1
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/2/1/pool/6/weight",
+    "value": 0.03
+  },
+  {
+    "op": "replace",
+    "path": "/goodWeapon/2/1/pool/7/weight",
+    "value": 0.03
+  },
+  {
+    "op": "add",
+    "path": "/goodWeapon/2/1/pool/-",
+    "value": {
+      "weight": 0.15,
+      "pool": "uncommonBow"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/goodWeapon/2/1/pool/-",
+    "value": {
+      "weight": 0.1,
+      "pool": "rareBow"
+    }
+  },
+	
+  
+  {
+    "op": "add",
+    "path": "/commonBow",
+    "value": [
+	  [
+      0, {
+        "pool": [
+          {"weight" : 1, "item" : "neb-commonbow"}
+        ]
+      }
+	  ]
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/uncommonBow",
+    "value": [
+	  [
+      0, {
+        "pool": [
+          {"weight" : 1, "item" : "neb-uncommonbow"}
+        ]
+      }
+	  ]
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/rareBow",
+    "value": [
+	  [
+      0, {
+        "pool": [
+          {"weight" : 1, "item" : "neb-rarebow"}
+        ]
+      }
+	  ]
     ]
   }
 ]

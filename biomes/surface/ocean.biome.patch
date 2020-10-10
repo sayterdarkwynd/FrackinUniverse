@@ -20,17 +20,37 @@
   "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
   }
 },
+{"op":"add","path":"/surfacePlaceables/items/-","value":{
+  "mode" : "floor",
+  "priority" : 1.0,
+  "variants" : 1,
+  "distribution" : "/biomes/distributions.config:surfaceCrops",
 
+  "type" : "object",
+  "objectSets" : [
+    {
+      "pool" : [ 
+      [0.33, "emeraseed" ],
+      [0.33, "feyaseed" ],
+      [0.33, "oceaniteseed" ]
+      ],
+      "parameters" : { "startingStage" : 3 }
+    }
+  ]
+}
+},
 
 {"op":"add","path":"/spawnProfile/groups/-",
 "value":{ 
       
-        "select" : 1,
+        "select" : 3,
         "pool" : [ 
-          [ 0.111, "fualbatrosscritter" ],
-          [ 0.111, "fudodocritter" ],
-          [ 0.111, "fufirecrab" ],
-          [ 0.111, "aquapodflyer" ]
+          [ 0.1, "fualbatrosscritter" ],
+          [ 0.1, "fudodocritter" ],
+          [ 0.1, "fufirecrab" ],
+          [ 0.1, "aquapodflyer" ],
+          [ 0.15, "bee_loamzipper" ],
+          [ 0.3, "bee_aquarum" ]
         ]
       }
 }

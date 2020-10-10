@@ -1,0 +1,54 @@
+{
+  "projectileName" : "atomsmasher_shot3_notiledamage",
+  "image" : "atomsmasher_shot.png",
+  "animationCycle" : 1.0,
+  "level" : 6,
+  "physics" : "atomsmasher",
+  "frameNumber" : 6,
+  "pointLight" : true,
+  "damagePoly" : [ [-28, 0], [0, 12], [16, 16], [28, 0], [-16, -16], [0, -12] ],
+  "lightColor" : [60, 113, 255],
+  "speed" : 50,
+  "timeToLive" : 0.08,
+  "universalDamage" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/atomsmasherboom/atomsmasherboom_notiledamage.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "atomsmasher_shot4_notiledamage",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.85,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuplasmarifleblast_notiledamage",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : 35
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuplasmarifleblast_notiledamage",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : -35
+    },
+    {
+      "action" : "projectile",
+      "type" : "fuplasmarifleblast_notiledamage",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.12,
+      "angleAdjust" : 0
+    }
+  ],
+  "damageKind" : "cosmic",
+  "power" : 40,
+  "damageType" : "IgnoresDef",
+  "emitters" : [ "defaultblue" ]
+}
+
+

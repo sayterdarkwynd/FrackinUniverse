@@ -1,5 +1,7 @@
-require'/scripts/power.lua'
+require'/scripts/fupower.lua'
 require'/scripts/util.lua'
+require "/scripts/poly.lua"
+require "/scripts/vec2.lua"
 
 liquids = {
 	aethersea = {liquid=100,cooldown=2},
@@ -54,16 +56,18 @@ function update(dt)
 		return
 	end
 	if not object.isInputNodeConnected(0) or object.getInputNodeLevel(0) then
-		if not deltaTime or deltaTime > 1 then
+		if not scanTimer or scanTimer > 1 then
 			wellInit()
-			deltaTime=0
+			setDesc()
+			scanTimer=0
 		else
-			deltaTime=deltaTime+dt
+			scanTimer=scanTimer+dt
 		end
 		if storage.timer > 0 then
 			if power.consume(config.getParameter('isn_requiredPower')*dt) then
 				animator.setAnimationState("machineState", "active")
-				storage.timer = storage.timer - (dt/wellsDrawing)
+				--storage.timer = storage.timer - (dt/wellsDrawing)
+				storage.timer=storage.timer-(dt/math.sqrt(1+wellsDrawing))
 			else
 				animator.setAnimationState("machineState", "idle")
 			end
@@ -106,7 +110,8 @@ function setDesc()
 			info="Atmosphere: "..color..info.name.."^reset;"
 		end
 	end
-	object.setConfigParameter('description',baseMessage.."\n"..info.."\n^red;Range:^gray; "..wellRange.."^reset;")
+	--object.setConfigParameter('description',baseMessage.."\n"..info.."\n^red;Range:^gray; "..wellRange.."^reset;")
+	object.setConfigParameter('description',baseMessage.."\n"..info.."\n^red;Range:^gray; "..wellRange.."\n^red;Wells in range:^gray; "..((wellsDrawing or 0)-1).."^reset;")
 end
 
 function toHex(num)
@@ -116,7 +121,8 @@ function toHex(num)
 end
 
 function wellInit()
-	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAirWell"}) or {})
+	if (not storage.wellPos) and object.spaces() then storage.wellPos=vec2.add(poly.center(object.spaces()),object.position()) end
+	wellsDrawing=1+#(world.entityQuery(storage.wellPos or entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAirWell"}) or {})
 end
 
 function fu_isAirWell() return (animator.animationState("machineState")=="active") end

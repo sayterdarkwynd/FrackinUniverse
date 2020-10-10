@@ -4,14 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+4%^reset; Physical Resist
-\n^orange;Set Bonuses^reset;:
-^#a94db3;+25%^reset; Fall Damage Resist
-Swords: ^cyan;+15%^reset; Dmg
-\n^#e43774;Sulphuric/Mountainous: ^cyan;+15%^reset; Phys. Resist",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Fall Damage x^green;0.75^reset;
+^yellow;^reset; Swords: Damage x^green;1.15^reset;",
 
   "shortdescription" : "Bone-Steel Mask",
-  "category" : "t2armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -42,6 +40,11 @@ Swords: ^cyan;+15%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.053334
     }
   ],
 
@@ -50,10 +53,6 @@ Swords: ^cyan;+15%^reset; Dmg
     {
       "stat" : "bonesteelsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
     }
   ],
 
@@ -82,5 +81,7 @@ Swords: ^cyan;+15%^reset; Dmg
     { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
     /* PINK */
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

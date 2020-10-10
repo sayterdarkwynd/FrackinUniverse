@@ -1,17 +1,19 @@
 {
-  "itemName" : "jillyroot",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "jillyroot.png",
-  "description" : "Effect:
-^cyan;Heal 30 health^reset;",
-  "shortdescription" : "Jilly Root",
-   "category" : "food",
+	"itemName": "jillyroot",
+	"inventoryIcon": "jillyroot.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
 
-  "effects" : [ [
-        "heal_tier2"
-    ] ],
-  "blockingEffects" : [
-    "heal_tier2"
-  ]
+	"description": "^yellow;^reset;^cyan;Heal 30^reset;: 2s",
+	"shortdescription": "Jilly Root",
+
+	"tooltipKind": "food",
+	"effects": [
+		[{
+			"effect": "heal_tier2",
+			"duration": 2
+		}]
+	],
+	"blockingEffects": ["heal_tier2"]
 }

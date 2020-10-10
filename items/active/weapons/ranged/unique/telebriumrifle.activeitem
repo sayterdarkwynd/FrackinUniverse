@@ -11,7 +11,7 @@
   "level" : 2,
   "tooltipKind" : "gun2",
   "weaponType" : "assaultRifle",
-  "itemTags" : ["weapon","ranged","upgradeableWeapon", "assaultrifle"],
+  "itemTags" : ["weapon","ranged","upgradeableWeapon", "assaultrifle","telebrium"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
@@ -51,7 +51,7 @@
   "muzzleOffset" : [1.9, 0.325],
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "poison",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -110,7 +110,10 @@
 
   "critChance" : 0.5,
   "critBonus" : 2,
-
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300, 
 
   "altAbility" : {
     "name" : "Telebrium Bomb",

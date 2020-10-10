@@ -5,14 +5,18 @@ function init()
 end
 
 function update(dt)
- -- animator.setFlipped(mcontroller.facingDirection() == -1)
 	if getSkinColorOnce == 0 then
-		getSkinColorOnce=1
-		local result = world.entityPortrait(entity.id(),"full")
+		if not (world.entityType(entity.id())) then return end
 		local myRace = world.entitySpecies(entity.id())
+		getSkinColorOnce=1
 		if myRace ~= "slimeperson" then
 			animator.setLightColor("xelglow", {0,0,0})
 		else
+			local pass,result = pcall(world.entityPortrait,entity.id(),"full")
+			if not pass then
+				animator.setLightColor("xelglow", {0,0,0})
+				return
+			end
 			local i = 1
 			local done = 0
 			while i < 12 do
@@ -50,8 +54,8 @@ function update(dt)
 				i = i + 1
 			end
 		end
+		script.setUpdateDelta(0)
 	end
-	script.setUpdateDelta(0)
 end
 
 function uninit()

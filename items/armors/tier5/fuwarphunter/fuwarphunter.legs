@@ -6,11 +6,11 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;30%/25%^reset; Electric/Physical Resist
-Mining Laser: ^#a94db3;+340% Dmg
-^cyan;Immune^reset;: Burning, Proto, Pressure, Oxygen, Gas",  
+^yellow;^reset; ^cyan;Gravity Normalization^reset;
+^yellow;^reset; Mining Laser: Damage x^green;3.4^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Proto-Poison, Pressure, Oxygen, Gas, Ice Slip, Grav-Rain", 
   "shortdescription" : "Warp Miner Techpants",
-  "category" : "t5armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
@@ -38,6 +38,16 @@ Mining Laser: ^#a94db3;+340% Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.033334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.023334
     }
   ],
 
@@ -46,14 +56,6 @@ Mining Laser: ^#a94db3;+340% Dmg
     {
       "stat" : "fu_warphunterset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -77,5 +79,7 @@ Mining Laser: ^#a94db3;+340% Dmg
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

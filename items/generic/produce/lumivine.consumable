@@ -1,15 +1,18 @@
 {
-  "itemName" : "lumivine",
-  "rarity" : "rare",
-  "price" : 100,
-  "inventoryIcon" : "lumivine.png",
-  "description" : "Effect:
-^cyan;Pressure Immunity^reset;",
-  "shortdescription" : "Lumivine",
-  "category" : "food",
+	"itemName": "lumivine",
+	"inventoryIcon": "lumivine.png",
+	"category": "food",
+	"rarity": "rare",
+	"price": 100,
 
-  "effects" : [ [
-      "pressureimmunity"
-    ] ],
-  "learnBlueprintsOnPickup" : [ "lumivineseed" ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immunity^reset;: Pressure: 2m",
+	"shortdescription": "Lumivine",
+	"effects": [
+		[{
+			"effect": "pressureimmunity",
+			"duration": 120
+		}]
+	]//,
+	//"learnBlueprintsOnPickup": ["lumivineseed"]
 }

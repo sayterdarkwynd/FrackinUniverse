@@ -8,16 +8,12 @@
 
   "animation" : "poptop.animation",
 
-  "dropPools" : [ { "default" : "poptopTreasure", "bow" : "poptopHunting" } ],
+  "dropPools" : [ {"default" : "empty","brain" : "madnessBrainHarvesting"} ],
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua","/scripts/golemancer/gol_monstermain.lua"
+      "/monsters/monster.lua"
     ],
-    
-    "evolutions" : [ "/scripts/golemancer/evolutions/poptopgrowmadness2.evo" ],
-    "tickEvoTime":3,
-    "agingEvoTime" : 900,
     
 
     "behavior" : "monster",
@@ -247,9 +243,8 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : true,
+    "capturable" : false,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "monsters" : "poptopmadnesspet" }
+    "nametagColor" : [64, 200, 255]
   }
 }

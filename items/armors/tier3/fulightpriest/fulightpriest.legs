@@ -5,21 +5,21 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+20%^reset; Wand/Staff/Quarterstaff Dmg^reset;
-^cyan;24%^reset; Cosmic Resist, ^cyan;+0.4%^reset; Health Regen",
+^yellow;^reset; +^green;0.4^reset;% Health Regen
+^yellow;^reset; Wand/Staff/Quarterstaff: Damage x^green;1.2^reset;",
   "shortdescription" : "Light Priest Pants",
-  "category" : "t3armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "learnBlueprintsOnPickup" : [
-    "fuprophetpants",
-    "fuprophethead",
-    "fuprophetchest"
-  ],
-
+ // "learnBlueprintsOnPickup" : [
+ //   "fuprophetpants",
+ //   "fuprophethead",
+ //   "fuprophetchest"
+ // ],
+	"itemTags":["upgradeableWeapon"],
   "level" : 3,
   "collectablesOnPickup" : { "fu_armorpowerranged" : "fulightpriestpants" },
   "leveledStatusEffects" : [
@@ -42,6 +42,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 0
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.04
     }
   ],
 
@@ -50,10 +55,6 @@
     {
       "stat" : "lightpriestsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.08
     }
   ],
 
@@ -82,5 +83,7 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

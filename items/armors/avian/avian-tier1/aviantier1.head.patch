@@ -1,29 +1,74 @@
 [
-	[
-	{ "op": "test", "path": "/itemTags", "inverse" : false },
-	{"op": "add","path": "/itemTags","value": []},
-	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
+	[{
+			"op": "test",
+			"path": "/itemTags",
+			"inverse": true
+		},
+		{
+			"op": "add",
+			"path": "/itemTags",
+			"value": []
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
 	],
-	[
-	{ "op": "test", "path": "/itemTags", "inverse" : true },
-	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
+	[{
+			"op": "test",
+			"path": "/itemTags"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
 	],
-	[
-	  {
-	    "op": "replace",
-	    "path": "/description",
-	    "value": "Set Bonus:\nIce Resistance ^green;+10%^reset;\n^green;+15%^reset; Max Energy (Wand/Staff)"
-	  },	
-	  {
-	    "op": "add",
-	    "path": "/statusEffects",
-	    "value": [
-	      "fusetbonusmanager",
-	      {
-		"stat": "aviantier1setcount",
-		"amount": 1
-	      }
-	    ]
-	  }	
+	[{
+			"op": "replace",
+			"path": "/description",
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Wand/Staff: Dmg x^green;1.1^reset;"
+		},
+		{
+			"op": "replace",
+			"path": "/tooltipKind",
+			"value": "armornew2"
+		},
+		{
+			"op": "add",
+			"path": "/statusEffects",
+			"value": [
+				    "aviantier1setbonusnew",
+				{
+					"stat" : "fu_aviantier1setnew_head",
+					"amount" : 1
+				}
+			]
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "iceResistance",
+				"amount": 0.033334
+			}
+		}, 
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "poisonResistance",
+				"amount": 0.033334
+			}
+		}, 	
+		{
+			"op": "add",
+			"path": "/builder",
+			"value": "/items/buildscripts/fubuildarmor.lua"
+		}
 	]
 ]

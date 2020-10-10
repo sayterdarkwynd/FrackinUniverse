@@ -11,7 +11,7 @@
   "category" : "crossbow",
   "itemTags" : ["weapon","ranged","crossbow","upgradeableWeapon"],
   "twoHanded" : true,
-  "learnBlueprintsOnPickup" : [ "zerchesiumcrossbow" ],
+//  "learnBlueprintsOnPickup" : [ "zerchesiumcrossbow" ],
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -47,7 +47,7 @@
     "projectileType" : "ironbolt",
     "projectileParameters" : {
       "knockback" : 32,
-      "damageSourceKind" : "bow"
+      "damageKind" : "bow"
     },
     "stances" : {
       "idle" : {
@@ -80,8 +80,9 @@
   },
 
   "altAbilityType" : "flashlight",
-  "critChance" : 5,
+  "critChance" : 3,
   "critBonus" : 4,
-
+  "isCrossbow" : 1,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

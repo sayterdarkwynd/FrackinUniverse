@@ -1,62 +1,56 @@
 {
-  "animationCustom" : {
-    "sounds" : {
-      "altFire" : [ "/sfx/gun/needler1.ogg" ]
-    },
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "emissionRate" : 8,
-        "transformationGroups" : ["muzzle"],
-        "offsetRegion" : [0, 0, 0, 0],
-        "particles" : [ ]
-      }
-    }
-  },
+	"animationCustom": {
+		"sounds": {
+			"altFire": ["/sfx/gun/needler1.ogg"]
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"emissionRate": 8,
+				"transformationGroups": ["muzzle"],
+				"offsetRegion": [0, 0, 0, 0],
+				"particles": []
+			}
+		}
+	},
 
-  "ability" : {
-    "name" : "Power Shot",
-    "type" : "chargeshotgunbomb",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
+	"ability": {
+		"name": "Power Shot",
+		"type": "chargeshotgunbomb",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
 
-    "elementalConfig" : {
-      "physical" : { "projectileType" : "fushotgundartpower" },
-      "fire" : { "projectileType" : "fushotgundartpower" },
-      "electric" : { "projectileType" : "fushotgundartpower" },
-      "ice" : { "projectileType" : "fushotgundartpower" },
-      "poison" : { "projectileType" : "spiderlaser" }
-    },
-    "projectileParameters" : {
-      "knockback" : 10,
-      "statusEffects" : [ ] // don't inherit from primary fire
-    },
-    "projectileCount" : 1,
-    "inaccuracy" : 0,
-    "baseDps" : 7,
-    "energyUsage" : 25.0,
-    "fireTime" : 1.0,
-    "fireType" : "auto",
+		"projectileType": "fushotgundartpower",
+		"projectileParameters": {
+			"knockback": 10,
+			"statusEffects": []
+		},
+		"projectileCount": 1,
+		"inaccuracy": 0,
+		"baseDps": 7,
+		"energyUsage": 25.0,
+		"fireTime": 1.0,
+		"fireType": "auto",
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.11,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

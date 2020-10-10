@@ -1,17 +1,18 @@
 require "/scripts/util.lua"
+require "/scripts/poly.lua"
+require "/scripts/vec2.lua"
 require "/scripts/kheAA/transferUtil.lua"
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 
 -- You might notice there's no timer here.
 -- The time between outputs and power consumption is determined by
 -- the object's "scriptDelta".
 
--- Added in the deltaTime variable as it's common in any lua code which
+-- Added in the scanTimer variable as it's common in any lua code which
 -- interacts with Item Transference Device (transferUtil) code.
-local deltaTime	-- Making it local is faster than leaving it global.
+local scanTimer	-- Making it local is faster than leaving it global.
 
 function init()
-    transferUtil.init()
     object.setInteractive(true)
     self.powerConsumption = config.getParameter("isn_requiredPower")
     productionTime = (config.getParameter("productionTime",120))/60
@@ -49,13 +50,13 @@ function update(dt)
     power.update(dt)
 	
 	-- Notify ITD but no faster than once per second.
-	if not deltaTime or (deltaTime > 1) then
+	if not scanTimer or (scanTimer > 1) then
 		transferUtil.loadSelfContainer()
 		wellInit()
 		setDesc()
-		deltaTime = 0
+		scanTimer = 0
 	else
-		deltaTime=deltaTime+dt
+		scanTimer=scanTimer+dt
 	end
 
 	if not storage.timer then
@@ -86,14 +87,20 @@ function update(dt)
 		end
 
 		if output and clearSlotCheck(output) and power.consume(self.powerConsumption) then
+			if object.outputNodeCount() > 0 then
+				object.setOutputNodeLevel(0,true)
+			end
 			animator.setAnimationState("machineState", "active")
 			world.containerAddItems(entity.id(), output)
 		else
+			if object.outputNodeCount() > 0 then
+				object.setOutputNodeLevel(0,false)
+			end
 			animator.setAnimationState("machineState", "idle")
 		end
 		storage.timer=0
 	else
-		storage.timer=storage.timer+(dt/wellsDrawing)
+		storage.timer=storage.timer+(dt/math.sqrt(1+wellsDrawing))
 	end
 end
 
@@ -169,7 +176,8 @@ end
 
 function wellInit()
 	if not wellRange then wellRange=config.getParameter("wellRange",20) end
-	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAirWell"}) or {})
+	if (not storage.wellPos) and object.spaces() then storage.wellPos=vec2.add(poly.center(object.spaces()),object.position()) end
+	wellsDrawing=1+#(world.entityQuery(storage.wellPos or entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAirWell"}) or {})
 end
 
 function fu_isAirWell() return (animator.animationState("machineState")=="active") end

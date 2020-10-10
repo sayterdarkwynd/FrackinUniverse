@@ -44,7 +44,15 @@ function uninit()
 end
 
 
+function applyTechBonus()
+  self.damageBonus = 1 + status.stat("bombtechBonus") -- apply bonus from certain items and armor
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
+end
+
 function update(args)
+  applyTechBonus()
 local superJumpTime = 0.01
 
   if self.dashCooldownTimer > 0 then
@@ -114,7 +122,7 @@ function startDash(direction)
 
 -- ***spawn projectile
     local damageConfig = { 
-      power = (status.stat("maxEnergy")/5),
+      power = (status.stat("maxEnergy")/5) * self.damageBonus,
       damageSourceKind = "default" 
     } 
     world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)

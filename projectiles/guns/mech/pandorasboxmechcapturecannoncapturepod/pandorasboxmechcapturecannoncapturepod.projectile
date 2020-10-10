@@ -1,0 +1,43 @@
+{
+  "projectileName" : "pandorasboxmechcapturecannoncapturepod",
+  "image" : "pandorasboxmechcapturecannoncapturepod.png",
+  "physics" : "grenade",
+  "frameNumber" : 1,
+  "windupFrames" : 1,
+  "animationCycle" : 0.05,
+  "intangibleWindup" : true,
+  "bounces" : 2,
+
+
+  "pointLight" : false,
+  "speed" : 30,
+  "power" : 0.0,
+  "damageType" : "NoDamage",
+  "damageKind" : "capture",
+  "damageTeam" : { "type" : "indiscriminate" },
+  "emitters" : [ "capturepodblue" ],
+  "piercing" : false,
+
+  "scripts" : [ "pandorasboxmechcapturecannoncapturepod.lua" ],
+  "controlForce" : 150,
+  "maxSpeed" : 25,
+
+  "persistentAudio" : "/sfx/tech/pandorasboxcapturepodflight.ogg",
+
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/magnorb_impact1.ogg", "/sfx/projectiles/magnorb_impact2.ogg", "/sfx/projectiles/magnorb_impact3.ogg"
+      ]
+    }
+  ],
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/magnorb_impact1.ogg", "/sfx/projectiles/magnorb_impact2.ogg", "/sfx/projectiles/magnorb_impact3.ogg"
+      ]
+    }
+  ]
+}

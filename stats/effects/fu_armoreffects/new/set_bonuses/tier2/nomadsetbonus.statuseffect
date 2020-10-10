@@ -1,6 +1,6 @@
 {
   "name" : "nomadsetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
@@ -17,20 +17,22 @@
         "stats" : {
           "powerMultiplier" : { "effectiveMultiplier" : 1.15 }
         }
-      }
+      },
+      {
+        "type" : "any",
+        "tags" : [ "sniperrifle", "assaultrifle" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.08 }
+        }
+      }      
     ],
 
     "biomeTags" : [ "desert", "desertwastes", "desertwastesdark" ],
-    "biomeBonuses" : {
-      "fireResistance" : { "amount" : 0.15 }
-    }
+    "biomeBonuses" : {}
   },
 
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "Immune: Burning, Desert effects. 20% Shield Regen. Dagger/Shortspear: +15% Dmg. Deserts: +15% Fire Resist",
-  "icon" : "/interface/statuses/defense3.png"
+  "scriptDelta": 5
 }

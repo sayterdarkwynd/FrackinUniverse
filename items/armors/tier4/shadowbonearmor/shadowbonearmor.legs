@@ -5,10 +5,11 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:  
-^#a94db3;30%^reset; Shadow Resist
-Axe / Hammer / Scythe: ^#a94db3;+30%^reset; Dmg",
+^yellow;^reset; +^green;10^reset;% Speed
+^yellow;^reset; Axe/Hammer/Scythe: Damage x^green;1.3^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint",
   "shortdescription" : "Shadow Greaves",
-  "category" : "t4armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -36,6 +37,11 @@ Axe / Hammer / Scythe: ^#a94db3;+30%^reset; Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.04
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -44,10 +50,6 @@ Axe / Hammer / Scythe: ^#a94db3;+30%^reset; Dmg",
     {
       "stat" : "fu_shadowboneset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.1
     }
   ],
 
@@ -89,5 +91,7 @@ Axe / Hammer / Scythe: ^#a94db3;+30%^reset; Dmg",
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

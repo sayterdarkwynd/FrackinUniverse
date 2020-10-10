@@ -1,22 +1,16 @@
 require "/objects/generic/centrifuge_recipes.lua"
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
-require '/scripts/power.lua'
-local deltaTime=0
-
+require '/scripts/fupower.lua'
 
 function init()
 	if config.getParameter('powertype') then
 		power.init()
-	powered = true
+		powered = true
 	else
 		powered = false
 	end
-	transferUtil.init()
-	storage.currentinput = nil
-	storage.currentoutput = nil
-	storage.bonusoutputtable = nil
-	storage.activeConsumption = false
+	storage.activeConsumption = storage.activeConsumption or false
 
 	self.centrifugeType = config.getParameter("centrifugeType") or error("centrifugeType is undefined in .object file") -- die horribly
 
@@ -32,7 +26,9 @@ function init()
 
 	self.recipeTable = getRecipes()
 	self.recipeTypes = self.recipeTable.recipeTypes[self.centrifugeType]
-
+	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,storage.activeConsumption)
+	end
 	object.setInteractive(true)
 end
 
@@ -46,13 +42,12 @@ function deciding(item)
 end
 
 function update(dt)
-	if deltaTime>1 then
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
-		deltaTime=0
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	
 	
 	if not storage.input then
 		local input
@@ -66,6 +61,10 @@ function update(dt)
 					storage.input = input
 					storage.timer = self.initialCraftDelay
 					storage.activeConsumption = true
+					
+					if object.outputNodeCount() > 0 then
+						object.setOutputNodeLevel(0,storage.activeConsumption)
+					end
 					found=true
 					break
 				end
@@ -74,6 +73,9 @@ function update(dt)
 		if not found then
 			animator.setAnimationState("centrifuge", "idle")
 			storage.activeConsumption = false
+			if object.outputNodeCount() > 0 then
+				object.setOutputNodeLevel(0,storage.activeConsumption)
+			end
 			storage.input = nil
 			storage.output = nil
 			storage.timer = nil
@@ -86,9 +88,13 @@ function update(dt)
 			storage.timer = math.max(storage.timer - dt,0)
 		elseif storage.timer == 0 then
 			if world.containerConsume(entity.id(), { name = storage.input.name, count = 1, data={}}) then
+				storage.currentinput={ name = storage.input.name, count = 1, data={}}
 				stashHoney(storage.input.name)
 				storage.input = nil
 				storage.activeConsumption = false
+				if object.outputNodeCount() > 0 then
+					object.setOutputNodeLevel(0,storage.activeConsumption)
+				end
 				local rnd = math.random()
 				for item, chancePair in pairs(storage.output) do
 					local chanceBase,chanceDivisor = table.unpack(chancePair)
@@ -100,6 +106,7 @@ function update(dt)
 						for i=self.inputSlot,contSize-1 do
 							throw = world.containerPutItemsAt(entity.id(), { name = item, count = 1, data={}},i)
 							if not throw then
+								storage.currentinput=nil
 								done=true
 								break
 							end
@@ -109,11 +116,15 @@ function update(dt)
 						end
 					end
 					if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around
+					storage.currentinput=nil
 					rnd = rnd - chance
 				end
 			else
 				animator.setAnimationState("centrifuge", "idle")
 				storage.activeConsumption = false
+				if object.outputNodeCount() > 0 then
+					object.setOutputNodeLevel(0,storage.activeConsumption)
+				end
 				storage.input = nil
 				storage.output = nil
 				storage.timer = nil
@@ -121,6 +132,9 @@ function update(dt)
 		else
 			animator.setAnimationState("centrifuge", "idle")
 			storage.activeConsumption = false
+			if object.outputNodeCount() > 0 then
+				object.setOutputNodeLevel(0,storage.activeConsumption)
+			end
 		end
 	end
 
@@ -164,4 +178,12 @@ function drawHoney()
 	storage.combsProcessed = { count = 0 }
 	--sb.logInfo("STASH: Withdrawing")
 	return ret
+end
+
+function die()
+	--safety for fringe cases
+	if storage.currentinput then
+		world.spawnItem(storage.currentinput,entity.position())
+	end
+	storage.currentinput=nil
 end

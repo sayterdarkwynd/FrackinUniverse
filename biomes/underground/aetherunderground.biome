@@ -7,12 +7,14 @@
       {
         "select" : 2,
         "pool" : [ 
-          [ 0.03, "burrower_depth_selector" ],
-          [ 1.0, "gleap" ],
-          [ 1.0, "batong" ],
-          [ 1.0, "crustoise" ],
-          [ 1.0, "peblit" ],
-          [ 1.0, "bobfae" ]
+          [ 0.12, "burrower_depth_selector" ],
+          [ 0.03, "megaburrower" ],
+          [ 0.13, "furatthing2" ],
+          [ 0.12, "pandorasboxaliep" ],
+          [ 0.13, "crustoiseish" ],
+          [ 0.15, "toxin" ],
+          [ 0.15, "fleshleech" ],
+          [ 0.15, "shadowcrab" ]
         ]
       },
       {
@@ -22,19 +24,20 @@
       {
         "select" : 3,
         "pool" : [
-          [ 1, "hedgehogcritter" ],
-          [ 1, "snailcritter" ],
-          [ 1, "tortoisecritter" ],
-          [ 1, "mousecritter" ],
-          [ 1, "bunnycritter" ]
+          [ 0.2, "slugbluecritter" ],
+          [ 0.2, "sackbagcritter" ],
+          [ 0.2, "fubat" ],
+          [ 0.1, "bee_stellar" ],
+          [ 0.2, "shadowmoth" ],
+          [ 0.1, "coldalabra" ]
         ]
       }
     ]
   },
 
 
-    "mainBlock" : "darkness",
-    "subBlocks" : [ "blackslime", "retexaetherdust" ],
+    "mainBlock" : "fuaetherstone",
+    "subBlocks" : [ "darkness", "retexaetherdust", "plasmamaterial" ],
     "ores" : "aetherunderground",
 
   "parallax" : "/parallax/underground/crystalmoonunderground.parallax",
@@ -207,6 +210,20 @@
             }
           ]
         },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },        
         {
           "mode" : "floor",
           "priority" : 0.0,

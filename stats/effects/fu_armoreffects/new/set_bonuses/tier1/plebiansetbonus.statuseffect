@@ -1,6 +1,6 @@
 {
   "name" : "plebiansetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
@@ -15,7 +15,7 @@
         "tags" : [ "shortsword", "longsword", "mace" ],
         "altTags" : [ "shield" ],
         "stats" : {
-          "maxHealth" : { "baseMultiplier" : 1.20 },
+          "maxHealth" : { "effectiveMultiplier" : 1.20 },
           "grit" : { "amount" : 0.15 }
         }
       }
@@ -25,8 +25,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "+15% Shield Health and Regen, +15% Knockback Resist. Mace/Sword and Shield: +20 HP",
-  "icon" : "/interface/statuses/defense2.png"
+  "scriptDelta": 5
 }

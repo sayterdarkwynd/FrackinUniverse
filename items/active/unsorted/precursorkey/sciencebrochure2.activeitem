@@ -1,0 +1,26 @@
+{
+	"itemName": "sciencebrochure2",
+	"price": 0,
+	"inventoryIcon": "fu_datakey.png",
+	"rarity": "Essential",
+	"description": "Holds multiple sets of coordinates and some encrypted data. One set points to the ^orange;Science Outpost^reset;",
+	"shortdescription": "Precursor Data-Key",
+	"category": "Tool",
+
+	"twoHanded": true,
+
+	"animation": "datakey.animation",
+	"animationCustom": {
+		"sounds": {
+			"fire": ["/sfx/interface/scan.ogg"],
+			"error": ["/sfx/interface/clickon_error_single.ogg"]
+		}
+	},
+
+	"scripts": ["datakey.lua"],
+	"scanSettings": {
+		"maxRange": 15,
+		"cooldownTime": 1
+	},
+	"pickupQuestTemplates": ["precursor_unlock"]
+}

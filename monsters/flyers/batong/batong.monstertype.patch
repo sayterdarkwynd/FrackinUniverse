@@ -33,5 +33,39 @@
     "op": "add",
     "path": "/dropPools/0/shadowbow",
     "value": "batongHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-swoop",
+        "cooldown": 4,
+        "parameters": {
+          "minimumRange": 3,
+          "maximumRange": 10,
+          "onGround": false,
+          "windupTime": 0.6,
+          "gravityMultiplier": -0.5,
+          "swoopVelocity": 25,
+          "collisionCheck": true,
+          "highArc": false,
+          "swoopTime": 0.5,
+          "winddownTime": 0.5,
+          "winddownState": "fly",
+          "winddownStopForce": 20
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrantfull"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 80
   }
 ]

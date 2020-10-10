@@ -5,10 +5,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^green;12%^reset; Phys Resist, ^green;+9%^reset; Electric Resist
-Melee: ^green;+10%^reset; Dmg",
+^yellow;^reset; Health & Speed x^green;1.1^reset;
+^yellow;^reset; Melee: Damage x^green;1.1^reset;",
   "shortdescription" : "Warrior Chestpiece",
-  "category" : "t4armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -45,6 +45,16 @@ Melee: ^green;+10%^reset; Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.016
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.012
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -53,14 +63,8 @@ Melee: ^green;+10%^reset; Dmg",
     {
       "stat" : "fu_warriorset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.04
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.03
-    }  
-  ]
+    }
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

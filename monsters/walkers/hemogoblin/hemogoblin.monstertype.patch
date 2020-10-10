@@ -1,0 +1,35 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/damageTakenActions",
+    "value": [
+      {
+        "name": "action-leap",
+        "cooldown": 4,
+        "parameters": {
+          "minimumRange": 5,
+          "maximumRange": 20,
+          "windupTime": 0.25,
+          "windupState": "windup",
+          "leapVelocity": 35,
+          "collisionCheck": true,
+          "highArc": true,
+          "leapState": "jump",
+          "fallState": "fall",
+          "winddownTime": 0.25,
+          "winddownState": "idle"
+        }
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 90
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/physicalResistance/baseValue",
+    "value": 0.5
+  }
+]

@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Legendary",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;30%^reset; Shadow Resistance  
-Pistol, Machine Pistol: ^green;+2%^reset; Crit
-^cyan;Immune^reset;: Gas, Aether, Shadow Taint",
+^yellow;^reset; (Machine) Pistol: +^green;2^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Aether, Shadow Taint",
   "shortdescription" : "Assassinii Armor",
-  "category" : "t6armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -46,6 +45,11 @@ Pistol, Machine Pistol: ^green;+2%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.028572
     }
   ],
 
@@ -54,11 +58,7 @@ Pistol, Machine Pistol: ^green;+2%^reset; Crit
     {
       "stat" : "fu_assassiniset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.10
-    }      
+    }  
   ],
   
   "colorOptions" : [
@@ -87,5 +87,7 @@ Pistol, Machine Pistol: ^green;+2%^reset; Crit
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

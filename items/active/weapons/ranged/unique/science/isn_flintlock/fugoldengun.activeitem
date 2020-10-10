@@ -10,7 +10,7 @@
   "level" : 3,
   "category" : "pistol",
   "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon"],
-  "tooltipKind" : "gun2",
+  "tooltipKind" : "gununique",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -34,13 +34,14 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 1.2,
-    "baseDps" : 12.6,
+    "baseDps" : 18,
     "energyUsage" : 55,
     "fireType" : "auto",
     "inaccuracy" : 0.03,
     "projectileCount" : 1,
     "projectileType" : "bullet-2",
     "projectileParameters" : {
+	  "damageKind":"cosmicbullet",
       "speed" : 75,
       "knockback" : 12,
       "actionOnReap" : [
@@ -79,7 +80,12 @@
       }
     }
   },
+  
   "critChance" : 5,
   "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "reloadTime" : 2,
+  "magazineSize" : 1,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

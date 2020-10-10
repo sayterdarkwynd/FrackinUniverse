@@ -1,14 +1,14 @@
 {
   "name" : "spacefarersetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
       "gasImmunity" : {},
       "protoImmunity" : {},
       "fireStatusImmunity" : {},
-      "asteroidImmunity" : {},
-      "maxBreath" : { "amount" : 1400 }
+      "maxBreath" : { "amount" : 1400 },
+      "defensetechBonus" : { "amount" : 0.5 }
     },
 
     "weaponBonuses" : [
@@ -24,7 +24,7 @@
         "type" : "any",
         "tags" : [ "mininglaser" ],
         "stats" : {
-          "powerMultiplier" : { "effectiveMultiplier" : 1.2 }
+          "powerMultiplier" : { "effectiveMultiplier" : 1.25 }
         }
       }
     ]
@@ -33,8 +33,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta" : 5,
-
-  "label" : "Immune: Gas, Proto, Burning. +1400s Oxygen. Mining Laser (dual): +20% (+100%) Dmg",
-  "icon" : "/interface/statuses/pressure.png"
+  "scriptDelta" : 5
 }

@@ -1,4 +1,4 @@
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 
 function init()
   self.powerLevel = config.getParameter("powerLevel",1)
@@ -17,18 +17,18 @@ function update(dt)
       local light = getLight(location) or 0
       local genmult = 0
 
-      if light >= 0.50 then
-        genmult = 1
-      elseif light >= 0.35 then
-        genmult = 2
-      elseif light >= 0.15 then
-        genmult = 3       
-      elseif light <= 0.01 then
+      if light <= 0.01 then
         genmult = 4
+      elseif light <= 0.15 then
+        genmult = 3
+      elseif light <= 0.35 then
+        genmult = 2       
+      elseif light <= 0.50 then
+        genmult = 1
       else 
         genmult = 0
       end
-
+      
       if world.liquidAt(location)then genmult = genmult * 0.05 end -- water significantly reduces the output
 
       local generated = math.min(self.powerLevel * genmult,4) -- max at 4 just in case.
@@ -60,7 +60,7 @@ function getLight(location)
       world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/3,light[2]/3,light[3]/3})
     end
   end
-  local light = world.lightLevel(location)
+  local light = math.min(world.lightLevel(location),1.0)
   for key,value in pairs(lights) do
     world.callScriptedEntity(key,'object.setLightColor',value)
   end

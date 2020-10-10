@@ -12,7 +12,7 @@ function init()
 	
 	local desc="^blue;Input: ^white;item network^reset;\n^red;Output: ^white;item network^reset;"
 	if self.outPartialFillNode then
-		desc=desc.."^red;Lower output: ^white;item network^reset;\n^red;Upper outputs: ^white;Partial/Complete Fill^reset;"
+		desc=desc.."\n^red;Lower output: ^white;item network^reset;\n^red;Upper outputs: ^white;Partial/Complete Fill^reset;"
 	end
 	object.setConfigParameter('description',desc)
 end
@@ -24,22 +24,8 @@ function update(dt)
 	end
 	deltatime=0
 	findContainer()
-	object.setOutputNodeLevel(transferUtil.vars.outDataNode,not transferUtil.vars.containerId==nil)
-	
-	
 
-	if self.outPartialFillNode or self.outCompleteFillNode then
-		self.containerSize=world.containerSize(transferUtil.vars.containerId)
-		self.containerFill=util.tableSize(world.containerItems(transferUtil.vars.containerId) or {})
-		
-		if self.outPartialFillNode then
-			object.setOutputNodeLevel(self.outPartialFillNode,(self.containerFill or 0) > 0)
-		end
-		if self.outCompleteFillNode then
-			object.setOutputNodeLevel(self.outCompleteFillNode,(self.containerFill and self.containerSize) and (self.containerFill==self.containerSize))
-		end
-	end
-
+	outputnodes()
 end
 
 function findContainer()
@@ -57,6 +43,22 @@ function findContainer()
 			transferUtil.vars.inContainers[transferUtil.vars.containerId]=self.containerPos
 			transferUtil.vars.outContainers[transferUtil.vars.containerId]=self.containerPos
 			break
+		end
+	end
+end
+
+function outputnodes()
+
+	object.setOutputNodeLevel(transferUtil.vars.outDataNode,not transferUtil.vars.containerId==nil)
+	if self.outPartialFillNode or self.outCompleteFillNode then
+		self.containerSize=world.containerSize(transferUtil.vars.containerId)
+		self.containerFill=util.tableSize(world.containerItems(transferUtil.vars.containerId) or {})
+		
+		if self.outPartialFillNode then
+			object.setOutputNodeLevel(self.outPartialFillNode,(self.containerFill or 0) > 0)
+		end
+		if self.outCompleteFillNode then
+			object.setOutputNodeLevel(self.outCompleteFillNode,(self.containerFill and self.containerSize) and (self.containerFill==self.containerSize))
 		end
 	end
 end

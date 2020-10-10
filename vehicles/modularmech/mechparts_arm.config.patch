@@ -2,7 +2,7 @@
     [
   {
     "op": "add",
-    "path": "/soluskatana/stats/mass",
+    "path": "/soluskatana/stats/mechMass",
     "value": 5
   },
   {
@@ -17,7 +17,7 @@
   },  
   {
     "op": "add",
-    "path": "/neolaser/stats/mass",
+    "path": "/neolaser/stats/mechMass",
     "value": 7
   },{
     "op": "add",
@@ -1084,10 +1084,10 @@
             "path": "/fumechmining0",
             "value": {
                 "stats": {
-                    "power": 3,
+                    "power": 2,
                     "energy": 3,
                     "basePower": 0.15,
-                    "rapidFire": 2,
+                    "rapidFire": 12,
                     "mechMass": 2
                 },
                 "partParameters": {
@@ -1233,10 +1233,10 @@
             "path": "/fumechmining1",
             "value": {
                 "stats": {
-                    "power": 4,
+                    "power": 3,
                     "energy": 4,
-                    "basePower": 1.5,
-                    "rapidFire": 3,
+                    "basePower": 1,
+                    "rapidFire": 12,
                     "mechMass": 3
                 },
                 "partParameters": {
@@ -1403,10 +1403,10 @@
             "path": "/fumechmining2",
             "value": {
                 "stats": {
-                    "power": 6,
+                    "power": 4,
                     "energy": 6,
-                    "basePower": 3,
-                    "rapidFire": 3,
+                    "basePower": 1.5,
+                    "rapidFire": 12,
                     "mechMass": 4
                 },
                 "partParameters": {
@@ -1668,7 +1668,7 @@
                     "script": "/vehicles/modularmech/armscripts/gunarm.lua",
                     "armClass": "GunArm",
                     "rotationLimits": [-1.75, 1.75],
-                    "fireOffset": [6, -0.325],
+                    "fireOffset": [7, -0.5],
                     "extendTime": 1,
                     "fireTime": 0.15,
                     "projectileType": "densiniumrifleshotmech",
@@ -1793,7 +1793,7 @@
 				}
 			      },
 			      "sounds" : {
-				"<armName>Fire" : ["/sfx/weapons/rifle2.ogg"]
+				"<armName>Fire" : ["/sfx/weapons/fugauss.ogg"]
 			      }                
                 }
             }
@@ -1898,7 +1898,7 @@
             "path": "/fumeltaarm",
             "value": {
                 "stats": {
-                    "power": 2,
+                    "power": 3,
                     "energy": 3,
                     "rapidFire" : 8,
                     "mechMass" : 3
@@ -2378,8 +2378,8 @@
 	  {
 	    "stats" : {
 	      "power" : 10,
-	      "energy" : 12,
-	      "mechMass" : 9,
+	      "energy" : 10,
+	      "mechMass" : 10,
 	      "basePower" : 60
 	    },
 	    "partParameters" : {
@@ -2715,7 +2715,7 @@
                     "fireOffset": [7.8, 0],
                     "extendTime": 0.725,
                     "fireTime": 0.725,
-                    "projectileType": "fulaserpistol",
+                    "projectileType": "fulaserpistolhunting",
                     "projectileInaccuracy": 0,
                     "projectileCount": 1,
                     "projectileParameters": {
@@ -2765,7 +2765,7 @@
                     "fireOffset": [7.8, 0],
                     "extendTime": 0.725,
                     "fireTime": 0.725,
-                    "projectileType": "fulaserpistol",
+                    "projectileType": "fulaserpistolhunting",
                     "projectileInaccuracy": 0,
                     "projectileCount": 1,
                     "projectileParameters": {
@@ -2795,6 +2795,56 @@
                     "sounds": {
                         "<armName>Fire": [
                             "/sfx/gun/plasma_sniper2.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
+            "path": "/fuhuntergun0",
+            "value": {
+                "stats": {
+                    "power": 2,
+                    "energy": 2,
+                    "mechMass": 2
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [7.8, 0],
+                    "extendTime": 0.725,
+                    "fireTime": 0.75,
+                    "projectileType": "gausspistolshot",
+                    "projectileInaccuracy": 0,
+                    "projectileCount": 1,
+                    "projectileParameters": {
+              "speed" : 120,
+              "damageKind" : "bow",
+              "piercing" : false,
+              "power" : 8
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/fusniperrifle2.png",
+                    "<armName>Fullbright": "arm/fusniperriflefullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "c44f4f",
+                    "953f3f",
+                    "723434",
+                    "470c0c"
+                ],
+                "defaultSecondaryColors": [
+                    "b0b0b0",
+                    "8b8b8b",
+                    "5c5c5c",
+                    "444444"
+                ],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/gun/rifle1.ogg"
                         ]
                     }
                 }
@@ -3147,6 +3197,171 @@
                 }
             }
         },
+
+    {
+        "op": "add",
+        "path": "/drill0",
+        "value": {
+          "stats": {
+          "power": 1,
+          "energy": 2,
+          "mechMass": 2
+          },
+          "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/drillarm.lua",
+        "armClass": "DrillArm",
+        "rotationLimits": [
+          -1,
+          1
+        ],
+        "drillTipOffset": [
+          8,
+          0
+        ],
+        "drillSourceOffsets": [
+          [
+            1,
+            -2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "tileDamage": 1.0,
+        "tileDamageRate": 0.15,
+        "damageTileDepth": 5,
+        "spinUpDownTime": 0.5
+          },
+          "damageSources": {
+        "<armName>Drill": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "poly": [
+            [
+              8,
+              2.5
+            ],
+            [
+              2,
+              0.75
+            ],
+            [
+              2,
+              4.25
+            ]
+          ],
+          "damage": 14,
+          "damageSourceKind": "fire",
+          "damageRepeatTimeout": 0.2,
+          "damageRepeatGroup": "<armName>Drill",
+          "knockback": 30,
+          "rayCheck": true
+        }
+          },
+          "physicsCollisions": {
+        "<armName>Drill": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "collision": [
+            [
+              7,
+              2.5
+            ],
+            [
+              1,
+              0.75
+            ],
+            [
+              1,
+              4.25
+            ]
+          ],
+          "collisionKind": "slippery",
+          "categoryWhitelist": [
+            "monster"
+          ]
+        }
+          },
+          "partImages": {
+        "<armName>": "arm/drill0.png",
+        "<armName>Fullbright": "arm/drill_fullbright.png"
+          },
+          "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+          ],
+          "defaultSecondaryColors": [
+        "838383",
+        "555555",
+        "383838",
+        "151515"
+          ],
+          "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+            "windup": {
+              "mode": "loop",
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_windup2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            },
+            "active": {
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_active2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            },
+            "winddown": {
+              "mode": "loop",
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_winddown2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            }
+              }
+            }
+          },
+          "parts": {
+            "<armName>": {
+              "partStates": {
+            "<armName>": {
+              "winddown": {
+                "properties": {
+                  "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+                }
+              }
+            }
+              }
+            },
+            "<armName>Fullbright": {
+              "partStates": {
+            "<armName>": {
+              "winddown": {
+                "properties": {
+                  "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+                }
+              }
+            }
+              }
+            }
+          }
+        }
+          }
+        }
+      },
 
 	{
 	    "op": "add",
@@ -4026,13 +4241,13 @@
 			    "rotationLimits": [-1.75, 1.75],
 			    "fireOffset": [4, 0],
 			    "extendTime": 1,
-			    "fireTime": 2,
+			    "fireTime": 1,
 			    "projectileType": "energyshard",
 			    "projectileCount": 6,
-			    "projectileSpread": 0.4,
+			    "projectileSpread": 0.25,
 			    "projectileRandomOffset": [1.5, 0.75],			    
 			    "projectileParameters": {
-				"power": 8
+				"power": 10
 			    }
 			},
 			"partImages": {
@@ -4076,19 +4291,17 @@
 			"partParameters": {
 				"script": "/vehicles/modularmech/armscripts/missileburstarm.lua",
 				"armClass": "MissileBurst",
-				"rotationLimits": [-1.75,
-				1.75],
-				"fireOffset": [3.5,
-				-0.25],
+				"rotationLimits": [-1.75,1.75],
+				"fireOffset": [3.5,-0.25],
 				"windupTime": 0.2,
 				"fireTime": 0.1,
 				"cooldownTime": 0.5,
 				"projectileType": "sawchakram",
 				"projectileParameters": {
-				  "power": 3
+				  "power": 7
 				},
 				"projectileCount": 3,
-				"projectileSpread": 0.4,
+				"projectileSpread": 0.22,
 				"projectileRandomOffset": [1.5,0.75]
 			},
 			"partImages": {
@@ -4526,7 +4739,7 @@
 	{"op":"add","path":"/sinshotgun","value":
 	  {
 	    "stats" : {
-	      "power" : 4,
+	      "power" : 3,
 	      "energy" : 4,
 	      "multicount" : 6,
 	      "mechMass" : 6
@@ -4541,16 +4754,16 @@
 	      "windupTime" : 0.4,
 	      "fireTime" : 1,
 
-	      "projectileType" : "heavybullet",
+	      "projectileType" : "bullet-1",//"heavybullet"
 	      "projectileParameters" : {
-		"power" : 15,
-		"knockback" : 8
+		"power" : 24,
+		"knockback" : 20
 	      },
 
-	      "projectileCount" : 9,
+	      "projectileCount" : 6,
 	      "projectileSpacing" : [0, 0.1],
 
-	      "projectileInaccuracy" : 0.15
+	      "projectileInaccuracy" : 0.1
 	    },
 	    "partImages" : {
 	      "<armName>" : "arm/sinshotgun.png",
@@ -4589,9 +4802,9 @@
 	{"op":"add","path":"/sinshotgun2","value":
 	  {
 	    "stats" : {
-	      "power" : 6,
+	      "power" : 5,
 	      "energy" : 8,
-	      "multicount" : 10,
+	      "multicount" : 9,
 	      "mechMass" : 8
 	    },
 	    "partParameters" : {
@@ -4602,15 +4815,15 @@
 	      "fireOffset" : [6.5, -0.3],
 
 	      "windupTime" : 0.4,
-	      "fireTime" : 1.4,
+	      "fireTime" : 1.2,
 
 	      "projectileType" : "gausspistolshot",
 	      "projectileParameters" : {
-		"power" : 35,
-		"knockback" : 15
+		"power" : 32,
+		"knockback" : 30
 	      },
 
-	      "projectileCount" : 15,
+	      "projectileCount" : 9,
 	      "projectileSpacing" : [0, 0.1],
 
 	      "projectileInaccuracy" : 0.12
@@ -5793,6 +6006,72 @@
             "op": "replace",
             "path": "/ue_armsmg/partParameters/projectileParameters/power",
             "value": 3
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/mechflamert0"
+        },{
+            "op": "add",
+            "path": "/mechflamert0/stats/mechMass",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/power",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/energy",
+            "value": 2
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/partParameters/projectileParameters/power",
+            "value": 0.05
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/mechflamert1"
+        },{
+            "op": "add",
+            "path": "/mechflamert0/stats/mechMass",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/power",
+            "value": 4
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/energy",
+            "value": 4
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/partParameters/projectileParameters/power",
+            "value": 0.05
+        }
+    ],
+    
+    [{
+            "op": "test",
+            "path": "/mechflamert2"
+        },{
+            "op": "add",
+            "path": "/mechflamert0/stats/mechMass",
+            "value": 7
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/power",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/stats/energy",
+            "value": 8
+        },{
+            "op": "replace",
+            "path": "/mechflamert0/partParameters/projectileParameters/power",
+            "value": 0.07
         }
     ]
     

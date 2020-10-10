@@ -5,17 +5,18 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-^green;+5^reset; HP, ^cyan;+15%^reset; Fall Dmg Resist^reset;
-^#e43774;(Lush/Forest biomes) ^green;+5^reset; HP, ^green;+5%^reset; Damage, ^green;+5%^reset; Physical Resist^reset;",
+^yellow;^reset; Health x^green;1.05^reset;, Fall Damage x^green;0.85^reset;^reset;
+^yellow;^reset; Longsword or Axe: Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Lush/Forest^reset;: Health x^green;1.05^reset;, Damage x^green;1.05^reset;, +^green;5^reset;% Phys. Resist^reset;",
 
   "shortdescription" : "Bone Chest",
-  "category" : "t1armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [
-    "fubonearmor2head",
-    "fubonearmor2chest",
-    "fubonearmor2legs"
-  ],
+//  "learnBlueprintsOnPickup" : [
+//    "fubonearmor2head",
+ //   "fubonearmor2chest",
+//    "fubonearmor2legs"
+ // ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -35,12 +36,12 @@
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.22
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.55
+      "amount" : 0.58
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -51,6 +52,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.03
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.03
     }
   ],
 
@@ -60,6 +71,8 @@
       "stat" : "bonesetcount",
       "amount" : 1
     }
-  ]
+  ],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 
 }

@@ -4,14 +4,16 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "^orange;Set Bonuses^reset;:
-^cyan;+21%^reset; Electric, ^green;9%^reset; Phys Resist
-^#a94db3;+100%^reset; Mining Laser damage, ^#a94db3;+1400s^reset; Oxygen
-\n^#e43774;Immune ^reset;: Burning, Proto Poison, Gas",
+  "description" : "^cyan;Headlamp^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; Mining Laser: Damage x^green;2^reset;
+^yellow;^reset; +^green;175^reset;s Oxygen
+^yellow;^reset; +^green;50^reset;% Defense Tech Efficiency
+^cyan;Immune^reset;: Burning, Proto-Poison, Gas",
   "shortdescription" : "Spacefarer Helm",
-  "category" : "t3armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "spacefarerheadadv" ],
+//  "learnBlueprintsOnPickup" : [ "spacefarerheadadv" ],
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
@@ -39,6 +41,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.035
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.015
     }
   ],
 
@@ -48,14 +60,8 @@
     {
       "stat" : "spacefarersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.03
     }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;24%^reset; Fire Resist
-Rocket/Grenade Launcher: ^green;+20%^reset; Dmg
-^cyan;Immune^reset;: Burning",
+^yellow;^reset; Rocket/Grenade Launcher: Damage x^green;1.2^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Burning",
   "shortdescription" : "Gendarme Greaves",
-  "category" : "t3armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -37,6 +36,11 @@ Rocket/Grenade Launcher: ^green;+20%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.04
     }
   ],
 
@@ -45,10 +49,6 @@ Rocket/Grenade Launcher: ^green;+20%^reset; Dmg
     {
       "stat" : "gendarmesetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.08
     }
   ],
 
@@ -78,5 +78,7 @@ Rocket/Grenade Launcher: ^green;+20%^reset; Dmg
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

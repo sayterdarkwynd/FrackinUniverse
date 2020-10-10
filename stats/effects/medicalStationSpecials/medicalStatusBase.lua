@@ -18,8 +18,21 @@ function baseUpdate(dt)
 	end
 end
 
-function baseUninit()
+function baseUninit(modifierGroupID)
 	if modifierGroupID then
 		effect.removeStatModifierGroup(modifierGroupID)
 	end
+end
+
+
+function init()
+	baseInit()
+end
+
+function update(dt)
+	baseUpdate(dt)
+end
+
+function uninit()
+	baseUninit(self.modifierGroupID)
 end

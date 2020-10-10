@@ -10,13 +10,14 @@
   "level" : 2,
   "category" : "flamethrower",
   "itemTags" : ["weapon","ranged","flamethrower", "upgradeableWeapon"],
-  "learnBlueprintsOnPickup" : [ "isn_flamethrower4", "fuflamearm" ],
+ // "learnBlueprintsOnPickup" : [ "isn_flamethrower4", "fuflamearm" ],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "isn_flamethrower.png",
+    "middlefullbright" : "",
     "barrel" : "",
     "muzzleFlash" : ""
   },      
@@ -77,6 +78,10 @@
   },
   "critChance" : 2,
   "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "reloadTime" : 2,
+  "magazineSize" : 36,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
 
     "upgradeParameters" : {

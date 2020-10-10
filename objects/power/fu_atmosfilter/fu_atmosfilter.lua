@@ -13,12 +13,12 @@ function update(dt)
     animator.setAnimationState("switchState", "on")
 	if storage.effects then
 	  for _,effect in pairs(storage.effects) do
-		effectUtil.effectTypesInRange(effect,self.range,{"player", "npc"},5)
+		effectUtil.effectAllInRange(effect,self.range,5)
 	  end
 	end
 	if self.objectEffects then
 	  for _,effect in pairs (self.objectEffects) do
-		effectUtil.effectTypesInRange(effect,self.range,{"player", "npc"},5)
+		effectUtil.effectAllInRange(effect,self.range,5)
 	  end
 	end
   else
@@ -27,20 +27,23 @@ function update(dt)
 end
 
 function containerCallback()
-  local effects = {}
-  for _,item in pairs(world.containerItems(entity.id(), slot)) do
-    if item then
-	  for _,effect in pairs(root.itemConfig(item.name).config.augment.effects) do
-	    table.insert(effects,effect)
-	  end
-    end
-  end
-  for i=1,#effects - 1 do
-    for j=i+1,#effects do
-	  if effects[j] == effects[i] then
-	    effects[j] = nil
-	  end
+	local effects = {}
+	for _,item in pairs(world.containerItems(entity.id(), slot)) do
+		if item then
+			local buffer=root.itemConfig(item.name).config
+			if buffer.augment and buffer.augment.effects then
+				for _,effect in pairs(buffer.augment.effects) do
+					table.insert(effects,effect)
+				end
+			end
+		end
 	end
-  end
-  storage.effects = #effects > 0 and effects or nil
+	for i=1,#effects - 1 do
+		for j=i+1,#effects do
+			if effects[j] == effects[i] then
+				effects[j] = nil
+			end
+		end
+	end
+	storage.effects = #effects > 0 and effects or nil
 end

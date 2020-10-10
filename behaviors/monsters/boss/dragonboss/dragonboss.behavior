@@ -1,0 +1,1521 @@
+{
+  "name": "dragonboss",
+  "description": "",
+  "scripts": [
+    "/scripts/actions/entity.lua",
+    "/scripts/actions/movement.lua",
+    "/scripts/actions/monster.lua",
+    "/scripts/actions/notification.lua",
+    "/scripts/actions/world.lua",
+    "/scripts/actions/time.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/status.lua",
+    "/scripts/actions/sensor.lua",
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/projectiles.lua"
+  ],
+  "parameters": {
+    "headRotationCenter": [4.125, 2.5],
+    "projectileSpawnOffset": [3.75, -3.5],
+    "headAngleOffset": 0.7
+  },
+  "root": {
+    "title": "Reset",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "setDying",
+        "type": "action",
+        "name": "setDying",
+        "parameters": {
+          "shouldDie": {"value": false}
+        }
+      },
+      {
+        "title": "faceDirection",
+        "type": "action",
+        "name": "faceDirection",
+        "parameters": {
+          "direction": {"value": -1}
+        }
+      },
+      {
+        "title": "setDamageBar",
+        "type": "action",
+        "name": "setDamageBar",
+        "parameters": {
+          "type": {"value": "Special"}
+        }
+      },
+      {
+        "title": "setAggressive",
+        "type": "action",
+        "name": "setAggressive",
+        "parameters": {
+          "aggressive": {"value": true}
+        }
+      },
+      {
+        "title": "succeeder",
+        "type": "decorator",
+        "name": "succeeder",
+        "parameters": {},
+        "child": {
+          "title": "Spiderboss",
+          "type": "composite",
+          "name": "dynamic",
+          "parameters": {},
+          "children": [
+            {
+              "title": "wasDamaged",
+              "type": "action",
+              "name": "wasDamaged",
+              "parameters": {}
+            },
+            {
+              "title": "receivedNotification",
+              "type": "action",
+              "name": "receivedNotification",
+              "parameters": {
+                "type": {"value": "bossAggro"}
+              }
+            },
+            {
+              "title": "Reset",
+              "type": "composite",
+              "name": "sequence",
+              "parameters": {},
+              "children": [
+                {
+                  "title": "loadUniqueEntity",
+                  "type": "action",
+                  "name": "loadUniqueEntity",
+                  "parameters": {
+                    "uniqueId": {"value": "bosshoverposition"}
+                  },
+                  "output": {
+                    "entity": "hoverStagehand"
+                  }
+                },
+                {
+                  "title": "entityPosition",
+                  "type": "action",
+                  "name": "entityPosition",
+                  "parameters": {
+                    "entity": {"key": "hoverStagehand"}
+                  },
+                  "output": {
+                    "position": "hoverPosition"
+                  }
+                },
+                {
+                  "title": "flyToPosition",
+                  "type": "action",
+                  "name": "flyToPosition",
+                  "parameters": {
+                    "position": {"key": "hoverPosition"},
+                    "speed": {"value": 25},
+                    "tolerance": {"value": 1}
+                  }
+                },
+                {
+                  "title": "parallel",
+                  "type": "composite",
+                  "name": "parallel",
+                  "parameters": {
+                    "fail": {"value": -1},
+                    "success": {"value": -1}
+                  },
+                  "children": [
+                    {
+                      "title": "controlApproachVelocity",
+                      "type": "action",
+                      "name": "controlApproachVelocity",
+                      "parameters": {
+                        "force": {"value": 50},
+                        "velocity": {"value": [0, 0]}
+                      }
+                    },
+                    {
+                      "title": "timer",
+                      "type": "action",
+                      "name": "timer",
+                      "parameters": {
+                        "time": {"value": 1}
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "runner",
+                  "type": "action",
+                  "name": "runner",
+                  "parameters": {}
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "controlApproachVelocity",
+            "type": "action",
+            "name": "controlApproachVelocity",
+            "parameters": {
+              "force": {"value": 20},
+              "velocity": {"value": [0, 0]}
+            }
+          },
+          {
+            "title": "timer",
+            "type": "action",
+            "name": "timer",
+            "parameters": {
+              "time": {"value": 1}
+            }
+          }
+        ]
+      },
+      {
+        "title": "parallel",
+        "type": "composite",
+        "name": "parallel",
+        "parameters": {
+          "fail": {"value": -1},
+          "success": {"value": -1}
+        },
+        "children": [
+          {
+            "title": "monster-targeting",
+            "type": "module",
+            "name": "monster-targeting",
+            "parameters": {
+              "targetQueryRange": {"value": 80},
+              "keepTargetInRange": {"value": 100},
+              "targetEntityTypes": {"value": ["player"]},
+              "keepTargetInSight": {"value": false},
+              "queryTargets": {"value": true},
+              "targetOnDamage": {"value": true},
+              "targetOutOfSightTime": {"value": 1}
+            }
+          },
+          {
+            "title": "Spiderboss",
+            "type": "composite",
+            "name": "dynamic",
+            "parameters": {},
+            "children": [
+              {
+                "title": "parallel",
+                "type": "composite",
+                "name": "parallel",
+                "parameters": {
+                  "fail": {"value": 1},
+                  "success": {"value": -1}
+                },
+                "children": [
+                  {
+                    "title": "entityExists",
+                    "type": "action",
+                    "name": "entityExists",
+                    "parameters": {
+                      "entity": {"key": "target"}
+                    }
+                  },
+                  {
+                    "title": "Reset",
+                    "type": "composite",
+                    "name": "sequence",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "entityPosition",
+                        "type": "action",
+                        "name": "entityPosition",
+                        "parameters": {
+                          "entity": {"key": "target"}
+                        },
+                        "output": {
+                          "x": "targetX"
+                        }
+                      },
+                      {
+                        "title": "entityPosition",
+                        "type": "action",
+                        "name": "entityPosition",
+                        "parameters": {
+                          "entity": {"key": "hoverStagehand"}
+                        },
+                        "output": {
+                          "y": "hoverY"
+                        }
+                      },
+                      {
+                        "title": "offsetPosition",
+                        "type": "action",
+                        "name": "offsetPosition",
+                        "parameters": {
+                          "offset": {"value": ["targetX", "hoverY"]},
+                          "position": {"value": [0, 0]}
+                        },
+                        "output": {
+                          "position": "hoverPosition"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "selector",
+                    "type": "composite",
+                    "name": "selector",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "parallel",
+                        "type": "composite",
+                        "name": "parallel",
+                        "parameters": {
+                          "fail": {"value": 1},
+                          "success": {"value": -1}
+                        },
+                        "children": [
+                          {
+                            "title": "resourcePercentage",
+                            "type": "action",
+                            "name": "resourcePercentage",
+                            "parameters": {
+                              "percentage": {"value": 0},
+                              "resource": {"value": "health"}
+                            }
+                          },
+                          {
+                            "title": "Spiderboss",
+                            "type": "composite",
+                            "name": "dynamic",
+                            "parameters": {},
+                            "children": [
+                              {
+                                "title": "parallel",
+                                "type": "composite",
+                                "name": "parallel",
+                                "parameters": {
+                                  "fail": {"value": 1},
+                                  "success": {"value": -1}
+                                },
+                                "children": [
+                                  {
+                                    "title": "wallCollision",
+                                    "type": "action",
+                                    "name": "wallCollision",
+                                    "parameters": {
+                                      "direction": {"value": 1}
+                                    }
+                                  },
+                                  {
+                                    "title": "Reset",
+                                    "type": "composite",
+                                    "name": "sequence",
+                                    "parameters": {},
+                                    "children": [
+                                      {
+                                        "title": "boundBox",
+                                        "type": "action",
+                                        "name": "boundBox",
+                                        "parameters": {},
+                                        "output": {
+                                          "max": "maxBounds",
+                                          "min": "minBounds"
+                                        }
+                                      },
+                                      {
+                                        "title": "offsetPosition",
+                                        "type": "action",
+                                        "name": "offsetPosition",
+                                        "parameters": {
+                                          "offset": {"key": "<headRotationCenter>"},
+                                          "position": {"key": "self"}
+                                        },
+                                        "output": {
+                                          "position": "headPosition"
+                                        }
+                                      },
+                                      {
+                                        "title": "setVector",
+                                        "type": "action",
+                                        "name": "setVector",
+                                        "parameters": {
+                                          "vector": {"key": "maxBounds"}
+                                        },
+                                        "output": {
+                                          "vector": "fireOffset"
+                                        }
+                                      },
+                                      {
+                                        "title": "repeater",
+                                        "type": "decorator",
+                                        "name": "repeater",
+                                        "parameters": {
+                                          "maxLoops": {"value": -1},
+                                          "untilSuccess": {"value": true}
+                                        },
+                                        "child": {
+                                          "title": "inverter",
+                                          "type": "decorator",
+                                          "name": "inverter",
+                                          "parameters": {},
+                                          "child": {
+                                            "title": "Reset",
+                                            "type": "composite",
+                                            "name": "sequence",
+                                            "parameters": {},
+                                            "children": [
+                                              {
+                                                "title": "setAnimationState",
+                                                "type": "action",
+                                                "name": "setAnimationState",
+                                                "parameters": {
+                                                  "state": {"value": "attack"},
+                                                  "type": {"value": "attack"}
+                                                }
+                                              },
+                                              {
+                                                "title": "Reset",
+                                                "type": "composite",
+                                                "name": "sequence",
+                                                "parameters": {},
+                                                "children": [
+                                                  {
+                                                    "title": "breakVector",
+                                                    "type": "action",
+                                                    "name": "breakVector",
+                                                    "parameters": {
+                                                      "vector": {"key": "fireOffset"}
+                                                    },
+                                                    "output": {
+                                                      "y": "fireY"
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "breakVector",
+                                                    "type": "action",
+                                                    "name": "breakVector",
+                                                    "parameters": {
+                                                      "vector": {"key": "minBounds"}
+                                                    },
+                                                    "output": {
+                                                      "y": "minY"
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "greaterThan",
+                                                    "type": "action",
+                                                    "name": "greaterThan",
+                                                    "parameters": {
+                                                      "first": {"key": "fireY"},
+                                                      "second": {"key": "minY"}
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "title": "offsetPosition",
+                                                "type": "action",
+                                                "name": "offsetPosition",
+                                                "parameters": {
+                                                  "offset": {"key": "fireOffset"},
+                                                  "position": {"key": "self"}
+                                                },
+                                                "output": {
+                                                  "position": "firePosition"
+                                                }
+                                              },
+                                              {
+                                                "title": "distance",
+                                                "type": "action",
+                                                "name": "distance",
+                                                "parameters": {
+                                                  "from": {"key": "headPosition"},
+                                                  "to": {"key": "firePosition"}
+                                                },
+                                                "output": {
+                                                  "vector": "aimVector"
+                                                }
+                                              },
+                                              {
+                                                "title": "Reset",
+                                                "type": "composite",
+                                                "name": "sequence",
+                                                "parameters": {},
+                                                "children": [
+                                                  {
+                                                    "title": "vecMultiply",
+                                                    "type": "action",
+                                                    "name": "vecMultiply",
+                                                    "parameters": {
+                                                      "first": {"key": "aimVector"},
+                                                      "second": {"value": ["facingDirection", 1]}
+                                                    },
+                                                    "output": {
+                                                      "vector": "facingVector"
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "vecAngle",
+                                                    "type": "action",
+                                                    "name": "vecAngle",
+                                                    "parameters": {
+                                                      "vector": {"key": "facingVector"}
+                                                    },
+                                                    "output": {
+                                                      "angle": "targetAngle"
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "add",
+                                                    "type": "action",
+                                                    "name": "add",
+                                                    "parameters": {
+                                                      "addend": {"key": "<headAngleOffset>"},
+                                                      "number": {"key": "targetAngle"}
+                                                    },
+                                                    "output": {
+                                                      "result": "targetAngle"
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "title": "Reset",
+                                                "type": "composite",
+                                                "name": "sequence",
+                                                "parameters": {},
+                                                "children": [
+                                                  {
+                                                    "title": "vecRotate",
+                                                    "type": "action",
+                                                    "name": "vecRotate",
+                                                    "parameters": {
+                                                      "angle": {"key": "targetAngle"},
+                                                      "vector": {"key": "<projectileSpawnOffset>"}
+                                                    },
+                                                    "output": {
+                                                      "vector": "projectileOffset"
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "vecAdd",
+                                                    "type": "action",
+                                                    "name": "vecAdd",
+                                                    "parameters": {
+                                                      "first": {"key": "projectileOffset"},
+                                                      "second": {"key": "<headRotationCenter>"}
+                                                    },
+                                                    "output": {
+                                                      "vector": "projectileOffset"
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "vecMultiply",
+                                                    "type": "action",
+                                                    "name": "vecMultiply",
+                                                    "parameters": {
+                                                      "first": {"key": "projectileOffset"},
+                                                      "second": {"value": ["facingDirection", 1]}
+                                                    },
+                                                    "output": {
+                                                      "vector": "projectileOffset"
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "title": "Reset",
+                                                "type": "composite",
+                                                "name": "sequence",
+                                                "parameters": {},
+                                                "children": [
+                                                  {
+                                                    "title": "resetTransformationGroup",
+                                                    "type": "action",
+                                                    "name": "resetTransformationGroup",
+                                                    "parameters": {
+                                                      "transformationGroup": {"value": "head"}
+                                                    }
+                                                  },
+                                                  {
+                                                    "title": "rotateTransformationGroup",
+                                                    "type": "action",
+                                                    "name": "rotateTransformationGroup",
+                                                    "parameters": {
+                                                      "angle": {"key": "targetAngle"},
+                                                      "rotationCenter": {"key": "<headRotationCenter>"},
+                                                      "transformationGroup": {"value": "head"}
+                                                    }
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "title": "spawnProjectile",
+                                                "type": "action",
+                                                "name": "spawnProjectile",
+                                                "parameters": {
+                                                  "aimVector": {"key": "facingVector"},
+                                                  "offset": {"key": "projectileOffset"},
+                                                  "position": {"key": "self"},
+                                                  "projectileConfig": {"value": {}},
+                                                  "projectileType": {"value": "fudragonprojectile"},
+                                                  "scalePower": {"value": true},
+                                                  "sourceEntity": {"key": "self"},
+                                                  "trackSource": {"value": false}
+                                                }
+                                              },
+                                              {
+                                                "title": "timer",
+                                                "type": "action",
+                                                "name": "timer",
+                                                "parameters": {
+                                                  "time": {"value": 0.2}
+                                                }
+                                              },
+                                              {
+                                                "title": "vecAdd",
+                                                "type": "action",
+                                                "name": "vecAdd",
+                                                "parameters": {
+                                                  "first": {"key": "fireOffset"},
+                                                  "second": {"value": [0, -2]}
+                                                },
+                                                "output": {
+                                                  "vector": "fireOffset"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "title": "setAnimationState",
+                                        "type": "action",
+                                        "name": "setAnimationState",
+                                        "parameters": {
+                                          "state": {"value": "winddown"},
+                                          "type": {"value": "attack"}
+                                        }
+                                      },
+                                      {
+                                        "title": "timer",
+                                        "type": "action",
+                                        "name": "timer",
+                                        "parameters": {
+                                          "time": {"value": 0.5}
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "title": "Reset",
+                                "type": "composite",
+                                "name": "sequence",
+                                "parameters": {},
+                                "children": [
+                                  {
+                                    "title": "inverter",
+                                    "type": "decorator",
+                                    "name": "inverter",
+                                    "parameters": {},
+                                    "child": {
+                                      "title": "entityInSight",
+                                      "type": "action",
+                                      "name": "entityInSight",
+                                      "parameters": {
+                                        "entity": {"key": "target"}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "title": "parallel",
+                                    "type": "composite",
+                                    "name": "parallel",
+                                    "parameters": {
+                                      "fail": {"value": -1},
+                                      "success": {"value": -1}
+                                    },
+                                    "children": [
+                                      {
+                                        "title": "controlApproachVelocity",
+                                        "type": "action",
+                                        "name": "controlApproachVelocity",
+                                        "parameters": {
+                                          "force": {"value": 20},
+                                          "velocity": {"value": [0, 0]}
+                                        }
+                                      },
+                                      {
+                                        "title": "timer",
+                                        "type": "action",
+                                        "name": "timer",
+                                        "parameters": {
+                                          "time": {"value": 0.5}
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "title": "vecMultiply",
+                                    "type": "action",
+                                    "name": "vecMultiply",
+                                    "parameters": {
+                                      "first": {"key": "<headRotationCenter>"},
+                                      "second": {"value": ["facingDirection", 1]}
+                                    },
+                                    "output": {
+                                      "vector": "headRotationCenter"
+                                    }
+                                  },
+                                  {
+                                    "title": "parallel",
+                                    "type": "composite",
+                                    "name": "parallel",
+                                    "parameters": {
+                                      "fail": {"value": 1},
+                                      "success": {"value": -1}
+                                    },
+                                    "children": [
+                                      {
+                                        "title": "entityDirection",
+                                        "type": "action",
+                                        "name": "entityDirection",
+                                        "parameters": {
+                                          "entity": {"key": "self"},
+                                          "offset": {"key": "headRotationCenter"},
+                                          "target": {"key": "target"}
+                                        },
+                                        "output": {
+                                          "vector": "aimVector"
+                                        }
+                                      },
+                                      {
+                                        "title": "Reset",
+                                        "type": "composite",
+                                        "name": "sequence",
+                                        "parameters": {},
+                                        "children": [
+                                          {
+                                            "title": "Reset",
+                                            "type": "composite",
+                                            "name": "sequence",
+                                            "parameters": {},
+                                            "children": [
+                                              {
+                                                "title": "vecMultiply",
+                                                "type": "action",
+                                                "name": "vecMultiply",
+                                                "parameters": {
+                                                  "first": {"key": "aimVector"},
+                                                  "second": {"value": ["facingDirection", 1]}
+                                                },
+                                                "output": {
+                                                  "vector": "facingVector"
+                                                }
+                                              },
+                                              {
+                                                "title": "vecAngle",
+                                                "type": "action",
+                                                "name": "vecAngle",
+                                                "parameters": {
+                                                  "vector": {"key": "facingVector"}
+                                                },
+                                                "output": {
+                                                  "angle": "targetAngle"
+                                                }
+                                              },
+                                              {
+                                                "title": "add",
+                                                "type": "action",
+                                                "name": "add",
+                                                "parameters": {
+                                                  "addend": {"key": "<headAngleOffset>"},
+                                                  "number": {"key": "targetAngle"}
+                                                },
+                                                "output": {
+                                                  "result": "targetAngle"
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "title": "Reset",
+                                            "type": "composite",
+                                            "name": "sequence",
+                                            "parameters": {},
+                                            "children": [
+                                              {
+                                                "title": "vecRotate",
+                                                "type": "action",
+                                                "name": "vecRotate",
+                                                "parameters": {
+                                                  "angle": {"key": "targetAngle"},
+                                                  "vector": {"key": "<projectileSpawnOffset>"}
+                                                },
+                                                "output": {
+                                                  "vector": "projectileOffset"
+                                                }
+                                              },
+                                              {
+                                                "title": "vecAdd",
+                                                "type": "action",
+                                                "name": "vecAdd",
+                                                "parameters": {
+                                                  "first": {"key": "projectileOffset"},
+                                                  "second": {"key": "<headRotationCenter>"}
+                                                },
+                                                "output": {
+                                                  "vector": "projectileOffset"
+                                                }
+                                              },
+                                              {
+                                                "title": "vecMultiply",
+                                                "type": "action",
+                                                "name": "vecMultiply",
+                                                "parameters": {
+                                                  "first": {"key": "projectileOffset"},
+                                                  "second": {"value": ["facingDirection", 1]}
+                                                },
+                                                "output": {
+                                                  "vector": "projectileOffset"
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "title": "Reset",
+                                            "type": "composite",
+                                            "name": "sequence",
+                                            "parameters": {},
+                                            "children": [
+                                              {
+                                                "title": "resetTransformationGroup",
+                                                "type": "action",
+                                                "name": "resetTransformationGroup",
+                                                "parameters": {
+                                                  "transformationGroup": {"value": "head"}
+                                                }
+                                              },
+                                              {
+                                                "title": "rotateTransformationGroup",
+                                                "type": "action",
+                                                "name": "rotateTransformationGroup",
+                                                "parameters": {
+                                                  "angle": {"key": "targetAngle"},
+                                                  "rotationCenter": {"key": "<headRotationCenter>"},
+                                                  "transformationGroup": {"value": "head"}
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "title": "setAnimationState",
+                                            "type": "action",
+                                            "name": "setAnimationState",
+                                            "parameters": {
+                                              "state": {"value": "attack"},
+                                              "type": {"value": "attack"}
+                                            }
+                                          },
+                                          {
+                                            "title": "timer",
+                                            "type": "action",
+                                            "name": "timer",
+                                            "parameters": {
+                                              "time": {"value": 0.35}
+                                            }
+                                          },
+                                          {
+                                            "title": "playSound",
+                                            "type": "action",
+                                            "name": "playSound",
+                                            "parameters": {
+                                              "sound": {"value": "blockBuster1"}
+                                            }
+                                          },
+                                          {
+                                            "title": "timer",
+                                            "type": "action",
+                                            "name": "timer",
+                                            "parameters": {
+                                              "time": {"value": 0.15}
+                                            }
+                                          },
+                                          {
+                                            "title": "repeater",
+                                            "type": "decorator",
+                                            "name": "repeater",
+                                            "parameters": {
+                                              "maxLoops": {"value": 3},
+                                              "untilSuccess": {"value": false}
+                                            },
+                                            "child": {
+                                              "title": "Reset",
+                                              "type": "composite",
+                                              "name": "sequence",
+                                              "parameters": {},
+                                              "children": [
+                                                {
+                                                  "title": "playSound",
+                                                  "type": "action",
+                                                  "name": "playSound",
+                                                  "parameters": {
+                                                    "sound": {"value": "blockBuster2"}
+                                                  }
+                                                },
+                                                {
+                                                  "title": "spawnProjectile",
+                                                  "type": "action",
+                                                  "name": "spawnProjectile",
+                                                  "parameters": {
+                                                    "aimVector": {"key": "aimVector"},
+                                                    "offset": {"key": "projectileOffset"},
+                                                    "position": {"key": "self"},
+                                                    "projectileConfig": {"value": {}},
+                                                    "projectileType": {"value": "fudragonprojectile"},
+                                                    "scalePower": {"value": true},
+                                                    "sourceEntity": {"key": "self"},
+                                                    "trackSource": {"value": false}
+                                                  }
+                                                },
+                                                {
+                                                  "title": "timer",
+                                                  "type": "action",
+                                                  "name": "timer",
+                                                  "parameters": {
+                                                    "time": {"value": 0.3}
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "title": "setAnimationState",
+                                            "type": "action",
+                                            "name": "setAnimationState",
+                                            "parameters": {
+                                              "state": {"value": "winddown"},
+                                              "type": {"value": "attack"}
+                                            }
+                                          },
+                                          {
+                                            "title": "timer",
+                                            "type": "action",
+                                            "name": "timer",
+                                            "parameters": {
+                                              "time": {"value": 0.6}
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "title": "parallel",
+                                "type": "composite",
+                                "name": "parallel",
+                                "parameters": {
+                                  "fail": {"value": -1},
+                                  "success": {"value": -1}
+                                },
+                                "children": [
+                                  {
+                                    "title": "cooldown",
+                                    "type": "decorator",
+                                    "name": "cooldown",
+                                    "parameters": {
+                                      "cooldown": {"value": 2},
+                                      "onFail": {"value": false},
+                                      "onSuccess": {"value": true}
+                                    },
+                                    "child": {
+                                      "title": "dragonboss-breath",
+                                      "type": "module",
+                                      "name": "dragonboss-breath",
+                                      "parameters": {
+                                        "headRotationCenter": {"key": "<headRotationCenter>"},
+                                        "projectileSpawnOffset": {"key": "<projectileSpawnOffset>"}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "title": "Reset",
+                                    "type": "composite",
+                                    "name": "sequence",
+                                    "parameters": {},
+                                    "children": [
+                                      {
+                                        "title": "inverter",
+                                        "type": "decorator",
+                                        "name": "inverter",
+                                        "parameters": {},
+                                        "child": {
+                                          "title": "entityInRange",
+                                          "type": "action",
+                                          "name": "entityInRange",
+                                          "parameters": {
+                                            "entity": {"key": "target"},
+                                            "position": {"key": "self"},
+                                            "xRange": {"value": 20}
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "title": "parallel",
+                                        "type": "composite",
+                                        "name": "parallel",
+                                        "parameters": {
+                                          "fail": {"value": -1},
+                                          "success": {"value": 1}
+                                        },
+                                        "children": [
+                                          {
+                                            "title": "entityInRange",
+                                            "type": "action",
+                                            "name": "entityInRange",
+                                            "parameters": {
+                                              "entity": {"key": "target"},
+                                              "position": {"key": "self"},
+                                              "xRange": {"value": 10}
+                                            }
+                                          },
+                                          {
+                                            "title": "flyToPosition",
+                                            "type": "action",
+                                            "name": "flyToPosition",
+                                            "parameters": {
+                                              "position": {"key": "hoverPosition"},
+                                              "speed": {"value": 10},
+                                              "tolerance": {"value": 1}
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "title": "parallel",
+                                        "type": "composite",
+                                        "name": "parallel",
+                                        "parameters": {
+                                          "fail": {"value": 1},
+                                          "success": {"value": -1}
+                                        },
+                                        "children": [
+                                          {
+                                            "title": "controlApproachVelocity",
+                                            "type": "action",
+                                            "name": "controlApproachVelocity",
+                                            "parameters": {
+                                              "force": {"value": 20},
+                                              "velocity": {"value": [0, 0]}
+                                            }
+                                          },
+                                          {
+                                            "title": "timer",
+                                            "type": "action",
+                                            "name": "timer",
+                                            "parameters": {
+                                              "time": {"value": 0.5}
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "title": "runner",
+                                "type": "action",
+                                "name": "runner",
+                                "parameters": {}
+                              }
+                            ]
+                          },
+                          {
+                            "title": "runner",
+                            "type": "action",
+                            "name": "runner",
+                            "parameters": {}
+                          }
+                        ]
+                      },
+                      {
+                        "title": "Reset",
+                        "type": "composite",
+                        "name": "sequence",
+                        "parameters": {},
+                        "children": [
+                          {
+                            "title": "setParticleEmitterActive",
+                            "type": "action",
+                            "name": "setParticleEmitterActive",
+                            "parameters": {
+                              "active": {"value": true},
+                              "emitter": {"value": "predeath"}
+                            }
+                          },
+                          {
+                            "title": "succeeder",
+                            "type": "decorator",
+                            "name": "succeeder",
+                            "parameters": {},
+                            "child": {
+                              "title": "Reset",
+                              "type": "composite",
+                              "name": "sequence",
+                              "parameters": {},
+                              "children": [
+                                {
+                                  "title": "loadUniqueEntity",
+                                  "type": "action",
+                                  "name": "loadUniqueEntity",
+                                  "parameters": {
+                                    "uniqueId": {"value": "missionmanager"}
+                                  },
+                                  "output": {
+                                    "entity": "manager"
+                                  }
+                                },
+                                {
+                                  "title": "sendEntityMessage",
+                                  "type": "action",
+                                  "name": "sendEntityMessage",
+                                  "parameters": {
+                                    "entity": {"key": "manager"},
+                                    "message": {"value": "noxBeamout"}
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "title": "resetTransformationGroup",
+                            "type": "action",
+                            "name": "resetTransformationGroup",
+                            "parameters": {
+                              "transformationGroup": {"value": "head"}
+                            }
+                          },
+                          {
+                            "title": "setAnimationState",
+                            "type": "action",
+                            "name": "setAnimationState",
+                            "parameters": {
+                              "state": {"value": "dying"},
+                              "type": {"value": "attack"}
+                            }
+                          },
+                          {
+                            "title": "timer",
+                            "type": "action",
+                            "name": "timer",
+                            "parameters": {
+                              "time": {"value": 4}
+                            }
+                          },
+                          {
+                            "title": "Reset",
+                            "type": "composite",
+                            "name": "sequence",
+                            "parameters": {},
+                            "children": [
+                              {
+                                "title": "setAnimationState",
+                                "type": "action",
+                                "name": "setAnimationState",
+                                "parameters": {
+                                  "state": {"value": "beamOut"},
+                                  "type": {"value": "teleport"}
+                                }
+                              },
+                              {
+                                "title": "timer",
+                                "type": "action",
+                                "name": "timer",
+                                "parameters": {
+                                  "time": {"value": 0.4}
+                                }
+                              },
+                              {
+                                "title": "setGlobalTag",
+                                "type": "action",
+                                "name": "setGlobalTag",
+                                "parameters": {
+                                  "tag": {"value": "dead"},
+                                  "type": {"value": "stage"}
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "title": "setAnimationState",
+                            "type": "action",
+                            "name": "setAnimationState",
+                            "parameters": {
+                              "state": {"value": "dyingcry"},
+                              "type": {"value": "attack"}
+                            }
+                          },
+                          {
+                            "title": "playSound",
+                            "type": "action",
+                            "name": "playSound",
+                            "parameters": {
+                              "sound": {"value": "dragonDeath"}
+                            }
+                          },
+                          {
+                            "title": "timer",
+                            "type": "action",
+                            "name": "timer",
+                            "parameters": {
+                              "time": {"value": 2}
+                            }
+                          },
+                          {
+                            "title": "playSound",
+                            "type": "action",
+                            "name": "playSound",
+                            "parameters": {
+                              "sound": {"value": "dragonDeathExplosion"}
+                            }
+                          },
+                          {
+                            "title": "sequence",
+                            "type": "composite",
+                            "name": "sequence",
+                            "parameters": {},
+                            "children": [
+                              {
+                                "title": "vecMultiply",
+                                "type": "action",
+                                "name": "vecMultiply",
+                                "parameters": {
+                                  "first": {"value": [1, 0.5]},
+                                  "second": {"value": ["facingDirection", 1]}
+                                },
+                                "output": {
+                                  "vector": "aimVectorFlip"
+                                }
+                              },
+                              {
+                                "title": "vecMultiply",
+                                "type": "action",
+                                "name": "vecMultiply",
+                                "parameters": {
+                                  "first": {"value": [5, 8]},
+                                  "second": {"value": ["facingDirection", 1]}
+                                },
+                                "output": {
+                                  "vector": "flipOffset"
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"key": "aimVectorFlip"},
+                                  "offset": {"key": "flipOffset"},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonhead"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [1, 0.5]},
+                                  "offset": {"value": [0, 0]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonbone"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [1, 1]},
+                                  "offset": {"value": [0, 0]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonbone"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [1, 0]},
+                                  "offset": {"value": [0, 0]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonbone"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [1, -1]},
+                                  "offset": {"value": [0, 0]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonbone"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [-1, 1]},
+                                  "offset": {"value": [0, 0]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonbone"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [-1, 0]},
+                                  "offset": {"value": [0, 0]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "dragonblock
+                                  Type": {"value": "dragonbone"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [-1, -0.5]},
+                                  "offset": {"value": [0, 0]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonbone"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [-1, -1]},
+                                  "offset": {"value": [0, 0]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonbone"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [1, 1]},
+                                  "offset": {"value": [-5, -8]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonfoot"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              },
+                              {
+                                "title": "spawnProjectile",
+                                "type": "action",
+                                "name": "spawnProjectile",
+                                "parameters": {
+                                  "aimVector": {"value": [-1, 1]},
+                                  "offset": {"value": [-5, -8]},
+                                  "position": {"key": "self"},
+                                  "projectileConfig": {"value": {}},
+                                  "projectileType": {"value": "dragonfoot"},
+                                  "scalePower": {"value": true},
+                                  "sourceEntity": {"key": "self"},
+                                  "trackSource": {"value": false}
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "title": "setDying",
+                            "type": "action",
+                            "name": "setDying",
+                            "parameters": {
+                              "shouldDie": {"value": true}
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Spiderboss",
+                    "type": "composite",
+                    "name": "dynamic",
+                    "parameters": {},
+                    "children": [
+                      {
+                        "title": "Reset",
+                        "type": "composite",
+                        "name": "sequence",
+                        "parameters": {},
+                        "children": [
+                          {
+                            "title": "resourcePercentage",
+                            "type": "action",
+                            "name": "resourcePercentage",
+                            "parameters": {
+                              "percentage": {"value": 0.66},
+                              "resource": {"value": "health"}
+                            }
+                          },
+                          {
+                            "title": "setGlobalTag",
+                            "type": "action",
+                            "name": "setGlobalTag",
+                            "parameters": {
+                              "tag": {"value": "stage1"},
+                              "type": {"value": "stage"}
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "title": "Reset",
+                        "type": "composite",
+                        "name": "sequence",
+                        "parameters": {},
+                        "children": [
+                          {
+                            "title": "resourcePercentage",
+                            "type": "action",
+                            "name": "resourcePercentage",
+                            "parameters": {
+                              "percentage": {"value": 0.33},
+                              "resource": {"value": "health"}
+                            }
+                          },
+                          {
+                            "title": "setGlobalTag",
+                            "type": "action",
+                            "name": "setGlobalTag",
+                            "parameters": {
+                              "tag": {"value": "stage2"},
+                              "type": {"value": "stage"}
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "title": "Reset",
+                        "type": "composite",
+                        "name": "sequence",
+                        "parameters": {},
+                        "children": [
+                          {
+                            "title": "resourcePercentage",
+                            "type": "action",
+                            "name": "resourcePercentage",
+                            "parameters": {
+                              "percentage": {"value": 0},
+                              "resource": {"value": "health"}
+                            }
+                          },
+                          {
+                            "title": "setGlobalTag",
+                            "type": "action",
+                            "name": "setGlobalTag",
+                            "parameters": {
+                              "tag": {"value": "stage3"},
+                              "type": {"value": "stage"}
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "title": "runner",
+                        "type": "action",
+                        "name": "runner",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "runner",
+                "type": "action",
+                "name": "runner",
+                "parameters": {}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -4,13 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^orange;Set Bonuses: 
-Oxygen Tank
-^#a94db3;+30%^reset; Electric, ^cyan;20%^reset; Physical Resist^reset;
-Mining Laser: ^#a94db3;+240% Dmg, ^reset;
-^#e43774;Immune^reset;: Burning, Proto, Pressure, Gas", 
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^cyan;Gravity Normalization^reset;
+^yellow;^reset; Mining Laser: Damage x^green;2.4^reset;
+^yellow;^reset; +^cyan;50^reset;% Defense Tech Efficiency
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Proto-Poison, Pressure, Gas, Ice Slip, Oxygen", 
   "shortdescription" : "Spacefarer mk2 Chest",
-  "category" : "t4armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -25,11 +25,11 @@ Mining Laser: ^#a94db3;+240% Dmg, ^reset;
     "frontSleeve" : "fsleeve.png"
   },
 
-  "learnBlueprintsOnPickup" : [
-  "fuwarphunterhead",
-  "fuwarphunterchest",
-  "fuwarphunterpants"
-  ],
+ // "learnBlueprintsOnPickup" : [
+ // "fuwarphunterhead",
+ // "fuwarphunterchest",
+//  "fuwarphunterpants"
+//  ],
 
   "level" : 4,
   "collectablesOnPickup" : { "fu_armorexplorer" : "spacefarerchestadv" },
@@ -53,6 +53,16 @@ Mining Laser: ^#a94db3;+240% Dmg, ^reset;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.04
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.028
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -61,14 +71,8 @@ Mining Laser: ^#a94db3;+240% Dmg, ^reset;
     {
       "stat" : "fu_spacefarerset2_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
     }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

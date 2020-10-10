@@ -43,8 +43,9 @@ function update(args)
   end  
   
   if self.active then
+   
+    status.setPersistentEffects("fallDamageBonus", {{stat = "fallDamageMultiplier", baseMultiplier = 0.5}})  -- reduce fall damage 
     mcontroller.controlParameters(self.transformedMovementParameters)
-    status.setResourcePercentage("energyRegenBlock", 1.0)
 
     updateAngularVelocity(args.dt)
     updateRotationFrame(args.dt)
@@ -54,12 +55,15 @@ function update(args)
         self.bombTimer = math.max(0, self.bombTimer - args.dt)
       end
     
-    if self.pressDown and self.bombTimer == 0 then
+    if self.pressDown and self.bombTimer == 0 and status.overConsumeResource("energy", 70) then
       self.bombTimer = 1.1
-      local configBombDrop = { power = 20 }
+      self.bombbonus = 1 + status.stat("bombtechBonus")
+      local configBombDrop = { power = 25 * self.bombbonus }
       animator.playSound("bombdrop")
-      world.spawnProjectile("distortionbombpower", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
+      world.spawnProjectile("distortionbombpower", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)   
     end
+  else
+    status.clearPersistentEffects("fallDamageBonus") -- reset fall damage
   end
 
   updateTransformFade(args.dt)
@@ -209,10 +213,9 @@ function activate()
   tech.setToolUsageSuppressed(true)
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   self.active = true
-  status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 20}})
+  status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 20 * (1+ status.stat("defensetechBonus")) }})
   
-
- 
+  status.addEphemeralEffect("waterimmunity",1)  --disable spike sphere insanity-speed in liquid
 end
 
 function deactivate()

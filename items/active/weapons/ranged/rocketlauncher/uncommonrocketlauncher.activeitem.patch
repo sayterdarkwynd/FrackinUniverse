@@ -1,4 +1,7 @@
 [
+  {"op": "add","path": "/magazineSize","value": [1,4]},
+  {"op": "add","path": "/reloadTime","value": [2.3,3.5]},
+  {"op": "add","path": "/isAmmoBased","value": [0,1]},
   {
     "op": "add",
     "path": "/critChance",
@@ -7,12 +10,17 @@
   {
     "op": "add",
     "path": "/critBonus",
-    "value": 6
+    "value": 10
   },
   {
     "op": "replace",
     "path": "/description",
-    "value": "The ideal man-portable weapon of choice for taking down rampaging tanks, mecha, and giant monsters, if you can handle the long reload time."
+    "value": "The ideal man-portable weapon of choice for taking down large targets. If you can handle the long reload time."
+  },
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "explosive"
   },
   {
     "op": "add",
@@ -21,18 +29,13 @@
   },
   {
     "op": "replace",
-    "path": "/primaryAbility/fireTime/0",
-    "value": 2
-  },
+    "path": "/primaryAbility/baseDps/0",
+    "value": 8
+  },   
   {
     "op": "replace",
     "path": "/primaryAbility/fireTime/1",
     "value": 4
-  },
-  {
-    "op": "replace",
-    "path": "/primaryAbility/inaccuracy",
-    "value": 0.01
   },
   {
     "op": "add",

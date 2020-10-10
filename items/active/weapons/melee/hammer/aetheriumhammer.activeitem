@@ -1,6 +1,6 @@
 {
   "itemName" : "aetheriumhammer",
-  "price" : 12000,
+  "price" : 1200,
   "maxStack" : 1,
   "level" : 6,
   "rarity" : "legendary",
@@ -10,7 +10,7 @@
   "tooltipKind" : "hammeraetherium",
   "category" : "hammer",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","hammer","upgradeableWeapon","aetherium","cosmic"],
   "inventoryIcon" : "aetheriumhammer.png",
   "collectablesOnPickup" : { "fu_weaponhammer" : "aetheriumhammer" },
   "animation" : "hammerglow.animation",
@@ -40,7 +40,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "aether",
 
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
@@ -48,7 +48,7 @@
     "baseDps" : 11.5,
     "damageConfig" : {
       "statusEffects" : [ "defenseboostneg20" ],
-       "damageSourceKind" : "cosmichammer"
+       "damageSourceKind" : "aetherhammer"
     },
     "stances" : {
       "idle" : {

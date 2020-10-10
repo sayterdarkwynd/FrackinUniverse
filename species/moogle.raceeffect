@@ -1,0 +1,130 @@
+{
+	"stats": [
+		{
+			"stat": "maxFood",
+			"effectiveMultiplier": 0.8
+		},
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 0.8
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.1
+		},
+		{
+			"stat": "fallDamageMultiplier",
+			"effectiveMultiplier": 0.5
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "electricResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.4
+		},
+		{
+			"stat": "fuCharisma","baseMultiplier": 1.10
+		},
+		{
+			"stat": "electricStatusImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "fumudslowImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "omnivore",
+	"weaponEffects": [{
+			"weapons": [
+				"shortsword",
+				"staff",
+				"wand"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.05
+			}]
+		},
+		{
+			"weapons": [
+				"dagger",
+				"pistol",
+				"spear"
+			],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.1
+				},
+				{
+					"stat": "critChance",
+					"amount": 1
+				}
+			]
+		},
+		{
+			"weapons": [
+				"energy"
+			],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.1
+				},
+				{
+					"stat": "critDamage",
+					"amount": 0.1
+				}
+			]
+		}
+	],
+	"controlModifiers": {
+		"speedModifier": 1.1,
+		"airJumpModifier": 1.2,
+		"liquidForce": 20
+	},
+	"aerialEffect": {
+		//"fallStats": {
+		//	"controlParameters": {
+		//		"airForce": 40,
+		//		"runSpeed": 16,
+		//		"walkSpeed": 16
+		//	},
+		//	"maxFallSpeed": -39
+		//},
+		"windEffects": {
+			"windLow": {
+				"speed": 70,
+				"controlModifiers": {
+					"speedModifier": 1.15,
+					"airJumpModifier": 1.25
+				}
+			},
+			"windHigh": {
+				"speed": 7,
+				"controlModifiers": {
+					"speedModifier": 1.2,
+					"airJumpModifier": 1.3
+				}
+			}
+		}
+	},
+	"tech" : [ "flight_moogle" ]
+}

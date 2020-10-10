@@ -1,13 +1,13 @@
 {
   "type" : "crewmembercyborg",
   "baseType" : "base",
-  "disableWornArmor" : false,
+  //"disableWornArmor" : false,
   "dropPools" : [ "villagertreasure" ],
 
   "damageTeamType" : "friendly",
 
   // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
-  //"innateStatusEffects" : [ { "stat" : "protection", "amount": 0.2 }, {"stat" : "powerMultiplier", "amount" : -0.3} ], 
+  //"innateStatusEffects" : [ { "stat" : "protection", "amount": 0.15 }, {"stat" : "powerMultiplier", "amount" : 0.25} ], 
 
   "persistent" : true,
 
@@ -333,13 +333,16 @@
         "baseValue" : 350.0
       },
       "powerMultiplier" : {
-        "baseValue" : 0.15
+        "baseValue" : 0.25
       },
       "healthRegen" : {
         "baseValue" : 2.2
       },
       "aetherImmunity" : {
         "baseValue" : 1
+      },
+      "protection" : {
+        "baseValue" : 0.2
       }      
     }
   }

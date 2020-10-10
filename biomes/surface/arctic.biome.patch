@@ -1,44 +1,54 @@
 [
-  {
-    "op": "replace",
-    "path": "/statusEffects",
-    "value": [
-      "ffbiomecold2"
-    ]
-  },
-  
-{"op":"add","path":"/spawnProfile/groups/-",
-"value":{ 
-      
-        "select" : 5,
-        "pool" : [ 
-          [ 0.111, "frostfly" ],          
-          [ 0.111, "icetip" ],
-          [ 0.211, "arcticbee" ],
-          [ 0.111, "fupolarbearcritter" ],
-          [ 0.111, "fusnowfoxcritter" ]
-        ]
-      }
-},
+	[{
+		"op": "replace",
+		"path": "/statusEffects",
+		"value": [
+			"ffbiomecold2"
+		]
+	}],
 
-{"op" : "add", "path" : "/surfacePlaceables/items/-", "value" : {
-  "mode" : "floor",
-  "priority" : 1,
-  "variants" : 1,
-  "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+	[
+		{
+			"op": "add",
+			"path": "/spawnProfile/groups/-",
+			"value": {
 
-  "type" : "microdungeon",
-  "microdungeons" : [ "randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter" ]
-  }
-},
-{"op" : "add", "path" : "/undergroundPlaceables/items/-", "value" : {
-  "mode" : "floor",
-  "priority" : 1,
-  "variants" : 1,
-  "distribution" : "/biomes/distributions.config:ultraRare",
+				"select": 5,
+				"pool": [
+					[0.111, "frostfly"],
+					[0.111, "icetip"],
+					[0.211, "bee_gelidburrower"],
+					[0.111, "fupolarbearcritter"],
+					[0.111, "fusnowfoxcritter"]
+				]
+			}
+		},
 
-  "type" : "microdungeon",
-  "microdungeons" : [ "outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter" , "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
-  }
-}
+		{
+			"op": "add",
+			"path": "/surfacePlaceables/items/-",
+			"value": {
+				"mode": "floor",
+				"priority": 1,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+				"type": "microdungeon",
+				"microdungeons": ["randomencounter", "shroomencounter", "eyeencounter", "colourfulencounter", "boneencounter", "humanencounter", "glitchencounter", "floranencounter", "apexencounter", "avianencounter", "fulabs", "fubandits", "newhumanmicro", "newavianmicro", "furandomencounter", "fuapexencounter", "fuglitchencounter", "fuavianencounter", "fuhumanencounter"]
+			}
+		},
+		{
+			"op": "add",
+			"path": "/undergroundPlaceables/items/-",
+			"value": {
+				"mode": "floor",
+				"priority": 1,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:ultraRare",
+
+				"type": "microdungeon",
+				"microdungeons": ["outpostundergroundencounter", "humanundergroundencounter", "glitchundergroundencounter", "floranundergroundencounter", "apexundergroundencounter", "avianundergroundencounter", "undergroundencounter", "treasureroom", "genericundergroundencounter"]
+			}
+		}
+	]
 ]

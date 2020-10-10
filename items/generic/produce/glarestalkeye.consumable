@@ -1,30 +1,38 @@
 {
-  "itemName" : "glarestalkeye",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "glarestalkeye.png",
-  "description" : "Effect:
-^cyan;+50% Damage, Insanity Immunity^reset;",
-  "shortdescription" : "Glarestalk Eye",
-   "category" : "food",
+	"itemName": "glarestalkeye",
+	"inventoryIcon": "glarestalkeye.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "effects" : [ [
-      "damagebonus6", "insanityimmunity"
-    ] ],
-    
-  "blockingEffects" : [
-         "rage",
-         "rage_base",
-         "rage20fu",
-         "rage30",
-         "rage50",
-         "rage60",
-         "rage75",
-         "rage100",
-         "damagebonus01",
-         "damagebonus2",
-         "damagebonus3",
-         "damagebonus4",
-         "damagebonus5"
-  ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Damage x1.3^reset;: 1m\n^yellow;^reset;^cyan;Immunity^reset;: Insanity: 3m",
+	"shortdescription": "Glarestalk Eye",
+
+	"effects": [
+		[{
+				"effect": "rage30",
+				"duration": 60
+			},
+			{
+				"effect": "insanityimmunity",
+				"duration": 180
+			}
+		]
+	],
+	"blockingEffects": [
+		"rage",
+		"rage_base",
+		"rage20fu",
+		"rage50",
+		"rage60",
+		"rage75",
+		"rage100",
+		"damagebonus01",
+		"damagebonus2",
+		"damagebonus3",
+		"damagebonus6",
+		"damagebonus4",
+		"damagebonus5"
+	]
 }

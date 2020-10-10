@@ -121,7 +121,7 @@ end
 
 
 function checkGate()
-  if player.hasItem({name = "statustablet", count = 1}) then
+  if player.hasItem({name = "fuancientkey", count = 1}) then
     self.gateUid = "ancientgate2"
   else
     self.gateUid = "ancientgate"
@@ -236,7 +236,7 @@ function gateRepaired()
 
   player.radioMessage("gaterepair-gateOpened1")
   player.radioMessage("gaterepair-gateOpened2")
-  player.giveItem("sciencebrochure")
+  player.startQuest("fu_scienceoutpost")
   player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
   player.radioMessage("fu_outpost1")  
   player.radioMessage("fu_outpost2")  
@@ -289,5 +289,4 @@ function questComplete()
   end 
   
   world.sendEntityMessage(player.id(), "setQuestFuelCount", 500)
-
 end

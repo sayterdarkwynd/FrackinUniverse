@@ -1,28 +1,28 @@
 {
-  "id" : "fu_scienceoutpost",
-  "mainQuest" : true,
-  "title" : "The Science Outpost",
-  "prerequisites" : [ ],
-  "text" : "As thanks for your help, ^orange;Vinalisj^reset; hands you a well designed informational pamphlet.",
-  "completionText" : "^orange;Vinalisj^reset; has transmitted the location of the ^orange;Science Outpost^reset; to me. I've marked the location ^green;in my ships SAIL^reset;.",
+	"id": "fu_scienceoutpost",
+	"prerequisites": [],
+	"mainQuest" : true,
+	"showInLog" : false,
+	"showAcceptDialog" : false,
+	"showCompleteDialog" : true,
+	"showFailDialog" : false,
+	"canBeAbandoned" : false,
+	"title": "The Science Outpost",
+	"text": "^orange;Vinalisj^reset; has given me the location of a ^orange;Science Outpost^reset;. I've marked the location ^green;in my ships SAIL^reset;.",
+	"completionText": "^orange;Vinalisj^reset; has transmitted the location of a ^orange;Science Outpost^reset; to me. I've marked the location ^green;in my ships SAIL^reset;.",
+	"moneyRange": [50, 50],
+    "rewards" : [ ],
+	"speaker": "questGiver",
 
-  "moneyRange" : [50, 50],
-  "rewards" : [ ],
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-    "portraits" : {
-      "questStarted" : "questGiver"
-    },
-
-    "descriptions" : {
-      "findScienceOutpost" : "^green;Visit ^orange;Corvex Research Labs^reset; on ^orange;Epsilon Gamma IV^reset;",
-      "turnIn" : "^green;Visit the^reset; ^orange;Science Outpost^reset;."
-    },
-
-    "compassUpdate" : 0.2,
-
-    "associatedMission" : "scienceoutpostfu"
-  }
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questGiver"
+		},
+		"requireTurnIn": false,
+		"conditions": [],
+		"associatedMission": "scienceoutpostfu"
+	}
 }

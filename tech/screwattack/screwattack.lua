@@ -1,10 +1,10 @@
 function init()
-
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
   self.armRotation = 0
   self.rotations = 3
   self.rotationTime = 0.15
-  self.jumpDuration = 0.2
-  self.jumpTimer = self.jumpDuration
+  self.jumpDuration = 0.2 * self.jumpBonus
+  self.jumpTimer = self.jumpDuration 
   self.energyUsage = 25
 
   self.groundJump = false
@@ -34,7 +34,12 @@ function uninit()
   reinit()
 end
 
+function applyTechBonus()
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
+end
+
 function update(args)
+  applyTechBonus()
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
 
@@ -59,10 +64,8 @@ function update(args)
     end 
   end
 
---sb.logInfo("xvel: %s", mcontroller.xVelocity())
-
   if jumpActivated then
-    local yVel = mcontroller.yVelocity()
+    local yVel = mcontroller.yVelocity() 
 
     if mcontroller.onGround() and not status.statPositive("activeMovementAbilities") and not mcontroller.liquidMovement() 
        and math.abs(mcontroller.xVelocity()) > 2 then
@@ -74,47 +77,17 @@ function update(args)
     end
 
   end
-
-  --updateJumpModifier()
-
-  -- if jumpActivated and canMultiJump() then
-  --   doMultiJump()
-  -- else
-  --   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
-  --     refreshJumps()
-  --   end
-  -- end
 end
 
 function flip(dt)
-  status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
-
-
- 
-
-  --if self.flipTimer < self.flipTime then
+    status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
     self.flipTimer = self.flipTimer + dt
-
-    --sb.logInfo("fliptimer: %s, fliptime: %s", self.flipTimer, self.flipTime)
-
-    --mcontroller.controlParameters(self.flipMovementParameters)
-
     if self.jumpTimer > 0 then
       self.jumpTimer = self.jumpTimer - dt
-      --mcontroller.setVelocity({self.jumpVelocity[1] * mcontroller.facingDirection(), self.jumpVelocity[2]})
     end
 
     mcontroller.setRotation(-math.pi * 2 * mcontroller.facingDirection() * (self.flipTimer / self.rotationTime))
     mcontroller.controlParameters({collisionPoly = { {-1.8, -1.8},  {1.8, -1.8}, {1.8, 1.8}, {-1.8, 1.8} }  })
-
-    --coroutine.yield()
-  --else
-    --reinit()
-  --end
-
-
-
-
 end
 
 function canMultiJump()
@@ -123,13 +96,9 @@ function canMultiJump()
       and not mcontroller.liquidMovement()
       and self.groundJump
       and status.overConsumeResource("energy", self.energyUsage)
-      --and not status.statPositive("activeMovementAbilities")
 end
 
 function doMultiJump()
   mcontroller.controlJump(true)
   mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
-  --self.multiJumps = self.multiJumps - 1
-  --animator.burstParticleEmitter("multiJumpParticles")
-  --animator.playSound("multiJumpSound")
 end

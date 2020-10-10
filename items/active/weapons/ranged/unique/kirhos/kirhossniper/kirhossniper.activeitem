@@ -11,8 +11,8 @@
   "level" : 1,
   "tooltipKind" : "gun2overheat",
   "weaponType" : "Sniper Rifle",
-  "learnBlueprintsOnPickup" : [ "kirhossniper" ],
-  "itemTags" : ["weapon","ranged","energy", "upgradeableWeapon", "sniperrifle"],
+//  "learnBlueprintsOnPickup" : [ "kirhossniper" ],
+  "itemTags" : ["weapon","ranged","energy", "upgradeableWeapon", "sniperrifle","kirhos"],
   "twoHanded" : true,
 
   "animation" : "fugunoverheating.animation",
@@ -48,7 +48,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
-    "fireTime" : 1.5,
+    "fireTime" : 1.2,
     "baseDps" : 20,
     "energyUsage" : 50.0,
     "inaccuracy" : 0,
@@ -57,9 +57,9 @@
 
 	//Overheating Weapon Values (based heavily on elithian races version)
 	"heatGain" : 70,					//Heat generated per shot
-	"coolingTime" : 0.25,				//Time before passive cooling kicks in
-	"heatLossLevel" : 30,				//Heat lost per second while not overheated
-	"heatLossRateMax" : 20,				//Heat lost per second while overheated
+	"coolingTime" : 0.45,				//Time before passive cooling kicks in
+	"heatLossLevel" : 20,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 30,				//Heat lost per second while overheated
 	"lowLevel" : 25,					//Value required to reach Low heat
 	"medLevel" : 50,				//Value required to reach Medium heat
 	"highLevel" : 80,				//Value required to reach High heat	
@@ -110,7 +110,12 @@
 
   "critChance" : 3,
   "critBonus" : 8,
-
+  "isSniper" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 900,  
+  
   "altAbilityType" : "flashlight",
 
 

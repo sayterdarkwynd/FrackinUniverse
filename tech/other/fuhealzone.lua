@@ -5,7 +5,12 @@ function init()
   self.timer = 0
 end
 
+function applyTechBonus()
+  self.bonusHeal = 1 + status.stat("healtechBonus") -- apply bonus from certain items and armor
+end
+
 function update(args)
+  applyTechBonus()
   if self.timer > 0 then
     self.timer = math.max(0, self.timer - args.dt)
   end
@@ -15,19 +20,16 @@ function update(args)
   end
 end
 
-
 function attemptActivation()
   if mcontroller.onGround() and status.overConsumeResource("energy", self.energyCost) then
       activate()
   end
 end
 
-
-
 function activate()
         animator.playSound("activate")
         animator.burstParticleEmitter("healing")
-	configBombDrop = { timeToLive = 5}
+	configBombDrop = { timeToLive = 5 * self.bonusHeal}
 	self.timer = 5
       	world.spawnProjectile("healingzone", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
 end

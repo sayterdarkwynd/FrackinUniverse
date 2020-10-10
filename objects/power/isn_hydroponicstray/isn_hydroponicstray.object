@@ -3,7 +3,7 @@
     "printable" : false,
     "colonyTags" : [ "science" ],
     "rarity" : "rare",
-    "description" : "An hydroponic powered growing tray. Requires 3 seeds and water. ^cyan;Requires ^orange;2W ^cyan;power^reset; to increase production. Scan for info.",
+    "description" : "An hydroponic powered growing tray. Requires 3 seeds and water. ^cyan;Requires ^orange;4W ^cyan;power^reset; to increase production. Scan for info.",
     "shortdescription" : "^cyan;Hydro Tray^reset;",
     "race" : "generic",
     "category" : "wire",
@@ -26,7 +26,7 @@
     "frameCooldown" : 67,
     "autoCloseCooldown" : 3600,
 
-    "scripts" : [ "/scripts/power.lua","/objects/isn_unifiedgrowingtray.lua" ],
+    "scripts" : [ "/scripts/fupower.lua","/objects/isn_unifiedgrowingtray.lua" ],
     "scriptDelta" : 60,
 
     "animation" : "isn_hydroponicstray.animation",
@@ -40,7 +40,7 @@
     "inputNodes" : [ [1, 1] ],
     "outputNodes" : [ [1, 0] ],
     "powertype" : "input",
-    "isn_requiredPower" : 2,
+    "isn_requiredPower" : 4,
 
     //Amount of growth per second for this table.
     "baseGrowthPerSecond" : 6,
@@ -97,7 +97,6 @@
         "ff_fertilizer3" : { "growthRate" : 2, "yield" : 3, "fluidUse" : -0.25, "seedUse" : -2 },
 
         //+1 fertilization speed, +1 yield, requires 0.5 liquid, -1 seed
-        "gene_reproductive" : { "growthRate" : 1, "yield" : 1, "fluidUse" : -0.5, "seedUse" : -1 },
         "liquidaether" : { "growthRate" : 1, "yield" : 1, "fluidUse" : -0.5, "seedUse" : -1 },
         
         "algaegreen" : { "growthRate" : 1.25, "yield" : 1, "fluidUse" : -0.5, "seedUse" : -1 }

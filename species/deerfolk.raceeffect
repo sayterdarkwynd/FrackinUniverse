@@ -1,0 +1,66 @@
+{
+	"stats" : [
+		{ "stat" : "fuCharisma", "baseMultiplier" : 1.15 },
+		{ "stat" : "physicalResistance", "amount" : -0.2 },
+		{ "stat" : "shadowResistance", "amount" : -0.2 },
+		{ "stat" : "poisonResistance", "amount" : -0.2 },
+		{ "stat" : "electricResistance", "amount" : 0.2 },
+		{ "stat" : "iceResistance", "amount" : 0.3 }
+	],
+	"diet" : "herbivore",
+	"controlModifiers" : { "speedModifier" : 1.15 },
+
+	"envEffects" : [
+		{
+			"biomes" : [ "arboreal", "savannah", "garden", "forest", "tundra", "snow", "thickjungle" ],
+			"stats" : [
+				{ "stat" : "protection", "effectiveMultiplier" : 1.15 },
+				{ "stat" : "physicalResistance", "amount" : 0.10 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [ "greataxe" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.2 }
+			]
+		},
+		{
+			"weapons" : [ "chakram", "boomerang" ],
+			"stats" : [
+				{ "stat" : "critChance", "amount" : 1.5 },
+				{ "stat" : "critDamage", "amount" : 0.05 }
+			]
+		},
+		{
+			"weapons" : [ "axe", "spear" ],
+			"stats" : [
+				{ "stat" : "grit", "amount" : 0.25 },
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.05 }
+			]
+		},
+		{
+			"weapons" : [ "bow" ],
+			"stats" : [
+				{ "stat" : "protection", "effectiveMultiplier" : 1.18 },
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 }
+			]
+		}
+	],
+	"weaponScripts" : [
+		{
+			"script" : "/scripts/fr_weaponscripts/randprojectile.lua",
+			"weapons" : [ "spear" ],
+			"contexts" : [ "meleeslash-fire" ],
+			"args" : {
+				"projectile" : "icethrower",
+				"chance" : 3,
+				"params" : {
+					"hungermod" : 12,
+					"damageKind" : "hoarfrost"
+				}
+			}
+		}
+	]
+}

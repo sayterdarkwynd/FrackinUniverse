@@ -34,7 +34,14 @@ function uninit()
   status.clearPersistentEffects("movementAbility")
 end
 
+function applyTechBonus()
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashSpeedModifier = config.getParameter("dashSpeedModifier") * self.dashBonus
+end
+
 function update(args)
+  applyTechBonus()
   self.doubleTap:update(args.dt, args.moves)
 
   if self.dashDirection then

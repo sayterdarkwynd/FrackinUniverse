@@ -5,14 +5,13 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;:
-^green;+12% Ice Resist^reset;
-Swim Boost, ^green;+700s Air, Breath Regen ^#a94db3;+50%^reset;
-\n^#e43774;Oceans^reset;: ^cyan;+15%^reset; Dmg, ^green;+5%^reset; Speed, ^green;+3%^reset; Crit Dmg
-\n^cyan;Immune^reset;: Acid, Poison, Gas",
+^yellow;^reset; +^green;87.5^reset;s Air, +^green;50^reset;% Breath Regen
+^yellow;^reset; Oceans: Damage x^green;1.15^reset;, +^green;5^reset;% Speed, +^green;3^reset;% Crit Damage
+^yellow;^reset; ^cyan;Immune^reset;: Acid, Poison, Gas",
   "shortdescription" : "Nautilus Chestpiece",
-  "category" : "t3armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "fudiverhead2", "fudiverchest2", "fudiverlegs2" ],
+//  "learnBlueprintsOnPickup" : [ "fudiverhead2", "fudiverchest2", "fudiverlegs2" ],
   "maleFrames" : {
     "body" : "chestm.png",
     "backSleeve" : "bsleeve.png",
@@ -47,6 +46,11 @@ Swim Boost, ^green;+700s Air, Breath Regen ^#a94db3;+50%^reset;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -55,10 +59,6 @@ Swim Boost, ^green;+700s Air, Breath Regen ^#a94db3;+50%^reset;
     {
       "stat" : "nautilussetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.04
     }
   ],
 
@@ -100,5 +100,7 @@ Swim Boost, ^green;+700s Air, Breath Regen ^#a94db3;+50%^reset;
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

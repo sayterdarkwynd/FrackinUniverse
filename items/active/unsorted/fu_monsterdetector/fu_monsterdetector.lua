@@ -1,8 +1,11 @@
+require "/scripts/effectUtil.lua"
+
 function activate(fireMode)
-	local targetlist = world.entityQuery(world.entityPosition(player.id()),50,{includedTypes={"monster"}})
+	effectUtil.effectTypesInRange("minibossglow",50,{"monster"},30)
+	--[[local targetlist = world.entityQuery(world.entityPosition(player.id()),50,{includedTypes={"monster"}})
 	for key, value in pairs(targetlist) do
 		world.sendEntityMessage(value,"applyStatusEffect","minibossglow",30)
-	end
+	end]]
 end
 
 function update()

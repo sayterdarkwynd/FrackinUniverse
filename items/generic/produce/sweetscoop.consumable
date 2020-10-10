@@ -1,22 +1,22 @@
 {
-  "itemName" : "sweetscoop",
-  "rarity" : "Common",
-  "foodValue" : 40,
-  "price" : 60,
-  "inventoryIcon" : "sweetscoop.png",
-  "description" : "Effect:
-^cyan;+20% Max Energy^reset;",
-  "shortdescription" : "Sweetscoop",
-  "category" : "food",
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1000,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 3.0,
-  "effects" : [ [
-    {
-        "effect" : "maxenergyscalingboostfood",
-        "duration" : 360
-    }
-  ] ]
+	"itemName": "sweetscoop",
+	"inventoryIcon": "sweetscoop.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 60,
+	"foodValue": 40,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Energy x1.2^reset;: 2m",
+	"shortdescription": "Sweetscoop",
+
+	"eventCategory": "eventCrop",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"effects": [
+		[{
+			"effect": "maxenergyscalingboostfood",
+			"duration": 120
+		}]
+	],
+	"blockingEffects": ["wellfed"]
 }

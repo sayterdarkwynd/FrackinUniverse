@@ -34,6 +34,18 @@
       },
       {
         "select" : 2,
+        "pool" : [
+          [ 0.1, "bee_reaper" ],
+          [ 0.1, "bee_exspiravit" ],
+          [ 0.3, "bee_shrouded" ],
+          [ 0.1, "bee_mason" ],
+          [ 0.1, "bee_inventor" ],
+          [ 0.1, "bee_reaper" ],
+          [ 0.2, "bee_mason" ] 
+        ]
+      },       
+      {
+        "select" : 2,
         "pool" : "nightTerrors"
       },
       {
@@ -104,10 +116,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/scorian-flow.ogg","/music/a_thing.ogg","/music/devilstritone.ogg", "/music/darkambient2a.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+      "tracks" : [ "/music/depthsOfDespair.ogg","/music/scorian-flow.ogg","/music/a_thing.ogg","/music/devils_tritone.ogg", "/music/darkambient2a.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/scorian-flow.ogg","/music/a_thing.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+      "tracks" : [ "/music/Myst.ogg","/music/scorian-flow.ogg","/music/a_thing.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     }
   },
 
@@ -126,7 +138,8 @@
             {
               "pool" : [ 
               [0.35, "wilddarklightflower" ],
-              [0.35, "wildshadowrootseed" ]
+              [0.35, "wildshadowrootseed" ],
+              [0.10, "exoniteseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }
@@ -198,7 +211,7 @@
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "alienmicrodungeons", "furedhives", "fuelders", "fuencountercultist", "randomencounter", "shroomencounter", "tarpitsmicrodungeons" ]
+          "microdungeons" : [ "fu_dae_microdungeons", "alienmicrodungeons", "furedhives", "fuelders", "fuencountercultist", "randomencounter", "shroomencounter", "tarpitsmicrodungeons" ]
         },       
         {
           "mode" : "floor",

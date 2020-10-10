@@ -4,13 +4,12 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;2%^reset; Ice and Electric Resist
-\n^orange;Set Bonuses^reset;:
-Pistol/Machine Pistol: ^green;+1%^reset; Crit 
-Rifles: ^green;+2%^reset; Crit^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; (Machine) Pistols: +^green;1^reset;/+^green;2.5^reset;% Crit Chance
+^yellow;^reset; Assault/Sniper Rifles: +^green;2^reset;% Crit Chance^reset;",
 
  "shortdescription" : "Underworld Goggles",
-  "category" : "t1armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -39,6 +38,16 @@ Rifles: ^green;+2%^reset; Crit^reset;",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -47,14 +56,6 @@ Rifles: ^green;+2%^reset; Crit^reset;",
     {
       "stat" : "underworldsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.02
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.02
     }
   ],
 
@@ -94,5 +95,7 @@ Rifles: ^green;+2%^reset; Crit^reset;",
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+  ],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

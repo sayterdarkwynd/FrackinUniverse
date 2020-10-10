@@ -1,11 +1,19 @@
 {
-  "itemName" : "darklightblossom",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "darklightblossom.png",
-  "description" : "It's said that this flower can ^cyan;cure insanity^reset; and dispel ^orange;unbreachable darkness^reset;.",
-  "shortdescription" : "Darklight Blossom",
-  "category" : "food",
-  "learnBlueprintsOnPickup" : [ "insanityimmunityaug","darknessimmunityaug" ],
-  "effects" : [ [ "darklightimmunity" ] ]
+	"itemName": "darklightblossom",
+	"inventoryIcon": "darklightblossom.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"shortdescription": "Darklight Blossom",
+	"description": "^yellow;^reset;^cyan;Immunity^reset;: Insanity, Darkness: 3m",
+
+	//"learnBlueprintsOnPickup": ["insanityimmunityaug", "darknessimmunityaug"],
+	"effects": [
+		[{
+			"effect": "darklightimmunity",
+			"duration": 180
+		}]
+	]
 }

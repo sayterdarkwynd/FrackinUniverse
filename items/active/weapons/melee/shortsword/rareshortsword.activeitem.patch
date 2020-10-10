@@ -1,6 +1,7 @@
 [
   {"op": "add","path": "/critChance","value": 2},
   {"op": "add","path": "/critBonus","value": 3},
+  {"op" : "replace","path" : "/tooltipKind","value" : "sword2"},
   {
     "op": "add",
     "path": "/itemTags/-",
@@ -29,5 +30,16 @@
       "animationCustom" : { "sounds" : {
             "fire1" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
             "fire2" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ] }}}
+  },
+
+  {
+    "op": "replace",
+    "path": "/primaryAbility/baseDps/0",
+    "value": 6
+  },
+  {
+    "op": "replace",
+    "path": "/primaryAbility/baseDps/0",
+    "value": 7
   }
 ]

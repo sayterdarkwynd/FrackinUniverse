@@ -1,34 +1,32 @@
 {
-  "id" : "create_regengene",
-  "prerequisites" : [ "create_fertilizer" ],
-  "title" : "Gene Splicing 101",
-  "text" : "My ^orange;Xeno Lab^reset; is on the fritz and I need 1 ^orange;Regenerative^reset; gene to complete my work and get it ready for an event! Can you help me out?",
-  "completionText" : "Thanks to you, the symposium will be a success! As gratitude, have this ^green;instrument of brutal and calculated murder^reset;! Well, the recipe anyways.",
-  "moneyRange" : [320, 440],
-  "rewards" : [ [ [ "isn_flintlock-recipe", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id": "create_regengene",
+	"prerequisites": ["create_fertilizer"],
+	"title": "Gene Splicing 101",
+	"text": "My ^orange;Xeno Lab^reset; is on the fritz! and I need 3 ^orange;Beetle Sprout^reset; seeds for a client or I don't eat this month! Can you help me out?",
+	"completionText": "Thanks so much. It's not much, but take this data I uncovered by scanning ^orange;Technology of the Ancients^reset;. Maybe you can make use of it.",
+	"moneyRange": [320, 440],
+	"rewards" : [ [ [ "furesearchvoxel",1 ] ] ],
+	"speaker": "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta": 10,
+	"script": "/quests/scripts/main.lua",
+	"scriptConfig": {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
+		"canBeAbandoned": true,
+		"requireTurnIn": true,
 
-    "turnInDescription" : "Bring a ^orange;Regenerative^reset; gene to the scientist at the ^orange;Science Outpost^reset;",
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "gene_regen",
-        "count" : 1,
-        "consume" : true
-      }
-    ]
-  }
+		"turnInDescription": "Bring ^orange;3 Beetlesprout Seeds^reset; to the yellow Avian at the ^orange;Science Outpost^reset;",
+		"giveBlueprints": ["isn_flintlock"],
+		"conditions": [{
+			"type": "gatherItem",
+			"itemName": "beetlesproutseed",
+			"count": 3,
+			"consume": true
+		}]
+	}
 }

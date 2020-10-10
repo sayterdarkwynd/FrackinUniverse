@@ -50,16 +50,16 @@ function init()
 end
 
 function update(dt)
-	if timer then
-		if timer >= 0 then
-			timer = timer - dt
-			widget.setText("close", math.ceil(timer))
-		else
+	--if timer then
+	--	if timer >= 0 then
+	--		timer = timer - dt
+	--		widget.setText("close", math.ceil(timer))
+	--	else
 			checkedAll = true
 			widget.setButtonEnabled("close", true)
 			widget.setText("close", "Dismiss")
-		end
-	end
+	--	end
+	--end
 end
 
 function displayInfo()

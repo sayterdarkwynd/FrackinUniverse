@@ -33,6 +33,12 @@
               "immediateSound" : [ "/sfx/blocks/footstep_brains.ogg" , "/sfx/projectiles/bloodvomit1.ogg" ]
             }
           },
+          "jump" : {
+            "frames" : 3,
+            "cycle" : 0.325,
+            "mode" : "transition",
+            "transition" : "fall"            
+          },       
           "hopfull" : {
             "frames" : 3,
             "cycle" : 0.325,
@@ -126,6 +132,11 @@
                 "image" : "<partImage>:hop.<frame>"
               }
             },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame>"
+              }
+            },            
             "fall" : {
               "properties" : {
                 "image" : "<partImage>:fall.<frame>"

@@ -1,0 +1,156 @@
+{
+	"stats": [
+		{
+			"stat": "maxFood",
+			"effectiveMultiplier": 0.8
+		},
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 0.8
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.2
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.3
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "slimestickImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "slimefrictionImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "omnivore",
+	"controlModifiers": {
+		"speedModifier": 1.12
+	},
+	"envEffects": [{
+		"biomes": [
+			"forest",
+			"thickjungle",
+			"arboreal",
+			"arborealdark"
+		],
+		"stats": [{
+				"stat": "maxEnergy",
+				"effectiveMultiplier": 1.15
+			},
+			{
+				"stat": "protection",
+				"effectiveMultiplier": 1.1
+			}
+		],
+		"controlModifiers": {
+			"speedModifier": 1.18
+		}
+	}],
+	"weaponEffects": [{
+			"weapons": [
+				"bow"
+			],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.15
+				},
+				{
+					"stat": "maxEnergy",
+					"effectiveMultiplier": 1.15
+				}
+			]
+		},
+		{
+			"weapons": [
+				"rapier"
+			],
+			"stats": [{
+					"stat": "protection",
+					"amount": 1
+				},
+				{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.1
+				}
+			]
+		},
+		{
+			"combos": [
+				[
+					"rapier",
+					"dagger"
+				]
+			],
+			"stats": [{
+					"stat": "physicalResistance",
+					"amount": 0.05
+				},
+				{
+					"stat": "critChance",
+					"amount": 2
+				}
+			]
+		},
+		{
+			"weapons": [
+				"rapier",
+				"dagger",
+				"shortsword"
+			],
+			"stats": [{
+					"stat": "physicalResistance",
+					"amount": 0.15
+				},
+				{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.12
+				}
+			]
+		}
+	],
+	"weaponScripts": [{
+			"weapons": [
+				"rapier",
+				"dagger",
+				"shortsword"
+			],
+			"script": "/scripts/fr_weaponscripts/randprojectile.lua",
+			"contexts": [
+				"meleecombo-fire"
+			],
+			"args": {
+				"projectile": "meleelash",
+				"chance": 5,
+				"params": {
+					"power": 7,
+					"speed": 25,
+					"damageKind": "electric"
+				}
+			}
+		},
+		{
+			"script": "/scripts/fr_weaponscripts/freebonus.lua",
+			"contexts": [
+				"staff-init"
+			],
+			"args": {
+				"stats": [{
+						"stat": "powerMultiplier",
+						"effectiveMultiplier": 1.15
+					},
+					{
+						"stat": "maxEnergy",
+						"effectiveMultiplier": 1.15
+					}
+				]
+			}
+		}
+	]
+}

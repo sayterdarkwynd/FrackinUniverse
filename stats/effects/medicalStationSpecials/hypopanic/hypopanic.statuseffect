@@ -8,13 +8,15 @@
 	"icon" : "/interface/statuses/medicalStationSpecials/hypopanic.png",
 	
 	"defaultDuration" : 5,
-	"scripts" : [ "hypopanic.lua" ],
+	"scripts" : [ "hypopanic.lua","/stats/effects/fu_genericStatApplier.lua" ],
 	
 	"effectConfig" : {
-		"energyRegenMult" : 1.33,
-		"energyMax" : -50,
 		"maxSpeedBonus" : 1.67,
 		"energyPerDamage" : 1.5,		// Lose X energy per 1 point of damage
-		"energyPcntForMaxSpeed" : 0.35	// At X% energy, you'll get the maximum speed bonus
+		"energyPcntForMaxSpeed" : 0.35,	// At X% energy, you'll get the maximum speed bonus
+		"stats": [
+			{"stat": "maxEnergy","amount": -50},
+			{"stat": "energyRegenPercentageRate","effectiveMultiplier": 1.33}
+		]
 	}
 }

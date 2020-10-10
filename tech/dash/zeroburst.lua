@@ -44,7 +44,15 @@ function uninit()
 end
 
 
+function applyTechBonus()
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashYVel = config.getParameter("dashYVel") * self.dashBonus
+  self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
+end
+
 function update(args)
+  applyTechBonus()
 local superJumpTime = 0.01
 
   if self.dashCooldownTimer > 0 then

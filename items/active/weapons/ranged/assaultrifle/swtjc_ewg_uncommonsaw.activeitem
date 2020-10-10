@@ -3,9 +3,9 @@
   "price" : 1100,
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "A man-portable machine gun that's bigger and meaner, albeit far less accurate, than your average assault rifle.",
+  "description" : "A man-portable machine gun that's bigger and meaner, albeit far less accurate, than an assault rifle.",
   "shortdescription" : "Uncommon Squad Automatic Weapon",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_squadAutomaticWeapon",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
@@ -20,7 +20,7 @@
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    }    
+    }  
   },
   "baseOffset" : [-1.0, 0.25],
   "muzzleOffset" : [0.0, 0.3125],
@@ -31,8 +31,8 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [0.07, 0.14],
-    "baseDps" : [9, 10],
+    "fireTime" : [0.07, 0.12],
+    "baseDps" : [10, 12],
     "energyUsage" : [34.5, 37.5],
     "inaccuracy" : 0.08,
 
@@ -63,9 +63,9 @@
         "allowFlip" : false
       },
       "cooldown" : {
-        "duration" : 0.20,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
+        "duration" : 0.1,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -73,6 +73,15 @@
       }
     }
   },
+
+  "isAmmoBased": [0,1],
+  "magazineSize" : [24,60],
+  "reloadTime" : [1.5,2.5],
+  "isAssaultRifle" : 1, 
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 700, 
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -179,7 +188,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 3
+  }]
 }

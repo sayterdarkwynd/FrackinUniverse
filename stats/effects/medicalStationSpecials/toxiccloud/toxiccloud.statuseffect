@@ -4,7 +4,7 @@
 	"icon" : "/interface/statuses/medicalStationSpecials/toxiccloud.png",
 
 	"defaultDuration" : 5,
-	"scripts" : [ "toxiccloud.lua" ],
+	"scripts" : [ "toxiccloud.lua","/stats/effects/fu_genericStatApplier.lua" ],
 	
 	"effectConfig" : {
 		"cloudInterval" : 3,
@@ -12,7 +12,7 @@
 		"cloudDamageType" : "poison",
 		"selfDamage" : 5,
 		"selfDamageType" : "poison",
-		"foodConsumption" : 0.05,
-		"cloudDuration" : 5
+		"cloudDuration" : 5,
+		"stats": [{"stat": "foodDelta","baseMultiplier": 1.2}]
 	}
 }

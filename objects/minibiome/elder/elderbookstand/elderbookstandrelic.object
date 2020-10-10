@@ -1,17 +1,23 @@
 {
   "objectName" : "elderbookstandrelic",
-  "colonyTags" : ["madness","insanity","storage","elder"],
+  "colonyTags" : ["madness","insanity","elder"],
   "rarity" : "rare",
+  "category":"crafting",
 
   "interactAction" : "OpenCraftingInterface",
   "interactData" : {
     "config" : "/interface/windowconfig/tomedais.config",
-    "filter" : [ "tomedais","tomedais1","tomedais2" ]
+    "filter" : [ "tomedais","tomedais1","tomedais2" ],
+		"paneLayoutOverride": {
+			"windowtitle": {
+				"title": "Ancient Texts"
+			}
+		}
   },  
   
   "description" : "Seek answers for the present from the past.",
   "shortdescription" : "Ancient Texts",
-
+"printable" : false,
   "price" : 2120,
   "lightColor" : [16, 23, 26],
 
@@ -22,7 +28,7 @@
       "imageLayers" : [ { "image" : "elderbookstandrelic.png:<color>" } ],
       "flipImages" : true,
       "direction" : "left",
-      "lightPosition" : [-1, 1],
+      "lightPosition" : [0, 1.5],
 
       "imagePosition" : [-16, 0],
       "frames" : 1,
@@ -36,7 +42,7 @@
     
       "imageLayers" : [  { "image" : "elderbookstandrelic.png:<color>" } ],
       "direction" : "right",
-      "lightPosition" : [0, 1],
+      "lightPosition" : [0, 1.5],
 
       "imagePosition" : [-16, 0],
       "frames" : 1,

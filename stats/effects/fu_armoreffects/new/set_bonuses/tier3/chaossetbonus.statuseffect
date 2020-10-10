@@ -1,9 +1,11 @@
 {
   "name" : "chaossetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
-    "armorBonuses" : {},
+    "armorBonuses" : {
+        "daggerMastery" : { "amount" : 0.15 }
+      },
     "armorMovementModifiers" : {
       "speed" : 1.10
     },
@@ -24,8 +26,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/RegenSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "+3% Crit (Whips, Daggers, Boomerangs, Chakrams). +10% Speed, 0.5% Regen",
-  "icon" : "/interface/statuses/set_dagger.png"
+  "scriptDelta": 5
 }

@@ -4,14 +4,14 @@
   "inventoryIcon" : "fuvaporizer.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Negative energy eradicates all solid matter
+  "description" : "Negative energy eradicates all solid matter.
 ^yellow;Extreme fire speed^reset;
 ^green;Paralyzing alt-Fire^reset;",
   "shortdescription" : "Precursor Vaporizer",
-  "category" : "precursor",
+  "category" : "assaultRifle",
   "level" : 5,
   "tooltipKind" : "gun2",
-  "learnBlueprintsOnPickup" : [ "fuvaporizer" ],   
+//  "learnBlueprintsOnPickup" : [ "fuvaporizer" ],   
   "weaponType" : "Energy",
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "precursor", "upgradeableWeapon"],
   "twoHanded" : true,
@@ -123,13 +123,13 @@
     "baseDps" : 5,
     "inaccuracy" : 0.3,
     "projectileParameters" : {
-      "damageSourceKind" : "radioactive",
+      "damageKind" : "radioactive",
       "speed" : 5,
       "piercing" : true,
       "timeToLive" : 1,
       "knockback" : 10,
       "bounces" : 1,
-      "statusEffects":[{"effect":"paralysis", "duration":2.0}], 
+      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}], 
 	"actionOnReap":[
 	    {
 	      "action" : "sound",
@@ -152,7 +152,7 @@
 		      "knockback" : 10,
 		      "bounces" : 1,
 		      "processing":"?hueshift=-165",
-		      "statusEffects":[{"effect":"paralysis", "duration":2.0}],
+		      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}],
 		      "actionOnReap" : [
 			    {
 			      "action" : "sound",
@@ -175,7 +175,7 @@
 				      "knockback" : 10,
 				      "bounces" : 1,
 				      "processing":"?hueshift=-165",
-				      "statusEffects":[{"effect":"paralysis", "duration":2.0}],
+				      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}],
 				      "actionOnReap" : [
 					    {
 					      "action" : "sound",
@@ -198,7 +198,7 @@
 						      "knockback" : 10,
 						      "bounces" : 1,
 						      "processing":"?hueshift=-165",
-						      "statusEffects":[{"effect":"paralysis", "duration":2.0}],
+						      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}],
 						      "actionOnReap" : [
 							    {
 							      "action" : "sound",
@@ -221,7 +221,7 @@
 								      "knockback" : 10,
 								      "bounces" : 5,
 								      "processing":"?hueshift=-165",
-								      "statusEffects":[{"effect":"paralysis", "duration":2.0}],	
+								      "statusEffects":[{"effect":"fuparalysis", "duration":2.0}],	
 								      "actionOnReap" : [
 									    {
 									      "action" : "sound",

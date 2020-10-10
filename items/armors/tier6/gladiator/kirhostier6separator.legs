@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Legendary",
    "description" : "^orange;Set Bonuses^reset;: 
-Thorns when hit
-^#a94db3;25%^reset; Phys Resistance,
-Fist:^cyan;+20%^reset; Damage, ^cyan;+20%^reset; Knockback
-\n^cyan;Immune^reset;:Sandstorms, Liq. Nitrogen", 
+^yellow;^reset; ^cyan;Thorns^reset;
+^yellow;^reset; Fist: Damage x^green;1.2^reset;, +^green;20^reset;% Knockback
+^yellow;^reset; ^cyan;Immune^reset;: Sandstorms, Liq. Nitrogen, Proto-Poison", 
   "shortdescription" : "Gladiator Greaves",
-  "category" : "t6armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
@@ -38,6 +37,11 @@ Fist:^cyan;+20%^reset; Damage, ^cyan;+20%^reset; Knockback
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -79,5 +83,7 @@ Fist:^cyan;+20%^reset; Damage, ^cyan;+20%^reset; Knockback
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

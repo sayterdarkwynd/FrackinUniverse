@@ -12,8 +12,7 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_mageshield.lua"
+      "/monsters/monster.lua"
     ],
 
     "behavior" : "monster",
@@ -105,7 +104,7 @@
             "windupTime" : 0.6,
 
             "projectileType" : "elderblast1",
-            "projectileParameters" : { "damageType" : "cosmic" },
+            "projectileParameters" : { "damageKind" : "bioweapon" },
             "power" : 8,
             "speed": 50,
             "fireOffset" : [1.75, -2],
@@ -153,7 +152,7 @@
             "windupTime" : 0.7,
 
             "projectileType" : "poisonblast",
-            "projectileParameters" : { "damageType" : "poison" },
+            "projectileParameters" : { "damageKind" : "bioweapon" },
             "power" : 12,
             "fireOffset" : [1.75, -2],
             "aimAtTarget" : true,
@@ -357,8 +356,8 @@
       },
 
       "resources" : {
-        "damageAbsorbtion" : {
-          "deltaValue" : -1.0,
+        "damageAbsorption" : {
+          "deltaValue" : 0.0,
           "initialValue" : 0.0
         },      
         "stunned" : {

@@ -1,0 +1,30 @@
+{
+  "projectileName" : "telebriumbouncer2",
+  "physics" : "laser",
+  "timeToLive" : 5,
+  "image" : "telebriumbouncer.png",
+  "animationCycle" : 0.3,
+  "lightColor" : [80, 110, 30],
+  "frameNumber" : 4,
+
+  "speed" : 45,
+  "power" : 1,
+  "piercing" : false,
+  "damageKind" : "poison",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+
+  "fullbright" : true,
+  "emitters" : [ "poisonplasma" ],
+
+  "bounces" : 0,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua", "/projectiles/activeitems/staff/elementbouncer/bouncespikes.lua" ],
+
+  "spikeProjectile" : "poisonstickyspikes",
+  "spikeDamageFactor" : 0.1,
+
+  "controlMovement" : {
+    "maxSpeed" : 45,
+    "controlForce" : 5
+  }
+}

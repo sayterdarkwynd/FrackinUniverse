@@ -5,14 +5,15 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "^orange;Set Bonuses^reset;:
-Rifle/Sniper Rifle^cyan;+15%^reset; Dmg, ^green;+2%^reset; Crit Chance (), ^green;+10%^reset; Speed
-^cyan;+18%^reset; Radioactive Resist, 
-^cyan;Immune^reset;: Radiation, Rad Burn, Slowing Terrain",
+  "description" : "^cyan;Immune^reset; to most terrain effects.
+^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;10^reset;% Speed
+^yellow;^reset; Assault/Sniper Rifle: Damage x^cyan;1.15^reset;, +^green;2^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Radiation, Rad Burn",
 "shortdescription" : "Elite Recon Legs",
-  "category" : "t3armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "fureconhead3", "fureconchest3", "fureconpants3" ],
+ // "learnBlueprintsOnPickup" : [ "fureconhead3", "fureconchest3", "fureconpants3" ],
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
@@ -39,6 +40,11 @@ Rifle/Sniper Rifle^cyan;+15%^reset; Dmg, ^green;+2%^reset; Crit Chance (), ^gree
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.03
     }
   ],
 
@@ -48,10 +54,6 @@ Rifle/Sniper Rifle^cyan;+15%^reset; Dmg, ^green;+2%^reset; Crit Chance (), ^gree
     {
       "stat" : "recon2setcount",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.06
     }
   ],
 
@@ -93,5 +95,7 @@ Rifle/Sniper Rifle^cyan;+15%^reset; Dmg, ^green;+2%^reset; Crit Chance (), ^gree
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

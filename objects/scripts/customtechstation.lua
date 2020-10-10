@@ -1,6 +1,10 @@
 local CSAILoldInit = init
 
 function init()
+	if world.type() ~= "unknown" and config.getParameter("uniqueId") then
+		object.smash()
+	end
+
 	if CSAILoldInit then CSAILoldInit() end
 	object.setConfigParameter("retainScriptStorageInItem", true)
 	self.fallback = false

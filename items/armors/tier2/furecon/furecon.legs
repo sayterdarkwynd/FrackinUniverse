@@ -5,23 +5,23 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+4%^reset; Radioactive Resist
-^orange;Set Bonuses:^reset;
-^green;+5%^reset; Speed
-Rifle/Sniper Rifle: ^cyan;+15%^reset; Dmg
-^cyan;Immune^reset;: Rad Burn^reset;",
+  "description" : "^orange;^orange;Set Bonuses^reset;: ^reset;
+^yellow;^reset; +^green;5^reset;% Speed
+^yellow;^reset; Assault/Sniper Rifle: Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Rad Burn^reset;",
 
   "shortdescription" : "Recon Leggings",
-  "category" : "t2armoru",
-  "tooltipKind" : "armor",
-  "learnBlueprintsOnPickup" : [
-    "fureconhead2",
-    "fureconchest2",
-    "fureconpants2"
-  ],
+  "category" : "legarmour",
+  "tooltipKind" : "armornew2",
+//  "learnBlueprintsOnPickup" : [
+//    "fureconhead2",
+//    "fureconchest2",
+//    "fureconpants2"
+//  ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
+  "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
   "collectablesOnPickup" : { "fu_armorranged" : "fureconpants" },
   "leveledStatusEffects" : [
@@ -44,6 +44,11 @@ Rifle/Sniper Rifle: ^cyan;+15%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.026667
     }
   ],
 
@@ -52,10 +57,6 @@ Rifle/Sniper Rifle: ^cyan;+15%^reset; Dmg
     {
       "stat" : "reconsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.04
     }
   ],
 
@@ -72,5 +73,7 @@ Rifle/Sniper Rifle: ^cyan;+15%^reset; Dmg
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

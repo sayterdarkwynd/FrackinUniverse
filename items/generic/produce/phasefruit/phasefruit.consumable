@@ -1,29 +1,28 @@
 {
-  "itemName" : "phasefruit",
-  "rarity" : "Uncommon",
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "inventoryIcon" : "phasefruit.png",
-  "description" : "Have it just melted my teeth?!",
-  "shortdescription" : "Phasefruit",
-  "price" : 40,
-  "foodValue" : 10,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 5,
-  "effects" : [ [
-    {
-        "effect" : "runboostfood",
-        "duration" : 40
-    },
-    {
-        "effect" : "burning",
-        "duration" : 10
-    }
-  ] ],
-  "blockingEffects" : [
-    "wellfed"
-  ]
+	"itemName": "phasefruit",
+	"inventoryIcon": "phasefruit.png",
+	"category": "food",
+	"rarity": "Uncommon",
+	"price": 40,
+	"foodValue": 40,
+
+	"tooltipKind": "food",
+	"description": "Has it just melted my teeth?!\n^yellow;^reset;^cyan;+20% Run^reset;: 40s\n^yellow;^reset;^red;Burning^reset;: 10s",
+	"shortdescription": "Phasefruit",
+
+	"builder": "/items/buildscripts/buildfood.lua",
+	"effects": [
+		[{
+				"effect": "runboostfood",
+				"duration": 40
+			},
+			{
+				"effect": "burning",
+				"duration": 10
+			}
+		]
+	],
+	"blockingEffects": [
+		"wellfed"
+	]
 }

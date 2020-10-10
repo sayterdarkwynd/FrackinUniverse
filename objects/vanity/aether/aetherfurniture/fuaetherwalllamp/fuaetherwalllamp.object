@@ -14,12 +14,31 @@
   "orientations" : [
     {
       "image" : "fuaetherwalllamp.png:<color>.<frame>",
-      "imagePosition" : [-0, 0],
-      "animationPosition" : [0, 0],
+      "imagePosition" : [-2, -2],
+
+      "direction" : "left",
+      "flipImages" : true,
+
+      "animationParts" : {
+        "bg" : "fuaetherwalllamp.png",
+        "fg" : "fuaetherwalllamplit.png"
+      },
+      "animationPosition" : [-2, -2],
+
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "fuaetherwalllamp.png:<color>.<frame>",
+      "imagePosition" : [-2, -2],
 
       "direction" : "right",
 
-      "spaceScan" : 0.1,
+      "animationParts" : {
+        "bg" : "fuaetherwalllamp.png",
+        "fg" : "fuaetherwalllamplit.png"
+      },
+      "animationPosition" : [-2, -2],
+
       "anchors" : [ "background" ]
     }
   ],

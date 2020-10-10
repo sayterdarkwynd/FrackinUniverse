@@ -4,11 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "^orange;Set Bonuses^reset;:
-^cyan;+20%^reset; Electric Resist
-Energy Weapon: ^cyan;+15%^reset; Damage and ^cyan;+15%^reset; Crit Dmg",
+  "description" : "^cyan;Immune^reset;: Mud Slow
+^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;2^reset;% Crit Chance
+^yellow;^reset; Energy: Damage x^green;1.15^reset; and +^green;15^reset;% Crit Damage",
 "shortdescription" : "Wanderer Pants",
-  "category" : "t3armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -36,6 +37,11 @@ Energy Weapon: ^cyan;+15%^reset; Damage and ^cyan;+15%^reset; Crit Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.025
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -45,10 +51,6 @@ Energy Weapon: ^cyan;+15%^reset; Damage and ^cyan;+15%^reset; Crit Dmg",
     {
       "stat" : "wanderersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -78,5 +80,7 @@ Energy Weapon: ^cyan;+15%^reset; Damage and ^cyan;+15%^reset; Crit Dmg",
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

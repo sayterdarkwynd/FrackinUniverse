@@ -6,7 +6,7 @@ function init()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.active=false
   self.available = true
-  self.species = world.entitySpecies(entity.id())
+  --self.species = world.entitySpecies(entity.id())
   self.firetimer = 0
   checkFood()
 end
@@ -27,13 +27,12 @@ function damageConfig()
   foodVal = self.foodValue /20
   energyVal = status.resource("energy")/50
   defenseVal =  status.stat("protection") /120
-  totalVal = foodVal + energyVal + defenseVal
+  totalVal = (foodVal + energyVal + defenseVal) * self.bonusDamage -- add tech bonus damage from armor etc with self.bonusDamage
 end
 
 function activeFlight()
     damageConfig()
     local damageConfig = { power = totalVal, damageSourceKind = "fire" }
-    --sb.logInfo("power value from food, energy and protection = "..damageConfig.power)
     animator.playSound("activate",3)
     animator.playSound("recharge")
     animator.setSoundVolume("activate", 0.5,0)
@@ -48,7 +47,12 @@ function aimVector()
 end
 
 
+function applyTechBonus()
+  self.bonusDamage = 1 + status.stat("bombtechBonus") -- apply bonus from certain items and armor
+end
+
 function update(args)
+  applyTechBonus()
         checkFood()
         
         if mcontroller.facingDirection() == 1 then -- what direction are we facing?

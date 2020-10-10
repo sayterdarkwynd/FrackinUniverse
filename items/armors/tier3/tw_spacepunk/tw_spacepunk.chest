@@ -4,12 +4,12 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "category" : "t3armor",
+  "category" : "chestarmour",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+2900%^reset; Oxygen Supply
-^green;+20%^reset; Fire/Ice/Poison/Radiation/Electric Resistance",
+^yellow;^reset; Oxygen x^green;30^reset;",
   "shortdescription" : "Spacepunk Duster",
   "tooltipKind" : "armornew2",
+  "itemTags":["upgradeableWeapon"],
 
   "maleFrames" : {
     "body" : "chestm.png",
@@ -43,6 +43,31 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.035
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.035
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.035
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.035
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.035
     }
   ],
 
@@ -51,26 +76,6 @@
     {
       "stat" : "tw_spacesuit2setcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -99,5 +104,7 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

@@ -1,14 +1,25 @@
 {
-  "itemName" : "fletchweedstem",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "fletchweedstem.png",
-  "description" : "Effect:
-^cyan;+145 Max Energy^reset;",
-  "shortdescription" : "Fletchweed Stem",
-  "category" : "food",
+	"itemName": "fletchweedstem",
+	"inventoryIcon": "fletchweedstem.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-      "effects" : [ [
-      "maxenergyboost145"
-    ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+145 EP^reset;: 1m",
+	"shortdescription": "Fletchweed Stem",
+	"effects": [
+		[{
+			"effect": "maxenergyboost145",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"maxenergyboost1",
+		"maxenergyboost2",
+		"maxenergyboost3",
+		"maxenergyboost4",
+		"maxenergyboost5",
+		"maxenergyboost6"
+	]
 }

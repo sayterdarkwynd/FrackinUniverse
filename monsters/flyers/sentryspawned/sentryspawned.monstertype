@@ -13,8 +13,15 @@
 	"dropPools": [],
 
 	"baseParameters": {
-		"scripts": ["/monsters/monster.lua"],
-
+		"scripts": [
+			"/monsters/monster.lua",
+			"/monsters/fu_bossExtraResistsHandler.lua",
+			"/monsters/fu_monsterPercentRegen.lua"
+		],
+		"bossExtraResistsValue": 100,
+		"bossExtraResistsOverride": true,
+		"fuMonsterRegenPercent":-30,
+		"fuMonsterRegenUseSeconds":true,
 		"persistent": false,
 
 		"behavior": "monster",
@@ -52,7 +59,8 @@
 					"projectileCount": 1,
 					"projectileInterval": 0.01,
 					"projectileParameters": {
-						"speed": 60
+						"speed": 60,
+						"statusEffects":["detectmonster"]
 					},
 					"power": 10,
 					"fireOffset": [0, 0],
@@ -100,7 +108,7 @@
 					"name": "wander-fly",
 					"parameters": {
 						"wanderTime": [2, 4],
-						"groundDistance": 12,
+						"groundDistance": 6,
 						"ceilingDistance": 2,
 						"xVelocity": 12,
 						"yVelocity": 12
@@ -209,57 +217,12 @@
 					"baseValue": 0.0
 				},
 				"healthRegen": {
-					"baseValue": -1.0
+					"baseValue": 0.0
 				},
 				"powerMultiplier": {
 					"baseValue": 1.2
 				},
 				"healingStatusImmunity": {
-					"baseValue": 1
-				},
-				"electricResistance": {
-					"baseValue": 100.0
-				},
-				"fireResistance": {
-					"baseValue": 100.0
-				},
-				"fireStatusImmunity": {
-					"baseValue": 1
-				},
-				"iceResistance": {
-					"baseValue": 100.0
-				},
-				"iceStatusImmunity": {
-					"baseValue": 1
-				},
-				"poisonResistance": {
-					"baseValue": 100.0
-				},
-				"poisonStatusImmunity": {
-					"baseValue": 1
-				},
-				"physicalResistance": {
-					"baseValue": 100.0
-				},
-				"cosmicResistance": {
-					"baseValue": 100.0
-				},
-				"radioactiveResistance": {
-					"baseValue": 100.0
-				},
-				"shadowResistance": {
-					"baseValue": 100.0
-				},
-				"extremepressureImmunity": {
-					"baseValue": 1
-				},
-				"shadowImmunity": {
-					"baseValue": 1
-				},
-				"insanityImmunity": {
-					"baseValue": 1
-				},
-				"darknessImmunity": {
 					"baseValue": 1
 				}
 			},

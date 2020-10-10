@@ -8,7 +8,7 @@
   "shortdescription" : "^cyan;Solar Panel^reset;",
   "race" : "generic",
   "printable" : false,
-  "learnBlueprintsOnPickup" : [ "fu_solararray", "isn_thermalgenerator", "isn_powdersifter", "fu_conduit" ],
+//  "learnBlueprintsOnPickup" : [ "fu_solararray", "isn_thermalgenerator", "isn_powdersifter", "fu_conduit" ],
   "apexDescription" : "The MiniKnog tends not to care about renewable energy. There are all manner of theories as to why.",
   "avianDescription" : "Just one of the many uses of the sun.",
   "floranDescription" : "Machine get power from sssun like plant. Floran like it.",
@@ -33,12 +33,12 @@
   },
   "animationPosition" : [0, 0],
   
-  "scripts" : [ "/scripts/power.lua","/objects/power/isn_solarpanel.lua" ],
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/isn_solarpanel.lua" ],
   "scriptDelta" : 60,
   
   "outputNodes" : [ [2, 1] ],
   
   "isn_powerSupplier" : true,
   "powertype" : "output",
-  "powerLevel" : 1
+  "powerLevel" : 1.0
 }

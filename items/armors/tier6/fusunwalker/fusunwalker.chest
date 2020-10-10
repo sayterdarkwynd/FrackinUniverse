@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;40%^reset; Radiation Resist
-Plasma: ^cyan;+15%^reset; Dmg
-^cyan;Immune^reset;: Radiation, Heat, Cold, Pressure, Breath", 
+^yellow;^reset; Plasma Weapons: Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Deadly Rads/Heat/Cold, Pressure, Oxygen", 
   "shortdescription" : "Sunwalker Chest",
-  "category" : "t6armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -31,7 +30,7 @@ Plasma: ^cyan;+15%^reset; Dmg
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.20
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
@@ -46,7 +45,12 @@ Plasma: ^cyan;+15%^reset; Dmg
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 6
+      "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.057143
     }
   ],
 
@@ -55,10 +59,6 @@ Plasma: ^cyan;+15%^reset; Dmg
     {
       "stat" : "fu_sunwalkerset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.20
     }
   ],
   
@@ -98,5 +98,7 @@ Plasma: ^cyan;+15%^reset; Dmg
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

@@ -6,12 +6,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+35%^reset; Poison/Radiation Resist, ^cyan;+20%^reset; Damage, 
-Slime weapons: ^cyan;+6%^reset; Crit
-^green;Spawns minions^reset;
-^cyan;Immune ^reset;: Poison, Bioooze, Mud, Slime, Mud and Clay", 
+^yellow;^reset; ^cyan;Spawns Minions^reset;: Magma Slime
+^yellow;^reset; Slime weapons: +^green;6^reset;% Crit, Damage x^green;1.2^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Bio-Ooze, Slime, Mud, Clay, Snow, Ice Slip", 
   "shortdescription" : "Red Slime Chest",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -48,23 +47,26 @@ Slime weapons: ^cyan;+6%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.043334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.043334
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset3_chest",
+      "amount" : 1
     }
   ],
 
   "statusEffects" : [
-    "slimesetbonus3",
-    {
-      "stat" : "fu_slimeset3_chest",
-      "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.13
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.13
-    }
+    "slimesetbonus3"
   ],
 
 
@@ -81,5 +83,7 @@ Slime weapons: ^cyan;+6%^reset; Crit
     { "ffca8a" : "fc72f8", "e0975c" : "a239a3", "a85636" : "681f6f", "6f2919" : "35103b" },
     { "ffca8a" : "bb8b4d", "e0975c" : "75522d", "a85636" : "463319", "6f2919" : "1c140a" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

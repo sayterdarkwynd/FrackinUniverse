@@ -1,12 +1,19 @@
 [
-{
-  "op": "add",
-  "path": "/surfacePlaceables",
-  "value": {
-    "grassMod" : [ "sand" ],
-    "grassModDensity" : 0.0,
+	[
+		{
+			"op": "test",
+			"path": "/surfacePlaceables",
+			"inverse": true
+		},
+		{
+			"op": "add",
+			"path": "/surfacePlaceables",
+			"value": {
+				"grassMod": ["sand"],
+				"grassModDensity": 0.0,
 
-    "items" : []
-  }
-}
+				"items": []
+			}
+		}
+	]
 ]

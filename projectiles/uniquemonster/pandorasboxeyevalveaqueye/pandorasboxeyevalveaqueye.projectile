@@ -1,0 +1,53 @@
+{
+  "projectileName" : "pandorasboxeyevalveaqueye",
+  "image" : "pandorasboxeyevalveaqueye.png",
+  "physics" : "largeGrenade",
+  "animationCycle" : 2,
+  "frameNumber" : 1,
+  "renderLayer" : "Object+1",
+  "power" : 0,
+  "speed" : 20,
+  "piercing" : true,
+  "initialVelocity" : 20,
+  "timeToLive" : 200,
+  "bounces" : 7,
+  "flippable" : true,
+  "orientationLocked" : false,
+
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/blocks/footstep_mud.ogg" ]
+    }
+  ],
+
+  "actionOnReap" : [
+      {
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+              "type" : "ember",
+              "size" : 1,
+              "color" : [226, 68, 68, 255],
+              "fade" : 0.9,
+              "initialVelocity" : [13, 8.0],
+              "finalVelocity" : [16, -19.0],
+              "approach" : [20,   30],
+              "timeToLive" : 0.9,
+              "layer" : "front",
+              "variance" : {
+                "initialVelocity" : [13, 3],
+                "timeToLive" : 1,
+                "size" : 0.2
+              }
+          }
+        }
+      ]
+    }
+  ],
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

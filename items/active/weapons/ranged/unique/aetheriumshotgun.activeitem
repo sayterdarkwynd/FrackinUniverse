@@ -11,13 +11,15 @@
   "level" : 7,
   "tooltipKind" : "gun2aetherium",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","shotgun","energy","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","shotgun","energy","upgradeableWeapon","aetherium","cosmic"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
+    "butt" : "",
     "middle" : "aetheriumblaster.png",
     "middlefullbright" : "aetheriumblasterfullbright.png",
+    "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
   },
   "animationCustom" : {
@@ -50,7 +52,7 @@
       }
     },     
     "sounds" : {
-      "fire" : [ "/sfx/weapons/hailstrike.ogg" ]
+      "fire" : [ "/sfx/weapons/arconpew.ogg" ]
     }
   },
 
@@ -59,7 +61,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "aether",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfirefixed.lua"],
@@ -72,7 +74,7 @@
     "fireType" : "auto",
     "inaccuracy" : 0.09,
 
-    "projectileCount" : 9,
+    "projectileCount" : 4,
     "projectileType" : "aetherbullet",
     "projectileParameters" : { 
       "speed" : 80,

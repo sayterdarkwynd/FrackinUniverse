@@ -31,7 +31,7 @@
   "muzzleOffset" : [1.645, 0.125],
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -47,7 +47,8 @@
     "projectileType" : "floatyshroom",
     "projectileParameters" : { 
       "speed" : 50,
-      "knockback" : 4
+      "knockback" : 4,
+      "statusEffects" : [ "weakpoison" ]
     },
   "stances" : {
     "idle" : {
@@ -91,7 +92,10 @@
 
   "critChance" : 6,
   "critBonus" : 2,
-
+  "isAmmoBased" : 1,
+  "magazineSize" : 24,
+  "reloadTime" : 1.4, 
+  
   "altAbilityType" : "mushroomgrenadelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

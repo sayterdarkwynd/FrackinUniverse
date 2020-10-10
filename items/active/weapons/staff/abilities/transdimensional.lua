@@ -90,34 +90,46 @@ function Controlledteleport:discharge()
   self.weapon:setStance(self.stances.discharge)
 
   activeItem.setCursor("/cursors/reticle0.cursor")
-  local finalLocation=self:targetValid(mcontroller.collisionPoly(),activeItem.ownerAimPosition());
-  if finalLocation and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
-    animator.playSound(self.elementalType.."activate")
-    self:blink(finalLocation)
+  local wType=world.type()
+  local permittedWorld =
+  (status.statPositive("admin") or player.isAdmin())
+	or ((world.terrestrial() or wType == "asteroids" or wType == "outpost" or wType == "unknown" or wType == "playerstation") and world.dayLength() ~= 100000)
+	or (wType=="scienceoutpost" and player.hasCountOfItem("sciencebrochure2")>0)
+  local lineOfSightActive = not world.lineTileCollision(activeItem.ownerAimPosition(), mcontroller.position())  
+  
+  if (permittedWorld) then --and lineOfSightActive) then --make sure they can see destination so they cant cheat
+	  local finalLocation=self:targetValid(mcontroller.collisionPoly(),activeItem.ownerAimPosition());
+	  if finalLocation and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
+	    animator.playSound(self.elementalType.."activate")
+	    self:blink(finalLocation)
+	  else
+	    animator.playSound(self.elementalType.."discharge")
+	    self:setState(self.cooldown)
+	    return
+	  end
+
+	  util.wait(self.stances.discharge.duration, function(dt)
+	    status.setResourcePercentage("energyRegenBlock", 1.0)
+	  end)
+
+	  while #storage.projectiles > 0 do
+	    if self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.lastFireMode ~= self.fireMode then
+	      --self:killProjectiles()
+	    end
+	    self.lastFireMode = self.fireMode
+
+	    status.setResourcePercentage("energyRegenBlock", 1.0)
+	    coroutine.yield()
+	  end
+
+	  animator.playSound(self.elementalType.."discharge")
+	  animator.stopAllSounds(self.elementalType.."chargedloop")
+
+	  self:setState(self.cooldown)
   else
     animator.playSound(self.elementalType.."discharge")
-    self:setState(self.cooldown)
-    return
+    animator.stopAllSounds(self.elementalType.."chargedloop")
   end
-
-  util.wait(self.stances.discharge.duration, function(dt)
-    status.setResourcePercentage("energyRegenBlock", 1.0)
-  end)
-
-  while #storage.projectiles > 0 do
-    if self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.lastFireMode ~= self.fireMode then
-      --self:killProjectiles()
-    end
-    self.lastFireMode = self.fireMode
-
-    status.setResourcePercentage("energyRegenBlock", 1.0)
-    coroutine.yield()
-  end
-
-  animator.playSound(self.elementalType.."discharge")
-  animator.stopAllSounds(self.elementalType.."chargedloop")
-
-  self:setState(self.cooldown)
 end
 
 function Controlledteleport:cooldown()
@@ -135,22 +147,23 @@ end
 
 function Controlledteleport:targetValid(collidePoly,aimPos)
   local resolvedPoint = world.resolvePolyCollision(collidePoly, aimPos, config.getParameter("teleportTolerance"))
+  
   if not resolvedPoint then
     return false
   end
   local focusPos = self:focusPosition()
   
   if(world.magnitude(focusPos, aimPos) <= self.maxCastRange) then
-    return resolvedPoint;
+    return resolvedPoint
   end
 end
 
 
 function Controlledteleport:blink(altTarget)
-  local aimPosition = altTarget;
+  local aimPosition = altTarget
   --aimPosition=self:teleportPosition(mcontroller.collisionPoly(),activeItem.ownerAimPosition());
   if aimPosition then
-    mcontroller.setPosition(aimPosition);
+    mcontroller.setPosition(aimPosition)
   end
 end
 

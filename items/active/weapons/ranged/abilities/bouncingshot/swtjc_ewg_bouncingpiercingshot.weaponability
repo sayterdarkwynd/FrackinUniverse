@@ -30,6 +30,7 @@
 
     "projectileType" : "standardbullet",
     "projectileParameters" : {
+	  "damageKind":"<elementalType>",
       "piercing" : true,
       "bounces" : 3,
       "speed" : 100,
@@ -55,14 +56,18 @@
       ]
     },
     "elementalConfig" : {
-      "physical" : { "projectileParameters" : { } },
+      "physical" : {"projectileParameters" : { "damageKind" : "default" }},
+      "silverweapon" : {},
       "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
       "electric" : { "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
       "ice" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+      "hoarfrost" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
       "poison" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+      "bioweapon" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
       "radioactive" : { "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
       "shadow" : { "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
-      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } }      
+      "aether" : { "projectileParameters" : { "statusEffects" : [ "timeslip" ] } },
+      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "timeslip" ] } }
     },
 
     // use baseDps and fireTime from primary fire

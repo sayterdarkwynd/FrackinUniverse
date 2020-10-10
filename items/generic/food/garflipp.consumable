@@ -4,14 +4,14 @@
   "price" : 350,
   "category" : "preparedFood",
   "inventoryIcon" : "garflipp.png",
-  "description" : "A brain-eating leech native to the Vorta sector. Can restore damaged brainwaves.",
+  "description" : "A brain leech primarily found on Nitrogen seas.\n^cyan;+^white;2% ^cyan;HP ^gray;(^white;1m^gray;)\n^cyan;-^white;20% ^cyan;Risk of Madness Effects",
   "shortdescription" : "Garflipp",
   "effects" : [ [
     "madnessloss",
     {
-        "effect" : "maxhealthscalingboostfood",
-        "duration" : 60,
-	"healthModifier" : 1.02
+      "effect" : "maxhealthscalingboostfood",
+      "duration" : 60,
+      "healthModifier" : 1.02
     }
   ] ],
   "foodValue" : 6,
@@ -19,7 +19,7 @@
   "builder" : "/items/buildscripts/buildfood.lua",
   "maxStack" : 1000,
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 0.5,
+  "rottingMultiplier" : 2,
   "blockingEffects" : [
     "wellfed","maxhealthscalingboostfood"
   ]

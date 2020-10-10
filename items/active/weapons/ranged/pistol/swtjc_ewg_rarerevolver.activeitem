@@ -5,7 +5,7 @@
   "rarity" : "Rare",
   "description" : "A small handgun with a powerful punch.",
   "shortdescription" : "Rare High-Caliber Pistol",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_revolver",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","pistol","upgradeableWeapon"],
@@ -24,7 +24,7 @@
     "class" : "GunFire",
 
     "fireTime" : [0.7, 2.0],
-    "baseDps" : [5.25, 5.65],
+    "baseDps" : [5.0, 5.65],
     "energyUsage" : [19.5, 22.5],
     "inaccuracy" : 0.024,
 
@@ -62,6 +62,17 @@
       }
     }
   },
+
+  "critChance" : 1,
+  "critBonus" : 6,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [6,10],
+  "reloadTime" : [1.0,1.8],
+  "isPistol" : 1,
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300, 
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -127,7 +138,5 @@
     "altAbilities" : [ ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 4,
-  "critBonus" : 6
+  }]
 }

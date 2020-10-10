@@ -178,6 +178,7 @@
     [1, {
       "pool" : [
         {"weight" : 0.001, "pool" : "artifactloot" },
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 1.0, "item" : ["snowball", 10]},
@@ -252,7 +253,8 @@
     [1, {
       "pool" : [
         {"weight" : 0.8, "pool" : "fuBasicMaterials"},
-        {"weight" : 0.05, "pool" : "fuspecialLoot"},
+        {"weight" : 0.04, "pool" : "fuspecialLoot"},
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.1, "pool" : "fuGenes"},
         {"weight" : 0.20, "item" : "uncathat"},
         {"weight" : 0.20, "item" : "kittyhead"}
@@ -279,13 +281,41 @@
         {"weight" : 0.20, "pool" : "money"},
         {"weight" : 0.3, "item" : "medkit"},
         {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.1, "pool" : "weapon"},
         {"weight" : 0.1, "pool" : "food"},
         {"weight" : 0.05, "pool" : "seed"},
         {"weight" : 0.04, "pool" : "tool"},
         {"weight" : 0.04, "pool" : "shield"},
         {"weight" : 0.012, "pool" : "instrument"},
         {"weight" : 0.005, "pool" : "costume"},
+        {"weight" : 0.003, "item" : "teleportercore"},
+        {"weight" : 0.025, "item" : "torch" }
+      ],
+      "poolRounds" : [
+        [0.23, 1],
+        [0.33, 2],
+        [0.33, 3],
+        [0.33, 4],
+        [0.23, 5]
+      ],
+      "allowDuplication" : true
+    }],
+    [2.9, {
+      "pool" : [
+        {"weight" : 0.03, "pool" : "augments"},
+        {"weight" : 0.03, "pool" : "petcollars2"},
+        {"weight" : 0.8, "pool" : "fuBasicMaterials"},
+        {"weight" : 0.05, "pool" : "fuspecialLoot"},
+        {"weight" : 0.1, "pool" : "fuGenes"},
+        {"weight" : 0.20, "pool" : "money"},
+        {"weight" : 0.3, "item" : "medkit"},
+        {"weight" : 0.15, "pool" : "ore"},
+        {"weight" : 0.1, "pool" : "food"},
+        {"weight" : 0.05, "pool" : "seed"},
+        {"weight" : 0.04, "pool" : "tool"},
+        {"weight" : 0.04, "pool" : "shield"},
+        {"weight" : 0.012, "pool" : "instrument"},
+        {"weight" : 0.005, "pool" : "costume"},
+        {"weight" : 0.0005, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.003, "item" : "teleportercore"},
         {"weight" : 0.025, "item" : "torch" }
       ],
@@ -304,6 +334,7 @@
     [1, {
         "pool" : [
           {"weight" : 0.001, "pool" : "artifactloot" },
+          {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
           {"weight" : 0.03, "pool" : "augments"},
           {"weight" : 0.03, "pool" : "petcollars2"},
           {"weight" : 0.40, "pool" : "money"},
@@ -342,7 +373,6 @@
 		  {"weight" : 0.05, "item" : ["orphanpaste", 2]},		  
           {"weight" : 0.3, "item" : "medkit"},
           {"weight" : 0.15, "pool" : "ore"},
-          {"weight" : 0.05, "pool" : "weapon"},
           {"weight" : 0.1, "pool" : "food"},
           {"weight" : 0.05, "pool" : "seed"},
           {"weight" : 0.04, "pool" : "tool"},
@@ -396,6 +426,10 @@
   "ffwastelandChest" : [
     [1, {
         "pool" : [
+        {"weight" : 0.001, "item" : "scienceoutpostbanner1" },
+        {"weight" : 0.001, "item" : "scienceoutpostbanner2" },
+        {"weight" : 0.001, "item" : "scienceoutpostbanner4" },
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
           {"weight" : 0.001, "pool" : "artifactloot" },
           {"weight" : 0.03, "pool" : "augments"},
           {"weight" : 0.03, "pool" : "petcollars2"},
@@ -405,7 +439,6 @@
           {"weight" : 0.1, "item" : "thornjuice"},
           {"weight" : 0.3, "item" : "medkit"},
           {"weight" : 0.15, "pool" : "ore"},
-          {"weight" : 0.1, "pool" : "weapon"},
           {"weight" : 0.1, "pool" : "food"},
           {"weight" : 0.05, "pool" : "seed"},
           {"weight" : 0.04, "pool" : "tool"},
@@ -526,7 +559,6 @@
           {"weight" : 0.01, "item" : ["mobiusrifle", 1]},
           {"weight" : 0.01, "item" : ["mobiusrailgun", 1]},
           {"weight" : 0.01, "item" : ["tristab", 1]},
-          {"weight" : 0.0005, "item" : ["atomsmasher", 1]},
       	  {"weight" : 0.01, "item" : "razorneedler"},
       	  {"weight" : 0.01, "item" : "scorchneedler"},
       	  {"weight" : 0.01, "item" : "shockneedler"},
@@ -575,6 +607,7 @@
     [1, {
       "pool" : [
         {"weight" : 0.001, "pool" : "artifactloot" },
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.08, "item" : ["beesilk", 5]},
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
@@ -619,7 +652,6 @@
         {"weight" : 0.1, "item" : "thornjuice"},
         {"weight" : 0.3, "item" : "medkit"},
         {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.1, "pool" : "weapon"},
         {"weight" : 0.1, "pool" : "food"},
         {"weight" : 0.05, "pool" : "seed"},
         {"weight" : 0.04, "pool" : "tool"},
@@ -706,40 +738,7 @@
         {"weight" : 0.05, "item" : [ "fudiverchest-recipe", 1]},
         {"weight" : 0.05, "item" : [ "fudiverlegs-recipe", 1]},
         {"weight" : 0.003, "item" : [ "negablade", 1]},
-        {"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
-        {"weight" : 0.01, "item" : ["gene_agility", 1]},
-        {"weight" : 0.01, "item" : ["gene_aquacelerity", 1]},
-        {"weight" : 0.01, "item" : ["gene_aquahomeo", 1]},
-        {"weight" : 0.01, "item" : ["gene_assimilate", 1]},
-        {"weight" : 0.01, "item" : ["gene_avian", 1]},
-        {"weight" : 0.01, "item" : ["gene_bioluminescent", 1]},
-        {"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
-        {"weight" : 0.01, "item" : ["gene_chloroplast", 1]},
-        {"weight" : 0.01, "item" : ["gene_corrosive", 1]},
-        {"weight" : 0.01, "item" : ["gene_cryo", 1]},
-        {"weight" : 0.01, "item" : ["gene_defense", 1]},
-        {"weight" : 0.01, "item" : ["gene_electric", 1]},
-        {"weight" : 0.01, "item" : ["gene_energy", 1]},
-        {"weight" : 0.01, "item" : ["gene_fish", 1]},
-        {"weight" : 0.01, "item" : ["gene_harden", 1]},
-        {"weight" : 0.01, "item" : ["gene_immunity", 1]},
-        {"weight" : 0.01, "item" : ["gene_insectoid", 1]},
-        {"weight" : 0.01, "item" : ["gene_mammal", 1]},
-        {"weight" : 0.01, "item" : ["gene_mimetic", 1]},
-        {"weight" : 0.01, "item" : ["gene_muscle", 1]},
-        {"weight" : 0.01, "item" : ["gene_nervebundle", 1]},
-        {"weight" : 0.01, "item" : ["gene_ocular", 1]},
-        {"weight" : 0.01, "item" : ["gene_poisonous", 1]},
-        {"weight" : 0.01, "item" : ["gene_pyro", 1]},
-        {"weight" : 0.01, "item" : ["gene_rage", 1]},
-        {"weight" : 0.01, "item" : ["gene_reactive", 1]},
-        {"weight" : 0.01, "item" : ["gene_regen", 1]},
-        {"weight" : 0.01, "item" : ["gene_reproductive", 1]},
-        {"weight" : 0.01, "item" : ["gene_resist", 1]},
-        {"weight" : 0.01, "item" : ["gene_skeletal", 1]},
-        {"weight" : 0.01, "item" : ["gene_stealth", 1]},
-        {"weight" : 0.01, "item" : ["gene_stimulant", 1]},
-        {"weight" : 0.01, "item" : ["gene_void", 1]}
+        {"weight" : 0.01, "item" : ["fuGenes", 1]}
       ]
     }]
   ],
@@ -768,6 +767,7 @@
     [1, {
       "pool" : [
         {"weight" : 0.001, "pool" : "artifactloot" },
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 0.08, "item" : ["beesilk", 5]},
@@ -794,7 +794,6 @@
         {"weight" : 0.1, "item" : "thornjuice"},
         {"weight" : 0.3, "item" : "medkit"},
         {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.1, "pool" : "weapon"},
         {"weight" : 0.1, "pool" : "food"},
         {"weight" : 0.05, "pool" : "seed"},
         {"weight" : 0.04, "pool" : "tool"},
@@ -903,6 +902,7 @@
     [1, {
       "pool" : [
         {"weight":0.1, "pool":"salvageComponent"},
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.001, "pool" : "artifactloot" },
         {"weight" : 0.08, "item" : ["beesilk", 5]},
         {"weight" : 0.03, "pool" : "augments"},
@@ -915,7 +915,6 @@
         {"weight" : 0.1, "item" : "thornjuice"},
         {"weight" : 0.3, "item" : "medkit"},
         {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.1, "pool" : "weapon"},
         {"weight" : 0.04, "pool" : "tool"},
         {"weight" : 0.04, "pool" : "shield"},
         {"weight" : 0.003, "item" : "teleportercore"},
@@ -1035,6 +1034,7 @@
       ],
       "pool" : [
         {"weight" : 0.001, "pool" : "artifactloot" },
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight":0.1, "pool":"salvageComponent"},
         {"weight" : 0.03, "pool" : "arconLoot"},
         {"weight" : 0.08, "item" : ["beesilk", 5]},
@@ -1048,7 +1048,6 @@
         {"weight" : 0.05, "item" : "thornjuice"},
         {"weight" : 0.05, "item" : "medkit"},
         {"weight" : 0.05, "pool" : "ore"},
-        {"weight" : 0.05, "pool" : "weapon"},
         {"weight" : 0.04, "pool" : "tool"},
         {"weight" : 0.03, "item" : "teleportercore"},
         {"weight" : 0.05, "item" : [ "ff_spareparts", 50]},
@@ -1105,6 +1104,7 @@
     [1, {
       "pool" : [
         {"weight":0.1, "pool":"salvageComponent"},
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.001, "pool" : "artifactloot" },
         {"weight" : 0.08, "item" : ["beesilk", 5]},
         {"weight" : 0.05, "pool" : "augments"},
@@ -1118,7 +1118,6 @@
         {"weight" : 0.05, "item" : "thornjuice"},
         {"weight" : 0.05, "item" : "medkit"},
         {"weight" : 0.05, "pool" : "ore"},
-        {"weight" : 0.05, "pool" : "weapon"},
         {"weight" : 0.04, "pool" : "tool"},
         {"weight" : 0.03, "item" : "teleportercore"},
         {"weight" : 0.0511, "item" : [ "glassmaterial", 250]},
@@ -1217,12 +1216,34 @@
       "allowDuplication" : true
     } ]
   ],
+  
+  "fukhestreakerrewardbagpool" : [
+    [1, {
+      "fill" : [
+        {"item" : [ "hiderchestkhe", 1]},
+        {"item" : [ "hiderlegskhe", 1]},
+        {"item" : [ "hiderheadkhe", 1]},
+        {"item" : [ "hiderbackkhe", 1]}
+      ]
+    }]
+  ],
+  
+  "fukhetrollkingrewardbagpool" : [
+    [1, {
+      "fill" : [
+        {"item" : [ "futrollkingchest", 1]},
+        {"item" : [ "futrollkinghead", 1]},
+        {"item" : [ "futrollkinglegs", 1]}
+      ]
+    }]
+  ],
 
   "ffmetallicbigChest" : [
     [1, {
       "pool" : [
         {"weight":0.1, "pool":"salvageComponent"},
         {"weight" : 0.001, "pool" : "artifactloot" },
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 0.1, "item" : [ "essence", 150]},
@@ -1238,7 +1259,6 @@
         {"weight" : 0.09, "item" : ["glassmaterial", 5]},
         {"weight" : 0.3, "item" : "medkit"},
         {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.1, "pool" : "weapon"},
         {"weight" : 0.1, "pool" : "food"},
         {"weight" : 0.05, "pool" : "seed"},
         {"weight" : 0.04, "pool" : "tool"},
@@ -1351,6 +1371,7 @@
     [1, {
       "pool" : [
         {"weight" : 0.001, "pool" : "artifactloot" },
+        {"weight" : 0.01, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.08, "item" : ["beesilk", 5]},
         {"weight" : 0.03, "pool" : "augments"},
         {"weight" : 0.03, "pool" : "petcollars2"},
@@ -1381,7 +1402,6 @@
         {"weight" : 0.1, "item" : "thornjuice"},
         {"weight" : 0.3, "item" : "medkit"},
         {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.1, "pool" : "weapon"},
         {"weight" : 0.1, "pool" : "food"},
         {"weight" : 0.05, "pool" : "seed"},
         {"weight" : 0.04, "pool" : "tool"},
@@ -1461,40 +1481,7 @@
         {"weight" : 0.004, "item" : [ "verdantrailgun-recipe", 1]},
         {"weight" : 0.008, "item" : [ "druidstaff-recipe", 1]},
         {"weight" : 0.003, "item" : [ "biopistol-recipe", 1]},
-        {"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
-        {"weight" : 0.01, "item" : ["gene_agility", 1]},
-        {"weight" : 0.01, "item" : ["gene_aquacelerity", 1]},
-        {"weight" : 0.01, "item" : ["gene_aquahomeo", 1]},
-        {"weight" : 0.01, "item" : ["gene_assimilate", 1]},
-        {"weight" : 0.01, "item" : ["gene_avian", 1]},
-        {"weight" : 0.01, "item" : ["gene_bioluminescent", 1]},
-        {"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
-        {"weight" : 0.01, "item" : ["gene_chloroplast", 1]},
-        {"weight" : 0.01, "item" : ["gene_corrosive", 1]},
-        {"weight" : 0.01, "item" : ["gene_cryo", 1]},
-        {"weight" : 0.01, "item" : ["gene_defense", 1]},
-        {"weight" : 0.01, "item" : ["gene_electric", 1]},
-        {"weight" : 0.01, "item" : ["gene_energy", 1]},
-        {"weight" : 0.01, "item" : ["gene_fish", 1]},
-        {"weight" : 0.01, "item" : ["gene_harden", 1]},
-        {"weight" : 0.01, "item" : ["gene_immunity", 1]},
-        {"weight" : 0.01, "item" : ["gene_insectoid", 1]},
-        {"weight" : 0.01, "item" : ["gene_mammal", 1]},
-        {"weight" : 0.01, "item" : ["gene_mimetic", 1]},
-        {"weight" : 0.01, "item" : ["gene_muscle", 1]},
-        {"weight" : 0.01, "item" : ["gene_nervebundle", 1]},
-        {"weight" : 0.01, "item" : ["gene_ocular", 1]},
-        {"weight" : 0.01, "item" : ["gene_poisonous", 1]},
-        {"weight" : 0.01, "item" : ["gene_pyro", 1]},
-        {"weight" : 0.01, "item" : ["gene_rage", 1]},
-        {"weight" : 0.01, "item" : ["gene_reactive", 1]},
-        {"weight" : 0.01, "item" : ["gene_regen", 1]},
-        {"weight" : 0.01, "item" : ["gene_reproductive", 1]},
-        {"weight" : 0.01, "item" : ["gene_resist", 1]},
-        {"weight" : 0.01, "item" : ["gene_skeletal", 1]},
-        {"weight" : 0.01, "item" : ["gene_stealth", 1]},
-        {"weight" : 0.01, "item" : ["gene_stimulant", 1]},
-        {"weight" : 0.01, "item" : ["gene_void", 1]}
+        {"weight" : 0.01, "item" : ["fugeneticmaterial", 12]}
       ],
       "poolRounds" : [
         [0.23, 1],
@@ -1542,6 +1529,60 @@
       "allowDuplication" : true
     } ]
   ],
+  "ffelderTreasureLesser" :[
+    [1, {
+      "pool" : [
+        {"weight" : 0.001, "pool" : "artifactloot" },
+        {"weight" : 0.005, "item" : [ "cthulhuplush", 1]},
+        {"weight" : 0.0111, "item" : [ "protorockmaterial", 5]},
+        {"weight" : 0.0015, "item" : [ "densiniumore", 3]},
+        {"weight" : 0.05, "item" : "wrappedbodyputrid"},
+        {"weight" : 0.01, "item" : "wrappedbodyalien"},
+        {"weight" : 0.005, "item" : ["nocxiumbar", 3]},
+        {"weight" : 0.05, "item" : ["xithricitecrystal", 1]},
+        {"weight" : 0.005, "item" :  [ "randolphcarterhat", 1]},
+        {"weight" : 0.005, "item" :  [ "yogsotothhat", 1]},
+        {"weight" : 0.005, "item" :  [ "brainslug", 1]},
+        {"weight" : 0.02, "item" :  [ "eldertome", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic1", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic2", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic3", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic4", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic5", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic6", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic7", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic8", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic9", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic10", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic11", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic12", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic13", 1]},
+        {"weight" : 0.02, "item" :  [ "elderrelic14", 1]},
+        {"weight" : 0.005, "item" :  [ "blackbook5-codex", 1]},
+        {"weight" : 0.005, "item" :  [ "blackbook6-codex", 1]},
+        {"weight" : 0.005, "item" :  [ "blackbook7-codex", 1]},
+        {"weight" : 0.007, "item" :  [ "tentaclestatue", 1]},
+        {"weight" : 0.005, "item" :  [ "elderhugepainting", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting1", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting2", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting3", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting4", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting5", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting6", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting7", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting8", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting9", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting10", 1]},
+        {"weight" : 0.005, "item" :  [ "elderpainting11", 1]}
+      ],
+      "poolRounds" : [
+        [0.55, 1],
+        [0.25, 2],
+        [0.05, 3]
+      ],
+      "allowDuplication" : false
+    } ]
+  ],
 
   "ffelderTreasure" : [
     [1, {
@@ -1551,6 +1592,7 @@
         {"weight" : 0.03, "pool" : "petcollars2"},
         {"weight" : 0.20, "pool" : "money"},
         {"weight" : 0.005, "item" : [ "cthulhuplush", 1]},
+        {"weight" : 0.0333, "item" : [ "mysteriousparcel", 1]},
         {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
         {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
         {"weight" : 0.0333, "item" : [ "fuscienceresource", 15]},
@@ -1799,7 +1841,6 @@
         {"weight" : 0.1, "item" : "thornjuice"},
         {"weight" : 0.3, "item" : "medkit"},
         {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.1, "pool" : "weapon"},
         {"weight" : 0.1, "pool" : "food"},
         {"weight" : 0.05, "pool" : "seed"},
         {"weight" : 0.04, "pool" : "tool"},
@@ -1893,40 +1934,7 @@
         {"weight" : 0.001, "item" : ["cannoneerchest-recipe", 1]},
         {"weight" : 0.001, "item" : ["cannoneerhead-recipe", 1]},
         {"weight" : 0.001, "item" : ["cannoneerlegs-recipe", 1]},
-        {"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
-        {"weight" : 0.01, "item" : ["gene_agility", 1]},
-        {"weight" : 0.01, "item" : ["gene_aquacelerity", 1]},
-        {"weight" : 0.01, "item" : ["gene_aquahomeo", 1]},
-        {"weight" : 0.01, "item" : ["gene_assimilate", 1]},
-        {"weight" : 0.01, "item" : ["gene_avian", 1]},
-        {"weight" : 0.01, "item" : ["gene_bioluminescent", 1]},
-        {"weight" : 0.01, "item" : ["gene_adaptivecell", 1]},
-        {"weight" : 0.01, "item" : ["gene_chloroplast", 1]},
-        {"weight" : 0.01, "item" : ["gene_corrosive", 1]},
-        {"weight" : 0.01, "item" : ["gene_cryo", 1]},
-        {"weight" : 0.01, "item" : ["gene_defense", 1]},
-        {"weight" : 0.01, "item" : ["gene_electric", 1]},
-        {"weight" : 0.01, "item" : ["gene_energy", 1]},
-        {"weight" : 0.01, "item" : ["gene_fish", 1]},
-        {"weight" : 0.01, "item" : ["gene_harden", 1]},
-        {"weight" : 0.01, "item" : ["gene_immunity", 1]},
-        {"weight" : 0.01, "item" : ["gene_insectoid", 1]},
-        {"weight" : 0.01, "item" : ["gene_mammal", 1]},
-        {"weight" : 0.01, "item" : ["gene_mimetic", 1]},
-        {"weight" : 0.01, "item" : ["gene_muscle", 1]},
-        {"weight" : 0.01, "item" : ["gene_nervebundle", 1]},
-        {"weight" : 0.01, "item" : ["gene_ocular", 1]},
-        {"weight" : 0.01, "item" : ["gene_poisonous", 1]},
-        {"weight" : 0.01, "item" : ["gene_pyro", 1]},
-        {"weight" : 0.01, "item" : ["gene_rage", 1]},
-        {"weight" : 0.01, "item" : ["gene_reactive", 1]},
-        {"weight" : 0.01, "item" : ["gene_regen", 1]},
-        {"weight" : 0.01, "item" : ["gene_reproductive", 1]},
-        {"weight" : 0.01, "item" : ["gene_resist", 1]},
-        {"weight" : 0.01, "item" : ["gene_skeletal", 1]},
-        {"weight" : 0.01, "item" : ["gene_stealth", 1]},
-        {"weight" : 0.01, "item" : ["gene_stimulant", 1]},
-        {"weight" : 0.01, "item" : ["gene_void", 1]}
+        {"weight" : 0.01, "item" : ["fugeneticmaterial", 12]}
       ],
       "poolRounds" : [
         [0.23, 1],
@@ -1970,7 +1978,6 @@
         {"weight" : 0.1, "item" : "thornjuice"},
         {"weight" : 0.3, "item" : "medkit"},
         {"weight" : 0.15, "pool" : "ore"},
-        {"weight" : 0.05, "pool" : "weapon"},
         {"weight" : 0.1, "pool" : "food"},
         {"weight" : 0.05, "pool" : "seed"},
         {"weight" : 0.04, "pool" : "tool"},

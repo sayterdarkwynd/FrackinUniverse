@@ -21,12 +21,12 @@ end
 
 
 function setEffectDamage()
-  return ( self.damage *  (1 -status.stat("fireResistance",0) )  )
+  return ( self.damage *  (1 -status.stat("fireResistance") )  )
 end
 
 function update(dt)
 
-  if ( status.stat("fireResistance",0)  >= 1.0 ) then
+  if ( status.stat("fireResistance")  >= 1.0 ) then
     effect.expire() 
   end  
 

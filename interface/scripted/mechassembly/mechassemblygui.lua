@@ -31,8 +31,10 @@ function init()
   self.imageBasePath = config.getParameter("imageBasePath")
   
   local getUnlockedMessage = world.sendEntityMessage(player.id(), "mechUnlocked")
+  self.unlocked = true   --player.getProperty("mechUnlocked", false)
+  
   if getUnlockedMessage:finished() and getUnlockedMessage:succeeded() then
-    local unlocked = getUnlockedMessage:result()
+    local unlocked = true  --getUnlockedMessage:result()
     if not unlocked then
       self.disabled = true
       widget.setVisible("imgDisabledOverlay", true)
@@ -69,8 +71,10 @@ function init()
   end
 
   self.previewCanvas = widget.bindCanvas("cvsPreview")
-
+  
+  --compat fix added for cosmetic mech parts july 20 2019
   for partType, itemDescriptor in pairs(self.itemSet) do
+  --for partType,_ in pairs({rightArm = "", leftArm = "", body = "", booster = "",legs = "", booster_social = "", body_social = "", legs_social = ""}) do
     widget.setItemSlotItem("itemSlot_" .. partType, itemDescriptor)
   end
 
@@ -242,31 +246,31 @@ function updatePreview()
     self.fuelBoost = 0
     
 	if params.parts.hornName == 'mechdefensefield' then 
-	  self.defenseBoost = 100
+	  self.defenseBoost = 50
 	elseif params.parts.hornName == 'mechdefensefield2' then 
-	  self.defenseBoost = 200
+	  self.defenseBoost = 100
 	elseif params.parts.hornName == 'mechdefensefield3' then 
-	  self.defenseBoost = 300
+	  self.defenseBoost = 150
 	elseif params.parts.hornName == 'mechdefensefield4' then 
-	  self.defenseBoost = 400
+	  self.defenseBoost = 200
 	elseif params.parts.hornName == 'mechdefensefield5' then 
-	  self.defenseBoost = 500
+	  self.defenseBoost = 250
 	end    
         --total bonus to health from defense
-        self.defenseModifier = (self.defenseBoost * massTotal) * 0.1
+        self.defenseModifier = self.defenseBoost + (massTotal*2) 
         --compute health/defense
-        local healthMax = math.floor(((((100 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) ) + 150
+        local healthMax = math.floor(((((150 * (params.parts.body.stats.healthBonus or 1)) + massTotal) * params.parts.body.stats.protection) + (self.defenseModifier or 0)) )
         
 	if params.parts.hornName == 'mechenergyfield' then 
-	  self.energyBoost = 100
+	  self.energyBoost = 50
 	elseif params.parts.hornName == 'mechenergyfield2' then 
-	  self.energyBoost = 200
+	  self.energyBoost = 100
 	elseif params.parts.hornName == 'mechenergyfield3' then 
-	  self.energyBoost = 300
+	  self.energyBoost = 150
 	elseif params.parts.hornName == 'mechenergyfield4' then 
-	  self.energyBoost = 400
+	  self.energyBoost = 200
 	elseif params.parts.hornName == 'mechenergyfield5' then 
-	  self.energyBoost = 500
+	  self.energyBoost = 250
 	end    
 
 	if params.parts.hornName == 'mechchipfeather' then 
@@ -317,20 +321,20 @@ function updatePreview()
 	  self.fuelCost = 2.5
 	  self.mobilityBoostValue = 80	  
 	end   
-	
+
     --compute energy
-    local energyMax = math.floor(100 + (params.parts.body.energyMax or 0) * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
+    local energyMax = math.floor(50 + (params.parts.body.energyMax or 0) * (params.parts.body.stats.energyBonus or 1)) +(self.energyBoost)
     
     --compute energy drain
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
     energyDrain = energyDrain * 0.6
     
     --mass affects drain
-    energyDrain = energyDrain + massTotal/100
+    massMod = massTotal/200
     
     --final energy drain after modules
-    energyDrain = energyDrain * (self.fuelCost or 1)
-    
+    energyDrain = (energyDrain * (1 + massMod)) * (self.fuelCost or 1)
+
     --check mobility boosts
     local mobilityMax = self.mobilityBoostValue or 0
     local mobilityBoostMax = self.mobilityBoostValue or 0

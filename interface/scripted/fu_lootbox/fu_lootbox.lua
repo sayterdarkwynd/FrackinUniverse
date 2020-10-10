@@ -92,8 +92,14 @@ function init()
 	local canvasSize = canvas:size()
 	vfx.title.position = {canvasSize[1] * 0.5, canvasSize[2] * 0.5 + vfx.title.yOffset}
 	vfx.subtitle.position = {canvasSize[1] * 0.5, canvasSize[2] * 0.5 + vfx.subtitle.yOffset}
+
+	local threatLevel = world.threatLevel()
+	if threatLevel < 1 then
+	  threatLevel = 1
+	end
 	
-	self.level = world.threatLevel()
+	self.level = threatLevel
+
 	
 	setNewPos(true)
 end
@@ -364,7 +370,7 @@ function doneOpening()
 	do
 		local cursorItem = player.swapSlotItem()
 		if cursorItem and cursorItem.name == "fu_lootbox" then
-			itemLevel = cursorItem.parameters.level or math.floor(world.threatLevel() + 0.5)
+			itemLevel = cursorItem.parameters.level or math.floor(self.level + 0.5)
 			player.setSwapSlotItem(nil)
 			hasLootbox = true
 		end
@@ -383,7 +389,7 @@ function doneOpening()
 	if not hasLootbox then
 		if player.consumeItem({name = "fu_lootbox"}, true) then
 			hasLootbox = true
-			itemLevel = math.floor(world.threatLevel() + 0.5)
+			itemLevel = math.floor(self.level + 0.5)
 		end
 	end
 	

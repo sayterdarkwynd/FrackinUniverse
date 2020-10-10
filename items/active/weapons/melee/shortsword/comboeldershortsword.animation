@@ -21,6 +21,12 @@
             "cycle" : 0.1,
             "mode" : "transition",
             "transition" : "idle"
+          },
+          "fire3" : {
+            "frames" : 3,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle"
           }
         }
       }
@@ -82,6 +88,13 @@
                 "image" : "/items/active/weapons/melee/shortsword/swoosh2/shadowswoosh.png:<frame>",
                 "offset" : [0.25, 0.125],
                 "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
+              }
+            },
+            "fire3" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/shortsword/swoosh2/<elementalType>swoosh.png:<frame>",
+                "offset" : [1, 0.125],
+                "damageArea" : [[-3, 1], [2.5, 1], [2.5, -1], [-3, -1]]
               }
             }
           }
@@ -164,8 +177,8 @@
     "shadowswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
       "particles" : [
         { "particle" : "shadowswoosh1"},
         { "particle" : "shadowswoosh2"},
@@ -173,34 +186,14 @@
         { "particle" : "shadowsmoke2"},
         { "particle" : "shadowsmoke2"}
       ]
-    },
-    "radioactiveswoosh" : {
-      "active" : false,
-      "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
-      "particles" : [
-        { "particle" : "radioactiveswoosh1"},
-        { "particle" : "radioactiveswoosh2"},
-        { "particle" : "poisonswoosh2"}
-      ]
-    },
-    "cosmicswoosh" : {
-      "active" : false,
-      "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
-      "particles" : [
-        { "particle" : "cosmicswoosh1"},
-        { "particle" : "cosmicswoosh2"},
-        { "particle" : "cosmicswoosh3"}
-      ]
     }
   },
 
   "sounds" : {
     "fire" : [ ],
     "fire2" : [ ],
-    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ],
+    "nightar" : [ "/sfx/weapons/energypew.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
   }
 }

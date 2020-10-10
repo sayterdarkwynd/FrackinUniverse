@@ -33,5 +33,35 @@
     "op": "add",
     "path": "/dropPools/0/shadowbow",
     "value": "paratailHunting"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/behaviorConfig/deathActions/-",
+    "value": {
+      "name": "action-spawnmonster",
+      "parameters": {
+        "offset": [
+          0,
+          0
+        ],
+        "monsterType": "pandorasboxspentparatail",
+        "replacement": true
+      }
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/colors",
+    "value": "pandorasboxvibrant"
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/maxHealth/baseValue",
+    "value": 100
+  },
+  {
+    "op": "replace",
+    "path": "/baseParameters/statusSettings/stats/fireResistance/baseValue",
+    "value": -0.5
   }
 ]

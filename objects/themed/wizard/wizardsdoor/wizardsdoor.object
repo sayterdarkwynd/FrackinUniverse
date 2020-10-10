@@ -1,0 +1,59 @@
+{
+  "objectName" : "wizardsdoor",
+  "colonyTags" : ["door","wizard"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "door",
+  "price" : 0,
+  "description" : "The sort of door you'd see leading to a wizard's study.",
+  "shortdescription" : "Wizard's Door",
+  "race" : "generic",
+
+  "apexDescription" : "Though wooden, this door is strong.",
+  "avianDescription" : "This door is much stronger than it looks.",
+  "floranDescription" : "Door sso sstrong.",
+  "glitchDescription" : "Proud. This door is reinforced to make it more secure.",
+  "humanDescription" : "A heavy door with a barred window.",
+  "hylotlDescription" : "The perfect door for a defensive structure.",
+  "novakidDescription" : "A solid, sturdy door.",
+
+  "inventoryIcon" : "wizardsdooricon.png",
+
+  "tooltipKind" : "door",
+  "largeImage" : "wizardsdoor.png:right",
+   
+  "orientations" : [
+    {
+      "image" : "wizardsdoor.png:default",
+      "imagePosition" : [-16, 0],
+      "renderLayer" : "Object+5",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom", "top" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/wooddoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/wooddoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "wizardsdoor.png"
+  },
+  "animationPosition" : [-16, 0],
+
+  "inputNodes" : [ [0, 4] ],
+  "outputNodes" : [ [0, 0] ]
+}

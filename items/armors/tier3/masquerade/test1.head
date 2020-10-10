@@ -4,12 +4,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+25%^reset; Energy Regen, ^cyan;+20%^reset; Electric Resist
-^cyan;Immune^reset;: Gas",
+  "description" : "^orange;Set Bonuses^reset;:  
+^yellow;^reset; +^green;25^reset;% Energy Regen
+^yellow;^reset; Striker: +^green;1^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Gas",
   "itemTags" : [ "upgradeableWeapon" ],
   "shortdescription" : "Masquerade Helm",
-  "category" : "t3armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -37,6 +38,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.035
     }
   ],
 
@@ -46,10 +52,6 @@
     {
       "stat" : "hackersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
     }
   ],
   "colorOptions" : [
@@ -92,5 +94,7 @@
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

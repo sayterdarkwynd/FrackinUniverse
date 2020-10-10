@@ -1,228 +1,159 @@
 {
-"kind":"fupeglaci",
+"kind": "fupeglaci",
   "charCreationTooltip" : {
       "title" : "Peglaci",
       "subTitle" : "CH4",
-      "description" : "Immune to cold and nasty such things."
+      "description" : "Resilient, cold-dwelling omnivorous creatures with a mysterious origin rooted in the distant past.
+
+  ^orange;Diet^reset;: Omnivore
+
+^orange;Perks^reset;:
+  Health x^green;1.15^reset;,
+  ^green;Resist^reset;: +^green;40^reset;% Ice, +^green;25^reset;% Knockback
+  +^green;5^reset;% Speed
+  ^cyan;Immune^reset;: Liquid Nitrogen, Cold, Ice
+  +^green;75^reset; Max Food
+
+^orange;Environment^reset;:
+  In cold biomes: Health & Energy x^green;1.15^reset;
+
+^orange;Weapons^reset;:
+  All Guns: Damage x^green;1.1^reset;, +^green;5^reset;% Crit Damage
+
+^red;Weaknesses^reset;:
+  Energy x^red;0.88^reset;
+  ^red;Resist^reset;: -^red;30^reset;% Fire , -^red;10^reset;% Radiation"
   },
-  
-  "nameGen":["/species/peglacinamegen.config:names","/species/peglacinamegen.config:names"],
+
+  "nameGen": ["/species/peglacinamegen.config:names","/species/peglacinamegen.config:names"],
   "ouchNoises" : [ "/sfx/humanoid/peglacihurt_male1.wav", "/sfx/humanoid/peglacihurt_female1.wav" ],
-  "charGenTextLabels":["FURCOLOR","HAIRSTYLE","SHIRT","PANTS","HIDECOLOR","EARS","SHIRTCOLOR","PANTSCOLOUR","PEGLACI","PERSONALITY"],
-  "skull":"/humanoid/peglaci/dead.png",
+  "charGenTextLabels": ["FURCOLOR","HAIRSTYLE","SHIRT","PANTS","HIDECOLOR","EARS","SHIRTCOLOR","PANTSCOLOUR","PEGLACI","PERSONALITY"],
+  "skull": "/humanoid/peglaci/dead.png",
   "effectDirectives" : "?replace=FEFFFFFF=FFFFFF?replace=9bd4ffFF=CFA8FF?replace=31a6ffFF=A77ADE",
 
   "defaultBlueprints" : {
     "tier1" : [
-	{"item":"peglacisnowsuitjacket"},
-	{"item":"peglacisnowsuitpants"},
-	{"item":"peglaciskijacketjacket"},
-	{"item":"peglaciskijacketpants"},
-	{"item":"peglacisnowrobejacket"},
-	{"item":"peglacisnowrobepants"},
-	{"item":"peglacigreatcoatjacket"},
-	{"item":"peglacigreatcoatpants"},    
-      {"item":"flagpeglaci"},
-      {"item":"peglacitier1knife"}, 
-      {"item":"peglacitier2knife"}, 
-      {"item":"peglacitier3knife"}, 
-      {"item":"peglacitier4knife"}, 
-      {"item":"peglacitier5knife"}, 
-      {"item":"peglacitier6knife"}, 
-      {"item":"peglacitier7knife"}, 
-      {"item":"peglacitier8knife"}, 
-      {"item":"peglacitier9knife"}, 
-      {"item":"peglacitier10knife"}, 
-{"item":"peglacipurifier"},
-{"item":"peglacitesterbox"},
-{"item":"giantek"},
-{"item":"peglaciicecolumn"},
-{"item":"hexpane"},
-{"item":"inscribedpykreteblock"},
-{"item":"peglacicableconnector"},
-{"item":"peglacicablenexus"},
-{"item":"peglacihorcable"},
-{"item":"peglacivertcable"},
-{"item":"pykreteblock"},
-{"item":"pykreteplatform"},
-{"item":"alloyplatform"},
-{"item":"pykretedecor"},
-{"item":"pykretefoundation"},
-{"item":"peglacimetalblock"},
-{"item":"peglacimetalpanel"},
-{"item":"peglacimetalscreen"},
-{"item":"pykretestrip"},
-{"item":"painttool"},
-{"item":"wiretool"},
-{"item":"alloydoor"},
-{"item":"alloydoor2"},
-{"item":"peglacibed"},
-{"item":"peglacibed2"},
-{"item":"peglacibox1"},
-{"item":"peglacibox2"},
-{"item":"peglacichair"},
-{"item":"peglacichair2"},
-{"item":"peglacichest"},
-{"item":"peglacilight"},
-{"item":"peglacilightstripcross1"},
-{"item":"peglacilightstripcross2"},
-{"item":"peglacilightstripcross3"},
-{"item":"peglacilightstriphoriz"},
-{"item":"peglacilightstripvert"},
-{"item":"peglacilightstripcurveup"},
-{"item":"peglacilightstripcurvedown"},
-{"item":"peglacilightstripsplithud"},
-{"item":"peglacilightstripsplitdh"},
-{"item":"peglacilightstripsplituh"},
-{"item":"peglacilighttall"},
-{"item":"peglacilighttall2"},
-{"item":"peglacilightembedded"},
-{"item":"peglacisupport"},
-{"item":"peglacitable"},
-{"item":"peglacitorch"},
-{"item":"peglacidrain"},
-{"item":"peglacihorizontalairlock"},
-{"item":"peglaciverticalairlock"},
-{"item":"peglacibookcasepillar"},
-{"item":"peglacibookcasemiddlestraight2"},
-{"item":"peglacibookcasemiddlestraight1"},
-{"item":"peglacibookcasemiddlehex2"},
-{"item":"peglacibookcasemiddlehex1"},
-{"item":"peglacibookcaselight"},
-{"item":"peglacibookcaseend2"},
-{"item":"peglacibookcaseend1"},
-{"item":"peglacibookcaseconsole"},
-{"item":"bread"},
-{"item":"acutaque"},
-{"item":"slushpaste"},
-{"item":"redsnow"},
-{"item":"coldmarrowpanini"},
-{"item":"berrymeat"},      
-      
-      { "item" : "humantier1hammer" },
-      { "item" : "humantier1shortsword" },
-      { "item" : "humantier1broadsword" },
-      { "item" : "humantier1spear" },
-      { "item" : "humantier1axe" },
-      { "item" : "humantier1dagger" },
-      { "item" : "humantier1head" },
-      { "item" : "humantier1chest" },
-      { "item" : "humantier1pants" },
-      { "item" : "conceptchest" },
-      { "item" : "conceptlegs" },
-      { "item" : "coolchest" },
-      { "item" : "coollegs" },
-      { "item" : "sweatervestchest" },
-      { "item" : "sweatervestlegs" },
-      { "item" : "workoutchest" },
-      { "item" : "workoutlegs" },
-
+	{"item": "peglacisnowsuitjacket"},
+	{"item": "peglacisnowsuitpants"},
+	{"item": "peglaciskijacketjacket"},
+	{"item": "peglaciskijacketpants"},
+	{"item": "peglacisnowrobejacket"},
+	{"item": "peglacisnowrobepants"},
+	{"item": "peglacigreatcoatjacket"},
+	{"item": "peglacigreatcoatpants"},
+      {"item": "flagpeglaci"},
+      {"item": "peglacitier1knife"},
+      {"item": "peglacitier2knife"},
+      {"item": "peglacitier3knife"},
+      {"item": "peglacitier4knife"},
+      {"item": "peglacitier5knife"},
+      {"item": "peglacitier6knife"},
+      {"item": "peglacitier7knife"},
+      {"item": "peglacitier8knife"},
+      {"item": "peglacitier9knife"},
+      {"item": "peglacitier10knife"},
+{"item": "peglacipurifier"},
+{"item": "peglacitesterbox"},
+{"item": "giantek"},
+{"item": "peglaciicecolumn"},
+{"item": "hexpane"},
+{"item": "inscribedpykreteblock"},
+{"item": "peglacicableconnector"},
+{"item": "peglacicablenexus"},
+{"item": "peglacihorcable"},
+{"item": "peglacivertcable"},
+{"item": "pykreteblock"},
+{"item": "pykreteplatform"},
+{"item": "alloyplatform"},
+{"item": "pykretedecor"},
+{"item": "pykretefoundation"},
+{"item": "peglacimetalblock"},
+{"item": "peglacimetalpanel"},
+{"item": "peglacimetalscreen"},
+{"item": "pykretestrip"},
+{"item": "painttool"},
+{"item": "wiretool"},
+{"item": "alloydoor"},
+{"item": "alloydoor2"},
+{"item": "peglacibed"},
+{"item": "peglacibed2"},
+{"item": "peglacibox1"},
+{"item": "peglacibox2"},
+{"item": "peglacichair"},
+{"item": "peglacichair2"},
+{"item": "peglacichest"},
+{"item": "peglacilight"},
+{"item": "peglacilightstripcross1"},
+{"item": "peglacilightstripcross2"},
+{"item": "peglacilightstripcross3"},
+{"item": "peglacilightstriphoriz"},
+{"item": "peglacilightstripvert"},
+{"item": "peglacilightstripcurveup"},
+{"item": "peglacilightstripcurvedown"},
+{"item": "peglacilightstripsplithud"},
+{"item": "peglacilightstripsplitdh"},
+{"item": "peglacilightstripsplituh"},
+{"item": "peglacilighttall"},
+{"item": "peglacilighttall2"},
+{"item": "peglacilightembedded"},
+{"item": "peglacisupport"},
+{"item": "peglacitable"},
+{"item": "peglacitorch"},
+{"item": "peglacidrain"},
+{"item": "peglacihorizontalairlock"},
+{"item": "peglaciverticalairlock"},
+{"item": "peglacibookcasepillar"},
+{"item": "peglacibookcasemiddlestraight2"},
+{"item": "peglacibookcasemiddlestraight1"},
+{"item": "peglacibookcasemiddlehex2"},
+{"item": "peglacibookcasemiddlehex1"},
+{"item": "peglacibookcaselight"},
+{"item": "peglacibookcaseend2"},
+{"item": "peglacibookcaseend1"},
+{"item": "peglacibookcaseconsole"},
+{"item": "bread"},
+{"item": "acutaque"},
+{"item": "slushpaste"},
+{"item": "redsnow"},
+{"item": "coldmarrowpanini"},
+{"item": "berrymeat"},
       { "item" : "humanstoragelocker" },
-
-      { "item" : "flaghuman" },
-
-      // { "item" : "humantier2head" },
-      // { "item" : "humantier2chest" },
-      // { "item" : "humantier2pants" },
-      { "item" : "humantier2hammer" },
-      { "item" : "humantier2shortsword" },
-      { "item" : "humantier2broadsword" },
-      { "item" : "humantier2spear" },
-      { "item" : "humantier2axe" },
-      { "item" : "humantier2dagger" },
-
-      { "item" : "humantier3head" },
-      { "item" : "humantier3chest" },
-      { "item" : "humantier3pants" },
-      { "item" : "humantier3hammer" },
-      { "item" : "humantier3shortsword" },
-      { "item" : "humantier3broadsword" },
-      { "item" : "humantier3spear" },
-      { "item" : "humantier3axe" },
-      { "item" : "humantier3dagger" },
-
-      // { "item" : "humantier4head" },
-      // { "item" : "humantier4chest" },
-      // { "item" : "humantier4pants" },
-      { "item" : "humantier4hammer" },
-      { "item" : "humantier4shortsword" },
-      { "item" : "humantier4broadsword" },
-      { "item" : "humantier4spear" },
-      { "item" : "humantier4axe" },
-      { "item" : "humantier4dagger" },
-
-      { "item" : "humantier5ahead" },
-      { "item" : "humantier5achest" },
-      { "item" : "humantier5apants" },
-      { "item" : "humantier5dagger" },
-
-      { "item" : "humantier5mhead" },
-      { "item" : "humantier5mchest" },
-      { "item" : "humantier5mpants" },
-
-      { "item" : "humantier5shead" },
-      { "item" : "humantier5schest" },
-      { "item" : "humantier5spants" },
-      { "item" : "humantier8hammer" },
-      { "item" : "humantier8shortsword" },
-      { "item" : "humantier8broadsword" },
-      { "item" : "humantier8spear" },
-      { "item" : "humantier8axe" },
-      { "item" : "humantier8dagger" },
-
-      // { "item" : "humantier6ahead" },
-      // { "item" : "humantier6achest" },
-      // { "item" : "humantier6apants" },
-      { "item" : "humantier6dagger" },
-
-      // { "item" : "humantier6mhead" },
-      // { "item" : "humantier6mchest" },
-      // { "item" : "humantier6mpants" },
-
-      // { "item" : "humantier6shead" },
-      // { "item" : "humantier6schest" },
-      // { "item" : "humantier6spants" },
-      { "item" : "humantier10hammer" },
-      { "item" : "humantier10shortsword" },
-      { "item" : "humantier10broadsword" },
-      { "item" : "humantier10spear" },
-      { "item" : "humantier10axe" },
-      { "item" : "humantier10dagger" }
+      { "item" : "flaghuman" }
     ]
   },
-"altOptionAsUndyColor":true,
-"headOptionAsFacialhair":true,
-"genders":[
+"altOptionAsUndyColor": true,
+"headOptionAsFacialhair": true,
+"genders": [
 {
-"name":"male",
-"image":"/interface/title/pmale.png",
-"characterImage":"/interface/title/peglacimale.png",
-"hairGroup":"hair",
-"hair":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],
-"shirt":["peglaciskijacketjacket","peglacisnowrobejacket","peglacisnowsuitjacket","peglacigreatcoatjacket"],
-"pants":["peglaciskijacketpants","peglacisnowrobepants","peglacisnowsuitpants","peglacigreatcoatpants"],
-"facialHairGroup":"ears",
-"facialHair":["ear1","ear2","ear3","ear4","ear5","ear6","ear7", "ear8", "ear9", "ear10"],
-"facialMaskGroup":"",
-"facialMask":[]
+"name": "male",
+"image": "/interface/title/pmale.png",
+"characterImage": "/interface/title/peglacimale.png",
+"hairGroup": "hair",
+"hair": ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],
+"shirt": ["peglaciskijacketjacket","peglacisnowrobejacket","peglacisnowsuitjacket","peglacigreatcoatjacket"],
+"pants": ["peglaciskijacketpants","peglacisnowrobepants","peglacisnowsuitpants","peglacigreatcoatpants"],
+"facialHairGroup": "ears",
+"facialHair": ["ear1","ear2","ear3","ear4","ear5","ear6","ear7", "ear8", "ear9", "ear10"],
+"facialMaskGroup": "",
+"facialMask": []
 },
 {
-"name":"female",
-"image":"/interface/title/pfemale.png",
-"characterImage":"/interface/title/peglacifemale.png",
-"hairGroup":"hair",
-"hair":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],
-"shirt":["peglaciskijacketjacket","peglacisnowrobejacket","peglacisnowsuitjacket","peglacigreatcoatjacket"],
-"pants":["peglaciskijacketpants","peglacisnowrobepants","peglacisnowsuitpants","peglacigreatcoatpants"],
-"facialHairGroup":"ears",
-"facialHair":["ear1","ear2","ear3","ear4","ear5","ear6","ear7", "ear8", "ear9", "ear10"],
-"facialMaskGroup":"",
-"facialMask":[]
+"name": "female",
+"image": "/interface/title/pfemale.png",
+"characterImage": "/interface/title/peglacifemale.png",
+"hairGroup": "hair",
+"hair": ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],
+"shirt": ["peglaciskijacketjacket","peglacisnowrobejacket","peglacisnowsuitjacket","peglacigreatcoatjacket"],
+"pants": ["peglaciskijacketpants","peglacisnowrobepants","peglacisnowsuitpants","peglacigreatcoatpants"],
+"facialHairGroup": "ears",
+"facialHair": ["ear1","ear2","ear3","ear4","ear5","ear6","ear7", "ear8", "ear9", "ear10"],
+"facialMaskGroup": "",
+"facialMask": []
 }
 ],
 
-"bodyColor":[
-    // Default     New      Default     New      Default     New      Default     New   
+"bodyColor": [
+    // Default     New      Default     New      Default     New      Default     New
     // CANDYFLOSS
     { "ffca8a" : "e4e4e4", "e0975c" : "d7d5db", "a85636" : "8e8e9b", "6f2919" : "6d6d6d" },
     // ROSE
@@ -237,13 +168,13 @@
     { "ffca8a" : "ece9dd", "e0975c" : "e2ddcb", "a85636" : "b6a779", "6f2919" : "9d8b54" },
 	// WHITE	
 	{ "FFCA8A" : "ffffff", "E0975C" : "bec6c8", "A85636" : "989ea0", "6F2919" : "6f7578" },
-	// BLACK 
+	// BLACK
     { "FFCA8A" : "555555", "E0975C" : "424242", "A85636" : "303030", "6F2919" : "151515" },
 	// RED
     { "FFCA8A" : "CD1C38", "E0975C" : "982441", "A85636" : "69243F", "6F2919" : "4b1a2d" },
     // RUSTY RED
     { "FFCA8A" : "BE471B", "E0975C" : "9B2F0C", "A85636" : "702710", "6F2919" : "561e0d" },
-	// EXONITE 
+	// EXONITE
 	{ "FFCA8A" : "851E3E", "E0975C" : "651E3E", "A85636" : "451E3E", "6F2919" : "251E3E" },
     // LIGHT BROWN
     { "FFCA8A" : "7f5a39", "E0975C" : "5b3523", "A85636" : "3b1f15", "6F2919" : "29160f" },
@@ -272,7 +203,7 @@
 	// EMERA
 	{ "FFCA8A" : "81C14B", "E0975C" : "2E933C", "A85636" : "297045", "6F2919" : "204E4A" }
 ],
-"undyColor":[
+"undyColor": [
     // Default     New      Default     New      Default     New   || Default     New      Default     New
     // DARK GREY                                                     Opul
     { "dc1f00" : "696969", "be1b00" : "434343", "951500" : "191919", "FFD800" : "E0FEFE", "D8B400" : "D1F8FD" },
@@ -317,5 +248,5 @@
 	// EXONITE                                                       Thanatite
 	{ "DC1F00" : "851E3E", "BE1B00" : "651E3E", "951500" : "451E3E", "FFD800" : "FFD77F", "D8B400" : "FF9554" }
 ],
-"hairColor":[""]
+"hairColor": [""]
 }

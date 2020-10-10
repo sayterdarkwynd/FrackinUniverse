@@ -1,6 +1,6 @@
 {
   "name" : "sirensetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
@@ -10,16 +10,13 @@
 
     "biomeTags" : [ "ocean", "tidewataer" ],
     "biomeBonuses" : {
-      "maxHealth" : { "amount" : 25 },
-      "protection" : { "amount" : 5 }
+      "maxHealth" : { "effectiveMultiplier" : 1.25 },
+      "protection" : { "effectiveMultiplier" : 1.05 }
     }
   },
 
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta" : 5,
-
-  "label" : "Immune: Breath. +15% Shield Regen. Ocean/Tidewater: +25 HP, +5 Protection",
-  "icon" : "/interface/statuses/bioooze2.png"
+  "scriptDelta" : 5
 }

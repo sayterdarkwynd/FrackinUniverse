@@ -432,7 +432,7 @@ function chooseTenants(seed, tags)
   storage.occupier = occupier
 
   if seed then
-    math.randomseed(os.time())
+    math.randomseed( tonumber(tostring(os.time()):reverse():sub(1,6)) )
   end
 end
 

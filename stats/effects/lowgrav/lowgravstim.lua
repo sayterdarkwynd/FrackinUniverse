@@ -1,5 +1,5 @@
 function init()
-  effect.addStatModifierGroup({ {stat = "asteroidImmunity", amount = 1} })
+  --effect.addStatModifierGroup({ {stat = "asteroidImmunity", amount = 1} })--currently only affects a deprecated effect
   self.liquidMovementParameter = {
     gravityEnabled = true,
     gravity = 90,
@@ -24,6 +24,4 @@ function update(dt)
 end
 
 function uninit()
-  status.removeEphemeralEffect("gravgenfieldarmor")
-  status.removeEphemeralEffect("gravgenfieldarmor2")
 end

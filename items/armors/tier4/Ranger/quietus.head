@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^cyan;15%^reset; Fire Resist
-Quietus weapons: ^#a94db3;+30%^reset; Dmg
-^cyan;Immune^reset;: Burning, Insanity",
+^yellow;^reset; Quietus weapons: Damage x^green;1.3^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Insanity",
   "shortdescription" : "Ranger Helm",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -38,6 +37,11 @@ Quietus weapons: ^#a94db3;+30%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -46,10 +50,8 @@ Quietus weapons: ^#a94db3;+30%^reset; Dmg
     {
       "stat" : "fu_rangerset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
-    }  
-  ]
+    }
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

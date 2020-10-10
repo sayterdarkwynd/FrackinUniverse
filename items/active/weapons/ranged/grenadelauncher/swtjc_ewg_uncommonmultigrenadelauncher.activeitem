@@ -5,10 +5,10 @@
   "rarity" : "Uncommon",
   "description" : "For when you need to quickly lob multiple grenades the extra distance.",
   "shortdescription" : "Uncommon Multi-Grenade Launcher",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_multiGrenadeLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","grenadelauncher","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","grenadelauncher","upgradeableWeapon","explosive"],
   "level" : 1,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -26,7 +26,7 @@
               }
             }
           }
-        }  
+        }
       }
     },
     "particleEmitters" : {
@@ -49,14 +49,14 @@
     "class" : "GunFire",
 
     "fireTime" : [0.3, 1.0],
-    "baseDps" : [6, 7],
+    "baseDps" : [5.5, 6.2],
     "energyUsage" : [40.25, 43.75],
     "inaccuracy" : 0.04,
 
     "projectileParameters" : { 
       "knockback" : 20
     },
-    
+  
     "stances" : {
       "idle" : {
         "armRotation" : 0,
@@ -87,6 +87,13 @@
     }
   },
   "fireSounds" : [ "/sfx/gun/grenade1.ogg", "/sfx/gun/grenade2.ogg" ],
+
+  "critChance" : 2,
+  "critBonus" : 7,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [4,7],
+  "reloadTime" : [1.9,2.8],
+  "isGrenadeLauncher" : 1,
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -121,7 +128,7 @@
       },
       "cosmic" : {
         "primaryAbility" : { "projectileType" : [ "cosmicplasmagrenade", "cosmicplasmaimpactgrenade", "cosmicstickygrenade", "cosmicproximitymine" ] }
-      }      
+      }    
     },
     "animationParts" : {
       "butt" : {
@@ -174,7 +181,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 2,
-  "critBonus" : 6
+  }]
 }

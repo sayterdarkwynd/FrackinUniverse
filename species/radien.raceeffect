@@ -1,0 +1,39 @@
+{
+	"stats" : [
+		{ "stat" : "maxHealth", "effectiveMultiplier" : 0.90 },
+		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.1 },	
+		{ "stat" : "foodDelta", "baseMultiplier" : 1.25 },
+		{ "stat" : "radiationburnImmunity", "amount" : 1 },
+		{ "stat" : "healingStatusImmunity", "amount" : 1 }
+	],
+	"diet" : "entity",
+	"special" : [ "radienFoodBoost" ],
+	
+	"envEffects" : [
+		{
+			"biomes" : [ "hot" ],
+			"stats" : [
+				{ "stat" : "protection", "effectiveMultiplier" : 0.85 },
+				{ "stat" : "foodDelta", "baseMultiplier" : 1.35 }
+			]
+		},
+		{
+			"biomes" : [ "toxic", "alien", "protoworld", "irradiated", "chromatic", "protoworlddark", "jungle", "fungus", "fungal" ],
+			"stats" : [
+				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 },
+				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.15 },
+				{ "stat" : "foodDelta", "baseMultiplier" : 0.95 }
+			]
+		}
+	],
+	"weaponEffects" : [
+		{
+			"weapons" : [ "radien" ],
+			"stats" : [
+				{ "stat" : "critChance", "amount" : 1.5 },
+				{ "stat" : "protection", "effectiveMultiplier" : 1.15 }
+			]
+		}
+	],
+	"tech" : [ "xi_bulb" ]
+}

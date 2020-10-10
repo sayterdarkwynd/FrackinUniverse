@@ -4,19 +4,16 @@
 	"printable" : false,
 	"rarity" : "Common",
 	"notItemStorage":true,
-	"category" : "wire",
+	"category" : "junk",
 	"price" : 500,
-	"description" : "Moves money between containers.
-^blue;Input^white;1^blue;: ^white;power switch
-^blue;Input^white;2^blue;: ^white;item network
-^red;Output: ^white;item network^reset;",
-	"shortdescription" : "Money Transference Device",
+	"description" : "^red;This item was deprecated. Place and interact to get the items used to make this back.^reset;",
+	"shortdescription" : "DEPRECATED NETWORK ITEM",
 	"race" : "generic",
 
 	"inventoryIcon" : "kheAA_routericon.png",
 	"orientations" : [
 		{
-			"image" : "kheAA_router.png:<color>.off",
+			"image" : "kheAA_router.png:off",
 			"imagePosition" : [0, 0],
 
 			"spaceScan" : 0.1,
@@ -44,7 +41,7 @@
 	"kheAA_outDataNode":0,
 	
 
-	"scripts" : [ "kheAA_moneyrouter.lua" ],
+	"scripts" : [ "/objects/kheAA/kheAA_deprecatedobject.lua" ],
 	"scriptDelta" : 5,
 	"itemAgeMultiplier" : 0.0
 }

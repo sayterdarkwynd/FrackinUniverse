@@ -40,7 +40,7 @@ function init()
     setStance(self.stances.idle)
     
     self.blockCountShield = 0
-    species = world.entitySpecies(activeItem.ownerEntityId()) 
+    species = status.statusProperty("fr_race") or world.entitySpecies(activeItem.ownerEntityId())
     
    -- FU special effects
      -- health effects
@@ -86,7 +86,6 @@ function init()
  	  shieldBashPush = config.getParameter("shieldBashPush",0)
   -- end FU special effects
   
-  species = world.entitySpecies(activeItem.ownerEntityId())
   
   animator.setGlobalTag("directives", "")
   animator.setAnimationState("shield", "idle")
@@ -296,7 +295,7 @@ function raiseShield()
     for _,notification in pairs(notifications) do
       if notification.hitType == "ShieldHit" then
 -- *** set up shield bash values *** --
-          self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash",0)
+          self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash")
 	  if not status.resource("energy") then
 	    self.energyval= 0
 	  else     
@@ -348,7 +347,7 @@ function bashEnemy()
 
   if status.resourcePositive("perfectBlock") then
   	if self.stunValue >=100 then
-		self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
+		self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 6
 		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash	
 		params2 = { speed=20, power = 0 , damageKind = "default", knockback = 0 } -- Stun	
 		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
@@ -357,7 +356,7 @@ function bashEnemy()
 		animator.playSound("shieldBash")
 		animator.burstParticleEmitter("shieldBashHit")  	
   	else
-		self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
+		self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 6
 		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash		      
 		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
 		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy		
@@ -366,7 +365,7 @@ function bashEnemy()
   	end
 
   else
-		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 2
+		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 2
 		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash		      
 		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
 		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy

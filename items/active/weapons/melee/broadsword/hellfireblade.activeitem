@@ -22,14 +22,17 @@
   "animationCustom" : { },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
-
-  "elementalType" : "fire",
+  
+  "elementalType" : "hellfire",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.9,
     "baseDps" : 12,
-      "statusEffects" : [ "burning" ]
+    "statusEffects" : [ "burning" ],
+    "damageConfig" : {
+        "damageSourceKind" : "hellfire"
+    }
   },
 
   "altAbilityType" : "flamethrowersword",

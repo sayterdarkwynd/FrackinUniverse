@@ -5,10 +5,11 @@
   "category" : "wire",
   "objectType" : "container",
   "price" : 3500,
-  "description" : "A product of mad science that appears to run from cannisters of still-living brains.",
+  "description" : "A product of mad science that appears to run from cannisters of still-living brains. ^blue;Left Input^reset;: Power Switch",
   "shortdescription" : "^cyan;Neuro-Psionic Generator^white;",
   "race" : "generic",
   "printable" : false,
+  "soundEffect" : "/objects/power/braingenerator/braingenerator.ogg",
 
   "inventoryIcon" : "braingeneratoricon.png",
   "orientations" : [
@@ -27,14 +28,13 @@
     "base" : "braingenerator_base.png"
   },
   "animationPosition" : [0, 0],
-  "soundEffect" : "/objects/power/braingenerator/braingenerator.ogg",
   
   "slotCount" : 1,
   "uiConfig" : "/objects/power/braingenerator/braingenerator.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
   
-  "scripts" : [ "/scripts/power.lua","/scripts/generator.lua"],
+  "scripts" : [ "/scripts/fupower.lua","/scripts/fugenerator.lua"],
   "scriptDelta" : 60,
   
   "inputNodes" : [ [2, 2],[0, 2] ],

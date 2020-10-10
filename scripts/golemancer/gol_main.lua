@@ -2,6 +2,7 @@ require "/scripts/vec2.lua"
 require "/scripts/golemancer/gol_patternManager.lua"
 require "/scripts/golemancer/gol_resourceManager.lua"
 require "/scripts/golemancer/gol_spawnManager.lua"
+
 function init()
   object.setInteractive(true)
   self.patterns = config.getParameter("patterns")

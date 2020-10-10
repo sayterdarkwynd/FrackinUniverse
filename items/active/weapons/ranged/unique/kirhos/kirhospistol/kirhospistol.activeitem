@@ -9,10 +9,10 @@
   "shortdescription" : "Kirhosi Blaster",
   "category" : "pistol",
   "level" : 1,
-  "learnBlueprintsOnPickup" : [ "kirhospistol" ],
+//  "learnBlueprintsOnPickup" : [ "kirhospistol" ],
   "tooltipKind" : "gun2overheat",
 
-  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy"],
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy","kirhos"],
   "twoHanded" : false,
   "weaponType" : "Energy",
   "animation" : "fugunoverheating.animation",
@@ -49,7 +49,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
-    "fireTime" : 0.5,
+    "fireTime" : 0.3,
     "baseDps" : 13,
     "energyUsage" : 18.5,
     "inaccuracy" : 0,
@@ -58,14 +58,14 @@
     "fireType" : "auto",
     
 	//Overheating Weapon Values (based heavily on elithian races version)
-	"heatGain" : 10,					//Heat generated per shot
-	"coolingTime" : 0.42,				//Time before passive cooling kicks in
-	"heatLossLevel" : 10,				//Heat lost per second while not overheated
-	"heatLossRateMax" : 7,				//Heat lost per second while overheated
-	"lowLevel" : 5,					//Value required to reach Low heat
-	"medLevel" : 12,				//Value required to reach Medium heat
-	"highLevel" : 25,				//Value required to reach High heat	
-	"overheatLevel" : 32,				//Overheat at this value
+	"heatGain" : 5,					//Heat generated per shot
+	"coolingTime" : 0.5,				//Time before passive cooling kicks in
+	"heatLossLevel" : 3,				//Heat lost per second while not overheated
+	"heatLossRateMax" : 10,				//Heat lost per second while overheated
+	"lowLevel" : 7,					//Value required to reach Low heat
+	"medLevel" : 14,				//Value required to reach Medium heat
+	"highLevel" : 21,				//Value required to reach High heat	
+	"overheatLevel" : 30,				//Overheat at this value
 	
     "projectileType" : "farsightshotkirhos",
     "projectileParameters" : {
@@ -112,7 +112,11 @@
 
   "critChance" : 0.5,
   "critBonus" : 8,
-
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   
   "upgradeParameters" : {

@@ -9,13 +9,13 @@
   "description" : "Radioactive Hunting",
   "shortdescription" : "Irradium Bow",
   "twoHanded" : true,
-  "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon"],
+  "itemTags" : ["weapon", "ranged", "bow","upgradeableWeapon","irradium","radioactive"],
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
   "level" : 4,
 
-  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animation" : "/items/active/weapons/bow/fubow.animation",
   "animationParts" : {
     "bow" : "irradiumbowfull.png"
   },
@@ -34,29 +34,41 @@
 
   "elementalType" : "radioactive",
   "collectablesOnPickup" : { "fu_weaponbow" : "irradiumbow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "drawFrameSelector" : "poisonBowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.9,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.31,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 42,			
+	"holdEnergyUsage" : 15,				
+	"airborneBonus" : 1.20, 	
     "projectileType" : "irradiumarrow",
     "powerProjectileType" : "chargedirradiumarrow",
     "projectileParameters" : {
-      "power" : 8.7
+      "power" : 8.5,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 9.5,
+      "piercing" : false
     }
   },
 
-  "altAbilityType" : "zenshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "drawTime" : 1.5,				//Time to fully draw the bow
+    "powerProjectileTime" : 0.325,	//After fully drawing, the bow is super-charged for this long
+    "name" : "Debilitator",
     "projectileType" : "irradiumarrow",
+    "powerProjectileType" : "farsightshotbow",
     "projectileParameters" : {
-      "power" : 8.125
+      "power" : 11,
+      "piercing" : false
     }
   },
 
   "critChance" : 4,
-  "critBonus" : 5,
+  "critBonus" : 9,
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

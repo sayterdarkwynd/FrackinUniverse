@@ -22,15 +22,17 @@
           [ 0.1, "volpin" ],
           [ 0.1, "pyropod" ],
           [ 0.1, "crisper" ],
-          [ 0.1, "firelit"]
+          [ 0.1, "firelit"],
+          [ 0.1, "infernusdroid"]
         ]
       },
       {
         "select" : 2,
         "pool" : [
-          [ 0.4, "flameroach" ],
+          [ 0.3, "flameroach" ],
           [ 0.3, "lavahopper" ],
-          [ 0.3, "fireygiant" ]
+          [ 0.3, "fireygiant" ],
+          [ 0.1, "bee_scoria" ]
         ]
       },
       {
@@ -177,7 +179,7 @@
   
     "mainBlock" : "magmatile4",
     "subBlocks" : [ "magmatile3", "rock14", "andesite", "magmatile1" ],
-    "ores" : "ff_surfacevolcanicOres",
+    "ores" : "ff_surfaceinfernusOres",
     "parallax" : "/parallax/surface/infernus.parallax",
 
   "ambientNoises" : {
@@ -191,10 +193,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/darkambient2a.ogg", "/music/ambient_dark.ogg","/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/desert-exploration2.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/nomads.ogg", "/music/psyche.ogg" ]
+      "tracks" : [ "/music/MelodyOfMisery.ogg","/music/darkambient2a.ogg", "/music/ambient_dark.ogg","/music/lava-exploration1.ogg", "/music/drosera.ogg", "/music/inviolate-loop.ogg", "/music/desert-exploration2.ogg", "/music/ultramarine.ogg", "/music/arctic-constellation1.ogg", "/music/body-electric-loop.ogg", "/music/mercury.ogg", "/music/nomads.ogg", "/music/psyche.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/darkambient2b.ogg","/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/nomads.ogg", "/music/psyche.ogg", "/music/casiopeia.ogg", "/music/error-0xbfaf000.ogg", "/music/accretion-disc.ogg" ]
+      "tracks" : [ "/music/SomethingIntoDarkness.ogg","/music/darkambient2b.ogg","/music/lava-exploration2.ogg", "/music/crystal-exploration2.ogg", "/music/mira.ogg", "/music/tranquility-base.ogg", "/music/arctic-constellation1.ogg", "/music/nomads.ogg", "/music/psyche.ogg", "/music/casiopeia.ogg", "/music/error-0xbfaf000.ogg", "/music/accretion-disc.ogg" ]
     }
   },
 
@@ -283,7 +285,7 @@
           "distribution" : "/biomes/distributions.config:randomEncounter",
 
           "type" : "microdungeon",
-          "microdungeons" : [ "bonesmicrodungeons", "foundrymicrodungeons", "randomencounter", "avianencounter", "glitchencounter", "shroomencounter" ]
+          "microdungeons" : [ "fu_dae_microdungeons", "bonesmicrodungeons", "foundrymicrodungeons", "randomencounter", "avianencounter", "glitchencounter", "shroomencounter" ]
         },       
         {
           "mode" : "floor",
@@ -316,12 +318,14 @@
             "objectSets" : [
               {
                 "pool" : [ 
-                [0.35, "wildhellfireplantseed" ],
-                [0.35, "wildignuschiliseed" ],
-                [0.35, "wildplasmangoseed" ],
-                [0.35, "wildoonfortaseed" ],
-                [0.35, "wildrockrootseed" ],
-                [0.35, "wildpetrifiedrootseed" ]
+                [0.2, "wildhellfireplantseed" ],
+                [0.1, "wildignuschiliseed" ],
+                [0.15, "wildplasmangoseed" ],
+                [0.1, "wildoonfortaseed" ],
+                [0.1, "wildrockrootseed" ],
+                [0.1, "wildpetrifiedrootseed" ],
+              	[0.1, "phositeseed" ],
+              	[0.15, "thanatiteseed" ]                 
                 ],
                 "parameters" : { "startingStage" : 3 }
               }

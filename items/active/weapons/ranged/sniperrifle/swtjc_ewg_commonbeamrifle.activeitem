@@ -3,7 +3,7 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "A sniper rifle that fires streams of energy at distant targets with pinpoint accuracy, it's only as accurate as the one wielding it.",
+  "description" : "A sniper rifle that fires streams of energy at distant targets with pinpoint accuracy.",
   "shortdescription" : "Common Beam Rifle",
   "tooltipKind" : "gun",
   "category" : "swtjc_ewg_beamRifle",
@@ -25,19 +25,19 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [0.02, 0.1],
-    "baseDps" : [9, 11],
-    "energyUsage" : [27, 30],
+    "fireTime" : [0.25, 1],
+    "baseDps" : [4.75, 5.6],
+    "energyUsage" : [34, 45],
     "inaccuracy" : 0.0,
 
-    "burstTime" : [0.002, 0.005],
-    "burstCount" : [6, 12],
-    "fireType" : "burst",
+    "fireType" : "auto",
 
-    "projectileType" : "standardbullet",
+    "projectileType" : "standardbulletbeamphysical",
     "projectileParameters" : {
       "knockbackRange" : [0.1,0.2],
-      "fullbright" : true
+      "fullbright" : true,
+      "speed" : 70,
+      "timeToLive" : 0.5
     },
 
     "stances" : {
@@ -69,7 +69,7 @@
       }
     }
   },
-  "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ],
+  "fireSounds" : [ "/sfx/weapons/laserblast.ogg" ],
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -102,8 +102,6 @@
       "grenadelauncher",
       "piercingshot",
       "shrapnelbomb",
-      "spray",
-      "stickyshot",
 
       "swtjc_ewg_clusterbomb",
       "swtjc_ewg_markedshotweak",
@@ -114,7 +112,7 @@
       "swtjc_ewg_cellspray",
       "swtjc_ewg_cellspread",
       "swtjc_ewg_darkplasma",
-      
+
       "swtjc_ewg_forceshield",
       "swtjc_ewg_globelauncher",
       "swtjc_ewg_phaseburst",
@@ -126,5 +124,9 @@
     "iconDrawables" : ["butt", "middle", "barrel"]
   }],
   "critChance": 1,
-  "critBonus" : 3
+  "critBonus" : 3,
+
+  "magazineSize" : [6,12],
+  "reloadTime" : [0.5,3],
+  "isAmmoBased": [0,1]
 }

@@ -10,7 +10,12 @@ function init()
 	self.lastYVel = mcontroller.yVelocity()
 end
 
+function applyTechBonus()
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
+end
+
 function update(args)
+  applyTechBonus()
 	if args.moves["jump"] and mcontroller.jumping() then
 		self.holdingJump = true
 	elseif not args.moves["jump"] then

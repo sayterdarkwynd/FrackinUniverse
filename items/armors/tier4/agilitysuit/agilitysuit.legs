@@ -5,11 +5,14 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+25%^reset; Speed, Jump;
-Dagger/Pistol: ^green;+4%^reset; Crit Chance",
+^yellow;^reset; +^green;12^reset;% Speed, ^green;8^reset;% Jump
+^yellow;^reset; +^green;25^reset;% Jump Tech Efficiency
+^yellow;^reset; +^green;25^reset;% Dash Tech Efficiency
+^yellow;^reset; +^green;25^reset;% Phase Tech Efficiency
+^yellow;^reset; Dagger/Pistol: +^green;4^reset;% Crit Chance",
 
   "shortdescription" : "Agent Legs",
-  "category" : "t4armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -41,12 +44,11 @@ Dagger/Pistol: ^green;+4%^reset; Crit Chance",
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
+    "agentsetbonus",
     {
-      "stat" : "agentsetcount",
+      "stat" : "fu_agentset_legs",
       "amount" : 1
-    },
-    "waterwalk2"
+    }
   ],
 
   "colorOptions" : [
@@ -70,5 +72,7 @@ Dagger/Pistol: ^green;+4%^reset; Crit Chance",
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

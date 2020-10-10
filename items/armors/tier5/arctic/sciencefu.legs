@@ -6,10 +6,9 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;30%^reset; Ice Resist
-\n^cyan;Immune^reset;: Cold, Ice, Snow, Liq. Nitrogen", 
+^yellow;^reset; ^cyan;Immune^reset;: All Cold", 
   "shortdescription" : "Arctic Snowpants",
-  "category" : "t5armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -37,6 +36,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -45,10 +49,6 @@
     {
       "stat" : "fu_arcticset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.10
     }
   ],
 
@@ -65,5 +65,7 @@
     { "ffca8a" : "fc72f8", "e0975c" : "a239a3", "a85636" : "681f6f", "6f2919" : "35103b" },
     { "ffca8a" : "bb8b4d", "e0975c" : "75522d", "a85636" : "463319", "6f2919" : "1c140a" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

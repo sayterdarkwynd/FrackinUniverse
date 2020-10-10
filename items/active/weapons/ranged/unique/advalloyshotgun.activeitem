@@ -18,7 +18,7 @@
     "butt" : "",
     "middle" : "advalloyshotgun.png",
     "barrel" : "",
-    "muzzleFlash" : "/animations/muzzleflash/bulletmuzzle1/bulletmuzzle1.png"
+    "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzleyellow.png"
   },
   "animationCustom" : {
     "sounds" : {
@@ -80,8 +80,20 @@
   "critChance" : 4,
   "critBonus" : 6,
   "isReloader" : 1,
+  "isShotgun" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 8,
+  "reloadTime" : 1,
+  
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 300,
+  "recoilForce" : 600, 
   
   "altAbilityType" : "swtjc_ewg_slowgrenades",
-
+  "altAbility" : {
+	  "isAmmoBased" : 1,
+	  "reloadTime" : 1  
+  },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

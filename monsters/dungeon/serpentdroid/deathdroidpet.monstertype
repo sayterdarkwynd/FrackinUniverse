@@ -1,7 +1,7 @@
 {
   "type" : "deathdroidpet",
   "shortdescription" : "Turtle mkI",
-  "description" : "Aggressively defends it's creator.",
+  "description" : "Aggressively defends its creator.",
   "categories" : [ "serpentdroid" ],
   "parts" : [ "body", "arm" ],
 
@@ -12,8 +12,10 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+	  "/stats/monstereffects/monsterstatus_persistenteffectsapplier.lua"
     ],
+	"fu_monsterPersistentEffects":["regeneratingshield_hp-100-10-3","regeneratingshieldindicatordreamer"],
 
     "behavior" : "monster",
 
@@ -43,7 +45,7 @@
 
             "projectileType" : "blueplasmabullet",
             "power" : 9,
-            "fireOffset" : [-1.0, -0.5],
+            "fireOffsets" : [[-1.0, -0.5], [1, -0.5]],
             "projectileCount" : 1,
             "projectileInterval" : 0.05,
             "aimAtTarget" : true,
@@ -214,10 +216,8 @@
           "deltaStat" : "healthRegen",
           "defaultPercentage" : 100
         },
-        "shieldHealth" : {
-          "maxStat" : "maxShield",
-          "deltaStat" : "shieldRegen",
-          "defaultPercentage" : 100
+        "damageAbsorption" : {
+          "initialValue" : 0.0
         }
       }
     },

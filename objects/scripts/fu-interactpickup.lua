@@ -1,5 +1,5 @@
 function init()
-	if storage.itemHasSpawned == false or storage.itemHasSpawned == nil then
+	if not storage.itemHasSpawned then
 		object.setInteractive(true)
 		animator.setAnimationState("interactiveObject", "filled")
 		storage.itemHasSpawned = false
@@ -9,6 +9,7 @@ function init()
 	end
 	
 	self.spawnableItem = config.getParameter("spawnableItem")
+	self.timedObject = config.getParameter("timedSpawner")
 end
 
 function open()
@@ -31,5 +32,5 @@ function onInteraction(args)
 end
 
 function update(dt) 
-	
+
 end

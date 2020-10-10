@@ -1,13 +1,15 @@
 {
   "name" : "healingbonus",
-  "blockingStat" : "",
-  "effectConfig" : {
-    "healingBonus" : 1
-  },
+   	"effectConfig": {
+		"stats": [
+			{"stat": "healingBonus","amount": 0.1}
+		]
+	},
+    "scripts" : [
+    "/stats/effects/fu_genericStatApplier.lua"
+  ],
   "defaultDuration" : 2,
 
-  "scripts" : ["healingbonus.lua"],
-
-  "label" : "Increases power of bandages and medkits.",
+  "label" : "Increases incoming healing by 10%.",
   "icon" : "/interface/statuses/healingbonus.png"
 }

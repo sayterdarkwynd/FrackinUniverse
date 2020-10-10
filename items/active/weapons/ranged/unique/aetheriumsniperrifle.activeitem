@@ -11,13 +11,15 @@
   "level" : 7,
   "tooltipKind" : "gun2aetherium",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","sniperrifle","energy","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","sniperrifle","energy","upgradeableWeapon","aetherium","cosmic"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
+    "butt" : "",
     "middle" : "aetheriumsniperrifle.png",
     "middlefullbright" : "aetheriumsniperriflefullbright.png",
+    "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
   },
   "animationCustom" : {
@@ -50,7 +52,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "aether",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -101,7 +103,7 @@
 
   "critChance" : 1,
   "critBonus" : 5, 
-
+  "isSniper" : 1,
   "altAbilityType" : "energynet",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

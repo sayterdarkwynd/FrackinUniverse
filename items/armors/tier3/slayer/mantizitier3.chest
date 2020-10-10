@@ -4,12 +4,11 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "^orange;Set Bonuses^reset;:
-^cyan;21%^reset; Shadow Resist
-Fist/Axe: ^#a94db3;+25%^reset; Dmg
-^green;Thorns^reset;",
+  "description" : "^cyan;Thorns^reset;
+^orange;Set Bonuses^reset;:
+Fist/Axe: Damage x^green;1.25^reset;",
   "shortdescription" : "Slayer Gauntlets",
-  "category" : "t3armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -46,6 +45,11 @@ Fist/Axe: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.035
     }
   ],
 
@@ -55,10 +59,6 @@ Fist/Axe: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "slayersetcount",
       "amount": 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -90,7 +90,9 @@ Fist/Axe: ^#a94db3;+25%^reset; Dmg
 
   ],
 
-  "learnBlueprintsOnPickup" : [
-    "fumantizitier4chest"
-  ]
+ // "learnBlueprintsOnPickup" : [
+ //   "fumantizitier4chest"
+//],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

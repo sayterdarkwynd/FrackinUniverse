@@ -45,7 +45,8 @@
 
   "animation" : "console.animation",
   "animationParts" : {
-    "samplingarrayanim" : "console.png"
+    "samplingarrayanim" : "console.png",
+	"samplingarrayanimlit" : "consolelit.png"
   },
   "scripts" : [ "/objects/minibiome/precursor/precursorconverter/converter.lua",
                 "/scripts/npcToyObject.lua" ],
@@ -82,5 +83,26 @@
 
   "fu_mintick" : 1,
   "fu_stationTechLevel" : 1,
-  "fu_timerMod" : 4
+  "fu_timerMod" : 4,
+  "recipeTable":
+	[
+		{"inputs" : { "solidfuel":100 }, "outputs" : { "precursorgrease":1 }, "time" : 10.0},
+		{"inputs" : { "liquidfuel":200 }, "outputs" : { "precursorgrease":1 }, "time" : 10.0},
+		{"inputs" : { "toxicwaste":100 }, "outputs" : { "precursorgrease":1 }, "time" : 10.0},
+		{"inputs" : { "irradiumbar":25 }, "outputs" : { "precursorfluid":1 }, "time" : 40.0},
+		{"inputs" : { "liquidirradium":100 }, "outputs" : { "precursorfluid":1 }, "time" : 30.0},
+		{"inputs" : { "supermatter":20 }, "outputs" : { "precursorgel":2 }, "time" : 15.0},
+		{"inputs" : { "neptuniumrod":30 }, "outputs" : { "precursorfluid":1 }, "time" : 70.0},
+		{"inputs" : { "thoriumrod":27 }, "outputs" : { "precursorfluid":1 }, "time" : 60.0},
+		{"inputs" : { "uraniumrod":25 }, "outputs" : { "precursorfluid":1 }, "time" : 40.0},
+		{"inputs" : { "plutoniumrod":22 }, "outputs" : { "precursorfluid":1 }, "time" : 50.0},
+		{"inputs" : { "enricheduranium":10 }, "outputs" : { "precursorfluid":2 }, "time" : 30.0},
+		{"inputs" : { "enrichedplutonium":8}, "outputs" : { "precursorfluid":2 }, "time" : 30.0},
+		{"inputs" : { "solariumstar":15 }, "outputs" : { "precursorfluid":2 }, "time" : 30.0},
+		{"inputs" : { "ultronium":1 }, "outputs" : { "precursorfluid":5 }, "time" : 12.0},
+		{"inputs" : { "precursorfluid":50 }, "outputs" : { "essence":1 }, "time" : 20.0},
+		{"inputs" : { "crunchychick":1 }, "outputs" : { "essence":5 }, "time" : 10.0},
+		{"inputs" : { "crunchychickdeluxe":1 }, "outputs" : { "essence":50 }, "time" : 10.0},
+		{"inputs" : { "crunchychickevil":1 }, "outputs" : { "essence":100 }, "time" : 10.0}
+	]
 }

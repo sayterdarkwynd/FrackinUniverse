@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;:
-Gravity Field 
-^cyan;25%^reset; Shadow Resistance  
-\n^cyan;Immune^reset;: Poison, Pus, Bio-Ooze", 
+^yellow;^reset; ^cyan;Low Gravity^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Pus, Bio-Ooze", 
   "shortdescription" : "Wretchel Chestguard",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -47,6 +46,11 @@ Gravity Field
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -55,11 +59,7 @@ Gravity Field
     {
       "stat" : "fu_wretchelset_chest",
       "amount" : 1
-    },
-     {
-      "stat" : "shadowResistance",
-      "amount" : 0.10
-    }  
+    }
   ],
 
   "colorOptions" : [
@@ -70,5 +70,7 @@ Gravity Field
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

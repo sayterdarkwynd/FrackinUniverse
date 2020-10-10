@@ -9,6 +9,12 @@
 					},
 					"on" : {
 						"frames" : 1
+					},
+					"throttled" : {
+					
+					},
+					"idle" : {
+					
 					}
 				}
 			}
@@ -24,18 +30,34 @@
 					"routerState" : {
 						"off" : {
 							"properties" : {
-								"image" : "<partImage>:<color>.off"
+								"image" : "<partImage>:off"
 							}
 						},
 
 						"on" : {
 							"properties" : {
-								"image" : "<partImage>:<color>.on"
+								"image" : "<partImage>:on"
+							}
+						},
+
+						"throttled" : {
+							"properties" : {
+								"image" : "<partImage>:throttled"
+							}
+						},
+
+						"idle" : {
+							"properties" : {
+								"image" : "<partImage>:throttled"
 							}
 						}
 					}
 				}
 			}
 		}
+	},
+	"sounds" : {
+		"alarm" : ["/sfx/interface/ship_error1.ogg"],
+		"alarm2" : ["/sfx/objects/redalert.ogg"]
 	}
 }

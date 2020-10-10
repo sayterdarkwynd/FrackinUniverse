@@ -1,22 +1,18 @@
 {
   "name" : "swimboost3",
-  "effectConfig" : {
-    "movementParameters" : {
-      "liquidImpedance" : 0.2,
-      "liquidForce" : 90,
-      "liquidFriction" : 4,
-      "liquidJumpProfile" : {
-        "jumpSpeed" : 55.0
-      },
-      "speedModifier" : 1.5
-    }
-  },
+   	"effectConfig": {
+		"stats": [
+			{"stat": "boostAmount","amount": 1},
+			{"stat": "boostAmount","effectiveMultiplier": 1.35},
+			{"stat": "riseAmount","effectiveMultiplier": 1.35}
+		]
+	},
   "defaultDuration" : 220,
 
   "scripts" : [
-    "swimboost.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
   "animationConfig" : "swimboost1.animation",
-  "label" : "Swim 3",
+  "label" : "Swim Boost 3",
   "icon" : "/interface/statuses/swimboost.png"
 }

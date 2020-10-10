@@ -1,6 +1,6 @@
 {
   "itemName" : "nightarsaber",
-  "price" : 2280,
+  "price" : 380,
   "level" : 4,
   "maxStack" : 1,
   "rarity" : "Rare",
@@ -9,7 +9,7 @@
   "tooltipKind" : "sword",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword"],
+  "itemTags" : ["weapon","melee","broadsword","nightar", "upgradeableWeapon"],
 
   "inventoryIcon" : "nightarsaber.png",
 
@@ -32,5 +32,45 @@
 
   "altAbilityType" : "risingslash",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "critChance" : 1.4,
+  "critBonus" : 1.5,
+
+  "improvedParameters" : {
+    "shortdescription" : "Honed Nightar Sabre",
+    "description" : "A fine, lethal edge.",
+    "critChance" : 1.7,
+    "critBonus" : 2,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }     
+  },  
+  "upgradeParameters" : {
+    "shortdescription" : "Peerless Nightar Sabre",
+    "description" : "The edge is superior to nearly any other.",
+    "critChance" : 2,
+    "critBonus" : 2.5,
+    "elementalType" : "silverweapon",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }    
+    }  
+  },
+  "upgradeParameters2" : {
+    "shortdescription" : "Legendary Nightar Sabre",
+    "description" : "The finest edge possible.",
+    "critChance" : 2.25,
+    "critBonus" : 5,
+    "elementalType" : "silverweapon",    
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }       
+  }  
 }

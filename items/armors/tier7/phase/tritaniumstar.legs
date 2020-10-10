@@ -6,14 +6,13 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;50%^reset; Electric Resist  
-^cyan;+20%^reset; Speed, Jump
-Regen ^#a94db3;0.8%^reset;
-^Green;3%^reset; Crit
-^cyan;Immune^reset;: Pressure, Most Tiles, Lightning^reset;",
+^yellow;^reset; +^green;20^reset;% Speed, Jump
+^yellow;^reset; ^green;0.8^reset;% Regen
+^yellow;^reset; +^Green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Most Tiles, All Lightning^reset;",
   "shortdescription" : "Phase Greaves",
     "itemTags" : [ "upgradeableWeapon" ],
-  "category" : "t7armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
@@ -40,6 +39,11 @@ Regen ^#a94db3;0.8%^reset;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -48,10 +52,6 @@ Regen ^#a94db3;0.8%^reset;
     {
       "stat" : "fu_phaseset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.10
     }
   ],
 
@@ -91,5 +91,7 @@ Regen ^#a94db3;0.8%^reset;
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

@@ -1,0 +1,24 @@
+{
+  "projectileName" : "fuplasmarifleblast_notiledamage",
+  "image" : "fuplasmarifleblast.png",
+  "animationCycle" : 1.0,
+  "level" : 6,
+  "frameNumber" : 10,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [36,150,160],
+    "fullbright" : true,
+  "power" : 5,
+  "speed" : 35,
+  "timeToLive" : 1.0,
+  "damagePoly" : [ [-29, 0], [-29, -32], [0, -32], [29, -32], [29, 0], [29, 32], [0, 32], [-29, 32] ],
+  "damageKind" : "electricplasma",
+  "physics" : "laser",
+  "emitters" : [ "peglacitrail", "lightningthrowertrail" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmaboom/plasmaboom_notiledamage.config"
+    }
+  ]
+}

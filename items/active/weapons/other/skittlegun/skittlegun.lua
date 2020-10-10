@@ -4,9 +4,11 @@ require "/scripts/epoch.lua"
 require "/scripts/effectUtil.lua"
 
 gregese={words={"@#$@$#@","greeeeg","greg","gregga","gregggggga","gregogreg","pft","rainbow","donkey","ahahaha"},punct={" ","...","?!","?!?","!!!","!","?","!!","!?"}}
+blockedWorlds={outpost=true,allianceoutpost=true,avikanoutpost=true,alliancefestivalhall=true,shellguardbase=true,sgfortresscorebase=true,extrachallengelabs=true,ancientgateway=true}
+deathWorlds={protectorate=true,felinintro=true}
 
 function init()
-
+	deathWorlds["avikanmission-intro"]=true
 	local timeData=epoch.currentToTable()
 	if timeData.month == 4 and timeData.day==1 then
 		fool=true
@@ -92,7 +94,7 @@ function update(dt, fireMode, shiftHeld)
 			storage.fireTimer = 1 * scienceWarning
 			effectUtil.effectSelf("nude",storage.fireTimer)
 			if scienceWarning >= 3 then
-				effectUtil.effectSelf("paralysis",storage.fireTimer)
+				effectUtil.effectSelf("fuparalysis",storage.fireTimer)
 				effectUtil.effectSelf("activemovementdummy",storage.fireTimer)
 				if scienceWarning >= 13 then
 					effectUtil.effectSelf("vulnerability",storage.fireTimer)
@@ -107,7 +109,7 @@ function update(dt, fireMode, shiftHeld)
 			end
 		end
 		return
-	elseif worldType == "outpost" then
+	elseif blockedWorlds[worldType] then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("Gregdonkeybow. GREG! Greg. greg...$!@#$!@% GREG.")
 			storage.fireTimer = 1
@@ -119,7 +121,7 @@ function update(dt, fireMode, shiftHeld)
 			storage.fireTimer = 1
 		end
 		return
-	elseif worldType == "protectorate" or worldType == "felinintro" then
+	elseif deathWorlds[worldType] then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("...donkey...")
 			storage.fireTimer = 6
@@ -157,21 +159,29 @@ function fire(ability,fireMode,throttle)
 	local baseProjectileCount=totalProjectileTypes[fireMode]
 	local projectileCount = throttle and 1 or math.max(1,math.floor(math.random(1,baseProjectileCount*baseProjectileCount)/baseProjectileCount))
 	local params = {power = damagePerShot(ability,projectileCount), powerMultiplier = activeItem.ownerPowerMultiplier()}
+	
 	if fireMode=="alt" then
 		params.controlForce=140
 		params.ignoreTerrain=false
 		params.pickupDistance=1.5
 		params.snapDistance=4
 	end
+	--current list:
+	--1: Doom player
+	--222: massive recoil
+	--3/33/333: party
+	-- x<10 fallback: alt-throttle:phoenix,alt-reg:cultistshield,primary-throttle:damagebonus,primary-reg:gregfreezeAOE
+	--666: massive status effect spam. very likely to kill.
+	--1000: Doom everything in range.
 	
 	if special == 1 then
-		--someone just drew the second unluckiest card in the deck.
-		effectUtil.messageParticle(firePosition(),"Sayter.",{0,0,0},0.6,nil,4,nil)
+		--someone just drew the third unluckiest card in the deck.
 		if sayterE then
 			sayterE=sayterE/2.0
 		else
 			sayterE=4.0
 		end
+		effectUtil.messageParticle(firePosition(),"Sayter.",{0,0,0},0.6,nil,4,nil)
 	elseif special == 222 then
 		local aimVec=aimVector(ability)
 		local aimAngle=vec2.angle(vec2.mul(aimVec,-1))
@@ -179,14 +189,31 @@ function fire(ability,fireMode,throttle)
 		effectUtil.messageParticle(firePosition(),"Donkey!",{150,75,0},0.6,nil,4,nil)
 	elseif special == 111 and throttle and not world.getProperty("ship.fuel") then
 		--Marvin. Arguably worse than sayter. It will not end until the person dies.
-		--Since they will have no resistances and will be immune to most healing, death is pretty much guaranteed.
-		--effectUtil.messageParticle(firePosition(),"Marvin.",{0,1,0},0.6,nil,4,nil)
+		--Since they will have no resistances and will be immune to most healing, death is highly likely
+		--unluckiest card in deck.
+		effectUtil.messageParticle(firePosition(),"Marvin.",{0,1,0},0.6,nil,4,nil)
 		effectUtil.effectSelf("marvinSkittles")
 	elseif special == 3 or special == 33 or special == 333 then
 		message="Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!"
 		color={238,130,238}
 		effectUtil.effectSelf("partytime2",special)
 		effectUtil.messageParticle(firePosition(),message,color,0.6,nil,4,nil)
+	elseif special == 666 then
+		--second unluckiest card in deck
+		--immune to healing, no resistances, a slew of horrible damaging statuses including one that is basically lava.
+		special=math.floor(math.random(1,13))
+		effectUtil.effectSelf("vulnerability",special)
+		effectUtil.effectSelf("melting",special)
+		effectUtil.effectSelf("negativemiasma",special)
+		effectUtil.effectSelf("darkwaterpoison",special)
+		effectUtil.effectSelf("moltenmetal3",special)
+		effectUtil.effectSelf("radiationburn",special)
+		effectUtil.effectSelf("nitrogenfreeze3",special)
+		effectUtil.effectSelf("sulphuricacideffect",special)
+		effectUtil.effectSelf("blacktarslow",special)
+		effectUtil.effectSelf("fu_nooxygen",special)
+		effectUtil.effectSelf("mad",special)
+		effectUtil.messageParticle(firePosition(),"Kevin.",{0,0,0},0.6,nil,4,nil)
 	elseif special < 10 then
 		local aimVec=aimVector(ability)
 		local projectileType=""

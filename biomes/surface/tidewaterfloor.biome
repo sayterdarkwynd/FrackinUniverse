@@ -8,18 +8,21 @@
         "select" : 2,
         "pool" : [
           [ 0.05, "deathjelly" ],
-          [ 0.05, "seaclam" ]
+          [ 0.1, "seaclam" ],
+          [ 0.1, "deathjellypeaceful" ]
         ]
       },    
       {
         "select" : 6,
         "pool" : [
-          [ 1, "smallFishOcean1" ],
-          [ 1, "smallFishOcean2" ],
-          [ 1, "passiveLargeFish" ],
-          [ 1, "aggroLargeFish" ],
-          [ 1, "squidcritter" ],
-          [ 1, "jellycritter" ]
+          [ 0.07, "smallFishOcean1" ],
+          [ 0.07, "smallFishOcean2" ],
+          [ 0.06, "passiveLargeFish" ],
+          [ 0.05, "aggroLargeFish" ],
+          [ 0.05, "squidcritter" ],
+          [ 0.25, "jellycritter" ],
+          [ 0.15, "clearjelly" ],
+          [ 0.25, "fufish" ]
         ]
       }
     ],
@@ -297,8 +300,16 @@
             }
           }
         ]
-      }    
-    
+      },    
+        {
+          "mode" : "floor",
+          "priority" : 3.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+          "type" : "microdungeon",
+          "microdungeons" : [ "tidewatermini", "canyonmini", "terrainfeatures", "rockclimb","rocktunnel",  "sandstone", "blockpile", "loops", "flats", "spikes", "rods", "spiralspikes", "stripeblocks", "wiggles" ]
+        }    
     ]
   }  
 }

@@ -1,14 +1,27 @@
 {
-  "itemName" : "greenleaf",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "greenleaf.png",
-  "description" : "Effect:
-^cyan;+40% Energy Regen^reset;",
-  "shortdescription" : "Greenleaf Herb",
-  "category" : "food",
+	"itemName": "greenleaf",
+	"inventoryIcon": "greenleaf.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
 
-  "effects" : [ [
-      "energyregenfu40"
-    ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+20% E. Regen & -10% E. Regen Block^reset;: 1m",
+	"shortdescription": "Greenleaf Herb",
+
+	"effects": [
+		[{
+			"effect": "energyregenfu40",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu05"
+	]
 }

@@ -4,14 +4,14 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+7%^reset; Poison Resist^reset;
-\n^orange;Set Bonuses^reset;:
-^#a00000;Spawns minions^reset;
-Slime weapons: ^green;+10%^reset Dmg, ^green;+5%^reset Crit Chance;
-^cyan;Immune^reset;: Slime, Mud, Clay",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Spawns Minions^reset;: Slimes
+^yellow;^reset; Health x^green;1.1^reset;
+^yellow;^reset; Slime weapons: Damage x^green;1.1^reset;/^green;1.2^reset;, +^green;5%^reset; Crit Chance;
+^yellow;^reset; ^cyan;Immune^reset;: Slime, Mud, Clay",
 
   "shortdescription" : "Slime Greaves",
-  "category" : "t2armoru",
+  "category" : "legarmour",
   "learnBlueprintsOnPickup" : [
     "ff_slimechest2",
     "ff_slimehead2",
@@ -43,19 +43,21 @@ Slime weapons: ^green;+10%^reset Dmg, ^green;+5%^reset Crit Chance;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.046667
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_slimeset_legs",
+      "amount" : 1
     }
   ],
 
   "statusEffects" : [
-    "fusetbonusmanager",
-    {
-      "stat" : "slimesetcount",
-      "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    }
+    "slimesetbonus"
   ],
   "colorOptions" : [
     { "ffca8a" : "fffdb0", "e0975c" : "cbc234", "a85636" : "926e19", "6f2919" : "563f0f" },
@@ -70,5 +72,7 @@ Slime weapons: ^green;+10%^reset Dmg, ^green;+5%^reset Crit Chance;
     { "ffca8a" : "fc72f8", "e0975c" : "a239a3", "a85636" : "681f6f", "6f2919" : "35103b" },
     { "ffca8a" : "bb8b4d", "e0975c" : "75522d", "a85636" : "463319", "6f2919" : "1c140a" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

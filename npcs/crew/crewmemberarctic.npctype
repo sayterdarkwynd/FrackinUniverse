@@ -1,7 +1,7 @@
 {
   "type" : "crewmemberarctic",
   "baseType" : "crewmember",
-  "disableWornArmor" : false,
+  //"disableWornArmor" : false,
   "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.25} ], 
   "scriptConfig" : {
     "behaviorConfig" : {
@@ -25,7 +25,7 @@
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
-            "effect" : "ffextremecoldimmunity",
+            "effect" : "ffextremecoldimmunityicon",
             "duration" : 300
           },         
           {
@@ -45,7 +45,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a 5% fuel efficiency boost whenever we're on the ship!"
+              "I'll give you an 8% fuel cost reduction whenever we're on the ship!"
             ]
           },
           "floran" : {
@@ -55,7 +55,7 @@
           },
           "glitch" : {
             "default" : [
-              "Friendly. I'll give you a 5% fuel efficiency boost whenever we're on the ship!"
+              "Friendly. I'll give you an 8% fuel cost reduction whenever we're on the ship!"
             ]
           }
         },

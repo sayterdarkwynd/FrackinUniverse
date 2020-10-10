@@ -2,7 +2,7 @@
   "objectName" : "isn_atmosregulator",
   "rarity" : "legendary",
     "colonyTags" : [ "science" ],
-  "description" : "Generates a field that heals any lifeform within its area of effect. Requires 60W of power.",
+  "description" : "Generates a field that heals any lifeform within its area of effect. Requires 120W of power.",
   "shortdescription" : "^cyan;Regeneration Matrix^white;",
   "race" : "generic",
   "price" : 2000,
@@ -16,7 +16,7 @@
   "humanDescription" : "I won't have to worry about the peril of death near this thing!",
   "hylotlDescription" : "This will provide excellent healing at a constant rate.",
 
-  "inventoryIcon" : "isn_atmosregulator_inv.png",
+  "inventoryIcon" : "isn_regenerationmatrix_inv.png",
   "orientations" : [
     {
       "image" : "isn_atmosregulator_base.png:<color>.<frame>",
@@ -47,12 +47,12 @@
     }
   ],
 
-  "scripts" : [ "/scripts/power.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua" ],
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua" ],
   "scriptDelta" : 60,
   
   "atmos" : {
 	"range" : 500,
-	"objectEffects" : ["isn_atmosregen"]
+	"objectEffects" : ["regenerationAtmosRegen"]
   },
 
   "animation" : "isn_atmosregulator.animation",
@@ -65,5 +65,5 @@
 
   "inputNodes" : [ [1, 2] ],
   "powertype" : "input",
-  "isn_requiredPower" : 60
+  "isn_requiredPower" : 120
 }

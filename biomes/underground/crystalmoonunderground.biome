@@ -191,7 +191,47 @@
 
         "type" : "microdungeon",
         "microdungeons" : [ "underground3bmicrodungeons", "fu_geode" ]
-      }               
+      },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },      
+        {
+          "mode" : "floor",
+          "priority" : 2.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:potsRare",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+              [0.1, "rasilineseed" ],
+              [0.1, "rukarseed" ],
+              [0.1, "tokaniteseed" ],
+              [0.1, "phositeseed" ],
+              [0.1, "duskilineseed" ],
+              [0.1, "apaliteseed" ],
+              [0.1, "emeraseed" ],
+              [0.1, "feyaseed" ],
+              [0.1, "oceaniteseed" ],
+              [0.1, "thanatiteseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        }      
+      
     ]
   },
     "hueShiftOptions" : [0]

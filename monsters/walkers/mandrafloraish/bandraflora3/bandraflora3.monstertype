@@ -33,10 +33,10 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 30,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
+      "keepTargetInRange" : 30,
       "targetOutOfSightTime" : 2.5,
 
       "foundTargetActions" : [  ],
@@ -46,21 +46,21 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 1,
+          "cooldown" : 2,
           "parameters" : {
-            "maximumRange" : 5,
+            "maximumRange" : 7,
             "minimumRange" : 1,
             "windupState" : "chargewindup",
             "windupTime" : 0.2,
 
             "projectileType" : "webblast",
-            "fireOffset" : [3, -0.7],
+            "fireOffset" : [2, -0.7],
 
             "aimAtTarget" : true,
 
             "inaccuracy" : 0.04,
             "power" : 8,
-            "speed": 40,
+            "speed": 50,
             "fireSound" : "fire",
             "fireState" : "charge",
 
@@ -72,13 +72,14 @@
           "name" : "action-charge",
           "cooldown" : 3,
           "parameters" : {
-            "maximumRange" : 12,
+            "maximumRange" : 24,
+            "minimumRange" : 7,
             "windupTime" : 0.6,
 
             "aimAtTarget" : true,
-            "chargeTime" : 3,
-            "chargeSpeed" : 40,
-            "chargeControlForce" : 2200,
+            "chargeTime" : 0.6,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 2000,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
 
@@ -87,7 +88,16 @@
         }
       ],
 
-      "periodicActions" : [],
+      "periodicActions" : [
+        {
+          "name" : "action-statuseffect", 
+          "cooldown" : 5,
+          "parameters" : {
+          "effect" : "lowgrav",
+          "duration" : 500
+          }
+        }      
+      ],
 
       "approachActions" : [
         {
@@ -138,14 +148,7 @@
       ],
       
       "concurrentHostileActions" : [ 
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 5,
-          "parameters" : {
-          "effect" : "lowgrav",
-          "duration" : 5
-          }
-        }
+
       ],
       
       
@@ -165,7 +168,7 @@
       "damage" : 14,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "cosmic",
       "knockback" : 20,
       "statusEffects" : [ ]
     },
@@ -247,7 +250,7 @@
           "baseValue" : 1
         },
         "electricResistance" : {
-          "baseValue" : -0.5
+          "baseValue" : 0.5
         },
         "electricStatusImmunity" : {
           "baseValue" : 1.0
@@ -260,6 +263,9 @@
         },        
         "poisonStatusImmunity" : {
           "baseValue" : 1
+        },        
+        "fallDamageMultiplier" : {
+          "baseValue" : 0.01
         }
       },
 

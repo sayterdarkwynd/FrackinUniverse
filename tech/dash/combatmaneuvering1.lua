@@ -6,7 +6,6 @@ function init()
   self.dashTimer = 0
   self.dashCooldownTimer = 0
   self.rechargeEffectTimer = 0
-
   self.dashControlForce = config.getParameter("dashControlForce")
   self.dashSpeed = config.getParameter("dashSpeed")
   self.dashDuration = config.getParameter("dashDuration")
@@ -35,7 +34,15 @@ function uninit()
   tech.setParentDirectives()
 end
 
+function applyTechBonus()
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
+  self.dodgetechBonus = 0 + status.stat("dodgetechBonus") -- apply bonus to defense from items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
+end
+
 function update(args)
+  applyTechBonus()
   if self.dashCooldownTimer > 0 then
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
     if self.dashCooldownTimer == 0 then
@@ -85,25 +92,27 @@ function startDash(direction)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
-
-  status.addEphemeralEffect(config.getParameter("dodgeboost")) --depends on equipped dodge tech
+  -- defense bonus is applied if the player has the relevant stat. Otherwise we apply the basic small boost granted by the default tech
+  if self.dodgetechBonus > 0.01 then
+    status.setPersistentEffects("dodgeDefenseBoost", {{stat = "protection", effectiveMultiplier = (1 + self.dodgetechBonus)}}) 
+  else
+    status.addEphemeralEffect(config.getParameter("dodgeboost"))
+  end
   
 end
 
 function endDash()
   status.clearPersistentEffects("movementAbility")
+  status.clearPersistentEffects("dodgeDefenseBoost")
   if self.stopAfterDash then
     local movementParams = mcontroller.baseParameters()
     local currentVelocity = mcontroller.velocity()
-
     if math.abs(currentVelocity[1]) > movementParams.runSpeed then
       mcontroller.setVelocity({movementParams.runSpeed * self.dashDirection, 0})
     end
     mcontroller.controlApproachXVelocity(self.dashDirection * movementParams.runSpeed, self.dashControlForce)
   end
-
   self.dashCooldownTimer = self.dashCooldown
-
   animator.setAnimationState("dashing", "off")
   animator.setParticleEmitterActive("dashParticles", false)
 end

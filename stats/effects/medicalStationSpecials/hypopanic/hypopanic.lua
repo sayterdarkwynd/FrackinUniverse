@@ -7,12 +7,11 @@ function init()
 	self.oldHealth = status.resource("health")
 	self.oldHealthPcnt = status.resourcePercentage("health")
 	
-	local modifierTable = {
+	--[[local modifierTable = {
 		{stat = "maxEnergy", amount = config.getParameter("energyMax", 0)},
 		{stat = "energyRegenPercentageRate", effectiveMultiplier = config.getParameter("energyRegenMult", 0)}
 	}
-	
-	self.modifierGroupID = effect.addStatModifierGroup(modifierTable)
+	self.modifierGroupID = effect.addStatModifierGroup(modifierTable)]]
 	baseInit()
 end
 
@@ -43,5 +42,5 @@ function update(dt)
 end
 
 function uninit()
-	baseUninit(self.modifierGroupID)
+	--baseUninit(self.modifierGroupID)
 end

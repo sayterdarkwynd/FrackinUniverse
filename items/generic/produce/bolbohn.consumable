@@ -1,19 +1,20 @@
 {
-  "itemName" : "bolbohn",
-  "rarity" : "Common",
-  "price" : 80,
-  "category" : "food",
-  "eventCategory" : "eventCrop",
-  "inventoryIcon" : "bolbohn.png",
-  "description" : "Effect:
-^cyan;+10% Crit Chance^reset;",
-  "shortdescription" : "Bolbohn",
-  "foodValue" : 3,
-  "tooltipKind" : "food",
+	"itemName": "bolbohn",
+	"inventoryIcon": "bolbohn.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 80,
 
-  "blockingEffects" : [
-    "wellfed"
-  ],
-  "effects" : [ [ "critchance1" ] ],
-  "learnBlueprintsOnPickup" : [ "avikanmeal", "bolbohnjam", "spicebol" ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+10% Crit Chance^reset;: 1m",
+	"shortdescription": "Bolbohn",
+
+	"eventCategory": "eventCrop",
+	"learnBlueprintsOnPickup": ["avikanmeal", "bolbohnjam", "spicebol"],
+	"effects": [
+		[{
+			"effect": "critchance1",
+			"duration": 60
+		}]
+	]
 }

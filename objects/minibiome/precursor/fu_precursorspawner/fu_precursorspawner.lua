@@ -1,6 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 local requiredPower = 0
 
 function init()
@@ -84,6 +84,10 @@ function update(dt)
 					params.statusSettings = baseParams.statusSettings or {}
 					params.statusSettings.stats = baseParams.statusSettings.stats or {}
 					params.statusSettings.stats.boozeImmunity = {baseValue = 1.0}
+					params.statusSettings.statusProperties = params.statusSettings.stats.statusProperties or {}
+					params.statusSettings.statusProperties.fu_precursorSpawned = true
+					
+					params.anchorName = object.name() --to make ship pets spawned by it not despawn
 					
 					params.behaviorConfig = util.mergeTable(baseParams.behaviorConfig or {}, params.behaviorConfig or {})
 					
@@ -91,7 +95,7 @@ function update(dt)
 					else
 						params.deathBehavior = "monster-death"
 						params.behaviorConfig.deathActions = params.behaviorConfig.deathActions or {}
-						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
+						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {aimDirection={0,-1},projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
 					end
 					
 					for actionType, actions in pairs (params.behaviorConfig) do
@@ -116,7 +120,8 @@ function update(dt)
 					end
 					
 					if monsterType and params.seed then
-						world.spawnMonster(monsterType, spawnPosition, params);
+						local monsterId = world.spawnMonster(monsterType, spawnPosition, params);
+						world.callScriptedEntity(monsterId, "setAnchor", entity.id())	--to allow ship pets to be spawned
 					end
 				end
 				storage.crafting = false

@@ -32,20 +32,20 @@ function update(dt)
     end
 
     if not self.returning then
-      mcontroller.approachVelocity({0, 0}, self.controlForce) 
+      if self.controlForce then mcontroller.approachVelocity({0, 0}, self.controlForce) end
       if (not self.ignoreTerrain and mcontroller.isColliding()) or vec2.mag(mcontroller.velocity()) < self.minVelocity then
         self.returning = true
       end
     else
       local toTarget = world.distance(self.targetPosition or world.entityPosition(self.ownerId), mcontroller.position())
-      if vec2.mag(toTarget) < self.pickupDistance then
+      if self.pickupDistance and (vec2.mag(toTarget) < self.pickupDistance) then
         projectile.die()
-      elseif projectile.timeToLive() < self.timeToLive * 0.5 then
+      elseif self.timeToLive and (projectile.timeToLive() < self.timeToLive * 0.5) then
         mcontroller.applyParameters({collisionEnabled=false})
         mcontroller.approachVelocity(vec2.mul(vec2.norm(toTarget), self.speed), 500)
-      elseif vec2.mag(toTarget) < self.snapDistance then
+      elseif self.snapDistance and (vec2.mag(toTarget) < self.snapDistance) then
         mcontroller.approachVelocity(vec2.mul(vec2.norm(toTarget), self.speed), 500)
-      else
+      elseif self.controlForce then
         mcontroller.approachVelocity(vec2.mul(vec2.norm(toTarget), self.speed), self.controlForce)
       end
     end

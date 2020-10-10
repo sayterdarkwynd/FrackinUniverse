@@ -1,17 +1,17 @@
 {
   "itemName" : "fubonearmor3chest",
-  "price" : 11000,
+  "price" : 3680,
   "inventoryIcon" : "icons.png:chest",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+250% Oxygen, 
-Elder/Precursor: ^green;+3.5%^reset; Crit
-^#a94db3;50%^reset; Cosmic and ^#a94db3;50%^reset; Shadow resistance
-^cyan;Immune^reset;: All radiation, Gas, Shadow",
+^yellow;^reset; +^green;250^reset;% Oxygen, 
+^yellow;^reset; ^cyan;Undying Resolve^reset;: 30%
+^yellow;^reset; Elder/Precursor: +^green;3.5^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: All Rads, Gas, Shadow",
   "shortdescription" : "Necrontir Plate",
-  "category" : "t8armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -49,6 +49,16 @@ Elder/Precursor: ^green;+3.5%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.044445
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.044445
     }
   ],
   
@@ -57,14 +67,6 @@ Elder/Precursor: ^green;+3.5%^reset; Crit
     {
       "stat" : "fu_necroset_chest",
       "amount" : 1
-    },  
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.2
-    },  
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.2
     }
   ], 
 
@@ -93,5 +95,7 @@ Elder/Precursor: ^green;+3.5%^reset; Crit
     { "ffca8a" : "ff5ef1", "e0975c" : "c649ba", "a85636" : "a82688", "6f2919" : "7d172c" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

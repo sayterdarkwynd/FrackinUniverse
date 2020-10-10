@@ -1,12 +1,15 @@
 {
   "name" : "percenthealthboostapex",
-  "effectConfig" : {
-    "healthDown" : 0.05
-  },
+	"effectConfig": {
+		"stats": [{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.05
+		}]
+	},
   "defaultDuration" : 30,
 
   "scripts" : [
-    "percenthealthboost.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
   
   "animationConfig" : "percenthealthboost.animation"

@@ -7,7 +7,7 @@
   "description" : "A sword made out of slime.  Strange, but effective.",
   "shortdescription" : "Slime Sword II",
   "tooltipKind" : "sword",
-  "learnBlueprintsOnPickup" : [ "slimesword3" ],
+//  "learnBlueprintsOnPickup" : [ "slimesword3" ],
   "category" : "broadsword",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","slime", "bioweapon", "broadsword","upgradeableWeapon"],
@@ -23,12 +23,15 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "bioweapon",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.89,
-    "baseDps" : 7
+    "baseDps" : 7,
+    "damageConfig" : {
+      "damageSourceKind": "bioweaponbroadsword"
+    }
   },
   "critChance" : 1,
   "critBonus" : 2,

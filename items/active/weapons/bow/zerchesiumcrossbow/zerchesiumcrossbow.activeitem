@@ -9,7 +9,7 @@
   "level" : 3,
   "tooltipKind" : "gun2",
   "category" : "crossbow",
-  "itemTags" : ["weapon","ranged","crossbow","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","crossbow","upgradeableWeapon","zerchesium"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -47,7 +47,7 @@
     "projectileType" : "icebolt",
     "projectileParameters" : {
       "knockback" : 25,
-      "damageSourceKind" : "bow"
+      "damageKind" : "icebow"
     },
     "stances" : {
       "idle" : {
@@ -83,5 +83,7 @@
 
   "critChance" : 5,
   "critBonus" : 3,
+  "isCrossbow" : 1,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

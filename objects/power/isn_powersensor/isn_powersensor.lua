@@ -1,8 +1,8 @@
-require'/scripts/power.lua'
+require'/scripts/fupower.lua'
 
 function update(dt)
   ---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
-  local powerLevel = power.getTotalEnergy()
+  local powerLevel = power.getTotalEnergyNoBattery()
   ---sb.logInfo("PSRD: powerLevel is " .. powerLevel)
 
   if not powerLevel then

@@ -1,17 +1,19 @@
 {
-  "name" : "energyregenfu_proto",
-  "effectConfig" : {
-    "regenAmount" : 1.20,
-    "regenBlockAmount" : 0.90
-  },
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "energyregenfu.lua"
-  ],
-
-  "animationConfig" : "energyregenfu.animation",
-
-  "label" : "+20% Energy Regen",
-  "icon" : "/interface/statuses/energyregen2.png"
+	"name": "energyregenfu_proto",
+	"effectConfig": {
+		"stats": [{
+				"stat": "energyRegenPercentageRate",
+				"baseMultiplier": 1.2
+			},
+			{
+				"stat": "energyRegenBlockTime",
+				"baseMultiplier": 0.9
+			}
+		]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
+	"animationConfig": "energyregenfu.animation"
 }

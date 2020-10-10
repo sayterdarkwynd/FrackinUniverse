@@ -3,7 +3,7 @@
   "colonyTags" : [ "machines" ],
   "printable" : false,
   "rarity" : "rare",
-  "description" : "An assembly line for processing raw materials into finished products.\nRequires about ^orange;40W ^cyan;power.^reset;",
+  "description" : "An assembly line for processing raw materials into finished products.\nRequires about ^orange;140W ^cyan;power.^reset;",
   "shortdescription" : "^cyan;Manufacturing Station^reset;",
   "subtitle" : "",
   "race" : "generic",
@@ -57,7 +57,7 @@
   },
 
 
-  "scripts" : [ "/scripts/power.lua", "mfgstation.lua", "/scripts/npcToyObject.lua"],
+  "scripts" : [ "/scripts/fupower.lua", "mfgstation.lua", "/scripts/npcToyObject.lua"],
   "scriptDelta" : 5,
   "recipeGroup" : "mfgstation",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
@@ -70,8 +70,8 @@
   "outputNodes" : [ [0, 0] ],
 
   "powertype" : "input",
-  "isn_requiredPower" : 40,
-
+  "isn_requiredPower" : 140,
+  "soundEffectRangeMultiplier" : 0.05,
 
   "npcToy" : {
     "influence" : [

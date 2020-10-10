@@ -4,11 +4,11 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^orange;Set Bonuses^reset;
-^#cyan;21%^green; all Elemental Resists^reset;
-^cyan;Immune: Radiation, Rad Burns, Pus, Liq. Nitrogen^reset;",
+  "description" : "^cyan;Headlamp^reset;
+^orange;Set Bonuses^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Radiation, Rad Burns, Pus, Liq. Nitrogen",
   "shortdescription" : "E.V.A Helmet",
-  "category" : "t3armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -38,6 +38,26 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.034286
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.034286
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.034286
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.034286
     }
   ],
 
@@ -47,22 +67,6 @@
     {
       "stat" : "evasetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -91,5 +95,7 @@
     {"0e779a" : "9a0e8b", "139ac6" : "c713b4", "30fdfd" : "fc62f0", "f0ffff" : "f8dcfe", "664206" : "660655", "875808" : "880871", "ffbd00" : "ff01b4", "ffe15c" : "fe5ec4"},
     /* BROWN */
     {"0e779a" : "694d3f", "139ac6" : "886452", "30fdfd" : "b68b78", "f0ffff" : "e9ddd5", "664206" : "4b3c31", "875808" : "604c3e", "ffbd00" : "a38767", "ffe15c" : "c4b59e"}
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

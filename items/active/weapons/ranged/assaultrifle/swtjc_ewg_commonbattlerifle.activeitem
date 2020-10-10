@@ -3,9 +3,9 @@
   "price" : 900,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "An automatic rifle that fires more powerful rounds than an ordinary assault rifle, with better accuracy, at the cost of rate-of-fire.",
+  "description" : "Fires more powerful rounds than an ordinary assault rifle, with better accuracy, at the cost of rate-of-fire.",
   "shortdescription" : "Common Battle Rifle",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_battleRifle",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
@@ -20,7 +20,7 @@
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    }    
+    }
   },
   "baseOffset" : [-1.0, 0.25],
   "muzzleOffset" : [0.0, 0.3125],
@@ -34,7 +34,7 @@
     "class" : "GunFire",
 
     "fireTime" : [0.14, 0.18],
-    "baseDps" : [9.7, 10.7],
+    "baseDps" : [8.7, 10.7],
     "energyUsage" : [27, 30],
     "inaccuracy" : 0.02,
 
@@ -75,6 +75,15 @@
     }
   },
   "fireSounds" : [ "/sfx/gun/pistol1.ogg", "/sfx/gun/pistol2.ogg", "/sfx/gun/pistol3.ogg", "/sfx/gun/pistol4.ogg", "/sfx/gun/pulserifle1.ogg", "/sfx/gun/pulserifle2.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg", "/sfx/gun/sniper1.ogg", "/sfx/gun/sniper2.ogg", "/sfx/gun/sniper3.ogg", "/sfx/gun/sniper4.ogg", "/sfx/gun/dragonhead_fire1.ogg" ],
+
+
+  "critChance": 1,
+  "critBonus" : 3,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [8,20],
+  "reloadTime" : [0.95,2.25],
+  "isAssaultRifle" : 1,
+
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -118,7 +127,7 @@
 
       "swtjc_ewg_cellspray",
       "swtjc_ewg_darkplasma",
-      
+
       "swtjc_ewg_forceshield",
       "swtjc_ewg_globelauncher",
       "swtjc_ewg_phaseburst",
@@ -128,7 +137,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 3
+  }]
 }

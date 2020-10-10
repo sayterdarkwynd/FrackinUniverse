@@ -1,0 +1,78 @@
+{
+	"stats": [
+		{ "stat": "maxFood", "effectiveMultiplier": 0.75 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.9 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
+		{ "stat": "electricResistance", "amount": 0.4 },
+		{ "stat": "fireResistance", "amount": -0.2 },
+		{ "stat": "poisonResistance", "amount": 0.4 },
+		{ "stat": "shadowResistance", "amount": -0.2 },
+		{ "stat": "cosmicResistance", "amount": 0.25 }
+	],
+	"diet" : "carnivore",
+	"controlModifiers": {
+		"speedModifier": 1.06,
+		"airJumpModifier": 1.06
+	},
+	"envEffects": [
+		{
+			"biomes": [ "savannah" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.15 }
+			]
+		}
+	],
+	"weaponEffects": [
+		{
+			"weapons": [ "boomerang", "chakram", "spear" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 },
+				{ "stat": "critChance", "amount": 2 }
+			]
+		},
+		{
+			"weapons": [ "spear" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier": 1.2 }
+			]
+		},
+		{
+			"name" : "fr_velocitybonus",
+			"weapons" : [ "melee" ],
+			"scripts" : [
+				{
+					"script" : "/scripts/fr_weaponscripts/velocitybonus.lua",
+					"contexts" : [ "hey FR, i'm not passive, you retard" ],
+					"args" : {}
+				}
+			]
+		}
+	],
+	"weaponScripts": [
+		{
+			"script": "/scripts/fr_weaponscripts/hungercost.lua",
+			"weapons": [ "spear" ],
+			"contexts": [ "spearstab-fire" ],
+			"args": {
+				"food": -0.05
+			}
+		}
+	],
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/feneroxStuff.lua",
+			"args" : {
+				"foodDefault" : 1.0,
+				"foodThreshold" : 0.65,
+				"healingRate" : 0.0045,
+				"stats" : [
+					{ "stat" : "maxHealth", "effectiveMultiplier" : 1.08 },
+					{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.08}
+				]
+			}
+		}
+	],
+	"special": [ "headlampveluu"],
+	"tech" : [ "huntersclaw" ]
+}

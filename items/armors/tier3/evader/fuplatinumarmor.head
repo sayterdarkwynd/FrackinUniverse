@@ -5,21 +5,20 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-^a94db3;+25%^reset; Shield Regen, Stamina, Block^reset;
-^green;10%^reset; Physical Resist
-Shield and Sword: ^green;+8%^reset; Phys Resist",
+^yellow;^reset; +^green;25^reset;% Shield Regen, Stamina, Block
+^yellow;^reset; Shield and Sword: +^green;8^reset;% Phys. Resist",
 "shortdescription" : "Evader Helmet",
-  "category" : "t3armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "learnBlueprintsOnPickup" : [
-    "fumantizitier5spants",
-    "fumantizitier5schest",
-    "fumantizitier5shead"
-  ],
+ // "learnBlueprintsOnPickup" : [
+ //   "fumantizitier5spants",
+ //   "fumantizitier5schest",
+//    "fumantizitier5shead"
+//  ],
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
   "collectablesOnPickup" : { "fu_armortank" : "fuplatinumarmorhead" },
@@ -43,6 +42,11 @@ Shield and Sword: ^green;+8%^reset; Phys Resist",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.01665
     }
   ],
 
@@ -51,10 +55,6 @@ Shield and Sword: ^green;+8%^reset; Phys Resist",
     {
       "stat" : "evadersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.0333
     }
   ],
 
@@ -96,5 +96,7 @@ Shield and Sword: ^green;+8%^reset; Phys Resist",
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

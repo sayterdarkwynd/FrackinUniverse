@@ -21,7 +21,7 @@
 
     "swooshOffsetRegions" : [
       [0.75, 0.0, 4.25, 5.0],
-      [3.0, -0.5, 6.5, 2.0],
+      [2.0, -0.5, 2.5, 2.0],
       [1.5, -1.0, 5.5, 1.0]
     ],
 
@@ -41,17 +41,17 @@
     },
     "stepDamageConfig" : [
       {
-        "baseDamageFactor" : 1.0,
-        "knockback" : 15
+        "baseDamageFactor" : 0.8,
+        "knockback" : 7
       },
       {
         "baseDamageFactor" : 0.5,
         "statusEffects" : [ "castice", "frostslow" ],
-        "knockback" : 10
+        "knockback" : 7
       },
       {
         "baseDamageFactor" : 1.0,
-        "knockback" : 25
+        "knockback" : 10
       }
     ],
 
@@ -59,8 +59,9 @@
       "idle" : {
         "armRotation" : -90,
         "weaponRotation" : -10,
-        "allowRotate" : false,
-        "allowFlip" : true
+        "allowRotate" : true,
+        "allowFlip" : true,
+		"aimAngle":0
       },
       "windup1" : {
         "duration" : 0.1,
@@ -68,7 +69,7 @@
         "weaponRotation" : -10,
         "twoHanded" : false,
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : true
       },
       "preslash1" : {
@@ -77,7 +78,7 @@
         "weaponRotation" : -45,
         "twoHanded" : false,
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false
       },
       "fire1" : {
@@ -86,14 +87,14 @@
         "weaponRotation" : -55,
         "twoHanded" : false,
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : false
       },
       "wait1" : {
         "duration" : 0.2,
         "armRotation" : -45,
         "weaponRotation" : -55,
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : true,
         "twoHanded" : false
       },
@@ -120,7 +121,7 @@
         "armRotation" : -150,
         "weaponRotation" : 55,
         "weaponOffset" : [0, 0],
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : true,
         "twoHanded" : false
       },
@@ -130,7 +131,7 @@
         "weaponRotation" : 55,
         "twoHanded" : false,
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : true
       },
       "fire3" : {
@@ -139,7 +140,7 @@
         "weaponRotation" : -90,
         "twoHanded" : false,
 
-        "allowRotate" : false,
+        "allowRotate" : true,
         "allowFlip" : true
       }
     }

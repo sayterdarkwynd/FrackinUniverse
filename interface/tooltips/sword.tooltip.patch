@@ -25,7 +25,8 @@
       "hAnchor": "left",
       "vAnchor": "top",
       "wrapWidth": 134,
-      "value": "^orange;Crit %^reset;"
+      "value": "^#ee1414;Crit %^reset;",
+    "fontSize" : 6
     }
   },
   {
@@ -54,7 +55,8 @@
       "hAnchor": "left",
       "vAnchor": "top",
       "wrapWidth": 134,
-      "value": "^yellow;Dmg +^reset;"
+      "value": "^yellow;Dmg +^reset;",
+    "fontSize" : 6
     }
   },
   {
@@ -73,11 +75,26 @@
   },
   {
     "op": "add",
+    "path": "/levelTitleLabel",
+    "value": {
+      "type": "label",
+      "position": [
+        9,
+        196
+      ],
+      "hAnchor": "left",
+      "vAnchor": "top",
+      "value": "^yellow;Tier^reset;",
+      "wrapWidth": 134
+    }
+  },  
+  {
+    "op": "add",
     "path": "/levelLabel",
     "value": {
       "type": "label",
       "position": [
-        142,
+        30,
         196
       ],
       "hAnchor": "left",
@@ -85,32 +102,7 @@
       "wrapWidth": 134
     }
   },
-  {
-    "op": "add",
-    "path": "/energyPerShotTitleLabel",
-    "value": {
-      "type": "label",
-      "position": [
-        9,
-        50
-      ],
-      "hAnchor": "left",
-      "value": "Energy Cost:"
-    }
-  },
-  {
-    "op": "add",
-    "path": "/energyPerShotLabel",
-    "value": {
-      "type": "label",
-      "position": [
-        148,
-        50
-      ],
-      "hAnchor": "right",
-      "wrapWidth": 126
-    }
-  },
+
   {
     "op": "replace",
     "path": "/background/fileHeader",
@@ -129,7 +121,7 @@
   {
     "op": "replace",
     "path": "/altAbilityTitleLabel/position/1",
-    "value": 41
+    "value": 50
   },
   {
     "op": "replace",
@@ -139,7 +131,7 @@
   {
     "op": "replace",
     "path": "/altAbilityLabel/position/1",
-    "value": 41
+    "value": 50
   },
   {
     "op": "replace",

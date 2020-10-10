@@ -1,33 +1,41 @@
 {
-  "itemName" : "tyvokkhook",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "tyvokkhook.png",
-  "description" : "Effect:
-^cyan;Regen 2, +21 Max Health, +30 Max Energy^reset;",
-  "shortdescription" : "Tyvokk Hook",
-  "category" : "food",
+	"itemName": "tyvokkhook",
+	"inventoryIcon": "tyvokkhook.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-      "effects" : [ [
-      "maxhealthboost5", 
-      "maxenergyboost4",
-      {
-        "effect" : "regeneration2",
-        "duration" : 120
-      }
-    ] ],
-    
-  "blockingEffects" : [
-         "regeneration01",
-         "maxhealthboost1",
-         "maxhealthboost2",
-         "maxhealthboost3",
-         "maxhealthboost4",
-         "maxhealthboost5",
-         "maxenergyboost1",
-         "maxenergyboost2",
-         "maxenergyboost3",
-         "maxenergyboost4",
-         "maxenergyboost6"
-  ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+21 HP^reset;, ^cyan;+30 EP^reset;, ^cyan;Heal 80% HP^reset;: 2m",
+	"shortdescription": "Tyvokk Hook",
+
+	"effects": [
+		[
+			{
+				"effect": "maxhealthboost5",
+				"duration": 120
+			},
+			{
+				"effect": "maxenergyboost4",
+				"duration": 120
+			},
+			{
+				"effect": "regeneration2",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"regeneration01",
+		"maxhealthboost1",
+		"maxhealthboost2",
+		"maxhealthboost3",
+		"maxhealthboost4",
+		"maxhealthboost5",
+		"maxenergyboost1",
+		"maxenergyboost2",
+		"maxenergyboost3",
+		"maxenergyboost4",
+		"maxenergyboost6"
+	]
 }

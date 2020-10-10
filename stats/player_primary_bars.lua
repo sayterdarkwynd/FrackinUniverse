@@ -1,7 +1,8 @@
 local barsOldInit = init
+--local barsOldupdate = update
 
 function init()
-	barsOldInit()
+	if barsOldInit then barsOldInit() end
 	self.barsList = {}
 	message.setHandler("setBar", function(_, l, barName, barPercentage, barColor)
 		if not l then return end
@@ -11,13 +12,21 @@ function init()
 		if not l then return end
 		removeBar(barName)
     end)
-	
+    self.timerRemoveAmmoBar = 0
 end
+
 
 function overheadBars()
 
   local bars = {}
-
+  
+    --if self.timerRemoveAmmoBar > 10 then
+    --  world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
+    --  self.timerRemoveAmmoBar = 0
+    --else
+    --  self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + 1
+    --end 
+    
   if status.statPositive("shieldHealth") then
     table.insert(bars, {
       percentage = status.resource("shieldStamina"),
@@ -46,3 +55,9 @@ function setBar(barName,barPercentage,barColor)
 		stat = barStat
 	}
 end
+
+--[[
+function update(...)
+	if barsOldupdate then barsOldupdate(...) end
+end
+]]

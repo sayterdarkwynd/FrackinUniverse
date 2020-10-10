@@ -29,7 +29,12 @@ function init()
 	releaseWall()
 end
 
+function applyTechBonus()
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
+end
+
 function update(args)
+  applyTechBonus()
 	if not disabled(args) and args.moves["jump"] and canAbility(args) then
 		if not self.doingAbility then 
 			self.doingAbility = true

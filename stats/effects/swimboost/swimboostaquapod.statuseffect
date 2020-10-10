@@ -1,19 +1,16 @@
 {
   "name" : "swimboostaquapod",
-  "effectConfig" : {
-    "movementParameters" : {
-      "liquidImpedance" : 0.2,
-      "liquidForce" : 85,
-      "liquidFriction" : 4,
-      "liquidJumpProfile" : {
-        "jumpSpeed" : 50.0
-      }
-    }
-  },
+   	"effectConfig": {
+		"stats": [
+			{"stat": "boostAmount","amount": 1},
+			{"stat": "boostAmount","effectiveMultiplier": 1.25},
+			{"stat": "riseAmount","effectiveMultiplier": 1.25}
+		]
+	},
   "defaultDuration" : 220,
 
   "scripts" : [
-    "swimboost.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
   "animationConfig" : "swimboost1.animation",
   "label" : "Swim +",

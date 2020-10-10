@@ -32,6 +32,17 @@ function Pet:init(podUuid, json)
   if self.uniqueId then
     self.statusTimer = config.getParameter("statusTimer", 2)
   end
+  --[[
+	local elementaltypes=root.assetJson("/damage/elementaltypes.config")
+	local buffer={}
+
+
+	for element,data in pairs(elementaltypes) do
+		if data.resistanceStat then
+			buffer[data.resistanceStat]=true
+		end
+	end
+  self.resistanceList=buffer]]
 end
 
 function Pet:store()
@@ -155,20 +166,133 @@ function Pet:getPersistentEffects()
 
   -- The player's armor takes effect if the player is spawning the pet:
   if getPetPersistentEffects then
-    util.appendLists(effects, getPetPersistentEffects())
+	local buffer={}
+
+	--khe: overriding the vanilla function somewhat because it's too limited
+	
+	local armorEffects=status.getPersistentEffects("armor")
+	local filteredEffects={}
+
+	local petPersistentEffects = {
+		--powerMultiplier = true,--removing because we're handling it slightly differently.
+		protection = true,
+		maxHealth = true
+	  }
+	for _,button in pairs(armorEffects) do
+		if type(button)=="table" then
+			if petPersistentEffects[button.stat] then --or self.resistanceList[button.stat] then
+				table.insert(filteredEffects,button)
+			end
+		end
+	end
+	--we're using the player's stats, rather than just armor stats, now.
+	table.insert(filteredEffects,{stat="powerMultiplier",effectiveMultiplier=status.stat("powerMultiplier")})
+	--doing the same for hp regen with the upcoming changes to it
+	table.insert(filteredEffects,{stat="healthRegen",amount=status.stat("healthRegen")})
+    util.appendLists(effects,filteredEffects)
+    --util.appendLists(effects, getPetPersistentEffects())
+	
+
+	local aUSES=status.activeUniqueStatusEffectSummary()
+	for _,pit in pairs(aUSES) do
+		buffer[pit[1]]=true
+		--sb.logInfo("aUSES: %s",aUSES)
+	end
+	aUSES=buffer
+	buffer={}
+	
+	local frackinPetStatEffectsMetatable=status.statusProperty("frackinPetStatEffectsMetatable",{})
+	--sb.logInfo("status.stat(powerMultiplier):%s",status.stat("powerMultiplier"))--works
+	--sb.logInfo("fpsem 1: %s",frackinPetStatEffectsMetatable)
+	local frackinPetStatEffectsMetatableBuffer={}
+	local frackinPetStatEffectsMetatableDirty=false
+	for bonusHandle,effectList in pairs(frackinPetStatEffectsMetatable) do
+		if aUSES[bonusHandle] then
+			if type(effectList)=="table" then
+				for _,statEffect in pairs(effectList) do
+					--try to keep them unique
+					frackinPetStatEffectsMetatableBuffer[statEffect]=true
+				end
+				--debug, to see if this actually works:
+			else
+				sb.logInfo("petspawner.lua pet stat handler: HEY MORON, USE TABLES, NOT OTHER VALUES. frackinPetStatEffectsMetatableBuffer={bonusHandle={\"statuseffect1\",\"statuseffect2\"}} as example. not this crap: %s",effectList)
+			end
+		else
+			frackinPetStatEffectsMetatable[bonusHandle]=nil
+			frackinPetStatEffectsMetatableDirty=true
+		end
+	end
+	if frackinPetStatEffectsMetatableDirty then
+		status.setStatusProperty("frackinPetStatEffectsMetatable",frackinPetStatEffectsMetatable)
+	end
+	--sb.logInfo("fpsemb 1: %s",frackinPetStatEffectsMetatableBuffer)
+	for statEffect,_ in pairs(frackinPetStatEffectsMetatableBuffer) do
+		table.insert(buffer,statEffect)
+	end
+	frackinPetStatEffectsMetatableBuffer=buffer
+	buffer={}
+	--table.insert(frackinPetStatEffectsMetatableBuffer,"fudarkcommander30")
+	--sb.logInfo("fpsemb 2: %s",frackinPetStatEffectsMetatableBuffer)
+	util.appendLists(effects,frackinPetStatEffectsMetatableBuffer)
+	
     -- ~Psi:  Provide a bonus to the pet's base max health, and some minor regen, so it sucks less:
     -- ~Psi:  Total bonus is x4, but we only multiply by 3, since the player's bonusHealth has already been added once
-    local playerHealthBonus = world.entityHealth(player.id())[2]
+    --local playerHealthBonus = world.entityHealth(player.id())[2]--pointless.
+    local playerHealthBonus = status.resourceMax("health")
     playerHealthBonus = playerHealthBonus - 100
     if playerHealthBonus < 10 then playerHealthBonus = 10 end
     local petHealthBonus = playerHealthBonus * 3
+
+
+
+    --************* FU special pet stats
+	--khe: phasing this particular variant out
+    --[[local playerProtectionBonus = 0
+    for _, armourEffect in ipairs (effects) do
+        if armourEffect.stat == "protection" then
+            playerProtectionBonus = playerProtectionBonus + armourEffect.amount
+            petHealthBonus = (playerHealthBonus + playerProtectionBonus ) * 1.5 --we add the current Protection of the player x1.5 as bonus health
+        end
+    end]]
+	--khe: we now take into account the actual current value of the player's stats. though slightly delayed.
+	petHealthBonus=(petHealthBonus+status.stat("protection"))*1.5
+
+	--below comment is more or less false. pet stats are periodically refreshed
+    --below stats are currently unused, as they need to be linked to update, or they will be permanent after summon, which isnt the intent for them
+	--[[
+    if config.getParameter("isNocturnal") then  --is it nocturnal?
+      if  world.lightLevel <=0.5 then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end
+    end
+    if config.getParameter("isDiurnal") then -- does it prefer the day?
+      if world.lightLevel > 0.5 then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end
+    end
+    if config.getParameter("isSurface") then -- does it prefer the surface?
+      if world.inSurfaceLayer then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end
+    end
+    if config.getParameter("isSubterrain") then -- does it prefer being underground?
+      if world.underground then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end
+    end
+    if config.getParameter("isWindy") then -- does it prefer windy worlds?
+      if world.windLevel >=10 then
+          local petHealthBonus = playerHealthBonus * 1.15
+      end
+    end
+    ]]
     -- New Regen formula
     -- https://www.desmos.com/calculator/mmv4okrc6f
     local petRegenBonus = math.log(playerHealthBonus * 0.05 + 1) / math.log(10) * 5
-    -- Old Regen formula
-    -- local petRegenBonus = playerHealthBonus * 0.05
+
     -- Health Bonus
     util.appendLists(effects, {{stat="maxHealth",amount=petHealthBonus},{stat="healthRegen",amount=petRegenBonus}})
+
     -- ~Psi:  Debugging info
     sb.setLogMap("~[Pet Stats] playerHealthBonus", "%s", tostring(playerHealthBonus))
     sb.setLogMap("~[Pet Stats] petHealthBonus", "%s", tostring(petHealthBonus + playerHealthBonus))
@@ -180,6 +304,8 @@ function Pet:getPersistentEffects()
     util.appendLists(effects, self.collar.effects)
   end
 
+	
+	--sb.logInfo("%s",effects)
   return effects
 end
 

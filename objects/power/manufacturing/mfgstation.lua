@@ -1,6 +1,6 @@
 require "/scripts/fu_storageutils.lua"
 require "/scripts/KheAA/transferUtil.lua"
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 
 
 -- list of items to exlude from prototyping
@@ -23,7 +23,12 @@ recipeExclusionList = {
 		terraforge=true,
 		beakeasy=true,
 		teleshop=true,
-		treasuredtrophies=true
+		treasuredtrophies=true,
+		esoteric = true,
+		esoteric1 = true,
+		esoteric2 = true,
+		esoteric3 = true,
+		paintingeasel = true
 	}
 }
 
@@ -34,6 +39,12 @@ outputExclusionList = {
 	tags={
 		--could put stuff here
 	},
+	crunchychick = true,
+	crunchychickdeluxe = true,
+	evilchick = true,
+	fumadnessresource=true,
+	fuscienceresource=true,
+	money=true,
 	copperbar=true,
 	ironbar=true,
 	silverbar=true,
@@ -73,7 +84,6 @@ local deltaTime = 0
 
 function init()
 	power.init()
-	transferUtil.init()
 	self.mintick = math.max(script.updateDt(),0.0167)--0.0167 (1/60 of a second) is minimum due to frames/second limit.
 	storage.timer = storage.timer or self.mintick
 	storage.powerTimer = 0
@@ -220,11 +230,11 @@ end
 
 
 function update(dt)
-	if not deltaTime or (deltaTime > 1) then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
     storage.timer = storage.timer - dt

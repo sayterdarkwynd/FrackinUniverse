@@ -4,12 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^orange;Set Bonus^reset;:
-^a94db3;+35%^reset; Ice Resistance
-2-Handed or Axes^green;+4.5^reset; Crit Chance, ^#a94db3;+25%^reset; Dmg
-^cyan;Immune^reset;: Ice status effects.",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;0.3^reset;% Knockback Resistance
+^yellow;^reset; Axes or 2-Handed Melee: +^green;4.5^reset; Crit Chance, Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Ice status effects.",
   "shortdescription" : "Savage Bear Coat",
-  "category" : "t4armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -46,6 +46,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.048
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -54,10 +59,6 @@
     {
       "stat" : "fu_bearset2_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.12
     }
   ],
 
@@ -97,5 +98,7 @@
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

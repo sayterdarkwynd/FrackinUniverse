@@ -11,13 +11,15 @@
   "level" : 2,
   "tooltipKind" : "gun2",
   "weaponType" : "Plasma",
-  "itemTags" : ["weapon","ranged","machinepistol","electric","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","machinepistol","electric","upgradeableWeapon","veluu"],
   "twoHanded" : false,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
+    "butt" : "",
     "middle" : "veluupistol.png",
     "middlefullbright" : "",
+    "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastlightblue.png"
   },
   "animationCustom" : {
@@ -92,6 +94,10 @@
 
   "critChance" : 1,
   "critBonus" : 3, 
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   
@@ -108,7 +114,7 @@
 	      "bounces" : 2,
 	      "speed" : 64,
 	      "knockback" : 7.5,
-      	      "statusEffects" : [ "electrified", "stun" ]
+      	      "statusEffects" : [ "electrified" ]
 	    }      
 	  }
       },
@@ -125,7 +131,7 @@
 	      "bounces" : 4,
 	      "speed" : 64,
 	      "knockback" : 8.5,
-      	      "statusEffects" : [ "electrified","stun" ]
+      	      "statusEffects" : [ "electrified" ]
 	    }      
 	  }
       }      

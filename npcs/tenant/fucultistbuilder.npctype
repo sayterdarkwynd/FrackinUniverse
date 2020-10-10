@@ -1,6 +1,6 @@
 {
 	"type": "fucultistbuilder",
-	"baseType": "merchanttenant",
+	"baseType": "merchant",
 
 	"damageTeam": 1,
 
@@ -14,134 +14,94 @@
 		"questGenerator": {
 			"pools": ["common", "tenant"],
 			"enableParticipation": true,
-			"timeLimit": 5,
+			"timeLimit": 5
+		},
 
-			"graduation": {
-				"nextNpcType": [
-					[1, "crewmember"],
-					[0.2, "crewmemberhobo"],
-					[0.1, "crewmembergreg"],
-					[0.7, "crewmembercultist"]
-				]
+		"graduation": {
+			"nextNpcType": [
+				[1, "crewmember"],
+				[0.2, "crewmemberhobo"],
+				[0.1, "crewmembergreg"],
+				[0.7, "crewmembercultist"]
+			]
+		},
+
+		"merchant": {
+			"waitTime": 40,
+			"storeRadius": 8,
+			"poolsFile": "/npcs/merchantpools.config",
+			"categories": {
+				"override": ["futemplemerchant"]
 			},
+			"buyFactorRange": [1.2, 3.0],
+			"sellFactorRange": [0.05, 0.05],
+			"numItems": 12,
+			"paneLayoutOverride": {
+				"windowtitle": {
+					"title": "  Eldritch Temple Construction",
+					"subtitle": "  The Building Blocks of Madness"
 
-			"merchant": {
-				"waitTime": 40,
-				"storeRadius": 8,
-				"categories": {
-					"fudarkizku": ["futemplemerchant"]
-				},
-				"buyFactorRange": [1.0, 1.0],
-				"sellFactorRange": [0.2, 0.2],
-				"numItems": 12,
-				"paneLayoutOverride": {
-					"windowtitle": {
-						"title": "  Eldritch Temple Construction",
-						"subtitle": "  The Building Blocks of Madness"
-
-					}
-				}
-			},
-
-			"dialog": {
-				"merchant": {
-					"start": {
-						"default": {
-							"default": [
-								"F'ilyaa uln'yar!",
-								"buildbuildbuildbuildbuildbuild...",
-								"Hup mggokai ya ng c' ahor ah'lw'nafh syha'h!",
-								"Ph' ya mgepog r'luhhor uaaahll."
-							]
-						}
-					},
-					"welcome": {
-						"default": {
-							"default": [
-								"C' ph'nglui c' mgepnah uh'eagl!",
-								"Ymg' ah l' gotha mggokai?",
-								"*groaning*"
-							]
-						}
-					},
-					"end": {
-						"default": {
-							"default": [
-								"Y'vulgtlagln c'athg!",
-								"C' ah ephaiagl!",
-								"Fahf vulgtmagl ah ahehyee uaaah!",
-								"Nogephaii ephaiaglor."
-							]
-						}
-					},
-					"follow": {
-						"default": {
-							"default": [
-								"Llll nog ya...",
-								"Ah'hri..."
-							]
-						}
-					},
-					"tout": {
-						"default": {
-							"default": [
-								"Vulgtmor ymg' pixels!",
-								"Uaaahll'Uaaahll'Uaaahll'Uaaahll'Uaaahll!"
-							]
-						}
-					}
-				},
-				"tenant": {
-					"grumbles": {
-						"tagCriteria": "/dialog/merchant.config:tagCriteria",
-						"enclosedArea": "/dialog/merchant.config:enclosedArea",
-						"otherDeed": "/dialog/merchant.config:otherDeed",
-						"severe": "/dialog/merchant.config:severe",
-						"final": "/dialog/merchant.config:final"
-					},
-					"arrivedHome": {
-						"beacon": {
-							"default": {
-								"default": [
-									"Y' ah'lw'nafh ephaii!"
-								]
-							},
-							"rent": {
-								"default": {
-									"default": [
-										"Geb ah goka."
-									]
-								}
-							}
-						}
-					}
-				},
-
-				"items": {
-					"override": [
-						[0, [{
-							"head": [{
-								"name": "cultcrown",
-								"parameters": {
-									"colorIndex": 0
-								}
-							}],
-							"chest": [{
-								"name": "cultarmorchest",
-								"parameters": {
-									"colorIndex": 0
-								}
-							}],
-							"legs": [{
-								"name": "cultarmorpants",
-								"parameters": {
-									"colorIndex": 0
-								}
-							}]
-						}]]
-					]
 				}
 			}
+		},
+
+		"dialog": {
+			"merchant": {
+				"start": "/dialog/eldermerchant.config:merchantStart",
+				"end": "/dialog/eldermerchant.config:merchantEnd",
+				"follow": "/dialog/eldermerchant.config:follow",
+				"welcome": "/dialog/eldermerchant.config:welcome",
+				"tout": "/dialog/eldermerchant.config:tout"
+			},
+			"flee": {
+				"helpme": "/dialog/flee.config:helpme",
+				"safe": "/dialog/flee.config:safe"
+			},
+			"tenant": {
+				"grumbles": {
+					"tagCriteria": "/dialog/eldermerchant.config:tagCriteria",
+					"enclosedArea": "/dialog/eldermerchant.config:enclosedArea",
+					"otherDeed": "/dialog/eldermerchant.config:otherDeed",
+					"severe": "/dialog/eldermerchant.config:severe",
+					"final": "/dialog/eldermerchant.config:final"
+				},
+				"arrivedHome": {
+					"beacon": "/dialog/eldermerchant.config:beacon",
+					"rent": "/dialog/eldermerchant.config:rent"
+				}
+			},
+			"accuse": "/dialog/thief.config:accuse",
+			"alert": "/dialog/thief.config:alert"
+
+
 		}
+
+
+	},
+
+	"items": {
+		"override": [
+			[0, [{
+				"head": [{
+					"name": "cultcrown",
+					"parameters": {
+						"colorIndex": 0
+					}
+				}],
+				"chest": [{
+					"name": "cultarmorchest",
+					"parameters": {
+						"colorIndex": 0
+					}
+				}],
+				"legs": [{
+					"name": "cultarmorpants",
+					"parameters": {
+						"colorIndex": 0
+					}
+				}]
+			}]]
+		]
 	}
+
 }

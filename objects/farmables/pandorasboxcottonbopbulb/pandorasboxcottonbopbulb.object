@@ -1,0 +1,69 @@
+{
+  "objectName" : "pandorasboxcottonbopbulb",
+  "colonyTags" : ["nature"],
+  "rarity" : "Common",
+  "category" : "seed",
+  "description" : "Grows a Cottonbop monster.",
+  "shortdescription" : "Cottonbop Bulb",
+  "printable" : false,
+  "price" : 15,
+
+  "apexDescription" : "This little plant will grow into a Cottonbop.",
+  "avianDescription" : "Growing monsters? Hope that's safe..",
+  "floranDescription" : "Floran alwaysss wanted a new friend!",
+  "glitchDescription" : "Excited. This plant will yield a Cottonbop.",
+  "humanDescription" : "I tried eating a Cottonbop once... Never again.",
+  "hylotlDescription" : "Hopefully it will be appreciative enough to not attack me for growing it.",
+  "novakidDescription" : "Cottonbop plant huh? Guess I can put my green thumb to good use!",
+
+  "inventoryIcon" : "pandorasboxcottonbopbulbicon.png",
+
+  "tooltipKind" : "seed",
+  "largeImage" : "pandorasboxcottonbopbulb.png:default.2.0",
+
+
+  "orientations" : [
+    {
+      "dualImage" : "pandorasboxcottonbopbulb.png:<color>.<stage>.<alt>",
+      "imagePosition" : [0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaces" : [ [0, 0], [0, 1], [1, 0], [1, 1] ],
+      "requireTilledAnchors" : true,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "radioMessagesOnPickup" : [ "pickupseed" ],
+
+  "stages" : [
+    {"duration" : [60, 80]},
+    {"duration" : [60, 80]},
+    {
+      "alts" : 3,
+      "harvestPool" : "pandorasboxcottonbopbulbHarvest",
+	  "spawnMonster" : "pandorasboxcottonbophomegrown",
+	  "monsterParameters" : {
+		"damageTeamType" : "friendly",
+		"persistent" : true,
+		"level" : 1,
+		"aggressive" : false,
+		"relocatable" : true
+	  }
+    }
+  ],
+
+  "maxImmersion" : 0.25,
+
+  "animation" : "/scripts/pandorasbox/objects/pandorasboxfarmableobject.animation",
+
+  "animationParts" : {
+    "base" : "pandorasboxcottonbopbulb.png"
+  },
+
+  "scripts" : [ "/scripts/pandorasbox/objects/pandorasboxfarmableobject.lua" ],
+  "scriptDelta" : 60,
+
+  "breakDropPool" : "empty"
+}

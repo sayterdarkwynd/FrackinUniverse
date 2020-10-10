@@ -10,7 +10,7 @@ function init()
   
   message.setHandler("onTeleport", function(message, isLocal, data)
       if not storage.vanishTime then
-        storage.vanishTime = world.time() + config.getParameter("vanishTime")
+        storage.vanishTime = world.time() + config.getParameter("vanishTime",15)
       end
     end)
 

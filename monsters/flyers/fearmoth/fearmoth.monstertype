@@ -33,7 +33,7 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 30,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
@@ -60,8 +60,8 @@
           "cooldown" : 2,
           "parameters" : {
             "landDirection" : [0, -1],
-            "flySpeed" : 12,
-            "flyControlForce" : 20,
+            "flySpeed" : 16,
+            "flyControlForce" : 30,
             "idleTime" : [1,12],
             "landState" : "idle"
           }
@@ -83,11 +83,11 @@
         },
         {
           "name" : "land-fly",
-          "cooldown" : 2,
+          "cooldown" : 5,
           "parameters" : {
             "landDirection" : [0, -1],
-            "flySpeed" : 12,
-            "flyControlForce" : 20,
+            "flySpeed" : 15,
+            "flyControlForce" : 30,
             "idleTime" : [1,2],
             "landState" : "idle"
           }
@@ -100,8 +100,8 @@
           "cooldown" : 2,
           "parameters" : {
             "landDirection" : [0, -1],
-            "flySpeed" : 12,
-            "flyControlForce" : 20,
+            "flySpeed" : 15,
+            "flyControlForce" : 40,
             "idleTime" : [2,4],
             "landState" : "idle"
           }
@@ -109,7 +109,7 @@
         {
           "name" : "wander-fly",
           "parameters" : {
-            "wanderTime" : [2,4],
+            "wanderTime" : [4,12],
             "groundDistance" : 4,
             "ceilingDistance" : 2,
             "xVelocity" : 4,
@@ -118,9 +118,7 @@
         }
       ],
 
-      "deathActions" : [
-
-      ],
+      "deathActions" : [],
 
       "concurrentActions" : [ ],
 
@@ -154,7 +152,7 @@
 
       "mass" : 0.5,
       "walkSpeed" : 4,
-      "runSpeed" : 12,
+      "runSpeed" : 14,
       "gravityEnabled" : false,
 
       "airFriction" : 4,
@@ -205,12 +203,12 @@
           "baseValue" : 1.0
         },
         "shadowResistance" : { "baseValue" : 1.0 },
-        "poisonResistance" : { "baseValue" : -0.2 },
-        "cosmicResistance" : { "baseValue" : -0.25 },
+        "poisonResistance" : { "baseValue" : 0.2 },
+        "cosmicResistance" : { "baseValue" : 0.25 },
         "radioactiveResistance" : { "baseValue" : -0.2 },
         "iceResistance" : { "baseValue" : 0.2 },
         "fireResistance" : { "baseValue" : -0.4 },
-        "physicalResistance" : { "baseValue" : 0.7 },
+        "physicalResistance" : { "baseValue" : -0.2 },
         "electricResistance" : { "baseValue" : 0.7 }          
       },
 

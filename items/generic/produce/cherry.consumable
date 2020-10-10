@@ -1,18 +1,19 @@
 {
   "itemName" : "cherry",
-  "rarity" : "Common",
   "inventoryIcon" : "cherry.png",
-  "description" : "A fresh cherry, red and delicious!",
-  "shortdescription" : "Cherry",
   "category" : "food",
-  "eventCategory" : "eventCrop",
-  "foodValue" : 1,
   "price" : 3,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
+  "rarity" : "Common",
   "maxStack" : 100,
+  "foodValue" : 1,
+  
+  "tooltipKind": "food",
+  "description" : "A fresh cherry, red and delicious! ^green;Type: Plant^reset;",
+  "shortdescription" : "Cherry",
+  "effects" : [ [ "plant_food" ] ],
+  "eventCategory" : "eventCrop",
+  "builder" : "/items/buildscripts/buildfood.lua",
   "itemAgingScripts" : ["/scripts/items/rotting.lua"],
   "rottingMultiplier" : 1.0,
-  "effects" : [ ],
   "learnBlueprintsOnPickup" : [ "cherryschnapps", "cherrycrumble", "cherrymash", "cherryjam", "cherrypie", "cherryjuice" ]
 }

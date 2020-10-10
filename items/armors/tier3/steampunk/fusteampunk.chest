@@ -5,11 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;30%^reset; Electric Resistance, +5%^reset; speed^reset;
-Electric/Energy: ^cyan;+20%^reset; Dmg, ^#a94db3;+25%^reset; Energy
-^cyan;Immune^reset;: Breath, Burning, Electrified",
+^yellow;^reset; +^green;5^reset;% Speed^reset;
+^yellow;^reset; Electric/Energy: Damage x^green;1.2^reset;, Energy x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Burning, Electrified",
   "shortdescription" : "Steampunk Coat",
-  "category" : "t3armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -46,6 +46,11 @@ Electric/Energy: ^cyan;+20%^reset; Dmg, ^#a94db3;+25%^reset; Energy
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.05
     }
   ],
 
@@ -54,10 +59,6 @@ Electric/Energy: ^cyan;+20%^reset; Dmg, ^#a94db3;+25%^reset; Energy
     {
       "stat" : "steampunksetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
     }
   ],
 
@@ -74,5 +75,7 @@ Electric/Energy: ^cyan;+20%^reset; Dmg, ^#a94db3;+25%^reset; Energy
     { "ffca8a" : "fc72f8", "e0975c" : "a239a3", "a85636" : "681f6f", "6f2919" : "35103b" },
     { "ffca8a" : "bb8b4d", "e0975c" : "75522d", "a85636" : "463319", "6f2919" : "1c140a" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

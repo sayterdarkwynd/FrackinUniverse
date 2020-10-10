@@ -39,19 +39,23 @@ function init()
 end
 
 function activateVisualEffects()
+if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
+  end
 end
 function activateVisualEffects2()
+if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext2", statusTextRegion)
   animator.burstParticleEmitter("statustext2")
+  end
 end
 
 
 function update(dt)
-  	if ( status.stat("shadowResistance",0)  >= 0.80 ) and ( status.stat("cosmicResistance",0)  >= 0.60 ) then
+  	if ( status.stat("shadowResistance")  >= 0.80 ) and ( status.stat("cosmicResistance")  >= 0.60 ) then
 	  effect.expire() 
 	end  
 	

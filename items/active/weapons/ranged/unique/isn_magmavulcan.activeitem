@@ -5,14 +5,14 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Ejects deadly balls of burning iron and magma
-^yellow;Spawns molten metal. Evil!^reset;
-^green;Destroys tiles, lives and dreams.",
+^yellow;Spawns molten metal!^reset;
+^green;Destroys tiles.",
   "shortdescription" : "Pyre Vulcan",
   "category" : "grenadeLauncher",
   "level" : 5,
   "tooltipKind" : "gun2",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","grenadelauncher", "hellfire", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","grenadelauncher", "pyreite", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
@@ -56,7 +56,7 @@
   "/items/active/scripts/heavyweapon.lua"
   ],
 
-  "elementalType" : "fire",
+  "elementalType" : "hellfire",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -70,6 +70,7 @@
 
     "projectileType" : "isn_magmavulcantiny",
     "projectileParameters" : { 
+      "damageKind" : "hellfire",
       "speed" : 70,
       "knockback" : 6.5,
       "periodicActions" : [
@@ -80,8 +81,8 @@
 	"angleAdjust":180,
 	"fuzzAngle":80,
 	"config":{
-	  "knockback":-20,
-	  "power":3,
+	  "knockback":-10,
+	  "power":1,
 	  "speed":400,
 	  "timeToLive":0.03,
 	  "periodicActions":[],
@@ -89,7 +90,8 @@
 	  "actionOnReap":[],
 	  "processing":"?scalenearest=0",
 	  "bounces":-1,
-	  "piercing":true
+	  "piercing":true,
+	  "damageKind" : "hellfire"
 	  }
         }    
       ]  
@@ -126,8 +128,15 @@
 
   "critChance" : 4,
   "critBonus" : 5,
-
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "reloadTime" : 1.25, 
+  
   "altAbilityType" : "magmagrenadelauncher",
-
+  "altAbility" : {
+    "projectileParameters" : { 
+      "damageKind" : "hellfire"
+     }
+  },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

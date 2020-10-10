@@ -8,7 +8,7 @@ function init()
   self.speed = config.getParameter("speed")
   self.ownerId = projectile.sourceEntity()
 
-  self.maxDistance = config.getParameter("maxDistance")
+  self.maxDistance = config.getParameter("maxDistance",10)
 
   self.initialPosition = mcontroller.position()
   self.distanceTraveled = 0

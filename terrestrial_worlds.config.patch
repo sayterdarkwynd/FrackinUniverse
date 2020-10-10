@@ -272,10 +272,11 @@
 
 //garden
 
-  {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/0","value": 3},
-  {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/1","value": 3},
+  {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/0","value": 4},
+  {"op": "replace","path": "/planetTypes/garden/layers/surface/dungeonCountRange/1","value": 4},
   {"op": "add","path": "/planetTypes/garden/layers/surface/dungeons/-","value": [1,"caveeentrance"]},
   {"op": "replace", "path": "/planetTypes/garden/layers/surface/dungeons/1/1","value": "medic1"},
+  {"op": "add","path": "/planetTypes/garden/layers/surface/dungeons/-","value": [1,"starterhouse"]},
 
 {"op" : "add", "path" : "/planetTypes/garden/layers/subsurface/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/garden/layers/underground1/dungeons", "value" : [] },
@@ -481,7 +482,7 @@
 {"op" : "add", "path" : "/planetTypes/moon/layers/underground2/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/moon/layers/underground3/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/moon/layers/core/dungeons", "value" : [] },
-//{"op" : "add", "path" : "/planetTypes/moon/layers/surface/dungeons/-", "value" : [0.5, "wreck"] },
+//{"op" : "add", "path" : "/planetTypes/moon/layers/surface/dungeons/-", "value" : [0.5, "fuwreck"] },
 
 //barren
 {"op" : "add", "path" : "/planetTypes/barren/layers/surface/dungeons", "value" : [] },
@@ -490,7 +491,6 @@
 {"op" : "add", "path" : "/planetTypes/barren/layers/underground2/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/barren/layers/underground3/dungeons", "value" : [] },
 {"op" : "add", "path" : "/planetTypes/barren/layers/core/dungeons", "value" : [] },
-{"op" : "add", "path" : "/planetTypes/barren/layers/surface/dungeons/-", "value" : [0.5, "wreck"] },
 {"op" : "add", "path" : "/planetTypes/barren/layers/surface/dungeons/-", "value" : [0.5, "fuwreck"] },
 
 // vanilla subbiome additions
@@ -1294,7 +1294,6 @@
           "dungeons" : [
           [1.0, "gregbase"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "dungeoncrawler"],
           [1.0, "glitchsewer"],
           [1.0, "evilfortress"],
@@ -1329,7 +1328,8 @@
 	  [ 1.0, "fungalden" ],
 	  [1.0, "weaponsfactory"],
 	  [1.0, "greentower"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -1361,24 +1361,23 @@
    "value" :
      {
        "blendSize" : 30,
-       "threatRange" : [4, 10],
+       "threatRange" : [5, 6],
        "layers" : {
       "space" : {
         "primaryRegion" : [ "elderasteroid", "elderasteroid", "asteroids", "erchiusasteroid",  "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ]
       },
         "surface" : {
           "primaryRegion" : [ "strangesea" ],
-          "secondaryRegions" : [ "ocean", "magma", "toxic", "nitrogensea", "sulphuricocean", "bloodstonesea", "arctic", "wartfield", "wastelandmini", "corruptedforest", "magicsnowland", "eden", "fieldofbracken", "supermatterzone", "aliendesert", "goreforest", "cactiplace", "metalworks", "metalhive", "metalworks2", "metalworks3", "metalworks4", "metaljungle", "crystalswamp", "ffhive", "corruptmoon", "birchforest", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "finesand", "cloudforest", "hauntedforest", "hauntedgraveyard", "rainbowforest", "swamp", "mountainous", "tidewater", "estuary", "breakwater", "corrupt", "spring", "mushroom", "oasis", "tar", "alpine", "bioluminescence", "colourful", "bones", "giantflowers", "eyepatch", "ice", "rust",  "alien", "arctic", "barren", "desert", "forest", "jungle", "magma", "ocean", "savannah", "scorchedcity", "snow", "toxic", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga" ],
+          "secondaryRegions" : [ "bloodstoneseastrange", "wartfield", "wastelandmini", "corruptedforest", "magicsnowland", "eden", "fieldofbracken", "supermatterzone", "aliendesert", "goreforest", "cactiplace", "metalworks", "metalhive", "metalworks2", "metalworks3", "metalworks4", "metaljungle", "crystalswamp", "ffhive", "corruptmoon", "birchforest", "alienforest", "sulphuricmagma", "cellfield", "reddesert", "finesand", "cloudforest", "hauntedforest", "hauntedgraveyard", "rainbowforest", "swamp", "mountainous", "tidewater", "estuary", "breakwater", "corrupt", "spring", "mushroom", "oasis", "tar", "alpine", "bioluminescence", "colourful", "bones", "giantflowers", "eyepatch", "ice", "rust",  "alien", "barren", "desert", "forest", "jungle", "savannah", "scorchedcity", "snow", "toxic", "tundra", "volcanic", "ashgarden", "badlands", "blackslimebog", "blisterbushfield", "bloodgulch", "calichefield", "bloodstonefield", "crystalplain", "deadwood", "desertoasis", "dryriverbed", "elder", "energyorbforest", "flowerforest", "hellfirefield", "hellhive", "icefire", "irradiatedwaste", "meadow", "orchardapple", "orchardpeach", "orchardpear", "pineforest", "pitchfield", "primevalforest", "snowyforest", "sulphuricplain", "taiga" ],
           "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "hylotlruinedcastle"],
           [1.0, "hylotlcity"]
           ]
         },
         "subsurface" : {
           "primaryRegion" : [ "strangeseafloor" ],
-          "secondaryRegions" : [ "oceanfloor", "toxicoceanfloor", "magmaoceanfloor", "arcticoceanfloor","nitrogenseafloor", "bloodstoneseafloor", "sulphuricoceanfloor" ],
+          "secondaryRegions" : [ "bloodstoneseafloorstrange", "sulphuricoceanfloorstrange" ],
           "dungeons" : [
           [0.5, "wreckunderwater"],
           [1.0, "hylotlruinedcity"],
@@ -1411,6 +1410,7 @@
      {
        "gravityRange" : [10, 120],
        "threatRange" : [4, 10],
+     
        "layers" : {
       "space" : {
         "primaryRegion" : [ "elderasteroid", "elderasteroid", "asteroids", "erchiusasteroid",  "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid" ]
@@ -1421,7 +1421,6 @@
           "dungeons" : [
           [1.0, "gregbase"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "dungeoncrawler"],
           [1.0, "glitchsewer"],
           [1.0, "evilfortress"],
@@ -1457,7 +1456,8 @@
 	  [ 1.0, "fungalden" ],
 	  [1.0, "weaponsfactory"],
 	  [1.0, "greentower"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -1500,7 +1500,6 @@
           "dungeons" : [
           [1.0, "gregbase"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "dungeoncrawler"],
           [1.0, "glitchsewer"],
           [1.0, "evilfortress"],
@@ -1536,7 +1535,8 @@
 	  [ 1.0, "fungalden" ],
 	  [1.0, "weaponsfactory"],
 	  [1.0, "greentower"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -1826,7 +1826,6 @@
               [1.0, "volcano"],
               [1.0, "greenruins"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "dungeoncrawler"],
           [1.0, "evilfortress"],
           [1.0, "floranhell"],
@@ -1853,7 +1852,8 @@
 	  [1.0, "weaponsfactory"],
 	  [1.0, "greentower"],
 	  [1.0, "alienjungleruins"],
-          [1.0, "futreehouse"]
+          [1.0, "futreehouse"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -1938,7 +1938,8 @@
           [1.0, "ship1"],
           [0.5, "fuwreck"],
           [1.0, "dungeoncrawler"],
-          [1.0, "humanprison"]
+          [1.0, "humanprison"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -2115,7 +2116,6 @@
               [1.0, "volcano"],
               [1.0, "greenruins"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "dungeoncrawler"],
           [1.0, "glitchsewer"],
           [1.0, "evilfortress"],
@@ -2270,9 +2270,7 @@
               [1.0, "lakes"],
               [1.0, "volcano"],
               [1.0, "greenruins"],
-
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "dungeoncrawler"],
           [1.0, "glitchsewer"],
           [1.0, "evilfortress"],
@@ -2308,7 +2306,8 @@
 	  [1.0, "fungalden"],
 	  [1.0, "weaponsfactory"],
 	  [1.0, "greentower"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -2360,7 +2359,6 @@
               [1.0, "volcano"],
               [1.0, "greenruins"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexresearchlab"],
           [1.0, "apextestchamber"],
           [1.0, "apextowerblock"],
@@ -2385,7 +2383,8 @@
 	  [1.0, "novakidoutlawcamp"],
 	  [3.0, "weaponsfactory"],
 	  [1.0, "greentower"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -2433,7 +2432,6 @@
               [1.0, "volcano"],
               [1.0, "greenruins"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexresearchlab"],
           [1.0, "apextestchamber"],
           [1.0, "apextowerblock"],
@@ -2458,7 +2456,8 @@
 	  [1.0, "novakidoutlawcamp"],
 	  [3.0, "weaponsfactory"],
 	  [1.0, "greentower"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -2673,7 +2672,8 @@
 	  [1.0, "novakidoutlawcamp"],
 	  [1.0, "oceanfrontcity"],
 	  [3.0, "weaponsfactory"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -2716,7 +2716,6 @@
 
           "dungeons" : [
           [1.0, "apexspaceelevator"],
-          [1.0, "wastelandquests"],
               [1.0, "elderruins"],
               [1.0, "crystalcavern"],
               [1.0, "ship1"],
@@ -2729,7 +2728,6 @@
               [1.0, "volcano"],
               [1.0, "greenruins"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexresearchlab"],
           [1.0, "apextestchamber"],
           [1.0, "apextowerblock"],
@@ -2801,7 +2799,6 @@
           [1.0, "elderruins"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "ship1"]
           ]
         },
@@ -2845,7 +2842,6 @@
           [1.0, "elderruins"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "ship1"],
           [1.0, "apextestfacility"],
           [1.0, "apexresearchlab"],
@@ -2898,14 +2894,14 @@
           [1.0, "ship1"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apextestfacility"],
           [1.0, "apexresearchlab"],
           [1.0, "apextestchamber"],
           [1.0, "apextowerblock"],
           [1.0, "humanbunker"],
 	  [3.0, "weaponsfactory"],
-          [1.0, "fuscifidungeon"]
+          [1.0, "fuscifidungeon"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -2948,7 +2944,6 @@
           [1.0, "crystalcavern"],
           [1.0, "ship1"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexresearchlab"],
           [1.0, "apextestchamber"],
           [1.0, "apextowerblock"],
@@ -2996,7 +2991,6 @@
 
            "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
            [1.0, "ship1"],
            [1.0, "apextestfacility"],
            [1.0, "humanprison"],
@@ -3046,7 +3040,6 @@
 
            "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
            [1.0, "ship1"],
            [1.0, "apextestfacility"],
            [1.0, "humanprison"],
@@ -3056,7 +3049,8 @@
           [1.0, "humanbunker"],
           [1.0, "fuscifidungeon"],
 	  [1.0, "aviandeeppyramid"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
            ]
          },
         "subsurface" : {
@@ -3135,7 +3129,6 @@
 
           "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
               [1.0, "elderruins"],
               [1.0, "crystalcavern"],
               [1.0, "shipwreck"],
@@ -3225,7 +3218,6 @@
           [1.0, "elderruins"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "ship1"],
           [1.0, "glitchsewer"],
           [1.0, "apexresearchlab"],
@@ -3278,7 +3270,6 @@
 
           "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "ship1"],
           [1.0, "apexresearchlab"],
           [1.0, "apextestchamber"],
@@ -3339,7 +3330,6 @@
               [1.0, "volcano"],
               [1.0, "greenruins"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "dungeoncrawler"],
           [1.0, "glitchsewer"],
           [1.0, "evilfortress"],
@@ -3418,7 +3408,6 @@
           "dungeons" : [
           [1.0, "elderruins"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "ship1"],
           [1.0, "hylotloceancity"],
           [1.0, "hylotlruinedcity"],
@@ -3464,34 +3453,24 @@
           "secondaryRegions" : [ "futentacle", "wartfield", "wastelandmini", "aliendesert", "goreforest", "ffhive", "corruptedforest", "alienforest", "reddesert", "hauntedforest", "hauntedgraveyard", "swamp", "hellhive", "elder", "corruptedforest", "icefire", "energyorbforest", "pitchfield", "blisterbushfield", "primevalforest", "irradiatedwaste", "bloodstonefield", "desert",  "eyepatch", "forest",  "volcanic", "magma", "savannah" ],
 
           "dungeons" : [
-          [1.0, "elderruins"],
-          [1.0, "crystalcavern"],
-          [1.0, "ship1"],
-          [1.0, "avianpyramid"],
-          [1.0, "glitchfarm"],
-          [1.0, "glitchjoust"],
-          [1.0, "nightarcastle"],
-          [1.0, "nightarvillage"],              
-          [1.0, "uscmbase"],
-          [1.0, "lakes"],
-          [1.0, "volcano"],
-          [1.0, "dungeoncrawler"],
-          [1.0, "glitchsewer"],
-          [1.0, "evilfortress"],
-          [1.0, "apexbase"],
-          [1.0, "apextestfacility"],
-          [1.0, "apexcity"],
-          [1.0, "aviantomb"],
-          [1.0, "aviannativevillage"],
-          [1.0, "avianairship"],
-          [1.0, "humanprison"],
-          [1.0, "novakidvillage"],
-          [1.0, "humanbunker"],
-          [1.0, "fuscifidungeon"],
-	  [1.0, "novakidoutlawcamp"],
-	  [1.0, "fungalden"],
-	  [1.0, "weaponsfactory"],
-	  [1.0, "alienjungleruins"]
+              [1.0, "elderruins"],
+              [1.0, "nightarcastle"],
+              [1.0, "nightarvillage"],              
+              [1.0, "uscmbase"],
+              [1.0, "lakes"],
+              [1.0, "volcano"],
+              [1.0, "dungeoncrawler"],
+              [1.0, "glitchsewer"],
+              [1.0, "apexbase"],
+              [1.0, "apextestfacility"],
+              [1.0, "humanprison"],
+              [1.0, "novakidvillage"],
+              [1.0, "humanbunker"],
+              [1.0, "fuscifidungeon"],
+    	        [1.0, "novakidoutlawcamp"],
+    	        [1.0, "fungalden"],
+    	        [1.0, "alienjungleruins"],
+    	        [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -3580,7 +3559,8 @@
 	  [1.0, "fungalden"],
 	  [1.0, "weaponsfactory"],
 	  [1.0, "greentower"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -3793,7 +3773,6 @@
 
           "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "ship1"],
           [1.0, "apexresearchlab"],
           [1.0, "apextestchamber"],
@@ -3840,7 +3819,6 @@
 
           "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "ship1"],
           [1.0, "apexresearchlab"],
           [1.0, "apextestchamber"],
@@ -3922,7 +3900,6 @@
 
            "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
            [1.0, "ship1"],
            [1.0, "apextestfacility"],
            [1.0, "humanprison"],
@@ -3933,7 +3910,8 @@
           [1.0, "fuscifidungeon"],
 	  [1.0, "aviandeeppyramid"],
 	  [1.0, "weaponsfactory"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
            ]
          },
         "subsurface" : {
@@ -4031,8 +4009,6 @@
               [1.0, "volcano"],
               [1.0, "greenruins"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
-
           [1.0, "dungeoncrawler"],
           [1.0, "glitchsewer"],
           [1.0, "evilfortress"],
@@ -4062,7 +4038,8 @@
 	  [1.0, "fungalden"],
 	  [1.0, "weaponsfactory"],
 	  [1.0, "greentower"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -4101,7 +4078,6 @@
 
           "dungeons" : [
           [1.0, "apexspaceelevator"],
-          [1.0, "wastelandquests"],
           [1.0, "elderruins"],
               [1.0, "elderruins"],
               [1.0, "crystalcavern"],
@@ -4147,7 +4123,8 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [3.0, "weaponsfactory"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -4188,7 +4165,6 @@
 
           "dungeons" : [
           [1.0, "apexspaceelevator"],
-          [1.0, "wastelandquests"],
           [1.0, "elderruins"],
           [1.0, "ship1"],
               [1.0, "elderruins"],
@@ -4234,7 +4210,8 @@
 	  [1.0, "humanapartments"],
 	  [1.0, "novakidoutlawcamp"],
 	  [3.0, "weaponsfactory"],
-	  [1.0, "alienjungleruins"]
+	  [1.0, "alienjungleruins"],
+	  [1.0, "cultistlair"]
           ]
         },
         "subsurface" : {
@@ -4277,7 +4254,6 @@
           [1.0, "ship1"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexbase"],
           [1.0, "apextestfacility"],
           [1.0, "fuscifidungeon"],
@@ -4324,7 +4300,6 @@
           [1.0, "ship1"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexbase"],
           [1.0, "apextestfacility"],
           [1.0, "fuscifidungeon"],
@@ -4370,7 +4345,6 @@
           [1.0, "ship1"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexbase"],
           [1.0, "apextestfacility"],
           [1.0, "fuscifidungeon"],
@@ -4415,7 +4389,6 @@
           [1.0, "ship1"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexbase"],
           [1.0, "apextestfacility"],
           [1.0, "fuscifidungeon"],
@@ -4448,6 +4421,7 @@
       {
       "gravityRange" : [10, 80],
       "threatRange" : [3, 5],
+
       "layers" : {
       "space" : {
         "primaryRegion" : [ "elderasteroid", "asteroids", "corruptasteroid", "erchiusasteroid", "gleamingasteroid", "iceasteroids", "fleshasteroid", "tentacleasteroid", "slimeasteroid"]
@@ -4462,7 +4436,6 @@
           [1.0, "ship1"],
           [1.0, "crystalcavern"],
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "apexbase"],
           [1.0, "apextestfacility"],
           [1.0, "fuscifidungeon"],
@@ -4533,7 +4506,7 @@
   "path" : "/regionTypes/chromatic",
   "value" :
   {
-      "caveLiquid" : [  "water", "healingliquid", "alienjuice", "crystalliquid", "bio_ooze", "blacktar" ],
+      "caveLiquid" : [  "water", "healingliquid", "crystalliquid", "bio_ooze", "blacktar" ],
       "blockSelector" : [ "remixedSurface", "remixedMildSurface","remixedMountainsSurface", "remixedMegaMountainsSurface", "remixedFlatsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -4584,7 +4557,7 @@
   "path" : "/regionTypes/arborealdark",
   "value" :
   {
-      "caveLiquid" : [  "tarliquid", "blacktar", "alienjuice", "darkwater", "shadowgas" ],
+      "caveLiquid" : [  "tarliquid", "blacktar", "darkwater", "shadowgas" ],
       "blockSelector" : [ "remixedSurface", "remixedMildSurface", "remixedSwampySurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -4609,7 +4582,7 @@
   "path" : "/regionTypes/atropus",
   "value" :
   {
-      "caveLiquid" : [ "bloodliquid", "alienjuice", "pus", "sulphuricacid" ],
+      "caveLiquid" : [ "bloodliquid", "pus", "sulphuricacid" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "remixedPoolsSurface", "ledgesSurface", "remixedSurface", "remixedMildSurface", "remixedMountainsSurface", "remixedSpikesSurface", "remixedStepsSurface", "remixedStepsSurfaceLarge" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
@@ -4623,7 +4596,7 @@
   "path" : "/regionTypes/atropusdark",
   "value" :
   {
-      "caveLiquid" : [ "bloodliquid", "alienjuice", "pus", "sulphuricacid" ],
+      "caveLiquid" : [ "bloodliquid", "pus", "sulphuricacid" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "remixedPoolsSurface", "ledgesSurface", "remixedSurface", "remixedMildSurface", "remixedMountainsSurface", "remixedMegaMountainsSurface", "remixedStepsSurface", "remixedStepsSurfaceLarge" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
@@ -4636,7 +4609,7 @@
   "path" : "/regionTypes/atropusrot",
   "value" :
   {
-      "caveLiquid" : [ "bloodliquid", "alienjuice", "pus", "sulphuricacid" ],
+      "caveLiquid" : [ "bloodliquid", "pus" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "remixedPoolsSurface", "ledgesSurface", "remixedSurface", "remixedMildSurface", "remixedMountainsSurface", "remixedMegaMountainsSurface", "remixedStepsSurface", "remixedStepsSurfaceLarge" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
@@ -4777,7 +4750,7 @@
   "path" : "/regionTypes/bloodstone",
   "value" :
   {
-      "caveLiquid" : [ "bloodliquid", "alienjuice", "darkwater", "tarliquid" ],
+      "caveLiquid" : [ "bloodliquid", "darkwater", "tarliquid" ],
       "blockSelector" : [ "remixedMildCanyonsSurface", "remixedCanyonsSurface", "remixedSurface", "remixedMegaMountainsSurface", "remixedMountainsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
       "biome" : [
@@ -4790,8 +4763,8 @@
   "path" : "/regionTypes/bloodstonesea",
   "value" :
   {
-      "oceanLiquid" : [ "bloodliquid", "alienjuice", "darkwater", "pus" ],
-      "caveLiquid" : [ "bloodliquid", "alienjuice", "darkwater", "pus" ],
+      "oceanLiquid" : [ "pus","bloodliquid" ],
+      "caveLiquid" : [ "pus","bloodliquid" ],
       "oceanLevelOffset" : 0,
       "blockSelector" : [ "remixedIslandsSurface", "remixedFlatIslandsSurface", "remixedIslandTowersSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -4804,8 +4777,37 @@
   "path" : "/regionTypes/bloodstoneseafloor",
   "value" :
   {
-      "caveLiquid" : [ "bloodliquid" ],
-      "oceanLiquid" : [ "bloodliquid" ],
+      "caveLiquid" : [ "pus","bloodliquid" ],
+      "oceanLiquid" : [ "pus","bloodliquid" ],
+      "oceanLevelOffset" : 1000,
+      "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
+      "fgCaveSelector" : [ "emptier" ],
+      "bgCaveSelector" : [ "emptiest" ],
+      "biome" : [
+        [0, [ "bloodstoneseafloor" ]]
+      ]
+    }
+  },
+  {"op" : "add",
+  "path" : "/regionTypes/bloodstoneseastrange",
+  "value" :
+  {
+      "oceanLiquid" : [ "alienjuice" ],
+      "caveLiquid" : [ "alienjuice" ],
+      "oceanLevelOffset" : 0,
+      "blockSelector" : [ "remixedIslandsSurface", "remixedFlatIslandsSurface", "remixedIslandTowersSurface" ],
+      "fgCaveSelector" : [ "surfaceCaves" ],
+      "biome" : [
+        [0, [ "bloodstonesea" ]]
+      ]
+    }
+  },
+  {"op" : "add",
+  "path" : "/regionTypes/bloodstoneseafloorstrange",
+  "value" :
+  {
+      "caveLiquid" : [ "alienjuice" ],
+      "oceanLiquid" : [ "alienjuice" ],
       "oceanLevelOffset" : 1000,
       "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
       "fgCaveSelector" : [ "emptier" ],
@@ -4832,7 +4834,7 @@
   "path" : "/regionTypes/barren3",
   "value" :
   {
-      "caveLiquid" : [  "water", "lava", "poison", "alienjuice" ],
+      "caveLiquid" : [  "water", "lava", "poison" ],
       "caveLiquidChanceRange" : [20, 100],
       "blockSelector" : [ "remixedSpikesSurface", "remixedSwampySurface", "remixedSurface",  "remixedPoolsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -4907,7 +4909,7 @@
   "path" : "/regionTypes/crystalmoon",
   "value" :
   {
-      "caveLiquid" : [ "organicsoup", "alienjuice", "healingliquid" ],
+      "caveLiquid" : [ "organicsoup", "water", "healingliquid" ],
       "blockSelector" : [ "remixedSurface", "remixedMildSurface", "remixedSpikesSurface", "remixedStepsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
 
@@ -5315,12 +5317,27 @@
       ]
     }
   },
-
+   {"op" : "add",
+  "path" : "/regionTypes/sulphuricoceanfloorstrange",
+  "value" :
+  {
+      "oceanLiquid" : [ "alienjuice" ],
+      "oceanLevelOffset" : 1000,
+      "blockSelector" : [ "remixedSurface", "remixedMountainsSurface", "remixedCanyonsSurface", "remixedHugeCanyonsSurface"  ],
+      "fgCaveSelector" : [ "surfaceCaves", "normalCaves", "denseCaves" ],
+       "fgOreSelector" : [ "richVeins" ],
+       "bgOreSelector" : [ "richVeins" ],
+      "biome" : [
+        [0, [ "sulphuricoceanfloor" ]]
+      ]
+    }
+  },
+  
   {"op" : "add",
   "path" : "/regionTypes/penumbra",
   "value" :
   {
-      "caveLiquid" : [ "swampwater", "blacktar", "alienjuice", "darkwater", "liquidaether", "shadowgas" ],
+      "caveLiquid" : [ "swampwater", "blacktar", "darkwater", "liquidaether", "shadowgas" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "remixedSurface", "remixedMildSurface", "remixedStepsSurface", "remixedMountainsSurface", "remixedFlatsSurface", "remixedPoolsSurface", "remixedFlatsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -5528,7 +5545,7 @@
   "path" : "/regionTypes/alienforest",
   "value" :
   {
-      "caveLiquid" : [ "water", "alienjuice", "gravrain", "liquidaether", "crystalliquid" ],
+      "caveLiquid" : [ "water", "gravrain", "liquidaether", "crystalliquid" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [  "lowHillsSurface", "flatsSurface", "medHillsSurface", "remixedMountainsSurface"  ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -5602,7 +5619,7 @@
   "path" : "/regionTypes/blisterbushfield",
   "value" :
   {
-      "caveLiquid" : [ "alienjuice", "pus", "slimeliquid" ],
+      "caveLiquid" : [ "alienjuice", "slimeliquid" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "flatsSurface", "lowHillsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -5684,7 +5701,7 @@
   "path" : "/regionTypes/crystalplain",
   "value" :
   {
-      "caveLiquid" : [ "crystalliquid", "alienjuice" ],
+      "caveLiquid" : [ "crystalliquid" ],
       "caveLiquidChanceRange" : [25, 100],
       "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedSpikesSurface", "remixedSpikesSurface2" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
@@ -5697,7 +5714,7 @@
   "path" : "/regionTypes/crystaldesert",
   "value" :
   {
-      "caveLiquid" : [ "crystalliquid", "lava", "alienjuice" ],
+      "caveLiquid" : [ "crystalliquid", "lava" ],
       "caveLiquidChanceRange" : [45, 75],
       "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedStepsSurface" ],
       "fgCaveSelector" : [ "denseCaves" ],
@@ -6213,7 +6230,7 @@
   "path" : "/regionTypes/energyorbforest",
   "value" :
   {
-      "caveLiquid" : [ "alienjuice", "organicsoup", "healingliquid", "crystalliquid", "sludge"  ],
+      "caveLiquid" : [ "organicsoup", "healingliquid", "crystalliquid", "sludge"  ],
       "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -6357,7 +6374,7 @@
   {
       "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
       "fgCaveSelector" : [ "denseCaves" ],
-      "caveLiquid" : [ "bloodliquid", "pus", "sludge", "alienjuice" ],
+      "caveLiquid" : [ "bloodliquid", "pus", "sludge"],
       "caveLiquidChanceRange" : [65, 85],
 
       "biome" : [
@@ -6513,9 +6530,9 @@
    {
        "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
        "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
-       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
-       "fgOreSelector" : [ "richVeins" ],
-       "bgOreSelector" : [ "richVeins" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves","moonSurfaceCaves" ],
+       "fgOreSelector" : [ "mountainVeins" ],
+       "bgOreSelector" : [ "mountainVeins"],
        "caveLiquidChanceRange" : [50, 100],
        "biome" : [
          [0, [ "mountainous" ] ]
@@ -6528,9 +6545,9 @@
    {
        "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
        "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
-       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
-       "fgOreSelector" : [ "richVeins" ],
-       "bgOreSelector" : [ "richVeins" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves","moonSurfaceCaves" ],
+       "fgOreSelector" : [ "mountainVeins" ],
+       "bgOreSelector" : [ "mountainVeins"],
        "caveLiquidChanceRange" : [50, 100],
        "biome" : [
          [0, [ "mountainous2" ] ]
@@ -6543,9 +6560,9 @@
    {
        "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
        "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
-       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
-       "fgOreSelector" : [ "richVeins" ],
-       "bgOreSelector" : [ "richVeins" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves","moonSurfaceCaves" ],
+       "fgOreSelector" : [ "mountainVeins" ],
+       "bgOreSelector" : [ "mountainVeins"],
        "caveLiquidChanceRange" : [50, 100],
        "biome" : [
          [0, [ "mountainous3" ] ]
@@ -6558,9 +6575,9 @@
    {
        "caveLiquid" : [ "water", "swampwater", "healingliquid" ],
        "blockSelector" : [ "remixedMountainsSurface", "remixedCanyonsSurface", "remixedMildCanyonsSurface" ],
-       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
-       "fgOreSelector" : [ "richVeins" ],
-       "bgOreSelector" : [ "richVeins" ],
+       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves","moonSurfaceCaves" ],
+       "fgOreSelector" : [ "mountainVeins" ],
+       "bgOreSelector" : [ "mountainVeins"],
        "caveLiquidChanceRange" : [50, 100],
        "biome" : [
          [0, [ "mountainous4" ] ]
@@ -6592,17 +6609,16 @@
        "threatRange" : [5, 8],
        "layers" : {
         "surface" : {
-          "primaryRegion" : [ "aethersea" ],
+          "primaryRegion" : [ "aethersea", "astral" ],
           "secondaryRegions" : [ "energyorbforestaether", "aetherbreakwater", "estuaryaether", "supermatterzoneaether2", "crystalswampaether", "cellfieldaether", "bioluminescence", "elder", "hellhive" ],
           "dungeons" : [
           [0.5, "fuwreck"],
-          [0.5, "wreck"],
           [1.0, "hylotlcity"],
           [1.0, "hylotlruinedcastle"]
           ]
         },
         "subsurface" : {
-          "primaryRegion" : [ "aetherseafloor" ],
+          "primaryRegion" : [ "aetherseafloor", "aetherseaunderground" ],
           "secondaryRegions" : [ "energyorbforestaether2", "deepseaventaether", "crystaldesertaether", "supermatterzoneaether"  ],
 
           "dungeons" : [
@@ -6629,14 +6645,13 @@
        }
      }
    },
-
  {"op" : "add",
  "path": "/regionTypes/aethersea",
  "value" :
  	{
        "oceanLiquid" : [ "liquidaether" ],
        "oceanLevelOffset" : 0,
-       "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "mercuryliquid", "alienjuice" ],
+       "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "mercuryliquid" ],
        "caveLiquidChanceRange" : [70, 100],
        "blockSelector" : [ "remixedIslandsSurface", "submergedIslandsSurface" ],
        "fgCaveSelector" : [ "surfaceCaves" ],
@@ -6644,14 +6659,13 @@
        "biome" : [ [0, [ "aethersea" ] ] ]
  	}
  },
-
-
+ 
   {"op" : "add",
   "path" : "/regionTypes/aetherseafloor",
   "value" :
   {
        "oceanLiquid" : [ "liquidaether" ],
-       "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "mercuryliquid", "alienjuice" ],
+       "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "mercuryliquid" ],
       "oceanLevelOffset" : 1000,
       "blockSelector" : [ "ledgesSurface", "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
       "fgCaveSelector" : [ "emptier" ],
@@ -6664,7 +6678,7 @@
   "path" : "/regionTypes/aetherseaunderground",
   "value" :
   {
-       "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "mercuryliquid", "alienjuice" ],
+      "caveLiquid" : [ "crystalliquid", "liquidaether", "organicsoup", "protociteliquid", "mercuryliquid" ],
       "blockSelector" : [ "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves", "denseCaves" ],
       "biome" : [ [0, [ "aetherseaunderground" ] ] ]
@@ -6675,9 +6689,9 @@
  "path": "/regionTypes/strangesea",
  "value" :
  	{
-       "oceanLiquid" : [ "beer", "fuquicksand", "fuhoney", "fuhoneyred", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "sludge", "healingliquid", "poison", "lava", "milk", "tarliquid", "slimeliquid", "jellyliquid","fuel", "alienjuice" ],
+       "oceanLiquid" : [ "alienjuice" ],
        "oceanLevelOffset" : 0,
-       "caveLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "helium3gas", "shadowgas", "wastewater", "poison", "lava", "sludge", "milk", "tarliquid", "slimeliquid", "jellyliquid","fuel", "alienjuice" ],
+       "caveLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "helium3gas", "shadowgas", "wastewater", "poison", "lava", "sludge", "milk", "tarliquid", "slimeliquid", "jellyliquid","fuel" ],
        "caveLiquidChanceRange" : [70, 100],
        "blockSelector" : [ "remixedIslandsSurface" ],
        "fgCaveSelector" : [ "surfaceCaves" ],
@@ -6691,8 +6705,8 @@
   "path" : "/regionTypes/strangeseafloor",
   "value" :
   {
-	"oceanLiquid" : [ "beer", "fuquicksand", "fuhoney", "fuhoneyred", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "sludge", "healingliquid", "poison", "lava", "milk", "tarliquid", "slimeliquid", "jellyliquid","fuel", "alienjuice" ],
-        "caveLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "helium3gas", "shadowgas", "wastewater", "poison", "lava", "sludge", "milk", "tarliquid", "slimeliquid", "jellyliquid","fuel", "alienjuice" ],
+       "oceanLiquid" : [ "alienjuice" ],        
+       "caveLiquid" : [ "fuquicksand", "fuhoney", "fuhoneyred",  "beer", "crystalliquid", "bloodliquid", "bio_ooze", "liquidaether", "blacktar", "organicsoup", "protociteliquid", "sulphuricacid", "irradiumliquid", "mercuryliquid", "gravrain", "fuironliquid", "pus", "alienjuice", "liquidnitrogen", "darkwater", "helium3gas", "shadowgas", "wastewater", "poison", "lava", "sludge", "milk", "tarliquid", "slimeliquid", "jellyliquid","fuel" ],
       "oceanLevelOffset" : 1000,
       "blockSelector" : [ "ledgesSurface", "remixedSurface", "remixedCanyonsSurface", "remixedStepsSurface", "remixedMegaMountainsSurface" ],
       "fgCaveSelector" : [ "emptier" ],
@@ -6913,7 +6927,7 @@
   {
        "oceanLiquid" : [ "liquidaether" ],
        "oceanLevelOffset" : 1000,
-      "caveLiquid" : [ "crystalliquid", "lava", "alienjuice" ],
+      "caveLiquid" : [ "crystalliquid", "lava" ],
       "caveLiquidChanceRange" : [55, 95],
       "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedStepsSurface" ],
       "fgCaveSelector" : [ "denseCaves" ],
@@ -6986,6 +7000,19 @@
       ]
     }
   },
+ {"op" : "add",
+  "path" : "/regionTypes/astral",
+  "value" :
+  {
+        "caveLiquid" : [  "organicsoup", "fuel", "liquidaether", "crystalliquid"  ],
+        "caveLiquidChanceRange" : [25, 85],
+        "blockSelector" : [ "remixedMildSurface", "remixedSurface", "remixedCanyonsSurface"  ],
+      "fgCaveSelector" : [ "denseCaves" ],
+      "biome" : [
+        [0, [ "astral" ]]
+      ]
+    }
+  },  
   {"op" : "add",
   "path" : "/regionTypes/precursorsurface",
   "value" :
@@ -7017,7 +7044,7 @@
   {
        "oceanLiquid" : [ "liquidaether" ],
        "oceanLevelOffset" : 0,
-      "caveLiquid" : [ "alienjuice", "organicsoup", "healingliquid", "crystalliquid"  ],
+      "caveLiquid" : [ "organicsoup", "healingliquid", "crystalliquid"  ],
       "blockSelector" : [ "remixedIslandsSurface", "remixedFlatIslandsSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -7031,7 +7058,7 @@
   {
        "oceanLiquid" : [ "liquidaether" ],
        "oceanLevelOffset" : 1000,
-      "caveLiquid" : [ "alienjuice", "organicsoup", "healingliquid", "crystalliquid"  ],
+      "caveLiquid" : [ "organicsoup", "healingliquid", "crystalliquid"  ],
       "blockSelector" : [ "remixedMildSurface", "remixedSurface" ],
       "fgCaveSelector" : [ "surfaceCaves" ],
       "biome" : [
@@ -7429,7 +7456,7 @@
   "path" : "/regionTypes/ffcrystalcavern",
   "value" :
   {
-      "caveLiquid" : [ "organicsoup", "blacktar", "alienjuice", "helium3gas" ],
+      "caveLiquid" : [ "organicsoup", "blacktar", "helium3gas" ],
       "caveLiquidChanceRange" : [45, 75],
 
       "biome" : [
@@ -7534,9 +7561,9 @@
   {
       "caveLiquid" : [ "water", "healingliquid", "poison" ],
       "caveLiquidChanceRange" : [5, 35],
-      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves" ],
-       "fgOreSelector" : [ "richVeins" ],
-       "bgOreSelector" : [ "richVeins" ],
+      "fgCaveSelector" : [ "normalCaves", "denseCaves", "acidPoolCaves", "moonCaves", "sparseCaves","moonSurfaceCaves" ],
+      "fgOreSelector" : [ "mountainVeinsDeep" ],
+      "bgOreSelector" : [ "mountainVeinsDeep" ],
       "biome" : [
         [0, [ "mountainousunderground"]]
       ]
@@ -7638,7 +7665,7 @@
   "path" : "/regionTypes/shroomcaveunderground",
   "value" :
   {
-      "caveLiquid" : [ "water", "poison", "alienjuice", "healingliquid", "slimeliquid" ],
+      "caveLiquid" : [ "water", "poison", "healingliquid", "slimeliquid" ],
       "caveLiquidChanceRange" : [65, 95],
        "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
@@ -7651,7 +7678,7 @@
   "path" : "/regionTypes/crystalmoonunderground",
   "value" :
   {
-      "caveLiquid" : [ "organicsoup", "poison", "alienjuice", "healingliquid", "helium3gas", "shadowgas" ],
+      "caveLiquid" : [ "organicsoup", "poison", "healingliquid", "helium3gas", "shadowgas" ],
       "caveLiquidChanceRange" : [5, 15],
       "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves" ],
       "biome" : [
@@ -7809,7 +7836,7 @@
   "path" : "/regionTypes/irradiatedunderground",
   "value" :
   {
-      "caveLiquid" : [ "swampwater", "poison","bio_ooze", "alienjuice", "slimeliquid" ],
+      "caveLiquid" : [ "swampwater", "poison","bio_ooze", "slimeliquid" ],
       "caveLiquidChanceRange" : [5, 15],
       "fgCaveSelector" : [ "normalCaves", "denseCaves" ],
 
@@ -7822,7 +7849,7 @@
   "path" : "/regionTypes/elderunderground",
   "value" :
   {
-      "caveLiquid" : [ "elderfluid", "organicsoup", "bio_ooze", "alienjuice" ],
+      "caveLiquid" : [ "elderfluid", "organicsoup", "bio_ooze" ],
       "caveLiquidChanceRange" : [55, 85],
       "fgCaveSelector" : [ "normalCaves", "denseCaves" ],
       "biome" : [
@@ -7834,7 +7861,7 @@
   "path" : "/regionTypes/penumbraunderground",
   "value" :
   {
-      "caveLiquid" : [ "liquidaether", "blacktar", "organicsoup", "bio_ooze", "alienjuice", "helium3gas", "shadowgas" ],
+      "caveLiquid" : [ "liquidaether", "blacktar", "organicsoup", "bio_ooze", "helium3gas", "shadowgas" ],
       "caveLiquidChanceRange" : [5, 25],
       "fgCaveSelector" : [ "normalCaves", "denseCaves" ],
       "biome" : [
@@ -7922,7 +7949,7 @@
   "path" : "/regionTypes/ffbonecaves",
   "value" :
   {
-      "caveLiquid" : [ "bloodliquid", "alienjuice", "darkwater" ],
+      "caveLiquid" : [ "bloodliquid", "darkwater", "water" ],
       "caveLiquidChanceRange" : [5, 75],
        "fgCaveSelector" : [ "normalCaves", "denseCaves", "moonCaves", "sparseCaves" ],
       "biome" : [
@@ -8012,7 +8039,7 @@
   "path" : "/regionTypes/chromaticunderground",
   "value" :
   {
-      "caveLiquid" : [ "water", "healingliquid", "alienjuice" ],
+      "caveLiquid" : [ "water", "healingliquid" ],
       "caveLiquidChanceRange" : [25, 70],
       "fgCaveSelector" : [ "denseCaves", "moonCaves" ],
       "biome" : [

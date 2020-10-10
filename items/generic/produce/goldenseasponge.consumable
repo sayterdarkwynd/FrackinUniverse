@@ -1,14 +1,23 @@
 {
-  "itemName" : "goldenseasponge",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "goldenseasponge.png",
-  "description" : "Effect:
-^cyan;Low Gravity, Swim Boost 2, Poison Immunity^reset;",
-  "shortdescription" : "Golden Sea Sponge",
-  "category" : "food",
+	"itemName": "goldenseasponge",
+	"inventoryIcon": "goldenseasponge.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "effects" : [ [
-      "lowgrav", "swimboost2", "poisonStatusImmunity"
-    ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Swim Boost 2^reset;, ^cyan;Immunity^reset;: Poison: 2m",
+	"shortdescription": "Golden Sea Sponge",
+
+	"effects": [
+		[{
+				"effect": "swimboost2",
+				"duration": 120
+			},
+			{
+				"effect": "poisonStatusImmunity",
+				"duration": 120
+			}
+		]
+	]
 }

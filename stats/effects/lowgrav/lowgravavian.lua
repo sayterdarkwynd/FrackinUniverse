@@ -10,11 +10,11 @@ function init()
 end
  
 function update(dt)
-	self.newGravityMultiplier = status.resource("customGravity")*config.getParameter("gravityBaseMod",0)
+	self.newGravityMultiplier = status.resource("customGravity")*config.getParameter("gravityMod",0)
 	if handle==nil then
-		handle=effect.addStatModifierGroup({ {stat = "gravityBaseMod", amount=self.newGravityMultiplier} })
+		handle=effect.addStatModifierGroup({ {stat = "gravityMod", amount=self.newGravityMultiplier} })
 	else
-		effect.setStatModifierGroup(handle,{ {stat = "gravityBaseMod", amount=self.newGravityMultiplier} })
+		effect.setStatModifierGroup(handle,{ {stat = "gravityMod", amount=self.newGravityMultiplier} })
 	end
    --unifiedGravMod.update(dt)
    unifiedGravMod.refreshGrav(dt)

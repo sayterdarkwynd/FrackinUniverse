@@ -15,13 +15,33 @@ function init()
   self.armorSets = root.assetJson("/stats/effects/fu_armoreffects/new/armorsets.config")
   self.activeSet = nil -- Currently active set bonus
   self.lastStat = nil -- Last detected "count" stat
-  script.setUpdateDelta(100) -- This seems to translate to  ~1.6 seconds (YMMV)
+  -- This line just removes any of the old persistent set bonus effects.
+  status.clearPersistentEffects("setbonus")
+  
+  script.setUpdateDelta(100) -- This seems to translate to  ~1.6 seconds (YMMV) --1.4 (Khe)
 end
 
 function uninit()
+	--status.addEphemeralEffect("fusetbonusmanagercleanup")
+  --[[
+      NOTE: If the player changes their equipped armour pieces one by one,
+      will be nothing to do here as the update() script will have already
+      removed any set bonuses. However, it is possible for the player to change
+      all of their equipment at once using a mannequin. In this case, this
+      script will be uninitialised before it can remove the set bonus.
+
+      It would be ideal to call status.removeEphemeralEffect() to remove any
+      remaining set bonuses here as a fallback case, but it seems that
+      attempting to do so causes the Lua script to enter a recursion loop and
+      crash the game. Using ephemeral effects here (instead of persistent ones)
+      means that this is not a critical problem as the set bonus effect will
+      expire on its own.
+
+      But seriously, that's super weird. --wannas, Jul 2019
+  ]]--
 end
 
-function update()
+function update(dt)
   local newSet = nil
   -- Check the "count" stat found last update() before looping over others.
   if (self.lastStat ~= nil and status.stat(self.lastStat) > 0) then
@@ -43,14 +63,15 @@ function update()
       end
     end
   end
-  -- If the active armour set has changed, then apply/remove set bonuses.
-  if (newSet ~= self.activeSet) then
-    if (self.activeSet ~= nil) then
-      status.clearPersistentEffects("setbonus")
+  -- Apply/remove set bonuses depending on the currently worn set.
+  if (newSet ~= nil) then
+    if (self.activeSet ~= newset) then
+      -- This is possible if sets were swapped all at once (via mannequin).
+      status.removeEphemeralEffect(self.activeSet)
     end
-    if (newSet ~= nil) then
-      status.addPersistentEffects("setbonus", {newSet})
-    end
-    self.activeSet = newSet
+    status.addEphemeralEffect(newSet, dt*1.1)
+  elseif (self.activeSet ~= nil) then
+    status.removeEphemeralEffect(self.activeSet)
   end
+  self.activeSet = newSet
 end

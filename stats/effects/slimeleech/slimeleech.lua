@@ -41,7 +41,9 @@ function update(dt)
             damageTeam = sourceDamageTeam
           }
         )
-        animator.playSound("bolt")
+		if animator.hasSound("bolt") then
+			animator.playSound("bolt")
+		end
         return
       end
     end

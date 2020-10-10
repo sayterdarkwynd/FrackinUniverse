@@ -1,12 +1,39 @@
 {
-  "itemName" : "batterystemcharge",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "batterystemcharge.png",
-  "description" : "Effect:
-^cyan;+40 Max Energy, +5% Energy Regen^reset;",
-  "shortdescription" : "Battery Stem Charge",
-  "category" : "food",
-  "foodValue" : 40,
-  "effects" : [ [ "maxenergyboost5", "energyregenfu05" ] ]
+	"itemName": "batterystemcharge",
+	"inventoryIcon": "batterystemcharge.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+40 EP^reset;, ^cyan;+2.5% E Regen & -1.25% E. Block^reset;: 2m",
+	"shortdescription": "Battery Stem Charge",
+
+	"effects": [
+		[
+			{
+				"effect": "maxenergyboost5",
+				"duration": 120
+			},
+			{
+				"effect": "energyregenfu05",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"maxenergyboost1",
+		"maxenergyboost2",
+		"maxenergyboost3",
+		"maxenergyboost4",
+		"maxenergyboost6",
+		"maxenergyboost145",
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu40"
+	]
 }

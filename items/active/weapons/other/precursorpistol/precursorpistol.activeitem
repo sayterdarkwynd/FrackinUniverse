@@ -4,15 +4,15 @@
   "inventoryIcon" : "precursorpistol.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Protects and heals.
-^yellow;Projects healing zones^reset;
-^green;Zone prevents Energy and Shield Regen^reset;",
+  "description" : "Projects ^orange;Regen Zones^reset; that:
+^green;Provide Defense. Convert Energy to Health.^reset;
+^red;Reduce Energy and Shield Regen.^reset;",
     "shortdescription" : "Precursor Protector",
   "category" : "bioweapon",
-  "level" : 5,
+  "level" : 100,
   "tooltipKind" : "gununique",
   "weaponType" : "pistol",
-  "itemTags" : ["weapon","ranged","pistol", "precursor", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","pistol", "precursor", "bioweapon","theaUninfusable"],
   "twoHanded" : false,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
@@ -100,8 +100,8 @@
       }
     },
 
-  "critChance" : 4,
-  "critBonus" : 12, 
+  "critChance" : 0,
+  "critBonus" : 0, 
 
     "builder" : "/items/buildscripts/buildunrandweapon.lua"
 

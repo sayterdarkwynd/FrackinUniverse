@@ -1,0 +1,24 @@
+{
+  "projectileName" : "pandorasboxstrongelectricplasmabullet",
+  "physics" : "laser",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "pandorasboxstrongelectricplasmabullet.png",
+  "animationCycle" : 0.5,
+  "fullbright" : true,
+  "frameNumber" : 4,
+  "power" : 50,
+  "speed" : 75,
+  "supportsProcessing" : true,
+  "emitters" : [ "electricplasma" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockbackstatus.config"
+    }
+  ],
+  "statusEffects" : [ "electrified" ],
+  "lightColor" : [102, 32, 110],
+  "damageType" : "NoDamage",
+  "damageKind" : "electricplasmabullet"
+}

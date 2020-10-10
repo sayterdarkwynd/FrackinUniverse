@@ -1,7 +1,7 @@
 {
   "objectName" : "precursorchest",
   "colonyTags" : [ "precursor", "outpost", "tech"],
-  "printable" : true,
+  "printable" : false,
   "rarity" : "legendary",
   "objectType" : "container",
   "tooltipKind" : "container",
@@ -10,13 +10,11 @@
   "description" : "Stores stuff.",
   "shortdescription" : "Precursor Chest",
   "race" : "precursor",
-
-
   "inventoryIcon" : "precursorchesticon.png",
   "orientations" : [
     {
       "imageLayers" : [ { "image" : "precursorchest.png:<color>.<key>", "fullbright" : true }, { "image" : "precursorchestfullbright.png:<color>.<key>" } ],
-      "imagePosition" : [-8, 0],
+      "imagePosition" : [0, 0],
 
       "direction" : "left",
       "flipImages" : true,
@@ -26,7 +24,7 @@
     },
     {
       "imageLayers" : [ { "image" : "precursorchest.png:<color>.<key>", "fullbright" : true }, { "image" : "precursorchestfullbright.png:<color>.<key>" } ],
-      "imagePosition" : [-18, 0],
+      "imagePosition" : [0, 0],
 
       "direction" : "right",
 
@@ -35,11 +33,11 @@
     }
 
   ],
-
   "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
   "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
   "slotCount" : 64,
   "uiConfig" : "/interface/chests/chest<slots>.config",
   "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600
-}
+  "autoCloseCooldown" : 3600,
+  "learnBlueprintsOnPickup": ["precursorchest", "precursorchest2"]
+  }

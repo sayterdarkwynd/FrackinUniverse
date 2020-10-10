@@ -5,12 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Legendary",
   "description" : "^orange;Set Bonuses^reset;: 
-Sword x 1: ^green;+2%^reset; Crit, 
-Swords x 2: ^#a94db3;+25%^reset; Dmg
-^cyan;30% Shadow Resistance^reset;
-\n^cyan;Immune^reset;: Gas, Shadow, Tar^reset;",
+^yellow;^reset; Single Sword: +^green;2^reset;% Crit, 
+^yellow;^reset; Dual Swords: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Shadow, Tar^reset;",
   "shortdescription" : "Replicant's Hardsuit",
-  "category" : "t6armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -47,6 +46,11 @@ Swords x 2: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.028572
     }
   ],
 
@@ -55,10 +59,6 @@ Swords x 2: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "fu_replicantset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.1
     }
   ],
 
@@ -98,5 +98,7 @@ Swords x 2: ^#a94db3;+25%^reset; Dmg
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

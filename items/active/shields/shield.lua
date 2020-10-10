@@ -1,5 +1,12 @@
 require "/scripts/util.lua"
 require "/scripts/status.lua"
+require "/scripts/FRHelper.lua"
+
+
+-- to-to : move stats for always-on effects to an array
+-- and do the same for raised-only stats/effect
+-- investigate bash chance math
+-- current system really doesn't do a good job of handling stats that exist only on the item and stats that exist globally on the player
 
 function init()
 	self.debug = false
@@ -31,21 +38,28 @@ function init()
 	setStance(self.stances.idle)
 
 	self.blockCountShield = 0
-	species = world.entitySpecies(activeItem.ownerEntityId()) 
+	if not self.species or not self.species:succeeded() then
+		self.species = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
+	end
+    if self.species:succeeded() then
+        -- yes, we really do need this many
+        self.helper = FRHelper:new(self.species:result())
+        self.raisedhelper = FRHelper:new(self.species:result())
+        self.blockhelper = FRHelper:new(self.species:result())
+        self.helper:loadWeaponScripts("shield-update")
+        self.raisedhelper:loadWeaponScripts({"shield-raised", "shield-bash"})
+        self.blockhelper:loadWeaponScripts("shield-perfectblock")
+    end
 
+  
 	-- FU special effects
 	-- health effects
 	self.critChance = config.getParameter("critChance", 0)
 	self.critBonus = config.getParameter("critBonus", 0)
-	self.shieldBonusShield = config.getParameter("shieldBonusShield", 0)  -- bonus shield HP
-	self.shieldBonusRegen = config.getParameter("shieldBonusRegen", 0)  -- bonus shield regen time
+	self.shieldBonusShield = config.getParameter("shieldBonusShield", 0)	-- bonus shield HP
+	self.shieldBonusRegen = config.getParameter("shieldBonusRegen", 0)	-- bonus shield regen time
 	self.shieldHealthRegen = config.getParameter("shieldHealthRegen", 0)
-	shieldEnergyRegen = config.getParameter("shieldEnergyRegen",0)
-	shieldHealthBonus = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))
-	shieldEnergyBonus = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))
-	shieldProtection = config.getParameter("shieldProtection",0)
 	shieldStamina = config.getParameter("shieldStamina",0)
-	shieldFalling = config.getParameter("shieldFalling",0)
 	protectionBee = config.getParameter("protectionBee",0)
 	protectionAcid = config.getParameter("protectionAcid",0)
 	protectionBlackTar = config.getParameter("protectionBlackTar",0)
@@ -76,9 +90,8 @@ function init()
 	stunChance = config.getParameter("stunChance", 0)
 	shieldBash = config.getParameter("shieldBash",0)
 	shieldBashPush = config.getParameter("shieldBashPush",0)
+ 	--shieldBonusApply()
 	-- end FU special effects
-
-	species = world.entitySpecies(activeItem.ownerEntityId())
 
 	animator.setGlobalTag("directives", "")
 	animator.setAnimationState("shield", "idle")
@@ -93,57 +106,56 @@ end
 
 function shieldBonusApplyPartial()
 	status.setPersistentEffects("shieldEffects", {
-		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
-		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
-		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
-		{stat = "shieldStaminaRegen", amount = shieldStamina},
-		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
-		{stat = "stunChance", amount =  stunChance},
-		{stat = "shieldBash", amount =  shieldBash},
-		{stat = "shieldBashPush", amount =  shieldBashPush},
-		{stat = "critChance", amount =  self.critChance},
-		{stat = "critChance", amount =  self.critBonus} 	
-	})
+ 		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
+ 		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
+ 		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
+ 		{stat = "shieldStaminaRegen", amount = shieldStamina},
+ 		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
+ 		{stat = "stunChance", amount =  stunChance},
+ 		{stat = "shieldBash", amount =  shieldBash},
+ 		{stat = "shieldBashPush", amount =  shieldBashPush},
+ 		{stat = "critChance", amount =  self.critChance},
+ 		{stat = "critChance", amount =  self.critBonus} 		
+ 	})
 end
 
 function shieldBonusApply()
 	status.setPersistentEffects("shieldEffects", {
-		{stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
-		{stat = "energyRegenPercentageRate", amount = config.getParameter("shieldEnergyRegen",0)},
-		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
-		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
-		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
-		{stat = "shieldStaminaRegen", amount = shieldStamina},
-		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
-		{stat = "beestingImmunity", amount = protectionBee},
-		{stat = "sulphuricImmunity", amount = protectionAcid},
-		{stat = "blacktarImmunity", amount = protectionBlackTar},
-		{stat = "biooozeImmunity", amount = protectionBioooze},
-		{stat = "poisonStatusImmunity", amount = protectionPoison},
-		{stat = "insanityImmunity", amount = protectionInsanity},
-		{stat = "shockStatusImmunity", amount = protectionShock},
-		{stat = "slimeImmunity", amount = protectionSlime},
-		{stat = "lavaImmunity", amount = protectionLava},
-		{stat = "fireStatusImmunity", amount = protectionFire},
-		{stat = "protoImmunity", amount = protectionProto},
-		{stat = "sulphuricImmunity", amount = protectionAcid},
-		{stat = "blacktarImmunity", amount = protectionBlackTar},
-		{stat = "biooozeImmunity", amount = protectionBioooze},
-		{stat = "poisonStatusImmunity", amount = protectionPoison},
-		{stat = "insanityImmunity", amount = protectionInsanity},
-		{stat = "electricStatusImmunity", amount = protectionShock},
-		{stat = "slimeImmunity", amount = protectionSlime},
-		{stat = "lavaImmunity", amount = protectionLava},
-		{stat = "biomecoldImmunity", amount = protectionCold},
-		{stat = "ffextremecoldImmunity", amount = protectionXCold},
-		{stat = "biomeheatImmunity", amount = protectionHeat},
-		{stat = "ffextremeheatImmunity", amount = protectionXHeat},
-		{stat = "biomeradiationImmunity", amount = protectionRads},
-		{stat = "ffextremeradiationImmunity", amount = protectionXRads},
-		{stat = "shieldBash", amount = shieldBash},
-		{stat = "stunChance", amount =  config.getParameter("stunChance", 0)},
-		{stat = "shieldBashPush", amount = shieldBashPush}
-	})
+ 		{stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
+ 		{stat = "energyRegenPercentageRate", amount = config.getParameter("shieldEnergyRegen",0)},
+ 		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
+ 		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
+ 		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
+ 		{stat = "shieldStaminaRegen", amount = shieldStamina},
+ 		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
+ 		{stat = "beestingImmunity", amount = protectionBee},
+ 		{stat = "sulphuricImmunity", amount = protectionAcid},
+ 		{stat = "blacktarImmunity", amount = protectionBlackTar},
+ 		{stat = "biooozeImmunity", amount = protectionBioooze},
+ 		{stat = "poisonStatusImmunity", amount = protectionPoison},
+ 		{stat = "insanityImmunity", amount = protectionInsanity},
+ 		{stat = "shockStatusImmunity", amount = protectionShock},
+ 		{stat = "slimeImmunity", amount = protectionSlime},
+ 		{stat = "lavaImmunity", amount = protectionLava},
+ 		{stat = "fireStatusImmunity", amount = protectionFire},
+ 		{stat = "protoImmunity", amount = protectionProto},
+ 		{stat = "sulphuricImmunity", amount = protectionAcid},
+ 		{stat = "blacktarImmunity", amount = protectionBlackTar},
+ 		{stat = "biooozeImmunity", amount = protectionBioooze},
+ 		{stat = "poisonStatusImmunity", amount = protectionPoison},
+ 		{stat = "insanityImmunity", amount = protectionInsanity},
+ 		{stat = "electricStatusImmunity", amount = protectionShock},
+ 		{stat = "slimeImmunity", amount = protectionSlime},
+ 		{stat = "lavaImmunity", amount = protectionLava},
+ 		{stat = "biomecoldImmunity", amount = protectionCold},
+ 		{stat = "ffextremecoldImmunity", amount = protectionXCold},
+ 		{stat = "biomeheatImmunity", amount = protectionHeat},
+ 		{stat = "ffextremeheatImmunity", amount = protectionXHeat},
+ 		{stat = "biomeradiationImmunity", amount = protectionRads},
+ 		{stat = "ffextremeradiationImmunity", amount = protectionXRads},
+ 		{stat = "shieldBash", amount = shieldBash},
+ 		{stat = "shieldBashPush", amount = shieldBashPush}
+ 	})
 end
 
 function isShield(name) -- detect if they have a shield equipped for racial tag checks
@@ -154,68 +166,73 @@ function isShield(name) -- detect if they have a shield equipped for racial tag 
 end
 
 function update(dt, fireMode, shiftHeld)
+
+    shieldBonusApplyPartial()
+
+    if not self.species:succeeded() then init() end
+    if self.helper then self.helper:runScripts("shield-update", self, dt, fireMode, shiftHeld) end
+
 	self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
-	shieldBonusApplyPartial()
+
+	if self.blockCountShield == nil then
+        self.blockCountShield = 0
+	end
+
 	if not self.active and fireMode == "primary" and self.cooldownTimer == 0 and status.resourcePositive("shieldStamina") then
-		raiseShield()
+        raiseShield()
 	end
 
 	if self.active then
-		self.activeTimer = self.activeTimer + dt
-		self.damageListener:update()
-		shieldBonusApply()
-		
-		-----------------
-		-- FU SPECIALS --
-		-----------------
-		status.modifyResourcePercentage("health", self.shieldHealthRegen * dt)
-		-----------------
-		-----------------
-		-----------------
-		
-		if status.resourcePositive("perfectBlock") then
-			animator.setGlobalTag("directives", self.perfectBlockDirectives)
-		else
-			animator.setGlobalTag("directives", "")
-		end
+        self.activeTimer = self.activeTimer + dt
 
-		if self.forceWalk then
-			mcontroller.controlModifiers({runningSuppressed = true})
-		end
+        self.damageListener:update()
+	
+        -- ************************************** FU SPECIALS **************************************
+        status.modifyResourcePercentage("health", self.shieldHealthRegen * dt)
+        -- *****************************************************************************************
 
-		if (fireMode ~= "primary" and self.activeTimer >= self.minActiveTime) or not status.resourcePositive("shieldStamina") then
-			lowerShield()
-		end
+        if status.resourcePositive("perfectBlock") then
+            animator.setGlobalTag("directives", self.perfectBlockDirectives)
+        else
+            animator.setGlobalTag("directives", "")
+        end
+
+        if self.forceWalk then
+            mcontroller.controlModifiers({runningSuppressed = true})
+        end
+
+        if (fireMode ~= "primary" and self.activeTimer >= self.minActiveTime) or not status.resourcePositive("shieldStamina") then
+            lowerShield()
+        end
 	end
 
 	updateAim()
 end
 
 function uninit()
+    if self.helper then
+        self.helper:clearPersistent()
+        self.raisedhelper:clearPersistent()
+        self.blockhelper:clearPersistent()
+    end
+	status.clearPersistentEffects("shieldBonus")
+	status.clearPersistentEffects("shieldEffects")    
 	status.clearPersistentEffects(activeItem.hand().."Shield")
 	activeItem.setItemShieldPolys({})
 	activeItem.setItemDamageSources({})
-	status.clearPersistentEffects("shieldBonus")
-	status.clearPersistentEffects("shieldEffects")
+	
 end
 
 function updateAim()
 	local aimAngle, aimDirection = activeItem.aimAngleAndDirection(0, activeItem.ownerAimPosition())
 
-	if self.active then --This is the thing that makes it aimable and look okay while doing it. I hope I'm doing this right. -Cookie
-		self.aimAngle = aimAngle
-		activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation)
-	else
-		activeItem.setArmAngle(self.relativeArmRotation)
-	end
-
 	if self.stance.allowRotate then
-		self.aimAngle = aimAngle
+        self.aimAngle = aimAngle
 	end
 	activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation)
 
 	if self.stance.allowFlip then
-		self.aimDirection = aimDirection
+        self.aimDirection = aimDirection
 	end
 	activeItem.setFacingDirection(self.aimDirection)
 
@@ -242,105 +259,131 @@ function raiseShield()
 	status.setPersistentEffects(activeItem.hand().."Shield", {{stat = "shieldHealth", amount = shieldHealth()}})
 	local shieldPoly = animator.partPoly("shield", "shieldPoly")
 	activeItem.setItemShieldPolys({shieldPoly})
-	shieldBonusApply()
+    
+    shieldBonusApply()
+    
 	if self.knockback > 0 then
-		local knockbackDamageSource = {
-		poly = shieldPoly,
-		damage = 0,
-		damageType = "Knockback",
-		sourceEntity = activeItem.ownerEntityId(),
-		team = activeItem.ownerTeam(),
-		knockback = self.knockback,
-		rayCheck = true,
-		damageRepeatTimeout = 0.25
-		}
-		activeItem.setItemDamageSources({ knockbackDamageSource })
+        local knockbackDamageSource = {
+            poly = shieldPoly,
+            damage = 0,
+            damageType = "Knockback",
+            sourceEntity = activeItem.ownerEntityId(),
+            team = activeItem.ownerTeam(),
+            knockback = self.knockback,
+            rayCheck = true,
+            damageRepeatTimeout = 0.25
+        }
+        activeItem.setItemDamageSources({ knockbackDamageSource })
 	end
 
+    -- ******************* BEGIN FR RACIALS FOR WHEN SHIELD IS RAISED
+    if self.raisedhelper then self.raisedhelper:runScripts("shield-raised", self) end
+    -- ******************** END RAISED SHIELD SPECIALS
+
 	self.damageListener = damageListener("damageTaken", function(notifications)
-		for _,notification in pairs(notifications) do
-			if notification.hitType == "ShieldHit" then
-				-- *** set up shield bash values *** --
-				self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash",0)
-				if not status.resource("energy") then
-					self.energyval= 0
-				else	 
-					self.energyval= (status.resource("energy") / status.stat("maxEnergy")) * 100
-				end 
-				-- end shieldbash Init			  
-				if status.resourcePositive("perfectBlock") then
-					if (self.energyval) >= 50 and (self.randomBash) >= 50 then -- Shield Bash when perfect blocking
-						bashEnemy()
-					end	  
+    	for _,notification in pairs(notifications) do
+            if notification.hitType == "ShieldHit" then
+                -- *** set up shield bash values *** --
+                self.randomBash = math.random(100) + config.getParameter("shieldBash",0) + status.stat("shieldBash")
+                if not status.resource("energy") then
+                    self.energyval= 0
+                else
+                    self.energyval= (status.resource("energy") / status.stat("maxEnergy")) * 100
+                end
+                -- end shieldbash Init
+                if status.resourcePositive("perfectBlock") then
+
+                    if (self.energyval) >= 50 and (self.randomBash) >= 50 then -- greater chance to Shield Bash when perfect blocking
+                        bashEnemy()
+                    end
+					
 					--No catch case for this sound since it's required by vanilla.
 					animator.playSound("perfectBlock")
 					
 					if self.animationData.particleEmitters and self.animationData.particleEmitters.perfectBlock then
 						animator.burstParticleEmitter("perfectBlock")
 					end
-					refreshPerfectBlock()
-				elseif status.resourcePositive("shieldStamina") then   
-					if (self.energyval) >= 50 and (self.randomBash) >= 100 then -- Shield Bash when perfect blocking
-						bashEnemy()
-					end		 
-					animator.playSound("block")
-				else
-					animator.playSound("break")
-					if (self.energyval) <= 20 and (self.randomBash) >= 50 or (self.randomBash) >= 100 then -- if tired, we could end up stunned!
-						status.addEphemeralEffect("stun",1)
-					end			   
-				end
-				animator.setAnimationState("shield", "block")
-				return
-			end
-		end
+
+                    -- *******************************************************
+                    self.blockCountShield = self.blockCountShield + 1
+
+                    -- *******************************************************
+                    -- Begin racial Perfect Blocking scripts
+                    -- *******************************************************
+                    if self.blockhelper then self.blockhelper:runScripts("shield-perfectblock", self) end
+
+                    refreshPerfectBlock()
+                elseif status.resourcePositive("shieldStamina") then
+                    if (self.energyval) >= 50 and (self.randomBash) >= 100 then -- Shield Bash when perfect blocking
+                        bashEnemy()
+                    end
+                    if self.debug then sb.logInfo("(FR) shield.lua: hitType %s received, blockCountShield = %s, blockCountShield reset",notification.hitType, self.blockCountShield) end
+                    clearEffects()
+                    animator.playSound("block")
+                else
+                    animator.playSound("break")
+                    if (self.energyval) <= 20 and (self.randomBash) >= 50 or (self.randomBash) >= 100 then -- if tired, we could end up stunned when our shield breaks!
+                        status.addEphemeralEffect("stun",0.75)
+                    end
+                    if self.debug then sb.logInfo("(FR) shield.lua: hitType %s received, blockCountShield = %s, blockCountShield reset",notification.hitType, self.blockCountShield) end
+                    clearEffects()
+                end
+                animator.setAnimationState("shield", "block")
+                return
+            else
+                if self.debug then sb.logInfo("(FR) shield.lua: non-ShieldHit: %s", notification.hitType) end
+                -- hit is required to do damage, else collisions with, e.g., rain could trigger the reset
+                if notification.healthLost --[[.damageDealt?]] > 0 then
+                    if self.debug then sb.logInfo("(FR) shield.lua: hitType %s received, blockCountShield = %s, blockCountShield reset",notification.hitType, self.blockCountShield) end
+                    clearEffects()
+                end
+            end
+        end
 	end)
 
 	refreshPerfectBlock()
 end
 
 function bashEnemy()
-	if not status.resource("energy") then 
-		self.energyValue = 0 
-	else
-		self.energyValue = status.resource("energy",0)
-	end
+    self.energyValue = status.resource("energy") or 0
 
 	-- apply bonus stun
 	self.stunBonus = config.getParameter("shieldBash",0) + config.getParameter("shieldBashPush",0)
 	self.stunValue = math.random(100) + self.stunBonus
 
+    if self.raisedhelper then self.raisedhelper:runScripts("shield-bash", self) end
+
 	-- lets limit how much damage they can do
-	self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.random(6)
+	self.damageLimit = (self.energyval/50) + (status.stat("health")/50) + math.random(6) + (status.stat("shieldBashBonus"))
 
 	if status.resourcePositive("perfectBlock") then
+        self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 6
 		if self.stunValue >=100 then
-			self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
-			params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash	
-			params2 = { speed=20, power = 0 , damageKind = "default", knockback = 0 } -- Stun	
-			world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params2)
-		else
-			self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 6
-			params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash			  
+            local params2 = { speed=20, power = 0 , damageKind = "default", knockback = 0 } -- Stun
+            world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params2)
 		end
 	else
-		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush",0) + 2
-		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash			  
+		self.pushBack = math.random(20) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 2
 	end
-	
-	world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
-	status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy	
+    local params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash
+    world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
+    status.modifyResource("energy", self.energyValue * -0.2 )	-- consume energy
 	
 	if animator.hasSound("shieldBash") then
 		--Protection for if the user hasn't specified shield bash sounds
 		animator.playSound("shieldBash")
 	end
 
-	--Alright Bob I'll take "Slapping chucklefish for not offering animator.hasParticle" for $500
+	--Alright Bob I'll take "Slapping chucklefish for not offering animator.hasParticle" for $500.
 	if self.animationData.particleEmitters and self.animationData.particleEmitters.shieldBashHit then
 		--Protection for if the user hasn't specified shield bash partiles
 		animator.burstParticleEmitter("shieldBashHit")
 	end
+end
+
+function clearEffects()
+    if self.blockhelper then self.blockhelper:clearPersistent() end
+	self.blockCountShield = 0
 end
 
 function refreshPerfectBlock()
@@ -350,6 +393,7 @@ function refreshPerfectBlock()
 end
 
 function lowerShield()
+    if self.raisedhelper then self.raisedhelper:clearPersistent() end
 	setStance(self.stances.idle)
 	animator.setGlobalTag("directives", "")
 	animator.setAnimationState("shield", "idle")
@@ -360,7 +404,8 @@ function lowerShield()
 	activeItem.setItemShieldPolys({})
 	activeItem.setItemDamageSources({})
 	self.cooldownTimer = self.cooldownTime
-	status.clearPersistentEffects("shieldBonus") 
+	status.clearPersistentEffects("shieldBonus")
+	status.clearPersistentEffects("shieldEffects")
 end
 
 function shieldHealth()

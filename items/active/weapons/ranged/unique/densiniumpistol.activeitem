@@ -34,7 +34,18 @@
     },   
     "sounds" : {
       "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
-    }
+    },
+    "lights" : { "muzzleFlash" : {"color" : [92, 41, 123] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "frozenflames", "offset" : [0.0, 0.0] },
+          { "particle" : "frozenfiretrail", "offset" : [0.0, 0.0] },
+          { "particle" : "teslaboltpurple", "offset" : [0.0, 0.0] }
+        ]
+      }
+    } 
   },
 
   "baseOffset" : [0.8, 0.26],
@@ -92,6 +103,9 @@
 
   "critChance" : 3,
   "critBonus" : 6,
-
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -29,7 +29,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "physical",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -74,6 +74,12 @@
 
   "critChance" : 2,
   "critBonus" : 3, 
-
+  "isAmmoBased" : 1,
+  "magazineSize" : 10,
+  "isPistol" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
