@@ -6,7 +6,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "foodDelta", effectiveMultiplier = 0.8}
+	{stat = "foodDelta", baseMultiplier = 0.8}
 }
 
 function init()
