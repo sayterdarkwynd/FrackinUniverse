@@ -294,7 +294,10 @@ function upgradeWeapon(upgradeItem,price)
 					end
 				end
 
-
+				if (itemConfig.config.upgradeParametersTricorder) and (upgradedItem.parameters.level) >= 1 then
+					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParametersTricorder)
+				end
+				
 				if (itemConfig.config.upgradeParameters) and (upgradedItem.parameters.level) > 4 then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
 				end

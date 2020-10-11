@@ -1,6 +1,12 @@
 require "/scripts/util.lua"
 
 function init()
+	--Set the image of the object
+	local petHouseType = config.getParameter("petHouseType", "default")
+	local petHouseDirectory = config.getParameter("petHouseDirectory", "/")
+	animator.setGlobalTag("petHouseType", petHouseType)
+	animator.setGlobalTag("petHouseDirectory", petHouseDirectory)
+
 	--Restore stored storage
 	if config.getParameter("storageData") then
 		storage = config.getParameter("storageData")
@@ -11,7 +17,7 @@ function init()
 	storage.spawnTimer = storage.spawnTimer and 0.5 or 0
 	storage.petParams = storage.petParams or {}
 
-	self.monsterType = config.getParameter("shipPetType", "petweasel")
+	self.monsterType = config.getParameter("shipPetType")
 	self.spawnOffset = config.getParameter("spawnOffset", {0, 2})
 	
 	self.hasInputNode = config.getParameter("inputNodes")
@@ -73,6 +79,8 @@ function setPet(entityId, params)
 end
 
 function update(dt)
+	if not self.monsterType then return end	-- don't try to spawn the pet if it's not set
+	
 	if self.petId and not world.entityExists(self.petId) then
 		self.petId = nil
 	end
