@@ -130,16 +130,9 @@ controllerChain = {
 	end
 }
 
-typer_previousInit = init
-typer_previousUpdate = update
-isActive = true
-
 function init()
-	if typer_previousInit then typer_previousInit() end
-	
 	-- Do nothing if the entity is not a player. (Don't expire the status effect as it might have other functionality)
 	if world.entityType(entity.id()) ~= "player" then
-		isActive = false
 		return
 	end
 
@@ -176,12 +169,11 @@ function init()
 		SelectText = SelectRandom
 		SelectOrdered = nil
 	end
+
+	script.setUpdateDelta(1)
 end
 
 function update(dt)
-	if typer_previousUpdate then typer_previousUpdate(dt) end
-	if not isActive then return end
-	
 	-- Keeps track of how long the effect is running
 	runningTime = runningTime + dt
 
