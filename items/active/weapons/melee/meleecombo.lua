@@ -259,7 +259,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		end
 	end
 
-	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) then
+	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) then
 		self.longswordMastery = 1 + status.stat("longswordMastery")
 		status.setPersistentEffects("masterybonus", {
 			{stat = "shieldBash", amount = 1.0 + (self.longswordMastery * 5)}

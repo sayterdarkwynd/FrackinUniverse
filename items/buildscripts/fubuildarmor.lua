@@ -3,14 +3,14 @@ require "/scripts/vec2.lua"
 require "/scripts/versioningutils.lua"
 
 local resistances={
-	physicalResistance={label="physicalResLabel",friendly="Phys. Resist: "},
-	fireResistance={label="fireResLabel",friendly="Fire Resist: "},
-	iceResistance={label="iceResLabel",friendly="Ice Resist: "},
-	poisonResistance={label="poisonResLabel",friendly="Poison Resist: "},
-	electricResistance={label="electricResLabel",friendly="Elec. Resist: "},
-	cosmicResistance={label="cosmicResLabel",friendly="Cosmic Resist: "},
-	shadowResistance={label="shadowResLabel",friendly="Shadow Resist: "},
-	radioactiveResistance={label="radiationResLabel",friendly="Rad. Resist: "}
+	physicalResistance={label="physicalResLabel",friendly=" Phys."},
+	fireResistance={label="fireResLabel",friendly=" Fire"},
+	iceResistance={label="iceResLabel",friendly=" Ice"},
+	poisonResistance={label="poisonResLabel",friendly=" Poison"},
+	electricResistance={label="electricResLabel",friendly=" Elec."},
+	cosmicResistance={label="cosmicResLabel",friendly=" Cosmic"},
+	shadowResistance={label="shadowResLabel",friendly=" Shadow"},
+	radioactiveResistance={label="radiationResLabel",friendly=" Rad."}
 }
 
 function build(directory, config, parameters, level, seed)
@@ -77,15 +77,27 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.shieldBashPushLabel = configParameter("shieldBashPush",0)  
 		config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
 		
+		local resistanceInfo2={}
+		
 		for _,v in pairs(config.leveledStatusEffects) do
 			if resistances[v.stat] then
 				local label=resistances[v.stat].label
 				local friendly=resistances[v.stat].friendly
 				local buffer=((v.amount or 0)*root.evalFunction(v.levelFunction,configParameter("level", 1))*100)
+				local comparator=buffer
+				
 				buffer=math.floor(buffer)
-				config.tooltipFields[label]=buffer.."%"
-				config.tooltipFields[label]=string.gsub(config.tooltipFields[label],"%.0%%","%%")
-				table.insert(resistanceInfo,friendly..config.tooltipFields[label])
+				local buffer2=string.gsub(string.gsub(buffer.."%","%.0%%",""),"%%","")
+				buffer=string.gsub(buffer.."%","%.0%%","")
+				
+				if comparator>0 then
+					buffer2="^green;"..buffer2.."^reset;"
+				elseif comparator < 0 then
+					buffer2="^red;"..buffer2.."^reset;"
+				end
+				
+				config.tooltipFields[label]=buffer
+				table.insert(resistanceInfo,buffer2.."%"..friendly)
 			end
 		end
 	end
@@ -93,7 +105,7 @@ function build(directory, config, parameters, level, seed)
 	local doOnce=false
 	for i = #resistanceInfo, 1, -1 do
 		if not doOnce then
-			resistanceText="\n^green;^reset; " 
+			resistanceText="\n^green;^reset; Resists: " 
 			doOnce=true
 		end
 		resistanceText=resistanceText..resistanceInfo[i]
