@@ -4,7 +4,7 @@
   "inventoryIcon" : "corerifle1.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "A primitive ^cyan;Energy^reset; blaster.\n^red;Prone to overheating^reset;",
+  "description" : "A primitive ^cyan;Energy^reset; blaster.\n^red;Prone to overheating^reset;\n^cyan;Upgrade to Empower^reset;",
   "shortdescription" : "Core Rifle",
   "category" : "assaultRifle",
   "level" : 1,
@@ -46,8 +46,8 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
-    "fireTime" : 0.4,
-    "baseDps" : 11.5,
+    "fireTime" : 0.5,
+    "baseDps" : 9,
     "energyUsage" : 36.0,
     "inaccuracy" : 0.01,
     "projectileCount" : 1,
@@ -63,7 +63,7 @@
 	"highLevel" : 80,				//Value required to reach High heat	
 	"overheatLevel" : 100,				//Overheat at this value
 
-    "projectileType" : "corerifleshot",
+    "projectileType" : "fireguardianbullet",
     "projectileParameters" : { 
       "speed" : 72,
       "knockback" : 2
@@ -111,7 +111,91 @@
 
  // "altAbilityType" : "fuelairtrail",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+
+
+  "upgradeParametersTricorder" : {
+    "shortdescription":"Core Rifle MkII",
+    "primaryAbility" : {
+      "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+      "class" : "FUOverHeating",
+      "fireTime" : 0.45,
+      "energyUsage" : 36.0,
+      "inaccuracy" : 0.01,
+      "projectileCount" : 1,
+      "fireType" : "auto",
+
+    //Overheating Weapon Values (based heavily on elithian races version)
+    "heatGain" : 24,          //Heat generated per shot
+    "coolingTime" : 0.25,       //Time before passive cooling kicks in
+    "heatLossLevel" : 20,       //Heat lost per second while not overheated
+    "heatLossRateMax" : 30,       //Heat lost per second while overheated
+    "lowLevel" : 25,          //Value required to reach Low heat
+    "medLevel" : 50,        //Value required to reach Medium heat
+    "highLevel" : 80,       //Value required to reach High heat 
+    "overheatLevel" : 100,        //Overheat at this value      
+      "projectileType" : "corerifleshot",
+      "projectileParameters" : { 
+        "speed" : 72,
+        "knockback" : 2
+      }
+    }
+  },
+  "upgradeParameters" : {
+    "shortdescription":"Core Rifle MkIII",
+    "primaryAbility" : {
+      "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+      "class" : "FUOverHeating",      
+      "fireTime" : 0.42,
+      "energyUsage" : 36.0,
+      "inaccuracy" : 0.01,
+      "projectileCount" : 1,
+      "fireType" : "auto",
+
+    //Overheating Weapon Values (based heavily on elithian races version)
+    "heatGain" : 24,          //Heat generated per shot
+    "coolingTime" : 0.25,       //Time before passive cooling kicks in
+    "heatLossLevel" : 20,       //Heat lost per second while not overheated
+    "heatLossRateMax" : 30,       //Heat lost per second while overheated
+    "lowLevel" : 25,          //Value required to reach Low heat
+    "medLevel" : 50,        //Value required to reach Medium heat
+    "highLevel" : 80,       //Value required to reach High heat 
+    "overheatLevel" : 100,        //Overheat at this value        
+      "projectileType" : "corerifleshot",
+      "projectileParameters" : { 
+        "speed" : 82,
+        "knockback" : 4
+      }
+    }
+  },
+  "upgradeParameters2" : {
+    "shortdescription" : "Core Rifle MkIV",
+    "primaryAbility" : {
+      "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
+      "class" : "FUOverHeating",     
+      "projectileCount" : 2,
+      "inaccuracy" : 0.03,
+      "energyUsage" : 36.0,
+      "fireType" : "auto",
+
+    //Overheating Weapon Values (based heavily on elithian races version)
+    "heatGain" : 24,          //Heat generated per shot
+    "coolingTime" : 0.25,       //Time before passive cooling kicks in
+    "heatLossLevel" : 20,       //Heat lost per second while not overheated
+    "heatLossRateMax" : 30,       //Heat lost per second while overheated
+    "lowLevel" : 25,          //Value required to reach Low heat
+    "medLevel" : 50,        //Value required to reach Medium heat
+    "highLevel" : 80,       //Value required to reach High heat 
+    "overheatLevel" : 100,        //Overheat at this value        
+      "projectileType" : "corerifleshot",
+      "projectileParameters" : { 
+        "speed" : 92,
+        "knockback" : 6,
+        "statusEffect" : [ "napalm" ]
+      }
+    }
+  }    
   
  
 }
