@@ -6,7 +6,8 @@ weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.5} }
 armorBonus={
 	{stat = "liquidnitrogenImmunity", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1},
-	{stat = "pusImmunity", amount = 1}
+	{stat = "pusImmunity", amount = 1},
+	{stat = "researchBonus", amount = 1}
 }
 
 function init()
