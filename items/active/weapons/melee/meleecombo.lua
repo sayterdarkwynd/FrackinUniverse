@@ -259,7 +259,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		end
 	end
 
-	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) then
+	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) then
 		self.longswordMastery = 1 + status.stat("longswordMastery")
 		status.setPersistentEffects("masterybonus", {
 			{stat = "shieldBash", amount = 1.0 + (self.longswordMastery * 5)}
@@ -389,6 +389,10 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end
 
 	if (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem, "longsword")) then
+		if not self.longswordMastery then 
+			self.longswordMastery = 1
+		end
+
 		if self.comboStep >=3 then
 			status.setPersistentEffects("multiplierbonus", {
 				{stat = "critDamage", amount = 0.15 * self.longswordMastery}
@@ -403,7 +407,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 				{stat = "attackSpeedUp", amount = 0.7 * self.longswordMastery}
 			})
 		else
-			if (primaryItem and root.itemHasTag(primaryItem, "shield")) or (altItem and root.itemHasTag(altItem, "shield")) then
+			if (primaryItem and root.itemHasTag(primaryItem, "shield")) and (altItem and root.itemHasTag(altItem, "shield")) or (primaryItem and root.itemHasTag(altItem, "shield")) and (altItem and root.itemHasTag(primaryItem, "shield")) then
 				status.setPersistentEffects("longswordbonus", {
 					{stat = "shieldBash", amount = 4 * self.longswordMastery},
 					{stat = "shieldBashPush", amount = 1},
