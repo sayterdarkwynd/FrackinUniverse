@@ -199,8 +199,6 @@ function states.moveDrill(dt)
 	end
 end
 
-
-
 function states.movePump(dt)
 	if (excavatorCommon.mainDelta * excavatorCommon.vars.excavatorRate) >= 0.2 then
 		step = step + 0.2
@@ -502,7 +500,6 @@ function states.stop()
 	-- body
 end
 
-
 function excavatorCommon.getNextDrillTarget()
 	local pos = storage.position
 	local target = {storage.drillPos[1], storage.drillPos[2]}
@@ -548,7 +545,6 @@ function anims()
 		animWarn=true
 	end
 end
-
 
 function excavatorCommon.combineWrap(argList)
 	local buffer={0,0}
