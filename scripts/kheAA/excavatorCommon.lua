@@ -10,6 +10,9 @@ reDrillLevelFore=0
 redrillPosFore=nil
 reDrillLevelback=0
 redrillPosBack=nil
+--redrill: two damage instances. one at target, one in T from target. damage = <stats>*mult/max. max: cap for a counter incremented by 1 per redrill attempt.
+redrillMax=6
+redrillMult=1.0
 step=0
 time = 0
 --[[
@@ -148,7 +151,7 @@ function states.vacuum(dt)
 end
 
 function states.moveDrillBar(dt)
-	if (excavatorCommon.mainDelta * excavatorCommon.vars.excavatorRate) >= 0.2 then
+	if (excavatorCommon.mainDelta * excavatorCommon.vars.excavatorRate * 2.0) >= 0.2 then
 		step = step + 0.2
 		excavatorCommon.mainDelta=0
 	end
@@ -280,10 +283,10 @@ function states.mine(dt)
 	if redrillPosFore then
 		if reDrillLevelFore > 0 then
 			if world.material(redrillPosFore,"foreground") then
-				local damage=excavatorCommon.vars.drillPower*math.max(reDrillLevelFore,1)/6
+				local damage=redrillMult*excavatorCommon.vars.drillPower*math.max(reDrillLevelFore,1)/redrillMax
 				world.damageTiles({vec2.add(redrillPosFore,{-1,0}),vec2.add(redrillPosFore,{1,0}),vec2.add(redrillPosFore,{0,-1}),redrillPosFore}, "foreground", redrillPosFore, "plantish",damage)
 				world.damageTiles({redrillPosFore}, "foreground", redrillPosFore, "plantish",damage)
-				reDrillLevelFore=math.min(reDrillLevelFore+1,6)
+				reDrillLevelFore=math.min(reDrillLevelFore+1,redrillMax)
 				if excavatorCommon.vars.isVacuum then
 					excavatorCommon.grab(redrillPosFore)
 				end
@@ -297,10 +300,10 @@ function states.mine(dt)
 	if redrillPosBack then
 		if reDrillLevelBack > 0 then
 			if world.material(redrillPosBack,"background") then
-				local damage=excavatorCommon.vars.drillPower*math.max(reDrillLevelBack,1)/6
+				local damage=redrillMult*excavatorCommon.vars.drillPower*math.max(reDrillLevelBack,1)/redrillMax
 				world.damageTiles({vec2.add(redrillPosBack,{-1,0}),vec2.add(redrillPosBack,{1,0}),vec2.add(redrillPosBack,{0,-1}),redrillPosBack}, "foreground", redrillPosBack, "plantish",damage)
 				world.damageTiles({redrillPosBack}, "foreground", redrillPosBack, "plantish",damage)
-				reDrillLevelBack=math.min(reDrillLevelBack+1,6)
+				reDrillLevelBack=math.min(reDrillLevelBack+1,redrillMax)
 				if excavatorCommon.vars.isVacuum then
 					excavatorCommon.grab(redrillPosBack)
 				end
