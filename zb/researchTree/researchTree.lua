@@ -100,7 +100,7 @@ function init()
 					
 					-- Check whether there's data for the acronym, and then if it has tree data.
 					if acronymTest and data.researchTree[tree][acronymTest] then
-						unlockType = data.researchTree[tree][acronymTest].unlocks
+						unlockType = type(data.researchTree[tree][acronymTest].unlocks)
 					end
 					
 					-- Remove acronyms that don't have a linked research

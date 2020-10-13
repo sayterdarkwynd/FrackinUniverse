@@ -73,7 +73,7 @@ specialFrameFunctions = {
 		if not advancedFrameTimer then
 			advancedFrameTimer = data[1]
 		elseif advancedFrameTimer <= 0 then
-			sb.logInfo(data[2])
+			--sb.logInfo(data[2])
 			advancedFrameTimer = data[1]
 		else
 			advancedFrameTimer = advancedFrameTimer - beeTickDelta
@@ -615,7 +615,7 @@ function queenProduction()
 	--the final divider on youngQueenProgress (/4) was added later as a means to reduce the frequency at which queens appeared
 	-- also added a divider to the droneProgress so drone births are 75% less frequent. This will lower production rates as a consequence as bees breed.
 	youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25 
-	sb.logInfo(youngQueenProgress)
+	--sb.logInfo(youngQueenProgress)
 	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)  * 0.25
 
 	if youngQueenProgress >= beeData.youngQueenProductionRequirement then
