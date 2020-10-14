@@ -1,6 +1,6 @@
 {
   "itemName" : "reaperassault",
-  "price" : 150,
+  "price" : 600,
   "inventoryIcon" : "reaperassault.png",
   "maxStack" : 1,
   "rarity" : "rare",
@@ -32,14 +32,14 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.12,
-    "baseDps" : 7.6,
-    "energyUsage" : 30,
+    "baseDps" : 8.7,
+    "energyUsage" : 20,
     "inaccuracy" : 0.03,
     "projectileCount" : 1,
     "fireType" : "auto",
@@ -48,6 +48,7 @@
     "projectileParameters" : { 
       "speed" : 97,
       "knockback" : 2,
+      "damageKind" : "hoarfrost",
 	  "statusEffects" : [ "slow" ] 
     },
 	  "stances" : {
