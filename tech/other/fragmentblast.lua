@@ -27,7 +27,7 @@ function damageConfig()
   foodVal = self.foodValue /20
   energyVal = status.resource("energy")/50
   defenseVal =  status.stat("protection") /120
-  totalVal = (foodVal + energyVal + defenseVal) * self.bonusDamage -- add tech bonus damage from armor etc with self.bonusDamage
+  totalVal = 2 + (foodVal + energyVal + defenseVal) * self.bonusDamage -- add tech bonus damage from armor etc with self.bonusDamage
 end
 
 function activeFlight()
