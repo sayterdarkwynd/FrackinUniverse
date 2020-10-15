@@ -18,8 +18,8 @@ function init()
 	self.researchBonus = 0
 	self.researchCount = player.currency("fuscienceresource") or 0
 	self.baseVal = config.getParameter("baseValue") or 1
-    self.timerCounter = 0
-    self.environmentTimer = 0
+	self.timerCounter = 0
+	self.environmentTimer = 0
 
 	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
@@ -339,29 +339,30 @@ function update(dt)
 		self.researchBonus = 0
 
 		--is the world a higher threat level? if so, apply a bonus to research gain after 5 minutes, increased further after 25 minutes if over tier 6
-		if afkLvl<=3 then
-			if world.threatLevel() > 1 then
-			  if self.environmentTimer > 300 then
-				  self.threatBonus = world.threatLevel() / 1.5
-				  if self.threatBonus < 2 then   -- make sure its not giving too high a bonus, to a max of +3
+		if world.threatLevel() > 1 then
+			if self.environmentTimer > 300 then
+				self.threatBonus = world.threatLevel() / 1.5
+				if self.threatBonus < 2 then	 -- make sure its not giving too high a bonus, to a max of +3
 					self.threatBonus = 1
-				  elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
+				elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
 					self.threatBonus = 5
-				  elseif self.threatBonus > 3 then
+				elseif self.threatBonus > 3 then
 					self.threatBonus = 3
-				  end
-			  end
-			  self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
-		  end
-	    end
+				end
+			end
+		
+			if afkLvl<=3 then
+				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
+			end
+	end
 		-- how crazy are we?
 		if player.currency("fumadnessresource") then
-			self.madnessResearchBonus = player.currency("fumadnessresource") / 4777  --3.14
+			self.madnessResearchBonus = player.currency("fumadnessresource") / 4777 --3.14
 			if self.madnessResearchBonus < 1 then
 				self.madnessResearchBonus = 0
 			end
 		end
-	    -- apply the total
+	-- apply the total
 		self.researchBonus = self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = status.stat("researchBonus") + self.researchBonus
@@ -448,7 +449,7 @@ function checkMadnessArt()
 				player.addCurrency("fumadnessresource",5-afkLvl)
 			end
 			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
+				player.radioMessage("crazycarry")
 			end
 			hasPainting=true
 			break
@@ -462,7 +463,7 @@ function checkMadnessArt()
 				player.addCurrency("fumadnessresource",2-math.min(1,afkLvl))
 			end
 			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
+				player.radioMessage("crazycarry")
 			end
 			hasPainting=true
 			break
@@ -485,7 +486,7 @@ function isWeirdStuff(duration)
 			end
 			status.addEphemeralEffect("madnessfoodindicator",duration)
 			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
+				player.radioMessage("crazycarry")
 			end
 			break
 		end
