@@ -23,7 +23,7 @@ function init()
 		end
 	end
 
-	self.upgradeLevel = 8
+	self.upgradeLevel = 10 -- was 8
 	self.maxEssenceValue=root.evalFunction("weaponEssenceValue", self.upgradeLevel)
 	self.upgradeableWeaponItems = {}
 	self.selectedItem = nil
@@ -370,23 +370,6 @@ function upgrade(fullUpgrade)
 							}
 						end
 
-
-						--[[removing all fire rate modifiers due to the annoying bugs and scaling issues
-						-- we reduce fire time slightly as long as the weapon isnt already too fast firing.
-						if (itemConfig.config.primaryAbility.fireTime) then
-						  local fireTimeBase = itemConfig.config.primaryAbility.fireTime
-						  local fireTimeMod = ( upgradedItem.parameters.level/20 * 0.25)
-						  local fireTimeFinal = fireTimeBase * fireTimeMod
-						  local fireTimeFinal2 = fireTimeBase - fireTimeFinal
-							sb.logInfo("firetimefinal2 %s",fireTimeFinal2)
-						  if (itemConfig.config.category == "Rapier") or (itemConfig.config.category == "rapier") or (itemConfig.config.category == "axe") or (itemConfig.config.category == "hammer") or (itemConfig.config.category == "katana") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "scythe") or (itemConfig.config.primaryAbility.fireTime <= 0.25) then
-							upgradedItem.parameters.primaryAbility.fireTime = fireTimeBase
-						  else
-							upgradedItem.parameters.primaryAbility.fireTime = fireTimeFinal2
-						  end
-
-						end]]
-
 						-- does the item have primaryAbility and a baseDps if so, we increase the DPS slightly
 						if (itemConfig.config.primaryAbility.baseDps) and not (itemConfig.config.primaryAbility.baseDps >=20) then
 							local baseDpsBase = itemConfig.config.primaryAbility.baseDps
@@ -406,6 +389,10 @@ function upgrade(fullUpgrade)
 
 				sb.logInfo("Pre-Upgrade Stats : ")
 				sb.logInfo(sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
+				
+				if (itemConfig.config.upgradeParametersTricorder) and (upgradedItem.parameters.level) >= 1 then
+					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParametersTricorder)
+				end
 
 				if (itemConfig.config.upgradeParameters) and (upgradedItem.parameters.level) > 4 then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
