@@ -1,6 +1,6 @@
 {
   "itemName" : "reapercarbine",
-  "price" : 150,
+  "price" : 600,
   "inventoryIcon" : "reapercarbine.png",
   "maxStack" : 1,
   "rarity" : "rare",
@@ -32,13 +32,13 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.4,
-    "baseDps" : 8,
+    "baseDps" : 8.15,
     "energyUsage" : 34,
     "inaccuracy" : 0,
 
@@ -49,6 +49,7 @@
     "projectileParameters" : { 
       "speed" : 120,
       "knockback" : 7,
+      "damageKind" : "hoarfrost",
 	  "statusEffects" : [ "slow" ] 
     },
 	  "stances" : {
@@ -93,7 +94,7 @@
   "critChance" : 3,
   "critBonus" : 2,
   "isAmmoBased" : 1,
-  "magazineSize" : 16,
+  "magazineSize" : 24,
   "reloadTime" : 1.18, 
   //recoil
   "hasRecoil" : 1,
@@ -101,6 +102,10 @@
   "recoilForce" : 400, 
   
   "altAbilityType" : "swtjc_ewg_globelauncher",
+  "altAbility" : {
+    "baseDps" : 7,
+    "energyUsage" : 60 
+    },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

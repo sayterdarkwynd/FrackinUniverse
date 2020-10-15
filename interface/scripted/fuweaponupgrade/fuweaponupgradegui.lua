@@ -23,7 +23,7 @@ function init()
 		end
 	end
 
-	self.upgradeLevel = 8
+	self.upgradeLevel = 10 -- was 8
 	self.maxEssenceValue=root.evalFunction("weaponEssenceValue", self.upgradeLevel)
 	self.upgradeableWeaponItems = {}
 	self.selectedItem = nil

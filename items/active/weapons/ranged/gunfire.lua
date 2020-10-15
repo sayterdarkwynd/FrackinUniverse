@@ -379,13 +379,11 @@ function GunFire:isChargeUp()
 			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
 			status.addEphemeralEffect("critReady")
 		end
-		--this section's stat changes were moved to the update block to address unintended effects.
-		--status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}}) -- set final bonus value
 	end
 end
 
 function GunFire:hasShotgunReload()
-	self.isReloader = config.getParameter("isReloader",0)			-- is this a shotgun style reload?
+	self.isReloader = config.getParameter("isReloader",0) -- is this a shotgun style reload?
 	if self.isReloader >= 1 then
 		animator.playSound("cooldown") -- adds sound to shotgun reload
 		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then
