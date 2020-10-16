@@ -3,6 +3,8 @@ require "/scripts/vec2.lua"
 require "/scripts/versioningutils.lua"
 require "/items/buildscripts/abilities.lua"
 
+--apparently this entire file is unused.
+
 function build(directory, config, parameters, level, seed)
 	local function split(str, pat)
 		local t = {}	-- NOTE: use {n = 0} in Lua-5.0
@@ -63,6 +65,9 @@ function build(directory, config, parameters, level, seed)
 	-- calculate damage level multiplier
 	config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))
 
+	local primaryAbility=configParameterDeep("primaryAbility")
+	local altAbility=configParameterDeep("altAbility")
+
 	-- palette swaps
 	config.paletteSwaps = ""
 	if config.palette then
@@ -93,13 +98,13 @@ function build(directory, config, parameters, level, seed)
 	if config.tooltipKind ~= "base" then
 		config.tooltipFields = {}
 		config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
-		config.tooltipFields.dpsLabel = util.round((config.primaryAbility.baseDps or 0) * config.damageLevelMultiplier, 1)
-		config.tooltipFields.speedLabel = util.round(1 / (config.primaryAbility.fireTime or 1.0), 1)
-		config.tooltipFields.damagePerShotLabel = util.round((config.primaryAbility.baseDps or 0) * (config.primaryAbility.fireTime or 1.0) * config.damageLevelMultiplier, 1)
-		config.tooltipFields.energyPerShotLabel = util.round((config.primaryAbility.energyUsage or 0) * (config.primaryAbility.fireTime or 1.0), 1)
+		config.tooltipFields.dpsLabel = util.round((primaryAbility.baseDps or 0) * config.damageLevelMultiplier, 1)
+		config.tooltipFields.speedLabel = util.round(1 / (primaryAbility.fireTime or 1.0), 1)
+		config.tooltipFields.damagePerShotLabel = util.round((primaryAbility.baseDps or 0) * (primaryAbility.fireTime or 1.0) * config.damageLevelMultiplier, 1)
+		config.tooltipFields.energyPerShotLabel = util.round((primaryAbility.energyUsage or 0) * (primaryAbility.fireTime or 1.0), 1)
 
-		config.tooltipFields.overheatLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatGain, 1)
-		config.tooltipFields.cooldownLabel = util.round(config.primaryAbility.overheatLevel / config.primaryAbility.heatLossRateMax, 1)
+		config.tooltipFields.overheatLabel = util.round(primaryAbility.overheatLevel / primaryAbility.heatGain, 1)
+		config.tooltipFields.cooldownLabel = util.round(primaryAbility.overheatLevel / primaryAbility.heatLossRateMax, 1)
 		-- *******************************
 		-- FU ADDITIONS
 
