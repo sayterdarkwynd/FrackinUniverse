@@ -97,7 +97,7 @@ function init()
 				for i, acr in ipairs(researches) do
 					local acronymTest = data.acronyms[tree][acr]
 					local unlockType
-					
+
 					-- Check whether there's data for the acronym, and then if it has tree data.
 					if acronymTest and data.researchTree[tree][acronymTest] then
 						unlockType = type(data.researchTree[tree][acronymTest].unlocks)
@@ -649,7 +649,7 @@ function draw()
 	local mousePosition = canvas:mousePosition()
 	for i, tbl in ipairs(data.currencies) do
 		if not tbl[5] or player.currency(tbl[1]) > 0 then
-			startPoint = {3, canvasSize[2] - ((i - 1) * (8 + 3) + 8 + 16 + 5)}
+			startPoint = {3, canvasSize[2] - i * 11}
 
 			canvas:drawImage(tbl[4], startPoint, 1, "#FFFFFF", false)
 
