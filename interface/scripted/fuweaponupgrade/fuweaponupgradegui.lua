@@ -52,7 +52,6 @@ end
 }
 ]]
 
-
 function update(dt)
 	self.buttonTimer=math.max(self.playerTypingTimer or upgradeButtonLockout,(self.buttonTimer or upgradeButtonLockout)-dt)
 	self.playerTypingTimer=math.max(0,(self.playerTypingTimer or upgradeButtonLockout)-dt)
@@ -80,7 +79,7 @@ end
 function matchAny(str,tbl)
 	for _,v in pairs(tbl) do
 		if v==str then
-			return true	
+			return true
 		end
 	end
 	return false
@@ -96,6 +95,13 @@ function itemHasTag(item,tag)
 	return false
 end
 
+function highestRarity(rarity2,rarity1)
+	local t={common=1,uncommon=2,rare=3,legendary=4,essential=5}
+	rarity1=string.lower(rarity1 or "")
+	rarity2=string.lower(rarity2 or "")
+	if (t[rarity1] or 0)> (t[rarity2] or 0) then return rarity1 else return rarity2 end
+end
+
 function upgradeCost(itemConfig,target)
 	if (not itemConfig) or self.isUpgradeKit then return 0 end
 	local iLvl=itemConfig.parameters.level or itemConfig.config.level or 1
@@ -105,7 +111,7 @@ function upgradeCost(itemConfig,target)
 	local isTool=itemHasTag(itemConfig,"upgradeableTool")
 	local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
 	target=target or iLvl+1
-	
+
 	if iLvl > maxLvl then
 		downgrade=true
 	else
@@ -114,7 +120,7 @@ function upgradeCost(itemConfig,target)
 			iLvl=math.min(iLvl+1,maxLvl)
 		end
 	end
-	
+
 	return math.floor(currentValue),downgrade
 end
 
@@ -210,7 +216,7 @@ function itemSelected()
 		local upCostTarget,downgradeTarget=upgradeCost(root.itemConfig(weaponItem),self.upgradeTargetLevel)
 		showWeapon(weaponItem, upCostOnce,upCostTarget,downgradeOnce or downgradeTarget)
 	end
-	
+
 	if self.playerTypingTimer and self.playerTypingTimer <= 0 then
 		fixTargetText()
 	end
@@ -250,7 +256,7 @@ function pulseTextbox()
 		self.textboxColor=not self.textboxColor
 	end
 	widget.setFontColor("upgradeTargetText",self.textboxColor and {192,192,192} or {128,128,128})
-	
+
 	self.textboxPulseTimer=textboxPulseInterval
 end
 
@@ -328,7 +334,9 @@ function upgrade(target)
 			if consumedCurrency or (upCost==0) then
 				local itemConfig = root.itemConfig(upgradedItem)
 				local mergeBuffer={}
-				
+				local oldRarity=(itemConfig.parameters and itemConfig.parameters.rarity) or (itemConfig.config and itemConfig.config.rarity)
+				mergeBuffer.rarity=oldRarity
+
 				sb.logInfo("Pre-Upgrade Stats: \n"..sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
 
 				--set level
@@ -342,15 +350,23 @@ function upgrade(target)
 				--load item upgrade parameters
 				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level) >= 1 then
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParametersTricorder))
+					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
+					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level) > 4 then
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters))
+					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
+					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level) > 5 then
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters2))
+					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
+					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level) > 6 then
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters3))
+					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
+					oldRarity=mergeBuffer.rarity
 				end
 
 				local categoryLower=string.lower(mergeBuffer.category or itemConfig.parameters.category or itemConfig.config.category or "")
@@ -370,7 +386,7 @@ function upgrade(target)
 					end
 					mergeBuffer.critChance = critChance + (mergeBuffer.level*modifier) -- increase Crit Chance
 				end
-				
+
 				--crit chance
 				local critBonus=(mergeBuffer.critBonus) or itemConfig.config.critBonus
 				if critBonus then
@@ -383,51 +399,14 @@ function upgrade(target)
 
 				-- set Rarity
 				if mergeBuffer.level == 4 then
-					mergeBuffer.rarity = "uncommon"
+					mergeBuffer.rarity = highestRarity("uncommon",mergeBuffer.rarity)
 				elseif mergeBuffer.level == 5 then
-					mergeBuffer.rarity = "rare"
+					mergeBuffer.rarity = highestRarity("rare",mergeBuffer.rarity)
 				elseif mergeBuffer.level == 6 then
-					mergeBuffer.rarity = "legendary"
+					mergeBuffer.rarity = highestRarity("legendary",mergeBuffer.rarity)
 				elseif mergeBuffer.level >= 7 then
-					mergeBuffer.rarity = "essential"
+					mergeBuffer.rarity = highestRarity("essential",mergeBuffer.rarity)
 				end
-
-				--tools -- only a few tools are upgradable, primarily the atom smasher, that's covered elsewhere
-				--[[if (categoryLower == "tool") then
-					
-					-- parasol
-					local fallingParameters=copy(mergeBuffer.fallingParameters or (itemConfig.config.fallingParameters and {}))
-					if fallingParameters then
-						fallingParameters.airForce=fallingParameters.airForce or itemConfig.config.fallingParameters.airForce
-						if fallingParameters.airForce then
-							fallingParameters.airForce=fallingParameters.airForce * (1.0+(0.15*mergeBuffer.level))
-						end
-						fallingParameters.runSpeed=fallingParameters.runSpeed or itemConfig.config.fallingParameters.runSpeed
-						if fallingParameters.runSpeed then
-							fallingParameters.runSpeed=fallingParameters.runSpeed * (1.0+(0.15*mergeBuffer.level))
-						end
-						fallingParameters.walkSpeed=fallingParameters.walkSpeed or itemConfig.config.fallingParameters.walkSpeed
-						if fallingParameters.walkSpeed then
-							fallingParameters.walkSpeed=fallingParameters.walkSpeed * (1.0+(0.15*mergeBuffer.level))
-						end
-						mergeBuffer.fallingParameters=fallingParameters
-					end
-
-					local maxFallSpeed=copy(mergeBuffer.maxFallSpeed or itemConfig.config.maxFallSpeed)
-					if maxFallSpeed then
-						mergeBuffer.maxFallSpeed = maxFallSpeed - (mergeBuffer.level*4)
-					end
-
-					local blockRadius=copy(mergeBuffer.blockRadius or itemConfig.config.blockRadius)
-					if blockRadius then
-						mergeBuffer.blockRadius = blockRadius + mergeBuffer.level
-					end
-
-					local altBlockRadius=copy(mergeBuffer.altBlockRadius or itemConfig.config.altBlockRadius)
-					if altBlockRadius then
-						mergeBuffer.altBlockRadius = altBlockRadius + mergeBuffer.level
-					end
-				end]]
 
 				-- is it a shield?
 				if (categoryLower == "shield") then
@@ -469,7 +448,7 @@ function upgrade(target)
 						mergeBuffer.baseDamageFactor=baseDamageFactor*(1.0+(mergeBuffer.level*0.15))
 					end
 				end
-				
+
 				-- magnorbs
 				if (itemConfig.config.orbitRate) then
 					local shieldKnockback=mergeBuffer.shieldKnockback or itemConfig.config.shieldKnockback
@@ -501,7 +480,7 @@ function upgrade(target)
 					end
 					mergeBuffer.projectileParameters=projectileParameters
 				end
-				
+
 				local primaryAbility=copy(mergeBuffer.primaryAbility or (itemConfig.config.primaryAbility and {}))
 				if primaryAbility then
 					if not matchAny(categoryLower,{"gun staff","sggunstaff"}) then --exclude Shellguard gunblades from this bit to not break their rotation
@@ -563,7 +542,7 @@ function upgrade(target)
 						mergeBuffer.stunChance=stunChance+(mergeBuffer.level*0.5)
 					end
 				end
-				
+
 				upgradedItem.parameters=util.mergeTable(copy(upgradedItem.parameters),copy(mergeBuffer))
 			end
 
