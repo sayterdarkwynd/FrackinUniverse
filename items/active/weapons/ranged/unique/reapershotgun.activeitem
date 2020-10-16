@@ -1,10 +1,10 @@
 {
   "itemName" : "reapershotgun",
-  "price" : 120,
+  "price" : 600,
   "inventoryIcon" : "reapershotgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Freezing-cold blasts of dark matter flechettes.
+  "description" : "Fires freezing dark matter flechettes.
 ^cyan;Freezes enemies^reset;",
   "shortdescription" : "Tk-2 Showstopper",
   "category" : "shotgun",
@@ -34,14 +34,14 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.6,
-    "baseDps" : 9,
-    "energyUsage" : 31,
+    "fireTime" : 0.75,
+    "baseDps" : 9.5,
+    "energyUsage" : 26,
     "inaccuracy" : 0.07,
 
     "projectileCount" : 6,
@@ -49,6 +49,7 @@
     "projectileType" : "iceplasma",
     "projectileParameters" : {
       "speed" : 100,
+      "damageKind" : "hoarfrost",
       "statusEffects" : [ "slow" ]
     },
 
@@ -82,7 +83,7 @@
   "critChance" : 5,
   "critBonus" : 3,
   "isAmmoBased" : 1,
-  "magazineSize" : 4,
+  "magazineSize" : 8,
   "reloadTime" : 1, 
   "isReloader" : 1,
   //recoil
