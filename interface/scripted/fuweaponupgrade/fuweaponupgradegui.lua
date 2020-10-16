@@ -506,24 +506,24 @@ function upgrade(target)
 						-- bows
 						if (categoryLower == "bow") then
 							primaryAbility.drawTime=primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime
-							if (primaryAbility.drawTime) then
-								primaryAbility.drawTime = primaryAbility.drawTime - (0.05*mergeBuffer.level)
+							if primaryAbility.drawTime then
+								primaryAbility.drawTime = primaryAbility.drawTime * (1 - (0.05*mergeBuffer.level))
 							end
 							primaryAbility.powerProjectileTime=primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime
-							if (primaryAbility.powerProjectileTime) then
-								primaryAbility.powerProjectileTime = (primaryAbility.powerProjectileTime or 0) + 0.05
+							if primaryAbility.powerProjectileTime then
+								primaryAbility.powerProjectileTime = primaryAbility.powerProjectileTime*(1-(0.05*mergeBuffer.level))
 							end
 							primaryAbility.energyPerShot=primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot
-							if (primaryAbility.energyPerShot) then
-								primaryAbility.energyPerShot = (primaryAbility.energyPerShot) - (mergeBuffer.level*2)
+							if primaryAbility.energyPerShot then
+								primaryAbility.energyPerShot = primaryAbility.energyPerShot * math.max(0,(1-(mergeBuffer.level*0.05)))
 							end
 							primaryAbility.holdEnergyUsage=primaryAbility.holdEnergyUsage or itemConfig.config.primaryAbility.holdEnergyUsage
-							if (primaryAbility.holdEnergyUsage) then
-								primaryAbility.holdEnergyUsage = (primaryAbility.holdEnergyUsage) - (mergeBuffer.level*0.5)
+							if primaryAbility.holdEnergyUsage then
+								primaryAbility.holdEnergyUsage = primaryAbility.holdEnergyUsage * math.max(0,1.0-(mergeBuffer.level*0.05))
 							end
 							primaryAbility.airborneBonus=primaryAbility.airborneBonus or itemConfig.config.primaryAbility.airborneBonus
-							if (primaryAbility.airborneBonus) then
-								primaryAbility.airborneBonus = (primaryAbility.airborneBonus)+(mergeBuffer.level*0.02)
+							if primaryAbility.airborneBonus then
+								primaryAbility.airborneBonus = primaryAbility.airborneBonus*(1+(mergeBuffer.level*0.02))
 							end
 						end
 						-- beams and miners
@@ -540,7 +540,7 @@ function upgrade(target)
 
 						primaryAbility.energyCost=primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost
 						if (itemConfig.config.primaryAbility.energyCost) then
-							primaryAbility.energyCost = primaryAbility.energyCost - (mergeBuffer.level/3)
+							primaryAbility.energyCost = primaryAbility.energyCost * math.max(0,1.0-(mergeBuffer.level*0.03))
 						end
 
 						-- does the item have a baseDps? if so, we increase the DPS slightly, but not if the weapon is a big hitter.
