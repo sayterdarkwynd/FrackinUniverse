@@ -7,6 +7,7 @@ local armorList={legarmour=true,chestarmour=true,headarmour=true,enviroProtectio
 local cosmeticSlotList={"headCosmetic", "chestCosmetic", "legsCosmetic", "backCosmetic"}
 local armorSlotList={"head", "chest", "legs", "back"}
 local textboxPulseInterval=1.0
+local upgradeButtonLockout=0.5
 
 function init()
 	widget.setButtonEnabled("btnUpgradeMax", false)
@@ -53,8 +54,8 @@ end
 
 
 function update(dt)
-	self.buttonTimer=math.max(self.playerTypingTimer or 1.0,(self.buttonTimer or 1.0)-dt)
-	self.playerTypingTimer=math.max(0,(self.playerTypingTimer or 1.0)-dt)
+	self.buttonTimer=math.max(self.playerTypingTimer or upgradeButtonLockout,(self.buttonTimer or upgradeButtonLockout)-dt)
+	self.playerTypingTimer=math.max(0,(self.playerTypingTimer or upgradeButtonLockout)-dt)
 	self.textboxPulseTimer=math.max(0,(self.textboxPulseTimer or textboxPulseInterval)-dt)
 	populateItemList()
 	itemSelected()
@@ -190,7 +191,7 @@ function showWeapon(item, price, priceMax, downgrade)
 		enableButton=hasKit and not isWorn
 	end
 	--widget.setButtonEnabled("btnUpgradeMax",false)
-	widget.setButtonEnabled("btnUpgrade", ((self.buttonTimer and self.buttonTimer or 3) <= 0) and enableButton)
+	widget.setButtonEnabled("btnUpgrade", ((self.buttonTimer and self.buttonTimer or upgradeButtonLockout) <= 0) and enableButton)
 end
 
 function getSelectedItem()
@@ -234,8 +235,8 @@ function fixTargetText()
 	end
 	if originalText~=text then
 		widget.setText("upgradeTargetText",text)
-		self.playerTypingTimer=1.0
-		self.buttonTimer=1.0
+		self.playerTypingTimer=upgradeButtonLockout
+		self.buttonTimer=upgradeButtonLockout
 		widget.setButtonEnabled("btnUpgrade", false)
 		itemSelected()
 	end
@@ -309,7 +310,7 @@ function checkWorn(item)
 end
 
 function upgradeTargetText()
-	self.playerTypingTimer=1.0
+	self.playerTypingTimer=upgradeButtonLockout
 end
 
 function upgrade(target)
@@ -391,8 +392,9 @@ function upgrade(target)
 					mergeBuffer.rarity = "essential"
 				end
 
-				--tools
-				if (categoryLower == "tool") then
+				--tools -- only a few tools are upgradable, primarily the atom smasher, that's covered elsewhere
+				--[[if (categoryLower == "tool") then
+					
 					-- parasol
 					local fallingParameters=copy(mergeBuffer.fallingParameters or (itemConfig.config.fallingParameters and {}))
 					if fallingParameters then
@@ -425,7 +427,7 @@ function upgrade(target)
 					if altBlockRadius then
 						mergeBuffer.altBlockRadius = altBlockRadius + mergeBuffer.level
 					end
-				end
+				end]]
 
 				-- is it a shield?
 				if (categoryLower == "shield") then
