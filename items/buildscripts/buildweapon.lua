@@ -5,6 +5,39 @@ require "/scripts/staticrandom.lua"
 require "/items/buildscripts/abilities.lua"
 
 function build(directory, config, parameters, level, seed)
+	local function split(str, pat)
+		local t = {}	-- NOTE: use {n = 0} in Lua-5.0
+		local fpat = "(.-)" .. pat
+		local last_end = 1
+		local s, e, cap = str:find(fpat, 1)
+		while s do
+			if s ~= 1 or cap ~= "" then
+				 table.insert(t, cap)
+			end
+			last_end = e+1
+			s, e, cap = str:find(fpat, last_end)
+		end
+		if last_end <= #str then
+			cap = str:sub(last_end)
+			table.insert(t, cap)
+		end
+		return t
+	end
+
+	local configParameterDeep = function(keyName, defaultValue)
+		local sets=split(keyName,"%.")
+		local mergedBuffer=util.mergeTable(copy(config),copy(parameters))
+		for _,v in pairs(sets) do
+			if mergedBuffer[v] then
+				mergedBuffer=mergedBuffer[v]
+			else
+				mergedBuffer=defaultValue
+				break
+			end
+		end
+		return mergedBuffer
+	end
+
 	local configParameter = function(keyName, defaultValue)
 		if parameters[keyName] ~= nil then
 			return parameters[keyName]
@@ -199,7 +232,7 @@ function build(directory, config, parameters, level, seed)
 	-- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***--and Khe
 	-- FU ADDITIONS
 	parameters.isAmmoBased = configParameter("isAmmoBased")
-	if type(parameters.isAmmoBased)=="table"  then
+	if type(parameters.isAmmoBased)=="table" then
 		if (#parameters.isAmmoBased >= 2) and (type(parameters.isAmmoBased[1]) == "number") and (type(parameters.isAmmoBased[2]) == "number") then
 			parameters.isAmmoBased=math.random(parameters.isAmmoBased[1],parameters.isAmmoBased[2])
 		elseif (#parameters.isAmmoBased == 1) and (type(parameters.isAmmoBased[1]) == "number") then
@@ -216,7 +249,7 @@ function build(directory, config, parameters, level, seed)
 		parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
 		config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
 	end
-	
+
 	local newMagSize = ((parameters.isAmmoBased == 1) and configParameter("magazineSize",0)) or 0
 	if (parameters.isAmmoBased == 1) then
 		if type(newMagSize) == "table" then
@@ -244,12 +277,12 @@ function build(directory, config, parameters, level, seed)
 		parameters.isAmmoBased = 0
 		config.tooltipKind = oldCTooltip
 		parameters.tooltipKind = oldPTooltip
-		
+
 		config.magazineSize = 0
 		config.tooltipFields.magazineSizeLabel = "--"
 		newMagSize = 0
 		parameters.magazineSizeFactor = 0
-		
+
 		parameters.reloadTimeFactor = 0
 		config.reloadTime = 0
 		config.tooltipFields.reloadTimeLabel = "--"
@@ -260,19 +293,19 @@ function build(directory, config, parameters, level, seed)
 	else
 		config.tooltipFields.critChanceLabel = "--"
 	end
-	
+
 	if (configParameter("critBonus")) then
 		config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
 	else
 		config.tooltipFields.critBonusLabel = "--"
 	end
-	
+
 	if (configParameter("stunChance")) then
 		config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)
 	else
 		config.tooltipFields.stunChanceLabel = "--"
 	end
-	
+
 	config.tooltipFields.damagePerEnergyLabel = util.round(damagePerShot / energyPerShot, 1)
 
 	config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"
