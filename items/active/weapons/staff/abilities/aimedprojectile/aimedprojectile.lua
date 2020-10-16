@@ -65,6 +65,7 @@ function AimedProjectile:charged()
   animator.playSound(self.elementalType.."fullcharge")
   animator.playSound(self.elementalType.."chargedloop", -1)
   animator.setParticleEmitterActive(self.elementalType .. "charge", true)
+  activeItem.setCursor("/cursors/chargeready.cursor")
 
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     mcontroller.controlModifiers({runningSuppressed=true})
