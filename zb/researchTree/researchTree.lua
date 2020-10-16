@@ -649,7 +649,7 @@ function draw()
 	local mousePosition = canvas:mousePosition()
 	for i, tbl in ipairs(data.currencies) do
 		if not tbl[5] or player.currency(tbl[1]) > 0 then
-			startPoint = {3, canvasSize[2] - ((i - 1) * 11 + 11)}
+			startPoint = {3, canvasSize[2] - i * 11}
 
 			canvas:drawImage(tbl[4], startPoint, 1, "#FFFFFF", false)
 
