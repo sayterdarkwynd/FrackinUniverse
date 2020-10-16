@@ -6,8 +6,10 @@ local cosmeticList={legwear=true,chestwear=true,headwear=true,backwear=true}
 local armorList={legarmour=true,chestarmour=true,headarmour=true,enviroProtectionPack=true}
 local cosmeticSlotList={"headCosmetic", "chestCosmetic", "legsCosmetic", "backCosmetic"}
 local armorSlotList={"head", "chest", "legs", "back"}
+local textboxPulseInterval=1.0
 
 function init()
+	widget.setButtonEnabled("btnUpgradeMax", false)
 	self.itemList = "itemScrollArea.itemList"
 	self.isUpgradeKit = true
 
@@ -51,8 +53,12 @@ end
 
 
 function update(dt)
+	self.buttonTimer=math.max(self.playerTypingTimer or 1.0,(self.buttonTimer or 1.0)-dt)
+	self.playerTypingTimer=math.max(0,(self.playerTypingTimer or 1.0)-dt)
+	self.textboxPulseTimer=math.max(0,(self.textboxPulseTimer or textboxPulseInterval)-dt)
 	populateItemList()
 	itemSelected()
+	pulseTextbox()
 end
 
 function fetchTags(iConf)
@@ -68,6 +74,15 @@ function fetchTags(iConf)
 		end
 	end
 	return tags
+end
+
+function matchAny(str,tbl)
+	for _,v in pairs(tbl) do
+		if v==str then
+			return true	
+		end
+	end
+	return false
 end
 
 function itemHasTag(item,tag)
@@ -128,7 +143,7 @@ function populateItemList(forceRepop)
 		self.upgradeableWeaponItems = upgradeableWeaponItems
 		widget.clearListItems(self.itemList)
 		widget.setButtonEnabled("btnUpgrade", false)
-		widget.setButtonEnabled("btnUpgradeMax", false)
+		--widget.setButtonEnabled("btnUpgradeMax", false)
 
 		for i, item in pairs(self.upgradeableWeaponItems) do
 			local config = root.itemConfig(item)
@@ -174,8 +189,8 @@ function showWeapon(item, price, priceMax, downgrade)
 		widget.setText("essenceCost",hasKit and "^green;FREE FROM UPGRADE KIT" or "^red;MISSING UPGRADE KIT")
 		enableButton=hasKit and not isWorn
 	end
-	widget.setButtonEnabled("btnUpgradeMax",enableButtonMax)
-	widget.setButtonEnabled("btnUpgrade", enableButton)
+	--widget.setButtonEnabled("btnUpgradeMax",false)
+	widget.setButtonEnabled("btnUpgrade", ((self.buttonTimer and self.buttonTimer or 3) <= 0) and enableButton)
 end
 
 function getSelectedItem()
@@ -191,24 +206,59 @@ function itemSelected()
 		local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
 		local weaponItem = getSelectedItem()
 		local upCostOnce,downgradeOnce=upgradeCost(root.itemConfig(weaponItem))
-		local upCostTarget,downgradeTarget=upgradeCost(root.itemConfig(weaponItem),maxLvl)
+		local upCostTarget,downgradeTarget=upgradeCost(root.itemConfig(weaponItem),self.upgradeTargetLevel)
 		showWeapon(weaponItem, upCostOnce,upCostTarget,downgradeOnce or downgradeTarget)
+	end
+	
+	if self.playerTypingTimer and self.playerTypingTimer <= 0 then
+		fixTargetText()
 	end
 end
 
-function doUpgradeMax()
-	if self.selectedItem and self.isUpgradeKit then return end
-
-	local isWorn=checkWorn(getSelectedItem())
-	if isWorn then
-		widget.setText("warningLabel",isWorn and "Error: "..isWorn or "")
-		widget.setButtonEnabled("btnUpgrade", false)
-		return
+function fixTargetText()
+	local originalText = widget.getText("upgradeTargetText")
+	local text = originalText
+	local num=tonumber(text)
+	local item=getSelectedItem()
+	if not item then
+		text=""
+		self.upgradeTargetLevel=nil
+	else
+		item=root.itemConfig(item)
+		local itemLevel=math.floor(item.parameters.level or item.config.level or 1)
+		local isTool=itemHasTag(item,"upgradeableTool")
+		local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
+		num=math.min(maxLvl,math.max(itemLevel+1,((not self.isUpgradeKit) and num) or 0))
+		self.upgradeTargetLevel=num
+		text=num..""
 	end
-	local isTool=itemHasTag(root.itemConfig(getSelectedItem()),"upgradeableTool")
-	local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
+	if originalText~=text then
+		widget.setText("upgradeTargetText",text)
+		self.playerTypingTimer=1.0
+		self.buttonTimer=1.0
+		widget.setButtonEnabled("btnUpgrade", false)
+		itemSelected()
+	end
+end
 
-	upgrade(maxLvl)
+function pulseTextbox()
+	if self.textboxPulseTimer>0 then return end
+	if not self.textboxColor then
+		self.textboxColor=true
+	else
+		self.textboxColor=not self.textboxColor
+	end
+	widget.setFontColor("upgradeTargetText",self.textboxColor and {192,192,192} or {128,128,128})
+	
+	self.textboxPulseTimer=textboxPulseInterval
+end
+
+function doUpgradeMax()
+--fishdick
+end
+
+function btnUpgradeMax()
+--fishbutt
 end
 
 function doUpgrade()
@@ -222,11 +272,11 @@ function doUpgrade()
 		if isWorn then
 			widget.setText("warningLabel",isWorn and "Error: "..isWorn or "")
 			widget.setButtonEnabled("btnUpgrade", false)
-			widget.setButtonEnabled("btnUpgradeMax", false)
+			--widget.setButtonEnabled("btnUpgradeMax", false)
 			return
 		end
 
-		upgrade()
+		upgrade(self.upgradeTargetLevel)
 	end
 end
 
@@ -256,6 +306,10 @@ function checkWorn(item)
 	end
 	if compare(swapSlotItem,item) then return "held by mouse" end
 	return false
+end
+
+function upgradeTargetText()
+	self.playerTypingTimer=1.0
 end
 
 function upgrade(target)
@@ -524,13 +578,4 @@ function upgrade(target)
 	else
 		populateItemList(true)
 	end
-end
-
-function matchAny(str,tbl)
-	for _,v in pairs(tbl) do
-		if v==str then
-			return true	
-		end
-	end
-	return false
 end
