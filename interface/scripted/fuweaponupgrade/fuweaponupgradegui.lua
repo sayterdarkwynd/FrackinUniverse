@@ -180,9 +180,9 @@ function showWeapon(item, price, priceMax, downgrade)
 			enableButtonMax = priceMax and (playerEssence >= priceMax) and not isWorn
 			local directive = enableButton and "^green;" or "^red;"
 			local directive2 = enableButtonMax and "^green;" or "^red;"
-			widget.setText("essenceCost", string.format("%s / %s%s^reset; (%s%s^reset;)", playerEssence,directive, price or "--",directive2, priceMax or "--"))
+			widget.setText("essenceCost", string.format("%s / %s%s^reset;", playerEssence,directive2, priceMax or "--"))
 		else
-			widget.setText("essenceCost", string.format("%s / -- (--)", playerEssence))
+			widget.setText("essenceCost", string.format("%s / --", playerEssence))
 		end
 	else
 		local hasKit=(player.hasCountOfItem({name = "cuddlehorse", count = 1}) or 0) > 0
