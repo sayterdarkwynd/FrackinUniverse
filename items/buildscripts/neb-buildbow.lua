@@ -65,27 +65,30 @@ function build(directory, config, parameters, level, seed)
 	config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))
 
 	--Populate tooltip fields
+	local primaryAbility=configParameterDeep("primaryAbility")
+	local altAbility=configParameterDeep("altAbility")
+
 	if config.tooltipKind ~= "base" then
 		config.tooltipFields = {}
 		config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
 		config.tooltipFields.subtitle = parameters.category
-		config.tooltipFields.damageLabel = util.round(config.primaryAbility.projectileParameters.power * config.primaryAbility.dynamicDamageMultiplier * config.primaryAbility.drawTime * config.damageLevelMultiplier, 2) or 0
-		config.tooltipFields.perfectDrawTimeLabel = util.round(config.primaryAbility.powerProjectileTime, 2)
-		config.tooltipFields.perfectDamageLabel = util.round(config.primaryAbility.powerProjectileParameters.power or config.primaryAbility.projectileParameters.power * config.primaryAbility.dynamicDamageMultiplier * config.primaryAbility.drawTime * config.damageLevelMultiplier, 2) or 0
-		config.tooltipFields.airborneBonusLabel = util.round(config.primaryAbility.airborneBonus, 2)
-		if config.altAbility then
-			config.tooltipFields.drawTimeLabel = util.round(config.primaryAbility.drawTime - (config.altAbility.drawTimeReduction or 0), 2) or 0
+		config.tooltipFields.damageLabel = util.round(primaryAbility.projectileParameters.power * primaryAbility.dynamicDamageMultiplier * primaryAbility.drawTime * config.damageLevelMultiplier, 2) or 0
+		config.tooltipFields.perfectDrawTimeLabel = util.round(primaryAbility.powerProjectileTime, 2)
+		config.tooltipFields.perfectDamageLabel = util.round(primaryAbility.powerProjectileParameters.power or primaryAbility.projectileParameters.power * primaryAbility.dynamicDamageMultiplier * primaryAbility.drawTime * config.damageLevelMultiplier, 2) or 0
+		config.tooltipFields.airborneBonusLabel = util.round(primaryAbility.airborneBonus, 2)
+		if altAbility then
+			config.tooltipFields.drawTimeLabel = util.round(primaryAbility.drawTime - (altAbility.drawTimeReduction or 0), 2) or 0
 		else
-			config.tooltipFields.drawTimeLabel = util.round(config.primaryAbility.drawTime, 2) or 0
+			config.tooltipFields.drawTimeLabel = util.round(primaryAbility.drawTime, 2) or 0
 		end
-		config.tooltipFields.drawEnergyLabel = util.round(config.primaryAbility.energyPerShot, 2) or 0
-		config.tooltipFields.holdEnergyLabel = util.round(config.primaryAbility.holdEnergyUsage, 2) or 0
+		config.tooltipFields.drawEnergyLabel = util.round(primaryAbility.energyPerShot, 2) or 0
+		config.tooltipFields.holdEnergyLabel = util.round(primaryAbility.holdEnergyUsage, 2) or 0
 		if elementalType ~= "physical" then
 			config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
 		end
-		if config.altAbility then
+		if altAbility then
 			config.tooltipFields.altAbilityTitleLabel = "Special:"
-			config.tooltipFields.altAbilityLabel = config.altAbility.name or "unknown"
+			config.tooltipFields.altAbilityLabel = altAbility.name or "unknown"
 		end
 
 		--Frackin' Universe critical fields
