@@ -10,7 +10,6 @@ require "/scripts/vec2.lua"
 -- Scientist tenants that give Research ?
 -- certain dungeons might return different bonus rates
 
-
 function init()
 	-- passive research gain
 	self.threatBonus=0
@@ -24,7 +23,7 @@ function init()
 	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
 	self.player = entity.id()
-	math.randomseed( tonumber(tostring(os.time()):reverse():sub(1,6)) )
+	math.randomseed(util.seedTime())
 	self.randEvent = math.random(1,100)
 	self.timerDegrade = math.random(1,12)
 	self.degradeTotal = 0
@@ -91,7 +90,6 @@ function randomEvent()
 	self.curseDuration_stat = self.curseDuration * 2.5
 	self.curseDuration_fast = self.curseDuration *0.25
 	status.addEphemeralEffect("mad",self.timer)
-
 
 	if self.randEvent < 0 then --failsafe
 		self.randEvent = 0
@@ -350,7 +348,7 @@ function update(dt)
 					self.threatBonus = 3
 				end
 			end
-		
+
 			if afkLvl<=3 then
 				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
 			end
@@ -427,8 +425,6 @@ function update(dt)
 		--displayBar()
 	end
 end
-
-
 
 --display madness bar
 function displayBar()
