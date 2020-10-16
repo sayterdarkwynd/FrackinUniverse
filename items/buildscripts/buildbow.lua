@@ -35,6 +35,7 @@ function build(directory, config, parameters, level, seed)
 		end
 		return mergedBuffer
 	end
+
 	local configParameter = function(keyName, defaultValue)
 		if parameters[keyName] ~= nil then
 			return parameters[keyName]
@@ -57,26 +58,29 @@ function build(directory, config, parameters, level, seed)
 	local elementalType = parameters.elementalType or config.elementalType or "physical"
 	replacePatternInData(config, nil, "<elementalType>", elementalType)
 
+	local primaryAbility=configParameterDeep("primaryAbility")
+	local altAbility=configParameterDeep("altAbility")
+
 	-- calculate damage level multiplier
 	config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))
 
 	config.tooltipFields = {}
 	config.tooltipFields.levelLabel = util.round(configParameter("level", 1), 1)
 	config.tooltipFields.subtitle = parameters.category
-	config.tooltipFields.energyPerShotLabel = config.primaryAbility.energyPerShot or 0
-	local bestDrawTime = (config.primaryAbility.powerProjectileTime[1] + config.primaryAbility.powerProjectileTime[2]) / 2
-	local bestDrawMultiplier = root.evalFunction(config.primaryAbility.drawPowerMultiplier, bestDrawTime)
-	config.tooltipFields.maxDamageLabel = util.round(config.primaryAbility.projectileParameters.power * config.damageLevelMultiplier * bestDrawMultiplier, 1)
+	config.tooltipFields.energyPerShotLabel = primaryAbility.energyPerShot or 0
+	local bestDrawTime = (primaryAbility.powerProjectileTime[1] + primaryAbility.powerProjectileTime[2]) / 2
+	local bestDrawMultiplier = root.evalFunction(primaryAbility.drawPowerMultiplier, bestDrawTime)
+	config.tooltipFields.maxDamageLabel = util.round(primaryAbility.projectileParameters.power * config.damageLevelMultiplier * bestDrawMultiplier, 1)
 	if elementalType ~= "physical" then
 		config.tooltipFields.damageKindImage = "/interface/elements/"..elementalType..".png"
 	end
 
-		-- *******************************
-		-- FU ADDITIONS
-			config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
-			config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
-			config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
-		-- *******************************
+	-- *******************************
+	-- FU ADDITIONS
+	config.tooltipFields.critChanceLabel = util.round(configParameter("critChance",0), 0)
+	config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
+	config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
+	-- *******************************
 	-- set price
 	config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1))
 

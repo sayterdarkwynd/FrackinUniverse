@@ -54,16 +54,19 @@ function build(directory, config, parameters, level, seed)
 	-- calculate damage level multiplier
 	config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))
 
+	local primaryAbility=configParameterDeep("primaryAbility")
+	local altAbility=configParameterDeep("altAbility")
+
 	config.tooltipFields = {}
 	config.tooltipFields.subtitle = parameters.category
-	config.tooltipFields.speedLabel = util.round(1 / config.primaryAbility.fireTime, 1)
-	config.tooltipFields.damagePerShotLabel = util.round((config.primaryAbility.crackDps + config.primaryAbility.chainDps) * config.primaryAbility.fireTime * config.damageLevelMultiplier, 1)
+	config.tooltipFields.speedLabel = util.round(1 / primaryAbility.fireTime, 1)
+	config.tooltipFields.damagePerShotLabel = util.round((primaryAbility.crackDps + primaryAbility.chainDps) * primaryAbility.fireTime * config.damageLevelMultiplier, 1)
 	if config.elementalType and config.elementalType ~= "physical" then
 		config.tooltipFields.damageKindImage = "/interface/elements/"..config.elementalType..".png"
 	end
-	if config.altAbility then
+	if altAbility then
 		config.tooltipFields.altAbilityTitleLabel = "Special:"
-		config.tooltipFields.altAbilityLabel = config.altAbility.name or "unknown"
+		config.tooltipFields.altAbilityLabel = altAbility.name or "unknown"
 	end
 		-- *******************************
 		-- FU ADDITIONS

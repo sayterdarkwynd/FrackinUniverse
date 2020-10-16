@@ -215,6 +215,10 @@ function build(directory, config, parameters, level, seed)
 	end
 
 	-- populate tooltip fields
+
+	local primaryAbility=configParameterDeep("primaryAbility")
+	local altAbility=configParameterDeep("altAbility")
+
 	config.tooltipFields = {}
 	local fireTime = parameters.primaryAbility.fireTime or config.primaryAbility.fireTime or 1.0
 	local baseDps = parameters.primaryAbility.baseDps or config.primaryAbility.baseDps or 0
@@ -314,27 +318,27 @@ function build(directory, config, parameters, level, seed)
 	config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"
 
 	-- Staff and Wand specific --
-	if config.primaryAbility.projectileParameters then
-		if config.primaryAbility.projectileParameters.baseDamage then
-			config.tooltipFields.staffDamageLabel = config.primaryAbility.projectileParameters.baseDamage
+	if primaryAbility.projectileParameters then
+		if primaryAbility.projectileParameters.baseDamage then
+			config.tooltipFields.staffDamageLabel = primaryAbility.projectileParameters.baseDamage
 		end
 	end
 
-	if config.primaryAbility.energyCost then
-		config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyCost
+	if primaryAbility.energyCost then
+		config.tooltipFields.staffEnergyLabel = primaryAbility.energyCost
 	end
-	if config.primaryAbility.energyPerShot then
-		config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyPerShot
+	if primaryAbility.energyPerShot then
+		config.tooltipFields.staffEnergyLabel = primaryAbility.energyPerShot
 	end
-	if config.primaryAbility.maxCastRange then
-		config.tooltipFields.staffRangeLabel = config.primaryAbility.maxCastRange
-	else
-		config.tooltipFields.staffRangeLabel = 25
+	if primaryAbility.maxCastRange then
+		config.tooltipFields.staffRangeLabel = primaryAbility.maxCastRange
+	--else
+		--config.tooltipFields.staffRangeLabel = 25
 	end
-	if config.primaryAbility.projectileCount then
-		config.tooltipFields.staffProjectileLabel = config.primaryAbility.projectileCount
-	else
-		config.tooltipFields.staffProjectileLabel = 1
+	if primaryAbility.projectileCount then
+		config.tooltipFields.staffProjectileLabel = primaryAbility.projectileCount
+	--else
+		--config.tooltipFields.staffProjectileLabel = 1
 	end
 	--
 
@@ -344,14 +348,14 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.damageKindImage = "/interface/elements/physical.png"
 	end
 
-	if config.primaryAbility then
+	if primaryAbility then
 		config.tooltipFields.primaryAbilityTitleLabel = "Primary:"
-		config.tooltipFields.primaryAbilityLabel = config.primaryAbility.name or "unknown"
+		config.tooltipFields.primaryAbilityLabel = primaryAbility.name or "unknown"
 	end
 
-	if config.altAbility then
+	if altAbility then
 		config.tooltipFields.altAbilityTitleLabel = "Special:"
-		config.tooltipFields.altAbilityLabel = config.altAbility.name or "unknown"
+		config.tooltipFields.altAbilityLabel = altAbility.name or "unknown"
 	end
 
 	-- set price
