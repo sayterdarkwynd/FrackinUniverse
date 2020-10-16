@@ -60,10 +60,37 @@ function init()
 	status.setPersistentEffects("madnessAFKPenalty",{})
 end
 
+function streakCheck(val)
+	if not storage.streakTable then
+		storage.streakTable={}
+		return false
+	end
+	if val <= 0 then
+		return false
+	end
+	
+	local index=0
+	for i,e in pairs(storage.streakTable) do
+		if e==val then
+			index=i
+			break
+		end
+	end
+	
+	if index>0 then
+		return true
+	else
+		table.insert(storage.streakTable,val)
+		while (#storage.streakTable)>5 do
+			table.remove(storage.streakTable,1)
+		end
+		return false
+	end
+end
+
 function randomEvent()
 	if not self.madnessCount then init() end
 	status.setPersistentEffects("madnessEffectsMain",{})--reset persistent effects the next time one pops up.
-	self.randEvent=math.random(1,100)
 	self.currentPrimary = world.entityHandItem(entity.id(), "primary") --what are we carrying in the right hand?
 	self.currentSecondary = world.entityHandItem(entity.id(), "alt") --what are we carrying in the left hand?
 
@@ -71,9 +98,15 @@ function randomEvent()
 	self.currentProtection = status.stat("mentalProtection")
 	self.currentProtectionAbs=math.abs(self.currentProtection)
 
-	--mentalProtection can make it harder to be affected
-	if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtectionAbs) then
-		self.randEvent = self.randEvent - util.round(self.currentProtection * 10) --math.random(10,70) --it doesnt *remove* the effect, it just moves it further up (or down) the list, and potentially off of it.
+	local didRng=false
+	
+	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
+		self.randEvent=math.random(1,100)
+		--mentalProtection can make it harder to be affected
+		if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtectionAbs) then
+			self.randEvent = math.max(0,self.randEvent - util.round(self.currentProtection * 10)) --math.random(10,70) --it doesnt *remove* the effect, it just moves it further up (or down) the list, and potentially off of it.
+		end
+		didRng=true
 	end
 
 	-- are we currently carrying any really weird stuff?
@@ -91,9 +124,9 @@ function randomEvent()
 	self.curseDuration_fast = self.curseDuration *0.25
 	status.addEphemeralEffect("mad",self.timer)
 
-	if self.randEvent < 0 then --failsafe
+	--[[if self.randEvent < 0 then --failsafe
 		self.randEvent = 0
-	end
+	end]]
 
 	if self.madnessCount > 1500 then
 		if self.randEvent == 44 then
