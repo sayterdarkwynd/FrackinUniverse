@@ -1,5 +1,5 @@
 function init()
-	baseRefresh=config.getParameter("refresh")/60.0
+	baseRefresh=config.getParameter("refresh")--/60.0
 	item = config.getParameter("item")
 	count = world.entityHasCountOfItem(entity.id(), item)
 	maxAmount = config.getParameter("maxAmount")
