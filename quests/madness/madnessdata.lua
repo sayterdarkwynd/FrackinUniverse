@@ -10,7 +10,6 @@ require "/scripts/vec2.lua"
 -- Scientist tenants that give Research ?
 -- certain dungeons might return different bonus rates
 
-
 function init()
 	-- passive research gain
 	self.threatBonus=0
@@ -18,13 +17,13 @@ function init()
 	self.researchBonus = 0
 	self.researchCount = player.currency("fuscienceresource") or 0
 	self.baseVal = config.getParameter("baseValue") or 1
-    self.timerCounter = 0
-    self.environmentTimer = 0
+	self.timerCounter = 0
+	self.environmentTimer = 0
 
 	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
 	self.player = entity.id()
-	math.randomseed( tonumber(tostring(os.time()):reverse():sub(1,6)) )
+	math.randomseed(util.seedTime())
 	self.randEvent = math.random(1,100)
 	self.timerDegrade = math.random(1,12)
 	self.degradeTotal = 0
@@ -61,10 +60,37 @@ function init()
 	status.setPersistentEffects("madnessAFKPenalty",{})
 end
 
+function streakCheck(val)
+	if not storage.streakTable then
+		storage.streakTable={}
+		return false
+	end
+	if val <= 0 then
+		return false
+	end
+	
+	local index=0
+	for i,e in pairs(storage.streakTable) do
+		if e==val then
+			index=i
+			break
+		end
+	end
+	
+	if index>0 then
+		return true
+	else
+		table.insert(storage.streakTable,val)
+		while (#storage.streakTable)>5 do
+			table.remove(storage.streakTable,1)
+		end
+		return false
+	end
+end
+
 function randomEvent()
 	if not self.madnessCount then init() end
 	status.setPersistentEffects("madnessEffectsMain",{})--reset persistent effects the next time one pops up.
-	self.randEvent=math.random(1,100)
 	self.currentPrimary = world.entityHandItem(entity.id(), "primary") --what are we carrying in the right hand?
 	self.currentSecondary = world.entityHandItem(entity.id(), "alt") --what are we carrying in the left hand?
 
@@ -72,9 +98,15 @@ function randomEvent()
 	self.currentProtection = status.stat("mentalProtection")
 	self.currentProtectionAbs=math.abs(self.currentProtection)
 
-	--mentalProtection can make it harder to be affected
-	if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtectionAbs) then
-		self.randEvent = self.randEvent - util.round(self.currentProtection * 10) --math.random(10,70) --it doesnt *remove* the effect, it just moves it further up (or down) the list, and potentially off of it.
+	local didRng=false
+	
+	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
+		self.randEvent=math.random(1,100)
+		--mentalProtection can make it harder to be affected
+		if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtectionAbs) then
+			self.randEvent = math.max(0,self.randEvent - util.round(self.currentProtection * 10)) --math.random(10,70) --it doesnt *remove* the effect, it just moves it further up (or down) the list, and potentially off of it.
+		end
+		didRng=true
 	end
 
 	-- are we currently carrying any really weird stuff?
@@ -92,10 +124,9 @@ function randomEvent()
 	self.curseDuration_fast = self.curseDuration *0.25
 	status.addEphemeralEffect("mad",self.timer)
 
-
-	if self.randEvent < 0 then --failsafe
+	--[[if self.randEvent < 0 then --failsafe
 		self.randEvent = 0
-	end
+	end]]
 
 	if self.madnessCount > 1500 then
 		if self.randEvent == 44 then
@@ -283,7 +314,7 @@ function afkFlags()
 		status.setStatusProperty("fu_afk_"..v.."s",nil)
 	end
 
-	local flags={120,240,360}
+	local flags={120,240,360,720}
 	for _,v in pairs(flags) do
 		local isAfk=self.afkTimer and (self.afkTimer >= v)
 		status.setStatusProperty("fu_afk_"..v.."s",isAfk)
@@ -292,14 +323,13 @@ end
 
 -- note that this function is reused across multiple scripts. update it here, then copypaste as needed, if modifications are made
 function afkLevel()
-	return ((status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
+	return ((status.statusProperty("fu_afk_720s") and 4) or (status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
 end
 
 function update(dt)
 	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.
 	--if the player doesn't move enough, a timer will increment. once that timer gets over a certain point, the player is flagged as afk via status property, which is global and thus we only need this code running in one place.
 	--afk timer and recorded points are reset when the script resets.
-
 	if not self.pointBox or not self.afkCheckTimer then
 		local pos=entity.position()
 		if pos then
@@ -311,18 +341,18 @@ function update(dt)
 		afkFlags()
 	elseif self.afkCheckTimer >= 1.0 then
 		local wPos=entity.position()
-		local afk=true
+		local isAfk=true
 		for direction,v in pairs(self.pointDirection) do
 			if world.magnitude(self.pointBox[direction],wPos) > 1.0 then
 				local bufferPoint={self.pointBox[direction][1],self.pointBox[direction][2]}
 				local distance=world.distance(wPos,bufferPoint)
 				if (distance[1]*v[1] >= math.abs(v[1])) and (distance[2]*v[2] >= math.abs(v[2])) then
-					afk=false
+					isAfk=false
 					self.pointBox[direction]=wPos
 				end
 			end
 		end
-		if afk then self.afkTimer=self.afkTimer+self.afkCheckTimer else self.afkTimer=0.0 end
+		if isAfk then self.afkTimer=self.afkTimer+self.afkCheckTimer else self.afkTimer=0.0 end
 		self.afkCheckTimer=0.0
 		afkFlags()
 		local afkLvl=afkLevel()
@@ -331,6 +361,7 @@ function update(dt)
 	else
 		self.afkCheckTimer=self.afkCheckTimer+dt
 	end
+	local afkLvl=afkLevel()
 
 	--passive research gain
 	if status.statusProperty("fu_creationDate") then
@@ -340,31 +371,36 @@ function update(dt)
 
 		--is the world a higher threat level? if so, apply a bonus to research gain after 5 minutes, increased further after 25 minutes if over tier 6
 		if world.threatLevel() > 1 then
-		  if self.environmentTimer > 300 then
-			  self.threatBonus = world.threatLevel() / 1.5
-			  if self.threatBonus < 2 then   -- make sure its not giving too high a bonus, to a max of +3
-			  	self.threatBonus = 1
-			  elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
-			  	self.threatBonus = 5
-			  elseif self.threatBonus > 3 then
-			  	self.threatBonus = 3
-			  end
-		  end
-		  self.environmentTimer = self.environmentTimer + dt
-	    end
+			if self.environmentTimer > 300 then
+				self.threatBonus = world.threatLevel() / 1.5
+				if self.threatBonus < 2 then	 -- make sure its not giving too high a bonus, to a max of +3
+					self.threatBonus = 1
+				elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
+					self.threatBonus = 5
+				elseif self.threatBonus > 3 then
+					self.threatBonus = 3
+				end
+			end
+
+			if afkLvl<=3 then
+				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
+			end
+	end
 		-- how crazy are we?
 		if player.currency("fumadnessresource") then
-			self.madnessResearchBonus = player.currency("fumadnessresource") / 4777  --3.14
+			self.madnessResearchBonus = player.currency("fumadnessresource") / 4777 --3.14
 			if self.madnessResearchBonus < 1 then
 				self.madnessResearchBonus = 0
 			end
 		end
-	    -- apply the total
+	-- apply the total
 		self.researchBonus = self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = status.stat("researchBonus") + self.researchBonus
-		if self.timerCounter >= (1+afkLevel()) then
-			player.addCurrency("fuscienceresource",1 + self.bonus)
+		if self.timerCounter >= (1+afkLvl) then
+			if afkLvl <= 3 then
+				player.addCurrency("fuscienceresource",1 + self.bonus)
+			end
 			self.timerCounter = 0
 		else
 			self.timerCounter = self.timerCounter + dt
@@ -423,8 +459,6 @@ function update(dt)
 	end
 end
 
-
-
 --display madness bar
 function displayBar()
 	if (self.madnessCount >= 50) then
@@ -437,11 +471,14 @@ end
 function checkMadnessArt()
 	local hasPainting=false
 	local greatMadnessArt={"thehuntpainting","demiurgepainting","elderhugepainting"}
+	local afkLvl=afkLevel()
 	for _,art in pairs(greatMadnessArt) do
 		if player.hasItem(art) then
-			player.addCurrency("fumadnessresource",5-afkLevel())
+			if afkLvl<=3 then
+				player.addCurrency("fumadnessresource",5-afkLvl)
+			end
 			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
+				player.radioMessage("crazycarry")
 			end
 			hasPainting=true
 			break
@@ -451,9 +488,11 @@ function checkMadnessArt()
 	local madnessArt={"dreamspainting","fleshpainting","homepainting","hordepainting","nightmarepainting","theexpansepainting","thefishpainting","thepalancepainting","theroompainting","thingsinthedarkpainting","elderpainting1","elderpainting2","elderpainting3","elderpainting4","elderpainting5","elderpainting6","elderpainting7","elderpainting8","elderpainting9","elderpainting10","elderpainting11"}
 	for _,art in pairs(madnessArt) do
 		if player.hasItem(art) then
-			player.addCurrency("fumadnessresource",2-math.min(1,afkLevel()))
+			if afkLvl<=3 then
+				player.addCurrency("fumadnessresource",2-math.min(1,afkLvl))
+			end
 			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
+				player.radioMessage("crazycarry")
 			end
 			hasPainting=true
 			break
@@ -467,13 +506,16 @@ function checkMadnessArt()
 end
 
 function isWeirdStuff(duration)
+	local afkLvl=afkLevel()
 	local weirdStuff={"faceskin","greghead","greggnog","babyheadonastick","meatpickle"}
 	for _,art in pairs(weirdStuff) do
 		if player.hasItem(art) then
-			player.addCurrency("fumadnessresource", 2-math.min(1,afkLevel()))
+			if afkLvl<=3 then
+				player.addCurrency("fumadnessresource", 2-math.min(1,afkLvl))
+			end
 			status.addEphemeralEffect("madnessfoodindicator",duration)
 			if math.random(2) == 5 then
-			  player.radioMessage("crazycarry")
+				player.radioMessage("crazycarry")
 			end
 			break
 		end

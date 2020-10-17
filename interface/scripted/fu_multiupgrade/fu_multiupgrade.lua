@@ -198,9 +198,49 @@ function doUpgrade()
 			upgradeTool(upgradeItemInfo.itemData,selectedData.price)
 		end
 
-
 		populateItemList(true)
 	end
+end
+
+function highestRarity(rarity2,rarity1)
+	local t={common=1,uncommon=2,rare=3,legendary=4,essential=5}
+	rarity1=string.lower(rarity1 or "")
+	rarity2=string.lower(rarity2 or "")
+	if (t[rarity1] or 0)> (t[rarity2] or 0) then return rarity1 else return rarity2 end
+end
+
+function fetchTags(iConf)
+	local tags={}
+	for k,v in pairs(iConf.config or {}) do
+		if string.lower(k)=="itemtags" then
+			tags=util.mergeTable(tags,copy(v))
+		end
+	end
+	for k,v in pairs(iConf.parameters or {}) do
+		if string.lower(k)=="itemtags" then
+			tags=util.mergeTable(tags,copy(v))
+		end
+	end
+	return tags
+end
+
+function matchAny(str,tbl)
+	for _,v in pairs(tbl) do
+		if v==str then
+			return true
+		end
+	end
+	return false
+end
+
+function itemHasTag(item,tag)
+	local tagData=fetchTags(item)
+	for _,v in pairs(tagData) do
+		if string.lower(v)==string.lower(tag) then
+			return true
+		end
+	end
+	return false
 end
 
 function upgradeWeapon(upgradeItem,price)
@@ -210,104 +250,174 @@ function upgradeWeapon(upgradeItem,price)
 			local consumedCurrency = player.consumeItem({name = "upgrademodule", count = price}, false, true)
 			local upgradedItem = copy(consumedItem)
 			if consumedCurrency then
-
+				local mergeBuffer={}
 				local itemConfig = root.itemConfig(upgradedItem)
-				self.baseValueMod = itemConfig.config.level or 1 -- store the original level in case we need it for calculations
+				local categoryLower=string.lower(mergeBuffer.category or itemConfig.parameters.category or itemConfig.config.category or "")
 
-				upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
+				mergeBuffer.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 
-				upgradedItem.parameters.critChance = (itemConfig.parameters.critChance or itemConfig.config.critChance or 1) + 0.1	-- increase Crit Chance
-				upgradedItem.parameters.critBonus = (itemConfig.parameters.critBonus or itemConfig.config.critBonus or 1) + 0.25		 -- increase Crit Damage
+				local oldRarity=(itemConfig.parameters and itemConfig.parameters.rarity) or (itemConfig.config and itemConfig.config.rarity)
+				mergeBuffer.rarity=oldRarity
+
+				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level) >= 1 then
+					mergeBuffer = util.mergeTable(copy(upgradedItem.parameters), copy(itemConfig.config.upgradeParametersTricorder))
+					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
+					oldRarity=mergeBuffer.rarity
+				end
+
+				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level) > 4 then
+					mergeBuffer = util.mergeTable(copy(upgradedItem.parameters), copy(itemConfig.config.upgradeParameters))
+					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
+					oldRarity=mergeBuffer.rarity
+				end
+
+				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level) > 5 then
+					mergeBuffer = util.mergeTable(copy(upgradedItem.parameters), copy(itemConfig.config.upgradeParameters2))
+					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
+					oldRarity=mergeBuffer.rarity
+				end
+				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level) > 6 then
+					mergeBuffer = util.mergeTable(copy(upgradedItem.parameters), copy(itemConfig.config.upgradeParameters3))
+					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
+					oldRarity=mergeBuffer.rarity
+				end
+
+				--crit chance
+				local critChance=(mergeBuffer.critChance) or itemConfig.config.critChance
+				if critChance then
+					local modifier=0.1
+					--[[if matchAny(categoryLower,{"rapier","katana","mace"}) then
+						modifier=0.25
+					end]]
+					mergeBuffer.critChance = critChance + (mergeBuffer.level*modifier) -- increase Crit Chance
+				end
+
+				--crit chance
+				local critBonus=(mergeBuffer.critBonus) or itemConfig.config.critBonus
+				if critBonus then
+					local modifier=0.25
+					--[[if matchAny(categoryLower,{"rapier","katana","mace"}) then
+						modifier=1.0
+					end]]
+					mergeBuffer.critBonus = critBonus + (mergeBuffer.level*modifier) -- increase Crit Chance
+				end
 
 				-- set Rarity
-				if upgradedItem.parameters.level ==4 then
-					upgradedItem.parameters.rarity = "uncommon"
-				elseif upgradedItem.parameters.level == 5 then
-					upgradedItem.parameters.rarity = "rare"
+				if mergeBuffer.level == 4 then
+					mergeBuffer.rarity = highestRarity("uncommon",mergeBuffer.rarity)
+				elseif mergeBuffer.level == 5 then
+					mergeBuffer.rarity = highestRarity("rare",mergeBuffer.rarity)
+				--[[elseif mergeBuffer.level == 6 then
+					mergeBuffer.rarity = highestRarity("legendary",mergeBuffer.rarity)
+				elseif mergeBuffer.level >= 7 then
+					mergeBuffer.rarity = highestRarity("essential",mergeBuffer.rarity)]]
 				end
 
 				-- is it a shield?
-				if (itemConfig.config.category == "shield") then
-					upgradedItem.parameters.shieldBash = (itemConfig.parameters.shieldBash or itemConfig.config.shieldBash or 1) + 0.25 + self.baseValueMod
-					upgradedItem.parameters.shieldBashPush = (itemConfig.parameters.shieldBashPush or itemConfig.config.shieldBashPush or 1) + 0.25
-
-					if upgradedItem.parameters.cooldownTime then
-						upgradedItem.parameters.cooldownTime = (itemConfig.parameters.cooldownTime or itemConfig.config.cooldownTime or 1) * 0.98
+				if (categoryLower == "shield") then
+					local shieldBash=mergeBuffer.shieldBash or itemConfig.config.shieldBash
+					if shieldBash then
+						mergeBuffer.shieldBash=shieldBash+(mergeBuffer.level*0.25)
 					end
 
-					if upgradedItem.parameters.perfectBlockTime then
-						upgradedItem.parameters.perfectBlockTime = (itemConfig.parameters.perfectBlockTime or itemConfig.config.perfectBlockTime or 1) * 1.03
+					local cooldownTime=mergeBuffer.cooldownTime or itemConfig.config.cooldownTime
+					if cooldownTime then
+						mergeBuffer.cooldownTime=cooldownTime*(1.0-(0.02*mergeBuffer.level))
 					end
-					if upgradedItem.parameters.shieldEnergyBonus then
-						upgradedItem.parameters.shieldEnergyBonus = (itemConfig.parameters.shieldEnergyBonus or itemConfig.config.shieldEnergyBonus or 1) * 1.05
+
+					local perfectBlockTime=mergeBuffer.perfectBlockTime or itemConfig.config.perfectBlockTime
+					if perfectBlockTime then
+						mergeBuffer.perfectBlockTime=perfectBlockTime*(1.0+(mergeBuffer.level*0.03))
 					end
-					if upgradedItem.parameters.baseShieldHealth then
-						upgradedItem.parameters.baseShieldHealth = (itemConfig.parameters.baseShieldHealth or itemConfig.config.baseShieldHealth or 1) * 1.05
+
+					local shieldEnergyBonus=mergeBuffer.shieldEnergyBonus or itemConfig.config.shieldEnergyBonus
+					if shieldEnergyBonus then
+						mergeBuffer.shieldEnergyBonus=shieldEnergyBonus*(1.0+(mergeBuffer.level*0.05))
+					end
+
+					local baseShieldHealth=mergeBuffer.baseShieldHealth or itemConfig.config.baseShieldHealth
+					if baseShieldHealth then
+						mergeBuffer.baseShieldHealth=baseShieldHealth*(1.0+(mergeBuffer.level*0.05))
 					end
 				end
-
-				upgradedItem.parameters.primaryAbility = {}
 
 				-- magnorbs
-				if (upgradedItem.parameters.orbitRate) then
-					upgradedItem.parameters.shieldKnockback = (itemConfig.parameters.shieldKnockback or itemConfig.config.shieldKnockback or 1) + 1
-					upgradedItem.parameters.shieldEnergyCost = (itemConfig.parameters.shieldEnergyCost or itemConfig.config.shieldEnergyCost or 1) + 1
-					upgradedItem.parameters.shieldHealth = (itemConfig.parameters.shieldHealth or itemConfig.config.shieldHealth or 1) + 1
-				end
-				--staff
-				if (itemConfig.config.category == "staff") or (itemConfig.config.category == "wand") then
-					upgradedItem.parameters.primaryAbility = {}
-					if (itemConfig.config.baseDamageFactor) then
-						upgradedItem.parameters.baseDamageFactor = (itemConfig.parameters.baseDamageFactor or itemConfig.config.baseDamageFactor or 1) * 1.05
-					end
-				end
-				-- boomerangs and other projectileParameters based things (magnorbs here too , chakrams)
-				if (upgradedItem.parameters.projectileParameters) then
-					upgradedItem.parameters.projectileParameters = {
-						controlForce = itemConfig.config.primaryAbility.controlForce + (upgradedItem.parameters.level)
-					}
-				end
-
-				if (itemConfig.config.primaryAbility) then
-
-					-- beams and miners
-					if (itemConfig.config.primaryAbility.beamLength) then
-						upgradedItem.parameters.primaryAbility.beamLength= itemConfig.config.primaryAbility.beamLength + upgradedItem.parameters.level
+				if (itemConfig.config.orbitRate) then
+					local shieldKnockback=mergeBuffer.shieldKnockback or itemConfig.config.shieldKnockback
+					if shieldKnockback then
+						mergeBuffer.shieldKnockback=shieldKnockback+mergeBuffer.level
 					end
 
-					-- wands/staves
-					if (itemConfig.config.primaryAbility.maxCastRange) then
-						upgradedItem.parameters.primaryAbility = {
-							maxCastRange = itemConfig.config.primaryAbility.maxCastRange + (upgradedItem.parameters.level/4)
-						}
+					local shieldEnergyCost=mergeBuffer.shieldEnergyCost or itemConfig.config.shieldEnergyCost
+					if shieldEnergyCost then
+						mergeBuffer.shieldEnergyCost=shieldEnergyCost+mergeBuffer.level
 					end
 
-					if (itemConfig.config.primaryAbility.energyCost) then
-						upgradedItem.parameters.primaryAbility = {
-							energyCost = itemConfig.config.primaryAbility.energyCost - (upgradedItem.parameters.level/3)
-						}
-					end
-
-					-- Can it STUN?
-					if (itemConfig.config.category == "hammer") or (itemConfig.config.category == "mace") or (itemConfig.config.category == "greataxe") or (itemConfig.config.category == "quarterstaff") then
-						upgradedItem.parameters.stunChance = (itemConfig.parameters.stunChance or itemConfig.config.stunChance or 1) + 0.5 + self.baseValueMod
+					local shieldHealth=mergeBuffer.shieldHealth or itemConfig.config.shieldHealth
+					if shieldHealth then
+						mergeBuffer.shieldHealth=shieldHealth+mergeBuffer.level
 					end
 				end
 
-				if (itemConfig.config.upgradeParametersTricorder) and (upgradedItem.parameters.level) >= 1 then
-					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParametersTricorder)
-				end
-				
-				if (itemConfig.config.upgradeParameters) and (upgradedItem.parameters.level) > 4 then
-					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
+				-- is it a staff or wand?
+				if matchAny(categoryLower,{"staff","wand"}) then
+					local baseDamageFactor=mergeBuffer.baseDamageFactor or itemConfig.config.baseDamageFactor
+					if baseDamageFactor then
+						mergeBuffer.baseDamageFactor=baseDamageFactor*(1.0+(mergeBuffer.level*0.05))
+					end
 				end
 
-				if (itemConfig.config.upgradeParameters2) and (upgradedItem.parameters.level) > 5 then
-					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+				-- boomerangs and other projectileParameters based things (magnorbs here too, chakrams)
+				local projectileParameters=copy(mergeBuffer.projectileParameters or (itemConfig.config.projectileParameters and {}))
+				if projectileParameters then
+					projectileParameters.controlForce=projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce
+					if projectileParameters.controlForce then
+						projectileParameters.controlForce=projectileParameters.controlForce+mergeBuffer.level
+					end
+					mergeBuffer.projectileParameters=projectileParameters
 				end
-				if (itemConfig.config.upgradeParameters3) and (upgradedItem.parameters.level) > 6 then
-					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
+
+				local primaryAbility=copy(mergeBuffer.primaryAbility or (itemConfig.config.primaryAbility and {}))
+				if primaryAbility then
+					if not matchAny(categoryLower,{"gun staff","sggunstaff"}) then --exclude Shellguard gunblades from this bit to not break their rotation
+						-- beams and miners
+						primaryAbility.beamLength=primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength
+						if (primaryAbility.beamLength) then
+							primaryAbility.beamLength=primaryAbility.beamLength + mergeBuffer.level
+						end
+
+						-- wands/staves
+						primaryAbility.maxCastRange=primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange
+						if (primaryAbility.maxCastRange) then
+							primaryAbility.maxCastRange = primaryAbility.maxCastRange + (mergeBuffer.level/4)
+						end
+
+						primaryAbility.energyCost=primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost
+						if (itemConfig.config.primaryAbility.energyCost) then
+							primaryAbility.energyCost = primaryAbility.energyCost * math.max(0,1.0-(mergeBuffer.level*0.03))
+						end
+
+						-- does the item have a baseDps? if so, we increase the DPS slightly, but not if the weapon is a big hitter.
+						primaryAbility.baseDps=primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps
+						if (primaryAbility.baseDps) and not (primaryAbility.baseDps >=20) then
+							primaryAbility.baseDps=primaryAbility.baseDps*(1+(mergeBuffer.level/79))
+						end
+					else
+						--gunblade upgrade data here
+					end
+					mergeBuffer.primaryAbility=primaryAbility
 				end
+
+				-- Can it STUN?
+				if matchAny(categoryLower,{"hammer","mace","greataxe","quarterstaff"}) then
+					local stunChance=mergeBuffer.stunChance or itemConfig.config.stunChance
+					if stunChance then
+						mergeBuffer.stunChance=stunChance+(mergeBuffer.level*0.5)
+					end
+				end
+
+				upgradedItem.parameters=util.mergeTable(copy(upgradedItem.parameters),copy(mergeBuffer))
+
 				-- check if player gets Research randomly
 				checkResearchBonus()
 				player.giveItem(upgradedItem)
@@ -315,7 +425,6 @@ function upgradeWeapon(upgradeItem,price)
 		end
 	end
 end
-
 
 function upgradeTool(upgradeItem,price)
 	if upgradeItem then
@@ -339,7 +448,6 @@ function upgradeTool(upgradeItem,price)
 				 elseif upgradedItem.parameters.level >= 8 then
 					 upgradedItem.parameters.rarity = "essential"
 				 end
-
 
 				upgradedItem.parameters.primaryAbility = {}
 
