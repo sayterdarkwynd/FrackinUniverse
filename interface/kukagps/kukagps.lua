@@ -8,9 +8,11 @@ function init()
 end
 
 function populateMaterialsList()
-        //sb.logInfo("WID: "..player.worldId())
         widget.clearListItems(MATERIALS)
+        -- usar celestial.worldImages para obtener imagen del planeta
         local worldId = string.split(player.worldId(),":")
+        local planet = {location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}, planet = tonumber(worldId[5]), satellite = (tonumber(worldId[6]) or 0)}
+        local system ={location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}}
         if worldId[1]=="InstanceWorld" then
             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
             widget.setText(path .. ".text", "This is a Instance World")
@@ -23,10 +25,10 @@ function populateMaterialsList()
             else
                 if worldId[1]=="CelestialWorld" then
                     ores =root.assetJson("/interface/kukagps/ores.config")
-                    planets =root.assetJson("/interface/kukagps/planets.config")
+                    biomes =root.assetJson("/interface/kukagps/biomes.config")
                     stars =root.assetJson("/interface/kukagps/stars.config")	
 
-                    local system = celestial.currentSystem()
+                    -- local system = celestial.currentSystem()
                     -- print system
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;System:^reset; "..celestial.planetName(system))
@@ -40,32 +42,60 @@ function populateMaterialsList()
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Coordinate X:^reset; "..system.location[1].."                        ^green;Coordinate Y:^reset; "..system.location[2])
 
-                    local planet = {location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}, planet = tonumber(worldId[5]), satellite = (tonumber(worldId[6]) or 0)}
                     -- print planet
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Planet:^reset; "..celestial.planetName(planet))
 
-                    -- print planet type
+                    -- print planet primary biome
+                    local parameters = celestial.visitableParameters(planet)
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Type:^reset; "..planets[world.type()])
+                    widget.setText(path .. ".text", "^green;Primary biome:^reset; "..biomes[parameters.primaryBiome] or parameters.primaryBiome)
+
+                    local subbiomes="None"
+                    for key,subBiome in pairs(parameters.surfaceLayer.secondarySubRegions) do
+                        if subBiome and subBiome.biome ~= parameters.primaryBiome then
+                            if subbiomes=="None" then
+                                subbiomes = biomes[subBiome.biome]
+                            else
+                                subbiomes = subbiomes..", "..biomes[subBiome.biome]
+                            end  
+                        end          
+                    end
+                    subbiomes = subbiomes.."."
+                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    widget.setText(path .. ".text", "^green;Secondary biomes:^reset; "..subbiomes)
 
                     local pos = world.entityPosition(player.id())
                     -- print pos
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Position X:^reset; "..pos[1].."                        ^green;Position Y:^reset; "..pos[2])
+                    widget.setText(path .. ".text", "^green;Position X:^reset; "..math.floor(pos[1]).."                        ^green;Position Y:^reset; "..math.floor(pos[2]))
 
                     local size = world.size() or {0,0}
                     -- print world size        
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Width:^reset; "..size[1].."                        ^green;Height:^reset; "..size[2])
 
-                    -- print planet type
+                    -- print planet threat
+                    local threat = math.floor((world.threatLevel() or 0) * 10) / 10
+                    if(threat>9.99)then threatStr = "Just No (X)"
+                    elseif(threat>8.99)then threatStr = "Immeasurable (IX)"
+                    elseif(threat>7.99)then threatStr = "Impossible (VIII)"
+                    elseif(threat>6.99)then threatStr = "Lethal (VII)"
+                    elseif(threat>5.99)then threatStr = "Extreme (VI)"
+                    elseif(threat>4.99)then threatStr = "Dangerous (V)"
+                    elseif(threat>3.99)then threatStr = "Risky (IV)"
+                    elseif(threat>2.99)then threatStr = "Moderate (III)"
+                    elseif(threat>1.99)then threatStr = "Low (II)"
+                    elseif(threat>0.99)then threatStr = "Harmless (I)"
+                    elseif(threat>0.0)then threatStr = "Babysitting (0)"
+                    end
+
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Threat:^reset; "..(world.threatLevel() or 0).."                        ^green;Gravity:^reset; "..world.gravity(world.entityPosition(player.id())) or 0)
+                    widget.setText(path .. ".text", "^green;Threat:^reset; "..threatStr.."                        ^green;Gravity:^reset; "..world.gravity(world.entityPosition(player.id())) or 0)
 
                     -- print planet ores
                     local localOres="0"
-                    for _,ore in pairs(celestial.planetOres(celestial.shipLocation()[2], (world.threatLevel() or 0))) do
+                    for _,ore in pairs(celestial.planetOres(planet, (world.threatLevel() or 0))) do
                         if localOres=="0" then
                             localOres = (ores[ore] or ore)
                         else
