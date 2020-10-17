@@ -1,18 +1,20 @@
 {
   "itemName" : "skathtier3apants",
-  "price" : 2560,
+  "price" : 600,
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
   "rarity" : "Legendary",
   "category" : "legarmour",
-  "description" : "These trousers count the number of steps you take through sophisticated circuitry. Why? Why not.",
-  "shortdescription" : "Seeker's Trousers",
-  "tooltipKind" : "armor",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Assault Rifle/Shortsword: Damage x^green;1.22^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen",
+  "shortdescription" : "Warscorned Trousers",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "level" : 6,
+  "level" : 5,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "acceleratorArmorLevelPowerMultiplierMultiplier",
@@ -33,10 +35,51 @@
       "levelFunction" : "acceleratorArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
-    }
+    },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "fireResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "iceResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "poisonResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "electricResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "shadowResistance",
+        "amount": 0.009667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "cosmicResistance",
+        "amount": 0.011667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "radioactiveResistance",
+        "amount": 0.012667
+      }
   ],
-
-  "itemTags" : [ "tier3armour" ],
+  "statusEffects" : [
+        "humantier5setbonusnew",
+        {
+          "stat" : "fu_humantier5setnew_legs",
+          "amount" : 1
+        }
+  ],
+  "itemTags" : [ "tier3armour", "upgradeableArmor" ],
 
   "colorOptions" : [
     // BLUE
@@ -63,5 +106,6 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }
