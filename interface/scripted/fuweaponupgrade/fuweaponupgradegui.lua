@@ -36,22 +36,6 @@ function init()
 	widget.setText("warningLabel","")
 end
 
---[[{
-  "weaponEssenceValue" : [ "linear", "clamp",
-    [1, 3750],
-    [2, 4000],
-    [3, 4500],
-    [4, 5250],
-    [5, 6250],
-    [6, 7500],
-    [7, 9000],
-    [8, 10750],
-    [9, 12750],
-    [10, 15000]
-  ]
-}
-]]
-
 function update(dt)
 	self.buttonTimer=math.max(self.playerTypingTimer or upgradeButtonLockout,(self.buttonTimer or upgradeButtonLockout)-dt)
 	self.playerTypingTimer=math.max(0,(self.playerTypingTimer or upgradeButtonLockout)-dt)
@@ -129,6 +113,23 @@ function costMath(iLvl)
 	local newValue = (self.maxEssenceValue * iLvl / 3) + 200
 	return math.max(math.floor(newValue-prevValue),0)
 end
+
+
+--[[{
+	"weaponEssenceValue" : [ "linear", "clamp",
+		[1, 3750],
+		[2, 4000],
+		[3, 4500],
+		[4, 5250],
+		[5, 6250],
+		[6, 7500],
+		[7, 9000],
+		[8, 10750],
+		[9, 12750],
+		[10, 15000]
+	]
+}
+]]
 
 function populateItemList(forceRepop)
 	local upgradeableWeaponItems = player.itemsWithTag("upgradeableWeapon")
