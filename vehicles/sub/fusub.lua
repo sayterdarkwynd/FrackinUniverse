@@ -258,7 +258,7 @@ function updateDriving()
 
 		if not isSafeLiquid() then
 			local fatman=vehicle.entityLoungingIn("drivingSeat")
-			if world.entityExists(fatman) then
+			if fatman and world.entityExists(fatman) then
 				world.sendEntityMessage(fatman, "queueRadioMessage", "subCantOperate", 1.0) -- send player a warning
 			end
 		elseif isSafeLiquid() then -- check the type of liquid they are in. works, but not if they swap to new liquid type. odd?
