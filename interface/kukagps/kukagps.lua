@@ -9,7 +9,6 @@ end
 
 function populateMaterialsList()
         widget.clearListItems(MATERIALS)
-        -- usar celestial.worldImages para obtener imagen del planeta
         local worldId = string.split(player.worldId(),":")
         local planet = {location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}, planet = tonumber(worldId[5]), satellite = (tonumber(worldId[6]) or 0)}
         local system ={location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}}
@@ -76,22 +75,8 @@ function populateMaterialsList()
                     widget.setText(path .. ".text", "^green;Width:^reset; "..size[1].."                        ^green;Height:^reset; "..size[2])
 
                     -- print planet threat
-                    local threat = math.floor((world.threatLevel() or 0) * 10) / 10
-                    if(threat>9.99)then threatStr = "Just No (X)"
-                    elseif(threat>8.99)then threatStr = "Immeasurable (IX)"
-                    elseif(threat>7.99)then threatStr = "Impossible (VIII)"
-                    elseif(threat>6.99)then threatStr = "Lethal (VII)"
-                    elseif(threat>5.99)then threatStr = "Extreme (VI)"
-                    elseif(threat>4.99)then threatStr = "Dangerous (V)"
-                    elseif(threat>3.99)then threatStr = "Risky (IV)"
-                    elseif(threat>2.99)then threatStr = "Moderate (III)"
-                    elseif(threat>1.99)then threatStr = "Low (II)"
-                    elseif(threat>0.99)then threatStr = "Harmless (I)"
-                    elseif(threat>0.0)then threatStr = "Babysitting (0)"
-                    end
-
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Threat:^reset; "..threatStr.."                        ^green;Gravity:^reset; "..world.gravity(world.entityPosition(player.id())) or 0)
+                    widget.setText(path .. ".text", "^green;Threat:^reset; "..ThreatToString(world.threatLevel()).."                        ^green;Gravity:^reset; "..world.gravity(world.entityPosition(player.id())) or 0)
 
                     -- print planet ores
                     local localOres="0"
@@ -112,6 +97,27 @@ function populateMaterialsList()
             end
         end
 end
+
+-- contribution of zimberzimber
+strs = {
+    "Harmless (I)",
+    "Low (II)",
+    "Moderate (III)",
+    "Risky (IV)",
+    "Dangerous (V)",
+    "Extreme (VI)",
+    "Lethal (VII)",
+    "Impossible (VIII)",
+    "Immeasurable (IX)",
+    "Just No (X)",
+    "No (XI)",
+}
+
+function ThreatToString(threat)
+    local floored = math.max(math.floor(threat) + 1, 1)
+    return strs[floored] or strs[#strs]
+end
+-- contribution of zimberzimber
 
 function string.split(str, pat)
     local t = {}  -- NOTE: use {n = 0} in Lua-5.0
