@@ -113,7 +113,7 @@ end
 
 function checkWorn(item)
 	if not item then return "no item selected" end
-	sb.logInfo("item: %s",item)
+	--sb.logInfo("item: %s",item)
 	local itemCat=root.itemConfig(item)
 	if itemCat and itemCat.parameters and itemCat.parameters.category then
 		itemCat=itemCat.parameters.category
@@ -193,7 +193,11 @@ function doUpgrade()
 		local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
 		local upgradeItemInfo = self.upgradableItems[selectedData.index]
 		if upgradeItemInfo.itemType=="weapon" then
-			upgradeWeapon(upgradeItemInfo.itemData,selectedData.price)
+			local pass,result=pcall(upgradeWeapon,upgradeItemInfo.itemData,selectedData.price)
+			if not pass then
+				player.giveItem(upgradeItemInfo.itemData)
+				sb.logInfo("Upgrade failed: %s",result)
+			end
 		elseif upgradeItemInfo.itemType=="tool" then
 			upgradeTool(upgradeItemInfo.itemData,selectedData.price)
 		end
@@ -259,25 +263,25 @@ function upgradeWeapon(upgradeItem,price)
 				local oldRarity=(itemConfig.parameters and itemConfig.parameters.rarity) or (itemConfig.config and itemConfig.config.rarity)
 				mergeBuffer.rarity=oldRarity
 
-				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level) >= 1 then
-					mergeBuffer = util.mergeTable(copy(upgradedItem.parameters), copy(itemConfig.config.upgradeParametersTricorder))
+				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level >= 1) then
+					mergeBuffer = util.mergeTable(copy(mergeBuffer), copy(itemConfig.config.upgradeParametersTricorder))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
 
-				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level) > 4 then
-					mergeBuffer = util.mergeTable(copy(upgradedItem.parameters), copy(itemConfig.config.upgradeParameters))
+				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level > 4) then
+					mergeBuffer = util.mergeTable(copy(mergeBuffer), copy(itemConfig.config.upgradeParameters))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
 
-				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level) > 5 then
-					mergeBuffer = util.mergeTable(copy(upgradedItem.parameters), copy(itemConfig.config.upgradeParameters2))
+				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level > 5) then
+					mergeBuffer = util.mergeTable(copy(mergeBuffer), copy(itemConfig.config.upgradeParameters2))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
-				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level) > 6 then
-					mergeBuffer = util.mergeTable(copy(upgradedItem.parameters), copy(itemConfig.config.upgradeParameters3))
+				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level > 6) then
+					mergeBuffer = util.mergeTable(copy(mergeBuffer), copy(itemConfig.config.upgradeParameters3))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
