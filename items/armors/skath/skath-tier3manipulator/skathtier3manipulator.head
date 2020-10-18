@@ -1,19 +1,21 @@
 {
   "itemName" : "skathtier3mhead",
-  "price" : 3840,
+  "price" : 500,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "rare",
   "category" : "headarmour",
-  "description" : "Protect your head as you wander the universe - afterall, your head is where your brain is.",
-  "shortdescription" : "Wanderer's Helmet",
-  "tooltipKind" : "armor",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Assault Rifle/Shortsword: Damage x^green;1.19^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen",
+  "shortdescription" : "Dracon Helmet",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "level" : 6,
+  "level" : 4,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "manipulatorArmorLevelPowerMultiplierMultiplier",
@@ -34,12 +36,55 @@
       "levelFunction" : "manipulatorArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
-    }
+    },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "fireResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "iceResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "poisonResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "electricResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "shadowResistance",
+        "amount": 0.009667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "cosmicResistance",
+        "amount": 0.011667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "radioactiveResistance",
+        "amount": 0.012667
+      }
   ],
-
-  "itemTags" : [ "tier3armour" ],
+  "statusEffects" : [
+        "humantier4setbonusnew",
+        {
+          "stat" : "fu_humantier4setnew_head",
+          "amount" : 1
+        }
+  ],
+  "itemTags" : [ "tier3armour", "upgradeableArmor" ],
 
   "colorOptions" : [
+    // BLUE
+    { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },  
     // RED
     { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
     // BLACK
@@ -56,13 +101,12 @@
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },
     // GREEN
     { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216" },
-    // BLUE
-    { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
     // PURPLE
     { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
     // PINK
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }
