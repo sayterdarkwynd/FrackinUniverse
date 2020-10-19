@@ -196,10 +196,14 @@ function doUpgrade()
 			local pass,result=pcall(upgradeWeapon,upgradeItemInfo.itemData,selectedData.price)
 			if not pass then
 				player.giveItem(upgradeItemInfo.itemData)
-				sb.logInfo("Upgrade failed: %s",result)
+				sb.logInfo("Upgrade (weapon/armor) failed: %s",result)
 			end
 		elseif upgradeItemInfo.itemType=="tool" then
-			upgradeTool(upgradeItemInfo.itemData,selectedData.price)
+			local pass,result=pcall(upgradeTool,upgradeItemInfo.itemData,selectedData.price)
+			if not pass then
+				player.giveItem(upgradeItemInfo.itemData)
+				sb.logInfo("Upgrade (tool) failed: %s",result)
+			end
 		end
 
 		populateItemList(true)
@@ -438,20 +442,24 @@ function upgradeTool(upgradeItem,price)
 			--local consumedCurrency = player.consumeCurrency("fuscienceresource", selectedData.price)
 			local upgradedItem = copy(consumedItem)
 			if consumedCurrency then
-
 				local itemConfig = root.itemConfig(upgradedItem)
+				local oldRarity=(itemConfig.parameters and itemConfig.parameters.rarity) or (itemConfig.config and itemConfig.config.rarity)
 				upgradedItem.parameters.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
 
-				 -- set Rarity
-				 if upgradedItem.parameters.level ==3 then
-					 upgradedItem.parameters.rarity = "uncommon"
-				 elseif upgradedItem.parameters.level == 5 then
-					 upgradedItem.parameters.rarity = "rare"
-				 elseif upgradedItem.parameters.level == 7 then
-					 upgradedItem.parameters.rarity = "legendary"
-				 elseif upgradedItem.parameters.level >= 8 then
-					 upgradedItem.parameters.rarity = "essential"
-				 end
+				-- set Rarity
+				if upgradedItem.parameters.level ==3 then
+					upgradedItem.parameters.rarity = highestRarity("uncommon",oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
+				elseif upgradedItem.parameters.level == 5 then
+					upgradedItem.parameters.rarity = highestRarity("rare",oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
+				elseif upgradedItem.parameters.level == 7 then
+					upgradedItem.parameters.rarity = highestRarity("legendary",oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
+				elseif (upgradedItem.parameters.level >= 8) and (itemHasTag(itemConfig,"mininglaser")) then
+					upgradedItem.parameters.rarity = highestRarity("essential",oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
+				end
 
 				upgradedItem.parameters.primaryAbility = {}
 
@@ -462,63 +470,95 @@ function upgradeTool(upgradeItem,price)
 
 				if (upgradedItem.parameters.level) <= 2 and itemConfig.config.upgradeParameters then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (upgradedItem.parameters.level) == 3 and itemConfig.config.upgradeParameters2 then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (upgradedItem.parameters.level) == 4 and itemConfig.config.upgradeParameters3 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "parasol") then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
 					upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 1.5
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (upgradedItem.parameters.level) == 5 and itemConfig.config.upgradeParameters4 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (upgradedItem.parameters.level) == 6 and itemConfig.config.upgradeParameters5 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator") and not (itemConfig.config.category == "parasol") then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters5)
 					upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 2
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (upgradedItem.parameters.level) == 7 and itemConfig.config.upgradeParameters6 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")	and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters6)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (upgradedItem.parameters.level) == 8 and itemConfig.config.upgradeParameters7 and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")	and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters7)
 					upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 2.5
-				elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and not (itemConfig.config.category == "bugnet") and not (itemConfig.config.category == "hookshot") and not (itemConfig.config.category == "relocator")	and not (itemConfig.config.category == "parasol") and not (itemConfig.config.category == "translocator") and not (itemConfig.config.category == "detector") then
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
+				elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and itemHasTag(itemConfig,"mininglaser") then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 					upgradedItem.parameters.primaryAbility.beamLength= 30 + ( upgradedItem.parameters.level + 1 )
 					upgradedItem.parameters.primaryAbility.energyUsage= 6 + ( upgradedItem.parameters.level /10 )
 					upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 )
 					upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 3
-					upgradedItem.parameters.rarity = "legendary"
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 and (itemConfig.config.category == "bugnet") then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 					upgradedItem.parameters.primaryAbility.energyUsage= 1 + ( upgradedItem.parameters.level /20 )
 					upgradedItem.parameters.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( upgradedItem.parameters.level /10 )
 					upgradedItem.parameters.upmod= upgradedItem.parameters.upmod + 0.5 or 3
-					upgradedItem.parameters.rarity = "legendary"
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				end
 
 				if (itemConfig.config.category == "repairgun") and (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 					upgradedItem.parameters.primaryAbility.projectileParameters.restoreBase= (upgradedItem.parameters.level) + 3
 					upgradedItem.parameters.primaryAbility.projectileParameters.speed= (upgradedItem.parameters.level)+1
 					upgradedItem.parameters.primaryAbility.energyUsage= 10 + ( upgradedItem.parameters.level /10 )
-				-- catch leftovers
+					-- catch leftovers
 				elseif (itemConfig.config.category == "detector") and (upgradedItem.parameters.level) >=8 then -- ore detectors and cave detectors
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 					upgradedItem.parameters.pingRange= upgradedItem.parameters.pingRange + 1
 					upgradedItem.parameters.pingDuration= upgradedItem.parameters.pingDuration + 0.15
 					upgradedItem.parameters.pingCooldown= upgradedItem.parameters.pingCooldown - 0.05
 				elseif (itemConfig.config.category == "parasol") and (upgradedItem.parameters.level) >=3 then -- parasol
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 					upgradedItem.parameters.level = 20
-					upgradedItem.parameters.rarity = "legendary"
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (itemConfig.config.category == "translocator") and (upgradedItem.parameters.level) >=5 then -- translocator
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters4)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 					upgradedItem.parameters.level = 20
-					upgradedItem.parameters.rarity = "legendary"
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (itemConfig.config.category == "hookshot") and (upgradedItem.parameters.level) >=3 then -- hookshots
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters2)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 					upgradedItem.parameters.level = 20
-					upgradedItem.parameters.rarity = "legendary"
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				elseif (itemConfig.config.category == "relocator") and (upgradedItem.parameters.level) >=4 then -- relocators
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters3)
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 					upgradedItem.parameters.level = 20
-					upgradedItem.parameters.rarity = "legendary"
+					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
+					oldRarity=upgradedItem.parameters.rarity
 				end
 
 			end
