@@ -55,6 +55,15 @@ function update(dt)
     ItemNew = world.containerItemAt(pane.containerEntityId(),2)
 
     cost = self.baseCost
+	
+	if itemPGI then
+        --Validate slot#2 contains a PGI
+        cfg = root.itemConfig(itemPGI).config
+        if cfg.objectName ~= "perfectlygenericitem" then
+            itemPGI = nil
+        end
+    end
+	
 	if itemPGI == nil then
 		cost = round(cost * self.costModifier,0)
     end
@@ -80,7 +89,12 @@ function update(dt)
 			raceList_SelectedChanged()
         else
             widget.setImage("imgPreviewIn", "")
-            eject(0)
+			widget.setImage("imgPreviewOut", "")
+			widget.setText("lblCost", "Cost:   x--")
+			widget.setText("preview_lbl2", "Output: --")
+			widget.setText("races1Label", "Supported Races  |  Input: --")
+			itemOld = nil
+			setCost = false
 			oldItemOld = nil
 			self.newName = nil
 			self.newItem = {}
@@ -95,14 +109,6 @@ function update(dt)
 		oldItemOld = nil
 		self.newName = nil
 		self.newItem = {}
-    end
-
-    if itemPGI then
-        --Validate slot#2 contains a PGI
-        cfg = root.itemConfig(itemPGI).config
-        if cfg.objectName ~= "perfectlygenericitem" then
-            eject(1)
-        end
     end
 
     if not self.newName then
@@ -199,13 +205,6 @@ function round(num, numDecimalPlaces)
   return math.floor(mult) -- Do it again to remove the decimal point (why is this even needed??)
 end
 
---Eject the item at the specified itemGrid index
-function eject(index)
-    player.giveItem(world.containerItemAt(pane.containerEntityId(),index))
-    world.containerTakeAt(pane.containerEntityId(),index)
-    widget.playSound("/sfx/interface/clickon_error.ogg", 0, 1.25)
-end
-
 --Update selectedText variable
 function raceList_SelectedChanged()
     local listItem = widget.getListSelected(self.raceList)
@@ -234,8 +233,17 @@ function raceList_SelectedChanged()
 				local itemNewCfg = itemNewInfo.config
 				if itemNewCfg then
 					widget.setImage("imgPreviewOut", itemNewCfg.placementImage or getPlacementImage(itemNewCfg.orientations, itemNewInfo.directory))
-				elseif self.selectedText == "apex" then
-					self.newName = base
+				else
+					for item, data in pairs (raceTable[self.selectedText].items) do
+						if string.find(item, base) then
+							self.newName = item
+							if type(data) == "table" then
+								self.newItem.positionOverride = newItemData
+							else
+								self.newItem.positionOverride = nil
+							end
+						end
+					end
 					itemNewInfo = root.itemConfig(self.newName) or {}
 					local itemNewCfg = itemNewInfo.config
 					if itemNewCfg then
@@ -246,11 +254,6 @@ function raceList_SelectedChanged()
 						widget.setText(string.format("%s",  "preview_lbl2"), "Output: --")
 						widget.setText("lblCost", "Cost:   x--")
 					end
-				else
-					self.newName = false
-					widget.setImage("imgPreviewOut", "")
-					widget.setText(string.format("%s",  "preview_lbl2"), "Output: --")
-					widget.setText("lblCost", "Cost:   x--")
 				end
             end
         else
