@@ -29,7 +29,10 @@ function init()
 	self.degradeTotal = 0
 	self.bonusTimer = 1
 
-	status.removeEphemeralEffect("partytime5")--make sure the annoying sounds dont flood
+	--make sure the annoying sounds dont flood
+	status.removeEphemeralEffect("partytime5madness")
+	status.removeEphemeralEffect("partytime5")
+	status.removeEphemeralEffect("partytime4madness")
 	status.removeEphemeralEffect("partytime4")
 	status.removeEphemeralEffect("partytime3")
 	status.removeEphemeralEffect("partytime2")
@@ -37,7 +40,7 @@ function init()
 	self.paintTimer = 0
 
 	self.playerId = entity.id()
-	self.maxMadnessValue = 15000
+	self.maxMadnessValue = 15000--also defined in the relevant currency config
 	self.madnessPercent = math.min(self.madnessCount / self.maxMadnessValue,1.0)
 
 	self.barName = "madnessBar"
@@ -309,10 +312,10 @@ function randomEvent()
 end
 
 function afkFlags()
-	local removingflags={30,60,120}
+	--[[local removingflags={30,60,120}
 	for _,v in pairs(removingflags) do
 		status.setStatusProperty("fu_afk_"..v.."s",nil)
-	end
+	end]]
 
 	local flags={120,240,360,720}
 	for _,v in pairs(flags) do
@@ -356,8 +359,8 @@ function update(dt)
 		self.afkCheckTimer=0.0
 		afkFlags()
 		local afkLvl=afkLevel()
-		self.afkPenaltyValue=math.max(-1.0,((self.afkPenaltyValue and (afkLvl > 0) and (self.afkPenaltyValue - (afkLvl*0.001)))) or 0.0)
-		status.setPersistentEffects("madnessAFKPenalty",{{stat="mentalProtection",amount=self.afkPenaltyValue}})
+		local afkPenaltyValue=math.max(-1.0,((afkPenaltyValue and (afkLvl > 0) and (afkPenaltyValue - (afkLvl*0.001)))) or 0.0)
+		status.setPersistentEffects("madnessAFKPenalty",{{stat="mentalProtection",amount=afkPenaltyValue}})
 	else
 		self.afkCheckTimer=self.afkCheckTimer+dt
 	end
@@ -373,7 +376,7 @@ function update(dt)
 		if world.threatLevel() > 1 then
 			if self.environmentTimer > 300 then
 				self.threatBonus = world.threatLevel() / 1.5
-				if self.threatBonus < 2 then	 -- make sure its not giving too high a bonus, to a max of +3
+				if self.threatBonus < 2 then -- make sure its not giving too high a bonus, to a max of +3
 					self.threatBonus = 1
 				elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
 					self.threatBonus = 5
@@ -385,7 +388,7 @@ function update(dt)
 			if afkLvl<=3 then
 				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
 			end
-	end
+		end
 		-- how crazy are we?
 		if player.currency("fumadnessresource") then
 			self.madnessResearchBonus = player.currency("fumadnessresource") / 4777 --3.14
@@ -393,7 +396,7 @@ function update(dt)
 				self.madnessResearchBonus = 0
 			end
 		end
-	-- apply the total
+		-- apply the total
 		self.researchBonus = self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = status.stat("researchBonus") + self.researchBonus
@@ -477,9 +480,6 @@ function checkMadnessArt()
 			if afkLvl<=3 then
 				player.addCurrency("fumadnessresource",5-afkLvl)
 			end
-			if math.random(2) == 5 then
-				player.radioMessage("crazycarry")
-			end
 			hasPainting=true
 			break
 		end
@@ -491,9 +491,6 @@ function checkMadnessArt()
 			if afkLvl<=3 then
 				player.addCurrency("fumadnessresource",2-math.min(1,afkLvl))
 			end
-			if math.random(2) == 5 then
-				player.radioMessage("crazycarry")
-			end
 			hasPainting=true
 			break
 		end
@@ -501,6 +498,9 @@ function checkMadnessArt()
 
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
 	if hasPainting then
+		if (math.random(5)==1) then
+			player.radioMessage("crazycarry")
+		end
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
 	end
 end
@@ -513,10 +513,11 @@ function isWeirdStuff(duration)
 			if afkLvl<=3 then
 				player.addCurrency("fumadnessresource", 2-math.min(1,afkLvl))
 			end
-			status.addEphemeralEffect("madnessfoodindicator",duration)
-			if math.random(2) == 5 then
+			if math.random(5) == 1 then
 				player.radioMessage("crazycarry")
 			end
+			status.addEphemeralEffect("madnessfoodindicator",duration)
+			hasArt=true
 			break
 		end
 	end
