@@ -2,7 +2,7 @@
   "objectName" : "colonydeedmk2",
   "colonyTags" : [],
   "rarity" : "Common",
-  "description" : "A colony deed designed for use with a Colony Core. Only collects rent with a Core present.",
+  "description" : "A colony deed designed for use with a Colony Core. Only collects rent with a Core present.  ^red;Requires a bed in the room.",
   "shortdescription" : "^yellow;Colony Deed Mark II",
   "race" : "generic",
   "printable" : false,
@@ -34,8 +34,8 @@
 
   "scripts" : [
     "/objects/colonysystem2/colonydeedmk2/colonydeedmk2.lua",
-    "/objects/colonysystem2/colonydeedmk2/scanning.lua",
-    "/objects/colonysystem2/colonydeedmk2/timer.lua",
+    "/objects/spawner/colonydeed/scanning.lua",
+    "/objects/spawner/colonydeed/timer.lua",
     "/scripts/util.lua"
   ],
   "scriptDelta" : 10,
@@ -73,6 +73,10 @@
 
     // Distance to search for 'nearby' deeds. Used to produce a count of nearby
     // deeds for an achievement-related event.
-    "nearbyQueryRange" : 50
+    "nearbyQueryRange" : 50,
+	
+	"extraTagCriteria" : {
+      "bed": 1
+    }
   }
 }
