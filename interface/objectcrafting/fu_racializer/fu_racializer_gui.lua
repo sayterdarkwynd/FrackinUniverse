@@ -233,8 +233,17 @@ function raceList_SelectedChanged()
 				local itemNewCfg = itemNewInfo.config
 				if itemNewCfg then
 					widget.setImage("imgPreviewOut", itemNewCfg.placementImage or getPlacementImage(itemNewCfg.orientations, itemNewInfo.directory))
-				elseif self.selectedText == "apex" then
-					self.newName = base
+				else
+					for item, data in pairs (raceTable[self.selectedText].items) do
+						if string.find(item, base) then
+							self.newName = item
+							if type(data) == "table" then
+								self.newItem.positionOverride = newItemData
+							else
+								self.newItem.positionOverride = nil
+							end
+						end
+					end
 					itemNewInfo = root.itemConfig(self.newName) or {}
 					local itemNewCfg = itemNewInfo.config
 					if itemNewCfg then
@@ -245,11 +254,6 @@ function raceList_SelectedChanged()
 						widget.setText(string.format("%s",  "preview_lbl2"), "Output: --")
 						widget.setText("lblCost", "Cost:   x--")
 					end
-				else
-					self.newName = false
-					widget.setImage("imgPreviewOut", "")
-					widget.setText(string.format("%s",  "preview_lbl2"), "Output: --")
-					widget.setText("lblCost", "Cost:   x--")
 				end
             end
         else
