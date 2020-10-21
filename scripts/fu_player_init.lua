@@ -38,8 +38,8 @@ function init(...)
 	message.setHandler("player.isAdmin", player.isAdmin)
 	message.setHandler("player.isLounging", player.isLounging)
 	message.setHandler("player.loungingIn", player.loungingIn)
-	message.setHandler("playerInMech", playerInMech)
-	message.setHandler("playerInVehicle", playerInVehicle)
+	message.setHandler("playerIsInMech", playerIsInMech)
+	message.setHandler("playerIsInVehicle", playerIsInVehicle)
 	message.setHandler("player.equippedItem",function (_,_,...) return player.equippedItem(...) end)
 	message.setHandler("player.hasItem",function (_,_,...) return player.hasItem(...) end)
 	message.setHandler("player.hasCountOfItem",function (_,_,...) return player.hasCountOfItem(...) end)
@@ -88,7 +88,7 @@ function update(dt)
 		if not ffunknownCheckTimer then
 			ffunknownCheckTimer=0.99
 		elseif ffunknownCheckTimer>=1.0 then
-			if ffunknownConfig and world.type()=="ffunknown" and not playerInVehicle() then
+			if ffunknownConfig and world.type()=="ffunknown" and not playerIsInVehicle() then
 				local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
 				if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
 					ffunknownWorldProp={version=ffunknownConfig.version}
@@ -127,13 +127,13 @@ function update(dt)
 	end
 end
 
-function playerInVehicle()
+function playerIsInVehicle()
 	local entData=player.isLounging() and player.loungingIn()
 	entData=(entData and world.entityType(entData))=="vehicle"
 	return entData
 end
 
-function playerInMech()
+function playerIsInMech()
 	local entData=player.isLounging() and player.loungingIn()
 	entData=(entData and world.entityName(entData))=="modularmech"
 	return entData
