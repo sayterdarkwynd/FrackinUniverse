@@ -1,5 +1,5 @@
 function init()
-	baseRefresh=config.getParameter("refresh")--/60.0
+	baseRefresh=config.getParameter("refresh")/60.0
 	item = config.getParameter("item")
 	maxAmount = config.getParameter("maxAmount")
 	configAmount = config.getParameter("amount")
@@ -18,6 +18,7 @@ function update(dt)
 			if count and count < maxAmount then
 				world.spawnItem(item, entity.position(), math.min(configAmount, maxAmount - count), {price = 0})
 			end
+			timer=baseRefresh
 		else
 			if afkLevel() > 3 then
 				timer=baseRefresh
