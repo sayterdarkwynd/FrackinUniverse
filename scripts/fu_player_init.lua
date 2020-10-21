@@ -1,15 +1,19 @@
+require "/scripts/util.lua"
+
 local didInit=false
 local origInit = init
 local origUninit = uninit
 local oldUpdate=update
+local ffunknownConfig
 
 function init(...)
 	if origInit then
 		origInit(...)
 	end
 	didInit=true
+	doIdiotCheck=true
 	sb.logInfo("----- FU player init -----")
-	
+	ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
 	message.setHandler("fu_key", function(_, _, requiredItem)
 		if player.hasItem(requiredItem) then
 			return true
@@ -24,7 +28,7 @@ function init(...)
 		return false
 	end)
 	if not status.statusProperty("fu_creationDate") then status.setStatusProperty("fu_creationDate",os.time()) end
-	
+
 	message.setHandler("player.isAdmin",player.isAdmin)
 	message.setHandler("player.uniqueId",player.uniqueId)
 	message.setHandler("player.worldId",player.worldId)
@@ -34,19 +38,21 @@ function init(...)
 	message.setHandler("player.isAdmin", player.isAdmin)
 	message.setHandler("player.isLounging", player.isLounging)
 	message.setHandler("player.loungingIn", player.loungingIn)
+	message.setHandler("playerInMech", playerInMech)
+	message.setHandler("playerInVehicle", playerInVehicle)
 	message.setHandler("player.equippedItem",function (_,_,...) return player.equippedItem(...) end)
 	message.setHandler("player.hasItem",function (_,_,...) return player.hasItem(...) end)
 	message.setHandler("player.hasCountOfItem",function (_,_,...) return player.hasCountOfItem(...) end)
-	
+
 	message.setHandler("fu_specialAnimator.playAudio",function (_,_,...) localAnimator.playAudio(...) end)
 	message.setHandler("fu_specialAnimator.spawnParticle",function (_,_,...) localAnimator.spawnParticle(...) end)
-	
+
 	--unfortunately, the game calls clearDrawables and clearLightSources every update so these aren't usable.
 	--message.setHandler("fu_specialAnimator.addDrawable",function (_,_,...) localAnimator.addDrawable(...) end)
 	--message.setHandler("fu_specialAnimator.clearDrawables",function (_,_,...) localAnimator.clearDrawables(...) end)
 	--message.setHandler("fu_specialAnimator.addLightSource",function (_,_,...) localAnimator.addLightSource(...) end)
 	--message.setHandler("fu_specialAnimator.clearLightSources",function (_,_,...) localAnimator.clearLightSources(...) end)
-	
+
 	--[[
 	local goods = {"foodgoods", "medicalgoods", "electronicgoods", "militarygoods"}
 	for _, g in ipairs(goods) do
@@ -54,16 +60,16 @@ function init(...)
 		if amount > 0 then
 			player.consumeItem({name = g, count = amount})
 			player.addCurrency("fu"..g, amount)
-			
+
 			sb.logInfo("converted %s '%s' into '%s' currency", amount, g, "fu"..g)
 		end
 	end
 	--]]
 end
 
-function update(...)
-	if oldUpdate then oldUpdate(...) end
-	if didInit then
+function update(dt)
+	if oldUpdate then oldUpdate(dt) end
+	if doIdiotCheck then
 		if world.entityType(entity.id()) == "player" then --can't send radio messages to nonexistent entities. this is the case when players are loading in.
 			local idiotitem=root.itemConfig("idiotitem") -- FR detection.
 			if idiotitem then
@@ -72,19 +78,90 @@ function update(...)
 					queueWarp=true
 				end
 			end
-			didInit=false
+			doIdiotCheck=false
 		end
 	elseif queueWarp then
 		player.warp("ownship")
 		queueWarp=false
 	end
+	if didInit then
+		if not ffunknownCheckTimer then
+			ffunknownCheckTimer=0.99
+		elseif ffunknownCheckTimer>=1.0 then
+			if ffunknownConfig and world.type()=="ffunknown" and not playerInVehicle() then
+				local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
+				if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
+					ffunknownWorldProp={version=ffunknownConfig.version}
+					ffunknownWorldProp.effects={}
+
+					local threatLevel=world.threatLevel()
+					local leftoverThreat=threatLevel%1
+					if leftoverThreat>0.0 then
+						threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
+					end
+					threatLevel=math.sqrt(threatLevel)
+					leftoverThreat=threatLevel%1
+					if leftoverThreat>0.0 then
+						threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
+					end
+
+					local inc=0
+					local tempConfig=copy(ffunknownConfig.effectList)
+					while (inc<threatLevel) and (inc<10) do
+						local key,value=chooseRandomPair(tempConfig)
+						table.insert(ffunknownWorldProp.effects,value[math.random(#value)])
+						tempConfig[key]=nil
+						inc=inc+1
+					end
+					--sb.logInfo("ffunknownWorldProp %s",ffunknownWorldProp)
+					world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
+				end
+				status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
+			else
+				status.setPersistentEffects("ffunknownEffects",{})
+			end
+			ffunknownCheckTimer=0.0
+		else
+			ffunknownCheckTimer=ffunknownCheckTimer+dt
+		end
+	end
+end
+
+function playerInVehicle()
+	local entData=player.isLounging() and player.loungingIn()
+	entData=(entData and world.entityType(entData))=="vehicle"
+	return entData
+end
+
+function playerInMech()
+	local entData=player.isLounging() and player.loungingIn()
+	entData=(entData and world.entityName(entData))=="modularmech"
+	return entData
+end
+
+--https://stackoverflow.com/questions/55069135/lua-choose-random-values-from-a-random-chosen-key
+function chooseRandomPair(tbl)
+    -- Insert the keys of the table into an array
+    local keys = {}
+
+    for key, _ in pairs(tbl) do
+        table.insert(keys, key)
+    end
+
+    -- Get the amount of possible values
+    local max = #keys
+    local number = math.random(1, max)
+    local selectedKey = keys[number]
+
+    -- Return the value
+    return selectedKey, tbl[selectedKey]
 end
 
 function uninit(...)
 	local untieredLootboxes = player.hasCountOfItem({name = "fu_lootbox", parameters = {}}, true)
 	if untieredLootboxes and untieredLootboxes > 0 then
 		local threatLevel = math.floor(world.threatLevel() + 0.5)
-		if threatLevel < 1 then 
+		if threatLevel < 1 then
 		  threatLevel = 1
 		end
 		for i = 1, untieredLootboxes do
@@ -95,11 +172,9 @@ function uninit(...)
 	if origUninit then
 		origUninit(...)
 	end
-	
+	status.setPersistentEffects("ffunknownEffects",{})
 	status.setPersistentEffects("flightpower",{})--this should be removed after a month.
 end
-
-
 
 --[[
 
