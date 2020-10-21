@@ -1,7 +1,6 @@
 function init()
 	baseRefresh=config.getParameter("refresh")--/60.0
 	item = config.getParameter("item")
-	count = world.entityHasCountOfItem(entity.id(), item)
 	maxAmount = config.getParameter("maxAmount")
 	configAmount = config.getParameter("amount")
 	maxDrop = math.min(configAmount, 1000)
@@ -15,6 +14,7 @@ function update(dt)
 					return
 				end
 			end
+			local count = world.entityHasCountOfItem(entity.id(), item)
 			if count and count < maxAmount then
 				world.spawnItem(item, entity.position(), math.min(configAmount, maxAmount - count), {price = 0})
 			end
