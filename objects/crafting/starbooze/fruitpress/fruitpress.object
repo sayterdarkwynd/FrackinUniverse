@@ -5,13 +5,15 @@
   "rarity" : "rare",
   "description" : "A machine used to squeeze juices from fruits.",
   "shortdescription" : "^orange;Fruit Press^white;",
-  "subtitle" : "Wine making!",
   "race" : "generic",
   "category" : "crafting",
   "price" : 160,
-  "objectType" : "container",
-  "health" : 1.5,
-
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/fruitpressnew.config",
+    "filter" : [ "winepress" ]
+  },
+  
   "hydrophobic" : true,
 
   "inventoryIcon" : "fruitpressicon.png",
@@ -29,14 +31,6 @@
     }
   ],
 
-  "soundEffect" : "/sfx/objects/aquarium1.ogg",
-  "soundEffectRangeMultiplier" : 0.5,
-
-  "recipeGroup" : "winepress",
-  "openSounds" : [ "/sfx/objects/florancrate_open.ogg" ],
-  "slotCount" : 3,
-  "uiConfig" : "/interface/objectcrafting/press.config",
-  "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600
+  "soundEffect" : "/sfx/objects/aquarium1.ogg"
 
 }
