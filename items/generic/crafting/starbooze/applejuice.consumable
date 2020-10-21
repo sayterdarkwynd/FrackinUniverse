@@ -3,16 +3,16 @@
   "rarity": "Common",
   "category": "drink",
   "inventoryIcon": "applejuice.png",
-  "description": "A sweet juice made of apples.\n^green;Heal ^white;10 ^gray;(^white;2s^gray;)^reset;",
+  "description": "A sweet juice made of apples.",
   "shortdescription": "Apple Juice",
   "eventCategory": "eventCrop",
   "foodValue": 10,
-  "price": 25,
+  "price": 5,
   "tooltipKind": "food",
   //"learnBlueprintsOnPickup": ["methanol"],
   "builder": "/items/buildscripts/buildfood.lua",
   "maxStack": 100,
   "itemAgingScripts": ["/scripts/items/rotting.lua"],
   "rottingMultiplier": 3.0,
-  "effects": [["heal_tier0"]]
+  "emitters" : [ "drinking" ]
 }
