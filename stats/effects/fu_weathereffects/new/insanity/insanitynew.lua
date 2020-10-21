@@ -102,8 +102,11 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 		if (i > 1) then
 			effect.setStatModifierGroup(self.debuffGroup, newGroup)
 			if (status.stat("mentalProtection") < 1) and (self.madTimer < 200) then
-				self.randMadness = math.random(2,8-(2*afkLevel())) * (math.random(1,2) - status.stat("mentalProtection"))-- spawn madness randomly when this effect is active, less if inactive
-				world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
+				local afkLvl=afkLevel()
+				if afkLvl<=3 then
+					self.randMadness = math.random(2,8-(2*afkLvl)) * (math.random(1,2) - status.stat("mentalProtection"))-- spawn madness randomly when this effect is active, less if inactive
+					world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
+				end
 				self.madTimer = self.madTimer + 1
 			end
 			self:createAlert()
@@ -112,7 +115,7 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 end
 
 function afkLevel()
-	return ((status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
+	return ((status.statusProperty("fu_afk_720s") and 4) or (status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
 end
 
 function fuInsanityWeather.insanityChatter(self)

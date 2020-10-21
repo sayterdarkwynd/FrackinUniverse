@@ -1,19 +1,20 @@
 {
   "itemName" : "skathtier2head",
-  "price" : 2400,
+  "price" : 100,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "rare",
   "category" : "headarmour",
-  "description" : "The durasteel helm of the outrider is built for use in the most inhospitable of environments.",
-  "shortdescription" : "Outrider's Helm",
-  "tooltipKind" : "armor",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Assault Rifle/Shortsword: Damage x^green;1.13^reset;",
+  "shortdescription" : "Bogwalker Helm",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "level" : 4,
+  "level" : 2,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -34,10 +35,51 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
-    }
+    },
+        {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "fireResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "iceResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "poisonResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "electricResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "shadowResistance",
+        "amount": 0.009667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "cosmicResistance",
+        "amount": 0.011667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "radioactiveResistance",
+        "amount": 0.012667
+      }
   ],
-
-  "itemTags" : [ "tier2armour" ],
+  "statusEffects" : [
+        "humantier2setbonusnew",
+        {
+          "stat" : "fu_humantier2setnew_head",
+          "amount" : 1
+        }
+  ],
+  "itemTags" : [ "tier2armour", "upgradeableArmor" ],
 
   "colorOptions" : [
     // SCARLET
@@ -64,5 +106,6 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

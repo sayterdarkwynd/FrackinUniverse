@@ -1,18 +1,20 @@
 {
   "itemName" : "skathtier3spants",
-  "price" : 2560,
+  "price" : 300,
   "inventoryIcon" : "icons.png:pants",
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "uncommon",
   "category" : "legarmour",
-  "description" : "These trousers will tread a thousand alien worlds in their lifetime.",
-  "shortdescription" : "Universalist's Trousers",
-  "tooltipKind" : "armor",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Assault Rifle/Shortsword: Damage x^green;1.16^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen",
+  "shortdescription" : "Visionary Trousers",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "level" : 6,
+  "level" : 3,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "separatorArmorLevelPowerMultiplierMultiplier",
@@ -33,14 +35,55 @@
       "levelFunction" : "separatorArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
-    }
+    },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "fireResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "iceResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "poisonResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "electricResistance",
+        "amount": 0.016667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "shadowResistance",
+        "amount": 0.009667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "cosmicResistance",
+        "amount": 0.011667
+      },
+      {
+        "levelFunction": "fuArmorResistMultiplier",
+        "stat": "radioactiveResistance",
+        "amount": 0.012667
+      }
   ],
-
-  "itemTags" : [ "tier3armour" ],
+  "statusEffects" : [
+        "humantier3setbonusnew",
+        {
+          "stat" : "fu_humantier3setnew_legs",
+          "amount" : 1
+        }
+  ],
+  "itemTags" : [ "tier3armour", "upgradeableArmor" ],
 
   "colorOptions" : [
-    // BLACK
-    { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
+    // BLUE
+    { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
     // BLACK
     { "ffca8a" : "838383", "e0975c" : "555555", "a85636" : "383838", "6f2919" : "151515" },
     // GREY
@@ -55,13 +98,12 @@
     { "ffca8a" : "ffffa7", "e0975c" : "e2c344", "a85636" : "a46e06", "6f2919" : "642f00" },
     // GREEN
     { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216" },
-    // BLUE
-    { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
     // PURPLE
     { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
     // PINK
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }
