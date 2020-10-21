@@ -4,7 +4,12 @@ local petInit = init or function() end
 local petUpdate = update or function() end
 
 function init()
-  petInit()
+  self.purchasablePetsPresent = root.itemConfig("pethouseSlime") and true
+  self.objectName = object.name()
+  
+  if not self.purchasablePetsPresent or self.objectName == "fu_byostechstation" then
+	petInit()
+  end
 
   message.setHandler("activateShip", function()
     animator.playSound("shipUpgrade")
@@ -57,7 +62,9 @@ function sayNext()
 end
 
 function update(dt)
-  petUpdate(dt)
+  if not self.purchasablePetsPresent or self.objectName == "fu_byostechstation" then
+    petUpdate(dt)
+  end
 
   if self.dialogTimer then
     self.dialogTimer = math.max(self.dialogTimer - dt, 0.0)

@@ -93,7 +93,9 @@ function update(dt)
 			storage.petParams.capturable = true
 			storage.petParams.captureHealthFraction = 1
 			self.petId = world.spawnMonster(self.monsterType, object.toAbsolutePosition(self.spawnOffset), storage.petParams)
-			world.callScriptedEntity(self.petId, "setAnchor", entity.id())
+			if self.petId then
+				world.callScriptedEntity(self.petId, "setAnchor", entity.id())
+			end
 			storage.spawnTimer = 0.5
 		else
 			storage.spawnTimer = storage.spawnTimer - dt
