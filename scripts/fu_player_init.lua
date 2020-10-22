@@ -88,8 +88,8 @@ function update(dt)
 		if not ffunknownCheckTimer then
 			ffunknownCheckTimer=0.99
 		elseif ffunknownCheckTimer>=1.0 then
+			local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
 			if ffunknownConfig and world.type()=="ffunknown" and not playerIsInVehicle() then
-				local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
 				if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
 					ffunknownWorldProp={version=ffunknownConfig.version}
 					ffunknownWorldProp.effects={}
@@ -117,6 +117,9 @@ function update(dt)
 					world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
 				end
 				status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
+			elseif ffunknownWorldProp and world.type()~="ffunknown" then
+				world.setProperty("ffunknownWorldProp",nil)
+				status.setPersistentEffects("ffunknownEffects",{})
 			else
 				status.setPersistentEffects("ffunknownEffects",{})
 			end
