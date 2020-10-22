@@ -21,8 +21,8 @@ function power.update(dt)
 		end
 		if storage.power and storage.power > 0 then
 			storage.energy = storage.power * dt
-		if config.getParameter('powertype') == 'battery' then
-			storage.energy = math.min(storage.energy,storage.storedenergy)
+			if config.getParameter('powertype') == 'battery' then
+				storage.energy = math.min(storage.energy,storage.storedenergy)
 				storage.storedenergy = storage.storedenergy - storage.energy
 			end
 		else
@@ -47,6 +47,7 @@ function power.remove(amount)
 	storage.energy = storage.energy - amount
 end
 
+--this function is actually a bit misleading in how it functions. it essentially consumes X power for one second worth of time.
 function power.consume(amount)
 	if power.getTotalEnergy() >= amount then
 		for i=1,#storage.entitylist.output do
@@ -106,7 +107,7 @@ function power.getMaxEnergy()
 end
 
 function power.setPower(power)
-storage.power = power or 0
+	storage.power = power or 0
 end
 
 function power.getTotalEnergy()
