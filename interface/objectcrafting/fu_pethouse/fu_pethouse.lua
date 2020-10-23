@@ -99,14 +99,6 @@ function getPetList()
 		end
 	end
 	
-	--Purchasable Pets Fix
-	if petListTemp.slimecritter and root.itemConfig("pethouseSlime") then
-		if not petListTemp.petslime then
-			petListTemp.petslime = "pethouseSlime"
-		end
-		petListTemp.slimecritter = nil
-	end
-	
 	petListTemp = util.mergeTable(status.statusProperty("fu_byospethouseAddedPets", {}), petListTemp)
 	petListTemp = util.mergeTable(root.assetJson("/frackinship/configs/nontechstationshippetlist.config"), petListTemp)
 	
