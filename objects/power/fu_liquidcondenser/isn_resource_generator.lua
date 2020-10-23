@@ -64,7 +64,7 @@ function update(dt)
 			scanTimer=scanTimer+dt
 		end
 		if storage.timer > 0 then
-			if power.consume(config.getParameter('isn_requiredPower')*dt) then
+			if power.consume(config.getParameter('isn_requiredPower')) then
 				animator.setAnimationState("machineState", "active")
 				--storage.timer = storage.timer - (dt/wellsDrawing)
 				storage.timer=storage.timer-(dt/math.sqrt(1+wellsDrawing))

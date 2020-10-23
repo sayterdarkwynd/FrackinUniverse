@@ -49,8 +49,8 @@ function isn_canSupplyPower()
 	else return false end
 end
 
-function isn_canRecievePower()
-	if config.getParameter("isn_powerReciever") == true then return true
+function isn_canReceivePower()
+	if config.getParameter("isn_powerReceiver") == true then return true
 	else return false end
 end
 
@@ -63,7 +63,7 @@ function isn_checkValidOutput()
 	local connectedDevices = object.getOutputNodeIds(0)
 	if not connectedDevices then return false end
 	for id, powerLevel in pairs(connectedDevices) do
-		if world.callScriptedEntity(id,"isn_canRecievePower") == false then return false end
+		if world.callScriptedEntity(id,"isn_canReceivePower") == false then return false end
 	end
 	return true
 end
@@ -84,7 +84,7 @@ function isn_countPowerDevicesConnectedOnOutboundNode(node)
 		---else
 			---sb.logInfo("PDCDB: id resolves to " .. devicecheck)
 		---end
-		if world.callScriptedEntity(id,"isn_canRecievePower") == true then
+		if world.callScriptedEntity(id,"isn_canReceivePower") == true then
 			if world.callScriptedEntity(id,"isn_doesNotConsumePower") == false then
 				---sb.logInfo("PDCDB: power-consuming device detected and added to count")
 				devicecount = devicecount + 1

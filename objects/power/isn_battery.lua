@@ -13,8 +13,8 @@ end
 
 function update(dt)
 	object.setConfigParameter('description', isn_makeBatteryDescription())
-	power.update(dt)
 	power.setPower(power.getStoredEnergy())
+	power.update(dt)
 	animator.setAnimationState("meter", power.getStoredEnergy() == 0 and 'd' or tostring(math.floor(math.min(power.getStoredEnergy() / power.getMaxEnergy(),1.0) * 10),10))
 end
 
@@ -89,21 +89,8 @@ function string.split(str, pat)
 	 return t
 end
 
-function isPower()
-	return "battery"
-end
-function power.onNodeConnectionChange(arg)
-	return arg
-end
-function power.getEnergy(id)
-	return storage.energy or 0
-end
-function power.getMaxEnergy()
-	return storage.maxenergy
-end
-function power.getStorageLeft()
-	return (storage.maxenergy or 0) - (storage.storedenergy or 0) - (storage.energy or 0)
-end
-function power.getStoredEnergy()
-	return (storage.storedenergy or 0) + (storage.energy or 0)
+local oldPowerRemove=power.remove
+function power.remove(...)
+	oldPowerRemove(...)
+	update(script.updateDt())
 end
