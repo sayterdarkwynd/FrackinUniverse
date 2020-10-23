@@ -3,11 +3,12 @@ require '/scripts/fupower.lua'
 function init()
 	power.init()
 	onInputNodeChange()
+	setObjectOn(0)
 end
 
 function setObjectOn(iterations)
 	storage.on=not object.isInputNodeConnected(1) or object.getInputNodeLevel(1)
-	--animator.setAnimationState("switchState", storage.on and power.getTotalEnergy() > 0 and "on" or "off")
+	--doAnims()
 	return storage.on, iterations
 end
 
@@ -18,6 +19,7 @@ end
 function onNodeConnectionChange()
 	setObjectOn(0)
 	power.onNodeConnectionChange(nil,0)
+	onInputNodeChange()
 end
 
 function onInputNodeChange(args)
@@ -37,3 +39,8 @@ function onInputNodeChange(args)
 		end
 	end
 end
+
+--[[
+function doAnims()
+	animator.setAnimationState("switchState", ((storage.on and ((power and power.getTotalEnergy and power.getTotalEnergy() or 0) > 0)) and "on") or "off")
+end]]
