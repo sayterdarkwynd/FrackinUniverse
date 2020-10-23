@@ -16,7 +16,7 @@
 --	zbutil.DeepPrintTable(table) : Prints the contents of the given table and all tables contained within.
 --		table	- The table you want to print (Can shove any other value, but it ill just print it as it is)
 
---	zbutil.FadeHex(string, string, integer, string) : Returns a modified two-digit hex faded in the requested direction of the recieved two-digit hex
+--	zbutil.FadeHex(string, string, integer, string) : Returns a modified two-digit hex faded in the requested direction of the received two-digit hex
 --		string	- Two-digit hex string, such as "FF" or "13" or "E4"
 --		string	- "out" or "in", depending on the direction you want it to fade to. "out" strive to "00", and "in" strives to "FF"
 --		integer	- By how much you want to modify the hex value

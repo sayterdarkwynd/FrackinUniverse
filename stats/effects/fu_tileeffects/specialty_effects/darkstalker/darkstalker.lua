@@ -8,7 +8,6 @@ function init()
 	self.tickTime = 0.1
 	self.tickTimer = self.tickTime
 	script.setUpdateDelta(1)
-	activateVisualEffects()
 	self.timers = {}
 
 	--local bounds = mcontroller.boundBox()
@@ -24,18 +23,18 @@ function activateVisualEffects()
 		effect.expire()
 	end
 	local statusTextRegion = { 0, 1, 0, 1 }
-	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	animator.burstParticleEmitter("statustext")
+	--animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+	--animator.burstParticleEmitter("statustext")
 	animator.playSound("burn")
 	local lightLevel = getLight()
-	  if lightLevel < 40 and world.entityType(entity.id()) == "player" then
-	    --animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
-	    --animator.setParticleEmitterActive("smoke", true)
+	if lightLevel < 40 and world.entityType(entity.id()) == "player" then
+		--animator.setParticleEmitterOffsetRegion("smoke", mcontroller.boundBox())
+		--animator.setParticleEmitterActive("smoke", true)
 		setParticleConfig(0)
 		world.sendEntityMessage(entity.id(),"fu_specialAnimator.spawnParticle",particleConfig)
-	  else
-	    --animator.setParticleEmitterActive("smoke", false)
-	  end  
+	else
+		--animator.setParticleEmitterActive("smoke", false)
+	end	
 end
 
 function getLight()
@@ -60,6 +59,11 @@ end
 function update(dt)
 	if world.entityType(entity.id()) ~= "player" then
 		effect.expire()
+		return
+	end
+	if not doOnce then
+		activateVisualEffects()
+		doOnce=true
 	end
 	self.tickTimer = self.tickTimer - dt
 	local lightLevel = getLight()

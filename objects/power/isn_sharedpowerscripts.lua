@@ -115,8 +115,8 @@ function isn_canSupplyPower()
 	else return false end
 end
 
-function isn_canRecievePower()
-	if config.getParameter("isn_powerReciever") then return true
+function isn_canReceivePower()
+	if config.getParameter("isn_powerReceiver") then return true
 	else return false end
 end
 
@@ -141,7 +141,7 @@ function isn_areActivePowerDevicesConnectedOnOutboundNode(node)
 	local devicelist = object.getOutputNodeIds(node)
 	if devicelist == nil then return false end
 	for id, powerLevel in pairs(devicelist) do
-		if world.callScriptedEntity(id,"isn_canRecievePower") then
+		if world.callScriptedEntity(id,"isn_canReceivePower") then
 			if not world.callScriptedEntity(id,"isn_doesNotConsumePower") then
 				if world.callScriptedEntity(id,"isn_activeConsumption") then
 					return true
@@ -166,7 +166,7 @@ function isn_checkValidOutput()
 	local connectedDevices = object.getOutputNodeIds(0)
 	if connectedDevices == nil then return false end
 	for id, powerLevel in pairs(connectedDevices) do
-		if not world.callScriptedEntity(id,"isn_canRecievePower") then return false end
+		if not world.callScriptedEntity(id,"isn_canReceivePower") then return false end
 	end
 	return true
 end
@@ -187,7 +187,7 @@ function isn_countPowerDevicesConnectedOnOutboundNode(node)
 		---else
 			---sb.logInfo("PDCDB: value resolves to " .. devicecheck)
 		---end
-		if world.callScriptedEntity(value,"isn_canRecievePower") then
+		if world.callScriptedEntity(value,"isn_canReceivePower") then
 			if not world.callScriptedEntity(value,"isn_doesNotConsumePower") then
 				---sb.logInfo("PDCDB: power-consuming device detected and added to count")
 				devicecount = devicecount + 1
@@ -205,7 +205,7 @@ function isn_sumPowerActiveDevicesConnectedOnOutboundNode(node)
 	local devicelist = object.getOutputNodeIds(node)
 	if devicelist == nil then return 0 end
 	for id, powerLevel in pairs(devicelist) do
-		if world.callScriptedEntity(id,"isn_canRecievePower") then
+		if world.callScriptedEntity(id,"isn_canReceivePower") then
 			if not world.callScriptedEntity(id,"isn_doesNotConsumePower") then
 				if world.callScriptedEntity(id,"isn_isBattery") == true then
 					if world.callScriptedEntity(id, "isn_recentlyDischarged") then batteries = batteries + 1 end

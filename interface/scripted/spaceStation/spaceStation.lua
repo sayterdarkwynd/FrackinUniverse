@@ -597,7 +597,7 @@ function commandProcessor(wd)
 			updateBar(false)
 			modifyButtons(false, false, false, false, false, "Back")
 		else
-			textTyper.init(textData, "^red;ERROR -^reset;\nWrong 'type' recieved in 'commandProcessor' > 'elseif command == \"Special\" then'")
+			textTyper.init(textData, "^red;ERROR -^reset;\nWrong 'type' received in 'commandProcessor' > 'elseif command == \"Special\" then'")
 			resetGUI()
 		end
 		
@@ -704,9 +704,9 @@ function commandProcessor(wd)
 	end
 end
 
--- Modify buttons based on recieved values
+-- Modify buttons based on received values
 -- {string, string}	- Changes button text to 1st string, and button data to 2nd string
--- string			- Changes the text and data on the button to the recieved string
+-- string			- Changes the text and data on the button to the received string
 -- false			- Hides and disables the button
 -- nil				- applies no changes
 function modifyButtons(b1, b2, b3, b4, b5, b6)
@@ -1412,7 +1412,7 @@ function buyGoods()
 	end
 end
 
--- Returns an updated price and rated based on recieved parameters (Basicaly the price formula)
+-- Returns an updated price and rated based on received parameters (Basicaly the price formula)
 function updatePrice(basePrice, baseAmount, stock, isBuying)
 	local rate = 1 - (stock * 100 / baseAmount * 0.01) + 1
 	local rateMin = 0.35
@@ -1908,7 +1908,7 @@ function uninit()
 	end
 end
 
--- Recieves a single number, and returns a table holding seconds, minutes, and hours as if the value recieved was seconds
+-- Receives a single number, and returns a table holding seconds, minutes, and hours as if the value received was seconds
 function toTime(time)
 	local table = {
 		seconds = math.floor(time % 60),
