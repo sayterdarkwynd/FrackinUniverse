@@ -53,13 +53,8 @@ function update(dt)
 		if output == nil or clearSlotCheck(output) == false then return end
 
 		world.containerAddItems(entity.id(), {name = output, count = 1, data={}})
+	end
 end
-
-
-end
-
-
-
 
 function clearSlotCheck(checkname)
 	if world.containerItemsCanFit(entity.id(), {name= checkname, count=1, data={}}) > 0 then
