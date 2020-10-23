@@ -301,8 +301,8 @@ function states.mine(dt)
 		if reDrillLevelBack > 0 then
 			if world.material(redrillPosBack,"background") then
 				local damage=redrillMult*excavatorCommon.vars.drillPower*math.max(reDrillLevelBack,1)/redrillMax
-				world.damageTiles({vec2.add(redrillPosBack,{-1,0}),vec2.add(redrillPosBack,{1,0}),vec2.add(redrillPosBack,{0,-1}),redrillPosBack}, "foreground", redrillPosBack, "plantish",damage)
-				world.damageTiles({redrillPosBack}, "foreground", redrillPosBack, "plantish",damage)
+				world.damageTiles({vec2.add(redrillPosBack,{-1,0}),vec2.add(redrillPosBack,{1,0}),vec2.add(redrillPosBack,{0,-1}),redrillPosBack}, "background", redrillPosBack, "plantish",damage)
+				world.damageTiles({redrillPosBack}, "background", redrillPosBack, "plantish",damage)
 				reDrillLevelBack=math.min(reDrillLevelBack+1,redrillMax)
 				if excavatorCommon.vars.isVacuum then
 					excavatorCommon.grab(redrillPosBack)
