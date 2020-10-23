@@ -158,12 +158,12 @@ genelib.numberToMiteResistance = function(num)
 	-- range = 648 * 0.01
 	-- range = 6.48 <> -6.48
 	
-	-- Clamp the recieved value to the range
+	-- Clamp the received value to the range
 	num = math.min(range, math.max(-range, num))
 	
 	-- num = 0
 	
-	-- Add the range value to offset the recieved value so the negative is at 0
+	-- Add the range value to offset the received value so the negative is at 0
 	num = num + range
 	
 	-- num = 0 + 6.48
@@ -179,7 +179,7 @@ genelib.numberToMiteResistance = function(num)
 	return genelib.numberToStat(num)
 end
 
--- Generate and return a genome with the default values for the recieved bee name
+-- Generate and return a genome with the default values for the received bee name
 genelib.generateDefaultGenome = function(beeName)
 	local defaultValues = root.assetJson("/bees/beeData.config").stats
 	
