@@ -183,7 +183,7 @@ function init()
 	storage.energy = storage.energy or (config.getParameter("startEnergyRatio", 1.0) * self.energyMax)
 
 	self.energyDrain = self.parts.body.energyDrain + (self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0)
-	self.energyDrain = self.energyDrain*0.6
+	self.energyDrain = self.energyDrain*0.2
 
 	--factor Mass into energy drain, as a penalty
 	self.massTotal = (self.parts.body.stats.mechMass or 0) + (self.parts.booster.stats.mechMass or 0) + (self.parts.legs.stats.mechMass or 0) + (self.parts.leftArm.stats.mechMass or 0) + (self.parts.rightArm.stats.mechMass or 0)
@@ -603,7 +603,6 @@ function update(dt)
 			-- for k, _ in pairs(self.lastControls) do
 				-- newControls[k] = vehicle.controlHeld("seat", k)
 			-- end
-
 			-- self.aimPosition = vehicle.aimPosition("seat")
 			self.aimPosition,newControls = readMechControls(newControls) -- NPC Mechs
 
@@ -847,9 +846,8 @@ function update(dt)
 			energyDrain = self.energyDrain
 		elseif self.flightMode and world.gravity(mcontroller.position()) ~= 0 then --flying in Gravity takes x2 fuel
 			energyDrain = self.energyDrain*2
-		elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then	--walking consumes less
-			energyDrain = self.energyDrain * 0.5--its rough, but it works. planet-based mechs consume 50% less energy
-																						--since it requires extended periods of time, unlike mech missions
+		elseif not self.flightMode and world.gravity(mcontroller.position()) ~= 0 then	--walking consumes 50% fuel (when in biomes with gravity)
+			energyDrain = self.energyDrain * 0.5
 		end
 
 		--set energy drain to 0 if null movement
