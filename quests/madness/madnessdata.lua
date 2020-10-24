@@ -1,15 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 
--- ideas for additional Research gain
-
---planet based:
--- distance travelled on a given biome equates to a direct bonus to research output
---more dangerous ocean types return more research as well. use world.oceanLevel(postiion) and then check liquid type and apply bonus?
--- check object type using world.objectAt(tilePosition). if its a Laptop/Computer, apply a small research bonus so long as youre nearby
--- Scientist tenants that give Research ?
--- certain dungeons might return different bonus rates
-
 function init()
 	-- passive research gain
 	self.threatBonus=0
@@ -398,7 +389,6 @@ function update(dt)
 		end
 		-- apply the total
 		self.researchBonus = self.threatBonus + self.madnessResearchBonus
-
 		self.bonus = status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
