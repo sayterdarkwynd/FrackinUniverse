@@ -1,7 +1,6 @@
 --[[ not doing honey centrifuges & extractors just yet
 require "/objects/bees/centrifuge.lua"
 beeCentrifuge = deciding() -- input: {outputs}
-
 require "objects/bees/honeymap.lua"
 ...
 NOTE: for the LEGEND
@@ -9,7 +8,6 @@ NOTE: for the LEGEND
 		colors are just general indicators.
 		colors vary from green to variants of yellows to variants of reds
 		green mean you'll get lots, yellows less, reds even less
-
 ]]
 
 

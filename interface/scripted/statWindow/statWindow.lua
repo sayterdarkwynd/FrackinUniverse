@@ -28,7 +28,9 @@ function init()
 		
 		populateRacialDescription(playerRace)
 	else
-		widget.setText("racialLabel", "ERROR - UNRECOGNIZED SPECIES")
+		widget.setVisible("racialDesc", true)
+		populateRacialDescription(playerRace,not recognized)
+		widget.setText("racialLabel", "UNRECOGNIZED SPECIES")
 	end
 end
 
@@ -83,14 +85,13 @@ function techEquip()
 end
 
 
-function populateRacialDescription(race)
+function populateRacialDescription(race,notRecognized)
 	widget.clearListItems("racialDesc.textList")
-	
-	local JSON = root.assetJson("/species/"..race..".species")
+	local JSON = (notRecognized and {charCreationTooltip={description="Please check SAIL's '^cyan;Misc.^reset;' tab if you believe this is in error."}}) or root.assetJson("/species/"..race..".species")
 	--local charGenLabels = JSON.charGenTextLabels
 	--local racialName = charGenLabels[#charGenLabels-1] --NOTE: In the species file there is the character generation label list. The second to last is the user-friendly display name of the race.
 	--Edit: Go with the character creation tooltip title.
-	local racialName = JSON.charCreationTooltip.title
+	local racialName = (notRecognized and "") or JSON.charCreationTooltip.title
 	widget.setText("racialLabel", "Racial Traits - " .. racialName)
 	
 	local str = JSON.charCreationTooltip.description
