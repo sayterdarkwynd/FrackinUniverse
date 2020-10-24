@@ -305,7 +305,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if primaryTagCache["spear"] or altTagCache["spear"] then
 		self.spearMastery = 1 + status.stat("spearMastery")
 	end
-	
+
 	status.setPersistentEffects("masterybonus",masterybonus)
 
 	-- ************************************************ END Weapon Masteries ************************************************
