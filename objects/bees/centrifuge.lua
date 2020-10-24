@@ -12,6 +12,8 @@ function init()
 	end
 	--storage.activeConsumption = storage.activeConsumption or false
 	self.requiredPower=config.getParameter("isn_requiredPower")
+	self.powered=(type(self.requiredPower)=="number") and (self.requiredPower>0)
+
 	self.centrifugeType = config.getParameter("centrifugeType") or error("centrifugeType is undefined in .object file") -- die horribly
 
 	self.itemChances = config.getParameter("itemChances")
@@ -20,7 +22,10 @@ function init()
 	self.initialCraftDelay = config.getParameter("craftDelay",1)
 	--script.setUpdateDelta(self.initialCraftDelay*60.0)
 	script.setUpdateDelta(1)
-	self.effectiveRequiredPower=self.requiredPower*self.initialCraftDelay
+
+	if self.powered then
+		self.effectiveRequiredPower=self.requiredPower*self.initialCraftDelay
+	end
 
 	storage.craftDelay = storage.craftDelay or self.initialCraftDelay
 	storage.combsProcessed = storage.combsProcessed or { count = 0 }
@@ -94,7 +99,7 @@ function update(dt)
 			if input then
 				local output = deciding(input)
 				if output then
-					if (power.getTotalEnergy()>=self.effectiveRequiredPower) and world.containerConsume(entity.id(), { name = input.name, count = 1, data={}}) and power.consume(self.effectiveRequiredPower) then
+					if ((not self.powered) or (power.getTotalEnergy()>=self.effectiveRequiredPower)) and world.containerConsume(entity.id(), { name = input.name, count = 1, data={}}) and ((not self.powered) or power.consume(self.effectiveRequiredPower)) then
 						storage.output = output
 						storage.input = input
 						storage.activeConsumption = true
