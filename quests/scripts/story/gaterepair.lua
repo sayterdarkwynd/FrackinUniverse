@@ -4,7 +4,6 @@ require "/scripts/vec2.lua"
 require "/quests/scripts/portraits.lua"
 
 function init()
-  player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
   storage.complete = storage.complete or false
   self.compassUpdate = config.getParameter("compassUpdate", 0.5)
   self.descriptions = config.getParameter("descriptions")
@@ -60,6 +59,10 @@ end
 function update(dt)
   self.state:update(dt)
   checkGate()
+  if storage.stage > 1 then
+    player.addTeleportBookmark(config.getParameter("outpostBookmark2"))--science outpost bookmark
+  end
+
   if storage.stage < 5 and gateActive() then
     storage.stage = 5
     self.state:set(gateRepaired)
@@ -238,7 +241,7 @@ function gateRepaired()
   player.radioMessage("gaterepair-gateOpened1")
   player.radioMessage("gaterepair-gateOpened2")
   --player.startQuest("fu_scienceoutpost")
-  player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
+  --player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
   player.radioMessage("fu_outpost1")  
   player.radioMessage("fu_outpost2")  
   
