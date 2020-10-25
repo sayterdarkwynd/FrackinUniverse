@@ -1,15 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 
--- ideas for additional Research gain
-
---planet based:
--- distance travelled on a given biome equates to a direct bonus to research output
---more dangerous ocean types return more research as well. use world.oceanLevel(postiion) and then check liquid type and apply bonus?
--- check object type using world.objectAt(tilePosition). if its a Laptop/Computer, apply a small research bonus so long as youre nearby
--- Scientist tenants that give Research ?
--- certain dungeons might return different bonus rates
-
 function init()
 	-- passive research gain
 	self.threatBonus=0
@@ -28,6 +19,7 @@ function init()
 	self.timerDegrade = math.random(1,12)
 	self.degradeTotal = 0
 	self.bonusTimer = 1
+	storage.crazycarrycooldown=math.max(storage.crazycarrycooldown,10.0)
 
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
@@ -330,6 +322,7 @@ function afkLevel()
 end
 
 function update(dt)
+	storage.crazycarrycooldown=math.max(0,(storage.crazycarrycooldown or 0) - dt)
 	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.
 	--if the player doesn't move enough, a timer will increment. once that timer gets over a certain point, the player is flagged as afk via status property, which is global and thus we only need this code running in one place.
 	--afk timer and recorded points are reset when the script resets.
@@ -398,7 +391,6 @@ function update(dt)
 		end
 		-- apply the total
 		self.researchBonus = self.threatBonus + self.madnessResearchBonus
-
 		self.bonus = status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
@@ -498,8 +490,9 @@ function checkMadnessArt()
 
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
 	if hasPainting then
-		if (math.random(5)==1) then
+		if storage.crazycarrycooldown <= 0 then
 			player.radioMessage("crazycarry")
+			storage.crazycarrycooldown=300.0
 		end
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
 	end
@@ -513,8 +506,9 @@ function isWeirdStuff(duration)
 			if afkLvl<=3 then
 				player.addCurrency("fumadnessresource", 2-math.min(1,afkLvl))
 			end
-			if math.random(5) == 1 then
+			if storage.crazycarrycooldown <= 0 then
 				player.radioMessage("crazycarry")
+				storage.crazycarrycooldown=300.0
 			end
 			status.addEphemeralEffect("madnessfoodindicator",duration)
 			hasArt=true
