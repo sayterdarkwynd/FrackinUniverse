@@ -3,6 +3,7 @@ local recipes =
 
 --liquids
 {inputs = { bottle=1,normalcomb=1 }, outputs = { honeyjar=1 }, time = 2.0},
+{inputs = { bottle=1,exceptionalcomb=1 }, outputs = { honeyjar=1}, time = 1.0},
 {inputs = { bottle=1,arcticcomb=1 }, outputs = { snowhoneyjar=1 }, time = 2.0},
 {inputs = { bottle=1,aridcomb=1 }, outputs = { stronghoneyjar=1 }, time = 2.0},
 {inputs = { bottle=1,coppercomb=1 }, outputs = { honeyjar=1 }, time = 2.0},

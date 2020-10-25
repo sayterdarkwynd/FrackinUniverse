@@ -20,6 +20,8 @@ function init()
 	self.degradeTotal = 0
 	self.bonusTimer = 1
 
+    storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
+
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
 	status.removeEphemeralEffect("partytime5")
@@ -321,6 +323,7 @@ function afkLevel()
 end
 
 function update(dt)
+	storage.crazycarrycooldown=math.max(0,(storage.crazycarrycooldown or 0) - dt)
 	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.
 	--if the player doesn't move enough, a timer will increment. once that timer gets over a certain point, the player is flagged as afk via status property, which is global and thus we only need this code running in one place.
 	--afk timer and recorded points are reset when the script resets.
@@ -363,19 +366,16 @@ function update(dt)
 		self.madnessResearchBonus = 0
 		self.researchBonus = 0
 
-		--is the world a higher threat level? if so, apply a bonus to research gain after 5 minutes, increased further after 25 minutes if over tier 6
-		if world.threatLevel() > 1 then
-			if self.environmentTimer > 300 then
-				self.threatBonus = world.threatLevel() / 1.5
-				if self.threatBonus < 2 then -- make sure its not giving too high a bonus, to a max of +3
+		if (world.threatLevel() > 1) then --is the world a higher threat level?
+			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
+				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation 
+                if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
 					self.threatBonus = 1
-				elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
-					self.threatBonus = 5
-				elseif self.threatBonus > 3 then
-					self.threatBonus = 3
-				end
+			    end				
+				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
+					self.threatBonus = 6
+				end					
 			end
-
 			if afkLvl<=3 then
 				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
 			end
@@ -389,10 +389,13 @@ function update(dt)
 		end
 		-- apply the total
 		self.researchBonus = self.threatBonus + self.madnessResearchBonus
-		self.bonus = status.stat("researchBonus") + self.researchBonus
+		self.bonus = self.researchBonus--status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				player.addCurrency("fuscienceresource",1 + self.bonus)
+				if (math.random(1,10) + status.stat("researchBonus")) > 8 then  -- only apply the bonus research from stat X amount of the time based on a d10 roll higher than 8. Bonus influences this.
+					player.addCurrency("fuscienceresource",status.stat("researchBonus"))
+				end
 			end
 			self.timerCounter = 0
 		else
@@ -488,8 +491,9 @@ function checkMadnessArt()
 
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
 	if hasPainting then
-		if (math.random(5)==1) then
+		if storage.crazycarrycooldown <= 0 then
 			player.radioMessage("crazycarry")
+			storage.crazycarrycooldown=300.0
 		end
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
 	end
@@ -503,8 +507,9 @@ function isWeirdStuff(duration)
 			if afkLvl<=3 then
 				player.addCurrency("fumadnessresource", 2-math.min(1,afkLvl))
 			end
-			if math.random(5) == 1 then
+			if storage.crazycarrycooldown <= 0 then
 				player.radioMessage("crazycarry")
+				storage.crazycarrycooldown=300.0
 			end
 			status.addEphemeralEffect("madnessfoodindicator",duration)
 			hasArt=true
