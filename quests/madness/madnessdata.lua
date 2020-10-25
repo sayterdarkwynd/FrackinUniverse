@@ -19,7 +19,8 @@ function init()
 	self.timerDegrade = math.random(1,12)
 	self.degradeTotal = 0
 	self.bonusTimer = 1
-	storage.crazycarrycooldown=math.max(storage.crazycarrycooldown,10.0)
+
+    storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
 
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
@@ -366,12 +367,12 @@ function update(dt)
 		self.researchBonus = 0
 
 		if (world.threatLevel() > 1) then --is the world a higher threat level?
-			if (self.environmentTimer > 300) then -- has 5 minutes elapsed?
+			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
 				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation 
-                if (self.threatBonus < 2) then -- make sure its never less than 2
+                if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
 					self.threatBonus = 1
 			    end				
-				if (self.threatBonus > 6) then -- make sure we never surpass + 6
+				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
 					self.threatBonus = 6
 				end					
 			end
