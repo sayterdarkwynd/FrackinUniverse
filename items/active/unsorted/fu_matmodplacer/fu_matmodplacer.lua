@@ -64,7 +64,7 @@ function placeMod(layer)
 					storage.fuelAmount = storage.fuelAmount - 1
 				end
 			end
-		elseif not world.mod(position, layer) then
+		else
 			world.placeMod(position, layer, matMod)
 			if not self.cooldown or self.cooldown <= 0 then
 				animator.playSound("fire")
