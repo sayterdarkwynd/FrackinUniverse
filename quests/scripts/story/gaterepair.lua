@@ -59,6 +59,10 @@ end
 function update(dt)
   self.state:update(dt)
   checkGate()
+  if storage.stage > 1 then
+    player.addTeleportBookmark(config.getParameter("outpostBookmark2"))--science outpost bookmark
+  end
+
   if storage.stage < 5 and gateActive() then
     storage.stage = 5
     self.state:set(gateRepaired)
@@ -236,8 +240,8 @@ function gateRepaired()
 
   player.radioMessage("gaterepair-gateOpened1")
   player.radioMessage("gaterepair-gateOpened2")
-  player.startQuest("fu_scienceoutpost")
-  player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
+  --player.startQuest("fu_scienceoutpost")
+  --player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
   player.radioMessage("fu_outpost1")  
   player.radioMessage("fu_outpost2")  
   
@@ -289,4 +293,5 @@ function questComplete()
   end 
   
   world.sendEntityMessage(player.id(), "setQuestFuelCount", 500)
+  player.setUniverseFlag("outpost_mission1")
 end
