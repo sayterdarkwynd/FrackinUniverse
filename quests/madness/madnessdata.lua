@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/scripts/epoch.lua"
 require "/scripts/vec2.lua"
 
 function init()
@@ -491,10 +492,7 @@ function checkMadnessArt()
 
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
 	if hasPainting then
-		if storage.crazycarrycooldown <= 0 then
-			player.radioMessage("crazycarry")
-			storage.crazycarrycooldown=300.0
-		end
+		checkCrazyCarry()
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
 	end
 end
@@ -507,14 +505,22 @@ function isWeirdStuff(duration)
 			if afkLvl<=3 then
 				player.addCurrency("fumadnessresource", 2-math.min(1,afkLvl))
 			end
-			if storage.crazycarrycooldown <= 0 then
-				player.radioMessage("crazycarry")
-				storage.crazycarrycooldown=300.0
-			end
+			checkCrazyCarry()
 			status.addEphemeralEffect("madnessfoodindicator",duration)
 			hasArt=true
 			break
 		end
+	end
+end
+
+function checkCrazyCarry()
+	if storage.crazycarrycooldown <= 0 then
+		local epochBuffer=epoch.currentToTable()
+		if epochBuffer.day~=storage.crazycarryday then
+			storage.crazycarryday=epochBuffer.day
+			player.radioMessage("crazycarry")
+		end
+		storage.crazycarrycooldown=300.0
 	end
 end
 
