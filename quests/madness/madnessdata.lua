@@ -393,7 +393,7 @@ function update(dt)
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				player.addCurrency("fuscienceresource",1 + self.bonus)
-				if (math.random(1,10) + status.stat("researchBonus")) > 8 then  -- only apply the bonus research from stat X amount of the time based on a d10 roll higher than 8. Bonus influences this.
+				if (math.random(1,20) + status.stat("researchBonus")) > 18 then  -- only apply the bonus research from stat X amount of the time based on a d20 roll higher than 18. Bonus influences this.
 					player.addCurrency("fuscienceresource",status.stat("researchBonus"))
 				end
 			end
