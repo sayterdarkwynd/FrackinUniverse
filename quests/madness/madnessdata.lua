@@ -19,7 +19,8 @@ function init()
 	self.timerDegrade = math.random(1,12)
 	self.degradeTotal = 0
 	self.bonusTimer = 1
-	storage.crazycarrycooldown=math.max(storage.crazycarrycooldown,10.0)
+
+    storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
 
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
@@ -365,19 +366,16 @@ function update(dt)
 		self.madnessResearchBonus = 0
 		self.researchBonus = 0
 
-		--is the world a higher threat level? if so, apply a bonus to research gain after 5 minutes, increased further after 25 minutes if over tier 6
-		if world.threatLevel() > 1 then
-			if self.environmentTimer > 300 then
-				self.threatBonus = world.threatLevel() / 1.5
-				if self.threatBonus < 2 then -- make sure its not giving too high a bonus, to a max of +3
+		if (world.threatLevel() > 1) then --is the world a higher threat level?
+			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
+				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation 
+                if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
 					self.threatBonus = 1
-				elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
-					self.threatBonus = 5
-				elseif self.threatBonus > 3 then
-					self.threatBonus = 3
-				end
+			    end				
+				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
+					self.threatBonus = 6
+				end					
 			end
-
 			if afkLvl<=3 then
 				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
 			end
@@ -391,10 +389,13 @@ function update(dt)
 		end
 		-- apply the total
 		self.researchBonus = self.threatBonus + self.madnessResearchBonus
-		self.bonus = status.stat("researchBonus") + self.researchBonus
+		self.bonus = self.researchBonus--status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				player.addCurrency("fuscienceresource",1 + self.bonus)
+				if (math.random(1,20) + status.stat("researchBonus")) > 18 then  -- only apply the bonus research from stat X amount of the time based on a d20 roll higher than 18. Bonus influences this.
+					player.addCurrency("fuscienceresource",status.stat("researchBonus"))
+				end
 			end
 			self.timerCounter = 0
 		else

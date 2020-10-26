@@ -78,18 +78,20 @@
   "elementalType" : "ice",
 
   "primaryAbility" : {
-    "type" : "elementbouncer",
-    "name" : "Ice Bouncer",
+    "type" : "elementswarm",
+    "name" : "Ice Swarm",
     "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 75,
+    "energyCost" : 25,
 
-    "maxCastRange" : 25,
+    "maxCastRange" : 35,
 
     "projectileType" : "icebouncer",
+    "projectileCount" : 3,
+    "projectileDistance" : 4.5,
     "projectileParameters" : {
-      "baseDamage" : 6
+      "baseDamage" : 12
     }
   },
   "altAbilityType" : "slowzone",
