@@ -7,7 +7,7 @@ function init()
   self.pickupDistance = config.getParameter("pickupDistance") or 1
   self.snapDistance = config.getParameter("snapDistance") or 1
   self.timeToLive = config.getParameter("timeToLive") or 1
-  self.speed = config.getParameter("speed")
+  self.speed = config.getParameter("speed") or 75
   self.ignoreTerrain = config.getParameter("ignoreTerrain")
   self.ownerId = projectile.sourceEntity()
   self.minVelocity = config.getParameter("minVelocity", 0.2)
