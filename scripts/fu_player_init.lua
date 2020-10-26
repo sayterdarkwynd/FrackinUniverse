@@ -6,6 +6,9 @@ local origUninit = uninit
 local oldUpdate=update
 local ffunknownConfig
 
+--HAS to be done in this specific order.
+require "/interface/scripted/mmutility/mmutility.lua"
+
 function init(...)
 	if origInit then
 		origInit(...)
@@ -69,6 +72,17 @@ end
 
 function update(dt)
 	if oldUpdate then oldUpdate(dt) end
+	local pass,result=pcall(idiotCheck,dt)
+	if not pass then sb.logError("%s",result) end
+	if didInit then
+		pass,result=pcall(essentialCheck,dt)
+		if not pass then sb.logError("%s",result) end
+		pass,result=pcall(unknownCheck,dt)
+		if not pass then sb.logError("%s",result) end
+	end
+end
+
+function idiotCheck(dt)
 	if doIdiotCheck then
 		if world.entityType(entity.id()) == "player" then --can't send radio messages to nonexistent entities. this is the case when players are loading in.
 			local idiotitem=root.itemConfig("idiotitem") -- FR detection.
@@ -84,49 +98,69 @@ function update(dt)
 		player.warp("ownship")
 		queueWarp=false
 	end
-	if didInit then
-		if not ffunknownCheckTimer then
-			ffunknownCheckTimer=0.99
-		elseif ffunknownCheckTimer>=1.0 then
-			local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
-			if ffunknownConfig and world.type()=="ffunknown" and not playerIsInVehicle() then
-				if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
-					ffunknownWorldProp={version=ffunknownConfig.version}
-					ffunknownWorldProp.effects={}
+end
 
-					local threatLevel=world.threatLevel()
-					local leftoverThreat=threatLevel%1
-					if leftoverThreat>0.0 then
-						threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
-					end
-					threatLevel=math.sqrt(threatLevel)
-					leftoverThreat=threatLevel%1
-					if leftoverThreat>0.0 then
-						threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
-					end
-
-					local inc=0
-					local tempConfig=copy(ffunknownConfig.effectList)
-					while (inc<threatLevel) and (inc<10) do
-						local key,value=chooseRandomPair(tempConfig)
-						table.insert(ffunknownWorldProp.effects,value[math.random(#value)])
-						tempConfig[key]=nil
-						inc=inc+1
-					end
-					--sb.logInfo("ffunknownWorldProp %s",ffunknownWorldProp)
-					world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
+function essentialCheck(dt)
+	if not essentialItemCheckTimer or (essentialItemCheckTimer>=1.0) then
+		for _,slot in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
+			local buffer=player.essentialItem(slot)
+			if buffer.count==0 then
+				if slot=="beamaxe" then
+					swapMM()
+				else
+					local baseTool=origTool(slot)
+					player.giveEssentialItem(slot,baseTool)
 				end
-				status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
-			elseif ffunknownWorldProp and world.type()~="ffunknown" then
-				world.setProperty("ffunknownWorldProp",nil)
-				status.setPersistentEffects("ffunknownEffects",{})
-			else
-				status.setPersistentEffects("ffunknownEffects",{})
 			end
-			ffunknownCheckTimer=0.0
-		else
-			ffunknownCheckTimer=ffunknownCheckTimer+dt
 		end
+		essentialItemCheckTimer=0.0
+	else
+		essentialItemCheckTimer=essentialItemCheckTimer+dt
+	end
+end
+
+function unknownCheck(dt)
+	if not ffunknownCheckTimer then
+		ffunknownCheckTimer=0.99
+	elseif ffunknownCheckTimer>=1.0 then
+		local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
+		if ffunknownConfig and world.type()=="ffunknown" and not playerIsInVehicle() then
+			if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
+				ffunknownWorldProp={version=ffunknownConfig.version}
+				ffunknownWorldProp.effects={}
+
+				local threatLevel=world.threatLevel()
+				local leftoverThreat=threatLevel%1
+				if leftoverThreat>0.0 then
+					threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
+				end
+				threatLevel=math.sqrt(threatLevel)
+				leftoverThreat=threatLevel%1
+				if leftoverThreat>0.0 then
+					threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
+				end
+
+				local inc=0
+				local tempConfig=copy(ffunknownConfig.effectList)
+				while (inc<threatLevel) and (inc<10) do
+					local key,value=chooseRandomPair(tempConfig)
+					table.insert(ffunknownWorldProp.effects,value[math.random(#value)])
+					tempConfig[key]=nil
+					inc=inc+1
+				end
+				--sb.logInfo("ffunknownWorldProp %s",ffunknownWorldProp)
+				world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
+			end
+			status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
+		elseif ffunknownWorldProp and world.type()~="ffunknown" then
+			world.setProperty("ffunknownWorldProp",nil)
+			status.setPersistentEffects("ffunknownEffects",{})
+		else
+			status.setPersistentEffects("ffunknownEffects",{})
+		end
+		ffunknownCheckTimer=0.0
+	else
+		ffunknownCheckTimer=ffunknownCheckTimer+dt
 	end
 end
 
