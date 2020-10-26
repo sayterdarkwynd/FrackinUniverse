@@ -105,73 +105,65 @@ function eatFood(args)
 	local eaten = false
 	for pos,item in pairs(world.containerItems(args.entity)) do
 		local itemConfig = root.itemConfig(item).config
-		if itemConfig.category == "food" and not itemConfig.foodValue then itemConfig.foodValue = 10 end
+		local cat=string.lower(itemConfig.category)
+		local foodValue=itemConfig.foodValue or (((cat == "food") or (cat == "farmBeastFood") or (cat == "preparedFood")) and 10) or 1
+		--if itemConfig.category == "food" and not foodValue then foodValue = 10 end
 
 		if diet == 'omnivore' then
 			for _,value in pairs(foodlist.herbivore) do
-				if itemConfig.foodValue and itemConfig.foodValue > 0 then
-					if item.name == value then
-						local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
-						if world.containerConsumeAt(args.entity,pos-1,consume) then
-							storage.food = storage.food + consume * itemConfig.foodValue
-							storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
-							eaten = true
-							break
-						end
+				if item.name == value then
+					local consume = math.min(math.ceil((80-storage.food)/foodValue),item.count)
+					if world.containerConsumeAt(args.entity,pos-1,consume) then
+						storage.food = storage.food + consume * foodValue
+						storage.evolveOffset = (storage.evolveOffset or 0) + consume * foodValue
+						eaten = true
+						break
 					end
 				end
 			end
 			for _,value in pairs(foodlist.carnivore) do
-				if itemConfig.foodValue and itemConfig.foodValue > 0 then
-					if item.name == value then
-						local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
-						if world.containerConsumeAt(args.entity,pos-1,consume) then
-							storage.food = storage.food + consume * itemConfig.foodValue
-							storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
-							eaten = true
-							break
-						end
+				if item.name == value then
+					local consume = math.min(math.ceil((80-storage.food)/foodValue),item.count)
+					if world.containerConsumeAt(args.entity,pos-1,consume) then
+						storage.food = storage.food + consume * foodValue
+						storage.evolveOffset = (storage.evolveOffset or 0) + consume * foodValue
+						eaten = true
+						break
 					end
 				end
 			end
 		elseif diet == 'specialomnivore' then
 			for _,value in pairs(foodlist.herbivore) do
-				if itemConfig.foodValue and itemConfig.foodValue > 0 then
-					if item.name == value then
-						local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
-						if world.containerConsumeAt(args.entity,pos-1,consume) then
-							storage.food = storage.food + consume * itemConfig.foodValue
-							storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
-							eaten = true
-							break
-						end
+				if item.name == value then
+					local consume = math.min(math.ceil((80-storage.food)/foodValue),item.count)
+					if world.containerConsumeAt(args.entity,pos-1,consume) then
+						storage.food = storage.food + consume * foodValue
+						storage.evolveOffset = (storage.evolveOffset or 0) + consume * foodValue
+						eaten = true
+						break
 					end
 				end
 			end
 			for _,value in pairs(foodlist.specialomnivore) do
-				if itemConfig.foodValue and itemConfig.foodValue > 0 then
-					if item.name == value then
-						local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
-						if world.containerConsumeAt(args.entity,pos-1,consume) then
-							storage.food = storage.food + consume * itemConfig.foodValue
-							storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
-							eaten = true
-							break
-						end
+				if item.name == value then
+					local consume = math.min(math.ceil((80-storage.food)/foodValue),item.count)
+					if world.containerConsumeAt(args.entity,pos-1,consume) then
+						storage.food = storage.food + consume * foodValue
+						storage.evolveOffset = (storage.evolveOffset or 0) + consume * foodValue
+						eaten = true
+						break
 					end
 				end
 			end
 		else
 			for _,value in pairs(foodlist[diet]) do
-				if itemConfig.foodValue and itemConfig.foodValue > 0 then
-					if (item.name == value) then
-						local consume = math.min(math.ceil((80-storage.food)/itemConfig.foodValue),item.count)
-						if world.containerConsumeAt(args.entity,pos-1,consume) then
-							storage.food = storage.food + consume * itemConfig.foodValue
-							storage.evolveOffset = (storage.evolveOffset or 0) + consume * itemConfig.foodValue
-							eaten = true
-							break
-						end
+				if (item.name == value) then
+					local consume = math.min(math.ceil((80-storage.food)/foodValue),item.count)
+					if world.containerConsumeAt(args.entity,pos-1,consume) then
+						storage.food = storage.food + consume * foodValue
+						storage.evolveOffset = (storage.evolveOffset or 0) + consume * foodValue
+						eaten = true
+						break
 					end
 				end
 			end
