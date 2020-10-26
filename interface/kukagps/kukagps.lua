@@ -79,17 +79,31 @@ function populateMaterialsList()
                     widget.setText(path .. ".text", "^green;Threat:^reset; "..ThreatToString(world.threatLevel()).."                        ^green;Gravity:^reset; "..world.gravity(world.entityPosition(player.id())) or 0)
 
                     -- print planet ores
-                    local localOres="0"
+                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                    widget.setText(path .. ".text", "^green;Ores:^reset; ")
+                    local localOres="None"
+                    local linecount=0
                     for _,ore in pairs(celestial.planetOres(planet, (world.threatLevel() or 0))) do
-                        if localOres=="0" then
+                        if localOres=="None" then
                             localOres = (ores[ore] or ore)
                         else
                             localOres = localOres..", "..(ores[ore] or ore)
-                        end            
+                        end
+                        linecount = linecount+1
+                        if linecount==7 then
+                            -- print line and reset counter
+                            localOres = localOres.."."
+                            local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                            widget.setText(path .. ".text", "       "..localOres)
+                            localOres = "None"
+                            linecount = 0
+                        end
                     end
-                    localOres = localOres.."."
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Ores:^reset; "..localOres)
+                    if linecount ~= 0 then
+                        localOres = localOres.."."
+                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", "       "..localOres)
+                    end
                 else
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "This is a ERROR")
