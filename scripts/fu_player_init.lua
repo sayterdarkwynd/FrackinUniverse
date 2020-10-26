@@ -101,7 +101,8 @@ function idiotCheck(dt)
 end
 
 function essentialCheck(dt)
-	if not essentialItemCheckTimer or (essentialItemCheckTimer>=1.0) then
+	--if not essentialItemCheckTimer or (essentialItemCheckTimer>=1.0) then
+	if not essentialItemCheckTimer or (essentialItemCheckTimer>=0.1) then
 		for _,slot in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
 			local buffer=player.essentialItem(slot)
 			if buffer.count==0 then
