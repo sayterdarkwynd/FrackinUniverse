@@ -111,25 +111,39 @@ end
 function itemSelected()
     local listItem = widget.getListSelected(self.itemList)
     self.selectedItem = listItem
-
-    if listItem then
+	local inEssentialSlot=essentialCheck()
+    if listItem and not inEssentialSlot then
         local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
         setCanUnlock("unlock")
         self.selectedTech = itemData.tech
 
         widget.setText("techDescription", itemData.description or "A material mod. Replaces any that already exist where you place it.")
         widget.setImage("techIcon", itemData.image or "/items/materials/grassy.png")
+	elseif inEssentialSlot then
+		widget.setText("techDescription", "^red;ERROR: Matmod Placer is in essential slot. Configuration disabled.^reset;")
     end
+end
+
+function essentialCheck()
+	for _,v in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
+		local test=player.essentialItem(v)
+		if test.name=="fu_matmodplacer" then
+			return true
+		end
+	end
+	return false
 end
 
 function doUnlock()
     if self.selectedItem then
         local selectedData = widget.getData(string.format("%s.%s", self.itemList, self.selectedItem))
         local tech = self.availableTechs[selectedData.index]
-		
-        if tech then
-			player.consumeItem(player.primaryHandItem())
-			player.giveItem({name = "fu_matmodplacer", count = 1, parameters = {matMod = tech.matMod, fuel = tech.fuel, fuelValue = tech.fuelValue}})
+		local inEssentialSlot=essentialCheck()
+
+        if tech and not inEssentialSlot then
+			if player.consumeItem(player.primaryHandItem()) then
+				player.giveItem({name = "fu_matmodplacer", count = 1, parameters = {matMod = tech.matMod, fuel = tech.fuel, fuelValue = tech.fuelValue}})
+			end
 			pane.dismiss()
         end
 
