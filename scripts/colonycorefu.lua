@@ -96,7 +96,7 @@ function fu_isColonyCore() return true end
 
 function fu_isWell() return false end
 
-function getTenants() return wellsDrawing end
+function getTenantsNum() return wellsDrawing end
 
 
 
