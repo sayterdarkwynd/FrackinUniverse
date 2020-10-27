@@ -3,7 +3,7 @@ require "/scripts/util.lua"
 
 function init()
 	message.setHandler("despawnMech", despawn)
-
+	--message.setHandler("sendMechHazardData",function(...) return copy(self.hazardImmunityList) end)
 	message.setHandler("currentEnergy", function()
 		if not alive() then
 			return 0
@@ -198,8 +198,10 @@ function init()
 	-- check for environmental hazards / protection
 
 	local hazards = config.getParameter("hazardVulnerabilities")
+	--self.hazardImmunityList={}
 	for _, statusEffect in pairs(self.parts.body.hazardImmunities or {}) do
 		hazards[statusEffect] = nil
+		--self.hazardImmunityList[statusEffect]=true
 	end
 
 	local applyEnvironmentStatuses = config.getParameter("applyEnvironmentStatuses")

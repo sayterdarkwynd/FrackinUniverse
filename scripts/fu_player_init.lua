@@ -6,10 +6,14 @@ local origUninit = uninit
 local oldUpdate=update
 local ffunknownConfig
 
+--HAS to be done in this specific order: get local functions, THEN load this script.
+require "/interface/scripted/mmutility/mmutility.lua"
+
 function init(...)
 	if origInit then
 		origInit(...)
 	end
+	--weatherEffectsCache={}
 	didInit=true
 	doIdiotCheck=true
 	sb.logInfo("----- FU player init -----")
@@ -32,6 +36,7 @@ function init(...)
 	message.setHandler("player.isAdmin",player.isAdmin)
 	message.setHandler("player.uniqueId",player.uniqueId)
 	message.setHandler("player.worldId",player.worldId)
+	status.setStatusProperty("player.worldId",player.worldId())
 	message.setHandler("player.availableTechs", player.availableTechs)
 	message.setHandler("player.enabledTechs", player.enabledTechs)
 	message.setHandler("player.shipUpgrades", player.shipUpgrades)
@@ -40,6 +45,11 @@ function init(...)
 	message.setHandler("player.loungingIn", player.loungingIn)
 	message.setHandler("playerIsInMech", playerIsInMech)
 	message.setHandler("playerIsInVehicle", playerIsInVehicle)
+	
+	self.setData={}
+	message.setHandler("recordSetBonus",function(_,_,setName) self.setData[setName]=os.time() end)
+	
+	
 	message.setHandler("player.equippedItem",function (_,_,...) return player.equippedItem(...) end)
 	message.setHandler("player.hasItem",function (_,_,...) return player.hasItem(...) end)
 	message.setHandler("player.hasCountOfItem",function (_,_,...) return player.hasCountOfItem(...) end)
@@ -69,6 +79,57 @@ end
 
 function update(dt)
 	if oldUpdate then oldUpdate(dt) end
+	local pass,result=pcall(idiotCheck,dt)
+	if not pass then sb.logError("%s",result) end
+	if didInit then
+		pass,result=pcall(essentialCheck,dt)
+		if not pass then sb.logError("%s",result) end
+		pass,result=pcall(unknownCheck,dt)
+		if not pass then sb.logError("%s",result) end
+		pass,result=pcall(handleStatusProperties,dt)
+		if not pass then sb.logError("%s",result) end
+		pass,result=pcall(handleSetOrphans,dt)
+		if not pass then sb.logError("%s",result) end
+	end
+end
+
+function handleSetOrphans(dt)
+	if not orphanSetBonusTimer or orphanSetBonusTimer >= 0.10 then
+		orphanSetBonusTimer=0.0
+		local t=os.time()
+		for set,bd in pairs(self.setData) do
+			if math.abs(t-bd)>3.0 then
+				status.clearPersistentEffects(set)
+				self.setData[set]=nil
+			end
+		end
+	else
+		orphanSetBonusTimer=orphanSetBonusTimer+dt
+	end
+end
+
+function clearSetBonuses()
+	for set,bd in pairs(self.setData) do
+		status.clearPersistentEffects(set)
+		self.setData[set]=nil
+	end
+end
+
+function handleStatusProperties(dt)
+	if not fuPlayerInitHandleStatusPropertiesTimer or fuPlayerInitHandleStatusPropertiesTimer>=0.1 then
+		if world.entityExists(entity.id()) then
+			status.setStatusProperty("player.isLounging", not not player.isLounging())
+			status.setStatusProperty("player.loungingIn", player.loungingIn())
+			status.setStatusProperty("playerIsInMech", not not playerIsInMech())
+			status.setStatusProperty("playerIsInVehicle", not not playerIsInVehicle())
+		end
+		fuPlayerInitHandleStatusPropertiesTimer=0.0
+	else
+		fuPlayerInitHandleStatusPropertiesTimer=math.max(0,fuPlayerInitHandleStatusPropertiesTimer-dt)
+	end
+end
+
+function idiotCheck(dt)
 	if doIdiotCheck then
 		if world.entityType(entity.id()) == "player" then --can't send radio messages to nonexistent entities. this is the case when players are loading in.
 			local idiotitem=root.itemConfig("idiotitem") -- FR detection.
@@ -84,49 +145,82 @@ function update(dt)
 		player.warp("ownship")
 		queueWarp=false
 	end
-	if didInit then
-		if not ffunknownCheckTimer then
-			ffunknownCheckTimer=0.99
-		elseif ffunknownCheckTimer>=1.0 then
-			local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
-			if ffunknownConfig and world.type()=="ffunknown" and not playerIsInVehicle() then
-				if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
-					ffunknownWorldProp={version=ffunknownConfig.version}
-					ffunknownWorldProp.effects={}
+end
 
-					local threatLevel=world.threatLevel()
-					local leftoverThreat=threatLevel%1
-					if leftoverThreat>0.0 then
-						threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
-					end
-					threatLevel=math.sqrt(threatLevel)
-					leftoverThreat=threatLevel%1
-					if leftoverThreat>0.0 then
-						threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
-					end
-
-					local inc=0
-					local tempConfig=copy(ffunknownConfig.effectList)
-					while (inc<threatLevel) and (inc<10) do
-						local key,value=chooseRandomPair(tempConfig)
-						table.insert(ffunknownWorldProp.effects,value[math.random(#value)])
-						tempConfig[key]=nil
-						inc=inc+1
-					end
-					--sb.logInfo("ffunknownWorldProp %s",ffunknownWorldProp)
-					world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
+function essentialCheck(dt)
+	--if not essentialItemCheckTimer or (essentialItemCheckTimer>=1.0) then
+	if not essentialItemCheckTimer or (essentialItemCheckTimer>=0.1) then
+		for _,slot in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
+			local buffer=player.essentialItem(slot)
+			if buffer.count==0 then
+				if slot=="beamaxe" then
+					swapMM()
+				else
+					local baseTool=origTool(slot)
+					player.giveEssentialItem(slot,baseTool)
 				end
-				status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
-			elseif ffunknownWorldProp and world.type()~="ffunknown" then
-				world.setProperty("ffunknownWorldProp",nil)
-				status.setPersistentEffects("ffunknownEffects",{})
-			else
-				status.setPersistentEffects("ffunknownEffects",{})
 			end
-			ffunknownCheckTimer=0.0
-		else
-			ffunknownCheckTimer=ffunknownCheckTimer+dt
 		end
+		essentialItemCheckTimer=0.0
+	else
+		essentialItemCheckTimer=essentialItemCheckTimer+dt
+	end
+end
+
+function unknownCheck(dt)
+	if not ffunknownCheckTimer then
+		ffunknownCheckTimer=0.99
+	elseif ffunknownCheckTimer>=1.0 then
+		local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
+		if ffunknownConfig and world.type()=="ffunknown" and not playerIsInVehicle() then
+			if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
+				ffunknownWorldProp={version=ffunknownConfig.version}
+				ffunknownWorldProp.effects={}
+
+				local threatLevel=world.threatLevel()
+				local leftoverThreat=threatLevel%1
+				if leftoverThreat>0.0 then
+					threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
+				end
+				threatLevel=math.sqrt(threatLevel)
+				leftoverThreat=threatLevel%1
+				if leftoverThreat>0.0 then
+					threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
+				end
+
+				local inc=0
+				local tempConfig=copy(ffunknownConfig.effectList)
+				while (inc<threatLevel) and (inc<10) do
+					local key,value=chooseRandomPair(tempConfig)
+					table.insert(ffunknownWorldProp.effects,value[math.random(#value)])
+					tempConfig[key]=nil
+					inc=inc+1
+				end
+				--sb.logInfo("ffunknownWorldProp %s",ffunknownWorldProp)
+				world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
+			end
+			status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
+			--[[for _,v in pairs(ffunknownWorldProp.effects) do
+				status.addEphemeralEffect(v)
+			end
+			weatherEffectsCache=ffunknownWorldProp.effects]]
+		elseif ffunknownWorldProp and world.type()~="ffunknown" then
+			world.setProperty("ffunknownWorldProp",nil)
+			--[[for _,v in pairs(weatherEffectsCache or {}) do
+				status.removeEphemeralEffect(v)
+			end
+			weatherEffectsCache={}]]
+			status.setPersistentEffects("ffunknownEffects",{})
+		else
+			--[[for _,v in pairs(weatherEffectsCache or {}) do
+				status.removeEphemeralEffect(v)
+			end
+			weatherEffectsCache={}]]
+			status.setPersistentEffects("ffunknownEffects",{})
+		end
+		ffunknownCheckTimer=0.0
+	else
+		ffunknownCheckTimer=ffunknownCheckTimer+dt
 	end
 end
 
@@ -176,7 +270,11 @@ function uninit(...)
 		origUninit(...)
 	end
 	status.setPersistentEffects("ffunknownEffects",{})
-	status.setPersistentEffects("flightpower",{})--this should be removed after a month.
+	clearSetBonuses()
+	--[[for _,v in pairs(weatherEffectsCache or {}) do
+		status.removeEphemeralEffect(v)
+	end
+	weatherEffectsCache={}]]
 end
 
 --[[
