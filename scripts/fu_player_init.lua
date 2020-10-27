@@ -6,13 +6,14 @@ local origUninit = uninit
 local oldUpdate=update
 local ffunknownConfig
 
---HAS to be done in this specific order.
+--HAS to be done in this specific order: get local functions, THEN load this script.
 require "/interface/scripted/mmutility/mmutility.lua"
 
 function init(...)
 	if origInit then
 		origInit(...)
 	end
+	--weatherEffectsCache={}
 	didInit=true
 	doIdiotCheck=true
 	sb.logInfo("----- FU player init -----")
@@ -35,6 +36,7 @@ function init(...)
 	message.setHandler("player.isAdmin",player.isAdmin)
 	message.setHandler("player.uniqueId",player.uniqueId)
 	message.setHandler("player.worldId",player.worldId)
+	status.setStatusProperty("player.worldId",player.worldId())
 	message.setHandler("player.availableTechs", player.availableTechs)
 	message.setHandler("player.enabledTechs", player.enabledTechs)
 	message.setHandler("player.shipUpgrades", player.shipUpgrades)
@@ -79,6 +81,22 @@ function update(dt)
 		if not pass then sb.logError("%s",result) end
 		pass,result=pcall(unknownCheck,dt)
 		if not pass then sb.logError("%s",result) end
+		pass,result=pcall(handleStatusProperties,dt)
+		if not pass then sb.logError("%s",result) end
+	end
+end
+
+function handleStatusProperties(dt)
+	if not fuPlayerInitHandleStatusPropertiesTimer or fuPlayerInitHandleStatusPropertiesTimer>=0.1 then
+		if world.entityExists(entity.id()) then
+			status.setStatusProperty("player.isLounging", not not player.isLounging())
+			status.setStatusProperty("player.loungingIn", player.loungingIn())
+			status.setStatusProperty("playerIsInMech", not not playerIsInMech())
+			status.setStatusProperty("playerIsInVehicle", not not playerIsInVehicle())
+		end
+		fuPlayerInitHandleStatusPropertiesTimer=0.0
+	else
+		fuPlayerInitHandleStatusPropertiesTimer=math.max(0,fuPlayerInitHandleStatusPropertiesTimer-dt)
 	end
 end
 
@@ -153,10 +171,22 @@ function unknownCheck(dt)
 				world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
 			end
 			status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
+			--[[for _,v in pairs(ffunknownWorldProp.effects) do
+				status.addEphemeralEffect(v)
+			end
+			weatherEffectsCache=ffunknownWorldProp.effects]]
 		elseif ffunknownWorldProp and world.type()~="ffunknown" then
 			world.setProperty("ffunknownWorldProp",nil)
+			--[[for _,v in pairs(weatherEffectsCache or {}) do
+				status.removeEphemeralEffect(v)
+			end
+			weatherEffectsCache={}]]
 			status.setPersistentEffects("ffunknownEffects",{})
 		else
+			--[[for _,v in pairs(weatherEffectsCache or {}) do
+				status.removeEphemeralEffect(v)
+			end
+			weatherEffectsCache={}]]
 			status.setPersistentEffects("ffunknownEffects",{})
 		end
 		ffunknownCheckTimer=0.0
@@ -211,7 +241,11 @@ function uninit(...)
 		origUninit(...)
 	end
 	status.setPersistentEffects("ffunknownEffects",{})
-	status.setPersistentEffects("flightpower",{})--this should be removed after a month.
+	
+	--[[for _,v in pairs(weatherEffectsCache or {}) do
+		status.removeEphemeralEffect(v)
+	end
+	weatherEffectsCache={}]]
 end
 
 --[[
