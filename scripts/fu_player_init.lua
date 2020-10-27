@@ -94,11 +94,11 @@ function update(dt)
 end
 
 function handleSetOrphans(dt)
-	if not orphanSetBonusTimer or orphanSetBonusTimer >= 0.10 then
+	if not orphanSetBonusTimer or orphanSetBonusTimer >= 1.0 then
 		orphanSetBonusTimer=0.0
 		local t=os.time()
 		for set,bd in pairs(self.setData) do
-			if math.abs(t-bd)>3.0 then
+			if math.abs(t-bd)>2.0 then
 				status.clearPersistentEffects(set)
 				self.setData[set]=nil
 			end
@@ -152,7 +152,7 @@ function essentialCheck(dt)
 	if not essentialItemCheckTimer or (essentialItemCheckTimer>=0.1) then
 		for _,slot in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
 			local buffer=player.essentialItem(slot)
-			if buffer.count==0 then
+			if buffer and buffer.count==0 then
 				if slot=="beamaxe" then
 					swapMM()
 				else

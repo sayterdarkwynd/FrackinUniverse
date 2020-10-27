@@ -411,7 +411,7 @@ function states.pump(dt)
 						break
 					end
 				else
-					if util.tableSize(excavatorCommon.vars.liquidOuts)>0 then
+					if util.tableSize(excavatorCommon.vars.liquidOuts or {})>0 then
 						local outputPipe=transferUtil.findNearest(entity.id(),entity.position(),excavatorCommon.vars.liquidOuts)
 						if world.entityExists(outputPipe) then
 							world.callScriptedEntity(outputPipe,"liquidLib.receiveLiquid",{k,1})
