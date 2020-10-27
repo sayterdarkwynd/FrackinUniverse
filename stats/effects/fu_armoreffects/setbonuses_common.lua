@@ -60,7 +60,7 @@ function applySetEffects()
 end
 
 function removeSetEffects()
-	status.clearPersistentEffects(setName)
+	status.setPersistentEffects(setName,{})
 end
 
 function fetchTags(buffer)
@@ -171,4 +171,5 @@ end
 
 function uninit()
 	setBonusUninit()
+	removeSetEffects()
 end
