@@ -132,7 +132,7 @@ function fu_isAddonSewageTreatment() return true end
 function getTenantNumber()
 	tenantNumber = 0
 	if parentCore and world.entityExists(parentCore) then
-		tenantNumber = world.callScriptedEntity(parentCore,"getTenants")
+		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum")
 	else
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
@@ -140,7 +140,7 @@ function getTenantNumber()
 	
 		for _, objectId in pairs(objectIds) do
 				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
-					tenantNumber = world.callScriptedEntity(objectId,"getTenants")
+					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
 					parentCore = objectId
 				end
 		end
