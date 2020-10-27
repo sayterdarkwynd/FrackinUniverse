@@ -116,7 +116,7 @@ function detectorInHand()
 
 	for _,v in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
 		local test=player.essentialItem(v)
-		if test.name=="tunableoredetector1" then
+		if test and test.name=="tunableoredetector1" then
 			inEssentialSlot=true
 			break
 		end
