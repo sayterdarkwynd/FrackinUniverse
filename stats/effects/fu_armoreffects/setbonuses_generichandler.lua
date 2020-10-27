@@ -11,6 +11,8 @@ end
 function update()
 	if self.setBonusCheck and checkSetWorn(self.setBonusCheck) then
 		applySetEffects()
+	elseif self.setBonusCheck then
+		removeSetEffects()
 	elseif not self.setBonusCheck then
 		setSEBonusInit(setName,setStatEffects)
 	end
