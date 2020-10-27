@@ -1,5 +1,3 @@
---going to phase out the 'handler' since tooltips are going away.
-
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
