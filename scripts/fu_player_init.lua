@@ -45,6 +45,11 @@ function init(...)
 	message.setHandler("player.loungingIn", player.loungingIn)
 	message.setHandler("playerIsInMech", playerIsInMech)
 	message.setHandler("playerIsInVehicle", playerIsInVehicle)
+	
+	self.setData={}
+	message.setHandler("recordSetBonus",function(_,_,setName) self.setData[setName]=os.time() end)
+	
+	
 	message.setHandler("player.equippedItem",function (_,_,...) return player.equippedItem(...) end)
 	message.setHandler("player.hasItem",function (_,_,...) return player.hasItem(...) end)
 	message.setHandler("player.hasCountOfItem",function (_,_,...) return player.hasCountOfItem(...) end)
@@ -83,6 +88,30 @@ function update(dt)
 		if not pass then sb.logError("%s",result) end
 		pass,result=pcall(handleStatusProperties,dt)
 		if not pass then sb.logError("%s",result) end
+		pass,result=pcall(handleSetOrphans,dt)
+		if not pass then sb.logError("%s",result) end
+	end
+end
+
+function handleSetOrphans(dt)
+	if not orphanSetBonusTimer or orphanSetBonusTimer >= 0.10 then
+		orphanSetBonusTimer=0.0
+		local t=os.time()
+		for set,bd in pairs(self.setData) do
+			if math.abs(t-bd)>3.0 then
+				status.clearPersistentEffects(set)
+				self.setData[set]=nil
+			end
+		end
+	else
+		orphanSetBonusTimer=orphanSetBonusTimer+dt
+	end
+end
+
+function clearSetBonuses()
+	for set,bd in pairs(self.setData) do
+		status.clearPersistentEffects(set)
+		self.setData[set]=nil
 	end
 end
 
@@ -241,7 +270,7 @@ function uninit(...)
 		origUninit(...)
 	end
 	status.setPersistentEffects("ffunknownEffects",{})
-	
+	clearSetBonuses()
 	--[[for _,v in pairs(weatherEffectsCache or {}) do
 		status.removeEphemeralEffect(v)
 	end

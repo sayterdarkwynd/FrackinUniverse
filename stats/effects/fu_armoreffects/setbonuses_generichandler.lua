@@ -15,3 +15,8 @@ function update()
 		setSEBonusInit(setName,setStatEffects)
 	end
 end
+
+function uninit()
+	setBonusUninit()
+	--removeSetEffects()
+end
