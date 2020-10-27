@@ -6,6 +6,15 @@ function init()
 	setObjectOn(0)
 end
 
+function update(dt)
+	if not conduitTimer or conduitTimer>=1.0 then
+		onNodeConnectionChange()
+		conduitTimer=0.0
+	else
+		conduitTimer=conduitTimer+dt
+	end
+end
+
 function setObjectOn(iterations)
 	storage.on=not object.isInputNodeConnected(1) or object.getInputNodeLevel(1)
 	--doAnims()
