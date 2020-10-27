@@ -57,6 +57,19 @@ function init()
 	status.setPersistentEffects("madnessAFKPenalty",{})
 end
 
+function indexOf(t,v1)
+	local index=0
+	local counter=0
+	for _,v2 in pairs(t) do
+		counter=counter+1
+		if v1==v2 then
+			index=counter
+			break
+		end
+	end
+	return index
+end
+
 function streakCheck(val)
 	if not storage.streakTable then
 		storage.streakTable={}
@@ -66,18 +79,7 @@ function streakCheck(val)
 		return false
 	end
 
-	local index=0
-	for i,e in pairs(storage.streakTable) do
-		if e==val then
-			index=i
-			break
-		end
-	end
-
-	--for some reason, someone had an error where the index was a string. maybe some failure in table serialization? idk.
-	if type(index)=="string" then
-		index=tonumber(index)
-	end
+	local index=indexOf(storage.streakTable,val)
 
 	if index>0 then
 		return true
