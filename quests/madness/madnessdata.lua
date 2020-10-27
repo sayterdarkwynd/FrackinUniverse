@@ -79,6 +79,7 @@ function streakCheck(val)
 		return false
 	end
 
+	--I wish I could use a better method, but for some reason someone managed to get a table with string indexes, a product of serialization I  expect.
 	local index=indexOf(storage.streakTable,val)
 
 	if index>0 then
