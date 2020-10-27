@@ -65,7 +65,7 @@ function streakCheck(val)
 	if val <= 0 then
 		return false
 	end
-	
+
 	local index=0
 	for i,e in pairs(storage.streakTable) do
 		if e==val then
@@ -73,7 +73,12 @@ function streakCheck(val)
 			break
 		end
 	end
-	
+
+	--for some reason, someone had an error where the index was a string. maybe some failure in table serialization? idk.
+	if type(index)=="string" then
+		index=tonumber(index)
+	end
+
 	if index>0 then
 		return true
 	else
@@ -96,7 +101,7 @@ function randomEvent()
 	self.currentProtectionAbs=math.abs(self.currentProtection)
 
 	local didRng=false
-	
+
 	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
 		self.randEvent=math.random(1,100)
 		--mentalProtection can make it harder to be affected
@@ -369,13 +374,13 @@ function update(dt)
 
 		if (world.threatLevel() > 1) then --is the world a higher threat level?
 			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
-				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation 
+				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation
                 if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
 					self.threatBonus = 1
-			    end				
+			    end
 				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
 					self.threatBonus = 6
-				end					
+				end
 			end
 			if afkLvl<=3 then
 				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
