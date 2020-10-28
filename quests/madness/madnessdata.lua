@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/scripts/epoch.lua"
 require "/scripts/vec2.lua"
 
 function init()
@@ -56,6 +57,19 @@ function init()
 	status.setPersistentEffects("madnessAFKPenalty",{})
 end
 
+function indexOf(t,v1)
+	local index=0
+	local counter=0
+	for _,v2 in pairs(t) do
+		counter=counter+1
+		if v1==v2 then
+			index=counter
+			break
+		end
+	end
+	return index
+end
+
 function streakCheck(val)
 	if not storage.streakTable then
 		storage.streakTable={}
@@ -64,15 +78,10 @@ function streakCheck(val)
 	if val <= 0 then
 		return false
 	end
-	
-	local index=0
-	for i,e in pairs(storage.streakTable) do
-		if e==val then
-			index=i
-			break
-		end
-	end
-	
+
+	--I wish I could use a better method, but for some reason someone managed to get a table with string indexes, a product of serialization I  expect.
+	local index=indexOf(storage.streakTable,val)
+
 	if index>0 then
 		return true
 	else
@@ -95,7 +104,7 @@ function randomEvent()
 	self.currentProtectionAbs=math.abs(self.currentProtection)
 
 	local didRng=false
-	
+
 	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
 		self.randEvent=math.random(1,100)
 		--mentalProtection can make it harder to be affected
@@ -368,13 +377,13 @@ function update(dt)
 
 		if (world.threatLevel() > 1) then --is the world a higher threat level?
 			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
-				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation 
+				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation
                 if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
 					self.threatBonus = 1
-			    end				
+			    end
 				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
 					self.threatBonus = 6
-				end					
+				end
 			end
 			if afkLvl<=3 then
 				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
@@ -491,10 +500,7 @@ function checkMadnessArt()
 
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
 	if hasPainting then
-		if storage.crazycarrycooldown <= 0 then
-			player.radioMessage("crazycarry")
-			storage.crazycarrycooldown=300.0
-		end
+		checkCrazyCarry()
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
 	end
 end
@@ -507,14 +513,22 @@ function isWeirdStuff(duration)
 			if afkLvl<=3 then
 				player.addCurrency("fumadnessresource", 2-math.min(1,afkLvl))
 			end
-			if storage.crazycarrycooldown <= 0 then
-				player.radioMessage("crazycarry")
-				storage.crazycarrycooldown=300.0
-			end
+			checkCrazyCarry()
 			status.addEphemeralEffect("madnessfoodindicator",duration)
 			hasArt=true
 			break
 		end
+	end
+end
+
+function checkCrazyCarry()
+	if storage.crazycarrycooldown <= 0 then
+		local epochBuffer=epoch.currentToTable()
+		if epochBuffer.day~=storage.crazycarryday then
+			storage.crazycarryday=epochBuffer.day
+			player.radioMessage("crazycarry")
+		end
+		storage.crazycarrycooldown=300.0
 	end
 end
 

@@ -52,11 +52,17 @@ function applySetEffects()
 	if self.setBonusEffects == nil then
 		return
 	end
-	for _,v in pairs(self.setBonusEffects) do
+	--[[for _,v in pairs(self.setBonusEffects) do
 		status.addEphemeralEffect(v,2)
-	end
+	end]]
+	--sb.logInfo("s %s e %s",setName,self.setBonusEffects)
+	world.sendEntityMessage(entity.id(),"recordSetBonus",setName)
+	status.setPersistentEffects(setName,self.setBonusEffects)
 end
 
+function removeSetEffects()
+	status.setPersistentEffects(setName,{})
+end
 
 function fetchTags(buffer)
 	local tags={}

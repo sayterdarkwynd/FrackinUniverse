@@ -1,7 +1,7 @@
 function init()
-	message.setHandler("swansongFailed",quest.fail)
-	message.setHandler("swansongCompleted",quest.complete)
-	message.setHandler("swansongDead",quest.complete)
+	message.setHandler("swansongFailed",function (...) quest.fail() end)
+	message.setHandler("swansongCompleted",function (...) quest.complete() end)
+	message.setHandler("swansongDead",function (...) quest.complete() end)
 	script.setUpdateDelta(360)
 end
 

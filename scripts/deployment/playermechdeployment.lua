@@ -279,13 +279,31 @@ function update(dt)
 			end
 			self.energyCheck = nil
 		end
+		
+		--mech hazard data check
+		--[[if not mechHazardDataTimer or mechHazardDataTimer>=1.0 then
+			if not self.hazardStatCheck then
+				self.hazardStatCheck = world.sendEntityMessage(storage.vehicleId, "sendMechHazardData")
+			end
 
-	--getting mech health from vehicle entity
-	if not self.healthCheck then
+			if self.hazardStatCheck and self.hazardStatCheck:finished() then
+				if self.hazardStatCheck:succeeded() then
+					self.mechHazardData = self.hazardStatCheck:result()
+					status.setStatusProperty("mechHazardData",self.mechHazardData)
+				end
+				self.hazardStatCheck = nil
+			end
+			mechHazardDataTimer=0.0
+		else
+			mechHazardDataTimer=mechHazardDataTimer+dt
+		end]]
+
+		--getting mech health from vehicle entity
+		if not self.healthCheck then
 			self.healthCheck = world.sendEntityMessage(storage.vehicleId, "currentHealth")
 		end
 
-	if self.healthCheck and self.healthCheck:finished() then
+		if self.healthCheck and self.healthCheck:finished() then
 			if self.healthCheck:succeeded() then
 				self.mechHealthRatio = self.healthCheck:result()
 			end
