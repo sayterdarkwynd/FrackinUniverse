@@ -1,14 +1,6 @@
 require "/scripts/util.lua"
+require "/scripts/epoch.lua"
 require "/scripts/vec2.lua"
-
--- ideas for additional Research gain
-
---planet based:
--- distance travelled on a given biome equates to a direct bonus to research output
---more dangerous ocean types return more research as well. use world.oceanLevel(postiion) and then check liquid type and apply bonus?
--- check object type using world.objectAt(tilePosition). if its a Laptop/Computer, apply a small research bonus so long as youre nearby
--- Scientist tenants that give Research ?
--- certain dungeons might return different bonus rates
 
 function init()
 	-- passive research gain
@@ -28,6 +20,8 @@ function init()
 	self.timerDegrade = math.random(1,12)
 	self.degradeTotal = 0
 	self.bonusTimer = 1
+
+    storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
 
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
@@ -63,6 +57,19 @@ function init()
 	status.setPersistentEffects("madnessAFKPenalty",{})
 end
 
+function indexOf(t,v1)
+	local index=0
+	local counter=0
+	for _,v2 in pairs(t) do
+		counter=counter+1
+		if v1==v2 then
+			index=counter
+			break
+		end
+	end
+	return index
+end
+
 function streakCheck(val)
 	if not storage.streakTable then
 		storage.streakTable={}
@@ -71,15 +78,10 @@ function streakCheck(val)
 	if val <= 0 then
 		return false
 	end
-	
-	local index=0
-	for i,e in pairs(storage.streakTable) do
-		if e==val then
-			index=i
-			break
-		end
-	end
-	
+
+	--I wish I could use a better method, but for some reason someone managed to get a table with string indexes, a product of serialization I  expect.
+	local index=indexOf(storage.streakTable,val)
+
 	if index>0 then
 		return true
 	else
@@ -102,7 +104,7 @@ function randomEvent()
 	self.currentProtectionAbs=math.abs(self.currentProtection)
 
 	local didRng=false
-	
+
 	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
 		self.randEvent=math.random(1,100)
 		--mentalProtection can make it harder to be affected
@@ -330,6 +332,7 @@ function afkLevel()
 end
 
 function update(dt)
+	storage.crazycarrycooldown=math.max(0,(storage.crazycarrycooldown or 0) - dt)
 	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.
 	--if the player doesn't move enough, a timer will increment. once that timer gets over a certain point, the player is flagged as afk via status property, which is global and thus we only need this code running in one place.
 	--afk timer and recorded points are reset when the script resets.
@@ -372,19 +375,16 @@ function update(dt)
 		self.madnessResearchBonus = 0
 		self.researchBonus = 0
 
-		--is the world a higher threat level? if so, apply a bonus to research gain after 5 minutes, increased further after 25 minutes if over tier 6
-		if world.threatLevel() > 1 then
-			if self.environmentTimer > 300 then
-				self.threatBonus = world.threatLevel() / 1.5
-				if self.threatBonus < 2 then -- make sure its not giving too high a bonus, to a max of +3
+		if (world.threatLevel() > 1) then --is the world a higher threat level?
+			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
+				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation
+                if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
 					self.threatBonus = 1
-				elseif (self.threatBonus > 5) and (self.environmentTimer > 1500) then
-					self.threatBonus = 5
-				elseif self.threatBonus > 3 then
-					self.threatBonus = 3
+			    end
+				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
+					self.threatBonus = 6
 				end
 			end
-
 			if afkLvl<=3 then
 				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
 			end
@@ -398,11 +398,13 @@ function update(dt)
 		end
 		-- apply the total
 		self.researchBonus = self.threatBonus + self.madnessResearchBonus
-
-		self.bonus = status.stat("researchBonus") + self.researchBonus
+		self.bonus = self.researchBonus--status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				player.addCurrency("fuscienceresource",1 + self.bonus)
+				if (math.random(1,20) + status.stat("researchBonus")) > 18 then  -- only apply the bonus research from stat X amount of the time based on a d20 roll higher than 18. Bonus influences this.
+					player.addCurrency("fuscienceresource",status.stat("researchBonus"))
+				end
 			end
 			self.timerCounter = 0
 		else
@@ -498,9 +500,7 @@ function checkMadnessArt()
 
 	self.paintTimer = 20.0 + (status.stat("mentalProtection") * 25)
 	if hasPainting then
-		if (math.random(5)==1) then
-			player.radioMessage("crazycarry")
-		end
+		checkCrazyCarry()
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
 	end
 end
@@ -513,13 +513,22 @@ function isWeirdStuff(duration)
 			if afkLvl<=3 then
 				player.addCurrency("fumadnessresource", 2-math.min(1,afkLvl))
 			end
-			if math.random(5) == 1 then
-				player.radioMessage("crazycarry")
-			end
+			checkCrazyCarry()
 			status.addEphemeralEffect("madnessfoodindicator",duration)
 			hasArt=true
 			break
 		end
+	end
+end
+
+function checkCrazyCarry()
+	if storage.crazycarrycooldown <= 0 then
+		local epochBuffer=epoch.currentToTable()
+		if epochBuffer.day~=storage.crazycarryday then
+			storage.crazycarryday=epochBuffer.day
+			player.radioMessage("crazycarry")
+		end
+		storage.crazycarrycooldown=300.0
 	end
 end
 

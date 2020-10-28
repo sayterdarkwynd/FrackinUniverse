@@ -1,3 +1,5 @@
+require "/scripts/util.lua"
+
 function init()
 	self.data = root.assetJson("/interface/scripted/statWindow/extraStatsWindow.config")
 	canvas = widget.bindCanvas("tooltipHandler")
@@ -32,7 +34,13 @@ function update()
 			widget.setText(stat, value)
 			
 		elseif type == "crit" then
-			value = "+"..tostring(average(value)).."%"
+			if value>0 then
+				value = "+"..tostring(util.round(value,1)).."%"
+			elseif value<0 then
+				value = "-"..tostring(util.round(value,1)).."%"
+			else
+				value="0%"
+			end
 			widget.setText(stat, value)
 			
 		elseif type == "critmult" then

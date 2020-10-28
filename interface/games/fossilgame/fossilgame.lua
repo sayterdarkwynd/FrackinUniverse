@@ -76,6 +76,13 @@ function initGame()
       Dot:new(self.level, 2),
       CrossTool:new(self.level, 2)
     }
+  elseif config.getParameter("toolType") == "fossilhammer" then
+    self.tools = {
+      BrushTool:new(self.level),
+      Dot2:new(self.level, 4),
+      SquareTool:new(self.level, 4),
+      ExTool:new(self.level, 4)
+    }    
   elseif config.getParameter("toolType") == "master" then
     self.tools = {
       BrushTool:new(self.level),
