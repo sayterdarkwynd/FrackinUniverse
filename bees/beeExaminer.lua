@@ -18,7 +18,7 @@ local tagList={
 	queen={range=25,currencies={bonusResearch=3}},
 	youngQueen={range=25,currencies={bonusResearch=3}},
 	drone={range=100,currencies={bonusResearch=0}},
-	geode={range=20,currencies={bonusResearch=5,bonusEssence=1},overrideCategory="geodeResearched"},
+	geode={range=65,currencies={bonusResearch=2,bonusEssence=1},overrideCategory="geodeResearched"},
 	artifact={range=35,currencies={bonusResearch=50,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"},
 	artifactElder={range=25,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"},
 	artifactBasic={range=50,currencies={bonusResearch=15,bonusEssence=0},overrideCategory="artifactResearched"}
