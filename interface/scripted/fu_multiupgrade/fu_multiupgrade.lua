@@ -567,3 +567,30 @@ function upgradeTool(upgradeItem,price)
 		end
 	end
 end
+
+local oldCompare=compare
+function compare(t1,t2)
+	local pass,result=pcall(oldCompare,t1,t2)
+	if pass then
+		return result
+	else
+		criticalError()
+	end
+end
+
+function criticalError()
+	--fatal error, essentially. this can happen with certain items like the massive spawned in holo ruler thing. we're going to just disable the entire UI and display an informative warning.
+	widget.setVisible("essenceCostDescription",true)
+	widget.setVisible("itemScrollArea",false)
+	widget.setVisible("manipIcon",false)
+	widget.setVisible("upgradeIcon",false)
+	widget.setVisible("essenceCost",true)
+	widget.setVisible("warningLabel",true)
+	widget.setVisible("emptyLabel",false)
+	widget.setVisible("btnUpgrade",false)
+	widget.setText("essenceCostDescription","^red;HEAVILY OVER-MODDED ITEM")
+	widget.setText("essenceCost","^yellow;Find it. Remove it.")
+	widget.setText("warningLabel","^red;CRITICAL ERROR: ID10T")
+	script.setUpdateDelta(0)
+	error("You have a heavily overloaded item. This upgrade UI can't handle those. Items like the holographic ruler, for example.")
+end
