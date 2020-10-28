@@ -105,7 +105,7 @@ function eatFood(args)
 	local eaten = false
 	for pos,item in pairs(world.containerItems(args.entity)) do
 		local itemConfig = root.itemConfig(item).config
-		local cat=string.lower(itemConfig.category)
+		local cat=string.lower(itemConfig.category or "")
 		local foodValue=(itemConfig.foodValue and (itemConfig.foodValue>0) and itemConfig.foodValue) or (((cat == "food") or (cat == "farmbeastfood") or (cat == "preparedfood")) and 10) or 1
 		--if itemConfig.category == "food" and not foodValue then foodValue = 10 end
 
