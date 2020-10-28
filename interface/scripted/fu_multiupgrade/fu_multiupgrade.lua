@@ -601,7 +601,6 @@ function criticalError()
 	error("You have a heavily overloaded item. This upgrade UI can't handle those. Items like the holographic ruler, for example.")
 end
 
-
 function deepSizeOf(arg)
 	if type(arg)~="table" then return 1 end
 	local i=0
