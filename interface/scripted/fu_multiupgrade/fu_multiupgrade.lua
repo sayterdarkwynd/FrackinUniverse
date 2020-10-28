@@ -41,13 +41,19 @@ function populateItemList(forceRepop)
 	local upgradableItems={}
 
 	for i = 1, #upgradeableWeaponItems do
-		upgradeableWeaponItems[i].count = 1
-		table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon"})
+		local monkeys=deepSizeOf(upgradeableWeaponItems[i])
+		if monkeys <=100 then
+			upgradeableWeaponItems[i].count = 1
+			table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon"})
+		end
 	end
 
 	for i = 1, #upgradeableToolItems do
-		upgradeableToolItems[i].count = 1
-		table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool"})
+		local monkeys=deepSizeOf(upgradeableToolItems[i])
+		if monkeys <=100 then
+			upgradeableToolItems[i].count = 1
+			table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool"})
+		end
 	end
 
 	widget.setVisible("emptyLabel", #upgradableItems == 0)
@@ -593,4 +599,16 @@ function criticalError()
 	widget.setText("warningLabel","^red;CRITICAL ERROR: ID10T")
 	script.setUpdateDelta(0)
 	error("You have a heavily overloaded item. This upgrade UI can't handle those. Items like the holographic ruler, for example.")
+end
+
+
+function deepSizeOf(arg)
+	if type(arg)~="table" then return 1 end
+	local i=0
+	for _,value in pairs(arg) do
+		if type(value)~="table" then i=i+1
+		else i=i+deepSizeOf(value)
+		end
+	end
+	return(i)
 end
