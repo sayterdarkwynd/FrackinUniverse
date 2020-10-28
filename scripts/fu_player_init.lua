@@ -13,7 +13,6 @@ function init(...)
 	if origInit then
 		origInit(...)
 	end
-	--weatherEffectsCache={}
 	didInit=true
 	doIdiotCheck=true
 	sb.logInfo("----- FU player init -----")
@@ -45,11 +44,7 @@ function init(...)
 	message.setHandler("player.loungingIn", player.loungingIn)
 	message.setHandler("playerIsInMech", playerIsInMech)
 	message.setHandler("playerIsInVehicle", playerIsInVehicle)
-	
-	self.setData={}
-	message.setHandler("recordSetBonus",function(_,_,setName) self.setData[setName]=os.time() end)
-	
-	
+
 	message.setHandler("player.equippedItem",function (_,_,...) return player.equippedItem(...) end)
 	message.setHandler("player.hasItem",function (_,_,...) return player.hasItem(...) end)
 	message.setHandler("player.hasCountOfItem",function (_,_,...) return player.hasCountOfItem(...) end)
@@ -88,30 +83,6 @@ function update(dt)
 		if not pass then sb.logError("%s",result) end
 		pass,result=pcall(handleStatusProperties,dt)
 		if not pass then sb.logError("%s",result) end
-		pass,result=pcall(handleSetOrphans,dt)
-		if not pass then sb.logError("%s",result) end
-	end
-end
-
-function handleSetOrphans(dt)
-	if not orphanSetBonusTimer or orphanSetBonusTimer >= 1.0 then
-		orphanSetBonusTimer=0.0
-		local t=os.time()
-		for set,bd in pairs(self.setData) do
-			if math.abs(t-bd)>2.0 then
-				status.clearPersistentEffects(set)
-				self.setData[set]=nil
-			end
-		end
-	else
-		orphanSetBonusTimer=orphanSetBonusTimer+dt
-	end
-end
-
-function clearSetBonuses()
-	for set,bd in pairs(self.setData) do
-		status.clearPersistentEffects(set)
-		self.setData[set]=nil
 	end
 end
 
@@ -148,7 +119,6 @@ function idiotCheck(dt)
 end
 
 function essentialCheck(dt)
-	--if not essentialItemCheckTimer or (essentialItemCheckTimer>=1.0) then
 	if not essentialItemCheckTimer or (essentialItemCheckTimer>=0.1) then
 		for _,slot in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
 			local buffer=player.essentialItem(slot)
@@ -200,22 +170,10 @@ function unknownCheck(dt)
 				world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
 			end
 			status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
-			--[[for _,v in pairs(ffunknownWorldProp.effects) do
-				status.addEphemeralEffect(v)
-			end
-			weatherEffectsCache=ffunknownWorldProp.effects]]
 		elseif ffunknownWorldProp and world.type()~="ffunknown" then
 			world.setProperty("ffunknownWorldProp",nil)
-			--[[for _,v in pairs(weatherEffectsCache or {}) do
-				status.removeEphemeralEffect(v)
-			end
-			weatherEffectsCache={}]]
 			status.setPersistentEffects("ffunknownEffects",{})
 		else
-			--[[for _,v in pairs(weatherEffectsCache or {}) do
-				status.removeEphemeralEffect(v)
-			end
-			weatherEffectsCache={}]]
 			status.setPersistentEffects("ffunknownEffects",{})
 		end
 		ffunknownCheckTimer=0.0
@@ -270,11 +228,6 @@ function uninit(...)
 		origUninit(...)
 	end
 	status.setPersistentEffects("ffunknownEffects",{})
-	clearSetBonuses()
-	--[[for _,v in pairs(weatherEffectsCache or {}) do
-		status.removeEphemeralEffect(v)
-	end
-	weatherEffectsCache={}]]
 end
 
 --[[
