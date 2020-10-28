@@ -6,7 +6,7 @@ function entityVariant()
 	if entity.entityType() == "monster" then
 		return monster.type()
 	elseif entity.entityType() == "npc" then
-		return npc.npcType()
+		return npc.npcType(),npc.species()
 	elseif entity.entityType() == "object" then
 		return world.entityName(entity.id())
 	end
@@ -114,7 +114,12 @@ function sayToEntity(args, board)
 	local dialogMode = config.getParameter("dialogMode", "static")
 
 	if dialog == nil then
-		sb.logError("Dialog type %s not specified in %s, of species %s", args.dialogType, entityVariant(),world.entitySpecies(entity.id()))
+		local eType,species=entityVariant()
+		if eType=="npc" then
+			sb.logError("Dialog type %s not specified in %s, of species %s", args.dialogType, eType,species)
+		else
+			sb.logError("Dialog type %s not specified in %s", args.dialogType, eType)
+		end
 		dialog={"<^red;MISSING^reset;>"}
 		dialogMode="static"
 	end
