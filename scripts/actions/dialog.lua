@@ -114,7 +114,7 @@ function sayToEntity(args, board)
 	local dialogMode = config.getParameter("dialogMode", "static")
 
 	if dialog == nil then
-		sb.logError(string.format("Dialog type %s not specified in %s", args.dialogType, entityVariant()))
+		sb.logError("Dialog type %s not specified in %s", args.dialogType, entityVariant())
 		dialog="<^red;MISSING^reset;>"
 	end
 
