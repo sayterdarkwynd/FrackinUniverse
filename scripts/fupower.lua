@@ -200,7 +200,8 @@ end
 
 function callEntity(id,...)
 	if world.entityExists(id) then
-		return world.callScriptedEntity(id,...)
+		local pass,result=pcall(world.callScriptedEntity,id,...)
+		return pass and result
 	end
 end
 

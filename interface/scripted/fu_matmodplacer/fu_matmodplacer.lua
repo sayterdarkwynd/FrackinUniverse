@@ -127,7 +127,7 @@ end
 function essentialCheck()
 	for _,v in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
 		local test=player.essentialItem(v)
-		if test.name=="fu_matmodplacer" then
+		if test and test.name=="fu_matmodplacer" then
 			return true
 		end
 	end
