@@ -94,7 +94,8 @@ function upgradeCost(itemConfig,target,fakeUpgrade)
 	local downgrade=false
 	local isTool=itemHasTag(itemConfig,"upgradeableTool")
 	local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
-	target=target or iLvl+1
+	--target=target or iLvl+1
+	target=target or iLvl
 
 	if iLvl > maxLvl then
 		downgrade=true
@@ -239,7 +240,8 @@ function fixTargetText()
 		local itemLevel=math.floor(item.parameters.level or item.config.level or 1)
 		local isTool=itemHasTag(item,"upgradeableTool")
 		local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
-		num=math.min(maxLvl,math.max(itemLevel+1,((not self.isUpgradeKit) and num) or 0))
+		--num=math.min(maxLvl,math.max(itemLevel+1,((not self.isUpgradeKit) and num) or 0))
+		num=math.min(maxLvl,math.max(itemLevel,((not self.isUpgradeKit) and num) or 0))
 		self.upgradeTargetLevel=num
 		text=num..""
 	end
@@ -353,7 +355,8 @@ function upgrade(upgradeItem,target)
 				--set level
 				local isTool=itemHasTag(itemConfig,"upgradeableTool")
 				local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
-				mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1) + 1,maxLvl)
+				--mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1)+1,maxLvl)
+				mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1),maxLvl)
 				if target then
 					mergeBuffer.level=math.min(math.max(mergeBuffer.level,target),maxLvl)
 				end
