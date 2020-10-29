@@ -94,7 +94,8 @@ function upgradeCost(itemConfig,target,fakeUpgrade)
 	local downgrade=false
 	local isTool=itemHasTag(itemConfig,"upgradeableTool")
 	local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
-	target=target or iLvl+1
+	--target=target or iLvl+1
+	target=target or iLvl
 
 	if iLvl > maxLvl then
 		downgrade=true
@@ -136,8 +137,11 @@ function populateItemList(forceRepop)
 	local buffer = {}
 
 	for i = 1, #upgradeableWeaponItems do
-		upgradeableWeaponItems[i].count = 1
-		table.insert(buffer,upgradeableWeaponItems[i])
+		local monkeys=deepSizeOf(upgradeableWeaponItems[i])
+		if monkeys <=100 then
+			upgradeableWeaponItems[i].count = 1
+			table.insert(buffer,upgradeableWeaponItems[i])
+		end
 	end
 
 	upgradeableWeaponItems=buffer
@@ -236,7 +240,8 @@ function fixTargetText()
 		local itemLevel=math.floor(item.parameters.level or item.config.level or 1)
 		local isTool=itemHasTag(item,"upgradeableTool")
 		local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
-		num=math.min(maxLvl,math.max(itemLevel+1,((not self.isUpgradeKit) and num) or 0))
+		--num=math.min(maxLvl,math.max(itemLevel+1,((not self.isUpgradeKit) and num) or 0))
+		num=math.min(maxLvl,math.max(itemLevel,((not self.isUpgradeKit) and num) or 0))
 		self.upgradeTargetLevel=num
 		text=num..""
 	end
@@ -350,7 +355,8 @@ function upgrade(upgradeItem,target)
 				--set level
 				local isTool=itemHasTag(itemConfig,"upgradeableTool")
 				local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
-				mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1) + 1,maxLvl)
+				--mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1)+1,maxLvl)
+				mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1),maxLvl)
 				if target then
 					mergeBuffer.level=math.min(math.max(mergeBuffer.level,target),maxLvl)
 				end
@@ -567,4 +573,43 @@ function upgrade(upgradeItem,target)
 	else
 		populateItemList(true)
 	end
+end
+
+local oldCompare=compare
+function compare(t1,t2)
+	local pass,result=pcall(oldCompare,t1,t2)
+	if pass then
+		return result
+	else
+		criticalError()
+	end
+end
+
+function criticalError()
+	--fatal error, essentially. this can happen with certain items like the massive spawned in holo ruler thing. we're going to just disable the entire UI and display an informative warning.
+	widget.setVisible("essenceCostDescription",true)
+	widget.setVisible("upgradeTargetLabel",false)
+	widget.setVisible("upgradeTargetText",false)
+	widget.setVisible("itemScrollArea",false)
+	widget.setVisible("essenceCost",true)
+	widget.setVisible("warningLabel",true)
+	widget.setVisible("emptyLabel",false)
+	widget.setVisible("btnUpgrade",false)
+	widget.setVisible("btnUpgradeMax",false)
+	widget.setText("essenceCostDescription","^red;HEAVILY OVER-MODDED ITEM")
+	widget.setText("essenceCost","^yellow;Find it. Remove it.")
+	widget.setText("warningLabel","^red;CRITICAL ERROR: ID10T")
+	script.setUpdateDelta(0)
+	error("You have a heavily overloaded item. This upgrade UI can't handle those. Items like the holographic ruler, for example.")
+end
+
+function deepSizeOf(arg)
+	if type(arg)~="table" then return 1 end
+	local i=0
+	for _,value in pairs(arg) do
+		if type(value)~="table" then i=i+1
+		else i=i+deepSizeOf(value)
+		end
+	end
+	return(i)
 end

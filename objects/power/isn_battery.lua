@@ -1,6 +1,8 @@
 require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
+local batteryUpdateThrottleBase=0.1
+
 function init()
 	power.init()
 	power.setPower(0)
@@ -12,10 +14,9 @@ function init()
 end
 
 function update(dt)
-	object.setConfigParameter('description', isn_makeBatteryDescription())
-	power.setPower(power.getStoredEnergy())
+	batteryUpdate(dt)
 	power.update(dt)
-	animator.setAnimationState("meter", power.getStoredEnergy() == 0 and 'd' or tostring(math.floor(math.min(power.getStoredEnergy() / power.getMaxEnergy(),1.0) * 10),10))
+	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-dt)
 end
 
 function die()
@@ -92,5 +93,22 @@ end
 local oldPowerRemove=power.remove
 function power.remove(...)
 	oldPowerRemove(...)
-	update(script.updateDt())
+	batteryUpdate()
+end
+
+function batteryUpdate()
+	power.setPower(power.getStoredEnergy())
+	if not batteryUpdateThrottle or batteryUpdateThrottle <= 0 then
+		object.setConfigParameter('description', isn_makeBatteryDescription())
+		local oldAnim
+		if self.oldPowerStored then
+			oldAnim=((self.oldPowerStored) == 0 and 'd' or tostring(math.floor(math.min((self.oldPowerStored) / power.getMaxEnergy(),1.0) * 10),10))
+		end
+		local newAnim=(power.getStoredEnergy() == 0 and 'd' or tostring(math.floor(math.min(power.getStoredEnergy() / power.getMaxEnergy(),1.0) * 10),10))
+		if oldAnim~=newAnim then
+			animator.setAnimationState("meter",newAnim)
+		end
+		self.oldPowerStored=power.getStoredEnergy()
+		batteryUpdateThrottle=batteryUpdateThrottleBase
+	end
 end

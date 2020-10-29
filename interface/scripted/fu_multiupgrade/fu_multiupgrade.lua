@@ -41,13 +41,19 @@ function populateItemList(forceRepop)
 	local upgradableItems={}
 
 	for i = 1, #upgradeableWeaponItems do
-		upgradeableWeaponItems[i].count = 1
-		table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon"})
+		local monkeys=deepSizeOf(upgradeableWeaponItems[i])
+		if monkeys <=100 then
+			upgradeableWeaponItems[i].count = 1
+			table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon"})
+		end
 	end
 
 	for i = 1, #upgradeableToolItems do
-		upgradeableToolItems[i].count = 1
-		table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool"})
+		local monkeys=deepSizeOf(upgradeableToolItems[i])
+		if monkeys <=100 then
+			upgradeableToolItems[i].count = 1
+			table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool"})
+		end
 	end
 
 	widget.setVisible("emptyLabel", #upgradableItems == 0)
@@ -566,4 +572,42 @@ function upgradeTool(upgradeItem,price)
 			checkResearchBonus()
 		end
 	end
+end
+
+local oldCompare=compare
+function compare(t1,t2)
+	local pass,result=pcall(oldCompare,t1,t2)
+	if pass then
+		return result
+	else
+		criticalError()
+	end
+end
+
+function criticalError()
+	--fatal error, essentially. this can happen with certain items like the massive spawned in holo ruler thing. we're going to just disable the entire UI and display an informative warning.
+	widget.setVisible("essenceCostDescription",true)
+	widget.setVisible("itemScrollArea",false)
+	widget.setVisible("manipIcon",false)
+	widget.setVisible("upgradeIcon",false)
+	widget.setVisible("essenceCost",true)
+	widget.setVisible("warningLabel",true)
+	widget.setVisible("emptyLabel",false)
+	widget.setVisible("btnUpgrade",false)
+	widget.setText("essenceCostDescription","^red;HEAVILY OVER-MODDED ITEM")
+	widget.setText("essenceCost","^yellow;Find it. Remove it.")
+	widget.setText("warningLabel","^red;CRITICAL ERROR: ID10T")
+	script.setUpdateDelta(0)
+	error("You have a heavily overloaded item. This upgrade UI can't handle those. Items like the holographic ruler, for example.")
+end
+
+function deepSizeOf(arg)
+	if type(arg)~="table" then return 1 end
+	local i=0
+	for _,value in pairs(arg) do
+		if type(value)~="table" then i=i+1
+		else i=i+deepSizeOf(value)
+		end
+	end
+	return(i)
 end
