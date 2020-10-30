@@ -84,6 +84,7 @@
     "value": 40
   },
   
+  
   // ............................
   // Frackin Weapon editions.
   // This is not an ideal solution by any means, but it'll suffice untill we come up with a tag-based alternative system. Once we do that, we can get rid of this whole section.
@@ -721,10 +722,28 @@
       "maxRange": 45,
       "forceMoveRange": 30
     }
-  }, 
+  },   
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/npcfirebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 40
+    }
+  },  
    {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/commonbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 40
+    }
+  },  
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/neb-commonbow",
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
@@ -742,7 +761,25 @@
   },  
    {
     "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/neb-uncommonbow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 40
+    }
+  },  
+   {
+    "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/rarebow",
+    "value": {
+        "minRange" : 10,
+        "maxRange" : 45,
+        "forceMoveRange" : 40
+    }
+  },  
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/neb-rarebow",
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
@@ -3716,9 +3753,178 @@
     }
   },   
   
+  
+  // Frackin UNIQUE Stynger
+  
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/advalloystynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/aetheriumstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/carbonstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ironstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lightningstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/lunaristynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/telebriumstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/tungstenstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/xithricitestynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/zerchesiumstynger",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 30
+    }
+  },
+  
   //...
   //Melees
   //
+  
+  // Vanilla weapons that NPCs use that CF forgot to add entries for. ... Really, CF? REALLY?!
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcavianbroadsword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 4
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcbruisersword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 4
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npccultistbroadsword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 4
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npccultistshortsword",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 3
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcdeadbeataxe",
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 3
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npceyesword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 4
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcfeneroxspear",
+    "value": {
+      "minRange": 3,
+      "maxRange": 5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcgangbroadsword",
+    "value": {
+      "minRange": 2,
+      "maxRange": 4
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/npcwrench",
+    "value": {
+      "minRange": 2,
+      "maxRange": 4
+    }
+  },
+  
   // Frackin RNG Melees
   
   {
