@@ -101,7 +101,7 @@ function update(dt)
 			--animator.setAnimationState("samplingarrayanim", "working")
 			local count=tenantNumber
 			if count>0 then
-				count=sqrt(count)
+				count=math.sqrt(count)
 				if math.floor(count)~=count then
 					count=math.floor(count+(((math.random()>count-math.floor(count)) and 1) or 0))
 				end
