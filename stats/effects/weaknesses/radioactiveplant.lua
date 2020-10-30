@@ -57,7 +57,6 @@ end
 function applyEffects()
 	self.appliedHeal = self.healthRegen + self.xiBonus
 	self.appliedHunger = 1.08 + self.xiBonus
-	effect.setStatModifierGroup
 	--status.setPersistentEffects("floranpower1", { {stat = "healthRegen", amount = self.appliedHeal*math.max(0,1+status.stat("healingBonus")) },{stat = "foodDelta", effectiveMultiplier = -self.appliedHunger} })
 
 	effect.setStatModifierGroup(self.statHandler,{ {stat = "healthRegen", amount = self.appliedHeal*math.max(0,1+status.stat("healingBonus")) },{stat = "foodDelta", effectiveMultiplier = -self.appliedHunger} })
