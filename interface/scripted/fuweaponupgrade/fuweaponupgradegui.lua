@@ -138,7 +138,7 @@ function populateItemList(forceRepop)
 
 	for i = 1, #upgradeableWeaponItems do
 		local monkeys=deepSizeOf(upgradeableWeaponItems[i])
-		if monkeys <=100 then
+		if monkeys <=250 then
 			upgradeableWeaponItems[i].count = 1
 			table.insert(buffer,upgradeableWeaponItems[i])
 		end
