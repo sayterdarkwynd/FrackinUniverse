@@ -37,6 +37,7 @@ function init()
 	self.recipeTypes = self.recipeTable.recipeTypes[self.centrifugeType]
 
 	handleOnOff()
+	math.randomseed(util.seedTime())
 	object.setInteractive(true)
 end
 
@@ -61,7 +62,7 @@ function update(dt)
 		storage.timer = math.max(storage.timer - dt,0)
 	elseif storage.timer == 0 then
 		if storage.activeConsumption then
-			storage.currentinput={ name = storage.input.name, count = 1, data={}}
+			storage.currentinput={ name = storage.input.name, count = 1}
 			stashHoney(storage.input.name)
 			storage.input = nil
 			storage.activeConsumption = false
@@ -72,20 +73,26 @@ function update(dt)
 				local done=false
 				local throw=nil
 				if rnd <= chance then
+					throw={parameters={}, name=item, count=1}
 					local contSize=world.containerSize(entity.id())
 					for i=self.inputSlot,contSize-1 do
-						throw = world.containerPutItemsAt(entity.id(), { name = item, count = 1, data={}},i)
+						if throw then
+							throw = world.containerPutItemsAt(entity.id(),throw,i)
+						end
 						if not throw then
-							storage.currentinput=nil
 							done=true
 							break
 						end
+					end
+					if throw then
+						world.spawnItem(throw, entity.position())
+						throw=nil
+						done=true
 					end
 					if done then
 						break
 					end
 				end
-				if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around
 				storage.currentinput=nil
 				rnd = rnd - chance
 			end

@@ -56,7 +56,7 @@ function applySetEffects()
 		status.addEphemeralEffect(v,2)
 	end]]
 	--sb.logInfo("s %s e %s",setName,self.setBonusEffects)
-	world.sendEntityMessage(entity.id(),"recordSetBonus",setName)
+	world.sendEntityMessage(entity.id(),"recordFUArmorSetBonus",setName)
 	status.setPersistentEffects(setName,self.setBonusEffects)
 end
 
