@@ -2,6 +2,7 @@ require "/scripts/util.lua"
 
 function init()
 	message.setHandler("doShuffle",doShuffle)
+	doAnims()
 end
 
 function update(dt)
@@ -20,6 +21,7 @@ function update(dt)
 			storage.output=nil
 			storage.input=nil
 			storage.input2=nil
+			doAnims()
 		end
 	end
 end
@@ -59,6 +61,7 @@ function doShuffle()
 		storage.output=randoItem
 	end
 	storage.craftTimer=3.0
+	doAnims()
 end
 
 function uninit()
@@ -69,5 +72,13 @@ function uninit()
 	if storage.input2 then
 		world.spawnItem(storage.input2,entity.position())
 		storage.input2=nil
+	end
+end
+
+function doAnims()
+	if storage.craftTimer and storage.craftTimer>0 then
+		animator.setAnimationState("centrifuge","working")
+	else
+		animator.setAnimationState("centrifuge","idle")
 	end
 end
