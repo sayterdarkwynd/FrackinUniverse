@@ -7,11 +7,12 @@ NebBowShot = WeaponAbility:new()
 
 function NebBowShot:init()
 	self.energyPerShot = self.energyPerShot or 0
-	self.drawTimer = 0
-	
-	self.bonusSpeed = status.stat("bowDrawTimeBonus")
+
+	self.drawTimer= 0
+	self.bonusSpeed = math.max(-0.99,status.stat("bowDrawTimeBonus"))
+	self.bonusSpeedMult=1/(1+self.bonusSpeed)
 	self.baseDrawTime=self.drawTime
-	self.drawTime = math.max(script.updateDt(),self.drawTime - self.bonusSpeed)
+	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*self.bonusSpeedMult)
 	
 	animator.setGlobalTag("drawFrame", "0")
 	animator.setAnimationState("bow", "idle")
@@ -32,7 +33,7 @@ function NebBowShot:update(dt, fireMode, shiftHeld)
 	
 	--Code for calculating which cursor to use
 	if not self.hasChargedCursor then
-		local cursorFrame = math.max(math.ceil(self.drawTimer * #self.cursorFrames), 1)
+		local cursorFrame = math.max(math.ceil(self.drawTimer* #self.cursorFrames), 1)
 		activeItem.setCursor(self.cursorFrames[cursorFrame])
 		if cursorFrame == #self.cursorFrames then
 			self.hasChargedCursor = true
@@ -41,7 +42,7 @@ function NebBowShot:update(dt, fireMode, shiftHeld)
 		activeItem.setCursor(self.cursorFrames[#self.cursorFrames])
 	end
 
-	if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.drawTimer > 0 or not status.resourceLocked("energy")) then
+	if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.drawTimer> 0 or not status.resourceLocked("energy")) then
 		self:setState(self.draw)
 	end
 end
@@ -63,7 +64,7 @@ function NebBowShot:draw()
 	
 	self.weapon:setStance(self.stances.draw)
 
-	animator.setSoundPitch("draw", 1, self.drawTime)
+	animator.setSoundPitch("draw", 1, self.modifiedDrawTime)
 	animator.playSound("draw", -1)
 	local readySoundPlayed = false
 
@@ -72,16 +73,16 @@ function NebBowShot:draw()
 			mcontroller.controlModifiers({runningSuppressed = true})
 		end
 
-		self.drawTimer = self.drawTimer + self.dt
+		self.drawTimer= self.drawTimer+ self.dt
 
-		local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer / self.drawTime * (#self.drawArmFrames - 1)))
+		local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer/ self.modifiedDrawTime * (#self.drawArmFrames - 1)))
 		
 		--If not yet fully drawn, drain energy quickly
-		if self.drawTimer < self.drawTime then
-			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus) / self.drawTime * self.dt)
+		if self.drawTimer< self.modifiedDrawTime then
+			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus) / self.modifiedDrawTime * self.dt)
 		
 		--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
-		elseif self.drawTimer > self.drawTime and self.drawTimer <= (self.drawTime + (self.powerProjectileTime or 0)) then
+		elseif self.drawTimer> self.modifiedDrawTime and self.drawTimer<= (self.modifiedDrawTime + (self.powerProjectileTime or 0)) then
 			status.setResourcePercentage("energyRegenBlock", 0.6)
 			drawFrame = #self.drawArmFrames - 1
 			if self.drainEnergyWhilePowerful then
@@ -89,13 +90,13 @@ function NebBowShot:draw()
 			end
 		
 		--If drawn beyond power peak levels, drain energy slowly
-		elseif self.drawTimer > (self.drawTime + (self.powerProjectileTime or 0)) then
+		elseif self.drawTimer> (self.modifiedDrawTime + (self.powerProjectileTime or 0)) then
 			status.overConsumeResource("energy", self.holdEnergyUsage * self.dt)
 		end
 		--If the bow is almost fully drawn, stop the draw sound and play the ready sound
 		--Do this slightly before the draw is ready so the player can release when they hear the sound
 		--This way, the sound plays at the same moment in the draw phase for every bow regardless of draw time
-		if self.drawTimer >= (self.drawTime - 0.15) then
+		if self.drawTimer>= (self.modifiedDrawTime - 0.15) then
 			animator.stopAllSounds("draw")
 			if not readySoundPlayed then
 			animator.playSound("ready")
@@ -146,7 +147,7 @@ function NebBowShot:fire()
 	
 		animator.setAnimationState("bow", "loosed")
 
-		self.drawTimer = 0
+		self.drawTimer= 0
 
 		util.wait(self.stances.fire.duration)
 	else
@@ -159,7 +160,7 @@ end
 --Call this to check if the bow was released at the perfect moment. Bows can be configured to not use perfect timing mechanics
 function NebBowShot:perfectTiming()
 	if self.powerProjectileTime then
-		return self.drawTimer > self.drawTime and self.drawTimer < (self.drawTime + self.powerProjectileTime)
+		return self.drawTimer> self.modifiedDrawTime and self.drawTimer< (self.modifiedDrawTime + self.powerProjectileTime)
 	else
 		return false
 	end
@@ -178,7 +179,7 @@ function NebBowShot:currentProjectileParameters()
 	
 	--Calculate projectile speed based on draw time and projectile parameters
 	projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
-	projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer / self.drawTime)) * speedMultiplier
+	projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer/ self.modifiedDrawTime)) * speedMultiplier
 	
 	--Bonus damage calculation for quiver users
 	--local damageBonus = 1.0 + status.stat("bowDrawTimeBonus") --adds the bow draw bonus back to damage to keep it on par, otherwise we lose damage
@@ -188,7 +189,7 @@ function NebBowShot:currentProjectileParameters()
 	end
 	
 	--Calculate projectile power based on draw time and projectile parameters
-	local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer / self.drawTime))
+	local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer/ self.modifiedDrawTime))
 	projectileParameters.power = projectileParameters.power or projectileConfig.power 
 	projectileParameters.power = projectileParameters.power 
 		* self.baseDrawTime
