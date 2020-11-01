@@ -45,7 +45,8 @@ function init()
 		errored = true
 		widget.setText("textScrollBox.text", "An error has occured. Please report this error with a log attached.")
 		widget.setButtonEnabled("close", true)
-		widget.setText("close", "Dismiss")
+		--widget.setText("close", "Dismiss")
+		widget.setText("close", "")
 	end
 end
 
@@ -57,7 +58,8 @@ function update(dt)
 	--	else
 			checkedAll = true
 			widget.setButtonEnabled("close", true)
-			widget.setText("close", "Dismiss")
+			--widget.setText("close", "Dismiss")
+			widget.setText("close", "")
 	--	end
 	--end
 end
@@ -128,7 +130,8 @@ function checkString(str, req)
 		errored = true
 		widget.setText("textScrollBox.text", "An error has occured. Please report this error with a log attached.")
 		widget.setButtonEnabled("close", true)
-		widget.setText("close", "Dismiss")
+		--widget.setText("close", "Dismiss")
+		widget.setText("close", "")
 	end
 end
 
