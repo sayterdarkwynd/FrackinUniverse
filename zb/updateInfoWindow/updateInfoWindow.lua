@@ -77,7 +77,7 @@ function displayInfo()
 	
 	if data[modslist[index]].image then
 		local imageSize = root.imageSize(data[modslist[index]].image)
-		local widgetPosition = {150, 229}
+		local widgetPosition = {150, 232}
 		widgetPosition[1] = widgetPosition[1] - imageSize[1] * 0.5
 		widgetPosition[2] = widgetPosition[2] - imageSize[2] * 0.5
 		widget.setPosition("title", widgetPosition)
