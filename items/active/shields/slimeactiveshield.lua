@@ -176,12 +176,12 @@ function update(dt, fireMode, shiftHeld)
       activeNova = 1
 	  playerID = activeItem.ownerEntityId()
 	  playerPosition = world.entityPosition(playerID)
-	  sb.logInfo("%s", "--Shields depleted, here comes the explosion :)")
+	  --sb.logInfo("%s", "--Shields depleted, here comes the explosion :)")
 	  explosion= world.spawnProjectile("slimeshieldabilitystart", playerPosition, playerID, nil, true, self.pParams)
 	  status.addEphemeralEffect("slimeshieldfreeze")
 	elseif status.resourcePercentage("shieldStamina") == 1 and activeNova == 1 then
 		activeNova = 0
-		sb.logInfo("%s", "Shields up, nova is waiting.")	
+		--sb.logInfo("%s", "Shields up, nova is waiting.")	
 	end
 
 	
