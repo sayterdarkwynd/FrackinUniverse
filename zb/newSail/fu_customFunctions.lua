@@ -33,3 +33,8 @@ function fu_configureShipPet()
 		player.interact("ScriptPane", petConfigPane)
 	end
 end
+
+function fu_crashberry()
+		status.clearAllPersistentEffects()
+		status.clearEphemeralEffects()
+end
