@@ -20,6 +20,7 @@ function hit(target)
 end
 
 function update(dt)
+	self.hitTimer=math.max(0,(self.hitTimer or 0.0)-dt)
 	if self.stuck then return end
 	if projectile.collision() then
 		self.collisionTimer=(self.collisionTimer or 0.0)+dt
@@ -30,9 +31,6 @@ function update(dt)
 	else
 		self.collisionTimer=0.0
 	end
-
-	self.hitTimer=math.max(0,(self.hitTimer or 0.0)-dt)
-
 	if (math.abs(mcontroller.xVelocity())>=1.0) or (math.abs(mcontroller.yVelocity())>=1.0) then
 		mcontroller.setRotation(vec2.angle({mcontroller.xVelocity(),mcontroller.yVelocity()}))
 		self.stagnantTimer=0.0
