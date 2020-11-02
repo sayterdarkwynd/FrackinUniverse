@@ -27,14 +27,14 @@ function init(...)
 	
 	-- Add the scan interaction handler if its missing
 	if not player.hasQuest("zb_scaninteraction") then
-		sb.logInfo("Readded 'zb_scaninteraction' quest")
+		sb.logInfo("Re-added 'zb_scaninteraction' quest")
 		player.startQuest("zb_scaninteraction")
 	end
 	
 	-- require "/zb/zb_util.lua"
 	-- zbutil.DeepPrintTable(player)
 	
-	sb.logInfo("")
+	sb.logInfo("----- end ZB player init -----")
 end
 
 function updateInfoWindow()

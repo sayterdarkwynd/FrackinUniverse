@@ -92,8 +92,7 @@ function init()
 end
 
 function firstTimeInit()
-	sb.logInfo("----------")
-	sb.logInfo("STATION OBJECT ID "..objectID.." CALLED FOR THE FIRST TIME. ATTEMPTING TO ADD STATION DATA...")
+	sb.logInfo("----First Time Space Station Init----\nSTATION OBJECT ID "..objectID.." CALLED, ATTEMPTING TO ADD STATION DATA...")
 	
 	local race = "generic"
 	if objectData then
@@ -134,8 +133,6 @@ function firstTimeInit()
 	
 	objectData.lastVisit = world.time()
 	sb.logInfo("Happened at worldtime %s", objectData.lastVisit)
-	
-	sb.logInfo("----------")
 	
 	-- Choose what items the station has in its shop
 	shopRestock()
@@ -311,6 +308,7 @@ function firstTimeInit()
 		objectData.goodsStock[tbl.name] = stock
 	end
 	
+	sb.logInfo("----- End Station First Time Init -----")
 	initialized = true
 	GUIinit()
 end
