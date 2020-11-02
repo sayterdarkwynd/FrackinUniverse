@@ -230,7 +230,7 @@ end
 function fixTargetText()
 	local originalText = widget.getText("upgradeTargetText")
 	local text = originalText
-	local num=tonumber(text)
+	local num=tonumber(text) or 0
 	local item=getSelectedItem()
 	if not item then
 		text=""
@@ -241,9 +241,19 @@ function fixTargetText()
 		local isTool=itemHasTag(item,"upgradeableTool")
 		local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
 		--num=math.min(maxLvl,math.max(itemLevel+1,((not self.isUpgradeKit) and num) or 0))
-		num=math.min(maxLvl,math.max(itemLevel,((not self.isUpgradeKit) and num) or 0))
+		if self.isUpgradeKit then
+			num=util.clamp(num,itemLevel,itemLevel+1)
+		else
+			num=math.max(itemLevel,num)
+		end
+		num=math.min(maxLvl,num)
 		self.upgradeTargetLevel=num
 		text=num..""
+		if num==itemLevel then
+			widget.setText("btnUpgrade","Infuse")
+		else
+			widget.setText("btnUpgrade","Upgrade")
+		end
 	end
 	if originalText~=text then
 		widget.setText("upgradeTargetText",text)

@@ -70,6 +70,7 @@ function init(...)
 		end
 	end
 	--]]
+	sb.logInfo("----- End FU player init -----")
 end
 
 function update(dt)

@@ -49,12 +49,13 @@ function handleDarkStats(terminate)
 		if dL<darklevel then
 			status.setStatusProperty("darklevel",darklevel)
 			dL=darklevel
-			status.setStatusProperty("darkpriority",darklevel)
+			status.setStatusProperty("darkpriority",darkpriority)
 			dP=darkpriority
-		end
-		if dP<darkpriority then
-			status.setStatusProperty("darkpriority",darklevel)
-			dP=darkpriority
+		elseif dL==darklevel then
+			if dP<darkpriority then
+				status.setStatusProperty("darkpriority",darkpriority)
+				dP=darkpriority
+			end
 		end
 	else
 		status.setStatusProperty("darkpriority",0)
