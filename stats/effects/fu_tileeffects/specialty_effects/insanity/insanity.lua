@@ -5,12 +5,11 @@ function init()
   self.tickTime = 5.0
   self.tickTimer = self.tickTime
   activateVisualEffects()
-  self.timers = {} 
+  self.timers = {}
   _x = config.getParameter("defenseModifier", 0)
   baseValue = config.getParameter("defenseModifier",0)*(status.stat("protection"))
   effect.addStatModifierGroup({{stat = "protection", amount = baseValue }})
 end
-
 
 function activateVisualEffects()
   if entity.entityType()=="player" then
@@ -30,12 +29,12 @@ end
 function update(dt)
 
   	if ( status.stat("shadowResistance")  >= 0.60 ) and ( status.stat("cosmicResistance")  >= 0.60 ) then
-	  effect.expire() 
-	end  
-	
+	  effect.expire()
+	end
+
 	if world.entityType(entity.id()) == "player" then
-		status.addEphemeralEffect( "insanityblurstat")	
-	end	
+		status.addEphemeralEffect( "insanityblurstat")
+	end
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
@@ -50,7 +49,6 @@ function update(dt)
   end
 end
 
-
 function uninit()
-   
+
 end
