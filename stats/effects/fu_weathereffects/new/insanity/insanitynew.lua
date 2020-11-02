@@ -36,6 +36,7 @@ function fuInsanityWeather.init(self, config_file)
 	self.myspeed = 0
 	self.unBlockable = config.getParameter("isUnblockable") or 0
 	effect.addStatModifierGroup({{stat = "isUnblockable", amount = self.unBlockable}})
+	self.onTerrestrialWorld=world.terrestrial()
 end
 
 function fuInsanityWeather.update(self, dt)
@@ -103,7 +104,7 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 			effect.setStatModifierGroup(self.debuffGroup, newGroup)
 			if (status.stat("mentalProtection") < 1) and (self.madTimer < 200) then
 				local afkLvl=afkLevel()
-				if afkLvl<=3 then
+				if (afkLvl<=3) and (self.onTerrestrialWorld) then
 					self.randMadness = math.random(2,8-(2*afkLvl)) * (math.random(1,2) - status.stat("mentalProtection"))-- spawn madness randomly when this effect is active, less if inactive
 					world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
 				end
