@@ -10,7 +10,6 @@ end
 
 function hit(target)
 	if (self.maxHits>0) and (self.hitTimer==0) then
-		--sb.logInfo("hit! %s",target)
 		self.hitTimer=0.1
 		self.hitCounter=(self.hitCounter or 0)+1
 		if self.hitCounter>=self.maxHits then
@@ -46,15 +45,30 @@ function update(dt)
 	end
 
 	local targets = world.entityQuery(mcontroller.position(), 20, {withoutEntityId = projectile.sourceEntity(),includedTypes = {"creature"},order = "nearest"})
-
+	local myTarget
+	local buffer={}
 	for _, target in ipairs(targets) do
 		if entity.entityInSight(target) and world.entityCanDamage(entity.id(), target) then
-			local targetPos = world.entityPosition(target)
-			local myPos = mcontroller.position()
-			local dist = world.distance(targetPos, myPos)
-			--mcontroller.setRotation(vec2.angle({mcontroller.xVelocity(),mcontroller.yVelocity()}))
-			mcontroller.approachVelocity(vec2.mul(vec2.norm(dist), self.targetSpeed), self.controlForce)
-			return
+			table.insert(buffer,target)
 		end
+	end
+	for _, target in ipairs(buffer) do
+		if (not myTarget) and world.entityAggressive(target) then
+			myTarget=world.distance(world.entityPosition(target), mcontroller.position())
+		else
+			break
+		end
+	end
+	if not myTarget then
+		for _, target in ipairs(buffer) do
+			if (not myTarget) then
+				myTarget=world.distance(world.entityPosition(target), mcontroller.position())
+			else
+				break
+			end
+		end	
+	end
+	if myTarget then
+		mcontroller.approachVelocity(vec2.mul(vec2.norm(myTarget), self.targetSpeed), self.controlForce)
 	end
 end
