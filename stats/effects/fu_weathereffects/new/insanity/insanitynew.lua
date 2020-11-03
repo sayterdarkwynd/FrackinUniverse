@@ -1,6 +1,6 @@
+require "/stats/typer_particle.lua"
 require("/scripts/vec2.lua")
 require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
-
 --============================= CLASS DEFINITION ============================--
 --[[ This instantiates a child class of fuWeatherBase. The child's metatable
 		is set to the parent's, so that any missing indexes (methods) are looked
@@ -19,6 +19,15 @@ fuInsanityWeather = fuWeatherBase:new({})
 				self.parent:method()
 		The latter will pass the parent class as the "self" parameter, preventing
 		any attributes overwritten by the child from being used. ]]--
+		
+function fuInsanityWeather.removeEffect(self)
+	self:deactivateVisualEffects()
+	self:removeDebuffs()
+	-- Reset used warning messages (in case player only has temporary immunity)
+	self.usedMessages = {}
+	self.effectActive = false
+	typerParticle.reset()
+end
 
 function fuInsanityWeather.init(self, config_file)
 	effectConfig = self.parent.init(self, config_file)
@@ -37,6 +46,7 @@ function fuInsanityWeather.init(self, config_file)
 	self.unBlockable = config.getParameter("isUnblockable") or 0
 	effect.addStatModifierGroup({{stat = "isUnblockable", amount = self.unBlockable}})
 	self.onTerrestrialWorld=world.terrestrial()
+	typerParticle.init()
 end
 
 function fuInsanityWeather.update(self, dt)
@@ -52,6 +62,7 @@ function fuInsanityWeather.update(self, dt)
 			self:insanityChatter()
 			self.chatterTimer = self.chatterDelay.base + math.random() * self.chatterDelay.random
 		end
+		typerParticle.update(dt)
 	end
 end
 

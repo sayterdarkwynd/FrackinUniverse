@@ -86,8 +86,8 @@ function highestRarity(rarity2,rarity1)
 	if (t[rarity1] or 0)> (t[rarity2] or 0) then return rarity1 else return rarity2 end
 end
 
-function upgradeCost(itemConfig,target,fakeUpgrade)
-	if (not itemConfig) or (not fakeUpgrade and self.isUpgradeKit) then return 0 end
+function upgradeCost(itemConfig,target)
+	if (not itemConfig) then return 0 end
 	local iLvl=itemConfig.parameters.level or itemConfig.config.level or 1
 	local baseIlvl=iLvl
 	local currentValue=0
@@ -287,7 +287,7 @@ end
 function doUpgrade()
 	if self.selectedItem then
 		if self.isUpgradeKit then
-			local cost,downgrade=upgradeCost(root.itemConfig(getSelectedItem()),nil,true)
+			local cost,downgrade=upgradeCost(root.itemConfig(getSelectedItem()),self.upgradeTargetLevel)
 			if (not downgrade) and (cost>0) and (not player.consumeItem({name = "cuddlehorse", count = 1}, true)) then
 				widget.setButtonEnabled("btnUpgrade", false)
 				return
@@ -304,6 +304,9 @@ function doUpgrade()
 		local upgradeItem=getSelectedItem()
 		local pass,result=pcall(upgrade,upgradeItem,self.upgradeTargetLevel)
 		if not pass then
+			if self.isUpgradeKit then
+				player.giveItem({name = "cuddlehorse", count = 1})
+			end
 			player.giveItem(upgradeItem)
 			sb.logInfo("Upgrade failed: %s",result)
 		end
