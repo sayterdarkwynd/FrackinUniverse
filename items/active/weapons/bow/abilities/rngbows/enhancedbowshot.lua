@@ -191,7 +191,6 @@ function NebBowShot:currentProjectileParameters()
 	--Calculate projectile power based on draw time and projectile parameters
 	local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer/ self.modifiedDrawTime))
 	projectileParameters.power = projectileParameters.power or projectileConfig.power
-
 	projectileParameters.power = projectileParameters.power
 		* self.baseDrawTime
 		* self.weapon.damageLevelMultiplier
