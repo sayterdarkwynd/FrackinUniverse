@@ -42,7 +42,7 @@ function populateItemList(forceRepop)
 
 	for i = 1, #upgradeableWeaponItems do
 		local monkeys=deepSizeOf(upgradeableWeaponItems[i])
-		if monkeys <=100 then
+		if monkeys <=250 then
 			upgradeableWeaponItems[i].count = 1
 			table.insert(upgradableItems,{itemData=upgradeableWeaponItems[i],itemType="weapon"})
 		end
@@ -50,7 +50,7 @@ function populateItemList(forceRepop)
 
 	for i = 1, #upgradeableToolItems do
 		local monkeys=deepSizeOf(upgradeableToolItems[i])
-		if monkeys <=100 then
+		if monkeys <=250 then
 			upgradeableToolItems[i].count = 1
 			table.insert(upgradableItems,{itemData=upgradeableToolItems[i],itemType="tool"})
 		end

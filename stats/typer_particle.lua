@@ -1,8 +1,9 @@
-cfg = { }
-instances = { }
-spawnCooldown = 0
-runningTime = 0
-tid = 1
+typerParticle={}
+typerParticle.cfg = { }
+typerParticle.instances = { }
+typerParticle.spawnCooldown = 0
+typerParticle.runningTime = 0
+typerParticle.tid = 1
 
 -- 		Usage:
 -- Attach as a script to a status effect (in the 'scripts' field), and configure through a custom 'effectConfig' field in the effects root.
@@ -55,151 +56,163 @@ tid = 1
 
 -- Contains all controller methods.
 -- Irrelevant ones are culled on init, based on config
-controllerChain = { 
+typerParticle.controllerChain = { 
 	color = function(dt)
-		if cfg.controllers.colorLoop then
+		if typerParticle.cfg.controllers.colorLoop then
 			-- Giving a 255 headtsrat because the correct color calculation only works above 255
 			realColor = realColor or {
-				255 + cfg.particle.color[1],
-				255 + cfg.particle.color[2],
-				255 + cfg.particle.color[3],
-				255 + cfg.particle.color[4]
+				255 + typerParticle.cfg.particle.color[1],
+				255 + typerParticle.cfg.particle.color[2],
+				255 + typerParticle.cfg.particle.color[3],
+				255 + typerParticle.cfg.particle.color[4]
 			}
 			
 			realColor = {
-				realColor[1] + cfg.controllers.color[1] * dt,
-				realColor[2] + cfg.controllers.color[2] * dt,
-				realColor[3] + cfg.controllers.color[3] * dt,
-				realColor[4] + cfg.controllers.color[4] * dt
+				realColor[1] + typerParticle.cfg.controllers.color[1] * dt,
+				realColor[2] + typerParticle.cfg.controllers.color[2] * dt,
+				realColor[3] + typerParticle.cfg.controllers.color[3] * dt,
+				realColor[4] + typerParticle.cfg.controllers.color[4] * dt
 			}
 
-			cfg.particle.color = {
+			typerParticle.cfg.particle.color = {
 				math.abs(255 - realColor[1] % 510),
 				math.abs(255 - realColor[2] % 510),
 				math.abs(255 - realColor[3] % 510),
 				math.abs(255 - realColor[4] % 510)
 			}
 		else
-			cfg.particle.color = {
-				math.max(0, math.min(cfg.particle.color[1] + cfg.controllers.color[1] * dt, 255)),
-				math.max(0, math.min(cfg.particle.color[2] + cfg.controllers.color[2] * dt, 255)),
-				math.max(0, math.min(cfg.particle.color[3] + cfg.controllers.color[3] * dt, 255)),
-				math.max(0, math.min(cfg.particle.color[4] + cfg.controllers.color[4] * dt, 255))
+			typerParticle.cfg.particle.color = {
+				math.max(0, math.min(typerParticle.cfg.particle.color[1] + typerParticle.cfg.controllers.color[1] * dt, 255)),
+				math.max(0, math.min(typerParticle.cfg.particle.color[2] + typerParticle.cfg.controllers.color[2] * dt, 255)),
+				math.max(0, math.min(typerParticle.cfg.particle.color[3] + typerParticle.cfg.controllers.color[3] * dt, 255)),
+				math.max(0, math.min(typerParticle.cfg.particle.color[4] + typerParticle.cfg.controllers.color[4] * dt, 255))
 			}
 		end
 	end,
 
 	size = function(dt)
-		if not cfg.controllers.sizeMax or cfg.particle.size < cfg.controllers.sizeMax then
-			cfg.particle.size = cfg.particle.size + cfg.controllers.size * dt
+		if not typerParticle.cfg.controllers.sizeMax or typerParticle.cfg.particle.size < typerParticle.cfg.controllers.sizeMax then
+			typerParticle.cfg.particle.size = typerParticle.cfg.particle.size + typerParticle.cfg.controllers.size * dt
 		end
 	end,
 
 	timeToLive = function(dt)
-		if not cfg.controllers.lifeSpanMax or cfg.particle.timeToLive < cfg.controllers.lifeSpanMax then
-			cfg.particle.timeToLive = cfg.particle.timeToLive + cfg.controllers.timeToLive * dt
+		if not typerParticle.cfg.controllers.lifeSpanMax or typerParticle.cfg.particle.timeToLive < typerParticle.cfg.controllers.lifeSpanMax then
+			typerParticle.cfg.particle.timeToLive = typerParticle.cfg.particle.timeToLive + typerParticle.cfg.controllers.timeToLive * dt
 		end
 	end,
 
 	boundingBox = function(dt)
-		cfg.boundingBox = cfg.boundingBox or {0, 0}
+		typerParticle.cfg.boundingBox = typerParticle.cfg.boundingBox or {0, 0}
 
-		if cfg.controllers.boundingBoxMax then
-			cfg.boundingBox = {
-				math.min(cfg.boundingBox[1] + cfg.controllers.boundingBox[1] * dt, cfg.controllers.boundingBoxMax[1]),
-				math.min(cfg.boundingBox[2] + cfg.controllers.boundingBox[2] * dt, cfg.controllers.boundingBoxMax[2])
+		if typerParticle.cfg.controllers.boundingBoxMax then
+			typerParticle.cfg.boundingBox = {
+				math.min(typerParticle.cfg.boundingBox[1] + typerParticle.cfg.controllers.boundingBox[1] * dt, typerParticle.cfg.controllers.boundingBoxMax[1]),
+				math.min(typerParticle.cfg.boundingBox[2] + typerParticle.cfg.controllers.boundingBox[2] * dt, typerParticle.cfg.controllers.boundingBoxMax[2])
 			}
 		else
-			cfg.boundingBox = {
-				cfg.boundingBox[1] + cfg.controllers.boundingBox[1] * dt,
-				cfg.boundingBox[2] + cfg.controllers.boundingBox[2] * dt
+			typerParticle.cfg.boundingBox = {
+				typerParticle.cfg.boundingBox[1] + typerParticle.cfg.controllers.boundingBox[1] * dt,
+				typerParticle.cfg.boundingBox[2] + typerParticle.cfg.controllers.boundingBox[2] * dt
 			}
 		end
 
-		cfg.boundingBox = {
-			math.max(0, cfg.boundingBox[1]),
-			math.max(0, cfg.boundingBox[2])
+		typerParticle.cfg.boundingBox = {
+			math.max(0, typerParticle.cfg.boundingBox[1]),
+			math.max(0, typerParticle.cfg.boundingBox[2])
 		}
 	end,
 
 	spacing = function(dt)
-		cfg.spacing = {
-			cfg.spacing[1] + cfg.controllers.spacing[1] * dt,
-			cfg.spacing[2] + cfg.controllers.spacing[2] * dt
+		typerParticle.cfg.spacing = {
+			typerParticle.cfg.spacing[1] + typerParticle.cfg.controllers.spacing[1] * dt,
+			typerParticle.cfg.spacing[2] + typerParticle.cfg.controllers.spacing[2] * dt
 		}
 	end
 }
 
-typer_previousInit = init
-typer_previousUpdate = update
-isActive = true
+local typer_previousInit = init
+local typer_previousUpdate = update
+typerParticle.isActive = true
 
 function init()
 	if typer_previousInit then typer_previousInit() end
-	
+	typerParticle.init()
+end
+
+function typerParticle.init()
 	-- Do nothing if the entity is not a player. (Don't expire the status effect as it might have other functionality)
 	if world.entityType(entity.id()) ~= "player" then
-		isActive = false
+		typerParticle.isActive = false
 		return
 	end
 
 	-- Get config and set constant particle info
-	cfg = config.getParameter("typerParticleConfig")
-	cfg.particle.type = "text"
-	cfg.particle.layer = "front"
+	typerParticle.cfg = config.getParameter("typerParticleConfig")
+	typerParticle.cfg.particle.type = "text"
+	typerParticle.cfg.particle.layer = "front"
 
 	-- Remove unused controllers
-	if cfg.controllers then
-		for controller, _ in pairs(controllerChain) do
-			if not cfg.controllers[controller] then
-				controllerChain[controller] = nil
+	if typerParticle.cfg.controllers then
+		for controller, _ in pairs(typerParticle.controllerChain) do
+			if not typerParticle.cfg.controllers[controller] then
+				typerParticle.controllerChain[controller] = nil
 			end
 		end
 
 		-- If the color is looping, it doesn't matter visually in which direction its going (beyond the past loop anyways)
 		-- But it does for the code so....
-		if cfg.controllers.color and cfg.controllers.colorLoop then
-			for i, color in ipairs(cfg.controllers.color) do
-				cfg.controllers.color[i] = math.abs(color)
+		if typerParticle.cfg.controllers.color and typerParticle.cfg.controllers.colorLoop then
+			for i, color in ipairs(typerParticle.cfg.controllers.color) do
+				typerParticle.cfg.controllers.color[i] = math.abs(color)
 			end
 		end
 	else
-		controllerChain = nil
+		typerParticle.controllerChain = nil
 	end
 
 	-- Set the correct picking method to the generic placeholder
-	-- Clear the other one
-	if (cfg.printTextInOrder) then
-		SelectText = SelectOrdered
-		SelectRandom = nil
+	-- Clear the other one--no.
+	if (typerParticle.cfg.printTextInOrder) then
+		typerParticle.SelectText = typerParticle.SelectOrdered
+		--typerParticle.SelectRandom = nil
 	else
-		SelectText = SelectRandom
-		SelectOrdered = nil
+		typerParticle.SelectText = typerParticle.SelectRandom
+		--typerParticle.SelectOrdered = nil
 	end
 end
 
 function update(dt)
 	if typer_previousUpdate then typer_previousUpdate(dt) end
-	if not isActive then return end
+	typerParticle.update(dt)
+end
+
+function typerParticle.reset()
+	typerParticle.runningTime=0.0
+	typerParticle.init()
+end
+
+function typerParticle.update(dt)
+	if not typerParticle.isActive then return end
 	
 	-- Keeps track of how long the effect is running
-	runningTime = runningTime + dt
+	typerParticle.runningTime = typerParticle.runningTime + dt
 
 	local toRemove = {}
-	for i, data in ipairs(instances) do
-		if (runningTime - data.lastTime >= cfg.writeInterval) then
-			cfg.particle.position = data.position
-			cfg.particle.text = string.sub(data.text, data.index, data.index)
-			world.sendEntityMessage(entity.id(), "fu_specialAnimator.spawnParticle", cfg.particle)
+	for i, data in ipairs(typerParticle.instances) do
+		if (typerParticle.runningTime - data.lastTime >= typerParticle.cfg.writeInterval) then
+			typerParticle.cfg.particle.position = data.position
+			typerParticle.cfg.particle.text = string.sub(data.text, data.index, data.index)
+			world.sendEntityMessage(entity.id(), "fu_specialAnimator.spawnParticle", typerParticle.cfg.particle)
 
-			data.position[1] = data.position[1] + cfg.spacing[1]
-			data.lastTime = runningTime
+			data.position[1] = data.position[1] + typerParticle.cfg.spacing[1]
+			data.lastTime = typerParticle.runningTime
 			data.index = data.index + 1
 
 			-- New line
 			if (string.sub(data.text, data.index, data.index) == "\n") then
 				data.position[1] = data.origin[1]
-				data.position[2] = data.position[2] + cfg.spacing[2]
+				data.position[2] = data.position[2] + typerParticle.cfg.spacing[2]
 				data.index = data.index + 1
 			end
 			
@@ -210,54 +223,54 @@ function update(dt)
 		end
 	end
 
-	-- Remove marked instances
+	-- Remove marked typerParticle.instances
 	for i = #toRemove, 1, -1 do
-		table.remove(instances, toRemove[i])
+		table.remove(typerParticle.instances, toRemove[i])
 	end
 
-	if (spawnCooldown <= 0) then
-		spawnCooldown = cfg.spawnInterval
+	if (typerParticle.spawnCooldown <= 0) then
+		typerParticle.spawnCooldown = typerParticle.cfg.spawnInterval
 
 		-- Get player position, and randomize particles position based on bounding box
 		local pos = entity.position()
-		if cfg.boundingBox then
+		if typerParticle.cfg.boundingBox then
 			pos = {
-				pos[1] + cfg.boundingBox[1] * (0.5 - math.random()),
-				pos[2] + cfg.boundingBox[2] * (0.5 - math.random())
+				pos[1] + typerParticle.cfg.boundingBox[1] * (0.5 - math.random()),
+				pos[2] + typerParticle.cfg.boundingBox[2] * (0.5 - math.random())
 			}
 		end
 
-		table.insert(instances, {
-			text = SelectText(),
+		table.insert(typerParticle.instances, {
+			text = typerParticle.SelectText(),
 			index = 1,
 			lastTime = 0,
 			origin = pos,
 			position = {pos[1], pos[2]}
 		})
 	else
-		spawnCooldown = spawnCooldown - dt
+		typerParticle.spawnCooldown = typerParticle.spawnCooldown - dt
 	end
 
 	-- Run controller chain of command
-	for _, command in pairs(controllerChain) do command(dt) end
+	for _, command in pairs(typerParticle.controllerChain) do command(dt) end
 end
 
 -- Gets overriden by another selection method on init. Treat it like a state.
-function SelectText() end
+function typerParticle.SelectText() end
 
-function SelectOrdered()
-	local str = cfg.texts[tid]
+function typerParticle.SelectOrdered()
+	local str = typerParticle.cfg.texts[typerParticle.tid]
 
-	if (cfg.loopOrderedText) then
-		tid = tid % #cfg.texts
-	elseif (tid >= #cfg.texts) then
-		cfg.spawnInterval = 999999999
+	if (typerParticle.cfg.loopOrderedText) then
+		typerParticle.tid = typerParticle.tid % #typerParticle.cfg.texts
+	elseif (typerParticle.tid >= #typerParticle.cfg.texts) then
+		typerParticle.cfg.spawnInterval = 999999999
 	end
 
-	tid = tid + 1
+	typerParticle.tid = typerParticle.tid + 1
 	return str
 end
 
-function SelectRandom()
-	return cfg.texts[math.random(1, #cfg.texts)]
+function typerParticle.SelectRandom()
+	return typerParticle.cfg.texts[math.random(1, #typerParticle.cfg.texts)]
 end

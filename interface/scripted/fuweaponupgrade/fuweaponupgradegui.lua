@@ -86,8 +86,8 @@ function highestRarity(rarity2,rarity1)
 	if (t[rarity1] or 0)> (t[rarity2] or 0) then return rarity1 else return rarity2 end
 end
 
-function upgradeCost(itemConfig,target,fakeUpgrade)
-	if (not itemConfig) or (not fakeUpgrade and self.isUpgradeKit) then return 0 end
+function upgradeCost(itemConfig,target)
+	if (not itemConfig) then return 0 end
 	local iLvl=itemConfig.parameters.level or itemConfig.config.level or 1
 	local baseIlvl=iLvl
 	local currentValue=0
@@ -138,7 +138,7 @@ function populateItemList(forceRepop)
 
 	for i = 1, #upgradeableWeaponItems do
 		local monkeys=deepSizeOf(upgradeableWeaponItems[i])
-		if monkeys <=100 then
+		if monkeys <=250 then
 			upgradeableWeaponItems[i].count = 1
 			table.insert(buffer,upgradeableWeaponItems[i])
 		end
@@ -230,7 +230,7 @@ end
 function fixTargetText()
 	local originalText = widget.getText("upgradeTargetText")
 	local text = originalText
-	local num=tonumber(text)
+	local num=tonumber(text) or 0
 	local item=getSelectedItem()
 	if not item then
 		text=""
@@ -241,9 +241,19 @@ function fixTargetText()
 		local isTool=itemHasTag(item,"upgradeableTool")
 		local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
 		--num=math.min(maxLvl,math.max(itemLevel+1,((not self.isUpgradeKit) and num) or 0))
-		num=math.min(maxLvl,math.max(itemLevel,((not self.isUpgradeKit) and num) or 0))
+		if self.isUpgradeKit then
+			num=util.clamp(num,itemLevel,itemLevel+1)
+		else
+			num=math.max(itemLevel,num)
+		end
+		num=math.min(maxLvl,num)
 		self.upgradeTargetLevel=num
 		text=num..""
+		if num==itemLevel then
+			widget.setText("btnUpgrade","Infuse")
+		else
+			widget.setText("btnUpgrade","Upgrade")
+		end
 	end
 	if originalText~=text then
 		widget.setText("upgradeTargetText",text)
@@ -277,7 +287,7 @@ end
 function doUpgrade()
 	if self.selectedItem then
 		if self.isUpgradeKit then
-			local cost,downgrade=upgradeCost(root.itemConfig(getSelectedItem()),nil,true)
+			local cost,downgrade=upgradeCost(root.itemConfig(getSelectedItem()),self.upgradeTargetLevel)
 			if (not downgrade) and (cost>0) and (not player.consumeItem({name = "cuddlehorse", count = 1}, true)) then
 				widget.setButtonEnabled("btnUpgrade", false)
 				return
@@ -294,6 +304,9 @@ function doUpgrade()
 		local upgradeItem=getSelectedItem()
 		local pass,result=pcall(upgrade,upgradeItem,self.upgradeTargetLevel)
 		if not pass then
+			if self.isUpgradeKit then
+				player.giveItem({name = "cuddlehorse", count = 1})
+			end
 			player.giveItem(upgradeItem)
 			sb.logInfo("Upgrade failed: %s",result)
 		end

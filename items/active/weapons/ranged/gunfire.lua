@@ -10,7 +10,9 @@ require "/items/active/weapons/crits.lua"
 GunFire = WeaponAbility:new()
 
 function GunFire:init()
--- FU additions
+	self.ownerId = activeItem.ownerEntityId()
+	self.ownerType=world.entityType(self.ownerId)
+	-- FU additions
 	--weapon types
 	self.isReloader = config.getParameter("isReloader",0)						-- is this a shotgun style reload?
 	self.isCrossbow = config.getParameter("isCrossbow",0)						-- is this a crossbow?
@@ -22,18 +24,15 @@ function GunFire:init()
 	self.countdownDelay = 0 									-- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
 
-	--self.playerMagBonus = status.stat("magazineSize")						-- player	ammo bonuses
-	--self.playerReloadBonus = status.stat("reloadTime")						-- player reload bonuses
-
 	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
-	self.magazineAmount = math.min(config.getParameter("magazineAmount",-1),self.magazineSize) 						-- current number of bullets in the magazine
+	local defaultMag=((self.ownerType=="player") and -1) or self.magazineSize
+	self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) 						-- current number of bullets in the magazine
 	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) 	-- how long does reloading mag take?
-	self.playerId = activeItem.ownerEntityId()
 
 	if (self.isAmmoBased == 1) then
 		self.timerRemoveAmmoBar = 0
 		self.currentAmmoPercent = util.clamp(self.magazineAmount / self.magazineSize,0.0,1.0)
-		self.isReloading=(self.magazineAmount <= 0) or config.getParameter("isReloading"..self.abilitySlot,true)
+		self.isReloading=((self.ownerType=="player") and config.getParameter("isReloading"..self.abilitySlot,true)) or (self.magazineAmount <= 0)
 	end
 	self.barName = "ammoBar"
 	self.barColor = {0,250,112,125}
