@@ -1,83 +1,83 @@
 require "/scripts/vec2.lua"
 
 function init()
-  self.recoil = 0
-  self.recoilRate = 0
+	self.recoil = 0
+	self.recoilRate = 0
 
-  self.fireOffset = config.getParameter("fireOffset")
-  updateAim()
+	self.fireOffset = config.getParameter("fireOffset")
+	updateAim()
 
-  self.active = false
-  storage.fireTimer = storage.fireTimer or 0
+	self.active = false
+	storage.fireTimer = storage.fireTimer or 0
 end
 
 function update(dt, fireMode, shiftHeld)
-  updateAim()
+	updateAim()
 
-  storage.fireTimer = math.max(storage.fireTimer - dt, 0)
+	storage.fireTimer = math.max(storage.fireTimer - dt, 0)
 
-  if self.active then
-    self.recoilRate = 0
-  else
-    self.recoilRate = math.max(1, self.recoilRate + (10 * dt))
-  end
-  self.recoil = math.max(self.recoil - dt * self.recoilRate, 0)
+	if self.active then
+		self.recoilRate = 0
+	else
+		self.recoilRate = math.max(1, self.recoilRate + (10 * dt))
+	end
+	self.recoil = math.max(self.recoil - dt * self.recoilRate, 0)
 
-  if self.active and not storage.firing and storage.fireTimer <= 0 then
-    self.recoil = math.pi/2 - self.aimAngle
-    activeItem.setArmAngle(math.pi/2)
-    if animator.animationState("firing") == "off" then
-      animator.setAnimationState("firing", "fire")
-    end
-    storage.fireTimer = config.getParameter("fireTime", 1.0)
-    storage.firing = true
+	if self.active and not storage.firing and storage.fireTimer <= 0 then
+		self.recoil = math.pi/2 - self.aimAngle
+		activeItem.setArmAngle(math.pi/2)
+		if animator.animationState("firing") == "off" then
+			animator.setAnimationState("firing", "fire")
+		end
+		storage.fireTimer = config.getParameter("fireTime", 1.0)
+		storage.firing = true
 
-  end
+	end
 
-  self.active = false
+	self.active = false
 
-  if storage.firing and animator.animationState("firing") == "off" then
-    item.consume(1)
-    if player then
-      animator.playSound("cutting")
-        player.giveItem({parameters={foliageHueShift=0,foliageName="orangeleaf",stemHueShift=0,scriptStorage={},stemName="orangestem"},count=1,name="sapling"})
-    end
-    storage.firing = false
-    return
-  end
+	if storage.firing and animator.animationState("firing") == "off" then
+		item.consume(1)
+		if player then
+			animator.playSound("cutting")
+			player.giveItem({parameters=config.getParameter("itemDropParameters",{}),count=1,name=config.getParameter("itemDropName","perfectlygenericitem")})
+		end
+		storage.firing = false
+		return
+	end
 end
 
 function activate(fireMode, shiftHeld)
-  if not storage.firing then
-    self.active = true
-  end
+	if not storage.firing then
+		self.active = true
+	end
 end
 
 function updateAim()
-  self.aimAngle, self.aimDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
-  self.aimAngle = self.aimAngle + self.recoil
-  activeItem.setArmAngle(self.aimAngle)
-  activeItem.setFacingDirection(self.aimDirection)
+	self.aimAngle, self.aimDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
+	self.aimAngle = self.aimAngle + self.recoil
+	activeItem.setArmAngle(self.aimAngle)
+	activeItem.setFacingDirection(self.aimDirection)
 end
 
 function firePosition()
-  return vec2.add(mcontroller.position(), activeItem.handPosition(self.fireOffset))
+	return vec2.add(mcontroller.position(), activeItem.handPosition(self.fireOffset))
 end
 
 function aimVector()
-  local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(config.getParameter("inaccuracy", 0), 0))
-  aimVector[1] = aimVector[1] * self.aimDirection
-  return aimVector
+	local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(config.getParameter("inaccuracy", 0), 0))
+	aimVector[1] = aimVector[1] * self.aimDirection
+	return aimVector
 end
 
 function holdingItem()
-  return true
+	return true
 end
 
 function recoil()
-  return false
+	return false
 end
 
 function outsideOfHand()
-  return false
+	return false
 end
