@@ -1959,18 +1959,6 @@
 
   "parts" : [
     {
-      "name" : "test1",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "image", [ "test1.png" ] ]
-    },
-    {
-      "name" : "floranhut1",
-      "rules" : [ ],
-      "def" : [ "image", [ "floranhut1.png", "floranhut1objects.png" ] ]
-    },
-    {
       "name" : "nomads",
       "rules" : [ ],
       "def" : [ "image", [ "nomads.png", "nomadsobjects.png" ] ]
@@ -1983,25 +1971,11 @@
       "def" : [ "image", [ "outhouse1.png", "outhouse1objects.png" ] ]
     },
     {
-      "name" : "outhouse2",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "image", [ "outhouse2.png", "outhouse2objects.png" ] ]
-    },
-    {
       "name" : "florancaged1",
       "rules" : [
         [ "maxSpawnCount", [1] ]
       ],
       "def" : [ "image", [ "florancaged1.png", "florancaged1objects.png" ] ]
-    },
-    {
-      "name" : "shroomcamp1",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "image", [ "shroomcamp1.png", "shroomcamp1objects.png" ] ]
     },
     {
       "name" : "shroomcamp2",
@@ -2016,13 +1990,6 @@
         [ "maxSpawnCount", [1] ]
       ],
       "def" : [ "image", [ "shroomcamp3.png", "shroomcamp3objects1.png", "shroomcamp3objects2.png" ] ]
-    },
-    {
-      "name" : "shroomcamp4",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "image", [ "shroomcamp4.png", "shroomcamp4objects2.png", "shroomcamp4objects1.png" ] ]
     },
     {
       "name" : "shroomcamp5",
@@ -2088,11 +2055,79 @@
       "def" : [ "image", [ "shroompatch1.png", "shroompatch1objects.png" ] ]
     },
     {
-      "name" : "outhouse3",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
+      "name": "floranhut1",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
       ],
-      "def" : [ "image", [ "outhouse3.png", "outhouse3objects.png" ] ]
+      "def": [
+        "tmx",
+         "floranhut1fire.json"
+      ]
+    },
+    {
+      "name": "outhouse2",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "outhouse2fire.json"
+      ]
+    },
+    {
+      "name": "outhouse3",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "outhouse3fire.json"
+      ]
+    },
+    {
+      "name": "shroomcamp1",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "shroomcamp1fire.json"
+      ]
+    },
+    {
+      "name": "shroomcamp4",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "shroomcamp4fire.json"
+      ]
     }
   ]
 }
