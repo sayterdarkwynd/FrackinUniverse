@@ -2263,17 +2263,35 @@
       "rules" : [ ],
       "def" : [ "image", [ "glitchtower2.png", "glitchtower2a.png" ] ]
     },
-
     {
-      "name" : "glitchhouse",
-      "rules" : [ ],
-      "def" : [ "image", [ "glitchhouse.png", "glitchhouseobjects.png" ] ]
+      "name": "glitchhouse",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "glitchhouse.json"
+      ]
     },
-
     {
-      "name" : "glitchtransport",
-      "rules" : [ ],
-      "def" : [ "image", [ "glitchtransport.png", "glitchtransportobjects.png" ] ]
+      "name": "glitchtransport",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "glitchtransport.json"
+      ]
     }
 
 
