@@ -115,7 +115,6 @@ function costMath(iLvl)
 	return math.max(math.floor(newValue-prevValue),0)
 end
 
-
 --[[{
 	"weaponEssenceValue" : [ "linear", "clamp",
 		[1, 3750],
@@ -286,16 +285,22 @@ end
 
 function doUpgrade()
 	if self.selectedItem then
+		local consumedKit=false
 		if self.isUpgradeKit then
 			local cost,downgrade=upgradeCost(root.itemConfig(getSelectedItem()),self.upgradeTargetLevel)
 			if (not downgrade) and (cost>0) and (not player.consumeItem({name = "cuddlehorse", count = 1}, true)) then
 				widget.setButtonEnabled("btnUpgrade", false)
 				return
+			elseif (not downgrade) and (cost>0) then
+				consumedKit=true
 			end
 		end
 
 		local isWorn=checkWorn(getSelectedItem())
 		if isWorn then
+			if consumedKit then
+				player.giveItem({name = "cuddlehorse", count = 1})
+			end
 			widget.setText("warningLabel",isWorn and "Error: "..isWorn or "")
 			widget.setButtonEnabled("btnUpgrade", false)
 			--widget.setButtonEnabled("btnUpgradeMax", false)
@@ -307,8 +312,14 @@ function doUpgrade()
 			if self.isUpgradeKit then
 				player.giveItem({name = "cuddlehorse", count = 1})
 			end
-			player.giveItem(upgradeItem)
 			sb.logInfo("Upgrade failed: %s",result)
+		elseif not result.completed then
+			if result.consumedItem then
+				player.giveItem(upgradeItem)
+			end
+			if consumedKit then
+				player.giveItem({name = "cuddlehorse", count = 1})
+			end
 		end
 	end
 end
@@ -347,17 +358,19 @@ end
 
 function upgrade(upgradeItem,target)
 	--local upgradeItem=getSelectedItem()
-
+	local upgradeStates={}
 	if upgradeItem then
 		if checkWorn(upgradeItem) then
 			return
 		end
 		local consumedItem = player.consumeItem(upgradeItem, false, true)
 		if consumedItem then
+			upgradeStates.consumedItem=true
 			local upCost=(target and upgradeCost(root.itemConfig(upgradeItem),target) or upgradeCost(root.itemConfig(upgradeItem)))
-			local consumedCurrency = player.consumeCurrency("essence", upCost)
+			local consumedCurrency = self.isUpgradeKit or player.consumeCurrency("essence", upCost)
 			local upgradedItem = copy(consumedItem)
 			if consumedCurrency or (upCost==0) then
+				upgradeStates.consumeCurrency=((not self.isUpgradeKit) and upCost)
 				local itemConfig = root.itemConfig(upgradedItem)
 				local mergeBuffer={}
 				local oldRarity=(itemConfig.parameters and itemConfig.parameters.rarity) or (itemConfig.config and itemConfig.config.rarity)
@@ -571,13 +584,17 @@ function upgrade(upgradeItem,target)
 				end
 
 				upgradedItem.parameters=util.mergeTable(copy(upgradedItem.parameters),copy(mergeBuffer))
+				upgradeStates.completed=true
 			end
 
 			-- check if player gets Research randomly
-			checkResearchBonus()
-			player.giveItem(upgradedItem)
-			sb.logInfo("Upgraded Stats: \n"..sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
-
+			if upgradeStates.completed then
+				player.giveItem(upgradedItem)
+				checkResearchBonus()
+				sb.logInfo("Upgraded Stats: \n"..sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
+			end
+			--player.giveItem(upgradedItem)
+			return upgradeStates
 		end
 	end
 
