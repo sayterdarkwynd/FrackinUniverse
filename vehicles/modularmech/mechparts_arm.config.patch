@@ -5119,7 +5119,27 @@
             "value": "/vehicles/modularmech/armscripts/xsm_beamarm.lua"
         }
     ],    
-
+    [{
+            "op": "test",
+            "path": "/BHM_MachineGun"
+        }, {
+            "op": "add",
+            "path": "/BHM_MachineGun/stats/mechMass",
+            "value": 4
+        },{
+            "op": "add",
+            "path": "/BHM_MachineGun/stats/power",
+            "value": 7
+        },{
+            "op": "add",
+            "path": "/BHM_MachineGun/stats/energy",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/BHM_MachineGun/partParameters/projectileParameters/power",
+            "value": 10
+        }
+    ],
     [{
             "op": "test",
             "path": "/srm"
