@@ -312,6 +312,7 @@ function doUpgrade()
 			if self.isUpgradeKit then
 				player.giveItem({name = "cuddlehorse", count = 1})
 			end
+			player.giveItem(upgradeItem)
 			sb.logInfo("Upgrade failed: %s",result)
 		elseif not result.completed then
 			if result.consumedItem then
@@ -531,8 +532,11 @@ function upgrade(upgradeItem,target)
 								primaryAbility.drawTime = primaryAbility.drawTime * (1 - (0.05*mergeBuffer.level))
 							end
 							primaryAbility.powerProjectileTime=primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime
-							if primaryAbility.powerProjectileTime then
+							if type(primaryAbility.powerProjectileTime)=="number" then
 								primaryAbility.powerProjectileTime = primaryAbility.powerProjectileTime*(1-(0.05*mergeBuffer.level))
+							elseif type(primaryAbility.powerProjectileTime)=="table" then
+								primaryAbility.powerProjectileTime[1]=primaryAbility.powerProjectileTime[1]*(1-(0.05*mergeBuffer.level))
+								primaryAbility.powerProjectileTime[2]=primaryAbility.powerProjectileTime[2]*(1+(0.05*mergeBuffer.level))
 							end
 							primaryAbility.energyPerShot=primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot
 							if primaryAbility.energyPerShot then
