@@ -10,16 +10,16 @@ local statusList={--progress status doesnt matter, but for any other status indi
 	artifactProtheonID="^green;Artifact identified",
 	artifactBasicID="^green;Artifact identified",
 	geodeID="^green;Artifact identified",
-	bugID="^green;Insectoid identified",
+	--bugID="^green;Insectoid identified",
 	invalid="^red;Invalid sample detected"
 }
 
 local tagList={
 	--FORMAT: <itemTag>={range=<math.rand max>,currencies={<currency variable name 1>=<bonusValue>,...},<optional override parameter>
-	queen={range=25,currencies={bonusResearch=3}},
-	youngQueen={range=25,currencies={bonusResearch=3}},
-	drone={range=100,currencies={bonusResearch=0}},
-	bug={range=25,currencies={bonusResearch=15,bonusGene=3},overrideCategory="bugResearched"},
+	queen={range=25,currencies={bonusResearch=3,bonusGene=1}},
+	youngQueen={range=25,currencies={bonusResearch=3,bonusGene=1}},
+	drone={range=100,currencies={bonusGene=1}},
+	--bug={range=25,currencies={bonusResearch=15,bonusGene=3},overrideCategory="bugResearched"},
 	geode={range=65,currencies={bonusResearch=2,bonusEssence=1},overrideCategory="geodeResearched"},
 	artifact={range=35,currencies={bonusResearch=50,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"},
 	artifactElder={range=25,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"},
