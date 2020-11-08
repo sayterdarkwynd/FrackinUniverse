@@ -96,7 +96,7 @@ function power.remove(...)
 end
 
 function batteryUpdate(dt)
-	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-dt)
+	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-(dt or 0))
 	power.setPower(power.getStoredEnergy())
 	if batteryUpdateThrottle <= 0 then
 		object.setConfigParameter('description', isn_makeBatteryDescription())
