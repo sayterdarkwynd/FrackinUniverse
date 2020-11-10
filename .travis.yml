@@ -1,0 +1,22 @@
+dist: xenial
+language: node_js
+
+node_js:
+  - 14
+
+git:
+  depth: 1
+
+notifications:
+  email: false
+
+cache:
+  directories:
+    - $HOME/.npm
+
+before_script:
+- ( cd tests/travis && npm install )
+
+script:
+ - ( cd tests/travis && npm test )
+
