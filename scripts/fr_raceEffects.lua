@@ -28,7 +28,14 @@ function update(dt)
 		race = world.entitySpecies(entity.id())
 		status.setStatusProperty("fr_race", race)
 	end
-	
+	if self.isNpc then
+		local overrideval=world.getProperty("frnpcoverride")
+		if (overrideval ~= nil) and enabled ~= overrideval then
+			status.setStatusProperty("fr_enabled", overrideval)
+			enabled=overrideval
+		end
+	end
+
 	if not self.helper or not self.species or self.species ~= race then
 		-- If we've done this before, then we're switching races and need to clear these
 		if self.helper then
