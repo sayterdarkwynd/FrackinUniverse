@@ -20,6 +20,7 @@ function update(dt)
 		FR_old_update(dt)
 	end
 	self.isNpc=world.isNpc(entity.id())
+	status.addEphemeralEffect("fucheatdeathhandler",3)
 	local enabled = status.statusProperty("fr_enabled")
 	local race = enabled and status.statusProperty("fr_race") or "_default"
 	if enabled == nil then
@@ -59,10 +60,6 @@ function update(dt)
 				status.addEphemeralEffect(thing,math.huge)
 			end
 		end	
-		
-		if self.isNpc then
-			status.addEphemeralEffect("frnpcspecialhandler",math.huge)
-		end
 	end
 	
 	-- Update stuff
@@ -71,6 +68,7 @@ function update(dt)
 	self.helper:runScripts("racialscript", self, dt)
 	
 	-- Breath handling
+	-- which, as it happens, is already handled by the vanilla script. so this applies TWICE.
 	if entity.entityType() ~= "npc" then
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
 		if status.statPositive("breathProtection") or world.breathable(mouthPosition)
