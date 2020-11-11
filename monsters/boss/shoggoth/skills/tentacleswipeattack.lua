@@ -28,6 +28,7 @@ end
 --------------------------------------------------------------------------------
 function tentacleSwipeAttack.update(dt, stateData)
 	if not hasTarget() then return true end
+	if status.resourcePercentage("health")<=0 then return true end
 
 	local toTarget = world.distance(self.targetPosition, mcontroller.position())
 	local targetDir = util.toDirection(toTarget[1])
