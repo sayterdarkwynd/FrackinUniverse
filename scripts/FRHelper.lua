@@ -52,13 +52,65 @@ function FRHelper:applyStats(stats, name, ...)
     end
 end
 
+--[[local function split(str, pat)
+	local t = {}	-- NOTE: use {n = 0} in Lua-5.0
+	local fpat = "(.-)" .. pat
+	local last_end = 1
+	local s, e, cap = str:find(fpat, 1)
+	while s do
+		if s ~= 1 or cap ~= "" then
+			 table.insert(t, cap)
+		end
+		last_end = e+1
+		s, e, cap = str:find(fpat, last_end)
+	end
+	if last_end <= #str then
+		cap = str:sub(last_end)
+		table.insert(t, cap)
+	end
+	return t
+end
+
+local function splitCombo(combo)
+	local combobuffer={}
+	for _,v in pairs(combo) do
+		local buffer=split(v,":")
+		local buffer2={}
+		if #buffer==2 then
+			buffer2.condition=buffer[1]
+			buffer2.tag=buffer[2]
+		else
+			buffer2.condition="is"
+			buffer2.tag=buffer[1]
+		end
+	end
+end]]
+
 -- Checks if the items match the given combo
 function FRHelper:validCombo(item1, item2, combo)
+	
     if #combo == 2 and item1 and item2 then  -- two-weapon combos
-        return (root.itemHasTag(item1, combo[1]) and root.itemHasTag(item2, combo[2]))
-            or (root.itemHasTag(item1, combo[2]) and root.itemHasTag(item2, combo[1]))
-    elseif #combo == 1 and ((item1 and not item2) or (item2 and not item1)) then  -- single-weapon combos
-        return root.itemHasTag(item1 or item2, combo[1])
+		if (combo[1] == "nothing") or (combo[2] == "nothing") then
+			return false
+		else
+			return (root.itemHasTag(item1, combo[1]) and root.itemHasTag(item2, combo[2]))or (root.itemHasTag(item1, combo[2]) and root.itemHasTag(item2, combo[1]))
+		end
+    elseif ((item1 and not item2) or (item2 and not item1)) then  -- single-weapon combos
+		if #combo == 1 then
+			return root.itemHasTag(item1 or item2, combo[1])
+		elseif #combo == 2 then
+			if (combo[1] == "nothing") and (combo[2] == "nothing") then
+				return false
+			elseif combo[1] == "nothing" then
+				return root.itemHasTag(item1 or item2, combo[2])
+			elseif combo[2] == "nothing" then
+				return root.itemHasTag(item1 or item2, combo[1])
+			end
+		end
+	else
+		if ((#combo >= 1) and (combo[1]=="nothing")) or ((#combo >= 2) and (combo[2]=="nothing")) then
+			return true
+		end
     end
     return false
 end
