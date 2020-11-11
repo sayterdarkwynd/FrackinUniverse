@@ -1,5 +1,5 @@
 function init()
-  self.statetime = config.getParameter("stateTime", 20),
+  self.statetime = config.getParameter("stateTime", 20)
   self.tag = config.getParameter("tag","incorpreal")
   self.effect = coroutine.create(effect)
   coroutine.resume(self.effect)

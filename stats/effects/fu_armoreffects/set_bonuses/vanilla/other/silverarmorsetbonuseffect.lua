@@ -2,7 +2,7 @@ require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_silverarmorsetnew"
 
 weaponBonus={
-	{stat = "critChance", amount = 2}
+	{stat = "critChance", amount = 2},
 	{stat = "powerMultiplier", effectiveMultiplier = 1.1}
 }
 
