@@ -52,7 +52,7 @@ function FRHelper:applyStats(stats, name, ...)
     end
 end
 
---[[local function split(str, pat)
+local function split(str, pat)
 	local t = {}	-- NOTE: use {n = 0} in Lua-5.0
 	local fpat = "(.-)" .. pat
 	local last_end = 1
@@ -83,33 +83,62 @@ local function splitCombo(combo)
 			buffer2.condition="is"
 			buffer2.tag=buffer[1]
 		end
+		table.insert(combobuffer,buffer2)
 	end
-end]]
+	return combobuffer
+end
 
 -- Checks if the items match the given combo
 function FRHelper:validCombo(item1, item2, combo)
-	
+	combo=splitCombo(combo)
     if #combo == 2 and item1 and item2 then  -- two-weapon combos
-		if (combo[1] == "nothing") or (combo[2] == "nothing") then
+		if ((combo[1].tag == "nothing") and (combo[1].condition=="is")) or ((combo[2].tag == "nothing") and (combo[2].condition=="is")) then
 			return false
 		else
-			return (root.itemHasTag(item1, combo[1]) and root.itemHasTag(item2, combo[2]))or (root.itemHasTag(item1, combo[2]) and root.itemHasTag(item2, combo[1]))
+			local combo1item1=root.itemHasTag(item1, combo[1].tag)
+			local combo1item2=root.itemHasTag(item2, combo[1].tag)
+			local combo2item1=root.itemHasTag(item1, combo[2].tag)
+			local combo2item2=root.itemHasTag(item2, combo[2].tag)
+			if combo[1].condition=="not" then
+				combo1item1=not combo1item1
+				combo1item2=not combo1item2
+			end
+			if combo[2].condition=="not" then
+				combo2item1=not combo2item1
+				combo2item2=not combo2item2
+			end
+			--sb.logInfo("%s::%s",combo,{combo1item1,combo1item2,combo2item1,combo2item2,(combo1item1 and combo2item2),(combo1item2 and combo2item1)})
+			return (combo1item1 and combo2item2) or (combo1item2 and combo2item1)
 		end
     elseif ((item1 and not item2) or (item2 and not item1)) then  -- single-weapon combos
-		if #combo == 1 then
-			return root.itemHasTag(item1 or item2, combo[1])
-		elseif #combo == 2 then
-			if (combo[1] == "nothing") and (combo[2] == "nothing") then
+		if (#combo == 1) then
+			local test=root.itemHasTag(item1 or item2, combo[1].tag)
+			if combo[1].condition=="not" then
+				test=not test
+			end
+			return test 
+		elseif (#combo == 2) then
+			if (combo[1].tag == "nothing") and (combo[2].tag == "nothing") then
 				return false
-			elseif combo[1] == "nothing" then
-				return root.itemHasTag(item1 or item2, combo[2])
-			elseif combo[2] == "nothing" then
-				return root.itemHasTag(item1 or item2, combo[1])
+			elseif (combo[1].tag == "nothing") and (combo[1].condition=="is") then
+				local test=root.itemHasTag(item1 or item2, combo[2].tag)
+				if combo[2].condition=="not" then
+					test=not test
+				end
+				return test
+			elseif (combo[2].tag == "nothing") and (combo[2].condition=="is") then
+				local test=root.itemHasTag(item1 or item2, combo[1].tag)
+				if combo[2].condition=="not" then
+					test=not test
+				end
+				return test
 			end
 		end
 	else
-		if ((#combo >= 1) and (combo[1]=="nothing")) or ((#combo >= 2) and (combo[2]=="nothing")) then
-			return true
+		if #combo==2 then
+			if ((combo[1].tag == "nothing") and (combo[1].condition=="is")) and ((combo[2].tag == "nothing") and (combo[2].condition=="is")) then return true end
+		elseif #combo==1 then
+			if ((combo[1].tag == "nothing") and (combo[1].condition=="is")) then return true end
 		end
     end
     return false
