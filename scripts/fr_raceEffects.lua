@@ -20,6 +20,7 @@ function update(dt)
 		FR_old_update(dt)
 	end
 	self.isNpc=world.isNpc(entity.id())
+	status.addEphemeralEffect("fucheatdeathhandler",3)
 	local enabled = status.statusProperty("fr_enabled")
 	local race = enabled and status.statusProperty("fr_race") or "_default"
 	if enabled == nil then
@@ -27,7 +28,14 @@ function update(dt)
 		race = world.entitySpecies(entity.id())
 		status.setStatusProperty("fr_race", race)
 	end
-	
+	if self.isNpc then
+		local overrideval=world.getProperty("frnpcoverride")
+		if (overrideval ~= nil) and enabled ~= overrideval then
+			status.setStatusProperty("fr_enabled", overrideval)
+			enabled=overrideval
+		end
+	end
+
 	if not self.helper or not self.species or self.species ~= race then
 		-- If we've done this before, then we're switching races and need to clear these
 		if self.helper then
@@ -59,10 +67,6 @@ function update(dt)
 				status.addEphemeralEffect(thing,math.huge)
 			end
 		end	
-		
-		if self.isNpc then
-			status.addEphemeralEffect("frnpcspecialhandler",math.huge)
-		end
 	end
 	
 	-- Update stuff
@@ -71,6 +75,7 @@ function update(dt)
 	self.helper:runScripts("racialscript", self, dt)
 	
 	-- Breath handling
+	-- which, as it happens, is already handled by the vanilla script. so this applies TWICE.
 	if entity.entityType() ~= "npc" then
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
 		if status.statPositive("breathProtection") or world.breathable(mouthPosition)

@@ -10,14 +10,16 @@ local statusList={--progress status doesnt matter, but for any other status indi
 	artifactProtheonID="^green;Artifact identified",
 	artifactBasicID="^green;Artifact identified",
 	geodeID="^green;Artifact identified",
+	--bugID="^green;Insectoid identified",
 	invalid="^red;Invalid sample detected"
 }
 
 local tagList={
 	--FORMAT: <itemTag>={range=<math.rand max>,currencies={<currency variable name 1>=<bonusValue>,...},<optional override parameter>
-	queen={range=25,currencies={bonusResearch=3}},
-	youngQueen={range=25,currencies={bonusResearch=3}},
-	drone={range=100,currencies={bonusResearch=0}},
+	queen={range=25,currencies={bonusResearch=3,bonusGene=1}},
+	youngQueen={range=25,currencies={bonusResearch=3,bonusGene=1}},
+	drone={range=100,currencies={bonusGene=1}},
+	--bug={range=25,currencies={bonusResearch=15,bonusGene=3},overrideCategory="bugResearched"},
 	geode={range=65,currencies={bonusResearch=2,bonusEssence=1},overrideCategory="geodeResearched"},
 	artifact={range=35,currencies={bonusResearch=50,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"},
 	artifactElder={range=25,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"},
@@ -43,6 +45,7 @@ function init()
 	bonusEssence=0
 	bonusResearch=0
     bonusProtheon=0
+    bonusGene=0
 
 	--these are declared here, but can be moved to object parameters later as needed
 	self.inputSlot=0
@@ -199,9 +202,13 @@ function update(dt)
 						if bonusProtheon>0 then
 							shoveItem({name="fuprecursorresource",count=bonusProtheon},self.protheonSlot)
 						end
+						if bonusGene>0 then
+							shoveItem({name="fugeneticmaterial",count=bonusGene},self.protheonSlot)
+						end						
 						bonusEssence=0
 						bonusResearch=0
 						bonusProtheon=0
+						bonusGene=0
 						progress = 0
 
 						status=statusList[lastTag.."ID"]
@@ -224,6 +231,8 @@ function update(dt)
 							bonusEssence=bonusEssence+((tagList[lastTag].currencies.bonusEssence+rank+microscopeRank)*effectiveCount) -- Gain essence as this is used
 						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusProtheon) then
 							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used
+						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusGene) then
+							bonusGene=bonusGene+((tagList[lastTag].currencies.bonusGene+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used						
 						end
 					end
 				end

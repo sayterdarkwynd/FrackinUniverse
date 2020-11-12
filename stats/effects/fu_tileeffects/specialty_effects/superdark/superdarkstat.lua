@@ -1,5 +1,5 @@
 --particleList={"blurshadowradiallarge","blurshadowradialmid","blurshadowradial"}
-particleList={"/animations/superdark/superdarklarge.png","/animations/superdark/superdarkmid.png","/animations/superdark/superdark.png"}
+particleList={"/animations/superdark/superdarksuperlarge.png","/animations/superdark/superdarklarge.png","/animations/superdark/superdarkmid.png","/animations/superdark/superdark.png"}
 
 
 function init()

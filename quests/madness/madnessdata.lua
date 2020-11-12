@@ -511,7 +511,7 @@ function checkMadnessArt()
 end
 
 function handleSetOrphans(dt)
-	if not orphanSetBonusTimer or orphanSetBonusTimer >= 1.0 then
+	if orphanSetBonusTimer and orphanSetBonusTimer >= 1.0 then
 		orphanSetBonusTimer=0.0
 		local t=os.time()
 		for set,bd in pairs(storage.armorSetData) do
@@ -521,7 +521,7 @@ function handleSetOrphans(dt)
 			end
 		end
 	else
-		orphanSetBonusTimer=orphanSetBonusTimer+dt
+		orphanSetBonusTimer=(orphanSetBonusTimer or -1.0)+dt
 	end
 end
 
