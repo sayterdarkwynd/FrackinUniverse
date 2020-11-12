@@ -10180,5 +10180,72 @@
 				[0, ["gasgiantcorelayer3"]]
 			]
 		}
+	},
+	{
+		"op": "add",
+		"path": "/regionTypes/futentaclet10",
+		"value": {
+			"caveLiquid" : [ "bio_ooze" ],
+			"caveLiquidSeedDensityRange" : [10, 10],
+			"encloseLiquids" : true,
+			"blockSelector" : [ "remixedMildSurface" ],
+			"fgCaveSelector" : [ "surfaceCaves" ],
+			"bgCaveSelector" : [ "empty" ],
+			"biome" : [[0, [ "futentaclet10" ]]]
+		}
+	},
+	{
+		"op": "add",
+		"path": "/planetTypes/futentaclet10",
+		"value": {
+			"threatRange": [10,10],
+			"layers": {
+				"surface": {
+					"primaryRegion": [
+						"futentaclet10"
+					],
+					"dungeons": []
+				},
+				"subsurface": {
+					"primaryRegion": [
+						"tentacleundergroundtentacles"
+					]
+				},
+				"underground1": {
+					"primaryRegion": [
+						"tentacleundergroundtentacles"
+					],
+					"secondaryRegions": []
+				},
+				"underground2": {
+					"primaryRegion": [
+						"tentacleundergroundceiling"
+					],
+					"secondaryRegions": []
+				},
+				"underground3": {
+					"primaryRegion": [
+						"tentacleundergroundfloor"
+					],
+					"secondaryRegions": [],
+					"dungeons": [
+						[
+							1,
+							"tentacleboss"
+						]
+					],
+					"dungeonCountRange": [
+						1,
+						1
+					]
+				},
+				"core": {
+					"primaryRegion": [
+						"tentacleundergroundcore"
+					],
+					"secondaryRegions": []
+				}
+			}
+		}
 	}
 ]
