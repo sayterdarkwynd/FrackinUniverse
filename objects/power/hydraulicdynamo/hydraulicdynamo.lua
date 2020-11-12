@@ -87,7 +87,7 @@ function isn_slotDecayCheckWater(slot)
 	local item = world.containerItemAt(entity.id(),slot)
 	local myLocation = entity.position()
 
-    if item and item.name == "liquidwater" and math.random(1, 10) == 1 then
+    if item and item.name == "liquidwater" and math.random(1, 4) == 1 then
         return true
     end
 
