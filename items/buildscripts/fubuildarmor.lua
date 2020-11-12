@@ -32,16 +32,18 @@ function build(directory, config, parameters, level, seed)
 	config.shortdescription = configParameter("shortdescription",0)
 	config.inventoryIcon = configParameter("inventoryIcon",0)
 
-	if config.level < 3 then
-		config.rarity = "common"
-	elseif config.level == 3 then
-		config.rarity = "uncommon"
-	elseif config.level >= 4 then
-		config.rarity = "rare"
-	elseif config.level >= 6 then
-		config.rarity = "legendary"
-	elseif config.level == 8 then
-		config.rarity = "essential"
+	if not config.rarity then
+		if parameters.level < 3 then
+			config.rarity = "common"
+		elseif parameters.level == 3 then
+			config.rarity = "uncommon"
+		elseif parameters.level >= 4 then
+			config.rarity = "rare"
+		elseif parameters.level >= 6 then
+			config.rarity = "legendary"
+		elseif parameters.level >= 8 then
+			config.rarity = "essential"
+		end
 	end
 
 	config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1))

@@ -32,12 +32,13 @@
   "animationPosition" : [-8, 0],
 
   "inputNodes" : [ [-1, 1] ],
-  
+
   "monsterUniqueId" : "shoggoth",
 
   "spawner" : {
     "monsterTypes" : ["shoggoth"], //type of monster to spawn (random from list)
-    "monsterLevel" : [9, 9], //level of monster to spawn (random within range, or leave blank for world threat level)
+    //"monsterLevel" : [9, 9], //level of monster to spawn (random within range, or leave blank for world threat level)
+	"monsterLevelOffset" : 2, //if monsterLevel is omitted, this can be used to offset the level
     "monsterParams" : { //additional parameters of spawned monster
       "aggressive" : true
     },

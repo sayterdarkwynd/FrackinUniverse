@@ -1,0 +1,239 @@
+{
+	"name": "futentaclet10",
+	"friendlyName": "Tentacle",
+
+	"spawnProfile": {
+		"groups": [{
+				"select": 7,
+				"pool": [
+					[1, "tentaclecrawler"],
+					[1, "tentaclegnat"],
+					[1, "tentaclespawner"],
+					[1, "tentaclebomb"],
+					[1, "tentacleghost"],
+					[1, "tentacleclam"],
+					[1, "fleshreaper3"]
+				]
+			},
+			{
+				"select": 6,
+				"pool": [
+					[1, "bigwormcritter"],
+					[1, "fisheyecritter"],
+					[1, "cellcritter"],
+					[1, "cell2critter"],
+					[1, "eggcellcritter"],
+					[1, "fleshreaper3"]
+				]
+			}
+		],
+		"monsterParameters": {
+			"colors": "volcanic",
+			"statusSettings": {
+				"stats": {
+					"poisonStatusImmunity": {
+						"baseValue": 1.0
+					}
+				}
+			}
+		}
+	},
+
+	"hueShiftOptions": [-45, 0, 45],
+	"statusEffects": ["superdarkstatsuperlargeUnblockable", "insanitynew2", "fu_nooxygen", "biomepoison3"],
+
+	"weather": [
+		[0, [
+			"/weather.config:tentacles"
+		]]
+	],
+
+	"skyOptions": [
+
+		{
+			"mainColor": [232, 98, 0],
+
+			"morningColors": [
+				[232, 98, 0],
+				[136, 35, 0]
+			],
+			"dayColors": [
+				[232, 98, 0],
+				[136, 35, 0]
+			],
+			"eveningColors": [
+				[232, 98, 0],
+				[136, 35, 0]
+			],
+			"nightColors": [
+				[232, 98, 0],
+				[136, 35, 0]
+			],
+
+			"morningLightColor": [232, 98, 0],
+			"dayLightColor": [232, 98, 0],
+			"eveningLightColor": [232, 98, 0],
+			"nightLightColor": [232, 98, 0]
+		}
+	],
+
+	"mainBlock": "tentacleblock",
+	"subBlocks": ["obsidian", "jellyblock"],
+	"ores": "none",
+
+	"parallax": "/parallax/surface/tentacles.parallax",
+
+	"ambientNoises": {
+		"day": {
+			"tracks": ["/sfx/environmental/tentacle_loop1.ogg"]
+		},
+		"night": {
+			"tracks": ["/sfx/environmental/tentacle_loop1.ogg"]
+		}
+	},
+
+	"musicTrack": {
+		"day": {
+			"tracks": ["/music/crystal-battle1-loop.ogg"]
+		},
+		"night": {
+			"tracks": ["/music/crystal-battle1-loop.ogg"]
+		}
+	},
+
+	"surfacePlaceables": {
+
+		"items": [
+
+			{
+				"mode": "ceiling",
+				"priority": 2.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:scatteredSmall",
+
+				"type": "tree",
+				"treeFoliageHueShiftMax": 0,
+				"treeStemHueShiftMax": 0,
+				"treeStemList": ["tentacle"],
+				"treeFoliageList": [""]
+			},
+			{
+				"mode": "floor",
+				"priority": 1.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:surfaceCapsules",
+
+				"type": "object",
+				"objectSets": [{
+					"pool": [
+						[2.0, "tentaclepart1"],
+						[0.8, "tentaclepart2"],
+						[0.8, "tentaclepart3"],
+						[0.4, "tentaclespawner1"]
+					],
+					"parameters": {}
+				}]
+			},
+			{
+				"mode": "ceiling",
+				"priority": 1.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+				"type": "object",
+				"objectSets": [{
+					"pool": [
+						[2.0, "tentaclepart1"],
+						[0.8, "tentaclepart2"],
+						[0.8, "tentaclepart3"],
+						[0.4, "tentaclespawner1"]
+					],
+					"parameters": {}
+				}]
+			},
+			{
+				"mode": "floor",
+				"priority": 3.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:tiyDist",
+
+				"type": "microdungeon",
+				"microdungeons": ["none"]
+			},
+			{
+				"mode": "floor",
+				"priority": 3.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:tiyDistTerrainfeatures",
+
+				"type": "microdungeon",
+				"microdungeons": ["terrainfeatures"]
+			},
+			{
+				"mode": "floor",
+				"priority": 1.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:denseLarge",
+
+				"type": "tree",
+				"treeFoliageHueShiftMax": 180,
+				"treeStemHueShiftMax": 45,
+				"treeStemList": ["tentacletree", "tentacletreetwo"],
+				"treeFoliageList": ["tentacletreeblank"]
+			}
+		]
+	},
+
+	"undergroundPlaceables": {
+
+		"items": [
+
+			{
+				"mode": "floor",
+				"priority": 1.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:surfaceCapsules",
+
+				"type": "object",
+				"objectSets": [{
+					"pool": [
+						[2.0, "tentaclepart1"],
+						[0.8, "tentaclepart2"],
+						[0.8, "tentaclepart3"],
+						[0.4, "tentaclespawner1"]
+					],
+					"parameters": {}
+				}]
+			},
+			{
+				"mode": "ceiling",
+				"priority": 1.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:hazardUndergroundCeilingMid",
+
+				"type": "object",
+				"objectSets": [{
+					"pool": [
+						[2.0, "tentaclepart1"],
+						[0.8, "tentaclepart2"],
+						[0.8, "tentaclepart3"],
+						[0.4, "tentaclespawner1"]
+					],
+					"parameters": {}
+				}]
+			},
+			{
+				"mode": "ceiling",
+				"priority": 2.0,
+				"variants": 1,
+				"distribution": "/biomes/distributions.config:scatteredSmall",
+
+				"type": "tree",
+				"treeFoliageHueShiftMax": 0,
+				"treeStemHueShiftMax": 0,
+				"treeStemList": ["tentacle"],
+				"treeFoliageList": [""]
+			}
+		]
+	}
+}
