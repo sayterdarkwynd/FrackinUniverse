@@ -2,93 +2,91 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
 function init()
-  self.returns = config.getParameter("returns", true)
-  self.releaseOnHit = config.getParameter("releaseOnHit", true)
-  self.controlForce = config.getParameter("controlForce")
-  self.pickupDistance = config.getParameter("pickupDistance")
-  self.snapDistance = config.getParameter("snapDistance")
-  self.speed = config.getParameter("speed")
-  self.returnCollisionDuration = config.getParameter("returnCollisionDuration")
-  self.pureArcDuration = config.getParameter("pureArcDuration")
-  self.returnCollisionPoly = config.getParameter("returnCollisionPoly")
-  self.podUuid = config.getParameter("podUuid")
-  self.ownerId = projectile.sourceEntity()
-
-  self.returnElapsed = 0
-  self.returning = false
+	monsterType = config.getParameter("monster")
+	actionConfig = config.getParameter("actionConfig") or {}
+	monsterLevelOffset = config.getParameter("monsterLevelOffset") or 0
 end
 
 function update(dt)
-  if not mcontroller.isColliding() then
-    self.preCollisionVelocity = mcontroller.velocity()
-  end
- 
-  if self.ownerId and world.entityExists(self.ownerId) then
-
-    if not self.returning then
-      mcontroller.setRotation(0)
-      if mcontroller.isColliding() or vec2.mag(mcontroller.velocity()) < 0.1 then
-        releaseMonsters()
-      end
-    else
-      self.returnElapsed = self.returnElapsed + dt
-
-      local toTarget = world.distance(world.entityPosition(self.ownerId), mcontroller.position())
-      local targetDistance = vec2.mag(toTarget)
-      if targetDistance < self.pickupDistance then
-        projectile.die()
-      elseif self.returnElapsed > self.returnCollisionDuration or targetDistance < self.snapDistance then
-        mcontroller.applyParameters({collisionEnabled = false})
-        mcontroller.approachVelocity(vec2.mul(vec2.norm(toTarget), self.speed), 500)
-      elseif self.returnElapsed > self.pureArcDuration then
-        mcontroller.approachVelocity(vec2.mul(vec2.norm(toTarget), self.speed), self.controlForce)
-      end
-    end
-  else
-    projectile.die()
-  end
+	if mcontroller.isColliding() or vec2.mag(mcontroller.velocity()) < 0.1 then
+		releaseMonsters()
+	end
 end
 
 function hit(entityId)
-  if self.releaseOnHit and not self.returning then
-    releaseMonsters()
-  end
+	releaseMonsters()
 end
 
 function releaseMonsters()
-  if self.podUuid then
-    -- Player filledcapturepod
-    world.sendEntityMessage(self.ownerId, "pets.spawnFromPod", self.podUuid, mcontroller.position())
-
-    if self.returns then
-      self.returning = true
-      mcontroller.applyParameters({
-          collisionPoly = self.returnCollisionPoly
-        })
-      mcontroller.setVelocity(vec2.mul(self.preCollisionVelocity or mcontroller.velocity(), -1))
-    else
-      projectile.die()
-    end
-  else
-    -- NPC npcpetcapturepod
-    local monsterType = config.getParameter("monsterType")
-    local damageTeam = entity.damageTeam()
-    local entityId = world.spawnMonster(monsterType, mcontroller.position(), {
-        level = config.getParameter("monsterLevel", 1),
-        damageTeam = damageTeam.team,
-        damageTeamType = damageTeam.type,
-        aggressive = true
-      })
-    local position = world.callScriptedEntity(entityId, "findGroundPosition", world.entityPosition(entityId), -10, 10, false)
-    if position then
-      world.callScriptedEntity(entityId, "mcontroller.setPosition", position)
-    end
-
-    projectile.die()
-
-  end
+	if done then return end
+	local damageTeam = entity.damageTeam()
+	local entityId = world.spawnMonster(monsterType, mcontroller.position(), {
+		level = world.threatLevel() + monsterLevelOffset,
+		damageTeam = damageTeam.team,
+		damageTeamType = damageTeam.type,
+		aggressive = true
+	})
+	--[[local position = world.callScriptedEntity(entityId, "findGroundPosition", world.entityPosition(entityId), -10, 10, false)
+	if position then
+		world.callScriptedEntity(entityId, "mcontroller.setPosition", position)
+	end]]
+	for _,action in pairs(actionConfig) do
+		projectile.processAction(action)
+	end
+	done=true
+	projectile.die()
 end
 
-function monstersReleased()
-  return self.returning
-end
+--[[
+	"actionOnReap": [{
+			"action": "sound",
+			"options": ["/sfx/tech/mech_activate4.ogg"]
+		},
+		{
+			"time": 0.33,
+			"action": "spawnmonster",
+			"type": "futwigun2",
+			"offset": [0, 0]
+		},
+		{
+			"action": "projectile",
+			"type": "electricexplosion",
+			"inheritDamageFactor": 0.02,
+			"config": {
+				"speed": 0,
+				"projectileParameters": {
+					"periodicActions": []
+				}
+			},
+			"fuzzAngle": 0,
+			"angleAdjust": 0
+		}
+	]
+]]
+
+--[[
+	"actionOnReap": [{
+			"action": "sound",
+			"options": ["/sfx/tech/mech_activate4.ogg"]
+		},
+		{
+			"time": 0.33,
+			"action": "spawnmonster",
+			"type": "futrifangle",
+			"offset": [0, 0]
+		},
+		{
+			"action": "projectile",
+			"type": "electricexplosion",
+			"inheritDamageFactor": 0.02,
+			"config": {
+				"speed": 0,
+				"projectileParameters": {
+					"periodicActions": []
+				}
+			},
+			"fuzzAngle": 0,
+			"angleAdjust": 0
+		}
+	]
+]]

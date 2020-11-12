@@ -26,7 +26,7 @@ function init()
 end
 
 function update(dt)
-		self.timer = self.timer - dt
+	self.timer = self.timer - dt
 
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
