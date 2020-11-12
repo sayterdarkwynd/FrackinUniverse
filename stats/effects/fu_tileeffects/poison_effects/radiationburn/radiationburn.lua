@@ -5,7 +5,7 @@ function init()
   effect.setParentDirectives("fade=00FF33=0.15")
   script.setUpdateDelta(20)
   self.tickDamagePercentage = 0.02
-  self.tickTime = 0.2
+  self.tickTime = 1
   self.tickTimer = self.tickTime
   self.currentDebuff = 0.0
   self.debuffPerSec = -0.10 -- Lose 15% phys resist per second
@@ -28,11 +28,11 @@ function update(dt)
     -- Apply damage if target's physical resistance is zero (otherwise, just make the 'hurt' SFX). --
     local dmg = 0.1
     if (self.currentDebuff == self.maxDebuff) then
-	  if status.statPositive("specialStatusImmunity") then
-        dmg = math.floor(world.threatLevel() * self.tickDamagePercentage * 100)
+  	  if status.statPositive("specialStatusImmunity") then
+          dmg = math.floor(world.threatLevel() * self.tickDamagePercentage * 100)
       else
-	    dmg = math.floor(status.resourceMax("health") * self.tickDamagePercentage)
-	  end
+  	      dmg = math.floor((status.resourceMax("health") * self.tickDamagePercentage) + (world.threatLevel()/3))
+  	  end
     end
     
     status.applySelfDamageRequest({

@@ -4,8 +4,8 @@ function init()
   animator.setParticleEmitterActive("fx", true)
   effect.setParentDirectives("fade=00FF33=0.15")
   script.setUpdateDelta(20)
-  self.tickDamagePercentage = 0.04
-  self.tickTime = 0.2
+  self.tickDamagePercentage = 0.03
+  self.tickTime = 1
   self.tickTimer = self.tickTime
   self.currentDebuff = 0.0
   self.debuffPerSec = -0.20 -- Lose 20% phys resist per second
@@ -28,11 +28,11 @@ function update(dt)
     -- Apply damage if target's physical resistance is as low as this effect can make it (otherwise, just make the 'hurt' SFX). --
     local dmg = 0.1
     if (self.currentDebuff == maxDebuff) then
-	  if status.statPositive("specialStatusImmunity") then
-        dmg = math.floor(world.threatLevel() * self.tickDamagePercentage * 100)
+  	  if status.statPositive("specialStatusImmunity") then
+          dmg = math.floor(world.threatLevel() * self.tickDamagePercentage * 100)
       else
-	    dmg = math.floor(status.resourceMax("health") * self.tickDamagePercentage)
-	  end
+  	      dmg = math.floor((status.resourceMax("health") * self.tickDamagePercentage) + (world.threatLevel()/3))
+  	  end
     end
     
     status.applySelfDamageRequest({
