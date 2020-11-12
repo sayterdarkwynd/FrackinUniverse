@@ -89,6 +89,14 @@ function miniShoggothSpawnAttack2.spit(direction)
 		projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
 	end
 
+	local monsterLevel=monster.level()/4.0
+	for index,ac in pairs(projectileConfig.actionOnReap) do
+		--sb.logInfo("%s",action)
+		if ac.action=="spawnmonster" then
+			ac.level=monsterLevel
+			projectileConfig.actionOnReap[index]=ac
+		end
+	end
 
 	world.spawnProjectile(projectileType, monster.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
 end
