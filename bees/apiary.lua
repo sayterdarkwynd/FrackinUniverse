@@ -1144,7 +1144,7 @@ function getFlowerLikeness(beeSubtype)
 		if stage then
 			local stages = world.getObjectParameter(id, "stages", nil)
 			local likenessTable = world.getObjectParameter(id, "beeLikeness", nil)
-			local addition = 0
+			local addition
 			
 			if likenessTable and likenessTable[beeSubtype] then
 				addition = likenessTable[beeSubtype]

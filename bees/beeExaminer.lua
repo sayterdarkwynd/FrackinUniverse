@@ -157,7 +157,6 @@ function update(dt)
 
 
 					futureItem=nil
-					currentItem=nil
 				else
 					if playerUsing then
 						progress = math.min(100,progress + (playerWorkingEfficiency * dt))
@@ -192,7 +191,6 @@ function update(dt)
 						end
 						
 						futureItem=nil
-						currentItem=nil
 						if bonusResearch>0 then
 							shoveItem({name="fuscienceresource",count=bonusResearch},self.researchSlot)
 						end
@@ -217,8 +215,7 @@ function update(dt)
 					else
 						status = "^cyan;"..progress.."%"
 						-- ***** chance to gain currencies *****
-						local randCheck = 0
-						randCheck=math.random(tagList[lastTag].range or 100)
+						local randCheck = math.random(tagList[lastTag].range or 100)
 						local rank=(currentItemParameters.rank or 0)
 						--prev., the 'rank' parameter on the items did nothing, might need rebalancing
 						--also, config.getParameter gets info from the calling object.

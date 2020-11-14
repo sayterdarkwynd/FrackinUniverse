@@ -8,7 +8,6 @@ function craftingRecipe(items)
 	local newParams = copy(item.parameters) or {}
 	local itemBaseParams=root.itemConfig(item.name)
 	local oldParts=util.mergeTable(itemBaseParams.config.animationParts or {},newParams.animationParts or {})
-	local retData={}
 	local newItem=nil
 	local itemLevel=item.parameters.level or itemBaseParams.config.level
 	
@@ -75,19 +74,14 @@ function craftingRecipe(items)
 	
 	powerTimer=3.0
 	
-	retData={input = items,output = newItem,duration = powerTimer}
-	
 	if not doOnce then
 		doOnce=true
 		--animator.setAnimationState("tetherState", powerTimer and powerTimer > 0 and "on" or "off")
 		--dbgJ(itemBaseParams)
 	end
 	
-	
-	if retData.output then
-		return retData
-	else
-		return
+	if newItem then
+		return {input = items,output = newItem,duration = powerTimer}
 	end
 end
 

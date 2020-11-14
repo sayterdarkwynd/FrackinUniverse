@@ -110,7 +110,7 @@ function fuWeatherBase.applyEffect(self)
 	self.debuffTimer = self.baseDebuffRate
 	-- Debuff start delay timer scales with player resistances.
 	if (self.baseDebuffStartDelay ~= nil) and (self.baseDebuffStartDelay > 0) then
-		local debuffStartMult = nil
+		local debuffStartMult
 		local totalResist = self:totalResist()
 		if (totalResist >= 0) then
 			debuffStartMult = 1.0 / (1.0 + totalResist / self.resistanceThreshold)
@@ -317,7 +317,7 @@ function fuWeatherBase.applyDebuffs(self, modifier)
 			elseif (dParams.constant == nil) then
 				-- If stat debuff is capped, do not exceed it.
 				if (dParams.cap ~= nil) then
-					local cappedAmount = nil
+					local cappedAmount
 					if (dAmount > 0) then -- upper cap
 						cappedAmount = math.min(dParams.cap - status.stat(statName), dAmount)
 					else -- lower cap

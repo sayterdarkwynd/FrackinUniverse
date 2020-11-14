@@ -29,7 +29,7 @@
 
 function FRHelper:call(args, main, dt, ...)
 	local hungerEnabled = status.isResource("food")
-	local hungerPerc = 0
+	local hungerPerc
 	if hungerEnabled then
 		hungerPerc = status.resourcePercentage("food")
 	else

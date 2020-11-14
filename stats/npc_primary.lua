@@ -227,7 +227,6 @@ function drawDebugResources()
   world.debugLine(vec2.add(position, {-1.875, y + 0.625}), vec2.add(position, {-1.875 + width, y + 0.625}), "green")
 
   world.debugText(resourceName, vec2.add(position, {2.25, y - 0.125}), "blue")
-  y = y + 1
 end
 
 function inLiquid() --no fall damage while submerged in liquids, Period.

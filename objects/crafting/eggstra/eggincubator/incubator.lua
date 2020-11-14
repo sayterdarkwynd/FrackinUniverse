@@ -117,7 +117,6 @@ function checkHatching()
       -- hatching check
       if age >= hatchTime then
         hatchEgg()
-        age = 0
         self.indicator = 0
         storage.incubationTime = nil
         self.timer = 0

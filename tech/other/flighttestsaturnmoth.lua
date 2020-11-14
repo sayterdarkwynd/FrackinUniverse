@@ -72,9 +72,6 @@ function update(args)
     self.boostSpeed = self.boostSpeed + args.dt
    
     boost(direction) 
-    if vec2.eq(direction, {0, 0}) then 
-      direction = {0, 0} 		    
-    end
     mcontroller.controlApproachVelocity(self.boostVelocity, 30)
     -- end boost
 

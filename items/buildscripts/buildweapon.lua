@@ -284,7 +284,6 @@ function build(directory, config, parameters, level, seed)
 
 		config.magazineSize = 0
 		config.tooltipFields.magazineSizeLabel = "--"
-		newMagSize = 0
 		parameters.magazineSizeFactor = 0
 
 		parameters.reloadTimeFactor = 0

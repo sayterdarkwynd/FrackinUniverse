@@ -170,8 +170,6 @@ function fuel()
 	local fuelCanAdd=item.count*fuelMultiplier
 	local fuelDifference=self.maxFuel-self.currentFuel
 	local fuelWillAdd=0
-	local fuelItemConsume=0
-	local roundingBuffer = 0
 	
 	if fuelDifference>0 then
 		if (fuelDifference > fuelCanAdd) or (item.count == 1 ) then
@@ -184,8 +182,9 @@ function fuel()
 	else
 		return
 	end
-	fuelItemConsume=fuelWillAdd/fuelMultiplier
-	roundingBuffer = fuelItemConsume%1
+
+	local fuelItemConsume = fuelWillAdd / fuelMultiplier
+	local roundingBuffer = fuelItemConsume%1
 
 	if (fuelItemConsume == roundingBuffer) and (fuelCanAdd > 0) then
 		fuelItemConsume=1
@@ -299,15 +298,9 @@ function fuelCountPreview(item)
 end
 
 function setFuelTypeText(type)
-	local textColor = ""
 	local fuelTypeData = self.fuelTypes[type]
 	if fuelTypeData then
-		textColor = fuelTypeData.textColor
-	else
-		textColor = nil
-	end
-
-	if textColor then
+		local textColor = fuelTypeData.textColor
 		widget.setText("lblFuelType", "CURRENT FUEL: ^" .. textColor .. ";" .. type)
 	else
 		widget.setText("lblFuelType", "CURRENT FUEL: ^red;EMPTY^reset;")

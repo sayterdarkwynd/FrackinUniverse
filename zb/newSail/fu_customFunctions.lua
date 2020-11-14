@@ -1,5 +1,5 @@
 function fu_toggleAtmosphereMode()
-	local text = ""
+	local text
 	if player.worldId() ~= player.ownShipWorldId() then
 		text = "Only the owner of the ship can switch the atmosphere mode."
 	elseif world.getProperty("ship.level") ~= 0 then
