@@ -2,6 +2,7 @@
   "type" : "crewmemberghostbuster",
   "baseType" : "crewmember",
   //"disableWornArmor" : false,
+"innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
   
   "scriptConfig" : {
     "behaviorConfig" : {
@@ -26,7 +27,7 @@
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
-            "effect" : "erchiusImmunity",
+            "effect" : "erchiusimmunity",
             "duration" : 900
           },         
           {
@@ -51,7 +52,7 @@
           },
           "floran" : {
             "default" : [
-              "Floran will give you boostsss when we are on ship!"
+              "Floran will give you boostsss when we're on ship!"
             ]
           },
           "glitch" : {
@@ -63,8 +64,7 @@
         "combatBenefit" : {
           "default" : {
             "default" : [
-              "Hey! Watch out!",
-              "Look there!"
+              "Hey! We've got one!"
             ]
           },
           "floran" : {
@@ -81,8 +81,7 @@
 		"fieldBenefit" : {
           "default" : {
             "default" : [
-              "Hey! Watch out!",
-              "Look there!"
+              "Hey! We've got one!"
             ]
           },
           "floran" : {
@@ -105,11 +104,11 @@
       [0, [
           {
             "primary" : [ "fubeamgunghostbuster" ],
-            "sheathedprimary" : [ "fubeamgunghostbuster" ],
-			"head" :  [{ "name" : "goggles2", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-			"chest" : [ { "name" : "tw_spacesuitchest", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-            "legs" : [ { "name" : "tw_spacesuitlegs", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-            "back" : [ { "name" : "tw_spacepunkback", "count" :1, "parameters" : { "colorIndex" : 1 } } ]         
+            "sheathedprimary" : [ "penumbritespear" ],
+			"head" :  [{ "name" : "goggles2", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
+			"chest" : [ { "name" : "tw_spacesuitchest", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
+            "legs" : [ { "name" : "tw_spacesuitlegs", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
+            "back" : [ { "name" : "tw_spacepunkback", "count" :1, "parameters" : { "colorIndex" : 0 } } ]         
           }
         ] ]
     ]
