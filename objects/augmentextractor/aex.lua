@@ -21,7 +21,7 @@ function craftingRecipe(items)
 	elseif item.parameters.currentAugment and item.parameters.currentAugment.type == "back" then
 	
 		local augmentMap = config.getParameter("augmentMap",{}) --get the list of augments from the config. list must be formatted as {"augment.name" : "itemName"}. Any augment detected here spawns as a vanilla augment.
-		local augment = {}
+		local augment
 		local aug_param = copy(item.parameters.currentAugment)
 		
 		storage.item = copy(item)
@@ -58,7 +58,7 @@ function craftingRecipe(items)
 	elseif item.parameters.currentCollar then --code for the collars, a little more involved.
 	
 		local collarMap = config.getParameter("collarMap",{})
-		local collar = {}
+		local collar
 		local collar_param = copy(item.parameters.currentCollar)
 		
 		storage.item = copy(item)
@@ -99,7 +99,7 @@ function craftingRecipe(items)
 	elseif item.parameters.reelType then
 		
 		local reelMap = config.getParameter("reelMap",{})
-		local reel = {}
+		local reel
 		local reel_param = {
 			reelName = item.parameters.reelName,
 			reelType = item.parameters.reelType,
@@ -141,7 +141,7 @@ function craftingRecipe(items)
 	elseif item.parameters.lureType then
 		
 		local lureMap = config.getParameter("lureMap",{})
-		local lure = {}
+		local lure
 		local lure_param = {
 			lureName = item.parameters.lureName,
 			lureType = item.parameters.lureType,

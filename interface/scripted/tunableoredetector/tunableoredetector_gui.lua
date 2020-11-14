@@ -112,7 +112,6 @@ function detectorInHand()
 	local inEssentialSlot=false
 	local inPrimary=false
 	local inAlt=false
-	local inBoth=false
 
 	for _,v in pairs({ "beamaxe", "wiretool", "painttool", "inspectiontool"}) do
 		local test=player.essentialItem(v)
@@ -127,7 +126,8 @@ function detectorInHand()
 	if itemAlt then
 		if itemAlt.name == "tunableoredetector1" then inAlt=true end
 	end
-	inBoth=inAlt and inPrimary
+
+	local inBoth=inAlt and inPrimary
 	if not inBoth then
 		return (inPrimary and itemPrimary) or (inAlt and itemAlt),inEssentialSlot,inBoth
 	else

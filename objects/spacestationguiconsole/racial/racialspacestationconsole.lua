@@ -49,10 +49,9 @@ function uninit() end
 
 function PrintTable(tbl, depth)
     local spaces = depth or 0
-    local str = ""
     
     for k, v in pairs(tbl) do
-        str = ""
+        local str = ""
         
         for i = 1, spaces do
             str = str.." "

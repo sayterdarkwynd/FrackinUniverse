@@ -57,7 +57,7 @@ function circleState.update(dt, stateData)
 
   -- The circle gets tilted up while climbing and down while gliding to
   -- emphasize the gain and loss of altitude
-  local tiltRatio = 0
+  local tiltRatio
 
   if ratio > 0.75 then
     -- Initial quarter of circle; climbing (1.0 -> 0.75) => (0.0 -> 1.0)
