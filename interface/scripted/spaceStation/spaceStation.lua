@@ -289,7 +289,7 @@ function firstTimeInit()
 			end
 		end
 		
-		local amountMultiplier = 0
+		local amountMultiplier
 		if stockStatus > 0 then
 			local minimum = math.floor(stationData.goodsAbundanceRange[1]*100)
 			local maximum = math.floor(stationData.goodsAbundanceRange[2]*100)
@@ -1447,21 +1447,13 @@ function simulateGoodTrades()
 		local trades = math.floor(timePassed / stationData.passiveTradeInterval)
 		
 		if trades > 0 then
-			local goodsState = "normal"
-			local tradeAmount = 0
-			local striveTo = 0
-			local mult = 1
-			
 			for t = 1, trades do
 				for goods, amount in pairs(objectData.goodsStock) do
-					goodsState = "normal"
-					tradeAmount = 0
-					striveTo = 0
-					mult = 1
-					
 					-- Get index, and goods state
 					for i, tbl in ipairs(stationData.goods) do
 						if goods == tbl.name then
+							local goodsState = "normal"
+
 							if type(tbl.abundance) == "table" then
 								for _, st in ipairs(tbl.abundance) do
 									if objectData.stationType == st then
@@ -1486,6 +1478,7 @@ function simulateGoodTrades()
 								end
 							end
 							
+							local mult
 							if goodsState == "abundance" then
 								mult = math.random(math.floor(stationData.goodsAbundanceRange[1]*100), math.floor(stationData.goodsAbundanceRange[2]*100)) * 0.01
 							elseif goodsState == "lack" then
@@ -1494,8 +1487,8 @@ function simulateGoodTrades()
 								mult = math.random(math.floor(stationData.goodsNormalRange[1]*100), math.floor(stationData.goodsNormalRange[2]*100)) * 0.01
 							end
 							
-							striveTo = stationData.goods[i].baseAmount * mult
-							tradeAmount = stationData.goods[i].baseAmount * (math.random(math.floor(stationData.passiveTradePcntOfBaseAmount[1]*100), math.floor(stationData.passiveTradePcntOfBaseAmount[2]*100)) * 0.01)
+							local striveTo = stationData.goods[i].baseAmount * mult
+							local tradeAmount = stationData.goods[i].baseAmount * (math.random(math.floor(stationData.passiveTradePcntOfBaseAmount[1]*100), math.floor(stationData.passiveTradePcntOfBaseAmount[2]*100)) * 0.01)
 							
 							if amount < striveTo then
 								objectData.goodsStock[goods] = closestWhole(objectData.goodsStock[goods] + tradeAmount)
@@ -1844,10 +1837,8 @@ end
 
 -- Returns a specified amount of randomized indexes from an ipairs table.
 function getRandomTableIndexes(tbl, amount)
-	local passed = false
 	local indexes = {}
 	local pulled = 0
-	local index = 0
 	
 	-- Return all indexes if the amount exceeds the tables length
 	if #tbl <= amount then
@@ -1858,10 +1849,10 @@ function getRandomTableIndexes(tbl, amount)
 	end
 	
 	while pulled <= amount do
-		passed = false
+		local passed = false
 		while not passed do
 			passed = true
-			index = math.random(1, #tbl)
+			local index = math.random(1, #tbl)
 			for _, indexed in ipairs(indexes) do
 				if index == indexed then
 					passed = false

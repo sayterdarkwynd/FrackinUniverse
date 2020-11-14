@@ -32,7 +32,6 @@ function update(dt)
 		local overrideval=world.getProperty("frnpcoverride")
 		if (overrideval ~= nil) and enabled ~= overrideval then
 			status.setStatusProperty("fr_enabled", overrideval)
-			enabled=overrideval
 		end
 	end
 

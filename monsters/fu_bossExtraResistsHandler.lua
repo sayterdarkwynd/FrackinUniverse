@@ -18,8 +18,6 @@ function init()
 	
 	local mergedParams=util.mergeTable(baseParameters,overrideParameters)
 	local innateStats=mergedParams.statusSettings.stats
-	baseParameters=nil
-	overrideParameters=nil
 	--sb.logInfo("mP: %s",mergedParams)
 	--sb.logInfo("iS: %s",innateStats)
 	
@@ -48,8 +46,6 @@ function init()
 	end
 	local innateResistances=buffer
 	--sb.logInfo("iR: %s",innateResistances)
-	buffer={}
-	innateStats=nil
 	
 	for resist,_ in pairs(globalElements) do
 		if bossExtraResistsOverride or not innateResistances[resist] then

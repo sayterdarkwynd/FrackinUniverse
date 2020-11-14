@@ -70,25 +70,20 @@ function catMouthOffset(dt,species)
 		if checkMouthPos(mouthPos) then
 			local swimming=mcontroller.liquidMovement()
 			local facing=mcontroller.facingDirection()
-			local catMouthPos=valueList["walkingLeft"]
+			local catMouthPos
 			if lounging then
 				catMouthPos=valueList["lounging"]
-				mouthPos=catMouthPos
 			elseif swimming then
 				if facing<0 then
 					catMouthPos=valueList["swimmingLeft"]
-					mouthPos=catMouthPos
 				else
 					catMouthPos=valueList["swimmingRight"]
-					mouthPos=catMouthPos
 				end
 			else
 				if facing<0 then
 					catMouthPos=valueList["walkingLeft"]
-					mouthPos=catMouthPos
 				else
 					catMouthPos=valueList["walkingRight"]
-					mouthPos=catMouthPos
 				end
 			end
 			status.setStatusProperty("mouthPosition",catMouthPos)

@@ -26,7 +26,7 @@ function update(dt)
 
 		animator.setAnimationState("samplingarrayanim", "working")
 
-		local output = nil
+		local output
 		local rarityroll = math.random(1,100)
 		if rarityroll == 100 then
 			output = util.randomFromList(config.getParameter("rareOutputs"))

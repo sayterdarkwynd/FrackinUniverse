@@ -193,10 +193,9 @@ function NebArrowRain:fire()
 		})
 	end
 	
-	local projectileId = 0
 	--Spawn the projectile using the calculated parameters
     for i = 1, (self.projectileCount or 1) do
-      projectileId = world.spawnProjectile(
+      local projectileId = world.spawnProjectile(
         self.altProjectileType,
         self:firePosition(),
         activeItem.ownerEntityId(),

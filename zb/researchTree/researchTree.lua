@@ -29,6 +29,7 @@ noCost = false
 
 -- Basic GUI functions
 function init()
+
 	currencyTable = root.assetJson("/currencies.config")
 	data = root.assetJson("/zb/researchTree/data.config")
 	for _, file in ipairs(data.researchFiles) do
@@ -387,7 +388,7 @@ end
 function populateSearchList()
 	widget.clearListItems("searchList.list")
 	local listTable = {researched = {}, available = {}, expensive = {}, unavailable = {}}
-	local listItem = ""
+	local listItem
 
 	if researchTree then
 		for research, tbl in pairs(researchTree) do
@@ -496,16 +497,15 @@ function populateTreeList()
 		end
 	end
 
-	local listItem = ""
 	if (#toSort == 0) then
-		listItem = "treeList.list."..widget.addListItem("treeList.list")
+		local listItem = "treeList.list."..widget.addListItem("treeList.list")
 		widget.setText(listItem..".title", '^red;No Trees Available')
 		widget.setButtonEnabled(listItem..".title", false)
 	else
 		table.sort(toSort, function(a, b) return a.name:upper() < b.name:upper() end)
 
 		for _, d in ipairs(toSort) do
-			listItem = "treeList.list."..widget.addListItem("treeList.list")
+			local listItem = "treeList.list."..widget.addListItem("treeList.list")
 			widget.setData(listItem, d.tree)
 			widget.setText(listItem..".title", d.name)
 
@@ -575,14 +575,13 @@ function draw()
 					startPoint[2] = tbl.position[2] + dragOffset.y
 
 					local color = "#000000"
-					local state = ""
 
 					for _, child in ipairs(tbl.children) do
 						endPoint[1] = researchTree[child].position[1] + dragOffset.x
 						endPoint[2] = researchTree[child].position[2] + dragOffset.y
 
 						if whithinBounds(startPoint, endPoint) then
-							state = researchTree[child].state
+							local state = researchTree[child].state
 
 							if state ~= "hidden" then
 								if not state or state == "unavailable" then
@@ -778,16 +777,14 @@ function canvasClickEvent(position, button, isButtonDown)
 end
 
 function leftClick(clickPos, isDouble)
-	local xRange = {}
-	local yRange = {}
 	local clicked = nil
 
 	if researchTree then
 		for research, tbl in pairs(researchTree) do
-			xRange = {tbl.position[1] + dragOffset.x - (data.iconSizes * 0.5) - 1, tbl.position[1] + dragOffset.x + (data.iconSizes * 0.5) + 1}
+			local xRange = {tbl.position[1] + dragOffset.x - (data.iconSizes * 0.5) - 1, tbl.position[1] + dragOffset.x + (data.iconSizes * 0.5) + 1}
 			if clickPos[1] > xRange[1] and clickPos[1] < xRange[2] then
 
-				yRange = {tbl.position[2] + dragOffset.y - (data.iconSizes * 0.5) - 1, tbl.position[2] + dragOffset.y + (data.iconSizes * 0.5) + 1}
+				local yRange = {tbl.position[2] + dragOffset.y - (data.iconSizes * 0.5) - 1, tbl.position[2] + dragOffset.y + (data.iconSizes * 0.5) + 1}
 				if clickPos[2] > yRange[1] and clickPos[2] < yRange[2] then
 					if tbl.state ~= "hidden" then
 						clicked = research
@@ -819,14 +816,12 @@ end
 
 -- Research tree functions
 function verifyAcronims()
-	local found = false
 	local missing = ""
-	local tree = ""
 
 	for t, tbl in pairs(data.researchTree) do
-		tree = t
+		local tree = t
 		for res1, _ in pairs(tbl) do
-			found = false
+			local found = false
 			for _, res2 in pairs(data.acronyms[tree]) do
 				if res1 == res2 then
 					found = true
@@ -893,7 +888,6 @@ function buildStates(tree)
 	end
 
 	local splitString = stringToAcronyms(dataString)
-	local isAvailable = true
 
 	for _, acr in ipairs(splitString) do
 		if data.acronyms[selectedTree][acr] and researchTree[data.acronyms[selectedTree][acr]] then
@@ -902,7 +896,7 @@ function buildStates(tree)
 			if researchTree[data.acronyms[selectedTree][acr]].children then
 				for _, child in ipairs(researchTree[data.acronyms[selectedTree][acr]].children) do
 					if researchTree[child].state ~= "researched" then
-						isAvailable = true
+						local isAvailable = true
 
 						for research, tbl in pairs(researchTree) do
 							if research ~= data.acronyms[selectedTree][acr] and tbl.children then

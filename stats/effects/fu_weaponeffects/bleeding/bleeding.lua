@@ -14,7 +14,7 @@ function update(dt)
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-	local damageVal=0
+	local damageVal
 	if status.statPositive("specialStatusImmunity") then
 		damageVal=math.floor(world.threatLevel() * self.tickDamagePercentage * 100)
 	else
