@@ -1,0 +1,117 @@
+{
+  "type" : "crewmemberghostbuster",
+  "baseType" : "crewmember",
+  //"disableWornArmor" : false,
+  
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "goggles2",
+        "chest" : "tw_spacesuitchest",
+        "legs" : "tw_spacesuitlegs",
+        "back" : "tw_spacepunkback"
+      },
+
+      "role" : {
+        "benefits" : [   
+          {
+            "type" : "ShipUpgradeBenefit",
+            "property" : "maxFuel",
+            "value" : 340
+          },         
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "erchiusImmunity",
+            "duration" : 900
+          },         
+          {
+            "type" : "Regeneration",
+            "value" : 1
+          }
+        ],
+        "type" : "chemist",
+        "name" : "Ghostbuster",
+        "field" : "Ghostbuster",
+        "uniformColorIndex" : 6
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll give you an ectoplasmic fuel boost whenever we're on the ship!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran will give you boostsss when we are on ship!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Helpful. I'll fill your tanks with ectoplasm whenever we're on the ship!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Hey! Watch out!",
+              "Look there!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran sstab sspook!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Excited. We've got one!"
+            ]
+          }
+        },
+		"fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Hey! Watch out!",
+              "Look there!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran sstab sspook!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Excited. We've got one!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "fubeamgunghostbuster" ],
+            "sheathedprimary" : [ "fubeamgunghostbuster" ],
+			"head" :  [{ "name" : "goggles2", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
+			"chest" : [ { "name" : "tw_spacesuitchest", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "tw_spacesuitlegs", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
+            "back" : [ { "name" : "tw_spacepunkback", "count" :1, "parameters" : { "colorIndex" : 1 } } ]         
+          }
+        ] ]
+    ]
+  }
+}
