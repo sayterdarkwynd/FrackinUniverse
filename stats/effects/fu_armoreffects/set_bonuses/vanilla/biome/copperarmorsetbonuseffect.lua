@@ -1,10 +1,12 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_copperarmorsetnew"
 
-weaponBonus={
-	{stat = "powerMultiplier", effectiveMultiplier = 1.4},
+weaponBonus1={
+	{stat = "powerMultiplier", effectiveMultiplier = 1.4}
+}
+
+weaponBonus2={
 	{stat = "maxEnergy", effectiveMultiplier = 1.2}
-	
 }
 
 armorBonus={
@@ -13,7 +15,8 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonus1Handle=effect.addStatModifierGroup({})
+	effectHandlerList.weaponBonus2Handle=effect.addStatModifierGroup({})
 			
 	checkWeapons()
 
@@ -30,11 +33,16 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"mininglaser"})
-	
-	if weapons["either"] then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
+	local mininglasers=weaponCheck({"mininglaser"})
+	local weapons=weaponCheck({"weapon"})
+	if (mininglasers["primary"] and mininglasers["alt"]) or (mininglasers["twoHanded"] and mininglasers["either"]) or ((not weapons["either"]) and mininglasers["either"]) then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,weaponBonus1)
+		effect.setStatModifierGroup(effectHandlerList.weaponBonus2Handle,weaponBonus2)
+	elseif mininglasers["either"] then
+		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,setBonusMultiply(weaponBonus1,0.25))
+		effect.setStatModifierGroup(effectHandlerList.weaponBonus2Handle,weaponBonus2)
 	else
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonus1Handle,{})
+		effect.setStatModifierGroup(effectHandlerList.weaponBonus2Handle,{})
 	end
 end
