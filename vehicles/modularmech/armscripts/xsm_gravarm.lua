@@ -57,7 +57,6 @@ function BeamArm:fireState()
   local stateTimer = 0--self.fireTime
   local soundTimer = 0
   local dt = script.updateDt()
-  local weaponLocked = false
   local entityLocked = nil
   
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)--self.aimAngle
@@ -96,7 +95,7 @@ function BeamArm:fireState()
       if #entityList > 0 and not entityLocked then
         entityLocked = entityList[1]
       end
-      weaponLocked = entityLocked and world.entityExists(entityLocked) 
+      local weaponLocked = entityLocked and world.entityExists(entityLocked)
                   and vec2.mag(vec2.sub(self.newFirePosition,world.entityPosition(entityLocked))) < self.beamMaxRange 
                   and not beamCollision
 

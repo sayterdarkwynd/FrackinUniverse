@@ -144,7 +144,6 @@ function populateItemList(forceRepop)
 	end
 
 	upgradeableWeaponItems=buffer
-	buffer={}
 
 	widget.setVisible("emptyLabel", #upgradeableWeaponItems == 0)
 
@@ -179,7 +178,6 @@ end
 function showWeapon(item, price, priceMax, downgrade)
 	local playerEssence = player.currency("essence")
 	local enableButton = false
-	local enableButtonMax = false
 	local isWorn = item and checkWorn(item)
 
 	widget.setText("warningLabel",(isWorn and "Error: "..isWorn) or (downgrade and "Warning: Item may lose levels.") or "")
@@ -188,7 +186,7 @@ function showWeapon(item, price, priceMax, downgrade)
 		if item then
 
 			enableButton = price and (playerEssence >= price) and not isWorn
-			enableButtonMax = priceMax and (playerEssence >= priceMax) and not isWorn
+			local enableButtonMax = priceMax and (playerEssence >= priceMax) and not isWorn
 			local directive = enableButton and "^green;" or "^red;"
 			local directive2 = enableButtonMax and "^green;" or "^red;"
 			widget.setText("essenceCost", string.format("%s / %s%s^reset;", playerEssence,directive2, priceMax or "--"))

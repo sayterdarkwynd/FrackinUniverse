@@ -169,7 +169,7 @@ function fireBeam(primary)
 	local toPointer = vec2.sub(armPos, vec2.mul(vec2.norm(world.distance(armPos, activeItem.ownerAimPosition())), self.distance))
 	local blockCheck = world.collisionBlocksAlongLine(armPos, toPointer, {"Null", "Block", "Dynamic"}, 1)
 	if blockCheck[1] ~= nil then
-		local blockSide = 0
+		local blockSide
 		if world.distance(mcontroller.position(), blockCheck[1])[1] < 0 then
 				blockSide = 0
 		else
