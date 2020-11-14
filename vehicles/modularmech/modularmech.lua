@@ -1092,8 +1092,7 @@ function update(dt)
 	-- compute leg cycle
 
 	if onGround then
-		local newLegCycle = self.legCycle
-		newLegCycle = self.legCycle + ((newPosition[1] - self.lastPosition[1]) * self.facingDirection) / (4 * self.legRadius)
+		local newLegCycle = self.legCycle + ((newPosition[1] - self.lastPosition[1]) * self.facingDirection) / (4 * self.legRadius)
 
 		if math.floor(self.legCycle * 2) ~= math.floor(newLegCycle * 2) then
 			triggerStepSound()

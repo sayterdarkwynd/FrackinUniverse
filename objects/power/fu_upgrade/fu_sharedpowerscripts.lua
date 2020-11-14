@@ -4,7 +4,6 @@ function isn_getCurrentPowerInput(divide)
 	local totalInput = 0
 	local iterator = 0
 	local connectedDevices
-	local output = 0
 	
 	local nodecount = object.inputNodeCount() 
 	---sb.logInfo("PID: nodecount is " .. nodecount)
@@ -18,7 +17,7 @@ function isn_getCurrentPowerInput(divide)
 				---sb.logInfo("PID: powerLevel is " .. powerLevel)
 				---sb.logInfo("PID: ID check resolves to " .. world.entityName(id))
 				if world.callScriptedEntity(id,"isn_canSupplyPower") == true then
-					output = world.callScriptedEntity(id,"isn_getCurrentPowerOutput",divide)
+					local output = world.callScriptedEntity(id,"isn_getCurrentPowerOutput",divide)
 					---sb.logInfo("PID: Power supplier detected with output of " .. output)
 					if output ~= nil then totalInput = totalInput + output end
 				else

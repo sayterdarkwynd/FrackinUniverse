@@ -71,9 +71,8 @@ function update(dt)
 				local chanceBase,chanceDivisor = table.unpack(chancePair)
 				local chance = self.itemChances[chanceBase] / chanceDivisor
 				local done=false
-				local throw=nil
 				if rnd <= chance then
-					throw={parameters={}, name=item, count=1}
+					local throw={parameters={}, name=item, count=1}
 					local contSize=world.containerSize(entity.id())
 					for i=self.inputSlot,contSize-1 do
 						if throw then
@@ -86,7 +85,6 @@ function update(dt)
 					end
 					if throw then
 						world.spawnItem(throw, entity.position())
-						throw=nil
 						done=true
 					end
 					if done then

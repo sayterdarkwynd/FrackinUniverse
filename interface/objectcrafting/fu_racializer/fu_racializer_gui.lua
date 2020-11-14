@@ -47,7 +47,6 @@ function populateList()
 end
 
 function update(dt)
-    local cfg = nil
     local setCost = true
 
     itemOld = world.containerItemAt(pane.containerEntityId(),0)
@@ -56,9 +55,9 @@ function update(dt)
 
     cost = self.baseCost
 	
-	if itemPGI then
+    if itemPGI then
         --Validate slot#2 contains a PGI
-        cfg = root.itemConfig(itemPGI).config
+        local cfg = root.itemConfig(itemPGI).config
         if cfg.objectName ~= "perfectlygenericitem" then
             itemPGI = nil
         end

@@ -322,7 +322,7 @@ function updateLayer(alwaysFront)
 end
 
 function chimneyPuffs()
-	local thePos = {0, 0}
+	local thePos
 
 	if math.random(2) == 1 then
 		thePos = {mcontroller.position()[1] - (1.5 * mcontroller.facingDirection()), mcontroller.position()[2] + 2.75}

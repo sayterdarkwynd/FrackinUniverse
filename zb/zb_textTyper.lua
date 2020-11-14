@@ -174,7 +174,7 @@ end
 function textTyper.splitTableString(str)
 	local split = {}
 	local copy = str
-	local temp = ""
+	local temp
 	local dotPos = 0
 	local length = string.len(str)
 	

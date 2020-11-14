@@ -15,7 +15,7 @@ function damageListener(listenerType, callback)
   _,listener.timestep = listener.pollFunction()
 
   function listener:update()
-    local notifications = {}
+    local notifications
     notifications, self.timestep = self.pollFunction(self.timestep)
     if #notifications > 0 then
       callback(notifications)

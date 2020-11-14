@@ -218,8 +218,8 @@ function fire(ability,fireMode,throttle)
 		local aimVec=aimVector(ability)
 		local projectileType=""
 		local doProjectile=false
-		local message=""
-		local color={}
+		local message
+		local color
 		
 		if fireMode=="alt" then
 			if throttle then
@@ -269,11 +269,10 @@ function fire(ability,fireMode,throttle)
 		end
 	else
 		for i = 1, projectileCount do
-			local buffer={}
-			local buffer2={}
+			local buffer, buffer2
 			local aimVec=aimVector(ability)
 			
-			local projectileType=""
+			local projectileType
 			if math.random(1,100) >= 99.0 then
 				buffer=projectileData[fireMode]["rare"]
 				projectileType=buffer[math.floor(math.random(1,#buffer))]
@@ -282,7 +281,7 @@ function fire(ability,fireMode,throttle)
 				projectileType=buffer[math.floor(math.random(1,#buffer))]
 			end
 			
-			local element=""
+			local element
 			if math.random(1,100) >= 90.0 then
 				buffer2=elementData[fireMode]["rare"]
 				element=buffer2[math.floor(math.random(1,#buffer2))]

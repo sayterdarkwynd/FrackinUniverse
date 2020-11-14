@@ -93,7 +93,7 @@ function BeamArm:fireState()
     
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
-  local endPoint, beamCollision, beamLength = self:updateBeam()
+  self:updateBeam()
 
   animator.playSound(self.armName .. "Fire")
   animator.setAnimationState(self.armName .. "Beam", "fire", true)
@@ -115,7 +115,7 @@ function BeamArm:fireState()
   while stateTimer > 0 do
     animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
-    endPoint, beamCollision, beamLength = self:updateBeam()
+    local endPoint, beamCollision, beamLength = self:updateBeam()
 
   if beamCollision and self.beamTileDamage > 0 then
     local maximumEndPoint = vec2.add(self.firePosition, vec2.mul(self.aimVector, self.beamLength))
