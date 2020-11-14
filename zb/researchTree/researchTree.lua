@@ -29,6 +29,7 @@ noCost = false
 
 -- Basic GUI functions
 function init()
+
 	currencyTable = root.assetJson("/currencies.config")
 	data = root.assetJson("/zb/researchTree/data.config")
 	for _, file in ipairs(data.researchFiles) do
