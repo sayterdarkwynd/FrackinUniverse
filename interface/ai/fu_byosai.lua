@@ -41,9 +41,9 @@ function init()
 	
 	ship.miscConfig = root.assetJson("/frackinship/configs/misc.config")
 	ship.disableUnlockableShips = true
-	promises:add(world.sendEntityMessage("frackinshiphandler", "checkUnlockableShipDisabled"), function(result)
-		ship.disableUnlockableShips = result.disableUnlockableShips
-		ship.universeFlags = result.universeFlags
+	promises:add(world.sendEntityMessage("frackinshiphandler", "checkUnlockableShipDisabled"), function(results)
+		ship.disableUnlockableShips = results.disableUnlockableShips
+		ship.universeFlags = results.universeFlags
 		-- Repopulate the list to add unlockable ships if it's the current state
 		if state.state == "frackinShipChoice" then
 			if ship.selectedShip and ship.selectedShip.mode == "Upgradable" then
