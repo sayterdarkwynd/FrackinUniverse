@@ -1,0 +1,76 @@
+{
+  "type" : "crewmemberkirhoshacker",
+  "baseType" : "crewmember",
+  //"disableWornArmor" : false,
+    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "emptyHands" : false
+    },
+
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "bloodhoundhead",
+        "chest" : "bloodhoundchest",
+        "legs" : "bloodhoundlegs"
+      },
+
+      "role" : {
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "electricblock3",
+            "duration" : 300
+          }
+        ],
+        "type" : "soldier",
+        "name" : "Hacker",
+        "field" : "Hacker",
+        "uniformColorIndex" : 1
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Don't forget your bio-antivirus, boss!",
+              "This'll mask your signal!"
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll jack into your ship's mainframe, and overclock the warp drive!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Don't forget your bio-antivirus, boss!",
+              "This'll mask your signal!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "kirhossniper" ],
+            "sheathedprimary" : [ "kirhosscythe" ],
+			"head" :  [{ "name" : "bloodhoundhead", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
+			"chest" : [ { "name" : "bloodhoundchest", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
+            "legs" : [ { "name" : "bloodhoundlegs", "count" :1, "parameters" : { "colorIndex" : 1 } } ]          
+          }
+        ] ]
+    ]
+  }
+}
