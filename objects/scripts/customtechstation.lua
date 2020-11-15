@@ -1,3 +1,5 @@
+require "/scripts/util.lua"
+
 local CSAILoldInit = init
 
 function init()
@@ -30,7 +32,12 @@ function onInteraction()
 		sayNext()
 		return nil
 	else
-		if not self.fallback then
+		--[[if world.getProperty("ship.level", 1) == 0 and not world.getProperty("fu_byos") then
+			local miscShipConfig = root.assetJson("/frackinship/configs/misc.config")
+			local interface = root.assetJson(miscShipConfig.shipSelctionInterface)
+			interface = util.mergeTable(interface, miscShipConfig.shipResetSelectionInterfaceData or {})
+			return {"ScriptPane", interface}
+		else]]if not self.fallback then
 			return {config.getParameter("interactAction"), config.getParameter("interactData")}
 		else
 			return {config.getParameter("fallbackInteractAction"), config.getParameter("fallbackInteractData")}

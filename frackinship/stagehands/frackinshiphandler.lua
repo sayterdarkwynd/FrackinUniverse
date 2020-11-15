@@ -5,6 +5,11 @@ require "/interface/objectcrafting/fu_racializer/fu_racializer_gui.lua"
 function init()
 	message.setHandler("createShip", createShip)
 	self.shipDungeonId = config.getParameter("shipDungeonId", 10101)
+	self.miscShipConfig = root.assetJson("/frackinship/configs/misc.config")
+	message.setHandler("checkUnlockableShipDisabled", function()
+		-- To make hopefully make this config value server side instead of client side
+		return {disableUnlockableShips = self.miscShipConfig.disableUnlockableShips, universeFlags = world.universeFlags()}
+	end)
 end
 
 function update()

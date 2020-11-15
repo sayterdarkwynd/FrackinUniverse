@@ -1,4 +1,5 @@
 local origInit = init or function() end
+local origOnInteraction = onInteraction or function() end
 
 function init()
 	origInit()
@@ -6,18 +7,9 @@ function init()
 	self.planetInteractData = config.getParameter("planetInteractData")
 end
 
-function onInteraction()
+function onInteraction(args)
 	if world.type() == "unknown" then
-		if self.dialogTimer then
-			sayNext()
-			return nil
-		else
-			if not self.fallback then
-				return {config.getParameter("interactAction"), config.getParameter("interactData")}
-			else
-				return {config.getParameter("fallbackInteractAction"), config.getParameter("fallbackInteractData")}
-			end
-		end
+		return origOnInteraction(args)
 	else
 		if self.planetInteractAction then
 			return {self.planetInteractAction, self.planetInteractData}

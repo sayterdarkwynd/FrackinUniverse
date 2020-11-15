@@ -3,6 +3,7 @@ require "/scripts/pathutil.lua"
 require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
 require "/zb/zb_textTyper.lua"
 require "/zb/zb_util.lua"
+require "/scripts/messageutil.lua"
 
 function init()
 	textUpdateDelay = config.getParameter("textUpdateDelay")
@@ -38,8 +39,20 @@ function init()
 	ship.shipConfig = root.assetJson("/frackinship/configs/ships.config")
 	generateShipLists()
 	
-	-- temp stuff for pre-choosable BYOS
-	byosItems = config.getParameter("byosItems")
+	ship.miscConfig = root.assetJson("/frackinship/configs/misc.config")
+	ship.disableUnlockableShips = true
+	promises:add(world.sendEntityMessage("frackinshiphandler", "checkUnlockableShipDisabled"), function(result)
+		ship.disableUnlockableShips = result.disableUnlockableShips
+		ship.universeFlags = result.universeFlags
+		-- Repopulate the list to add unlockable ships if it's the current state
+		if state.state == "frackinShipChoice" then
+			if ship.selectedShip and ship.selectedShip.mode == "Upgradable" then
+				buttonPress("buttonUpgradable")
+			else
+				buttonPress("buttonByos")
+			end
+		end
+	end)
 end
 
 function generateShipLists()
@@ -100,12 +113,14 @@ function generateShipLists()
 				table.insert(ship.upgradableShips, shipData)
 			end ]]--
 		else
-			-- make this less bad
+			local ignoreShip = false
 			if data.raceWhitelist and not data.raceWhitelist[playerRace] then
-				
+				ignoreShip = true
 			elseif data.raceBlacklist and data.raceBlacklist[playerRace]  and not data.raceWhitelist then
+				ignoreShip = true
+			end
 			
-			else
+			if not ignoreShip then
 				data.id = id
 				if type(data.ship) == "table" then
 					data.mode = "Upgradable"
@@ -129,6 +144,8 @@ function generateShipLists()
 end
 
 function update(dt)
+	promises:update()
+
 	-- Text typing and AI animation
 	if not textData.isFinished then
 		if textUpdateDelay <= 0 then
@@ -182,6 +199,7 @@ function changeState(newState)
 	if states[newState] then
 		-- Generic state change stuff
 		state = states[newState]
+		state.state = newState
 		if state.previousState then
 			widget.setButtonEnabled("buttonBack", true)
 		else
@@ -325,16 +343,36 @@ end
 function populateShipList(shipList)
 	widget.clearListItems("root.shipList")
 	for _, shipData in ipairs (shipList) do
-		local listItemName = widget.addListItem("root.shipList")
-		local listItem = "root.shipList."..listItemName	
-		widget.setText(listItem..".name", shipData.name)
-		widget.setData(listItem, shipData)
-		if shipData.icon then
-			widget.setImage(listItem..".icon", shipData.icon)
+		-- Add the unlockable ship check here so that the ship list doesn't need to be generated again once it's checked if it's disabled
+		local addShip = true
+		if shipData.universeFlag then
+			addShip = false
+			sb.logInfo(sb.printJson(ship.universeFlags) .. " : " .. sb.printJson(ship.disableUnlockableShips))
+			if not ship.disableUnlockableShips then
+				for _, flag in ipairs (ship.universeFlags or {}) do
+					if flag == shipData.universeFlag then
+						addShip = true
+						break
+					end
+				end
+			end
 		end
-		if ship.selectedShip and shipData.id == ship.selectedShip.id then
-			widget.setListSelected("root.shipList", listItemName)
-			shipSelected("shipList")
+		if addShip then
+			local listItemName = widget.addListItem("root.shipList")
+			local listItem = "root.shipList."..listItemName
+			local shipName = shipData.name
+			if shipData.universeFlag then
+				shipName = sb.replaceTags(ship.miscConfig.unlockableShipNameModifier, {shipName = shipName})
+			end
+			widget.setText(listItem..".name", shipName)
+			widget.setData(listItem, shipData)
+			if shipData.icon then
+				widget.setImage(listItem..".icon", shipData.icon)
+			end
+			if ship.selectedShip and shipData.id == ship.selectedShip.id then
+				widget.setListSelected("root.shipList", listItemName)
+				shipSelected("shipList")
+			end
 		end
 	end
 end
@@ -350,23 +388,18 @@ function createShip(vanilla)
 			parameters = getBYOSParameters("techstation", true, _)
 			player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
 		else
-			-- maybe try make this unnecessary?
-			if ship.selectedShip.useOld then
-				byos()
-			else
-				if ship.selectedShip.mode == "Buildable" then
-					if string.find(ship.selectedShip.ship, "/") then
-						sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
-					else
-						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
-					end
-				elseif ship.selectedShip.mode == "Upgradable" then
-					sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
+			if ship.selectedShip.mode == "Buildable" then
+				if string.find(ship.selectedShip.ship, "/") then
+					sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
 				else
-					sb.logError("INVALID SHIP MODE DETECTED")
+					world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
 				end
-				player.startQuest("fu_byos")
+			elseif ship.selectedShip.mode == "Upgradable" then
+				sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
+			else
+				sb.logError("INVALID SHIP MODE DETECTED")
 			end
+			player.startQuest("fu_byos")
 		end
 	end
 	pane.dismiss()
