@@ -1,6 +1,6 @@
+require "/stats/typer_particle.lua"
 require("/scripts/vec2.lua")
 require("/stats/effects/fu_weathereffects/new/fuWeatherBase.lua")
-
 --============================= CLASS DEFINITION ============================--
 --[[ This instantiates a child class of fuWeatherBase. The child's metatable
 		is set to the parent's, so that any missing indexes (methods) are looked
@@ -19,6 +19,15 @@ fuInsanityWeather = fuWeatherBase:new({})
 				self.parent:method()
 		The latter will pass the parent class as the "self" parameter, preventing
 		any attributes overwritten by the child from being used. ]]--
+		
+function fuInsanityWeather.removeEffect(self)
+	self:deactivateVisualEffects()
+	self:removeDebuffs()
+	-- Reset used warning messages (in case player only has temporary immunity)
+	self.usedMessages = {}
+	self.effectActive = false
+	typerParticle.reset()
+end
 
 function fuInsanityWeather.init(self, config_file)
 	effectConfig = self.parent.init(self, config_file)
@@ -36,6 +45,8 @@ function fuInsanityWeather.init(self, config_file)
 	self.myspeed = 0
 	self.unBlockable = config.getParameter("isUnblockable") or 0
 	effect.addStatModifierGroup({{stat = "isUnblockable", amount = self.unBlockable}})
+	self.onTerrestrialWorld=world.terrestrial()
+	typerParticle.init()
 end
 
 function fuInsanityWeather.update(self, dt)
@@ -51,6 +62,7 @@ function fuInsanityWeather.update(self, dt)
 			self:insanityChatter()
 			self.chatterTimer = self.chatterDelay.base + math.random() * self.chatterDelay.random
 		end
+		typerParticle.update(dt)
 	end
 end
 
@@ -75,7 +87,7 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 	local i = 1
 	for dStat, dParams in pairs(self.debuffs) do
 		local statName = tostring(dStat)
-		local dAmount = nil
+		local dAmount
 		if (tostring(dParams.type) == "relative") then
 			dAmount = status.stat(statName) * dParams.amount * modifier
 		else -- dParams.type == "absolute"
@@ -102,8 +114,11 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 		if (i > 1) then
 			effect.setStatModifierGroup(self.debuffGroup, newGroup)
 			if (status.stat("mentalProtection") < 1) and (self.madTimer < 200) then
-				self.randMadness = math.random(2,8-(2*afkLevel())) * (math.random(1,2) - status.stat("mentalProtection"))-- spawn madness randomly when this effect is active, less if inactive
-				world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
+				local afkLvl=afkLevel()
+				if (afkLvl<=3) and (self.onTerrestrialWorld) then
+					self.randMadness = math.random(2,8-(2*afkLvl)) * (math.random(1,2) - status.stat("mentalProtection"))-- spawn madness randomly when this effect is active, less if inactive
+					world.spawnItem("fumadnessresource",entity.position(),self.randMadness )
+				end
 				self.madTimer = self.madTimer + 1
 			end
 			self:createAlert()
@@ -112,7 +127,7 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 end
 
 function afkLevel()
-	return ((status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
+	return ((status.statusProperty("fu_afk_720s") and 4) or (status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
 end
 
 function fuInsanityWeather.insanityChatter(self)

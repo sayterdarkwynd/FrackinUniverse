@@ -10,15 +10,17 @@ local statusList={--progress status doesnt matter, but for any other status indi
 	artifactProtheonID="^green;Artifact identified",
 	artifactBasicID="^green;Artifact identified",
 	geodeID="^green;Artifact identified",
+	--bugID="^green;Insectoid identified",
 	invalid="^red;Invalid sample detected"
 }
 
 local tagList={
 	--FORMAT: <itemTag>={range=<math.rand max>,currencies={<currency variable name 1>=<bonusValue>,...},<optional override parameter>
-	queen={range=25,currencies={bonusResearch=3}},
-	youngQueen={range=25,currencies={bonusResearch=3}},
-	drone={range=100,currencies={bonusResearch=0}},
-	geode={range=20,currencies={bonusResearch=5,bonusEssence=1},overrideCategory="geodeResearched"},
+	queen={range=25,currencies={bonusResearch=3,bonusGene=1}},
+	youngQueen={range=25,currencies={bonusResearch=3,bonusGene=1}},
+	drone={range=100,currencies={bonusGene=1}},
+	--bug={range=25,currencies={bonusResearch=15,bonusGene=3},overrideCategory="bugResearched"},
+	geode={range=65,currencies={bonusResearch=2,bonusEssence=1},overrideCategory="geodeResearched"},
 	artifact={range=35,currencies={bonusResearch=50,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"},
 	artifactElder={range=25,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"},
 	artifactBasic={range=50,currencies={bonusResearch=15,bonusEssence=0},overrideCategory="artifactResearched"}
@@ -31,7 +33,7 @@ function init()
 
 	defaultMaxStack=root.assetJson("/items/defaultParameters.config").defaultMaxStack
 	defaultDelta=config.getParameter("scriptDelta")
-	
+
 	microscopeRank=config.getParameter("microscopeRank",0) -- currently not defined on microscopes, so does nothing
 
 	playerWorkingEfficiency = nil
@@ -39,11 +41,12 @@ function init()
 	status = statusList.waiting
 	progress = 0
 	futureItem = nil
-	
+
 	bonusEssence=0
 	bonusResearch=0
     bonusProtheon=0
-	
+    bonusGene=0
+
 	--these are declared here, but can be moved to object parameters later as needed
 	self.inputSlot=0
 	self.outputSlot=4
@@ -61,11 +64,32 @@ function init()
 	math.randomseed(util.seedTime())
 end
 
+
+function fetchTags(params)
+	local tags={}
+	for k,v in pairs(params or {}) do
+		if string.lower(k)=="itemtags" then
+			tags=util.mergeTable(tags,copy(v))
+		end
+	end
+	return tags
+end
+
+--[[function matchAny(str,tbl)
+	for _,v in pairs(tbl) do
+		if v==str then
+			return true
+		end
+	end
+	return false
+end]]
+
 function checkTags(item)
-	if (not item) or (not item.itemTags) then return end
+	if (not item) then return end
+	local tags=fetchTags(item)
 	local buffer=nil
 	for tag,values in pairs(tagList) do
-		for _,t in pairs(item.itemTags) do
+		for _,t in pairs(tags) do
 			if t==tag then
 				buffer=tag
 				break
@@ -89,7 +113,7 @@ function update(dt)
 		local currentItem = world.containerItemAt(entity.id(), self.inputSlot)
 		local currentItemParameters=currentItem and mergedParams(root.itemConfig(currentItem))
 		local lastTag=checkTags(currentItemParameters)
-		
+
 		if currentItem == nil then
 			status = statusList.waiting
 		elseif (futureItem and ((futureItem.name~=currentItem.name) or (futureItem.count~=currentItem.count))) then
@@ -122,11 +146,17 @@ function update(dt)
 					end
 
 					if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
-					if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
+					
+					if lastTag=="drone" then
+						if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
+						world.containerTakeAt(entity.id(), self.inputSlot)
+					else
+						if not nudgeItem(singleCountFutureItem,self.outputSlot,slotItem) then return end
+						world.containerTakeNumItemsAt(entity.id(), self.inputSlot,1)
+					end
 
-					world.containerTakeAt(entity.id(), self.inputSlot)
+
 					futureItem=nil
-					currentItem=nil
 				else
 					if playerUsing then
 						progress = math.min(100,progress + (playerWorkingEfficiency * dt))
@@ -151,11 +181,16 @@ function update(dt)
 						end
 
 						if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
-						if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
 
-						world.containerTakeAt(entity.id(), self.inputSlot)
+						if lastTag=="drone" then
+							if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
+							world.containerTakeAt(entity.id(), self.inputSlot)
+						else
+							if not nudgeItem(singleCountFutureItem,self.outputSlot,slotItem) then return end
+							world.containerTakeNumItemsAt(entity.id(), self.inputSlot,1)
+						end
+						
 						futureItem=nil
-						currentItem=nil
 						if bonusResearch>0 then
 							shoveItem({name="fuscienceresource",count=bonusResearch},self.researchSlot)
 						end
@@ -165,9 +200,13 @@ function update(dt)
 						if bonusProtheon>0 then
 							shoveItem({name="fuprecursorresource",count=bonusProtheon},self.protheonSlot)
 						end
+						if bonusGene>0 then
+							shoveItem({name="fugeneticmaterial",count=bonusGene},self.protheonSlot)
+						end						
 						bonusEssence=0
 						bonusResearch=0
 						bonusProtheon=0
+						bonusGene=0
 						progress = 0
 
 						status=statusList[lastTag.."ID"]
@@ -176,19 +215,21 @@ function update(dt)
 					else
 						status = "^cyan;"..progress.."%"
 						-- ***** chance to gain currencies *****
-						local randCheck = 0
-						randCheck=math.random(tagList[lastTag].range or 100)
+						local randCheck = math.random(tagList[lastTag].range or 100)
 						local rank=(currentItemParameters.rank or 0)
 						--prev., the 'rank' parameter on the items did nothing, might need rebalancing
-						--also, config.getParameter gets info from the calling object. 
+						--also, config.getParameter gets info from the calling object.
 						--near the start of update is a currentItemParameters declaration to use.
-						
+						local effectiveCount=((lastTag=="drone") and currentItem.count) or 1
+
 						if (randCheck == self.researchSlot) and (tagList[lastTag].currencies.bonusResearch) then
-							bonusResearch=bonusResearch+((tagList[lastTag].currencies.bonusResearch+rank+microscopeRank)*currentItem.count) -- Gain research as this is used
+							bonusResearch=bonusResearch+((tagList[lastTag].currencies.bonusResearch+rank+microscopeRank)*effectiveCount) -- Gain research as this is used
 						elseif (randCheck == self.essenceSlot) and (tagList[lastTag].currencies.bonusEssence) then
-							bonusEssence=bonusEssence+((tagList[lastTag].currencies.bonusEssence+rank+microscopeRank)*currentItem.count) -- Gain essence as this is used
+							bonusEssence=bonusEssence+((tagList[lastTag].currencies.bonusEssence+rank+microscopeRank)*effectiveCount) -- Gain essence as this is used
 						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusProtheon) then
-							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+rank+microscopeRank)*currentItem.count) -- Gain protheon as this is used
+							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used
+						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusGene) then
+							bonusGene=bonusGene+((tagList[lastTag].currencies.bonusGene+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used						
 						end
 					end
 				end

@@ -90,7 +90,22 @@ function racialiseShip()
 				newParameters.fs_racialiseUpdate = true
 				newParameters.shortdescription = world.getObjectParameter(object, "shortdescription") .. " (" .. self.racialiseRace .. ")"
 				if racialiserType == "techstation" then
-					newParameters.dialog = newItem.config.dialog
+					local techstation
+					if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].race then
+						self.playerRace = raceTableOverride[self.playerRace].race
+					end
+					if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
+						for item, extra in pairs (raceTableOverride[self.playerRace].items) do
+							if string.find(item, "techstation") then
+								techstation = root.itemConfig(item)
+							end
+						end
+					end
+					techstation = techstation or root.itemConfig(self.playerRace .. "techstation") or {config = {}}
+					dialog = techstation.config.dialog
+					if dialog then
+						newParameters.dialog = dialog
+					end
 				end
 				for parameter, data in pairs (newParameters) do
 					world.callScriptedEntity(object, "object.setConfigParameter", parameter, data)

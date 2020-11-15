@@ -188,7 +188,7 @@ end
 
 function armorStatUpgrade(statusList, statusName, statUpgradeItem)
 	local statUpgraded = false
-	local statUpgradeAmount = nil
+	local statUpgradeAmount = 0
 
 	if statusName == "powerMultiplier" then
 		statUpgradeAmount = statUpgradeItem.count * 0.01
@@ -198,8 +198,6 @@ function armorStatUpgrade(statusList, statusName, statUpgradeItem)
 		statUpgradeAmount = statUpgradeItem.count + math.floor(statUpgradeItem.count / 10) * 3
 	elseif statusName == "maxHealth" then
 		statUpgradeAmount = statUpgradeItem.count
-	else
-		statUpgradeAmount = 0
 	end
 
 	for _, statusEffect in ipairs(statusList) do

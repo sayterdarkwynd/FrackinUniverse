@@ -94,7 +94,7 @@ function update(args)
 	    if self.pressUp or self.pressUp and self.active3== 1 then  -- glide stance
 	      if not mcontroller.onGround() and not mcontroller.zeroG() then
 		      status.setPersistentEffects("glide", {
-			{stat = "fallDamageMultiplier", effectiveMultiplier =  0.35}
+			{stat = "fallDamageMultiplier", effectiveMultiplier =  0.35},
 			{stat = "gliding", amount = 1}
 		      })  	      
 	      end

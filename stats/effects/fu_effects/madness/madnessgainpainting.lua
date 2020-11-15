@@ -27,11 +27,18 @@ function update(dt)
 	if (self.timer <= 0) then
 		self.healthDamage = ((math.max(1.0 - status.stat("mentalProtection"),0))*10) + status.stat("madnessModifier")
 		self.timer = 30
-		self.totalValue = self.baseValue + self.valBonus + math.random(1,6-afkLevel())
+		local afkLvl=afkLevel()
+		if afkLvl > 3 then
+			self.totalValue = 0
+		else
+			self.totalValue = self.baseValue + self.valBonus + math.random(1,6-afkLvl)
+		end
 		if (math.abs(mcontroller.xVelocity()) < 5) and (math.abs(mcontroller.yVelocity()) < 5) then
-			world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
-			animator.playSound("madness")
-			activateVisualEffects()
+			if self.totalValue>0 then
+				world.spawnItem("fumadnessresource",entity.position(),self.totalValue)
+				animator.playSound("madness")
+				activateVisualEffects()
+			end
 			status.applySelfDamageRequest({damageType = "IgnoresDef",damage = self.healthDamage,damageSourceKind = "shadow",sourceEntityId = entity.id()})
 		end
 	end
@@ -60,5 +67,5 @@ function uninit()
 end
 
 function afkLevel()
-	return ((status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
+	return ((status.statusProperty("fu_afk_720s") and 4) or (status.statusProperty("fu_afk_360s") and 3) or (status.statusProperty("fu_afk_240s") and 2) or (status.statusProperty("fu_afk_120s") and 1) or 0)
 end

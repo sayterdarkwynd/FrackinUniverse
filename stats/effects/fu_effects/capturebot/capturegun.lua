@@ -49,7 +49,7 @@ function update(dt)
 		end
 
 		if self and self.isCapturable and self.podPower and not (self.didDamage or self.pet) then
-			local damage=0.0
+			local damage
 
 			if self.usePercent then --alternative scaling: percentage
 				damage=math.min(status.resource("health")-1.0,status.resourceMax("health")*self.podPower*0.01)

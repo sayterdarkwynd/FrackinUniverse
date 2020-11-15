@@ -9,7 +9,7 @@ require "/scripts/fupower.lua"
 -- Added in the scanTimer variable as it's common in any lua code which
 -- interacts with Item Transference Device (transferUtil) code.
 local scanTimer	-- Making it local is faster than leaving it global.
-local tenantNumber 
+local tenantNumber
 local happinessAmount
 local hasPower
 local parentCore --save the colony core as a local so you don't have to look for it every time
@@ -53,7 +53,7 @@ end
 
 function update(dt)
 	power.update(dt)
-	
+
 	-- Notify ITD but no faster than once per second.
 	if not scanTimer or (scanTimer > 1) then
 		transferUtil.loadSelfContainer()
@@ -67,8 +67,11 @@ function update(dt)
 	if not storage.timer then
 		storage.timer=0
 	end
+
+	self.hasPower=power.consume(self.powerConsumption*dt)
+
 	if storage.timer>=productionTime then
-		
+
 		local worldtype = world.type()
 		if worldtype == 'unknown' then
 			worldtype = world.getProperty("ship.celestial_type") or worldtype
@@ -76,7 +79,7 @@ function update(dt)
 		if not self.outputMap[worldtype] then
 			initMap(worldtype)
 		end
-		
+
 		local output = nil
 		local rarityroll = math.random(1, self.maxWeight[worldtype])
 
@@ -90,13 +93,13 @@ function update(dt)
 				break
 			end
 		end
-	
-		if output and clearSlotCheck(output) and power.consume(self.powerConsumption) then
+
+		if output and clearSlotCheck(output) and self.hasPower then
 			if object.outputNodeCount() > 0 then
 				object.setOutputNodeLevel(0,true)
 			end
             animator.setAnimationState("screen", "on")
-		
+
 			world.containerAddItems(entity.id(), output)
 			hasPower = 1
 		else
@@ -109,7 +112,9 @@ function update(dt)
 		storage.timer=0
 	else
 		if wellsDrawing == 1 then
-			storage.timer=storage.timer+(dt * tenantNumber)
+			if tenantNumber >= 1 then
+				storage.timer=storage.timer+(dt * (tenantNumber))
+			end
 		end
 	end
 end
@@ -118,13 +123,11 @@ function clearSlotCheck(checkname)
 	return world.containerItemsCanFit(entity.id(), checkname) > 0
 end
 
-
 function setDesc()
 	if not self.overrideScanTooltip then return end
 
 	object.setConfigParameter('description',"^red;Range:^gray; "..wellRange.."\n^red;Similar Objects:^gray; "..((wellsDrawing or 0)-1).."\n^red;Tenants:^gray; "..tenantNumber.."\n^red;Happiness Factor: ^gray; "..happinessAmount*hasPower.."^reset;")
 end
-
 
 function wellInit()
 	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
@@ -138,35 +141,32 @@ function fu_isAddonPsionicHarvester() return true end
 function getTenantNumber()
 	tenantNumber = 0
 	if parentCore and world.entityExists(parentCore) then
-		tenantNumber = world.callScriptedEntity(parentCore,"getTenants")
+		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum")
 	else
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange/2, { order = "nearest" })
-	
+
 		for _, objectId in pairs(objectIds) do
 				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
-					tenantNumber = world.callScriptedEntity(objectId,"getTenants")
+					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
 					parentCore = objectId
 				end
 		end
 	end
-	
-end
 
+end
 
 function providesHappiness() return true end
 
-function amountHappiness() 
+function amountHappiness()
 	if wellsDrawing == 1 then
-		return happinessAmount*hasPower 
+		return happinessAmount*hasPower
 	else
-		return 0 
+		return 0
 	end
-	
+
 end
-
-
 
 function firstToUpper(str)
 	--sb.logInfo("%s",str)

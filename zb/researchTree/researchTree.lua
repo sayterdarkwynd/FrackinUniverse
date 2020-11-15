@@ -18,6 +18,7 @@ doubleClickCooldown = 0
 idleRedrawCooldown = 0
 clickTimeRemaining = 0
 oldMousePos = {0,0}
+lastClickPos = {0,0}
 lowQuality = false
 selectedTree = nil
 mouseDown = false
@@ -28,6 +29,7 @@ noCost = false
 
 -- Basic GUI functions
 function init()
+
 	currencyTable = root.assetJson("/currencies.config")
 	data = root.assetJson("/zb/researchTree/data.config")
 	for _, file in ipairs(data.researchFiles) do
@@ -94,39 +96,22 @@ function init()
 
 				local researches = stringToAcronyms(dataString)
 				for i, acr in ipairs(researches) do
-					local testBuffer=data.acronyms[tree][acr]
-					local acronymCheck=false
-					local acronymInTreeCheck=false
-					local unlockExistsCheck=false
+					local acronymTest = data.acronyms[tree][acr]
 					local unlockType
-					
-					if testBuffer then
-						--test that the data for the relevant 'acronym' exists. if so, load research tree data for it.
-						acronymCheck=true
-						testBuffer=data.researchTree[tree][testBuffer]
-					end
-					if testBuffer then
-						--test that the acronym actually has tree data. if so, set it to the unlocks.
-						testBuffer=testBuffer.unlocks
-						acronymInTreeCheck=true
-					end
-					if testBuffer then
-						--check that the unlocks actually exist.
-						unlockExistsCheck=true
-						unlockType=type(testBuffer)
+
+					-- Check whether there's data for the acronym, and then if it has tree data.
+					if acronymTest and data.researchTree[tree][acronymTest] then
+						unlockType = type(data.researchTree[tree][acronymTest].unlocks)
 					end
 					
-					if (not acronymCheck) or (not acronymInTreeCheck) then
-						-- Remove acronyms that don't have a linked research
-						-- in case of incomplete acronym pairing, remove and banana.
+					-- Remove acronyms that don't have a linked research
+					-- Otherwise relearn relevant blueprints
+					if not unlockType then
 						if i == 1 then
 							dataString = string.gsub(dataString, acr..",", "")
 						else
 							dataString = string.gsub(dataString, ","..acr..",", ",")
 						end
-						--[[if acronymCheck or acronymInTreeCheck then
-							sb.logWarn("researchTree.lua: Acronym %s, exist=%s, exists in tree=%s. Pruning.",acr,acronymCheck,acronymInTreeCheck)
-						end]]
 					elseif unlockType == "table" then
 						for _, blueprint in ipairs(data.researchTree[tree][data.acronyms[tree][acr]].unlocks) do
 							player.giveBlueprint(blueprint)
@@ -168,8 +153,10 @@ function update(dt)
 
 	if selected and not readOnly and researchTree[selected].state == "available" and canAfford(selected) then
 		widget.setButtonEnabled("researchButton", true)
+		widget.setButtonEnabled("consumptionText", true)
 	else
 		widget.setButtonEnabled("researchButton", false)
+		widget.setButtonEnabled("consumptionText", false)
 	end
 
 	if clickTimeRemaining > 0 then
@@ -251,6 +238,7 @@ function searchButton()
 	if not verified then return end
 	if widget.active("searchList") then
 		widget.setVisible("researchButton", true)
+		widget.setVisible("consumptionText", true)
 		widget.setVisible("searchList", false)
 		widget.setVisible("infoList", true)
 
@@ -268,6 +256,7 @@ function searchButton()
 		searchListRepopulationCooldown = data.searchListRepopulationInterval
 		widget.setText("title", "Zoom to a research by clicking on it in the list")
 		widget.setVisible("researchButton", false)
+		widget.setVisible("consumptionText", false)
 		widget.setVisible("searchList", true)
 		widget.setVisible("infoList", false)
 		populateSearchList()
@@ -286,12 +275,29 @@ function treePickButton()
 	if not verified then return end
 	if widget.active("treeList") then
 		widget.setVisible("researchButton", true)
+		widget.setVisible("consumptionText", true)
 		widget.setVisible("treeList", false)
 		widget.setVisible("infoList", true)
 
 		for i = 1, 9 do
 			widget.setVisible("priceItem"..i, true)
 		end
+		
+		local consumptionRules = getTreeConsumptionRules(selectedTree)
+
+		if consumptionRules.currency then
+			consumeText = '^red; Will consume currency'
+		else
+			consumeText = '^green; Will not consume currency'
+		end
+
+		if consumptionRules.items then
+			consumeText = consumeText..'\n^red; Will consume items'
+		else
+			consumeText = consumeText..'\n^green; Will not consume items'
+		end
+
+		widget.setText("consumptionText", consumeText)
 
 		updateInfoPanel()
 		widget.setButtonImages("treePickButton",
@@ -303,6 +309,7 @@ function treePickButton()
 		searchListRepopulationCooldown = data.searchListRepopulationInterval
 		widget.setText("title", "Select a research tree")
 		widget.setVisible("researchButton", false)
+		widget.setVisible("consumptionText", false)
 		widget.setVisible("treeList", true)
 		widget.setVisible("infoList", false)
 		populateTreeList()
@@ -381,7 +388,7 @@ end
 function populateSearchList()
 	widget.clearListItems("searchList.list")
 	local listTable = {researched = {}, available = {}, expensive = {}, unavailable = {}}
-	local listItem = ""
+	local listItem
 
 	if researchTree then
 		for research, tbl in pairs(researchTree) do
@@ -458,126 +465,56 @@ function populateSearchList()
 	end
 end
 
---http://lua-users.org/wiki/SortedIteration
---------------------------------------
--- Insert value of any type into array
---------------------------------------
-local function arrayInsert( ary, val, idx )
-    -- Needed because table.insert has issues
-    -- An "array" is a table indexed by sequential
-    -- positive integers (no empty slots)
-    local lastUsed = #ary + 1
-    local nextAvail = lastUsed + 1
-
-    -- Determine correct index value
-    local index = tonumber(idx) -- Don't use idx after this line!
-    if (index == nil) or (index > nextAvail) then
-        index = nextAvail
-    elseif (index < 1) then
-        index = 1
-    end
-
-    -- Insert the value
-    if ary[index] == nil then
-        ary[index] = val
-    else
-        -- TBD: Should we try to allow for skipped indices?
-        for j = nextAvail,index,-1 do
-            ary[j] = ary[j-1]
-        end
-        ary[index] = val
-    end
-end
---http://lua-users.org/wiki/SortedIteration
---------------------------------
--- Compare two items of any type
---------------------------------
-local function compareAnyTypes( op1, op2 ) -- Return the comparison result
-    -- Inspired by http://lua-users.org/wiki/SortedIteration
-    local type1, type2 = type(op1),     type(op2)
-    local num1,  num2  = tonumber(op1), tonumber(op2)
-
-    if ( num1 ~= nil) and (num2 ~= nil) then  -- Number or numeric string
-        return  num1 < num2                     -- Numeric compare
-    elseif type1 ~= type2 then                -- Different types
-        return type1 < type2                    -- String compare of type name
-    -- From here on, types are known to match (need only single compare)
-    elseif type1 == "string"  then            -- Non-numeric string
-        return op1 < op2                        -- Default compare
-    elseif type1 == "boolean" then
-        return op1                              -- No compare needed!
-         -- Handled above: number, string, boolean
-    else -- What's left:   function, table, thread, userdata
-        return tostring(op1) < tostring(op2)  -- String representation
-    end
-end
---http://lua-users.org/wiki/SortedIteration
--------------------------------------------
--- Iterate over a table in sorted key order
--------------------------------------------
-local function pairsByKeys (tbl, func)
-    -- Inspired by http://www.lua.org/pil/19.3.html
-    -- and http://lua-users.org/wiki/SortedIteration
-
-    if func == nil then
-        func = compareAnyTypes
-    end
-
-    -- Build a sorted array of the keys from the passed table
-    -- Use an insertion sort, since table.sort fails on non-numeric keys
-    local ary = {}
-    local lastUsed = 0
-    for key --[[, val--]] in pairs(tbl) do
-        if (lastUsed == 0) then
-            ary[1] = key
-        else
-            local done = false
-            for j=1,lastUsed do  -- Do an insertion sort
-                if (func(key, ary[j]) == true) then
-                    arrayInsert( ary, key, j )
-                    done = true
-                    break
-                end
-            end
-            if (done == false) then
-                ary[lastUsed + 1] = key
-            end
-        end
-        lastUsed = lastUsed + 1
-    end
-
-    -- Define (and return) the iterator function
-    local i = 0                -- iterator variable
-    local iter = function ()   -- iterator function
-        i = i + 1
-        if ary[i] == nil then
-            return nil
-        else
-            return ary[i], tbl[ary[i]]
-        end
-    end
-    return iter
-end
-
 function populateTreeList()
 	widget.clearListItems("treeList.list")
-	local listItem = ""
-	local buffer={}
+
+	local toSort = {}
 	for tree, _ in pairs(data.researchTree) do
-		buffer[(data.strings.trees[tree] and data.strings.trees[tree]) or tree]=tree
+		local isAvailable = true
+
+		if data.treeUnlocks[tree] then
+			if data.treeUnlocks[tree].quests then
+				for _, questId in ipairs(data.treeUnlocks[tree].quests) do
+					if not player.hasCompletedQuest(questId) then 
+						isAvailable = false
+						break
+					end
+				end
+			end
+
+			if isAvailable and data.treeUnlocks[tree].research then
+				for tree, acronyms in pairs(data.treeUnlocks[tree].research) do
+					if not isResearched(tree, acronyms) then
+						isAvailable = false
+						break
+					end
+				end
+			end
+		end
+
+		if isAvailable then
+			table.insert(toSort, {tree = tree, name = data.strings.trees[tree] or tree})
+		end
 	end
-	local iter=0
-	for label, tree in pairsByKeys(buffer) do
-		iter=iter+1
-		--sb.logInfo("%s:%s:%s",iter,label,tree)
-		listItem = "treeList.list."..widget.addListItem("treeList.list")
-		widget.setData(listItem, tree)
-		widget.setText(listItem..".title", label)
+
+	if (#toSort == 0) then
+		local listItem = "treeList.list."..widget.addListItem("treeList.list")
+		widget.setText(listItem..".title", '^red;No Trees Available')
+		widget.setButtonEnabled(listItem..".title", false)
+	else
+		table.sort(toSort, function(a, b) return a.name:upper() < b.name:upper() end)
+
+		for _, d in ipairs(toSort) do
+			local listItem = "treeList.list."..widget.addListItem("treeList.list")
+			widget.setData(listItem, d.tree)
+			widget.setText(listItem..".title", d.name)
+
+			if (data.treeIcons[d.tree]) then
+				widget.setImage(listItem..".icon", data.treeIcons[d.tree])
+			end
+		end
 	end
 end
-
-
---table.sort(tTable, function(a, b) return a:upper() < b:upper() end)
 
 function researchSelected()
 	local wdata = widget.getListSelected("searchList.list")
@@ -592,12 +529,13 @@ function treeSelected()
 	local wdata = widget.getListSelected("treeList.list")
 	if wdata then
 		wdata = widget.getData("treeList.list."..wdata)
-
-		gridTileImage = data.cutsomGridTileImages[wdata] or data.defaultGridTileImage
-		gridTileSize = root.imageSize(gridTileImage)
-		buildStates(wdata)
-		treePickButton()
-		panTo()
+		if wdata then
+			gridTileImage = data.cutsomGridTileImages[wdata] or data.defaultGridTileImage
+			gridTileSize = root.imageSize(gridTileImage)
+			buildStates(wdata)
+			treePickButton()
+			panTo()
+		end
 	end
 end
 
@@ -624,29 +562,7 @@ function draw()
 		canvas:drawText("READ ONLY!", {position = {57, canvasSize[2]-2}}, 7, "#FF5E66F0")
 	end
 
-	-- draw currencies
-	local mousePosition = canvas:mousePosition()
-	for i, tbl in ipairs(data.currencies) do
-		if not tbl[5] or player.currency(tbl[1]) > 0 then
-			startPoint = {3, canvasSize[2] - ((i - 1) * (8 + 3) + 8 + 16 + 5)}
-
-			canvas:drawImage(tbl[4], startPoint, 1, "#FFFFFF", false)
-
-			if mousePosition[1] >= startPoint[1]-1 and mousePosition[1] <= startPoint[1] + 8
-			and mousePosition[2] >= startPoint[2]-1 and mousePosition[2] <= startPoint[2] + 8 then
-				if tbl[1] == "essence" then
-					canvas:drawText("Essence", {position = {startPoint[1] + 8 + 3, startPoint[2]}, verticalAnchor = "bottom"}, 7, tbl[2])
-				elseif tbl[1] == "money" then
-					canvas:drawText("Pixels", {position = {startPoint[1] + 8 + 3, startPoint[2]}, verticalAnchor = "bottom"}, 7, tbl[2])
-				else
-					canvas:drawText(data.strings.currencies[tbl[1]] or tbl[1], {position = {startPoint[1] + 8 + 3, startPoint[2]}, verticalAnchor = "bottom"}, 7, tbl[2])
-				end
-			else
-				canvas:drawText(player.currency(tbl[1]), {position = {startPoint[1] + 8 + 3, startPoint[2]}, verticalAnchor = "bottom"}, 7, tbl[2])
-			end
-		end
-	end
-
+	-- Draw research nodes
 	if researchTree then
 		local startPoint = {0,0}
 		local endPoint = {0,0}
@@ -659,14 +575,13 @@ function draw()
 					startPoint[2] = tbl.position[2] + dragOffset.y
 
 					local color = "#000000"
-					local state = ""
 
 					for _, child in ipairs(tbl.children) do
 						endPoint[1] = researchTree[child].position[1] + dragOffset.x
 						endPoint[2] = researchTree[child].position[2] + dragOffset.y
 
 						if whithinBounds(startPoint, endPoint) then
-							state = researchTree[child].state
+							local state = researchTree[child].state
 
 							if state ~= "hidden" then
 								if not state or state == "unavailable" then
@@ -677,7 +592,7 @@ function draw()
 									if canAfford(child) then
 										color = "#00FFFF"
 									else
-										color = "#df7126"--ffff00
+										color = "#df7126"
 									end
 								end
 
@@ -727,6 +642,29 @@ function draw()
 		end
 	else
 		canvas:drawText("NO RESEARCH TREE SELECTED", {position = {canvasSize[1]*0.5, canvasSize[2]*0.5}, horizontalAnchor = "mid", verticalAnchor = "mid"}, 20, "#FF5E66F0")
+	end
+	
+	-- Draw currencies
+	local mousePosition = canvas:mousePosition()
+	for i, tbl in ipairs(data.currencies) do
+		if not tbl[5] or player.currency(tbl[1]) > 0 then
+			startPoint = {3, canvasSize[2] - i * 11}
+
+			canvas:drawImage(tbl[4], startPoint, 1, "#FFFFFF", false)
+
+			if mousePosition[1] >= startPoint[1]-1 and mousePosition[1] <= startPoint[1] + 8
+			and mousePosition[2] >= startPoint[2]-1 and mousePosition[2] <= startPoint[2] + 8 then
+				if tbl[1] == "essence" then
+					canvas:drawText("Essence", {position = {startPoint[1] + 8 + 3, startPoint[2]}, verticalAnchor = "bottom"}, 7, tbl[2])
+				elseif tbl[1] == "money" then
+					canvas:drawText("Pixels", {position = {startPoint[1] + 8 + 3, startPoint[2]}, verticalAnchor = "bottom"}, 7, tbl[2])
+				else
+					canvas:drawText(data.strings.currencies[tbl[1]] or tbl[1], {position = {startPoint[1] + 8 + 3, startPoint[2]}, verticalAnchor = "bottom"}, 7, tbl[2])
+				end
+			else
+				canvas:drawText(player.currency(tbl[1]), {position = {startPoint[1] + 8 + 3, startPoint[2]}, verticalAnchor = "bottom"}, 7, tbl[2])
+			end
+		end
 	end
 end
 
@@ -820,19 +758,18 @@ end
 function canvasClickEvent(position, button, isButtonDown)
 	if not verified then return end
 	if button == 0 then
-		oldMousePos = position
 		mouseDown = isButtonDown
+		oldMousePos = position
 
 		if isButtonDown then
 			clickTimeRemaining = data.clickTime
 		elseif clickTimeRemaining > 0 then
 			clickTimeRemaining = 0
-
-			if doubleClickCooldown > 0 then
-				leftClick(position, true)
-			else
-				leftClick(position)
-			end
+			
+			local isDouble = doubleClickCooldown > 0 and math.abs(position[1] - lastClickPos[1]) <= 1 and math.abs(position[2] - lastClickPos[2])
+			leftClick(position, isDouble)
+			
+			lastClickPos = {position[1], position[2]};
 		elseif lowQuality then
 			draw()
 		end
@@ -840,16 +777,14 @@ function canvasClickEvent(position, button, isButtonDown)
 end
 
 function leftClick(clickPos, isDouble)
-	local xRange = {}
-	local yRange = {}
 	local clicked = nil
 
 	if researchTree then
 		for research, tbl in pairs(researchTree) do
-			xRange = {tbl.position[1] + dragOffset.x - (data.iconSizes * 0.5) - 1, tbl.position[1] + dragOffset.x + (data.iconSizes * 0.5) + 1}
+			local xRange = {tbl.position[1] + dragOffset.x - (data.iconSizes * 0.5) - 1, tbl.position[1] + dragOffset.x + (data.iconSizes * 0.5) + 1}
 			if clickPos[1] > xRange[1] and clickPos[1] < xRange[2] then
 
-				yRange = {tbl.position[2] + dragOffset.y - (data.iconSizes * 0.5) - 1, tbl.position[2] + dragOffset.y + (data.iconSizes * 0.5) + 1}
+				local yRange = {tbl.position[2] + dragOffset.y - (data.iconSizes * 0.5) - 1, tbl.position[2] + dragOffset.y + (data.iconSizes * 0.5) + 1}
 				if clickPos[2] > yRange[1] and clickPos[2] < yRange[2] then
 					if tbl.state ~= "hidden" then
 						clicked = research
@@ -881,14 +816,12 @@ end
 
 -- Research tree functions
 function verifyAcronims()
-	local found = false
 	local missing = ""
-	local tree = ""
 
 	for t, tbl in pairs(data.researchTree) do
-		tree = t
+		local tree = t
 		for res1, _ in pairs(tbl) do
-			found = false
+			local found = false
 			for _, res2 in pairs(data.acronyms[tree]) do
 				if res1 == res2 then
 					found = true
@@ -906,6 +839,7 @@ function verifyAcronims()
 		return true
 	else
 		widget.setVisible("researchButton", false)
+		widget.setVisible("consumptionText", false)
 		widget.setVisible("treePickButton", false)
 		widget.setVisible("centerButton", false)
 		widget.setVisible("searchButton", false)
@@ -954,7 +888,6 @@ function buildStates(tree)
 	end
 
 	local splitString = stringToAcronyms(dataString)
-	local isAvailable = true
 
 	for _, acr in ipairs(splitString) do
 		if data.acronyms[selectedTree][acr] and researchTree[data.acronyms[selectedTree][acr]] then
@@ -963,7 +896,7 @@ function buildStates(tree)
 			if researchTree[data.acronyms[selectedTree][acr]].children then
 				for _, child in ipairs(researchTree[data.acronyms[selectedTree][acr]].children) do
 					if researchTree[child].state ~= "researched" then
-						isAvailable = true
+						local isAvailable = true
 
 						for research, tbl in pairs(researchTree) do
 							if research ~= data.acronyms[selectedTree][acr] and tbl.children then
@@ -1027,16 +960,53 @@ function canAfford(research, consume)
 
 	-- Running the loops again so it consumes stuff AFTER checking that the player has everything
 	if consume then
+		local consumptionRules = getTreeConsumptionRules(selectedTree)
 		for _, tbl in ipairs(researchTree[research].price) do
 			if currencyTable[tbl[1]] then
-				player.consumeCurrency(tbl[1], tbl[2])
-			--else
-				--player.consumeItem({name = tbl[1], count = tbl[2]}, true)
+				if consumptionRules.currency then
+					player.consumeCurrency(tbl[1], tbl[2])
+				end
+			else
+				if consumptionRules.items then
+					player.consumeItem({name = tbl[1], count = tbl[2]}, true)
+				end
 			end
 		end
 	end
 
 	return true
+end
+
+function isResearched(tree, acronym)
+	local researched = status.statusProperty("zb_researchtree_researched", {}) or {}
+
+	if researched and researched[tree] then
+		if type(acronym) == 'string' then
+			if string.match(researched[tree], acronym..',') then
+				return true
+			end
+		elseif type(acronym) == 'table' then
+			for _, acr in ipairs(acronym) do
+				if not string.match(researched[tree], acr..',') then
+					return false
+				end
+			end
+			return true
+		end
+	end
+	
+	return false
+end
+
+function getTreeConsumptionRules(tree)
+	if not data.customConsumptionRules[selectedTree] then
+		return {currency = true, items = true}
+	end
+
+	return {
+		currency = data.customConsumptionRules[selectedTree].currency == nil or data.customConsumptionRules[selectedTree].currency == true,
+		items = data.customConsumptionRules[selectedTree].items == nil or data.customConsumptionRules[selectedTree].items == true
+	}
 end
 
 --		Cheat codes

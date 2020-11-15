@@ -39,7 +39,7 @@ function setStage(newStage)
 			player.radioMessage("fu_start_makeFurnace", 1)
 		elseif newStage == 3 then
 			player.radioMessage("fu_start_makeForaging", 1)
-		elseif newStage == 4 then	-- has Wires
+		elseif newStage == 4 then
 			player.radioMessage("fu_start_makeTable", 1)
 		elseif newStage == 5 then
 			player.radioMessage("fu_start_makeWire", 1)
@@ -89,6 +89,8 @@ function updateStage(dt)
 		end
 	elseif storage.missionStage == 6 then
 		player.upgradeShip(config.getParameter("shipUpgrade"))
+			player.startQuest("fu_scienceoutpost") -- make sure they are aware of the Sci Outpost
+			player.playCinematic(config.getParameter("scienceoutpostCinema"))		
 		quest.complete()
 	end
 end

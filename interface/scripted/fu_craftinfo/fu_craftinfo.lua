@@ -1,7 +1,6 @@
 --[[ not doing honey centrifuges & extractors just yet
 require "/objects/bees/centrifuge.lua"
 beeCentrifuge = deciding() -- input: {outputs}
-
 require "objects/bees/honeymap.lua"
 ...
 NOTE: for the LEGEND
@@ -9,7 +8,6 @@ NOTE: for the LEGEND
 		colors are just general indicators.
 		colors vary from green to variants of yellows to variants of reds
 		green mean you'll get lots, yellows less, reds even less
-
 ]]
 
 
@@ -87,6 +85,7 @@ function init()
 		"woodencentrifuge",
 		"isn_powdersifter",
 		"fu_woodensifter",
+		"fu_rockbreaker",
 		"fu_rockcrusher",
 		"isn_arcsmelter",
 		"fu_blastfurnace",
@@ -106,6 +105,7 @@ function init()
 		["woodencentrifuge"] = true,
 		["isn_powdersifter"] = true,
 		["fu_woodensifter"] = true,
+		["fu_rockbreaker"] = true,
 		["fu_rockcrusher"] = true,
 		["isn_arcsmelter"] = true,
 		["fu_blastfurnace"] = true,
@@ -141,6 +141,8 @@ function init()
 		processObjects["isn_powdersifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["fu_woodensifter"] then
 		processObjects["fu_woodensifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["fu_rockbreaker"] then
+		processObjects["fu_rockbreaker"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["fu_rockcrusher"] then
 		processObjects["fu_rockcrusher"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["isn_arcsmelter"] then

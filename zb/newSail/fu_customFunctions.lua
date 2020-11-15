@@ -1,5 +1,5 @@
 function fu_toggleAtmosphereMode()
-	local text = ""
+	local text
 	if player.worldId() ~= player.ownShipWorldId() then
 		text = "Only the owner of the ship can switch the atmosphere mode."
 	elseif world.getProperty("ship.level") ~= 0 then
@@ -32,4 +32,9 @@ function fu_configureShipPet()
 		petConfigPane.containerId = pane.sourceEntity()
 		player.interact("ScriptPane", petConfigPane)
 	end
+end
+
+function fu_crashberry()
+		status.clearAllPersistentEffects()
+		status.clearEphemeralEffects()
 end

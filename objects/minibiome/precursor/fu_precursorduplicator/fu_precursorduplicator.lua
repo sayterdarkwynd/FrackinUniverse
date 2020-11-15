@@ -8,7 +8,7 @@ function init()
 	self.craftTime = config.getParameter("craftTime")
 	storage.timer = storage.timer or self.craftTime -- making this, storage.crafting, etc. persistent so that on server terminus, nothing is lost.
 	storage.timer2 = storage.timer2 or 1.0
-	math.randomseed( tonumber(tostring(os.time()):reverse():sub(1,6)) )
+	math.randomseed(util.seedTime())
 end
 
 function update(dt)

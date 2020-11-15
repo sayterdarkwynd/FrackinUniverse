@@ -45,7 +45,7 @@ textTyper.allowedScrambleCharacters = "abdeghnopqsuvyzABDGHJKNOPQRSUVXY023456789
 
 function textTyper.init(textData, str, sound)
 	if not textData then
-		sb.logError("[ZB] textTyper.init in textTyper recieved no textData table, writing aborted.")
+		sb.logError("[ZB] textTyper.init in textTyper received no textData table, writing aborted.")
 		return
 	end
 	
@@ -70,9 +70,9 @@ function textTyper.init(textData, str, sound)
 	end
 	
 	if textCopy == nil then
-		textCopy = "^red;ERROR -^reset;\ntextTyper.init recieved a nil value in 'str'"
+		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a nil value in 'str'"
 	elseif type(textCopy) ~= "string" then
-		textCopy = "^red;ERROR -^reset;\ntextTyper.init recieved a non-string value in 'str'"
+		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a non-string value in 'str'"
 	end
 	
 	for i = 1, string.len(textCopy) do
@@ -174,7 +174,7 @@ end
 function textTyper.splitTableString(str)
 	local split = {}
 	local copy = str
-	local temp = ""
+	local temp
 	local dotPos = 0
 	local length = string.len(str)
 	

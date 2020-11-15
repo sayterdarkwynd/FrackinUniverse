@@ -230,7 +230,6 @@ function Pet:getPersistentEffects()
 		table.insert(buffer,statEffect)
 	end
 	frackinPetStatEffectsMetatableBuffer=buffer
-	buffer={}
 	--table.insert(frackinPetStatEffectsMetatableBuffer,"fudarkcommander30")
 	--sb.logInfo("fpsemb 2: %s",frackinPetStatEffectsMetatableBuffer)
 	util.appendLists(effects,frackinPetStatEffectsMetatableBuffer)

@@ -1,6 +1,5 @@
 require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
-require "/scripts/fupower.lua"
 
 local rarityMult={common=1.0, uncommon=1.15, rare=1.25, legendary=1.50,essential=1.50}
 
@@ -34,7 +33,7 @@ function init()
 	message.setHandler("paneOpened", paneOpened)
 	message.setHandler("paneClosed", paneClosed)
 	message.setHandler("getStatus", getStatus)
-	math.randomseed(os.time())
+	math.randomseed(util.seedTime())
 end
 
 function update(dt)
@@ -80,10 +79,10 @@ function update(dt)
 					craftingState(false)
 					return
 				end
-				
+
 				local rVal=self.rMult*itemData.price*(itemData.rarityMult)
 				local count=1
-				
+
 				if rVal == 0.0 then
 					count=1000
 					rVal=self.rMult*100.0*(itemData.rarityMult)
@@ -101,23 +100,23 @@ function update(dt)
 					count=math.ceil(1/rVal)
 					rVal=rVal*count
 				end
-				
+
 				local eVal=rVal*self.eMult
 				local rValBuffer=rVal
 				local eValBuffer=eVal
-				
+
 				rVal=math.floor(rVal)
 				eVal=math.floor(eVal)
-				
+
 				local powerConversion=math.max(rVal*0.42,1)
-				
+
 				rValBuffer=rValBuffer-rVal
 				eValBuffer=eValBuffer-eVal
 				if rValBuffer > 0 then rVal=((math.random()>=rValBuffer) and (rVal+1)) or rVal end
 				if eValBuffer > 0 then eVal=((math.random()>=eValBuffer) and (eVal+1)) or eVal end
-				
+
 				powerConversion=math.floor(powerConversion)
-				
+
 				if (powered and not power.consume(powerConversion)) then
 					self.errorCooldown = 2.0
 					self.errorString="^red;Need power: "..powerConversion

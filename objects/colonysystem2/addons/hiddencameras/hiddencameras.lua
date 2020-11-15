@@ -73,7 +73,16 @@ function update(dt)
 				object.setOutputNodeLevel(0,true)
 			end
 		--	animator.setAnimationState("machineState", "active")
-			world.containerAddItems(entity.id(), {name="fuscienceresource",count=tenantNumber})
+			
+			local count=tenantNumber
+			if count>0 then
+				count=math.sqrt(count)
+				if math.floor(count)~=count then
+					count=math.floor(count+(((math.random()>count-math.floor(count)) and 1) or 0))
+				end
+				world.containerAddItems(entity.id(), {name="fuscienceresource",count=count})
+			end			
+			
 		else
 			if object.outputNodeCount() > 0 then
 				object.setOutputNodeLevel(0,false)
@@ -112,7 +121,7 @@ function fu_isAddonHiddenCameras() return true end
 function getTenantNumber()
 	tenantNumber = 0
 	if parentCore and world.entityExists(parentCore) then
-		tenantNumber = world.callScriptedEntity(parentCore,"getTenants")
+		tenantNumber = world.callScriptedEntity(parentCore,"getTenantsNum")
 	else
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
@@ -120,7 +129,7 @@ function getTenantNumber()
 	
 		for _, objectId in pairs(objectIds) do
 				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
-					tenantNumber = world.callScriptedEntity(objectId,"getTenants")
+					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
 					parentCore = objectId
 				end
 		end

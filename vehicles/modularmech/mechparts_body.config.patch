@@ -2953,7 +2953,7 @@
     "value" : {
 	    "stats" : {
 	      "energy" : 1,
-	      "protection" : 2,
+	      "protection" : 3,
 	      "mechMass" : 3,
 		"healthBonus" : 1.5,
 		"energyBonus" : 0.6
@@ -4541,6 +4541,41 @@
 			]
 		}
 	],
+  [
+  { "op": "test", "path": "/bhm", "inverse" : false },
+  {"op": "add","path": "/bhm/stats/mechMass","value": 4},
+  {"op": "add","path": "/bhm/stats/energy","value": 8},
+  {"op": "add","path": "/bhm/stats/protection","value": 5},
+    {
+      "op": "add",
+      "path": "/sludge/partParameters/hazardImmunities",
+      "value": [
+            "desertweathernew",
+            "jungleheatweather",
+            "protoweather",
+            "sulphuricweathernew",
+            "sulphuricweatherstorm",
+            "gasworld1",
+            "gasworld2",
+            "gasworld3",
+            "biomeradiation",
+            "radioactiveweathernew",
+            "radioactiveweathernew2",
+            "poisonweathernew",
+            "poisonweathernewbiome",
+            "biomepoisongas",
+            "biomepoison1",
+            "biomecold",
+            "coldweathernew",
+            "ffbiomecold0",
+            "ffbiomecold1",
+            "biomeheat",
+            "ffbiomeheat1",
+            "ffbiomeheat2",
+            "heatweathernew"
+      ]
+    }
+  ],  
 	[
 	{ "op": "test", "path": "/mmklll"},
 	{"op": "add","path": "/mmklll/stats/mechMass","value": 8},
