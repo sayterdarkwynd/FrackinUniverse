@@ -433,7 +433,7 @@ end
 function updateFloating(waterFactor, moving, facing)
 	local floating = waterFactor > self.minWaterFactorToFloat and self.waterFactor < self.maxWaterFactorToFloat
 
-	local speedAngle,targetAngle=0,0
+	local speedAngle, targetAngle
 
 	if (floating) then
 		self.rockingTimer = self.rockingTimer + script.updateDt()

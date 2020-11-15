@@ -140,16 +140,15 @@ function checkTrayInputs()
 end
 
 
+-- Generate new description
 function handleTooltip(args)
-	-- Generate new description
-	local desc = ""
-	
+
 	--growth rate and power calc
 	local growthrate=getFertSum('growthRate', args.fert, args.water)
 	local growthrate2=growthrate*(args.growthmod or 1)
 	growthrate=util.round(growthrate,2)
 	growthrate2=util.round(growthrate2,2)
-	local growthString=""
+	local growthString
 	local powerString=""
 	if growthrate~=growthrate2 and self.requiredPower then
 		growthString='Growth Rate: ^red;' .. growthrate2 .. "^reset;\n"
@@ -212,7 +211,7 @@ function handleTooltip(args)
 	end
 	
 	--set desc!
-	desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString
+	local desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString
 	object.setConfigParameter('description', desc)
 end
 

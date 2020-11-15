@@ -14,7 +14,7 @@
          {"weight" : 0.001, "item" : "stationtransponder"},
          {"weight" : 0.10, "pool" : "salvageComponent"},
          {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
-         {"weight" : 0.01, "item" : ["smalldata", 1]},
+         {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
          {"weight" : 0.02, "item" : [ "ff_spareparts", 12]},
          {"weight" : 0.10, "item" : ["liquidmechfuel",80]},
          {"weight" : 0.10, "item" : ["liquidoil",120]},
@@ -29,7 +29,7 @@
        {"weight" : 0.003, "item" : "stationtransponder"},
        {"weight" : 0.10, "pool" : "salvageComponent"},
        {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
-       {"weight" : 0.01, "item" : ["smalldata", 1]},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : [ "ff_spareparts", 20]},
        {"weight" : 0.10, "item" : ["liquidmechfuel",80]},
        {"weight" : 0.10, "item" : ["liquidoil",120]},
@@ -44,7 +44,7 @@
        {"weight" : 0.005, "item" : "stationtransponder"},
        {"weight" : 0.10, "pool" : "salvageComponent"},
        {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
-       {"weight" : 0.01, "item" : ["smalldata", 1]},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : [ "ff_spareparts", 35]},
        {"weight" : 0.10, "item" : ["liquidmechfuel",90]},
        {"weight" : 0.10, "item" : ["liquidoil",150]},
@@ -59,7 +59,7 @@
        {"weight" : 0.008, "item" : "stationtransponder"},
        {"weight" : 0.10, "pool" : "salvageComponent"},
        {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
-       {"weight" : 0.01, "item" : ["smalldata", 1]},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : [ "ff_spareparts", 40]},
        {"weight" : 0.10, "item" : ["liquidmechfuel",100]},
        {"weight" : 0.10, "item" : ["liquidoil",180]},
@@ -74,7 +74,7 @@
        {"weight" : 0.01, "item" : "stationtransponder"},
        {"weight" : 0.10, "pool" : "salvageComponent"},
        {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
-       {"weight" : 0.01, "item" : ["smalldata", 1]},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : [ "ff_spareparts", 50]},
        {"weight" : 0.10, "item" : ["liquidmechfuel",120]},
        {"weight" : 0.20, "item" : ["liquidfuel",200]},
@@ -675,7 +675,7 @@
        {"weight" : 0.02, "item" : ["severedear",2]},
        {"weight" : 0.02, "item" : ["severedear",3]},
        {"weight" : 0.02, "item" : ["severedear",5]},
-       {"weight" : 0.01, "item" : ["smalldata", 1]},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : "fuheart"},
        {"weight" : 0.02, "item" : ["fuheart",2]},
        {"weight" : 0.02, "item" : ["fuheart",3]},
@@ -844,7 +844,17 @@
     }]
   ],
 
-
+  "fuResearchVoxelItems" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.55, "item" : ["smalldata", 1]},
+        {"weight" : 0.3, "item" : ["researchvoxelsmall", 1]},
+        {"weight" : 0.1, "item" : ["researchvoxel", 1]},
+        {"weight" : 0.05, "item" : ["researchvoxellarge", 1]},
+        {"weight" : 0.005, "item" : ["researchvoxelalien", 1]}
+      ]
+    }]
+  ],
   "fuResearchVoxelTiny" : [
     [0, {
       "pool" : [
@@ -1413,7 +1423,7 @@
   "fuspecialLoot" : [
     [0, {
       "pool" : [
-        {"weight" : 0.01, "item" : ["smalldata", 1]},
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.003, "pool" : "artifactloot" },
         {"weight" : 0.08, "item" : "quantumball"},
         {"weight" : 0.08, "item" : "bluegravball"},
@@ -1469,7 +1479,7 @@
     }],
     [1.9, {
       "pool" : [
-        {"weight" : 0.01, "item" : ["smalldata", 1]},
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
@@ -1508,7 +1518,7 @@
     }],
     [2.9, {
       "pool" : [
-        {"weight" : 0.01, "item" : ["smalldata", 1]},
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
@@ -1557,7 +1567,7 @@
     }],
     [3.9, {
       "pool" : [
-        {"weight" : 0.01, "item" : ["smalldata", 1]},
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
@@ -1650,7 +1660,7 @@
     }],
     [4.9, {
       "pool" : [
-        {"weight" : 0.01, "item" : ["smalldata", 1]},
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
@@ -1762,7 +1772,7 @@
     }],
     [5.9, {
       "pool" : [
-        {"weight" : 0.01, "item" : ["smalldata", 1]},
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
@@ -1909,7 +1919,7 @@
         {"weight" : 0.05, "item" : [ "fureinforcedglass-recipe", 1]},
         {"weight" : 0.03, "item" : ["smalldata", 1]},
         {"weight" : 0.02, "item" : ["smalldata", 2]},
-        {"weight" : 0.01, "item" : ["smalldata", 3]},
+        {"weight" : 0.005, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.05, "item" : [ "labgirdir-recipe", 1]}
       ]
     }]

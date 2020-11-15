@@ -456,7 +456,7 @@ function spawn(tenant)
 		end
 	end
 
-	local entityId = nil
+	local entityId
 	if tenant.spawn == "npc" then
 		entityId = world.spawnNpc(position, tenant.species, tenant.type, level, tenant.seed, overrides)
 		if tenant.personality then

@@ -16,7 +16,7 @@ end
 
 function getHeightStep(tiers)
 	local y = 0
-	local underground = true
+	local underground
 	repeat
 		y = y + 100
 		underground = world.underground({0,y})

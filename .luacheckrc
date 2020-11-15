@@ -51,3 +51,8 @@ codes = true -- Show luacheck's error/warning codes. Useful for adding exception
 
 -- Ignore "unused argument self" (W212) in object-oriented methods like widgetBase:hasMouse()
 self = false
+
+exclude_files = {
+	"**/*unused*",
+	"**/*UNUSED*"
+}

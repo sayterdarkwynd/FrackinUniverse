@@ -32,7 +32,7 @@ function smashContainer(objectType)
 	local containerEmpty = true
 	local objParameters = {}
 	local description = ""
-	local shortdescription = ""
+	local shortdescription
 	local usedSlots = 0
 
 	-- guiColor - Color

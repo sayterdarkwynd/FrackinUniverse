@@ -87,7 +87,7 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 	local i = 1
 	for dStat, dParams in pairs(self.debuffs) do
 		local statName = tostring(dStat)
-		local dAmount = nil
+		local dAmount
 		if (tostring(dParams.type) == "relative") then
 			dAmount = status.stat(statName) * dParams.amount * modifier
 		else -- dParams.type == "absolute"

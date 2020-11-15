@@ -67,10 +67,10 @@ end
 function setDesc()
 	local baseMessage="^blue;Input^reset;1^blue;:^reset; Logic\n^blue;Input^reset;2^blue;:^reset; Power"
 	local color="^yellow;"
-	local info="Standby."
+	local info
 	if world.type() == 'playerstation' or world.type() == 'unknown' then
-		info="Atmosphere: "..color.."Unusable.^reset;"
 		color="^#7F7F7F;"
+		info="Atmosphere: "..color.."Unusable.^reset;"
 	else
 		info = root.liquidConfig(worldInfo().liquid).config
 		if info.color then

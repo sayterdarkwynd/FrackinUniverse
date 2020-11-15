@@ -10,13 +10,11 @@ function update(dt)
 	else
 		local worldMouthPos=vec2.add(entity.position(),status.statusProperty("mouthPosition") or {0,0})
 		worldMouthPos[1]=world.xwrap(worldMouthPos[1])
-		--sb.logInfo("%s",{ep=entity.position(),wmp=worldMouthPos,sspmp=status.statusProperty("mouthPosition") or {0,0},warn=((status.isResource("biomeairlesswarning") and status.resourcePositive("biomeairlesswarning")) or "not a resource"),eid=entity.id()})
 		if not world.breathable(worldMouthPos) then
-			if not status.isResource("biomeairlesswarning") or not status.resourcePositive("biomeairlesswarning") then
+			local dummy=status.statusProperty("biomeairlesscooldown")
+			if not dummy or ((os.time()-dummy)>=300) then
 				world.sendEntityMessage(entity.id(), "queueRadioMessage", "biomeairless", 1.0)
-			end
-			if status.isResource("biomeairlesswarning") then
-				status.setResourcePercentage("biomeairlesswarning",1) 
+				status.setStatusProperty("biomeairlesscooldown",os.time())
 			end
 		end
 	end

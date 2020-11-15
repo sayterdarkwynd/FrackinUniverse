@@ -20,7 +20,7 @@ function update(dt, fireMode, shiftHeld)
 	local aimPos = activeItem.ownerAimPosition()
 	local eList = world.entityQuery(aimPos,1/16) or {}
 	
-	local target = nil
+	local target
 	local targetPositions={}
 	
 	for _,v in pairs(eList) do

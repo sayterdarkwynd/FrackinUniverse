@@ -435,8 +435,8 @@ function drawEnergyBar()
 		end
 	end
 
-	local imageFrame = ""
-	local imageBar = ""
+	local imageFrame
+	local imageBar
 	if fuelType == "Oil" then
 		imageFrame = "/scripts/deployment/energybarframeoil.png"
 		imageBar =	"/scripts/deployment/energybaroil.png"

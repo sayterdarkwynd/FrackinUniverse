@@ -22,6 +22,7 @@ function init()
 	self.trackTargetDistance = config.getParameter("trackTargetDistance")
 	self.switchTargetDistance = config.getParameter("switchTargetDistance")
 	self.keepTargetInSight = config.getParameter("keepTargetInSight", true)
+	self.jumpTargetDistance = 0
 
 	self.targets = {}
 

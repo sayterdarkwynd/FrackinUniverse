@@ -213,7 +213,7 @@ function draw()
 				
 				local imgSize = root.imageSize(data.boxes[tbl.index].img)
 				local midPoint = {}
-				local color = "#FFFFFF"
+				local color
 				
 				midPoint[1] = tbl.pos[1] + (imgSize[1] * 0.5)
 				midPoint[2] = tbl.pos[2] + (imgSize[2] * 0.5)
@@ -261,7 +261,7 @@ function draw()
 				
 				local imgSize = root.imageSize(data.boxes[tbl.index].img)
 				local midPoint = {}
-				local color = "#FFFFFF"
+				local color
 				
 				midPoint[1] = tbl.pos[1] + (imgSize[1] * 0.5)
 				midPoint[2] = tbl.pos[2] + (imgSize[2] * 0.5)
@@ -473,8 +473,7 @@ function doneOpening()
 		end
 		
 		if (lootData.treasurePool and root.isTreasurePool(lootData.treasurePool)) or lootData.item then
-			local cfg = nil
-			local item = nil
+			local cfg, item
 			
 			if lootData.treasurePool and root.isTreasurePool(lootData.treasurePool) then
 				local treasure = root.createTreasure(lootData.treasurePool, lootData.level or itemLevel or 1)
@@ -717,7 +716,7 @@ function animate()
 			end
 			
 			if not (tbl.scale <= tbl.targetScale + 0.02 and tbl.scale >= tbl.targetScale - 0.02) then
-				local mod = 0
+				local mod
 				
 				if tbl.scale < tbl.targetScale then
 					mod = math.max((tbl.targetScale - tbl.scale) * 0.2, 0.02)

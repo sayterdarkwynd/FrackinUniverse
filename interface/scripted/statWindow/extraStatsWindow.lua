@@ -10,9 +10,8 @@ function init()
 end
 
 function update()
-	-- Breath calculated separetly
+	-- Breath calculated separately
 	local breatRegen = status.stat("breathRegenerationRate")
-	local breathRate = status.stat("breathDepletionRate")
 	local breathMax = status.stat("maxBreath")
 	
 	-- for stat, type in pairs(self.stats) do
@@ -61,7 +60,7 @@ function update()
 			end
 			
 		elseif type == "breath" then
-			breathRate = value
+			local breathRate = value
 			if breathMax > 0 then
 				-- Why divided by 2 you ask? Fuck if I know, it returns double the right value otherwise.
 				--khe: that's because breath timer is decremented twice per update.

@@ -91,7 +91,7 @@ function build(directory, config, parameters, level, seed)
 		end
 
 		if parameters.genomeInspected then
-			local color="000000"
+			local color
 			--[[
 				100% green rgb(11,191,0)
 				80% (green/yellow) rgb(172,227,69)

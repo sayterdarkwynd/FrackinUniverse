@@ -441,14 +441,13 @@ end
 -- end FU functions
 
 function fuelCost(travel)
-  local cost = config.getParameter("jumpFuelCost")
-
 -- FU needs custom math here for distance-based fuel cost
     self.one =  celestial.currentSystem()
     self.two =  {location = travel or self.travel.system, planet = 0, satellite = 0, system = self.travel.target}
     local distanceMath = math.sqrt( ( (self.one.location[1] - self.two.location[1]) ^ 2 ) + ( (self.one.location[2] - self.two.location[2]) ^ 2 ) )
     shipMassFind()
 
+    local cost
     if distanceMath < 30 then
       cost = 50 + ((config.getParameter("jumpFuelCost") + distanceMath) * ((self.shipMass or 0)+2)) -- nearby systems are relatively cheap to travel to
     elseif distanceMath < 200 then
@@ -601,8 +600,7 @@ function universeScreenState(startSystem)
 
   local scrollSpeed = config.getParameter("universeScrollSpeed")
 
-  local systems = {}
-  local lines = {}
+  local systems, lines
   local selection = nil
   local startDrag, drag
   local hover
