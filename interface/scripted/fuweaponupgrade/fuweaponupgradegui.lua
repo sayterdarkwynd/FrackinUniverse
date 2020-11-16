@@ -208,8 +208,12 @@ function getSelectedItem()
 end
 
 function itemSelected()
+	local oldSelected=self.selectedItem
 	self.selectedItem = widget.getListSelected(self.itemList)
-
+	local changed
+	if oldSelected~=self.selectedItem then
+		changed=true
+	end
 	if self.selectedItem then
 		local isTool=itemHasTag(root.itemConfig(getSelectedItem()),"upgradeableTool")
 		local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
@@ -220,14 +224,14 @@ function itemSelected()
 	end
 
 	if self.playerTypingTimer and self.playerTypingTimer <= 0 then
-		fixTargetText()
+		fixTargetText(changed)
 	end
 end
 
-function fixTargetText()
+function fixTargetText(changed)
 	local originalText = widget.getText("upgradeTargetText")
 	local text = originalText
-	local num=tonumber(text) or 0
+	local num=((not changed) and tonumber(text)) or 0
 	local item=getSelectedItem()
 	if not item then
 		text=""
@@ -239,9 +243,9 @@ function fixTargetText()
 		local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
 		--num=math.min(maxLvl,math.max(itemLevel+1,((not self.isUpgradeKit) and num) or 0))
 		if self.isUpgradeKit then
-			num=util.clamp(num,itemLevel,itemLevel+1)
+			num=util.clamp(num,itemLevel+(changed and 1 or 0),itemLevel+1)
 		else
-			num=math.max(itemLevel,num)
+			num=math.max(itemLevel+(changed and 1 or 0),num)
 		end
 		num=math.min(maxLvl,num)
 		self.upgradeTargetLevel=num
