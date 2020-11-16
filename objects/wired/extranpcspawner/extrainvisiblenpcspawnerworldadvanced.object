@@ -1,0 +1,63 @@
+{
+	"objectName" : "extrainvisiblenpcspawnerworldadvanced",
+	"colonyTags" : ["misc"],
+	"rarity" : "Common",
+	"description" : "Spawns npcs in a variety of configurable ways.",
+	"shortdescription" : "Invisible Npc Spawner",
+	"race" : "human",
+	"printable" : false,
+	"category" : "spawner",
+	"price" : 133,
+
+	"inventoryIcon" : "extrainvisiblenpcspawner.png",
+	"orientations" : [
+		{
+			"image" : "extrainvisiblenpcspawner.png",
+			"imagePosition" : [-8, 0],
+
+			"spaceScan" : 0.1
+		}
+	],
+
+	"scripts" : [ "/objects/wired/extranpcspawner/extranpcspawnerworldadvanced.lua" ],
+	"scriptDelta" : 10,
+
+	"animation" : "extrainvisiblenpcspawner.animation",
+
+	"animationParts" : {
+		"switch" : "extrainvisiblenpcspawnerhidden.png"
+	},
+	"animationPosition" : [-8, 0],
+
+	"inputNodes" : [ [-1, 1] ],
+
+	"spawner" : {
+		"npcTypes" : ["hostile"], //type of npc to spawn (random from list)
+
+		// Instead of one species list, it picks from one of three lists below. There are three categories: common, uncommon, and rare.
+		"npcSpeciesCommon" : ["avian", "apex", "floran", "glitch", "hylotl", "human"],
+		"npcSpeciesUncommon": ["novakid"],
+		"npcSpeciesRare": ["fenerox", "elduukhar", "fuanodyne", "fudarkizku", "fuizku", "fukirhos", "fenerox", "fumantis", "fumantizi", "fuslimeperson", "nightar", "radien", "skath", "slimenpc", "thelusian", "veluu"],
+
+		// How it works: When it comes time to pick a species, the script picks a number between 1 and (speciescommonrarity). If the number is above (speciesuncommonrarity), it picks a species from the (npcSpeciesCommon) list. If it is below (speciesuncommonrarity) but above (speciesrarerarity) it will pick from the (npcSpeciesUncommon) list. If the chosen number is equal to or below (speciesrarerarity), it will pick a species from the (npcSpeciesRare) list.
+
+		"speciescommonrarity" : 15, // Must be greater than speciesuncommonrarity
+		"speciesuncommonrarity" : 6, // Must be less then speciescommonrarity and greater than speciesrarerarity
+		"speciesrarerarity" : 1, // Must be less than speciesuncommonrarity
+
+		//"npcLevel" : [1, 10], //level of npc to spawn (random within range, or leave blank for world threat level. Leaving it blank so world determines threat by default, not randomized level. If you need it set to a specific level, please use the parameters function in tiled.)
+		//"npcLevelOffset" : 2, //if npcLevel is omitted, this can be used to offset the level
+		"npcParams" : { //additional parameters of spawned npc
+			"aggressive" : true
+		},
+		"spawnchance" : 100, //Chance of it to spawn an enemy. Value is 0 - 100. 0 = never spawn anything, 100 = always spawn something. Default is 100.
+		"position" : [0, 1], //relative position to spawn at
+		"positionVariance" : [10, 0], //[x,y] size of randomized spawn area, centered on position
+		"frequency" : [5.0, 5.0], //cooldown time between spawns (random within range)
+		"stock" : 5, //total number of spawns, -1 for infinite
+		"trigger" : null, //options include "wire", "interact", "break", null (periodic)
+		"outOfSight" : false //only spawn where the player can't see
+	},
+
+	"smashOnBreak" : true
+}

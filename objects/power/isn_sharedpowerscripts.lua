@@ -5,7 +5,6 @@ function isn_getCurrentPowerInput(divide)
 	-- sb.logInfo("called by " .. world.entityName(entity.id()))
 	local totalInput = 0
 	local connectedDevices
-	local output = 0
 	local hasPSU = false
 	local hasPassthrough = false
 	local isBattery = isn_isBattery()
@@ -32,7 +31,7 @@ function isn_getCurrentPowerInput(divide)
 						end
 					end
 
-					output = world.callScriptedEntity(id,"isn_getCurrentPowerOutput",divide)
+					local output = world.callScriptedEntity(id,"isn_getCurrentPowerOutput",divide)
 					-- sb.logInfo("PID: Power supplier detected with output of " .. output)
 					if output ~= nil then totalInput = totalInput + output end
 				else

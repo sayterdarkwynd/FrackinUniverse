@@ -113,7 +113,7 @@ function update(dt)
 	else
 		if wellsDrawing == 1 then
 			if tenantNumber >= 1 then
-				storage.timer=storage.timer+(dt * sqrt(tenantNumber))
+				storage.timer=storage.timer+(dt * (tenantNumber))
 			end
 		end
 	end

@@ -557,7 +557,7 @@ end
 function populateMissionList()
 	widget.clearListItems("root.missionList")
 	
-	local listItem = ""
+	local listItem
 	local replays = {}
 	local noMissions = true
 	
@@ -687,12 +687,9 @@ function populateCrewList()
 		widget.clearListItems("root.crewList")
 		
 		if #cfg.Data.crew > 0 then
-			local listItem = ""
-			local canvas = nil
-			
 			for i, tbl in ipairs(cfg.Data.crew) do
-				listItem = "root.crewList."..widget.addListItem("root.crewList")
-				canvas = widget.bindCanvas(listItem..".portraitCanvas")
+				local listItem = "root.crewList."..widget.addListItem("root.crewList")
+				local canvas = widget.bindCanvas(listItem..".portraitCanvas")
 				
 				for _, portrait in ipairs(tbl.portrait) do
 					canvas:drawImage(portrait.image, {-15.5, -19.5})
@@ -780,11 +777,9 @@ function populateMiscList()
 	for _, tbl in ipairs(cfg.Data.misc) do
 		listItem = "root.miscList."..widget.addListItem("root.miscList")
 		local textBuffer=tbl[2]
-		local comparatorStr=""
 
 		while true do
-
-			comparatorStr=textBuffer
+			local comparatorStr=textBuffer
 			varName=textBuffer:match("%%%%(.+)%%%%")
 			if varName then
 				local varTranslated=""

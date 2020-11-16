@@ -27,7 +27,7 @@ function MechArm:update(dt)
   -- not implemented
 end
 
-function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, fun crouchValue, parts)
+function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, crouchValue, parts)
   self.crouchValue = crouchValue -- lpk: save crouch for use in shoulderPosition()
   self.driverId = driverId
   self.isFiring = isFiring

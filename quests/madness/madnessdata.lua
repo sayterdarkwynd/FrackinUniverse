@@ -407,7 +407,7 @@ function update(dt)
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				player.addCurrency("fuscienceresource",1 + self.bonus)
-				if (math.random(1,20) + status.stat("researchBonus")) > 18 then  -- only apply the bonus research from stat X amount of the time based on a d20 roll higher than 18. Bonus influences this.
+				if (math.random(1,20) + status.stat("researchBonus")) >= 18 then  -- only apply the bonus research from stat X amount of the time based on a d20 roll higher than 18. Bonus influences this.
 					player.addCurrency("fuscienceresource",status.stat("researchBonus"))
 				end
 			end
@@ -511,7 +511,7 @@ function checkMadnessArt()
 end
 
 function handleSetOrphans(dt)
-	if not orphanSetBonusTimer or orphanSetBonusTimer >= 1.0 then
+	if orphanSetBonusTimer and orphanSetBonusTimer >= 1.0 then
 		orphanSetBonusTimer=0.0
 		local t=os.time()
 		for set,bd in pairs(storage.armorSetData) do
@@ -521,7 +521,7 @@ function handleSetOrphans(dt)
 			end
 		end
 	else
-		orphanSetBonusTimer=orphanSetBonusTimer+dt
+		orphanSetBonusTimer=(orphanSetBonusTimer or -1.0)+dt
 	end
 end
 

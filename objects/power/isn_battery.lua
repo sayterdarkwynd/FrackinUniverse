@@ -16,7 +16,6 @@ end
 function update(dt)
 	batteryUpdate(dt)
 	power.update(dt)
-	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-dt)
 end
 
 function die()
@@ -96,9 +95,10 @@ function power.remove(...)
 	batteryUpdate()
 end
 
-function batteryUpdate()
+function batteryUpdate(dt)
+	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-(dt or 0))
 	power.setPower(power.getStoredEnergy())
-	if not batteryUpdateThrottle or batteryUpdateThrottle <= 0 then
+	if batteryUpdateThrottle <= 0 then
 		object.setConfigParameter('description', isn_makeBatteryDescription())
 		local oldAnim
 		if self.oldPowerStored then

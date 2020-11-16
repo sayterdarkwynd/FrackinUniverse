@@ -400,7 +400,7 @@ function move(direction, options)
   direction = util.toDirection(direction)
 
   local position = mcontroller.position()
-  local boundsEdge = 0
+  local boundsEdge
   local bounds = boundingBox()
   local tilePosition
   if direction > 0 then

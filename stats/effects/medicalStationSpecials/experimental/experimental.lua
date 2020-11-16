@@ -14,8 +14,7 @@ end
 
 function update(dt)
 	if self.effectInterval <= 0 then
-		
-		local effect = ""
+		local effect
 		local r = math.random()
 		local doubleMin = self.equalityScore - self.doubleChance / 2
 		local doubleMax = self.equalityScore + self.doubleChance / 2

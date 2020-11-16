@@ -26,7 +26,7 @@ end
 
 function populateMusicList()
 	widget.clearListItems("scrollArea.list")
-	local listItem = ""
+	local listItem
 	local searching = widget.getText("search")
 	
 	if viewing == "##albums##" then

@@ -64,7 +64,7 @@ function equipArmor(args, output)
   end
 
   local itemType = root.itemType(itemName)
-  local slot = nil
+  local slot
   if itemType == "headarmor" then
     slot = "head"
   elseif itemType == "chestarmor" then

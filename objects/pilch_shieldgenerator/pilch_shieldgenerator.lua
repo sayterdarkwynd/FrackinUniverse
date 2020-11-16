@@ -154,11 +154,10 @@ end
 function claimDungeonId()
 	local firstId, lastId = LOWID, HIGHID
 	local record = propertyRecord()
-	local stored = nil
 	for i = firstId, lastId do
 		if (world.getProperty(tostring(i)) == nil) then
 			world.setProperty(tostring(i), record)
-			stored = world.getProperty(tostring(i))
+			local stored = world.getProperty(tostring(i))
 			if (stored) then
 				if (stored.position[1] == record.position[1]) and (stored.position[2] == record.position[2]) then
 					return i
@@ -236,11 +235,11 @@ function checkArea()
 		incDirty()
 		return
 	end
-	local overlaps, dId, iterations = 0, 0, 0
+	local overlaps, iterations = 0, 0
 	local overlapList={}
 	for y = storage.targetRect[2], storage.targetRect[4] - 1 do
 		for x = storage.targetRect[1], storage.targetRect[3] - 1 do
-			dId = world.dungeonId({x, y})
+			local dId = world.dungeonId({x, y})
 			if (dId >= LOWID) and (dId <= HIGHID) then
 				overlaps = overlaps + 1
 				if storage.debugMode then
