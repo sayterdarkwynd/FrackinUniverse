@@ -86,7 +86,7 @@ function update(dt)
 	if self.maxFuel and self.currentFuel then
 		widget.setText("lblModuleCount", string.format("%.02f", self.currentFuel) .. " / " .. self.maxFuel)
 	else
-		widget.setText("lblModuleCount", "<Loading>")
+		widget.setText("lblModuleCount", "^red;<Loading>^reset;")
 	end
 
 	if self.setItemMessage and self.setItemMessage:finished() then
@@ -268,6 +268,11 @@ function fuelCountPreview(item)
 		if self.currentFuel and self.maxFuel then
 			widget.setText("lblModuleCount", string.format("%.02f",self.currentFuel) .. " / " .. self.maxFuel)
 		end
+		return
+	end
+	
+	if (not self.currentFuel) or (not self.maxFuel) then
+		widget.setText("lblModuleCount", "^red;<Loading>^reset;")
 		return
 	end
 
