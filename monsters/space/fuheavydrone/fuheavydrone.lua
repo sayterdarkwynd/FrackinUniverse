@@ -47,7 +47,8 @@ function init()
       gunConfig.power,
       gunConfig.fireInterval,
       gunConfig.fireCooldown,
-      gunConfig.range
+      gunConfig.range,
+	  gunConfig.fireSound
     )
     if not status then
       error(res)
@@ -101,12 +102,14 @@ function update(dt)
 
   -- query for new targets if there are none
   if #self.targets == 0 then
-    local newTargets = world.entityQuery(mcontroller.position(), self.queryRange, {includedTypes = {"player"}})
+    local newTargets = world.entityQuery(mcontroller.position(), self.queryRange, {withoutEntityId = entity.id(), includedTypes = {"player","vehicle","monster","npc"}})
     table.sort(newTargets, function(a, b)
       return world.magnitude(world.entityPosition(a), mcontroller.position()) < world.magnitude(world.entityPosition(b), mcontroller.position())
     end)
     for _,entityId in pairs(newTargets) do
-      table.insert(self.targets, entityId)
+      if entity.entityInSight(entityId) and world.entityCanDamage(entity.id(),entityId) and entity.isValidTarget(entityId) then
+        table.insert(self.targets, entityId)
+      end
     end
   end
 
@@ -140,7 +143,7 @@ function update(dt)
 end
 
 -- keeps aiming and firing, run in a coroutine
-function controlGun(part, offset, projectileType, params, count, power, interval, cooldown, range)
+function controlGun(part, offset, projectileType, params, count, power, interval, cooldown, range, fireSound)
 
   -- everything before the first yield is initialization
   coroutine.yield()
@@ -181,7 +184,7 @@ function controlGun(part, offset, projectileType, params, count, power, interval
           params.power = scaledPower
           world.spawnProjectile(projectileType, source, entity.id(), aimVector, false, params)
           shots = shots + 1
-          animator.playSound("fire")
+          animator.playSound(fireSound or "fire")
           util.wait(interval)
         end
 
