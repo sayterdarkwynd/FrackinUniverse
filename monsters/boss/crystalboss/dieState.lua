@@ -70,7 +70,7 @@ function dieState.update(dt, stateData)
     end
 
     --And spawn a miner survivor
-    world.spawnNpc(mcontroller.position(), "human", "crewmemberarctic", monster.level())
+    world.spawnNpc(mcontroller.position(), "human", "crewmemberminer", monster.level())
   end
   return false
 end
