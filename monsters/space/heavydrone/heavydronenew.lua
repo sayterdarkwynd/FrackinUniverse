@@ -101,12 +101,12 @@ function update(dt)
 
   -- query for new targets if there are none
   if #self.targets == 0 then
-    local newTargets = world.entityQuery(mcontroller.position(), self.queryRange, {includedTypes = {"player"}})
+    local newTargets = world.entityQuery(mcontroller.position(), self.queryRange, {withoutEntityId = entity.id(), includedTypes = {"player","vehicle","monster","npc"}})
     table.sort(newTargets, function(a, b)
       return world.magnitude(world.entityPosition(a), mcontroller.position()) < world.magnitude(world.entityPosition(b), mcontroller.position())
     end)
     for _,entityId in pairs(newTargets) do
-      if entity.entityInSight(entityId) then
+      if entity.entityInSight(entityId) and world.entityCanDamage(entity.id(),entityId) and entity.isValidTarget(entityId) then
         table.insert(self.targets, entityId)
       end
     end
