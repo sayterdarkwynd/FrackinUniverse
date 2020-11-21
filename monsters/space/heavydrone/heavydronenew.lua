@@ -14,8 +14,11 @@ function init()
     monster.setDeathParticleBurst(config.getParameter("deathParticles"))
   end
 
+  monster.setAggressive(true)
+
   script.setUpdateDelta(5)
 
+  self.outOfSight = {}
   self.targets = {}
   self.queryRange = config.getParameter("queryRange", 50)
   self.keepTargetInRange = config.getParameter("keepTargetInRange", 200)
@@ -65,10 +68,6 @@ function init()
   local status, res = coroutine.resume(self.movement, self.maxRange - approachPadding, tangentialSpeed, 20)
   if not status then error(res) end
 
-
-  monster.setName("Heavy War Drone")
-  monster.setDamageBar("special") 
-  
   self.switchAngleTime = config.getParameter("switchAngleTime")
 end
 
@@ -113,15 +112,31 @@ function update(dt)
     end
   end
 
-  -- drop targets out of range, keep current target the top of the targets list
+  -- drop targets out of range and out of sight
   repeat
     self.target = self.targets[1]
     if self.target == nil then break end
 
-    if not world.entityExists(self.target) or
-       world.magnitude(world.entityPosition(self.target), mcontroller.position()) > self.keepTargetInRange then
+    local target = self.target
+    if not world.entityExists(target)
+       or world.magnitude(world.entityPosition(target), mcontroller.position()) > self.keepTargetInRange then
       table.remove(self.targets, 1)
       self.target = nil
+    end
+
+    if self.target and not entity.entityInSight(target) then
+      local timer = self.outOfSight[target] or 5.0
+      timer = timer - dt
+      if timer <= 0 then
+        table.remove(self.targets, 1)
+        self.target = nil
+      else
+        self.outOfSight[target] = timer
+      end
+    end
+
+    if not self.target then
+      self.outOfSight[target] = nil
     end
   until #self.targets <= 0 or self.target
 
@@ -139,6 +154,8 @@ function update(dt)
 
     local status, res = coroutine.resume(self.movement, dt)
     if not status then error(res) end
+  else
+    mcontroller.controlApproachVelocity({0, 0}, mcontroller.baseParameters().airForce)
   end
 end
 
@@ -153,16 +170,13 @@ function controlGun(part, offset, projectileType, params, count, power, interval
     if self.target then
       local center, targetPosition, toTarget
       local updateTargetPos = function()
+        if self.target == nil then
+          targetPosition = nil
+          return false
+        end
         animator.resetTransformationGroup(part)
         center = animator.partPoint(part, "rotationCenter")
-        if part == "frontgun" then
-          world.debugPoint(vec2.add(mcontroller.position(), center), "yellow")
-        end
-		
-		if not self.target then return true end
-		
         targetPosition = world.entityPosition(self.target)
-		
         if targetPosition == nil then return true end
 
         toTarget = world.distance(targetPosition, vec2.add(mcontroller.position(), center))
@@ -185,10 +199,17 @@ function controlGun(part, offset, projectileType, params, count, power, interval
           world.spawnProjectile(projectileType, source, entity.id(), aimVector, false, params)
           shots = shots + 1
           animator.playSound(fireSound or "fire")
+
           util.wait(interval)
         end
 
-        util.wait(cooldown - cooldownOffset, updateTargetPos)
+        util.wait(cooldown - cooldownOffset, function()
+          if self.target then
+            updateTargetPos()
+          else
+            return true
+          end
+        end)
       end
     end
 
@@ -221,6 +242,26 @@ function approachOrbit(distance, maxTangential)
         toOrbit = {0, 1}
       end
 
+      if world.lineTileCollision(vec2.add(mcontroller.position(), animator.partPoint("frontgun", "rotationCenter")), targetPosition)
+         or world.lineTileCollision(vec2.add(mcontroller.position(), animator.partPoint("backgun", "rotationCenter")), targetPosition) then
+        local searchParameters = {
+          returnBest = false,
+          mustEndOnGround = false,
+          maxFScore = 400,
+          maxNodesToSearch = 70000,
+          boundBox = mcontroller.boundBox()
+        }
+        while world.lineTileCollision(vec2.add(mcontroller.position(), animator.partPoint("frontgun", "rotationCenter")), targetPosition)
+            or world.lineTileCollision(vec2.add(mcontroller.position(), animator.partPoint("backgun", "rotationCenter")), targetPosition) do
+          mcontroller.controlPathMove(targetPosition, false, searchParameters)
+          coroutine.yield()
+          if not self.target then return true end
+          targetPosition = world.entityPosition(self.target)
+          toTarget = world.distance(targetPosition, mcontroller.position())
+          approachAngle = vec2.angle(world.distance(mcontroller.position(), targetPosition))
+        end
+      end
+
       local targetAngle = vec2.angle(toTarget)
       local leadDir = util.toDirection(util.angleDiff(targetAngle, approachAngle))
       local tangentialSpeed = leadDir * maxTangential
@@ -244,7 +285,6 @@ function shouldDie()
 end
 
 function die()
-  animator.playSound("deathPuff")
   world.spawnProjectile("mechenergypickup", mcontroller.position())
   spawnDrops()
 end
