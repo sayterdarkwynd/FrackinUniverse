@@ -35,6 +35,15 @@ end
 function update(dt)
 	deltatime=deltatime+dt
 	
+	if updateFilterQueueTimer then
+		if updateFilterQueueTimer<=0.0 then
+			filterText = widget.getText("filterBox")
+			refreshingList = coroutine.create(refreshList)
+			updateFilterQueueTimer=nil
+		else
+			updateFilterQueueTimer=updateFilterQueueTimer-dt
+		end
+	end
 	if refreshingList and coroutine.status(refreshingList) ~= "dead" then
 		local a, b = coroutine.resume(refreshingList)
 		--sb.logInfo(tostring(a).." : "..tostring(b))
@@ -100,8 +109,7 @@ function refreshList()
 end
 
 function filterBox()
-	filterText = widget.getText("filterBox")
-	refreshingList = coroutine.create(refreshList)
+	updateFilterQueueTimer=0.10
 end
 
 function comparableFilter()
