@@ -52,7 +52,6 @@ function boost(direction)
 end
 
 function update(args)
-
 	--fuel stamina check
 	--sb.logInfo(self.fuelTimer)
 	if self.soundTimer <= 0 then --sound effect timer for flight timer
@@ -117,7 +116,7 @@ function update(args)
 				})
 			else
 				status.setPersistentEffects("glide", {
-					{stat = "gliding", amount = 0},
+					--{stat = "gliding", amount = 0},
 					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
 				})
 			end
@@ -170,7 +169,7 @@ end
 
 function activate()
 	if not self.active then
-				animator.playSound("activate")
+		animator.playSound("activate")
 	end
 	self.active = true
 end
