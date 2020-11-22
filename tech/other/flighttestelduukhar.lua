@@ -35,12 +35,13 @@ function checkFood()
 		animator.setParticleEmitterActive("feathers", false)
 		self.soundTimer = 60
 	end
-	if self.fuelTimer < 0 then
+	self.fuelTimer=math.min(math.max(self.fuelTimer,0),300)
+	--[[if self.fuelTimer < 0 then
 		self.fuelTimer = 0
 	end
 	if self.fuelTimer > 300 then
 		self.fuelTimer = 300
-	end
+	end]]
 	-- end flight stamina check
 end
 

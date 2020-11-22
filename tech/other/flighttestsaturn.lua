@@ -51,7 +51,6 @@ function update(args)
 	end
 	
 	if self.active and status.overConsumeResource("energy", 0.0001) and not mcontroller.zeroG() and not mcontroller.liquidMovement() then -- do we have energy and the ability is active?
-		--checkFood()
 		status.addEphemeralEffects{{effect = "saturnflight", duration = 2}}
 		status.addEphemeralEffects{{effect = "lowgravflighttech", duration = 2}}
 		
@@ -86,7 +85,7 @@ function update(args)
 				})						
 			else
 				status.setPersistentEffects("glide", {
-					{stat = "gliding", amount = 0},
+					--{stat = "gliding", amount = 0},
 					{stat = "foodDelta", amount = -5}, 
 					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
 				})		

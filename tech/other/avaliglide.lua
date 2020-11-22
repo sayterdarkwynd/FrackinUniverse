@@ -64,8 +64,6 @@ end
 
 
 function update(args)
-	--checkFood()
-
 	if not self.specialLast and args.moves["special1"] then
 		attemptActivation()
 	end
@@ -89,8 +87,8 @@ function update(args)
 		if self.pressDown or self.pressDown and self.active2== 1 then	--slowfall stance
 			if not mcontroller.onGround() and not mcontroller.zeroG() then
 				status.setPersistentEffects("glide", {
-					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35},
-					{stat = "gliding", amount = 0}
+					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}--,
+					--{stat = "gliding", amount = 0}
 				})
 			end
 			if self.bombTimer == 0 then

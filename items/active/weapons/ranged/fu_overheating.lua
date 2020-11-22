@@ -329,7 +329,7 @@ function FUOverHeating:energyPerShot()
   return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
 end
 
-function FUOverHeating:damagePerShot()      --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
+function FUOverHeating:damagePerShot() --return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
     return Crits.setCritDamage(self, (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount)
 end
 
@@ -349,7 +349,9 @@ function FUOverHeating:isResetting()
   if (self.isSniper == 1) or (self.isCrossbow == 1) then
     self.firedWeapon = 1
     self.timeBeforeCritBoost = 2
-    status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 0}})
+    status.setPersistentEffects("critCharged", {
+		--{stat = "isCharged", amount = 0}
+	})
   end
 end
 

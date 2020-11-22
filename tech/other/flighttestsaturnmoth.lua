@@ -86,7 +86,7 @@ function update(args)
 				})
 			else
 				status.setPersistentEffects("glide", {
-					{stat = "gliding", amount = 0},
+					--{stat = "gliding", amount = 0},
 					{stat = "foodDelta", amount = -5},
 					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
 				})
