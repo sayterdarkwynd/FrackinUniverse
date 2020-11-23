@@ -4,32 +4,80 @@
 
   "scriptConfig" : {
     "behaviorConfig" : {
-      "combatParameters" : {
-        "npcCombat" : {
-          "rangedWeaponRanges" : {
-            "npcrocketlauncher" : {
-              "minRange" : 35,
-              "maxRange" : 60,
-              "forceMoveRange" : 70
-            },
-            "commonrocketlauncher" : {
-              "minRange" : 35,
-              "maxRange" : 60,
-              "forceMoveRange" : 70
-            },
-            "uncommonrocketlauncher" : {
-              "minRange" : 35,
-              "maxRange" : 60,
-              "forceMoveRange" : 70
-            },
-            "rarerocketlauncher" : {
-              "minRange" : 35,
-              "maxRange" : 60,
-              "forceMoveRange" : 70
-            }
-          }
-        }
-      }
+	  "queryRange": 60,
+	  "trackingRange": 60
     }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcrocketlauncher"
+            ]
+          }
+        ] ],
+      [2, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcrocketlauncher", 
+			  "commonrocketlauncher"
+            ]
+          }
+        ] ],		
+      [3, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcrocketlauncher", 
+			  "commonrocketlauncher",
+			  "uncommonrocketlauncher"
+            ]
+          }
+        ] ],		
+      [4, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+              "npcrocketlauncher", 
+			  "commonrocketlauncher",
+			  "uncommonrocketlauncher",
+			  "rarerocketlauncher"
+            ]
+          }
+        ] ],		
+      [5, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+			  "uncommonrocketlauncher",
+			  "rarerocketlauncher"
+            ]
+          }
+        ] ],		
+      [6, [
+          {
+            "head" : [ { "name" : "bandithat1" }, { "name" : "bandithat2" } ],
+            "chest" : [ { "name" : "explorerchest" } ],
+            "legs" : [ { "name" : "explorerlegs" } ],
+            "primary" : [
+			  "rarerocketlauncher"
+            ]
+          }
+        ] ]
+    ]
   }
 }
