@@ -28,9 +28,20 @@
                     [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0], 
                     [-2, -1], [-1, -1], [0, -1], [1, -1], [2, -1]
       ],
-      "anchors" : [ "left", "right" ],
-      "collision" : "platform"
+      "anchors" : [ "left", "right" ]
     }
+  ],
+
+  "platformDoors" : true,
+  "openMaterials" : [ ],
+
+
+  "openMaterialSpaces" : [
+	  [[-2,0],"metamaterial:objectplatform"],
+	  [[-1,0],"metamaterial:objectplatform"],
+	  [[0,0],"metamaterial:objectplatform"],
+	  [[1,0],"metamaterial:objectplatform"],
+	  [[2,0],"metamaterial:objectplatform"]
   ],
 
   "scripts" : [ "/objects/wired/door/door.lua" ],
