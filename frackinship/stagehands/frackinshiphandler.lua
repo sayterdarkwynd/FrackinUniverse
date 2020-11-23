@@ -10,6 +10,9 @@ function init()
 		-- To make hopefully make this config value server side instead of client side
 		return {disableUnlockableShips = self.miscShipConfig.disableUnlockableShips, universeFlags = world.universeFlags()}
 	end)
+	message.setHandler("checkUnlockableShipUnlocked", function(_, _, universeFlag)
+		return {disableUnlockableShips = self.miscShipConfig.disableUnlockableShips, unlocked = world.universeFlagSet(universeFlag)}
+	end)
 end
 
 function update()

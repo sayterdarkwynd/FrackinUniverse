@@ -11,6 +11,7 @@ function init()
   storage.fireTimer = storage.fireTimer or 0
   
   self.miscShipConfig = root.assetJson("/frackinship/configs/misc.config")
+  self.universeFlag = config.getParameter("universeFlag")
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -38,27 +39,31 @@ function update(dt, fireMode, shiftHeld)
 
   self.active = false
 
-  if storage.firing and animator.animationState("firing") == "off" and self.enabledCheck:finished() and self.enabledCheck::succeeded() then
-	local results = promise:result()
-	if results.disableUnlockableShips then
-		player.interact("ShowPopup", {message = miscShipConfig.shipUnlockMessages.disabled or ""})
-	else
-		local alreadySet = false
-		for _, flag in ipairs (results.universeFlags or {}) do
-			
-		end
-		item.consume(1)
-    return
+  if storage.firing and animator.animationState("firing") == "off" and self.unlockCheck:finished() then
+    if self.unlockCheck:succeeded() then
+	  local results = self.unlockCheck:result()
+	  if results.disableUnlockableShips then
+	    player.interact("ShowPopup", {message = self.miscShipConfig.shipUnlockMessages.disabled or ""})
+	  elseif results.unlocked then
+	    player.interact("ShowPopup", {message = self.miscShipConfig.shipUnlockMessages.alreadySet or ""})
+	  else
+	    player.setUniverseFlag(self.universeFlag)
+	    player.interact("ShowPopup", {message = self.miscShipConfig.shipUnlockMessages.success or ""})
+	    item.consume(1)
+	    return
+	  end
+	end
+	storage.firing = false
   end
 end
 
 function activate(fireMode, shiftHeld)
   if not storage.firing then
 	if world.type() ~= "unknown" then
-		player.interact("ShowPopup", {message = miscShipConfig.shipUnlockMessages.notOnShip or ""})
+		player.interact("ShowPopup", {message = self.miscShipConfig.shipUnlockMessages.notOnShip or ""})
 	else
 		self.active = true
-		self.enabledCheck = world.sendEntityMessage("frackinshiphandler", "checkUnlockableShipDisabled")
+		self.unlockCheck = world.sendEntityMessage("frackinshiphandler", "checkUnlockableShipUnlocked", self.universeFlag)
 	end
   end
 end
