@@ -11,7 +11,6 @@ armorBonus={
 
 setName="fu_intersecset"
 
-
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})

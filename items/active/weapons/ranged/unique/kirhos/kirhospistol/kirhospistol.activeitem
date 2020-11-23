@@ -9,7 +9,7 @@
   "shortdescription" : "Kirhosi Blaster",
   "category" : "pistol",
   "level" : 1,
-  "learnBlueprintsOnPickup" : [ "kirhospistol" ],
+//  "learnBlueprintsOnPickup" : [ "kirhospistol" ],
   "tooltipKind" : "gun2overheat",
 
   "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy","kirhos"],
@@ -49,16 +49,16 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
     "class" : "FUOverHeating",
-    "fireTime" : 0.3,
-    "baseDps" : 13,
-    "energyUsage" : 18.5,
+    "fireTime" : 0.35,
+    "baseDps" : 9.65,
+    "energyUsage" : 30,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
     
 	//Overheating Weapon Values (based heavily on elithian races version)
-	"heatGain" : 5,					//Heat generated per shot
+	"heatGain" : 4,					//Heat generated per shot
 	"coolingTime" : 0.5,				//Time before passive cooling kicks in
 	"heatLossLevel" : 3,				//Heat lost per second while not overheated
 	"heatLossRateMax" : 10,				//Heat lost per second while overheated
@@ -110,7 +110,7 @@
 	  }
   },
 
-  "critChance" : 0.5,
+  "critChance" : 1,
   "critBonus" : 8,
   //recoil
   "hasRecoil" : 1,
@@ -132,10 +132,10 @@
 	  "critChance" : 1,
 	  "critBonus" : 9,
 	  "primaryAbility" : {
-		"heatLossLevel" : 15,				
+		"heatLossLevel" : 6,				
 		"heatLossRateMax" : 11,				
-		"lowLevel" : 15,
-		"medLevel" : 22,			
+		"lowLevel" : 11,
+		"medLevel" : 20,			
 		"highLevel" : 35,					
 		"overheatLevel" : 42
 	  }

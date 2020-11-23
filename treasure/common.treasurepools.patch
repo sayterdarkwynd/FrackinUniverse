@@ -1,4 +1,10 @@
 [
+  //reduce occurence of RNG weapons except in weapon chests
+  // but increase other drops to compensate
+  {
+    "op": "remove",
+    "path": "/basicTreasure/0/1/pool/5"
+  },
   {
     "op": "add",
     "path": "/basicTreasure/0/1/pool/-",
@@ -7,6 +13,15 @@
       "pool": "fusalvageComponent"
     }
   }, 
+
+  //small chance for Research chunk
+  {
+    "op": "add",
+    "path": "/basicTreasure/0/1/pool/-",
+    "value": {"weight": 0.005,"item": ["smalldata",1]}
+  },   
+
+  //super ultra rare chance for transmutation matrix
    {
     "op": "add",
     "path": "/tool/0/1/pool/-",
@@ -40,7 +55,7 @@
   {
     "op": "add",
     "path": "/rareMelee/0/1/pool/-",
-    "value": {"weight": 0.007,"item": "furaregreataxe"}
+    "value": {"weight": 0.003,"item": "furaregreataxe"}
   },
   {
     "op": "add",
@@ -55,7 +70,7 @@
   {
     "op": "add",
     "path": "/rareMelee/0/1/pool/-",
-    "value": {"weight": 0.007,"item": "furaremace"}
+    "value": {"weight": 0.003,"item": "furaremace"}
   },
   {
     "op": "add",
@@ -70,7 +85,7 @@
   {
     "op": "add",
     "path": "/rareMelee/0/1/pool/-",
-    "value": {"weight": 0.007,"item": "furarelongsword"}
+    "value": {"weight": 0.003,"item": "furarelongsword"}
   },
   {
     "op": "add",
@@ -85,7 +100,7 @@
   {
     "op": "add",
     "path": "/rareMelee/0/1/pool/-",
-    "value": {"weight": 0.007,"item": "furarerapier"}
+    "value": {"weight": 0.003,"item": "furarerapier"}
   },
   {
     "op": "add",
@@ -100,7 +115,7 @@
   {
     "op": "add",
     "path": "/rareMelee/0/1/pool/-",
-    "value": {"weight": 0.007,"item": "rareqs"}
+    "value": {"weight": 0.003,"item": "rareqs"}
   },
   {
     "op": "add",
@@ -115,7 +130,7 @@
   {
     "op": "add",
     "path": "/rareMelee/0/1/pool/-",
-    "value": {"weight": 0.007,"item": "rareshortspear"}
+    "value": {"weight": 0.003,"item": "rareshortspear"}
   },
   
   
@@ -709,17 +724,17 @@
   {
     "op": "replace",
     "path": "/weapon/0/1/pool/0/weight",
-    "value": 0.35
+    "value": 0.12
   },
   {
     "op": "replace",
     "path": "/weapon/0/1/pool/1/weight",
-    "value": 0.25
+    "value": 0.06
   },
   {
     "op": "replace",
     "path": "/weapon/0/1/pool/2/weight",
-    "value": 0.08
+    "value": 0.02
   },
   {
     "op": "replace",
@@ -836,18 +851,18 @@
   {
     "op": "replace",
     "path": "/goodWeapon/0/1/pool/0/weight",
-    "value": 0.35
+    "value": 0.25
   },
   {
     "op": "replace",
     "path": "/goodWeapon/0/1/pool/1/weight",
-    "value": 0.25
+    "value": 0.12
   },
   {
     "op": "add",
     "path": "/goodWeapon/0/1/pool/-",
     "value": {
-      "weight": 0.1,
+      "weight": 0.09,
       "pool": "uncommonBow"
     }
   },
@@ -855,35 +870,35 @@
     "op": "add",
     "path": "/goodWeapon/0/1/pool/-",
     "value": {
-      "weight": 0.05,
+      "weight": 0.02,
       "pool": "rareBow"
     }
   },
   {
     "op": "replace",
     "path": "/goodWeapon/1/1/pool/0/weight",
-    "value": 0.18
+    "value": 0.11
   },
   {
     "op": "replace",
     "path": "/goodWeapon/1/1/pool/1/weight",
-    "value": 0.12
+    "value": 0.09
   },
   {
     "op": "replace",
     "path": "/goodWeapon/1/1/pool/2/weight",
-    "value": 0.18
+    "value": 0.07
   },
   {
     "op": "replace",
     "path": "/goodWeapon/1/1/pool/3/weight",
-    "value": 0.12
+    "value": 0.05
   },
   {
     "op": "add",
     "path": "/goodWeapon/1/1/pool/-",
     "value": {
-      "weight": 0.15,
+      "weight": 0.08,
       "pool": "uncommonBow"
     }
   },
@@ -891,39 +906,39 @@
     "op": "add",
     "path": "/goodWeapon/1/1/pool/-",
     "value": {
-      "weight": 0.11,
+      "weight": 0.02,
       "pool": "rareBow"
     }
   },
   {
     "op": "replace",
     "path": "/goodWeapon/2/1/pool/0/weight",
-    "value": 0.15
+    "value": 0.11
   },
   {
     "op": "replace",
     "path": "/goodWeapon/2/1/pool/1/weight",
-    "value": 0.1
+    "value": 0.07
   },
   {
     "op": "replace",
     "path": "/goodWeapon/2/1/pool/2/weight",
-    "value": 0.15
+    "value": 0.11
   },
   {
     "op": "replace",
     "path": "/goodWeapon/2/1/pool/3/weight",
-    "value": 0.1
+    "value": 0.07
   },
   {
     "op": "replace",
     "path": "/goodWeapon/2/1/pool/4/weight",
-    "value": 0.1
+    "value": 0.07
   },
   {
     "op": "replace",
     "path": "/goodWeapon/2/1/pool/5/weight",
-    "value": 0.1
+    "value": 0.07
   },
   {
     "op": "replace",
@@ -939,7 +954,7 @@
     "op": "add",
     "path": "/goodWeapon/2/1/pool/-",
     "value": {
-      "weight": 0.15,
+      "weight": 0.08,
       "pool": "uncommonBow"
     }
   },
@@ -947,7 +962,7 @@
     "op": "add",
     "path": "/goodWeapon/2/1/pool/-",
     "value": {
-      "weight": 0.1,
+      "weight": 0.02,
       "pool": "rareBow"
     }
   },
@@ -991,5 +1006,118 @@
       }
 	  ]
     ]
+  },
+
+ {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0015,
+      "item": "densiniumore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0015,
+      "item": "xithriciteore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0015,
+      "item": "pyreiteore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0015,
+      "item": "isogenore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "irradiumore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "ebonshard"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "fuamberchunk"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "quietusore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "blooddiamond"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "penumbriteore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "protociteore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0005,
+      "item": "nocxiumore"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "solarishard"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geodeRewards/0/1/pool/-",
+    "value": {
+      "weight": 0.0025,
+      "item": "zerchesiumore"
+    }
   }
 ]

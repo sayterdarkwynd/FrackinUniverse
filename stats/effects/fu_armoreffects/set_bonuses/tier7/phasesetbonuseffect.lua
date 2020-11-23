@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_phaseset"
 
 armorBonus={
@@ -15,10 +16,8 @@ armorBonus={
 	{stat = "quicksandImmunity", amount = 1},
 	{stat = "honeyslowImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},
-	{stat = "slimestickImmunity", amount = 1}   
+	{stat = "slimestickImmunity", amount = 1}	 
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

@@ -1,6 +1,12 @@
 require "/scripts/util.lua"
 
 function init()
+	--Set the image of the object
+	local petHouseType = config.getParameter("petHouseType", "default")
+	local petHouseDirectory = config.getParameter("petHouseDirectory", "/")
+	animator.setGlobalTag("petHouseType", petHouseType)
+	animator.setGlobalTag("petHouseDirectory", petHouseDirectory)
+
 	--Restore stored storage
 	if config.getParameter("storageData") then
 		storage = config.getParameter("storageData")
@@ -11,8 +17,10 @@ function init()
 	storage.spawnTimer = storage.spawnTimer and 0.5 or 0
 	storage.petParams = storage.petParams or {}
 
-	self.monsterType = config.getParameter("shipPetType", "petweasel")
+	self.monsterType = config.getParameter("shipPetType")
 	self.spawnOffset = config.getParameter("spawnOffset", {0, 2})
+	
+	self.hasInputNode = config.getParameter("inputNodes")
 	
 	message.setHandler("getPetParams", function()
 		return storage.petParams
@@ -28,7 +36,10 @@ function init()
 		if petName ~= storage.petParams.shortdescription then
 			storage.petParams.shortdescription = petName
 			if petName ~= "" then
-				object.setConfigParameter("shortdescription", "Pet House (" .. petName .. ")")
+				local item = root.itemConfig(object.name())
+				if item then
+					object.setConfigParameter("shortdescription", item.config.shortdescription .. " (" .. petName .. ")")
+				end
 			end
 			if self.petId then
 				world.callScriptedEntity(self.petId, "monster.setName", petName)
@@ -68,6 +79,8 @@ function setPet(entityId, params)
 end
 
 function update(dt)
+	if not self.monsterType then return end	-- don't try to spawn the pet if it's not set
+	
 	if self.petId and not world.entityExists(self.petId) then
 		self.petId = nil
 	end
@@ -80,7 +93,9 @@ function update(dt)
 			storage.petParams.capturable = true
 			storage.petParams.captureHealthFraction = 1
 			self.petId = world.spawnMonster(self.monsterType, object.toAbsolutePosition(self.spawnOffset), storage.petParams)
-			world.callScriptedEntity(self.petId, "setAnchor", entity.id())
+			if self.petId then
+				world.callScriptedEntity(self.petId, "setAnchor", entity.id())
+			end
 			storage.spawnTimer = 0.5
 		else
 			storage.spawnTimer = storage.spawnTimer - dt
@@ -98,7 +113,7 @@ function respawnPet()
 end
 
 function wireCheck()
-	if object.isInputNodeConnected(0) then
+	if self.hasInputNode and object.isInputNodeConnected(0) then
 		return object.getInputNodeLevel(0)
 	else
 		return false

@@ -5,6 +5,39 @@ require "/scripts/staticrandom.lua"
 require "/items/buildscripts/abilities.lua"
 
 function build(directory, config, parameters, level, seed)
+	local function split(str, pat)
+		local t = {}	-- NOTE: use {n = 0} in Lua-5.0
+		local fpat = "(.-)" .. pat
+		local last_end = 1
+		local s, e, cap = str:find(fpat, 1)
+		while s do
+			if s ~= 1 or cap ~= "" then
+				 table.insert(t, cap)
+			end
+			last_end = e+1
+			s, e, cap = str:find(fpat, last_end)
+		end
+		if last_end <= #str then
+			cap = str:sub(last_end)
+			table.insert(t, cap)
+		end
+		return t
+	end
+
+	local configParameterDeep = function(keyName, defaultValue)
+		local sets=split(keyName,"%.")
+		local mergedBuffer=util.mergeTable(copy(config),copy(parameters))
+		for _,v in pairs(sets) do
+			if mergedBuffer[v] then
+				mergedBuffer=mergedBuffer[v]
+			else
+				mergedBuffer=defaultValue
+				break
+			end
+		end
+		return mergedBuffer
+	end
+
 	local configParameter = function(keyName, defaultValue)
 		if parameters[keyName] ~= nil then
 			return parameters[keyName]
@@ -182,6 +215,10 @@ function build(directory, config, parameters, level, seed)
 	end
 
 	-- populate tooltip fields
+
+	local primaryAbility=configParameterDeep("primaryAbility")
+	local altAbility=configParameterDeep("altAbility")
+
 	config.tooltipFields = {}
 	local fireTime = parameters.primaryAbility.fireTime or config.primaryAbility.fireTime or 1.0
 	local baseDps = parameters.primaryAbility.baseDps or config.primaryAbility.baseDps or 0
@@ -199,6 +236,15 @@ function build(directory, config, parameters, level, seed)
 	-- ***ORIGINAL CODE BY ALBERTO-ROTA and SAYTER***--and Khe
 	-- FU ADDITIONS
 	parameters.isAmmoBased = configParameter("isAmmoBased")
+	if type(parameters.isAmmoBased)=="table" then
+		if (#parameters.isAmmoBased >= 2) and (type(parameters.isAmmoBased[1]) == "number") and (type(parameters.isAmmoBased[2]) == "number") then
+			parameters.isAmmoBased=math.random(parameters.isAmmoBased[1],parameters.isAmmoBased[2])
+		elseif (#parameters.isAmmoBased == 1) and (type(parameters.isAmmoBased[1]) == "number") then
+			parameters.isAmmoBased=parameters.isAmmoBased[1]
+		else
+			parameters.isAmmoBased=0
+		end
+	end
 	local oldCTooltip = config.tooltipKind
 	local oldPTooltip = parameters.tooltipKind
 
@@ -207,7 +253,7 @@ function build(directory, config, parameters, level, seed)
 		parameters.reloadTimeFactor = valueOrRandom(parameters.reloadTimeFactor, seed, "reloadTimeFactor")
 		config.magazineSize = scaleConfig(parameters.primaryAbility.energyUsageFactor, config.magazineSize) or 0
 	end
-	
+
 	local newMagSize = ((parameters.isAmmoBased == 1) and configParameter("magazineSize",0)) or 0
 	if (parameters.isAmmoBased == 1) then
 		if type(newMagSize) == "table" then
@@ -235,12 +281,11 @@ function build(directory, config, parameters, level, seed)
 		parameters.isAmmoBased = 0
 		config.tooltipKind = oldCTooltip
 		parameters.tooltipKind = oldPTooltip
-		
+
 		config.magazineSize = 0
 		config.tooltipFields.magazineSizeLabel = "--"
-		newMagSize = 0
 		parameters.magazineSizeFactor = 0
-		
+
 		parameters.reloadTimeFactor = 0
 		config.reloadTime = 0
 		config.tooltipFields.reloadTimeLabel = "--"
@@ -251,19 +296,19 @@ function build(directory, config, parameters, level, seed)
 	else
 		config.tooltipFields.critChanceLabel = "--"
 	end
-	
+
 	if (configParameter("critBonus")) then
 		config.tooltipFields.critBonusLabel = util.round(configParameter("critBonus",0), 0)
 	else
 		config.tooltipFields.critBonusLabel = "--"
 	end
-	
+
 	if (configParameter("stunChance")) then
 		config.tooltipFields.stunChanceLabel = util.round(configParameter("stunChance",0), 0)
 	else
 		config.tooltipFields.stunChanceLabel = "--"
 	end
-	
+
 	config.tooltipFields.damagePerEnergyLabel = util.round(damagePerShot / energyPerShot, 1)
 
 	config.tooltipFields.magazineSizeImage = "/interface/statuses/ammo.png"
@@ -272,27 +317,27 @@ function build(directory, config, parameters, level, seed)
 	config.tooltipFields.critBonusImage = "/interface/statuses/dmgplus.png"
 
 	-- Staff and Wand specific --
-	if config.primaryAbility.projectileParameters then
-		if config.primaryAbility.projectileParameters.baseDamage then
-			config.tooltipFields.staffDamageLabel = config.primaryAbility.projectileParameters.baseDamage
+	if primaryAbility.projectileParameters then
+		if primaryAbility.projectileParameters.baseDamage then
+			config.tooltipFields.staffDamageLabel = primaryAbility.projectileParameters.baseDamage
 		end
 	end
 
-	if config.primaryAbility.energyCost then
-		config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyCost
+	if primaryAbility.energyCost then
+		config.tooltipFields.staffEnergyLabel = primaryAbility.energyCost
 	end
-	if config.primaryAbility.energyPerShot then
-		config.tooltipFields.staffEnergyLabel = config.primaryAbility.energyPerShot
+	if primaryAbility.energyPerShot then
+		config.tooltipFields.staffEnergyLabel = primaryAbility.energyPerShot
 	end
-	if config.primaryAbility.maxCastRange then
-		config.tooltipFields.staffRangeLabel = config.primaryAbility.maxCastRange
-	else
-		config.tooltipFields.staffRangeLabel = 25
+	if primaryAbility.maxCastRange then
+		config.tooltipFields.staffRangeLabel = primaryAbility.maxCastRange
+	--else
+		--config.tooltipFields.staffRangeLabel = 25
 	end
-	if config.primaryAbility.projectileCount then
-		config.tooltipFields.staffProjectileLabel = config.primaryAbility.projectileCount
-	else
-		config.tooltipFields.staffProjectileLabel = 1
+	if primaryAbility.projectileCount then
+		config.tooltipFields.staffProjectileLabel = primaryAbility.projectileCount
+	--else
+		--config.tooltipFields.staffProjectileLabel = 1
 	end
 	--
 
@@ -302,14 +347,14 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.damageKindImage = "/interface/elements/physical.png"
 	end
 
-	if config.primaryAbility then
+	if primaryAbility then
 		config.tooltipFields.primaryAbilityTitleLabel = "Primary:"
-		config.tooltipFields.primaryAbilityLabel = config.primaryAbility.name or "unknown"
+		config.tooltipFields.primaryAbilityLabel = primaryAbility.name or "unknown"
 	end
 
-	if config.altAbility then
+	if altAbility then
 		config.tooltipFields.altAbilityTitleLabel = "Special:"
-		config.tooltipFields.altAbilityLabel = config.altAbility.name or "unknown"
+		config.tooltipFields.altAbilityLabel = altAbility.name or "unknown"
 	end
 
 	-- set price

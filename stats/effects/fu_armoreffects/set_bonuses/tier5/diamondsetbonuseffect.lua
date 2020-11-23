@@ -1,7 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_diamondset"
-
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25},
@@ -13,7 +11,6 @@ armorBonus={
 	{stat = "sulphuricImmunity", amount = 1},
 	{stat = "biooozeImmunity", amount = 1}
 }
-
 
 function init()
 	setSEBonusInit(setName)
@@ -31,7 +28,6 @@ function update(dt)
 		checkWeapons()
 	end
 end
-
 
 function checkWeapons()
 	local weaponSingle=weaponCheck({"katana","daikatana"})

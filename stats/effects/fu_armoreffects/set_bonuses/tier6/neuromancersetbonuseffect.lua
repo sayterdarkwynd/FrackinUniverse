@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+setName="fu_neuromancerset"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
@@ -12,8 +13,6 @@ armorBonus={
 	{stat = "slimeImmunity", amount = 1},
 	{stat = "liquidnitrogenImmunity", amount = 1}
 }
-
-setName="fu_neuromancerset"
 
 function init()
 	setSEBonusInit(setName)

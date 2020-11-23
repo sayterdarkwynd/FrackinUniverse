@@ -52,9 +52,26 @@ function applySetEffects()
 	if self.setBonusEffects == nil then
 		return
 	end
-	for _,v in pairs(self.setBonusEffects) do
+	--[[for _,v in pairs(self.setBonusEffects) do
 		status.addEphemeralEffect(v,2)
+	end]]
+	--sb.logInfo("s %s e %s",setName,self.setBonusEffects)
+	world.sendEntityMessage(entity.id(),"recordFUArmorSetBonus",setName)
+	status.setPersistentEffects(setName,self.setBonusEffects)
+end
+
+function removeSetEffects()
+	status.setPersistentEffects(setName,{})
+end
+
+function fetchTags(buffer)
+	local tags={}
+	for k,v in pairs(buffer or {}) do
+		if string.lower(k)=="itemtags" then
+			tags=util.mergeTable(tags,v)
+		end
 	end
+	return tags
 end
 
 function weaponCheck(tags)
@@ -75,7 +92,7 @@ function weaponCheck(tags)
 		if result and buffer then
 			buffer=util.mergeTable(buffer.config,buffer.parameters)
 			local buffer2=buffer.elementalType
-			buffer=buffer.itemTags or {}
+			buffer=fetchTags(buffer)
 			if buffer2 then table.insert(buffer,string.lower(buffer2)) end
 		else
 			buffer={}
@@ -92,7 +109,7 @@ function weaponCheck(tags)
 		if result and buffer then
 			buffer=util.mergeTable(buffer.config,buffer.parameters)
 			local buffer2=buffer.elementalType
-			buffer=buffer.itemTags or {}
+			buffer=fetchTags(buffer)
 			if buffer2 then table.insert(buffer,string.lower(buffer2)) end
 		else
 			buffer={}

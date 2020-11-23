@@ -1,0 +1,107 @@
+{
+	"itemName": "isogensemiautopistol",
+	"price": 720,
+	"inventoryIcon": "isogenpistol.png",
+	"maxStack": 1,
+	"rarity": "legendary",
+	"description": "Fires devastating ice bullets colder than liquid nitrogen.
+^cyan;Slows targets ^reset;",
+	"shortdescription": "Isogen Semiauto",
+	"category": "pistol",
+	"level": 6,
+	"tooltipKind": "gun2",
+
+	"itemTags": ["weapon","ranged","machinepistol", "upgradeableWeapon", "isogen", "ice" ],
+	"twoHanded": false,
+	"weaponType": "Energy",
+	"animation": "/items/active/weapons/ranged/unique/fugun.animation",
+	"animationParts": {
+		"butt": "",
+		"middle": "isogenpistol.png",
+		"middlefullbright": "isogenpistolfullbright.png",
+		"barrel": "",
+		"muzzleFlash": "/animations/muzzleflash/icemuzzle.png"
+	},
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"middlefullbright": {
+					"properties": {
+						"offset": [1.1, 0.46]
+					}
+				}
+			}
+		},
+		"sounds": {
+			"fire": ["/sfx/weapons/energyassault.ogg"]
+		},
+		"lights": {
+			"muzzleFlash": {
+				"color": [0, 255, 255]
+			}
+		}
+	},
+
+	"baseOffset": [1.1, 0.46],
+	"muzzleOffset": [0.7, 0.125],
+
+	"scripts": ["/items/active/weapons/ranged/gun.lua"],
+
+	"elementalType": "ice",
+
+	"primaryAbility": {
+		"scripts": ["/items/active/weapons/ranged/gunfire.lua"],
+		"class": "GunFire",
+		"fireTime": 0.2,
+		"baseDps": 6.4,
+		"energyUsage": 20,
+		"inaccuracy": 0.01,
+
+		"projectileCount": 1,
+		"fireType": "auto",
+
+		"projectileType": "fuicebullet",
+		"projectileParameters": {
+			"speed": 70,
+			"knockback": 5
+		},
+		"stances": {
+			"idle": {
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": false,
+
+				"allowRotate": true,
+				"allowFlip": true
+			},
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": false,
+
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.075,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": false,
+
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	},
+
+	"critChance": 3,
+	"critBonus": 6,
+  	"isAmmoBased" : 1,
+  	"magazineSize" : 20,
+  	"reloadTime" : 1.5,
+	"hasRecoil": 1,
+	"recoilSpeed": 200,
+	"recoilForce": 300,
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
+}

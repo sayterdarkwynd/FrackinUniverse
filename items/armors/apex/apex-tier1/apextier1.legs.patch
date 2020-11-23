@@ -28,18 +28,28 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;: \n^yellow;^reset; Hammer: +^green;2^reset;% Crit Chance"
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Magnorb/Thrown: Damage x^green;1.1^reset;"
 		},
 		{
 			"op": "add",
 			"path": "/statusEffects",
 			"value": [
-				"fusetbonusmanager",
+				    "apextier1setbonusnew",
 				{
-					"stat": "apextier1setcount",
-					"amount": 1
+					"stat" : "fu_apextier1setnew_legs",
+					"amount" : 1
 				}
 			]
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "radioactiveResistance",
+				"amount": 0.033334
+			}
 		},
 		{
 			"op": "add",
@@ -49,7 +59,7 @@
 				"stat": "shadowResistance",
 				"amount": 0.033334
 			}
-		},
+		},	
 		{
 			"op": "replace",
 			"path": "/tooltipKind",

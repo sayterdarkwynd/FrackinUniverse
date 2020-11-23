@@ -73,7 +73,7 @@ specialFrameFunctions = {
 		if not advancedFrameTimer then
 			advancedFrameTimer = data[1]
 		elseif advancedFrameTimer <= 0 then
-			sb.logInfo(data[2])
+			--sb.logInfo(data[2])
 			advancedFrameTimer = data[1]
 		else
 			advancedFrameTimer = advancedFrameTimer - beeTickDelta
@@ -214,7 +214,6 @@ function init()
 		beeUpdateTimer = beeUpdateTimer + timerIncrement
 		sameTimers = world.objectQuery(entity.position(), 10, {withoutEntityId = entity.id(), callScript = "GetUpdateTimer", callScriptResult = beeUpdateTimer})
 	until (not sameTimers or #sameTimers == 0)
-	transferUtil.init()
 end
 
 -- First update, used to do some things we don't need every update. Switches to update2 when its not needed anymore
@@ -610,10 +609,17 @@ function queenProduction()
 	
 	-- Queen production is unaffected by hives around hive
 	local productionDrone = genelib.statFromGenomeToValue(queen.parameters.genome, "droneBreedRate") + frameBonuses.droneBreedRate * ((flowerFavor + biomeFavor) / 2)
-	local productionQueen = genelib.statFromGenomeToValue(queen.parameters.genome, "queenBreedRate") + frameBonuses.queenBreedRate * ((flowerFavor + biomeFavor) / 2)
-	youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)
-	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)
-	
+	-- below, a base value of 0.01 was added so that even 0 Queen Breed bees have a low chance
+	local productionQueen = 0.01 + genelib.statFromGenomeToValue(queen.parameters.genome, "queenBreedRate") + frameBonuses.queenBreedRate * ((flowerFavor + biomeFavor) / 2)
+
+	-- the final divider on youngQueenProgress (/4) was added later as a means to reduce the frequency at which queens appeared.
+	-- adjusted to 50% instead of 25% on 11-04-2020
+	-- also added a divider to the droneProgress so drone births are 75% less frequent. This will lower production rates as a consequence as bees breed.
+	--youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25 
+	youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.5 
+	--sb.logInfo(youngQueenProgress)
+	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)  * 0.25
+
 	if youngQueenProgress >= beeData.youngQueenProductionRequirement then
 		local produced = math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement)
 		youngQueenProgress = youngQueenProgress % beeData.youngQueenProductionRequirement
@@ -625,7 +631,6 @@ function queenProduction()
 				contents[j] = world.containerItemAt(entity.id(), j-1)
 				if not youngQueen then break end
 			end
-			
 			-- Do nothing if there's no room for a young queen in the apiaries inventory
 		end
 	end
@@ -851,8 +856,8 @@ function droneProduction(drone)
 	end
 	
 	local productionStat = genelib.statFromGenomeToValue(drone.parameters.genome, "baseProduction") + frameBonuses.baseProduction
-	local production = productionStat * (((drone.count / 1000) + math.min(1 / ((1 + hivesAroundHive) * 0.75), 1) + flowerFavor + biomeFavor) / 4)
-	
+	local production = productionStat * (((drone.count / 1000) + math.min(1 / ((1 + hivesAroundHive) * 0.75), 1) + flowerFavor + biomeFavor) / 4) * 0.5
+	--sb.logInfo(production)
 	for product, requirement in pairs(beeData.stats[family][subtypeID].production) do
 		if not droneProductionProgress[product] then
 			droneProductionProgress[product] = production
@@ -1139,7 +1144,7 @@ function getFlowerLikeness(beeSubtype)
 		if stage then
 			local stages = world.getObjectParameter(id, "stages", nil)
 			local likenessTable = world.getObjectParameter(id, "beeLikeness", nil)
-			local addition = 0
+			local addition
 			
 			if likenessTable and likenessTable[beeSubtype] then
 				addition = likenessTable[beeSubtype]

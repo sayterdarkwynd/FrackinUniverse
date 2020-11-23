@@ -1,7 +1,7 @@
 function init()
 	script.setUpdateDelta(10)
 	regenPercent=config.getParameter("regenPercent",0.05)
-	regenHandler=effect.addStatModifierGroup({})
+	--regenHandler=effect.addStatModifierGroup({})
 end
 
 function update(dt)
@@ -17,5 +17,5 @@ function update(dt)
 end
 
 function uninit()
-	effect.removeStatModifierGroup(regenHandler)
+	--effect.removeStatModifierGroup(regenHandler)
 end

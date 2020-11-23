@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_biofleshset"
 
 weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.15} }
@@ -9,8 +8,6 @@ armorBonus={
 	{stat = "energyRegenPercentageRate", baseMultiplier = 1.05},
 	{stat = "energyRegenBlockTime", baseMultiplier = 0.95}
 }
-
-
 
 function init()
 	setSEBonusInit(setName)
@@ -31,8 +28,6 @@ function update(dt)
 			airJumpModifier = 1.12
 		})
 		checkWeapons()
-		
-		
 		setRegen((0.01)*(((status.resourcePercentage("health") < 0.5) and 1 or 0)+((status.resourcePercentage("health") < 0.25) and 1 or 0)))
 	end
 end

@@ -21,20 +21,20 @@ function update(dt)
 	if active then
 		if status.isResource(resource2) and ratio ~= 0.0 then
 			if lethal or wasteful then
-				if status.consumeResource(resource2, status.resourceMax(resource2)*self.healingRate*dt*ratio) then
+				if status.consumeResource(resource2, math.abs(status.resourceMax(resource2)*self.healingRate*dt*ratio)) then
 					status.modifyResourcePercentage(resource1, self.healingRate * dt)
 				elseif lethal then
 					status.modifyResourcePercentage(resource1, self.healingRate * dt*-1)
 				end
 			elseif (not efficient) then
 				if status.resourcePercentage(resource1)<1.0 then
-					if status.consumeResource(resource2, status.resourceMax(resource2)*self.healingRate*dt*ratio) then
+					if status.consumeResource(resource2, math.abs(status.resourceMax(resource2)*self.healingRate*dt*ratio)) then
 						status.modifyResourcePercentage(resource1, self.healingRate * dt)
 					end
 				end
 			else
 				local delta=math.min(1.0-status.resourcePercentage(resource1),self.healingRate*dt)/(self.healingRate*dt)
-				if status.consumeResource(resource2, status.resourceMax(resource2)*self.healingRate*dt*ratio*delta) then
+				if status.consumeResource(resource2, math.abs(status.resourceMax(resource2)*self.healingRate*dt*ratio*delta)) then
 					status.modifyResourcePercentage(resource1, self.healingRate * dt  * delta)
 				end
 			end

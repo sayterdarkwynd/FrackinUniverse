@@ -25,8 +25,6 @@ function update(dt)
         genmult = 2       
       elseif light <= 0.50 then
         genmult = 1
-      else 
-        genmult = 0
       end
       
       if world.liquidAt(location)then genmult = genmult * 0.05 end -- water significantly reduces the output

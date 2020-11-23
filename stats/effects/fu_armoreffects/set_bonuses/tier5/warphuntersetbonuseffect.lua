@@ -1,8 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 require "/scripts/unifiedGravMod.lua"
-
 setName="fu_warphunterset"
-setEffects={"gravitynormalizationarmor"}
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 3.4}
@@ -18,8 +16,6 @@ armorBonus={
 	{stat = "breathProtection", amount = 1},
 	{stat = "gravrainImmunity", amount = 1}
 }
-
-setName="fu_warphunterset"
 
 function init()
 	setSEBonusInit("fu_warphunterset",setEffects)
@@ -45,11 +41,11 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"mininglaser"})
-	
-	if (weapons["either"] and weapons["twoHanded"]) or (weapons["primary"] and weapons["alt"]) then
+	local mininglasers=weaponCheck({"mininglaser"})
+	local notweapons=not weaponCheck({"weapon"})["either"]
+	if (mininglasers["primary"] and mininglasers["alt"]) or (mininglasers["twoHanded"] and mininglasers["either"]) or (notweapons and mininglasers["either"]) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
-	elseif weapons["either"] then
+	elseif mininglasers["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,0.25))
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})

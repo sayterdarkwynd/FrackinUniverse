@@ -2,28 +2,31 @@ require "/objects/generic/centrifuge_recipes.lua"
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
 require '/scripts/fupower.lua'
-local deltaTime=0
-
 
 function init()
 	if config.getParameter('powertype') then
 		power.init()
-	powered = true
+		powered = true
 	else
 		powered = false
 	end
-	transferUtil.init()
-	--storage.currentinput = nil
-	--storage.currentoutput = nil
-	--storage.bonusoutputtable = nil
-	storage.activeConsumption = storage.activeConsumption or false
+	--storage.activeConsumption = storage.activeConsumption or false
+	self.requiredPower=config.getParameter("isn_requiredPower")
+	self.powered=(type(self.requiredPower)=="number") and (self.requiredPower>0)
 
 	self.centrifugeType = config.getParameter("centrifugeType") or error("centrifugeType is undefined in .object file") -- die horribly
 
 	self.itemChances = config.getParameter("itemChances")
 	self.inputSlot = config.getParameter("inputSlot",1)
 
-	self.initialCraftDelay = config.getParameter("craftDelay",0)
+	self.initialCraftDelay = config.getParameter("craftDelay",1)
+	--script.setUpdateDelta(self.initialCraftDelay*60.0)
+	script.setUpdateDelta(1)
+
+	if self.powered then
+		self.effectiveRequiredPower=self.requiredPower*self.initialCraftDelay
+	end
+
 	storage.craftDelay = storage.craftDelay or self.initialCraftDelay
 	storage.combsProcessed = storage.combsProcessed or { count = 0 }
 	--sb.logInfo("centrifuge: %s", storage.combsProcessed)
@@ -32,9 +35,9 @@ function init()
 
 	self.recipeTable = getRecipes()
 	self.recipeTypes = self.recipeTable.recipeTypes[self.centrifugeType]
-	if object.outputNodeCount() > 0 then
-		object.setOutputNodeLevel(0,storage.activeConsumption)
-	end
+
+	handleOnOff()
+	math.randomseed(util.seedTime())
 	object.setInteractive(true)
 end
 
@@ -48,15 +51,52 @@ function deciding(item)
 end
 
 function update(dt)
-	if deltaTime>1 then
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
-		deltaTime=0
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	
-	
-	if not storage.input then
+	if not storage.timer then storage.timer=self.initialCraftDelay end
+	if storage.timer > 0 then
+		storage.timer = math.max(storage.timer - dt,0)
+	elseif storage.timer == 0 then
+		if storage.activeConsumption then
+			storage.currentinput={ name = storage.input.name, count = 1}
+			stashHoney(storage.input.name)
+			storage.input = nil
+			storage.activeConsumption = false
+			local rnd = math.random()
+			for item, chancePair in pairs(storage.output) do
+				local chanceBase,chanceDivisor = table.unpack(chancePair)
+				local chance = self.itemChances[chanceBase] / chanceDivisor
+				local done=false
+				if rnd <= chance then
+					local throw={parameters={}, name=item, count=1}
+					local contSize=world.containerSize(entity.id())
+					for i=self.inputSlot,contSize-1 do
+						if throw then
+							throw = world.containerPutItemsAt(entity.id(),throw,i)
+						end
+						if not throw then
+							done=true
+							break
+						end
+					end
+					if throw then
+						world.spawnItem(throw, entity.position())
+						done=true
+					end
+					if done then
+						break
+					end
+				end
+				storage.currentinput=nil
+				rnd = rnd - chance
+			end
+			storage.output=nil
+			storage.timer=-1
+		end
 		local input
 		local found
 		for i=0,self.inputSlot-1 do
@@ -64,85 +104,21 @@ function update(dt)
 			if input then
 				local output = deciding(input)
 				if output then
-					storage.output = output
-					storage.input = input
-					storage.timer = self.initialCraftDelay
-					storage.activeConsumption = true
-					
-					if object.outputNodeCount() > 0 then
-						object.setOutputNodeLevel(0,storage.activeConsumption)
+					if ((not self.powered) or (power.getTotalEnergy()>=self.effectiveRequiredPower)) and world.containerConsume(entity.id(), { name = input.name, count = 1, data={}}) and ((not self.powered) or power.consume(self.effectiveRequiredPower)) then
+						storage.output = output
+						storage.input = input
+						storage.activeConsumption = true
+					else
+						storage.activeConsumption = false
 					end
 					found=true
 					break
 				end
 			end
 		end
-		if not found then
-			animator.setAnimationState("centrifuge", "idle")
-			storage.activeConsumption = false
-			if object.outputNodeCount() > 0 then
-				object.setOutputNodeLevel(0,storage.activeConsumption)
-			end
-			storage.input = nil
-			storage.output = nil
-			storage.timer = nil
-		end
 	else
-		if storage.timer > 0 and (not powered or (power.getTotalEnergy() >= config.getParameter("isn_requiredPower")*(1-(cent or 0))-1 and power.consume(config.getParameter("isn_requiredPower")*dt))) then
-			cent = (cent or 0) + dt
-			if cent >= 1 then cent = cent-1 end
-			animator.setAnimationState("centrifuge", "working")
-			storage.timer = math.max(storage.timer - dt,0)
-		elseif storage.timer == 0 then
-			if world.containerConsume(entity.id(), { name = storage.input.name, count = 1, data={}}) then
-				storage.currentinput={ name = storage.input.name, count = 1, data={}}
-				stashHoney(storage.input.name)
-				storage.input = nil
-				storage.activeConsumption = false
-				if object.outputNodeCount() > 0 then
-					object.setOutputNodeLevel(0,storage.activeConsumption)
-				end
-				local rnd = math.random()
-				for item, chancePair in pairs(storage.output) do
-					local chanceBase,chanceDivisor = table.unpack(chancePair)
-					local chance = self.itemChances[chanceBase] / chanceDivisor
-					local done=false
-					local throw=nil
-					if rnd <= chance then
-						local contSize=world.containerSize(entity.id())
-						for i=self.inputSlot,contSize-1 do
-							throw = world.containerPutItemsAt(entity.id(), { name = item, count = 1, data={}},i)
-							if not throw then
-								storage.currentinput=nil
-								done=true
-								break
-							end
-						end
-						if done then
-							break
-						end
-					end
-					if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around
-					storage.currentinput=nil
-					rnd = rnd - chance
-				end
-			else
-				animator.setAnimationState("centrifuge", "idle")
-				storage.activeConsumption = false
-				if object.outputNodeCount() > 0 then
-					object.setOutputNodeLevel(0,storage.activeConsumption)
-				end
-				storage.input = nil
-				storage.output = nil
-				storage.timer = nil
-			end
-		else
-			animator.setAnimationState("centrifuge", "idle")
-			storage.activeConsumption = false
-			if object.outputNodeCount() > 0 then
-				object.setOutputNodeLevel(0,storage.activeConsumption)
-			end
-		end
+		handleOnOff()
+		storage.timer = self.initialCraftDelay
 	end
 
 	if storage.combsProcessed and storage.combsProcessed.count > 0 then
@@ -152,9 +128,16 @@ function update(dt)
 			drawHoney() -- effectively clear the stash, stopping the jarrer from getting it
 		end
 	end
-	
+
 	if powered then
 		power.update(dt)
+	end
+end
+
+function handleOnOff()
+	animator.setAnimationState("centrifuge", storage.activeConsumption and "working" or "idle")
+	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,storage.activeConsumption)
 	end
 end
 

@@ -16,7 +16,9 @@ require "/items/active/weapons/crits.lua"
 GunFireFixed = WeaponAbility:new()
 
 function GunFireFixed:init()
--- FU additions
+	self.ownerId = activeItem.ownerEntityId()
+	self.ownerType=world.entityType(self.ownerId)
+	-- FU additions
 	self.isReloader = config.getParameter("isReloader",0)						-- is this a shotgun style reload?
 	self.isCrossbow = config.getParameter("isCrossbow",0)						-- is this a crossbow?
 	self.isSniper = config.getParameter("isSniper",0)							-- is this a sniper rifle?
@@ -27,21 +29,15 @@ function GunFireFixed:init()
 	self.countdownDelay = 0 									-- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
 
-	self.playerMagBonus = status.stat("magazineSize")						-- player	ammo bonuses
-	self.playerReloadBonus = status.stat("reloadTime")						-- player reload bonuses
-	--self.playerSpeedBonus = status.stat("speedBonus")						-- player fire rate bonus
-	--THAT IS NOT HOW STATUS.STAT WORKS. IT ONLY TAKES ONE ARGUMENT, AND RETURNS 0.0 IF THE STAT DOESN'T EXIST.
-
-	self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0) 	-- total count of the magazine
-	self.magazineAmount = config.getParameter("magazineAmount",-1) 						-- current number of bullets in the magazine
-	self.reloadTime = config.getParameter("reloadTime",1)	+ (self.playerReloadBonus or 0) 	-- how long does reloading mag take?
-
-	self.playerId = activeItem.ownerEntityId()
+	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")) 	-- total count of the magazine
+	local defaultMag=((self.ownerType=="player") and -1) or self.magazineSize
+	self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) 						-- current number of bullets in the magazine
+	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) 	-- how long does reloading mag take?
 
 	if (self.isAmmoBased == 1) then
 		self.timerRemoveAmmoBar = 0
 		self.currentAmmoPercent = util.clamp(self.magazineAmount / self.magazineSize,0.0,1.0)
-		self.isReloading=(self.magazineAmount <= 0) or config.getParameter("isReloading"..self.abilitySlot,true)
+		self.isReloading=((self.ownerType=="player") and config.getParameter("isReloading"..self.abilitySlot,true)) or (self.magazineAmount <= 0)
 	end
 	self.barName = "ammoBar"
 	self.barColor = {0,250,112,125}
@@ -157,11 +153,13 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 			speedModifier = 0.65,
 			airJumpModifier = 0.80})
 		end
-	end
-	if (not self.fireMode) and self.runSlowWhileShooting then
+	elseif (not self.fireMode) and self.runSlowWhileShooting then
 		mcontroller.clearControls()
 	end
-	if not (self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") and not world.lineTileCollision(mcontroller.position(), self:firePosition())) then
+
+	if (self.isAmmoBased==1) and shiftHeld and ((fireMode == "primary") or (fireMode == "alt")) and self.currentAmmoPercent and (self.currentAmmoPercent < 1.0) then
+		self:checkAmmo(true)
+	elseif not (self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") and not world.lineTileCollision(mcontroller.position(), self:firePosition())) then
 		if self.loadupTime then
 			self.loadupTimer = self.loadupTime
 		else
@@ -172,12 +170,18 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 
 	if self.fireMode == (self.activatingFireMode or self.abilitySlot) and not self.weapon.currentAbility and self.cooldownTimer == 0 and not status.resourceLocked("energy") and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 		if self.loadupTimer == 0 then
+			if self.weaponBonus and fireMode=="primary" then
+				status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}})
+			end
 			if self.fireType == "auto" and status.overConsumeResource("energy", self:energyPerShot()) then
 				self:setState(self.auto)
 				self:checkMagazine(true)
 			elseif self.fireType == "burst" then
 				self:setState(self.burst)
 				self:checkMagazine(true)
+			end
+			if self.weaponBonus and fireMode=="primary" then
+				status.setPersistentEffects("weaponBonus", {})
 			end
 		else
 			if not self.loadingUp then
@@ -379,41 +383,42 @@ function GunFireFixed:isChargeUp()
 		self.countdownDelay = (self.countdownDelay or 0) + 1
 		self.weaponBonus = (self.weaponBonus or 0)
 		self.firedWeapon = (self.firedWeapon or 0)
-	if (self.firedWeapon >= 1) then
-		if (self.isCrossbow == 1) then
+		if (self.firedWeapon >= 1) then
+			if (self.isCrossbow == 1) then
+				if self.countdownDelay > 20 then
+					self.weaponBonus = 0
+					self.countdownDelay = 0
+					self.firedWeapon = 0
+				end
+			end
+
+			if (self.isSniper == 1) then
+				if self.countdownDelay > 10 then
+					self.weaponBonus = 0
+					self.countdownDelay = 0
+					self.firedWeapon = 0
+				end
+			end
+		else
 			if self.countdownDelay > 20 then
-				self.weaponBonus = 0
+				self.weaponBonus = (self.weaponBonus or 0) + (config.getParameter("critBonus") or 1)
 				self.countdownDelay = 0
-				self.firedWeapon = 0
 			end
 		end
 
-		if (self.isSniper == 1) then
-			if self.countdownDelay > 10 then
-				self.weaponBonus = 0
-				self.countdownDelay = 0
-				self.firedWeapon = 0
-			end
+		if (self.isSniper == 1) and (self.weaponBonus >= 80) then --limit max value for crits and let player know they maxed
+			self.weaponBonus = 80
+			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
+			status.addEphemeralEffect("critReady")
 		end
-	else
-		if self.countdownDelay > 20 then
-			self.weaponBonus = (self.weaponBonus or 0) + (config.getParameter("critBonus") or 1)
-			self.countdownDelay = 0
+
+		if (self.isCrossbow == 1) and (self.weaponBonus >= 50) then --limit max value for crits and let player know they maxed
+			self.weaponBonus = 50
+			status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
+			status.addEphemeralEffect("critReady")
 		end
-	end
-
-	if (self.isSniper == 1) and (self.weaponBonus >= 80) then --limit max value for crits and let player know they maxed
-		self.weaponBonus = 80
-		status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
-		status.addEphemeralEffect("critReady")
-	end
-
-	if (self.isCrossbow == 1) and (self.weaponBonus >= 50) then --limit max value for crits and let player know they maxed
-		self.weaponBonus = 50
-		status.setPersistentEffects("critCharged", {{stat = "isCharged", amount = 1}})
-		status.addEphemeralEffect("critReady")
-	end
-	status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}}) -- set final bonus value
+		--this section's stat changes were moved to the update block to address unintended effects.
+		--status.setPersistentEffects("weaponBonus", {{stat = "critChance", amount = self.weaponBonus}}) -- set final bonus value
 	end
 end
 
@@ -429,7 +434,7 @@ end
 
 function GunFireFixed:checkAmmo(force)
 	 -- set the cursor to the Reload cursor
-	if (self.isAmmoBased==1) then	-- ammo bar color check
+	if (self.isAmmoBased==1) then -- ammo bar color check
 		if self.currentAmmoPercent <= 0 then
 			self.barColor = {0,0,0,255}
 			activeItem.setCursor("/cursors/fureticle5.cursor")
@@ -497,7 +502,7 @@ function GunFireFixed:checkAmmo(force)
 					activeItem.ownerEntityId(),
 					"setBar",
 					"ammoBar",
-					self.currentAmmoPercent,
+					util.clamp(self.currentAmmoPercent,0.0,1.0),
 					self.barColor
 				)
 			end
@@ -512,35 +517,25 @@ function GunFireFixed:checkAmmo(force)
 end
 
 function GunFireFixed:checkMagazine(evalOnly)
-	self.magazineSize = config.getParameter("magazineSize",1) + (self.playerMagBonus or 0)		-- total count of the magazine
+	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize"))		-- total count of the magazine
 	self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	self.isAmmoBased = config.getParameter("isAmmoBased",0)
 	if (self.isAmmoBased == 1) then
-
 		--check current ammo and create an ammo bar to inform the user
 		self.currentAmmoPercent = self.magazineAmount / self.magazineSize
-		if self.currentAmmoPercent <= 0 then
-			self.barColor = {0,0,0,255}
-		elseif self.currentAmmoPercent <= 0.25 then
-			self.barColor = {255,0,0,255}
-		elseif self.currentAmmoPercent <= 0.50 then
-			self.barColor = {255,255,0,255}
-		elseif self.currentAmmoPercent <= 0.75 then
-			self.barColor = {125,255,0,255}
-		else
-			self.barColor = {0,255,0,255}
-		end
+
 		if (self.fireMode == "primary") then
 			if self.magazineAmount and self.magazineSize and (self.magazineSize > 1) then
 				world.sendEntityMessage(
 					activeItem.ownerEntityId(),
 					"setBar",
 					"ammoBar",
-					self.currentAmmoPercent,
+					util.clamp(self.currentAmmoPercent,0.0,1.0),
 					self.barColor
 				)
 			end
 		end
+
 		if not evalOnly then
 			if self.magazineAmount <= 0 then
 				self.weapon:setStance(self.stances.cooldown)

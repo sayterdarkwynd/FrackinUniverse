@@ -1,0 +1,74 @@
+{
+	"objectName": "weaponshuffler",
+	"colonyTags": ["crafting", "science", "tech", "fu"],
+	"rarity": "Common",
+	"category": "crafting",
+	"price": 2001,
+	"description": "Re-randomizes items using Upgrade Modules.",
+	"shortdescription": "Weapon Shuffler",
+	"race": "generic",
+	"printable": false,
+
+	"objectType": "container",
+	"slotCount": 2,
+	"uiConfig": "/interface/scripted/fuweaponshuffler/fuweaponshuffler.config",
+	"subtitle": "",
+	"frameCooldown": 5,
+	"autoCloseCooldown": 3600,
+	"lightColor": [0, 0, 68],
+	"flickerPeriod": 0.5,
+	"flickerMinIntensity": 0.95,
+	"flickerMaxIntensity": 1,
+	"flickerPeriodVariance": 0.0,
+	"flickerIntensityVariance": 0.0,
+	"animationPosition":[-24,0],
+	"scripts": ["weaponshuffler.lua"],
+
+	"soundEffect": "/sfx/objects/scififurnace.ogg",
+	"soundEffectRangeMultiplier": 1.0,
+	"inventoryIcon": "icon.png",
+	"animation":"miningbench.animation",
+	"animationParts" : {
+		"centrifuge" : "miningbench.png",
+		"centrifugefullbright" : "miningbenchlit.png"
+	},
+	"orientations": [
+		{
+			"imageLayers": [
+				{
+					"image": "miningbench.png:off",
+					"fullbright": true
+				},
+				{
+					"image": "miningbenchlit.png:off"
+				}
+			],
+			"flipImages": true,
+			"direction": "left",
+			"lightPosition": [0, 1],
+
+			"imagePosition": [-24, 0],
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		},
+		{
+			"imageLayers": [
+				{
+					"image": "miningbench.png:off",
+					"fullbright": true
+				},
+				{
+					"image": "miningbenchlit.png:off"
+				}
+			],
+			"direction": "right",
+			"lightPosition": [0, 1],
+
+			"imagePosition": [-24, 0],
+
+			"spaceScan": 0.1,
+			"anchors": ["bottom"]
+		}
+	]
+}

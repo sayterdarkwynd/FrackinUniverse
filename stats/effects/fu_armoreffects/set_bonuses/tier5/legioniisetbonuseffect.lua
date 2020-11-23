@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_legioniiset"
 
 weaponBonus={
@@ -9,8 +10,6 @@ armorEffect={
 	{stat = "gasImmunity", amount = 1},
 	{stat = "shieldStaminaRegen", amount = 0.3}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

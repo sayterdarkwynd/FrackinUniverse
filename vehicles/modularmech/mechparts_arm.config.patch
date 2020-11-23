@@ -1084,10 +1084,10 @@
             "path": "/fumechmining0",
             "value": {
                 "stats": {
-                    "power": 3,
+                    "power": 2,
                     "energy": 3,
-                    "basePower": 0.15,
-                    "rapidFire": 2,
+                    "basePower": 0.05,
+                    "rapidFire": 12,
                     "mechMass": 2
                 },
                 "partParameters": {
@@ -1233,10 +1233,10 @@
             "path": "/fumechmining1",
             "value": {
                 "stats": {
-                    "power": 4,
+                    "power": 3,
                     "energy": 4,
-                    "basePower": 1.5,
-                    "rapidFire": 3,
+                    "basePower": 0.15,
+                    "rapidFire": 12,
                     "mechMass": 3
                 },
                 "partParameters": {
@@ -1403,10 +1403,10 @@
             "path": "/fumechmining2",
             "value": {
                 "stats": {
-                    "power": 6,
+                    "power": 4,
                     "energy": 6,
-                    "basePower": 3,
-                    "rapidFire": 3,
+                    "basePower": 0.25,
+                    "rapidFire": 12,
                     "mechMass": 4
                 },
                 "partParameters": {
@@ -2380,7 +2380,7 @@
 	      "power" : 10,
 	      "energy" : 10,
 	      "mechMass" : 10,
-	      "basePower" : 60
+	      "basePower" : 90
 	    },
 	    "partParameters" : {
 	      "script" : "/vehicles/modularmech/armscripts/xsm_beamarm2.lua",
@@ -2412,7 +2412,7 @@
 		"attachToPart" : "<armName>",
 
 		"line" : [ [0.5, 1.0], [108.5, -1.0] ],
-		"damage" : 15,
+		"damage" : 20,
 		"damageSourceKind" : "cosmic",
 		"damageRepeatTimeout" : 0.3,
 		"damageRepeatGroup" : "<armName>Beam",
@@ -2801,6 +2801,56 @@
             }
         },{
             "op": "add",
+            "path": "/fuhuntergun0",
+            "value": {
+                "stats": {
+                    "power": 2,
+                    "energy": 2,
+                    "mechMass": 2
+                },
+                "partParameters": {
+                    "script": "/vehicles/modularmech/armscripts/gunarm.lua",
+                    "armClass": "GunArm",
+                    "rotationLimits": [-1.75, 1.75],
+                    "fireOffset": [7.8, 0],
+                    "extendTime": 0.725,
+                    "fireTime": 0.75,
+                    "projectileType": "gausspistolshot",
+                    "projectileInaccuracy": 0,
+                    "projectileCount": 1,
+                    "projectileParameters": {
+              "speed" : 120,
+              "damageKind" : "bow",
+              "piercing" : false,
+              "power" : 8
+                    }
+                },
+                "partImages": {
+                    "<armName>": "arm/fusniperrifle2.png",
+                    "<armName>Fullbright": "arm/fusniperriflefullbright.png"
+                },
+                "defaultPrimaryColors": [
+                    "c44f4f",
+                    "953f3f",
+                    "723434",
+                    "470c0c"
+                ],
+                "defaultSecondaryColors": [
+                    "b0b0b0",
+                    "8b8b8b",
+                    "5c5c5c",
+                    "444444"
+                ],
+                "animationCustom": {
+                    "sounds": {
+                        "<armName>Fire": [
+                            "/sfx/gun/rifle1.ogg"
+                        ]
+                    }
+                }
+            }
+        },{
+            "op": "add",
             "path": "/fumechswordbreaker",
             "value": {
                 "stats": {
@@ -3147,6 +3197,171 @@
                 }
             }
         },
+
+    {
+        "op": "add",
+        "path": "/drill0",
+        "value": {
+          "stats": {
+          "power": 1,
+          "energy": 2,
+          "mechMass": 2
+          },
+          "partParameters": {
+        "script": "/vehicles/modularmech/armscripts/drillarm.lua",
+        "armClass": "DrillArm",
+        "rotationLimits": [
+          -1,
+          1
+        ],
+        "drillTipOffset": [
+          8,
+          0
+        ],
+        "drillSourceOffsets": [
+          [
+            1,
+            -2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "tileDamage": 1.0,
+        "tileDamageRate": 0.15,
+        "damageTileDepth": 5,
+        "spinUpDownTime": 0.5
+          },
+          "damageSources": {
+        "<armName>Drill": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "poly": [
+            [
+              8,
+              2.5
+            ],
+            [
+              2,
+              0.75
+            ],
+            [
+              2,
+              4.25
+            ]
+          ],
+          "damage": 14,
+          "damageSourceKind": "fire",
+          "damageRepeatTimeout": 0.2,
+          "damageRepeatGroup": "<armName>Drill",
+          "knockback": 30,
+          "rayCheck": true
+        }
+          },
+          "physicsCollisions": {
+        "<armName>Drill": {
+          "enabled": false,
+          "attachToPart": "<armName>",
+          "collision": [
+            [
+              7,
+              2.5
+            ],
+            [
+              1,
+              0.75
+            ],
+            [
+              1,
+              4.25
+            ]
+          ],
+          "collisionKind": "slippery",
+          "categoryWhitelist": [
+            "monster"
+          ]
+        }
+          },
+          "partImages": {
+        "<armName>": "arm/drill0.png",
+        "<armName>Fullbright": "arm/drill_fullbright.png"
+          },
+          "defaultPrimaryColors": [
+        "f4988c",
+        "d93a3a",
+        "932625",
+        "601119"
+          ],
+          "defaultSecondaryColors": [
+        "838383",
+        "555555",
+        "383838",
+        "151515"
+          ],
+          "animationCustom": {
+        "animatedParts": {
+          "stateTypes": {
+            "<armName>": {
+              "states": {
+            "windup": {
+              "mode": "loop",
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_windup2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            },
+            "active": {
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_active2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            },
+            "winddown": {
+              "mode": "loop",
+              "properties": {
+                "persistentSound": "/sfx/melee/mech_drill_winddown2.ogg",
+                "persistentSoundRangeMultiplier": 1,
+                "persistentSoundStopTime": 0.2
+              }
+            }
+              }
+            }
+          },
+          "parts": {
+            "<armName>": {
+              "partStates": {
+            "<armName>": {
+              "winddown": {
+                "properties": {
+                  "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+                }
+              }
+            }
+              }
+            },
+            "<armName>Fullbright": {
+              "partStates": {
+            "<armName>": {
+              "winddown": {
+                "properties": {
+                  "image": "<partImage>:windup.<frame><leftArmDirectives><directives>"
+                }
+              }
+            }
+              }
+            }
+          }
+        }
+          }
+        }
+      },
 
 	{
 	    "op": "add",
@@ -4904,7 +5119,27 @@
             "value": "/vehicles/modularmech/armscripts/xsm_beamarm.lua"
         }
     ],    
-
+    [{
+            "op": "test",
+            "path": "/BHM_MachineGun"
+        }, {
+            "op": "add",
+            "path": "/BHM_MachineGun/stats/mechMass",
+            "value": 4
+        },{
+            "op": "add",
+            "path": "/BHM_MachineGun/stats/power",
+            "value": 7
+        },{
+            "op": "add",
+            "path": "/BHM_MachineGun/stats/energy",
+            "value": 5
+        },{
+            "op": "replace",
+            "path": "/BHM_MachineGun/partParameters/projectileParameters/power",
+            "value": 10
+        }
+    ],
     [{
             "op": "test",
             "path": "/srm"

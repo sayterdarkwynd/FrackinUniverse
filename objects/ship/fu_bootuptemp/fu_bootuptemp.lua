@@ -33,7 +33,7 @@ end
 
 function update(dt)
 	if byos then
-		if counter == 1 then
+		if counter == 10 then
 			for newShipObjectPosition, newShipObject in pairs (newShipObjects) do 
 				local newShipObjectData = root.itemConfig(newShipObject).config
 				if newShipObjectData then 

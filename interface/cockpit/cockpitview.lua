@@ -376,7 +376,7 @@ function View:showPlanetInfo(planet)
   widget.removeAllChildren("planetinfo.inner.oreLayout")
   widget.removeAllChildren("planetinfo.inner.weatherLayout")
 
-  local description = ""
+  local description
   if parameters then
     description = util.randomFromList(config.getParameter("visitableTypeDescription")[parameters.typeName], rand)
 
@@ -456,7 +456,7 @@ function View:showClusterInfo(planet)
 
   widget.setText("clusterinfo.inner.name", celestial.planetName(planet))
 
-  local planetType = nil
+  local planetType
   local visitableParameters = celestial.visitableParameters(planet)
   local typeNames = config.getParameter("planetTypeNames")
   if visitableParameters then
@@ -471,7 +471,7 @@ function View:showClusterInfo(planet)
 
   local moons = celestial.children(planet)
   local moonLabels = config.getParameter("clusterMoons")
-  local displayMoon = ""
+  local displayMoon
   if #moons == 0 then
     displayMoon = moonLabels.none
   elseif #moons == 1 then

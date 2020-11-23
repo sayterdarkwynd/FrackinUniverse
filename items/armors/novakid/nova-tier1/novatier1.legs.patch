@@ -28,7 +28,8 @@
 	[{
 			"op": "replace",
 			"path": "/description",
-			"value": "^orange;Set Bonuses^reset;:\n^yellow;^reset; Shotgun: Health x^green;1.15^reset;\n^yellow;^reset; Wasteland/Eden: Damage/Health x^green;1.25^reset;"
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Non-Auto Gun: Damage x^green;1.1^reset;"
 		},
 		{
 			"op": "replace",
@@ -39,13 +40,13 @@
 			"op": "add",
 			"path": "/statusEffects",
 			"value": [
-				"fusetbonusmanager",
+				    "novakidtier1setbonusnew",
 				{
-					"stat": "novakidtier1setcount",
-					"amount": 1
+					"stat" : "fu_novakidtier1setnew_legs",
+					"amount" : 1
 				}
 			]
-		},
+		},	
 		{
 			"op": "add",
 			"path": "/leveledStatusEffects/-",
@@ -54,7 +55,18 @@
 				"stat": "physicalResistance",
 				"amount": 0.033334
 			}
-		}, {
+		}, 
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "shadowResistance",
+				"amount": 0.033334
+			}
+		},	
+		
+		{
 			"op": "add",
 			"path": "/builder",
 			"value": "/items/buildscripts/fubuildarmor.lua"

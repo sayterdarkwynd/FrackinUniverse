@@ -1,7 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 local deltaTime=0
 function init()
-	transferUtil.init()
 	-- these are items wich will be used for upgrade
 	upgradeItemsList = {
 		["upgrademodule"] = true
@@ -22,11 +21,11 @@ end
 
 
 function update(dt)
-	if deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
 	local itemForUpgrade = world.containerItemAt(entity.id(), 0)
@@ -189,7 +188,7 @@ end
 
 function armorStatUpgrade(statusList, statusName, statUpgradeItem)
 	local statUpgraded = false
-	local statUpgradeAmount = nil
+	local statUpgradeAmount = 0
 
 	if statusName == "powerMultiplier" then
 		statUpgradeAmount = statUpgradeItem.count * 0.01
@@ -199,8 +198,6 @@ function armorStatUpgrade(statusList, statusName, statUpgradeItem)
 		statUpgradeAmount = statUpgradeItem.count + math.floor(statUpgradeItem.count / 10) * 3
 	elseif statusName == "maxHealth" then
 		statUpgradeAmount = statUpgradeItem.count
-	else
-		statUpgradeAmount = 0
 	end
 
 	for _, statusEffect in ipairs(statusList) do

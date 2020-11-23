@@ -14,6 +14,7 @@
          {"weight" : 0.001, "item" : "stationtransponder"},
          {"weight" : 0.10, "pool" : "salvageComponent"},
          {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
+         {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
          {"weight" : 0.02, "item" : [ "ff_spareparts", 12]},
          {"weight" : 0.10, "item" : ["liquidmechfuel",80]},
          {"weight" : 0.10, "item" : ["liquidoil",120]},
@@ -28,6 +29,7 @@
        {"weight" : 0.003, "item" : "stationtransponder"},
        {"weight" : 0.10, "pool" : "salvageComponent"},
        {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : [ "ff_spareparts", 20]},
        {"weight" : 0.10, "item" : ["liquidmechfuel",80]},
        {"weight" : 0.10, "item" : ["liquidoil",120]},
@@ -42,6 +44,7 @@
        {"weight" : 0.005, "item" : "stationtransponder"},
        {"weight" : 0.10, "pool" : "salvageComponent"},
        {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : [ "ff_spareparts", 35]},
        {"weight" : 0.10, "item" : ["liquidmechfuel",90]},
        {"weight" : 0.10, "item" : ["liquidoil",150]},
@@ -56,6 +59,7 @@
        {"weight" : 0.008, "item" : "stationtransponder"},
        {"weight" : 0.10, "pool" : "salvageComponent"},
        {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : [ "ff_spareparts", 40]},
        {"weight" : 0.10, "item" : ["liquidmechfuel",100]},
        {"weight" : 0.10, "item" : ["liquidoil",180]},
@@ -70,6 +74,7 @@
        {"weight" : 0.01, "item" : "stationtransponder"},
        {"weight" : 0.10, "pool" : "salvageComponent"},
        {"weight" : 0.15, "pool" : "fumechPartBlueprint"},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : [ "ff_spareparts", 50]},
        {"weight" : 0.10, "item" : ["liquidmechfuel",120]},
        {"weight" : 0.20, "item" : ["liquidfuel",200]},
@@ -169,6 +174,7 @@
      "pool" : [
        {"weight" : 0.025, "pool" : "fuMadnessVoxelItem"},
        {"weight" : 0.037, "item" : "thesubstance-codex"},
+       {"weight" : 0.037, "item" : "agarans-codex"},
        {"weight" : 0.037, "item" : "randombook1-codex"},
        {"weight" : 0.037, "item" : "randombook2-codex"},
        {"weight" : 0.037, "item" : "randombook3-codex"},
@@ -327,6 +333,8 @@
     [0, {
       "pool" : [
 // fu art pieces
+       {"weight" : 0.037, "item" : "painting_formergallery"},
+       {"weight" : 0.037, "item" : "painting_fabricatedworld"},
        {"weight" : 0.037, "item" : "kittenpainting"},
        {"weight" : 0.037, "item" : "puppypainting"},
        {"weight" : 0.037, "item" : "starrynightpainting"},
@@ -667,6 +675,7 @@
        {"weight" : 0.02, "item" : ["severedear",2]},
        {"weight" : 0.02, "item" : ["severedear",3]},
        {"weight" : 0.02, "item" : ["severedear",5]},
+       {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
        {"weight" : 0.02, "item" : "fuheart"},
        {"weight" : 0.02, "item" : ["fuheart",2]},
        {"weight" : 0.02, "item" : ["fuheart",3]},
@@ -713,8 +722,8 @@
          {"weight" : 0.10, "item" : ["redwoodbark", 10]},
          {"weight" : 0.05, "item" : ["commonaxe", 10]},
          {"weight" : 0.02, "item" : ["chainsaw", 1]},
-	 {"weight" : 0.02, "item" : ["orphanpaste", 2]},
-         {"weight" : 0.05, "item" : "jarredfetus"}
+	       {"weight" : 0.01, "item" : ["orphanpaste", 2]},
+         {"weight" : 0.01, "item" : "jarredfetus"}
        ]
      }]
    ],
@@ -835,7 +844,17 @@
     }]
   ],
 
-
+  "fuResearchVoxelItems" : [
+    [0, {
+      "pool" : [
+        {"weight" : 0.55, "item" : ["smalldata", 1]},
+        {"weight" : 0.3, "item" : ["researchvoxelsmall", 1]},
+        {"weight" : 0.1, "item" : ["researchvoxel", 1]},
+        {"weight" : 0.05, "item" : ["researchvoxellarge", 1]},
+        {"weight" : 0.005, "item" : ["researchvoxelalien", 1]}
+      ]
+    }]
+  ],
   "fuResearchVoxelTiny" : [
     [0, {
       "pool" : [
@@ -896,8 +915,8 @@
         {"item" : [ "poop", 25]}
       ],
       "pool" : [
-        {"weight" : 0.2, "item" : ["feces", 12]},
-        {"weight" : 0.1, "item" : ["poop", 25]},
+        //{"weight" : 0.2, "item" : ["feces", 12]},
+        {"weight" : 0.3, "item" : ["poop", 25]},
         {"weight" : 0.4, "pool" : "money"},
         {"weight" : 0.3, "pool" : "basicTreasure"}
       ]
@@ -1154,40 +1173,10 @@
   "fuGenes" : [
     [0, {
       "pool" : [
-        {"weight" : 0.005, "item" : "gene_adaptivecell"},
-        {"weight" : 0.005, "item" : "gene_agility"},
-        {"weight" : 0.005, "item" : "gene_aquacelerity"},
-        {"weight" : 0.005, "item" : "gene_aquahomeo"},
-        {"weight" : 0.005, "item" : "gene_assimilate"},
-        {"weight" : 0.005, "item" : "gene_avian"},
-        {"weight" : 0.005, "item" : "gene_bioluminescent"},
-        {"weight" : 0.005, "item" : "gene_adaptivecell"},
-        {"weight" : 0.005, "item" : "gene_chloroplast"},
-        {"weight" : 0.005, "item" : "gene_corrosive"},
-        {"weight" : 0.005, "item" : "gene_cryo"},
-        {"weight" : 0.005, "item" : "gene_defense"},
-        {"weight" : 0.005, "item" : "gene_electric"},
-        {"weight" : 0.005, "item" : "gene_energy"},
-        {"weight" : 0.005, "item" : "gene_fish"},
-        {"weight" : 0.005, "item" : "gene_harden"},
-        {"weight" : 0.005, "item" : "gene_immunity"},
-        {"weight" : 0.005, "item" : "gene_insectoid"},
-        {"weight" : 0.005, "item" : "gene_mammal"},
-        {"weight" : 0.005, "item" : "gene_mimetic"},
-        {"weight" : 0.005, "item" : "gene_muscle"},
-        {"weight" : 0.005, "item" : "gene_nervebundle"},
-        {"weight" : 0.005, "item" : "gene_ocular"},
-        {"weight" : 0.005, "item" : "gene_poisonous"},
-        {"weight" : 0.005, "item" : "gene_pyro"},
-        {"weight" : 0.005, "item" : "gene_rage"},
-        {"weight" : 0.005, "item" : "gene_reactive"},
-        {"weight" : 0.005, "item" : "gene_regen"},
-        {"weight" : 0.005, "item" : "gene_reproductive"},
-        {"weight" : 0.005, "item" : "gene_resist"},
-        {"weight" : 0.005, "item" : "gene_skeletal"},
-        {"weight" : 0.005, "item" : "gene_stealth"},
-        {"weight" : 0.005, "item" : "gene_stimulant"},
-        {"weight" : 0.005, "item" : "gene_void"}
+        {"weight" : 0.5, "item" : [ "fugeneticmaterial", 2]},
+        {"weight" : 0.25, "item" : [ "fugeneticmaterial", 4]},
+        {"weight" : 0.125, "item" : [ "fugeneticmaterial", 8]},
+        {"weight" : 0.125, "item" : [ "fugeneticmaterial", 10]}
       ]
     }]
   ],
@@ -1434,6 +1423,7 @@
   "fuspecialLoot" : [
     [0, {
       "pool" : [
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.003, "pool" : "artifactloot" },
         {"weight" : 0.08, "item" : "quantumball"},
         {"weight" : 0.08, "item" : "bluegravball"},
@@ -1469,7 +1459,7 @@
         {"weight" : 0.02, "item" : [ "fumementomori", 1]},
         {"weight" : 0.03, "item" : [ "headinjar", 1]},
         {"weight" : 0.01, "item" : [ "gyrostabilizer", 1]},
-	{"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
+	      {"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
         {"weight" : 0.008, "item" : [ "herocowl", 1]},
         {"weight" : 0.003, "item" : [ "seekerhelm", 1]},
         {"weight" : 0.008, "item" : [ "kungfuheadband", 1]},
@@ -1489,6 +1479,7 @@
     }],
     [1.9, {
       "pool" : [
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
@@ -1504,7 +1495,7 @@
         {"weight" : 0.04, "item" : [ "fumementomori", 1]},
         {"weight" : 0.03, "item" : [ "headinjar", 1]},
         {"weight" : 0.01, "item" : [ "gyrostabilizer", 1]},
-	{"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
+	      {"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
         {"weight" : 0.004, "item" : [ "herocowl", 1]},
         {"weight" : 0.0035, "item" : [ "seekerhelm", 1]},
         {"weight" : 0.008, "item" : [ "kungfuheadband", 1]},
@@ -1527,6 +1518,7 @@
     }],
     [2.9, {
       "pool" : [
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
@@ -1544,7 +1536,7 @@
         {"weight" : 0.04, "item" : [ "fumementomori", 1]},
         {"weight" : 0.03, "item" : [ "headinjar", 1]},
         {"weight" : 0.01, "item" : [ "gyrostabilizer", 1]},
-	{"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
+	      {"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
         {"weight" : 0.004, "item" : [ "herocowl", 1]},
         {"weight" : 0.0035, "item" : [ "seekerhelm", 1]},
         {"weight" : 0.008, "item" : [ "kungfuheadband", 1]},
@@ -1575,6 +1567,7 @@
     }],
     [3.9, {
       "pool" : [
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
@@ -1596,7 +1589,7 @@
         {"weight" : 0.04, "item" : [ "fumementomori", 1]},
         {"weight" : 0.07, "item" : [ "headinjar", 1]},
         {"weight" : 0.01, "item" : [ "gyrostabilizer", 1]},
-	{"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
+	      {"weight" : 0.01, "item" : [ "fu_monsterdetector", 1]},
         {"weight" : 0.008, "item" : [ "herocowl", 1]},
         {"weight" : 0.008, "item" : [ "seekerhelm", 1]},
         {"weight" : 0.03, "item" : [ "kungfuheadband", 1]},
@@ -1627,7 +1620,8 @@
         {"weight" : 0.007, "item" : "randomharpoongun"},
         {"weight" : 0.009, "item" : [ "shovelspear", 1]},
         {"weight" : 0.012, "item" : [ "fushovelspear", 1]},
-        {"weight" : 0.01, "item" : [ "panishment", 1]},
+        {"weight" : 0.009, "item" : [ "panishment", 1]},
+        {"weight" : 0.009, "item" : [ "electrobaton2", 1]},
         {"weight" : 0.002, "item"  : [ "burrowerrang", 1]},
         {"weight" : 0.01, "item" : [ "vai-recipe", 1]},
         {"weight" : 0.02, "item" : ["teslagun2", 1]},
@@ -1666,6 +1660,7 @@
     }],
     [4.9, {
       "pool" : [
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.003, "pool" : "fuGuardianWings"},
@@ -1726,7 +1721,8 @@
         {"weight" : 0.001, "item" : ["fugjallarhorn", 1]},
         {"weight" : 0.001, "item" : "shockarang"},
         {"weight" : 0.005, "pool" : "arconLoot"},
-        {"weight" : 0.01, "item" : [ "panishment", 1]},
+        {"weight" : 0.009, "item" : [ "panishment", 1]},
+        {"weight" : 0.009, "item" : [ "electrobaton2", 1]},
         {"weight" : 0.002, "item"  : [ "burrowerrang", 1]},
         {"weight" : 0.004, "item" : [ "armcannon-recipe", 1]},
         {"weight" : 0.01, "item" : [ "laspistol", 1]},
@@ -1776,6 +1772,7 @@
     }],
     [5.9, {
       "pool" : [
+        {"weight" : 0.01, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.08, "pool" : "fuGravBalls"},
         {"weight" : 0.05, "pool" : "fuLabParts"},
         {"weight" : 0.005, "pool" : "fuMadnessVoxelItem"},
@@ -1828,7 +1825,8 @@
         {"weight" : 0.003, "item" : "randomharpoongun"},
         {"weight" : 0.004, "item" : [ "classiczapper", 1]},
         {"weight" : 0.005, "pool" : "arconLoot"},
-        {"weight" : 0.01, "item" : [ "panishment", 1]},
+        {"weight" : 0.009, "item" : [ "panishment", 1]},
+        {"weight" : 0.009, "item" : [ "electrobaton2", 1]},
         {"weight" : 0.002, "item"  : [ "burrowerrang", 1]},
         {"weight" : 0.004, "item" : [ "armcannon-recipe", 1]},
         {"weight" : 0.003, "item" : [ "verdantcarbine-recipe", 1]},
@@ -1919,6 +1917,9 @@
         {"weight" : 0.05, "item" : [ "labframedglass-recipe", 1]},
         {"weight" : 0.05, "item" : [ "hitechmetalblock-recipe", 1]},
         {"weight" : 0.05, "item" : [ "fureinforcedglass-recipe", 1]},
+        {"weight" : 0.03, "item" : ["smalldata", 1]},
+        {"weight" : 0.02, "item" : ["smalldata", 2]},
+        {"weight" : 0.005, "pool" : "fuResearchVoxelItems"},
         {"weight" : 0.05, "item" : [ "labgirdir-recipe", 1]}
       ]
     }]
@@ -1969,7 +1970,8 @@
         {"weight" : 0.007, "item" : "randomharpoongun"},
         {"weight" : 0.009, "item" : [ "shovelspear", 1]},
         {"weight" : 0.012, "item" : [ "fushovelspear", 1]},
-        {"weight" : 0.01, "item" : [ "panishment", 1]},
+        {"weight" : 0.009, "item" : [ "panishment", 1]},
+        {"weight" : 0.009, "item" : [ "electrobaton2", 1]},
         {"weight" : 0.002, "item"  : [ "burrowerrang", 1]},
         {"weight" : 0.01, "item" : [ "vai-recipe", 1]},
         {"weight" : 0.008, "item" : ["teslagun2", 1]},

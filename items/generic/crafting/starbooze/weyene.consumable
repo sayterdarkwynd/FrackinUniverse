@@ -4,14 +4,13 @@
   "category": "drink",
   "inventoryIcon": "weyene.png",
   "description": "Red, red wine.\n^green;Heal ^white;20 ^gray;(^white;2s^gray;)^reset;",
-  "shortdescription": "Wine",
+  "shortdescription": "Weyene",
   "eventCategory": "eventCrop",
   "foodValue": 10,
-  "price": 870,
+  "price": 500,
   "tooltipKind": "food",
   "builder": "/items/buildscripts/buildfood.lua",
   "maxStack": 100,
-  "itemAgingScripts": ["/scripts/items/rotting.lua"],
-  "rottingMultiplier": 3.0,
-  "effects": [["heal_tier1"]]
+  "effects": [["heal_tier1"]],
+  "emitters" : [ "drinking" ]
 }

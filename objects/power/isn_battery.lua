@@ -1,25 +1,21 @@
 require '/scripts/fupower.lua'
+require '/scripts/util.lua'
+
+local batteryUpdateThrottleBase=0.1
 
 function init()
-  power.init()
-  object.setInteractive(true)
-  power.setPower(config.getParameter('isn_batteryVoltage'))
-  power.setMaxEnergy(config.getParameter('isn_batteryCapacity'))
-  if config.getParameter('isnStoredPower') then
-    power.setStoredEnergy(config.getParameter('isnStoredPower'))
-    object.setConfigParameter('isnStoredPower', nil)
-  end
-end
-
-function onInteraction()
-  print(power.getStoredEnergy())
+	power.init()
+	power.setPower(0)
+	power.setMaxEnergy(config.getParameter('isn_batteryCapacity'))
+	if config.getParameter('isnStoredPower') then
+		power.setStoredEnergy(config.getParameter('isnStoredPower'))
+		object.setConfigParameter('isnStoredPower', nil)
+	end
 end
 
 function update(dt)
-  object.setConfigParameter('description', isn_makeBatteryDescription())
-  power.update(dt)
-  local powerlevel = math.floor(power.getStoredEnergy() / power.getMaxEnergy() * 10)
-  animator.setAnimationState("meter", power.getStoredEnergy() == 0 and 'd' or tostring(math.floor(powerlevel)))
+	batteryUpdate(dt)
+	power.update(dt)
 end
 
 function die()
@@ -33,21 +29,18 @@ function die()
 			if iConf.config.inventoryIcon then
 				local colour
 
-				if     charge <  25 then colour = 'FF0000'
-				elseif charge <  50 then colour = 'FF8000'
-				elseif charge <  75 then colour = 'FFFF00'
+				if charge <	25 then colour = 'FF0000'
+				elseif charge <	50 then colour = 'FF8000'
+				elseif charge <	75 then colour = 'FFFF00'
 				elseif charge < 100 then colour = '80FF00'
-				else                     colour = '00FF00'
+				else colour = '00FF00'
 				end
 				newObject.inventoryIcon = iConf.config.inventoryIcon .. '?border=1;' .. colour .. '?fade=' .. colour .. 'FF;0.1'
 			end
-
-			-- append the stored charge %age (rounded to 0.5) to the description
 			newObject.description = isn_makeBatteryDescription(iConf.config.description or '', charge)
 		end
 
 		world.spawnItem(object.name(), entity.position(), 1, newObject)
-		-- object.smash(true)
 	else
 		world.spawnItem(object.name(), entity.position())
 	end
@@ -71,5 +64,51 @@ function isn_makeBatteryDescription(desc, charge)
 	end
 
 	-- append charge state to default description; ensure that it's on a line of its own
-	return desc .. (desc ~= '' and "\n" or '') .. "^yellow;Stored charge: " .. charge .. '%'
+	local str=string.split(desc,"^truncate;")
+	if str[1] then str=str[1] else str="" end
+	str = str .. (desc ~= '' and "\n" or '') .. "Power Stored: ^yellow;"..util.round(power.getStoredEnergy(),1).."^reset;/^green;"..util.round(power.getMaxEnergy(),1).."^reset;J (^yellow;" .. charge .. '^reset;%)'
+	return str
+end
+
+function string.split(str, pat)
+	 local t = {}	-- NOTE: use {n = 0} in Lua-5.0
+	 local fpat = "(.-)" .. pat
+	 local last_end = 1
+	 local s, e, cap = str:find(fpat, 1)
+	 while s do
+		if s ~= 1 or cap ~= "" then
+			 table.insert(t, cap)
+		end
+		last_end = e+1
+		s, e, cap = str:find(fpat, last_end)
+	 end
+	 if last_end <= #str then
+			cap = str:sub(last_end)
+			table.insert(t, cap)
+	 end
+	 return t
+end
+
+local oldPowerRemove=power.remove
+function power.remove(...)
+	oldPowerRemove(...)
+	batteryUpdate()
+end
+
+function batteryUpdate(dt)
+	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-(dt or 0))
+	power.setPower(power.getStoredEnergy())
+	if batteryUpdateThrottle <= 0 then
+		object.setConfigParameter('description', isn_makeBatteryDescription())
+		local oldAnim
+		if self.oldPowerStored then
+			oldAnim=((self.oldPowerStored) == 0 and 'd' or tostring(math.floor(math.min((self.oldPowerStored) / power.getMaxEnergy(),1.0) * 10),10))
+		end
+		local newAnim=(power.getStoredEnergy() == 0 and 'd' or tostring(math.floor(math.min(power.getStoredEnergy() / power.getMaxEnergy(),1.0) * 10),10))
+		if oldAnim~=newAnim then
+			animator.setAnimationState("meter",newAnim)
+		end
+		self.oldPowerStored=power.getStoredEnergy()
+		batteryUpdateThrottle=batteryUpdateThrottleBase
+	end
 end

@@ -1,9 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-require "/scripts/unifiedGravMod.lua"
-
 setName="fu_spacefarerset2"
-
-weaponList={"mininglaser"}
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 2.4}
@@ -20,8 +16,6 @@ armorBonus={
 	{stat = "defensetechBonus", amount = 0.5},
 }
 
-setName="fu_spacefarerset2"
-
 function init()
 	setSEBonusInit("fu_spacefarerset2")
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
@@ -31,7 +25,6 @@ function init()
 
 	checkWeapons()
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
-
 end
 
 function update(dt)
@@ -45,10 +38,11 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"mininglaser"})
-	if weapons["primary"] and weapons["alt"] then
+	local mininglasers=weaponCheck({"mininglaser"})
+	local notweapons=not weaponCheck({"weapon"})["either"]
+	if (mininglasers["primary"] and mininglasers["alt"]) or (mininglasers["twoHanded"] and mininglasers["either"]) or (notweapons and mininglasers["either"]) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
-	elseif weapons["either"] then
+	elseif mininglasers["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,0.25))
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})

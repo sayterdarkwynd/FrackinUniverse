@@ -61,7 +61,7 @@ mcontroller.controlParameters(self.liquidMovementParameter)
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-	local damageVal=0
+	local damageVal
 	if status.statPositive("specialStatusImmunity") then
 		damageVal=math.ceil(world.threatLevel() * self.tickDamagePercentage * 100)
 	else

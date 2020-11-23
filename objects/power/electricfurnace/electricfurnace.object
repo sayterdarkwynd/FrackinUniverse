@@ -1,0 +1,103 @@
+{
+  "objectName" : "electricfurnace",
+  "rarity" : "rare",
+  "colonyTags" : [ "science" ],
+  "description" : "A powered furnace that can smelt most Tier 1 and Tier 2 resources. ^cyan;Requires ^orange;12W ^cyan;power.^reset;",
+  "shortdescription" : "^cyan;Electric Furnace^white;",
+  "race" : "generic",
+  "category" : "^orange;Extraction Device^reset;",
+  "price" : 500,
+  "objectType" : "container",
+  "printable" : false,
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fu_furnace_common.lua" ],
+  "scriptDelta" : 10,
+  "openSounds" : [ "/sfx/objects/campfire_use.ogg" ],
+  "slotCount" : 15,
+  "uiConfig" : "/objects/power/electricfurnace/electricfurnace.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
+
+  "animation" : "electricfurnace.animation",
+
+  "animationParts" : {
+    "fu_blastfurnace" : "electricfurnace.png",
+	"fu_blastfurnacefullbright" : "electricfurnacefullbright.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "inventoryIcon" : "electricfurnace_inv.png",
+  "orientations" : [
+    {
+      "dualImage" : "electricfurnace.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+
+  "inputNodes" : [ [2, 2] ],
+  "outputNodes" : [ [2, 1] ],
+
+  "powertype" : "input",
+  "isn_requiredPower" : 12,
+  "fu_timer" : 1,
+  "fu_extraConsumptionChance" : 0.333,
+
+  "inputsToOutputs" : {
+      "mud" : "mudstonematerial",
+      "clay" : "firedclay",
+      "firedclay" : "brickmaterial",
+	  "coalore" : "fu_carbon",
+	  "copperore" : "copperbar",
+	  "ironore" : "ironbar",
+	  "silverore" : "silverbar",
+	  "goldore" : "goldbar",
+	  "platinumore" : "platinumbar",
+	  "plutoniumore" : "plutoniumrod",
+	  "bonematerial": "bonemealmaterial",
+	  "cobblestonematerial" : "sand2",
+	  "drysand" : "glass",
+	  "rustyblock" : "ironore",
+	  "rustymetal" : "ironore",
+	  "sand" : "limestone",
+	  "sand2" : "glass",
+	  "corefragmentore" : "volatilepowder",
+	  "metallic" : "ironore",
+	  "cinnabarore" : "ff_mercury",
+	  "mascagniteore" : "ammoniumsulfate",
+	  "magnesiumore" : "magnesiumpowder",
+	  "solarishard" : "solaricrystal",
+	  "tungstenore" : "tungstenbar",	  
+	  "moonstoneore" : "moonstonebar"
+  },
+
+  "bonusOutputs" : {
+  	  "corefragmentore" :  { "liquidlava" : 40 },
+      "mud" : { "mudstonematerial" : 60 },
+      "clay" : { "firedclay" : 65 },
+      "firedclay" : { "brickmaterial" : 50 },
+      "coalore" : { "sulphur" : 6, "fu_carbon" : 5,"fu_carbondioxide" : 15 },
+      "copperore" : { "ff_silicon" : 10,"ironore" : 13,"fu_carbondioxide" : 30 },
+      "ironore" : { "fu_carbon" : 10,"lead" : 10, "liquidironfu" : 6,"fu_carbondioxide" : 20 },
+      "silverore" : { "ff_silicon" : 16, "fu_carbondioxide" : 30 },
+      "goldore" : { "ff_silicon" : 16, "fu_carbondioxide" : 30 },
+      "platinumore" : { "ff_silicon" : 16, "fu_carbondioxide" : 30 },
+      "bonematerial" : { "liquidoil" : 8},
+      "cobblestonematerial" : {"sulphur" : 4,"lead" : 8,"ironore" : 8 },
+      "drysand" : { "glass" : 15 },
+      "rustyblock" : { "ironore" : 5 },
+      "rustymetal" : { "ironore" : 5 },
+      "sand" : { "glass" : 17 },
+      "sand2" : { "fu_carbon" : 10 },
+      "treasurehoard" : { "silverbar" : 18,"goldbar" : 18 },
+	  "plutoniumore" : { "lead" : 5, "uraniumore" : 9, "plutoniumore" : 4 },
+	  "cinnabarore" : { "fu_nitrogen" : 18, "fu_carbon" : 15 },
+	  "mascagniteore" : { "ammoniumsulfate" : 18, "fu_carbon" : 15 },
+	  "magnesiumore" : { "magnesiumpowder" : 12, "fu_oxygen" : 15 },
+	  "solarishard" : { "liquidnitrogenitem" : 18, "fu_carbon" : 15 },
+	  "tungstenore" : { "fu_hydrogen" : 16, "fu_carbon" : 16 },  
+	  "moonstoneore" : { "helium3gasliquid" : 1, "fu_carbon" : 10 }
+	  
+  }
+}

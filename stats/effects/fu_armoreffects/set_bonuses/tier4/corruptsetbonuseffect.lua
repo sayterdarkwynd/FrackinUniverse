@@ -1,5 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-require "/scripts/vec2.lua"
+setName="fu_corruptset"
 
 armorBonus={
 	{stat = "maxHealth", effectiveMultiplier = 1.25},
@@ -10,8 +10,6 @@ armorEffect={
 	{stat = "sulphuricImmunity", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1}
 }
-
-setName="fu_corruptset"
 
 function init()
 	setSEBonusInit(setName)
@@ -32,7 +30,7 @@ function update(dt)
 end
 
 function checkArmor()
-	if checkBiome({"lightless","penumbra","aethersea","moon_shadow"."shadow","midnight"}) then
+	if checkBiome({"lightless","penumbra","aethersea","moon_shadow","shadow","midnight"}) then
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,{})

@@ -37,9 +37,9 @@ end
 -- purge all fields from world
 function purge()
 	local firstId, lastId = LOWID, HIGHID
-	local record, purged = nil, 0
+	local purged = 0
 	for i = firstId, lastId do
-		record = world.getProperty(tostring(i))
+		local record = world.getProperty(tostring(i))
 		if (record) then
 			removeField(i, record)
 			purged = purged + 1

@@ -1,13 +1,5 @@
 power = {}
 
-function power.init()
-	power.onNodeConnectionChange(nil,0)
-end
-
-function init()
-	power.init()
-end
-
 function power.update(dt)
 	if not power.warmedUp then
 		power.init()
@@ -21,30 +13,14 @@ function power.update(dt)
 		end
 		if storage.power and storage.power > 0 then
 			storage.energy = storage.power * dt
-		if config.getParameter('powertype') == 'battery' then
-			storage.energy = math.min(storage.energy,storage.storedenergy)
+			if config.getParameter('powertype') == 'battery' then
+				storage.energy = math.min(storage.power,storage.storedenergy)
 				storage.storedenergy = storage.storedenergy - storage.energy
 			end
 		else
 			storage.energy = 0
 		end
 	end
-end
-
-function update(dt)
-	power.update(dt)
-end
-
-function power.getStorageLeft()
-	return (storage.maxenergy or 0) - (storage.storedenergy or 0) - (storage.energy or 0)
-end
-
-function power.getStoredEnergy()
-	return (storage.storedenergy or 0) + (storage.energy or 0)
-end
-
-function power.remove(amount)
-	storage.energy = storage.energy - amount
 end
 
 function power.consume(amount)
@@ -81,7 +57,7 @@ function power.sendPowerToBatteries()
 		for key,value in pairs(storage.entitylist.battery) do
 			amount = math.min((storage.energy or 0),(callEntity(value,'power.getStorageLeft') or 0))
 			storage.energy = (storage.energy or 0) - amount
-			callEntity(value,'power.recievePower',amount)
+			callEntity(value,'power.receivePower',amount)
 			if storage.energy == 0 then
 				break
 			end
@@ -89,54 +65,9 @@ function power.sendPowerToBatteries()
 	end
 end
 
-function power.recievePower(amount)
-	storage.storedenergy = (storage.storedenergy or 0) + amount
-end
-
-function power.setStoredEnergy(energy)
-	storage.storedenergy = (energy or 0)
-end
-
-function power.setMaxEnergy(energy)
-	storage.maxenergy = (energy or 0)
-end
-
-function power.getMaxEnergy()
-	return storage.maxenergy
-end
-
-function power.setPower(power)
-storage.power = power or 0
-end
-
-function power.getTotalEnergy()
-	local energy = 0
-	if not storage.entitylist then
-		return 0
-	end
-	for i=1,#storage.entitylist.output do
-		energy = energy + power.getEnergy(storage.entitylist.output[i])
-	end
-	for i=1,#storage.entitylist.battery do
-		energy = energy + power.getEnergy(storage.entitylist.battery[i])
-	end
-	return energy
-end
-
-function power.getEnergy(id)
-	if not id or id == entity.id() then
-		return storage.energy or 0
-	else
-		return callEntity(id,'power.getEnergy') or 0
-	end
-end
-
-function onNodeConnectionChange()
-	power.onNodeConnectionChange(nil,0)
-end
-
 function power.onNodeConnectionChange(arg,iterations)
 	if config.getParameter('powertype') then
+		if (config.getParameter('powertype') == 'battery') then return arg end
 		--sb.logInfo("iterations: %s",iterations)
 		iterations=(iterations and iterations + 1) or 1
 		if arg then
@@ -211,6 +142,54 @@ function power.onNodeConnectionChange(arg,iterations)
 	end
 end
 
+function power.getTotalEnergy()
+	local energy = 0
+	if not storage.entitylist then
+		return 0
+	end
+	for i=1,#storage.entitylist.output do
+		energy = energy + power.getEnergy(storage.entitylist.output[i])
+	end
+	for i=1,#storage.entitylist.battery do
+		energy = energy + power.getEnergy(storage.entitylist.battery[i])
+	end
+	return energy
+end
+
+function power.getTotalEnergyNoBattery()
+	local energy = 0
+	if not storage.entitylist then
+		return 0
+	end
+	for i=1,#storage.entitylist.output do
+		energy = energy + power.getEnergyNoBattery(storage.entitylist.output[i])
+	end
+	for i=1,#storage.entitylist.battery do
+		energy = energy + power.getEnergyNoBattery(storage.entitylist.battery[i])
+	end
+	return energy
+end
+
+function power.getEnergy(id)
+	if not id or id == entity.id() then
+		return storage.energy or 0
+	else
+		return callEntity(id,'power.getEnergy') or 0
+	end
+end
+
+function power.getEnergyNoBattery(id)
+	if not id or id == entity.id() then
+		return ((config.getParameter('powertype') ~= 'battery') and storage.energy) or 0
+	else
+		return callEntity(id,'power.getEnergyNoBattery') or 0
+	end
+end
+
+function onNodeConnectionChange(arg)
+	power.onNodeConnectionChange(nil,0)
+end
+
 function isPower()
 	return config.getParameter('powertype')
 end
@@ -221,6 +200,51 @@ end
 
 function callEntity(id,...)
 	if world.entityExists(id) then
-		return world.callScriptedEntity(id,...)
+		local pass,result=pcall(world.callScriptedEntity,id,...)
+		return pass and result
 	end
+end
+
+function power.receivePower(amount)
+	storage.storedenergy = (storage.storedenergy or 0) + amount
+end
+
+function power.setStoredEnergy(energy)
+	storage.storedenergy = (energy or 0)
+end
+
+function power.setMaxEnergy(energy)
+	storage.maxenergy = (energy or 0)
+end
+
+function power.getMaxEnergy()
+	return storage.maxenergy
+end
+
+function power.setPower(power)
+	storage.power = power or 0
+end
+
+function power.getStorageLeft()
+	return (storage.maxenergy or 0) - power.getStoredEnergy()
+end
+
+function power.getStoredEnergy()
+	return (storage.storedenergy or 0) + (storage.energy or 0)
+end
+
+function power.remove(amount)
+	storage.energy = storage.energy - amount
+end
+
+function power.init()
+	power.onNodeConnectionChange(nil,0)
+end
+
+function update(dt)
+	power.update(dt)
+end
+
+function init()
+	power.init()
 end

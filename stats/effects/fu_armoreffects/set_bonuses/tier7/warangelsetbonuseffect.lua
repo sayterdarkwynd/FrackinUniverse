@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_warangelset"
 
 weaponBonus={
@@ -12,8 +13,6 @@ armorBonus={
 	{stat = "grit", amount = 0.8},
 	{stat = "fallDamageMultiplier", effectiveMultiplier = 0.2}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)

@@ -31,7 +31,6 @@ function fire(dt)
 		end
 	end
 	buffer=buffer2
-	buffer2={}
 	for id,pos in pairs(buffer) do
 		local quack=math.floor(math.random(100))
 		if quack > 40 then

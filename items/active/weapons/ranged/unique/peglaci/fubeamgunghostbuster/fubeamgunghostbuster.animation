@@ -1,0 +1,185 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "gnome" : {
+        "default" : "squirm",
+        "states" : {
+          "idle" : {
+            "properties" : {
+              "lightsOff" : [ "blue"]
+            }
+          },
+          "squirm" : {
+            "frames" : 8,
+            "cycle" : 1.0,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOff" : [ "blue"]
+            }
+          },
+          "fire" : {
+            "frames" : 4,
+            "cycle" : 0.25,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOn" : [ "blue"]
+            }
+          }
+        }
+      },
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.07,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "gnome" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.0, 0.12],
+          "transformationGroups" : ["weapon"],
+          "zIndex":1
+        },
+
+        "partStates" : {
+          "gnome" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "squirm" : {
+              "properties" : {
+                "image" : "<partImage>:squirm.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire"
+              }
+            }
+          }
+        }
+      },
+      "gnomefullbright" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.8, 0.12],
+          "zLevel" : 1,
+          "transformationGroups" : ["weapon"],
+          "fullbright" : true
+        },
+
+        "partStates" : {
+          "gnome" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle"
+              }
+            },
+            "squirm" : {
+              "properties" : {
+                "image" : "<partImage>:squirm.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire"
+              }
+            }
+          }
+        }
+      },      
+      
+      "beamorigin" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : true,
+          "offset" : [2.6, 0.275],
+          "fullbright" : true,
+          "transformationGroups" : ["weapon"]
+        },
+
+        "partStates" : {
+          "gnome" : {
+            "idle" : {},
+            "squirm" : {},
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "beamEnd" : {},
+    "muzzle" : {}
+  },
+
+  "lights" : {
+    "blue" : {
+      "active" : false,
+      "color" : [0, 0, 200],
+      "position" : [0, 0],
+
+      "flickerPeriod" : 0.75,
+      "flickerPeriodVariance" : 0.0,
+      "flickerMinIntensity" : 0.6,
+      "flickerMaxIntensity" : 0.1,
+      "flickerIntensityVariance" : 0.0
+    }
+  },
+
+  "particleEmitters" : {
+    "beamCollision" : {
+      "active" : false,
+      "transformationGroups" : ["muzzle", "beamEnd"],
+      "emissionRate" : 30,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/cloudpuff/cloudpuff.animation",
+            "position" : [0, 0],
+            "initialVelocity" : [0, 2.0],
+            "finalVelocity" : [0, -4.0],
+            "approach" : [0, 10],
+            "fade" : 0.3,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.3,
+            "size" : 1.2,
+            "timeToLive" : 0.5,
+            "fullbright" : true,
+            "layer" : "front",
+            "collidesForeground" : false,
+            "variance" : {
+              "position" : [0.5, 0.5],
+              "initialVelocity" : [2, 2]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "fireStart" : [],
+    "fireLoop" : [],
+    "fireEnd" : [],
+    "beamImpact" : []
+  }
+}

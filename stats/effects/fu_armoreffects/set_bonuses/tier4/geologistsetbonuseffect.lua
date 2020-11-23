@@ -1,3 +1,4 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_geologistset"
 
 weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.5} }
@@ -5,10 +6,9 @@ weaponBonus={ {stat = "powerMultiplier", effectiveMultiplier = 1.5} }
 armorBonus={
 	{stat = "liquidnitrogenImmunity", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1},
-	{stat = "pusImmunity", amount = 1}
+	{stat = "pusImmunity", amount = 1},
+	{stat = "researchBonus", amount = 2}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -29,10 +29,11 @@ function update(dt)
 end
 
 function checkWeapons()
-	local weapons=weaponCheck({"mininglaser"})
-	if weapons["primary"] and weapons["alt"] then
+	local mininglasers=weaponCheck({"mininglaser"})
+	local notweapons=not weaponCheck({"weapon"})["either"]
+	if (mininglasers["primary"] and mininglasers["alt"]) or (mininglasers["twoHanded"] and mininglasers["either"]) or (notweapons and mininglasers["either"]) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
-	elseif weapons["either"] then
+	elseif mininglasers["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,0.25))
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})

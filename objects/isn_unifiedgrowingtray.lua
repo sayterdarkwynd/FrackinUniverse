@@ -36,7 +36,6 @@ function init()
 		power.init()
 	end
 
-	transferUtil.init()
 	object.setInteractive(true)
 
 	storage.growth = storage.growth or 0 				--Plant growth completed
@@ -50,11 +49,12 @@ end
 --Updates the state of the object.
 function update(dt)
 	-- Updates container status (for ITD management)
-	if timer >= 1 then
-		timer = 0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	timer = timer + dt
 
 	-- Check tray inputs
 	local water,fert=checkTrayInputs()
@@ -140,16 +140,15 @@ function checkTrayInputs()
 end
 
 
+-- Generate new description
 function handleTooltip(args)
-	-- Generate new description
-	local desc = ""
-	
+
 	--growth rate and power calc
 	local growthrate=getFertSum('growthRate', args.fert, args.water)
 	local growthrate2=growthrate*(args.growthmod or 1)
 	growthrate=util.round(growthrate,2)
 	growthrate2=util.round(growthrate2,2)
-	local growthString=""
+	local growthString
 	local powerString=""
 	if growthrate~=growthrate2 and self.requiredPower then
 		growthString='Growth Rate: ^red;' .. growthrate2 .. "^reset;\n"
@@ -212,14 +211,14 @@ function handleTooltip(args)
 	end
 	
 	--set desc!
-	desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString
+	local desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString
 	object.setConfigParameter('description', desc)
 end
 
 --Returns active seed when tray is removed from world
 function die()
 	if storage.currentseed then
-		storage.currentseed.count = getFertSum("seedUse")
+		--storage.currentseed.count = getFertSum("seedUse")
 		world.spawnItem(storage.currentseed, entity.position())
 	end
 end
@@ -270,8 +269,9 @@ function growPlant(growthmod, dt)
 		for i=1,getFertSum("yield") do
 			tblmerge(output, root.createTreasure(stage().harvestPool, 1))
 		end
+		--sb.logInfo("%s",output)
 
-		local seedavoid = {waterslot, fertslot}   		-- Map for allowing seeds to be output into the input slot
+		local seedavoid = {waterslot, fertslot} -- Map for allowing seeds to be output into the input slot
 		for _,item in ipairs(output) do
 			-- Preserve customized seeds on output
 			if item.name == storage.currentseed.name then
@@ -283,7 +283,7 @@ function growPlant(growthmod, dt)
 		-- Perennial plants should return yeild of seeds for balance purposes.
 		-- By returning yield seeds we handle part of perennials regrowing from the same seed.
 		if stage().resetToStage then
-			storage.currentseed.count = getFertSum("yield")
+			--storage.currentseed.count = getFertSum("yield")--doesnt care how many are consumed, just flatout sets it to the yield. this results in massive seed production. double soup has yield 4, -1 seed, which results in net 2 seeds per interval. removing this 'feature'
 			fu_sendOrStoreItems(0, storage.currentseed, seedAvoid)
 			storage.perennialSeedName = storage.currentseed.name
 		end
@@ -369,7 +369,7 @@ function genGrowthData()
 
 	-- Set currentStage and possibly growth depending on perennial seed data
 	if storage.perennialSeedName and storage.stage[storage.stages].resetToStage and
-			storage.currentseed.name == storage.perennialSeedName then
+		storage.currentseed.name == storage.perennialSeedName then
 		storage.currentStage = math.min(storage.stages, math.max(1, storage.stage[storage.stages].resetToStage + 1))
 		storage.growth = storage.currentStage == 1 and 0 or	storage.stage[storage.currentStage - 1].val
 	else
@@ -420,7 +420,9 @@ function doSeedIntake()
 	end
 
 	--Consume seed.
-	world.containerConsumeAt(entity.id(),seedslot,getFertSum("seedUse"))
+	local consumed=getFertSum("seedUse")
+	world.containerConsumeAt(entity.id(),seedslot,consumed)
+	storage.currentseed.count=consumed
 
 	return true
 end

@@ -1,5 +1,4 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-
 setName="fu_blisterset2"
 
 weaponBonus={
@@ -8,13 +7,12 @@ weaponBonus={
 }
 
 armorBonus={ 
-  {stat = "poisonStatusImmunity", amount = 1.0},
-  {stat = "protoImmunity", amount = 1.0},
-  {stat = "pusImmunity", amount = 1.0},
-  {stat = "liquidnitrogenImmunity", amount = 1.0}
+	{stat = "mentalResistance", amount = 0.2},
+	{stat = "poisonStatusImmunity", amount = 1.0},
+	{stat = "protoImmunity", amount = 1.0},
+	{stat = "pusImmunity", amount = 1.0},
+	{stat = "liquidnitrogenImmunity", amount = 1.0}
 }
-
-
 
 function init()
 	setSEBonusInit(setName)

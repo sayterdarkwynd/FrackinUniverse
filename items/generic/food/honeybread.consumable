@@ -3,7 +3,7 @@
   "rarity": "Common",
   "category": "preparedFood",
   "inventoryIcon": "honeybread.png",
-  "description": "Sweet bread baked with honey.\n^cyan;+^white;20% ^cyan;HP ^gray;(^white;90s^gray;)\n^green;Heal ^white;120 ^gray;(^white;90s^gray;)^reset;",
+  "description": "Sweet bread baked with honey.\n^cyan;+^white;20% ^cyan;HP ^gray;(^white;90s^gray;)\n^green;Heal ^white;120 ^gray;(^white;90s^gray;)^reset; ^green;Type: Herbivore^reset;",
   "shortdescription": "Honey Bread",
   "price": 75,
   "foodValue": 20,
@@ -13,7 +13,8 @@
   "itemAgingScripts": ["/scripts/items/rotting.lua"],
   "rottingMultiplier": 5.0,
   "effects": [
-    [
+    [ 
+	  {"effect": "plant_food"},
       {
         "effect": "honeyheal2",
         "duration": 90

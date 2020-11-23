@@ -5,7 +5,6 @@ local deltaTime=0
 
 function init()
 	power.init()
-	transferUtil.init()
     self.timer = config.getParameter("craftingSpeed")
     self.crafting = false
     self.output = {}
@@ -87,11 +86,11 @@ end
 
 
 function update(dt)
-	if deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
     self.timer = self.timer - dt
     if self.timer <= 0 then

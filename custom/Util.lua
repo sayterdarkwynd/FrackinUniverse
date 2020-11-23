@@ -183,14 +183,14 @@ end
 function hexToRGB(_hex)
 	if type(_hex) == "string" then
 		local h = _hex
-		local r, g, b = 0, 0, 0
 		if h:len() == 6 then
 			local red = h:sub(1, 2)
 			local green = h:sub(3, -3)
 			local blue = h:sub(-2, -1)
-			r = rawHexToDec(red)
-			g = rawHexToDec(green)
-			b = rawHexToDec(blue)
+
+			local r = rawHexToDec(red)
+			local g = rawHexToDec(green)
+			local b = rawHexToDec(blue)
 			return {r, g, b}
 		elseif h:len() == 8 then
 			return {0, 0, 0}

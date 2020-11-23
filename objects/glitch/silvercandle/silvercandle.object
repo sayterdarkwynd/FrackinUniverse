@@ -1,0 +1,56 @@
+{
+  "objectName" : "fusilvercandle",
+  "colonyTags" : ["glitch","glitchvillage","light"],
+  "rarity" : "Common",
+  "category" : "light",
+  "price" : 45,
+
+  "description" : "A small silver candle in a holder.",
+  "shortdescription" : "Silver Candle",
+  "race" : "glitch",
+
+  "maximumLiquidLevel" : 0.2,
+
+  "statusEffects" : [ ],
+
+  "lightColor" : [179, 149, 107],
+
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.75,
+  "flickerMaxIntensity" : 0.8,
+  "flickerPeriodVariance" : 0.075,
+  "flickerIntensityVariance" : 0.025,
+
+  "inventoryIcon" : "silvercandleicon.png",
+  "orientations" : [
+    {
+      "image" : "silvercandle.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [0, -1] ]
+    },
+    {
+      "image" : "silvercandle.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "animationPosition" : [0, 0],
+      "direction" : "right",
+      "spaces" : [ [0, 0], [0, 1] ],
+      "fgAnchors" : [ [0, -1] ]
+    }
+  ],
+
+  "animation" : "silvercandle.animation",
+  "animationParts" : {
+    "bg" : "silvercandle.png",
+    "fg" : "silvercandlelit.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [0, 0] ]
+
+}

@@ -8,7 +8,7 @@ end
 function update(dt)
   animator.setFlipped(mcontroller.facingDirection() == -1)
   if status.resourcePercentage("health") < 0.099 then
-	sb.logInfo("Rescuing!")
+	--sb.logInfo("Rescuing!")
 	mcontroller.setPosition(rescuePosition)
 	status.setResourcePercentage("health", 0.100)
   end

@@ -1,10 +1,10 @@
+require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_millenionset"
 
 weaponBonus={
 	{stat = "maxHealth", effectiveMultiplier = 1.20},
 	{stat="grit", amount=0.25}
 }
-
 
 armorBonus={
 	{stat = "blacktarImmunity", amount = 1},
@@ -13,8 +13,6 @@ armorBonus={
 	{stat = "shieldBonusShield", amount = 0.30},
 	{stat = "perfectBlockLimitRegen", baseMultiplier = 1.30}
 }
-
-require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 
 function init()
 	setSEBonusInit(setName)
@@ -32,7 +30,6 @@ function update(dt)
 		checkWeapons()
 	end
 end
-
 
 function checkWeapons()
 	local weaponSword=weaponCheck({"shortsword","longsword","rapier","katana"})

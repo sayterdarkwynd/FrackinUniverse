@@ -92,8 +92,7 @@ function init()
 end
 
 function firstTimeInit()
-	sb.logInfo("----------")
-	sb.logInfo("STATION OBJECT ID "..objectID.." CALLED FOR THE FIRST TIME. ATTEMPTING TO ADD STATION DATA...")
+	sb.logInfo("----First Time Space Station Init----\nSTATION OBJECT ID "..objectID.." CALLED, ATTEMPTING TO ADD STATION DATA...")
 	
 	local race = "generic"
 	if objectData then
@@ -134,8 +133,6 @@ function firstTimeInit()
 	
 	objectData.lastVisit = world.time()
 	sb.logInfo("Happened at worldtime %s", objectData.lastVisit)
-	
-	sb.logInfo("----------")
 	
 	-- Choose what items the station has in its shop
 	shopRestock()
@@ -292,7 +289,7 @@ function firstTimeInit()
 			end
 		end
 		
-		local amountMultiplier = 0
+		local amountMultiplier
 		if stockStatus > 0 then
 			local minimum = math.floor(stationData.goodsAbundanceRange[1]*100)
 			local maximum = math.floor(stationData.goodsAbundanceRange[2]*100)
@@ -311,6 +308,7 @@ function firstTimeInit()
 		objectData.goodsStock[tbl.name] = stock
 	end
 	
+	sb.logInfo("----- End Station First Time Init -----")
 	initialized = true
 	GUIinit()
 end
@@ -597,7 +595,7 @@ function commandProcessor(wd)
 			updateBar(false)
 			modifyButtons(false, false, false, false, false, "Back")
 		else
-			textTyper.init(textData, "^red;ERROR -^reset;\nWrong 'type' recieved in 'commandProcessor' > 'elseif command == \"Special\" then'")
+			textTyper.init(textData, "^red;ERROR -^reset;\nWrong 'type' received in 'commandProcessor' > 'elseif command == \"Special\" then'")
 			resetGUI()
 		end
 		
@@ -704,9 +702,9 @@ function commandProcessor(wd)
 	end
 end
 
--- Modify buttons based on recieved values
+-- Modify buttons based on received values
 -- {string, string}	- Changes button text to 1st string, and button data to 2nd string
--- string			- Changes the text and data on the button to the recieved string
+-- string			- Changes the text and data on the button to the received string
 -- false			- Hides and disables the button
 -- nil				- applies no changes
 function modifyButtons(b1, b2, b3, b4, b5, b6)
@@ -1255,29 +1253,14 @@ function shopSell()
 end
 
 function calculateShopPrice(base, isBuying,pricePcnt)
-	local tradingOutpostMult = 0
-	local totalMult = 0
-	--local charismaStat=(1-status.stat("fuCharisma"))*100
-	--local charismaStatProp=status.statusProperty("fuCharisma",0)
+	local buyPrice=closestWhole(base * (pricePcnt.buyPcnt/100.0))
+	local sellPrice=closestWhole(base * (pricePcnt.sellPcnt/100.0))
+	--sb.logInfo("%s:%s:%s:%s:%s",base,isBuying,pricePcnt,buyPrice,sellPrice)
+
 	if isBuying then
-		--[[if objectData.stationType == "trading" then 
-			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel
-		end
-		totalMult = stationData.shop.initBuyMult - ((charismaStat)+(charismaStatProp)) * stationData.trading.charismaBuyPriceReduction - tradingOutpostMult
-		totalMult = math.max(totalMult, stationData.shop.minBuyMult)]]
-		totalMult=pricePcnt.buyPcnt/100.0
-		--sb.logInfo("cSP base=%s tM=%s cW(b*tM)=%s",base,totalMult,closestWhole(base * totalMult))
-		return closestWhole(base * totalMult)
+		return buyPrice
 	else
-		--[[if objectData.stationType == "trading" then 
-			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel
-		end
-		
-		totalMult = stationData.shop.initSellMult + ((charismaStat)+(charismaStatProp)) * stationData.trading.charismaSellPriceIncrease + tradingOutpostMult
-		totalMult = math.max(math.min(totalMult, stationData.shop.maxSellMult), 0)]]
-		totalMult=pricePcnt.sellPcnt/100.0
-		--sb.logInfo("cSP base=%s tM=%s cW(b*tM)=%s",base,totalMult,closestWhole(base * totalMult))
-		return closestWhole(base * totalMult)
+		return sellPrice
 	end
 end
 
@@ -1305,7 +1288,6 @@ function populateGoodsList()
 		--sb.logInfo("pP=%s,bP=%s,sP=%s",pricePcnt,buyPrice,sellPrice)
 		buyPrice=closestWhole(buyPrice * pricePcnt.buyPcnt)
 		sellPrice=closestWhole(sellPrice * pricePcnt.sellPcnt)
-		--sb.logInfo("bP=%s,sP=%s",buyPrice,sellPrice)
 		
 		if buyRate >= 1.5 then
 			widget.setImage(listItem..".buyRate", "/interface/scripted/spaceStation/tradeRate.png:-2")
@@ -1428,7 +1410,7 @@ function buyGoods()
 	end
 end
 
--- Returns an updated price and rated based on recieved parameters (Basicaly the price formula)
+-- Returns an updated price and rated based on received parameters (Basicaly the price formula)
 function updatePrice(basePrice, baseAmount, stock, isBuying)
 	local rate = 1 - (stock * 100 / baseAmount * 0.01) + 1
 	local rateMin = 0.35
@@ -1441,9 +1423,9 @@ function updatePrice(basePrice, baseAmount, stock, isBuying)
 	end
 	
 	if isBuying then
-		rate = rate * 1.05
+		rate = rate * 1.2
 	else
-		rate = rate * 0.95
+		rate = rate * 0.8
 	end
 	
 	local price = basePrice * rate
@@ -1465,21 +1447,13 @@ function simulateGoodTrades()
 		local trades = math.floor(timePassed / stationData.passiveTradeInterval)
 		
 		if trades > 0 then
-			local goodsState = "normal"
-			local tradeAmount = 0
-			local striveTo = 0
-			local mult = 1
-			
 			for t = 1, trades do
 				for goods, amount in pairs(objectData.goodsStock) do
-					goodsState = "normal"
-					tradeAmount = 0
-					striveTo = 0
-					mult = 1
-					
 					-- Get index, and goods state
 					for i, tbl in ipairs(stationData.goods) do
 						if goods == tbl.name then
+							local goodsState = "normal"
+
 							if type(tbl.abundance) == "table" then
 								for _, st in ipairs(tbl.abundance) do
 									if objectData.stationType == st then
@@ -1504,6 +1478,7 @@ function simulateGoodTrades()
 								end
 							end
 							
+							local mult
 							if goodsState == "abundance" then
 								mult = math.random(math.floor(stationData.goodsAbundanceRange[1]*100), math.floor(stationData.goodsAbundanceRange[2]*100)) * 0.01
 							elseif goodsState == "lack" then
@@ -1512,8 +1487,8 @@ function simulateGoodTrades()
 								mult = math.random(math.floor(stationData.goodsNormalRange[1]*100), math.floor(stationData.goodsNormalRange[2]*100)) * 0.01
 							end
 							
-							striveTo = stationData.goods[i].baseAmount * mult
-							tradeAmount = stationData.goods[i].baseAmount * (math.random(math.floor(stationData.passiveTradePcntOfBaseAmount[1]*100), math.floor(stationData.passiveTradePcntOfBaseAmount[2]*100)) * 0.01)
+							local striveTo = stationData.goods[i].baseAmount * mult
+							local tradeAmount = stationData.goods[i].baseAmount * (math.random(math.floor(stationData.passiveTradePcntOfBaseAmount[1]*100), math.floor(stationData.passiveTradePcntOfBaseAmount[2]*100)) * 0.01)
 							
 							if amount < striveTo then
 								objectData.goodsStock[goods] = closestWhole(objectData.goodsStock[goods] + tradeAmount)
@@ -1736,15 +1711,17 @@ function specialsTableInit()
 end
 
 function calcBuySell()
-	local charismaStat=status.stat("fuCharisma")-1
-	local charismaStatProp=status.statusProperty("fuCharisma",0)*0.1
+	local charismaStat=(status.stat("fuCharisma")-1.0)
+
+	--bonus from maxed stations is capped at 10 and the stat itself has 0.1 multiplier.
+	local charismaStatProp=(math.min(status.statusProperty("fuCharisma",0),10))*0.1
 	local charismaBuy = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaBuyPriceReduction * 10
 	local charismaSell = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaSellPriceIncrease * 10
 	
 	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - (objectData.specialsTable.investLevel or 0) * (stationData.trading.buyPriceReductionPerLevel or 0)) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
 	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + (objectData.specialsTable.investLevel or 0) * (stationData.trading.sellPriceIncreasePerLevel or 0)) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
 	
-	--sb.logInfo("cs %s,csp %s,cb %s,cs %s,bp %s,sp %s,cbpr %s, cspi %s",charismaStat,charismaStatProp,charismaBuy,charismaSell,buyPcnt,sellPcnt,stationData.trading.charismaBuyPriceReduction,stationData.trading.charismaSellPriceIncrease)
+	--sb.logInfo("cs %s,csp %s,cb %s,cs %s,bp %s,sp %s,cbpr %s, cspi %s, isGoods %s",charismaStat,charismaStatProp,charismaBuy,charismaSell,buyPcnt,sellPcnt,stationData.trading.charismaBuyPriceReduction,stationData.trading.charismaSellPriceIncrease,isGoods)
 	return {buyPcnt=buyPcnt,sellPcnt=sellPcnt}
 end
 
@@ -1845,7 +1822,7 @@ end
 -- Prints to log all items in all shop lists, letting you easily find the broken/non-existant ones
 -- Has to be manually added somewhere to the code as its not called anywhere
 function checkShopIntegrity()
-	sb.logError("")
+	--sb.logError("")
 	for type, t in pairs(stationData.shop.potentialStock) do
 		for _, item in ipairs(t) do
 			local config = root.itemConfig(item)
@@ -1860,10 +1837,8 @@ end
 
 -- Returns a specified amount of randomized indexes from an ipairs table.
 function getRandomTableIndexes(tbl, amount)
-	local passed = false
 	local indexes = {}
 	local pulled = 0
-	local index = 0
 	
 	-- Return all indexes if the amount exceeds the tables length
 	if #tbl <= amount then
@@ -1874,10 +1849,10 @@ function getRandomTableIndexes(tbl, amount)
 	end
 	
 	while pulled <= amount do
-		passed = false
+		local passed = false
 		while not passed do
 			passed = true
-			index = math.random(1, #tbl)
+			local index = math.random(1, #tbl)
 			for _, indexed in ipairs(indexes) do
 				if index == indexed then
 					passed = false
@@ -1922,7 +1897,7 @@ function uninit()
 	end
 end
 
--- Recieves a single number, and returns a table holding seconds, minutes, and hours as if the value recieved was seconds
+-- Receives a single number, and returns a table holding seconds, minutes, and hours as if the value received was seconds
 function toTime(time)
 	local table = {
 		seconds = math.floor(time % 60),

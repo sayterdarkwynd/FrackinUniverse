@@ -12,6 +12,7 @@ function init()
 	--widget.focus("filterBox")
 	maxItemsAddedPerUpdate = config.getParameter("maxItemsAddedPerUpdate", 5000)
 	maxSortsPerUpdate = config.getParameter("maxSortsPerUpdate", 50000)
+	maxItemsForSorting = config.getParameter("maxItemsForSorting", 1000)
 	refresh()
 end
 
@@ -34,6 +35,15 @@ end
 function update(dt)
 	deltatime=deltatime+dt
 	
+	if updateFilterQueueTimer then
+		if updateFilterQueueTimer<=0.0 then
+			filterText = widget.getText("filterBox")
+			refreshingList = coroutine.create(refreshList)
+			updateFilterQueueTimer=nil
+		else
+			updateFilterQueueTimer=updateFilterQueueTimer-dt
+		end
+	end
 	if refreshingList and coroutine.status(refreshingList) ~= "dead" then
 		local a, b = coroutine.resume(refreshingList)
 		--sb.logInfo(tostring(a).." : "..tostring(b))
@@ -75,9 +85,10 @@ function getIcon(item, conf, listItem)
 end
 
 function refreshList()
-	listItems = {}
 	widget.clearListItems("scrollArea.itemList")
-	quicksort(items)
+	if #items <= maxItemsForSorting then
+		sortItems()
+	end
 	for i = 1, #items do
 		local item = items[i][2]
 		local conf = items[i][3]
@@ -88,7 +99,7 @@ function refreshList()
 			widget.setText("scrollArea.itemList." .. listItem .. ".itemName", name)
 			widget.setText("scrollArea.itemList." .. listItem .. ".amount", "×" .. item.count)
 			pcall(getIcon, item, conf, listItem)
-			listItems[listItem] = items[i]
+			widget.setData("scrollArea.itemList." .. listItem, items[i])
 		end
 		
 		if i % maxItemsAddedPerUpdate == 0 then
@@ -98,8 +109,7 @@ function refreshList()
 end
 
 function filterBox()
-	filterText = widget.getText("filterBox")
-	refreshingList = coroutine.create(refreshList)
+	updateFilterQueueTimer=0.10
 end
 
 function comparableFilter()
@@ -113,20 +123,10 @@ function comparableName(name)
 end
 
 function request()
-	--pane.playerEntityId()
 	local selected = widget.getListSelected("scrollArea.itemList")
-	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-		for i = 1, #items do
-			if items[i] == listItems[selected] then
-				local itemToSend=items[i]
-				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
-
-				world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
-				table.remove(items, i)
-				refreshingList = coroutine.create(refreshList)
-				return
-			end
-		end
+	local data = widget.getData("scrollArea.itemList." .. tostring(selected))
+	if data then
+		requestItem(selected, data[2].count)
 	end
 end
 
@@ -142,20 +142,9 @@ end
 
 function requestAllButOne()
 	local selected = widget.getListSelected("scrollArea.itemList")
-	if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-		for i = 1, #items do
-			if items[i] == listItems[selected] then
-				local itemToSend=items[i]
-				itemToSend[2].count=itemToSend[2].count-1
-				table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
-				--sb.logInfo(sb.printJson({playerPos=temp}))
-
-				world.sendEntityMessage(pane.containerEntityId(), "transferItem", itemToSend)
-				items[i][2].count=1
-				updateListItem(selected, 1)
-				return
-			end
-		end
+	local data = widget.getData("scrollArea.itemList." .. tostring(selected))
+	if data then
+		requestItem(selected, data[2].count - 1)
 	end
 end
 
@@ -186,24 +175,10 @@ function requestOne()
 		text = "1"
 	end
 	if tonumber(text) >= 0 then
-		--pane.playerEntityId()
-		--itemData={containerID, index}, itemDescriptor, itemConfig,pos
 		local selected = widget.getListSelected("scrollArea.itemList")
-		if selected ~= nil and listItems ~= nil and listItems[selected] ~= nil then
-			for i = 1, #items do
-				if items[i] == listItems[selected] then
-					local itemToSend=copy(items[i])
-					--sb.logInfo("%s",itemToSend)
-					itemToSend[2].count=math.min(tonumber(text),itemToSend[2].count)
-					items[i][2].count = items[i][2].count - itemToSend[2].count
-
-					table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
-					--sb.logInfo(sb.printJson({playerPos=temp}))
-					world.sendEntityMessage(pane.containerEntityId(), "transferItem",itemToSend)
-					updateListItem(selected, items[i][2].count)
-					return
-				end
-			end
+		local data = widget.getData("scrollArea.itemList." .. tostring(selected))
+		if data then
+			requestItem(selected, math.min(tonumber(text), data[2].count))
 		end
 	end
 end
@@ -219,39 +194,48 @@ function absolutePath(directory, path)
 	end
 end
 
---Sorting code (copyed from https://github.com/mirven/lua_snippets/blob/master/lua/quicksort.lua and modifed slightly)
-function partition(A, l, r, p)
-	local pivot = A[p]
-	A[p], A[r] = A[r], A[p]
-	
-	p = l
-	
-	for i = l, r-1 do
-		if compareByName(items[i], pivot) then
-			A[i], A[p] = A[p], A[i]
-			p = p + 1
-		end
-		A[p], A[r] = A[r], A[p]
-		
-		if numSorts % maxSortsPerUpdate == 0 then
-			coroutine.yield()
-		else
-			numSorts = numSorts + 1
-		end
+function requestItem(selected, amount)
+	local data = widget.getData("scrollArea.itemList." .. selected)
+	if data then
+		local itemToSend = copy(data)
+		itemToSend[2].count = amount
+		table.insert(itemToSend,world.entityPosition(pane.playerEntityId()))
+		world.sendEntityMessage(pane.containerEntityId(), "transferItem", itemToSend)
+		local newCount = data[2].count - amount
+		data[2].count = newCount
+		updateListItem(selected, newCount)
+		return
 	end
-	
-   return p
 end
 
-function quicksort(A, l, r)
-	l = l or 1
-	r = r or #A
-	numSorts = 1
-	if r > l then
-		local p = partition(A, l, r, l)
-		quicksort(A, l, p - 1)
-		quicksort(A, p + 1, r)
+--Quicksort code (based on https://www.geeksforgeeks.org/quick-sort/ )
+function sortItems(low, high)
+	low = low or 1
+	high = high or #items
+	numSorts = numSorts or 1
+	if low < high then
+		local part = partition(low, high)
+		sortItems(low, part - 1)
+		sortItems(part + 1, high)
 	end
+end
+
+function partition(low, high)
+	pivot = items[high]
+	i = (low - 1)
+	for j = low, high - 1 do
+		if compareByName(items[j], pivot) then
+			i = i + 1
+			items[i], items[j] = items[j], items[i]
+		end
+		
+		numSorts = numSorts + 1
+		if numSorts % maxSortsPerUpdate == 0 then
+			coroutine.yield()
+		end
+	end
+	items[i + 1], items[high] = items[high], items[i + 1]
+	return i + 1
 end
 
 function compareByName(itemA, itemB)

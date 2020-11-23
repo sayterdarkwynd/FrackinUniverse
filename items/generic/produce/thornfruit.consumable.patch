@@ -13,10 +13,10 @@
 			"op" : "replace",
 			"path" : "/description",
 			"value" : "So long as you watch out for the thorns, these are delicious. ^green;Type: Fruit^reset;"
-		},
-		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "thornjuice" },
-		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "blexplantseed" },
-		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "yellowfootseed" }
+		}//,
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "thornjuice" },
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "blexplantseed" },
+	//	{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "yellowfootseed" }
 	],
 	[
 		{
@@ -28,5 +28,6 @@
 			"path" : "/maxStack",
 			"value" : 20
 		}
-	]
+	],
+	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
 ]
