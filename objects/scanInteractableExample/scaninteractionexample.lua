@@ -13,13 +13,13 @@ texts = {
 
 function init()
 	message.setHandler('scanInteraction', scanInteraction)
-	
+
 	if storage.state == nil then
 		output(config.getParameter("defaultSwitchState", false))
 	else
 		output(storage.state)
 	end
-	
+
 	if storage.triggered == nil then
 		storage.triggered = false
 	end

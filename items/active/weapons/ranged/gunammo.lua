@@ -31,9 +31,9 @@ end
 function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
 	--world.debugText(animator.animationState("gunState").." Ammo: "..tostring(self.weapon.ammoAmount).."/"..tostring(self.weapon.ammoMax).." "..tostring(config.getParameter("ammoName")),{mcontroller.position()[1]-1,mcontroller.position()[2]-3.5},"red")
-	
+
 	world.debugText(self.debug,{mcontroller.position()[1]-1,mcontroller.position()[2]-3.5},"red")
-	
+
 	if config.getParameter("extraAmmo") then
 		local extraStorage = config.getParameter("extraAmmoList")
 		for k,v in pairs(extraStorage) do
@@ -46,9 +46,9 @@ function update(dt, fireMode, shiftHeld)
 		activeItem.setInstanceValue("extraAmmo",false)
 		activeItem.setInstanceValue("extraAmmoList",extraStorage)
 	end
-	
+
 	extraStorage = config.getParameter("tooltipFields")
-	
+
 	if self.weapon.ammoAmount == 0 then
 		if not self.weapon.reloadParam then
 			extraStorage["ammoNameLabel"] = "empty"
@@ -60,10 +60,10 @@ function update(dt, fireMode, shiftHeld)
 	elseif animator.animationState("gunState") == "empty" then
 		animator.setAnimationState("gunState","armed")
 	end
-	
+
 	extraStorage["ammoAmountLabel"]=self.weapon.ammoAmount.."/"..self.weapon.ammoMax
 	activeItem.setInstanceValue("tooltipFields",extraStorage)
-	
+
 end
 
 function uninit()

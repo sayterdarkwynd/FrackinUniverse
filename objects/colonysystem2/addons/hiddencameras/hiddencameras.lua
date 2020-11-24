@@ -51,7 +51,7 @@ end
 
 function update(dt)
 --	power.update(dt)
-	
+
 	-- Notify ITD but no faster than once per second.
 	if not scanTimer or (scanTimer > 1) then
 		transferUtil.loadSelfContainer()
@@ -66,14 +66,14 @@ function update(dt)
 		storage.timer=0
 	end
 	if storage.timer>=productionTime then
-		
+
 		--and power.consume(self.powerConsumption)
 		if clearSlotCheck("fuscienceresource") then
 			if object.outputNodeCount() > 0 then
 				object.setOutputNodeLevel(0,true)
 			end
 		--	animator.setAnimationState("machineState", "active")
-			
+
 			local count=tenantNumber
 			if count>0 then
 				count=math.sqrt(count)
@@ -81,8 +81,8 @@ function update(dt)
 					count=math.floor(count+(((math.random()>count-math.floor(count)) and 1) or 0))
 				end
 				world.containerAddItems(entity.id(), {name="fuscienceresource",count=count})
-			end			
-			
+			end
+
 		else
 			if object.outputNodeCount() > 0 then
 				object.setOutputNodeLevel(0,false)
@@ -126,7 +126,7 @@ function getTenantNumber()
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange/2, { order = "nearest" })
-	
+
 		for _, objectId in pairs(objectIds) do
 				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
 					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
@@ -134,7 +134,7 @@ function getTenantNumber()
 				end
 		end
 	end
-	
+
 end
 
 
@@ -146,7 +146,7 @@ function amountHappiness()
 	else
 		return 0
 	end
-	
+
 end
 
 

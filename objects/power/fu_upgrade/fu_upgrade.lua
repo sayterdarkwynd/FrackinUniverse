@@ -33,7 +33,7 @@ function update(dt)
     object.setLightColor({0, 0, 0, 0})
     return
   end
-  object.setLightColor(config.getParameter("lightColor", {100, 176, 191}))	
+  object.setLightColor(config.getParameter("lightColor", {100, 176, 191}))
 	if itemForUpgrade ~= nil and upgradebleItemsList[root.itemType(itemForUpgrade.name)] and itemForUpgrade.count ~= nil and itemForUpgrade.count == 1 then
 		local isUpgraded = false -- flag, upgrade is not possible or while not done
 		sb.logInfo("Trying to upgrade. Name is '" .. itemForUpgrade.name .. "'. root.itemType returns '" .. root.itemType(itemForUpgrade.name) .. "'.")
@@ -51,7 +51,7 @@ function update(dt)
 				end
 				isUpgraded = true
 			end
-			
+
 			local shieldHLTHRGN = world.containerItemAt(entity.id(), 9)
 			if isApproved(shieldHLTHRGN) then -- upgrade Shield Health Regen Ratio
 				world.containerTakeAt(entity.id(), 9) -- clear slot
@@ -80,7 +80,7 @@ function update(dt)
 					itemForUpgrade.parameters.statusEffects = {}
 				end
 			end
-			
+
 			local armorDMGM = world.containerItemAt(entity.id(), 1)
 			if isApproved(armorDMGM) then --upgade Armor power Multiplier
 				world.containerTakeAt(entity.id(), 1) -- clear slot
@@ -149,7 +149,7 @@ function update(dt)
 				end
 				isUpgraded = true
 			end
-			
+
 			local weaponENRG = world.containerItemAt(entity.id(), 7)
 			if root.itemType(itemForUpgrade.name) == "gun" and isApproved(weaponENRG) then -- upgrade Weapon Energy cost per shot (for guns only)
 				if itemForUpgrade.parameters.classMultiplier == nil then

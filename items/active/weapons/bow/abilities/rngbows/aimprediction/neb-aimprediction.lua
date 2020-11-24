@@ -51,7 +51,7 @@ function NebRNGAimBot:update(dt, fireMode, shiftHeld)
   if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.drawTimer > 0 or not status.resourceLocked("energy")) then
     self:setState(self.draw)
   end
-	
+
 	--Debug Variables
 	world.debugPoint(self:firePosition(), "red")
 	if self.predictedPosition then
@@ -93,13 +93,13 @@ function NebRNGAimBot:draw()
 		activeItem.setScriptedAnimationParameter("entities", {})
 	  end
     end
-	
+
 	local aimVec = self:idealAimVector()
 	local firePosition = self:firePosition()
     if self.aimOutOfReach or self.aimTypeSwitchTimer > 0 then
 	  local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
 	  self.weapon.aimAngle = aimAngle
-	
+
 	  world.debugLine(firePosition, vec2.add(firePosition, vec2.mul(vec2.norm(self:idealAimVector()), 3)), "yellow")
     elseif self.targets and self.targets[1] then
       self.weapon.stance.allowRotate = false
@@ -113,7 +113,7 @@ function NebRNGAimBot:draw()
       self.weapon.stance.allowRotate = true
       self.weapon.stance.allowFlip = true
     end
-	
+
     --Code for calculating which cursor to use
 	--In the while loop to avoid conflict with primary
     if not self.hasChargedCursor then
@@ -129,11 +129,11 @@ function NebRNGAimBot:draw()
     self.drawTimer = self.drawTimer + self.dt
 
     local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer / self.drawTime * (#self.drawArmFrames - 1)))
-	
+
 	--If not yet fully drawn, drain energy quickly
 	if self.drawTimer < self.drawTime then
 	  status.overConsumeResource("energy", self.energyPerShot / self.drawTime * self.dt)
-	
+
 	--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
 	elseif self.drawTimer > self.drawTime and self.drawTimer <= (self.drawTime + (self.powerProjectileTime or 0)) then
 	  status.setResourcePercentage("energyRegenBlock", 0.6)
@@ -141,7 +141,7 @@ function NebRNGAimBot:draw()
 	  if self.drainEnergyWhilePowerful then
 		status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
 	  end
-	
+
 	--If drawn beyond power peak levels, drain energy slowly
 	elseif self.drawTimer > (self.drawTime + (self.powerProjectileTime or 0)) then
 	  status.overConsumeResource("energy", self.holdEnergyUsage * self.dt)
@@ -156,18 +156,18 @@ function NebRNGAimBot:draw()
 		readySoundPlayed = true
 	  end
 	end
-	
+
     animator.setGlobalTag("drawFrame", drawFrame)
-	
+
     if drawFrame == 5 then --or whatever the frame is
       animator.setGlobalTag("directives", "?fade=FFFFFFFF=0.1")
 	  --sb.logInfo("jim charle here")
 	else
 	  animator.setGlobalTag("directives", "")
 	end
-	
+
     self.stances.draw.frontArmFrame = self.drawArmFrames[drawFrame + 1]
-	
+
 	--world.debugText(drawFrame .. " | " .. sb.printJson(self:perfectTiming()), mcontroller.position(), "red")
 	--world.debugText(sb.printJson(self:currentProjectileParameters(), 1), mcontroller.position(), "yellow")
 	--self:currentProjectileParameters()
@@ -221,7 +221,7 @@ function NebRNGAimBot:fire()
 		animator.playSound("release")
 	  end
 	end
-	
+
 	animator.setAnimationState("bow", "loosed")
 
     self.drawTimer = 0
@@ -337,7 +337,7 @@ function NebRNGAimBot:idealAimVector(inaccuracy)
 	return aimVector
   else
 	local targetOffset = world.distance(activeItem.ownerAimPosition(), firePosition)
-	
+
 	--Code taken from util.lua to determine when the aim position is out of range
 	local x = targetOffset[1]
 	local y = targetOffset[2]
@@ -350,7 +350,7 @@ function NebRNGAimBot:idealAimVector(inaccuracy)
 	  y = -y
 	end
 	local term1 = v^4 - (g * ((g * x * x) + (2 * y * v * v)))
-	
+
 	if term1 > 0 then
 	  self.aimOutOfReach = false
 	  return util.aimVector(self.predictedPosition or targetOffset, self.projectileParameters.speed, self.projectileGravityMultiplier, false)

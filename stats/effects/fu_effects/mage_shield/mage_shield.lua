@@ -12,13 +12,13 @@ function init()
 	animator.setAnimationState("aura", "windup")
 	if self.resource then
 		self.damageListener = damageListener("damageTaken", checkDamage)
-		
+
 		self.shieldHealth = config.getParameter("shieldHealth")
 		self.usePercentHealth = config.getParameter("shieldUsesPercentHealth")
 		if self.usePercentHealth then
 			self.shieldHealth=status.stat("maxHealth")*self.shieldHealth
 		end
-		
+
 		status.setResource(self.resource, self.shieldHealth)
 		self.currentDA = 0
 		self.active = true
@@ -28,7 +28,7 @@ function init()
 		self.shieldHealthPercent = self.shieldHealth / self.maxShieldHealth
 		if self.shieldHealthPercent > 1.0 then
 			self.shieldHealthPercent = 1
-		end	
+		end
 	else
 		self.legacy=true
 		self.damageListener = damageListener("damageTaken", checkDamageLegacy)
@@ -63,7 +63,7 @@ function uninit()
 		return
 	end
 	if not self.broke then
-		status.modifyResource(self.resource, - self.shieldHealth)	
+		status.modifyResource(self.resource, - self.shieldHealth)
 	end
 end
 

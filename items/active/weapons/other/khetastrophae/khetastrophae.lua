@@ -22,13 +22,13 @@ end
 
 function update(dt, fireMode, shiftHeld)
 	updateAim()
-	
+
 	--sb.logInfo("%s",{fireMode=fireMode,shiftHeld=shiftHeld})
 	storage.fireTimer = math.max(storage.fireTimer - dt, 0)
 	self.recoilTimer = math.max(self.recoilTimer - dt, 0)
-	
+
 	if fireMode=="none" or not fireMode then return end
-	
+
 	local abilString = fireMode.."Ability"
 	if shiftHeld then
 		abilString2 = abilString
@@ -41,7 +41,7 @@ function update(dt, fireMode, shiftHeld)
 		storage.fireTimer = ability.fireTime or 1
 		fire(ability,fireMode,shiftHeld)
 		--[[if status.resourceLocked("energy") then
-			
+
 		end]]
 	end
 
@@ -70,8 +70,8 @@ function fire(ability,fireMode,shiftHeld)
 		power = damagePerShot(ability),
 		powerMultiplier = activeItem.ownerPowerMultiplier()
 	}
-	
-	for i = 1, projectileCount do	
+
+	for i = 1, projectileCount do
 		local aimVec=aimVector(ability)
 		--sb.logInfo("aimVec: %s",aimVec)
 		local projectileId = world.spawnProjectile(
@@ -84,7 +84,7 @@ function fire(ability,fireMode,shiftHeld)
 		)
 		doRecoil(ability,aimVec,projectileCount)
 	end
-	
+
 	if ability.selfEffects then
 		for _,effect in pairs(ability.selfEffects) do
 			status.addEphemeralEffect(effect,ability.fireTime)
@@ -108,7 +108,7 @@ end
 function aimVector(ability)
 	local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(ability.inaccuracy or 0, 0))
 	aimVector[1] = aimVector[1] * self.aimDirection
-	
+
 	return aimVector
 end
 

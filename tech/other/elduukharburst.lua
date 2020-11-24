@@ -19,7 +19,7 @@ end]]
 
 function checkFood()
 	if status.isResource("food") then
-		return status.resource("food")		
+		return status.resource("food")
 	else
 		return 15
 	end
@@ -76,15 +76,15 @@ function update(args)
 		    status.addEphemeralEffects{{effect = "foodcostfire", duration = 0.02}}
 		else
 		    status.overConsumeResource("energy", 0.6)
-		end	
-	
+		end
+
 	      if self.firetimer == 0 then
 		self.firetimer = 0.1
 		activeFlight()
 	      end
-	    	
+	    
 	else
-  	        animator.stopAllSounds("activate")	
+  	        animator.stopAllSounds("activate")
 	end
 end
 

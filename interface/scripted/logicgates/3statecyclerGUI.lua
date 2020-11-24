@@ -61,7 +61,7 @@ function setTimerValues()
 		local textMid = widget.getText("inputMid")
 		local textRight = widget.getText("inputRight")
 		local doFix=false
-		
+
 		if textLeft ~= "" then
 			textLeft=tonumber(textLeft)
 			if textLeft==0 then
@@ -72,7 +72,7 @@ function setTimerValues()
 				doFix=true
 			end
 		end
-		
+
 		if textMid ~= "" then
 			textMid=tonumber(textMid)
 			if textMid==0 then
@@ -83,7 +83,7 @@ function setTimerValues()
 				doFix=true
 			end
 		end
-		
+
 		if textRight ~= "" then
 			textRight=tonumber(textRight)
 			if textRight==0 then
@@ -94,11 +94,11 @@ function setTimerValues()
 				doFix=true
 			end
 		end
-		
+
 		box.leftValue=textLeft
 		box.midValue=textMid
 		box.rightValue=textRight
-		
+
 		if doFix then
 			fillBoxes()
 		end

@@ -42,7 +42,7 @@ end
 
 function setToolTipValues(ability)
 	local projectileCount=totalProjectileTypes
-	
+
 	activeItem.setInstanceValue("tooltipFields", {
 		damagePerShotLabel = damagePerShot(ability,1),
 		speedLabel = 1 / ability.fireTime,
@@ -78,7 +78,7 @@ function update(dt, fireMode, shiftHeld)
 		end
 	end
 	if fireMode=="none" or not fireMode then return end
-	
+
 	local worldType=world.type()
 
 	if not shipwarning and world.getProperty("ship.fuel") then
@@ -129,10 +129,10 @@ function update(dt, fireMode, shiftHeld)
 		end
 		return
 	end
-	
+
 	local abilString = fireMode.."Ability"
 	if shiftHeld then
-		
+
 		abilString2 = abilString
 		abilString = abilString.."Shift"
 	end
@@ -159,7 +159,7 @@ function fire(ability,fireMode,throttle)
 	local baseProjectileCount=totalProjectileTypes[fireMode]
 	local projectileCount = throttle and 1 or math.max(1,math.floor(math.random(1,baseProjectileCount*baseProjectileCount)/baseProjectileCount))
 	local params = {power = damagePerShot(ability,projectileCount), powerMultiplier = activeItem.ownerPowerMultiplier()}
-	
+
 	if fireMode=="alt" then
 		params.controlForce=140
 		params.ignoreTerrain=false
@@ -173,7 +173,7 @@ function fire(ability,fireMode,throttle)
 	-- x<10 fallback: alt-throttle:phoenix,alt-reg:cultistshield,primary-throttle:damagebonus,primary-reg:gregfreezeAOE
 	--666: massive status effect spam. very likely to kill.
 	--1000: Doom everything in range.
-	
+
 	if special == 1 then
 		--someone just drew the third unluckiest card in the deck.
 		if sayterE then
@@ -220,7 +220,7 @@ function fire(ability,fireMode,throttle)
 		local doProjectile=false
 		local message
 		local color
-		
+
 		if fireMode=="alt" then
 			if throttle then
 				doProjectile=true
@@ -243,9 +243,9 @@ function fire(ability,fireMode,throttle)
 				message="Banana? Heh. Rainbow."
 				color={238,130,238}
 			end
-			
+
 		end
-		
+
 		if doProjectile then
 			world.spawnProjectile(
 				projectileType,
@@ -271,7 +271,7 @@ function fire(ability,fireMode,throttle)
 		for i = 1, projectileCount do
 			local buffer, buffer2
 			local aimVec=aimVector(ability)
-			
+
 			local projectileType
 			if math.random(1,100) >= 99.0 then
 				buffer=projectileData[fireMode]["rare"]
@@ -280,7 +280,7 @@ function fire(ability,fireMode,throttle)
 				buffer=projectileData[fireMode]["common"]
 				projectileType=buffer[math.floor(math.random(1,#buffer))]
 			end
-			
+
 			local element
 			if math.random(1,100) >= 90.0 then
 				buffer2=elementData[fireMode]["rare"]
@@ -289,7 +289,7 @@ function fire(ability,fireMode,throttle)
 				buffer2=elementData[fireMode]["common"]
 				element=buffer2[math.floor(math.random(1,#buffer2))]
 			end
-			
+
 			projectileType=string.gsub(projectileType,"<element>",element)
 			local projectileId = world.spawnProjectile(
 				projectileType,
@@ -301,7 +301,7 @@ function fire(ability,fireMode,throttle)
 			)
 			--doRecoil(ability,aimVec,projectileCount)
 		end
-		
+
 		--if not throttle then
 		spaz(projectileCount,firePosition(),ability.fireTime,throttle)
 		--end
@@ -324,7 +324,7 @@ end
 function aimVector(ability)
 	local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(ability.inaccuracy or 0, 0))
 	aimVector[1] = aimVector[1] * self.aimDirection
-	
+
 	return aimVector
 end
 
@@ -339,10 +339,10 @@ end
 function spaz(wordCount,position,duration,throttle)
 	if not throttle then duration=duration*2 end
 	--gregese.words,gregese.punct}
-	
+
 	local sentence=""
 	local caps=1
-	
+
 	for x=0,wordCount-1 do
 		if caps==1 then
 			if math.random(0,1) > 0.67 then
@@ -357,15 +357,15 @@ function spaz(wordCount,position,duration,throttle)
 				caps=0
 			end
 		end
-		
+
 		local rWord=gregese.words[math.floor(math.random(1,#gregese.words))]
-		
+
 		if caps==2 then
 			rWord=string.upper(rWord)
 		elseif caps==1 then
 			rWord=firstToUpper(rWord)
 		end
-		
+
 		local punctIndex=math.floor(math.max(math.random(1,#gregese.punct+6)-6,1))
 		caps=(punctIndex>1 and 1) or 0
 
@@ -378,12 +378,12 @@ function spaz(wordCount,position,duration,throttle)
 				rPunct=gregese.punct[punctIndex] or "."
 			end
 		end
-		
+
 		sentence=sentence..rWord..rPunct
 	end
-	
+
 	local color={math.floor(math.random(1,255)),math.floor(math.random(1,255)),math.floor(math.random(1,255))}
-	
+
 	effectUtil.messageParticle(position,sentence,color,0.6,nil,duration,nil)
 end
 

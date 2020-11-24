@@ -39,12 +39,12 @@ function update(args)
 	else
 		self.boostSpeed = config.getParameter("boostSpeed")
 	end]]
-	
+
 	if not args.moves["special1"] and self.specialLast then
 		self.gravActive = not self.gravActive
 	end
 	self.specialLast=args.moves["special1"]
-	
+
 	if self.gravActive then
 		if status.overConsumeResource("energy", 0.07) then
 			status.addEphemeralEffects{{effect = "nofalldamage", duration = 0.2 * self.jumpBonus}}

@@ -50,7 +50,7 @@ end
 
 function update(dt)
 --	power.update(dt)
-	
+
 	-- Notify ITD but no faster than once per second.
 	if not scanTimer or (scanTimer > 1) then
 		transferUtil.loadSelfContainer()
@@ -65,7 +65,7 @@ function update(dt)
 		storage.timer=0
 	end
 	if storage.timer>=productionTime then
-		
+
 		local worldtype = world.type()
 		if worldtype == 'unknown' then
 			worldtype = world.getProperty("ship.celestial_type") or worldtype
@@ -73,7 +73,7 @@ function update(dt)
 		if not self.outputMap[worldtype] then
 			initMap(worldtype)
 		end
-		
+
 		local output = nil
 		local rarityroll = math.random(1, self.maxWeight[worldtype])
 
@@ -137,7 +137,7 @@ function getTenantNumber()
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange/2, { order = "nearest" })
-	
+
 		for _, objectId in pairs(objectIds) do
 				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
 					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
@@ -145,7 +145,7 @@ function getTenantNumber()
 				end
 		end
 	end
-	
+
 end
 
 function providesHappiness() return true end
@@ -156,7 +156,7 @@ function amountHappiness()
 	else
 		return 0
 	end
-	
+
 end
 
 

@@ -178,7 +178,7 @@ self.firedWeapon = 1
 	  end
 	  mcontroller.addMomentum(recoilVelocity)
 	  mcontroller.controlJump()
-	
+
 	elseif self.crouchRecoilVelocity then
 	  local recoilVelocity = vec2.mul(vec2.norm(vec2.mul(self:aimVector(0), -1)), self.crouchRecoilVelocity)
 	  mcontroller.setYVelocity(0)
@@ -261,7 +261,7 @@ function FUOverHeating:overheating()
 	  activeItem.setInstanceValue("heat",self.currentHeat)
 	  coroutine.yield()
 	end
-	
+
 	self.overheatActive = false
 	activeItem.setInstanceValue("overheat",false)
 	animator.setParticleEmitterActive("heatVenting",false)
@@ -370,8 +370,8 @@ function FUOverHeating:applyRecoil()
   end
 end
 
-function FUOverHeating:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil				
-    if not mcontroller.onGround() then						
+function FUOverHeating:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil
+    if not mcontroller.onGround() then
      self.recoilForce = self.recoilForce * 0.5
     end
     if mcontroller.crouching() then

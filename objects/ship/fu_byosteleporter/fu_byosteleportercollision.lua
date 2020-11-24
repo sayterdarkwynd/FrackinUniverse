@@ -5,15 +5,15 @@ local oldUpdate=update
 
 function init()
 	self.matSpaces = {}
-	
+
 	local imageData = config.getParameter("imageConfig")
-	
+
 	if not imageData then
 		self.pendingUpdate=true
 	else
 		loadCollision(imageData)
 	end
-	
+
 	if oldInit then oldInit() end
 end
 
@@ -31,7 +31,7 @@ end
 function loadCollision(imageData)
 	local collisionType=imageData[1].collision or "empty"
 	local collisionSpaces=imageData[1].collisionSpaces or {}
-	
+
 	for _,offset in pairs(object.spaces()) do
 		local material="metamaterial:empty"
 		for _,piece in pairs(collisionSpaces) do
@@ -42,6 +42,6 @@ function loadCollision(imageData)
 		end
 		table.insert(self.matSpaces,{offset,material})
 	end
-	
+
 	object.setMaterialSpaces(self.matSpaces)
 end

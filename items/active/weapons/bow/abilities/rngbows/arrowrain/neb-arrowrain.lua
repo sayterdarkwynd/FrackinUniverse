@@ -67,11 +67,11 @@ function NebArrowRain:draw()
     end
     self.drawTimer = self.drawTimer + self.dt
     local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer / self.drawTime * (#self.drawArmFrames - 1)))
-	
+
 		--If not yet fully drawn, drain energy quickly
 		if self.drawTimer < self.drawTime then
 			status.overConsumeResource("energy", self.energyPerShot / self.drawTime * self.dt)
-		
+
 		--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
 		elseif self.drawTimer > self.drawTime and self.drawTimer <= (self.drawTime + (self.powerProjectileTime or 0)) then
 			status.setResourcePercentage("energyRegenBlock", 0.6)
@@ -79,7 +79,7 @@ function NebArrowRain:draw()
 			if self.drainEnergyWhilePowerful then
 				status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
 			end
-		
+
 		--If drawn beyond power peak levels, drain energy slowly
 		elseif self.drawTimer > (self.drawTime + (self.powerProjectileTime or 0)) then
 			status.overConsumeResource("energy", self.holdEnergyUsage * self.dt)
@@ -94,7 +94,7 @@ function NebArrowRain:draw()
 				readySoundPlayed = true
 			end
 		end
-	
+
     --Code for calculating which cursor to use
     if not self.hasChargedCursor then
       local cursorFrame = math.max(math.ceil(self.drawTimer * #self.cursorFrames), 1)
@@ -105,7 +105,7 @@ function NebArrowRain:draw()
     else
       activeItem.setCursor(self.cursorFrames[#self.cursorFrames])
     end
-	
+
     local aimVec = self:idealAimVector()
     if self.aimOutOfReach or self.aimTypeSwitchTimer > 0 then
 	  local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
@@ -117,9 +117,9 @@ function NebArrowRain:draw()
           self.weapon.aimAngle = (4 * self.weapon.aimAngle + vec2.angle(aimVec)) / 5
 	  world.debugLine(self:firePosition(), vec2.add(self:firePosition(), vec2.mul(vec2.norm(self:idealAimVector()), 3)), "green")
     end
-	
+
     animator.setGlobalTag("drawFrame", drawFrame)
-	
+
     if drawFrame == 5 then --or whatever the frame is
       animator.setGlobalTag("directives", "?fade=FFFFFFFF=0.1")
     else
@@ -164,12 +164,12 @@ function NebArrowRain:fire()
           inheritSpeedFactor = 1
         }
       }
-    end	
-	
+    end
+
 	--Calculate projectile speed based on draw time and projectile parameters
     projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer / self.drawTime))
     projectileParameters.processing = self.paletteSwaps
-	
+
 	--Calculate projectile power based on draw time and projectile parameters
 	local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer / self.drawTime))
     projectileParameters.power = projectileParameters.power
@@ -192,7 +192,7 @@ function NebArrowRain:fire()
 		  inheritSpeedFactor = math.random() * (self.maxProjectileSpeedInherit - self.minProjectileSpeedInherit) + self.minProjectileSpeedInherit
 		})
 	end
-	
+
 	--Spawn the projectile using the calculated parameters
     for i = 1, (self.projectileCount or 1) do
       local projectileId = world.spawnProjectile(
@@ -203,7 +203,7 @@ function NebArrowRain:fire()
         false,
         projectileParameters
       )
-	
+
 	  world.callScriptedEntity(projectileId, "setMovementParameters", self.projectileMovementParameters)
 	  if self:perfectTiming() then
 		animator.playSound("perfectRelease")
@@ -303,7 +303,7 @@ function NebArrowRain:idealAimVector()
 	return aimVector
   else
 	local targetOffset = world.distance(activeItem.ownerAimPosition(), self:firePosition())
-	
+
 	--Code taken from util.lua to determine when the aim position is out of range
 	local x = targetOffset[1]
 	local y = targetOffset[2]
@@ -316,7 +316,7 @@ function NebArrowRain:idealAimVector()
 	  y = -y
 	end
 	local term1 = v^4 - (g * ((g * x * x) + (2 * y * v * v)))
-	
+
 	if term1 > 0 then
 	  self.aimOutOfReach = false
 	  return util.aimVector(targetOffset, self.projectileParameters.speed, self.projectileGravityMultiplier-0.4, true)

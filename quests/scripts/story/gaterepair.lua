@@ -161,7 +161,7 @@ function gateFound()
   player.radioMessage("gaterepair-gateFound1")
   player.radioMessage("gaterepair-gateFound2")
   storage.stage = 3
-	
+
   util.wait(14)
 
   self.state:set(self.stages[storage.stage])

@@ -54,7 +54,7 @@ function update(dt)
     ItemNew = world.containerItemAt(pane.containerEntityId(),2)
 
     cost = self.baseCost
-	
+
     if itemPGI then
         --Validate slot#2 contains a PGI
         local cfg = root.itemConfig(itemPGI).config
@@ -62,7 +62,7 @@ function update(dt)
             itemPGI = nil
         end
     end
-	
+
 	if itemPGI == nil then
 		cost = round(cost * self.costModifier,0)
     end

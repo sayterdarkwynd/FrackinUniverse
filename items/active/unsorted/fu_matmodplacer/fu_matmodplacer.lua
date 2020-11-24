@@ -20,7 +20,7 @@ function activate(fireMode, shiftHeld)
 				activeItem.setInstanceValue("fuelValue", storage.fuelValue)
 				storage.remove = false
 				animator.playSound("paintMode")
-				
+
 			else
 				activeItem.setInstanceValue("matMod", nil)
 				activeItem.setInstanceValue("fuel", nil)

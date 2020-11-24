@@ -46,7 +46,7 @@ function TheaMinigun:update(dt, fireMode, shiftHeld)
 	and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 
     self:setState(self.charge)
-	
+
   --Count down the reset timer (how long the charge remains after the player stops firing)
   elseif self.windupReady == true and (self.fireMode ~= (self.activatingFireMode or self.abilitySlot) or world.lineTileCollision(mcontroller.position(), self:firePosition())) then
     self.resetTimer = math.max(0, self.resetTimer - self.dt)
@@ -62,7 +62,7 @@ function TheaMinigun:update(dt, fireMode, shiftHeld)
 	  self.chargeTimer = self.chargeTime
 	  self.resetTimer = self.resetTime
 	end
-	
+
   --If we run out of energy while firing
   elseif self.windupReady == true and status.resourceLocked("energy") then
     animator.stopAllSounds("holdLoop")
@@ -102,12 +102,12 @@ function TheaMinigun:charge()
   --While charging, but not yet ready, count down the charge timer
   while self.chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) and not world.lineTileCollision(mcontroller.position(), self:firePosition()) do
     self.chargeTimer = math.max(0, self.chargeTimer - self.dt)
-	
+
 	self.chargeHasStarted = true
-	
+
 	--Prevent energy regen while charging
 	status.setResourcePercentage("energyRegenBlock", 0.6)
-	
+
 	if self.chargeSoundIsPlaying == false then
 	  animator.playSound("chargeLoop", -1)
 	  self.chargeSoundIsPlaying = true
@@ -121,14 +121,14 @@ function TheaMinigun:charge()
 	self.resetTimer = self.resetTime
 	self.chargeHasStarted = false
 	self.windupReady = true
-	
+
 	if self.holdSoundIsPlaying == false then
 	  animator.playSound("holdLoop", -1)
 	  animator.stopAllSounds("chargeLoop")
 	  self.chargeSoundIsPlaying = false
 	  self.holdSoundIsPlaying = true
 	end
-	
+
     self:setState(self.fire)
   --If not charging and charge isn't ready, go to cooldown
   else
@@ -199,7 +199,7 @@ function TheaMinigun:cooldown()
     self.weapon:updateAim()
 	self.weapon:setStance(self.stances.discharge)
 	self.shouldDischarge = false
-	
+
 	local progress = 0
     util.wait(self.stances.discharge.duration, function()
       local from = self.stances.discharge.weaponOffset or {0,0}
@@ -214,7 +214,7 @@ function TheaMinigun:cooldown()
   else
     self.weapon:updateAim()
 	self.weapon:setStance(self.stances.cooldown)
-	
+
     local progress = 0
     util.wait(self.stances.cooldown.duration, function()
       local from = self.stances.cooldown.weaponOffset or {0,0}

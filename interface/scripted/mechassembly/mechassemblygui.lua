@@ -276,7 +276,7 @@ function updatePreview()
 	if params.parts.hornName == 'mechchipfeather' then
 	  massTotal = massTotal * 0.4
 	  healthMax = healthMax * 0.75
-	end	
+	end
 	if massTotal > 22 then
 	  self.energyBoost = self.energyBoost * (massTotal/50)
 	end
@@ -298,17 +298,17 @@ function updatePreview()
 	  self.mobilityControlValue = 40
 	  self.mobilityJumpValue = 0
 	elseif params.parts.hornName == 'mechmobility5' then
-	  self.mobilityBoostValue = 50	
+	  self.mobilityBoostValue = 50
 	  self.mobilityControlValue = 50
 	  self.mobilityJumpValue = 0
 	elseif params.parts.hornName == 'mechchipcontrol' then
 	  self.mobilityBoostValue = -20
 	  self.mobilityControlValue = 20
-	  self.mobilityJumpValue = 20	
+	  self.mobilityJumpValue = 20
 	elseif params.parts.hornName == 'mechchipspeed' then
 	  self.mobilityBoostValue = 40
 	  self.mobilityControlValue = -20
-	  self.mobilityJumpValue = -20		
+	  self.mobilityJumpValue = -20
 	end
 
     --compute fuel module bonuses
@@ -319,7 +319,7 @@ function updatePreview()
 	  self.fuelCost = 0.8
 	elseif params.parts.hornName == 'mechchipovercharge' then
 	  self.fuelCost = 2.5
-	  self.mobilityBoostValue = 80	
+	  self.mobilityBoostValue = 80
 	end
 
     --compute energy

@@ -34,12 +34,12 @@ function NebNockedArrow:nockArrow()
 
   if not self.arrowNocked then
 	self:adaptAbility()
-	
+
 	self.weapon:setStance(self.stances.unnock)
 	animator.setAnimationState("bow", "loosed")
 	util.wait(self.stances.unnock.duration)
 	animator.setAnimationState("bow", "idle")
-	
+
 	animator.playSound("nockArrow")
 	if self.customArrow == true then
 	  animator.setAnimationState("specialArrow", "visible")
@@ -49,17 +49,17 @@ function NebNockedArrow:nockArrow()
 
 	self.weapon:setStance(self.stances.nock)
 	util.wait(self.stances.nock.duration)
-	
+
 	self.cooldownTimer = self.cooldownTime
 	self.arrowNocked = true
   else
 	self:resetAbility()
-	
+
 	self.weapon:setStance(self.stances.unnock)
 	animator.setAnimationState("bow", "loosed")
 	util.wait(self.stances.unnock.duration)
 	animator.setAnimationState("bow", "idle")
-	
+
 	animator.playSound("nockArrow")
 	if self.customArrow == true then
 	  animator.setAnimationState("specialArrow", "hidden")
@@ -68,7 +68,7 @@ function NebNockedArrow:nockArrow()
 
 	self.weapon:setStance(self.stances.nock)
 	util.wait(self.stances.nock.duration)
-	
+
 	self.cooldownTimer = self.cooldownTime
 	self.arrowNocked = false
   end

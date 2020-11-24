@@ -72,11 +72,11 @@ function NebRNGHealPoint:draw()
     self.drawTimer = self.drawTimer + self.dt
 
     local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer / self.drawTime * (#self.drawArmFrames - 1)))
-	
+
 	--If not yet fully drawn, drain energy quickly
 	if self.drawTimer < self.drawTime then
 	  status.overConsumeResource("energy", self.energyPerShot / self.drawTime * self.dt)
-	
+
 	--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
 	elseif self.drawTimer > self.drawTime and self.drawTimer <= (self.drawTime) then
 	  status.setResourcePercentage("energyRegenBlock", 0.6)
@@ -84,12 +84,12 @@ function NebRNGHealPoint:draw()
 	  if self.drainEnergyWhilePowerful then
 		status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
 	  end
-	
+
 	--If drawn beyond power peak levels, drain energy slowly
 	elseif self.drawTimer > (self.drawTime) then
 	  status.overConsumeResource("energy", self.holdEnergyUsage * self.dt)
 	end
-	
+
 	--Code for calculating which cursor to use
     if not self.hasChargedCursor then
       local cursorFrame = math.max(math.ceil(self.drawTimer * #self.cursorFrames), 1)
@@ -111,13 +111,13 @@ function NebRNGHealPoint:draw()
 		readySoundPlayed = true
 	  end
 	end
-	
+
     animator.setGlobalTag("drawFrame", drawFrame)
-	
+
     self.stances.draw.frontArmFrame = self.drawArmFrames[drawFrame + 1]
-	
+
 	--world.debugText(sb.printJson(self:currentProjectileParameters(), 1), mcontroller.position(), "yellow")
-	
+
     coroutine.yield()
   end
 
@@ -153,7 +153,7 @@ function NebRNGHealPoint:fire()
         self:currentProjectileParameters()
       )
 	end
-	
+
 	animator.setAnimationState("bow", "loosed")
 
     self.drawTimer = 0
@@ -176,11 +176,11 @@ function NebRNGHealPoint:fire()
 
   self.cannotUseAlt = true
 
-  while world.entityExists(self.teleportProjectile) do	
+  while world.entityExists(self.teleportProjectile) do
 	world.debugText("Active projectiles detected!", mcontroller.position(), "green")
-	
+
 	self.targetPosition = world.entityPosition(self.teleportProjectile)
-	
+
 	--Make sure we don't wait don't wait too long, and kill the projectile otherwise
 	self.waitTimer = math.max(0, self.waitTimer - self.dt)
 	if self.waitTimer == 0 then

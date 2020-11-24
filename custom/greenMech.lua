@@ -21,7 +21,7 @@ function init()
 	self.destRotations 		= {0, 0, 0, 0}
 	self.tweenTimes 		= {8, 8, 8, 8}
 	self.hide               = {false, false, false}
-	
+
 	self.allRotation 		= 0
 	self.destAllRotation 	= 0
 	self.allRotationTween 	= 8
@@ -93,7 +93,7 @@ function update(dt, fireMode, shiftHeld, controls)
 	legRot2 = 0
 
 	engineShake = math.sin(os.clock() * 36) / 30
-	
+
 	if mcontroller.onGround() then
 		legRot = util.toRadians(self.legCycle)
 		legRot2 = util.toRadians(self.legCycle + 180)
@@ -102,7 +102,7 @@ function update(dt, fireMode, shiftHeld, controls)
 			legRot = util.toRadians(-90)
 			legRot2 = util.toRadians(-90)
 		end
-		
+
 	else
 		self.legCycle = 0
 		legRot = util.toRadians(-120 - (mcontroller.yVelocity() * 1.5))
@@ -120,7 +120,7 @@ function update(dt, fireMode, shiftHeld, controls)
 		self.crouchoffset = -1
 		collPoly = self.mechCrouchPoly
 	end
-	
+
 	mcontroller.controlModifiers({
 		movementSuppressed = true,
 		facingSuppressed = false,
@@ -155,7 +155,7 @@ function update(dt, fireMode, shiftHeld, controls)
 			mcontroller.addMomentum({walkSpeed, 0})
 		elseif controls.left and not controls.right then
 			mcontroller.addMomentum({-walkSpeed, 0})
-		end	
+		end
 
 	else
 		if controls.jump and mcontroller.yVelocity() > 0 then
@@ -182,7 +182,7 @@ function update(dt, fireMode, shiftHeld, controls)
 			{1.5, -1 + walkBob + engineShake}}
 		self.destRotOffsets = {{0, 0}, {0, 0}, {0, 0}, {-1.5, 0}}
 		self.destRotations = {0, 0, 0, 0}
-		
+
 		self.destAllOffset 	= {-1, 0}
 		self.destArmAngleOffset = 0
 		activeItem.setTwoHandedGrip(true)
@@ -208,7 +208,7 @@ function update(dt, fireMode, shiftHeld, controls)
 	end
 	self.destArmAngleOffset = self.destArmAngleOffset
 	activeItem.setArmAngle(util.toRadians(0))
-	
+
 	-- For smooth animations
 	for i = 1, #self.offsets, 1 do
 		self.offsets[i][1] 		= lerp(self.offsets[i][1], self.destOffsets[i][1], (self.tweenTimes[i] * self.transformSpeed))
@@ -225,34 +225,34 @@ function update(dt, fireMode, shiftHeld, controls)
 	self.rotations[4] = cannonAngle
 
 	if self.form == 0 then -- Cannon
-		if (fireMode == "primary" and not self.prevPrimary) or (self.primaryCooldown == 0 and fireMode == "primary") then	
+		if (fireMode == "primary" and not self.prevPrimary) or (self.primaryCooldown == 0 and fireMode == "primary") then
 			if shiftHeld then
 				self.primaryCooldown = 0.6
 				cannonFire(20)
 				cannonFire(20)
 				cannonFire(20)
 				animator.playSound("cannonAlt")
-				
+
 			else
 				self.primaryCooldown = 0.3
 				cannonFire(1)
 				animator.playSound("cannonAlt")
 
 			end
-			
-		elseif (fireMode == "alt" and not self.prevAlt) or (self.secondaryCooldown == 0 and fireMode == "alt") then	
+
+		elseif (fireMode == "alt" and not self.prevAlt) or (self.secondaryCooldown == 0 and fireMode == "alt") then
 			if shiftHeld then
 				self.secondaryCooldown = 0.5
 				cannonAlt(0)
 				cannonAlt(15)
 				cannonAlt(-15)
-				
+
 			else
 				self.secondaryCooldown = 0.25
 				cannonAlt(0)
-				
+
 			end
-			
+
 		else
 
 		end

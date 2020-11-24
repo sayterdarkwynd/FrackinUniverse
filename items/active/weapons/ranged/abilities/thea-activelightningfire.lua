@@ -48,7 +48,7 @@ function TheaActiveLightningFire:fire()
 
   local wasColliding = false
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", (self.energyUsage or 0) * self.dt) do
-	
+
     local beamStart = self:firePosition()
 	--Beam End for checking terrain collision
     local beamEndGround = vec2.add(beamStart, vec2.mul(vec2.norm(self:aimVector(0)), self.lightningDistanceGround))
@@ -58,7 +58,7 @@ function TheaActiveLightningFire:fire()
     local beamLength = self.lightningDistanceGround
 
 	local beamHasCollision = false
-	
+
 	--Check for tile collision along aline
     local collidePoint = world.lineCollision(beamStart, beamEndGround)
     if collidePoint then
@@ -66,7 +66,7 @@ function TheaActiveLightningFire:fire()
       beamLength = world.magnitude(beamStart, beamEnd)
 	  beamHasCollision = true
     end
-	
+
 	--Check for enemy collision along line
 	local targets = world.entityLineQuery(beamStart, beamEndEnemies, {
       withoutEntityId = activeItem.ownerEntityId(),
@@ -95,15 +95,15 @@ function TheaActiveLightningFire:fire()
 	--If we have collision, draw the primary lightning effect
 	if beamHasCollision == true then
 	  self.weapon:setDamage(self.damageConfig, {self.weapon.muzzleOffset, {self.weapon.muzzleOffset[1] + beamLength, self.weapon.muzzleOffset[2]}}, self.fireTime)
-	
+
 	  --Calculate the lightning displacement based on distance to target
 	  local distancePercentage = beamLength / self.lightningDistanceEnemies
 	  local targetDisplacement = math.max(self.lightningDisplacementMin, distancePercentage * self.lightningDisplacementMax)
-	
+
 	  --Draw lightning using these parameters
 	  -- amount, width, forks, branching, color, length, hasCollision(Bool)
 	  self:setLightning(self.lightningAmount, self.lightningWidth, self.lightningForks, self.lightningBranchingAmount, self.lightningColour, beamLength, targetDisplacement)
-	
+
 	  --Update sound effects
 	  if self.loopSoundPlaying == false then
 		animator.playSound("fireLoop", -1)
@@ -113,7 +113,7 @@ function TheaActiveLightningFire:fire()
 	  end
 	else
 	  activeItem.setScriptedAnimationParameter("lightning", {})
-	
+
 	  --Update sound effects
 	  if self.idleSoundPlaying == false then
 		animator.stopAllSounds("fireLoop")
@@ -122,7 +122,7 @@ function TheaActiveLightningFire:fire()
 		self.idleSoundPlaying = true
 	  end
 	end
-	
+
 	--Draw the secondary lightning effect
 	self:setLightning2(self.lightningAmount2, self.lightningWidth2, self.lightningForks2, self.lightningBranchingAmount2, self.lightningColour2, self.lightningDisplacement2, self.lightningStartOffset, self.lightningEndOffset)
 
@@ -145,7 +145,7 @@ function TheaActiveLightningFire:setLightning(amount, width, forks, branching, c
       forkAngleRange = 0.75,
       width = width,
       color = color
-    }	
+    }
 	bolt.itemStartPosition = self.weapon.muzzleOffset
 	bolt.itemEndPosition = vec2.add(self.weapon.muzzleOffset, {length, 0})
     bolt.displacement = displacement or 1
@@ -164,7 +164,7 @@ function TheaActiveLightningFire:setLightning2(amount, width, forks, branching, 
       width = width,
 	  displacement = displacement or 1,
       color = color
-    }	
+    }
 	bolt.itemStartPosition = vec2.add(self.weapon.muzzleOffset, startOffset)
 	bolt.itemEndPosition = vec2.add(self.weapon.muzzleOffset, endOffset)
     table.insert(lightning, bolt)

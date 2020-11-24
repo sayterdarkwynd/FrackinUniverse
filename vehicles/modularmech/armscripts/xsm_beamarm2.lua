@@ -77,7 +77,7 @@ function BeamArm:fireState()
 	  self:statSet()
 	  self.mechTier = self.stats.power
 	  self.basePower = self.stats.basePower or 1
-	
+
           pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
 
           self.applyBeamDamage = (self.basePower * self.mechTier) + math.random(50)

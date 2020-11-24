@@ -15,12 +15,12 @@ function update()
   local targetOreColor = animationConfig.animationParameter("targetOreColor")
   local nonTargetOreColor = animationConfig.animationParameter("nonTargetOreColor")
 
-	
+
 
   local pingLocation = animationConfig.animationParameter("pingLocation")
   if pingLocation then
-	
-		
+
+
     if not self.pingLocation or not vec2.eq(pingLocation, self.pingLocation) then
       self.pingLocation = pingLocation
       self.colorCache = {}

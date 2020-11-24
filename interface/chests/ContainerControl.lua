@@ -8,13 +8,13 @@ function CodexButtonClicked()
 	local numLearned = 0
 	local numAlreadyKnew = 0
 	local numErrored = 0
-	
+
 	local items = widget.itemGridItems("itemGrid")
 	for index, item in pairs(items) do
 		local itemName = item.name
 		-- Simple test: Does it end in -codex? We can easily scrap items that aren't codexes this way.
 		if #itemName > 6 and itemName:sub(-6) == "-codex" then
-		
+
 			-- Reiteration: 0 = Learned it, 1 = Didn't learn it (but it was because we already knew it), 2 = Something errored out and we had to abort the process.
 			local learnStatus = LearnCodex(itemName)
 			if learnStatus == 0 then
@@ -27,10 +27,10 @@ function CodexButtonClicked()
 		end
 	end
 	widget.playSound("/sfx/interface/item_equip.ogg") -- Give the player some feedback that they learned the entries.
-	
+
 	-- Now let's give them feedback.
 	local statusText = ""
-	
+
 	if numLearned ~= 0 then
 		-- We learned at least one. Append this information.
 		statusText = statusText .. "^cornflowerblue;Read " .. tostring(numLearned) .. "^reset;"
@@ -45,7 +45,7 @@ function CodexButtonClicked()
 			-- If the user has read at least one of these entries, then "Read X | Knew Y" makes sense linguistically.
 			-- Alternatively, just "Knew Y" doesn't, so I will use the extra space I have from NOT putting the "Read X" to make this more descriptive
 			-- It will say "Already Knew Y" if it can now.
-			
+
 			statusText = statusText .. "^cornflowerblue;Already Knew " .. tostring(numAlreadyKnew) .. "^reset;"
 		end
 	end
@@ -54,11 +54,11 @@ function CodexButtonClicked()
 		if numLearned ~= 0 or numAlreadyKnew ~= 0 then
 			statusText = statusText .. " ^gray;/^reset; "
 		end
-		
+
 		-- Direct people to the log.
 		statusText = statusText .. "^red;" .. tostring(numErrored) .. " failed (see log)"
 	end
-	
+
 	-- Reflect on this information.
 	widget.setText("statusMessage", statusText)
 end

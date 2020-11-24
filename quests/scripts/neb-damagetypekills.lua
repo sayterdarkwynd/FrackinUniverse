@@ -31,7 +31,7 @@ function buildDamageTypeKillCondition(config)
     --Check for inflicted hits and add a to the count on kill
     local damageNotifications, nextStep = status.inflictedDamageSince(self.queryDamageSince or 0)
     self.queryDamageSince = nextStep
-	
+
 	--local damageNotificationInfo = sb.printJson(damageNotifications, 1)
 	--sb.logInfo(damageNotificationInfo)
 

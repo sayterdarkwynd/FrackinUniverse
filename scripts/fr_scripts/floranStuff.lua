@@ -1,7 +1,7 @@
 --[[
 	Provides a variety of effects designed for use by the Floran race.
 	Arguments:
-	
+
 	"args" : {
 		"daytimeConfig" : {
 			"stats" : [                  -- Applied when at full health, full food, and during the day
@@ -38,18 +38,18 @@ function FRHelper:call(args, main, dt, ...)
 	else
 		hungerPerc = 3.0 / 7
 	end
-	
+
 	local daytime = world.timeOfDay() < 0.5
 	local lightLevel = math.min(world.lightLevel(mcontroller.position()),1.0)
-	
+
 	-- Night penalties
 	if not daytime then
 		local nightConfig = args.nightConfig
-	
+
 		-- Florans lose HP and Energy when the sun is not out
 		self:applyPersistent(nightConfig.stats, "FR_floranNight")
 		self:clearPersistent("FR_floranDaytime")
-		
+
 		-- when the sun is down, florans lose food
 		if hungerEnabled and hungerPerc < 1.0 then
 			--reduce the hunger drain if bathed in light
@@ -58,13 +58,13 @@ function FRHelper:call(args, main, dt, ...)
 			else
 			-- otherwise we lose normal amount
 				status.modifyResourcePercentage("food", nightConfig.hungerLoss * dt)
-			end	
+			end
 		end
 	else
 	-- Daytime Abilities
 		local underground = world.underground(mcontroller.position())
 		local dayConfig = args.daytimeConfig
-		
+
 		self:clearPersistent("FR_floranNight")
 		-- when a floran is in the sun, has full health and full food, their energy regen rate increases
 		if (hungerPerc >= 0.98) and status.resourcePercentage("health") >= 0.98 then
@@ -72,15 +72,15 @@ function FRHelper:call(args, main, dt, ...)
 		else
 			self:clearPersistent("FR_floranDaytime")
 		end
-		
+
 		-- when the sun is out, florans regenerate food
 		if hungerEnabled and hungerPerc < 1.0 then
 			status.modifyResourcePercentage("food", 0.008 * dt)
 		end
-		
+
 		local lightCalc = math.min(1, (lightLevel - dayConfig.minLight) / (dayConfig.maxLight - dayConfig.minLight))
 		local regenCalc = (dayConfig.maxRegen - dayConfig.minRegen) * lightCalc + dayConfig.minRegen
-		
+
 		-- When it is sunny and they are well fed, florans regenerate
 		--special handling for NPCs, to prevent immortality
 		if not (world.isNpc(entity.id()) and status.resource("health") < 1) then

@@ -93,7 +93,7 @@ function update(args)
 
   local underground = undergroundCheck()
   local lightLevel = getLight()
-	
+
   if not self.specialLast and args.moves["special1"] then
     attemptActivation()
     animator.playSound("activate")

@@ -42,7 +42,7 @@ end
 
 function update(dt)
 	crewOverflowOldUpdate(dt)
-	
+
 	if player.worldId() == player.ownShipWorldId() then
 		if fuFirstCrewCheckTimer <= 0 then	--To hopefully fix the issue where crew members are stored when you first join the world
 			fuCrewMembers = playerCompanions.getCompanions("crew")

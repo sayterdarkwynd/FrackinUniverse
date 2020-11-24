@@ -94,7 +94,7 @@ function update(args)
 	local params = mcontroller.baseParameters()
 	local maxSpeed = params.runSpeed * self.runSpeedMultiplier
 	params.groundForce = params.groundForce * ( math.abs(mcontroller.velocity()[1]) / maxSpeed * ( self.groundForceMultiplierMax - self.groundForceMultiplierMin ) + self.groundForceMultiplierMin )
-	mcontroller.controlParameters(params)	
+	mcontroller.controlParameters(params)
   end
 end
 

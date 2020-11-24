@@ -36,7 +36,7 @@ function update(dt)
             count = false
         end
     end
-	
+
 	-- Delay timer for giving new item...
     if storage.doCntr == true then
         storage.counter = storage.counter + dt

@@ -50,7 +50,7 @@ function spawnProjectile(args, board)
 	--sb.logInfo("%s",args)
   local parameters = parseProjectileConfig(board, args.projectileConfig or {})
   if args.scalePower then parameters.power, parameters.level = scalePower(parameters.power) end
-	
+
   local aimVector = args.aimVector or vec2.withAngle(args.angle) or {0,-1}
   if args.damageRepeatGroup and args.damageRepeatGroup ~= "" then
     parameters.damageRepeatGroup = args.damageRepeatGroup

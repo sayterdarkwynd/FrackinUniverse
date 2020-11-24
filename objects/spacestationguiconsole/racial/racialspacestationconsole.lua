@@ -2,15 +2,15 @@ function init()
 	message.setHandler('getStorage', getStorage)
 	message.setHandler('setStorage', setStorage)
 	message.setHandler('setInteractable', setInteractable)
-	
+
 	if not storage.objectData then
 		local races = root.assetJson("/interface/scripted/spaceStation/spaceStationData.config").stationRaces
-		
+
 		storage.objectData = {}
 		storage.objectData.stationRace = races[math.random(#races)]
 		storage.objectData.firstTime = true
 	end
-	
+
 	if string.find(object.name(), "_medical") then
 		animator.setAnimationState("base", "medical", true)
 		animator.setAnimationState("baseFullbright", "medical", true)
@@ -27,7 +27,7 @@ function init()
 		animator.setAnimationState("base", "random", true)
 		animator.setAnimationState("baseFullbright", "random", true)
 	end
-	
+
 	animator.setAnimationState("race", storage.objectData.stationRace, true)
 	object.setInteractive(true)
 end

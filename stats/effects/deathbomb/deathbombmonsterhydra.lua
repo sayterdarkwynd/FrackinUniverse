@@ -1,13 +1,13 @@
 function init()
 	canRun=false
 	if (not world.entityExists(entity.id())) or (world.entityType(entity.id())~= "monster") or (world.callScriptedEntity(entity.id(),"getClass") == 'bee') or (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) then
-		
+
 		effect.expire()
 	else
 		canRun=true
 		if not blocker then blocker=config.getParameter("blocker","deathbombmonsterhydra") end
 	end
-	
+
 	self.blinkTimer = 0
 end
 
@@ -53,14 +53,14 @@ function explode()
 					end
 				end
 			end
-			
+
 		end
-		
+
 		monsterParams.level=world.callScriptedEntity(entity.id(),"monster.level")
 		monsterParams.seed=world.callScriptedEntity(entity.id(),"monster.seed")
 		monsterParams.familyIndex=world.callScriptedEntity(entity.id(),"monster.familyIndex")
 		monsterParams.aggressive=world.entityAggressive(entity.id())
-		
+
 		for _=1,config.getParameter("count",1) do
 			world.spawnMonster(world.monsterType(entity.id()),entity.position(),monsterParams)
 		end

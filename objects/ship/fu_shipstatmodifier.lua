@@ -4,7 +4,7 @@ function init()
 	if not config.getParameter("isDeed") then		--Crew deed fix for the ship thruster fix
 		shipStatInit()								--Ship thruster fix
 	end
-	
+
 	storage.reload = storage.reload or true
 	if world.type() ~= "unknown" then
 		storage.reload = false
@@ -36,7 +36,7 @@ function applyStats(multiplier)
 	if storage.appliedStats.stats then
 		for objectStat, statAmount in pairs (storage.appliedStats.stats) do
 			statChange(objectStat, statAmount, multiplier)
-		end	
+		end
 	end
 end
 

@@ -279,7 +279,7 @@ function update(dt)
 			end
 			self.energyCheck = nil
 		end
-		
+
 		--mech hazard data check
 		--[[if not mechHazardDataTimer or mechHazardDataTimer>=1.0 then
 			if not self.hazardStatCheck then

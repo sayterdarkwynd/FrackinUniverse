@@ -25,9 +25,9 @@ function update(dt)
 		--if(timeCheck()) then
 			--'KEVIN'
 		--end
-		
+
 		--for x in effectList do
 		--effectUtil.effectAllInRange(x,30)
 		--end
-	end	
+	end
 end

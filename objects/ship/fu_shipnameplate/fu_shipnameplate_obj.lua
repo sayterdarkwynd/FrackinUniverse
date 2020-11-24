@@ -24,7 +24,7 @@ function die(args)
 end
 
 function update(dt)
-	
+
 end
 
 function onInteraction(args)

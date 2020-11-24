@@ -82,7 +82,7 @@ function update(args)
 		end
 
 	else
-		animator.stopAllSounds("activate")	
+		animator.stopAllSounds("activate")
 	end
 	if args.moves["down"] and args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
 		if self.firetimer == 0 then
@@ -93,7 +93,7 @@ function update(args)
 		end
 
 	else
-		animator.stopAllSounds("activate")	
+		animator.stopAllSounds("activate")
 	end
 	if args.moves["up"] and args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
 		if self.firetimer == 0 then
@@ -104,8 +104,8 @@ function update(args)
 		end
 
 	else
-	animator.stopAllSounds("activate")	
-	end	
+	animator.stopAllSounds("activate")
+	end
 end
 --[[
 function idle()

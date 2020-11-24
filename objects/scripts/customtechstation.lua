@@ -11,7 +11,7 @@ function init()
 	storage.data = storage.data or {}
 	storage.imageconfig = storage.imageconfig or nil
 	object.setAnimationParameter("imageConfig", storage.imageconfig)
-	
+
 	--there are too many similar handlers, but I'm too tired to rewrite now, and later I'll be too lazy because it'd work anyway, rip this
 	message.setHandler("setFallback", function(_,_, value) self.fallback = value end)
 	message.setHandler("storeData", function(_,_, widget, data) storage.data[widget] = data end)

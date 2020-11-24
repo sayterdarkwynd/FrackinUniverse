@@ -7,7 +7,7 @@ local print, warn, error, assertwarn, assert, tostring;
 local function GetLoggingOverridesIfNecessary()
 	if HasLoggingOverride then return end
 	print, warn, error, assertwarn, assert, tostring = CreateLoggingOverride("[XCustomCodex Systems]")
-	
+
 	HasLoggingOverride = true
 end
 
@@ -25,7 +25,7 @@ end
 -- Returns 0 if the call was successful and we learned the codex entry, 1 if the call was successful but we already knew the entry, and 2 if something errored out.
 function LearnCodex(itemName)
 	GetLoggingOverridesIfNecessary()
-	
+
 	-- First sanity check: Item name OK?
 	if type(itemName) ~= "string" then
 		warn("Something called LearnCodex with an item name that wasn't a string. Aborting the learning procedure. (itemName is nil? " .. tostring(itemName == nil):upper() .. ").")
@@ -40,30 +40,30 @@ function LearnCodex(itemName)
 		return 2
 	end
 	------------------------------------
-	
+
 	-- Second sanity check: Item exists?
 	local data = root.itemConfig(itemName)
 	if data == nil or data.directory == nil then
 		warn("Player attempted to learn a codex from the item [" .. tostring(itemName) .. "], but root.itemConfig() returned nil data on this item! This item was likely added by a mod and no longer exists. Aborting the learning procedure.")
 		return 2
 	end
-	
+
 	-- Update item name to strip it of -codex since we no longer want that suffix.
 	local itemName = itemName:sub(1, -7)
-	
+
 	local foundCodexFile = pcall(root.assetJson, data.directory .. itemName .. ".codex")
 	if not foundCodexFile then
 		warn("An item's ID ended in -codex, but it was not located as a codex in the game data files. Is this item violating standard naming conventions? Is the ID of the codex different than the file name of the codex? Aborting the learning procedure. (Attempted to locate the file [" .. data.directory .. itemName .. ".codex], which doesn't exist.")
 		return 2
 	end
 	------------------------------------
-	
+
 	-- This is for sanity checking. The interface itself will actually remove null codex entries from player data persistence.
 	local codexCache = {tostring(itemName), tostring(data.directory)}
-	
+
 	-- Get player's known codex entries.
 	local existingKnownEntries = player.getProperty("xcodex.knownCodexEntries") or {}
-	
+
 	-- If our internal cache here says we don't know it then we need to learn it.
 	if not TableAlreadyContains(existingKnownEntries, codexCache) then
 		table.insert(existingKnownEntries, codexCache)

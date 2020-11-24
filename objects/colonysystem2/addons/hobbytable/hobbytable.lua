@@ -92,7 +92,7 @@ function getTenantNumber()
 		transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 
 		local objectIds = world.objectQuery(storage.position, wellRange/2, { order = "nearest" })
-	
+
 		for _, objectId in pairs(objectIds) do
 				if world.callScriptedEntity(objectId,"fu_isColonyCore") then
 					tenantNumber = world.callScriptedEntity(objectId,"getTenantsNum")
@@ -100,7 +100,7 @@ function getTenantNumber()
 				end
 		end
 	end
-	
+
 end
 
 
@@ -112,7 +112,7 @@ function amountHappiness()
 	else
 		return 0
 	end
-	
+
 end
 
 

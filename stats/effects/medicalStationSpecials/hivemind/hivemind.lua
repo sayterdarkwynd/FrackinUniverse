@@ -37,12 +37,12 @@ function update(dt)
 				break
 			end
 		end
-		
+
 		self.spawnTimer = self.spawnInterval
 	else
 		self.spawnTimer = self.spawnTimer - dt
 	end
-	
+
 	baseUpdate(dt)
 end
 

@@ -17,26 +17,26 @@ function build(directory, config, parameters, level, seed)
 				image = string.format("%s?hueshift=%s", util.absolutePath(root.treeFoliageDirectory(parameters.foliageName), "saplingicon.png"), parameters.foliageHueShift or 0)
 			})
 	end
-	
+
 	-- begin added code
-	
+
 	saplings=root.assetJson("/items/buildscripts/buildsaplingfu.config")
-	
+
 	local stemName=saplings.stem[parameters.stemName]
 	local foliageName=saplings.foliage[parameters.foliageName]
-	
+
 	if foliageName == "" then foliageName = nil end
 	if stemName == "" then stemName = nil end
-	
+
 	parameters.shortdescription=""..(stemName or "Unknown")
-	
+
 	parameters.shortdescription=parameters.shortdescription..((foliageName and " "..foliageName) or "")
-	
+
 	parameters.shortdescription=parameters.shortdescription.." Sapling"
-	
+
 	parameters.description = "^green;Foliage^reset;: "..(parameters.foliageName or "Unknown").." (Hue:"..math.floor(math.abs(parameters.foliageHueShift or 0))..")\n^orange;Stem^reset;: "..(parameters.stemName or "Unknown").." (Hue:"..math.floor(math.abs(parameters.stemHueShift or 0))..")"
 
 	-- end added code
-	
+
 	return config, parameters
 end

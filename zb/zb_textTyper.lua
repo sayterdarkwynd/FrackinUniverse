@@ -48,7 +48,7 @@ function textTyper.init(textData, str, sound)
 		sb.logError("[ZB] textTyper.init in textTyper received no textData table, writing aborted.")
 		return
 	end
-	
+
 	textData.toWrite = {}
 	textData.scrambingLetters = {}
 	textData.functionCalls = {}
@@ -58,23 +58,23 @@ function textTyper.init(textData, str, sound)
 	local textCopy = str
 	local formatPause = 0
 	local skippedChars = 0 -- Required for text scrambling coords
-	
+
 	if textData.soundPlaying then
 		textTyper.stopSounds(textData)
 		textData.soundPlaying = nil
 	end
-	
+
 	if sound then
 		textData.soundPlaying = sound
 		pane.playSound(sound, -1, 1)
 	end
-	
+
 	if textCopy == nil then
 		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a nil value in 'str'"
 	elseif type(textCopy) ~= "string" then
 		textCopy = "^red;ERROR -^reset;\ntextTyper.init received a non-string value in 'str'"
 	end
-	
+
 	for i = 1, string.len(textCopy) do
 		if formatPause > 0 then
 			formatPause = formatPause - 1
@@ -87,75 +87,75 @@ function textTyper.init(textData, str, sound)
 					skippedChars = skippedChars + string.len(str) - 1
 					formatPause = formatEnd - i
 				end
-				
+
 			elseif str == "[" then
 				local bracketEnd = string.find(textCopy, "]", i)
 				if bracketEnd then
 					local format = string.sub(textCopy, i+1, bracketEnd-1)
 					if format == "(playername)" then
 						formatPause = bracketEnd - i
-						
+
 						local playerName = world.entityName(player.id())
 						for j = 1, string.len(playerName) do
 							table.insert(textData.toWrite, string.sub(playerName, j, j))
 						end
 						str = nil
-						
+
 					elseif string.find(format, "(pause)") then
 						formatPause = bracketEnd - i
 						str = string.sub(textCopy, i, bracketEnd)
-						
+
 					elseif string.find(format, "(instant)") then
 						formatPause = bracketEnd - i
 						str = string.sub(textCopy, i+10, bracketEnd-1)
 						skippedChars = skippedChars + string.len(str) - 1
-					
+
 					elseif string.find(format, "(data)") then
 						formatPause = bracketEnd - i
-						
+
 						str = string.sub(textCopy, i+7, bracketEnd-1)
 						local location = textTyper.splitTableString(str)
 						local data = textData
-						
+
 						for j = 1, #location do
 							data = data[location[j]]
 						end
-						
+
 						skippedChars = skippedChars + string.len(data) - 1
-						
+
 						for j = 1, string.len(data) do
 							table.insert(textData.toWrite, string.sub(data, j, j))
 						end
-						
+
 						str = nil
-						
+
 					elseif string.find(format, "(scramble)") then
 						amount = tonumber(string.sub(textCopy, i+11, bracketEnd-1))
 						table.insert(textData.scrambingLetters, #textData.toWrite + skippedChars..";"..#textData.toWrite + skippedChars + amount)
-						
+
 						for j = 1, amount do
 							table.insert(textData.toWrite, "#")
 						end
-						
+
 						formatPause = bracketEnd - i
 						str = nil
-						
+
 					elseif string.find(format, "(function)") then
 						funcName = string.sub(textCopy, i+11, bracketEnd-1)
 						textData.functionCalls[#textData.toWrite] = funcName
-						
+
 						formatPause = bracketEnd - i
 						str = nil
 					end
 				end
 			end
-			
+
 			if str then
 				table.insert(textData.toWrite, str)
 			end
 		end
 	end
-	
+
 	local removedIndexes = {}
 	for i, character in ipairs(textData.toWrite) do
 		if not (#removedIndexes > 0 and removedIndexes[#removedIndexes] == i+1) then
@@ -165,7 +165,7 @@ function textTyper.init(textData, str, sound)
 			end
 		end
 	end
-	
+
 	for _, index in ipairs(removedIndexes) do
 		table.remove(textData.toWrite, index)
 	end
@@ -177,7 +177,7 @@ function textTyper.splitTableString(str)
 	local temp
 	local dotPos = 0
 	local length = string.len(str)
-	
+
 	while dotPos do
 		dotPos = string.find(copy, "%.", 1)
 		temp = string.sub(copy, 1, dotPos, 1)
@@ -185,7 +185,7 @@ function textTyper.splitTableString(str)
 		temp = string.gsub(temp, "%.", "", 1)
 		table.insert(split, temp)
 	end
-	
+
 	return split
 end
 
@@ -197,7 +197,7 @@ function textTyper.update(textData, wd, sound, volume, cutoffSound)
 		else
 			local write = textData.toWrite[1]
 			if write then
-				
+
 				if cutoffSound and sound then
 					if type(sound) == "table" then
 						for _, snd in ipairs(sound) do
@@ -207,7 +207,7 @@ function textTyper.update(textData, wd, sound, volume, cutoffSound)
 						pane.stopAllSounds(sound)
 					end
 				end
-				
+
 				if sound then
 					if type(sound) == "table" then
 						pane.playSound(sound[math.random(1, #sound)], 0, (volume or 1))
@@ -215,12 +215,12 @@ function textTyper.update(textData, wd, sound, volume, cutoffSound)
 						pane.playSound(sound, 0, (volume or 1))
 					end
 				end
-				
+
 				local length = string.len(textData.written)
 				if textData.functionCalls and textData.functionCalls[length] then
 					textData[textData.functionCalls[length]]()
 				end
-				
+
 				if string.len(write) > 1 then
 					if string.sub(write, 1, 8) == "[(pause)" then
 						local pause = string.gsub(write, "%D", "")
@@ -229,7 +229,7 @@ function textTyper.update(textData, wd, sound, volume, cutoffSound)
 					else
 						textData.written = textData.written..write
 						table.remove(textData.toWrite, 1)
-						
+
 						if wd then
 							widget.setText(wd, textData.written)
 						end
@@ -237,7 +237,7 @@ function textTyper.update(textData, wd, sound, volume, cutoffSound)
 				else
 					textData.written = textData.written..write
 					table.remove(textData.toWrite, 1)
-					
+
 					if wd then
 						widget.setText(wd, textData.written)
 					end
@@ -265,11 +265,11 @@ function textTyper.skip(textData, wd)
 				textData.written = textData.written..write
 			end
 		end
-		
+
 		if wd then
 			widget.setText(wd, textData.written)
 		end
-		
+
 		textData.textPause = 0
 		textData.isFinished = true
 	end
@@ -277,20 +277,20 @@ end
 
 function textTyper.scrambling(textData)
 	if not textData or not textData.scrambingLetters or #textData.scrambingLetters == 0 then return end
-	
+
 	for _, coords in ipairs(textData.scrambingLetters) do
 		local textLength = string.len(textData.written)
 		local coordsBreaker = string.find(coords, ";")
 		local pointA = tonumber(string.sub(coords, 1, coordsBreaker-1))
 		local pointB = tonumber(string.sub(coords, coordsBreaker+1, string.len(coords)))
-		
+
 		if textLength < pointA then return end
 		if textLength < pointB then pointB = textLength end
-		
+
 		local preScramble = string.sub(textData.written, 1, pointA)
 		local toScramble = string.sub(textData.written, pointA + 1, pointB)
 		local postScramble = string.sub(textData.written, pointB + 1, textLength)
-		
+
 		if toScramble ~= "" then
 			local replacement = ""
 			for i = 1, string.len(toScramble) do
@@ -298,7 +298,7 @@ function textTyper.scrambling(textData)
 				local rnd = math.random(1, string.len(textTyper.allowedScrambleCharacters))
 				replacement = replacement..string.sub(textTyper.allowedScrambleCharacters, rnd, rnd)
 			end
-			
+
 			textData.written = preScramble..replacement..postScramble
 		end
 	end

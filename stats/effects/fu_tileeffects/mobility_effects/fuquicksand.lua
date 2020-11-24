@@ -20,7 +20,7 @@ function update(dt)
   mcontroller.controlParameters({
 	   liquidFriction = 75.0
     })
-  local waterFactor = mcontroller.liquidPercentage();		
+  local waterFactor = mcontroller.liquidPercentage();
 end
 
 function uninit()

@@ -40,8 +40,8 @@ end]]
 function checkFood()
 	local foodValue=15
 	if status.isResource("food") then
-		foodValue = status.resource("food")		
-	end	
+		foodValue = status.resource("food")
+	end
 	return foodValue
 end
 
@@ -85,9 +85,9 @@ function update(args)
 				self.halted = 1
 				animator.playSound("chargeUp")
 				animator.setSoundVolume("chargeUp",0.5,0)
-			end	
+			end
 	    end
-	
+
 			if self.flashCooldownTimer == 0 then
 				self.rechargeEffectTimer = self.rechargeEffectTime
 				tech.setParentDirectives(self.rechargeDirectives)
@@ -101,19 +101,19 @@ function update(args)
 	      tech.setParentDirectives()
 	    end
 	  end
-	
+
 	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) and self.firetimer == 0 then
 		if checkFood() > 15 then
 		    status.addEphemeralEffects{{effect = "foodcostshadow", duration = 0.5}}
 		else
 		    status.overConsumeResource("energy", 40)
-		end	
+		end
 		self.firetimer = 3
 		activeFlight()
 		self.dashCooldownTimer = 3
 		self.flashCooldownTimer = 3
 		self.halted = 0
-	else		
+	else
   	        animator.stopAllSounds("activate")
 	end
 end

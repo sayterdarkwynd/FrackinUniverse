@@ -66,7 +66,7 @@ typerParticle.controllerChain = {
 				255 + typerParticle.cfg.particle.color[3],
 				255 + typerParticle.cfg.particle.color[4]
 			}
-			
+
 			realColor = {
 				realColor[1] + typerParticle.cfg.controllers.color[1] * dt,
 				realColor[2] + typerParticle.cfg.controllers.color[2] * dt,
@@ -194,7 +194,7 @@ end
 
 function typerParticle.update(dt)
 	if not typerParticle.isActive then return end
-	
+
 	-- Keeps track of how long the effect is running
 	typerParticle.runningTime = typerParticle.runningTime + dt
 
@@ -215,7 +215,7 @@ function typerParticle.update(dt)
 				data.position[2] = data.position[2] + typerParticle.cfg.spacing[2]
 				data.index = data.index + 1
 			end
-			
+
 			-- Mark for removal if the entire string was printed out
 			if (data.index > #data.text) then
 				table.insert(toRemove, i)

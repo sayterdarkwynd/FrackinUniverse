@@ -19,7 +19,7 @@ function update(dt, fireMode, shiftHeld)
 			self.active=false
 			return
 		end
-					
+
 			raceroller()
 				if shiftHeld then
 				self.crewrace = player.species()

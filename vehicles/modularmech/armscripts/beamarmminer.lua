@@ -33,7 +33,7 @@ function BeamArm:windupState()
 	--  self.mechTier = self.stats.power
 	--  pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
 	--  self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
-	
+
 	--  pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage * self.mechTier
 	--  pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage * self.mechTier
         -- Mech critical hits
@@ -45,10 +45,10 @@ function BeamArm:windupState()
           --pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage + self.mechBonus
           --pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage + self.mechBonus
 
-          --sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)	
-	
+          --sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)
+
 	  --**********************************************************************************
-	
+
   animator.setAnimationState(self.armName, "windup")
   animator.playSound(self.armName .. "Windup")
 
@@ -89,7 +89,7 @@ function BeamArm:fireState()
 	  self:statSet()
 	  self.mechTier = self.stats.power
 	  self.basePower = self.stats.basePower
-	
+
           pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
           self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
 
@@ -101,7 +101,7 @@ function BeamArm:fireState()
 
           --apply final damage
           self.applyBeamDamage = self.applyBeamDamage + self.mechBonus;
-  -- ********************************************************************	
+  -- ********************************************************************
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
   local endPoint, beamCollision, beamLength = self:updateBeam()

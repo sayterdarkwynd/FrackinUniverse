@@ -27,13 +27,13 @@ end
 
 function explode()
 	if not blocker then blocker=config.getParameter("blocker","deathbombitem") end
-	
+
 	if not self.exploded and not status.statPositive("deathbombDud") and not status.statPositive(blocker) then
 		local healthMultiplier=config.getParameter("healthMultiplier",1)
 		local healthMax=status.resourceMax("health")
 		local item=config.getParameter("item","money")
 		local chance=config.getParameter("chance",100)
-		
+
 		if ((chance<100) and math.random(0,100)<chance) or (chance==100) then
 			world.spawnItem(item, mcontroller.position(),math.max(1,math.floor(healthMax*healthMultiplier)))
 		end

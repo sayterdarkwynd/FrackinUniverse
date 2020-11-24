@@ -2,7 +2,7 @@ function init()
 	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or ((world.entityType(entity.id())== "monster") and (world.callScriptedEntity(entity.id(),"getClass") == 'bee')) then
 		effect.expire()
 	end
-	
+
 	self.blinkTimer = 0
 	if not blocker then blocker=config.getParameter("blocker","deathbombsimpleprojectile") end
 end
@@ -30,11 +30,11 @@ function explode()
 	if not blocker then blocker=config.getParameter("blocker","deathbombsimpleprojectile") end
 	if not self.exploded and not status.statPositive("deathbombDud") and not status.statPositive(blocker) then
 		local projectileData=config.getParameter("projectile","invisibleprojectile")
-		
+
 		if type(projectileData)=="table" then
 			projectileData=projectileData[math.floor(math.random(1,#projectileData))]
 		end
-		
+
 		if type(projectileData)=="string" then
 			world.spawnProjectile(projectileData, mcontroller.position(), 0, {0, 0}, false)
 		end

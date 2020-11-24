@@ -14,7 +14,7 @@ function NebBowShotElder:init()
 	self.bonusSpeedMult=1/(1+self.bonusSpeed)
 	self.baseDrawTime=self.drawTime
 	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*self.bonusSpeedMult)
-	
+
 	animator.setGlobalTag("drawFrame", "0")
 	animator.setAnimationState("bow", "idle")
 	self.cooldownTimer = 0
@@ -28,13 +28,13 @@ end
 
 function NebBowShotElder:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
-	
+
 	self.updateProjectiles()
-	
+
 	world.debugPoint(self:firePosition(), "red")
-	
+
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
-	
+
 	--Code for calculating which cursor to use
 	if not self.hasChargedCursor then
 		local cursorFrame = math.max(math.ceil(self.drawTimer* #self.cursorFrames), 1)
@@ -65,7 +65,7 @@ end
 
 function NebBowShotElder:draw()
 	self.energyBonus = status.stat("bowEnergyBonus")
-	
+
 	self.weapon:setStance(self.stances.draw)
 
 	animator.setSoundPitch("draw", 1, self.modifiedDrawTime)
@@ -80,11 +80,11 @@ function NebBowShotElder:draw()
 		self.drawTimer= self.drawTimer+ self.dt
 
 		local drawFrame = math.min(#self.drawArmFrames - 2, math.floor(self.drawTimer/ self.modifiedDrawTime * (#self.drawArmFrames - 1)))
-		
+
 		--If not yet fully drawn, drain energy quickly
 		if self.drawTimer< self.modifiedDrawTime then
 			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus) / self.modifiedDrawTime * self.dt)
-		
+
 		--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
 		elseif self.drawTimer> self.modifiedDrawTime and self.drawTimer<= (self.modifiedDrawTime + (self.powerProjectileTime or 0)) then
 			status.setResourcePercentage("energyRegenBlock", 0.6)
@@ -92,7 +92,7 @@ function NebBowShotElder:draw()
 			if self.drainEnergyWhilePowerful then
 			status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
 			end
-		
+
 		--If drawn beyond power peak levels, drain energy slowly
 		elseif self.drawTimer> (self.modifiedDrawTime + (self.powerProjectileTime or 0)) then
 			status.overConsumeResource("energy", self.holdEnergyUsage * self.dt)
@@ -107,15 +107,15 @@ function NebBowShotElder:draw()
 			readySoundPlayed = true
 			end
 		end
-		
+
 		animator.setGlobalTag("drawFrame", drawFrame)
-		
+
 		self.stances.draw.frontArmFrame = self.drawArmFrames[drawFrame + 1]
-		
+
 		--Debug Variables
 		world.debugText(drawFrame .. " | " .. sb.printJson(self:perfectTiming()), mcontroller.position(), "red")
 		world.debugText(sb.printJson(self:currentProjectileParameters(), 1), mcontroller.position(), "yellow")
-	
+
 		coroutine.yield()
 	end
 
@@ -126,7 +126,7 @@ end
 function NebBowShotElder:fire()
 	self.hasChargedCursor = false
 	activeItem.setCursor(self.cursorFrames[1])
-	self.weapon:setStance(self.stances.fire)		
+	self.weapon:setStance(self.stances.fire)
 
 	animator.setGlobalTag("drawFrame", "0")
 	animator.stopAllSounds("ready")
@@ -148,21 +148,21 @@ function NebBowShotElder:fire()
 				animator.playSound("release")
 			end
 		end
-	
+
 		animator.setAnimationState("bow", "loosed")
 
 		self.drawTimer= 0
-		
+
 		if projectileId then
 			table.insert(storage.projectiles, projectileId)
 			world.sendEntityMessage(projectileId, "updateProjectile", nil)
 		end
-		
+
 		util.wait(self.stances.fire.duration)
 	else
 		animator.setGlobalTag("drawFrame", "0")
 	end
-	
+
 	self.cooldownTimer = self.cooldownTime
 end
 
@@ -180,25 +180,25 @@ function NebBowShotElder:currentProjectileParameters()
 	local projectileParameters = copy(self:perfectTiming() and (self.powerProjectileParameters or self.projectileParameters) or self.projectileParameters or {})
 	--Load the root projectile config based on draw power level
 	local projectileConfig = root.projectileConfig(self:perfectTiming() and self.powerProjectileType or self.projectileType)
-	
+
 	local speedMultiplier = 1.0
 	if self.minMaxSpeedMultiplier then
 		speedMultiplier = math.random(self.minMaxSpeedMultiplier[1] * 100, self.minMaxSpeedMultiplier[2] * 100) / 100
 	end
-	
+
 	--Calculate projectile speed based on draw time and projectile parameters
 	projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
 	projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer/ self.modifiedDrawTime)) * speedMultiplier
-	
+
 	--Bonus damage calculation for quiver users
 	--local damageBonus = 1.0 + status.stat("bowDrawTimeBonus") --adds the bow draw bonus back to damage to keep it on par, otherwise we lose damage
 	local damageBonus = 1.0
 	if self.useQuiverDamageBonus == true and status.statPositive("nebsrngbowdamagebonus") then
 		damageBonus = damageBonus+status.stat("nebsrngbowdamagebonus")
 	end
-	
+
 	-- are we in the air? if so, add airborne damage bonus. if not, we do not apply it
-	
+
 	--Calculate projectile power based on draw time and projectile parameters
 	local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer/ self.modifiedDrawTime))
 	projectileParameters.power = projectileParameters.power or projectileConfig.power

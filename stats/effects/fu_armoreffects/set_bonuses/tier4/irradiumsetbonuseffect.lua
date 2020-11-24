@@ -30,7 +30,7 @@ end
 
 function checkWeapons()
 	local knives=weaponCheck({"irradium"})
-	
+
 	if knives["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandlePrimary,weaponBonus1)
 	else

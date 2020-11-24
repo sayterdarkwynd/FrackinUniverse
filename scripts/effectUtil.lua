@@ -41,12 +41,12 @@ function effectUtil.messageParticle(position, text, color, size, offset, duratio
 						destructionTime = duration or 0.8,
 						layer = layer or "front",	 -- 'front', 'middle', 'back'
 						position = offset or {0, 2},
-						size = size or 0.7,	
+						size = size or 0.7,
 						approach = {0,20},		-- dunno what it is
 						initialVelocity = {0, 0.8},	 -- vec2 type (x,y) describes initial velocity
 						finalVelocity = {0,0.5},
 						-- variance = {initialVelocity = {3,10}},	-- 'jitter' of included parameter
-						angularVelocity = 0,																	
+						angularVelocity = 0,
 						flippable = false,
 						timeToLive = duration or 2,
 						rotation = 0,
@@ -105,7 +105,7 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 				else
 					teamData=world.entityDamageTeam(id)
 				end
-				
+
 				if teamData.type==teamType then
 					if effectUtil.effectTarget(id,effect,duration) then
 						rVal=rVal+1

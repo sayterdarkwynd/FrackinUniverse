@@ -25,7 +25,7 @@ function populateMaterialsList()
                 if worldId[1]=="CelestialWorld" then
                     ores =root.assetJson("/interface/kukagps/ores.config")
                     biomes =root.assetJson("/interface/kukagps/biomes.config")
-                    stars =root.assetJson("/interface/kukagps/stars.config")	
+                    stars =root.assetJson("/interface/kukagps/stars.config")
 
                     -- local system = celestial.currentSystem()
                     -- print system

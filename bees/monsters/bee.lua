@@ -15,10 +15,10 @@ end
 function die()
 	if captured then
 		local genome = config.getParameter("genome", nil)
-		
+
 		if genome then
 			local item = root.createTreasure(monster.type(), 1)
-			
+
 			if string.find(item[1].name, monster.type()) then
 				world.spawnItem(item[1].name, entity.position(), 1, {genome = genome})
 				monster.setDropPool(nil)

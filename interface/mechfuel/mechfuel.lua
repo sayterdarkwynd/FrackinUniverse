@@ -170,7 +170,7 @@ function fuel()
 	local fuelCanAdd=item.count*fuelMultiplier
 	local fuelDifference=self.maxFuel-self.currentFuel
 	local fuelWillAdd=0
-	
+
 	if fuelDifference>0 then
 		if (fuelDifference > fuelCanAdd) or (item.count == 1 ) then
 			fuelWillAdd=fuelCanAdd
@@ -270,7 +270,7 @@ function fuelCountPreview(item)
 		end
 		return
 	end
-	
+
 	if (not self.currentFuel) or (not self.maxFuel) then
 		widget.setText("lblModuleCount", "^red;<Loading>^reset;")
 		return
@@ -284,11 +284,11 @@ function fuelCountPreview(item)
 		fuelMultiplier = fuelData.fuelMultiplier
 		textColor = fuelData.textColor or textColor
 	end
-	
+
 	local fuelCanAdd=item.count*fuelMultiplier
 	local fuelDifference=self.maxFuel-self.currentFuel
 	local fuelWillAdd=0
-	
+
 	if fuelDifference>0 then
 		if (fuelDifference > fuelCanAdd) or (item.count == 1 ) then
 			fuelWillAdd=fuelCanAdd

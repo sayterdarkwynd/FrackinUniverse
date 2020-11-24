@@ -1,7 +1,7 @@
 --[[
 	Provides a variety of effects designed for use by the Novakid race.
 	Arguments:
-	
+
 	"args" : {
 		"daytimeConfig" : {
 			"stats" : [                  -- Applied during the day
@@ -35,9 +35,9 @@ function FRHelper:call(args, main, dt, ...)
 	else
 		hungerPerc = 0.85
 	end
-	
+
 	local daytime = world.timeOfDay() < 0.5
-	
+
 	-- Night penalties
 	if not daytime then
 		local nightConfig = args.nightConfig
@@ -54,10 +54,10 @@ function FRHelper:call(args, main, dt, ...)
 		local dayConfig = args.daytimeConfig
 		self:clearPersistent("FR_novakidNight")
 		self:applyStats(dayConfig, "FR_novakidDaytime", main, dt, ...)
-		
+
 		local hungerCalc = math.min(1, (hungerPerc - dayConfig.minHunger) / (dayConfig.maxHunger - dayConfig.minHunger))
 		local regenCalc = (dayConfig.maxRegen - dayConfig.minRegen) * hungerCalc + dayConfig.minRegen
-		
+
 		--special handling for NPCs, to prevent immortality
 		if not (world.isNpc(entity.id()) and status.resource("health") < 1) then
 			if hungerPerc >= dayConfig.minHunger then

@@ -88,7 +88,7 @@ function update(args)
        self.timerRemoveXibulbBar = 0
    else
        self.timerRemoveXibulbBar = self.timerRemoveXibulbBar + 1
-   end   	
+   end   
   if not self.specialLast and args.moves["special1"] then
     attemptActivation()
     animator.playSound("activate")
@@ -165,7 +165,7 @@ function update(args)
 			end
 			local configBombDrop = { power = 0 }
 			world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
-			self.xibulbTimer = 0		
+			self.xibulbTimer = 0
 		      end
 	      end
 

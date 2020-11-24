@@ -22,7 +22,7 @@ function update(dt)
       includedTypes = {"player"},
       boundMode = "CollisionArea"
     })
-	
+
 if storage.vanishTime and world.time() > storage.vanishTime then
     object.smash()
   end

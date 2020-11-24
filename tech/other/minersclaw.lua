@@ -41,8 +41,8 @@ end]]
 function checkFood()
 	local foodValue=15
 	if status.isResource("food") then
-		foodValue = status.resource("food")		
-	end	
+		foodValue = status.resource("food")
+	end
 	return foodValue
 end
 
@@ -71,9 +71,9 @@ function update(args)
 	    if self.flashCooldownTimer <= 2 then
 			if self.halted == 0 then
 				self.halted = 1
-			end	
+			end
 	    end
-	
+
 	    if self.flashCooldownTimer == 0 then
 	      self.rechargeEffectTimer = self.rechargeEffectTime
 	      tech.setParentDirectives(self.rechargeDirectives)
@@ -87,13 +87,13 @@ function update(args)
 	      tech.setParentDirectives()
 	    end
 	  end
-	
+
 	if args.moves["special1"] and self.firetimer == 0 and not (primaryItem and root.itemHasTag(primaryItem, "weapon")) and not (altItem and root.itemHasTag(altItem, "weapon")) then
 		if checkFood() > 10 then
 		    status.addEphemeralEffects{{effect = "foodcostclaw", duration = 0.01}}
 		else
 		    status.overConsumeResource("energy", 1)
-		end	
+		end
 		self.firetimer = 0.3
 		activeFlight()
 		self.dashCooldownTimer = 0.3

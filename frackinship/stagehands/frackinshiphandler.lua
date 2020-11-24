@@ -36,7 +36,7 @@ function getReplaceModePosition(size)
 	local halfSize = vec2.div(size, 2)
 	position[1] = position[1] - halfSize[1]
 	position[2] = position[2] + halfSize[2] + 1
-	
+
 	return position
 end
 
@@ -62,7 +62,7 @@ function racialiseShip()
 		treasure = util.mergeTable(treasure, newTreasure)
 	end
 	local activateShip = true
-	
+
 	-- Object racialisation
 	local objects = world.objectQuery(entity.position(), config.getParameter("racialiseRadius", 128))
 	local raceTableOverride = root.assetJson("/frackinship/configs/racetableoverride.config")
@@ -112,7 +112,7 @@ function racialiseShip()
 				end
 			end
 		end
-		
+
 		-- Ship pet setting (works on all objects with ship pets)
 		if world.getObjectParameter(object, "shipPetType") then
 			local newPetObject
@@ -133,7 +133,7 @@ function racialiseShip()
 				world.callScriptedEntity(object, "init")
 			end
 		end
-		
+
 		-- Treasure placing (can be placed in any object with enough space that isn't a fuel hatch (this part isn't tested))
 		if treasure then
 			local containerSize = world.containerSize(object)
@@ -144,7 +144,7 @@ function racialiseShip()
 				treasure = nil
 			end
 		end
-		
+
 		-- Trigger activate ship SAIL text
 		if activateShip and ((racialiserType and racialiserType == "techstation") or string.find(world.entityName(object), "techstation")) then
 			world.sendEntityMessage(object, "activateShip")

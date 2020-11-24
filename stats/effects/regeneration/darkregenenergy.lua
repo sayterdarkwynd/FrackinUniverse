@@ -61,7 +61,7 @@ function update(dt)
 	end
 	status.modifyResourcePercentage("energy", self.healingRate * dt)
   end
-		
+
 end
 
 function uninit()

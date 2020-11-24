@@ -13,14 +13,14 @@ function init()
 	self.flutterFall = config.getParameter("flutterFall")
 	self.flutterTimer = 0
 	self.flutterAble = false
-	
+
 	self.wallSlideParameters = config.getParameter("wallSlideParameters")
 	self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
 	self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime")
 	self.wallGrabFreezeTimer = 0
 	self.wallReleaseTime = config.getParameter("wallReleaseTime")
 	self.wallReleaseTimer = 0
-	
+
 	self.lastJumpKey = false
 
 	buildSensors()
@@ -45,10 +45,10 @@ function update(args)
 		self.doingAbility = false
 		  animator.stopAllSounds("startDash")
 		  animator.setAnimationState("dashing", "off")
-		  animator.setParticleEmitterActive("dashParticles", false)		
+		  animator.setParticleEmitterActive("dashParticles", false)
 		stopAbility(args)
 	end
-	
+
 	if not disabled(args) and not self.doingAbility then
 		if mcontroller.jumping() then
 			updateJumping(args)
@@ -56,20 +56,20 @@ function update(args)
 		if mcontroller.falling() then
 		  animator.stopAllSounds("startDash")
 		  animator.setAnimationState("dashing", "off")
-		  animator.setParticleEmitterActive("dashParticles", false)		
+		  animator.setParticleEmitterActive("dashParticles", false)
 			updateFalling(args)
 		end
 		if mcontroller.groundMovement() or mcontroller.liquidMovement() then
 		  animator.stopAllSounds("startDash")
 		  animator.setAnimationState("dashing", "off")
-		  animator.setParticleEmitterActive("dashParticles", false)		
+		  animator.setParticleEmitterActive("dashParticles", false)
 			landed(args)
 		end
 	end
-	
+
 	if not disabled(args) then updateAlways(args)
 	end
-	
+
   local jumpActivated = args.moves["jump"] and not self.lastJumpKey
   self.lastJumpKey = args.moves["jump"]
   local lrInput
@@ -134,7 +134,7 @@ function landed(args)
 	tech.setParentState()
 	if self.doingAbility then
 		self.doingAbility = false
-		stopAbility(args)		
+		stopAbility(args)
 	end
 	self.flutterAble = true
 end

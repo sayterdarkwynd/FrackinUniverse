@@ -454,7 +454,7 @@ function fuelCost(travel)
       cost = 70 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 4)) -- a bit farther out
     elseif distanceMath < 400 then
       cost = 140 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 6)) -- mid/long range
-    else							
+    else
       cost = 300 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 10)) -- long range value
     end
 
@@ -463,7 +463,7 @@ function fuelCost(travel)
 	end
 
     cost = math.min(cost,999999) -- max of 999999 fuel travel
-	
+
 	cost = math.max(0,util.round(cost - cost * (world.getProperty("ship.fuelEfficiency") or 0.0)))
 -- end FU fuel cost calculation
 

@@ -31,13 +31,13 @@ function init()
 		changeState("initial")
 	end
 	updateAiImage()
-	
+
 	pane.playSound(chatterSound, -1)
-	
+
 	ship = {}
 	ship.shipConfig = root.assetJson("/frackinship/configs/ships.config")
 	generateShipLists()
-	
+
 	-- temp stuff for pre-choosable BYOS
 	byosItems = config.getParameter("byosItems")
 end
@@ -102,9 +102,9 @@ function generateShipLists()
 		else
 			-- make this less bad
 			if data.raceWhitelist and not data.raceWhitelist[playerRace] then
-				
+
 			elseif data.raceBlacklist and data.raceBlacklist[playerRace]  and not data.raceWhitelist then
-			
+
 			else
 				data.id = id
 				if type(data.ship) == "table" then
@@ -158,7 +158,7 @@ function update(dt)
 			widget.setButtonEnabled("showCrew", true)
 		end
 	end
-	
+
 	-- Scan lines animation
 	if sailImage.scanlines.updateTime <= 0 then
 		sailImage.scanlines.currentFrame = updateFrame(sailImage.scanlines)
@@ -166,7 +166,7 @@ function update(dt)
 	else
 		sailImage.scanlines.updateTime = sailImage.scanlines.updateTime - dt
 	end
-	
+
 	-- Static animation
 	if sailImage.static.updateTime <= 0 then
 		sailImage.static.currentFrame = updateFrame(sailImage.static)
@@ -174,7 +174,7 @@ function update(dt)
 	else
 		sailImage.static.updateTime = sailImage.static.updateTime - dt
 	end
-	
+
 	updateAiImage()
 end
 
@@ -213,7 +213,7 @@ function changeState(newState)
 		-- to allow gsubing without changing the original value
 		local text = state.text
 		local path = state.path
-		
+
 		-- State specific state change stuff
 		if newState == "frackinShipChosen" then
 			createShip()
@@ -250,7 +250,7 @@ function changeState(newState)
 				widget.setImage("preview", ship.selectedShip.previewImage or "")
 			end
 		end
-		
+
 		if path then
 			widget.setText("path", path)
 		end
@@ -326,7 +326,7 @@ function populateShipList(shipList)
 	widget.clearListItems("root.shipList")
 	for _, shipData in ipairs (shipList) do
 		local listItemName = widget.addListItem("root.shipList")
-		local listItem = "root.shipList."..listItemName	
+		local listItem = "root.shipList."..listItemName
 		widget.setText(listItem..".name", shipData.name)
 		widget.setData(listItem, shipData)
 		if shipData.icon then

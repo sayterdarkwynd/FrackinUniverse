@@ -3,7 +3,7 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
 function init()
-	
+
 	local coordinator   = status.statusProperty('coordinator')
 	local segmentNumber = coordinator.segmentNumber
 	local totalSegments = coordinator.totalSegments
@@ -43,12 +43,12 @@ function update(dt)
 			elseif self.target == 0 then
 				self.target = util.closestValidTarget(20)
 			end
-			
+
 			if world.entityExists(self.target) then
 
 
 				local vector = vec2.sub(world.entityPosition(self.target), mcontroller.position())
-				
+
 
 				world.spawnProjectile(self.projectile, mcontroller.position(), entity.id(), vector, self.track, {power = self.power})
 

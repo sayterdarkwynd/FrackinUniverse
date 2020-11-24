@@ -1,7 +1,7 @@
 --TODO add position offsetting,
 
 function init()
-	
+
 	self.spawnCount 		= config.getParameter('spawnCount',1) + 1
 	self.spawns 			= self.spawnCount
 	self.spawnMonster 		= config.getParameter('spawnMonster')

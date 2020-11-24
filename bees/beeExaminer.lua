@@ -146,7 +146,7 @@ function update(dt)
 					end
 
 					if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
-					
+
 					if lastTag=="drone" then
 						if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
 						world.containerTakeAt(entity.id(), self.inputSlot)
@@ -189,7 +189,7 @@ function update(dt)
 							if not nudgeItem(singleCountFutureItem,self.outputSlot,slotItem) then return end
 							world.containerTakeNumItemsAt(entity.id(), self.inputSlot,1)
 						end
-						
+
 						futureItem=nil
 						if bonusResearch>0 then
 							shoveItem({name="fuscienceresource",count=bonusResearch},self.researchSlot)
@@ -202,7 +202,7 @@ function update(dt)
 						end
 						if bonusGene>0 then
 							shoveItem({name="fugeneticmaterial",count=bonusGene},self.protheonSlot)
-						end						
+						end
 						bonusEssence=0
 						bonusResearch=0
 						bonusProtheon=0
@@ -229,7 +229,7 @@ function update(dt)
 						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusProtheon) then
 							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used
 						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusGene) then
-							bonusGene=bonusGene+((tagList[lastTag].currencies.bonusGene+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used						
+							bonusGene=bonusGene+((tagList[lastTag].currencies.bonusGene+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used
 						end
 					end
 				end

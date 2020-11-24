@@ -96,7 +96,7 @@ function smashContainer(objectType)
 	if next(objParameters) ~= nil or keepContent == false then
 		objParameters["keepContent"] = keepContent
 	end
-	
+
 	object.smash(true)
 	world.spawnItem(object.name(), entity.position(), 1, objParameters)
 end

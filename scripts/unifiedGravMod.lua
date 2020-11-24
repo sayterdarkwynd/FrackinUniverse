@@ -35,7 +35,7 @@ end
 function unifiedGravMod.init()
 	if self.gravityNormalize then
 		unifiedGravMod.applyGravNormalization()
-	end	
+	end
 	local baseMotionParams=mcontroller.baseParameters()
 	self.flying=not baseMotionParams.gravityEnabled--flying creatures are unaffected normally. I use an alternate method to apply it.
 	self.ghosting=not baseMotionParams.collisionEnabled--'ghosts' are immune to gravity effects, period.

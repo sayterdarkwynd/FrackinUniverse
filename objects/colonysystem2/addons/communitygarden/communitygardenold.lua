@@ -85,11 +85,11 @@ function update(dt)
 	--growthmod should be nil if we aren't a power consumer
 	local growthmod = self.requiredPower and ((consumePower(dt) and 1) or self.unpoweredGrowthRate)
 	--sb.logInfo("growthmod: %s",growthmod)
-	
+
 --	if (wellsDrawing < 2) then
 		growPlant(growthmod, dt)
 --	end
-	
+
 	handleTooltip({water=water,fert=fert,growthmod=growthmod,seed=storage.currentseed})--update description
 
 	storage.activeConsumption = true
@@ -142,8 +142,8 @@ function checkTrayInputs()
 	-- Update cache
 	storage.cacheWaterName = inputWater and inputWater.name or nil
 	storage.cacheFertName = inputFert and inputFert.name or nil
-	
-	
+
+
 	return water,fert
 end
 
@@ -173,14 +173,14 @@ function handleTooltip(args)
 	else
 		growthString='Growth Rate: ^green;' .. growthrate2*tenantNumber .. "^reset;\n"
 	end
-	
+
 	--seed use and seed display
 	local seedString=""
 	if args.seed and args.seed.name then
 		seedString=root.itemConfig(args.seed.name).config.shortdescription
 		seedString=" (^yellow;" .. seedString .. "^reset;)"
 	end
-	
+
 	local seedUseWith=getFertSum('seedUse', args.fert, args.water)
 	local seedUseWithout=getFertSum('seedUse', "absolutelynothing", "absolutelynothing")
 	if seedUseWith<seedUseWithout then
@@ -189,7 +189,7 @@ function handleTooltip(args)
 		seedUseWith="^red;"..seedUseWith.."^reset;"
 	end
 	seedString='Seeds Used: ' .. seedUseWith .. seedString .. "\n"
-	
+
 	--yield calc
 	local yieldWith=getFertSum('yield', args.fert, args.water)
 	local yieldWithout=getFertSum('yield', "absolutelynothing", "absolutelynothing")
@@ -209,8 +209,8 @@ function handleTooltip(args)
 	elseif waterUseWith>waterUseWithout then
 		waterUseWith="^red;"..waterUseWith.."^reset;"
 	end
-	
-	
+
+
 	--water value calc
 	local waterValueString='Water Value: '
 	local waterValue=(args.water and args.water.value or 0)
@@ -219,18 +219,18 @@ function handleTooltip(args)
 	else
 		waterValueString=waterValueString..waterValue
 	end
-	
 
-	
+
+
 	local wellRangeString = "\n^red;Range:^gray; "..wellRange
 	local similarObjectsString = "\n^red;Similar Objects:^gray; "..((wellsDrawing-1 or 0))
 	local tenantsString = "\n^red;Tenants:^gray; "..tenantNumber
 	local happinessString = "\n^red;Happiness Factor: ^gray; "..happinessAmount
-	
+
 	if (wellsDrawing > 1) then
 		growthString="Growth Rate: ^green; 0^reset;\n"
 	end
-	
+
 	--set desc!
 	desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString..wellRangeString..similarObjectsString..tenantsString..happinessString
 	object.setConfigParameter('description', desc )
@@ -478,12 +478,12 @@ function getTenantNumber()
 	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 	tenantNumber = 0
 	local objectIds = world.objectQuery(storage.position, wellRange, { order = "nearest" })
-	
+
 	for _, objectId in pairs(objectIds) do
 			if world.callScriptedEntity(objectId,"fu_isColonyCore") then
 				tenantNumber = world.callScriptedEntity(objectId,"getTenants")
 			end
 	end
-	
+
 end
 

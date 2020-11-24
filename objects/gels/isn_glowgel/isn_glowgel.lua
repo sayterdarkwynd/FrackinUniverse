@@ -4,12 +4,12 @@ end
 
 function update(dt)
 	if not self.placed then return end
-	
+
 	local gelPosi = getSurroundingTileList()
 	for key, value in pairs(gelPosi) do
 		applyGel(value)
 	end
-	
+
 	entity.smash()
 end
 

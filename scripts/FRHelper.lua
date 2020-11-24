@@ -17,7 +17,7 @@ function FRHelper:new(species,gender)
 		)
 	end
 	if not success then frHelper.speciesConfig = root.assetJson("/species/_default.raceeffect") end
-	
+
 	if frHelper.speciesConfig.gender and frHelper.speciesConfig.gender[gender] then
 	  frHelper.speciesConfig = util.mergeTable(frHelper.speciesConfig,frHelper.speciesConfig.gender[gender])
 	end

@@ -8,9 +8,9 @@ end
 
 function ReloadAmmo:update(dt,fireMode,shiftHeld)
 	WeaponAbility.update(self,dt,fireMode,shiftHeld)
-	
+
 	self.cooldownTimer = math.max(0,self.cooldownTimer-self.dt)
-	
+
 	if self.fireMode == "alt"
 		and not self.weapon.CurrentAbility
 		and self.cooldownTimer == 0
@@ -19,7 +19,7 @@ function ReloadAmmo:update(dt,fireMode,shiftHeld)
 			if self.weapon.ammoAmount < self.weapon.ammoMax
 				and not status.resourceLocked("energy")
 			then
-				if status.overConsumeResource("energy", self.weapon.reloadParam[2]) then	
+				if status.overConsumeResource("energy", self.weapon.reloadParam[2]) then
 					self.weapon.ammoAmount = math.min(self.weapon.ammoMax,self.weapon.ammoAmount+self.weapon.reloadParam[1])
 					activeItem.setInstanceValue("ammoAmount",self.weapon.ammoAmount)
 					animator.playSound("switchAmmo")
@@ -48,5 +48,5 @@ function ReloadAmmo:update(dt,fireMode,shiftHeld)
 			self.cooldownTimer = 1 --just how often do you need to unload it, mate?
 		end
 	end
-	
+
 end

@@ -23,6 +23,6 @@ function chicken()
 	else
 		animator.setAnimationState("base", "off")
 	end
-	
+
 	return windLevel
 end

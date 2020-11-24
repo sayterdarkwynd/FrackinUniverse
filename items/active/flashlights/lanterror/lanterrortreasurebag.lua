@@ -14,7 +14,7 @@ function update(dt, fireMode, shiftHeld, moves)
 
 	animator.setLightActive("flashlight", fireMode == "primary")
 	animator.setLightActive("flashlightSpread", fireMode == "primary")
-	
+
 	animator.setParticleEmitterActive("activatedLight", fireMode == "primary")
 	if fireMode == "primary" then
 		animator.playSound("flashlight")

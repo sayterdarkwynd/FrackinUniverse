@@ -108,14 +108,14 @@ function beamgunUpdate(dt)
 		world.sendEntityMessage(self.scriptBug, "keepAlive")
 		--world.callScriptedEntity(self.scriptBug, "keepAlive")
 	end
-	
+
 	local newItems = world.getProperty("HarvesterBeamgunItemDropList") or {}
 	world.setProperty("HarvesterBeamgunItemDropList", nil)
 	for id,drop in pairs(newItems) do
 		--sb.logInfo("New Drop: %s, %s", id, drop)
 		pendingDrops[id] = drop
 	end
-	
+
 	for id,drop in pairs(pendingDrops) do
 		if drop.cd <= 0 then
 			world.spawnItem(drop.data.name, mcontroller.position(), drop.data.count, drop.data.parameters)
@@ -124,7 +124,7 @@ function beamgunUpdate(dt)
 			pendingDrops[id] = {["data"] = drop.data, ["cd"] = drop.cd - dt}
 		end
 	end
-	
+
 	if harvestBlacklist ~= {} then
 		for i,j in pairs(harvestBlacklist) do
 			if j[1] < 5 then

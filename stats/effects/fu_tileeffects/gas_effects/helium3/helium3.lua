@@ -3,7 +3,7 @@ require "/scripts/unifiedGravMod.lua"
 function init()
 	unifiedGravMod.initSoft()
 	unifiedGravMod.init()
-	
+
   --self.gravityModifier = config.getParameter("gravityModifier")
   --self.movementParams = mcontroller.baseParameters()
   activateVisualEffects()

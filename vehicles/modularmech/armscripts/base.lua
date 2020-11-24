@@ -163,7 +163,7 @@ function MechArm:fire()
 	-- *****special-case weapons
 	if (self.multicount) then  -- if its a spread-type projectile we divide by the number of projectiles before applying tier modifier
 	  pParams.power = (pParams.power / self.multicount)
-	end			
+	end
 	if (self.stats.flamethrower) then
 	  self.critMod = 0
 	  self.critChance = 0

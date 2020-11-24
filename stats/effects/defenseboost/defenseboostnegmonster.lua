@@ -15,7 +15,7 @@ function init()
 	     {stat = "cosmicResistance", amount = config.getParameter("resistanceAmount", 0)},
 	     {stat = "healingStatusImmunity", amount = 1 }
 	   })
-	   makeAlert()	
+	   makeAlert()
    end
    script.setUpdateDelta(0)
 end

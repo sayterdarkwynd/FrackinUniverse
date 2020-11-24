@@ -12,7 +12,7 @@ function update(dt)
 	else
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	
+
 	refresh(100, 1)
 	refresh(10, 2)
 	refresh(1, 3)

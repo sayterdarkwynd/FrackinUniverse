@@ -9,7 +9,7 @@ function zb_skipStarterCrap()
 	if false then--disabling this function until someone can make it not cause issues.
 		local quests = {"gaterepair", "shiprepair", "human_mission1", "mechunlock", "outpostclue"}
 		local str = "Quest IDs:"
-		
+
 		for _, quest in ipairs(quests) do
 			if not player.hasCompletedQuest(quest) then
 				player.startQuest(quest)

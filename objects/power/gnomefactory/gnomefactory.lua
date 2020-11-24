@@ -112,16 +112,16 @@ end
 
 
 function scanRecipes(sample)
-	
+
 	local recipes={}
-	
+
 	local type = root.itemType(sample.name) --sb.logInfo("slot0 type: %s", type)
 	local tags = root.itemTags(sample.name) --sb.logInfo("slot0 Tags: %s", tags)
-	
+
 	if (inputExclusionList.types and inputExclusionList.types[type]) or (inputExclusionList and inputExclusionList[sample.name]) then
 		return recipes
 	end
-	
+
 	if inputExclusionList.tags then
 		for _,tag in ipairs(tags) do
 			if inputExclusionList.tags[tag] then
@@ -129,7 +129,7 @@ function scanRecipes(sample)
 			end
 		end
 	end
-	
+
 	local recipeScan = root.recipesForItem(sample.name)
 	if recipeScan then --sb.logInfo("RecipeScan: %s", recipeScan)
 		for index,recipe in pairs(recipeScan) do
@@ -138,7 +138,7 @@ function scanRecipes(sample)
 			local sampleOutput = {}
 			local stackOut = recipe.output
 			sampleOutput[stackOut.name] = stackOut.count
-			
+
 			if not recipe.currencyInputs or util.tableSize(recipe.currencyInputs) == 0 then
 				local groupFail
 				--ignore any recipes that take a currency
@@ -146,7 +146,7 @@ function scanRecipes(sample)
 					sampleInputs = recipe.currencyInputs --sb.logInfo("sampleInputs if currency: %s", sampleInputs)
 				end
 				]]
-				
+
 				if recipe.groups then
 					if recipeExclusionList.groups then
 						for _,group in pairs(recipe.groups) do
@@ -157,7 +157,7 @@ function scanRecipes(sample)
 						end
 					end
 				end
-				
+
 				if not groupFail then
 					for index,item in pairs(recipe.input) do
 						sampleInputs[item.name]=item.count
@@ -238,7 +238,7 @@ function update(dt)
 	end
 
     storage.timer = storage.timer - dt
-	
+
 	if storage.crafting then
 		--if not storage.powerTimer or storage.powerTimer <= 0 then
 		--	if power.consume(storage.requiredPower) then
@@ -249,9 +249,9 @@ function update(dt)
 		--else
 		--	storage.powerTimer=storage.powerTimer-dt
 		--end
-	
+
 	end
-	
+
 	if storage.timer <= -6 then
 		if storage.crafting then
 			for k,v in pairs(storage.output) do
@@ -268,7 +268,7 @@ function update(dt)
 					world.spawnItem(leftover.name, entity.position(), leftover.count)
 				end
 			end
-	
+
 			stop()
 		end
 	end
@@ -310,14 +310,14 @@ function startCrafting(result)
 		return false
     else
 		_,result = next(result)
-		
+
 		--if we cant consume all of them, consume NONE.
         for k,v in pairs(result.inputs) do
 			if not world.containerAvailable(entity.id(), {item = k , count = v}) then
 				return false
 			end
         end
-		
+
         for k,v in pairs(result.inputs) do
 			world.containerConsume(entity.id(), {item = k , count = v})
         end

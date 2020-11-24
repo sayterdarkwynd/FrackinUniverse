@@ -77,14 +77,14 @@ function takeItems(pos, radius, playerID, plantName)
 	if replantTree then
 		world.placeObject("sapling", pos, dirInt, replantTree)
 	end
-	
+
 	if plantName then
 		local seedConfig = root.itemConfig(plantName)
 		if seedConfig and (seedConfig.hasObjectItem == nil or seedConfig.hasObjectItem == true) then
 			world.placeObject(plantName, pos, dirInt)
 		end
 	end
-	
+
 	world.setProperty("HarvesterBeamgunItemDropList", itemList)
 end
 

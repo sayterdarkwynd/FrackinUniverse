@@ -38,8 +38,8 @@ function update(args)
   end
   self.specialLast = args.moves["special1"]
   self.pressDown = args.moves["primaryFire"]
-  if not args.moves["special1"] then		
-    self.forceTimer = nil		
+  if not args.moves["special1"] then
+    self.forceTimer = nil
   end
 
   if self.active then
@@ -87,23 +87,23 @@ function attemptActivation()
     if pos then
       mcontroller.setPosition(pos)
       deactivate()
-	    elseif not self.forceTimer then		
-      animator.playSound("forceDeactivate", -1)		
-      self.forceTimer = 0		
-    end		
-  end		
-end		
-function checkForceDeactivate(dt)		
-  animator.resetTransformationGroup("ball")		
-  if self.forceTimer then		
-    self.forceTimer = self.forceTimer + dt		
-    mcontroller.controlModifiers({		
-      movementSuppressed = true		
-    })		
-    local shake = vec2.mul(vec2.withAngle((math.random() * math.pi * 2), self.forceShakeMagnitude), self.forceTimer / self.forceDeactivateTime)		
-    animator.translateTransformationGroup("ball", shake)		
-    if self.forceTimer >= self.forceDeactivateTime then		
-      deactivate()		
+	    elseif not self.forceTimer then
+      animator.playSound("forceDeactivate", -1)
+      self.forceTimer = 0
+    end
+  end
+end
+function checkForceDeactivate(dt)
+  animator.resetTransformationGroup("ball")
+  if self.forceTimer then
+    self.forceTimer = self.forceTimer + dt
+    mcontroller.controlModifiers({
+      movementSuppressed = true
+    })
+    local shake = vec2.mul(vec2.withAngle((math.random() * math.pi * 2), self.forceShakeMagnitude), self.forceTimer / self.forceDeactivateTime)
+    animator.translateTransformationGroup("ball", shake)
+    if self.forceTimer >= self.forceDeactivateTime then
+      deactivate()
       self.forceTimer = nil
     else
       attemptActivation()
