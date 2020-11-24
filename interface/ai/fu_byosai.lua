@@ -44,6 +44,7 @@ function init()
 	promises:add(world.sendEntityMessage("frackinshiphandler", "checkUnlockableShipDisabled"), function(results)
 		ship.disableUnlockableShips = results.disableUnlockableShips
 		ship.universeFlags = results.universeFlags
+		generateShipLists()
 		-- Repopulate the list to add unlockable ships if it's the current state
 		if state.state == "frackinShipChoice" then
 			if ship.selectedShip and ship.selectedShip.mode == "Upgradable" then
@@ -60,80 +61,106 @@ function generateShipLists()
 	ship.upgradableShips = {}
 	local playerRace = player.species()
 	for id, data in pairs (ship.shipConfig) do
-		if id == "vanilla" then
-			ship.vanillaShip = data
-		elseif id == "racial" then
-			--[[local racialShipData = root.assetJson("/universe_server.config").speciesShips
-			local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
-			local races
-			if data.disallowOtherRaceShips then
-				races = {playerRace}
-			elseif data.whitelistedRaces or data.blacklistedRaces then
-				local allRaces = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
-				races = {}
-				for _, race in ipairs (allRaces) do
-					if data.whitelistedRaces then
-						if data.whitelistedRaces[race] or race == playerRace then
-							table.insert(races, race)
-						end
-					else	-- blacklistedRaces
-						if not data.blacklistedRaces[race] or race == playerRace then
-							table.insert(races, race)
-						end
+		local addShip = true
+		if data.universeFlag then
+			addShip = false
+			if not ship.disableUnlockableShips then
+				for _, flag in ipairs (ship.universeFlags or {}) do
+					if flag == data.universeFlag then
+						addShip = true
+						break
 					end
 				end
+			end
+		end
+		if addShip then
+			if id == "vanilla" then
+				ship.vanillaShip = data
+			elseif id == "racial" then
+				--[[local racialShipData = root.assetJson("/universe_server.config").speciesShips
+				local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
+				local races
+				if data.disallowOtherRaceShips then
+					races = {playerRace}
+				elseif data.whitelistedRaces or data.blacklistedRaces then
+					local allRaces = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
+					races = {}
+					for _, race in ipairs (allRaces) do
+						if data.whitelistedRaces then
+							if data.whitelistedRaces[race] or race == playerRace then
+								table.insert(races, race)
+							end
+						else	-- blacklistedRaces
+							if not data.blacklistedRaces[race] or race == playerRace then
+								table.insert(races, race)
+							end
+						end
+					end
+				else
+					races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
+				end
+				for _, race in ipairs (races) do
+					local shipData = {}
+					shipData.type = racialShipData[race]
+					shipData.startingLevel = ship.shipConfig.racial.shipLevel + 1
+					local succeded, raceData = pcall(root.assetJson, "/species/" .. race .. ".species")
+					if succeded and raceData then
+						shipData.name = raceData.charCreationTooltip.title
+					else
+						shipData.name = race
+					end
+					shipData.icon = race .. "male.png"
+					local succeded2, previewImage = pcall(getShipImage, shipData.type[shipData.startingLevel])
+					if succeded2 then
+						shipData.previewImage = previewImage
+					else
+						sb.logInfo(sb.printJson(previewImage))
+					end
+					shipData.mode = "Upgradable"
+					if raceOverrides[race] then
+						shipData.name = raceOverrides[race].name or shipData.name
+						shipData.icon = raceOverrides[race].icon or shipData.icon
+					end
+					shipData.name = shipData.name .. " Racial Ship"
+					shipData.icon = "/interface/title/" .. shipData.icon
+					shipData.id = race .. "racial"
+					table.insert(ship.upgradableShips, shipData)
+				end ]]--
 			else
-				races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
-			end
-			for _, race in ipairs (races) do
-				local shipData = {}
-				shipData.type = racialShipData[race]
-				shipData.startingLevel = ship.shipConfig.racial.shipLevel + 1
-				local succeded, raceData = pcall(root.assetJson, "/species/" .. race .. ".species")
-				if succeded and raceData then
-					shipData.name = raceData.charCreationTooltip.title
-				else
-					shipData.name = race
-				end
-				shipData.icon = race .. "male.png"
-				local succeded2, previewImage = pcall(getShipImage, shipData.type[shipData.startingLevel])
-				if succeded2 then
-					shipData.previewImage = previewImage
-				else
-					sb.logInfo(sb.printJson(previewImage))
-				end
-				shipData.mode = "Upgradable"
-				if raceOverrides[race] then
-					shipData.name = raceOverrides[race].name or shipData.name
-					shipData.icon = raceOverrides[race].icon or shipData.icon
-				end
-				shipData.name = shipData.name .. " Racial Ship"
-				shipData.icon = "/interface/title/" .. shipData.icon
-				shipData.id = race .. "racial"
-				table.insert(ship.upgradableShips, shipData)
-			end ]]--
-		else
-			local ignoreShip = false
-			if data.raceWhitelist and not data.raceWhitelist[playerRace] then
-				ignoreShip = true
-			elseif data.raceBlacklist and data.raceBlacklist[playerRace]  and not data.raceWhitelist then
-				ignoreShip = true
-			end
-			
-			if not ignoreShip then
-				data.id = id
-				if type(data.ship) == "table" then
-					data.mode = "Upgradable"
-					data.previewImage = getShipImage(data.ship[1])
-					table.insert(ship.upgradableShips, data)
-				else
-					data.mode = "Buildable"
-					if string.find(data.ship, "/") then
-						data.previewImage = getShipImage(data.ship)
-						data = nil
-						sb.logWarn("Structure file BYOS ships not yet implemented, removing " .. id)
+				local addShip = true
+				if data.universeFlag then
+					addShip = false
+					if not ship.disableUnlockableShips then
+						for _, flag in ipairs (ship.universeFlags or {}) do
+							if flag == data.universeFlag then
+								addShip = true
+								break
+							end
+						end
 					end
-					table.insert(ship.buildableShips, data)
+				end
+				local ignoreShip = false
+				if data.raceWhitelist and not data.raceWhitelist[playerRace] then
+					ignoreShip = true
+				elseif data.raceBlacklist and data.raceBlacklist[playerRace]  and not data.raceWhitelist then
+					ignoreShip = true
+				end
+				
+				if addShip and not ignoreShip then
+					data.id = id
+					if type(data.ship) == "table" then
+						data.mode = "Upgradable"
+						data.previewImage = getShipImage(data.ship[1])
+						table.insert(ship.upgradableShips, data)
+					else
+						data.mode = "Buildable"
+						if string.find(data.ship, "/") then
+							data.previewImage = getShipImage(data.ship)
+							data = nil
+							sb.logWarn("Structure file BYOS ships not yet implemented, removing " .. id)
+						end
+						table.insert(ship.buildableShips, data)
+					end
 				end
 			end
 		end
@@ -343,36 +370,20 @@ end
 function populateShipList(shipList)
 	widget.clearListItems("root.shipList")
 	for _, shipData in ipairs (shipList) do
-		-- Add the unlockable ship check here so that the ship list doesn't need to be generated again once it's checked if it's disabled
-		local addShip = true
+		local listItemName = widget.addListItem("root.shipList")
+		local listItem = "root.shipList."..listItemName
+		local shipName = shipData.name
 		if shipData.universeFlag then
-			addShip = false
-			sb.logInfo(sb.printJson(ship.universeFlags) .. " : " .. sb.printJson(ship.disableUnlockableShips))
-			if not ship.disableUnlockableShips then
-				for _, flag in ipairs (ship.universeFlags or {}) do
-					if flag == shipData.universeFlag then
-						addShip = true
-						break
-					end
-				end
-			end
+			shipName = sb.replaceTags(ship.miscConfig.unlockableShipNameModifier, {shipName = shipName})
 		end
-		if addShip then
-			local listItemName = widget.addListItem("root.shipList")
-			local listItem = "root.shipList."..listItemName
-			local shipName = shipData.name
-			if shipData.universeFlag then
-				shipName = sb.replaceTags(ship.miscConfig.unlockableShipNameModifier, {shipName = shipName})
-			end
-			widget.setText(listItem..".name", shipName)
-			widget.setData(listItem, shipData)
-			if shipData.icon then
-				widget.setImage(listItem..".icon", shipData.icon)
-			end
-			if ship.selectedShip and shipData.id == ship.selectedShip.id then
-				widget.setListSelected("root.shipList", listItemName)
-				shipSelected("shipList")
-			end
+		widget.setText(listItem..".name", shipName)
+		widget.setData(listItem, shipData)
+		if shipData.icon then
+			widget.setImage(listItem..".icon", shipData.icon)
+		end
+		if ship.selectedShip and shipData.id == ship.selectedShip.id then
+			widget.setListSelected("root.shipList", listItemName)
+			shipSelected("shipList")
 		end
 	end
 end
