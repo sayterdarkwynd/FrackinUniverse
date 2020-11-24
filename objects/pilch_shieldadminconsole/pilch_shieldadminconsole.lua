@@ -4,7 +4,7 @@ HIGHID = 45877
 
 function init(args)
 	object.setInteractive(true)
-	
+
 	-- messaging
 	message.setHandler("setActiveAnimation", openedUI)
 	message.setHandler("setInactiveAnimation", closedUI)

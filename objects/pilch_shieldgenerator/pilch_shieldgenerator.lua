@@ -9,7 +9,7 @@ HIGHID = 45877
 
 function init(args)
 	object.setInteractive(true)
-	
+
 	if (storage.override) then
 		storage.override = nil
 	end
@@ -27,7 +27,7 @@ function init(args)
 			table.insert(storage.spaces, {offset, backMaterial})
 		end
 	end
-	
+
 	if (storage.defaultGravity == nil) then
 		storage.defaultGravity = world.gravity(entity.position())
 	end
@@ -55,7 +55,7 @@ function init(args)
 	end
 	setWired()
 	incDirty()
-	
+
 	-- messaging
 	message.setHandler("pilch_markerPositionUpdate", markerPositionUpdate)
 	message.setHandler("activate", activate)
@@ -65,7 +65,7 @@ function init(args)
 	message.setHandler("setGravity", setGravity)
 	message.setHandler("hide", setHideMode)
 	message.setHandler("setDebugMode", setDebugMode)
-	
+
 	-- set up coroutine for area checking
 	self.cor = coroutine.create(function() end)
 	assert(coroutine.resume(self.cor))
@@ -165,7 +165,7 @@ function claimDungeonId()
 			end
 		end
 	end
-	
+
 	local pos = entity.position()
 	local value = tostring(pos[1]) .. ", " .. tostring(pos[2])
 	if storage.debugMode then

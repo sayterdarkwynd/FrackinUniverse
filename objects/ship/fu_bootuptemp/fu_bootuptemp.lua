@@ -34,9 +34,9 @@ end
 function update(dt)
 	if byos then
 		if counter == 10 then
-			for newShipObjectPosition, newShipObject in pairs (newShipObjects) do 
+			for newShipObjectPosition, newShipObject in pairs (newShipObjects) do
 				local newShipObjectData = root.itemConfig(newShipObject).config
-				if newShipObjectData then 
+				if newShipObjectData then
 					parameters = nil
 					if newShipObjectData.racialiserType then
 						parameters = getBYOSParameters(newShipObjectData.racialiserType, newShipObjectData.shipPetType, newShipObjectData.byosBootupTreasure)

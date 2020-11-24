@@ -7,5 +7,5 @@ status.modifyResourcePercentage("health", 1/900 * dt*math.max(0,1+status.stat("h
 end
 
 function uninit()
-  
+
 end

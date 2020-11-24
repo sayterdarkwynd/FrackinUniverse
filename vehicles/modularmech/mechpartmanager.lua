@@ -64,7 +64,7 @@ function MechPartManager:new()
     leftArm = {
       power = {
 	--mechPower = "mechPowerModifier",
-        mechMass = "mechBodyMass"       
+        mechMass = "mechBodyMass"
       },
       energy = {
         energyDrain = "mechArmEnergyDrain"
@@ -73,7 +73,7 @@ function MechPartManager:new()
     rightArm = {
       power = {
 	--mechPower = "mechPowerModifier",
-        mechMass = "mechBodyMass"       
+        mechMass = "mechBodyMass"
       },
       energy = {
         energyDrain = "mechArmEnergyDrain"
@@ -82,12 +82,12 @@ function MechPartManager:new()
     horn = {
       horn1 = {
 	--mechPower = "mechPowerModifier",
-        mechMass = "mechBodyMass"       
+        mechMass = "mechBodyMass"
       },
       horn2 = {
         energyDrain = "mechArmEnergyDrain"
       }
-    }    
+    }
   }
 
   -- load part configurations
@@ -160,7 +160,7 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
     physicsForces = {},
     physicsCollisions = {}
   }
-  
+
   for partType, itemDescriptor in pairs(itemSet) do
     local thisPartConfig = self:partConfig(partType, itemDescriptor)
     if partType == "leftArm" or partType == "rightArm" then
@@ -171,9 +171,9 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
       if self.partStatMap[partType] and thisPartConfig.stats then
         -- ***** FU additions
         -- load the arms stat table
-        thisPartConfig.partParameters.stats = copy(thisPartConfig.stats)       
+        thisPartConfig.partParameters.stats = copy(thisPartConfig.stats)
 
-        -- *****        
+        -- *****
         for stat, fMap in pairs(self.partStatMap[partType]) do
           for param, fName in pairs(fMap) do
             thisPartConfig.partParameters[param] = root.evalFunction(fName, thisPartConfig.stats[stat])
@@ -196,7 +196,7 @@ function MechPartManager:buildVehicleParameters(itemSet, primaryColorIndex, seco
 
     params.animationCustom = util.mergeTable(params.animationCustom, thisPartConfig.animationCustom or {})
   end
-  
+
   return params
 end
 

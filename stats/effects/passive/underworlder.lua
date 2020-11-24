@@ -23,7 +23,7 @@ function daytimeCheck()
 end
 
 function undergroundCheck()
-	return world.underground(mcontroller.position()) 
+	return world.underground(mcontroller.position())
 end
 
 function update(dt)
@@ -36,7 +36,7 @@ function update(dt)
 	elseif (worldType == "desert") or (worldType == "desertwastes") or (worldType == "moon_desert") or (worldType == "savannah") or (worldType == "toxic") or (worldType == "moon_toxic") or (worldType == "alien") or (worldType == "magma") or (worldType == "scorchedcity") or (worldType == "barren") or (worldType == "protoworld") or (worldType == "chromatic") or (worldType == "irradiated") then
 	  self.radiantWorld = -0.4
 	end
-  
+
   if daytime then
     if underground then
 	  effect.setStatModifierGroup(underWorlderEffects, {
@@ -106,7 +106,7 @@ function update(dt)
 	  })
 	else
 	  effect.setStatModifierGroup(underWorlderEffects,{})
-	end  
+	end
   end
 
 end

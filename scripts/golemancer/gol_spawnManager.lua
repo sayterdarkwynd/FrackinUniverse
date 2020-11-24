@@ -7,13 +7,13 @@ end
 function evolve(evolution)
 	local eType = entity.entityType()
 	local myType = config.getParameter("isMultiplier",0)
-	
+
 	if eType == "monster" then
 		monster.setDropPool("empty")
 	elseif eType == "npc" then
 		npc.setDropPool("empty")
 	end
-	if myType == 0 then	--Unless the monster is set to isMultiplier, they die on spawning the new variant. 
+	if myType == 0 then	--Unless the monster is set to isMultiplier, they die on spawning the new variant.
 		status.setResource("health", 0)
 	end
 	spawnResult(evolution, self.position)
@@ -26,7 +26,7 @@ function spawnResult(result, position)
 	if result.monsterSpawn then
 		local params={}
 		local mParams=monster.uniqueParameters()
-		
+
 		if result and result.monsterSpawn and result.monsterSpawn.parameters then
 			params=result.monsterSpawn.parameters
 			if not params.seed then
@@ -35,7 +35,7 @@ function spawnResult(result, position)
 		else
 			params.seed=monster.seed()
 		end
-		
+
 		if mParams then
 			if (params.aggressive==nil) and (mParams.aggressive~=nil) then
 				params.aggressive=mParams.aggressive
@@ -44,7 +44,7 @@ function spawnResult(result, position)
 		if (params.aggressive==nil) then
 			params.aggressive=world.entityAggressive(entity.id())
 		end
-		
+
 		world.spawnMonster(result.monsterSpawn.type, vec2.add(position, {0, 3}), params)
 	end
 	if result.itemSpawn then

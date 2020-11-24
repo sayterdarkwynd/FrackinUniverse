@@ -38,6 +38,6 @@ function update(dt)
       self.switchIsActive = false
     end
   else
-    storage.timer = storage.timer - 1 
+    storage.timer = storage.timer - 1
   end
 end

@@ -8,7 +8,7 @@ end
 function update(dt)
 	local eType=world.entityType(entity.id())
 	if not eType or eType ~= "player" then return end
-	
+
 	if promise and promise:finished() and promise:succeeded() then
 		data=promise:result()
 		promise=nil

@@ -17,14 +17,14 @@ function init()
 	storage.house.boundary = storage.house.boundary or {{0,0}}
 	timer = self.scanDelay
 	object.setInteractive(self.interactive)
-	
+
 	local questParticipantOutbox = Outbox.new("questParticipantOutbox", ContactList.new("questParticipantContacts"))
 	self.questParticipant = QuestParticipant.new("questParticipant", questParticipantOutbox)
-	
+
 	if not object.uniqueId() then
 		object.setUniqueId(sb.makeUuid())
 	end
-	
+
 	self.notOwnShipMessage = self.notOwnShipMessage or "Only the owner of the ship can manage crew rooms"
 end
 
@@ -70,13 +70,13 @@ function checkHouseIntegrity()
 	else
 		storage.grumbles = {{"notByos"}}
 	end
-	
+
 	if fuDeedCheck() then
 		storage.grumbles[#storage.grumbles+1] = {"otherDeed"}
 	end
-	
+
 	--sb.logInfo(sb.printJson(storage.grumbles))
-	
+
 	if #storage.grumbles > 0 then
 		animator.setAnimationState("deedState", "grumbling")
 		if storage.statApplied then

@@ -46,7 +46,7 @@ function update(dt)
 
 		self.species = race
 		self.helper = FRHelper:new(self.species, world.entityGender(entity.id()))
-		
+
 		-- Script setup
 		for map,path in pairs(self.helper.frconfig.scriptMaps) do
 			if self.helper.speciesConfig[map] then
@@ -56,23 +56,23 @@ function update(dt)
 		for _,script in pairs(self.helper.speciesConfig.scripts or {}) do
 			self.helper:loadScript(script)
 		end
-		
+
 		-- Apply the persistent effect
 		status.setPersistentEffects("FR_racialStats", self.helper.speciesConfig.stats or {})
-		
+
 		-- Add any other special effects
 		if self.helper.speciesConfig.special then
 			for _,thing in pairs(self.helper.speciesConfig.special) do
 				status.addEphemeralEffect(thing,math.huge)
 			end
-		end	
+		end
 	end
-	
+
 	-- Update stuff
 	--self.helper:clearPersistent()
 	self.helper:applyControlModifiers()
 	self.helper:runScripts("racialscript", self, dt)
-	
+
 	-- Breath handling
 	-- which, as it happens, is already handled by the vanilla script. so this applies TWICE.
 	if entity.entityType() ~= "npc" then

@@ -17,7 +17,7 @@ function init()
 	effectHandlerList.armorEffectHandle=effect.addStatModifierGroup(armorEffect)
 end
 
-function update(dt)	
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		removePetBuffs()
 		status.removeEphemeralEffect("vitalpower10")

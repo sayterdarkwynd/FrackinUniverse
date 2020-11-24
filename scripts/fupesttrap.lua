@@ -9,7 +9,7 @@ end
 
 function update(dt)
 	if not self.didInit then init() return end
-	
+
 	self.depth = world.oceanLevel(entity.position()) -- current depth in the ocean
 	if self.isLiquidBased == 0 then
 		if world.liquidAt(entity.position()) or self.depth > 1 then  --cannot work unless out of liquid and above ground
@@ -21,7 +21,7 @@ function update(dt)
 			return
 		end
 	end
-	
+
 	if not scanTimer or scanTimer > 1 then
 		wellInit()
 		setDesc()
@@ -29,7 +29,7 @@ function update(dt)
 	else
 		scanTimer=scanTimer+dt
 	end
-	
+
 	if not self.transferUtilTimer or self.transferUtilTimer >= 1 then
 		self.transferUtilTimer=0
 		transferUtil.loadSelfContainer()

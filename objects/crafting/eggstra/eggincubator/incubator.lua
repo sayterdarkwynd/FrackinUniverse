@@ -53,10 +53,10 @@ function fillPercent(container)
   local count = 0
   for i = 0,size,1 do
     local item = world.containerItemAt(container, i)
-    
+
     if item ~= nil then
       count = count + 1
-      
+
       if size == 1 then
         size = 1000
         count = item.count
@@ -88,7 +88,7 @@ function checkHatching()
   if entity.id() then
     local container = entity.id()
     local item = world.containerItemAt(container, 0)
-    
+
     if item ~= nil and incubation[item.name] ~= nil then
 
       -- set incubation time
@@ -123,13 +123,13 @@ function checkHatching()
       end
 
       if self.indicator == nil then self.indicator = 0 end
-      
-      if self.timer == nil or self.timer > self.indicator then 
-        self.timer = self.indicator 
+
+      if self.timer == nil or self.timer > self.indicator then
+        self.timer = self.indicator
       end
-      
-      if self.timer > -1 then 
-        animator.setGlobalTag("bin_indicator", self.timer) 
+
+      if self.timer > -1 then
+        animator.setGlobalTag("bin_indicator", self.timer)
       end
       self.timer = self.timer + 1
     end
@@ -139,7 +139,7 @@ end
 function hatchEgg()  --make the baby
   local container = entity.id()
   local item = world.containerTakeNumItemsAt(container, 0, 1)
-  
+
   if item then
     if (math.random() < incubation[item.name][3]) then
       local spawnposition = entity.position()
@@ -149,7 +149,7 @@ function hatchEgg()  --make the baby
       parameters.damageTeam = 0
       parameters.startTime = os.time()
       parameters.damageTeamType = "passive"
-      
+
       if item.name == "goldenegg" then
         world.spawnItem("money", spawnposition, 5000)
       elseif self.centrifugeType == "cloning" then -- are we cloning bees/eggs?
@@ -157,13 +157,13 @@ function hatchEgg()  --make the baby
         world.spawnMonster(incubation[item.name][1], spawnposition, parameters)
         self.indicator = 0
         storage.incubationTime = nil
-        self.timer = 0   
-        animator.setGlobalTag("bin_indicator", self.timer) 
+        self.timer = 0
+        animator.setGlobalTag("bin_indicator", self.timer)
       else
         self.indicator = 0
         storage.incubationTime = nil
-        self.timer = 0   
-        animator.setGlobalTag("bin_indicator", self.timer) 
+        self.timer = 0
+        animator.setGlobalTag("bin_indicator", self.timer)
         world.spawnMonster(incubation[item.name][1], spawnposition, parameters)
       end
     else

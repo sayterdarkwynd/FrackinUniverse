@@ -24,7 +24,8 @@ function unifiedGravMod.initSoft()
 	self.gravityMod = config.getParameter("gravityMod",0.0)
 	self.gravityNormalize = config.getParameter("gravityNorm",false)
 	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
-	--dbg("uGM.iS",{self.gravityMod,self.gravityNormalize,self.gravityBaseMod})
+	self.gravFlightOverride = config.getParameter("gravFlightOverride",false)
+	--dbg("uGM.iS",{self.gravityMod,self.gravityNormalize,self.gravityBaseMod,self.gravFlightOverride})
 	if not unifiedGravMod.gravHandler then
 		unifiedGravMod.gravHandler=effect.addStatModifierGroup({{stat = "gravityMod", amount=self.gravityMod},{stat = "gravityBaseMod", amount=self.gravityBaseMod}})
 	end
@@ -34,7 +35,7 @@ end
 function unifiedGravMod.init()
 	if self.gravityNormalize then
 		unifiedGravMod.applyGravNormalization()
-	end	
+	end
 	local baseMotionParams=mcontroller.baseParameters()
 	self.flying=not baseMotionParams.gravityEnabled--flying creatures are unaffected normally. I use an alternate method to apply it.
 	self.ghosting=not baseMotionParams.collisionEnabled--'ghosts' are immune to gravity effects, period.
@@ -43,16 +44,16 @@ function unifiedGravMod.init()
 end
 
 function unifiedGravMod.refreshGrav(dt)
-	if not self.ghosting then  --ignore effect if ghost
-		local gravMod=status.stat("gravityMod")--most multipliers are gonna be this. this is where gravity increases and decreases go.
-		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature. 
-		
+	if not self.ghosting then --ignore effect if ghost
+		local gravMod=(self.gravFlightOverride and -1.0) or (status.statPositive("gravFlightOverride") and 0.0) or status.stat("gravityMod")--most multipliers are gonna be this. this is where gravity increases and decreases go.
+		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature.
+		--dbg("uGM.rG@first: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position())})
 		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
 		local gravNorm=status.stat("gravityNorm")
-		if 0==world.gravity(entity.position()) then
+		if (0==world.gravity(entity.position())) then
 			--mcontroller.addMomentum({0,-1*80*newGrav*0.2*dt})
 			--temporary fix.
-		elseif self.flying then
+		elseif self.gravFlightOverride or status.statPositive("gravFlightOverride") or self.flying then
 			--dbg("uGM.rG","FLOATING!")
 			mcontroller.addMomentum({0,-1*world.gravity(entity.position())*newGrav*0.2*dt})
 		else
@@ -103,6 +104,6 @@ function uninit()
 	unifiedGravMod.uninit()
 end
 
---[[function --dbg(s,t)
+function dbg(s,t)
 	sb.logInfo(s..": %s",t)
-end]]
+end

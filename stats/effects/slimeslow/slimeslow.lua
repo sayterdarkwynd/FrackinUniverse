@@ -11,7 +11,7 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
-	
+
 	if self.frEnabled and (self.species == "slimeperson") then
 		self.healingRate = 0.025
 		--status.modifyResourcePercentage("health", self.healingRate * dt)

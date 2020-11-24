@@ -34,5 +34,5 @@ function checkWeapons()
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end
-	
+
 end

@@ -3,12 +3,12 @@ require "/scripts/interp.lua"
 
 function init()
     object.setInteractive(true)
-    
+
     message.setHandler("unsetIdent", function()
         storage.onOwnShip = true
         --sb.logInfo("Player is on their own ship!")
     end)
-    
+
 	shipOwner = world.getProperty("fu_byos.owner")
 	text = config.getParameter("text")
 end
@@ -24,14 +24,14 @@ function die(args)
 end
 
 function update(dt)
-	
+
 end
 
 function onInteraction(args)
     local shipName = world.getProperty("byosShipName")
     local shipType = world.getProperty("byosShipType")
     local shipDate = world.getProperty("byosShipDate")
-    
+
     if (shipName ~= nil and shipType ~= nil and shipDate ~= nil) then
 		local displayText = tostring(text.shipNamed):gsub("<shipName>", tostring(shipName)):gsub("<shipDate>", tostring(shipDate)):gsub("<shipType>", tostring(shipType))
         --return { "ShowPopup", {message = displayText:gsub("<shipName>", shipName):gsub("<shipDate>", shipDate):gsub("<shipType>", shipType), title = "Ship Commemoration Plaque", sound = ""}}

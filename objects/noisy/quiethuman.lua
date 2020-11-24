@@ -1,5 +1,5 @@
 function init()
-  self.random = math.random(1,2)	--50% can produce a corpse 
+  self.random = math.random(1,2)	--50% can produce a corpse
   object.setInteractive(true)
 end
 
@@ -22,10 +22,10 @@ end
 function checkSarco()
     self.random = math.random(1,2)
     if self.random == 1 then
-      world.spawnItem("wrappedbody", object.position(), 1)  
+      world.spawnItem("wrappedbody", object.position(), 1)
       object.smash(true)
     elseif self.random == 2 then
       world.spawnItem("wrappedbodyputrid", object.position(), 1)
       object.smash(true)
-    end     
+    end
 end

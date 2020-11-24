@@ -20,16 +20,16 @@ end
 function update(dt)
 	if not self.timer then return end
 	self.timer=self.timer + dt
-	
+
 	if self.timer >= self.duration then
 		effect.setStatModifierGroup(bonusHandler,{})
-		animator.setParticleEmitterActive("healing", false)	
+		animator.setParticleEmitterActive("healing", false)
 	else
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=((self.healingRate*math.max(0, 1 + status.stat("healingBonus") )) - self.penaltyRate)}})
 		animator.setParticleEmitterActive("cantheal2", false)
 	    animator.setParticleEmitterOffsetRegion("cantheal", mcontroller.boundBox())
 	    animator.setParticleEmitterEmissionRate("cantheal", 0.5 )
-	    animator.setParticleEmitterActive("cantheal", true)	      
+	    animator.setParticleEmitterActive("cantheal", true)
 	end
 	if effect.duration() <= 0.2 then
 		animator.setParticleEmitterActive("cantheal", false)

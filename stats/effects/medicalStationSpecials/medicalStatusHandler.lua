@@ -11,7 +11,7 @@ function update(dt)
 		if effect then
 			status.addEphemeralEffect(effect, 100, entity.id())
 		end
-		
+
 		self.checkCooldown = self.checkInterval
 	else
 		self.checkCooldown = self.checkCooldown - dt

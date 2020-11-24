@@ -10,19 +10,19 @@ function init()
 		script.setUpdateDelta(0.0)
 		return
 	end
-	
+
 	collisionPoly=mcontroller.collisionPoly()
 	bounds=poly.boundBox(collisionPoly)
 	center=poly.center(collisionPoly)
 	size=rect.size(bounds)
 	size=vec2.mag(size)
-	
+
 	self.health=status.resourceMax("health") or self.health
 end
 
 function update(dt)
 	if not status.isResource("timeToLive") then return end
-	
+
 	if not dying then
 		local queryList=world.entityQuery(vec2.add(center,entity.position()),size,{withoutEntityId=entity.id(),includedTypes={"creature"}})
 		if #queryList > 0 then
@@ -57,5 +57,5 @@ end
 
 function boom()
 	sb.logInfo("inksplat!")
-	
+
 end

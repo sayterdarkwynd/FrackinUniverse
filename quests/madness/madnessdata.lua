@@ -116,6 +116,7 @@ function randomEvent()
 	self.currentProtectionAbs=math.abs(self.currentProtection)
 
 	local didRng=false
+	local worldIsEphemeral=world.getProperty("ephemeral")
 
 	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
 		self.randEvent=math.random(1,100)
@@ -163,14 +164,27 @@ function randomEvent()
 		end
 	end
 	if self.madnessCount > 1000 then
-		if self.randEvent >= 40 and self.randEvent <= 42 then
-			local enabledtechs=player.enabledTechs()
-			if self.randEvent == 40 and contains(enabledtechs,"distortionsphere") then --swap sphere tech
-				player.equipTech("distortionsphere")
-			elseif self.randEvent == 41 and contains(enabledtechs,"doublejump") then --swap jump tech
-				player.equipTech("doublejump")
-			elseif self.randEvent == 42 and contains(enabledtechs,"dash") then --swap dash tech
-				player.equipTech("dash")
+		if (self.randEvent >= 40) and (self.randEvent <= 42) then
+			if (not worldIsEphemeral) then
+				local enabledtechs=player.enabledTechs()
+				if self.randEvent == 40 and contains(enabledtechs,"distortionsphere") then --swap sphere tech
+					player.equipTech("distortionsphere")
+				elseif self.randEvent == 41 and contains(enabledtechs,"doublejump") then --swap jump tech
+					player.equipTech("doublejump")
+				elseif self.randEvent == 42 and contains(enabledtechs,"dash") then --swap dash tech
+					player.equipTech("dash")
+				end
+			else
+				if self.randEvent == 40 then
+					status.setPersistentEffects("madnessEffectsMain", {{stat = "mentalProtection", amount = 0.5 }}) --temporary protection from madness
+					self.timerDegradePenalty = 2
+				elseif self.randEvent == 41 then
+					status.addEphemeralEffect("bouncy",self.curseDuration_status) -- boing.
+					self.timerDegradePenalty = 2
+				elseif self.randEvent == 42 then
+					status.addEphemeralEffect("runboost10",self.curseDuration_status) -- run boost!
+					self.timerDegradePenalty = 2
+				end
 			end
 		elseif self.randEvent == 43 then
 			player.consumeCurrency("fuscienceresource", 1)
@@ -267,7 +281,7 @@ function randomEvent()
 		elseif self.randEvent == 25 then
 			status.addEphemeralEffect("swimboost1",self.curseDuration_status) -- Swim boost 1!
 		elseif self.randEvent == 26 then
-			status.addEphemeralEffect("vulnerability",self.curseDuration_fast) --vulnerability multiplies all resists and defense by 0.01, biiiig ouch. severely reducing the max duration of this.
+			status.addEphemeralEffect("vulnerability",self.curseDuration_fast*((worldIsEphemeral and 0.5) or 1.0)) --vulnerability multiplies all resists and defense by 0.01, biiiig ouch. severely reducing the max duration of this.
 			player.radioMessage("madnessvuln")
 		elseif self.randEvent == 27 then
 			status.setPersistentEffects("madnessEffectsMain", {{stat = "fuCharisma", baseMultiplier = (1.0-(math.random(6,40)/100.0)) }}) --random charisma penalty.

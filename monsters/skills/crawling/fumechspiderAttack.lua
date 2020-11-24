@@ -4,8 +4,8 @@ fumechspiderAttack = {}
 function fumechspiderAttack.enterWith(args)
   if not args.fumechspiderAttack then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fumechspiderAttack.windupTime"),
     winddownTimer = config.getParameter("fumechspiderAttack.windDownTime"),
@@ -17,8 +17,8 @@ end
 function fumechspiderAttack.enter()
   if not canStartSkill("fumechspiderAttack") then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fumechspiderAttack.windupTime"),
     winddownTimer = config.getParameter("fumechspiderAttack.winddownTime"),
@@ -82,5 +82,5 @@ function fumechspiderAttack.update(dt, stateData)
 end
 
 function fumechspiderAttack.leavingState(stateData)
-  
+
 end

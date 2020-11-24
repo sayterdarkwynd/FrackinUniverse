@@ -16,7 +16,7 @@ function onInteraction(args)
 	output(not storage.state)
 	if not storage.interactedPlayers[world.entityUniqueId(args.sourceId)] then
 		promises:add(world.sendEntityMessage(args.sourceId, "human_mission1"), function()
-			
+
 		end, function()
 			world.spawnItem({name = "supermatter", count = 20}, vec2.add(object.position(), args.source))
 		end)

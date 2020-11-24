@@ -44,7 +44,7 @@ function spawnenemy1slow.update(dt, stateData)
 
   mcontroller.controlParameters({
     walkSpeed = config.getParameter("spawnenemy1slow.moveSpeed"),
-    runSpeed = config.getParameter("spawnenemy1slow.moveSpeed")  
+    runSpeed = config.getParameter("spawnenemy1slow.moveSpeed")
   })
 
   if math.abs(toTarget[1]) > stateData.distanceRange[1] + 4 then
@@ -123,6 +123,6 @@ end
 function spawnenemy1slow.leavingState(stateData)
   animator.setAnimationState("flameSound", "off")
   animator.setAnimationState("flamethrower", "winddown")
-  
+
   monster.setActiveSkillName("")
 end

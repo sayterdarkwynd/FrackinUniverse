@@ -17,7 +17,7 @@ end
 
 function setToolTipValues(ability)
 	local projectileCount=1
-	
+
 	activeItem.setInstanceValue("tooltipFields", {
 		damagePerShotLabel = damagePerShot(ability,1),
 		speedLabel = 1 / ability.fireTime,
@@ -28,16 +28,16 @@ end
 function update(dt, fireMode, shiftHeld)
 	updateAim()
 	storage.fireTimer = math.max(storage.fireTimer - dt, 0)
-	
+
 	foolDelta=(foolDelta or 0)+dt
 	if foolDelta >=4 then
 		effectUtil.effectSelf("nude",5)
 	end
-	
+
 	if fireMode=="none" or not fireMode then return end
-	
+
 	local worldType=world.type()
-	
+
 	if world.getProperty("ship.fuel") then
 		if storage.fireTimer <= 0 then
 			effectUtil.say("Greg? Greg greg? GREG?!?")
@@ -165,7 +165,7 @@ end
 function aimVector(ability)
 	local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(ability.inaccuracy or 0, 0))
 	aimVector[1] = aimVector[1] * self.aimDirection
-	
+
 	return aimVector
 end
 

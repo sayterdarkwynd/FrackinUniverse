@@ -12,14 +12,14 @@ armorBonus={
 	{stat = "extremepressureProtection", amount = 1}
 }
 
-function init()	
+function init()
 	setSEBonusInit("fu_precursorset")
 	effect.setParentDirectives("fade=F1EA9C;0.00?border=0;F1EA9C00;00000000")
 	setSEBonusInit(setName)
-	
+
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
 	checkWeapons()
-	
+
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
@@ -28,7 +28,7 @@ function update(dt)
 		effect.expire()
 	else
 		checkWeapons()
-	end	
+	end
 
 end
 

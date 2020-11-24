@@ -5,7 +5,7 @@ function init()
 	self.healingRate = config.getParameter("healPercent", 0)
 	if not flat then
 		self.healingRate=self.healingRate / effect.duration()
-	end	
+	end
 end
 
 function update(dt)

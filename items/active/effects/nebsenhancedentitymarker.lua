@@ -7,7 +7,7 @@ function update()
   local entityMarker = animationConfig.animationParameter("entityMarker")
 
   local markerImage = entityMarker.markerImage
-  
+
   if markerImage then
     local entities = animationConfig.animationParameter("entities") or {}
     entities = util.filter(entities, world.entityExists)
@@ -19,7 +19,7 @@ function update()
         fullbright = entityMarker.fullbright or false
       }
       localAnimator.addDrawable(markerDrawable, "overlay")
-  
+
 	  if entityMarker.markerLighting then
 		local markerLighting = {
 		  position = world.entityPosition(entityId),
@@ -31,7 +31,7 @@ function update()
 		}
 		localAnimator.addLightSource(markerLighting)
 	  end
-	
+
 	  if entityMarker.particles then
 		if not self.particleTimer then
 		  self.particleTimer = 0
@@ -41,11 +41,11 @@ function update()
 		  if entityMarker.particles.particleLoop then
 			self.particleTimer = 0
 		  end
-		
+
 		  localAnimator.spawnParticle(entityMarker.particles.particleOnMark)
 		end
 	  end
-	
+
 	  if entityMarker.markerAudio then
 		localAnimator.playAudio(entityMarker.markerAudio.markerSound, entityMarker.markerAudio.soundLoopCount or 1, entityMarker.markerAudio.volume or 1.0)
 	  end

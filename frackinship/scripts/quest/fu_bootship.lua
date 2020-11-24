@@ -16,7 +16,7 @@ function init()
 
   self.interactTimer = 0
   self.activationTimer = 1
-  
+
   --temp until it's no longer a quest
   player.startQuest("fu_shipupgrades")
 end
@@ -44,9 +44,9 @@ end
 
 function update(dt)
   self.state:update(dt)
-  
+
   self.interactTimer = math.max(self.interactTimer - dt, 0)
-  
+
   if self.questComplete then
 	  world.sendEntityMessage(self.techstationUid, "activateShip")
     player.giveItem("statustablet")

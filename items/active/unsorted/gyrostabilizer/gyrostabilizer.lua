@@ -12,18 +12,18 @@ function update(dt, fireMode, shiftHeld, moves)
   self.aimAngle, self.facingDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
   activeItem.setFacingDirection(self.facingDirection)
   updateAim()
- 
+
   if fireMode == "primary" and self.previousFireMode ~= "primary" and status.overConsumeResource("energy", self.energyCost) then
       status.addEphemeralEffect("gyrostat", 0.1)
       animator.playSound("flashlight2", 1)
-      animator.setParticleEmitterActive("activatedLight", true)      
+      animator.setParticleEmitterActive("activatedLight", true)
       self.lastFireMode = fireMode
-  else    
-        status.removeEphemeralEffect("gyrostat") 
+  else
+        status.removeEphemeralEffect("gyrostat")
         animator.stopAllSounds("flashlight2")
-        animator.setParticleEmitterActive("activatedLight", false) 
+        animator.setParticleEmitterActive("activatedLight", false)
   end
-    
+
 end
 
 function updateAim()
@@ -35,7 +35,7 @@ end
 
 
 function uninit()
-  status.removeEphemeralEffect("gyrostat")  
+  status.removeEphemeralEffect("gyrostat")
   animator.stopAllSounds("flashlight2")
-  animator.setParticleEmitterActive("activatedLight", false)  
+  animator.setParticleEmitterActive("activatedLight", false)
 end

@@ -42,7 +42,7 @@ end
 function BeamFire:fire()
 
   self.weapon:setStance(self.stances.fire)
-  
+
   animator.playSound("fireStart")
   animator.playSound("fireLoop", -1)
 
@@ -66,7 +66,7 @@ function BeamFire:fire()
       if self.impactSoundTimer == 0 then
         animator.setSoundPosition("beamImpact", {beamLength, 0})
         animator.playSound("beamImpact")
-        self.impactSoundTimer = self.fireTime       
+        self.impactSoundTimer = self.fireTime
       end
     else
       animator.setParticleEmitterActive("beamCollision", false)

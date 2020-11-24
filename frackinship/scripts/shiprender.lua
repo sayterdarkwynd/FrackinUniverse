@@ -5,7 +5,7 @@ local origUpdate = update or function() end
 
 function init()
 	origInit()
-	
+
 	if world.type() == "unknown" then
 		local success, err = pcall(fsShipRender)
 		if not success then
@@ -16,9 +16,9 @@ end
 
 function update(dt)
 	origUpdate(dt)
-	
+
 	pcall(fsShipRender)
-	
+
 	--if world.getProperty("fu_byos.shipRenderUpdate") then
 		--localAnimator.clearDrawables()
 		--pcall(fsShipRender)
@@ -32,7 +32,7 @@ function fsShipRender()
 	if not shipImage and world.getProperty("ship.level", 0) == 0 and not world.getProperty("fu_byos") then
 		local shipFile = root.assetJson("/universe_server.config").speciesShips[player.species()][2]
 		local shipData = root.assetJson(shipFile)
-		
+
 		-- Get the ship position of [0, 0]
 		if string.sub(shipData.blockKey, 1, 1) ~= "/" then
 			shipData.blockKey = fsGetAbsolutePath(shipFile, shipData.blockKey)
@@ -41,7 +41,7 @@ function fsShipRender()
 			shipData.blockImage = fsGetAbsolutePath(shipFile, shipData.blockImage)
 		end
 		local shipImagePosition = {1024, 1024} --temp
-		
+
 		shipImage = shipData.backgroundOverlays
 		for i, imageData in ipairs (shipImage) do
 			if string.sub(imageData.image, 1, 1) ~= "/" then

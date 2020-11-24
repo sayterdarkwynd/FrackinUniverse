@@ -178,10 +178,10 @@ function PathMover:new(options)
   newPather.lastPosition = newPather.position
 
   newPather.boundBox = mcontroller.boundBox()
-  
+
   newPather.canOpenDoors = config.getParameter("pathing.canOpenDoors", false)
   newPather.forceWalkingBackwards = config.getParameter("pathing.forceWalkingBackwards", false)
-  
+
   setmetatable(newPather, extend(self))
   return newPather
 end
@@ -264,7 +264,7 @@ function PathMover:edgeMove()
   self:updateEdge()
 
   if self.edge == nil then return true end
-  
+
   if not self:openDoors() then
     return false
   end
@@ -288,7 +288,7 @@ end
 
 function PathMover:openDoors()
   local bounds = rect.translate(mcontroller.boundBox(), mcontroller.position())
-  
+
   if util.toDirection(self.delta[1]) > 0 then
     bounds[1] = bounds[3]
     bounds[3] = bounds[3] + 1

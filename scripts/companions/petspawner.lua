@@ -169,7 +169,7 @@ function Pet:getPersistentEffects()
 	local buffer={}
 
 	--khe: overriding the vanilla function somewhat because it's too limited
-	
+
 	local armorEffects=status.getPersistentEffects("armor")
 	local filteredEffects={}
 
@@ -191,7 +191,7 @@ function Pet:getPersistentEffects()
 	table.insert(filteredEffects,{stat="healthRegen",amount=status.stat("healthRegen")})
     util.appendLists(effects,filteredEffects)
     --util.appendLists(effects, getPetPersistentEffects())
-	
+
 
 	local aUSES=status.activeUniqueStatusEffectSummary()
 	for _,pit in pairs(aUSES) do
@@ -200,7 +200,7 @@ function Pet:getPersistentEffects()
 	end
 	aUSES=buffer
 	buffer={}
-	
+
 	local frackinPetStatEffectsMetatable=status.statusProperty("frackinPetStatEffectsMetatable",{})
 	--sb.logInfo("status.stat(powerMultiplier):%s",status.stat("powerMultiplier"))--works
 	--sb.logInfo("fpsem 1: %s",frackinPetStatEffectsMetatable)
@@ -233,7 +233,7 @@ function Pet:getPersistentEffects()
 	--table.insert(frackinPetStatEffectsMetatableBuffer,"fudarkcommander30")
 	--sb.logInfo("fpsemb 2: %s",frackinPetStatEffectsMetatableBuffer)
 	util.appendLists(effects,frackinPetStatEffectsMetatableBuffer)
-	
+
     -- ~Psi:  Provide a bonus to the pet's base max health, and some minor regen, so it sucks less:
     -- ~Psi:  Total bonus is x4, but we only multiply by 3, since the player's bonusHealth has already been added once
     --local playerHealthBonus = world.entityHealth(player.id())[2]--pointless.
@@ -303,7 +303,7 @@ function Pet:getPersistentEffects()
     util.appendLists(effects, self.collar.effects)
   end
 
-	
+
 	--sb.logInfo("%s",effects)
   return effects
 end

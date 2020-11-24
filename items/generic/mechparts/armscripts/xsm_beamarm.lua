@@ -57,7 +57,7 @@ function BeamArm:fireState()
     self.state:set(self.winddownState, self)
     return
   end
-    
+
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
   self:updateBeam()
@@ -82,7 +82,7 @@ function BeamArm:fireState()
     world.damageTiles(damagePositions, "foreground", self.firePosition, "beamish", self.beamTileDamage, 99)
     world.damageTiles(damagePositions, "background", self.firePosition, "beamish", self.beamTileDamage, 99)
   end
-    
+
     if beamCollision and beamEndTimer <= 0 and self.beamEndProjectile then
       world.spawnProjectile(self.beamEndProjectile, {endPoint[1],endPoint[2] - self.beamHeight}, self.driverId, {0, 0}, false)
       beamEndTimer = self.beamEndTimer

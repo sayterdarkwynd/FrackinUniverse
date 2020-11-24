@@ -4,7 +4,7 @@ function init()
   initCommonParameters()
   self.ballLiquidSpeed = config.getParameter("ballLiquidSpeed")
   self.pressDown = false
-  self.bombTimer = 0  
+  self.bombTimer = 0
 end
 
 function update(args)
@@ -15,11 +15,11 @@ function update(args)
   end
   self.specialLast = args.moves["special1"]
   self.pressDown = args.moves["primaryFire"]--attack button
-  
+
   if not args.moves["special1"] then
     self.forceTimer = nil
   end
-  
+
   if self.active then
     local inLiquid = mcontroller.liquidPercentage() >= 0.2   -- is above this amount of immersion
 
@@ -28,7 +28,7 @@ function update(args)
     ----------------------------------------------------
     if self.bombTimer > 0 then
       self.bombTimer = math.max(0, self.bombTimer - args.dt)
-    end    
+    end
     --projectile spawn----------------------------------
     if self.pressDown and self.bombTimer == 0 then
       self.bombTimer = 1.1
@@ -37,21 +37,21 @@ function update(args)
       animator.playSound("bombdrop")
       world.spawnProjectile("ngravityexplosion", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
       world.spawnProjectile("gravexplosion2", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop2)
-    end    
+    end
     ----------------------------------------------------
-    
-    if inLiquid then  -- if immersed in liquid do this 
-      status.addEphemeralEffect("airimmunity") 	
-      self.transformedMovementParameters.gravityMultiplier = -0.005 	-- upwards drag if idle    
+
+    if inLiquid then  -- if immersed in liquid do this
+      status.addEphemeralEffect("airimmunity")
+      self.transformedMovementParameters.gravityMultiplier = -0.005 	-- upwards drag if idle
       if args.moves["up"] and args.moves["down"] then  			-- pushing both up and down cancels out momentum
         self.transformedMovementParameters.liquidForce = 0
-        self.transformedMovementParameters.gravityMultiplier = 0 	
-      end 
+        self.transformedMovementParameters.gravityMultiplier = 0
+      end
       status.addEphemeralEffect("swimboost2") 				-- apply swim speed bonus
       self.transformedMovementParameters.runSpeed = self.ballLiquidSpeed  -- failsafes
       self.transformedMovementParameters.walkSpeed = self.ballLiquidSpeed -- failsafes
-    else 
-      status.removeEphemeralEffect("airimmunity") 
+    else
+      status.removeEphemeralEffect("airimmunity")
       status.removeEphemeralEffect("swimboost2")
       status.removeEphemeralEffect("waterimmunity")
       self.transformedMovementParameters.gravityMultiplier = 1.5	-- reset to default gravity, juuuuust in case
@@ -63,15 +63,15 @@ function update(args)
     status.setResourcePercentage("energyRegenBlock", 1.0)
 
     local controlDirection = 0
-    if args.moves["right"] then 
-      controlDirection = controlDirection - 1 
+    if args.moves["right"] then
+      controlDirection = controlDirection - 1
       self.transformedMovementParameters.liquidForce = 100
     end
-    if args.moves["left"] then 
-      controlDirection = controlDirection + 1 
+    if args.moves["left"] then
+      controlDirection = controlDirection + 1
       self.transformedMovementParameters.liquidForce = 100
     end
-   
+
     updateAngularVelocity(args.dt, inLiquid, controlDirection)
     updateRotationFrame(args.dt)
     checkForceDeactivate(args.dt)

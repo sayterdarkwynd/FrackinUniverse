@@ -143,7 +143,7 @@ function missionSequence()
   wave = spawnWave("ballistaspawn", { { entityType = "cultistknight", count = 2 }, { entityType = "cultistarcher", count = 1 } })
   util.appendLists(wave, spawnWave("campspawn", {
     { entityType = "cultistknight", count = 2, parameters = { moveLeft = true } },
-    { entityType = "cultistarcher", count = 1, parameters = { moveLeft = true } }  
+    { entityType = "cultistarcher", count = 1, parameters = { moveLeft = true } }
   }))
   while #wave > 0 do
     wave = util.filter(wave, world.entityExists)
@@ -188,7 +188,7 @@ function missionSequence()
     function() return spawnWave("campspawn", {
       { entityType = "cultistbasic", count = 2, parameters = { moveLeft = true } },
       { entityType = "cultistassault", count = 1, parameters = { moveLeft = true } },
-      { entityType = "cultistsniper", count = 1, parameters = { moveLeft = true } },      
+      { entityType = "cultistsniper", count = 1, parameters = { moveLeft = true } },
       { entityType = "cultistknight", count = 3, parameters = { moveLeft = true } }
     }) end,
     function() return spawnWave("midfieldspawn", { { entityType = "cultistknight", count = 3}, { entityType = "cultistarcher", count = 2 }, { entityType = "cultistsniper", count = 1 } }) end,
@@ -351,14 +351,14 @@ function spawnWave(spawnPoint, wave)
       elseif spawn.entityType == "helicultist" then
         entityId = world.spawnMonster("helicultist", position, { aggressive = true, level = world.threatLevel() })
       elseif spawn.entityType == "fuhelicultist" then
-        entityId = world.spawnMonster("fuhelicultist", position, { aggressive = true, level = world.threatLevel() })   
+        entityId = world.spawnMonster("fuhelicultist", position, { aggressive = true, level = world.threatLevel() })
       elseif spawn.entityType == "fuhugebiped" then
         randVal = math.random(1,4)
         if randVal == 1 then
-          entityId = world.spawnMonster("fuhugebiped", position, { aggressive = true, level = world.threatLevel() })               
-        else          
-          entityId = world.spawnMonster("cosmicintruder", position, { aggressive = true, level = 6 }) 
-        end             
+          entityId = world.spawnMonster("fuhugebiped", position, { aggressive = true, level = world.threatLevel() })
+        else
+          entityId = world.spawnMonster("cosmicintruder", position, { aggressive = true, level = 6 })
+        end
       elseif spawn.entityType == "dragonboss" then
         entityId = world.spawnMonster("dragonboss", position, { aggressive = true, level = world.threatLevel() })
       end

@@ -9,12 +9,12 @@ function init()
 end
 
 function update(dt)
-	if self.target and world.entityExists(self.target) then
+	if self.target and world.entityExists(self.target) and entity.isValidTarget(self.target) then
 		self.targetPosition = world.entityPosition(self.target)
 	else
 		local monsters = world.monsterQuery(entity.position(), self.spawnSearchRadius, { order = "nearest" })
 		for i, monsterID in ipairs(monsters) do
-			if entity.entityInSight(monsterID) then
+			if entity.isValidTarget(monsterID) and entity.entityInSight(monsterID) then
 				setTarget(monsterID)
 				break
 			end

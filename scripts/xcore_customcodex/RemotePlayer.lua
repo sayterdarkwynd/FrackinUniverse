@@ -17,7 +17,7 @@ function postinit()
 	-- NEW: I want to also try to prepopulate the player's species's known codexes.
 	-- This is in postinit() because LearnCodex uses logging which requires access to sb (which is defined *after* init for some god-awful reason.)
 	-- In case you don't know -- InitializationUtility.lua adds a postinit function.
-	
+
 	local playerCfg = root.assetJson("/player.config")
 	local defaultCdxArray = playerCfg.defaultCodexes
 	local playerSpecies = player.species()

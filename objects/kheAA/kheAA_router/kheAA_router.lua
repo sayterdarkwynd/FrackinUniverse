@@ -102,7 +102,7 @@ end
 
 function routeItems(dt)
 	if not self.init then return end
-	if storage.disabled then return end
+	if self.disabled then return end
 	if util.tableSize(transferUtil.vars.inContainers) == 0 then return end
 
 	local outputSizeG = util.tableSize(transferUtil.vars.outContainers)
@@ -114,9 +114,9 @@ function routeItems(dt)
 		if ping1 ~= nil then
 			sourceContainer=ping1
 		end
-		
+
 		local sourceItems=world.containerItems(sourceContainer)
-		
+
 		if sourceItems then
 			for indexIn,item in pairs(sourceItems or {}) do
 				local pass,mod = checkFilter(item)
@@ -146,17 +146,17 @@ function routeItems(dt)
 							local containerSize=world.containerSize(targetContainer)
 							local outputSlotCount=outputSlotCountG
 							local outputSlotsBuffer={}
-							
-							
+
+
 							for _,v in pairs(storage.outputSlots) do
 								if v <= containerSize then
 									table.insert(outputSlotsBuffer,v)
 								end
 							end
-							
+
 							outputSlotCount=util.tableSize(outputSlotsBuffer)
-							
-							
+
+
 							local subCount=item.count
 							if storage.roundRobinSlots and storage.invertSlots[2] then
 								outputSlotCount=containerSize-outputSlotCount
@@ -165,7 +165,7 @@ function routeItems(dt)
 								buffer=math.floor(buffer-(buffer%mod))
 								item.count = math.floor(buffer)
 							end
-							
+
 							if validInputSlot(indexIn) then
 								if outputSlotCount > 0 then
 									local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)

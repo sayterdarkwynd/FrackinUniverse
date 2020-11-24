@@ -36,7 +36,7 @@ function update(dt, fireMode, shiftHeld)
 end
 
 function uninit()
-  
+
 end
 
 function fire()
@@ -59,7 +59,7 @@ end
 function teleport()
   if storage.projectileId then
     status.setStatusProperty("translocatorDiscId", storage.projectileId)
-    
+
     if self.itemLevel == 1 then
       status.addEphemeralEffect("translocateattack")
     elseif self.itemLevel == 2 then

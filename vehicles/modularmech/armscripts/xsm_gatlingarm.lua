@@ -34,9 +34,9 @@ function GatlingArm:update(dt)
     self.firePosition = aimFix and self.newFirePosition or self.firePosition
 
     animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
- 
+
     if self.isFiring and self.windupTimer == self.windupTime and self.fireTimer == 0 then
-      
+
       if self.tracerProjectile and self.tracerFrequency then
         if self.tracerCount >= self.tracerFrequency then
           self.projectileType = self.tracerProjectile

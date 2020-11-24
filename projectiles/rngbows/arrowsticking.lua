@@ -11,7 +11,7 @@ end
 
 function update(dt)
   local targets = {}
-  
+
   --Look for a target to stick to
   if not self.stickingTarget then
 	local projectileLengthVector = vec2.norm(mcontroller.velocity())
@@ -35,7 +35,7 @@ function update(dt)
 	  end
 	end
   end
-  
+
   --While our target lives, make the projectile follow the target
   if self.stickingTarget and world.entityExists(self.stickingTarget) then
 	local targetStickingPosition = vec2.add(world.entityPosition(self.stickingTarget), self.stickingOffset)
@@ -45,12 +45,12 @@ function update(dt)
   else
 	self.stickingTarget = nil
   end
-  
+
   --If we were stuck to a target, but got unstuck, kill the projectile
   if self.stuckToTarget and not self.stickingTarget then
 	projectile.die()
   end
-  
+
   if self.stuckToGround then
 	if config.getParameter("proximitySearchRadius") then
 	  local targets = world.entityQuery(mcontroller.position(), self.searchDistance, {

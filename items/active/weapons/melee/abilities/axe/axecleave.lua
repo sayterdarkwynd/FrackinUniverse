@@ -88,7 +88,7 @@ function AxeCleave:windup(windupProgress)
 	else
 		self.lowEnergy=false
 	end
-	
+
 	--*************************************
 	-- FU/FR ADDONS
 	setupHelper(self, "axecleave-fire")

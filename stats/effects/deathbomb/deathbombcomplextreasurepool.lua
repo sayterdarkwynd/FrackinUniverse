@@ -13,7 +13,7 @@ function init()
 		if entType=="monster" then
 			local minBaseHealth=config.getParameter("minBaseHealth",10)
 			local eConfig=root.monsterParameters(world.entityTypeName(entity.id()))
-			
+
 			if minBaseHealth then
 				local baseHealth=eConfig.statusSettings and eConfig.statusSettings.stats and eConfig.statusSettings.stats.maxHealth and eConfig.statusSettings.stats.maxHealth.baseValue or 0
 				if baseHealth > minBaseHealth then

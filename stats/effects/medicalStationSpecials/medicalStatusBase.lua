@@ -1,6 +1,6 @@
 function baseInit()
 	effect.modifyDuration(300 - effect.duration())
-	
+
 	self.checkInterval = 10
 	self.checkCooldown = 0
 end

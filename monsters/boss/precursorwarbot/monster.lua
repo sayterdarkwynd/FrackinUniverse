@@ -94,7 +94,7 @@ function init()
   monster.setInteractive(config.getParameter("interactive", false))
 
   monster.setAnimationParameter("chains", config.getParameter("chains"))
-  
+
   monster.setUniqueId(config.getParameter("uniqueId"))
 end
 

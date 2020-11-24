@@ -6,7 +6,7 @@ local petUpdate = update or function() end
 function init()
   self.purchasablePetsPresent = root.itemConfig("pethouseSlime") and true
   self.objectName = object.name()
-  
+
   if not self.purchasablePetsPresent or self.objectName == "fu_byostechstation" then
 	petInit()
   end
@@ -79,7 +79,7 @@ function update(dt)
       self.dialogTimer = nil
     end
   end
-  
+
   if self.dialogTimer == nil then
     object.setOfferedQuests(config.getParameter("offeredQuests"))
   end

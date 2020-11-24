@@ -67,7 +67,7 @@ end
 
 function update(dt)
 	promises:update()
-	
+
 	if buttonTimer > 0  then
 		buttonTimer = buttonTimer - dt
 	end
@@ -98,10 +98,10 @@ function getPetList()
 			end
 		end
 	end
-	
+
 	petListTemp = util.mergeTable(status.statusProperty("fu_byospethouseAddedPets", {}), petListTemp)
 	petListTemp = util.mergeTable(root.assetJson("/frackinship/configs/nontechstationshippetlist.config"), petListTemp)
-	
+
 	return petListTemp
 end
 

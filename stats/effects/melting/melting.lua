@@ -15,7 +15,7 @@ function init()
       damageSourceKind = "fire",
       sourceEntityId = entity.id()
     })
-    
+
  self.damage = setEffectDamage()
 end
 
@@ -27,8 +27,8 @@ end
 function update(dt)
 
   if ( status.stat("fireResistance")  >= 1.0 ) then
-    effect.expire() 
-  end  
+    effect.expire()
+  end
 
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
