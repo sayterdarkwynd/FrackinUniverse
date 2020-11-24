@@ -76,7 +76,7 @@ function triggerDrain(damage)
   self.triggerDrain = true
   self.drainTimer = self.visualDuration
   animator.setParticleEmitterActive("healing", true)
-  status.modifyResource("food",damage * )
+  status.modifyResource("food",damage * 0.20)
 end
 
 function uninit()
