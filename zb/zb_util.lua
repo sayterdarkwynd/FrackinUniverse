@@ -64,11 +64,11 @@ function zbutil.PrintTable(tbl)
 		local str = "\n{"
 		for k, v in pairs(tbl) do
 			local lenFix = ""
-			for i = 1, 30 - string.len(tostring(k)) do 
+			for i = 1, 30 - string.len(tostring(k)) do
 				lenFix = lenFix.." "
 			end
 			
-			str = str.."\n	"..tostring(k)..lenFix.."=          ("..type(v)..") "..tostring(v)         
+			str = str.."\n	"..tostring(k)..lenFix.."=          ("..type(v)..") "..tostring(v)
 		end
 		
 		sb.logInfo("\n%s", str.."\n}")
@@ -92,7 +92,7 @@ function zbutil._DeepPrintTableHelper(toPrint, level)
 			end
 			
 			local lenFix = ""
-			for i = 1, 30 - string.len(tostring(k)) do 
+			for i = 1, 30 - string.len(tostring(k)) do
 				lenFix = lenFix.." "
 			end
 			

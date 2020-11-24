@@ -37,12 +37,12 @@ function isGas()
 		mcontroller.liquidId() == 64 or	-- poisongas
 		mcontroller.liquidId() == 50 then -- shadowgas
 		return true
-	end 
+	end
 end
 
 function init()
 	self.specialLast = false
-	self.rockingTimer = 0 
+	self.rockingTimer = 0
 	self.facingDirection = 1
 	self.angle = 0
 	animator.setParticleEmitterActive("bubbles", false)
@@ -123,16 +123,16 @@ function init()
 				animator.setAnimationState("base", "warpOut")
 				local localStorable = (self.driver ==nil)
 				return {storable = true, healthFactor = storage.health / self.maxHealth}
-			end  
+			end
 		end
 	end)
 	
 	--assume maxhealth
 	if (storage.health) then
-		animator.setAnimationState("base", "idle")     
+		animator.setAnimationState("base", "idle")
 	else
-		storage.health = self.maxHealth 
-		animator.setAnimationState("base", "warpIn")  
+		storage.health = self.maxHealth
+		animator.setAnimationState("base", "warpIn")
 	end
 	
 	--set up any damage efects we have...
@@ -160,7 +160,7 @@ function update()
 		for num = 1,2,1 do
 			if vehicle.entityLoungingIn("passenger"..num) ~= nil then
 				vehicle.setLoungeEnabled("passenger"..num,false)
-			end 
+			end
 		end
 		
 	elseif (animState=="sinking") then
@@ -215,7 +215,7 @@ function getDriver()
 	if not drv then
 		for num = 1,2,1 do
 			drv = vehicle.entityLoungingIn("passenger"..num)
-			if drv ~= nil then break end 
+			if drv ~= nil then break end
 		end
 	end
 	return drv or nil
@@ -229,7 +229,7 @@ function updateDriving()
 	local driverThisFrame = getDriver()
 	local holdingUp, holdingDown = false,false
 	
-	if driverThisFrame ~= self.driver then 
+	if driverThisFrame ~= self.driver then
 		self.driver = driverThisFrame
 		animator.setSoundVolume("hatch",self.waterFactor,1.5)
 	animator.playSound("hatch")
@@ -242,10 +242,10 @@ function updateDriving()
 	if (driverThisFrame ~= nil) then
 		vehicle.setDamageTeam(world.entityDamageTeam(driverThisFrame))
 		
-		if isSafeLiquid() then 
+		if isSafeLiquid() then
 		  world.sendEntityMessage(vehicle.entityLoungingIn("drivingSeat"), "queueRadioMessage", "subCantOperate", 1.0) -- send player a warning
 		elseif not isSafeLiquid() then -- check the type of liquid they are in. works, but not if they swap to new liquid type. odd?
-			-- movement    
+			-- movement
 			if vehicle.controlHeld("drivingSeat", "left") then
 				mcontroller.approachXVelocity(-self.targetMoveSpeed, self.moveControlForce)
 				moving = true
@@ -257,17 +257,17 @@ function updateDriving()
 			end
 			
 			if (vehicle.controlHeld("drivingSeat", "down")) then -- negative buoyancy
-				if (storage.ballasted) then 
+				if (storage.ballasted) then
 					local madj = moving and 1 or 0.75 -- dive faster while moving
 					mcontroller.approachYVelocity(-self.targetMoveSpeed*madj, self.moveControlForce)
 					moving = true
 				end
 				
 				animator.setParticleEmitterEmissionRate("bubbles",25)
-				animator.setParticleEmitterActive("bubbles", true)      
+				animator.setParticleEmitterActive("bubbles", true)
 				holdingDown = true
 			elseif (vehicle.controlHeld("drivingSeat", "up")) then -- positive buoyancy
-				if (storage.ballasted) then 
+				if (storage.ballasted) then
 					local madj = moving and 1 or 0.75 -- rise faster while moving
 					mcontroller.approachYVelocity(self.targetMoveSpeed*madj, self.moveControlForce)
 					moving = true
@@ -275,7 +275,7 @@ function updateDriving()
 				
 				holdingUp = true
 				animator.setParticleEmitterEmissionRate("bubbles",40)
-				animator.setParticleEmitterActive("bubbles", true)     
+				animator.setParticleEmitterActive("bubbles", true)
 			end
 		
 			if self.ballastTimer <= 0 and vehicle.controlHeld("drivingSeat", "jump") then
@@ -290,7 +290,7 @@ function updateDriving()
 				else -- sink to periscope depth / neutral buoyancy
 					applyMovementParams()
 					if not holdingDown and not holdingUp then
-						if self.waterFactor < self.minWaterFactorToFloat then 
+						if self.waterFactor < self.minWaterFactorToFloat then
 							mcontroller.setYVelocity(6.5) -- pop it off surface
 						end
 						
@@ -360,7 +360,7 @@ function updateSinking(waterFactor, currentAngle, sinkAngle)
 	if (mcontroller.onGround()) then
 	
 		--not floating any more. Must have touched bottom.
-		animator.setAnimationState("base", "sunk")  
+		animator.setAnimationState("base", "sunk")
 		
 		animator.setParticleEmitterEmissionRate("bubbles",15)
 		animator.setParticleEmitterActive("bubbles", true)
@@ -375,7 +375,7 @@ function updateSinking(waterFactor, currentAngle, sinkAngle)
 		for num = 1,2,1 do
 			if vehicle.entityLoungingIn("passenger"..num) ~= nil then
 				vehicle.setLoungeDance("passenger"..num,"panic")-- make passengers panic when sinking
-			end 
+			end
 		end
 		
 		if self.hornTimer <0 and math.random(89) == 7 then -- reuse hornTimer, cant honk while sinking
@@ -389,9 +389,9 @@ function updateSinking(waterFactor, currentAngle, sinkAngle)
 		if (waterFactor> self.minWaterFactorToFloat) then
 			animator.setParticleEmitterEmissionRate("bubbles",11)
 			animator.setParticleEmitterActive("bubbles", true)
-			animator.setParticleEmitterActive("smoke", false)    
+			animator.setParticleEmitterActive("smoke", false)
 		else
-			animator.setParticleEmitterActive("smoke", true)    
+			animator.setParticleEmitterActive("smoke", true)
 			animator.setParticleEmitterActive("bubbles", false)
 		end
 		
@@ -457,7 +457,7 @@ end
 function updateMovingEffects(floating,moving)
 	if moving then
 		animator.setAnimationState("propeller", "turning")
-		animator.setParticleEmitterActive("propwash", true)  
+		animator.setParticleEmitterActive("propwash", true)
 		if not self.engineLoopPlaying then
 			animator.setSoundVolume("engineLoop",self.waterFactor,1.5)
 			animator.playSound("engineLoop",-1) -- loop forever -1
@@ -473,19 +473,19 @@ function updateMovingEffects(floating,moving)
 				local bowWaveEmitter=self.bowWaveParticleNames[floatingLiquid]
 
 				local rateFactor=math.abs(mcontroller.xVelocity())/self.targetMoveSpeed
-				rateFactor=rateFactor * self.bowWaveMaxEmissionRate     
+				rateFactor=rateFactor * self.bowWaveMaxEmissionRate
 				animator.setParticleEmitterEmissionRate(bowWaveEmitter, rateFactor)
 
 				local bowWaveBounds=self.waterBounds
 				animator.setParticleEmitterOffsetRegion(bowWaveEmitter,bowWaveBounds)
 
-				animator.setParticleEmitterActive(bowWaveEmitter, true)        
+				animator.setParticleEmitterActive(bowWaveEmitter, true)
 			end
 		end
 		
 	else
 		animator.setAnimationState("propeller", "still")
-		animator.setParticleEmitterActive("propwash", false)  
+		animator.setParticleEmitterActive("propwash", false)
 		if self.engineLoopPlaying then
 			animator.stopAllSounds("engineLoop")
 			self.engineLoopPlaying = false
@@ -559,7 +559,7 @@ function setDamageEmotes()
 	local damageTakenEmote=configParameter("damageTakenEmote")
 	self.damageEmoteTimer=configParameter("damageEmoteTime")
 	vehicle.setLoungeEmote("drivingSeat",damageTakenEmote)
-	for n = 1,2,1 do 
+	for n = 1,2,1 do
 		vehicle.setLoungeEmote("passenger"..n,damageTakenEmote)
 	end
 end
@@ -595,8 +595,8 @@ end
 
 function calcGroundCollisionAngle(waterSurface)
 
-	local frontDistance 
-	local backDistance 
+	local frontDistance
+	local backDistance
 	local centerDistance = math.min(distanceToGround(self.centerGroundTestPoint),waterSurface)
 
 	if self.facingDirection < 0 then

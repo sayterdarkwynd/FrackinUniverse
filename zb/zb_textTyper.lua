@@ -49,12 +49,12 @@ function textTyper.init(textData, str, sound)
 		return
 	end
 	
-	textData.toWrite = {} 
+	textData.toWrite = {}
 	textData.scrambingLetters = {}
 	textData.functionCalls = {}
 	textData.written = ""
 	textData.textPause = 0
-	textData.isFinished = false 
+	textData.isFinished = false
 	local textCopy = str
 	local formatPause = 0
 	local skippedChars = 0 -- Required for text scrambling coords

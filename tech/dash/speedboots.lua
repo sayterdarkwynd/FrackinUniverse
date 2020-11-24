@@ -30,14 +30,14 @@ function init()
         startDash(dashKey == "left" and -1 or 1)
       end
     end)
-    
+
   if status.isResource("food") then
     status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig", math.huge);
     status.addPersistentEffect("wallClingPenalty2", "feedpackneg", math.huge);
   else
     status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig2", math.huge);
   end
-  
+
 
 end
 
@@ -83,7 +83,7 @@ function update(args)
     end
     mcontroller.controlModifiers({jumpingSuppressed = true})
 
-    animator.setFlipped(mcontroller.facingDirection() == -1)    
+    animator.setFlipped(mcontroller.facingDirection() == -1)
 
     self.dashTimer = math.max(0, self.dashTimer - args.dt)
     if self.dashTimer == 0 then

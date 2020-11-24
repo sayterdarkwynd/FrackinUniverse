@@ -8,7 +8,7 @@ fertslot = 2
 
 inputSlots = {seedslot, waterslot, fertslot}
 
-local tenantNumber 
+local tenantNumber
 local happinessAmount
 
 

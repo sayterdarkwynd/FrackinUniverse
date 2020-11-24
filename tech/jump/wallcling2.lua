@@ -13,7 +13,7 @@ function init()
   self.wallGrabFreezeTimer = 0
   self.wallReleaseTime = config.getParameter("wallReleaseTime")
   self.wallReleaseTimer = 0
- 
+
   self.healTimer = 0
   self.pressDown = false
   self.soundPlay = false
@@ -38,7 +38,7 @@ function applyTechBonus()
   self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
   self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity") * (self.jumpBonus)
   self.wallJumpYVelocity = config.getParameter("wallJumpYVelocity") * (self.jumpBonus)
-  self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime") * (self.jumpBonus) 
+  self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime") * (self.jumpBonus)
 end
 
 function update(args)
@@ -122,7 +122,7 @@ function update(args)
   if args.moves["primaryFire"] or args.moves["altFire"] then
     self.invisibleBlockTimer = 0.5
   end
-  
+
   if self.setInv and self.invisibleBlockTimer <= 0 then
     setWallClingAbility()
   else

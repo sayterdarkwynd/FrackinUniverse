@@ -16,7 +16,7 @@ function init()
 end
 
 function update(dt)
- 
+
 	if not scanTimer or (scanTimer > 1) then
 		scanTimer=0
 		transferUtil.loadSelfContainer()
@@ -35,7 +35,7 @@ function update(dt)
 --	    end
 --	  end
 
-	  
+	
 --	  if item.name ~= config.getParameter('wellslots')[1].name then
 --	    world.spawnItem(item,entity.position())
 --	    world.containerConsumeAt(entity.id(),0,item.count)
@@ -55,7 +55,7 @@ function update(dt)
 	--	storage.waterCount = storage.waterCount - amount * config.getParameter('wellslots')[1].ratio
 		rentTimer = 0	
 	end
-	  
+	
 --	  if amount > 0 and #config.getParameter('wellslots') > 1 then
 --	    for i=(storage.count or 0)+1,(storage.count or 0)+amount do
 --	      for j=2,#config.getParameter('wellslots') do

@@ -8,14 +8,14 @@ function craftingRecipe(items)
 	if #items ~= 1 then return end
 	local item = items[1]
 	--sb.logInfo(sb.printJson(items,1))
-  
+
 	if not item then return end
 	
-	if not item.parameters or 
-		(not item.parameters.currentAugment 
-			and not item.parameters.currentCollar 
-			and not item.parameters.lureType 
-			and not item.parameters.reelType) 
+	if not item.parameters or
+		(not item.parameters.currentAugment
+			and not item.parameters.currentCollar
+			and not item.parameters.lureType
+			and not item.parameters.reelType)
 	then
 		return
 	elseif item.parameters.currentAugment and item.parameters.currentAugment.type == "back" then
@@ -137,7 +137,7 @@ function craftingRecipe(items)
 			output = reel,
 			duration = 1.0
 		}
-		 
+		
 	elseif item.parameters.lureType then
 		
 		local lureMap = config.getParameter("lureMap",{})
@@ -186,10 +186,10 @@ end
 function update(dt)
 	local powerOn = false
 	local inventory = world.containerItems(entity.id())
-  
-  
+
+
   for _,item in pairs(inventory) do
-    if item.parameters.currentAugment 
+    if item.parameters.currentAugment
 		or item.parameters.currentCollar
 		or item.parameters.lureType
 		or item.parameters.reelType
@@ -198,7 +198,7 @@ function update(dt)
       break
     end
   end
-  
+
   if storage.item and not inventory[1] and inventory[2] then
 	world.containerAddItems(entity.id(),storage.item)
 	--sb.logInfo(sb.printJson(storage.item,1))

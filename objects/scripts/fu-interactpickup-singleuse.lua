@@ -27,7 +27,7 @@ function open(cheezit)
 	object.setConfigParameter("breakDropPool", "empty")
 end
 
-function update(dt) 
+function update(dt)
 	if not storage.itemHasSpawned then
 		if self.itemCheck then
 			if self.itemCheck:finished() then

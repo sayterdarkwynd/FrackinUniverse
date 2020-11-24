@@ -1,4 +1,4 @@
-require "/scripts/vec2.lua" 
+require "/scripts/vec2.lua"
 
 local oldInit=init
 local oldUpdate=update

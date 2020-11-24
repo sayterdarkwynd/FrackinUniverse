@@ -9,17 +9,17 @@ function TheaMinigun:init()
 
   self.chargeTimer = self.chargeTime
   self.cooldownTimer = self.fireTime
-  
+
   animator.setAnimationState("charge", "off")
   animator.setAnimationState("chargehold", "off")
-  
+
   self.chargeHasStarted = false
   self.shouldDischarge = false
   self.windupReady = false
-  
+
   self.chargeSoundIsPlaying = false
   self.holdSoundIsPlaying = false
-  
+
   self.resetTimer = self.resetTime
 
   self:reset()
@@ -31,7 +31,7 @@ end
 
 function TheaMinigun:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-  
+
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)
   end
@@ -74,7 +74,7 @@ function TheaMinigun:update(dt, fireMode, shiftHeld)
 	animator.setAnimationState("chargehold", "off")
 	self.chargeTimer = self.chargeTime
 	self.resetTimer = self.resetTime
-  
+
   --If the charge was prematurily stopped or somehow interrupted
   elseif self.chargeHasStarted == true and (self.fireMode ~= (self.activatingFireMode or self.abilitySlot) or world.lineTileCollision(mcontroller.position(), self:firePosition())) then
     animator.stopAllSounds("chargeLoop")
@@ -82,12 +82,12 @@ function TheaMinigun:update(dt, fireMode, shiftHeld)
 	animator.setAnimationState("charge", "off")
 	self.chargeTimer = self.chargeTime
   end
-  
+
   --Movement suppressor
   if self.walkWhileFiring == true and (self.chargeHasStarted == true or self.windupReady == true) then
     mcontroller.controlModifiers({runningSuppressed=true})
   end
-  
+
   --Charge/hold animation manager
   if self.chargeHasStarted == true then
     animator.setAnimationState("charge", "charging")
@@ -98,7 +98,7 @@ end
 
 function TheaMinigun:charge()
   self.weapon:setStance(self.stances.charge)
-  
+
   --While charging, but not yet ready, count down the charge timer
   while self.chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) and not world.lineTileCollision(mcontroller.position(), self:firePosition()) do
     self.chargeTimer = math.max(0, self.chargeTimer - self.dt)
@@ -115,9 +115,9 @@ function TheaMinigun:charge()
 
     coroutine.yield()
   end
-  
+
   --If the charge is ready, keep on firing so long as we have energy left
-  if self.chargeTimer == 0 and status.overConsumeResource("energy", self:energyPerShot()) then    
+  if self.chargeTimer == 0 and status.overConsumeResource("energy", self:energyPerShot()) then
 	self.resetTimer = self.resetTime
 	self.chargeHasStarted = false
 	self.windupReady = true
@@ -140,7 +140,7 @@ end
 
 function TheaMinigun:fire()
   self.weapon:setStance(self.stances.fire)
-  
+
   --Fire a projectile and show a muzzleflash, then continue on with this state
   self:fireProjectile()
   self:muzzleFlash()
@@ -148,7 +148,7 @@ function TheaMinigun:fire()
   if self.stances.fire.duration then
     util.wait(self.stances.fire.duration)
   end
-  
+
   self.cooldownTimer = self.fireTime
   self:setState(self.cooldown)
 end
@@ -194,7 +194,7 @@ function TheaMinigun:muzzleFlash()
 end
 
 function TheaMinigun:cooldown()
-  
+
   if self.shouldDischarge == true then
     self.weapon:updateAim()
 	self.weapon:setStance(self.stances.discharge)

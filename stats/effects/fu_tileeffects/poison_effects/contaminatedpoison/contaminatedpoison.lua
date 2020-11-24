@@ -9,7 +9,7 @@ function init()
   effect.addStatModifierGroup({
       { stat = "physicalResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
       { stat = "radioactiveResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) }
-  })  
+  })
 end
 
 function setEffectTime()

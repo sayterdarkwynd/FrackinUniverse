@@ -13,7 +13,7 @@ function evolve(evolution)
 	elseif eType == "npc" then
 		npc.setDropPool("empty")
 	end
-	if myType == 0 then	--Unless the monster is set to isMultiplier, they die on spawning the new variant. 
+	if myType == 0 then	--Unless the monster is set to isMultiplier, they die on spawning the new variant.
 		status.setResource("health", 0)
 	end
 	spawnResult(evolution, self.position)

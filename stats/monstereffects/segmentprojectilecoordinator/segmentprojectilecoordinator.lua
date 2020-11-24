@@ -1,4 +1,4 @@
---TODO add position offsetting, 
+--TODO add position offsetting,
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
@@ -28,7 +28,7 @@ function update(dt)
 
 	if self.timer < 0 then
 
-		if self.mode == 'velocity' then 
+		if self.mode == 'velocity' then
 
   			world.spawnProjectile(self.projectile, mcontroller.position(), entity.id(), mcontroller.velocity(), self.track, {power = self.power})
 

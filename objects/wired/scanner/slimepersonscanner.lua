@@ -37,7 +37,7 @@ function onInteraction(args)
   trigger()
 end
 
-function update(dt) 
+function update(dt)
   if self.triggerTimer > 0 then
     self.triggerTimer = self.triggerTimer - dt
   elseif self.triggerTimer <= 0 then
@@ -70,7 +70,7 @@ function update(dt)
                 hostile = 1
             end
         end
-       
+
         if hostile ~= 1 then
             trigger()
         end

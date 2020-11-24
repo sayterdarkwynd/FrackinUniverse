@@ -23,7 +23,7 @@ function refresh(size, slot)
 	local input = world.containerItemAt(id, 0)
 	if input then
 		local stack = world.containerTakeNumItemsAt(id, 0, (input.count // size) * size)
-		if stack then 
+		if stack then
 			stack = world.containerPutItemsAt(id, stack, slot)
 			if stack then
 				world.containerPutItemsAt(id, stack, 0)

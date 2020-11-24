@@ -6,7 +6,7 @@ function init()
 	elseif status.isResource("shieldHealth") then
 		self.resource="shieldHealth"
 	else
-		effectHandler=effect.addStatModifierGroup({{stat = "physicalResistance", amount = 1 },{stat = "electricResistance", amount = 0.5 },{stat = "poisonResistance", amount = 1 },{stat = "iceResistance", amount = 0.7 },{stat = "fireResistance", amount = 0.7 },{stat = "radioactiveResistance", amount = 0.6 },{stat = "shadowResistance", amount = 0.7 },{stat = "cosmicResistance", amount = 0.7 }}) 
+		effectHandler=effect.addStatModifierGroup({{stat = "physicalResistance", amount = 1 },{stat = "electricResistance", amount = 0.5 },{stat = "poisonResistance", amount = 1 },{stat = "iceResistance", amount = 0.7 },{stat = "fireResistance", amount = 0.7 },{stat = "radioactiveResistance", amount = 0.6 },{stat = "shadowResistance", amount = 0.7 },{stat = "cosmicResistance", amount = 0.7 }})
 	end
 	animator.setGlobalTag("effectDirectives","?multiply=FFFFFF00")
 	animator.setAnimationState("aura", "windup")
@@ -24,7 +24,7 @@ function init()
 		self.active = true
 		self.broke = false
 
-		self.maxShieldHealth = self.shieldHealth 
+		self.maxShieldHealth = self.shieldHealth
 		self.shieldHealthPercent = self.shieldHealth / self.maxShieldHealth
 		if self.shieldHealthPercent > 1.0 then
 			self.shieldHealthPercent = 1
@@ -58,7 +58,7 @@ end
 
 function uninit()
 	animator.setAnimationState("aura", "off")
-	if self.legacy then 
+	if self.legacy then
 		effect.removeStatModifierGroup(effectHandler)
 		return
 	end

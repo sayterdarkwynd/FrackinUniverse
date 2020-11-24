@@ -7,25 +7,25 @@ function activate(fireMode, shiftHeld)
         player.equipTech("colorvariableslimesphere") 	
         player.makeTechAvailable("stickywalljump")
         player.enableTech("stickywalljump")
-        player.equipTech("stickywalljump") 	        
+        player.equipTech("stickywalljump") 	
       end
       animate()
     else
       animator.setParticleEmitterActive("butterflies", false)	
-      animator.setParticleEmitterActive("butterflies2", false) 
-      animator.setParticleEmitterActive("butterflies3", false)      
+      animator.setParticleEmitterActive("butterflies2", false)
+      animator.setParticleEmitterActive("butterflies3", false)
     end
-    
+
 end
 
 function animate()
     	animator.setParticleEmitterOffsetRegion("butterflies", mcontroller.boundBox())
     	animator.setParticleEmitterActive("butterflies", true)	
     	animator.setParticleEmitterOffsetRegion("butterflies2", mcontroller.boundBox())
-    	animator.setParticleEmitterActive("butterflies2", true) 
+    	animator.setParticleEmitterActive("butterflies2", true)
     	animator.setParticleEmitterOffsetRegion("butterflies3", mcontroller.boundBox())
     	animator.setParticleEmitterActive("butterflies3", true)    	
-    	animator.playSound("activate") 
+    	animator.playSound("activate")
 end
 
 function update()

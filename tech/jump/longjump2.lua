@@ -36,7 +36,7 @@ end
 function update(args)
   applyTechBonus()
 	if not disabled(args) and args.moves["jump"] and canAbility(args) then
-		if not self.doingAbility then 
+		if not self.doingAbility then
 			self.doingAbility = true
 			startAbility(args)
 		end
@@ -117,7 +117,7 @@ end
 function canAbility(args)
 	return not mcontroller.jumping()
 		and not mcontroller.canJump()
-		and args.moves["jump"] 
+		and args.moves["jump"]
 		and ( not ( mcontroller.velocity()[2] > 0 ) or self.doingAbility )
 end
 

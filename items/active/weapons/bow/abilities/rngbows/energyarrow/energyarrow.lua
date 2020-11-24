@@ -31,14 +31,14 @@ function NebRNGHealPoint:update(dt, fireMode, shiftHeld)
   world.debugText(self.fireMode, mcontroller.position(), "yellow")
 
   world.debugPoint(self:firePosition(), "red")
-  
+
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 
-  if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and self.cannotUseAlt == false and (self.drawTimer > 0 or not status.resourceLocked("energy")) then  
+  if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and self.cannotUseAlt == false and (self.drawTimer > 0 or not status.resourceLocked("energy")) then
 	animator.stopAllSounds("chargeLoopAlt")
 	animator.setAnimationState("chargeAlt", "off")
 	animator.setParticleEmitterActive("chargeparticlesAlt", false)
-	self:setState(self.draw)  
+	self:setState(self.draw)
   end
 end
 
@@ -100,7 +100,7 @@ function NebRNGHealPoint:draw()
     else
       activeItem.setCursor(self.cursorFrames[#self.cursorFrames])
     end
-  
+
 	--If the bow is almost fully drawn, stop the draw sound and play the ready sound
 	--Do this slightly before the draw is ready so the player can release when they hear the sound
 	--This way, the sound plays at the same moment in the draw phase for every bow regardless of draw time
@@ -129,7 +129,7 @@ function NebRNGHealPoint:fire()
   self.hasChargedCursor = false
   activeItem.setCursor(self.cursorFrames[1])
   self.weapon:setStance(self.stances.fire)
-  
+
   animator.stopAllSounds("chargeLoopAlt")
   animator.setAnimationState("chargeAlt", "off")
   animator.setParticleEmitterActive("chargeparticlesAlt", false)
@@ -162,20 +162,20 @@ function NebRNGHealPoint:fire()
   else
 	animator.playSound("dischargeAlt")
   end
-  
+
   self.projectileParameters.periodicActions = nil
   self.cooldownTimer = self.cooldownTime
-  animator.setGlobalTag("directives", "")  
+  animator.setGlobalTag("directives", "")
   self.waitTimer = self.waitTime
-  
+
   self.weapon:setStance(self.stances.idle)
   animator.setGlobalTag("drawFrame", "0")
   animator.setAnimationState("bow", "idle")
   animator.stopAllSounds("draw")
   animator.stopAllSounds("ready")
-  
+
   self.cannotUseAlt = true
-  
+
   while world.entityExists(self.teleportProjectile) do	
 	world.debugText("Active projectiles detected!", mcontroller.position(), "green")
 	
@@ -191,7 +191,7 @@ function NebRNGHealPoint:fire()
 	end
     coroutine.yield()
   end
-  
+
   --Attempt to teleport the player
   self:setState(self.attemptTeleport)
 end
@@ -203,23 +203,23 @@ function NebRNGHealPoint:currentProjectileParameters()
   local projectileParameters = copy(self.projectileParameters or {})
   --Load the root projectile config based on draw power level
   local projectileConfig = root.projectileConfig(self.projectileType)
-  
+
   --Calculate projectile speed based on draw time and projectile parameters
   projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
   projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer / self.drawTime))
-  
+
   projectileParameters.processing = self.paletteSwaps
-  
+
   --Bonus damage calculation for quiver users
   local damageBonus = 1.0
   if self.useQuiverDamageBonus == true and status.statPositive("avikanQuiver") then
 	damageBonus = status.stat("avikanQuiver")
   end
-  
+
   --Calculate projectile power based on draw time and projectile parameters
   local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer / self.drawTime))
-  projectileParameters.power = projectileParameters.power or projectileConfig.power 
-  projectileParameters.power = projectileParameters.power 
+  projectileParameters.power = projectileParameters.power or projectileConfig.power
+  projectileParameters.power = projectileParameters.power
     * self.drawTime
 	* self.weapon.damageLevelMultiplier
 	* drawTimeMultiplier

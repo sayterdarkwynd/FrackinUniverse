@@ -12,7 +12,7 @@ function BeamArm:update(dt)
   end
 
   if not self.state.state then
-    if self.isFiring then   
+    if self.isFiring then
       self.state:set(self.windupState, self)
     end
   end
@@ -29,26 +29,26 @@ function BeamArm:windupState()
   local stateTimer = self.windupTime
 
 	-- for FU scaling damage ********************************************************
-	--  self:statSet()  
+	--  self:statSet()
 	--  self.mechTier = self.stats.power
 	--  pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
 	--  self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
-	  
+	
 	--  pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage * self.mechTier
 	--  pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage * self.mechTier
         -- Mech critical hits
         --if self.critChance >= 100 then
         --  self.mechBonus = self.mechBonus * 2
         --end
-        
+
           --apply final damage
           --pParams.damageSources.rightArmBeam.damage = pParams.damageSources.rightArmBeam.damage + self.mechBonus
           --pParams.damageSources.leftArmBeam.damage = pParams.damageSources.leftArmBeam.damage + self.mechBonus
-          
-          --sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)	  
-	  
-	  --********************************************************************************** 
-	  
+
+          --sb.logInfo("power total = "..pParams.damageSources.rightArmBeam.damage)	
+	
+	  --**********************************************************************************
+	
   animator.setAnimationState(self.armName, "windup")
   animator.playSound(self.armName .. "Windup")
 
@@ -70,8 +70,8 @@ end
 
 function BeamArm:statSet()
         self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
-        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
-        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
+        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed
+        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
         self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
         self.energyMax = self.parts.body.energyMax
@@ -86,22 +86,22 @@ end
 function BeamArm:fireState()
   local stateTimer = self.fireTime
   -- FU beam damage scaling *******************************************
-	  self:statSet()  
+	  self:statSet()
 	  self.mechTier = self.stats.power
 	  self.basePower = self.stats.basePower
-	  
+	
           pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
           self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
 
-          self.applyBeamDamage = self.basePower * self.mechTier; 
+          self.applyBeamDamage = self.basePower * self.mechTier;
           --Mech critical hits
 		if self.critChance >= 100 then
 		  self.mechBonus = self.mechBonus * 2
 		end
 
           --apply final damage
-          self.applyBeamDamage = self.applyBeamDamage + self.mechBonus; 
-  -- ********************************************************************	  
+          self.applyBeamDamage = self.applyBeamDamage + self.mechBonus;
+  -- ********************************************************************	
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
   local endPoint, beamCollision, beamLength = self:updateBeam()

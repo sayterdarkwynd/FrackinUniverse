@@ -6,7 +6,7 @@ function buildDamageTypeKillCondition(config)
     damageTypes = config.damageTypes or {},
     count = config.count or 1
   }
-  
+
   --Set up the function for checking if the conditions were met
   function damageTypeKillCondition:conditionMet()
     return storage.nebDamageTypeKillCount >= self.count
@@ -26,7 +26,7 @@ function buildDamageTypeKillCondition(config)
     objective = objective:gsub("<current>", storage.nebDamageTypeKillCount or 0)
     return objective
   end
-  
+
   function damageTypeKillCondition:onUpdate()
     --Check for inflicted hits and add a to the count on kill
     local damageNotifications, nextStep = status.inflictedDamageSince(self.queryDamageSince or 0)
@@ -34,7 +34,7 @@ function buildDamageTypeKillCondition(config)
 	
 	--local damageNotificationInfo = sb.printJson(damageNotifications, 1)
 	--sb.logInfo(damageNotificationInfo)
-  
+
     for _, notification in ipairs(damageNotifications) do
 	  if notification.targetEntityId then
 	    if notification.hitType == "Kill" and world.entityCanDamage(notification.targetEntityId, player.id()) then
@@ -47,15 +47,15 @@ function buildDamageTypeKillCondition(config)
 	  end
     end
   end
-  
+
   --Remember how many messages we have already received
   storage.nebDamageTypeKillCount = storage.nebDamageTypeKillCount or 0
 
-  
+
   --sb.logInfo("======================== TEST ========================")
   --sb.logInfo("SELF =")
   --sb.logInfo(sb.printJson(self, 1))
   --sb.logInfo("======================== TEST ========================")
-  
+
   return damageTypeKillCondition
 end

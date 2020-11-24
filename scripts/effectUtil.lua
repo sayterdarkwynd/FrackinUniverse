@@ -39,20 +39,20 @@ function effectUtil.messageParticle(position, text, color, size, offset, duratio
 						destructionImage = "/particles/acidrain/1.png",
 						destructionAction = "fade", --"shrink", "fade", "image" (require "destructionImage")
 						destructionTime = duration or 0.8,
-						layer = layer or "front",	 -- 'front', 'middle', 'back' 
+						layer = layer or "front",	 -- 'front', 'middle', 'back'
 						position = offset or {0, 2},
 						size = size or 0.7,	
 						approach = {0,20},		-- dunno what it is
 						initialVelocity = {0, 0.8},	 -- vec2 type (x,y) describes initial velocity
 						finalVelocity = {0,0.5},
 						-- variance = {initialVelocity = {3,10}},	-- 'jitter' of included parameter
-						angularVelocity = 0,																	 
+						angularVelocity = 0,																	
 						flippable = false,
 						timeToLive = duration or 2,
 						rotation = 0,
 						type = "text"	-- our best luck
 					}
-				} 
+				}
 			}
 		}
 	)

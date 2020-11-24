@@ -44,7 +44,7 @@ function update()
 end
 
 -- Called via update to turn off music, as well as when broken
-function uninit() 
+function uninit()
 	for playerId, _ in pairs(self.players) do
 		world.sendEntityMessage(playerId, "stopAltMusic", 2.0)
 	end

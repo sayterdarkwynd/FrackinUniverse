@@ -90,5 +90,5 @@ function raceroller()
 		local crewNpcList = root.assetJson("/items/active/crewcontracts/crewcontract.activeitem").crewNpcTypes or {}
 		self.raceroller = math.random(#crewNpcList)
 		self.crewrace = crewNpcList[self.raceroller] or "human"
-	end  
+	end
 end

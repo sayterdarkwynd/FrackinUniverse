@@ -29,7 +29,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
 		animator.setLightActive("muzzleFlash", false)
 	end
 	
-	if self.fireMode == (self.activatingFireMode or self.abilitySlot) 
+	if self.fireMode == (self.activatingFireMode or self.abilitySlot)
 	and not self.weapon.currentAbility
 	and self.cooldownTimer == 0
 	and (not status.resourceLocked("energy") or self:useEnergy())
@@ -192,7 +192,7 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
 				false,
 				params
 			)
-	end 
+	end
 	return projectileId
 end
 

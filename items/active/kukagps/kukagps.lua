@@ -9,7 +9,7 @@ function activate(fireMode, shiftHeld)
         activeItem.interact("ScriptPane", "/interface/kukagps/kukadatetime.config")
         animator.playSound("activate2")
     end
-    
+
 end
 
 

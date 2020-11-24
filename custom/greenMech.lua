@@ -122,8 +122,8 @@ function update(dt, fireMode, shiftHeld, controls)
 	end
 	
 	mcontroller.controlModifiers({
-		movementSuppressed = true, 
-		facingSuppressed = false, 
+		movementSuppressed = true,
+		facingSuppressed = false,
 		runningSuppressed = true,
 		jumpingSuppressed = true,
 		speedModifier = 1.6,
@@ -176,9 +176,9 @@ function update(dt, fireMode, shiftHeld, controls)
 	cannonAngle = math.atan(diff2[2], diff2[1] * mcontroller.facingDirection()) * 57.2958
 	if self.form == 0 then
 		self.destAllRotation = 0
-		self.destOffsets = {{0, 0 + walkBob + engineShake}, 
-			{1 + (math.cos(legRot) * 1.5), -2 + clamp(math.sin(legRot) * 1.25, -1, 0.375) - self.crouchoffset}, 
-			{-1 + (math.cos(legRot2) * 1.5), -2 + clamp(math.sin(legRot2) * 1.25, -1, 1.25) - self.crouchoffset}, 
+		self.destOffsets = {{0, 0 + walkBob + engineShake},
+			{1 + (math.cos(legRot) * 1.5), -2 + clamp(math.sin(legRot) * 1.25, -1, 0.375) - self.crouchoffset},
+			{-1 + (math.cos(legRot2) * 1.5), -2 + clamp(math.sin(legRot2) * 1.25, -1, 1.25) - self.crouchoffset},
 			{1.5, -1 + walkBob + engineShake}}
 		self.destRotOffsets = {{0, 0}, {0, 0}, {0, 0}, {-1.5, 0}}
 		self.destRotations = {0, 0, 0, 0}
@@ -272,8 +272,8 @@ function update(dt, fireMode, shiftHeld, controls)
 	self.prevControls = controls
 
 	for i = 1, #self.offsets, 1 do
-		setTransformationGroup("" .. (i - 1), self.rotations[i], 
-			self.rotOffsets[i], 
+		setTransformationGroup("" .. (i - 1), self.rotations[i],
+			self.rotOffsets[i],
 			vectorAdd(self.offsets[i], vectorAdd(self.allOffset, self.baseOffset))
 		)
 		updateTransformationGroup("" .. (i - 1), self.allRotation, {0, 0}, {0, 0})
@@ -287,8 +287,8 @@ end
 
 function uninit()
 	mcontroller.controlModifiers({
-		movementSuppressed = false, 
-		facingSuppressed = false, 
+		movementSuppressed = false,
+		facingSuppressed = false,
 		runningSuppressed = false,
 		jumpingSuppressed = false,
 		speedModifier = 1,
@@ -415,7 +415,7 @@ function cannonFire(spread)
 	local theAngle = util.toRadians(cannonAngle)
 	theOffset = vectorAdd(theOffset, {(math.cos(theAngle) * 3.25) * mcontroller.facingDirection(), math.sin(theAngle) * 3.25})
 
-	world.spawnProjectile("invisibleprojectile", theOffset, activeItem.ownerEntityId(), 
+	world.spawnProjectile("invisibleprojectile", theOffset, activeItem.ownerEntityId(),
 		{math.cos(theAngle + angleSpread) * mcontroller.facingDirection(), math.sin(theAngle + angleSpread)}, false, {
 			damageType = "NoDamage",
 			processing = "?multiply=00000000",
@@ -456,8 +456,8 @@ function cannonFire(spread)
 		}
 	)
 
-	world.spawnProjectile("homingrocket", theOffset, 
-		activeItem.ownerEntityId(), {math.cos(theAngle + angleSpread) * mcontroller.facingDirection(), 
+	world.spawnProjectile("homingrocket", theOffset,
+		activeItem.ownerEntityId(), {math.cos(theAngle + angleSpread) * mcontroller.facingDirection(),
 		math.sin(theAngle + angleSpread)}, false, {
 			processing = "?saturation=00?hueshift=-120?scalenearest=2",
 			speed = 40,
@@ -469,7 +469,7 @@ function cannonFire(spread)
 			piercing = false,
   			knockbackDirectional = true,
 			physics = "grenade",
-			damageType = "IgnoresDef", 
+			damageType = "IgnoresDef",
 			damageTeam = {type = "pvp"},
 			damageKind = "default",
 			scripts = { "homingrocket.lua" },
@@ -594,7 +594,7 @@ function cannonAlt(angle)
 	local theAngle = util.toRadians(cannonAngle)
 	theOffset = vectorAdd(theOffset, {(math.cos(theAngle) * 3.25) * mcontroller.facingDirection(), math.sin(theAngle) * 3.25})
 
-	world.spawnProjectile("invisibleprojectile", theOffset, activeItem.ownerEntityId(), 
+	world.spawnProjectile("invisibleprojectile", theOffset, activeItem.ownerEntityId(),
 		{math.cos(theAngle + angleSpread) * mcontroller.facingDirection(), math.sin(theAngle + angleSpread)}, false, {
 			damageType = "NoDamage",
 			processing = "?multiply=00000000",
@@ -635,7 +635,7 @@ function cannonAlt(angle)
 		}
 	)
 
-	world.spawnProjectile("standardbullet", theOffset, activeItem.ownerEntityId(), 
+	world.spawnProjectile("standardbullet", theOffset, activeItem.ownerEntityId(),
 		{math.cos(theAngle + angleSpread) * mcontroller.facingDirection(), math.sin(theAngle + angleSpread)}, false, {
 			movementSettings = {
 				maxMovementPerStep = 0.4,
@@ -679,7 +679,7 @@ function cannonAlt(angle)
 						image = "/assetMissing.png?replace;00000000=ffffff;ffffff00=ffffff?setcolor=ffffff?scalenearest=1?crop=0;0;32;3?blendmult=/objects/outpost/customsign/signplaceholder.png;0;0?replace;01000101=FFFFFF00;01000201=FFB20AFF;01000301=FFFFFF00;02000101=FFFFFF00;02000201=FFB20AFF;02000301=FFFFFF00;03000101=FFFFFF00;03000201=FFB20AFF;03000301=FFFFFF00;04000101=FFFFFF00;04000201=FFB20AFF;04000301=FFFFFF00;05000101=FFFFFF00;05000201=FFB20AFF;05000301=FFFFFF00;06000101=FFFFFF00;06000201=FFB20AFF;06000301=FFFFFF00;07000101=FFFFFF00;07000201=FFB20AFF;07000301=FFFFFF00;08000101=FFFFFF00;08000201=FFB20AFF;08000301=FFFFFF00;09000101=FFFFFF00;09000201=FFB20AFF;09000301=FFFFFF00;10000101=FFFFFF00;10000201=FFB20AFF;10000301=FFFFFF00;11000101=FFFFFF00;11000201=FFB20AFF;11000301=FFFFFF00;12000101=FFFFFF00;12000201=FFB20AFF;12000301=FFFFFF00;13000101=FFFFFF00;13000201=FFB20AFF;13000301=FFFFFF00;14000101=FFFFFF00;14000201=FFB20AFF;14000301=FFFFFF00;15000101=FFFFFF00;15000201=FFB20AFF;15000301=FFFFFF00;16000101=FFFFFF00;16000201=FFB20AFF;16000301=FFFFFF00;17000101=FFB20AFF;17000201=FFCF68FF;17000301=FFB20AFF;18000101=FFB20AFF;18000201=FFCF68FF;18000301=FFB20AFF;19000101=FFB20AFF;19000201=FFCF68FF;19000301=FFB20AFF;20000101=FFB20AFF;20000201=FFCF68FF;20000301=FFB20AFF;21000101=FFB20AFF;21000201=FFCF68FF;21000301=FFB20AFF;22000101=FFB20AFF;22000201=FFCF68FF;22000301=FFB20AFF;23000101=FFB20AFF;23000201=FFCF68FF;23000301=FFB20AFF;24000101=FFB20AFF;24000201=FFCF68FF;24000301=FFB20AFF;25000101=FFB20AFF;25000201=FFCF68FF;25000301=FFB20AFF;26000101=FFB20AFF;26000201=FFCF68FF;26000301=FFB20AFF;27000101=FFB20AFF;27000201=FFCF68FF;27000301=FFB20AFF;28000101=FFB20AFF;28000201=FFCF68FF;28000301=FFB20AFF;29000101=FFB20AFF;29000201=FFCF68FF;29000301=FFB20AFF;30000101=FFB20AFF;30000201=FFCF68FF;30000301=FFB20AFF;31000101=FFB20AFF;31000201=FFCF68FF;31000301=FFB20AFF;32000101=FFB20AFF;32000201=FFCF68FF;32000301=FFB20AFF?replace;FFFFFFFF=FFFFFF00?hueshift=110?scalenearest;1;2.15;" .. "?hueshift=-40"
 					},
 					rotate = true
-				}, 
+				},
 				{
 					time = 0,
 					action = "particle",

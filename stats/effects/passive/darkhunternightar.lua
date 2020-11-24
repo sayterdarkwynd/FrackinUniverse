@@ -39,7 +39,7 @@ function update(dt)
 	local underground = undergroundCheck()
 	local lightLevel = getLight()
 
-	if (self.species == "nightar") then 
+	if (self.species == "nightar") then
 		if status.resource("health") == status.stat("maxHealth") then
 		--used for checking sword setups
 		    local primaryItem = world.entityHandItem(entity.id(), "primary")
@@ -73,12 +73,12 @@ function update(dt)
 			{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.5},
 			{stat = "maxHealth", effectiveMultiplier = util.round(healthPenalty,1)},
 			{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
-		    })	    
+		    })	
 	    else  --tenebrhae have different bonuses than nightar
 		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
 			{stat = "physicalResistance", amount = mult*-0.25},
 			{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.4}
-		    })	    
+		    })	
 	    end
 
 	else

@@ -212,7 +212,7 @@ end
 
 function targetTypes(entityId)
 	local types={}
-	if not entityId or not world.entityExists(entityId) then 
+	if not entityId or not world.entityExists(entityId) then
 		types.void=true
 		return types
 	end

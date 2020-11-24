@@ -9,7 +9,7 @@ function init()
       {stat = "radioactiveResistance", amount = 0.6 },
       {stat = "shadowResistance", amount = 0.7 },
       {stat = "cosmicResistance", amount = 0.7 }
-      }) 
+      })
       script.setUpdateDelta(1)
 end
 

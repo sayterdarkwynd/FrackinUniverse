@@ -51,7 +51,7 @@ function init()
         self.blockhelper:loadWeaponScripts("shield-perfectblock")
     end
 
-  
+
 	-- FU special effects
 	-- health effects
 	self.critChance = config.getParameter("critChance", 0)
@@ -216,7 +216,7 @@ function uninit()
         self.blockhelper:clearPersistent()
     end
 	status.clearPersistentEffects("shieldBonus")
-	status.clearPersistentEffects("shieldEffects")    
+	status.clearPersistentEffects("shieldEffects")
 	status.clearPersistentEffects(activeItem.hand().."Shield")
 	activeItem.setItemShieldPolys({})
 	activeItem.setItemDamageSources({})
@@ -259,9 +259,9 @@ function raiseShield()
 	status.setPersistentEffects(activeItem.hand().."Shield", {{stat = "shieldHealth", amount = shieldHealth()}})
 	local shieldPoly = animator.partPoly("shield", "shieldPoly")
 	activeItem.setItemShieldPolys({shieldPoly})
-    
+
     shieldBonusApply()
-    
+
 	if self.knockback > 0 then
         local knockbackDamageSource = {
             poly = shieldPoly,

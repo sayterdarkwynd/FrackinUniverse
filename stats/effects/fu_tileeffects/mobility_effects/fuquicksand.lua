@@ -2,9 +2,9 @@ function init()
   animator.setParticleEmitterOffsetRegion("sanddrips", mcontroller.boundBox())
   animator.setParticleEmitterActive("sanddrips", true)
   if entity.entityType()=="player" then
-  animator.setParticleEmitterActive("statustext", true)  
+  animator.setParticleEmitterActive("statustext", true)
   end
-  
+
   effect.setParentDirectives("fade=BDAE65=0.1")
   local slows = status.statusProperty("slows", {})
   slows["sandslowdown"] = 0.9

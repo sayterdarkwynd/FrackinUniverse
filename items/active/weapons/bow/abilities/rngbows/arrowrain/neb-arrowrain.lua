@@ -29,7 +29,7 @@ end
 function NebArrowRain:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
   world.debugPoint(self:firePosition(), "red")
-  
+
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 
   if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.drawTimer > 0 or not status.resourceLocked("energy")) then
@@ -93,7 +93,7 @@ function NebArrowRain:draw()
 				animator.playSound("ready")
 				readySoundPlayed = true
 			end
-		end  
+		end
 	
     --Code for calculating which cursor to use
     if not self.hasChargedCursor then
@@ -135,13 +135,13 @@ function NebArrowRain:draw()
     self:setState(self.reset)
   else
     self:setState(self.fire)
-  end  
+  end
 end
 
 function NebArrowRain:fire()
   self.hasChargedCursor = false
   activeItem.setCursor(self.cursorFrames[1])
-  self.weapon:setStance(self.stances.fire)    
+  self.weapon:setStance(self.stances.fire)
 
   animator.setGlobalTag("drawFrame", "0")
   animator.setGlobalTag("directives", "")
@@ -167,7 +167,7 @@ function NebArrowRain:fire()
     end	
 	
 	--Calculate projectile speed based on draw time and projectile parameters
-    projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer / self.drawTime))  
+    projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer / self.drawTime))
     projectileParameters.processing = self.paletteSwaps
 	
 	--Calculate projectile power based on draw time and projectile parameters
@@ -203,7 +203,7 @@ function NebArrowRain:fire()
         false,
         projectileParameters
       )
-	  
+	
 	  world.callScriptedEntity(projectileId, "setMovementParameters", self.projectileMovementParameters)
 	  if self:perfectTiming() then
 		animator.playSound("perfectRelease")
@@ -237,18 +237,18 @@ function NebArrowRain:currentProjectileParameters()
   local projectileParameters = copy(self:perfectTiming() and self.powerProjectileParameters or self.projectileParameters or {})
   --Load the root projectile config based on draw power level
   local projectileConfig = root.projectileConfig(self:perfectTiming() and self.powerProjectileType or self.altProjectileType)
-  
+
   local speedMultiplier = 1.0
   if self.minMaxSpeedMultiplier then
 	speedMultiplier = math.random(self.minMaxSpeedMultiplier[1] * 100, self.minMaxSpeedMultiplier[2] * 100) / 100
   end
-  
+
   --Calculate projectile speed based on draw time and projectile parameters
   projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
   projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer / self.drawTime)) * speedMultiplier
-  
+
   projectileParameters.processing = self.paletteSwaps
-  
+
   if self.altProjectileType == "rngbouncingarrow" then
     self.projectileParameters.actionOnReap = nil
   else
@@ -264,17 +264,17 @@ function NebArrowRain:currentProjectileParameters()
     }
 	self.projectileParameters.actionOnReap = self.actionOnReapParameters
   end
-  
+
   --Bonus damage calculation for quiver users
   local damageBonus = 1.0
   if self.useQuiverDamageBonus == true and status.statPositive("RNGdamageQuiver") then
 	damageBonus = status.stat("RNGdamageQuiver")
   end
-  
+
   --Calculate projectile power based on draw time and projectile parameters
   local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer / self.drawTime))
-  projectileParameters.power = projectileParameters.power or projectileConfig.power 
-  projectileParameters.power = projectileParameters.power 
+  projectileParameters.power = projectileParameters.power or projectileConfig.power
+  projectileParameters.power = projectileParameters.power
     * self.drawTime
 	* self.weapon.damageLevelMultiplier
 	* drawTimeMultiplier
@@ -293,7 +293,7 @@ function NebArrowRain:idealAimVector()
   ----local aimVector = vec2.rotate(aimVec, self.weapon.aimAngle + 0, 0)
   --aimVec[1] = aimVec[1] * self.weapon.aimDirection
   --return aimVec
-  
+
   self.aimOutOfReach = true
   --If we are at a zero G position, use regular aiming instead of arc-adjusted aiming
   if mcontroller.zeroG() then
@@ -339,7 +339,7 @@ function NebArrowRain:splitAngle(up, low, n)
     local angles = {}
     local mid = low + (up - low) / 2.0
     print(string.format("n == %s mid=%s", n, mid))
-    
+
     if n == 1 then
         return {mid}
     else
@@ -348,7 +348,7 @@ function NebArrowRain:splitAngle(up, low, n)
             table.insert(angles, mid)
         end
         table.insert(angles, self:splitAngle(mid, low, math.floor(n / 2)))
-        
+
         return angles
     end
 end

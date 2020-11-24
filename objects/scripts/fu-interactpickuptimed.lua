@@ -32,11 +32,11 @@ function onInteraction(args)
 	end
 end
 
-function update(dt) 
+function update(dt)
         self.timer = self.timer - dt
         if (self.timer < 0) then self.timer = 0 end
 	if (self.timedObject == 1) then
-	  if self.timer == 0 then 
+	  if self.timer == 0 then
 	    self.timer = config.getParameter("waitDuration")  		--reset timer
 	    storage.itemHasSpawned = false				--failsafe for item spawn
 	    animator.setAnimationState("interactiveObject", "filled")   --set it to active appearance again

@@ -31,7 +31,7 @@ function init()
 
   self.sounds = config.getParameter("sounds")
   self.playTyping = true
-  
+
   self.ableToSystemTravel = contains(player.shipUpgrades().capabilities, "planetTravel") or (world.getProperty("fu_byos.systemTravel") or 0) > 0 or player.isAdmin()
   self.fu_text = config.getParameter("fu_text")
   self.onOwnShip = player.ownShipWorldId() == player.worldId()
@@ -453,7 +453,7 @@ function fuelCost(travel)
     elseif distanceMath < 200 then
       cost = 70 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 4)) -- a bit farther out
     elseif distanceMath < 400 then
-      cost = 140 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 6)) -- mid/long range  
+      cost = 140 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 6)) -- mid/long range
     else							
       cost = 300 + ((config.getParameter("jumpFuelCost") + distanceMath) * (self.shipMass + 10)) -- long range value
     end
@@ -484,7 +484,7 @@ end
 function disabledState()
   View:reset()
   widget.setVisible("disabledLabel", true)
-  
+
   if not self.onOwnShip then
 	widget.setText("disabledLabel", tostring(self.fu_text.notOnOwnShip))
   elseif player.hasCompletedQuest("human_mission1") then

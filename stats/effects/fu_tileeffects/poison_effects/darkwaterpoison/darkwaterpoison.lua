@@ -5,13 +5,13 @@ function init()
   self.baseDamage = config.getParameter("healthDown",0)
   self.baseTime = setEffectTime()
   activateVisualEffects()
-  
+
   effect.addStatModifierGroup({
       { stat = "shadowResistance", amount = -0.25*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
       { stat = "fireResistance", amount = -0.25*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
       { stat = "iceResistance", amount = -0.25*((status.statPositive("specialStatusImmunity") and 0.25) or 1) }
-  })    
-  
+  })
+
 end
 
 function setEffectTime()
@@ -46,7 +46,7 @@ function update(dt)
       runModifier = 0.80,
       jumpModifier = 0.80
     })
-    
+
   effect.setParentDirectives("fade=AA00AA="..self.tickTimer * 0.4)
 end
 

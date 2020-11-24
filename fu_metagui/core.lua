@@ -181,13 +181,13 @@ function widgetBase:delete()
   end
   if self.id and _ENV[self.id] == self then _ENV[self.id] = nil end -- remove from global
   self.deleted = true
-  
+
   -- unhook from events and drawing
   redrawQueue[self] = nil
   recalcQueue[self] = nil
   if lastMouseOver == this then lastMouseOver = nil end
   self:releaseMouse()
-  
+
   -- clear out backing widgets
   local function rw(w)
     local parent, child = w:match('^(.*)%.(.-)$')
@@ -234,13 +234,13 @@ function mg.createWidget(param, parent)
     table.insert(w.parent.children, w)
     parent:queueGeometryUpdate()
   end
-  
+
   -- some basics
   w.id = param.id
   w.position = param.position or {0, 0}
   w.explicitSize = param.size
   w.size = param.size
-  
+
   local base
   if parent then -- find base widget
     local f = parent
@@ -248,11 +248,11 @@ function mg.createWidget(param, parent)
     base = f.backingWidget
   end
   w:init(base, param)
-  
+
   -- enroll in mouse events
   if w.backingWidget then mouseMap[w.backingWidget] = w end
   if w.subWidgets then for _, sw in pairs(w.subWidgets) do mouseMap[sw] = w end end
-  
+
   -- assign id
   if w.id and _ENV[w.id] == nil then
     _ENV[w.id] = w
@@ -268,7 +268,7 @@ function mg.createImplicitLayout(list, parent, defaults)
     elseif parent.mode == "vertical" then p.mode = "horizontal" end
     p.spacing = parent.spacing
   end
-  
+
   if defaults then util.mergeTable(p, defaults) end
   if type(list[1]) == "table" and not list[1][1] and not list[1].type then util.mergeTable(p, list[1]) end
   return mg.createWidget(p, parent)
@@ -351,45 +351,45 @@ function init() ----------------------------------------------------------------
   -- guard against wonky reloads
   if widget.getData("_tracker") then return pane.dismiss() end
   widget.setData("_tracker", "open")
-  
+
   mg.cfg = config.getParameter("___") -- window config
   mg.inputData = mg.cfg.inputData -- alias
-  
+
   mg.settings = player.getProperty("metaGUISettings") or { }
-  
+
   mg.theme = root.assetJson(mg.cfg.themePath .. "theme.json")
   mg.theme.id = mg.cfg.theme
   mg.theme.path = mg.cfg.themePath
   _ENV.theme = mg.theme -- alias
   module "theme-common" -- load theme defaults and common utils
   require(mg.theme.path .. "theme.lua") -- load in theme
-  
+
   mg.cfg.icon = mg.path(mg.cfg.icon) -- pre-resolve icon path
-  
+
   -- TODO set up some parameter stuff?? idk, maybe the theme does most of that
-  
+
   -- store this for later
   worldId = player.worldId()
-  
+
   -- set up IPC
   do local mt = getmetatable ''
     mt.metagui_ipc = mt.metagui_ipc or { }
     mg.ipc = mt.metagui_ipc
   end
-  
+
   if mg.cfg.uniqueBy == "path" and mg.cfg.configPath then
     mg.ipc.uniqueByPath = mg.ipc.uniqueByPath or { }
     mg.ipc.uniqueByPath[mg.cfg.configPath] = function() pane.dismiss() end
   end
-  
+
   -- set up basic pane stuff
   local borderMargins = mg.theme.metrics.borderMargins[mg.cfg.style]
   frame = mg.createWidget({ type = "layout", size = mg.cfg.totalSize, position = {0, 0}, zlevel = -9999 })
   paneBase = mg.createImplicitLayout(mg.cfg.children, nil, { size = mg.cfg.size, position = {borderMargins[1], borderMargins[4]}, mode = mg.cfg.layoutMode or "vertical" })
-  
+
   mg.theme.decorate()
   mg.theme.drawFrame()
-  
+
   local sysUpdate, sysUninit = update, uninit
   for _, s in pairs(mg.cfg.scripts or { }) do
     init, update, uninit = nil
@@ -399,12 +399,12 @@ function init() ----------------------------------------------------------------
     if init then init() end -- call script init
   end
   update, uninit = sysUpdate, sysUninit
-  
+
   frame:updateGeometry()
   paneBase:updateGeometry()
   for w in pairs(redrawQueue) do if not w.deleted then w:draw() end end
   recalcQueue, redrawQueue = { }, { }
-  
+
   --setmetatable(_ENV, {__index = function(_, n) if DBG then DBG:setText("unknown func " .. n) end end})
 end
 
@@ -441,9 +441,9 @@ local function findWindowPosition()
   local fp
   local sz = mg.cfg.totalSize
   local max = {1920, 1080} -- technically probably 4k
-  
+
   local ws = "_tracker" -- widget to search for
-  
+
   -- initial find
   for y=0,max[2],sz[2] do
     for x=0,max[1],sz[1] do
@@ -453,9 +453,9 @@ local function findWindowPosition()
     end
     if fp then break end
   end
-  
+
   if not fp then return nil end -- ???
-  
+
   local isearch = 32
   -- narrow x
   local search = isearch
@@ -463,14 +463,14 @@ local function findWindowPosition()
     while widget.inMember(ws, {fp[1] - search, fp[2]}) do fp[1] = fp[1] - search end
     search = search / 2
   end
-  
+
   -- narrow y
   local search = isearch
   while search >= 1 do
     while widget.inMember(ws, {fp[1], fp[2] - search}) do fp[2] = fp[2] - search end
     search = search / 2
   end
-  
+
   mg.windowPosition = fp
   mg.windowOffScreen = not widget.inMember(ws, vec2.add(fp, mg.cfg.totalSize))
   --pane.playSound("/sfx/interface/hoverover_bumb.ogg", 0, 0.75)
@@ -484,7 +484,7 @@ local bcvmp = { {0, 0}, {0, 0} } -- last saved mouse position
 local lastMouseOver
 function update()
   if player.worldId() ~= worldId then return pane.dismiss() end
-  
+
   if not mg.windowPosition then findWindowPosition() else
     if mg.windowOffScreen then
       -- for now, trust the cursor?
@@ -493,7 +493,7 @@ function update()
       or not widget.inMember(bcv[1], vec2.add(mg.windowPosition, mg.cfg.totalSize)) then findWindowPosition() end
     end
   end
-  
+
   local lmp = mg.mousePosition
   -- we don't know which of these gets mouse changes properly, so we loop through and
   for k,v in pairs(bcv) do -- set the mouse position whenever one detects a change
@@ -507,9 +507,9 @@ function update()
       end
     end
   end
-  
+
   runEventQueue() -- not entirely sure where this should go in the update cycle
-  
+
   local mw = mouseCaptor
   if not mw then
     local mwc = widget.getChildAt(vec2.add(mg.windowPosition, mg.mousePosition))
@@ -522,21 +522,21 @@ function update()
       mw = mw.parent
     end
   end
-  
+
   if mw ~= lastMouseOver then
     if mw then mw:onMouseEnter() end
     if lastMouseOver then lastMouseOver:onMouseLeave() end
   end
   lastMouseOver = mw
   widget.setVisible(bcv[2], not not (mw or keyFocus))
-  
+
   if mouseCaptor then -- send mouse move event
     mouseCaptor:onCaptureMouseMove(vec2.sub(mg.mousePosition, lmp))
   end
-  
+
   if keyFocus or mw then widget.focus(bcv[2])
   else widget.focus(bcv[1]) end
-  
+
   local rdq, rcq = redrawQueue, recalcQueue
   redrawQueue, recalcQueue = { }, { }
   for w in pairs(rcq) do if not w.deleted then w:updateGeometry() end end
@@ -566,7 +566,7 @@ function _mouseEvent(_, btn, down)
   end
   if down and keyFocus then
     if keyFocus ~= lastMouseOver then mg.grabFocus() -- clear focus on clicking other widget
-    end--else spawnKeysub(true) end -- 
+    end--else spawnKeysub(true) end --
   end
 end
 function _clickLeft() _mouseEvent(nil, 0, true) end

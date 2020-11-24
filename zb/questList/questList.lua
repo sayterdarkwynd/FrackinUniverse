@@ -282,7 +282,7 @@ function questlineSelected()
 end
 
 function questlineButton()
-  
+
 	self.lastSelected = nil
 	widget.setImage("questlineBanner", "/assetmissing.png")
 	widget.clearListItems("questList.list")

@@ -4,8 +4,8 @@ end
 
 function update(dt)
 	object.setInteractive(true)
-	if storage.waterCount == nil then 
-		storage.waterCount = 0 
+	if storage.waterCount == nil then
+		storage.waterCount = 0
 	end
 	
 	if not world.type() == 'playerstation' and not world.type == 'unknown' then

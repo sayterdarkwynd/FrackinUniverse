@@ -94,11 +94,11 @@ function startDash(direction)
   animator.setParticleEmitterActive("dashParticles", true)
   -- defense bonus is applied if the player has the relevant stat. Otherwise we apply the basic small boost granted by the default tech
   if self.dodgetechBonus > 0.01 then
-    status.setPersistentEffects("dodgeDefenseBoost", {{stat = "protection", effectiveMultiplier = (1 + self.dodgetechBonus)}}) 
+    status.setPersistentEffects("dodgeDefenseBoost", {{stat = "protection", effectiveMultiplier = (1 + self.dodgetechBonus)}})
   else
     status.addEphemeralEffect(config.getParameter("dodgeboost"))
   end
-  
+
 end
 
 function endDash()

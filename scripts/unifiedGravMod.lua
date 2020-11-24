@@ -46,7 +46,7 @@ end
 function unifiedGravMod.refreshGrav(dt)
 	if not self.ghosting then --ignore effect if ghost
 		local gravMod=(self.gravFlightOverride and -1.0) or (status.statPositive("gravFlightOverride") and 0.0) or status.stat("gravityMod")--most multipliers are gonna be this. this is where gravity increases and decreases go.
-		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature. 
+		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature.
 		--dbg("uGM.rG@first: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position())})
 		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
 		local gravNorm=status.stat("gravityNorm")

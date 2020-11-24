@@ -66,7 +66,7 @@ function init()
 	end
 	
 	local closest = objects[1]
-	for _, tbl in ipairs(objects) do 
+	for _, tbl in ipairs(objects) do
 		if tbl[2] < closest[2] then
 			closest = tbl
 		end

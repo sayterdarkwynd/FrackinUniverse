@@ -8,7 +8,7 @@ function init()
 	effect.addStatModifierGroup({{stat = "powerMultiplier", baseMultiplier = self.powerModifier}})
 	self.gravParam=config.getParameter("gravityMod",0)
 end
- 
+
 function update(dt)
 	self.newGravityMultiplier = status.resource("customGravity")*(self.gravParam or 0)
 	if handle==nil then

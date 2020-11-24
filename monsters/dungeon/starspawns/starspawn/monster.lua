@@ -86,10 +86,10 @@ function init()
   end
 
   monster.setInteractive(config.getParameter("interactive", false))
-  
-  
+
+
   monster.setName("Star-Spawn Zealot")
-  monster.setDamageBar("special")  
+  monster.setDamageBar("special")
 end
 
 -- This is called in update() using pcall

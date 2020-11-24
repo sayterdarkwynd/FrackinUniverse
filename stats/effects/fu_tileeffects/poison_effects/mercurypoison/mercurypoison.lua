@@ -4,12 +4,12 @@ function init()
   self.tickTimer = self.tickTime
   self.baseTime = setEffectTime()
   activateVisualEffects()
-  
+
   effect.addStatModifierGroup({
       { stat = "fallDamageMultiplier", amount = -0.5 },
       { stat = "cosmicResistance", amount = -0.25*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
       { stat = "grit", effectiveMultiplier = 0 }
-  })    
+  })
 end
 
 function setEffectTime()

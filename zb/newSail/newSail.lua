@@ -843,7 +843,7 @@ function populateMiscList()
 				textBuffer=textBuffer:gsub("%%%%"..varN2.."%%%%",varTranslated or "")
 			end
 
-			if comparatorStr==textBuffer then 
+			if comparatorStr==textBuffer then
 				break
 			end
 		end
@@ -959,7 +959,7 @@ function retrieveCustomData()
 				local chipItem = data["aiDataItemSlot"..i]
 				if chipItem then
 					local descriptor = root.itemConfig(chipItem.name)
-					if descriptor then 
+					if descriptor then
 						descriptor = descriptor.config
 						if descriptor.category == "A.I. Chip" then
 							widget.setItemSlotItem("aiDataItemSlot"..i, chipItem.name)

@@ -14,7 +14,7 @@ function RecockBolt:update(dt,fireMode,shiftHeld)
 	if 	self.fireMode == "alt"
 		and not self.weapon.CurrentAbility
 		and self.cooldownTimer == 0
-		and not self.weapon.cocked 
+		and not self.weapon.cocked
 	then
 		self.weapon.cocked = true
 		activeItem.setInstanceValue("cocked",true)

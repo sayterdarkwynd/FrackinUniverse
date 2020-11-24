@@ -24,7 +24,7 @@ function update(dt)
   self.monsterupdate(dt)
 
   local target = util.closestValidTarget(120)
-  
+
   if target then
       local targetPosition = world.entityPosition(target)
       local angle = vec2.angle(vec2.sub(targetPosition,mcontroller.position()))
@@ -35,7 +35,7 @@ function update(dt)
       local facingDirection = mcontroller.position()[1] < targetPosition[1] and 1 or -1
       local junction = mcontroller.position()
       local close = false
-      local axis 
+      local axis
       for axii=1,math.max(1,distance/self.radius),2 do
 
         local angle = vec2.angle(vec2.sub(targetPosition,junction))
@@ -45,12 +45,12 @@ function update(dt)
         local closeStep = distance < self.radius * 3 and vec2.withAngle(angle,distance/2) or nil
 
         axis = vec2.add(junction,vec2.mul(closeStep and closeStep or step,axii))
-      
+
         util.debugPoint(axis,{255,0,255})
-        
+
         orientation = orientation * -1
 
-        for spoke = self.spokeCount / 2 + 1, self.spokeCount do 
+        for spoke = self.spokeCount / 2 + 1, self.spokeCount do
 
           local spokeAngle = angle - orientation * facingDirection * spoke * math.pi*2 / self.spokeCount
           local spokeVector = vec2.withAngle(spokeAngle, closeStep and distance/2 or self.radius)
@@ -62,70 +62,70 @@ function update(dt)
         junction = axii % 2 == 0 and axis or junction
 
       end
-        
+
       if #path > 1 then
-    
+
         for i = 2, #path do
-    
+
           util.debugLine(path[i],path[i-1],{255,255,0})
-    
+
         end
-    
+
       end
 
   end
-  
+
 
   path = {}
 
   if target and not self.path then
-    
+
     path[1] = mcontroller.position()
-  
+
     local targetPosition = world.entityPosition(target)
-    
+
     local step  = self.step
-    
+
     local xDist = targetPosition[1] - path[1][1]
-    
+
     local xDir  = xDist > 0 and 1 or -1
-    
+
     local yDist = targetPosition[2] - path[1][2]
-    
+
     local yDir  = yDist > 0 and 1 or - 1
-    
+
     local targetHorizon = {{targetPosition[1]-100,targetPosition[2]},{targetPosition[1]+100,targetPosition[2]}}
 
     local approachAngle = vec2.angle({xDir, math.sin(xDir) * self.waveHeight * yDir * xDir })
 
     local origin = vec2.intersect(targetHorizon[1], targetHorizon[2], path[1], vec2.add(path[1],vec2.withAngle(approachAngle,100)))
-  
+
     --util.debugLine(targetHorizon[1],targetHorizon[2],{255,255,0})
 
     --util.debugLine(path[1],vec2.add(path[1],vec2.withAngle(approachAngle,100)),{255,0,255})
 
     util.debugPoint(origin,{255,255,0})
 
-    if origin then 
-  
+    if origin then
+
       for x = 0, xDist, xDir do
-  
+
         local point = {x, math.sin(x * xDir)*self.waveHeight * yDir}
-  
+
         table.insert(path,vec2.add(point,origin))
-  
+
       end
-  
+
     end
-  
+
     if #path > 1 then
-  
+
       for i = 2, #path do
-  
+
         util.debugLine(path[i],path[i-1],{0,255,255})
-  
+
       end
-  
+
     end
 
   end

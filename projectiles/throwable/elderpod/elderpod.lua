@@ -22,7 +22,7 @@ function update(dt)
   if not mcontroller.isColliding() then
     self.preCollisionVelocity = mcontroller.velocity()
   end
- 
+
   if self.ownerId and world.entityExists(self.ownerId) then
 
     if not self.returning then

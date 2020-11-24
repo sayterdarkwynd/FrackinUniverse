@@ -65,7 +65,7 @@ function DashSlash:dash()
     self.damageListener = damageListener("inflictedDamage", function(notifications)
       for _, notification in pairs(notifications) do
         if notification.healthLost > 0 and notification.damageSourceKind == self.damageConfig.damageSourceKind then
-          animator.burstParticleEmitter(self.burstParticlesOnHit)          
+          animator.burstParticleEmitter(self.burstParticlesOnHit)
           return
         end
       end
@@ -75,12 +75,12 @@ function DashSlash:dash()
   util.wait(self.stances.dash.duration, function()
     mcontroller.controlMove(self.weapon.aimDirection)
     mcontroller.controlApproachVelocity(self.weapon:faceVector(self.stances.dash.velocity), 2000)
-   
+
     local damageArea = partDamageArea("specialswoosh")
     self.weapon:setDamage(self.damageConfig, damageArea, self.fireTime)
-    
- 
-    
+
+
+
   end)
 
   self.damageListener = nil

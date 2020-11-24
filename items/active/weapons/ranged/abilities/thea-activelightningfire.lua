@@ -10,7 +10,7 @@ function TheaActiveLightningFire:init()
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
-  
+
   self.loopSoundPlaying = false
   self.idleSoundPlaying = false
 
@@ -95,15 +95,15 @@ function TheaActiveLightningFire:fire()
 	--If we have collision, draw the primary lightning effect
 	if beamHasCollision == true then
 	  self.weapon:setDamage(self.damageConfig, {self.weapon.muzzleOffset, {self.weapon.muzzleOffset[1] + beamLength, self.weapon.muzzleOffset[2]}}, self.fireTime)
-	  
+	
 	  --Calculate the lightning displacement based on distance to target
 	  local distancePercentage = beamLength / self.lightningDistanceEnemies
 	  local targetDisplacement = math.max(self.lightningDisplacementMin, distancePercentage * self.lightningDisplacementMax)
-	  
+	
 	  --Draw lightning using these parameters
 	  -- amount, width, forks, branching, color, length, hasCollision(Bool)
 	  self:setLightning(self.lightningAmount, self.lightningWidth, self.lightningForks, self.lightningBranchingAmount, self.lightningColour, beamLength, targetDisplacement)
-	  
+	
 	  --Update sound effects
 	  if self.loopSoundPlaying == false then
 		animator.playSound("fireLoop", -1)
@@ -113,7 +113,7 @@ function TheaActiveLightningFire:fire()
 	  end
 	else
 	  activeItem.setScriptedAnimationParameter("lightning", {})
-	  
+	
 	  --Update sound effects
 	  if self.idleSoundPlaying == false then
 		animator.stopAllSounds("fireLoop")

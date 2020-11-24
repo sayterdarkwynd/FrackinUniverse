@@ -19,28 +19,28 @@ function update(dt)
 	  status.setPersistentEffects("trollEffects", {
 	  {stat = "maxHealth", baseMultiplier = config.getParameter("powerBonus",0) + 1.2}
 	  })
-	  mcontroller.controlModifiers({ speedModifier = 1.2 }) 
+	  mcontroller.controlModifiers({ speedModifier = 1.2 })
     elseif lightLevel <= 65 then
 	  status.setPersistentEffects("trollEffects", {
 	  {stat = "maxHealth", baseMultiplier = config.getParameter("powerBonus",0) + 1.1}
 	  })		
-	  mcontroller.controlModifiers({ speedModifier = 1.1 }) 
+	  mcontroller.controlModifiers({ speedModifier = 1.1 })
     elseif lightLevel <= 75 then
 	  status.setPersistentEffects("trollEffects", {
 	  {stat = "maxHealth", baseMultiplier = config.getParameter("powerBonus",0) + 1.0}
 	  })		
-	  mcontroller.controlModifiers({ speedModifier = 1.0 }) 
+	  mcontroller.controlModifiers({ speedModifier = 1.0 })
     elseif lightLevel <= 85 then
 	  status.setPersistentEffects("trollEffects", {
 	  {stat = "maxHealth", baseMultiplier = config.getParameter("powerBonus",0) + 0.9}
 	  })		
-	  mcontroller.controlModifiers({ speedModifier = 0.9 }) 
+	  mcontroller.controlModifiers({ speedModifier = 0.9 })
     elseif lightLevel <= 95 then
 	  status.setPersistentEffects("trollEffects", {
 	  {stat = "maxHealth", baseMultiplier = config.getParameter("powerBonus",0) + 0.8}
 	  })		
-	  mcontroller.controlModifiers({ speedModifier = 0.8 }) 
+	  mcontroller.controlModifiers({ speedModifier = 0.8 })
         else
 	  status.clearPersistentEffects("trollEffects")
-	end  
+	end
 end

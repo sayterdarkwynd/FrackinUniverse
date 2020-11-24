@@ -19,7 +19,7 @@ function NebRNGAimBot:init()
   self.cooldownTimer = 0
   self.aimOutOfReach = false
   self.aimTypeSwitchTimer = 0
-  
+
 	--Setup the marking
   self.maxTargets = 1
   self.projectileSpeed = 0
@@ -32,7 +32,7 @@ function NebRNGAimBot:init()
 
 	--Ensure a proper setup of the weapon
   self:reset()
-  
+
 	--Register the gravity of the projectile
   self.projectileGravityMultiplier = root.projectileGravityMultiplier(self.powerProjectileType or self.altProjectileType)
 
@@ -43,7 +43,7 @@ end
 
 function NebRNGAimBot:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-  
+
 	--Constantly count down on the cooldown timer
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 
@@ -99,7 +99,7 @@ function NebRNGAimBot:draw()
     if self.aimOutOfReach or self.aimTypeSwitchTimer > 0 then
 	  local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
 	  self.weapon.aimAngle = aimAngle
-	  
+	
 	  world.debugLine(firePosition, vec2.add(firePosition, vec2.mul(vec2.norm(self:idealAimVector()), 3)), "yellow")
     elseif self.targets and self.targets[1] then
       self.weapon.stance.allowRotate = false
@@ -181,7 +181,7 @@ end
 function NebRNGAimBot:fire()
   self.hasChargedCursor = false
   activeItem.setCursor(self.cursorFrames[1])
-  self.weapon:setStance(self.stances.fire)    
+  self.weapon:setStance(self.stances.fire)
 
   animator.setGlobalTag("drawFrame", "0")
   animator.setGlobalTag("directives", "")
@@ -230,7 +230,7 @@ function NebRNGAimBot:fire()
   else
     animator.setGlobalTag("drawFrame", "0")
   end
-  
+
   self.projectileParameters.periodicActions = nil
   self.cooldownTimer = self.cooldownTime
   self.predictedPosition = nil
@@ -254,20 +254,20 @@ function NebRNGAimBot:currentProjectileParameters()
   local projectileParameters = copy(self:perfectTiming() and self.powerProjectileParameters or self.projectileParameters or {})
   --Load the root projectile config based on draw power level
   local projectileConfig = root.projectileConfig(self:perfectTiming() and self.powerProjectileType or self.altProjectileType)
-  
+
   local speedMultiplier = 1.0
   if self.minMaxSpeedMultiplier then
 	speedMultiplier = math.random(self.minMaxSpeedMultiplier[1] * 100, self.minMaxSpeedMultiplier[2] * 100) / 100
   end
-  
+
   --Calculate projectile speed based on draw time and projectile parameters
   projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
   projectileParameters.speed = projectileParameters.speed * math.min(1, (self.drawTimer / self.drawTime)) * speedMultiplier
-  
+
   self.projectileSpeed = projectileParameters.speed or projectileConfig.speed
-  
+
   projectileParameters.processing = self.paletteSwaps
-  
+
   if self.altProjectileType == "rngbouncingarrow" then
     self.projectileParameters.actionOnReap = nil
   else
@@ -282,17 +282,17 @@ function NebRNGAimBot:currentProjectileParameters()
       }
     }
   end
-  
+
   --Bonus damage calculation for quiver users
   local damageBonus = 1.0
   if self.useQuiverDamageBonus == true and status.statPositive("RNGdamageQuiver") then
 	damageBonus = status.stat("RNGdamageQuiver")
   end
-  
+
   --Calculate projectile power based on draw time and projectile parameters
   local drawTimeMultiplier = self.staticDamageMultiplier or math.min(1, (self.drawTimer / self.drawTime))
-  projectileParameters.power = projectileParameters.power or projectileConfig.power 
-  projectileParameters.power = projectileParameters.power 
+  projectileParameters.power = projectileParameters.power or projectileConfig.power
+  projectileParameters.power = projectileParameters.power
     * self.drawTime
 	* self.weapon.damageLevelMultiplier
 	* drawTimeMultiplier
@@ -327,7 +327,7 @@ function NebRNGAimBot:idealAimVector(inaccuracy)
     local cursorDistance = world.distance(activeItem.ownerAimPosition(), firePosition)
     self.directionToTarget = cursorDistance[1] / math.abs(cursorDistance[1])
   end
-  
+
   self.aimOutOfReach = true
   --If we are at a zero G position, use regular aiming instead of arc-adjusted aiming
   if mcontroller.zeroG() then

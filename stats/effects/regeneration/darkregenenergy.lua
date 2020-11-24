@@ -13,11 +13,11 @@ function activateVisualEffects()
   local lightLevel = getLight()
   if lightLevel <= 25 then
     animator.setParticleEmitterOffsetRegion("blood", mcontroller.boundBox())
-    animator.setParticleEmitterActive("blood", true)  
+    animator.setParticleEmitterActive("blood", true)
   end
 
 end
-  
+
 function getLight()
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
@@ -32,7 +32,7 @@ function nighttimeCheck()
 end
 
 function undergroundCheck()
-	underground = world.underground(mcontroller.position()) 
+	underground = world.underground(mcontroller.position())
 end
 
 function update(dt)
@@ -58,7 +58,7 @@ function update(dt)
 	    self.healingRate = 1.001 / config.getParameter("healTime", 420)
 	else
 		self.healingRate=0
-	end  
+	end
 	status.modifyResourcePercentage("energy", self.healingRate * dt)
   end
 		

@@ -8,15 +8,15 @@ function init()
 	end
   status.addEphemeralEffect("ghostlyglow",math.huge)
 end
- 
+
 function update(dt)
 	if fu_monsters_update then
 		fu_monsters_update(dt)
 	end
 end
- 
- 
- 
+
+
+
 function uninit()
 	if fu_monsters_uninit then
 		fu_monsters_uninit()

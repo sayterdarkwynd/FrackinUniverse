@@ -19,7 +19,7 @@ function init()
     self.weapon:addAbility(secondaryAttack)
   end
 
-  self.weapon:init() 
+  self.weapon:init()
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -37,19 +37,19 @@ function update(dt, fireMode, shiftHeld)
     self.helper:clearPersistent()
     self.helper:runScripts("bow-update", self, dt, fireMode, shiftHeld)
   end
-  --**************************************  
+  --**************************************
   self.weapon:update(dt, fireMode, shiftHeld)
   --*************************************
   -- FU/FR ADDONS
   --if not self.species or not self.species:succeeded() then
   --  self.species = world.sendEntityMessage(activeItem.ownerEntityId(), "FR_getSpecies")
   --end
-  
+
   --setupHelper(self, "bow-update")
   --if self.helper then
   --  self.helper:loadWeaponScripts("bow-update")
   --end
-  --************************************** 
+  --**************************************
 
 end
 

@@ -22,7 +22,7 @@ function approachState.update(dt, stateData)
 
   if #self.skillOptions > 0 then
     local option = self.skillOptions[1]
-    
+
     if pointWithinRect(mcontroller.position(), option.startRect) then
       --just stand around and wait, I guess...
       animator.setAnimationState("movement", "idle")

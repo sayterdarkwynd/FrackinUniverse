@@ -44,7 +44,7 @@ function MeleeArm:fireState(fromAngle, toAngle, allowCombo) -- allowCombo false=
   animator.playSound(self.armName .. "Fire")
   animator.setAnimationState(self.armName, "active")
 --  allowCombo = false
-  
+
   local stateTimer = self.fireTime
   local projectileSpawnTime = stateTimer - self.swingTime
   local fireWasTriggered = false
@@ -62,7 +62,7 @@ function MeleeArm:fireState(fromAngle, toAngle, allowCombo) -- allowCombo false=
       self.projectileParameters.speed = travelDist / self.projectileTimeToLive
       self.projectileParameters.power = self.baseDamage * 0.4
       self.projectileType = self.projectileSwooshUp
-      
+
       self:fire()
     end
     if stateTimer > projectileSpawnTime and (stateTimer - projectileSpawnTime) < dt then

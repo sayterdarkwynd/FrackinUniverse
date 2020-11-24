@@ -11,7 +11,7 @@ function FRHelper:new(species,gender)
 	local success
 	if species then
 		success, frHelper.speciesConfig = pcall(
-			function () 
+			function ()
 				return root.assetJson(string.format("/species/%s.raceeffect", species))
 			end
 		)
@@ -116,7 +116,7 @@ function FRHelper:validCombo(item1, item2, combo)
 			if combo[1].condition=="not" then
 				test=not test
 			end
-			return test 
+			return test
 		elseif (#combo == 2) then
 			if (combo[1].tag == "nothing") and (combo[2].tag == "nothing") then
 				return false

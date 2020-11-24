@@ -18,7 +18,7 @@ function build(directory, config, parameters, level, seed)
 			})
 	end
 	
-	-- begin added code 
+	-- begin added code
 	
 	saplings=root.assetJson("/items/buildscripts/buildsaplingfu.config")
 	
@@ -34,7 +34,7 @@ function build(directory, config, parameters, level, seed)
 	
 	parameters.shortdescription=parameters.shortdescription.." Sapling"
 	
-	parameters.description = "^green;Foliage^reset;: "..(parameters.foliageName or "Unknown").." (Hue:"..math.floor(math.abs(parameters.foliageHueShift or 0))..")\n^orange;Stem^reset;: "..(parameters.stemName or "Unknown").." (Hue:"..math.floor(math.abs(parameters.stemHueShift or 0))..")" 
+	parameters.description = "^green;Foliage^reset;: "..(parameters.foliageName or "Unknown").." (Hue:"..math.floor(math.abs(parameters.foliageHueShift or 0))..")\n^orange;Stem^reset;: "..(parameters.stemName or "Unknown").." (Hue:"..math.floor(math.abs(parameters.stemHueShift or 0))..")"
 
 	-- end added code
 	

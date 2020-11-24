@@ -30,12 +30,12 @@ function init()
         startDash(dashKey == "up" and 0 or 0)
       end
     end)
-    
+
   self.superJumpTimer = 0
   self.damageProjectileType = "burstjumpboom"
   self.damageMultiplier = 1.0
   self.cooldown = 5
-  
+
 end
 
 function uninit()
@@ -75,8 +75,8 @@ local superJumpTime = 0.01
 
   if self.dashTimer > 0 then
     local blastPower = { power = 3 + config.getParameter("chipCost",2)}
-    world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, true, blastPower)  
-    
+    world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, true, blastPower)
+
     mcontroller.controlApproachVelocity({self.dashSpeed * self.dashDirection, self.dashYVel}, self.dashControlForce)
     mcontroller.controlMove(self.dashDirection, true)
     if self.airDashing then
@@ -84,7 +84,7 @@ local superJumpTime = 0.01
     end
     mcontroller.controlModifiers({jumpingSuppressed = true})
 
-    animator.setFlipped(mcontroller.facingDirection() == -1)    
+    animator.setFlipped(mcontroller.facingDirection() == -1)
 
     self.dashTimer = math.max(0, self.dashTimer - args.dt)
     if self.dashTimer == 0 then
@@ -105,7 +105,7 @@ end
 
 function startDash(direction)
 -- ***energy cost
- if status.overConsumeResource("energy", self.energyCost) and groundValid() then 
+ if status.overConsumeResource("energy", self.energyCost) and groundValid() then
    status.setResourcePercentage("energyRegenBlock", 5.0)
 -- ***end energy cost
 
@@ -117,14 +117,14 @@ function startDash(direction)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
-  
+
 -- ***end jump
 
 -- ***spawn projectile
-    local damageConfig = { 
+    local damageConfig = {
       power = (status.stat("maxEnergy")/5) * self.damageBonus,
-      damageSourceKind = "default" 
-    } 
+      damageSourceKind = "default"
+    }
     world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
     world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {10, 0}, true, damageConfig)
     world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {-10, 0}, true, damageConfig)

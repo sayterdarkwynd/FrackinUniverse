@@ -18,13 +18,13 @@ function init()
   if secondaryAbility then
     self.weapon:addAbility(secondaryAbility)
   end
-  
+
   if self.weapon.reloadParam then
 	activeItem.setInstanceValue("tooltipFields",{ammoNameLabel = "Energy",ammoIconImage = "/interface/tooltips/energy.png"})
   end
 
   self.debug = ""
-  
+
   self.weapon:init()
 end
 

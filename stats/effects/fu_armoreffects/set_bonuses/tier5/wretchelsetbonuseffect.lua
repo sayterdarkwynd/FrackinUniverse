@@ -4,7 +4,7 @@ setName="fu_wretchelset"
 
 weaponBonus={ }
 
-armorBonus={ 
+armorBonus={
 	{stat = "biooozeImmunity", amount = 1},
 	{stat = "pusImmunity", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1}

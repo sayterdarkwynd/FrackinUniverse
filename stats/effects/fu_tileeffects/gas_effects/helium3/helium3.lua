@@ -27,7 +27,7 @@ function init()
       autoJump = false,
       collisionCancelled = true
     }
-  }  
+  }
 end
 
 

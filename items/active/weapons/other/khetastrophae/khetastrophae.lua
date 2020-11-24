@@ -8,7 +8,7 @@ function init()
   self.recoilTimer = 0
 
   activeItem.setCursor("/cursors/reticle0.cursor")
-  
+
   setToolTipValues(config.getParameter("primaryAbility"))
 end
 

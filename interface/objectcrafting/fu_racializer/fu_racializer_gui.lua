@@ -123,7 +123,7 @@ end
 
 -- updates the cost label text.
 function updateCostLbl()
-	if self.useAll == true then 
+	if self.useAll == true then
 		widget.setText("lblCost", "Cost:   x"..cost * itemOld.count)
 	else
 		widget.setText("lblCost", "Cost:   x"..cost)
@@ -173,7 +173,7 @@ function btnConvert_Clicked()
 		elseif self.useAll == false then
 			world.containerTakeNumItemsAt(pane.containerEntityId(), 0, 1)
 			if itemPGI then
-				world.containerTakeNumItemsAt(pane.containerEntityId(), 1, 1) 
+				world.containerTakeNumItemsAt(pane.containerEntityId(), 1, 1)
 			end
 		end
 

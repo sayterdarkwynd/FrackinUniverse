@@ -11,7 +11,7 @@ require "/scripts/kheAA/transferUtil.lua"
 
 	You must "rebuild" the item.
 	Just copy the items data, add the right tags, removing the original item, and readding the one with the tags
-	Seems like only the builder has access to the tooltips 
+	Seems like only the builder has access to the tooltips
 	Used this function to reveal a bees genome
 --]]
 
@@ -97,12 +97,12 @@ specialFrameFunctions = {
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
 			elseif ironFrameTimer <= 0 then
-				world.spawnItem("copperore",entity.position(),self.randAmount) 
+				world.spawnItem("copperore",entity.position(),self.randAmount)
 				ironFrameTimer = math.random(100,540)
 			else
 				ironFrameTimer = ironFrameTimer - beeTickDelta
 			end		
-		end	        
+		end	
 	end,
 	ironFrame = function(data)
 	        self.randAmount = math.random(1,2)
@@ -110,12 +110,12 @@ specialFrameFunctions = {
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
 			elseif ironFrameTimer <= 0 then
-				world.spawnItem("ironore",entity.position(),self.randAmount) 
+				world.spawnItem("ironore",entity.position(),self.randAmount)
 				ironFrameTimer = math.random(100,540)
 			else
 				ironFrameTimer = ironFrameTimer - beeTickDelta
 			end		
-		end	        
+		end	
 	end,
 	tungstenFrame = function(data)
 	        self.randAmount = math.random(1,2)
@@ -123,12 +123,12 @@ specialFrameFunctions = {
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
 			elseif ironFrameTimer <= 0 then
-				world.spawnItem("tungstenore",entity.position(),self.randAmount) 
+				world.spawnItem("tungstenore",entity.position(),self.randAmount)
 				ironFrameTimer = math.random(100,540)
 			else
 				ironFrameTimer = ironFrameTimer - beeTickDelta
 			end		
-		end	        
+		end	
 	end,
 	titaniumFrame = function(data)
 	        self.randAmount = math.random(1,2)
@@ -136,12 +136,12 @@ specialFrameFunctions = {
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
 			elseif ironFrameTimer <= 0 then
-				world.spawnItem("titaniumore",entity.position(),self.randAmount) 
+				world.spawnItem("titaniumore",entity.position(),self.randAmount)
 				ironFrameTimer = math.random(100,540)
 			else
 				ironFrameTimer = ironFrameTimer - beeTickDelta
 			end		
-		end	        
+		end	
 	end,
 	durasteelFrame = function(data)
 	        self.randAmount = math.random(1,2)
@@ -149,12 +149,12 @@ specialFrameFunctions = {
 			if not ironFrameTimer then
 				ironFrameTimer = data[1]
 			elseif ironFrameTimer <= 0 then
-				world.spawnItem("durasteelore",entity.position(),self.randAmount) 
+				world.spawnItem("durasteelore",entity.position(),self.randAmount)
 				ironFrameTimer = math.random(100,540)
 			else
 				ironFrameTimer = ironFrameTimer - beeTickDelta
 			end		
-		end	        
+		end	
 	end		
 	
 }
@@ -287,7 +287,7 @@ end
 
 -- Bee ticks that should happen while the object is not loaded
 -- Called on init if there are any ticks that need simulating
--- While just calling update a bunch of times in a row is easy, it has a lot of stuff going on that you don't need 
+-- While just calling update a bunch of times in a row is easy, it has a lot of stuff going on that you don't need
 function beeTick()
 	contents = world.containerItems(entity.id())
 	
@@ -615,8 +615,8 @@ function queenProduction()
 	-- the final divider on youngQueenProgress (/4) was added later as a means to reduce the frequency at which queens appeared.
 	-- adjusted to 50% instead of 25% on 11-04-2020
 	-- also added a divider to the droneProgress so drone births are 75% less frequent. This will lower production rates as a consequence as bees breed.
-	--youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25 
-	youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.5 
+	--youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25
+	youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.5
 	--sb.logInfo(youngQueenProgress)
 	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)  * 0.25
 
@@ -625,7 +625,7 @@ function queenProduction()
 		youngQueenProgress = youngQueenProgress % beeData.youngQueenProductionRequirement
 		
 		for i = 1, produced do
-			local youngQueen = generateYoungQueen() -- Generate queen stats 
+			local youngQueen = generateYoungQueen() -- Generate queen stats
 			for j = firstInventorySlot, slotCount do
 				youngQueen = world.containerPutItemsAt(entity.id(), youngQueen, j-1)
 				contents[j] = world.containerItemAt(entity.id(), j-1)
@@ -704,7 +704,7 @@ function ageQueen(amount)
 	--if changing this, make sure it matches in beeBuilder.lua
 	local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * 2.0
 
-	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then 
+	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then
 	  queen.parameters.lifespan = fullLifespan
 	end
 
@@ -887,7 +887,7 @@ end
 -- Roll for mite infestation, or increment mite count if there's an infestation
 function miteGrowth()
 	if storage.mites > 0 then
-	        
+	
 	        --display an infested hive image over the normal hive appearance if its infested enough
 		if storage.mites > 50 then  --if mites pass 100, display a rotten looking apiary
 		  animator.setAnimationState("base", "infested", true)
@@ -933,7 +933,7 @@ function miteGrowth()
 		if hiveMiteResistance > 0 then
 		  storage.mites = storage.mites - (hiveMiteResistance)
 		else
-	          storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic       
+	          storage.mites = storage.mites + (storage.mites * mult) + beeData.mites.growthStatic
 		end
 		
 	elseif math.random() <= beeData.mites.infestationChance then
@@ -1045,7 +1045,7 @@ function getBiomeFavor(name)
 	end
 	
 	-- That feeling when no enums/switch case
-	local favor = beeData.biomeLikeness[name][biome] or 2 --default is "liked" with no bonus to production 
+	local favor = beeData.biomeLikeness[name][biome] or 2 --default is "liked" with no bonus to production
 
 	if favor == 0 then return -1 end -- deadly - halts production
 	if favor == 1 then return beeData.biomeDisliked end
@@ -1124,7 +1124,7 @@ end
 -- Attempt spawning a bee entity to roam about
 function tryBeeSpawn(family, genome)
 	if math.random() <= beeData.beeSpawnChance and spaceForBees() then
-		if math.random(20)>= 15 then  
+		if math.random(20)>= 15 then
 			world.spawnMonster(string.format("bee_%s", family), object.toAbsolutePosition({ 2, 3 }), { genome = genome })
 		end
 	end

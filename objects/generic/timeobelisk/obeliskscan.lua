@@ -31,7 +31,7 @@ function scanInteraction()
 		object.setInteractive(true)
 		storage.scanned=true
 		storage.scanTimer=3.0
-	end      
+	end
 
 end
 
@@ -54,7 +54,7 @@ function update(dt)
 		local seed = config.getParameter("treasure.seed")
 		local inactiveVariant = config.getParameter("inactiveVariant")
 		local treasure = root.createTreasure(pool, level, seed)
-		world.spawnTreasure(object.position(), pool, level, seed) 
+		world.spawnTreasure(object.position(), pool, level, seed)
 		world.spawnTreasure(object.position(), "fuprecursorResources", 1, 1)
 		animator.burstParticleEmitter("teleportOut")
 		animator.playSound("deathPuff")

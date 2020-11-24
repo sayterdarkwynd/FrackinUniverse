@@ -46,10 +46,10 @@ end
 function moveLiquid(inputLocation,outputLocation)
     local inputLiquid = world.liquidAt(inputLocation)
 	
-    if inputLiquid and inputLiquid[2] > 0.1 then  
+    if inputLiquid and inputLiquid[2] > 0.1 then
         local outputLiquid = world.liquidAt(outputLocation)
 		
-        if (self.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inputLiquid[1] and outputLiquid[2] < 1))) then 
+        if (self.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inputLiquid[1] and outputLiquid[2] < 1))) then
 
 			local protectCheckOutput=false
 			if world.isTileProtected(self.outputLocation) then
@@ -66,10 +66,10 @@ function moveLiquid(inputLocation,outputLocation)
 			if destroyed then
 				world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
            end
-            if protectCheckOutput then 
-				world.setTileProtection(world.dungeonId(self.outputLocation), true) 
+            if protectCheckOutput then
+				world.setTileProtection(world.dungeonId(self.outputLocation), true)
             end
-            
+
             return true
         end
 
@@ -81,7 +81,7 @@ function onInputNodeChange(args)
 	storage.currentState = setCurrentOutput() and (not object.isInputNodeConnected(0) or object.getInputNodeLevel(0))
 end
 
-function onNodeConnectionChange() 
+function onNodeConnectionChange()
 	storage.currentState = setCurrentOutput() and (not object.isInputNodeConnected(0) or object.getInputNodeLevel(0))
 end
 

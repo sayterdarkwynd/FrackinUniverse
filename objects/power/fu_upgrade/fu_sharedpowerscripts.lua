@@ -5,7 +5,7 @@ function isn_getCurrentPowerInput(divide)
 	local iterator = 0
 	local connectedDevices
 	
-	local nodecount = object.inputNodeCount() 
+	local nodecount = object.inputNodeCount()
 	---sb.logInfo("PID: nodecount is " .. nodecount)
 	
 	while iterator < nodecount do

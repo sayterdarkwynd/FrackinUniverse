@@ -82,7 +82,7 @@ function initGame()
       Dot2:new(self.level, 4),
       SquareTool:new(self.level, 4),
       ExTool:new(self.level, 4)
-    }    
+    }
   elseif config.getParameter("toolType") == "master" then
     self.tools = {
       BrushTool:new(self.level),
@@ -90,7 +90,7 @@ function initGame()
       TLeft:new(self.level, 0),
       TRight:new(self.level, 0),
       Dot:new(self.level, 0)
-    }    
+    }
   elseif config.getParameter("toolType") == "student" then
     self.tools = {
       BrushTool:new(self.level),
@@ -255,7 +255,7 @@ function winState()
 
   world.sendEntityMessage(pane.sourceEntity(), "addDrop", self.fossilItem)
   -- FU research drop
-  -- I chose to use a useable item rather than spawning a # of research simply to give the player 
+  -- I chose to use a useable item rather than spawning a # of research simply to give the player
   -- the satisfaction of using the item and getting the particle effects and sound
   world.sendEntityMessage(pane.sourceEntity(), "addDrop", "smalldata")
   --

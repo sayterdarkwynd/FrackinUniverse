@@ -31,6 +31,6 @@ function onInteraction(args)
 	end
 end
 
-function update(dt) 
+function update(dt)
 
 end

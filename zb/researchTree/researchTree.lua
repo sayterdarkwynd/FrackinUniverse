@@ -475,7 +475,7 @@ function populateTreeList()
 		if data.treeUnlocks[tree] then
 			if data.treeUnlocks[tree].quests then
 				for _, questId in ipairs(data.treeUnlocks[tree].quests) do
-					if not player.hasCompletedQuest(questId) then 
+					if not player.hasCompletedQuest(questId) then
 						isAvailable = false
 						break
 					end

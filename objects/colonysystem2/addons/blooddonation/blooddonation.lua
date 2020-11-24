@@ -9,7 +9,7 @@ require "/scripts/kheAA/transferUtil.lua"
 -- Added in the scanTimer variable as it's common in any lua code which
 -- interacts with Item Transference Device (transferUtil) code.
 local scanTimer	-- Making it local is faster than leaving it global.
-local tenantNumber 
+local tenantNumber
 local happinessAmount
 local parentCore --save the colony core as a local so you don't have to look for it every time
 
@@ -151,11 +151,11 @@ end
 
 function providesHappiness() return true end
 
-function amountHappiness() 
+function amountHappiness()
 	if wellsDrawing == 1 then
-		return happinessAmount 
+		return happinessAmount
 	else
-		return 0 
+		return 0
 	end
 	
 end

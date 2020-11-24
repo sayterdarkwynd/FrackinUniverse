@@ -4,23 +4,23 @@ require "/scripts/util.lua"
 function init()
   self.colorCache = {}
   self.debugTimer = 0
-  
+
 end
 
 function update()
   localAnimator.clearDrawables()
-    
+
 
   local currentTargetOre = animationConfig.animationParameter("currentTargetOre")
   local targetOreColor = animationConfig.animationParameter("targetOreColor")
   local nonTargetOreColor = animationConfig.animationParameter("nonTargetOreColor")
- 
+
 	
-  
+
   local pingLocation = animationConfig.animationParameter("pingLocation")
   if pingLocation then
 	
-		  
+		
     if not self.pingLocation or not vec2.eq(pingLocation, self.pingLocation) then
       self.pingLocation = pingLocation
       self.colorCache = {}
@@ -43,7 +43,7 @@ function update()
           local cacheKey = position[1]..","..position[2]
           if not self.colorCache[cacheKey] then
             --new = new + 1
-            
+
             if detectConfig.type == "ore" then
               local oreMod
               if world.pointTileCollision(position) then
@@ -83,5 +83,5 @@ function update()
   else
     self.pingLocation = nil
   end
-   
+
 end

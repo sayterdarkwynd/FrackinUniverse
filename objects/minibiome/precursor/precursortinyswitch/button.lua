@@ -38,7 +38,7 @@ function output(state)
 			animator.playSound("off")
 		end
 	 end
-	 
+	
 	object.setAllOutputNodes(state)
 	if not (config.getParameter("alwaysLit")) then object.setLightColor(config.getParameter((state and "lightColor") or "lightColorOff", {0, 0, 0, 0})) end
 	animator.setAnimationState("switchState",(state and "on") or "off")

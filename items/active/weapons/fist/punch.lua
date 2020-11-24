@@ -75,7 +75,7 @@ function Punch:fire()
 
   util.wait(self.stances.fire.duration, function()
     local damageArea = partDamageArea("swoosh")
-    
+
     self.weapon:setDamage(self.damageConfig, damageArea, self.fireTime)
   end)
 
@@ -87,7 +87,7 @@ function Punch:fire()
     params2 = { speed=20, power = 0 , damageKind = "default", knockback = 0 } -- Stun
     world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params2)
   end
-	 
+	
   self.cooldownTimer = self:cooldownTime()
 end
 

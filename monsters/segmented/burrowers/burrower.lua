@@ -18,7 +18,7 @@ function burrowEffect(dt)
     	animator.burstParticleEmitter("groundBurstEmitter")
     	animator.setParticleEmitterActive("behindGroundEmitter", self.burrowing)
   		animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
-    else  
+    else
 	self.burrowTick = self.burrowTick - dt
 	if self.burrowTick <= 0  and self.burrowing then
 		if not playerModified(mcontroller.position(),2) then

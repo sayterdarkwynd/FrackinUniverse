@@ -19,7 +19,7 @@ function populateMaterialsList()
         else
             if worldId[1]=="ClientShipWorld" then
                 local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                widget.setText(path .. ".text", "This is a Ship World") 
+                widget.setText(path .. ".text", "This is a Ship World")
                 -- More info about the ship could be added here
             else
                 if worldId[1]=="CelestialWorld" then
@@ -57,8 +57,8 @@ function populateMaterialsList()
                                 subbiomes = biomes[subBiome.biome]
                             else
                                 subbiomes = subbiomes..", "..biomes[subBiome.biome]
-                            end  
-                        end          
+                            end
+                        end
                     end
                     subbiomes = subbiomes.."."
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
@@ -70,7 +70,7 @@ function populateMaterialsList()
                     widget.setText(path .. ".text", "^green;Position X:^reset; "..math.floor(pos[1]).."                        ^green;Position Y:^reset; "..math.floor(pos[2]))
 
                     local size = world.size() or {0,0}
-                    -- print world size        
+                    -- print world size
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Width:^reset; "..size[1].."                        ^green;Height:^reset; "..size[2])
 

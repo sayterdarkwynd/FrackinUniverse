@@ -67,8 +67,8 @@ function init()
 
 
   monster.setName("Heavy War Drone")
-  monster.setDamageBar("special") 
-  
+  monster.setDamageBar("special")
+
   self.switchAngleTime = config.getParameter("switchAngleTime")
 end
 

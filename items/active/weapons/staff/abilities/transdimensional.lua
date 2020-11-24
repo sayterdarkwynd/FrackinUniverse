@@ -95,8 +95,8 @@ function Controlledteleport:discharge()
   (status.statPositive("admin") or player.isAdmin())
 	or ((world.terrestrial() or wType == "asteroids" or wType == "outpost" or wType == "unknown" or wType == "playerstation") and world.dayLength() ~= 100000)
 	or (wType=="scienceoutpost" and player.hasCountOfItem("sciencebrochure2")>0)
-  local lineOfSightActive = not world.lineTileCollision(activeItem.ownerAimPosition(), mcontroller.position())  
-  
+  local lineOfSightActive = not world.lineTileCollision(activeItem.ownerAimPosition(), mcontroller.position())
+
   if (permittedWorld) then --and lineOfSightActive) then --make sure they can see destination so they cant cheat
 	  local finalLocation=self:targetValid(mcontroller.collisionPoly(),activeItem.ownerAimPosition());
 	  if finalLocation and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
@@ -147,12 +147,12 @@ end
 
 function Controlledteleport:targetValid(collidePoly,aimPos)
   local resolvedPoint = world.resolvePolyCollision(collidePoly, aimPos, config.getParameter("teleportTolerance"))
-  
+
   if not resolvedPoint then
     return false
   end
   local focusPos = self:focusPosition()
-  
+
   if(world.magnitude(focusPos, aimPos) <= self.maxCastRange) then
     return resolvedPoint
   end
@@ -173,7 +173,7 @@ end
 
 -- give all projectiles a new aim position and let those projectiles return one or
 -- more entity ids for projectiles we should now be tracking
---[[ 
+--[[
 function Controlledteleport:createProjectiles()
   local aimPosition = activeItem.ownerAimPosition()
     mcontroller.setPosition(aimPosition);
@@ -275,7 +275,7 @@ function Controlledteleport:blinkAdjust(position, doPathCheck, doCollisionCheck,
   end
 
   if doStandCheck then
-    local groundFound = false 
+    local groundFound = false
     for i = 1, blinkVerticalGroundCheck * 2 do
       local checkPosition = {position[1], position[2] - i / 2}
 

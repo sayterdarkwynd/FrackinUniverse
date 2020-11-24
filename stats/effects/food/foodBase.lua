@@ -15,7 +15,7 @@ function init()
 	end
 	if self.species then
 		success, self.speciesConfig = pcall(
-			function () 
+			function ()
 				return root.assetJson(string.format("/species/%s.raceeffect", self.species))
 			end
 		)

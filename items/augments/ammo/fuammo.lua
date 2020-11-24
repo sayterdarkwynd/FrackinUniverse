@@ -16,7 +16,7 @@ function apply(input)
 		return nil
 	end
 	
-	if not output:instanceValue("usesAmmo") then 
+	if not output:instanceValue("usesAmmo") then
 		if output:instanceValue("magazineType") and not config.getParameter("magazineType") then --magazines don't use ammo, but have magazineType	
 			local outputAmmo = output:instanceValue("ammoCount") or 1
 			local outputType = output:instanceValue("ammoType")
@@ -104,7 +104,7 @@ function apply(input)
 			if (outputMax - outputAmmo) < inputAmmo then
 				extraStorage[inputType] = inputAmmo - outputMax + outputAmmo
 				output:setInstanceValue("ammoAmount",outputMax)
-			else 
+			else
 				output:setInstanceValue("ammoAmount",outputAmmo + inputAmmo)
 			end
 		end

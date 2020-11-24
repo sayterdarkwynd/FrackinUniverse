@@ -1,4 +1,4 @@
---TODO add position offsetting, 
+--TODO add position offsetting,
 
 function init()
 	

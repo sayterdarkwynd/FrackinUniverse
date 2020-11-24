@@ -11,7 +11,7 @@ function ReloadAmmo:update(dt,fireMode,shiftHeld)
 	
 	self.cooldownTimer = math.max(0,self.cooldownTimer-self.dt)
 	
-	if self.fireMode == "alt" 
+	if self.fireMode == "alt"
 		and not self.weapon.CurrentAbility
 		and self.cooldownTimer == 0
 	then

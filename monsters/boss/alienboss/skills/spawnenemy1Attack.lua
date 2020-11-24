@@ -60,7 +60,7 @@ function spawnenemy1Attack.update(dt, stateData)
   elseif not stateData.firing then
     --Float up to get into firing position
     animator.setAnimationState("electricBurst", "on")
-    if not stateData.woundUp then 
+    if not stateData.woundUp then
       animator.setAnimationState("movement", "windup")
       stateData.woundUp = true
     end

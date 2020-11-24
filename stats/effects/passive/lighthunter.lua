@@ -22,7 +22,7 @@ function update(dt)
 	  {stat = "maxHealth", baseMultiplier = self.powerBonus + 1.08},
 	  {stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.08}
 	  })		
-	  mcontroller.controlModifiers({ speedModifier = 1.20 }) 
+	  mcontroller.controlModifiers({ speedModifier = 1.20 })
 	elseif lightLevel >= 80 then
 	  effect.setStatModifierGroup(lightHunterEffects, {
 	  {stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
@@ -36,14 +36,14 @@ function update(dt)
 	  {stat = "maxHealth", baseMultiplier = self.powerBonus + 1.06},
 	  {stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.06}
 	  })		
-	  mcontroller.controlModifiers({ speedModifier = 1.16 }) 
+	  mcontroller.controlModifiers({ speedModifier = 1.16 })
 	elseif lightLevel >= 60 then
 	  effect.setStatModifierGroup(lightHunterEffects, {
 	  {stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
 	  {stat = "maxHealth", baseMultiplier = self.powerBonus + 1.05},
 	  {stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.05}
 	  })		
-	  mcontroller.controlModifiers({ speedModifier = 1.14 }) 	  
+	  mcontroller.controlModifiers({ speedModifier = 1.14 }) 	
 	elseif lightLevel >= 50 then
 	  effect.setStatModifierGroup(lightHunterEffects, {
 	  {stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
@@ -57,7 +57,7 @@ function update(dt)
 	  {stat = "maxHealth", baseMultiplier = self.powerBonus + 1.02},
 	  {stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.02}
 	  })		
-	  mcontroller.controlModifiers({ speedModifier = 1.09 })	  
+	  mcontroller.controlModifiers({ speedModifier = 1.09 })	
 	elseif lightLevel >= 30 then
 	  effect.setStatModifierGroup(lightHunterEffects, {
 	  {stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
@@ -65,9 +65,9 @@ function update(dt)
 	  {stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.00}
 	  })		
 	  mcontroller.controlModifiers({ speedModifier = 1.06 })
-	else 
+	else
 		effect.setStatModifierGroup(lightHunterEffects,{})
-	end  
+	end
 end
 
 function uninit()

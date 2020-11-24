@@ -21,7 +21,7 @@ local function TableAlreadyContains(tbl, entry)
 	return false
 end
 
--- Attempt to learn this codex. 
+-- Attempt to learn this codex.
 -- Returns 0 if the call was successful and we learned the codex entry, 1 if the call was successful but we already knew the entry, and 2 if something errored out.
 function LearnCodex(itemName)
 	GetLoggingOverridesIfNecessary()

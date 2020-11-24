@@ -38,9 +38,9 @@ function FRHelper:call(args, ...)
 	local stats = util.map(args.stats,
 		function (v)
 			return {
-				stat = v.stat, 
-				amount = v.amount and v.amount * scale, 
-				baseMultiplier = v.baseMultiplier and scaleMultiplier(v.baseMultiplier, scale), 
+				stat = v.stat,
+				amount = v.amount and v.amount * scale,
+				baseMultiplier = v.baseMultiplier and scaleMultiplier(v.baseMultiplier, scale),
 				effectiveMultiplier = v.effectiveMultiplier and scaleMultiplier(v.effectiveMultiplier, scale)
 			}
 		end

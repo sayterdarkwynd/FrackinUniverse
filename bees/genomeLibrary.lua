@@ -78,7 +78,7 @@ genelib.numberToStat = function(num)
 		genome = genome..string.sub(invertedGenome, invertedLength-i+1, invertedLength-i+1)
 	end
 	
-	if string.len(genome) < 2 then 
+	if string.len(genome) < 2 then
 		genome = "0"..genome
 	end
 	
@@ -185,7 +185,7 @@ genelib.generateDefaultGenome = function(beeName)
 	
 	-- Clear potential additions to the name.
 	local underscore1 = string.find(beeName, "_")
-	if not underscore1 then 
+	if not underscore1 then
 		sb.logWarn("FU/bees/genomelibrary: error in %s",beeName)
 	end
 	local underscore2 = string.find(beeName, "_", underscore1+1)

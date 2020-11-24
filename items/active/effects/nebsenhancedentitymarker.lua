@@ -7,7 +7,7 @@ function update()
   local entityMarker = animationConfig.animationParameter("entityMarker")
 
   local markerImage = entityMarker.markerImage
-  
+
   if markerImage then
     local entities = animationConfig.animationParameter("entities") or {}
     entities = util.filter(entities, world.entityExists)
@@ -19,7 +19,7 @@ function update()
         fullbright = entityMarker.fullbright or false
       }
       localAnimator.addDrawable(markerDrawable, "overlay")
-  
+
 	  if entityMarker.markerLighting then
 		local markerLighting = {
 		  position = world.entityPosition(entityId),

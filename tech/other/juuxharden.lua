@@ -14,14 +14,14 @@ end
 end]]
 
 --[[function damageConfig()
-  energyVal = 
-  defenseVal =  
-  totalVal = 
+  energyVal =
+  defenseVal =
+  totalVal =
 end]]
 
 function activeFlight(direction)
     --damageConfig()
-    --local damageConfig = 
+    --local damageConfig =
     animator.playSound("activate",3)
     animator.playSound("recharge")
     animator.setSoundVolume("activate", 0.5,0)
@@ -30,7 +30,7 @@ function activeFlight(direction)
 end
 --[[function activeFlight2()
     --damageConfig()
-    --local damageConfig = 
+    --local damageConfig =
     animator.playSound("activate",3)
     animator.playSound("recharge")
     animator.setSoundVolume("activate", 0.5,0)
@@ -40,7 +40,7 @@ end]]
 --[[
 function activeFlight3()
     --damageConfig()
-    --local damageConfig = 
+    --local damageConfig =
     animator.playSound("activate",3)
     animator.playSound("recharge")
     animator.setSoundVolume("activate", 0.5,0)
@@ -58,22 +58,22 @@ end
 function update(args)
 	if mcontroller.facingDirection() == 1 then -- what direction are we facing?
 		if args.moves["down"] then -- are we crouching?
-			self.mouthPosition = vec2.add(mcontroller.position(), {1,-0.7})  
+			self.mouthPosition = vec2.add(mcontroller.position(), {1,-0.7})
 		else
-			self.mouthPosition = vec2.add(mcontroller.position(), {1,0.15}) 
+			self.mouthPosition = vec2.add(mcontroller.position(), {1,0.15})
 		end
 
 	else
 		if args.moves["down"] then -- are we crouching?
-			self.mouthPosition = vec2.add(mcontroller.position(), {-1,-0.7})  
+			self.mouthPosition = vec2.add(mcontroller.position(), {-1,-0.7})
 		else
-			self.mouthPosition = vec2.add(mcontroller.position(), {-1,0.15}) 
-		end          
+			self.mouthPosition = vec2.add(mcontroller.position(), {-1,0.15})
+		end
 	end
 
 	self.firetimer = math.max(0, self.firetimer - args.dt)
 
-	if args.moves["special1"] and not args.moves["down"] and not args.moves["up"] and status.overConsumeResource("energy", 0.001) then 
+	if args.moves["special1"] and not args.moves["down"] and not args.moves["up"] and status.overConsumeResource("energy", 0.001) then
 		if self.firetimer == 0 then
 			status.overConsumeResource("energy", 2)
 
@@ -84,7 +84,7 @@ function update(args)
 	else
 		animator.stopAllSounds("activate")	
 	end
-	if args.moves["down"] and args.moves["special1"] and status.overConsumeResource("energy", 0.001) then 
+	if args.moves["down"] and args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
 		if self.firetimer == 0 then
 			status.overConsumeResource("energy", 2)
 
@@ -95,7 +95,7 @@ function update(args)
 	else
 		animator.stopAllSounds("activate")	
 	end
-	if args.moves["up"] and args.moves["special1"] and status.overConsumeResource("energy", 0.001) then 
+	if args.moves["up"] and args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
 		if self.firetimer == 0 then
 			status.overConsumeResource("energy", 2)
 

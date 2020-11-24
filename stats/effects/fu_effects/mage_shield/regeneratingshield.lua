@@ -24,7 +24,7 @@ function init()
 	self.shieldBlockTimer=self.shieldBlockTime
 end
 
-function update(dt) 
+function update(dt)
 	if not status.isResource("damageAbsorption") then return end
 	self.damageListener:update()
 	local capCalc=self.shieldCap*status.resourceMax(self.resource)

@@ -3,7 +3,7 @@
 --[[
 	API:
 	
-		call 
+		call
 		local print, warn, error, assertwarn, assert, tostring = CreateLoggingOverride([string prefix = nil], [bool tostringUsesSBPrint = false]) AFTER init and...
 			
 			void print(...)

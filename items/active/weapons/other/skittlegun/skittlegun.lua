@@ -392,7 +392,7 @@ function firstToUpper(str)
 end
 
 function uninit()
-	if fool then 
+	if fool then
 		status.removeEphemeralEffect("nude")
 	end
 end

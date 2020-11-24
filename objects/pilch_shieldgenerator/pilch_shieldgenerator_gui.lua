@@ -84,7 +84,7 @@ function checkRelationships()
 		end
 		widget.setVisible("gravityLevelTextBox", fieldOptions.applyGravity)
 	end
-	if (isWired) then 
+	if (isWired) then
 		widget.setButtonEnabled("activateButton", false)
 	else
 		widget.setButtonEnabled("activateButton", true)

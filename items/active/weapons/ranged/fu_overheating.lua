@@ -16,10 +16,10 @@ function FUOverHeating:init()
 	-- bonus add for novakids with pistols when sped up, specifically to energy and damage equations at end of file so that they still damage and consume energy at high speed
 	self.energyMax = 1
     -- ** END FR ADDITIONS
-    
+
   self.weapon:setStance(self.stances.idle)
   self.cooldownTimer = self.fireTime
-  
+
 	-- ********************** BEGIN FU additions **************************
   self.isReloader = config.getParameter("isReloader",0)           -- is this a shotgun style reload?
   self.isCrossbow = config.getParameter("isCrossbow",0)           -- is this a crossbow?
@@ -53,8 +53,8 @@ function FUOverHeating:init()
   end
   self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
   self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
-  self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire  
-  
+  self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
+
 end
 
 -- ****************************************
@@ -87,17 +87,17 @@ function FUOverHeating:update(dt, fireMode, shiftHeld)
   else
     self.timeBeforeCritBoost = self.timeBeforeCritBoost -dt
   end
-  
+
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
-  
+
   setupHelper(self, {"gunfire-update", "gunfire-auto", "gunfire-postauto", "gunfire-burst", "gunfire-postburst"})
   if self.helper then
 	self.helper:runScripts("gunfire-update", self, dt, fireMode, shiftHeld)
   end
-  
+
   -- ************ FU overheating idle timer
   self.timerIdle = math.min(self.coolingTime, self.timerIdle + self.dt)
-    
+
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)
   end
@@ -127,7 +127,7 @@ function FUOverHeating:update(dt, fireMode, shiftHeld)
 	self.currentHeat = math.max(0, self.currentHeat - (self.heatLossLevel * self.dt))
 	activeItem.setInstanceValue("heat", self.currentHeat)
   end
-  
+
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
@@ -147,7 +147,7 @@ function playSoundCooldown()
   if (self.playCooldownSound==true) then
     animator.playSound("cooldown")
     self.playCooldownSound = false
-  end  
+  end
 end
 
 function FUOverHeating:auto()
@@ -157,7 +157,7 @@ self.firedWeapon = 1
 -- ***********************************************************************************************************
     -- recoil stats reset every time we shoot so that it is consistent
     self.recoilSpeed = (config.getParameter("recoilSpeed",0))
-    self.recoilForce = (config.getParameter("recoilForce",0)) 
+    self.recoilForce = (config.getParameter("recoilForce",0))
     local species = world.entitySpecies(activeItem.ownerEntityId())
 
     if self.helper then
@@ -178,7 +178,7 @@ self.firedWeapon = 1
 	  end
 	  mcontroller.addMomentum(recoilVelocity)
 	  mcontroller.controlJump()
-	  
+	
 	elseif self.crouchRecoilVelocity then
 	  local recoilVelocity = vec2.mul(vec2.norm(vec2.mul(self:aimVector(0), -1)), self.crouchRecoilVelocity)
 	  mcontroller.setYVelocity(0)
@@ -192,10 +192,10 @@ self.firedWeapon = 1
   end
 
   if self.helper then self.helper:runScripts("gunfire-postauto", self) end
-  
+
   self.cooldownTimer = self.fireTime
   self:setState(self.cooldown)
-  
+
   -- Is it a reloading weapon?
   self.isReloader = config.getParameter("isReloader",0)
   if (self.isReloader) >= 1 then
@@ -208,13 +208,13 @@ function FUOverHeating:burst()
 
     -- recoil stats reset every time we shoot so that it is consistent
     self.recoilSpeed = (config.getParameter("recoilSpeed",0))
-    self.recoilForce = (config.getParameter("recoilForce",0)) 
+    self.recoilForce = (config.getParameter("recoilForce",0))
     local species = world.entitySpecies(activeItem.ownerEntityId())
 
     if self.helper then
         self.helper:runScripts("gunfire-burst", self)
     end
-    
+
   self.weapon:setStance(self.stances.fire)
 
   local shots = self.burstCount
@@ -287,7 +287,7 @@ function FUOverHeating:fireProjectile(projectileType, projectileParams, inaccura
   self.currentHeat = self.currentHeat + self.heatGain
   activeItem.setInstanceValue("heat",self.currentHeat)
   self.timerIdle = 0
-  
+
   if not projectileType then
     projectileType = self.projectileType
   end
@@ -311,7 +311,7 @@ function FUOverHeating:fireProjectile(projectileType, projectileParams, inaccura
       )
   end
     --Recoil here
-  self:applyRecoil()  
+  self:applyRecoil()
   return projectileId
 end
 
@@ -341,7 +341,7 @@ function FUOverHeating:uninit()
       activeItem.setInstanceValue("magazineAmount",self.magazineAmount)
       activeItem.setInstanceValue("isReloading"..self.abilitySlot,self.isReloading)
     end
-  end  
+  end
 end
 
 function FUOverHeating:isResetting()
@@ -366,17 +366,17 @@ function FUOverHeating:applyRecoil()
       self:adjustRecoil()
     end
     local recoilDirection = mcontroller.facingDirection() == 1 and self.weapon.aimAngle + math.pi or -self.weapon.aimAngle
-    mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)    
+    mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)
   end
 end
 
 function FUOverHeating:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil				
     if not mcontroller.onGround() then						
      self.recoilForce = self.recoilForce * 0.5
-    end      
+    end
     if mcontroller.crouching() then
      self.recoilForce = self.recoilForce * 0.25
-    end          
+    end
 end
 
 function FUOverHeating:isChargeUp()

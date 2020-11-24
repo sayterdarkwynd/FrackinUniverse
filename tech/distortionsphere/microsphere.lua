@@ -38,10 +38,10 @@ function update(args)
     attemptActivation()
   end
   self.specialLast = args.moves["special1"]
-  if not args.moves["special1"] then		  
+  if not args.moves["special1"] then		
     self.forceTimer = nil		
-  end  
-  
+  end
+
   if self.active then
     mcontroller.controlParameters(self.transformedMovementParameters)
     status.setResourcePercentage("energyRegenBlock", 1.0)
@@ -202,7 +202,7 @@ function activate()
   status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 5}})
   status.setStatusProperty("mouthPosition", {0,0})
 
- 
+
 end
 
 function deactivate()

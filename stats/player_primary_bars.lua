@@ -19,21 +19,21 @@ end
 function overheadBars()
 
   local bars = {}
-  
+
     --if self.timerRemoveAmmoBar > 10 then
-    --  world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar  
+    --  world.sendEntityMessage(entity.id(),"removeBar","ammoBar")   --clear ammo bar
     --  self.timerRemoveAmmoBar = 0
     --else
     --  self.timerRemoveAmmoBar = self.timerRemoveAmmoBar + 1
-    --end 
-    
+    --end
+
   if status.statPositive("shieldHealth") then
     table.insert(bars, {
       percentage = status.resource("shieldStamina"),
       color = status.resourcePositive("perfectBlock") and {255, 255, 200, 255} or {200, 200, 0, 255}
     })
   end
-  
+
   for k,v in pairs(self.barsList) do
 	table.insert(bars,{
 		percentage = v.percentage,

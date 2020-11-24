@@ -56,7 +56,7 @@ typerParticle.tid = 1
 
 -- Contains all controller methods.
 -- Irrelevant ones are culled on init, based on config
-typerParticle.controllerChain = { 
+typerParticle.controllerChain = {
 	color = function(dt)
 		if typerParticle.cfg.controllers.colorLoop then
 			-- Giving a 255 headtsrat because the correct color calculation only works above 255

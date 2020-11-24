@@ -292,7 +292,7 @@ local function PopulateCodexEntriesForCategory(targetSpecies, speciesName)
 	local knownCodexEntries = player.getProperty("xcodex.knownCodexEntries") or {}
 	
 	-- NEW UPDATE: Alphabetical sorting on these too.
-	-- To accomplish this we need to go over the elements and create "pseudo-buttons" - that is, the *data* for a button, but not na actual GUI element. 
+	-- To accomplish this we need to go over the elements and create "pseudo-buttons" - that is, the *data* for a button, but not na actual GUI element.
 	-- We can then use table.sort to order these, and *then* create the buttons.
 	local codexDataRegistry = {}
 	for index = 1, #knownCodexEntries do
@@ -499,7 +499,7 @@ function ListButtonClicked(widgetName, widgetData)
 	local info = infoContainer[1]
 	
 	local data = CodexButtonBindings[info]
-	if data ~= nil then 
+	if data ~= nil then
 		OpenCodex(data[1])
 		-- SetActiveEntryButton("codexList.entrylist." .. tostring(selectedId))
 		-- ^ Doesn't seem to work right now (it just does nothing). Not super important.
@@ -514,7 +514,7 @@ function RaceButtonClicked(widgetName, widgetData)
 	local actualRaceName = widget.getData("racialCategoryList.racelist." .. tostring(itemId))[1]
 	
 	local codexSpecies = ExistingCategoryButtons[actualRaceName]
-	if codexSpecies then 
+	if codexSpecies then
 		PopulateCodexEntriesForCategory(codexSpecies, actualRaceName)
 		SetActiveRaceButton("racialCategoryList.racelist." .. tostring(itemId) .. ".raceButton")
 	end
