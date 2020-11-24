@@ -33,8 +33,11 @@ function createShip(_, _, ship, playerRace, replaceMode)
 	self.ship = ship.ship
 	replaceMode = replaceMode or {dungeon = "fu_byosblankquarter", size = {512, 512}}
 	if ship then
+		ship.offset = ship.offset or {-6, 12}
+		ship.offset[1] = math.min(ship.offset[1], -1)
+		ship.offset[2] = math.max(ship.offset[2], 1)
 		world.placeDungeon(replaceMode.dungeon, getReplaceModePosition(replaceMode.size))
-		world.placeDungeon(ship.ship, vec2.add({1024, 1024}, ship.offset or {-6, 12}), self.shipDungeonId)
+		world.placeDungeon(ship.ship, vec2.add({1024, 1024}, ship.offset), self.shipDungeonId)
 		self.placingShip = true
 	end
 end
