@@ -102,7 +102,7 @@ end
 
 function routeItems(dt)
 	if not self.init then return end
-	if storage.disabled then return end
+	if self.disabled then return end
 	if util.tableSize(transferUtil.vars.inContainers) == 0 then return end
 
 	local outputSizeG = util.tableSize(transferUtil.vars.outContainers)
