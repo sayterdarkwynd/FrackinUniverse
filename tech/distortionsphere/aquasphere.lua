@@ -41,11 +41,11 @@ function update(args)
     ----------------------------------------------------
 
     if inLiquid then  -- if immersed in liquid do this
-      status.addEphemeralEffect("airimmunity") 
+      status.addEphemeralEffect("airimmunity")
       self.transformedMovementParameters.gravityMultiplier = -0.005 	-- upwards drag if idle
       if args.moves["up"] and args.moves["down"] then  			-- pushing both up and down cancels out momentum
         self.transformedMovementParameters.liquidForce = 0
-        self.transformedMovementParameters.gravityMultiplier = 0 
+        self.transformedMovementParameters.gravityMultiplier = 0
       end
       status.addEphemeralEffect("swimboost2") 				-- apply swim speed bonus
       self.transformedMovementParameters.runSpeed = self.ballLiquidSpeed  -- failsafes

@@ -12,7 +12,7 @@ function init()
     ambulatingGroundFriction = 0.8,
     collisionEnabled = true,
     frictionEnabled = true
-  } 
+  }
   script.setUpdateDelta(5)
 end
 

@@ -136,7 +136,7 @@ status.setPersistentEffects("shieldEffects", {
  		{stat = "shieldBash", amount = shieldBash},
  		{stat = "shieldBashPush", amount = shieldBashPush}
  	})
- 
+
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -354,14 +354,14 @@ function bashEnemy()
 		world.spawnProjectile("shieldBashStunProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params2)
 		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy
 		animator.playSound("shieldBash")
-		animator.burstParticleEmitter("shieldBashHit")  
+		animator.burstParticleEmitter("shieldBashHit")
   	else
 		self.pushBack = math.random(24) + config.getParameter("shieldBashPush",0) + status.stat("shieldBashPush") + 6
 		params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash
 		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
 		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy
 		animator.playSound("shieldBash")
-		animator.burstParticleEmitter("shieldBashHit")  
+		animator.burstParticleEmitter("shieldBashHit")
   	end
 
   else
@@ -370,7 +370,7 @@ function bashEnemy()
 		world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
 		status.modifyResource("energy", self.energyValue * -0.2 )  -- consume energy
 		animator.playSound("shieldBash")
-		animator.burstParticleEmitter("shieldBashHit")  
+		animator.burstParticleEmitter("shieldBashHit")
   end
 end
 

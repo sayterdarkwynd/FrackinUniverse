@@ -83,7 +83,7 @@ function update(args)
 		self.firetimer = 0.1 + (totalVal / 50)
 		activeFlight()
 	      end
-	    
+	
 	else
   	        animator.stopAllSounds("activate")
 	end

@@ -29,7 +29,7 @@ function update(dt)
 	  {stat = "maxHealth", baseMultiplier = self.powerBonus + 1.07},
 	  {stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.07}
 	  })
-	  mcontroller.controlModifiers({ speedModifier = 1.18 }) 
+	  mcontroller.controlModifiers({ speedModifier = 1.18 })
 	elseif lightLevel >= 70 then
 	  effect.setStatModifierGroup(lightHunterEffects, {
 	  {stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},
@@ -43,7 +43,7 @@ function update(dt)
 	  {stat = "maxHealth", baseMultiplier = self.powerBonus + 1.05},
 	  {stat = "powerMultiplier", baseMultiplier = self.powerBonus + 1.05}
 	  })
-	  mcontroller.controlModifiers({ speedModifier = 1.14 }) 
+	  mcontroller.controlModifiers({ speedModifier = 1.14 })
 	elseif lightLevel >= 50 then
 	  effect.setStatModifierGroup(lightHunterEffects, {
 	  {stat = "energyRegenPercentageRate", amount = 1.08 + self.powerBonus},

@@ -4,10 +4,10 @@ function activate(fireMode, shiftHeld)
       if self.species == "slimeperson" then
         player.makeTechAvailable("colorvariableslimesphere")
         player.enableTech("colorvariableslimesphere")
-        player.equipTech("colorvariableslimesphere") 
+        player.equipTech("colorvariableslimesphere")
         player.makeTechAvailable("stickywalljump")
         player.enableTech("stickywalljump")
-        player.equipTech("stickywalljump") 
+        player.equipTech("stickywalljump")
       end
       animate()
     else
@@ -24,7 +24,7 @@ function animate()
     	animator.setParticleEmitterOffsetRegion("butterflies2", mcontroller.boundBox())
     	animator.setParticleEmitterActive("butterflies2", true)
     	animator.setParticleEmitterOffsetRegion("butterflies3", mcontroller.boundBox())
-    	animator.setParticleEmitterActive("butterflies3", true)    
+    	animator.setParticleEmitterActive("butterflies3", true)
     	animator.playSound("activate")
 end
 

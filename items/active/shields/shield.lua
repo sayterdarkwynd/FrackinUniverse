@@ -115,7 +115,7 @@ function shieldBonusApplyPartial()
  		{stat = "shieldBash", amount =  shieldBash},
  		{stat = "shieldBashPush", amount =  shieldBashPush},
  		{stat = "critChance", amount =  self.critChance},
- 		{stat = "critChance", amount =  self.critBonus} 
+ 		{stat = "critChance", amount =  self.critBonus}
  	})
 end
 

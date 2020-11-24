@@ -88,7 +88,7 @@ function update(args)
        self.timerRemoveXibulbBar = 0
    else
        self.timerRemoveXibulbBar = self.timerRemoveXibulbBar + 1
-   end   
+   end
   if not self.specialLast and args.moves["special1"] then
     attemptActivation()
     animator.playSound("activate")
