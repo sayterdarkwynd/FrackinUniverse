@@ -32,13 +32,13 @@ function init()
 		changeState("initial")
 	end
 	updateAiImage()
-
+	
 	pane.playSound(chatterSound, -1)
-
+	
 	ship = {}
 	ship.shipConfig = root.assetJson("/frackinship/configs/ships.config")
 	generateShipLists()
-
+	
 	ship.miscConfig = root.assetJson("/frackinship/configs/misc.config")
 	ship.disableUnlockableShips = true
 	promises:add(world.sendEntityMessage("frackinshiphandler", "checkUnlockableShipDisabled"), function(results)
@@ -54,7 +54,7 @@ function init()
 			end
 		end
 	end)
-
+	
 	ship.notInitial = config.getParameter("notInitial")
 	ship.shipResetConfirmationDialogs = ship.miscConfig.shipResetConfirmationDialogs
 end
@@ -148,7 +148,7 @@ function generateShipLists()
 				elseif data.raceBlacklist and data.raceBlacklist[playerRace]  and not data.raceWhitelist then
 					ignoreShip = true
 				end
-
+				
 				if addShip and not ignoreShip then
 					data.id = id
 					if type(data.ship) == "table" then
@@ -205,7 +205,7 @@ function update(dt)
 			widget.setButtonEnabled("showCrew", true)
 		end
 	end
-
+	
 	-- Scan lines animation
 	if sailImage.scanlines.updateTime <= 0 then
 		sailImage.scanlines.currentFrame = updateFrame(sailImage.scanlines)
@@ -213,7 +213,7 @@ function update(dt)
 	else
 		sailImage.scanlines.updateTime = sailImage.scanlines.updateTime - dt
 	end
-
+	
 	-- Static animation
 	if sailImage.static.updateTime <= 0 then
 		sailImage.static.currentFrame = updateFrame(sailImage.static)
@@ -221,7 +221,7 @@ function update(dt)
 	else
 		sailImage.static.updateTime = sailImage.static.updateTime - dt
 	end
-
+	
 	updateAiImage()
 end
 
@@ -261,7 +261,7 @@ function changeState(newState)
 		-- to allow gsubing without changing the original value
 		local text = state.text
 		local path = state.path
-
+		
 		-- State specific state change stuff
 		if newState == "frackinShipChosen" then
 			if ship.notInitial then
@@ -322,7 +322,7 @@ function changeState(newState)
 				end
 			end)
 		end
-
+		
 		if path then
 			widget.setText("path", path)
 		end

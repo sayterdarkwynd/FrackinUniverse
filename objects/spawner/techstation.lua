@@ -34,7 +34,14 @@ function onInteraction()
     sayNext()
     return nil
   else
-    return config.getParameter("interactAction")
+    if world.getProperty("ship.level", 1) == 0 and not world.getProperty("fu_byos") then
+	  local miscShipConfig = root.assetJson("/frackinship/configs/misc.config")
+	  local interface = root.assetJson(miscShipConfig.shipSelctionInterface)
+	  interface = util.mergeTable(interface, miscShipConfig.shipResetSelectionInterfaceData or {})
+	  return {"ScriptPane", interface}
+	else
+	  return {config.getParameter("interactAction"), config.getParameter("interactData")}
+    end
   end
 end
 
