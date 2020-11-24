@@ -18,6 +18,7 @@ end
 function update()
 	if self.placingShip  and world.dungeonId(entity.position()) == self.shipDungeonId then
 		world.setProperty("fu_byos", true)
+		world.setProperty("fuChosenShip", false)
 		racialiseShip()
 		local players = world.players()
 		for _, player in ipairs (players) do

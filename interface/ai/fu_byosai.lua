@@ -54,6 +54,9 @@ function init()
 			end
 		end
 	end)
+	
+	ship.notInitial = config.getParameter("notInitial")
+	ship.shipResetConfirmationDialogs = ship.miscConfig.shipResetConfirmationDialogs
 end
 
 function generateShipLists()
@@ -261,8 +264,21 @@ function changeState(newState)
 		
 		-- State specific state change stuff
 		if newState == "frackinShipChosen" then
-			createShip()
-			changeState("shipChosen")
+			if ship.notInitial then
+				promises:add(player.confirm(ship.shipResetConfirmationDialogs.skipRepairs), function (choice)
+					if state.state == "frackinShipChosen" then
+						if choice then
+							createShip()
+							changeState("shipChosen")
+						else
+							changeState(state.previousState)
+						end
+					end
+				end)
+			else
+				createShip()
+				changeState("shipChosen")
+			end
 			return
 		elseif newState == "vanillaShipChosen" then
 			createShip(true)
@@ -294,6 +310,17 @@ function changeState(newState)
 				widget.setVisible("preview", true)
 				widget.setImage("preview", ship.selectedShip.previewImage or "")
 			end
+		elseif newState == "repairsSkipped" then
+			promises:add(player.confirm(ship.shipResetConfirmationDialogs.skipRepairs), function (choice)
+				if state.state == "repairsSkipped" then
+					if choice then
+						world.setProperty("fu_byos", true)
+						pane.dismiss()
+					else
+						changeState(state.previousState)
+					end
+				end
+			end)
 		end
 		
 		if path then
