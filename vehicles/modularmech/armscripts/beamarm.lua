@@ -124,7 +124,9 @@ function BeamArm:fireState()
     beamParams = {}
 
     beamParams.timeToLive =  1
-    if self.basePower == 0.15 then
+    if self.basePower == 0.05 then
+      beamParams.timeToLive =  0.1
+    elseif self.basePower == 0.15 then
       beamParams.timeToLive =  0.1
     elseif (self.basePower) == 1.5 then
       beamParams.timeToLive =  0.22
@@ -140,6 +142,7 @@ function BeamArm:fireState()
 
     beamParams.speed =  120
     beamParams.power =  self.applyBeamDamage
+
     --FU Projectile spawn, to do scaled damage *******************************************************************************
       world.spawnProjectile("fu_genericBlankProjectile", self.firePosition, self.driverId, self.aimVector , false, beamParams)
     -- ***********************************************************************************************************************
