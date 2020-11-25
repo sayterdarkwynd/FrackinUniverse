@@ -68,7 +68,7 @@ function update(dt)
 					break
 				end
 			end
-			if not found then trigger(false)
+			if not found then trigger(false) end
 		else
 			trigger(false)
 		end
