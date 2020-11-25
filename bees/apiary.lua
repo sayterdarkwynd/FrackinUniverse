@@ -1047,11 +1047,6 @@ function getBiomeFavor(name)
 	-- That feeling when no enums/switch case
 	local favor = beeData.biomeLikeness[name][biome] or 2 --default is "liked" with no bonus to production
 
-	if favor == 0 then return -1 end -- deadly - halts production
-	if favor == 1 then return beeData.biomeDisliked end
-	if favor == 2 then return beeData.biomeLiked end
-	if favor == 3 then return beeData.biomeFavorite end
-
 	--frame immunity to biomes
 	if frameBonuses.radResistance then
 		if (biome == "alien") or (biome == "jungle") or (biome == "barren") or (biome == "barren2") or (biome == "barren3") or (biome == "chromatic") or (biome == "irradiated") or (biome == "metallicmoon") then
@@ -1079,6 +1074,10 @@ function getBiomeFavor(name)
 		end
 	end
 
+	if favor == 0 then return -1 end -- deadly - halts production
+	if favor == 1 then return beeData.biomeDisliked end
+	if favor == 2 then return beeData.biomeLiked end
+	if favor == 3 then return beeData.biomeFavorite end
 end
 
 -- Used to handled animation. Base = the apiary itself, bees = the bees flying around, loading = loading sign
