@@ -59,7 +59,7 @@ function update(dt)
     if self.thornsTimer <= 0 then
       local thornCount
       local visualInterval = self.visualDuration / self.visualProjectileCount
-      
+
       if not self.visualDuration or self.visualDuration <= 0 then
         thornCount = self.visualProjectileCount
       else
@@ -89,7 +89,7 @@ function spawnVisualThorns(count)
 
     local position = mcontroller.position()
     local visualConfig = {
-      power = 0, 
+      power = 0,
       timeToLive = self.visualProjectileTime,
       speed = self.visualProjectileSpeed,
       physics = "default"

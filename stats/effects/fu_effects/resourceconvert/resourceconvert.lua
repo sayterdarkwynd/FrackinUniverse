@@ -2,15 +2,15 @@
 function init()
 	resource1=config.getParameter("resource1","health")--the one to convert to
 	resource2=config.getParameter("resource2","food")--the one to convert from
-	
+
 	efficient=config.getParameter("efficient",true)--efficient means it will not waste any resource.
 	wasteful=config.getParameter("wasteful",false)--if this is true, efficient is ignored. will continually drain regardless.
 	lethal=config.getParameter("lethal",false)--if this is true, efficient doesn't matter nor does wasteful. when the resource runs dry, it drains instead of restores.
-	
+
 	ratio = config.getParameter("ratio", 1.0)--resource2 per resource1 (both percentages)
 	flat = config.getParameter("flat",false)--healPercent is per second instead of over the duration if this is false
 	self.healingRate = config.getParameter("healPercent", 0)
-	
+
 	if (not flat) and effect.duration() and (effect.duration()>0) then
 		self.healingRate=self.healingRate / effect.duration()
 	end

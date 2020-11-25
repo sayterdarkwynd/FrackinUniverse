@@ -42,7 +42,7 @@ end
 function BeamFire:fire()
 
   self.weapon:setStance(self.stances.fire)
-  
+
   animator.playSound("fireStart")
   animator.playSound("fireLoop", -1)
 
@@ -64,11 +64,11 @@ function BeamFire:fire()
       --world.spawnProjectile("basicminerbeam", beamEnd, endPos, {0, 0}, false)
       self.beamGraphic = config.getParameter("beamId","basicminerbeam")
       world.spawnProjectile(self.beamGraphic, beamEnd, endPos, {0, 0}, false)
-      
+
       if self.impactSoundTimer == 0 then
         animator.setSoundPosition("beamImpact", {beamLength, 0})
         animator.playSound("beamImpact")
-        self.impactSoundTimer = self.fireTime       
+        self.impactSoundTimer = self.fireTime
       end
     else
       animator.setParticleEmitterActive("beamCollision", false)

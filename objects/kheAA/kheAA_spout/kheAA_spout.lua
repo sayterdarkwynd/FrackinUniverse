@@ -18,7 +18,7 @@ function update(dt)
 	if deltatime < 0.05 then
 		return
 	end
-	deltatime = 0;	
+	deltatime = 0;
 	liquidLib.doPump()
 end
 

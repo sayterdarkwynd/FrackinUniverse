@@ -5,13 +5,13 @@ require "/items/active/weapons/weapon.lua"
 
 function init()
   self.cursor = config.getParameter("cursor")
-  
+
   if (self.cursor) then
     activeItem.setCursor(self.cursor)
   else
     activeItem.setCursor("/cursors/reticle0.cursor")
   end
-  
+
   animator.setGlobalTag("paletteSwaps", config.getParameter("paletteSwaps", ""))
 
   self.weapon = Weapon:new()

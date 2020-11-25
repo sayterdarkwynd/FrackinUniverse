@@ -34,7 +34,7 @@ end
 function checkWeapons()
 	local weaponSword=weaponCheck({"shortsword","longsword","rapier","katana"})
 	local weaponShield=weaponCheck({"shield"})
-	
+
 	if weaponSword["either"] and weaponShield["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

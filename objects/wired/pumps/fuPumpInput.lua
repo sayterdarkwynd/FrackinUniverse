@@ -26,7 +26,7 @@ function setCurrentOutput()
     if object.isOutputNodeConnected(0) then
         local outputId,isPressure =  locatePump(object.getOutputNodeIds(0))
         local var -- set to null
-		
+
         if outputId then
             self.outputLocation = world.entityPosition(outputId)
             --self.outputProtected = world.isTileProtected(self.outputLocation)
@@ -35,7 +35,7 @@ function setCurrentOutput()
 			return true
 		end
 	end
-	
+
 	self.liquidStandard=false
 	self.liquidPressurized=false
 	self.outputLocation=nil
@@ -45,11 +45,11 @@ end
 
 function moveLiquid(inputLocation,outputLocation)
     local inputLiquid = world.liquidAt(inputLocation)
-	
-    if inputLiquid and inputLiquid[2] > 0.1 then  
+
+    if inputLiquid and inputLiquid[2] > 0.1 then
         local outputLiquid = world.liquidAt(outputLocation)
-		
-        if (self.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inputLiquid[1] and outputLiquid[2] < 1))) then 
+
+        if (self.liquidPressurized or (not outputLiquid or (outputLiquid[1] == inputLiquid[1] and outputLiquid[2] < 1))) then
 
 			local protectCheckOutput=false
 			if world.isTileProtected(self.outputLocation) then
@@ -62,14 +62,14 @@ function moveLiquid(inputLocation,outputLocation)
 			else
 				destroyed=world.destroyLiquid(inputLocation)
 			end
-			
+
 			if destroyed then
 				world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
            end
-            if protectCheckOutput then 
-				world.setTileProtection(world.dungeonId(self.outputLocation), true) 
+            if protectCheckOutput then
+				world.setTileProtection(world.dungeonId(self.outputLocation), true)
             end
-            
+
             return true
         end
 
@@ -81,7 +81,7 @@ function onInputNodeChange(args)
 	storage.currentState = setCurrentOutput() and (not object.isInputNodeConnected(0) or object.getInputNodeLevel(0))
 end
 
-function onNodeConnectionChange() 
+function onNodeConnectionChange()
 	storage.currentState = setCurrentOutput() and (not object.isInputNodeConnected(0) or object.getInputNodeLevel(0))
 end
 
@@ -96,7 +96,7 @@ function update(dt)
 
 	if not self.timer2 or self.timer2 <= 0 then
 		local hasMovedLiquid = false
-		
+
 		if storage.currentState then
 			if self.liquidStandard or self.liquidPressurized then
 				local buffer=world.objectAt(self.outputLocation)

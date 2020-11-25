@@ -13,10 +13,10 @@ end
 
 function FlipSlash:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-  
+
   if mcontroller.onGround() or mcontroller.liquidMovement() or mcontroller.zeroG() then
 	self.wasOnGround = true
-  end  
+  end
 
   if self.cooldownTimer > 0 and not (self.cooldownOnGroundOnly and not self.wasOnGround) then
     self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
@@ -75,7 +75,7 @@ function FlipSlash:flip()
 
     coroutine.yield()
   end
-  
+
   if self.stopAfterFlip then
     local movementParams = mcontroller.baseParameters()
     local currentVelocity = mcontroller.velocity()
@@ -92,7 +92,7 @@ function FlipSlash:flip()
   animator.setAnimationState("dashing", "off")
   animator.setParticleEmitterActive("dashParticles", false)
   self.wasOnGround = false
-  
+
   mcontroller.setRotation(0)
   self.cooldownTimer = self.cooldownTime
   status.removeEphemeralEffect("invulnerable")

@@ -30,8 +30,8 @@ function updateJumpModifier()
         and not mcontroller.groundMovement() then
         self.applyJumpModifier = true
     end
-    if self.applyJumpModifier then 
-      mcontroller.controlModifiers({airJumpModifier = self.multiJumpModifier * self.jumpBonus}) 
+    if self.applyJumpModifier then
+      mcontroller.controlModifiers({airJumpModifier = self.multiJumpModifier * self.jumpBonus})
     end
   end
 end

@@ -24,7 +24,7 @@ local mouthful = world.liquidAt(mouthposition)
 	    inWater = 1
 	else
 	  isDry()
-        end 
+        end
 end
 
 function uninit()

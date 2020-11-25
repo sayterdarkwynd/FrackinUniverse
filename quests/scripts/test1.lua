@@ -5,13 +5,13 @@ require "/quests/scripts/questutil.lua"
 
 function init()
   setPortraits()
-  
+
   storage.complete = storage.complete or false
 
   self.compassUpdate = config.getParameter("compassUpdate", 0.5)
   self.wagnerUid = config.getParameter("wagnerUid")
   self.repairQuest = config.getParameter("repairQuest")
-   
+
   storage.stage = storage.stage or 1
   self.stages = {
     findWagner,

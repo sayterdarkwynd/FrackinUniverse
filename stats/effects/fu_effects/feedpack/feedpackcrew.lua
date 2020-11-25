@@ -1,4 +1,4 @@
-function init() 
+function init()
 	--[[effect.addStatModifierGroup({
 		{stat = "foodDelta", baseMultiplier = config.getParameter("regenAmount", 0.09)}
 	})]]
@@ -10,7 +10,7 @@ function init()
 	groundOnly=config.getParameter("groundOnly")
 	if status.isResource("food") then
 		animator.setParticleEmitterOffsetRegion("feed", mcontroller.boundBox())
-		animator.setParticleEmitterActive("feed", config.getParameter("particles", true)) 
+		animator.setParticleEmitterActive("feed", config.getParameter("particles", true))
 	end
 
 end
@@ -23,7 +23,7 @@ function update(dt)
 	if status.isResource("food") then
 		if self.timer == 0 then
 			status.modifyResource("food", self.regenAmount)
-			self.timer = self.timerbase     
+			self.timer = self.timerbase
 		end
 		self.timer = self.timer - dt
 	end

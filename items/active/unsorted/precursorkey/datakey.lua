@@ -19,29 +19,29 @@ function update(dt, fireMode, shiftHeld)
 
 	local aimPos = activeItem.ownerAimPosition()
 	local eList = world.entityQuery(aimPos,1/16) or {}
-	
+
 	local target
 	local targetPositions={}
-	
+
 	for _,v in pairs(eList) do
 		if world.getObjectParameter(v,"acceptsprecursorkey") then
 			--sb.logInfo("target: %s",v)
 			targetPositions[v]={spaces=poly.boundBox(world.objectSpaces(v)),pos=world.entityPosition(v)}
 		end
 	end
-	
+
 	eList=targetPositions
-	
+
 	for target,data in pairs(eList) do
 		local size=rect.size(data.spaces)
 		local center={(size[1]+1)/2.0,(size[2]+1)/2.0}
 		local centerpos=vec2.add(data.pos,center)
 		targetPositions[target]={centerpos=centerpos}
 	end
-	
+
 	local nearestID=nil
 	local nearestDistance=-1
-	
+
 	--local wSize=world.size()
 	for target,data in pairs(targetPositions) do
 		local dist=vec2.mag(world.distance(data.centerpos,aimPos))
@@ -53,7 +53,7 @@ function update(dt, fireMode, shiftHeld)
 			nearestID=target
 		end
 	end
-	
+
 	target=nearestID
 	local rangecheck = world.magnitude(mcontroller.position(), aimPos) <= self.maxRange and not world.lineTileCollision(vec2.add(mcontroller.position(), activeItem.handPosition(self.baseOffset)), aimPos)
 	local firing=(fireMode=="primary" or fireMode=="alt")
@@ -67,14 +67,14 @@ function update(dt, fireMode, shiftHeld)
 	else
 		activeItem.setCursor("/cursors/reticle0.cursor")
 	end
-	
+
 	if self.cooldownTimer == 0 then
 		if rangecheck and target then
 			if firing then
 				playSound("fire")
 				self.cooldownTimer = self.cooldownTime
-				
-				
+
+
 				world.sendEntityMessage(target,"precursorkey"..fireMode)
 			end
 		else

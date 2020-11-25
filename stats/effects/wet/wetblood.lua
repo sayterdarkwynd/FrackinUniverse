@@ -5,7 +5,7 @@ function init()
   else
     animator.setParticleEmitterActive("dripsblood", false)
   end
-  
+
   effect.setParentDirectives("fade=ff0072=0.1")
 end
 
@@ -18,5 +18,5 @@ function update(dt)
   mcontroller.controlModifiers({
       runModifier = 0.97,
       jumpModifier = 0.97
-  })   
+  })
 end

@@ -11,7 +11,7 @@ function update(dt, fireMode, shiftHeld, moves)
   self.aimAngle, self.facingDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
   activeItem.setFacingDirection(self.facingDirection)
   updateAim()
- 
+
   if fireMode == "primary" and self.previousFireMode ~= "primary" then
     if self.timer == 3 then
       self.active = not self.active
@@ -23,12 +23,12 @@ function update(dt, fireMode, shiftHeld, moves)
       status.addEphemeralEffect("ghostburst", math.huge)
       self.lastFireMode = fireMode
       self.timer= self.timer - dt
-    else    
+    else
       self.timer= 3
       self.lastFireMode = fireMode
     end
   end
-    
+
 end
 
 function updateAim()
@@ -41,6 +41,6 @@ end
 
 function uninit()
   animator.setParticleEmitterActive("activatedLight", false)
-  status.removeEphemeralEffect("erchiusimmunity")  
-  status.removeEphemeralEffect("ghostburst") 
+  status.removeEphemeralEffect("erchiusimmunity")
+  status.removeEphemeralEffect("ghostburst")
 end

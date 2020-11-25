@@ -30,7 +30,7 @@ end
 
 
 function update(dt)
-    
+
   if self.triggerTimer > 0 then
     self.triggerTimer = self.triggerTimer - dt
   elseif self.triggerTimer <= 0 then

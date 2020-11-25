@@ -9,7 +9,7 @@ function activate(fireMode, shiftHeld)
 		activeItem.interact("ScriptPane", "/zb/questList/questList.config")
 		animator.playSound("activate2")
     end
-    
+
 end
 
 

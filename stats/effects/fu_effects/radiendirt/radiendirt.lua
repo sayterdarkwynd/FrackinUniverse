@@ -12,7 +12,7 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
-  
+
   if self.frEnabled and (self.species == "radien") then
     status.addEphemeralEffect("booze3", 240, entity.id())
     status.addEphemeralEffect("slow", 240, entity.id())
@@ -21,5 +21,5 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end

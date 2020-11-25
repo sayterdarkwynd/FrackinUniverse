@@ -2,7 +2,7 @@ function init()
   script.setUpdateDelta(3)
   rescuePosition = mcontroller.position()
   self.randVal = math.random(1,24)
-  world.spawnItem("fumadnessresource",entity.position(),self.randVal)  
+  world.spawnItem("fumadnessresource",entity.position(),self.randVal)
 end
 
 function update(dt)
@@ -15,13 +15,13 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end
 
 
 
 -- Dumps value as a string
--- 
+--
 -- Basic usage: dump(value)
 -- e.g. sb.logInfo(dump(_ENV))
 --

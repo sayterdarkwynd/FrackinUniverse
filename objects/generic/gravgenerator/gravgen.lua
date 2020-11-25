@@ -15,5 +15,5 @@ function update(dt)
 		if self.effect then
 			effectUtil.effectAllInRange(self.effect,self.effectRange,3)
 		end
-	end	
+	end
 end

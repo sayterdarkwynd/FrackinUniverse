@@ -2,7 +2,7 @@ function init()
 	message.setHandler('getStorage', getStorage)
 	message.setHandler('setStorage', setStorage)
 	message.setHandler('setInteractable', setInteractable)
-	
+
 	object.setInteractive(true)
 end
 

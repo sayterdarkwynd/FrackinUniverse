@@ -34,7 +34,7 @@ function activateVisualEffects()
 		world.sendEntityMessage(entity.id(),"fu_specialAnimator.spawnParticle",particleConfig)
 	else
 		--animator.setParticleEmitterActive("smoke", false)
-	end	
+	end
 end
 
 function getLight()

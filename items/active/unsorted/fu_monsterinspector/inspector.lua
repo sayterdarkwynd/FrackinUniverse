@@ -18,7 +18,7 @@ function update(dt, fireMode, shiftHeld)
 
 	local position = activeItem.ownerAimPosition()
 	local monsterList = world.monsterQuery(position,1) or {}
-	
+
 	local target = nil
 	for _,v in pairs(monsterList) do
 		target=v
@@ -36,18 +36,18 @@ function update(dt, fireMode, shiftHeld)
 	else
 		activeItem.setCursor("/cursors/reticle0.cursor")
 	end
-	
+
 	if self.cooldownTimer == 0 then
 		if rangecheck and target then
 			if firing then
 				playSound("fire")
 				self.cooldownTimer = self.cooldownTime
-				
+
 				local monsterParams=root.monsterParameters(world.monsterType(target))
 				local monsterName=world.entityName(target)
 				local monsterDesc=world.entityDescription(target)
 				local message="^yellow;"..(monsterName or "???") .."^reset;\n".. (monsterDesc or "")
-				
+
 				if monsterParams.capturable then
 					if monsterParams.relocatable then
 						message=message.."\n^green;Capturable^reset;, ^green;Relocatable^reset;."
@@ -59,7 +59,7 @@ function update(dt, fireMode, shiftHeld)
 						message=message.."\n^green;Relocatable^reset;."
 					end
 				end
-				
+
 				world.spawnStagehand(position, "fugenericmonstersaystagehand", {messageData={monsterId=target,message=message}})
 			end
 		else

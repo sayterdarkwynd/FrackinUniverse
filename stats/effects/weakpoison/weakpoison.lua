@@ -4,10 +4,10 @@ function init()
 	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	if self.frEnabled and (self.species == "fragmentedruin") then
 		animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
-		animator.setParticleEmitterActive("healing", config.getParameter("particles", true))  
+		animator.setParticleEmitterActive("healing", config.getParameter("particles", true))
 	else
 		animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
-		animator.setParticleEmitterActive("drips", true)  
+		animator.setParticleEmitterActive("drips", true)
 	end
 
 	script.setUpdateDelta(5)

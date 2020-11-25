@@ -1,11 +1,11 @@
 function init()
   self.drainArea = object.spaces()
   object.setInteractive(true)
-  
+
   setDirection(storage.doorDirection or object.direction())
 
   self.sensorConfig = config.getParameter("sensorConfig")
-  
+
   self.openDuration = 2
   self.timer = 0
   self.wiredOpen = false
@@ -41,7 +41,7 @@ function update(dt)
   else
     self.timer = self.timer - dt
   end
-  
+
 end
 
 function onNodeConnectionChange(args)

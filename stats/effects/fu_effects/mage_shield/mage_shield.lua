@@ -6,29 +6,29 @@ function init()
 	elseif status.isResource("shieldHealth") then
 		self.resource="shieldHealth"
 	else
-		effectHandler=effect.addStatModifierGroup({{stat = "physicalResistance", amount = 1 },{stat = "electricResistance", amount = 0.5 },{stat = "poisonResistance", amount = 1 },{stat = "iceResistance", amount = 0.7 },{stat = "fireResistance", amount = 0.7 },{stat = "radioactiveResistance", amount = 0.6 },{stat = "shadowResistance", amount = 0.7 },{stat = "cosmicResistance", amount = 0.7 }}) 
+		effectHandler=effect.addStatModifierGroup({{stat = "physicalResistance", amount = 1 },{stat = "electricResistance", amount = 0.5 },{stat = "poisonResistance", amount = 1 },{stat = "iceResistance", amount = 0.7 },{stat = "fireResistance", amount = 0.7 },{stat = "radioactiveResistance", amount = 0.6 },{stat = "shadowResistance", amount = 0.7 },{stat = "cosmicResistance", amount = 0.7 }})
 	end
 	animator.setGlobalTag("effectDirectives","?multiply=FFFFFF00")
 	animator.setAnimationState("aura", "windup")
 	if self.resource then
 		self.damageListener = damageListener("damageTaken", checkDamage)
-		
+
 		self.shieldHealth = config.getParameter("shieldHealth")
 		self.usePercentHealth = config.getParameter("shieldUsesPercentHealth")
 		if self.usePercentHealth then
 			self.shieldHealth=status.stat("maxHealth")*self.shieldHealth
 		end
-		
+
 		status.setResource(self.resource, self.shieldHealth)
 		self.currentDA = 0
 		self.active = true
 		self.broke = false
 
-		self.maxShieldHealth = self.shieldHealth 
+		self.maxShieldHealth = self.shieldHealth
 		self.shieldHealthPercent = self.shieldHealth / self.maxShieldHealth
 		if self.shieldHealthPercent > 1.0 then
 			self.shieldHealthPercent = 1
-		end	
+		end
 	else
 		self.legacy=true
 		self.damageListener = damageListener("damageTaken", checkDamageLegacy)
@@ -58,12 +58,12 @@ end
 
 function uninit()
 	animator.setAnimationState("aura", "off")
-	if self.legacy then 
+	if self.legacy then
 		effect.removeStatModifierGroup(effectHandler)
 		return
 	end
 	if not self.broke then
-		status.modifyResource(self.resource, - self.shieldHealth)	
+		status.modifyResource(self.resource, - self.shieldHealth)
 	end
 end
 

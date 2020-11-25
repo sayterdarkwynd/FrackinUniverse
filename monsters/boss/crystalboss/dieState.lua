@@ -3,7 +3,7 @@ dieState = {}
 
 function dieState.enterWith(params)
   if not params.die then return nil end
-  
+
   rangedAttack.setConfig(config.getParameter("projectiles.deathexplosion.type"), config.getParameter("projectiles.deathexplosion.config"), 0.2)
 
   return {
@@ -18,10 +18,10 @@ function dieState.enteringState(stateData)
   world.objectQuery(mcontroller.position(), 50, { name = "lunarbaselaser", callScript = "openLunarBaseDoor" })
 
   animator.setAnimationState("crystalhum", "off")
-  
+
   animator.setAnimationState("shell", "stage"..currentPhase())
   animator.setAnimationState("eye", "hurt")
-  
+
   animator.playSound("shatter")
   animator.playSound("death")
 
@@ -33,7 +33,7 @@ function dieState.enteringState(stateData)
     local projectile = "crystalshard"..math.random(1,6)
     world.spawnProjectile(projectile, spawnPosition, entity.id(), aimVector, false, {
       speed = 10 + math.random() * 30,
-      power = 0, 
+      power = 0,
       timeToLive = 3 + math.random() * 3
     })
   end
@@ -64,7 +64,7 @@ function dieState.update(dt, stateData)
       local speed = math.random() * 60
       world.spawnProjectile(projectile, spawnPosition, entity.id(), aimVector, false, {
         speed = speed,
-        power = 0, 
+        power = 0,
         timeToLive = 3 + math.random() * 3
       })
     end
@@ -81,6 +81,6 @@ function dieState.angleFactorFromTime(timer, interval)
   if modTime < interval / 2 then
     return modTime / (interval / 2)
   else
-    return (interval - modTime) / (interval / 2) 
+    return (interval - modTime) / (interval / 2)
   end
 end

@@ -19,7 +19,7 @@ fuInsanityWeather = fuWeatherBase:new({})
 				self.parent:method()
 		The latter will pass the parent class as the "self" parameter, preventing
 		any attributes overwritten by the child from being used. ]]--
-		
+
 function fuInsanityWeather.removeEffect(self)
 	self:deactivateVisualEffects()
 	self:removeDebuffs()

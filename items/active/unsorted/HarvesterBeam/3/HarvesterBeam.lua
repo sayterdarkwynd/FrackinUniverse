@@ -40,7 +40,7 @@ function update(dt, fireMode, shiftHeld)
   if fireMode == "primary"
     and self.cooldownTimer == 0 then
     fireBeam(true)
-  elseif fireMode == "alt" 
+  elseif fireMode == "alt"
 	and self.cooldownTimer == 0 then
 	fireBeam(false)
   end
@@ -108,23 +108,23 @@ function beamgunUpdate(dt)
 		world.sendEntityMessage(self.scriptBug, "keepAlive")
 		--world.callScriptedEntity(self.scriptBug, "keepAlive")
 	end
-	
+
 	local newItems = world.getProperty("HarvesterBeamgunItemDropList") or {}
 	world.setProperty("HarvesterBeamgunItemDropList", nil)
 	for id,drop in pairs(newItems) do
 		--sb.logInfo("New Drop: %s, %s", id, drop)
 		pendingDrops[id] = drop
 	end
-	
+
 	for id,drop in pairs(pendingDrops) do
-		if drop.cd <= 0 then 
+		if drop.cd <= 0 then
 			world.spawnItem(drop.data.name, mcontroller.position(), drop.data.count, drop.data.parameters)
 			pendingDrops[id] = nil
 		else
 			pendingDrops[id] = {["data"] = drop.data, ["cd"] = drop.cd - dt}
 		end
 	end
-	
+
 	if harvestBlacklist ~= {} then
 		for i,j in pairs(harvestBlacklist) do
 			if j[1] < 5 then
@@ -223,7 +223,7 @@ function fireBeam(primary)
 					end
 				elseif world.entityType(j) == "plant" and harvestBlacklist[j] == nil then
 					local shouldDamage = false
-					local subCheck = world.entityQuery(vec2.add(world.entityPosition(j),{0,4}), 0.4) 
+					local subCheck = world.entityQuery(vec2.add(world.entityPosition(j),{0,4}), 0.4)
 					for _,id in pairs(subCheck) do
 						if id == j then
 							shouldDamage = true
@@ -231,7 +231,7 @@ function fireBeam(primary)
 						end
 					end
 					if not shouldDamage then
-						subCheck = world.entityQuery(vec2.add(world.entityPosition(j),{0,-2}), 0.4) 
+						subCheck = world.entityQuery(vec2.add(world.entityPosition(j),{0,-2}), 0.4)
 						for _,id in pairs(subCheck) do
 							if id == j then
 								shouldDamage = true
@@ -245,7 +245,7 @@ function fireBeam(primary)
 					else
 						harvestBlacklist[j] = {0, world.entityPosition(j), plantName, false}
 					end
-				end    
+				end
 		end
 	else
 		addLine("till", {armPos, toPointer})
@@ -261,7 +261,7 @@ function fireBeam(primary)
                                                     world.placeMod(modBlock, "foreground", specials[world.material(modBlock, "foreground")], nil, true)
                                                 else
                                                     world.placeMod(modBlock, "foreground", "tilled", nil, true)
-                                                end                                                
+                                                end
 						animator.playSound("till")
 						world.damageTiles({blockCheck[1]}, "background", vec2.add(blockCheck[1], {0,1}), "plantish", 1, 1)
 					end
@@ -277,7 +277,7 @@ function lookForDrops(pos, name, radius)
 	world.sendEntityMessage(self.scriptBug, "takeItems", pos, radius, self.owner, name)
 	--world.callScriptedEntity(self.scriptBug, "takeItems", pos, radius, self.owner, name)
 end
- 
+
 function canRemoveMod(modname)
 	if removableMods[tostring(modname)] == true or string.find(modname, "grass") ~= nil or string.find(modname, "Grass") ~= nil then
 		return true

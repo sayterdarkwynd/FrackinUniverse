@@ -58,6 +58,6 @@ function cancelEffects()
     status.clearPersistentEffects("axebonus")
     status.clearPersistentEffects("hammerbonus")
 	status.clearPersistentEffects("multiplierbonus")
-	status.clearPersistentEffects("dodgebonus")	
-	self.rapierTimerBonus = 0	
+	status.clearPersistentEffects("dodgebonus")
+	self.rapierTimerBonus = 0
 end

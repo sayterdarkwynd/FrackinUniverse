@@ -6,7 +6,7 @@ local Pet = Pet or {}
 function init()
 	crewOverflowOldInit()
 	message.setHandler("returnStoredCompanions", function() return fuStoredCrew end)
-	message.setHandler("dismissStoredCompanion", function(_, _, podUuid) 
+	message.setHandler("dismissStoredCompanion", function(_, _, podUuid)
 		for num, data in pairs (fuStoredCrew) do
 			if data.podUuid == podUuid then
 				table.remove(fuStoredCrew, num)
@@ -14,23 +14,23 @@ function init()
 			end
 		end
 	end)
-	message.setHandler("openCrewDeedInterface", function(_, _, args) 
+	message.setHandler("openCrewDeedInterface", function(_, _, args)
 		if world.entityExists(args.objectId) and player.worldId() == player.ownShipWorldId() then
 			player.interact("ShowPopup", {message = "Room is valid. Increasing max crew"}, args.objectId)
 		else
 			player.interact("ShowPopup", {message = args.notOwnShipMessage}, args.objectId)
 		end
 	end)
-  
-	recruitSpawner.crewLimit = function() 
+
+	recruitSpawner.crewLimit = function()
 		if player.shipUpgrades().shipLevel == 0 then
 			crewLimit = status.statusProperty("byosCrewSize", 0)
 		else
 			crewLimit = (player.shipUpgrades().crewSize or 0) + status.statusProperty("byosCrewSize", 0)
 		end
-		return crewLimit 
+		return crewLimit
 	end
-  
+
 	fuStoredCrew = {}
 	for _,value in pairs(status.statusProperty("fuStoredCrew", {})) do
 		if value then
@@ -42,8 +42,8 @@ end
 
 function update(dt)
 	crewOverflowOldUpdate(dt)
-	
-	if player.worldId() == player.ownShipWorldId() then 
+
+	if player.worldId() == player.ownShipWorldId() then
 		if fuFirstCrewCheckTimer <= 0 then	--To hopefully fix the issue where crew members are stored when you first join the world
 			fuCrewMembers = playerCompanions.getCompanions("crew")
 			fuCrewLimit = recruitSpawner.crewLimit()

@@ -20,7 +20,7 @@ function update(dt)
 	local vel=vec2.mag(mcontroller.velocity())/10.0
 	cost=cost+vel
 	cost=dt*((status.resourceMax("energy")*0.01*cost)+cost)
-	
+
 	if status.overConsumeResource("energy",cost) then
 		if status.resourcePositive("energyRegenBlock") then
 			self.damageBonus=self.damageBonus*(1+(0.08*dt))

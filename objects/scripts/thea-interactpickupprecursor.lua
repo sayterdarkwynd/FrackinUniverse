@@ -7,7 +7,7 @@ function init()
     animator.setAnimationState("interactiveObject", "empty")
 	object.setInteractive(false)
   end
-  
+
   self.spawnableItem = config.getParameter("spawnableItem")
 end
 
@@ -16,7 +16,7 @@ function open()
   world.spawnItem(self.spawnableItem, entity.position(), 1)
   storage.itemHasSpawned = true
   object.setInteractive(false)
-  
+
   --Make sure that, if the object is broken after having been collected, nothing drops
   object.setConfigParameter("breakDropPool", "empty")
   player.enableTech("microsphereprecursor")
@@ -28,6 +28,6 @@ function onInteraction(args)
   end
 end
 
-function update(dt) 
-  
+function update(dt)
+
 end

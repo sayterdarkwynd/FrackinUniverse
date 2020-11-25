@@ -6,7 +6,7 @@ function craftingRecipe(items)
   --if not item or item.name ~= "botpod" or item.name ~= "elderpod" or item.name ~= "filledcapturepod" then return end
   self.acceptedPods = config.getParameter("acceptedPods")
   if not item or not self.acceptedPods[item.name] then return end
-  
+
   local healedParams = copy(item.parameters) or {}
   jremove(healedParams, "inventoryIcon")
   jremove(healedParams, "currentPets")

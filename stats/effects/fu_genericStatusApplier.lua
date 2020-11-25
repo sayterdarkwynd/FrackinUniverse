@@ -41,7 +41,7 @@ function update(dt)
 			if not statusApplierValues.updateTimer then
 				statusApplierValues.updateTimer=statusApplierValues.updateRate
 			else
-				if statusApplierValues.updateTimer > 0 then 
+				if statusApplierValues.updateTimer > 0 then
 					statusApplierValues.updateTimer=statusApplierValues.updateTimer-dt
 				else
 					for _,effect in pairs(statusApplierValues.update) do

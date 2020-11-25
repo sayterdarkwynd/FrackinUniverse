@@ -10,7 +10,7 @@ armorBonus={{stat="shadowImmunity",amount=1}}
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
-			
+
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
@@ -30,7 +30,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"axe","hammer","scythe"})
-	
+
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

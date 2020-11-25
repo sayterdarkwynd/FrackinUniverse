@@ -29,7 +29,7 @@ function destroy(...)
 		false,
 		self.projectileParameters
   )
-	
+
 	if artemisutility_destroy then
 		artemisutility_destroy(self,...)
 	end

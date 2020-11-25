@@ -24,7 +24,7 @@ end
 function update(dt)
 
 	self.parent = self.parent and self.parent or config.getParameter("parent")
-	
+
 	if not self.angularVelocity then
 	  self.angularVelocity = 0
 	  self.angle = 0
@@ -32,7 +32,7 @@ function update(dt)
 	  self.ballFrames = config.getParameter("frames")
 	  self.ballRadius = config.getParameter("radius")
 	end
-	
+
 	if not self.followRadius then
 	  monster.setDamageBar("none")
 	  self.parentRadius =  config.getParameter("parentRadius",1)
@@ -40,7 +40,7 @@ function update(dt)
 	  self.followRadius =  segmentRadius + self.parentRadius
 	  local movementSettings = config.getParameter("movementSettings")
 	  self.flySpeed = movementSettings.flySpeed
-	end	
+	end
 
 	self.monsterUpdate = self.monsterUpdate and self.monsterUpdate or monsterUpdate
 	self.monsterUpdate(dt)
@@ -56,12 +56,12 @@ function update(dt)
 		else
 		mcontroller.setVelocity(vec2.approach(distance,world.entityPosition(self.parent),self.parentRadius))
 		end
-		
+
 	end
-	
+
   	updateAngularVelocity(dt)
   	updateRotationFrame(dt)
   	self.lastPosition = mcontroller.position()
-	
+
 end
 

@@ -68,7 +68,7 @@ function KunaiBlast:spawnProjectile(angleAdjust)
 	local aimVector = vec2.withAngle(util.toRadians(angleAdjust))
 	aimVector[1] = aimVector[1] * self.weapon.aimDirection
 	world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), aimVector, false, params)
-	
+
 	if animator.hasSound("fireKunai") then
 		animator.playSound("fireKunai")
 	end

@@ -1,7 +1,7 @@
 require "/scripts/messageutil.lua"
 
 function init()
-	
+
 end
 
 

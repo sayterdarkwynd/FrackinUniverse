@@ -15,7 +15,7 @@ armorBonus={
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
-			
+
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
@@ -32,7 +32,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"axe","hammer","mace"})
-	
+
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

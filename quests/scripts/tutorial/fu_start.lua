@@ -90,7 +90,7 @@ function updateStage(dt)
 	elseif storage.missionStage == 6 then
 		player.upgradeShip(config.getParameter("shipUpgrade"))
 			player.startQuest("fu_scienceoutpost") -- make sure they are aware of the Sci Outpost
-			player.playCinematic(config.getParameter("scienceoutpostCinema"))		
+			player.playCinematic(config.getParameter("scienceoutpostCinema"))
 		quest.complete()
 	end
 end
