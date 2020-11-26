@@ -23,7 +23,7 @@ function ExplosiveBurst:update(dt, fireMode, shiftHeld)
     and self.cooldownTimer == 0
     and not status.resourceLocked("energy")
     and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-    
+
     if self.fireType == "auto" and status.overConsumeResource("energy", self:energyPerShot()) then
       self:setState(self.auto)
     elseif self.fireType == "burst" then
@@ -52,7 +52,7 @@ function ExplosiveBurst:muzzleFlash()
     animator.setAnimationState("firing", "fire")
     animator.setLightActive("muzzleFlash", true)
   end
-  
+
   if self.useParticleEmitter == nil or self.useParticleEmitter then
     animator.burstParticleEmitter("altMuzzleFlash", true)
   end

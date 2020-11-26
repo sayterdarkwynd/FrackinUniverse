@@ -56,7 +56,7 @@ end
 function questComplete()
   setPortraits()
   -- new for FU!!!!!!
-  player.giveItem("humanartifactaugment")  
+  player.giveItem("humanartifactaugment")
   questutil.questCompleteActions()
 end
 
@@ -87,7 +87,7 @@ function destroyRuin()
     queryCheckpoints(script.updateDt())
     coroutine.yield()
   end
-  
+
   player.radioMessage("tentaclemission-bossroom")
 
   while storage.stage == 1 do

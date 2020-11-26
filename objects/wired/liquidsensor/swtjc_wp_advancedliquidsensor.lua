@@ -20,15 +20,15 @@ end
 function sampleLiquidId()
   local sample = world.liquidAt(object.position())
   if (sample == nil) then
-    return nil 
+    return nil
   end
   return sample[1]
 end
 
 function predicateLiquidId()
   local predicate = world.containerItemAt(entity.id(), 0)
-  if (predicate == nil) then 
-    return nil 
+  if (predicate == nil) then
+    return nil
   end
   return liquidLib.itemToLiquidId(predicate)
 end
@@ -43,10 +43,10 @@ function update(dt)
 
   local on = isOn()
 
-  if on then 
+  if on then
     object.setOutputNodeLevel(0, true)
     animator.setAnimationState("sensorState", self.defaultOnAnimation)
-  else 
+  else
     object.setOutputNodeLevel(0, false)
     animator.setAnimationState("sensorState", self.defaultOffAnimation)
   end

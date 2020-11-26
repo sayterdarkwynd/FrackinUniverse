@@ -90,7 +90,7 @@ function init()
 
 
   monster.setName("Aberrant Sentry")
-  monster.setDamageBar("special") 
+  monster.setDamageBar("special")
 
   monster.setInteractive(config.getParameter("interactive", false))
 

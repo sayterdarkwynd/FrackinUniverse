@@ -56,10 +56,10 @@ function Uppercut:fire()
   animator.playSound("special")
 
   status.addEphemeralEffect("invulnerable", self.stances.fire.duration + 0.2)
-  
+
     local uppercutPower = { power = 0.25, timeToLive = 0.05, damageSourceKind = default, piercing = true }
-    world.spawnProjectile("uppercutspecial", mcontroller.position(), activeItem.ownerEntityId(), {0, 1}, true, uppercutPower) 
-    
+    world.spawnProjectile("uppercutspecial", mcontroller.position(), activeItem.ownerEntityId(), {0, 1}, true, uppercutPower)
+
   util.wait(self.stances.fire.duration, function()
     local damageArea = partDamageArea("specialswoosh")
     local uppercutPower = { power = 0.25 }
@@ -71,7 +71,7 @@ function Uppercut:fire()
 
   finishFistCombo()
   activeItem.callOtherHandScript("finishFistCombo")
-  
+
 end
 
 function Uppercut:uninit(unloaded)

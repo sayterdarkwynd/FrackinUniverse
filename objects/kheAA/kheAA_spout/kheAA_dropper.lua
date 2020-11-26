@@ -5,7 +5,7 @@ function init()
 end
 
 function update(dt)
-	
+
 	if not deltatime or deltatime>1.0 then
 		transferUtil.loadSelfContainer()
 		if not object.isInputNodeConnected(transferUtil.vars.logicNode) or object.getInputNodeLevel(transferUtil.vars.logicNode) then

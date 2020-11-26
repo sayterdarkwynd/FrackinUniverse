@@ -45,7 +45,7 @@ function update(dt, fireMode, shiftHeld)
 		local isPlayer=player and true or false
 		local ePos
 		if not isPlayer then ePos=world.entityPosition(activeItem.ownerEntityId()) end
-		
+
 		for _,item in pairs(treasure) do
 			if isPlayer then
 				player.giveItem(item)

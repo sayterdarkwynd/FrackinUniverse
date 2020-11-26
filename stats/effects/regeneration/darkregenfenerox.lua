@@ -23,7 +23,7 @@ function nighttimeCheck()
 end
 
 function undergroundCheck()
-	return world.underground(mcontroller.position()) 
+	return world.underground(mcontroller.position())
 end
 
 function update(dt)

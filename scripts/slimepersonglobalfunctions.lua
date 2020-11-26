@@ -1,4 +1,4 @@
--- Usage: hex2rgb("#a85636") result: 
+-- Usage: hex2rgb("#a85636") result:
 function hex2rgb(hex)
     hex = hex:gsub("#","")
 	local rgbValue = tonumber("0x"..hex:sub(1,2)) .. "," .. tonumber("0x"..hex:sub(3,4)) .. "," .. tonumber("0x"..hex:sub(5,6))

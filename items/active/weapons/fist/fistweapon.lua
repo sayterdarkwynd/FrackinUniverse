@@ -118,7 +118,7 @@ function update(dt, fireMode, shiftHeld)
    		self.helper:runScripts("fist-postcombo", self, dt, fireMode, shiftHeld)  -- effect after combo
 	end
 	--*************************************
-    
+
     self.weapon:update(dt, fireMode, shiftHeld)
     updateHand()
 end

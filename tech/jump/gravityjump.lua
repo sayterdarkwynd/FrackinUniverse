@@ -13,14 +13,14 @@ function init()
 	self.flutterFall = config.getParameter("flutterFall")
 	self.flutterTimer = 0
 	self.flutterAble = false
-	
+
 	self.wallSlideParameters = config.getParameter("wallSlideParameters")
 	self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
 	self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime")
 	self.wallGrabFreezeTimer = 0
 	self.wallReleaseTime = config.getParameter("wallReleaseTime")
 	self.wallReleaseTimer = 0
-	
+
 	self.lastJumpKey = false
 
 	buildSensors()
@@ -36,7 +36,7 @@ end
 function update(args)
   applyTechBonus()
 	if not disabled(args) and args.moves["jump"] and canAbility(args) then
-		if not self.doingAbility then 
+		if not self.doingAbility then
 			self.doingAbility = true
 			startAbility(args)
 		end
@@ -45,10 +45,10 @@ function update(args)
 		self.doingAbility = false
 		  animator.stopAllSounds("startDash")
 		  animator.setAnimationState("dashing", "off")
-		  animator.setParticleEmitterActive("dashParticles", false)		
+		  animator.setParticleEmitterActive("dashParticles", false)
 		stopAbility(args)
 	end
-	
+
 	if not disabled(args) and not self.doingAbility then
 		if mcontroller.jumping() then
 			updateJumping(args)
@@ -56,20 +56,20 @@ function update(args)
 		if mcontroller.falling() then
 		  animator.stopAllSounds("startDash")
 		  animator.setAnimationState("dashing", "off")
-		  animator.setParticleEmitterActive("dashParticles", false)		
+		  animator.setParticleEmitterActive("dashParticles", false)
 			updateFalling(args)
 		end
 		if mcontroller.groundMovement() or mcontroller.liquidMovement() then
 		  animator.stopAllSounds("startDash")
 		  animator.setAnimationState("dashing", "off")
-		  animator.setParticleEmitterActive("dashParticles", false)		
+		  animator.setParticleEmitterActive("dashParticles", false)
 			landed(args)
 		end
 	end
-	
+
 	if not disabled(args) then updateAlways(args)
 	end
-	
+
   local jumpActivated = args.moves["jump"] and not self.lastJumpKey
   self.lastJumpKey = args.moves["jump"]
   local lrInput
@@ -126,7 +126,7 @@ end
 function canAbility(args)
 	return not mcontroller.jumping()
 		and not mcontroller.canJump()
-		and args.moves["jump"] 
+		and args.moves["jump"]
 		and ( not ( mcontroller.velocity()[2] > 0 ) or self.doingAbility )
 end
 
@@ -134,7 +134,7 @@ function landed(args)
 	tech.setParentState()
 	if self.doingAbility then
 		self.doingAbility = false
-		stopAbility(args)		
+		stopAbility(args)
 	end
 	self.flutterAble = true
 end
@@ -175,10 +175,10 @@ function updateJumping(args)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
-  
+
 local configBombDrop = { power = 2 }
 world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
-  
+
 	local params = mcontroller.baseParameters()
 	params.airJumpProfile.jumpSpeed = params.airJumpProfile.jumpSpeed * self.jumpSpeedMultiplier
 	mcontroller.controlParameters(params)

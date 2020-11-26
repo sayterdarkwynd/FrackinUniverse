@@ -1,4 +1,4 @@
-function init() 
+function init()
   self.species = world.entitySpecies(entity.id())
   if not self.species == "elduukhar" then
     effect.die()
@@ -8,7 +8,7 @@ function init()
     baseValue = config.getParameter("healthDown",0)*(status.resourceMax("food"))
     self.tickTime = 1.0
     self.tickTimePenalty = 5.0
-    self.tickTimer = self.tickTime 
+    self.tickTimer = self.tickTime
     self.tickTimerPenalty = self.tickTimePenalty
 end
 
@@ -33,10 +33,10 @@ function update(dt)
     baseValue = config.getParameter("healthDown",0)*(status.resourceMax("food"))
     self.tickTimer = self.tickTimer - dt
     self.tickTimerPenalty = self.tickTimerPenalty - dt
-    self.foodValue = status.resource("food")    
+    self.foodValue = status.resource("food")
 end
 
 
 function uninit()
-  
+
 end

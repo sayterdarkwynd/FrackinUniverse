@@ -4,7 +4,7 @@ require '/scripts/fupower.lua'
 function init()
 	power.init()
 	storage.timer = storage.timer or 0
-	
+
 	if storage.active == nil then
 		updateActive()
 	end

@@ -19,7 +19,7 @@ function populateMaterialsList()
         else
             if worldId[1]=="ClientShipWorld" then
                 local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                widget.setText(path .. ".text", "This is a Ship World") 
+                widget.setText(path .. ".text", "This is a Ship World")
                 -- More info about the ship could be added here
             else
                 if worldId[1]=="CelestialWorld" then
@@ -29,51 +29,51 @@ function populateMaterialsList()
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Dungeons:^reset; ")
 
-                    local parameters = celestial.visitableParameters(planet)      
+                    local parameters = celestial.visitableParameters(planet)
                     if (parameters.spaceLayer and parameters.spaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.spaceLayer.dungeons) do
                             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
-                        end    
+                        end
                     end
                     if (parameters.atmosphereLayer and parameters.atmosphereLayer.dungeons) then
                         for _,dungeon in pairs(parameters.atmosphereLayer.dungeons) do
                             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
-                        end    
+                        end
                     end
                     if (parameters.surfaceLayer and parameters.surfaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.surfaceLayer.dungeons) do
                             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
-                        end    
+                        end
                     end
                     if (parameters.subsurfaceLayer and parameters.subsurfaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.subsurfaceLayer.dungeons) do
                             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
-                        end    
+                        end
                     end
                     if (parameters.undergroundLayers) then
                         for _,layer in pairs(parameters.undergroundLayers) do
                             for _,dungeon in pairs(layer.dungeons) do
                                 local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                                 widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
-                            end 
-                        end   
+                            end
+                        end
                     end
                     if (parameters.coreLayer and parameters.coreLayer.dungeons) then
                         for _,dungeon in pairs(parameters.coreLayer.dungeons) do
                             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                             widget.setText(path .. ".text", dungeons[dungeon] or "Unknown["..dungeon.."]")
-                        end    
-                    end                    
+                        end
+                    end
                 else
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "This is a ERROR")
                 end
             end
-        end        
+        end
 end
 
 function string.split(str, pat)

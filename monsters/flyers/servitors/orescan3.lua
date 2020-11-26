@@ -69,7 +69,7 @@ function update(dt)
 	if dt==nil then
 		return
 	end
-	
+
 
 	localAnimator.clearDrawables()
 	if self.pingTimer == 0 and self.cooldownTimer == 0 then
@@ -78,7 +78,7 @@ function update(dt)
 		self.pingLocation=vec2.floor(entity.position())
 	elseif self.pingTimer > 0 then
 		self.pingTimer = math.max(self.pingTimer - dt, 0)
-		
+
 		if self.pingTimer == 0 then
 			self.pingLocation=nil
 		else
@@ -86,9 +86,9 @@ function update(dt)
 			self.pingOuterRadius=radius + self.detectConfig.pingBandWidth
 			self.pingInnerRadius= math.max(radius, 0)
 		end
-		
+
 		if self.pingLocation then
-		
+
 			self.colorCache = {}
 			if self.detectConfig.types then
 				for _,t in pairs(self.detectConfig.types) do
@@ -97,19 +97,19 @@ function update(dt)
 			elseif self.detectConfig.type then
 				self.colorCache[self.detectConfig.type]={}
 			end
-			
+
 			local fadeDistance = self.pingOuterRadius - self.pingInnerRadius
 			local searchRange = math.floor(math.min(self.detectConfig.pingRange, self.pingOuterRadius))
 			local srsq = searchRange ^ 2
 			local irsq = self.pingInnerRadius ^ 2
-			
+
 			for x = -searchRange, searchRange do
 				for y = -searchRange, searchRange do
 					local distSquared = x ^ 2 + y ^ 2
 					if distSquared <= srsq and distSquared >= irsq then
 						local position = {x + self.pingLocation[1], y + self.pingLocation[2]}
 						local cacheKey = position[1]..","..position[2]
-						
+
 						for sType,_ in pairs(self.colorCache) do
 							if not self.colorCache[sType][cacheKey] then
 								if sType == "cave" then
@@ -134,7 +134,7 @@ function update(dt)
 								end
 							end
 						end
-						
+
 						for sType,_ in pairs(self.colorCache) do
 							local color = copy(self.colorCache[sType][cacheKey])
 

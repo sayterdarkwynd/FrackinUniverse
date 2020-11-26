@@ -17,7 +17,7 @@ end]]
 
 function checkFood()
 	if status.isResource("food") then
-		return status.resource("food")		
+		return status.resource("food")
 	else
 		return 15
 	end
@@ -50,37 +50,37 @@ end
 
 function update(args)
         --checkFood()
-        
+
         if mcontroller.facingDirection() == 1 then -- what direction are we facing?
            if args.moves["down"] then -- are we crouching?
-             self.mouthPosition = vec2.add(mcontroller.position(), {1,-0.7})  
+             self.mouthPosition = vec2.add(mcontroller.position(), {1,-0.7})
            else
-             self.mouthPosition = vec2.add(mcontroller.position(), {1,0.15}) 
+             self.mouthPosition = vec2.add(mcontroller.position(), {1,0.15})
            end
-           
+
         else
            if args.moves["down"] then -- are we crouching?
-             self.mouthPosition = vec2.add(mcontroller.position(), {-1,-0.7})  
+             self.mouthPosition = vec2.add(mcontroller.position(), {-1,-0.7})
            else
-             self.mouthPosition = vec2.add(mcontroller.position(), {-1,0.15}) 
-           end          
+             self.mouthPosition = vec2.add(mcontroller.position(), {-1,0.15})
+           end
         end
-        
+
         self.firetimer = math.max(0, self.firetimer - args.dt)
-	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) then 
+	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
 		if checkFood() > 15 then
 		    status.addEphemeralEffects{{effect = "foodcostfire", duration = 0.02}}
 		else
 		    status.overConsumeResource("energy", 0.6)
-		end	
-	   
+		end
+
 	      if self.firetimer == 0 then
 		self.firetimer = 0.1
 		activeFlight()
 	      end
-	    	
+	
 	else
-  	        animator.stopAllSounds("activate")	
+  	        animator.stopAllSounds("activate")
 	end
 end
 

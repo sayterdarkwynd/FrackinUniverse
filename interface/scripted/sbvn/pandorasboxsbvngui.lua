@@ -24,11 +24,11 @@ function update(dt)
       local s, r = coroutine.resume(t)
       return s
     end)
-  
+
   if (not player.primaryHandItem() or player.primaryHandItem().name ~= self.itemName) and (not player.altHandItem() or player.altHandItem().name ~= self.itemName) then
     pane.dismiss()
   end
-  
+
   widget.setVisible("imgContinueHint", (self.scene and self.scene.continue) or #self.transitions > 0)
 end
 
@@ -235,7 +235,7 @@ function setScene(scene, withTransition)
     widget.setText("lblText", scene.text or "")
     widget.setVisible("lblOptions", true)
   end
-  
+
   if scene.music or (self.scene and self.scene.music) then
 	if scene.music and scene.music ~= self.scene.music then
 	  music = {}

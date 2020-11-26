@@ -14,9 +14,9 @@ function update(dt, fireMode, shiftHeld, moves)
       liquidJumpModifier = 0,
       liquidForce = 300,
       liquidImpedance = 0.1
-    })          
+    })
 end
 
 function uninit()
-  status.removeEphemeralEffect("pocketanchorstat")   
+  status.removeEphemeralEffect("pocketanchorstat")
 end

@@ -11,11 +11,11 @@ end
 
 function apply(input)
 	local output = Item.new(input)
-	
+
 	if output.count > 1 then --no reloading stacks of mags with same bullet. Stacks of ANYTHING, for that matter >:T
 		return nil
 	end
-	
+
 	if output:instanceValue("usesAmmo") then --no unloading mags, sadly
 		local extraStorage = output:instanceValue("extraAmmoList") or {}
 		local outputAmmo = output:instanceValue("ammoAmount")
@@ -34,6 +34,6 @@ function apply(input)
 	else
 		return nil
 	end
-	
+
 	return output:descriptor(),1
 end

@@ -11,9 +11,9 @@ function mg.contextMenu(m)
         forceTheme = mg.cfg.theme, accentColor = mg.cfg.accentColor, -- carry over theme and accent color
         children = { { mode = "vertical", spacing = 0 } }
     }
-    local height, width, itmHeight, sepHeight = 0, 100, 12, 3 
+    local height, width, itmHeight, sepHeight = 0, 100, 12, 3
     local hooks = { }
-    
+
     -- TODO build
     for i = 1, #m do
         local mi = m[i]
@@ -33,7 +33,7 @@ function mg.contextMenu(m)
             height = height + itmHeight
         end
     end
-    
+
     local bm = theme.metrics.borderMargins.contextMenu
     cfg.size = {width, height}
     local calcSize = {width + bm[1] + bm[3], height + bm[2] + bm[4]}

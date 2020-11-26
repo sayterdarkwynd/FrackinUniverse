@@ -330,7 +330,7 @@ function dungeonId(args, board)
   else return false, {dungeonId = 0}
   end
 end
-  
+
 function spawnItem(args)
   world.spawnItem(args.item, args.position, args.count, args.parameters, args.velocity, args.intangibleTime)
   return true

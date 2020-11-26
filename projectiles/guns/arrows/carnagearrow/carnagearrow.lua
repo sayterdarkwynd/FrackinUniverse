@@ -64,7 +64,7 @@ function update(dt)
 			else
 				break
 			end
-		end	
+		end
 	end
 	if myTarget then
 		mcontroller.approachVelocity(vec2.mul(vec2.norm(myTarget), self.targetSpeed), self.controlForce)

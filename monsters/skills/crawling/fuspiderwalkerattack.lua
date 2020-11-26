@@ -4,8 +4,8 @@ fuspiderwalkerAttack = {}
 function fuspiderwalkerAttack.enterWith(args)
   if not args.fuspiderwalkerAttack then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fuspiderwalkerAttack.windupTime"),
     winddownTimer = config.getParameter("fuspiderwalkerAttack.windDownTime"),
@@ -17,8 +17,8 @@ end
 function fuspiderwalkerAttack.enter()
   if not canStartSkill("fuspiderwalkerAttack") then return nil end
 
-  return { 
-    didAttack = false, 
+  return {
+    didAttack = false,
     wasInRange = false,
     windupTimer = config.getParameter("fuspiderwalkerAttack.windupTime"),
     winddownTimer = config.getParameter("fuspiderwalkerAttack.winddownTime"),
@@ -82,5 +82,5 @@ function fuspiderwalkerAttack.update(dt, stateData)
 end
 
 function fuspiderwalkerAttack.leavingState(stateData)
-  
+
 end

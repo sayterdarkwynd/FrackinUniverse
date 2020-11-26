@@ -152,7 +152,7 @@ end
 
 
 function startCrafting(result)
-    
+
     if next(result) == nil then return false
     else _,result = next(result)
         for k,v in pairs(result.inputs) do

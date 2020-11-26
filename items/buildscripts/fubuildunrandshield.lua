@@ -25,12 +25,12 @@ function build(directory, config, parameters, level, seed)
 	config.tooltipFields.cooldownLabel = parameters.cooldownTime or config.cooldownTime
 	config.tooltipFields.blockLabel = configParameter("perfectBlockTime",0)
 	config.tooltipFields.stamLabel = configParameter("shieldStamina",0) * 100
-	config.tooltipFields.hpLabel = configParameter("shieldHealthBonus",0) * 100 
+	config.tooltipFields.hpLabel = configParameter("shieldHealthBonus",0) * 100
 	config.tooltipFields.energyLabel = configParameter("shieldEnergyBonus",0) * 100
 	config.tooltipFields.critBonusLabel = configParameter("critBonus,0")
 	config.tooltipFields.critChanceLabel = configParameter("critChance",0)
 	config.tooltipFields.shieldBashLabel = configParameter("shieldBash",0)
-	config.tooltipFields.shieldBashPushLabel = configParameter("shieldBashPush",0)	
+	config.tooltipFields.shieldBashPushLabel = configParameter("shieldBashPush",0)
 	config.tooltipFields.stunChance = util.round(configParameter("stunChance",0), 0)
 	return config, parameters
 end

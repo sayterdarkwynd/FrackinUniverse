@@ -33,7 +33,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"energy"})
-	
+
 	if weapons["both"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,2))
 	elseif weapons["either"] then

@@ -19,13 +19,13 @@ function populateMaterialsList()
         else
             if worldId[1]=="ClientShipWorld" then
                 local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                widget.setText(path .. ".text", "This is a Ship World") 
+                widget.setText(path .. ".text", "This is a Ship World")
                 -- More info about the ship could be added here
             else
                 if worldId[1]=="CelestialWorld" then
                     weather =root.assetJson("/interface/kukagps/weather.config")
                     enviroment =root.assetJson("/interface/kukagps/enviroment.config")
-                    --stars =root.assetJson("/interface/kukagps/stars.config")	
+                    --stars =root.assetJson("/interface/kukagps/stars.config")
 
                     -- print date
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
@@ -74,7 +74,7 @@ function populateMaterialsList()
                             weatherItem = (weather[w.item] or w.item).."("..ww.."%)"
                         else
                             weatherItem = weatherItem..", "..(weather[w.item] or w.item).."("..ww.."%)"
-                        end  
+                        end
                         linecount = linecount+1
                         if linecount==4 then
                             -- print line and reset counter
@@ -119,7 +119,7 @@ end
 
 function timeConversion()
         -- Hubnester time conversion function
-        hubTime = (world.timeOfDay() + 0.25) * 24    -- the 0.25 is to make 0 am = 6 am (when the day starts) 
+        hubTime = (world.timeOfDay() + 0.25) * 24    -- the 0.25 is to make 0 am = 6 am (when the day starts)
         if hubTime > 12 then
             hubTime = hubTime - 12
             hubTimeModifier = " pm"

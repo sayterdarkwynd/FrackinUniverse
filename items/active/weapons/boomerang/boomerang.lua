@@ -76,7 +76,7 @@ function fire()
     params.powerMultiplier = activeItem.ownerPowerMultiplier()
     params.ownerAimPosition = activeItem.ownerAimPosition()
 	params.power = Crits.setCritDamage(self, params.power)
-	
+
 	--*************************************
 	-- FU/FR ADDONS
 	if self.helper then

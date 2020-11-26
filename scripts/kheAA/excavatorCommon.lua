@@ -28,7 +28,7 @@ node list:
 function excavatorCommon.init()
 	local buffer=""
 	transferUtil.loadSelfContainer()
-	if storage.disabled then
+	if self.disabled then
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
 		return
 	end
@@ -79,7 +79,7 @@ function excavatorCommon.init()
 end
 
 function excavatorCommon.cycle(dt)
-	if storage.disabled then return end
+	if self.disabled then return end
 	if not excavatorCommon.loadSelfTimer or excavatorCommon.loadSelfTimer > 1.0 then
 		transferUtil.loadSelfContainer()
 		if excavatorCommon.vars.isPump then

@@ -1,6 +1,6 @@
 function init()
 
-	
+
 	nightFearEffects=effect.addStatModifierGroup({})
 	script.setUpdateDelta(10)
 end

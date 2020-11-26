@@ -5,7 +5,7 @@ function init()
   })
   effect.addStatModifierGroup({
     {stat = "stunImmunity", amount = 1 }
-  }) 
+  })
   effect.addStatModifierGroup({
     {stat = "physicalResistance", amount = 0.2}
   })

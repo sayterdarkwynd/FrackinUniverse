@@ -5,10 +5,10 @@ function pounceAction.enterWith(args)
 
   --Make sure the target is valid
   if not world.entityExists(args.pounceTarget) then
-   return nil 
+   return nil
   end
 
-  return { 
+  return {
     targetId = args.pounceTarget,
     followUpAction = args.followUpAction,
     approachTimer = 5,

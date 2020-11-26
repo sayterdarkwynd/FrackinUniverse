@@ -19,7 +19,7 @@ function init()
 	effectHandlerList.regenHandler=effect.addStatModifierGroup({})
 end
 
-function update(dt)	
+function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else

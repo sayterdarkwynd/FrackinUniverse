@@ -19,9 +19,9 @@ function init()
 
 	self.monsterType = config.getParameter("shipPetType")
 	self.spawnOffset = config.getParameter("spawnOffset", {0, 2})
-	
+
 	self.hasInputNode = config.getParameter("inputNodes")
-	
+
 	message.setHandler("getPetParams", function()
 		return storage.petParams
 	end)
@@ -80,11 +80,11 @@ end
 
 function update(dt)
 	if not self.monsterType then return end	-- don't try to spawn the pet if it's not set
-	
+
 	if self.petId and not world.entityExists(self.petId) then
 		self.petId = nil
 	end
-	
+
 	local wireCheckResult = wireCheck()
 	if not wireCheckResult then
 		if storage.spawnTimer < 0 and self.petId == nil then

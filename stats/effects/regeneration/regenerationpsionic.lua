@@ -11,9 +11,9 @@ function init()
     {stat = "mentalProtection", amount = 0.25},
     {stat = "energyRegenPercentageRate", effectiveMultiplier = 0},
     {stat = "energyRegenBlockTime", effectiveMultiplier = 0},
-    {stat = "shieldStaminaRegen", effectiveMultiplier = 0}     
+    {stat = "shieldStaminaRegen", effectiveMultiplier = 0}
   })
-  
+
 end
 
 function update(dt)
@@ -24,5 +24,5 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end

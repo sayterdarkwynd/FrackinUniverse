@@ -1,8 +1,8 @@
-function init() 
+function init()
 	if not world.entitySpecies(entity.id()) then return end
 
 	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
-  
+
   if self.species == "avian" then
     self.foodCost = 0.095
   elseif self.species == "avali" then
@@ -24,7 +24,7 @@ function init()
       self.foodCost = 4
     end
   end
-  
+
   bonusHandler=effect.addStatModifierGroup({ {stat = "foodDelta", amount = status.stat("foodDelta")-self.foodCost } })
 	self.didInit=true
 end

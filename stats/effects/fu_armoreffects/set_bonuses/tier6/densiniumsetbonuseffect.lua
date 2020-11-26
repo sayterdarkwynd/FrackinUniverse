@@ -9,7 +9,7 @@ weaponBonus={
 armorBonus={
 	{stat = "breathProtection", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1},
-	{stat = "extremepressureProtection", amount = 1},	
+	{stat = "extremepressureProtection", amount = 1},
 	{stat = "pressureProtection", amount = 1},
 	{stat = "gasImmunity", amount = 1}
 }
@@ -17,7 +17,7 @@ armorBonus={
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
-			
+
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
@@ -34,7 +34,7 @@ end
 
 function checkWeapons()
 	local weapons=weaponCheck({"densinium"})
-	
+
 	if weapons["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else

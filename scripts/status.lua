@@ -8,7 +8,7 @@ function damageListener(listenerType, callback)
   elseif listenerType == "damageTaken" then
     listener.pollFunction = status.damageTakenSince
   elseif listenerType == "Kill" then -- FU adds kill tracking
-    listener.pollFunction = status.inflictedHitsSince 
+    listener.pollFunction = status.inflictedHitsSince
   else
     sb.logInfo("Failed to create damageListener - invalid listenerType '%s'", listenerType)
   end

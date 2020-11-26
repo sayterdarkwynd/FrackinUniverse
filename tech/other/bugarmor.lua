@@ -19,7 +19,7 @@ function checkStance(moves)
 		self.stance = "jump"
 		swapped=true
 	end
-	
+
 	if swapped then
 		if self.stanceSoundCooldown <= 0.0 then
 			local sound=""
@@ -90,7 +90,7 @@ function update(args)
 	else
 		self.stanceResetTimer = 0.0
 	end
-	
+
 	if self.stanceSoundCooldown and self.stanceSoundCooldown > 0 then
 		self.stanceSoundCooldown = math.max(0, self.stanceSoundCooldown - args.dt)
 	else

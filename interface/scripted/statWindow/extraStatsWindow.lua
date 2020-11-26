@@ -5,7 +5,7 @@ function init()
 	canvas = widget.bindCanvas("tooltipHandler")
 	self.lifespanCounter = self.data.tooltipLifespan
 	self.delayCounter = self.data.tooltipCheckDelay
-	
+
 	widget.setText("tooltip", self.data.defaultTooltip)
 end
 
@@ -13,25 +13,25 @@ function update()
 	-- Breath calculated separately
 	local breatRegen = status.stat("breathRegenerationRate")
 	local breathMax = status.stat("maxBreath")
-	
+
 	-- for stat, type in pairs(self.stats) do
 	for stat, type in pairs(self.data.stats) do
 		local value = status.stat(stat)
-		
+
 		-- Getting rid of the redundant .0's
 		local fraction = math.abs(math.floor(value) - value)
 		if fraction == 0 then
 			value = math.floor(value)
 		end
-		
+
 		if type == "flat" then
 			value = tostring(shorten(value))
 			widget.setText(stat, value)
-			
+
 		elseif type == "percent" then
 			value = tostring(average(value * 100)).."%"
 			widget.setText(stat, value)
-			
+
 		elseif type == "crit" then
 			if value>0 then
 				value = "+"..tostring(util.round(value,1)).."%"
@@ -41,11 +41,11 @@ function update()
 				value="0%"
 			end
 			widget.setText(stat, value)
-			
+
 		elseif type == "critmult" then
 			value = tostring(average((1.5+value)*100)).."%"
 			widget.setText(stat, value)
-			
+
 		elseif type == "food" then
 			local foodVal=status.isResource("food") and status.resourceMax("food") or 0
 			if foodVal~=0 then
@@ -58,7 +58,7 @@ function update()
 			else
 				widget.setText(stat, "0")
 			end
-			
+
 		elseif type == "breath" then
 			local breathRate = value
 			if breathMax > 0 then
@@ -69,10 +69,10 @@ function update()
 			end
 		end
 	end
-	
+
 	if self.delayCounter == 0 then
 		self.delayCounter = self.data.tooltipLifespan
-		
+
 		local xPos = canvas:mousePosition()[1]
 		local yPos = canvas:mousePosition()[2]
 		for _, box in ipairs(self.data.tooltipBoxes) do
@@ -89,13 +89,13 @@ function update()
 						end
 					end
 					widget.setText("tooltip", tooltip)
-					
+
 					self.lifespanCounter = self.data.tooltipLifespan
 					return
 				end
 			end
 		end
-		
+
 		if self.lifespanCounter == 0 then
 			widget.setText("tooltip", self.data.defaultTooltip)
 		else
@@ -104,13 +104,13 @@ function update()
 	else
 		self.delayCounter = self.delayCounter - 1
 	end
-	
+
 end
 
 function average(num)
 	local low = math.floor(num)
 	local high = math.ceil(num)
-	
+
 	if math.abs(num - low) < math.abs(num - high) then
 		if num < 0 then
 			return low * -1
@@ -134,7 +134,7 @@ function shorten(val)
 		else
 			local str = tostring(val)
 			local dotPoint = string.find(str, "%.", 1)
-			
+
 			if string.len(str) < 6 then
 				if dotPoint then
 					str = string.sub(str, 1, math.min(dotPoint + 2, 5))
@@ -142,7 +142,7 @@ function shorten(val)
 			else
 				str = string.sub(str, 1, 5)
 			end
-			
+
 			return str
 		end
 	elseif type(val) == "string" then
