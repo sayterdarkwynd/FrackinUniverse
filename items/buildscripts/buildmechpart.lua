@@ -48,18 +48,18 @@ function build(directory, config, parameters, level, seed)
 
     if partConfig.stats then
       for statName, statValue in pairs(partConfig.stats) do
-        
-        
-        --local clampedValue = statName == 'mechMass' and math.max(2, math.min(10, math.floor(statValue/2)*2),1) or math.max(1, math.min(10, math.floor(statValue)))        
+
+
+        --local clampedValue = statName == 'mechMass' and math.max(2, math.min(10, math.floor(statValue/2)*2),1) or math.max(1, math.min(10, math.floor(statValue)))
         --config.tooltipFields[statName .. "StatImage"] = "/interface/tooltips/statbar.png:" .. clampedValue
-        local clampedValue = math.max(0, math.min(10, math.floor(statValue)))        
-        config.tooltipFields[statName .. "StatImage"] = "/interface/tooltips/statbarten.png:" .. clampedValue        
+        local clampedValue = math.max(0, math.min(10, math.floor(statValue)))
+        config.tooltipFields[statName .. "StatImage"] = "/interface/tooltips/statbarten.png:" .. clampedValue
       end
     end
-    
-    partConfig.stats.mechMass = partConfig.stats.mechMass or 1  -- make sure there is no nil    
+
+    partConfig.stats.mechMass = partConfig.stats.mechMass or 1  -- make sure there is no nil
     config.tooltipFields.mechMassStatLabel = partConfig.stats.mechMass or 1
-    
+
     if config.mechPart[1] == "arm" then
       local energyDrain = root.evalFunction("mechArmEnergyDrain", partConfig.stats.energy or 0)
       config.tooltipFields.energyDrainStatLabel = string.format("%.02f MJ/s", energyDrain)

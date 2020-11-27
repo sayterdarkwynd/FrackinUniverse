@@ -114,7 +114,7 @@ function triggerThorns(damage)
     speed = 0,
     physics = "default"
   }
-  
+
   self.healValue = status.resource("health") * (1+(0.05 * math.max(0,1+status.stat("healingBonus"))))
   status.setResource( "health", self.healValue )
   world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)

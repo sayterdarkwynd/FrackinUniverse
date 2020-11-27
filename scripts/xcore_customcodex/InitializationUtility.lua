@@ -3,10 +3,10 @@
 -- postinit() is run when the first call to update() is made.
 --[[
 	API: (After requiring this script...)
-	
+
 	bool InitUtil.postInitIsLate = false
 		Set this property via `self.postInitIsLate`
-		
+
 		If false (the default), postinit() will run BEFORE the first update() call.
 		If true, postinit() will run AFTER the first update() call.
 
@@ -21,12 +21,12 @@ function init()
 	if originalInit then
 		originalInit()
 	end
-	
+
 	if postinit == nil then
 		if sb then sb.logWarn("Script has employed the use of initutil but does not specify a postinit() function!") end
 		return
 	end
-	
+
 	self.postInitCompleted = false
 end
 
@@ -42,11 +42,11 @@ function update(dt)
 	if canRun and not self.postInitIsLate then
 		internalpostinit()
 	end
-	
+
 	if originalUpdate then
 		originalUpdate(dt)
 	end
-	
+
 	if canRun and self.postInitIsLate then
 		internalpostinit()
 	end

@@ -126,7 +126,7 @@ function update(dt)
     mcontroller.setVelocity({0, 0})
   else
     local driverThisFrame = vehicle.entityLoungingIn("drivingSeat")
-    
+
     if (driverThisFrame ~= nil) then
       vehicle.setDamageTeam(world.entityDamageTeam(driverThisFrame))
       --animator.setLightActive("dashboardGlow", true)
@@ -251,7 +251,7 @@ function updateDriveEffects(healthFactor, driverThisFrame)
 
     --animator.setAnimationState("rearThruster", "on")
     --animator.setAnimationState("bottomThruster", "on")
-    
+
 
   else
     --animator.setParticleEmitterActive("rearThrusterIdle", false)
@@ -261,7 +261,7 @@ function updateDriveEffects(healthFactor, driverThisFrame)
 
     --animator.setAnimationState("rearThruster", "off")
     --animator.setAnimationState("bottomThruster", "off")
-    
+
   end
 
   --if burning, takew dammage intermittantly.

@@ -36,15 +36,15 @@ function update(dt)
 	elseif self.foodValue < 10 then
 		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.20}})
 	elseif self.foodValue < 20 then
-		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.15}}) 
+		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.15}})
 	elseif self.foodValue < 30 then
-		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.09}})  
+		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.09}})
 	elseif self.foodValue < 40 then
-		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.07}})    
+		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.07}})
 	elseif self.foodValue < 50 then
-		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.05}}) 
+		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.05}})
 	elseif self.foodValue < 60 then
-		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.03}}) 
+		effect.setStatModifierGroup(starvationpower, {{stat = "powerMultiplier", baseMultiplier = 1.03}})
 	else
 		effect.setStatModifierGroup(starvationpower,{})
 	end

@@ -1,5 +1,5 @@
 function lerp(_value, _to, _smoothness)
-	return _value + ((_to - _value) / _smoothness) 
+	return _value + ((_to - _value) / _smoothness)
 end
 
 function transform(_value, _to, _interval)
@@ -63,7 +63,7 @@ function vectorSub(vector, scalarOrVector)
 	end
 end
 
-function angleDiff(angle0, angle1) 
+function angleDiff(angle0, angle1)
     return ((((angle0 - angle1) % 360) + 540) % 360) - 180;
 end
 
@@ -117,7 +117,7 @@ function updatePalette()
 	animator.setGlobalTag("directives", "" .. self.elementDirectives[self.element + 1])
 end
 
-function toPx(val) 
+function toPx(val)
 	return val / 8
 end
 
@@ -137,7 +137,7 @@ function drawLine(_point1, _point2, _size, _color, _layer)
 	local light = hexToRGB(_color:sub(1, 6)) or "FFFFFF"
 
 	world.spawnProjectile("invisibleprojectile", sb.interpolateSinEase(0.5, _point1, _point2), activeItem.ownerEntityId(), {0, 0}, true, {
-		damageType = "NoDamage", 
+		damageType = "NoDamage",
 		timeToLive = 0,
 		actionOnReap = {{
 			action = "particle",
@@ -174,7 +174,7 @@ function drawLightning(startLine, endLine, displacement, minDisplacement, forks,
 			local length = vec2.mag(direction) / 2
 			local angle = math.atan(direction[2], direction[1]) + randomInRange(forkAngleRange)
 			forkEnd = vec2.mul({math.cos(angle), math.sin(angle)}, length)
-			drawLightning(mid, vec2.add(mid, forkEnd), displacement / 2, minDisplacement, forks - 1, 
+			drawLightning(mid, vec2.add(mid, forkEnd), displacement / 2, minDisplacement, forks - 1,
 				forkAngleRange, math.max(width - 1, 1), color, layer)
 		end
 	end

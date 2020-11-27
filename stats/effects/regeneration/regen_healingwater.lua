@@ -19,7 +19,7 @@ function init()
 	else
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=status.resourceMax("health")*self.healingRate*math.max(0,1+status.stat("healingBonus"))}})
 		animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
-		animator.setParticleEmitterActive("healing", config.getParameter("particles", true))  
+		animator.setParticleEmitterActive("healing", config.getParameter("particles", true))
 	end
 	self.didInit=true
 end

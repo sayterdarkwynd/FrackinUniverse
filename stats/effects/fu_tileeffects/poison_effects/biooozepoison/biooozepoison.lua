@@ -9,7 +9,7 @@ function init()
   effect.addStatModifierGroup({
       { stat = "electricResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
       { stat = "physicalResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) }
-  })   
+  })
 end
 
 function setEffectTime()
@@ -31,7 +31,7 @@ function update(dt)
       status.setResource("food", adjustedHunger)
     end
   end
-  
+
   effect.setParentDirectives("fade=CCFF33="..self.tickTimer * 0.4)
 end
 

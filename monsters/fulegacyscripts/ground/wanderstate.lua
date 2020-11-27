@@ -2,7 +2,7 @@ wanderState = {}
 
 function wanderState.enterWith(params)
   if not params.wander then return nil end
-  
+
   return wanderState.enter()
 end
 

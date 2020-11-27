@@ -21,7 +21,7 @@ function init()
 	if world.entitySpecies(entity.id()) == "trink" then -- when electrified, trinks lose 50% power
           effect.addStatModifierGroup({{stat = "powerMultiplier", baseMultiplier = 0.5 }})
 	end
-	
+
   self.damageClampRange = config.getParameter("damageClampRange")
   self.tickTime = config.getParameter("boltInterval", 1.0)
   self.tickTimer = self.tickTime
@@ -61,7 +61,7 @@ function update(dt)
         return
       end
     end
-  end	
+  end
 end
 
 function uninit()

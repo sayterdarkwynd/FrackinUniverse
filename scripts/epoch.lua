@@ -57,6 +57,6 @@ function epoch.toTable(secs)
     if hour==24 then
        hour=0
     end
-	
+
     return {hour=hour,minute=minute,second=second,month=month,day=day,year=year}
 end

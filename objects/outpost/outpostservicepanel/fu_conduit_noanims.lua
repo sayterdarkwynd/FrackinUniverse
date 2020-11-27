@@ -7,6 +7,10 @@ function init()
 end
 
 function update(dt)
+	if not power.warmedUp then
+		power.init()
+		power.warmedUp=true
+	end
 	if not conduitTimer or conduitTimer>=1.0 then
 		onNodeConnectionChange()
 		conduitTimer=0.0

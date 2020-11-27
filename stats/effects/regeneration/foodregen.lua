@@ -10,7 +10,7 @@ function update(dt)
 	else
 		self.foodvalue = status.resource("food")
 	end
-	
+
 	if self.foodvalue > 70 then
 		self.healingRate = 1.001 / self.healTime
 	elseif self.foodvalue > 60 then

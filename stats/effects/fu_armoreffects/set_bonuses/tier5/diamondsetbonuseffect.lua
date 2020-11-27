@@ -33,7 +33,7 @@ function checkWeapons()
 	local weaponSingle=weaponCheck({"katana","daikatana"})
 
 	if weaponSingle["either"] then
-		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)				
+		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
 	end

@@ -6,7 +6,7 @@ local petUpdate = update or function() end
 function init()
   self.purchasablePetsPresent = root.itemConfig("pethouseSlime") and true
   self.objectName = object.name()
-  
+
   if not self.purchasablePetsPresent or self.objectName == "fu_byostechstation" then
 	petInit()
   end
@@ -34,7 +34,14 @@ function onInteraction()
     sayNext()
     return nil
   else
-    return config.getParameter("interactAction")
+    if world.getProperty("ship.level", 1) == 0 and not world.getProperty("fu_byos") then
+	  local miscShipConfig = root.assetJson("/frackinship/configs/misc.config")
+	  local interface = root.assetJson(miscShipConfig.shipSelctionInterface)
+	  interface = util.mergeTable(interface, miscShipConfig.shipResetSelectionInterfaceData or {})
+	  return {"ScriptPane", interface}
+	else
+	  return {config.getParameter("interactAction"), config.getParameter("interactData")}
+    end
   end
 end
 
@@ -72,7 +79,7 @@ function update(dt)
       self.dialogTimer = nil
     end
   end
-  
+
   if self.dialogTimer == nil then
     object.setOfferedQuests(config.getParameter("offeredQuests"))
   end

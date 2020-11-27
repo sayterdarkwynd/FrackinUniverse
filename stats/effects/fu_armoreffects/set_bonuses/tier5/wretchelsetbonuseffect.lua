@@ -4,7 +4,7 @@ setName="fu_wretchelset"
 
 weaponBonus={ }
 
-armorBonus={ 
+armorBonus={
 	{stat = "biooozeImmunity", amount = 1},
 	{stat = "pusImmunity", amount = 1},
 	{stat = "poisonStatusImmunity", amount = 1}
@@ -13,11 +13,11 @@ armorBonus={
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
-			
+
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
-	
+
 	unifiedGravMod.init()
 	unifiedGravMod.initSoft()
 end

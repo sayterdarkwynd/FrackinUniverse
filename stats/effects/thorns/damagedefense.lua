@@ -115,7 +115,7 @@ function triggerThorns(damage)
     speed = 0,
     physics = "default"
   }
-  
+
 
   status.addEphemeralEffect( "defenseghostweave" )
   world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)

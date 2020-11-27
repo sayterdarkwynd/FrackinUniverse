@@ -23,14 +23,14 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		
+
 		checkWeapons()
 	end
 end
 
 function checkWeapons()
 	local weapons=weaponCheck({"dagger","broadsword","axe","hammer","shortsword","greataxe","spear","shortspear","quarterstaff","katana","flail","scythe","mace","longsword","daikatana"})
-	
+
 	if (weapons["either"] and weapons["twoHanded"]) or (weapons["primary"] and weapons["alt"]) then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,setBonusMultiply(weaponBonus,2))
 	elseif weapons["either"] then

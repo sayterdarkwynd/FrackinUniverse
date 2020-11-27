@@ -9,7 +9,7 @@ function init()
     {stat = "fireResistance", amount = config.getParameter("resistanceAmount", 0)},
     {stat = "electricResistance", amount = config.getParameter("resistanceAmount", 0)},
     --reduce effects of Madness
-    {stat = "mentalProtection", amount = config.getParameter("resistanceAmount", 0)}  
+    {stat = "mentalProtection", amount = config.getParameter("resistanceAmount", 0)}
   })
 end
 

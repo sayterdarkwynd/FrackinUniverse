@@ -18,9 +18,9 @@ function init()
 	self.active = false
 	self.cooldownTimer = config.getParameter("cooldownTime")
 	self.activeTimer = 0
-	
+
 	self.animationData = config.getParameter("animationCustom", {})
-	
+
 	self.level = config.getParameter("level", 1)
 	self.baseShieldHealth = config.getParameter("baseShieldHealth", 1)
 	self.knockback = config.getParameter("knockback", 0)
@@ -51,7 +51,7 @@ function init()
         self.blockhelper:loadWeaponScripts("shield-perfectblock")
     end
 
-  
+
 	-- FU special effects
 	-- health effects
 	self.critChance = config.getParameter("critChance", 0)
@@ -115,7 +115,7 @@ function shieldBonusApplyPartial()
  		{stat = "shieldBash", amount =  shieldBash},
  		{stat = "shieldBashPush", amount =  shieldBashPush},
  		{stat = "critChance", amount =  self.critChance},
- 		{stat = "critChance", amount =  self.critBonus} 		
+ 		{stat = "critChance", amount =  self.critBonus}
  	})
 end
 
@@ -186,7 +186,7 @@ function update(dt, fireMode, shiftHeld)
         self.activeTimer = self.activeTimer + dt
 
         self.damageListener:update()
-	
+
         -- ************************************** FU SPECIALS **************************************
         status.modifyResourcePercentage("health", self.shieldHealthRegen * dt)
         -- *****************************************************************************************
@@ -216,11 +216,11 @@ function uninit()
         self.blockhelper:clearPersistent()
     end
 	status.clearPersistentEffects("shieldBonus")
-	status.clearPersistentEffects("shieldEffects")    
+	status.clearPersistentEffects("shieldEffects")
 	status.clearPersistentEffects(activeItem.hand().."Shield")
 	activeItem.setItemShieldPolys({})
 	activeItem.setItemDamageSources({})
-	
+
 end
 
 function updateAim()
@@ -259,9 +259,9 @@ function raiseShield()
 	status.setPersistentEffects(activeItem.hand().."Shield", {{stat = "shieldHealth", amount = shieldHealth()}})
 	local shieldPoly = animator.partPoly("shield", "shieldPoly")
 	activeItem.setItemShieldPolys({shieldPoly})
-    
+
     shieldBonusApply()
-    
+
 	if self.knockback > 0 then
         local knockbackDamageSource = {
             poly = shieldPoly,
@@ -296,10 +296,10 @@ function raiseShield()
                     if (self.energyval) >= 50 and (self.randomBash) >= 50 then -- greater chance to Shield Bash when perfect blocking
                         bashEnemy()
                     end
-					
+
 					--No catch case for this sound since it's required by vanilla.
 					animator.playSound("perfectBlock")
-					
+
 					if self.animationData.particleEmitters and self.animationData.particleEmitters.perfectBlock then
 						animator.burstParticleEmitter("perfectBlock")
 					end
@@ -368,7 +368,7 @@ function bashEnemy()
     local params = { speed=20, power = self.damageLimit , damageKind = "default", knockback = self.pushBack } -- Shield Bash
     world.spawnProjectile("fu_genericBlankProjectile",mcontroller.position(),activeItem.ownerEntityId(),{0,0},false,params)
     status.modifyResource("energy", self.energyValue * -0.2 )	-- consume energy
-	
+
 	if animator.hasSound("shieldBash") then
 		--Protection for if the user hasn't specified shield bash sounds
 		animator.playSound("shieldBash")

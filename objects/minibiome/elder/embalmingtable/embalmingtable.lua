@@ -110,30 +110,30 @@ function update(dt)
 	    animator.playSound("bodydown")
         end
         if not self.crafting and self.timer <= 0 then --make sure we didn't just finish crafting
-            if not startCrafting(getValidRecipes(getInputContents())) then 
+            if not startCrafting(getValidRecipes(getInputContents())) then
               self.timer = self.mintick --set timeout if there were no recipes
               animator.stopAllSounds("cutting")
-            end 
+            end
         end
     else
       if self.crafting then
 	    --play sound effect randomly for grossness
 	    if self.setval == 1 then
-	        self.setval = 0 
+	        self.setval = 0
 		animator.playSound("cutting")
-	    end 
+	    end
       end
-      
+
     end
 end
 
 function startCrafting(result)
-    
+
     if next(result) == nil then return false
     else _,result = next(result)
         for k,v in pairs(result.inputs) do
             if not world.containerConsume(entity.id(), {item = k , count = v}) then return false end
-            self.setval = 1 
+            self.setval = 1
             animator.playSound("bodydown")
             animator.stopAllSounds("cutting")
         end

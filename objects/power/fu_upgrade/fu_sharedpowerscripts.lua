@@ -4,10 +4,10 @@ function isn_getCurrentPowerInput(divide)
 	local totalInput = 0
 	local iterator = 0
 	local connectedDevices
-	
-	local nodecount = object.inputNodeCount() 
+
+	local nodecount = object.inputNodeCount()
 	---sb.logInfo("PID: nodecount is " .. nodecount)
-	
+
 	while iterator < nodecount do
 		---sb.logInfo("PID: Iteration " .. iterator)
 		if object.getInputNodeLevel(iterator) == true then
@@ -28,7 +28,7 @@ function isn_getCurrentPowerInput(divide)
 		---sb.logInfo("PID: total input now at " .. totalInput)
 		iterator = iterator + 1
 	end
-	
+
 	---sb.logInfo("GENERAL POWER INPUT DEBUG END")
 	return totalInput
 end
@@ -38,7 +38,7 @@ function isn_hasRequiredPower()
 	local requirement = config.getParameter("isn_requiredPower")
 	if power == nil then return false end
 	if requirement == nil then return true end
-	
+
 	if power >= requirement then return true
 	else return false end
 end

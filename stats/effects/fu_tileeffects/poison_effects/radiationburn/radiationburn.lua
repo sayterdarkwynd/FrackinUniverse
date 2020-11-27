@@ -21,10 +21,10 @@ function update(dt)
   self.currentDebuff = math.max(self.currentDebuff + self.debuffPerSec * dt, self.maxDebuff*((status.statPositive("specialStatusImmunity") and 0.25) or 1))
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
-    
+
     -- Incrementally debuff target's physical resistance. --
     status.setPersistentEffects("aciddust", { {stat = "physicalResistance", amount = self.currentDebuff } })
-    
+
     -- Apply damage if target's physical resistance is zero (otherwise, just make the 'hurt' SFX). --
     local dmg = 0.1
     if (self.currentDebuff == self.maxDebuff) then
@@ -34,7 +34,7 @@ function update(dt)
   	      dmg = math.floor((status.resourceMax("health") * self.tickDamagePercentage) + (world.threatLevel()/3))
   	  end
     end
-    
+
     status.applySelfDamageRequest({
       damageType = "IgnoresDef",
       damage = dmg,

@@ -33,12 +33,12 @@ function update(dt)
   if erchiusCount > 0 and self.spawnTimer > 0 then
     self.spawnTimer = self.spawnTimer - dt
   end
-  
+
   if status.resource("energy") < 2 then
     status.modifyResource("health", ((-self.dps * dt)/12))
   end
   status.modifyResource("energy", ((-self.dps * dt)*1.05))
-  
+
   local monsterPosition = self.findMonster()
   if monsterPosition then
     if not self.messaged then
@@ -50,9 +50,9 @@ function update(dt)
     animator.rotateTransformationGroup("smoke", vec2.angle(distance))
 
     local damageDistanceRatio = 1 - math.min(1.0, math.max(0.0, vec2.mag(distance) / self.damageDistance))
-    
+
     self.dps = damageDistanceRatio * self.maxDps
-  
+
     local effectDistance = interp.linear(erchiusRatio, self.effectDistance[1], self.effectDistance[2])
     local effectDistanceRatio = 1 - math.min(1.0, math.max(0.0, vec2.mag(distance) / effectDistance))
     animator.setParticleEmitterEmissionRate("smoke", self.emissionRate * effectDistanceRatio)
@@ -62,7 +62,7 @@ function update(dt)
 
     world.sendEntityMessage(self.monsterUniqueId, "setErchiusLevel", erchiusCount)
 
-    
+
   elseif monsterPosition == nil then
     self.saturation = 0
     animator.setLightActive("glow", false)

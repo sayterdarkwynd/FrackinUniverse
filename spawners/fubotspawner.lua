@@ -47,13 +47,13 @@ function loadMonster()
 	local botspawner=config.getParameter("botspawner")
 	if not botspawner then return false end
 	if not botspawner.type then return false end
-	
+
 	local name=config.getParameter("shortdescription") or "Broken Bot"
 	local desc=config.getParameter("description") or "Yup, you broke it."
-	
+
 	local imgData=root.monsterPortrait(botspawner.type)
 	local monsterData=root.monsterParameters(botspawner.type)
-	
+
 	item.parameters.tooltipFields.subtitle=name
 	item.parameters.description=desc
 	item.parameters.tooltipFields.objectImage=imgData
@@ -65,7 +65,7 @@ function loadMonster()
 
 		pet.portrait=imgData
 		pet.collisionPoly=monsterData.movementSettings.collisionPoly
-		
+
 		pet.config.type=botspawner.type
 		table.insert(buffer,pet)
 	end

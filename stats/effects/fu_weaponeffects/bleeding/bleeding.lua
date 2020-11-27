@@ -2,7 +2,7 @@ function init()
   animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
   animator.setParticleEmitterEmissionRate("healing", config.getParameter("emissionRate", 3))
   animator.setParticleEmitterActive("healing", true)
-  
+
   script.setUpdateDelta(5)
   self.tickDamagePercentage = 0.01 + config.getParameter("bleedAmount", 0)
   self.tickTime = 0.85
@@ -30,5 +30,5 @@ function update(dt)
 	end
 
 function uninit()
-  
+
 end

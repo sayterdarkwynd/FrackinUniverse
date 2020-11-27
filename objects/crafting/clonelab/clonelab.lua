@@ -25,7 +25,7 @@ function containerCallback()
 		world.containerPutItemsAt(entity.id(),stemsample,1)
     end
 
-    
+
 end
 
 function die()

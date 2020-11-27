@@ -39,7 +39,7 @@ function update(dt)
 				special=true
 			elseif donkey <= 3 or donkey == 33 then
 				if hardTarget and not true then
-					
+
 				end
 				effectUtil.effectSelf("partytime2",effect.duration()*donkey)
 				skittleSay("Gregga greg. Donkey...RAINBOW RAINBOW RAINBOW!!!")
@@ -69,7 +69,7 @@ function update(dt)
 		else
 			gregDate=gregDate+dt*(math.random(1,10)/10.0)
 		end
-		
+
 		mcontroller.controlModifiers({
 			facingSuppressed = true,
 			movementSuppressed = true
@@ -80,7 +80,7 @@ end
 function spaz(wordCount)
 	local sentence=""
 	local caps=1
-	
+
 	for x=0,wordCount do
 		if caps==1 then
 			if math.random(0,1) > 0.67 then
@@ -95,15 +95,15 @@ function spaz(wordCount)
 				caps=0
 			end
 		end
-		
+
 		local rWord=gregese.words[math.floor(math.random(1,#gregese.words))]
-		
+
 		if caps==2 then
 			rWord=string.upper(rWord)
 		elseif caps==1 then
 			rWord=firstToUpper(rWord)
 		end
-		
+
 		local punctIndex=math.floor(math.max(math.random(1,#gregese.punct+6)-6,1))
 		caps=(punctIndex>1 and 1) or 0
 
@@ -116,7 +116,7 @@ function spaz(wordCount)
 				rPunct=gregese.punct[punctIndex] or "."
 			end
 		end
-		
+
 		sentence=sentence..rWord..rPunct
 	end
 	skittleSay(sentence)

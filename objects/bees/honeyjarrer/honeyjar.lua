@@ -18,7 +18,7 @@ function update(dt)
 	else
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	
+
 	local contents = world.containerItems(entity.id())
 	local ents = world.objectQuery(entity.position(), 5, {name="industrialcentrifuge", order="nearest"})
 
@@ -62,7 +62,7 @@ function update(dt)
 			local throw = world.containerAddItems(entity.id(), { name = storage.combsProcessed.type, count = 4, data={}})
 			if throw then world.spawnItem(throw, entity.position()) end -- hope that the player or an NPC which collects items is around
 			storage.combsProcessed.count = storage.combsProcessed.count - combsPerJar
-		
+
 		end
 	else
 		animator.setAnimationState("jar", "idle")

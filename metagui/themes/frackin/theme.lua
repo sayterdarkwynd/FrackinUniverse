@@ -18,7 +18,7 @@ local color = { } do -- mini version of StardustLib's color.lua
       math.floor(0.5 + (rgb[4] or 1.0) * 255)
     )
   end
-  
+
   function color.toRgb(hex)
     if type(hex) == "table" then return hex end
     hex = hex:gsub("#", "") -- strip hash if present
@@ -29,14 +29,14 @@ local color = { } do -- mini version of StardustLib's color.lua
       (hex:len() == 8) and (tonumber(hex:sub(7, 8), 16) / 255)
     }
   end
-  
+
   function color.replaceDirective(from, to, continue)
     local l = continue and { } or { "?replace" }
     local num = math.min(#from, #to)
     for i = 1, num do table.insert(l, string.format(";%s=%s", color.toHex(from[i]), color.toHex(to[i]))) end
     return table.concat(l)
   end
-  
+
   -- code borrowed from https://github.com/Wavalab/rgb-hsl-rgb/blob/master/rgbhsl.lua; license unknown :(
   -- {
   local function hslToRgb(h, s, l)
@@ -53,7 +53,7 @@ local color = { } do -- mini version of StardustLib's color.lua
     local p = 2 * l - q
     return to(p, q, h + .33334), to(p, q, h), to(p, q, h - .33334)
   end
-  
+
   local function rgbToHsl(r, g, b)
     local max, min = math.max(r, g, b), math.min(r, g, b)
     local t = max + min
@@ -69,13 +69,13 @@ local color = { } do -- mini version of StardustLib's color.lua
     return h * .16667, s, l
   end
   -- }
-  
+
   function color.fromHsl(hsl)
     local c = { hslToRgb(table.unpack(hsl)) }
     c[4] = hsl[4] -- add alpha if present
     return c
   end
-  
+
   function color.toHsl(c)
     c = color.toRgb(c)
     local hsl = { rgbToHsl(table.unpack(c)) }
@@ -86,7 +86,7 @@ end -- color lib
 
 local paletteFor do
   local baseHue = color.toHsl(theme.defaultAccentColor)[1]
-  
+
   local basePal = { "588adb", "123166", "0d1f40", "060f1f" }
   local framePal = {
     "ffe15c", "ffbd00", "c78b05", "875808", -- yellow bands
@@ -106,7 +106,7 @@ local paletteFor do
       color.fromHsl { h, c(s * 1.04), c(l * 0.25), bgAlpha }, -- bg dark
       color.fromHsl { h, c(s * 1.04), c(l * 0.125), bgAlpha }, -- bg shadow
     })
-    
+
     --local hd = s > 0 and h - baseHue or 0
     local hd = (mg.cfg["frackin:hueShift"] or 0) / 360
     if hd ~= 0 then -- adjust frame colors
@@ -126,7 +126,7 @@ local paletteFor do
       r = r .. color.replaceDirective(framePal, frp, true)
     end
     --
-    
+
     pals[col] = r
     return r
   end
@@ -136,7 +136,7 @@ local titleBar, icon, title, close, spacer
 function theme.decorate()
   local style = mg.cfg.style
   widget.addChild(frame.backingWidget, { type = "canvas", position = {0, 0}, size = frame.size }, "canvas")
-  
+
   if (style == "window") then
     titleBar = frame:addChild { type = "layout", position = {6, 2}, size = {frame.size[1] - 24 - 5, 23}, mode = "horizontal", align = 0.55 }
     icon = titleBar:addChild { type = "image" }
@@ -157,14 +157,14 @@ function theme.drawFrame()
   local style = mg.cfg.style
   c = widget.bindCanvas(frame.backingWidget .. ".canvas")
   c:clear() --assets.frame:drawToCanvas(c)
-  
+
   local pal = paletteFor("accent")
-  
+
   if (style == "window") then
     local bgClipWindow = rect.withSize({4, 4}, vec2.sub(c:size(), {4+6, 4+4}))
     c:drawTiledImage(assets.windowBg .. pal, {0, 0}, bgClipWindow)
     assets.windowBorder:drawToCanvas(c, "frame" .. pal)
-    
+
     spacer.explicitSize = (not mg.cfg.icon) and -2 or 1
     icon.explicitSize = (not mg.cfg.icon) and {-1, 0} or nil
     icon:setFile(mg.cfg.icon)
@@ -193,7 +193,7 @@ function theme.drawCheckBox(w)
   if w.state == "press" then state = ":toggle"
   else state = w.checked and ":checked" or ":idle" end
   state = state .. paletteFor("accent")
-  
+
   c:drawImageDrawable(assets.checkBox .. state, vec2.mul(c:size(), 0.5), 1.0)
 end
 

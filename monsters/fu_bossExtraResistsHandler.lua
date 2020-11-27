@@ -6,7 +6,7 @@ local bossExtraResistsOverride=false
 
 function init()
 	if bossExtraResistsOldInit then bossExtraResistsOldInit() end
-	
+
 	local elementaltypes=root.assetJson("/damage/elementaltypes.config")
 	local buffer={}
 	local resists={}
@@ -15,12 +15,12 @@ function init()
 	local overrideParameters=monster.uniqueParameters()
 	--sb.logInfo("b: %s",baseParameters)
 	--sb.logInfo("o: %s",overrideParameters)
-	
+
 	local mergedParams=util.mergeTable(baseParameters,overrideParameters)
 	local innateStats=mergedParams.statusSettings.stats
 	--sb.logInfo("mP: %s",mergedParams)
 	--sb.logInfo("iS: %s",innateStats)
-	
+
 	if mergedParams.bossExtraResistsValue then
 		bossExtraResistsValue=mergedParams.bossExtraResistsValue
 	end
@@ -28,7 +28,7 @@ function init()
 		bossExtraResistsOverride=mergedParams.bossExtraResistsOverride
 	end
 	--sb.logInfo("bERO: %s, bERV: %s",bossExtraResistsOverride,bossExtraResistsValue)
-	
+
 	for element,data in pairs(elementaltypes) do
 		if data.resistanceStat then
 			buffer[data.resistanceStat]=true
@@ -37,7 +37,7 @@ function init()
 	local globalElements=buffer
 	buffer={}
 	--sb.logInfo("gE: %s",globalElements)
-	
+
 	for stat,value in pairs(innateStats) do
 		if globalElements[stat] then
 			--sb.logInfo("%s:%s",stat,value)
@@ -46,13 +46,13 @@ function init()
 	end
 	local innateResistances=buffer
 	--sb.logInfo("iR: %s",innateResistances)
-	
+
 	for resist,_ in pairs(globalElements) do
 		if bossExtraResistsOverride or not innateResistances[resist] then
 			table.insert(resists,{stat = resist, amount = bossExtraResistsValue })
 		end
 	end
 	--sb.logInfo("r:%s",resists)
-	
+
 	status.setPersistentEffects("bossExtraResistsHandler",resists)
 end

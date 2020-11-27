@@ -7,7 +7,7 @@ function init()
 	self.healthRangeHi = config.getParameter("healthRangeHi")
 	self.healthRangeMi = config.getParameter("healthRangeMi")
 	self.healthRangeLo = config.getParameter("healthRangeLo")
-	
+
     script.setUpdateDelta(10)
 end
 
@@ -16,7 +16,7 @@ function update(dt)
 
     -- check their existing health level
 	local healthPcnt=status.resourcePercentage("health")
-	
+
 	--calculate the bonuses that need to be applied, lucario should gain bonuses only when under a certain threshold
 	if healthPcnt <= self.healthRangeLo then
 		self.powerMod=1.15

@@ -8,7 +8,7 @@ function init()
     {stat = "poisonResistance", amount = config.getParameter("resistanceAmount", 0)},
     {stat = "iceResistance", amount = config.getParameter("resistanceAmount", 0)},
     {stat = "fireResistance", amount = config.getParameter("resistanceAmount", 0)},
-    {stat = "electricResistance", amount = config.getParameter("resistanceAmount", 0)}  
+    {stat = "electricResistance", amount = config.getParameter("resistanceAmount", 0)}
   })
 end
 

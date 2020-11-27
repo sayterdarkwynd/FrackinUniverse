@@ -5,15 +5,15 @@ function init()
   else
     output(storage.state)
   end
-  
+
   self.timer = 0
   self.toStop = 2
-  
+
   message.setHandler("receiveLiquid", function(_, _, liquidLevel)
     self.timer = self.toStop
     filter(liquidLevel[1],liquidLevel[2])
   end)
-  
+
 end
 
 -- Change Animation
@@ -30,12 +30,12 @@ end
 
 function filter(id, amount)
   conversionTable = root.assetJson("/objects/peglaci/peglaciwaterpurifier/liquidconversion.config")
-  
+
   convertData = conversionTable[sb.print(id)]
-  
+
   if convertData ~= nil then
     world.spawnLiquid(self.watersourcePos,convertData[2],convertData[1] * amount)
-  else  
+  else
     world.spawnLiquid(self.watersourcePos,id,amount)
   end
 end
@@ -49,7 +49,7 @@ function watersourcelimit(id,amount)
 end
 
 function update(dt)
-  
+
   if self.timer > 0  then
     self.timer = self.timer - dt
     output(true)

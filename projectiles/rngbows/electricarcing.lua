@@ -5,9 +5,9 @@ function init()
   self.tickTimer = self.tickTime
 end
 
-function update(dt)  
+function update(dt)
   self.tickTimer = self.tickTimer - dt
-  
+
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
     local targetIds = world.entityQuery(mcontroller.position(), config.getParameter("jumpDistance", 8), {

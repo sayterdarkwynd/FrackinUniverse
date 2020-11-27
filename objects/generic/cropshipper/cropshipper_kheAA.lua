@@ -40,7 +40,7 @@ function update(dt)
 	else
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	
+
 	if checkSurface then
 		surfaceCheckTimer = surfaceCheckTimer - dt
 		if surfaceCheckTimer <= 0 then
@@ -70,7 +70,7 @@ function update(dt)
 			animator.setAnimationState("shipper", "open")
 		end
 	end
-	
+
 	if object.getInputNodeLevel(transferUtil.vars.logicNode) or not object.isInputNodeConnected(transferUtil.vars.logicNode) then
 		if not launchStartTimer or launchStartTimer > 1 then
 			launchStartTimer=0
@@ -94,7 +94,7 @@ function startLaunch()
 	if launching then return end
 	local value,count=valueOfContents()
 	if count == 0 then return end
-	
+
 	launchTimer = 0
 	animator.setAnimationState("shipper", "ship")
 

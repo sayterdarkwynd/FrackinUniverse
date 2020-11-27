@@ -3,7 +3,7 @@ require "/scripts/effectUtil.lua"
 function init()
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
   animator.setParticleEmitterActive("drips", true)
-  
+
   script.setUpdateDelta(10)
 end
 

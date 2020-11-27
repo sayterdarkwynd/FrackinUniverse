@@ -4,11 +4,11 @@ setName="fu_xithricitesetkhe"
 shellBonus={
 	{stat = "shadowImmunity", amount = 1},
 	{stat = "aetherImmunity", amount = 1},
-	
+
 	{stat = "ffextremeradiationImmunity", amount = 1},
 	{stat = "radiationburnImmunity", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
-	
+
 	{ stat = "iceStatusImmunity", amount = 1},
 	{ stat = "snowslowImmunity", amount = 1},
 	{ stat = "slushslowImmunity", amount = 1},
@@ -16,7 +16,7 @@ shellBonus={
 	{ stat = "iceslipImmunity", amount = 1},
 	{ stat = "ffextremecoldImmunity", amount = 1},
 	{ stat = "biomecoldImmunity", amount = 1},
-	
+
 	{ stat = "fireStatusImmunity", amount = 1},
 	{ stat = "lavaImmunity", amount = 1},
 	{ stat = "ffextremeheatImmunity", amount = 1},
@@ -34,7 +34,7 @@ armorBonus={
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.shellBonusHandle=effect.addStatModifierGroup({})
-			
+
 	checkShell()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)

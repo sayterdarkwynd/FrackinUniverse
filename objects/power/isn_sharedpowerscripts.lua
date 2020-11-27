@@ -8,9 +8,9 @@ function isn_getCurrentPowerInput(divide)
 	local hasPSU = false
 	local hasPassthrough = false
 	local isBattery = isn_isBattery()
-	
+
 	-- sb.logInfo("PID: nodecount is " .. object.inputNodeCount())
-	
+
 	for iterator = 0, object.inputNodeCount() - 1 do
 		-- sb.logInfo("PID: Iteration " .. iterator)
 		if object.getInputNodeLevel(iterator) then
@@ -41,7 +41,7 @@ function isn_getCurrentPowerInput(divide)
 		end
 		-- sb.logInfo("PID: total input now at " .. totalInput)
 	end
-	
+
 	-- sb.logInfo("GENERAL POWER INPUT DEBUG END")
 	return totalInput
 end
@@ -84,7 +84,7 @@ function isn_hasRequiredPower()
 	local requirement = config.getParameter("isn_requiredPower")
 	if power == nil then return false end
 	if requirement == nil then return true end
-	
+
 	if power >= requirement then return true
 	else return false end
 end

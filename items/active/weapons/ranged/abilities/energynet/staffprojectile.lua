@@ -44,7 +44,7 @@ end
 function rotateTo(position, dt)
   local vectorTo = world.distance(position, mcontroller.position())
   local angleTo = vec2.angle(vectorTo)
-  
+
     local currentRotation = 0
     local angleDiff = 0
     local diffSign = angleDiff > 0 and 1 or -1

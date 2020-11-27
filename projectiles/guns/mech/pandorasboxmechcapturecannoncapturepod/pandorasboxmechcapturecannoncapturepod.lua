@@ -16,7 +16,7 @@ end
 function update(dt)
   promises:update()
 
-	if self.target and world.entityExists(self.target) then
+	if self.target and world.entityExists(self.target) and entity.isValidTarget(self.target) then
 		self.targetPosition = world.entityPosition(self.target)
 	else
 		setTarget(nil)
@@ -42,6 +42,8 @@ function setTarget(targetId)
 		});
 
 		nearEntities = util.filter(nearEntities, function(entityId)
+			if not entity.isValidTarget(entityId) then return false end
+
 			if world.lineTileCollision(mcontroller.position(), world.entityPosition(entityId)) then
 				return false;
 			end

@@ -105,7 +105,7 @@ function update(dt)
   if config.getParameter("facingMode", "control") == "transformation" then
     mcontroller.controlFace(1)
   end
-  
+
   capturable.update(dt)
   self.damageTaken:update()
 
@@ -119,7 +119,7 @@ function update(dt)
 
     if self.damaged then
       self.suppressDamageTimer = config.getParameter("stunDamageSuppression", 0.5)
-      monster.setDamageOnTouch(false)   
+      monster.setDamageOnTouch(false)
     end
     return
   else
@@ -148,21 +148,21 @@ function update(dt)
     self.randval = math.random(100)
     spit={ power = 1, speed = 15, timeToLive = 0.2 }
     bang={ power = 7, speed = 65, timeToLive = 1 }
-    
+
     specialCount1 = specialCount1 + 1
     specialCount2 = specialCount2 + 1
-    if specialCount1 > 40 then 
+    if specialCount1 > 40 then
       if self.healthLevel < 0.75 and self.randval > 70 then
         self.suppressDamageTimer = config.getParameter("stunDamageSuppression", 0.5)
-        animator.setAnimationState("body", "fire") 
+        animator.setAnimationState("body", "fire")
         if math.random(5) == 1 then
           animator.playSound("attack")
         end
        -- world.spawnProjectile("deaththrower",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),3},false,bang)
-       -- world.spawnProjectile("deaththrower",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,bang)        
+       -- world.spawnProjectile("deaththrower",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,bang)
         world.spawnProjectile("fireblastdragon",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,bang)
-        specialCount1 = 0     
-      end       
+        specialCount1 = 0
+      end
     end
     if specialCount2 > 17 then
       if (self.randval > 20) then
@@ -172,7 +172,7 @@ function update(dt)
         elseif math.random(7) == 2 then
           animator.playSound("roar2")
         end
-        animator.setAnimationState("body", "melee") 
+        animator.setAnimationState("body", "melee")
         if math.random(30) > 10 then
           world.spawnProjectile("shoggothchompexplosion3",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),0},false,spit)
         elseif math.random(30) > 20 then
@@ -185,9 +185,9 @@ function update(dt)
         end
 
         specialCount2 = 0
-      end        
+      end
     end
-    -- ******************************************************** 
+    -- ********************************************************
 
 
 

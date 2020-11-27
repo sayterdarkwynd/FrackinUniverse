@@ -21,13 +21,13 @@ end
 function teleport()
   local discId = status.statusProperty("translocatorDiscId")
   local teleportTarget = world.callScriptedEntity(discId, "teleportPosition", mcontroller.collisionPoly())
-  
+
   damageConfig = { power = self.damage }
-  
+
   if discId and world.entityExists(discId) then
     world.callScriptedEntity(status.statusProperty("translocatorDiscId"), "kill")
   end
-  
+
   status.setStatusProperty("translocatorDiscId", nil)
   effect.setParentDirectives("")
   animator.burstParticleEmitter("translocate")

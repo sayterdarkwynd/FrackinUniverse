@@ -22,11 +22,11 @@ function update(dt)
       elseif light <= 0.15 then
         genmult = 3
       elseif light <= 0.35 then
-        genmult = 2       
+        genmult = 2
       elseif light <= 0.50 then
         genmult = 1
       end
-      
+
       if world.liquidAt(location)then genmult = genmult * 0.05 end -- water significantly reduces the output
 
       local generated = math.min(self.powerLevel * genmult,4) -- max at 4 just in case.

@@ -16,7 +16,7 @@ function init()
 end
 
 function runCircuit()
-	
+
 	if object.isInputNodeConnected(0) and not object.getInputNodeLevel(0) then
 		storage.timeup=0
 		storage.state=-1

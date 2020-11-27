@@ -11,7 +11,7 @@ function init()
 		{amount = 4, state = 'fast'},
 		{amount = 0, state = 'off'}
 	}
-    storage.fuels = config.getParameter("fuels")
+    self.fuels = config.getParameter("fuels")
 	storage.active = true
 	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
 end
@@ -59,13 +59,13 @@ end
 function isn_powerSlotCheck(slotnum)
     local item = world.containerItemAt(entity.id(), slotnum)
     if not item then return 0 end
-	return storage.fuels[item.name] and storage.fuels[item.name].power or 0
+	return self and self.fuels and self.fuels[item.name] and self.fuels[item.name].power or 0
 end
 
 function isn_slotDecayCheck(slot)
 	local item = world.containerItemAt(entity.id(),slot)
 	local myLocation = entity.position()
-    if item and isn_slotDecayCheckWater(3) and storage.fuels[item.name] and math.random(1, storage.fuels[item.name].decayRate) == 1 then
+    if item and isn_slotDecayCheckWater(3) and self and self.fuels and self.fuels[item.name] and math.random(1, self.fuels[item.name].decayRate) == 1 then
         return true
     end
 	return false

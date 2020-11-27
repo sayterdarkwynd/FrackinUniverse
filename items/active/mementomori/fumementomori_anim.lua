@@ -15,7 +15,7 @@ function update()
 	if not worldId then
 		return
 	end
-	
+
 	local deathData = get(mementomori.deathPositionKey)
     if not deathData then
         return
@@ -27,7 +27,7 @@ function update()
     if math.random() > get("baseDensity") then
         return
     end
-	
+
 
     local endPosition = {deathData.position[1],deathData.position[2]}
 

@@ -15,5 +15,5 @@ function update(dt)
 	end
 	if storage.state then
 		effectUtil.effectAllInRange("antigravgenfield",30)
-	end	
+	end
 end
