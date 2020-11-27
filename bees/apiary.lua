@@ -770,9 +770,9 @@ end
 
 -- Kill drones based on their amount when no queen is present
 function droneDecay(slot)
-	local chanceRemove = math.random(100) --remove chance of drones
+	self.chanceRemove = math.random(100) --remove chance of drones
 	local amount = contents[slot].count -- set the amount
-	if chanceRemove > 50 then
+	if self.chanceRemove > 75 then--25% chance of removal
 		world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(amount * beeData.droneDecayPercentile + beeData.droneDecayFlat))
 		contents[slot] = world.containerItemAt(entity.id(), slot-1)
 	end	
