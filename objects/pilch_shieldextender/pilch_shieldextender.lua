@@ -2,7 +2,7 @@ require "/scripts/vec2.lua"
 
 function init(args)
 	object.setInteractive(true)
-	
+
 	if (storage.hideMode) then
 		setHideMode()
 	else
@@ -17,7 +17,7 @@ function init(args)
 			table.insert(storage.spaces, {offset, backMaterial})
 		end
 	end
-	
+
 	-- check wiring state
 	onInputNodeChange({ node = 0, level = object.getInputNodeLevel(0) })
 	-- messaging
@@ -35,11 +35,11 @@ end
 -- return position to connected objects and ping connected objects to get marker positions
 function requestMarkerPositions()
 	local pos = entity.position()
-	
+
 	for nodeID, _ in pairs(object.getInputNodeIds(0)) do
 		world.sendEntityMessage(nodeID, "pilch_markerPositionUpdate", pos[1], pos[2])
 	end
-	
+
 	for nodeID, _ in pairs(object.getOutputNodeIds(0)) do
 		world.sendEntityMessage(nodeID, "pilch_requestMarkerPositions")
 	end

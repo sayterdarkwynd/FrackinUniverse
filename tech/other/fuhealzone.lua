@@ -14,7 +14,7 @@ function update(args)
   if self.timer > 0 then
     self.timer = math.max(0, self.timer - args.dt)
   end
-  
+
   if args.moves["special1"] and self.timer == 0 and math.abs(mcontroller.xVelocity()) < 1 then
     attemptActivation()
   end

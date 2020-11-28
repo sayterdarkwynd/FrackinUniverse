@@ -6,7 +6,7 @@ weaponBonus1={
 	{stat = "radioactiveResistance", amount = 0.10}
 }
 
-armorBonus={ 
+armorBonus={
 	{stat = "ffextremeradiationImmunity", amount = 1},
 	{stat = "biomeradiationImmunity", amount = 1},
 	{stat = "radiationburnImmunity", amount = 1}
@@ -30,7 +30,7 @@ end
 
 function checkWeapons()
 	local knives=weaponCheck({"irradium"})
-	
+
 	if knives["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandlePrimary,weaponBonus1)
 	else

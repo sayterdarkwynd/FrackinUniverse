@@ -3,7 +3,7 @@ require '/scripts/fupower.lua'
 function init()
 	self.powerLevel = config.getParameter("powerLevel",1)
 	power.init()
-	
+
 	self.onShip=world.getProperty("fu_byos.owner")
 	self.onStation=(world.type() == 'playerstation')
 	local ePos=entity.position()
@@ -42,14 +42,14 @@ function getPowerLevel()
 	elseif light <= 0.2 then
 		genmult = 0
 	end
-	
+
 	 -- water significantly reduces the output
 	if world.liquidAt(storage.randomizedPos) then
 		genmult = genmult * 0.05
 	end
 
 	local generated = self.powerLevel * genmult
-	
+
 	if genmult >= 4 then
 		animator.setAnimationState("meter", "4")
 	elseif genmult >= 3 then
@@ -74,7 +74,7 @@ function getLight(location)
 			world.callScriptedEntity(objects[i],'object.setLightColor',{light[1]/3,light[2]/3,light[3]/3})
 		end
 	end
-	
+
 	 --via 'compressing' liquids like lava it is possible to get exhorbitant values on light level, over 100x the expected range.
 	local light = math.min(world.lightLevel(location),1.0)
 	for key,value in pairs(lights) do

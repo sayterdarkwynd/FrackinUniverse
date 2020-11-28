@@ -15,7 +15,7 @@ function init()
 	if storage.state == nil then storage.state = config.getParameter("defaultLightState", false) end
 	setLightState(storage.state)
 
-	
+
 	defaults = {
 		growthRate = config.getParameter("baseGrowthPerSecond", 3),  -- Multiplier on vanilla plant growth speed
 		seedUse = config.getParameter("defaultSeedUse", 3),          -- Amount of seeds consumed per plant (for perennials, starting cost)
@@ -89,15 +89,15 @@ function update(dt)
 	local growthmod = self.requiredPower and ((consumePower(dt) and 1) or self.unpoweredGrowthRate)
 	--sb.logInfo("growthmod: %s",growthmod)
 	growPlant(growthmod, dt)
-	
+
 	handleTooltip({water=water,fert=fert,growthmod=growthmod,seed=storage.currentseed})--update description
 
 	storage.activeConsumption = true
 	if object.outputNodeCount() > 0 then
 		object.setOutputNodeLevel(0,true)
 	end
-	
-	
+
+
 	updateState()
 end
 
@@ -144,15 +144,15 @@ function checkTrayInputs()
 	-- Update cache
 	storage.cacheWaterName = inputWater and inputWater.name or nil
 	storage.cacheFertName = inputFert and inputFert.name or nil
-	
-	
+
+
 	return water,fert
 end
 
 
 -- Generate new description
 function handleTooltip(args)
-	
+
 	--growth rate and power calc
 	local growthrate=getFertSum('growthRate', args.fert, args.water)
 	local growthrate2=growthrate*(args.growthmod or 1)
@@ -173,14 +173,14 @@ function handleTooltip(args)
 	else
 		growthString='Growth Rate: ^green;' .. growthrate2 .. "^reset;\n"
 	end
-	
+
 	--seed use and seed display
 	local seedString=""
 	if args.seed and args.seed.name then
 		seedString=root.itemConfig(args.seed.name).config.shortdescription
 		seedString=" (^yellow;" .. seedString .. "^reset;)"
 	end
-	
+
 	local seedUseWith=getFertSum('seedUse', args.fert, args.water)
 	local seedUseWithout=getFertSum('seedUse', "absolutelynothing", "absolutelynothing")
 	if seedUseWith<seedUseWithout then
@@ -189,7 +189,7 @@ function handleTooltip(args)
 		seedUseWith="^red;"..seedUseWith.."^reset;"
 	end
 	seedString='Seeds Used: ' .. seedUseWith .. seedString .. "\n"
-	
+
 	--yield calc
 	local yieldWith=getFertSum('yield', args.fert, args.water)
 	local yieldWithout=getFertSum('yield', "absolutelynothing", "absolutelynothing")
@@ -203,14 +203,14 @@ function handleTooltip(args)
 	--water use calc
 	local waterUseWith=getFertSum('fluidUse', args.fert, args.water)
 	local waterUseWithout=getFertSum('fluidUse', "absolutelynothing", "absolutelynothing")
-	local waterUseString='Water Use: ' .. waterUseWith .. "\n"
 	if waterUseWith<waterUseWithout then
 		waterUseWith="^green;"..waterUseWith.."^reset;"
 	elseif waterUseWith>waterUseWithout then
 		waterUseWith="^red;"..waterUseWith.."^reset;"
 	end
-	
-	
+	local waterUseString='Water Use: ' .. waterUseWith .. "\n"
+
+
 	--water value calc
 	local waterValueString='Water Value: '
 	local waterValue=(args.water and args.water.value or 0)
@@ -219,7 +219,7 @@ function handleTooltip(args)
 	else
 		waterValueString=waterValueString..waterValue
 	end
-	
+
 	--set desc!
 	local desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString
 	object.setConfigParameter('description', desc)

@@ -479,16 +479,16 @@ function move()
       self.angle = self.angle + (targetAngle - self.angle) * self.angleApproachFactor
       mcontroller.approachYVelocity(self.targetVerticalVelocity * 1.2, self.horizontalControlForce)
       rightispressed = false
-    else 
+    else
       self.angle = self.angle + (0 - self.angle) * self.angleApproachFactor
       mcontroller.approachYVelocity(self.targetVerticalVelocity, self.horizontalControlForce)
       rightispressed = false
       leftispressed = false
     end
-   
+
     self.enginePitch = self.engineRevPitch;
     self.engineVolume = self.engineRevVolume;
-    
+
   elseif vehicle.controlHeld("drivingSeat", "down") then
       if leftispressed == true then
         self.angle = self.angle + (targetAngle - self.angle) * self.angleApproachFactor

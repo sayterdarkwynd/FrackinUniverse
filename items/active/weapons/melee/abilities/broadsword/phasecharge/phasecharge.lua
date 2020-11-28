@@ -21,13 +21,13 @@ end
 
 function BladeCharge:windup()
 	self.weapon:setStance(self.stances.windup)
-	
+
 	animator.setAnimationState("bladeCharge", "charge")
 	animator.setParticleEmitterActive("bladeCharge", true)
 
 	local chargeTimer = self.chargeTime
 	while self.fireMode == "alt" do
-		
+
 		chargeTimer = math.max(0, chargeTimer - self.dt)
 		if chargeTimer == 0 then
 			animator.setGlobalTag("bladeDirectives", "border=1;"..self.chargeBorder..";ff95e099")
@@ -46,11 +46,11 @@ function BladeCharge:slash()
 	animator.setAnimationState("bladeCharge", "idle")
 	animator.setParticleEmitterActive("bladeCharge", false)
 	animator.setAnimationState("swoosh", "fire")
-	
+
 	if animator.hasSound("chargedSwing") then
 		animator.playSound("chargedSwing")
 	end
-	
+
 	util.wait(self.stances.slash.duration, function()
 		local damageArea = partDamageArea("swoosh")
 		self.weapon:setDamage(self.damageConfig, damageArea)

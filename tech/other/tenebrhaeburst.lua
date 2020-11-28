@@ -10,7 +10,7 @@ function init()
   self.firetimer = 0
   self.rechargeDirectives = "?fade=CC1122FF=0.25"
   self.rechargeDirectivesNil = nil
-  self.rechargeEffectTime = 0.1 
+  self.rechargeEffectTime = 0.1
   self.rechargeEffectTimer = 0
   self.flashCooldownTimer = 0
   self.halted = 0
@@ -40,24 +40,24 @@ end]]
 function checkFood()
 	local foodValue=15
 	if status.isResource("food") then
-		foodValue = status.resource("food")		
-	end	
+		foodValue = status.resource("food")
+	end
 	return foodValue
 end
 
 --[[function damageConfig()
 	--local daytime = daytimeCheck()
 	--local underground = undergroundCheck()
-  --foodVal = 
-  --energyVal = 
-  totalVal = 
+  --foodVal =
+  --energyVal =
+  totalVal =
 end]]
 
 function activeFlight()
     --damageConfig()
-    local damageConfig = { 
-      power = ((checkFood() /60) + (status.resource("energy")/150) + (27 - (getLight()/2))), 
-      knockback = 50 
+    local damageConfig = {
+      power = ((checkFood() /60) + (status.resource("energy")/150) + (27 - (getLight()/2))),
+      knockback = 50
     }
     animator.playSound("activate",3)
     animator.playSound("recharge")
@@ -71,23 +71,23 @@ function aimVector()
 end
 
 --[[function chargeUp()
-    
+
 end]]
 
 function update(args)
         self.firetimer = math.max(0, self.firetimer - args.dt)
         --checkFood()
-        
+
 	  if self.flashCooldownTimer > 0 then
-	    self.flashCooldownTimer = math.max(0, self.flashCooldownTimer - args.dt)  
+	    self.flashCooldownTimer = math.max(0, self.flashCooldownTimer - args.dt)
 	    if self.flashCooldownTimer <= 2 then
 			if self.halted == 0 then
 				self.halted = 1
 				animator.playSound("chargeUp")
 				animator.setSoundVolume("chargeUp",0.5,0)
-			end	 
+			end
 	    end
-	    
+
 			if self.flashCooldownTimer == 0 then
 				self.rechargeEffectTimer = self.rechargeEffectTime
 				tech.setParentDirectives(self.rechargeDirectives)
@@ -101,19 +101,19 @@ function update(args)
 	      tech.setParentDirectives()
 	    end
 	  end
-	
-	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) and self.firetimer == 0 then 
+
+	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) and self.firetimer == 0 then
 		if checkFood() > 15 then
 		    status.addEphemeralEffects{{effect = "foodcostshadow", duration = 0.5}}
 		else
 		    status.overConsumeResource("energy", 40)
-		end	
+		end
 		self.firetimer = 3
 		activeFlight()
 		self.dashCooldownTimer = 3
 		self.flashCooldownTimer = 3
 		self.halted = 0
-	else		
+	else
   	        animator.stopAllSounds("activate")
 	end
 end

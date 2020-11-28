@@ -26,12 +26,12 @@ function update(dt)
       local toTarget = world.distance(targetPos, mcontroller.position())
       local targetDist = vec2.mag(toTarget)
       if targetDist <= self.pickupRange then
-      
+
         if (self.restoreBase > 0) or (self.restorePercentage > 0) then
           world.sendEntityMessage(self.targetEntity, "restoreHealth", self.restoreBase, self.restorePercentage)
         end
         if (self.restoreBase2 > 0) or (self.restorePercentage2 > 0) then
-	        world.sendEntityMessage(self.targetEntity, "restoreEnergy", self.restoreBase2, self.restorePercentage2)        
+	        world.sendEntityMessage(self.targetEntity, "restoreEnergy", self.restoreBase2, self.restorePercentage2)
         end
 
         self.pickedUp = true

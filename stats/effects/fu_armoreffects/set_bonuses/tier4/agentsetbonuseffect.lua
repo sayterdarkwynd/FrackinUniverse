@@ -38,5 +38,5 @@ function checkWeapons()
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,{})
-	end	
+	end
 end

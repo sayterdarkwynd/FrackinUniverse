@@ -50,7 +50,7 @@ function populateList(collectionName)
   if collectionName ~= nil and string.match(collectionName, "Visible") then
     return
   end -- special case: do nothing
-  
+
 -- END CUSTOM CODE
   widget.clearListItems(self.list)
   self.collectionName = collectionName
@@ -94,7 +94,7 @@ function populateList(collectionName)
     local collected = 0 -- CUSTOM
     for _,collectable in pairs(collectables) do
       local item = widget.addListItem(self.list)
-      
+
       if collectable.icon ~= "" then
         local imageSize = rect.size(root.nonEmptyRegion(collectable.icon))
         local scaleDown = math.max(math.ceil(imageSize[1] / self.iconSize[1]), math.ceil(imageSize[2] / self.iconSize[2]))

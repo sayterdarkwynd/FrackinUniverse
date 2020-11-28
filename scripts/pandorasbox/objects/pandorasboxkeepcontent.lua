@@ -84,7 +84,7 @@ function smashContainer(objectType)
 			if usedSlots > 0 then
 				containerEmpty = false
 				objParameters["price"] = price
-				objParameters["content"] = content 
+				objParameters["content"] = content
 				objParameters["inventoryIcon"] = inventoryIcon .. "?border=1;00FF00?fade=007800;0.1"
 				objParameters["shortdescription"] = shortdescription .. " ^green;^reset;"
 				objParameters["description"] = description
@@ -96,7 +96,7 @@ function smashContainer(objectType)
 	if next(objParameters) ~= nil or keepContent == false then
 		objParameters["keepContent"] = keepContent
 	end
-	
+
 	object.smash(true)
 	world.spawnItem(object.name(), entity.position(), 1, objParameters)
 end

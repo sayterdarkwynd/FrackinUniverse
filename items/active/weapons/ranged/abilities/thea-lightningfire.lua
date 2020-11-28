@@ -46,7 +46,7 @@ function TheaLightningFire:fire()
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", (self.energyUsage or 0) * self.dt) do
 	--Play the weapon's active animation
 	animator.setAnimationState("weapon", "active")
-	
+
     local beamStart = self:firePosition()
 	--Beam End for checking terrain collision
     local beamEndGround = vec2.add(beamStart, vec2.mul(vec2.norm(self:aimVector(0)), self.lightningDistanceGround))
@@ -56,7 +56,7 @@ function TheaLightningFire:fire()
     local beamLength = self.lightningDistanceGround
 
 	local beamHasCollision = false
-	
+
 	--Check for tile collision along aline
     local collidePoint = world.lineCollision(beamStart, beamEndGround)
     if collidePoint then
@@ -64,7 +64,7 @@ function TheaLightningFire:fire()
       beamLength = world.magnitude(beamStart, beamEnd)
 	  beamHasCollision = true
     end
-	
+
 	--Check for enemy collision along line
 	local targets = world.entityLineQuery(beamStart, beamEndEnemies, {
       withoutEntityId = activeItem.ownerEntityId(),
@@ -93,7 +93,7 @@ function TheaLightningFire:fire()
 	if beamHasCollision == true then
 	  self.weapon:setDamage(self.damageConfig, {self.weapon.muzzleOffset, {self.weapon.muzzleOffset[1] + beamLength, self.weapon.muzzleOffset[2]}}, self.fireTime)
 	end
-	
+
 	--Draw lightning using these parameters
 	-- amount, width, forks, branching, color, length, hasCollision(Bool)
 	self:setLightning(self.lightningAmount, self.lightningWidth, self.lightningForks, self.lightningBranchingAmount, self.lightningColour, beamLength, beamHasCollision)
@@ -117,7 +117,7 @@ function TheaLightningFire:setLightning(amount, width, forks, branching, color, 
       forkAngleRange = 0.75,
       width = width,
       color = color
-    }	
+    }
 	bolt.itemStartPosition = self.weapon.muzzleOffset
 	if collision == true then
 	  bolt.itemEndPosition = vec2.add(self.weapon.muzzleOffset, {length, 0})

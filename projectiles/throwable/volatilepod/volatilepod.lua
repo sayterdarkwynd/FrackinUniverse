@@ -18,7 +18,7 @@ function releaseMonsters()
 	local monsterType=config.getParameter("monsterType","gleap")
 	local damageTeam = entity.damageTeam()
 	local params=root.monsterParameters(monsterType)
-	
+
 	params.dropPools = {}
 	params.dropPools["default"] = "empty"
 	params.level = config.getParameter("monsterLevel", 1)
@@ -26,7 +26,7 @@ function releaseMonsters()
 	params.damageTeamType = damageTeam.type
 	params.aggressive = true
 	--params.persistent = true
-	
+
 	if params.statusSettings then
 		if params.statusSettings.resources then
 			params.statusSettings.resources.timeToLive={deltaValue=-1,initialValue=30}
@@ -36,7 +36,7 @@ function releaseMonsters()
 	else
 		projectile.die()
 	end
-	
+
 	if params.behaviorConfig then
 		if not params.behaviorConfig.spawnActions then
 			params.behaviorConfig.spawnActions={}
@@ -45,7 +45,7 @@ function releaseMonsters()
 	else
 		projectile.die()
 	end
-	
+
 	world.spawnMonster(monsterType, findCompanionSpawnPosition(mcontroller.position(),params.movementSettings.collisionPoly), params)
 	projectile.die()
 end

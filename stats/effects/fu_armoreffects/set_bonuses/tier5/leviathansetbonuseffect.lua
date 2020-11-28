@@ -21,7 +21,7 @@ function init()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 	effectHandlerList.armorBonusHandle2=effect.addStatModifierGroup({})
-	
+
 	if checkBiome({"ocean","sulphuricocean","aethersea","nitrogensea","strangesea","tidewater"}) then
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle2,armorBonus2)
 	end

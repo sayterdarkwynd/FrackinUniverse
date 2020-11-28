@@ -22,7 +22,7 @@ function init()
 			status.addEphemeralEffect(shield, effect.duration())
 		end
 	end
-	
+
 	mcontroller.setVelocity({0, 0})
 end
 

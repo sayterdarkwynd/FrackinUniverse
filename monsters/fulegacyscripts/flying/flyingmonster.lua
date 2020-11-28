@@ -118,7 +118,7 @@ function update(dt)
     end
 
     trackTarget()
-    
+
     -- Attacks can interrupt any normal state
     if self.target ~= 0 then
       if attacking() then

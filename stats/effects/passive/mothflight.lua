@@ -1,4 +1,4 @@
-function init() 
+function init()
   self.species = world.entitySpecies(entity.id())
   if not self.species == "saturn" then
     effect.die()
@@ -11,7 +11,7 @@ function init()
     baseValue = config.getParameter("healthDown",0)*(status.resourceMax("food"))
     self.tickTime = 1.0
     self.tickTimePenalty = 5.0
-    self.tickTimer = self.tickTime 
+    self.tickTimer = self.tickTime
     self.tickTimerPenalty = self.tickTimePenalty
 end
 
@@ -20,7 +20,7 @@ function daytimeCheck()
 end
 
 function undergroundCheck()
-	return world.underground(mcontroller.position()) 
+	return world.underground(mcontroller.position())
 end
 
 function getLight()
@@ -47,29 +47,29 @@ function update(dt)
     --food defaults
     hungerMax = { pcall(status.resourceMax, "food") }
     hungerMax = hungerMax[1] and hungerMax[2]
-    
+
     baseValue = config.getParameter("healthDown",0)*(status.resourceMax("food"))
     self.tickTimer = self.tickTimer - dt
     self.tickTimerPenalty = self.tickTimerPenalty - dt
     self.foodValue = status.resource("food")
-    
+
     if not daytime and lightLevel <= 60 or underground then --if its dark or underground, a saturnian can regen their food if its dark enough
 		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
 			self.tickTimer = self.tickTime
 			adjustedHunger = hungerLevel + (hungerLevel * 0.0075)
 			status.setResource("food", adjustedHunger)
-		end	
+		end
     end
-    if not daytime and lightLevel >= 60 then --if its night and they are in bright light, a saturnian can regen their food 
+    if not daytime and lightLevel >= 60 then --if its night and they are in bright light, a saturnian can regen their food
 		if (hungerLevel < hungerMax) and ( self.tickTimer <= 0 ) then
 			self.tickTimer = self.tickTime
 			adjustedHunger = hungerLevel + (lightLevel * 0.007)
 			status.setResource("food", adjustedHunger)
-		end	
+		end
     end
 end
 
 
 function uninit()
-  
+
 end

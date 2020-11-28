@@ -23,7 +23,7 @@ function fu_configureShipPet()
 		textTyper.init(cfg.TextData, text)
 		return
 	end
-	
+
 	local petConfigPane = root.assetJson("/interface/objectcrafting/fu_pethouse/fu_pethouse.config")
 	if petConfigPane and petConfigPane.gui then
 		petConfigPane.gui.itemGrid = nil

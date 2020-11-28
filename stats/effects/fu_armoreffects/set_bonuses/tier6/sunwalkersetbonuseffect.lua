@@ -13,7 +13,7 @@ armorBonus={
 	{stat = "extremepressureProtection", amount = 1},
 	{stat = "ffextremeheatImmunity", amount = 1},
 	{stat = "ffextremecoldImmunity", amount = 1},
-	{stat = "breathProtection", amount = 1}	
+	{stat = "breathProtection", amount = 1}
 }
 
 function init()

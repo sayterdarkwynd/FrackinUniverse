@@ -14,7 +14,7 @@ end
 
 function flopState.enteringState(stateData)
   -- sb.logInfo("Entering flop state")
-  
+
   animator.setAnimationState("movement", "flopping")
 end
 
@@ -42,5 +42,5 @@ function flopState.update(dt, stateData)
 end
 
 function flopState.leavingState(stateData)
-  
+
 end

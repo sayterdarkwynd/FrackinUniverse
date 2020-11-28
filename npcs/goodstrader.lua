@@ -37,7 +37,7 @@ function handleInteract(args)
 
   --if (config.getParameter("fuCharisma")) then
   --end
-  
+
   self.guiConfig.buyFactor = storage.currentBuyFactor
   self.guiConfig.sellFactor = storage.currentSellFactor
 

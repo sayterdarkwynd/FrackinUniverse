@@ -32,7 +32,7 @@ function hit()
 		-- If a monster doesn't implement pet.attemptCapture or its response is nil
 		-- then it isn't caught.
 		podData=world.callScriptedEntity(entity.id(), "capturable.attemptCapture", entity.id())
-		
+
 		if podData then
 			if not blocker then blocker=config.getParameter("blocker","warpedcapture") end
 			spawnFilledPod(podData)

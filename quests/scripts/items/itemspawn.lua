@@ -18,7 +18,7 @@ function growItem(message,isLocal,itemName)
 end
 
 function questStart()
-	
+
 end
 
 function questComplete()

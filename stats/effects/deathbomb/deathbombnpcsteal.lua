@@ -25,7 +25,7 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end
 
 function explode()
@@ -48,7 +48,7 @@ function explode()
 				end
 			end
 		end
-		
+
 		if util.tableSize(dropPool)>0 then
 			for _=1,config.getParameter("bonusRolls",1) do
 				if util.tableSize(dropPool) > 0 then

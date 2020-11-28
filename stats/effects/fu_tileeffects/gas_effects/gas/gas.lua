@@ -3,7 +3,7 @@ require "/scripts/unifiedGravMod.lua"
 function init()
 	--unifiedGravMod.initSoft()
 	--unifiedGravMod.init()
-  
+
   activateVisualEffects()
   self.liquidMovementParameter = {
     groundForce = 70,

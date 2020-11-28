@@ -12,11 +12,11 @@ function update(dt, fireMode, shiftHeld, moves)
       groundMovementModifier = self.increase,
       speedModifier = self.increase
     })
-    animator.setParticleEmitterActive("activatedLight", true)  
+    animator.setParticleEmitterActive("activatedLight", true)
 end
 
 function uninit()
-  animator.setParticleEmitterActive("activatedLight", false)  
+  animator.setParticleEmitterActive("activatedLight", false)
 end
 
 

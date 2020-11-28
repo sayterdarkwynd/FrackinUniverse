@@ -9,7 +9,7 @@ end
 
 function update(dt)
 	if oldUpdate then oldUpdate(dt) end
-	
+
 	if fuMonsterRegenPercent and type(fuMonsterRegenPercent) == "number" and fuMonsterRegenPercent ~= 0 then
 		status.modifyResourcePercentage("health",dt*((fuMonsterRegenUseSeconds and (1/fuMonsterRegenPercent)) or fuMonsterRegenPercent))
 	end

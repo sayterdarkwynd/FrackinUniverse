@@ -45,7 +45,7 @@ function update(args)
 					animator.setGlobalTag("skinColor", "?" .. splited[2])
 					done = done + 1
 				end
-				
+
 				if string.find(sb.printJson(result[i].image), "hair") ~= nil then
 					local hairColor = sb.printJson(result[i].image)
 					hairColor = hairColor:sub(2,-2)
@@ -53,7 +53,7 @@ function update(args)
 					animator.setGlobalTag("hairColor", "?" .. splited[2])
 					done = done + 1
 				end
-				
+
 				if done == 2 then
 					i = 13
 				end

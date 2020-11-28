@@ -11,7 +11,7 @@ function update(dt, fireMode, shiftHeld, moves)
   self.aimAngle, self.facingDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
   activeItem.setFacingDirection(self.facingDirection)
   updateAim()
- 
+
   if fireMode == "primary" and self.previousFireMode ~= "primary" then
     if self.timer == 1 then
       self.active = not self.active
@@ -26,7 +26,7 @@ function update(dt, fireMode, shiftHeld, moves)
       self.lastFireMode = fireMode
     end
   end
-    
+
 end
 
 function updateAim()

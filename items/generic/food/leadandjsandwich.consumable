@@ -1,0 +1,23 @@
+{
+  "itemName" : "leadandjsandwich",
+  "rarity" : "Common",
+  "price" : 55,
+  "category" : "preparedFood",
+  "inventoryIcon" : "leadandjsandwich.png",
+  "description" : "Don't eat this. ^yellow;Type: Robot^reset;\n^blue;+^white;1 ^blue;Madness^reset;",
+  "shortdescription" : "Pb & J",
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1000,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+ "effects" : [ [
+    "madnessgain",
+	{
+	"effect": "robot_food",
+      "duration" : 3
+	}
+  ] ],
+  "blockingEffects" : ["wellfed"]
+}

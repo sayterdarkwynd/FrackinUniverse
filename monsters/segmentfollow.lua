@@ -9,7 +9,7 @@ function update(dt)
 	  self.followRadius =  segmentRadius + self.parentRadius
 	  local movementSettings = config.getParameter("movementSettings")
 	  self.flySpeed = movementSettings.flySpeed
-	end	
+	end
 	monsterUpdate(dt)
 	if world.entityExists(self.parent and self.parent or -1) then
 		local distance 	= entity.distanceToEntity(self.parent)
@@ -23,6 +23,6 @@ function update(dt)
 		else
 		mcontroller.setVelocity(vec2.approach(distance,world.entityPosition(self.parent),self.parentRadius))
 		end
-		
+
 	end
 end

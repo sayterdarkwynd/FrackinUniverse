@@ -28,7 +28,7 @@ end
 
 function update(dt)
     if(count) then
-        time = time + dt  
+        time = time + dt
         if time >= 5 then
             animator.setAnimationState("racializer", "idle")
             --object.setInteractive(true)
@@ -36,20 +36,20 @@ function update(dt)
             count = false
         end
     end
-	
+
 	-- Delay timer for giving new item...
     if storage.doCntr == true then
         storage.counter = storage.counter + dt
     elseif storage.doCntr == false then --reset counter
         storage.counter = 0
     end
-    
+
     if storage.counter >= craftTime then -- place new item and reset
         world.containerSwapItems(entity.id(), storage.craftingData.itemNew,2)
 		storage.craftingData = {}
 		object.setConfigParameter("racialising", false)
         --sb.logInfo("New item placed in slot 2")
-        
+
         storage.doCntr = false
         storage.counter = 0
     end

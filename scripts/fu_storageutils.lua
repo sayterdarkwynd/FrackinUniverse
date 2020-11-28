@@ -22,7 +22,7 @@ function fu_storeItems(items, avoidSlots, spawnLeftovers)
 	end
 
 	local function contains(list, item)
-		for _, i in ipairs(list) do 
+		for _, i in ipairs(list) do
 			if i == item then return true end
 		end
 		return false

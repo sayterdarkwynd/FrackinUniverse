@@ -43,9 +43,9 @@ function update(dt, fireMode, shiftHeld)
       local level = config.getParameter("treasure.level")
       local seed = config.getParameter("treasure.seed")
       local treasure = root.createTreasure(pool, level, seed)
-      self.valueMadness = math.random(40,120) 
+      self.valueMadness = math.random(40,120)
       for _,item in pairs(treasure) do
-      
+
         player.addCurrency("fumadnessresource",self.valueMadness)
         player.giveItem(item)
       end

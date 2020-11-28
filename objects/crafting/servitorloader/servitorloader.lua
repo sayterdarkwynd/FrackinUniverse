@@ -57,7 +57,7 @@ function scanButton()
 			return
 		end
 	end
-	
+
 	printMonster()
 end
 
@@ -65,13 +65,13 @@ function loadMonster(invItem)
 	local data=root.itemConfig(invItem).config
 	if not data.botspawner then return true end
 	if not data.botspawner.type then return true end
-	
+
 	local name=data.shortdescription or "Broken Bot"
 	local desc=data.description or "Yup, you broke it."
 	local myType=data.botspawner.type
 	local imgData=root.monsterPortrait(myType)
 	local monsterData=root.monsterParameters(myType)
-	
+
 	item.parameters.tooltipFields.subtitle=name
 	item.parameters.description=desc
 	item.parameters.tooltipFields.objectImage=imgData
@@ -83,7 +83,7 @@ function loadMonster(invItem)
 
 		pet.portrait=imgData
 		pet.collisionPoly=monsterData.movementSettings.collisionPoly
-		
+
 		pet.config.type=myType
 		table.insert(buffer,pet)
 	end

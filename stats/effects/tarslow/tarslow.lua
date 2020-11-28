@@ -34,7 +34,7 @@ function update(dt)
 			groundMovementModifier = 0.5,
 			speedModifier = 0.65,
 			airJumpModifier = 0.80
-		})        
+		})
 	end
 
 end

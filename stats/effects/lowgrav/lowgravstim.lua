@@ -12,7 +12,7 @@ function init()
     ambulatingGroundFriction = 0.8,
     collisionEnabled = true,
     frictionEnabled = true
-  } 	
+  }
   script.setUpdateDelta(5)
 end
 
@@ -20,7 +20,7 @@ function update(dt)
 	    if mcontroller.zeroG() then
 		mcontroller.setYVelocity(math.min(-4,mcontroller.yVelocity() - 1));
 		mcontroller.controlParameters(self.liquidMovementParameter)
-	    end	
+	    end
 end
 
 function uninit()

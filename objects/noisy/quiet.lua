@@ -1,5 +1,5 @@
 function init()
-  self.random = math.random(1,2)	--50% can produce a corpse 
+  self.random = math.random(1,2)	--50% can produce a corpse
   object.setInteractive(true)
 end
 
@@ -18,6 +18,6 @@ function onNpcPlay(npcId)
 end
 
 function checkSarco()
-      world.spawnItem("wrappedbodybirb", object.position(), 1)  
+      world.spawnItem("wrappedbodybirb", object.position(), 1)
       object.smash(true)
 end

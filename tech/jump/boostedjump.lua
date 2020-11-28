@@ -7,9 +7,9 @@ end
 
 function applyTechBonus()
   self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
-  if not self.jumpBonus then 
-    self.jumpBonus = 1 
-  end  
+  if not self.jumpBonus then
+    self.jumpBonus = 1
+  end
 end
 
 function update(args)
@@ -22,7 +22,7 @@ function update(args)
   if jumpActivated and canMultiJump() then
     doMultiJump()
   else
-    mcontroller.controlModifiers({airJumpModifier = 1.15 * self.jumpBonus })  
+    mcontroller.controlModifiers({airJumpModifier = 1.15 * self.jumpBonus })
     if mcontroller.groundMovement() or mcontroller.liquidMovement() then
       refreshJumps()
     end

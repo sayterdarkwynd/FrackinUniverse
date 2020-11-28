@@ -48,7 +48,7 @@ end
 
 function update(dt)
     power.update(dt)
-	
+
 	-- Notify ITD but no faster than once per second.
 	if not scanTimer or (scanTimer > 1) then
 		transferUtil.loadSelfContainer()
@@ -63,7 +63,7 @@ function update(dt)
 		storage.timer=0
 	end
 	if storage.timer>=productionTime then
-		
+
 		local worldtype = world.type()
 		if worldtype == 'unknown' then
 			worldtype = world.getProperty("ship.celestial_type") or worldtype
@@ -71,7 +71,7 @@ function update(dt)
 		if not self.outputMap[worldtype] then
 			initMap(worldtype)
 		end
-		
+
 		local output = nil
 		local rarityroll = math.random(1, self.maxWeight[worldtype])
 
@@ -111,7 +111,7 @@ end
 
 function setDesc()
 	if not self.overrideScanTooltip then return end
-	
+
 	local color="^yellow;"
 	local info="Standby."
 
@@ -120,19 +120,19 @@ function setDesc()
 	if worldtype == 'unknown' then
 		worldtype = world.getProperty("ship.celestial_type") or worldtype
 	end
-	
+
 	local buffer={}
     local outputConfig = config.getParameter("outputs")
     local outputTable = outputConfig[worldtype] or outputConfig["default"] or {}
-	
+
 	--sb.logInfo("%s",outputTable)
-	
+
 	if type(outputTable) == "string" then
 		outputTable = outputConfig[outputTable] or outputConfig["default"] or {}
 	end
-	
+
 	local buffer2=""
-	
+
 	if self.rarityInfoLevel > 0 then
 		buffer2={}
 		for _,myTable in pairs(outputTable) do

@@ -20,7 +20,7 @@ function fire(dt)
 		fireDelta=fireDelta+dt
 		return
 	end
-	
+
 	local buffer=world.entityQuery(entity.position(),20,{includedTypes={"creature"}})
 	local buffer2={}
 	for _,id in pairs(buffer) do

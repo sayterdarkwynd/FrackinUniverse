@@ -27,7 +27,7 @@ function init()
 		self.effectiveRequiredPower=self.requiredPower*self.initialCraftDelay
 	end
 
-	storage.craftDelay = storage.craftDelay or self.initialCraftDelay
+	--storage.craftDelay = storage.craftDelay or self.initialCraftDelay
 	storage.combsProcessed = storage.combsProcessed or { count = 0 }
 	--sb.logInfo("centrifuge: %s", storage.combsProcessed)
 

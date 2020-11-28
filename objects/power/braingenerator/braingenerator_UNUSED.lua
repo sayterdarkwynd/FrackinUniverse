@@ -3,7 +3,7 @@ local deltaTime=0
 function init()
 	object.setInteractive(true)
 	object.setSoundEffectEnabled(false)
-	
+
 	storage.currentpowerprod = storage.currentpowerprod or 0
 	storage.fueledticks = storage.fueledticks or 0
 	storage.decayrate = storage.decayrate or 5
@@ -64,7 +64,7 @@ function update(dt)
 		storage.currentpowerprod = util.clamp((storage.currentpowerprod + storage.decayrate),0,100)
 	else -- oh no we've got no fuel
 		-- if the generator isn't active don't bother trying to refuel
-		
+
 		if storage.active == true then
 			-- try to get some fuel
 			local contents = world.containerItems(entity.id())
@@ -73,7 +73,7 @@ function update(dt)
 				storage.currentpowerprod = util.clamp((storage.currentpowerprod - storage.decayrate),0,100)
 				return
 			end
-			
+
 			for key, value in pairs(config.getParameter("acceptablefuel")) do
 				-- go through our fuel table and see if the contents of the fuel slot match
 				if key == contents[1].name then -- found it!
@@ -83,7 +83,7 @@ function update(dt)
 				end
 			end
 		end
-		
+
 		-- since the loop ends this update if it finds fuel, if we've reached this point
 		-- it means we didn't find any fuel so now we decrease power gradually
 		storage.currentpowerprod = util.clamp((storage.currentpowerprod - storage.decayrate),0,100)
@@ -95,16 +95,16 @@ function isn_getCurrentPowerOutput(divide)
 	local divisor = isn_countPowerDevicesConnectedOnOutboundNode(0)
 	---sb.logInfo("TGCPOD: Divisor is " .. divisor)
 	if divisor < 1 then divisor = 1 end
-	
+
 	local powercount = 0
 	if storage.currentpowerprod > 90 then powercount = 60
 	elseif storage.currentpowerprod > 70 then powercount = 45
 	elseif storage.currentpowerprod > 50 then powercount = 28
 	elseif storage.currentpowerprod > 30 then powercount = 15
-	elseif storage.currentpowerprod > 10 then powercount = 9	
+	elseif storage.currentpowerprod > 10 then powercount = 9
 	else powercount = 0 end
 	---sb.logInfo("TGCPOD: Powercount is" .. powercount)
-	
+
 	---sb.logInfo("THERMAL GENERATOR CURRENT POWER OUTPUT DEBUG END")
 	if divide then return powercount / divisor
 	else return powercount end

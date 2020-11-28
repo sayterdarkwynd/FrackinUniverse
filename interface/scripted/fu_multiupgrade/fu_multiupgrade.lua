@@ -429,7 +429,7 @@ function upgradeWeapon(upgradeItem,price)
 						mergeBuffer.stunChance=stunChance+(mergeBuffer.level*0.5)
 					end
 				end
-
+				mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 				upgradedItem.parameters=util.mergeTable(copy(upgradedItem.parameters),copy(mergeBuffer))
 
 				-- check if player gets Research randomly
@@ -568,6 +568,7 @@ function upgradeTool(upgradeItem,price)
 				end
 
 			end
+			upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
 			player.giveItem(upgradedItem)
 			checkResearchBonus()
 		end
