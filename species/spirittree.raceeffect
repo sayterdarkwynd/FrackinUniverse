@@ -39,23 +39,21 @@
 	//GLOW IN THE DARK SHOULD NOT BE APPENDED HERE. This effect is now included vanilla via a passive race status effect similar to novakidglow.
 	"scripts" : [
 		{
-			"script" : "/scripts/fr_scripts/spirittreeStuff.lua",
-			"args" : {
-				"daytimeConfig" : {
-					"stats" : [                  // Applied during the day
-						{ "stat" : "maxEnergy", "effectiveMultiplierMultiplier": 1.2 },
-						{ "stat" : "powerMultiplier", "effectiveMultiplier": 1.2 },
-						{ "stat" : "energyRegenPercentageRate", "effectiveMultiplier" : 1.10 }
-					]
-				},
-				"nightConfig" : {
-					"stats" : [                  // Applied at night
-						{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.85 },
-						{ "stat" : "powerMultiplier", "effectiveMultiplier": 0.85 },
-						{ "stat" : "energyRegenPercentageRate", "effectiveMultiplier" : 1.0 }
-					]
-				}
-			}
+			//"script" : "/scripts/fr_scripts/spirittreeStuff.lua",
+			//"args" : {
+				//"daytimeConfig" : {
+					//"stats" : [                  // Applied during the day
+					//	{ "stat" : "energyRegenPercentageRate", "effectiveMultiplier" : 1.10 }
+					//]
+				//},
+				//"nightConfig" : {
+				//	"stats" : [                  // Applied at night
+					//	{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.85 },
+					//	{ "stat": "powerMultiplier", "effectiveMultiplier": 0.85 },
+					//	{ "stat" : "energyRegenPercentageRate", "effectiveMultiplier" : 1.0 }
+				//	]
+				//}
+			//}
 		}
 	]
 }
