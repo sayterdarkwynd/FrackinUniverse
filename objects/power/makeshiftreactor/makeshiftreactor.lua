@@ -159,7 +159,7 @@ function isn_slotCoolantCheck(slot)
 		
 	if storage.currentHeat >= storage.maxHeat then
 	    world.spawnProjectile(config.getParameter("explosionProjectile", "reactormeltdown"), vec2.add(object.position(), config.getParameter("explosionOffset", {0,0})), entity.id(), {0,0})	
-		object.smash(true)
+		--object.smash(true)   --object is no longer detonated
     end
 	
 end
