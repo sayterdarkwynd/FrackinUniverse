@@ -43,6 +43,7 @@ function init()
 	storage.radiation = storage.radiation or 0
 	storage.active = true
 	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
+	self.timerPowerReduced = 0
 end
 
 function onInputNodeChange(args)
@@ -56,6 +57,10 @@ end
 
 
 function update(dt)
+	if self.timerFusionDisabled then 
+		self.timerFusionDisabled = self.timerFusionDisabled - 1
+	end
+
 	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
 		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
@@ -110,12 +115,8 @@ function update(dt)
 	-- the effects here don't addup in damage, just it creates more particles & more noise.
 	-- therefore I think we could rework this for a single instance. sayter said that he or someone else
 	-- could match this with the current radiation resistance
-	
-	--khe was here
-	
 	storage.currentHeat = math.min(storage.currentHeat + (powerout/2),storage.maxHeat)
 	isn_slotCoolantCheck(5)
-	
 	
 	for _,dink in ipairs(radiationRanges) do
         if storage.radiation >= dink.power then
@@ -147,6 +148,8 @@ function isn_powerSlotCheck(slotnum)
 end
 
 function isn_slotCoolantCheck(slot)
+	
+
 	local item = world.containerItemAt(entity.id(),slot)
 	local myLocation = entity.position()
 
@@ -160,6 +163,11 @@ function isn_slotCoolantCheck(slot)
 	if storage.currentHeat >= storage.maxHeat then
 	    world.spawnProjectile(config.getParameter("explosionProjectile", "reactormeltdown"), vec2.add(object.position(), config.getParameter("explosionOffset", {0,0})), entity.id(), {0,0})	
 		--object.smash(true)   --object is no longer detonated
+		storage.radiation = storage.radiation + 15  --large rad increase
+		storage.currentHeat = 1  --reset heat
+		power.setPower(0)
+		power.update(dt)
+		self.timerPowerReduced = 10
     end
 	
 end
@@ -197,11 +205,15 @@ function isn_doSlotDecay(slot)
 end
 
 function isn_getCurrentPowerOutput()
-	if not storage.active then return 0 end
-    local powercount = 0
-    for i=0,3 do
-        powercount = powercount + isn_powerSlotCheck(i)
-    end
-	--object.say(powercount)
-	return powercount
+		if not storage.active then return 0 end
+	    local powercount = 0
+	    for i=0,3 do
+	        powercount = powercount + isn_powerSlotCheck(i)
+	    end
+	    if self.timerPowerReduced >= 1 then 
+		  self.timerPowerReduced = self.timerPowerReduced -1
+		  powercount = 0 
+		end
+		--object.say(powercount)
+		return powercount		
 end
