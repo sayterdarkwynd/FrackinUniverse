@@ -1,7 +1,6 @@
 function init()
   effect.addStatModifierGroup({
-    { stat = "researchBonus", amount = config.getParameter("researchBonus") },
-    { stat = "protection", baseMultiplier =0.5 }
+    { stat = "researchBonus", amount = config.getParameter("researchBonus") }
   })
 end
 
