@@ -6,7 +6,7 @@ require "/scripts/vec2.lua"
 
 function init()
     power.init()
-	wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
+	wastestack = world.containerSwapItems(entity.id(), {name = "toxicwaste", count = 1, data={}}, 4)
 	object.setInteractive(true)
 	
 	radiationStates = {
@@ -17,29 +17,24 @@ function init()
 	}
 	
 	radiationRanges = {
-		{range=16,power=80},
-		{range=12,power=60},
-		{range=8,power=40},
-		{range=4,power=20}
+		{range=16,power=120},
+		{range=12,power=80},
+		{range=8,power=60},
+		{range=4,power=40}
 	}
 	
 	powerStates = {
-		{amount = 16, state = 'on'},
-		{amount = 9, state = 'med'},
+		{amount = 230, state = 'on'},
+		{amount = 150, state = 'med'},
 		{amount = 1, state = 'slow'},
 		{amount = 0, state = 'off'}
 	}
-	
+	--params
     storage.maxHeat = config.getParameter("maxHeat", 200)
-
-
-	
 	storage.currentHeat = storage.currentHeat or 0
-	
     storage.bonusWasteChance = config.getParameter("bonusWasteChance", 50)
     storage.fuels = config.getParameter("fuels")
     storage.coolant = config.getParameter("coolant")
-	
 	storage.radiation = storage.radiation or 0
 	storage.active = true
 	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
@@ -78,7 +73,7 @@ function update(dt)
 	if (not storage.active) or (not storage.active2) then
 		storage.radiation = math.max(storage.radiation - dt*5,0)
 		animator.setAnimationState("screen", "off")
-		animator.setAnimationState("screenbright", "off")		
+		animator.setAnimationState("screenbright", "off")	
 		power.setPower(0)
 		power.update(dt)
 		return
@@ -113,6 +108,7 @@ function update(dt)
 	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red");
 
 	storage.currentHeat = math.min(storage.currentHeat + (powerout/2),storage.maxHeat)
+	sb.logInfo(storage.currentHeat)
 	isn_slotCoolantCheck(5)
 	
 	for _,dink in ipairs(radiationRanges) do
@@ -138,7 +134,15 @@ end
 
 function isn_powerSlotCheck(slotnum)
     local item = world.containerItemAt(entity.id(), slotnum)
-    if not item then return 0 end
+    if not item then 
+		storage.radiation = storage.radiation - 5
+		animator.setAnimationState("screen", "off")
+		animator.setAnimationState("screenbright", "off")		
+		power.setPower(0)
+		power.update(dt)
+    	return 0 
+    end
+
 	return storage.fuels[item.name] and storage.fuels[item.name].power or 0
 end
 
