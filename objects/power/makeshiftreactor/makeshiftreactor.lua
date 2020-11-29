@@ -112,9 +112,6 @@ function update(dt)
 	local myLocation = entity.position()
 	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red");
 
-	-- the effects here don't addup in damage, just it creates more particles & more noise.
-	-- therefore I think we could rework this for a single instance. sayter said that he or someone else
-	-- could match this with the current radiation resistance
 	storage.currentHeat = math.min(storage.currentHeat + (powerout/2),storage.maxHeat)
 	isn_slotCoolantCheck(5)
 	
@@ -139,8 +136,6 @@ function isn_slotDecayCheck(slot)
 	return false
 end
 
-
-
 function isn_powerSlotCheck(slotnum)
     local item = world.containerItemAt(entity.id(), slotnum)
     if not item then return 0 end
@@ -148,60 +143,49 @@ function isn_powerSlotCheck(slotnum)
 end
 
 function isn_slotCoolantCheck(slot)
-	
-
 	local item = world.containerItemAt(entity.id(),slot)
 	local myLocation = entity.position()
 
     if item and storage.coolant[item.name] and storage.currentHeat > 50 then
 		storage.currentHeat = storage.currentHeat - (50)
-		world.containerConsumeAt(entity.id(),slot,1) --consume resource	
+		world.containerConsumeAt(entity.id(),slot,1) 
 	end
 	
 	animator.setAnimationRate(0.7 + 0.01*storage.currentHeat)
 		
 	if storage.currentHeat >= storage.maxHeat then
 	    world.spawnProjectile(config.getParameter("explosionProjectile", "reactormeltdown"), vec2.add(object.position(), config.getParameter("explosionOffset", {0,0})), entity.id(), {0,0})	
-		--object.smash(true)   --object is no longer detonated
 		storage.radiation = storage.radiation + 15  --large rad increase
 		storage.currentHeat = 1  --reset heat
 		power.setPower(0)
 		power.update(dt)
-		self.timerPowerReduced = 10
+		self.timerPowerReduced = 10 --after a boom, does not produce for 10 seconds
     end
 	
 end
 
 function isn_doSlotDecay(slot)
-
-	world.containerConsumeAt(entity.id(),slot,1) --consume resource
-
+	world.containerConsumeAt(entity.id(),slot,1) 
 	local waste = world.containerItemAt(entity.id(),4)
 	local wastestack
 
 	if waste then
-		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
 		if (waste.name == "toxicwaste") then
-		  -- sb.logInfo("increasing storage.radiation")
 		  storage.radiation = storage.radiation + 5
 		  wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 		else
-		  -- sb.logInfo("not toxic waste, ejecting")
-		  local wastecount = waste.count -- variable to ensure no change of quantities in between calculations.
-		  world.containerConsumeAt(entity.id(),4,wastecount) --delete waste
-		  world.spawnItem(waste.name,entity.position(),wastecount) --drop it on the ground
+		  local wastecount = waste.count 
+		  world.containerConsumeAt(entity.id(),4,wastecount) 
+		  world.spawnItem(waste.name,entity.position(),wastecount) 
 		end
-	else -- (waste == nil)
+	else 
 		wastestack = world.containerSwapItems(entity.id(),{name = "toxicwaste", count = 1, data={}},4)
 	end
 
-
 	if wastestack  and (wastestack.count > 0) then
-		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
+		world.spawnItem(wastestack.name,entity.position(),wastestack.count)
 		storage.radiation = storage.radiation + 5
 	end
-
-
 end
 
 function isn_getCurrentPowerOutput()
@@ -214,6 +198,5 @@ function isn_getCurrentPowerOutput()
 		  self.timerPowerReduced = self.timerPowerReduced -1
 		  powercount = 0 
 		end
-		--object.say(powercount)
 		return powercount		
 end
