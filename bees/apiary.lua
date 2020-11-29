@@ -395,17 +395,13 @@ function beeTick()
 						world.containerPutItemsAt(entity.id(), item, slot-1)
 						contents[slot] = world.containerItemAt(entity.id(), slot-1)
 					end
-				else
-					droneDecay(slot)
+				--else
+					--droneDecay(slot)
 				end
 			else
 				-- Kill drones if there's no queen present, and the no queen timer ran out
 				if noQueenTimer <= 0 then
-					local chanceRemove = math.random(100) --remove chance of drones
-					if chanceRemove > 50 then
-					  droneDecay(slot)
-					end
-					--droneDecay(slot)
+					droneDecay(slot)
 				end
 			end
 
@@ -774,9 +770,12 @@ end
 
 -- Kill drones based on their amount when no queen is present
 function droneDecay(slot)
-	local amount = contents[slot].count
-	world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(amount * beeData.droneDecayPercentile + beeData.droneDecayFlat))
-	contents[slot] = world.containerItemAt(entity.id(), slot-1)
+	self.chanceRemove = math.random(100) --remove chance of drones
+	local amount = contents[slot].count -- set the amount
+	if self.chanceRemove > 75 then--25% chance of removal
+		world.containerTakeNumItemsAt(entity.id(), slot-1, math.floor(amount * beeData.droneDecayPercentile + beeData.droneDecayFlat))
+		contents[slot] = world.containerItemAt(entity.id(), slot-1)
+	end	
 end
 
 -- Receives a slot and reduces the amount of drones there based on the drones mite resistance stat and the amount of mites
@@ -1047,11 +1046,6 @@ function getBiomeFavor(name)
 	-- That feeling when no enums/switch case
 	local favor = beeData.biomeLikeness[name][biome] or 2 --default is "liked" with no bonus to production
 
-	if favor == 0 then return -1 end -- deadly - halts production
-	if favor == 1 then return beeData.biomeDisliked end
-	if favor == 2 then return beeData.biomeLiked end
-	if favor == 3 then return beeData.biomeFavorite end
-
 	--frame immunity to biomes
 	if frameBonuses.radResistance then
 		if (biome == "alien") or (biome == "jungle") or (biome == "barren") or (biome == "barren2") or (biome == "barren3") or (biome == "chromatic") or (biome == "irradiated") or (biome == "metallicmoon") then
@@ -1079,6 +1073,10 @@ function getBiomeFavor(name)
 		end
 	end
 
+	if favor == 0 then return -1 end -- deadly - halts production
+	if favor == 1 then return beeData.biomeDisliked end
+	if favor == 2 then return beeData.biomeLiked end
+	if favor == 3 then return beeData.biomeFavorite end
 end
 
 -- Used to handled animation. Base = the apiary itself, bees = the bees flying around, loading = loading sign
