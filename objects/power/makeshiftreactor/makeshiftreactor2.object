@@ -1,12 +1,12 @@
 {
-  "objectName" : "makeshiftreactor",
+  "objectName" : "makeshiftreactor2",
   "rarity" : "Rare",
   "colonyTags" : [ "space", "power", "radioactive" ],
   "category" : "wire",
   "objectType" : "container",
   "price" : 2500,
   "description" : "Generates ^green;15-500w^reset; power from hydrogen isotopes. ^Red;Needs Liquid coolant.^reset; ^blue;Left Input^reset;: Power Switch",
-  "shortdescription" : "^cyan;Small Fusion Reactor^white;",
+  "shortdescription" : "^cyan;Fusion Reactor^white;",
   "race" : "generic",
   "printable" : false,
   
@@ -22,19 +22,19 @@
   "inventoryIcon" : "makeshiftreactor_inv.png",
   "orientations" : [
     {
-      "dualImage" : "makeshiftreactor_base.png",
+      "dualImage" : "makeshiftreactor_base2.png",
       "imagePosition" : [0, 0],
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
   ],
 
-  "animation" : "makeshiftreactor.animation",
+  "animation" : "makeshiftreactor2.animation",
   "animationParts" : {
-    "screen" : "makeshiftreactor_screen.png",
-    "screenbright" : "makeshiftreactor_screenbright.png",	
-    "hazard" : "makeshiftreactor_hazard.png",
-    "base" : "makeshiftreactor_base.png"
+    "screen" : "makeshiftreactor_screen2.png",
+    "screenbright" : "makeshiftreactor_screenbright2.png",	
+    "hazard" : "makeshiftreactor_hazard2.png",
+    "base" : "makeshiftreactor_base2.png"
   },
   "animationPosition" : [0, 0],
 
@@ -60,13 +60,13 @@
   "bonusWasteChance" : 50,
 
   "fuels" : {
-      "fu_hydrogen" :         { "power" : 15, "decayRate" : 50 },
-      "tritium" :             { "power" : 25, "decayRate" : 60  },
-      "helium3gasliquid" :    { "power" : 45, "decayRate" : 80 },
-      "deuterium" :           { "power" : 60,  "decayRate" : 120  },
-	    "solariumstar" :        { "power" : 55, "decayRate" : 150  }, 
-	    "ultronium" :           { "power" : 90, "decayRate" : 700 },
-	    "schrodingerscat" :     { "power" : 125, "decayRate" : 1400 }
+      "fu_hydrogen" :         { "power" : 25, "decayRate" : 50 },
+      "tritium" :             { "power" : 35, "decayRate" : 60 },
+      "helium3gasliquid" :    { "power" : 55, "decayRate" : 80 },
+      "deuterium" :           { "power" : 80,  "decayRate" : 120 },
+	    "solariumstar" :      { "power" : 65, "decayRate" : 150 }, 
+	    "ultronium" :         { "power" : 140, "decayRate" : 700 },
+	    "schrodingerscat" :   { "power" : 165, "decayRate" : 1400 }
   },
 
    "coolant" : {
