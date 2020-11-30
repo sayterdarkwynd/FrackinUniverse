@@ -62,7 +62,7 @@ function update(dt)
 			local found
 			for _,entity in pairs(entityIds) do
 				local aggro=world.entityAggressive(entity)
-				if aggro then
+				if not aggro then
 					trigger(true)
 					found=aggro
 					break
