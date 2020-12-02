@@ -108,6 +108,7 @@ function update(dt)
 	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red");
 
 	storage.currentHeat = math.min(storage.currentHeat + (powerout/8),storage.maxHeat)
+
 	--sb.logInfo(storage.currentHeat)
 	isn_slotCoolantCheck(5)
 	
