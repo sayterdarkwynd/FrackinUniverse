@@ -56,7 +56,7 @@ function unifiedGravMod.refreshGrav(dt)
 		elseif self.flying or (0==world.gravity(entity.position())) then
 			local fishbowl=((0==world.gravity(entity.position())) and 80) or (world.gravity(entity.position()))
 			--dbg("uGM.rG","FLOATING!")
-			mcontroller.addMomentum({0,-0.2*fishbowl*newGra*dt})
+			mcontroller.addMomentum({0,-0.2*fishbowl*newGrav*dt})
 		else
 			newGrav=newGrav+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
