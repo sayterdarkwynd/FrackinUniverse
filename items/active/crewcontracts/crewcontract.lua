@@ -19,11 +19,11 @@ function update(dt, fireMode, shiftHeld)
 			self.active=false
 			return
 		end
-
+			self.isUnique = config.getParameter("isUnique")
 			raceroller()
-				if shiftHeld then
+			if shiftHeld and self.isUnique~=1 then
 				self.crewrace = player.species()
-				end
+			end
 			item.consume(1)
 			local crewtype = config.getParameter("crewtype.crewname")
 			local seed = math.random(255)

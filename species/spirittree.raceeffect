@@ -1,9 +1,7 @@
 {
 	"stats": [
-		{ "stat": "foodDelta", "baseMultiplier": 0.8 },
-		
+		{ "stat": "foodDelta", "effectiveMultiplier": 0.8 },	
 		{ "stat": "maxHealth", "effectiveMultiplier": 0.8 },
-		
 		{ "stat": "physicalResistance", "amount": -0.3 },
 		{ "stat": "fireResistance", "amount": 0.1 },
 		{ "stat": "poisonResistance", "amount": -0.3 },
@@ -39,21 +37,21 @@
 	//GLOW IN THE DARK SHOULD NOT BE APPENDED HERE. This effect is now included vanilla via a passive race status effect similar to novakidglow.
 	"scripts" : [
 		{
-			//"script" : "/scripts/fr_scripts/spirittreeStuff.lua",
-			//"args" : {
-				//"daytimeConfig" : {
-					//"stats" : [                  // Applied during the day
-					//	{ "stat" : "energyRegenPercentageRate", "effectiveMultiplier" : 1.10 }
-					//]
-				//},
-				//"nightConfig" : {
-				//	"stats" : [                  // Applied at night
-					//	{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.85 },
-					//	{ "stat": "powerMultiplier", "effectiveMultiplier": 0.85 },
-					//	{ "stat" : "energyRegenPercentageRate", "effectiveMultiplier" : 1.0 }
-				//	]
-				//}
-			//}
+			"script" : "/scripts/fr_scripts/spirittreeStuff.lua",
+			"args" : {
+				"daytimeConfig" : {
+					"stats" : [                  // Applied during the day
+						{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.10 }
+					]
+				},
+				"nightConfig" : {
+					"stats" : [                  // Applied at night
+						{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.85 },
+						{ "stat": "powerMultiplier", "effectiveMultiplier": 0.85 },
+						{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.0 }
+					]
+				}
+			}
 		}
 	]
 }
