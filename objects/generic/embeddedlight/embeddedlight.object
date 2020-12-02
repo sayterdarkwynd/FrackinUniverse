@@ -1,0 +1,46 @@
+{
+  "objectName" : "embeddedlight",
+  "colonyTags" : ["light"],
+  "rarity" : "Common",
+  "description" : "A light hidden in the wall so well it's effectively invisible",
+  "shortdescription" : "Embedded Light",
+  "race" : "generic",
+  "scannable" : true,
+
+  "category" : "light",
+  "price" : 80,
+  "printable" : true,
+  "lightColor" : [220, 220, 220],
+
+  "apexDescription" : "A hidden light in the wall.",
+  "avianDescription" : "I prefer the glow of avolite crystals, myself.",
+  "floranDescription" : "Sssecret light!",
+  "glitchDescription" : "Observant. A light hidden in the wall.",
+  "humanDescription" : "Can't see anything here, but it sure is bright!",
+  "hylotlDescription" : "I appreciate the subtlety of this light source, though I do wish its light was a little more natural.",
+
+  "inventoryIcon" : "/objects/outpost/outpostlight/outpostlighticon.png",
+  "orientations" : [
+    {
+      "image" : "embeddedlight.png:<color>.<frame>",
+      "imagePosition" : [-0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+  
+  "animation" : "/objects/wired/light/lighttogglebgfullbright.animation",
+  "animationParts" : {
+    "bg" : "embeddedlight.png",
+    "fg" : "embeddedlight.png"
+  },
+
+  "scripts" : [ "/objects/wired/light/light.lua" ],
+  "scriptDelta" : 60,
+  
+  "interactive" : false,
+
+  "inputNodes" : [ [0, 0] ]
+}
