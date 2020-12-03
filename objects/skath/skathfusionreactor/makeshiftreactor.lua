@@ -107,7 +107,8 @@ function update(dt)
 	local myLocation = entity.position()
 	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red");
 
-	storage.currentHeat = math.min(storage.currentHeat + (powerout/2),storage.maxHeat)
+	storage.currentHeat = math.min(storage.currentHeat + (powerout/8),storage.maxHeat)
+
 	--sb.logInfo(storage.currentHeat)
 	isn_slotCoolantCheck(5)
 	
@@ -151,7 +152,7 @@ function isn_slotCoolantCheck(slot)
 	local myLocation = entity.position()
 
     if item and storage.coolant[item.name] and storage.currentHeat > 50 then
-		storage.currentHeat = storage.currentHeat - (50)
+		storage.currentHeat = storage.currentHeat - (storage.coolant[item.name] and storage.coolant[item.name].coldFactor or 0)
 		world.containerConsumeAt(entity.id(),slot,1) 
 	end
 	
