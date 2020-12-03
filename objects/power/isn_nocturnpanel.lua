@@ -18,11 +18,11 @@ function update(dt)
       local genmult = 0
 
       if light <= 0.01 then
-        genmult = 4
+        genmult = 7
       elseif light <= 0.15 then
-        genmult = 3
+        genmult = 5
       elseif light <= 0.35 then
-        genmult = 2
+        genmult = 3
       elseif light <= 0.50 then
         genmult = 1
       end
@@ -31,11 +31,11 @@ function update(dt)
 
       local generated = math.min(self.powerLevel * genmult,4) -- max at 4 just in case.
 
-      if genmult >= 4 then
+      if genmult >= 7 then
         animator.setAnimationState("meter", "4")
-      elseif genmult >= 3 then
+      elseif genmult >= 5 then
         animator.setAnimationState("meter", "3")
-      elseif genmult >= 2 then
+      elseif genmult >= 3 then
         animator.setAnimationState("meter", "2")
       elseif genmult > 0 then
         animator.setAnimationState("meter", "1")
