@@ -114,12 +114,12 @@ function sayToEntity(args, board)
 	local dialogMode = config.getParameter("dialogMode", "static")
 
 	if dialog == nil then
-		local eType,species=entityVariant()
+		--[[local eType,species=entityVariant()
 		if eType=="npc" then
 			sb.logError("/scripts/actions/dialog.lua: Dialog type %s not specified in %s, of species %s", args.dialogType, eType,species)
 		else
 			sb.logError("/scripts/actions/dialog.lua: Dialog type %s not specified in %s", args.dialogType, eType)
-		end
+		end]]
 		--dialog={"<^red;MISSING^reset;>"}
 		--dialogMode="static"
 		return false
