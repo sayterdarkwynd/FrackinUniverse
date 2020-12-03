@@ -110,18 +110,19 @@ end
 -- param entity
 -- param tags
 function sayToEntity(args, board)
-	local dialog = args.dialog and speciesDialog(args.dialog, args.entity) or queryDialog(args.dialogType, args.entity);
+	local dialog = args.dialog and speciesDialog(args.dialog, args.entity) or queryDialog(args.dialogType, args.entity)
 	local dialogMode = config.getParameter("dialogMode", "static")
 
 	if dialog == nil then
 		local eType,species=entityVariant()
 		if eType=="npc" then
-			sb.logError("Dialog type %s not specified in %s, of species %s", args.dialogType, eType,species)
+			sb.logError("/scripts/actions/dialog.lua: Dialog type %s not specified in %s, of species %s", args.dialogType, eType,species)
 		else
-			sb.logError("Dialog type %s not specified in %s", args.dialogType, eType)
+			sb.logError("/scripts/actions/dialog.lua: Dialog type %s not specified in %s", args.dialogType, eType)
 		end
-		dialog={"<^red;MISSING^reset;>"}
-		dialogMode="static"
+		--dialog={"<^red;MISSING^reset;>"}
+		--dialogMode="static"
+		return false
 	end
 
 	if dialogMode == "static" then
