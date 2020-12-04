@@ -13,6 +13,9 @@ function init()
 	message.setHandler("checkUnlockableShipUnlocked", function(_, _, universeFlag)
 		return {disableUnlockableShips = self.miscShipConfig.disableUnlockableShips, unlocked = world.universeFlagSet(universeFlag)}
 	end)
+	
+	-- To fix the isssue with old BYOS ships
+	world.setProperty("fuChosenShip", false)
 end
 
 function update()
