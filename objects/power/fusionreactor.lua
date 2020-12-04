@@ -14,8 +14,8 @@ function init()
 	storage.highPower = config.getParameter("highPower", 0)
 
 	radiationStates = {
-		{amount = 140, state = 'danger'},
-		{amount = 75, state = 'warn'},
+		{amount = storage.highPower, state = 'danger'},
+		{amount = storage.medPower, state = 'warn'},
 		{amount = 1, state = 'safe'},
 		{amount = 0, state = 'off'}
 	}
