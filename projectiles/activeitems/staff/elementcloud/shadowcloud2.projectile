@@ -1,10 +1,10 @@
 {
-  "projectileName" : "shadowelementcloud",
+  "projectileName" : "shadowelementcloud2",
   "physics" : "hover",
   "timeToLive" : 6,
   "image" : "shadowcloud.png",
   "animationCycle" : 0.4,
-  "lightColor" : [28, 28, 28],
+  "lightColor" : [0, 0, 0],
   "frameNumber" : 5,
   "windupFrames" : 7,
   "periodicActions" : [
@@ -58,7 +58,7 @@
       ]
     }
   ],
-
+  "statusEffects" : [ "darkstalker"],
   "actionOnReap" : [
     {
       "action" : "sound",
@@ -69,14 +69,14 @@
   "speed" : 0,
   "power" : 10,
   "damageKind" : "shadow",
-  "damagePoly" : [ ],
+  "damagePoly" : [ [10,5.5],[-10,5.5],[-10,-5.5],[10,-5.5] ],
   "emitters" : [ "shadowsmoke2" ],
 
   "renderLayer" : "Projectile+1",
   "orientationLocked" : true,
 
   "bounces" : -1,
-  "onlyHitTerrain" : true,
+  "onlyHitTerrain" : false,
 
   "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
   "scriptDelta" : 1,
@@ -86,30 +86,7 @@
     "controlForce" : 30
   },
 
-  "timedActions" : [
-    {
-      "delayTime" : 0.5,
-      "loopTime" : 0.2,
-      "loopTimeVariance" : 0.05,
-      "action" : "projectile",
-      "type" : "shadowrain",
-      "config" : {},
-      "inheritDamageFactor" : 0.15,
-      "direction" : [0, -1],
-      "offsetRange" : [-1.75, -0.5, 1.75, -0.5]
-    },
-    {
-      "delayTime" : 0.6,
-      "loopTime" : 0.2,
-      "loopTimeVariance" : 0.05,
-      "action" : "projectile",
-      "type" : "shadowrain",
-      "config" : {},
-      "inheritDamageFactor" : 0.15,
-      "direction" : [0, -1],
-      "offsetRange" : [-1.75, -0.5, 1.75, -0.5]
-    }
-  ],
+  "timedActions" : [],
 
   "persistentAudio" : "/sfx/melee/barrier_create_poison.ogg"
 }
