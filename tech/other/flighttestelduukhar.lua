@@ -71,7 +71,7 @@ function update(args)
 		self.forceTimer = nil
 	end
 
-	if status.resource("energy") < 1 then
+	if (status.resource("energy") < 1) or (mcontroller.liquidPercentage() >= 0.50) then
 		deactivate()
 	end
 
@@ -180,6 +180,7 @@ function deactivate()
 		status.clearPersistentEffects("glide")
 		animator.setParticleEmitterActive("feathers", false)
 		self.boostSpeed = 8
+		status.removeEphemeralEffect("lowgravflighttech")
 		status.addEphemeralEffects{{effect = "nofalldamage", duration = 2}}
 	end
 	self.active = false

@@ -9,9 +9,13 @@ function init()
 	wastestack = world.containerSwapItems(entity.id(), {name = "toxicwaste", count = 1, data={}}, 4)
 	object.setInteractive(true)
 	
+	--state params
+	storage.medPower = config.getParameter("medPower", 0)
+	storage.highPower = config.getParameter("highPower", 0)
+
 	radiationStates = {
-		{amount = 140, state = 'danger'},
-		{amount = 75, state = 'warn'},
+		{amount = storage.highPower, state = 'danger'},
+		{amount = storage.medPower, state = 'warn'},
 		{amount = 1, state = 'safe'},
 		{amount = 0, state = 'off'}
 	}
@@ -107,7 +111,8 @@ function update(dt)
 	local myLocation = entity.position()
 	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red");
 
-	storage.currentHeat = math.min(storage.currentHeat + (powerout/2),storage.maxHeat)
+	storage.currentHeat = math.min(storage.currentHeat + (powerout/8),storage.maxHeat)
+
 	--sb.logInfo(storage.currentHeat)
 	isn_slotCoolantCheck(5)
 	
@@ -151,7 +156,7 @@ function isn_slotCoolantCheck(slot)
 	local myLocation = entity.position()
 
     if item and storage.coolant[item.name] and storage.currentHeat > 50 then
-		storage.currentHeat = storage.currentHeat - (50)
+		storage.currentHeat = storage.currentHeat - (storage.coolant[item.name] and storage.coolant[item.name].coldFactor or 0)
 		world.containerConsumeAt(entity.id(),slot,1) 
 	end
 	

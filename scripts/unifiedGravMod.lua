@@ -50,12 +50,13 @@ function unifiedGravMod.refreshGrav(dt)
 		--dbg("uGM.rG@first: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position())})
 		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
 		local gravNorm=status.stat("gravityNorm")
-		if (0==world.gravity(entity.position())) then
-			--mcontroller.addMomentum({0,-1*80*newGrav*0.2*dt})
-			--temporary fix.
-		elseif self.gravFlightOverride or status.statPositive("gravFlightOverride") or self.flying then
+
+		if self.gravFlightOverride or status.statPositive("gravFlightOverride") then
+			--nothing
+		elseif self.flying or (0==world.gravity(entity.position())) then
+			local fishbowl=((0==world.gravity(entity.position())) and 80) or (world.gravity(entity.position()))
 			--dbg("uGM.rG","FLOATING!")
-			mcontroller.addMomentum({0,-1*world.gravity(entity.position())*newGrav*0.2*dt})
+			mcontroller.addMomentum({0,-0.2*fishbowl*newGrav*dt})
 		else
 			newGrav=newGrav+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
