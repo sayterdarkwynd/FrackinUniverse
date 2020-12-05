@@ -49,7 +49,7 @@ function unifiedGravMod.refreshGrav(dt)
 		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature.
 		--dbg("uGM.rG@first: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position())})
 		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
-		local gravNorm=status.stat("gravityNorm")
+		local gravNorm=((status.statPositive("fuswimming") and 0.0) or 1.0) * status.stat("gravityNorm")
 
 		if self.gravFlightOverride or status.statPositive("gravFlightOverride") then
 			--nothing
