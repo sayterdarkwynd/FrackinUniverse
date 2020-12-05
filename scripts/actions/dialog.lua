@@ -33,8 +33,8 @@ function queryDialog(dialogKey, targetId)
 	end
 end
 
-function speciesDialog(dialog, targetId)
-	local species = context().species and context().species() or "default"
+function speciesDialog(dialog, targetId, overrideToDefault)
+	local species = (not overrideToDefault and (context().species and context().species())) or "default"
 	dialog = dialog[species] or dialog.default
 
 	local targetDialog
@@ -70,7 +70,7 @@ function randomizeDialog(list)
 end
 
 function randomChatSound()
-	local chatSounds = config.getParameter("chatSounds", {})
+	local chatSounds = config.getParameter("chatSounds") or {}
 
 	local speciesSounds = chatSounds[npc.species()] or chatSounds.default
 	if not speciesSounds then return nil end
@@ -110,9 +110,9 @@ end
 -- param entity
 -- param tags
 function sayToEntity(args, board)
-	local dialog = args.dialog and speciesDialog(args.dialog, args.entity) or queryDialog(args.dialogType, args.entity)
-	local dialogMode = config.getParameter("dialogMode", "static")
-
+	local dialog = (args.dialog and (speciesDialog(args.dialog, args.entity) or speciesDialog(args.dialog) or speciesDialog(args.dialog, args.entity,true) or speciesDialog(args.dialog,nil,true))) or queryDialog(args.dialogType, args.entity)
+	local dialogMode = config.getParameter("dialogMode") or "static"
+	--sb.logInfo("eE: %s",{z=args,a=args.dialog or "FUCK! It's a nil.", b=args.dialog and speciesDialog(args.dialog, args.entity),c=args.dialog and speciesDialog(args.dialog),d=args.dialog and speciesDialog(args.dialog, args.entity,true),e=args.dialog and speciesDialog(args.dialog,nil,true),f=args.dialog and queryDialog(args.dialogType, args.entity)})
 	if dialog == nil then
 		--[[local eType,species=entityVariant()
 		if eType=="npc" then
