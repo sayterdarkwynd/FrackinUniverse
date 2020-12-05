@@ -1,39 +1,6 @@
 require "/scripts/util.lua"
 power = {}
 
---[[function power.updateInputs()
-	power.input={}
-	power.inContainers={}
-	power.input=object.getInputNodeIds(power.inDataNode);
-	local buffer={}
-	for inputSource,nodeValue in pairs(power.input) do
-		local temp=world.callScriptedEntity(inputSource,"isPower")
-		if temp ~= nil then
-			for entId,position in pairs(temp) do
-				buffer[entId]=position
-			end
-		end
-	end
-	power.inContainers=buffer
-end
-
-function power.updateOutputs()
-	power.output={}
-	power.outContainers={}
-	power.output=object.getOutputNodeIds(power.outDataNode);
-	local buffer={}
-	for outputSource,nodeValue in pairs(power.output) do
-		local temp=world.callScriptedEntity(outputSource,"power.sendContainerOutputs")
-		if temp then
-			for entId,position in pairs(temp) do
-				buffer[entId]=position
-			end
-		end
-	end
-	power.outContainers=buffer
-end]]
-
-
 function power.update(dt)
 	if not power.warmedUp then
 		power.kick()
