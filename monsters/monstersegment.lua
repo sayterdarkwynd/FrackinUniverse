@@ -29,9 +29,9 @@ function init()
   --TODO reimplement non-dynamic children
   self.behavior = behavior.behavior(config.getParameter("behavior"), sb.jsonMerge(config.getParameter("behaviorConfig", {}), skillBehaviorConfig()), _ENV)
   self.board = self.behavior:blackboard()
-  
+
   self.board:setPosition("spawn", storage.spawnPosition)
-  
+
   self.collisionPoly = mcontroller.collisionPoly()
 
   if animator.hasSound("deathPuff") then
@@ -108,7 +108,7 @@ function init()
   self.segmentArray = type(self.child) == 'table' and self.child or nil
   self.child = self.segmentArray and self.segmentArray[self.segments] or self.child
 
-  if not config.getParameter("parent") then 
+  if not config.getParameter("parent") then
     self.head = entity.id()
     message.setHandler("headDamage", function(_,__,notification)
      self.damaged = true
@@ -121,18 +121,18 @@ function init()
   self.totalSegments = self.totalSegments and self.totalSegments or config.getParameter("totalSegments")
 
   status.setStatusProperty('coordinator',
-    {segmentNumber = self.totalSegments - self.segments, 
-     totalSegments = self.totalSegments, 
+    {segmentNumber = self.totalSegments - self.segments,
+     totalSegments = self.totalSegments,
      level = monster.level()})
 
-  if self.segments > 0 then 
+  if self.segments > 0 then
   self.child = world.spawnMonster(self.child, mcontroller.position(),
     {
-    head = self.head and self.head or config.getParameter("head"), 
-    parent = entity.id(), 
+    head = self.head and self.head or config.getParameter("head"),
+    parent = entity.id(),
     segmentMonster = config.getParameter("segmentMonster"),
     totalSegments = self.totalSegments,
-    segments = self.segments - 1, 
+    segments = self.segments - 1,
     parentRadius = config.getParameter("radius"),
     damageBar = false,
     dynamic = config.getParameter("dynamicSegments") or config.getParameter("dynamic"),
@@ -145,7 +145,7 @@ function update(dt)
   if config.getParameter("facingMode", "control") == "transformation" then
     mcontroller.controlFace(1)
   end
-  
+
   capturable.update(dt)
   self.damageTaken:update()
 

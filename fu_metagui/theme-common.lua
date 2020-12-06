@@ -10,9 +10,9 @@ theme.assets = { -- default assets
   button = mg.ninePatch "button",
   scrollBar = mg.ninePatch "scrollBar",
   textBox = mg.ninePatch "textBox",
-  
+
   checkBox = mg.asset "checkBox.png",
-  
+
   itemSlot = mg.asset "itemSlot.png",
   itemRarity = mg.asset "itemRarity.png",
 } local assets = theme.assets
@@ -74,7 +74,7 @@ function tdef.drawIconButton(w)
     if w.state == "press" then file = file .. "?brightness=-50"
     elseif not w.hoverImage then file = file .. "?brightness=50" end
   end
-  
+
   c:drawImageDrawable(file, vec2.mul(c:size(), 0.5), 1.0)
 end
 
@@ -83,7 +83,7 @@ function tdef.drawCheckBox(w)
   local state
   if w.state == "press" then state = ":toggle"
   else state = w.checked and ":checked" or ":idle" end
-  
+
   c:drawImageDrawable(assets.checkBox .. state, vec2.mul(c:size(), 0.5), 1.0)
 end
 

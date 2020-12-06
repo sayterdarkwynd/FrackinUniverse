@@ -1,71 +1,80 @@
 {
   "objectName" : "skathfusionreactor",
-  "colonyTags" : ["skath"],
-  "printable" : false,
   "rarity" : "Rare",
+  "colonyTags" : [ "space", "power", "radioactive" ],
   "category" : "wire",
-  "price" : 400,
-  "lightColor" : [0, 240, 255],
-  "flickerDistance" : 10.2,
-  "flickerStrength" : 1.55,
-  "flickerTiming" : 5,
-  "description" : "A fusion reactor made by the skath. It provides a huge amount of energy.",
-  "shortdescription" : "Skath Fusion Reactor",
-  "race" : "skath",
+  "objectType" : "container",
+  "price" : 4500,
+  "description" : "Generates ^green;35-800w^reset; power from hydrogen isotopes. ^Red;Needs Liquid coolant.^reset; ^blue;Left Input^reset;: Power Switch",
+  "shortdescription" : "^cyan;Large Fusion Reactor^white;",
+  "race" : "generic",
+  "printable" : false,
+  
+  "apexDescription" : "It might explode and kill me, but cheap power is cheap power.",
+  "avianDescription" : "Building this may have been a bad idea.",
+  "floranDescription" : "What iss 'coolant'?",
+  "glitchDescription" : "Uneasy. I am not immune to radiation.",
+  "humanDescription" : "I'm sure nothing will go wrong.",
+  "hylotlDescription" : "I feel like living dangerously.",
+  "novakidDescription" : "Now this is some good clean livin'!",
+  
 
-  "apexDescription" : "According to my readings, in this tank the power of stars is harnessed.",
-  "avianDescription" : "This beam of light in there appears to be really dangerous. Better don't touch it.",
-  "floranDescription" : "Bright light hurtsss Floransss eyes!",
-  "glitchDescription" : "Intrigued. This fusion reactor generates a huge amount of power.",
-  "humanDescription" : "I heard on earth people tried to harness fusion reactors as well. It didn't end well.",
-  "hylotlDescription" : "While I do highly disapprove Skath tech, this device is astounding.",
-  "novakidDescription" : "Gettin some mighty comfortable feeling around this thing. It feels familiar somehow.",
-
-        "skathDescription" : "The heart and the pinnacle of our technology are fusion reactors like these. They are commonly found in our daily tech.",
-//  "volarianDescription" : "TODO.",
-//  "placeholderDescription" : "TODO.",
-
-  "inventoryIcon" : "skathfusionreactoricon.png",
+  "inventoryIcon" : "skathfusionreactor_inv.png",
   "orientations" : [
     {
-      "dualImage" : "skathfusionreactor.png:<color>.<4>",
-      "imagePosition" : [-8, 0],
-
+      "dualImage" : "skathfusionreactor_base.png",
+      "imagePosition" : [-32, 0],
       "spaceScan" : 0.1,
       "anchors" : [ "top", "bottom" ]
     }
   ],
-  
-  "soundEffect" : "/sfx/objects/terraforge_loop1.ogg",
-  "soundEffectRangeMultiplier" : 2.0,
-  
-  "scripts" : [
-    "/objects/wired/switch/switch.lua"
-  ],
-  "scriptDelta" : 5,
 
-  "animation" : "/objects/wired/switch/switch3.animation",
-  "animationCustom" : {
-    "sounds" : {
-      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
-      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
-    }
-  },
+  "animation" : "makeshiftreactor.animation",
   "animationParts" : {
-    "switch" : "skathfusionreactor.png"
+    "screen" : "skathfusionreactor_screen.png",
+    "screenbright" : "skathfusionreactor_screenbright.png",	
+    "hazard" : "skathfusionreactor_hazard.png",
+    "base" : "skathfusionreactor_base.png"
   },
-  "animationPosition" : [-8, 0],
+  "animationPosition" : [0, 0],
 
-  "outputNodes" : [ [0, 0] ],
+  "slotCount" : 6,
+  "uiConfig" : "/objects/power/makeshiftreactor/makeshiftreactor.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
 
-  "npcToy" : {
-    "ownerOnly" : true,
-    "influence" : [
-      "wallbutton"
-    ],
-    "defaultReactions" : {},
-    "preciseStandPositionLeft" : [-1.0, 0.0],
-    "preciseStandPositionRight" : [1.0, 0.0],
-    "maxNpcs" : 1
-  }
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fusionreactor.lua" ],
+  "scriptDelta" : 60,
+
+  "inputNodes" : [ [1, 2], [2,2]],
+  "outputNodes" : [ [1, 1] ],
+  "isn_powerSupplier" : true,
+  "powertype" : "output",
+  
+  "smashSounds" : [ "/sfx/gun/megablast1.ogg" ],
+  "explosionProjectile" : "reactormeltdown",
+  "explosionOffset" : [1, 2],
+
+  "maxHeat"	:	200,
+  "bonusWasteChance" : 50,
+  "medPower" : 120,
+  "highPower" : 240,
+
+  "fuels" : {
+      "fu_hydrogen" :         { "power" : 35, "decayRate" : 50 },
+      "tritium" :             { "power" : 55, "decayRate" : 60  },
+      "helium3gasliquid" :    { "power" : 60, "decayRate" : 80 },
+      "deuterium" :           { "power" : 90,  "decayRate" : 120  },
+      "liquiddeuterium" :     { "power" : 90,  "decayRate" : 120  },
+	    "solariumstar" :      { "power" : 105, "decayRate" : 150  }, 
+	    "ultronium" :         { "power" : 150, "decayRate" : 700 },
+	    "schrodingerscat" :   { "power" : 200, "decayRate" : 1400 }
+  },
+
+   "coolant" : {
+      "liquidwater" :             { "coldFactor" : 10, "decayRate" : 10 },
+      "liquidnitrogenitem" :      { "coldFactor" : 80, "decayRate" : 50 },
+      "toxicwaste" :              { "coldFactor" : 40, "decayRate" : 2 },  
+      "cryonicextract" :          { "coldFactor" : 125, "decayRate" : 80 }
+  } 
 }

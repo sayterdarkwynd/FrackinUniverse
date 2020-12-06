@@ -15,12 +15,12 @@ function init()
 
 	self.forceRepop = true						    -- Whether to repopulate the list next update
 	self.cursorTracker = widget.bindCanvas("cursorTracker")
-	
+
 	self.popupDelayTime = 0.3
 	self.popupDelay = 0
 	self.popupPos = {-9999, -9999}
 	self.popupMouseBuffer = 8
-	
+
 	categories()
 	-- initializing the available techs
 	for i,tech in ipairs(self.lockedTechs) do
@@ -31,7 +31,7 @@ function init()
 			self.lockedTechs[i] = nil  -- nil instead of table.remove to preserve order
 		end
 	end
-	
+
 	movePopup({-9999, -9999}, 0)
 	widget.setButtonEnabled("btnCraft", false)
 end
@@ -70,13 +70,13 @@ function update(dt)
 	updateSearch()
 	populateItemList(self.forceRepop)
 	reloadCraftable()
-	
+
 	self.popupDelay = self.popupDelay - dt
 	local newPos = self.cursorTracker:mousePosition()
 	if self.popupDelay <= 0 or pointDist(self.popupPos, newPos) > self.popupMouseBuffer then
 		movePopup({-9999, -9999}, 0)
 	end
-	
+
 	self.forceRepop = false
 end
 
@@ -206,7 +206,7 @@ function setCanUnlock()
 	if self.selectedData then
 		enableButton = canCraft(self.selectedData)
 	end
-	
+
 	widget.setButtonEnabled("btnCraft", enableButton)
 end
 
@@ -221,9 +221,9 @@ function doUnlock()
 		local tech = self.selectedData
 		if tech then
 			local craftable = canCraft(tech)
-			
+
 			if not (craftable or player.isAdmin()) then return end
-			
+
 			for k,v in pairs(tech.recipe) do
 				if isCurrency(v) then
 					player.consumeCurrency(v.name, v.count)
@@ -231,7 +231,7 @@ function doUnlock()
 					player.consumeItem(v)
 				end
 			end
-			
+
 			if tech.item then
 				world.sendEntityMessage(player.id(), "addCollectable", "fu_tech", tech.item)
 				local techItem = root.itemConfig(tech.item)
@@ -240,7 +240,7 @@ function doUnlock()
 					player.giveBlueprint(blueprint)
 				end
 			end
-			
+
 			player.makeTechAvailable(tech.tech)
 			player.enableTech(tech.tech)
 			populateItemList(true)
@@ -285,7 +285,7 @@ end
 
 function swapRecipe()
 	setCanUnlock()
-	
+
 	if self.selectedData then
 		if not hasPrereqs(self.selectedData.prereq) then
 			local missing = ""
@@ -300,7 +300,7 @@ function swapRecipe()
 		else
 			widget.setText("techDescription", root.techConfig(self.selectedData.tech).description)
 		end
-		
+
 		widget.setImage("techIcon", root.techConfig(self.selectedData.tech).icon)
 	else
 		widget.setText("techDescription", "")

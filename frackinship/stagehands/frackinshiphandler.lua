@@ -5,11 +5,23 @@ require "/interface/objectcrafting/fu_racializer/fu_racializer_gui.lua"
 function init()
 	message.setHandler("createShip", createShip)
 	self.shipDungeonId = config.getParameter("shipDungeonId", 10101)
+	self.miscShipConfig = root.assetJson("/frackinship/configs/misc.config")
+	message.setHandler("checkUnlockableShipDisabled", function()
+		-- To make hopefully make this config value server side instead of client side
+		return {disableUnlockableShips = self.miscShipConfig.disableUnlockableShips, universeFlags = world.universeFlags()}
+	end)
+	message.setHandler("checkUnlockableShipUnlocked", function(_, _, universeFlag)
+		return {disableUnlockableShips = self.miscShipConfig.disableUnlockableShips, unlocked = world.universeFlagSet(universeFlag)}
+	end)
+	
+	-- To fix the isssue with old BYOS ships
+	world.setProperty("fuChosenShip", false)
 end
 
 function update()
 	if self.placingShip  and world.dungeonId(entity.position()) == self.shipDungeonId then
 		world.setProperty("fu_byos", true)
+		world.setProperty("fuChosenShip", false)
 		racialiseShip()
 		local players = world.players()
 		for _, player in ipairs (players) do
@@ -25,8 +37,11 @@ function createShip(_, _, ship, playerRace, replaceMode)
 	self.ship = ship.ship
 	replaceMode = replaceMode or {dungeon = "fu_byosblankquarter", size = {512, 512}}
 	if ship then
+		ship.offset = ship.offset or {-6, 12}
+		ship.offset[1] = math.min(ship.offset[1], -1)
+		ship.offset[2] = math.max(ship.offset[2], 1)
 		world.placeDungeon(replaceMode.dungeon, getReplaceModePosition(replaceMode.size))
-		world.placeDungeon(ship.ship, vec2.add({1024, 1024}, ship.offset or {-6, 12}), self.shipDungeonId)
+		world.placeDungeon(ship.ship, vec2.add({1024, 1024}, ship.offset), self.shipDungeonId)
 		self.placingShip = true
 	end
 end
@@ -36,7 +51,7 @@ function getReplaceModePosition(size)
 	local halfSize = vec2.div(size, 2)
 	position[1] = position[1] - halfSize[1]
 	position[2] = position[2] + halfSize[2] + 1
-	
+
 	return position
 end
 
@@ -62,7 +77,7 @@ function racialiseShip()
 		treasure = util.mergeTable(treasure, newTreasure)
 	end
 	local activateShip = true
-	
+
 	-- Object racialisation
 	local objects = world.objectQuery(entity.position(), config.getParameter("racialiseRadius", 128))
 	local raceTableOverride = root.assetJson("/frackinship/configs/racetableoverride.config")
@@ -112,7 +127,7 @@ function racialiseShip()
 				end
 			end
 		end
-		
+
 		-- Ship pet setting (works on all objects with ship pets)
 		if world.getObjectParameter(object, "shipPetType") then
 			local newPetObject
@@ -133,7 +148,7 @@ function racialiseShip()
 				world.callScriptedEntity(object, "init")
 			end
 		end
-		
+
 		-- Treasure placing (can be placed in any object with enough space that isn't a fuel hatch (this part isn't tested))
 		if treasure then
 			local containerSize = world.containerSize(object)
@@ -144,7 +159,7 @@ function racialiseShip()
 				treasure = nil
 			end
 		end
-		
+
 		-- Trigger activate ship SAIL text
 		if activateShip and ((racialiserType and racialiserType == "techstation") or string.find(world.entityName(object), "techstation")) then
 			world.sendEntityMessage(object, "activateShip")

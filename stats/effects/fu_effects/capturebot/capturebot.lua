@@ -5,7 +5,7 @@ function init()
 	end
 	effect.setParentDirectives(config.getParameter("directives", ""))
 	self.healthPercentage = config.getParameter("healthPercentage", 0.1)
-	
+
 	effect.addStatModifierGroup({{stat = "deathbombDud", amount = 1}})
 
 	if (status.isResource("stunned")) and (not status.statPositive("stunImmunity")) and (not status.isResource("food")) then

@@ -10,7 +10,7 @@ function init()
   })
   --setGravityMultiplier()
   --activateVisualEffects()
-  
+
   script.setUpdateDelta(5)
 end
 

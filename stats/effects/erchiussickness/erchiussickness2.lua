@@ -35,7 +35,7 @@ function update(dt)
   end
 
   status.modifyResource("health", -self.dps * dt)
-  
+
   local monsterPosition = self.findMonster()
   if monsterPosition then
     if not self.messaged then

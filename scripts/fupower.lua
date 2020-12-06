@@ -1,19 +1,44 @@
+require "/scripts/util.lua"
 power = {}
 
 function power.update(dt)
 	if not power.warmedUp then
-		power.init()
+		power.kick()
 		power.warmedUp=true
 	end
-	if config.getParameter('powertype') then
-		if config.getParameter('powertype') == 'battery' then
+	if self.powerType then
+		if self.pulseTimer and self.pulseTimer >= 1.0 then
+			self.pulseTimer=0.0
+			local inputCounter=0
+			local outputCounter=0
+			for i=0,object.inputNodeCount()-1 do
+				if object.isInputNodeConnected(i) then
+					local idlist = object.getInputNodeIds(i)
+					inputCounter=inputCounter+util.tableSize(idlist)
+				end
+			end
+			for i=0,object.outputNodeCount()-1 do
+				if object.isOutputNodeConnected(i) then
+					local idlist = object.getOutputNodeIds(i)
+					outputCounter=outputCounter+util.tableSize(idlist)
+				end
+			end
+			if (self.pulseCount and (self.pulseCount>=10)) or ((self.powerType ~= 'battery') and ((self.lastInputCount~=inputCounter) or (self.lastOutputCount~=outputCounter))) then
+				power.kick()
+			elseif self.pulseCount and self.pulseCount<10 then
+				self.pulseCount=self.pulseCount+1
+			end
+		else
+			self.pulseTimer=(self.pulseTimer or 0) + dt
+		end
+		if self.powerType == 'battery' then
 			storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
 		else
 			power.sendPowerToBatteries()
 		end
 		if storage.power and storage.power > 0 then
 			storage.energy = storage.power * dt
-			if config.getParameter('powertype') == 'battery' then
+			if self.powerType == 'battery' then
 				storage.energy = math.min(storage.power,storage.storedenergy)
 				storage.storedenergy = storage.storedenergy - storage.energy
 			end
@@ -24,58 +49,68 @@ function power.update(dt)
 end
 
 function power.consume(amount)
-	if power.getTotalEnergy() >= amount then
-		for i=1,#storage.entitylist.output do
-			energy = power.getEnergy(storage.entitylist.output[i])
-			if energy > 0 then
-				energy = math.min(energy,amount)
-				callEntity(storage.entitylist.output[i],'power.remove',energy)
-				amount = amount - energy
+	if (type(amount)=="number") then
+		if (amount>0) then
+			if power.getTotalEnergy() >= amount then
+				for i=1,#self.entitylist.output do
+					energy = power.getEnergy(self.entitylist.output[i])
+					if energy > 0 then
+						energy = math.min(energy,amount)
+						callEntity(self.entitylist.output[i],'power.remove',energy)
+						amount = amount - energy
+					end
+					if amount == 0 then
+						return true
+					end
+				end
+				for i=1,#self.entitylist.battery do
+					energy = power.getEnergy(self.entitylist.battery[i])
+					if energy > 0 then
+						energy = math.min(energy,amount)
+						callEntity(self.entitylist.battery[i],'power.remove',energy)
+						amount = amount - energy
+					end
+					if amount == 0 then
+						return true
+					end
+				end
+			else
+				return false
 			end
-			if amount == 0 then
-				return true
-			end
+		else
+			return true
 		end
-		for i=1,#storage.entitylist.battery do
-			energy = power.getEnergy(storage.entitylist.battery[i])
-			if energy > 0 then
-				energy = math.min(energy,amount)
-				callEntity(storage.entitylist.battery[i],'power.remove',energy)
-				amount = amount - energy
-			end
-			if amount == 0 then
-				return true
-			end
-		end
-	else
-		return false
 	end
 end
 
 function power.sendPowerToBatteries()
-	if (storage.energy or 0) > 0 then
-		for key,value in pairs(storage.entitylist.battery) do
-			amount = math.min((storage.energy or 0),(callEntity(value,'power.getStorageLeft') or 0))
-			storage.energy = (storage.energy or 0) - amount
-			callEntity(value,'power.receivePower',amount)
-			if storage.energy == 0 then
-				break
+	if (type(self.entitylist)=="table") and (type(self.entitylist.battery)=="table") then
+		if (storage.energy or 0) > 0 then
+			for key,value in pairs(self.entitylist.battery) do
+				amount = math.min((storage.energy or 0),(callEntity(value,'power.getStorageLeft') or 0))
+				storage.energy = (storage.energy or 0) - amount
+				callEntity(value,'power.receivePower',amount)
+				if storage.energy == 0 then
+					break
+				end
 			end
 		end
 	end
 end
 
 function power.onNodeConnectionChange(arg,iterations)
-	if config.getParameter('powertype') then
-		if (config.getParameter('powertype') == 'battery') then return arg end
+	if self.powerType then
+		local inputCounter=0
+		local outputCounter=0
+		if (self.powerType == 'battery') then return arg end
 		--sb.logInfo("iterations: %s",iterations)
 		iterations=(iterations and iterations + 1) or 1
 		if arg then
 			entitylist = arg
 		else
-			if config.getParameter('powertype') == 'battery' then
+			if self.powerType == 'battery' then
 				entitylist = {battery = {entity.id()},output = {},all = {entity.id()}}
-			elseif config.getParameter('powertype') == 'output' then
+			elseif self.powerType == 'output' then
 				entitylist = {battery = {},output = {entity.id()},all = {entity.id()}}
 			else
 				entitylist = {battery = {},output = {},all = {entity.id()}}
@@ -85,6 +120,7 @@ function power.onNodeConnectionChange(arg,iterations)
 			for i=0,object.inputNodeCount()-1 do
 				if object.isInputNodeConnected(i) then
 					local idlist = object.getInputNodeIds(i)
+					inputCounter=inputCounter+util.tableSize(idlist)
 					for value in pairs(idlist) do
 						powertype = callEntity(value,'isPower',iterations)
 						if powertype then
@@ -108,6 +144,7 @@ function power.onNodeConnectionChange(arg,iterations)
 			for i=0,object.outputNodeCount()-1 do
 				if object.isOutputNodeConnected(i) then
 					local idlist = object.getOutputNodeIds(i)
+					outputCounter=outputCounter+util.tableSize(idlist)
 					for value in pairs(idlist) do
 						powertype = callEntity(value,'isPower',iterations)
 						if powertype then
@@ -134,38 +171,46 @@ function power.onNodeConnectionChange(arg,iterations)
 		if arg then
 			return entitylist
 		else
-			storage.entitylist = entitylist
+			self.entitylist = entitylist
 			for i=2,#entitylist.all do
 				callEntity(entitylist.all[i],'updateList',entitylist)
 			end
 		end
+		self.lastInputCount=inputCounter
+		self.lastOutputCount=outputCounter
 	end
 end
 
 function power.getTotalEnergy()
 	local energy = 0
-	if not storage.entitylist then
-		return 0
-	end
-	for i=1,#storage.entitylist.output do
-		energy = energy + power.getEnergy(storage.entitylist.output[i])
-	end
-	for i=1,#storage.entitylist.battery do
-		energy = energy + power.getEnergy(storage.entitylist.battery[i])
+	if type(self.entitylist)=="table" then
+		if type(self.entitylist.output)=="table" then
+			for i=1,#self.entitylist.output do
+				energy = energy + power.getEnergy(self.entitylist.output[i])
+			end
+		end
+		if type(self.entitylist.battery)=="table" then
+			for i=1,#self.entitylist.battery do
+				energy = energy + power.getEnergy(self.entitylist.battery[i])
+			end
+		end
 	end
 	return energy
 end
 
 function power.getTotalEnergyNoBattery()
 	local energy = 0
-	if not storage.entitylist then
-		return 0
-	end
-	for i=1,#storage.entitylist.output do
-		energy = energy + power.getEnergyNoBattery(storage.entitylist.output[i])
-	end
-	for i=1,#storage.entitylist.battery do
-		energy = energy + power.getEnergyNoBattery(storage.entitylist.battery[i])
+	if type(self.entitylist)=="table" then
+		if type(self.entitylist.output)=="table" then
+			for i=1,#self.entitylist.output do
+				energy = energy + power.getEnergyNoBattery(self.entitylist.output[i])
+			end
+		end
+		if type(self.entitylist.battery)=="table" then
+			for i=1,#self.entitylist.battery do
+				energy = energy + power.getEnergyNoBattery(self.entitylist.battery[i])
+			end
+		end
 	end
 	return energy
 end
@@ -180,7 +225,7 @@ end
 
 function power.getEnergyNoBattery(id)
 	if not id or id == entity.id() then
-		return ((config.getParameter('powertype') ~= 'battery') and storage.energy) or 0
+		return ((self.powerType ~= 'battery') and storage.energy) or 0
 	else
 		return callEntity(id,'power.getEnergyNoBattery') or 0
 	end
@@ -191,17 +236,19 @@ function onNodeConnectionChange(arg)
 end
 
 function isPower()
-	return config.getParameter('powertype')
+	return self.powerType
 end
 
 function updateList(list)
-	storage.entitylist = list
+	self.entitylist = list
 end
 
 function callEntity(id,...)
 	if world.entityExists(id) then
 		local pass,result=pcall(world.callScriptedEntity,id,...)
 		return pass and result
+	else
+		power.warmedUp=false
 	end
 end
 
@@ -237,8 +284,14 @@ function power.remove(amount)
 	storage.energy = storage.energy - amount
 end
 
-function power.init()
+function power.kick()
+	self.pulseCount=0
 	power.onNodeConnectionChange(nil,0)
+end
+
+function power.init()
+	power.kick()
+	self.powerType=config.getParameter('powertype')
 end
 
 function update(dt)

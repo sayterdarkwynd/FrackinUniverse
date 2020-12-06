@@ -11,14 +11,14 @@ armorBonus={
 	{stat = "snowslowImmunity", amount = 1},
 	{stat = "fumudslowImmunity", amount = 1},
 	{stat = "slimestickImmunity", amount = 1},
-	{stat = "iceslipImmunity", amount = 1},		
+	{stat = "iceslipImmunity", amount = 1},
 	{stat = "slushslowImmunity", amount = 1}
 }
 
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonus1Handle=effect.addStatModifierGroup({})
-			
+
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)

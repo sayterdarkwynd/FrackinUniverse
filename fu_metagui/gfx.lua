@@ -41,7 +41,7 @@ function npp:drawToCanvas(c, f, r)
   local sr = {0, 0, self.frameSize[1], self.frameSize[2]}
   local invm = {self.margins[1], self.margins[4], self.margins[3], self.margins[2]}
   local img = string.format("%s:%s", self.image, f)
-  
+
   local rc, sc = npRs(r, invm), npRs(sr, invm)
   for i=1,9 do c:drawImageRect(img, sc[i], rc[i]) end
 end

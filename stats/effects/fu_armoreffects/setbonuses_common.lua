@@ -4,7 +4,7 @@ function setSEBonusInit(setBonusName, SetBonusEffects)
 	if not effectHandlerList then
 		effectHandlerList={}
 	end
-	
+
 	script.setUpdateDelta(6)
 	self.armourPresent = nil
 	self.setBonusName = setBonusName
@@ -80,13 +80,13 @@ function weaponCheck(tags)
 	local heldItemAlt=world.entityHandItem(entity.id(), "alt")
 
 	local temp=world.entityHandItemDescriptor(entity.id(), "primary")
-	
+
 	weaponCheckResults["either"]=false
 	weaponCheckResults["primary"]=false
 	weaponCheckResults["alt"]=false
 	weaponCheckResults["both"]=false
 	weaponCheckResults["twoHanded"]=(temp~=nil and root.itemConfig(temp).config.twoHanded) or false
-	
+
 	if heldItemPrimary and not self.SETagCache[heldItemPrimary] then
 		local result,buffer=pcall(root.itemConfig,heldItemPrimary)
 		if result and buffer then
@@ -120,7 +120,7 @@ function weaponCheck(tags)
 		end
 		self.SETagCache[heldItemAlt]=buffer2
 	end
-	
+
 	for _,tag in pairs(tags) do
 		tag=string.lower(tag)
 		local primaryHasTag=heldItemPrimary and self.SETagCache[heldItemPrimary][tag]

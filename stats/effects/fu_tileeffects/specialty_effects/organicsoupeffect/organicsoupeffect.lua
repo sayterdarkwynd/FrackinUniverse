@@ -27,7 +27,7 @@ function update(dt)
   healthLevel = status.resource("health")
   baseValue = config.getParameter("healthDown",0)*(status.resourceMax("food"))
   randVal = math.random(1,2)
-  
+
   self.tickTimer = self.tickTimer - dt
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
@@ -35,12 +35,12 @@ function update(dt)
 	  if (hungerLevel < hungerMax) then
 	    adjustedHunger = hungerLevel + (hungerLevel * 0.015)
 	    status.setResource("food", adjustedHunger)
-	  end    
+	  end
     else
 	  if (healthLevel < healthMax) then
 	    adjustedHealth = healthLevel + (healthLevel * 0.015*math.max(0,1+status.stat("healingBonus")))
 	    status.setResource("health", adjustedHealth)
-	  end    
+	  end
     end
 
   end

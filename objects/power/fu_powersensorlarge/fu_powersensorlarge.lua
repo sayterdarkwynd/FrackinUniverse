@@ -1,9 +1,5 @@
 require'/scripts/fupower.lua'
 
-function init()
-	script.setUpdateDelta(10)
-end
-
 function update(dt)
 	---sb.logInfo("POWER SENSOR RUN DEBUG aka PSRD")
 	local powerLevel = tostring(math.floor(power.getTotalEnergyNoBattery()))

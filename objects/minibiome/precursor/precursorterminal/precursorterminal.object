@@ -1,15 +1,28 @@
 {
   "objectName" : "precursorterminal",
-  "colonyTags" : ["precursor"],
-  "printable" : true,
+  "colonyTags" : ["precursor","crafting"],
+  "printable" : false,
   "rarity" : "legendary",
-  "price" : 1200,
-  "category" : "decorative",
+  "price" : 2400,
+  "category" : "crafting",
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/interface/windowconfig/crafting3dprinter.config",
+    "paneLayoutOverride": {
+      "windowtitle": {
+        "title": " Precursor Fabricator",
+        "subtitle": "Reshape pixels into known objects using ancient technology.",
+        "icon": {
+          "file": "/objects/minibiome/precursor/precursortrap/precursortrapicon.png"
+        }
+      }
+    }
+  },
   "lightColor" : [0, 102, 102],
   "lightPosition" : [-1, 0],
 
-  "description" : "Some sort of ancient computer console.",
-  "shortdescription" : "Precursor Computer Terminal",
+  "description" : "An ancient device used to form raw creatia into nearly any object imaginable.",
+  "shortdescription" : "Precursor Fabricator",
   "race" : "precursor",
 
   "inventoryIcon" : "precursorterminalicon.png",

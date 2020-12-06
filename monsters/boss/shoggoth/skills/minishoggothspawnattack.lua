@@ -97,7 +97,7 @@ function miniShoggothSpawnAttack.spit(direction)
 			projectileConfig.actionOnReap[index]=ac
 		end
 	end
-	
+
 	world.spawnProjectile(projectileType, monster.toAbsolutePosition(projectileOffset), entity.id(), direction, true, projectileConfig)
 end
 

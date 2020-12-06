@@ -1,12 +1,12 @@
 function init()
   effect.addStatModifierGroup({{stat = "fallDamageMultiplier", baseMultiplier = 0.10}})
-  self.movementParams = mcontroller.baseParameters()  
+  self.movementParams = mcontroller.baseParameters()
   local bounds = mcontroller.boundBox()
   self.liquidMovementParameter = {
-    airJumpProfile = { 
+    airJumpProfile = {
       jumpSpeed = 30
     }
-  }    
+  }
   script.setUpdateDelta(5)
 
 end
@@ -20,7 +20,7 @@ mcontroller.controlParameters(self.liquidMovementParameter)
 end
 
 function uninit()
-  
+
 end
 
 

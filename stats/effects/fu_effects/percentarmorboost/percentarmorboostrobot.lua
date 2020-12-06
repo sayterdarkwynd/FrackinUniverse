@@ -6,5 +6,5 @@ function init()
     {stat = "physicalResistance", amount = 0.8 }
   })
   animator.setParticleEmitterEmissionRate("drips", config.getParameter("emissionRate", 20))
-  animator.setParticleEmitterActive("drips", true) 
+  animator.setParticleEmitterActive("drips", true)
 end

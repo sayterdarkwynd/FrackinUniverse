@@ -4,7 +4,7 @@ function init()
   self.rotations = 3
   self.rotationTime = 0.15
   self.jumpDuration = 0.2 * self.jumpBonus
-  self.jumpTimer = self.jumpDuration 
+  self.jumpTimer = self.jumpDuration
   self.energyUsage = 25
 
   self.groundJump = false
@@ -61,13 +61,13 @@ function update(args)
       end
       status.addEphemeralEffect("screwattackinvuln", 1)
       flip(args.dt)
-    end 
+    end
   end
 
   if jumpActivated then
-    local yVel = mcontroller.yVelocity() 
+    local yVel = mcontroller.yVelocity()
 
-    if mcontroller.onGround() and not status.statPositive("activeMovementAbilities") and not mcontroller.liquidMovement() 
+    if mcontroller.onGround() and not status.statPositive("activeMovementAbilities") and not mcontroller.liquidMovement()
        and math.abs(mcontroller.xVelocity()) > 2 then
        self.groundJump = true
     else

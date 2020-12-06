@@ -528,7 +528,7 @@ flyTo = async(function(pos)
 			-- passed the target, or is very close
 			break
 		end
-		
+
 		if failsafeTimer>10.0 then
 			forceTeleport=true
 			break

@@ -10,14 +10,14 @@ armorBonus={
 
 function init()
 	setSEBonusInit(setName)
-	
+
 	effectHandlerList.specialBonusHandle=effect.addStatModifierGroup({})
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 	effectHandlerList.capeBonusHandle=effect.addStatModifierGroup({})
 	local elementalTypes=root.assetJson("/damage/elementaltypes.config")
 	local statBuffer={}
 	self.resistanceList={}
-	
+
 	for element,data in pairs(elementalTypes) do
 		if data.resistanceStat then
 			self.resistanceList[data.resistanceStat]=true
@@ -43,17 +43,17 @@ function loadElemental(capeLevel)
 	if not self.resistanceList then return {} end
 	local buffer={}
 	local threatLevel=(world.threatLevel())*0.08
-	
+
 	if capeLevel>0 then
 		table.insert(buffer,{stat="mentalProtection",effectiveMultiplier=1.0-capeLevel})
-		
+
 		table.insert(buffer,{stat="breathRegenerationRate",effectiveMultiplier=1+(capeLevel)})
 		table.insert(buffer,{stat="breathDepletionRate",effectiveMultiplier=1-(capeLevel)})
-		
+
 		for _,stat in pairs({"powerMultiplier","maxHealth","maxEnergy","protection"}) do
 			table.insert(buffer,{stat=stat,effectiveMultiplier=1.0+(capeLevel*0.1)})
 		end
-		
+
 		--sb.logInfo("a tl %s, cl %s",threatLevel,capeLevel)
 		threatLevel=threatLevel*(1+(capeLevel*0.5))
 		--sb.logInfo("b tl %s, cl %s",threatLevel,capeLevel)
@@ -61,12 +61,12 @@ function loadElemental(capeLevel)
 		status.setResource("breath",0)
 		table.insert(buffer,{stat="breathRegenerationRate",effectiveMultiplier=0})
 	end
-	
+
 	for stat,_ in pairs(self.resistanceList) do
 		table.insert(buffer,{stat=stat,amount=threatLevel})
 		table.insert(buffer,{stat=stat,effectiveMultiplier=0.5})
 	end
-	
+
 	lastCapeLevel=capeLevel
 	return buffer
 end

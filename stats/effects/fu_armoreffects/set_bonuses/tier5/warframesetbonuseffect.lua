@@ -24,7 +24,7 @@ function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
 	else
-		
+
 		checkWeapons()
 	end
 end

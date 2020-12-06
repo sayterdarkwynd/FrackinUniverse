@@ -60,10 +60,10 @@ function SonicSlash:fire()
 
   util.wait(self.stances.fire.duration, function()
     local damageArea = partDamageArea("specialswoosh")
-    
+
     self.weapon:setDamage(self.damageConfig, damageArea, self.fireTime)
   end)
-  
+
       local position = vec2.add(mcontroller.position(), {self.projectileOffset[1] * mcontroller.facingDirection(), self.projectileOffset[2]})
 	local params = {
     powerMultiplier = activeItem.ownerPowerMultiplier(),

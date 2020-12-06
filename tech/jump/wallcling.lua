@@ -62,7 +62,7 @@ function update(args)
       releaseWall()
     elseif jumpActivated and status.overConsumeResource("energy", self.energyCost) then
 	      doWallJump()
-	      animator.playSound("wallJumpSound")        
+	      animator.playSound("wallJumpSound")
     else
       if lrInput and lrInput ~= self.wall then
         self.wallReleaseTimer = self.wallReleaseTimer + args.dt
@@ -132,7 +132,7 @@ function grabWall(wall)
   self.wallGrabFreezeTimer = self.wallGrabFreezeTime
   self.wallReleaseTimer = 0
   mcontroller.setVelocity({0, 0})
- 
+
   tech.setParentState("fly")
   animator.playSound("wallGrab")
 end

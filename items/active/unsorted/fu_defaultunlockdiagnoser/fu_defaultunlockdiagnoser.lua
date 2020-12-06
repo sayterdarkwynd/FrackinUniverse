@@ -43,7 +43,7 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld)
-	
+
 end
 
 function activate(fireMode, shiftHeld)

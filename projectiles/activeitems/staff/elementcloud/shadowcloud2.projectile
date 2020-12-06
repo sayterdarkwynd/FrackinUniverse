@@ -1,0 +1,92 @@
+{
+  "projectileName" : "shadowelementcloud2",
+  "physics" : "hover",
+  "timeToLive" : 6,
+  "image" : "shadowcloud.png",
+  "animationCycle" : 0.4,
+  "lightColor" : [0, 0, 0],
+  "frameNumber" : 5,
+  "windupFrames" : 7,
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/shadowcloudpuff/shadowcloudpuff.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [3.5, 3.5],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.85,
+            "fade" : 1,
+            "size" : 0.8,
+            "layer" : "middle",
+            "timeToLive" : 0.45,
+            "variance" : {
+              "size" : 0.3,
+              "position" : [2.3, 1.0],
+              "initialVelocity" : [2.0, 2.0]
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/shadowcloudpuff/shadowcloudpuff.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1.5, 1.5],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.85,
+            "fade" : 1,
+            "size" : 0.3,
+            "layer" : "front",
+            "timeToLive" : 0.45,
+            "variance" : {
+              "size" : 0.2,
+              "position" : [2.3, 1.0],
+              "initialVelocity" : [2.0, 2.0]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "statusEffects" : [ "darkstalker"],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/elementcloud_break1.ogg", "/sfx/projectiles/elementcloud_break2.ogg" ]
+    }
+  ],
+
+  "speed" : 0,
+  "power" : 10,
+  "damageKind" : "shadow",
+  "damagePoly" : [ [10,5.5],[-10,5.5],[-10,-5.5],[10,-5.5] ],
+  "emitters" : [ "shadowsmoke2" ],
+
+  "renderLayer" : "Projectile+1",
+  "orientationLocked" : true,
+
+  "bounces" : -1,
+  "onlyHitTerrain" : false,
+
+  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+  "scriptDelta" : 1,
+
+  "controlMovement" : {
+    "maxSpeed" : 40,
+    "controlForce" : 30
+  },
+
+  "timedActions" : [],
+
+  "persistentAudio" : "/sfx/melee/barrier_create_poison.ogg"
+}

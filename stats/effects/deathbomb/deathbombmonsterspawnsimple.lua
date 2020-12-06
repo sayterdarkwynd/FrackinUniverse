@@ -2,7 +2,7 @@ function init()
 	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or ((world.entityType(entity.id())== "monster") and (world.callScriptedEntity(entity.id(),"getClass") == 'bee')) then
 		effect.expire()
 	end
-	
+
 	self.blinkTimer = 0
 	if not blocker then blocker=config.getParameter("blocker","deathbombmonsterspawnsimple") end
 end
@@ -23,7 +23,7 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end
 
 function explode()
@@ -38,7 +38,7 @@ function explode()
 			end
 		end
 		self.exploded = true
-		
+
 		if status.isResource("stunned") then
 			status.setResource("stunned",0)
 		end

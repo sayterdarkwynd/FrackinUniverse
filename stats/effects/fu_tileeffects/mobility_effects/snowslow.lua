@@ -3,7 +3,7 @@ function init()
   slows["snowslow"] = 0.53
   status.setStatusProperty("slows", slows)
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
-  animator.setParticleEmitterActive("drips", true)    
+  animator.setParticleEmitterActive("drips", true)
 end
 
 function update(dt)

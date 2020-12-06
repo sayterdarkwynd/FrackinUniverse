@@ -13,7 +13,7 @@ function init()
 
 	-- Targeting
 	self.targetQueryRange = config.getParameter("targetQueryRange",4)
-	checkIsTheDate(true)	
+	checkIsTheDate(true)
 	-- Initialize turret
 	object.setInteractive(false)
 
@@ -107,7 +107,7 @@ function fireState(targetId)
 		if math.abs(util.angleDiff(targetAngle, rotation)) < maxFireAngle then
 			fire(targetId)
 		end
-		
+
 		coroutine.yield()
 	end
 
@@ -136,9 +136,9 @@ end
 -- Coroutine
 function autoFire(target)
 	local types=targetTypes(target)
-	local rotation = animator.currentRotationAngle("gun") 		
+	local rotation = animator.currentRotationAngle("gun")
 	local aimVector = {object.direction() * math.cos(rotation), math.sin(rotation)}
-	
+
 	while true do
 		if types.eType=="player" then
 			world.sendEntityMessage(target,"applyStatusEffect","nude")
@@ -149,13 +149,13 @@ function autoFire(target)
 		elseif types.farmable or types.eType=="plant" then
 			local buffer={}
 			local entPos=world.entityPosition(target)
-			
+
 			for _,coord in pairs(world.objectSpaces(target)) do
 				local coordBuffer=vec2.add(coord,entPos)
 				coordBuffer={world.xwrap(coordBuffer[1]),coordBuffer[2]}
 				table.insert(buffer,coordBuffer)
 			end
-			
+
 			world.damageTiles(buffer, "foreground", world.entityPosition(target), "plantish", 0.2, 1)
 		end
 		animator.playSound("fire")
@@ -181,12 +181,12 @@ function validTarget(entityId)
 	if not world.entityExists(entityId) then
 		return false
 	end
-	
+
 	local targetPosition = world.entityPosition(entityId)
 	if world.lineTileCollision(self.basePosition, targetPosition) then
 		return false
 	end
-	
+
 	local toTarget = world.distance(targetPosition, self.basePosition)
 	if not ( world.magnitude(toTarget) > 2.5 and math.abs(math.atan(toTarget[2], object.direction() * toTarget[1])) < util.toRadians(360) ) then
 		return false
@@ -212,12 +212,12 @@ end
 
 function targetTypes(entityId)
 	local types={}
-	if not entityId or not world.entityExists(entityId) then 
+	if not entityId or not world.entityExists(entityId) then
 		types.void=true
 		return types
 	end
 	types.eType=world.entityType(entityId)
-	
+
 	if types.eType=="monster" then
 		types.farmbeast=not not world.callScriptedEntity(entityId,"isMonsterHarvestable")
 		types.bug=not not contains(world.callScriptedEntity(entityId,"config.getParameter","scripts") or {},"/monsters/bugs/bug.lua")
@@ -234,7 +234,7 @@ function targetTypes(entityId)
 			types.farmable=false
 		end
 	end
-	
+
 	return types
 end
 
@@ -256,7 +256,7 @@ end
 function setTET()
 	self.targetEntityTypes=config.getParameter("targetEntityTypes",{})
 	self.validTargetTypes=config.getParameter("validTargetTypes",{})
-	
+
 	if isTheDate then
 		for _,a in pairs({"player","npc"}) do
 			if contains(self.targetEntityTypes,a) then

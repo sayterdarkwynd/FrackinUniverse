@@ -103,7 +103,7 @@ function init()
 					if acronymTest and data.researchTree[tree][acronymTest] then
 						unlockType = type(data.researchTree[tree][acronymTest].unlocks)
 					end
-					
+
 					-- Remove acronyms that don't have a linked research
 					-- Otherwise relearn relevant blueprints
 					if not unlockType then
@@ -119,7 +119,7 @@ function init()
 					elseif unlockType == "string" then
 						player.giveBlueprint(data.researchTree[tree][data.acronyms[tree][acr]].unlocks)
 					end
-					
+
 				end
 				researchedTable[tree] = data.versions[tree]..data.versionSplitString..dataString
 			end
@@ -282,7 +282,7 @@ function treePickButton()
 		for i = 1, 9 do
 			widget.setVisible("priceItem"..i, true)
 		end
-		
+
 		local consumptionRules = getTreeConsumptionRules(selectedTree)
 
 		if consumptionRules.currency then
@@ -475,7 +475,7 @@ function populateTreeList()
 		if data.treeUnlocks[tree] then
 			if data.treeUnlocks[tree].quests then
 				for _, questId in ipairs(data.treeUnlocks[tree].quests) do
-					if not player.hasCompletedQuest(questId) then 
+					if not player.hasCompletedQuest(questId) then
 						isAvailable = false
 						break
 					end
@@ -643,7 +643,7 @@ function draw()
 	else
 		canvas:drawText("NO RESEARCH TREE SELECTED", {position = {canvasSize[1]*0.5, canvasSize[2]*0.5}, horizontalAnchor = "mid", verticalAnchor = "mid"}, 20, "#FF5E66F0")
 	end
-	
+
 	-- Draw currencies
 	local mousePosition = canvas:mousePosition()
 	for i, tbl in ipairs(data.currencies) do
@@ -765,10 +765,10 @@ function canvasClickEvent(position, button, isButtonDown)
 			clickTimeRemaining = data.clickTime
 		elseif clickTimeRemaining > 0 then
 			clickTimeRemaining = 0
-			
+
 			local isDouble = doubleClickCooldown > 0 and math.abs(position[1] - lastClickPos[1]) <= 1 and math.abs(position[2] - lastClickPos[2])
 			leftClick(position, isDouble)
-			
+
 			lastClickPos = {position[1], position[2]};
 		elseif lowQuality then
 			draw()
@@ -994,7 +994,7 @@ function isResearched(tree, acronym)
 			return true
 		end
 	end
-	
+
 	return false
 end
 

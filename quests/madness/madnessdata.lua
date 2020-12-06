@@ -7,13 +7,28 @@ function init()
 	self.threatBonus=0
 	self.madnessResearchBonus = 0
 	self.researchBonus = 0
+
 	self.researchCount = player.currency("fuscienceresource") or 0
+	self.protheonCount = player.currency("fuprecursorresource")/10 or 0
+	if self.protheonCount > 10 then -- protheon bonus never surpasses 100 in calculations (+10, as we use protheonCount / 10)
+		self.protheonCount = 10
+	end
+	self.madnessCount = player.currency("fumadnessresource") or 0
+	self.geneCount = player.currency("fugeneticmaterial") or 0
+
 	self.baseVal = config.getParameter("baseValue") or 1
 	self.timerCounter = 0
 	self.environmentTimer = 0
 
-	self.madnessCount = player.currency("fumadnessresource") or 0
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
+	local buffer=status.activeUniqueStatusEffectSummary()
+	for _,v in pairs(buffer) do
+		if buffer[1]=="mad" then
+			status.removeEphemeralEffect("mad")
+			status.addEphemeralEffect("mad",self.timer)
+			break
+		end
+	end
 	self.player = entity.id()
 	math.randomseed(util.seedTime())
 	self.randEvent = math.random(1,100)
@@ -44,8 +59,8 @@ function init()
 
 	local elementalTypes=root.assetJson("/damage/elementaltypes.config")
 	local buffer={}
-	
-	
+
+
 	storage.armorSetData=storage.armorSetData or {}
 	message.setHandler("recordFUArmorSetBonus",function(_,_,setName) storage.armorSetData[setName]=os.time() end)
 
@@ -83,7 +98,7 @@ function streakCheck(val)
 		return false
 	end
 
-	--I wish I could use a better method, but for some reason someone managed to get a table with string indexes, a product of serialization I  expect.
+	--I wish I could use a better method
 	local index=indexOf(storage.streakTable,val)
 
 	if index>0 then
@@ -108,6 +123,7 @@ function randomEvent()
 	self.currentProtectionAbs=math.abs(self.currentProtection)
 
 	local didRng=false
+	local worldIsEphemeral=world.getProperty("ephemeral")
 
 	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
 		self.randEvent=math.random(1,100)
@@ -122,15 +138,16 @@ function randomEvent()
 	isWeirdStuff(self.timer)
 
 	--set duration of curse
-	self.curseDuration = math.min(self.timer,self.madnessCount / 5) --this value will be adjusted based on effect type. Clamping this because it's too much otherwise.
-	--at 15k madness, that's 15000/5, or 1000 seconds. 16.6~ mins. ew.
-	--of course, with 0 madness resistance, that means self.timer will be 150. What this results in is a steady growth, followed by a petering off curve as effect frequency increases.
+	self.curseDuration = math.min(self.timer,self.madnessCount / 5)--this value will be adjusted based on effect type. Clamping this because it's too much otherwise.
+	--at 15k madness, that's 15000/5, or 1000 seconds. 16.6~ mins.
+	--with 0 madness resistance, self.timer will be 150. What this results in is a steady growth, followed by a petering off curve as effect frequency increases.
 	--Effects will be more frequent, and more potent overall, as madness increases. This implements a bit of a ceiling on how bad it can get.
-	self.curseDuration_status = self.curseDuration * 2
-	self.curseDuration_annoy = self.curseDuration * 1.2
-	self.curseDuration_resource = self.curseDuration * 2.2
-	self.curseDuration_stat = self.curseDuration * 2.5
-	self.curseDuration_fast = self.curseDuration *0.25
+	self.curseDuration_status = self.curseDuration * 2  
+	self.curseDuration_annoy = self.curseDuration * 1.2  
+	self.curseDuration_resource = self.curseDuration * 2.2   
+	self.curseDuration_stat = self.curseDuration * 2.5   
+	self.curseDuration_fast = self.curseDuration * 0.25   
+	status.removeEphemeralEffect("mad")
 	status.addEphemeralEffect("mad",self.timer)
 
 	--[[if self.randEvent < 0 then --failsafe
@@ -154,14 +171,27 @@ function randomEvent()
 		end
 	end
 	if self.madnessCount > 1000 then
-		if self.randEvent >= 40 and self.randEvent <= 42 then
-			local enabledtechs=player.enabledTechs()
-			if self.randEvent == 40 and contains(enabledtechs,"distortionsphere") then --swap sphere tech
-				player.equipTech("distortionsphere")
-			elseif self.randEvent == 41 and contains(enabledtechs,"doublejump") then --swap jump tech
-				player.equipTech("doublejump")
-			elseif self.randEvent == 42 and contains(enabledtechs,"dash") then --swap dash tech
-				player.equipTech("dash")
+		if (self.randEvent >= 40) and (self.randEvent <= 42) then
+			if (not worldIsEphemeral) then
+				local enabledtechs=player.enabledTechs()
+				if self.randEvent == 40 and contains(enabledtechs,"distortionsphere") then --swap sphere tech
+					player.equipTech("distortionsphere")
+				elseif self.randEvent == 41 and contains(enabledtechs,"doublejump") then --swap jump tech
+					player.equipTech("doublejump")
+				elseif self.randEvent == 42 and contains(enabledtechs,"dash") then --swap dash tech
+					player.equipTech("dash")
+				end
+			else
+				if self.randEvent == 40 then
+					status.setPersistentEffects("madnessEffectsMain", {{stat = "mentalProtection", amount = 0.5 }}) --temporary protection from madness
+					self.timerDegradePenalty = 2
+				elseif self.randEvent == 41 then
+					status.addEphemeralEffect("bouncy",self.curseDuration_status) -- boing.
+					self.timerDegradePenalty = 2
+				elseif self.randEvent == 42 then
+					status.addEphemeralEffect("runboost10",self.curseDuration_status) -- run boost!
+					self.timerDegradePenalty = 2
+				end
 			end
 		elseif self.randEvent == 43 then
 			player.consumeCurrency("fuscienceresource", 1)
@@ -229,7 +259,7 @@ function randomEvent()
 			status.addEphemeralEffect("madnessslow1",self.curseDuration_status) -- old one (staffslow2) was too strong and easily cheated.
 			player.radioMessage("madness2")
 		elseif self.randEvent == 13 then
-			status.addEphemeralEffect("toxiccloudmadness",self.curseDuration) -- swapped for a madness specific variant.
+			status.addEphemeralEffect("toxiccloudmadness",self.curseDuration_status) -- swapped for a madness specific variant.
 			status.addEphemeralEffect("madnessslow2",self.curseDuration_status)
 			player.radioMessage("madnessbeans")
 		elseif self.randEvent == 14 then
@@ -258,7 +288,7 @@ function randomEvent()
 		elseif self.randEvent == 25 then
 			status.addEphemeralEffect("swimboost1",self.curseDuration_status) -- Swim boost 1!
 		elseif self.randEvent == 26 then
-			status.addEphemeralEffect("vulnerability",self.curseDuration_fast) --vulnerability multiplies all resists and defense by 0.01, biiiig ouch. severely reducing the max duration of this.
+			status.addEphemeralEffect("vulnerability",self.curseDuration_fast*((worldIsEphemeral and 0.5) or 1.0)) --vulnerability multiplies all resists and defense by 0.01, biiiig ouch. severely reducing the max duration of this.
 			player.radioMessage("madnessvuln")
 		elseif self.randEvent == 27 then
 			status.setPersistentEffects("madnessEffectsMain", {{stat = "fuCharisma", baseMultiplier = (1.0-(math.random(6,40)/100.0)) }}) --random charisma penalty.
@@ -384,10 +414,10 @@ function update(dt)
 			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
 				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation
                 if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
-					self.threatBonus = 1
+					self.threatBonus = 1 
 			    end
 				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
-					self.threatBonus = 6
+					self.threatBonus = 6 
 				end
 			end
 			if afkLvl<=3 then
@@ -402,8 +432,9 @@ function update(dt)
 			end
 		end
 		-- apply the total
-		self.researchBonus = self.threatBonus + self.madnessResearchBonus
-		self.bonus = self.researchBonus--status.stat("researchBonus") + self.researchBonus
+		self.researchBonus = self.threatBonus + self.madnessResearchBonus 
+
+		self.bonus = self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				player.addCurrency("fuscienceresource",1 + self.bonus)
@@ -439,22 +470,22 @@ function update(dt)
 	self.timer = math.max(self.timer - dt,0.0)
 	if self.timer <= 0.0 then
 		if self.madnessCount > 50 then
-			self.degradeTotal = self.madnessCount / 300 -- max is 50
+			self.degradeTotal = self.madnessCount / 300 + (self.protheonCount) 
 			self.timerDegradePenalty = math.max(0.0,self.madnessCount / 500)
-			self.timer = math.max(math.max(10,300.0 - (self.madnessCount/100)) + (status.stat("mentalProtection") * 100),10)--implementing a hard floor on how low the timer can go.
+			self.timer = math.max(math.max(10,300.0 - (self.madnessCount/100)) + (status.stat("mentalProtection") * 100),10) --implementing a hard floor on how low the timer can go.
 			randomEvent() --apply random effect
 		else
 			self.timer = 300.0
 			self.degradeTotal = 1
 		end
 	end
-	self.timerDegrade = math.max(self.timerDegrade - dt,0.0)
+	self.timerDegrade = math.max(self.timerDegrade - dt,0.0) - (self.protheonCount * 4)
 	self.freudBonus = math.max(status.stat("freudBonus"),-0.8) -- divide by zero is bad. as this approaches -1, the timer approaches infinity. -0.5 turns the timer into 80s instead of 40s. cappin it at -0.8, which is 400s or 10x
 	--gradually reduce Madness over time
 	if (self.timerDegrade <= 0) then --no more limit to when it can degrade
 		self.timerDegradePenalty = self.timerDegradePenalty or 0.0
 		player.consumeCurrency("fumadnessresource", self.degradeTotal)
-		self.timerDegrade= (60.0 - self.timerDegradePenalty) / (1.0+self.freudBonus)
+		self.timerDegrade= (60.0 - self.timerDegradePenalty) / (1.0+self.freudBonus) - (self.protheonCount)
 		--displayBar()
 	end
 	-- apply bonus loss from anti-madness effects even if not above X madness

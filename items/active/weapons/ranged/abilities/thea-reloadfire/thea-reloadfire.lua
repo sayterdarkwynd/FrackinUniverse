@@ -28,7 +28,7 @@ function TheaReloadFire:update(dt, fireMode, shiftHeld)
   if animator.animationState("weapon") == "fire" and not self.weapon.currentAbility then
 	animator.setAnimationState("weapon", "reload")
   end
-  
+
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
@@ -53,7 +53,7 @@ function TheaReloadFire:auto()
 
   self:fireProjectile()
   self:muzzleFlash()
-  
+
   if self.recoilKnockbackVelocity then
 	--If not crouching or if crouch does not impact recoil
 	if not (self.crouchStopsRecoil and mcontroller.crouching()) then
@@ -104,7 +104,7 @@ end
 function TheaReloadFire:cooldown()
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
-  
+
   --Set the weapon into its reload state and play reload sound
   animator.setAnimationState("weapon", "reload")
   animator.playSound("reload")

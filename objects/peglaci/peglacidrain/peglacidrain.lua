@@ -58,7 +58,7 @@ function onNodeConnectionChange(args)
 end
 
 function update(dt)
-  if not object.isInputNodeConnected(0) or object.getInputNodeLevel(0) then 
+  if not object.isInputNodeConnected(0) or object.getInputNodeLevel(0) then
     drain()
   else
     output(false)

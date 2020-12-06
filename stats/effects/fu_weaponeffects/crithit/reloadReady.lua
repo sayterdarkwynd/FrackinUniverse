@@ -1,5 +1,5 @@
 function init()
-  activateVisualEffects() 
+  activateVisualEffects()
   self.timer = 0.5
   script.setUpdateDelta(5)
 end
@@ -21,5 +21,5 @@ end
 
 
 function uninit()
- 
+
 end

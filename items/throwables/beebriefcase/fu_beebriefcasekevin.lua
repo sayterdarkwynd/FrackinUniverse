@@ -9,7 +9,7 @@ function init()
 
   self.active = false
   storage.fireTimer = storage.fireTimer or 0
-  
+
   self.notOnPlanetMessage = config.getParameter("notOnPlanetMessage", "")
 end
 

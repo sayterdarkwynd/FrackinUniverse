@@ -16,7 +16,7 @@ function init()
 end
 
 function update(dt)
- 
+
 	if not scanTimer or (scanTimer > 1) then
 		scanTimer=0
 		transferUtil.loadSelfContainer()
@@ -35,7 +35,7 @@ function update(dt)
 --	    end
 --	  end
 
-	  
+
 --	  if item.name ~= config.getParameter('wellslots')[1].name then
 --	    world.spawnItem(item,entity.position())
 --	    world.containerConsumeAt(entity.id(),0,item.count)
@@ -53,9 +53,9 @@ function update(dt)
 		world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))},0)
 	 -- storage.waterCount = math.min((storage.waterCount or 0) + dt,100)
 	--	storage.waterCount = storage.waterCount - amount * config.getParameter('wellslots')[1].ratio
-		rentTimer = 0	
+		rentTimer = 0
 	end
-	  
+
 --	  if amount > 0 and #config.getParameter('wellslots') > 1 then
 --	    for i=(storage.count or 0)+1,(storage.count or 0)+amount do
 --	      for j=2,#config.getParameter('wellslots') do
@@ -80,7 +80,7 @@ function tallyHappiness()
 	transferUtil.zoneAwake(transferUtil.pos2Rect(storage.position,storage.linkRange))
 	bonusHappiness = 10
 	local objectIds = world.objectQuery(storage.position, wellRange, { order = "nearest" })
-	
+
 	for _, objectId in pairs(objectIds) do
 			if (world.callScriptedEntity(objectId,"fu_isColonyCore") and objectId ~= entity.id()) then
 				object.smash()
@@ -89,7 +89,7 @@ function tallyHappiness()
 				bonusHappiness = (bonusHappiness + (world.callScriptedEntity(objectId,"amountHappiness") or 0))
 			end
 	end
-	
+
 end
 
 function fu_isColonyCore() return true end

@@ -1,5 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/scripts/status.lua"
 require "/items/active/weapons/melee/meleeslash.lua"
 require("/scripts/FRHelper.lua")
 
@@ -11,16 +12,16 @@ function AxeCleave:init()
 	self.stances.windup.duration = self.fireTime - self.stances.fire.duration
 
 	attackSpeedUp = 0 -- base attackSpeed bonus
-		self.hitsListener = damageListener("inflictedHits", checkDamage)	--listen for damage
-		self.damageListener = damageListener("inflictedDamage", checkDamage)	--listen for damage
-		self.killListener = damageListener("Kill", checkDamage)	--listen for kills
+	self.hitsListener = damageListener("inflictedHits", checkDamage)	--listen for damage
+	self.damageListener = damageListener("inflictedDamage", checkDamage)	--listen for damage
+	self.killListener = damageListener("Kill", checkDamage)	--listen for kills
 
 	MeleeSlash.init(self)
 	self:setupInterpolation()
 
 	self.inflictedHitCounter = 0
 	self.inflictedKills = 0
-		status.clearPersistentEffects("listenerBonus")
+	status.clearPersistentEffects("listenerBonus")
 end
 
 function checkDamage(notifications)
@@ -87,7 +88,7 @@ function AxeCleave:windup(windupProgress)
 	else
 		self.lowEnergy=false
 	end
-	
+
 	--*************************************
 	-- FU/FR ADDONS
 	setupHelper(self, "axecleave-fire")

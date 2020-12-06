@@ -33,7 +33,7 @@ end
 function checkWeapons()
 	local weaponShield=weaponCheck({"shield"})
 	local weaponMace=weaponCheck({"mace"})
-	
+
 	if weaponShield["either"] then
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle,weaponBonus)
 	else
@@ -43,5 +43,5 @@ function checkWeapons()
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle2,weaponBonus2)
 	else
 		effect.setStatModifierGroup(effectHandlerList.weaponBonusHandle2,{})
-	end	
+	end
 end

@@ -1,12 +1,12 @@
 function init()
-	if status.statPositive("foodImmunity") then effect.expire() return end	
+	if status.statPositive("foodImmunity") then effect.expire() return end
 	if not world.entitySpecies(entity.id()) then self.originalDuration=effect.duration() effect.modifyDuration(script.updateDt()*2) return end
 	self.foodTypes = config.getParameter("foodTypes")
 	self.badEffects = config.getParameter("badStuff", {})
 	self.bonusEffects = config.getParameter("bonusStuff", {})
 	self.frEnabled=status.statusProperty("fr_enabled")
 	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
-	
+
 	self.dietConfig = root.assetJson("/scripts/fr_diets.config")
 	local success
 	if not self.frEnabled then
@@ -15,7 +15,7 @@ function init()
 	end
 	if self.species then
 		success, self.speciesConfig = pcall(
-			function () 
+			function ()
 				return root.assetJson(string.format("/species/%s.raceeffect", self.species))
 			end
 		)
@@ -24,16 +24,16 @@ function init()
 	self.diet = self.speciesConfig.diet
 	if self.diet == nil then self.diet = "omnivore" end -- Treat races without diets as omnivores
 	-- TODO: load scripts here
-	
+
 	-- Grab premade diet
 	if type(self.diet) == "string" then
 		self.diet = self.dietConfig.diets[self.diet]
 	end
 	self.whitelist = self.diet[1] or {}
 	self.blacklist = self.diet[2] or {}
-	
+
 	-- TODO: Add script hook here
-	
+
 	self.foodChecks = {}
 	self.noBonus = false
 	for _,foodType in pairs(self.foodTypes) do
@@ -46,13 +46,13 @@ function init()
 			self.playBadMessage = true
 		end
 	end
-	
+
 	-- TODO: Add script hook here
-	
+
 	if self.playBadMessage then
 		world.sendEntityMessage(entity.id(), "queueRadioMessage", "foodtype")
 	end
-	
+
 	for foodType,action in pairs(self.foodChecks) do
 		local bonus = getBonusEffect(foodType)
 		local penalty = getPenaltyEffect(foodType)

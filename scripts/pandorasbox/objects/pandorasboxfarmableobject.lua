@@ -58,7 +58,7 @@ function onInteraction()
 			object.smash(true)
 			return
 		else
-			storage.stage = storage.stage + 1 
+			storage.stage = storage.stage + 1
 		end
 		resetGrowthTime()
 		setImage()
