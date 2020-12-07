@@ -54,5 +54,7 @@ function onInputNodeChange(args)
 end
 
 function doAnims()
-	animator.setAnimationState("switchState", ((storage.on and ((power and power.getTotalEnergy and power.getTotalEnergy() or 0) > 0)) and "on") or "off")
+	local objectIsOn=(storage.on and ((power and power.getTotalEnergy and power.getTotalEnergy() or 0) > 0))
+	object.setAllOutputNodes(objectIsOn)
+	animator.setAnimationState("switchState", (objectIsOn and "on") or "off")
 end
