@@ -4,15 +4,13 @@
   "price" : 100,
   "category" : "medicine",
   "inventoryIcon" : "teltikparasite.png",
-  "description" : "Parasites found on fletchweed. Converts saliva into hallucinogens.\n^cyan;+^white;30 ^cyan;EP^gray;, ^cyan;Heavily Intoxicated^gray;, ^red;-^white;30 ^red;Defense^gray;, ^red;Insanity^gray;, ^red;Poisoned ^gray;(^white;220s^gray;)^reset;",
+  "description" : "Parasites found on fletchweed. Converts saliva into hallucinogens.\n^cyan;+^white;30 ^cyan;EP^gray;, ^cyan;Heavily Intoxicated^gray;, ^red;Insanity^gray;, ^reset;(^white;220s^reset;)",
   "shortdescription" : "Teltik Vison Worm",
   "effects" : [ [
-    "madnessgain2",
+    "madnessgain",
     {"effect" : "booze2", "duration" : 220},
-    {"effect" : "defenseboostneg30", "duration" : 220},
     {"effect" : "maxenergyboost4", "duration" : 220},
-    {"effect" : "insanity", "duration" : 220}, 
-    {"effect" : "weakpoison", "duration" : 220} 
+    {"effect" : "insanity", "duration" : 220}
   ] ],
   "tooltipKind" : "food",
   "blockingEffects" : [ "strongcoffee4" ]
