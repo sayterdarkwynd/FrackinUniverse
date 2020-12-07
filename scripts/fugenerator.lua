@@ -31,9 +31,11 @@ function update(dt)
 	else
 		storage.heat = math.max((storage.heat or 0) - dt*5,0)
 	end
+	local heatmark=0
 	for i=1,#heat do
 		if storage.heat >= heat[i].minheat then
-			power.setPower(heat[i].power)
+			heatmark=heat[i].power
+			power.setPower(heatmark)
 			object.setLightColor(config.getParameter("lightColor", heat[i].light))
 			object.setSoundEffectEnabled(heat[i].sound)
 			for key,value in pairs(heat[i].animator) do
@@ -42,5 +44,6 @@ function update(dt)
 			break
 		end
 	end
+	object.setAllOutputNodes(heatmark>0)
 	power.update(dt)
 end

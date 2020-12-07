@@ -416,7 +416,7 @@ local function PopulateCategories()
 			-- inb4 angry feminist because all the icons are male due to most ppl defining male first. ecksdee.
 			local firstAvailableGenderImage = ""
 
-			if codexSpecies ~= "" and codexSpecies ~= "fu" then
+			if codexSpecies ~= "" and codexSpecies ~= "fu" and codexSpecies ~= "elder" then
 				-- First off -- Is the species specified? If it is, we need to see if we can find the .species file.
 				local speciesDataExists = pcall(function ()
 					-- Same thing as the rawCodexData thing above. This will work, or error and return false.
@@ -443,6 +443,8 @@ local function PopulateCategories()
 				end
 			elseif codexSpecies == "fu" then
 				actualRaceName = FU_GUIDE_CATEGORY_NAME -- A bit of a hack but this is what's done.
+			elseif codexSpecies == "elder" then
+				actualRaceName = "Maddening Tomes" -- Dividing elder tomes into their own section
 			end
 
 			-- Have we already made a button for this race? The player is probably going to have more than one codex entry for a given race.
@@ -462,6 +464,10 @@ local function PopulateCategories()
 						-- print("Setting race image to nothing and using the abbreviated display name instead, which is", displayName)
 						widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", displayName)
 					end
+				elseif codexSpecies == "elder" then
+					-- If it's an elder codex, let's use the madness icon instead
+					-- print("Setting race image to", fumadnessresource2.png)
+					widget.setImage("racialCategoryList.racelist." .. tostring(newElement) .. ".raceIcon", "/interface/scripted/xcustomcodex/madnesstomesicon.png")
 				else
 					-- print("Could not set button icon -- race doesn't exist (this is the ambiguous table) or the race was unable to resolve an appropriate icon.")
 					-- widget.setText("racialCategoryList.racelist." .. tostring(newElement) .. ".buttonLabel", TEXT_AMBIGUOUS_BUTTON)
