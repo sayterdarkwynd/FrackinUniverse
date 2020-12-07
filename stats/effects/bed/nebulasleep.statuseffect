@@ -1,12 +1,16 @@
 {
 	"name": "nebulasleep",
 	"effectConfig": {
-		"mentalProtect": 80
+		"stats": [{
+				"stat": "mentalProtection",
+				"amount": 0.8
+			}
+		]
 	},
 	"defaultDuration": 10,
 
 	"scripts": [
-		"bed.lua", "/stats/effects/fu_effects/madness/madnesslossultra.lua"
+		"bed.lua", "/stats/effects/fu_genericStatApplier.lua"
 	],
 
 	"animationConfig": "bed.animation",
