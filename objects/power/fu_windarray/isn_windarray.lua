@@ -30,6 +30,7 @@ function update(dt)
 			end
 		end
 		power.setPower(generated)
+		object.setAllOutputNodes(generated>0)
 	end
 	power.update(dt)
 end

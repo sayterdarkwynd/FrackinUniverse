@@ -97,7 +97,7 @@ end
 
 function batteryUpdate(dt)
 	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-(dt or 0))
-	power.setPower(power.getStoredEnergy())
+	power.setPower(stored)
 	if batteryUpdateThrottle <= 0 then
 		object.setConfigParameter('description', isn_makeBatteryDescription())
 		local oldAnim
@@ -110,5 +110,6 @@ function batteryUpdate(dt)
 		end
 		self.oldPowerStored=power.getStoredEnergy()
 		batteryUpdateThrottle=batteryUpdateThrottleBase
+		object.setAllOutputNodes(self.oldPowerStored>0)
 	end
 end

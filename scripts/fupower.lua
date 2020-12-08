@@ -1,19 +1,44 @@
+require "/scripts/util.lua"
 power = {}
 
 function power.update(dt)
 	if not power.warmedUp then
-		power.init()
+		power.kick()
 		power.warmedUp=true
 	end
-	if config.getParameter('powertype') then
-		if config.getParameter('powertype') == 'battery' then
+	if self.powerType then
+		if self.pulseTimer and self.pulseTimer >= 1.0 then
+			self.pulseTimer=0.0
+			local inputCounter=0
+			local outputCounter=0
+			for i=0,object.inputNodeCount()-1 do
+				if object.isInputNodeConnected(i) then
+					local idlist = object.getInputNodeIds(i)
+					inputCounter=inputCounter+util.tableSize(idlist)
+				end
+			end
+			for i=0,object.outputNodeCount()-1 do
+				if object.isOutputNodeConnected(i) then
+					local idlist = object.getOutputNodeIds(i)
+					outputCounter=outputCounter+util.tableSize(idlist)
+				end
+			end
+			if (self.pulseCount and (self.pulseCount>=10)) or ((self.powerType ~= 'battery') and ((self.lastInputCount~=inputCounter) or (self.lastOutputCount~=outputCounter))) then
+				power.kick()
+			elseif self.pulseCount and self.pulseCount<10 then
+				self.pulseCount=self.pulseCount+1
+			end
+		else
+			self.pulseTimer=(self.pulseTimer or 0) + dt
+		end
+		if self.powerType == 'battery' then
 			storage.storedenergy = (storage.storedenergy or 0) + (storage.energy or 0)
 		else
 			power.sendPowerToBatteries()
 		end
 		if storage.power and storage.power > 0 then
 			storage.energy = storage.power * dt
-			if config.getParameter('powertype') == 'battery' then
+			if self.powerType == 'battery' then
 				storage.energy = math.min(storage.power,storage.storedenergy)
 				storage.storedenergy = storage.storedenergy - storage.energy
 			end
@@ -74,16 +99,18 @@ function power.sendPowerToBatteries()
 end
 
 function power.onNodeConnectionChange(arg,iterations)
-	if config.getParameter('powertype') then
-		if (config.getParameter('powertype') == 'battery') then return arg end
+	if self.powerType then
+		local inputCounter=0
+		local outputCounter=0
+		if (self.powerType == 'battery') then return arg end
 		--sb.logInfo("iterations: %s",iterations)
 		iterations=(iterations and iterations + 1) or 1
 		if arg then
 			entitylist = arg
 		else
-			if config.getParameter('powertype') == 'battery' then
+			if self.powerType == 'battery' then
 				entitylist = {battery = {entity.id()},output = {},all = {entity.id()}}
-			elseif config.getParameter('powertype') == 'output' then
+			elseif self.powerType == 'output' then
 				entitylist = {battery = {},output = {entity.id()},all = {entity.id()}}
 			else
 				entitylist = {battery = {},output = {},all = {entity.id()}}
@@ -93,6 +120,7 @@ function power.onNodeConnectionChange(arg,iterations)
 			for i=0,object.inputNodeCount()-1 do
 				if object.isInputNodeConnected(i) then
 					local idlist = object.getInputNodeIds(i)
+					inputCounter=inputCounter+util.tableSize(idlist)
 					for value in pairs(idlist) do
 						powertype = callEntity(value,'isPower',iterations)
 						if powertype then
@@ -116,6 +144,7 @@ function power.onNodeConnectionChange(arg,iterations)
 			for i=0,object.outputNodeCount()-1 do
 				if object.isOutputNodeConnected(i) then
 					local idlist = object.getOutputNodeIds(i)
+					outputCounter=outputCounter+util.tableSize(idlist)
 					for value in pairs(idlist) do
 						powertype = callEntity(value,'isPower',iterations)
 						if powertype then
@@ -147,6 +176,8 @@ function power.onNodeConnectionChange(arg,iterations)
 				callEntity(entitylist.all[i],'updateList',entitylist)
 			end
 		end
+		self.lastInputCount=inputCounter
+		self.lastOutputCount=outputCounter
 	end
 end
 
@@ -194,7 +225,7 @@ end
 
 function power.getEnergyNoBattery(id)
 	if not id or id == entity.id() then
-		return ((config.getParameter('powertype') ~= 'battery') and storage.energy) or 0
+		return ((self.powerType ~= 'battery') and storage.energy) or 0
 	else
 		return callEntity(id,'power.getEnergyNoBattery') or 0
 	end
@@ -205,7 +236,7 @@ function onNodeConnectionChange(arg)
 end
 
 function isPower()
-	return config.getParameter('powertype')
+	return self.powerType
 end
 
 function updateList(list)
@@ -253,8 +284,14 @@ function power.remove(amount)
 	storage.energy = storage.energy - amount
 end
 
-function power.init()
+function power.kick()
+	self.pulseCount=0
 	power.onNodeConnectionChange(nil,0)
+end
+
+function power.init()
+	power.kick()
+	self.powerType=config.getParameter('powertype')
 end
 
 function update(dt)
