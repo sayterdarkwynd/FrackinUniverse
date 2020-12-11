@@ -35,9 +35,11 @@ function update(dt)
 	else
 		storage.heat = math.max((storage.heat or 0) - dt*5,0)
 	end
+	local heatmark=0
 	for i=1,#heat do
 		if storage.heat >= heat[i].minheat then
-			power.setPower(heat[i].power + (storage.powermod or 0))
+			heatmark=heat[i].power
+			power.setPower(heatmark + (storage.powermod or 0))
 			local light = config.getParameter("lightColor", heat[i].light)
 			local brightness = math.min(0.75,0.75*(storage.heat/90))
 			light[1] = math.floor(light[1]*0.25 + light[1]*brightness)
@@ -51,5 +53,6 @@ function update(dt)
 			break
 		end
 	end
+	object.setAllOutputNodes(heatmark>0)
 	power.update(dt)
 end

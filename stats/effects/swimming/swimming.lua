@@ -125,12 +125,12 @@ function update(dt)
 	else
 		if (mcontroller.liquidPercentage() < 0.25) and (status.stat("boostAmount") <= 1) then --are we barely in the water?
 			mcontroller.controlParameters(self.submergedParameters)
-			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.submerged}})
+			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.submerged},{stat="fuswimming",amount=1}})
 		elseif (mcontroller.liquidPercentage() < self.shoulderHeight) and (status.stat("boostAmount") <=1) then --are half submerged and not boosted
-			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.monsterWater}})
+			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.monsterWater},{stat="fuswimming",amount=1}})
 			mcontroller.controlParameters(self.monsterWaterParameters)
 		elseif (mcontroller.liquidPercentage() >= self.shoulderHeight) or ((mcontroller.liquidPercentage() >= self.shoulderHeight) and (status.stat("boostAmount") > 1)) then	--if the player is shoulder depth, or shallow depth+boosted
-			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.basic}})
+			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.basic},{stat="fuswimming",amount=1}})
 			mcontroller.controlModifiers({speedModifier = self.finalValue})
 			mcontroller.controlParameters(self.basicWaterParameters)
 		else
@@ -221,12 +221,12 @@ function setMonsterAbilities()
 			end
 			mcontroller.controlModifiers(self.defaultSpeed)
 			mcontroller.controlParameters(self.submergedParameters)
-			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.submerged}})
+			effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.submerged},{stat="fuswimming",amount=1}})
 		end
 
 	else
 		mcontroller.controlModifiers(self.basicMonsterSpeed)
 		mcontroller.controlParameters(self.monsterWaterParameters)
-		effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.monsterWater}})
+		effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.monsterWater},{stat="fuswimming",amount=1}})
 	end
 end

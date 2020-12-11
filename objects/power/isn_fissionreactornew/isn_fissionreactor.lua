@@ -59,6 +59,7 @@ function update(dt)
 		animator.setAnimationState("screen", "off")
 		power.setPower(0)
 		power.update(dt)
+		object.setAllOutputNodes(false)
 		return
 	end
 	if storage.active2 then
@@ -92,6 +93,7 @@ function update(dt)
             break
         end
 	end
+	object.setAllOutputNodes(powerout>0)
 	power.update(dt)
 end
 
