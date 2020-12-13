@@ -167,7 +167,7 @@ function isn_slotCoolantCheck(slot)
 		storage.radiation = storage.radiation + 15  --large rad increase
 		storage.currentHeat = 1  --reset heat
 		power.setPower(0)
-		power.update(dt)
+		power.update(0)
 		self.timerPowerReduced = 10 --after a boom, does not produce for 10 seconds
     end
 	

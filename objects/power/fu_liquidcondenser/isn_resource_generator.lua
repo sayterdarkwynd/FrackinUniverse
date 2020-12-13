@@ -9,7 +9,7 @@ function init()
 	--object.setInteractive(true)--useless, they dont do anything on interaction.
 	storage.timer = storage.timer or 1
 	power.init()
-	power.update()
+	power.update(0)
 	storage.outputPos=entity.position()
 	storage.outputPos[1]=storage.outputPos[1]+2+util.clamp(object.direction(),-1,0)
 	wellRange=config.getParameter("airWellRange",20)
