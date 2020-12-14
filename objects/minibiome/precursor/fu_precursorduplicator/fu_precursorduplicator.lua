@@ -3,8 +3,8 @@ require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
 function init()
-	power.init()
 	self = config.getParameter("duplicator")
+	power.init()
 	self.craftTime = config.getParameter("craftTime")
 	storage.timer = storage.timer or self.craftTime -- making this, storage.crafting, etc. persistent so that on server terminus, nothing is lost.
 	storage.timer2 = storage.timer2 or 1.0
@@ -12,7 +12,6 @@ function init()
 end
 
 function update(dt)
-
 	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
 		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
