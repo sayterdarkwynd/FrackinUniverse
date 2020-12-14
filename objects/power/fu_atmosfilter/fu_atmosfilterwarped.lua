@@ -5,7 +5,7 @@ function init()
 	if not config.getParameter("slotCount") then
 		object.setInteractive(false)
 	end
-	self=config.getParameter("atmos")
+	self=util.mergeTable(self or {},config.getParameter("atmos") or {})
 	itemList=root.assetJson("/objects/power/fu_atmosfilter/warpedItemList.json")
 end
 
@@ -39,6 +39,7 @@ function update(dt)
 	else
 		animator.setAnimationState("switchState", "off")
 	end
+	power.update(dt)
 end
 
 function containerCallback()

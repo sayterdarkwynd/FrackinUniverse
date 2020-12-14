@@ -29,6 +29,7 @@ function update(dt)
 			shoot()
 		end
 	end
+	power.update(dt)
 end
 
 function onNodeConnectionChange(args)
