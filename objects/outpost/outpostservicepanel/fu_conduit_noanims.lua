@@ -7,8 +7,11 @@ function init()
 end
 
 function update(dt)
-	if not power.warmedUp then
+	if not power.didInit then
 		power.init()
+	end
+	if not power.warmedUp then
+		power.kick()
 		power.warmedUp=true
 	end
 	if not conduitTimer or conduitTimer>=1.0 then
