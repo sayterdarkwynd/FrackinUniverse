@@ -357,21 +357,32 @@ function capturable.capturable(capturer)
 	return true
 end
 
---Khe's note: we're not incorporating this override. it is commented out.
+--Khe's note: we're not incorporating this override. it will remain commented out.
+--[[
 --The named pets functionality is incorporated from (with permission from Vanake14)
 --the Named Pets mod and Named Pets - Procedural Only mod. Procedural monsters, will only use procedural names.
 --Unique monsters can receive both procedural and unique names.
 
 function capturable.optName()
 
-	local monstername = world.entityName(entity.id())
-	if monstername == "" then
-		--name = root.generateName("/monsters/pandorasboxmonsternames/pandorasboxproceduralmonsternamegen.config:names")
+	local name = world.entityName(entity.id())
+	if name == "" then
+		name = root.generateName("/monsters/pandorasboxmonsternames/pandorasboxproceduralmonsternamegen.config:names")
 		return nil
-	--else
-		--name = root.generateName("/monsters/pandorasboxmonsternames/pandorasboxmonsterpetnamegen.config:names")
+	else
+		name = root.generateName("/monsters/pandorasboxmonsternames/pandorasboxmonsterpetnamegen.config:names")
 	end
 
+	return name
+end
+]]
+
+--this is vanilla's implementation. we use this.
+function capturable.optName()
+	local name = world.entityName(entity.id())
+	if name == "" then
+		return nil
+	end
 	return name
 end
 

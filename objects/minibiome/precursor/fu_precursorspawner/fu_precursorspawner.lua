@@ -5,9 +5,9 @@ local requiredPower = 0
 
 function init()
 	power.init()
-	self = config.getParameter("spawner")
+	spawner = config.getParameter("spawner")
 	requiredPower = config.getParameter('isn_requiredPower')
-	storage.timer = self.defaultSpawnTime
+	storage.timer = spawner.defaultSpawnTime
 	if storage.crafting then
 		animator.playSound("running", -1)
 	end
@@ -16,9 +16,9 @@ end
 
 function update(dt)
 	if not storage.timer then
-		self = config.getParameter("spawner")
+		spawner = config.getParameter("spawner")
 		requiredPower = config.getParameter('isn_requiredPower')
-		storage.timer = self.defaultSpawnTime
+		storage.timer = spawner.defaultSpawnTime
 	elseif type(storage.timer) ~= "number" then
 		storage.timer=tonumber(storage.timer)
 	end
@@ -31,17 +31,17 @@ function update(dt)
 	if wireCheck() then
 		if not storage.crafting then
 			local fuelSlot = getInputContents(0)
-			if fuelSlot.name == self.fuelType then
+			if fuelSlot.name == spawner.fuelType then
 				local podSlot = getInputContents(1)
-				if podSlot.name == self.podType then
+				if podSlot.name == spawner.podType then
 					if power.getTotalEnergy() >= requiredPower then
 						storage.pets = (podSlot.parameters.pets)
 						pet = root.monsterParameters(storage.pets[1].config.type)
-						fuelAmount = pet.statusSettings.stats.maxHealth.baseValue * (self.fuelMultiplier or 0.1)
-						storage.fuelAmount = fuelAmount or self.defaultFuelAmount
+						fuelAmount = pet.statusSettings.stats.maxHealth.baseValue * (spawner.fuelMultiplier or 0.1)
+						storage.fuelAmount = fuelAmount or spawner.defaultFuelAmount
 						if world.containerConsumeAt(entity.id(),0,storage.fuelAmount) then
-							spawnTime = pet.statusSettings.stats.maxHealth.baseValue * (self.spawnTimeMultiplier or 0.1)
-							storage.timer = spawnTime or self.defaultSpawnTime
+							spawnTime = pet.statusSettings.stats.maxHealth.baseValue * (spawner.spawnTimeMultiplier or 0.1)
+							storage.timer = spawnTime or spawner.defaultSpawnTime
 							storage.crafting = true
 						end
 					end

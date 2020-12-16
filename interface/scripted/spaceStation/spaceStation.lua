@@ -309,8 +309,8 @@ function firstTimeInit()
 	end
 
 	sb.logInfo("----- End Station First Time Init -----")
-	initialized = true
-	GUIinit()
+	--initialized = true
+	--GUIinit()
 end
 
 function GUIinit()
@@ -361,17 +361,33 @@ function GUIinit()
 	resetGUI()
 end
 
-function update()
+function update(dt)
+	--sb.logInfo("spaceStation.update() initialized: %s. objectData: %s",initialized,objectData)
 	if not initialized then
-		if objectData ~= nil and objectData:finished() then
-			if objectData:succeeded() then
-				objectData = objectData:result()
-				if not objectData or objectData.firstTime then
-					firstTimeInit()
-				else
-					GUIinit()
-					simulateGoodTrades()
-					initialized = true
+		if queueGuiInit then
+			GUIinit()
+			initialized=true
+			return
+		elseif queueSimulateGoodTrades then
+			simulateGoodTrades()
+			initialized = true
+			return
+		else
+			if objectData ~= nil and objectData:finished() then
+				if objectData:succeeded() then
+					objectData = objectData:result()
+					if not objectData or objectData.firstTime then
+						firstTimeInit()
+						queueGuiInit=true
+						return
+					else
+						GUIinit()
+						--simulateGoodTrades()
+						--initialized = true
+						--queueGuiInit=true
+						queueSimulateGoodTrades=true
+						return
+					end
 				end
 			end
 		end
@@ -1444,8 +1460,8 @@ function simulateGoodTrades()
 	local worldTime = world.time()
 	if objectData.lastVisit then
 		local timePassed = math.floor(worldTime - objectData.lastVisit)
-		local trades = math.floor(timePassed / stationData.passiveTradeInterval)
-
+		local trades = math.min(1000,math.abs(math.floor(timePassed / stationData.passiveTradeInterval)))
+		--sb.logInfo("spaceStation.lua:simulateGoodTrades()::timePassed:%s,trades:%s",timePassed,trades)
 		if trades > 0 then
 			for t = 1, trades do
 				for goods, amount in pairs(objectData.goodsStock) do
