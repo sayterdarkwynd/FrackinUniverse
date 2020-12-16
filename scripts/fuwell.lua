@@ -26,7 +26,7 @@ function update(dt)
 			end
 		end
 		local item = world.containerItemAt(entity.id(),0) or {name=config.getParameter('wellslots')[1].name,count=0}
-		
+
 		if item.name ~= config.getParameter('wellslots')[1].name then
 			world.spawnItem(item,entity.position())
 			world.containerConsumeAt(entity.id(),0,item.count)
@@ -38,11 +38,11 @@ function update(dt)
 			world.containerConsumeAt(entity.id(),0,dropitem.count)
 			item.count = config.getParameter('wellslots')[1].max
 		end
-		
+
 		local amount = math.min(math.floor(storage.waterCount/config.getParameter('wellslots')[1].ratio),config.getParameter('wellslots')[1].max - item.count)
 		world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[1].name,count=amount},0)
 		storage.waterCount = storage.waterCount - amount * config.getParameter('wellslots')[1].ratio
-		
+
 		if amount > 0 and #config.getParameter('wellslots') > 1 then
 			for i=(storage.count or 0)+1,(storage.count or 0)+amount do
 				for j=2,#config.getParameter('wellslots') do
@@ -55,7 +55,7 @@ function update(dt)
 			storage.count = (storage.count or 0) + amount
 		end
 		else
-	end	
+	end
 end
 
 function wellInit()

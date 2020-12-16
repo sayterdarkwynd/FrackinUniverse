@@ -48,7 +48,7 @@ function update(args)
   if self.active then
     --disable spike sphere insanity-speed in liquid
     status.addEphemeralEffect("waterimmunity",1)
-    
+
     local groundDirection
     if self.damageDisableTimer == 0 then
       groundDirection = findGroundDirection()
@@ -117,7 +117,7 @@ function update(args)
     updateRotationFrame(args.dt)
 
     checkForceDeactivate(args.dt)
-  else 
+  else
     self.headingAngle = nil
   end
 

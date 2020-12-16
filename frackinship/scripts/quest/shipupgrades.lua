@@ -13,7 +13,7 @@ function init()
 	fuelEfficiencyShipOld = 0
 	shipSpeedShipOld = 0
 	beamDownTimer = 0
-	
+
 	message.setHandler("fs_respawn", function()
 		local spawn = world.getProperty("fu_byos.spawn", {1024, 1025})
 		mcontroller.setPosition(vec2.add(spawn, {0, 2}))
@@ -22,7 +22,7 @@ end
 
 function update(dt)
 	promises:update()
-	
+
 	if world.type() == "unknown" then
 		-- make sure the ship handler stagehand exists
 		if handlerPromise then
@@ -35,7 +35,7 @@ function update(dt)
 		else
 			handlerPromise = world.findUniqueEntity("frackinshiphandler")
 		end
-		
+
 		shipLevel = world.getProperty("ship.level")
 		if shipLevel == 0 and world.getProperty("fu_byos") then
 			if world.getProperty("fu_byos.newAtmosphereSystem") then
@@ -74,7 +74,7 @@ function update(dt)
 			beamDownTimer = beamDownTimer - dt
 		end
 	end
-	
+
 	if player.worldId() == player.ownShipWorldId() then
 		if not initFinished then
 			initFinished = true

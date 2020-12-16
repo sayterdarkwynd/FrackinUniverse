@@ -6,7 +6,7 @@ weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.15}
 }
 
-armorBonus={ 
+armorBonus={
 	{stat = "mentalResistance", amount = 0.2},
 	{stat = "poisonStatusImmunity", amount = 1.0},
 	{stat = "protoImmunity", amount = 1.0},

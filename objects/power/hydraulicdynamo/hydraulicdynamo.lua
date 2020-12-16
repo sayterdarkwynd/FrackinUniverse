@@ -11,7 +11,7 @@ function init()
 		{amount = 4, state = 'fast'},
 		{amount = 0, state = 'off'}
 	}
-    storage.fuels = config.getParameter("fuels")
+    self.fuels = config.getParameter("fuels")
 	storage.active = true
 	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
 end
@@ -36,6 +36,7 @@ function update(dt)
 		animator.setAnimationState("screen", "off")
 		power.setPower(0)
 		power.update(dt)
+		object.setAllOutputNodes(false)
 		return
 	end
 	if storage.active2 then
@@ -53,19 +54,20 @@ function update(dt)
             break
         end
 	end
+	object.setAllOutputNodes(powerout>0)
 	power.update(dt)
 end
 
 function isn_powerSlotCheck(slotnum)
     local item = world.containerItemAt(entity.id(), slotnum)
     if not item then return 0 end
-	return storage.fuels[item.name] and storage.fuels[item.name].power or 0
+	return self and self.fuels and self.fuels[item.name] and self.fuels[item.name].power or 0
 end
 
 function isn_slotDecayCheck(slot)
 	local item = world.containerItemAt(entity.id(),slot)
 	local myLocation = entity.position()
-    if item and isn_slotDecayCheckWater(3) and storage.fuels[item.name] and math.random(1, storage.fuels[item.name].decayRate) == 1 then
+    if item and isn_slotDecayCheckWater(3) and self and self.fuels and self.fuels[item.name] and math.random(1, self.fuels[item.name].decayRate) == 1 then
         return true
     end
 	return false
@@ -81,27 +83,6 @@ function isn_slotDecayCheckWater(slot)
 end
 function isn_doSlotDecay(slot)
 	world.containerConsumeAt(entity.id(),slot,1) --consume resource
---	local waste = world.containerItemAt(entity.id(),3)
---	local wastestack
---
---	if waste then
---		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
---		if (waste.name == "deadgnomes") then
---		  -- sb.logInfo("increasing storage.radiation")
---		  wastestack = world.containerSwapItems(entity.id(),{name = "deadgnomes", count = 1, data={}},3)
---		else
---		  -- sb.logInfo("not dead gnomes, ejecting")
---		  local wastecount = waste.count -- variable to ensure no change of quantities in between calculations.
---		  world.containerConsumeAt(entity.id(),3,wastecount) --delete waste
---		  world.spawnItem(waste.name,entity.position(),wastecount) --drop it on the ground
---		end
---	else -- (waste == nil)
---		wastestack = world.containerSwapItems(entity.id(),{name = "deadgnomes", count = 1, data={}},3)
---	end
---
---	if wastestack  and (wastestack.count > 0) then
---		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
---	end
 end
 function isn_getCurrentPowerOutput()
 	local water = world.containerItemAt(entity.id(),3)

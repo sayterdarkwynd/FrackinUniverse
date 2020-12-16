@@ -18,7 +18,7 @@ function main()
           hatchEgg()
           self.indicator = 0
         end
-    
+
         if self.indicator == nil then self.indicator = 0 end
         if self.timer == nil or self.timer > self.indicator then self.timer = self.indicator - 1 end
         if self.timer > -1 then entity.setGlobalTag("bin_indicator", self.timer) end

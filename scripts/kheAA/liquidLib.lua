@@ -5,7 +5,7 @@ function liquidLib.init()
 	self.liquidOuts = self.liquidOuts or {}
 	liquidLib.vars={}
 	liquidLib.vars.inLiquidNode=config.getParameter("kheAA_inLiquidNode")--doesn't actually do anything, doesn't matter at this point.
-	
+
 	for i,v in pairs(storage.liquids) do
 		if not root.liquidConfig(i) then
 			storage.liquids[i]=nil
@@ -95,9 +95,9 @@ function liquidLib.doPump()
 			end
 		end
 	end
-	
+
 	local items = world.containerItems(entity.id())
-	
+
 	if items ~= nil then
 		for slot,item in pairs(items) do
 			if liquidLib.tryConsumeLiqitem(items[1]) then break end
@@ -146,7 +146,7 @@ function liquidLib.die()
 	if storage.liquids then
 		for id,count in pairs(storage.liquids) do
 			local liquid=liquidLib.liquidToItem(id,count)
-			
+
 			if liquid then
 				local buffer=liquid.count
 				liquid.count=math.floor(liquid.count)

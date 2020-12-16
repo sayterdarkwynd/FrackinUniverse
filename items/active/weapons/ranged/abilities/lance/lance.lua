@@ -18,7 +18,7 @@ function LanceAttack:update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
 
   if not self.weapon.currentAbility
-     and self.fireMode == "alt" 
+     and self.fireMode == "alt"
      and self.cooldownTimer == 0
      and not world.lineTileCollision(mcontroller.position(), self:firePosition())
      and status.overConsumeResource("energy", self.energyUsage) then
@@ -47,5 +47,5 @@ function LanceAttack:firePosition()
 end
 
 function LanceAttack:uninit()
-  
+
 end

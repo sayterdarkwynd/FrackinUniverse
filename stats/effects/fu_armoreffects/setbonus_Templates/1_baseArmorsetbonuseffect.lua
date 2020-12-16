@@ -1,7 +1,7 @@
 setName="fu_setname" --this should match what you put in the template shell.
 
 weaponBonus={ -- if it is to have stats from weapons wielded, enter them here
-	{stat = "critChance", amount = 25} 
+	{stat = "critChance", amount = 25}
 }
 
 armorBonus={	-- whatever bonuses the armor provides go here

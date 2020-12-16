@@ -7,7 +7,7 @@ end
 function update(dt)
 	if storage.state then
 		effectUtil.effectAllInRange("fu_byosgravgenfield",config.getParameter("range"), 2)
-	end	
+	end
 end
 
 function onInputNodeChange()

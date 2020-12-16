@@ -35,5 +35,5 @@ function wanderState.update(dt, stateData)
 end
 
 function wanderState.leavingState(stateData)
-  
+
 end

@@ -5,7 +5,7 @@ function init()
 	self.linkRange=config.getParameter("kheAA_linkRange",16)
 	self.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
 	self.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
-	
+
 	object.setConfigParameter('description',"^red;Output1:^reset; Partial Fill^red;Output2:^reset; Complete Fill")
 end
 
@@ -20,7 +20,7 @@ function update(dt)
 	if self.outPartialFillNode or self.outCompleteFillNode then
 		self.containerSize=world.containerSize(self.containerId)
 		self.containerFill=util.tableSize(world.containerItems(self.containerId) or {})
-		
+
 		if self.outPartialFillNode then
 			object.setOutputNodeLevel(self.outPartialFillNode,(self.containerFill or 0) > 0)
 		end
@@ -38,5 +38,5 @@ function findContainer()
 			self.containerId=objectId
 			break
 		end
-	end 
+	end
 end

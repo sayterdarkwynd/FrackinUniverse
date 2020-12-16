@@ -89,11 +89,11 @@ function init()
   --animator.setAnimationState("bottomThruster", "off")
 
   --animator.setAnimationState("headlights", "off")
-  
+
   --Monijir
 
   --NONSENSE
-  
+
       --this comes in from the controller.
   self.ownerKey = config.getParameter("ownerKey")
   vehicle.setPersistent(self.ownerKey)

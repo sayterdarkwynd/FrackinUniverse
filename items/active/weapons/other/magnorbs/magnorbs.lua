@@ -298,7 +298,7 @@ function addShieldEffect()
 	    status.setPersistentEffects("cosmicdefender", {
 	      {stat = "aetherImmunity", amount = 1},
 	      {stat = "cosmicResistance", amount = 0.25}
-	    })           
+	    })
 	elseif self.shieldPower ~= nil and self.shieldPower ~= "none" then
         sb.logError("shieldPower %s is undefined for function addShieldEffect in magnorbs.lua")
 	end
@@ -314,7 +314,7 @@ function removeShieldEffect()
         status.clearPersistentEffects("cosmicdefender", {
 	      {stat = "aetherImmunity", amount = 1},
 	      {stat = "cosmicResistance", amount = 0.25}
-        })        
+        })
 	elseif self.shieldPower == "Frost Aura" then
         status.removeEphemeralEffect("iceburst")
         status.clearPersistentEffects("frostmagnorb", {

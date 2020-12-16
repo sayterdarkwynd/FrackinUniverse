@@ -54,15 +54,15 @@ function BurstFire:fireState()
     self.state:set()
     return
   end
-  
+
   local intervalTimer = 0
   local burstCount = 0
   stateTimer = self.fireTime
   while stateTimer > 0 do
     animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
-    
+
     if intervalTimer <= 0 and burstCount < self.burstCount then
-     
+
       animator.setAnimationState(self.armName, "active")
       animator.playSound(self.armName .. "Fire")
 

@@ -12,36 +12,36 @@ function init()
 	local passed, err = pcall(function()
 		data = root.assetJson("/zb/updateInfoWindow/data.config")
 		modslist = status.statusProperty("zb_updatewindow_pending", {}) or {}
-		
+
 		widget.setButtonEnabled("close", false)
 		widget.setButtonEnabled("buttonPrevious", false)
 		if #modslist <= 0 then
 			checkedAll = true
 			timer = 0
-			
+
 			for mod, _ in pairs(data) do
 				if mod ~= "Data" then
 					table.insert(modslist, mod)
 				end
 			end
 		end
-		
+
 		if #modslist == 1 then
 			widget.setButtonEnabled("buttonNext", false)
 		end
-		
+
 		if not timer then
 			timer = data.Data.minimumUptime
 		end
-		
+
 		displayInfo()
 	end)
-	
+
 	if not passed then
 		sb.logError("[ZB] UPDATE WINDOW ERRORED")
 		sb.logError("mods list:\n%s\nError:\n%s", status.statusProperty("zb_updatewindow_pending", {}) or {}, err)
 		sb.logError("")
-		
+
 		errored = true
 		widget.setText("textScrollBox.text", "An error has occured. Please report this error with a log attached.")
 		widget.setButtonEnabled("close", true)
@@ -67,14 +67,14 @@ end
 function displayInfo()
 	texts = root.assetJson(data[modslist[index]].file)
 	versionIndex[modslist[index]] = texts.version
-	
+
 	widget.setButtonEnabled("buttonChangelog", true)
 	widget.setButtonEnabled("buttonCredits", true)
 	widget.setButtonEnabled("buttonInfo", true)
-	
+
 	widget.setText("textScrollBox.text", "\n"..checkString(texts.welcome, "welcome").."\n\n")
 	widget.setText("version", texts.version)
-	
+
 	if data[modslist[index]].image then
 		local imageSize = root.imageSize(data[modslist[index]].image)
 		local widgetPosition = {150, 232}
@@ -89,7 +89,7 @@ end
 
 function uninit()
 	if errored then return end
-	
+
 	if not checkedAll then
 		player.interact("ScriptPane", "/zb/updateInfoWindow/updateInfoWindow.config")
 		return
@@ -119,14 +119,14 @@ function checkString(str, req)
 			rtn = str
 		end
 	end)
-	
+
 	if passed then
 		return rtn.."\n\n"
 	else
 		sb.logError("[ZB] UPDATE WINDOW ERRORED")
 		sb.logError("Pending list:\n%s\nError:\n%s", status.statusProperty("zb_updatewindow_pending", {}) or {}, err)
 		sb.logError("")
-		
+
 		errored = true
 		widget.setText("textScrollBox.text", "An error has occured. Please report this error with a log attached.")
 		widget.setButtonEnabled("close", true)
@@ -137,7 +137,7 @@ end
 
 function buttonInfo()
 	widget.setText("textScrollBox.text", checkString(texts.info, "info"))
-	
+
 	widget.setButtonEnabled("buttonChangelog", true)
 	widget.setButtonEnabled("buttonCredits", true)
 	widget.setButtonEnabled("buttonInfo", false)
@@ -145,7 +145,7 @@ end
 
 function buttonChangelog()
 	widget.setText("textScrollBox.text", checkString(texts.changelog, "changelog"))
-	
+
 	widget.setButtonEnabled("buttonChangelog", false)
 	widget.setButtonEnabled("buttonCredits", true)
 	widget.setButtonEnabled("buttonInfo", true)
@@ -153,7 +153,7 @@ end
 
 function buttonCredits()
 	widget.setText("textScrollBox.text", checkString(texts.credits, "credits"))
-	
+
 	widget.setButtonEnabled("buttonChangelog", true)
 	widget.setButtonEnabled("buttonCredits", false)
 	widget.setButtonEnabled("buttonInfo", true)
@@ -166,7 +166,7 @@ function buttonNext()
 		widget.setButtonEnabled("close", true)
 		widget.setButtonEnabled("buttonNext", false)
 	end
-	
+
 	displayInfo()
 	widget.setButtonEnabled("buttonPrevious", true)
 end
@@ -176,7 +176,7 @@ function buttonPrevious()
 	if index <= 1 then
 		widget.setButtonEnabled("buttonPrevious", false)
 	end
-	
+
 	displayInfo()
 	widget.setButtonEnabled("buttonNext", true)
 end

@@ -16,7 +16,7 @@ armorBonus={
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonus1Handle=effect.addStatModifierGroup({})
-			
+
 	checkWeapons()
 
 	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)

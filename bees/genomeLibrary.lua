@@ -3,12 +3,12 @@ genelib = {}
 --[[	Genome explanation:
 	Genome = "030101050301"
 	Genes = "03", "01", "01", "05", "03", "01"
-	
+
 	A string composed of numbers and chars similar to how hexidecimals work, but goes up to Z instead of F (0-35 instead of 0-15 | 0-1295 instead of 0-255 with two characters)
 	A genome is composed of (number of stats * 2) characters, where every two characters store the value of a stat. Each such pair is called a gene.
 	The way a stat is translated from stat to string varies, but here's the general idea:
 	value * 100 -> char (0 = 00, 12.95 = ZZ, 2 = 5J)
-	
+
 	A complete genome with the present stats would look like this:
 	baseProduction : 3, droneToughness : 1, droneMultiplier : 1, queenLifespan : 5, queenHealth : 3, mutationChance : 1 (out of 100)
 	030101050301
@@ -57,31 +57,31 @@ end
 genelib.numberToStat = function(num)
 	-- Return "00" (min) if the number is null, or is or below 0
 	if not num or num <= 0 then return "00" end
-	
+
 	-- Return "ZZ" (max) if the number is or above 1295
 	if num >= (genelib.libraryLength^2 - 1) then return "ZZ" end
-	
+
 	num = math.floor(num+0.5)
-	
+
 	-- String magic starts here:
 	local invertedGenome = ""
 	local genome = ""
-	
+
 	while num > 0 do
 		local leftover = num % genelib.libraryLength
 		invertedGenome = invertedGenome..string.sub(genelib.stringLibrary, leftover+1, leftover+1)
 		num = math.floor(num / genelib.libraryLength)
 	end
-	
+
 	local invertedLength = string.len(invertedGenome)
 	for i = 1, invertedLength do
 		genome = genome..string.sub(invertedGenome, invertedLength-i+1, invertedLength-i+1)
 	end
-	
-	if string.len(genome) < 2 then 
+
+	if string.len(genome) < 2 then
 		genome = "0"..genome
 	end
-	
+
 	return genome
 end
 
@@ -93,7 +93,7 @@ genelib.statFromGenomeToDecimal = function(genome, stat)
 			return genelib.statToDecimal(val, stat)
 		end
 	end
-	
+
 	-- Return nothing if the stat doesn't exist within the genome
 end
 
@@ -105,7 +105,7 @@ genelib.statFromGenomeToValue = function(genome, stat)
 			return genelib.statToValue(val, stat)
 		end
 	end
-	
+
 	-- Return nothing if the stat doesn't exist within the genome
 end
 
@@ -114,12 +114,12 @@ end
 genelib.statToDecimal = function(val)
 	local tens = string.sub(val, 1, 1)
 	local units = string.sub(val, 2, 2)
-	
+
 	tens = (string.find(genelib.stringLibrary, tens)-1) * genelib.libraryLength
 	units = string.find(genelib.stringLibrary, units)-1
-	
+
 	val = tonumber(tens) + tonumber(units)
-	
+
 	return val
 end
 
@@ -127,54 +127,54 @@ end
 -- WARNING: Not to be confused with statToDecimal!!!!
 genelib.statToValue = function(val, stat)
 	local num = genelib.statToDecimal(val)
-	
+
 	if stat == "miteResistance" then
 		-- Extra step for mite resistance. See 'numberToGenomeMiteResistance' function for more info
 		local range = genelib.libraryLength^2
 		num = (num - range / 2) * genelib.miteResistanceStep
-		
+
 	elseif stat == "mutationChance" then
 		local range = genelib.libraryLength^2
 		num = math.floor(100/range*100*num)*0.01
-	
+
 	elseif stat == "workTime" then
 		if num == 0 then return "day"
 		elseif num == 1 then return "night"
 		else return "both" end
 	end
-	
+
 	return num
 end
 
 -- Translates a number into a mite resistance stat
 genelib.numberToMiteResistance = function(num)
-	
+
 	-- This dictates the mite resistance stats min to max range. At 0.01, the range is -6.475 to 6.475.
 	-- Essentially, the range is between { [libraryLength]^2 / 2 * [miteResistanceStep] } and its negative counter part.
 	local range = genelib.libraryLength^2 / 2 * genelib.miteResistanceStep
-	
+
 	-- num = 0
 	-- range = 1296 / 2 * 0.01
 	-- range = 648 * 0.01
 	-- range = 6.48 <> -6.48
-	
+
 	-- Clamp the received value to the range
 	num = math.min(range, math.max(-range, num))
-	
+
 	-- num = 0
-	
+
 	-- Add the range value to offset the received value so the negative is at 0
 	num = num + range
-	
+
 	-- num = 0 + 6.48
 	-- num = 6.48
-	
+
 	-- Divide it by the step to get the amount of "jumps" from 0 to the value
 	num = num / genelib.miteResistanceStep
-	
+
 	-- num = 6.48 / 0.01
 	-- num = 648
-	
+
 	-- Convert to, and return gene
 	return genelib.numberToStat(num)
 end
@@ -182,15 +182,15 @@ end
 -- Generate and return a genome with the default values for the received bee name
 genelib.generateDefaultGenome = function(beeName)
 	local defaultValues = root.assetJson("/bees/beeData.config").stats
-	
+
 	-- Clear potential additions to the name.
 	local underscore1 = string.find(beeName, "_")
-	if not underscore1 then 
+	if not underscore1 then
 		sb.logWarn("FU/bees/genomelibrary: error in %s",beeName)
 	end
 	local underscore2 = string.find(beeName, "_", underscore1+1)
 	beeName = string.sub(beeName, underscore1+1, underscore2-1)
-	
+
 	-- Convert base stat values to genome format, with unique conversion methods where required (such as mites)
 	local genome = ""
 	for _, stat in ipairs(genelib.statOrder) do
@@ -198,26 +198,26 @@ genelib.generateDefaultGenome = function(beeName)
 			local id = math.random(1, #defaultValues[beeName])
 			defaultValues = defaultValues[beeName][id]
 			genome = genome..genelib.numberToStat(id)
-			
+
 		elseif stat == "miteResistance" then
 			genome = genome..genelib.numberToMiteResistance(defaultValues[stat])
 		else
 			genome = genome..genelib.numberToStat(defaultValues[stat])
 		end
 	end
-	
+
 	return genome
 end
 
 -- Transltes the genome into a table with stats
 genelib.returnFullGenomeStats = function(genome)
 	local stats = {}
-	
+
 	for i, stat in ipairs(genelib.statOrder) do
 		local value = string.sub(genome, (i-1)*2+1, (i-1)*2+2)
 		stats[stat] = genelib.statToValue(value, stat)
 	end
-	
+
 	return stats
 end
 
@@ -226,7 +226,7 @@ end
 genelib.getAvarageGenome = function(queenGenome, genomeTable)
 	-- Add the queens genome to the pool
 	table.insert(genomeTable, queenGenome)
-	
+
 	local stats = {}
 	for i, stat in ipairs(genelib.statOrder) do
 		if stat ~= "subtype" and stat ~= "workTime" then
@@ -238,15 +238,15 @@ genelib.getAvarageGenome = function(queenGenome, genomeTable)
 			stats[stat] = math.floor(stats[stat] / #genomeTable + 0.5)
 		end
 	end
-	
+
 	stats.subtype = genelib.statFromGenomeToDecimal(queenGenome, "subtype")
 	stats.workTime = genelib.statFromGenomeToDecimal(queenGenome, "workTime")
-	
+
 	local generatedGenome = ""
 	for _, stat in ipairs(genelib.statOrder) do
 		generatedGenome = generatedGenome..genelib.numberToStat(stats[stat])
 	end
-	
+
 	return generatedGenome
 end
 
@@ -254,21 +254,21 @@ end
 genelib.modifyGenomeStat = function(genome, stat, mod)
 	-- Return the genome as is if the mod is 0 or nil
 	if not mod or mod == 0 then return genome end
-	
+
 	-- Iterate through the stats table and find the stat that needs modifying
 	for i, st in ipairs(genelib.statOrder) do
 		if st == stat then
 			local newGenome = string.sub(genome, 0, (i-1)*2)
-			
+
 			local str = string.sub(genome, (i-1)*2+1, (i-1)*2+2)
 			str = genelib.modifyStatString(str, mod)
-			
+
 			newGenome = newGenome..str
 			newGenome = newGenome..string.sub(genome, (i-1)*2+3, string.len(genome))
 			return newGenome
 		end
 	end
-	
+
 	-- Return unmodified genome if the stat is missing
 	return genome
 end
@@ -280,18 +280,18 @@ genelib.evolveGenome = function(genome, modifier)
 	local newGenome = ""
 	local chance = genelib.statFromGenomeToValue(genome, "mutationChance")
 	chance = chance + (modifier or 0)
-	
+
 	-- First, the game has to successfully roll for a stat mutation, based on the bees stat (+ external modifiers)
 	-- If successful, there is a 40% chance there will be no effect, 30% chance for a positive modifier, 30% for negative
 	-- +/-3 has 5% | +/-2 has 10% | +/-1 has 15%
-	
+
 	for i, stat in ipairs(genelib.statOrder) do
 		str = string.sub(genome, (i-1)*2+1, (i-1)*2+2)
-		
+
 		if stat ~= "subtype" and stat ~= "workTime" then
 			if math.random() <= chance then
 				local rnd = math.random()
-				
+
 				if rnd <= 0.05 then -- 5% -3
 					str = genelib.modifyStatString(str, -3)
 				elseif rnd <= 0.15 then -- 10% -2
@@ -309,9 +309,9 @@ genelib.evolveGenome = function(genome, modifier)
 				end
 			end
 		end
-		
+
 		newGenome = newGenome..str
 	end
-	
+
 	return newGenome
 end

@@ -67,8 +67,8 @@ function init()
 
 
   monster.setName("Heavy War Drone")
-  monster.setDamageBar("special") 
-  
+  monster.setDamageBar("special")
+
   self.switchAngleTime = config.getParameter("switchAngleTime")
 end
 
@@ -158,11 +158,11 @@ function controlGun(part, offset, projectileType, params, count, power, interval
         if part == "frontgun" then
           world.debugPoint(vec2.add(mcontroller.position(), center), "yellow")
         end
-		
+
 		if not self.target then return true end
-		
+
         targetPosition = world.entityPosition(self.target)
-		
+
         if targetPosition == nil then return true end
 
         toTarget = world.distance(targetPosition, vec2.add(mcontroller.position(), center))

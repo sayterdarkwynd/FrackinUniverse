@@ -16,11 +16,11 @@ end
 function renderDrill(pos)
 	animator.resetTransformationGroup("vertical")
 	animator.scaleTransformationGroup("vertical", {1,math.min(0,pos[2] + 2)})
-	animator.translateTransformationGroup("vertical", {pos[1],1}); 
+	animator.translateTransformationGroup("vertical", {pos[1],1});
 	animator.resetTransformationGroup("drill")
-	animator.translateTransformationGroup("drill", {pos[1] - 0.5, pos[2] + 1}); 
+	animator.translateTransformationGroup("drill", {pos[1] - 0.5, pos[2] + 1});
 	animator.resetTransformationGroup("connector")
-	animator.translateTransformationGroup("connector", {pos[1], 1}); 
+	animator.translateTransformationGroup("connector", {pos[1], 1});
 end
 
 function animHorizontal()

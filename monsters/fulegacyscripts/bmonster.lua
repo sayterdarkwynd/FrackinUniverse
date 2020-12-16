@@ -23,10 +23,10 @@ function init()
 
   self.collisionPoly = mcontroller.collisionPoly()
 
-  if animator.hasSound("deathPuff") then    
+  if animator.hasSound("deathPuff") then
     monster.setDeathSound("deathPuff")
   end
-  
+
   self.debug = true
 end
 
@@ -42,7 +42,7 @@ function update(dt)
   self.notifications = {}
 
   mcontroller.controlParameters({
-    collisionPoly = self.collisionPoly  
+    collisionPoly = self.collisionPoly
   })
 
   if config.getParameter("lockFacingDirection") then
@@ -86,7 +86,7 @@ end
 function setAnimationState(args, output)
   args = parseArgs(args, {
     type = "movement",
-    state = "idle" 
+    state = "idle"
   })
 
   animator.setAnimationState(args.type, args.state)
@@ -151,7 +151,7 @@ end
 -- param active
 function setParticleEmitterActive(args, output)
   args = parseArgs(args, {
-    active = true  
+    active = true
   })
   if args.emitter == nil then return false end
 
@@ -174,7 +174,7 @@ end
 function setLightActive(args, output)
   args = parseArgs(args, {
     light = nil,
-    active = true  
+    active = true
   })
   if light == nil or active == nil then return false end
 

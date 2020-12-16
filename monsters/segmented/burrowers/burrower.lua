@@ -18,7 +18,7 @@ function burrowEffect(dt)
     	animator.burstParticleEmitter("groundBurstEmitter")
     	animator.setParticleEmitterActive("behindGroundEmitter", self.burrowing)
   		animator.setGlobalTag("groundState", self.burrowing and "below" or "above" )
-    else  
+    else
 	self.burrowTick = self.burrowTick - dt
 	if self.burrowTick <= 0  and self.burrowing then
 		if not playerModified(mcontroller.position(),2) then
@@ -42,7 +42,7 @@ end
 function update(dt)
 
 	self.parent = self.parent and self.parent or config.getParameter("parent")
-	
+
 	if not self.burrowTimer then
 	  self.burrowProjectile = config.getParameter("burrowProjectile", "burrow")
 	  self.burrowBurstProjectile = config.getParameter("burrowBurstProjectile", "burrowburst")
@@ -59,7 +59,7 @@ function update(dt)
 	  local movementSettings = config.getParameter("movementSettings")
 	  self.flySpeed = movementSettings.flySpeed
 	end
-	
+
 	if not self.statusEffectChecked then
 		local projectileCoordinator = config.getParameter('projectileCoordinator')
 		if projectileCoordinator then
@@ -70,7 +70,7 @@ function update(dt)
 
 	self.monsterUpdate = self.monsterUpdate and self.monsterUpdate or monsterUpdate
 	self.monsterUpdate(dt)
-	
+
 	if world.entityExists(self.parent and self.parent or -1) then
 		local distance 	= entity.distanceToEntity(self.parent)
 		local angle 	= vec2.angle(distance)

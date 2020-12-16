@@ -25,7 +25,7 @@ function BeamArm:update(dt)
     self.bobLocked = false
   end
   -- local f = animator.partPoint(self.armName,"fireOffset")
-  -- if f then 
+  -- if f then
     -- world.debugText("%s",f,self:shoulderPosition(),"green")
     -- world.debugPoint(vec2.add(mcontroller.position(),f),"yellow")
     -- end
@@ -58,15 +58,15 @@ function BeamArm:fireState()
   local soundTimer = 0
   local dt = script.updateDt()
   local entityLocked = nil
-  
+
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)--self.aimAngle
 
   self.aimLocked = self.lockAim
   self.newFirePosition = self.firePosition
   self.newFireAngle = self.aimAngle
-  
+
   coroutine.yield()
-  
+
 -- update loop
   while self.isFiring do
     if not self:rayCheck(self.newFirePosition) then -- don't fire if sticking thru wall
@@ -87,22 +87,22 @@ function BeamArm:fireState()
 
     if stateTimer <= 0 then
       stateTimer = self.fireTime
-      local pullTo = self.mechWeapon2Mode ~= "pull" and self.aimPosition 
+      local pullTo = self.mechWeapon2Mode ~= "pull" and self.aimPosition
               or vec2.add(self.newFirePosition,vec2.mul(self:fireVector(),1.5))
       if pullTo then world.debugPoint(pullTo, "green") end
-      
+
       local entityList = world.monsterQuery(endPoint,self.beamActiveRadius) or {}
       if #entityList > 0 and not entityLocked then
         entityLocked = entityList[1]
       end
       local weaponLocked = entityLocked and world.entityExists(entityLocked)
-                  and vec2.mag(vec2.sub(self.newFirePosition,world.entityPosition(entityLocked))) < self.beamMaxRange 
+                  and vec2.mag(vec2.sub(self.newFirePosition,world.entityPosition(entityLocked))) < self.beamMaxRange
                   and not beamCollision
 
       if weaponLocked then
         endPoint = world.entityPosition(entityLocked) or endPoint
         local v = entityLocked
-        local diffX = (pullTo[1] - world.entityPosition(v)[1]) 
+        local diffX = (pullTo[1] - world.entityPosition(v)[1])
         local diffY = (pullTo[2] - world.entityPosition(v)[2])
 
         local velocity = {self.beamPullCoefficient * diffX, self.beamPullCoefficient * diffY}
@@ -113,7 +113,7 @@ function BeamArm:fireState()
         world.spawnProjectile("xsmm_physics",ppos, self.driverId, {0,0}, false)
         if soundTimer <= dt then animator.playSound(self.armName .. "Locked") end
       else
-        
+
         entityLocked = nil
         if soundTimer <= dt then animator.playSound(self.armName .. "Fire") end
       end
@@ -121,7 +121,7 @@ function BeamArm:fireState()
       local beamPmid = weaponLocked and self.beamProjectile or self.beamIndicatorProjectile
       local beamPend = weaponLocked and self.beamEndProjectile or self.beamCrosshair
       local beamPvel = mcontroller.zeroG() and mcontroller.velocity() or nil
-      
+
       self:progressiveLineCollision(self.newFirePosition, endPoint, self.beamStep, beamPmid, beamPvel)
       world.spawnProjectile(beamPend, endPoint, self.driverId, {0, 0}, false,{referenceVelocity = beamPvel,onlyHitTerrain=true})
       world.spawnProjectile(beamPstart, self.newFirePosition, self.driverId, {0, 0}, false,{referenceVelocity = beamPvel,onlyHitTerrain=true})
@@ -155,7 +155,7 @@ end
 
 function BeamArm:updateBeam()
   local beamLength = math.min(vec2.mag(vec2.sub(self.newFirePosition,self.aimPosition)),self.beamMaxRange or 25)
-  local endPoint = vec2.add(self.newFirePosition, vec2.mul(self:fireVector(), beamLength)) 
+  local endPoint = vec2.add(self.newFirePosition, vec2.mul(self:fireVector(), beamLength))
 
   local beamCollision = self:progressiveLineCollision(self.newFirePosition, endPoint, self.beamStep or 1)
   if not vec2.eq(beamCollision,endPoint) then
@@ -176,7 +176,7 @@ function BeamArm:progressiveLineCollision(startPoint, endPoint, stepSize, projec
   for i = 1, steps-1 do
     local p1 = { normX * i * stepSize + startPoint[1], normY * i * stepSize + startPoint[2]}
     local p2 = { normX * (i + 1) * stepSize + startPoint[1], normY * (i + 1) * stepSize + startPoint[2]}
-    if projectile ~= nil then            
+    if projectile ~= nil then
       world.spawnProjectile(projectile, math.midPoint(p1, p2), self.driverId, {normX, normY}, false,{speed=0,referenceVelocity=pVelocity,onlyHitTerrain=true})
     end
     if world.lineCollision(p1, p2, {"Null","Block","Dynamic"}) then

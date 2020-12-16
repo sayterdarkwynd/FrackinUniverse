@@ -28,7 +28,7 @@ function init()
 
   self.targetSearchTimer = 0
   self.targetHoldTimer = 0
-  
+
   self.lastAggressGroundPosition = {0, 0}
   self.stuckCount = 0
   self.stuckPosition = {0, 0}
@@ -111,7 +111,7 @@ function init()
 
   animator.setAnimationState("movement", "idle")
   monster.setDeathParticleBurst("deathPoof")
-  
+
   self.debug = false
 end
 
@@ -120,7 +120,7 @@ function update(dt)
   if self.groundDirection[2] ~= -1 and (onGround() or self.groundChangeCooldownTimer > 0) then
     mcontroller.controlFly({0,0})
     mcontroller.controlParameters({
-      gravityEnabled = false  
+      gravityEnabled = false
     })
   end
 
@@ -159,7 +159,7 @@ function update(dt)
     end
     animator.setAnimationRate(animSpeed)
   end
-  
+
   if stunned then
     --do nothin
   elseif inState == "stunState" or inState == "fleeState" then
@@ -171,7 +171,7 @@ function update(dt)
     if not inSkill() and hasTarget() then
       --calculate skill positions relative to target
       updateSkillOptions()
-      
+
       --this should end up in skills, approach, or fall back into flee
       if inState ~= "approachState" then self.state.pickState() end
     end
@@ -196,7 +196,7 @@ function update(dt)
   end
 
   decrementTimers()
-  
+
   script.setUpdateDelta(hasTarget() and 1 or 10)
 end
 
@@ -808,7 +808,7 @@ function updateSkillOptions()
   for _, option in pairs(self.skillOptions) do
     option.approachDelta = world.distance(option.approachPoint, mcontroller.position())
     option.approachDistance = world.magnitude(option.approachDelta)
-    
+
     --score with custom hook or default method
     if type(_ENV[option.skillName].scoreOption) == "function" then
       option.score = _ENV[option.skillName].scoreOption(option)
@@ -821,7 +821,7 @@ function updateSkillOptions()
       option.score = option.score - self.skillChains[option.skillName]
     end
   end
-  
+
   --rank options
   table.sort(self.skillOptions, function(a,b) return a.score > b.score end)
 end

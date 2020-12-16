@@ -63,10 +63,10 @@ function catMouthOffset(dt,species)
 			delayedInit=nil
 		end
 	end
-	
+
 	if species == "cat" then
 		local mouthPos=status.statusProperty("mouthPosition") or {0,0}
-		
+
 		if checkMouthPos(mouthPos) then
 			local swimming=mcontroller.liquidMovement()
 			local facing=mcontroller.facingDirection()
@@ -89,7 +89,7 @@ function catMouthOffset(dt,species)
 			status.setStatusProperty("mouthPosition",catMouthPos)
 		end
 	end
-	
+
 end
 
 

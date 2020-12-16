@@ -4,17 +4,17 @@
   "price" : 20,
   "category" : "preparedFood",
   "inventoryIcon" : "slew4.png",
-  "description" : "Great carnivore slew. Not for sapient ingestion. You'll get sick.\n^red;-^white;5% ^red;HP ^gray;(^white;10s^gray;)\n^red;Poisoned ^gray;(^white;30s^gray;)^reset;",
+  "description" : "Great carnivore slew. Not for sapient ingestion. Not for sapient ingestion. You'll get sick.\n^red;-^white;5% ^red;HP^gray;, ^red;Poisoned ^gray;(^white;1m^gray;)^reset;",
   "shortdescription" : "Ultra Slew",
   "effects" : [ [
     {
         "effect" : "negativehealth5",
-        "duration" : 10
+        "duration" : 60
     },
     {
-        "effect" : "weakpoison",
-        "duration" : 30
-    }    
+        "effect" : "cattlepoison",
+        "duration" : 60
+    }  
   ] ],
   "foodValue" : 55,
   "tooltipKind" : "food",

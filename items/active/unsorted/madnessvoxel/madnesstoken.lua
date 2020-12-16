@@ -9,7 +9,7 @@ function init()
 
   self.active = false
   storage.fireTimer = storage.fireTimer or 0
-  
+
   --make sure Madness quest is on, this is a safe place to do so
   if not player.hasQuest("madnessquestdata") then
   	player.startQuest("madnessquestdata")

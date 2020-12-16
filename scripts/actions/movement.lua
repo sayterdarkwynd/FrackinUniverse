@@ -257,7 +257,7 @@ function moveToPosition(args, board, node)
       return result
     end
     result = mcontroller.controlPathMove(targetPosition, args.run)
-    if not self.setFacingDirection then 
+    if not self.setFacingDirection then
       if not mcontroller.groundMovement() then
         controlFace(mcontroller.velocity()[1])
       elseif mcontroller.running() or mcontroller.walking() then

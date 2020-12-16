@@ -217,12 +217,12 @@ function handleTooltip(args)
 	--water use calc
 	local waterUseWith=getFertSum('fluidUse', args.fert, args.water)
 	local waterUseWithout=getFertSum('fluidUse', "absolutelynothing", "absolutelynothing")
-	local waterUseString='Water Use: ' .. waterUseWith .. "\n"
 	if waterUseWith<waterUseWithout then
 		waterUseWith="^green;"..waterUseWith.."^reset;"
 	elseif waterUseWith>waterUseWithout then
 		waterUseWith="^red;"..waterUseWith.."^reset;"
 	end
+	local waterUseString='Water Use: ' .. waterUseWith .. "\n"
 
 
 	--water value calc

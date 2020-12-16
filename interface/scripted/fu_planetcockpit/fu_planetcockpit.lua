@@ -3,7 +3,7 @@ function init()
 	self.flickerTime = config.getParameter("disabledFlickerTime")
 	self.flicker = config.getParameter("disabledFlicker")
 	self.color = config.getParameter("disabledColor")
-	
+
 	timer = 0
 
 	pane.playSound(self.sounds.open)

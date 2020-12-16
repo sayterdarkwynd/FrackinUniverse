@@ -7,7 +7,7 @@ function init()
   --effect.addStatModifierGroup({{stat = "fallDamageMultiplier", baseMultiplier = 0.01}})
   --setGravityMultiplier()
   --activateVisualEffects()
-  
+
   script.setUpdateDelta(0)
 end
 --[[

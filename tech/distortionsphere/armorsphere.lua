@@ -38,13 +38,13 @@ function update(args)
   end
   self.specialLast = args.moves["special1"]
   self.pressDown = args.moves["primaryFire"]
-  if not args.moves["special1"] then		  
-    self.forceTimer = nil		
-  end  
-  
+  if not args.moves["special1"] then
+    self.forceTimer = nil
+  end
+
   if self.active then
-   
-    status.setPersistentEffects("fallDamageBonus", {{stat = "fallDamageMultiplier", baseMultiplier = 0.5}})  -- reduce fall damage 
+
+    status.setPersistentEffects("fallDamageBonus", {{stat = "fallDamageMultiplier", baseMultiplier = 0.5}})  -- reduce fall damage
     mcontroller.controlParameters(self.transformedMovementParameters)
 
     updateAngularVelocity(args.dt)
@@ -54,13 +54,13 @@ function update(args)
       if self.bombTimer > 0 then
         self.bombTimer = math.max(0, self.bombTimer - args.dt)
       end
-    
+
     if self.pressDown and self.bombTimer == 0 and status.overConsumeResource("energy", 70) then
       self.bombTimer = 1.1
       self.bombbonus = 1 + status.stat("bombtechBonus")
       local configBombDrop = { power = 25 * self.bombbonus }
       animator.playSound("bombdrop")
-      world.spawnProjectile("distortionbombpower", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)   
+      world.spawnProjectile("distortionbombpower", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
     end
   else
     status.clearPersistentEffects("fallDamageBonus") -- reset fall damage
@@ -87,23 +87,23 @@ function attemptActivation()
     if pos then
       mcontroller.setPosition(pos)
       deactivate()
-	    elseif not self.forceTimer then		
-      animator.playSound("forceDeactivate", -1)		
-      self.forceTimer = 0		
-    end		
-  end		
-end		
-function checkForceDeactivate(dt)		
-  animator.resetTransformationGroup("ball")		
-  if self.forceTimer then		
-    self.forceTimer = self.forceTimer + dt		
-    mcontroller.controlModifiers({		
-      movementSuppressed = true		
-    })		
-    local shake = vec2.mul(vec2.withAngle((math.random() * math.pi * 2), self.forceShakeMagnitude), self.forceTimer / self.forceDeactivateTime)		
-    animator.translateTransformationGroup("ball", shake)		
-    if self.forceTimer >= self.forceDeactivateTime then		
-      deactivate()		
+	    elseif not self.forceTimer then
+      animator.playSound("forceDeactivate", -1)
+      self.forceTimer = 0
+    end
+  end
+end
+function checkForceDeactivate(dt)
+  animator.resetTransformationGroup("ball")
+  if self.forceTimer then
+    self.forceTimer = self.forceTimer + dt
+    mcontroller.controlModifiers({
+      movementSuppressed = true
+    })
+    local shake = vec2.mul(vec2.withAngle((math.random() * math.pi * 2), self.forceShakeMagnitude), self.forceTimer / self.forceDeactivateTime)
+    animator.translateTransformationGroup("ball", shake)
+    if self.forceTimer >= self.forceDeactivateTime then
+      deactivate()
       self.forceTimer = nil
     else
       attemptActivation()
@@ -214,7 +214,7 @@ function activate()
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   self.active = true
   status.setPersistentEffects("ballprotection", {{stat = "protection", amount = 20 * (1+ status.stat("defensetechBonus")) }})
-  
+
   status.addEphemeralEffect("waterimmunity",1)  --disable spike sphere insanity-speed in liquid
 end
 

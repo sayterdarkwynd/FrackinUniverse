@@ -11,7 +11,7 @@ function init()
   effect.addStatModifierGroup({
       { stat = "poisonResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
       { stat = "mentalProtection", effectiveMultiplier = 0 }
-  })  
+  })
 end
 
 function setEffectTime()
@@ -30,14 +30,14 @@ function activateVisualEffects()
 	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
 	  animator.burstParticleEmitter("statustext")
   end
-  
+
   --because really, applying it to every creature in 60 tiles is just wasteful and stupid
   effectUtil.effectSelf("slimebioluminescence")
   --[[local distanceFromEntity = world.entityQuery(mcontroller.position(),60)
   for key, value in pairs(distanceFromEntity) do
    world.sendEntityMessage(value,"applyStatusEffect","slimebioluminescence")
   end]]
-  
+
 end
 
 function update(dt)
@@ -45,13 +45,13 @@ function update(dt)
   if self.tickTimer <= 0 then
     self.tickTimer = self.tickTime
   end
-  
+
   if ( status.stat("physicalResistance")  >= 0.45 ) then
       deactivateVisualEffects()
       effect.expire()
   end
 
-  
+
   effect.setParentDirectives("fade=88dd55="..self.tickTimer * 0.4)
 
 end

@@ -4,7 +4,7 @@ require '/scripts/fupower.lua'
 function init()
 	power.init()
 	storage.timer = storage.timer or 0
-	
+
 	if storage.active == nil then
 		updateActive()
 	end
@@ -29,6 +29,7 @@ function update(dt)
 			shoot()
 		end
 	end
+	power.update(dt)
 end
 
 function onNodeConnectionChange(args)

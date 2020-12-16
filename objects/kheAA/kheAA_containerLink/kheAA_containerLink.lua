@@ -9,7 +9,7 @@ function init()
 	self.linkRange=config.getParameter("kheAA_linkRange",16)
 	self.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
 	self.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
-	
+
 	local desc="^blue;Input: ^white;item network^reset;\n^red;Output: ^white;item network^reset;"
 	if self.outPartialFillNode then
 		desc=desc.."\n^red;Lower output: ^white;item network^reset;\n^red;Upper outputs: ^white;Partial/Complete Fill^reset;"
@@ -34,7 +34,7 @@ function findContainer()
 	self.containerPos=nil
 	transferUtil.vars.inContainers={}
 	transferUtil.vars.outContainers={}
-	
+
 	local objectIds = world.objectQuery(storage.position, self.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
 		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
@@ -53,7 +53,7 @@ function outputnodes()
 	if self.outPartialFillNode or self.outCompleteFillNode then
 		self.containerSize=world.containerSize(transferUtil.vars.containerId)
 		self.containerFill=util.tableSize(world.containerItems(transferUtil.vars.containerId) or {})
-		
+
 		if self.outPartialFillNode then
 			object.setOutputNodeLevel(self.outPartialFillNode,(self.containerFill or 0) > 0)
 		end

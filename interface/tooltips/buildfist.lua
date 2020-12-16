@@ -34,10 +34,10 @@ function build(directory, config, parameters, level, seed)
     config.tooltipFields.comboFinisherLabel = config.comboFinisher.name or "unknown"
   end
     -- *******************************
-    -- FU ADDITIONS 
+    -- FU ADDITIONS
       config.tooltipFields.critChanceLabel = (configParameter("critChance",1)+ configParameter("level",1))
-      config.tooltipFields.critBonusLabel = configParameter("critBonus",0) + ( configParameter("critBonus",0) + configParameter("level") ) 
-      config.tooltipFields.stunChance = configParameter("stunChance",0) + ( configParameter("stunChance",0) + configParameter("level") ) 
+      config.tooltipFields.critBonusLabel = configParameter("critBonus",0) + ( configParameter("critBonus",0) + configParameter("level") )
+      config.tooltipFields.stunChance = configParameter("stunChance",0) + ( configParameter("stunChance",0) + configParameter("level") )
     -- *******************************
   -- set price
   config.price = (config.price or 0) * root.evalFunction("itemLevelPriceMultiplier", configParameter("level", 1))

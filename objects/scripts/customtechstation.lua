@@ -12,8 +12,8 @@ function init()
 	self.fallback = false
 	storage.data = storage.data or {}
 	storage.imageconfig = storage.imageconfig or nil
-	object.setAnimationParameter("imageConfig", storage.imageconfig) 
-	
+	object.setAnimationParameter("imageConfig", storage.imageconfig)
+
 	--there are too many similar handlers, but I'm too tired to rewrite now, and later I'll be too lazy because it'd work anyway, rip this
 	message.setHandler("setFallback", function(_,_, value) self.fallback = value end)
 	message.setHandler("storeData", function(_,_, widget, data) storage.data[widget] = data end)
@@ -21,7 +21,7 @@ function init()
 	message.setHandler("screwdriverInteraction", function() return {config.getParameter("screwdriverInteractAction"), config.getParameter("screwdriverInteractData")} end) --also this is probably a super shitty way to handle this but maybe I'll use that screwdriver for other things later
 	message.setHandler("setImage", function(_,_, imageconfig)
 		storage.imageconfig = imageconfig
-		object.setAnimationParameter("imageConfig", imageconfig) 
+		object.setAnimationParameter("imageConfig", imageconfig)
 	end)
 	message.setHandler("setInterfaceObj", function(_,_, itemDesc) storage.interfaceObjIDesc = itemDesc end)
 	message.setHandler("gibInterfaceObj", function() return storage.interfaceObjIDesc end)

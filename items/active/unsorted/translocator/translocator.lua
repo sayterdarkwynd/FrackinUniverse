@@ -38,7 +38,7 @@ function update(dt, fireMode, shiftHeld)
 end
 
 function uninit()
-  
+
 end
 
 function fire()

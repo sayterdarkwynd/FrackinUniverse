@@ -13,13 +13,13 @@ texts = {
 
 function init()
 	message.setHandler('scanInteraction', scanInteraction)
-	
+
 	if storage.state == nil then
 		output(config.getParameter("defaultSwitchState", false))
 	else
 		output(storage.state)
 	end
-	
+
 	if storage.triggered == nil then
 		storage.triggered = false
 	end
@@ -39,10 +39,10 @@ function scanInteraction()
 	      local level = config.getParameter("treasure.level")
 	      local seed = config.getParameter("treasure.seed")
 	      local treasure = root.createTreasure(pool, level, seed)
-	      world.spawnTreasure(object.position(), pool, level, seed) 
+	      world.spawnTreasure(object.position(), pool, level, seed)
 	      self.scanned = 1
-      end      
-      
+      end
+
 end
 
 function output(state)

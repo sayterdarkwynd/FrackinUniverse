@@ -15,7 +15,7 @@ function update(dt)
 	else
 		storage.timer=storage.timer-dt
 	end
-	
+
 	animator.setAnimationState("outputState",stateCurrent and "on" or "off")
 	object.setAllOutputNodes(storage.currentState)
 end

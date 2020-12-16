@@ -89,14 +89,14 @@ function init()
   --animator.setAnimationState("bottomThruster", "off")
 
   --animator.setAnimationState("headlights", "off")
-  
+
   --Monijir
 
   --NONSENSE
   --self.teslaCoilFrame = 1
-  
+
   --animator.setGlobalTag('discharge',0)
-  
+
   animator.setAnimationState("teslaCoil","off")
 
   --this comes in from the controller.
@@ -146,7 +146,7 @@ function update()
     mcontroller.setVelocity({0, 0})
   else
     local driverThisFrame = vehicle.entityLoungingIn("drivingSeat")
-    
+
     if (driverThisFrame ~= nil) then
       vehicle.setDamageTeam(world.entityDamageTeam(driverThisFrame))
       --animator.setLightActive("dashboardGlow", true)

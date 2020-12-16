@@ -88,9 +88,9 @@ function init()
   end
 
   monster.setInteractive(config.getParameter("interactive", false))
-  
-  
-  
+
+
+
   monster.setDeathParticleBurst("deathPoof")
 
   message.setHandler("despawn", despawn)
@@ -112,11 +112,11 @@ function init()
   end
 
   self.targetErchius = 0
-  message.setHandler("setErchiusLevel", function(_,_,amount) 
+  message.setHandler("setErchiusLevel", function(_,_,amount)
     self.targetErchius = amount
   end)
 
-  self.despawnTimer = 5.0  
+  self.despawnTimer = 5.0
 end
 
 function minSpeed()
@@ -234,7 +234,7 @@ function update(dt)
     if self.despawnTimer < 0 then
       despawn()
     end
-  end  
+  end
 end
 
 function interact(args)

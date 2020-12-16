@@ -33,7 +33,7 @@ function update(dt)
 	else
 		checkWeapons()
 	end
-	
+
 	if self.timer <= 0 then
 		if math.random(1000) <= util.round(status.stat("critChance")*1000,0) then
 			self.type = "tarslimespawned"

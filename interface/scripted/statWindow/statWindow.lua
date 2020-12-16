@@ -6,9 +6,9 @@ function init()
 	self.elements = self.data.elements
 	self.statuses = self.data.statuses
 	self.extraOpen = false
-	
+
 	widget.setText("characterName", "^blue;"..world.entityName(player.id()))
-	
+
 	local playerRace = status.statusProperty("fr_race")
 	local recognized = false
 	for _,race in ipairs(self.data.races) do
@@ -17,7 +17,7 @@ function init()
 			break
 		end
 	end
-	
+
 	if not status.statusProperty("fr_enabled") then recognized = false end
 
 	if recognized then
@@ -25,7 +25,7 @@ function init()
 		--widget.setText("racialLabel", "Racial traits - "..playerRace) --Moved into populateRacialDescription to get the friendly-text name.
 		widget.setVisible("racialDesc", true)
 		widget.setVisible("offline", false)
-		
+
 		populateRacialDescription(playerRace)
 	else
 		widget.setVisible("racialDesc", true)
@@ -93,7 +93,7 @@ function populateRacialDescription(race,notRecognized)
 	--Edit: Go with the character creation tooltip title.
 	local racialName = (notRecognized and "") or JSON.charCreationTooltip.title
 	widget.setText("racialLabel", "Racial Traits - " .. racialName)
-	
+
 	local str = JSON.charCreationTooltip.description
 	local strTbl = {}
 	local splitters = {}
@@ -103,7 +103,7 @@ function populateRacialDescription(race,notRecognized)
 	local skip = false
 	local firstskip = false
 	local char = ""
-	
+
 	str=string.gsub(str,"\r\n","\n")
 	local str2=str
 	while str~=string.gsub(str," \n","\n") do
@@ -115,7 +115,7 @@ function populateRacialDescription(race,notRecognized)
 	local wordWall={}
 	local line={}
 	local sentence=""
-	
+
 	for i = 1, string.len(str) do
 		local c = string.sub(str, i, i)
 		if c == "\n" or i==string.len(str) then

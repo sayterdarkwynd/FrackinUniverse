@@ -34,7 +34,7 @@ function update(dt)
 			local evolution = root.assetJson(v)
 			evolve(evolution)
 		end
-	end	
+	end
 end
 
 function require(s)

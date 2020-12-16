@@ -39,8 +39,8 @@ function BeamArm:windupState()
 
   animator.setAnimationState(self.armName, "windup")
   animator.playSound(self.armName .. "Windup")
-  
-  
+
+
   while stateTimer > 0 do
     animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
@@ -60,8 +60,8 @@ end
 function BeamArm:statSet()
         self.mechBonusWeapon = self.stats.power + self.stats.energy
         self.mechBonusBody = self.parts.body.stats.protection + self.parts.body.stats.energy
-        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed 
-        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump 
+        self.mechBonusBooster = self.parts.booster.stats.control + self.parts.booster.stats.speed
+        self.mechBonusLegs = self.parts.legs.stats.speed + self.parts.legs.stats.jump
         self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
         self.mechBonus = ((self.mechBonusBody  /2.4) + (self.mechBonusBooster/ 3) + (self.mechBonusLegs / 2.7))
         self.energyMax = self.parts.body.energyMax
@@ -74,23 +74,23 @@ function BeamArm:fireState()
   local stateTimer = self.fireTime
 
   -- FU beam damage scaling *******************************************
-	  self:statSet()  
+	  self:statSet()
 	  self.mechTier = self.stats.power
 	  self.basePower = self.stats.basePower or 1
-	  
+
           pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
-          
+
           self.applyBeamDamage = (self.basePower * self.mechTier) + math.random(50)
 
   -- ********************************************************************
-  
+
   local beamEndTimer = 0
 
   if not self:rayCheck(self.firePosition) then -- don't fire if sticking thru wall
     self.state:set(self.winddownState, self)
     return
   end
-    
+
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)
 
   self:updateBeam()
@@ -106,7 +106,7 @@ function BeamArm:fireState()
       beamParams = {}
       beamParams.speed =  200
       beamParams.timeToLive =  0.5
-      beamParams.power =  self.applyBeamDamage       
+      beamParams.power =  self.applyBeamDamage
       world.spawnProjectile("fumechBeam", self.firePosition, self.driverId, self.aimVector , false, beamParams)
     -- ***********************************************************************************************************************
 
@@ -128,14 +128,14 @@ function BeamArm:fireState()
     world.damageTiles(trueDamagePositions, "foreground", self.firePosition, "beamish", self.beamTileDamage, 99)
     world.damageTiles(trueDamagePositions, "background", self.firePosition, "beamish", self.beamTileDamage, 99)
   end
-    
+
     if beamCollision and beamEndTimer <= 0 and self.beamEndProjectile then
       world.spawnProjectile(self.beamEndProjectile, {endPoint[1],endPoint[2]}, self.driverId, {0, 0}, false)
       beamEndTimer = self.beamEndTimer
     end
 
 
-    
+
     --animator.setParticleEmitterBurstCount(self.armName .. "Beam", math.ceil(self.beamParticleDensity * beamLength / 5))
     --animator.burstParticleEmitter(self.armName .. "Beam")
 

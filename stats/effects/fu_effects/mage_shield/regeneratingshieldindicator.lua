@@ -12,7 +12,7 @@ function init()
 	end
 end
 
-function update(dt) 
+function update(dt)
 	if not status.isResource("damageAbsorption") then return end
 	local rsp=status.stat("regeneratingshieldpercent")
 	if rsp > 0.05 then

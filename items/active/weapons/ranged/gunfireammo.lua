@@ -8,16 +8,16 @@ function GunFire:init()
 	self.weapon:setStance(self.stances.idle)
 
 	self.cooldownTimer = self.fireTime
-	
+
 	self.fireHeld = false
 	self.weapon.cocked = not( self.fireType == "bolt" )
-	
+
 	self.weapon.onLeaveAbility = function()
 		self.weapon:setStance(self.stances.idle)
 	end
 	self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
 	self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
-	self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire	
+	self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
 
 function GunFire:update(dt, fireMode, shiftHeld)
@@ -28,8 +28,8 @@ function GunFire:update(dt, fireMode, shiftHeld)
 	if animator.animationState("firing") ~= "fire" then
 		animator.setLightActive("muzzleFlash", false)
 	end
-	
-	if self.fireMode == (self.activatingFireMode or self.abilitySlot) 
+
+	if self.fireMode == (self.activatingFireMode or self.abilitySlot)
 	and not self.weapon.currentAbility
 	and self.cooldownTimer == 0
 	and (not status.resourceLocked("energy") or self:useEnergy())
@@ -52,7 +52,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
 				if self.fireType == "bolt" and self.weapon.cocked then
 					self.weapon.cocked = false
 				end
-				animator.playSound("empty")	
+				animator.playSound("empty")
 				self:setState(self.cooldown)
 			end
 		end
@@ -64,7 +64,7 @@ function GunFire:auto()
 		-- recoil
 		self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
 		self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
-	
+
 	self.weapon:setStance(self.stances.fire)
 
 		self:fireProjectile()
@@ -75,7 +75,7 @@ function GunFire:auto()
 	end
 	activeItem.setInstanceValue("ammoAmount",self.weapon.ammoAmount)
 	animator.setAnimationState("gunState","firing")
-	
+
 	if self.stances.fire.duration then
 		util.wait(self.stances.fire.duration)
 	end
@@ -88,7 +88,7 @@ function GunFire:semi()
 		-- recoil
 		self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
 		self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
-	
+
 	self.weapon:setStance(self.stances.fire)
 
 		self:fireProjectile()
@@ -99,7 +99,7 @@ function GunFire:semi()
 	end
 	activeItem.setInstanceValue("ammoAmount",self.weapon.ammoAmount)
 	animator.setAnimationState("gunState","firing")
-	
+
 	if self.stances.fire.duration then
 		util.wait(self.stances.fire.duration)
 	end
@@ -112,7 +112,7 @@ function GunFire:burst()
 		-- recoil
 		self.recoilSpeed = (config.getParameter("recoilSpeed",200))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
 		self.recoilForce = (config.getParameter("recoilForce",100)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
-	
+
 	self.weapon:setStance(self.stances.fire)
 
 	local shots = math.min(self.burstCount,self.weapon.ammoAmount)
@@ -128,7 +128,7 @@ function GunFire:burst()
 
 		self.weapon.relativeWeaponRotation = util.toRadians(interp.linear(1 - shots / self.burstCount, 0, self.stances.fire.weaponRotation))
 		self.weapon.relativeArmRotation = util.toRadians(interp.linear(1 - shots / self.burstCount, 0, self.stances.fire.armRotation))
-	
+
 	animator.setAnimationState("gunState","firing")
 
 		util.wait(self.burstTime)
@@ -165,7 +165,7 @@ end
 
 function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, firePosition, projectileCount)
 	--Recoil here
-	self:applyRecoil()	
+	self:applyRecoil()
 	local params = sb.jsonMerge(self.projectileParameters, projectileParams or {})
 	params.power = self:damagePerShot()
 	params.powerMultiplier = activeItem.ownerPowerMultiplier()
@@ -192,7 +192,7 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
 				false,
 				params
 			)
-	end 
+	end
 	return projectileId
 end
 
@@ -233,15 +233,15 @@ function GunFire:applyRecoil()
 			self:adjustRecoil()
 		end
 		local recoilDirection = mcontroller.facingDirection() == 1 and self.weapon.aimAngle + math.pi or -self.weapon.aimAngle
-		mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)		
+		mcontroller.controlApproachVelocityAlongAngle(recoilDirection, self.recoilSpeed, self.recoilForce, true)
 	end
 end
 
-function GunFire:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil				
-		if not mcontroller.onGround() then						
+function GunFire:adjustRecoil()		-- if we are not grounded, we halve the force of the recoil
+		if not mcontroller.onGround() then
 		 self.recoilForce = self.recoilForce * 0.5
-		end			
+		end
 		if mcontroller.crouching() then
 		 self.recoilForce = self.recoilForce * 0.25
-		end			
+		end
 end

@@ -17,7 +17,7 @@ function init()
   self.lastStat = nil -- Last detected "count" stat
   -- This line just removes any of the old persistent set bonus effects.
   status.clearPersistentEffects("setbonus")
-  
+
   script.setUpdateDelta(100) -- This seems to translate to  ~1.6 seconds (YMMV) --1.4 (Khe)
 end
 

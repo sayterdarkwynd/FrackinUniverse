@@ -19,7 +19,7 @@ function update(dt)
 	--sb.logInfo("%s",self.damageCounter)
 end
 
-function damageTaken(notifications)	
+function damageTaken(notifications)
 	local totalDamage = 0
 	for _, notification in pairs(notifications) do
 		if notification.hitType == "Hit" then
