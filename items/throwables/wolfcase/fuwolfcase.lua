@@ -9,6 +9,7 @@ function init()
 
   self.active = false
   storage.fireTimer = storage.fireTimer or 0
+  self.random = math.random(1,20)
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -39,7 +40,11 @@ function update(dt, fireMode, shiftHeld)
   if storage.firing and animator.animationState("firing") == "off" then
     item.consume(1)
     if player then
-      world.spawnProjectile("fuwolfcase", mcontroller.position() );
+		if self.random==20 then
+			player.giveItem("wolfbook-codex")
+		else
+			world.spawnProjectile("fuwolfcase", mcontroller.position() );
+		end
     end
     storage.firing = false
     return
