@@ -1,29 +1,30 @@
 require "/scripts/effectUtil.lua"
 
 function init()
-  power.init()
-  if not config.getParameter("slotCount") then
-	object.setInteractive(false)
-  end
-  self = config.getParameter("atmos")
+	power.init()
+	if not config.getParameter("slotCount") then
+		object.setInteractive(false)
+	end
+	self=util.mergeTable(self or {},config.getParameter("atmos") or {})
 end
 
 function update(dt)
-  if (storage.effects or self.objectEffects) and power.consume(config.getParameter('isn_requiredPower')) then
-    animator.setAnimationState("switchState", "on")
-	if storage.effects then
-	  for _,effect in pairs(storage.effects) do
-		effectUtil.effectAllInRange(effect,self.range,5)
-	  end
+	if (storage.effects or self.objectEffects) and power.consume(config.getParameter('isn_requiredPower')) then
+		animator.setAnimationState("switchState", "on")
+		if storage.effects then
+			for _,effect in pairs(storage.effects) do
+			effectUtil.effectAllInRange(effect,self.range,5)
+			end
+		end
+		if self.objectEffects then
+			for _,effect in pairs (self.objectEffects) do
+			effectUtil.effectAllInRange(effect,self.range,5)
+			end
+		end
+	else
+		animator.setAnimationState("switchState", "off")
 	end
-	if self.objectEffects then
-	  for _,effect in pairs (self.objectEffects) do
-		effectUtil.effectAllInRange(effect,self.range,5)
-	  end
-	end
-  else
-	animator.setAnimationState("switchState", "off")
-  end
+	power.update(dt)
 end
 
 function containerCallback()

@@ -147,18 +147,18 @@
 	[ { "op": "remove", "path": "/companionsConfig/crewBenefits/fieldRegeneration/2"} ],
 	//end crew medic changes
 
+	//Pandora's Box pet stuff
+	[{"op" : "add","path" : "/companionsConfig/scripts/-","value" : "/scripts/companions/pandorasboxplayer.lua"}],
+
 	//end companionsconfig
 
 
-
-	
 	//remove vanilla blueprints
-	
-	
+		
 	[{"op":"test","path":"/defaultBlueprints/tier1/249"},{"op":"remove","path":"/defaultBlueprints/tier1/248"}], //pettether
 	[{"op":"test","path":"/defaultBlueprints/tier1/248"},{"op":"remove","path":"/defaultBlueprints/tier1/247"}], //pethealingstation
 	[{"op":"test","path":"/defaultBlueprints/tier1/247"},{"op":"remove","path":"/defaultBlueprints/tier1/246"}], //capturepod
-	//245 railhook
+	[{"op":"test","path":"/defaultBlueprints/tier1/246"},{"op":"remove","path":"/defaultBlueprints/tier1/245"}], //railhook
 	//244 stationtram
 	//243 compositerailplatform 
 	//242 rustyrailplatform
@@ -432,6 +432,7 @@
 	
 	//booze stuff
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "smallwoodencrate1" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "winecabinet" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeableemptybottle" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeablebeer" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeabledarkbeer" } } ],
@@ -665,6 +666,7 @@
 	
 
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_defaultunlockdiagnoser"} } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "solidrailplatform2"} } ],
 
 
 
