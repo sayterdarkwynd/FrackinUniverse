@@ -76,8 +76,8 @@ function FRHelper:call(args, main, ...)
     end
     --newargs = util.mergeTable(util.mergeTable({}, args), newargs)
 
-    animator.burstParticleEmitter(args.particles or "bonusBlock3")
-    animator.playSound(args.sound or "bonusEffect")
+    --animator.burstParticleEmitter(args.particles or "bonusBlock3")
+    if animator.hasSound(args.sound or "bonusEffect") then animator.playSound(args.sound or "bonusEffect") end
 
     self:applyStats(newargs, args.name or "FR_perfectBlockBonus", main, ...)
 end
