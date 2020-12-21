@@ -1,52 +1,18 @@
-local recipes =
-{
-
---liquids
-{inputs = { bottle=1,normalcomb=1 }, outputs = { honeyjar=1 }, time = 1.0},
-{inputs = { bottle=1,arcticcomb=1 }, outputs = { snowhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,aridcomb=1 }, outputs = { stronghoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,coppercomb=1 }, outputs = { honeyjar=1 }, time = 1.0},
-{inputs = { bottle=1,durasteelcomb=1 }, outputs = {shellhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,exceptionalcomb=1 }, outputs = { honeyjar=1,liquidwastewater=1 }, time = 1.0},
-{inputs = { bottle=1,flowercomb=1 }, outputs = { floralhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,forestcomb=1 }, outputs = { greenhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,godlycomb=1 }, outputs = { mythicalhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,goldcomb=1 }, outputs = { speedhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,ironcomb=1 }, outputs = { shellhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,junglecomb=1 }, outputs = { greenhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,minercomb=1 }, outputs = { honeyjar=1 }, time = 1.0},
-{inputs = { bottle=1,mooncomb=1 }, outputs = { honeyjar=1 }, time = 1.0},
-{inputs = { bottle=1,morbidcomb=1 }, outputs = { redhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,mythicalcomb=1 }, outputs = { mythicalhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,nocturnalcomb=1 }, outputs = { nocturnalhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,plutoniumcomb=1 }, outputs = { plutoniumhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,preciouscomb=1 }, outputs = { honeyjar=1 }, time = 1.0},
-{inputs = { bottle=1,radioactivecomb=1 }, outputs = { radioactivehoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,redcomb=1 }, outputs = { redhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,silvercomb=1 }, outputs = { shellhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,suncomb=1 }, outputs = { hothoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,solariumcomb=1 }, outputs = { solariumhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,titaniumcomb=1 }, outputs = { shellhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,tungstencomb=1 }, outputs = { shellhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,volcaniccomb=1 }, outputs = { hothoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,aegisaltcomb=1 }, outputs = { shellhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,feroziumcomb=1 }, outputs = { shellhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,violiumcomb=1 }, outputs = { shellhoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,liquidwater=1 }, outputs = { liquidwastewater=1 }, time = 1.0},
-{inputs = { bottle=1,magmacomb=1 }, outputs = { hothoneyjar=1 }, time = 1.0},
-{inputs = { bottle=1,eldercomb=1 }, outputs = { elderhoneyjar=1,liquidelderfluid=1 }, time = 1.0}
-}
+local recipes
 
 function init()
     self.timer = 1
     self.mintick = 1
     self.crafting = false
     self.output = {}
+    self.craftDelay = config.getParameter("craftDelay")
+
+    if not recipes then
+        recipes = root.assetJson('/objects/generic/honeyjarrer_recipes.config')
+    end
 end
 
 function getInputContents()
-        local id = entity.id()
-
         local contents = {}
         for i=0,2 do
             local stack = world.containerItemAt(entity.id(),i)
@@ -75,7 +41,6 @@ function filter(l,f)
 end
 
 function getValidRecipes(query)
-
     local function subset(t1,t2)
         if next(t2) == nil then
           return false
@@ -160,7 +125,7 @@ function startCrafting(result)
         end
 
         self.crafting = true
-        self.timer = result.time
+        self.timer = self.craftDelay
         self.output = result.outputs
         animator.setAnimationState("samplingarrayanim", "working")
         return true
