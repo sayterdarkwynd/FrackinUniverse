@@ -14,7 +14,7 @@ function uninit()
 	if genericStatHandler then
 		effect.removeStatModifierGroup(genericStatHandler)
 	else
-		sb.logInfo("fu_genericStatApplier.lua:uninit()::%s::%s".entity.entityType(),status.activeUniqueStatusEffectSummary())
+		sb.logInfo("fu_genericStatApplier.lua:uninit()::%s::%s",entity.entityType(),status.activeUniqueStatusEffectSummary())
 	end
 	genericStatHandler=nil
 	if oldUninitStatApplier then oldUninitStatApplier() end
