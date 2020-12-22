@@ -8,7 +8,7 @@ function MeleeCombo:init()
 	status.clearPersistentEffects("combobonusdmg")
 	self.comboStep = 1
 
-	fuLoadAnimations(self)
+	fuLoadSwooshData(self)
 	self.energyUsage = self.energyUsage or 0
 
 	self:computeDamageAndCooldowns()
@@ -201,7 +201,7 @@ end
 -- Ticks on every update regardless of whether this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if self.delayLoad then
-		fuLoadAnimations(self)
+		fuLoadSwooshData(self)
 	end
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
@@ -780,7 +780,7 @@ function cancelEffects(fullClear)
 	self.inflictedHitCounter = 0
 end
 
-function fuLoadAnimations(self)
+function fuLoadSwooshData(self)
 	self.swooshList={}
 	local animationData=config.getParameter("animation")
 	if type(animationData)=="string" and animationData:sub(1,1)=="/" then
