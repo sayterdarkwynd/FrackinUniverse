@@ -7,11 +7,15 @@ function init()
 end
 
 function update(dt)
-	if not power.warmedUp then
+	if not power.didInit then
 		power.init()
+	end
+	if not power.warmedUp then
+		power.kick()
 		power.warmedUp=true
 	end
 	if not conduitTimer or conduitTimer>=1.0 then
+		object.setAllOutputNodes(storage.on)
 		onNodeConnectionChange()
 		conduitTimer=0.0
 	else
@@ -21,7 +25,7 @@ end
 
 function setObjectOn(iterations)
 	storage.on=not object.isInputNodeConnected(1) or object.getInputNodeLevel(1)
-	--doAnims()
+	doAnims()
 	return storage.on, iterations
 end
 
@@ -53,7 +57,9 @@ function onInputNodeChange(args)
 	end
 end
 
---[[
+
 function doAnims()
-	animator.setAnimationState("switchState", ((storage.on and ((power and power.getTotalEnergy and power.getTotalEnergy() or 0) > 0)) and "on") or "off")
-end]]
+	local objectIsOn=(storage.on and ((power and power.getTotalEnergy and power.getTotalEnergy() or 0) > 0))
+	object.setAllOutputNodes(objectIsOn)
+	--animator.setAnimationState("switchState", (objectIsOn and "on") or "off")
+end

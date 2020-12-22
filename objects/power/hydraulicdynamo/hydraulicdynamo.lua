@@ -36,6 +36,7 @@ function update(dt)
 		animator.setAnimationState("screen", "off")
 		power.setPower(0)
 		power.update(dt)
+		object.setAllOutputNodes(false)
 		return
 	end
 	if storage.active2 then
@@ -53,6 +54,7 @@ function update(dt)
             break
         end
 	end
+	object.setAllOutputNodes(powerout>0)
 	power.update(dt)
 end
 
@@ -81,27 +83,6 @@ function isn_slotDecayCheckWater(slot)
 end
 function isn_doSlotDecay(slot)
 	world.containerConsumeAt(entity.id(),slot,1) --consume resource
---	local waste = world.containerItemAt(entity.id(),3)
---	local wastestack
---
---	if waste then
---		-- sb.logInfo("Waste found in slot. Name is " .. waste.name)
---		if (waste.name == "deadgnomes") then
---		  -- sb.logInfo("increasing storage.radiation")
---		  wastestack = world.containerSwapItems(entity.id(),{name = "deadgnomes", count = 1, data={}},3)
---		else
---		  -- sb.logInfo("not dead gnomes, ejecting")
---		  local wastecount = waste.count -- variable to ensure no change of quantities in between calculations.
---		  world.containerConsumeAt(entity.id(),3,wastecount) --delete waste
---		  world.spawnItem(waste.name,entity.position(),wastecount) --drop it on the ground
---		end
---	else -- (waste == nil)
---		wastestack = world.containerSwapItems(entity.id(),{name = "deadgnomes", count = 1, data={}},3)
---	end
---
---	if wastestack  and (wastestack.count > 0) then
---		world.spawnItem(wastestack.name,entity.position(),wastestack.count) --drop it on the ground
---	end
 end
 function isn_getCurrentPowerOutput()
 	local water = world.containerItemAt(entity.id(),3)

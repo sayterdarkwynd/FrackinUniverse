@@ -1,0 +1,68 @@
+{
+  "objectName" : "skathfusionreactorold",
+  "colonyTags" : ["skath"],
+  "printable" : false,
+  "rarity" : "Rare",
+  "category" : "wire",
+  "price" : 400,
+  "lightColor" : [0, 240, 255],
+  "flickerDistance" : 10.2,
+  "flickerStrength" : 1.55,
+  "flickerTiming" : 5,
+  "description" : "A fusion reactor made by the skath. It provides a huge amount of energy.",
+  "shortdescription" : "Skath Fusion Reactor",
+  "race" : "skath",
+
+  "apexDescription" : "According to my readings, in this tank the power of stars is harnessed.",
+  "avianDescription" : "This beam of light in there appears to be really dangerous. Better don't touch it.",
+  "floranDescription" : "Bright light hurtsss Floransss eyes!",
+  "glitchDescription" : "Intrigued. This fusion reactor generates a huge amount of power.",
+  "humanDescription" : "I heard on earth people tried to harness fusion reactors as well. It didn't end well.",
+  "hylotlDescription" : "While I do highly disapprove Skath tech, this device is astounding.",
+  "novakidDescription" : "Gettin some mighty comfortable feeling around this thing. It feels familiar somehow.",
+  "skathDescription" : "A Skath fusion reactor. Their power output is undeniably fantastic.",
+
+  "inventoryIcon" : "skathfusionreactoricon.png",
+  "orientations" : [
+    {
+      "dualImage" : "skathfusionreactor.png:<color>.<4>",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "top", "bottom" ]
+    }
+  ],
+  
+  "soundEffect" : "/sfx/objects/terraforge_loop1.ogg",
+  "soundEffectRangeMultiplier" : 2.0,
+  
+  "scripts" : [
+    "/objects/wired/switch/switch.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
+      "off" : [ "/sfx/objects/console_generic_switchoff.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "skathfusionreactor.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "outputNodes" : [ [0, 0] ],
+
+  "npcToy" : {
+    "ownerOnly" : true,
+    "influence" : [
+      "wallbutton"
+    ],
+    "defaultReactions" : {},
+    "preciseStandPositionLeft" : [-1.0, 0.0],
+    "preciseStandPositionRight" : [1.0, 0.0],
+    "maxNpcs" : 1
+  }
+}

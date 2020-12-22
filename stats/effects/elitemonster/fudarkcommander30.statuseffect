@@ -1,33 +1,35 @@
 {
-  "name" : "fudarkcommander30",
-  "effectConfig" : {
-	"regenHPPerSecond":0.05,
-	"controlModifiers": {
-		"speedModifier": 1.3,
-		"airJumpModifier": 1.15
+	"name" : "fudarkcommander30",
+	"effectConfig" : {
+		"regenHPPerSecond":0.05,
+		"controlModifiers": {
+			"speedModifier": 1.3,
+			"airJumpModifier": 1.15
+		},
+		"stats" : [
+			{
+				"stat" : "maxHealth",
+				"effectiveMultiplier" : 1.3
+			},
+			{
+				"stat" : "powerMultiplier",
+				"effectiveMultiplier" : 1.3
+			},
+			{
+				"stat" : "protection",
+				"effectiveMultiplier" : 1.3
+			}
+		],
+		"acceptedEntityTypes":["npc","monster"]
 	},
-    "stats" : [
-      {
-        "stat" : "maxHealth",
-        "effectiveMultiplier" : 1.3
-      },
-      {
-        "stat" : "powerMultiplier",
-        "effectiveMultiplier" : 1.3
-      },
-      {
-        "stat" : "protection",
-        "effectiveMultiplier" : 1.3
-      }
-    ]
-  },
-  "defaultDuration" : 60,
-  
-    "scriptDelta" : 10,
+	"defaultDuration" : 60,
 
-  "scripts" : [
-    "fudarkcommander.lua",
-    "/stats/effects/fu_genericStatApplier.lua",
-    "/stats/effects/fu_genericControlModifiers.lua"
-  ]
+	"scriptDelta" : 10,
+
+	"scripts" : [
+		"/stats/effects/fu_genericStatApplier.lua",
+		"/stats/effects/fu_genericControlModifiers.lua",
+
+		"fudarkcommander.lua"
+	]
 }

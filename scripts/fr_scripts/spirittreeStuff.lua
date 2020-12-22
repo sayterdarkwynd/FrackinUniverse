@@ -20,18 +20,9 @@
 ]]
 
 function FRHelper:call(args, main, dt, ...)
-	
-	local daytime = world.timeOfDay() < 0.5
-	
-	-- Night penalties
-	if not daytime then
-		local nightConfig = args.nightConfig
-		self:clearPersistent("FR_spirittreeDaytime")
-		self:applyStats(nightConfig, "FR_spirittreeNight", main, dt, ...)
-	else
-	-- Daytime Abilities
-		local dayConfig = args.daytimeConfig
-		self:clearPersistent("FR_spirittreeNight")
-		self:applyStats(dayConfig, "FR_spirittreeDaytime", main, dt, ...)
-	end
+	self:clearPersistent("FR_spirittreeDaytime")
+	self:clearPersistent("FR_spirittreeNight")
+
+	self:clearPersistent("FR_spirittreeStuff")
+	self:applyStats(((world.timeOfDay() or 0) < 0.5) and args.daytimeConfig or args.nightConfig, "FR_spirittreeStuff", main, dt, ...)
 end
