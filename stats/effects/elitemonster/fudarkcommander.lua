@@ -1,5 +1,6 @@
 local oldUpdate=update
 local oldInit=init
+local oldUninit=uninit
 
 function init()
 	local eType=world.entityType(entity.id())
@@ -33,4 +34,9 @@ function update(dt)
 		opacity="0"..opacity
 	end
 	effect.setParentDirectives("border=1;000000"..opacity..";00000000")
+end
+
+function uninit()
+	if not canRun then return end
+	if oldUninit then oldUninit() end
 end
