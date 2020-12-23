@@ -224,6 +224,17 @@
 		"op": "remove",
 		"path": "/planetTypes/ocean/layers/surface/layerLevel"
 	},
+    {
+      "op": "replace",
+      "path": "/regionTypes/ocean/oceanLiquid/0",
+      "value": "fusaltwater"
+    },
+    {
+      "op": "replace",
+      "path": "/regionTypes/oceanfloor/oceanLiquid/0",
+      "value": "fusaltwater"
+    },
+
 	{
 		"op": "remove",
 		"path": "/planetTypes/magma/layers/surface/baseHeight"
@@ -5911,7 +5922,7 @@
 		"op": "add",
 		"path": "/regionTypes/chromatic",
 		"value": {
-			"caveLiquid": ["water", "healingliquid", "crystalliquid", "bio_ooze", "blacktar"],
+			"caveLiquid": ["fusaltwater", "healingliquid", "crystalliquid", "bio_ooze", "blacktar"],
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedMountainsSurface", "remixedMegaMountainsSurface", "remixedFlatsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
 			"biome": [
@@ -5924,7 +5935,7 @@
 		"op": "add",
 		"path": "/regionTypes/arboreal",
 		"value": {
-			"caveLiquid": ["water", "tarliquid", "blacktar", "wastewater", "sludge"],
+			"caveLiquid": ["water", "fusaltwater", "tarliquid", "blacktar", "wastewater", "sludge"],
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedSwampySurface"],
 			"fgCaveSelector": ["surfaceCaves"],
 			"biome": [
@@ -5950,7 +5961,7 @@
 		"op": "add",
 		"path": "/regionTypes/arboreal2",
 		"value": {
-			"caveLiquid": ["water", "tarliquid", "blacktar", "lava"],
+			"caveLiquid": ["water", "fusaltwater", "tarliquid", "blacktar", "lava"],
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedSwampySurface"],
 			"fgCaveSelector": ["surfaceCaves"],
 			"biome": [
@@ -6285,7 +6296,7 @@
 		"op": "add",
 		"path": "/regionTypes/fungus",
 		"value": {
-			"caveLiquid": ["darkwater", "water", "swampwater", "bio_ooze"],
+			"caveLiquid": ["darkwater",  "fusaltwater", "water", "swampwater", "bio_ooze"],
 			"caveLiquidChanceRange": [100, 100],
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedStepsSurface", "remixedPoolsSurface", "remixedMildCanyonsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
@@ -6314,7 +6325,7 @@
 		"op": "add",
 		"path": "/regionTypes/crystalmoon",
 		"value": {
-			"caveLiquid": ["organicsoup", "water", "healingliquid"],
+			"caveLiquid": ["organicsoup", "fusaltwater",  "healingliquid"],
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedSpikesSurface", "remixedStepsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
 
@@ -6385,7 +6396,7 @@
 		"op": "add",
 		"path": "/regionTypes/icemoon",
 		"value": {
-			"caveLiquid": ["liquidnitrogen", "water", "shadowgas"],
+			"caveLiquid": ["liquidnitrogen", "water",  "fusaltwater", "shadowgas"],
 			"caveLiquidChanceRange": [30, 60],
 			"blockSelector": ["remixedSurface", "remixedMildCanyonsSurface", "remixedMildSurface", "remixedMountainsSurface"],
 			"fgCaveSelector": ["moonSurfaceCaves", "surfaceCaves", "denseCaves"],
@@ -6469,7 +6480,7 @@
 		"path": "/regionTypes/arcticdark",
 		"value": {
 			"caveLiquid": ["water"],
-			"oceanLiquid": ["water"],
+			"oceanLiquid": [ "fusaltwater", "water"],
 			"oceanLevelOffset": 0,
 			"blockSelector": ["remixedIslandsSurface"],
 			"fgCaveSelector": ["surfaceCaves", "denseCaves"],
@@ -8181,7 +8192,7 @@
 		"op": "add",
 		"path": "/regionTypes/estuary",
 		"value": {
-			"oceanLiquid": ["water"],
+			"oceanLiquid": [ "fusaltwater"],
 			"oceanLevelOffset": 0,
 			"blockSelector": ["tidalflatsIslandsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
@@ -8258,7 +8269,7 @@
 		"op": "add",
 		"path": "/regionTypes/coralreef",
 		"value": {
-			"oceanLiquid": ["water"],
+			"oceanLiquid": [ "fusaltwater" ],
 			"oceanLevelOffset": 1000,
 			"blockSelector": ["remixedSurface", "remixedMildSurface", "remixedCanyonsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
@@ -8306,7 +8317,7 @@
 		"op": "add",
 		"path": "/regionTypes/deepseavent",
 		"value": {
-			"oceanLiquid": ["water"],
+			"oceanLiquid": [ "fusaltwater" ],
 			"oceanLevelOffset": 1000,
 			"blockSelector": ["remixedCanyonsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
@@ -8540,7 +8551,7 @@
 		"op": "add",
 		"path": "/regionTypes/coralreef",
 		"value": {
-			"oceanLiquid": ["water"],
+			"oceanLiquid": [ "fusaltwater" ],
 			"oceanLevelOffset": 1000,
 			"blockSelector": ["remixedSurface", "remixedCanyonsSurface"],
 			"fgCaveSelector": ["surfaceCaves"],
@@ -8557,7 +8568,7 @@
 		"op": "add",
 		"path": "/regionTypes/kelpforest",
 		"value": {
-			"oceanLiquid": ["water"],
+			"oceanLiquid": [ "fusaltwater"],
 			"oceanLevelOffset": 1000,
 			"blockSelector": ["remixedSurface", "remixedMildSurface"],
 			"biome": [
