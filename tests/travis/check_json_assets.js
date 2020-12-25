@@ -102,7 +102,9 @@ var globOptions = {
 var totalCount = 0,
 	failedCount = 0;
 
-glob.sync( '**', globOptions ).forEach( ( filename ) => {
+var filenames = glob.sync( '**', globOptions ).concat( [ '.metadata' ] );
+
+filenames.forEach( ( filename ) => {
 	var jsonString = sanitizeRelaxedJson( fs.readFileSync( directory + '/' + filename ).toString() );
 	try {
 		JSON.parse( jsonString );

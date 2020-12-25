@@ -12,23 +12,16 @@
 
     "behaviorConfig" : {
       "greetingChance" : 0.5,
-
       "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
     },
 
     "questGenerator" : {
       "pools" : ["common"],
       "enableParticipation" : true,
-
-      // Every 30 seconds, decide whether to generate a quest and if so, spend
-      // the rest of the 30s window trying to generate it.
       "timeLimit" : 30,
-
-      // Don't generate new quests if there are already more than <nearbyQuestLimit>
-      // questmanager stagehands nearby, within a <nearbyQuestRange> tile range.
       "nearbyQuestLimit" : 2,
       "nearbyQuestRange" : 50,
-	  "questCountRange" : [1, 4],
+	    "questCountRange" : [1, 4],
       
       "graduation" : {
         "nextNpcType" : [
