@@ -44,6 +44,31 @@
 	},
 	{
 		"op": "add",
+		"path": "/playerstation/environmentStatusEffects/-",
+		"value": "nofallinvis"
+	},
+	{
+		"op": "add",
+		"path": "/outpost/environmentStatusEffects",
+		"value": ["nofallinvis"]
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/worldSize/1",
+		"value": 24000
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/worldSize/0",
+		"value": 64000
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/dungeonBaseHeight",
+		"value": 12000
+	},
+	{
+		"op": "add",
 		"path": "/nightfort",
 		"value": {
 			"primaryDungeon": "nightfort",
@@ -77,7 +102,7 @@
 			"ambientLightLevel": [80, 80, 80],
 			"biome": "thickjungle",
 			"musicTrack": "/music/scienceoutpost.ogg",
-			"environmentStatusEffects": []
+			"environmentStatusEffects": ["nofallinvis"]
 		}
 	},
 	{
