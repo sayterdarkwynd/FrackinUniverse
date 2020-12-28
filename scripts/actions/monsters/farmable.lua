@@ -290,9 +290,9 @@ function checkPoop() -- poop to fertilize trays , pee to water soil, etc
 		if self.randPoop <= 1 then
 			animator.playSound("deathPuff")
 			world.spawnItem("poop", mcontroller.position(), 1)
-		elseif self.randPoop <= 1 then
+		elseif self.randPoop >= 850 then
 			animator.playSound("deathPuff")
-			world.spawnItem("ff_spareparts", mcontroller.position(), 1) --why is spare parts down here?
+			world.spawnLiquid(mcontroller.position(), 1, 1) --liquidwater urination (1)
 		end
 	end
 end
