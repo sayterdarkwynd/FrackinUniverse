@@ -1,0 +1,29 @@
+name: JSON linter + luacheck
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  # Check JSON assets for syntax errors.
+  json-linter:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: ( cd tests/travis && npm install )
+
+      - name: RUN -- npm test
+        run: ( cd tests/travis && npm test )
+
+  # Check Lua files with "luacheck" tool (Lua static analyzer).
+  luacheck:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: sudo apt-get install -y luarocks && sudo luarocks install luacheck
+
+      # Don't fail if the exit code is 1 (which means "there were warnings, but no errors"),
+      # only on exit code 2 ("there were errors").
+      # There are ~900 warnings in existing code, so we can't use "no warnings allowed" mode (yet?).
+      - name: RUN -- luacheck .
+        run: luacheck --no-color . || [[ $? -le 1 ]]
