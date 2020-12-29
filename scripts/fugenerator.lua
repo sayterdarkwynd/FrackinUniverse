@@ -5,6 +5,7 @@ function init()
 	heat = config.getParameter('heat')
 	power.init()
 end
+
 function update(dt)
 	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
 		transferUtilDeltaTime=0

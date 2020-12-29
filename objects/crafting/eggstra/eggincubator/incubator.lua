@@ -7,35 +7,8 @@
 function init()
 	-- egg type?
 	self.centrifugeType = config.getParameter("centrifugeType")
-	incubation = {	-- monster to spawn, incubation time, success rate (0-1)
-		default = {"fuhenbaby", 400, 1},
-		egg = {"fuhenbaby", 400, 0.5},
-		henegg = {"fuhenbaby", 400, 1},
-		primedegg = {"fuhenbaby", 200, 1},
-		poptopegg = {"fupoptopfarm", 600, 1},
-		raptoregg = {"furaptor4", 1200, 1},
-		raptoregg2 = {"furaptor5", 1200, 1},
-		raptoregg3 = {"furaptor9", 1200, 1},
-		raptoregg4 = {"furaptor10", 1200, 1},
-		raptoregg5 = {"furaptor11", 1200, 1},
-		pangolinegg = {"pangobaby", 600, 1},
-		firefluffaloegg = {"fufirefluffalo", 800, 1},
-		poisonfluffaloegg =	{"fupoisonfluffalo", 800, 1},
-		icefluffaloegg = {"fuicefluffalo", 800, 1},
-		electricfluffaloegg = {"fuelectricfluffalo", 800, 1},
-		fluffaloegg = {"fufluffalo", 400, 1},
-		robothenegg = {"furobothenbaby", 400, 1},
-		mooshiegg = {"fumooshibaby", 300, 1},
-		copperbeakegg = {"fudodofarmbaby", 320, 1},
-		ironbeakegg = {"fudodofarmironbaby", 520, 1},
-		fuorbisegg = {"fuorbis", 620, 1},
-		erchibudegg = {"erchibudbaby", 500, 1},
-		slimeshoategg = {"slimeshoatbaby", 400, 1},
-		gooshoategg = {"gooshoatbaby", 400, 1},
-		greenshoategg = {"greenshoatbaby", 400, 1},
-		normaldrone = {"normalbee", 10, 1},
-		larva = {"maggot", 20, 1}
-	}
+	incubation = config.getParameter("incubation")
+
 	-- egg modifiers
 	eggmodifiers = {
 		default = 1
