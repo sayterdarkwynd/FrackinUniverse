@@ -41,9 +41,11 @@ function update(dt)
 	end
 	if storage.active2 then
 		for i=0,2 do
-			if isn_slotDecayCheck(i) then isn_doSlotDecay(i) end
+			if isn_slotDecayCheck(i) then 
+			isn_doSlotDecay(i) 
+			isn_doSlotDecay(3)
+			end
 		end
-			if isn_slotDecayCheckWater(3) then isn_doSlotDecay(3) end
 	end
 	local powerout = isn_getCurrentPowerOutput()
 	power.setPower(powerout)
@@ -76,7 +78,7 @@ end
 function isn_slotDecayCheckWater(slot)
 	local item = world.containerItemAt(entity.id(),slot)
 	local myLocation = entity.position()
-    if item and item.name == "liquidwater" and math.random(1, 4) == 1 then
+    if item and item.name == "liquidwater" and math.random(1, 12) == 1 then
         return true
     end
 	return false
