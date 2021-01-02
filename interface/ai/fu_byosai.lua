@@ -425,22 +425,32 @@ function createShip(vanilla)
 			count = racialiserBootUp()
 			parameters = getBYOSParameters("techstation", true, _)
 			player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
+			pane.dismiss()
 		else
-			if ship.selectedShip.mode == "Buildable" then
-				if string.find(ship.selectedShip.ship, "/") then
-					sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
-				else
-					world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
-				end
-			elseif ship.selectedShip.mode == "Upgradable" then
-				sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
+			local shipCreationConfirmed = false
+			local racialShipData = root.assetJson("/universe_server.config").speciesShips[player.species()]
+			if racialShipData then
+			
 			else
-				sb.logError("INVALID SHIP MODE DETECTED")
+			
 			end
-			player.startQuest("fu_byos")
+			if shipCreationConfirmed then
+				if ship.selectedShip.mode == "Buildable" then
+					if string.find(ship.selectedShip.ship, "/") then
+						sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
+					else
+						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
+					end
+				elseif ship.selectedShip.mode == "Upgradable" then
+					sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
+				else
+					sb.logError("INVALID SHIP MODE DETECTED")
+				end
+				player.startQuest("fu_byos")
+				pane.dismiss()
+			end
 		end
 	end
-	pane.dismiss()
 end
 
 function getShipImage(file)
