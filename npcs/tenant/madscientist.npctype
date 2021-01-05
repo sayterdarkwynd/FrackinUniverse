@@ -1,6 +1,6 @@
 {
   "type" : "madscientist",
-  "baseType" : "generictenant",
+  "baseType" : "scientist",
 
   "scriptConfig" : {
     "questGenerator" : {
@@ -16,45 +16,19 @@
     },
 
 
-    "dialog" : {
-      "converse" : {
-        "apex" : {
-          "default" : [
-            "Don't worry, my research is private - Not for the Miniknog.",
-            "I am conducting some field tests, and this location represents the ideal environment.",
-            "I am running some experiments, and this place will do nicely."
-          ]
-        },
-        "human" : {
-          "default" : [
-            "I am recording all of our social interactions for data. I hope you don't mind.",
-            "There's so much data for me to record around here. It's fascinating.",
-            "I'm writing a research paper on biodiversity. It will be extremely important."
-          ]
-        },
-        "hylotl" : {
-          "default" : [
-            "It is so hard to find a good pair of glasses for Hylotl these days.",
-            "I wish these glasses fit me properly.",
-            "I feel silly doing research without properly fitting glasses. Such is life as a Hylotl."
-          ]
-        }
-      }
-    }
-  },
-
   "items" : {
     "override" : [
       [0, [
           {
             "head" : [
-              { "name" : "scientisthead" }
+              { "name" : "goggles2" },
+              { "name" : "goggles1" }
             ],
             "chest" : [
-              { "name" : "scientistchest" }
+              { "name" : "madscientistchest" }
             ],
             "legs" : [
-              { "name" : "scientistlegs" }
+              { "name" : "madscientistpants" }
             ]
           }
         ] ]
