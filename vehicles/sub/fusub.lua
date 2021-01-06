@@ -22,6 +22,7 @@ end
 
 function isSafeLiquid()
 	if mcontroller.liquidId() == 1 or	-- water
+		mcontroller.liquidId() == 73 or	-- salt water
 		mcontroller.liquidId() == 55 or	--alienjuice
 		mcontroller.liquidId() == 61 or	-- beer
 		mcontroller.liquidId() == 40 or	-- blood
