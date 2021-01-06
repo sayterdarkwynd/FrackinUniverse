@@ -1,5 +1,5 @@
 {
-	"type": "miningdrone3",
+	"type": "miningdrone4",
 	"shortdescription": "Mining Droid",
 	"description": "Provides information on nearby caves and ores.",
 	"reversed": true,
@@ -19,11 +19,11 @@
 		],
 		
 		"pingDetectConfig": {
-			"types": ["ore","cave"],
+			"types": ["ore"],
 			"image": "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
 			"variants": 4,
-			"pingRange": 34,
-			"pingBandWidth": 12,
+			"pingRange": 50,
+			"pingBandWidth": 14,
 			"pingDuration": 3.5,
 			"pingCooldown": 5.0
 		},
@@ -215,6 +215,7 @@
 		"feetOffset": [0, -8],
 		"capturable": true,
 		"captureHealthFraction": 1.0,
-		"nametagColor": [64, 200, 255]
+		"nametagColor": [64, 200, 255],
+		"captureCollectables" : { "fu_monster" : "miningdrone3" }
 	}
 }
