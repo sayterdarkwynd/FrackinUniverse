@@ -13,8 +13,6 @@ function healthLevelAdjust(hp_or_armor)
 	return root.evalFunction("npcLevelPowerMultiplierModifier", self.level) * hp_or_armor
 end
 
-
-
 function checkHazardType()
 	isSafeLiquid()
 	isGas()
