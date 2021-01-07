@@ -16,25 +16,25 @@
       },
 	  
       "role" : {
-        "type" : "soldier", //I believe this is a fallback in case there's no 'name' field.
+        "type" : "soldier", //This is a fallback in case there's no 'name' field.
         "name" : "Template Crewmate", //The player-facing name of the crewmate, e.g. "Researcher", "Agaran Sellsword" etc.
-        "field" : "Mod developer", //Used for the joke-y subtitles in the recruit offer and SAIL's crew interface, can just be the same as 'name'
+        "field" : "Mod developer", //Used for the joke-y subtitles in the recruit offer and SAIL, can be the same as 'name'.
 		
         "uniformColorIndex" : 1, //The colour of their uniform. Can be deleted and their costumes will be un-dyed.
 		
-		//Note that FU armour sometimes doesn't have alternate colours, or doesn't recolour as you'd expect. Always test your crew.
+		//Note that FU armour sometimes doesn't have alternate colours, or doesn't recolour as expected. Always test your crew.
 		//1: Black, 2: Grey, 3: White, 4: Red, 5: Orange, 6: Yellow, 7: Green, 8: Blue, 9: Purple, 10: Pink, 11: Brown
 		
         "benefits" : [ //The benefits the crewmember gives
           {
-		  //Ephemeral effects are applied when you beam down, and in combat when the crewmember is nearby. Think medics or chemists.
+		  //Ephemeral effects are applied when you beam down, and in combat when the crewmember is nearby. Think medics/chemists.
             "type" : "EphemeralEffect",
             "effect" : "glow",
             "duration" : 1
           },
 		  
           {
-		  //Ship benefits apply to your ship passively. *Most crew don't have these*
+		  //Ship benefits apply to your ship passively.
             "type": "ShipUpgradeBenefit",
             "property": "maxFuel",
             "value": 1
@@ -46,8 +46,8 @@
     "dialog" : {
       "crewmember" : {
         "offer" : { //"I want to join your crew"
-          "default" : {
-            "default" : [
+          "default" : { //Crew will look for a field specific to their species, and otherwise use "default".
+            "default" : [ //If you want to have a harpooner speak to Hylotl players differently, set that here. Rarely used.
               "Hey, let me join your crew."
             ]
           },
@@ -57,10 +57,10 @@
             ]
           }
         },
-        "roleDescription" : { //"This is my job description" - remember, players will have usually already seen the contract. Flavour over information.
+        "roleDescription" : { //"This is my job description" - remember, players will have usually already seen the contract.
           "default" : {
             "default" : [
-              "I'm an unconfigured crewmate, ready for a purpose. This is what I say when I'm recruited."
+              "I'm an unconfigured crewmate, ready for purpose. This is what I say when I'm recruited, so put flavour text here."
             ]
           }
         },
@@ -108,7 +108,7 @@
   },
 
   "items" : { // This field and everything in it is optional, delete any part you don't want. Note that crew will have no weapons without this.
-    "default" : [ //Racial weapons, maybe? I haven't messed with this.
+    "default" : [ //Values other than "default" let you assign racial weapons to the crewmate. Not commonly used in crew.
       [0, [ //This is a world-tier parameter, ignore it because players are probably using contracts on their ship.
           {
 			// Main hand. Can list as many options as you want (for all weapon slots).
@@ -119,7 +119,7 @@
             "sheathedprimary" : [ "aegisaltpistol3" ], // Main hand, secondary option. Very optional.
             "sheathedsecondary" : [ "pandorasboxprotectorateshield" ] // Off hand, secondary option. Very optional.
           }
-        ] ]
+      ] ]
     ]
   }
 }
