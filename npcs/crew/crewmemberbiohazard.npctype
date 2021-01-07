@@ -1,13 +1,8 @@
 {
   "type" : "crewmemberbiohazard",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-  
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "hazmathead",
@@ -15,8 +10,13 @@
         "legs" : "hazmatlegs",
         "back" : "hazmatback"
       },
-
+	  
       "role" : {
+        "type" : "chemist",
+        "name" : "Radiologist",
+        "field" : "Radiologist",
+        "uniformColorIndex" : 6,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -33,11 +33,7 @@
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Radiologist",
-        "field" : "Radiologist",
-        "uniformColorIndex" : 6
+        ]
       }
     },
 
@@ -119,11 +115,7 @@
       [0, [
           {
             "primary" : [ "irradiumdagger" ],
-            "sheathedprimary" : [ "biopistol" ],
-			"head" :  [{ "name" : "hazmathead", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-			"chest" : [ { "name" : "hazmatchest", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "legs" : [ { "name" : "hazmatlegs", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "back" : [ { "name" : "hazmatback", "count" :1, "parameters" : { "colorIndex" : 6 } } ]         
+            "sheathedprimary" : [ "biopistol" ]
           }
         ] ]
     ]

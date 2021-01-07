@@ -1,21 +1,21 @@
 {
   "type" : "crewmemberagaran",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, "nofallcrew" ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-    "behavior" : "crewmembermute"
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "shroomhead3",
         "chest" : "florantier2chest",
         "legs" : "florantier2pants"
       },
-
+	  
       "role" : {
+        "type" : "soldier",
+        "name" : "Agaran Sellsword",
+        "field" : "Sellsword",
+        "uniformColorIndex" : 11,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -23,11 +23,7 @@
             "effect" : "fupoisonresistance",
             "duration" : 300
           }
-        ],
-        "type" : "soldier",
-        "name" : "Agaran Sellsword",
-        "field" : "Sellsword",
-        "uniformColorIndex" : 11
+        ]
       }
     },
 
@@ -127,10 +123,7 @@
           {
             "primary" : [ "mushroomgun" ],
             "sheathedprimary" : [ "fushroomsword" ],
-            "sheathedalt" : [ "mushroomshield" ],
-            "head" :  [{ "name" : "shroomhead3", "count" :1, "parameters" : { "colorIndex" : 11 } } ],
-	    "chest" : [ { "name" : "florantier2chest", "count" :1, "parameters" : { "colorIndex" : 11 } } ],
-            "legs" : [ { "name" : "florantier2pants", "count" :1, "parameters" : { "colorIndex" : 11 } } ]          
+            "sheathedalt" : [ "mushroomshield" ]
           }
         ] ]
     ]

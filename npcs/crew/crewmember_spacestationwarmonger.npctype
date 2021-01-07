@@ -1,31 +1,19 @@
 {
   "type" : "crewmember_spacestationwarmonger",
-  "baseType" : "crewmember",
-
-  "dropPools" : [ "villagertreasure" ],
-
-  "damageTeamType" : "friendly",
-
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, "nofallcrew" ], 
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behavior" : "crewmember",
-    "behaviorConfig" : {
-      "emptyHands" : false,
-
-      "wanderTime" : 1,
-      "idleTime" : 10,
-      "outerHomeRange" : 20,
-      "innerHomeRange" : 15,
-
-      "hostileDamageTeam" : {"type" : "friendly", "team" : 1}
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "fumantizitier5ahead",
         "chest" : "fumantizitier5achest",
         "legs" : "fumantizitier5apants"
+      },
+	  
+      "role" : {
+        "type" : "soldier",
+        "name" : "Warmonger",
+        "field" : "Destroying things"
       }
     },
 
@@ -190,14 +178,7 @@
               "Concerned. Wait for me!"
             ]
           }
-        },
-          "penguin" : {
-            "default" : [
-              "Hey, biggun! Let me catch up!",
-              "Don't get too far off!",
-              "Wait up, big guy!"
-            ]
-          }
+        }
       }
     }
   },
@@ -210,41 +191,10 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "curveblaster" ],
-            "sheathedprimary" : [ "curvebroadsword" ],
-			"head" :  [{ "name" : "fumantizitier5ahead", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-			"chest" : [ { "name" : "fumantizitier5achest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-            "legs" : [ { "name" : "fumantizitier5apants", "count" :1, "parameters" : { "colorIndex" : 8 } } ]
-          },      
-          {
-            "primary" : [ "curvepistol" ],
-            "sheathedprimary" : [ "curveblaster" ],
-			"head" :  [{ "name" : "fumantizitier5ahead", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-			"chest" : [ { "name" : "fumantizitier5achest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-            "legs" : [ { "name" : "fumantizitier5apants", "count" :1, "parameters" : { "colorIndex" : 8 } } ]
-          },      
-          {
-            "primary" : [ "curvesmg" ],
-            "sheathedprimary" : [ "curveblaster" ],
-			"head" :  [{ "name" : "fumantizitier5ahead", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-			"chest" : [ { "name" : "fumantizitier5achest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-            "legs" : [ { "name" : "fumantizitier5apants", "count" :1, "parameters" : { "colorIndex" : 8 } } ]
-          }           
+            "primary" : [ "curveblaster", "curvepistol", "curvesmg" ],
+            "sheathedprimary" : [ "curvebroadsword", "curveblaster" ]
+          }
         ] ]
     ]
-  },
-
-  "statusControllerSettings" : {
-    "stats" : {
-      "maxHealth" : {
-        "baseValue" : 300.0
-      },
-      "powerMultiplier" : {
-        "baseValue" : 0.5
-      },
-      "healthRegen" : {
-        "baseValue" : 2.3
-      }
-    }
   }
 }
