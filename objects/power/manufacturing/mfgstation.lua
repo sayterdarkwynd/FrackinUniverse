@@ -34,7 +34,7 @@ recipeExclusionList = {
 
 outputExclusionList = {
 	types={
-		liquid=true
+		--could put stuff here
 	},
 	tags={
 		--could put stuff here
