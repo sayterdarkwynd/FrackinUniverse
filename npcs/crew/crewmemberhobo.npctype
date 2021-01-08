@@ -1,20 +1,21 @@
 {
   "type" : "crewmemberhobo",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "uncathat",
         "chest" : "hoodiechest",
         "legs" : "jeans2legs"
       },
-
+	  
       "role" : {
+        "type" : "chemist",
+        "name" : "Hobo",
+        "field" : "Intoxicology",
+        "uniformColorIndex" : 1,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -26,12 +27,8 @@
 	      "type": "ShipUpgradeBenefit",
 	      "property": "maxFuel",
 	      "value": 250
-	    }  
-        ],
-        "type" : "chemist",
-        "name" : "Hobo",
-        "field" : "Intoxicology",
-        "uniformColorIndex" : 1
+	    }
+        ]
       }
     },
 
@@ -71,7 +68,7 @@
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -79,10 +76,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "invisipuke" ],
-			"head" :  [{ "name" : "uncathat", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-			"chest" : [ { "name" : "hoodiechest", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-            "legs" : [ { "name" : "jeans2legs", "count" :1, "parameters" : { "colorIndex" : 1 } } ]       
+            "primary" : [ "invisipuke" ]
           }
         ] ]
     ]
