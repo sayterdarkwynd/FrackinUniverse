@@ -1,21 +1,21 @@
 {
   "type" : "crewmemberprecursor",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, "nofallcrew" ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "fuprecursorhead",
         "chest" : "fuprecursorchest",
         "legs" : "fuprecursorpants"
       },
-
+	  
       "role" : {
+        "type" : "soldier",
+        "name" : "Precursor Drone",
+        "field" : "Precursor Drone",
+        "uniformColorIndex" : 2,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -29,16 +29,12 @@
             "effect" : "shadowblock3",
             "duration" : 300
           },
-	        {
-	          "type": "ShipUpgradeBenefit",
-    	      "property": "fuelEfficiency",
-    	      "value": 0.1
-    	    }  
-        ],
-        "type" : "soldier",
-        "name" : "Precursor Drone",
-        "field" : "Precursor Drone",
-        "uniformColorIndex" : 2
+		  {
+			"type": "ShipUpgradeBenefit",
+			"property": "fuelEfficiency",
+			"value": 0.1
+		  }
+        ]
       }
     },
 
@@ -93,7 +89,7 @@
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -102,10 +98,7 @@
       [0, [
           {
             "primary" : [ "precursorcannon" ],
-            "sheathedprimary" : [ "precursorbroadsword" ],
-			"head" :  [{ "name" : "fuprecursorhead", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-			"chest" : [ { "name" : "fuprecursorchest", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-            		"legs" : [ { "name" : "fuprecursorpants", "count" :1, "parameters" : { "colorIndex" : 2 } } ]          
+            "sheathedprimary" : [ "precursorbroadsword" ]
           }
         ] ]
     ]

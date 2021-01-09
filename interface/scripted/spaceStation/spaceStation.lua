@@ -1228,7 +1228,7 @@ function calculateSellPrice()
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
 				local config = root.itemConfig(slotItem.name)
-				local itemPrice = config.config.price
+				local itemPrice = (slotItem.parameters and slotItem.parameters.price) or config.config.price
 				if itemPrice then
 					total = itemPrice * slotItem.count + total
 				end
