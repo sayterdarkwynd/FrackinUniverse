@@ -1,13 +1,12 @@
 {
   "type" : "crewmemberengineer2",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : true
-    },
-
     "crew" : {
+      "defaultUniform" : {
+      },
+	  
       "role" : {
         "type" : "engineer",
         "name" : "Chief Engineer",
@@ -24,7 +23,7 @@
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
             "value" : 0.2
-          }          
+          }
         ]
       }
     },
@@ -40,17 +39,5 @@
         }
       }
     }
-  },
-
-  "items" : {
-    "default" : [
-      [0, [
-          {
-            "chest" : [ { "name" : "protectoratechest", "count" :1, "parameters" : { "colorIndex" : 5 } } ],
-            "legs" : [ { "name" : "protectoratepants", "count" :1, "parameters" : { "colorIndex" : 5 } } ],
-            "sheathedprimary" : [ "npcpistol" ]
-          }
-        ] ]
-    ]
   }
 }

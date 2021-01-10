@@ -1,20 +1,21 @@
 {
   "type" : "crewmembershadow",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "darkhead",
         "chest" : "darkchest",
         "legs" : "darklegs"
       },
-
+	  
       "role" : {
+        "type" : "chemist",
+        "name" : "Shadow Being",
+        "field" : "Shadow-Walk",
+        "uniformColorIndex" : 1,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -26,10 +27,7 @@
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Shadow Being",
-        "field" : "Shadow-Walk"
+        ]
       }
     },
 
@@ -51,9 +49,8 @@
               "... .. .... ."
             ]
           }
-        }
-      },
-	  "fieldBenefit" : {
+        },
+	    "fieldBenefit" : {
           "default" : {
             "default" : [
               "!!!",
@@ -63,6 +60,7 @@
             ]
           }
         }
+      }
     }
   },
 
@@ -71,10 +69,7 @@
       [0, [
           {
             "primary" : [ "penumbrabow" ],
-            "sheathedprimary" : [ "effigiumhammer" ],
-			"head" :  [{ "name" : "darkhead" } ],
-			"chest" : [ { "name" : "darkchest" } ],
-            "legs" : [ { "name" : "darklegs" } ]          
+            "sheathedprimary" : [ "effigiumhammer" ]
           }
         ] ]
     ]

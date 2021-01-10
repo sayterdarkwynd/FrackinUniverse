@@ -1,26 +1,27 @@
 {
   "type" : "crewmemberchef3",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "chefhead",
         "chest" : "chefchest",
         "legs" : "cheflegs"
-        },
-
+      },
+	  
       "role" : {
-        "benefits" : [   
+        "type" : "chemist",
+        "name" : "Sous Chef",
+        "field" : "Meal Prep",
+        "uniformColorIndex" : 3,
+
+        "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
             "value" : 0.06
-          },        
+          },
          {
             "type" : "EphemeralEffect",
             "effect" : "feedpackcrew3ground",
@@ -29,12 +30,8 @@
           {
             "type" : "PersistentEffect",
             "effect" : "feedpackcrew3"
-          }   
-        ],
-        "type" : "chemist",
-        "name" : "Sous Chef",
-        "field" : "Meal Prep",
-        "uniformColorIndex" : 3
+          }
+        ]
       }
     },
 
@@ -43,7 +40,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a 6% fuel cost reduction whenever we're on the ship! I cook *that* well!"
+              "I'll give you a 4% fuel cost reduction whenever we're on the ship! I cook *that* well!"
             ]
           }
         },
@@ -80,10 +77,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "fryingpan" ],
-			"head" :  [{ "name" : "chefhead", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-			"chest" : [ { "name" : "chefchest", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-            "legs" : [ { "name" : "cheflegs", "count" :1, "parameters" : { "colorIndex" : 3 } } ]
+            "primary" : [ "fryingpan" ]
           }
         ] ]
     ]
