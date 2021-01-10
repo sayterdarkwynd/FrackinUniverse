@@ -1,39 +1,36 @@
 {
   "type" : "crewmembercounsellor3",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "chest" : "startrekchest",
         "legs" : "startrekpants"
-        },
-
+      },
+	  
       "role" : {
-        "benefits" : [       
+        "type" : "soldier",
+        "name" : "Head Counsellor",
+        "field" : "Fixing Heads",
+        "uniformColorIndex" : 8,
+
+        "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
             "value" : 0.02
-          },        
+          },
           {
             "type" : "EphemeralEffect",
             "effect" : "madnessloss3",
             "duration" : 120
-          },         
+          },
           {
             "type" : "PersistentEffect",
             "effect" : "madnessloss3"
           }
-        ],
-        "type" : "chemist",
-        "name" : "Head Counsellor",
-        "field" : "Fixing Heads",
-        "uniformColorIndex" : 8
+        ]
       }
     },
 
@@ -116,10 +113,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "weaponminer" ],
-	   
-	    "chest" : [ { "name" : "startrekchest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-            "legs" : [ { "name" : "startrekpants", "count" :1, "parameters" : { "colorIndex" : 8 } } ]
+            "primary" : [ "weaponminer" ]
           }
         ] ]
     ]
