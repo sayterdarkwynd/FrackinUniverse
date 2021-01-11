@@ -263,8 +263,9 @@ function randomEvent()
 					player.radioMessage("madnesscombust")
 				end
 			else
-				if isPositiveEffect then
-					effectUtil.effectAllEnemiesInRange("burning",16,self.curseDuration_status*0.5) -- their ass is on fire.
+				if isPositiveEffect and player.hasCountOfItem("molotov") then
+					player.consumeItem("molotov", true, false)
+					effectUtil.effectAllEnemiesInRange("burning",16,self.curseDuration_status) -- their ass is on fire.
 					player.radioMessage("madnesscombustinvert")
 				end
 			end
