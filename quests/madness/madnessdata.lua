@@ -156,7 +156,6 @@ function randomEvent()
 	--[[if self.randEvent < 0 then --failsafe
 		self.randEvent = 0
 	end]]
-
 	if self.madnessCount > 1500 then
 		if self.randEvent == 44 then
 			status.addEphemeralEffect("eatself",self.curseDuration_fast/2) -- You just can't stop eating yourself.
@@ -265,7 +264,7 @@ function randomEvent()
 			else
 				if isPositiveEffect and player.hasCountOfItem("molotov") then
 					player.consumeItem("molotov", true, false)
-					effectUtil.effectAllEnemiesInRange("burning",16,self.curseDuration_fast) -- their ass is on fire.
+					effectUtil.effectAllEnemiesInRange("burning",16,self.curseDuration_fast*0.1) -- their ass is on fire.
 					player.radioMessage("madnesscombustinvert")
 				end
 			end
