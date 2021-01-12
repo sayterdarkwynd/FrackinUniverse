@@ -15,6 +15,13 @@
         "name" : "Berserker",
         "field" : "Murderology",
         "uniformColorIndex" : 2
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "rage",
+            "duration" : 10
+          }
       }
     },
 
@@ -39,10 +46,17 @@
             ]
           }
         },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Come at me, yeh craven bastards!",
+              "I'll mangle the lot o' ye!"
+            ]
+          }
+		},
         "respawned" : {
           "default" : {
             "default" : [
-              "Heh... Dying tickles.",
               "Wot just happened?",
               "Oi'm back! And alive!",
               "Oi'm back, and in one piece!",
@@ -81,7 +95,7 @@
             "default" : [
               "Oi' can't reach you!",
               "Ye too far!",
-              "Hey, wait up!",
+              "Oi, wait up!",
               "Don't go too far!",
               "Let me catch up!"
             ]
