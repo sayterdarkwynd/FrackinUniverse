@@ -76,6 +76,7 @@ function init()
 		"quantumextractor",
 		"extractionlabadv",
 		"extractionlab",
+		"handmill",
 		"xenostationadvnew",
 		"xenostation",
 		"centrifuge2",
@@ -96,6 +97,7 @@ function init()
 		["quantumextractor"] = true,
 		["extractionlabadv"] = true,
 		["extractionlab"] = true,
+		["handmill"] = true,
 		["xenostationadvnew"] = true,
 		["xenostation"] = true,
 		["centrifuge2"] = true,
@@ -123,6 +125,8 @@ function init()
 		processObjects["extractionlabadv"]		= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
 	if found["extractionlab"] then
 		processObjects["extractionlab"]			= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
+	if found["handmill"] then
+		processObjects["handmill"]			= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
 	if found["xenostationadvnew"] then
 		processObjects["xenostationadvnew"]		= { mats = getExtractionMats, spew = doExtraction, data = xenoLab } end
 	if found["xenostation"] then
