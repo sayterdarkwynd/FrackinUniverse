@@ -1,21 +1,21 @@
 {
   "type" : "crewmemberoceanographer",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.40} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "fudiverhead3",
         "chest" : "fudiverchest3",
         "legs" : "fudiverlegs3"
       },
-
+	  
       "role" : {
+        "type" : "chemist",
+        "name" : "Oceanographer",
+        "field" : "Nautical Studies",
+        "uniformColorIndex" : 1,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -37,11 +37,7 @@
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Oceanographer",
-        "field" : "Nautical Studies",
-        "uniformColorIndex" : 1
+        ]
       }
     },
 
@@ -88,7 +84,7 @@
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -96,10 +92,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "nitrogengun" ],
-            "head" :  [{ "name" : "fudiverhead3", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
-            "chest" : [ { "name" : "fudiverchest3", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
-            "legs" : [ { "name" : "fudiverlegs3", "count" :1, "parameters" : { "colorIndex" : 0 } } ]          
+            "primary" : [ "nitrogengun" ]
           }
         ] ]
     ]

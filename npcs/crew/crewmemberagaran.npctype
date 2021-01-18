@@ -1,21 +1,25 @@
 {
   "type" : "crewmemberagaran",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
+  "baseType" : "fu_crewmember",
+
   "scriptConfig" : {
     "behaviorConfig" : {
-      "emptyHands" : false
+      "behavior" : "crewmembermute"
     },
-
+	
     "crew" : {
       "defaultUniform" : {
         "head" : "shroomhead3",
         "chest" : "florantier2chest",
         "legs" : "florantier2pants"
       },
-
+	  
       "role" : {
+        "type" : "soldier",
+        "name" : "Agaran Sellsword",
+        "field" : "Sellsword",
+        "uniformColorIndex" : 11,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -23,11 +27,7 @@
             "effect" : "fupoisonresistance",
             "duration" : 300
           }
-        ],
-        "type" : "soldier",
-        "name" : "Agaran Sellsword",
-        "field" : "Sellsword",
-        "uniformColorIndex" : 11
+        ]
       }
     },
 
@@ -38,20 +38,10 @@
             "default" : [
               "Hoom! Hoom hoom shroomboss! Clink clink chop bang?"
             ] 
-          },
-	  "floran" : {
-            "default" : [
-              "Hoom! Hoom hoom shroomboss! Clink clink chop bang?"
-            ]
           }
         },
         "roleDescription" : {
           "default" : {
-            "default" : [
-              "Hoom haba cantara!"
-            ]
-          },
-	  "floran" : {
             "default" : [
               "Hoom haba cantara!"
             ]
@@ -62,20 +52,10 @@
             "default" : [
               "Halhoom nab chop! Carpa!"
             ]
-          },
-	  "floran" : {
-            "default" : [
-              "Halhoom nab chop! Carpa!"
-            ]
           }
         },
         "respawned" : {
           "default" : {
-            "default" : [
-              "Clink clink! Clink clink mushroom!"
-            ]
-          },
-	  "floran" : {
             "default" : [
               "Clink clink! Clink clink mushroom!"
             ]
@@ -86,11 +66,6 @@
             "default" : [
               "Hoom!"
             ]
-          },
-	  "floran" : {
-            "default" : [
-              "Hoom!"
-            ]
           }
         },
         "unfollow" : {
@@ -98,20 +73,10 @@
             "default" : [
               "Hoom weepa? Nab!"
             ]
-          },
-	  "floran" : {
-            "default" : [
-              "Hoom weepa? Nab!"
-            ]
           }
         },
         "cantreach" : {
           "default" : {
-            "default" : [
-              "Hoomay mesti, plesta!"
-            ]
-          },
-	  "floran" : {
             "default" : [
               "Hoomay mesti, plesta!"
             ]
@@ -127,10 +92,7 @@
           {
             "primary" : [ "mushroomgun" ],
             "sheathedprimary" : [ "fushroomsword" ],
-            "sheathedalt" : [ "mushroomshield" ],
-            "head" :  [{ "name" : "shroomhead3", "count" :1, "parameters" : { "colorIndex" : 11 } } ],
-	    "chest" : [ { "name" : "florantier2chest", "count" :1, "parameters" : { "colorIndex" : 11 } } ],
-            "legs" : [ { "name" : "florantier2pants", "count" :1, "parameters" : { "colorIndex" : 11 } } ]          
+            "sheathedalt" : [ "mushroomshield" ]
           }
         ] ]
     ]
