@@ -1,17 +1,12 @@
 [
-//ranges for ranged weapons, base
-//very short   16
-//short        24
-//medium       40
-//long         64
-//very long    90
+// note that maxRange does -absolutely nothing- as far as scripts are concerned and can be ignored. Assume forceMoveRange = max range instead
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/spiderdroidbeam",
     "value": {
       "minRange": 1,
       "maxRange": 32,
-      "forceMoveRange": 32
+      "forceMoveRange": 60
     }
   },
   {
@@ -19,8 +14,8 @@
     "path": "/npcCombat/rangedWeaponRanges/spiderdroidblast",
     "value": {
       "minRange": 6,
-      "maxRange": 245,
-      "forceMoveRange": 50
+      "maxRange": 52,
+      "forceMoveRange": 60
     }
   },
 
@@ -32,43 +27,43 @@
 
   {
     "op": "replace",
-    "path": "/npcCombat/meleeWeaponRanges/npcassaultrifle",
+    "path": "/npcCombat/rangedWeaponRanges/npcassaultrifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "replace",
-    "path": "/npcCombat/meleeWeaponRanges/npcpistol",
+    "path": "/npcCombat/rangedWeaponRanges/npcpistol",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },  
   {
     "op": "replace",
-    "path": "/npcCombat/meleeWeaponRanges/npcmachinepistol",
+    "path": "/npcCombat/rangedWeaponRanges/npcmachinepistol",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
-    }
-  },
-  {
-    "op": "replace",
-    "path": "/npcCombat/meleeWeaponRanges/npcshotgun",
-    "value": {
-      "minRange": 15,
+      "minRange": 4,
       "maxRange": 24,
-      "forceMoveRange" : 23
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "replace",
-    "path": "/npcCombat/meleeWeaponRanges/npcsniperrifle",
+    "path": "/npcCombat/rangedWeaponRanges/npcshotgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/npcCombat/rangedWeaponRanges/npcsniperrifle",
     "value": {
       "minRange": 12,
       "maxRange": 90,
@@ -95,396 +90,396 @@
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/commonassaultrifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },  
    {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/uncommonassaultrifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },  
    {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/rareassaultrifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },  
    {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcbattlerifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },  
    {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonbattlerifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonbattlerifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rarebattlerifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/epicbattlerifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcsaw",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonsaw",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonsaw",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_raresaw",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/npcdeadbeatassaultrifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/npcfloranassaultrifle",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/floranneedler",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 46
+      "minRange": 10,
+      "maxRange": 36,
+      "forceMoveRange" : 48
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/commonpistol",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/uncommonpistol",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/rarepistol",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcbeampistol",
     "value": {
-      "minRange": 16,
-      "maxRange": 36,
-      "forceMoveRange": 34
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonbeampistol",
     "value": {
-      "minRange": 16,
-      "maxRange": 36,
-      "forceMoveRange": 34
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonbeampistol",
     "value": {
-      "minRange": 16,
-      "maxRange": 36,
-      "forceMoveRange": 34
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rarebeampistol",
     "value": {
-      "minRange": 16,
-      "maxRange": 36,
-      "forceMoveRange": 34
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcrevolver",
     "value": {
-      "minRange": 16,
-      "maxRange": 36,
-      "forceMoveRange": 34
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonrevolver",
     "value": {
-      "minRange": 16,
-      "maxRange": 36,
-      "forceMoveRange": 34
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonrevolver",
     "value": {
-      "minRange": 16,
-      "maxRange": 36,
-      "forceMoveRange": 34
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rarerevolver",
     "value": {
-      "minRange": 16,
-      "maxRange": 36,
-      "forceMoveRange": 34
+      "minRange": 8,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/commonmachinepistol",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/uncommonmachinepistol",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/raremachinepistol",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcsubmachinegun",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonsubmachinegun",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonsubmachinegun",
     "value": {
-      "minRange": 15,
-      "maxRange": 48,
-      "forceMoveRange" : 40
+      "minRange": 4,
+      "maxRange": 24,
+      "forceMoveRange" : 36
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/commonshotgun",
     "value": {
-      "minRange": 15,
-      "maxRange": 24,
-      "forceMoveRange" : 23
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/uncommonshotgun",
     "value": {
-      "minRange": 15,
-      "maxRange": 24,
-      "forceMoveRange" : 23
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/rareshotgun",
     "value": {
-      "minRange": 15,
-      "maxRange": 24,
-      "forceMoveRange" : 23
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcautoshotgun",
     "value": {
-      "minRange": 15,
-      "maxRange": 24,
-      "forceMoveRange" : 23
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonautoshotgun",
     "value": {
-      "minRange": 15,
-      "maxRange": 24,
-      "forceMoveRange" : 23
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonautoshotgun",
     "value": {
-      "minRange": 15,
-      "maxRange": 24,
-      "forceMoveRange" : 23
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rareautoshotgun",
     "value": {
-      "minRange": 15,
-      "maxRange": 24,
-      "forceMoveRange" : 23
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcflakcannon",
     "value": {
-      "minRange": 15,
-      "maxRange": 36,
-      "forceMoveRange" : 32
+      "minRange": 4,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_commonflakcannon",
     "value": {
-      "minRange": 15,
-      "maxRange": 36,
-      "forceMoveRange" : 32
+      "minRange": 8,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_uncommonflakcannon",
     "value": {
-      "minRange": 15,
-      "maxRange": 36,
-      "forceMoveRange" : 32
+      "minRange": 8,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_rareflakcannon",
     "value": {
-      "minRange": 15,
-      "maxRange": 36,
-      "forceMoveRange" : 32
+      "minRange": 8,
+      "maxRange": 16,
+      "forceMoveRange" : 24
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcsawedoffshotgun",
     "value": {
-      "minRange": 8,
-      "maxRange": 24,
-      "forceMoveRange" : 16
+      "minRange": 2,
+      "maxRange": 16,
+      "forceMoveRange" : 18
     }
   },
   {
@@ -492,8 +487,8 @@
     "path": "/npcCombat/rangedWeaponRanges/commonsniperrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 70,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 150
     }
   },
   {
@@ -501,8 +496,8 @@
     "path": "/npcCombat/rangedWeaponRanges/uncommonsniperrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 70,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 150
     }
   },
   {
@@ -510,8 +505,8 @@
     "path": "/npcCombat/rangedWeaponRanges/raresniperrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 70,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 150
     }
   },
   {
@@ -520,7 +515,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 64,
-      "forceMoveRange": 32
+      "forceMoveRange": 80
     }
   },
   {
@@ -529,7 +524,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 64,
-      "forceMoveRange": 32
+      "forceMoveRange": 80
     }
   },
   {
@@ -538,7 +533,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 64,
-      "forceMoveRange": 32
+      "forceMoveRange": 80
     }
   },
   {
@@ -547,7 +542,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 64,
-      "forceMoveRange": 32
+      "forceMoveRange": 80
     }
   },
   {
@@ -556,7 +551,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 90,
-      "forceMoveRange": 80
+      "forceMoveRange": 150
     }
   },
   {
@@ -565,7 +560,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 90,
-      "forceMoveRange": 80
+      "forceMoveRange": 150
     }
   },
   {
@@ -574,7 +569,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 90,
-      "forceMoveRange": 80
+      "forceMoveRange": 150
     }
   },
   {
@@ -583,7 +578,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 90,
-      "forceMoveRange": 80
+      "forceMoveRange": 150
     }
   },
   {
@@ -592,7 +587,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 90,
-      "forceMoveRange": 80
+      "forceMoveRange": 150
     }
   },
   {
@@ -601,7 +596,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 90,
-      "forceMoveRange": 80
+      "forceMoveRange": 150
     }
   },
   {
@@ -610,7 +605,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 90,
-      "forceMoveRange": 80
+      "forceMoveRange": 150
     }
   },
   {
@@ -619,7 +614,7 @@
     "value": {
       "minRange": 36,
       "maxRange": 90,
-      "forceMoveRange": 80
+      "forceMoveRange": 150
     }
   },
   {
@@ -628,7 +623,7 @@
     "value": {
       "minRange": 48,
       "maxRange": 72,
-      "forceMoveRange": 60
+      "forceMoveRange": 80
     }
   },
   {
@@ -637,7 +632,7 @@
     "value": {
       "minRange": 48,
       "maxRange": 72,
-      "forceMoveRange": 60
+      "forceMoveRange": 80
     }
   },
   {
@@ -646,7 +641,7 @@
     "value": {
       "minRange": 48,
       "maxRange": 72,
-      "forceMoveRange": 60
+      "forceMoveRange": 80
     }
   },
   {
@@ -655,7 +650,7 @@
     "value": {
       "minRange": 48,
       "maxRange": 72,
-      "forceMoveRange": 60
+      "forceMoveRange": 80
     }
   },
   {
@@ -663,8 +658,8 @@
     "path": "/npcCombat/rangedWeaponRanges/swtjc_ewg_npcmultigrenadelauncher",
     "value": {
       "minRange": 24,
-      "maxRange": 64,
-      "forceMoveRange": 23
+      "maxRange": 36,
+      "forceMoveRange": 90
     }
   },
   {
@@ -673,7 +668,7 @@
     "value": {
       "minRange": 24,
       "maxRange": 64,
-      "forceMoveRange": 23
+      "forceMoveRange": 90
     }
   },
   {
@@ -682,7 +677,7 @@
     "value": {
       "minRange": 24,
       "maxRange": 64,
-      "forceMoveRange": 23
+      "forceMoveRange": 90
     }
   },
   {
@@ -691,7 +686,7 @@
     "value": {
       "minRange": 24,
       "maxRange": 64,
-      "forceMoveRange": 23
+      "forceMoveRange": 90
     }
   },
   {
@@ -700,7 +695,7 @@
     "value": {
       "minRange": 24,
       "maxRange": 64,
-      "forceMoveRange": 23
+      "forceMoveRange": 90
     }
   },
   {
@@ -709,7 +704,7 @@
     "value": {
       "minRange": 24,
       "maxRange": 64,
-      "forceMoveRange": 23
+      "forceMoveRange": 90
     }
   },
   {
@@ -718,7 +713,7 @@
     "value": {
       "minRange": 24,
       "maxRange": 64,
-      "forceMoveRange": 23
+      "forceMoveRange": 90
     }
   },   
    {
@@ -727,7 +722,7 @@
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
-        "forceMoveRange" : 45
+        "forceMoveRange" : 50
     }
   },  
    {
@@ -736,7 +731,7 @@
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
-        "forceMoveRange" : 45
+        "forceMoveRange" : 50
     }
   },  
    {
@@ -745,7 +740,7 @@
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
-        "forceMoveRange" : 45
+        "forceMoveRange" : 50
     }
   },  
    {
@@ -754,7 +749,7 @@
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
-        "forceMoveRange" : 45
+        "forceMoveRange" : 50
     }
   },  
    {
@@ -763,7 +758,7 @@
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
-        "forceMoveRange" : 45
+        "forceMoveRange" : 50
     }
   },  
    {
@@ -772,7 +767,7 @@
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
-        "forceMoveRange" : 45
+        "forceMoveRange" : 50
     }
   },  
    {
@@ -781,7 +776,7 @@
     "value": {
         "minRange" : 10,
         "maxRange" : 45,
-        "forceMoveRange" : 45
+        "forceMoveRange" : 50
     }
   },  
   
@@ -793,7 +788,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 30,
-      "forceMoveRange": 24
+      "forceMoveRange": 40
     }
   },
   {
@@ -802,7 +797,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 30,
-      "forceMoveRange": 24
+      "forceMoveRange": 40
     }
   },
   {
@@ -811,7 +806,7 @@
     "value": {
       "minRange": 15,
       "maxRange": 30,
-      "forceMoveRange": 13
+      "forceMoveRange": 40
     }
   },
   {
@@ -820,7 +815,7 @@
     "value": {
       "minRange": 15,
       "maxRange": 30,
-      "forceMoveRange": 13
+      "forceMoveRange": 40
     }
   },
   {
@@ -829,7 +824,7 @@
     "value": {
       "minRange": 15,
       "maxRange": 30,
-      "forceMoveRange": 13
+      "forceMoveRange": 40
     }
   },
   {
@@ -838,7 +833,7 @@
     "value": {
       "minRange": 4,
       "maxRange": 8,
-      "forceMoveRange": 3
+      "forceMoveRange": 10
     }
   },
   {
@@ -847,7 +842,7 @@
     "value": {
       "minRange": 4,
       "maxRange": 8,
-      "forceMoveRange": 3
+      "forceMoveRange": 10
     }
   },
   {
@@ -856,16 +851,16 @@
     "value": {
       "minRange": 24,
       "maxRange": 36,
-      "forceMoveRange": 32
+      "forceMoveRange": 40
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/flaregun",
     "value": {
-      "minRange": 15,
-      "maxRange": 30,
-      "forceMoveRange": 14
+      "minRange": 8,
+      "maxRange": 15,
+      "forceMoveRange": 40
     }
   },
   {
@@ -874,25 +869,25 @@
     "value": {
       "minRange": 24,
       "maxRange": 36,
-      "forceMoveRange": 32
+      "forceMoveRange": 40
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/fucarbonhandcannon",
     "value": {
-      "minRange": 8,
-      "maxRange": 15,
-      "forceMoveRange": 7
+      "minRange": 4,
+      "maxRange": 20,
+      "forceMoveRange": 40
     }
   },
   {
     "op": "add",
     "path": "/npcCombat/rangedWeaponRanges/fuobliterator",
     "value": {
-      "minRange": 35,
-      "maxRange": 64,
-      "forceMoveRange": 32
+      "minRange": 8,
+      "maxRange": 36,
+      "forceMoveRange": 42
     }
   },
   {
@@ -901,7 +896,7 @@
     "value": {
       "minRange": 16,
       "maxRange": 24,
-      "forceMoveRange": 15
+      "forceMoveRange": 42
     }
   },
   {
@@ -910,7 +905,7 @@
     "value": {
       "minRange": 16,
       "maxRange": 24,
-      "forceMoveRange": 15
+      "forceMoveRange": 36
     }
   },
   {
@@ -919,7 +914,7 @@
     "value": {
       "minRange": 16,
       "maxRange": 24,
-      "forceMoveRange": 20
+      "forceMoveRange": 42
     }
   },
   {
@@ -928,7 +923,7 @@
     "value": {
       "minRange": 16,
       "maxRange": 24,
-      "forceMoveRange": 15
+      "forceMoveRange": 42
     }
   },
   {
@@ -937,7 +932,7 @@
     "value": {
       "minRange": 24,
       "maxRange": 36,
-      "forceMoveRange": 34
+      "forceMoveRange": 40
     }
   },
   {
@@ -946,7 +941,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -954,8 +949,8 @@
     "path": "/npcCombat/rangedWeaponRanges/manstopper",
     "value": {
       "minRange": 8,
-      "maxRange": 32,
-      "forceMoveRange": 23
+      "maxRange": 24,
+      "forceMoveRange": 40
     }
   },
   {
@@ -964,7 +959,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -973,7 +968,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -982,7 +977,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -991,7 +986,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1000,7 +995,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1009,7 +1004,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1018,7 +1013,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1027,7 +1022,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1036,7 +1031,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1045,7 +1040,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1054,7 +1049,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1063,7 +1058,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1072,7 +1067,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1081,7 +1076,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1090,7 +1085,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1099,7 +1094,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1108,7 +1103,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1117,7 +1112,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 42
     }
   },
   {
@@ -1126,7 +1121,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -1135,7 +1130,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -1144,7 +1139,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -1153,7 +1148,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -1162,7 +1157,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -1171,7 +1166,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -1180,7 +1175,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -1189,7 +1184,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   {
@@ -1198,7 +1193,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 32,
-      "forceMoveRange": 23
+      "forceMoveRange": 40
     }
   },
   
@@ -1211,7 +1206,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 42
     }
   },
   {
@@ -1220,7 +1215,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 42
     }
   },
   {
@@ -1229,7 +1224,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 42
     }
   },
   {
@@ -1238,7 +1233,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 42
     }
   },
   {
@@ -1247,7 +1242,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 42
     }
   },
   {
@@ -1256,7 +1251,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 42
     }
   },
   {
@@ -1265,7 +1260,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1274,7 +1269,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1283,7 +1278,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1292,7 +1287,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1301,7 +1296,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1310,7 +1305,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1319,7 +1314,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1328,7 +1323,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1337,7 +1332,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 15
+      "forceMoveRange": 24
     }
   },
   {
@@ -1346,7 +1341,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1355,7 +1350,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1364,7 +1359,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 40
     }
   },
   {
@@ -1373,7 +1368,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1382,7 +1377,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1391,7 +1386,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1400,7 +1395,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1409,7 +1404,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1418,7 +1413,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1427,7 +1422,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1436,7 +1431,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1445,7 +1440,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1454,7 +1449,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1463,7 +1458,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1472,7 +1467,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1481,7 +1476,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1490,7 +1485,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1499,7 +1494,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1508,7 +1503,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1517,7 +1512,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1526,7 +1521,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1535,7 +1530,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1544,7 +1539,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1553,7 +1548,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1562,7 +1557,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1571,7 +1566,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1580,7 +1575,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1589,7 +1584,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1598,7 +1593,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1607,7 +1602,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1616,7 +1611,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1625,7 +1620,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1634,7 +1629,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1643,7 +1638,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1652,7 +1647,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1661,7 +1656,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1670,7 +1665,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1679,7 +1674,7 @@
     "value": {
       "minRange": 9,
       "maxRange": 35,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   
@@ -1691,7 +1686,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1700,7 +1695,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1709,7 +1704,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1718,7 +1713,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1727,7 +1722,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1736,7 +1731,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1745,7 +1740,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1754,7 +1749,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1763,7 +1758,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1772,7 +1767,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1781,7 +1776,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1790,7 +1785,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1799,7 +1794,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1808,7 +1803,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1817,7 +1812,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1826,7 +1821,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1835,7 +1830,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1844,7 +1839,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1853,7 +1848,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1862,7 +1857,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1871,7 +1866,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1880,7 +1875,7 @@
     "value": {
       "minRange": 16,
       "maxRange": 36,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -1889,7 +1884,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1898,7 +1893,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1907,7 +1902,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1916,7 +1911,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1925,7 +1920,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1934,7 +1929,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1943,7 +1938,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1952,7 +1947,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1961,7 +1956,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1970,7 +1965,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1979,7 +1974,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   {
@@ -1988,7 +1983,7 @@
     "value": {
       "minRange": 8,
       "maxRange": 24,
-      "forceMoveRange": 22
+      "forceMoveRange": 64
     }
   },
   
@@ -2000,8 +1995,8 @@
     "path": "/npcCombat/rangedWeaponRanges/aetheriumassaultrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 35
+      "maxRange": 90,
+      "forceMoveRange": 42
     }
   },  
   {
@@ -2009,8 +2004,8 @@
     "path": "/npcCombat/rangedWeaponRanges/ancientcarbine",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   },  
   {
@@ -2018,8 +2013,8 @@
     "path": "/npcCombat/rangedWeaponRanges/arconrifle",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2027,8 +2022,8 @@
     "path": "/npcCombat/rangedWeaponRanges/crankrifle",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2036,8 +2031,8 @@
     "path": "/npcCombat/rangedWeaponRanges/curvesmg",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2045,8 +2040,8 @@
     "path": "/npcCombat/rangedWeaponRanges/cutemachinegun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2054,8 +2049,8 @@
     "path": "/npcCombat/rangedWeaponRanges/densiniumrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2063,8 +2058,8 @@
     "path": "/npcCombat/rangedWeaponRanges/discrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2072,8 +2067,8 @@
     "path": "/npcCombat/rangedWeaponRanges/energyassault",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2081,8 +2076,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fugaussmachinegun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2090,8 +2085,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fugaussrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2099,8 +2094,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fugrinder",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2108,8 +2103,8 @@
     "path": "/npcCombat/rangedWeaponRanges/funomadassaultrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2117,8 +2112,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fuplasmagun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2126,8 +2121,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fustingergun2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2135,8 +2130,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fuvaporizer",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2144,8 +2139,8 @@
     "path": "/npcCombat/rangedWeaponRanges/goregun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2153,8 +2148,8 @@
     "path": "/npcCombat/rangedWeaponRanges/gumballgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2162,8 +2157,8 @@
     "path": "/npcCombat/rangedWeaponRanges/invisipuke",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2171,8 +2166,8 @@
     "path": "/npcCombat/rangedWeaponRanges/invisiswarmgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2180,8 +2175,8 @@
     "path": "/npcCombat/rangedWeaponRanges/ionrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2189,8 +2184,8 @@
     "path": "/npcCombat/rangedWeaponRanges/k3rifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2198,8 +2193,8 @@
     "path": "/npcCombat/rangedWeaponRanges/lasrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2207,8 +2202,8 @@
     "path": "/npcCombat/rangedWeaponRanges/lunaririfle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2216,8 +2211,8 @@
     "path": "/npcCombat/rangedWeaponRanges/mechgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2225,8 +2220,8 @@
     "path": "/npcCombat/rangedWeaponRanges/mineralcannon",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2234,8 +2229,8 @@
     "path": "/npcCombat/rangedWeaponRanges/napalmcannon",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2243,8 +2238,8 @@
     "path": "/npcCombat/rangedWeaponRanges/nitrogengun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2252,8 +2247,8 @@
     "path": "/npcCombat/rangedWeaponRanges/penumbriteassaultrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2261,8 +2256,8 @@
     "path": "/npcCombat/rangedWeaponRanges/quietusassaultrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2270,8 +2265,8 @@
     "path": "/npcCombat/rangedWeaponRanges/reaperassault",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2279,8 +2274,8 @@
     "path": "/npcCombat/rangedWeaponRanges/reapercarbine",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2288,8 +2283,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rimecutter",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2297,8 +2292,8 @@
     "path": "/npcCombat/rangedWeaponRanges/shoggothgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2306,8 +2301,8 @@
     "path": "/npcCombat/rangedWeaponRanges/silverslayer",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2315,8 +2310,8 @@
     "path": "/npcCombat/rangedWeaponRanges/swarmgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2324,8 +2319,8 @@
     "path": "/npcCombat/rangedWeaponRanges/swarmgun2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2333,8 +2328,8 @@
     "path": "/npcCombat/rangedWeaponRanges/telebriumrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2342,8 +2337,8 @@
     "path": "/npcCombat/rangedWeaponRanges/teslagun2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2351,8 +2346,8 @@
     "path": "/npcCombat/rangedWeaponRanges/thornslinger",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2360,8 +2355,8 @@
     "path": "/npcCombat/rangedWeaponRanges/verdantcarbine",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2369,8 +2364,8 @@
     "path": "/npcCombat/rangedWeaponRanges/xithriciteassaultrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2378,8 +2373,8 @@
     "path": "/npcCombat/rangedWeaponRanges/zerchesiumassaultrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2387,8 +2382,8 @@
     "path": "/npcCombat/rangedWeaponRanges/crossgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2396,8 +2391,8 @@
     "path": "/npcCombat/rangedWeaponRanges/eldercarbine",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2405,8 +2400,8 @@
     "path": "/npcCombat/rangedWeaponRanges/chargemachinegun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2414,8 +2409,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fufreezecannonKhe",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2423,8 +2418,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fuenergymachinegun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2432,8 +2427,8 @@
     "path": "/npcCombat/rangedWeaponRanges/chargemachinegun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2441,8 +2436,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fuaegisaltminigun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2450,8 +2445,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fuaegisaltminigunnpc",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2459,8 +2454,8 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_annihilator",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2468,8 +2463,8 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_flamethrower4",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   },
    {
@@ -2477,8 +2472,8 @@
     "path": "/npcCombat/rangedWeaponRanges/flamethrower",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   },    
   {
@@ -2486,8 +2481,8 @@
     "path": "/npcCombat/rangedWeaponRanges/kineticrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2495,8 +2490,8 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_microwaveray",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2504,8 +2499,8 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_terawattlaser",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2513,8 +2508,8 @@
     "path": "/npcCombat/rangedWeaponRanges/hailstrike",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2522,8 +2517,8 @@
     "path": "/npcCombat/rangedWeaponRanges/mobiusrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2531,8 +2526,8 @@
     "path": "/npcCombat/rangedWeaponRanges/mobiusrifle2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   }, 
   {
@@ -2540,8 +2535,8 @@
     "path": "/npcCombat/rangedWeaponRanges/warden",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   },     
    {
@@ -2549,10 +2544,19 @@
     "path": "/npcCombat/rangedWeaponRanges/spaceplasmarifleminiknog",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
-  },  
+  }, 
+   {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/furainbowgun",
+    "value": {
+      "minRange": 4,
+      "maxRange": 36,
+      "forceMoveRange": 40
+    }
+  },    
   
   // Frackin UNIQUE Sniper Rifles
   
@@ -2562,8 +2566,8 @@
     "path": "/npcCombat/rangedWeaponRanges/aetheriumsniperrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2571,8 +2575,8 @@
     "path": "/npcCombat/rangedWeaponRanges/bigdaddy",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2580,8 +2584,8 @@
     "path": "/npcCombat/rangedWeaponRanges/carvelle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2589,8 +2593,8 @@
     "path": "/npcCombat/rangedWeaponRanges/cutesniperrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2598,8 +2602,8 @@
     "path": "/npcCombat/rangedWeaponRanges/densiniumsniper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2607,8 +2611,8 @@
     "path": "/npcCombat/rangedWeaponRanges/farsight",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2616,8 +2620,8 @@
     "path": "/npcCombat/rangedWeaponRanges/farsight2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2625,8 +2629,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fucellgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2634,8 +2638,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fugausssniper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2643,8 +2647,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fuhuntingrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2652,8 +2656,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fuhuntingrifle2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2661,8 +2665,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fuhuntingrifle3",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2670,8 +2674,8 @@
     "path": "/npcCombat/rangedWeaponRanges/funomadrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2679,8 +2683,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fusteampunkgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2688,8 +2692,8 @@
     "path": "/npcCombat/rangedWeaponRanges/hellraiser",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2697,8 +2701,8 @@
     "path": "/npcCombat/rangedWeaponRanges/irradiumrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2706,8 +2710,8 @@
     "path": "/npcCombat/rangedWeaponRanges/longinus",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2715,8 +2719,8 @@
     "path": "/npcCombat/rangedWeaponRanges/lunarisniper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2724,8 +2728,8 @@
     "path": "/npcCombat/rangedWeaponRanges/penumbritesniperrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2733,8 +2737,8 @@
     "path": "/npcCombat/rangedWeaponRanges/protorifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2742,8 +2746,8 @@
     "path": "/npcCombat/rangedWeaponRanges/quietussniper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2751,8 +2755,8 @@
     "path": "/npcCombat/rangedWeaponRanges/randomharpoongun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2760,8 +2764,8 @@
     "path": "/npcCombat/rangedWeaponRanges/randomharpoongun2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2769,8 +2773,8 @@
     "path": "/npcCombat/rangedWeaponRanges/reaperrailgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2778,8 +2782,8 @@
     "path": "/npcCombat/rangedWeaponRanges/reaperSniper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2787,8 +2791,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifleaegisaltfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2796,8 +2800,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifledurasteelfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2805,8 +2809,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifleeffigiumfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2814,8 +2818,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifleferoziumfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2823,8 +2827,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifleironfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2832,8 +2836,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifleirradiumfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2841,8 +2845,8 @@
     "path": "/npcCombat/rangedWeaponRanges/riflepyreitefu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2850,8 +2854,8 @@
     "path": "/npcCombat/rangedWeaponRanges/riflequietusfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2859,8 +2863,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifletitaniumfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2868,8 +2872,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifletriangliumfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2877,8 +2881,8 @@
     "path": "/npcCombat/rangedWeaponRanges/rifletungstenfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2886,8 +2890,8 @@
     "path": "/npcCombat/rangedWeaponRanges/riflevioliumfu",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2895,8 +2899,8 @@
     "path": "/npcCombat/rangedWeaponRanges/telebriumsniperrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2904,8 +2908,8 @@
     "path": "/npcCombat/rangedWeaponRanges/tentabane",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2913,8 +2917,8 @@
     "path": "/npcCombat/rangedWeaponRanges/teslagun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2922,8 +2926,8 @@
     "path": "/npcCombat/rangedWeaponRanges/thornrifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2931,8 +2935,8 @@
     "path": "/npcCombat/rangedWeaponRanges/verdantrailgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2940,8 +2944,8 @@
     "path": "/npcCombat/rangedWeaponRanges/xithricitesniper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2949,8 +2953,8 @@
     "path": "/npcCombat/rangedWeaponRanges/zerchesiumsniper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2958,8 +2962,8 @@
     "path": "/npcCombat/rangedWeaponRanges/elderripper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2967,8 +2971,8 @@
     "path": "/npcCombat/rangedWeaponRanges/kirhossniper",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 70
+      "maxRange": 90,
+      "forceMoveRange": 90
     }
   },
   {
@@ -2976,7 +2980,7 @@
     "path": "/npcCombat/rangedWeaponRanges/furailgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 80
     }
   },
@@ -2985,8 +2989,8 @@
     "path": "/npcCombat/rangedWeaponRanges/fushocklance",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
-      "forceMoveRange": 32
+      "maxRange": 90,
+      "forceMoveRange": 64
     }
   },
   {
@@ -2994,7 +2998,7 @@
     "path": "/npcCombat/rangedWeaponRanges/veluurifle",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 60
     }
   },
@@ -3006,7 +3010,7 @@
     "path": "/npcCombat/rangedWeaponRanges/aetheriumrocketlauncher",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3015,7 +3019,7 @@
     "path": "/npcCombat/rangedWeaponRanges/biogun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3024,7 +3028,7 @@
     "path": "/npcCombat/rangedWeaponRanges/blastcannon",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3033,7 +3037,7 @@
     "path": "/npcCombat/rangedWeaponRanges/blastcannoncustom",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3042,7 +3046,7 @@
     "path": "/npcCombat/rangedWeaponRanges/blizzardcannon",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3051,7 +3055,7 @@
     "path": "/npcCombat/rangedWeaponRanges/cuterocketlauncher",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3060,7 +3064,7 @@
     "path": "/npcCombat/rangedWeaponRanges/energycutter",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3069,7 +3073,7 @@
     "path": "/npcCombat/rangedWeaponRanges/freedombird",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3078,7 +3082,7 @@
     "path": "/npcCombat/rangedWeaponRanges/friendmaker",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3087,7 +3091,7 @@
     "path": "/npcCombat/rangedWeaponRanges/friendmaker2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3096,7 +3100,7 @@
     "path": "/npcCombat/rangedWeaponRanges/fuplasmacannon",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3105,7 +3109,7 @@
     "path": "/npcCombat/rangedWeaponRanges/gravgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3114,7 +3118,7 @@
     "path": "/npcCombat/rangedWeaponRanges/gravitongun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3123,7 +3127,7 @@
     "path": "/npcCombat/rangedWeaponRanges/hellfirecannon",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3132,7 +3136,7 @@
     "path": "/npcCombat/rangedWeaponRanges/lunarirocketlauncher",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3141,7 +3145,7 @@
     "path": "/npcCombat/rangedWeaponRanges/mineralcannonadv",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3150,7 +3154,7 @@
     "path": "/npcCombat/rangedWeaponRanges/mineralcannonadv2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3177,7 +3181,7 @@
     "path": "/npcCombat/rangedWeaponRanges/penumbriterocketlauncher",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3186,7 +3190,7 @@
     "path": "/npcCombat/rangedWeaponRanges/quietusrocketlauncher",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3195,7 +3199,7 @@
     "path": "/npcCombat/rangedWeaponRanges/reaperrocket",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3204,7 +3208,7 @@
     "path": "/npcCombat/rangedWeaponRanges/vashtagun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3213,7 +3217,7 @@
     "path": "/npcCombat/rangedWeaponRanges/xithriciterocketlauncher",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3222,7 +3226,7 @@
     "path": "/npcCombat/rangedWeaponRanges/zerchesiumrocketlauncher",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3231,7 +3235,7 @@
     "path": "/npcCombat/rangedWeaponRanges/airstrike",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3240,7 +3244,7 @@
     "path": "/npcCombat/rangedWeaponRanges/crappyartillery",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3249,7 +3253,7 @@
     "path": "/npcCombat/rangedWeaponRanges/ionstrike",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3258,7 +3262,7 @@
     "path": "/npcCombat/rangedWeaponRanges/artillerygun1",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3267,7 +3271,7 @@
     "path": "/npcCombat/rangedWeaponRanges/extramissile",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3276,7 +3280,7 @@
     "path": "/npcCombat/rangedWeaponRanges/fucloudgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3285,7 +3289,7 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_fusioncannon",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3294,7 +3298,7 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_irradiator",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3303,7 +3307,7 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_plasmabeam",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3312,7 +3316,7 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_sunstream",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3321,7 +3325,7 @@
     "path": "/npcCombat/rangedWeaponRanges/mobiusrifle2",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3330,7 +3334,7 @@
     "path": "/npcCombat/rangedWeaponRanges/mobiusrailgun",
     "value": {
       "minRange": 12,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 50
     }
   },
@@ -3343,7 +3347,7 @@
     "path": "/npcCombat/rangedWeaponRanges/blistergun",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3352,7 +3356,7 @@
     "path": "/npcCombat/rangedWeaponRanges/burster",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3361,7 +3365,7 @@
     "path": "/npcCombat/rangedWeaponRanges/bushmaster",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3370,7 +3374,7 @@
     "path": "/npcCombat/rangedWeaponRanges/catapult",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3379,7 +3383,7 @@
     "path": "/npcCombat/rangedWeaponRanges/eyecannon",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3388,7 +3392,7 @@
     "path": "/npcCombat/rangedWeaponRanges/isn_magmavulcan",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3397,7 +3401,7 @@
     "path": "/npcCombat/rangedWeaponRanges/mrscorchy",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3406,7 +3410,7 @@
     "path": "/npcCombat/rangedWeaponRanges/mushroomgun",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3415,7 +3419,7 @@
     "path": "/npcCombat/rangedWeaponRanges/slimelauncher",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3424,7 +3428,7 @@
     "path": "/npcCombat/rangedWeaponRanges/stormwarden",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3433,7 +3437,7 @@
     "path": "/npcCombat/rangedWeaponRanges/eldergrenadelauncher",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3442,7 +3446,7 @@
     "path": "/npcCombat/rangedWeaponRanges/fuminelayer",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3451,7 +3455,7 @@
     "path": "/npcCombat/rangedWeaponRanges/radiengrenadelauncher",
     "value": {
       "minRange": 10,
-      "maxRange": 245,
+      "maxRange": 90,
       "forceMoveRange": 45
     }
   },
@@ -3760,7 +3764,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3769,7 +3773,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3778,7 +3782,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3787,7 +3791,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3796,7 +3800,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3805,7 +3809,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3814,7 +3818,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3823,7 +3827,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3832,7 +3836,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   {
@@ -3841,7 +3845,7 @@
     "value": {
       "minRange": 10,
       "maxRange": 30,
-      "forceMoveRange": 32
+      "forceMoveRange": 64
     }
   },
   
