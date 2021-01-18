@@ -1,5 +1,4 @@
 function activate(fireMode, shiftHeld)
-<<<<<<< HEAD
 	if shiftHeld then
 	if fireMode == "primary" then 
 			activeItem.interact("ScriptPane", "/zb/researchTree/researchTree.config")
@@ -10,12 +9,6 @@ function activate(fireMode, shiftHeld)
 			animator.playSound("activate3")
  
 	elseif fireMode == "primary" then
-=======
-    if shiftHeld then
-        activeItem.interact("ScriptPane", "/interface/scripted/mmutility/mmutility.config")
-        animator.playSound("activate3")
-    elseif fireMode == "primary" then
->>>>>>> parent of b8b57e85d9... Add a 4th interaction mode to the tricorder
 		activeItem.interact("ScriptPane", "/interface/scripted/statWindow/statWindow.config")
 		animator.playSound("activate")
 	elseif fireMode == "alt" then
