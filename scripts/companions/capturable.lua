@@ -90,15 +90,11 @@ function capturable.init()
 	pandorasboxSpecialColorMusicRange = 100
 	--pandorasboxSpecialColorMusic = {"/music/desert-battle-2.ogg"}
 	pandorasboxSpecialColorMusic = {}
-	
-	acEmitParticles = config.getParameter("capturable")
 end
 
 function capturable.startReleaseAnimation()
 	status.addEphemeralEffect("monsterrelease")
-	if acEmitParticles then
-		animator.setAnimationState("releaseParticles", "on")
-	end
+	animator.setAnimationState("releaseParticles", "on")
 end
 
 function capturable.update(dt)
@@ -270,9 +266,7 @@ function capturable.captureStatus()
 end
 
 function capturable.recall()
-	if acEmitParticles then
-		animator.burstParticleEmitter("captureParticles")
-	end
+	animator.burstParticleEmitter("captureParticles")
 	status.addEphemeralEffect("monstercapture")
 	capturable.despawnTimer = 0.5
 end
@@ -350,15 +344,12 @@ function capturable.capturable(capturer)
 		return false
 	end
 
-	-- To make Any Capture Reloaded not have to overwrite the script to work
-	local playerCompanionConfig = root.assetJson("/player.config").companionsConfig
-	local isCapturable = (playerCompanionConfig.acrAnyCapture and (config.getParameter("butLikeActuallyCapturable") ~= false)) or config.getParameter("capturable")
+	local isCapturable = config.getParameter("capturable")
 	if not isCapturable then
 		return false
 	end
-	
-	-- To make ACR Any Health Patch not have to overwrite the script to work
-	local captureHealthFraction = (playerCompanionConfig.acrAnyHealthCapture and 2) or config.getParameter("captureHealthFraction", 0.5)
+
+	local captureHealthFraction = config.getParameter("captureHealthFraction", 0.5)
 	local healthFraction = status.resource("health") / status.resourceMax("health")
 	if healthFraction > captureHealthFraction then
 		return false
