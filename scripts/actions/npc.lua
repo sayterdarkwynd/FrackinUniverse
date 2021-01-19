@@ -107,7 +107,7 @@ function setAimPosition(args, board)
   -- new
   local xpos = mcontroller.xPosition()
   local ypos = mcontroller.yPosition()
-  local ypos = ypos - 3000
+  local ypos = ypos * 0.2
   local mouthPosition = vec2.add(mcontroller.position(), {1,-0.7})
 
   local toPosition = world.distance(position, {xpos,ypos}) -- {xpos,ypos} was previously mcontroller.position()
