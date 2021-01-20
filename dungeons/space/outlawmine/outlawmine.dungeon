@@ -4,7 +4,7 @@
     "species" : "generic",
     "rules" : [
     ],
-    "anchor" : [ "base1", "base2", "base3" ],
+    "anchor" : [ "base1", "base2", "base3", "base4" ],
     "gravity" : 80,
     "maxRadius" : 1000000,
     "maxParts" : 3,
@@ -722,7 +722,7 @@
     {
       "name" : "base1",
       "rules" : [
-        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+        [ "doNotCombineWith", [ "base1", "base2", "base3", "base4" ] ],
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "base1.json" ],
@@ -731,7 +731,7 @@
     {
       "name" : "base2",
       "rules" : [
-        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+        [ "doNotCombineWith", [ "base1", "base2", "base3", "base4" ] ],
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "base2.json" ],
@@ -740,10 +740,19 @@
     {
       "name" : "base3",
       "rules" : [
-        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+        [ "doNotCombineWith", [ "base1", "base2", "base3", "base4" ] ],
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "base3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "base4",
+      "rules" : [
+        [ "doNotCombineWith", [ "base1", "base2", "base3", "base4" ] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base4.json" ],
       "chance" : 0
     }
   ]
