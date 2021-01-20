@@ -36,6 +36,7 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
+	if not self.didInit then return end
 	if canExplode and (status.resourcePercentage("health") <= 0.05) and not status.statPositive("deathbombDud") then
 		explode()
 	end
