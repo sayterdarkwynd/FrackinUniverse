@@ -24,6 +24,7 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
+	if not self.didInit then return end
 	if self.frEnabled and (self.species == "radien" or self.species == "novakid" or self.species == "thelusian") then
 		applyEffects()
 		animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
@@ -62,6 +63,7 @@ function applyEffects()
 end
 
 function uninit()
+	if not self.didInit then return end
 	effect.removeStatModifierGroup(self.statHandler)
 	animator.setParticleEmitterActive("drips", false)
 end

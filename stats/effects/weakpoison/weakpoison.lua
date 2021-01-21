@@ -24,6 +24,7 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
+	if not self.didInit then return end
 	if self.frEnabled and (self.species == "fragmentedruin") then
 		--sb.logInfo("weakpoison")
 		effect.setStatModifierGroup(bonusHandler,{{stat="healthRegen",amount=((self.healingRate*( 1 + status.stat("healingBonus") )) - self.penaltyRate)}})
