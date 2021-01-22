@@ -12,8 +12,10 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/boss/shoggoth2/monster.lua"
+      "/monsters/boss/shoggoth2/monster.lua",
+		"/monsters/fu_bossExtraResistsHandler.lua"
     ],
+		"bossExtraResistsValue":0.9,
 
     "behavior" : "monster",
 
@@ -259,6 +261,7 @@
         "shadowResistance" : { "baseValue" : 0.9 },
         "radioactiveResistance" : { "baseValue" : 1 },
         "cosmicResistance" : { "baseValue" : 0.9 },
+		"specialStatusImmunity" : {"baseValue" : 1.0},
         "ucObliteratingBurnImmunity" : { "baseValue" : 1 }
       },
 

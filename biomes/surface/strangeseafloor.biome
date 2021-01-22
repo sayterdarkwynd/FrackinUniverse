@@ -5,16 +5,35 @@
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 6,
+        "select" : 3,
         "pool" : [
-          [ 1, "smallFishOcean1" ],
-          [ 1, "smallFishOcean2" ],
-          [ 1, "passiveLargeFish" ],
-          [ 1, "aggroLargeFish" ],
-          [ 1, "squidcritter" ],
-          [ 1, "jellycritter" ]
+          [ 0.1, "eyeslime" ],  
+          [ 0.4, "eyeslimeking" ],
+          [ 0.1, "eyejelly" ],  
+          [ 0.4, "eyejellyking" ],           
+          [ 0.4, "anglure6" ],
+          [ 1, "garflipp" ]
         ]
-      }
+      },{
+        "select" : 5,
+        "pool" : [          
+          [ 0.18, "smallFishOcean1" ],
+          [ 0.18, "smallFishOcean2" ],
+          [ 0.04, "passiveLargeFish" ],
+          [ 0.04, "aggroLargeFish" ],
+          [ 0.18, "squidcritter" ],
+          [ 0.18, "jellycritter" ],
+          [ 0.20, "fufish" ]
+        ]
+      },     
+      {
+        "select" : 1,
+        "pool" : [
+          [ 0.4, "tidefly" ],
+          [ 0.3, "seahornet" ],
+          [ 0.3, "wavebird" ]
+        ]
+      }      
     ],
     "monsterParameters" : {
       "colors" : "magma",
@@ -34,7 +53,7 @@
     }
   },
   
-  "parallax" : "/parallax/surface/oceanfloor.parallax",
+  "parallax" : "/parallax/surface/strangeseafloor.parallax",
   
   "ambientNoises" : {
     "day" : {
@@ -47,10 +66,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/lava-exploration2.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/crystal-exploration2.ogg", "/music/forsaken-grotto.ogg" ]
+      "tracks" : [ "/music/vangelis.ogg","/music/strangeseamood.ogg","/music/ambient_reformed.ogg","/music/ocean-exploration2.ogg","/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/lava-exploration2.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/crystal-exploration2.ogg", "/music/forsaken-grotto.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/the-deep.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/mercury.ogg", "/music/procyon.ogg" ]
+      "tracks" : [ "/music/vangelis.ogg","/music/strangeseamood.ogg", "/music/ocean-exploration2.ogg","/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/the-deep.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/mercury.ogg", "/music/procyon.ogg" ]
     }
   },
   
@@ -65,7 +84,7 @@
   
     "mainBlock" : "violiumcrystal",
     "subBlocks" : [ "harrowstone", "genetile", "bonemeal" ],
-    "ores" : "ff_deepicemoonOres",
+    "ores" : "ff_deepstrangeseaOres",
 
   "surfacePlaceables" : {
     "grassMod" : [ "bloodstonegrass", "blackslimegrass", "fualiengrass", "fualiengrass2" ],
@@ -81,9 +100,14 @@
           "objectSets" : [
             {
               "pool" : [ 
-            [0.25, "wildcellpodsplant" ], 
-            [0.25, "wildkamaranpodsplant" ],
-            [0.35, "wildnakatiseed" ]
+              [0.20, "wildcellpodsplant" ], 
+              [0.20, "wildkamaranpodsplant" ],
+              [0.10, "wildnakatiseed" ],
+              [0.10, "tokaniteseed" ],
+              [0.10, "emeraseed" ],
+              [0.10, "thanatiteseed" ],
+              [0.10, "rasilineseed" ],
+              [0.10, "feyaseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }

@@ -3,18 +3,22 @@ require "/scripts/kheAA/transferUtil.lua"
 
 function init()
 	receiveLiquid=true
-	transferUtil.init()
 	liquidLib.init()
 	transferUtil.loadSelfContainer()
 end
 
 function update(dt)
-	transferUtil.loadSelfContainer()
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
+		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
+	end
 	deltatime = (deltatime or 0) + dt;
 	if deltatime < 0.05 then
 		return
 	end
-	deltatime = 0;	
+	deltatime = 0;
 	liquidLib.doPump()
 end
 

@@ -4,7 +4,7 @@ function init()
 end
 
 function getSample()
-  local sample = world.lightLevel(object.position())
+  local sample = math.min(1.0,world.lightLevel(object.position()))
   return math.floor(sample * 1000) * 0.1
 end
 

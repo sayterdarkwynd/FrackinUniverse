@@ -1,18 +1,32 @@
 {
-  "itemName" : "goldenglowleaf",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "goldenglowleaf.png",
-  "description" : "Effect:
-^cyan;+50% Speed^reset;",
-  "shortdescription" : "Goldenglow Petal",
-  "category" : "food",
+	"itemName": "goldenglowleaf",
+	"inventoryIcon": "goldenglowleaf.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "effects" : [ [
-      {
-        "effect" : "runboost",
-        "amount" : 0.50,
-        "duration" : 120
-      }
-    ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+12.5% E. Regen & -6.25% E. Regen Block^reset;, ^cyan;+50% Run^reset;: 1m",
+	"shortdescription": "Goldenglow Petal",
+
+	"effects": [
+		[{
+				"effect": "energyregenfu25",
+				"duration": 60
+			},
+			{
+				"effect": "runboost",
+				"duration": 60
+			}
+		]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu05",
+		"energyregenfu40"
+	]
 }

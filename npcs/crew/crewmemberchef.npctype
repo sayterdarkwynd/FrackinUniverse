@@ -1,40 +1,37 @@
 {
   "type" : "crewmemberchef",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "chefhead",
         "chest" : "chefchest",
         "legs" : "cheflegs"
-        },
-
+      },
+	  
       "role" : {
-        "benefits" : [       
+        "type" : "chemist",
+        "name" : "Apprentice Chef",
+        "field" : "Burning Stuff",
+        "uniformColorIndex" : 3,
+
+        "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
-            "value" : 0.04
-          },        
+            "value" : 0.02
+          },
           {
             "type" : "EphemeralEffect",
-            "effect" : "feedpack1",
+            "effect" : "feedpackcrew1ground",
             "duration" : 120
-          },         
+          },
           {
             "type" : "PersistentEffect",
             "effect" : "feedpackcrew1"
           }
-        ],
-        "type" : "chemist",
-        "name" : "Apprentice Chef",
-        "field" : "Burning Stuff",
-        "uniformColorIndex" : 3
+        ]
       }
     },
 
@@ -43,7 +40,7 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll give you a 4% fuel efficiency boost whenever we're on the ship! I cook *that* well!"
+              "I'll give you a 2% fuel cost reduction whenever we're on the ship! I cook *that* well!"
             ]
           }
         },
@@ -80,10 +77,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "fryingpan" ],
-			"head" :  [{ "name" : "chefhead", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-			"chest" : [ { "name" : "chefchest", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-            "legs" : [ { "name" : "cheflegs", "count" :1, "parameters" : { "colorIndex" : 3 } } ]
+            "primary" : [ "fryingpan" ]
           }
         ] ]
     ]

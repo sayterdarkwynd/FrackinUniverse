@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "legendary",
    "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+25%^reset; Physical, ^cyan;20%^reset; Fire, Ice, Rad Resists
-Densinium Weapons: ^green;+2%^reset; Crit, ^#a94db3;+25%^reset; Dmg
-^cyan;Immune^reset;: Poison, Oxygen, Gas, Pressure",
+^yellow;^reset; Densinium Weapons: +^green;2^reset;% Crit Chance, Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Poison, Oxygen, Gas, Pressure",
   "shortdescription" : "Densinium Helm",
-  "category" : "t6armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -18,7 +17,7 @@ Densinium Weapons: ^green;+2%^reset; Crit, ^#a94db3;+25%^reset; Dmg
   "mask" : "mask.png",
 
   "level" : 6,
-  "collectablesOnPickup" : { "fu_armortank" : "densiniumhead" },
+  //"collectablesOnPickup" : { "fu_armortank" : "densiniumhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,6 +38,26 @@ Densinium Weapons: ^green;+2%^reset; Crit, ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.022859
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -47,22 +66,6 @@ Densinium Weapons: ^green;+2%^reset; Crit, ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "fu_densiniumset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.07
     }
   ],
   
@@ -91,5 +94,7 @@ Densinium Weapons: ^green;+2%^reset; Crit, ^#a94db3;+25%^reset; Dmg
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

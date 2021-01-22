@@ -1,22 +1,43 @@
 {
-  "itemName" : "slimeleaf",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "slimeleaf.png",
-  "description" : "Effect:
-^cyan;+2 Defense, Slime Immunity^reset;",
-  "shortdescription" : "Slime Leaf",
-  "category" : "food",
+	"itemName": "slimeleaf",
+	"inventoryIcon": "slimeleaf.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-      "effects" : [ [
-          "defense1","slimestickimmunity"
-    ] ],
-    
-  "blockingEffects" : [
-         "defense2",
-         "defense3",
-         "defense4",
-         "defense5",
-         "defense6"
-  ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+2 Defense^reset;, ^cyan;Immunity^reset;: Slime: 2m",
+	"shortdescription": "Slime Leaf",
+
+	"effects": [
+		[
+			{
+				"effect": "defense1",
+				"duration": 120
+			},
+			{
+				"effect": "slimestickimmunity",
+				"duration": 120
+			}
+		]
+	],
+	"blockingEffects": [
+		"defense4",
+		"defense2",
+		"defense3",
+		"defense5",
+		"defense6",
+		"defenseboost10",
+		"defenseboost20",
+		"defenseboost30",
+		"defenseboost60",
+		"defenseboost90",
+		"defenseboost120",
+		"defenseboost180",
+		"defenseboost210",
+		"defenseboost240",
+		"defenseboost270",
+		"defenseboost300",
+		"defenseboostgreg"
+	]
 }

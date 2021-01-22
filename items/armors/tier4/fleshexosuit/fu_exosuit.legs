@@ -1,12 +1,12 @@
 {
   "itemName" : "fuexosuitlegs",
   "shortdescription" : "Bio-Flesh Abdomen",
-  "category" : "t4armor",
+  "category" : "legarmour",
   "description" : "^orange;Set Bonuses^reset;:  
-Regen when under ^cyan;50%^reset; Health
-^green;12%^reset; Speed, Jump
-^green;5%^reset; Energy Regen, reduced recharge time
-Bio-Weapon: ^#a94db3;+15%^reset; Damage
+^green;1^reset;/^green;2^reset;% Health Regen when under ^cyan;50^reset;/^cyan;25^reset;% Health
+^yellow;^reset; ^green;12^reset;% Speed, Jump
+^yellow;^reset; ^green;5^reset;% Energy Regen, reduced recharge time
+^yellow;^reset; Bio-Weapon: Damage x^green;1.15^reset;
 ^cyan;Immune^reset;: Pus",
   "rarity" : "Rare",
   "tooltipKind" : "armornew2",
@@ -18,7 +18,7 @@ Bio-Weapon: ^#a94db3;+15%^reset; Damage
   "femaleFrames" : "pants.png",
 
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "fuexosuitlegs" },
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "fuexosuitlegs" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -62,6 +62,8 @@ Bio-Weapon: ^#a94db3;+15%^reset; Damage
     { "ffca8a" : "be69f4", "e0975c" : "8532bf", "a85636" : "4e187c", "6f2919" : "290c46" },
     { "ffca8a" : "fc72f8", "e0975c" : "a239a3", "a85636" : "681f6f", "6f2919" : "35103b" },
     { "ffca8a" : "bb8b4d", "e0975c" : "75522d", "a85636" : "463319", "6f2919" : "1c140a" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }
 

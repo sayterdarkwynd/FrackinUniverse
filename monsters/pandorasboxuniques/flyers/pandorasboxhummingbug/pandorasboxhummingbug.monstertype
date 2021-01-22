@@ -1,0 +1,245 @@
+{
+  "type" : "pandorasboxhummingbug",
+  "shortdescription" : "Hummingbug",
+  "description" : "Though these monsters are small, the virus they pass on in their bite can be lethal if left unchecked.",
+
+  "categories" : [ "pandorasboxhummingbug" ],
+  "parts" : [ "body" ],
+
+  "animation" : "pandorasboxhummingbug.animation",
+
+  "dropPools" : [ { "default" : "pandorasboxhummingbugTreasure", "bow" : "pandorasboxhummingbugHunting" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 5.0,
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [
+        {
+          "name" : "action-swoop",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "minimumRange" : 3,
+            "maximumRange" : 10,
+            "onGround" : false,
+            "windupTime" : 0.6,
+
+            "gravityMultiplier" : -0.5,
+            "swoopVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopTime" : 0.5,
+
+            "winddownTime" : 0.5,
+            "winddownState" : "fly",
+            "winddownStopForce" : 20
+          }
+        }
+      ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-swarm"
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport"
+        },
+        {
+          "name" : "approach-swarm",
+          "parameters" : {
+            "maxRange" : 5,
+            "minMoveDistance" : 2.5
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "approach-swarm",
+          "parameters" : {
+            "maxRange" : 5,
+            "minMoveDistance" : 2.5
+          }
+        },
+        {
+          "name" : "wander-fly",
+          "parameters" : {
+            "wanderTime" : [2,4],
+            "groundDistance" : 8,
+            "ceilingDistance ": 8,
+            "xVelocity" : 8,
+            "yVelocity" : 12
+          }
+        }
+      ],
+
+      "concurrentActions" : [ ],
+
+      "concurrentHostileActions" : [ ],
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-swoop",
+          "cooldown" : 1.0,
+          "parameters" : {
+            "minimumRange" : 3,
+            "maximumRange" : 10,
+            "onGround" : false,
+            "windupTime" : 0.6,
+
+            "gravityMultiplier" : -0.5,
+            "swoopVelocity" : 25,
+            "collisionCheck" : true,
+            "highArc" : false,
+            "swoopTime" : 0.5,
+
+            "winddownTime" : 0.5,
+            "winddownState" : "fly",
+            "winddownStopForce" : 20
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -0.26], [0.26, -0.625], [-0.26, -0.625], [-0.625, -0.26], [-0.625, 0.26], [-0.26, 0.625] ],
+      "damage" : 0,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "default",
+      "knockback" : 20,
+      "statusEffects" : [ "pandorasboxalienvirus" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -0.26], [0.26, -0.625], [-0.26, -0.625], [-0.625, -0.26], [-0.625, 0.26], [-0.26, 0.625] ],
+
+      "mass" : 0.5,
+      "walkSpeed" : 3,
+      "runSpeed" : 8,
+      "gravityEnabled" : false,
+
+      "airFriction" : 4,
+      "airForce" : 75,
+      "flySpeed" : 15
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.5
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 40
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.5
+        },
+        "grit" : {
+          "baseValue" : -0.5
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fireResistance" : {
+          "baseValue" : -0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : -0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.95
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  }
+}

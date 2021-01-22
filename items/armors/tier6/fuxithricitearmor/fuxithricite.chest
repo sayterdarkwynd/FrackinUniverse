@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#e43774;40% Cosmic Resist, ^#e43774;25%^reset; Radiation Resist^reset;
-Xithricite Weapons: ^green;+3%^reset; Crit 
-^cyan;Immune^reset;: Shadow, Aether, Radiation, Pressure, Insanity", 
+^yellow;^reset; Xithricite Weapons: +^green;3^reset;% Crit 
+^yellow;^reset; ^cyan;Immune^reset;: All Rads, Pressure, Shadow, Aether, Insanity, Oxygen", 
   "shortdescription" : "Xithricite Chestplate",
-  "category" : "t6armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -26,7 +25,7 @@ Xithricite Weapons: ^green;+3%^reset; Crit
   },
 
   "level" : 6,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "fuxithricitechest" },
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "fuxithricitechest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,6 +46,16 @@ Xithricite Weapons: ^green;+3%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.042857
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.025715
     }
   ],
 
@@ -55,14 +64,6 @@ Xithricite Weapons: ^green;+3%^reset; Crit
     {
       "stat" : "fu_xithriciteset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.15
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.09
     }
   ],
 
@@ -70,5 +71,7 @@ Xithricite Weapons: ^green;+3%^reset; Crit
     /* BROWN */
     { "ffca8a" : "67513b", "e0975c" : "503f2f", "a85636" : "3a2f24", "6f2919" : "29221b", "676f83" : "526b4a","3d3d51" : "3c4d37","24232f" : "283125" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

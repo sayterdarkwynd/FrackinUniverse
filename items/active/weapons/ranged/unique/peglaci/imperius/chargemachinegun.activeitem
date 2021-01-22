@@ -10,7 +10,7 @@
 ^red;-Slowed^reset;",
   "shortdescription" : "Imperius Minigun",
   "category" : "Chaingun",
-  "level" : 4,
+  "level" : 5,
   "tooltipKind" : "gun2",
   "weaponType" : "assaultrifle",
   "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
@@ -25,7 +25,7 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+      "fire" : [ "/sfx/weapons/marauder7.wav","/sfx/weapons/marauder9.wav" ]
     }
   },
 
@@ -67,8 +67,8 @@
 	    },
 	    "fire" : {
 	      "duration" : 0,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -76,8 +76,8 @@
 	    },
 	    "cooldown" : {
 	      "duration" : 0.075,
-	      "armRotation" : 5,
-	      "weaponRotation" : 5,
+	      "armRotation" : 2,
+	      "weaponRotation" : 2,
 	      "twoHanded" : true,
 
 	      "allowRotate" : false,
@@ -87,6 +87,11 @@
   },
   "critChance" : 1,
   "critBonus" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,   
+  
   "altAbilityType" : "spray",
   "altAbility" : {
     "name" : "Stun Shot",

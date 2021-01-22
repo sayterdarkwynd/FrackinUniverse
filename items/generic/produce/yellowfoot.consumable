@@ -1,14 +1,21 @@
 {
-  "itemName" : "yellowfoot",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "yellowfoot.png",
-  "description" : "Effect:
-^cyan;+15% Max Energy^reset;",
-  "shortdescription" : "Yellow-foot Mushroom",
-  "category" : "food",
-
-      "effects" : [ [
-      "percentenergyboost15"
-    ] ]
+	"itemName": "yellowfoot",
+	"inventoryIcon": "yellowfoot.png",
+	"category": "food",
+	"rarity": "uncommon",
+	"price": 10,
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Energy x1.15^reset;^reset;: 2m",
+	"shortdescription": "Yellow-foot Mushroom",
+	"effects": [
+		[{
+			"effect": "percentenergyboost15",
+			"duration": 120
+		}]
+	],
+	"blockingEffects": [
+		"percentenergyboost35",
+		"percentenergyboost20",
+		"percentenergyboost25"
+	]
 }

@@ -4,14 +4,14 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "category" : "chestwear",
+  "category" : "chestarmour",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;15%^reset; Radiation Resist
-Magnorbs: ^#a94db3;+25%^reset; Dmg
-^cyan;Immunity^reset;: Oxygen, Poison, Gas, Acid",
+^yellow;^reset; Magnorbs: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Poison, Gas
+^yellow;^reset; Research Bonus +^green;1^reset;",
   "shortdescription" : "Researcher's Breastplate",
 
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : {
     "body" : "chest.png",
@@ -30,22 +30,27 @@ Magnorbs: ^#a94db3;+25%^reset; Dmg
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.25
+      "baseMultiplier" : 1.12
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.5
+      "amount" : 0.45
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 5
+      "amount" : 4
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -54,10 +59,6 @@ Magnorbs: ^#a94db3;+25%^reset; Dmg
     {
       "stat" : "researchsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.05
     }
   ],
 
@@ -86,5 +87,7 @@ Magnorbs: ^#a94db3;+25%^reset; Dmg
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

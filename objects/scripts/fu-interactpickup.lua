@@ -1,5 +1,5 @@
 function init()
-	if storage.itemHasSpawned == false or storage.itemHasSpawned == nil then
+	if not storage.itemHasSpawned then
 		object.setInteractive(true)
 		animator.setAnimationState("interactiveObject", "filled")
 		storage.itemHasSpawned = false
@@ -7,8 +7,9 @@ function init()
 		animator.setAnimationState("interactiveObject", "empty")
 		object.setInteractive(false)
 	end
-	
+
 	self.spawnableItem = config.getParameter("spawnableItem")
+	self.timedObject = config.getParameter("timedSpawner")
 end
 
 function open()
@@ -19,7 +20,7 @@ function open()
 	end
 	storage.itemHasSpawned = true
 	object.setInteractive(false)
-	
+
 	--Make sure that, if the object is broken after having been collected, nothing drops
 	object.setConfigParameter("breakDropPool", "empty")
 end
@@ -30,6 +31,6 @@ function onInteraction(args)
 	end
 end
 
-function update(dt) 
-	
+function update(dt)
+
 end

@@ -1,0 +1,44 @@
+{
+  "objectName" : "weaponcompressor",
+  "colonyTags" : ["misc"],
+  "rarity" : "Common",
+  "category" : "storage",
+  "price" : 2000,
+  "description" : "Pushes weapons into otherspace pockets. Purely a cosmetic feature, but hilarious.",
+  "shortdescription" : "Weapon Compressor",
+  "race" : "generic",
+  "printable" : false,
+
+  "objectType" : "container",
+  "slotCount" : 2,
+  "uiConfig" : "/interface/objectcrafting/warpedcompressor.config",
+  "subtitle" : "",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "scripts" : [ "weaponcompressor.lua" ],
+
+  "damageTeam" : {
+    "type" : "friendly",
+    "team" : 0
+  },
+
+  "inventoryIcon" : "voidstorageiconblue.png",
+
+
+  "orientations" : [
+    {
+      "leftImage" : "voidstorageleftblue.png:default",
+      "rightImage" : "voidstoragerightblue.png:default",
+
+      "imagePosition" : [-8, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ]
+}

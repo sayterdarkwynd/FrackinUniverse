@@ -10,7 +10,7 @@ function init()
   self.slotCount = config.getParameter("slotCount")
 
   --self.fossilSetName is the name of the current fossil set
-  sb.logInfo("fossilDisplay Init:  fossilList=%s complete=%s",self.fossilList,self.isComplete)
+  --sb.logInfo("fossilDisplay Init:  fossilList=%s complete=%s",self.fossilList,self.isComplete)
 
   self.fossilSetName = nil
 
@@ -22,7 +22,7 @@ end
 
 function containerCallback()
   if (self.isComplete~=true) then
-    sb.logInfo("Contents changed")
+    --sb.logInfo("Contents changed")
     self.needsUpdate=true
   end
 end
@@ -48,7 +48,7 @@ function santiseContents()
 
     if (item) then
       local isFossil=root.itemHasTag(item.name, "fossil")
-      sb.logInfo("Checking Object=%s",item.name)
+      --sb.logInfo("Checking Object=%s",item.name)
 
       if (isFossil) then
         local fossilSetName = root.itemConfig(item).config.fossilSetName
@@ -78,7 +78,7 @@ function ejectItemFromSlot(slotIndex)
   local item = world.containerTakeAt(entity.id(), slotIndex-1)  --container slots are zero indexed, hence the -1
 
   if item then
-    sb.logInfo("Ejecting Object=%s",item.name)
+    --sb.logInfo("Ejecting Object=%s",item.name)
 
     world.spawnItem(item.name, object.position(), item.count, item.parameters)
   end
@@ -94,7 +94,7 @@ function sortIntoCorrectSlots()
     local fossil = world.containerItemAt(entity.id(), i-1) --container slots are zero indexed, hence the -1
 
     if (fossil) then
-      sb.logInfo("Sorting Object=%s",fossil.name)
+      --sb.logInfo("Sorting Object=%s",fossil.name)
 
       local setIndex=root.itemConfig(fossil).config.setIndex
 
@@ -131,7 +131,7 @@ function updateDisplay()
       local displayImage=root.itemConfig(fossil).config.displayImage
       animator.setGlobalTag(tagName, displayImage)
 
-      sb.logInfo("Displaying %s in slot %s",displayImage,tagName)
+      --sb.logInfo("Displaying %s in slot %s",displayImage,tagName)
 
       local transformName=string.format("fossil%stransform",i)
       if (animator.hasTransformationGroup(transformName)) then

@@ -4,7 +4,29 @@
   "charCreationTooltip" : {
       "title" : "Nightar",
       "subTitle" : "H2O",
-      "description" : "Mired in tradition, the enigmatic Nightar are a people evolved on a Penumbral world. They are proud, but xenophobic to extremes."
+      "description" : "Evolved in the depths of a Penumbral world, the Nightar dislike light intensely. They are able warriors and capable spies.
+
+  ^orange;Diet^reset;: Omnivore
+
+^orange;Perks^reset;:
+  ^green;Darkness^reset;: ^green;Physical Res.^reset; and ^green;Damage^reset;. Draining strikes.
+  Tech: ^green;Conshak^reset;(light aura, detect monsters, reflect damage. ^red;8s charge-up^reset;)
+  ^green;Resist^reset;: +^green;40^reset;% Shadow, +^green;10^reset;% Ice
+  ^cyan;Immune^reset;: Bio-Ooze, Poison
+
+^orange;Weapons^reset;:
+  All Swords: +^green;1^reset;% Crit Chance, Damage x^green;1.1^reset;. ^green;3^reset;% Shadow Burst Chance (^green;5 damage^reset;) at full Health.
+
+  Shortswords or Daggers: +^green;10^reset;% Crit Damage
+  Longsword or Katana: Damage x^green;1.06^reset;
+  Katana/Rapier + Dagger: +^green;1.5^reset;% Crit Chance
+  2x Small Blades: Defense x^green;1.12^reset;, +^green;5^reset;% Movement Speed
+  Shield: +^green;2 Shield Bash^reset;, +^green;25^reset;% Knockback Resist
+  Whip: +^green;10^reset;% Movement Speed
+
+^red;Weaknesses^reset;:
+  ^red;Resist^reset;: -^red;20^reset;% Cosmic, -^red;20^reset;% Radiation, -^red;20^reset;% Electric
+  ^red;Light^reset;: Reduces ^red;Energy, Health, Physical Resistance and Damage^reset;. Cancels ^red;Drain effect^reset; of attacks."
   },
 
   "nameGen" : [ "/species/nightarmalenamegen.config:names", "/species/nightarfemalenamegen.config:names" ],
@@ -12,12 +34,11 @@
   "charGenTextLabels" : [ "Skin colour", "Hair style", "Shirt", "Legwear", "Eye colour", "Hair colour", "Shirt colour", "Legwear colour", "NIGHTAR", "Personality" ],
   "skull" : "/humanoid/human/dead.png",
   "effectDirectives" : "?replace=FEFFFFFF=FFFFFFFF?replace=9bd4ffFF=E0E0E0FF?replace=31a6ffFF=B7B7B7FF",
-  
+
   "defaultBlueprints" : {
     "tier1" : [
-          { "item" : "flagnightar" },
-	  { "item" : "ranscastle" },
-	  { "item" : "nightaranvil" },
+      { "item" : "flagnightar" },
+	    { "item" : "nightaranvil" },
       { "item" : "nightartier1head" },
       { "item" : "nightartier1chest" },
       { "item" : "nightartier1pants" },
@@ -31,48 +52,40 @@
       { "item" : "nightartier3chest" },
       { "item" : "nightartier3pants" },
       { "item" : "nightartier4head" },
-	  { "item" : "nightartier4chest" },
+	    { "item" : "nightartier4chest" },
       { "item" : "nightartier4pants" },
       { "item" : "nightar_titaniumbroadsword" },
-	  { "item" : "nightar_titaniumspear" },
+	    { "item" : "nightar_titaniumspear" },
       { "item" : "nightar_durasteelbroadsword" },
-	  { "item" : "nightar_durasteelshortsword" },
-	  { "item" : "nightarshield" },
-	  { "item" : "nightiumshard" },
+	    { "item" : "nightar_durasteelshortsword" },
+	    { "item" : "nightarshield" },
+	    { "item" : "nightiumshard" },
       { "item" : "nightartier5head" },
       { "item" : "nightartier5chest" },
       { "item" : "nightartier5pants" },
       { "item" : "nightartier6head" },
       { "item" : "nightartier6chest" },
       { "item" : "nightartier6pants" },
-	  { "item" : "nightarbigshield" },
+	    { "item" : "nightarbigshield" },
       { "item" : "nightar_violiumbroadsword1" },
       { "item" : "nightar_violiumbroadsword2" },
-	  { "item" : "nightar_violiumshortsword2" },
-	  { "item" : "yorunoyumi" },
-	  { "item" : "nightarhealingaugment" },
-	  { "item" : "nightarhealthaugment" },
-	  { "item" : "nightarheatprotectionback" },
+	    { "item" : "nightar_violiumshortsword2" },
+	    { "item" : "yorunoyumi" },
+	    { "item" : "nightarhealingaugment" },
+	    { "item" : "nightarhealthaugment" },
+	    { "item" : "nightarheatprotectionback" },
       { "item" : "glitchtier1head" },
       { "item" : "glitchtier1chest" },
       { "item" : "glitchtier1pants" },
       { "item" : "glitchtier2head" },
       { "item" : "glitchtier2chest" },
       { "item" : "glitchtier2pants" },
-      { "item" : "ironshortsword" },
-      { "item" : "ironbroadsword" },
-      { "item" : "tungstenaxe" },
-      { "item" : "tungstenhammer" },
       { "item" : "glitchtier3head" },
       { "item" : "glitchtier3chest" },
       { "item" : "glitchtier3pants" },
       { "item" : "glitchtier4head" },
       { "item" : "glitchtier4chest" },
       { "item" : "glitchtier4pants" },
-      { "item" : "titaniumdagger" },
-      { "item" : "titaniumspear" },
-      { "item" : "durasteelbroadsword" },
-      { "item" : "durasteelshortsword" },
       { "item" : "glitchtier5ahead" },
       { "item" : "glitchtier5achest" },
       { "item" : "glitchtier5apants" },
@@ -91,43 +104,14 @@
       { "item" : "glitchtier6shead" },
       { "item" : "glitchtier6schest" },
       { "item" : "glitchtier6spants" },
-      { "item" : "aegisaltpistol" },
-      { "item" : "aegisaltbow" },
-      { "item" : "feroziumwand" },
-      { "item" : "feroziumstaff" },
-      { "item" : "violiumshortsword" },
-      { "item" : "violiumbroadsword" },
       { "item" : "nightarstoragelocker" },
       { "item" : "nightarshipdoor" },
       { "item" : "nightarshiphatch" },
-      { "item" : "nightar_suithead" },
-      { "item" : "nightar_suitchest" },
-      { "item" : "nightar_suitlegs" },
+      { "item" : "funightar_suithead" },
+      { "item" : "funightar_suitchest" },
+      { "item" : "funightar_suitlegs" },
       { "item" : "slayersashchest" },
-      { "item" : "slayersashpants" },
-      { "item" : "coolchest" },
-      { "item" : "coollegs" },
-      { "item" : "sweatervestchest" },
-      { "item" : "warvest" },
-      { "item" : "sweatervestlegs" },
-      { "item" : "workoutchest" },
-      { "item" : "workoutlegs" },
-      { "item" : "craftsmenchest" },
-      { "item" : "craftsmenlegs" },
-      { "item" : "merchantchest" },
-      { "item" : "merchantlegs" },
-      { "item" : "noblechest" },
-      { "item" : "noblelegs" },
-      { "item" : "peasantchest" },
-      { "item" : "peasantlegs" },
-      { "item" : "kimonochest" },
-      { "item" : "kimonolegs" },
-      { "item" : "monkchest" },
-      { "item" : "monklegs" },
-      { "item" : "traditionalchest" },
-      { "item" : "traditionallegs" },
-      { "item" : "traineechest" },
-      { "item" : "traineelegs" }
+      { "item" : "slayersashpants" }
     ]
   },
   "altOptionAsUndyColor" : true,
@@ -139,8 +123,8 @@
       "image" : "/interface/title/nightarm.png",
       "characterImage" : "/interface/title/nightarmale.png",
       "hair" : [ "male1", "male2", "male3", "male4", "male5", "male6", "male7", "male8", "male9", "male10", "male11", "male12", "male13", "male14", "male15", "male16", "male17", "male18", "male19", "male21", "male22", "male23", "male24", "male25", "male26", "male27", "male28", "male29", "male30", "male31", "male32", "male33", "male34", "male35", "male36", "male37", "male38", "male39", "male40", "male41", "male42", "male43", "male44", "male45", "male46", "male47", "male48", "male49", "male50", "male51", "male52", "male53", "male54", "male55", "male56", "male57", "male58", "male59", "male60", "male61", "male62", "male63", "male64", "male65", "male66", "male67", "male68", "male69", "male70" ],
-      "shirt" : [ "slayersashchest","funightar_suitchest", "warvest", "conceptchest", "sweatervestchest", "hoodiechest", "hoodiechest2", "noblechest","peasantchest","novakidwaistcoat", "protectorateshirtchest", "protectoratevestchest" ],
-      "pants" : [ "slayersashpants", "funightar_suitlegs", "coollegs", "conceptlegs", "sweatervestlegs", "jeans1legs", "noblelegs","peasantlegs", "novakidblackpants" ],
+      "shirt" : [ "slayersashchest","funightar_suitchest", "warvest", "conceptchest", "gutterpunkchest", "hiddenevachest", "glitterfolkchest", "shadowuniformchest","fumantizitogachest","novakidwaistcoat", "protectorateshirtchest", "protectoratevestchest" ],
+      "pants" : [ "slayersashpants", "funightar_suitlegs", "coollegs", "conceptlegs", "gutterpunklegs", "hiddenevapants", "glitterfolklegs","shadowuniformpants", "fumantizitogalegs", "novakidblackpants" ],
       "facialHairGroup" : "",
       "facialHair" : [],
       "facialMaskGroup" : "brand",
@@ -151,8 +135,8 @@
       "image" : "/interface/title/nightarf.png",
       "characterImage" : "/interface/title/nightarfemale.png",
       "hair" : [ "fem1", "fem2", "fem3", "fem4", "fem5", "fem6", "fem7", "fem8", "fem9", "fem10", "fem11", "fem12", "fem13", "fem14", "fem15", "fem16", "fem17", "fem18", "fem19", "fem20", "fem21", "fem22", "fem23", "fem24", "fem25", "fem26", "fem27", "fem28", "fem29", "fem30", "fem31", "fem32", "fem33", "fem34", "fem35", "fem36", "fem37", "fem38", "fem39", "fem40", "fem41", "fem42", "fem43", "fem44", "fem45", "fem46", "fem47", "fem48", "fem49", "fem50", "fem51", "fem52", "fem53", "fem54", "fem55", "fem56", "fem57", "fem58", "fem59", "fem60", "fem61", "fem62", "fem63", "fem64", "fem65" ],
-      "shirt" : [ "slayersashchest", "fumaidchest", "funightar_suitchest", "warvest", "conceptchest", "sweatervestchest", "hoodiechest", "hoodiechest2", "noblechest","peasantchest","novakidwaistcoat", "protectorateshirtchest", "protectoratevestchest" ],
-      "pants" : [ "slayersashpants", "fumaidlegs", "funightar_suitlegs", "coollegs", "conceptlegs", "sweatervestlegs", "jeans1legs", "noblelegs","peasantlegs", "novakidblackpants" ],
+      "shirt" : [ "slayersashchest", "funightar_suitchest", "warvest", "conceptchest", "gutterpunkchest", "hiddenevachest", "glitterfolkchest", "shadowuniformchest","fumantizitogachest","novakidwaistcoat", "protectorateshirtchest", "protectoratevestchest"  ],
+      "pants" : [ "slayersashpants", "funightar_suitlegs", "coollegs", "conceptlegs", "gutterpunklegs", "hiddenevapants", "glitterfolklegs","shadowuniformpants", "fumantizitogalegs", "novakidblackpants"  ],
       "facialHairGroup" : "",
       "facialHair" : [],
       "facialMaskGroup" : "brand",
@@ -168,8 +152,8 @@
     { "ffe2c5" : "a2a2a2", "ffc181" : "787878", "d39c6c" : "4a4442", "c7815b" : "231f1b" }, //dark grey
     { "ffe2c5" : "635b5b", "ffc181" : "484141", "d39c6c" : "332e2e", "c7815b" : "1d1a1a" }  //red/black
   ],
-  
-  
+
+
   "undyColor" : [ //more like eye color, but whatever
         { "ED1C24" : "0B877F"},
         { "ED1C24" : "e43774"},
@@ -184,7 +168,7 @@
 	{ "ED1C24" : "FF325F"},
 	{ "ED1C24" : "b8b8b8"}
   ],
-  
+
   "hairColor" : [
     //GREY or SILVER
     { "d9c189" : "CBCDC2", "a38d59" : "A4A699", "735e3a" : "898B7A" },

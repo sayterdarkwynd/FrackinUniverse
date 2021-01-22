@@ -7,17 +7,18 @@ end
 
 function onInteraction()
   if self.count < 3 then
-	  if #self.sounds > 0 then
-	    animator.playSound("noise")
-	    self.count = self.count +1
-	  end
+    if #self.sounds > 0 then
+      animator.playSound("noise")
+      self.count = self.count +1
+    end
   elseif self.count == 3 then
     local crewtype = "crewmemberLoveliusSmythe"
     local seed = math.random(255)
     local parameters = {}
     local crewrace = "human"
     self.count = self.count +1
-    world.spawnNpc(object.position(), crewrace, crewtype, 1, seed, parameters)  
+    world.spawnNpc(object.position(), crewrace, crewtype, 1, seed, parameters)
+    object.smash(true)
   end
 end
 

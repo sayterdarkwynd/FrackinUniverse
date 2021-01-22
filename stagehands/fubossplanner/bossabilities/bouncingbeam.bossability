@@ -1,0 +1,30 @@
+{
+  "name" : "fubouncingbeam",
+  "chance" : 0.25,
+  "preconditions" : [
+    ["Ability", "MovingAbility"]
+  ],
+  "postconditions" : [
+    ["Ability", "StaticAbility"],
+    ["!Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Ability", "LongRange"]
+  ],
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-targetedbeam",
+      "parameters" : {
+        "handPart" : "righthand",
+        "damagePart" : "bouncingbeam",
+        "beamType" : "damage",
+        "bounces" : 10,
+        "aimTime" : 1.5,
+        "duration" : 3.0,
+        "angularSpeed" : 0,
+        "track" : false
+      }
+    }
+  ]
+}

@@ -1,17 +1,18 @@
 require "/scripts/util.lua"
+require "/scripts/poly.lua"
+require "/scripts/vec2.lua"
 require "/scripts/kheAA/transferUtil.lua"
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 
 -- You might notice there's no timer here.
 -- The time between outputs and power consumption is determined by
 -- the object's "scriptDelta".
 
--- Added in the deltaTime variable as it's common in any lua code which
+-- Added in the scanTimer variable as it's common in any lua code which
 -- interacts with Item Transference Device (transferUtil) code.
-local deltaTime	-- Making it local is faster than leaving it global.
+local scanTimer	-- Making it local is faster than leaving it global.
 
 function init()
-    transferUtil.init()
     object.setInteractive(true)
     self.powerConsumption = config.getParameter("isn_requiredPower")
     productionTime = (config.getParameter("productionTime",120))/60
@@ -47,22 +48,22 @@ end
 
 function update(dt)
     power.update(dt)
-	
+
 	-- Notify ITD but no faster than once per second.
-	if not deltaTime or (deltaTime > 1) then
+	if not scanTimer or (scanTimer > 1) then
 		transferUtil.loadSelfContainer()
 		wellInit()
 		setDesc()
-		deltaTime = 0
+		scanTimer = 0
 	else
-		deltaTime=deltaTime+dt
+		scanTimer=scanTimer+dt
 	end
 
 	if not storage.timer then
 		storage.timer=0
 	end
 	if storage.timer>=productionTime then
-		
+
 		local worldtype = world.type()
 		if worldtype == 'unknown' then
 			worldtype = world.getProperty("ship.celestial_type") or worldtype
@@ -70,7 +71,7 @@ function update(dt)
 		if not self.outputMap[worldtype] then
 			initMap(worldtype)
 		end
-		
+
 		local output = nil
 		local rarityroll = math.random(1, self.maxWeight[worldtype])
 
@@ -86,14 +87,20 @@ function update(dt)
 		end
 
 		if output and clearSlotCheck(output) and power.consume(self.powerConsumption) then
+			if object.outputNodeCount() > 0 then
+				object.setOutputNodeLevel(0,true)
+			end
 			animator.setAnimationState("machineState", "active")
 			world.containerAddItems(entity.id(), output)
 		else
+			if object.outputNodeCount() > 0 then
+				object.setOutputNodeLevel(0,false)
+			end
 			animator.setAnimationState("machineState", "idle")
 		end
 		storage.timer=0
 	else
-		storage.timer=storage.timer+(dt/wellsDrawing)
+		storage.timer=storage.timer+(dt/math.sqrt(1+wellsDrawing))
 	end
 end
 
@@ -104,7 +111,7 @@ end
 
 function setDesc()
 	if not self.overrideScanTooltip then return end
-	
+
 	local color="^yellow;"
 	local info="Standby."
 
@@ -113,19 +120,19 @@ function setDesc()
 	if worldtype == 'unknown' then
 		worldtype = world.getProperty("ship.celestial_type") or worldtype
 	end
-	
+
 	local buffer={}
     local outputConfig = config.getParameter("outputs")
     local outputTable = outputConfig[worldtype] or outputConfig["default"] or {}
-	
+
 	--sb.logInfo("%s",outputTable)
-	
+
 	if type(outputTable) == "string" then
 		outputTable = outputConfig[outputTable] or outputConfig["default"] or {}
 	end
-	
+
 	local buffer2=""
-	
+
 	if self.rarityInfoLevel > 0 then
 		buffer2={}
 		for _,myTable in pairs(outputTable) do
@@ -169,7 +176,8 @@ end
 
 function wellInit()
 	if not wellRange then wellRange=config.getParameter("wellRange",20) end
-	wellsDrawing=1+#(world.entityQuery(entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAirWell"}) or {})
+	if (not storage.wellPos) and object.spaces() then storage.wellPos=vec2.add(poly.center(object.spaces()),object.position()) end
+	wellsDrawing=1+#(world.entityQuery(storage.wellPos or entity.position(),wellRange,{includedTypes={"object"},withoutEntityId = entity.id(),callScript="fu_isAirWell"}) or {})
 end
 
 function fu_isAirWell() return (animator.animationState("machineState")=="active") end

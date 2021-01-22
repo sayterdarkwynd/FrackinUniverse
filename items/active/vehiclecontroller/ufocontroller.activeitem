@@ -1,0 +1,33 @@
+{
+  "itemName" : "ufocontroller",
+  "level" : 1,
+  "price" : 42000,
+  "rarity" : "legendary",
+  "category" : "vehicleController",
+  "shortdescription" : "UFO Controller",
+  "description" : "Create a tiny UFO from stored nanites.",
+  "twoHanded" : false,
+  "maxStack" : 1,
+  "itemTags" : ["vehiclecontroller"],
+  "animation" : "vehiclecontroller.animation",
+  "scripts" : ["vehiclecontroller.lua"],
+  "animationScripts" : ["vehiclecursor.lua"],
+  "filled" : true,
+  "tooltipKind" : "vehicle",
+  "largeImage" : "miniufo.png",
+
+  "respawnTime" : 1.0,
+
+  //=============Item specifc bits.
+  "vehicleType" : "miniufo",
+  "vehicleBoundingBox" : [-4, -4, 4, 4],
+  "vehicleImage" : "/vehicles/miniufo/miniufo.png",
+
+  "animationParts" : {
+    "casing" : "fusubcontroller.png"
+  },
+
+  "inventoryIcon" : "fusubcontroller.png:full",
+  "emptyInventoryIcon" : "/items/active/vehiclecontroller/fusubcontroller.png:empty",
+  "filledInventoryIcon" : "/items/active/vehiclecontroller/fusubcontroller.png:full"
+}

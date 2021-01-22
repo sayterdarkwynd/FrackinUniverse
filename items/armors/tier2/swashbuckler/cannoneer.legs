@@ -4,20 +4,19 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Electric Resist
-^orange;Set Bonuses^reset;:
-^green;+8%^reset; Jump, ^cyan;+20%^reset; Max Food
-Rapier/Pistol: ^green;+7.5% Dmg each^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;8^reset;% Jump, -^green;20^reset;% Hunger Drain
+^yellow;^reset; Rapier/Pistol: Damage x^green;1.075^reset;/^green;1.15^reset;.",
 
   "shortdescription" : "Swashbuckler Pants",
-  "category" : "t2armor",
-  "tooltipKind" : "armor",
+  "category" : "legarmour",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "pantsm.png",
   "femaleFrames" : "pantsm.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "cannoneerlegs" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "cannoneerlegs" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,6 +37,11 @@ Rapier/Pistol: ^green;+7.5% Dmg each^reset;",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -46,10 +50,6 @@ Rapier/Pistol: ^green;+7.5% Dmg each^reset;",
     {
       "stat" : "swashbucklersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.05
     }
   ],
 
@@ -89,5 +89,7 @@ Rapier/Pistol: ^green;+7.5% Dmg each^reset;",
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

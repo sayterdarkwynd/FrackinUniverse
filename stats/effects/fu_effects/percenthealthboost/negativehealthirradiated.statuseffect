@@ -1,16 +1,19 @@
 {
   "name" : "negativehealthirradiated",
-  "effectConfig" : {
-    "healthDown" : -0.15
-  },
+	"effectConfig": {
+		"stats": [{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 0.85
+		}]
+	},
   "defaultDuration" : 1,
 
   "scripts" : [
-    "percenthealthboost.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
   
   "animationConfig" : "percenthealthboost.animation",
   
-  "label" : "HP -15%",
+  "label" : "15% Less HP",
   "icon" : "/interface/statuses/hpdown.png"
 }

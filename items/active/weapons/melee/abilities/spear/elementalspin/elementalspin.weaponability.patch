@@ -106,5 +106,110 @@
         "statusEffects": [  ]
       }
     }
-  }
+  },
+  
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/hellfireSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/hellfire",
+    "value": {
+      "projectileType": "firespinswoosh",
+      "damageConfig": {
+        "statusEffects": [  ]
+      }
+    }
+  },  
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/hellfireSpin",
+    "value" :  ["/sfx/melee/elemental_spin_fire.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/hellfireSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_fire7.ogg" ]
+  },
+  
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/bioweaponSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "poisonswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/bioweapon",
+    "value": {
+      "projectileType": "poisonspinswoosh",
+      "damageConfig": {
+        "statusEffects": [  ]
+      }
+    }
+  },  
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/bioweaponSpin",
+    "value" :  ["/sfx/melee/elemental_spin_poison.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/bioweaponSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_poison7.ogg" ]
+  },
+  
+  {
+    "op": "add",
+    "path": "/animationCustom/particleEmitters/silverweaponSpin",
+    "value": {
+      "active" : false,
+      "emissionRate" : 12,
+      "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+      "particles" : [
+        { "particle" : "iceswoosh1"},
+        { "particle" : "iceswoosh2"},
+        { "particle" : "iceswoosh3"}
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/ability/elementalConfig/silverweapon",
+    "value": {
+      "projectileType": "icespinswoosh",
+      "damageConfig": {
+        "statusEffects": [  ]
+      }
+    }
+  },  
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/silverweaponSpin",
+    "value" :  ["/sfx/melee/elemental_spin_poison.ogg"]
+  },
+  {
+    "op": "add",
+    "path": "/animationCustom/sounds/silverweaponSpinFire",
+    "value" : [ "/sfx/melee/travelingslash_poison7.ogg" ]
+  }    
 ]

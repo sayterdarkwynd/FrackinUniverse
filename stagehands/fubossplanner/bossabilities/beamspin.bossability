@@ -1,0 +1,23 @@
+{
+  "name" : "fubeamSpin",
+  "preconditions" : [
+    ["Ability", "StaticAbility"]
+  ],
+  "postconditions" : [
+    ["Ability", "MovingAbility"],
+    ["!Ability", "StaticAbility"]
+  ],
+  "statemodifiers" : [
+    ["!WeaponEquipped"],
+    ["Ability", "CloseRange"]
+  ],
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-beamspin",
+      "parameters" : {
+        "angularSpeed" : 2.5
+      }
+    }
+  ]
+}

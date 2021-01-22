@@ -1,0 +1,63 @@
+{
+	"stats": [
+		{ "stat": "fireResistance", "amount": 0.4 },
+		{ "stat": "iceResistance", "amount": -0.4 },
+		{ "stat": "physicalResistance", "amount": 0.2 },
+		{ "stat": "poisonResistance", "amount": -0.4 },
+		{ "stat": "biomeheatImmunity", "amount": 1 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.5 },
+		{ "stat": "fireStatusImmunity", "amount": 1 }
+	],
+	"diet" : "carnivore",
+	"envEffects": [
+		{
+			"biomes": "hot",
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.15 }
+			],
+			"controlModifiers": {
+				"speedModifier": 1.15
+			}
+		},
+		{
+			"biomes": "cold",
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 0.75 }
+			],
+			"controlModifiers": {
+				"speedModifier": 0.9
+			}
+		}
+	],
+	"weaponEffects": [
+		{
+			"weapons": [ "mace", "hammer" ],
+			"stats": [
+				{ "stat": "critChance", "amount": 2 }
+			]
+		},
+		{
+			"weapons": [ "wand", "staff"
+			],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
+			]
+		},
+		{
+			"weapons": [ "dagger" ],
+			"stats": [
+				{ "stat": "critDamage", "amount": 0.2 }
+			]
+		}
+	],
+	"aerialEffect": {
+		"fallStats": {
+			"controlParameters": {
+				"airForce": 50,
+				"runSpeed": 20,
+				"walkSpeed": 20
+			},
+			"maxFallSpeed": -39
+		}
+	}
+}

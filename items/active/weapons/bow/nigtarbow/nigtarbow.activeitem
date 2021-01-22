@@ -3,19 +3,19 @@
   "price" : 440,
   "inventoryIcon" : "nigtarbowicon.png",
   "maxStack" : 1,
-  "rarity" : "rare",
+  "rarity" : "uncommon",
   "tooltipKind" : "bow2",
   "category" : "bow",
-  "description" : "Harvests meat and other goods from monsters.",
-  "shortdescription" : "Frostmoon Bow",
+  "description" : "Specially constructed arrows damage all elements equally, but still work for hunting.",
+  "shortdescription" : "Brightsteel Bow",
   "twoHanded" : true,
-  "itemTags" : ["weapon", "ranged", "bow", "nightar","upgradeableWeapon"],
+  "itemTags" : ["weapon", "ranged", "bow", "nightar", "silver", "upgradeableWeapon"],
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
   "level" : 4,
 
-  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animation" : "/items/active/weapons/bow/fubow.animation",
   "animationParts" : {
     "bow" : "nigtarbowfull.png"
   },
@@ -32,29 +32,42 @@
 
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "silverweapon",
   
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "drawFrameSelector" : "poisonBowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
-    "projectileType" : "icearrow",
-    "powerProjectileType" : "chargedicearrow",
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.9,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.305,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.1,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows
+	"energyPerShot" : 20,			
+	"holdEnergyUsage" : 10,				
+	"airborneBonus" : 1.50, 
+    "projectileType" : "silverarrow",
+    "powerProjectileType" : "chargedsilverarrow",
     "projectileParameters" : {
-      "power" : 6.5
+      "power" : 6.65,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.65,
+      "piercing" : false
     }
   },
 
-  "altAbilityType" : "bowshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
     "energyPerShot" : 35,
-    "projectileType" : "chargedicearrow",
+    "projectileType" : "chargedsilverarrow",
     "powerProjectileType" : "rimewindarrow",
     "projectileParameters" : {
-      "power" : 10
+      "power" : 9,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.65,
+      "piercing" : true
     }
   },
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

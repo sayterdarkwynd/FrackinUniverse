@@ -3,10 +3,10 @@ require "/scripts/util.lua"
 function charge()
 	--magazine:root.itemConfig().config = {<...>,ammoType: psionichealammo, ammoCasing: , tooltipKind: fuammoitem, ammoMax: 10, rarity: rare, magazineType: psionichealmagammo,<...>}
 	--ammo:root.itemConfig().config = {<...>,itemName: psionichealammo, ammoCount: 1,<...>}
-	
+
 	ammoConfig=root.itemConfig(ammo).config
 	magazineConfig=root.itemConfig(magazine).config
-	
+
 	if not ammoConfig or not magazineConfig then return end
 	if (magazine.parameters.ammoType and (magazine.parameters.ammoType == ammo.name)) or (magazineConfig.ammoType and (magazineConfig.ammoType == ammo.name)) then
 		local currentMag=magazine.parameters.ammoCount or 0
@@ -15,17 +15,17 @@ function charge()
 			local ammoRequiredPerMag=math.floor((magazineConfig.ammoMax-currentMag)/ammoWeight)
 			local ammoAvailablePerMag=math.floor(ammo.count/magazine.count)
 			local ammoUsedPerMag=math.min(ammoAvailablePerMag,ammoRequiredPerMag)
-			
+
 			if ammoUsedPerMag>=1 then
 				magazine.parameters.ammoCount=currentMag+(ammoUsedPerMag*ammoWeight)
-				
+
 				world.containerTakeNumItemsAt(entity.id(),0,ammoUsedPerMag*magazine.count)
 				world.containerTakeAt(entity.id(),1)
 				world.containerPutItemsAt(entity.id(),magazine,1)
 			end
 		end
 	end
-	
+
 	ammo=nil
 	magazine=nil
 end

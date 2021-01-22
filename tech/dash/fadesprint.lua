@@ -7,15 +7,15 @@ function init()
   self.dashSpeedModifier = config.getParameter("dashSpeedModifier")
   self.groundOnly = config.getParameter("groundOnly")
   self.stopAfterDash = config.getParameter("stopAfterDash")
- 
+
   self.dash = false
   self.effectDelay = 0
-  
+
   self.chargeAttack = config.getParameter("chargeAttack",0)
   self.chargeAttackPower = config.getParameter("chargeAttackPower",0)
   self.hasChargeBonus = config.getParameter("hasChargeBonus",0)
   self.isInvulnerable = config.getParameter("isInvulnerable",0)
-  
+
   self.doubleTap = DoubleTap:new({"left", "right"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
       local direction = dashKey == "left" and -1 or 1
       if not self.dashDirection
@@ -34,7 +34,14 @@ function uninit()
   status.clearPersistentEffects("movementAbility")
 end
 
+function applyTechBonus()
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashSpeedModifier = config.getParameter("dashSpeedModifier") * self.dashBonus
+end
+
 function update(args)
+  applyTechBonus()
   self.doubleTap:update(args.dt, args.moves)
 
   if self.dashDirection then
@@ -44,17 +51,17 @@ function update(args)
       if mcontroller.facingDirection() == self.dashDirection then
         if status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
           mcontroller.controlModifiers({speedModifier = self.dashSpeedModifier})
-          
+
           animator.setAnimationState("dashing", "on")
           animator.setParticleEmitterActive("dashParticles", true)
-          
+
           -- charge attack!
 	    if self.chargeAttack == 1 then
 	      local configBombDrop = { power = self.chargeAttackPower }
 	      world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
-	    end          
-          
-          
+	    end
+
+
         else
           endDash()
         end
@@ -110,15 +117,15 @@ end
 
 function generateSkillEffectEnd()
 
-    
+
     if status.resource("energy") >= 50 and (self.hasChargeBonus) == 1 then
-      status.addEphemeralEffect("damagebonus3",2) 
+      status.addEphemeralEffect("damagebonus3",2)
       animator.playSound("chargebonus")
       status.consumeResource("energy", 50)
     end
-    
+
     if (self.isInvulnerable) == 1 then
       status.addEphemeralEffect("invulnerable", 1)
     end
-    
+
 end

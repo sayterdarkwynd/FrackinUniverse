@@ -4,14 +4,13 @@
   "inventoryIcon" : "icons.png:head",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
-  "rarity" : "Common",
-  "description" : "Set Bonus:
-^cyan;+15%^reset; Speed
-^cyan;+18%^reset; Radioactive Resist
-Sniper Rifle: ^green;+3%^reset; Crit, ^cyan;+22%^reset; Dmg
-^cyan;Immune^reset;: Rad Burn", 
+  "rarity" : "Legendary",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; +^green;15^reset;% Speed
+^yellow;^reset; Assault/Sniper Rifle: +^green;3^reset;% Crit Chance, Damage x^green;1.22^reset;
+^yellow;^reset; ^cyan;Immune^reset;: ALL Rads", 
   "shortdescription" : "Type-3 Recon Helm",
-  "category" : "t6armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -19,7 +18,7 @@ Sniper Rifle: ^green;+3%^reset; Crit, ^cyan;+22%^reset; Dmg
   "mask" : "mask.png",
 
   "level" : 6,
-  "collectablesOnPickup" : { "fu_armorranged" : "fureconhead3" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "fureconhead3" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -40,6 +39,11 @@ Sniper Rifle: ^green;+3%^reset; Crit, ^cyan;+22%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.028572
     }
   ],
 
@@ -48,10 +52,6 @@ Sniper Rifle: ^green;+3%^reset; Crit, ^cyan;+22%^reset; Dmg
     {
       "stat" : "fu_reconset3_head",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.1
     }
   ],
 
@@ -92,5 +92,7 @@ Sniper Rifle: ^green;+3%^reset; Crit, ^cyan;+22%^reset; Dmg
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

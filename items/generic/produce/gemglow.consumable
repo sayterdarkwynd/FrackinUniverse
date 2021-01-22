@@ -1,15 +1,18 @@
 {
-  "itemName" : "gemglow",
-  "rarity" : "Common",
-  "price" : 60,
-  "inventoryIcon" : "gemglow.png",
-  "description" : "Effect:
-^cyan;Immunity to Blue and Orange Grav-rain^reset;",
-  "shortdescription" : "Gemglow",
-  "category" : "food",
+	"itemName": "gemglow",
+	"inventoryIcon": "gemglow.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 60,
 
-  "effects" : [ [
-    "gravrainimmunity"
-  ] ],
-  "learnBlueprintsOnPickup" : [ "gemglowseed" ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immunity^reset;: Grav-Rain: 2m",
+	"shortdescription": "Gemglow",
+	"effects": [
+		[{
+			"effect": "gravrainimmunity",
+			"duration": 120
+		}]
+	]//,
+	//"learnBlueprintsOnPickup": ["gemglowseed"]
 }

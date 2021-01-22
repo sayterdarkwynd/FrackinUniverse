@@ -22,7 +22,7 @@
 
     "behavior" : "monster",
 
-    "renderLayer" : "foregroundEntity",
+    //"renderLayer" : "foregroundEntity",
 
     "behaviorConfig" : {
       "damageOnTouch" : true,
@@ -106,7 +106,7 @@
           "cooldown" : 0.5,
           "parameters" : {
             "projectileCount" : 1,
-            "projectileType" : "shadowcloud",
+            "projectileType" : "shadowelementcloud",
             "projectileParameters" : {
               "power" : 2,
               "timeToLive" : 4,
@@ -215,7 +215,20 @@
         "xanafianStatusImmunity" : { "baseValue" : 1 },
         "akkimariacidResistance" : { "baseValue" : 0.5 },
         "akkimariacidStatusImmunity" : { "baseValue" : 1 },
-        "ignoreInvisibilityEffects" : { "baseValue" : 1 }       
+        "ignoreInvisibilityEffects" : { "baseValue" : 1 },
+        "stunImmunity" : {"baseValue" : 1},        
+        "isWaterCreature" : {
+          "baseValue" : 1.0
+        },        
+        "breathProtection" : {
+          "baseValue" : 1.0
+        },
+        "isBossCreature" : {
+          "baseValue" : 1.0
+        },
+        "wetImmunity" : {
+          "baseValue" : 1.0
+        }         
       },
 
       "resources" : {

@@ -1,0 +1,86 @@
+{
+  "itemName" : "zerchesiumstaff",
+  "level" : 3,
+  "price" : 940,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "description" : "Frosty death in a convenient size.",
+  "shortdescription" : "Zerchesium Staff",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","zerchesium", "upgradeableWeapon"],
+  "tooltipKind" : "staff",
+
+  "animation" : "/items/active/weapons/staff/staff.animation",
+  "animationParts" : {
+    "staff" : "zerchesiumstaff.png",
+    "stone" : "/items/active/weapons/staff/generated/stone/zerchesiumstaff.png",
+    "chargeEffect" : "/items/active/weapons/staff/generated/glow/ice.png"
+  },
+  "animationCustom" : {
+    "particleEmitters" : {
+      "icecharge" : {
+        "offsetRegion" : [-0.5, 1.75, 0.5, 3.25]
+      }
+    }
+  },
+
+  "inventoryIcon" : "zerchesiumstaff.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.3,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "icestorm",
+  "primaryAbility" : {},
+  "altAbilityType" : "elementalaura",
+  "altAbility" : {},
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

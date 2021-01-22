@@ -1,26 +1,21 @@
 {
-  "itemName" : "nailery",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "naileryicon.png",
-  "description" : "Effect:
-^cyan;Craft into bombs^reset;",
-  "category" : "food",
+	"itemName": "nailery",
+	"inventoryIcon": "naileryicon.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+	"maxStack": 1000,
 
-  "shortdescription" : "Nailery",
-  "learnBlueprintsOnPickup" : [ "nailbomb" ],
-  "maxStack" : 1000,
-  "effects": [
-    [
-      {
-        "effect": "weakpoison",
-        "duration": 5
-      }
-    ]
-  ],
-  "blockingEffects": [
-    "weakpoison"
-  ],
-  "foodValue" : 40,
-  "tooltipKind" : "food"
+	"tooltipKind": "food",
+	"description": "Craft into bombs, or extract for iron.\n^yellow;^reset;^red;Poisons^reset;: 5s",
+	"shortdescription": "Nailery",
+
+	//"learnBlueprintsOnPickup": ["nailbomb"],
+	"effects": [
+		[{
+			"effect": "weakpoison",
+			"duration": 5
+		}]
+	],
+	"blockingEffects": ["weakpoison"]
 }

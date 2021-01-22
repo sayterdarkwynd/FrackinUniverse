@@ -6,13 +6,13 @@
     "rarity" : "rare",
   "description" : "An ancient and terribly deadly sidearm.
 ^yellow;Inflicts radiation burn^reset;",
-  "shortdescription" : "Precursor Crippler",
+  "shortdescription" : "Precursor Reaver",
   "level" : 4,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "energy", "precursor", "upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
-  "learnBlueprintsOnPickup" : [ "chargesmg" ],
+ // "learnBlueprintsOnPickup" : [ "chargesmg" ],
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   
   "animationParts" : {
@@ -48,7 +48,7 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.1,
-    "baseDps" : 4,
+    "baseDps" : 4.5,
     "energyUsage" : 27,
     "fireType" : "auto",
     "inaccuracy" : 0.0125,
@@ -86,7 +86,13 @@
       }
     }
   },
+  
   "critChance" : 2,
   "critBonus" : 2,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200,  
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

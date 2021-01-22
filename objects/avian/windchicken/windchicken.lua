@@ -14,15 +14,15 @@ end
 function chicken()
 	local windLevel = math.min(math.abs(world.windLevel(object.position())),12)
 
-	if windLevel > 6 then
+	if windLevel > 24 then
 		animator.setAnimationState("base", "fast")
-	elseif windLevel > 3 then
+	elseif windLevel > 12 then
 		animator.setAnimationState("base", "med")
 	elseif windLevel > 0 then
 		animator.setAnimationState("base", "slow")
 	else
 		animator.setAnimationState("base", "off")
 	end
-	
+
 	return windLevel
 end

@@ -22,17 +22,19 @@ end
 function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
   animator.setParticleEmitterActive("drips", true)
+  if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
+  end
 end
 
 function setEffectTime()
-  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("fireResistance",0) ),0.5))
+  return (  self.tickTimer *  math.min(   1 - math.min( status.stat("fireResistance") ),0.5))
 end
 
 function update(dt)
-  	if ( status.stat("fireResistance",0)  >= 1.0 ) then
+  	if ( status.stat("fireResistance")  >= 1.0 ) then
   	  deactivateVisualEffects()
 	  effect.expire()
 	end

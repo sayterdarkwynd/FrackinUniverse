@@ -1,12 +1,12 @@
 {
   "name" : "hylotltier1setbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "weaponBonuses" : [
       {
         "type" : "any",
-        "tags" : [ "katana" ],
+        "tags" : [ "katana","daikatana" ],
         "stats" : {
           "critChance" : { "amount" : 1 }
         }
@@ -14,8 +14,7 @@
     ],
     
     "armorBonuses" : {
-      "electricResistance" : { "amount" : 0.15 },
-      "powerMultiplier" : { "baseMultiplier" : 1.05 }
+      "powerMultiplier" : { "effectiveMultiplier" : 1.05 }
     }
   },
 
@@ -23,8 +22,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "+15% Electric Resistance, Katana: +1% Crit Chance.",
-  "icon" : "/interface/statuses/defense.png"
+  "scriptDelta": 5
 }

@@ -13,14 +13,14 @@ function init()
 	self.flutterFall = config.getParameter("flutterFall")
 	self.flutterTimer = 0
 	self.flutterAble = false
-	
+
 	self.wallSlideParameters = config.getParameter("wallSlideParameters")
 	self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
 	self.wallGrabFreezeTime = config.getParameter("wallGrabFreezeTime")
 	self.wallGrabFreezeTimer = 0
 	self.wallReleaseTime = config.getParameter("wallReleaseTime")
 	self.wallReleaseTimer = 0
-	
+
 	self.lastJumpKey = false
 
 	buildSensors()
@@ -29,9 +29,14 @@ function init()
 	releaseWall()
 end
 
+function applyTechBonus()
+  self.jumpBonus = 1 + status.stat("jumptechBonus") -- apply bonus from certain items and armor
+end
+
 function update(args)
+  applyTechBonus()
 	if not disabled(args) and args.moves["jump"] and canAbility(args) then
-		if not self.doingAbility then 
+		if not self.doingAbility then
 			self.doingAbility = true
 			startAbility(args)
 		end
@@ -40,7 +45,7 @@ function update(args)
 		self.doingAbility = false
 		stopAbility(args)
 	end
-	
+
 	if not disabled(args) and not self.doingAbility then
 		if mcontroller.jumping() then
 			updateJumping(args)
@@ -52,10 +57,10 @@ function update(args)
 			landed(args)
 		end
 	end
-	
+
 	if not disabled(args) then updateAlways(args)
 	end
-	
+
   local jumpActivated = args.moves["jump"] and not self.lastJumpKey
   self.lastJumpKey = args.moves["jump"]
   local lrInput
@@ -112,7 +117,7 @@ end
 function canAbility(args)
 	return not mcontroller.jumping()
 		and not mcontroller.canJump()
-		and args.moves["jump"] 
+		and args.moves["jump"]
 		and ( not ( mcontroller.velocity()[2] > 0 ) or self.doingAbility )
 end
 
@@ -159,7 +164,7 @@ end
 
 function updateJumping(args)
 	local params = mcontroller.baseParameters()
-	params.airJumpProfile.jumpSpeed = params.airJumpProfile.jumpSpeed * self.jumpSpeedMultiplier
+	params.airJumpProfile.jumpSpeed = (params.airJumpProfile.jumpSpeed * self.jumpSpeedMultiplier) * self.jumpBonus
 	mcontroller.controlParameters(params)
 end
 

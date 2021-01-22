@@ -8,23 +8,11 @@
   "fullbright" : true,
   "damageKindImage" : "icon.png",
   "pointLight" : false,
-    "lightColor" : [229, 0, 0],
-  "power" : 5,
-  "damageKind" : "default",
+  "lightColor" : [0, 222, 222],
+  "power" : 1,
+  "damageKind" : "shadowbow",
   "scripts" : [ "homingarrow.lua" ],
   "baseHomingControlForce" : 5,
-  "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/paintexplosionpurple/paintexplosionpurple.config"
-    }
-  ],
-  "actionOnCollide" : [
-    {
-      "action" : "sound",
-      "options" : [
-        "/sfx/gun/impact_arrow.ogg"
-      ]
-    }
-  ]
+  "actionOnReap" : [{"action" : "config","file" : "/projectiles/explosions/paintexplosionpurple/paintexplosionpurple.config"}],
+  "actionOnCollide" : [{"action" : "sound","options" : ["/sfx/gun/impact_arrow.ogg"] }]
 }

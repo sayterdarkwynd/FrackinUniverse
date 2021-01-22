@@ -8,7 +8,7 @@ function init()
   self.recoilTimer = 0
 
   activeItem.setCursor("/cursors/reticle0.cursor")
-  
+
   setToolTipValues(config.getParameter("primaryAbility"))
 end
 
@@ -22,13 +22,13 @@ end
 
 function update(dt, fireMode, shiftHeld)
 	updateAim()
-	
+
 	--sb.logInfo("%s",{fireMode=fireMode,shiftHeld=shiftHeld})
 	storage.fireTimer = math.max(storage.fireTimer - dt, 0)
 	self.recoilTimer = math.max(self.recoilTimer - dt, 0)
-	
+
 	if fireMode=="none" or not fireMode then return end
-	
+
 	local abilString = fireMode.."Ability"
 	if shiftHeld then
 		abilString2 = abilString
@@ -39,7 +39,10 @@ function update(dt, fireMode, shiftHeld)
 
 	if ability and storage.fireTimer <= 0 and not world.pointTileCollision(firePosition()) and status.overConsumeResource("energy", ability.energyUsage) then
 		storage.fireTimer = ability.fireTime or 1
-		fire(ability)
+		fire(ability,fireMode,shiftHeld)
+		--[[if status.resourceLocked("energy") then
+
+		end]]
 	end
 
 	activeItem.setRecoil(self.recoilTimer > 0)
@@ -51,7 +54,7 @@ function doRecoil(ability,aimVec,count)
 	mcontroller.controlApproachVelocityAlongAngle(aimAngle, ability.recoil.speed*count, ability.recoil.force * ability.fireTime*count, true)
 end
 
-function fire(ability)
+function fire(ability,fireMode,shiftHeld)
 	--sb.logInfo("%s",ability)
 	local projectileCount = ability.projectileCount or 1
 	if type(projectileCount) == "table" then
@@ -67,6 +70,7 @@ function fire(ability)
 		power = damagePerShot(ability),
 		powerMultiplier = activeItem.ownerPowerMultiplier()
 	}
+
 	for i = 1, projectileCount do
 		local aimVec=aimVector(ability)
 		--sb.logInfo("aimVec: %s",aimVec)
@@ -80,7 +84,12 @@ function fire(ability)
 		)
 		doRecoil(ability,aimVec,projectileCount)
 	end
-  
+
+	if ability.selfEffects then
+		for _,effect in pairs(ability.selfEffects) do
+			status.addEphemeralEffect(effect,ability.fireTime)
+		end
+	end
 	animator.burstParticleEmitter("fireParticles")
 	animator.playSound("fire")
 	self.recoilTimer = ability.recoilTime or 0.12
@@ -99,7 +108,7 @@ end
 function aimVector(ability)
 	local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(ability.inaccuracy or 0, 0))
 	aimVector[1] = aimVector[1] * self.aimDirection
-	
+
 	return aimVector
 end
 

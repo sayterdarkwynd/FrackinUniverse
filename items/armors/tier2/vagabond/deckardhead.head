@@ -4,13 +4,13 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+4%^reset; Electric Resist
-^orange;Set Bonus:^reset;
-Pistol/Machine Pistol: ^green;+7.5%^reset; Dmg each",
+  "description" : "^orange;^orange;Set Bonuses^reset;: ^reset;
+^yellow;^reset; +^green;10^reset;% Speed
+^yellow;^reset; (Machine) Pistol: Damage x^green;1.075/1.15^reset;",
 
   "shortdescription" : "Vagabond's Visor",
-  "category" : "t2armor",
-  "tooltipKind" : "armor",
+  "category" : "headarmour",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
@@ -18,7 +18,7 @@ Pistol/Machine Pistol: ^green;+7.5%^reset; Dmg each",
 
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
-  "collectablesOnPickup" : { "fu_armorranged" : "deckardhead" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "deckardhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,6 +39,11 @@ Pistol/Machine Pistol: ^green;+7.5%^reset; Dmg each",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.026667
     }
   ],
 
@@ -47,10 +52,6 @@ Pistol/Machine Pistol: ^green;+7.5%^reset; Dmg each",
     {
       "stat" : "vagabondsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.04
     }
   ],
 
@@ -79,5 +80,7 @@ Pistol/Machine Pistol: ^green;+7.5%^reset; Dmg each",
     { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
     /* PINK */
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

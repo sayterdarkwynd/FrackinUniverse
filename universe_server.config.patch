@@ -1,4 +1,13 @@
 [	
+    [
+	  {
+	    "op": "add",
+	    "path": "/findStarterWorldParameters/requiredSystemWorlds/-",
+	    "value": {
+	      "terrestrialBiome": "moon"
+	    }
+	  }    
+    ],
 	[
 		{"op":"add","path":"/fu_byos",							//For race mod makers to allow them to add FU BYOS support in the race mod
 		"value": "true"
@@ -6,15 +15,20 @@
 		{ "op" : "add",
 			"path" : "/speciesShips/skath",
 			"value" : [
-			        "/ships/fu_byos/fu_byos.structure",  
+			    "/ships/fu_byos/fu_byos.structure",  
 				"/ships/skath/skatht1.structure",
 				"/ships/skath/skatht2.structure",
 				"/ships/skath/skatht3.structure",
-				"/ships/skath/skatht4.structure",
-				"/ships/skath/skatht5.structure",
-				"/ships/skath/skatht6.structure",
-				"/ships/skath/skatht7.structure",
-				"/ships/skath/skatht8.structure"
+		  		"/ships/skath/hylotlT4.structure", 
+		  		"/ships/skath/hylotlT5.structure", 
+		  		"/ships/skath/hylotlT6.structure", 
+		  		"/ships/skath/hylotlT7.structure", 
+		  		"/ships/skath/hylotlT8.structure"				
+				//"/ships/skath/skatht4.structure",
+				//"/ships/skath/skatht5.structure",
+				//"/ships/skath/skatht6.structure",
+				//"/ships/skath/skatht7.structure",
+				//"/ships/skath/skatht8.structure"
 			]
 		},		
 		{ "op" : "add",	
@@ -219,7 +233,20 @@
 			"/ships/juux/juuxtT7.structure",
 			"/ships/juux/juuxtT8.structure"
 		]
-	        },
+		},
+			{ "op" : "add","path" : "/speciesShips/spirittree",
+		"value" : [
+			"/ships/fu_byos/fu_byos.structure",  
+			"/ships/spirittree/spirittreeT1.structure",
+			"/ships/spirittree/spirittreeT2.structure",
+			"/ships/spirittree/spirittreeT3.structure",
+			"/ships/spirittree/spirittreeT4.structure",
+			"/ships/spirittree/spirittreeT5.structure",
+			"/ships/spirittree/spirittreeT6.structure",
+			"/ships/spirittree/spirittreeT7.structure",
+			"/ships/spirittree/spirittreeT8.structure"
+		]
+		},
 		
 	
 		{"op":"replace","path":"/speciesShips/apex/0",

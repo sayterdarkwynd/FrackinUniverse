@@ -4,20 +4,23 @@
   "price": 5,
   "category": "petfood",
   "inventoryIcon": "chow.png",
-  "description": "For the ship pet in your life. ^red;Do Not Consume.^reset;",
+  "description": "For the ship pet in your life. ^red;Do Not Consume.\n^red;-^white;5% ^red;HP^gray;, ^red;Poisoned ^gray;(^white;1m^gray;)^reset;",
   "shortdescription": "Quasi-Sentient Being Chow",
   "maxStack": 1000,
   "effects": [
-    [
-      {
-        "effect": "weakpoison",
-        "duration": 5
-      }
+    [   
+    {
+        "effect" : "negativehealth5",
+        "duration" : 60
+    },
+     {
+        "effect" : "cattlepoison",
+        "duration" : 60
+      }   
     ]
   ],
-  "blockingEffects": [
-    "weakpoison"
-  ],
   "foodValue" : 40,
-  "tooltipKind" : "food"
+  "builder": "/items/buildscripts/buildfood.lua",
+  "tooltipKind" : "food",
+  "blockingEffects": ["wellfed"]
 }

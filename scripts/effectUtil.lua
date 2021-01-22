@@ -8,6 +8,10 @@ function effectUtil.getSelf()
 	return entity and entity.id and entity.id() or activeItem and activeItem.ownerEntityId() or nil
 end
 
+function effectUtil.getSelfType()
+	return world.entityType(effectUtil.getSelf())
+end
+
 function effectUtil.effectOnSource(effect,duration,force)
 	local source=effect and effect.sourceEntity and effect.sourceEntity() or effectUtil.source or nil
 	if source then
@@ -24,40 +28,41 @@ function effectUtil.effectOnSource(effect,duration,force)
 end
 
 function effectUtil.messageParticle(position, text, color, size, offset, duration, layer)
-	world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false,  {
-        timeToLive = 0, damageType = "NoDamage", actionOnReap =
-        {
-            {
-                action = "particle",
-                specification = {
-                    text =  text or "default Text",
-                    color = color or {255, 255, 255, 255},  -- white
-                    destructionImage = "/particles/acidrain/1.png",
-                    destructionAction = "fade", --"shrink", "fade", "image" (require "destructionImage")
-                    destructionTime = duration or 0.8,
-                    layer = layer or "front",   -- 'front', 'middle', 'back' 
-                    position = offset or {0, 2},
-                    size = size or 0.7,  
-                    approach = {0,20},    -- dunno what it is
-                    initialVelocity = {0, 0.8},   -- vec2 type (x,y) describes initial velocity
-                    finalVelocity = {0,0.5},
-                    -- variance = {initialVelocity = {3,10}},  -- 'jitter' of included parameter
-                    angularVelocity = 0,                                   
-                    flippable = false,
-                    timeToLive = duration or 2,
-                    rotation = 0,
-                    type = "text"                 -- our best luck
-                }
-            } 
-        }
-    }
-    )
+	world.spawnProjectile("invisibleprojectile", position, 0, {0,0}, false, {
+		timeToLive = 0, damageType = "NoDamage", actionOnReap =
+			{
+				{
+					action = "particle",
+					specification = {
+						text =	text or "default Text",
+						color = color or {255, 255, 255, 255},	-- white
+						destructionImage = "/particles/acidrain/1.png",
+						destructionAction = "fade", --"shrink", "fade", "image" (require "destructionImage")
+						destructionTime = duration or 0.8,
+						layer = layer or "front",	 -- 'front', 'middle', 'back'
+						position = offset or {0, 2},
+						size = size or 0.7,
+						approach = {0,20},		-- dunno what it is
+						initialVelocity = {0, 0.8},	 -- vec2 type (x,y) describes initial velocity
+						finalVelocity = {0,0.5},
+						-- variance = {initialVelocity = {3,10}},	-- 'jitter' of included parameter
+						angularVelocity = 0,
+						flippable = false,
+						timeToLive = duration or 2,
+						rotation = 0,
+						type = "text"	-- our best luck
+					}
+				}
+			}
+		}
+	)
 end
 
 function effectUtil.say(sentence)
-	if world.entityType(effectUtil.getSelf()) =="npc" then
+	local selfType=effectUtil.getSelfType()
+	if selfType =="npc" then
 		world.callScriptedEntity(effectUtil.getSelf(),"npc.say",sentence)
-	elseif  world.entityType(effectUtil.getSelf())=="monster" then
+	elseif selfType=="monster" then
 		world.callScriptedEntity(effectUtil.getSelf(),"monster.say",sentence)
 	else
 		effectUtil.messageParticle(effectUtil.getPos(),sentence)
@@ -68,27 +73,76 @@ function effectUtil.entityTypeName()
 	return npc and npc.npcType() or monster and monster.type or entity and entity.entityType()
 end
 
-
-
-
 function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 	if type(effect)~="string" then
 		return 0
 	end
 	local pos=effectUtil.getPos()
-	local buffer=world.entityQuery(pos,range,{includedTypes=types})
+	local rVal=0
+	if effectUtil.getSelfType()=="player" then
+		local data={}
+		data.messageFunctionArgs={effect,range,types,duration,teamType}
+		data.messenger=effectUtil.getSelf()
+		 world.spawnStagehand(pos,"effectUtilStarryPyHelper",{messageData=data})
+	else
+		local buffer=world.entityQuery(pos,range,{includedTypes=types or {"creature"}})
+		teamType=teamType or "all"
+
+		for _,id in pairs(buffer) do
+			if teamType == "all" then
+				if effectUtil.effectTarget(id,effect,duration) then
+					rVal=rVal+1
+				end
+			else
+				local validTypes=entity and entity.entityType and {monster=true,npc=true,player=true,currentType=entity.entityType()}
+				local valid=validTypes and validTypes[validTypes["currentType"]] and (entity.isValidTarget and entity.isValidTarget(id))
+				--sb.logInfo("%s:%s",valid,validTypes)
+				local teamData={}
+				if valid==false then
+					teamData.type="friendly"
+				elseif valid == true then
+					teamData.type="enemy"
+				else
+					teamData=world.entityDamageTeam(id)
+				end
+
+				if teamData.type==teamType then
+					if effectUtil.effectTarget(id,effect,duration) then
+						rVal=rVal+1
+					end
+				end
+			end
+		end
+	end
+	return rVal
+end
+
+function effectUtil.messageTypesInRange(effect,range,types,teamType,args)
+	if type(effect)~="string" then
+		return 0
+	end
+	local pos=effectUtil.getPos()
+	local buffer=world.entityQuery(pos,range,{includedTypes=types or {"creature"}})
 	local rVal=0
 	teamType=teamType or "all"
 
 	for _,id in pairs(buffer) do
 		if teamType == "all" then
-			if effectUtil.effectTarget(id,effect,duration) then
+			if args then
+				if world.sendEntityMessage(id,effect,args:unpack()) then
+					rVal=rVal+1
+				end
+			elseif world.sendEntityMessage(id,effect) then
 				rVal=rVal+1
 			end
 		else
 			local teamData=world.entityDamageTeam(id)
 			if teamData.type==teamType then
-				if effectUtil.effectTarget(id,effect,duration) then
+				if args then
+					if world.sendEntityMessage(id,effect,args:unpack()) then
+						rVal=rVal+1
+					end
+				elseif world.sendEntityMessage(id,effect) then
 					rVal=rVal+1
 				end
 			end
@@ -97,8 +151,34 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 	return rVal
 end
 
+function effectUtil.messageMechsInRange(effect,range,args)
+	if type(effect)~="string" then
+		return 0
+	end
+	local pos=effectUtil.getPos()
+	local buffer=world.entityQuery(pos,range,{includedTypes={"Vehicle"}})
+	local rVal=0
+
+	for _,id in pairs(buffer) do
+		if world.entityName(id) == "modularmech" then
+			if args then
+				if world.sendEntityMessage(id,effect,args:unpack()) then
+					rVal=rVal+1
+				end
+			elseif world.sendEntityMessage(id,effect) then
+				rVal=rVal+1
+			end
+		end
+	end
+	return rVal
+end
+
 function effectUtil.effectAllInRange(effect,range,duration)
 	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration)
+end
+
+function effectUtil.effectAllOfTeamInRange(effect,range,duration,team)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,team)
 end
 
 function effectUtil.effectAllEnemiesInRange(effect,range,duration)
@@ -123,11 +203,21 @@ end
 
 function effectUtil.effectTarget(id,effect,duration)
 	if world.entityExists(id) then
-		world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
-		return true
+		if not effect or effect=="" then
+			return false
+		else
+			world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
+			return true
+		end
 	else
 		return false
 	end
+end
+
+function effectUtil.projectileSelf(projtype,params)
+--sb.logInfo("%s",{pt=projtype, ep=entity.position(), ei=entity.id(), p=params})
+--EntityId world.spawnProjectile(String projectileName, Vec2F position, [EntityId sourceEntityId], [Vec2F direction], [bool trackSourceEntity], [Json parameters])
+	world.spawnProjectile(projtype, entity.position(), entity.id(),nil,nil, params)
 end
 
 function effectUtil.projectileTypesInRange(projtype,tilerange,types)

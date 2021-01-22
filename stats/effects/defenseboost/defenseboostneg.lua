@@ -18,9 +18,11 @@ function init()
 end
 
 function makeAlert()
+	if entity.entityType()=="player" then
 	  local statusTextRegion = { 0, 1, 0, 1 }
 	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	  animator.burstParticleEmitter("statustext")  
+	  animator.burstParticleEmitter("statustext")
+    end
 end
 
 
@@ -29,5 +31,5 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end

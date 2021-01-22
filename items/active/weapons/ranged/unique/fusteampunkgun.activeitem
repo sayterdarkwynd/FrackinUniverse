@@ -8,7 +8,7 @@
 ^yellow;Fast projectiles^reset;",
     "shortdescription" : "Shock Rifle",
   "category" : "sniperRifle",
-  "level" : 4,
+  "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Electric",
   "itemTags" : ["weapon","ranged","sniperrifle", "energy", "electric", "upgradeableWeapon"],
@@ -46,7 +46,7 @@
 
     "projectileType" : "pulsecannon",
     "projectileParameters" : { 
-      "damageSourceKind" : "electric",
+      "damageKind" : "electric",
       "speed" : 60,
       "knockback" : 4
     },
@@ -92,7 +92,15 @@
 
   "critChance" : 6,
   "critBonus" : 3,
-
+  "isSniper" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 5,
+  "reloadTime" : 1.4,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 600, 
+  
   "altAbilityType" : "steampunkburstshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

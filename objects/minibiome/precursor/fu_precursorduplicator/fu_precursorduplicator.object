@@ -2,7 +2,7 @@
 	"objectName": "fu_precursorduplicator",
 	"colonyTags": ["precursor", "ancient"],
 	"rarity": "Legendary",
-	"description": "Place fuel in the FUEL slot to duplicate materials in the ITEM slot.\n^cyan;Requires ^orange;200W ^cyan;power.^reset;\n^blue;Upper Input^reset;: Power Switch.",
+	"description": "Consumes fuel to duplicate certain items.\n^cyan;Requires ^orange;200J^cyan; per duplication.^reset;\n^blue;Upper Input^reset;: Power Switch.",
 	"shortdescription": "Duplicator",
 	"race": "precursor",
 	"printable": false,
@@ -48,63 +48,48 @@
 		}
 	],
 
-	"scripts": ["/scripts/power.lua", "/objects/minibiome/precursor/fu_precursorduplicator/fu_precursorduplicator.lua"],
+	"scripts": ["/scripts/fupower.lua", "/objects/minibiome/precursor/fu_precursorduplicator/fu_precursorduplicator.lua"],
 	"scriptDelta": 10,
 
 	"inputNodes": [
 		[-1, 1],
 		[-1, 0]
 	],
+	"outputNodes": [
+		[-1,2]
+	],
 
 	"duplicator": {
-		"fuel": {
-			"elderrelic1": 10,
-			"exoticmatter": 10,
-			"honedlunari": 6,
-			"precursorfluid": 4,
-			"energiwood": 5,
-
-			"lunaricrystal": 5,
-			"triangliumpyramid": 4,
-			"prisilitestar": 4,
-
-			"tritium": 6,
-			"ultronium": 5,
-			"solariumstar": 3,
-			"thoriumrod": 2,
-			"enricheduranium": 2,
-			"uraniumrod": 1,
-			"enrichedplutonium": 2,
-			"plutoniumrod": 1,
-			"neptuniumrod": 1,
-
-			"pureerchius": 8,
-			"supermatter": 4,
-			"liquidfuel": 1,
-
-			"biofuelcannistermax": 3,
-			"biofuelcannisteradv": 2,
-			"biofuelcannister": 1
-		},
-
 		"inputs": [
 			"biofuelcannister",
 			"biofuelcannisteradv",
 			"biofuelcannistermax",
-			"corruptionseed",
+			
 			"ff_fertilizer",
 			"ff_fertilizer2",
 			"ff_fertilizer3",
-			"glass",
-			"blobbushjelly",
 			"fu_mulch",
-			"morphiteore",
+			
+			"blobbushjelly",
 			"unstableparticles",
+			"glass",
+			
 			"plutoniumrod",
 			"uraniumrod",
 			"neptuniumrod",
 			"thoriumrod",
+			
+			"fuamberchunk",
+			"corruptionseed",
+			"morphiteore",
+			"penumbriteshard",
+			"solaricrystal",
+			
+			"refinedaegisalt",
+			"refinedviolium",
+			"refinedferozium",
 			"solariumstar",
+			"triangliumpyramid",
 			"copperbar",
 			"silverbar",
 			"ironbar",
@@ -112,24 +97,18 @@
 			"durasteelbar",
 			"goldbar",
 			"tungstenbar",
+			"prisilitestar",
+			
 			"densiniumbar",
 			"quietusbar",
 			"effigiumbar",
-			"fuamberchunk",
 			"irradiumbar",
 			"isogenbar",
 			"moonstonebar",
-			"penumbriteshard",
-			"prisilitestar",
 			"protocitebar",
 			"pyreitebar",
-			"solaricrystal",
-			"triangliumpyramid",
 			"xithricitecrystal",
-			"zerchesiumbar",
-			"refinedaegisalt",
-			"refinedviolium",
-			"refinedferozium"
+			"zerchesiumbar"
 		]
 	},
 

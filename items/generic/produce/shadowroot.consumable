@@ -1,11 +1,18 @@
 {
-  "itemName" : "shadowroot",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "shadowroot.png",
-  "description" : "Effect:
-^cyan;+10% Crit Chance^reset;",
-  "category" : "food",
-  "shortdescription" : "Shadowroot Spike",
-  "effects" : [ [ "critbonus1" ] ]
+	"itemName": "shadowroot",
+	"inventoryIcon": "shadowroot.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+10% Crit Chance^reset;: 1m",
+	"shortdescription": "Shadowroot Spike",
+
+	"effects": [
+		[{
+			"effect": "critchance1",
+			"duration": 60
+		}]
+	]
 }

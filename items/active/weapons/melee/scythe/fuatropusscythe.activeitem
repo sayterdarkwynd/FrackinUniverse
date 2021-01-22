@@ -10,10 +10,10 @@
   "tooltipKind" : "sword2",
   "category" : "scythe",
   "twoHanded" : true,
-  "itemTags" : [ "weapon", "melee","atropus", "axe", "scythe", "upgradeableWeapon"],
+  "itemTags" : [ "weapon", "melee","atropus", "scythe", "upgradeableWeapon","atropus","bioweapon"],
 
   "inventoryIcon" : "atropusscythe.png",
-  "collectablesOnPickup" : { "fu_weaponscythe" : "fuatropusscythe" },
+  //"collectablesOnPickup" : { "fu_weaponscythe" : "fuatropusscythe" },
   "animation" : "/items/active/weapons/melee/scythe/largeedgedb.animation",
   "animationParts" : {
     "handle" : "",
@@ -23,14 +23,15 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbilityType" : "largeedgedcombo",
   "primaryAbility" : {
     "fireTime" : 0.76,
     "baseDps" : 11.5,
     "damageConfig" : {
-      "damageSourceKind" : "poison"
+      "statusEffects" : [ "weakpoison" ],
+      "damageSourceKind": "bioweaponbroadsword"
     },
     "stances" : {
       "idle" : {

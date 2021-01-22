@@ -1,0 +1,88 @@
+{
+	"stats": [
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 0.8
+		},
+		{
+			"stat": "grit",
+			"amount": 0.5
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": 0.1
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.4
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.5
+		}
+	],
+	"diet" : "omnivore",
+	"controlModifiers": {
+		"speedModifier": 1.07,
+		"airJumpModifier": 1.06
+	},
+	"envEffects": [{
+		"biomes": [
+			"jungle",
+			"thickjungle",
+			"savannah",
+			"arboreal",
+			"arborealdark"
+		],
+		"stats": [{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.15
+		}],
+		"controlModifiers": {
+			"speedModifier": 1.15,
+			"airJumpModifier": 1.15
+		}
+	}],
+	"weaponEffects": [{
+			"weapons": ["bow"],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.15
+			}]
+		},
+		{
+			"weapons": ["spear"],
+			"stats": [{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 1.25
+				},
+				{
+					"stat": "protection",
+					"effectiveMultiplier": 1.15
+				}
+			]
+		},
+		{
+			"weapons": [ "mace" ],
+			"stats": [
+				{
+					"stat": "stunChance",
+					"amount": 25.0
+				}
+			]
+		},
+		{
+			"weapons": [ "dagger"],
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.15
+				},
+				{
+					"stat": "critChance",
+					"amount": 1
+				}
+			]
+		}
+	],
+	"tech" : [ "huntersclaw" ]
+}

@@ -92,7 +92,7 @@ function TentacleGun:addProjectile(projectileId)
   local min = newChain.arcRadiusRatio[1]
   local max = newChain.arcRadiusRatio[2]
   newChain.arcRadiusRatio = (math.random() * (max - min) + min) * (math.random(2) * 2 - 3)
-  
+
   table.insert(self.chains, newChain)
 end
 

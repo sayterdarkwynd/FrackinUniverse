@@ -6,11 +6,13 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+100s^reset; Oxygen, ^cyan;+15%^reset; Energy Regen^reset;
-Grenade Launcher: ^#a94db3;+25%^reset; Dmg
-\n^cyan;Immune^reset;: Acid, Gas",
+^yellow;^reset; +^green;100^reset;s Oxygen, +^green;15^reset;% Energy Regen
+^yellow;^reset; +^green;450^reset;% Sphere Bomb Dmg
+^yellow;^reset; +^green;35^reset;% Dash Tech Speed
+^yellow;^reset; +^green;15^reset;% Jump Tech Height
+^yellow;^reset; ^cyan;Immune^reset;: Acid, Gas",
   "shortdescription" : "Junker Greaves",
-  "category" : "t3armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
@@ -26,7 +28,7 @@ Grenade Launcher: ^#a94db3;+25%^reset; Dmg
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.2
+      "amount" : 0.22
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -37,6 +39,14 @@ Grenade Launcher: ^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.03
+    },{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -70,5 +80,7 @@ Grenade Launcher: ^#a94db3;+25%^reset; Dmg
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

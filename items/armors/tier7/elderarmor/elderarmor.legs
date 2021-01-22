@@ -6,13 +6,12 @@
   "maxStack" : 1,
   "rarity" : "legendary",
    "description" : "^orange;Set Bonuses^reset;:
-Summons minions 
-Darkness Regen   
-^#a94db3;40%^reset; Shadow Resist
-Elder Weapons: ^#a94db3;+25^reset; Damage
-\n^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid", 
+^yellow;^reset; ^cyan;Dark Commander^reset;: 30%
+^yellow;^reset; ^cyan;Darkness Regen^reset;
+^yellow;^reset; Elder Weapons: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Shadow, Insanity, Pus, Acid, Liq. Nitrogen", 
   "shortdescription" : "Elder Greaves",
-  "category" : "t7armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
@@ -20,7 +19,7 @@ Elder Weapons: ^#a94db3;+25^reset; Damage
   "effectSources" : [ "shadowsmoke2" ],
 
   "level" : 7,
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "elderarmorpants" },
+  //"collectablesOnPickup" : { "fu_armorpowerranged" : "elderarmorpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -41,18 +40,20 @@ Elder Weapons: ^#a94db3;+25^reset; Damage
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.0175
+    },
+    {
+      "levelFunction" : "fuArmorSetTierMultiplier",
+      "stat" : "fu_elderset_legs",
+      "amount" : 1
     }
   ],
   "statusEffects" : [
-    "eldersetbonus",
-    {
-      "stat" : "fu_elderset_legs",
-      "amount" : 1
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.07
-    }
+    "eldersetbonus"
   ],
 
   "questTags" : [ "elderarmor" ],
@@ -94,5 +95,7 @@ Elder Weapons: ^#a94db3;+25^reset; Damage
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

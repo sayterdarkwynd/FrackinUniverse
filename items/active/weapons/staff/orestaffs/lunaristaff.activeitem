@@ -1,14 +1,14 @@
 {
   "itemName" : "lunaristaff",
-  "level" : 3,
+  "level" : 2,
   "price" : 1440,
   "maxStack" : 1,
-  "rarity" : "Uncommon",
+  "rarity" : "common",
   "description" : "Powered by the crystal moon.",
   "shortdescription" : "Lunari Staff",
   "category" : "staff",
   "twoHanded" : true,
-  "itemTags" : ["weapon","staff","upgradeableWeapon"],
+  "itemTags" : ["weapon","staff","upgradeableWeapon","lunari"],
   "tooltipKind" : "staff",
 
   "animation" : "/items/active/weapons/staff/staff.animation",
@@ -78,18 +78,20 @@
   "elementalType" : "ice",
 
   "primaryAbility" : {
-    "type" : "elementbouncer",
-    "name" : "Ice Bouncer",
+    "type" : "elementswarm",
+    "name" : "Ice Swarm",
     "scripts" : ["/items/active/weapons/staff/abilities/controlprojectile/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 75,
+    "energyCost" : 25,
 
-    "maxCastRange" : 25,
+    "maxCastRange" : 35,
 
     "projectileType" : "icebouncer",
+    "projectileCount" : 3,
+    "projectileDistance" : 4.5,
     "projectileParameters" : {
-      "baseDamage" : 6
+      "baseDamage" : 12
     }
   },
   "altAbilityType" : "slowzone",

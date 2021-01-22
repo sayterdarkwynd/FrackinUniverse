@@ -7,10 +7,10 @@
   "description" : "Launch dangerous (but fun) shards of crystal at enemies.
 ^cyan;Counts as Hunting weapon^reset;",
   "shortdescription" : "^cyan;Crystalline Needler^reset;",
-  "level" : 3,
+  "level" : 2,
   "category" : "machinePistol",
-  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
-  "tooltipKind" : "gun",
+  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "crystal"],
+  "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
@@ -42,7 +42,7 @@
     "projectileCount" : 1,
     "projectileType" : "razorneedlerthorns",
     "projectileParameters" : {
-      "damageSourceKind" : "bow",
+      "damageKind" : "bow",
       "speed" : 70
     },
     "stances" : {
@@ -76,5 +76,10 @@
   },
   "critChance" : 2,
   "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "isMachinePistol" : 1,
+  "reloadTime": 1,
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

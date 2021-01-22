@@ -1,0 +1,83 @@
+{
+	"stats": [
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 0.7
+		},
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.4
+		},
+		{
+			"stat": "physicalResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.5
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": 0.12
+		},
+		{
+			"stat": "erchiusImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "poisonStatusImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "omnivore",
+	"envEffects": [{
+		"biomes": "moon",
+		"stats": [{
+				"stat": "maxHealth",
+				"effectiveMultiplier": 1.15
+			},
+			{
+				"stat": "protection",
+				"effectiveMultiplier": 1.1
+			}
+		],
+		"controlModifiers": {
+			"speedModifier": 1.15,
+			"airJumpModifier": 1.15
+		}
+	}],
+	"weaponScripts": [{
+		"script": "/scripts/fr_weaponscripts/freebonus.lua",
+		"contexts": [
+			"staff-init"
+		],
+		"args": {
+			"stats": [{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.3
+				},
+				{
+					"stat": "physicalResistance",
+					"amount": 0.1
+				}
+			]
+		}
+	}],
+	"special": [
+		"undergroundBonus"
+	],
+	"undergroundBonus": {
+		"stats": [{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.15
+		}],
+		"controlModifiers": {
+			"speedModifier": 1.1,
+			"airJumpModifier": 1.1
+		}
+	}
+}

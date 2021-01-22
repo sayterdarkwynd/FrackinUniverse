@@ -126,7 +126,7 @@ function update(dt)
     mcontroller.setVelocity({0, 0})
   else
     local driverThisFrame = vehicle.entityLoungingIn("drivingSeat")
-    
+
     if (driverThisFrame ~= nil) then
       vehicle.setDamageTeam(world.entityDamageTeam(driverThisFrame))
       --animator.setLightActive("dashboardGlow", true)
@@ -153,8 +153,7 @@ end
 function updatePassengers(healthFactor)
   if healthFactor > 0 then
     local maxDamageState = #self.damageStatePassengerDances
-    local damageStateIndex = maxDamageState
-    damageStateIndex = (maxDamageState - math.ceil(healthFactor * maxDamageState)) + 1
+    local damageStateIndex = (maxDamageState - math.ceil(healthFactor * maxDamageState)) + 1
 
     local dance = self.damageStatePassengerDances[damageStateIndex]
     if (dance ~= "") then
@@ -166,12 +165,10 @@ function updatePassengers(healthFactor)
       self.damageEmoteTimer = self.damageEmoteTimer - script.updateDt()
     else
       maxDamageState = #self.damageStatePassengerEmotes
-      damageStateIndex = maxDamageState
       damageStateIndex = (maxDamageState - math.ceil(healthFactor * maxDamageState)) + 1
       vehicle.setLoungeEmote("passengerSeat", self.damageStatePassengerEmotes[damageStateIndex])
 
       maxDamageState = #self.damageStateDriverEmotes
-      damageStateIndex = maxDamageState
       damageStateIndex = (maxDamageState - math.ceil(healthFactor * maxDamageState)) + 1
       vehicle.setLoungeEmote("drivingSeat", self.damageStateDriverEmotes[damageStateIndex])
     end
@@ -254,7 +251,7 @@ function updateDriveEffects(healthFactor, driverThisFrame)
 
     --animator.setAnimationState("rearThruster", "on")
     --animator.setAnimationState("bottomThruster", "on")
-    
+
 
   else
     --animator.setParticleEmitterActive("rearThrusterIdle", false)
@@ -264,7 +261,7 @@ function updateDriveEffects(healthFactor, driverThisFrame)
 
     --animator.setAnimationState("rearThruster", "off")
     --animator.setAnimationState("bottomThruster", "off")
-    
+
   end
 
   --if burning, takew dammage intermittantly.

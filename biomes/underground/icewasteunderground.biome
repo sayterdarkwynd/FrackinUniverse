@@ -25,7 +25,7 @@
       }
     ],
     "monsterParameters" : {
-	  "colors" : "ice",
+      "colors" : "ice",
       "statusSettings" : {
         "stats" : {
           "iceslipImmunity" : {
@@ -277,6 +277,20 @@
           "type" : "treasureBox",
           "treasureBoxSets" : [ "weaponChest" ]
         },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },        
         {
           "mode" : "floor",
           "priority" : 1.0,

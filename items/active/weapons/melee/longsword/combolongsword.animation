@@ -79,15 +79,15 @@
             "fire2" : {
               "properties" : {
                 "image" : "/items/active/weapons/melee/broadsword/swoosh2/<elementalType>swoosh.png:<frame>",
-                "offset" : [5.0, 1.0],
-                "damageArea" : [[-4, 1], [2.5, 1], [2.5, -2], [-4, -2]]
+                "offset" : [5.0, 0.5],
+                "damageArea" : [[-4, 1], [2, 1], [2, -1], [-4, -1]]
               }
             },
             "fire3" : {
               "properties" : {
                 "image" : "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
                 "offset" : [3.5, 0],
-                "damageArea" : [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+                "damageArea" : [[-4.75, 1], [2, 1], [2, -1], [-4.75, -1]]
               }
             }
           }
@@ -167,8 +167,8 @@
     "radioactiveswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
-      "emissionRate" : 50,
-      "burstCount" : 3,
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
       "particles" : [
         { "particle" : "radioactiveswoosh1"},
         { "particle" : "radioactiveswoosh2"},
@@ -178,6 +178,17 @@
     "cosmicswoosh" : {
       "active" : false,
       "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    },
+    "silverweaponswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
       "emissionRate" : 50,
       "burstCount" : 3,
       "particles" : [
@@ -185,13 +196,53 @@
         { "particle" : "cosmicswoosh2"},
         { "particle" : "cosmicswoosh3"}
       ]
+    },
+    "hellfireswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "burstCount" : 3,
+      "particles" : [
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "fireswoosh3"}
+      ]
+    },
+    "aetherswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 40,
+      "offsetRegion" : [-2.25, -0.25, 0.0, 2.5],
+      "particles" : [
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"},
+        { "particle" : "cosmicswoosh1"},
+        { "particle" : "cosmicswoosh2"},
+        { "particle" : "cosmicswoosh3"}
+      ]
+    },    
+    "bioweaponswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "burstCount" : 3,
+      "particles" : [
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "poisonswoosh1"},
+        { "particle" : "poisonswoosh2"},
+        { "particle" : "fireswoosh2"}
+      ]
     }
   },
 
   "sounds" : {
-    "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-    "fire2" : [ "/sfx/melee/swing_broadsword.ogg" ],
-    "fire3" : [ "/sfx/melee/swing_broadsword.ogg" ],
-    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ]
+    "fire" : [ ],
+    "fire2" : [ ],
+    "fire3" : [ ],
+    "crit" : [ "/sfx/melee/axe_kill_organic2.ogg" ],
+    "nightar" : [ "/sfx/weapons/energypew.ogg" ]
   }
 }

@@ -1,0 +1,47 @@
+{
+  "projectileName" : "fufireworkgunyellow2",
+  "bounces" : -1,
+  "timeToLive" : 0.8,
+  "speed" : 80,
+  "physics" : "fireworkfall",
+  "image" : "fireworkgunyellow2.png",
+  "lightColor" : [243, 227, 49],
+  "frameNumber" : 1,
+  "damageKind" : "freedom",
+  "hydrophobic" : true,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/fireworkgun_blast2.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkgunyellow3",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkgunyellow3",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkgunyellow3",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkgunyellow3",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 270
+    }
+  ],
+  "emitters" : [ "defaultwhite" ]
+}

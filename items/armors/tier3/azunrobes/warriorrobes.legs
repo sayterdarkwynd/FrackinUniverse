@@ -5,18 +5,17 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;:
-^green;+12%^reset; Shadow, Cosmic.
-Reduced Hunger
-^green;+8%^reset; Spd, Jump. ^green;+0.5%^reset; Crit Chance
-^cyan;Immune ^reset;: Shadow Taint, Insanity",
+^yellow;^reset; -^green;20^reset;% Hunger Drain Rate
+^yellow;^reset; +^green;8^reset;% Speed, Jump. +^green;0.5^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint, Insanity",
 "shortdescription" : "Azun Pants",
-  "tooltipKind" : "armor",
-  "category" : "t3armor",
+  "tooltipKind" : "armornew2",
+  "category" : "legarmour",
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armormelee" : "warriorrobespants" },
+  //"collectablesOnPickup" : { "fu_armormelee" : "warriorrobespants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -37,6 +36,16 @@ Reduced Hunger
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -45,14 +54,6 @@ Reduced Hunger
     {
       "stat" : "warriorrobessetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.04
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.04
     }
   ],
 
@@ -81,5 +82,7 @@ Reduced Hunger
     { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
     /* PINK */
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

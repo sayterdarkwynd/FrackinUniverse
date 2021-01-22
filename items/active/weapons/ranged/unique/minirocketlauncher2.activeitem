@@ -11,7 +11,7 @@
   "category" : "rocketLauncher", 
   "tooltipKind" : "gun2",
   "weaponType" : "Rifle",
-  "itemTags" : ["weapon","ranged","rocketlauncher", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","rocketlauncher", "upgradeableWeapon","explosive"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -92,7 +92,13 @@
 
   "critChance" : 2,
   "critBonus" : 3,
-  
+  "isAmmoBased" : 1,
+  "magazineSize" : 22,
+  "reloadTime" : 1.5, 
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,   
   "altAbilityType" : "atomguidedrocket",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

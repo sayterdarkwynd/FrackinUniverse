@@ -28,14 +28,14 @@ end
 function fuAetherWeather.applyHealthDrain(self, modifier, dt)
 
   -- Only apply health drain if max energy is below threshold.
-  if (status.stat("maxEnergy", 0) < self.energyDrainThreshold) then
+  if (status.stat("maxEnergy") < self.energyDrainThreshold) then
     self.parent.applyHealthDrain(self, modifier, dt)
   end
 end
 
 function fuAetherWeather.applyEnergyDrain(self, modifier, dt)
   -- Only apply energy drain if max energy is below threshold.
-  if (status.stat("maxEnergy", 0) < self.energyDrainThreshold) then
+  if (status.stat("maxEnergy") < self.energyDrainThreshold) then
     self.parent.applyEnergyDrain(self, modifier, dt)
   end
 end
@@ -51,9 +51,11 @@ function fuAetherWeather.deactivateVisualEffects(self)
 end
 
 function fuAetherWeather.createAlert(self)
-	local statusTextRegion = {0, 1, 0, 1}
-	animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	animator.burstParticleEmitter("statustext")
+	if entity.entityType()=="player" then
+		local statusTextRegion = {0, 1, 0, 1}
+		animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+		animator.burstParticleEmitter("statustext")
+	end
 end
 
 --============================== INIT AND UNINIT =============================--

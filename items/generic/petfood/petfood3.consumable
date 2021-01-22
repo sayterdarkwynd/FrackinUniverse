@@ -4,20 +4,23 @@
   "price": 5,
   "category": "petfood",
   "inventoryIcon": "trollfood.png",
-  "description": "^red;Do Not Consume.^reset; Side effects include obsessive behavior and bad body odor.",
+  "description": "^red;Do Not Consume.^reset; Side effects include obsessive behavior and bad body odor.\n^red;-^white;5% ^red;HP^gray;, ^red;Poisoned ^gray (^white;1m^gray;)^reset;",
   "shortdescription": "Mr. Chow's Troll Food",
   "maxStack": 1000,
   "effects": [
-    [
+    [    
       {
-        "effect": "weakpoison",
-        "duration": 5
-      }
+        "effect" : "negativehealth5",
+        "duration" : 60
+      },
+      {
+        "effect" : "cattlepoison",
+        "duration" : 60
+      }   
     ]
   ],
-  "blockingEffects": [
-    "weakpoison"
-  ],
   "foodValue" : 40,
-  "tooltipKind" : "food"
+  "builder": "/items/buildscripts/buildfood.lua",
+  "tooltipKind" : "food",
+  "blockingEffects": ["wellfed"]
 }

@@ -6,23 +6,22 @@
   "maxStack" : 1,
   "rarity" : "Rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;40%^reset; Radiation Resist
-Plasma: ^cyan;+15%^reset; Dmg
-^cyan;Immune^reset;: Radiation, Heat, Cold, Pressure, Breath", 
+^yellow;^reset; Plasma Weapons: Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Deadly Rads/Heat/Cold, Pressure, Oxygen", 
   "shortdescription" : "Sunwalker Robes",
-  "category" : "t6armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "level" : 6,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "fusunwalkerpants" },
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fusunwalkerpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.1
+      "baseMultiplier" : 1.05
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
@@ -38,6 +37,11 @@ Plasma: ^cyan;+15%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.028572
     }
   ],
 
@@ -46,10 +50,6 @@ Plasma: ^cyan;+15%^reset; Dmg
     {
       "stat" : "fu_sunwalkerset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.10
     }
   ],
 
@@ -89,5 +89,7 @@ Plasma: ^cyan;+15%^reset; Dmg
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

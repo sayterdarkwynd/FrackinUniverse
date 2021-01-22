@@ -4,13 +4,12 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Fire Resist
-\n^orange;Set Bonuses^reset;:
-^cyan;+17%^reset; Shield Health and Regen
-Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; Crit Dmg, ^cyan;+15%^reset; Knockback Resist",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;17^reset;% Shield Health and Regen
+^yellow;^reset; Sword/Mace and Shield: +^green;2^reset;% Crit Chance, +^green;15^reset;% Crit Damage, +^green;15^reset;% Knockback Resist",
 
   "shortdescription" : "Footman Plate",
-  "category" : "t2armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -26,7 +25,7 @@ Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; C
   },
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
-  "collectablesOnPickup" : { "fu_armormelee" : "fumantiziroyalguardornatechest" },
+  //"collectablesOnPickup" : { "fu_armormelee" : "fumantiziroyalguardornatechest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,6 +46,11 @@ Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; C
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -55,10 +59,6 @@ Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; C
     {
       "stat" : "footmansetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
     }
   ],
 
@@ -87,5 +87,7 @@ Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; C
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

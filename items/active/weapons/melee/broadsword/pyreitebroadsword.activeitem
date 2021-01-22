@@ -1,6 +1,6 @@
 {
   "itemName" : "pyreitebroadsword",
-  "price" : 15000,
+  "price" : 1200,
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "legendary",
@@ -12,7 +12,7 @@
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","broadsword","pyreite", "upgradeableWeapon"],
   "inventoryIcon" : "pyreitebroadsword.png",
-  "collectablesOnPickup" : { "fu_weaponbroadsword" : "pyreitebroadsword" },
+  //"collectablesOnPickup" : { "fu_weaponbroadsword" : "pyreitebroadsword" },
   "animation" : "/items/active/weapons/melee/broadsword/combobroadswordglow.animation",
   "animationParts" : {
     "handle" : "",
@@ -23,15 +23,15 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "fire",
-
+  "elementalType" : "hellfire",
+  "damageKindImage" : "/interface/statuses/hellfire.png",
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.9,
     "baseDps" : 11,
     "damageConfig" : {
       "knockback" : 10,
-       "damageSourceKind" : "fire",
+       "damageSourceKind" : "hellfire",
        "statusEffects" : [ "burningnapalm" ]
     },
     "stances" : {

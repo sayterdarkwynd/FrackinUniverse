@@ -1,6 +1,6 @@
 {
   "itemName" : "pyreitehammer",
-  "price" : 12000,
+  "price" : 2000,
   "maxStack" : 1,
   "level" : 6,
   "rarity" : "legendary",
@@ -12,7 +12,7 @@
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","hammer","pyreite", "upgradeableWeapon"],
   "inventoryIcon" : "pyreitehammer.png",
-  "collectablesOnPickup" : { "fu_weaponhammer" : "pyreitehammer" },
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "pyreitehammer" },
   "animation" : "hammerglow.animation",
   "animationParts" : {
     "handle" : "",
@@ -30,14 +30,14 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "fire",
-
+  "elementalType" : "hellfire",
+  "damageKindImage" : "/interface/statuses/hellfire.png",
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
     "fireTime" : 0.85,
     "baseDps" : 12.5,
     "damageConfig" : {
-      "damageSourceKind" : "fire",
+      "damageSourceKind" : "hellfire",
       "statusEffects" : [ "burningnapalm" ]
     }
   },

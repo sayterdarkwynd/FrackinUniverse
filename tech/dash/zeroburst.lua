@@ -30,12 +30,12 @@ function init()
         startDash(dashKey == "up" and 0 or 0)
       end
     end)
-    
+
   self.superJumpTimer = 0
   self.damageProjectileType = "burstjumpboom"
   self.damageMultiplier = 1.0
   self.cooldown = 5
-  
+
 end
 
 function uninit()
@@ -44,7 +44,15 @@ function uninit()
 end
 
 
+function applyTechBonus()
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashYVel = config.getParameter("dashYVel") * self.dashBonus
+  self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
+end
+
 function update(args)
+  applyTechBonus()
 local superJumpTime = 0.01
 
   if self.dashCooldownTimer > 0 then
@@ -67,8 +75,8 @@ local superJumpTime = 0.01
 
   if self.dashTimer > 0 then
     local blastPower = { power = 3 + config.getParameter("chipCost",2)}
-    world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, true, blastPower)  
-    
+    world.spawnProjectile("dashProjectile", mcontroller.position(), entity.id(), {0, 0}, true, blastPower)
+
     mcontroller.controlApproachVelocity({self.dashSpeed * self.dashDirection, self.dashYVel}, self.dashControlForce)
     mcontroller.controlMove(self.dashDirection, true)
     if self.airDashing then
@@ -76,7 +84,7 @@ local superJumpTime = 0.01
     end
     mcontroller.controlModifiers({jumpingSuppressed = true})
 
-    animator.setFlipped(mcontroller.facingDirection() == -1)    
+    animator.setFlipped(mcontroller.facingDirection() == -1)
 
     self.dashTimer = math.max(0, self.dashTimer - args.dt)
     if self.dashTimer == 0 then
@@ -87,7 +95,7 @@ local superJumpTime = 0.01
 	local params = mcontroller.baseParameters()
 	local maxSpeed = params.runSpeed * self.runSpeedMultiplier
 	params.groundForce = params.groundForce * ( math.abs(mcontroller.velocity()[1]) / maxSpeed * ( self.groundForceMultiplierMax - self.groundForceMultiplierMin ) + self.groundForceMultiplierMin )
-	mcontroller.controlParameters(params)	
+	mcontroller.controlParameters(params)
   end
 end
 
@@ -96,7 +104,7 @@ function groundValid()
 end
 
 function startDash(direction)
- if status.overConsumeResource("energy", self.energyCost) then --and groundValid() then 
+ if status.overConsumeResource("energy", self.energyCost) then --and groundValid() then
    status.setResourcePercentage("energyRegenBlock", 5.0)
 
   self.dashDirection = direction
@@ -107,7 +115,7 @@ function startDash(direction)
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
 
-  local damageConfig = { power = (status.stat("maxEnergy")/5),speed = 0,physics = "default" } 
+  local damageConfig = { power = (status.stat("maxEnergy")/5),speed = 0,physics = "default" }
   status.addEphemeralEffects{{effect = "nofalldamage", duration = self.cooldown}}
   world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
 

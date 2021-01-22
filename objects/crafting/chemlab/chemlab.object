@@ -24,7 +24,7 @@
   "description" : "Play with chemicals. Endless fun.",
   "shortdescription" : "^orange;Alchemy Table^white;",
 
-  "learnBlueprintsOnPickup" : [ "fucopperbomb", "fuironbomb", "glowbomb" ],
+ // "learnBlueprintsOnPickup" : [ "fucopperbomb", "fuironbomb", "glowbomb" ],
 
   "startingUpgradeStage" : 1,
   "maxUpgradeStage" : 3,
@@ -55,7 +55,9 @@
         },
 
         "filter" : [ "chemlab1" ],
-        "initialRecipeUnlocks" : [ "pesticide", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "crewcontract_chemistblue", "crewcontract_chemistgreen", "crewcontract_chemistorange", "crewcontract_chemistyellow", "crewcontract_biohazard", "bomb", "bouncyball" ],
+		
+   //     "initialRecipeUnlocks" : [ "pesticide", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "crewcontract_chemistblue", "crewcontract_chemistgreen", "crewcontract_chemistorange", "crewcontract_chemistyellow", "crewcontract_biohazard", "bomb", "bouncyball" ],
+   
         "upgradeMaterials" : [
           { "item" : "tungstenbar", "count" : 4 },
           { "item" : "bottle", "count" : 4 },
@@ -82,7 +84,7 @@
         "description" : "More advanced experiments. More kaboom.",
         "shortdescription" : "^orange;Chemistry Lab^white;"
       },
-      "initialRecipeUnlocks" : [ "unstableparticles" ],
+   //   "initialRecipeUnlocks" : [ "unstableparticles" ],
       "interactData" : {
         "config" : "/interface/windowconfig/chemlab.config",
         "paneLayoutOverride" : {
@@ -95,8 +97,11 @@
           }
         },
         "filter" : [ "chemlab1", "chemlab2" ],
-        "initialRecipeUnlocks" : [ "pesticide", "thoriumrod", "neptuniumrod", "plutoniumrod", "uraniumrod", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "crewcontract_chemistblue", "crewcontract_chemistgreen", "crewcontract_chemistorange", "crewcontract_chemistyellow", "crewcontract_biohazard", "bomb", "bouncyball" ],
-        "upgradeMaterials" : [
+		
+     //   "initialRecipeUnlocks" : [ "pesticide", "thoriumrod", "neptuniumrod", "plutoniumrod", "uraniumrod", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "crewcontract_chemistblue", "crewcontract_chemistgreen", "crewcontract_chemistorange", "crewcontract_chemistyellow", "crewcontract_biohazard", "bomb", "bouncyball" ],
+    
+
+    "upgradeMaterials" : [
           { "item" : "titaniumbar", "count" : 6 },
           { "item" : "cpu", "count" : 2 },
           { "item" : "stickofram", "count" : 4 },
@@ -119,7 +124,7 @@
         "placementImage" : "chemlab3.png:default.default",
         "placementImagePosition" : [-28, 0],    
 
-        "description" : "Superior chemistry and biology experiments",
+        "description" : "Superior chemistry and biology experiments.",
         "shortdescription" : "^orange;Bio-Chem Lab^white;"
       },
 
@@ -135,8 +140,8 @@
           }
         },
         "filter" : [ "chemlab1", "chemlab2", "chemlab3" ],
-        "craftingSound" : "/sfx/interface/crafting_medical.ogg",
-        "initialRecipeUnlocks" : [ "thoriumrod", "neptuniumrod", "plutoniumrod", "uraniumrod", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "bomb", "bouncyball" ]
+        "craftingSound" : "/sfx/interface/crafting_medical.ogg"//,
+        //"initialRecipeUnlocks" : [ "thoriumrod", "neptuniumrod", "plutoniumrod", "uraniumrod", "fu_mulch", "ff_fertilizer", "methanol", "fu_nitrogen", "glowbomb", "grassremedy", "bomb", "bouncyball" ]
       },
 
       "learnBlueprintsOnPickup" : []

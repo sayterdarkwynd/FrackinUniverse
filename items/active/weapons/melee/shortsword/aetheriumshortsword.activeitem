@@ -1,6 +1,6 @@
 {
   "itemName" : "aetheriumshortsword",
-  "price" : 15000,
+  "price" : 1500,
   "level" : 7,
   "maxStack" : 1,
   "rarity" : "legendary",
@@ -9,10 +9,10 @@
   "tooltipKind" : "swordaetherium",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword","aetherium", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","shortsword","aetherium","cosmic", "upgradeableWeapon"],
 
   "inventoryIcon" : "aetheriumscimitar.png",
-  "collectablesOnPickup" : { "fu_weaponshortsword" : "aetheriumshortsword" },
+  //"collectablesOnPickup" : { "fu_weaponshortsword" : "aetheriumshortsword" },
   "animation" : "comboglowshortsword.animation",
   "animationParts" : {
     "handle" : "",
@@ -24,14 +24,14 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "aether",
 
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.56,
     "baseDps" : 6.96,
     "damageConfig" : {
-      "damageSourceKind" : "cosmicshortsword",
+      "damageSourceKind" : "aethershortsword",
       "statusEffects" : [ "defenseboostneg20" ],
       "knockback" : 4,
       "knockbackMode" : "facing",

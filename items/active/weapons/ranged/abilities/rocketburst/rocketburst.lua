@@ -22,7 +22,7 @@ function RocketBurst:update(dt, fireMode, shiftHeld)
     and self.cooldownTimer == 0
     and not status.resourceLocked("energy")
     and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-    
+
     self:setState(self.burst)
   end
 end

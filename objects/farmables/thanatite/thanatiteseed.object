@@ -3,7 +3,7 @@
   "colonyTags" : ["nature"],
   "rarity" : "Common",
   "category" : "seed",
-  "description" : "A bright orange crystal that grows in an unusual formation.",
+  "description" : "A gem that generates thermal energy. Can be used to keep warm on colder planets.",
   "shortdescription" : "Thanatite Crystal Seed",
   "objectType" : "farmable",
   "printable" : false,
@@ -30,7 +30,7 @@
       "frames" : 1,
       "animationCycle" : 0.5,
 
-      "spaceScan" : 0.1,
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2], [1, 3], [0, 3] ],
       "requireTilledAnchors" : false,
       "anchors" : [ "bottom" ]
 
@@ -50,6 +50,7 @@
     }
   ],
   
-  "consumeSoilMoisture" : false
+  "consumeSoilMoisture" : false,
+  "beeLikeness" : {"scoria":1}
   
 }

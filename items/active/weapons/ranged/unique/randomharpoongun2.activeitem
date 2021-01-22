@@ -5,7 +5,8 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Impale your enemies, rather than just killing them.
-^yellow;Inflicts bleeding^reset;",
+^yellow;Inflicts bleeding^reset; 
+^cornflowerblue;Hunting weapon.^reset;",
   "shortdescription" : "Beth",
   "category" : "sniperRifle",
   "level" : 4,
@@ -32,7 +33,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "radioactive",
+  "elementalType" : "physical",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -78,7 +79,12 @@
 
   "critChance" : 5,
   "critBonus" : 5,
-
+  "isSniper" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300,   
+  
   "altAbilityType" : "superharpoon",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

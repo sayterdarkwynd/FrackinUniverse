@@ -11,20 +11,13 @@
   "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
   "level" : 4,
   "inventoryIcon" : "advalloyaxe.png",
-  "collectablesOnPickup" : { "fu_weaponaxe" : "advalloyaxe" },
-  "animation" : "axe.animation",
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "advalloyaxe" },
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
   "animationParts" : {
     "blade" : "advalloyaxe.png",
     "handle" : ""
   },
-  "animationCustom" : {
-    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.0, 1.75]
-    }}}},
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_axe.ogg" ]
-    }
-  },
+
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
@@ -32,7 +25,7 @@
 
   "aimOffset" : -1.0,
 
-  "primaryAbilityType" : "axecleave",
+  "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.6,
     "baseDps" : 10,

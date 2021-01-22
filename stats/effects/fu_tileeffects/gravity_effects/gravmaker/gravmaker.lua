@@ -1,6 +1,7 @@
 require "/scripts/unifiedGravMod.lua"
 
 function init()
+	unifiedGravMod.initSoft()
 	unifiedGravMod.init()
   --self.gravityModifier = config.getParameter("gravityModifier")
   --self.movementParams = mcontroller.baseParameters()
@@ -9,7 +10,7 @@ function init()
   })
   --setGravityMultiplier()
   --activateVisualEffects()
-  
+
   script.setUpdateDelta(5)
 end
 

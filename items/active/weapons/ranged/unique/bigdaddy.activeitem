@@ -67,7 +67,7 @@
       "speed" : 92,
       "knockback" : 12.5,
       "statusEffects" : [ "burning" ],
-      "damageSourceKind" : "fire"
+      "damageKind" : "fireplasma"
     },
   "stances" : {
     "idle" : {
@@ -101,6 +101,10 @@
 
   "critChance" : 8,
   "critBonus" : 12,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 300,
+  "recoilForce" : 2500,    
   "altAbilityType" : "swtjc_ewg_repelgrenades",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
@@ -122,7 +126,7 @@
 	      "speed" : 92,
 	      "knockback" : 30,
 	      "statusEffects" : [ "frozenburning" ],
-	      "damageSourceKind" : "fire"
+	      "damageKind" : "fireplasma"
 	    }       
 	  }	  
       }

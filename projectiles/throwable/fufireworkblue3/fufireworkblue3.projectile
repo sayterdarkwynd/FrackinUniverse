@@ -1,0 +1,75 @@
+{
+  "projectileName" : "fufireworkblue3",
+  "bounces" : -1,
+  "timeToLive" : 0.8,
+  "speed" : 80,
+  "physics" : "fireworkfall",
+  "image" : "fireworkblue3.png",
+  "lightColor" : [110, 110, 200],
+  "frameNumber" : 1,
+  "damageKind" : "ice",
+  "hydrophobic" : true,
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/fireworkgun_blast2.ogg" ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkblue4",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkblue4",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 45
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkblue4",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkblue4",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 135
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkblue4",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkblue4",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 225
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkblue4",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 270
+    },
+    {
+      "action" : "projectile",
+      "type" : "fufireworkblue4",
+      "inheritDamageFactor" : 0.5,
+      "fuzzAngle" : 5,
+      "angle" : 315
+    }
+  ],
+  "emitters" : [ "defaultblue", "defaultwhite" ]
+}

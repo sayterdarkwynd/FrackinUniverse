@@ -20,12 +20,9 @@ function SlimeSetBonus.resetSpawnTimer(self)
 end
 
 function SlimeSetBonus.spawnSlime(self)
-  local rand = math.random(2)
-  local slimeType = nil
-  if (rand == 2) then
-    slimeType = "slime"
-  else
-    slimeType = "microslime"
+  local slimeType = "microslimespawned"
+  if (math.random(2) == 2) then
+    slimeType = "slimespawned"
   end
   local parameters = {
     persistent = false,

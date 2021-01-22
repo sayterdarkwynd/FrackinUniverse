@@ -1,19 +1,36 @@
 {
-  "itemName" : "itahead",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "itahead.png",
-  "description" : "Effect:
-^cyan;Immune to Poison, Bee Stings, Bio-Ooze, Pus and Slime^reset;",
-  "shortdescription" : "Ita Flower Head",
-  "category" : "food",
-   
-  "effects" : [ [ 
-  "poisonblock", 
-  "beestingimmunity", 
-  "biooozeimmunity", 
-  "pusimmunity", 
-  "slimestickimmunity" 
-  ] ],
-  "blockingEffects" : [ "antidote" ]
+	"itemName": "itahead",
+	"inventoryIcon": "itahead.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immunity: Poison & 25% Poison Res^reset;, ^cyan;Immunity ^reset;: Bee Stings, Bio-Ooze, Pus, Slime: 1m",
+	"shortdescription": "Ita Flower Head",
+
+	"effects": [
+		[{
+				"effect": "poisonblock",
+				"duration": 60
+			},
+			{
+				"effect": "beestingimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "biooozeimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "pusimmunity",
+				"duration": 60
+			},
+			{
+				"effect": "slimestickimmunity",
+				"duration": 60
+			}
+		]
+	],
+	"blockingEffects": ["antidote"]
 }

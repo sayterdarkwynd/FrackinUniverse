@@ -5,7 +5,7 @@
   "rarity" : "Common",
   "description" : "The bane of flocks of space birds throughout the galaxy (among other things).",
   "shortdescription" : "Common Flak Cannon",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_flakCannon",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","shotgun","upgradeableWeapon"],
@@ -20,7 +20,7 @@
           { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
         ]
       }
-    }    
+    }  
   },
   "baseOffset" : [-2.5, 0.375],
   "muzzleOffset" : [0.0, 0.125],
@@ -34,7 +34,7 @@
     "class" : "GunFire",
 
     "fireTime" : [2.0, 4.0],
-    "baseDps" : [7.5, 9],
+    "baseDps" : [7.0, 9],
     "energyUsage" : [35, 38.5],
     "projectileCount" : [15,20],
     "inaccuracy" : 0.08,
@@ -78,6 +78,17 @@
     }
   },
   "fireSounds" : [ "/sfx/gun/grenadeblast1.ogg", "/sfx/gun/rocketblast1.ogg", "/sfx/gun/rocketblast2.ogg", "/sfx/gun/rocketblast3.ogg" ],
+
+  "critChance" : 3,
+  "critBonus" : 3,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [2,6],
+  "reloadTime" : [1.25,3],
+  "isShotgun" : 1,
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300, 
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -126,7 +137,7 @@
       "swtjc_ewg_cellspray",
       "swtjc_ewg_cellspread",
       "swtjc_ewg_darkplasma",
-      
+    
       "swtjc_ewg_forceshield",
       "swtjc_ewg_globelauncher",
       "swtjc_ewg_phaseburst",
@@ -136,7 +147,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 3,
-  "critBonus" : 3
+  }]
 }

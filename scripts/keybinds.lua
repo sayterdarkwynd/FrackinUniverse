@@ -1,125 +1,91 @@
 --[[
-Keybinds Library
-https://github.com/Silverfeelin/Starbound-Keybinds
+Keybinds Library (https://github.com/Silverfeelin/Starbound-Keybinds)
+Licensed under MIT (https://github.com/Silverfeelin/Starbound-Keybinds/blob/master/LICENSE)
+This file may be redistributed without including a copy of the license, as long as this header remains unmodified.
 ]]
 
 keybinds = {
   binds = {},
   initialized = false,
-  version = "1.3.0"
+  version = "1.3.4",
+  debug = false
 }
 
--- For every type of input, set whether it can be bound.
--- EG. Keybind "f up" equals to "up" if "f" is not bindable.
-keybinds.availableInputs = {
-  up = true,
-  left = true,
-  down = true,
-  right = true,
-  primaryFire = true,
-  altFire = true,
-  onGround = true,
-  running = true,
-  walking = true,
-  jumping = true,
-  facingDirection = true,
-  liquidPercentage = true,
-  position = true,
-  aimPosition = true,
-  aimRelative = true,
-  f = true,
-  g = true,
-  h = true,
-  specialOne = true,
-  specialTwo = true,
-  specialThree = true,
-  time = true,
-  -- Don't set this one to false, ever!
-  aimOffset = true
-}
+--- Util
 
--- Set used to allow case-insensitive input strings.
-keybinds.inputStrings = {
-  up = "up",
-  left = "left",
-  down = "down",
-  right = "right",
-  primaryfire = "primaryFire",
-  altfire = "altFire",
-  onground = "onGround",
-  running = "running",
-  walking = "walking",
-  jumping = "jumping",
-  facingdirection = "facingDirection",
-  liquidpercentage = "liquidPercentage",
-  position = "position",
-  aimposition = "aimPosition",
-  aimrelative = "aimRelative",
-  f = "f",
-  g = "g",
-  h = "h",
-  specialone = "specialOne",
-  specialtwo = "specialTwo",
-  specialthree = "specialThree",
-  time = "time",
-  aimoffset = "aimOffset"
-}
+-- {"a"} = {"a" = true}. {"a"} = {f("a") = true}.
+local set = function(values, f) local v = {};  for _,value in pairs(values) do v[f and f(value) or value] = true end return v; end
+-- vec1-vec2
+local sub = function(a, b) return { a[1] - b[1], a[2] - b[2] } end
+-- http://lua-users.org/wiki/SplitJoin
+function string:split(sep) local sep, fields = sep or ":", {}; local pattern = string.format("([^%s]+)", sep); self:gsub(pattern, function(c) fields[#fields+1] = c end); return fields; end
+-- Sets the tostring of of a table to "vec2"
+function keybinds.setVec2(point) setmetatable(point, { __tostring = function() return "vec2" end }) end
+
+keybinds.inputs = set({
+  "up", "down", "left", "right",
+  "primaryFire", "altFire",
+  "shift", "running", "walking",
+  "onGround", "jumping",
+  "facingDirection", "liquidPercentage",
+  "position", "aimPosition", "aimRelative",
+  "specialOne", "f",
+  "specialTwo", "g",
+  "specialThree", "h",
+  -- Flags
+  "aimOffset", "time", "only", "all"
+}, string.lower)
+
+-- Binds that are specifically bound to keys users can hold down.
+-- Used by flag 'only' and is incompatible with options 'f' 'g' 'h'.
+keybinds.keys = set({
+  "up", "down", "left", "right",
+  "primaryFire", "altFire",
+  "shift",
+  "specialOne",
+  "specialTwo",
+  "specialThree",
+}, string.lower)
 
 -- Default values, do not touch.
 keybinds.input = {
-  up = false, left = false, down = false, right = false,
-  primaryFire = false, altFire = false,
-  onGround = true, running = false, walking = false, jumping = false,
-  facingDirection = 1, liquidPercentage = 0,
-  position = {0, 0}, aimPosition = {0, 0}, aimOffset = {2, 2}, aimRelative = {0, 0},
-  f = false, g = false, h = false, specialOne = false, specialTwo = false, specialThree = false,
+  onground = true, facingdirection = 1, liquidpercentage = 0,
+  position = {0, 0}, aimposition = {0, 0}, aimoffset = {2, 2}, aimrelative = {0, 0},
   time = 0
 }
 
--- Unique Bind identifier, used to track time without worrying about shifting indices.
+-- Unique Bind identifier.
 local uid = 1
 
+-- Tracks when time-bound binds can activate.
 local timeActive = {}
 
---[[ Finalizes Keybinds by injecting function keybinds.update in the tech's main update function.]]
-function keybinds.initialize()
-  if not keybinds.initialized then
-    keybinds.initialized = true
-
-    -- Compatibility 'hack' for older versions of the game; use function input rather than update to update the input values (I know, right?!).
-    if input then
-      local originalInput = input
-
-      input = function(args)
-        keybinds.update(args)
-        return originalInput(args)
-      end
-    else
-      local originalUpdate = update
-
-      update = function(args)
-        keybinds.update(args)
-        originalUpdate(args)
-      end
-    end
-
-    --sb.logInfo("Keybinds v%s initialized.", keybinds.version)
-  end
+-- Finalizes Keybinds by injecting function keybinds.update in the tech's main update function.
+function keybinds.init()
+  if keybinds.initialized then return end
+  keybinds.initialized = true
+  local og = update
+  update = og and function(args) keybinds.update(args); og(args); end or keybinds.update
+  sb.logInfo("Keybinds v%s initialized.", keybinds.version)
 end
 
+-- Updates Keybinds
 function keybinds.update(args)
   keybinds.updateInput(args)
 
-  for id,bind in pairs(keybinds.binds) do
+  if keybinds.debug then
+    sb.setLogMap("player_rel", string.format("%s %s", keybinds.input.aimrelative[1], keybinds.input.aimrelative[2]))
+  end
 
-    local runFunction = bind:matches(keybinds.input)
+  for id,bind in pairs(keybinds.binds) do
+    local isMatch, matches, noMatches = bind:matches(keybinds.input)
 
     -- Run function if the current input matches the arguments of the bind.
     -- Disables consecutive calls unless the bind is repeatable.
-    if runFunction and (bind.repeatable or not bind.executed) then
-      bind.f()
+    if isMatch and (bind.repeatable or not bind.executed) and (not bind.options.all or bind.argCount == matches) then
+      bind.f(bind)
       bind.executed = true
-    elseif not runFunction and bind.executed then
+    elseif not isMatch and bind.executed and (not bind.options.all or bind.argCount == noMatches) then
       bind.executed = false
     end
   end
@@ -134,30 +100,28 @@ function keybinds.updateInput(args)
   input.down = args.moves.down
   input.right = args.moves.right
 
-  input.primaryFire = args.moves.primaryFire
-  input.altFire = args.moves.altFire
+  input.primaryfire = args.moves.primaryFire
+  input.altfire = args.moves.altFire
 
-  input.onGround = mcontroller.onGround()
+  input.shift = not args.moves.run
+
+  input.onground = mcontroller.onGround()
   input.running = mcontroller.running()
   input.walking = mcontroller.walking()
   input.jumping = args.moves.jump
-  input.facingDirection = mcontroller.facingDirection()
-  input.liquidPercentage = mcontroller.liquidPercentage()
+  input.facingdirection = mcontroller.facingDirection()
+  input.liquidpercentage = mcontroller.liquidPercentage()
 
   input.position = mcontroller.position()
-  input.aimPosition = tech.aimPosition()
-  input.aimRelative = {
-    input.aimPosition[1] - input.position[1],
-    input.aimPosition[2] - input.position[2]
-  }
-  sb.setLogMap("player_rel", string.format("%s %s", input.aimRelative[1], input.aimRelative[2]))
+  input.aimposition = tech.aimPosition()
+  input.aimrelative = sub(input.aimposition, input.position)
 
-  input.f = args.moves.special1
-  input.specialOne = input.f
-  input.g = args.moves.special2
-  input.specialTwo = input.g
-  input.h = args.moves.special3
-  input.specialThree = input.h
+  input.specialone = args.moves.special1
+  input.specialtwo = args.moves.special2
+  input.specialthree = args.moves.special3
+  input.f = input.specialone
+  input.g = input.specialtwo
+  input.h = input.specialthree
 end
 
 --[[ Returns a keybind table from the given string.
@@ -168,64 +132,44 @@ function keybinds.stringToKeybind(s)
   for _,v in pairs(s:split(" ")) do
     local separator = v:find("=")
     local key = v:sub(0, separator and separator - 1 or nil):lower()
+    local valueString =  separator and v:sub(separator + 1) or ""
 
-    if not keybinds.availableInputs[keybinds.inputStrings[key]] then
-      sb.logInfo("Keybind argument '%s' ignored.", key)
-    else
-      key = keybinds.inputStrings[key]
-      local valueString =  separator and v:sub(separator + 1) or ""
+    -- Default value is true
+    local value = true
+    if valueString == "false" then
+      value = false
+    elseif valueString == valueString:match("%-?%f[%.%d]%d*%.?%d*%f[^%.%d]") then
+      -- Float
+      value = tonumber(valueString)
+    elseif valueString == valueString:match("%-?%f[%.%d]%d*%.?%d*%f[^%.%d],%-?%f[%.%d]%d*%.?%d*%f[^%.%d]") then
+      -- Vec2
+      local x = tonumber(valueString:sub(0,valueString:find(",") - 1))
+      local y = tonumber(valueString:sub(valueString:find(",") + 1))
+      value = {x,y}
 
-      -- Default value is true
-      local value = true
-
-      if valueString == "false" then
-        value = false
-      elseif valueString == valueString:match("%-?%f[%.%d]%d*%.?%d*%f[^%.%d]") then
-        -- Float
-        value = tonumber(valueString)
-      elseif valueString == valueString:match("%-?%f[%.%d]%d*%.?%d*%f[^%.%d],%-?%f[%.%d]%d*%.?%d*%f[^%.%d]") then
-        -- Vec2
-        local x = tonumber(valueString:sub(0,valueString:find(",") - 1))
-        local y = tonumber(valueString:sub(valueString:find(",") + 1))
-        value = {x,y}
-
-        keybinds.setVec2(value)
-      end
-
-      args[key] = value
+      keybinds.setVec2(value)
     end
+
+    args[key] = value
   end
 
   return args
 end
-
-function keybinds.setVec2(point)
-  setmetatable(point, {
-    __tostring = function() return "vec2" end
-  })
-end
-
--- http://lua-users.org/wiki/SplitJoin
-function string:split(sep)
-  local sep, fields = sep or ":", {}
-  local pattern = string.format("([^%s]+)", sep)
-  self:gsub(pattern, function(c) fields[#fields+1] = c end)
-  return fields
-end
-
 
 Bind = {}
 Bind.__index = Bind
 
 function Bind.create(args, f, repeatable, disable)
   -- Creating a bind will finalize the set-up, if not done already.
-  keybinds.initialize()
+  keybinds.init()
 
   local bind = {}
+  setmetatable(bind, Bind)
+
   bind.id = uid
   uid = uid + 1
+  bind.options = {}
 
-  setmetatable(bind, Bind)
   bind:change(args, f, repeatable)
 
   bind.active = not disable
@@ -237,63 +181,73 @@ function Bind.create(args, f, repeatable, disable)
 end
 
 function Bind:change(args, f, repeatable)
-  self.args = type(args) == "string" and keybinds.stringToKeybind(args) or args or self.args
-  self.f = f or self.f
+  if type(f) == "function" then self.f = f end
   if type(repeatable) ~= "nil" then self.repeatable = repeatable end
+
+  self.args = type(args) == "string" and keybinds.stringToKeybind(args) or args or self.args
+  if self.args.all then self.options.all = true; self.args.all = nil end
+  if self.args.aimoffset then self.options.aimOffset = self.args.aimoffset; self.args.aimoffset = nil; end
+  if self.args.only then self.options.only = true; self.args.only = nil end
+  if self.args.time then self.options.time = self.args.time; self.args.time = nil end
+
+  self.argCount = 0;
+  for _ in pairs(self.args) do self.argCount = self.argCount + 1 end
+
   self.executed = false
 
-  -- Remove disabled keybinds. Set the tostring of valid tables to vec2.
-  for k,v in pairs(self.args) do
-    if not keybinds.availableInputs[k] then
-      -- Remove disabled keybinds
-      self.args[k] = nil
-    elseif type(v) == "table" and #v == 2 and type(v[1]) == "number" and type(v[2]) == "number" then
-      -- Convert point table tostring to vec2
-      keybinds.setVec2(v)
+  -- Set the tostring of valid tables to vec2.
+  for _,v in pairs(self.args) do
+    if type(v) == "table" and #v == 2 and type(v[1]) == "number" and type(v[2]) == "number" then keybinds.setVec2(v) end
+  end
+
+  -- If "only" is set, set missing keys to false.
+  if self.options.only then
+    for k in pairs(keybinds.keys) do
+      if self.args[k] == nil then self.args[k] = false end
     end
   end
 end
 
-function Bind:swap(otherBind)
-  self.f, otherBind.f = otherBind.f, self.f
+-- Swaps self.f with target.f
+function Bind:swap(target)
+  self.f, target.f = target.f, self.f
 end
 
-function Bind:toggle()
-  self.active = not self.active
-  if self.active then
-    self:rebind()
-  else
-    self:unbind()
-  end
-end
-
+-- Activates a bind.
 function Bind:rebind()
   self.active = true
   keybinds.binds[self.id] = self
 end
 
+-- Deactivates a bind.
 function Bind:unbind()
   self.active = false
   keybinds.binds[self.id] = nil
 end
 
-function Bind:isActive()
-  return self.active
+-- Toggles the bind. See Bind:rebind and Bind:unbind
+function Bind:toggle(active)
+  if active == nil then active = not self.active end
+  if active then self:rebind() else self:unbind() end
 end
-Bind.active = Bind.isActive
 
+-- bind:isActive() = bind.active
+function Bind:isActive() return self.active end
+
+-- Checks if input matches bind.args.
+-- Returns:
+-- * true if bind matches, false otherwise
+-- * amount of matching arguments
+-- * amount of non-matching arguments
 function Bind:matches(input)
-  local runFunction = true
+  local matches, noMatches = 0, 0
 
   -- For every bind, check every arg.
   -- If an arg does not match the current input, prevent the function for this bind from being called.
   for k,v in pairs(self.args) do
-
-    if k == "aimOffset" or k == "time" then
-        goto nextArg
-    end
-
-    if runFunction and v ~= keybinds.input[k] then
+    if keybinds.input[k] == v then
+      matches = matches + 1
+    else
       -- Value for this argument does not match expected value for keybind.
 
       if tostring(v) == "vec2" then
@@ -301,31 +255,34 @@ function Bind:matches(input)
         local dx = math.abs(v[1] - keybinds.input[k][1])
         local dy = math.abs(v[2] - keybinds.input[k][2])
 
-        local offset = bind.args.aimOffset or keybinds.input.aimOffset
+        local offset = self.options.aimOffset or keybinds.input.aimoffset
 
         if dx > offset[1] or dy > offset[2] then
-          runFunction = false
+          noMatches = noMatches + 1
+        else
+          matches = matches + 1
         end
       else
-        runFunction = false
+        noMatches = noMatches + 1
       end
     end
-
-    ::nextArg::
   end
 
   -- Special handling for timed binds.
-  if self.args.time then
+  local timeMatch = true
+  if self.options.time then
     local clock = os.clock()
-    if not runFunction then
+    if (self.options.all and matches ~= self.argCount) or noMatches > 0 then
       timeActive[self.id] = nil
     elseif not timeActive[self.id] then
-      timeActive[self.id] = clock + self.args.time
-      runFunction = false
+      timeActive[self.id] = clock + self.options.time
+      timeMatch = false
     elseif timeActive[self.id] > clock then
-      runFunction = false
+      timeMatch = false
     end
+
   end
 
-  return runFunction
+  local isMatch = timeMatch and noMatches == 0
+  return isMatch, matches, noMatches
 end

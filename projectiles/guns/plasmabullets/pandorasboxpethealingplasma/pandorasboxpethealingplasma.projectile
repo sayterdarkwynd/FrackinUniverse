@@ -1,0 +1,35 @@
+{
+  "projectileName" : "pandorasboxpethealingplasma",
+  "physics" : "illusion",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "pandorasboxpethealingplasma.png",
+  "animationCycle" : 0.5,
+  "fullbright" : true,
+  "frameNumber" : 4,
+  "power" : 50,
+  "speed" : 75,
+  "supportsProcessing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+
+    "timeToLive" : 4,
+
+  "scripts" : ["/projectiles/guns/plasmabullets/pandorasboxpethealingplasma/pandorasboxpethealingplasma.lua"],
+  "scriptDelta" : 10,
+
+  "pickupRange" : 2,
+  "snapRange" : 5,
+  "snapSpeed" : 150,
+  "snapForce" : 250,
+
+  "restoreBase" : 5,
+  "restorePercentage" : 0,
+  "emitters" : [ "pandorasboxpetpill" ],
+  "lightColor" : [73, 10, 0],
+  "damageKind" : "plasma"
+}

@@ -1,0 +1,23 @@
+{
+  "projectileName" : "poisonplasmabeam",
+  "physics" : "laser",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "poisonplasma.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 3,
+  "power" : 50,
+  "speed" : 150,
+  "supportsProcessing" : true,
+  "emitters" : [ "poisonplasma" ],
+  "timeToLive" : 0.2,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "statusEffects" : [ ],
+  "lightColor" : [67, 110, 32],
+  "damageKind" : "poisonplasmabullet"
+}

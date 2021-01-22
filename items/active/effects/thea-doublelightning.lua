@@ -62,7 +62,7 @@ function update()
       drawLightning(startPosition, endPosition, bolt.displacement, bolt.minDisplacement, bolt.forks, bolt.forkAngleRange, bolt.width, bolt.color)
     end
   end
-  
+
   --Second bolt
   local lightningBolts2 = animationConfig.animationParameter("lightning2")
   if lightningBolts2 then

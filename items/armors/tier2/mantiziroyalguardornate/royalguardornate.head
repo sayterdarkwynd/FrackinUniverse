@@ -1,16 +1,15 @@
 {
   "itemName" : "fumantiziroyalguardornatehead",
-  "price" : 0,
+  "price" : 55,
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Fire Resist
-\n^orange;Set Bonuses^reset;:
-^cyan;+17%^reset; Shield Health and Regen
-Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; Crit Dmg, ^cyan;+15%^reset; Knockback Resist",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;17^reset;% Shield Health and Regen
+^yellow;^reset; Sword/Mace and Shield: +^green;2^reset;% Crit Chance, +^green;15^reset;% Crit Damage, +^green;15^reset;% Knockback Resist",
 
   "shortdescription" : "Footman Helmet",
-  "category" : "t2armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -18,7 +17,7 @@ Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; C
   "mask" : "mask.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
-  "collectablesOnPickup" : { "fu_armormelee" : "fumantiziroyalguardornatehead" },
+  //"collectablesOnPickup" : { "fu_armormelee" : "fumantiziroyalguardornatehead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,6 +38,11 @@ Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; C
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -47,10 +51,6 @@ Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; C
     {
       "stat" : "footmansetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.05
     }
   ],
 
@@ -79,5 +79,7 @@ Sword/Mace and Shield: ^green;^green;+2%^reset; Crit Chance, ^cyan;+15%^reset; C
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

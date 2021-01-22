@@ -146,6 +146,44 @@ function StormProjectile:createProjectiles()
   local pParams = copy(self.projectileParameters)
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  local projectileType=self.projectileType:gsub("spawner","storm2")
+
+  pParams.timedActions={
+	{
+      delayTime = 0.5,
+      loopTime = 0.3,
+      loopTimeVariance = 0.05,
+      action = "projectile",
+      type = projectileType,
+      config = {power=pParams.power*0.1},
+      inheritDamageFactor = 0.0,
+      direction = {0, -1},
+      offset = {30, 30}
+    },
+    {
+      delayTime = 0.5,
+      loopTime = 0.5,
+      loopTimeVariance = 0.05,
+      action = "projectile",
+      type = projectileType,
+      config = {power=pParams.power*0.1},
+      inheritDamageFactor = 0.0,
+      direction = {0, -1},
+      offset = {30, 30}
+    },
+    {
+      delayTime = 0.5,
+      loopTime = 0.7,
+      loopTimeVariance = 0.05,
+      action = "projectile",
+      type = projectileType,
+      config = {power=pParams.power*0.1},
+      inheritDamageFactor = 0.0,
+      direction = {0, -1},
+      offset = {30, 30}
+    }
+  }
+  pParams.power=0
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(

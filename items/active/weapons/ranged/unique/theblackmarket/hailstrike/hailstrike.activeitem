@@ -1,6 +1,6 @@
 {
   "itemName" : "hailstrike",
-  "level" : 6,
+  "level" : 7,
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "legendary",
@@ -11,7 +11,7 @@
   "tooltipKind" : "gun2",
   "category" : "assaultRifle",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","assaultrifle", "assaultRifle", "energy", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "assaultrifle", "energy", "upgradeableWeapon"],
 
   "inventoryIcon" : [
     { "image" : "hailstrike.png:idle.1" }
@@ -91,7 +91,12 @@
 
   "critChance" : 2,
   "critBonus" : 2,
-
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1500,
+  
+  
   "altAbilityType" : "hailstrikealt",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",

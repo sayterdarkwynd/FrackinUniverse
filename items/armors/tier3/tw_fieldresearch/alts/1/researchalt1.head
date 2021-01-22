@@ -4,13 +4,14 @@
   "inventoryIcon" : "icon.png",
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "category" : "headwear",
-  "description" : "Set Bonus:
-^cyan;Immunity: Oxygen, Poison, Gas, Acid^reset;
-^#e43774;15% Radiation Resist^reset;
-^green;+25% Damage (Magnorbs)^reset;",
+  "category" : "headarmour",
+    "description" : "^cyan;Headlamp 2^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; Magnorbs: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Poison, Gas
+^yellow;^reset; Research Bonus +^green;1^reset;",
   "shortdescription" : "Researcher's Helm",
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
@@ -21,22 +22,27 @@
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
+      "baseMultiplier" : 1.10
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.3
+      "amount" : 0.27
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
       "stat" : "maxEnergy",
-      "amount" : 3
+      "amount" : 2
     },
     {
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
-      "amount" : 3
+      "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -46,10 +52,6 @@
     {
       "stat" : "researchsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.05
     }
   ],
 
@@ -78,5 +80,7 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

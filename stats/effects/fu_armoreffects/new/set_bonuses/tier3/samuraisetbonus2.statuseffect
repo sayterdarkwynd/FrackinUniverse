@@ -1,10 +1,9 @@
 {
   "name" : "samuraisetbonus2",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
-      "physicalResistance" : { "amount" : 0.05 }
     },
 
     "weaponBonuses" : [
@@ -15,17 +14,17 @@
         "stats" : {
           "powerMultiplier" : { "effectiveMultiplier" : 1.15 },
           "critChance" : { "amount" : 4 },
-          "critBonus" : { "baseMultiplier" : 1.1 },
+          "critDamage" : { "amount" : 0.1 },
           "protection" : { "effectiveMultiplier" : 1.14 }
         }
       },
       {
         "type" : "any",
-        "tags" : [ "katana" ],
+        "tags" : [ "katana","daikatana" ],
         "stats" : {
           "powerMultiplier" : { "effectiveMultiplier" : 1.15 },
           "critChance" : { "amount" : 3 },
-          "critBonus" : { "baseMultiplier" : 1.1 }
+          "critDamage" : { "amount" : 0.1 }
         }
       }
     ]
@@ -34,8 +33,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta" : 5,
-
-  "label" : "+5% Phys Resist. Katana: +15% Dmg, +3% Crit Chance, +10% Crit Dmg. Katana & Dagger: Extra +1% Crit Chance, +14% Protection",
-  "icon" : "/interface/statuses/attack.png"
+  "scriptDelta" : 5
 }

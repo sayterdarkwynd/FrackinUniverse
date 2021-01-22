@@ -5,33 +5,34 @@
   "maxStack" : 1,
   "rarity" : "common",
   "description" : "^orange;Set Bonuses^reset;:
-^green;+5%^reset; Speed and Jump, ^green;+5%^reset; Crit Dmg^reset;
-Dual Fist/Quarterstaff: ^cyan;+15%^reset; Dmg",
+^yellow;^reset; +^green;5^reset;% Speed and Jump
+^yellow;^reset; +^green;5^reset;% Crit Damage^reset;
+^yellow;^reset; Dual Fist/Quarterstaff: Damage x^green;1.15^reset;",
 
   "shortdescription" : "Monk's Leggings",
-  "category" : "t1armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "learnBlueprintsOnPickup" : [
-    "fulightpriesthead",
-    "fulightpriestchest",
-    "fulightpriestpants"
-  ],
+//  "learnBlueprintsOnPickup" : [
+//    "fulightpriesthead",
+ //   "fulightpriestchest",
+ //   "fulightpriestpants"
+ // ],
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 1,
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.2
+      "baseMultiplier" : 1.15
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.15
+      "amount" : 0.12
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -77,5 +78,7 @@ Dual Fist/Quarterstaff: ^cyan;+15%^reset; Dmg",
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+  ],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

@@ -35,7 +35,15 @@ function uninit()
   tech.setParentDirectives()
 end
 
+function applyTechBonus()
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
+  self.dodgetechBonus = 0 + status.stat("dodgetechBonus") -- apply bonus to defense from items and armor
+end
+
 function update(args)
+  applyTechBonus()
   if self.dashCooldownTimer > 0 then
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
     if self.dashCooldownTimer == 0 then
@@ -85,15 +93,19 @@ function startDash(direction)
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
+  -- defense bonus is applied if the player has the relevant stat. Otherwise we apply the basic small boost granted by the default tech
+  if self.dodgetechBonus > 0.01 then
+    status.setPersistentEffects("dodgeDefenseBoost", {{stat = "protection", effectiveMultiplier = (1 + self.dodgetechBonus)}})
+  end
 end
 
 function endDash()
   status.clearPersistentEffects("movementAbility")
-  
+  status.clearPersistentEffects("dodgeDefenseBoost")
   if self.stopAfterDash then
     self.specialModifier = status.resource("energy") / status.stat("maxEnergy")
-    if status.resource("energy") > 20 then -- give bonus damage!!!!!! 
-      status.addEphemeralEffect("damagebonus3",self.specialModifier) 
+    if status.resource("energy") > 20 then -- give bonus damage!!!!!!
+      status.addEphemeralEffect("damagebonus3",self.specialModifier)
       animator.playSound("chargebonus")
       status.consumeResource("energy", (self.specialModifier*75))
     end

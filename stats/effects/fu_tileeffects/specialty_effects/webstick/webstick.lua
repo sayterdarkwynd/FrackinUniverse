@@ -18,7 +18,7 @@ function update(dt)
       effect.modifyDuration(0.1)
 	end
   end
-    
+
 end
 
 function uninit()

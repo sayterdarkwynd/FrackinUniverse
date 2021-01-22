@@ -13,13 +13,13 @@ function updateHand()
   animator.scaleTransformationGroup("swoosh", isBackHand and {1, 1} or {1, -1})
   --activeItem.setOutsideOfHand(isFrontHand)
   --activeItem.setOutsideOfHand(isBackHand)
-  
+
   if isFrontHand then
     animator.setGlobalTag("hand", isBackHand and "front" or "back")
-    animator.resetTransformationGroup("muzzle") 
+    animator.resetTransformationGroup("muzzle")
     animator.scaleTransformationGroup("muzzle", isBackHand and {1, 1} or {1, -1})
   end
-  
+
 end
 
 function init()

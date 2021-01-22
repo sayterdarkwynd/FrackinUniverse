@@ -5,17 +5,17 @@
   "maxStack" : 1,
   "rarity" : "Legendary",
   "description" : "^orange;Set Bonuses^reset;: 
-Hammer,Axe,Mace: ^cyan;^#a94db3;+30%^reset; Damage,^green;+3%^reset; Crit
-\n^cyan;Immune^reset;: Tar, Mud, Clay, Cold",
+^yellow;^reset; Hammer,Axe,Mace: Damage x^green;1.3^reset;, +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Tar, Mud, Clay, Cold",
   "shortdescription" : "Champion's Tights",
-  "category" : "t6armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
-  "level" : 6,
-  "collectablesOnPickup" : { "fu_armorprotection" : "fumantizitier6spants" },
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armorprotection" : "fumantizitier6spants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -73,5 +73,7 @@ Hammer,Axe,Mace: ^cyan;^#a94db3;+30%^reset; Damage,^green;+3%^reset; Crit
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

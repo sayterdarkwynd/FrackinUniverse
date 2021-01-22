@@ -1,6 +1,6 @@
 {
   "itemName" : "carnagebow",
-  "level" : 5,
+  "level" : 4,
   "price" : 640,
   "inventoryIcon" : "carnagebowicon.png",
   "maxStack" : 1,
@@ -14,7 +14,7 @@
 
   "radioMessagesOnPickup" : [ "pickupbow" ],
 
-  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animation" : "/items/active/weapons/bow/fubow.animation",
   "animationParts" : {
     "bow" : "carnagebowfull.png"
   },
@@ -32,31 +32,47 @@
   "scripts" : ["/items/active/weapons/bow/bow.lua"],
 
   "elementalType" : "physical",
-  "collectablesOnPickup" : { "fu_weaponbow" : "carnagebow" },
-  "primaryAbilityType" : "bowshot",
-  "primaryAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelector",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+  //"collectablesOnPickup" : { "fu_weaponbow" : "carnagebow" },
+  
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 1.2,				//Time to fully draw the bow
+	"powerProjectileTime" : 0.165,	//After fully drawing, the bow is super-charged for this long
+	"dynamicDamageMultiplier" : 1.0,	//All damage is multiplied by this value. Useful for modifying damage using alt ability special arrows		
+	"energyPerShot" : 35,			
+	"holdEnergyUsage" : 10,				
+	"airborneBonus" : 1.15,    
     "projectileType" : "carnagearrow",
     "powerProjectileType" : "carnagearrow",
     "projectileParameters" : {
-      "power" : 6.5
+      "power" : 6.5,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.85,
+      "piercing" : false
     }
   },
 
-  "altAbilityType" : "bowshot",
+  "altAbilityType" : "rngbows_enhancedbowshot",
   "altAbility" : {
-    "fireOffset" : [1.75, 0.125],
-    "drawFrameSelector" : "poisonBowImageSelectorNoPower",
-    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "drawTime" : 2,
+    "powerProjectileTime" : 0.5,	//After fully drawing, the bow is super-charged for this long
+    "energyPerShot" : 100,
+    "name" : "Power Arrow",
     "projectileType" : "carnagearrow",
+    "powerProjectileType" : "carnagearrow",
     "projectileParameters" : {
-      "power" : 10
+      "power" : 8.0,
+      "piercing" : false
+    },
+    "powerProjectileParameters" : {
+      "power" : 8.56,
+      "piercing" : true
     }
   },
-
-  "critChance" : 3,
+  
+  "critChance" : 5,
   "critBonus" : 3,
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
 }

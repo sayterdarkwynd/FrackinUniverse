@@ -5,13 +5,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Set Bonus: 
-Swim Boost 3
-Oxygen Tank
-\n^#e43774;Ocean/Tidewater^reset;: ^green;+5%^reset; Crit, ^cyan;+15%^reset; Power, ^green;+5%^reset; Speed
-\n^cyan;Immune^reset;: Acid, Poison/Bio, Gas, Pressure",
+  "description" : "^cyan;Headlamp 4^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Swim Boost 3^reset;
+^yellow;^reset; Ocean/Tidewater: +^green;5^reset;% Crit, Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Acid, Poison, Bio-Ooze, Gas, Pressure, Oxygen",
   "shortdescription" : "Leviathan Helmet",
-  "category" : "t5armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -19,7 +19,7 @@ Oxygen Tank
   "mask" : "mask.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "fudiverhead3" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fudiverhead3" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -74,5 +74,7 @@ Oxygen Tank
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

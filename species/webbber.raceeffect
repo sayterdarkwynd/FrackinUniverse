@@ -1,0 +1,113 @@
+{
+	"stats": [
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.3
+		},
+		{
+			"stat": "electricResistance",
+			"amount": -0.3
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.2
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "shadowResistance",
+			"amount": -0.4
+		},
+		{
+			"stat": "webstickImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "raw_omnivore",
+	"controlModifiers": {
+		"speedModifier": 1.1
+	},
+	"envEffects": [{
+			"biomes": [
+				"cold"
+			],
+			"stats": [{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 1.2
+				},
+				{
+					"stat": "energyRegenPercentageRate",
+					"baseMultiplier": 0.5
+				}
+			]
+		},
+		{
+			"biomes": [
+				"garden",
+				"savanna",
+				"forest",
+				"thickjungle"
+			],
+			"stats": [{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 1.05
+				},
+				{
+					"stat": "energyRegenPercentageRate",
+					"baseMultiplier": 1.1
+				}
+			]
+		},
+		{
+			"biomes": [
+				"toxic",
+				"alien",
+				"protoworld",
+				"irradiated",
+				"chromatic",
+				"protoworlddark",
+				"jungle"
+			],
+			"stats": [{
+					"stat": "energyRegenPercentageRate",
+					"baseMultiplier": 1.2
+				},
+				{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 0.9
+				}
+			]
+		}
+	],
+	"special": [
+		"nightfear"
+	],
+	"weaponEffects": [{
+			"weapons": [
+				"bow",
+				"pistol"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.2
+			}]
+		},
+		{
+			"weapons": [
+				"spear",
+				"machinepistol",
+				"handlegun"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.1
+			}]
+		}
+	]
+}

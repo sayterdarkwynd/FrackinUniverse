@@ -1,0 +1,60 @@
+{
+  "objectName" : "outpostairlockrailhatchsmall",
+  "colonyTags" : ["outpost","door","rails"],
+  "rarity" : "Common",
+
+  "category" : "door",
+  "price" : 150,
+  "description" : "A small airlock hatch that has a built-in rail connector for use with elevators.",
+  "shortdescription" : "Small Airlock Rail Hatch",
+  "race" : "generic",
+
+  "apexDescription" : "A sturdy metal hatch. It has a built-in rail!.",
+  "avianDescription" : "This metal hatch has a rail built into it.",
+  "floranDescription" : "Hatch looksss ssstrong. Alssso hasss rail.",
+  "glitchDescription" : "Observant. This industrial hatch has an integrated rail.",
+  "humanDescription" : "This hatch looks pretty strong. And it has a rail to boot!",
+  "hylotlDescription" : "This industrail hatch may be ugly, But its integrated rail is certainly efficient.",
+  "novakidDescription" : "This here hatch has a rail built into it. Neat!",
+
+  "inventoryIcon" : "outpostairlockrailhatchsmallicon.png",
+  "orientations" : [
+    {
+      "image" : "outpostairlockrailhatchsmall.png:default",
+      "imagePosition" : [-16, -8],
+      "renderLayer" : "Object+5",
+      "animationPosition" : [-16, -8],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "left", "right" ]
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/door/door.lua" ],
+  "scriptDelta" : 5,
+
+  "openMaterialSpaces" : [
+    [[0, -1], "metamaterial:rail"], [[0, 0], "metamaterial:rail"]
+  ],
+
+  "animation" : "/objects/wired/door/door.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "open" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_open.ogg" ],
+        "rangeMultiplier" : 0.5
+      },
+      "close" : {
+        "pool" : [ "/sfx/objects/apexcooldoor_close.ogg" ],
+        "rangeMultiplier" : 0.5
+      }
+    }
+  },
+  "animationParts" : {
+    "door" : "outpostairlockrailhatchsmall.png"
+  },
+
+  "inputNodes" : [ [-2, 0] ],
+  "outputNodes" : [ [2, -1] ]
+}

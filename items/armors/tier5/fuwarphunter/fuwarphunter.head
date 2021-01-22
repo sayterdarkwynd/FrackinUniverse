@@ -5,12 +5,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;30%/25%^reset; Electric/Physical Resist
-Mining Laser: ^#a94db3;+340% Dmg
-^cyan;Immune^reset;: Burning, Proto, Pressure, Oxygen, Gas", 
+  "description" : "^cyan;Headlamp 3^reset;
+^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Gravity Normalization^reset;
+^yellow;^reset; Mining Laser: Damage x^green;3.4^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Burning, Proto-Poison, Pressure, Oxygen, Gas, Ice Slip, Grav-Rain", 
   "shortdescription" : "Warp Miner Helm",
-  "category" : "t5armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -18,7 +19,7 @@ Mining Laser: ^#a94db3;+340% Dmg
   "mask" : "mask.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "fuwarphunterhead" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fuwarphunterhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,6 +40,16 @@ Mining Laser: ^#a94db3;+340% Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.033334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.03
     }
   ],
 
@@ -48,14 +59,6 @@ Mining Laser: ^#a94db3;+340% Dmg
     {
       "stat" : "fu_warphunterset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.09
     }
   ],
 
@@ -79,5 +82,7 @@ Mining Laser: ^#a94db3;+340% Dmg
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

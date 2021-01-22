@@ -203,9 +203,10 @@ end
 -- param interactObject
 function interactObject(args)
   if args.entity == nil then return false end
-
-  world.callScriptedEntity(args.entity, "onInteraction", {sourceId = entity.id()})
-  return true
+  if not world.entityExists(args.entity) then return false end
+  if not (world.entityType(args.entity) == "object") then return false end
+  local pass,result=pcall(world.callScriptedEntity,args.entity, "onInteraction", {sourceId = entity.id()})
+  return (pass and result) or false
 end
 
 -- param objectEntity
@@ -329,7 +330,7 @@ function dungeonId(args, board)
   else return false, {dungeonId = 0}
   end
 end
-  
+
 function spawnItem(args)
   world.spawnItem(args.item, args.position, args.count, args.parameters, args.velocity, args.intangibleTime)
   return true

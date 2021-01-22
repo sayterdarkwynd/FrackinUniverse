@@ -28,7 +28,7 @@ function init()
 
   self.targetSearchTimer = 0
   self.targetHoldTimer = 0
-  
+
   self.lastAggressGroundPosition = {0, 0}
   self.stuckCount = 0
   self.stuckPosition = {0, 0}
@@ -51,7 +51,7 @@ function init()
   self.jumpTimer = 0
   self.jumpCooldown = 0
   self.jumpMaxCooldown = 1
-  
+
   local states = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+State)%.lua")
   local attacks = stateMachine.scanScripts(config.getParameter("scripts"), "(%a+Attack)%.lua")
   for _, attack in pairs(attacks) do
@@ -221,8 +221,8 @@ function damage(args)
         world.callScriptedEntity(args.sourceId, "monsterKilled", entity.id())
       end
     else
-      if args.sourceId ~= self.target and args.sourceId ~= 0 and entity.isValidTarget(args.sourceId) then 
-        setTarget(args.sourceId) 
+      if args.sourceId ~= self.target and args.sourceId ~= 0 and entity.isValidTarget(args.sourceId) then
+        setTarget(args.sourceId)
       end
     end
   end
@@ -290,7 +290,7 @@ function update(dt)
     end
     animator.setAnimationRate(animSpeed)
   end
-  
+
   if stunned then
     --do nothin
   elseif inState == "stunState" or inState == "fleeState" then
@@ -302,7 +302,7 @@ function update(dt)
     if not inSkill() and hasTarget() then
       --calculate skill positions relative to target
       updateSkillOptions()
-      
+
       --this should end up in skills, approach, or fall back into flee
       if inState ~= "approachState" then self.state.pickState() end
     end
@@ -640,7 +640,7 @@ function updateSkillOptions()
   for _, option in pairs(self.skillOptions) do
     option.approachDelta = world.distance(option.approachPoint, mcontroller.position())
     option.approachDistance = world.magnitude(option.approachDelta)
-    
+
     --score with custom hook or default method
     if type(_ENV[option.skillName].scoreOption) == "function" then
       option.score = _ENV[option.skillName].scoreOption(option)
@@ -653,7 +653,7 @@ function updateSkillOptions()
       option.score = option.score - self.skillChains[option.skillName]
     end
   end
-  
+
   --rank options
   table.sort(self.skillOptions, function(a,b) return a.score > b.score end)
 end

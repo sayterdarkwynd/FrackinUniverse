@@ -3,12 +3,12 @@
   "price" : 220,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Infused with moon-laced hate",
+  "description" : "Infused with moon-laced hate.",
   "shortdescription" : "Telebrium Hammer",
   "tooltipKind" : "hammer",
   "category" : "hammer",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer","effigium", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","hammer","telebrium", "upgradeableWeapon"],
   "level" : 2,
   "inventoryIcon" : "telebriumhammer.png",
   "animation" : "hammer.animation",
@@ -32,7 +32,10 @@
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
     "fireTime" : 1.2,
-    "baseDps" : 12
+    "baseDps" : 12,
+    "damageConfig" : {
+      "damageSourceKind" : "poison"
+    }
   },
 
   "altAbilityType" : "shockwave",

@@ -5,9 +5,9 @@ function init()
 	message.setHandler("setTimerValues",setValues)
 	message.setHandler("sendConfig",sendConfig)
 	message.setHandler("resetTimerValues",resetValues)
-	storage.leftValue=storage.leftValue or 26
-	storage.midValue=storage.midValue or 2
-	storage.rightValue=storage.rightValue or 2
+	storage.leftValue=numFix(storage.leftValue or 26)
+	storage.midValue=numFix(storage.midValue or 2)
+	storage.rightValue=numFix(storage.rightValue or 2)
 	storage.state=-1
 	runCircuit()
 	--doAnim()
@@ -16,7 +16,7 @@ function init()
 end
 
 function runCircuit()
-	
+
 	if object.isInputNodeConnected(0) and not object.getInputNodeLevel(0) then
 		storage.timeup=0
 		storage.state=-1
@@ -76,4 +76,11 @@ end
 
 function onInteraction(args)
   return {"ScriptPane", guiConfig}
+end
+
+function numFix(v)
+	if type(v) ~= "number" then
+		v=tonumber(v)
+	end
+	return(v)
 end

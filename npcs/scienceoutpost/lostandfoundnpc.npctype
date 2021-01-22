@@ -1,7 +1,7 @@
 {
 	"type": "fulostandfoundnpc",
 	"baseType": "merchant",
-	"damageTeamType": "ghostly",
+	"damageTeamType": "friendly",
 	
 	"npcname" : "Khe",
 	"identity" : {
@@ -9,8 +9,6 @@
 		"gender" : "female",
 		"hairGroup" : "hair",
 		"hairType" : "1",
-		"facialHairGroup" : "markings",
-		"facialHairType" : "1",
 		
 		
 		
@@ -30,6 +28,8 @@
 	},
 	
 	"scriptConfig": {
+		"offeredQuests" : [ "khe_fabric","khe_lantern" ],
+		"turnInQuests": ["kevin_feedkhe","khe_fabric","khe_lantern"],
 		"merchant": {
 			"waitTime": 40,
 			"storeRadius": 8,
@@ -40,7 +40,7 @@
 			},
 			"buyFactorRange": [1.0, 1.0],
 			"sellFactorRange": [0.2, 0.2],
-			"numItems": 20,
+			"numItems": 100,
 
 			"paneLayoutOverride": {
 				"windowtitle": {
@@ -104,9 +104,13 @@
 	"items": {
 		"override": [
 			[0, [{
-				"head": [{"parameters":{"directives":"","colorIndex":1},"count":1,"name":"captainshead"}],
-				"chest": ["densiniumchest"],
-				"legs": ["densiniumlegs"]
+				"head": ["densiniumheadkhe"],
+				"headCosmetic": [{"parameters":{"directives":"","colorIndex":1},"count":1,"name":"captainshead"}],
+				"chest": ["densiniumchestkhe"],
+				"legs": ["densiniumlegskhe"],
+				"back": ["battlepack3"],
+				"backCosmetic": ["hiderback"],
+				"primary": ["khetastrophae"]
 			}]]
 		]
 	},

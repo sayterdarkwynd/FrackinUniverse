@@ -1,19 +1,28 @@
 {
-  "itemName" : "energiflower",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "energiflowericon.png",
-  "description" : "Can be used as fuel.
-Effect:
-^cyan;+35% Energy Regen^reset;",
-  "shortdescription" : "Energiflower",  
-    "category" : "food",
+	"itemName": "energiflower",
+	"inventoryIcon": "energiflowericon.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+	"fuelAmount": 4,
 
-  "fuelAmount" : 4,
-  "effects" : [ [
-      {
-        "effect" : "energyregenfu35",
-        "duration" : 120
-      }
-    ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+17.5% E. Regen & -8.25% E. Regen Block^reset;: 2m\n^blue;+4 ^blue;Fuel",
+	"shortdescription": "Energiflower",
+
+	"effects": [
+		[{
+			"effect": "energyregenfu35",
+			"duration": 120
+		}]
+	],
+	"blockingEffects": [
+		"energyregenfu50",
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu20",
+		"energyregenfu05",
+		"energyregenfu40"
+	]
 }

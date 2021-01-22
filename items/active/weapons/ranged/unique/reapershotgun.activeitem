@@ -1,14 +1,14 @@
 {
   "itemName" : "reapershotgun",
-  "price" : 120,
+  "price" : 600,
   "inventoryIcon" : "reapershotgun.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Freezing-cold blasts of dark matter flechettes.
+  "description" : "Fires freezing dark matter flechettes.
 ^cyan;Freezes enemies^reset;",
   "shortdescription" : "Tk-2 Showstopper",
   "category" : "shotgun",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Shotgun",
   "itemTags" : ["weapon","ranged","shotgun", "upgradeableWeapon"],
@@ -34,14 +34,14 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 1.6,
-    "baseDps" : 8,
-    "energyUsage" : 31,
+    "fireTime" : 0.75,
+    "baseDps" : 9.5,
+    "energyUsage" : 26,
     "inaccuracy" : 0.07,
 
     "projectileCount" : 6,
@@ -49,7 +49,8 @@
     "projectileType" : "iceplasma",
     "projectileParameters" : {
       "speed" : 100,
-      "statusEffects" : [ "stun" ]
+      "damageKind" : "hoarfrost",
+      "statusEffects" : [ "slow" ]
     },
 
     "stances" : {
@@ -81,7 +82,15 @@
 
   "critChance" : 5,
   "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 8,
+  "reloadTime" : 1, 
   "isReloader" : 1,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 900,  
+  
   "altAbilityType" : "forcebubble",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

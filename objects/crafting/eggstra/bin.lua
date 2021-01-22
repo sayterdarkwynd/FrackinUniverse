@@ -18,7 +18,7 @@ function fillPercent(container)
     local item = world.containerItemAt(container, i)
     if item ~= nil then
       count = count + 1
-      
+
       if size == 1 then
         size = 1000
         count = item.count

@@ -1,7 +1,7 @@
 function init()
-  if status.resourceMax("health") < config.getParameter("minMaxHealth", 0) then
-    effect.expire()
-  end
+	if (status.resourceMax("health") < config.getParameter("minMaxHealth", 0)) or (not world.entityExists(entity.id())) or ((world.entityType(entity.id())== "monster") and (world.callScriptedEntity(entity.id(),"getClass") == 'bee')) then
+		effect.expire()
+	end
 
   self.blinkTimer = 0
 end
@@ -22,11 +22,11 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end
 
 function explode()
-  if not self.exploded then
+  if not self.exploded and not status.statPositive("deathbombDud") then
     local sourceEntityId = effect.sourceEntity() or entity.id()
     local sourceDamageTeam = world.entityDamageTeam(sourceEntityId)
     local bombPower = status.resourceMax("health") * config.getParameter("healthDamageFactor", 1.0)
@@ -44,5 +44,8 @@ function explode()
     }
     world.spawnProjectile("invisibleprojectile", mcontroller.position(), 0, {0, 0}, false, projectileConfig)
     self.exploded = true
+	if status.isResource("stunned") then
+		status.setResource("stunned",0)
+	end
   end
 end

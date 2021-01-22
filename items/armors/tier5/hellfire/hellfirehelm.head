@@ -6,12 +6,12 @@
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "^orange;Set Bonuses^reset;:
-Fire Nova on hit
-^#a94db3;+35%^reset; Fire Resist
-Flamethrower: ^#a94db3;+25% Dmg
-^green;Immune^reset;: Heat, Burning",
+^yellow;^reset; ^cyan;Fire Nova when hit^reset;
+^yellow;^reset; ^#ac522b;Glow^reset;
+^yellow;^reset; Flamethrower/Hellfire: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Deadly Heat, Burning",
   "shortdescription" : "Hellfire Helm",
-  "category" : "t5armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -19,7 +19,7 @@ Flamethrower: ^#a94db3;+25% Dmg
   "mask" : "mask.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armortank" : "hellfirehelm" },
+  //"collectablesOnPickup" : { "fu_armortank" : "hellfirehelm" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -40,6 +40,11 @@ Flamethrower: ^#a94db3;+25% Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -48,10 +53,8 @@ Flamethrower: ^#a94db3;+25% Dmg
     {
       "stat" : "fu_hellfireset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.1
     }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

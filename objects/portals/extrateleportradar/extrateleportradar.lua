@@ -4,13 +4,13 @@ function init()
   self.detectArea = config.getParameter("detectArea")
   self.detectArea[1] = object.toAbsolutePosition(self.detectArea[1])
   self.detectArea[2] = object.toAbsolutePosition(self.detectArea[2])
-  
+
   storage.uuid = storage.uuid or sb.makeUuid()
   object.setInteractive(true)
-  
+
   message.setHandler("onTeleport", function(message, isLocal, data)
       if not storage.vanishTime then
-        storage.vanishTime = world.time() + config.getParameter("vanishTime")
+        storage.vanishTime = world.time() + config.getParameter("vanishTime",15)
       end
     end)
 
@@ -22,7 +22,7 @@ function update(dt)
       includedTypes = {"player"},
       boundMode = "CollisionArea"
     })
-	
+
 if storage.vanishTime and world.time() > storage.vanishTime then
     object.smash()
   end

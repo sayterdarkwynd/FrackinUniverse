@@ -4,12 +4,12 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+5%^reset; Poison Resist
-\n^orange;Set Bonuses^reset;:
-Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; Health x^green;1.1^reset;
+^yellow;^reset; Shotgun/Assault Rifle: Damage x^green;1.15^reset;",
 
   "shortdescription" : "Telebrium Armor",
-  "category" : "t2armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -25,7 +25,7 @@ Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
   },
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
-  "collectablesOnPickup" : { "fu_armorranged" : "fumantizitier2chest" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "fumantizitier2chest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,6 +46,11 @@ Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -54,10 +59,6 @@ Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
     {
       "stat" : "militiasetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
     }
   ],
 
@@ -86,5 +87,7 @@ Shotgun/Assault Rifle: ^cyan;+15%^reset; Dmg",
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

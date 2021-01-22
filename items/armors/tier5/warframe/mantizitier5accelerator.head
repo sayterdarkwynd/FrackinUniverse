@@ -5,10 +5,10 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;: 
-Assault Rifle, Pistol: ^#a94db3;+25%^reset; Dmg
-\n^cyan;Immune^reset;: Pressure, Gas", 
+^yellow;^reset; Assault Rifle, Pistol: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Gas", 
   "shortdescription" : "Warframe Helmet",
-  "category" : "t5armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
@@ -16,7 +16,7 @@ Assault Rifle, Pistol: ^#a94db3;+25%^reset; Dmg
   "mask" : "mask.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorranged" : "fumantizitier5ahead" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "fumantizitier5ahead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -76,7 +76,9 @@ Assault Rifle, Pistol: ^#a94db3;+25%^reset; Dmg
 
   ],
 
-  "learnBlueprintsOnPickup" : [
-    "fumantizitier6ahead"
-  ]
+ // "learnBlueprintsOnPickup" : [
+//    "fumantizitier6ahead"
+//],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

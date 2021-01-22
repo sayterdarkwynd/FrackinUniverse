@@ -2,7 +2,7 @@
   "objectName" : "thruster_floran1",
   "rarity" : "Common",
   "description" : "A space craft thruster of floran design.",
-  "shortdescription" : "Large Thruster",
+  "shortdescription" : "Large Thruster (Floran)",
   "race" : "generic",
   "category" : "decorative",
   "price" : 10,
@@ -11,26 +11,22 @@
   "inventoryIcon" : "thruster_floran1.png",
   "orientations" : [
     {
-      "imageLayers" : [ { "image": "thruster_floran1.png:<color>.<frame>", "fullbright": true }, { "image": "thruster_floran1.png:<color>.<frame>" } ],
-      "flipImages" : false,
-      "lightPosition" : [0, 0],
-      "imagePosition" : [0,-52],
-      "frames" : 1,
-      "animationCycle" : 1.0,
-      "direction" : "right",
-      "spaceScan" : 0.1,
-      "anchors" : [ "right" ]
+      "image": "thruster_floran1.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "collision" : "solid",
+	  "flipImages": true,
+      "direction" : "left",
+      "anchors" : [ "left" ],
+      "spaceScan" : 0.1
     },
     {
-      "imageLayers" : [ { "image": "thruster_floran1.png:<color>.<frame>", "fullbright": true }, { "image": "thruster_floran1.png:<color>.<frame>" } ],
-      "flipImages" : true,
-      "lightPosition" : [0, 0],
-      "imagePosition" : [0,-52],
-      "frames" : 1,
-      "animationCycle" : 1.0,
-      "direction" : "left",
-      "spaceScan" : 0.1,
-      "anchors" : [ "left" ]
+      "image": "thruster_floran1.png:<color>.<frame>",
+      "imagePosition" : [-96, 0],
+      "collision" : "solid",
+	  "flipImages": false,
+      "direction" : "right",
+      "anchors" : [ "right" ],
+      "spaceScan" : 0.1
     }    
   ]
 }

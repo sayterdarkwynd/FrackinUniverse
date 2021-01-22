@@ -4,13 +4,15 @@
 	"icon" : "/interface/statuses/medicalStationSpecials/trollblood.png",
 
 	"defaultDuration" : 5,
-	"scripts" : [ "trollblood.lua" ],
+	"scripts" : [ "trollblood.lua" ,"/stats/effects/fu_genericStatApplier.lua"],
 	
 	"effectConfig" : {
 		"regenInterval" : 0.5,
 		"regenDuration" : 5, // regens the 'regenPcnt' amount over x seconds
 		"regenPcnt" : 40, // percent from damage taken to regenerate
-		"healthReductionPcnt" : 20,
-		"energyBlockIncrease" : 0.5
+		"stats": [
+			{"stat": "maxHealth","effectiveMultiplier": 0.8},
+			{"stat": "energyRegenBlockTime","baseMultiplier": 1.5}
+		]
 	}
 }

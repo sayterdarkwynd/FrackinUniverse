@@ -4,11 +4,11 @@
     "colonyTags" : [ "science" ],
   "category" : "wire",
   "price" : 300,
-  "description" : "Uses sunlight to generate electricity. It can generate much more power than smaller units. Can potentially generate over 8.5W.",
+  "description" : "Uses sunlight to generate electricity. It can generate much more power than smaller units. Can potentially generate over ^orange;8.5W^reset;.",
   "shortdescription" : "^cyan;Solar Array^white;",
   "race" : "generic",
   "printable" : false,
-  "learnBlueprintsOnPickup" : [ "isn_thermalgenerator", "fu_conduit", "fu_solararrayadv" ],
+//  "learnBlueprintsOnPickup" : [ "isn_thermalgenerator", "fu_conduit", "fu_solararrayadv" ],
 
   "inventoryIcon" : "fu_solararray_icon.png",
   "orientations" : [
@@ -27,12 +27,12 @@
   },
   "animationPosition" : [0, 0],
   
-  "scripts" : [ "/scripts/power.lua","/objects/power/isn_solarpanel.lua" ],
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/isn_solarpanel.lua" ],
   "scriptDelta" : 60,
   
   "outputNodes" : [ [2, 1] ],
   
   "isn_powerSupplier" : true,
   "powertype" : "output",
-  "powerLevel" : 2
+  "powerLevel" : 2.5
 }

@@ -1,29 +1,74 @@
 [
-	[
-	{ "op": "test", "path": "/itemTags", "inverse" : false },
-	{"op": "add","path": "/itemTags","value": []},
-	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
+	[{
+			"op": "test",
+			"path": "/itemTags",
+			"inverse": true
+		},
+		{
+			"op": "add",
+			"path": "/itemTags",
+			"value": []
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
 	],
-	[
-	{ "op": "test", "path": "/itemTags", "inverse" : true },
-	{"op": "add","path": "/itemTags/-","value": "upgradeableWeapon"}
+	[{
+			"op": "test",
+			"path": "/itemTags"
+		},
+		{
+			"op": "add",
+			"path": "/itemTags/-",
+			"value": "upgradeableWeapon"
+		}
 	],
-	[
-	  {
-	    "op": "replace",
-	    "path": "/description",
-	    "value": "Set Bonus:\nElectric Resistance ^green;+15%^reset;\n^green;+15%^reset; Max Energy (Shield)"
-	  },	
-	  {
-	    "op": "add",
-	    "path": "/statusEffects",
-	    "value": [
-	      "fusetbonusmanager",
-	      {
-		"stat": "glitchtier1setcount",
-		"amount": 1
-	      }
-	    ]
-	  }	
-	]	
+	[{
+			"op": "replace",
+			"path": "/description",
+			"value": "^orange;Set Bonuses^reset;:
+^yellow;^reset; Blunt/Axe: Damage x^green;1.1^reset;"
+		},
+		{
+			"op": "replace",
+			"path": "/tooltipKind",
+			"value": "armornew2"
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "electricResistance",
+				"amount": 0.033334
+			}
+		},
+		{
+			"op": "add",
+			"path": "/leveledStatusEffects/-",
+			"value": {
+				"levelFunction": "fuArmorResistMultiplier",
+				"stat": "cosmicResistance",
+				"amount": 0.033334
+			}
+		},	
+		{
+			"op": "add",
+			"path": "/statusEffects",
+			"value": [
+				    "glitchtier1setbonusnew",
+				{
+					"stat" : "fu_glitchtier1setnew_chest",
+					"amount" : 1
+				}
+			]
+		},
+		{
+			"op": "add",
+			"path": "/builder",
+			"value": "/items/buildscripts/fubuildarmor.lua"
+		}
+	]
 ]

@@ -5,24 +5,24 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+100s^reset; Oxygen
-^green;+8%^reset; Energy Regen
-\n^cyan;Immune^reset;:Gas, Proto-Poison",
+^yellow;^reset; +^green;100^reset;s Oxygen
+^yellow;^reset; +^green;8^reset;% Energy Regen
+^yellow;^reset; ^cyan;Immune^reset;:Gas, Proto-Poison",
   "shortdescription" : "Scout Greaves",
-  "category" : "t3armoru",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
-  "learnBlueprintsOnPickup" : [
-    "ff_scoutchest_melee",
-    "ff_scouthelm_melee",
-    "ff_scoutpants_melee"
-  ],
+//  "learnBlueprintsOnPickup" : [
+//    "ff_scoutchest_melee",
+ //   "ff_scouthelm_melee",
+//    "ff_scoutpants_melee"
+//  ],
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorranged" : "ff_scoutpants" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "ff_scoutpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -52,5 +52,7 @@
       "stat" : "scoutsetcount",
       "amount" : 1
     }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

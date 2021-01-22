@@ -17,11 +17,12 @@ function init()
   self.lastStat = nil -- Last detected "count" stat
   -- This line just removes any of the old persistent set bonus effects.
   status.clearPersistentEffects("setbonus")
-  
-  script.setUpdateDelta(100) -- This seems to translate to  ~1.6 seconds (YMMV)
+
+  script.setUpdateDelta(100) -- This seems to translate to  ~1.6 seconds (YMMV) --1.4 (Khe)
 end
 
 function uninit()
+	--status.addEphemeralEffect("fusetbonusmanagercleanup")
   --[[
       NOTE: If the player changes their equipped armour pieces one by one,
       will be nothing to do here as the update() script will have already
@@ -40,7 +41,7 @@ function uninit()
   ]]--
 end
 
-function update()
+function update(dt)
   local newSet = nil
   -- Check the "count" stat found last update() before looping over others.
   if (self.lastStat ~= nil and status.stat(self.lastStat) > 0) then
@@ -68,7 +69,7 @@ function update()
       -- This is possible if sets were swapped all at once (via mannequin).
       status.removeEphemeralEffect(self.activeSet)
     end
-    status.addEphemeralEffect(newSet, 10)
+    status.addEphemeralEffect(newSet, dt*1.1)
   elseif (self.activeSet ~= nil) then
     status.removeEphemeralEffect(self.activeSet)
   end

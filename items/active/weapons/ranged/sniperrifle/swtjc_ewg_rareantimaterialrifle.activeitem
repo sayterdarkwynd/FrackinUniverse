@@ -3,9 +3,9 @@
   "price" : 1200,
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "A high-powered rifle that sacrifices rate-of-fire for enough firepower to cut through armor like a hot knife through butter.",
+  "description" : "A high-powered rifle that sacrifices rate-of-fire for enough firepower to cut through armor.",
   "shortdescription" : "Rare Anti-Material Rifle",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_antiMaterialRifle",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
@@ -24,8 +24,8 @@
     "class" : "GunFire",
 
     "fireTime" : [1.5, 3.0],
-    "baseDps" : [7.25, 9.6],
-    "energyUsage" : [28.5, 31.5],
+    "baseDps" : [6.25, 9.6],
+    "energyUsage" : [28.5, 37.5],
     "inaccuracy" : 0.005,
     "projectileParameters" : {
       "knockbackRange" : [20, 40]
@@ -64,10 +64,22 @@
     }
   },
 
+  "critChance" : 1,
+  "critBonus" : 5,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [3,9],
+  "reloadTime" : [1.7,3.1],
+  "isSniper" : 1,
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1500,
+
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
     "nameGenerator" : "swtjc_ewg_antimatnames.config:nameGen",
     "elementalType" : [
+      "physical",
       "fire",
       "ice",
       "electric",
@@ -77,32 +89,36 @@
       "cosmic"
     ],
     "elementalConfig" : {
+      "physical" : {
+        "primaryAbility" : { "projectileType" : "fuphysicalbeam", "projectileParameters" : { "statusEffects" : [ "stun" ] } },
+        "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
+      },  
       "fire" : {
-        "primaryAbility" : { "projectileType" : "fireplasma", "projectileParameters" : { "statusEffects" : [ "burning" ] } },
+        "primaryAbility" : { "projectileType" : "heatbeam", "projectileParameters" : { "statusEffects" : [ "burning" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
       },
       "ice" : {
-        "primaryAbility" : { "projectileType" : "iceplasma", "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
+        "primaryAbility" : { "projectileType" : "fuicebeam2", "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
       },
       "poison" : {
-        "primaryAbility" : { "projectileType" : "poisonplasma", "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
+        "primaryAbility" : { "projectileType" : "fupoisonbeam", "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
       },
       "electric" : {
-        "primaryAbility" : { "projectileType" : "electricplasma", "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
+        "primaryAbility" : { "projectileType" : "fuelectricbeam", "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
       },
       "radioactive" : {
-        "primaryAbility" : { "projectileType" : "radioactiveplasma", "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
+        "primaryAbility" : { "projectileType" : "furadioactivebeam", "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
       },
       "shadow" : {
-        "primaryAbility" : { "projectileType" : "shadowplasma", "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
+        "primaryAbility" : { "projectileType" : "fushadowbeam", "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
       },
       "cosmic" : {
-        "primaryAbility" : { "projectileType" : "cosmicplasma", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
+        "primaryAbility" : { "projectileType" : "fucosmicbeam", "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } },
         "fireSounds" : [ "/sfx/gun/pulsecannon_blast1.ogg", "/sfx/gun/elemental_lance.ogg", "/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun2.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg", "/sfx/gun/plasma_sniper1.ogg", "/sfx/gun/plasma_sniper2.ogg", "/sfx/gun/plasma_sniper3.ogg", "/sfx/gun/plasma_sniper4.ogg" ]
       } 
     },
@@ -174,7 +190,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 5
+  }] 
 }

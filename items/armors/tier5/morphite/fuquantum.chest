@@ -5,13 +5,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-  "description" : "^orange;Set Bonuses^reset;:  
-^#a94db3;+27%^reset; Fire, Ice and Radiation resistances
-^cyan;+21%^reset; all other resists",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^cyan;Immune^reset;: Sulphuric Acid",
   "shortdescription" : "Morphite Chestpiece",
-  "category" : "t5armoru",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
-  "learnBlueprintsOnPickup" : [ "fuquantumchestadv" ], 
+//  "learnBlueprintsOnPickup" : [ "fuquantumchestadv" ], 
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
     "body" : "chestm.png",
@@ -26,7 +25,7 @@
   },
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorranged" : "fuquantumchest" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "fuquantumchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,42 +46,48 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.03
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.023334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.023334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.023334
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.023334
     }
   ],
 
   "statusEffects" : [
-    "morphitesetbonus",
     {
       "stat" : "fu_morphiteset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.09
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.09
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.09
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -110,5 +115,7 @@
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

@@ -12,7 +12,7 @@ function init()
   }
   self.groundMovementParameter = {
 	minimumLiquidPercentage = 0.01
-  }  
+  }
    script.setUpdateDelta(5)
 end
 
@@ -24,13 +24,13 @@ function update(dt)
       world.placeObject("waterwalkplatform", vec2.add(mcontroller.position(),{-3,-3}))
       world.placeObject("waterwalkplatform", vec2.add(mcontroller.position(),{3,-3}))
     end
-    
-   local inLiquid = mcontroller.liquidPercentage() > 0.001  
+
+   local inLiquid = mcontroller.liquidPercentage() > 0.001
    if inLiquid then
      mcontroller.controlParameters(self.liquidMovementParameter)
    end
 end
 
 function uninit()
-  
+
 end

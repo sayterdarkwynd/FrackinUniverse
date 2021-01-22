@@ -17,9 +17,9 @@ function update(dt)
   -- if self.flip > 2 then
   --   self.flip = 0
   -- end
-
-  world.callScriptedEntity(self.screwProj, "projectile.setTimeToLive", 3.0)
-
+  if  self.screwProj and world.entityExists( self.screwProj) then
+    world.callScriptedEntity(self.screwProj, "projectile.setTimeToLive", 3.0)
+  end
 
   if self.colorTimer < 0 then
     if not self.flip then
@@ -37,7 +37,9 @@ function update(dt)
   --self.flip = self.flip + 1
 
   if mcontroller.onGround() then
+    if  self.screwProj and world.entityExists( self.screwProj) then
     world.callScriptedEntity(self.screwProj, "projectile.die")
+	end
     effect.expire()
     animator.stopAllSounds("screwattack_loop")
   else
@@ -57,7 +59,9 @@ function update(dt)
 end
 
 function uninit()
+  if  self.screwProj and world.entityExists( self.screwProj) then
   world.callScriptedEntity(self.screwProj, "projectile.die")
+  end
   effect.expire()
   animator.stopAllSounds("screwattack_loop")
 end

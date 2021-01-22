@@ -1,4 +1,4 @@
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 
 function init()
   power.init()
@@ -24,7 +24,7 @@ function onInteraction(args)
 end
 
 function update(dt)
-  if power.consume(config.getParameter('isn_requiredPower')) then 
+  if power.consume(config.getParameter('isn_requiredPower')) then
 	animator.setAnimationState("anim", "on")
 	object.setLightColor({30, 50, 90})
 	storage.haspower = true

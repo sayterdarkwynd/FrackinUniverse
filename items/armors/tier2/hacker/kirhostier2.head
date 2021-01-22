@@ -4,14 +4,13 @@
   "inventoryIcon" : "icons.png:head",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;+4%^reset; Electric Resist
-\n^orange;Set Bonuses^reset;:  
-^#a94db3;+25%^reset; Energy Regen
-Striker: ^green;+1%^reset; Crit
-^cyan;Immune^reset;: Gas",
+  "description" : "^orange;Set Bonuses^reset;:  
+^yellow;^reset; +^green;25^reset;% Energy Regen
+^yellow;^reset; Striker: +^green;1^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Gas",
 
   "shortdescription" : "Hacker Mask",
-  "category" : "t2armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -19,23 +18,23 @@ Striker: ^green;+1%^reset; Crit
   "mask" : "mask.png",
 
   "itemTags" : [ "upgradeableWeapon" ],
-  "learnBlueprintsOnPickup" : [
-    "masqueradechest",
-    "masqueradehead",
-    "masqueradepants"
-  ],
+ // "learnBlueprintsOnPickup" : [
+ //   "masqueradechest",
+ //   "masqueradehead",
+//    "masqueradepants"
+//  ],
   "level" : 2,
-  "collectablesOnPickup" : { "fu_armorranged" : "kirhostier2head" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "kirhostier2head" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
       "stat" : "powerMultiplier",
-      "baseMultiplier" : 1.15
+      "baseMultiplier" : 1.12
     },
     {
       "levelFunction" : "standardArmorLevelProtectionMultiplier",
       "stat" : "protection",
-      "amount" : 0.25
+      "amount" : 0.22
     },
     {
       "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
@@ -46,6 +45,11 @@ Striker: ^green;+1%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 1
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.026667
     }
   ],
 
@@ -54,11 +58,7 @@ Striker: ^green;+1%^reset; Crit
     {
       "stat" : "hackersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "eletricResistance",
-      "amount" : 0.04
-    }    
+    }
   ],
 
   "colorOptions" : [
@@ -97,5 +97,7 @@ Striker: ^green;+1%^reset; Crit
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

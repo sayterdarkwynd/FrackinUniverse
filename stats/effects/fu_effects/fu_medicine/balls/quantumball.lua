@@ -17,6 +17,6 @@ end
 function pulse()
 	effectUtil.effectAllInRange("timefreezeNoVFX",range,effect.duration())
 	effectUtil.effectAllInRange("invulnerable",range,effect.duration())
-	
+
 	effectUtil.effectPlayersInRange("superdarkstatUnblockableHidden",range,effect.duration())
 end

@@ -1,0 +1,76 @@
+[
+  {
+    "op": "add",
+    "path": "/sounds",
+    "value": {
+      "yep": ["/sfx/weapons/shieldblock.ogg"],
+      "nope": ["/sfx/melee/blunt_hit_metal3.ogg"],
+      "ready": ["/sfx/statuseffects/powerup.ogg"]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/particleEmitters/cantheal",
+    "value": {
+      "enabled": true,
+      "emissionRate": 0.02,
+      "particles": [
+        {
+          "particle": {
+            "type": "text",
+            "text": "+",
+            "color": [100,100,100,222],
+            "light": [50,50,50],
+            "fullbright": true,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 0.5],
+            "finalVelocity" : [0, 1.0],
+            "size": 0.8,
+            "approach" : [0, 2],
+            "angularVelocity": 1,
+            "timeToLive": 0.5,
+            "layer": "front",
+            "destructionAction": "shrink",
+            "destructionTime": 0.4,
+            "variance": {"initialVelocity": [1,1]},
+            "flippable": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "op": "add",
+    "path": "/particleEmitters/cantheal2",
+    "value": {
+      "enabled": true,
+      "emissionRate": 1,
+      "particles": [
+        {
+          "particle": {
+            "type": "text",
+            "text": "^green;+",
+            "color": [200,220,200,222],
+            "light": [80,160,80],
+            "fullbright": true,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 0.5],
+            "finalVelocity" : [0, 1.0],
+            "size": 1.1,
+            "approach" : [0, 2],
+            "angularVelocity": 1,
+            "timeToLive": 0.7,
+            "layer": "front",
+            "destructionAction": "shrink",
+            "destructionTime": 0.4,
+            "variance": {"initialVelocity": [1,1]},
+            "flippable": false
+          }
+        }
+      ]
+    }
+  }
+
+]

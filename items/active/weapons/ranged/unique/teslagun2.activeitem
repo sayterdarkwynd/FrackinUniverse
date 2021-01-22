@@ -1,12 +1,12 @@
 {
   "itemName" : "teslagun2",
-  "price" : 660,
+  "price" : 860,
   "inventoryIcon" : "teslagun2.png",
   "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "A supreme long-ranged option for snipers
-^yellow;Inflicts Electrified^reset;
-^cyan;Friends love it!^reset;",
+  "rarity" : "legendary",
+  "description" : "A heavily modified Tesla gun.
+^yellow;Tricky, but dangerous.^reset;
+^cyan;Decimating Alt Fire^reset;",
   "shortdescription" : "^cyan;Mercy^reset;",
   "level" : 4,
   "tooltipKind" : "gununique",
@@ -51,33 +51,33 @@
     "scripts" : ["/items/active/weapons/ranged/abilities/thea-activelightningfire.lua"],
     "class" : "TheaActiveLightningFire",
     "fireTime" : 0.1,
-    "baseDps" : 15,
-    "energyUsage" : 50.0,
+    "baseDps" : 50,
+    "energyUsage" : 10.0,
     
     "damageConfig" : {
       "statusEffects" : [ "electrified" ],
-      "damageSourceKind" : "electric",
+      "damageKind" : "electric",
       "knockback" : 1
     },
-        "lightningDistanceGround" : 35,
-	"lightningDistanceEnemies" : 8.0,
+  "lightningDistanceGround" : 45,
+	"lightningDistanceEnemies" : 25.0,
 	
 	//Lightning config
 	"lightningAmount" : 3,
 	"lightningWidth" : 1.0,
-	"lightningForks" : 0,
+	"lightningForks" : 0.1,
 	"lightningBranchingAmount" : 0.10,
-	"lightningDisplacementMin" : 0.8,
+	"lightningDisplacementMin" : 0.2,
 	"lightningDisplacementMax" : 2.8,
 	"lightningColour" : [171, 205, 252, 200],
 	
 	//Secondary lightning config
 	"lightningAmount2" : 1,
 	"lightningWidth2" : 1.0,
-	"lightningForks2" : 0,
+	"lightningForks2" : 0.05,
 	"lightningBranchingAmount2" : 0.10,
 	"lightningDisplacement2" : 0.25,
-	"lightningColour2" : [171, 205, 252, 200],
+	"lightningColour2" : [222, 66, 252, 200],
 	"lightningStartOffset" : [-1.125, 0.0],
 	"lightningEndOffset" : [-0.5, 0.0],
 	
@@ -116,7 +116,7 @@
 
   "altAbility": {
     "name" : "Wrath of Thor",
-    "baseDps" : 2.4,
+    "baseDps" : 4.4,
     "energyUsage": 100,
     "fireTime" : 5,
     "maxDistance": 0,

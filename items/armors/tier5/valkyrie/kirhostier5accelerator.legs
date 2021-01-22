@@ -5,18 +5,17 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;: 
-Slowed Falls
-Increased Air mobility
-^cyan;Immune^reset;: Oxygen, Pressure, Gas, Radiation",
+^yellow;^reset; ^cyan;Slow Fall^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Pressure, Gas, Deadly Radiation",
   "shortdescription" : "Valkyrie Greaves",
-  "category" : "t5armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "kirhostier5apants" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "kirhostier5apants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -37,6 +36,11 @@ Increased Air mobility
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 0
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.016667
     }
   ],
 
@@ -45,11 +49,7 @@ Increased Air mobility
     {
       "stat" : "fu_valkyrieset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.05
-    }    
+    } 
   ],
 
   "colorOptions" : [
@@ -78,5 +78,7 @@ Increased Air mobility
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

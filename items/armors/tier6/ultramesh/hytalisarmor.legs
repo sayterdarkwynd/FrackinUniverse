@@ -6,19 +6,19 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
    "description" : "^orange;Set Bonuses^reset;: 
-Swim Boost 2^reset;
-^cyan;+40%^reset; Electric Resist 
-^#a94db3;+35%^reset; Shield Stamina, Block, Shield Regen
-^cyan;Immune^reset;: Pressure, Insanity, Aether", 
+^yellow;^reset; ^cyan;Swim Boost 2^reset;
+^yellow;^reset; +^green;35^reset;% Shield Stamina, Block, Shield Regen
+^yellow;^reset; Sword and Shield: Damage x^green;1.2^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Insanity, Aether",
   "shortdescription" : "Ultra-Mesh Greaves",
-  "category" : "t6armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 6,
-  "collectablesOnPickup" : { "fu_armorprotection" : "hytalisarmorpants" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "hytalisarmorpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,6 +39,11 @@ Swim Boost 2^reset;
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.028572
     }
   ],
 
@@ -47,10 +52,6 @@ Swim Boost 2^reset;
     {
       "stat" : "fu_ultrameshset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.10
     }
   ],
 
@@ -92,5 +93,7 @@ Swim Boost 2^reset;
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

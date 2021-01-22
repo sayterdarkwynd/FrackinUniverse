@@ -1,6 +1,6 @@
 {
   "name" : "aethersea",
-  "friendlyName" : "Aether Sea",
+  "friendlyName" : "Aether World",
   "statusEffects" : [ "aetherweathernew"  ],
 
   "airless" : false,
@@ -24,10 +24,11 @@
       {
         "select" : 2,
         "pool" : [
-          [ 0.4, "slugbluecritter" ],
-          [ 0.3, "sackbagcritter" ],
-          [ 0.3, "fubat" ],
-          [ 0.3, "shadowmoth" ]
+          [ 0.3, "slugbluecritter" ],
+          [ 0.2, "sackbagcritter" ],
+          [ 0.2, "fubat" ],
+          [ 0.1, "bee_stellar" ],
+          [ 0.2, "shadowmoth" ]
         ]
       },
       {
@@ -83,7 +84,7 @@
 
   "skyOptions" : [
     {
-      // light reddish
+   
       "mainColor" : [55, 0, 0],
 
       "morningColors" : [ [255, 224, 129], [252, 230, 164] ],
@@ -97,7 +98,7 @@
       "nightLightColor" : [70, 20, 0]
     },
     {
-      // pinkish all around
+ 
       "mainColor" : [75, 25, 0],
 
       "morningColors" : [ [255, 167, 152], [255, 163, 208] ],
@@ -111,7 +112,7 @@
       "nightLightColor" : [70, 20, 0]
     },
     {
-      // dark peachy massacre
+     
       "mainColor" : [0, 0, 0],
 
       "morningColors" : [ [200, 24, 0], [252, 30, 0] ],
@@ -125,7 +126,7 @@
       "nightLightColor" : [70, 20, 0]
     },
     {
-      // pretty in pink
+  
       "mainColor" : [90, 0, 0],
 
       "morningColors" : [ [230, 129, 204], [230, 164, 210] ],
@@ -177,7 +178,7 @@
       "eveningLightColor" : [50, 50, 100],
       "nightLightColor" : [12, 12, 50]
     },
-//white
+
     {
       "mainColor" : [0, 0, 0],
 
@@ -273,10 +274,10 @@
 
 
     "mainBlock" : "retexaetherdust",
-    "subBlocks" : [ "blackslime", "fuaetherstone" ],
+    "subBlocks" : [ "plasmamaterial", "fuaetherstone" ],
     "ores" : "aethersurface",
 
-  "parallax" : "/parallax/surface/aether.parallax",
+  "parallax" : "/parallax/surface/aethernew.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -289,10 +290,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/OceanExploration1.ogg","/music/alienlandscape.ogg","/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/m54.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Five-years.ogg", "/music/OTR.ogg","/music/depthsOfDespair.ogg","/music/OceanExploration1.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/m54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/Five-years.ogg","/music/OTR.ogg","/music/depthsOfDespair.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/m54.ogg", "/music/nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -660,6 +661,17 @@
         "treeStemList" : [ "darkvine" ],
         "treeFoliageList" : [ "" ]
       },
+      {
+        "mode": "floor",
+        "priority": 1.0,
+        "variants": 1,
+        "distribution": "/biomes/distributions.config:ffunCommon",
+        "type": "tree",
+        "treeFoliageHueShiftMax": 15,
+        "treeStemHueShiftMax": 25,
+        "treeStemList": ["astral"],
+        "treeFoliageList": ["nebula"]
+      },     
         {
           "mode" : "floor",
           "priority" : 1.0,

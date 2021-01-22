@@ -33,7 +33,7 @@
   "handGrip" : "wrap",
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -48,7 +48,7 @@
 
     "projectileType" : "ocucannonshot",
     "projectileParameters" : { 
-      "damageKind" : "poison",
+      "damageKind" : "bioweapon",
       "speed" : 50,
       "knockback" : 9
     },
@@ -84,7 +84,10 @@
 
   "critChance" : 8,
   "critBonus" : 12,
-
+  "isAmmoBased" : 1,
+  "magazineSize" : 20,
+  "reloadTime" : 1.2,
+  
   "altAbilityType" : "vomitrage",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

@@ -7,9 +7,9 @@ function init()
 	questData = stationData.quests
 	textData = root.assetJson("/interface/scripted/spaceStation/texts.config")
 	dialogueCanvas = widget.bindCanvas("dialogueCanvas")
-	
+
 	-- checkShopIntegrity()
-	
+
 	shopListIDs = {}
 	goodsListIDs = {}
 	scientificUpdateDelay = 0
@@ -20,7 +20,7 @@ function init()
 	objectID = nil
 	stationType = ""
 	defaultMaxStack = 0
-	
+
 	-- Find closest object and use it
 	-- There should only be one object in the stations world anyways
 	-- If theres another one close enough to interact with, but the first one is closer to the player
@@ -28,7 +28,7 @@ function init()
 	-- So don't do that
 	local objects = {}
 	local playerPos = world.entityPosition(player.id())
-	
+
 	local objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "spacestationguiconsole" })
 	for _, ID in ipairs(objectIDs) do
 		local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
@@ -36,7 +36,7 @@ function init()
 		table.insert(objects, {ID, distance})
 		break
 	end
-	
+
 	for _, type in ipairs(stationData.stationTypes) do
 		objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "spacestationguiconsole_"..type })
 		for _, ID in ipairs(objectIDs) do
@@ -46,7 +46,7 @@ function init()
 			break
 		end
 	end
-	
+
 	objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "racialspacestationconsole" })
 	for _, ID in ipairs(objectIDs) do
 		local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
@@ -54,7 +54,7 @@ function init()
 		table.insert(objects, {ID, distance})
 		break
 	end
-	
+
 	for _, type in ipairs(stationData.stationTypes) do
 		objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "racialspacestationconsole_"..type })
 		for _, ID in ipairs(objectIDs) do
@@ -64,53 +64,52 @@ function init()
 			break
 		end
 	end
-	
+
 	local closest = objects[1]
-	for _, tbl in ipairs(objects) do 
+	for _, tbl in ipairs(objects) do
 		if tbl[2] < closest[2] then
 			closest = tbl
 		end
 	end
-	
+
 	if closest and closest[1] then
 		objectID = closest[1]
 		objectData = world.sendEntityMessage(objectID, 'getStorage')
 		world.sendEntityMessage(objectID, 'setInteractable', false)
-		
+
 		if closest[3] then
 			stationType = closest[3]
 		end
-		
+
 		widget.setText("text", "") -- Clear error message
 	else
 		widget.setText("text", "ERROR - No station object found")
 	end
-	
+
 	-- Get default max size for use in shop
 	local defaultItemParams = root.assetJson("/items/defaultParameters.config")
 	defaultMaxStack = defaultItemParams.defaultMaxStack
 end
 
 function firstTimeInit()
-	sb.logInfo("----------")
-	sb.logInfo("STATION OBJECT ID "..objectID.." CALLED FOR THE FIRST TIME. ATTEMPTING TO ADD STATION DATA...")
-	
+	sb.logInfo("----First Time Space Station Init----\nSTATION OBJECT ID "..objectID.." CALLED, ATTEMPTING TO ADD STATION DATA...")
+
 	local race = "generic"
 	if objectData then
 		race = objectData.stationRace
 	end
-	
+
 	objectData = stationData.objectData
-	
+
 	-- Set type/race if it wasn't set already
 	if stationType == "" then
 		objectData.stationType = stationData.stationTypes[math.random(1,#stationData.stationTypes)]
 	else
 		objectData.stationType = stationType
 	end
-	
+
 	sb.logInfo("Station type - %s", objectData.stationType)
-	
+
 	--		TEMPORARY - Scientific stations are random instead		--
 	------------------------------------------------------------------
 	if objectData.stationType == "scientific" then
@@ -118,28 +117,26 @@ function firstTimeInit()
 			stationType = stationData.stationTypes[math.random(1,#stationData.stationTypes)]
 			objectData.stationType = stationType
 		end
-		
+
 		sb.logInfo("Overriden 'scientific' type to %s", objectData.stationType)
 	end
 	------------------------------------------------------------------
-	
+
 	objectData.stationRace = race
 	sb.logInfo("Station race - %s", objectData.stationRace)
-	
+
 	-- Set race to generic if chosen one has no texts
 	if not textData[objectData.stationRace] then
 		sb.logInfo("ERROR - '%s' race is missing textData! Reverting to 'generic'", objectData.stationRace)
 		objectData.stationRace = "generic"
 	end
-	
+
 	objectData.lastVisit = world.time()
 	sb.logInfo("Happened at worldtime %s", objectData.lastVisit)
-	
-	sb.logInfo("----------")
-	
+
 	-- Choose what items the station has in its shop
 	shopRestock()
-	
+
 	-- Generate data based on station type
 	if objectData.stationType == "scientific" then
 		local tradesAvailable = math.random(stationData.specialsAmountRanges.scientific.min, stationData.specialsAmountRanges.scientific.max)
@@ -148,16 +145,16 @@ function firstTimeInit()
 			uncommon = {},
 			rare = {}
 		}
-		
+
 		for rarity, tbl in pairs(available) do
 			for i = 1, #stationData.scientific.outputs[rarity] do
 				table.insert(tbl, i)
 			end
 		end
-		
+
 		for i = 1, tradesAvailable do
 			local tradeTbl = {}
-			
+
 			local rnd = math.random()
 			local rarity = "common"
 			if rnd <= stationData.scientific.data.chanceUncommon then
@@ -165,21 +162,21 @@ function firstTimeInit()
 			elseif rnd <= stationData.scientific.data.chanceRare then
 				rarity = "rare"
 			end
-			
+
 			for _, tbl in pairs(available) do
 				if #available[rarity] < 1 then
 					if rarity == "rare" then
 						rarity = "uncommon"
 						rarityChanges = rarityChanges + 1
-						
+
 					elseif rarity == "uncommon" then
 						rarity = "common"
 						rarityChanges = rarityChanges + 1
-						
+
 					elseif rarity == "common" then
 						rarity = "rare"
 						rarityChanges = rarityChanges + 1
-						
+
 					else
 						rarity = "common"
 						rarityChanges = rarityChanges + 1
@@ -188,31 +185,31 @@ function firstTimeInit()
 					break
 				end
 			end
-			
+
 			if #available[rarity] < 1 then break end
 			local indexPosition = math.random(1, #available[rarity])
 			local outputIndex = available[rarity][indexPosition]
-			
+
 			tradeTbl.stock = math.random(stationData.scientific.data.minStock, stationData.scientific.data.maxStock)
 			tradeTbl.input = stationData.scientific.inputs[math.random(1, #stationData.scientific.inputs)]
 			tradeTbl.output = stationData.scientific.outputs[rarity][outputIndex]
 			tradeTbl.inputRequired = 1
 			tradeTbl.outputCount = 1
-			
+
 			local itemPrice = math.max(root.itemConfig(tradeTbl.input).config.price or 1, 1)
 			local outputPrice = stationData.scientific.data[rarity.."Cost"]
-			
+
 			if itemPrice > outputPrice then
 				tradeTbl.outputCount = math.ceil(itemPrice / stationData.scientific.data[rarity.."Cost"])
 				tradeTbl.stock = math.ceil(tradeTbl.stock / tradeTbl.outputCount)
 			elseif itemPrice < outputPrice then
 				tradeTbl.inputRequired = math.ceil(stationData.scientific.data[rarity.."Cost"] / itemPrice)
 			end
-			
+
 			table.remove(available[rarity], indexPosition)
 			table.insert(objectData.specialsTable, tradeTbl)
 		end
-		
+
 		--[[
 		-- Uncomment this block to get a list of items in the science specials input list that are below the given price threshold
 		-- Also returns any duplicates if there are any
@@ -220,23 +217,23 @@ function firstTimeInit()
 		local priceThreshold = 0
 		local checked = {}
 		local dupes = {}
-		
+
 		for _, itemName in ipairs(stationData.scientific.inputs) do
 			local item = root.itemConfig(itemName).config
 			if not item.price or item.price <= priceThreshold then
 				sb.logInfo("%s - %s", itemName, item.price)
 			end
-			
+
 			for _, name in ipairs(checked) do
 				if name == itemName then
 					table.insert(dupes, name)
 					break
 				end
 			end
-			
+
 			table.insert(checked, itemName)
 		end
-		
+
 		sb.logInfo("")
 		sb.logInfo("")
 		sb.logInfo("Dupes:")
@@ -244,11 +241,11 @@ function firstTimeInit()
 		for _, name in ipairs(dupes) do
 			sb.logInfo("%s", name)
 		end
-		
+
 		script.setUpdateDelta(0)
 		if true then return end
 		]]
-		
+
 	elseif objectData.stationType == "trading" then
 		objectData.specialsTable = {
 			invested = 0,
@@ -260,11 +257,11 @@ function firstTimeInit()
 		local specialsAmount = math.random(stationData.specialsAmountRanges[objectData.stationType].min, (stationData.specialsAmountRanges[objectData.stationType].max))
 		objectData.specialsTable = getRandomTableIndexes(stationData[objectData.stationType], specialsAmount)
 	end
-	
+
 	-- Fill the stations trading goods stocks
 	for goods, tbl in pairs(stationData.goods) do
 		local stock = tbl.baseAmount
-		
+
 		local stockStatus = 0 -- -1 = lacking, 0 = normal, 1 = abundance
 		if tbl.lack then
 			if type(tbl.lack) == "table" then
@@ -278,7 +275,7 @@ function firstTimeInit()
 				stockStatus = stockStatus - 1
 			end
 		end
-		
+
 		if tbl.abundance then
 			if type(tbl.abundance) == "table" then
 				for _, type in ipairs(tbl.abundance) do
@@ -291,8 +288,8 @@ function firstTimeInit()
 				stockStatus = stockStatus + 1
 			end
 		end
-		
-		local amountMultiplier = 0
+
+		local amountMultiplier
 		if stockStatus > 0 then
 			local minimum = math.floor(stationData.goodsAbundanceRange[1]*100)
 			local maximum = math.floor(stationData.goodsAbundanceRange[2]*100)
@@ -306,41 +303,42 @@ function firstTimeInit()
 			local maximum = math.floor(stationData.goodsNormalRange[2]*100)
 			amountMultiplier = math.random(minimum, maximum) * 0.01
 		end
-		
+
 		stock = closestWhole(stock * amountMultiplier)
 		objectData.goodsStock[tbl.name] = stock
 	end
-	
-	initialized = true
-	GUIinit()
+
+	sb.logInfo("----- End Station First Time Init -----")
+	--initialized = true
+	--GUIinit()
 end
 
 function GUIinit()
 	widget.setImage("talkerImage", textData[objectData.stationRace].portraitPath..":talk.0")
 	widget.registerMemberCallback("goodsTradeList.itemList", "buyGoods", buyGoods)
 	widget.registerMemberCallback("goodsTradeList.itemList", "sellGoods", sellGoods)
-	
+
 	-- Use custom chat sound if the chosen race has one
 	if textData[objectData.stationRace].sound then
 		textData.sound = textData[objectData.stationRace].sound
 		textData.volume = textData[objectData.stationRace].volume
 		textData.cutoffSound = textData[objectData.stationRace].cutoffSound
 	end
-	
+
 	-- Update portrait animation values
 	textData.talkFrameCooldown = textData[objectData.stationRace].talkTicksPerFrame
 	textData.blinkFrameCooldown = textData[objectData.stationRace].blinkTicksPerFrame
 	textData.blinkCooldown = textData[objectData.stationRace].blinkCooldownAvg * (0.5 + math.random())
-	
+
 	if objectData.stationType == "trading" then
 		widget.setText("investAmount", "")
 		widget.setText("investLevel", objectData.specialsTable.investLevel)
-		
+
 	elseif objectData.stationType == "scientific" then
 		widget.registerMemberCallback("scientificSpecialList.itemList", "tradeA", tradeA)
 		widget.registerMemberCallback("scientificSpecialList.itemList", "tradeB", tradeB)
 	end
-	
+
 	if not objectData.stationName or objectData.stationName == "" then
 		local name = ""
 		for i, nameTable in ipairs(stationData.naming) do
@@ -355,25 +353,41 @@ function GUIinit()
 		end
 		objectData.stationName = name
 	end
-	
+
 	local welcomeMessage = string.gsub(textData[objectData.stationRace].welcome, "{STATIONNAME}", "^orange;"..objectData.stationName.."^reset;")
 	welcomeMessage = welcomeMessage.."\n\n"..textData[objectData.stationRace][objectData.stationType.."Special"]
-	
+
 	textTyper.init(textData, welcomeMessage)
 	resetGUI()
 end
 
-function update()
+function update(dt)
+	--sb.logInfo("spaceStation.update() initialized: %s. objectData: %s",initialized,objectData)
 	if not initialized then
-		if objectData ~= nil and objectData:finished() then
-			if objectData:succeeded() then
-				objectData = objectData:result()
-				if not objectData or objectData.firstTime then
-					firstTimeInit()
-				else
-					GUIinit()
-					simulateGoodTrades()
-					initialized = true
+		if queueGuiInit then
+			GUIinit()
+			initialized=true
+			return
+		elseif queueSimulateGoodTrades then
+			simulateGoodTrades()
+			initialized = true
+			return
+		else
+			if objectData ~= nil and objectData:finished() then
+				if objectData:succeeded() then
+					objectData = objectData:result()
+					if not objectData or objectData.firstTime then
+						firstTimeInit()
+						queueGuiInit=true
+						return
+					else
+						GUIinit()
+						--simulateGoodTrades()
+						--initialized = true
+						--queueGuiInit=true
+						queueSimulateGoodTrades=true
+						return
+					end
 				end
 			end
 		end
@@ -381,7 +395,7 @@ function update()
 		if textUpdateDelay == 0 then
 			textTyper.update(textData, "text", textData.sound, textData.volume, textData.cutoffSound)
 			textTyper.scrambling(textData)
-			
+
 			-- Portrait animation
 			if textData.textPause <= 0 and not textData.isFinished then
 				if textData.talkFrameCooldown <= 0 then
@@ -391,18 +405,18 @@ function update()
 				else
 					textData.talkFrameCooldown = textData.talkFrameCooldown - 1
 				end
-				
+
 			elseif textData.isFinished then
 				if textData.blinkCooldown <= 0 then
 					if textData.blinkFrameCooldown <= 0 then
 						widget.setImage("talkerImage", textData[objectData.stationRace].portraitPath..":blink."..tostring(textData.currentBlinkFrame))
-						
+
 						textData.currentBlinkFrame = textData.currentBlinkFrame + 1
 						if textData.currentBlinkFrame >= textData[objectData.stationRace].blinkTotalFrames then
 							textData.currentBlinkFrame = textData.currentBlinkFrame % textData[objectData.stationRace].blinkTotalFrames
 							textData.blinkCooldown = textData[objectData.stationRace].blinkCooldownAvg * (0.5 + math.random())
 						end
-						
+
 						textData.blinkFrameCooldown = textData[objectData.stationRace].blinkTicksPerFrame
 					else
 						textData.blinkFrameCooldown = textData.blinkFrameCooldown - 1
@@ -415,23 +429,23 @@ function update()
 						textData.blinkFrameCooldown = textData.blinkFrameCooldown - 1
 					end
 				end
-			
+
 			else	-- during text pauses
 				textData.currentTalkFrame = 0
 				widget.setImage("talkerImage", textData[objectData.stationRace].portraitPath..":talk.0")
 				textData.talkFrameCooldown = textData[objectData.stationRace].talkTotalFrames
 			end
-			
+
 			textUpdateDelay = self.data.textDelay - 1
 		else
 			textUpdateDelay = textUpdateDelay - 1
 		end
-		
+
 		-- player pixel display update
 		if widget.active("playerPixels") then
 			widget.setText("playerPixels", "Your pixels: "..tostring(player.currency("money")))
 		end
-		
+
 		-- Keep updating scietific trades list when its active because player inventory can change (Delayed)
 		if widget.active("scientificSpecialList") then
 			if scientificUpdateDelay <= 0 then
@@ -441,7 +455,7 @@ function update()
 				scientificUpdateDelay = scientificUpdateDelay - 1
 			end
 		end
-		
+
 		-- Check which items can/cannot be afforded because player pixel balance tends to change in shops for some mysterious reasons.
 		if widget.active("shopScrollList") then
 			if shopUpdateDelay <= 0 then
@@ -451,7 +465,7 @@ function update()
 				shopUpdateDelay = shopUpdateDelay - 1
 			end
 		end
-		
+
 		if widget.active("goodsTradeList") then
 			checkGoodsAvailability()
 		end
@@ -460,28 +474,28 @@ end
 
 function commandProcessor(wd)
 	if not initialized then return end
-	
+
 	local command = tostring(widget.getData(wd))
 	if command == "Chat" then
 		textTyper.init(textData, textData[objectData.stationRace]["chat"..math.random(1,textData[objectData.stationRace].chatCount)])
-		
+
 	elseif command == "Quest" then
 		local stage = objectData.currentQuest.stage
 		if stage == 0 then	-- Requesting a quest
 			updateQuestDetails(objectData.currentQuest.difficulty)
 			textTyper.init(textData, textData[objectData.stationRace]["questStage"..stage].."\n\n"..buildQuestString())
 			modifyButtons("Accept", "Easier", "Harder", false, false, "Decline")
-			
+
 		elseif stage == 1 then	-- Requesting a quest when there's one in progress
 			textTyper.init(textData, textData[objectData.stationRace]["questStage"..stage])
 			resetGUI()
-			
+
 		elseif stage == 2 then	-- Returning a failed quest
 			objectData.currentQuest.stage = 0
 			objectData.currentQuest.difficulty = 1
 			textTyper.init(textData, textData[objectData.stationRace]["questStage"..stage])
 			resetGUI()
-			
+
 		elseif stage == 3 then	-- Returning a complete quest
 			objectData.currentQuest.stage = 0
 			-- reward the player
@@ -489,41 +503,41 @@ function commandProcessor(wd)
 			textTyper.init(textData, textData[objectData.stationRace]["questStage"..stage])
 			resetGUI()
 		end
-	
+
 	elseif command == "Accept" then
 		objectData.currentQuest.stage = 1
 		textTyper.init(textData, textData[objectData.stationRace].questAccept)
 		resetGUI()
-		
+
 	elseif command == "Decline" then
 		objectData.currentQuest.difficulty = 1
 		textTyper.init(textData, textData[objectData.stationRace].questDecline)
 		resetGUI()
-	
+
 	elseif command == "Easier" then
 		-- modify values
 		objectData.currentQuest.difficulty = objectData.currentQuest.difficulty - 1
 		updateQuestDetails(objectData.currentQuest.difficulty)
 		textTyper.init(textData, textData[objectData.stationRace].questEasier.."\n\n"..buildQuestString())
-		
+
 		if objectData.currentQuest.difficulty < 1 then
 			modifyButtons("Accept", false, "Harder", false, false, "Decline")
 		else
 			modifyButtons("Accept", "Easier", "Harder", false, false, "Decline")
 		end
-	
+
 	elseif command == "Harder" then
 		-- modify values
 		objectData.currentQuest.difficulty = objectData.currentQuest.difficulty + 1
 		updateQuestDetails(objectData.currentQuest.difficulty)
 		textTyper.init(textData, textData[objectData.stationRace].questHarder.."\n\n"..buildQuestString())
-		
+
 		if objectData.currentQuest.difficulty > 1 then
 			modifyButtons("Accept", "Easier", false, false, false, "Decline")
 		else
 			modifyButtons("Accept", "Easier", "Harder", false, false, "Decline")
 		end
-	
+
 	elseif command == "Shop" then
 		widget.setVisible("shopScrollList", true)
 		widget.setVisible("shopBuyAmountBG", true)
@@ -534,29 +548,29 @@ function commandProcessor(wd)
 		widget.setVisible("shopTotalPriceLabel", true)
 		widget.setVisible("shopTotalPrice", true)
 		widget.setVisible("pixelIcon", true)
-		
+
 		widget.setText("shopTotalPrice", "0")
-		
+
 		populateShopList()
 		textTyper.init(textData, "")
 		widget.setText("text", "")
 		modifyButtons("Sell", false, false, false, false, "Back")
-		
+
 	elseif command == "Trade Goods" then
 		populateGoodsList()
 		textTyper.init(textData, "")
 		widget.setText("text", "")
-		
+
 		widget.setVisible("playerPixels", true)
 		widget.setPosition("playerPixels", self.data.pixelDisplayTradePos)
 		modifyButtons(false, false, false, false, false, "Back")
-		
+
 	elseif command == "Special" then
 		local type = objectData.stationType
 		-- textTyper.init must happen AFTER populating a list
 		-- Because if you pick an item on a list, close it, and then re-open it, the game will run the list item selected script
 		-- Which ould init the 'no item selected' error message
-		
+
 		if type == "military" then
 			if objectData.mercHired then
 				textTyper.init(textData, textData[objectData.stationRace].noMoreMerc)
@@ -567,40 +581,40 @@ function commandProcessor(wd)
 				populateSpecialList()
 				textTyper.init(textData, textData[objectData.stationRace]["militarySpecial"])
 			end
-			
+
 		elseif type == "medical" then
 			modifyButtons("Acquire", "Remove", false, false, false, "Back")
 			widget.setButtonEnabled("button1", false)
-			
+
 			if not status.statusProperty("fuEnhancerActive", false) then
 				widget.setButtonEnabled("button2", false)
 			end
-			
+
 			widget.setPosition("playerPixels", self.data.pixelDisplaySpecialPos)
 			widget.setVisible("specialsScrollList", true)
 			widget.setVisible("playerPixels", true)
-			
+
 			populateSpecialList()
 			textTyper.init(textData, textData[objectData.stationRace]["medicalSpecial"])
-			
+
 		elseif type == "scientific" then
 			widget.setVisible("scientificSpecialList", true)
 			textTyper.init(textData, textData[objectData.stationRace].scientificSpecial)
 			populateScientificList()
-			
+
 			textTyper.init(textData, textData[objectData.stationRace]["scientificSpecial"])
 			modifyButtons(false, false, false, false, false, "Back")
-			
+
 		elseif type == "trading" then
 			specialsTableInit()
 			updateBar(true)
 			updateBar(false)
 			modifyButtons(false, false, false, false, false, "Back")
 		else
-			textTyper.init(textData, "^red;ERROR -^reset;\nWrong 'type' recieved in 'commandProcessor' > 'elseif command == \"Special\" then'")
+			textTyper.init(textData, "^red;ERROR -^reset;\nWrong 'type' received in 'commandProcessor' > 'elseif command == \"Special\" then'")
 			resetGUI()
 		end
-		
+
 	elseif command == "Hire Crew" then
 		local merc = stationData.selected
 		if merc then
@@ -608,18 +622,18 @@ function commandProcessor(wd)
 			if player.consumeCurrency("money", price) then
 				world.spawnNpc(world.entityPosition(player.id()), stationData.crewRaces[math.random(1, #stationData.crewRaces)], stationData.military[stationData.selected.index][4], 1, math.random(255), {})
 				objectData.mercHired = true
-				
+
 				textTyper.init(textData, textData[objectData.stationRace].hireMerc)
 				resetGUI()
 			else
 				textTyper.init(textData, textData[objectData.stationRace]["cantAfford"..math.random(1,textData[objectData.stationRace].cantAffordCount)])
 			end
 		end
-		
+
 	elseif command == "Back" then
 		textTyper.init(textData, textData[objectData.stationRace].returnSpecial)
 		resetGUI()
-		
+
 	elseif command == "Acquire" then
 		local special = stationData.selected
 		if special then
@@ -635,14 +649,14 @@ function commandProcessor(wd)
 							break
 						end
 					end
-					
+
 					if not hasHandler then
 						status.addPersistentEffect("fu_medstation", "medicalStatusHandler")
 					end
-					
+
 					local effect = stationData.medical[stationData.selected.index][4]
 					status.setStatusProperty("fuEnhancerActive", effect)
-					
+
 					textTyper.init(textData, textData[objectData.stationRace].acquireEnhancer)
 					resetGUI()
 				else
@@ -650,7 +664,7 @@ function commandProcessor(wd)
 				end
 			end
 		end
-	
+
 	elseif command == "Remove" then
 		if status.statusProperty("fuEnhancerActive", false) then
 			if player.consumeCurrency("money", stationData.medicalEnhancerRemoveCost) then
@@ -663,7 +677,7 @@ function commandProcessor(wd)
 		end
 	elseif command == "Buy" then
 		resetGUI()
-		
+
 		widget.setVisible("shopScrollList", true)
 		widget.setVisible("shopBuyAmountBG", true)
 		widget.setVisible("shopBuyAmount", true)
@@ -673,29 +687,29 @@ function commandProcessor(wd)
 		widget.setVisible("shopTotalPriceLabel", true)
 		widget.setVisible("shopTotalPrice", true)
 		widget.setVisible("pixelIcon", true)
-		
+
 		widget.setText("shopTotalPrice", "0")
-		
+
 		populateShopList()
 		textTyper.init(textData, "")
 		widget.setText("text", "")
 		modifyButtons("Sell", false, false, false, false, "Back")
 	elseif command == "Sell" then
 		resetGUI()
-		
+
 		widget.setVisible("shopSellButton", true)
 		widget.setVisible("shopTotalPriceLabel", true)
 		widget.setVisible("shopTotalPrice", true)
 		widget.setVisible("pixelIcon", true)
-		
+
 		calculateSellPrice()
-		
+
 		for row = 1, self.data.shopSellSlots[1] do
 			for column = 1, self.data.shopSellSlots[2] do
 				widget.setVisible("shopSellSlot"..row..column, true)
 			end
 		end
-		
+
 		textTyper.init(textData, "")
 		widget.setText("text", "")
 		modifyButtons("Buy", false, false, false, false, "Back")
@@ -704,16 +718,16 @@ function commandProcessor(wd)
 	end
 end
 
--- Modify buttons based on recieved values
+-- Modify buttons based on received values
 -- {string, string}	- Changes button text to 1st string, and button data to 2nd string
--- string			- Changes the text and data on the button to the recieved string
+-- string			- Changes the text and data on the button to the received string
 -- false			- Hides and disables the button
 -- nil				- applies no changes
 function modifyButtons(b1, b2, b3, b4, b5, b6)
 	if b1 then
 		widget.setButtonEnabled("button1", true)
 		widget.setVisible("button1", true)
-		
+
 		if type(b1) == "table" then
 			widget.setText("button1", tostring(b1[1]))
 			widget.setData("button1", tostring(b1[2]))
@@ -725,11 +739,11 @@ function modifyButtons(b1, b2, b3, b4, b5, b6)
 		widget.setButtonEnabled("button1", false)
 		widget.setVisible("button1", false)
 	end
-	
+
 	if b2 then
 		widget.setButtonEnabled("button2", true)
 		widget.setVisible("button2", true)
-		
+
 		if type(b2) == "table" then
 			widget.setText("button2", tostring(b2[1]))
 			widget.setData("button2", tostring(b2[2]))
@@ -741,11 +755,11 @@ function modifyButtons(b1, b2, b3, b4, b5, b6)
 		widget.setButtonEnabled("button2", false)
 		widget.setVisible("button2", false)
 	end
-	
+
 	if b3 then
 		widget.setButtonEnabled("button3", true)
 		widget.setVisible("button3", true)
-		
+
 		if type(b3) == "table" then
 			widget.setText("button3", tostring(b3[1]))
 			widget.setData("button3", tostring(b3[2]))
@@ -757,11 +771,11 @@ function modifyButtons(b1, b2, b3, b4, b5, b6)
 		widget.setButtonEnabled("button3", false)
 		widget.setVisible("button3", false)
 	end
-	
+
 	if b4 then
 		widget.setButtonEnabled("button4", true)
 		widget.setVisible("button4", true)
-		
+
 		if type(b4) == "table" then
 			widget.setText("button4", tostring(b4[1]))
 			widget.setData("button4", tostring(b4[2]))
@@ -773,11 +787,11 @@ function modifyButtons(b1, b2, b3, b4, b5, b6)
 		widget.setButtonEnabled("button4", false)
 		widget.setVisible("button4", false)
 	end
-	
+
 	if b5 then
 		widget.setButtonEnabled("button5", true)
 		widget.setVisible("button5", true)
-		
+
 		if type(b5) == "table" then
 			widget.setText("button5", tostring(b5[1]))
 			widget.setData("button5", tostring(b5[2]))
@@ -789,11 +803,11 @@ function modifyButtons(b1, b2, b3, b4, b5, b6)
 		widget.setButtonEnabled("button5", false)
 		widget.setVisible("button5", false)
 	end
-	
+
 	if b6 then
 		widget.setButtonEnabled("button6", true)
 		widget.setVisible("button6", true)
-		
+
 		if type(b6) == "table" then
 			widget.setText("button6", tostring(b6[1]))
 			widget.setData("button6", tostring(b6[2]))
@@ -811,7 +825,7 @@ end
 function resetGUI()
 	local btTbl = textData.defaultButtonStates
 	modifyButtons(btTbl[1], btTbl[2], btTbl[3], btTbl[4], btTbl[5], btTbl[6])
-	
+
 	widget.setVisible("investEmptyBar", false)
 	widget.setVisible("investingFillBar", false)
 	widget.setVisible("investFillBar", false)
@@ -826,7 +840,7 @@ function resetGUI()
 	widget.setVisible("benefitsBuyPriceMult", false)
 	widget.setVisible("benefitsSellPriceLabel", false)
 	widget.setVisible("benefitsSellPriceMult", false)
-	
+
 	widget.setVisible("shopScrollList", false)
 	widget.setVisible("shopBuyAmount", false)
 	widget.setVisible("shopBuyButton", false)
@@ -841,13 +855,13 @@ function resetGUI()
 	widget.setVisible("scientificSpecialList", false)
 	widget.setVisible("playerPixels", false)
 	widget.setVisible("shopSellButton", false)
-	
+
 	for row = 1, self.data.shopSellSlots[1] do
 		for column = 1, self.data.shopSellSlots[2] do
 			widget.setVisible("shopSellSlot"..row..column, false)
 		end
 	end
-	
+
 	stationData.selected = nil
 end
 
@@ -882,7 +896,8 @@ end
 function populateShopList()
 	widget.clearListItems("shopScrollList.itemList")
 	shopListIDs = {}
-	
+	local pricePcnt=calcBuySell()
+
 	for _, item in ipairs(objectData.shopItems) do
 		if type(item) == "table" then
 			local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
@@ -890,13 +905,13 @@ function populateShopList()
 			if item.parameters.level then
 				price = price * (math.max(item.parameters.level * 0.5, 1))
 			end
-			price = calculateShopPrice(price, true)
-			
+			price = calculateShopPrice(price, true,pricePcnt)
+
 			widget.setText(listItem..".name", item.parameters.shortdescription or "")
 			widget.setItemSlotItem(listItem..".item", item)
 			widget.setText(listItem..".price", price)
 			widget.setData(listItem, { name = item.name, price = price, maxStack = 1, isWeapon = true })
-			
+
 			table.insert(shopListIDs, listItem)
 		else
 			local config = root.itemConfig(item)
@@ -905,14 +920,14 @@ function populateShopList()
 				local isWeapon = false
 				local basePrice = math.max(config.config.price or 1, 1)
 				local maxStack = config.config.maxStack or defaultMaxStack
-				
-				local price = calculateShopPrice(basePrice, true)
-				
+
+				local price = calculateShopPrice(basePrice, true,pricePcnt)
+
 				widget.setText(listItem..".name", config.config.shortdescription)
 				widget.setItemSlotItem(listItem..".item", item)
 				widget.setText(listItem..".price", price)
 				widget.setData(listItem, { name = config.config.itemName, price = price, maxStack = maxStack })
-				
+
 				table.insert(shopListIDs, listItem)
 			else
 				sb.logError("")
@@ -920,7 +935,7 @@ function populateShopList()
 			end
 		end
 	end
-	
+
 	checkShopAvailability()
 	stationData.selected = nil
 end
@@ -928,7 +943,7 @@ end
 function checkShopAvailability()
 	for _, listItem in ipairs(shopListIDs) do
 		local data = widget.getData(listItem)
-		
+
 		if data.price > player.currency("money") then
 			widget.setVisible(listItem..".unavailableOverlay", true)
 			widget.setFontColor(listItem..".price", "red")
@@ -942,11 +957,11 @@ end
 function shopSelected()
 	local listItem = widget.getListSelected("shopScrollList.itemList")
 	stationData.selected = listItem
-	
+
 	if listItem then
 		local itemData = widget.getData("shopScrollList.itemList."..listItem)
 		stationData.selected = itemData
-		
+
 		if player.currency("money") >= itemData.price then
 			widget.setText("shopBuyAmount", "x1")
 		else
@@ -961,10 +976,10 @@ function shopBuyAmount(wd)
 	if stationData.selected then
 		local value = widget.getText(wd)
 		local affordable = math.min(math.floor(player.currency("money") / stationData.selected.price), stationData.selected.maxStack)
-		
+
 		value = string.gsub(value, "x", "")
 		value = tonumber(value)
-		
+
 		if not value or value <= 0 then
 			if affordable > 0 then
 				value = 1
@@ -974,7 +989,7 @@ function shopBuyAmount(wd)
 		else
 			value = math.min(value, affordable)
 		end
-		
+
 		widget.setText(wd, value)
 		widget.setText("shopTotalPrice", math.floor(value * stationData.selected.price))
 	else
@@ -989,10 +1004,10 @@ function shopRestock()
 	for i = 1, length do
 		table.remove(objectData.shopItems, length - i + 1)
 	end
-	
+
 	local uniqueAmount = math.random(stationData.shop.minUniqueItems, stationData.shop.maxUniqueItems)
 	local genericAmount = math.random(stationData.shop.minGenericItems, stationData.shop.maxGenericItems)
-	
+
 	local indexes = getRandomTableIndexes(stationData.shop.potentialStock[objectData.stationType], uniqueAmount)
 	for _, i in ipairs(indexes) do
 		local item = stationData.shop.potentialStock[objectData.stationType][i]
@@ -1002,7 +1017,7 @@ function shopRestock()
 				if root.itemHasTag(item, "weapon") then
 					local level = 0
 					local price = math.max(config.config.price or 1, 1)
-					
+
 					local roll = math.random(1,100)
 					local tiers = stationData.shop.weaponLevelRates
 					for i = 1, #tiers do
@@ -1011,22 +1026,22 @@ function shopRestock()
 							break
 						end
 					end
-					
+
 					item = root.createItem(item, level)
 					if not item.name then
 						item.name = config.shortdescription
 					end
-					
+
 					item.parameters.price = price
 				end
-				
+
 				table.insert(objectData.shopItems, item)
 			end
 		else
 			logError("ERROR - INVALID ITEM '%s' WAS NOT ADDED TO SHOP", item)
 		end
 	end
-	
+
 	indexes = getRandomTableIndexes(stationData.shop.potentialStock.generic, genericAmount)
 	for _, i in ipairs(indexes) do
 		local item = stationData.shop.potentialStock.generic[i]
@@ -1037,7 +1052,7 @@ function shopRestock()
 					local level = 0
 					local price = config.config.price or 1
 					price = math.max(price, 1)
-					
+
 					local roll = math.random(1,100)
 					local tiers = stationData.shop.weaponLevelRates
 					for i = 1, #tiers do
@@ -1046,12 +1061,12 @@ function shopRestock()
 							break
 						end
 					end
-					
+
 					item = root.createItem(item, level)
-					
+
 					item.parameters.price = price
 				end
-				
+
 				table.insert(objectData.shopItems, item)
 			end
 		else
@@ -1067,11 +1082,11 @@ function shopBuy()
 		if amount and amount > 0 then
 			if player.consumeCurrency("money", stationData.selected.price * amount) then
 				widget.playSound("/sfx/objects/coinstack_small"..math.random(1,3)..".ogg")
-				
+
 				if stationData.selected.isWeapon then
 					local slot = widget.getListSelected("shopScrollList.itemList")
 					local item = widget.itemSlotItem("shopScrollList.itemList."..slot..".item")
-					
+
 					for i = 1, amount do
 						player.giveItem(item)
 					end
@@ -1091,7 +1106,7 @@ function shopIncrement()
 		currentValue = tonumber(currentValue)
 		local value = currentValue
 		local price = 0
-		
+
 		if value then
 			local affordable = math.min(math.floor(player.currency("money") / stationData.selected.price), stationData.selected.maxStack)
 			if value < affordable then
@@ -1104,7 +1119,7 @@ function shopIncrement()
 				value = 0
 			end
 		end
-		
+
 		widget.setText("shopBuyAmount", "x"..value)
 		widget.setText("shopTotalPrice", math.floor(value * stationData.selected.price))
 	end
@@ -1115,7 +1130,7 @@ function shopDecrement()
 		local currentValue = string.gsub(widget.getText("shopBuyAmount"),"x","")
 		currentValue = tonumber(currentValue)
 		local value = currentValue
-		
+
 		if value then
 			if value <= 1 then
 				value = math.min(math.floor(player.currency("money") / stationData.selected.price), stationData.selected.maxStack)
@@ -1129,7 +1144,7 @@ function shopDecrement()
 				value = 0
 			end
 		end
-		
+
 		widget.setText("shopBuyAmount", "x"..value)
 		widget.setText("shopTotalPrice", math.floor(value * stationData.selected.price))
 	end
@@ -1138,15 +1153,15 @@ end
 function shopItemSlot(wd)
 	local slotItem = widget.itemSlotItem(wd)
 	local cursorItem = player.swapSlotItem()
-	
+
 	if cursorItem and slotItem and cursorItem.name == slotItem.name then
 		local slotItemConfig = root.itemConfig(cursorItem.name)
 		local maxStack = slotItemConfig.config.maxStack
 		if not maxStack then maxStack = 1000 end
-		
+
 		if slotItem.count < maxStack then
 			local overflow = cursorItem.count + slotItem.count - maxStack
-			
+
 			if overflow > 0 then
 				cursorItem.count = overflow
 				slotItem.count = maxStack
@@ -1157,7 +1172,7 @@ function shopItemSlot(wd)
 				cursorItem = nil
 				slotItem.count = maxStack + overflow
 			end
-			
+
 			player.setSwapSlotItem(cursorItem)
 			widget.setItemSlotItem(wd, slotItem)
 		else
@@ -1167,21 +1182,21 @@ function shopItemSlot(wd)
 		player.setSwapSlotItem(slotItem)
 		widget.setItemSlotItem(wd, cursorItem)
 	end
-	
+
 	calculateSellPrice()
 end
 
 function shopItemSlotRight(wd)
 	local slotItem = widget.itemSlotItem(wd)
 	local cursorItem = player.swapSlotItem()
-	
+
 	if slotItem then
 		if cursorItem then
 			if cursorItem.name == slotItem.name then
 				local slotItemConfig = root.itemConfig(cursorItem.name)
 				local maxStack = slotItemConfig.config.maxStack
 				if not maxStack then maxStack = 1000 end
-				
+
 				if cursorItem.count < maxStack then
 					player.setSwapSlotItem({name = cursorItem.name, count = cursorItem.count + 1, parameters = cursorItem.parameters})
 					if slotItem.count > 1 then
@@ -1200,102 +1215,96 @@ function shopItemSlotRight(wd)
 			end
 		end
 	end
-	
+
 	calculateSellPrice()
 end
 
 function calculateSellPrice()
 	local total = 0
-	
+	local pricePcnt=calcBuySell()
+
 	for row = 1, self.data.shopSellSlots[1] do
 		for column = 1, self.data.shopSellSlots[2] do
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
 				local config = root.itemConfig(slotItem.name)
-				local itemPrice = config.config.price
+				local itemPrice = (slotItem.parameters and slotItem.parameters.price) or config.config.price
 				if itemPrice then
 					total = itemPrice * slotItem.count + total
 				end
 			end
 		end
 	end
-	
-	total = calculateShopPrice(total, false)
+
+	total = calculateShopPrice(total, false,pricePcnt)
 	widget.setText("shopTotalPrice", tostring(total))
 end
 
 function shopSell()
 	local money = 0
-	
+	local pricePcnt=calcBuySell()
+
 	for row = 1, self.data.shopSellSlots[1] do
 		for column = 1, self.data.shopSellSlots[2] do
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
 				local config = root.itemConfig(slotItem.name)
-				local itemPrice = config.config.price
+				local itemPrice = (slotItem.parameters and slotItem.parameters.price) or config.config.price
 				if itemPrice then
 					money = itemPrice * slotItem.count + money
 				end
-				
+
 				widget.setItemSlotItem("shopSellSlot"..row..column, nil)
 			end
 		end
 	end
-	
-	money = calculateShopPrice(money, false)
+
+	money = calculateShopPrice(money, false,pricePcnt)
 	player.addCurrency("money", money)
 	widget.setText("shopTotalPrice", "0")
-	
+
 	if money > 0 then
 		widget.playSound("/sfx/objects/coinstack_small"..math.random(1,3)..".ogg")
 	end
 end
 
-function calculateShopPrice(base, isBuying)
-	local tradingOutpostMult = 0
-	local totalMult = 0
-	
+function calculateShopPrice(base, isBuying,pricePcnt)
+	local buyPrice=closestWhole(base * (pricePcnt.buyPcnt/100.0))
+	local sellPrice=closestWhole(base * (pricePcnt.sellPcnt/100.0))
+	--sb.logInfo("%s:%s:%s:%s:%s",base,isBuying,pricePcnt,buyPrice,sellPrice)
+
 	if isBuying then
-		if objectData.stationType == "trading" then 
-			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel
-		end
-		
-		totalMult = stationData.shop.initBuyMult - status.statusProperty("fuCharisma", 0) * stationData.trading.charismaBuyPriceReduction - tradingOutpostMult
-		totalMult = math.max(totalMult, stationData.shop.minBuyMult)
-		
-		return closestWhole(base * totalMult)
+		return buyPrice
 	else
-		if objectData.stationType == "trading" then 
-			tradingOutpostMult = objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel
-		end
-		
-		totalMult = stationData.shop.initSellMult + status.statusProperty("fuCharisma", 0) * stationData.trading.charismaSellPriceIncrease + tradingOutpostMult
-		totalMult = math.max(math.min(totalMult, stationData.shop.maxSellMult), 0)
-		
-		return closestWhole(base * totalMult)
+		return sellPrice
 	end
 end
-
 
 ------------------------ TRADING GOODS ------------------------
 ---------------------------------------------------------------
 function populateGoodsList()
 	goodsListIDs = {}
-	
+
 	widget.setVisible("goodsTradeList", true)
 	widget.clearListItems("goodsTradeList.itemList")
-	
+
 	for _, data in ipairs(stationData.goods) do
 		local config = root.itemConfig(data.name)
 		local name = config.config.shortdescription
 		local stock = objectData.goodsStock[data.name]
 		local listItem = "goodsTradeList.itemList."..widget.addListItem("goodsTradeList.itemList")
-		
+
 		table.insert(goodsListIDs, listItem)
-			
+
 		local buyPrice, buyRate = updatePrice(data.basePrice, data.baseAmount, stock, true)
 		local sellPrice, sellRate = updatePrice(data.basePrice, data.baseAmount, stock)
-		
+		local pricePcnt=calcBuySell()
+		pricePcnt.buyPcnt=(((pricePcnt.buyPcnt/100.0)-stationData.shop.initBuyMult)/3.0)+1.0
+		pricePcnt.sellPcnt=(((pricePcnt.sellPcnt/100.0)-stationData.shop.initSellMult)/3.0)+1.0
+		--sb.logInfo("pP=%s,bP=%s,sP=%s",pricePcnt,buyPrice,sellPrice)
+		buyPrice=closestWhole(buyPrice * pricePcnt.buyPcnt)
+		sellPrice=closestWhole(sellPrice * pricePcnt.sellPcnt)
+
 		if buyRate >= 1.5 then
 			widget.setImage(listItem..".buyRate", "/interface/scripted/spaceStation/tradeRate.png:-2")
 		elseif buyRate >= 1.2 then
@@ -1307,7 +1316,7 @@ function populateGoodsList()
 		else
 			widget.setImage(listItem..".buyRate", "/interface/scripted/spaceStation/tradeRate.png:2")
 		end
-		
+
 		if sellRate >= 1.5 then
 			widget.setImage(listItem..".sellRate", "/interface/scripted/spaceStation/tradeRate.png:2")
 		elseif sellRate >= 1.2 then
@@ -1319,23 +1328,23 @@ function populateGoodsList()
 		else
 			widget.setImage(listItem..".sellRate", "/interface/scripted/spaceStation/tradeRate.png:-2")
 		end
-		
+
 		widget.setText(listItem..".buyPrice", buyPrice)
 		widget.setText(listItem..".sellPrice", sellPrice)
-		
+
 		widget.setText(listItem..".stationStockLabel", "Station stock: "..stock)
 		widget.setText(listItem..".sellStockLabel", "Your stock:     "..player.currency(data.name))
-		
+
 		widget.setText(listItem..".itemName", name)
 		widget.setItemSlotItem(listItem..".itemIcon", data.name)
-		
+
 		widget.setData(listItem,{
 			itemName = config.config.itemName,
 			buyPrice = buyPrice,
 			sellPrice = sellPrice,
 		})
 	end
-	
+
 	checkGoodsAvailability()
 	stationData.selected = nil
 end
@@ -1343,7 +1352,7 @@ end
 function checkGoodsAvailability()
 	for _, listItem in ipairs(goodsListIDs) do
 		local data = widget.getData(listItem)
-		
+
 		if player.currency(data.itemName) > 0 then
 			widget.setButtonEnabled(listItem..".sellButton", true)
 			widget.setFontColor(listItem..".sellStockLabel", "white")
@@ -1351,7 +1360,7 @@ function checkGoodsAvailability()
 			widget.setButtonEnabled(listItem..".sellButton", false)
 			widget.setFontColor(listItem..".sellStockLabel", "red")
 		end
-		
+
 		if objectData.goodsStock[data.itemName] > 0 then
 			if  player.currency("money") >= data.buyPrice then
 				widget.setButtonEnabled(listItem..".buyButton", true)
@@ -1371,7 +1380,7 @@ end
 function goodsSelected()
 	local listItem = widget.getListSelected("goodsTradeList.itemList")
 	stationData.selected = listItem
-	
+
 	if listItem then
 		local itemData = widget.getData("goodsTradeList.itemList."..listItem)
 		stationData.selected = itemData
@@ -1382,15 +1391,15 @@ function sellGoods()
 	if stationData.selected then
 		if player.consumeCurrency(stationData.selected.itemName, 1) then
 			player.addCurrency("money", stationData.selected.sellPrice)
-			
+
 			for _, data in ipairs(stationData.goods) do
 				if data.name == stationData.selected.itemName then
-					
+
 					objectData.goodsStock[data.name] = objectData.goodsStock[data.name] + 1
 					break
 				end
 			end
-			
+
 			populateGoodsList()
 		end
 	else
@@ -1402,14 +1411,14 @@ function buyGoods()
 	if stationData.selected then
 		if player.consumeCurrency("money", stationData.selected.buyPrice) then
 			player.addCurrency(stationData.selected.itemName, 1)
-			
+
 			for _, data in ipairs(stationData.goods) do
 				if data.name == stationData.selected.itemName then
 					objectData.goodsStock[data.name] = objectData.goodsStock[data.name] - 1
 					break
 				end
 			end
-			
+
 			populateGoodsList()
 		end
 	else
@@ -1417,32 +1426,32 @@ function buyGoods()
 	end
 end
 
--- Returns an updated price and rated based on recieved parameters (Basicaly the price formula)
+-- Returns an updated price and rated based on received parameters (Basicaly the price formula)
 function updatePrice(basePrice, baseAmount, stock, isBuying)
 	local rate = 1 - (stock * 100 / baseAmount * 0.01) + 1
 	local rateMin = 0.35
 	local rateMax = 1.65
-	
+
 	if rate < rateMin then
 		rate = rateMin
 	elseif rate > rateMax then
 		rate = rateMax
 	end
-	
+
 	if isBuying then
-		rate = rate * 1.05
+		rate = rate * 1.2
 	else
-		rate = rate * 0.95
+		rate = rate * 0.8
 	end
-	
+
 	local price = basePrice * rate
-	
+
 	if price - math.abs(math.floor(price)) < price - math.abs(math.ceil(price)) then
 		price = math.floor(price)
 	else
 		price = math.ceil(price)
 	end
-	
+
 	return price, rate
 end
 
@@ -1451,24 +1460,16 @@ function simulateGoodTrades()
 	local worldTime = world.time()
 	if objectData.lastVisit then
 		local timePassed = math.floor(worldTime - objectData.lastVisit)
-		local trades = math.floor(timePassed / stationData.passiveTradeInterval)
-		
+		local trades = math.min(1000,math.abs(math.floor(timePassed / stationData.passiveTradeInterval)))
+		--sb.logInfo("spaceStation.lua:simulateGoodTrades()::timePassed:%s,trades:%s",timePassed,trades)
 		if trades > 0 then
-			local goodsState = "normal"
-			local tradeAmount = 0
-			local striveTo = 0
-			local mult = 1
-			
 			for t = 1, trades do
 				for goods, amount in pairs(objectData.goodsStock) do
-					goodsState = "normal"
-					tradeAmount = 0
-					striveTo = 0
-					mult = 1
-					
 					-- Get index, and goods state
 					for i, tbl in ipairs(stationData.goods) do
 						if goods == tbl.name then
+							local goodsState = "normal"
+
 							if type(tbl.abundance) == "table" then
 								for _, st in ipairs(tbl.abundance) do
 									if objectData.stationType == st then
@@ -1479,7 +1480,7 @@ function simulateGoodTrades()
 							elseif tbl.abundance == objectData.stationType then
 								goodsState = "abundance"
 							end
-							
+
 							if goodsState == "normal" then
 								if type(tbl.lack) == "table" then
 									for _, st in ipairs(tbl.lack) do
@@ -1492,7 +1493,8 @@ function simulateGoodTrades()
 									goodsState = "lack"
 								end
 							end
-							
+
+							local mult
 							if goodsState == "abundance" then
 								mult = math.random(math.floor(stationData.goodsAbundanceRange[1]*100), math.floor(stationData.goodsAbundanceRange[2]*100)) * 0.01
 							elseif goodsState == "lack" then
@@ -1500,10 +1502,10 @@ function simulateGoodTrades()
 							else
 								mult = math.random(math.floor(stationData.goodsNormalRange[1]*100), math.floor(stationData.goodsNormalRange[2]*100)) * 0.01
 							end
-							
-							striveTo = stationData.goods[i].baseAmount * mult
-							tradeAmount = stationData.goods[i].baseAmount * (math.random(math.floor(stationData.passiveTradePcntOfBaseAmount[1]*100), math.floor(stationData.passiveTradePcntOfBaseAmount[2]*100)) * 0.01)
-							
+
+							local striveTo = stationData.goods[i].baseAmount * mult
+							local tradeAmount = stationData.goods[i].baseAmount * (math.random(math.floor(stationData.passiveTradePcntOfBaseAmount[1]*100), math.floor(stationData.passiveTradePcntOfBaseAmount[2]*100)) * 0.01)
+
 							if amount < striveTo then
 								objectData.goodsStock[goods] = closestWhole(objectData.goodsStock[goods] + tradeAmount)
 							else
@@ -1527,7 +1529,7 @@ end
 -- Used for medical and military stations
 function populateSpecialList()
 	widget.clearListItems("specialsScrollList.itemList")
-	
+
 	for _, index in ipairs(objectData.specialsTable) do
 		local data = stationData[objectData.stationType][index]
 		if data then
@@ -1538,19 +1540,19 @@ function populateSpecialList()
 			widget.setData(listItem, { index = index, })
 		end
 	end
-	
+
 	stationData.selected = nil
 end
 
 function specialSelected()
 	local listItem = widget.getListSelected("specialsScrollList.itemList")
 	stationData.selected = listItem
-	
+
 	if listItem then
 		-- stationData.selected = widget.getData(string.format("%s.%s", "specialsScrollList.itemList", listItem))
 		stationData.selected = widget.getData("specialsScrollList.itemList."..listItem)
 		widget.setButtonEnabled("button1", true)
-		
+
 		textTyper.init(textData, stationData[objectData.stationType][stationData.selected.index][5])
 	else
 		widget.setButtonEnabled("button1", false)
@@ -1561,36 +1563,36 @@ end
 -- Used for scientific stations
 function populateScientificList()
 	if true then return false end
-	
+
 	widget.clearListItems("scientificSpecialList.itemList")
 	scientificListIDs = {}
-	
+
 	-- clear skip tags
 	for _, index in ipairs(objectData.specialsTable) do
 		local data = stationData[objectData.stationType][index]
 		if data[5] then data[5] = nil end
 	end
-	
+
 	for i, index in ipairs(objectData.specialsTable) do
 		local data = stationData[objectData.stationType][index]
 		if data and not data[5] then -- check if this option was already added
 			local listItem = "scientificSpecialList.itemList."..widget.addListItem("scientificSpecialList.itemList")
 			table.insert(scientificListIDs, listItem)
-			
+
 			widget.setItemSlotItem(listItem..".itemIn1", data[1])
 			widget.setItemSlotItem(listItem..".itemOut1", data[3])
 			widget.setText(listItem..".amountIn1", data[2])
 			widget.setText(listItem..".amountOut1", data[4])
-			
+
 			widget.setData(listItem, { indexA = i, })
 			local secondData = stationData[objectData.stationType][objectData.specialsTable[i+1]]
-			
+
 			if secondData then
 				widget.setItemSlotItem(listItem..".itemIn2", secondData[1])
 				widget.setItemSlotItem(listItem..".itemOut2", secondData[3])
 				widget.setText(listItem..".amountIn2", secondData[2])
 				widget.setText(listItem..".amountOut2", secondData[4])
-				
+
 				widget.setData(listItem, { indexA = i, indexB = i+1})
 				secondData[5] = true
 			else
@@ -1602,7 +1604,7 @@ function populateScientificList()
 			end
 		end
 	end
-	
+
 	checkScientificAvailability()
 	stationData.selected = nil
 end
@@ -1611,7 +1613,7 @@ function checkScientificAvailability()
 	for _, listItem in ipairs(scientificListIDs) do
 		local index = widget.getData(listItem).indexA
 		local data = stationData.scientific[index]
-		
+
 		if player.hasCountOfItem({name = data[1]}, false) < data[2] then
 			widget.setButtonEnabled(listItem..".trade1", false)
 			widget.setFontColor(listItem..".amountIn1", "red")
@@ -1619,11 +1621,11 @@ function checkScientificAvailability()
 			widget.setButtonEnabled(listItem..".trade1", true)
 			widget.setFontColor(listItem..".amountIn1", "white")
 		end
-		
+
 		index = widget.getData(listItem).indexB
 		if index then
 			data = stationData.scientific[index]
-			
+
 			if player.hasCountOfItem({name = data[1]}, false) < data[2] then
 				widget.setButtonEnabled(listItem..".trade2", false)
 				widget.setFontColor(listItem..".amountIn2", "red")
@@ -1638,7 +1640,7 @@ end
 function scientificSelected()
 	local listItem = widget.getListSelected("scientificSpecialList.itemList")
 	stationData.selected = listItem
-	
+
 	if listItem then
 		stationData.selected = widget.getData(string.format("%s.%s", "scientificSpecialList.itemList", listItem))
 	end
@@ -1650,10 +1652,10 @@ function tradeA()
 			name = stationData.scientific[stationData.selected.indexA][1],
 			count = stationData.scientific[stationData.selected.indexA][2],
 		}
-		
+
 		if player.hasItem(inputDescriptor, true) then
 			player.consumeItem(inputDescriptor, true, true)
-			
+
 			local outputDescriptor = {
 				name = stationData.scientific[stationData.selected.indexA][3],
 				count = stationData.scientific[stationData.selected.indexA][4],
@@ -1671,10 +1673,10 @@ function tradeB()
 			name = stationData.scientific[stationData.selected.indexB][1],
 			count = stationData.scientific[stationData.selected.indexB][2],
 		}
-		
+
 		if player.hasItem(inputDescriptor, true) then
 			player.consumeItem(inputDescriptor, true, true)
-			
+
 			local outputDescriptor = {
 				name = stationData.scientific[stationData.selected.indexB][3],
 				count = stationData.scientific[stationData.selected.indexB][4],
@@ -1697,27 +1699,21 @@ function specialsTableInit()
 	widget.setVisible("investAmountBG", true)
 	widget.setVisible("investAmount", true)
 	widget.setVisible("investRequired", true)
-	
+
 	widget.setVisible("benefitsLabel", true)
 	widget.setVisible("benefitsBuyPriceLabel", true)
 	widget.setVisible("benefitsBuyPriceMult", true)
 	widget.setVisible("benefitsSellPriceLabel", true)
 	widget.setVisible("benefitsSellPriceMult", true)
-	
+
 	widget.setText("investLevel", "Lvl "..tostring(objectData.specialsTable.investLevel))
-	
-	local charismaBuy = status.statusProperty("fuCharisma", 0) * 100 * stationData.trading.charismaBuyPriceReduction
-	local charismaSell = status.statusProperty("fuCharisma", 0) * 100 * stationData.trading.charismaSellPriceIncrease
-	
-	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
-	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
-	
-	widget.setText("benefitsBuyPriceMult", tostring(buyPcnt).."%")
-	widget.setText("benefitsSellPriceMult", tostring(sellPcnt).."%")
-		
+
+
+	setPriceWidgets()
+
 	widget.setVisible("playerPixels", true)
 	widget.setPosition("playerPixels", self.data.pixelDisplayInvestPos)
-	
+
 	if objectData.specialsTable.investLevel < stationData.trading.investMaxLevel then
 		widget.setText("investRequired", "Required: "..tostring(objectData.specialsTable.investRequired - objectData.specialsTable.invested))
 		textTyper.init(textData, textData[objectData.stationRace].tradingSpecial)
@@ -1730,19 +1726,41 @@ function specialsTableInit()
 	end
 end
 
+function calcBuySell()
+	local charismaStat=(status.stat("fuCharisma")-1.0)
+
+	--bonus from maxed stations is capped at 10 and the stat itself has 0.1 multiplier.
+	local charismaStatProp=(math.min(status.statusProperty("fuCharisma",0),10))*0.1
+	local charismaBuy = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaBuyPriceReduction * 10
+	local charismaSell = ((charismaStat)+(charismaStatProp)) * 100 * stationData.trading.charismaSellPriceIncrease * 10
+
+	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - (objectData.specialsTable.investLevel or 0) * (stationData.trading.buyPriceReductionPerLevel or 0)) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
+	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + (objectData.specialsTable.investLevel or 0) * (stationData.trading.sellPriceIncreasePerLevel or 0)) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
+
+	--sb.logInfo("cs %s,csp %s,cb %s,cs %s,bp %s,sp %s,cbpr %s, cspi %s, isGoods %s",charismaStat,charismaStatProp,charismaBuy,charismaSell,buyPcnt,sellPcnt,stationData.trading.charismaBuyPriceReduction,stationData.trading.charismaSellPriceIncrease,isGoods)
+	return {buyPcnt=buyPcnt,sellPcnt=sellPcnt}
+end
+
+function setPriceWidgets()
+	local pricePcnt=calcBuySell()
+
+	widget.setText("benefitsBuyPriceMult", tostring(pricePcnt.buyPcnt).."%")
+	widget.setText("benefitsSellPriceMult", tostring(pricePcnt.sellPcnt).."%")
+end
+
 function invest()
 	objectData.specialsTable.invested = objectData.specialsTable.invested + objectData.specialsTable.investing
 	player.consumeCurrency("money", objectData.specialsTable.investing)
-	
+
 	-- Level up if you reach the milestone
 	if objectData.specialsTable.invested >= objectData.specialsTable.investRequired then
 		objectData.specialsTable.invested = 0
 		objectData.specialsTable.investLevel = objectData.specialsTable.investLevel + 1
 		widget.setText("investLevel", "Lvl "..tostring(objectData.specialsTable.investLevel))
-		
+
 		objectData.specialsTable.investRequired = closestWhole(stationData.trading.initialInvestRequired * (stationData.trading.investRequirementMult ^ objectData.specialsTable.investLevel))
 	end
-	
+
 	-- Disable some elements and increase charisma stat when reaching max level
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
 		textTyper.init(textData, textData[objectData.stationRace].tradingSpecialMax)
@@ -1750,23 +1768,16 @@ function invest()
 		widget.setButtonEnabled("investButton", false)
 		widget.setButtonEnabled("investMax", false)
 		widget.setText("investAmount", "")
-		
-		status.setStatusProperty("fuCharisma", status.statusProperty("fuCharisma", 0) + 1)
+
+		status.setStatusProperty("fuCharisma", status.statusProperty("fuCharisma",0) + 1)
 	else
 		objectData.specialsTable.investing = 0
 		widget.setText("investAmount", "")
 		widget.setText("investRequired", "Required: "..tostring(objectData.specialsTable.investRequired - objectData.specialsTable.invested))
 	end
-	
-	local charismaBuy = status.statusProperty("fuCharisma", 0) * stationData.trading.charismaBuyPriceReduction * 100
-	local charismaSell = status.statusProperty("fuCharisma", 0) * stationData.trading.charismaSellPriceIncrease * 100
-	
-	local buyPcnt = math.max(closestWhole((stationData.shop.initBuyMult - objectData.specialsTable.investLevel * stationData.trading.buyPriceReductionPerLevel) * 100 - charismaBuy), math.floor(stationData.shop.minBuyMult * 100))
-	local sellPcnt = math.max(math.min(closestWhole((stationData.shop.initSellMult + objectData.specialsTable.investLevel * stationData.trading.sellPriceIncreasePerLevel) * 100 + charismaSell), math.floor(stationData.shop.maxSellMult * 100)), 0)
-	
-	widget.setText("benefitsBuyPriceMult", tostring(buyPcnt).."%")
-	widget.setText("benefitsSellPriceMult", tostring(sellPcnt).."%")
-	
+
+	setPriceWidgets()
+
 	updateBar(false)
 	updateBar(true)
 end
@@ -1779,7 +1790,7 @@ end
 function investAmount(wd)
 	local value = tonumber(widget.getText(wd))
 	local max = objectData.specialsTable.investRequired - objectData.specialsTable.invested
-	
+
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
 		widget.setText(wd, "")
 	else
@@ -1805,7 +1816,7 @@ end
 function updateBar(real)
 	local bar = "investFillBar"
 	if not real then bar = "investingFillBar" end
-	
+
 	local size = {0, 6} -- Full size = 120, 6
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
 		size[1] = 120
@@ -1816,7 +1827,7 @@ function updateBar(real)
 			size[1] = ((objectData.specialsTable.investing + objectData.specialsTable.invested) / objectData.specialsTable.investRequired) * 120
 		end
 	end
-	
+
 	widget.setSize(bar, size)
 end
 
@@ -1827,11 +1838,11 @@ end
 -- Prints to log all items in all shop lists, letting you easily find the broken/non-existant ones
 -- Has to be manually added somewhere to the code as its not called anywhere
 function checkShopIntegrity()
-	sb.logError("")
+	--sb.logError("")
 	for type, t in pairs(stationData.shop.potentialStock) do
 		for _, item in ipairs(t) do
 			local config = root.itemConfig(item)
-			
+
 			sb.logError("-----")
 			sb.logError("type - %s", type)
 			sb.logError("item - %s", item)
@@ -1842,11 +1853,9 @@ end
 
 -- Returns a specified amount of randomized indexes from an ipairs table.
 function getRandomTableIndexes(tbl, amount)
-	local passed = false
 	local indexes = {}
 	local pulled = 0
-	local index = 0
-	
+
 	-- Return all indexes if the amount exceeds the tables length
 	if #tbl <= amount then
 		for i = 1, #tbl do
@@ -1854,26 +1863,26 @@ function getRandomTableIndexes(tbl, amount)
 		end
 		return indexes
 	end
-	
+
 	while pulled <= amount do
-		passed = false
+		local passed = false
 		while not passed do
 			passed = true
-			index = math.random(1, #tbl)
+			local index = math.random(1, #tbl)
 			for _, indexed in ipairs(indexes) do
 				if index == indexed then
 					passed = false
 					break
 				end
 			end
-			
+
 			if passed then
 				pulled = pulled + 1
 				table.insert(indexes, index)
 			end
 		end
 	end
-	
+
 	return indexes
 end
 
@@ -1881,13 +1890,13 @@ end
 function uninit()
 	textTyper.stopSounds(textData)
 	world.sendEntityMessage(objectID, 'setInteractable', true)
-	
+
 	if objectData and type(objectData) == "table" then
-		
+
 		if objectData.stationType == "trading" then
 			objectData.specialsTable.investing = 0
 		end
-		
+
 		-- Give back all the items stored in the shops sell menu
 		for row = 1, self.data.shopSellSlots[1] do
 			for column = 1, self.data.shopSellSlots[2] do
@@ -1897,14 +1906,14 @@ function uninit()
 				end
 			end
 		end
-		
+
 		world.sendEntityMessage(objectID, 'setStorage', objectData)
 	else
 		sb.logError("objectData is missing! Data was not saved in an object!", "")
 	end
 end
 
--- Recieves a single number, and returns a table holding seconds, minutes, and hours as if the value recieved was seconds
+-- Receives a single number, and returns a table holding seconds, minutes, and hours as if the value received was seconds
 function toTime(time)
 	local table = {
 		seconds = math.floor(time % 60),
@@ -1918,7 +1927,7 @@ end
 function closestWhole(num)
 	local low = math.floor(num)
 	local high = math.ceil(num)
-	
+
 	if math.abs(num - low) < math.abs(num - high) then
 		if num < 0 then
 			return low * -1

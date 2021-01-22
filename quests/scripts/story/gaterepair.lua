@@ -16,7 +16,7 @@ function init()
   else
     self.gateUid = "ancientgate"
   end
-  
+
   self.techstationUid = config.getParameter("techstationUid")
   self.estherUid = config.getParameter("estherUid")
 
@@ -53,12 +53,16 @@ function questStart()
   self.gateUid = "ancientgate"
   if not player.hasQuest("madnessquestdata") then
   	player.startQuest("madnessquestdata")
-  end  
+  end
 end
 
 function update(dt)
   self.state:update(dt)
   checkGate()
+  if storage.stage > 1 then
+    player.addTeleportBookmark(config.getParameter("outpostBookmark2"))--science outpost bookmark
+  end
+
   if storage.stage < 5 and gateActive() then
     storage.stage = 5
     self.state:set(gateRepaired)
@@ -89,7 +93,7 @@ end
 function explore()
   quest.setObjectiveList({{self.descriptions.explore, false}})
   self.gateUid = config.getParameter("gateUid")
-  
+
   -- Wait until the player is no longer on the ship
   local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
   local buffer = 0
@@ -121,7 +125,7 @@ end
 
 
 function checkGate()
-  if player.hasItem({name = "statustablet", count = 1}) then
+  if player.hasItem({name = "fuancientkey", count = 1}) then
     self.gateUid = "ancientgate2"
   else
     self.gateUid = "ancientgate"
@@ -134,8 +138,8 @@ function findGate()
 
   -- Wait until the player is no longer on the ship
   local findGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
-  
-  while true do   
+
+  while true do
     local result = findGate()
     questutil.pointCompassAt(result)
     if result and world.magnitude(mcontroller.position(), result) < 75 then
@@ -150,14 +154,14 @@ end
 function gateFound()
   quest.setProgress(nil)
   quest.setCompassDirection(nil)
-  
+
   quest.setParameter("ancientgate", {type = "entity", uniqueId = self.gateUid})
   quest.setIndicators({"ancientgate"})
-  
+
   player.radioMessage("gaterepair-gateFound1")
   player.radioMessage("gaterepair-gateFound2")
   storage.stage = 3
-	    
+
   util.wait(14)
 
   self.state:set(self.stages[storage.stage])
@@ -165,26 +169,26 @@ end
 
 function collectRepairItem()
   checkGate()
-  
+
   quest.setCompassDirection(nil)
 
   quest.setParameter("ancientgate", {type = "entity", uniqueId = self.gateUid})
   quest.setIndicators({"ancientgate"})
-  
+
   local findGate = util.uniqueEntityTracker("ancientgate2", self.compassUpdate)
   while storage.stage == 3 do
 
     if player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
-      quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)       
+      quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)
       storage.stage = 4
     elseif not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       quest.setObjectiveList({{self.descriptions.collectRepairItem, false}})
-      quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)    
+      quest.setProgress(player.hasCountOfItem(self.gateRepairItem) / self.gateRepairCount)
     end
        local result = findGate()
-       questutil.pointCompassAt(result)   
-       coroutine.yield()   
+       questutil.pointCompassAt(result)
+       coroutine.yield()
   end
 
   quest.setObjectiveList({})
@@ -193,7 +197,7 @@ end
 
 function repairGate()
   checkGate()
-  
+
   quest.setCompassDirection(nil)
   quest.setProgress(nil)
 
@@ -212,9 +216,9 @@ function repairGate()
     if not player.hasItem({name = self.gateRepairItem, count = self.gateRepairCount}) then
       storage.stage = 3
       self.state:set(self.stages[storage.stage])
-    else 
+    else
       storage.stage = 3
-      quest.setObjectiveList({{self.descriptions.makeTable, false}})    
+      quest.setObjectiveList({{self.descriptions.makeTable, false}})
       player.radioMessage("fu_start_needstricorder")
       self.state:set(self.stages[storage.stage])
     end
@@ -236,11 +240,11 @@ function gateRepaired()
 
   player.radioMessage("gaterepair-gateOpened1")
   player.radioMessage("gaterepair-gateOpened2")
-  player.giveItem("sciencebrochure")
-  player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
-  player.radioMessage("fu_outpost1")  
-  player.radioMessage("fu_outpost2")  
-  
+  --player.startQuest("fu_scienceoutpost")
+  --player.addTeleportBookmark(config.getParameter("outpostBookmark2"))
+  player.radioMessage("fu_outpost1")
+  player.radioMessage("fu_outpost2")
+
   self.state:set(self.stages[storage.stage])
 end
 
@@ -278,16 +282,16 @@ end
 function questComplete()
   setPortraits()
   questutil.questCompleteActions()
-  
-  
+
+
   if player.hasCompletedQuest("fu_byos") then
     quest.addReward(config.getParameter("BYOSRewards"))
     quest.setCompletionText(config.getParameter("BYOSCompletionText"))
   else
     player.upgradeShip(config.getParameter("shipUpgrade2"))
     player.playCinematic(config.getParameter("shipUpgradeCinema"))
-  end 
-  
-  world.sendEntityMessage(player.id(), "setQuestFuelCount", 500)
+  end
 
+  world.sendEntityMessage(player.id(), "setQuestFuelCount", 500)
+  player.setUniverseFlag("outpost_mission1")
 end

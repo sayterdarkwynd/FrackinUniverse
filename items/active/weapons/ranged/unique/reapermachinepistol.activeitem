@@ -1,6 +1,6 @@
 {
   "itemName" : "reapermachinepistol",
-  "price" : 150,
+  "price" : 600,
   "inventoryIcon" : "reapermachinepistol.png",
   "maxStack" : 1,
   "rarity" : "rare",
@@ -8,7 +8,7 @@
 ^yellow;Extremely fast rounds^reset;",
     "shortdescription" : "Tk-4 Keter",
   "category" : "machinePistol",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Machine Pistol",
   "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon"],
@@ -32,14 +32,14 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.08,
-    "baseDps" : 5,
-    "energyUsage" : 20,
+    "baseDps" : 7,
+    "energyUsage" : 24,
     "inaccuracy" : 0.03,
 
     "projectileCount" : 1,
@@ -48,7 +48,9 @@
     "projectileType" : "iceplasma",
     "projectileParameters" : { 
       "speed" : 110,
-      "knockback" : 2
+      "knockback" : 2,
+      "damageKind" : "hoarfrost",
+	  "statusEffects" : [ "slow" ] 
     },
 	  "stances" : {
 	    "idle" : {
@@ -89,7 +91,15 @@
       }
     },
 
-  "critChance" : 1,
+  "critChance" : 2,
   "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 44,
+  "reloadTime" : 1,   
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300, 
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

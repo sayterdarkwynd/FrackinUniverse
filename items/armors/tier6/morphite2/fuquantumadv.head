@@ -6,18 +6,17 @@
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;36%^reset; All Resists
-^cyan;Immune^reset;: Heat, Cold, Radiation, Acid",
+^yellow;^reset; ^cyan;Immune^reset;: Deadly Heat/Cold/Rads, Acid",
   "shortdescription" : "Morphite Helm MK2",
-  "category" : "t6armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "level" : 6,
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "fuquantumheadadv" },
+  "level" : 5,
+  //"collectablesOnPickup" : { "fu_armorpowerranged" : "fuquantumheadadv" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,6 +37,41 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.034286
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.034286
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.034286
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.034286
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.034286
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.034286
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.034286
     }
   ],
 
@@ -46,34 +80,6 @@
     {
       "stat" : "fu_morphiteset2_head",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.12
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.12
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.12
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.12
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.12
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.12
-    },
-    {
-      "stat" : "shadowResistance",
-      "amount" : 0.12
     }
   ],
 
@@ -101,5 +107,7 @@
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

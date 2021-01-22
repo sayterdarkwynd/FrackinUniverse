@@ -9,7 +9,7 @@
 ^cyan;Fast projectiles^reset;",
   "level" : 2,
   "category" : "Pistol",
-  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon","telebrium"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "weaponType" : "Pistol",
@@ -52,7 +52,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "poison",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -100,6 +100,10 @@
 
   "critChance" : 5,
   "critBonus" : 3,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 200, 
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

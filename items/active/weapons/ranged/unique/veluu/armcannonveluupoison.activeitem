@@ -6,16 +6,18 @@
     "rarity" : "common",
   "description" : "Attaches to the forearm. Fires poison blasts.
 ^cyan;Poison weapon^reset;",
-  "shortdescription" : "Veluuish Reaver",
+  "shortdescription" : "Vel'uuish Reaver",
   "level" : 2,
   "category" : "armcannon",
-  "itemTags" : ["weapon","ranged","upgradeableWeapon", "armcannon"],
+  "itemTags" : ["weapon","ranged","upgradeableWeapon", "armcannon","poison","veluu"],
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
   "animationParts" : {
+    "butt" : "",
     "middle" : "armcannonveluupoison.png",
     "middlefullbright" : "armcannonveluupoisonfullbright.png",
+    "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/matterblastmuzzlegreen.png"
   },      
   "animationCustom" : {
@@ -53,7 +55,7 @@
     "projectileParameters" : {
       "speed" : 50,
       "knockback" : 3,
-      "damageSourceKind" : "poison",
+      "damageKind" : "poison",
       "statusEffects" : [ "weakpoison" ],
       "actionOnReap" : [
 	     {

@@ -1,10 +1,12 @@
 {
   "name" : "stalwartsetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
-      "grit" : { "amount" : 0.15 }
+      "shortspearMastery" : { "amount" : 0.15 },      
+      "grit" : { "amount" : 0.15 },
+      "protection" : { "effectiveMultiplier" : 1.15 }
     },
 
     "weaponBonuses" : [
@@ -21,8 +23,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "+15% Knockback Resist. Spears/Shortspears: +15% Dmg",
-  "icon" : "/interface/statuses/attack.png"
+  "scriptDelta": 5
 }

@@ -1,6 +1,6 @@
 {
   "itemName" : "isn_annihilator",
-  "level" : 4,
+  "level" : 5,
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "rare",
@@ -84,8 +84,14 @@
       }
     }
   },
+  
   "critChance" : 2,
   "critBonus" : 5,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 900,  
+  
   "altAbilityType" : "deathshead",
   "altAbility" : {
     "name" : "Wave Burst",
@@ -94,7 +100,7 @@
     "fireTime" : 1.5,
     "projectileType" : "fuwobbleshot",
     "projectileParameters" : { 
-      "damageSourceKind" : "shadow",
+      "damageKind" : "cosmic",
       "knockback"  : 8,
       "speed" : 35,
       "statusEffects" : [ "defenseboostneg10" ]

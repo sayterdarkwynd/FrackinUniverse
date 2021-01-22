@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+30%^reset; Physical Resist
-Katana: ^#a94db3;+25%^reset; Dmg, ^green;+2.5%^reset; Crit 
-^cyan;Immune^reset;: Acid, Bio-ooze", 
+^yellow;^reset; Katana: Damage x^green;1.25^reset;, +^green;2.5^reset;% Crit 
+^yellow;^reset; ^cyan;Immune^reset;: Acid, Bio-ooze", 
   "shortdescription" : "Gishinanki Chestpiece",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : {
     "body" : "chest.png",
@@ -25,7 +24,7 @@ Katana: ^#a94db3;+25%^reset; Dmg, ^green;+2.5%^reset; Crit
   },
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorprotection" : "ff_diamondarmorchest" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "ff_diamondarmorchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,6 +45,11 @@ Katana: ^#a94db3;+25%^reset; Dmg, ^green;+2.5%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -54,10 +58,6 @@ Katana: ^#a94db3;+25%^reset; Dmg, ^green;+2.5%^reset; Crit
     {
       "stat" : "fu_diamondset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.1
     }
   ],
 
@@ -99,5 +99,7 @@ Katana: ^#a94db3;+25%^reset; Dmg, ^green;+2.5%^reset; Crit
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

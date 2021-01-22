@@ -36,7 +36,9 @@
       "/monsters/fulegacyscripts/ground/approachState.lua",
       "/monsters/fulegacyscripts/ground/fleeState.lua",
 
-      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua"   ],
+      "/monsters/fulegacyscripts/ground/skills/createGroundRangedAttack.lua",
+	  "/stats/monstereffects/monsterstatus_persistenteffectsapplier.lua"   ],
+	"fu_monsterPersistentEffects":["regeneratingshield_hp-100-10-3","regeneratingshieldindicatordemon"],
 
     "baseSkills" : [ "robotgaussAttack" ],
     "specialSkills" : [ "robotIonAttack" ],
@@ -141,10 +143,8 @@
           "deltaStat" : "healthRegen",
           "defaultPercentage" : 100
         },
-        "shieldHealth" : {
-          "maxStat" : "maxShield",
-          "deltaStat" : "shieldRegen",
-          "defaultPercentage" : 100
+        "damageAbsorption" : {
+          "initialValue" : 0.0
         }
       }
     },

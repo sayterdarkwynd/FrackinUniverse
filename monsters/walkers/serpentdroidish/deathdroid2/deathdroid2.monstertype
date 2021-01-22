@@ -26,8 +26,10 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+	  "/stats/monstereffects/monsterstatus_persistenteffectsapplier.lua"
     ],
+	"fu_monsterPersistentEffects":["regeneratingshield_hp-100-10-3","regeneratingshieldindicatordemon"],
 
     "behavior" : "monster",
 
@@ -220,10 +222,8 @@
           "deltaStat" : "healthRegen",
           "defaultPercentage" : 100
         },
-        "shieldHealth" : {
-          "maxStat" : "maxShield",
-          "deltaStat" : "shieldRegen",
-          "defaultPercentage" : 100
+        "damageAbsorption" : {
+          "initialValue" : 0.0
         }
       }
     },

@@ -4,9 +4,10 @@
   "price" : 60,
   "category" : "preparedFood",
   "inventoryIcon" : "dunebun.png",
-  "description" : "Almost like bread, but it tastes sort of odd.",
+  "description" : "Almost like bread, but it tastes sort of odd.\n^cyan;+^white;20% ^cyan;HP ^gray;(^white;100s^gray;)^reset; ^green;Type: Herbivore^reset;",
   "shortdescription" : "Dunebun",
   "effects" : [ [
+    {"effect": "plant_food"},
     {
         "effect" : "maxhealthscalingboostfood",
         "duration" : 100
@@ -20,6 +21,6 @@
   "rottingMultiplier" : 1.0,
   "blockingEffects" : [
     "wellfed"
-  ],
-  "learnBlueprintsOnPickup" : [ "stuffeddunebun" ]
+  ]//,
+  //"learnBlueprintsOnPickup" : [ "stuffeddunebun" ]
 }

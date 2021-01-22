@@ -7,29 +7,29 @@
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
   "power" : 1.5,
   "speed" : 12,
-  "damageKind" : "fire",
+  "damageKind" : "hellfire",
   "physics" : "laser",
   "fullbright" : true,
-  "bounces" : 0,
+  "bounces" : 6,
   "piercing" : true,
   "timeToLive" : 2,
   "lightColor" : [73, 43, 16],
-  "controlForce" : 10,
+
   "emitters" : [ "flamesfast" ],
   "statusEffects" : [ "burning" ],
   
-  "knockback" : 10,
   "actionOnReap" : [ 
-    {
-      "action" : "config",
-      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
-    }
+    { "action" : "config", "file" : "/projectiles/explosions/firetitanexplosion/magnorbfireexplosion2.config" }
   ],
   
   "actionOnCollide" : [
+    { "action" : "config", "file" : "/projectiles/explosions/firetitanexplosion/magnorbfireexplosion2.config" },
     {
-      "action" : "config",
-      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+      "action" : "projectile",
+      "type" : "firelight",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 0
     },
     {
       "action" : "sound",
@@ -40,5 +40,6 @@
       ]
     }
   ],
-  "scripts" : []
+            
+  "scripts" : [ "/projectiles/activeitems/boomerang/boomerangprojectile.lua" ]
 }

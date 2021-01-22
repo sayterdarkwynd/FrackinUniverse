@@ -1,9 +1,12 @@
 {
   "name" : "footmansetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
+      "shortswordMastery" : { "amount" : 0.15 },
+      "longswordMastery" : { "amount" : 0.15 },
+      "maceMastery" : { "amount" : 0.15 },
       "shieldStaminaRegen" : { "baseMultiplier" : 1.17 },
       "shieldBonusShield" : { "amount" : 0.17 },
       "perfectBlockLimitRegen" : { "baseMultiplier" : 1.17 }
@@ -16,7 +19,7 @@
         "altTags" : [ "shield" ],
         "stats" : {
           "critChance" : { "amount" : 2 },
-          "critBonus" : { "baseMultiplier" : 1.15 },
+          "critDamage" : { "amount" : 0.15 },
           "grit" : { "amount" : 0.15 }
         }
       }
@@ -26,8 +29,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "+17% Shield Health and Regen. Sword/Mace and Shield: +2% Crit Chance, +15% Crit Dmg, +15% Knockback Resist",
-  "icon" : "/interface/statuses/rage.png"
+  "scriptDelta": 5
 }

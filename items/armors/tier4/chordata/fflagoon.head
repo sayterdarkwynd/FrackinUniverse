@@ -4,13 +4,12 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "uncommon",
-   "description" : "^orange;Set Bonus^reset;:
-^cyan;20%^reset; Poison Resist 
-Swim Boost 1
-Spear:Short Spear:^#a94db3;+25%^reset; Dmg 
-^cyan;Immune^reset;:Insanity, Oxygen^reset;",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Swim Boost 1^reset;
+^yellow;^reset; (Short) Spear: Damage x^green;1.25^reset; 
+^yellow;^reset; ^cyan;Immune^reset;: Insanity, Oxygen, Poison",
   "shortdescription" : "Chordata Head",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -18,7 +17,7 @@ Spear:Short Spear:^#a94db3;+25%^reset; Dmg
   "mask" : "mask.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "fflagoonhead" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fflagoonhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,6 +38,11 @@ Spear:Short Spear:^#a94db3;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.028
     }
   ],
 
@@ -47,11 +51,7 @@ Spear:Short Spear:^#a94db3;+25%^reset; Dmg
     {
       "stat" : "fu_chordataset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    }   
+    }
   ],
 
   "colorOptions" : [
@@ -80,5 +80,7 @@ Spear:Short Spear:^#a94db3;+25%^reset; Dmg
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

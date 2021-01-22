@@ -83,12 +83,12 @@
       "concurrentHostileActions" : [
         {
           "name" : "action-projectile",
-          "cooldown" : 0.5,
+          "cooldown" : 0.7,
           "parameters" : {
             "projectileCount" : 1,
             "projectileType" : "darkplasma2",
             "projectileParameters" : {
-              "power" : 10,
+              "power" : 12,
               "timeToLive" : 2,
               "speed" : 4
             },
@@ -96,7 +96,23 @@
             "inaccuracy" : 0,
             "fireOffset" : [0, 0.0]
           }
-        }
+        },
+        {
+          "name" : "action-projectile",
+          "cooldown" : 2,
+          "parameters" : {
+            "projectileCount" : 5,
+            "projectileType" : "skathplasma1",
+            "projectileParameters" : {
+              "power" : 10,
+              "timeToLive" : 2,
+              "speed" : 40
+            },
+            "aimDirection" : [0, 0],
+            "inaccuracy" : 3,
+            "fireOffset" : [0, 0.0]
+          }
+        }        
       ],
 
       "deathActions" : [

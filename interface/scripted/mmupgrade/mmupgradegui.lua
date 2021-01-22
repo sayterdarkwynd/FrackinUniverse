@@ -15,10 +15,12 @@ function init()
     self.selectionOffset = config.getParameter("selectionOffset")
     self.defaultDescription = config.getParameter("defaultDescription")
     self.autoRefreshRate = config.getParameter("autoRefreshRate")
-    
+
     self.autoRefreshTimer = self.autoRefreshRate
 
     self.highlightPulseTimer = 0
+
+    giveRacialManipulator()
 
     updateGui()
 end
@@ -48,6 +50,15 @@ function selectUpgrade(widgetName, widgetData)
         end
     end
     updateGui()
+end
+
+function isOriginalMM()
+    local mm = player.essentialItem("beamaxe").parameters.itemName or root.itemConfig(player.essentialItem("beamaxe")).config.itemName or ""
+    if mm == "beamaxe" then
+        return true
+    else
+        return false
+    end
 end
 
 function performUpgrade(widgetName, widgetData)
@@ -94,6 +105,44 @@ function performUpgrade(widgetName, widgetData)
     end
 end
 
+function giveRacialManipulator()
+    if not isOriginalMM() then return end
+
+    local frconfig = root.assetJson("/frackinraces.config").manipulators
+
+    if frconfig[player.species()] then
+        local mm = player.essentialItem("beamaxe")
+        local manip = frconfig[player.species()]
+        if manip.item then
+            mm.name = manip.item
+
+            if manip.collectLiquid and not contains(mm.parameters.upgrades or {}, "liquidcollection") then
+                mm.parameters.upgrades = mm.parameters.upgrades or {}
+                mm.parameters.canCollectLiquid = true
+                mm.parameters.upgrades[#mm.parameters.upgrades + 1] = "liquidcollection"
+            end
+
+            local newcfg = root.itemConfig(manip.item).config
+            local oldcfg = root.itemConfig(mm).config
+            local oldpar = mm.parameters
+            local statsToUpdate = { "blockRadius", "tileDamage", "minBeamWidth", "maxBeamWidth", "minBeamLines", "maxBeamLines",
+                                    "minBeamJitter", "maxBeamJitter" }
+            for _,v in pairs(statsToUpdate) do
+                oldpar[v] = updateMMStats(newcfg[v], oldcfg[v], oldpar[v])
+            end
+
+            player.giveEssentialItem("beamaxe", mm)
+        end
+    end
+end
+
+function updateMMStats(new, old, oldpar)
+    if new ~= old then
+        oldpar = (oldpar or old) + (new - old)
+    end
+    return oldpar or new
+end
+
 function updateGui()
     updateCurrentUpgrades()
 
@@ -132,31 +181,30 @@ function updateGui()
 end
 
 function updateCurrentUpgrades()
-    self.currentUpgrades = {}
+  self.currentUpgrades = {}
 
-    local mm = player.essentialItem("beamaxe") or {}
-    local currentUpgrades = mm.parameters.upgrades or {}
-
-    for i, v in ipairs(currentUpgrades) do
-        self.currentUpgrades[v] = true
-    end
+  local mm = player.essentialItem("beamaxe") or {}
+  local currentUpgrades = mm.parameters.upgrades or {}
+	  for i, v in ipairs(currentUpgrades) do
+	    self.currentUpgrades[v] = true
+	  end
 end
 
 function hasPrereqs(prereqs)
-    for i, v in ipairs(prereqs) do
-        if not self.currentUpgrades[v] then
-            return false
-        end
-    end
+	  for i, v in ipairs(prereqs) do
+	    if not self.currentUpgrades[v] then
+	      return false
+	    end
+	  end
 
-    return true
+	  return true
 end
 
 function selectedUpgradeAvailable()
-    return self.selectedUpgrade
-        and not self.currentUpgrades[self.selectedUpgrade]
-        and hasPrereqs(self.upgradeConfig[self.selectedUpgrade].prerequisites)
-        and (player.isAdmin() or player.hasCountOfItem("manipulatormodule") >= self.upgradeConfig[self.selectedUpgrade].moduleCost)
+  return self.selectedUpgrade
+     and not self.currentUpgrades[self.selectedUpgrade]
+     and hasPrereqs(self.upgradeConfig[self.selectedUpgrade].prerequisites)
+     and (player.isAdmin() or player.hasCountOfItem("manipulatormodule") >= self.upgradeConfig[self.selectedUpgrade].moduleCost)
 end
 
 function addItemParameters(slot, parameters)
@@ -170,15 +218,8 @@ function resetTools()
     player.removeEssentialItem("wiretool")
     player.removeEssentialItem("painttool")
     status.setStatusProperty("bonusBeamGunRadius", 0)
-    status.setStatusProperty("minBeamWidth", 0)
-    status.setStatusProperty("maxBeamWidth", 0)
-    status.setStatusProperty("blockRadius", 0)
-    status.setStatusProperty("tileDamage", 0)
-    status.setStatusProperty("minBeamJitter", 0)
-    status.setStatusProperty("maxBeamJitter", 0)
     updateGui()
 end
-
 
 function resetToolsUpgrade()
     player.removeEssentialItem("wiretool")

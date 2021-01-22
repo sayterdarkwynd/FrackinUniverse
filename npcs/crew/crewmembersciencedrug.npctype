@@ -3,39 +3,27 @@
   "baseType" : "crewmemberscience",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
-    "crew" : {
-      "defaultUniform" : {
-        "head" : "scientisthead",
-        "chest" : "scientistchest",
-        "legs" : "scientistlegs"
-      },
-
-      "role" : {
-        "benefits" : [
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "runboost10",
-            "duration" : 30
-          },
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "jumpboost15",
-            "duration" : 30
-          },
-	  {
-            "type": "ShipUpgradeBenefit",
-            "property": "fuelEfficiency",
-            "value": 0.25
-          } 
-        ]
-      }
-    }
+    "role" : {
+      "benefits" : [
+	    {
+		  // Ephemeral effects gained upon leaving the ship
+		  "type" : "EphemeralEffect",
+		  "effect" : "runboost10",
+		  "duration" : 30
+		},
+		{
+		  // Ephemeral effects gained upon leaving the ship
+		  "type" : "EphemeralEffect",
+		  "effect" : "jumpboost15",
+		  "duration" : 30
+		},
+		{
+		  "type": "ShipUpgradeBenefit",
+		  "property": "fuelEfficiency",
+		  "value": 0.05
+		}
+	  ]
+	}
   },
 
   "items" : {
@@ -43,10 +31,7 @@
       [0, [
           {
             "primary" : [ "thesauce" ],
-            "sheathedprimary" : [ "mechpistol" ],
-			"head" :  [{ "name" : "scientisthead" } ],
-			"chest" : [ { "name" : "scientistchest" } ],
-            "legs" : [ { "name" : "scientistlegs" } ]
+            "sheathedprimary" : [ "mechpistol" ]
           }
         ] ]
     ]

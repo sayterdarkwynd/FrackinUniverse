@@ -5,17 +5,17 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;: 
-Assault Rifle, Pistol: ^#a94db3;+25%^reset; Dmg
-\n^cyan;Immune^reset;: Pressure, Gas", 
+^yellow;^reset; Assault Rifle, Pistol: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Pressure, Gas", 
   "shortdescription" : "Warframe Pants",
-  "category" : "t5armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorranged" : "fumantizitier5apants" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "fumantizitier5apants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -77,7 +77,9 @@ Assault Rifle, Pistol: ^#a94db3;+25%^reset; Dmg
 
   ],
 
-  "learnBlueprintsOnPickup" : [
-    "fumantizitier6apants"
-  ]
+//  "learnBlueprintsOnPickup" : [
+ //   "fumantizitier6apants"
+//],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

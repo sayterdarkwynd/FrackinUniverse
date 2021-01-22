@@ -15,8 +15,8 @@ function init()
 
   self.maxHealth = status.stat("maxHealth")
   self.maxEnergy = status.stat("maxEnergy")
-  self.food = status.resource("food") 
-  self.power = status.stat("powerMultiplier") 
+  self.food = status.resource("food")
+  self.power = status.stat("powerMultiplier")
   self.monsterUniqueId = string.format("%s-ghost", world.entityUniqueId(entity.id()) or sb.makeUuid())
   self.findMonster = util.uniqueEntityTracker(self.monsterUniqueId, 0.2)
   self.saturation = 0
@@ -24,40 +24,43 @@ function init()
   self.dps = 0
 
   self.spawnTimer = 0.5
-  
+
   local bounds = mcontroller.boundBox()
   script.setUpdateDelta(5)
   self.tickDamagePercentage = 0.0005
   self.tickTime = 5.0
   self.tickTimer = self.tickTime
   activateVisualEffects()
-  self.timers = {} 
+  self.timers = {}
   _x = config.getParameter("defenseModifier", 0)
   baseValue = config.getParameter("defenseModifier",0)*(status.stat("protection"))
   effect.addStatModifierGroup({{stat = "protection", amount = baseValue }})
-  
+
 end
 
 function activateVisualEffects()
+if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
+  end
 end
 function activateVisualEffects2()
+if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext2", statusTextRegion)
   animator.burstParticleEmitter("statustext2")
+  end
 end
 
-
 function update(dt)
-  	if ( status.stat("shadowResistance",0)  >= 0.80 ) and ( status.stat("cosmicResistance",0)  >= 0.60 ) then
-	  effect.expire() 
-	end  
-	
+  	if ( status.stat("shadowResistance")  >= 0.80 ) and ( status.stat("cosmicResistance")  >= 0.60 ) then
+	  effect.expire()
+	end
+
 	if world.entityType(entity.id()) ~= "player" then
 		status.removeEphemeralEffect("insanityblurstat")
-		status.addEphemeralEffect( "insanityblurstat")		
+		status.addEphemeralEffect( "insanityblurstat")
 	end
   local erchiusCount = 0
   erchiusCount = erchiusCount + (self.maxHealth or 0)
@@ -72,7 +75,7 @@ function update(dt)
   status.modifyResource("health", (-self.dps / 50) * dt)
   status.modifyResource("energy", (-self.dps * 3) * dt)
   status.modifyResource("food", (-self.dps /75) * dt)
-  
+
   local monsterPosition = self.findMonster()
   if monsterPosition then
     if not self.messaged then
@@ -126,5 +129,5 @@ function toHex(num)
 end
 
 function uninit()
-  
+
 end

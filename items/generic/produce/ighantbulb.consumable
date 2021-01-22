@@ -1,22 +1,19 @@
 {
-  "itemName" : "ighantbulb",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "ighantbulb.png",
-  "description" : "Effect:
-^cyan;100% Bounce^reset;",
-  "shortdescription" : "Ighant Bulb",
-  "category" : "food",
+	"itemName": "ighantbulb",
+	"inventoryIcon": "ighantbulb.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-  "learnBlueprintsOnPickup" : [ "banespear" ],
-  "effects" : [ [
-      {
-        "effect" : "bouncy",
-        "amount" : 1.0,
-        "duration" : 120
-      }
-    ] ],
-  "blockingEffects" : [
-    "bouncy"
-  ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Bouncy, Immune to Fall Damage^reset;: 1m",
+	"shortdescription": "Ighant Bulb",
+
+	//"learnBlueprintsOnPickup": ["banespear"],
+	"effects": [
+		[{
+			"effect": "bouncy",
+			"duration": 60
+		}]
+	]
 }

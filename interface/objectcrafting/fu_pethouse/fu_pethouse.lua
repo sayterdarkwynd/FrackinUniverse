@@ -4,7 +4,7 @@ require "/scripts/companions/util.lua"
 
 function init()
 	petList = getPetList()
-	containerId = pane.containerEntityId()
+	containerId = config.getParameter("containerId") or pane.containerEntityId()
 	baseButtonTimer = config.getParameter("buttonTimer", 1)
 	buttonTimer = baseButtonTimer
 	popupMessages = config.getParameter("popupMessages", {})
@@ -37,6 +37,9 @@ function updatePetParams()
 			end
 		end
 		setFoodLikings(petParams.foodLikings)
+	end, function()
+		player.interact("ShowPopup", {message = popupMessages.invalidTechstation or ""})
+		pane.dismiss()
 	end)
 end
 
@@ -64,7 +67,7 @@ end
 
 function update(dt)
 	promises:update()
-	
+
 	if buttonTimer > 0  then
 		buttonTimer = buttonTimer - dt
 	end
@@ -73,26 +76,32 @@ end
 function getPetList()
 	petListTemp = {}
 	local races = root.assetJson("/interface/windowconfig/charcreation.config").speciesOrdering
+	local raceTableOverride = root.assetJson("/frackinship/configs/racetableoverride.config")
 	for _, race in pairs (races) do
-		local techstationInfo = root.itemConfig(race .. "techstation")
+		if raceTableOverride[race] and raceTableOverride[race].race then
+			race = raceTableOverride[race].race
+		end
+		local techstation = race .. "techstation"
+		if raceTableOverride[race] and raceTableOverride[race].items then
+			for item, _ in pairs (raceTableOverride[race].items) do
+				if string.find(item, "techstation") then
+					techstation = item
+					break
+				end
+			end
+		end
+		local techstationInfo = root.itemConfig(techstation)
 		if techstationInfo and techstationInfo.config.shipPetType then
 			local shipPetType = techstationInfo.config.shipPetType
 			if not petListTemp[shipPetType] then
-				petListTemp[shipPetType] = race .. "techstation"
+				petListTemp[shipPetType] = techstation
 			end
 		end
 	end
-	
-	--Purchasable Pets Fix
-	if petListTemp.slimecritter and root.itemConfig("pethouseSlime") then
-		if not petListTemp.petslime then
-			petListTemp.petslime = "pethouseSlime"
-		end
-		petListTemp.slimecritter = nil
-	end
-	
-	petListTemp = util.mergeTable(petListTemp, status.statusProperty("fu_byospethouseAddedPets", {}))
-	
+
+	petListTemp = util.mergeTable(status.statusProperty("fu_byospethouseAddedPets", {}), petListTemp)
+	petListTemp = util.mergeTable(root.assetJson("/frackinship/configs/nontechstationshippetlist.config"), petListTemp)
+
 	return petListTemp
 end
 

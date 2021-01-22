@@ -4,14 +4,15 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^orange;Set Bonuses^reset;:
-^green;+10%^reset; Shadow Resist
-^green;+10%^reset; Speed, ^green;+0.5%^reset; HP Regen
-Dagger/Whip/Striker: ^green;+4%^reset; Crit",
+  "description" : "+^green;5^reset;% Healing Strength
+^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;10^reset;% Speed
+^yellow;^reset; +^green;0.5^reset;% Health Regen
+^yellow;^reset; Dagger/Whip/Striker: +^green;4^reset;% Crit Chance",
 
   "shortdescription" : "Sanguine Vest",
-  "category" : "t2armoru",
-  "tooltipKind" : "armor",
+  "category" : "chestarmour",
+  "tooltipKind" : "armornew2",
 
   "maleFrames" : {
     "body" : "chestm.png",
@@ -25,15 +26,15 @@ Dagger/Whip/Striker: ^green;+4%^reset; Crit",
     "frontSleeve" : "fsleeve.png"
   },
 
-  "learnBlueprintsOnPickup" : [
-    "chaoschest",
-    "chaoshead",
-    "chaospants"
-  ],
+ // "learnBlueprintsOnPickup" : [
+ //   "chaoschest",
+ //   "chaoshead",
+ //   "chaospants"
+//  ],
 
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 2,
-  "collectablesOnPickup" : { "fu_armormelee" : "bloodgarbchest" },
+  //"collectablesOnPickup" : { "fu_armormelee" : "bloodgarbchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -54,6 +55,11 @@ Dagger/Whip/Striker: ^green;+4%^reset; Crit",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "shadowResistance",
+      "amount" : 0.022223
     }
   ],
 
@@ -95,5 +101,7 @@ Dagger/Whip/Striker: ^green;+4%^reset; Crit",
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

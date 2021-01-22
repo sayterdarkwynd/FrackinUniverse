@@ -1,6 +1,33 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
-require "/scripts/scannerLib.lua"
+
+scannerLib={}
+scannerLib.colors = {
+	coal = {40, 40, 40, 255},
+	copper = {80, 80, 40, 255},
+	silver = {200, 200, 230, 255},
+	gold = {200, 180, 30, 255},
+	iron = {160, 160, 160, 255},
+	tungsten = {120, 120, 120, 255},
+	titanium = {255, 255, 255, 255},
+	lead = {102, 102, 102, 255},
+	erchius = {235, 178, 247, 255},
+	magnesium = {120, 125, 117, 255},
+	mascagnite = {185, 165, 148, 255},
+	sulphur = {165, 159, 106, 255},
+	lunariore = {77, 222, 77, 255},
+	uranium = {0, 255, 0, 255},
+	plutonium = {222, 0, 222, 255},
+	moonstone = {135, 170, 138, 255},
+	zerchesium = {180, 30, 80, 205},
+	none = {120, 160, 120, 50},
+	empty = {30, 30, 255, 255},
+	solid = {120, 120, 160, 50}
+}
+
+scannerLib.images = {--planning to use image copies of tiles instead, somehow
+
+}
 
 function init()
 	self.pingTimer = 0
@@ -18,7 +45,7 @@ function update(dt)
 	if dt==nil then
 		return
 	end
-	
+
 
 	localAnimator.clearDrawables()
 	if self.pingTimer == 0 and self.cooldownTimer == 0 then
@@ -27,7 +54,7 @@ function update(dt)
 		self.pingLocation=vec2.floor(entity.position())
 	elseif self.pingTimer > 0 then
 		self.pingTimer = math.max(self.pingTimer - dt, 0)
-		
+
 		if self.pingTimer == 0 then
 			self.pingLocation=nil
 		else
@@ -35,9 +62,9 @@ function update(dt)
 			self.pingOuterRadius=radius + self.detectConfig.pingBandWidth
 			self.pingInnerRadius= math.max(radius, 0)
 		end
-		
+
 		if self.pingLocation then
-		
+
 			self.colorCache = {}
 			if self.detectConfig.types then
 				for _,t in pairs(self.detectConfig.types) do
@@ -46,19 +73,19 @@ function update(dt)
 			elseif self.detectConfig.type then
 				self.colorCache[self.detectConfig.type]={}
 			end
-			
+
 			local fadeDistance = self.pingOuterRadius - self.pingInnerRadius
 			local searchRange = math.floor(math.min(self.detectConfig.pingRange, self.pingOuterRadius))
 			local srsq = searchRange ^ 2
 			local irsq = self.pingInnerRadius ^ 2
-			
+
 			for x = -searchRange, searchRange do
 				for y = -searchRange, searchRange do
 					local distSquared = x ^ 2 + y ^ 2
 					if distSquared <= srsq and distSquared >= irsq then
 						local position = {x + self.pingLocation[1], y + self.pingLocation[2]}
 						local cacheKey = position[1]..","..position[2]
-						
+
 						for sType,_ in pairs(self.colorCache) do
 							if not self.colorCache[sType][cacheKey] then
 								if sType == "cave" then
@@ -83,7 +110,7 @@ function update(dt)
 								end
 							end
 						end
-						
+
 						for sType,_ in pairs(self.colorCache) do
 							local color = copy(self.colorCache[sType][cacheKey])
 

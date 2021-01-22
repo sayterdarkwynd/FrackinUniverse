@@ -1,8 +1,8 @@
 {
   "id" : "fuquest_craftinfo",
-  "title" : "Lab Directory",
-  "text" : "A ^orange;Lab Directory^reset; does only one thing: ^green;Telling you what makes what^reset; in your extractor and xeno lab. If you need ingredient X but don't know how to get it...check here!",
-  "completionText" : "A ^orange;Lab Directory^reset; does only one thing: ^green;Telling you what makes what^reset; in your extractor and xeno lab. If you need ingredient X but don't know how to get it...check here!",
+  "title" : "New Directions",
+  "text" : "A ^orange;Lab Directory^reset; does only one thing: ^green;Telling you what makes what^reset; in your production stations. Try making one now in your ^orange;Machining Table^reset;.",
+  "completionText" : "Now take that to your base and place it next to an extractor, centrifuge or other production station. Access it, and you'll soon see just how amazing a device it truly is.",
   "rewards" : [
     [ [ "glass", 2] ]
   ],
@@ -12,10 +12,21 @@
   "script" : "/quests/scripts/main.lua",
   "scriptConfig" : {
     "portraits" : {
-      "default" : "player"
+      "questStarted" : "questGiver",
+      "questComplete" : "questGiver"
     },
     "canBeAbandoned" : true,
     "requireTurnIn" : false,
-    "conditions" : [ ]
+
+    "turnInDescription" : "Bring the ^orange;Lab Directory^reset; to the scientist at the ^orange;Science Outpost^reset;",
+
+    "conditions" : [ 
+      {
+        "type" : "gatherItem",
+        "itemName" : "fu_craftinfo",
+        "count" : 1,
+        "consume" : false
+      }    
+    ]
   }
 }

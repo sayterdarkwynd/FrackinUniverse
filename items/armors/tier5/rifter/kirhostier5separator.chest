@@ -5,11 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+30^reset; Cosmic Resist,  ^#a94db3;25%^reset; Fall Damage Reduction
-Magnorb, Chakram, Boomerang: ^#a94db3;+25%^reset; Dmg, ^green;+3%^reset; Crit
-\n^#e43774;Immune: Gas, Proto-Poison.^reset;", 
+^yellow;^reset; Fall Damage x^green;0.75^reset;
+^yellow;^reset; Magnorb, Chakram, Boomerang: Damage x^green;1.25^reset;, +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Proto-Poison",
   "shortdescription" : "Rifter Hardsuit",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -25,7 +25,7 @@ Magnorb, Chakram, Boomerang: ^#a94db3;+25%^reset; Dmg, ^green;+3%^reset; Crit
   },
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "kirhostier5schest" },
+  //"collectablesOnPickup" : { "fu_armorpowerranged" : "kirhostier5schest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,6 +46,11 @@ Magnorb, Chakram, Boomerang: ^#a94db3;+25%^reset; Dmg, ^green;+3%^reset; Crit
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -54,10 +59,6 @@ Magnorb, Chakram, Boomerang: ^#a94db3;+25%^reset; Dmg, ^green;+3%^reset; Crit
     {
       "stat" : "fu_rifterset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.1
     }
   ],
 
@@ -100,5 +101,7 @@ Magnorb, Chakram, Boomerang: ^#a94db3;+25%^reset; Dmg, ^green;+3%^reset; Crit
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

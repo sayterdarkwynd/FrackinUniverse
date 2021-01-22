@@ -146,10 +146,10 @@ function Weapon:updateAim()
   elseif self.stance.aimAngle then
     self.aimAngle = self.stance.aimAngle
   end
-  
+
   --activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation)
   activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation, not self.stance.noAimCompensation)   -- StardustLib edit; added allowRotate parameter
-  
+
   local isPrimary = activeItem.hand() == "primary"
   if isPrimary then
     -- primary hand weapons should set their aim direction whenever they can be flipped,
@@ -253,6 +253,7 @@ function Weapon:damageSource(damageConfig, damageArea, damageTimeout)
 end
 
 function Weapon:setStance(stance)
+  stance=stance or {}
   self.stance = stance
   self.weaponOffset = stance.weaponOffset or {0,0}
   self.relativeWeaponRotation = util.toRadians(stance.weaponRotation or 0)
@@ -368,31 +369,31 @@ function dwDisallowFlip()
   return false
 end
 
-
--- StardustLib addition
-if (true) then -- encapsulate
-  -- wrap-once on the problem function
-  local _updAim = Weapon.updateAim
-  Weapon.updateAim = function(...)
-    local follow = false
-    local armAngle = 0
-    local setArmAngle = activeItem.setArmAngle
-    function activeItem.setArmAngle(angle, f)
-      follow = not not f
-      if follow then angle = angle - mcontroller.rotation() * mcontroller.facingDirection() end
-      armAngle = angle
-      return setArmAngle(armAngle)
+do -- StardustLib shim
+  local _new = Weapon.new
+  Weapon.new = function(...)
+    Weapon.new = _new
+    if root.hasTech("stardustlib:enable-extenders") then
+      require "/sys/stardust/weaponext.lua"
+    else -- use old correction if stardustlib not present
+      local follow = false
+      local armAngle = 0
+      local setArmAngle = activeItem.setArmAngle
+      function activeItem.setArmAngle(angle, f)
+        follow = not not f
+        if follow then angle = angle - mcontroller.rotation() * mcontroller.facingDirection() end
+        armAngle = angle
+        return setArmAngle(armAngle)
+      end
+      local handPosition = activeItem.handPosition
+      function activeItem.handPosition(off)
+        if not follow then return handPosition(off) end
+        setArmAngle(armAngle + mcontroller.rotation() * mcontroller.facingDirection())
+        local vec = handPosition(off)
+        setArmAngle(armAngle)
+        return vec
+      end
     end
-    local handPosition = activeItem.handPosition
-    function activeItem.handPosition(off)
-      if not follow then return handPosition(off) end
-      setArmAngle(armAngle + mcontroller.rotation() * mcontroller.facingDirection())
-      local vec = handPosition(off)
-      setArmAngle(armAngle)
-      return vec
-    end
-    
-    Weapon.updateAim = _updAim
-    return _updAim(...)
+    return Weapon.new(...)
   end
 end

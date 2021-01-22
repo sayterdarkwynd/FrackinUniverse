@@ -1,16 +1,40 @@
 {
+  "theTome" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1.0, "item" : "fugrimoire" }
+      ],
+      "allowDuplication" : true
+    }]
+  ],
+  "glitchmissioncodex" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1.0, "pool" : "fucodexRandom" }
+      ],
+      "allowDuplication" : true
+    }]
+  ],
   "fuStarterDungeonTreasure" : [
     [1, {
       "fill" : [
         {"weight" : 1.0, "pool" : "salvageComponent" },
         {"weight" : 1.0, "pool" : "salvageComponent" },
         {"weight" : 1.0, "pool" : "salvageComponent" },
-        {"weight" : 1.0, "pool" : "challengeChestTreasure" }
+        {"weight" : 1.0, "pool" : "fucodexRandom" },
+        {"weight" : 0.5, "pool" : "challengeChestTreasure" }
       ],
       "allowDuplication" : true
     }]
   ],
-
+  "ancientpowerconduitLoot" : [
+    [1, {
+      "fill" : [
+        {"weight" : 1.0, "item" : "ancientpowerconduit" }
+      ],
+      "allowDuplication" : true
+    }]
+  ],
 "starterRope" : [
     [1, {
       "fill" : [
@@ -32,9 +56,6 @@
   ],
 "starterMechTablet" : [
     [1, {
-      "fill" : [
-        {"weight" : 1, "item" : ["mechtablet", 1]}
-      ],
       "pool" : [
         {"weight" : 0.90, "item" : ["unrefinedliquidmechfuel", 20]}
       ]
@@ -49,12 +70,9 @@
   ],    
 "starterTechTablet" : [
     [1, {
-      "fill" : [
-        {"weight" : 1, "item" : ["techtablet", 1]}
-      ],
       "pool" : [
         {"weight" : 0.10, "item" : "commonpistol"},
-        {"weight" : 0.90, "item" : ["bomb", 5]}
+        {"weight" : 0.90, "item" : ["bomb", 1]}
       ]
     } ]
   ],
@@ -282,6 +300,7 @@
         {"weight" : 0.2, "pool" :  "fuprecursorLore" },
         {"weight" : 0.5, "pool" :  "fuprecursorResources" },
         {"weight" : 0.1, "pool" :  "fuprecursorWeapons" },
+        {"weight" : 0.05, "item" : "precursorbattery1-recipe"},
         {"weight" : 0.007, "pool" : "artifactloot" },
         {"weight" : 0.07, "pool" : "augments"},
         {"weight" : 0.07, "pool" : "petcollars2"},
@@ -308,6 +327,8 @@
         {"weight" : 0.06, "item" : "precursorweaponrack"},
         {"weight" : 0.07, "item" : "precursorverticaldoor2"},
         {"weight" : 0.07, "item" : "precursortinyswitch"},
+        {"weight" : 0.07, "item" : "precursortinybuttonkey"},
+        {"weight" : 0.07, "item" : "precursortinyswitchkey"},
         {"weight" : 0.05, "item" : "precursorforcelift"},
         {"weight" : 0.07, "item" : "precursorlightstrip"},
         {"weight" : 0.07, "item" : "precursorlightstripdim"},
@@ -319,13 +340,21 @@
         {"weight" : 0.05, "item" : ["precursorlightorb",2]},
         {"weight" : 0.01, "item" : "fu_precursorduplicator"},
         {"weight" : 0.01, "item" : "fu_precursorspawner"},
+        {"weight" : 0.01, "item" : "fu_fuelpurifiert5"},
+        {"weight" : 0.01, "item" : "crewcontract_precursor"},
         {"weight" : 0.008, "item" :  "precursorconverter" },
-        {"weight" : 0.01, "item" :  "precursorconverter2" },
+        {"weight" : 0.005, "item" :  "precursorconverter2" },
         {"weight" : 0.003, "item" : [ "cuddlehorse", 1]},
-        {"weight" : 0.01, "item" :  [ "fubonearmor3head-recipe", 1]},
-        {"weight" : 0.01, "item" :  [ "fubonearmor3chest-recipe", 1]},
-        {"weight" : 0.01, "item" :  [ "fubonearmor3legs-recipe", 1]},
-        {"weight" : 0.04, "item" :  [ "precursorbed2", 1]}        
+        {"weight" : 0.009, "item" :  [ "fubonearmor3head-recipe", 1]},
+        {"weight" : 0.009, "item" :  [ "fubonearmor3chest-recipe", 1]},
+        {"weight" : 0.009, "item" :  [ "fubonearmor3legs-recipe", 1]},
+        {"weight" : 0.04, "item" :  [ "precursorbed2", 1]},
+        {"weight" : 0.04, "item" :  [ "precursorcrate", 1]},
+        {"weight" : 0.04, "item" :  [ "precursorcratesmall", 1]},
+        {"weight" : 0.01, "item" :  [ "precursormainframe", 1]},
+        {"weight" : 0.01, "item" : "perpetualaccelerator"},
+        {"weight" : 0.05, "item" : [ "precursorhookshot", 1]},
+        {"weight" : 0.05, "item" : [ "railhook3", 1]}
       ],
       "poolRounds" : [
         [0.33, 1],
@@ -504,7 +533,9 @@
         {"weight" : 0.02, "item" :  [ "elderstaffbook2-codex", 1]},
         {"weight" : 0.02, "item" :  [ "elderstaffbook3-codex", 1]},
         {"weight" : 0.02, "item" :  [ "elderbowbook-codex", 1]},
-        {"weight" : 0.02, "item" :  [ "elderbroadswordbook-codex", 1]}
+        {"weight" : 0.02, "item" :  [ "elderbroadswordbook-codex", 1]},
+          {"weight" : 0.01, "item" : ["attunedpaper", 15]},
+          {"weight" : 0.01, "item" : ["nicepaper", 20]}
       ],
       "poolRounds" : [
         [0.23, 1],

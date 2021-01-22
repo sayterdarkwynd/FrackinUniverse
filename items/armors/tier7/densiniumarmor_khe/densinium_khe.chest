@@ -5,12 +5,13 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-   "description" : "Set Bonus:
-^cyan;+30% Physical Resist^reset;
-^#e43774;Immune: Heat, Rads, Poison, Oxygen, Pressure, Falling^reset;
-^green;+4% Crit, +25% Damage (Densinium weapons)^reset;",
+   "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; ^cyan;Auto-Medic^reset;: 10%
+^yellow;^reset; Densinium/Rifle/Chainsword: Damage x^green;1.25^reset;, +^green;3^reset;% Crit Chance
+^yellow;^reset; Fall Damage x^green;0.25^reset;. +^green;75^reset;% Knockback Resist. +^green;10^reset;% Speed.
+^yellow;^reset; ^cyan;Immune^reset;: All Rads, Deadly Heat/Cold, Poison, Oxygen, Pressure, Gas",
   "shortdescription" : "Densinium EVA Armor",
-  "category" : "t7armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -26,7 +27,6 @@
   },
 
   "level" : 7,
-  "collectablesOnPickup" : { "fu_armortank" : "densiniumchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,6 +47,31 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -59,10 +84,6 @@
     {
       "stat" : "fu_densiniumset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.14
     }
   ],
 
@@ -91,5 +112,7 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

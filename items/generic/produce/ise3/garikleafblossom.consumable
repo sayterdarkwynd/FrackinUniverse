@@ -1,18 +1,24 @@
 {
-  "itemName" : "garikleafblossom",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "garikleafblossom.png",
-  "description" : "Effect:
-^cyan;+65% Run Speed^reset;",
-  "shortdescription" : "Garikleaf Blossom",
-  "category" : "food",
+	"itemName": "garikleafblossom",
+	"inventoryIcon": "garikleafblossom.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-      "effects" : [ [
-      {
-        "effect" : "runboost",
-        "amount" : 0.65,
-        "duration" : 60
-      }
-    ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;+50% Run^reset;, ^cyan;Low Gravity^reset;: 1m",
+	"shortdescription": "Garikleaf Blossom",
+
+	"effects": [
+		[
+			{
+				"effect": "lowgrav",
+				"duration": 60
+			},
+			{
+				"effect": "runboost",
+				"duration": 60
+			}
+		]
+	]
 }

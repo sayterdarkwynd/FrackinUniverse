@@ -4,9 +4,26 @@
     "charCreationTooltip" : {
     "title" : "Kirhos",
     "subTitle" : "Ne",
-    "description" : "This rodentlike species exhausted their homeworld's natural resources. Most now live in corporate-run city-buildings called arcologies."
+    "description" : "Adorable, omnivorous and nearly electric-proof space rodents. They prowl the stars seeking excitement, and are abnormally brave for rodents. Trustworthy and wise, they've earned a reputation as traders.
+
+  ^orange;Diet^reset;: Omnivore
+
+^orange;Perks^reset;:
+  +^green;10^reset;% Speed & Jump
+  ^green;Resist^reset;: ^green;50^reset;% Electric, Fall Damage x^green;0.8^reset;
+  Great Traders: +^green;21^reset;% Charisma, +500 Start Cash
+  +^green;72^reset; Max Food
+  ^cyan;Immune^reset;: Electrified
+
+^orange;Weapons^reset;:
+  Striker: +^green;1^reset;% Crit, +^green;5^reset; Crit Damage
+  Scythe: Defense x^green;1.15^reset;
+
+^red;Weaknesses^reset;:
+  Health x^red;0.9^reset;
+  ^red;Resist^reset;: -^red;20^reset;% Radioactive, -^red;25^reset;%Poison, -^red;20^reset;% Cosmic"
     },
-  
+
   "nameGen" : [ "/species/kirhosnamegen.config:names", "/species/kirhosnamegen.config:names" ],
   "ouchNoises" : [ "/sfx/humanoid/humanhurt_male1.ogg", "/sfx/humanoid/humanhurt_female1.ogg" ],
   "charGenTextLabels" : [ "Skin Color", "Hairstyle", "Shirt", "Pants", "Ears", "Hair Color", "Shirt Color", "Pants Color", "KIRHOS", "Personality" ],
@@ -15,105 +32,19 @@
   "defaultBlueprints" : {
     "tier1" : [
       { "item" : "flagkirhos" },
-      { "item" : "humantier1hammer" },
-      { "item" : "humantier1shortsword" },
-      { "item" : "humantier1broadsword" },
-      { "item" : "humantier1spear" },
-      { "item" : "humantier1axe" },
-      { "item" : "humantier1dagger" },
-      { "item" : "humantier1head" },
-      { "item" : "humantier1chest" },
-      { "item" : "humantier1pants" },
-      { "item" : "conceptchest" },
-      { "item" : "conceptlegs" },
-      { "item" : "coolchest" },
-      { "item" : "coollegs" },
-      { "item" : "sweatervestchest" },
-      { "item" : "sweatervestlegs" },
-      { "item" : "workoutchest" },
-      { "item" : "workoutlegs" },
-
-      { "item" : "humanstoragelocker" },
       { "item" : "kirhospistol" },
       { "item" : "kirhosrifle" },
+      { "item" : "kirhossniper" },
       { "item" : "flailkirhos" },
-      { "item" : "kirhosscythe" },
-      
-      // { "item" : "humantier2head" },
-      // { "item" : "humantier2chest" },
-      // { "item" : "humantier2pants" },
-      { "item" : "humantier2hammer" },
-      { "item" : "humantier2shortsword" },
-      { "item" : "humantier2broadsword" },
-      { "item" : "humantier2spear" },
-      { "item" : "humantier2axe" },
-      { "item" : "humantier2dagger" },
-
-      { "item" : "humantier3head" },
-      { "item" : "humantier3chest" },
-      { "item" : "humantier3pants" },
-      { "item" : "humantier3hammer" },
-      { "item" : "humantier3shortsword" },
-      { "item" : "humantier3broadsword" },
-      { "item" : "humantier3spear" },
-      { "item" : "humantier3axe" },
-      { "item" : "humantier3dagger" },
-
-      // { "item" : "humantier4head" },
-      // { "item" : "humantier4chest" },
-      // { "item" : "humantier4pants" },
-      { "item" : "humantier4hammer" },
-      { "item" : "humantier4shortsword" },
-      { "item" : "humantier4broadsword" },
-      { "item" : "humantier4spear" },
-      { "item" : "humantier4axe" },
-      { "item" : "humantier4dagger" },
-
-      { "item" : "humantier5ahead" },
-      { "item" : "humantier5achest" },
-      { "item" : "humantier5apants" },
-      { "item" : "humantier5dagger" },
-
-      { "item" : "humantier5mhead" },
-      { "item" : "humantier5mchest" },
-      { "item" : "humantier5mpants" },
-
-      { "item" : "humantier5shead" },
-      { "item" : "humantier5schest" },
-      { "item" : "humantier5spants" },
-      { "item" : "humantier8hammer" },
-      { "item" : "humantier8shortsword" },
-      { "item" : "humantier8broadsword" },
-      { "item" : "humantier8spear" },
-      { "item" : "humantier8axe" },
-      { "item" : "humantier8dagger" },
-
-      // { "item" : "humantier6ahead" },
-      // { "item" : "humantier6achest" },
-      // { "item" : "humantier6apants" },
-      { "item" : "humantier6dagger" },
-
-      // { "item" : "humantier6mhead" },
-      // { "item" : "humantier6mchest" },
-      // { "item" : "humantier6mpants" },
-
-      // { "item" : "humantier6shead" },
-      // { "item" : "humantier6schest" },
-      // { "item" : "humantier6spants" },
-      { "item" : "humantier10hammer" },
-      { "item" : "humantier10shortsword" },
-      { "item" : "humantier10broadsword" },
-      { "item" : "humantier10spear" },
-      { "item" : "humantier10axe" },
-      { "item" : "humantier10dagger" }
+      { "item" : "kirhosscythe" }
     ]
   },
-  
+
   "headOptionAsHairColor" : true,
   "altOptionAsFacialMask" : true,
   "hairColorAsBodySubColor" : true,
   "bodyColorAsFacialMaskSubColor" : true,
-  
+
   "genders" : [
     {
       "name" : "male",
@@ -125,8 +56,8 @@
       "facialHairGroup" : "marking",
       "facialHair" : [ "1" ],
       "facialMaskGroup" : "ears",
-      "facialMask" : [ 
-        "1", "2", "2clipping", "3", "4", "5", "6", "7", "8", "9", "9clipping", "10", "10clipping", 
+      "facialMask" : [
+        "1", "2", "2clipping", "3", "4", "5", "6", "7", "8", "9", "9clipping", "10", "10clipping",
         "11", "12", "13", "14", "15", "16", "17", "18", "19", "19clipping", "20", "20clipping"
       ]
     },
@@ -140,8 +71,8 @@
       "facialHairGroup" : "marking",
       "facialHair" : [ "1" ],
       "facialMaskGroup" : "ears",
-      "facialMask" : [ 
-        "1", "2", "2clipping", "3", "4", "5", "6", "7", "8", "9", "9clipping", "10", "10clipping", 
+      "facialMask" : [
+        "1", "2", "2clipping", "3", "4", "5", "6", "7", "8", "9", "9clipping", "10", "10clipping",
         "11", "12", "13", "14", "15", "16", "17", "18", "19", "19clipping", "20", "20clipping"
       ]
     }
@@ -170,7 +101,7 @@
   "undyColor" : [
     { "f7e7b2" : "ffeded", "d9c189" : "f5d0d4", "a38d59" : "e67290", "735e3a" : "c43359" }
   ],
-  
+
   "hairColor" : [
     { "f7e7b2" : "FFDFC6", "d9c189" : "FFB78F", "a38d59" : "E68257", "735e3a" : "CA4921" },
 	  { "f7e7b2" : "FFE6A7", "d9c189" : "F2C580", "a38d59" : "D2974C", "735e3a" : "BC6E29" },

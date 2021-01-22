@@ -5,11 +5,11 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+21%^reset; Poison Resist, ^cyan;+15%^reset; Shield Regen^reset;
-\n^#e43774;Ocean/Tidewater^reset;: ^#a94db3;+25%^reset; Health, ^green;+5^reset; protection
-\n^cyan;Immune^reset;: Breath",
+^yellow;^reset; +^green;15^reset;% Shield Regen^reset;
+^yellow;^reset; Ocean/Tidewater: Health x^green;1.25^reset;, Defense x^green;1.05^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Breath",
   "shortdescription" : "Siren's Helm",
-  "category" : "t3armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -17,7 +17,7 @@
   "mask" : "mask.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "kinumoarmorhead" },
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "kinumoarmorhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,6 +38,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.035
     }
   ],
 
@@ -46,10 +51,6 @@
     {
       "stat" : "sirensetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -91,5 +92,7 @@
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

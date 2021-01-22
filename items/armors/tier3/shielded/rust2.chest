@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;30%^reset; Electric Resist
-^cyan;+15%^reset; Speed
-^cyan;Immune^reset;: Oxygen, Gas^reset;",
+^yellow;^reset; +^green;15^reset;% Speed
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Gas^reset;",
   "shortdescription" : "Shielded Chestpiece",
-  "category" : "t3armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -25,7 +24,7 @@
   },
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "rustchest2" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "rustchest2" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,6 +45,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.05
     }
   ],
 
@@ -54,10 +58,6 @@
     {
       "stat" : "shieldedsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.1
     }
   ],
 
@@ -86,5 +86,7 @@
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

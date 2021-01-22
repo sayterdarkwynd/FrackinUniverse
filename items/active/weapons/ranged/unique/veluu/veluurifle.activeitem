@@ -4,14 +4,14 @@
   "inventoryIcon" : "veluurifle.png",
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "A popular sniper option among Veluuish.
+  "description" : "A popular sniper option among Vel'uuish.
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Veluuish Rifle",
+  "shortdescription" : "Vel'uuish Rifle",
   "category" : "sniperRifle",
   "level" : 2,
   "tooltipKind" : "gun2",
   "weaponType" : "Sniper Rifle",
-  "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon","veluu"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -82,7 +82,11 @@
 
   "critChance" : 4,
   "critBonus" : 2,
-
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 500,  
+  
   "altAbilityType" : "piercingshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

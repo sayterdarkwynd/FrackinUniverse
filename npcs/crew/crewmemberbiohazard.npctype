@@ -1,13 +1,8 @@
 {
   "type" : "crewmemberbiohazard",
-  "baseType" : "crewmember",
-  "disableWornArmor" : false,
-  
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "hazmathead",
@@ -15,29 +10,30 @@
         "legs" : "hazmatlegs",
         "back" : "hazmatback"
       },
-
+	  
       "role" : {
-        "benefits" : [   
+        "type" : "chemist",
+        "name" : "Radiologist",
+        "field" : "Radiologist",
+        "uniformColorIndex" : 6,
+
+        "benefits" : [
+          {
+            // Ephemeral effects gained upon leaving the ship
+            "type" : "EphemeralEffect",
+            "effect" : "radioactiveblock3",
+            "duration" : 900
+          },
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "maxFuel",
             "value" : 340
-          },         
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "ffextremeradiationimmunity",
-            "duration" : 300
-          },         
+          },
           {
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Radiologist",
-        "field" : "Radiologist",
-        "uniformColorIndex" : 6
+        ]
       }
     },
 
@@ -84,6 +80,31 @@
               "Helpful. Take this, it will help!"
             ]
           }
+        },
+		"fieldBenefit" : {
+          "default" : {
+            "default" : [
+              "Here's an anti-rad pill!",
+              "Let me help you out!",
+              "Looks like you could use my assistance!",
+              "I can help!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran hasss things to help you out!",
+              "Floran can help out!",
+              "Floran hasss things to help!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can help you out!",
+              "Excited. Perhaps you could do with an anti-rad pill!",
+              "Intrigued. I wonder if this will help you?",
+              "Helpful. Take this, it will help!"
+            ]
+          }
         }
       }
     }
@@ -94,11 +115,7 @@
       [0, [
           {
             "primary" : [ "irradiumdagger" ],
-            "sheathedprimary" : [ "biopistol" ],
-			"head" :  [{ "name" : "hazmathead", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-			"chest" : [ { "name" : "hazmatchest", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "legs" : [ { "name" : "hazmatlegs", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "back" : [ { "name" : "hazmatback", "count" :1, "parameters" : { "colorIndex" : 6 } } ]         
+            "sheathedprimary" : [ "biopistol" ]
           }
         ] ]
     ]

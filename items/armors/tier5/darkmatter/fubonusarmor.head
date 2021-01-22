@@ -6,18 +6,18 @@
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+30%^reset; Cosmic Resist
-^#green;0.4%^reset; Regeneration
-^#a94db3;+50%^reset; Crit Dmg", 
+^yellow;^reset; +^green;0.4^reset;% Health Regen
+^yellow;^reset; +^green;50^reset;% Crit Damage
+^yellow;^reset; ^cyan;Immune^reset;: Darkness", 
   "shortdescription" : "Dark Matter Helmet",
-  "category" : "t5armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armormelee" : "fubonusarmorhead" },
+  //"collectablesOnPickup" : { "fu_armormelee" : "fubonusarmorhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,6 +38,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.04
     }
   ],
 
@@ -46,11 +51,7 @@
     {
       "stat" : "fu_darkmatterset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.12
-    }  
+    } 
   ],
 
   "colorOptions" : [
@@ -91,5 +92,7 @@
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

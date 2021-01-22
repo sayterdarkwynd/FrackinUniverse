@@ -4,12 +4,11 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "^orange;Set Bonuses^reset;:  
-Slowed Falls
-Increased Air mobility
-^cyan;Immune^reset;: Oxygen, Pressure, Gas, Radiation",
+  "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^cyan;Slow Fall^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Pressure, Gas, Deadly Radiation",
   "shortdescription" : "Valkyrie Hardsuit",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -25,7 +24,7 @@ Increased Air mobility
   },
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "kirhostier5achest" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "kirhostier5achest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,6 +45,11 @@ Increased Air mobility
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.05
     }
   ],
 
@@ -54,11 +58,7 @@ Increased Air mobility
     {
       "stat" : "fu_valkyrieset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.15
-    }    
+    }
   ],
 
   "colorOptions" : [
@@ -87,5 +87,7 @@ Increased Air mobility
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

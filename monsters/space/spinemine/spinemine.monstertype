@@ -71,7 +71,7 @@
             "projectileCount" : 1,
             "projectileType" : "spacemineexplosion",
             "projectileParameters" : {
-              "power" : 160,
+              "power" : 350,
               "damageTeam" : { "type" : "enemy", "team" : 0 }
             },
             "aimDirection" : [0, 0],
@@ -124,7 +124,7 @@
     "knockoutEffect" : "",
 
     "healthLevelFunction" : "monsterLevelHealthMultiplier",
-    "powerLevelFunction" : "monsterLevelPowerMultiplier",
+    "powerLevelFunction" : "spaceMonsterLevelPowerMultiplier",
 
     "statusSettings" : {
       "statusProperties" : {
@@ -151,7 +151,7 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 90
+          "baseValue" : 100
         },
         "protection" : {
           "baseValue" : 0.25
@@ -169,16 +169,16 @@
           "baseValue" : 1.0
         },
         "electricStatusImmunity" : {
-          "baseValue" : 1.0
+          "baseValue" : 0.0
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
         },
         "physicalResistance" : {
-          "baseValue" : 0.1
+          "baseValue" : 0.30
         },
         "poisonResistance" : {
-          "baseValue" : 1
+          "baseValue" : 0.75
         },
         "electricResistance" : {
           "baseValue" : -0.3
@@ -193,7 +193,7 @@
           "baseValue" : 0.5
         },
         "shadowResistance" : {
-          "baseValue" : 1
+          "baseValue" : 0.1
         },
         "radioactiveResistance" : {
           "baseValue" : 0.9

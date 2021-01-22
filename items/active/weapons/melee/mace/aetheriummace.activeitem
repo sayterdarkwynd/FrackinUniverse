@@ -9,10 +9,10 @@
   "tooltipKind" : "hammeraetherium",
   "category" : "mace",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","mace", "upgradeableWeapon","aetherium","cosmic"],
 
   "inventoryIcon" : "aetheriummace_ashey.png",
-  "collectablesOnPickup" : { "fu_weaponmace" : "aetheriummace" },
+  //"collectablesOnPickup" : { "fu_weaponmace" : "aetheriummace" },
   "animation" : "combomaceglow.animation",
   "animationParts" : {
     "handle" : "",
@@ -23,20 +23,20 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "cosmic",
+  "elementalType" : "aether",
 
   "primaryAbilityType" : "macecombo",
   "primaryAbility":{
     "fireTime":0.85, 
     "baseDps":8.2,
     "damageConfig" : {
-      "damageSourceKind" : "cosmichammer",
+      "damageSourceKind" : "aetherhammer",
       "statusEffects" : [ "defenseboostneg20" ]
     }
   },
   "critChance" : 5,
   "critBonus" : 3,
-  "stunChance" : 8,
+  "stunChance" : 80,
   "upgradeParameters": {
     "description" : "Valiant be thy heart.  Original design by Ashey.",
 	"shortdescription" : "Aetherium Lordcrusher",
@@ -45,7 +45,7 @@
       "blade" : "aetheriummace_asheyt8.png",
       "bladefullbright" : "aetheriummace_asheyfullbrightt8.png"
     },
-	"stunChance" : 12
+	"stunChance" : 85
   },
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 

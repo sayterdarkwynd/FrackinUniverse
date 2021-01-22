@@ -5,19 +5,19 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Set Bonus:
-^cyan;Thorns^reset;
-^#c74eff;+21% Physical Resist^reset;
-^green;Immune: Stings, Honey^reset;",
+   "description" : "^orange;Set Bonuses^reset;: 
+^yellow;^reset; ^green;Thorns^reset;
+^yellow;^reset; Bladed Melee: Damage x^green;1.1^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Beestings, Honey",
   "shortdescription" : "Amber Leg Plates",
-  "category" : "t5armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armortank" : "fugoldenlegs" },
+  //"collectablesOnPickup" : { "fu_armortank" : "fugoldenlegs" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,6 +38,11 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 8
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.023334
     }
   ],
 
@@ -46,10 +51,6 @@
     {
       "stat" : "fu_amberset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -58,5 +59,6 @@
     { "ffd174" : "ffd174", "f8cc00" : "f8cc00", "bf9d00" : "bf9d00", "fff821" : "fff821"},		
        /* GREEN */
     { "ffd174" : "60b462", "f8cc00" : "589459", "bf9d00" : "3b603c", "fff821" : "3bff21"}
-  ]
+  ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

@@ -7,14 +7,16 @@ local checkingMod = "ztarbound"
 zbInited = false
 zbUninited = false
 
-function init()
-	origInit()
+function init(...)
+	if origInit then
+		origInit(...)
+	end
 	if zbInited then return end
 	zbInited = true
-	
+
 	sb.logInfo("----- ZB player init -----")
 	status.setStatusProperty("zb_updatewindow_error", nil)
-	
+
 	-- popping up the update window in a safe enviorment so everything else runs as it should in case of errors with the versioning file
 	local passed, err = pcall(updateInfoWindow)
 	if not passed then
@@ -22,17 +24,17 @@ function init()
 		status.setStatusProperty("zb_updatewindow_error", checkingMod)
 		player.interact("ScriptPane", "/zb/updateInfoWindow/updateInfoWindowError.config", player.id())
 	end
-	
+
 	-- Add the scan interaction handler if its missing
 	if not player.hasQuest("zb_scaninteraction") then
-		sb.logInfo("Readded 'zb_scaninteraction' quest")
+		sb.logInfo("Re-added 'zb_scaninteraction' quest")
 		player.startQuest("zb_scaninteraction")
 	end
-	
+
 	-- require "/zb/zb_util.lua"
 	-- zbutil.DeepPrintTable(player)
-	
-	sb.logInfo("")
+
+	sb.logInfo("----- end ZB player init -----")
 end
 
 function updateInfoWindow()
@@ -41,11 +43,11 @@ function updateInfoWindow()
 	local versions = status.statusProperty("zb_updatewindow_versions", {})
 	local world = world.type()
 	local pending = {}
-	
+
 	for _, instance in ipairs(data.Data.ignoredInstances) do
 		if world == instance then return end
 	end
-	
+
 	sb.logInfo("[ZB] Mods using update info window and their versions:")
 	for mod, modData in pairs(data) do
 		checkingMod = mod
@@ -56,10 +58,10 @@ function updateInfoWindow()
 				table.insert(pending, mod)
 			end
 		end
-	end	
-	
+	end
+
 	-- Version values are updated in the pane
-	
+
 	if #pending > 0 then
 		status.setStatusProperty("zb_updatewindow_pending", pending)
 		status.setStatusProperty("zb_updatewindow_versions", versions)
@@ -69,10 +71,12 @@ function updateInfoWindow()
 	end
 end
 
-function uninit()
-	origUninit()
+function uninit(...)
+	if origUninit then
+		origUninit(...)
+	end
 	if zbUninited then return end
 	zbUninited = true
-	
+
 	world.sendEntityMessage(player.id(), "stopAltMusic", 2.0)
 end

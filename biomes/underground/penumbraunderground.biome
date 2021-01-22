@@ -14,7 +14,9 @@
           [ 0.1111, "petricub" ],
           [ 0.1111, "yokat" ],     
           [ 0.1111, "fucorruptflylarge" ],
-          [ 0.1111, "shadowhound" ]
+          [ 0.1111, "shadowhound" ],
+          [ 0.1111, "lightsprite" ],
+          [ 0.1, "pandorasboxaliep"]
         ]
       },
       {
@@ -307,12 +309,29 @@
               [0.50, "bioshroomblue4" ],
               [0.50, "bioshroomblue5" ],
               [0.50, "bioshroomblue6" ],
-              [0.50, "bioshroomblue7" ] 
+              [0.50, "bioshroomblue7" ],
+              [0.65, "exoniteseed" ],
+              [0.65, "emeraseed" ],
+              [0.65, "tokaniteseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }
           ]
         },
+      {
+        "mode" : "floor",
+        "priority" : 0.0,
+        "variants" : 1,
+        "distribution" : "/biomes/distributions.config:undergroundChallengeDoors",
+
+        "type" : "object",
+        "objectSets" : [
+          {
+            "pool" : [ [1, "challengedoor" ] ],
+            "parameters" : { }
+          }
+        ]
+      },        
         {
           "mode" : "ceiling",
           "priority" : 2.0,

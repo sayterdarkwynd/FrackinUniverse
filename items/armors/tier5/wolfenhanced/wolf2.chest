@@ -6,11 +6,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+30%^reset; Ice Resistance
-Daggers: ^cyan;+15^reset; to ^#a94db3;25%^reset; Crit Dmg
-^cyan;Immune^reset;: Snow, Slush, Ice, Cold",
+^yellow;^reset; Daggers: +^green;20^reset;/^green;40^reset;% Crit Damage
+^yellow;^reset; ^cyan;Immune^reset;: Snow, Slush, Ice, Deadly Cold",
   "shortdescription" : "Wolf Coat",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -26,7 +25,7 @@ Daggers: ^cyan;+15^reset; to ^#a94db3;25%^reset; Crit Dmg
   },
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "fuwolfchest2" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "fuwolfchest2" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,6 +46,11 @@ Daggers: ^cyan;+15^reset; to ^#a94db3;25%^reset; Crit Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.033334
     }
   ],
 
@@ -55,11 +59,7 @@ Daggers: ^cyan;+15^reset; to ^#a94db3;25%^reset; Crit Dmg
     {
       "stat" : "fu_wolfset2_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.1
-    }  
+    }
   ],
 
   "colorOptions" : [
@@ -98,5 +98,7 @@ Daggers: ^cyan;+15^reset; to ^#a94db3;25%^reset; Crit Dmg
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

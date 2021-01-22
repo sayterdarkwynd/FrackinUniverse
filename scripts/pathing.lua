@@ -23,7 +23,7 @@ function PathFinder:find(targetPosition)
     return "pathfinding"
   end
 
- if not self.hasPath and not self.aStar then
+  if not self.hasPath and not self.aStar then
     if self.options.mustEndOnGround and not validStandingPosition(targetPosition, false) then
       return false
     end
@@ -97,7 +97,7 @@ end
 
 function PathFinder:update(targetPosition)
   -- Reset path if it's been stuck on the same node for a bit
- if self.hasPath and self.stuckTimer > 0.5 then
+  if self.hasPath and self.stuckTimer > 0.5 then
     self:reset()
   end
   self.stuckTimer = self.stuckTimer + script.updateDt()
@@ -167,7 +167,7 @@ function PathMover:new(options)
   })
   newPather.finder = PathFinder:new(pathOptions)
 
- newPather.options = applyDefaults(options, {
+  newPather.options = applyDefaults(options, {
     run = false,
     movementParameters = {}
   })
@@ -178,10 +178,10 @@ function PathMover:new(options)
   newPather.lastPosition = newPather.position
 
   newPather.boundBox = mcontroller.boundBox()
-  
+
   newPather.canOpenDoors = config.getParameter("pathing.canOpenDoors", false)
   newPather.forceWalkingBackwards = config.getParameter("pathing.forceWalkingBackwards", false)
-  
+
   setmetatable(newPather, extend(self))
   return newPather
 end
@@ -264,7 +264,7 @@ function PathMover:edgeMove()
   self:updateEdge()
 
   if self.edge == nil then return true end
-  
+
   if not self:openDoors() then
     return false
   end
@@ -288,7 +288,7 @@ end
 
 function PathMover:openDoors()
   local bounds = rect.translate(mcontroller.boundBox(), mcontroller.position())
-  
+
   if util.toDirection(self.delta[1]) > 0 then
     bounds[1] = bounds[3]
     bounds[3] = bounds[3] + 1
@@ -299,7 +299,7 @@ function PathMover:openDoors()
 
   if world.rectTileCollision(bounds, {"Dynamic"}) then
     -- There is a colliding object in the way. See if we can open it
-   local closedDoorIds = world.entityQuery(rect.ll(bounds), rect.ur(bounds), { includedTypes = {"object"}, callScript = "hasCapability", callScriptArgs = { "closedDoor" } })
+    local closedDoorIds = world.entityQuery(rect.ll(bounds), rect.ur(bounds), { includedTypes = {"object"}, callScript = "hasCapability", callScriptArgs = { "closedDoor" } })
     if #closedDoorIds == 0 or not self.canOpenDoors then
       return false
     else

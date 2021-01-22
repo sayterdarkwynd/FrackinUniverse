@@ -1,28 +1,40 @@
 {
   "name" : "strangesea",
   "friendlyName" : "Strange Sea",
-  "statusEffects" : [ "biomepoisongas" ],
+  "statusEffects" : [ "biomepoisongas","strangeseadrain" ],
   
   "spawnProfile" : {
     "groups" : [
       {
-        "select" : 1,
+        "select" : 4,
         "pool" : [ 
-          [ 0.1666, "lilodon" ],
-          [ 0.1666, "monopus" ],
-          [ 0.1666, "miasmop" ],
-          [ 0.1666, "snaggler" ],
-          [ 0.1666, "crabcano" ],
+          [ 0.1, "eyeslime" ],  
+          [ 0.1, "eyejelly" ],  
+          [ 0.1, "slimetop" ],
+          [ 0.1, "monopus" ],
+          [ 0.1, "miasmop" ],
+          [ 0.1, "snaggler" ],
+          [ 0.1, "crabcano" ],
           [ 0.1, "fualien" ],
-          [ 0.1666, "snuffishwater" ]
+          [ 0.1, "snuffishwater" ],
+          [ 0.1, "skywhale" ],
+          [ 0.1, "derrick" ],
+          [ 0.1, "crutter2" ],
+          [ 0.1, "maggot" ],
+          [ 0.5, "garflipp" ],
+          [ 0.1, "eyeslimeking" ],
+          [ 0.1, "eyejellyking" ],
+          [ 0.1, "darkmetroid" ]          
         ]
       },
       {
-        "select" : 1,
+        "select" : 2,
         "pool" : [
           [ 0.4, "tidefly" ],
-          [ 0.3, "seahornet" ],
-          [ 0.3, "wavebird" ]
+          [ 0.2, "bee_loamzipper" ],
+          [ 0.2, "bee_stellar" ],
+          [ 0.2, "seahornet" ],
+          [ 0.2, "wavebird" ]
         ]
       },
       {
@@ -75,7 +87,14 @@
   
   "weather" : [
     [0, [
-      "/weather.config:arboreal"
+      "/weather.config:arboreal",
+      "/weather.config:bloodstone",
+      "/weather.config:bogweird",
+      "/weather.config:atropus",
+      "/weather.config:arborealvolcanic",
+      "/weather.config:aetherharsh",
+      "/weather.config:icefire",
+      "/weather.config:infernus"
     ]]
   ],
 
@@ -595,9 +614,9 @@
   
     "mainBlock" : "bonemeal",
     "subBlocks" : [ "harrowstone", "genetile" ],
-    "ores" : "ff_icemoonOres",
+    "ores" : "ff_strangeseaOres",
 
-  "parallax" : "/parallax/surface/ocean.parallax",
+  "parallax" : "/parallax/surface/strangesea.parallax",
 
   "ambientNoises" : {
     "day" : {
@@ -610,10 +629,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/ambient_reformed.ogg","/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/lava-exploration2.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/crystal-exploration2.ogg", "/music/forsaken-grotto.ogg" ]
+      "tracks" : [ "/music/Pure.ogg","/music/strangeseamood.ogg","/music/ambient_reformed.ogg","/music/ocean-exploration2.ogg","/music/forsaken-grotto.ogg", "/music/lava-exploration1.ogg", "/music/lava-exploration2.ogg", "/music/drosera.ogg", "/music/crystal-exploration1.ogg", "/music/inviolate-loop.ogg", "/music/body-electric-loop.ogg", "/music/europa.ogg", "/music/crystal-exploration2.ogg", "/music/forsaken-grotto.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/OceanExploration1.ogg","/music/ocean-exploration2.ogg","/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/the-deep.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/mercury.ogg", "/music/procyon.ogg" ]
+      "tracks" : [ "/music/Pure.ogg","/music/Temporis.ogg","/music/strangeseamood.ogg", "/music/ocean-exploration2.ogg","/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mira.ogg", "/music/the-deep.ogg", "/music/tranquility-base.ogg", "/music/accretion-disc.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/mercury.ogg", "/music/procyon.ogg" ]
     }
   },
 
@@ -631,10 +650,17 @@
           "objectSets" : [
             {
               "pool" : [ 
+              [0.1, "wildthornitoxseed" ],
+              [0.05, "wildfayshroomseed" ],
+              [0.1, "wildgreenleafseed" ],
+              [0.1, "wilditaseed" ],
+              [0.05, "tokaniteseed" ],
+              [0.1, "emeraseed" ],
+              [0.1, "wildblisterbushplantseed" ],
+              [0.1, "thanatiteseed" ],
+              [0.1, "rasilineseed" ],
               [0.03, "wildwretchelseed" ],
-              [0.3, "wildfayshroomseed" ],
-              [0.3, "wildgreenleafseed" ],
-              [0.3, "wilditaseed" ]
+              [0.07, "feyaseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }

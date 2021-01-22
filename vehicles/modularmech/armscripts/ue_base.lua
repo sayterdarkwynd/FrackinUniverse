@@ -27,13 +27,13 @@ function MechArm:update(dt)
   -- not implemented
 end
 
-function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, fun crouchValue, parts)
+function MechArm:updateBase(dt, driverId, isFiring, wasFiring, aimPosition, facingDirection, crouchValue, parts)
   self.crouchValue = crouchValue -- lpk: save crouch for use in shoulderPosition()
   self.driverId = driverId
   self.isFiring = isFiring
   self.wasFiring = wasFiring
-  self.parts = copy(parts) -- for FU. Access with  self.parts.<partname>.stats  (self.parts.body.stats.protection ) 
-  
+  self.parts = copy(parts) -- for FU. Access with  self.parts.<partname>.stats  (self.parts.body.stats.protection )
+
   self.fireTriggered = isFiring and not wasFiring
   if self.frontPartImages or self.backPartImages then
     self:updateAnimationSide(facingDirection)
@@ -97,7 +97,7 @@ self.mechBonusWeapon = self.stats.power + self.stats.energy
                 self.mechBonusBooster = (self.parts.booster.stats.control + self.parts.booster.stats.speed )/6
 	        self.mechBonusLegs = (self.parts.legs.stats.speed + self.parts.legs.stats.jump )/4
 	        self.mechBonusTotal = self.mechBonusLegs + self.mechBonusBooster + self.mechBonusBody -- all three combined
-	        self.mechBonus = (self.mechBonusBody) + (self.mechBonusBooster) + (self.mechBonusLegs) 
+	        self.mechBonus = (self.mechBonusBody) + (self.mechBonusBooster) + (self.mechBonusLegs)
 	        self.energyMax = self.parts.body.energyMax
 	        self.weaponDrain = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/20
 	        self.weaponDrainCrit = ((self.parts.leftArm.energyDrain or 0) + (self.parts.rightArm.energyDrain or 0))/10
@@ -115,7 +115,7 @@ function MechArm:fire()
   if self.aimAngle and self.aimVector and self.firePosition and self:rayCheck(self.firePosition) then
     local pParams = copy(self.projectileParameters)
     local pParams2 = config.getParameter("") --copy(self.damageSources) -- for FU, beam weapons etc
-    
+
     if not self.projectileTrackSource and mcontroller.zeroG() then
       pParams.referenceVelocity = mcontroller.velocity()
     else
@@ -151,39 +151,39 @@ function MechArm:fire()
       end
 
       self:statSet()
-      
+
 -- ****************************** FU mass computation ***************************
-	        self.mechMass = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass or 0   
-	          
+	        self.mechMass = self.parts.body.stats.mechMass + self.parts.booster.stats.mechMass + self.parts.legs.stats.mechMass + self.parts.leftArm.stats.mechMass + self.parts.rightArm.stats.mechMass or 0
+
 	        -- ****************************** FU damage computation ***************************
 	        self.mechTier = self.stats.power
 	        self.multicount = self.stats.multicount
-	
+
 	        pParams.power = pParams.power * self.mechTier
-	
+
 		-- *****special-case weapons
 		if (self.multicount) then  -- if its a spread-type projectile we divide by the number of projectiles before applying tier modifier
-		  pParams.power = (pParams.power / self.multicount) 
-		end			
-		if (self.stats.flamethrower) then 
+		  pParams.power = (pParams.power / self.multicount)
+		end
+		if (self.stats.flamethrower) then
 		  self.critMod = 0
-		  self.critChance = 0 
+		  self.critChance = 0
 		  pParams.power = (pParams.power  / self.stats.flamethrower)
 		end
-		if (self.stats.beam) then 
+		if (self.stats.beam) then
 		  self.critMod = 0
-		  self.critChance = 0 
+		  self.critChance = 0
 		end
-	        
-	       -- *************************** Determine Critical Hits ********************************  
+
+	       -- *************************** Determine Critical Hits ********************************
 	        self.critChance = (self.parts.body.stats.energy/2)  + math.random(100)
 	        if (self.stats.rapidFire) then -- if fast-firing, we reduce the chance to crit
 	          self.critMod = self.stats.rapidFire / 10
 	          self.critChance = self.critChance * self.critMod
 	        end
-	        
-	        
-	        if (self.critChance) >= 100 then 
+
+
+	        if (self.critChance) >= 100 then
 	          if self.multicount then
 	            self.mechBonus = (self.mechBonus * 2 ) / self.multicount
 	            storage.energy = math.min(math.max(0, storage.energy - self.weaponDrainCrit),self.energyMax)

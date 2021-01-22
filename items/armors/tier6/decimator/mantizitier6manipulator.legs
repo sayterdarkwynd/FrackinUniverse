@@ -5,18 +5,17 @@
   "maxStack" : 1,
   "rarity" : "Legendary",
    "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+30%^reset; Electric Resist^reset;
-Shotgun/Gren.Launcher: ^green;+3%^reset; Crit, ^cyan;+15%^reset; Crit Dmg
-^cyan;Immune^reset;: Heat, Proto", 
+^yellow;^reset; Shotgun/Gren.Launcher: +^green;3^reset;% Crit Chance, +^green;15^reset;% Crit Damage
+^yellow;^reset; ^cyan;Immune^reset;: Deadly Heat, Proto", 
   "shortdescription" : "Decimator Skirt",
-  "category" : "t6armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 6,
-  "collectablesOnPickup" : { "fu_armorranged" : "fumantizitier6mpants" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "fumantizitier6mpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -37,6 +36,11 @@ Shotgun/Gren.Launcher: ^green;+3%^reset; Crit, ^cyan;+15%^reset; Crit Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.028572
     }
   ],
 
@@ -45,11 +49,7 @@ Shotgun/Gren.Launcher: ^green;+3%^reset; Crit, ^cyan;+15%^reset; Crit Dmg
     {
       "stat" : "fu_decimatorset_legs",
       "amount" : 1
-    },
-     {
-      "stat" : "electricResistance",
-      "amount" : 0.1
-    } 
+    }
   ],
   
   "colorOptions" : [
@@ -78,5 +78,7 @@ Shotgun/Gren.Launcher: ^green;+3%^reset; Crit, ^cyan;+15%^reset; Crit Dmg
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
 
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

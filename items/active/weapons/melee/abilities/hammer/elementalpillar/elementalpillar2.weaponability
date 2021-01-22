@@ -85,7 +85,42 @@
           { "particle" : "radioactivedrip"},
           { "particle" : "radioactivedrip"}
         ]
-      }      
+      },
+      "hellfireCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
+        "particles" : [
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"}
+        ]
+      },
+      "silverweaponCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
+        "particles" : [
+          { "particle" : "shadowswoosh1"},
+          { "particle" : "shadowswoosh2"},
+          { "particle" : "shadowsmoke2"},
+          { "particle" : "shadowsmoke2"},
+          { "particle" : "shadowsmoke2"}
+        ]
+      },
+      "bioweaponCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
+        "particles" : [
+          { "particle" : "poisonswoosh1"},
+          { "particle" : "poisonswoosh2"},
+          { "particle" : "poisonswoosh2"}
+        ]
+      }
     },
     "sounds" : {
       "firecharge" : [ "/sfx/melee/shockwave_charge_fire.ogg" ],
@@ -105,7 +140,16 @@
       "shadowimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
       "radioactivecharge" : [ "/sfx/melee/shockwave_charge_poison.ogg" ],
       "radioactivefull" : [ "/sfx/melee/shockwave_full_poison.ogg" ],
-      "radioactiveimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ]      
+      "radioactiveimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
+      "hellfirecharge" : [ "/sfx/melee/shockwave_charge_fire.ogg" ],
+      "hellfirefull" : [ "/sfx/melee/shockwave_full_fire.ogg" ],
+      "hellfireimpact" : [ "/sfx/gun/grenadeblast_fire2.ogg" ],
+      "bioweaponcharge" : [ "/sfx/melee/shockwave_charge_poison.ogg" ],
+      "bioweaponfull" : [ "/sfx/melee/shockwave_full_poison.ogg" ],
+      "bioweaponimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
+      "silverweaponcharge" : [ "/sfx/melee/shockwave_charge_poison.ogg" ],
+      "silverweaponfull" : [ "/sfx/melee/shockwave_full_poison.ogg" ],
+      "silverweaponimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ]
     }
   },
 
@@ -142,7 +186,16 @@
       },
       "cosmic" : {
         "projectileType" : "cosmicpillar"
-      }        
+      },
+      "bioweapon" : {
+        "projectileType" : "poisonpillar"
+      },
+      "silverweapon" : {
+        "projectileType" : "shadowpillar"
+      },
+      "hellfire" : {
+        "projectileType" : "firepillar"
+      }
     },
     "projectileParameters" : {
       "power" : 2.0,

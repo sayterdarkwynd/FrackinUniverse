@@ -4,11 +4,10 @@ function isn_getCurrentPowerInput(divide)
 	local totalInput = 0
 	local iterator = 0
 	local connectedDevices
-	local output = 0
-	
-	local nodecount = object.inputNodeCount() 
+
+	local nodecount = object.inputNodeCount()
 	---sb.logInfo("PID: nodecount is " .. nodecount)
-	
+
 	while iterator < nodecount do
 		---sb.logInfo("PID: Iteration " .. iterator)
 		if object.getInputNodeLevel(iterator) == true then
@@ -18,7 +17,7 @@ function isn_getCurrentPowerInput(divide)
 				---sb.logInfo("PID: powerLevel is " .. powerLevel)
 				---sb.logInfo("PID: ID check resolves to " .. world.entityName(id))
 				if world.callScriptedEntity(id,"isn_canSupplyPower") == true then
-					output = world.callScriptedEntity(id,"isn_getCurrentPowerOutput",divide)
+					local output = world.callScriptedEntity(id,"isn_getCurrentPowerOutput",divide)
 					---sb.logInfo("PID: Power supplier detected with output of " .. output)
 					if output ~= nil then totalInput = totalInput + output end
 				else
@@ -29,7 +28,7 @@ function isn_getCurrentPowerInput(divide)
 		---sb.logInfo("PID: total input now at " .. totalInput)
 		iterator = iterator + 1
 	end
-	
+
 	---sb.logInfo("GENERAL POWER INPUT DEBUG END")
 	return totalInput
 end
@@ -39,7 +38,7 @@ function isn_hasRequiredPower()
 	local requirement = config.getParameter("isn_requiredPower")
 	if power == nil then return false end
 	if requirement == nil then return true end
-	
+
 	if power >= requirement then return true
 	else return false end
 end
@@ -49,8 +48,8 @@ function isn_canSupplyPower()
 	else return false end
 end
 
-function isn_canRecievePower()
-	if config.getParameter("isn_powerReciever") == true then return true
+function isn_canReceivePower()
+	if config.getParameter("isn_powerReceiver") == true then return true
 	else return false end
 end
 
@@ -63,7 +62,7 @@ function isn_checkValidOutput()
 	local connectedDevices = object.getOutputNodeIds(0)
 	if not connectedDevices then return false end
 	for id, powerLevel in pairs(connectedDevices) do
-		if world.callScriptedEntity(id,"isn_canRecievePower") == false then return false end
+		if world.callScriptedEntity(id,"isn_canReceivePower") == false then return false end
 	end
 	return true
 end
@@ -84,7 +83,7 @@ function isn_countPowerDevicesConnectedOnOutboundNode(node)
 		---else
 			---sb.logInfo("PDCDB: id resolves to " .. devicecheck)
 		---end
-		if world.callScriptedEntity(id,"isn_canRecievePower") == true then
+		if world.callScriptedEntity(id,"isn_canReceivePower") == true then
 			if world.callScriptedEntity(id,"isn_doesNotConsumePower") == false then
 				---sb.logInfo("PDCDB: power-consuming device detected and added to count")
 				devicecount = devicecount + 1

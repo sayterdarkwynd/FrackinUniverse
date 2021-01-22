@@ -1,0 +1,53 @@
+{
+  "projectileName" : "pandorasboxhivetoiseshell",
+  "image" : "pandorasboxhivetoiseshell.png",
+  "physics" : "largeGrenade",
+  "animationCycle" : 2,
+  "frameNumber" : 1,
+  "renderLayer" : "Object+1",
+  "power" : 0,
+  "speed" : 20,
+  "piercing" : true,
+  "initialVelocity" : 20,
+  "timeToLive" : 100,
+  "bounces" : 7,
+  "flippable" : true,
+  "orientationLocked" : true,
+
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/tools/wiretool.ogg" ]
+    }
+  ],
+
+  "actionOnReap" : [
+    {
+    "action" : "loop",
+    "count" : 4,
+    "body" : [
+      {
+        "action" : "particle",
+        "specification" : {
+            "type" : "ember",
+            "size" : 1.3,
+            "color" : [153, 190, 227, 255],
+            "fade" : 0.9,
+            "initialVelocity" : [13, 8.0],
+            "finalVelocity" : [16, -19.0],
+            "approach" : [20, 30],
+            "timeToLive" : 0.9,
+            "layer" : "front",
+            "variance" : {
+              "initialVelocity" : [13, 3],
+              "timeToLive" : 1,
+              "size" : 1.3
+            }
+        }
+      }
+    ]
+  }
+  ],
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

@@ -1,6 +1,7 @@
-require "/scripts/vec2.lua"
+--require "/scripts/vec2.lua"
 
 function init()
+--[[
 self.baseHealth = status.stat("maxHealth")-status.stat("maxHealth")
 self.baseEnergy = status.stat("maxEnergy")
 self.basePower = status.stat("powerMultiplier")
@@ -52,13 +53,13 @@ self.baseShieldBash = status.stat("shieldBash")
 	  })
 	  sb.logInfo("shieldBash reduced to Hard-Cap of XXX")
     end
-   
+   ]]
 end
 
 
 function update(dt)
 
-     
+
 end
 
 

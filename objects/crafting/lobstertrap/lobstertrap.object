@@ -1,7 +1,7 @@
 {
   "objectName" : "lobstertrap",
   "rarity" : "Common",
-  "description" : "Occasionally catches delicious lobsters when placed in ocean water. Can hold up to 5 lobsters.",
+  "description" : "Occasionally catches delicious lobsters when placed in ocean water. Can hold 3 lobsters. Scan for Info.",
   "shortdescription" : "Lobster Trap",
   "race" : "generic",
   "category" : "decorative",
@@ -24,13 +24,19 @@
     }
   ],
   "outputNodes" : [ [0, 0] ],
-  "scripts" : [ "/scripts/lobstertrap.lua" ],
-  "scriptDelta" : 820,
+  "scripts" : [ "/scripts/fupesttrap.lua" ],
+  "scriptDelta" : 60,
   "slotCount" : 1,
   "uiConfig" : "/interface/chests/chest<slots>.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
-  "wellslots" : [
-    {"name" : "fulobster","ratio" : 50,"max" : 5}
-  ]
+
+  //pest trap general params
+  "wellConfig":{
+    "range":8,
+	"type":"lobstertrap",
+    "isLiquidBased" : 1,
+	"timeRange":{"min":300,"max":1200},
+    "wellSlots" : [ {"name" : "fulobster","ratio" : 1,"max" : 1} ]
+  }
 }

@@ -47,7 +47,7 @@
 	  "speed":95, 
 	  "timeToLive":3.0, 
 	  "power" : 5,
-	  "damageSourceKind" : "electric",
+	  "damageKind" : "electric",
 	  "knockback":0,
 	  "lightColor" : [255, 180, 0],    
 	    "periodicActions":[ 
@@ -128,7 +128,13 @@
       }
     }
   },
+  
   "critChance" : 4,
   "critBonus" : 6,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 500,    
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

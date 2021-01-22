@@ -7,12 +7,12 @@
         "states" : {
           "idle" : {
             "frames" : 5,
-            "cycle" : 1,
+            "cycle" : 4,
             "mode" : "loop"
           },
           "fly" : {
             "frames" : 6,
-            "cycle" : 1.2,
+            "cycle" : 2,
             "mode" : "loop"
           },
           "firewindup" : {
@@ -35,11 +35,50 @@
           },
           "charge" : {
             "frames" : 6,
-            "cycle" : 0.6,
+            "cycle" : 2,
             "mode" : "loop"
           }         
         }
       },
+      "movement" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 5,
+            "cycle" : 4,
+            "mode" : "loop"
+          },
+          "bloop" : {
+            "frames" : 6,
+            "cycle" : 2,
+            "mode" : "loop"
+          },
+          "firewindup" : {
+            "frames" : 6,
+            "cycle" : 1.2
+          },
+          "fire" : {
+            "frames" : 5,
+            "cycle" : 0.5
+          },
+          "chargewindup" : {
+            "frames" : 5,
+            "cycle" : 1.2,
+            "mode" : "loop"
+          },
+          "chargewinddown" : {
+            "frames" : 5,
+            "cycle" : 1.2,
+            "mode" : "loop"
+          },
+          "charge" : {
+            "frames" : 6,
+            "cycle" : 2,
+            "mode" : "loop"
+          }         
+        }
+      },      
       "damage" : {
         "priority" : 3,
         "default" : "none",
@@ -77,6 +116,19 @@
     },
 
     "parts" : {
+      "movement" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "bloop" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            }           
+      },
+   
       "body" : {
         "properties" : {
           "transformationGroups" : [ "body" ],
@@ -128,14 +180,74 @@
             }
           }
         }
-      }
+      },      
+      "bodyfullbright" : {
+        "properties" : {
+         "zLevel" : 20,
+          "transformationGroups" : [ "body" ],
+          "offset" : [0.0, 0.125],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            }, 
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            }            
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      }      
     }
   },
 
   "transformationGroups" : {
     "body" : { "interpolated" : true }
   },
-
+  "rotationGroups" : {
+    "body" : {
+      "rotationCenter" : [0, 0],
+      "angularVelocity" : 5
+    }
+  },
+  
   "effects" : {
     "blink" : {
       "type" : "flash",
@@ -148,8 +260,8 @@
     "glow" : {
       "active" : true,
       "position" : [0, 0],
-      "color" : [165, 205, 242],
-      "pointLight" : false
+      "color" : [40, 40, 100],
+      "pointLight" : true
     }
   },
 
@@ -162,7 +274,7 @@
         {
           "particle" : {
             "type" : "ember",
-            "size" : 1.5,
+            "size" : 0.1,
             "color" : [80, 221, 254, 230],
             "fade" : 0.9,
             "destructionAction" : "shrink",

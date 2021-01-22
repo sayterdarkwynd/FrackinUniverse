@@ -1,0 +1,51 @@
+{
+  "objectName" : "invisiblemonsterspawnerworld",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  "category" : "spawner",
+  "price" : 0,
+  "health" : 0.1,
+  "description" : "...",
+  "shortdescription" : "Invisible Monster Spawner",
+  "race" : "generic",
+
+  "smashOnBreak" : true,
+
+  "inventoryIcon" : "invisiblemonsterspawner.png",
+  "orientations" : [
+    {
+      "image" : "invisiblemonsterspawner.png",
+      "imagePosition" : [-8, 0],
+      "spaceScan" : 0.1
+    }
+  ],
+
+  "scripts" : [ "/objects/spawner/monsterspawnerworld.lua" ],
+  "scriptDelta" : 10,
+
+  "animation" : "invisiblemonsterspawner.animation",
+
+  "animationParts" : {
+    "switch" : "invisiblemonsterspawnerhidden.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "inputNodes" : [ [-1, 1] ],
+
+  "spawner" : {
+    "monsterTypes" : ["smallquadruped", "largequadruped"], //type of monster to spawn (random from list)
+    //"monsterLevel" : [1, 10], //level of monster to spawn (random within range, or leave blank for world threat level)
+	//"monsterLevelOffset": 1, //if monsterLevel is omitted, this can be used to offset the level
+    "monsterParams" : { //additional parameters of spawned monster
+      "aggressive" : true
+    },
+	"spawnchance" : 100, //Chance of it to spawn an enemy. Value is 0 - 100. 0 = never spawn anything, 100 = always spawn something. Default is 100.
+    "position" : [0, 1], //relative position to spawn at
+    "positionVariance" : [10, 0], //[x,y] size of randomized spawn area, centered on position
+    "frequency" : [5.0, 5.0], //cooldown time between spawns (random within range)
+    "stock" : 5, //total number of spawns, -1 for infinite
+    "trigger" : null, //options include "wire", "interact", "break", null (periodic)
+    "outOfSight" : false //only spawn where the player can't see
+  }
+}

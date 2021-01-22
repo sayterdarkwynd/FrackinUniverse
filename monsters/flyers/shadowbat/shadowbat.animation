@@ -6,47 +6,41 @@
         "default" : "idle",
         "states" : {
           "idle" : {
-            "frames" : 10,
-            "cycle" : 1.0,
+            "frames" : 9,
+            "cycle" : 0.9,
             "mode" : "transition",
-            "transition" : "liftoff"
-          },
-          "fly" : {
-            "frames" : 8,
-            "cycle" : 0.75,
-            "mode" : "loop",
-            "frameProperties" : {
-              "immediateSound" : [ "", "", "/sfx/npc/monsters/batong_flap1.ogg", "", "", "/sfx/npc/monsters/batong_flap1.ogg", "", "" ]
+            "transition" : "fly",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura" ]
             }
           },
-          "invulnerablewindup" : {
-            "frames" : 10,
+          "fly" : {
+            "frames" : 9,
             "cycle" : 1,
-            "mode" : "transition",
-            "transition" : "invulnerable"
+            "mode" : "loop",
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "/sfx/npc/monsters/taroni_pickup.ogg", "", "", "", "", "" ]
+            },
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura" ]
+            }            
           },
-          "invulnerable" : {
-            "frames" : 2,
-            "cycle" : 2,
+          "attack" : {
+            "frames" : 8,
+            "cycle" : 0.8,
             "mode" : "transition",
-            "transition" : "invulnerablewinddown"
-          },
-          "invulnerablewinddown" : {
-            "frames" : 10,
-            "cycle" : 1,
-            "mode" : "transition",
-            "transition" : "invulnerable"
-          },
-          "liftoff" : {
-            "frames" : 12,
-            "cycle" : 1.2,
-            "mode" : "transition",
-            "transition" : "fly"
-          },
+            "transition" : "fly",
+            "properties" : {
+              "particleEmittersOn" : [ "fireaura" ]
+            } 
+          },          
           "hurt" : {
-            "frames" : 1,
+            "frames" : 2,
             "cycle" : 0.3,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "fireaura" ]
+            }
           }          
         }
       },
@@ -107,6 +101,11 @@
                 "image" : "<partImage>:fly.<frame>"
               }
             },
+            "attack" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },            
             "hurt" : {
               "properties" : {
                 "image" : "<partImage>:hurt.<frame>"
@@ -116,22 +115,7 @@
               "properties" : {
                 "image" : "<partImage>:liftoff.<frame>"
               }
-            },               
-            "invulnerablewindup" : {
-              "properties" : {
-                "image" : "<partImage>:invulnerablewindup.<frame>"
-              }
-            },
-            "invulnerable" : {
-              "properties" : {
-                "image" : "<partImage>:invulnerable.<frame>"
-              }
-            },
-            "invulnerablewinddown" : {
-              "properties" : {
-                "image" : "<partImage>:invulnerablewinddown.<frame>"
-              }
-            }             
+            }           
           },
           "damage" : {
             "stunned" : {
@@ -158,6 +142,17 @@
   },
 
   "particleEmitters" : {
+    "fireaura" : {
+      "emissionRate" : 4,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "shadowdrip1" },
+        { "particle" : "shadowdrip2" },
+        { "particle" : "radiationburndust" },
+        { "particle" : "radiationburndust" }
+        
+      ]
+    },    
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
@@ -208,6 +203,8 @@
 
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "attack1" : [ "/sfx/npc/monsters/taroni_throw.ogg" ],
+    "charge" : [ "/sfx/npc/monsters/orbide_windup2.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
 }

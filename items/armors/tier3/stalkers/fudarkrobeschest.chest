@@ -1,16 +1,15 @@
 {
   "itemName" : "fudarkrobeschest",
   "inventoryIcon" : "icons.png:chest",
-  "price" : 0,
+  "price" : 400,
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-+21%^reset; Poison Resist^reset;
-Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^reset;
-^green;+8%^reset; Speed, ^#a94db3;+25%^reset; Fall Damage Reduction^reset;
-^cyan;Immune^reset;: Poison. Bio-Ooze",
+^yellow;^reset; +^green;8^reset;% Speed, Fall Damage x^green;0.75^reset;
+^yellow;^reset; Bows/Crossbows, Sniper Rifles: Damage x^green;1.15^reset;, +^green;3^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Poison. Bio-Ooze",
   "shortdescription" : "Stalker's Robe",
-  "category" : "t3armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -25,8 +24,8 @@ Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^rese
     "frontSleeve" : "fsleeve.png"
   },
   "itemTags" : [ "upgradeableWeapon" ],
-  "level" : 3,
-  "collectablesOnPickup" : { "fu_armorranged" : "fudarkrobeschest" },
+  "level" : 2,
+  //"collectablesOnPickup" : { "fu_armorranged" : "fudarkrobeschest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,6 +46,11 @@ Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^rese
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 5
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.035
     }
   ],
 
@@ -55,10 +59,6 @@ Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^rese
     {
       "stat" : "stalkersetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
     }
   ],
 
@@ -100,5 +100,7 @@ Sniper Rifles, Bow/Crossbow: ^green;+15%^reset; Dmg, ^green;+3%^reset; Crit^rese
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

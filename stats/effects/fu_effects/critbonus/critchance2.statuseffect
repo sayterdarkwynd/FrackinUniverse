@@ -1,17 +1,20 @@
 {
   "name" : "critchance2",
-  "effectConfig" : {
-    "critChanceMultiplier" : 1.10,
-    "itemName" : "critmeter"
-  },
+ 	"effectConfig": {
+		"stats": [{
+				"stat": "critChance",
+				"amount": 20
+			}
+		]
+	},
   "defaultDuration" : 60,
 
   "scripts" : [
-    "critchance2.lua"
+    "/stats/effects/fu_genericStatApplier.lua"
   ],
 
   "animationConfig" : "critchance.animation",
 
-  "label" : "Crit %+",
+  "label" : "Crit Chance +20%",
   "icon" : "/interface/statuses/rage.png"
 }

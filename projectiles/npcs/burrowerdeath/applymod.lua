@@ -1,5 +1,6 @@
 function init()
-	local position = world.entityPosition(projectile.sourceEntity())
+	local position=(projectile and projectile.sourceEntity and projectile.sourceEntity() and world.entityPosition(projectile.sourceEntity())) or (entity and entity.position and entity.position())
+	if not position then return end
 	local mod = projectile.getParameter("mod", "copper")
 	local radius = projectile.getParameter("radius",0.75)
 	local x = position[1]

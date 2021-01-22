@@ -1,13 +1,13 @@
 require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
-require '/scripts/power.lua'
+require '/scripts/fupower.lua'
 local requiredPower = 0
 
 function init()
 	power.init()
-	self = config.getParameter("spawner")
+	spawner = config.getParameter("spawner")
 	requiredPower = config.getParameter('isn_requiredPower')
-	storage.timer = self.defaultSpawnTime
+	storage.timer = spawner.defaultSpawnTime
 	if storage.crafting then
 		animator.playSound("running", -1)
 	end
@@ -16,9 +16,9 @@ end
 
 function update(dt)
 	if not storage.timer then
-		self = config.getParameter("spawner")
+		spawner = config.getParameter("spawner")
 		requiredPower = config.getParameter('isn_requiredPower')
-		storage.timer = self.defaultSpawnTime
+		storage.timer = spawner.defaultSpawnTime
 	elseif type(storage.timer) ~= "number" then
 		storage.timer=tonumber(storage.timer)
 	end
@@ -31,17 +31,17 @@ function update(dt)
 	if wireCheck() then
 		if not storage.crafting then
 			local fuelSlot = getInputContents(0)
-			if fuelSlot.name == self.fuelType then
+			if fuelSlot.name == spawner.fuelType then
 				local podSlot = getInputContents(1)
-				if podSlot.name == self.podType then
+				if podSlot.name == spawner.podType then
 					if power.getTotalEnergy() >= requiredPower then
 						storage.pets = (podSlot.parameters.pets)
 						pet = root.monsterParameters(storage.pets[1].config.type)
-						fuelAmount = pet.statusSettings.stats.maxHealth.baseValue * (self.fuelMultiplier or 0.1)
-						storage.fuelAmount = fuelAmount or self.defaultFuelAmount
+						fuelAmount = pet.statusSettings.stats.maxHealth.baseValue * (spawner.fuelMultiplier or 0.1)
+						storage.fuelAmount = fuelAmount or spawner.defaultFuelAmount
 						if world.containerConsumeAt(entity.id(),0,storage.fuelAmount) then
-							spawnTime = pet.statusSettings.stats.maxHealth.baseValue * (self.spawnTimeMultiplier or 0.1)
-							storage.timer = spawnTime or self.defaultSpawnTime
+							spawnTime = pet.statusSettings.stats.maxHealth.baseValue * (spawner.spawnTimeMultiplier or 0.1)
+							storage.timer = spawnTime or spawner.defaultSpawnTime
 							storage.crafting = true
 						end
 					end
@@ -49,7 +49,7 @@ function update(dt)
 			end
 		end
 	end
-	
+
 	if storage.crafting then
 		if animator.animationState("base") == "off" then
 			animator.playSound("on")
@@ -63,37 +63,41 @@ function update(dt)
 			end
 		end
 		animator.setAnimationState("base", "on")
-		
+
 		if storage.timer <= 0  then
 			if power.consume(requiredPower) then
 				if storage.pets then
 					local params={}
 					local spawnPosition = vec2.add(object.position(), {0, 5})
-					
+
 					local monsterType = storage.pets[1].config.type
 					local baseParams = root.monsterParameters(monsterType)
-					
+
 					params.seed = storage.pets[1].config.parameters.seed
 					params.colors = storage.pets[1].config.parameters.colors
 					params.aggressive = storage.pets[1].config.parameters.aggressive
 					params.level = world.threatLevel()
-					
+
 					params.dropPools = {}
 					params.dropPools["default"] = "fu_precursorspawnerloot"
-					
+
 					params.statusSettings = baseParams.statusSettings or {}
 					params.statusSettings.stats = baseParams.statusSettings.stats or {}
 					params.statusSettings.stats.boozeImmunity = {baseValue = 1.0}
-					
+					params.statusSettings.statusProperties = params.statusSettings.stats.statusProperties or {}
+					params.statusSettings.statusProperties.fu_precursorSpawned = true
+
+					params.anchorName = object.name() --to make ship pets spawned by it not despawn
+
 					params.behaviorConfig = util.mergeTable(baseParams.behaviorConfig or {}, params.behaviorConfig or {})
-					
-					if baseParams.deathBehavior and baseParams.deathBehavior ~= "monster-death" then --Makes it so that this doesn't break some monsters (maybe make them just drop the beer item instead?)	
+
+					if baseParams.deathBehavior and baseParams.deathBehavior ~= "monster-death" then --Makes it so that this doesn't break some monsters (maybe make them just drop the beer item instead?)
 					else
 						params.deathBehavior = "monster-death"
 						params.behaviorConfig.deathActions = params.behaviorConfig.deathActions or {}
-						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
+						table.insert(params.behaviorConfig.deathActions, {name = "action-projectile", parameters = {aimDirection={0,-1},projectileType = "fu_beer", projectileParameters = {actionOnReap = {{action = "liquid", liquid = "beer", quantity = storage.fuelAmount }}}}})
 					end
-					
+
 					for actionType, actions in pairs (params.behaviorConfig) do
 						if type(actions) == "table" then
 							local tempActions = actions
@@ -114,9 +118,10 @@ function update(dt)
 							end
 						end
 					end
-					
+
 					if monsterType and params.seed then
-						world.spawnMonster(monsterType, spawnPosition, params);
+						local monsterId = world.spawnMonster(monsterType, spawnPosition, params);
+						world.callScriptedEntity(monsterId, "setAnchor", entity.id())	--to allow ship pets to be spawned
 					end
 				end
 				storage.crafting = false

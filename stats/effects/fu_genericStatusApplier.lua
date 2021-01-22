@@ -16,11 +16,11 @@ local oldUpdateStatusApplier=update
 		"updateRate":1
 		--update has no effect unless updateRate is set
 		"update":[
-			["paralysis",0.1]
+			["fuparalysis",0.1]
 		],
 		--careful with uninit, it can be iffy, as dying entities can unload before it is fully called.
 		"uninit":[
-			["paralysis",3]
+			["fuparalysis",3]
 		]
 	}
 ]]
@@ -41,7 +41,7 @@ function update(dt)
 			if not statusApplierValues.updateTimer then
 				statusApplierValues.updateTimer=statusApplierValues.updateRate
 			else
-				if statusApplierValues.updateTimer > 0 then 
+				if statusApplierValues.updateTimer > 0 then
 					statusApplierValues.updateTimer=statusApplierValues.updateTimer-dt
 				else
 					for _,effect in pairs(statusApplierValues.update) do

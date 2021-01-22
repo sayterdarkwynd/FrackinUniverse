@@ -1,23 +1,24 @@
 {
-  "type" : "fueffigiumguard",
-  "baseType" : "friendlyguard",
-  "items" : {
-    "override" : [
-      [1, [
-          {
-            "head" : [ { "name" : "fubonusarmorhead" } ],
-            "chest" : [ { "name" : "fubonusarmorchest" } ],
-            "legs" : [ { "name" : "fubonusarmorpants" } ],
-            "primary" : [
-              "shadowstring"
-            ],
-            "sheathedprimary": [
-            "effigiumrapier",
-            "effigiumbroadsword",
-	    "effigiumspear"
-            ]
-          }
-        ] ]
-    ]
-  }
+	"name": "fueffigiumguardtenant",
+	"priority": 5,
+
+	"colonyTagCriteria": {
+		"light": 1,
+		"door": 1,
+		"effigium": 8,
+		"combat": 8
+	},
+
+	"tenants": [{
+		"spawn": "npc",
+		"species": "shadow",
+		"level": 1,
+		"type": "fueffigiumguard",
+		"overrides": {}
+	}],
+
+	"rent": {
+		"periodRange": [900.0, 1800.0],
+		"pool": "villagerGift"
+	}
 }

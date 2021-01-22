@@ -2,26 +2,26 @@ function init()
   script.setUpdateDelta(3)
   rescuePosition = mcontroller.position()
   self.randVal = math.random(1,24)
-  world.spawnItem("fumadnessresource",entity.position(),self.randVal)  
+  world.spawnItem("fumadnessresource",entity.position(),self.randVal)
 end
 
 function update(dt)
   animator.setFlipped(mcontroller.facingDirection() == -1)
   if status.resourcePercentage("health") < 0.099 then
-	sb.logInfo("Rescuing!")
+	--sb.logInfo("Rescuing!")
 	mcontroller.setPosition(rescuePosition)
 	status.setResourcePercentage("health", 0.100)
   end
 end
 
 function uninit()
-  
+
 end
 
 
 
 -- Dumps value as a string
--- 
+--
 -- Basic usage: dump(value)
 -- e.g. sb.logInfo(dump(_ENV))
 --

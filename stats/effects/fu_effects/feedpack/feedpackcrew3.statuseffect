@@ -1,15 +1,23 @@
 {
   "name" : "feedpackcrew3",
   "effectConfig" : { 
-    "regenAmount" : -1,
-    "timer" : 1
+    //"regenAmount" : -1,
+    //"timer" : 1,
+	"shipOnly":true,
+	"groundOnly":false,
+	"stats" : [
+      {
+        "stat" : "foodDelta",
+        "baseMultiplier" : -0.5
+      }
+    ]
   },
   "defaultDuration" : 2,
 
   "scripts" : [
-    "feedpackcrew.lua"
+    "feedpackcrew.lua","/stats/effects/fu_genericStatApplier.lua"
   ],
-  "animationConfig" : "feed.animation",  
-  "label" : "Being fed by Chef!",
+  "animationConfig" : "feedoff.animation",  
+  "label" : "Being fed by Sous Chef!",
   "icon" : "/items/generic/food/tier1/bread.png"
 }

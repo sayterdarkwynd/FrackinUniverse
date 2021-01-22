@@ -5,18 +5,17 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+35%^reset; Radioactive Resist
-Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
-^cyan;Immune^reset;: All radiation",
+^yellow;^reset; Irradium weapons: +^green;3^reset;% Crit Chance, +^green;10^reset;% Rad Resist
+^yellow;^reset; ^cyan;Immune^reset;: All Rads",
   "shortdescription" : "Irradium Greaves",
-  "category" : "t4armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
 
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorprotection" : "irradiumlegs" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "irradiumlegs" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -37,6 +36,11 @@ Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.044
     }
   ],
 
@@ -46,12 +50,10 @@ Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
     {
       "stat" : "fu_irradiumset_legs",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.11
-    }   
+    }
   ],
 
-"effectSources" : [ "icetrail" ]
+"effectSources" : [ "icetrail" ],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

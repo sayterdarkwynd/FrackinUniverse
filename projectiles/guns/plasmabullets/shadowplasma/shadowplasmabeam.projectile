@@ -1,0 +1,23 @@
+{
+  "projectileName" : "shadowplasmabeam",
+  "physics" : "laser",
+  "bounces" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "shadowplasma.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 3,
+  "power" : 50,
+  "speed" : 150,
+  "supportsProcessing" : true,
+  "emitters" : [ "tar" ],
+  "timeToLive" : 0.2,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
+    }
+  ],
+  "statusEffects" : [ ],
+  "lightColor" : [0, 0, 0],
+  "damageKind" : "shadowplasma"
+}

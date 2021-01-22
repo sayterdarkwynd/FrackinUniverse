@@ -1,6 +1,6 @@
 function baseInit()
 	effect.modifyDuration(300 - effect.duration())
-	
+
 	self.checkInterval = 10
 	self.checkCooldown = 0
 end
@@ -18,8 +18,21 @@ function baseUpdate(dt)
 	end
 end
 
-function baseUninit()
+function baseUninit(modifierGroupID)
 	if modifierGroupID then
 		effect.removeStatModifierGroup(modifierGroupID)
 	end
+end
+
+
+function init()
+	baseInit()
+end
+
+function update(dt)
+	baseUpdate(dt)
+end
+
+function uninit()
+	baseUninit(self.modifierGroupID)
 end

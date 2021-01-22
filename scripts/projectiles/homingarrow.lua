@@ -13,12 +13,12 @@ function update()
     })
 
   for _, target in ipairs(targets) do
-    if entity.entityInSight(target) then
+    if entity.isValidTarget(target) and entity.entityInSight(target) then
       local targetPos = world.entityPosition(target)
       local myPos = mcontroller.position()
       local dist = world.distance(targetPos, myPos)
 
-      mcontroller.approachVelocity(vec2.mul(vec2.norm(dist), self.targetSpeed), self.controlForce)
+      if self.controlForce then mcontroller.approachVelocity(vec2.mul(vec2.norm(dist), self.targetSpeed), self.controlForce) end
       return
     end
   end

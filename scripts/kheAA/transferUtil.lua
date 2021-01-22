@@ -6,11 +6,11 @@ transferUtil.itemTypes = nil
 
 --[[
 function update(dt)
-	if not deltaTime or (deltaTime > 1) then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 end
 ]]
@@ -19,12 +19,12 @@ function transferUtil.init()
 	if storage==nil then
 		storage={}
 	end
-	if storage.init==nil then
+	--[[if storage.init==nil then
 		storage.init=true
-	end
-	storage.disabled=(entity.entityType() ~= "object")
-	if storage.disabled then
-		sb.logInfo("transferUtil automation functions are disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
+	end]]
+	self.disabled=(entity.entityType() ~= "object") or nil
+	if self.disabled then
+		sb.logInfo("transferUtil automation functions are disabled on non-objects (current is \"%s\") for safety reasons.",entity.entityType())
 		return
 	end
 	storage.position=storage.position or entity.position()
@@ -32,6 +32,7 @@ function transferUtil.init()
 	transferUtil.vars.logicNode=config.getParameter("kheAA_logicNode")
 	transferUtil.vars.inDataNode=config.getParameter("kheAA_inDataNode");
 	transferUtil.vars.outDataNode=config.getParameter("kheAA_outDataNode");
+	transferUtil.vars.didInit=true
 end
 
 function transferUtil.initTypes()
@@ -69,7 +70,11 @@ function transferUtil.containerAwake(targetContainer,targetPos)
 end
 
 function transferUtil.zoneAwake(targetBox)
-	if storage.disabled then return end
+	if self.disabled then return end
+	if not targetBox then return end
+	if not transferUtil.vars or not transferUtil.vars.didInit then
+		transferUtil.init()
+	end
 	if type(targetBox) ~= "table" then
 		dbg({"zoneawake failure, invalid input:",targetBox})
 		return nil
@@ -145,9 +150,12 @@ function transferUtil.throwItemsAt(target,targetPos,item,drop)
 end
 
 function transferUtil.updateInputs()
+	if not transferUtil.vars or not transferUtil.vars.didInit then
+		transferUtil.init()
+	end
 	transferUtil.vars.input={}
 	transferUtil.vars.inContainers={}
-	if storage.disabled then return end
+	if self.disabled then return end
 	if not transferUtil.vars.inDataNode then
 		return
 	end
@@ -165,9 +173,12 @@ function transferUtil.updateInputs()
 end
 
 function transferUtil.updateOutputs()
+	if not transferUtil.vars or not transferUtil.vars.didInit then
+		transferUtil.init()
+	end
 	transferUtil.vars.output={}
 	transferUtil.vars.outContainers={}
-	if storage.disabled then return end
+	if self.disabled then return end
 	if not transferUtil.vars.outDataNode then
 		return
 	end
@@ -259,11 +270,11 @@ function transferUtil.recvConfig(conf)
 end
 
 function transferUtil.sendContainerInputs()
-	return transferUtil.vars.inContainers
+	return transferUtil and transferUtil.vars and transferUtil.vars.inContainers or {}
 end
 
 function transferUtil.sendContainerOutputs()
-	return transferUtil.vars.outContainers
+	return transferUtil and transferUtil.vars and transferUtil.vars.outContainers or {}
 end
 
 function transferUtil.powerLevel(node,explicit)
@@ -322,6 +333,9 @@ function transferUtil.getCategory(item)
 end
 
 function transferUtil.loadSelfContainer()
+	if not transferUtil.vars or not transferUtil.vars.didInit then
+		transferUtil.init()
+	end
 	transferUtil.vars.containerId=entity.id()
 	transferUtil.unloadSelfContainer()
 	transferUtil.vars.inContainers[transferUtil.vars.containerId]=storage.position
@@ -329,6 +343,9 @@ function transferUtil.loadSelfContainer()
 end
 
 function transferUtil.unloadSelfContainer()
+	if not transferUtil.vars or not transferUtil.vars.didInit then
+		transferUtil.init()
+	end
 	transferUtil.vars.inContainers={}
 	transferUtil.vars.outContainers={}
 end

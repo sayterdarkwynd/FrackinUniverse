@@ -1,0 +1,95 @@
+{
+	"stats": [
+		{
+			"stat": "maxEnergy",
+			"effectiveMultiplier": 1.15
+		},
+		{
+			"stat": "maxHealth",
+			"effectiveMultiplier": 1.20
+		},
+		{
+			"stat": "foodDelta",
+			"baseMultiplier": 1.15
+		},
+		{
+			"stat": "fireResistance",
+			"amount": -0.2
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.3
+		},
+		{
+			"stat": "poisonResistance",
+			"amount": 0.1
+		},
+		{
+			"stat": "fumudslowImmunity",
+			"amount": 1
+		},
+		{
+			"stat": "jungleslowImmunity",
+			"amount": 1
+		}
+	],
+	"diet" : "herbivore",
+	"controlModifiers": {
+		"speedModifier": 0.95,
+		"airJumpModifier": 1.1
+	},
+	"envEffects": [{
+		"biomes": [
+			"garden",
+			"forest",
+			"thickjungle"
+		],
+		"stats": [{
+				"stat": "maxHealth",
+				"effectiveMultiplier": 1.2
+			}
+		]
+	}],
+	"weaponEffects": [{
+			"weapons": [
+				"axe",
+				"greataxe"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.1
+			}]
+		},
+		{
+			"weapons": [
+				"scythe"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.25
+			}]
+		},
+		{
+			"weapons": [
+				"spear",
+				"shortspear"
+			],
+			"stats": [{
+				"stat": "powerMultiplier",
+				"effectiveMultiplier": 1.1
+			}],
+			"controlModifiers": {
+				"speedModifier": 1.1
+			}
+		}
+	],
+	"weaponScripts": [{
+		"script": "/scripts/fr_weaponscripts/hungercost.lua",
+		"contexts": [
+			"axe"
+		],
+		"args": {
+			"food": 0.005
+		}
+	}]
+}

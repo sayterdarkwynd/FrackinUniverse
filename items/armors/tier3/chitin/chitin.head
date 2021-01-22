@@ -5,25 +5,24 @@
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "description" : "^orange;Set Bonuses^reset;:
-^cyan;+15%^reset; Poison, Phys Resist 
-\n^#e43774;Sulphuric^reset;: ^green;+12%^reset;  Health, ^green;+12%^reset; Dmg
-\n^cyan;Immune^reset;: Acid",
+^yellow;^reset; Sulphuric: Health x^green;1.12^reset;, Damage x^green;1.12^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Acid",
   "shortdescription" : "Chitin Helm",
-  "category" : "t3armoru",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
 
-  "learnBlueprintsOnPickup" : [
-    "fumonsterplatedchest",
-    "fumonsterplatedhead",
-    "fumonsterplatedlegs"
-  ],
+//  "learnBlueprintsOnPickup" : [
+//    "fumonsterplatedchest",
+//    "fumonsterplatedhead",
+//    "fumonsterplatedlegs"
+//  ],
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorprotection" : "chitinhead" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "chitinhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -44,6 +43,16 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 4
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.025
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -52,14 +61,6 @@
     {
       "stat" : "chitinsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.05
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.05
     }
   ],
   "colorOptions" : [
@@ -102,5 +103,7 @@
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

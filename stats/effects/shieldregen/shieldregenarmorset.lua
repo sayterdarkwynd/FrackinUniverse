@@ -2,7 +2,7 @@ function init()
   self.shieldHealthRegen = status.stat("maxShield") * 1.3
   self.modifierGroup = effect.addStatModifierGroup({{stat = "shieldRegen", amount = self.shieldHealthRegen}})
   self.queryDamageSince = 0
-  
+
 end
 
 function update(dt)

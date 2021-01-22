@@ -3,7 +3,7 @@
   "price" : 700,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "A small handgun that fires streams of energy at distant targets with pinpoint accuracy, it's only as accurate as the one wielding it.",
+  "description" : "A small handgun that fires streams of energy at distant targets with pinpoint accuracy.",
   "shortdescription" : "Common Beam Pistol",
   "tooltipKind" : "gun",
   "category" : "swtjc_ewg_beamPistol",
@@ -25,18 +25,19 @@
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
 
-    "fireTime" : [0.02, 0.1],
-    "baseDps" : [6.5, 6.65],
-    "energyUsage" : [18, 19.5],
+    "fireTime" : [0.25, 0.6],
+    "baseDps" : [4, 5.5],
+    "energyUsage" : [24, 32],
     "inaccuracy" : 0.00,
 
-    "burstTime" : [0.0025, 0.005],
-    "burstCount" : [10, 20],
-    "fireType" : "burst",
+    "fireType" : "auto",
 
-    "projectileType" : "standardbullet",
+    "projectileType" : "standardbulletbeamphysical",
     "projectileParameters" : {
-      "knockbackRange" : [0.1,0.2]
+      "knockbackRange" : [0.1,0.2],
+      "fullbright" : true,
+      "timeToLive" : 0.2,
+      "speed" : 90
     },
 
     "stances" : {
@@ -68,7 +69,7 @@
       }
     }
   },
-  "fireSounds" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg", "/sfx/gun/grenade2.ogg", "/sfx/gun/grapplegun.ogg" ],
+  "fireSounds" : [ "/sfx/weapons/laserblast.ogg" ],
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -96,6 +97,10 @@
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
   }],
-  "critChance": 2,
-  "critBonus" : 2
+  "critChance": 1,
+  "critBonus" : 2,
+
+  "magazineSize" : [5,9],
+  "reloadTime" : [0.5,1.5],
+  "isAmmoBased": [0,1]
 }

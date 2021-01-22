@@ -5,7 +5,7 @@ function init()
 end
 
 function update(dt)
-		status.modifyResource("energy", fTickAmount)
+	status.modifyResource("energy", fTickAmount)
 end
 
 function uninit()

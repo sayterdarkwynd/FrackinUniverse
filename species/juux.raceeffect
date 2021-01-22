@@ -1,0 +1,97 @@
+{
+	"stats": [
+		{
+			"stat": "electricResistance",
+			"amount": 0.30
+		},
+		{
+			"stat": "iceResistance",
+			"amount": 0.15
+		},
+		{
+			"stat": "cosmicResistance",
+			"amount": -0.23
+		},		
+		{
+			"stat": "shadowResistance",
+			"amount": -0.23
+		},		
+		{
+			"stat": "electricStatusImmunity",
+			"amount": 1
+		},		
+		{
+			"stat": "iceslipImmunity",
+			"amount": 1
+		},		
+		{
+			"stat": "snowslipImmunity",
+			"amount": 1
+		},		
+		{
+			"stat": "mentalProtection",
+			"amount": 0.2
+		},		
+		{
+			"stat": "fuCharisma",
+			"baseMultiplier": 0.9
+		}
+	],
+	"diet" : "entity",
+	"envEffects": [
+		{
+			"biomes": "electric",
+			"controlModifiers": {
+				"speedModifier": 1.1
+			},		
+			"stats": []
+		},
+		{
+			"biomes": "cold",
+			"stats": [{
+				"stat": "protection",
+				"effectiveMultiplier": 1.1
+			}
+			]
+		}	
+	],
+	"weaponEffects": [
+		{
+			"weapons": ["psionic"],
+			"stats": [
+				{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.20
+				}
+			]
+		},		
+		{
+			"weapons": ["qs","quarterstaff"],
+			"stats": [{
+					"stat": "protection",
+					"effectiveMultiplier": 1.10
+				},
+				{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.15
+				}
+			]
+		},		
+		{
+			"weapons": ["magnorb"],
+			"stats": [
+				{
+					"stat": "powerMultiplier",
+					"effectiveMultiplier": 1.15
+				},
+				{
+					"stat": "protection",
+					"effectiveMultiplier": 1.10
+				}				
+			]
+		}
+	],
+	"weaponScripts": [],	
+	"special": [ ],
+	"tech" : [ "juuxharden" ]
+}

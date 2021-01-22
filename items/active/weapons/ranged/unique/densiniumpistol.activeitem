@@ -4,14 +4,14 @@
   "inventoryIcon" : "densiniumpistol.png",
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "Eradicate foes with unimaginable energies.
+  "description" : "Eradicate foes with blasts of energy.
 ^cyan;Counts as 'energy' for set bonuses.^reset;",
   "shortdescription" : "Densinium Pistol",
   "category" : "pistol",
   "level" : 6,
   "tooltipKind" : "gun2",
 
-  "itemTags" : ["weapon","ranged","machinepistol", "upgradeableWeapon", "energy", "densinium"],
+  "itemTags" : ["weapon","ranged","pistol", "upgradeableWeapon", "energy", "densinium"],
   "twoHanded" : false,
   "weaponType" : "Disruptor",
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
@@ -34,7 +34,18 @@
     },   
     "sounds" : {
       "fire" : [ "/sfx/weapons/densiniumrifle.ogg" ]
-    }
+    },
+    "lights" : { "muzzleFlash" : {"color" : [92, 41, 123] } },
+    "particleEmitters" : {
+      "muzzleFlash" : {
+        "burstCount" : 3,
+        "particles" : [
+          { "particle" : "frozenflames", "offset" : [0.0, 0.0] },
+          { "particle" : "frozenfiretrail", "offset" : [0.0, 0.0] },
+          { "particle" : "teslaboltpurple", "offset" : [0.0, 0.0] }
+        ]
+      }
+    } 
   },
 
   "baseOffset" : [0.8, 0.26],
@@ -58,7 +69,8 @@
     "projectileType" : "densiniumrifleshot",
     "projectileParameters" : {
       "speed" : 70,
-      "knockback" : 5
+      "knockback" : 5,
+      "damageSourceKind" : "electric"
     },
 	  "stances" : {
 	    "idle" : {
@@ -92,6 +104,9 @@
 
   "critChance" : 3,
   "critBonus" : 6,
-
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 300, 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

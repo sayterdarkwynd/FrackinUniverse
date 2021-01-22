@@ -11,10 +11,10 @@
   "tooltipKind" : "sword2",
   "category" : "spear",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon","atropus","bioweapon"],
 
   "inventoryIcon" : "fuatropusspear.png",
-  "collectablesOnPickup" : { "fu_weaponspear" : "fuatropusspear" },
+  //"collectablesOnPickup" : { "fu_weaponspear" : "fuatropusspear" },
   "animation" : "/items/active/weapons/melee/spear/spear.animation",
   "animationParts" : {
     "handle" : "",
@@ -28,7 +28,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "aimOffset" : -1.0,
   "primaryAbilityType" : "spearstab",
@@ -38,7 +38,7 @@
     "fireTime" : 1,
     "baseDps" : 10.5,
     "damageConfig" : {
-      "damageSourceKind" : "poisonbow",
+      "damageSourceKind" : "bioweaponbow",
       "statusEffects" : [ "weakpoison" ],
       "knockback" : 12
     }

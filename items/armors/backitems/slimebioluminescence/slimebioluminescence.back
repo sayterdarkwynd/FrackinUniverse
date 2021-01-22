@@ -3,8 +3,8 @@
   "inventoryIcon" : "slimebioluminescence.png",
   "rarity" : "Legendary",
   "category" : "enviroProtectionPack",
-  "description" : "A bioluminescent light that matches a slime's body color. ^#5500ff;Defaults to bluish purple on non-slimes.^reset;",
-  "shortdescription" : "Slime Glow",
+  "description" : "A bioluminescent light that matches a slime's body color. ^#5500ff;Defaults to bluish purple on non-slimes.^reset; Air supply.",
+  "shortdescription" : "Slime Glow Growth",
   "tooltipKind" : "baseaugment",
 
   "maleFrames" : "back.png",
@@ -12,7 +12,11 @@
   "maxStack" : 1,
 
   "statusEffects" : [
-    "slimebioluminescence"
+    "slimebioluminescence",
+    {
+      "stat" : "breathProtection",
+      "amount" : 1.0
+    }    
   ],
 
   "acceptsAugmentType" : "back"

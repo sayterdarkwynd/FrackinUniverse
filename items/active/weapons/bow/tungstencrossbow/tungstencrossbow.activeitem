@@ -11,7 +11,7 @@
   "category" : "crossbow",
   "itemTags" : ["weapon","ranged","crossbow","upgradeableWeapon"],
   "twoHanded" : true,
-  "learnBlueprintsOnPickup" : [ "carboncrossbow" ],
+ // "learnBlueprintsOnPickup" : [ "carboncrossbow" ],
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
@@ -47,7 +47,7 @@
     "projectileType" : "ironbolt",
     "projectileParameters" : {
       "knockback" : 30,
-      "damageSourceKind" : "bow"
+      "damageKind" : "bow"
     },
     "stances" : {
       "idle" : {
@@ -82,6 +82,6 @@
   "altAbilityType" : "flashlight",
   "critChance" : 5,
   "critBonus" : 4,
-
+  "isCrossbow" : 1,
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

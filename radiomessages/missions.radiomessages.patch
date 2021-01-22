@@ -1,5 +1,34 @@
 [ 
-
+  {
+    "op": "replace",
+    "path": "/glitchmission01/text",
+    "value": "This keep belongs to a Glitch known as the Baron. He is a retired hero, and by all accounts a little... Eccentric...He spends his retirement seeking strange and unusual artifacts for his collection."
+  },
+  {
+    "op": "replace",
+    "path": "/glitchmission01a/text",
+    "value": "He may have a few screws loose, dear, but he's not dangerous. He's' ^green;absolutely certain^reset; that this keep houses an ^red;ancient and terrible artifact^reset; and spends a fortune investigating."
+  },  
+  {
+    "op": "add",
+    "path": "/glitchmission01b",
+    "value": {
+      "type": "mission",
+      "senderName": "Esther Bright",
+      "portraitImage": "/interface/chatbubbles/esthertalk.png:<frame>",
+      "text": "There may be some truth to this, based on rumors I've heard over the last ninety years. Maybe there is something hidden in the ^green;foundation^reset;?"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/glitchmission02",
+    "value": {
+      "type": "mission",
+      "senderName": "Esther Bright",
+      "portraitImage": "/interface/chatbubbles/esthertalk.png:<frame>",
+      "text": "Well I'll be damned. The Baron was right. This must be the switch for the rumored 'secret' of the Keep. Be sure to get some scans of whatever you find. I'm really curious what you'll discover here!"
+    }
+  },  
   {
     "op": "replace",
     "path": "/lunarbase04/text",
@@ -18,15 +47,65 @@
   {
     "op": "replace",
     "path": "/lunarbase07/text",
-    "value": "Conventional weapons have an estimated 2% chance of damaging the Erchius crystal. You are invited to devise another means of attack."
+    "value": "Conventional weapons will have nearly no effect on the Erchius crystal. You'll most likely need to devise another means of attack."
   },
   {
     "op": "replace",
     "path": "/lunarbase08a/text",
-    "value": "There is enough Erchius here to power the Outpost for quite a long time. ^orange;Great work, Agent^reset;! This will spread positive influence for the Protectorate."
+    "value": "There is enough Erchius here to power the Outpost for quite a long time. ^orange;Great work, Agent^reset;! This will greatly help the Protectorate to reform."
   },
 
 
+
+  {
+    "op": "replace",
+    "path": "/floranmission101/text",
+    "value": "These ruins are ancient and appear to be sacred to the Floran for, I'd guess, religious reasons. Readings show they are also dark and ominous."
+  },
+  {
+    "op": "replace",
+    "path": "/floranmission102/text",
+    "value": "Bio readings show many lifesigns in these tunnels. Unfortunately, approximately 97% are hostile. I commend your valour."
+  },  
+  {
+    "op": "replace",
+    "path": "/floranmission103/text",
+    "value": "What a feisty Floran! Reminds me of myself when I was younger, though I had fewer leaves. Hopefully we can trust this one"
+  },    
+  {
+    "op": "replace",
+    "path": "/floranmission104/text",
+    "value": "It is evident that these Floran are after something of grave cultural significance to them. They're worse than me on a bug hunt! Be careful, dear."
+  }, 
+
+  {
+    "op": "replace",
+    "path": "/apexmission01/text",
+    "value": "Our arrival appears to coincide with a rebel attack against the Miniknog. This is to both our advantage for the Protectorate to provide aid."
+  }, 
+  {
+    "op": "replace",
+    "path": "/apexmission02a/text",
+    "value": "I am detecting numerous additional hostiles ahead, armed with what appear to be rather dangerous armaments."
+  }, 
+  {
+    "op": "replace",
+    "path": "/apexmission06a/text",
+    "value": "Big Ape is a profoundly dangerous enemy, but is still vulnerable to weapons. Cut the head off the snake, and the Miniknog may crumble!"
+  }, 
+  
+  {
+    "op": "replace",
+    "path": "/hylotlmission03a/text",
+    "value": "Something about these cultists is setting off alarm bells. There is an eerie resemblance to something that I just can't place..."
+  },   
+  
+  {
+    "op": "replace",
+    "path": "/tentaclemission-bossroom/text",
+    "value": "You've reached what appears to be the nerve center for this titanic monstrosity. This is it, now. Destroy the beast or we all perish!"
+  },  
+  
   {
     "op": "add",
     "path": "/precursormissionspecial",
@@ -358,7 +437,7 @@
       "type" : "mission",
       "senderName" : "???",
       "portraitImage" : "/interface/chatbubbles/static.png:<frame>",
-	  "text": "Yellow detectors detect Companion Punchys. Blue detectors detect...well, you."
+	  "text": "Yellow detectors detect Companion Punchys. Blue detectors detect... well, you."
     }
   },
   {
@@ -652,12 +731,20 @@
   },
   {
     "op": "add",
+    "path": "/verdantruins02",
+    "value": {
+      "type" : "mission",
+	  "text": "It may also be prudent to acquire some means of surviving great falls. Perhaps you'll find one if you search nearby?"
+    }
+  },
+  {
+    "op": "add",
     "path": "/infiltration01",
     "value": {
       "type" : "mission",
 	  "senderName" : "Lana Blake",
 	  "portraitImage" : "/interface/chatbubbles/lana.png:<frame>",
-	  "text": "Rebel intelligence indicates that you'll need the spike sphere to effect entry into the facility in question. We've provided a console for you to swap it in, if you forgot."
+	  "text": "Rebel intelligence indicates that you'll need the Micro Spider Sphere or better to effect entry into the facility. We've provided a console for you to swap it in, if you forgot."
     }
   },
   {
@@ -707,7 +794,7 @@
       "type" : "mission",
 	  "senderName" : "Nuru",
 	  "portraitImage" : "/interface/chatbubbles/nuru.png:<frame>",
-	  "text": "Ssayss the guy who drinkss Lethia Cola."
+	  "text": "Ssayss the guy who drinkss Letheia Cola."
     }
   },
   {
@@ -2149,7 +2236,7 @@
     "path": "/ancienttemple03",
     "value": {
       "type" : "mission",
-	  "text": "Such a beautiful place, flourishing under the desert! Ah...it makes me tear up. If I had actual eyes, that is."
+	  "text": "Such a beautiful place, flourishing under the desert! Such specialized ecosystems are always a joy to explore."
     }
   },
   {
@@ -2173,7 +2260,7 @@
     "path": "/ancienttemple04fu",
     "value": {
       "type" : "mission",
-	  "text": "I don't know. This gives me a bad feeling..."
+	  "text": "I don't know...this gives me a bad feeling."
     }
   },   
   {
@@ -2197,7 +2284,7 @@
     "path": "/ancienttemple06fu",
     "value": {
       "type" : "mission",
-	  "text": "Oh come on...who builds something like this? I mean...really?"
+	  "text": "Oh, come on! Who builds something like this? I mean...really!?!"
     }
   },   
   {
@@ -2213,7 +2300,7 @@
     "path": "/ancienttemple08fu",
     "value": {
       "type" : "mission",
-	  "text": "Finally. I think we may be clear of evil, deadly traps. Let's hope, and maybe we'll even walk out of here ^orange;RICH^reset;!"
+	  "text": "Finally. I think we may be clear of evil, deadly traps. We may even walk out of here ^orange;RICH^reset;!"
     }
   },    
   {
@@ -2568,6 +2655,52 @@
     "value": {
       "type" : "mission",
 	  "text": "This receptacle appears perfectly suited for holding a ball-shaped object."
+    }
+  },
+  {
+    "op": "add",
+    "path": "/cultistmissionfudino",
+    "value": {
+		"unique" : false,
+		"type" : "mission",
+		"senderName" : "The Baron",
+		"portraitImage" : "/interface/chatbubbles/baron.png:<frame>",
+		"text" : "Exasperated. Not another one of THESE things! Well, at least you have your mech this time."
+    }
+  },
+  {
+    "op": "add",
+    "path": "/cultistmissionfuwallhint",
+    "value": {
+		"unique" : false,
+		"type" : "mission",
+		"senderName" : "Koichi",
+		"portraitImage" : "/interface/chatbubbles/koichi.png:<frame>",
+		"text" : "Is it just me, or does that wall look a bit ^orange;structurally unsound?^white;."
+    }
+  },
+  {
+    "op": "add",
+    "path": "/cultistmissionfuonejob",
+    "value": {
+		"unique" : false,
+		"type" : "mission",
+		"senderName": "Asra Nox",
+		"portraitImage": "/interface/chatbubbles/nox.png",
+		"text": "Mega-Fauna, you had one job!",
+		"textSpeed": 30
+    }
+  },
+  {
+    "op": "add",
+    "path": "/cultistmissionfuonejob2",
+    "value": {
+		"unique" : false,
+		"type" : "mission",
+		"senderName": "Asra Nox",
+		"portraitImage": "/interface/chatbubbles/nox.png",
+		"text": "^red;ONE!! JOB!!^white;",
+		"textSpeed": 10
     }
   }
 ]

@@ -1,0 +1,140 @@
+NOTICE: 
+ > YES, THERE ARE SOME REDUNDANT STATS IN HERE.
+ > YES, THEY ARE ALL NEEDED. For instance, if you want to add immunity to something like mudslow, add fumudslow AND mudslow.
+ 
+ > [0-Relative] means that THE STATS ARE ORIENTED AROUND 0. This means that the default state is 0. These must use [amount] or [effectiveMultiplier]. [effectiveMultiplier] will only have an effect if other sources use [amount]!
+ > [X-Relative] means that THE STATS ARE ORIENTED AROUND X (As example:1). Default values are stated.
+ 
+ > [baseMultiplier]: This means that the default state is X (100%). Values < 1 subtract from this stat, and values > 1 add to this stat. (e.g. 0.5 means "50% of this stat's value")
+ > [effectiveMultiplier]: applies a multiplier. 0.5 means half of whatever the stat currently is. 2 means twice.
+ 
+ > [armorStatA]: stats that use [amount] on armor stat lists and [effectiveMultiplier] on pretty much every other case
+ > [armorStatB]: stats that use [baseMultiplier] on armor stat lists and [effectiveMultiplier] on pretty much every other case
+ 
+ > [boolean] means that THE VALUE IS A SWITCH, AND MUST BE OFF (0) OR ON (1). No other values are legal.
+
+
+RESISTANCES: These use float values (0.5 is 50% Resistance)
+	ELEMENTAL:
+		fireResistance              [amount] [0-Relative]
+		poisonResistance            [amount] [0-Relative]
+		iceResistance               [amount] [0-Relative]
+		electricResistance          [amount] [0-Relative]
+		
+		radioactiveResistance       [amount] [0-Relative]
+		shadowResistance            [amount] [0-Relative]
+		darknessResistance          [amount] [0-Relative] - not used in FU anywhere. is on a few races.
+		cosmicResistance            [amount] [0-Relative]
+		
+		
+	PHYSICAL:
+		physicalResistance          [amount] [0-Relative]
+		grit                        [amount] [0-Relative] - Impacts knockback from big hits. See /stats/*_primary.lua
+		
+		
+	OTHER:
+		mentalProtection            [amount] [0-Relative] - Impacts insanity effect frequency and potency, and madness decay.
+
+
+IMMUNITIES
+    MOBILITY:
+        mudslowImmunity             [amount] [Boolean]
+        fumudslowImmunity           [amount] [Boolean]
+        fuclayslowImmunity          [amount] [Boolean]
+        jungleslowImmunity          [amount] [Boolean]
+        
+        slushslowImmunity           [amount] [Boolean]
+        snowslowImmunity            [amount] [Boolean]
+        snowslipImmunity            [amount] [Boolean]
+        iceslipImmunity             [amount] [Boolean]
+        
+        tarImmunity                 [amount] [Boolean]
+        tarStatusImmunity           [amount] [Boolean]
+        blacktarImmunity            [amount] [Boolean]
+		
+        quicksandImmunity           [amount] [Boolean]
+        
+        slimefrictionImmunity       [amount] [Boolean] - this is basically only used on certain enemy effects.
+        slimestickImmunity          [amount] [Boolean] - This is for tiles
+        honeyslowImmunity           [amount] [Boolean]
+        webstickImmunity            [amount] [Boolean]
+		
+        stunImmunity                [amount] [Boolean]
+        
+        
+    ENVIRONMENT_WEATHER_AND_ELEMENTAL:
+        biomecoldImmunity           [amount] [Boolean]
+        ffextremecoldImmunity       [amount] [Boolean]
+        liquidnitrogenImmunity      [amount] [Boolean]
+        iceStatusImmunity           [amount] [Boolean]
+        coldimmunity    			[amount] [Boolean]
+		
+        biomeheatImmunity           [amount] [Boolean]
+        ffextremeheatImmunity       [amount] [Boolean]
+        fireStatusImmunity          [amount] [Boolean] - burning
+        lavaImmunity                [amount] [Boolean]
+		
+        biomeradiationImmunity      [amount] [Boolean]
+        ffextremeradiationImmunity  [amount] [Boolean]
+        radiationburnImmunity       [amount] [Boolean]
+		
+        poisonStatusImmunity        [amount] [Boolean]
+        biooozeImmunity             [amount] [Boolean]
+		
+        electricStatusImmunity      [amount] [Boolean]
+		
+        sandstormImmunity           [amount] [Boolean]
+		
+        breathProtection            [amount] [Boolean] - includes water breath protection
+        waterbreathProtection       [amount] [Boolean] - anti-drowning
+		
+        waterImmunity               [amount] [Boolean] - blocks swimming
+        wetImmunity                 [amount] [Boolean] - blocks 'wet' effects
+		
+        pressureProtection          [amount] [Boolean] - These two are put together everywhere. Use both, even if this one isn't used on any biome effects.
+        extremepressureProtection   [amount] [Boolean]
+		
+        beestingImmunity            [amount] [Boolean] - BEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES!
+        erchiusImmunity             [amount] [Boolean] - because big spooky ghosty is a nuisance
+        slimeImmunity               [amount] [Boolean] - vanilla, rarely used.
+		
+        darknessImmunity            [amount] [Boolean] - unbreachable darkness
+        shadowImmunity              [amount] [Boolean] - shadow taint, caliginous (formerly shadow) gas
+        insanityImmunity            [amount] [Boolean] - nearly all forms of madness
+        aetherImmunity              [amount] [Boolean]
+        
+  
+    MISC:
+        specialStatusImmunity       [amount] [Boolean] - Used almost exclusively on bosses.
+        healingStatusImmunity       [amount] [Boolean] - Used primarily on bosses.
+    
+
+OTHER:
+    maxHealth                       [armorStatB]     	  [X-Relative, Default:100]
+    healthRegen                     [amount]              [0-Relative] - Flat value regenerated each second.
+	healingBonus                    [amount]              [0-Relative, Float] Used as a percentage increase to healing effects. 0.05 is +5%.
+	
+    maxEnergy                       [armorStatB]		  [X-Relative, Default: 100]
+    energyRegenBlockTime            [baseMultiplier]      [X-Relative, Default: 1.5] - Delay in seconds til regen starts.
+    energyRegenPercentageRate       [baseMultiplier]      [X-Relative, Default: 0.585] - Result: 1.75 second recharge time
+    
+    maxFood                         [any] 				  [X-Relative, Default: 70]
+    noFood                          [amount]              [Boolean] - doesn't really do anything?
+    foodDelta                       [baseMultiplier]      [X-Relative, Default: -0.0583] Results in -70 food over 20 minutes. Flat modifier to food per second.
+    
+    maxBreath                       [amount]              [Static Number, Default: 100]
+    breathDepletionRate             [baseMultiplier]      [X-Relative, Default: 4]
+    breathRegenerationRate          [amount]              [Static Number, Unit unknown: Breath/sec? Default: 10]
+	
+    shieldRegen                     [amount]              [Unknown. Default: 0]
+    perfectBlockLimitRegen          [amount]              [Unknown. Default: 0.2]
+    shieldStaminaRegen          	[amount]              [Unknown. Default: 0.2]
+    
+    protection                      [armorStatA]		  [0-Relative]
+    powerMultiplier                 [armorStatB]      	  [1-Relative]
+	knockbackThreshold				[any]				  [Unknown. Default: 9]
+    fallDamageMultiplier            [effectiveMultiplier] [1-Relative]
+    
+    bowDrawTimeBonus                [amount]              [Unknown]
+    
+    fuCharisma                      [baseMultiplier]	  [1-Relative] Used for trading on space stations.

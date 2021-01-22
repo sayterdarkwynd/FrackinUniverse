@@ -3,9 +3,9 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "A high-powered rifle that sacrifices rate-of-fire for enough firepower to cut through armor like a hot knife through butter.",
+  "description" : "Sacrifices rate-of-fire for enough firepower to cut through armor.",
   "shortdescription" : "Common Anti-Material Rifle",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_antiMaterialRifle",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","sniperrifle","upgradeableWeapon"],
@@ -26,13 +26,14 @@
     "class" : "GunFire",
 
     "fireTime" : [1.5, 3.0],
-    "baseDps" : [7, 9.5],
-    "energyUsage" : [27, 30],
+    "baseDps" : [6, 9.5],
+    "energyUsage" : [27, 37],
     "inaccuracy" : 0.005,
 
-    "projectileType" : "standardbullet",
+    "projectileType" : "fuphysicalbeam",
     "projectileParameters" : {
-      "knockbackRange" : [20, 40]
+      "knockbackRange" : [20, 40],
+      "statusEffects" : [ "slow" ]
     },
 
     "stances" : {
@@ -68,6 +69,17 @@
     }
   },
   "fireSounds" : [ "/sfx/gun/mech_gun.ogg", "/sfx/gun/mech_gun2.ogg", "/sfx/gun/mech_gun3.ogg", "/sfx/gun/revolver1.ogg", "/sfx/gun/revolver2.ogg", "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg", "/sfx/gun/shotgun1.ogg", "/sfx/gun/shotgun2.ogg", "/sfx/gun/shotgun3.ogg", "/sfx/gun/shotgun4.ogg", "/sfx/gun/sniper1.ogg", "/sfx/gun/sniper2.ogg", "/sfx/gun/sniper3.ogg", "/sfx/gun/sniper4.ogg", "/sfx/gun/dragonhead_fire1.ogg" ],
+
+  "critChance": 1,
+  "critBonus" : 3,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [2,6],
+  "reloadTime" : [1.7,3.1],
+  "isSniper" : 1,
+  //recoil stats
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1500, 
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -112,7 +124,7 @@
       "swtjc_ewg_cellspray",
       "swtjc_ewg_cellspread",
       "swtjc_ewg_darkplasma",
-      
+    
       "swtjc_ewg_forceshield",
       "swtjc_ewg_globelauncher",
       "swtjc_ewg_phaseburst",
@@ -122,7 +134,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 3
+  }]
 }

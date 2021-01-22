@@ -1,0 +1,236 @@
+{
+  "name": "dragonboss-aim",
+  "description": "",
+  "scripts": [
+    "/scripts/behavior/bdata.lua",
+    "/scripts/actions/math.lua",
+    "/scripts/actions/position.lua",
+    "/scripts/actions/animator.lua",
+    "/scripts/actions/projectiles.lua",
+    "/scripts/actions/time.lua"
+  ],
+  "parameters": {
+    "headRotationCenter": [4.125, 2.5],
+    "projectileSpawnOffset": [3.75, -3.5],
+    "headAngleOffset": 0.7
+  },
+  "root": {
+    "title": "Reset",
+    "type": "composite",
+    "name": "sequence",
+    "parameters": {},
+    "children": [
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "breakVector",
+            "type": "action",
+            "name": "breakVector",
+            "parameters": {
+              "vector": {"key": "fireOffset"}
+            },
+            "output": {
+              "y": "fireY"
+            }
+          },
+          {
+            "title": "breakVector",
+            "type": "action",
+            "name": "breakVector",
+            "parameters": {
+              "vector": {"key": "minBounds"}
+            },
+            "output": {
+              "y": "minY"
+            }
+          },
+          {
+            "title": "greaterThan",
+            "type": "action",
+            "name": "greaterThan",
+            "parameters": {
+              "first": {"key": "fireY"},
+              "second": {"key": "minY"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "offsetPosition",
+        "type": "action",
+        "name": "offsetPosition",
+        "parameters": {
+          "offset": {"key": "fireOffset"},
+          "position": {"key": "self"}
+        },
+        "output": {
+          "position": "firePosition"
+        }
+      },
+      {
+        "title": "distance",
+        "type": "action",
+        "name": "distance",
+        "parameters": {
+          "from": {"key": "headPosition"},
+          "to": {"key": "firePosition"}
+        },
+        "output": {
+          "vector": "aimVector"
+        }
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "aimVector"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "facingVector"
+            }
+          },
+          {
+            "title": "vecAngle",
+            "type": "action",
+            "name": "vecAngle",
+            "parameters": {
+              "vector": {"key": "facingVector"}
+            },
+            "output": {
+              "angle": "targetAngle"
+            }
+          },
+          {
+            "title": "add",
+            "type": "action",
+            "name": "add",
+            "parameters": {
+              "addend": {"key": "<headAngleOffset>"},
+              "number": {"key": "targetAngle"}
+            },
+            "output": {
+              "result": "targetAngle"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "vecRotate",
+            "type": "action",
+            "name": "vecRotate",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "vector": {"key": "<projectileSpawnOffset>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecAdd",
+            "type": "action",
+            "name": "vecAdd",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"key": "<headRotationCenter>"}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          },
+          {
+            "title": "vecMultiply",
+            "type": "action",
+            "name": "vecMultiply",
+            "parameters": {
+              "first": {"key": "projectileOffset"},
+              "second": {"value": ["facingDirection", 1]}
+            },
+            "output": {
+              "vector": "projectileOffset"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Reset",
+        "type": "composite",
+        "name": "sequence",
+        "parameters": {},
+        "children": [
+          {
+            "title": "resetTransformationGroup",
+            "type": "action",
+            "name": "resetTransformationGroup",
+            "parameters": {
+              "transformationGroup": {"value": "head"}
+            }
+          },
+          {
+            "title": "rotateTransformationGroup",
+            "type": "action",
+            "name": "rotateTransformationGroup",
+            "parameters": {
+              "angle": {"key": "targetAngle"},
+              "rotationCenter": {"key": "<headRotationCenter>"},
+              "transformationGroup": {"value": "head"}
+            }
+          }
+        ]
+      },
+      {
+        "title": "spawnProjectile",
+        "type": "action",
+        "name": "spawnProjectile",
+        "parameters": {
+          "aimVector": {"key": "facingVector"},
+          "offset": {"key": "projectileOffset"},
+          "position": {"key": "self"},
+          "projectileConfig": {"value": {}},
+          "projectileType": {"value": "fudragonprojectile"},
+          "scalePower": {"value": true},
+          "sourceEntity": {"key": "self"},
+          "trackSource": {"value": false}
+        }
+      },
+      {
+        "title": "timer",
+        "type": "action",
+        "name": "timer",
+        "parameters": {
+          "time": {"value": 0.2}
+        }
+      },
+      {
+        "title": "vecAdd",
+        "type": "action",
+        "name": "vecAdd",
+        "parameters": {
+          "first": {"key": "fireOffset"},
+          "second": {"value": [0, -2]}
+        },
+        "output": {
+          "vector": "fireOffset"
+        }
+      }
+    ]
+  }
+}

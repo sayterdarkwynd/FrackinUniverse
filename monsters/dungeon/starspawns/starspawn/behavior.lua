@@ -119,7 +119,7 @@ function move(delta, run)
   mcontroller.controlMove(delta[1], true)
 end
 
---Check if entity is on solid ground (not platforms) 
+--Check if entity is on solid ground (not platforms)
 function onSolidGround()
   local position = mcontroller.position()
   local bounds = boundingBox()

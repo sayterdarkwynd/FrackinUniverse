@@ -5,22 +5,20 @@
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "rarity" : "legendary",
-  "description" : "^orange;Set Bonuses^reset;:
-^#a94db3;+30%^reset; Physical Resist
-^cyan;24%^reset; Ice, Fire, Rad Resist
-^#a94db3;80%^reset; Fall Reduction and Knockback Resistance
-\nChain Sword: ^#a94db3;+150%^reset;Dmg, ^green;+2%^reset; Crit
-\n^cyan;Immune^reset;: Breath, Pressure",
+  "description" : "^cyan;Headlamp^reset;\n^orange;Set Bonuses^reset;:
+^yellow;^reset; +^green;80^reset;% Knockback Resist. Fall Damage x^green;0.2^reset;
+^yellow;^reset; Chain Swords: Damage x^green;2.5^reset;, +^green;2^reset;% Crit Chance
+^yellow;^reset; ^cyan;Immune^reset;: Breath, Pressure",
   "shortdescription" : "War Angel Helm",
     "itemTags" : [ "upgradeableWeapon" ],
-  "category" : "t7armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
   
   "level" : 7,
-  "collectablesOnPickup" : { "fu_armortank" : "warangelhead" },
+  //"collectablesOnPickup" : { "fu_armortank" : "warangelhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -41,6 +39,26 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 7
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.02
+    },
+    {
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -50,22 +68,6 @@
     {
       "stat" : "fu_warangelset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "physicalResistance",
-      "amount" : 0.10
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.08
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.08
     }
   ],
 
@@ -95,5 +97,7 @@
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

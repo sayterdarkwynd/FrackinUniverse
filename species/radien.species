@@ -1,12 +1,34 @@
 {
   "kind" : "radien",
- 
+
   "charCreationTooltip" : {
       "title" : "X'i",
       "subTitle" : "CH9",
-      "description" : "A race of shy radioactive beings with a disputed origin. Inorganic/Organic hybrids similar to plants."
+      "description" : "A race of shy radioactive beings with a disputed origin. This species is intended for Survival or Hardcore modes. ^red;Challenge is high^reset;.
+
+  ^orange;Diet^reset;: Any, including prepared Isotopes.
+
+^orange;Perks^reset;:
+  Energy x^green;1.1^reset;
+  ^green;Resist^reset;: +^green;40^reset;% Radiation, +^green;10^reset;% Ice & Electric, +^green;7^reset;% Cosmic
+  Tech: Seed Bulb
+  ^cyan;Immune^reset;: Radiation Burn
+
+^orange;Environment^reset;:
+  ^green;Radioactive^reset; biomes: Damage x^green;1.15^reset;, +^green;15^reset;% E. Regen, -^green;5^reset;% Hunger Drain
+  ^red;Hot^reset; biomes: Defense x^red;0.85^reset;, +^red;35^reset;% Hunger Drain.
+  ^green;Defense increases over time^reset;
+  ^cyan;Racial Tech is integral to success^reset;.
+
+^orange;Weapons^reset;:
+  X'i Weapons: +^green;1.5^reset;% Crit Chance and Defense x^green;1.15^reset;
+
+^red;Weaknesses^reset;:
+  +^red;25^reset;% Hunger Drain, Health x^red;0.9^reset;
+  ^red;Resist^reset;: -^red;25^reset;% Fire, -^red;10^reset;% Shadow. ^red;Worsens with hunger^reset;.
+  ^red;CANNOT^reset; use Healing items. Must use racial heals."
   },
- 
+
   "statusEffects" : [  ],
 
   "nameGen" : [ "/species/radiennamegen.config:names", "/species/radiennamegen.config:names" ],
@@ -16,10 +38,18 @@
   "effectDirectives" : "?replace=FEFFFFFF=FFFFFFFF?replace=9bd4ffFF=ff99e6FF?replace=31a6ffFF=e359b9FF",
   "defaultBlueprints" : {
     "tier1" : [
- 
 // Empty Hands
+      { "item" : "thoriumradien" },
+      { "item" : "neptuniumradien" },
+      { "item" : "plutoniumradien" },
+      { "item" : "uraniumore" },
+      { "item" : "uraniumradien" },   
       { "item" : "flagradien" },
       { "item" : "xibed" },
+      { "item" : "algaegreen" },
+      { "item" : "liquidwater" },
+      { "item" : "xiwell" },
+      { "item" : "fu_carbondioxide" },
       { "item" : "xipod" },
       { "item" : "radienquarterstaff" },
       { "item" : "radiendagger" },
@@ -45,86 +75,17 @@
       { "item" : "radienpistol" },
       { "item" : "radienpistol2" },
       { "item" : "radienflamer" },
-      { "item" : "radiencarbine" },
-      
-// Anvil
-      { "item" : "novatier1head" },
-      { "item" : "novatier1chest" },
-      { "item" : "novatier1pants" },
-      { "item" : "novatier2head" },
-      { "item" : "novatier2chest" },
-      { "item" : "novatier2pants" },
-      { "item" : "ironrevolver" },
-      { "item" : "ironassaultrifle" },
-      { "item" : "tungstenmagnum" },
-      { "item" : "tungstenshotgun" },
- 
- 
-// Anvil2
-      { "item" : "novatier3head" },
-      { "item" : "novatier3chest" },
-      { "item" : "novatier3pants" },
-      { "item" : "novatier4head" },
-      { "item" : "novatier4chest" },
-      { "item" : "novatier4pants" },
-      { "item" : "titaniummachinepistol" },
-      { "item" : "titaniumsniperrifle" },
-      { "item" : "durasteelrevolver" },
-      { "item" : "durasteelassaultrifle" },
- 
-// Anvil3
-      { "item" : "novatier5ahead" },
-      { "item" : "novatier5achest" },
-      { "item" : "novatier5apants" },
-      { "item" : "novatier6ahead" },
-      { "item" : "novatier6achest" },
-      { "item" : "novatier6apants" },
- 
-      { "item" : "novatier5mhead" },
-      { "item" : "novatier5mchest" },
-      { "item" : "novatier5mpants" },
-      { "item" : "novatier6mhead" },
-      { "item" : "novatier6mchest" },
-      { "item" : "novatier6mpants" },
- 
-      { "item" : "novatier5shead" },
-      { "item" : "novatier5schest" },
-      { "item" : "novatier5spants" },
-      { "item" : "novatier6shead" },
-      { "item" : "novatier6schest" },
-      { "item" : "novatier6spants" },
- 
-      { "item" : "aegisaltpistol" },
-      { "item" : "aegisaltbow" },
-      { "item" : "feroziumwand" },
-      { "item" : "feroziumstaff" },
-      { "item" : "violiumshortsword" },
-      { "item" : "violiumbroadsword" },
- 
-// Furniture Table 2
-      { "item" : "novakidstoragelocker" },
-      { "item" : "novakidshipdoor" },
-      { "item" : "novakidshiphatch" },
- 
-// Spinning Wheel
-      { "item" : "novakidfancychest" },
-      { "item" : "novakidfancypants" },
-      { "item" : "novakidjacket" },
-      { "item" : "novakidjacketpants" },
-      { "item" : "novakidsuspenders" },
-      { "item" : "novakidsuspenderspants" },
-      { "item" : "novakidwaistcoat" },
-      { "item" : "novakidblackpants" }
+      { "item" : "radiencarbine" }
     ]
   },
- 
+
   "altOptionAsUndyColor" : true,
   "headOptionAsBodyColor" : true,
   "hairColorAsBodyColor" : true,
   "headOptionAsFacialhair" : true,
- 
- 
- 
+
+
+
   "genders" : [
     {
       "name" : "male",
@@ -152,7 +113,7 @@
     }
   ],
    "bodyColor" : [
- 
+
     // Black
     { "ffc181" : "2c2c2c", "d39c6c" : "121212", "c7815b" : "000000", "ffe2c5" : "4e4e4e" },
     // Blue
@@ -212,7 +173,7 @@
 	// Void
     { "c7815b" : "30223f", "d39c6c" : "4a3451", "ffc181" : "603d62", "ffe2c5" : "81517b" }
   ],
- 
+
   "undyColor" : [
      // White
     { "951500" : "292d3b", "dc1f00" : "ebf7fa" },
@@ -253,7 +214,7 @@
     // Starless
     { "951500" : "3c2a2a", "dc1f00" : "f87a7a" }
   ],
- 
+
   "hairColor" : [
     // Black
     { "ffc181" : "2c2c2c", "d39c6c" : "121212", "c7815b" : "000000", "ffe2c5" : "4e4e4e" },

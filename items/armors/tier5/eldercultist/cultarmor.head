@@ -6,19 +6,18 @@
   "maxStack" : 1,
   "rarity" : "legendary",
    "description" : "^orange;Set Bonuses^reset;:
-^cyan;+20%^reset; Cosmic Resist
-^cyan;0.8%^reset; Regen
-Wand/Staff: ^green;+15%^reset; Dmg
-^cyan;Immune^reset;: Shadow Taint,Darkness,Insanity", 
+^yellow;^reset; +^green;0.8^reset;% Health Regen
+^yellow;^reset; Wand/Staff: Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Shadow Taint, Darkness, Insanity", 
   "shortdescription" : "Cultist Cowl",
-  "category" : "t5armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
   "maleFrames" : "head.png",
   "femaleFrames" : "head.png",
   "mask" : "mask.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorranged" : "cultarmorhead" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "cultarmorhead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -39,6 +38,11 @@ Wand/Staff: ^green;+15%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.023334
     }
   ],
 
@@ -47,11 +51,7 @@ Wand/Staff: ^green;+15%^reset; Dmg
     {
       "stat" : "fu_cultistset_head",
       "amount" : 1
-    },
-     {
-      "stat" : "cosmicResistance",
-      "amount" : 0.07
-    } 
+    }
   ], 
 
   "colorOptions" : [
@@ -92,5 +92,7 @@ Wand/Staff: ^green;+15%^reset; Dmg
     { "e0975c" : "aaaaaa", "a85636" : "6f6f6f", "6f2919" : "494949" },
     { "e0975c" : "d8d8d8", "a85636" : "8d8d8d", "6f2919" : "636363" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

@@ -1,0 +1,45 @@
+{
+  "metadata" : {
+    "name" : "fu_dae_microdungeons",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "fu_cultisttent", "fu_bandittent", "fu_bandittower",  "fu_cultisttower" ],
+
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 100,
+    "protected" : false
+  },
+
+  "parts" : [
+    {
+      "name" : "fu_cultisttent",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "fu_cultisttent.json" ]
+    },
+    {
+      "name" : "fu_bandittent",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "fu_bandittent.json" ]
+    },
+    {
+      "name" : "fu_bandittower",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "fu_bandittower.json" ]
+    },
+    {
+      "name" : "fu_cultisttower",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "fu_cultisttower.json" ]
+    }
+  ]
+}

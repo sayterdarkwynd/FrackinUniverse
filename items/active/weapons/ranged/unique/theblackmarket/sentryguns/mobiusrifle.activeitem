@@ -12,7 +12,7 @@
   "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Energy",
-  "itemTags" : ["weapon","ranged","assaultRifle", "energy", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","assaultrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -53,7 +53,7 @@
 	  "speed":95, 
 	  "timeToLive":3.0, 
 	  "power" : 5.25,
-	  "damageSourceKind" : "electric",
+	  "damageKind" : "electric",
 	  "knockback":0,
 	  "lightColor" : [255, 180, 0],    
 	  "periodicActions":[ 
@@ -135,8 +135,15 @@
     }
   }
   },
+  
   "critChance" : 4,
   "critBonus" : 6,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 900,  
+  
+  
   "altAbilityType" : "fudronelauncher",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",

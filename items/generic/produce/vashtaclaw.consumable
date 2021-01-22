@@ -1,32 +1,33 @@
 {
-  "itemName" : "vashtaclaw",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "vashtaclaw.png",
-  "description" : "Effect:
-^cyan;+50% Rage^reset;",
-  "shortdescription" : "Vashta Claw",
-  "learnBlueprintsOnPickup" : [ "vashtagun" ],
-  "category" : "food",
-
-      "effects" : [ [
-      "rage50"
-    ] ],
-    
-  "blockingEffects" : [
-         "rage",
-         "rage_base",
-         "rage20fu",
-         "rage30",
-         "rage40",
-         "rage60",
-         "rage75",
-         "rage100",
-         "damagebonus01",
-         "damagebonus2",
-         "damagebonus3",
-         "damagebonus4",
-         "damagebonus5",
-         "damagebonus6"
-  ]
+	"itemName": "vashtaclaw",
+	"inventoryIcon": "vashtaclaw.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Damage x1.3^reset;: 1m",
+	"shortdescription": "Vashta Claw",
+	//"learnBlueprintsOnPickup": ["vashtagun"],
+	"effects": [
+		[{
+			"effect": "rage30",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"rage",
+		"rage_base",
+		"rage20fu",
+		"rage50",
+		"rage40",
+		"rage60",
+		"rage75",
+		"rage100",
+		"damagebonus01",
+		"damagebonus2",
+		"damagebonus3",
+		"damagebonus4",
+		"damagebonus5",
+		"damagebonus6"
+	]
 }

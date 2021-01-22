@@ -1,32 +1,33 @@
 {
-  "itemName" : "neuropod",
-  "rarity" : "legendary",
-  "price" : 95,
-  "inventoryIcon" : "neuropod.png",
-  "description" : "Effect:
-^cyan;+50% Energy Regen, +15% Speed, +15% Low Gravity, +25% Jump^reset;",
-  "shortdescription" : "Neuropod Bulb",
-  "category" : "food",
+	"itemName": "neuropod",
+	"inventoryIcon": "neuropod.png",
+	"category": "food",
+	"rarity": "legendary",
+	"price": 95,
 
-  "effects" : [ [
-      {
-        "effect" : "energyregenfu50",
-        "duration" : 125
-      },
-      {
-        "effect" : "runboost",
-        "amount" : 0.125,
-        "duration" : 125
-      },
-      {
-        "effect" : "lowgrav",
-        "amount" : 0.125,
-        "duration" : 125
-      },
-      {
-        "effect" : "jumpboost",
-        "amount" : 0.20,
-        "duration" : 125
-      }
-    ] ]
+	"tooltipKind": "food",
+	"description": "Ingesting this 'fruit' alters your brain chemistry for a short time at the expense of defense. \n^yellow;^reset;^cyan;Research Bonus^reset;: ^cyan;+5 ^reset;,^yellow;^reset;^cyan;-50%^reset;, ^cyan;Protection^reset;, 300s",
+	"shortdescription": "Neuropod Bulb",
+
+	"effects": [
+		[
+			{
+				"effect": "researchBonus3",
+				"duration": 300
+			},				
+			{
+				"effect": "percentarmorboostneg5",
+				"duration": 150
+			}
+		]
+	],
+	"blockingEffects": [
+		"energyregenfu10",
+		"energyregenfu60",
+		"energyregenfu25",
+		"energyregenfu35",
+		"energyregenfu20",
+		"energyregenfu05",
+		"energyregenfu40"
+	]
 }

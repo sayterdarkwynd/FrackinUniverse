@@ -22,7 +22,7 @@ function update(dt)
   if not mcontroller.isColliding() then
     self.preCollisionVelocity = mcontroller.velocity()
   end
- 
+
   if self.ownerId and world.entityExists(self.ownerId) then
 
     if not self.returning then
@@ -47,13 +47,14 @@ function update(dt)
   else
     projectile.die()
   end
+  releaseMonsters()
 end
 
-function hit(entityId)
-  if self.releaseOnHit and not self.returning then
-    releaseMonsters()
-  end
-end
+--function hit(entityId)
+--  if self.releaseOnHit and not self.returning then
+--    releaseMonsters()
+--  end
+--end
 
 function releaseMonsters()
   if self.podUuid then

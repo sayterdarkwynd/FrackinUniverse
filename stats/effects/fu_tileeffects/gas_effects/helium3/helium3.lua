@@ -1,8 +1,9 @@
 require "/scripts/unifiedGravMod.lua"
 
 function init()
+	unifiedGravMod.initSoft()
 	unifiedGravMod.init()
-	
+
   --self.gravityModifier = config.getParameter("gravityModifier")
   --self.movementParams = mcontroller.baseParameters()
   activateVisualEffects()
@@ -26,7 +27,7 @@ function init()
       autoJump = false,
       collisionCancelled = true
     }
-  }  
+  }
 end
 
 
@@ -34,9 +35,11 @@ end
 function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
   animator.setParticleEmitterActive("embers", true)
+  if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
+  end
 end
 
 function update(dt)

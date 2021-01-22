@@ -16,7 +16,7 @@
 --	zbutil.DeepPrintTable(table) : Prints the contents of the given table and all tables contained within.
 --		table	- The table you want to print (Can shove any other value, but it ill just print it as it is)
 
---	zbutil.FadeHex(string, string, integer, string) : Returns a modified two-digit hex faded in the requested direction of the recieved two-digit hex
+--	zbutil.FadeHex(string, string, integer, string) : Returns a modified two-digit hex faded in the requested direction of the received two-digit hex
 --		string	- Two-digit hex string, such as "FF" or "13" or "E4"
 --		string	- "out" or "in", depending on the direction you want it to fade to. "out" strive to "00", and "in" strives to "FF"
 --		integer	- By how much you want to modify the hex value
@@ -64,13 +64,13 @@ function zbutil.PrintTable(tbl)
 		local str = "\n{"
 		for k, v in pairs(tbl) do
 			local lenFix = ""
-			for i = 1, 30 - string.len(tostring(k)) do 
+			for i = 1, 30 - string.len(tostring(k)) do
 				lenFix = lenFix.." "
 			end
-			
-			str = str.."\n	"..tostring(k)..lenFix.."=          ("..type(v)..") "..tostring(v)         
+
+			str = str.."\n	"..tostring(k)..lenFix.."=          ("..type(v)..") "..tostring(v)
 		end
-		
+
 		sb.logInfo("\n%s", str.."\n}")
 	else
 		sb.logInfo("\n%s", tbl)
@@ -84,37 +84,37 @@ end
 function zbutil._DeepPrintTableHelper(toPrint, level)
 	level = level or 0
 	local str = ""
-	
+
 	if type(toPrint) == "table" then
 		for k, v in pairs(toPrint) do
 			for i = 0, level do
 				str = str.."	"
 			end
-			
+
 			local lenFix = ""
-			for i = 1, 30 - string.len(tostring(k)) do 
+			for i = 1, 30 - string.len(tostring(k)) do
 				lenFix = lenFix.." "
 			end
-			
+
 			str = str..tostring(k)..lenFix.."=          ("..type(v)..") "..tostring(v)
-			
+
 			if type(v) == "table" then
 				str = str..zbutil._DeepPrintTableHelper(v, level +1).."\n"
 			else
 				str = str.."\n"
 			end
 		end
-	
+
 	else
 		str = tostring(toPrint)
 	end
-	
+
 	return "\n"..str
 end
 
 function zbutil.RGBToHex(num)
 	num = math.clamp(math.floor(num + 0.5), 0, 255)
-	
+
 	local hexidecimal = "0123456789ABCDEF"
 	local units = num%16+1
 	local tens = math.floor(num/16)+1
@@ -132,7 +132,7 @@ function zbutil.HexToRGB(hex)
 	elseif string.len(hex) == 0 then
 		return 0
 	end
-	
+
 	local hexidecimal = "0123456789ABCDEF"
 	local tens = string.find(hexidecimal, string.sub(hex,1,1))
 	local units = string.find(hexidecimal, string.sub(hex,2,2))
@@ -143,9 +143,9 @@ function zbutil.FadeHex(hex, fade, amount, target)
 	if target then target = zbutil.HexToRGB(hex) end
 	amount = math.floor(amount+0.5)
 	fade = string.lower(fade)
-	
+
 	local rgbValue = zbutil.HexToRGB(hex)
-	
+
 	if fade == "out" then
 		rgbValue = math.max(target or 0, rgbValue - amount)
 	elseif fade == "in" then
@@ -154,17 +154,17 @@ function zbutil.FadeHex(hex, fade, amount, target)
 		sb.logError("[ZB] ERROR - 'zbutil.FadeHex' 2nd arguement not 'in' or 'out'")
 		return "00"
 	end
-	
+
 	return zbutil.RGBToHex(rgbValue)
 end
 
 function zbutil.RollDice(dice, sides, mod)
 	local sum = mod or 0
-	
+
 	for i = 1, dice do
 		sum = sum + math.random(1, sides)
 	end
-	
+
 	return sum
 end
 
@@ -178,7 +178,7 @@ function zbutil.MergeTable(t1, t2)
 		for _, v in ipairs(t2) do
 			table.insert(t1, v)
 		end
-		
+
 		for k, v in pairs(t2) do
 			if type(k) ~= "number" or k > length then
 				if type(v) == "table" and type(t1[k]) == "table" then

@@ -1,11 +1,13 @@
 {
-  "name" : "feedpack1",
-  "effectConfig" : { 
-    "regenAmount" : 0.0275
-  },
-  "defaultDuration" : 3,
-
-  "scripts" : [
-    "feedpack.lua"
-  ]
+	"name": "feedpack1",
+	"effectConfig": {
+		"stats": [{
+			"stat": "foodDelta",
+			"baseMultiplier": 0.8
+		}]
+	},
+	"defaultDuration": 3,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	]
 }

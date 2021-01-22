@@ -1,86 +1,189 @@
 {
-  "moneyIcon" : {
-    "type" : "image",
-    "position" : [125, 0],
-    "file" : "/interface/money.png"
-  },
-  "priceLabel" : {
-    "type" : "label",
-    "position" : [140, 0],
-    "hAnchor" : "left",
-    "value" : "tree"
-  },
+  //"moneyIcon" : {
+  //  "type" : "image",
+  //  "position" : [125, 0],
+  //  "file" : "/interface/money.png"
+  //},
+  //"priceLabel" : {
+  //  "type" : "label",
+  //  "position" : [140, 0],
+  //  "hAnchor" : "left",
+  //  "value" : "tree"
+  //},
   
-  "descriptionLabel" : {
-    "type" : "label",
-    "position" : [16, 92],
-    "hAnchor" : "left",
-    "vAnchor" : "top",
-    "wrapWidth" : 140,
-    "fontSize" : 7
-  },
-   
+  //"descriptionLabel" : {
+  //  "type" : "label",
+  //  "position" : [16, 92],
+  //  "hAnchor" : "left",
+  //  "vAnchor" : "top",
+  //  "wrapWidth" : 140,
+  //  "fontSize" : 7
+  //},
+
+    "levelTitleLabel" : {
+      "type" : "label",
+      "position" : [16, 158],
+      "hAnchor" : "left",
+      "vAnchor" : "top",
+      "wrapWidth" : 134,
+      "value" : "^yellow;Tier ^reset;"
+  },  
+  
     "levelLabel" : {
       "type" : "label",
-      "position" : [154, 158],
-      "hAnchor" : "right",
+      "position" : [35, 158],
+      "hAnchor" : "left",
       "vAnchor" : "top",
       "wrapWidth" : 134
   },   
   
   "critChanceTitleLabel" : {
     "type" : "label",
-    "position" : [16, 152],
+    "position" : [16, 146],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 134,
-    "value" : "^orange;Crit %^reset;"
+    "value" : "^#ee1414;Crit %^reset;",
+    "fontSize" : 6
   },  
   "critChanceLabel" : {
     "type" : "label",
-    "position" : [26, 142],
+    "position" : [26, 138],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 134
   },  
   "critBonusTitleLabel" : {
     "type" : "label",
-    "position" : [16, 132],
+    "position" : [16, 128],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 134,
-    "value" : "^yellow;Dmg +^reset;"
+    "value" : "^yellow;Dmg +^reset;",
+    "fontSize" : 6
   },  
   "critBonusLabel" : {
     "type" : "label",
-    "position" : [26, 122],
+    "position" : [26, 118],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 134
-  },  
-  "maxDamageTitleLabel" : {
-    "type" : "label",
-    "position" : [16, 24],
-    "hAnchor" : "left",
-    "value" : "Base Max Damage:"
   },
-  "maxDamageLabel" : {
+  "altAbilityTitleLabel" : {
     "type" : "label",
-    "position" : [154, 24],
-    "hAnchor" : "right",
-    "wrapWidth" : 140
-  },  
-  "energyPerShotTitleLabel" : {
-    "type" : "label",
-    "position" : [16, 15],
+    "position" : [16, 36],
     "hAnchor" : "left",
-    "value" : "Energy Per Shot:"
+    "value" : "",
+    "fontSize" : 6
   },
-  "energyPerShotLabel" : {
+  "altAbilityLabel" : {
     "type" : "label",
-    "position" : [154, 15],
+    "position" : [134, 36],
     "hAnchor" : "right",
-    "wrapWidth" : 140
+    "centered" : true,
+    "wrapWidth" : 126,
+    "fontSize" : 6
+  },
+  "airborneBonusTitleLabel" : {
+    "type" : "label",
+    "position" : [16, 44],
+    "hAnchor" : "left",
+    "value" : "Airborne Dmg Multiplier:",
+    "fontSize" : 6
+  },
+  "airborneBonusLabel" : {
+    "type" : "label",
+    "position" : [134, 44],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126,
+    "fontSize" : 6
+  },
+  "holdEnergyTitleLabel" : {
+    "type" : "label",
+    "position" : [16, 52],
+    "hAnchor" : "left",
+    "value" : "Energy to Hold/s:",
+    "fontSize" : 6
+  },
+  "holdEnergyLabel" : {
+    "type" : "label",
+    "position" : [134, 52],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126,
+    "fontSize" : 6
+  },
+  "drawEnergyTitleLabel" : {
+    "type" : "label",
+    "position" : [16, 60],
+    "hAnchor" : "left",
+    "value" : "Energy to Draw:",
+    "fontSize" : 6
+  },
+  "drawEnergyLabel" : {
+    "type" : "label",
+    "position" : [134, 60],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126,
+    "fontSize" : 6
+  },
+  "perfectDrawTimeTitleLabel" : {
+    "type" : "label",
+    "position" : [16, 68],
+    "hAnchor" : "left",
+    "value" : "Perfect Shot Time:",
+    "fontSize" : 6
+  },
+  "perfectDrawTimeLabel" : {
+    "type" : "label",
+    "position" : [134, 68],
+    "hAnchor" : "right",
+    "wrapWidth" : 126,
+    "fontSize" : 6
+  },
+  "perfectDamageTitleLabel" : {
+    "type" : "label",
+    "position" : [16, 76],
+    "hAnchor" : "left",
+    "value" : "Dmg (Perfect Shot):",
+    "fontSize" : 6
+  },
+  "perfectDamageLabel" : {
+    "type" : "label",
+    "position" : [134, 76],
+    "hAnchor" : "right",
+    "wrapWidth" : 126,
+    "fontSize" : 6
+  },
+  "drawTimeTitleLabel" : {
+    "type" : "label",
+    "position" : [16, 84],
+    "hAnchor" : "left",
+    "value" : "Time to Draw:",
+    "fontSize" : 6
+  },
+  "drawTimeLabel" : {
+    "type" : "label",
+    "position" : [134, 84],
+    "hAnchor" : "right",
+    "wrapWidth" : 126,
+    "fontSize" : 6
+  },
+  "damageTitleLabel" : {
+    "type" : "label",
+    "position" : [16, 92],
+    "hAnchor" : "left",
+    "value" : "Dmg per Shot:",
+    "fontSize" : 6
+  },
+  "damageLabel" : {
+    "type" : "label",
+    "position" : [134, 92],
+    "hAnchor" : "right",
+    "wrapWidth" : 126,
+    "fontSize" : 6
   },
   "handednessLabel" : {
     "type" : "label",
@@ -90,13 +193,13 @@
     "wrapWidth" : 122
   },
 
-  "rarityLabel" : {
-    "type" : "label",
-    "position" : [16, 0],
-    "hAnchor" : "left",
-    "centered" : true,
-    "wrapWidth" : 126
-  },
+  //"rarityLabel" : {
+  //  "type" : "label",
+  //  "position" : [16, 0],
+  //  "hAnchor" : "left",
+  //  "centered" : true,
+  //  "wrapWidth" : 126
+  //},
   "damageKindImage" : {
     "type" : "image",
     "position" : [150, 105],

@@ -1,12 +1,12 @@
 {
   "name" : "stalkersetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
       "poisonStatusImmunity" : {},
       "biooozeImmunity" : {},
-      "fallDamageMultiplier" : { "baseMultiplier" : 0.75 }
+      "fallDamageMultiplier" : { "effectiveMultiplier" : 0.75 }
     },
     "armorMovementModifiers" : {
       "jump" : 1.08
@@ -15,7 +15,7 @@
     "weaponBonuses" : [
       {
         "type" : "any",
-        "tags" : [ "rifle", "sniperrifle", "bow", "crossbow" ],
+        "tags" : [ "sniperrifle", "bow", "crossbow" ],
         "stats" : {
           "powerMultiplier" : { "effectiveMultiplier" : 1.15 },
           "critChance" : { "amount" : 3 }
@@ -27,8 +27,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta" : 5,
-
-  "label" : "Immune: Poison, Bio-ooze. +8% Jump, +25% Fall Resist. Sniper Rifle/Bow/Crossbow: +15% Dmg, +3% Crit Chance",
-  "icon" : "/interface/statuses/set_sniper.png"
+  "scriptDelta" : 5
 }

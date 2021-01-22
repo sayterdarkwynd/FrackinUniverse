@@ -5,10 +5,10 @@ function init()
   self.snapRange = config.getParameter("snapRange")
   self.snapSpeed = config.getParameter("snapSpeed")
   self.snapForce = config.getParameter("snapForce")
-  self.restoreBase = config.getParameter("restoreBase")
-  self.restoreBase2 = config.getParameter("restoreBase2")
-  self.restorePercentage = config.getParameter("restorePercentage")
-  self.restorePercentage2 = config.getParameter("restorePercentage2")
+  self.restoreBase = config.getParameter("restoreBase",0)
+  self.restoreBase2 = config.getParameter("restoreBase2",0)
+  self.restorePercentage = config.getParameter("restorePercentage",0)
+  self.restorePercentage2 = config.getParameter("restorePercentage2",0)
   self.targetEntity = nil
   self.pickedUp = false
 end
@@ -26,8 +26,14 @@ function update(dt)
       local toTarget = world.distance(targetPos, mcontroller.position())
       local targetDist = vec2.mag(toTarget)
       if targetDist <= self.pickupRange then
-        world.sendEntityMessage(self.targetEntity, "restoreEnergy", self.restoreBase2, self.restorePercentage2)
-        world.sendEntityMessage(self.targetEntity, "restoreHealth", self.restoreBase, self.restorePercentage)
+
+        if (self.restoreBase > 0) or (self.restorePercentage > 0) then
+          world.sendEntityMessage(self.targetEntity, "restoreHealth", self.restoreBase, self.restorePercentage)
+        end
+        if (self.restoreBase2 > 0) or (self.restorePercentage2 > 0) then
+	        world.sendEntityMessage(self.targetEntity, "restoreEnergy", self.restoreBase2, self.restorePercentage2)
+        end
+
         self.pickedUp = true
         projectile.die()
       else

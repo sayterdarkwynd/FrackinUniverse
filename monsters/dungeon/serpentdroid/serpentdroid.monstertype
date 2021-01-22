@@ -25,9 +25,10 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+	  "/stats/monstereffects/monsterstatus_persistenteffectsapplier.lua"
     ],
-
+	"fu_monsterPersistentEffects":["regeneratingshield_hp-100-10-3","regeneratingshieldindicatordreamer"],
     "behavior" : "monster",
 
     "behaviorConfig" : {
@@ -46,19 +47,6 @@
 
       "hostileActions" : [
         {
-          "name" : "action-invulnerable",
-          "cooldown" : 10.0,
-          "parameters" : {
-            "windupTime" : 0.5,
-            "windupState" : "windup",
-            "winddownTime" : 0.5,
-            "winddownState" : "winddown",
-
-            "invulnerableEffect" : "highprotection",
-            "invulnerableTime" : 8
-          }
-        },
-        {
           "name" : "action-fire",
           "cooldown" : 0.3,
           "parameters" : {
@@ -69,46 +57,18 @@
 
             "projectileType" : "blueplasmabullet",
             "power" : 12,
-            "fireOffset" : [-1.0, -0.5],
+            "fireOffsets" : [[-1.0, -0.5], [1, -0.5]],
             "projectileCount" : 1,
             "projectileInterval" : 0.05,
             "aimAtTarget" : true,
             "rotateAim" : true,
             "rotatedOffset" : [2.125, 0.0],
             "fireState" : "fire",
-            "fireDelay" : 0.05,
+            "fireDelay" : 0.02,
             "fireSound" : "fire",
 
             "winddownState" : "",
             "winddownTime" : 0.2
-          }
-        }
-      ],
-
-      "invulnerableActions" : [
-        {
-          "name" : "action-fire",
-          "cooldown" : 6,
-          "parameters" : {
-            "maximumRange" : 20,
-            "minimumRange" : 2,
-            "windupState" : "",
-            "windupTime" : 0.0,
-
-            "projectileType" : "blueplasmabullet",
-            "power" : 12,
-            "fireOffset" : [-1.0, -0.5],
-            "projectileCount" : 3,
-            "projectileInterval" : 0.3,
-            "aimAtTarget" : true,
-            "rotateAim" : true,
-            "rotatedOffset" : [2.125, 0.0],
-            "fireState" : "",
-            "fireDelay" : 0.2,
-            "fireSound" : "fire",
-
-            "winddownState" : "",
-            "winddownTime" : 0.5
           }
         }
       ],
@@ -194,9 +154,6 @@
         "maxHealth" : {
           "baseValue" : 72
         },
-        "maxShield" : {
-          "baseValue" : 0.0
-        },
         "protection" : {
           "baseValue" : 1.0
         },
@@ -205,9 +162,6 @@
         },
         "poisonStatusImmunity" : {
           "baseValue" : 1.0
-        },
-        "shieldRegen" : {
-          "baseValue" : 0.0
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
@@ -224,10 +178,8 @@
           "deltaStat" : "healthRegen",
           "defaultPercentage" : 100
         },
-        "shieldHealth" : {
-          "maxStat" : "maxShield",
-          "deltaStat" : "shieldRegen",
-          "defaultPercentage" : 100
+        "damageAbsorption" : {
+          "initialValue" : 0.0
         }
       }
     },

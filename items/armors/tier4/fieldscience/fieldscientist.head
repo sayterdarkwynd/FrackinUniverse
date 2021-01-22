@@ -5,10 +5,11 @@
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "^orange;Set Bonuses^reset;: 
-Mining Laser: ^#a94db3;+150%^reset; Dmg
-^green;Immune^reset;: Liq. Nitrogen, Poison, Pus",
+^yellow;^reset; Mining Laser: Damage x^green;1.5^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Liq. Nitrogen, Poison, Pus
+^yellow;^reset; Research Bonus +^green;2^reset;",
   "shortdescription" : "Geologist's Bright Goggles",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -16,7 +17,7 @@ Mining Laser: ^#a94db3;+150%^reset; Dmg
   "mask" : "mask.png",
 
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorranged" : "fieldscientisthead" },
+  //"collectablesOnPickup" : { "fu_armorranged" : "fieldscientisthead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -84,5 +85,7 @@ Mining Laser: ^#a94db3;+150%^reset; Dmg
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

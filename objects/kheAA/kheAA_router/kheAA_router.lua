@@ -16,18 +16,33 @@ end
 
 function update(dt)
 	deltatime = (deltatime or 0) + dt;
-	if deltatime < 1 then
-		return;
+	if deltatime < 1 + (storage.backflow or 0) then
+		storage.backflow=math.max(0,(storage.backflow or 0)-dt)
+		return
 	end
-	deltatime = 0;
+	deltatime = 0
 	self.routerItems=world.containerItems(entity.id())
-	transferUtil.updateInputs();
-	transferUtil.updateOutputs();
+	transferUtil.updateInputs()
+	transferUtil.updateOutputs()
 
 	if transferUtil.powerLevel(transferUtil.vars.logicNode) then
-		routeItems();
+		backflowInstances=0
+		routeItems(dt)
+		if backflowInstances>0 then
+			storage.backflow=math.min((storage.backflow or 0)+(backflowInstances*dt*2),60.0)
+			local vol=(storage.backflow/60.0)
+			animator.setSoundVolume("alarm2",vol,0)
+			vol=math.min(vol*3,1.0)
+			animator.setSoundVolume("alarm",vol,0)
+			animator.playSound((storage.backflow>=40 and "alarm2") or "alarm")
+			animator.setAnimationState("routerState","throttled")
+		else
+			animator.setAnimationState("routerState","on")
+			storage.backflow=0
+		end
 		object.setOutputNodeLevel(transferUtil.vars.outDataNode,util.tableSize(transferUtil.vars.inContainers)>0)
 	else
+		animator.setAnimationState("routerState","off")
 		object.setOutputNodeLevel(transferUtil.vars.outDataNode,false)
 	end
 end
@@ -37,10 +52,10 @@ function initVars()
 	transferUtil.vars.inContainers={}
 	transferUtil.vars.outContainers={}
 	if storage.inputSlots == nil then
-		storage.inputSlots = {};
+		storage.inputSlots = {}
 	end
 	if storage.outputSlots == nil then
-		storage.outputSlots = {};
+		storage.outputSlots = {}
 	end
 	if storage.filterInverted == nil then
 		storage.filterInverted={}
@@ -49,7 +64,7 @@ function initVars()
 		end
 	end
 	if storage.filterType == nil then
-		storage.filterType={};
+		storage.filterType={}
 		for i=1,5 do
 			storage.filterType[i]=-1;
 		end
@@ -62,10 +77,10 @@ end
 
 function sendConfig()
 	if not storage.inputSlots then
-		storage.inputSlots = {};
+		storage.inputSlots = {}
 	end
 	if not storage.outputSlots then
-		storage.outputSlots = {};
+		storage.outputSlots = {}
 	end
 	if not storage.filterInverted then
 		storage.filterInverted={}
@@ -74,9 +89,9 @@ function sendConfig()
 		end
 	end
 	if not storage.filterType then
-		storage.filterType={};
+		storage.filterType={}
 		for i=1,5 do
-			storage.filterType[i]=-1;
+			storage.filterType[i]=-1
 		end
 	end
 	if not storage.invertSlots then
@@ -85,25 +100,25 @@ function sendConfig()
 	return {storage.inputSlots,storage.outputSlots,storage.filterInverted,storage.filterType,storage.invertSlots,storage.roundRobin or false,storage.roundRobinSlots or false}
 end
 
-function routeItems()
+function routeItems(dt)
 	if not self.init then return end
-	if storage.disabled then return end
+	if self.disabled then return end
 	if util.tableSize(transferUtil.vars.inContainers) == 0 then return end
 
 	local outputSizeG = util.tableSize(transferUtil.vars.outContainers)
 	if outputSizeG == 0 then return end
 
-	for sourceContainer,sourcePos in pairs(transferUtil.vars.inContainers) do
+	for sourceContainer,sourcePos in pairs(transferUtil.vars.inContainers or {}) do
 		local outputSize = outputSizeG
 		local sourceAwake,ping1=transferUtil.containerAwake(sourceContainer,sourcePos)
 		if ping1 ~= nil then
 			sourceContainer=ping1
 		end
-		
+
 		local sourceItems=world.containerItems(sourceContainer)
-		
+
 		if sourceItems then
-			for indexIn,item in pairs(sourceItems) do
+			for indexIn,item in pairs(sourceItems or {}) do
 				local pass,mod = checkFilter(item)
 				if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
 					local outputSlotCountG = util.tableSize(storage.outputSlots)
@@ -122,7 +137,7 @@ function routeItems()
 						item.count = math.floor(buffer)
 					end
 					item.count = item.count - (item.count % mod)
-					for targetContainer,targetPos in pairs(transferUtil.vars.outContainers) do
+					for targetContainer,targetPos in pairs(transferUtil.vars.outContainers or {}) do
 						local targetAwake,ping2=transferUtil.containerAwake(targetContainer,targetPos)
 						if ping2 ~= nil then
 							targetContainer=ping2
@@ -131,17 +146,17 @@ function routeItems()
 							local containerSize=world.containerSize(targetContainer)
 							local outputSlotCount=outputSlotCountG
 							local outputSlotsBuffer={}
-							
-							
+
+
 							for _,v in pairs(storage.outputSlots) do
 								if v <= containerSize then
 									table.insert(outputSlotsBuffer,v)
 								end
 							end
-							
+
 							outputSlotCount=util.tableSize(outputSlotsBuffer)
-							
-							
+
+
 							local subCount=item.count
 							if storage.roundRobinSlots and storage.invertSlots[2] then
 								outputSlotCount=containerSize-outputSlotCount
@@ -150,7 +165,7 @@ function routeItems()
 								buffer=math.floor(buffer-(buffer%mod))
 								item.count = math.floor(buffer)
 							end
-							
+
 							if validInputSlot(indexIn) then
 								if outputSlotCount > 0 then
 									local buffer=item.count * (storage.roundRobin and outputSize or 1) * (storage.roundRobinSlots and outputSlotCount or 1)
@@ -181,18 +196,25 @@ function routeItems()
 								else
 									if item.count>0 then
 										--world.containerStackItems() attempts to add items to an existing stack. fails otherwise. returns leftovers
-										local leftOverItems=world.containerAddItems(targetContainer,item)
-										if leftOverItems then
-											local tempQuantity=item.count-leftOverItems.count
-											if tempQuantity > 0 then
-												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
-												item=leftOverItems
+										local test=world.containerItemsCanFit(targetContainer,item)
+										if test>0 then
+											local leftOverItems=world.containerAddItems(targetContainer,item)
+											if leftOverItems then
+												local tempQuantity=item.count-leftOverItems.count
+												if tempQuantity > 0 then
+													world.containerTakeNumItemsAt(sourceContainer,indexIn-1,tempQuantity)
+													item=leftOverItems
+												else
+													backflowInstances=backflowInstances+1
+												end
+											else
+												world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
+												if not storage.roundRobin then
+													item.count=0
+												end
 											end
 										else
-											world.containerTakeNumItemsAt(sourceContainer,indexIn-1,item.count)
-											if not storage.roundRobin then
-												item.count=0
-											end
+											backflowInstances=backflowInstances+1
 										end
 									end
 								end

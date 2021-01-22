@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;+35%^reset; Radioactive Resist
-Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
-^cyan;Immune^reset;: All radiation",
+^yellow;^reset; Irradium weapons: +^green;3^reset;% Crit Chance, +^green;10^reset;% Rad Resist
+^yellow;^reset; ^cyan;Immune^reset;: All Rads",
   "shortdescription" : "Irradium Helm",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -17,7 +16,7 @@ Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
   "mask" : "mask.png",
 
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorprotection" : "irradiumhelm" },
+  //"collectablesOnPickup" : { "fu_armorprotection" : "irradiumhelm" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,6 +37,11 @@ Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.048
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -46,13 +50,10 @@ Irradium weapons: ^green;+3%^reset; Crit, ^green;+10%^reset; Rad Resist
     {
       "stat" : "fu_irradiumset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.12
-    }   
+    }  
   ],
 
-"effectSources" : [ "icetrail" ]
+"effectSources" : [ "icetrail" ],
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 
 }

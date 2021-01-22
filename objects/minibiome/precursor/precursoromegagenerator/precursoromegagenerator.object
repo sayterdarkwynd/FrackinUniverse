@@ -4,7 +4,7 @@
   "rarity" : "legendary",
   "objectType" : "container",
   "tooltipKind" : "container",
-  "description" : "Some sort of ancient power source. It appears to need exceptionally potent isotopes to even power up.",
+  "description" : "Some sort of ancient power source. It appears to need exceptionally potent isotopes to even power up. ^blue;Left Input^reset;: Power Switch",
   "shortdescription" : "Precursor Reactor",
   "race" : "precursor",
   "category" : "wire",
@@ -37,7 +37,7 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
-  "scripts" : [ "/scripts/power.lua","precursorgenerator.lua" ],
+  "scripts" : [ "/scripts/fupower.lua","precursorgenerator.lua" ],
   "scriptDelta" : 60,
   
   "inputNodes" : [ [-9, 8], [8, 8] ],
@@ -48,20 +48,20 @@
   
   "powertype" : "output",
   "acceptablefuel" : {
-    "liquidelderfluid" : 120,
-    "precursorfluid" : 200,
-    "ultronium" : 120,
-    "precursorfuelcell" : 220,
-    "crunchychick" : 1,
-    "poop" : 4,
-    "schrodingerscat" : 120
+    "liquidelderfluid" : 220,
+    "precursorfluid" : 420,
+    "ultronium" : 650,
+    "precursorfuelcell" : 960,
+    "crunchychick" : 100,
+    "poop" : 40,
+    "schrodingerscat" : 2500
   },
   "heat" : [
-    {"minheat" : 50,"animator" : {"base" : "powered"},"sound" : true,"power" : 75,"light" : [255, 255, 0]},
-    {"minheat" : 40,"animator" : {"base" : "powered"},"sound" : true,"power" : 50,"light" : [190, 190, 0]},
-    {"minheat" : 20,"animator" : {"base" : "powered"},"sound" : true,"power" : 35,"light" : [120, 120, 0]},
-    {"minheat" : 7,"animator" : {"base" : "powered"},"sound" : true,"power" : 15,"light" : [80, 80, 0]},
-    {"minheat" : 1,"animator" : {"base" : "powerup"},"sound" : true,"power" : 5,"light" : [55, 55, 0]},
+    {"minheat" : 50,"animator" : {"base" : "powered"},"sound" : true,"power" : 95,"light" : [255, 255, 0]},
+    {"minheat" : 40,"animator" : {"base" : "powered"},"sound" : true,"power" : 80,"light" : [190, 190, 0]},
+    {"minheat" : 20,"animator" : {"base" : "powered"},"sound" : true,"power" : 60,"light" : [120, 120, 0]},
+    {"minheat" : 7,"animator" : {"base" : "powered"},"sound" : true,"power" : 35,"light" : [80, 80, 0]},
+    {"minheat" : 1,"animator" : {"base" : "powerup"},"sound" : true,"power" : 15,"light" : [55, 55, 0]},
     {"minheat" : 0,"animator" : {"base" : "off"},"sound" : false,"power" : 0,"light" : [0,0,0]}
   ]  
 

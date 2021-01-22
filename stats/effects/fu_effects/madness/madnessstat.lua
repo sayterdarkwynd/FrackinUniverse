@@ -5,7 +5,7 @@ end
 
 function update(dt)
 
-  status.setPersistentEffects("madnessEffectsMain", {  
+  status.setPersistentEffects("madnessEffectsMain", {
       {stat = "protection", amount = self.protection + 11 }
   })
 end

@@ -1,9 +1,10 @@
 {
   "name" : "bearsetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
+      "hammerMastery" : { "amount" : 0.20 },
       "iceStatusImmunity" : {},
       "slushslowimmunity" : {},
       "grit" : { "amount" : 0.20 }
@@ -12,7 +13,7 @@
     "weaponBonuses" : [
       {
         "type" : "any",
-        "tags" : [ "axe", "hammer", "broadsword", "spear", "scythe", "greataxe", "quarterstaff" ],
+        "tags" : [ "axe", "hammer", "broadsword", "spear", "scythe", "greataxe", "quarterstaff","daikatana" ],
         "stats" : {
           "critChance" : { "amount" : 3.5 },
           "powerMultiplier" : { "effectiveMultiplier" : 1.15 }
@@ -24,8 +25,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "+20% Knockback Resist. 2H melee/Axe: +3.5% Crit Chance, +15% Dmg",
-  "icon" : "/interface/statuses/rage.png"
+  "scriptDelta": 5
 }

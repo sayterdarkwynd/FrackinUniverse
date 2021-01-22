@@ -1,6 +1,6 @@
 {
   "itemName" : "reapercarbine",
-  "price" : 150,
+  "price" : 600,
   "inventoryIcon" : "reapercarbine.png",
   "maxStack" : 1,
   "rarity" : "rare",
@@ -8,7 +8,7 @@
 ^yellow;Extremely fast, accurate rounds^reset;",
     "shortdescription" : "Tk-4 Violator",
   "category" : "assaultRifle",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Carbine",
   "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
@@ -32,14 +32,14 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
-    "fireTime" : 0.2,
-    "baseDps" : 6,
-    "energyUsage" : 30,
+    "fireTime" : 0.4,
+    "baseDps" : 8.15,
+    "energyUsage" : 34,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,
@@ -47,8 +47,10 @@
 
     "projectileType" : "iceplasma",
     "projectileParameters" : { 
-      "speed" : 200,
-      "knockback" : 2
+      "speed" : 120,
+      "knockback" : 7,
+      "damageKind" : "hoarfrost",
+	  "statusEffects" : [ "slow" ] 
     },
 	  "stances" : {
 	    "idle" : {
@@ -89,10 +91,21 @@
       }
     },
 
-  "critChance" : 1,
-  "critBonus" : 3,
-
+  "critChance" : 3,
+  "critBonus" : 2,
+  "isAmmoBased" : 1,
+  "magazineSize" : 24,
+  "reloadTime" : 1.18, 
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 400, 
+  
   "altAbilityType" : "swtjc_ewg_globelauncher",
+  "altAbility" : {
+    "baseDps" : 7,
+    "energyUsage" : 60 
+    },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

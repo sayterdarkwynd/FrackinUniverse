@@ -41,6 +41,7 @@
       "knockback" : 10
     }
   },
+  
   "altAbilityType" : "rocketspear",
   "altAbility" : { 
     "name" : "Rad Blast",
@@ -51,11 +52,64 @@
     "fireTime" : 0.05,
     "inaccuracy" : 0,
     "boostSpeed" : 60,
-    "boostForce" : 20   
+    "boostForce" : 30   
   },
 
   "critChance" : 2,
   "critBonus" : 8,
   
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "upgradeParameters" : {
+	  "animationParts" : {
+	    "blade" : "radienspear2.png"
+	  },  
+    "shortdescription" : "^white;Bio-Spear^reset; ^cyan;^reset;",
+	    "primaryAbility" : {
+	      "fireTime" : 0.88,
+	      "baseDps" : 9.1,
+		    "damageConfig" : {
+		      "damageSourceKind" : "radioactivebow",
+		      "knockback" : 12
+		    }      
+	    },
+	  "altAbility" : { 
+	    "name" : "Rad Blast",
+	    "statusEffects" : [ "radburn" ],
+	    "baseDps" : 3,
+	    "cooldownTime" : 0.1,
+	    "energyUsage" : 35,
+	    "fireTime" : 0.045,
+	    "inaccuracy" : 0,
+	    "boostSpeed" : 90,
+	    "boostForce" : 45   
+	  }    
+  },
+  "upgradeParameters2" : {
+	  "animationParts" : {
+	    "blade" : "radienspear3.png"
+	  },   
+    "tooltipKind" : "swordunique",
+    "shortdescription" : "^white;Muta-Spear^reset; ^#d472ff;^reset;",
+	    "primaryAbility" : {
+	      "fireTime" : 0.88,
+	      "baseDps" : 10,
+		    "damageConfig" : {
+		      "damageSourceKind" : "radioactivebow",
+		      "knockback" : 15
+		    }      
+	    },
+	  "altAbility" : { 
+	    "name" : "Rad Blast",
+	    "statusEffects" : [ "radburn" ],
+	    "baseDps" : 4,
+	    "projectileCount" : 2,
+	    "cooldownTime" : 0.1,
+	    "energyUsage" : 34,
+	    "fireTime" : 0.04,
+	    "inaccuracy" : 0.5,
+	    "boostSpeed" : 120,
+	    "boostForce" : 60   
+	  }   
+  }
 }

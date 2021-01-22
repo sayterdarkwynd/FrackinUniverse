@@ -60,7 +60,13 @@
       "cosmicSpin" : [ "/sfx/melee/elemental_spin_electric.ogg" ],
       "cosmicSpinFire" : [ "/sfx/melee/travelingslash_electric7.ogg" ],
       "radioactiveSpin" : ["/sfx/melee/elemental_spin_poison.ogg" ],
-      "radioactiveSpinFire" : ["/sfx/melee/travelingslash_poison1.ogg" ]      
+      "radioactiveSpinFire" : ["/sfx/melee/travelingslash_poison1.ogg" ],
+      "bioweaponSpin" : ["/sfx/melee/elemental_spin_poison.ogg" ],
+      "bioweaponSpinFire" : ["/sfx/melee/travelingslash_poison1.ogg" ], 
+      "silverweaponSpin" : ["/sfx/melee/elemental_spin_poison.ogg" ],
+      "silverweaponSpinFire" : ["/sfx/melee/travelingslash_poison1.ogg" ], 
+      "hellfireSpin" : ["/sfx/melee/elemental_spin_fire.ogg" ],
+      "hellfireSpinFire" : ["/sfx/melee/travelingslash_fire2.ogg" ]      
     },
     "particleEmitters" : {
       "fireSpin" : {
@@ -142,7 +148,46 @@
         { "particle" : "cosmicswoosh2"},
         { "particle" : "cosmicswoosh3"}
       ]
-    }
+    },
+      "bioweaponSpin" : {
+        "active" : false,
+        "emissionRate" : 12,
+        "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+        "particles" : [
+          { "particle" : "poisonswoosh1"},
+          { "particle" : "poisonswoosh2"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "poisonswoosh1"},
+          { "particle" : "poisonswoosh2"},
+          { "particle" : "fireswoosh2"}
+        ]
+      },
+      "silverweaponSpin" : {
+        "active" : false,
+        "emissionRate" : 12,
+        "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+        "particles" : [
+          { "particle" : "poisonswoosh1"},
+          { "particle" : "poisonswoosh2"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "poisonswoosh1"},
+          { "particle" : "poisonswoosh2"},
+          { "particle" : "fireswoosh2"}
+        ]
+      },
+      "hellfireSpin" : {
+        "active" : false,
+        "emissionRate" : 12,
+        "offsetRegion" : [-3.5, -3.5, 3.5, 3.5],
+        "particles" : [
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"},
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"}
+        ]
+      }      
     }
   },
 
@@ -186,6 +231,18 @@
       "cosmic" : {
         "projectileType" : "cosmicspinswoosh",
         "damageConfig" : { "statusEffects" : [ "defenseboostneg20s" ] }
+      },
+      "hellfire" : {
+        "projectileType" : "firespinswoosh",
+        "damageConfig" : { "statusEffects" : [ "burning" ] }
+      },
+      "bioweapon" : {
+        "projectileType" : "poisonspinswoosh",
+        "damageConfig" : { "statusEffects" : [ "weakpoison" ] }
+      }, 
+      "silverweapon" : {
+        "projectileType" : "icespinswoosh",
+        "damageConfig" : { "statusEffects" : [ ] }
       }      
     },
 

@@ -1,16 +1,15 @@
 {
-  "name" : "percentarmorboost30",
-  "effectConfig" : {
-    "defenseModifier" : 0.30
-  },
-  "defaultDuration" : 120,
-
-  "scripts" : [
-    "percentarmorboost.lua"
-  ],
-  
-  //"animationConfig" : "percentarmorboost.animation",
-  
-  "label" : "Def +30%",
-  "icon" : "/interface/statuses/defense2.png"
+	"name": "percentarmorboost30",
+	"effectConfig": {
+		"stats": [{
+			"stat": "protection",
+			"effectiveMultiplier": 1.30
+		}]
+	},
+	"defaultDuration": 120,
+	"scripts": [
+		"/stats/effects/fu_genericStatApplier.lua"
+	],
+	"label": "30% More Defense",
+	"icon": "/interface/statuses/defense2.png"
 }

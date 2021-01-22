@@ -2,7 +2,7 @@
   "objectName" : "isn_atmosregulatornew",
   "rarity" : "legendary",
     "colonyTags" : [ "science" ],
-  "description" : "Generates a field that protects against environmental hazards. Requires 120W of power.",
+  "description" : "Generates a field that protects against environmental hazards. ^cyan;Requires ^orange;220W^cyan; of power^reset;.",
   "shortdescription" : "^cyan;Atmospheric Regulator^reset;",
   "race" : "generic",
   "price" : 412000,
@@ -42,14 +42,14 @@
     }
   ],
 
-  "scripts" : [ "/scripts/power.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua" ],
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua" ],
   "scriptDelta" : 60,
   
   "objectType" : "container",
   "openSounds" : [ "/sfx/objects/metalbox_open.ogg" ],
   "closeSounds" : [ "/sfx/objects/metalbox_close.ogg" ],
   "slotCount" : 3,
-  "uiConfig" : "/interface/objectcrafting/fu_atmosfilter<slots>.config",
+  "uiConfig" : "/interface/objectcrafting/fu_warped<slots>.config",
   "frameCooldown" : 5,
   "autoCloseCooldown" : 3600,
   
@@ -61,13 +61,13 @@
   "animation" : "isn_atmosregulatornew.animation",
   
   "animationParts" : {
-    "bg" : "isn_atmosregulatornew_base.png",
-    "fg" : "isn_atmosregulatornew_lit.png"
+    "fg" : "isn_atmosregulatornew_base.png",
+    "bg" : "isn_atmosregulatornew_lit.png"
   },
   
   "animationPosition" : [-80, 0],
 
   "inputNodes" : [ [1, 2] ],
   "powertype" : "input",
-  "isn_requiredPower" : 120
+  "isn_requiredPower" : 220
 }

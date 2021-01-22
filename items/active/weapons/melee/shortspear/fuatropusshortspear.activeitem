@@ -8,13 +8,13 @@
 ^cyan;Inflicts Poison^reset;
 ^cyan;Hunting weapon^reset;",
   "shortdescription" : "Fleshweave Shortspear",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "shortspear",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortspear", "spear", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","shortspear", "spear", "upgradeableWeapon","atropus","bioweapon"],
 
   "inventoryIcon" : "fuatropusshortspear.png",
-  "collectablesOnPickup" : { "fu_weaponshortspear" : "fuatropusshortspear" },
+  //"collectablesOnPickup" : { "fu_weaponshortspear" : "fuatropusshortspear" },
   "animation" : "/items/active/weapons/melee/shortspear/comboshortspear.animation",
   "animationParts" : {
     "handle": "",
@@ -24,7 +24,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
  
   "aimOffset" : -1.0,
   "muzzleOffset" : [0, 1.05],
@@ -39,7 +39,7 @@
     "fireTime" : 0.665,
     "baseDps" : 6.5,
     "damageConfig" : {
-        "damageSourceKind" : "poisonbow",
+      "damageSourceKind" : "bioweaponbow",
       "statusEffects" : [ "weakpoison" ],
       "knockback" : 6
     },  

@@ -14,7 +14,7 @@
   "tooltipKind" : "gun2",
   "twoHanded" : false,
   "weaponType" : "Bioweapon",
-  "learnBlueprintsOnPickup" : [ "blistergun" ],
+ // "learnBlueprintsOnPickup" : [ "blistergun" ],
   
   
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
@@ -55,7 +55,7 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "bioweapon",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -68,7 +68,8 @@
     "projectileCount" : 1,
     "projectileType" : "blisterpistolshot",
     "projectileParameters" : {
-      "speed" : 32
+      "speed" : 32,
+      "statusEffects" : [ "weakpoison" ]
     },
     "stances" : {
       "idle" : {
@@ -102,6 +103,9 @@
 
   "critChance" : 5,
   "critBonus" : 3,
+  "isAmmoBased" : 1,
+  "magazineSize" : 12,
+  "reloadTime" : 1,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -61,17 +61,17 @@ function init()
   end
 
   self.lastInteract = 0
-  
+
   self.emitCaptureParticles = config.getParameter("emitCaptureParticles")
 
   capturable.init()
-  
+
   self.dontNeedAnchor = config.getParameter("dontNeedAnchor")
-  
+
   if not capturable.ownerUuid() and world.entityName(entity.id()) ~= "" then
     monster.setDisplayNametag(true)
   end
-  
+
   message.setHandler("despawn", function()
     status.setResource("health", 0)
   end)
@@ -82,7 +82,7 @@ function init()
       petResources = petResources()
     }
   end)
-  
+
   self.interactionType = config.getParameter("interactionType", "timer")
 end
 
@@ -94,7 +94,7 @@ function hasMonsterInteract(args, board)
   if not self.lastInteract then
     resetMonsterInteract()
   end
-  
+
   --Interaction types
   if self.interactionType == "timer" then
     if world.time() - self.lastInteract >= config.getParameter("interactCooldown", 3.0) then
@@ -400,7 +400,7 @@ function move(direction, options)
   direction = util.toDirection(direction)
 
   local position = mcontroller.position()
-  local boundsEdge = 0
+  local boundsEdge
   local bounds = boundingBox()
   local tilePosition
   if direction > 0 then

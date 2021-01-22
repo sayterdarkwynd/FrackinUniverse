@@ -1,11 +1,11 @@
 require "/scripts/util.lua"
 
 function init()
-	transferUtil.vars.containerId=nil
+	self.containerId=nil
 	self.linkRange=config.getParameter("kheAA_linkRange",16)
 	self.outPartialFillNode=config.getParameter("kheAA_outPartialFillNode")
 	self.outCompleteFillNode=config.getParameter("kheAA_outCompleteFillNode")
-	
+
 	object.setConfigParameter('description',"^red;Output1:^reset; Partial Fill^red;Output2:^reset; Complete Fill")
 end
 
@@ -18,9 +18,9 @@ function update(dt)
 	findContainer()
 
 	if self.outPartialFillNode or self.outCompleteFillNode then
-		self.containerSize=world.containerSize(transferUtil.vars.containerId)
-		self.containerFill=util.tableSize(world.containerItems(transferUtil.vars.containerId) or {})
-		
+		self.containerSize=world.containerSize(self.containerId)
+		self.containerFill=util.tableSize(world.containerItems(self.containerId) or {})
+
 		if self.outPartialFillNode then
 			object.setOutputNodeLevel(self.outPartialFillNode,(self.containerFill or 0) > 0)
 		end
@@ -35,8 +35,8 @@ function findContainer()
 	local objectIds = world.objectQuery(entity.position(), self.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
 		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
-			transferUtil.vars.containerId=objectId
+			self.containerId=objectId
 			break
 		end
-	end 
+	end
 end

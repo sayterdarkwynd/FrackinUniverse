@@ -4,7 +4,7 @@ function init()
 	if not config.getParameter("isDeed") then		--Crew deed fix for the ship thruster fix
 		shipStatInit()								--Ship thruster fix
 	end
-	
+
 	storage.reload = storage.reload or true
 	if world.type() ~= "unknown" then
 		storage.reload = false

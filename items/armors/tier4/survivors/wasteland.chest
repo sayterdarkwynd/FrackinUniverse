@@ -5,11 +5,11 @@
   "maxStack" : 1,
   "rarity" : "rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^cyan;20%^reset; Resists (Fire/Poison/Elec/Ice)
-^#a94db3;+50%^reset; Hunger Reduction
-^cyan;Immunity^reset;: Gas, Poison, Proto-Poison",
+^yellow;^reset; -^green;50^reset;% Hunger Drain Rate
+^yellow;^reset; Grenade/Rocket Launchers, (Cross)Bows: +^green;6^reset;% Crit Damage, Damage x^green;1.2^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Gas, Poison, Proto-Poison",
   "shortdescription" : "Survivor's Chestpiece",
-  "category" : "t4armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -25,7 +25,7 @@
   },
 
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorexplorer" : "wastelandchest" },
+  //"collectablesOnPickup" : { "fu_armorexplorer" : "wastelandchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -46,6 +46,26 @@
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 6
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "fireResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "poisonResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.028
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.028
     }
   ],
 
@@ -55,22 +75,8 @@
     {
       "stat" : "fu_survivorset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "poisonResistance",
-      "amount" : 0.07
-    },
-    {
-      "stat" : "fireResistance",
-      "amount" : 0.07
     }
-  ]
+  ],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

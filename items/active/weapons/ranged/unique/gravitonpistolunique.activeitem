@@ -9,12 +9,12 @@
 ^green;Powerful knockback^reset;",
   "shortdescription" : "^#ffdb31;Susan^reset;",
   "level" : 5,
-  "category" : "machinePistol",
-  "itemTags" : ["weapon","ranged","machinepistol", "energy","upgradeableWeapon"],
+  "category" : "pistol",
+  "itemTags" : ["weapon","ranged","pistol", "energy","upgradeableWeapon","gravity"],
   "tooltipKind" : "gununique",
   "twoHanded" : false,
   "weaponType" : "Energy",
-  "learnBlueprintsOnPickup" : [ "gravitongun" ],
+ // "learnBlueprintsOnPickup" : [ "gravitongun" ],
   
   
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -61,7 +61,7 @@
 	      "inheritDamageFactor" :0.05,
 	      "fuzzAngle" : 360,
 	      "config" : {
-	        "damageSourceKind" : "ice",
+	        "damageKind" : "ice",
 	        "timeToLive" : 2
 	      }
 	   }
@@ -109,6 +109,9 @@
 
   "critChance" : 1,
   "critBonus" : 5,
-
+  "isAmmoBased" : 1,  
+  "magazineSize" : 8,
+  "reloadTime" : 1.125, 
+  
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

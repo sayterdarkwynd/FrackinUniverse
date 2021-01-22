@@ -1,10 +1,10 @@
 {
   "name" : "missionarysetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
-      "critBonus" : { "baseMultiplier" : 1.05 }
+      "critDamage" : { "amount" : 0.05 }
     },
     "armorMovementModifiers" : {
       "speed" : 1.05,
@@ -33,8 +33,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "+5% Speed, Jump and Crit Dmg. Dual Fists/Quarterstaff: +15% Dmg",
-  "icon" : "/interface/statuses/set_fist.png"
+  "scriptDelta": 5
 }

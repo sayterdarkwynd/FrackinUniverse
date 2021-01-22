@@ -4,13 +4,12 @@
   "inventoryIcon" : "icons.png:chest",
   "maxStack" : 1,
   "rarity" : "Common",
-  "description" : "^green;2%^reset; Ice and Electric Resist
-\n^orange;Set Bonuses^reset;:
-Pistol/Machine Pistol: ^green;+1%^reset; Crit 
-Rifles: ^green;+2%^reset; Crit^reset;",
+  "description" : "^orange;Set Bonuses^reset;:
+^yellow;^reset; (Machine) Pistols: +^green;1^reset;/+^green;2.5^reset;% Crit Chance
+^yellow;^reset; Assault/Sniper Rifles: +^green;2^reset;% Crit Chance^reset;",
 
 "shortdescription" : "Underworld Chestpiece",
-  "category" : "t1armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : {
@@ -27,7 +26,7 @@ Rifles: ^green;+2%^reset; Crit^reset;",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 1,
 
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "kirhostier1chest" },
+  //"collectablesOnPickup" : { "fu_armorpowerranged" : "kirhostier1chest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -48,6 +47,16 @@ Rifles: ^green;+2%^reset; Crit^reset;",
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "iceResistance",
+      "amount" : 0.02
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.02
     }
   ],
 
@@ -56,14 +65,6 @@ Rifles: ^green;+2%^reset; Crit^reset;",
     {
       "stat" : "underworldsetcount",
       "amount" : 1
-    },
-    {
-      "stat" : "iceResistance",
-      "amount" : 0.02
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.02
     }
   ],
 
@@ -92,5 +93,7 @@ Rifles: ^green;+2%^reset; Crit^reset;",
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+  ],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua"
 }

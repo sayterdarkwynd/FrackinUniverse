@@ -26,7 +26,7 @@ function smashAttack.update(dt, stateData)
   local toTarget = world.distance(self.targetPosition, mcontroller.position())
   local targetDir = util.toDirection(toTarget[1])
 
-  if not stateData.punching then 
+  if not stateData.punching then
     if math.abs(toTarget[1]) > stateData.distanceRange[2] then
       animator.setAnimationState("movement", "move")
       mcontroller.controlMove(util.toDirection(toTarget[1]), true)
@@ -63,7 +63,7 @@ function smashAttack.punch(direction)
   local projectileType = config.getParameter("smashAttack.projectile.type")
   local projectileConfig = config.getParameter("smashAttack.projectile.config")
   local projectileOffset = config.getParameter("smashAttack.projectile.offset")
-  
+
   if projectileConfig.power then
     projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())
   end

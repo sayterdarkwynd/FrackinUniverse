@@ -3,7 +3,7 @@
   "colonyTags" : [ "science", "machines" ],
   "printable" : false,
   "rarity" : "legendary",
-  "description" : "The ultimate centrifuge, capable of extracting from gasses and processing radioactive isotopes. ^cyan;Requires ^orange;30W ^cyan;power.^reset;",
+  "description" : "The ultimate centrifuge, capable of extracting from gasses and processing radioactive isotopes. ^cyan;Requires ^orange;36W^cyan; power.^reset;",
   "shortdescription" : "^cyan;Gas Centrifuge^reset;",
   "subtitle" : "Extract items from resources",
   "race" : "generic",
@@ -33,7 +33,7 @@
     "centrifugefullbright" : "centrifuge2afullbright.png"
   },
 
-  "scripts" : [ "/scripts/power.lua", "/objects/bees/centrifuge.lua" ],
+  "scripts" : [ "/scripts/fupower.lua", "/objects/bees/centrifuge.lua" ],
   "scriptDelta" : 5,
   "recipeGroup" : "centrifuge",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
@@ -42,13 +42,13 @@
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
-  "craftDelay": 0.0833333333,
+  "craftDelay": 0.52,
   "itemChances": {
-    "rarest": 0.025,
-    "rare": 0.065,
-    "uncommon": 0.15,
-    "normal": 0.25,
-    "common": 0.35
+    "rarest": 0.012,
+    "rare": 0.032,
+    "uncommon": 0.09,
+    "normal": 0.22,
+    "common": 0.32
   },
 
   "inputSlot": 4,
@@ -58,5 +58,5 @@
 
   "centrifugeType" : "isotope",
   "powertype" : "input",
-  "isn_requiredPower" : 30
+  "isn_requiredPower" : 36
 }

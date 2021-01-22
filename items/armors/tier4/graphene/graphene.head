@@ -5,11 +5,10 @@
   "maxStack" : 1,
   "rarity" : "rare",
    "description" : "^orange;Set Bonuses^reset;: 
-^cyan;+24%^reset; Electric Resist
-Energy weapons: ^green;+25%^reset; Dmg
-^cyan;Immune^reset;: Stun, Electrify", 
+^yellow;^reset; Energy weapons: Damage x^green;1.25^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Stun, Electrify", 
   "shortdescription" : "Graphene Helm",
-  "category" : "t4armor",
+  "category" : "headarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "head.png",
@@ -17,7 +16,7 @@ Energy weapons: ^green;+25%^reset; Dmg
   "mask" : "mask.png",
 
   "level" : 4,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "graphenehead" },
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "graphenehead" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -38,6 +37,11 @@ Energy weapons: ^green;+25%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "electricResistance",
+      "amount" : 0.032
     }
   ],
   "itemTags" : [ "upgradeableWeapon" ],
@@ -46,10 +50,8 @@ Energy weapons: ^green;+25%^reset; Dmg
     {
       "stat" : "fu_grapheneset_head",
       "amount" : 1
-    },
-    {
-      "stat" : "electricResistance",
-      "amount" : 0.08
-    }   
-  ]
+    }
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

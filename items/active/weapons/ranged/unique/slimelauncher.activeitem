@@ -4,14 +4,14 @@
   "inventoryIcon" : "slimelauncher.png",
   "maxStack" : 1,
   "rarity" : "rare",
-  "description" : "Not practical, but certainly enjoyable
+  "description" : "Not practical, but certainly enjoyable.
 ^yellow;Spawns slime^reset;",
     "shortdescription" : "Slime Launcher",
   "category" : "liquidGun",
   "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "Bio-Weapon",
-  "itemTags" : ["weapon","ranged","grenadelauncher","slime", "upgradeableWeapon" ],
+  "itemTags" : ["weapon","ranged","grenadelauncher","slime", "upgradeableWeapon","explosive" ],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -93,9 +93,14 @@
  
   "critChance" : 4,
   "critBonus" : 8,
+  "isAmmoBased" : 1,
+  "magazineSize" : 8,
+  "reloadTime" : 1.4,  
+  
   "altAbilityType" : "biogrenadelauncher",
   "altAbility" : {
-    "projectileParameters" : { "speed" : 30}
+    "projectileParameters" : { "speed" : 30},
+    "reloadTime" : 2
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

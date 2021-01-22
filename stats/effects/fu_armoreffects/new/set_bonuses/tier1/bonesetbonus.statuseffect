@@ -1,16 +1,26 @@
 {
   "name" : "bonesetbonus",
-  "defaultDuration" : 15,
+  "defaultDuration" : 3,
 
   "effectConfig" : {
     "armorBonuses" : {
-      "maxHealth" : { "amount" : 5 },
-      "fallDamageMultiplier" : { "baseMultiplier" : 0.85 }
+      "maxHealth" : { "effectiveMultiplier" : 1.05 },
+      "fallDamageMultiplier" : { "effectiveMultiplier" : 0.85 }
     },
-
+    
+    "weaponBonuses" : [
+      {
+        "type" : "any",
+        "tags" : [ "longsword", "axe" ],
+        "stats" : {
+          "powerMultiplier" : { "effectiveMultiplier" : 1.15 }
+        }
+      }
+    ],
+    
     "biomeTags" : [ "garden", "forest" ],
     "biomeBonuses" : {
-      "maxHealth" : { "amount" : 5 },
+      "maxHealth" : { "effectiveMultiplier" : 1.05 },
       "powerMultiplier" : { "effectiveMultiplier" : 1.05 },
       "physicalResistance" : { "amount" : 0.05 }
     }
@@ -20,8 +30,5 @@
   "scripts" : [
     "/stats/effects/fu_armoreffects/new/BasicSetBonus.lua"
   ],
-  "scriptDelta": 5,
-
-  "label" : "+5 HP, +15% Fall Resist. Lush/Forest: +5 HP, +5% Dmg, +5% Phys. Resist",
-  "icon" : "/interface/statuses/defense.png"
+  "scriptDelta": 5
 }

@@ -1,7 +1,6 @@
 require "/scripts/kheAA/transferUtil.lua"
 local deltaTime=0
 function init()
-	transferUtil.init()
 	-- these are items wich will be used for upgrade
 	upgradeItemsList = {
 		["upgrademodule"] = true
@@ -22,11 +21,11 @@ end
 
 
 function update(dt)
-	if deltaTime > 1 then
-		deltaTime=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		deltaTime=deltaTime+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
 	local itemForUpgrade = world.containerItemAt(entity.id(), 0)
@@ -34,7 +33,7 @@ function update(dt)
     object.setLightColor({0, 0, 0, 0})
     return
   end
-  object.setLightColor(config.getParameter("lightColor", {100, 176, 191}))	
+  object.setLightColor(config.getParameter("lightColor", {100, 176, 191}))
 	if itemForUpgrade ~= nil and upgradebleItemsList[root.itemType(itemForUpgrade.name)] and itemForUpgrade.count ~= nil and itemForUpgrade.count == 1 then
 		local isUpgraded = false -- flag, upgrade is not possible or while not done
 		sb.logInfo("Trying to upgrade. Name is '" .. itemForUpgrade.name .. "'. root.itemType returns '" .. root.itemType(itemForUpgrade.name) .. "'.")
@@ -45,14 +44,14 @@ function update(dt)
 			local shieldHLTH = world.containerItemAt(entity.id(), 8)
 			if isApproved(shieldHLTH) then -- upgrade Shield Health
 				world.containerTakeAt(entity.id(), 8) -- clear slot
-				if itemForUpgrade.parameters.health ~= nil then 
+				if itemForUpgrade.parameters.health ~= nil then
 					itemForUpgrade.parameters.health = itemForUpgrade.parameters.health + shieldHLTH.count * 5
 				else
 					itemForUpgrade.parameters.health = shieldHLTH.count * 5
 				end
 				isUpgraded = true
 			end
-			
+
 			local shieldHLTHRGN = world.containerItemAt(entity.id(), 9)
 			if isApproved(shieldHLTHRGN) then -- upgrade Shield Health Regen Ratio
 				world.containerTakeAt(entity.id(), 9) -- clear slot
@@ -72,7 +71,7 @@ function update(dt)
 				sb.logInfo("==> Armor is : %s", itemForUpgrade)
 				local itemConf = root.itemConfig(itemForUpgrade)
 				-- sb.logInfo("==> ItemConf is : %s", itemConf)
-				if itemConf.config == nil and itemConf.statusEffects ~= nil then  -- this for Starbound Stable version 
+				if itemConf.config == nil and itemConf.statusEffects ~= nil then  -- this for Starbound Stable version
 					itemForUpgrade.parameters.statusEffects = itemConf.statusEffects
 				elseif itemConf.config.statusEffects ~= nil then -- this for Strbound Unstable nightly version
 					itemForUpgrade.parameters.statusEffects = itemConf.config.statusEffects
@@ -81,7 +80,7 @@ function update(dt)
 					itemForUpgrade.parameters.statusEffects = {}
 				end
 			end
-			
+
 			local armorDMGM = world.containerItemAt(entity.id(), 1)
 			if isApproved(armorDMGM) then --upgade Armor power Multiplier
 				world.containerTakeAt(entity.id(), 1) -- clear slot
@@ -148,9 +147,9 @@ function update(dt)
 					itemForUpgrade.parameters.fireTime = 0.1
 					world.containerPutItemsAt(entity.id(), weaponSPD, 6) -- return not used items
 				end
-				isUpgraded = true 
+				isUpgraded = true
 			end
-			
+
 			local weaponENRG = world.containerItemAt(entity.id(), 7)
 			if root.itemType(itemForUpgrade.name) == "gun" and isApproved(weaponENRG) then -- upgrade Weapon Energy cost per shot (for guns only)
 				if itemForUpgrade.parameters.classMultiplier == nil then
@@ -163,7 +162,7 @@ function update(dt)
 					itemForUpgrade.parameters.classMultiplier = (energyM * itemForUpgrade.parameters.classMultiplier - weaponENRG.count) / energyM  -- i'm not sure, but it's working
 				else
 					weaponENRG.count = weaponENRG.count - math.floor(energyM * itemForUpgrade.parameters.classMultiplier)
-					world.containerPutItemsAt(entity.id(), weaponENRG, 7) -- return not used items 
+					world.containerPutItemsAt(entity.id(), weaponENRG, 7) -- return not used items
 					itemForUpgrade.parameters.classMultiplier = 0.9 / energyM  -- i'm not sure, but it's working
 				end
 				isUpgraded = true
@@ -179,7 +178,7 @@ function update(dt)
 	end
 end
 
-function isApproved(inputItem) 
+function isApproved(inputItem)
 	if inputItem ~= nil and inputItem.count ~= nil and inputItem.count > 0 and type(inputItem.name) == "string" and upgradeItemsList[inputItem.name] then
 		return true
 	else
@@ -189,7 +188,7 @@ end
 
 function armorStatUpgrade(statusList, statusName, statUpgradeItem)
 	local statUpgraded = false
-	local statUpgradeAmount = nil
+	local statUpgradeAmount = 0
 
 	if statusName == "powerMultiplier" then
 		statUpgradeAmount = statUpgradeItem.count * 0.01
@@ -199,8 +198,6 @@ function armorStatUpgrade(statusList, statusName, statUpgradeItem)
 		statUpgradeAmount = statUpgradeItem.count + math.floor(statUpgradeItem.count / 10) * 3
 	elseif statusName == "maxHealth" then
 		statUpgradeAmount = statUpgradeItem.count
-	else
-		statUpgradeAmount = 0
 	end
 
 	for _, statusEffect in ipairs(statusList) do

@@ -9,10 +9,10 @@
 ^green;Multi-shot^reset;",
   "shortdescription" : "Mistral Icethrower",
   "category" : "flamethrower",
-  "level" : 4,
+  "level" : 5,
   "tooltipKind" : "gun2",
   "weaponType" : "Ice Thrower",
-  "itemTags" : ["weapon","ranged","flamethrower", "isogen", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","flamethrower", "isogen", "upgradeableWeapon","armcannon"],
   "twoHanded" : true,
   
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -33,7 +33,7 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
@@ -47,7 +47,9 @@
     "fireType" : "auto",
 
     "projectileType" : "fuiceshotmistral",
-    "projectileParameters" : {},
+    "projectileParameters" : {
+    	"damageKind" : "hoarfrost"
+    },
 	  "stances" : {
 	    "idle" : {
 	      "armRotation" : 0,
@@ -88,6 +90,9 @@
     },
   "critChance" : 2,
   "critBonus" : 5,
+  "isAmmoBased" : 1,
+  "magazineSize" : 24,
+  
   "altAbilityType" : "freezecannon",
   "altAbility" : { "name" : "Ice Wall", "speed" :40},
 

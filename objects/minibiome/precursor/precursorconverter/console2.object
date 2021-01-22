@@ -8,7 +8,7 @@
   "objectType" : "container",
   "price" : 450,
   "inventoryIcon" : "extractionlabicon.png",
-  "description" : "Converts stuff into other stuff",
+  "description" : "Converts stuff into other stuff.",
   "shortdescription" : "^cyan;Faulty Erchius Converter^white;",
   "subtitle" : "Resource converter",
   "orientations" : [
@@ -45,9 +45,10 @@
 
   "animation" : "console.animation",
   "animationParts" : {
-    "samplingarrayanim" : "console.png"
+    "samplingarrayanim" : "console.png",
+    "samplingarrayanimlit" : "consolelit.png"
   },
-  "scripts" : [ "/objects/minibiome/precursor/precursorconverter/converterfake.lua",
+  "scripts" : [ "/objects/minibiome/precursor/precursorconverter/converter.lua",
                 "/scripts/npcToyObject.lua" ],
   "scriptDelta" : 200,
   "recipeGroup" : "converter",
@@ -82,5 +83,24 @@
 
   "fu_mintick" : 1,
   "fu_stationTechLevel" : 1,
-  "fu_timerMod" : 4
+  "fu_timerMod" : 4,
+  "recipeTable":
+	[
+		{"inputs" : { "solidfuel":100 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "liquidfuel":200 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "toxicwaste":100 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "irradiumore":25 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "irradiumbar":10 }, "outputs" : { "bagoffarts":1 }, "time" : 20.0},
+		{"inputs" : { "supermatter":50 }, "outputs" : { "bagoffarts":2 }, "time" : 20.0},
+		{"inputs" : { "uraniumrod":1 }, "outputs" : { "bagoffarts":2 }, "time" : 20.0},
+		{"inputs" : { "plutoniumrod":1 }, "outputs" : { "bagoffarts":3 }, "time" : 20.0},
+		{"inputs" : { "neptuniumrod":1 }, "outputs" : { "bagoffarts":3 }, "time" : 20.0},
+		{"inputs" : { "thoriumrod":1 }, "outputs" : { "bagoffarts":3 }, "time" : 20.0},
+		{"inputs" : { "solariumstar":5 }, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "enricheduranium":1 }, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "enrichedplutonium":1}, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "ultronium":1 }, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "precursorfluid":50 }, "outputs" : { "bagoffarts":4 }, "time" : 20.0},
+		{"inputs" : { "bagoffarts":1 }, "outputs" : { "crunchychick":1 }, "time" : 8.0}
+	]
 }

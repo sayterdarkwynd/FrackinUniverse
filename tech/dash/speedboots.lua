@@ -30,27 +30,33 @@ function init()
         startDash(dashKey == "left" and -1 or 1)
       end
     end)
-    
+
   if status.isResource("food") then
     status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig", math.huge);
     status.addPersistentEffect("wallClingPenalty2", "feedpackneg", math.huge);
   else
     status.addPersistentEffect("wallClingPenalty", "percentenergyboostnegstimrig2", math.huge);
   end
-  
+
 
 end
 
 function uninit()
-  status.clearPersistentEffects("movementAbility")
-  status.clearPersistentEffects("wallClingPenalty")
-  status.clearPersistentEffects("wallClingPenalty2")
+  status.setPersistentEffects("movementAbility",{})
+  status.setPersistentEffects("wallClingPenalty",{})
+  status.setPersistentEffects("wallClingPenalty2",{})
   tech.setParentDirectives()
 end
 
 
-function update(args)
+function applyTechBonus()
+  self.dashBonus = 1 + status.stat("dashtechBonus") -- apply bonus from certain items and armor
+  self.dashControlForce = config.getParameter("dashControlForce") * self.dashBonus
+  self.dashSpeed = config.getParameter("dashSpeed") * self.dashBonus
+end
 
+function update(args)
+  applyTechBonus()
   if self.dashCooldownTimer > 0 then
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
     if self.dashCooldownTimer == 0 then
@@ -77,7 +83,7 @@ function update(args)
     end
     mcontroller.controlModifiers({jumpingSuppressed = true})
 
-    animator.setFlipped(mcontroller.facingDirection() == -1)    
+    animator.setFlipped(mcontroller.facingDirection() == -1)
 
     self.dashTimer = math.max(0, self.dashTimer - args.dt)
     if self.dashTimer == 0 then
@@ -88,7 +94,7 @@ function update(args)
 	local params = mcontroller.baseParameters()
 	local maxSpeed = params.runSpeed * self.runSpeedMultiplier
 	params.groundForce = params.groundForce * ( math.abs(mcontroller.velocity()[1]) / maxSpeed * ( self.groundForceMultiplierMax - self.groundForceMultiplierMin ) + self.groundForceMultiplierMin )
-	mcontroller.controlParameters(params)	
+	mcontroller.controlParameters(params)
   end
 end
 

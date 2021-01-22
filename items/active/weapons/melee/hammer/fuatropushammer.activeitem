@@ -10,10 +10,10 @@
   "tooltipKind" : "hammer",
   "category" : "hammer",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","hammer", "upgradeableWeapon","atropus","bioweapon"],
 
   "inventoryIcon" : "fuatropushammer.png",
-  "collectablesOnPickup" : { "fu_weaponhammer" : "fuatropushammer" },
+  //"collectablesOnPickup" : { "fu_weaponhammer" : "fuatropushammer" },
   "animation" : "/items/active/weapons/melee/hammer/hammer.animation",
   "animationParts" : {
     "handle" : "",
@@ -27,7 +27,7 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "bioweapon",
 
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
@@ -35,7 +35,8 @@
     "baseDps" : 11.5,
     "damageConfig" : {
       "knockback" : 16,
-      "statusEffects" : [ "weakpoison" ]
+      "statusEffects" : [ "weakpoison" ],
+      "damageSourceKind": "bioweaponbroadsword"
     }
   },
 

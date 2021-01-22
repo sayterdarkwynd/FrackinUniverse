@@ -5,18 +5,18 @@
   "maxStack" : 1,
   "rarity" : "Common",
   "description" : "^orange;Set Bonuses^reset;:
-^green;+12% Speed^reset;  
-Machine Pistol: ^green;+7.5%^reset; Dmg, 
-Dagger: ^#a94db3;+25%^reset; Crit Dmg",
+^yellow;^reset; +^green;12^reset;% Speed
+^yellow;^reset; Machine Pistol: Damage x^green;1.075^reset;/^green;1.15^reset;
+^yellow;^reset; Dagger: +^green;25^reset;% Crit Damage",
   "shortdescription" : "Raider Legs",
-  "category" : "t3armor",
+  "category" : "legarmour",
   "tooltipKind" : "armornew2",
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
   "itemTags" : [ "upgradeableWeapon" ],
   "level" : 3,
-  "collectablesOnPickup" : { "fu_armorbalanced" : "furaiderpants" },
+  //"collectablesOnPickup" : { "fu_armorbalanced" : "furaiderpants" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -73,5 +73,7 @@ Dagger: ^#a94db3;+25%^reset; Crit Dmg",
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     /* BROWN */
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

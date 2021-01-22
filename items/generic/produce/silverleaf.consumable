@@ -1,14 +1,23 @@
 {
-  "itemName" : "silverleaf",
-  "rarity" : "uncommon",
-  "price" : 10,
-  "inventoryIcon" : "silverleaf.png",
-  "description" : "Effect:
-^cyan;+35% Max Energy^reset;",
-  "shortdescription" : "Silverleaf Herb",
-  "category" : "food",
+	"itemName": "silverleaf",
+	"category": "food",
+	"inventoryIcon": "silverleaf.png",
+	"rarity": "uncommon",
+	"price": 10,
 
-  "effects" : [ [
-      "percentenergyboost35"
-    ] ]  
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Energy x1.35^reset;: 1m",
+	"shortdescription": "Silverleaf Herb",
+
+	"effects": [
+		[{
+			"effect": "percentenergyboost35",
+			"duration": 60
+		}]
+	],
+	"blockingEffects": [
+		"percentenergyboost15",
+		"percentenergyboost20",
+		"percentenergyboost25"
+	]
 }

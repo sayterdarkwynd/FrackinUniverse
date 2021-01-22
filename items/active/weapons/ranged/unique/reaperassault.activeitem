@@ -1,6 +1,6 @@
 {
   "itemName" : "reaperassault",
-  "price" : 150,
+  "price" : 600,
   "inventoryIcon" : "reaperassault.png",
   "maxStack" : 1,
   "rarity" : "rare",
@@ -8,7 +8,7 @@
 ^cyan;Spawns defensive drones",
   "shortdescription" : "Tk-12 Akasha",
   "category" : "assaultRifle",
-  "level" : 3,
+  "level" : 4,
   "tooltipKind" : "gun2",
   "weaponType" : "Assault Rifle",
   "itemTags" : ["weapon","ranged","assaultrifle", "upgradeableWeapon"],
@@ -32,22 +32,24 @@
   
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "ice",
+  "elementalType" : "hoarfrost",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 0.12,
-    "baseDps" : 6.5,
-    "energyUsage" : 30,
+    "baseDps" : 8.7,
+    "energyUsage" : 20,
     "inaccuracy" : 0.03,
     "projectileCount" : 1,
     "fireType" : "auto",
 
     "projectileType" : "iceplasma",
     "projectileParameters" : { 
-      "speed" : 120,
-      "knockback" : 2
+      "speed" : 97,
+      "knockback" : 2,
+      "damageKind" : "hoarfrost",
+	  "statusEffects" : [ "slow" ] 
     },
 	  "stances" : {
 	    "idle" : {
@@ -89,8 +91,15 @@
     },
 
   "critChance" : 1,
-  "critBonus" : 3,
-
+  "critBonus" : 4,
+  "isAmmoBased" : 1,
+  "magazineSize" : 32,
+  "reloadTime" : 1.2, 
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 400, 
+  
   "altAbilityType" : "fudronelauncherakasha",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

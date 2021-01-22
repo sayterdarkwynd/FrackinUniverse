@@ -1,16 +1,30 @@
 {
-  "itemName" : "kramilspine",
-  "rarity" : "Common",
-  "price" : 5,
-  "inventoryIcon" : "kramilspine.png",
-  "description" : "Immunity to Ice, Slush, Snow and Deadly Cold.",
-  "shortdescription" : "Kramil Spine",
-  "category" : "food",
+	"itemName": "kramilspine",
+	"inventoryIcon": "kramilspine.png",
+	"category": "food",
+	"rarity": "Common",
+	"price": 5,
 
-      "effects" : [ [
-          "iceslipimmunity", 
-          "slushslowimmunity", 
-          "snowslowimmunity", 
-          "ffextremecoldimmunity"
-    ] ]
+	"tooltipKind": "food",
+	"description": "^yellow;^reset;^cyan;Immunity^reset;: Icy, Slush, Snow, Deadly Cold: 2m",
+	"shortdescription": "Kramil Spine",
+	"effects": [
+		[{
+				"effect": "iceslipimmunity",
+				"duration": 120
+			},
+			{
+				"effect": "slushslowimmunity",
+				"duration": 120
+			},
+			{
+				"effect": "snowslowimmunity",
+				"duration": 120
+			},
+			{
+				"effect": "ffextremecoldimmunityicon",
+				"duration": 120
+			}
+		]
+	]
 }

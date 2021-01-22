@@ -1,0 +1,100 @@
+[
+  {
+    "op": "add",
+    "path": "/feneroxDescription",
+    "value": "Dead Glitch. Too mangled. Can't recover. Feeling mournful!"
+  },
+  {
+    "op": "add",
+    "path": "/thelusianDescription",
+    "value": "Hive would not leave bodies like this."
+  },
+  {
+    "op": "add",
+    "path": "/smashable",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/smashSounds",
+    "value": [
+      "/sfx/melee/bite_robotic1.ogg",
+      "/sfx/melee/bite_robotic2.ogg",
+      "/sfx/melee/bite_robotic3.ogg",
+      "/sfx/gun/impact_robotic1.ogg",
+      "/sfx/gun/impact_robotic2.ogg",
+      "/sfx/gun/impact_robotic3.ogg",
+      "/sfx/gun/impact_robotic4.ogg",
+      "/sfx/gun/impact_robotic5.ogg"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/smashParticles",
+    "value": [
+      {
+        "count": 1,
+        "particle": "fuglitchburst"
+      },
+      {
+        "count": 3,
+        "particle": "fuglitchburst"
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/smashDropPool",
+    "value": "deadglitchloot"
+  },
+  {
+    "op": "add",
+    "path": "/breakDropPool",
+    "value": "deadglitchloot"
+  },
+  {
+    "op": "add",
+    "path": "/scripts",
+    "value": [
+      "/scripts/npcToyObject.lua"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/npcToy",
+    "value": {
+      "influence": [
+        "tombstone",
+        "tombstoneComplete"
+      ],
+      "defaultReactions": {
+        "tombstone": [
+          [
+            1,
+            "mourn"
+          ]
+        ],
+        "tombstoneComplete": [
+          [
+            1,
+            "cry"
+          ]
+        ]
+      },
+      "preciseStandPositionLeft": [
+        -3,
+        0
+      ],
+      "preciseStandPositionRight": [
+        3,
+        0
+      ],
+      "maxNpcs": 1
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/description",
+    "value": "A Glitch Protector, mangled beyond any hope of data recovery."
+  }
+]

@@ -1,12 +1,9 @@
 require "/scripts/unifiedGravMod.lua"
 
 function init()
-	self.gravityMod = config.getParameter("gravityMod",20.0)
-	self.gravityNormalize = config.getParameter("gravityNorm",false)
-	self.gravityBaseMod = config.getParameter("gravityBaseMod",0.0)
-	self.movementParams = mcontroller.baseParameters()
-	unifiedGravMod.init()
-  
+	--unifiedGravMod.initSoft()
+	--unifiedGravMod.init()
+
   activateVisualEffects()
   self.liquidMovementParameter = {
     groundForce = 70,
@@ -35,12 +32,14 @@ end
 function activateVisualEffects()
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
   animator.setParticleEmitterActive("embers", true)
+  if entity.entityType()=="player" then
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
   animator.burstParticleEmitter("statustext")
+  end
 end
 
 function update(dt)
-  unifiedGravMod.update(dt)
+  --unifiedGravMod.update(dt)
   mcontroller.controlParameters(self.liquidMovementParameter)
 end

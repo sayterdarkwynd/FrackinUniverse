@@ -1,0 +1,50 @@
+{
+  "name" : "futargetedDash",
+  "preconditions" : [
+    ["!BossDanger", 0, 0],
+    ["!BossDanger", 1, 0],
+    ["!BossDanger", 2, 0],
+    ["!BossDanger", 3, 0],
+    ["!BossDanger", 4, 0],
+    ["!BossDanger", 5, 0],
+    ["!BossDanger", 6, 0],
+    ["!BossDanger", 7, 0],
+    ["Ability", "StaticAbility"]
+  ],
+  "postconditions" : [
+    ["!Ability", "StaticAbility"],
+    ["Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Boss", 0, 0, "GuidedPosition"],
+    ["Boss", 1, 0, "GuidedPosition"],
+    ["Boss", 2, 0, "GuidedPosition"],
+    ["Boss", 3, 0, "GuidedPosition"],
+    ["Boss", 4, 0, "GuidedPosition"],
+    ["Boss", 5, 0, "GuidedPosition"],
+    ["Boss", 6, 0, "GuidedPosition"],
+    ["Boss", 7, 0, "GuidedPosition"],
+    ["WeaponEquipped"],
+    ["Ability", "CloseRange"]
+  ],
+  "objectives" : [
+    ["Ability", "MovingAbility"],
+    ["Ability", "CloseRange"]
+  ],
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-targeteddash",
+      "parameters" : {
+        "dashCount" : 5,
+        "dashSpeed" : 50,
+        "controlParameters" : {
+          "airFriction" : 2
+        },
+
+        "windupTime" : 0.8,
+        "dashTime" : 0.3
+      }
+    }
+  ]
+}

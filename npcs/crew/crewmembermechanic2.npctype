@@ -3,11 +3,10 @@
   "baseType" : "crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
+      "defaultUniform" : {
+      },
+	  
       "role" : {
         "type" : "mechanic",
         "name" : "Chief Mechanic",
@@ -15,11 +14,6 @@
         "uniformColorIndex" : 8,
 
         "benefits" : [
-          //{
-          //  "type" : "ShipUpgradeBenefit",
-          //  "property" : "shipMass",
-          //  "value" : 0.8
-          //}, 
           {
             "type" : "PersistentEffect",
             "property" : "shipMass",
@@ -28,7 +22,7 @@
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "fuelEfficiency",
-            "value" : 0.25
+            "value" : 0.2
           }
         ]
       }
@@ -39,11 +33,11 @@
         "roleDescription" : {
           "default" : {
             "default" : [
-              "I'll keep clearing out the carborator while I'm here. Fuel efficiency is up 25% and Ship mass has decreased by 20%."
+              "I'll keep clearing out the carborator while I'm here. Fuel costs are down by 20% and Ship Mass has decreased by 20%."
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -51,8 +45,6 @@
     "default" : [
       [0, [
           {
-            "chest" : [ { "name" : "protectoratechest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-            "legs" : [ { "name" : "protectoratepants", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
             "primary" : [ "npcwrench" ]
           }
         ] ]

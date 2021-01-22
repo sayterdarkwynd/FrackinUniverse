@@ -9,7 +9,7 @@
   "tooltipKind" : "sword2",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon"],
+  "itemTags" : ["weapon","melee","shortsword", "upgradeableWeapon","nightar"],
 
   "inventoryIcon" : "nightarshortsword.png",
   "animation" : "comboshortsword.animation",
@@ -23,21 +23,19 @@
 
   "elementalType" : "physical",
 
-  
-  
-  "primaryAbilityType" : "shortswordcombo2",
+  "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.63,
     "baseDps" : 6
   },
 
-  "critChance" : 2,
+  "critChance" : 1.2,
   "critBonus" : 1,
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
   
   "improvedParameters" : {
-          "animation" : "comboglowshortsword.animation",
+    "animation" : "comboglowshortsword.animation",
 	  "animationParts" : {
 	    "handle" : "",
 	    "blade" : "nightarshortsword.png",
@@ -45,23 +43,39 @@
 	  },  
 	  "inventoryIcon" : "nightarshortsword.png",
 	  "shortdescription" : "Honed Nightar Blade",
-	  "description" : "A fine, lethal edge."  
+	  "description" : "A fine, lethal edge.",
+    "critChance" : 1.4,
+    "critBonus" : 1.5,
+    "elementalType" : "silverweapon",
+    "primaryAbilityType" : "shortswordcombo",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }     
   },  
   "upgradeParameters" : {
-          "animation" : "comboglowshortsword.animation",
+    "animation" : "comboglowshortsword.animation",
 	  "animationParts" : {
 	    "handle" : "",
 	    "blade" : "nightarshortsword.png",
-	    "bladefullbright" : "nightarshortswordfullbright.png"
+	    "bladefullbright" : "nightarshortswordfullbright.png"  
 	  },  
 	  "inventoryIcon" : "nightarshortsword.png",
 	  "shortdescription" : "Peerless Nightar Blade",
 	  "description" : "The edge is superior to nearly any other.",
-	  "critChance" : 3,
-	  "critBonus" : 5	  
+	  "critChance" : 2,
+	  "critBonus" : 3.5,
+    "elementalType" : "silverweapon",
+    "primaryAbilityType" : "shortswordcombo",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }   	  
   },
   "upgradeParameters2" : {
-          "animation" : "comboglowshortsword.animation",
+    "animation" : "comboglowshortsword.animation",
 	  "animationParts" : {
 	    "handle" : "",
 	    "blade" : "nightarshortsword2.png",
@@ -70,8 +84,15 @@
 	  "inventoryIcon" : "nightarshortsword2.png",
 	  "shortdescription" : "Legendary Nightar Blade",
 	  "description" : "The finest edge possible.",
-	  "critChance" : 3.5,
-	  "critBonus" : 7	  
+	  "critChance" : 2.25,
+	  "critBonus" : 5,
+    "elementalType" : "silverweapon",
+    "primaryAbilityType" : "shortswordcombo",
+    "primaryAbility" : {
+      "damageConfig" : {
+        "damageSourceKind" : "silverweapon"
+      }
+    }   	  
   }  
 
 }

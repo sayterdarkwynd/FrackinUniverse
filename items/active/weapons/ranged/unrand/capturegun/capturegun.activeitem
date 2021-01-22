@@ -4,11 +4,11 @@
   "inventoryIcon" : "capturegun.png",
     "maxStack" : 1,
     "rarity" : "rare",
-  "description" : "Captures creatures. Handy.",
-  "shortdescription" : "Capture Gun",
-  "level" : 3,
+  "description" : "Deals Percentage Damage. Captures creatures. Very shiny.",
+  "shortdescription" : "Mega Capture Gun",
+  "level" : 1,
   "category" : "assaultRifle",
-  "itemTags" : ["weapon","ranged","assaultrifle"],
+  "itemTags" : ["weapon","ranged","assaultrifle","upgradeableWeapon"],
   "tooltipKind" : "gun2",
   "twoHanded" : true,
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -28,18 +28,21 @@
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
-  "elementalType" : "radioactive",
+  "elementalType" : "physical",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
     "class" : "GunFire",
     "fireTime" : 2.0,
-    "baseDps" : 5,
+    "baseDps" : 1.0,
     "inaccuracy" : 0,
     "energyUsage" : 25,
     "fireType" : "auto",
     "projectileCount" : 1,
     "projectileType" : "capturepodgun",
+	"projectileParameters":{
+		"statusEffects":["capturegunpercent"]
+	},
 
 
 

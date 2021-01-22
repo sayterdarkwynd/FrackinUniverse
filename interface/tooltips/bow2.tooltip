@@ -19,7 +19,7 @@
 
   "descriptionLabel" : {
     "type" : "label",
-    "position" : [9, 118],
+    "position" : [9, 125],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 140
@@ -31,7 +31,8 @@
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 134,
-    "value" : "^orange;Crit %^reset;"
+    "value" : "^#ee1414;Crit %^reset;",
+    "fontSize" : 6
   },  
   "critChanceLabel" : {
     "type" : "label",
@@ -46,7 +47,8 @@
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 134,
-    "value" : "^yellow;Dmg +^reset;"
+    "value" : "^yellow;Dmg +^reset;",
+    "fontSize" : 6
   },  
   "critBonusLabel" : {
     "type" : "label",
@@ -55,39 +57,142 @@
     "vAnchor" : "top",
     "wrapWidth" : 134
   },    
- 
+
+    "levelTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 196],
+      "hAnchor" : "left",
+      "vAnchor" : "top",
+      "wrapWidth" : 134,
+      "value" : "^yellow;Tier ^reset;"
+  },  
+  
     "levelLabel" : {
       "type" : "label",
-      "position" : [148, 196],
-      "hAnchor" : "right",
+      "position" : [29, 196],
+      "hAnchor" : "left",
       "vAnchor" : "top",
       "wrapWidth" : 134
-  }, 
-  "maxDamageTitleLabel" : {
-    "type" : "label",
-    "position" : [9, 50],
-    "hAnchor" : "left",
-    "value" : "Base Max Attack:"
-  },
-  "maxDamageLabel" : {
-    "type" : "label",
-    "position" : [148, 50],
-    "hAnchor" : "right",
-    "wrapWidth" : 126
-  },  
-  "energyPerShotTitleLabel" : {
-    "type" : "label",
-    "position" : [9, 41],
-    "hAnchor" : "left",
-    "value" : "Energy Per Shot:"
-  },
-  "energyPerShotLabel" : {
-    "type" : "label",
-    "position" : [148, 41],
-    "hAnchor" : "right",
-    "wrapWidth" : 126
-  },
-  
+  },   
+ 
+ 
+    "altAbilityTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 40],
+      "hAnchor" : "left",
+      "value" : "",
+      "fontSize" : 7
+    },
+    "altAbilityLabel" : {
+      "type" : "label",
+      "position" : [148, 40],
+      "hAnchor" : "right",
+      "centered" : true,
+      "wrapWidth" : 126,
+      "fontSize" : 7
+    },
+    "airborneBonusTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 48],
+      "hAnchor" : "left",
+      "value" : "Airborne Damage Multiplier:",
+      "fontSize" : 7
+    },
+    "airborneBonusLabel" : {
+      "type" : "label",
+      "position" : [148, 48],
+      "hAnchor" : "right",
+      "centered" : true,
+      "wrapWidth" : 126,
+      "fontSize" : 7
+    },
+    "holdEnergyTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 56],
+      "hAnchor" : "left",
+      "value" : "Energy to Hold/s:",
+      "fontSize" : 7
+    },
+    "holdEnergyLabel" : {
+      "type" : "label",
+      "position" : [148, 56],
+      "hAnchor" : "right",
+      "centered" : true,
+      "wrapWidth" : 126,
+      "fontSize" : 7
+    },
+    "drawEnergyTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 64],
+      "hAnchor" : "left",
+      "value" : "Energy to Draw:",
+      "fontSize" : 7
+    },
+    "drawEnergyLabel" : {
+      "type" : "label",
+      "position" : [148, 64],
+      "hAnchor" : "right",
+      "centered" : true,
+      "wrapWidth" : 126,
+      "fontSize" : 7
+    },
+    "perfectDrawTimeTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 72],
+      "hAnchor" : "left",
+      "value" : "Perfect Shot Time:",
+      "fontSize" : 7
+    },
+    "perfectDrawTimeLabel" : {
+      "type" : "label",
+      "position" : [148, 72],
+      "hAnchor" : "right",
+      "wrapWidth" : 126,
+      "fontSize" : 7
+    },
+    "perfectDamageTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 80],
+      "hAnchor" : "left",
+      "value" : "Damage per Perfect Shot:",
+      "fontSize" : 7
+    },
+    "perfectDamageLabel" : {
+      "type" : "label",
+      "position" : [148, 80],
+      "hAnchor" : "right",
+      "wrapWidth" : 126,
+      "fontSize" : 7
+    },
+    "drawTimeTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 88],
+      "hAnchor" : "left",
+      "value" : "Time to Draw:",
+      "fontSize" : 7
+    },
+    "drawTimeLabel" : {
+      "type" : "label",
+      "position" : [148, 88],
+      "hAnchor" : "right",
+      "wrapWidth" : 126,
+      "fontSize" : 7
+    },
+    "damageTitleLabel" : {
+      "type" : "label",
+      "position" : [9, 96],
+      "hAnchor" : "left",
+      "value" : "Damage per Shot:",
+      "fontSize" : 7
+    },
+    "damageLabel" : {
+      "type" : "label",
+      "position" : [148, 96],
+      "hAnchor" : "right",
+      "wrapWidth" : 126,
+      "fontSize" : 7
+    },
+    
   "handednessLabel" : {
     "type" : "label",
     "position" : [100, 188],

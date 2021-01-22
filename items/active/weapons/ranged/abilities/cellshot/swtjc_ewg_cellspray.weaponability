@@ -23,17 +23,22 @@
     "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
     "class" : "AltFireAttack",
 
-    "projectileType" : "cellzap1",
+    "projectileType" : "cellzap<elementalType>1",
     "projectileParameters" : { },
     "elementalConfig" : {
-      "physical" : { "projectileParameters" : { } },
-      "fire" : { "projectileParameters" : { "statusEffects" : [ "burning" ] } },
-      "electric" : { "projectileParameters" : { "statusEffects" : [ "electrified" ] } },
-      "ice" : { "projectileParameters" : { "statusEffects" : [ "frostslow" ] } },
-      "poison" : { "projectileParameters" : { "statusEffects" : [ "weakpoison" ] } },
-      "radioactive" : { "projectileParameters" : { "statusEffects" : [ "radiationburn" ] } },
-      "shadow" : { "projectileParameters" : { "statusEffects" : [ "shadowgasfx" ] } },
-      "cosmic" : { "projectileParameters" : { "statusEffects" : [ "percentarmorboostneg2" ] } }      
+      "physical" : {},
+      "silverweapon" : {},
+      "fire" : {},
+      "hellfire" : {"projectileType":"cellzapfire1"},
+      "electric" : {},
+      "ice" : {},
+      "hoarfrost" : {"projectileType":"cellzapice1"},
+      "poison" : {},
+      "bioweapon" : {"projectileType":"cellzappoison1"},
+      "radioactive" : {},
+      "shadow" :{},
+      "cosmic" : {},
+      "aether" : {"projectileType":"cellzapcosmic1"}
     },
 
     "baseDps" : 15,

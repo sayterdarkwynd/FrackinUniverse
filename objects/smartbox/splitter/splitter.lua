@@ -2,16 +2,17 @@ require "/scripts/kheAA/transferUtil.lua"
 local deltaTime = 0
 
 function init()
-	transferUtil.init()
 	object.setInteractive(true)
 end
 
 function update(dt)
-	deltaTime = deltaTime + dt
-	if deltaTime > 1 then
-		deltaTime = 0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
+
 	refresh(100, 1)
 	refresh(10, 2)
 	refresh(1, 3)
@@ -22,7 +23,7 @@ function refresh(size, slot)
 	local input = world.containerItemAt(id, 0)
 	if input then
 		local stack = world.containerTakeNumItemsAt(id, 0, (input.count // size) * size)
-		if stack then 
+		if stack then
 			stack = world.containerPutItemsAt(id, stack, slot)
 			if stack then
 				world.containerPutItemsAt(id, stack, 0)

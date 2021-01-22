@@ -1,16 +1,16 @@
 {
   "itemName" : "stabfists",
   "price" : 20,
-  "level" : 2,
+  "level" : 1,
   "maxStack" : 1,
   "rarity" : "common",
-  "description" : "Strap these blades to your hands. Fun ensues",
+  "description" : "Strap these blades to your hands. Fun ensues.",
   "shortdescription" : "Iron Fists",
   "tooltipKind" : "fistweapon",
   "category" : "fistWeapon",
   "twoHanded" : false,
   "itemTags" : ["weapon","fist", "upgradeableWeapon"],
-  "collectablesOnPickup" : { "fu_weaponfist" : "stabfists" },
+  //"collectablesOnPickup" : { "fu_weaponfist" : "stabfists" },
   "inventoryIcon" : "stabfists.png:front",
   "animation" : "fistweapon.animation",
   "animationParts" : {
@@ -35,7 +35,8 @@
   "comboCooldown" : 0.2,
   "comboFinisherSource" : "/items/active/weapons/fist/combofinishers/megauppercut.combofinisher",
 
-  "freezeLimit" : 2,
+  "freezeLimit" : 2,  
+  "elementalType" : "physical",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/fist/punch.lua"],

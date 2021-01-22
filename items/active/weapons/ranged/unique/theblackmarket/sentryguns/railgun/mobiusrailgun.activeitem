@@ -55,7 +55,7 @@
     "projectileType" : "standardbullet",
     "projectileParameters" : {
       "knockback" : 20,
-      "damageSourceKind" : "electric",
+      "damageKind" : "electric",
       "lightColor" : [120, 0, 44],
       "piercing" : false,
       "flippable" : true, 
@@ -200,8 +200,14 @@
       }
     }
   },
+  
   "critChance" : 6,
-  "critBonus" : 12,
+  "critBonus" : 26,
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 2000,    
+  
   "altAbilityType" : "fudronelauncheradv",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

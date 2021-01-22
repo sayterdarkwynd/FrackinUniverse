@@ -6,11 +6,11 @@
   "rarity" : "Common",
   "category" : "legarmour",
   "description" : "^orange;Set Bonuses^reset;:
-^green;+5%^reset; Physical Resistance
-Katana: ^cyan;+15%^reset; Dmg, ^green;+3%^reset; Crit, ^green;+10%^reset; Crit Damage^reset;
-Katana + Dagger: ^green;+1%^reset; Crit Chance, ^green;+14%^reset; Protection^reset;",
+^yellow;^reset; Katana: Damage x^green;1.15^reset;, +^green;3^reset;% Crit, +^green;10^reset;% Crit Damage^reset;
+^yellow;^reset; Katana + Dagger: +^green;1^reset;% Crit Chance, Defense x^green;1.14^reset;^reset;",
   "shortdescription" : "Neishin Greaves",
-  "tooltipKind" : "armor",
+  "tooltipKind" : "armornew2",
+  "itemTags": ["upgradeableWeapon"],
 
   "maleFrames" : "pants.png",
   "femaleFrames" : "pants.png",
@@ -36,6 +36,11 @@ Katana + Dagger: ^green;+1%^reset; Crit Chance, ^green;+14%^reset; Protection^re
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 2
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "physicalResistance",
+      "amount" : 0.025
     }
   ],
 
@@ -72,5 +77,7 @@ Katana + Dagger: ^green;+1%^reset; Crit Chance, ^green;+14%^reset; Protection^re
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
     { "ffca8a" : "ccae7c", "e0975c" : "a47844", "a85636" : "754c23", "6f2919" : "472b13" }
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

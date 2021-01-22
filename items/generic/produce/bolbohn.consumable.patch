@@ -1,29 +1,49 @@
 [
-  {
-    "op": "test",
-    "path": "/itemAgingScripts",
-    "value": ["/scripts/items/rotting.lua"]
-  },
-  {
-    "op": "remove",
-    "path": "/itemAgingScripts"
-  },
-  {
-    "op": "remove",
-    "path": "/rottingMultiplier"
-  },
-  {
-    "op": "add",
-    "path": "/effects",
-    "value": [
-      [
-        "critchance1"
-      ]
-    ]
-  },
-  {
-    "op": "replace",
-    "path": "/foodValue",
-    "value": 3
-  }
+	[
+		{
+			"op": "test",
+			"path": "/itemAgingScripts",
+			"value": ["/scripts/items/rotting.lua"]
+		},
+		{
+			"op": "remove",
+			"path": "/itemAgingScripts"
+		},
+		{
+			"op": "remove",
+			"path": "/rottingMultiplier"
+		}
+	],
+	[
+		{
+		"op": "add",
+		"path": "/effects",
+		"value": [
+
+			[{
+				"effect": "critchance1",
+				"duration": 60
+			}]
+		]
+	}],
+	[
+		{
+			"op": "test",
+			"path": "/foodValue"
+		},
+		{
+			"op": "remove",
+			"path": "/foodValue"
+		}
+	],
+	[
+		{
+			"op": "test",
+			"path": "/blockingEffects"
+		},
+		{
+			"op": "remove",
+			"path": "/blockingEffects"
+		}
+	]
 ]

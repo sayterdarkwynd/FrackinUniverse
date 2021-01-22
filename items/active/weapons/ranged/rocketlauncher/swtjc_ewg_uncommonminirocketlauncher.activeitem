@@ -3,12 +3,12 @@
   "price" : 1320,
   "maxStack" : 1,
   "rarity" : "Uncommon",
-  "description" : "Launches smaller anti-personnel rockets in fairly quick succession (by rocket launcher standards).",
+  "description" : "Launches smaller anti-personnel rockets in fairly quick succession.",
   "shortdescription" : "Uncommon Mini-Rocket Launcher",
-  "tooltipKind" : "gun",
+  "tooltipKind" : "gun2",
   "category" : "swtjc_ewg_miniRocketLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon","ranged","rocketlauncher","upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","rocketlauncher","upgradeableWeapon","explosive"],
   "level" : 1,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -36,7 +36,7 @@
     "class" : "GunFire",
 
     "fireTime" : [0.5, 1.5],
-    "baseDps" : [8.3, 10.4],
+    "baseDps" : [7.3, 10.4],
     "energyUsage" : [34, 38],
     "inaccuracy" : 0.04,
 
@@ -76,6 +76,14 @@
       }
     }
   },
+
+
+  "critChance" : 1,
+  "critBonus" : 8,
+  "isAmmoBased": [0,1],
+  "magazineSize" : [2,7],
+  "reloadTime" : [1.2,2.6],
+  "isRocketLauncher" : 1,
 
   "builder" : "/items/buildscripts/buildweapon.lua",
   "builderConfig" : [{
@@ -117,7 +125,7 @@
       "cosmic" : {
         "primaryAbility" : { "projectileType" : "cosmicplasmarocket" },
         "fireSounds" : [ "/sfx/gun/rocket_electric1.ogg" ]
-      }      
+      }
     },
     "animationParts" : {
       "butt" : {
@@ -186,7 +194,5 @@
     ],
     "palette" : "/items/active/weapons/colors/ranged.weaponcolors",
     "iconDrawables" : ["butt", "middle", "barrel"]
-  }],
-  "critChance": 1,
-  "critBonus" : 5
+  }]
 }

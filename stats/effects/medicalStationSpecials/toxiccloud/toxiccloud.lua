@@ -1,46 +1,58 @@
-
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
 	self.cloudInterval = 0
+	self.baseCloudInterval = config.getParameter("cloudInterval", 0)
 	self.onShip = false
-	
-	self.modifierGroupID = effect.addStatModifierGroup({
+	self.useMedStationCode=config.getParameter("useMedStationCode",true)
+	self.damage=config.getParameter("selfDamage", 0)
+	self.damageSourceKind=config.getParameter("selfDamageType", 0)
+	--[[self.modifierGroupID = effect.addStatModifierGroup({
 		{stat = "foodDelta", amount = config.getParameter("foodConsumption", 0)}
-	})
-	
+	})]]
+
 	local data = root.assetJson("/projectiles/medicalStationSpecials/toxicCloud/toxiccloud.projectile")
 	self.baseDamage = data.power
-	
-	
+
+
 	if world.type() == "unknown" then
 		self.onShip = true
-	end	
-		
-	baseInit()
+	end
+
+	if self.useMedStationCode then
+		baseInit()
+	end
+	didInit=true
 end
 
 function update(dt)
+	if not didInit then
+		init()
+		return
+	end
+
 	if not self.onShip then
 		if self.cloudInterval <= 0 then
 			status.applySelfDamageRequest({
 				damageType = "IgnoresDef",
-				damage = config.getParameter("selfDamage", 0),
-				damageSourceKind = config.getParameter("selfDamageType", 0),
+				damage = self.damage,
+				damageSourceKind = self.damageSourceKind,
 				sourceEntityId = entity.id()
 			})
-			
+
 			world.spawnProjectile("medicaltoxiccloud", entity.position(), entity.id(), nil, nil, {power = self.baseDamage * status.stat("powerMultiplier")})
-			
-			self.cloudInterval = config.getParameter("cloudInterval", 0)
+
+			self.cloudInterval = self.baseCloudInterval
 		else
 			self.cloudInterval = self.cloudInterval - dt
 		end
 	end
-	
-	baseUpdate(dt)
+
+	if self.useMedStationCode then
+		baseUpdate(dt)
+	end
 end
 
 function uninit()
-	baseUninit(self.modifierGroupID)
+	--baseUninit(self.modifierGroupID)
 end

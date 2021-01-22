@@ -12,7 +12,7 @@ function update(dt)
 		return
 	end
 	deltatime=0
-	transferUtil.updateInputs();
-	transferUtil.updateOutputs();
+	transferUtil.updateInputs()
+	transferUtil.updateOutputs()
 	object.setOutputNodeLevel(transferUtil.vars.inDataNode,util.tableSize(transferUtil.vars.outContainers))
 end

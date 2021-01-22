@@ -33,37 +33,110 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 128,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 80,
       "targetOutOfSightTime" : 5.5,
 
-      "foundTargetActions" : [  ],
+      "foundTargetActions" : [ 
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 1,
+          "parameters" : {
+          "effect" : "lowgrav_wretchel",
+          "duration" : 10
+          }
+        }        
+      ],
 
       "fleeActions" : [],
 
       "hostileActions" : [
         {
-          "name" : "action-charge",
+          "name" : "action-fire",
           "cooldown" : 4,
           "parameters" : {
-            "maximumRange" : 85,
-            "windupTime" : 0.6,
+            "maximumRange" : 128,
+            "minimumRange" : 12,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.1,
+            "projectileCount" : 8,
+            "projectileInterval" : 0.001,
+            "projectileType" : "magnorbneutron",
+            "projectileParameters" : {
+              "timeToLive" : 0.01
+            },
+            "fireOffset" : [0, 3],
 
-            "aimAtTarget" : true,
-            "chargeTime" : 1,
-            "chargeSpeed" : 60,
-            "chargeControlForce" : 1600,
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
+            "aimAtTarget" : false,
 
-            "winddownTime" : 0.6
+            "inaccuracy" : 0,
+            "power" : 0,
+            "speed": 0,
+            "fireSound" : "fire",
+            "fireState" : "charge",
+
+            "winddownState" : "chargewinddown"
+          }
+        },
+        {
+          "name" : "action-fire",
+          "cooldown" : 7,
+          "parameters" : {
+            "maximumRange" : 128,
+            "minimumRange" : 12,
+            "windupState" : "",
+            "windupTime" : 0.0,
+            "projectileCount" : 1,
+            "projectileType" : "magnorbshadow",
+            "projectileParameters" : {
+              "timeToLive" : 7,
+              "speed" : 5
+            },
+            "fireOffset" : [0, -1.4],
+
+            "aimAtTarget" : false,
+            "onGround" : true,
+            "inaccuracy" : 0,
+            "fireSound" : "fire",
+            "fireState" : "",
+
+            "winddownState" : "chargewinddown"
           }
         }
       ],
+      
+      "damageTakenActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 0.08,
+          "parameters" : {
+            "maximumRange" : 85,
+            "windupTime" : 0.08,
 
-      "periodicActions" : [],
+            "aimAtTarget" : true,
+            "chargeTime" : 0.5,
+            "chargeSpeed" : 42,
+            "chargeControlForce" : 600,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.08
+          }
+        }     
+      ],
+      
+      "periodicActions" : [
+        {
+          "name" : "action-statuseffect",
+          "cooldown" : 1,
+          "parameters" : {
+          "effect" : "lowgrav_wretchel",
+          "duration" : 10
+          }
+        }        
+      ],
 
       "approachActions" : [
         {
@@ -74,7 +147,7 @@
             "jumpXVelocity" : 12,
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
-            "minXRange" : 10
+            "minXRange" : 20
           }
         }
       ],
@@ -93,7 +166,7 @@
             "jumpXVelocity" : 12,
             "jumpYVelocity" : 30,
             "jumpXControlForce" : 50,
-            "minXRange" : 10
+            "minXRange" : 20
           }
         }
       ],
@@ -116,12 +189,30 @@
       "concurrentHostileActions" : [ 
         {
           "name" : "action-statuseffect", 
-          "cooldown" : 5,
+          "cooldown" : 8,
           "parameters" : {
           "effect" : "darkregen",
-          "duration" : 5
+          "duration" : 8
           }
-        }      
+        },
+        {
+          "name" : "action-charge",
+          "cooldown" : 6,
+          "parameters" : {
+            "maximumRange" : 128,
+            
+            "windupTime" : 0.2,
+
+            "aimAtTarget" : true,
+            "chargeTime" : 0.75,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 800,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.4
+          }
+        }         
       ],   
       
       "wanderActions" : [
@@ -140,7 +231,7 @@
       "damage" : 14,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "slash",
+      "damageSourceKind" : "shadow",
       "knockback" : 20,
       "statusEffects" : [ ]
     },

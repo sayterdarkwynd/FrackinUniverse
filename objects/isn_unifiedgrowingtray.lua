@@ -1,6 +1,6 @@
 require "/scripts/fu_storageutils.lua"
 require "/scripts/kheAA/transferUtil.lua"
-require "/scripts/power.lua"
+require "/scripts/fupower.lua"
 
 timer = 0
 
@@ -36,7 +36,6 @@ function init()
 		power.init()
 	end
 
-	transferUtil.init()
 	object.setInteractive(true)
 
 	storage.growth = storage.growth or 0 				--Plant growth completed
@@ -50,15 +49,15 @@ end
 --Updates the state of the object.
 function update(dt)
 	-- Updates container status (for ITD management)
-	if timer >= 1 then
-		timer = 0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
+	else
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	timer = timer + dt
 
-	-- Check tray inputs/update description
-	checkTrayInputs()
-
+	-- Check tray inputs
+	local water,fert=checkTrayInputs()
 	storage.activeConsumption = false
 
 	if self.requiredPower then power.update(dt) end
@@ -67,17 +66,28 @@ function update(dt)
 	if not storage.currentseed then
 		if not doSeedIntake() then
 			-- Player feedback, when not growing, turn off the lights.
-			if self.requiredPower then animator.setAnimationState("powlight", "off") end
+			if self.requiredPower then
+				animator.setAnimationState("powlight", "off")
+				if object.outputNodeCount() > 0 then
+					object.setOutputNodeLevel(0,false)
+				end
+			end
+			handleTooltip({water=water,fert=fert,growthmod=nil})--update description
 			return
 		end
 	end
 
 	--growthmod should be nil if we aren't a power consumer
-	local growthmod = self.requiredPower and (consumePower(dt) and 1 or self.unpoweredGrowthRate)
+	local growthmod = self.requiredPower and ((consumePower(dt) and 1) or self.unpoweredGrowthRate)
+	--sb.logInfo("growthmod: %s",growthmod)
 	growPlant(growthmod, dt)
 
-	storage.activeConsumption = true
+	handleTooltip({water=water,fert=fert,growthmod=growthmod,seed=storage.currentseed})--update description
 
+	storage.activeConsumption = true
+	if object.outputNodeCount() > 0 then
+		object.setOutputNodeLevel(0,true)
+	end
 	updateState()
 end
 
@@ -115,16 +125,7 @@ function checkTrayInputs()
 	local water = inputWater and self.liquidInputs[inputWater.name] or nil
 	local fert = inputFert and self.fertInputs[inputFert.name] or nil
 
-	-- Generate new description
-	local desc = root.itemConfig(object.name())
-	desc = desc and desc.config and desc.config.description or ''
-	desc = desc .. (desc ~= '' and "\n" or '') .. '^green;'
-		.. ' Seeds Used: ' .. getFertSum('seedUse', fert, water) .. "\n"
-		.. 'Yield Count: ' .. getFertSum('yield', fert, water) .. "\n"
-		.. 'Growth Rate: ' .. getFertSum('growthRate', fert, water) .. "\n"
-		.. '  Water Use: ' .. getFertSum('fluidUse', fert, water) .. "\n"
-		.. '^blue;Water Value: ' .. (water and water.value or '0')
-	object.setConfigParameter('description', desc)
+
 
 	-- Relocate invalid inputs
 	if inputWater and not water then inputWater = fu_relocateItem(waterslot, inputSlots) end
@@ -133,12 +134,90 @@ function checkTrayInputs()
 	-- Update cache
 	storage.cacheWaterName = inputWater and inputWater.name or nil
 	storage.cacheFertName = inputFert and inputFert.name or nil
+
+
+	return water,fert
+end
+
+
+-- Generate new description
+function handleTooltip(args)
+
+	--growth rate and power calc
+	local growthrate=getFertSum('growthRate', args.fert, args.water)
+	local growthrate2=growthrate*(args.growthmod or 1)
+	growthrate=util.round(growthrate,2)
+	growthrate2=util.round(growthrate2,2)
+	local growthString
+	local powerString=""
+	if growthrate~=growthrate2 and self.requiredPower then
+		growthString='Growth Rate: ^red;' .. growthrate2 .. "^reset;\n"
+		powerString=powerString.."Power: ^red;0^reset;/"..self.requiredPower.."\n"
+	elseif self.requiredPower then
+		growthString='Growth Rate: ^green;' .. growthrate .. "^reset;\n"
+		if not args.growthmod then
+			powerString=powerString.."Power: 0/"..self.requiredPower.."\n"
+		else
+			powerString=powerString.."Power: ^green;"..self.requiredPower.."^reset;/"..self.requiredPower.."\n"
+		end
+	else
+		growthString='Growth Rate: ^green;' .. growthrate2 .. "^reset;\n"
+	end
+
+	--seed use and seed display
+	local seedString=""
+	if args.seed and args.seed.name then
+		seedString=root.itemConfig(args.seed.name).config.shortdescription
+		seedString=" (^yellow;" .. seedString .. "^reset;)"
+	end
+
+	local seedUseWith=getFertSum('seedUse', args.fert, args.water)
+	local seedUseWithout=getFertSum('seedUse', "absolutelynothing", "absolutelynothing")
+	if seedUseWith<seedUseWithout then
+		seedUseWith="^green;"..seedUseWith.."^reset;"
+	elseif seedUseWith>seedUseWithout then
+		seedUseWith="^red;"..seedUseWith.."^reset;"
+	end
+	seedString='Seeds Used: ' .. seedUseWith .. seedString .. "\n"
+
+	--yield calc
+	local yieldWith=getFertSum('yield', args.fert, args.water)
+	local yieldWithout=getFertSum('yield', "absolutelynothing", "absolutelynothing")
+	if yieldWith>yieldWithout then
+		yieldWith="^green;"..yieldWith.."^reset;"
+	elseif yieldWith<yieldWithout then
+		yieldWith="^red;"..yieldWith.."^reset;"
+	end
+	local yieldString='Yield Count: ' .. yieldWith .. "\n"
+
+	--water use calc
+	local waterUseWith=getFertSum('fluidUse', args.fert, args.water)
+	local waterUseWithout=getFertSum('fluidUse', "absolutelynothing", "absolutelynothing")
+	if waterUseWith<waterUseWithout then
+		waterUseWith="^green;"..waterUseWith.."^reset;"
+	elseif waterUseWith>waterUseWithout then
+		waterUseWith="^red;"..waterUseWith.."^reset;"
+	end
+	local waterUseString='Water Use: ' .. waterUseWith .. "\n"
+
+	--water value calc
+	local waterValueString='Water Value: '
+	local waterValue=(args.water and args.water.value or 0)
+	if waterValue>0 then
+		waterValueString=waterValueString.."^green;"..waterValue.."^reset;"
+	else
+		waterValueString=waterValueString..waterValue
+	end
+
+	--set desc!
+	local desc = powerString..seedString..yieldString..growthString..waterUseString..waterValueString
+	object.setConfigParameter('description', desc)
 end
 
 --Returns active seed when tray is removed from world
 function die()
 	if storage.currentseed then
-		storage.currentseed.count = getFertSum("seedUse")
+		--storage.currentseed.count = getFertSum("seedUse")
 		world.spawnItem(storage.currentseed, entity.position())
 	end
 end
@@ -189,8 +268,9 @@ function growPlant(growthmod, dt)
 		for i=1,getFertSum("yield") do
 			tblmerge(output, root.createTreasure(stage().harvestPool, 1))
 		end
+		--sb.logInfo("%s",output)
 
-		local seedavoid = {waterslot, fertslot}   		-- Map for allowing seeds to be output into the input slot
+		local seedavoid = {waterslot, fertslot} -- Map for allowing seeds to be output into the input slot
 		for _,item in ipairs(output) do
 			-- Preserve customized seeds on output
 			if item.name == storage.currentseed.name then
@@ -202,7 +282,7 @@ function growPlant(growthmod, dt)
 		-- Perennial plants should return yeild of seeds for balance purposes.
 		-- By returning yield seeds we handle part of perennials regrowing from the same seed.
 		if stage().resetToStage then
-			storage.currentseed.count = getFertSum("yield")
+			--storage.currentseed.count = getFertSum("yield")--doesnt care how many are consumed, just flatout sets it to the yield. this results in massive seed production. double soup has yield 4, -1 seed, which results in net 2 seeds per interval. removing this 'feature'
 			fu_sendOrStoreItems(0, storage.currentseed, seedAvoid)
 			storage.perennialSeedName = storage.currentseed.name
 		end
@@ -233,7 +313,7 @@ function doWaterIntake(fluidNeed)
 		storage.water = self.liquidInputs[water.name]
 		local amt = math.min(water.count, math.ceil(fluidNeed / storage.water.value))
 		storage.fluid = storage.fluid + (amt * storage.water.value)
-		world.containerConsume(entity.id(), {name = water.name, count = amt})
+		world.containerConsumeAt(entity.id(),waterslot,amt)
 		return true
 	end
 	storage.water = {}
@@ -288,7 +368,7 @@ function genGrowthData()
 
 	-- Set currentStage and possibly growth depending on perennial seed data
 	if storage.perennialSeedName and storage.stage[storage.stages].resetToStage and
-			storage.currentseed.name == storage.perennialSeedName then
+		storage.currentseed.name == storage.perennialSeedName then
 		storage.currentStage = math.min(storage.stages, math.max(1, storage.stage[storage.stages].resetToStage + 1))
 		storage.growth = storage.currentStage == 1 and 0 or	storage.stage[storage.currentStage - 1].val
 	else
@@ -335,11 +415,13 @@ function doSeedIntake()
 
 	--Consume a unit of fertilizer.
 	if fertName then
-		world.containerConsume(entity.id(), {name = fertName, count = 1, data={}})
+		world.containerConsumeAt(entity.id(),fertslot,1)
 	end
 
 	--Consume seed.
-	world.containerConsume(entity.id(), {name = seed.name, count = getFertSum("seedUse"), data={}})
+	local consumed=getFertSum("seedUse")
+	world.containerConsumeAt(entity.id(),seedslot,consumed)
+	storage.currentseed.count=consumed
 
 	return true
 end

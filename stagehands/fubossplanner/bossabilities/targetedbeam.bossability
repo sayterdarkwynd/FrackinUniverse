@@ -1,0 +1,29 @@
+{
+  "name" : "futargetedbeam",
+  "chance" : 0.5,
+  "preconditions" : [
+    ["Ability", "MovingAbility"]
+  ],
+  "postconditions" : [
+    ["Ability", "StaticAbility"],
+    ["!Ability", "MovingAbility"]
+  ],
+  "statemodifiers" : [
+    ["Ability", "LongRange"]
+  ],
+
+  "sequenceActions" : [
+    {
+      "name" : "guardian-targetedbeam",
+      "parameters" : {
+        "handPart" : "righthand",
+        "damagePart" : "righthand",
+        "beamType" : "damage",
+        "bounces" : 0,
+        "aimTime" : 1.5,
+        "duration" : 2.0,
+        "angularSpeed" : 0.5
+      }
+    }
+  ]
+}

@@ -29,7 +29,7 @@
         "middlefullbright" : {
 	  "properties" : {
 		//Same as BaseOffset
-	    "offset" : [0.7, 0.4]
+	    "offset" : [0.875, 0.25]
 	  }
 	}
       }
@@ -37,7 +37,7 @@
     "particleEmitters" : {
       "muzzleFlash" : {
         "particles" : [
-          { "particle" : "fushellcasing", "offset" : [-3.0, 0.0] }
+          { "particle" : "fushellcasing", "offset" : [-3.875, -0.15] }
         ]
       }
     },   
@@ -46,8 +46,8 @@
     }
   },
 
-  "baseOffset" : [0.7, 0.4],
-  "muzzleOffset" : [2.6, 0.0],
+  "baseOffset" : [0.875, 0.25],
+  "muzzleOffset" : [2.875, 0.15],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -147,6 +147,16 @@
 
   "critChance" : 4,
   "critBonus" : 4,
+  "isSniper" : 1,
+  "isAmmoBased" : 1,
+  "magazineSize" : 4,
+  "reloadTime" : 1.4,
+  
+  //recoil
+  "hasRecoil" : 1,
+  "recoilSpeed" : 200,
+  "recoilForce" : 1200, 
+  
   "altAbilityType" : "explosiveburst",
   "altAbility" : {
     "name" : "Radiation Burst",
@@ -156,7 +166,7 @@
     "upgradeParameters" : {
     "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
     "shortdescription" : "^cyan;Expar Sniper Rifle^reset; ^yellow;",
-  "description" : "Superior weaponry offering unsurpassed utility.
+  "description" : "Highly useful weapon for wanderers.
 ^yellow;Counts as Hunting weapon^reset;
 ^green;Causes Rad Burn^reset;", 
   "animationParts" : {"middle" : "nomadgun2.png","middlefullbright" : "nomadgun2fullbright.png"},

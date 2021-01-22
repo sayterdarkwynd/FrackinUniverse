@@ -1806,7 +1806,7 @@
                 "noticePlayersRadius" : 20.0,
                 "merchant" : {
                   "storeRadius" : 2,
-                  "categories" : [ "avianingredients" ],
+                  "categories" :{"default": [ "avianingredients" ]},
                   "priceVarianceRange" : [0.8, 1.2],
                   "numItems" : 6
                 },
@@ -1832,7 +1832,7 @@
                 "noticePlayersRadius" : 20.0,
                 "merchant" : {
                   "storeRadius" : 2,
-                  "categories" : [ "avianweaponblueprints", "randomswords" ],
+                  "categories" : {"default":[ "avianweaponblueprints", "randomswords" ]},
                   "priceVarianceRange" : [0.8, 1.2],
                   "numItems" : 10
                 },
@@ -1858,7 +1858,7 @@
                 "noticePlayersRadius" : 20.0,
                 "merchant" : {
                   "storeRadius" : 2,
-                  "categories" : [ "avianarmour", "avianclothes" ],
+                  "categories" :{ "default":[ "avianarmour", "avianclothes" ]},
                   "priceVarianceRange" : [0.8, 1.2],
                   "numItems" : 20
                 },
@@ -1907,7 +1907,7 @@
               "scriptConfig" : {
                 "noticePlayersRadius" : 20.0,
                 "merchant" : {
-                  "categories" : [ "avianweaponblueprints", "avianarmour", "randomguns", "randomswords" ],
+                  "categories" :{"default":[ "avianweaponblueprints", "avianarmour", "randomguns", "randomswords" ]},
                   "priceVarianceRange" : [0.8, 1]
                 }
               }
@@ -2032,38 +2032,84 @@
       "def" : [ "image", [ "aviancave.png", "aviancaveobjects.png" ] ]
     },
     {
-      "name" : "avianluxury",
-      "rules" : [ ],
-      "def" : [ "image", [ "avianluxury.png", "avianluxuryobjects.png" ] ]
-    },
-
-    {
-      "name" : "aviangrave",
-      "rules" : [ ],
-      "def" : [ "image", [ "aviangrave.png", "aviangraveobjects.png" ] ]
-    },
-    {
-      "name" : "avianhunter",
-      "rules" : [ ],
-      "def" : [ "image", [ "avianhunter.png", "avianhunterobjects.png" ] ]
-    },
-
-    {
       "name" : "aviandock",
       "rules" : [ ],
       "def" : [ "image", [ "aviandock.png", "aviandockobjects.png" ] ]
     },
-
     {
-      "name" : "villagerhouse1",
-      "rules" : [ ],
-      "def" : [ "image", [ "villagerhouse1.png", "villagerhouse1a.png" ] ]
+      "name": "aviangrave",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "aviangrave.json"
+      ]
     },
-
     {
-      "name" : "villagerhouse2",
-      "rules" : [ ],
-      "def" : [ "image", [ "villagerhouse2.png", "villagerhouse2a.png" ] ]
+      "name": "avianluxury",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "avianluxury.json"
+      ]
+    },
+    {
+      "name": "avianhunter",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "avianhunter.json"
+      ]
+    },
+    {
+      "name": "villagerhouse1",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "villagerhouse1.json"
+      ]
+    },
+    {
+      "name": "villagerhouse2",
+      "rules": [
+        [
+          "maxSpawnCount",
+          [
+            1
+          ]
+        ]
+      ],
+      "def": [
+        "tmx",
+         "villagerhouse2.json"
+      ]
     }
   ]
 }

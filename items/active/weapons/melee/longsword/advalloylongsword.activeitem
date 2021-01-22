@@ -6,23 +6,16 @@
   "rarity" : "rare",
   "description" : "Forged from carbon. Bolstered by rage.
 ^cyan;Inflicts bleeding^reset;",
-  "shortdescription" : "Masters Longsword",
+  "shortdescription" : "Master's Longsword",
   "tooltipKind" : "sword2",
   "category" : "longsword",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee", "longsword","effigium", "upgradeableWeapon"],
   "inventoryIcon" : "advalloylongsword.png",
-  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animation" : "combolongsword.animation",
   "animationParts" : {
     "handle" : "",
     "blade" : "advalloylongsword.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ],
-      "fire2" : [ "/sfx/melee/swing_shortsword.ogg" ],
-      "fire3" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
   },
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -32,10 +25,8 @@
   "primaryAbilityType" : "battlebladecombo",
   "primaryAbility" : {
     "fireTime" : 1,
-    "baseDps" : 6.9,
-    "damageConfig" : {
-      "statusEffects" : [ "bleedingshort" ]
-    }
+    "baseDps" : 6.43,
+    "damageConfig" : { "statusEffects" : [ "bleedingshort" ] }
   },
 
   "critChance" : 0.5,

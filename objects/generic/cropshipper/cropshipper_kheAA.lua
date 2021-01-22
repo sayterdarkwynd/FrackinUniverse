@@ -3,7 +3,6 @@ require "/scripts/rect.lua"
 require "/scripts/kheAA/transferUtil.lua"
 
 function init()
-	transferUtil.init()
 	sellFactor = config.getParameter("sellFactor")
 	if not sellFactor then
 		animator.setAnimationState("shipper", "error")
@@ -35,13 +34,13 @@ function update(dt)
 		return
 	end
 
-	if not containerUpdateTimer or containerUpdateTimer > 1 then
-		containerUpdateTimer=0
+	if not transferUtilDeltaTime or (transferUtilDeltaTime > 1) then
+		transferUtilDeltaTime=0
 		transferUtil.loadSelfContainer()
 	else
-		containerUpdateTimer=containerUpdateTimer+dt
+		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
-	
+
 	if checkSurface then
 		surfaceCheckTimer = surfaceCheckTimer - dt
 		if surfaceCheckTimer <= 0 then
@@ -71,7 +70,7 @@ function update(dt)
 			animator.setAnimationState("shipper", "open")
 		end
 	end
-	
+
 	if object.getInputNodeLevel(transferUtil.vars.logicNode) or not object.isInputNodeConnected(transferUtil.vars.logicNode) then
 		if not launchStartTimer or launchStartTimer > 1 then
 			launchStartTimer=0
@@ -95,7 +94,7 @@ function startLaunch()
 	if launching then return end
 	local value,count=valueOfContents()
 	if count == 0 then return end
-	
+
 	launchTimer = 0
 	animator.setAnimationState("shipper", "ship")
 

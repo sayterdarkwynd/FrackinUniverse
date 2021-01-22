@@ -44,7 +44,7 @@ function giantlaserAttack.update(dt, stateData)
 
   mcontroller.controlParameters({
     walkSpeed = config.getParameter("giantlaserAttack.moveSpeed"),
-    runSpeed = config.getParameter("giantlaserAttack.moveSpeed")  
+    runSpeed = config.getParameter("giantlaserAttack.moveSpeed")
   })
 
   if math.abs(toTarget[1]) > stateData.distanceRange[1] + 4 then
@@ -123,6 +123,6 @@ end
 function giantlaserAttack.leavingState(stateData)
   animator.setAnimationState("flameSound", "off")
   animator.setAnimationState("flamethrower", "winddown")
-  
+
   monster.setActiveSkillName("")
 end

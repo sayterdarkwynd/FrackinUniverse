@@ -29,8 +29,8 @@ end
 function consumeLiquid( resource )
 	if not world.isTileProtected(self.position) then
 		local liqTable = world.liquidAt(self.position)
-		if liqTable and liqTable[1] == resource.id and liqTable[2] >= 0.99 then
-			--fishbutt=world.destroyLiquid(self.position)[2]
+		if (liqTable and resource) and (liqTable[1] == resource.id) and (liqTable[2] >= 0.99) then --if liqTable and liqTable[1] == resource.id and liqTable[2] >= 0.99 then
+			--self.liquidRemoveVal = world.destroyLiquid(self.position)[2] or nil
 			self.consumedTable[resource.name] = (self.consumedTable[resource.name] or 0) + world.destroyLiquid(self.position)[2]
 			return true
 		else

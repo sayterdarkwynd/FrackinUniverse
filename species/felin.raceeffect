@@ -1,0 +1,62 @@
+{
+	"stats": [
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.88 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 0.95 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
+		{ "stat": "poisonResistance", "amount": -0.4 },
+		{ "stat": "shadowResistance", "amount": 0.4 }
+	],
+	"diet" : "carnivore",
+	"controlModifiers": {
+		"speedModifier": 1.06
+	},
+	"envEffects": [
+		{
+			"biomes": [ "jungle", "thickjungle", "alien", "protoworld", "arboreal", "arborealdark" ],
+			"stats": [
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
+				{ "stat": "protection", "effectiveMultiplier": 1.05 }
+			]
+		}
+	],
+	"weaponEffects": [{
+			"weapons": [ "fist" ],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
+			]
+		},
+		{
+			"weapons": [ "dagger" ],
+			"stats": [
+				{ "stat": "critChance", "amount": 1 }
+			]
+		},
+		{
+			"combos": [
+				[ "fist", "fist" ],
+				[ "dagger", "dagger" ]
+			],
+			"stats": [
+				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.03 },
+				{ "stat": "critDamage", "amount": 0.01 }
+			]
+		},
+		{
+			"combos": [
+				[ "fist", "fist" ]
+			],
+			"controlModifiers": {
+				"speedModifier": 1.08,
+				"airJumpModifier": 1.05
+			}
+		},
+		{
+			"weapons": [ "pistol", "machinepistol" ],
+			"stats": [
+				{ "stat": "critDamage", "amount": 0.2 },
+				{ "stat": "critChance", "amount": 1 }
+			]
+		}
+	],
+	"tech" : [ "huntersclaw" ]
+}

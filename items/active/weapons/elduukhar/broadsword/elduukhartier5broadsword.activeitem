@@ -6,10 +6,10 @@
   "rarity" : "rare",
   "description" : "An elegant greatsword with a dragon's head as a pommel.",
   "shortdescription" : "Fused Thanatite Broadsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword"],
+  "itemTags" : ["weapon","melee","broadsword","crystal", "upgradeableWeapon"],
   
   "inventoryIcon" : "elduukhartier5broadsword.png",
   
@@ -29,78 +29,12 @@
     "fireTime" : 0.83,
     "baseDps" : 11.5
   },
-
+  
+  "critChance" : 1,
+  "critBonus" : 7,
+  
   "altAbilityType" : "superspinslash",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
   
-  /*"firePosition" : [6, 4.5],
-  "fireTime" : 0.74,
-  "fireAfterWindup" : true,
-  "soundEffect" : { "fireSound" : [ { "file" : "/sfx/melee/swing_broadsword.ogg" } ] },
-
-
-  "primaryStances" : {
-    "directional" : false,
-    "projectileType" : "broadswordswoosh",
-    "projectile" : {
-      "speed" : 0.1,
-      "power" : 8.75
-    },
-    "idle" : {
-      "twoHanded" : false,
-      "armAngle" : -90,
-      "swordAngle" : -90,
-      "handPosition" : [-3.0, -17.0],
-      "duration" : 0.1
-    },
-    "windup" : {
-      "twoHanded" : true,
-      "armAngle" : 90,
-      "swordAngle" : 90,
-      "handPosition" : [-3.0, -17.0],
-      "duration" : 0.05,
-      "statusEffects" : []
-    },
-    "cooldown" : {
-      "twoHanded" : true,
-      "armAngle" : -45,
-      "swordAngle" : -90,
-      "handPosition" : [-3, -27.5],
-      "duration" : 0.4,
-      "statusEffects" : []
-    }
-  },
-  
-  "parryBlockCooldown" : 1.2,
-  "parrySound" : "/sfx/melee/sword_parry.wav",
-  "parryParticle" : "shieldspark",
-
-  "altStances" : {
-    "type" : "parry",
-    "rescaleTiming" : false,
-    "parryPoly" : [ [12, -14], [12, -2], [28, 6], [28, -38], [12, -26] ],
-
-    "idle" : {
-      "twoHanded" : false,
-      "armAngle" : -90,
-      "swordAngle" : -90,
-      "handPosition" : [-3.0, -17.0],
-      "duration" : 0.1
-    },
-    "windup" : {
-      "twoHanded" : true,
-      "armAngle" : 58,
-      "swordAngle" : 208,
-      "handPosition" : [18.0, -17.0],
-      "duration" : 1.0
-    },
-    "cooldown" : {
-      "twoHanded" : false,
-      "armAngle" : -90,
-      "swordAngle" : -90,
-      "handPosition" : [-3.0, -17.0],
-      "duration" : 0.1
-    }
-  }*/
 }

@@ -9,6 +9,6 @@ settings.stringToInteger = {
 function settings.getSetting(setting, default)
   if not settings.config then
     settings.config = root.assetJson("/kit_falldamagesettings.config")
-  end  
+  end
   return settings.config[setting] ~= nil and settings.config[setting] or default
 end

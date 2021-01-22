@@ -1,0 +1,87 @@
+{
+  "itemName" : "telebriumchakram",
+  "price" : 110,
+  "maxStack" : 1,
+  "rarity" : "common",
+  "category" : "chakram",
+  "description" : "^yellow;Bounces off walls^reset;
+^yellow;Counts as 'energy' for set bonuses^reset;",
+  "shortdescription" : "Telebrium Chakram",
+  "tooltipKind" : "chakram",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","chakram","telebrium","upgradeableWeapon"],
+
+  "level" : 2,
+
+  "inventoryIcon" : "telebriumchakram.png",
+  "animation" : "chakramglow.animation",
+  "animationParts" : {
+    "chakram" : "telebriumchakram.png",
+    "chakramfullbright" : "telebriumchakramfullbright.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "throw" : [ "/sfx/melee/swing_dagger.ogg" ]
+    }
+  },
+  "scripts" : ["/items/active/weapons/boomerang/boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "telebriumchakram",
+  "projectileParameters" : {
+    "knockback" : 2,
+    "power" : 4,
+    "damageRepeatTimeout" : 0.2,
+    "returnOnHit" : true,
+    "pickupDistance" : 1.0,
+
+    "hoverMaxDistance" : 20,
+    "hoverTime" : 0.8
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "critChance": 12,
+  "critBonus": 7,
+
+  "builder" : "/items/buildscripts/fubuildchakram.lua"
+}

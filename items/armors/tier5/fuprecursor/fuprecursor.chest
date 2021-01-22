@@ -6,11 +6,11 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "description" : "^orange;Set Bonuses^reset;: 
-^#a94db3;40%^reset; Radiation & Cosmic Resist
-Energy/Precursor: ^green;+5%^reset; Crit, ^cyan;+15%^reset; Dmg
-^cyan;Immune^reset;: Oxygen, Pressure",
+^yellow;^reset; +^green;5^reset;% Crit Chance
+^yellow;^reset; Energy/Precursor: Damage x^green;1.15^reset;
+^yellow;^reset; ^cyan;Immune^reset;: Oxygen, Pressure",
   "shortdescription" : "Precursor Chestplate",
-  "category" : "t5armor",
+  "category" : "chestarmour",
   "tooltipKind" : "armornew2",
   "itemTags" : [ "upgradeableWeapon" ],
   "maleFrames" : {
@@ -26,7 +26,7 @@ Energy/Precursor: ^green;+5%^reset; Crit, ^cyan;+15%^reset; Dmg
   },
 
   "level" : 5,
-  "collectablesOnPickup" : { "fu_armorpowerranged" : "fuprecursorchest" },
+  //"collectablesOnPickup" : { "fu_armorpowerranged" : "fuprecursorchest" },
   "leveledStatusEffects" : [
     {
       "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
@@ -47,6 +47,16 @@ Energy/Precursor: ^green;+5%^reset; Crit, ^cyan;+15%^reset; Dmg
       "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
       "stat" : "maxHealth",
       "amount" : 3
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "radioactiveResistance",
+      "amount" : 0.05
+    },
+	{
+      "levelFunction" : "fuArmorResistMultiplier",
+      "stat" : "cosmicResistance",
+      "amount" : 0.05
     }
   ],
 
@@ -55,15 +65,7 @@ Energy/Precursor: ^green;+5%^reset; Crit, ^cyan;+15%^reset; Dmg
     {
       "stat" : "fu_precursorset_chest",
       "amount" : 1
-    },
-    {
-      "stat" : "radioactiveResistance",
-      "amount" : 0.15
-    },
-    {
-      "stat" : "cosmicResistance",
-      "amount" : 0.15
-    }      
+    }   
   ],
 
   "colorOptions" : [
@@ -103,5 +105,7 @@ Energy/Precursor: ^green;+5%^reset; Crit, ^cyan;+15%^reset; Dmg
     { "ffca8a" : "717171", "e0975c" : "505050", "a85636" : "363636", "6f2919" : "181818" },
     { "ffca8a" : "e6e9ea", "e0975c" : "c6d2d4", "a85636" : "97abac", "6f2919" : "627677" }
 */
-  ]
+],
+  //"upgrades" : 1 ,
+  "builder" : "/items/buildscripts/fubuildarmor.lua" 
 }

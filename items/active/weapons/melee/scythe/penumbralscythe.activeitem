@@ -1,16 +1,16 @@
 {
   "itemName" : "penumbralscythe",
-  "price" : 1000,
+  "price" : 200,
   "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Pulsing with dark promise.
-^cyan;Poisonous^reset;",
+^cyan;Universal Damage^reset;",
   "shortdescription" : "Penumbral Scythe",
   "tooltipKind" : "sword2",
   "category" : "scythe",
   "twoHanded" : true,
-  "itemTags" : [ "weapon", "melee","scythe", "upgradeableWeapon"],
+  "itemTags" : [ "weapon", "melee","scythe", "penumbrite","upgradeableWeapon","silver"],
 
   "inventoryIcon" : "penumbralscythe.png",
 
@@ -24,15 +24,14 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+  "elementalType" : "silverweapon",
 
   "primaryAbilityType" : "largeedgedcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 9,
+    "baseDps" : 8,
     "damageConfig" : {
-      "damageSourceKind" : "poison",
-      "statusEffects" : ["weakpoison"]
+      "damageSourceKind" : "silverweapon"
     },
     "stances" : {
       "idle" : {

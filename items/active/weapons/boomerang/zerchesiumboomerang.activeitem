@@ -1,0 +1,79 @@
+{
+  "itemName" : "zerchesiumboomerang",
+  "level" : 3,
+  "price" : 700,
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "category" : "boomerang",
+  "description" : "Cold as ice, swift and deadly.",
+  "shortdescription" : "Zerchesium Boomerang",
+  "tooltipKind" : "boomerang",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","boomerang","zerchesium","upgradeableWeapon"],
+
+  "inventoryIcon" : "zerchesiumboomerang.png",
+  "animation" : "boomerang.animation",
+  "animationParts" : {
+    "boomerang" : "zerchesiumboomerang.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["boomerang.lua"],
+  "fireOffset" : [1.25, 0.5],
+
+  "cooldownTime" : 0.6,
+
+  "projectileType" : "zerchesiumboomerang",
+  "projectileParameters" : {
+    "power" : 5.45,
+    "knockback" : 20,
+
+    "ignoreTerrain" : false,
+    "controlForce" : 60,
+    "pickupDistance" : 1.0,
+    "snapDistance" : 1.5
+  },
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "windup" : {
+      "duration" : 0.1,
+      "transition" : "throw",
+      "transitionFunction" : "fire",
+      "armRotation" : 70,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : false
+    },
+    "throw" : {
+      "armRotation" : 0,
+      "animationState" : {
+        "weapon" : "hidden"
+      },
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "catch" : {
+      "duration" : 0.2,
+      "transition" : "idle",
+      "armRotation" : 60,
+      "animationState" : {
+        "weapon" : "visible"
+      },
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+  "critChance" : 3,
+  "critBonus" : 5,
+
+  "builder" : "/items/buildscripts/buildboomerang.lua"
+}

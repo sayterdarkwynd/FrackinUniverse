@@ -1,0 +1,34 @@
+{
+  "objectName" : "thelusianshiplocker",
+  "colonyTags" : ["thelusian","storage"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+
+  "category" : "storage",
+  "description" : "A locker. Store some stuff, why don't you?",
+  "shortdescription" : "Ship Locker",
+  "race" : "thelusian",
+  "lightColor" : [61, 88, 102],
+
+
+  "inventoryIcon" : "shiplockericon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "thelusianshiplocker.png:<color>.<frame>", "fullbright" : true }, { "image" : "thelusianshiplockerlit.png:<color>.<frame>" } ],
+      "imagePosition" : [-16, -8],
+      "frames" : 8,
+      "animationCycle" : 1.5,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/chest_small_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/chest_small_close.ogg" ],
+  "slotCount" : 64,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 11,
+  "autoCloseCooldown" : 3600
+}

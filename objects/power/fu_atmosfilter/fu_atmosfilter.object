@@ -1,15 +1,15 @@
 {
   "objectName" : "fu_atmosfilter",
-  "rarity" : "legendary",
+  "rarity" : "rare",
   "colonyTags" : [ "science" ],
-  "description" : "Filters most environment effects. Can broadcast augment effects to radius. Requires 60W of power.",
+  "description" : "Filters most environment effects. Can broadcast augment effects to radius. ^cyan;Requires ^orange;100W^cyan; of power^reset;.",
   "shortdescription" : "^cyan;Atmospheric Filter^white;",
   "race" : "generic",
   "category" : "wire",
   "printable" : false,
   "health" : 30,
   "rooting" : true,
-  "learnBlueprintsOnPickup" : [ "isn_atmosregulatornew", "isn_atmosregulator" ],
+ // "learnBlueprintsOnPickup" : [ "isn_atmosregulatornew", "isn_atmosregulator" ],
   "inventoryIcon" : "fu_atmosfiltericon.png",
   "orientations" : [
     {
@@ -41,7 +41,7 @@
     }
   ],
 
-  "scripts" : [ "/scripts/power.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua" ],
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fu_atmosfilter/fu_atmosfilter.lua" ],
   "scriptDelta" : 60,
   
   "objectType" : "container",
@@ -67,5 +67,5 @@
 
   "inputNodes" : [ [1, 2] ],
   "powertype" : "input",
-  "isn_requiredPower" : 60
+  "isn_requiredPower" : 100
 }

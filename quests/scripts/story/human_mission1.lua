@@ -53,7 +53,7 @@ function questComplete()
   --   player.upgradeShip(config.getParameter("shipUpgrade"))
   --   player.playCinematic(config.getParameter("shipUpgradeCinema"))
   -- end
-  
+
   setPortraits()
   questutil.questCompleteActions()
 end
@@ -93,7 +93,7 @@ function turnIn()
   quest.setCompassDirection(nil)
   quest.setObjectiveList({{config.getParameter("descriptions.turnIn"), false}})
   quest.setCanTurnIn(true)
-  
+
   local findMechanic = util.uniqueEntityTracker(self.mechanicUid, self.compassUpdate)
   while storage.stage == 2 do
     questutil.pointCompassAt(findMechanic())

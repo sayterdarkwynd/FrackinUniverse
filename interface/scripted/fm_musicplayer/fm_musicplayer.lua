@@ -9,43 +9,43 @@ function init()
 	musicList = root.assetJson("/interface/scripted/fm_musicplayer/musiclist.config")
 	widget.registerMemberCallback("scrollArea.list", "button", playButton)
 	widget.setButtonEnabled("modeButton", false)
-	
+
 	if world.entityType(pane.sourceEntity()) ~= "object" then
 		widget.setButtonEnabled("settingsButton", false)
 	end
-	
+
 	for _, file in ipairs(musicList["##files##"]) do
 		local temp = root.assetJson(file)
 		if temp then
 			musicList = zbutil.MergeTable(musicList, temp)
 		end
 	end
-	
+
 	populateMusicList()
 end
 
 function populateMusicList()
 	widget.clearListItems("scrollArea.list")
-	local listItem = ""
+	local listItem
 	local searching = widget.getText("search")
-	
+
 	if viewing == "##albums##" then
 		listItem = "scrollArea.list."..widget.addListItem("scrollArea.list")
 		widget.setText(listItem..".name", "All")
 		widget.setButtonEnabled(listItem..".button", false)
-		
+
 		local img = "/interface/scripted/fm_musicplayer/controls.png:album"
 		widget.setButtonImages(listItem..".button", { base = img, hover = img, pressed = img, disabled = img })
 		widget.setButtonEnabled(listItem..".button", false)
 		widget.setImage("titleIcon", "/interface/scripted/fm_musicplayer/controls.png:album")
-		
+
 		for album, _ in pairs(musicList) do
 			if album ~= "##album_icons##" and album ~= "##files##" then
 				if not searching or string.find(string.lower(album), string.lower(searching)) then
 					listItem = "scrollArea.list."..widget.addListItem("scrollArea.list")
 					widget.setText(listItem..".name", album)
 					widget.setData(listItem..".name", album)
-					
+
 					local img = musicList["##album_icons##"][album] or "/interface/scripted/fm_musicplayer/icon_unsorted.png"
 					widget.setButtonImages(listItem..".button", { base = img, hover = img, pressed = img, disabled = img })
 					widget.setButtonEnabled(listItem..".button", false)
@@ -58,7 +58,7 @@ function populateMusicList()
 		else
 			widget.setImage("titleIcon", "/interface/scripted/fm_musicplayer/controls.png:album")
 		end
-		
+
 		-- Slightly less efficient, but no need to copy shit
 		for album, _ in pairs(musicList) do
 			if album ~= "##album_icons##" and album ~= "##files##" then
@@ -80,18 +80,18 @@ function modeButton()
 	if viewing == "##albums##" then
 		viewing = widget.getData("scrollArea.list."..widget.getListSelected("scrollArea.list")..".name")
 		widget.setText("titleText", viewing or "All")
-		
+
 		local img = "/interface/scripted/fm_musicplayer/controls.png:album"
 		widget.setButtonImages("modeButton", { base = img, hover = img.."Hover", pressed = img })
 	else
 		local img = "/interface/scripted/fm_musicplayer/controls.png:play"
 		widget.setButtonImages("modeButton", { base = img, hover = img.."Hover", pressed = img })
 		widget.setButtonEnabled("modeButton", false)
-		
+
 		widget.setText("titleText", "Select an album")
 		viewing = "##albums##"
 	end
-	
+
 	widget.setText("search", "")
 	populateMusicList()
 end
@@ -127,7 +127,7 @@ end
 
 function playButton()
 	playing = widget.getData("scrollArea.list."..widget.getListSelected("scrollArea.list")..".name")
-	
+
 	if world.entityType(pane.sourceEntity()) == "object" then
 		world.sendEntityMessage(pane.sourceEntity(), "changeMusic", playing.directory, playing.name)
 	else

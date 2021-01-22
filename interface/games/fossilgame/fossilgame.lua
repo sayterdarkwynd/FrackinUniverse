@@ -73,7 +73,15 @@ function initGame()
       SquareTool:new(self.level, 2),
       TLeft:new(self.level, 2),
       TRight:new(self.level , 2),
-      Dot:new(self.level, 2)
+      Dot:new(self.level, 2),
+      CrossTool:new(self.level, 2)
+    }
+  elseif config.getParameter("toolType") == "fossilhammer" then
+    self.tools = {
+      BrushTool:new(self.level),
+      Dot2:new(self.level, 4),
+      SquareTool:new(self.level, 4),
+      ExTool:new(self.level, 4)
     }
   elseif config.getParameter("toolType") == "master" then
     self.tools = {
@@ -82,7 +90,7 @@ function initGame()
       TLeft:new(self.level, 0),
       TRight:new(self.level, 0),
       Dot:new(self.level, 0)
-    }    
+    }
   elseif config.getParameter("toolType") == "student" then
     self.tools = {
       BrushTool:new(self.level),
@@ -106,7 +114,7 @@ function initGame()
 end
 
 function initGui(tools)
-  local buttonOrigin = {218, 89}
+  local buttonOrigin = {218, 106}
   local buttonPos = {0, 0}
   local maxWidth = 90
 
@@ -246,7 +254,11 @@ function winState()
   end
 
   world.sendEntityMessage(pane.sourceEntity(), "addDrop", self.fossilItem)
-
+  -- FU research drop
+  -- I chose to use a useable item rather than spawning a # of research simply to give the player
+  -- the satisfaction of using the item and getting the particle effects and sound
+  world.sendEntityMessage(pane.sourceEntity(), "addDrop", "smalldata")
+  --
   clearBoard()
 
   util.wait(0.5)
@@ -389,17 +401,17 @@ end
 function drawGui()
   self.frame:draw({0, 0})
 
-  gameCanvas:drawText("EXCAVATION", {position = {230, 183}, width = 88}, 12)
-  gameCanvas:drawText("PROGRESS", {position = {235, 171}, width = 88}, 12)
+  gameCanvas:drawText("EXCAVATION", {position = {230, 197}, width = 88}, 12)
+  gameCanvas:drawText("PROGRESS", {position = {235, 185}, width = 88}, 12)
   local progressColor = {255,255,255}
   if self.level.fossilDamaged then
     progressColor = {255, 0, 0}
   end
-  gameCanvas:drawText(self.level.progress .. "/" .. #self.level.fossilTiles, {position = {255, 153}}, 12, progressColor)
-  self.fossilCounter:draw({225, 136})
+  gameCanvas:drawText(self.level.progress .. "/" .. #self.level.fossilTiles, {position = {255, 168}}, 12, progressColor)
+  self.fossilCounter:draw({225, 150})
 
   if (self.treasureComplete) then
-    self.treasureIndicator:draw({285, 140})
+    self.treasureIndicator:draw({285, 160})
   end
 
   self.toolButtonSet:draw()
