@@ -77,11 +77,6 @@ function init()
 		table.insert(self.resistList,stat)
 	end
 	status.setPersistentEffects("madnessAFKPenalty",{})
-
-    storage.currentTime = 0
-    storage.oldTime = 0	
-    storage.timedResearchBonus = 0
-
 end
 
 function indexOf(t,v1)
@@ -490,29 +485,8 @@ function update(dt)
         
         --time based research increases
         -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK resets it.
-	    if afkLvl <= 3 then
-		    storage.currentTime = storage.currentTime + 1 -- increment current time
-			if storage.oldTime > storage.currentTime then storage.oldTime = storage.currentTime end
-			
-			if storage.currentTime < 1800 then
-				storage.timedResearchBonus = 0
-		    end						
-			if storage.currentTime >= 1800 then
-				storage.timedResearchBonus = 1
-		    end
-			if storage.currentTime >= 3600 then
-				storage.timedResearchBonus = 2
-		    end
-			if storage.currentTime >= 5400 then
-				storage.timedResearchBonus = 3
-		    end
-			if storage.currentTime >= 7200 then
-				storage.timedResearchBonus = 4
-		    end
-		else
-			storage.timedResearchBonus = 0   	
-        end
-
+        checkPassiveTimerBonus()
+	    
 		self.researchBonus = storage.timedResearchBonus + self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus
@@ -576,9 +550,47 @@ function update(dt)
 		if (status.statPositive("mentalProtection")) then
 			player.consumeCurrency("fumadnessresource", self.protectionBonus)
 		end
-		self.bonusTimer = 40.0 / (1.0+self.freudBonus)
+		self.bonusTimer = 40.0 / (1.0 + self.freudBonus)
 		--displayBar()
 	end
+end
+
+function checkPassiveTimerBonus()
+	local afkLvl=afkLevel()
+	if afkLvl <= 3 then
+		if not storage.currentTime then storage.currentTime = 0 end
+	    storage.currentTime = storage.currentTime + 1 -- increment current time
+		passiveRadioMessage()
+		applyPassiveBonus()
+	else
+		storage.timedResearchBonus = 0  -- reset bonus if AFK
+    end	
+end
+
+function applyPassiveBonus()
+    if storage.currentTime > 1800 then
+    	storage.timedResearchBonus = 1
+    elseif storage.currentTime > 3600 then
+    	storage.timedResearchBonus = 2
+    elseif storage.currentTime > 5400 then
+    	storage.timedResearchBonus = 3
+    elseif storage.currentTime > 7200 then
+        storage.timedResearchBonus = 4	
+    else
+    	storage.timedResearchBonus = 0 -- reset bonus if timer is less than 30 minutes
+    end	
+end
+
+function passiveRadioMessage()
+	if storage.currentTime == 1800 then
+    	player.radioMessage("researchBonus1")
+    elseif storage.currentTime == 3600 then
+    	player.radioMessage("researchBonus2")
+    elseif storage.currentTime == 5400 then
+    	player.radioMessage("researchBonus3")
+    elseif storage.currentTime == 7200 then
+    	player.radioMessage("researchBonus4")
+	end	
 end
 
 --display madness bar
