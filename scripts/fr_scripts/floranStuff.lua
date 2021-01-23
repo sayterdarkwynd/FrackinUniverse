@@ -36,7 +36,7 @@ function FRHelper:call(args, main, dt, ...)
 	if hungerEnabled then
 		hungerPerc = status.resourcePercentage("food")
 	else
-		hungerPerc = 3.0 / 7
+		hungerPerc = 3.0 / 12
 	end
 
 	local daytime = world.timeOfDay() < 0.5
