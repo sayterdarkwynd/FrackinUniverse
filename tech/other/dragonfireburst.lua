@@ -26,20 +26,7 @@ function aimVector()
 end
 
 function update(args)
-	if mcontroller.facingDirection() == 1 then -- what direction are we facing?
-		 if args.moves["down"] then -- are we crouching?
-			 self.mouthPosition = vec2.add(mcontroller.position(), {1,-0.7})
-		 else
-			 self.mouthPosition = vec2.add(mcontroller.position(), {1,0.15})
-		 end
-
-	else
-		 if args.moves["down"] then -- are we crouching?
-			 self.mouthPosition = vec2.add(mcontroller.position(), {-1,-0.7})
-		 else
-			 self.mouthPosition = vec2.add(mcontroller.position(), {-1,0.15})
-		 end
-	end
+	self.mouthPosition = vec2.add(mcontroller.position(), {mcontroller.facingDirection(),(args.moves["down"] and -0.7) or 0.15})
 
 	self.firetimer = math.max(0, (self.firetimer or 0) - args.dt)
 	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) then

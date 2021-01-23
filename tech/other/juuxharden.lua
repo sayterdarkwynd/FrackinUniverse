@@ -8,6 +8,7 @@ function init()
   self.available = true
   self.firetimer = 0
 end
+
 function activeFlight(direction)
     animator.playSound("activate",3)
     animator.playSound("recharge")
@@ -23,11 +24,7 @@ function aimVector(x,y,run)
 end
 
 function update(args)
-	if args.moves["down"] then -- are we crouching?
-		self.mouthPosition = vec2.add(mcontroller.position(), {mcontroller.facingDirection(),-0.7})
-	else
-		self.mouthPosition = vec2.add(mcontroller.position(), {mcontroller.facingDirection(),0.15})
-	end
+	self.mouthPosition = vec2.add(mcontroller.position(), {mcontroller.facingDirection(),(args.moves["down"] and -0.7) or 0.15})
 
 	self.firetimer = math.max(0, self.firetimer - args.dt)
 
