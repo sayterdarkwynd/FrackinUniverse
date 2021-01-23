@@ -555,6 +555,8 @@ function update(dt)
 	end
 end
 
+----------------------------------------------------------------------------------
+-- passive research gain based on Play Time
 function checkPassiveTimerBonus()
 	local afkLvl=afkLevel()
 	if afkLvl <= 3 then
@@ -582,6 +584,7 @@ function applyPassiveBonus()
 end
 
 function passiveRadioMessage()
+	--sb.logInfo(storage.currentTime)
 	if storage.currentTime == 1800 then
     	player.radioMessage("researchBonus1")
     elseif storage.currentTime == 3600 then
@@ -592,6 +595,8 @@ function passiveRadioMessage()
     	player.radioMessage("researchBonus4")
 	end	
 end
+----------------------------------------------
+
 
 --display madness bar
 function displayBar()
@@ -682,4 +687,5 @@ function uninit()
 	status.setPersistentEffects("madnessEffectsMain",{})
 	status.setPersistentEffects("madnessAFKPenalty",{})
 	world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
+	storage.timedResearchBonus = 0
 end
