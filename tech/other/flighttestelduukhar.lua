@@ -1,10 +1,9 @@
 require "/scripts/vec2.lua"
+local foodThreshold=15
 
 function init()
-	--self.energyCostPerSecond = config.getParameter("energyCostPerSecond")--not used
 	self.active=false
 	self.available = true
-	--self.species = world.entitySpecies(entity.id())
 	self.timer = 0
 	self.boostSpeed = 12
 	self.active=false
@@ -23,7 +22,7 @@ function uninit()
 	animator.setParticleEmitterActive("feathers", false)
 end
 
-function checkFood()
+function handleFuel()
 	-- make sure flight stamina never exceeds limits
 	if not self.fuelTimer then self.fuelTimer = 0 end
 	if self.fuelTimer == 300 then
@@ -36,12 +35,6 @@ function checkFood()
 		self.soundTimer = 60
 	end
 	self.fuelTimer=math.min(math.max(self.fuelTimer,0),300)
-	--[[if self.fuelTimer < 0 then
-		self.fuelTimer = 0
-	end
-	if self.fuelTimer > 300 then
-		self.fuelTimer = 300
-	end]]
 	-- end flight stamina check
 end
 
@@ -76,7 +69,7 @@ function update(args)
 	end
 
 	if self.active and status.overConsumeResource("energy", 0.0001) and not mcontroller.zeroG() and not mcontroller.liquidMovement() then -- do we have energy and the ability is active?
-		checkFood()
+		handleFuel()
 		status.addEphemeralEffects{{effect = "elduukharflight", duration = 2}}
 		status.addEphemeralEffects{{effect = "lowgravflighttech", duration = 2}}
 		self.upVal = args.moves["up"]	--set core movement variables
@@ -112,12 +105,10 @@ function update(args)
 			status.overConsumeResource("energy", self.fuelCostGreater)
 			if self.runVal and not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 				status.setPersistentEffects("glide", {
-					--{stat = "gliding", amount = 1},
 					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
 				})
 			else
 				status.setPersistentEffects("glide", {
-					--{stat = "gliding", amount = 0},
 					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
 				})
 			end
@@ -137,7 +128,7 @@ function update(args)
 		end
 		checkForceDeactivate(args.dt) -- force deactivation
 	else
-		checkFood()
+		handleFuel()
 		self.fuelTimer = self.fuelTimer + 1 -- when not active, the stamina to fly regenerates.
 	end
 end

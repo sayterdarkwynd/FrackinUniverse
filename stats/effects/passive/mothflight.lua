@@ -25,13 +25,13 @@ function update(dt)
 
 	if (not daytime and (lightLevel <= 60)) or underground then --if its dark or underground, a saturnian can regen their food if its dark enough
 		if status.isResource("food") then
-			local adjustedHunger = (0.0075*dt)
+			local adjustedHunger = (0.00075*dt)
 			status.modifyResourcePercentage("food",adjustedHunger)
 		end
 	end
 	if not daytime and lightLevel >= 60 then --if its night and they are in bright light, a saturnian can regen their food
 		if status.isResource("food") then
-			local adjustedHunger = (lightLevel * 0.007*dt)
+			local adjustedHunger = (lightLevel * 0.0007*dt)
 			status.modifyResourcePercentage("food",adjustedHunger)
 		end
 	end
