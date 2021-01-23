@@ -2,13 +2,6 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
 
-function init()
-  self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
-  self.active=false
-  self.available = true
-  self.firetimer = 0
-end
-
 function activeFlight(direction)
     animator.playSound("activate",3)
     animator.playSound("recharge")
@@ -26,7 +19,7 @@ end
 function update(args)
 	self.mouthPosition = vec2.add(mcontroller.position(), {mcontroller.facingDirection(),(args.moves["down"] and -0.7) or 0.15})
 
-	self.firetimer = math.max(0, self.firetimer - args.dt)
+	self.firetimer = math.max(0, (self.firetimer or 0) - args.dt)
 
 	local upDown=((args.moves["down"] and -1) or 0) + ((args.moves["up"] and 1) or 0)
 	local leftRight=((args.moves["left"] and -1) or 0) + ((args.moves["right"] and 1) or 0)
