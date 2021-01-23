@@ -13,14 +13,12 @@ function getLight()
 	local position = mcontroller.position()
 	position[1] = math.floor(position[1])
 	position[2] = math.floor(position[2])
-	local lightLevel = math.min(world.lightLevel(position),1.0)
-	lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
+	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
 end
 
 function update(dt)
-	daytime = daytimeCheck()
-	underground = undergroundCheck()
+	local daytime = daytimeCheck()
+	local underground = undergroundCheck()
 	local lightLevel = getLight()
 
 	if (not daytime and (lightLevel <= 60)) or underground then --if its dark or underground, a saturnian can regen their food if its dark enough
