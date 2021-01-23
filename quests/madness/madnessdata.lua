@@ -490,38 +490,32 @@ function update(dt)
         
         --time based research increases
         -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK resets it.
-        local afkLvl=afkLevel()
 	    if afkLvl <= 3 then
-	    	-- check current time
-		    storage.currentTime = (storage.currentTime + 1) or 0
-			if storage.oldTime > storage.currentTime then 
-				storage.oldTime = storage.currentTime 
-				sb.logInfo("Began incrementing Research bonus.")
-			end
+		    storage.currentTime = storage.currentTime + 1 -- increment current time
+			if storage.oldTime > storage.currentTime then storage.oldTime = storage.currentTime end
+			
+			if storage.currentTime < 1800 then
+				storage.timedResearchBonus = 0
+		    end						
 			if storage.currentTime >= 1800 then
 				storage.timedResearchBonus = 1
-			    sb.logInfo("connected for 30 minutes. Have a Research bonus of +1.")
 		    end
 			if storage.currentTime >= 3600 then
 				storage.timedResearchBonus = 2
-			    sb.logInfo("connected for 60 minutes. Have a Research bonus of +2.")
 		    end
 			if storage.currentTime >= 5400 then
 				storage.timedResearchBonus = 3
-			    sb.logInfo("connected for 90 minutes. Have a Research bonus of +3.")
 		    end
 			if storage.currentTime >= 7200 then
 				storage.timedResearchBonus = 4
-			    sb.logInfo("connected for 120 minutes. Have a Research bonus of +4.")
 		    end
 		else
-			storage.timedResearchBonus = 0  
-			sb.logInfo("Idle. Pausing Research bonus.")    	
+			storage.timedResearchBonus = 0   	
         end
 
 		self.researchBonus = storage.timedResearchBonus + self.threatBonus + self.madnessResearchBonus
 
-		self.bonus = storage.timedResearchBonus + self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus
+		self.bonus = self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
 			if afkLvl <= 3 then
 				player.addCurrency("fuscienceresource",1 + self.bonus)
