@@ -570,17 +570,17 @@ function checkPassiveTimerBonus()
 end
 
 function applyPassiveBonus()
-    if storage.currentTime > 1800 then
-    	storage.timedResearchBonus = 1
-    elseif storage.currentTime > 3600 then
-    	storage.timedResearchBonus = 2
-    elseif storage.currentTime > 5400 then
-    	storage.timedResearchBonus = 3
-    elseif storage.currentTime > 7200 then
-        storage.timedResearchBonus = 4	
-    else
-    	storage.timedResearchBonus = 0 -- reset bonus if timer is less than 30 minutes
-    end	
+	if storage.currentTime > 7200 then
+		storage.timedResearchBonus = 4	
+	elseif storage.currentTime > 5400 then
+		storage.timedResearchBonus = 3
+	elseif storage.currentTime > 3600 then
+		storage.timedResearchBonus = 2
+	elseif storage.currentTime > 1800 then
+		storage.timedResearchBonus = 1
+	else
+		storage.timedResearchBonus = 0 -- reset bonus if timer is less than 30 minutes
+	end
 end
 
 function passiveRadioMessage()
