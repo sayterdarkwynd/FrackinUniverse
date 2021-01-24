@@ -42,16 +42,16 @@ function update(dt)
 
 	if (self.species == "nightar") then
 		if status.resource("health") == status.stat("maxHealth") then
-		--used for checking sword setups
+			--used for checking sword setups
 		    local primaryItem = world.entityHandItem(entity.id(), "primary")
 		    local altItem = world.entityHandItem(entity.id(), "alt")
 
 			if (primaryItem and root.itemHasTag(primaryItem, "broadsword")) or (altItem and root.itemHasTag(altItem,  "broadsword")) or
-			   (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem,  "dagger")) or
-			   (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem,  "shortsword")) or
-			   (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem,  "longsword")) or
-			   (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem,  "rapier")) or
-			   (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem,  "katana"))then
+		   (primaryItem and root.itemHasTag(primaryItem, "dagger")) or (altItem and root.itemHasTag(altItem,  "dagger")) or
+		   (primaryItem and root.itemHasTag(primaryItem, "shortsword")) or (altItem and root.itemHasTag(altItem,  "shortsword")) or
+		   (primaryItem and root.itemHasTag(primaryItem, "longsword")) or (altItem and root.itemHasTag(altItem,  "longsword")) or
+		   (primaryItem and root.itemHasTag(primaryItem, "rapier")) or (altItem and root.itemHasTag(altItem,  "rapier")) or
+		   (primaryItem and root.itemHasTag(primaryItem, "katana")) or (altItem and root.itemHasTag(altItem,  "katana")) then
 				effect.setStatModifierGroup(nightarDarkHunterEffects2, {
 					{stat = "powerMultiplier", baseMultiplier = 1.1}
 				})
@@ -62,23 +62,23 @@ function update(dt)
 	if (lightLevel <= 50) then
 	    local mult = 1-math.min(math.max((lightLevel-25)/20,0),1)
 	    effect.setStatModifierGroup(nightarDarkHunterEffects, {
-		{stat = "powerMultiplier", effectiveMultiplier = 1+mult*0.25},
-		{stat = "physicalResistance", amount = mult*0.25}
+			{stat = "powerMultiplier", effectiveMultiplier = 1+mult*0.25},
+			{stat = "physicalResistance", amount = mult*0.25}
 	    })
 	elseif daytime and not underground and lightLevel > 50 then
 	    local mult = math.min(math.max((lightLevel-55)/30,0),1)
 	    local healthPenalty = 1-mult*0.25
 	    if (self.species == "nightar") then
 		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
-			{stat = "physicalResistance", amount = mult*-0.33},
-			{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.5},
-			{stat = "maxHealth", effectiveMultiplier = util.round(healthPenalty,1)},
-			{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
+				{stat = "physicalResistance", amount = mult*-0.33},
+				{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.5},
+				{stat = "maxHealth", effectiveMultiplier = util.round(healthPenalty,1)},
+				{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
 		    })
 	    else  --tenebrhae have different bonuses than nightar
 		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
-			{stat = "physicalResistance", amount = mult*-0.25},
-			{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.4}
+				{stat = "physicalResistance", amount = mult*-0.25},
+				{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.4}
 		    })
 	    end
 
