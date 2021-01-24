@@ -77,6 +77,8 @@ function init()
 		table.insert(self.resistList,stat)
 	end
 	status.setPersistentEffects("madnessAFKPenalty",{})
+
+	checkInitGap()
 end
 
 function indexOf(t,v1)
@@ -558,25 +560,35 @@ end
 ----------------------------------------------------------------------------------
 -- passive research gain based on Play Time
 function checkPassiveTimerBonus()
-	local afkLvl=afkLevel()
+	-- set timer
+	storage.activeTime=(storage.activeTime or 0)+1
+	--sb.logInfo("storage.activeTime c %s %s",storage.activeTime,storage.lastTime)
+	local afkLvl=afkLevel() -- if we arent AFK, apply the bonus
 	if afkLvl <= 3 then
-		if not storage.currentTime then storage.currentTime = 0 end
-	    storage.currentTime = storage.currentTime + 1 -- increment current time
-		passiveRadioMessage()
-		applyPassiveBonus()
+	    passiveRadioMessage()
+	    applyPassiveBonus()
 	else
 		storage.timedResearchBonus = 0  -- reset bonus if AFK
     end	
 end
 
-function applyPassiveBonus()
-	if storage.currentTime > 7200 then
+function checkInitGap()
+	--sb.logInfo("storage.activeTime a %s %s",storage.activeTime,storage.lastTime)
+	local currentTime=os.time()
+	storage.lastTime=storage.lastTime or currentTime
+	local gap=math.abs(currentTime-storage.lastTime)
+	--sb.logInfo("storage.activeTime b %s %s",storage.activeTime,storage.lastTime)
+	storage.activeTime=((not (gap > 60.0)) and storage.activeTime) or 0
+end
+
+function applyPassiveBonus()	
+	if storage.activeTime > 7200 then
 		storage.timedResearchBonus = 4	
-	elseif storage.currentTime > 5400 then
+	elseif storage.activeTime > 5400 then
 		storage.timedResearchBonus = 3
-	elseif storage.currentTime > 3600 then
+	elseif storage.activeTime > 3600 then
 		storage.timedResearchBonus = 2
-	elseif storage.currentTime > 1800 then
+	elseif storage.activeTime > 1800 then
 		storage.timedResearchBonus = 1
 	else
 		storage.timedResearchBonus = 0 -- reset bonus if timer is less than 30 minutes
@@ -584,16 +596,10 @@ function applyPassiveBonus()
 end
 
 function passiveRadioMessage()
-	--sb.logInfo(storage.currentTime)
-	if storage.currentTime == 1800 then
-    	player.radioMessage("researchBonus1")
-    elseif storage.currentTime == 3600 then
-    	player.radioMessage("researchBonus2")
-    elseif storage.currentTime == 5400 then
-    	player.radioMessage("researchBonus3")
-    elseif storage.currentTime == 7200 then
-    	player.radioMessage("researchBonus4")
-	end	
+	if storage.activeTime == 1800 then player.radioMessage("researchBonus1") end
+    if storage.activeTime == 3600 then player.radioMessage("researchBonus2") end
+    if storage.activeTime == 5400 then player.radioMessage("researchBonus3") end
+    if storage.activeTime == 7200 then player.radioMessage("researchBonus4") end	
 end
 ----------------------------------------------
 
@@ -688,4 +694,5 @@ function uninit()
 	status.setPersistentEffects("madnessAFKPenalty",{})
 	world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
 	storage.timedResearchBonus = 0
+	storage.lastTime=os.time()
 end
