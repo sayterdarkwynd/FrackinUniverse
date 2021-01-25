@@ -18,16 +18,16 @@ function uninit()
 end
 
 function handleFuel(dt)
-	self.soundTimer=math.max(0,((self.soundTimer or 1)-math.abs(dt)))
 	self.fuelTimer=math.min(math.max((self.fuelTimer or 0)+dt,0),maxFreeFlightTime)
 	if self.fuelTimer >= maxFreeFlightTime then
-		if self.soundTimer<=0.0 then
+		if (self.soundTimer or 0)<=0.0 then
 			animator.playSound("recharge")
-			self.soundTimer = 1
 		end
+		self.soundTimer = 10
 		status.addEphemeralEffect("flightRechargedIndicator")
 		animator.setParticleEmitterActive("feathers", true)
 	else
+		self.soundTimer=math.max(0,((self.soundTimer or 0)-math.abs(dt)))
 		animator.setParticleEmitterActive("feathers", false)
 	end
 end
