@@ -1,10 +1,9 @@
 require "/scripts/vec2.lua"
+local foodThreshold=15
 
 function init()
-	--self.energyCostPerSecond = config.getParameter("energyCostPerSecond")--not used
 	self.active=false
 	self.available = true
-	--self.species = world.entitySpecies(entity.id())
 	self.timer = 0
 	self.boostSpeed = 8
 	self.active=false
@@ -22,11 +21,7 @@ function uninit()
 end
 
 function checkFood()
-	if status.isResource("food") then
-		return status.resource("food")
-	else
-		return 15
-	end
+	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
 end
 
 function boost(direction)
@@ -52,6 +47,7 @@ function update(args)
 	end
 
 	if self.active and status.overConsumeResource("energy", 0.0001) and not mcontroller.zeroG() and not mcontroller.liquidMovement() then -- do we have energy and the ability is active?
+		status.removeEphemeralEffect("wellfed")
 		status.addEphemeralEffects{{effect = "saturnflight", duration = 2}}
 		status.addEphemeralEffects{{effect = "lowgravflighttech", duration = 2}}
 
@@ -78,7 +74,7 @@ function update(args)
 		mcontroller.controlApproachVelocity(self.boostVelocity, 30)
 		-- end boost
 
-		if checkFood() > 15 then
+		if checkFood() > foodThreshold then
 			if not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 				status.setPersistentEffects("glide", {
 					{stat = "gliding", amount = 1},
@@ -86,7 +82,6 @@ function update(args)
 				})
 			else
 				status.setPersistentEffects("glide", {
-					--{stat = "gliding", amount = 0},
 					{stat = "foodDelta", amount = -5},
 					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
 				})

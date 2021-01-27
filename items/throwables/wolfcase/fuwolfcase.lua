@@ -10,6 +10,7 @@ function init()
   self.active = false
   storage.fireTimer = storage.fireTimer or 0
   self.random = math.random(1,20)
+  self.notOnPlanetMessage = config.getParameter("notOnPlanetMessage", "")
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -53,7 +54,11 @@ end
 
 function activate(fireMode, shiftHeld)
   if not storage.firing then
-    self.active = true
+	if world.terrestrial() then
+		self.active = true
+	else
+		player.interact("ShowPopup", {message = self.notOnPlanetMessage})
+	end
   end
 end
 

@@ -13,6 +13,7 @@ NOTE: for the LEGEND
 
 centrifuge = {}
 centrifuge2 = {}
+electricFurnace = {}
 blastFurnace = {}
 arcSmelter = {}
 
@@ -67,6 +68,7 @@ function init()
 
 	-- centrifuge = getLists("centrifuge")
 	-- centrifuge2 = getLists("centrifuge2")
+	electricFurnace = getLists("electricfurnace")
 	blastFurnace = getLists("fu_blastfurnace")
 	arcSmelter = getLists("isn_arcsmelter")
 
@@ -76,6 +78,7 @@ function init()
 		"quantumextractor",
 		"extractionlabadv",
 		"extractionlab",
+		"handmill",
 		"xenostationadvnew",
 		"xenostation",
 		"centrifuge2",
@@ -89,6 +92,7 @@ function init()
 		"fu_rockcrusher",
 		"isn_arcsmelter",
 		"fu_blastfurnace",
+		"electricfurnace",
 		"fu_liquidmixer",
 		"embalmingtable"
 	}
@@ -96,6 +100,7 @@ function init()
 		["quantumextractor"] = true,
 		["extractionlabadv"] = true,
 		["extractionlab"] = true,
+		["handmill"] = true,
 		["xenostationadvnew"] = true,
 		["xenostation"] = true,
 		["centrifuge2"] = true,
@@ -109,6 +114,7 @@ function init()
 		["fu_rockcrusher"] = true,
 		["isn_arcsmelter"] = true,
 		["fu_blastfurnace"] = true,
+		["electricfurnace"] = true,
 		["fu_liquidmixer"] = true,
 		["embalmingtable"] = true
 	}
@@ -123,6 +129,8 @@ function init()
 		processObjects["extractionlabadv"]		= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
 	if found["extractionlab"] then
 		processObjects["extractionlab"]			= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
+	if found["handmill"] then
+		processObjects["handmill"]			= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
 	if found["xenostationadvnew"] then
 		processObjects["xenostationadvnew"]		= { mats = getExtractionMats, spew = doExtraction, data = xenoLab } end
 	if found["xenostation"] then
@@ -149,6 +157,8 @@ function init()
 		processObjects["isn_arcsmelter"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter } end
 	if found["fu_blastfurnace"] then
 		processObjects["fu_blastfurnace"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace } end
+	if found["electricfurnace"] then
+		processObjects["electricfurnace"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = electricFurnace } end
 	if found["fu_liquidmixer"] then
 		processObjects["fu_liquidmixer"]		= { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab } end
 	if found["embalmingtable"] then
@@ -167,6 +177,7 @@ function init()
 		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		isn_powdersifter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		fu_woodensifter       = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		electricfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = electricFurnace },
 		fu_blastfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace },
 		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter },
 		fu_liquidmixer        = { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab }

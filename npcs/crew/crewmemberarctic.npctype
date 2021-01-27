@@ -1,21 +1,21 @@
 {
   "type" : "crewmemberarctic",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.25} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "sciencefuheadnpc",
         "chest" : "sciencefuchestnpc",
         "legs" : "sciencefulegsnpc"
-        },
-
+      },
+	  
       "role" : {
+        "type" : "chemist",
+        "name" : "Arctic Explorer",
+        "field" : "Arctic Explorer",
+        "uniformColorIndex" : 4,
+
         "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
@@ -32,11 +32,7 @@
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Arctic Explorer",
-        "field" : "Arctic Explorer",
-        "uniformColorIndex" : 4
+        ]
       }
     },
 
@@ -93,10 +89,7 @@
       [0, [
           {
             "primary" : [ "fucarbonhammer" ],
-            "sheathedprimary" : [ "frostcannonarm" ],
-			"head" :  [{ "name" : "sciencefuheadnpc", "count" :1, "parameters" : { "colorIndex" : 4 } } ],
-			"chest" : [ { "name" : "sciencefuchestnpc", "count" :1, "parameters" : { "colorIndex" : 4 } } ],
-            "legs" : [ { "name" : "sciencefulegsnpc", "count" :1, "parameters" : { "colorIndex" : 4 } } ]
+            "sheathedprimary" : [ "frostcannonarm" ]
           }
         ] ]
     ]
