@@ -48,7 +48,7 @@ function Controlledteleport:charge()
 
   local chargeTimer = self.stances.charge.duration
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
-    chargeTimer = chargeTimer - self.dt
+    chargeTimer = chargeTimer - (self.dt*(((status.statPositive("admin") or player.isAdmin()) and 10) or 1))
 
     mcontroller.controlModifiers({runningSuppressed=true})
 

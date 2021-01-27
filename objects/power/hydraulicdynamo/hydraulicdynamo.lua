@@ -81,6 +81,9 @@ function isn_slotDecayCheckWater(slot)
     if item and item.name == "liquidwater" and math.random(1, 12) == 1 then
         return true
     end
+    if item and item.name == "fusaltwater" and math.random(1, 12) == 1 then
+    	return true
+    end  
 	return false
 end
 function isn_doSlotDecay(slot)
@@ -88,13 +91,16 @@ function isn_doSlotDecay(slot)
 end
 function isn_getCurrentPowerOutput()
 	local water = world.containerItemAt(entity.id(),3)
-	if storage.active and water and water.name == "liquidwater" then
+	if storage.active and water then 
+		if water.name == "liquidwater" or water.name == "fusaltwater" then
 		local powercount = 0
 		for i=0,2 do
 			powercount = powercount + isn_powerSlotCheck(i)
 		end
 		--object.say(powercount)
 		return powercount
+		end
+
 	else
 		return 0
 	end

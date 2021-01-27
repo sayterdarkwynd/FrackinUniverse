@@ -1,13 +1,6 @@
-function init()
-end
-
 function daytimeCheck()
 	return world.timeOfDay() < 0.5 -- true if daytime
 end
-
---[[function undergroundCheck()
-	return world.underground(mcontroller.position())
-end]]
 
 function getLight()
 	local position = mcontroller.position()
@@ -34,8 +27,4 @@ function update(dt)
 			status.modifyResourcePercentage("food",adjustedHunger)
 		end
 	end
-end
-
-function uninit()
-
 end

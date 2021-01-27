@@ -1,6 +1,4 @@
 function init()
-
-
 	nightFearEffects=effect.addStatModifierGroup({})
 	script.setUpdateDelta(10)
 end
@@ -15,7 +13,7 @@ function getLight()
 end
 
 function update(dt)
-  local lightLevel = getLight()
+	local lightLevel = getLight()
 	if lightLevel <= 10 then
 		effect.setStatModifierGroup(nightFearEffects,{
 			{stat = "maxHealth", baseMultiplier = 0.95},
