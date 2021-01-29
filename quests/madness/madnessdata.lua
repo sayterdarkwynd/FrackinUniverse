@@ -564,7 +564,7 @@ function checkPassiveTimerBonus()
 	storage.activeTime=(storage.activeTime or 0)+1
 	--sb.logInfo("storage.activeTime c %s %s",storage.activeTime,storage.lastTime)
 	local afkLvl=afkLevel() -- if we arent AFK, apply the bonus
-	if afkLvl <= 3 then
+	if afkLvl <= 2 then
 	    passiveRadioMessage()
 	    applyPassiveBonus()
 	else
@@ -582,13 +582,11 @@ function checkInitGap()
 end
 
 function applyPassiveBonus()	
-	if storage.activeTime > 7200 then
-		storage.timedResearchBonus = 4	
-	elseif storage.activeTime > 5400 then
-		storage.timedResearchBonus = 3
-	elseif storage.activeTime > 3600 then
+	if storage.activeTime > 10800 then
+		storage.timedResearchBonus = 3	
+	elseif storage.activeTime > 7200 then
 		storage.timedResearchBonus = 2
-	elseif storage.activeTime > 1800 then
+	elseif storage.activeTime > 3600 then
 		storage.timedResearchBonus = 1
 	else
 		storage.timedResearchBonus = 0 -- reset bonus if timer is less than 30 minutes
@@ -596,10 +594,9 @@ function applyPassiveBonus()
 end
 
 function passiveRadioMessage()
-	if storage.activeTime == 1800 then player.radioMessage("researchBonus1") end
-    if storage.activeTime == 3600 then player.radioMessage("researchBonus2") end
-    if storage.activeTime == 5400 then player.radioMessage("researchBonus3") end
-    if storage.activeTime == 7200 then player.radioMessage("researchBonus4") end	
+    if storage.activeTime == 3600 then player.radioMessage("researchBonus1") end
+    if storage.activeTime == 7200 then player.radioMessage("researchBonus2") end
+    if storage.activeTime == 10800 then player.radioMessage("researchBonus3") end	
 end
 ----------------------------------------------
 
