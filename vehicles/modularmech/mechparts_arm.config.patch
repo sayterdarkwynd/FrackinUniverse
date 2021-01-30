@@ -2,6 +2,47 @@
 	[
 		{
 			"op": "add",
+			"path": "/missilerack/stats/mechMass",
+			"value": 5
+		},	
+		{
+			"op": "add",
+			"path": "/missilerack/stats/multicount",
+			"value": 8
+		},		
+		{
+			"op": "replace",
+			"path": "/missilerack/partParameters/projectileParameters/power",
+			"value": 25
+		},	
+		{
+			"op": "add",
+			"path": "/homingmissile/stats/mechMass",
+			"value": 8
+		},		
+		{
+			"op": "replace",
+			"path": "/homingmissile/partParameters/projectileParameters/power",
+			"value": 56
+		},
+		{
+			"op": "add",
+			"path": "/guidedmissiles/stats/mechMass",
+			"value": 7
+		},	
+		{
+			"op": "add",
+			"path": "/guidedmissiles/stats/multicount",
+			"value": 3
+		},		
+		{
+			"op": "replace",
+			"path": "/guidedmissiles/partParameters/projectileParameters/power",
+			"value": 26
+		},	
+
+		{
+			"op": "add",
 			"path": "/tommygun/stats/mechMass",
 			"value": 2
 		},	
@@ -94,9 +135,14 @@
 			"value": 5
 		},
 		{
+			"op": "add",
+			"path": "/teslastream/stats/energy",
+			"value": 7
+		},		
+		{
 			"op": "replace",
 			"path": "/teslastream/partParameters/projectileParameters/power",
-			"value": 6
+			"value": 4
 		},
 
 		{
@@ -113,7 +159,39 @@
 			"op": "replace",
 			"path": "/heatrifle/partParameters/projectileParameters/power",
 			"value": 20
-		},		
+		},	
+
+	  {
+	    "op": "add",
+	    "path": "/beamsniper/stats/mechMass",
+	    "value": 6
+	  },
+	  {
+	    "op": "replace",
+	    "path": "/beamsniper/damageSources/<armName>Beam/damage",
+	    "value": 0
+	  },		  
+	  {
+	    "op": "add",
+	    "path": "/beamsniper/stats/largeLaser",
+	    "value": 10
+	  },	  	  
+	  {
+	    "op": "add",
+	    "path": "/beamsniper/stats/mechMass",
+	    "value": 4
+	  },
+	  {
+	    "op": "replace",
+	    "path": "/beamsniper/damageSources/<armName>Beam/damage",
+	    "value": 0
+	  },		  
+	  {
+	    "op": "add",
+	    "path": "/beamsniper/stats/basePower",
+	    "value": 0.85
+	  },	
+
 		{
 			"op": "add",
 			"path": "/flakcannon/stats/mechMass",
@@ -129,6 +207,33 @@
 			"path": "/flakcannon/partParameters/projectileParameters/power",
 			"value": 1.5
 		},
+
+		{
+			"op": "add",
+			"path": "/clustermine/stats/mechMass",
+			"value": 5
+		},	
+		{
+			"op": "add",
+			"path": "/clustermine/stats/multicount",
+			"value": 10
+		},		
+		{
+			"op": "replace",
+			"path": "/clustermine/partParameters/projectileParameters/power",
+			"value": 90
+		},	
+		{
+			"op": "add",
+			"path": "/spikefist/stats/mechMass",
+			"value": 4
+		},		
+		{
+			"op": "replace",
+			"path": "/spikefist/partParameters/projectileParameters/power",
+			"value": 35
+		},	
+
 
 		{
 			"op": "add",
@@ -152,8 +257,8 @@
 		},
 		{
 			"op": "add",
-			"path": "/neolaser/stats/basePower",
-			"value": 65
+			"path": "/neolaser/stats/largeLaser",
+			"value": 12
 		},
 		{
 			"op": "replace",
@@ -215,6 +320,7 @@
 			"path": "/multidronelauncher/partParameters/droneParameters/gun/projectileParameters/power",
 			"value": 20
 		},
+
 		{
 			"op": "add",
 			"path": "/shielddronelauncher0",
@@ -3975,7 +4081,7 @@
 					"projectileType": "spikefistrocket",
 					"projectileParameters": {
 						"speed": 60,
-						"power": 15,
+						"power": 20,
 						"knockback": 25,
 						"knockbackDirectional": true,
 						"ignoreTerrain": false,
@@ -4066,7 +4172,7 @@
 					"projectileType": "plasmafistrocket",
 					"projectileParameters": {
 						"speed": 60,
-						"power": 25,
+						"power": 40,
 						"knockback": 20,
 						"knockbackDirectional": true,
 						"ignoreTerrain": false,
