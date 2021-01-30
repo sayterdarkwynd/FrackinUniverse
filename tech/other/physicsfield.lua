@@ -38,7 +38,7 @@ function update(args)
 			local direction = {(args.moves["right"] and 1 or 0) + (args.moves["left"] and -1 or 0) , (args.moves["up"] and 1 or 0) + (args.moves["down"] and -1 or 0)}
 
 			if vec2.eq(direction, {0, 0}) then direction = {0, 0} end
-				boost(direction)
+				boost(direction,jumpBonus)
 			end
 		elseif self.state == "boost" then
 			local direction = {(args.moves["right"] and 1 or 0) + (args.moves["left"] and -1 or 0) , (args.moves["up"] and 1 or 0) + (args.moves["down"] and -1 or 0)}
