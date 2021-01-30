@@ -63,14 +63,27 @@ function onInteraction(args)
 					}}
 				}
 			}
+		--elseif  <VALUE> then --player already completed the dungeon once. afterwards, they get a shittier version with less loot
+		--	return { "OpenTeleportDialog",
+		--		{
+		--			canBookmark = false,
+		--			includePlayerBookmarks = false,
+		--			destinations = {{
+		--				name = "^green;Dark Cavern^reset; (^orange;2^reset;)",
+		--				planetName = "Dark Cavern",
+		--				icon = "default",
+		--				warpAction = string.format(config.getParameter("destination2"), storage.uuid, world.threatLevel())
+		--			}}
+		--		}
+		--	}				
 		else
 			return { "OpenTeleportDialog",
 				{
 					canBookmark = false,
 					includePlayerBookmarks = false,
 					destinations = {{
-						name = "???",
-						planetName = "Dark Cavern",
+						name = "^cyan;Dark Cavern^reset; (^orange;1^reset;)",
+						planetName = "^green;Detected^reset;: Energy Source",
 						icon = "default",
 						warpAction = string.format(config.getParameter("destination"), storage.uuid, world.threatLevel())
 					}}
