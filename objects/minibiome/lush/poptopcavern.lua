@@ -63,7 +63,7 @@ function onInteraction(args)
 					}}
 				}
 			}
-		--elseif  <VALUE> then --player already completed the dungeon once. afterwards, they get a shittier version with less loot
+		--elseif  status.stat("gaterepair") then--player already completed the dungeon once. afterwards, they get a shittier version with less loot
 		--	return { "OpenTeleportDialog",
 		--		{
 		--			canBookmark = false,

@@ -4,7 +4,6 @@ require "/scripts/vec2.lua"
 require "/scripts/effectUtil.lua"
 
 function init()
-
 	-- passive research gain
 	self.threatBonus=0
 	self.madnessResearchBonus = 0
