@@ -19,13 +19,13 @@ function update(dt)
 			local genmult = 0
 
 			if light <= 0.01 then
-				genmult = 8
+				genmult = 10
 			elseif light <= 0.15 then
-				genmult = 5
+				genmult = 8
 			elseif light <= 0.35 then
-				genmult = 3
+				genmult = 5
 			elseif light <= 0.50 then
-				genmult = 1
+				genmult = 3
 			end
 
 			if world.liquidAt(location)then genmult = genmult * 0.05 end -- water significantly reduces the output

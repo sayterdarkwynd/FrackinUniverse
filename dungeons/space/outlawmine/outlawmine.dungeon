@@ -4,7 +4,7 @@
     "species" : "generic",
     "rules" : [
     ],
-    "anchor" : [ "base1", "base2", "base3" ],
+    "anchor" : [ "base1", "base2", "base3", "base4" ],
     "gravity" : 80,
     "maxRadius" : 1000000,
     "maxParts" : 3,
@@ -461,12 +461,129 @@
 		[ "maxSpawnCount", [1] ],
 		[ "ignorePartMaximumRule" ]
       ],
-      "def" : [ "tmx", "room10.json" ],
+      "def" : [ "tmx", "room11.json" ],
+      "chance" : 0
+    },
+	
+    {
+      "name" : "rooma1",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma1.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "rooma2",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma2.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "rooma3",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma3.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "rooma4",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma4.json" ],
+      "chance" : 0
+    },
+	    {
+      "name" : "rooma5",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma5.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "rooma6",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma6.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "rooma7",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma7.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "rooma8",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma8.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "rooma9",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma9.json" ],
+      "chance" : 0
+    },
+	{
+      "name" : "rooma10",
+      "rules" : [
+		[ "maxSpawnCount", [3] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "rooma10.json" ],
       "chance" : 0
     },
 	
 	//Nodes
-	
+  {
+      "name" : "nodebloodybones",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodebloodybones.json" ],
+      "chance" : 1
+    },  
+  {
+      "name" : "nodejunkmod",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodejunkmod.json" ],
+      "chance" : 1
+    },
+  {
+      "name" : "nodelunari",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodelunari.json" ],
+      "chance" : 1
+    },    	
 	{
       "name" : "nodecoal",
       "rules" : [
@@ -519,8 +636,39 @@
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "nodediamond.json" ],
+      "minimumThreatLevel" : 3,     
       "chance" : 1
     },
+  {
+      "name" : "nodediamond2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodediamond2.json" ],
+      "minimumThreatLevel" : 3,      
+      "chance" : 1
+    }, 
+  {
+      "name" : "nodediamond3",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodediamond3.json" ],
+      "minimumThreatLevel" : 3,     
+      "chance" : 1
+    },
+  {
+      "name" : "nodediamond4",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodediamond4.json" ],
+      "minimumThreatLevel" : 3,   
+      "chance" : 1
+    },           
     {
       "name" : "nodeiron",
       "rules" : [
@@ -564,6 +712,17 @@
       "maximumThreatLevel" : 4.9,
       "chance" : 3
     },
+  {
+      "name" : "nodedurasteel2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodedurasteel2.json" ],
+      "minimumThreatLevel" : 3.5,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 3
+    },    
 	{
       "name" : "nodeprisilite",
       "rules" : [
@@ -574,6 +733,16 @@
       "minimumThreatLevel" : 3.5,
       "chance" : 1
     },
+  {
+      "name" : "nodeprisilite2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodeprisilite2.json" ],
+      "minimumThreatLevel" : 3.5,
+      "chance" : 1
+    },    
 	{
       "name" : "nodeferozium",
       "rules" : [
@@ -584,6 +753,16 @@
       "minimumThreatLevel" : 4.5,
       "chance" : 3
     },
+  {
+      "name" : "nodeferozium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodeferozium2.json" ],
+      "minimumThreatLevel" : 4.5,
+      "chance" : 3
+    },   
 	{
       "name" : "nodeaegisalt",
       "rules" : [
@@ -594,6 +773,16 @@
       "minimumThreatLevel" : 4.5,
       "chance" : 3
     },
+  {
+      "name" : "nodeaegisalt2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodeaegisalt2.json" ],
+      "minimumThreatLevel" : 4.5,
+      "chance" : 3
+    },    
 	{
       "name" : "nodeviolium",
       "rules" : [
@@ -604,6 +793,16 @@
       "minimumThreatLevel" : 4.5,
       "chance" : 3
     },
+  {
+      "name" : "nodeviolium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodeviolium2.json" ],
+      "minimumThreatLevel" : 4.5,
+      "chance" : 3
+    },    
 	{
       "name" : "nodesolarium",
       "rules" : [
@@ -614,7 +813,16 @@
       "minimumThreatLevel" : 5.5,
       "chance" : 3
     },
-	
+  {
+      "name" : "nodesolarium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "nodesolarium2.json" ],
+      "minimumThreatLevel" : 5.5,
+      "chance" : 3
+    },	
 	//FU nodes
 
 	{
@@ -645,6 +853,15 @@
       "chance" : 1
     },
     {
+      "name" : "funodemagnesium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "funodemagnesium2.json" ],
+      "chance" : 1
+    },    
+    {
       "name" : "funodecinnabar",
       "rules" : [
 		[ "maxSpawnCount", [1] ],
@@ -653,6 +870,15 @@
       "def" : [ "tmx", "funodecinnabar.json" ],
       "chance" : 1
     },
+    {
+      "name" : "funodecinnabar2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "funodecinnabar2.json" ],
+      "chance" : 1
+    },    
     {
       "name" : "funodemoonstone",
       "rules" : [
@@ -665,6 +891,17 @@
       "chance" : 3
     },
     {
+      "name" : "funodemoonstone2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "funodemoonstone2.json" ],
+      "minimumThreatLevel" : 1.5,
+      "maximumThreatLevel" : 3.9,
+      "chance" : 3
+    },    
+    {
       "name" : "funodezerchesium",
       "rules" : [
 		[ "maxSpawnCount", [1] ],
@@ -674,6 +911,16 @@
       "minimumThreatLevel" : 2.5,
       "chance" : 3
     },
+    {
+      "name" : "funodezerchesium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "funodezerchesium2.json" ],
+      "minimumThreatLevel" : 2.5,
+      "chance" : 3
+    },    
     {
       "name" : "funodetrianglium",
       "rules" : [
@@ -686,6 +933,17 @@
       "chance" : 3
     },
     {
+      "name" : "funodetrianglium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "funodetrianglium2.json" ],
+      "minimumThreatLevel" : 3.5,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 3
+    },   
+    {
       "name" : "funodeirradium",
       "rules" : [
 		[ "maxSpawnCount", [1] ],
@@ -697,6 +955,17 @@
       "chance" : 3
     },
     {
+      "name" : "funodeirradium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "funodeirradium2.json" ],
+      "minimumThreatLevel" : 3.5,
+      "maximumThreatLevel" : 4.9,
+      "chance" : 3
+    },    
+    {
       "name" : "funodeeffigium",
       "rules" : [
 		[ "maxSpawnCount", [1] ],
@@ -707,6 +976,16 @@
       "chance" : 3
     },
     {
+      "name" : "funodeeffigium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "funodeeffigium2.json" ],
+      "minimumThreatLevel" : 4.5,
+      "chance" : 3
+    },    
+    {
       "name" : "funodedensinium",
       "rules" : [
 		[ "maxSpawnCount", [1] ],
@@ -716,13 +995,22 @@
       "minimumThreatLevel" : 5.5,
       "chance" : 3
     },
-
+    {
+      "name" : "funodedensinium2",
+      "rules" : [
+    [ "maxSpawnCount", [1] ],
+    [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "funodedensinium2.json" ],
+      "minimumThreatLevel" : 5.5,
+      "chance" : 3
+    },
     //Mine Bases
 	
     {
       "name" : "base1",
       "rules" : [
-        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+        [ "doNotCombineWith", [ "base1", "base2", "base3", "base4" ] ],
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "base1.json" ],
@@ -731,7 +1019,7 @@
     {
       "name" : "base2",
       "rules" : [
-        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+        [ "doNotCombineWith", [ "base1", "base2", "base3", "base4" ] ],
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "base2.json" ],
@@ -740,10 +1028,19 @@
     {
       "name" : "base3",
       "rules" : [
-        [ "doNotCombineWith", [ "base1", "base2", "base3" ] ],
+        [ "doNotCombineWith", [ "base1", "base2", "base3", "base4" ] ],
 		[ "ignorePartMaximumRule" ]
       ],
       "def" : [ "tmx", "base3.json" ],
+      "chance" : 0
+    },
+    {
+      "name" : "base4",
+      "rules" : [
+        [ "doNotCombineWith", [ "base1", "base2", "base3", "base4" ] ],
+		[ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", "base4.json" ],
       "chance" : 0
     }
   ]
