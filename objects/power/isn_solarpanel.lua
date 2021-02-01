@@ -17,6 +17,7 @@ function update(dt)
 		if (world.underground(storage.randomizedPos) or ((not (self.onShip or self.onStation)) and (world.timeOfDay() > 0.55))) then
 			animator.setAnimationState("meter", "0")
 			power.setPower(0)
+			object.setAllOutputNodes(false)
 		else
 			getPowerLevel()
 		end
@@ -62,6 +63,7 @@ function getPowerLevel()
 		animator.setAnimationState("meter", "0")
 	end
 	power.setPower(generated)
+	object.setAllOutputNodes(generated>0)
 end
 
 function getLight(location)

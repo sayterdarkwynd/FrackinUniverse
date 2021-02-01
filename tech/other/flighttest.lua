@@ -1,4 +1,5 @@
 require "/scripts/vec2.lua"
+local foodThreshold=15
 
 function init()
 	if not world.entitySpecies(entity.id()) then return end
@@ -19,11 +20,7 @@ function uninit()
 end
 
 function checkFood()
-	if status.isResource("food") then
-		return status.resource("food")
-	else
-		return 15
-	end
+	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
 end
 
 function activeFlight()
@@ -50,6 +47,7 @@ end
 function update(args)
 	if not self.didInit then init() end
 	if args.moves["special1"] and not mcontroller.onGround() and not mcontroller.zeroG() and status.overConsumeResource("energy", 0.001) then
+		status.removeEphemeralEffect("wellfed")
 		if self.timer then
 			self.timer = math.max(0, self.timer - args.dt)
 			if self.timer == 0 then
@@ -57,7 +55,7 @@ function update(args)
 				self.timer = 1
 			end
 		end
-		if checkFood() > 15 then
+		if checkFood() > foodThreshold then
 			status.addEphemeralEffects{{effect = "foodcost", duration = 0.1}}
 		else
 			status.overConsumeResource("energy", (self.energyCostPerSecond or 0)*args.dt)

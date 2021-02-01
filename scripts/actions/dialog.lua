@@ -38,13 +38,15 @@ function speciesDialog(dialog, targetId, overrideToDefault)
 	dialog = dialog[species] or dialog.default
 
 	local targetDialog
+	if not dialog then return end
+
 	if targetId then
 		targetDialog = dialog[world.entitySpecies(targetId)] or dialog.default
 	else
 		targetDialog = dialog.default
 	end
 
-	if dialog.generic then
+	if dialog.generic and targetDialog then
 		targetDialog = util.mergeLists(dialog.generic, targetDialog)
 	end
 

@@ -44,6 +44,31 @@
 	},
 	{
 		"op": "add",
+		"path": "/playerstation/environmentStatusEffects/-",
+		"value": "nofallinvis"
+	},
+	{
+		"op": "add",
+		"path": "/outpost/environmentStatusEffects",
+		"value": ["nofallinvis"]
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/worldSize/1",
+		"value": 24000
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/worldSize/0",
+		"value": 64000
+	},
+	{
+		"op": "replace",
+		"path": "/playerstation/dungeonBaseHeight",
+		"value": 12000
+	},
+	{
+		"op": "add",
 		"path": "/nightfort",
 		"value": {
 			"primaryDungeon": "nightfort",
@@ -75,9 +100,9 @@
 			"dungeonBaseHeight": 1175,
 			"dungeonSurfaceHeight": 1050,
 			"ambientLightLevel": [80, 80, 80],
-			"biome": "thickjungle",
+			"biome": "fungus",
 			"musicTrack": "/music/scienceoutpost.ogg",
-			"environmentStatusEffects": []
+			"environmentStatusEffects": ["nofallinvis"]
 		}
 	},
 	{
@@ -153,6 +178,21 @@
 			"biome": "mamapoptop"
 		}
 	},
+	{
+		"op": "add",
+		"path": "/cavedungeon2",
+		"value": {
+			"primaryDungeon": "cavedungeon2",
+			"threatLevel": 2,
+			"gravity": 110,
+			"airless": false,
+			"worldSize": [2000, 2000],
+			"dungeonBaseHeight": 1400,
+			"dungeonSurfaceHeight": 1500,
+			"ambientLightLevel": [15, 15, 15],
+			"biome": "mamapoptop"
+		}
+	},	
 	{
 		"op": "add",
 		"path": "/precursordungeon2",

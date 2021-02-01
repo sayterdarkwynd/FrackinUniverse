@@ -37,7 +37,7 @@ function die()
 				end
 				newObject.inventoryIcon = iConf.config.inventoryIcon .. '?border=1;' .. colour .. '?fade=' .. colour .. 'FF;0.1'
 			end
-			newObject.description = isn_makeBatteryDescription(iConf.config.description or '', charge)
+			newObject.description = isn_makeBatteryDescription(iConf.config.description or '', charge,true)
 		end
 
 		world.spawnItem(object.name(), entity.position(), 1, newObject)
@@ -46,7 +46,7 @@ function die()
 	end
 end
 
-function isn_makeBatteryDescription(desc, charge)
+function isn_makeBatteryDescription(desc, charge, onDeath)
 	if desc == nil then
 		desc = root.itemConfig(object.name())
 		desc = desc and desc.config and desc.config.description or ''
@@ -66,6 +66,7 @@ function isn_makeBatteryDescription(desc, charge)
 	-- append charge state to default description; ensure that it's on a line of its own
 	local str=string.split(desc,"^truncate;")
 	if str[1] then str=str[1] else str="" end
+	str=str..((onDeath and " ^red;Scan for Info^reset;") or "\n^blue;Input 1^reset;: Power Switch\n^red;Output 1^reset;: Partial Power, ^red;Output 2^reset;: Full Power")
 	str = str .. (desc ~= '' and "\n" or '') .. "Power Stored: ^yellow;"..util.round(power.getStoredEnergy(),1).."^reset;/^green;"..util.round(power.getMaxEnergy(),1).."^reset;J (^yellow;" .. charge .. '^reset;%)'
 	return str
 end
@@ -91,13 +92,15 @@ end
 
 local oldPowerRemove=power.remove
 function power.remove(...)
+	--local on=not object.isInputNodeConnected(0) or object.getInputNodeLevel(0)
 	oldPowerRemove(...)
 	batteryUpdate()
 end
 
 function batteryUpdate(dt)
 	batteryUpdateThrottle=math.max(0,(batteryUpdateThrottle or batteryUpdateThrottleBase)-(dt or 0))
-	power.setPower(power.getStoredEnergy())
+	local on=(not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
+	power.setPower(on and power.getStoredEnergy() or 0)
 	if batteryUpdateThrottle <= 0 then
 		object.setConfigParameter('description', isn_makeBatteryDescription())
 		local oldAnim
@@ -110,5 +113,8 @@ function batteryUpdate(dt)
 		end
 		self.oldPowerStored=power.getStoredEnergy()
 		batteryUpdateThrottle=batteryUpdateThrottleBase
+		--object.setOutputNodeLevel(0,self.oldPowerStored>0)
+		object.setOutputNodeLevel(0,self.oldPowerStored>=10)
+		object.setOutputNodeLevel(1,power.getStoredEnergy() >= power.getMaxEnergy())
 	end
 end

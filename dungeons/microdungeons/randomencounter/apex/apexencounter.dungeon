@@ -4,7 +4,7 @@
     "species" : "dummy",
     "rules" : [
     ],
-    "anchor" : [ "lab1", "lab2", "lab3", "lab4", "lab5", "lab6", "apexmedical", "agaranhouse1", "agaranhouse2", "agaranhouse3", "giantpod1", "agaranmedical" ],
+    "anchor" : [ "lab1", "lab1a", "lab2", "lab3", "lab4", "lab4a", "lab5", "lab6", "apexmedical", "agaranhouse1", "agaranhouse2", "agaranhouse3", "giantpod1", "agaranmedical" ],
 	
     "maxRadius" : 2000,
     "maxParts" : 100
@@ -1359,13 +1359,6 @@
   ],
 
   "parts" : [
-    {
-      "name" : "lab1",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "image", [ "lab1.png", "lab1a.png" ] ]
-    },
 
     {
       "name" : "lab2",
@@ -1381,14 +1374,6 @@
         [ "maxSpawnCount", [1] ]
       ],
       "def" : [ "image", [ "lab3.png", "lab3a.png" ] ]
-    },
-
-    {
-      "name" : "lab4",
-      "rules" : [
-        [ "maxSpawnCount", [1] ]
-      ],
-      "def" : [ "image", [ "lab4.png", "lab4a.png" ] ]
     },
 
     {
@@ -1453,6 +1438,35 @@
         [ "maxSpawnCount", [1] ]
       ],
       "def" : [ "image", [ "agaranmedical.png", "agaranmedicalobjects.png" ] ]
+    },
+	// JSONified versions
+    {
+      "name" : "lab1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lab1.json" ]
+    },
+    {
+      "name" : "lab1a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lab1a.json" ]
+    },
+    {
+      "name" : "lab4",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lab4.json" ]
+    },
+    {
+      "name" : "lab4a",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "lab4a.json" ]
     }
   ]
 }

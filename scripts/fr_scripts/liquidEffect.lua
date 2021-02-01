@@ -29,13 +29,21 @@ function FRHelper:call(args, ...)
 	local pos = mcontroller.position()
 	local mouth = status.statusProperty("mouthPosition")
 	if mouth == nil then
-		if not liquideffect_errorLogged then
-			sb.logError("FR ERROR: MOUTH POSITION NOT FOUND - You got a mod conflict here, buddy. Somethin is messin up your NPCs."
-						.."\nNPC TYPE: "..world.npcType(entity.id())
-						.."\nSPECIES:  "..world.entitySpecies(entity.id()))
-			liquideffect_errorLogged = true
+		frMouthStuffTimer=(frMouthStuffTimer or 0) + script.updateDt()
+		if frMouthStuffTimer >= 1.0 then
+			--just going to set a default.
+			local buffer=root.assetJson("/player.config")
+			if buffer and buffer.statusControllerSettings and buffer.statusControllerSettings.statusProperties then
+				mouth=buffer.statusControllerSettings.statusProperties.mouthPosition
+			end
+			status.setStatusProperty("mouthPosition",mouth)
+			frMouthStuffTimer=0.0
 		end
-		return
+		--[[if not liquideffect_errorLogged then
+			--sb.logError("FR ERROR: MOUTH POSITION NOT FOUND - You got a mod conflict here, buddy. Somethin is messin up your NPCs.".."\nNPC TYPE: "..world.npcType(entity.id()).."\nSPECIES:  "..world.entitySpecies(entity.id()))
+			liquideffect_errorLogged = true
+		end]]
+		if mouth == nil then return end
 	end
 	-- End investigative debug code
     local mouthPosition = vec2.add(pos, mouth)

@@ -36,13 +36,16 @@ function update(dt)
 		animator.setAnimationState("screen", "off")
 		power.setPower(0)
 		power.update(dt)
+		object.setAllOutputNodes(false)
 		return
 	end
 	if storage.active2 then
 		for i=0,2 do
-			if isn_slotDecayCheck(i) then isn_doSlotDecay(i) end
+			if isn_slotDecayCheck(i) then
+			isn_doSlotDecay(i)
+			isn_doSlotDecay(3)
+			end
 		end
-			if isn_slotDecayCheckWater(3) then isn_doSlotDecay(3) end
 	end
 	local powerout = isn_getCurrentPowerOutput()
 	power.setPower(powerout)
@@ -53,6 +56,7 @@ function update(dt)
             break
         end
 	end
+	object.setAllOutputNodes(powerout>0)
 	power.update(dt)
 end
 
@@ -74,8 +78,11 @@ end
 function isn_slotDecayCheckWater(slot)
 	local item = world.containerItemAt(entity.id(),slot)
 	local myLocation = entity.position()
-    if item and item.name == "liquidwater" and math.random(1, 4) == 1 then
+    if item and item.name == "liquidwater" then
         return true
+    end
+    if item and item.name == "fusaltwater" then
+    	return true
     end
 	return false
 end
@@ -84,13 +91,16 @@ function isn_doSlotDecay(slot)
 end
 function isn_getCurrentPowerOutput()
 	local water = world.containerItemAt(entity.id(),3)
-	if storage.active and water and water.name == "liquidwater" then
+	if storage.active and water then
+		if water.name == "liquidwater" or water.name == "fusaltwater" then
 		local powercount = 0
 		for i=0,2 do
 			powercount = powercount + isn_powerSlotCheck(i)
 		end
 		--object.say(powercount)
 		return powercount
+		end
+
 	else
 		return 0
 	end

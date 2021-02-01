@@ -1,33 +1,33 @@
 {
   "type" : "crewmemberresearcher",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "scientisthead",
         "chest" : "scientistchest",
         "legs" : "scientistlegs"
       },
-
+	  
       "role" : {
+        "type" : "medic",
+        "name" : "Researcher",
+        "field" : "Researcher",
+        "uniformColorIndex" : 3,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "researchBonus",
             "duration" : 300
+          },
+          {
+            "type" : "Regeneration",
+            "value" : 1
           }
-        ],
-        "type" : "medic",
-        "name" : "Researcher",
-        "field" : "Researcher",
-        "uniformColorIndex" : 3
+        ]
       }
     },
 
@@ -41,7 +41,7 @@
           },
           "floran" : {
             "default" : [
-              "Floran wantss to ssee the sstarss!"
+              "Floran wantss to sstudy the sstarss!"
             ]
           },
           "glitch" : {
@@ -74,7 +74,7 @@
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -83,10 +83,7 @@
       [0, [
           {
             "primary" : [ "penumbritepistol" ],
-            "sheathedprimary" : [ "lunaridagger" ],
-			"head" :  [{ "name" : "scientisthead", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-			"chest" : [ { "name" : "scientistchest", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-            "legs" : [ { "name" : "scientistlegs", "count" :1, "parameters" : { "colorIndex" : 3 } } ]          
+            "sheathedprimary" : [ "lunaridagger" ]
           }
         ] ]
     ]

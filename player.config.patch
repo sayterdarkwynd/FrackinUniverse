@@ -147,18 +147,18 @@
 	[ { "op": "remove", "path": "/companionsConfig/crewBenefits/fieldRegeneration/2"} ],
 	//end crew medic changes
 
+	//Pandora's Box pet stuff
+	[{"op" : "add","path" : "/companionsConfig/scripts/-","value" : "/scripts/companions/pandorasboxplayer.lua"}],
+
 	//end companionsconfig
 
 
-
-	
 	//remove vanilla blueprints
-	
-	
-	[{"op":"test","path":"/defaultBlueprints/tier1/249"},{"op":"remove","path":"/defaultBlueprints/tier1/248"}], //pettether
-	[{"op":"test","path":"/defaultBlueprints/tier1/248"},{"op":"remove","path":"/defaultBlueprints/tier1/247"}], //pethealingstation
-	[{"op":"test","path":"/defaultBlueprints/tier1/247"},{"op":"remove","path":"/defaultBlueprints/tier1/246"}], //capturepod
-	//245 railhook
+		
+	[{"op":"test","path":"/defaultBlueprints/tier1/248"},{"op":"remove","path":"/defaultBlueprints/tier1/248"}], //pettether
+	[{"op":"test","path":"/defaultBlueprints/tier1/247"},{"op":"remove","path":"/defaultBlueprints/tier1/247"}], //pethealingstation
+	[{"op":"test","path":"/defaultBlueprints/tier1/246"},{"op":"remove","path":"/defaultBlueprints/tier1/246"}], //capturepod
+	[{"op":"test","path":"/defaultBlueprints/tier1/245"},{"op":"remove","path":"/defaultBlueprints/tier1/245"}], //railhook
 	//244 stationtram
 	//243 compositerailplatform 
 	//242 rustyrailplatform
@@ -194,13 +194,13 @@
 	//212 lightsensor
 	//211 secrettrapdoor
 	//210 secretdoor
-	//209 standingturret
+[{"op":"test","path":"/defaultBlueprints/tier1/209"},{"op":"remove","path":"/defaultBlueprints/tier1/209"}], //209 standingturret
 	//208 drain
 	//207 bulb
 	//206 alarm
-	[{"op":"test","path":"/defaultBlueprints/tier1/206"},{"op":"remove","path":"/defaultBlueprints/tier1/205"}], //burnspray
-	[{"op":"test","path":"/defaultBlueprints/tier1/205"},{"op":"remove","path":"/defaultBlueprints/tier1/204"}], //nanowrap
-	[{"op":"test","path":"/defaultBlueprints/tier1/204"},{"op":"remove","path":"/defaultBlueprints/tier1/203"}], //medkit
+	[{"op":"test","path":"/defaultBlueprints/tier1/205"},{"op":"remove","path":"/defaultBlueprints/tier1/205"}], //burnspray
+	[{"op":"test","path":"/defaultBlueprints/tier1/204"},{"op":"remove","path":"/defaultBlueprints/tier1/204"}], //nanowrap
+	[{"op":"test","path":"/defaultBlueprints/tier1/203"},{"op":"remove","path":"/defaultBlueprints/tier1/203"}], //medkit
 	[{"op":"test","path":"/defaultBlueprints/tier1/202"},{"op":"remove","path":"/defaultBlueprints/tier1/202"}], //bluestim
 	[{"op":"test","path":"/defaultBlueprints/tier1/201"},{"op":"remove","path":"/defaultBlueprints/tier1/201"}], //greenstim
 	[{"op":"test","path":"/defaultBlueprints/tier1/200"},{"op":"remove","path":"/defaultBlueprints/tier1/200"}], //smallbattery
@@ -233,7 +233,7 @@
 	[{"op":"test","path":"/defaultBlueprints/tier1/173"},{"op":"remove","path":"/defaultBlueprints/tier1/173"}], //pinkdye
 	[{"op":"test","path":"/defaultBlueprints/tier1/172"},{"op":"remove","path":"/defaultBlueprints/tier1/172"}], //orangedye
 	[{"op":"test","path":"/defaultBlueprints/tier1/171"},{"op":"remove","path":"/defaultBlueprints/tier1/171"}], //greydye
-	//170 mannequin
+	[{"op":"test","path":"/defaultBlueprints/tier1/170"},{"op":"remove","path":"/defaultBlueprints/tier1/170"}], //mannequin
 	[{"op":"test","path":"/defaultBlueprints/tier1/169"},{"op":"remove","path":"/defaultBlueprints/tier1/169"}], //syntheticmaterial
 	[{"op":"test","path":"/defaultBlueprints/tier1/168"},{"op":"remove","path":"/defaultBlueprints/tier1/168"}], //canvas
 	[{"op":"test","path":"/defaultBlueprints/tier1/167"},{"op":"remove","path":"/defaultBlueprints/tier1/167"}], //silk
@@ -404,9 +404,7 @@
 
 
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "clay"} } ],
-	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "bonematerial"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "floranneedler"} } ],
-	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "throwingbones"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "plantfibre"} } ],
 	
 	//logbook
@@ -432,6 +430,7 @@
 	
 	//booze stuff
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "smallwoodencrate1" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "winecabinet" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeableemptybottle" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeablebeer" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "placeabledarkbeer" } } ],
@@ -517,7 +516,6 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "stoneshortspear"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "stonebroadsword"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "stonegreataxe"} } ],
-	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "stonedagger"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "roastedmushrooms"} } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item" : "cookedtentacle"} } ],
 
@@ -618,6 +616,11 @@
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_emitter" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "swtjc_wp_brokenemitter" } } ],
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "hiddenproximityscanner" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fuplayersensor" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "funpcsensor" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fumonstersensor" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fufriendlysensor" } } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "fuenemysensor" } } ],
 
 	//Basic Switches
 
@@ -665,6 +668,7 @@
 	
 
 	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_defaultunlockdiagnoser"} } ],
+	[ { "op": "add", "path": "/defaultBlueprints/tier1/-", "value": {"item": "fu_solidrailplatform"} } ],
 
 
 

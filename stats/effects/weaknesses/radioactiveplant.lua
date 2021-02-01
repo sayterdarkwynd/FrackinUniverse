@@ -13,8 +13,6 @@ function init()
 	self.tickTimer = self.tickTime
 
 	self.healthRegen = config.getParameter("healthRegen",0)
-
-	self.xiBonus = status.stat("xiBonus") --apply racial bonus effect to results
 	self.frEnabled=status.statusProperty("fr_enabled")
 	self.species = status.statusProperty("fr_race") or world.entitySpecies(entity.id())
 	if not self.frEnabled or ((status.stat("isHerbivore")==1 or status.stat("isRobot")==1 or status.stat("isOmnivore")==1 or status.stat("isSugar")==1) and (not(status.stat("isRadien")==1))) then
@@ -26,11 +24,13 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
+	if not self.didInit then return end
 	if self.frEnabled and (self.species == "radien" or self.species == "novakid" or self.species == "thelusian") then
 		applyEffects()
 		animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
 		animator.setParticleEmitterActive("healing", true)
 	else
+		effect.setStatModifierGroup(self.statHandler,{})
 		if (self.frEnabled or not self.species == "radien") and ((self.tickTimer or 0) <= 0) then
 			applyPenalty()
 			animator.setParticleEmitterOffsetRegion("drips", mcontroller.boundBox())
@@ -40,7 +40,6 @@ function update(dt)
 		end
 	end
 end
-
 
 function applyPenalty()
 	self.tickTimer = self.tickTime
@@ -55,17 +54,8 @@ function applyPenalty()
 end
 
 function applyEffects()
-	self.appliedHeal = self.healthRegen + self.xiBonus
-	self.appliedHunger = 1.08 + self.xiBonus
-	--status.setPersistentEffects("floranpower1", { {stat = "healthRegen", amount = self.appliedHeal*math.max(0,1+status.stat("healingBonus")) },{stat = "foodDelta", effectiveMultiplier = -self.appliedHunger} })
-
-	effect.setStatModifierGroup(self.statHandler,{ {stat = "healthRegen", amount = self.appliedHeal*math.max(0,1+status.stat("healingBonus")) },{stat = "foodDelta", effectiveMultiplier = -self.appliedHunger} })
-	--radiens dont get full when near these plants. eat up!
-	if status.isResource("food") then
-		self.foodValue = status.resourcePercentage("food")
-	else
-		self.foodValue = 0.50
-	end
+	self.appliedHeal = self.healthRegen + status.stat("xiBonus")
+	effect.setStatModifierGroup(self.statHandler,{{stat = "healthRegen", amount = self.appliedHeal*math.max(0,1+status.stat("healingBonus"))},{stat = "xiBulbFoodBonus", amount=0.08}})
 	status.removeEphemeralEffect("wellfed")
 	if status.isResource("food") then
 		if status.resourcePercentage("food") > 0.99 then status.setResourcePercentage("food", 0.99) end
@@ -73,7 +63,7 @@ function applyEffects()
 end
 
 function uninit()
+	if not self.didInit then return end
 	effect.removeStatModifierGroup(self.statHandler)
-	status.clearPersistentEffects("floranpower1")--remove after a month
 	animator.setParticleEmitterActive("drips", false)
 end

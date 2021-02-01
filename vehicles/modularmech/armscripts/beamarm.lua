@@ -74,9 +74,13 @@ function BeamArm:fireState()
   -- FU beam damage scaling *******************************************
 	  self:statSet()
 	  self.mechTier = self.stats.power
-	  self.basePower = self.stats.basePower
+	  self.basePower = self.stats.basePower or 1
     self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
-    self.applyBeamDamage = self.basePower * (1 + self.mechTier/10);
+
+    self.largeLaser = self.stats.largeLaser or 0  -- non-mining lasers use this stat. Default is 10.
+    if self.largeLaser > 0 then self.basePower = 10 end -- make sure our base power is easily computed
+    self.applyBeamDamage = self.basePower * (1 + self.mechTier/10) * self.largeLaser
+
     pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
 
     --Mech critical hits
@@ -94,7 +98,7 @@ function BeamArm:fireState()
       self.mechBonus = self.mechBonus * (1 + self.randbonus)
     end
 
-    self.applyBeamDamage = self.applyBeamDamage + self.mechBonus;
+    self.applyBeamDamage = self.applyBeamDamage + self.mechBonus
   -- ********************************************************************
 
   animator.rotateTransformationGroup(self.armName, self.aimAngle, self.shoulderOffset)

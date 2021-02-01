@@ -100,6 +100,7 @@ function checkTags(item)
 end
 
 function resetStats()
+	itemCount=0
 	bonusEssence=0
 	bonusResearch=0
 	bonusProtheon=0
@@ -190,7 +191,20 @@ function update(dt)
 							world.containerTakeNumItemsAt(entity.id(), self.inputSlot,1)
 						end
 
-						futureItem=nil
+						--local rank=(currentItemParameters.rank or 0)
+						local protheonRank=(currentItemParameters.protheonRank or 0)
+						local geneRank=(currentItemParameters.geneRank or 0)
+						local essenceRank=(currentItemParameters.essenceRank or 0)
+						local researchRank=(currentItemParameters.researchRank or 0)
+						--prev., the 'rank' parameter on the items did nothing. it has been split, and it adds a fixed amount per item after researching.
+						--also, config.getParameter gets info from the calling object.
+						--near the start of update is a currentItemParameters declaration to use.
+
+						bonusResearch=bonusResearch+(itemCount*(researchRank))
+						bonusGene=bonusGene+(itemCount*(geneRank))
+						bonusEssence=bonusEssence+(itemCount*(essenceRank))
+						bonusProtheon=bonusProtheon+(itemCount*(protheonRank))
+
 						if bonusResearch>0 then
 							shoveItem({name="fuscienceresource",count=bonusResearch},self.researchSlot)
 						end
@@ -203,33 +217,25 @@ function update(dt)
 						if bonusGene>0 then
 							shoveItem({name="fugeneticmaterial",count=bonusGene},self.protheonSlot)
 						end
-						bonusEssence=0
-						bonusResearch=0
-						bonusProtheon=0
-						bonusGene=0
-						progress = 0
+						resetStats()
+						itemsDropped=true
 
 						status=statusList[lastTag.."ID"]
 
-						itemsDropped=true
 					else
 						status = "^cyan;"..progress.."%"
 						-- ***** chance to gain currencies *****
 						local randCheck = math.random(tagList[lastTag].range or 100)
-						local rank=(currentItemParameters.rank or 0)
-						--prev., the 'rank' parameter on the items did nothing, might need rebalancing
-						--also, config.getParameter gets info from the calling object.
-						--near the start of update is a currentItemParameters declaration to use.
-						local effectiveCount=((lastTag=="drone") and currentItem.count) or 1
+						itemCount=((lastTag=="drone") and currentItem.count) or 1
 
 						if (randCheck == self.researchSlot) and (tagList[lastTag].currencies.bonusResearch) then
-							bonusResearch=bonusResearch+((tagList[lastTag].currencies.bonusResearch+rank+microscopeRank)*effectiveCount) -- Gain research as this is used
+							bonusResearch=bonusResearch+((tagList[lastTag].currencies.bonusResearch+microscopeRank)*itemCount) -- Gain research as this is used
 						elseif (randCheck == self.essenceSlot) and (tagList[lastTag].currencies.bonusEssence) then
-							bonusEssence=bonusEssence+((tagList[lastTag].currencies.bonusEssence+rank+microscopeRank)*effectiveCount) -- Gain essence as this is used
+							bonusEssence=bonusEssence+((tagList[lastTag].currencies.bonusEssence+microscopeRank)*itemCount) -- Gain essence as this is used
 						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusProtheon) then
-							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used
+							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+microscopeRank)*itemCount) -- Gain protheon as this is used
 						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusGene) then
-							bonusGene=bonusGene+((tagList[lastTag].currencies.bonusGene+rank+microscopeRank)*effectiveCount) -- Gain protheon as this is used
+							bonusGene=bonusGene+((tagList[lastTag].currencies.bonusGene+microscopeRank)*itemCount) -- Gain protheon as this is used
 						end
 					end
 				end

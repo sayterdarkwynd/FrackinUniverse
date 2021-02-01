@@ -12,7 +12,7 @@
   "itemTags" : ["weapon","melee","axe", "upgradeableWeapon"],
   "level" : 3,
   "inventoryIcon" : "carbonaxe.png",
-  "collectablesOnPickup" : { "fu_weaponaxe" : "carbonaxe" },
+  //"collectablesOnPickup" : { "fu_weaponaxe" : "carbonaxe" },
   "animation" : "axe.animation",
   "animationParts" : {
     "blade" : "carbonaxe.png",
@@ -41,6 +41,31 @@
       "damageSourceKind" : "axe",
       "knockback" : 12,
       "statusEffects" : [ "bleedingshort" ]
+    },
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0.25, 1.5]
+      },
+      "windup" : {
+        "duration" : 0.7,
+        "weaponOffset" : [0.25, 1.5],
+
+        "minWindup" : 0.6,
+
+        "weaponAngle" : [
+          [0.7, "linear", -20, 0],
+          [0.85, "linear", 0, 50],
+          [0.925, "sin", 50, 45],
+          [1.0, "cos", 50, 45]
+        ],
+
+        "armAngle" : [
+          [1.0, "sin", -90, 50]
+        ]
+      },
+      "fire" : {
+        "weaponOffset" : [0.25, 1.5]
+      }
     }
   },
   "critChance" : 4,

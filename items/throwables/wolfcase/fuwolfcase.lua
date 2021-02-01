@@ -9,6 +9,8 @@ function init()
 
   self.active = false
   storage.fireTimer = storage.fireTimer or 0
+  self.random = math.random(1,20)
+  self.notOnPlanetMessage = config.getParameter("notOnPlanetMessage", "")
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -39,7 +41,11 @@ function update(dt, fireMode, shiftHeld)
   if storage.firing and animator.animationState("firing") == "off" then
     item.consume(1)
     if player then
-      world.spawnProjectile("fuwolfcase", mcontroller.position() );
+		if self.random==20 then
+			player.giveItem("wolfbook-codex")
+		else
+			world.spawnProjectile("fuwolfcase", mcontroller.position() );
+		end
     end
     storage.firing = false
     return
@@ -48,7 +54,11 @@ end
 
 function activate(fireMode, shiftHeld)
   if not storage.firing then
-    self.active = true
+	if world.terrestrial() then
+		self.active = true
+	else
+		player.interact("ShowPopup", {message = self.notOnPlanetMessage})
+	end
   end
 end
 

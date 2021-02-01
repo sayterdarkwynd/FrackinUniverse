@@ -117,6 +117,7 @@
 
   "upgradeParametersTricorder" : {
     "shortdescription":"Core Rifle MkII",
+	"description" : "Explosive, super-hot power.\n^cyan;Upgrade to Empower^reset;",	
     "primaryAbility" : {
       "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
       "class" : "FUOverHeating",
@@ -144,6 +145,7 @@
   },
   "upgradeParameters" : {
     "shortdescription":"Core Rifle MkIII",
+	"description" : "Lingering burning for extra pain.\n^cyan;Upgrade to Empower^reset;",	
     "primaryAbility" : {
       "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
       "class" : "FUOverHeating",      
@@ -164,13 +166,20 @@
     "overheatLevel" : 100,        //Overheat at this value        
       "projectileType" : "corerifleshot",
       "projectileParameters" : { 
+		"statusEffects" : [ "burning" ],
         "speed" : 82,
         "knockback" : 4
       }
     }
   },
   "upgradeParameters2" : {
-    "shortdescription" : "Core Rifle MkIV",
+    "shortdescription" : "^red;Core Rifle MkIV^reset;",
+	"description" : "Simple tech taken to extraordinary levels.",
+	"inventoryIcon" : "corerifleultra1.png",
+	"elementalType" : "hellfire",
+	"animationParts" : {
+		"middle" : "corerifleultra.png",
+		"middlefullbright" : "corerifleultrafullbright.png"},
     "primaryAbility" : {
       "scripts" : ["/items/active/weapons/ranged/fu_overheating.lua"],
       "class" : "FUOverHeating",     
@@ -178,6 +187,7 @@
       "inaccuracy" : 0.03,
       "energyUsage" : 36.0,
       "fireType" : "auto",
+	  "baseDps" : 15, 
 
     //Overheating Weapon Values (based heavily on elithian races version)
     "heatGain" : 24,          //Heat generated per shot
@@ -192,7 +202,8 @@
       "projectileParameters" : { 
         "speed" : 92,
         "knockback" : 6,
-        "statusEffect" : [ "napalm" ]
+		"damageKind" : "hellfire",		
+        "statusEffects" : [ "burningnapalm" ]
       }
     }
   }    

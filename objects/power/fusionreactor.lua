@@ -53,8 +53,6 @@ function onNodeConnectionChange(args)
 	storage.active2 = (not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
 end
 
-
-
 function update(dt)
 	if self.timerFusionDisabled then 
 		self.timerFusionDisabled = self.timerFusionDisabled - 1
@@ -80,6 +78,7 @@ function update(dt)
 		animator.setAnimationState("screenbright", "off")	
 		power.setPower(0)
 		power.update(dt)
+		object.setAllOutputNodes(false)
 		return
 	end
 
@@ -91,6 +90,7 @@ function update(dt)
 
 	local powerout = isn_getCurrentPowerOutput()
 	power.setPower(powerout)
+	object.setAllOutputNodes(powerout>0)
 	
 	for _,dink in pairs(powerStates) do
         if powerout >= dink.amount then
@@ -111,7 +111,7 @@ function update(dt)
 	local myLocation = entity.position()
 	world.debugText("R:" .. storage.radiation, {myLocation[1]-1, myLocation[2]-2}, "red");
 
-	storage.currentHeat = math.min(storage.currentHeat + (powerout/8),storage.maxHeat)
+	storage.currentHeat = math.min(storage.currentHeat + (math.sqrt(powerout)/2),storage.maxHeat)
 
 	--sb.logInfo(storage.currentHeat)
 	isn_slotCoolantCheck(5)
@@ -144,7 +144,7 @@ function isn_powerSlotCheck(slotnum)
 		animator.setAnimationState("screen", "off")
 		animator.setAnimationState("screenbright", "off")		
 		power.setPower(0)
-		power.update(dt)
+		power.update(0)
     	return 0 
     end
 
@@ -167,7 +167,7 @@ function isn_slotCoolantCheck(slot)
 		storage.radiation = storage.radiation + 15  --large rad increase
 		storage.currentHeat = 1  --reset heat
 		power.setPower(0)
-		power.update(dt)
+		power.update(0)
 		self.timerPowerReduced = 10 --after a boom, does not produce for 10 seconds
     end
 	
@@ -198,14 +198,14 @@ function isn_doSlotDecay(slot)
 end
 
 function isn_getCurrentPowerOutput()
-		if not storage.active then return 0 end
-	    local powercount = 0
-	    for i=0,3 do
-	        powercount = powercount + isn_powerSlotCheck(i)
-	    end
-	    if self.timerPowerReduced >= 1 then 
-		  self.timerPowerReduced = self.timerPowerReduced -1
-		  powercount = 0 
-		end
-		return powercount		
+	if not storage.active then return 0 end
+	local powercount = 0
+	for i=0,3 do
+		powercount = powercount + isn_powerSlotCheck(i)
+	end
+	if self.timerPowerReduced >= 1 then 
+	  self.timerPowerReduced = self.timerPowerReduced -1
+	  powercount = 0 
+	end
+	return powercount		
 end

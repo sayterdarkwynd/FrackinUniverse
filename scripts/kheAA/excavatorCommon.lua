@@ -29,6 +29,7 @@ function excavatorCommon.init()
 	local buffer=""
 	transferUtil.loadSelfContainer()
 	if self.disabled then
+		storage.state="disabled"
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
 		return
 	end
@@ -53,8 +54,8 @@ function excavatorCommon.init()
 		excavatorCommon.vars.pumpHPNode=config.getParameter("kheAA_powerPumpNode")
 		excavatorCommon.vars.spoutNode=config.getParameter("kheAA_spoutNode")
 		storage.depth=0 -- rather have it X=X or 0, but that causes problems when the pumps reinit in a partially loaded chunk they start ignoring floors.
-		storage.pumpThrottler=storage.pumpThrottler or 0
-		excavatorCommon.vars.throttleInfinite=excavatorCommon.vars.throttleInfinite or false
+		--storage.pumpThrottler=storage.pumpThrottler or 0
+		--excavatorCommon.vars.throttleInfinite=excavatorCommon.vars.throttleInfinite or false
 		liquidLib.init()
 	end
 
@@ -102,8 +103,13 @@ function excavatorCommon.cycle(dt)
 		end
 	end
 
-	setRunning(true)
 	excavatorCommon.mainDelta = (excavatorCommon.mainDelta or 100) + dt--DO NOT INCREMENT ELSEWHERE
+	if not storage.state then
+		excavatorCommon.init()
+		return
+	end
+	if storage.state=="disabled" then return end
+	setRunning(true)
 	time = (time or (dt*-1)) + dt
 	if time > 10 then
 		local pos = storage.position
@@ -120,6 +126,10 @@ function excavatorCommon.cycle(dt)
 		time=0
 	end
 	states[storage.state](dt)
+end
+
+function states.disabled(dt)
+	return
 end
 
 function states.start(dt)
@@ -376,7 +386,7 @@ function states.pump(dt)
 	local tempDelta=excavatorCommon.mainDelta
 	excavatorCommon.mainDelta = 0
 
-	storage.pumpThrottler=math.max(storage.pumpThrottler-(tempDelta*excavatorCommon.vars.excavatorRate*2),0)
+	--storage.pumpThrottler=math.max(storage.pumpThrottler-(tempDelta*excavatorCommon.vars.excavatorRate*2),0)
 	if not storage.box then
 		storage.state="start"
 		return
@@ -385,18 +395,18 @@ function states.pump(dt)
 	local liquid = world.forceDestroyLiquid(pos)
 
 	if liquid then
-		storage.pumpThrottler=storage.pumpThrottler+liquid[2]
+		--[[storage.pumpThrottler=storage.pumpThrottler+liquid[2]
 		if world.liquidAt(pos) then
 			excavatorCommon.vars.throttleInfinite=true
 		else
 			excavatorCommon.vars.throttleInfinite=false
-		end
+		end]]
 		if storage.liquids[liquid[1]] == nil then
 			storage.liquids[liquid[1]] = 0
 		end
 		storage.liquids[liquid[1]] = storage.liquids[liquid[1]] + liquid[2]
 	else
-		excavatorCommon.vars.throttleInfinite=false
+		--excavatorCommon.vars.throttleInfinite=false
 	end
 
 	if not transferUtil.powerLevel(excavatorCommon.vars.pumpHPNode,true) then
@@ -458,10 +468,10 @@ function states.pump(dt)
 		end]]
 	end
 
-	if excavatorCommon.vars.throttleInfinite or (storage.pumpThrottler > (tempDelta * 10 * excavatorCommon.vars.excavatorRate)) then
+	--[[if excavatorCommon.vars.throttleInfinite or (storage.pumpThrottler > (tempDelta * 10 * excavatorCommon.vars.excavatorRate)) then
 		storage.state="pumpStutter"
 		return
-	end
+	end]]
 
 	if (storage.depth*-1) > excavatorCommon.vars.maxDepth then
 		setRunning(false)
@@ -482,7 +492,7 @@ function states.pump(dt)
 	end
 end
 
-function states.pumpStutter(dt)
+--[[function states.pumpStutter(dt)
 	if (excavatorCommon.mainDelta * excavatorCommon.vars.excavatorRate) < 0.2 then
 		return
 	end
@@ -497,7 +507,7 @@ function states.pumpStutter(dt)
 
 	excavatorCommon.mainDelta = 0
 	storage.state="pump"
-end
+end]]
 
 function states.stop()
 	-- body
