@@ -11,7 +11,6 @@ function update(dt)
 		local baseImageOffset = config.getParameter("baseImageOffset", {0, 0})	
 		for i, overlay in ipairs (backgroundOverlays) do
 			local centerImageOffset = vec2.div(vec2.div(root.imageSize(overlay.image), 2), 8)
-			sb.logInfo(sb.printJson(centerImageOffset))
 			localAnimator.addDrawable({
 				image = overlay.image,
 				position = vec2.add(vec2.add(vec2.sub({1024, 1024}, baseImageOffset), centerImageOffset), overlay.position or {0,0}),

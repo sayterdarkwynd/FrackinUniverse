@@ -56,7 +56,8 @@ function init()
 	end)
 
 	ship.notInitial = config.getParameter("notInitial")
-	ship.shipResetConfirmationDialogs = ship.miscConfig.shipResetConfirmationDialogs
+	ship.shipResetConfirmationDialogs = config.getParameter("shipResetConfirmationDialogs")
+	ship.backgroundPresentConfirmation = config.getParameter("backgroundPresentConfirmation")
 end
 
 function generateShipLists()
@@ -276,8 +277,23 @@ function changeState(newState)
 					end
 				end)
 			else
-				createShip()
-				changeState("shipChosen")
+				local shipConfigFile = root.assetJson("/universe_server.config").speciesShips[player.species()][1]
+				local shipConfig = root.assetJson(shipConfigFile)
+				if shipConfig.backgroundOverlays[1] then
+					promises:add(player.confirm(ship.backgroundPresentConfirmation), function (choice)
+						if state.state == "frackinShipChosen" then
+							if choice then
+								createShip()
+								changeState("shipChosen")
+							else
+								changeState(state.previousState)
+							end
+						end
+					end)
+				else
+					createShip()
+					changeState("shipChosen")
+				end
 			end
 			return
 		elseif newState == "vanillaShipChosen" then
@@ -427,28 +443,19 @@ function createShip(vanilla)
 			player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
 			pane.dismiss()
 		else
-			local shipCreationConfirmed = false
-			local racialShipData = root.assetJson("/universe_server.config").speciesShips[player.species()]
-			if racialShipData then
-			
-			else
-			
-			end
-			if shipCreationConfirmed then
-				if ship.selectedShip.mode == "Buildable" then
-					if string.find(ship.selectedShip.ship, "/") then
-						sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
-					else
-						world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
-					end
-				elseif ship.selectedShip.mode == "Upgradable" then
-					sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
+			if ship.selectedShip.mode == "Buildable" then
+				if string.find(ship.selectedShip.ship, "/") then
+					sb.logWarn("STRUCTURE FILE SHIP SUPPORT NOT YET IMPLEMENTED")
 				else
-					sb.logError("INVALID SHIP MODE DETECTED")
+					world.sendEntityMessage("frackinshiphandler", "createShip", ship.selectedShip, player.species())
 				end
-				player.startQuest("fu_byos")
-				pane.dismiss()
+			elseif ship.selectedShip.mode == "Upgradable" then
+				sb.logWarn("UPGRADABLE SHIPS NOT YET IMPLEMENTED")
+			else
+				sb.logError("INVALID SHIP MODE DETECTED")
 			end
+			player.startQuest("fu_byos")
+			pane.dismiss()
 		end
 	end
 end
