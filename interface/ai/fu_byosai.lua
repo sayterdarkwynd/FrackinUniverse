@@ -1,9 +1,8 @@
 require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
-require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
+require "/scripts/messageutil.lua"
 require "/zb/zb_textTyper.lua"
 require "/zb/zb_util.lua"
-require "/scripts/messageutil.lua"
 
 function init()
 	textUpdateDelay = config.getParameter("textUpdateDelay")
@@ -436,11 +435,6 @@ function createShip(vanilla)
 		world.setProperty("fuChosenShip", true)
 		if vanilla then
 			player.upgradeShip(ship.vanillaShip.shipUpgrades)
-			-- remove after restoring T0 ships
-			race = player.species()
-			count = racialiserBootUp()
-			parameters = getBYOSParameters("techstation", true, _)
-			player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
 			pane.dismiss()
 		else
 			if ship.selectedShip.mode == "Buildable" then
@@ -485,14 +479,4 @@ function comparableName(name)
 	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> Madness
 		:gsub('ū', 'u')
 		:upper()
-end
-
-function racialiserBootUp()
-	raceInfo = root.assetJson("/interface/objectcrafting/fu_racialiser/fu_raceinfo.config").raceInfo
-	for num, info in pairs (raceInfo) do
-		if info.race == race then
-			return num
-		end
-	end
-	return 0
 end
