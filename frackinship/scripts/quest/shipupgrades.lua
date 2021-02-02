@@ -84,6 +84,7 @@ function update(dt)
 				end
 			end
 			world.setProperty("fu_byos.owner", player.uniqueId())
+			world.setProperty("frackinship.race", player.species())
 		end
 		if shipLevel == 0 then
 			shipCrewSize = status.statusProperty("byosCrewSize", 0)
