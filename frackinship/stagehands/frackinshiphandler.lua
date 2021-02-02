@@ -17,7 +17,7 @@ function init()
 	-- To fix the isssue with old BYOS ships
 	world.setProperty("fuChosenShip", false)
 	
-	if world.getProperty("ship.level", 1) == 0 and not world.getProperty("frackinship") then
+	if world.getProperty("ship.level", 1) == 0 and not world.getProperty("fu_byos") then
 		self.shipRenderPromise = world.findUniqueEntity("fs_shiprender")
 	end
 end

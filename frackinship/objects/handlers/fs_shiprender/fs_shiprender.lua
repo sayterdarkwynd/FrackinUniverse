@@ -56,7 +56,7 @@ function init()
 end
 
 function update(dt)
-	if world.getProperty("ship.level", 1) ~= 0 or world.getProperty("frackinship") then
+	if world.getProperty("ship.level", 1) ~= 0 or world.getProperty("fu_byos") then
 		object.smash()
 	end
 end
