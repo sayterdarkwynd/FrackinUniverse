@@ -18,7 +18,9 @@ function init()
 end
 
 function update(dt)
+	if lockoutTimer then lockoutTimer = math.max(0,lockoutTimer-dt) end
 	populateItemList()
+	if lockoutTimer and lockoutTimer > 0 then return end
 	itemSelected()
 end
 
@@ -188,6 +190,7 @@ function itemSelected()
 end
 
 function doUpgrade()
+	if lockoutTimer and lockoutTimer > 0 then return end
 	if self.selectedItem then
 		local isWorn=checkWorn(getSelectedItem())
 		if isWorn then
@@ -214,6 +217,8 @@ function doUpgrade()
 
 		populateItemList(true)
 	end
+	lockoutTimer=0.1
+	widget.setButtonEnabled("btnUpgrade", false)
 end
 
 function highestRarity(rarity2,rarity1)
