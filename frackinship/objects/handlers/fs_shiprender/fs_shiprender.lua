@@ -37,13 +37,7 @@ function init()
 		-- Remove all the blocks except the player spawn one from the block image
 		blockImage = blockImage .. "?replace"
 		for _, blockData in ipairs (blockKey) do
-			local removeBlock = true
-			for _, flag in ipairs (blockData.flags or {}) do
-				if flag == "playerSpawn" then
-					removeBlock = false
-				end
-			end
-			if removeBlock then
+			if not blockData.anchor then
 				local hexColour = ""
 				local i = 1
 				while i <= 3 do
