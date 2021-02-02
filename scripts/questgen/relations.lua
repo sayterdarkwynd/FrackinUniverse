@@ -754,8 +754,21 @@ QuestRelations.objectExists = defineQueryRelation("objectExists", true) {
 local function getRecipes(item)
 	local recipes = util.map(root.recipesForItem(item.itemName), QuestPredicands.Recipe.new)
 	recipes=util.filter(recipes, function (recipe) return #recipe.inputs > 0 end)
-	recipes=util.filter(recipes, function (recipe) return not contains(recipe.groups,"excludeFromQuests") end)
-	return recipes
+	local buffer={}
+	for _,recipe in pairs(recipes) do
+		local pass=true
+		for group,_ in pairs(recipe.groups) do
+			if group=="excludeFromQuests" then
+				pass=false
+				break
+			end
+		end
+		if pass then
+			table.insert(buffer,recipe)
+		end
+	end
+	--recipes=buffer--util.filter(recipes, function (recipe) return not contains(recipe.groups,"excludeFromQuests") end)
+	return buffer
 end
 
 local function recipeExists(recipe, item)
