@@ -18,13 +18,13 @@ function frackinship.getRaceList()
 end
 
 -- Copied from terminal code
-function frackinship.CompareRaces(raceA, raceB)
-	local a = fsComparableName(raceA)
-	local b = fsComparableName(raceB)
+function frackinship.compareRaces(raceA, raceB)
+	local a = frackinship.comparableName(raceA)
+	local b = frackinship.comparableName(raceB)
 	return a < b
 end
 
-function frackinship.ComparableName(name)
+function frackinship.comparableName(name)
 	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> Madness
 		:gsub('ū', 'u')
 		:upper()
