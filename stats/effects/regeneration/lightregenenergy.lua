@@ -3,7 +3,6 @@ require "/scripts/util.lua"
 require "/scripts/interp.lua"
 
 function init()
-	local bounds = mcontroller.boundBox()
 	self.healingRate = 1.01
 	self.healingTime=config.getParameter("healTime", 320)
 	script.setUpdateDelta(5)
