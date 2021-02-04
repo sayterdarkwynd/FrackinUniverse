@@ -1,5 +1,4 @@
 function init()
-	--local bounds = mcontroller.boundBox()
 	script.setUpdateDelta(5)
 	self.tickDamagePercentage = 0.0005
 	self.tickTime = 5.0
