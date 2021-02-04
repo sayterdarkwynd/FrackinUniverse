@@ -1,58 +1,19 @@
 {
-	"type": "fucultistbuilder",
-	"baseType": "merchant",
-
-	"damageTeam": 1,
-
+  "type" : "fucultist",
+  "baseType" : "villager",
+  
 	"disableWornArmor": true,
 
-	"scripts": [
-		"/npcs/bmain.lua"
-	],
-	"initialScriptDelta": 5,
-	"scriptConfig": {
-		"questGenerator": {
-			"pools": ["common", "tenant"],
-			"enableParticipation": true,
-			"timeLimit": 5
-		},
-
-		"graduation": {
-			"nextNpcType": [
-				[1, "crewmember"],
-				[0.2, "crewmemberhobo"],
-				[0.1, "crewmembergreg"],
-				[0.7, "crewmembercultist"]
-			]
-		},
-
-		"merchant": {
-			"waitTime": 40,
-			"storeRadius": 8,
-			"poolsFile": "/npcs/merchantpools.config",
-			"categories": {
-				"override": ["futemplemerchant"]
-			},
-			"buyFactorRange": [1.2, 3.0],
-			"sellFactorRange": [0.2, 0.2],
-			"numItems": 12,
-			"paneLayoutOverride": {
-				"windowtitle": {
-					"title": "  Eldritch Temple Construction",
-					"subtitle": "  The Building Blocks of Madness"
-
-				}
-			}
-		},
-
-		"dialog": {
-			"merchant": {
-				"start": "/dialog/eldermerchant.config:merchantStart",
-				"end": "/dialog/eldermerchant.config:merchantEnd",
-				"follow": "/dialog/eldermerchant.config:follow",
-				"welcome": "/dialog/eldermerchant.config:welcome",
-				"tout": "/dialog/eldermerchant.config:tout"
-			},
+  "scriptConfig" : {
+    "questGenerator" : {
+      "pools" : ["common", "tenant"],
+	  },
+      "graduation" : {
+        "nextNpcType" : [
+          [1, "crewmembercultist"]
+        ]
+      },
+  		"dialog": {
 			"flee": {
 				"helpme": "/dialog/flee.config:helpme",
 				"safe": "/dialog/flee.config:safe"
@@ -72,36 +33,34 @@
 			},
 			"accuse": "/dialog/thief.config:accuse",
 			"alert": "/dialog/thief.config:alert"
-
-
 		}
-
-
 	},
 
-	"items": {
-		"override": [
-			[0, [{
-				"head": [{
-					"name": "cultcrown",
-					"parameters": {
-						"colorIndex": 0
-					}
-				}],
-				"chest": [{
-					"name": "cultarmorchest",
-					"parameters": {
-						"colorIndex": 0
-					}
-				}],
-				"legs": [{
-					"name": "cultarmorpants",
-					"parameters": {
-						"colorIndex": 0
-					}
-				}]
-			}]]
-		]
-	}
-
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "cultisthead" },
+              { "name" : "cultarmorhead" },
+              { "name" : "cultcrown" },
+              { "name" : "fuarmoredcultisthead" },
+              { "name" : "fuexosuitheadkhe" }
+            ],
+            "chest" : [
+              { "name" : "cultistchest" },
+              { "name" : "cultarmorchest" },
+              { "name" : "fuarmoredcultistchest" },
+              { "name" : "fuexosuitchestkhe" }
+            ],
+            "legs" : [
+              { "name" : "cultistclegs" },
+              { "name" : "cultarmorlegs" },
+              { "name" : "fuarmoredcultistlegs" },
+              { "name" : "fuexosuitlegskhe" }
+            ]
+          }
+        ] ]
+    ]
+  }
 }
