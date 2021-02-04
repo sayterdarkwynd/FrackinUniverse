@@ -699,7 +699,7 @@ end
 function ageQueen(amount)
 	--if changing this, make sure it matches in beeBuilder.lua
 	local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * 2.0
-
+    local fullLifespan = fullLifespan * (1 + frameBonuses.queenLifespan)  --test , new. 2021/02/04. Adds frame bonus to total, which was missing before
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then
 	  queen.parameters.lifespan = fullLifespan
 	end
