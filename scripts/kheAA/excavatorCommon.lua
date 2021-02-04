@@ -29,6 +29,7 @@ function excavatorCommon.init()
 	local buffer=""
 	transferUtil.loadSelfContainer()
 	if self.disabled then
+		storage.state="disabled"
 		sb.logInfo("excavatorCommon disabled on non-objects (current is \"%s\") for safety reasons.",entityType.entityType())
 		return
 	end
@@ -102,8 +103,13 @@ function excavatorCommon.cycle(dt)
 		end
 	end
 
-	setRunning(true)
 	excavatorCommon.mainDelta = (excavatorCommon.mainDelta or 100) + dt--DO NOT INCREMENT ELSEWHERE
+	if not storage.state then
+		excavatorCommon.init()
+		return
+	end
+	if storage.state=="disabled" then return end
+	setRunning(true)
 	time = (time or (dt*-1)) + dt
 	if time > 10 then
 		local pos = storage.position
@@ -120,6 +126,10 @@ function excavatorCommon.cycle(dt)
 		time=0
 	end
 	states[storage.state](dt)
+end
+
+function states.disabled(dt)
+	return
 end
 
 function states.start(dt)

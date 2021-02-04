@@ -23,7 +23,7 @@ function update(dt)
 
 	if status.overConsumeResource("energy",cost) then
 		if status.resourcePositive("energyRegenBlock") then
-			self.damageBonus=self.damageBonus*(1+(0.08*dt))
+			self.damageBonus=math.min(self.damageBonus*(1+(0.08*dt)),3.0)
 		end
 	end
 

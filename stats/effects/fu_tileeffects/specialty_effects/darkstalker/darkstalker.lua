@@ -10,7 +10,6 @@ function init()
 	script.setUpdateDelta(1)
 	self.timers = {}
 
-	--local bounds = mcontroller.boundBox()
 	effect.addStatModifierGroup({{stat = "energyRegenPercentageRate", baseMultiplier = 0.7 }})
 
 	--test

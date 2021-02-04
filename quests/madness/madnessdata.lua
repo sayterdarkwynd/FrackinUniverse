@@ -39,6 +39,7 @@ function init()
 
     storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
 
+  
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
 	status.removeEphemeralEffect("partytime5")
@@ -75,6 +76,8 @@ function init()
 		table.insert(self.resistList,stat)
 	end
 	status.setPersistentEffects("madnessAFKPenalty",{})
+
+	checkInitGap()
 end
 
 function indexOf(t,v1)
@@ -480,8 +483,12 @@ function update(dt)
 				self.madnessResearchBonus = 0
 			end
 		end
-		-- apply the total
-		self.researchBonus = self.threatBonus + self.madnessResearchBonus
+        
+        --time based research increases
+        -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK resets it.
+        checkPassiveTimerBonus()
+	    
+		self.researchBonus = storage.timedResearchBonus + self.threatBonus + self.madnessResearchBonus
 
 		self.bonus = self.researchBonus + (self.protheonCount) --status.stat("researchBonus") + self.researchBonus
 		if self.timerCounter >= (1+afkLvl) then
@@ -544,10 +551,54 @@ function update(dt)
 		if (status.statPositive("mentalProtection")) then
 			player.consumeCurrency("fumadnessresource", self.protectionBonus)
 		end
-		self.bonusTimer = 40.0 / (1.0+self.freudBonus)
+		self.bonusTimer = 40.0 / (1.0 + self.freudBonus)
 		--displayBar()
 	end
 end
+
+----------------------------------------------------------------------------------
+-- passive research gain based on Play Time
+function checkPassiveTimerBonus()
+	-- set timer
+	storage.activeTime=(storage.activeTime or 0)+1
+	--sb.logInfo("storage.activeTime c %s %s",storage.activeTime,storage.lastTime)
+	local afkLvl=afkLevel() -- if we arent AFK, apply the bonus
+	if afkLvl <= 2 then
+	    passiveRadioMessage()
+	    applyPassiveBonus()
+	else
+		storage.timedResearchBonus = 0  -- reset bonus if AFK
+    end	
+end
+
+function checkInitGap()
+	--sb.logInfo("storage.activeTime a %s %s",storage.activeTime,storage.lastTime)
+	local currentTime=os.time()
+	storage.lastTime=storage.lastTime or currentTime
+	local gap=math.abs(currentTime-storage.lastTime)
+	--sb.logInfo("storage.activeTime b %s %s",storage.activeTime,storage.lastTime)
+	storage.activeTime=((not (gap > 60.0)) and storage.activeTime) or 0
+end
+
+function applyPassiveBonus()	
+	if storage.activeTime > 10800 then
+		storage.timedResearchBonus = 3	
+	elseif storage.activeTime > 7200 then
+		storage.timedResearchBonus = 2
+	elseif storage.activeTime > 3600 then
+		storage.timedResearchBonus = 1
+	else
+		storage.timedResearchBonus = 0 -- reset bonus if timer is less than 30 minutes
+	end
+end
+
+function passiveRadioMessage()
+    if storage.activeTime == 3600 then player.radioMessage("researchBonus1") end
+    if storage.activeTime == 7200 then player.radioMessage("researchBonus2") end
+    if storage.activeTime == 10800 then player.radioMessage("researchBonus3") end	
+end
+----------------------------------------------
+
 
 --display madness bar
 function displayBar()
@@ -638,4 +689,6 @@ function uninit()
 	status.setPersistentEffects("madnessEffectsMain",{})
 	status.setPersistentEffects("madnessAFKPenalty",{})
 	world.sendEntityMessage(self.playerId,"removeBar","madnessBar")
+	storage.timedResearchBonus = 0
+	storage.lastTime=os.time()
 end

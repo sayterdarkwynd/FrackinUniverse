@@ -13,6 +13,7 @@ NOTICE:
  
  > [boolean] means that THE VALUE IS A SWITCH, AND MUST BE OFF (0) OR ON (1). No other values are legal.
 
+ > [fixed]: special case. stat comes only in specific values
 
 RESISTANCES: These use float values (0.5 is 50% Resistance)
 	ELEMENTAL:
@@ -138,3 +139,4 @@ OTHER:
     bowDrawTimeBonus                [amount]              [Unknown]
     
     fuCharisma                      [baseMultiplier]	  [1-Relative] Used for trading on space stations.
+	fuFoodTrackerHandler			[fixed]				  [-1,0,1] set by fu_player_init. -1 means food isnt draining,1 means it is, 0 means the value isnt initialized.
