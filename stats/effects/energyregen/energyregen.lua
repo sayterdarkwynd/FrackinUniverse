@@ -5,7 +5,7 @@ function init()
 
 	handler=effect.addStatModifierGroup({
 		{stat = "energyRegenPercentageRate", amount = config.getParameter("regenBonusAmount", 10)},
-		{stat = "energyRegenBlockTime", effectiveMultiplier = 0.1}--vanilla: 0
+		{stat = "energyRegenBlockTime", effectiveMultiplier = 0.05}--vanilla: 0
 	})
 end
 
