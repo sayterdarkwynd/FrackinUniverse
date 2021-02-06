@@ -679,16 +679,13 @@ function queenProduction()
 				droneSlot = i
 			end
 		end
-
-		-- If a slot with this type of drones was found, stack em into the inventory
-		-- Otherwise just add it to the inventory
+		-- If a slot with this type of drones was found, stack em into the inventory, Otherwise just add it to the inventory
 		if droneSlot then
 			world.containerStackItems(entity.id(), drones)
 		else
 			world.containerAddItems(entity.id(), drones)
 		end
 	end
-
 	-- Will not always reach here because of how I wrote the drone adding segment
 	ageQueen()
 end
@@ -698,8 +695,9 @@ end
 -- Can be called from other places (Like the frame scripts)
 function ageQueen(amount)
 	--if changing this, make sure it matches in beeBuilder.lua
-	local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * 2.0
-    local fullLifespan = fullLifespan * (1 + frameBonuses.queenLifespan)  --test , new. 2021/02/04. Adds frame bonus to total, which was missing before
+    local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * ((frameBonuses.queenLifespan or 0 / 8) + 1)
+    --sb.logInfo(fullLifespan)
+
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then
 	  queen.parameters.lifespan = fullLifespan
 	end
