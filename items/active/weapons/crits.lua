@@ -2,7 +2,7 @@ Crits = {}
 
 function Crits:setCritDamage(damage)
     local critChance = config.getParameter("critChance", 1) + status.stat("critChance")  -- Integer % chance to activate crit
-    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  % damage bonus to critical hits
+    local critBonus = config.getParameter("critBonus", 0) + status.stat("critBonus")     --  flat damage bonus to critical hits
     local critDamage = status.stat("critDamage")  -- % increase to crit damage multiplier (0.10 == +10% or 110% total additional damage)
 	--status.stat ONLY accepts ONE argument. and returns 0.0 if it is not found
 	local heldItem = world.entityHandItem(activeItem.ownerEntityId(), activeItem.hand())
