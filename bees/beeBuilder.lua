@@ -87,7 +87,7 @@ function build(directory, config, parameters, level, seed)
 		--local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") * 2.0 -- added a x2 so queen duration is 2x as high as previously due to overwhelming demand for longer-lived monarchs
 		
 		---24.4992 is the total for 2 stacks of Tech frames at 64 units
-        local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * ((frameBonuses.queenLifespan or 0 / 8) + 1)
+        local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") --* ((frameBonuses.queenLifespan or 0 / 8) + 1)
 
 		if not parameters.lifespan then
 			parameters.lifespan = fullLifespan 
