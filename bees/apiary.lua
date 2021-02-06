@@ -700,8 +700,8 @@ function ageQueen(amount)
 	--if changing this, make sure it matches in beeBuilder.lua
 	
 	---24.4992 is the total for 2 stacks of Tech frames at 64 units
-	local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * ((frameBonuses.queenLifespan or 1)  / 6) -- was *2.0, changed to account for frames
-	
+    local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * ((frameBonuses.queenLifespan or 0 / 8) + 1)
+
 	if not queen.parameters.lifespan or queen.parameters.lifespan < 0 then
 	  queen.parameters.lifespan = fullLifespan
 	end
