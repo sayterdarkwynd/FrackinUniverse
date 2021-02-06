@@ -84,8 +84,11 @@ function build(directory, config, parameters, level, seed)
 	if root.itemHasTag(config.itemName, "queen") then
 		require "/bees/genomeLibrary.lua"
 		--if changing this, make sure it matches in apiary.lua
-		local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") * 2.0 -- added a x2 so queen duration is 2x as high as previously due to overwhelming demand for longer-lived monarchs
-        --local fullLifespan = fullLifespan * (1 + frameBonuses.queenLifespan)  --test , new. 2021/02/04. Adds frame bonus to total, which was missing before
+		--local fullLifespan = genelib.statFromGenomeToValue(parameters.genome, "queenLifespan") * 2.0 -- added a x2 so queen duration is 2x as high as previously due to overwhelming demand for longer-lived monarchs
+		
+		---24.4992 is the total for 2 stacks of Tech frames at 64 units
+		local fullLifespan = genelib.statFromGenomeToValue(queen.parameters.genome, "queenLifespan") * ((frameBonuses.queenLifespan or 1)  / 6) -- was *2.0, changed to account for frames
+	
 
 		if not parameters.lifespan then
 			parameters.lifespan = fullLifespan 
