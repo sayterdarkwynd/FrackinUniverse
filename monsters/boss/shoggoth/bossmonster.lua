@@ -17,6 +17,7 @@ function init()
 	self.isBlocked = false
 	self.willFall = false
 	self.hadTarget = false
+	self.failToMoveThreshold=3
 
 	self.queryTargetDistance = config.getParameter("queryTargetDistance", 120)
 	self.trackTargetDistance = config.getParameter("trackTargetDistance")
@@ -65,12 +66,35 @@ function update(dt)
 	self.healthLevel=status.resourcePercentage("health")
 	trackTargets(self.keepTargetInSight, self.queryTargetDistance, self.trackTargetDistance, self.switchTargetDistance)
 
+	if (self.levitationTimer and (self.levitationTimer > 0)) or ((self.failToMoveCounter or 0)>=self.failToMoveThreshold) then
+		if ((self.failToMoveCounter or 0)>=self.failToMoveThreshold) then
+			self.levitationTimer=4
+			self.failToMoveCounter=0
+			status.modifyResource("health",dt*0.1)
+		end
+		--[[if self.failToMoveCounter >=10 then
+			if currentPhase() then
+				self.phaseStates[currentPhase()].endState()
+			end
+			monster.setAggressive(false)
+			self.hadTarget = false
+			self.phase = nil
+			self.lastPhase = nil
+			setPhaseStates(self.phases)
+			--status.addEphemeralEffect("invulnerable",1.0)
+			status.setResourcePercentage("health",1.0)
+			mcontroller.setPosition(self.spawnPosition)
+			self.failToMoveCounter=0
+		end]]
+		status.addEphemeralEffect("levitation",0.1)
+	end
+	self.levitationTimer=(self.levitationTimer or 0) - dt
+
 	for skillName, params in pairs(self.skillParameters) do
 		if type(_ENV[skillName].onUpdate) == "function" then
 			_ENV[skillName].onUpdate(dt)
 		end
 	end
-
 	if hasTarget() and status.resource("health") > 0 then
 		if self.hadTarget == false then
 			self.hadTarget = true
@@ -327,7 +351,6 @@ function flyTo(position, speed)
 end
 
 function handleProtection(on)
-	sb.logInfo("%s",self.dungeonIDList)
 	for id,_ in pairs(self.dungeonIDList or {}) do
 		world.setTileProtection(id,on)
 	end
@@ -337,8 +360,13 @@ end
 function move(delta, run, jumpThresholdX)
 	checkTerrain(delta[1])
 
-	mcontroller.controlMove(delta[1], run)
-
+	if ((self.failToMoveCounter or 0) < self.failToMoveThreshold) and (not self.levitationTimer or (self.levitationTimer <= 0)) then
+		mcontroller.controlMove(delta[1], run)
+	else
+		mcontroller.setVelocity({util.clamp(delta[1],-1,1)*1,1})
+		--sb.logInfo("%s",{delta,run,jumpThresholdX})
+		--mcontroller.controlMove({delta[1],100}, true)
+	end
 	-- destroy walls, etc
 	self.healthLevel = status.resourcePercentage("health")
 	self.randval = math.random(200)
@@ -367,9 +395,11 @@ function move(delta, run, jumpThresholdX)
 				if soundChance > 50 then
 					animator.playSound("shoggothChomp")
 				end
+				self.failToMoveCounter=(self.failToMoveCounter or 0) + 1
 				biteCounter = 0
 			end
 		else
+			self.failToMoveCounter=self.failToMoveCounter or 0
 			biteCounter=0.0
 		end
 		lastPos=ePos
@@ -388,10 +418,10 @@ function move(delta, run, jumpThresholdX)
 		end
 		--specialCounter = 0
 	end
-
 	if self.jumpTimer > 0 and not self.onGround then
 		mcontroller.controlHoldJump()
 	else
+		--self.jumpTimer=self.jumpTimer-script.updateDt()
 		if self.jumpTimer <= 0 then
 			if jumpThresholdX == nil then jumpThresholdX = 4 end
 
