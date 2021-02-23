@@ -72,23 +72,9 @@ function update(dt)
 			self.failToMoveCounter=0
 			status.modifyResource("health",dt*0.1)
 		end
-		--[[if self.failToMoveCounter >=10 then
-			if currentPhase() then
-				self.phaseStates[currentPhase()].endState()
-			end
-			monster.setAggressive(false)
-			self.hadTarget = false
-			self.phase = nil
-			self.lastPhase = nil
-			setPhaseStates(self.phases)
-			--status.addEphemeralEffect("invulnerable",1.0)
-			status.setResourcePercentage("health",1.0)
-			mcontroller.setPosition(self.spawnPosition)
-			self.failToMoveCounter=0
-		end]]
 		status.addEphemeralEffect("levitation",0.1)
 	end
-	self.levitationTimer=(self.levitationTimer or 0) - dt
+	self.levitationTimer=math.max(0,(self.levitationTimer or 0) - dt)
 
 	for skillName, params in pairs(self.skillParameters) do
 		if type(_ENV[skillName].onUpdate) == "function" then
@@ -360,7 +346,7 @@ end
 function move(delta, run, jumpThresholdX)
 	checkTerrain(delta[1])
 
-	if ((self.failToMoveCounter or 0) < self.failToMoveThreshold) and (not self.levitationTimer or (self.levitationTimer <= 0)) then
+	if ((self.failToMoveCounter or 0) < self.failToMoveThreshold) and ((not self.levitationTimer) or (self.levitationTimer <= 0)) then
 		mcontroller.controlMove(delta[1], run)
 	else
 		mcontroller.setVelocity({util.clamp(delta[1],-1,1)*1,1})
