@@ -404,7 +404,7 @@ function move(delta, run, jumpThresholdX)
 		end
 		--specialCounter = 0
 	end
-	if self.jumpTimer > 0 and not self.onGround then
+	--[[if self.jumpTimer > 0 and not self.onGround then
 		mcontroller.controlHoldJump()
 	else
 		--self.jumpTimer=self.jumpTimer-script.updateDt()
@@ -427,7 +427,7 @@ function move(delta, run, jumpThresholdX)
 				mcontroller.controlJump()
 			end
 		end
-	end
+	end]]
 
 	if delta[2] < 0 then
 		mcontroller.controlDown()
