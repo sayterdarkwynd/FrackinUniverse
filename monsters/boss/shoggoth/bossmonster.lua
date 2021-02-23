@@ -59,6 +59,8 @@ function init()
 end
 
 function update(dt)
+	dungeonIDCheck=math.min((dungeonIDCheck or 0)-dt)
+	world.debugPoint(entity.position(),"red")
 	self.tookDamage = false
 	self.healthLevel=status.resourcePercentage("health")
 	trackTargets(self.keepTargetInSight, self.queryTargetDistance, self.trackTargetDistance, self.switchTargetDistance)
@@ -314,14 +316,21 @@ function checkWalls(direction)
 	end
 
 	local lineEnd = {lineStart[1] + direction * 3, lineStart[2]}
-
-	return world.lineTileCollision(lineStart, lineEnd, {"Null", "Block", "Dynamic"})
+	local success=world.lineTileCollision(lineStart, lineEnd, {"Null", "Block", "Dynamic"})
+	return success
 end
 
 function flyTo(position, speed)
 	if not speed then speed = mcontroller.baseParameters().flySpeed end
 	local toPosition = vec2.norm(world.distance(position, mcontroller.position()))
 	mcontroller.controlFly(vec2.mul(toPosition, speed))
+end
+
+function handleProtection(on)
+	sb.logInfo("%s",self.dungeonIDList)
+	for id,_ in pairs(self.dungeonIDList or {}) do
+		world.setTileProtection(id,on)
+	end
 end
 
 --------------------------------------------------------------------------------
@@ -343,17 +352,30 @@ function move(delta, run, jumpThresholdX)
 
 
 	--specialCounter = specialCounter + 1--timer so these dont spam
-	biteCounter = biteCounter + 1--timer so these dont spam
-	soundChance = math.random(100)
-	if biteCounter >= 70 then
-		if (self.randval2 >= 70) then
-			world.spawnProjectile("shoggothchompexplosion2",mcontroller.position(),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
-			world.spawnProjectile("shoggothchompexplosion2",vec2.add(mcontroller.position(),{mcontroller.facingDirection()*4,0}),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
-			if soundChance > 50 then
-				animator.playSound("shoggothChomp")
+	if (movementPulseTimer or 0) <= 0 then
+		local ePos=mcontroller.position()
+		if not lastPos then lastPos=ePos end
+		if vec2.mag(world.distance(lastPos,ePos))<1.0 then
+			
+			biteCounter = (biteCounter or 0) + 1--timer so these dont spam
+			soundChance = math.random(100)
+			if biteCounter >= 3 then
+				self.doBite=(self.randval2 >= 70)
+				ePos[2]=ePos[2]-8
+				world.spawnProjectile("shoggothchompexplosion2",ePos,entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
+				world.spawnProjectile("shoggothchompexplosion2",vec2.add(ePos,{mcontroller.facingDirection()*4,0}),entity.id(),{mcontroller.facingDirection(),-20},false,spit1)
+				if soundChance > 50 then
+					animator.playSound("shoggothChomp")
+				end
+				biteCounter = 0
 			end
+		else
+			biteCounter=0.0
 		end
-		biteCounter = 0
+		lastPos=ePos
+		movementPulseTimer=1.0
+	else
+		movementPulseTimer=movementPulseTimer-script.updateDt()
 	end
 
 	--specialCounter = specialCounter + script.updateDt()-- 1 --timer so these dont spam
@@ -416,22 +438,38 @@ function checkTerrain(direction)
 	else
 		blockLine = {monster.toAbsolutePosition({-boundBox[3] - 0.25, boundBox[4]}), monster.toAbsolutePosition({-boundBox[3] - 0.25, boundBox[2] - 1.0})}
 	end
-
+	if (not self.dungeonIDList) or (not dungeonIDCheck) or dungeonIDCheck <=0 then
+		self.dungeonIDList={}
+		local ePos=entity.position()
+		for xP=math.floor(ePos[1])-100,math.ceil(ePos[1])+100 do--math.floor(math.min(blockLine[1][1],blockLine[2][1])),math.ceil(math.max(blockLine[1][1],blockLine[2][1])) do
+			for yP=math.floor(ePos[2])-1,math.ceil(ePos[2])+1 do--math.floor(math.min(blockLine[1][2],blockLine[2][2])),math.ceil(math.max(blockLine[1][2],blockLine[2][2])) do
+				self.dungeonIDList[world.dungeonId({xP,yP})]=world.isTileProtected({xP,yP})
+			end
+		end
+		self.dungeonIDList[0]=nil
+		dungeonIDCheck=15
+	end
+	--world.debugPoly(blockLine,"red")
 	local blockBlocks = world.collisionBlocksAlongLine(blockLine[1], blockLine[2])
 	self.isBlocked = false
+	self.basicBlocked=false
+	self.hookBlocked=false
+	self.climbBlocked=false
 	if #blockBlocks > 0 then
 		--check for basic blockage
 		local topOffset = blockBlocks[1][2] - blockLine[2][2]
 		if topOffset > 2.75 then
 			self.isBlocked = true
+			self.basicBlocked=true
 		elseif topOffset > 0.25 then
 			--also check for that stupid little hook ledge thing
 			self.isBlocked = not world.pointTileCollision({blockBlocks[1][1] - direction, blockBlocks[1][2] - 1})
-
+			self.hookBlocked=self.isBlocked
 			if not self.isBlocked then
 				--also check if blocks above prevent us from climbing
 				topLine = {monster.toAbsolutePosition({boundBox[1], boundBox[4] + 0.5}), monster.toAbsolutePosition({boundBox[3], boundBox[4] + 0.5})}
 				self.isBlocked = world.lineTileCollision(topLine[1], topLine[2])
+				self.climbBlocked=self.isBlocked
 			end
 		end
 	end
