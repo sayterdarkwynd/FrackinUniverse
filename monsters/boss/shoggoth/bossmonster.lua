@@ -70,7 +70,7 @@ function update(dt)
 		if ((self.failToMoveCounter or 0)>=self.failToMoveThreshold) then
 			self.levitationTimer=4
 			self.failToMoveCounter=0
-			status.modifyResource("health",dt*0.01)
+			--status.modifyResource("health",dt*0.01)
 		end
 		status.addEphemeralEffect("levitation",0.1)
 	end
