@@ -14,18 +14,6 @@ function init()
 
 	self.monsterParams = self.monsterParams or {}
 	self.monsterParams.uniqueId = config.getParameter("monsterUniqueId")
-	local ePos=entity.position()
-	self.dungeonIDList={}
-	for xP=math.floor(ePos[1])-100,math.ceil(ePos[1])+100 do--math.floor(math.min(blockLine[1][1],blockLine[2][1])),math.ceil(math.max(blockLine[1][1],blockLine[2][1])) do
-		for yP=math.floor(ePos[2])-10,math.ceil(ePos[2])+1 do--math.floor(math.min(blockLine[1][2],blockLine[2][2])),math.ceil(math.max(blockLine[1][2],blockLine[2][2])) do
-			self.dungeonIDList[world.dungeonId({xP,yP})]=world.isTileProtected({xP,yP})
-		end
-	end
-	world.setTileProtection(0,true)
-	self.dungeonIDList[0]=nil
-	for id,_ in pairs(self.dungeonIDList) do
-		world.setTileProtection(id,true)
-	end
 end
 
 function onInteraction(args)
