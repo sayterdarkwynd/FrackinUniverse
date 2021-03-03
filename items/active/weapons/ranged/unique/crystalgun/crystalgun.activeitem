@@ -1,7 +1,7 @@
 {
   "itemName" : "crystalgun",
   "price" : 160,
-  "inventoryIcon" : "crystalgun.png",
+  "inventoryIcon" : "crystalgun.png:idle.1",
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "Blast foes with super-sharp flechettes of crystal. They'll thank you later. Maybe.",
@@ -13,10 +13,11 @@
   "itemTags" : ["weapon", "ranged", "shotgun", "upgradeableWeapon", "crystal", "lunari", "telebrium"],
   "twoHanded" : true,
 
-  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animation" : "/items/active/weapons/ranged/unique/crystalgun/crystalgun.animation",
   "animationParts" : {
     "butt" : "",
     "middle" : "crystalgun.png",
+	"middlefullbright" : "crystalgunfullbright.png",
     "barrel" : "",
     "muzzleFlash" : "/animations/muzzleflash/fuelectricmuzzle.png"
   },
@@ -27,8 +28,8 @@
     }
   },
 
-  "baseOffset" : [1.5, 0.32],
-  "muzzleOffset" : [1.645, 0.125],
+  "baseOffset" : [0.7, 0.32],
+  "muzzleOffset" : [1.645, 0],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -83,6 +84,7 @@
   "isAmmoBased" : 1,
   "magazineSize" : 6,
   "isShotgun" : 1,
+  
   
   "altAbilityType" : "crystalbomb",
 
