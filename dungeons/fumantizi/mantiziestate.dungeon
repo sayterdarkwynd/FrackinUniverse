@@ -41,40 +41,27 @@
     {
       "name" : "mantiziestatevillaleft1",
       "rules" : [
-        [ "maxSpawnCount", [1] ],
-        [ "doNotConnectToPart", [ "mantiziestatevillaleft1", "mantiziestatevillaleft2" ] ]
+        [ "maxSpawnCount", [2] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "mantiziestatevillaleft1" ] ]
       ],
       "def" : [ "tmx", "mantiziestatevillaleft1.json" ]
     },
     {
-      "name" : "mantiziestatevillaleft2",
-      "rules" : [
-        [ "maxSpawnCount", [1] ],
-        [ "doNotConnectToPart", [ "mantiziestatevillaleft1", "mantiziestatevillaleft2" ] ]
-      ],
-      "def" : [ "tmx", "mantiziestatevillaleft2.json" ]
-    },
-    {
       "name" : "mantiziestatevillaright1",
       "rules" : [
-        [ "maxSpawnCount", [1] ],
-        [ "doNotConnectToPart", [ "mantiziestatevillaright1", "mantiziestatevillaright2" ] ]
+        [ "maxSpawnCount", [2] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "mantiziestatevillaright1" ] ]
       ],
-      "def" : [ "tmx", "mantiziestatevillaright1.json" ]
-    },
-    {
-      "name" : "mantiziestatevillaright2",
-      "rules" : [
-        [ "maxSpawnCount", [1] ],
-        [ "doNotConnectToPart", [ "mantiziestatevillaright1", "mantiziestatevillaright2" ] ]
-      ],
-      "def" : [ "tmx", "mantiziestatevillaright2.json" ]
+      "def" : [ "tmx", "mantiziestatevillaright1.json" ],
+      "chance" : 0
     },
     
     {
       "name" : "mantiziestateconsulshouse",
       "rules" : [
-        [ "maxSpawnCount", [2] ],
+        [ "maxSpawnCount", [3] ],
         [ "doNotConnectToPart", [ "mantiziestateconsulshouse" ] ]
       ],
       "def" : [ "tmx", "mantiziestateconsulshouse.json" ]
@@ -83,7 +70,7 @@
     {
       "name" : "mantiziestategarden1",
       "rules" : [
-        [ "maxSpawnCount", [2] ],
+        [ "maxSpawnCount", [3] ],
         [ "doNotConnectToPart", [ "mantiziestategarden1", "mantiziestategarden2" ] ]
       ],
       "def" : [ "tmx", "mantiziestategarden1.json" ]
@@ -91,7 +78,7 @@
     {
       "name" : "mantiziestategarden2",
       "rules" : [
-        [ "maxSpawnCount", [2] ],
+        [ "maxSpawnCount", [3] ],
         [ "doNotConnectToPart", [ "mantiziestategarden1", "mantiziestategarden2" ] ]
       ],
       "def" : [ "tmx", "mantiziestategarden2.json" ]
@@ -129,23 +116,6 @@
         [ "doNotConnectToPart", [ "mantiziestateslums3" ] ]
       ],
       "def" : [ "tmx", "mantiziestateslums3.json" ]
-    },
-    
-    {
-      "name" : "mantiziestateshop1",
-      "rules" : [
-        [ "maxSpawnCount", [1] ],
-        [ "doNotConnectToPart", [ "mantiziestateshop1" ] ]
-      ],
-      "def" : [ "tmx", "mantiziestateshop1.json" ]
-    },
-    {
-      "name" : "mantiziestateshop2",
-      "rules" : [
-        [ "maxSpawnCount", [1] ],
-        [ "doNotConnectToPart", [ "mantiziestateshop2" ] ]
-      ],
-      "def" : [ "tmx", "mantiziestateshop2.json" ]
     }
   ]
 }
