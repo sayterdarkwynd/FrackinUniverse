@@ -24,8 +24,9 @@ function update(dt)
 	if not regenHPPerSecond then regenHPPerSecond=config.getParameter("regenHPPerSecond") or 0 end
 	healthPercent=status.resourcePercentage("health")
 	if not status.statPositive("healingStatusImmunity") then
-		healthPercent=math.min(healthPercent+(regenHPPerSecond*dt),1.0)
-		status.setResourcePercentage("health",healthPercent)
+		--healthPercent=math.min(healthPercent+(regenHPPerSecond*dt),1.0)
+		--status.setResourcePercentage("health",healthPercent)
+		status.modifyResourcePercentage("health",regenHPPerSecond*dt)
 	end
 
 	if healthPercent>1.0 then healthPercent=1.0 elseif healthPercent<0 then healthPercent=0 end
