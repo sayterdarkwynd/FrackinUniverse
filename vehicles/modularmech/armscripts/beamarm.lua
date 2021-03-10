@@ -78,8 +78,12 @@ function BeamArm:fireState()
     self.critChance = (self.parts.body.stats.energy/2) + math.random(100)
 
     self.largeLaser = self.stats.largeLaser or 0  -- non-mining lasers use this stat. Default is 10.
-    if self.largeLaser > 0 then self.basePower = 10 end -- make sure our base power is easily computed
-    self.applyBeamDamage = self.basePower * (1 + self.mechTier/10) * self.largeLaser
+    if self.largeLaser > 0 then
+      self.basePower = 10 -- make sure our base power is easily computed
+      self.applyBeamDamage = self.basePower * (1 + self.mechTier/10) * self.largeLaser
+    else
+      self.applyBeamDamage = self.basePower * (1 + self.mechTier/10) 
+    end
 
     pParams = config.getParameter("")  -- change this later to only read the relevant data, rather than all of it
 
