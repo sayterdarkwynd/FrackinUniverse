@@ -4,7 +4,7 @@
   "maxStack" : 1,
   "level" : 7,
   "rarity" : "legendary",
-  "description" : "Yep. It's a thing.",
+  "description" : "It slices, it dices...and acts as a makeshift walking stick.",
   "shortdescription" : "Chain Staff",
   "tooltipKind" : "sword2",
   "category" : "Quarterstaff",
@@ -19,12 +19,13 @@
   },
   "animationCustom" : { 
 	    "sounds" : {
-	      "fire" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ],
-	      "fire2" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ],
-	      "fire3" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ],
-	      "fire4" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ],
-	      "fire5" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ],
-	      "fire6" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/weapons/chainsword_flipslash.ogg" ]	      
+	      "idle" : [ "/sfx/tools/chainsword_idle.ogg"],
+	      "fire" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/tools/chainsaw_swing.ogg"],
+	      "fire2" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg" ],
+	      "fire3" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/tools/chainsaw_swing.ogg" ],
+	      "fire4" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg" ],
+	      "fire5" : [ "/sfx/weapons/chainsword_swing.ogg", "/sfx/tools/chainsaw_rev_down.ogg", "/sfx/tools/chainsaw_swing.ogg" ],
+	      "fire6" : [ "/sfx/weapons/chainsword_flipslash.ogg" ]	      
 	    }  	
   	},
 
@@ -86,6 +87,7 @@
 	        "fire1":{
 	          "duration":0.15, 
 	          "armRotation":-45, 
+	          "weaponAngularVelocity":-1600,
 	          "weaponRotation":-55, 
 	          "twoHanded":true, 
 	          "weaponOffset":[0,0.6], 
@@ -123,6 +125,7 @@
 	          "duration":0.15, 
 	          "armRotation":40, 
 	          "weaponRotation":-100, 
+	          "weaponAngularVelocity":1600,
 	          "weaponOffset":[0,-2], 
 	          "twoHanded":true, 
 	          "allowRotate":true, 
@@ -151,6 +154,7 @@
 	          "duration":0.15, 
 	          "armRotation":-45, 
 	          "weaponRotation":-55, 
+	          "weaponAngularVelocity":-1600,
 	          "twoHanded":true, 
 	          "weaponOffset":[0,0.5], 
 	          "allowRotate":true,
@@ -166,7 +170,8 @@
 	          "weaponOffset":[0,-2]
 	        },         
 	        "windup4":{"duration":0.1, "armRotation":-140, "weaponRotation":50, "weaponOffset":[0,0], "twoHanded":true, "allowRotate":true, "allowFlip":true}, 
-	        "preslash4":{"duration":0}, "fire4":{"duration":0.2, "armRotation":-20, "weaponRotation":-70, "weaponOffset":[0,-2], "twoHanded":true, "allowRotate":true, "allowFlip":true}, 
+	        "preslash4":{"duration":0}, 
+	        "fire4":{"weaponAngularVelocity":1600,"duration":0.2, "armRotation":-20, "weaponRotation":-70, "weaponOffset":[0,-2], "twoHanded":true, "allowRotate":true, "allowFlip":true}, 
 	        "wait4":{
 	          "duration":1.2, 
 	          "armRotation":-20, 
@@ -199,6 +204,7 @@
 	          "armRotation":-45, 
 	          "weaponRotation":-55, 
 	          "twoHanded":true, 
+	          "weaponAngularVelocity":-1600,
 	          "weaponOffset":[0,0.5], 
 	          "allowRotate":true,
 	          "allowFlip":false
@@ -213,7 +219,8 @@
 	          "weaponOffset":[0,-2]
 	        }, 
 	        "windup6":{"duration":0.2, "armRotation":170, "weaponRotation":90, "weaponOffset":[0,-1], "twoHanded":true, "allowRotate":true, "allowFlip":true}, 
-	        "preslash6":{"duration":0}, "fire6":{"duration":0.4, "armRotation":0, "weaponRotation":-90, "weaponOffset":[0,0], "twoHanded":true, "allowRotate":true, "allowFlip":true}, 
+	        "preslash6":{"duration":0}, 
+	        "fire6":{"weaponAngularVelocity":-2600,"duration":0.4, "armRotation":0, "weaponRotation":-90, "weaponOffset":[0,0], "twoHanded":true, "allowRotate":true, "allowFlip":true}, 
         	"wait6":{"duration":1.2, "armRotation":-85, "weaponRotation":-5, "allowRotate":true, "allowFlip":true, "twoHanded":true, "weaponOffset":[0,0.5]}
       }
   },
