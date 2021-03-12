@@ -72,12 +72,17 @@ end
 function MeleeSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
+	-- velocity check
+    velocityAdded = mcontroller.xVelocity()
+    if velocityAdded > 0.01 or velocityAdded < 0 then
+        activeHoldDamage = 1
+    else 
+        activeHoldDamage = 0
+    end 
+
 	self.lowEnergy=((status.resource("energy") <= 1) or (status.resourceLocked("energy")))
 
 	status.clearPersistentEffects("meleeEnergyLowPenalty")
-
-
-
 	-- FR
 	setupHelper(self, "meleeslash-fire")
     --self.hitsListener:update()

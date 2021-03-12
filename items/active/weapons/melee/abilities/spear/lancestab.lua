@@ -5,15 +5,14 @@ SpearStab = MeleeSlash:new()
 
 function SpearStab:init()
 	MeleeSlash.init(self)
-	self.holdDamageConfig = sb.jsonMerge(self.damageConfig, self.holdDamageConfig)
-    velocityAdded = mcontroller.xVelocity()    
-    self.holdDamageConfig.baseDamage = self.damageConfig.baseDamage / 2
+	self.holdDamageConfig = sb.jsonMerge(self.damageConfig, self.holdDamageConfig)  
     self.holdDamageConfig.baseDamage = self.holdDamageMultiplier * self.damageConfig.baseDamage   
+    velocityAdded = 0
+    self.spearMastery = 1 + status.stat("spearMastery")
 end
 
 function SpearStab:fire()
 	MeleeSlash.fire(self)
-
 	if self.fireMode == "primary" and self.allowHold ~= false then
         self:setState(self.hold)
         if self.blockCount == nil then
@@ -43,19 +42,16 @@ function SpearStab:hold()
 	self.weapon:setStance(self.stances.hold)
 	self.weapon:updateAim()
 	while self.fireMode == "primary" do
-        velocityAdded = mcontroller.xVelocity() 
-        if velocityAdded > 0 or velocityAdded < 0 then
+        if activeHoldDamage == 1 then -- do they have sufficient velocity? if so, apply bonus dmg
             self.holdDamageConfig.baseDamage = self.damageConfig.baseDamage / 2
             self.holdDamageConfig.knockback =  28   -- stable knockback so a charge can do some real damage
         else
             self.holdDamageConfig.baseDamage = self.holdDamageMultiplier * self.damageConfig.baseDamage
         end  
-
         local damageArea = partDamageArea("blade")
         self.weapon:setDamage(self.holdDamageConfig, damageArea)
         coroutine.yield()
 	end
-
 	self.cooldownTimer = self:cooldownTime()
 end
 
@@ -64,4 +60,7 @@ function SpearStab:uninit()
         self.helper:clearPersistent()
     end
 	self.blockCount = 0
+    --reset velocity checks
+    activeHoldDamage = 0
+    velocityAdded = 0
 end
