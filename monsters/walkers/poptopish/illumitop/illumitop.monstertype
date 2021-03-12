@@ -1,12 +1,12 @@
 {
-  "type" : "shadowtop",
-  "shortdescription" : "Shadowtop",
+  "type" : "illumitop",
+  "shortdescription" : "Illumitop",
   "description" : "A terrible mutation of the poptop. Aggressive and dangerous.",
 
-  "categories" : [ "shadowtop" ],
+  "categories" : [ "illumitop" ],
   "parts" : [ "body", "bodyfullbright" ],
 
-  "animation" : "shadowtop.animation",
+  "animation" : "illumitop.animation",
 
   "dropPools" : [
     {
@@ -23,14 +23,7 @@
   ], 
 
   "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua",
-      "/stats/monstereffects/monsterstatus_camouflage55.lua",
-      "/scripts/golemancer/gol_monstermain.lua"
-    ],
-  "tickEvoTime" : 5,
-  "agingEvoTime" : 500,
-  "evolutions" : [ "/scripts/golemancer/evolutions/adultshadowtop.evo" ],
+    "scripts" : ["/monsters/monster.lua"],
   
     "behavior" : "monster",
 
@@ -48,30 +41,7 @@
       "fleeActions" : [],
 
       "hostileActions" : [
-        {
-          "name" : "action-fire",
-          "cooldown" : 2.5,
-          "parameters" : {
-            "maximumRange" : 3,
-            "minimumRange" : 1,
-            "windupState" : "firewindup2",
-            "windupTime" : 0.5,
-
-            "projectileType" : "meleebite",
-            "fireOffset" : [0, 0.75],
-
-            "aimAtTarget" : false,
-            "projectileCount" : 1,
-            "inaccuracy" : 1,
-            "aimDirection" : [0,1],
-            "power" : 6,
-            "fireSound" : "fire",
-            "fireState" : "fire",
-
-
-            "winddownState" : ""
-          }
-        },           
+         
         {
           "name" : "action-fire",
           "cooldown" : 6,
@@ -80,10 +50,8 @@
             "minimumRange" : 10,
             "windupState" : "firewindup",
             "windupTime" : 0.4,
-
-            "projectileType" : "futarball",
+            "projectileType" : "energyassaultbomb",
             "fireOffset" : [0.875, 0.625],
-
             "aimAtTarget" : true,
             "projectileCount" : 1,
             "projectileInterval" : 0.15,
@@ -93,10 +61,8 @@
             "fireDelay" : 0.2,
             "fireArc" : true,
             "gravityMultiplier" : 0.25,
-            "fireSound" : "fire",
+            "fireSound" : "fire2",
             "fireState" : "fire",
-
-
             "winddownState" : ""
           }
         },   
@@ -108,13 +74,11 @@
             "maximumRange" : 15,
             "windupTime" : 0.25,
             "windupState" : "idle",
-
             "leapVelocity" : 35,
             "collisionCheck" : true,
             "highArc" : true,
             "leapState" : "jump",
             "fallState" : "fall",
-
             "winddownTime" : 0.6,
             "winddownState" : "idle"
           }
@@ -125,14 +89,12 @@
           "parameters" : {
             "maximumRange" : 12,
             "windupTime" : 0.5,
-
             "aimAtTarget" : true,
             "chargeTime" : [0.5, 0.5],
             "chargeSpeed" : 40,
             "chargeControlForce" : 300,
             "wallCrashSound" : "",
             "wallCrashEmitter" : "",
-
             "winddownTime" : 0.5
           }
         }
@@ -202,19 +164,19 @@
       "damage" : 14,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "shadow",
+      "damageSourceKind" : "hoarfrost",
       "knockback" : 20,
       "statusEffects" : [ ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 1.2,
+    "scale" : 1.0,
 
     "movementSettings" : {
       "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
 
       "mass" : 1.0,
-      "walkSpeed" : 3,
+      "walkSpeed" : 5,
       "runSpeed" : 11,
 
       "airFriction" : 0,
@@ -257,26 +219,45 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 90
+          "baseValue" : 70
         },
         "protection" : {
-          "baseValue" : 0.15
+          "baseValue" : 0.0
         },
         "healthRegen" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.05
         },
         "powerMultiplier" : {
           "baseValue" : 1.0
         },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1
-        }, 
-        "insanityImmunity" : {
+        "physicalResistance" : {
+          "baseValue" : 0.0
+        },
+        "fallDamageMultiplier" : { "baseValue" : 0.0 },
+        "fireResistance" : {
+          "baseValue" : 0.42
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.7
+        },
+        "iceStatusImmunity" : {
           "baseValue" : 1
         },
-        "wetImmunity" : {
-          "baseValue" : 1
-        }         
+        "electricResistance" : {
+          "baseValue" : 0.1
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonResistance" : {
+          "baseValue" : -0.2
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0
+        }      
       },
 
       "resources" : {
@@ -296,7 +277,6 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]//,
-    //"captureCollectables" : { "fu_monster" : "shadowtop" }
+    "nametagColor" : [64, 200, 200]
   }
 }

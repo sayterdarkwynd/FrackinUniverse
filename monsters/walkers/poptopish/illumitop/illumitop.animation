@@ -9,7 +9,7 @@
             "frames" : 1,
             "cycle" : 1,
             "properties" : {
-              "particleEmittersOff" : [ "music" ]
+              "particleEmittersOff" : [ "music", "spindust","rawr" ]
             }
           },
           "walk" : {
@@ -17,7 +17,7 @@
             "cycle" : 0.6,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "music" ]
+              "particleEmittersOff" : [ "music", "spindust","rawr" ]
             }
           },
          "run" : {
@@ -25,7 +25,7 @@
             "cycle" : 0.6,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "music" ]
+              "particleEmittersOff" : [ "music", "spindust","rawr" ]
             }
           },
           "stroll" : {
@@ -34,7 +34,8 @@
             "mode" : "loop",
             "properties" : {
               "particleEmittersOn" : [ "music" ],
-              "persistentSound" : "/sfx/npc/monsters/shadowwhistle.ogg",
+              "particleEmittersOff" : [ "spindust","rawr" ],
+              "persistentSound" : "/sfx/npc/monsters/illumitop_sing.ogg",
               "persistentSoundStopTime" : 0.5
             }
           },
@@ -42,7 +43,7 @@
             "frames" : 2,
             "cycle" : 0.5,
             "properties" : {
-              "particleEmittersOff" : [ "music" ],
+              "particleEmittersOff" : [ "music", "spindust","rawr" ],
               "immediateSound" : "/sfx/npc/monsters/monster_hop.ogg",
               "immediateSoundRangeMultiplier" : 0.5
             }
@@ -51,7 +52,7 @@
             "frames" : 2,
             "cycle" : 0.5,
             "properties" : {
-              "particleEmittersOff" : [ "music" ]
+              "particleEmittersOff" : [ "music", "spindust","rawr" ]
             }
           },
           "firewindup" : {
@@ -59,7 +60,8 @@
             "cycle" : 0.4,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "music" ],
+              "particleEmittersOff" : [ "music","rawr" ],
+              "particleEmittersOn" : [ "spindust" ],
               "immediateSound" : "/sfx/npc/monsters/spit_new.ogg",
               "immediateSoundRangeMultiplier" : 0.5
             }
@@ -69,14 +71,17 @@
             "cycle" : 0.4,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "music" ]
+              "particleEmittersOff" : [ "music", "spindust" ],
+              "particleEmittersOn" : [ "rawr" ],
+              "immediateSound" : "/sfx/npc/monsters/poptop_roar.ogg",
+              "immediateSoundRangeMultiplier" : 0.5              
             }
           },          
           "firewinddown" : {
             "frames" : 1,
             "cycle" : 0.1,
             "properties" : {
-              "particleEmittersOff" : [ "music" ]
+              "particleEmittersOff" : [ "music", "spindust","rawr" ]
             }
           },          
           "chargewindup" : {
@@ -84,14 +89,17 @@
             "cycle" : 0.4,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOff" : [ "music" ]
+              "particleEmittersOff" : [ "music","spindust" ],
+              "particleEmittersOn" : [ "rawr" ],
+              "immediateSound" : "/sfx/npc/monsters/poptop_roar.ogg",
+              "immediateSoundRangeMultiplier" : 0.5    
             }
           },
           "chargewinddown" : {
             "frames" : 1,
             "cycle" : 0.1,
             "properties" : {
-              "particleEmittersOff" : [ "music" ]
+              "particleEmittersOff" : [ "music", "spindust","rawr" ]
             }
           },
           "fire" : {
@@ -100,7 +108,7 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "particleEmittersOff" : [ "music" ],
+              "particleEmittersOff" : [ "music", "spindust","rawr" ],
               "immediateSound" : "/sfx/npc/monsters/shadowtopsnarl2.ogg"             
             }
           },                   
@@ -108,7 +116,7 @@
             "frames" : 4,
             "cycle" : 0.3,
             "properties" : {
-              "particleEmittersOff" : [ "music" ],
+              "particleEmittersOff" : [ "music", "spindust","rawr" ],
               "immediateSound" : "/sfx/npc/monsters/shadowtopsnarl.ogg"
             }
           }
@@ -334,6 +342,15 @@
     }
   },
 
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 2],
+      "color" : [12, 60, 60],
+      "pointLight" : true
+    }
+  },
+
   "particleEmitters" : {
     "music" : {
       "emissionRate" : 1,
@@ -342,6 +359,27 @@
         { "particle" : "music" }
       ]
     },
+    "rawr" : {
+      "emissionRate" : 4,
+      "position" : [0, 2],
+      "offsetRegion" : [ -0.0, 1.25, 0.0, 1.25 ],
+      "particles" : [
+        { "particle" : "soulseeker" },
+        { "particle" : "soulseeker2" },
+        { "particle" : "sparks" },
+        { "particle" : "sparks" }
+      ]
+    },     
+    "spindust" : {
+      "emissionRate" : 15,
+       "position" : [0, 2],
+      "offsetRegion" : [ 0.25, -0.25, 0.25, -0.25 ],
+      "particles" : [
+        { "particle" : "madnessstaff" },
+        { "particle" : "peglacitrail" },
+        { "particle" : "peglacitrail" }
+      ]
+    },    
     "deathPoof" : {
       "particles" : [
         { "particle" : "monstersplosion" },
