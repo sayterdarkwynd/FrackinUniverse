@@ -11,7 +11,8 @@ function MeleeSlash:init()
 	self.cooldownTimer = self:cooldownTime()
 
 	self.weapon.onLeaveAbility = function()
-	self.weapon:setStance(self.stances.idle)
+		self.weapon:setStance(self.stances.idle)
+		calculateMasteries() --determine any active Masteries
 	end
     -- **************************
     -- FR and FU values
@@ -21,23 +22,28 @@ function MeleeSlash:init()
     --self.killListener = damageListener("Kill", checkDamage)  --listen for kills
 end
 
---[[function calculateMasteries()
-	self.shortswordMastery = 1 + status.stat("shortswordMastery")
-	self.longswordMastery = 1 + status.stat("longswordMastery")
-	self.rapierMastery = 1 + status.stat("rapierMastery")
-	self.katanaMastery = 1 + status.stat("katanaMastery")
+function calculateMasteries()
 	self.daggerMastery = 1 + status.stat("daggerMastery")
-	self.broadswordMastery = 1 + status.stat("broadswordMastery")
-	self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")
-	self.maceMastery = 1 + status.stat("maceMastery")
-	self.shortspearMastery = 1 + status.stat("shortspearMastery")
 	self.hammerMastery = 1 + status.stat("hammerMastery")
 	self.axeMastery = 1 + status.stat("axeMastery")
 	self.spearMastery = 1 + status.stat("spearMastery")
-end]]
+end
+
+
 --[[
 function checkDamage(notifications)
-
+	if primaryTagCacheItem~=primaryItem then
+		primaryTagCache=primaryItem and tagsToKeys(fetchTags(root.itemConfig(primaryItem))) or {}
+		primaryTagCacheItem=primaryItem
+	elseif not primaryItem then
+		primaryTagCache={}
+	end
+	if altTagCacheItem~=altItem then
+		altTagCache=altItem and tagsToKeys(fetchTags(root.itemConfig(altItem))) or {}
+		altTagCacheItem=altItem
+	elseif not altItem then
+		altTagCache={}
+	end
   for _,notification in pairs(notifications) do
     --check for individual hits
     if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
@@ -66,12 +72,17 @@ end
 function MeleeSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
+	-- velocity check
+    velocityAdded = mcontroller.xVelocity()
+    if velocityAdded > 0.01 or velocityAdded < 0 then
+        activeHoldDamage = 1
+    else 
+        activeHoldDamage = 0
+    end 
+
 	self.lowEnergy=((status.resource("energy") <= 1) or (status.resourceLocked("energy")))
 
 	status.clearPersistentEffects("meleeEnergyLowPenalty")
-
-
-
 	-- FR
 	setupHelper(self, "meleeslash-fire")
     --self.hitsListener:update()
