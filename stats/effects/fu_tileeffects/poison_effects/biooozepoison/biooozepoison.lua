@@ -5,8 +5,7 @@ function init()
 	self.tickTime = 2.0
 	self.tickTimer = self.tickTime
 	self.baseDamage = config.getParameter("healthDown",0)
-	--self.baseTime = setEffectTime() --never actually used for anything.
-	effect.addStatModifierGroup({
+	shrubbery=effect.addStatModifierGroup({
 		{ stat = "physicalResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
 		{ stat = "fireResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
 		{ stat = "electricResistance", amount = -self.baseDamage*((status.statPositive("specialStatusImmunity") and 0.25) or 1) },
@@ -16,13 +15,8 @@ function init()
 	})
 end
 
---see comment about self.baseTime
---[[function setEffectTime()
-	return self.tickTimer * math.min(1 - status.stat("poisonResistance"), 0.45)
-end]]
-
 function update(dt)
-	if ( status.stat("poisonResistance")	>= 0.4 ) then
+	if ( status.stat("poisonResistance") >= 0.4 ) then
 		effect.expire()
 	end
 
@@ -39,5 +33,8 @@ function update(dt)
 end
 
 function uninit()
-
+	if shrubbery then
+		effect.removeStatModifierGroup(shrubbery)
+		shrubbery=nil
+	end
 end
