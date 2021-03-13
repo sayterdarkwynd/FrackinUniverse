@@ -1,49 +1,49 @@
 {
-	"objectName" : "fu_blastfurnace",
-	"rarity" : "rare",
-	"colonyTags" : [ "science" ],
-	"description" : "A superior furnace for processing mass quantities. Can smelt up to ^cyan;rare^reset; ores, and many more materials. ^cyan;Requires ^orange;50W ^cyan;power.^reset;",
-	"shortdescription" : "^cyan;Blast Furnace^white;",
-	"race" : "generic",
-	"category" : "^orange;Extraction Device^reset;",
-	"price" : 2000,
-	"objectType" : "container",
-	"printable" : false,
+  "objectName" : "fu_blastfurnace",
+  "rarity" : "rare",
+  "colonyTags" : [ "science" ],
+  "description" : "A superior furnace for processing mass quantities. Can smelt up to ^cyan;rare^reset; ores, and many more materials. ^cyan;Requires ^orange;50W ^cyan;power.^reset;",
+  "shortdescription" : "^cyan;Blast Furnace^white;",
+  "race" : "generic",
+  "category" : "^orange;Extraction Device^reset;",
+  "price" : 2000,
+  "objectType" : "container",
+  "printable" : false,
  // "learnBlueprintsOnPickup" : [ "isn_arcsmelter" ],
-	"scripts" : [ "/scripts/fupower.lua","/objects/power/fu_furnace_common.lua" ],
-	"scriptDelta" : 10,
-	"openSounds" : [ "/sfx/objects/campfire_use.ogg" ],
-	"slotCount" : 15,
-	"uiConfig" : "/objects/power/fu_blastfurnace/fu_blastfurnace.config",
-	"frameCooldown" : 67,
-	"autoCloseCooldown" : 3600,
+  "scripts" : [ "/scripts/fupower.lua","/objects/power/fu_furnace_common.lua" ],
+  "scriptDelta" : 10,
+  "openSounds" : [ "/sfx/objects/campfire_use.ogg" ],
+  "slotCount" : 15,
+  "uiConfig" : "/objects/power/fu_blastfurnace/fu_blastfurnace.config",
+  "frameCooldown" : 67,
+  "autoCloseCooldown" : 3600,
 
-	"animation" : "/objects/power/fu_blastfurnace/fu_blastfurnace.animation",
+  "animation" : "/objects/power/fu_blastfurnace/fu_blastfurnace.animation",
 
-	"animationParts" : {
-		"fu_blastfurnace" : "fu_blastfurnace.png",
-	    "fu_blastfurnacefullbright" : "fu_blastfurnacefullbright.png"
-	},
-	"animationPosition" : [0, 0],
+  "animationParts" : {
+    "fu_blastfurnace" : "fu_blastfurnace.png",
+      "fu_blastfurnacefullbright" : "fu_blastfurnacefullbright.png"
+  },
+  "animationPosition" : [0, 0],
 
-	"inventoryIcon" : "fu_blastfurnace_inv.png",
-	"orientations" : [
-		{
-			"dualImage" : "fu_blastfurnace.png:<color>.<frame>",
-			"imagePosition" : [0, 0],
-			"spaceScan" : 0.1,
-			"anchors" : [ "bottom" ]
-		}
-	],
+  "inventoryIcon" : "fu_blastfurnace_inv.png",
+  "orientations" : [
+    {
+      "dualImage" : "fu_blastfurnace.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
 
 
-	"inputNodes" : [ [2, 2] ],
-	"outputNodes" : [ [2, 1] ],
+  "inputNodes" : [ [2, 2] ],
+  "outputNodes" : [ [2, 1] ],
 
-	"powertype" : "input",
-	"isn_requiredPower" : 50,//this is multiplied by fu_timer, which is how long between crafts, so it averages to 50W
-	"fu_timer" : 0.5,
-	"fu_extraConsumptionChance" : 0.25,
+  "powertype" : "input",
+  "isn_requiredPower" : 50,//this is multiplied by fu_timer, which is how long between crafts, so it averages to 50W
+  "fu_timer" : 0.5,
+  "fu_extraConsumptionChance" : 0.25,
 
   "inputsToOutputs": {
    
@@ -70,7 +70,6 @@
     "triangliumore": "triangliumpyramid",
     "prisiliteore": "prisilitestar",
     "quietusore": "quietusbar",
-    "effigiumore": "effigiumbar",
     "aegisaltore": "refinedaegisalt",
     "violiumore": "refinedviolium",
     "feroziumore": "refinedferozium",
@@ -79,6 +78,7 @@
     "thoriumore": "thoriumrod",
     
     //Legendary Ores (T6)
+    //"effigiumore": "effigiumbar",
     //"solariumore": "solariumstar",
     //"pyreiteore": "pyreitebar",
     //"isogenore": "isogenbar",
@@ -157,7 +157,6 @@
     "triangliumore": { "ff_mercury": 28, "ff_silicon": 25 },
     "prisiliteore": { "liquidgravrain": 25, "fu_oxygen": 25 },
     "quietusore": { "shadowgasliquid": 22, "ff_silicon": 25 },
-    "effigiumore": { "deuterium": 42, "iodine": 45 },
     "aegisaltore": { "helium3gasliquid": 22, "staticcell": 20 },
     "feroziumore": { "fu_hydrogen": 22, "iodine": 25 },
     "violiumore": { "fu_carbon": 28 },
@@ -166,6 +165,7 @@
     "thoriumore": { "lead": 8, "unstableparticles": 10 },
     
     //Legendary Ores (T6)
+    //"effigiumore": { "deuterium": 42, "iodine": 45 },
     //"solariumore": { "ultronium": 8 },
     //"pyreiteore": { "scorchedcore": 32, "volatilepowder": 35 },
     //"isogenore": { "icecrystal": 32, "cryonicextract": 35 },
