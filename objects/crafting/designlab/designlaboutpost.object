@@ -24,8 +24,6 @@
   "description" : "Create plants from raw materials.",
   "shortdescription" : "^orange;Greenhouse^white;",
 
- // "learnBlueprintsOnPickup" : [ "fu_growingtray" ],
-
   "startingUpgradeStage" : 1,
   "maxUpgradeStage" : 3,
 
@@ -43,7 +41,12 @@
       },
 
       "interactData" : {
-        "config" : "/interface/windowconfig/fuempty.config"
+        "config" : "/interface/windowconfig/fuempty.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^red;UNAUTHORIZED ACCESS DETECTED^white;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Access to terminal disabled."}
+        } 
       },
 
       "upgradeSoundEffect" : "fanfare",
