@@ -59,16 +59,14 @@
     "energyUsage" : 45.0,
     "inaccuracy" : 0.050,
 	
-	"chargeTime" : 1.347,
-	"resetTime" : 1.4,
+	  "chargeTime" : 1.347,
+	  "resetTime" : 1.4,
 	
-	"walkWhileFiring" : true,
+	  "walkWhileFiring" : true,
 
     "projectileType" : "brainbullet2",
-	"projectileCount" : 1,
-	"projectileParameters" : { 
-          "knockback" : 3.5
-        },
+	  "projectileCount" : 1,
+	  "projectileParameters" : { "knockback" : 3.5},
 
     "stances" : {
       "idle" : {
@@ -136,5 +134,35 @@
     }
   },
   
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  
+    "upgradeParameters" : {
+    "shortdescription" : "^cyan;Chaingun of Destiny^reset; ^yellow;",
+    "description" : "Nothing compares. Anywhere.
+^cyan;Counts as 'plasma' for set bonuses^reset;
+^yellow;Heavy. Extreme fire rate^reset;",
+
+  "animationParts" : {
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle1.png",
+    "charge" : "warden2.png",
+    "chargehold" : "wardenhold2.png"
+  },
+
+    "primaryAbility" : {
+      "fireTime" : 0.045,
+      "baseDps" : 30,
+      "energyUsage" : 44.0,
+      "inaccuracy" : 0.05,
+    
+      "chargeTime" : 1.2,
+      "resetTime" : 1.2,
+    
+      "walkWhileFiring" : true,
+
+      "projectileType" : "brainbullet2",
+      "projectileCount" : 2,
+      "projectileParameters" : { "knockback" : 5},    
+    }   
+  }  
 }
