@@ -14,12 +14,12 @@ function populateMaterialsList()
         local system ={location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}}
         if worldId[1]=="InstanceWorld" then
             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-            widget.setText(path .. ".text", "This is a Instance World")
+            widget.setText(path .. ".text", "This is a Instance World. Instance World do not contain relevant GPS data. Please travel to a planet surface.")
             -- More info about the dungeon could be added here
         else
             if worldId[1]=="ClientShipWorld" then
                 local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                widget.setText(path .. ".text", "This is a Ship World")
+                widget.setText(path .. ".text", "This is a Ship World. Ship Worlds do not contain relevant GPS data. Please travel to a planet surface.")
                 -- More info about the ship could be added here
             else
                 if worldId[1]=="CelestialWorld" then
@@ -39,7 +39,7 @@ function populateMaterialsList()
 
                     -- print coord
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Coordinate X:^reset; "..system.location[1].."                        ^green;Coordinate Y:^reset; "..system.location[2])
+                    widget.setText(path .. ".text", "^green;Coordinate X:^reset; "..system.location[1].."               ^green;Coordinate Y:^reset; "..system.location[2])
 
                     -- print planet
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
@@ -67,12 +67,12 @@ function populateMaterialsList()
                     local pos = world.entityPosition(player.id())
                     -- print pos
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Position X:^reset; "..math.floor(pos[1]).."                        ^green;Position Y:^reset; "..math.floor(pos[2]))
+                    widget.setText(path .. ".text", "^green;Position X:^reset; "..math.floor(pos[1]).."                             ^green;Position Y:^reset; "..math.floor(pos[2]))
 
                     local size = world.size() or {0,0}
                     -- print world size
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Width:^reset; "..size[1].."                        ^green;Height:^reset; "..size[2])
+                    widget.setText(path .. ".text", "^green;Width:^reset; "..size[1].."                                 ^green;Height:^reset; "..size[2])
 
                     -- print planet threat
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
