@@ -1,19 +1,20 @@
 {
-	"objectName": "network_quarryiron",
+	"objectName": "network_quarryultra",
 	"colonyTags": ["wired"],
 	"printable": false,
-	"rarity": "uncommon",
-	"description": "Mines blocks automatically.\n^blue;Input^white;1^blue;: ^white;power switch\n^blue;Input^white;2^blue;: ^white;ON to mine background\n^red;Output: ^white;item network^reset;\n\nWidth: ^green;36^reset; Depth: ^green;96^reset;\nSpeed: ^green;3^reset; Power: ^green;12^reset;",
-	"shortdescription": "Iron Quarry",
+	"rarity": "legendary",
+	"description": "Mines blocks automatically.\n^blue;Input^white;1^blue;: ^white;power switch\n^blue;Input^white;2^blue;: ^white;ON to mine background\n^red;Output: ^white;item network^reset;\n\nWidth: ^green;128^reset; Depth: ^green;360^reset;\nSpeed: ^green;32^reset; Power: ^green;128^reset;",
+	"shortdescription": "Ultra Quarry",
 	"objectType": "container",
 	"tooltipKind": "base",
 	"race": "generic",
-	"category": "wire",
-	"price": 225,
 
-	"inventoryIcon": "/objects/kheAA/kheAA_quarry/ironquarryicon.png",
+	"category": "wire",
+	"price": 2500,
+
+	"inventoryIcon": "/objects/kheAA/kheAA_quarry/densiniumquarryicon.png",
 	"orientations": [{
-		"image": "ironquarry.png:<color>.off",
+		"image": "densiniumquarry.png:<color>.off",
 		"imagePosition": [0, 0],
 
 		"spaceScan": 0.1,
@@ -27,11 +28,11 @@
 	"animation": "/objects/kheAA/kheAA_quarry/kheAA_quarry.animation",
 
 	"animationParts": {
-		"quarry": "ironquarry.png",
-		"drill": "kheAA_drill_iron.png",
-		"verPipe": "kheAA_ver_pipe.png",
-		"horPipe": "kheAA_hor_pipe.png",
-		"connector": "kheAA_connector.png"
+		"quarry": "densiniumquarry.png",
+		"drill": "kheAA_drill_densinium.png",
+		"verPipe": "kheAA_ver_pipedensinium.png",
+		"horPipe": "kheAA_hor_pipedensinium.png",
+		"connector": "kheAA_connectordensinium.png"
 	},
 	"animationPosition": [0, 0],
 	"openSounds": ["/sfx/objects/woodenbox_open.ogg"],
@@ -53,9 +54,9 @@
 	"kheAA_powerDrillNode": 1,
 	"kheAA_isDrill": true,
 	"kheAA_isVacuum": true,
-	"kheAA_excavatorRate": 3,
-	"kheAA_maxWidth": 36,
-	"kheAA_maxDepth": 96,
-	"kheAA_drillPower": 12,
-	"kheAA_vacuumRange": 8
+	"kheAA_excavatorRate": 32,
+	"kheAA_maxWidth": 220,
+	"kheAA_maxDepth": 640,
+	"kheAA_drillPower": 128,
+	"kheAA_vacuumRange": 16
 }
