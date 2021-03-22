@@ -964,8 +964,8 @@ function systemScreenState(system, warpIn)
 
   local hover = nil
   local selection = nil
-  local destination = nil
-  local flyState = nil
+  --local destination = nil
+  --local flyState = nil
   while true do
     local newHover = closestLocationInRange(View:toSystem(View:mousePosition()), system, 10)
     if newHover and not compare(newHover, hover) and not compare(newHover, selection) then
@@ -1130,7 +1130,7 @@ function systemScreenState(system, warpIn)
     if selection and selection[1] == "object" and (isCurrent or mappedObjects[uuid] ~= nil) then
       local uuid = selection[2]
       local typeName = isCurrent and celestial.objectType(uuid) or mappedObjects[uuid].typeName
-      local parameters = isCurrent and celestial.objectParameters(uuid) or mappedObjects[uuid].parameters
+      --local parameters = isCurrent and celestial.objectParameters(uuid) or mappedObjects[uuid].parameters
       if celestial.objectTypeConfig(typeName).permanent then
         self.selection = {system = system, object = {uuid = uuid, typeName = typeName}}
       end
@@ -1222,10 +1222,10 @@ function planetScreenState(planet)
         if self.hide == false then
           local planets = {planet}
           util.appendLists(planets, celestial.children(planet))
-          for _,planet in pairs(planets) do
-            if compare(planet, self.focus.target[2]) then
-              selection = {"coordinate", planet}
-              View:showPlanetInfo(planet)
+          for _,p in pairs(planets) do
+            if compare(p, self.focus.target[2]) then
+              selection = {"coordinate", p}
+              View:showPlanetInfo(p)
               break
             end
           end
@@ -1252,7 +1252,7 @@ function planetScreenState(planet)
     end
 
     for _,click in pairs(takeInputEvents()) do
-      local position, button, down = click[1], click[2], click[3]
+      local button, down = click[2], click[3]--local position, button, down = click[1], click[2], click[3]
       if down then
         if button == 0 then
           if zoomOut then

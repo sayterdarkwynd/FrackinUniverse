@@ -52,7 +52,8 @@ end
 
 -- determine theme and accent color in use
 local defaultTheme = registry.defaultTheme or false
-if not registry.themes[defaultTheme] then for k in pairs(registry.themes) do defaultTheme = k break end end
+--if not registry.themes[defaultTheme] then for k in pairs(registry.themes) do defaultTheme = k break end end
+if not registry.themes[defaultTheme] then defaultTheme=next(registry.themes) end end
 
 settings = player.getProperty("metaGUISettings") or { }
 local theme = settings.theme or defaultTheme

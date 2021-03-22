@@ -237,7 +237,7 @@ function update(dt)
 			local ticks = math.min(ticksToSimulate, beeData.maxSimulatedTicksPerUpdate)
 			ticksToSimulate = ticksToSimulate - ticks
 
-			for i = 1, ticks do
+			for _ = 1, ticks do
 				beeTick()
 			end
 		else
@@ -483,9 +483,9 @@ function getFrames()
 		if contents[frameSlot] and root.itemHasTag(contents[frameSlot].name, "apiaryFrame") then
 			hasFrame = true
 			local cfg = root.itemConfig(contents[frameSlot].name)
-			local amountcheck = contents[frameSlot].count
+			--local amountcheck = contents[frameSlot].count--currently unused
 
-			for stat, value in pairs(frameBonuses) do
+			for stat, _ in pairs(frameBonuses) do--value in pairs(frameBonuses) do
 				if stat == "allowDay" or stat == "allowNight" or stat== "frameWorktimeModifierDay" or stat=="frameWorktimeModifierNight" or stat == "coldResistance" or stat=="heatResistance" or stat=="radResistance" or stat=="physicalResistance" or stat=="cosmicResistance" then
 					if cfg.config[stat] then
 						frameBonuses[stat] = true
@@ -503,8 +503,8 @@ function getFrames()
 			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting
 			-- this should make automation less fire-and-forget, requiring at least a little maintenance and work
 			-- frames, in this way, can be made 'expensive' to ensure bees are costly but worthwhile
-			local randomChanceToTake = math.random(50)
-			if randChanceToTake == 1 then
+			local randomChanceToTake = math.random(50)--these lines dont currently fire
+			if randomChanceToTake == 1 then
 				world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
 				contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)
 			end
@@ -617,10 +617,10 @@ function queenProduction()
 	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)  * 0.25
 
 	if youngQueenProgress >= beeData.youngQueenProductionRequirement then
-		local produced = math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement)
+		--local produced = math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement)
 		youngQueenProgress = youngQueenProgress % beeData.youngQueenProductionRequirement
 
-		for i = 1, produced do
+		for _ = 1, math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement) do--produced do
 			local youngQueen = generateYoungQueen() -- Generate queen stats
 			for j = firstInventorySlot, slotCount do
 				youngQueen = world.containerPutItemsAt(entity.id(), youngQueen, j-1)
@@ -736,8 +736,8 @@ function generateYoungQueen()
 	return descriptor
 end
 
--- Function for randomizing a stat value for when a new queen is generated
-function randomMod(num)
+-- Function for randomizing a stat value for when a new queen is generated--totally unused
+--[[function randomMod(num)
 	local rnd = math.random()
 
 	if rnd <= 0.05 then -- 5% -3
@@ -757,7 +757,7 @@ function randomMod(num)
 	end
 
 	return num
-end
+end]]
 
 -- Returns a queen version of the young queen, with exactly the same stats and parameters
 function youngQueenToQueen(youngQueen)

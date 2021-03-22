@@ -273,6 +273,29 @@ genelib.modifyGenomeStat = function(genome, stat, mod)
 	return genome
 end
 
+-- Function for randomizing a stat value for when a new queen is generated
+genelib.randomMod=function (num)
+	local rnd = math.random()
+
+	if rnd <= 0.05 then -- 5% -3
+		num = num - 3
+	elseif rnd <= 0.15 then -- 10% -2
+		num = num - 2
+	elseif rnd <= 0.30 then -- 15% -1
+		num = num - 1
+	elseif rnd <= 0.70 then -- 40% 0
+		-- Do nothing
+	elseif rnd <= 0.85 then -- 15% +1
+		num = num + 1
+	elseif rnd <= 0.95 then -- 10% +2
+		num = num + 2
+	else-- rnd <= 1.00 -- 5% +3
+		num = num + 3
+	end
+
+	return num
+end
+
 -- Modifies each regular stat by a value between -3 to 3 (0 included) based on the genomes mutationChance stat
 -- 'modifier' is a direct modifier to the value. 15 will increase the chance by 15%
 genelib.evolveGenome = function(genome, modifier)
@@ -290,9 +313,9 @@ genelib.evolveGenome = function(genome, modifier)
 
 		if stat ~= "subtype" and stat ~= "workTime" then
 			if math.random() <= chance then
-				local rnd = math.random()
-
-				if rnd <= 0.05 then -- 5% -3
+				--local rnd = math.random()
+				str = genelib.modifyStatString(str, genelib.randomMod(0))
+				--[[if rnd <= 0.05 then -- 5% -3
 					str = genelib.modifyStatString(str, -3)
 				elseif rnd <= 0.15 then -- 10% -2
 					str = genelib.modifyStatString(str, -2)
@@ -306,7 +329,7 @@ genelib.evolveGenome = function(genome, modifier)
 					str = genelib.modifyStatString(str, 2)
 				else-- rnd <= 1.00 then -- 5% +3
 					str = genelib.modifyStatString(str, 3)
-				end
+				end--]]
 			end
 		end
 
