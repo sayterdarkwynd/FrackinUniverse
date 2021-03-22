@@ -14,12 +14,12 @@ function populateMaterialsList()
         local system ={location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}}
         if worldId[1]=="InstanceWorld" then
             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-            widget.setText(path .. ".text", "This is a Instance World")
+            widget.setText(path .. ".text", "This is a Instance World. Instance World do not contain relevant GPS data. Please travel to a planet surface.")
             -- More info about the dungeon could be added here
         else
             if worldId[1]=="ClientShipWorld" then
                 local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                widget.setText(path .. ".text", "This is a Ship World")
+                widget.setText(path .. ".text", "This is a Ship World. Ship Worlds do not contain relevant GPS data. Please travel to a planet surface.")
                 -- More info about the ship could be added here
             else
                 if worldId[1]=="CelestialWorld" then
@@ -27,7 +27,7 @@ function populateMaterialsList()
 
                     -- print system
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Dungeons:^reset; ")
+                    widget.setText(path .. ".text", "^green;Dungeons on Planet:^reset; ")
 
                     local parameters = celestial.visitableParameters(planet)
                     if (parameters.spaceLayer and parameters.spaceLayer.dungeons) then
