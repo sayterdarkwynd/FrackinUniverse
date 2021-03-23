@@ -39,7 +39,7 @@ function checkStance()
 		 animator.playSound("xibulbCharge")
 	else
 		animator.setParticleEmitterActive("bulbStance", false)
-		status.clearPersistentEffects("bulbEffect")
+		--status.clearPersistentEffects("bulbEffect")
 	end
 	self.bombTimer = 10
 end
@@ -103,76 +103,76 @@ function update(args)
 	-- make sure they are fed enough
 	local foodValue=checkFood()
 	-- if fed, move to the effect
-		if self.active then
-			if self.bombTimer > 0 then
-				self.bombTimer = math.max(0, self.bombTimer - args.dt)
-			end
-			--make sure we are only holding down
-			if (self.pressDown) and not self.pressLeft and not self.pressRight and not self.pressUp and not self.pressJump then
-				status.removeEphemeralEffect("wellfed")
-				if (self.xibulbTimer < 350) then
-					displayBar()
-					self.xibulbTimer = self.xibulbTimer + 1
-					--set food to reduce, but never to 0
-					if (foodValue > foodThreshold) then
-						status.modifyResource("food",-0.05)
-					else
-						local tookEnergy=status.overConsumeResource("energy", config.getParameter("energyCostPerSecond"),1)
-						status.overConsumeResource("health", ((tookEnergy and 1) or 2)*0.035,1)
-					end
-				else
-					self.xibulbTimer = 0
-					displayBar()
-				end
-
-				status.setPersistentEffects("bulbEffect", {})
-
-				animator.setParticleEmitterActive("bulbStance", true)
-				if self.bombTimer == 0 then
-					checkStance()
-				end
-
-				if (self.xibulbTimer >= 350) then
-					self.rand = math.random(1,3)	-- how many Bulbs can we potentially spawn?
-					self.onehundred = math.random(1,100)	 --chance to spawn rarer bulb types
-					if (foodValue > foodThreshold) then		--must have sufficient food to grow a seed
-						animator.setParticleEmitterActive("bulbStance", false)
-						animator.setParticleEmitterActive("bulb", true)
-						--world.placeObject("xi_bulb",mcontroller.position(),1) -- doesnt seem to work with that position
-						if self.onehundred == 100 then
-							world.spawnItem("xi_bulb3", mcontroller.position(), 1)
-						elseif self.onehundred > 80 then
-							world.spawnItem("xi_bulb2", mcontroller.position(), self.rand)
-						else
-							world.spawnItem("xi_bulb", mcontroller.position(), self.rand)
-						end
-						local configBombDrop = { power = 0 }
-						world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
-						self.xibulbTimer = 0
-					elseif (foodValue < foodThreshold) and status.resource("energy") > 20 then
-						animator.setParticleEmitterActive("bulbStance", false)
-						animator.setParticleEmitterActive("bulb", true)
-						if self.onehundred == 100 then
-							world.spawnItem("xi_bulb3", mcontroller.position(), 1)
-						elseif self.onehundred > 95 then
-							world.spawnItem("xi_bulb2", mcontroller.position(), self.rand)
-						else
-							world.spawnItem("xi_bulb", mcontroller.position(), self.rand)
-						end
-						local configBombDrop = { power = 0 }
-						world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
-						self.xibulbTimer = 0
-					end
-				end
-
-			else
-				animator.setParticleEmitterActive("bulbStance", false)
-				animator.setParticleEmitterActive("bulb", false)
-				status.clearPersistentEffects("bulbEffect")
-				self.xibulbTimer = 0
-			end
-			checkForceDeactivate(args.dt)
+	if self.active then
+		status.setPersistentEffects("bulbEffect", {"fugenerictechdummyholddown"})
+		if self.bombTimer > 0 then
+			self.bombTimer = math.max(0, self.bombTimer - args.dt)
 		end
+		--make sure we are only holding down
+		if (self.pressDown) and not self.pressLeft and not self.pressRight and not self.pressUp and not self.pressJump then
+			status.removeEphemeralEffect("wellfed")
+			if (self.xibulbTimer < 350) then
+				displayBar()
+				self.xibulbTimer = self.xibulbTimer + 1
+				--set food to reduce, but never to 0
+				if (foodValue > foodThreshold) then
+					status.modifyResource("food",-0.05)
+				else
+					local tookEnergy=status.overConsumeResource("energy", config.getParameter("energyCostPerSecond"),1)
+					status.overConsumeResource("health", ((tookEnergy and 1) or 2)*0.035,1)
+				end
+			else
+				self.xibulbTimer = 0
+				displayBar()
+			end
+			animator.setParticleEmitterActive("bulbStance", true)
+			if self.bombTimer == 0 then
+				checkStance()
+			end
+
+			if (self.xibulbTimer >= 350) then
+				self.rand = math.random(1,3)	-- how many Bulbs can we potentially spawn?
+				self.onehundred = math.random(1,100)	 --chance to spawn rarer bulb types
+				if (foodValue > foodThreshold) then		--must have sufficient food to grow a seed
+					animator.setParticleEmitterActive("bulbStance", false)
+					animator.setParticleEmitterActive("bulb", true)
+					--world.placeObject("xi_bulb",mcontroller.position(),1) -- doesnt seem to work with that position
+					if self.onehundred == 100 then
+						world.spawnItem("xi_bulb3", mcontroller.position(), 1)
+					elseif self.onehundred > 80 then
+						world.spawnItem("xi_bulb2", mcontroller.position(), self.rand)
+					else
+						world.spawnItem("xi_bulb", mcontroller.position(), self.rand)
+					end
+					local configBombDrop = { power = 0 }
+					world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
+					self.xibulbTimer = 0
+				elseif (foodValue < foodThreshold) and status.resource("energy") > 20 then
+					animator.setParticleEmitterActive("bulbStance", false)
+					animator.setParticleEmitterActive("bulb", true)
+					if self.onehundred == 100 then
+						world.spawnItem("xi_bulb3", mcontroller.position(), 1)
+					elseif self.onehundred > 95 then
+						world.spawnItem("xi_bulb2", mcontroller.position(), self.rand)
+					else
+						world.spawnItem("xi_bulb", mcontroller.position(), self.rand)
+					end
+					local configBombDrop = { power = 0 }
+					world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
+					self.xibulbTimer = 0
+				end
+			end
+
+		else
+			animator.setParticleEmitterActive("bulbStance", false)
+			animator.setParticleEmitterActive("bulb", false)
+			--status.clearPersistentEffects("bulbEffect")
+			self.xibulbTimer = 0
+		end
+		checkForceDeactivate(args.dt)
+	else
+		status.setPersistentEffects("bulbEffect", {})
+	end
 end
 
 function attemptActivation()
@@ -194,7 +194,7 @@ function checkForceDeactivate(dt)
 		if self.forceTimer >= self.forceDeactivateTime then
 			deactivate()
 			self.forceTimer = nil
-			status.clearPersistentEffects("bulbEffect")
+			--status.clearPersistentEffects("bulbEffect")
 			self.xibulbTimer = 0
 		else
 			attemptActivation()
@@ -206,13 +206,13 @@ function checkForceDeactivate(dt)
 end
 
 function activate()
-	status.clearPersistentEffects("bulbEffect")
+	--status.clearPersistentEffects("bulbEffect")
 	self.active = true
 end
 
 function deactivate()
-	if self.active then
-		status.clearPersistentEffects("bulbEffect")
-	end
+	--if self.active then
+		--status.clearPersistentEffects("bulbEffect")
+	--end
 	self.active = false
 end
