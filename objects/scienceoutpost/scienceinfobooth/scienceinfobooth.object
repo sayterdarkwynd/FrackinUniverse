@@ -1,0 +1,86 @@
+{
+  "objectName" : "scienceinfobooth",
+  "colonyTags" : ["science", "commerce"],
+  "rarity" : "Common",
+  "description" : "A good source of information.",
+  "shortdescription" : "Info Booth",
+  "race" : "protectorate",
+  "printable" : false,
+  "lightColor" : [46, 66, 77],
+ 
+  "apexDescription" : "If I'm ever lost, I can always ask the info booth lady for help.",
+  "avianDescription" : "Mami, the info booth lady, is super helpful.",
+  "floranDescription" : "Despite being a ssslimy Hylotl, info booth lady is nice and helpful.",
+  "glitchDescription" : "Appreciative. Mami at the info booth desk is lovely and helpful.",
+  "humanDescription" : "The info booth lady always has a useful tip.",
+  "hylotlDescription" : "Mami at the info desk helped me endlessly when I was a new and confused student.",
+  "novakidDescription" : "Whenever I'm in need o' some friendly help, I come here.",
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "scienceinfobooth.png:idle", "fullbright" : true }, { "image" : "scienceinfoboothlit.png:idle" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 10,
+      "animationCycle" : 3.2,
+
+      "spaceScan" : 0.1,
+      "interactiveSpaces": [
+        [2, 2], [3, 2], [4, 2],
+        [2, 3], [3, 3], [4, 3]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "scienceinfobooth.png:idle", "fullbright" : true }, { "image" : "scienceinfoboothlit.png:idle" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 10,
+      "animationCycle" : 3.2,
+
+      "spaceScan" : 0.1,
+      "interactiveSpaces": [
+        [1, 2], [2, 2], [3, 2],
+        [1, 3], [2, 3], [3, 3]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/hubbub.ogg",
+
+  "animation" : "scienceinfobooth.animation",
+  "animationPosition" : [0, 0],
+  "animationParts" : {
+    "booth" : "scienceinfoboothlit.png",
+    "sign" : "scienceinfobooth.png"
+  },
+  "forceFinishAnimationsInInit" : false,
+
+  "scripts" : ["scienceinfobooth.lua"],
+  "scriptDelta" : 10,
+
+  "detectArea" : [ [-8, 0], [14, 6] ],
+
+  "mouthPosition" : [-1.25, -3],
+  "chatOptions" : [
+    "Welcome to the Terrene Protectorate! Talk to me for handy tips! Also, this is a test.",
+    "Press ^#71f2f6;[I]^white; to open your inventory.",
+    "Pressing ^#71f2f6;[Q]^white; will let you drop the item you're holding!",
+    "Press ^#71f2f6;[N]^white; to toggle scan mode and inspect objects.",
+    "Hold ^#71f2f6;[Ctrl]^white; to move your camera around, tap again to reset it!",
+    "Always listen to SAIL, your personal AI assistant!",
+    "Press ^#71f2f6;[Enter]^white; to read SAIL messages again and chat to party members.",
+    "If you get stuck, open your quest log with ^#71f2f6;[J]^white;.",
+    "Tap ^#71f2f6;[Spacebar]^white; to hop, or hold it to make a higher jump!",
+    "I'm well known for being informative!",
+    "Hold ^#71f2f6;[S]^white; to crouch!",
+    "Press ^#71f2f6;[Q]^white; to drop your current item.",
+    "Use ^#71f2f6;[arrow keys]^white; to communicate using your emotions.",
+    "Be sure to press ^#71f2f6;[Esc]^white; and check the options menu for more controls!"
+  ]
+}
