@@ -6,9 +6,7 @@
   "category" : "^orange;Extraction Device^reset;",
   "printable" : false,
   "objectType" : "container",
-//  "learnBlueprintsOnPickup" : [ "nanofabricator" ], 
-
-  "price" : 450,
+  "price" : 20,
   "inventoryIcon" : "handmillicon.png",
   "description" : "Extracts useful materials from most block types.",
   "shortdescription" : "^cyan;Hand Mill^white;",
@@ -40,16 +38,14 @@
   ],
 
   "animation" : "handmill.animation",
-  "animationParts" : {
-    "samplingarrayanim" : "handmill.png"
-  },
+  "animationParts" : {"samplingarrayanim" : "handmill.png"},
   "scripts" : [ "/objects/generic/extractionlab_common.lua",
                 "/scripts/npcToyObject.lua" ],
   "scriptDelta" : 5,
   "recipeGroup" : "handmill",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
   "slotCount" : 12,
-  "uiConfig" : "/interface/extractor/extractor.config",
+  "uiConfig" : "/interface/extractor/handmill.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
