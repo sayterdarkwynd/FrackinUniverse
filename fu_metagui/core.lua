@@ -151,7 +151,7 @@ function widgetBase:applyGeometry(selfOnly)
   --sb.logInfo("widget " .. (self.backingWidget or "unknown") .. ", type " .. self.typeName .. ", pos (" .. self.position[1] .. ", " .. self.position[2] .. "), size (" .. self.size[1] .. ", " .. self.size[2] .. ")")
   self:queueRedraw()
   if not selfOnly and self.children then
-    for k,c in pairs(self.children) do
+    for _,c in pairs(self.children) do--for k,c in pairs(self.children) do
       if c.applyGeometry then c:applyGeometry() end
     end
   end
@@ -392,7 +392,7 @@ function init() ----------------------------------------------------------------
 
   local sysUpdate, sysUninit = update, uninit
   for _, s in pairs(mg.cfg.scripts or { }) do
-    init, update, uninit = nil
+    init, update, uninit = nil,nil,nil
     require(mg.path(s))
     if update then table.insert(scriptUpdate, update) end
     if uninit then table.insert(scriptUninit, uninit) end
@@ -465,7 +465,7 @@ local function findWindowPosition()
   end
 
   -- narrow y
-  local search = isearch
+  search = isearch
   while search >= 1 do
     while widget.inMember(ws, {fp[1], fp[2] - search}) do fp[2] = fp[2] - search end
     search = search / 2
@@ -481,14 +481,14 @@ mg.mousePosition = {0, 0} -- default
 local bcv = { "_tracker", "_mouse" }
 local bcvmp = { {0, 0}, {0, 0} } -- last saved mouse position
 
-local lastMouseOver
+lastMouseOver=nil
 function update()
   if player.worldId() ~= worldId then return pane.dismiss() end
 
   if not mg.windowPosition then findWindowPosition() else
-    if mg.windowOffScreen then
+    --if mg.windowOffScreen then
       -- for now, trust the cursor?
-    else -- autocheck
+    if not mg.windowOffScreen then--else -- autocheck
       if not widget.inMember(bcv[1], {math.max(0, mg.windowPosition[1]), math.max(0, mg.windowPosition[2])})
       or not widget.inMember(bcv[1], vec2.add(mg.windowPosition, mg.cfg.totalSize)) then findWindowPosition() end
     end

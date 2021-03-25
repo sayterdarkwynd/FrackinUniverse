@@ -88,7 +88,7 @@ function checkTags(item)
 	if (not item) then return end
 	local tags=fetchTags(item)
 	local buffer=nil
-	for tag,values in pairs(tagList) do
+	for tag,_ in pairs(tagList) do
 		for _,t in pairs(tags) do
 			if t==tag then
 				buffer=tag
@@ -305,7 +305,7 @@ function getStatus()
 end
 
 function currentlyWorking()
-	for id,label in pairs(statusList) do
+	for _,label in pairs(statusList) do
 		if status==label then return false end
 	end
 	return true
