@@ -132,13 +132,8 @@ function init()
 	-- setup body
 
 	self.protection = self.parts.body.protection
-	-- if mech is higher than rank 4 in protection (body), reduce damage taken
-	if (self.parts.body.stats.protection >=4) then
-		self.protection = self.parts.body.stats.protection * ((self.parts.body.stats.mechMass)/10) 
-	end
-	if (self.parts.body.stats.protection >=8) then
-		self.protection = self.parts.body.stats.protection * ((self.parts.body.stats.mechMass)/15) 
-	end
+	self.protection = self.protection * 0.25
+		
 	-- setup boosters
 
 	self.airControlSpeed = self.parts.booster.airControlSpeed
@@ -1372,30 +1367,40 @@ function onInteraction(args)
 	end
 end
 
---replaced energy with health
 function applyDamage(damageRequest)
-	local energyLost = (math.min(storage.health, damageRequest.damage * (1 - self.protection)))
+	-- if mech is higher than rank 4 in protection (body), they have a 10% chance to reduce incoming damage below a threshold
+	-- otherwise, they take normal damage, reduced by the protection afforded by their mech body
+    local energyLost = math.min(storage.health, damageRequest.damage * (1-self.protection))
+    self.massProtection = (self.parts.body.stats.protection * (self.parts.body.stats.mechMass)/10)
+    self.rand = math.random(1)
+    if (self.parts.body.stats.protection >=4) and (energyLost <= self.massProtection) and (self.rand == 1) then
+    	self.massProtection = self.massProtection / 10 -- divide actual protection by 10
+        energyLost = energyLost * self.massProtection  -- final resisted damageg
+        animator.playSound("landingThud")
+        animator.burstParticleEmitter("blockDamage")
+    end
+
     storage.health = storage.health - energyLost
-	if storage.health == 0 then
-		explode()
-	else
-		self.damageFlashTimer = self.damageFlashTime
-		animator.setGlobalTag("directives", self.damageFlashDirectives)
-	end
 
-	return {{
-		sourceEntityId = damageRequest.sourceEntityId,
-		targetEntityId = entity.id(),
-		position = mcontroller.position(),
-		damageDealt = damageRequest.damage,
-		healthLost = energyLost,
-		hitType = damageRequest.hitType,
-		damageSourceKind = damageRequest.damageSourceKind,
-		targetMaterialKind = self.materialKind,
-		killed = storage.health == 0
-	}}
+    if storage.health == 0 then
+        explode()
+    else
+        self.damageFlashTimer = self.damageFlashTime
+        animator.setGlobalTag("directives", self.damageFlashDirectives)
+    end
+
+    return {{
+        sourceEntityId = damageRequest.sourceEntityId,
+        targetEntityId = entity.id(),
+        position = mcontroller.position(),
+        damageDealt = energyLost,
+        healthLost = energyLost,
+        hitType = damageRequest.hitType,
+        damageSourceKind = damageRequest.damageSourceKind,
+        targetMaterialKind = self.materialKind,
+        killed = storage.health == 0
+    }}
 end
-
 function jump()
 	self.jumpBoostTimer = self.jumpBoostTime
 
