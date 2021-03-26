@@ -142,7 +142,7 @@ function racialiseShip()
 						self.playerRace = raceTableOverride[self.playerRace].race
 					end
 					if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
-						for item, extra in pairs (raceTableOverride[self.playerRace].items) do
+						for item, _ in pairs (raceTableOverride[self.playerRace].items) do--extra in pairs (raceTableOverride[self.playerRace].items) do
 							if string.find(item, "techstation") then
 								techstation = root.itemConfig(item)
 							end
@@ -167,7 +167,7 @@ function racialiseShip()
 				self.playerRace = raceTableOverride[self.playerRace].race
 			end
 			if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
-				for item, extra in pairs (raceTableOverride[self.playerRace].items) do
+				for item, _ in pairs (raceTableOverride[self.playerRace].items) do--extra in pairs (raceTableOverride[self.playerRace].items) do
 					if string.find(item, "techstation") then
 						newPetObject = root.itemConfig(item)
 					end
@@ -207,6 +207,7 @@ function getBlockKeyPath(shipFile, blockKeyFile)
 	local reversedFile = string.reverse(shipFile)
 	local snipLocation = string.find(reversedFile, "/")
 	local shipFileGsub = string.sub(shipFile, -snipLocation + 1)
-	local blockKeyFile = shipFile:gsub(shipFileGsub, blockKeyFile)
-	return blockKeyFile
+	--local blockKeyFile = shipFile:gsub(shipFileGsub, blockKeyFile)
+	--return blockKeyFile
+	return shipFile:gsub(shipFileGsub, blockKeyFile)
 end
