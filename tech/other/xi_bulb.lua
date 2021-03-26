@@ -39,7 +39,6 @@ function checkStance()
 		 animator.playSound("xibulbCharge")
 	else
 		animator.setParticleEmitterActive("bulbStance", false)
-		--status.clearPersistentEffects("bulbEffect")
 	end
 	self.bombTimer = 10
 end
@@ -104,7 +103,6 @@ function update(args)
 	local foodValue=checkFood()
 	-- if fed, move to the effect
 	if self.active then
-		status.setPersistentEffects("bulbEffect", {"fugenerictechdummyholddown"})
 		if self.bombTimer > 0 then
 			self.bombTimer = math.max(0, self.bombTimer - args.dt)
 		end
@@ -166,12 +164,9 @@ function update(args)
 		else
 			animator.setParticleEmitterActive("bulbStance", false)
 			animator.setParticleEmitterActive("bulb", false)
-			--status.clearPersistentEffects("bulbEffect")
 			self.xibulbTimer = 0
 		end
 		checkForceDeactivate(args.dt)
-	else
-		status.setPersistentEffects("bulbEffect", {})
 	end
 end
 
@@ -194,7 +189,6 @@ function checkForceDeactivate(dt)
 		if self.forceTimer >= self.forceDeactivateTime then
 			deactivate()
 			self.forceTimer = nil
-			--status.clearPersistentEffects("bulbEffect")
 			self.xibulbTimer = 0
 		else
 			attemptActivation()
@@ -206,13 +200,11 @@ function checkForceDeactivate(dt)
 end
 
 function activate()
-	--status.clearPersistentEffects("bulbEffect")
+	status.setPersistentEffects("bulbEffect", {"fugenerictechdummyholddown"})
 	self.active = true
 end
 
 function deactivate()
-	--if self.active then
-		--status.clearPersistentEffects("bulbEffect")
-	--end
+	status.setPersistentEffects("bulbEffect", {})
 	self.active = false
 end
