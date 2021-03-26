@@ -12,12 +12,12 @@ function effectUtil.getSelfType()
 	return world.entityType(effectUtil.getSelf())
 end
 
-function effectUtil.effectOnSource(effect,duration,force,source)
-	local effectSource=effect and effect.sourceEntity and effect.sourceEntity() or effectUtil.source or nil
-	if effectSource then
-		return effectUtil.effectTarget(effectSource,effect,duration,source)
+function effectUtil.effectOnSource(effect,duration,force)
+	local source=effect and effect.sourceEntity and effect.sourceEntity() or effectUtil.source or nil
+	if source then
+		return effectUtil.effectTarget(source,effect,duration)
 	elseif force then
-		return effectUtil.effectSelf(effect,duration,source)
+		return effectUtil.effectSelf(effect,duration)
 	else
 		if not sourceWarning then
 			sb.logInfo("effectUtil: effectOnSource needs effectUtil.source to be set in init to function.")
@@ -73,7 +73,7 @@ function effectUtil.entityTypeName()
 	return npc and npc.npcType() or monster and monster.type or entity and entity.entityType()
 end
 
-function effectUtil.effectTypesInRange(effect,range,types,duration,teamType,source)
+function effectUtil.effectTypesInRange(effect,range,types,duration,teamType)
 	if type(effect)~="string" then
 		return 0
 	end
@@ -81,21 +81,22 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType,sour
 	local rVal=0
 	if effectUtil.getSelfType()=="player" then
 		local data={}
-		data.messageFunctionArgs={effect,range,types,duration,teamType,source}
+		data.messageFunctionArgs={effect,range,types,duration,teamType}
 		data.messenger=effectUtil.getSelf()
-		world.spawnStagehand(pos,"effectUtilStarryPyHelper",{messageData=data})
+		 world.spawnStagehand(pos,"effectUtilStarryPyHelper",{messageData=data})
 	else
 		local buffer=world.entityQuery(pos,range,{includedTypes=types or {"creature"}})
 		teamType=teamType or "all"
 
 		for _,id in pairs(buffer) do
 			if teamType == "all" then
-				if effectUtil.effectTarget(id,effect,duration,source) then
+				if effectUtil.effectTarget(id,effect,duration) then
 					rVal=rVal+1
 				end
 			else
 				local validTypes=entity and entity.entityType and {monster=true,npc=true,player=true,currentType=entity.entityType()}
 				local valid=validTypes and validTypes[validTypes["currentType"]] and (entity.isValidTarget and entity.isValidTarget(id))
+				--sb.logInfo("%s:%s",valid,validTypes)
 				local teamData={}
 				if valid==false then
 					teamData.type="friendly"
@@ -106,7 +107,7 @@ function effectUtil.effectTypesInRange(effect,range,types,duration,teamType,sour
 				end
 
 				if teamData.type==teamType then
-					if effectUtil.effectTarget(id,effect,duration,source) then
+					if effectUtil.effectTarget(id,effect,duration) then
 						rVal=rVal+1
 					end
 				end
@@ -172,41 +173,40 @@ function effectUtil.messageMechsInRange(effect,range,args)
 	return rVal
 end
 
---effectUtil.effectTypesInRange(effect,range,types,duration,teamType,source)
-function effectUtil.effectAllInRange(effect,range,duration,source)
-	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,nil,source)
+function effectUtil.effectAllInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration)
 end
 
-function effectUtil.effectAllOfTeamInRange(effect,range,duration,team,source)
-	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,team,source)
+function effectUtil.effectAllOfTeamInRange(effect,range,duration,team)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,team)
 end
 
-function effectUtil.effectAllEnemiesInRange(effect,range,duration,source)
-	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"enemy",source)
+function effectUtil.effectAllEnemiesInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"enemy")
 end
 
-function effectUtil.effectAllFriendliesInRange(effect,range,duration,source)
-	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"friendly",source)
+function effectUtil.effectAllFriendliesInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"creature"},duration,"friendly")
 end
 
-function effectUtil.effectNonPlayersInRange(effect,range,duration,source)
-	return effectUtil.effectTypesInRange(effect,range,{"npc","monster"},nil,duration,source)
+function effectUtil.effectNonPlayersInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"npc","monster"},duration)
 end
 
-function effectUtil.effectPlayersInRange(effect,range,duration,source)
-	return effectUtil.effectTypesInRange(effect,range,{"player"},duration,nil,source)
+function effectUtil.effectPlayersInRange(effect,range,duration)
+	return effectUtil.effectTypesInRange(effect,range,{"player"},duration)
 end
 
-function effectUtil.effectSelf(effect,duration,source)
-	return effectUtil.effectTarget(effectUtil.getSelf(),effect,duration,source)
+function effectUtil.effectSelf(effect,duration)
+	return effectUtil.effectTarget(effectUtil.getSelf(),effect,duration)
 end
 
-function effectUtil.effectTarget(id,effect,duration,source)
+function effectUtil.effectTarget(id,effect,duration)
 	if world.entityExists(id) then
 		if not effect or effect=="" then
 			return false
 		else
-			world.sendEntityMessage(id,"applyStatusEffect",effect,duration,source or effectUtil.getSelf())
+			world.sendEntityMessage(id,"applyStatusEffect",effect,duration,effectUtil.getSelf())
 			return true
 		end
 	else

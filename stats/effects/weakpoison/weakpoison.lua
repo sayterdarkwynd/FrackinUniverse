@@ -34,10 +34,9 @@ function update(dt)
 			self.tickTimer = self.tickTimer - dt
 			if self.tickTimer <= 0 then
 				self.tickTimer = self.tickTime
-				local damageCalc=math.ceil((status.statPositive("specialStatusImmunity") and world.threatLevel*self.tickDamagePercentage*100) or (status.resourceMax("health") * self.tickDamagePercentage))
 				status.applySelfDamageRequest({
 					damageType = "IgnoresDef",
-					damage = damageCalc,
+					damage = math.ceil(status.resourceMax("health") * self.tickDamagePercentage),
 					damageSourceKind = "poison",
 					sourceEntityId = entity.id()
 				})

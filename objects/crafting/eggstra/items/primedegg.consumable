@@ -4,15 +4,12 @@
   "inventoryIcon" : "primedegg.png",
   "description" : "It's an egg, it might hatch soon.",
   "shortdescription" : "Primed Egg",
-  "price" : 2,
-  "category":"food",
-  "foodValue" : 5,
-  "tooltipKind" : "food",
-  "builder" : "/items/buildscripts/buildfood.lua",
-  "maxStack" : 1,
-  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
-  "rottingMultiplier" : 1.0,
-  "blockingEffects" : [
-    "wellfed"
-  ]
+  
+"category":"food",
+  "effects" : [ [
+      {
+        "kind" : "food",
+        "amount" : 30
+      }
+    ] ]
 }
