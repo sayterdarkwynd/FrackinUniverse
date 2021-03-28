@@ -238,7 +238,7 @@ function update(dt)
 			ticksToSimulate = ticksToSimulate - ticks
 
 			for _ = 1, ticks do
-				beeTick()
+				beeTick(dt)
 			end
 		else
 			-- Renable interaction if done simulating ticks
@@ -263,7 +263,7 @@ function update2(dt)
 
 	if beeUpdateTimer <= 0 then
 		beeUpdateTimer = beeData.beeUpdateInterval
-		beeTick()
+		beeTick(beeData.beeUpdateInterval)
 		beeTickDelta = 0
 	end
 end
@@ -288,7 +288,7 @@ end
 -- Bee ticks that should happen while the object is not loaded
 -- Called on init if there are any ticks that need simulating
 -- While just calling update a bunch of times in a row is easy, it has a lot of stuff going on that you don't need
-function beeTick()
+function beeTick(dt)
 	contents = world.containerItems(entity.id())
 
 	-- Get amount of hives with active drones in the areas
@@ -300,7 +300,7 @@ function beeTick()
 	local haltProduction = checkRivalries()
 
 	-- Check if there's a frame and get their bonuses
-	getFrames()
+	getFrames(dt)
 
 	-- Check if there was a queen in the queen slot last time the object updated
 	if queen then
@@ -456,7 +456,7 @@ function beeTick()
 end
 
 -- Check for frames, and get the stat modifiers
-function getFrames()
+function getFrames(dt)
 
 	-- Set default values
 	hasFrame = false
@@ -476,11 +476,16 @@ function getFrames()
 		cosmicResistance = false,
 		physicalResistance = false
 	}
-
+	if not self.frameTakeTimers then
+		sb.logInfo("initializing frame grab timers")
+		self.frameTakeTimers={}
+	end
+	local frameCounter=0
 	-- Iterate through frame slots, set 'hasFrame' to true if there's a frame, and add bonuses to the table
 	-- Also call their special function from the 'specialFrameFunctions' table if they have one
 	for _, frameSlot in ipairs(frameSlots) do
 		if contents[frameSlot] and root.itemHasTag(contents[frameSlot].name, "apiaryFrame") then
+			frameCounter=frameCounter+1
 			hasFrame = true
 			local cfg = root.itemConfig(contents[frameSlot].name)
 			--local amountcheck = contents[frameSlot].count--currently unused
@@ -503,13 +508,21 @@ function getFrames()
 			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting
 			-- this should make automation less fire-and-forget, requiring at least a little maintenance and work
 			-- frames, in this way, can be made 'expensive' to ensure bees are costly but worthwhile
-			local randomChanceToTake = math.random(50)--these lines dont currently fire
-			if randomChanceToTake == 1 then
-				world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
-				contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)
+			self.frameTakeTimers[frameCounter]=(self.frameTakeTimers[frameCounter] or 0) + (dt or 0)
+			if self.frameTakeTimers[frameCounter] >= 180.0 then
+				local randomChanceToTake = math.random(50)
+				if randomChanceToTake == 1 then
+					world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
+					contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)
+				end
+				self.frameTakeTimers[frameCounter]=0.0
 			end
 		end
 	end
+	--not including, it'd be too easy to cheese
+	--[[while #self.frameTakeTimers>frameCounter do
+		self.frameTakeTimers[frameCounter+1]=nil
+	end]]
 end
 
 
