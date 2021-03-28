@@ -132,7 +132,6 @@ function init()
 	-- setup body
 
 	self.protection = self.parts.body.protection
-	self.protection = self.protection * 0.25
 		
 	-- setup boosters
 
