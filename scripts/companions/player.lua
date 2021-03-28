@@ -140,7 +140,6 @@ function updateShipUpgrades()--reworked, in vanilla the math is atrocious if the
 			result=result+v2
 		end
 		upgrades[property] = upgrades[property] + result
-		sb.logInfo("p:%s,u:%s",property,upgrades[property])
 	end
 	player.upgradeShip(upgrades)
 end
