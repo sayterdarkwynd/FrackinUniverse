@@ -686,7 +686,7 @@ end do -- item grid ------------------------------------------------------------
     self.backingWidget = mkwidget(base, { type = "layout", layoutType = "basic", scissoring = false })
 
     local slots = param.slots or 1
-    for _=1,slots do self:addSlot() end--for i=1,slots do self:addSlot() end
+    for i=1,slots do self:addSlot() end--for i=1,slots do self:addSlot() end
   end
 
   function widgets.itemGrid:addSlot(item)
