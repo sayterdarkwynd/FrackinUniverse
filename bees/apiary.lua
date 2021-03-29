@@ -621,7 +621,6 @@ function queenProduction()
 	-- below, a base value of 0.01 was added so that even 0 Queen Breed bees have a low chance
 	local productionQueen = 0.01 + genelib.statFromGenomeToValue(queen.parameters.genome, "queenBreedRate") + frameBonuses.queenBreedRate * ((flowerFavor + biomeFavor) / 2)
 
-	-- the final divider on youngQueenProgress (/4) was added later as a means to reduce the frequency at which queens appeared.
 	-- adjusted to 50% instead of 25% on 11-04-2020
 	-- also added a divider to the droneProgress so drone births are 75% less frequent. This will lower production rates as a consequence as bees breed.
 	--youngQueenProgress = youngQueenProgress + productionQueen * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01) * 0.25
@@ -630,10 +629,10 @@ function queenProduction()
 	droneProgress = droneProgress + productionDrone * (math.random(beeData.productionRandomModifierRange[1],beeData.productionRandomModifierRange[2]) * 0.01)  * 0.25
 
 	if youngQueenProgress >= beeData.youngQueenProductionRequirement then
-		--local produced = math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement)
+		local produced = math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement)
 		youngQueenProgress = youngQueenProgress % beeData.youngQueenProductionRequirement
 
-		for _ = 1, math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement) do--produced do
+		for i = 1, produced do--for _ = 1, math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement) do--produced do
 			local youngQueen = generateYoungQueen() -- Generate queen stats
 			for j = firstInventorySlot, slotCount do
 				youngQueen = world.containerPutItemsAt(entity.id(), youngQueen, j-1)
