@@ -47,10 +47,10 @@ function unifiedGravMod.refreshGrav(dt)
 	if not self.ghosting then --ignore effect if ghost
 		local gravMod=(self.gravFlightOverride and -1.0) or (status.statPositive("gravFlightOverride") and 0.0) or status.stat("gravityMod")--most multipliers are gonna be this. this is where gravity increases and decreases go.
 		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature.
-		--dbg("uGM.rG@first",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position())})
+		--dbg("uGM.rG@first: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position())})
 		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
 		local gravNorm=((status.statPositive("fuswimming") and 0.0) or 1.0) * status.stat("gravityNorm")
-		local newGravNorm=1.0
+
 		if self.gravFlightOverride or status.statPositive("gravFlightOverride") then
 			--nothing
 		elseif self.flying or (0==world.gravity(entity.position())) then
@@ -58,13 +58,10 @@ function unifiedGravMod.refreshGrav(dt)
 			--dbg("uGM.rG","FLOATING!")
 			mcontroller.addMomentum({0,-0.2*fishbowl*newGrav*dt})
 		else
-			--reduce effect of gravity modifiers if gravity normalization is in effect
-			newGravNorm=(newGrav*(1.0-(0.5*math.abs(gravNorm))))*-1
-			--dbg("uGM.rG@else",{newGravNorm=newGravNorm}
-			newGrav=newGrav+newGravNorm+gravNorm+1.5
+			newGrav=newGrav+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
 		end
-		--dbg("uGM.rG@end",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,newGrav=newGrav,gravNorm=gravNorm,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod})
+		--dbg("uGM.rG@end: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,newGrav=newGrav,gravNorm=gravNorm,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod})
 	end
 end
 
