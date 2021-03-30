@@ -327,7 +327,7 @@ end
 
 function GunFire:isResetting()
 	-- FR/FU crossbow/sniper specials get reset here
-	--these actually have no fucking effect (outside the stat), because the variables wont persist for idk what reason. -khe
+	--these actually have no fucking effect (outside the stat), because the variables wont persist for idk what reason.  likely due to scope. -khe
 	if (self.isSniper == 1) or (self.isCrossbow == 1) then
 		self.firedWeapon = 1
 		self.timeBeforeCritBoost = 2
@@ -343,7 +343,7 @@ function GunFire:isChargeUp()
 		self.countdownDelay = (self.countdownDelay or 0) + 1 --increase chargeup Count each time this is called
 		self.weaponBonus = (self.weaponBonus or 0) -- default is 0
 		self.firedWeapon = (self.firedWeapon or 0) -- default is 0
-
+		--workaround for variable scope issue
 		if status.statPositive("fu_cleanupWeaponBonus") then
 			status.setPersistentEffects("weaponBonus", {})
 			self.firedWeapon=1
@@ -355,9 +355,7 @@ function GunFire:isChargeUp()
 					self.countdownDelay = 0
 					self.firedWeapon = 0
 				end
-			end
-
-			if (self.isSniper == 1) then
+			elseif (self.isSniper == 1) then
 				if self.countdownDelay > 10 then
 					self.weaponBonus = 0
 					self.countdownDelay = 0
