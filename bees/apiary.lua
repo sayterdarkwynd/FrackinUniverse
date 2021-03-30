@@ -505,18 +505,16 @@ function getFrames(dt)
 				specialFrameFunctions[cfg.config.specialFunction](cfg.config.functionParams)
 			end
 
-			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting
-			-- this should make automation less fire-and-forget, requiring at least a little maintenance and work
-			-- frames, in this way, can be made 'expensive' to ensure bees are costly but worthwhile
+			-- we remove frames randomly based on a rare diceroll. all frames use the same rate. This keeps stacks replenishing via crafting rather than a one-time bit of crafting
 			self.frameTakeTimers[frameCounter]=(self.frameTakeTimers[frameCounter] or 0) + (dt or 0)
-			if self.frameTakeTimers[frameCounter] >= 180.0 then
+			if self.frameTakeTimers[frameCounter] >= 180.0 and hasDrone and queen then
 				local randomChanceToTake = math.random(50)
 				if randomChanceToTake == 1 then
 					world.containerTakeNumItemsAt(entity.id(), frameSlot-1, 1)
 					contents[frameSlot] = world.containerItemAt(entity.id(), frameSlot-1)
 				end
 				self.frameTakeTimers[frameCounter]=0.0
-			end
+			end				
 		end
 	end
 	--not including, it'd be too easy to cheese
