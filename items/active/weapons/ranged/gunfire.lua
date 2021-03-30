@@ -387,7 +387,7 @@ function GunFire:hasShotgunReload()
 	if self.isReloader >= 1 then
 		animator.playSound("cooldown") -- adds sound to shotgun reload
 		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then
-				animator.playSound("fuReload") -- adds new sound to reload
+			animator.playSound("fuReload") -- adds new sound to reload
 		end
 	end
 end
