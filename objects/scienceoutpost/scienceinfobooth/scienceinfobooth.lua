@@ -5,6 +5,8 @@ function init()
   self.containsPlayers = {}
   object.setInteractive(true)
   self.chatIndex = 0
+  self.chatTimer = -1
+  self.chatOptions = config.getParameter("chatOptions", {})
 end
 
 function update(dt)
@@ -17,11 +19,26 @@ function update(dt)
     end
   end
   self.containsPlayers = newPlayers
+  
+  
+  if self.chatTimer == 0 and self.chatIndex ~= 0  then
+  chatOptions = config.getParameter("chatOptions", {})
+	object.say(chatOptions[(self.chatIndex % #chatOptions)])
+	--animator.playSound("chatter")
+	self.chatTimer = self.chatTimer - 1
+	else
+		if self.chatTimer >= 0 then
+		self.chatTimer = self.chatTimer - 1
+		--object.say(self.chatTimer)
+		end
+	end
+  
 end
 
 function onInteraction(args)
-  local chatOptions = config.getParameter("chatOptions", {})
+  chatOptions = config.getParameter("chatOptions", {})
   object.say(chatOptions[(self.chatIndex % #chatOptions) + 1])
+  self.chatTimer = 50
   self.chatIndex = self.chatIndex + 1
   animator.playSound("chatter")
 end
