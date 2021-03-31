@@ -8,10 +8,7 @@ function init()
 end
 
 function update(dt)
-  local newPlayers = world.entityQuery(self.detectArea[1], self.detectArea[2], {
-      includedTypes = {"player"},
-      boundMode = "CollisionArea"
-    })
+  local newPlayers = world.entityQuery(self.detectArea[1], self.detectArea[2], { includedTypes = {"player"},boundMode = "CollisionArea"} )
   local oldPlayers = table.concat(self.containsPlayers, ",")
   for _, id in pairs(newPlayers) do
     if not string.find(oldPlayers, id) then
