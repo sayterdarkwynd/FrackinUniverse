@@ -1,0 +1,91 @@
+{
+  "objectName" : "scienceinfobooth",
+  "colonyTags" : ["science", "commerce"],
+  "rarity" : "Common",
+  "description" : "A good source of information.",
+  "shortdescription" : "Info Booth",
+  "race" : "generic",
+  "printable" : false,
+  "lightColor" : [46, 66, 77],
+ 
+
+  "inventoryIcon" : "icon.png",
+  "orientations" : [
+    {
+      "imageLayers" : [ { "image" : "scienceinfobooth.png:idle", "fullbright" : true }, { "image" : "scienceinfoboothlit.png:idle" } ],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "imagePosition" : [0, 0],
+      "frames" : 10,
+      "animationCycle" : 3.2,
+
+      "spaceScan" : 0.1,
+      "interactiveSpaces": [
+        [2, 2], [3, 2], [4, 2],
+        [2, 3], [3, 3], [4, 3]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "imageLayers" : [ { "image" : "scienceinfobooth.png:idle", "fullbright" : true }, { "image" : "scienceinfoboothlit.png:idle" } ],
+      "direction" : "right",
+
+      "imagePosition" : [0, 0],
+      "frames" : 10,
+      "animationCycle" : 3.2,
+
+      "spaceScan" : 0.1,
+      "interactiveSpaces": [
+        [1, 2], [2, 2], [3, 2],
+        [1, 3], [2, 3], [3, 3]
+      ],
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "soundEffect" : "/sfx/objects/hubbub.ogg",
+
+  "animation" : "scienceinfobooth.animation",
+  "animationPosition" : [0, 0],
+  "animationParts" : {
+    "booth" : "scienceinfoboothlit.png",
+    "sign" : "scienceinfobooth.png"
+  },
+  "forceFinishAnimationsInInit" : false,
+
+  "scripts" : ["scienceinfobooth.lua"],
+  "scriptDelta" : 10,
+
+  "detectArea" : [ [-8, 0], [14, 6] ],
+
+  "mouthPosition" : [-1.25, -3],
+  "chatOptions" : [
+    "Welcome to the Science Outpost! Any friend of Vinalisj is a friend of ours. If you need some advice, I'm here! Just... try to stay away from Kevin.",
+	"First things first, I'd recommend you take a look at the Frackin' Universe guide codexes - you should have a set of them in your ship's locker, but just in case, there's also a set of them in a bookshelf near the west side of this building.",
+	"Some of the information in those codexes might not seem relevant right now, but even some of our veteran researchers have learned something they didn't know through those books, so keep them in mind!",
+	"Looks like most of your Protectorate crafting databanks have been scrambled at some point - You'll need to use your Tricorder to research how to craft a lot of things.",
+	"I'd recommend researching extraction technology sooner rather than later. A Hand Mill might not be as fast as a full Extraction Lab, but it's still one of the most powerful tools in your arsenal.",
+    "Having trouble keeping your ship's tank topped up? Remember, Erchius isn't the only fuel you can use - Radioactive isotopes, properly processed algae, and even pure Hydrogen can all act as fuel sources - and some are more effective than others!",
+    "Having trouble gaining research? Your passive research gain will increase the longer you play, and will also increase based on the tier of the planet you're on - Exploring more dangerous planets lets you gather research more quickly!",
+    "Okay, so a couple of coworkers were saying they were leaving to go snarsh some garflipps, and I asked them what that meant, and they looked at me like I was an idiot. Is that normal? Am I the wierd one for not knowing what that means?",
+	"A randomly-generated weapon will almost always be weaker than one you've crafted yourself. Crafted weapons also generally have special abilities designed to complement the weapon. Consider using a computer to turn randomly-generated weapons into research, instead!",
+    "Have a favorite weapon or armor set that you don't want to leave behind as you progress? Good news - you don't have to! Using your Tricorder's Upgrade function, you can use Upgrade modules to improve almost all Frackin' Universe weapons or armor. By doing this, you can ensure that any armor or weapon you like stays viable for the entire game!",
+    "Does an enemy seem almost invincible? It might just be resistant to the damage type you're using. Try switching things up with different weapons to find a weakness!",
+    "Don't know where to find a specific item or material? A Lab Directory can tell you if it's an output from any of your nearby machines. If that fails, check the official wiki displayed on the main menu!",
+    "Even carnivores have a reason to set up plant farms - many of the growable plants that Frackin' Universe adds can be eaten by anyone. Plus, Meatvine is a reliable source of nutrition, and many plants and their seeds can be extracted into useful materials!",
+    "Sorry we can't let you use most of the crafting and processing machines - We had to restrict access after Kevin tried to use them to create a gun that shot smaller versions of itself.",
+    "Most hazardous environmental effects can be prevented with either an immunity to that effect, or often through a high enough resistance to specific damage types.",
+    "Immunities and resistances are seperate - Even if you're immune to a planet's deadly heat, it won't reduce damage from fiery attacks unless you increase your heat resistance.",
+    "If things don't seem to be working right, first check to make sure you don't have any incompatible mods installed. If that doesn't work, post your full log file to the bug channel on the Frackin' Universe Discord.",
+    "Take your time - if you rush to advance as fast as possible, you'll miss all sorts of fun things - like these hints!",
+    "Mixing certain liquids can have unexpected results - do things right, and you can make more of almost any liquid!",
+	"Liquids will drain away if there's not a background block keeping them there - though oceans are an exception.",
+	"Don't feel like using the teleporter to descend to the planet you're orbiting? Go down far enough outside your ship, and you'll fall to the planet below!",
+	"If some of my advice doesn't make sense to you right now, don't worry about it. You never know - it might come up later!",
+	"If you ever find alien ruins with grey bricks and purple or blue glyphs, you've probably found something built by the Ancients, a long-extinct race. Apparently, many Peglaci claim that there was another race even older than them, but not much is known about them.",
+	"Speaking of, I'm actually a Peglaci - I'm just using ultrasonic vibrations to create the illusion that I'm a Hylotl.",
+	"Why am I doing that? Simple - the person who added me is garbage at pixel art, and this sprite already existed."
+	
+  ]
+}
