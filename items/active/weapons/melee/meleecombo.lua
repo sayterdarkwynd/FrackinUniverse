@@ -26,17 +26,9 @@ function MeleeCombo:init()
 		calculateMasteries() --determine any active Masteries
 	end
 
-	--[[never actually called, these variables (primaryItem,altItem) are defined BELOW this.
-	self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
-	if (primaryItem and root.itemHasTag(primaryItem, "melee")) and (altItem and root.itemHasTag(altItem, "melee")) then
-		self.energyTotal = (self.energyMax * 0.025)
-	else
-		self.energyTotal = (self.energyMax * 0.01)
-	end]]
+    -- self.energyMax = status.resourceMax("energy") -- due to weather and other cases it is possible to have a maximum of under 1.
 
-	-- **************************************************
 	-- FU EFFECTS
-
 	primaryItem = world.entityHandItem(entity.id(), "primary")	--check what they have in hand
 	altItem = world.entityHandItem(entity.id(), "alt")
 	if primaryTagCacheItem~=primaryItem then
@@ -126,7 +118,7 @@ function checkDamage(notifications)
 			local noticeEntType=world.entityType(notification.targetEntityId)
 			local listenerbonus={}
 			if string.lower(notification.hitType) == "kill" and ((noticeEntType == "monster") or (noticeEntType == "npc")) and world.entityCanDamage(notification.targetEntityId, entity.id()) then
-				--each consequtive kill in rapid succession increases damage for weapons in this grouping. Per kill. Resets automatically very soon after to prevent abuse.
+				--each consecutive kill in rapid succession increases damage for weapons in this grouping. Per kill. Resets automatically very soon after to prevent abuse.
 
 				if primaryTagCache["longsword"] or altTagCache["longsword"] or primaryTagCache["dagger"] or altTagCache["dagger"] then
 					self.longswordMastery = 1 + status.stat("longswordMastery")

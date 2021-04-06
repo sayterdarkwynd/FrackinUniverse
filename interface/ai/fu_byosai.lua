@@ -79,7 +79,7 @@ function generateShipLists()
 		if addShip then
 			if id == "vanilla" then
 				ship.vanillaShip = data
-			elseif id == "racial" then
+			--elseif id == "racial" then
 				--[[local racialShipData = root.assetJson("/universe_server.config").speciesShips
 				local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
 				local races
@@ -129,14 +129,14 @@ function generateShipLists()
 					shipData.id = race .. "racial"
 					table.insert(ship.upgradableShips, shipData)
 				end ]]--
-			else
-				local addShip = true
+			elseif id~="racial" then--else
+				local shouldAddShip = true
 				if data.universeFlag then
-					addShip = false
+					shouldAddShip = false
 					if not ship.disableUnlockableShips then
 						for _, flag in ipairs (ship.universeFlags or {}) do
 							if flag == data.universeFlag then
-								addShip = true
+								shouldAddShip = true
 								break
 							end
 						end
@@ -149,7 +149,7 @@ function generateShipLists()
 					ignoreShip = true
 				end
 
-				if addShip and not ignoreShip then
+				if shouldAddShip and not ignoreShip then
 					data.id = id
 					if type(data.ship) == "table" then
 						data.mode = "Upgradable"

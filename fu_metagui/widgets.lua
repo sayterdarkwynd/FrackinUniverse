@@ -4,8 +4,8 @@ local widgets = mg.widgetTypes
 local mkwidget = mg.mkwidget
 local debug = mg.debugFlags
 
-do
-end do -- layout ------------------------------------------------------------------------------------------------------------------------------------
+--[[do
+end]] do -- layout ------------------------------------------------------------------------------------------------------------------------------------
   widgets.layout = mg.proto(mg.widgetBase, {
     -- widget attributes
     isBaseWidget = true,
@@ -686,7 +686,7 @@ end do -- item grid ------------------------------------------------------------
     self.backingWidget = mkwidget(base, { type = "layout", layoutType = "basic", scissoring = false })
 
     local slots = param.slots or 1
-    for i=1,slots do self:addSlot() end
+    for i=1,slots do self:addSlot() end--for i=1,slots do self:addSlot() end
   end
 
   function widgets.itemGrid:addSlot(item)
@@ -708,7 +708,7 @@ end do -- item grid ------------------------------------------------------------
     if count > num then
       for i=count, num+1, -1 do self.children[i]:delete() end
     elseif count < num then
-      for i=count+1, num do self:addSlot() end
+      for _=count+1, num do self:addSlot() end--for i=count+1, num do self:addSlot() end
     end
   end
 
@@ -734,7 +734,7 @@ end do -- item grid ------------------------------------------------------------
 
   function widgets.itemGrid:updateGeometry()
     local container = self.autoInteract == "container"
-    local slots = #(self.children)
+    --local slots = #(self.children)
     local cols = math.modf((self.size[1] + self.spacing[1]) / (18 + self.spacing[1]))
     for i, s in pairs(self.children) do
       s.index = i -- shove this in for script use
@@ -913,8 +913,8 @@ end do -- text box -------------------------------------------------------------
       self:queueRedraw()
       local cw = self.size[1] - self.frameWidth * 2 -- content width
       local cl = cw/2 - 3 -- content limit
-      local p = mg.measureString(self.text:sub(1, self.cursorPos))[1] - cw/2
-      self:setScrollPosition(util.clamp(self.scrollPos, p-cl, p+cl))
+      local p2 = mg.measureString(self.text:sub(1, self.cursorPos))[1] - cw/2
+      self:setScrollPosition(util.clamp(self.scrollPos, p2-cl, p2+cl))
     end
   end
   function widgets.textBox:moveCursor(o) self:setCursorPosition(self.cursorPos + o) end
