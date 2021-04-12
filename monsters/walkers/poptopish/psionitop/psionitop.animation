@@ -33,7 +33,7 @@
             "cycle" : 0.8,
             "mode" : "loop",
             "properties" : {
-              "particleEmittersOn" : [ "attackCharge" ],
+              "particleEmittersOff" : [ "attackCharge" ],
               "persistentSound" : "/sfx/npc/monsters/poptop12.ogg",
               "persistentSoundStopTime" : 0.5
             }
@@ -44,7 +44,7 @@
             "mode" : "transition",
             "transition" : "hopfull",
             "properties" : {
-              "particleEmittersOn" : [ "attackCharge" ],
+              "particleEmittersOff" : [ "music", "attackCharge" ],
               "immediateSound" : "/sfx/npc/monsters/monster_hop.ogg",
               "immediateSoundRangeMultiplier" : 0.5
             }
@@ -64,7 +64,8 @@
             "frames" : 2,
             "cycle" : 0.5,
             "properties" : {
-              "particleEmittersOn" : [ "music" ],
+              "particleEmittersOff" : [ "music" ],
+              "particleEmittersOn" : [ "attackCharge" ],
               "persistentSound" : "/sfx/npc/monsters/poptop_sing_loop.ogg",
               "persistentSoundStopTime" : 0.5
             }

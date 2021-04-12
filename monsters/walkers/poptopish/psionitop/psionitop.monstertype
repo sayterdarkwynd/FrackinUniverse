@@ -44,8 +44,34 @@
 
       "hostileActions" : [     
         {
+          "name" : "action-fire",
+          "cooldown" : 4,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 64,
+            "minimumRange" : 1,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.65,
+
+            "projectileType" : "farsightshotpsionic",
+            "power" : 12,
+            "fireOffset" : [0, 1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileParameters" : { "speed" : 60, "damageSourceKind":"cosmic" },
+            "inaccuracy" : 0.12,
+            "fireSound" : "fire",
+            "fireState" : "",
+            "winddownState" : "charge",
+            "winddownTime" : 0.3
+          }
+        }	
+      ],
+	
+	    "periodicActions" : [
+        {
           "name" : "action-hop",
-          "cooldown" : 2,
+          "cooldown" : 4,
           "parameters" : {
             "verticalSpeed" : 15,
             "horizontalSpeed" : 40,
@@ -56,32 +82,12 @@
             "hopAwayFromWall" : true,
             "wallVerticalSpeed" : 25
           }
-        }
-	
+        }      
       ],
-	
-	    "periodicActions" : [],
       
       
       "concurrentHostileActions" : [
-        {
-          "name" : "action-projectile",
-          "cooldown": 4,
-          "parameters" : {
-            "onGround" : false,
-            "projectileCount" : 6,
-            "fireOffset" : [0.0, 0.0],
-            "aimAtTarget" : false,
-            "aimDirection" : [0, 1],
-            "inaccuracy" : 1,
-            "projectileInterval" : 0.01,            
-            "projectileType" : "crystalshardsmall",
-            "projectileParameters" : {
-              "timeToLive" : 2.5,
-              "speed" : 4
-            }
-          }
-        }        
+     
       ],
 
       "approachActions" : [
@@ -158,8 +164,8 @@
       "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
 
       "mass" : 0.82,
-      "walkSpeed" : 9,
-      "runSpeed" : 14,
+      "walkSpeed" : 7,
+      "runSpeed" : 12,
 
       "airFriction" : 0,
 
