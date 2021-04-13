@@ -45,21 +45,21 @@ function update(dt, fireMode, shiftHeld)
 	--*************************************
 
 	if mcontroller.onGround() then
-				self.weapon.freezesLeft = self.weapon.freezeLimit
+		self.weapon.freezesLeft = self.weapon.freezeLimit
 	end
 
 	if self.comboStep > 0 then
-				self.comboTimer = self.comboTimer + dt
-				if self.comboTimer > self.comboTiming[2] then
-						resetFistCombo()
-				end
+		self.comboTimer = self.comboTimer + dt
+		if self.comboTimer > self.comboTiming[2] then
+			resetFistCombo()
 		end
+	end
 
-		self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)
-		if self.lastFireMode ~= "primary" and fireMode == "primary" then
-				self.edgeTriggerTimer = self.edgeTriggerGrace
-		end
-		self.lastFireMode = fireMode
+	self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)
+	if self.lastFireMode ~= "primary" and fireMode == "primary" then
+			self.edgeTriggerTimer = self.edgeTriggerGrace
+	end
+	self.lastFireMode = fireMode
 
 	--*************************************
 	-- FR pre-combo script location
@@ -70,7 +70,7 @@ function update(dt, fireMode, shiftHeld)
 	end
 	--*************************************
 
-		if fireMode == "primary" then
+	if fireMode == "primary" then
 		if (not self.needsEdgeTrigger) or (self.edgeTriggerTimer > 0) then
 			if self.comboStep > 0 then
 
@@ -122,31 +122,30 @@ function update(dt, fireMode, shiftHeld)
 				end
 			end
 		end
-		end
+	end
 
 	--*************************************
 	-- FR post-combo script location
 	--*************************************
 	if self.helper then
 		self.state = "postcombo"
-	 		self.helper:runScripts("fist-postcombo", self, dt, fireMode, shiftHeld)	-- effect after combo
+		self.helper:runScripts("fist-postcombo", self, dt, fireMode, shiftHeld)	-- effect after combo
 	end
 	--*************************************
-
-		self.weapon:update(dt, fireMode, shiftHeld)
-		updateHand()
+	self.weapon:update(dt, fireMode, shiftHeld)
+	updateHand()
 end
 
 function uninit()
 	--*************************************
 	-- FU/FR ADDONS
-		if self.helper then
-				self.helper:clearPersistent()
+	if self.helper then
+		self.helper:clearPersistent()
 	end
 	--*************************************
 
 	if unloaded then
-				activeItem.callOtherHandScript("resetFistCombo")
+		activeItem.callOtherHandScript("resetFistCombo")
 	end
 	self.weapon:uninit()
 end
@@ -163,15 +162,15 @@ end
 -- called remotely to attempt to perform a combo-continuing attack
 function triggerComboAttack(comboStep)
 	if self.primaryAbility:canStartAttack() then
-				-- sb.logInfo("%s fist received combo trigger for combostep %s", activeItem.hand(), comboStep)
-				if comboStep == self.comboSteps then
-						self.comboFinisher:startAttack()
-				else
-						self.primaryAbility:startAttack()
-				end
-				return true
+		-- sb.logInfo("%s fist received combo trigger for combostep %s", activeItem.hand(), comboStep)
+		if comboStep == self.comboSteps then
+			self.comboFinisher:startAttack()
+		else
+			self.primaryAbility:startAttack()
+		end
+		return true
 	else
-				return false
+		return false
 	end
 end
 
@@ -179,8 +178,8 @@ end
 function advanceFistCombo()
 	self.comboTimer = 0
 	if self.comboStep < self.comboSteps then
-				-- sb.logInfo("%s fist advancing combo from step %s to %s", activeItem.hand(), self.comboStep, self.comboStep + 1)
-				self.comboStep = self.comboStep + 1
+		-- sb.logInfo("%s fist advancing combo from step %s to %s", activeItem.hand(), self.comboStep, self.comboStep + 1)
+		self.comboStep = self.comboStep + 1
 	end
 end
 
