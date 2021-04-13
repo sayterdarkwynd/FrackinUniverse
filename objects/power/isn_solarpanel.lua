@@ -5,7 +5,7 @@ function init()
 	power.init()
 
 	self.onShip=world.getProperty("fu_byos.owner")
-	self.onStation=(world.type() == 'playerstation')
+	self.onStation=(world.type() == 'playerstation') or (world.type() == 'asteroids')
 	local ePos=entity.position()
 	storage.randomizedPos = storage.randomizedPos or {ePos[1] + math.random(2,3), ePos[2] + 1}
 end
