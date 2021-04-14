@@ -2,7 +2,8 @@ function init()
 	self.chatTimer = 0 --Cooldown on announcing power conditions
 	
 	self.onShip=world.getProperty("fu_byos.owner") --Is world a BYOS?
-	self.onStation=(world.type() == 'playerstation') --Is world a player station?
+	self.onStation=(world.type() == 'playerstation') or (world.type() == 'asteroids')
+    --Is world a player station or asteroid belt?
 	local ePos=entity.position()
 	storage.randomizedPos = storage.randomizedPos or {ePos[1] + math.random(2,3), ePos[2] + 1}
 	
@@ -15,7 +16,7 @@ end
 function update(dt)
 
 	if (world.underground(storage.randomizedPos) or ((not (self.onShip or self.onStation)) and (world.timeOfDay() > 0.55))) then --Are we underground, or on a planet at nighttime?
-		self.solargenmult = 0 --No power
+		self.solargenmult = 0 --No solar power
 	else
 		self.solargenmult = getLightLevel()
 	end
