@@ -189,7 +189,7 @@ function triggerComboAttack(comboStep)
 end
 
 -- advance to the next step of the combo
-function advanceFistCombo(reset)
+function advanceFistCombo()
 	self.comboTimer = 0
 	if self.comboStep < self.comboSteps then
 		-- sb.logInfo("%s fist advancing combo from step %s to %s", activeItem.hand(), self.comboStep, self.comboStep + 1)
