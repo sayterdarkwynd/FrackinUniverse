@@ -137,6 +137,10 @@ OTHER:
     fallDamageMultiplier            [effectiveMultiplier] [1-Relative]
     
     bowDrawTimeBonus                [amount]              [Unknown]
+	critChance                      [amount]              [0-relative. Default: 0] Chance for weapons to crit. value of 42 is 42% chance to crit.
+	critBonus                       [amount]              [0-relative. Default: 0] Bonus Crit Damage. Flat amount added, does not scale with critDamage. Avoid using this stat. It should only be part of weapon config files.
+	critDamage                      [amount]              [0-relative. Default: 0] Bonus to Crit Damage multiplier. This is added to a base value of 1.50, but the stat starts as 0. +0.1 will make the crit damage multiplier 1.6.
+	stunChance                      [amount]              [0-relative. Default: 0] Chance to stun. Requires a crit. value of 42 is 42% chance to stun on crit.
     
     fuCharisma                      [baseMultiplier]	  [1-Relative] Used for trading on space stations.
 	fuFoodTrackerHandler			[fixed]				  [-1,0,1] set by fu_player_init. -1 means food isnt draining,1 means it is, 0 means the value isnt initialized.
