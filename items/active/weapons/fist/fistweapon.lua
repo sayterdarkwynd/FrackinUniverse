@@ -128,7 +128,7 @@ function update(dt, fireMode, shiftHeld)
 		else
 			--non-combo hits reset the chain and cost energy. allows attack spam.
 			if self.primaryAbility:canStartAttack() then
-				if status.overConsumeResource("energy",status.resourceMax("energy")*0.01) then
+				if status.overConsumeResource("energy",status.resourceMax("energy")*0.05) then
 					resetFistCombo()
 					activeItem.callOtherHandScript("resetFistCombo")
 					self.primaryAbility:startAttack()
