@@ -1,0 +1,30 @@
+{
+	"id": "fu_t10_glitch_mission2",
+	"prerequisites": [ "fu_t10_precursor" ],
+	"title": "[PH] Glitch Hard Mode",
+	"text": "[PH] Glitch Dark Mode Text",
+	"completionText": "[PH] Glitch Dark Mode Completion Text",
+	"moneyRange": [0, 0],
+	"rewards": [],
+	"canBeAbandoned": true,
+	"questGiverIndicator": "mainquestgiver",
+	"questReceiverIndicator": "mainquestreceiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/fuartifacthardmode.lua",
+	"scriptConfig": {
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+		"associatedMission": "fumissionglitch1t10",
+		"descriptions"	: {
+			"artifact": "Find the ^orange;artifact^reset; in the ^orange;old Glitch keep^reset;",
+			"turnIn": "Return to ^orange;Kherae^reset; at ^orange;the Science Outpost^reset;"
+		},
+
+		"artifactUid": "glitchartifactaltar",
+		"artifactMessage": "glitchArtifactTaken",
+		"estherUid": "kheraeoutpost"
+	}
+}

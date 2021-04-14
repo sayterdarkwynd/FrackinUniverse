@@ -1,0 +1,38 @@
+{
+	"id" : "fu_t10_precursor",
+	"mainQuest" : true,
+	"title" : "[PH] Dark Precursor",
+	"prerequisites" : ["fu_t10_apex_mission2"],
+	"text" : "[PH] Dark Precursor Text",
+	"completionText" : "[PH] Dark Precursor Completion Text",
+	"portraits" : {
+		"questStarted" : "questGiver",
+		"questComplete" : "questReceiver"
+	},
+	"moneyRange" : [0, 0],
+	"missionUnlockedCinema" : "/cinematics/coordinates.cinematic",
+	"rewards" : [],
+	"canBeAbandoned" : true,
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/fuhardmodeinstance.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "questGiver"
+		},
+		"descriptions" : {
+			"enterInstance" : "Use the ^orange;Bronze Arena Beacon^reset;.",
+			"findGoal" : "Win the arena battle",
+			"turnIn" : "Return to ^orange;Khe^reset; at the ^orange;Science Outpost^reset;"
+		},
+		"warpAction" : "fuarena1t10",
+		"goalTrigger" : "proximity",
+		"proximityRange" : 20,
+
+		"goalEntityUid" : "arena1teleporter",
+		"indicateGoal" : false,
+		"trackGoalEntity" : false,
+
+		"turnInEntityUid" : "kheraeoutpost"
+	}
+}
