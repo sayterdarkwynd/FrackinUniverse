@@ -37,7 +37,7 @@ function populateMaterialsList()
                     local starType = celestial.planetParameters(system).typeName or "default"
                     -- print star
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Star:^reset; "..stars[starType])
+                    widget.setText(path .. ".text", "^green;Star:^reset; " .. (stars[starType] or '?'))
 
                     -- print coord
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
