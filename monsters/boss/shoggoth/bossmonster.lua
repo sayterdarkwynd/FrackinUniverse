@@ -60,6 +60,13 @@ function init()
 end
 
 function update(dt)
+	if wrongWorld or (world.type()~="eldershoggoth") then
+		if not wrongWorld then
+			monster.setDropPool(nil)
+		end
+		status.setResource("health",0)
+		wrongWorld=true
+	end
 	dungeonIDCheck=math.min((dungeonIDCheck or 0)-dt)
 	world.debugPoint(entity.position(),"red")
 	self.tookDamage = false

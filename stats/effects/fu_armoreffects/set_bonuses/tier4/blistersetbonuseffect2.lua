@@ -7,7 +7,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "mentalResistance", amount = 0.2},
+	{stat = "mentalProtection", amount = 0.2},
 	{stat = "poisonStatusImmunity", amount = 1.0},
 	{stat = "protoImmunity", amount = 1.0},
 	{stat = "pusImmunity", amount = 1.0},
