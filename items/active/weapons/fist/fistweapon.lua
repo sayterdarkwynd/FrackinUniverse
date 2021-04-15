@@ -86,21 +86,25 @@ function update(dt, fireMode, shiftHeld)
 				if self.comboTimer >= self.comboTiming[1] then
 					if shiftHeld then
 						if self.primaryAbility:canStartAttack() then
-							self.comboFinisher:startAttack()
-							resetFistCombo()
+							if (self.comboStep == self.comboSteps) or status.overConsumeResource("energy",status.resourceMax("energy")*0.03) then
+								self.comboFinisher:startAttack()
+								resetFistCombo()
+							end
 						end
 					else
 						if self.comboStep % 2 == 0 then
 							if self.primaryAbility:canStartAttack() then
-								if self.comboStep == self.comboSteps then
-									-- sb.logInfo("[%s] %s fist starting a combo finisher", os.clock(), activeItem.hand())
-									--self.comboFinisher:startAttack()
-									self.primaryAbility:startAttack()
-									resetFistCombo()
-								else
-									self.primaryAbility:startAttack()
-									-- sb.logInfo("[%s] %s fist continued the combo", os.clock(), activeItem.hand())
-									advanceFistCombo()
+								if (self.comboStep == self.comboSteps) or status.overConsumeResource("energy",status.resourceMax("energy")*0.01) then
+									if self.comboStep == self.comboSteps then
+										-- sb.logInfo("[%s] %s fist starting a combo finisher", os.clock(), activeItem.hand())
+										--self.comboFinisher:startAttack()
+										self.primaryAbility:startAttack()
+										resetFistCombo()
+									else
+										self.primaryAbility:startAttack()
+										-- sb.logInfo("[%s] %s fist continued the combo", os.clock(), activeItem.hand())
+										advanceFistCombo()
+									end
 								end
 							end
 						elseif activeItem.callOtherHandScript("triggerComboAttack", self.comboStep) then
@@ -113,8 +117,10 @@ function update(dt, fireMode, shiftHeld)
 				if self.primaryAbility:canStartAttack() then
 					if shiftHeld then
 						if self.primaryAbility:canStartAttack() then
-							resetFistCombo()
-							self.comboFinisher:startAttack()
+							if status.overConsumeResource("energy",status.resourceMax("energy")*0.15) then
+								resetFistCombo()
+								self.comboFinisher:startAttack()
+							end
 						end
 					else
 						self.primaryAbility:startAttack()

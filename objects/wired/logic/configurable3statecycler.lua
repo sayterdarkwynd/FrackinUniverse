@@ -5,14 +5,18 @@ function init()
 	message.setHandler("setTimerValues",setValues)
 	message.setHandler("sendConfig",sendConfig)
 	message.setHandler("resetTimerValues",resetValues)
+	handleLoading()
+	--doAnim()
+	script.setUpdateDelta(1)
+	object.setInteractive(true)
+end
+
+function handleLoading()
 	storage.leftValue=numFix(storage.leftValue or 26)
 	storage.midValue=numFix(storage.midValue or 2)
 	storage.rightValue=numFix(storage.rightValue or 2)
 	storage.state=-1
 	runCircuit()
-	--doAnim()
-	script.setUpdateDelta(1)
-	object.setInteractive(true)
 end
 
 function runCircuit()
@@ -59,15 +63,17 @@ function resetValues()
 end
 
 function doAnim()
-	animator.setAnimationState("switchState", (storage.state >= 0) and "on" or "off")
+	local e=(storage.state >= 0) and "on" or "off"
+	if animator.animationState("switchState")~=e then animator.setAnimationState("switchState",e) end
+	--animator.setAnimationState("switchState", (storage.state >= 0) and "on" or "off")
 end
 
 function onInputNodeChange()
-	init()
+	handleLoading()
 end
 
 function onNodeConnectionChange()
-	init()
+	handleLoading()
 end
 
 function sendConfig()
