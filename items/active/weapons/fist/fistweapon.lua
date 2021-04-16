@@ -94,7 +94,7 @@ function update(dt, fireMode, shiftHeld)
 					else
 						if self.comboStep % 2 == 0 then
 							if self.primaryAbility:canStartAttack() then
-								if (self.comboStep == self.comboSteps) or status.overConsumeResource("energy",status.resourceMax("energy")*0.01) then
+								--if (self.comboStep == self.comboSteps) or status.overConsumeResource("energy",status.resourceMax("energy")*0.02) then
 									if self.comboStep == self.comboSteps then
 										-- sb.logInfo("[%s] %s fist starting a combo finisher", os.clock(), activeItem.hand())
 										--self.comboFinisher:startAttack()
@@ -105,7 +105,7 @@ function update(dt, fireMode, shiftHeld)
 										-- sb.logInfo("[%s] %s fist continued the combo", os.clock(), activeItem.hand())
 										advanceFistCombo()
 									end
-								end
+								--end
 							end
 						elseif activeItem.callOtherHandScript("triggerComboAttack", self.comboStep) then
 							-- sb.logInfo("[%s] %s fist triggered opposing attack", os.clock(), activeItem.hand())
@@ -196,14 +196,17 @@ end
 
 -- advance to the next step of the combo
 function advanceFistCombo()
+	self.fistMastery = 1 + status.stat("fistMastery") ---calculate fistMastery
 	self.comboTimer = 0
 	if self.comboStep < self.comboSteps then
+		status.overConsumeResource("energy",status.resourceMax("energy")*0.01)
 		-- sb.logInfo("%s fist advancing combo from step %s to %s", activeItem.hand(), self.comboStep, self.comboStep + 1)
 		self.comboStep = self.comboStep + 1
 		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUArmorSetBonus","fistweaponcombobonus")
 		status.setPersistentEffects("fistweaponcombobonus",{
 			{stat="stunChance",amount=self.comboStep*4},
-			{stat="critChance",amount=self.comboStep*1}
+			{stat="critChance",amount=self.comboStep*1},
+			{stat="protection",amount=self.comboStep*1}
 		})
 	end
 end

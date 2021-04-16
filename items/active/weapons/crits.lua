@@ -60,7 +60,7 @@ function Crits:setCritDamage(damage)
                 local stunRoll = (math.random(100)) + status.stat("stunChance") + config.getParameter("stunChance",0)
                 --local daggerChance = math.random(100) + status.stat("daggerChance") + config.getParameter("daggerChance",0)--unused
 				
-                if stunRoll > 95 and root.itemHasTag(heldItem, "dagger") then
+                if stunRoll > 99 and root.itemHasTag(heldItem, "dagger") then
                     params = { speed=14, power = 1, damageKind = "default"}
                     world.spawnProjectile("daggerCrit",mcontroller.position(),activeItem.ownerEntityId(),Crits.aimVectorSpecial(self),true,params)
                 end
