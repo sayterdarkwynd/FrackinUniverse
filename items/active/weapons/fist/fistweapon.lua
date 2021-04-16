@@ -94,18 +94,16 @@ function update(dt, fireMode, shiftHeld)
 					else
 						if self.comboStep % 2 == 0 then
 							if self.primaryAbility:canStartAttack() then
-								--if (self.comboStep == self.comboSteps) or status.overConsumeResource("energy",status.resourceMax("energy")*0.02) then
-									if self.comboStep == self.comboSteps then
-										-- sb.logInfo("[%s] %s fist starting a combo finisher", os.clock(), activeItem.hand())
-										--self.comboFinisher:startAttack()
-										self.primaryAbility:startAttack()
-										resetFistCombo()
-									else
-										self.primaryAbility:startAttack()
-										-- sb.logInfo("[%s] %s fist continued the combo", os.clock(), activeItem.hand())
-										advanceFistCombo()
-									end
-								--end
+								if self.comboStep == self.comboSteps then
+									-- sb.logInfo("[%s] %s fist starting a combo finisher", os.clock(), activeItem.hand())
+									--self.comboFinisher:startAttack()
+									self.primaryAbility:startAttack()
+									resetFistCombo()
+								else
+									self.primaryAbility:startAttack()
+									-- sb.logInfo("[%s] %s fist continued the combo", os.clock(), activeItem.hand())
+									advanceFistCombo()
+								end
 							end
 						elseif activeItem.callOtherHandScript("triggerComboAttack", self.comboStep) then
 							-- sb.logInfo("[%s] %s fist triggered opposing attack", os.clock(), activeItem.hand())
@@ -134,7 +132,7 @@ function update(dt, fireMode, shiftHeld)
 		else
 			--non-combo hits reset the chain and cost energy. allows attack spam.
 			if self.primaryAbility:canStartAttack() then
-				if status.overConsumeResource("energy",status.resourceMax("energy")*0.05) then
+				if status.overConsumeResource("energy",status.resourceMax("energy")*0.03) then
 					resetFistCombo()
 					activeItem.callOtherHandScript("resetFistCombo")
 					self.primaryAbility:startAttack()
@@ -199,7 +197,7 @@ function advanceFistCombo()
 	self.fistMastery = 1 + status.stat("fistMastery") ---calculate fistMastery
 	self.comboTimer = 0
 	if self.comboStep < self.comboSteps then
-		status.overConsumeResource("energy",status.resourceMax("energy")*0.01)
+		status.overConsumeResource("energy",status.resourceMax("energy")*0.005)
 		-- sb.logInfo("%s fist advancing combo from step %s to %s", activeItem.hand(), self.comboStep, self.comboStep + 1)
 		self.comboStep = self.comboStep + 1
 		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUArmorSetBonus","fistweaponcombobonus")
@@ -208,6 +206,7 @@ function advanceFistCombo()
 			{stat="critChance",amount=self.comboStep*1},
 			{stat="protection",amount=self.comboStep*1}
 		})
+		animator.burstParticleEmitter("flames")
 	end
 end
 
