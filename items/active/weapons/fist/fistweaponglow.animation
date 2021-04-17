@@ -4,7 +4,7 @@
       "attack" : {
         "default" : "idle",
         "states" : {
-          "idle" : { 
+          "idle" : {
             "properties" : {
               "particleEmittersOff" : ["swoosh"]
             }
@@ -41,7 +41,7 @@
           "zLevel" : 1,
           "image" : "<partImage>:<hand>"
         }
-      },      
+      },
       "swoosh" : {
         "properties" : {
           "transformationGroups" : ["weapon","swoosh"],
@@ -72,36 +72,7 @@
 
   "particleEmitters" : {
     "swoosh" : {
-      "particles" : [] 
-    },
-    "flames" : {
-      "enabled" : true,
-      "transformationGroups" : ["weapon"],
-      "emissionRate" : 10,
-      "emissionRateVariance" : 5,
-      "offsetRegion" : [1.0, 1.5, 2.0, 0.75],
-      "particles" : [
-        {
-          "particle" : {
-            "type" : "animated",
-            "animation" : "/animations/sparkles/sparkleloop2.animation",
-            "position" : [0, 0],
-            "layer" : "back",
-            "initialVelocity" : [0, 0],
-            "finalVelocity" : [0, -1.0],
-            "approach" : [0, 50],
-            "fade" : 0.5,
-            "destructionAction" : "shrink",
-            "destructionTime" : 0.5,
-            "size" : 0.4,
-            "timeToLive" : 0.5,
-            "fullbright" : true,
-            "variance" : {
-              "initialVelocity" : [1, 0]
-            }
-          }
-        }
-      ]
+      "particles" : []
     }
   },
   "sounds" : {

@@ -7,6 +7,25 @@ require "/scripts/FRHelper.lua"
 function init()
 	self.weapon = Weapon:new()
 
+	self.comboParticleProjectileParams={damageKind="hidden",power=0,speed=0,piercing=true,statusEffects={},scripts=nil,timeToLive=0.1,damagePoly={{1,0},{0,1},{1,1},{0,0}}}
+
+	
+	local particleParams=config.getParameter("comboParticleParams")
+	if not particleParams then
+		local animation=config.getParameter("comboParticleAnimation") or "/animations/sparkles/sparkleloop2.animation"
+		local comboParticleSpecification=config.getParameter("comboParticleSpecification") or {
+			type="animated",animation=animation,position={0,0},layer="back",initialVelocity={0,0},finalVelocity={0,-1},approach={0,50},fade=0.5,destructionAction="shrink",destructionTime=0.5,
+			size=0.4,timeToLive=0.5,fullbright=true,
+			--variance={initialVelocity={1,1},position={1,1}}
+			variance={initialVelocity={1,1},finalVelocity={1,1},position={1,1}}
+		}
+		local body={action="particle",specification=comboParticleSpecification,time=0.45}--{action="particle",specification="astraltearsparkle2",time=0.45}
+		body["repeat"]=true--this is a pain, errors if done like {repeat=true}
+		particleParams={{action = "loop",count = 5,body = {body}}}
+	end
+
+	self.comboParticleProjectileParams.actionOnReap=particleParams
+
 	self.weapon:addTransformationGroup("weapon", {0,0}, 0)
 
 	self.primaryAbility = getPrimaryAbility()
@@ -102,7 +121,7 @@ function update(dt, fireMode, shiftHeld)
 								else
 									self.primaryAbility:startAttack()
 									-- sb.logInfo("[%s] %s fist continued the combo", os.clock(), activeItem.hand())
-									advanceFistCombo()
+									advanceFistCombo(true)
 								end
 							end
 						elseif activeItem.callOtherHandScript("triggerComboAttack", self.comboStep) then
@@ -180,6 +199,7 @@ end
 function triggerComboAttack(comboStep)
 	if self.primaryAbility:canStartAttack() then
 		-- sb.logInfo("%s fist received combo trigger for combostep %s", activeItem.hand(), comboStep)
+		burstComboParticles(false)
 		if comboStep == self.comboSteps then
 			--self.comboFinisher:startAttack()
 			self.primaryAbility:startAttack()
@@ -193,7 +213,7 @@ function triggerComboAttack(comboStep)
 end
 
 -- advance to the next step of the combo
-function advanceFistCombo()
+function advanceFistCombo(doBurst)
 	self.fistMastery = 1 + status.stat("fistMastery") ---calculate fistMastery
 	self.comboTimer = 0
 	if self.comboStep < self.comboSteps then
@@ -206,7 +226,18 @@ function advanceFistCombo()
 			{stat="critChance",amount=self.comboStep*1},
 			{stat="protection",amount=self.comboStep*1}
 		})
-		animator.burstParticleEmitter("flames")
+		--animator.burstParticleEmitter("flames")--stop using. compatibility. ERM seems a common culprit of "use base scripts but custom anims file"
+		--burstComboParticles()--better idea: move it to the part that handles picking a hand.
+	end
+	if doBurst then burstComboParticles(true) end
+end
+
+function burstComboParticles(wasLocal)
+	--sb.logInfo("wasLocal %s",wasLocal)
+	if self.comboParticleProjectileParams then
+		local yarp=vec2.add(mcontroller.position(),vec2.rotate({self.weapon.aimDirection,0},self.weapon.aimAngle))
+		yarp={world.xwrap(yarp[1]),yarp[2]}
+		world.spawnProjectile("invisibleprojectile",yarp,activeItem.ownerEntityId(),{0,0},true,self.comboParticleProjectileParams)
 	end
 end
 
