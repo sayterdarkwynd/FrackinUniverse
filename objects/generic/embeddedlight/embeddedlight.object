@@ -2,20 +2,19 @@
   "objectName" : "embeddedlight",
   "colonyTags" : ["light"],
   "rarity" : "Common",
-  "description" : "A light hidden in the wall so well it's effectively invisible",
-  "shortdescription" : "Embedded Light",
+  "description" : "A floating, nearly-invisible light.",
+  "shortdescription" : "Hidden Light",
   "race" : "generic",
-  "scannable" : true,
+  "printable" : false,
 
   "category" : "light",
   "price" : 80,
-  "printable" : true,
   "lightColor" : [220, 220, 220],
 
-  "apexDescription" : "A hidden light in the wall.",
+  "apexDescription" : "A hidden light, floating in the air.",
   "avianDescription" : "I prefer the glow of avolite crystals, myself.",
   "floranDescription" : "Sssecret light!",
-  "glitchDescription" : "Observant. A light hidden in the wall.",
+  "glitchDescription" : "Observant. A hidden light which floats in the air.",
   "humanDescription" : "Can't see anything here, but it sure is bright!",
   "hylotlDescription" : "I appreciate the subtlety of this light source, though I do wish its light was a little more natural.",
 
@@ -23,11 +22,10 @@
   "orientations" : [
     {
       "image" : "embeddedlight.png:<color>.<frame>",
-      "imagePosition" : [-0, 0],
+      "imagePosition" : [0, 0],
       "frames" : 1,
       "animationCycle" : 0.3,
-      "spaceScan" : 0.1,
-      "anchors" : [ "background" ]
+      "spaceScan" : 0.1
     }
   ],
   
@@ -42,5 +40,8 @@
   
   "interactive" : false,
 
-  "inputNodes" : [ [0, 0] ]
+  "inputNodes" : [ [0, 0] ],
+  
+  "smashDropOptions" : [ [ [ "embeddedlight2", 1, {} ] ] ],
+  "breakDropOptions" : [ [ [ "embeddedlight2", 1, {} ] ] ]
 }
