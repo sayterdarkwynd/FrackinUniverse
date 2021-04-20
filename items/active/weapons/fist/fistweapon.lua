@@ -7,9 +7,6 @@ require "/scripts/FRHelper.lua"
 function init()
 	self.weapon = Weapon:new()
 
-	self.comboParticleProjectileParams={damageKind="hidden",power=0,speed=0,piercing=true,statusEffects={},scripts=nil,timeToLive=0.1,damagePoly={{1,0},{0,1},{1,1},{0,0}}}
-
-	
 	local particleParams=config.getParameter("comboParticleParams")
 	if not particleParams then
 		local animation=config.getParameter("comboParticleAnimation") or "/animations/sparkles/sparkleloop2.animation"
@@ -24,6 +21,7 @@ function init()
 		particleParams={{action = "loop",count = 5,body = {body}}}
 	end
 
+	self.comboParticleProjectileParams={}
 	self.comboParticleProjectileParams.actionOnReap=particleParams
 
 	self.weapon:addTransformationGroup("weapon", {0,0}, 0)
@@ -105,7 +103,8 @@ function update(dt, fireMode, shiftHeld)
 				if self.comboTimer >= self.comboTiming[1] then
 					if shiftHeld then
 						if self.primaryAbility:canStartAttack() then
-							if (self.comboStep == self.comboSteps) or status.overConsumeResource("energy",status.resourceMax("energy")*0.03) then
+							local energyCost=status.resourceMax("energy")*0.03
+							if (self.comboStep == self.comboSteps) or ((energyCost>0) and status.overConsumeResource("energy",energyCost)) then
 								self.comboFinisher:startAttack()
 								resetFistCombo()
 							end
@@ -134,7 +133,8 @@ function update(dt, fireMode, shiftHeld)
 				if self.primaryAbility:canStartAttack() then
 					if shiftHeld then
 						if self.primaryAbility:canStartAttack() then
-							if status.overConsumeResource("energy",status.resourceMax("energy")*0.15) then
+							local energyCost=status.resourceMax("energy")*0.15
+							if (energyCost>0) and status.overConsumeResource("energy",energyCost) then
 								resetFistCombo()
 								self.comboFinisher:startAttack()
 							end
@@ -151,7 +151,8 @@ function update(dt, fireMode, shiftHeld)
 		else
 			--non-combo hits reset the chain and cost energy. allows attack spam.
 			if self.primaryAbility:canStartAttack() then
-				if status.overConsumeResource("energy",status.resourceMax("energy")*0.03) then
+				local energyCost=status.resourceMax("energy")*0.03
+				if (energyCost>0) and status.overConsumeResource("energy",energyCost) then
 					resetFistCombo()
 					activeItem.callOtherHandScript("resetFistCombo")
 					self.primaryAbility:startAttack()
@@ -217,7 +218,9 @@ function advanceFistCombo(doBurst)
 	self.fistMastery = 1 + status.stat("fistMastery") ---calculate fistMastery
 	self.comboTimer = 0
 	if self.comboStep < self.comboSteps then
-		status.overConsumeResource("energy",status.resourceMax("energy")*0.005)
+		local energyCost=status.resourceMax("energy")*0.005
+		--if (energyCost>0) and status.overConsumeResource("energy",energyCost) then
+		if (energyCost>0) then status.overConsumeResource("energy",energyCost) end
 		-- sb.logInfo("%s fist advancing combo from step %s to %s", activeItem.hand(), self.comboStep, self.comboStep + 1)
 		self.comboStep = self.comboStep + 1
 		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUArmorSetBonus","fistweaponcombobonus")
@@ -226,6 +229,7 @@ function advanceFistCombo(doBurst)
 			{stat="critChance",amount=self.comboStep*1},
 			{stat="protection",amount=self.comboStep*1}
 		})
+		--end
 		--animator.burstParticleEmitter("flames")--stop using. compatibility. ERM seems a common culprit of "use base scripts but custom anims file"
 		--burstComboParticles()--better idea: move it to the part that handles picking a hand.
 	end
@@ -237,7 +241,7 @@ function burstComboParticles(wasLocal)
 	if self.comboParticleProjectileParams then
 		local yarp=vec2.add(mcontroller.position(),vec2.rotate({self.weapon.aimDirection,0},self.weapon.aimAngle))
 		yarp={world.xwrap(yarp[1]),yarp[2]}
-		world.spawnProjectile("invisibleprojectile",yarp,activeItem.ownerEntityId(),{0,0},true,self.comboParticleProjectileParams)
+		world.spawnProjectile("fuinvisibleprojectiletinyindicator",yarp,activeItem.ownerEntityId(),{0,0},true,self.comboParticleProjectileParams)
 	end
 end
 
