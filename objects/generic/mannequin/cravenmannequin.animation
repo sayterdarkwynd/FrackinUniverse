@@ -1,0 +1,157 @@
+{
+  "partTagDefaults" : {
+    "legs" : {
+      "frameSet" : "",
+      "directives" : ""
+    },
+    "body" : {
+      "frameSet" : "",
+      "directives" : ""
+    },
+    "head" : {
+      "frameSet" : "",
+      "directives" : ""
+    },
+    "frontSleeve" : {
+      "frameSet" : "",
+      "directives" : ""
+    }
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "head" : {
+        "default" : "hide",
+        "states" : {
+          "show" : {},
+          "hide" : {}
+        }
+      },
+      "chest" : {
+        "default" : "hide",
+        "states" : {
+          "show" : {},
+          "hide" : {}
+        }
+      },
+      "legs" : {
+        "default" : "hide",
+        "states" : {
+          "show" : {},
+          "hide" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "standBase" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0],
+          "zLevel" : 0,
+          "image" : "cravenstandBase.png"
+        }
+      },
+      "dummyBackArm" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 1,
+          "image" : "/humanoid/any/cravendummybackarm.png"
+        }
+      },
+      "dummyHead" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 4,
+          "image" : "/humanoid/any/cravendummyhead.png"
+        }
+      },
+      "dummyBody" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 5,
+          "image" : "/humanoid/any/cravendummybody.png"
+        }
+      },
+      "legs" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 6
+        },
+
+        "partStates" : {
+          "legs" : {
+            "show" : {
+              "properties" : {
+                "image" : "<frameSet>:idle.1<directives>"
+              }
+            }
+          }
+        }
+      },
+      "body" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 7
+        },
+
+        "partStates" : {
+          "chest" : {
+            "show" : {
+              "properties" : {
+                "image" : "<frameSet>:idle.1<directives>"
+              }
+            }
+          }
+        }
+      },
+      "head" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 8
+        },
+
+        "partStates" : {
+          "head" : {
+            "show" : {
+              "properties" : {
+                "image" : "<frameSet>:normal<directives>"
+              }
+            }
+          }
+        }
+      },
+      "dummyFrontArm" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 9,
+          "image" : "/humanoid/any/cravendummyfrontarm.png"
+        }
+      },
+      "frontSleeve" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [0, 0.125],
+          "zLevel" : 10
+        },
+
+        "partStates" : {
+          "chest" : {
+            "show" : {
+              "properties" : {
+                "image" : "<frameSet>:idle.1<directives>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
