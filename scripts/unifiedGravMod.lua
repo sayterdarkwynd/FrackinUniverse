@@ -51,10 +51,11 @@ function unifiedGravMod.refreshGrav(dt)
 		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
 		local gravNorm=((status.statPositive("fuswimming") and 0.0) or 1.0) * status.stat("gravityNorm")
 		local newGravNorm=(gravNorm~=0.0) and (((status.statPositive("fuswimming") and 0.0) or 1.0)) or 0.0
+		local createGravity=status.statPositive("createGravity")
 
-		if self.gravFlightOverride or status.statPositive("gravFlightOverride") or ((mcontroller and mcontroller.zeroG()) or (0==world.gravity(entity.position()))) then
+		if self.gravFlightOverride or status.statPositive("gravFlightOverride") or ((not createGravity) and ((mcontroller and mcontroller.zeroG()) or (0==world.gravity(entity.position())))) then
 			--nothing
-		elseif self.flying then
+		elseif createGravity or self.flying then
 			local fishbowl=((0==world.gravity(entity.position())) and 80) or (world.gravity(entity.position()))
 			--dbg("uGM.rG","Flying entity!")
 			mcontroller.addMomentum({0,-0.2*fishbowl*newGrav*dt})
