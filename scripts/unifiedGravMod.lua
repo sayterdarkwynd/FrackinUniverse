@@ -50,23 +50,28 @@ function unifiedGravMod.refreshGrav(dt)
 		--dbg("uGM.rG@first: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position())})
 		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
 		local gravNorm=((status.statPositive("fuswimming") and 0.0) or 1.0) * status.stat("gravityNorm")
-		local newGravNorm=((status.statPositive("fuswimming") and 0.0) or 1.0)
+		local newGravNorm=(gravNorm~=0.0) and (((status.statPositive("fuswimming") and 0.0) or 1.0)) or 0.0
 
-		if self.gravFlightOverride or status.statPositive("gravFlightOverride") then
+		if self.gravFlightOverride or status.statPositive("gravFlightOverride") or ((mcontroller and mcontroller.zeroG()) or (0==world.gravity(entity.position()))) then
 			--nothing
-		elseif self.flying or (0==world.gravity(entity.position())) then
+		elseif self.flying then
 			local fishbowl=((0==world.gravity(entity.position())) and 80) or (world.gravity(entity.position()))
-			--dbg("uGM.rG","FLOATING!")
+			--dbg("uGM.rG","Flying entity!")
 			mcontroller.addMomentum({0,-0.2*fishbowl*newGrav*dt})
 		else
 			--reduce effect of gravity modifiers if gravity normalization is in effect
-			newGravNorm=newGravNorm*(newGrav*(1.0-(0.5*math.abs(gravNorm))))*-1
+			newGravNorm=newGravNorm*(((newGravNorm~=0.0) and ((newGrav*(1.0-(0.5*math.abs(gravNorm))))*-1)) or 0)
 			newGrav=newGrav+newGravNorm+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
 		end
 		--dbg("uGM.rG@end",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,newGrav=newGrav,gravNorm=gravNorm,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,newGravNorm=newGravNorm})
 	end
 end
+
+--[[
+[18:11:15.833] [Info] uGM.rG@first: : {flying: false, gravAt: 80, gravMod: -0.5, gravMult2: 1, ghosting: false, gravBaseMod: 0}
+[18:11:15.833] [Info] uGM.rG@end: {flying: false, newGravNorm: 0.5, newGrav: 1.5, gravMod: -0.5, gravBaseMod: 0, gravMult2: 1, ghosting: false, gravNorm: 0}
+]]
 
 -- F(x)=IF(x>80,-1,IF(x<80,1,0))*120/x, F(22)=80
 function unifiedGravMod.applyGravNormalization()
