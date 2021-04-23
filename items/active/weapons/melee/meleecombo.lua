@@ -476,14 +476,14 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if self.cooldownTimer > 0 then
 		self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 		if self.cooldownTimer == 0 then
-				self:readyFlash()
+			self:readyFlash()
 		end
 	end
 
 	if self.flashTimer > 0 then
 		self.flashTimer = math.max(0, self.flashTimer - self.dt)
 		if self.flashTimer == 0 then
-				animator.setGlobalTag("bladeDirectives", "")
+			animator.setGlobalTag("bladeDirectives", "")
 		end
 	end
 
