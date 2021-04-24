@@ -188,7 +188,7 @@ function MeleeSlash:fire()
 			local damageArea = partDamageArea("swoosh")
 			local damageConfigCopy=copy(self.damageConfig)
 			if self.lowEnergy then
-				damageConfigCopy.baseDamage=damageConfigCopy.baseDamage*0.75
+				damageConfigCopy.baseDamage=damageConfigCopy.baseDamage*0.8
 			end
 			self.weapon:setDamage(damageConfigCopy, damageArea, self.fireTime)
 		end
