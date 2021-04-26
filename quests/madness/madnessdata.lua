@@ -64,7 +64,7 @@ function init()
 
 
 	storage.armorSetData=storage.armorSetData or {}
-	message.setHandler("recordFUArmorSetBonus",function(_,_,setName) storage.armorSetData[setName]=os.time() end)
+	message.setHandler("recordFUPersistentEffect",function(_,_,setName) storage.armorSetData[setName]=os.time() end)
 
 	for element,data in pairs(elementalTypes) do
 		if data.resistanceStat then
