@@ -8,59 +8,108 @@
           "idle" : {
             "frames" : 1
           },
+          "notice" : {
+            "frames" : 1
+          },                  
           "fly" : {
             "frames" : 5,
             "cycle" : 0.7,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/dolphin2.ogg",
-              "immediateSoundRangeMultiplier" : 0.5
-            }
+            "mode" : "loop"
           },
+          "movement" : {
+            "frames" : 5,
+            "cycle" : 0.7,
+            "mode" : "loop"
+          },          
           "swimslow" : {
             "frames" : 5,
             "cycle" : 1.4,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/dolphin3.ogg",
-              "immediateSoundRangeMultiplier" : 0.5
-            }
+            "mode" : "loop"
           },
           "swimfast" : {
             "frames" : 5,
             "cycle" : 0.7,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/dolphin4.ogg",
-              "immediateSoundRangeMultiplier" : 0.5
-            }
+            "mode" : "loop"
           },
           "charge" : {
             "frames" : 5,
             "cycle" : 0.7,
-            "mode" : "loop",
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/dolphin5.ogg",
-              "immediateSoundRangeMultiplier" : 0.5
-            }
+            "mode" : "loop"
           },
           "chargewindup" : {
-            "frames" : 1,
+            "frames" : 3,
             "cycle" : 0.25,
             "mode" : "loop"
           },
           "chargewinddown" : {
-            "frames" : 1,
+            "frames" : 2,
             "cycle" : 0.25,
             "mode" : "loop"
           },
           "fire" : {
-            "frames" : 7,
+            "frames" : 6,
             "cycle" : 0.25,
             "mode" : "loop"
           }
         }
       },
+      "body" : {
+        "priority" : 0,
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "frames" : 1
+          },
+          "notice" : {
+            "frames" : 1
+          },          
+          "fly" : {
+            "frames" : 5,
+            "cycle" : 0.7,
+            "mode" : "loop"
+          },
+          "movement" : {
+            "frames" : 5,
+            "cycle" : 0.7,
+            "mode" : "loop"
+          },          
+          "swimslow" : {
+            "frames" : 5,
+            "cycle" : 1.4,
+            "mode" : "loop"
+          },
+          "swimfast" : {
+            "frames" : 5,
+            "cycle" : 0.7,
+            "mode" : "loop"
+          },
+          "charge" : {
+            "frames" : 5,
+            "cycle" : 0.7,
+            "mode" : "loop"
+          },
+          "chargewindup" : {
+            "frames" : 3,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "chargewinddown" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "fire" : {
+            "frames" : 6,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          },
+          "crash" : {
+            "frames" : 2,
+            "cycle" : 0.25,
+            "mode" : "loop"
+          }
+        }
+      },      
       "damage" : {
         "priority" : 3,
         "default" : "none",
@@ -69,11 +118,7 @@
             "frames" : 1
           },
           "stunned" : {
-            "frames" : 1,
-            "properties" : {
-              "immediateSound" : "/sfx/npc/monsters/dolphin5.ogg",
-              "immediateSoundRangeMultiplier" : 0.5
-            }
+            "frames" : 1
           }
         }
       },
@@ -111,12 +156,22 @@
               "properties" : {
                 "image" : "<partImage>:idle.<frame>"
               }
-            },
+            },        
             "fly" : {
               "properties" : {
                 "image" : "<partImage>:fly.<frame>"
               }
             },
+            "movement" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },            
+            "notice" : {
+              "properties" : {
+                "image" : "<partImage>:notice.<frame>"
+              }
+            },            
             "move" : {
               "properties" : {
                 "image" : "<partImage>:fly.<frame>"
@@ -134,25 +189,92 @@
             },
             "chargewindup" : {
               "properties" : {
-                "image" : "<partImage>:idle.<frame>"
+                "image" : "<partImage>:chargewindup.<frame>"
               }
             },
             "chargewinddown" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:chargewinddown.<frame>"
               }
             },
             "charge" : {
               "properties" : {
-                "image" : "<partImage>:fly.<frame>"
+                "image" : "<partImage>:attack.<frame>"
               }
             },
             "fire" : {
               "properties" : {
-                "image" : "<partImage>:fly.<frame>"
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "crash" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
               }
             }
           },
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame>"
+              }
+            },        
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "movement" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },            
+            "notice" : {
+              "properties" : {
+                "image" : "<partImage>:notice.<frame>"
+              }
+            },            
+            "move" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "swimfast" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "swimslow" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:chargewindup.<frame>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:chargewinddown.<frame>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame>"
+              }
+            },
+            "crash" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          },          
           "damage" : {
             "stunned" : {
               "properties" : {
@@ -236,6 +358,7 @@
 
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "crash" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
 }
