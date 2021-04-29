@@ -25,7 +25,7 @@ function update(dt)
 		for _, playerId in pairs (messagePlayers) do
 			promises:add(
 				--world.sendEntityMessage(playerId, "fu_key", "statustablet"),
-				world.sendEntityMessage(playerId, "fu_key", "fuancientkey"),
+				world.sendEntityMessage(playerId, "player.hasCompletedQuest", "create_matterassembler"),
 				function(successful)
 					if world.entityUniqueId(playerId) then
 						if successful then
