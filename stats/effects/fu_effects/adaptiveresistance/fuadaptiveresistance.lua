@@ -18,29 +18,31 @@ function update(dt)
 		self.queryDamageSince=nextStep
 		local wasHit=false
 		for _,notification in pairs(damageNotifications) do
-			if (notification.healthLost >= (self.minThreshold or 1)) and (not self.maxThreshold or (notification.healthLost<=self.maxThreshold)) then
-				if self.eType=="monster" and status.isResource("stunned") then
-					status.setResource("stunned",0.1)
-				end
-				if self.absorb and (self.eType=="monster") then
-					status.modifyResource("health",notification.damageDealt)
-				end
-				local monkey=root.elementalResistance(notification.damageSourceKind)
-				if monkey then
-					local element=monkey:lower():gsub("resistance","")
-					element=element:sub(1,1):upper()..element:sub(2)
-					if element==glitchelement then
-						self.hitCount=math.min(9,(self.hitCount or 0)+1)
-					else
-						self.hitCount=1
+			if notification.damageSourceKind~="falling" then
+				if (notification.healthLost >= (self.minThreshold or 1)) and (not self.maxThreshold or (notification.healthLost<=self.maxThreshold)) then
+					if self.eType=="monster" and status.isResource("stunned") then
+						status.setResource("stunned",0.1)
 					end
-					glitchelement=element
-					local resAmount=(self.disable and 0) or ((self.eType == "monster") and 1000) or ((self.hitCount or 1)*0.1)
-					effect.setStatModifierGroup(adaptiveresistancehandler,{{stat=monkey,amount=resAmount}})
-					self.cooldownTimer=((self.eType == "monster") and self.cooldownMonster) or self.cooldownNotMonster
-					wasHit=true
-					self.lastHitWhen=self.queryDamageSince
-					break
+					if self.absorb and (self.eType=="monster") then
+						status.modifyResource("health",notification.damageDealt)
+					end
+					local monkey=root.elementalResistance(notification.damageSourceKind)
+					if monkey then
+						local element=monkey:lower():gsub("resistance","")
+						element=element:sub(1,1):upper()..element:sub(2)
+						if element==glitchelement then
+							self.hitCount=math.min(9,(self.hitCount or 0)+1)
+						else
+							self.hitCount=1
+						end
+						glitchelement=element
+						local resAmount=(self.disable and 0) or ((self.eType == "monster") and 1000) or ((self.hitCount or 1)*0.1)
+						effect.setStatModifierGroup(adaptiveresistancehandler,{{stat=monkey,amount=resAmount}})
+						self.cooldownTimer=((self.eType == "monster") and self.cooldownMonster) or self.cooldownNotMonster
+						wasHit=true
+						self.lastHitWhen=self.queryDamageSince
+						break
+					end
 				end
 			end
 		end
