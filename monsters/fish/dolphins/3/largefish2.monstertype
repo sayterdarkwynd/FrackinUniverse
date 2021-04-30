@@ -1,0 +1,148 @@
+{
+  "type" : "largefish2",
+  "shortdescription" : "Tressalak",
+  "description" : "A feared oceanic predator, curiously nearly identical on numerous worlds.",
+
+  "categories" : [ "largefish2" ],
+  "parts" : [ "head", "tail" ],//,"fin"
+
+  "animation" : "largefish2.animation",
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/generated/swimming/swimmingMonster.lua",
+      "/scripts/util.lua",
+      "/scripts/vec2.lua",
+      "/scripts/stateMachine.lua",
+      "/monsters/generated/swimming/wanderState.lua",
+      "/monsters/generated/swimming/attackState.lua",
+      "/monsters/generated/swimming/fleeState.lua",
+      "/monsters/generated/swimming/flopState.lua"
+    ],
+
+    "metaBoundBox" : [-2.0, -2.0, 2.0, 2.0],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [-4, -1.0], [4, -1.0], [4, 0.5], [-4, 0.5] ],
+
+      "mass" : 1.5,
+      "liquidBuoyancy" : 1.0,
+      "flySpeed" : 25,
+      "liquidFriction" : 2.0,
+      "liquidForce" : 170.0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 15.0,
+        "jumpControlForce" : 900.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0,
+
+        "multiJump" : false,
+        "reJumpDelay" : 0.05,
+        "autoJump" : false,
+        "collisionCancelled" : true
+      }
+    },
+
+    "moveRatioLimit" : 1.6,
+    "directionChangeCooldown" : 0.8,
+
+    "targetSearchRadius" : 45,
+    "targetHoldRadius" : 40,
+    "targetChangeCooldown" : 5.0,
+
+    "attackStartDistance" : 30.0,
+    "attackApproachTime" : 7.0,
+    "attackWindupTime" : 1.0,
+    "attackChargeTime" : 1.2,
+    "attackChargeSpeed" : 90,
+
+    "wanderTime" : [4.0, 12.0],
+
+    "fleeTimeRange" : [2.0, 3.0],
+
+    "flopJumpInterval" : [0.2, 1.0],
+
+    "knockoutTime" : 0.5,
+    "knockoutEffect" : "blink",
+    "deathParticles" : "deathPoof",
+
+    "colors" : "generated",
+
+    "blockedSensors" : [ [2.75, -1.0], [3.0, 0.0], [2.75, 1.0] ],
+    "upSensors" : [ [-1.25, -1.25], [1.0, -1.25], [2.75, -1.25] ],
+    "downSensors" : [ [-1.25, 0.75], [1.0, 0.75], [2.75, 0.75] ],
+
+    "touchDamage" : {
+      "poly" : [ [-2.5, -1.0], [2.5, -1.0], [2.5, 0.5], [-2.5, 0.5] ],
+      "damage" : 15,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "slash",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : false,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 92
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -4],
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255]
+  },
+
+  "dropPools" : [
+    {
+      "default" : "largefishtreasure",
+      "bow" : "largefishtreasure"
+    }
+  ]
+}
