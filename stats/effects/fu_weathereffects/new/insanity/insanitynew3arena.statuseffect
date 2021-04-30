@@ -1,5 +1,5 @@
 {
-	"name" : "insanitynew2",
+	"name" : "insanitynew3arena",
 	"blockingStat" : "",
 
 	"effectConfig" : {
@@ -15,7 +15,7 @@
 				"destructionAction" : "shrink"
 			},
 
-			"spawnInterval" :20,
+			"spawnInterval" : 15,
 			"writeInterval" : 0.05,
 			"printTextInOrder" : false,
 			"loopOrderedText" : true,
@@ -58,33 +58,29 @@
 				"boundingBoxMax" : [50, 50]//,
 				//"spacing" : [1, 1.5]
 			}
-		},		 
-		"resistanceTypes" : {
-			"cosmicResistance" : 1.0,
-			"shadowResistance" : 0.5
-		},
+		},	
+		"unBlockable" : 1.0,
+		"resistanceTypes" : {},
 		"resistanceThreshold" : 0.7,
-		"immunityStats" : [
-			"insanityImmunity"
-		],
+		"immunityStats" : [],
 
-		"healthDrain" : 0.5,
-		"hungerDrain" : 0.25,
+		"healthDrain" : 1.0,
+		"hungerDrain" : 0.5,
 		"energyDrain" : 0,
 		"speedPenalty" : 0,
 		"jumpPenalty" : 0,
 
-		//at these rates, they complete in 300s exact
-		"debuffRate" : 6,//time in seconds
+		//at these rates, they complete in 180s approx
+		"debuffRate" : 5,//time in seconds
 		"debuffStartDelay" : 0,
 		"debuffs" : {
 			"protection" : {
-				"amount" : -2,//percent per rate
+				"amount" : -2.7,//percent per rate
 				"cap" : -100,
 				"type" : "effectiveMultiplier"
 			},
 			"maxEnergy" : {
-				"amount" : -1.8,
+				"amount" : -2.5,
 				"cap" : -90,
 				"type" : "effectiveMultiplier"
 			}
@@ -155,7 +151,7 @@
 			"hungry60" : "insanityeffecthungry7"
 		},
 
-		"configPath" : "/stats/effects/fu_weathereffects/new/insanity/insanitynew2.statuseffect"
+		"configPath" : "/stats/effects/fu_weathereffects/new/insanity/insanitynew3arena.statuseffect"
 	},
 	"defaultDuration" : 120,
 
@@ -165,6 +161,6 @@
 
 	"animationConfig" : "insanitynew.animation",
 
-	"label" : "Extreme Maddening Atmosphere",
+	"label" : "The nightmare closes in...",
 	"icon" : "/interface/statuses/insanity.png"
 }

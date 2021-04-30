@@ -80,6 +80,11 @@ function fuInsanityWeather.applyEffect(self)
 end
 
 
+--[[
+{dAmount: -4, modifier: 1, statName: protection, dStat: protection, dParams: {cap: -20, amount: -4}}
+{dAmount: -8, modifier: 1, statName: maxEnergy, dStat: maxEnergy, dParams: {cap: -1, amount: -8}}
+]]
+
 --[[ Modified function to add darkness immunity once the player has been
 		insane for a while. ]]--
 function fuInsanityWeather.applyDebuffs(self, modifier)
@@ -87,21 +92,31 @@ function fuInsanityWeather.applyDebuffs(self, modifier)
 	local i = 1
 	for dStat, dParams in pairs(self.debuffs) do
 		local statName = tostring(dStat)
-		local dAmount
-		if (tostring(dParams.type) == "relative") then
-			dAmount = status.stat(statName) * dParams.amount * modifier
-		else -- dParams.type == "absolute"
-			dAmount = dParams.amount * modifier
-		end
+		local dAmount=dParams.amount * modifier
+		local dType=tostring(dParams.type)
+
 		-- Initialise debuff entry if not yet set.
 		if (self.currentDebuffs[statName] == nil) then
 			self.currentDebuffs[statName] = dAmount
-		-- Unless constant flag is set, stack debuffs on subsequent ticks.
+			-- Unless constant flag is set, stack debuffs on subsequent ticks.
 		elseif (dParams.constant == nil) then
 			self.currentDebuffs[statName] = self.currentDebuffs[statName] + dAmount
 		end
+
+		if dParams.cap then
+			self.currentDebuffs[statName]=math.max(self.currentDebuffs[statName],dParams.cap)
+		end
+
 		-- Add debuff to modifier group.
-		newGroup[i] = {stat = statName, amount = self.currentDebuffs[statName]}
+		local buffer={stat = statName}
+		if dType=="effectiveMultiplier" then
+			buffer[dType]=1.0+(self.currentDebuffs[statName]*0.01)
+		else
+			buffer["amount"]=self.currentDebuffs[statName]
+		end
+		
+		newGroup[i] = buffer
+		--sb.logInfo("%s",{dAmount=dAmount,dStat=dStat,dParams=dParams,statName=statName,modifier=modifier})
 		i = i + 1
 	end
 	-- (Modified) Add darkness immunity if timer has expired.
