@@ -223,7 +223,7 @@ function advanceFistCombo(doBurst)
 		if (energyCost>0) then status.overConsumeResource("energy",energyCost) end
 		-- sb.logInfo("%s fist advancing combo from step %s to %s", activeItem.hand(), self.comboStep, self.comboStep + 1)
 		self.comboStep = self.comboStep + 1
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUArmorSetBonus","fistweaponcombobonus")
+		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","fistweaponcombobonus")
 		status.setPersistentEffects("fistweaponcombobonus",{
 			{stat="stunChance",amount=self.comboStep*4},
 			{stat="critChance",amount=self.comboStep*1},
