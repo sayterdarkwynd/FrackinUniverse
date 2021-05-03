@@ -1,5 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
-setName="fu_mercenarysetnew"
+setName="fu_mercenaryset"
 
 weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.05}
