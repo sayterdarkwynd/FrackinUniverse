@@ -95,7 +95,10 @@ function update(dt)
 
 	-- Update stuff
 	--self.helper:clearPersistent()
-	self.helper:applyControlModifiers()
+	if self and self.helper then
+		--khe's note. never, ever, fucking, ever send this without parameters. the script previously assumed defaults. THIS IS NOT CORRECT BEHAVIOR. modifiers were stacking from multiple contexts.
+		self.helper:applyControlModifiers(self.helper.controlModifiers,self.helper.controlParameters)
+	end
 	self.helper:runScripts("racialscript", self, dt)
 
 	-- Breath handling
