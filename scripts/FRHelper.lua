@@ -182,10 +182,19 @@ function clearPersistent(name)
 	self.helper:clearPersistent(name)
 end
 
--- Applies the set control modifiers/parameters. Missing arguments are replaced with default.
+-- Applies the set control modifiers/parameters. --khe was here. removing: Missing arguments are replaced with default.
 function FRHelper:applyControlModifiers(cM, cP)
-	mcontroller.controlModifiers(cM or self.controlModifiers or {})
-	mcontroller.controlParameters(cP or self.controlParameters or {})
+	--no assuming defaults. not permitted, causes stacking. also, validate input.
+	if type(cM)=="table" then
+		--sb.logInfo("FRHelper:applyControlModifiers:cM %s",cM)
+		--mcontroller.controlModifiers(cM or self.controlModifiers or {})
+		mcontroller.controlModifiers(cM)
+	end
+	if type(cP)=="table" then
+		--sb.logInfo("FRHelper:applyControlModifiers:cP %s",cP)
+		--mcontroller.controlParameters(cP or self.controlParameters or {})
+		mcontroller.controlParameters(cP)
+	end
 end
 
 -- Load the given script (scripts without context are added to "racialscript" instead)
