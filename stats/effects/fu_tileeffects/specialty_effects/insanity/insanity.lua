@@ -5,9 +5,10 @@ function init()
 	self.tickTimer = self.tickTime
 	activateVisualEffects()
 	self.timers = {}
-	_x = config.getParameter("defenseModifier", 0)
+	--this section is actually useless since the effects dont have this parameter. also, badly implemented.
+	--[[_x = config.getParameter("defenseModifier", 0)
 	baseValue = config.getParameter("defenseModifier",0)*(status.stat("protection"))
-	effect.addStatModifierGroup({{stat = "protection", amount = baseValue }})
+	effect.addStatModifierGroup({{stat = "protection", amount = baseValue }})]]
 end
 
 function activateVisualEffects()
