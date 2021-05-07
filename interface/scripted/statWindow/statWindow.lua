@@ -93,6 +93,29 @@ function loadGPS3()
 	player.interact("ScriptPane", "/interface/kukagps/kukadatetime.config", player.id())
 end
 
+function stripTagging(word)
+	local colorTest=""
+	local wordTest=""
+	for k = 1, word:len() do
+		local c3 = word:sub(k,k)
+		if c3=="^" then
+			heightened=true
+			colorTest=c3
+		elseif heightened and c3==";" then
+			colorTest=colorTest..c3
+			heightened=false
+		elseif not heightened then
+			wordTest=wordTest..c3
+		else
+			colorTest=colorTest..c3
+		end
+	end
+	sb.logInfo("tag strip test input: %s",word)
+	sb.logInfo("tag strip test color strip: %s",colorTest)
+	sb.logInfo("tag strip test output: %s",wordTest)
+	return wordTest
+end
+
 function populateRacialDescription(race,notRecognized)
 	widget.clearListItems("racialDesc.textList")
 	local JSON = (notRecognized and {charCreationTooltip={description="Please check SAIL's '^cyan;Misc.^reset;' tab if you believe this is in error."}}) or root.assetJson("/species/"..race..".species")
@@ -154,7 +177,8 @@ function populateRacialDescription(race,notRecognized)
 								colorTest=colorTest..c3
 							end
 						end
-						if (string.len(sentence) + string.len(wordTest)) > 60 then
+						--sb.logInfo("%s <adding to> %s",wordTest,sentence)
+						if (string.len(stripTagging(sentence)) + string.len(wordTest)) > 28 then
 							table.insert(wordWall,sentence)
 							sentence=colorTest
 						end
@@ -176,6 +200,7 @@ function populateRacialDescription(race,notRecognized)
 	end
 	for i = 1, #wordWall do
 		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
+		--widget.setSize(listItem,{})
 		widget.setText(listItem..".trait", wordWall[i])
 	end
 end
