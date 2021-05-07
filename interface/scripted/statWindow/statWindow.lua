@@ -93,29 +93,6 @@ function loadGPS3()
 	player.interact("ScriptPane", "/interface/kukagps/kukadatetime.config", player.id())
 end
 
-function stripTagging(word)
-	local colorTest=""
-	local wordTest=""
-	for k = 1, word:len() do
-		local c3 = word:sub(k,k)
-		if c3=="^" then
-			heightened=true
-			colorTest=c3
-		elseif heightened and c3==";" then
-			colorTest=colorTest..c3
-			heightened=false
-		elseif not heightened then
-			wordTest=wordTest..c3
-		else
-			colorTest=colorTest..c3
-		end
-	end
-	sb.logInfo("tag strip test input: %s",word)
-	sb.logInfo("tag strip test color strip: %s",colorTest)
-	sb.logInfo("tag strip test output: %s",wordTest)
-	return wordTest
-end
-
 function populateRacialDescription(race,notRecognized)
 	widget.clearListItems("racialDesc.textList")
 	local JSON = (notRecognized and {charCreationTooltip={description="Please check SAIL's '^cyan;Misc.^reset;' tab if you believe this is in error."}}) or root.assetJson("/species/"..race..".species")
@@ -126,7 +103,8 @@ function populateRacialDescription(race,notRecognized)
 	widget.setText("racialLabel", "Racial Traits - " .. racialName)
 
 	local str = JSON.charCreationTooltip.description
-	local strTbl = {}
+--work smart, not hard, bucko.
+--[[	local strTbl = {}
 	local splitters = {}
 	local lists = {}
 	local startFound = false
@@ -139,11 +117,12 @@ function populateRacialDescription(race,notRecognized)
 	local str2=str
 	while str~=string.gsub(str," \n","\n") do
 		str=string.gsub(str," \n","\n")
-	end
-	str=string.gsub(str,"\n      ","\n>>>")
-	str=string.gsub(str,"\n    ","\n>>")
-	str=string.gsub(str,"\n  ","\n>")
-	local wordWall={}
+	end]]
+	str=string.gsub(str,"\n      ","\n^gray;>>>^reset;")
+	str=string.gsub(str,"\n    ","\n^gray;>>^reset;")
+	str=string.gsub(str,"\n  ","\n^gray;>^reset;")
+	--all of this was unnecessary. all it took was a single, properly formatted, text element.
+	--[[local wordWall={}
 	local line={}
 	local sentence=""
 
@@ -202,7 +181,8 @@ function populateRacialDescription(race,notRecognized)
 		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
 		--widget.setSize(listItem,{})
 		widget.setText(listItem..".trait", wordWall[i])
-	end
+	end]]
+	widget.setText("racialDesc.textElement", str)
 end
 
 function upgradeEquipmentMenu()
