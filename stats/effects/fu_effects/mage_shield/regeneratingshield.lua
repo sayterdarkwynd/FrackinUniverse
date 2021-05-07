@@ -9,10 +9,15 @@ function init()
 
 	self.baseShieldRegenRate=config.getParameter("shieldRegenRate",0.1)
 	self.useSpecialRegen=config.getParameter("useSpecialRegen")
+	if self.useSpecialRegen then
+		self.specialRegenStat=config.getParameter("specialRegenStat","energyRegenPercentageRate")
+	end
 
 	self.baseShieldBlockTime=config.getParameter("shieldBlockTime",3)
 	self.useSpecialBlock=config.getParameter("useSpecialBlock")
-
+	if self.useSpecialBlock then
+		self.specialBlockStat=config.getParameter("specialBlockStat","energyRegenBlockTime")
+	end
 	handleStatCalc()
 
 	self.shieldBlockTimer=self.shieldBlockTime
@@ -21,11 +26,11 @@ end
 function handleStatCalc()
 	self.shieldRegenRate=self.baseShieldRegenRate
 	if self.useSpecialRegen then
-		self.shieldRegenRate=self.shieldRegenRate*status.stat(config.getParameter("specialRegenStat","energyRegenPercentageRate"))
+		self.shieldRegenRate=self.shieldRegenRate*status.stat(self.specialRegenStat)
 	end
 	self.shieldBlockTime=self.baseShieldBlockTime
 	if self.useSpecialBlock then
-		self.shieldBlockTime=math.max(0.1,self.shieldBlockTime*status.stat(config.getParameter("specialBlockStat","energyRegenBlockTime")))
+		self.shieldBlockTime=math.max(0.1,self.shieldBlockTime*status.stat(self.specialBlockStat))
 	end
 	self.capCalc=self.shieldCap*status.resourceMax(self.resource)
 end

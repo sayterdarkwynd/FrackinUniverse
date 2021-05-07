@@ -1,13 +1,13 @@
 function init()
 	script.setUpdateDelta(10)
-	self.controlModifiers=config.getParameter("fallingParameters")
+	self.controlParameters=config.getParameter("fallingParameters")
 	self.maxFallSpeed=config.getParameter("maxFallSpeed")
 end
 
 function update(dt)
 	if mcontroller.falling() then
-		if self.controlModifiers then
-			mcontroller.controlParameters(self.controlModifiers)
+		if self.controlParameters then
+			mcontroller.controlParameters(self.controlParameters)
 		end
 		if self.maxFallSpeed then
 			mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), self.maxFallSpeed))
