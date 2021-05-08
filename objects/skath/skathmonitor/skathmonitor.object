@@ -25,21 +25,35 @@
   "inventoryIcon" : "skathmonitoricon.png",
   "orientations" : [
     {
-      "dualImage" : "skathmonitor.png:<color>.<4>",
+      "image" : "skathmonitor.png:<color>.<key>",
       "imagePosition" : [-8, 0],
-
+      "animationPosition" : [-8, -0],
+      
+      "flipImages" : true,
+      "direction" : "left",
+      
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    },
+    {
+      "image" : "skathmonitor.png:<color>.<key>",
+      "imagePosition" : [-8, 0],
+      "animationPosition" : [-8, -0],
+      
+      "direction" : "right",
+      
       "spaceScan" : 0.1,
       "anchors" : [ "background" ]
     }
   ],
 
   "scripts" : [
-    "/objects/wired/switch/switch.lua",
+    "/objects/wired/light/light.lua",
     "/scripts/npcToyObject.lua"
   ],
-  "scriptDelta" : 5,
+  "scriptDelta" : 60,
 
-  "animation" : "/objects/wired/switch/switch3.animation",
+  "animation" : "/objects/skath/skathmonitor/skathmonitor.animation",
   "animationCustom" : {
     "sounds" : {
       "on" : [ "/sfx/objects/console_generic_switchon.ogg" ],
@@ -47,11 +61,11 @@
     }
   },
   "animationParts" : {
-    "switch" : "skathmonitor.png"
+    "bg" : "skathmonitor.png",
+    "fg" : "skathmonitorlit.png"
   },
-  "animationPosition" : [-8, 0],
 
-  "outputNodes" : [ [0, 0] ],
+  "inputNodes" : [ [0, 0] ],
 
   "npcToy" : {
     "ownerOnly" : true,
