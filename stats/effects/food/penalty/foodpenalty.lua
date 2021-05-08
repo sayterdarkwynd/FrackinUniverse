@@ -1,10 +1,13 @@
 function init()
-	self.movementParams = mcontroller.baseParameters()
 	self.tickDamagePercentage = config.getParameter("poisonPercent", 0.005)
 	self.tickTime = config.getParameter("poisonSpeed", 2)
 	self.tickTimer = self.tickTime
 
-	effect.addStatModifierGroup(config.getParameter("stats", {}))
+	local foodStats=config.getParameter("stats")
+	if foodStats then
+		effect.addStatModifierGroup(foodStats)
+	end
+	self.foodControlMods=config.getParameter("controlModifiers")
 
 	script.setUpdateDelta(5)
 end
@@ -25,7 +28,9 @@ function update(dt)
 		if status.resourcePercentage("food") > 0.85 then status.setResourcePercentage("food", 0.85) end
 	end
 
-	mcontroller.controlModifiers(config.getParameter("controlModifiers", {}))
+	if self.foodControlMods then
+		mcontroller.controlModifiers(self.foodControlMods)
+	end
 end
 
 function uninit()

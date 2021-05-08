@@ -8,7 +8,7 @@ end
 function update(dt)
 	if self.lastTechMod ~= status.stat("defensetechBonus") then
 		self.lastTechMod=status.stat("defensetechBonus")
-		status.addPersistentEffect("fuarmorboosttech", {stat = "protection", amount = (self.baseValue or 0)*(1+self.lastTechMod)})
+		status.setPersistentEffects("fuarmorboosttech", {{stat = "protection", amount = (self.baseValue or 0)*(1+self.lastTechMod)}})
 	end
 end
 
