@@ -4,10 +4,10 @@ function init()
 	effect.setParentDirectives("fade=6f6f6f=0.55")
 	local rAmt=config.getParameter("resistanceAmount", 0)
 	local dAmt=config.getParameter("defenseAmount", 0)
-	--[[if status.statPositive("specialStatusImmunity") then
+	if status.statPositive("specialStatusImmunity") then
 		rAmt=rAmt*0.25
 		dAmt=dAmt*0.25
-	end]]
+	end
 	effect.addStatModifierGroup({
 		{stat = "protection", amount = dAmt},
 		{stat = "physicalResistance", amount = rAmt},
