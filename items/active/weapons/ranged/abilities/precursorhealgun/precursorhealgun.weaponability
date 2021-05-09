@@ -1,0 +1,30 @@
+{
+	"animationParts" : { },
+	"animationCustom" : {
+		"sounds" : {
+			"altFire" : [ "/sfx/gun/plasma_shotgun3.ogg" ]
+		}
+	},
+
+	"ability" : {
+		"name" : "Healing Zone",
+		"type" : "fuprecursorhealgun",
+		"scripts" : ["/items/active/weapons/ranged/abilities/precursorhealgun/effectzone.lua"],
+		"class" : "EffectZone",
+
+		"energyUsage" : 1.0,
+		"baseDps" : 0,
+		"fireTime" : 3.0,
+		"inaccuracy" : 0,
+		"fireType" : "auto",
+		"maxCastRange":4,
+		"projectileType" : [ "healingzone2" ],
+		"projectileParameters" : {
+			"speed" : 0,
+			"timeToLive" : 3
+		},
+
+		"usePrimaryFireSound" : false,
+		"useParticleEmitter" : false
+	}
+}

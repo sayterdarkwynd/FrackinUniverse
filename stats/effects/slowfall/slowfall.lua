@@ -7,14 +7,19 @@ function init()
 		}
 	}
 	script.setUpdateDelta(5)
-
+	self.controlParameters=config.getParameter("fallingParameters")
+	self.maxFallSpeed=config.getParameter("maxFallSpeed")
 end
 
 function update(dt)
 	mcontroller.controlParameters(self.liquidMovementParameter)
 	if mcontroller.falling() then
-		mcontroller.controlParameters(config.getParameter("fallingParameters"))
-		mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), config.getParameter("maxFallSpeed")))
+		if self.controlParameters then
+			mcontroller.controlParameters(self.controlParameters)
+		end
+		if self.maxFallSpeed then
+			mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), self.maxFallSpeed))
+		end
 	end
 end
 

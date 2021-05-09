@@ -7,9 +7,6 @@ function init()
 	self.useMedStationCode=config.getParameter("useMedStationCode",true)
 	self.damage=config.getParameter("selfDamage", 0)
 	self.damageSourceKind=config.getParameter("selfDamageType", 0)
-	--[[self.modifierGroupID = effect.addStatModifierGroup({
-		{stat = "foodDelta", amount = config.getParameter("foodConsumption", 0)}
-	})]]
 
 	local data = root.assetJson("/projectiles/medicalStationSpecials/toxicCloud/toxiccloud.projectile")
 	self.baseDamage = data.power
