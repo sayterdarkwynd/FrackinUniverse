@@ -447,11 +447,23 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 
 	if primaryTagCache["katana"] or altTagCache["katana"] then
 		if self.comboStep >=1 then
-			mcontroller.controlModifiers({speedModifier = 1 + (self.comboStep / 10)})
+			mcontroller.controlModifiers({speedModifier = 1 + ((self.comboStep / 10) * (1 + self.katanaMastery/24))})
 		end
+		-- holding one katana
 		if (not altItem) or (not primaryItem) then
-			status.setPersistentEffects("katanabonus", { {stat = "defensetechBonus", amount = 0.15 * self.katanaMastery} })
+			if self.katanaMastery > 0 then
+				status.setPersistentEffects("katanabonus", {
+					{stat = "defensetechBonus", amount = 0.15 * self.katanaMastery},
+					{stat = "powerMultiplier", effectiveMultiplier = 1 * (1 + self.katanaMastery/2)},
+					{stat = "protection", effectiveMultiplier = 1 * (1 + (self.katanaMastery/10))}
+				})	
+			else
+				status.setPersistentEffects("katanabonus", { 
+					{stat = "defensetechBonus", amount = 0.15 * self.katanaMastery} 
+				})
+			end				
 		else
+			-- dual wielding with two long blades
 			if (primaryTagCache["longsword"] or primaryTagCache["katana"] or primaryTagCache["axe"] or primaryTagCache["flail"] or primaryTagCache["shortspear"] or primaryTagCache["mace"]) and
 			(altTagCache["longsword"] or altTagCache["katana"] or altTagCache["axe"] or altTagCache["flail"] or altTagCache["shortspear"] or altTagCache["mace"]) then
 				status.setPersistentEffects("katanabonus", {
@@ -459,12 +471,11 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 					{stat = "protection", effectiveMultiplier = 0.90}
 				})
 			end
-			if primaryTagCache["shortsword"] or altTagCache["shortsword"]
-			or primaryTagCache["dagger"] or altTagCache["dagger"]
-			or primaryTagCache["rapier"] or altTagCache["rapier"] then
+			-- dual wielding with a short blade
+			if primaryTagCache["shortsword"] or altTagCache["shortsword"] or primaryTagCache["dagger"] or altTagCache["dagger"] or primaryTagCache["rapier"] or altTagCache["rapier"] then
 				status.setPersistentEffects("katanabonus", {
 					{stat = "maxEnergy", effectiveMultiplier =	1.15 * self.katanaMastery},
-					{stat = "critDamage", amount = 0.2},
+					{stat = "critDamage", amount = 0.2 * (self.katanaMastery/2)},
 					{stat = "dodgetechBonus", amount = 0.25 * self.katanaMastery},
 					{stat = "dashtechBonus", amount = 0.25}
 				})

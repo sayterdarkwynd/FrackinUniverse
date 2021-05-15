@@ -1,13 +1,15 @@
 {
 	"stats": [
-		{ "stat": "maxHealth", "effectiveMultiplier": 1.2 },
-		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 },
-		{ "stat": "electricResistance", "amount": -0.4 },
+		{ "stat": "katanaMastery", "amount": 0.25 },
+		{ "stat": "fuCharisma", "amount": 0.05 },
+		{ "stat": "mentalProtection", "amount": 0.15 },
+		{ "stat": "electricResistance", "amount": -0.2 },
 		{ "stat": "iceResistance", "amount": 0.2 },
+		{ "stat": "radioactiveResistance", "amount": 0.12 },
+		{ "stat": "poisonResistance", "amount": 0.08 },
 		{ "stat": "shadowResistance", "amount": -0.1 }
-	],   // Omnivores, but these like fish!
+	],   
 	"diet" : [ { "ORGANIC" : false, "FISH" : true }, { "MEAT_RAW" : true } ],
-	
 	"envEffects": [
 		{
 			"biomes": [ "ocean", "oceanfloor" ],
@@ -20,15 +22,6 @@
 	],
 	"weaponEffects": [
 		{
-			"weapons": [ "shortsword" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.06 }
-			],
-			"controlModifiers": {
-				"speedModifier": 1.04
-			}
-		},
-		{
 			"weapons": [ "quarterstaff" ],
 			"stats": [
 				{ "stat": "protection", "amount": 6 }
@@ -38,31 +31,7 @@
 			}
 		},
 		{
-			"combos": [ [ "katana" ] ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 },
-				{ "stat": "critDamage", "amount": 0.25 }
-			]
-		},
-		{
-			"combos": [
-				[ "katana", "dagger" ]
-			],
-			"stats": [
-				{ "stat": "protection", "amount": 4 },
-				{ "stat": "critChance", "amount": 1 }
-			],
-			"controlModifiers": {
-				"speedModifier": 1.08
-			}
-		},
-		{
-			"weapons": [
-				"shortsword",
-				"broadsword",
-				"katana",
-				"longsword"
-			],
+			"weapons": [ "shortsword","broadsword","katana","longsword", "rapier" ],
 			"scripts": [
 				{
 					"script": "/scripts/fr_weaponscripts/healthybonus.lua",
@@ -75,22 +44,6 @@
 					}
 				}
 			]
-		}
-	],
-	"weaponScripts": [
-		{
-			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
-			"contexts": [ "shield-perfectblock" ],
-			"args": {
-				"resources": {
-					"health": {
-						"base": 0.025,
-						"comboBase": 0.0008,
-						"max": 0.05
-					}
-				},
-				"particles": "bonusBlock"
-			}
 		}
 	],
 
