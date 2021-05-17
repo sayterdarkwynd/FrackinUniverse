@@ -446,6 +446,8 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end
 
 	if primaryTagCache["katana"] or altTagCache["katana"] then
+		self.katanaMasteryHalved = ((self.katanaMastery -1) / 2) + 1
+		
 		if self.comboStep >=1 then
 			mcontroller.controlModifiers({speedModifier = 1 + ((self.comboStep / 10) * (1 + self.katanaMastery/48))})
 		end
@@ -454,7 +456,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 			if self.katanaMastery > 0 then
 				status.setPersistentEffects("katanabonus", {
 					{stat = "defensetechBonus", amount = 0.15 * self.katanaMastery},
-					{stat = "powerMultiplier", effectiveMultiplier = 1 * (1 + self.katanaMastery/2)},
+					{stat = "powerMultiplier", effectiveMultiplier = 1 * self.katanaMasteryHalved},
 					{stat = "protection", effectiveMultiplier = 1 * (1 + (self.katanaMastery/10))}
 				})	
 			else
@@ -475,9 +477,9 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 			if primaryTagCache["shortsword"] or altTagCache["shortsword"] or primaryTagCache["dagger"] or altTagCache["dagger"] or primaryTagCache["rapier"] or altTagCache["rapier"] then
 				status.setPersistentEffects("katanabonus", {
 					{stat = "maxEnergy", effectiveMultiplier =	1.15 * self.katanaMastery},
-					{stat = "critDamage", amount = 0.2 * (self.katanaMastery/2)},
+					{stat = "critDamage", amount = 0.2 * self.katanaMasteryHalved},
 					{stat = "dodgetechBonus", amount = 0.25 * self.katanaMastery},
-					{stat = "dashtechBonus", amount = 0.25}
+					{stat = "dashtechBonus", amount = 0.25  * self.katanaMastery}
 				})
 			end
 		end
