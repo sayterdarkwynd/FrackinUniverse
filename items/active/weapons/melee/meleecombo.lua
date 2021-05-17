@@ -447,7 +447,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 
 	if primaryTagCache["katana"] or altTagCache["katana"] then
 		if self.comboStep >=1 then
-			mcontroller.controlModifiers({speedModifier = 1 + ((self.comboStep / 10) * (1 + self.katanaMastery/24))})
+			mcontroller.controlModifiers({speedModifier = 1 + ((self.comboStep / 10) * (1 + self.katanaMastery/48))})
 		end
 		-- holding one katana
 		if (not altItem) or (not primaryItem) then

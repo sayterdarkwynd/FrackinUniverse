@@ -58,7 +58,16 @@
               "persistentSound" : "/sfx/npc/monsters/mandraflora_spinning.ogg",
               "persistentSoundStopTime" : 0.5
             }
-          }
+          },
+          "powerup" : {
+            "frames" : 8,
+            "cycle" : 0.6,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/projectiles/gravitymine_detonate.ogg",
+              "persistentSoundStopTime" : 0.6
+            }
+          }          
         }
       },
            
@@ -139,6 +148,11 @@
               "properties" : {
                 "image" : "<partImage>:charge.<frame>"
               }
+            },
+            "powerup" : {
+              "properties" : {
+                "image" : "<partImage>:powerup.<frame>"
+              }
             }
           },
           "damage" : {
@@ -192,6 +206,11 @@
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:charge.<frame>"
+              }
+            },
+            "powerup" : {
+              "properties" : {
+                "image" : "<partImage>:powerup.<frame>"
               }
             }
           },
