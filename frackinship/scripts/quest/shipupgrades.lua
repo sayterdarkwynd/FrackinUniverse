@@ -119,7 +119,7 @@ function update(dt)
 			end
 		end
 		if maxFuelBYOS then
-			local newMaxFuel=clampStat("maxFuel",(crewStats and crewStats.maxFuel)+maxFuelBYOS)
+			local newMaxFuel=clampStat("maxFuel",((crewStats and crewStats.maxFuel) or 0)+maxFuelBYOS)
 			--if maxFuelNew then
 				if shipMaxFuel~=newMaxFuel then
 				--if shipMaxFuel ~= maxFuelNew then
@@ -137,7 +137,7 @@ function update(dt)
 			end
 		end
 		if fuelEfficiencyBYOS then
-			local newFuelEfficiency=clampStat("fuelEfficiency",(crewStats and crewStats.fuelEfficiency)+fuelEfficiencyBYOS)
+			local newFuelEfficiency=clampStat("fuelEfficiency",((crewStats and crewStats.fuelEfficiency) or 0)+fuelEfficiencyBYOS)
 			--if fuelEfficiencyNew then
 				--if (shipFuelEfficiency <= (fuelEfficiencyNew - 0.01)) or (shipFuelEfficiency >= (fuelEfficiencyNew + 0.01)) then
 				--if shipFuelEfficiency <= fuelEfficiencyNew - 0.01 or shipFuelEfficiency >= fuelEfficiencyNew + 0.01 then
@@ -157,7 +157,7 @@ function update(dt)
 			end]]
 		end
 		if shipSpeedBYOS then
-			local newShipSpeed=clampStat("shipSpeed",(crewStats and crewStats.shipSpeed)+shipSpeedBYOS)
+			local newShipSpeed=clampStat("shipSpeed",((crewStats and crewStats.shipSpeed) or 0)+shipSpeedBYOS)
 			--if shipSpeedNew then
 				--if shipShipSpeed ~= shipSpeedNew then
 				if newShipSpeed~=shipShipSpeed then
@@ -172,7 +172,7 @@ function update(dt)
 			end]]
 		end
 		if shipMassBYOS then
-			--local newShipMass=clampStat("shipMass",(crewStats and crewStats.shipMass)+shipMassBYOS-status.stat("shipMass"))
+			--local newShipMass=clampStat("shipMass",((crewStats and crewStats.shipMass) or 0)+shipMassBYOS-status.stat("shipMass"))
 			--crew modifier for ship mass is basically unused, go figure.
 			status.clearPersistentEffects("byos")
 			shipMassStat = status.stat("shipMass")
