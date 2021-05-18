@@ -9,9 +9,9 @@ function init()
 	self = upgradeConfig.atmosphereSystem
 	self.maxPerimeter = self.maxPerimeter or 500
 	crewSizeBYOSOld = 0
-	maxFuelBYOSOld = 0
-	fuelEfficiencyBYOSOld = 0
-	shipSpeedBYOSOld = 0
+	--maxFuelBYOSOld = 0
+	--fuelEfficiencyBYOSOld = 0
+	--shipSpeedBYOSOld = 0
 	beamDownTimer = 0
 	--cat note: storage is serialized in this script.
 	message.setHandler("fs_respawn", function()
