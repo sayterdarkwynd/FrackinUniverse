@@ -1,40 +1,23 @@
 {
 	"stats" : [
 		{ "stat" : "maxHealth", "effectiveMultiplier" : 0.85 },
-		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.1 },
+		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.15 },
 		{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.05 },
-		{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0.35 },
+		{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0.50 },
 		{ "stat" : "physicalResistance", "amount" : -0.05 },
+		{ "stat" : "fireResistance", "amount" : -0.15 },
+		{ "stat" : "radioactiveResistance", "amount" : -0.10 },
+		{ "stat" : "electricStatusImmunity", "amount" : 1 },
 		{ "stat" : "electricResistance", "amount" : 0.25 },
-		{ "stat" : "iceResistance", "amount" : -0.3 },
-		{ "stat" : "poisonResistance", "amount" : -0.25 },
-		{ "stat" : "shadowResistance", "amount" : 0.15 },
-		{ "stat" : "cosmicResistance","amount" : 0.25 }
+		{ "stat" : "quarterstaffMastery", "amount" : 0.25 }
 	],
 	"diet" : "omnivore",
 	"controlModifiers" : {
-		"airJumpModifier" : 1.05
+		"airJumpModifier" : 1.15
 	},
-	"controlParameters" : {
-		"airJumpProfile" : {
-			"jumpSpeed" : 27
-		}
-	},
-	"weaponEffects" : [
-		{
-			"weapons" : [ "shortspear" ],
-			"stats" : [
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.06 },
-				{ "stat" : "critChance", "amount" : 1 }
-			]
-		},
-		{
-			"weapons" : [ "machinepistol" ],
-			"stats" : [
-				{ "stat" : "critChance", "amount" : 1 }
-			]
-		}
-	],
+
+	"weaponEffects" : [],
+	
 	"weaponScripts" : [
 		{
 			"script" : "/scripts/fr_weaponscripts/aviancombo.lua",
