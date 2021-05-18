@@ -303,6 +303,18 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	-- ************************************************ END Weapon Masteries ************************************************
 
 	-- ************************************************ Conditional Weapon Bonuses ******************************************
+	if primaryTagCache["qs"] or altTagCache["qs"] or primaryTagCache["quarterstaff"] or altTagCache["quarterstaff"] then
+		self.quarterstaffMasteryHalved = ((self.quarterstaffMastery -1) / 2) + 1
+
+		status.setPersistentEffects("quarterstaffbonus", {
+				{stat = "dodgetechBonus", amount = 0.25 * self.quarterstaffMastery},
+				{stat = "powerMultiplier", effectiveMultiplier = 1.02 * self.quarterstaffMasteryHalved},
+				{stat = "protection", effectiveMultiplier = 1.12 * self.quarterstaffMastery},
+				{stat = "defensetechBonus", amount = 0.25 * self.quarterstaffMastery},
+				{stat = "healtechBonus", amount = 0.15 * self.quarterstaffMastery}
+		})
+	end	
+
 	if primaryTagCache["rapier"] or altTagCache["rapier"] then
 		self.rapierTimerBonus=math.min(self.rapierTimerBonus+0.05,5)
 
@@ -768,6 +780,7 @@ function cancelEffects(fullClear)
 	status.clearPersistentEffects("rapierbonus")
 	status.clearPersistentEffects("shortspearbonus")
 	status.clearPersistentEffects("shortswordbonus")
+	status.clearPersistentEffects("quarterstaffbonus")
 	status.clearPersistentEffects("daggerbonus")
 	status.clearPersistentEffects("daggerbonus"..activeItem.hand())
 	status.clearPersistentEffects("scythebonus")
