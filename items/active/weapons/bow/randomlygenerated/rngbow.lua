@@ -19,6 +19,8 @@ function init()
     self.weapon:addAbility(secondaryAttack)
   end
 
+  self.bowMastery = 1 + status.stat("bowMastery")
+
   self.weapon:init()
 end
 
@@ -37,6 +39,16 @@ function update(dt, fireMode, shiftHeld)
     self.helper:clearPersistent()
     self.helper:runScripts("bow-update", self, dt, fireMode, shiftHeld)
   end
+  sb.logInfo(self.bowMastery)
+  if self.bowMastery > 1 then
+    self.bowMasteryHalved = ((self.bowMastery -1) / 2) + 1
+        status.setPersistentEffects("bowbonus", {
+          {stat = "critChance", amount = 2 * self.bowMastery},
+          {stat = "critDamage", amount = 7 * self.bowMastery},
+          {stat = "powerMultiplier", effectiveMultiplier = 1 * self.bowMasteryHalved}
+        })      
+  end
+
   --**************************************
   self.weapon:update(dt, fireMode, shiftHeld)
   --*************************************
@@ -54,5 +66,10 @@ function update(dt, fireMode, shiftHeld)
 end
 
 function uninit()
+  cancelEffects(true)
   self.weapon:uninit()
+end
+
+function cancelEffects(fullClear)
+  status.clearPersistentEffects("bowbonus")
 end

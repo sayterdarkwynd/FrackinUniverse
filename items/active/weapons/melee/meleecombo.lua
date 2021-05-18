@@ -71,8 +71,8 @@ function calculateMasteries() -- doesn't work inside certain functions, such as 
 	self.broadswordMastery = 1 + status.stat("broadswordMastery")
 	self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")
 	self.maceMastery = 1 + status.stat("maceMastery")
-	self.shortspearMastery = 1 + status.stat("shortspearMastery")
 	self.hammerMastery = 1 + status.stat("hammerMastery")
+	self.shortspearMastery = 1 + status.stat("shortspearMastery")
 	self.axeMastery = 1 + status.stat("axeMastery")
 	self.spearMastery = 1 + status.stat("spearMastery")
 	self.scytheMastery = 1 + status.stat("scytheMastery")
@@ -254,10 +254,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		self.scytheMastery = 1 + status.stat("scytheMastery")
 	end
 
-	if primaryTagCache["mace"] or altTagCache["mace"] then
-		self.maceMastery = 1 + status.stat("maceMastery")
-	end
-
 	if primaryTagCache["shortspear"] or altTagCache["shortspear"] then
 		self.shortspearMastery = 1 + status.stat("shortspearMastery")
 	end
@@ -290,7 +286,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")
 	end
 
-	if primaryTagCache["hammer"] or altTagCache["hammer"] then
+	if primaryTagCache["mace"] or altTagCache["mace"] or primaryTagCache["hammer"] or altTagCache["hammer"] then
 		self.hammerMastery = 1 + status.stat("hammerMastery")
 	end
 
@@ -434,27 +430,22 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		end
 	end
 
-	if primaryTagCache["mace"] or altTagCache["mace"] then
-		if (not altItem) or (not primaryItem) then
-			status.setPersistentEffects("macebonus", {
-				{stat = "stunChance", amount = 2 * self.maceMastery}
-			})
-		else
-			if primaryTagCache["shield"] or altTagCache["shield"] then
-				status.setPersistentEffects("macebonus", {
-					{stat = "shieldBash", amount = 3 * self.maceMastery},
-					{stat = "shieldBashPush", amount = 1},
-					{stat = "protection", effectiveMultiplier = 1.10 * self.maceMastery}
-				})
-			end
-			if (primaryTagCache["mace"] and altTagCache["weapon"]) or (altTagCache["mace"] and primaryTagCache["weapon"]) then
-				status.setPersistentEffects("macebonus", {
-					{stat = "critChance", effectiveMultiplier = 0.85},
-					{stat = "stunChance", effectiveMultiplier = 0.50}
-				})
-				status.addEphemeralEffects({{effect = "runboost5", duration = 0.02 * self.maceMastery}})
-			end
-		end
+	if primaryTagCache["mace"] or altTagCache["mace"] or primaryTagCache["hammer"] or altTagCache["hammer"] then
+		self.hammerMasteryHalved = ((self.hammerMastery -1) / 2) + 1
+		self.hammerMasteryQuartered = ((self.hammerMastery -1) / 4) + 1
+		if self.comboStep > 1 then
+			status.setPersistentEffects("multiplierbonus", {
+				{stat = "powerMultiplier", effectiveMultiplier = 1 * self.hammerMasteryQuartered}
+			})			
+		end		
+		status.setPersistentEffects("macebonus", {
+			{stat = "critChance", amount = 2 * self.hammerMastery},
+			{stat = "stunChance", amount = 2 * self.hammerMastery},				
+			{stat = "critDamage", amount = 2 * self.hammerMasteryHalved},
+			{stat = "shieldBash", amount = 3 * self.hammerMastery},
+			{stat = "shieldBashPush", amount = 1},
+			{stat = "protection", effectiveMultiplier = 1.10 * self.hammerMastery}				
+		})		
 	end
 
 	if primaryTagCache["katana"] or altTagCache["katana"] then
