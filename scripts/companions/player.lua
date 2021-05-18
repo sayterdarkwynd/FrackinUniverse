@@ -141,7 +141,12 @@ function updateShipUpgrades()--reworked, in vanilla the math is atrocious if the
 		end
 		upgrades[property] = upgrades[property] + result
 	end
-	player.upgradeShip(upgrades)
+	local dink=status and true or false
+	--sb.logInfo("status exists %s",dink)
+	--sb.logInfo("upgrades: %s",upgrades)
+	--rather than setting the upgrades directly, we set it so that these are set to a status property on the player. this is read by /scripts/quest/shipUpgrades.lua
+	status.setStatusProperty("fu_shipUpgradeStatProperty",upgrades)
+	--player.upgradeShip(upgrades)
 end
 
 function uninit()
