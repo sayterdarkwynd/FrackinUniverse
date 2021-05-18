@@ -95,7 +95,7 @@ function update(dt)
 		end
 
 		--crewStats is set in /scripts/companions/player.lua
-		crewStats=status.statusProperty("fu_shipUpgradeStatProperty") or {}
+		crewStats=status.statusProperty("fu_shipUpgradeStatProperty") or {shipmass=10,fuelEfficiency=0,shipSpeed=15,maxFuel=10000}
 		--sb.logInfo("crewStats=%s",crewStats)
 		--[09:00:44.604] [Info] crewStats={shipMass: 10, fuelEfficiency: 0, shipSpeed: 15, maxFuel: 10000}
 
