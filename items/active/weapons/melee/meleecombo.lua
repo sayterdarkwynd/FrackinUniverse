@@ -430,6 +430,16 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		end
 	end
 
+	if primaryTagCache["shortsword"] or altTagCache["shortsword"] then
+		self.shortswordMasteryHalved = ((self.shortswordMastery -1) / 2) + 1
+		status.setPersistentEffects("macebonus", {
+			{stat = "dashtechBonus", amount = 0.1 * self.shortswordMasteryHalved},
+			{stat = "dodgetechBonus", amount = 0.1 * self.shortswordMasteryHalved},				
+			{stat = "shieldBash", amount = 3 * self.shortswordMasteryHalved},
+			{stat = "grit", amount = 1 * self.shortswordMastery}			
+		})		
+	end
+
 	if primaryTagCache["mace"] or altTagCache["mace"] or primaryTagCache["hammer"] or altTagCache["hammer"] then
 		self.hammerMasteryHalved = ((self.hammerMastery -1) / 2) + 1
 		self.hammerMasteryQuartered = ((self.hammerMastery -1) / 4) + 1
