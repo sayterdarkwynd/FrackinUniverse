@@ -1,19 +1,22 @@
 {
 	"stats": [
-		{ "stat": "maxFood", "effectiveMultiplier": 0.75 },
 		{ "stat": "maxHealth", "effectiveMultiplier": 0.9 },
-		{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
 		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
-		{ "stat": "electricResistance", "amount": 0.4 },
-		{ "stat": "fireResistance", "amount": -0.2 },
-		{ "stat": "poisonResistance", "amount": 0.4 },
-		{ "stat": "shadowResistance", "amount": -0.2 },
-		{ "stat": "cosmicResistance", "amount": 0.25 }
+		{ "stat": "fireResistance", "amount": 0.02 },
+		{ "stat": "electricResistance", "amount": 0.2 },
+		{ "stat": "electricStatusImmunity", "amount" : 1 },
+		{ "stat": "physicalResistance", "amount": -0.15 },
+		{ "stat": "iceResistance", "amount": -0.18 },
+		{ "stat": "poisonResistance", "amount": 0.05 },
+		{ "stat": "shadowResistance", "amount": 0.05 },
+		{ "stat": "radioactiveResistance", "amount": 0.05 },
+		{ "stat": "cosmicResistance", "amount": 0.15 },
+		{ "stat": "spearMastery", "amount": 0.25 }
 	],
 	"diet" : "carnivore",
 	"controlModifiers": {
-		"speedModifier": 1.06,
-		"airJumpModifier": 1.06
+		"speedModifier": 1.12,
+		"airJumpModifier": 1.12
 	},
 	"envEffects": [
 		{
@@ -24,19 +27,6 @@
 		}
 	],
 	"weaponEffects": [
-		{
-			"weapons": [ "boomerang", "chakram", "spear" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 },
-				{ "stat": "critChance", "amount": 2 }
-			]
-		},
-		{
-			"weapons": [ "spear" ],
-			"stats": [
-				{ "stat": "protection", "effectiveMultiplier": 1.2 }
-			]
-		},
 		{
 			"name" : "fr_velocitybonus",
 			"weapons" : [ "melee" ],
