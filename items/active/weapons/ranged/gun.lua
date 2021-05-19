@@ -116,9 +116,9 @@ function update(dt, fireMode, shiftHeld)
         self.pistolMasteryThirded = ((self.pistolMastery -1) / 3) + 1
         self.pistolMasteryQuartered = ((self.pistolMastery -1) / 4) + 1
         status.setPersistentEffects("pistolbonus", {
-            {stat = "powerMultiplier", effectiveMultiplier = 1 * self.pistolMasteryQuartered},
-            {stat = "magazineSize", amount = 1 * self.pistolMastery},
-            {stat = "reloadTime", amount = -self.pistolMasteryThirded}
+            {stat = "powerMultiplier", effectiveMultiplier = 1 * self.pistolMasteryThirded},
+            {stat = "critChance", amount = 1 * self.pistolMasteryHalved},
+            {stat = "reloadTime", amount = -self.pistolMasteryQuartered}
         })         
     end
     if primaryTagCache["machinepistol"] or altTagCache["machinepistol"] then  --reduced power, Reload time, increased ammo count, crit chance
@@ -126,9 +126,8 @@ function update(dt, fireMode, shiftHeld)
         self.machinePistolMasteryHalved = ((self.machinePistolMastery -1) / 2) + 1
         self.machinePistolMasteryQuartered = ((self.machinePistolMastery -1) / 4) + 1
         status.setPersistentEffects("machinepistolbonus", {
-            {stat = "powerMultiplier", effectiveMultiplier = 1 * self.machinePistolMasteryQuartered},
-            {stat = "reloadTime", amount = - self.machinePistolMasteryHalved},
-            {stat = "magazineSize", amount = 1 * self.machinePistolMastery},
+            {stat = "powerMultiplier", effectiveMultiplier = 1 * self.machinePistolMasteryHalved},
+            {stat = "reloadTime", amount = - self.machinePistolMasteryQuartered},
             {stat = "critChance", amount = 1 * self.machinePistolMasteryHalved}
         })         
     end
@@ -137,8 +136,8 @@ function update(dt, fireMode, shiftHeld)
         self.assaultRifleMasteryHalved = ((self.assaultRifleMastery -1) / 2) + 1
         self.assaultRifleMasteryThirded = ((self.assaultRifleMastery -1) / 3) + 1
         status.setPersistentEffects("assaultriflebonus", {
-            {stat = "powerMultiplier", effectiveMultiplier = 1 * self.assaultRifleMasteryThirded},
-            {stat = "magazineSize", amount = 1 * self.assaultRifleMastery},
+            {stat = "powerMultiplier", effectiveMultiplier = 1 * self.assaultRifleMasteryHalved},
+            {stat = "magazineSize", amount = 1 * self.assaultRifleMasteryHalved},
             {stat = "critDamage", amount = 0.3 * self.assaultRifleMasteryHalved}
         })         
     end
@@ -147,8 +146,8 @@ function update(dt, fireMode, shiftHeld)
         self.sniperRifleMasteryHalved = ((self.sniperRifleMastery -1) / 2) + 1
         self.sniperRifleMasteryQuartered = ((self.sniperRifleMastery -1) / 4) + 1
         status.setPersistentEffects("sniperriflebonus", {
-            {stat = "critChance", amount = 1 * self.sniperRifleMasteryQuartered},
-            {stat = "magazineSize", amount = 1 * self.sniperRifleMastery}
+            {stat = "critChance", amount = 1 * self.sniperRifleMasteryHalved},
+            {stat = "magazineSize", amount = 1 * self.sniperRifleMasteryHalved}
         })         
     end
     if primaryTagCache["grenadelauncher"] or altTagCache["grenadelauncher"] then -- increased power, magazine size, reload time
@@ -158,7 +157,7 @@ function update(dt, fireMode, shiftHeld)
         status.setPersistentEffects("grenadelauncherbonus", {
             {stat = "powerMultiplier", effectiveMultiplier = 1 * self.grenadeLauncherMasteryHalved},
             {stat = "reloadTime", amount = - self.grenadeLauncherMasteryQuartered},
-            {stat = "magazineSize", amount = 1 * self.grenadeLauncherMastery}
+            {stat = "magazineSize", amount = 1 * self.grenadeLauncherMasteryHalved}
         })         
     end
     if primaryTagCache["rocketlauncher"] or altTagCache["rocketlauncher"] then -- increased power, magazine size, reload time
@@ -168,7 +167,7 @@ function update(dt, fireMode, shiftHeld)
         status.setPersistentEffects("rocketlauncherbonus", {
             {stat = "powerMultiplier", effectiveMultiplier = 1 * self.rocketLauncherMasteryHalved},
             {stat = "reloadTime", amount = - self.rocketLauncherMasteryQuartered},
-            {stat = "magazineSize", amount = 1 * self.rocketLauncherMastery}
+            {stat = "magazineSize", amount = 1 * self.rocketLauncherMasteryHalved}
         })         
     end
     if primaryTagCache["shotgun"] or altTagCache["shotgun"] then  --increasd Power, Magazine Size, Crit Chance
@@ -178,7 +177,7 @@ function update(dt, fireMode, shiftHeld)
         status.setPersistentEffects("shotgunbonus", {
             {stat = "powerMultiplier", effectiveMultiplier = 1 * self.shotgunMasteryHalved},
             {stat = "reloadTime", amount = - self.shotgunMasteryQuartered},
-            {stat = "magazineSize", amount = 1 * self.shotgunMastery},
+            {stat = "magazineSize", amount = 1 * self.shotgunMasteryHalved},
             {stat = "critChance", amount = 1 * self.shotgunMasteryQuartered}
         })         
     end    

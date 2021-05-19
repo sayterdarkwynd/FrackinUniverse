@@ -39,14 +39,17 @@ function update(dt, fireMode, shiftHeld)
     self.helper:clearPersistent()
     self.helper:runScripts("bow-update", self, dt, fireMode, shiftHeld)
   end
-  sb.logInfo(self.bowMastery)
+
   if self.bowMastery > 1 then
     self.bowMasteryHalved = ((self.bowMastery -1) / 2) + 1
         status.setPersistentEffects("bowbonus", {
           {stat = "critChance", amount = 2 * self.bowMastery},
           {stat = "critDamage", amount = 7 * self.bowMastery},
+          {stat = "bowDrawTimeBonus", amount = 0.01 * self.bowMasteryHalved},
+          {stat = "bowEnergyBonus", amount = 1 * self.bowMasteryHalved},
           {stat = "powerMultiplier", effectiveMultiplier = 1 * self.bowMasteryHalved}
-        })      
+        })  
+        mcontroller.controlModifiers({speedModifier = 1 + (self.bowMastery / 16)})   
   end
 
   --**************************************

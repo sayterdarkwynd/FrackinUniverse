@@ -8,7 +8,8 @@
 		{ "stat" : "poisonResistance", "amount" : 0.1 },
 		{ "stat" : "electricResistance", "amount" : 0.11 },
 		{ "stat" : "cosmicResistance", "amount" : 0.1 },
-		{ "stat": "grit", "amount": 0.1 },
+		{ "stat" : "radioactiveResistance", "amount" : -0.15 },
+		{ "stat" : "shadowResistance", "amount" : -0.15 },		
 		{ "stat" : "ammoMastery", "amount" : 0.25 },
 		{ "stat" : "shortswordMastery", "amount" : 0.15 }
 	],
@@ -17,26 +18,8 @@
 		"airJumpModifier" : 1.02
 	},
 
-	"weaponEffects": [
-		{
-			"weapons": [ "pistol", "assaultrifle", "sniperrifle", "machinepistol" ],
-			"stats": [
-
-			]
-		},
-		{
-			"weapons": [ "assaultrifle" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
-			]
-		},
-		{
-			"weapons": [ "yoyo" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 }
-			]
-		}
-	],
+	"weaponEffects": [],
+	
 	"weaponScripts": [
 		{
 			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
