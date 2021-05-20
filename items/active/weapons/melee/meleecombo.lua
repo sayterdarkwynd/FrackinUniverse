@@ -67,8 +67,8 @@ function calculateMasteries() -- doesn't work inside certain functions, such as 
 	self.longswordMastery = 1 + status.stat("longswordMastery")
 	self.rapierMastery = 1 + status.stat("rapierMastery")
 	self.katanaMastery = 1 + status.stat("katanaMastery")
-	self.daggerMastery = 1 + status.stat("daggerMastery")
 	self.broadswordMastery = 1 + status.stat("broadswordMastery")
+	self.daggerMastery = 1 + status.stat("daggerMastery")
 	self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")
 	self.maceMastery = 1 + status.stat("maceMastery")
 	self.hammerMastery = 1 + status.stat("hammerMastery")
@@ -93,19 +93,6 @@ function checkDamage(notifications)
 	end
 
 	for _,notification in pairs(notifications) do
-
-		-- defense
-		--if notification.targetEntityId then
-		--	if notification.hitType == "ShieldHit" or notification.hitType == "Knockback" then
-		--			sb.logInfo("i blocked with a shield")
-		--	end
-		--	if notification.damageType == "Damage" then
-		--		sb.logInfo("i was hit")
-		--		--reset special counters when hit
-		--		self.rapierTimerBonus = 0
-		--		self.inflictedHitCounter = 0
-		--	end
-		--end
 		--check for individual combo hits
 		if (notification.sourceEntityId == entity.id()) or (notification.targetEntityId == entity.id()) then
 			if not status.resourcePositive("health") then --count total kills
@@ -248,50 +235,64 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 
 	if primaryTagCache["katana"] or altTagCache["katana"] then
 		self.katanaMastery = 1 + status.stat("katanaMastery")
+		self.katanaMasteryHalved = ((self.katanaMastery -1) / 2) + 1
 	end
 
 	if primaryTagCache["scythe"] or altTagCache["scythe"] then
 		self.scytheMastery = 1 + status.stat("scytheMastery")
+		self.scytheMasteryHalved = ((self.scytheMastery -1) / 2) + 1
 	end
 
 	if primaryTagCache["shortspear"] or altTagCache["shortspear"] then
 		self.shortspearMastery = 1 + status.stat("shortspearMastery")
+		self.shortspearMasteryHalved = ((self.shortspearMastery -1) / 2) + 1
 	end
 
 	if primaryTagCache["axe"] or altTagCache["axe"] then
 		self.axeMastery = 1 + status.stat("axeMastery")
+		self.axeMasteryHalved = ((self.axeMastery -1) / 2) + 1
 	end
 
 	if primaryTagCache["dagger"] or altTagCache["dagger"] then
 		self.daggerMastery = 1 + status.stat("daggerMastery")
+		self.daggerMasteryHalved = ((self.daggerMastery -1) / 2) + 1
 		table.insert(masterybonus,{stat = "dodgetechBonus", amount = 0.25 * self.daggerMastery})
 		if self.comboStep and self.daggerMastery > 1 then
-			table.insert(masterybonus,{stat = "powerMultiplier", effectiveMultiplier = self.daggerMastery})
+			table.insert(masterybonus,{stat = "powerMultiplier", effectiveMultiplier = self.daggerMasteryHalved})
 		end
 	end
 
 	if primaryTagCache["longsword"] or altTagCache["longsword"] then
 		self.longswordMastery = 1 + status.stat("longswordMastery")
+		self.longswordMasteryHalved = ((self.longswordMastery -1) / 2) + 1
 		table.insert(masterybonus,{stat = "shieldBash", amount = 1.0 + (self.longswordMastery * 5)})
 	end
 
 	if primaryTagCache["broadsword"] or altTagCache["broadsword"] then
 		self.broadswordMastery = 1 + status.stat("broadswordMastery")
-		if self.comboStep and self.broadswordMastery > 1 then
-			table.insert(masterybonus,{stat = "powerMultiplier", effectiveMultiplier = self.broadswordMastery})
+		self.broadswordMasteryHalved = ((self.broadswordMastery -1) / 2) + 1
+		self.broadswordMasteryTripled = ((self.broadswordMastery -1) / 3) + 1
+		self.broadswordMasteryQuartered = ((self.broadswordMastery -1) / 4) + 1
+		if self.comboStep > 2 and self.broadswordMastery > 1 then
+			table.insert(masterybonus,{stat = "powerMultiplier", effectiveMultiplier = self.broadswordMasteryHalved})
+		else
+			table.insert(masterybonus,{stat = "powerMultiplier", effectiveMultiplier = self.broadswordMasteryTripled})
 		end
 	end
 
 	if primaryTagCache["quarterstaff"] or altTagCache["quarterstaff"] then
 		self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")
+		self.quarterstaffMasteryHalved = ((self.quarterstaffMastery -1) / 2) + 1
 	end
 
 	if primaryTagCache["mace"] or altTagCache["mace"] or primaryTagCache["hammer"] or altTagCache["hammer"] then
 		self.hammerMastery = 1 + status.stat("hammerMastery")
+		self.hammerMasteryHalved = ((self.hammerMastery -1) / 2) + 1
 	end
 
 	if primaryTagCache["spear"] or altTagCache["spear"] then
 		self.spearMastery = 1 + status.stat("spearMastery")
+		self.spearMasteryHalved = ((self.spearMastery -1) / 2) + 1
 	end
 
 	status.setPersistentEffects("masterybonus",masterybonus)
@@ -301,7 +302,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	-- ************************************************ Conditional Weapon Bonuses ******************************************
 	if primaryTagCache["qs"] or altTagCache["qs"] or primaryTagCache["quarterstaff"] or altTagCache["quarterstaff"] then
 		self.quarterstaffMasteryHalved = ((self.quarterstaffMastery -1) / 2) + 1
-
 		status.setPersistentEffects("quarterstaffbonus", {
 				{stat = "dodgetechBonus", amount = 0.25 * self.quarterstaffMastery},
 				{stat = "powerMultiplier", effectiveMultiplier = 1.02 * self.quarterstaffMasteryHalved},
@@ -314,18 +314,19 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if primaryTagCache["rapier"] or altTagCache["rapier"] then
 		self.rapierTimerBonus=math.min(self.rapierTimerBonus+0.05,5)
 
-		if self.comboStep > 1 then
+		if self.comboStep > 1 then -- during combo
 			status.clearPersistentEffects("multiplierbonus")
 			status.clearPersistentEffects("daggerbonus")
 		end
 
-		if (not altItem) or (not primaryItem) then
+		if (not altItem) or (not primaryItem) then -- one handed
 			status.setPersistentEffects("rapierbonus", {
 				{stat = "critChance", amount = self.rapierTimerBonus * self.rapierMastery },
 				{stat = "dodgetechBonus", amount = 0.35 * self.rapierMastery },
 				{stat = "dashtechBonus", amount = 0.35 * self.rapierMastery }
 			})
 		else
+			--properly dual wielded
 			if (primaryTagCache["rapier"] and altTagCache["dagger"]) or (altTagCache["rapier"] and primaryTagCache["dagger"]) then
 				status.setPersistentEffects("rapierbonus", {
 					{stat = "dodgetechBonus", amount = 0.25 * self.rapierMastery},
@@ -337,12 +338,12 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end
 
 	if primaryTagCache["shortspear"] or altTagCache["shortspear"] then
-		if (not altItem) or (not primaryItem) then
+		if (not altItem) or (not primaryItem) then --single wielding
 			status.setPersistentEffects("shortspearbonus", {
 				{stat = "critDamage", amount = 0.3 * self.shortspearMastery}
 			})
 		else
-			if primaryTagCache["shield"] or altTagCache["shield"] then
+			if primaryTagCache["shield"] or altTagCache["shield"] then -- using a shield
 				status.setPersistentEffects("shortspearbonus", {
 					{stat = "shieldBash", amount = 10 },
 					{stat = "shieldBashPush", amount = 2},
@@ -350,7 +351,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 					{stat = "defensetechBonus", amount = 0.50}
 				})
 			end
-			if primaryTagCache["shortspear"] and altTagCache["shortspear"] then
+			if primaryTagCache["shortspear"] and altTagCache["shortspear"] then -- dual wield
 				status.setPersistentEffects("shortspearbonus", {
 					{stat = "protection", effectiveMultiplier = 0.80 * self.shortspearMastery},
 					{stat = "critChance", effectiveMultiplier = 0.5 * self.shortspearMastery}
@@ -360,7 +361,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end
 
 	if primaryTagCache["dagger"] or altTagCache["dagger"] then
-		if self.comboStep and self.comboStep > 1 then
+		if self.comboStep and self.comboStep > 1 then -- during combo
 			self.valueModifier = 1 + (1 / (self.comboStep * 2))
 			if (primaryTagCache["dagger"] and altTagCache["melee"]) then
 				self.valueModifier=math.min(self.valueModifier,1.125)
@@ -377,16 +378,17 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 			end
 		elseif self.comboStep == 1 or self.comboStep == 0 or not self.comboStep then
 			status.setPersistentEffects("daggerbonus"..hand, {
-				{stat = "critChance", amount = (self.comboStep or 0) * self.daggerMastery}
+				{stat = "critChance", amount = (self.comboStep or 1) * self.daggerMastery}
 			})
 		end
+		-- dual wielding
 		if (primaryTagCache["dagger"] and altTagCache["melee"]) or (altTagCache["dagger"] and primaryTagCache["melee"]) then
 			status.addEphemeralEffects({{effect = "runboost5", duration = 0.02 * self.daggerMastery}})
 		end
 	end
 
 	if primaryTagCache["scythe"] or altTagCache["scythe"] then
-		if self.comboStep then
+		if self.comboStep >= 1 then --during combos, above 1 strike
 			status.setPersistentEffects("scythebonus", {
 				{stat = "critDamage", amount = 0.05+(self.comboStep*0.1)},
 				{stat = "critChance", amount = 1+(self.comboStep * self.scytheMastery)}
@@ -407,12 +409,12 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		else
 			status.setPersistentEffects("multiplierbonus", {})
 		end
-		if (not altItem) or (not primaryItem) then
+		if (not altItem) or (not primaryItem) then -- one handed
 			status.setPersistentEffects("longswordbonus", {
 				{stat = "attackSpeedUp", amount = 0.7 * self.longswordMastery}
 			})
 		else
-			if primaryTagCache["shield"] or altTagCache["shield"] then
+			if primaryTagCache["shield"] or altTagCache["shield"] then --using a shield
 				status.setPersistentEffects("longswordbonus", {
 					{stat = "shieldBash", amount = 4 * self.longswordMastery},
 					{stat = "shieldBashPush", amount = 1},
@@ -420,7 +422,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 					{stat = "healtechBonus", amount = 0.15 * self.longswordMastery}
 				})
 			end
-
+			-- dual wielding 
 			if (primaryTagCache["longsword"] and altTagCache["weapon"]) or (altTagCache["longsword"] and primaryTagCache["weapon"]) then
 				status.setPersistentEffects("longswordbonus", {
 					{stat = "protection", effectiveMultiplier = 0.80 * self.longswordMastery}
@@ -431,41 +433,71 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	end
 
 	if primaryTagCache["shortsword"] or altTagCache["shortsword"] then
+		self.shortswordMastery = 1 + status.stat("shortswordMastery")
+		self.shortswordMasteryReduced = ((self.shortswordMastery -1) / 1.5) + 1
 		self.shortswordMasteryHalved = ((self.shortswordMastery -1) / 2) + 1
-		status.setPersistentEffects("macebonus", {
-			{stat = "dashtechBonus", amount = 0.1 * self.shortswordMasteryHalved},
-			{stat = "dodgetechBonus", amount = 0.1 * self.shortswordMasteryHalved},				
-			{stat = "shieldBash", amount = 3 * self.shortswordMasteryHalved},
-			{stat = "grit", amount = 1 * self.shortswordMastery}			
-		})		
-	end
+		self.shortswordMasteryThirded = ((self.shortswordMastery -1) / 3) + 1
+		if (not altItem) or (not primaryItem) then -- one handed
+			status.setPersistentEffects("shortswordbonus", {
+				{stat = "powerMultiplier", effectiveMultiplier = self.shortswordMasteryReduced},
+				{stat = "dashtechBonus", amount = 0.1 * self.shortswordMasteryHalved},
+				{stat = "dodgetechBonus", amount = 0.1 * self.shortswordMasteryHalved},				
+				{stat = "grit", amount = 1 * self.shortswordMastery}	
+			})
+		else		
+			if altTagCache["shield"] or primaryTagCache["shield"] then	-- if holding a shield
+				status.setPersistentEffects("shortswordbonus", {
+					{stat = "powerMultiplier", effectiveMultiplier = self.shortswordMasteryThirded},	
+					{stat = "defesetechBonus", amount = 0.1 * self.shortswordMasteryHalved},			
+					{stat = "shieldBash", amount = 3 * self.shortswordMasteryThirded},
+					{stat = "grit", amount = 1 * self.shortswordMastery}			
+				})	
+			else -- anything else
+				status.setPersistentEffects("shortswordbonus", {
+					{stat = "powerMultiplier", effectiveMultiplier = self.shortswordMasteryHalved},
+					{stat = "dashtechBonus", amount = 0.1 * self.shortswordMasteryThirded},
+					{stat = "dodgetechBonus", amount = 0.1 * self.shortswordMasteryThirded}	
+				})						
+			end		
+		end	
 
+	end
+    
+    -- holding a mace
 	if primaryTagCache["mace"] or altTagCache["mace"] or primaryTagCache["hammer"] or altTagCache["hammer"] then
 		self.hammerMasteryHalved = ((self.hammerMastery -1) / 2) + 1
-		self.hammerMasteryQuartered = ((self.hammerMastery -1) / 4) + 1
-		if self.comboStep > 1 then
+		self.hammerMasteryThirded = ((self.hammerMastery -1) / 3) + 1
+		if self.comboStep > 1 then  -- increased power after first strike
 			status.setPersistentEffects("multiplierbonus", {
-				{stat = "powerMultiplier", effectiveMultiplier = 1 * self.hammerMasteryQuartered}
+				{stat = "powerMultiplier", effectiveMultiplier = 1 * self.hammerMasteryThirded}
 			})			
 		end		
-		status.setPersistentEffects("macebonus", {
-			{stat = "critChance", amount = 2 * self.hammerMastery},
-			{stat = "stunChance", amount = 2 * self.hammerMastery},				
-			{stat = "critDamage", amount = 2 * self.hammerMasteryHalved},
-			{stat = "shieldBash", amount = 3 * self.hammerMastery},
-			{stat = "shieldBashPush", amount = 1},
-			{stat = "protection", effectiveMultiplier = 1.10 * self.hammerMastery}				
-		})		
+		if primaryTagCache["shield"] or altTagCache["shield"] then -- if using a shield
+			status.setPersistentEffects("macebonus", {
+				{stat = "critChance", amount = 2 * self.hammerMastery},
+				{stat = "stunChance", amount = 2 * self.hammerMastery},				
+				{stat = "critDamage", amount = 2 * self.hammerMasteryHalved},
+				{stat = "shieldBash", amount = 3 * self.hammerMastery},
+				{stat = "shieldBashPush", amount = 1},
+				{stat = "protection", effectiveMultiplier = 1.10 * self.hammerMastery}				
+			})					
+		else -- no shield
+			status.setPersistentEffects("macebonus", {
+				{stat = "critChance", amount = 2 * self.hammerMastery},
+				{stat = "stunChance", amount = 2 * self.hammerMastery},				
+				{stat = "critDamage", amount = 2 * self.hammerMasteryHalved}			
+			})				
+		end	
 	end
 
 	if primaryTagCache["katana"] or altTagCache["katana"] then
 		self.katanaMasteryHalved = ((self.katanaMastery -1) / 2) + 1
 		
-		if self.comboStep >=1 then
+		if self.comboStep >=1 then -- combos higher than 1 move
 			mcontroller.controlModifiers({speedModifier = 1 + ((self.comboStep / 10) * (1 + self.katanaMastery/48))})
 		end
 		-- holding one katana
-		if (not altItem) or (not primaryItem) then
+		if (not altItem) or (not primaryItem) then		
 			if self.katanaMastery > 0 then
 				status.setPersistentEffects("katanabonus", {
 					{stat = "defensetechBonus", amount = 0.15 * self.katanaMastery},

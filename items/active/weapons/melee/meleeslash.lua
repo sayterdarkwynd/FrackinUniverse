@@ -37,7 +37,6 @@ function MeleeSlash:init()
 end
 
 function calculateMasteries()
-	self.broadswordMastery = 1 + status.stat("broadswordMastery")
 	self.hammerMastery = 1 + status.stat("hammerMastery")
 	self.axeMastery = 1 + status.stat("axeMastery")
 	self.spearMastery = 1 + status.stat("spearMastery")
@@ -92,10 +91,6 @@ function MeleeSlash:update(dt, fireMode, shiftHeld)
 	if primaryTagCache["hammer"] or altTagCache["hammer"] then
 		self.hammerMastery = 1 + status.stat("hammerMastery")
 		self.hammerMasteryHalved = ((self.hammerMastery -1) / 2) + 1
-	end	
-	if primaryTagCache["broadsword"] or altTagCache["broadsword"] then
-		self.broadswordMastery = 1 + status.stat("broadswordMastery")
-		self.broadswordMasteryHalved = ((self.broadswordMastery -1) / 2) + 1
 	end	
 	if primaryTagCache["spear"] or altTagCache["spear"] then
 		self.spearMastery = 1 + status.stat("spearMastery")
@@ -241,8 +236,6 @@ end
 function cancelEffects()
 	status.clearPersistentEffects("meleeEnergyLowPenalty")
 	status.setPersistentEffects("meleeEnergyLowPenalty",{})
-	status.clearPersistentEffects("broadswordbonus")
-	status.setPersistentEffects("broadswordbonus",{})
 	status.clearPersistentEffects("spearbonus")
 	status.setPersistentEffects("spearbonus",{})
 	status.clearPersistentEffects("scythebonus")

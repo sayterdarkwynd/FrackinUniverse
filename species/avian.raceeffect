@@ -12,9 +12,24 @@
 		{ "stat" : "quarterstaffMastery", "amount" : 0.25 }
 	],
 	"diet" : "omnivore",
-	"controlModifiers" : {
-		"airJumpModifier" : 1.15
-	},
+	"controlModifiers" : {"airJumpModifier" : 1.15},
+
+	"envEffects": [
+	// jungle bonus exists to simply negate the penalties they suffer on their Vanilla biome world type
+	// it does not need to be listed in the species patch file
+		{
+			"biomes": [ "jungle","thickjungle" ],
+			"stats": [
+				{ "stat": "physicalResistance", "effectiveMultiplier":  1.1 }
+			]
+		},	
+		{
+			"biomes": [ "irradiated", "scorchedcity","tidewater" ],
+			"stats": [
+				{ "stat": "protection", "effectiveMultiplier":  0.8 }
+			]
+		}
+	],
 
 	"weaponEffects" : [],
 	
