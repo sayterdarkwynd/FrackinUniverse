@@ -1,28 +1,21 @@
 {
 	"stats": [
+	    { "stat": "maxHealth", "effectiveMultiplier": 1.05 },
 		{ "stat": "maxFood", "effectiveMultiplier": 1.30 },
-		{ "stat": "protection", "amount": 5 },
-		{ "stat": "poisonResistance", "amount": -0.2 },
-		{ "stat": "electricResistance", "amount": -0.2 },
-		{ "stat": "shadowResistance", "amount": -0.1 },
-		{ "stat": "physicalResistance", "amount": 0.20 },
-		{ "stat": "iceResistance", "amount": 0.25 }
+		{ "stat": "foodDelta","baseMultiplier": 0.85 },
+		{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0.75},
+		{ "stat": "poisonResistance", "amount": -0.1 },
+		{ "stat": "electricResistance", "amount": -0.1 },
+		{ "stat": "shadowResistance", "amount": 0.04 },
+		{ "stat": "physicalResistance", "amount": 0.05 },
+		{ "stat": "fireResistance", "amount": 0.15 },
+		{ "stat": "fireStatusImmunity", "amount": 1 },
+		{ "stat": "iceResistance", "amount": 0.15 }
 	],
 	"diet" : "entity",
 	"envEffects": [
 		{
-			"biomes": [
-				"aethersea",
-				"aetherseafloor",
-				"crystalmoon",
-				"chromatic",
-				"desertwastes",
-				"crystaldesert",
-				"crystaldesertaether",
-				"crystalplain",
-				"crystalswamp",
-				"crystalswampaether"
-			],
+			"biomes": ["aethersea","aetherseafloor","crystalmoon","chromatic","desertwastes","crystaldesert","crystaldesertaether","crystalplain","crystalswamp","crystalswampaether"],
 			"stats": [
 				{ "stat": "maxHealth", "effectiveMultiplier": 1.25 },
 				{ "stat": "critDamage", "amount": 0.1 }
@@ -49,13 +42,6 @@
 			"stats": [
 				{ "stat": "maxHealth", "effectiveMultiplier": 1.12 },
 				{ "stat": "protection", "effectiveMultiplier": 1.12 }
-			]
-		},
-		{
-			"weapons": [ "whip", "chakram", "boomerang" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 },
-				{ "stat": "maxEnergy", "effectiveMultiplier": 1.12 }
 			]
 		}
 	],

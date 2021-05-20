@@ -21,6 +21,9 @@ function AxeCleave:init()
 
 	self.inflictedHitCounter = 0
 	self.inflictedKills = 0
+
+	self.axeMastery = 1 + status.stat("axeMastery")
+
 	status.clearPersistentEffects("listenerBonus")
 end
 
@@ -75,12 +78,6 @@ function checkDamage(notifications)
 end
 
 function AxeCleave:windup(windupProgress)
-	-- reset special count values
-	--[[if self.inflictedHitCounter > 5 then
-	end
-	if self.inflictedKills > 20 then
-	end]]
-
 	self.energyTotal = math.max(status.stat("maxEnergy") * 0.07,0) -- due to weather and other cases it is possible to have a maximum of under 0.
 	if (status.resource("energy") <= 1) or not (status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal))) then
 		cancelEffects()
@@ -93,6 +90,12 @@ function AxeCleave:windup(windupProgress)
 	-- FU/FR ADDONS
 	setupHelper(self, "axecleave-fire")
 	--**************************************
+
+	status.setPersistentEffects("axebonus", {
+		{stat = "critChance", amount = 2 * self.axeMastery},
+		{stat = "powerMultiplier", effectiveMultiplier = 1 * self.axeMastery}			
+	})					
+
 
 	self.weapon:setStance(self.stances.windup)
 
@@ -197,6 +200,7 @@ function AxeCleave:uninit()
 end
 
 function cancelEffects()
+	status.clearPersistentEffects("axebonus")
 	status.clearPersistentEffects("longswordbonus")
 	status.clearPersistentEffects("macebonus")
 	status.clearPersistentEffects("katanabonus")
