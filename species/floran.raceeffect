@@ -15,12 +15,17 @@
 	"diet" : "carnivore",
 	"envEffects": [
 		{
-			"biomes": "jungle",
+			"biomes" : [ "jungle", "thickjungle","forest", "arboreal", "arboreal2", "arborealdark" ],
 			"stats": [
-				{ "stat": "maxHealth", "effectiveMultiplier": 1.1 },
-				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 }
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 }
 			]
-		}
+		},
+		{
+			"biomes" : [ "sulphuric", "sulphuricdark","sulphuricocean","icemoon", "arctic", "arcticdark","barren", "arctic", "icewaste", "icewastedark" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 0.80 }
+			]
+		}		
 	],
 	"weaponEffects": [
 		{
@@ -117,7 +122,7 @@
 				"nightConfig" : {
 					"stats" : [
 						{ "stat" : "maxHealth", "effectiveMultiplier" : 0.90 },
-						{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.70 }
+						{ "stat" : "maxEnergy", "effectiveMultiplier" : 0.80 }
 					],
 					"hungerLoss" : -0.0020,
 					"hungerLossLight" : -0.0009,
