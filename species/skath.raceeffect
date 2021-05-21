@@ -8,41 +8,28 @@
 		{"stat": "shadowResistance","amount": -0.1},
 		{"stat": "iceResistance","amount": 0.3},
 		{"stat": "poisonResistance","amount": 0.2},
-		{"stat": "maxBreath","amount": 2500}
+		{"stat": "maxBreath","amount": 2500},
+		{"stat": "energyMastery","amount": 0.15},
+		{"stat": "assaultRifleMastery","amount": 0.15}
 	],
 	"diet" : "omnivore",
 	"special": ["swimboost2"],
-	"weaponEffects": [{
-			"weapons": ["energy"],
-			"stats": [
-				{"stat": "powerMultiplier","effectiveMultiplier": 1.15},
-				{"stat": "critChance","amount": 2}
-			]
-		},
-		{
-			"weapons": ["assaultrifle"],
-			"stats": [
-				{"stat": "critChance","amount": 1}
-			]
-		}
-	],
+	"weaponEffects": [],
+
 	"liquidEffects": [{
 		"liquids": [1,6,58,12],//water,healing water,wastewater,swampwater
-		"stats": [
-			{"stat": "maxHealth","effectiveMultiplier": 1.15},
-			{"stat": "physicalResistance","amount": 0.15}
-		],
+		"stats": [],
 		"scripts" : [
 			{
 				"script" : "/scripts/fr_scripts/healthRegen.lua",
 				"args" : {
-					"healingRate" : 0.005
+					"healingRate" : 0.001
 				}
 			}
 		]
 	}],
 	"envEffects": [{
-			"biomes": ["ocean","oceanfloor"],
+			"biomes": ["ocean","oceanfloor"],		
 			"stats": [
 				{"stat": "maxHealth","effectiveMultiplier": 1.25},
 				{"stat": "protection","amount": 6}
@@ -50,9 +37,8 @@
 		},
 		{
 			"biomes": ["desert","magma","barren","barren2","barren3","desertwastes","desertwastesdark","infernus","infernusdark","volcanic","volcanicdark","sulphuric","sulphuricdark","sulphuricocean","tarball"],
-			"stats": [
-				{"stat": "maxEnergy","effectiveMultiplier": 0.7}
-			]
+			"controlModifiers": { "speedModifier": 0.8, "airJumpModifier": 0.8 },				
+			"stats": [ {"stat": "maxEnergy","effectiveMultiplier": 0.7},{"stat": "maxHealth","effectiveMultiplier": 0.7} ]
 		}
 	]
 }

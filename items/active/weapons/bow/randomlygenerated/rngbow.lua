@@ -19,6 +19,8 @@ function init()
     self.weapon:addAbility(secondaryAttack)
   end
 
+  self.bowMastery = 1 + status.stat("bowMastery")
+
   self.weapon:init()
 end
 
@@ -37,6 +39,19 @@ function update(dt, fireMode, shiftHeld)
     self.helper:clearPersistent()
     self.helper:runScripts("bow-update", self, dt, fireMode, shiftHeld)
   end
+
+  if self.bowMastery > 1 then
+    self.bowMasteryHalved = ((self.bowMastery -1) / 2) + 1
+        status.setPersistentEffects("bowbonus", {
+          {stat = "critChance", amount = 2 * self.bowMastery},
+          {stat = "critDamage", amount = 7 * self.bowMastery},
+          {stat = "bowDrawTimeBonus", amount = 0.01 * self.bowMasteryHalved},
+          {stat = "bowEnergyBonus", amount = 1 * self.bowMasteryHalved},
+          {stat = "powerMultiplier", effectiveMultiplier = 1 * self.bowMasteryHalved}
+        })  
+        mcontroller.controlModifiers({speedModifier = 1 + (self.bowMastery / 16)})   
+  end
+
   --**************************************
   self.weapon:update(dt, fireMode, shiftHeld)
   --*************************************
@@ -54,5 +69,10 @@ function update(dt, fireMode, shiftHeld)
 end
 
 function uninit()
+  cancelEffects(true)
   self.weapon:uninit()
+end
+
+function cancelEffects(fullClear)
+  status.clearPersistentEffects("bowbonus")
 end

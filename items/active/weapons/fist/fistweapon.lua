@@ -72,6 +72,16 @@ function update(dt, fireMode, shiftHeld)
 		end
 	end
 
+	self.fistMastery = 1 + status.stat("fistMastery")
+	self.fistMasteryHalved = ((self.fistMastery -1) / 2) + 1
+	world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","fistbonus")
+	status.setPersistentEffects("fistbonus",{
+		{stat="stunChance",amount= 2 * self.fistMastery },
+		{stat="critChance",amount= 2 * self.fistMastery },
+		{stat="powerMultiplier",effectiveMultiplier= self.fistMasteryHalved }
+	})	
+
+
 	self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)
 	if self.lastFireMode ~= "primary" and fireMode == "primary" then
 		self.edgeTriggerTimer = self.edgeTriggerGrace
@@ -215,7 +225,6 @@ end
 
 -- advance to the next step of the combo
 function advanceFistCombo(doBurst)
-	self.fistMastery = 1 + status.stat("fistMastery") ---calculate fistMastery
 	self.comboTimer = 0
 	if self.comboStep < self.comboSteps then
 		local energyCost=status.resourceMax("energy")*0.005
@@ -228,7 +237,7 @@ function advanceFistCombo(doBurst)
 			{stat="stunChance",amount=self.comboStep*4},
 			{stat="critChance",amount=self.comboStep*1},
 			{stat="protection",amount=self.comboStep*1}
-		})
+		})	
 		--end
 		--animator.burstParticleEmitter("flames")--stop using. compatibility. ERM seems a common culprit of "use base scripts but custom anims file"
 		--burstComboParticles()--better idea: move it to the part that handles picking a hand.
@@ -251,6 +260,7 @@ function resetFistCombo()
 	self.comboStep = 0
 	self.comboTimer = nil
 	status.setPersistentEffects("fistweaponcombobonus",{})
+	status.setPersistentEffects("fistbonus",{})
 	return true
 end
 

@@ -1,69 +1,34 @@
 {
 	"stats": [
-		{ "stat": "maxHealth", "effectiveMultiplier": 0.9 },
-		{ "stat": "maxEnergy", "effectiveMultiplier": 1.2 },
-		{ "stat": "physicalResistance", "amount": -0.15 },
-		{ "stat": "electricResistance", "amount": -0.2 },
-		{ "stat": "fireResistance", "amount": 0.25 },
-		{ "stat": "iceResistance", "amount": 0.2 },
-		{ "stat": "shadowResistance", "amount": -0.4 },
-		{ "stat": "radioactiveResistance", "amount": 0.4 },
-		{ "stat": "grit", "amount": 0.2 },
+	    { "stat": "maxFood", "baseMultiplier": 0.9 },
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.10 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.10 },
+		{ "stat": "electricResistance", "amount": -0.05 },
+		{ "stat": "fireResistance", "amount": 0.20 },
+		{ "stat": "iceResistance", "amount": -0.20 },
+		{ "stat": "shadowResistance", "amount": -0.20 },
+		{ "stat": "radioactiveResistance", "amount": 0.35 },
 		{ "stat": "fireStatusImmunity", "amount": 1 },
-		{ "stat": "radiationburnImmunity", "amount": 1 }
+		{ "stat": "radiationburnImmunity", "amount": 1 },
+		{ "stat": "pistolMastery", "amount": 0.15 },
+		{ "stat": "sniperRifleMastery", "amount": 0.15 },
+		{ "stat": "shotgunMastery", "amount": 0.15 }		
 	],
 	"diet" : "entity",
-	"controlModifiers": {
-		"speedModifier": 1.05
-	},
+	"controlModifiers": {},
+
 	"envEffects": [
 		{
 			"biomes": [ "alien", "jungle", "irradiated", "chromatic" ],
 			"stats": [
-				{ "stat": "maxHealth", "effectiveMultiplier": 1.15 },
-				{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 }
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.15 }
 			]
 		}
 	],
 	"weaponEffects": [
 		{
-			"weapons": [ "pistol" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.09 }
-			]
-		},
-		{
-			"weapons": [ "sniperrifle", "rifle" ],
-			"stats": [
-				{ "stat": "critChance", "amount": 2 },
-				{ "stat": "critDamage", "amount": 0.2 }
-			]
-		},
-		{
-			"weapons": [ "shotgun" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.15 },
-				{ "stat": "critDamage", "amount": 0.12 }
-			]
-		},
-		{
 			"combos": [ [ "pistol", "pistol" ] ],
-			"stats": [
-				{ "stat": "grit", "amount": 0.25 },
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.09 }
-			],
-			"controlModifiers": {
-				"speedModifier": 1.08
-			}
-		},
-		{
-			"weapons": [ "whip" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.15 }
-			],
-			"controlModifiers": {
-				"speedModifier": 1.1
-			}
+			"controlModifiers": {"speedModifier": 1.08}
 		}
 	],
 	"weaponScripts": [
