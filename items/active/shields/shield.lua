@@ -59,7 +59,12 @@ function init()
 	self.shieldBonusShield = config.getParameter("shieldBonusShield", 0)	-- bonus shield HP
 	self.shieldBonusRegen = config.getParameter("shieldBonusRegen", 0)	-- bonus shield regen time
 	self.shieldHealthRegen = config.getParameter("shieldHealthRegen", 0)
+	shieldEnergyRegen = config.getParameter("shieldEnergyRegen",0)
+	shieldHealthBonus = 1.0+config.getParameter("shieldHealthBonus",0)
+	shieldEnergyBonus = 1.0+config.getParameter("shieldEnergyBonus",0)
+	shieldProtection = config.getParameter("shieldProtection",0)
 	shieldStamina = config.getParameter("shieldStamina",0)
+	shieldFalling = (1.0+config.getParameter("shieldFalling",0))
 	protectionBee = config.getParameter("protectionBee",0)
 	protectionAcid = config.getParameter("protectionAcid",0)
 	protectionBlackTar = config.getParameter("protectionBlackTar",0)
@@ -106,11 +111,11 @@ end
 
 function shieldBonusApplyPartial()
 	status.setPersistentEffects("shieldEffects", {
- 		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
- 		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
- 		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
+ 		{stat = "maxHealth", effectiveMultiplier = shieldHealthBonus},
+ 		{stat = "maxEnergy", effectiveMultiplier = shieldEnergyBonus},
+ 		{stat = "protection", amount = shieldProtection},
  		{stat = "shieldStaminaRegen", amount = shieldStamina},
- 		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
+ 		{stat = "fallDamageMultiplier", effectiveMultiplier = shieldFalling},
  		{stat = "stunChance", amount =  stunChance},
  		{stat = "shieldBash", amount =  shieldBash},
  		{stat = "shieldBashPush", amount =  shieldBashPush},
@@ -121,13 +126,13 @@ end
 
 function shieldBonusApply()
 	status.setPersistentEffects("shieldEffects", {
- 		{stat = "baseShieldHealth", amount = config.getParameter("shieldBonusShield", 0) },
- 		{stat = "energyRegenPercentageRate", amount = config.getParameter("shieldEnergyRegen",0)},
- 		{stat = "maxHealth", amount = config.getParameter("shieldHealthBonus",0)*(status.resourceMax("health"))},
- 		{stat = "maxEnergy", amount = config.getParameter("shieldEnergyBonus",0)*(status.resourceMax("energy"))},
- 		{stat = "protection", amount = config.getParameter("shieldProtection",0)},
+ 		{stat = "baseShieldHealth", amount = self.shieldBonusShield },
+ 		{stat = "energyRegenPercentageRate", amount = shieldEnergyRegen},
+ 		{stat = "maxHealth", effectiveMultiplier = shieldHealthBonus},
+ 		{stat = "maxEnergy", effectiveMultiplier = shieldEnergyBonus},
+ 		{stat = "protection", amount = shieldProtection},
  		{stat = "shieldStaminaRegen", amount = shieldStamina},
- 		{stat = "fallDamageMultiplier", amount = config.getParameter("shieldFalling",0)},
+ 		{stat = "fallDamageMultiplier", effectiveMultiplier = shieldFalling},
  		{stat = "beestingImmunity", amount = protectionBee},
  		{stat = "sulphuricImmunity", amount = protectionAcid},
  		{stat = "blacktarImmunity", amount = protectionBlackTar},
