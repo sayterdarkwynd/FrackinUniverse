@@ -13,18 +13,33 @@
 		{"stat": "breathProtection","amount": 1}
 	],
 	"diet" : "entity",
-	"envEffects": [{
+	"envEffects": [
+		{
 		"biomes": ["shadow","penumbra","lightless","midnight","atropusdark","arborealdark","magmadark","volcanicdark","arcticdark","desertwastesdark","sulphuricdark"],
-		"stats": [{
-				"stat": "critChance",
-				"amount": 2
-			},
-			{
-				"stat": "maxEnergy",
-				"effectiveMultiplier": 1.15
-			}
-		]
-	}],
+			"stats": [{
+					"stat": "critChance",
+					"amount": 2
+				},
+				{
+					"stat": "maxEnergy",
+					"effectiveMultiplier": 1.15
+				}
+			]
+		},
+		{
+		"biomes": ["chromatic"],
+			"stats": [
+				{
+					"stat": "protection",
+					"effectiveMultiplier": 0.80
+				},
+				{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 0.75
+				}				
+			]
+		}		
+	],
 	"weaponEffects": [{
 			"weapons": ["staff","wand"],
 			"stats": [{

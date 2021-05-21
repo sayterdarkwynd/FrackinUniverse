@@ -13,26 +13,23 @@ function checkHealth()
 end
 
 function setValues()
-  self.radiationBoost = self.foodValue * 0.4
-  self.poisonBoost = self.foodValue * 0.25
+  self.radiationBoost = self.foodValue * 0.40
+  self.poisonBoost = self.foodValue * 0.10
   self.powerMultBonus = self.foodValue * 0.15
-  self.firePenaltyBonusMod = -0.4 + (self.powerMultBonus)
-  self.icePenaltyBonusMod = self.foodValue * 0.05
-  self.electricPenaltyBonusMod = self.foodValue * 0.05
-  self.shadowPenaltyBonusMod = -0.25 + (self.powerMultBonus)
-  self.cosmicPenaltyBonusMod = self.foodValue * 0.07
+  self.firePenaltyBonusMod = -0.25 + (self.powerMultBonus)
+  self.icePenaltyBonusMod = -0.25 + (self.powerMultBonus)
+  self.electricPenaltyBonusMod = -0.25 + (self.powerMultBonus)
 
   --failsafes so that at 10% food you are hard-locked to a particular amount to not get too weak
   if self.foodValue < 0.1 then
-      self.firePenaltyBonusMod = -0.5
+      self.firePenaltyBonusMod = -0.25
       self.poisonBoost = 0
       self.powerMultBonus = 0
-      self.radiationBoost = 0.20
-      self.icePenaltyBonusMod = 0
+      self.radiationBoost = 0.10
+      self.firePenaltyBonusMod = -0.2
+      self.icePenaltyBonusMod = -0.2
       self.electricPenaltyBonusMod = -0.2
-      self.cosmicPenaltyBonusMod = -0.2
-      self.shadowPenaltyBonusMod = -0.25
-  end
+  end  
 
   status.setPersistentEffects("radienPower", {
       {stat = "maxHealth", amount = self.finalHealth },
@@ -43,9 +40,7 @@ function setValues()
       --bonuses
       {stat = "radioactiveResistance", amount = self.radiationBoost },
       {stat = "iceResistance", amount = self.icePenaltyBonusMod },
-      {stat = "electricResistance", amount = self.electricPenaltyBonusMod },
-      {stat = "shadowResistance", amount = self.shadowPenaltyBonusMod },
-      {stat = "cosmicResistance", amount = self.cosmicPenaltyBonusMod }
+      {stat = "electricResistance", amount = self.electricPenaltyBonusMod }
   })
 end
 

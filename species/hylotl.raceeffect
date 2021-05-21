@@ -1,35 +1,32 @@
 {
 	"stats": [
-		{ "stat": "katanaMastery", "amount": 0.25 },
-		{ "stat": "fuCharisma", "amount": 0.05 },
+		{ "stat": "fuCharisma","baseMultiplier": 1.05 },
 		{ "stat": "mentalProtection", "amount": 0.15 },
 		{ "stat": "electricResistance", "amount": -0.2 },
 		{ "stat": "iceResistance", "amount": 0.2 },
 		{ "stat": "radioactiveResistance", "amount": 0.12 },
 		{ "stat": "poisonResistance", "amount": 0.08 },
-		{ "stat": "shadowResistance", "amount": -0.1 }
+		{ "stat": "shadowResistance", "amount": -0.1 },
+		{ "stat": "katanaMastery", "amount": 0.25 }
 	],   
 	"diet" : [ { "ORGANIC" : false, "FISH" : true }, { "MEAT_RAW" : true } ],
 	"envEffects": [
 		{
-			"biomes": [ "ocean", "oceanfloor" ],
+			"biomes": [ "ocean" ],
 			"stats": [
-				{ "stat": "maxHealth", "effectiveMultiplier": 1.12 },
-				{ "stat": "maxEnergy", "effectiveMultiplier": 1.12 },
-				{ "stat": "protection", "effectiveMultiplier": 1.15 }
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.25 }
 			]
-		}
+		},
+		{
+			"biomes" : [ "desert", "desertwastes", "desertwastesdark" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 0.80 },
+				{ "stat" : "protection", "effectiveMultiplier" : 0.80 }
+			]
+		}	
 	],
+	
 	"weaponEffects": [
-		//{
-		//	"weapons": [ "quarterstaff" ],
-		//	"stats": [
-		//		{ "stat": "protection", "amount": 6 }
-		//	],
-		//	"controlModifiers": {
-		//		"speedModifier": 1.12
-		//	}
-		//},
 		{
 			"weapons": [ "shortsword","broadsword","katana","longsword", "rapier" ],
 			"scripts": [

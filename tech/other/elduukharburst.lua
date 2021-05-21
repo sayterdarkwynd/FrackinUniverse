@@ -17,7 +17,7 @@ function activeFlight()
 	animator.setSoundVolume("activate", 0.5,0)
 	animator.setSoundVolume("recharge", 0.375,0)
 
-	world.spawnProjectile("elduukharflamethrower",self.mouthPosition, entity.id(), aimVector(), false, { power = ((checkFood() /60) + (status.resource("energy")/150) + (status.stat("protection") /250)), damageSourceKind = "fire", speed = 12 })
+	world.spawnProjectile("elduukharflamethrower",self.mouthPosition, entity.id(), aimVector(), false, { power = ((checkFood() /60) + (status.resource("energy")/130) + (status.stat("protection") /220)) })
 end
 
 function aimVector()
@@ -31,10 +31,14 @@ function update(args)
 
 	self.firetimer = math.max(0, (self.firetimer or 0) - args.dt)
 	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
+		self.randValFire = math.random(3)
+
 		if checkFood() > foodThreshold then
-			status.addEphemeralEffects{{effect = "foodcostfire", duration = 0.02}}
+			if self.randValFire == 1 then
+			    status.addEphemeralEffects{{effect = "foodcostfire", duration = 0.002}}
+		    end
 		else
-			status.overConsumeResource("energy", 0.6)
+			status.overConsumeResource("energy", 0.3)
 		end
 
 		if self.firetimer == 0 then

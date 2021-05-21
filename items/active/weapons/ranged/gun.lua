@@ -6,7 +6,6 @@ require "/scripts/FRHelper.lua"
 function init()
     --*************************************
     -- FU/FR ADDONS
-
     local species = status.statusProperty("fr_race") or world.entitySpecies(activeItem.ownerEntityId())
 
     if species then
@@ -63,6 +62,7 @@ function calculateMasteries() -- doesn't work inside certain functions, such as 
     self.bioMastery = 1 + status.stat("bioMastery")
     self.energyMastery = 1 + status.stat("energyMastery")
     self.pistolMastery = 1 + status.stat("pistolMastery")
+    self.armcannonMastery = status.stat("armcannonMastery")
     self.machinePistolMastery = 1 + status.stat("machinePistolMastery")
     self.sniperRifleMastery = 1 + status.stat("sniperRifleMastery")
     self.assaultRifleMastery = 1 + status.stat("assaultRifleMastery")
@@ -131,6 +131,30 @@ function update(dt, fireMode, shiftHeld)
             {stat = "critChance", amount = 1 * self.machinePistolMasteryHalved}
         })         
     end
+    if primaryTagCache["armcannon"] or altTagCache["armcannon"] then -- increased damage, magazine, crit damage
+        self.armcannonMastery = 1 + status.stat("armcannonMastery")
+        self.armcannonMasteryHalved = ((self.armcannonMastery -1) / 2) + 1
+        self.armcannonMasteryThirded = ((self.armcannonMastery -1) / 3) + 1
+        status.setPersistentEffects("armcannonbonus", {
+            {stat = "powerMultiplier", effectiveMultiplier = 1 * self.armcannonMasteryHalved},
+            {stat = "protection", effectiveMultiplier = 1 * self.armcannonMasteryHalved},
+            {stat = "critDamage", amount = 0.3 * self.armcannonMastery}
+        })  
+        if primaryTagCache["shield"] or altTagCache["shield"] then --they have a shield active
+            status.setPersistentEffects("armcannonbonus", {
+                {stat = "powerMultiplier", effectiveMultiplier = 1 * self.armcannonMasteryThirded},
+                {stat = "protection", effectiveMultiplier = 1 * self.armcannonMastery},
+                {stat = "critDamage", amount = 0.3 * self.armcannonMasteryHalved}
+            })             
+        end
+        if primaryTagCache["armcannon"] and altTagCache["armcannon"] then --they have two armcannons active
+            status.setPersistentEffects("armcannonbonus", {
+                {stat = "powerMultiplier", effectiveMultiplier = 1 * self.armcannonMastery},
+                {stat = "protection", effectiveMultiplier = 1 * self.armcannonMasteryHalved},
+                {stat = "critChance", amount = 2 * self.armcannonMastery}
+            })                
+        end               
+    end    
     if primaryTagCache["assaultrifle"] or altTagCache["assaultrifle"] then -- increased damage, magazine, crit damage
         self.assaultRifleMastery = 1 + status.stat("assaultRifleMastery")
         self.assaultRifleMasteryHalved = ((self.assaultRifleMastery -1) / 2) + 1
@@ -225,6 +249,7 @@ function cancelEffects(fullClear)
     status.clearPersistentEffects("bioweaponbonus")
     status.clearPersistentEffects("pistolbonus")
     status.clearPersistentEffects("machinepistolbonus")
+    status.clearPersistentEffects("armcannonbonus")
     status.clearPersistentEffects("assaultriflebonus")
     status.clearPersistentEffects("sniperriflebonus")
     status.clearPersistentEffects("grenadelauncherbonus")
