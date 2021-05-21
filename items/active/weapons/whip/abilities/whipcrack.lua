@@ -6,8 +6,7 @@ require "/scripts/FRHelper.lua"
 WhipCrack = WeaponAbility:new()
 
 function WhipCrack:init()
-    self.whipMastery = 1 + status.stat("whipMastery")
-	self.damageConfig.baseDamage = (self.chainDps * self.fireTime) * self.whipMastery -- add mastery to damage
+	self.damageConfig.baseDamage = (self.chainDps * self.fireTime)
 
 	self.weapon:setStance(self.stances.idle)
 	animator.setAnimationState("attack", "idle")
@@ -32,8 +31,6 @@ end
 
 -- Ticks on every update regardless if this is the active ability
 function WhipCrack:update(dt, fireMode, shiftHeld)
-    self.whipMastery = 1 + status.stat("whipMastery")
-
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	setupHelper(self, "whip-fire")
@@ -163,7 +160,6 @@ function WhipCrack:fire()
         self.helper:runScripts("whip-fire", self)
     end
     -- *******************
-    chainLength = chainLength * self.whipMastery--mastery increases length
 
 	self.chain.endOffset = vec2.add(self.chain.startOffset, {chainLength, 0})
 	local collidePoint = world.lineCollision(chainStartPos, vec2.add(mcontroller.position(), activeItem.handPosition(self.chain.endOffset)))
