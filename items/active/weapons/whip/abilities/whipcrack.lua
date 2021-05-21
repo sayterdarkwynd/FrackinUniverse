@@ -6,7 +6,8 @@ require "/scripts/FRHelper.lua"
 WhipCrack = WeaponAbility:new()
 
 function WhipCrack:init()
-	self.damageConfig.baseDamage = self.chainDps * self.fireTime
+    self.whipMastery = 1 + status.stat("whipMastery")
+	self.damageConfig.baseDamage = (self.chainDps * self.fireTime) * self.whipMastery -- add mastery to damage
 
 	self.weapon:setStance(self.stances.idle)
 	animator.setAnimationState("attack", "idle")
@@ -31,6 +32,8 @@ end
 
 -- Ticks on every update regardless if this is the active ability
 function WhipCrack:update(dt, fireMode, shiftHeld)
+    self.whipMastery = 1 + status.stat("whipMastery")
+
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	setupHelper(self, "whip-fire")
@@ -152,14 +155,15 @@ function WhipCrack:fire()
 
 	local chainStartPos = vec2.add(mcontroller.position(), activeItem.handPosition(self.chain.startOffset))
 	local chainLength = world.magnitude(chainStartPos, activeItem.ownerAimPosition())
-	chainLength = math.min(self.chain.length[2], math.max(self.chain.length[1], chainLength))
-
+	chainLength = math.min(self.chain.length[2], math.max(self.chain.length[1], chainLength)) 
+    
     -- *****************
     -- FR STUFF
     if self.helper then
         self.helper:runScripts("whip-fire", self)
     end
     -- *******************
+    chainLength = chainLength * self.whipMastery--mastery increases length
 
 	self.chain.endOffset = vec2.add(self.chain.startOffset, {chainLength, 0})
 	local collidePoint = world.lineCollision(chainStartPos, vec2.add(mcontroller.position(), activeItem.handPosition(self.chain.endOffset)))
@@ -188,14 +192,7 @@ function WhipCrack:fire()
 	local projectileAngle = vec2.withAngle(self.weapon.aimAngle)
     if self.weapon.aimDirection < 0 then projectileAngle[1] = -projectileAngle[1] end
 
-    world.spawnProjectile(
-        self.projectileType,
-        chainEndPos,
-        activeItem.ownerEntityId(),
-        projectileAngle,
-        false,
-        self.projectileConfig
-	)
+    world.spawnProjectile(self.projectileType,chainEndPos,activeItem.ownerEntityId(),projectileAngle,false,self.projectileConfig)
 
 	util.wait(self.stances.fire.duration, function()
         if self.damageConfig.baseDamage > 0 then
