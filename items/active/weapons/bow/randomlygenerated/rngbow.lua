@@ -48,8 +48,8 @@ function update(dt, fireMode, shiftHeld)
           {stat = "bowDrawTimeBonus", amount = 0.01 * self.bowMasteryHalved},
           {stat = "bowEnergyBonus", amount = 1 * self.bowMasteryHalved},
           {stat = "powerMultiplier", effectiveMultiplier = 1 * self.bowMasteryHalved}
-        })  
-        mcontroller.controlModifiers({speedModifier = 1 + (self.bowMastery / 16)})   
+        })
+        mcontroller.controlModifiers({speedModifier = 1 + (self.bowMastery / 16)})
   end
 
   --**************************************
