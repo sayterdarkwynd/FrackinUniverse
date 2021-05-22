@@ -2,22 +2,22 @@
 	"stats": [
 		{ "stat": "maxHealth","effectiveMultiplier": 1.15},		
 		{ "stat": "maxEnergy","effectiveMultiplier": 1.12},
-		{ "stat": "powerMultiplier","effectiveMultiplier": 1.05},
+		{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0.80 },
+        
+		{ "stat" : "fireResistance", "amount" : -0.30 },
+		{ "stat" : "iceResistance", "amount" : 0.30 },
 		{ "stat" : "radioactiveResistance", "amount" : 0.05 },
-		{ "stat" : "fireResistance", "amount" : -0.3 },
-		{ "stat" : "iceResistance", "amount" : 0.3 },
-		{ "stat" : "maxFood", "amount" : 75 },
-		{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0.8 },
-		{ "stat" : "liquidnitrogenImmunity", "amount" : 1 },
-		{ "stat" : "iceslipImmunity", "amount" : 1 },
+        
 		{ "stat" : "iceStatusImmunity", "amount" : 1 },
+		{ "stat" : "iceslipImmunity", "amount" : 1 },
+		{ "stat" : "liquidnitrogenImmunity", "amount" : 1 },
 
 		{ "stat" : "axeMastery", "amount": 0.15 },
 		{ "stat" : "machinePistolMastery", "amount": 0.15 }
 	],
 	"diet" : "omnivore",
 	"controlModifiers": {
-		"speedModifier": 1.05
+		"airJumpModifier" : 1.08
 	},
 	"weaponScripts": [{
 		"script": "/scripts/fr_weaponscripts/freebonus.lua",
