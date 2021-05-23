@@ -1,16 +1,15 @@
 {
 	"stats": [
-		{"stat": "maxEnergy","effectiveMultiplier": 1.2},
-		{"stat": "physicalResistance","amount": 0.1},
-		{"stat": "electricResistance","amount": -0.3},
-		{"stat": "fireResistance","amount": -0.1},
-		{"stat": "radioactiveResistance","amount": -0.1},
-		{"stat": "shadowResistance","amount": -0.1},
-		{"stat": "iceResistance","amount": 0.3},
-		{"stat": "poisonResistance","amount": 0.2},
-		{"stat": "maxBreath","amount": 2500},
-		{"stat": "energyMastery","amount": 0.15},
-		{"stat": "assaultRifleMastery","amount": 0.15}
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.05 },
+		{ "stat": "protection", "amount": 8 },
+		{ "stat": "maxBreath", "amount": 500 },
+        
+		{ "stat": "iceResistance", "amount": 0.20 },
+		{ "stat": "electricResistance", "amount": -0.20 },
+		{ "stat": "radioactiveResistance", "amount": 0.10 },
+        
+		{ "stat": "energyMastery", "amount": 0.15 },
+		{ "stat": "assaultRifleMastery", "amount": 0.25 }
 	],
 	"diet" : "omnivore",
 	"special": ["swimboost2"],
@@ -31,14 +30,14 @@
 	"envEffects": [{
 			"biomes": ["ocean","oceanfloor"],		
 			"stats": [
-				{"stat": "maxHealth","effectiveMultiplier": 1.25},
-				{"stat": "protection","amount": 6}
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.25},
+				{ "stat": "protection", "amount": 6}
 			]
 		},
 		{
 			"biomes": ["desert","magma","barren","barren2","barren3","desertwastes","desertwastesdark","infernus","infernusdark","volcanic","volcanicdark","sulphuric","sulphuricdark","sulphuricocean","tarball"],
 			"controlModifiers": { "speedModifier": 0.8, "airJumpModifier": 0.8 },				
-			"stats": [ {"stat": "maxEnergy","effectiveMultiplier": 0.7},{"stat": "maxHealth","effectiveMultiplier": 0.7} ]
+			"stats": [ { "stat": "maxEnergy", "effectiveMultiplier": 0.7},{ "stat": "maxHealth", "effectiveMultiplier": 0.7} ]
 		}
 	]
 }
