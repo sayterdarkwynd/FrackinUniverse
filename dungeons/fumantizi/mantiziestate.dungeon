@@ -1,0 +1,110 @@
+{
+  "metadata" : {
+    "name" : "mantiziestate",
+    "species" : "fumantizi",
+    "rules" : [ ],
+    "anchor" : [ "mantiziestatesenate" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 20,
+    "extendSurfaceFreeSpace" : 100,
+    "protected" : false
+  },
+
+  "parts" : [
+    {
+      "name" : "mantiziestateendleft",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", [ "mantiziestateendleft.json" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "mantiziestateendright",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", [ "mantiziestateendright.json" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "mantiziestatesenate",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ],
+        [ "doNotConnectToPart", [ "mantiziestatesenate" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestatesenate.json" ]
+    },
+    
+    {
+      "name" : "mantiziestatevilla",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+        [ "doNotConnectToPart", [ "mantiziestatevilla" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestatevilla.json" ]
+    },
+    
+    {
+      "name" : "mantiziestateconsulshouse",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+        [ "doNotConnectToPart", [ "mantiziestateconsulshouse" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestateconsulshouse.json" ]
+    },
+    
+    {
+      "name" : "mantiziestategarden1",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+        [ "doNotConnectToPart", [ "mantiziestategarden1", "mantiziestategarden2" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestategarden1.json" ]
+    },
+    {
+      "name" : "mantiziestategarden2",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+        [ "doNotConnectToPart", [ "mantiziestategarden1", "mantiziestategarden2" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestategarden2.json" ]
+    },
+    
+    {
+      "name" : "mantiziestatefarm",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "mantiziestatefarm" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestatefarm.json" ]
+    },
+    
+    {
+      "name" : "mantiziestateslums1",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "mantiziestateslums1" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestateslums1.json" ]
+    },
+    {
+      "name" : "mantiziestateslums2",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "mantiziestateslums2" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestateslums2.json" ]
+    },
+    {
+      "name" : "mantiziestateslums3",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "mantiziestateslums3" ] ]
+      ],
+      "def" : [ "tmx", "mantiziestateslums3.json" ]
+    }
+  ]
+}

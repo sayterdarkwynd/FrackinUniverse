@@ -1,0 +1,66 @@
+{
+  "type" : "fucultist",
+  "baseType" : "villager",
+  
+	"disableWornArmor": true,
+
+  "scriptConfig" : {
+    "questGenerator" : {
+      "pools" : ["common", "tenant"]
+	  },
+      "graduation" : {
+        "nextNpcType" : [
+          [1, "crewmembercultist"]
+        ]
+      },
+  		"dialog": {
+			"flee": {
+				"helpme": "/dialog/flee.config:helpme",
+				"safe": "/dialog/flee.config:safe"
+			},
+			"tenant": {
+				"grumbles": {
+					"tagCriteria": "/dialog/eldermerchant.config:tagCriteria",
+					"enclosedArea": "/dialog/eldermerchant.config:enclosedArea",
+					"otherDeed": "/dialog/eldermerchant.config:otherDeed",
+					"severe": "/dialog/eldermerchant.config:severe",
+					"final": "/dialog/eldermerchant.config:final"
+				},
+				"arrivedHome": {
+					"beacon": "/dialog/eldermerchant.config:beacon",
+					"rent": "/dialog/eldermerchant.config:rent"
+				}
+			},
+			"accuse": "/dialog/thief.config:accuse",
+			"alert": "/dialog/thief.config:alert"
+		}
+	},
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [
+              { "name" : "cultisthead" },
+              { "name" : "cultarmorhead" },
+              { "name" : "cultcrown" },
+              { "name" : "fuarmoredcultisthead" },
+              { "name" : "fuexosuitheadkhe" }
+            ],
+            "chest" : [
+              { "name" : "cultistchest" },
+              { "name" : "cultarmorchest" },
+              { "name" : "fuarmoredcultistchest" },
+              { "name" : "fuexosuitchestkhe" }
+            ],
+            "legs" : [
+              { "name" : "cultistlegs" },
+              { "name" : "cultarmorlegs" },
+              { "name" : "fuarmoredcultistlegs" },
+              { "name" : "fuexosuitlegskhe" }
+            ]
+          }
+        ] ]
+    ]
+  }
+}

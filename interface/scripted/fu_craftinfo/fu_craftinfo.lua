@@ -86,6 +86,7 @@ function init()
 		"industrialcentrifuge",
 		"ironcentrifuge",
 		"woodencentrifuge",
+		"precursorsmelter",
 		"isn_powdersifter",
 		"fu_woodensifter",
 		"fu_rockbreaker",
@@ -108,6 +109,7 @@ function init()
 		["industrialcentrifuge"] = true,
 		["ironcentrifuge"] = true,
 		["woodencentrifuge"] = true,
+		["precursorsmelter"] = true,
 		["isn_powdersifter"] = true,
 		["fu_woodensifter"] = true,
 		["fu_rockbreaker"] = true,
@@ -145,6 +147,8 @@ function init()
 		processObjects["ironcentrifuge"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["woodencentrifuge"] then
 		processObjects["woodencentrifuge"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["precursorsmelter"] then
+		processObjects["precursorsmelter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["isn_powdersifter"] then
 		processObjects["isn_powdersifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["fu_woodensifter"] then
@@ -175,6 +179,7 @@ function init()
 		industrialcentrifuge  = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		ironcentrifuge        = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		precursorsmelter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		isn_powdersifter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		fu_woodensifter       = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		electricfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = electricFurnace },

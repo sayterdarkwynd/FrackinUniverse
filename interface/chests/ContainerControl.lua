@@ -10,7 +10,7 @@ function CodexButtonClicked()
 	local numErrored = 0
 
 	local items = widget.itemGridItems("itemGrid")
-	for index, item in pairs(items) do
+	for _, item in pairs(items) do--for index, item in pairs(items) do
 		local itemName = item.name
 		-- Simple test: Does it end in -codex? We can easily scrap items that aren't codexes this way.
 		if #itemName > 6 and itemName:sub(-6) == "-codex" then

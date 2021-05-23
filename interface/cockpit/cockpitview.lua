@@ -273,7 +273,7 @@ function View:render(dt)
   for _,camera in pairs(cameras) do
     if camera.transition then
       camera.transition.timer = math.min(1.0, transition.timer + dt)
-      local ratio = camera.transition.timer / camera.transition.time
+      --local ratio = camera.transition.timer / camera.transition.time
       lerpCamera(transition.timer / transition.time, transition.position, transition.scale)
     end
   end
@@ -458,7 +458,7 @@ function View:showClusterInfo(planet)
 
   local planetType
   local visitableParameters = celestial.visitableParameters(planet)
-  local typeNames = config.getParameter("planetTypeNames")
+  --local typeNames = config.getParameter("planetTypeNames")
   if visitableParameters then
     planetType = visitableParameters.typeName
   elseif celestial.planetParameters(planet).worldType == "GasGiant" then
@@ -853,11 +853,11 @@ function View:renderSystem(args, dt)
 
     local moons = celestial.children(planet)
     for j,moon in pairs(moons) do
-      local parameters = args.planetParameters[i..j] or celestial.planetParameters(moon)
-      args.planetParameters[i..j] = parameters
+      local subParameters = args.planetParameters[i..j] or celestial.planetParameters(moon)
+      args.planetParameters[i..j] = subParameters
       local visitable = args.visitableParameters[i..j] or celestial.visitableParameters(moon)
       args.visitableParameters[i..j] = visitable
-      self:drawSystemPlanet(moon, opacity, parameters, visitable)
+      self:drawSystemPlanet(moon, opacity, subParameters, visitable)
     end
   end
 
@@ -931,7 +931,7 @@ function View:renderSystemObjects(system, mappedObjects, doScale)
     end
   end
 
-  for uuid,object in pairs(mappedObjects) do
+  for _,object in pairs(mappedObjects) do--for uuid,object in pairs(mappedObjects) do
     local config = celestial.objectTypeConfig(object.typeName)
     if config.permanent then
       local position = celestial.orbitPosition(object.orbit)
@@ -1021,7 +1021,7 @@ end
 function View:renderTravel(args, dt)
   args.lastPosition = args.lastPosition or copy(self.universeCamera.position)
 
-  local prevRegion = self:systemScanRegion(args.lastPosition)
+  --local prevRegion = self:systemScanRegion(args.lastPosition)
   local region = self:systemScanRegion()
   local regionSize = rect.size(region)
   local movement = vec2.sub(self.universeCamera.position, args.lastPosition)
@@ -1186,7 +1186,7 @@ function View:drawWorld(object)
   if planetSize then
     local images = celestial.worldImages(object)
     local scale = (planetSize * self.systemCamera.scale) / root.imageSize(images[1][1])[1]
-    for i,image in pairs(images) do
+    for _,image in pairs(images) do--for i,image in pairs(images) do
       self.canvas:drawImageDrawable(image[1], position, scale, "white", angle)
     end
 

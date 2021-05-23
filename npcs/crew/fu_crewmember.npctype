@@ -7,7 +7,7 @@
   "damageTeamType" : "friendly",
 
   // Remove protection and powermultiplier gained from being level 1 as scaling is from player armor
-  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, "nofallcrew" ], 
+  "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20}, {"stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0} ],
 
   "persistent" : true,
 
@@ -155,7 +155,7 @@
               "I can help!"
             ]
           }
-		},
+        },
         "fieldBenefit" : {
           "default" : {
             "default" : [
@@ -165,7 +165,7 @@
               "I can help!"
             ]
           }
-		},
+        },
         "respawned" : {
           "default" : {
             "default" : [
@@ -286,6 +286,9 @@
       },
       "healthRegen" : {
         "baseValue" : 2.0
+      },
+      "specialStatusImmunity" : {
+        "baseValue" : 1.0
       }
     }
   }

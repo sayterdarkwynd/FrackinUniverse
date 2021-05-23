@@ -58,6 +58,31 @@ function update(dt)
 		end
 
 		-- Apply the persistent effect
+		local derp=copy(self.helper.speciesConfig.stats or {})
+		--sb.logInfo("FR_racialStats pre: %s",derp)
+		for _,statSet in pairs(derp) do
+			if (statSet.stat=="maxEnergy") or (statSet.stat=="maxHealth") then
+				if statSet.amount then statSet.amount=util.clamp(statSet.amount,-50,50)
+				elseif statSet.effectiveMultiplier then statSet.effectiveMultiplier=util.clamp(statSet.effectiveMultiplier,0.5,1.5)
+				elseif statSet.baseMultiplier then statSet.baseMultiplier=util.clamp(statSet.baseMultiplier,0.5,1.5)
+				end
+			elseif (statSet.stat=="powerMultiplier") then
+				if statSet.amount then statSet.amount=util.clamp(statSet.amount,-0.5,0.5)--they should be using basemult or effectivemult.
+				elseif statSet.effectiveMultiplier then statSet.effectiveMultiplier=util.clamp(statSet.effectiveMultiplier,0.7,1.3)
+				elseif statSet.baseMultiplier then statSet.baseMultiplier=util.clamp(statSet.baseMultiplier,0.5,1.5)
+				end
+			elseif (statSet.stat=="protection") then
+				if statSet.amount then statSet.amount=util.clamp(statSet.amount,-25,25)
+				elseif statSet.effectiveMultiplier then statSet.effectiveMultiplier=util.clamp(statSet.effectiveMultiplier,0.7,1.3)
+				--elseif statSet.baseMultiplier then statSet.baseMultiplier=util.clamp(statSet.baseMultiplier,0.5,1.5)--has no effect. base is 0.
+				end
+			elseif string.find(statSet.stat,"Resistance") then
+				if statSet.amount then statSet.amount=util.clamp(statSet.amount,-1.0,1.0)
+				elseif statSet.effectiveMultiplier then statSet.effectiveMultiplier=util.clamp(statSet.effectiveMultiplier,0.0,2.0)
+				end
+			end
+		end
+		--sb.logInfo("FR_racialStats post: %s",derp)
 		status.setPersistentEffects("FR_racialStats", self.helper.speciesConfig.stats or {})
 
 		-- Add any other special effects
@@ -70,7 +95,10 @@ function update(dt)
 
 	-- Update stuff
 	--self.helper:clearPersistent()
-	self.helper:applyControlModifiers()
+	if self and self.helper then
+		--khe's note. never, ever, fucking, ever send this without parameters. the script previously assumed defaults. THIS IS NOT CORRECT BEHAVIOR. modifiers were stacking from multiple contexts.
+		self.helper:applyControlModifiers(self.helper.controlModifiers,self.helper.controlParameters)
+	end
 	self.helper:runScripts("racialscript", self, dt)
 
 	-- Breath handling
@@ -86,3 +114,7 @@ function update(dt)
 		end
 	end
 end
+
+--function getLevelByExp(exp)
+--    return math.floor((math.sqrt(3) * math.sqrt(243*(exp+1)^2-48600*(exp+1)+3680000)+27 * (exp+1)-2700)^(1/3)/30^(2/3)-(5*10^(2/3))/(3^(1/3)*(math.sqrt(3)*math.sqrt(243*(exp+1)^2-48600*(exp+1)+3680000)+27*(exp+1)-2700)^(1/3))+2)
+--end

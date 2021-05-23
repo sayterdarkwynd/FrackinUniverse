@@ -1,0 +1,25 @@
+{
+	"text": "Cave was like one you saw, yes? Mew had a thought. Kevin experiments, tries following in your footsteps. Everything goes wrong. Maybe he got bored?",
+	"title": "Glittering in the Dark",
+	"updateDelta": 10,
+	"script": "/quests/scripts/story/human_mission1.lua",
+	"id": "fu_t10_human_mission1",
+	"completionText": "Kevin touched crystals. No doubt about it. Old signature, faint, but clear. Maybe Kevin's fault things went wrong. Have another beacon.",
+	"prerequisites": ["fu_t10_gaterepair"],
+	"moneyRange": [0, 0],
+	"scriptConfig": {
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+		"associatedMission": "fulunarbaset10",
+		"mechanicUid": "kheraeoutpost",
+		"descriptions": {
+			"turnIn": "^green;Bring^reset; the ^orange;Dark Erchius Crystals^reset; to ^orange;Kherae^reset; at the ^orange;Science Outpost^reset;",
+			"findCrystals": "^green;Fetch ^orange;Dark Erchius Crystals^reset; from the ^orange;Dark Erchius Mining Facility^reset;"
+		},
+		"drillUid": "erchiusdrillmachine",
+		"compassUpdate": 0.2
+	},
+	"rewards" : [ [ [ "fu_t10_floran_mission2beacon", 1 ] ] ]
+}

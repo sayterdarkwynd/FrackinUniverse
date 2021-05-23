@@ -73,20 +73,23 @@
 		"speedPenalty" : 0,
 		"jumpPenalty" : 0,
 
-		"debuffRate" : 8,
+		//at these rates, they complete in 360s exact
+		"debuffRate" : 9,//time in seconds
 		"debuffStartDelay" : 0,
 		"debuffs" : {
 			"healingBonus":{
-				"amount":-0.05,
+				"amount":-0.5,
 				"cap":-2
 			},
 			"protection" : {
-				"amount" : -1,
-				"cap" : -10
+				"amount" : -2.5,//amount per interval
+				"cap" : -100,
+				"type" : "effectiveMultiplier"
 			},
 			"maxEnergy" : {
-				"amount" : -1,
-				"cap" : -1
+				"amount" : -2.25,
+				"cap" : -90,
+				"type" : "effectiveMultiplier"
 			}
 		},
 
@@ -106,11 +109,11 @@
 			"intro" : "fubiomeinsanity",
 			"wet" : "insanityeffectliquid",
 			"fast" : "insanityeffectfast",
-			"zeroG" : "insanityEffectgrav",
+			"zeroG" : "insanityeffectgrav",
 			"airborne" : [
-				"insanityEffectair",
-				"insanityEffectair2",
-				"insanityEffectair3"
+				"insanityeffectair",
+				"insanityeffectair2",
+				"insanityeffectair3"
 			],
 			"injured" : [
 				"insanityeffectdying",

@@ -1,0 +1,64 @@
+{
+  "type" : "fucultistart",
+  "baseType" : "merchant",
+
+  "scriptConfig" : {
+    "merchant" : {
+      "waitTime" : 10,
+      "storeRadius" : -1,
+      "categories" : {
+        "override" : [ "fucultistart" ]
+      },
+      "buyFactorRange" : [ 1.5, 3.0 ],
+      "sellFactorRange" : [ 0.2, 0.2 ],
+      "numItems" : 10,
+      "paneLayoutOverride" : {
+        "windowtitle" : {
+          "title" : "  Artist",
+          "subtitle" : "  Inspired by nightmares"
+        }
+      }
+    },
+
+    "dialog": {
+			"merchant": {
+				"start": "/dialog/eldermerchant.config:merchantStart",
+				"end": "/dialog/eldermerchant.config:merchantEnd",
+				"follow": "/dialog/eldermerchant.config:follow",
+				"welcome": "/dialog/eldermerchant.config:welcome",
+				"tout": "/dialog/eldermerchant.config:tout"
+			},
+			"flee": {
+				"helpme": "/dialog/flee.config:helpme",
+				"safe": "/dialog/flee.config:safe"
+			},
+			"tenant": {
+				"grumbles": {
+					"tagCriteria": "/dialog/eldermerchant.config:tagCriteria",
+					"enclosedArea": "/dialog/eldermerchant.config:enclosedArea",
+					"otherDeed": "/dialog/eldermerchant.config:otherDeed",
+					"severe": "/dialog/eldermerchant.config:severe",
+					"final": "/dialog/eldermerchant.config:final"
+				},
+				"arrivedHome": {
+					"beacon": "/dialog/eldermerchant.config:beacon",
+					"rent": "/dialog/eldermerchant.config:rent"
+				}
+			},
+			"accuse": "/dialog/thief.config:accuse",
+			"alert": "/dialog/thief.config:alert"
+		}
+	},
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ "cultcrown" ],
+            "chest" : [ "fuarmoredcultistchest" ],
+            "legs" : [ "fuarmoredcultistlegs" ]
+          }
+        ] ]
+    ]
+  }
+}

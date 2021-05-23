@@ -23,9 +23,7 @@
   ], 
   
   "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua"
-    ],
+    "scripts" : [ "/monsters/monster.lua" ],
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
@@ -33,32 +31,58 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 128,
+      "targetQueryRange" : 50,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
-      "keepTargetInRange" : 80,
+      "keepTargetInRange" : 40,
       "targetOutOfSightTime" : 5.5,
 
-      "foundTargetActions" : [ 
+      "foundTargetActions" : [
         {
-          "name" : "action-statuseffect",
-          "cooldown" : 1,
+          "name" : "action-charge",
+          "cooldown" : 10,
           "parameters" : {
-          "effect" : "lowgrav_wretchel",
-          "duration" : 10
+            "maximumRange" : 30,
+            "windupTime" : 0.6,
+
+            "aimAtTarget" : true,
+            "chargeTime" : 1,
+            "chargeSpeed" : 50,
+            "chargeControlForce" : 370,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.4
           }
-        }        
+        }      
       ],
 
       "fleeActions" : [],
 
-      "hostileActions" : [
+      "hostileActions" : [ 
+        {
+          "name" : "action-charge",
+          "cooldown" : 7,
+          "parameters" : {
+            "maximumRange" : 20,
+            "windupTime" : 0.2,
+
+            "aimAtTarget" : true,
+            "chargeTime" : 1,
+            "chargeSpeed" : 30,
+            "chargeControlForce" : 500,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.4
+          }
+        },       
         {
           "name" : "action-fire",
-          "cooldown" : 4,
+          "cooldown" : 2,
           "parameters" : {
-            "maximumRange" : 128,
-            "minimumRange" : 12,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
             "windupState" : "chargewindup",
             "windupTime" : 0.1,
             "projectileCount" : 8,
@@ -72,7 +96,7 @@
             "aimAtTarget" : false,
 
             "inaccuracy" : 0,
-            "power" : 0,
+            "power" : 4,
             "speed": 0,
             "fireSound" : "fire",
             "fireState" : "charge",
@@ -82,16 +106,16 @@
         },
         {
           "name" : "action-fire",
-          "cooldown" : 7,
+          "cooldown" : 2,
           "parameters" : {
-            "maximumRange" : 128,
-            "minimumRange" : 12,
-            "windupState" : "",
-            "windupTime" : 0.0,
+            "maximumRange" : 20,
+            "minimumRange" : 4,
+            "windupState" : "powerup",
+            "windupTime" : 0.6,
             "projectileCount" : 1,
             "projectileType" : "magnorbshadow",
             "projectileParameters" : {
-              "timeToLive" : 7,
+              "timeToLive" : 5,
               "speed" : 5
             },
             "fireOffset" : [0, -1.4],
@@ -99,43 +123,43 @@
             "aimAtTarget" : false,
             "onGround" : true,
             "inaccuracy" : 0,
-            "fireSound" : "fire",
-            "fireState" : "",
-
+            "fireSound" : "fire3",
+            "fireState" : "charge",
+            "power" : 1,
             "winddownState" : "chargewinddown"
           }
-        }
+        } 
       ],
       
       "damageTakenActions" : [
         {
-          "name" : "action-charge",
-          "cooldown" : 0.08,
-          "parameters" : {
-            "maximumRange" : 85,
-            "windupTime" : 0.08,
-
-            "aimAtTarget" : true,
-            "chargeTime" : 0.5,
-            "chargeSpeed" : 42,
-            "chargeControlForce" : 600,
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
-
-            "winddownTime" : 0.08
-          }
-        }     
-      ],
-      
-      "periodicActions" : [
-        {
           "name" : "action-statuseffect",
-          "cooldown" : 1,
+          "cooldown" : 15,
           "parameters" : {
           "effect" : "lowgrav_wretchel",
           "duration" : 10
           }
-        }        
+        }              
+      ],
+      
+      "periodicActions" : [
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "maximumRange" : 30,
+            "windupTime" : 0.2,
+
+            "aimAtTarget" : true,
+            "chargeTime" : 0.25,
+            "chargeSpeed" : 40,
+            "chargeControlForce" : 300,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+
+            "winddownTime" : 0.4
+          }
+        }      
       ],
 
       "approachActions" : [
@@ -178,7 +202,7 @@
             "projectileCount" : 1,
             "projectileType" : "astraltear",
             "projectileParameters" : {},
-            "power" : 10,
+            "power" : 12,
             "aimDirection" : [0, 0],
             "inaccuracy" : 0,
             "fireOffset" : [0, 0]
@@ -192,27 +216,9 @@
           "cooldown" : 8,
           "parameters" : {
           "effect" : "darkregen",
-          "duration" : 8
+          "duration" : 2
           }
-        },
-        {
-          "name" : "action-charge",
-          "cooldown" : 6,
-          "parameters" : {
-            "maximumRange" : 128,
-            
-            "windupTime" : 0.2,
-
-            "aimAtTarget" : true,
-            "chargeTime" : 0.75,
-            "chargeSpeed" : 50,
-            "chargeControlForce" : 800,
-            "wallCrashSound" : "",
-            "wallCrashEmitter" : "",
-
-            "winddownTime" : 0.4
-          }
-        }         
+        }      
       ],   
       
       "wanderActions" : [
@@ -346,7 +352,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "bandraflora4" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "bandraflora4" }
   }
 }

@@ -5,6 +5,9 @@ local statusList={--progress status doesnt matter, but for any other status indi
 	queenID="^green;Queen identified",
 	youngQueenID="^green;Larva identified",
 	droneID="^green;Drone identified",
+	fossilID="^green;Fossil identified",
+	mediumFossilID="^green;Fossil identified",
+	smallFossilID="^green;Fossil identified",
 	artifactID="^green;Artifact identified",
 	artifactElderID="^green;Artifact identified",
 	artifactProtheonID="^green;Artifact identified",
@@ -20,6 +23,7 @@ local tagList={
 	youngQueen={range=25,currencies={bonusResearch=3,bonusGene=1}},
 	drone={range=100,currencies={bonusGene=1}},
 	--bug={range=25,currencies={bonusResearch=15,bonusGene=3},overrideCategory="bugResearched"},
+	fossil={range=65,currencies={bonusResearch=60,bonusEssence=1},overrideCategory="fossilResearched"},
 	geode={range=65,currencies={bonusResearch=2,bonusEssence=1},overrideCategory="geodeResearched"},
 	artifact={range=35,currencies={bonusResearch=50,bonusEssence=1,bonusProtheon=1},overrideCategory="artifactResearched"},
 	artifactElder={range=25,currencies={bonusResearch=35,bonusEssence=10},overrideCategory="artifactElderResearched"},
@@ -88,7 +92,7 @@ function checkTags(item)
 	if (not item) then return end
 	local tags=fetchTags(item)
 	local buffer=nil
-	for tag,values in pairs(tagList) do
+	for tag,_ in pairs(tagList) do
 		for _,t in pairs(tags) do
 			if t==tag then
 				buffer=tag
@@ -305,7 +309,7 @@ function getStatus()
 end
 
 function currentlyWorking()
-	for id,label in pairs(statusList) do
+	for _,label in pairs(statusList) do
 		if status==label then return false end
 	end
 	return true

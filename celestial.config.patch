@@ -1,4 +1,9 @@
 [
+  {
+    "op": "replace",
+    "path": "/systemTypes/White/baseParameters/spaceThreatLevel",
+    "value": 2
+  },
 
   {"op" : "add", 
   "path" : "/terrestrialHorizonGraphics/chromatic",
@@ -395,6 +400,7 @@
   {
       "baseImages" : "/celestial/system/terrestrial/horizon/textures/aethersea_<selector>.png",
       "maskTextures" : "/celestial/system/terrestrial/horizon/masks/ocean/<mask>_<selector>.png",
+      "liquidTextures" : "/celestial/system/terrestrial/horizon/liquids/liquidaether_<selector>.png",
       "maskRange" : [1, 25],
       "maskPerPlanetRange" : [1, 2]  
   }},       
@@ -840,6 +846,7 @@
   {
       "baseImages" : "/celestial/system/terrestrial/biomes/aethersea/maskie<num>.png",
       "dynamicsImages" : "/celestial/system/terrestrial/dynamics/ocean/<num>.png",
+      "liquidImages": "/celestial/system/terrestrial/liquids/liquidaether.png",
       "dynamicsRange" : [1, 20],
       "baseCount" : 1
   }},   

@@ -1,7 +1,7 @@
 require '/scripts/fupower.lua'
 require '/scripts/util.lua'
 
-local batteryUpdateThrottleBase=0.1
+local batteryUpdateThrottleBase=0.33
 
 function init()
 	power.init()
@@ -102,6 +102,7 @@ function batteryUpdate(dt)
 	local on=(not object.isInputNodeConnected(0)) or object.getInputNodeLevel(0)
 	power.setPower(on and power.getStoredEnergy() or 0)
 	if batteryUpdateThrottle <= 0 then
+		local throttleMult=(math.sqrt(#(world.objectQuery(entity.position(),16,{callScript="isFuBattery"}))))
 		object.setConfigParameter('description', isn_makeBatteryDescription())
 		local oldAnim
 		if self.oldPowerStored then
@@ -112,9 +113,13 @@ function batteryUpdate(dt)
 			animator.setAnimationState("meter",newAnim)
 		end
 		self.oldPowerStored=power.getStoredEnergy()
-		batteryUpdateThrottle=batteryUpdateThrottleBase
+		batteryUpdateThrottle=batteryUpdateThrottleBase*throttleMult
 		--object.setOutputNodeLevel(0,self.oldPowerStored>0)
 		object.setOutputNodeLevel(0,self.oldPowerStored>=10)
 		object.setOutputNodeLevel(1,power.getStoredEnergy() >= power.getMaxEnergy())
 	end
+end
+
+function isFuBattery()
+	return true
 end

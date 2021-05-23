@@ -57,6 +57,7 @@ function build(directory, config, parameters, level, seed)
 	-- elemental type
 	local elementalType = parameters.elementalType or config.elementalType or "physical"
 	replacePatternInData(config, nil, "<elementalType>", elementalType)
+	replacePatternInData(config, nil, "<elementalName>", elementalType:gsub("^%l", string.upper))
 
 	local primaryAbility=configParameterDeep("primaryAbility")
 	local altAbility=configParameterDeep("altAbility")

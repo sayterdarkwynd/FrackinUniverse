@@ -6,6 +6,8 @@ require "/items/active/weapons/crits.lua"
 BowShot = WeaponAbility:new()
 
 function BowShot:init()
+	self.bowMastery = 1 + status.stat("bowMastery")
+
 	self.energyPerShot = self.energyPerShot or 0
 
 	self.drawTime = 0

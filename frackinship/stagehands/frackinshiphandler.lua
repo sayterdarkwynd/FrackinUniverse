@@ -16,9 +16,41 @@ function init()
 	
 	-- To fix the isssue with old BYOS ships
 	world.setProperty("fuChosenShip", false)
+	
+	if world.getProperty("ship.level", 1) == 0 and not world.getProperty("fu_byos") then
+		self.shipRenderPromise = world.findUniqueEntity("fs_shiprender")
+	end
 end
 
 function update()
+	if self.shipRenderPromise then
+		if self.shipRenderPromise:finished() then
+			if not self.shipRenderPromise:succeeded() then
+				-- Make config values later
+				local maxLength = 25
+				local startPos = {1024, 1025}
+				local modifiers = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}
+				local length = 0
+				while length <= maxLength do
+					local placed = false
+					for _, modifier in ipairs (modifiers) do
+						local attemptMod = {}
+						attemptMod[1] = modifier[1] * length
+						attemptMod[2] = modifier[2] * length
+						if world.placeObject("fs_shiprender", vec2.add(startPos, attemptMod)) then
+							placed = true
+							break
+						end
+					end
+					if placed then
+						break
+					end
+					length = length + 1
+				end
+			end
+			self.shipRenderPromise = nil
+		end
+	end
 	if self.placingShip  and world.dungeonId(entity.position()) == self.shipDungeonId then
 		world.setProperty("fu_byos", true)
 		world.setProperty("fuChosenShip", false)
@@ -110,7 +142,7 @@ function racialiseShip()
 						self.playerRace = raceTableOverride[self.playerRace].race
 					end
 					if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
-						for item, extra in pairs (raceTableOverride[self.playerRace].items) do
+						for item, _ in pairs (raceTableOverride[self.playerRace].items) do--extra in pairs (raceTableOverride[self.playerRace].items) do
 							if string.find(item, "techstation") then
 								techstation = root.itemConfig(item)
 							end
@@ -135,7 +167,7 @@ function racialiseShip()
 				self.playerRace = raceTableOverride[self.playerRace].race
 			end
 			if raceTableOverride[self.playerRace] and raceTableOverride[self.playerRace].items then
-				for item, extra in pairs (raceTableOverride[self.playerRace].items) do
+				for item, _ in pairs (raceTableOverride[self.playerRace].items) do--extra in pairs (raceTableOverride[self.playerRace].items) do
 					if string.find(item, "techstation") then
 						newPetObject = root.itemConfig(item)
 					end
@@ -175,6 +207,7 @@ function getBlockKeyPath(shipFile, blockKeyFile)
 	local reversedFile = string.reverse(shipFile)
 	local snipLocation = string.find(reversedFile, "/")
 	local shipFileGsub = string.sub(shipFile, -snipLocation + 1)
-	local blockKeyFile = shipFile:gsub(shipFileGsub, blockKeyFile)
-	return blockKeyFile
+	--local blockKeyFile = shipFile:gsub(shipFileGsub, blockKeyFile)
+	--return blockKeyFile
+	return shipFile:gsub(shipFileGsub, blockKeyFile)
 end

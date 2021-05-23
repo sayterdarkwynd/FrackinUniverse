@@ -9,74 +9,108 @@ function MeleeSlash:init()
 	self.energyUsage = self.energyUsage or 0
 	self.weapon:setStance(self.stances.idle)
 	self.cooldownTimer = self:cooldownTime()
-
 	self.weapon.onLeaveAbility = function()
-	self.weapon:setStance(self.stances.idle)
+	    cancelEffects(true)
+		self.weapon:setStance(self.stances.idle)
+		calculateMasteries() --determine any active Masteries
 	end
     -- **************************
     -- FR and FU values
+	-- FU EFFECTS
+
+	primaryItem = world.entityHandItem(entity.id(), "primary")	--check what they have in hand
+	altItem = world.entityHandItem(entity.id(), "alt")
+	if primaryTagCacheItem~=primaryItem then
+		primaryTagCache=primaryItem and tagsToKeys(fetchTags(root.itemConfig(primaryItem))) or {}
+		primaryTagCacheItem=primaryItem
+	elseif not primaryItem then
+		primaryTagCache={}
+	end
+	if altTagCacheItem~=altItem then
+		altTagCache=altItem and tagsToKeys(fetchTags(root.itemConfig(altItem))) or {}
+		altTagCacheItem=altItem
+	elseif not altItem then
+		altTagCache={}
+	end
+
 	attackSpeedUp = 0 -- base attackSpeed bonus
-    --self.hitsListener = damageListener("inflictedHits", checkDamage)  --listen for damage
-    --self.damageListener = damageListener("inflictedDamage", checkDamage)  --listen for damage
-    --self.killListener = damageListener("Kill", checkDamage)  --listen for kills
 end
 
---[[function calculateMasteries()
-	self.shortswordMastery = 1 + status.stat("shortswordMastery")
-	self.longswordMastery = 1 + status.stat("longswordMastery")
-	self.rapierMastery = 1 + status.stat("rapierMastery")
-	self.katanaMastery = 1 + status.stat("katanaMastery")
-	self.daggerMastery = 1 + status.stat("daggerMastery")
-	self.broadswordMastery = 1 + status.stat("broadswordMastery")
-	self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")
-	self.maceMastery = 1 + status.stat("maceMastery")
-	self.shortspearMastery = 1 + status.stat("shortspearMastery")
+function calculateMasteries()
 	self.hammerMastery = 1 + status.stat("hammerMastery")
 	self.axeMastery = 1 + status.stat("axeMastery")
 	self.spearMastery = 1 + status.stat("spearMastery")
-end]]
---[[
-function checkDamage(notifications)
-
-  for _,notification in pairs(notifications) do
-    --check for individual hits
-    if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
-	    if not status.resourcePositive("health") then --count total kills
-	    	notification.hitType = "Kill"
-	    end
-	    local hitType = notification.hitType
-	    --sb.logInfo(hitType)
-
-        --kill computation
-	    if notification.hitType == "Kill" or notification.hitType == "kill" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
-
-	    end
-
-	    --hit computation
-	    if notification.hitType == "Hit" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
-
-	    end
-      return
-    end
-  end
 end
-]]
+
 
 -- Ticks on every update regardless of whether this is the active ability
 function MeleeSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
+	-- velocity check
+    velocityAdded = mcontroller.xVelocity()
+    if velocityAdded > 0.01 or velocityAdded < 0 then
+        activeHoldDamage = 1
+    else 
+        activeHoldDamage = 0
+    end 
+
 	self.lowEnergy=((status.resource("energy") <= 1) or (status.resourceLocked("energy")))
 
 	status.clearPersistentEffects("meleeEnergyLowPenalty")
-
-
-
 	-- FR
 	setupHelper(self, "meleeslash-fire")
-    --self.hitsListener:update()
-    --self.damageListener:update()
-    --self.killListener:update()
+
+
+	-- *****************************************Passive Weapon Masteries and Item Tag Caching ***************************
+	-- ******************************************************************************************************************
+	-- only apply the following if the character has a Mastery trait. These are ONLY obtained from specific types of gear or loot.
+	-- this section also primes the code for later blocks. all loading of mastery variables should be done here. this is also one of two places where item tag caching occurs.
+	-- this is also a good place to put simple, nonconditional mastery bonuses.
+
+	--cache tag data for use
+	if primaryTagCacheItem~=primaryItem then
+		primaryTagCache=primaryItem and tagsToKeys(fetchTags(root.itemConfig(primaryItem))) or {}
+		primaryTagCacheItem=primaryItem
+	elseif not primaryItem then
+		primaryTagCache={}
+	end
+	if altTagCacheItem~=altItem then
+		altTagCache=altItem and tagsToKeys(fetchTags(root.itemConfig(altItem))) or {}
+		altTagCacheItem=altItem
+	elseif not altItem then
+		altTagCache={}
+	end
+	local hand=activeItem.hand()
+	local masterybonus={}
+
+	if primaryTagCache["axe"] or altTagCache["axe"] or primaryTagCache["greataxe"] or altTagCache["greataxe"] then
+		self.axeMastery = 1 + status.stat("axeMastery")
+		self.axeMasteryHalved = ((self.axeMastery -1) / 2) + 1
+	end	
+	if primaryTagCache["hammer"] or altTagCache["hammer"] then
+		self.hammerMastery = 1 + status.stat("hammerMastery")
+		self.hammerMasteryHalved = ((self.hammerMastery -1) / 2) + 1
+	end	
+	if primaryTagCache["spear"] or altTagCache["spear"] then
+		self.spearMastery = 1 + status.stat("spearMastery")
+		self.spearMasteryHalved = ((self.spearMastery -1) / 2) + 1
+	end	
+
+	if primaryTagCache["spear"] or altTagCache["spear"] then
+		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","spearbonus")
+		status.setPersistentEffects("spearbonus", {
+			{stat = "critChance", amount = 2 * self.spearMastery},
+			{stat = "powerMultiplier", effectiveMultiplier = 1.01 * self.spearMasteryHalved},
+			{stat = "dashtechBonus", amount = 0.08 * self.spearMastery}
+		})
+	end
+	if primaryTagCache["hammer"] or altTagCache["hammer"] then
+		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","hammerbonus")
+		status.setPersistentEffects("hammerbonus", {
+			{stat = "powerMultiplier", effectiveMultiplier = 1.01 * self.hammerMasteryHalved}
+		})
+	end
 
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 	if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) then
@@ -177,7 +211,7 @@ function MeleeSlash:fire()
 			local damageArea = partDamageArea("swoosh")
 			local damageConfigCopy=copy(self.damageConfig)
 			if self.lowEnergy then
-				damageConfigCopy.baseDamage=damageConfigCopy.baseDamage*0.75
+				damageConfigCopy.baseDamage=damageConfigCopy.baseDamage*0.8
 			end
 			self.weapon:setDamage(damageConfigCopy, damageArea, self.fireTime)
 		end
@@ -195,28 +229,59 @@ function MeleeSlash:cooldownTime()
 end
 
 function MeleeSlash:uninit()--this function is almost never called. so persistent status effects based on it are...dodo.
+	cancelEffects(true)
 	self.weapon:setDamage()
-	cancelEffects()
 end
 
 function cancelEffects()
 	status.clearPersistentEffects("meleeEnergyLowPenalty")
-	status.clearPersistentEffects("longswordbonus")
-	status.clearPersistentEffects("macebonus")
-	status.clearPersistentEffects("katanabonus")
-	status.clearPersistentEffects("rapierbonus")
-	status.clearPersistentEffects("shortspearbonus")
-	status.clearPersistentEffects("daggerbonus")
+	status.setPersistentEffects("meleeEnergyLowPenalty",{})
+	status.clearPersistentEffects("spearbonus")
+	status.setPersistentEffects("spearbonus",{})
 	status.clearPersistentEffects("scythebonus")
+	status.setPersistentEffects("scythebonus",{})
     status.clearPersistentEffects("axebonus")
+    status.setPersistentEffects("axebonus",{})
     status.clearPersistentEffects("hammerbonus")
+    status.setPersistentEffects("hammerbonus",{})
 	status.clearPersistentEffects("multiplierbonus")
+	status.setPersistentEffects("multiplierbonus",{})
 	status.clearPersistentEffects("dodgebonus")
+	status.setPersistentEffects("dodgebonus",{})
 	status.clearPersistentEffects("listenerBonus")
+	status.setPersistentEffects("listenerBonus",{})
 	status.clearPersistentEffects("floranFoodPowerBonus")
+	status.setPersistentEffects("floranFoodPowerBonus",{})
 	status.clearPersistentEffects("slashbonusdmg")
+	status.setPersistentEffects("slashbonusdmg",{})
 	status.clearPersistentEffects("masteryBonus")
+	status.setPersistentEffects("masteryBonus",{})
 	self.meleeCountslash = 0
 	self.rapierTimerBonus = 0
 	self.inflictedHitCounter = 0
+end
+
+
+function fetchTags(iConf)
+	if not iConf or not iConf.config then return {} end
+	local tags={}
+	for k,v in pairs(iConf.config or {}) do
+		if string.lower(k)=="itemtags" then
+			tags=util.mergeTable(tags,copy(v))
+		end
+	end
+	for k,v in pairs(iConf.parameters or {}) do
+		if string.lower(k)=="itemtags" then
+			tags=util.mergeTable(tags,copy(v))
+		end
+	end
+	return tags
+end
+
+function tagsToKeys(tags)
+	local buffer={}
+	for _,v in pairs(tags) do
+		buffer[v]=true
+	end
+	return buffer
 end

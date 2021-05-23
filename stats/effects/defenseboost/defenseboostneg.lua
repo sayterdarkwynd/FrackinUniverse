@@ -1,30 +1,35 @@
 function init()
-  animator.setParticleEmitterOffsetRegion("snow", mcontroller.boundBox())
-  animator.setParticleEmitterActive("snow", true)
-  effect.setParentDirectives("fade=6f6f6f=0.55")
-   effect.addStatModifierGroup({
-     {stat = "protection", amount = config.getParameter("defenseAmount", 0)},
-     {stat = "physicalResistance", amount = config.getParameter("resistanceAmount", 0)},
-     {stat = "fireResistance", amount = config.getParameter("resistanceAmount", 0)},
-     {stat = "iceResistance", amount = config.getParameter("resistanceAmount", 0)},
-     {stat = "poisonResistance", amount = config.getParameter("resistanceAmount", 0)},
-     {stat = "electricResistance", amount = config.getParameter("resistanceAmount", 0)},
-     {stat = "radioactiveResistance", amount = config.getParameter("resistanceAmount", 0)},
-     {stat = "shadowResistance", amount = config.getParameter("resistanceAmount", 0)},
-     {stat = "cosmicResistance", amount = config.getParameter("resistanceAmount", 0)}
-   })
-   makeAlert()
-   script.setUpdateDelta(0)
+	animator.setParticleEmitterOffsetRegion("snow", mcontroller.boundBox())
+	animator.setParticleEmitterActive("snow", true)
+	effect.setParentDirectives("fade=6f6f6f=0.55")
+	local rAmt=config.getParameter("resistanceAmount", 0)
+	local dAmt=config.getParameter("defenseAmount", 0)
+	if status.statPositive("specialStatusImmunity") then
+		rAmt=rAmt*0.25
+		dAmt=dAmt*0.25
+	end
+	effect.addStatModifierGroup({
+		{stat = "protection", amount = dAmt},
+		{stat = "physicalResistance", amount = rAmt},
+		{stat = "fireResistance", amount = rAmt},
+		{stat = "iceResistance", amount = rAmt},
+		{stat = "poisonResistance", amount = rAmt},
+		{stat = "electricResistance", amount = rAmt},
+		{stat = "radioactiveResistance", amount = rAmt},
+		{stat = "shadowResistance", amount = rAmt},
+		{stat = "cosmicResistance", amount = rAmt}
+	})
+	makeAlert()
+	script.setUpdateDelta(0)
 end
 
 function makeAlert()
 	if entity.entityType()=="player" then
-	  local statusTextRegion = { 0, 1, 0, 1 }
-	  animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
-	  animator.burstParticleEmitter("statustext")
-    end
+		local statusTextRegion = { 0, 1, 0, 1 }
+		animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)
+		animator.burstParticleEmitter("statustext")
+	end
 end
-
 
 function update(dt)
 

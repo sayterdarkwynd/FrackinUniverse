@@ -9,13 +9,13 @@ function init()
 	self.madnessResearchBonus = 0
 	self.researchBonus = 0
 
-	self.researchCount = player.currency("fuscienceresource") or 0
-	self.protheonCount = player.currency("fuprecursorresource")/10 or 0
+	self.researchCount = player.currency("fuscienceresource")
+	self.protheonCount = player.currency("fuprecursorresource")/10
 	if self.protheonCount > 10 then -- protheon bonus never surpasses 100 in calculations (+10, as we use protheonCount / 10)
 		self.protheonCount = 10
 	end
-	self.madnessCount = player.currency("fumadnessresource") or 0
-	self.geneCount = player.currency("fugeneticmaterial") or 0
+	self.madnessCount = player.currency("fumadnessresource")
+	self.geneCount = player.currency("fugeneticmaterial")
 
 	self.baseVal = config.getParameter("baseValue") or 1
 	self.timerCounter = 0
@@ -64,7 +64,7 @@ function init()
 
 
 	storage.armorSetData=storage.armorSetData or {}
-	message.setHandler("recordFUArmorSetBonus",function(_,_,setName) storage.armorSetData[setName]=os.time() end)
+	message.setHandler("recordFUPersistentEffect",function(_,_,setName) storage.armorSetData[setName]=os.time() end)
 
 	for element,data in pairs(elementalTypes) do
 		if data.resistanceStat then
@@ -93,11 +93,23 @@ function indexOf(t,v1)
 	return index
 end
 
+function forceInts(inTable)
+	if type(inTable)~="table" then return end
+	local buffer={}
+	for k,v in pairs(inTable) do
+		buffer[k]=tonumber(v)
+	end
+	return buffer
+end
+
 function streakCheck(val)
+	val=tonumber(val)
 	if not storage.streakTable then
 		storage.streakTable={}
+		table.insert(storage.streakTable,val)
 		return false
 	end
+	storage.streakTable=forceInts(storage.streakTable)
 	if val <= 0 then
 		return false
 	end
@@ -462,15 +474,9 @@ function update(dt)
 		self.madnessResearchBonus = 0
 		self.researchBonus = 0
 
-		if (world.threatLevel() > 1) then --is the world a higher threat level?
+		if (world.threatLevel() > 1) then --if we are on a biome above tier 1, then we do things
 			if (self.environmentTimer > 300) then -- has at least 5 minutes elapsed? If so, begin applying exploration bonus
-				self.threatBonus = world.threatLevel() / 1.5 -- set the base calculation
-                if (self.threatBonus < 2) then -- make sure its never less than 2 if we are on a biome above tier 1
-					self.threatBonus = 1
-			    end
-				if (self.threatBonus > 6) then -- make sure we never surpass + 6 bonus
-					self.threatBonus = 6
-				end
+				self.threatBonus = util.clamp(world.threatLevel() / 1.5,1,6) -- base calculation: threat / 1.5, then make sure its never less than 1 or greater than 6
 			end
 			if afkLvl<=3 then
 				self.environmentTimer = self.environmentTimer + (dt/(afkLvl+1))
@@ -485,7 +491,7 @@ function update(dt)
 		end
         
         --time based research increases
-        -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK resets it.
+        -- every 30 minutes we increment it by +1. So long as the player is active, this bonus applies. Going AFK pauses it
         checkPassiveTimerBonus()
 	    
 		self.researchBonus = storage.timedResearchBonus + self.threatBonus + self.madnessResearchBonus

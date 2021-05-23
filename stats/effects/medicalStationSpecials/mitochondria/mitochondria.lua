@@ -2,9 +2,9 @@
 require "/stats/effects/medicalStationSpecials/medicalStatusBase.lua"
 
 function init()
-	self.regenInterval = config.getParameter("regenInterval", 0)
+	self.baseRegenInterval=config.getParameter("regenInterval", 0)
+	self.regenInterval = self.baseRegenInterval
 	self.energyToHealth = config.getParameter("energyToHealth", 0)
-
 	baseInit()
 end
 
@@ -19,7 +19,7 @@ function update(dt)
 			status.setResourcePercentage("energyRegenBlock", 1)
 		end
 
-		self.regenInterval = config.getParameter("regenInterval", 0)
+		self.regenInterval = self.baseRegenInterval
 	else
 		self.regenInterval = self.regenInterval - dt
 	end

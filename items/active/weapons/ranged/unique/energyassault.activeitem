@@ -6,7 +6,7 @@
   "rarity" : "common",
   "description" : "One of the most popular energy rifles on the galactic market
 ^yellow;High efficiency^reset;
-^tellow;Counts as 'Energy' for set bonuses^reset;",
+^yellow;Counts as 'Energy' for set bonuses^reset;",
   "shortdescription" : "F4 Energy Rifle",
   "category" : "assaultRifle",
   "level" : 3,
@@ -107,13 +107,41 @@
   "altAbilityType" : "flashlight",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-  
+
 "upgradeParameters" : {
-    "shortdescription" : "^cyan;G7 Energy Rifle^reset; ^yellow;^reset;",
+    "shortdescription" : "^cyan;H41 Energy Rifle^reset; ^yellow;^reset;",
   "description" : "You've gone and made it even better.
 ^yellow;High efficiency^reset;",
   "animationParts" : {
-    "middle" : "energyassault2.png"
+    "middle" : "energyassault1a.png",
+    "middlefullbright" : "energyassault1afullbright.png"
+    },
+    "inventoryIcon" : [
+    { "image" : "energyassault1a.png:" }
+    ],
+    "critChance" : 2,
+    "critBonus" : 5,
+    "primaryAbility" : {
+      "fireTime" : 0.12,
+      "baseDps" : 9.1,
+      "energyUsage" : 33.0,
+      "inaccuracy" : 0.004,
+
+      "projectileType" : "energyassault2",
+      "projectileParameters" : { 
+        "speed" : 80,
+        "knockback" : 3
+      }  
+    }
+  },
+
+"upgradeParameters2" : {
+    "shortdescription" : "^cyan;I77 Energy Rifle^reset; ^yellow;^reset;",
+  "description" : "You've gone and made it even better.
+^yellow;High efficiency^reset;",
+  "animationParts" : {
+    "middle" : "energyassault2.png",
+    "middlefullbright" : "energyassaultfullbright.png"
     },
     "inventoryIcon" : [
     { "image" : "energyassault2.png:" }
@@ -123,7 +151,7 @@
     "primaryAbility" : {
 	    "fireTime" : 0.11,
 	    "baseDps" : 9.25,
-	    "energyUsage" : 32.0,
+	    "energyUsage" : 34.0,
 	    "inaccuracy" : 0.004,
 
 	    "projectileType" : "energyassault2",

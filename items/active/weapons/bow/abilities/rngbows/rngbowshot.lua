@@ -17,7 +17,7 @@ function NebRNGBowShot:init()
 	self.bonusSpeedMult=1/(1+self.bonusSpeed)
 	self.baseDrawTime=self.drawTime
 	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*self.bonusSpeedMult)
-
+    
 	animator.setAnimationState("bow", "idle")
 	self.cooldownTimer = 0
 
@@ -26,6 +26,8 @@ function NebRNGBowShot:init()
 	self.weapon.onLeaveAbility = function()
 		self:reset()
 	end
+
+	self.bowMastery = 1 + status.stat("bowMastery")
 end
 
 function NebRNGBowShot:update(dt, fireMode, shiftHeld)
@@ -202,9 +204,10 @@ function NebRNGBowShot:currentProjectileParameters()
 	--Load the root projectile config based on draw power level
 	local projectileConfig = root.projectileConfig(self:perfectTiming() and self.powerProjectileType or self.projectileType)
 
-	local speedMultiplier = 1.0
+	local speedMultiplier = 1.0 * self.bowMastery
 	if self.minMaxSpeedMultiplier then
 		speedMultiplier = math.random(self.minMaxSpeedMultiplier[1] * 100, self.minMaxSpeedMultiplier[2] * 100) / 100
+		speedMultiplier = speedMultiplier 
 	end
 
 	--Calculate projectile speed based on draw time and projectile parameters
@@ -230,7 +233,8 @@ function NebRNGBowShot:currentProjectileParameters()
 
 	--Bonus damage calculation for quiver users
 	--local damageBonus = 1.0 + status.stat("bowDrawTimeBonus") --adds the bow draw bonus back to damage to keep it on par, otherwise we lose damage
-	local damageBonus = 1.0
+	self.bowMasteryHalved = ((self.bowMastery -1) / 2) + 1
+	local damageBonus = 1.0  
 	if self.useQuiverDamageBonus == true and status.statPositive("nebsrngbowdamagebonus") then
 		damageBonus = damageBonus+status.stat("nebsrngbowdamagebonus")
 	end

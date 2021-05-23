@@ -488,7 +488,7 @@ function upgrade(upgradeItem,target)
 				if matchAny(categoryLower,{"staff","wand"}) then
 					local baseDamageFactor=mergeBuffer.baseDamageFactor or itemConfig.config.baseDamageFactor
 					if baseDamageFactor then
-						mergeBuffer.baseDamageFactor=baseDamageFactor*(1.0+(mergeBuffer.level*0.15))
+						mergeBuffer.baseDamageFactor=baseDamageFactor*(1.0+(mergeBuffer.level*0.075))
 					end
 				end
 
