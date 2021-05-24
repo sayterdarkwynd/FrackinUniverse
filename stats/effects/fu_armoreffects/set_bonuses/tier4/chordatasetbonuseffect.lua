@@ -6,7 +6,7 @@ weaponBonus={
 }
 
 armorEffect={
-	{ stat = "hammerMastery", amount = 0.6 },
+	{ stat = "hammerMastery", amount = 0.4 },
 	{ stat = "breathProtection", amount = 1.0 },
 	{ stat = "insanityImmunity", amount = 1.0 },
 	{ stat = "poisonStatusImmunity", amount = 1.0 }

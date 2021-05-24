@@ -469,7 +469,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 		self.hammerMasteryThirded = ((self.hammerMastery -1) / 3) + 1
 		if self.comboStep > 1 then  -- increased power after first strike
 			status.setPersistentEffects("multiplierbonus", {
-				{stat = "powerMultiplier", effectiveMultiplier = 1 * self.hammerMasteryThirded}
+				{stat = "powerMultiplier", effectiveMultiplier = self.hammerMasteryThirded}
 			})			
 		end		
 		if primaryTagCache["shield"] or altTagCache["shield"] then -- if using a shield
@@ -479,7 +479,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 				{stat = "critDamage", amount = 2 * self.hammerMasteryHalved},
 				{stat = "shieldBash", amount = 3 * self.hammerMastery},
 				{stat = "shieldBashPush", amount = 1},
-				{stat = "protection", effectiveMultiplier = 1.10 * self.hammerMastery}				
+				{stat = "protection", effectiveMultiplier = 1.05 * self.hammerMastery}				
 			})					
 		else -- no shield
 			status.setPersistentEffects("macebonus", {
@@ -492,23 +492,20 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 
 	if primaryTagCache["katana"] or altTagCache["katana"] then
 		self.katanaMasteryHalved = ((self.katanaMastery -1) / 2) + 1
-		
+		self.katanaMasteryThirded = ((self.katanaMastery -1) / 3) + 1
+		self.katanaMasteryQuartered = ((self.katanaMastery -1) / 4) + 1
+		self.katanaMasteryEight = ((self.katanaMastery -1) / 8) + 1
 		if self.comboStep >=1 then -- combos higher than 1 move
 			mcontroller.controlModifiers({speedModifier = 1 + ((self.comboStep / 10) * (1 + self.katanaMastery/48))})
 		end
 		-- holding one katana
 		if (not altItem) or (not primaryItem) then		
-			if self.katanaMastery > 0 then
-				status.setPersistentEffects("katanabonus", {
-					{stat = "defensetechBonus", amount = 0.15 * self.katanaMastery},
-					{stat = "powerMultiplier", effectiveMultiplier = 1 * self.katanaMasteryHalved},
-					{stat = "protection", effectiveMultiplier = 1 * (1 + (self.katanaMastery/10))}
-				})	
-			else
-				status.setPersistentEffects("katanabonus", { 
-					{stat = "defensetechBonus", amount = 0.15 * self.katanaMastery} 
-				})
-			end				
+			status.setPersistentEffects("katanabonus", {
+				{stat = "defensetechBonus", amount = 0.02 * self.katanaMasteryHalved},
+				{stat = "powerMultiplier", effectiveMultiplier = self.katanaMasteryThirded},
+				{stat = "protection", effectiveMultiplier = self.katanaMasteryEight},
+				{stat = "critChance", amount = 2 * self.katanaMastery}
+			})			
 		else
 			-- dual wielding with two long blades
 			if (primaryTagCache["longsword"] or primaryTagCache["katana"] or primaryTagCache["axe"] or primaryTagCache["flail"] or primaryTagCache["shortspear"] or primaryTagCache["mace"]) and
@@ -521,10 +518,11 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 			-- dual wielding with a short blade
 			if primaryTagCache["shortsword"] or altTagCache["shortsword"] or primaryTagCache["dagger"] or altTagCache["dagger"] or primaryTagCache["rapier"] or altTagCache["rapier"] then
 				status.setPersistentEffects("katanabonus", {
-					{stat = "maxEnergy", effectiveMultiplier =	1.15 * self.katanaMastery},
-					{stat = "critDamage", amount = 0.2 * self.katanaMasteryHalved},
-					{stat = "dodgetechBonus", amount = 0.25 * self.katanaMastery},
-					{stat = "dashtechBonus", amount = 0.25  * self.katanaMastery}
+					{stat = "maxEnergy", effectiveMultiplier =	1.02 * self.katanaMasteryThirded},
+					{stat = "critDamage", amount = 0.2 * self.katanaMasteryThirded},
+					{stat = "dodgetechBonus", amount = 0.08 * self.katanaMasteryHalved},
+					{stat = "dashtechBonus", amount = 0.08  * self.katanaMasteryHalved},
+					{stat = "critChance", amount = 2 * self.katanaMasteryHalved} 
 				})
 			end
 		end
