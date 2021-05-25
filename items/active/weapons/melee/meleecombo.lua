@@ -67,8 +67,13 @@ function calculateMasteries() -- doesn't work inside certain functions, such as 
 	self.longswordMastery = 1 + status.stat("longswordMastery")
 	self.rapierMastery = 1 + status.stat("rapierMastery")
 	self.katanaMastery = 1 + status.stat("katanaMastery")
+		self.katanaMasteryHalved = ((self.katanaMastery -1) / 2) + 1
+		self.katanaMasteryThirded = ((self.katanaMastery -1) / 3) + 1
+		self.katanaMasteryQuartered = ((self.katanaMastery -1) / 4) + 1
+		self.katanaMasteryEight = ((self.katanaMastery -1) / 8) + 1	
 	self.broadswordMastery = 1 + status.stat("broadswordMastery")
 	self.daggerMastery = 1 + status.stat("daggerMastery")
+		self.daggerMasteryHalved = ((self.daggerMastery -1) / 2) + 1
 	self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")
 	self.maceMastery = 1 + status.stat("maceMastery")
 	self.hammerMastery = 1 + status.stat("hammerMastery")
@@ -256,9 +261,12 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if primaryTagCache["dagger"] or altTagCache["dagger"] then
 		self.daggerMastery = 1 + status.stat("daggerMastery")
 		self.daggerMasteryHalved = ((self.daggerMastery -1) / 2) + 1
+		self.daggerMasteryQuartered = ((self.daggerMastery-1) / 4) + 1
+
 		table.insert(masterybonus,{stat = "dodgetechBonus", amount = 0.25 * self.daggerMastery})
+
 		if self.comboStep and self.daggerMastery > 1 then
-			table.insert(masterybonus,{stat = "powerMultiplier", effectiveMultiplier = self.daggerMasteryHalved})
+			table.insert(masterybonus,{stat = "powerMultiplier", effectiveMultiplier = self.daggerMasteryQuartered})
 		end
 	end
 
@@ -300,6 +308,33 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	-- ************************************************ END Weapon Masteries ************************************************
 
 	-- ************************************************ Conditional Weapon Bonuses ******************************************
+
+	if  primaryTagCache["dagger"] or altTagCache["dagger"] then
+		if self.comboStep and self.comboStep > 1 then -- during combo
+			self.valueModifier = 1 + (1 / (self.comboStep * 4))
+
+			if (primaryTagCache["dagger"] and altTagCache["melee"]) or (primaryTagCache["melee"] and altTagCache["dagger"]) then
+				status.setPersistentEffects("daggerbonus"..hand, {
+					{stat = "protection", effectiveMultiplier = self.valueModifier * self.daggerMasteryHalved},
+					{stat = "critChance", amount = self.comboStep * self.daggerMastery}
+				})
+				
+			else
+				status.setPersistentEffects("daggerbonus", {
+					{stat = "protection", effectiveMultiplier = self.valueModifier * self.daggerMasteryHalved},
+					{stat = "critChance", amount = self.comboStep * self.daggerMastery}
+				})
+			end
+		elseif self.comboStep == 1 or self.comboStep == 0 or not self.comboStep then
+			status.setPersistentEffects("daggerbonus"..hand, {
+				{stat = "critChance", amount = (self.comboStep or 1) * self.daggerMastery}
+			})
+		end		
+		if (primaryTagCache["dagger"] and altTagCache["melee"]) or (primaryTagCache["melee"] and altTagCache["dagger"]) then
+			status.addEphemeralEffects({{effect = "runboost5", duration = 0.02 * self.daggerMastery}})	
+		end
+	end
+
 	if primaryTagCache["qs"] or altTagCache["qs"] or primaryTagCache["quarterstaff"] or altTagCache["quarterstaff"] then
 		self.quarterstaffMasteryHalved = ((self.quarterstaffMastery -1) / 2) + 1
 		status.setPersistentEffects("quarterstaffbonus", {
@@ -357,33 +392,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 					{stat = "critChance", effectiveMultiplier = 0.5 * self.shortspearMastery}
 				})
 			end
-		end
-	end
-
-	if primaryTagCache["dagger"] or altTagCache["dagger"] then
-		if self.comboStep and self.comboStep > 1 then -- during combo
-			self.valueModifier = 1 + (1 / (self.comboStep * 2))
-			if (primaryTagCache["dagger"] and altTagCache["melee"]) then
-				self.valueModifier=math.min(self.valueModifier,1.125)
-				status.setPersistentEffects("daggerbonus"..hand, {
-					{stat = "protection", effectiveMultiplier = self.valueModifier * self.daggerMastery},
-					{stat = "critChance", amount = self.comboStep * self.daggerMastery}
-				})
-			else
-				self.valueModifier=math.min(self.valueModifier,1.25)
-				status.setPersistentEffects("daggerbonus", {
-					{stat = "protection", effectiveMultiplier = self.valueModifier * self.daggerMastery},
-					{stat = "critChance", amount = self.comboStep * self.daggerMastery}
-				})
-			end
-		elseif self.comboStep == 1 or self.comboStep == 0 or not self.comboStep then
-			status.setPersistentEffects("daggerbonus"..hand, {
-				{stat = "critChance", amount = (self.comboStep or 1) * self.daggerMastery}
-			})
-		end
-		-- dual wielding
-		if (primaryTagCache["dagger"] and altTagCache["melee"]) or (altTagCache["dagger"] and primaryTagCache["melee"]) then
-			status.addEphemeralEffects({{effect = "runboost5", duration = 0.02 * self.daggerMastery}})
 		end
 	end
 
