@@ -3,7 +3,7 @@ setName="fu_diamondset"
 
 weaponBonus={
 	{stat = "katanaMastery", amount = 0.32}
-}   
+}
 armorBonus={
 	{stat = "sulphuricImmunity", amount = 1},
 	{stat = "biooozeImmunity", amount = 1},
