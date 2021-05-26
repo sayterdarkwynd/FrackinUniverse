@@ -8,7 +8,7 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld, moves)
-	if ((mcontroller and mcontroller.zeroG()) or (0==world.gravity(entity.position()))) then
+	if (0==world.gravity(entity.position())) then
 		status.removeEphemeralEffect("pocketanchorstat")
 	else
 		status.addEphemeralEffect("pocketanchorstat", 1)

@@ -131,7 +131,9 @@ function updateShipUpgrades()--reworked, in vanilla the math is atrocious if the
 		end
 	end
 	for property,value in pairs(modifiers) do
+		--sb.logInfo("pre-sort: property %s modifiers %s",property,modifiers)
 		table.sort(value,function(a,b) return b<a end)
+		--sb.logInfo("post-sort: property %s modifiers %s",property,modifiers)
 		local result=0.0
 		for _,v in pairs(value) do
 			local count = appliedCount[property] or 0
@@ -139,9 +141,16 @@ function updateShipUpgrades()--reworked, in vanilla the math is atrocious if the
 			appliedCount[property] = count + 1
 			result=result+v2
 		end
+		--sb.logInfo("property %s result %s",property,result)
 		upgrades[property] = upgrades[property] + result
+		--sb.logInfo("property %s upgrades(property) %s",property,upgrades[property])
 	end
-	player.upgradeShip(upgrades)
+	local dink=status and true or false
+	--sb.logInfo("status exists %s",dink)
+	--sb.logInfo("upgrades: %s",upgrades)
+	--rather than setting the upgrades directly, we set it so that these are set to a status property on the player. this is read by /scripts/quest/shipUpgrades.lua
+	status.setStatusProperty("fu_shipUpgradeStatProperty",upgrades)
+	--player.upgradeShip(upgrades)
 end
 
 function uninit()

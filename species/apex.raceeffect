@@ -1,15 +1,20 @@
 {
 	"stats" : [
-		{ "stat" : "maxFood", "effectiveMultiplier" : 0.80 },
-		{ "stat" : "mentalProtection", "amount" : 0.2 },		
-		{ "stat" : "shadowResistance", "amount" : -0.2 },
-		{ "stat" : "cosmicResistance", "amount" : -0.2 },
-		{ "stat" : "radioactiveResistance", "amount" : -0.15 },		
-		{ "stat" : "iceResistance", "amount" : 0.3 },
-		{ "stat" : "poisonResistance", "amount" : 0.15 },		
-		{ "stat" : "fumudslowImmunity", "amount" : 1 },
+		{ "stat" : "maxHealth", "effectiveMultiplier" : 1.08 },
+		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.06 },
+		{ "stat" : "maxFood", "effectiveMultiplier" : 0.90 },
+        
+		{ "stat" : "physicalResistance", "amount" : 0.04 },
+		{ "stat" : "fireResistance", "amount" : -0.12 },
+		{ "stat" : "iceResistance", "amount" : 0.14 },
+		{ "stat" : "poisonResistance", "amount" : -0.12 },
+		{ "stat" : "electricResistance", "amount" : 0.12 },
+		{ "stat" : "cosmicResistance", "amount" : 0.07 },
+		{ "stat" : "radioactiveResistance", "amount" : -0.05 },
+        
 		{ "stat" : "fujungleslowImmunity", "amount" : 1 },
 		{ "stat" : "jungleslowImmunity", "amount" : 1 },
+		{ "stat" : "fumudslowImmunity", "amount" : 1 },
 		
 		//tech bonuses
 		{ "stat" : "jumptechBonus", "amount" : 0.15 },
@@ -27,30 +32,37 @@
 			"biomes" : [ "jungle", "thickjungle", "forest", "snow", "arboreal", "arborealdark" ],
 			"stats" : [
 				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.1 },
-				{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.15 }
-			]
-		}
-	],
-	"weaponEffects" : [
-		{
-			"combos" : [ [ "mininglaser","mininglaser" ], [ "mininglaser", "not:weapon" ], ["mininglaser"] ],
-			"stats" : [
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.5 }
-			]
-		},
-		{
-			"combos" : [ [ "mininglaser","weapon" ] ],
-			"stats" : [
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.125 }
-			]
-		},
-		{
-			"weapons" : [ "magnorb", "thrown" ],
-			"stats" : [
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.25 },
 				{ "stat" : "protection", "effectiveMultiplier" : 1.15 }
 			]
-		}
+		},
+		{
+			"biomes" : [ "desert", "desertwastes", "desertwastesdark" ],
+			"stats" : [
+				{ "stat" : "maxHealth", "effectiveMultiplier" : 0.85 },
+				{ "stat" : "protection", "effectiveMultiplier" : 0.85 }
+			]
+		}		
+	],
+	"weaponEffects" : [
+		//{
+		//	"combos" : [ [ "mininglaser","mininglaser" ], [ "mininglaser", "not:weapon" ], ["mininglaser"] ],
+		//	"stats" : [
+		//		{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.5 }
+		//	]
+		//},
+		//{
+		//	"combos" : [ [ "mininglaser","weapon" ] ],
+		//	"stats" : [
+		//		{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.125 }
+		//	]
+		//},
+		//{
+		//	"weapons" : [ "magnorb", "thrown" ],
+		//	"stats" : [
+		//		{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.25 },
+		//		{ "stat" : "protection", "effectiveMultiplier" : 1.15 }
+		//	]
+		//}
 	]
 	
 	//Deprecated effect. Apex used to increase damage and defense as their health reduced, and gain energy when it restored
