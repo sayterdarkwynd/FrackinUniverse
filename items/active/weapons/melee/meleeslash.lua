@@ -101,14 +101,14 @@ function MeleeSlash:update(dt, fireMode, shiftHeld)
 		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","spearbonus")
 		status.setPersistentEffects("spearbonus", {
 			{stat = "critChance", amount = 2 * self.spearMastery},
-			{stat = "powerMultiplier", effectiveMultiplier = 1.01 * self.spearMasteryHalved},
+			{stat = "powerMultiplier", effectiveMultiplier = self.spearMasteryHalved},
 			{stat = "dashtechBonus", amount = 0.08 * self.spearMastery}
 		})
 	end
 	if primaryTagCache["hammer"] or altTagCache["hammer"] then
 		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","hammerbonus")
 		status.setPersistentEffects("hammerbonus", {
-			{stat = "powerMultiplier", effectiveMultiplier = 1.01 * self.hammerMasteryHalved}
+			{stat = "powerMultiplier", effectiveMultiplier = self.hammerMasteryHalved}
 		})
 	end
 

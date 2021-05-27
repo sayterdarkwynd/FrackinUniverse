@@ -50,7 +50,7 @@ function MeleeCombo:init()
 	self.hitsListener = damageListener("inflictedHits", checkDamage)	--listen for damage
 	self.damageListener = damageListener("inflictedDamage", checkDamage)	--listen for damage
 	self.killListener = damageListener("Kill", checkDamage)	--listen for kills
-	--self.hitsListener = damageListener("damageTaken", checkDamage)	--listen for kills
+	--self.hitsListener = damageListener("damageTaken", checkDamage)	--listen for damage taken
 	-- **************************************************
 	-- FR EFFECTS
 	-- **************************************************
@@ -110,8 +110,8 @@ function checkDamage(notifications)
 			local noticeEntType=world.entityType(notification.targetEntityId)
 			local listenerbonus={}
 			if string.lower(notification.hitType) == "kill" and ((noticeEntType == "monster") or (noticeEntType == "npc")) and world.entityCanDamage(notification.targetEntityId, entity.id()) then
-				--each consecutive kill in rapid succession increases damage for weapons in this grouping. Per kill. Resets automatically very soon after to prevent abuse.
 
+				--each consecutive kill in rapid succession increases damage for weapons in this grouping. Per kill. Resets automatically very soon after to prevent abuse.
 				if primaryTagCache["longsword"] or altTagCache["longsword"] or primaryTagCache["dagger"] or altTagCache["dagger"] then
 					self.longswordMastery = 1 + status.stat("longswordMastery")
 					self.daggerMastery = 1 + status.stat("daggerMastery")
@@ -233,8 +233,8 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if primaryTagCache["rapier"] or altTagCache["rapier"] then
 		self.rapierMastery = 1 + status.stat("rapierMastery")
 		if self.comboStep and self.rapierMastery > 1 then
-			table.insert(masterybonus,{stat = "dodgetechBonus", amount = (self.rapierMastery-1.0)*0.35})
-			table.insert(masterybonus,{stat = "dashtechBonus", amount = (self.rapierMastery-1.0)*0.35})
+			table.insert(masterybonus,{stat = "dodgetechBonus", amount = 0.35 * self.rapierMastery})
+			table.insert(masterybonus,{stat = "dashtechBonus", amount = 0.35 * self.rapierMastery})
 		end
 	end
 
@@ -273,7 +273,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if primaryTagCache["longsword"] or altTagCache["longsword"] then
 		self.longswordMastery = 1 + status.stat("longswordMastery")
 		self.longswordMasteryHalved = ((self.longswordMastery -1) / 2) + 1
-		table.insert(masterybonus,{stat = "shieldBash", amount = 1.0 + (self.longswordMastery * 5)})
+		table.insert(masterybonus,{stat = "shieldBash", amount = 1.0 + (5 * self.longswordMastery) })
 	end
 
 	if primaryTagCache["broadsword"] or altTagCache["broadsword"] then
