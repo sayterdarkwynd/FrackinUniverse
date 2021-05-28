@@ -1,187 +1,190 @@
 {
-  "type" : "shadowrangedminion",
-  "shortdescription" : "Minion",
-  "description" : "Its movement is determined by temperature levels in the atmosphere.",
+	"type" : "shadowrangedminion",
+	"shortdescription" : "Minion",
+	"description" : "Its movement is determined by temperature levels in the atmosphere.",
 
-  "categories" : [ "shadowrangedminion" ],
-  "parts" : [ "body" ],
+	"categories" : [ "shadowrangedminion" ],
+	"parts" : [ "body" ],
 
-  "animation" : "rangedminion.animation",
+	"animation" : "rangedminion.animation",
 
-  "dropPools" : [ ],
+	"dropPools" : [ ],
 
-  "baseParameters" : {
-    "scripts" : [
-      "/monsters/boss/guardianminion/rangedminion.lua"
-    ],
-    "colorSwap" : { "da5302" : "000000", "fd8f4d" : "444444", "fdd14d" : "111111","634d36" : "111111", "856641" : "222222","a88d62" : "333333", "ded6bf" : "555555", "f6f6f6" : "777777" },
-    "attack" : {
-      "projectileType" : "shadowguardianpellet",
-      "projectileParameters" : {
-        "actionOnReap" : [
-        ]
-      },
-      "fireCount" : 5,
-      "fireInterval" : 0.15,
-      "trackTarget" : true,
-      "burstCount" : 1,
-      "fixedDistance" : false,
-      "fuzzAngle" : 0,
-      "fuzzSpeed" : 0,
-      "fuzzAimPosition" : 0,
-      "cooldown" : 3
-    },
-
-    "touchDamage" : {
-      "poly" : [ [0.75, 0.75], [0.75, -0.75], [-0.75, -0.75], [-0.75, 0.75] ],
-      "damage" : 10,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "hammer",
-      "knockback" : 20,
-      "statusEffects" : [ ]
-    },
-
-    "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 1.0,
-
-    "movementSettings" : {
-      "collisionPoly" : [ [1.5, 0.75], [1.5, -0.75], [1.25, -1.0], [-1.25, -1.0], [-1.5, -0.75], [-1.5, 0.75], [-1.25, 1.0], [1.25, 1.0] ],
-
-      "mass" : 0.5,
-      "walkSpeed" : 4,
-      "runSpeed" : 12,
-      "gravityEnabled" : false,
-
-      "airFriction" : 2,
-      "airForce" : 10,
-      "flySpeed" : 12,
-      "physicsEffectCategories" : ["rangedminion", "monster"]
-    },
-
-    "knockoutTime" : 0.3,
-    "knockoutAnimationStates" : {
-      "damage" : "stunned"
-    },
-    "deathParticles" : "deathPoof",
-    "knockoutEffect" : "",
-
-    "statusSettings" : {
-      "statusProperties" : {
-        "targetMaterialKind" : "stone"
-      },
-
-      "appliesEnvironmentStatusEffects" : false,
-      "appliesWeatherStatusEffects" : true,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
-
-      "primaryScriptSources" : [
-        "/stats/monster_primary.lua"
-      ],
-      "primaryScriptDelta" : 5,
-
-      "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0.25
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 9
-        },
-        "maxHealth" : {
-          "baseValue" : 60
-        },
-        "protection" : {
-          "baseValue" : 0.0
-        },
-        "healthRegen" : {
-          "baseValue" : 0.0
-        },
-        "powerMultiplier" : {
-          "baseValue" : 1.0
-        },
-        "physicalResistance" : {
-          "baseValue" : 0.0
-        },
-        "fireResistance" : {
-          "baseValue" : 0.0
-        },
-        "fireStatusImmunity" : {
-          "baseValue" : 0.0
-        },
-        "iceResistance" : {
-          "baseValue" : 0.0
-        },
-        "iceStatusImmunity" : {
-          "baseValue" : 0.0
-        },
-        "electricResistance" : {
-          "baseValue" : 0.0
-        },
-        "electricStatusImmunity" : {
-          "baseValue" : 0.0
-        },
-        "poisonResistance" : {
-          "baseValue" : 0.5
-        },
-        "poisonStatusImmunity" : {
-          "baseValue" : 1.0
-        },
-        "stunImmunity" : {
-          "baseValue" : 1.0
-        },
-		"shadowResistance": {
-			"baseValue": 1
+	"baseParameters" : {
+		"scripts" : [
+			"/monsters/boss/guardianminion/rangedminion.lua"
+		],
+		"colorSwap" : { "da5302" : "000000", "fd8f4d" : "444444", "fdd14d" : "111111","634d36" : "111111", "856641" : "222222","a88d62" : "333333", "ded6bf" : "555555", "f6f6f6" : "777777" },
+		"attack" : {
+			"projectileType" : "shadowguardianpellet",
+			"projectileParameters" : {
+				"actionOnReap" : [
+				]
+			},
+			"fireCount" : 5,
+			"fireInterval" : 0.15,
+			"trackTarget" : true,
+			"burstCount" : 1,
+			"fixedDistance" : false,
+			"fuzzAngle" : 0,
+			"fuzzSpeed" : 0,
+			"fuzzAimPosition" : 0,
+			"cooldown" : 3
 		},
-		"cosmicResistance": {
-			"baseValue": 0.5
-		},
-		"radioactiveResistance": {
-			"baseValue": 0.25
-		},
-		"bleedingImmunity": {
-			"baseValue": 1
-		},
-		"linerifleStatusImmunity": {
-			"baseValue": 1
-		},
-		"centensianenergyStatusImmunity": {
-			"baseValue": 0.9
-		},
-		"xanafianStatusImmunity": {
-			"baseValue": 1
-		},
-		"akkimariacidStatusImmunity": {
-			"baseValue": 0.25
-		},
-		"bluoplasmaStatusImmunity": {
-			"baseValue": 1
-		},
-		"ucObliteratingBurnImmunity": {
-			"baseValue": 1
-		},
-		"ignoreInvisibilityEffects": {
-			"baseValue": 1
-		} 
-      },
 
-      "resources" : {
-        "stunned" : {
-          "deltaValue" : -1.0,
-          "initialValue" : 0.0
-        },
-        "health" : {
-          "maxStat" : "maxHealth",
-          "deltaStat" : "healthRegen",
-          "defaultPercentage" : 100
-        }
-      }
-    },
+		"touchDamage" : {
+			"poly" : [ [0.75, 0.75], [0.75, -0.75], [-0.75, -0.75], [-0.75, 0.75] ],
+			"damage" : 10,
 
-    "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8],
-    "capturable" : false,
-    "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]//,
-    //"captureCollectables" : { "monsters" : "guardianminion" }
-  }
+			"teamType" : "enemy",
+			"damageSourceKind" : "hammer",
+			"knockback" : 20,
+			"statusEffects" : [ ]
+		},
+
+		"metaBoundBox" : [-4, -4, 4, 4],
+		"scale" : 1.0,
+
+		"movementSettings" : {
+			"collisionPoly" : [ [1.5, 0.75], [1.5, -0.75], [1.25, -1.0], [-1.25, -1.0], [-1.5, -0.75], [-1.5, 0.75], [-1.25, 1.0], [1.25, 1.0] ],
+
+			"mass" : 0.5,
+			"walkSpeed" : 4,
+			"runSpeed" : 12,
+			"gravityEnabled" : false,
+
+			"airFriction" : 2,
+			"airForce" : 10,
+			"flySpeed" : 12,
+			"physicsEffectCategories" : ["rangedminion", "monster"]
+		},
+
+		"knockoutTime" : 0.3,
+		"knockoutAnimationStates" : {
+			"damage" : "stunned"
+		},
+		"deathParticles" : "deathPoof",
+		"knockoutEffect" : "",
+
+		"statusSettings" : {
+			"statusProperties" : {
+				"targetMaterialKind" : "stone"
+			},
+
+			"appliesEnvironmentStatusEffects" : false,
+			"appliesWeatherStatusEffects" : true,
+			"minimumLiquidStatusEffectPercentage" : 0.1,
+
+			"primaryScriptSources" : [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta" : 5,
+
+			"stats" : {
+				"knockbackStunTime" : {
+					"baseValue" : 0.25
+				},
+				"knockbackThreshold" : {
+					"baseValue" : 9
+				},
+				"maxHealth" : {
+					"baseValue" : 60
+				},
+				"protection" : {
+					"baseValue" : 0.0
+				},
+				"healthRegen" : {
+					"baseValue" : 0.0
+				},
+				"powerMultiplier" : {
+					"baseValue" : 1.0
+				},
+				"physicalResistance" : {
+					"baseValue" : 0.0
+				},
+				"fireResistance" : {
+					"baseValue" : 0.0
+				},
+				"fireStatusImmunity" : {
+					"baseValue" : 0.0
+				},
+				"iceResistance" : {
+					"baseValue" : 0.0
+				},
+				"iceStatusImmunity" : {
+					"baseValue" : 0.0
+				},
+				"electricResistance" : {
+					"baseValue" : 0.0
+				},
+				"electricStatusImmunity" : {
+					"baseValue" : 0.0
+				},
+				"poisonResistance" : {
+					"baseValue" : 0.5
+				},
+				"poisonStatusImmunity" : {
+					"baseValue" : 1.0
+				},
+				"stunImmunity" : {
+					"baseValue" : 1.0
+				},
+				"shadowResistance": {
+					"baseValue": 1
+				},
+				"cosmicResistance": {
+					"baseValue": 0.5
+				},
+				"radioactiveResistance": {
+					"baseValue": 0.25
+				},
+				"bleedingImmunity": {
+					"baseValue": 1
+				},
+				"linerifleStatusImmunity": {
+					"baseValue": 1
+				},
+				"centensianenergyStatusImmunity": {
+					"baseValue": 0.9
+				},
+				"xanafianStatusImmunity": {
+					"baseValue": 1
+				},
+				"akkimariacidStatusImmunity": {
+					"baseValue": 0.25
+				},
+				"slagStatusImmunity": {
+					"baseValue": 1
+				},
+				"bluoplasmaStatusImmunity": {
+					"baseValue": 1
+				},
+				"ucObliteratingBurnImmunity": {
+					"baseValue": 1
+				},
+				"ignoreInvisibilityEffects": {
+					"baseValue": 1
+				}
+			},
+
+			"resources" : {
+				"stunned" : {
+					"deltaValue" : -1.0,
+					"initialValue" : 0.0
+				},
+				"health" : {
+					"maxStat" : "maxHealth",
+					"deltaStat" : "healthRegen",
+					"defaultPercentage" : 100
+				}
+			}
+		},
+
+		"mouthOffset" : [0, 0],
+		"feetOffset" : [0, -8],
+		"capturable" : false,
+		"captureHealthFraction" : 0.5,
+		"nametagColor" : [64, 200, 255]//,
+		//"captureCollectables" : { "monsters" : "guardianminion" }
+	}
 }
