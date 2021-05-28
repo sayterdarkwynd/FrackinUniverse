@@ -1,36 +1,34 @@
 {
-  "id" : "create_clothingfabricator3",
-  "prerequisites" : [ "create_clothingfabricator2" ],
-  "title" : "Okay, I kinda get why...",
-  "text" : "I cannot possibly poison-tip the ^cyan;rocket-powered guinea pigs^reset; without a supply of 5 ^orange;Alien Compound^reset;. Perhaps you could get me some? I would (in theory) handsomely reward you!",
-  "completionText" : "Thanks, Dave. Now I can construct a weapon the likes of which nobody has ever seen. Bonus: They're also ^green;delicious^reset;!",
-  "moneyRange" : [1, 2],
-  "rewards" : [ [ [ "crewcontract_hobo", 1 ], [ "roadkillaugment", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_clothingfabricator3",
+	"prerequisites" : [ "create_clothingfabricator2" ],
+	"title" : "Okay, I kinda get why...",
+	"text" : "I cannot possibly poison-tip the ^cyan;rocket-powered guinea pigs^reset; without a supply of 5 ^orange;Alien Compound^reset;. Perhaps you could get me some? I would (in theory) handsomely reward you!",
+	"completionText" : "Thanks, Dave. Now I can construct a weapon the likes of which nobody has ever seen. Bonus: They're also ^green;delicious^reset;!",
+	"moneyRange" : [1, 2],
+	"rewards" : [ [ [ "crewcontract_hobo", 1 ], [ "roadkillaugment", 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
-	"giveBlueprints": ["roadkillaugment"],
+		"requireTurnIn" : true,
+		"giveBlueprints": ["roadkillaugment"],
 
-    "turnInDescription" : "Bring ^red;Kevin, your overlord^reset; 5 ^orange;Alien Compound^reset;",
+		"turnInDescription" : "Bring ^red;Kevin, your overlord^reset; 5 ^orange;Alien Compound^reset;",
 
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "aliencompound",
-        "count" : 5,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "aliencompound",
+				"count" : 5,
+				"consume" : true
+			}
+		]
+	}
 }

@@ -1,41 +1,39 @@
 {
-  "id" : "create_clothingfabricator4",
-  "prerequisites" : [ "create_clothingfabricator3", "precursor_unlock" ],
-  "title" : "He's insane. I like it.",
-  "text" : "Wanna try something ^orange;super fun^reset;? Let's create something previously thought to be ^green;hypotehtical^reset;! Let's try making ^orange;Neutronium^reset; and ^orange;Anti-Neutronium^reset;! I'll give you something ^red;truly amazing^reset; if you can do it! I promise. For real, this time.",
-  "completionText" : "Holy forking shirtballs, you did it. I guess you aren't the dumbass I had assumed. In return, I give you this super-neat technology blueprint I found in the ^orange;Anti-Realm^reset;! No, I won't tell you where that is. You can't know, because you aren't special like ^cyan;Dave^reset;.",
-  "moneyRange" : [1, 2],
-  "rewards" : [ [ [ "wtfisthis", 1 ], [ "fumadnessresource", 5000 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_clothingfabricator4",
+	"prerequisites" : [ "create_clothingfabricator3", "precursor_unlock" ],
+	"title" : "He's insane. I like it.",
+	"text" : "Wanna try something ^orange;super fun^reset;? Let's create something previously thought to be ^green;hypotehtical^reset;! Let's try making ^orange;Neutronium^reset; and ^orange;Anti-Neutronium^reset;! I'll give you something ^red;truly amazing^reset; if you can do it! I promise. For real, this time.",
+	"completionText" : "Holy forking shirtballs, you did it. I guess you aren't the dumbass I had assumed. In return, I give you this super-neat technology blueprint I found in the ^orange;Anti-Realm^reset;! No, I won't tell you where that is. You can't know, because you aren't special like ^cyan;Dave^reset;.",
+	"moneyRange" : [1, 2],
+	"rewards" : [ [ [ "wtfisthis", 1 ], [ "fumadnessresource", 5000 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Bring ^red;Kevin^reset; 1 ^orange;Neutronium and Anti-Neutronium^reset;",
+		"turnInDescription" : "Bring ^red;Kevin^reset; 1 ^orange;Neutronium and Anti-Neutronium^reset;",
 
-
-    "conditions" : [
-       {
-        "type" : "gatherItem",
-        "itemName" : "antineutronium",
-        "count" : 1,
-        "consume" : true
-      },   
-      {
-        "type" : "gatherItem",
-        "itemName" : "neutronium",
-        "count" : 1,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+				{
+				"type" : "gatherItem",
+				"itemName" : "antineutronium",
+				"count" : 1,
+				"consume" : true
+			},		
+			{
+				"type" : "gatherItem",
+				"itemName" : "neutronium",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
 }

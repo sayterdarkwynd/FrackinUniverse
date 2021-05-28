@@ -1,33 +1,32 @@
 {
-  "id" : "create_powdersifter",
-  "prerequisites" : [ "create_solarpanel" ],
-  "title" : "Powdery Power",
-  "text" : "I've heard of ^orange;Powder Sifters^reset; before but have never seen one in action. Build one in a ^orange;Power Station^reset; and bring it to me, and maybe I'll help you out.",
-  "completionText" : "As promised, your reward. May this ^green;cash^reset; serve you well!",
-  "moneyRange" : [2220, 2320],
-  "rewards" : [ ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"id" : "create_powdersifter",
+	"prerequisites" : [ "create_solarpanel" ],
+	"title" : "Powdery Power",
+	"text" : "I've heard of ^orange;Powder Sifters^reset; before but have never seen one in action. Build one in a ^orange;Power Station^reset; and bring it to me, and maybe I'll help you out.",
+	"completionText" : "As promised, your reward. May this ^green;cash^reset; serve you well!",
+	"moneyRange" : [2220, 2320],
+	"rewards" : [ ],
+	"speaker" : "questGiver",
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
-    
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-        "turnInDescription" : "Bring the ^orange;Powder Sifter^reset; to the scientist at the ^orange;Science Outpost^reset;",
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "isn_powdersifter",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : false,	
+		"turnInDescription" : "Bring the ^orange;Powder Sifter^reset; to the scientist at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "isn_powdersifter",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

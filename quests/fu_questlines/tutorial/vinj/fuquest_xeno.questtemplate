@@ -1,28 +1,27 @@
 {
-  "id" : "fuquest_xeno",
-  "title" : "Using the Sprouting Table",
-  "text" : "So you've built a ^orange;Sprouting Table^reset;? Why are you looking so clueless? It's simple: Toss in a ^orange;Potato Seed^reset; and wait about 60 seconds. You'll get a useful ^green;Gene^reset; for your botany research, or other goods",
-  "completionText" : "Constructing a ^orange;Xeno Lab^reset; upon upgrading your ^orange;Machining Table^reset; is a good idea, as they are ^green;much faster^reset;! Effectively every plant seed can be placed within seed labs, and each one will produce ^green;Genes^reset;.",
-  "rewards" : [
-    [ [ "volatilepowder", 3] ]
-  ],
-  "moneyRange" : [10, 10],
+	"id" : "fuquest_xeno",
+	"title" : "Using the Sprouting Table",
+	"text" : "So you've built a ^orange;Sprouting Table^reset;? Why are you looking so clueless? It's simple: Toss in a ^orange;Potato Seed^reset; and wait about 60 seconds. You'll get a useful ^green;Gene^reset; for your botany research, or other goods",
+	"completionText" : "Constructing a ^orange;Xeno Lab^reset; upon upgrading your ^orange;Machining Table^reset; is a good idea, as they are ^green;much faster^reset;! Effectively every plant seed can be placed within seed labs, and each one will produce ^green;Genes^reset;.",
+	"rewards" : [
+		[ [ "volatilepowder", 3] ]
+	],
+	"moneyRange" : [10, 10],
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-    "portraits" : {
-      "default" : "player"
-    },
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "fugeneticmaterial",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+		"requireTurnIn" : false,	
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "fugeneticmaterial",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

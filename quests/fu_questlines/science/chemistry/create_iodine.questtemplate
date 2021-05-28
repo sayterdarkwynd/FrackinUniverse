@@ -1,34 +1,33 @@
 {
-  "id" : "create_iodine",
-  "prerequisites" : [ "create_matterassembler" ],
-  "title" : "Essential Ingredient",
-  "text" : "You'll need to find some ^orange;Caliche Stone^reset; if you want to get ^orange;Iodine^reset;. Throw batches of ^orange;Caliche Stone^reset; into your ^green;extraction lab^reset; and bring me some! You'll find them in ^orange;Desert^reset; biomes.",
-  "completionText" : "Good work! Several basic ingredients such as ^orange;Iodine^reset; are essential. So stay stocked! You'll need ^orange;Iodine^reset; specifically to make ^orange;Graphene^reset; and high quality ^green;fertilizers^reset;!",
-  "moneyRange" : [ 400,640 ],
-  "rewards" : [ [ [ "fu_lootbox" , 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_iodine",
+	"prerequisites" : [ "create_matterassembler" ],
+	"title" : "Essential Ingredient",
+	"text" : "You'll need to find some ^orange;Caliche Stone^reset; if you want to get ^orange;Iodine^reset;. Throw batches of ^orange;Caliche Stone^reset; into your ^green;extraction lab^reset; and bring me some! You'll find them in ^orange;Desert^reset; biomes.",
+	"completionText" : "Good work! Several basic ingredients such as ^orange;Iodine^reset; are essential. So stay stocked! You'll need ^orange;Iodine^reset; specifically to make ^orange;Graphene^reset; and high quality ^green;fertilizers^reset;!",
+	"moneyRange" : [ 400,640 ],
+	"rewards" : [ [ [ "fu_lootbox" , 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,
+		"requireTurnIn" : false,
 
-    "turnInDescription" : "Bring the ^orange;Iodine^reset; to ^green;Bella^reset; at the ^orange;Science Outpost^reset;",
+		"turnInDescription" : "Bring the ^orange;Iodine^reset; to ^green;Bella^reset; at the ^orange;Science Outpost^reset;",
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "iodine",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "iodine",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

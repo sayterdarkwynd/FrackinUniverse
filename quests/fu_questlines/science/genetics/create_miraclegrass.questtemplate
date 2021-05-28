@@ -1,34 +1,33 @@
 {
-  "id" : "create_miraclegrass",
-  "prerequisites" : [ "create_regengene" ],
-  "title" : "Grass of Life",
-  "text" : "I am in need of 3 ^orange;Miracle Grass^reset; seeds to try a new regeneration experiment. You'll find them at your ^orange;Gene Design Lab^reset;. Can you fetch me some?",
-  "completionText" : "Thanks, now I can complete this research project and wow the investors! ^green;I'll send replacement seeds^reset; later.",
-  "moneyRange" : [ 400, 600],
-  "rewards" : [ [ [ "fu_lootbox", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_miraclegrass",
+	"prerequisites" : [ "create_regengene" ],
+	"title" : "Grass of Life",
+	"text" : "I am in need of 3 ^orange;Miracle Grass^reset; seeds to try a new regeneration experiment. You'll find them at your ^orange;Gene Design Lab^reset;. Can you fetch me some?",
+	"completionText" : "Thanks, now I can complete this research project and wow the investors! ^green;I'll send replacement seeds^reset; later.",
+	"moneyRange" : [ 400, 600],
+	"rewards" : [ [ [ "fu_lootbox", 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
+		"requireTurnIn" : false,	
 
-    "turnInDescription" : "Bring the ^orange;Miracle Grass^reset; to the scientist at the ^orange;Science Outpost^reset;",
+		"turnInDescription" : "Bring the ^orange;Miracle Grass^reset; to the scientist at the ^orange;Science Outpost^reset;",
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "miraclegrassseed",
-        "count" : 3,
-        "consume" : false
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "miraclegrassseed",
+				"count" : 3,
+				"consume" : false
+			}
+		]
+	}
 }

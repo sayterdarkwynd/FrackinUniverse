@@ -1,27 +1,27 @@
 {
-  "id" : "khecoinbreadcrumb",
-  "prerequisites" : [ ],
-  "title" : "Shiny Coin",
-  "text" : "You hear a voice from inside the Arc Smelter say 'Ooh, shiny noms! My turn. Come visit. Get recipe!'",
-  "completionText" : "You hear a voice from inside the Arc Smelter say 'Ooh, shiny noms! My turn. Here, have recipe!'",
-  "moneyRange" : [220, 320],
-  "rewards" : [ ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-  		"giveBlueprints": ["miracleambrosia"],
+	"id" : "khecoinbreadcrumb",
+	"prerequisites" : [ ],
+	"title" : "Shiny Coin",
+	"text" : "You hear a voice from inside the Arc Smelter say 'Ooh, shiny noms! My turn. Come visit. Get recipe!'",
+	"completionText" : "You hear a voice from inside the Arc Smelter say 'Ooh, shiny noms! My turn. Here, have recipe!'",
+	"moneyRange" : [220, 320],
+	"rewards" : [ ],
+	"speaker" : "questGiver",
+	"canBeAbandoned" : false,
+	"showAcceptDialog" : false,
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+			"giveBlueprints": ["miracleambrosia"],
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "requireTurnIn" : false,
+		"requireTurnIn" : false,
 
-    "conditions" : [ ],
-    "showTech" : [
-    ]
-  }
+		"conditions" : [ ],
+		"showTech" : []
+	}
 }

@@ -1,33 +1,32 @@
 {
-  "id" : "3hops",
-  "prerequisites" : [ "2brew_d" ],
-  "title" : "I hops",
-  "text" : "For the next steps you'll need some ^orange;Hops^reset;. Make them grow and gather at least 2 ^orange;Hops^reset;. Because without ^orange;hops^reset;, we get no ^green;beer^reset;. And without beer we cry.",
-  "completionText" : "That's a good start. Be sure to keep some wheat as you'll need it next.",
-  "moneyRange" : [120, 220],
-  "rewards" : [ ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"id" : "3hops",
+	"prerequisites" : [ "2brew_d" ],
+	"title" : "I hops",
+	"text" : "For the next steps you'll need some ^orange;Hops^reset;. Make them grow and gather at least 2 ^orange;Hops^reset;. Because without ^orange;hops^reset;, we get no ^green;beer^reset;. And without beer we cry.",
+	"completionText" : "That's a good start. Be sure to keep some wheat as you'll need it next.",
+	"moneyRange" : [120, 220],
+	"rewards" : [ ],
+	"speaker" : "questGiver",
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,
-        "turnInDescription" : "Bring the ^orange;hops^reset; to me at the ^orange;Science Outpost^reset;",
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "hops",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"requireTurnIn" : false,
+		"turnInDescription" : "Bring the ^orange;hops^reset; to me at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "hops",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }
