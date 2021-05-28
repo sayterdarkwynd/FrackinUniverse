@@ -24,6 +24,6 @@ function update(dt)
 		status.removeEphemeralEffect("fuslowfallset")
 	else
 		status.addEphemeralEffect("fuslowfallset")
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 	end
 end

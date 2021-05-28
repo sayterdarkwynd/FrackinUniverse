@@ -27,7 +27,7 @@ function update(dt)
 		effect.expire()
 	else
 		unifiedGravMod.update(dt)
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		checkWeapons()
 	end
 end

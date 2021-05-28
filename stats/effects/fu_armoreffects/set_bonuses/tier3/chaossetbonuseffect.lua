@@ -24,7 +24,7 @@ function update(dt)
 		effect.expire()
 	else
 		mcontroller.controlModifiers({speedModifier = 1.1})
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		checkWeapons()
 		setRegen(0.005)
 	end

@@ -24,7 +24,7 @@ function update(dt)
 		setRegen(0.0)
 		effect.expire()
 	else
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		checkWeapons()
 		status.addEphemeralEffect("glowyellow2")
 		setRegen(0.006)

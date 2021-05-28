@@ -26,7 +26,7 @@ function update(dt)
 		effect.expire()
 	else
 		mcontroller.controlModifiers({airJumpModifier = 1.2})
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		checkWeapons()
 	end
 end

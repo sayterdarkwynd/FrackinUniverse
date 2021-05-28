@@ -26,7 +26,7 @@ function update(dt)
 		status.removeEphemeralEffect("gloworange")
 		effect.expire()
 	else
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		checkWeapons()
 		status.addEphemeralEffect("gloworange")
 		status.addEphemeralEffect("fireburst")

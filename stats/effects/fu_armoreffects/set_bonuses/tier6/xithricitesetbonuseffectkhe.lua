@@ -47,7 +47,7 @@ function update(dt)
 		effect.expire()
 	else
 		checkShell()
-		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
+
 		status.addEphemeralEffect("regeneratingshield_hp-100-10-3")
 		status.addEphemeralEffect("regeneratingshieldindicatordreamer")
 	end
