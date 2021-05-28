@@ -1,28 +1,28 @@
 {
-  "id" : "fuquest_farming2",
-  "title" : "Stab for Noms",
-  "text" : "When you're starving, you have some options. A ^orange;Campfire^reset; cooks your meat. It's fast, but you'll need a ^green;bow^reset;, ^orange;Hunting Spear^reset;, ^orange;Bone Spear^reset; or ^orange;Hunting Rifle^reset; to obtain the meat. Get some and cook it. Then noms.",
-  "completionText" : "You could also take time to craft yourself a ^orange;Hoe^reset; and set to work making a viable farm. It will feed you far more in the long-term without risking death.",
-  "rewards" : [
-    [ [ "mooshiegg", 1 ], [ "leather", 4 ], [ "hive", 9 ] ]
-  ],
-  "moneyRange" : [10, 10],
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-    "portraits" : {
-      "default" : "player"
-    },
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "cookedalienmeat",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+	"id" : "fuquest_farming2",
+	"title" : "Stab for Noms",
+	"text" : "When you're starving, you have some options. A ^orange;Campfire^reset; cooks your meat. It's fast, but you'll need a ^green;bow^reset;, ^orange;Hunting Spear^reset;, ^orange;Bone Spear^reset; or ^orange;Hunting Rifle^reset; to obtain the meat. Get some and cook it. Then noms.",
+	"completionText" : "You could also take time to craft yourself a ^orange;Hoe^reset; and set to work making a viable farm. It will feed you far more in the long-term without risking death.",
+	"rewards" : [
+		[ [ "mooshiegg", 1 ], [ "leather", 4 ], [ "hive", 9 ] ]
+	],
+	"moneyRange" : [10, 10],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,	
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "cookedalienmeat",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

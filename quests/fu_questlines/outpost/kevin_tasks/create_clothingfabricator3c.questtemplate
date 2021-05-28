@@ -1,35 +1,33 @@
 {
-  "id" : "create_clothingfabricator3c",
-  "prerequisites" : [ "create_clothingfabricator3b" ],
-  "title" : "This guy is annoying.",
-  "text" : "There is no such thing as an orange fruit. Prove me wrong.",
-  "completionText" : "That isn't orange. But thanks for trying, loser.",
-  "moneyRange" : [10, 20],
-  "rewards" : [ [ [ "fumadnessresource", 10 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_clothingfabricator3c",
+	"prerequisites" : [ "create_clothingfabricator3b" ],
+	"title" : "This guy is annoying.",
+	"text" : "There is no such thing as an orange fruit. Prove me wrong.",
+	"completionText" : "That isn't orange. But thanks for trying, loser.",
+	"moneyRange" : [10, 20],
+	"rewards" : [ [ [ "fumadnessresource", 10 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Bring ^red;Kevin^reset; 1 ^orange;orange fruit^reset;.",
+		"turnInDescription" : "Bring ^red;Kevin^reset; 1 ^orange;orange fruit^reset;.",
 
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "orange",
-        "count" : 1,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "orange",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
 }
