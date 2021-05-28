@@ -1,33 +1,32 @@
 {
-  "id" : "create_blastfurnace",
-  "prerequisites" : [ "create_advxeno" ],
-  "title" : "Smelting Champion",
-  "text" : "If you can build a ^orange;Blast Furnace^reset; with a ^orange;Power Station^reset; and bring it here, so I can analyze it, I would prove most grateful and perhaps reward you.",
-  "completionText" : "Fantastic work! Truly amazing. Thank you for the help. As thanks, here's payment for your troubles.",
-  "moneyRange" : [1220, 2320],
-  "rewards" : [ ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"id" : "create_blastfurnace",
+	"prerequisites" : [ "create_advxeno" ],
+	"title" : "Smelting Champion",
+	"text" : "If you can build a ^orange;Blast Furnace^reset; with a ^orange;Power Station^reset; and bring it here, so I can analyze it, I would prove most grateful and perhaps reward you.",
+	"completionText" : "Fantastic work! Truly amazing. Thank you for the help. As thanks, here's payment for your troubles.",
+	"moneyRange" : [1220, 2320],
+	"rewards" : [ ],
+	"speaker" : "questGiver",
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
-    
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-        "turnInDescription" : "Bring the ^orange;Blast Furnace^reset; to the scientist at the ^orange;Science Outpost^reset;",
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "fu_blastfurnace",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : false,	
+		"turnInDescription" : "Bring the ^orange;Blast Furnace^reset; to the scientist at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "fu_blastfurnace",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

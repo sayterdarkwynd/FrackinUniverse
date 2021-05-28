@@ -1,33 +1,33 @@
 {
-  "id" : "create_methanol",
-  "prerequisites" : [ "create_extractor" ],
-  "title" : "A Useful Alcohol",
-  "text" : "I could use some ^orange;Methanol^reset; but don't have the materials handy. Bring me 10 ^orange;Methanol^reset; and I'll toss you something useful in return. Not a grenade. Promise.",
-  "completionText" : "Excellent. This will be quite useful, and goes quite appreciated. Take ^green;this augment^reset;, perhaps you can get more use out of it than I ever could.",
-  "moneyRange" : [120, 220],
-  "rewards" : [ [ [ "fubreathaugment1", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_methanol",
+	"prerequisites" : [ "create_extractor" ],
+	"title" : "A Useful Alcohol",
+	"text" : "I could use some ^orange;Methanol^reset; but don't have the materials handy. Bring me 10 ^orange;Methanol^reset; and I'll toss you something useful in return. Not a grenade. Promise.",
+	"completionText" : "Excellent. This will be quite useful, and goes quite appreciated. Take ^green;this augment^reset;, perhaps you can get more use out of it than I ever could.",
+	"moneyRange" : [120, 220],
+	"rewards" : [ [ [ "fubreathaugment1", 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
 		"giveBlueprints": ["fubreathaugment1"],
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
-	"turnInDescription" : "Bring the 10 ^orange;Methanol^reset; to the green-tailed cat at the ^orange;Science Outpost^reset;",
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "methanol",
-        "count" : 10,
-        "consume" : true
-      }
-    ]
-  }
+
+		"requireTurnIn" : true,
+		"turnInDescription" : "Bring the 10 ^orange;Methanol^reset; to the green-tailed cat at the ^orange;Science Outpost^reset;",
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "methanol",
+				"count" : 10,
+				"consume" : true
+			}
+		]
+	}
 }

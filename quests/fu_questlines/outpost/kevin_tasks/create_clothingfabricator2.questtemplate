@@ -1,35 +1,33 @@
 {
-  "id" : "create_clothingfabricator2",
-  "prerequisites" : [ "create_clothingfabricator" ],
-  "title" : "I just don't know...",
-  "text" : "5 ^orange;Biofuel Canisters^reset; would be all that I needed to create a ^cyan;rocket-powered guinea pig^reset;. With some ^orange;Algae^reset; found in a ^orange;Bog^reset; biome you'd have no problem making some. I promise to ^red;not^reset; reward you with deadly bees this time!",
-  "completionText" : "Thanks. You look like you could use some ^orange;party time^reset;! It's dangerous to go alone! Take ^green;this^reset;! Also, if you feel up to it and want to die, I could use help testing my newest invention. It's called a ^orange;Kill Pod^reset; and it's super neat!",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "killpod", 1 ], [ "crewcontract_plur", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_clothingfabricator2",
+	"prerequisites" : [ "create_clothingfabricator" ],
+	"title" : "I just don't know...",
+	"text" : "5 ^orange;Biofuel Canisters^reset; would be all that I needed to create a ^cyan;rocket-powered guinea pig^reset;. With some ^orange;Algae^reset; found in a ^orange;Bog^reset; biome you'd have no problem making some. I promise to ^red;not^reset; reward you with deadly bees this time!",
+	"completionText" : "Thanks. You look like you could use some ^orange;party time^reset;! It's dangerous to go alone! Take ^green;this^reset;! Also, if you feel up to it and want to die, I could use help testing my newest invention. It's called a ^orange;Kill Pod^reset; and it's super neat!",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "killpod", 1 ], [ "crewcontract_plur", 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Bring the Glorious ^red;Kevin^reset; 5 ^orange;Biofuel Canisters^reset;",
+		"turnInDescription" : "Bring the Glorious ^red;Kevin^reset; 5 ^orange;Biofuel Canisters^reset;",
 
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "biofuelcannister",
-        "count" : 5,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "biofuelcannister",
+				"count" : 5,
+				"consume" : true
+			}
+		]
+	}
 }

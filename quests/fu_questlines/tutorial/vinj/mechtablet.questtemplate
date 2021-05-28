@@ -1,28 +1,27 @@
 {
-  "id" : "mechtabletquest",
-  "title" : "The Mech Tablet",
-  "text" : "^orange;Mechs^reset; are powerful machines that can really make your life easier! To make the most out of one, you need a ^orange;Mech Tablet^reset;. Try your new ^orange;Mech Tablet^reset; out now! Primary fire activates the configuration screen, and with the secondary fire you can set your mechs fuel!",
-  "completionText" : "^orange;Mechs^reset; are powerful machines that can really make your life easier! To make the most out of one, you need a ^orange;Mech Tablet^reset;. Try your new ^orange;Mech Tablet^reset; out now! Primary fire activates the configuration screen, and with the secondary fire you can set your mechs fuel!",
-  "rewards" : [
-    [ [ "fuscienceresource", 10] ]
-  ],
-  "moneyRange" : [1, 2],
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-    "portraits" : {
-      "default" : "player"
-    },
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "mechtablet",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+	"id" : "mechtabletquest",
+	"title" : "The Mech Tablet",
+	"text" : "^orange;Mechs^reset; are powerful machines that can really make your life easier! To make the most out of one, you need a ^orange;Mech Tablet^reset;. Try your new ^orange;Mech Tablet^reset; out now! Primary fire activates the configuration screen, and with the secondary fire you can set your mechs fuel!",
+	"completionText" : "^orange;Mechs^reset; are powerful machines that can really make your life easier! To make the most out of one, you need a ^orange;Mech Tablet^reset;. Try your new ^orange;Mech Tablet^reset; out now! Primary fire activates the configuration screen, and with the secondary fire you can set your mechs fuel!",
+	"rewards" : [
+		[ [ "fuscienceresource", 10] ]
+	],
+	"moneyRange" : [1, 2],
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+		"requireTurnIn" : false,	
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "mechtablet",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }
