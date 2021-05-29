@@ -7,7 +7,7 @@ function tagCaching.update(dt)
 	local primaryItem = world.entityHandItem(entity.id(), "primary") --check what they have in hand
 	local altItem = world.entityHandItem(entity.id(), "alt")
 	local doMerge=false
-	if tagCachingprimaryTagCacheItem~=primaryItem then
+	if tagCaching.primaryTagCacheItem~=primaryItem then
 		tagCaching.primaryTagCache=primaryItem and tagCaching.tagsToKeys(tagCaching.fetchTags(root.itemConfig(primaryItem))) or {}
 		tagCaching.primaryTagCacheItem=primaryItem
 		doMerge=true
