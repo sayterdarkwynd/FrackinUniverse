@@ -53,7 +53,8 @@ end
 function tagCaching.tagsToKeys(tags)
     local buffer={}
     for _,v in pairs(tags) do
-        buffer[v]=true
+        --buffer[v]=true
+        buffer[v:lower()]=true
     end
     return buffer
 end
