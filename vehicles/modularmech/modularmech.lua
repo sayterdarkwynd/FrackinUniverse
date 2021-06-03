@@ -1167,7 +1167,7 @@ function update(dt)
 		end
 
 		animator.resetTransformationGroup("hips")
-		local hipsOffset = math.max(-0.375, math.min(0, math.min(legs.front.offset[2] + 0.25, legs.back.offset[2] + 0.25))) + (self.crouch * self.hipCrouchMax)
+		local hipsOffset = math.max(-0.375, math.min(0, legs.front.offset[2] + 0.25, legs.back.offset[2] + 0.25)) + (self.crouch * self.hipCrouchMax)
 		animator.translateTransformationGroup("hips", {0, hipsOffset})
 	end
 

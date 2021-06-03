@@ -1789,19 +1789,19 @@ function invest()
 end
 
 function investMax()
-	objectData.specialsTable.investing = math.min(math.min(objectData.specialsTable.investRequired - objectData.specialsTable.invested, 99999), player.currency("money"))
+	objectData.specialsTable.investing = math.min(objectData.specialsTable.investRequired - objectData.specialsTable.invested, 99999, player.currency("money"))
 	widget.setText("investAmount", objectData.specialsTable.investing)
 end
 
 function investAmount(wd)
 	local value = tonumber(widget.getText(wd))
-	local max = objectData.specialsTable.investRequired - objectData.specialsTable.invested
+	local maxValue = objectData.specialsTable.investRequired - objectData.specialsTable.invested
 
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
 		widget.setText(wd, "")
 	else
 		if value then
-			value = math.min(math.min(math.floor(value), max), player.currency("money"))
+			value = math.min(math.floor(value), maxValue, player.currency("money"))
 			if value == 0 then
 				widget.setText(wd, "")
 				objectData.specialsTable.investing = 0
