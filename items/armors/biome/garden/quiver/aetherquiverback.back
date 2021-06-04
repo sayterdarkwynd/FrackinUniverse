@@ -1,41 +1,33 @@
 {
-  "itemName" : "quiverback2",
-  "price" : 400,
+  "itemName" : "aetherquiverback",
+  "price" : 3450,
   "inventoryIcon" : "icon.png",
-  "rarity" : "uncommon",
-  "shortdescription" : "Quality Quiver",
-  "description": "+^green;15^reset;% Damage (Bows)
-+^green;15^reset;% Draw Speed (Bows)
-+^green;4^reset;% Airborne Damage (Bows)
--^green;3^reset; Energy Per Shot (Bows)",
+  "rarity" : "legendary",
+  "shortdescription" : "Aether Quiver",
+  "description": "+^green;30^reset;% Damage (Bows)
++^green;70^reset;% Draw Speed (Bows)
++^red;10^reset; Energy Per Shot (Bows)", 
   "category" : "enviroProtectionPack",
   "tooltipKind" : "baseaugment",
   "acceptsAugmentType" : "back",
-
   "maleFrames" : "back.png",
   "femaleFrames" : "back.png",
   "maxStack" : 1,
-  
+
   "statusEffects" : [
     {
+      "stat" : "bowEnergyPenalty",
+      "amount" : 10
+    },     
+    {
       "stat" : "bowDrawTimeBonus",
-      "amount" : 0.15
-    },  
-    {
-      "stat" : "nebsrngbowdamagebonus",
-      "amount" : 0.15
-    },
-    {
-      "stat" : "bowAirBonus",
-      "amount" : 0.04
-    },
-    {
-      "stat" : "bowEnergyBonus",
-      "amount" : 3
-    }       
+      "amount" : 0.7
+    }     
   ],
   
   "colorOptions" : [
+    // PURPLE
+    { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },  
     // RED
     { "ffca8a" : "f4988c", "e0975c" : "d93a3a", "a85636" : "932625", "6f2919" : "601119" },
     // BLACK
@@ -54,8 +46,6 @@
     { "ffca8a" : "b2e89d", "e0975c" : "51bd3b", "a85636" : "247824", "6f2919" : "144216" },
     // BLUE
     { "ffca8a" : "96cbe7", "e0975c" : "5588d4", "a85636" : "344495", "6f2919" : "1a1c51" },
-    // PURPLE
-    { "ffca8a" : "d29ce7", "e0975c" : "a451c4", "a85636" : "6a2284", "6f2919" : "320c40" },
     // PINK
     { "ffca8a" : "eab3db", "e0975c" : "d35eae", "a85636" : "97276d", "6f2919" : "59163f" },
     // BROWN
