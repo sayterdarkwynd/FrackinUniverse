@@ -18,6 +18,12 @@ function CrystalStorm:init()
 		self:reset()
 	end
 	self.castposition = nil
+  
+  --mastery
+  self.staffMastery = 1 + status.stat("staffMastery")
+  self.wandMastery = 1 + status.stat("wandMastery")
+  self.magicMastery = 1 + status.stat("magicMastery")
+  self.chargeTimerBonus = status.stat("chargeTimerBonus")  	
 end
 
 function CrystalStorm:update(dt, fireMode, shiftHeld)
@@ -33,6 +39,9 @@ function CrystalStorm:update(dt, fireMode, shiftHeld)
 
 		self:setState(self.charge)
 	end
+
+    --mastery
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 function CrystalStorm:charge()
@@ -47,6 +56,13 @@ function CrystalStorm:charge()
 	activeItem.setCursor("/cursors/charge2.cursor")
 
 	local chargeTimer = self.stances.charge.duration
+
+    -- Wand/Staff Charge Bonus
+    if self.chargeTimerBonus > 0 then
+        chargeTimer = self.stances.charge.duration - self.chargeTimerBonus  
+        --sb.logInfo("edited duration : "..chargeTimer)  
+    end
+    	
 	while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
 		chargeTimer = chargeTimer - self.dt
 

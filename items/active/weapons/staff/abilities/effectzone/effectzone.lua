@@ -1,32 +1,27 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
-TargetedBlink = WeaponAbility:new()
+EffectZone = WeaponAbility:new()
 
-function TargetedBlink:init()
-  --storage.projectiles = storage.projectiles or {}
-
+function EffectZone:init()
   self.elementalType = self.elementalType or self.weapon.elementalType
 
-  self.stances = config.getParameter("stances")
-
   activeItem.setCursor("/cursors/reticle0.cursor")
+
+  self.stances = config.getParameter("stances")
   self.weapon:setStance(self.stances.idle)
 
   self.weapon.onLeaveAbility = function()
     self:reset()
   end
-  
-  --mastery
-  self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0 
 end
 
-function TargetedBlink:update(dt, fireMode, shiftHeld)
+function EffectZone:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
-  --self:updateProjectiles()
-
-  world.debugPoint(self:focusPosition(), "blue")
+  if storage.projectileId and not world.entityExists(storage.projectileId) then
+    storage.projectileId = nil
+  end
 
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
@@ -36,7 +31,7 @@ function TargetedBlink:update(dt, fireMode, shiftHeld)
   end
 end
 
-function TargetedBlink:charge()
+function EffectZone:charge()
   self.weapon:setStance(self.stances.charge)
 
   animator.playSound(self.elementalType.."charge")
@@ -45,13 +40,6 @@ function TargetedBlink:charge()
   activeItem.setCursor("/cursors/charge2.cursor")
 
   local chargeTimer = self.stances.charge.duration
-
-  -- Wand/Staff Charge Bonus
-  if self.chargeTimerBonus > 0 then
-      chargeTimer = self.stances.charge.duration - self.chargeTimerBonus  
-      --sb.logInfo("edited duration : "..chargeTimer)  
-  end
-    
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     chargeTimer = chargeTimer - self.dt
 
@@ -70,7 +58,7 @@ function TargetedBlink:charge()
   end
 end
 
-function TargetedBlink:charged()
+function EffectZone:charged()
   self.weapon:setStance(self.stances.charged)
 
   animator.playSound(self.elementalType.."fullcharge")
@@ -87,17 +75,19 @@ function TargetedBlink:charged()
     coroutine.yield()
   end
 
+  animator.stopAllSounds(self.elementalType.."chargedloop")
+
   self:setState(self.discharge)
 end
 
-function TargetedBlink:discharge()
+function EffectZone:discharge()
   self.weapon:setStance(self.stances.discharge)
 
   activeItem.setCursor("/cursors/reticle0.cursor")
 
   if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", self.energyCost) then
-    animator.playSound(self.elementalType.."activate")
-    self:blink()
+    animator.playSound("zoneactivate")
+    self:createProjectile()
   else
     animator.playSound(self.elementalType.."discharge")
     self:setState(self.cooldown)
@@ -105,18 +95,14 @@ function TargetedBlink:discharge()
   end
 
   util.wait(self.stances.discharge.duration, function(dt)
-    status.setResourcePercentage("energyRegenBlock", 1.0)
-  end)
 
-  animator.playSound(self.elementalType.."discharge")
-  animator.stopAllSounds(self.elementalType.."chargedloop")
+  end)
 
   self:setState(self.cooldown)
 end
 
-function TargetedBlink:cooldown()
+function EffectZone:cooldown()
   self.weapon:setStance(self.stances.cooldown)
-  self.weapon.aimAngle = 0
 
   animator.setAnimationState("charge", "discharge")
   animator.setParticleEmitterActive(self.elementalType .. "charge", false)
@@ -127,48 +113,45 @@ function TargetedBlink:cooldown()
   end)
 end
 
-function TargetedBlink:targetValid(aimPos)
+function EffectZone:targetValid(aimPos)
   local focusPos = self:focusPosition()
   return world.magnitude(focusPos, aimPos) <= self.maxCastRange
-      --and not world.lineTileCollision(mcontroller.position(), focusPos)
-      --and not world.lineTileCollision(focusPos, aimPos)
+      and not world.lineTileCollision(mcontroller.position(), focusPos)
+      and not world.lineTileCollision(focusPos, aimPos)
 end
 
-function TargetedBlink:focusPosition()
+function EffectZone:createProjectile()
+  if storage.projectileId then
+    world.sendEntityMessage(storage.projectileId, "kill")
+  end
+
+  local pParams = copy(self.projectileParameters)
+  pParams.power = (pParams.baseDamage or 0) * config.getParameter("damageLevelMultiplier")
+  pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+
+  storage.projectileId = world.spawnProjectile(
+      self.projectileType,
+      activeItem.ownerAimPosition(),
+      activeItem.ownerEntityId(),
+      {0, 0},
+      false,
+      pParams
+    )
+end
+
+function EffectZone:focusPosition()
   return vec2.add(mcontroller.position(), activeItem.handPosition(animator.partPoint("stone", "focalPoint")))
 end
 
-function TargetedBlink:reset()
+function EffectZone:reset()
   self.weapon:setStance(self.stances.idle)
   animator.stopAllSounds(self.elementalType.."chargedloop")
   animator.stopAllSounds(self.elementalType.."fullcharge")
   animator.setAnimationState("charge", "idle")
   animator.setParticleEmitterActive(self.elementalType .. "charge", false)
   activeItem.setCursor("/cursors/reticle0.cursor")
-  status.clearPersistentEffects("weaponMovementAbility")
-  animator.setGlobalTag("directives", "")
 end
 
-function TargetedBlink:uninit()
+function EffectZone:uninit(weaponUninit)
   self:reset()
-end
-
-function TargetedBlink:blink()
-  local blinkPosition = self.findBlinkPosition()
-  status.setPersistentEffects("weaponMovementAbility", {{stat = "activeMovementAbilities", amount = 1}})
-  status.addEphemeralEffect("blinkout")
-  util.wait(0.25)
-  status.removeEphemeralEffect("blinkout")
-  status.addEphemeralEffect("blinkin")
-  util.wait(0.25)
-  status.removeEphemeralEffect("blinkin")
-  mcontroller.setPosition(blinkPosition)
-end
-
-function TargetedBlink:findBlinkPosition()
-  local searchposition = activeItem.ownerAimPosition()
-  local groundPosition = findGroundPosition(searchPosition, -self.blinkYTolerance, self.blinkYTolerance, false, {"Null", "Block", "Dynamic", "Platform"})
-  if groundPosition then
-    return groundPosition
-  end
 end

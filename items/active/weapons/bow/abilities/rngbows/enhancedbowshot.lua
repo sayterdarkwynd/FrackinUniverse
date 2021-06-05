@@ -13,11 +13,6 @@ function NebBowShot:init()
 	self.bonusSpeedMult=1/(1+self.bonusSpeed)
 	self.baseDrawTime=self.drawTime
 	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*self.bonusSpeedMult)
-
-	sb.logInfo("stat draw bonus : "..status.stat("bowDrawTimeBonus"))
-	sb.logInfo("bonus speed : "..self.bonusSpeed)
-    sb.logInfo("total : "..self.modifiedDrawTime)
-    
 	animator.setGlobalTag("drawFrame", "0")
 	animator.setAnimationState("bow", "idle")
 	self.cooldownTimer = 0

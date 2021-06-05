@@ -1,9 +1,9 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
-StormProjectile = WeaponAbility:new()
+ControlProjectile = WeaponAbility:new()
 
-function StormProjectile:init()
+function ControlProjectile:init()
   storage.projectiles = storage.projectiles or {}
 
   self.elementalType = self.elementalType or self.weapon.elementalType
@@ -17,12 +17,12 @@ function StormProjectile:init()
   self.weapon.onLeaveAbility = function()
     self:reset()
   end
-  
+
   --mastery
-  self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0    
+  self.chargeTimerBonus = status.stat("chargeTimerBonus")
 end
 
-function StormProjectile:update(dt, fireMode, shiftHeld)
+function ControlProjectile:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
   self:updateProjectiles()
@@ -32,22 +32,21 @@ function StormProjectile:update(dt, fireMode, shiftHeld)
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
     and not status.resourceLocked("energy") then
-
     self:setState(self.charge)
   end
+
 end
 
-function StormProjectile:charge()
+function ControlProjectile:charge()
   self.weapon:setStance(self.stances.charge)
-
   animator.playSound(self.elementalType.."charge")
   animator.setAnimationState("charge", "charge")
   animator.setParticleEmitterActive(self.elementalType .. "charge", true)
   activeItem.setCursor("/cursors/charge2.cursor")
+  
 
   local chargeTimer = self.stances.charge.duration
 
-  -- Wand/Staff Charge Bonus
   if self.chargeTimerBonus > 0 then
       chargeTimer = self.stances.charge.duration - self.chargeTimerBonus  
       --sb.logInfo("edited duration : "..chargeTimer)  
@@ -55,9 +54,7 @@ function StormProjectile:charge()
 
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     chargeTimer = chargeTimer - self.dt
-
     mcontroller.controlModifiers({runningSuppressed=true})
-
     coroutine.yield()
   end
 
@@ -71,7 +68,7 @@ function StormProjectile:charge()
   end
 end
 
-function StormProjectile:charged()
+function ControlProjectile:charged()
   self.weapon:setStance(self.stances.charged)
 
   animator.playSound(self.elementalType.."fullcharge")
@@ -91,7 +88,7 @@ function StormProjectile:charged()
   self:setState(self.discharge)
 end
 
-function StormProjectile:discharge()
+function ControlProjectile:discharge()
   self.weapon:setStance(self.stances.discharge)
 
   activeItem.setCursor("/cursors/reticle0.cursor")
@@ -125,7 +122,7 @@ function StormProjectile:discharge()
   self:setState(self.cooldown)
 end
 
-function StormProjectile:cooldown()
+function ControlProjectile:cooldown()
   self.weapon:setStance(self.stances.cooldown)
   self.weapon.aimAngle = 0
 
@@ -138,14 +135,14 @@ function StormProjectile:cooldown()
   end)
 end
 
-function StormProjectile:targetValid(aimPos)
+function ControlProjectile:targetValid(aimPos)
   local focusPos = self:focusPosition()
   return world.magnitude(focusPos, aimPos) <= self.maxCastRange
       and not world.lineTileCollision(mcontroller.position(), focusPos)
       and not world.lineTileCollision(focusPos, aimPos)
 end
 
-function StormProjectile:createProjectiles()
+function ControlProjectile:createProjectiles()
   local aimPosition = activeItem.ownerAimPosition()
   local fireDirection = world.distance(aimPosition, self:focusPosition())[1] > 0 and 1 or -1
   local pOffset = {fireDirection * (self.projectileDistance or 0), 0}
@@ -156,44 +153,6 @@ function StormProjectile:createProjectiles()
   local pParams = copy(self.projectileParameters)
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
-  local projectileType=self.projectileType:gsub("spawner","storm2")
-
-  pParams.timedActions={
-	{
-      delayTime = 0.5,
-      loopTime = 0.3,
-      loopTimeVariance = 0.05,
-      action = "projectile",
-      type = projectileType,
-      config = {power=pParams.power*0.1},
-      inheritDamageFactor = 0.0,
-      direction = {0, -1},
-      offset = {30, 30}
-    },
-    {
-      delayTime = 0.5,
-      loopTime = 0.5,
-      loopTimeVariance = 0.05,
-      action = "projectile",
-      type = projectileType,
-      config = {power=pParams.power*0.1},
-      inheritDamageFactor = 0.0,
-      direction = {0, -1},
-      offset = {30, 30}
-    },
-    {
-      delayTime = 0.5,
-      loopTime = 0.7,
-      loopTimeVariance = 0.05,
-      action = "projectile",
-      type = projectileType,
-      config = {power=pParams.power*0.1},
-      inheritDamageFactor = 0.0,
-      direction = {0, -1},
-      offset = {30, 30}
-    }
-  }
-  pParams.power=0
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(
@@ -207,26 +166,25 @@ function StormProjectile:createProjectiles()
 
     if projectileId then
       table.insert(storage.projectiles, projectileId)
-      world.sendEntityMessage(projectileId, "updateProjectile", aimPosition, fireDirection)
+      world.sendEntityMessage(projectileId, "updateProjectile", aimPosition)
     end
 
     pOffset = vec2.rotate(pOffset, (2 * math.pi) / pCount)
   end
 end
 
-function StormProjectile:focusPosition()
+function ControlProjectile:focusPosition()
   return vec2.add(mcontroller.position(), activeItem.handPosition(animator.partPoint("stone", "focalPoint")))
 end
 
 -- give all projectiles a new aim position and let those projectiles return one or
 -- more entity ids for projectiles we should now be tracking
-function StormProjectile:updateProjectiles()
+function ControlProjectile:updateProjectiles()
   local aimPosition = activeItem.ownerAimPosition()
-  local fireDirection = world.distance(aimPosition, self:focusPosition())[1] > 0 and 1 or -1
   local newProjectiles = {}
   for _, projectileId in pairs(storage.projectiles) do
     if world.entityExists(projectileId) then
-      local projectileResponse = world.sendEntityMessage(projectileId, "updateProjectile", aimPosition, fireDirection)
+      local projectileResponse = world.sendEntityMessage(projectileId, "updateProjectile", aimPosition)
       if projectileResponse:finished() then
         local newIds = projectileResponse:result()
         if type(newIds) ~= "table" then
@@ -241,7 +199,7 @@ function StormProjectile:updateProjectiles()
   storage.projectiles = newProjectiles
 end
 
-function StormProjectile:killProjectiles()
+function ControlProjectile:killProjectiles()
   for _, projectileId in pairs(storage.projectiles) do
     if world.entityExists(projectileId) then
       world.sendEntityMessage(projectileId, "kill")
@@ -249,7 +207,7 @@ function StormProjectile:killProjectiles()
   end
 end
 
-function StormProjectile:reset()
+function ControlProjectile:reset()
   self.weapon:setStance(self.stances.idle)
   animator.stopAllSounds(self.elementalType.."chargedloop")
   animator.stopAllSounds(self.elementalType.."fullcharge")
@@ -258,7 +216,7 @@ function StormProjectile:reset()
   activeItem.setCursor("/cursors/reticle0.cursor")
 end
 
-function StormProjectile:uninit(weaponUninit)
+function ControlProjectile:uninit(weaponUninit)
   self:reset()
   if weaponUninit then
     self:killProjectiles()
