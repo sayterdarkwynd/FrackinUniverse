@@ -14,6 +14,10 @@ function EffectZone:init()
   self.weapon.onLeaveAbility = function()
     self:reset()
   end
+
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 function EffectZone:update(dt, fireMode, shiftHeld)
@@ -127,7 +131,7 @@ function EffectZone:createProjectile()
 
   local pParams = copy(self.projectileParameters)
   pParams.power = (pParams.baseDamage or 0) * config.getParameter("damageLevelMultiplier")
-  pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
 
   storage.projectileId = world.spawnProjectile(
       self.projectileType,

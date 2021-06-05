@@ -3,6 +3,7 @@ require "/items/active/weapons/staff/abilities/controlprojectile/controlprojecti
 function ControlProjectile:charged()
   self.weapon:setStance(self.stances.charged)
 
+
   animator.playSound(self.elementalType.."fullcharge")
   animator.playSound(self.elementalType.."chargedloop", -1)
   animator.setParticleEmitterActive(self.elementalType .. "charge", true)

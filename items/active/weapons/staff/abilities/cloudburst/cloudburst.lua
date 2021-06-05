@@ -20,7 +20,8 @@ function CloudBurst:init()
   end
 
   --mastery
-  self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0  
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0  
 end
 
 function CloudBurst:update(dt, fireMode, shiftHeld)
@@ -156,7 +157,7 @@ function CloudBurst:createProjectiles()
 
   local pParams = copy(self.projectileParameters)
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
-  pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(

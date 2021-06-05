@@ -6,6 +6,10 @@ ControlProjectile = WeaponAbility:new()
 function ControlProjectile:init()
   storage.projectiles = storage.projectiles or {}
 
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0 
+    
   self.elementalType = self.elementalType or self.weapon.elementalType
 
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
@@ -18,8 +22,6 @@ function ControlProjectile:init()
     self:reset()
   end
 
-  --mastery
-  self.chargeTimerBonus = status.stat("chargeTimerBonus")
 end
 
 function ControlProjectile:update(dt, fireMode, shiftHeld)
@@ -151,8 +153,10 @@ function ControlProjectile:createProjectiles()
   local pCount = self.projectileCount or 1
 
   local pParams = copy(self.projectileParameters)
+  -- determine mastery bonuses for the projectile/spell
+
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
-  pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(

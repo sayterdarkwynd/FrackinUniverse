@@ -19,7 +19,8 @@ function StormProjectile:init()
   end
   
   --mastery
-  self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0    
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 function StormProjectile:update(dt, fireMode, shiftHeld)
@@ -155,7 +156,7 @@ function StormProjectile:createProjectiles()
 
   local pParams = copy(self.projectileParameters)
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
-  pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
   local projectileType=self.projectileType:gsub("spawner","storm2")
 
   pParams.timedActions={

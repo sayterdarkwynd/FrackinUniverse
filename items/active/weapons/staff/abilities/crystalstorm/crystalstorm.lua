@@ -19,8 +19,9 @@ function CrystalStorm:init()
 	end
 	self.castposition = nil
 	
-    --mastery
-    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0  	
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 function CrystalStorm:update(dt, fireMode, shiftHeld)
@@ -159,7 +160,7 @@ function CrystalStorm:createProjectiles()
 
 	local pParams = copy(self.projectileParameters)
 	pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
-	pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+	pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
 
 	for i = 1, pCount do
 		local position = vec2.add(basePos,	{xoffset[((i-1)%8)+1], 1.25 * (i - 1)})

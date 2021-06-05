@@ -33,6 +33,10 @@ function ElementalAura:update(dt, fireMode, shiftHeld)
       self:deactivate()
     end
   end
+
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 -- Attack state: windup

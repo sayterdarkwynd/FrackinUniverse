@@ -19,7 +19,8 @@ function Controlledteleport:init()
   end
   
   --mastery
-  self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0  
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 --On each step;
