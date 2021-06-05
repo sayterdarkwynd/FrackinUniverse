@@ -7,9 +7,10 @@ function ControlProjectile:init()
   storage.projectiles = storage.projectiles or {}
 
   --mastery
+    self.staffMasteryBase = status.stat("staffMastery")  
     self.staffMastery = 1 + status.stat("staffMastery")   
     self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0 
-    
+
   self.elementalType = self.elementalType or self.weapon.elementalType
 
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
@@ -95,7 +96,7 @@ function ControlProjectile:discharge()
 
   activeItem.setCursor("/cursors/reticle0.cursor")
 
-  if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
+  if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", (self.energyCost * self.staffMastery) * self.baseDamageFactor) then
     animator.playSound(self.elementalType.."activate")
     self:createProjectiles()
   else
@@ -139,7 +140,7 @@ end
 
 function ControlProjectile:targetValid(aimPos)
   local focusPos = self:focusPosition()
-  return world.magnitude(focusPos, aimPos) <= self.maxCastRange
+  return world.magnitude(focusPos, aimPos) <= self.maxCastRange * self.staffMastery
       and not world.lineTileCollision(mcontroller.position(), focusPos)
       and not world.lineTileCollision(focusPos, aimPos)
 end
@@ -150,11 +151,27 @@ function ControlProjectile:createProjectiles()
   local pOffset = {fireDirection * (self.projectileDistance or 0), 0}
   local basePos = activeItem.ownerAimPosition()
 
-  local pCount = self.projectileCount or 1
+  local pCount = self.projectileCount or 1 
+
+  -- bonus projectiles
+  if self.staffMasteryBase > 0.95 then
+      self.bonusProjectiles = 6
+  elseif self.staffMasteryBase > 0.80 then
+     self.bonusProjectiles = 5
+  elseif self.staffMasteryBase > 0.60 then
+     self.bonusProjectiles = 4
+  elseif self.staffMasteryBase > 0.40 then
+     self.bonusProjectiles = 3
+  elseif self.staffMasteryBase > 0.20 then
+     self.bonusProjectiles = 2
+  else
+     self.bonusProjectiles = 1
+  end
+  pCount = pCount + self.bonusProjectiles
 
   local pParams = copy(self.projectileParameters)
-  -- determine mastery bonuses for the projectile/spell
 
+  -- determine mastery bonuses for the projectile/spell
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
 

@@ -158,6 +158,18 @@ function CrystalStorm:createProjectiles()
 	self.castPosition = basePos
 	local pCount = self.projectileCount or 1
 
+	  -- bonus projectiles
+	  if self.staffMasteryBase > 0.80 then
+	     self.bonusProjectiles = 3
+	  elseif self.staffMasteryBase > 0.40 then
+	     self.bonusProjectiles = 2
+	  elseif self.staffMasteryBase > 0.20 then
+	     self.bonusProjectiles = 1
+	  else
+	     self.bonusProjectiles = 1
+	  end
+	  pCount = pCount + self.bonusProjectiles
+
 	local pParams = copy(self.projectileParameters)
 	pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
 	pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
