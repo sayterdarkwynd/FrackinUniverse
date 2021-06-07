@@ -1,0 +1,38 @@
+{
+	"objectName" : "pilch_shieldmarkerasteroid",
+	"rarity" : "Common",
+	"description" : "Marks the edge of the generated field.",
+	"shortdescription" : "Field Marker",
+
+	"race" : "generic",
+	"category" : "wire",
+	"price" : 1,
+	"printable" : false,
+	
+	"inventoryIcon" : "/objects/pilch_shieldmarker/pilch_shieldmarker_icon.png",
+	"orientations" : [
+		{
+			"dualImage" : "/objects/pilch_shieldmarker/pilch_shieldmarker.png:default.off",
+			"imagePosition" : [0, 0],
+			"frames" : 1,
+			"animationCycle" : 1.0,
+			"anchors" : [ "background" ],
+			"spaceScan" : 0.1
+		}
+	],
+
+	"animation" : "/objects/pilch_shieldmarker/pilch_shieldmarker.animation",
+	"animationParts" : {
+		"power" : "/objects/pilch_shieldmarker/pilch_shieldmarker.png"
+	},
+	"animationPosition" : [0, 0],
+
+	"scripts" : [
+		"/objects/pilch_shieldmarker/pilch_shieldmarkerasteroid.lua"
+	],
+	"scriptDelta" : 0,
+
+	"smashOnBreak" : true,
+
+	"inputNodes" : [ [0, 0] ]
+}

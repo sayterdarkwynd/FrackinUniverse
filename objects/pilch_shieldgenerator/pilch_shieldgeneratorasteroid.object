@@ -1,0 +1,52 @@
+{
+	"objectName" : "pilch_shieldgeneratorasteroid",
+	"rarity" : "Common",
+	"description" : "Generates fields to protect construction, provide air or alter gravity within a defined area.",
+	"shortdescription" : "Field Generator",
+	"race" : "generic",
+	"category" : "tool",
+	"price" : 1,
+	"printable" : false,
+	
+	"inventoryIcon" : "/objects/pilch_shieldgenerator/pilch_shieldgenerator_icon.png",
+	"orientations" : [
+		{
+			"image" : "/objects/pilch_shieldgenerator/pilch_shieldgenerator.png:<color>.<frame>",
+			"imagePosition" : [-16, 0],
+			"frames" : 12,
+			"animationCycle" : 1,
+			"spaceScan" : 0.1,
+			"anchors" : [ "background" ],
+			"direction" : "right"
+		}
+	],
+	
+	"health" : 10,
+	
+	"animation" : "/objects/pilch_shieldgenerator/pilch_shieldgenerator.animation",
+	"animationParts" : {
+		"generator" : "/objects/pilch_shieldgenerator/pilch_shieldgenerator.png"
+	},
+	"animationPosition" : [-16, 0],
+
+	"scripts" : [
+		"/objects/pilch_shieldgenerator/pilch_shieldgeneratorasteroid.lua"
+	],
+	"scriptDelta" : 5,
+
+	"inputNodes" : [ [ -2, 0] ],
+	"outputNodes" : [ [ -1, 0] ],
+	
+	"interactAction" : "ScriptPane",
+	"interactData" : "/objects/pilch_shieldgenerator/pilch_shieldgenerator.config",
+
+	"smashOnBreak" : true,
+	"interactable" : false,
+
+	"pilch_shieldgenerator_protected" : true,
+	"pilch_shieldgenerator_breathable" : true,
+	"pilch_shieldgenerator_gravity" : {
+		"applyGravity" : true,
+		"gravityLevel" : 30
+	}
+}
