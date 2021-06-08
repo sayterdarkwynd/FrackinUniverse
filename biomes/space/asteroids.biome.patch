@@ -1,70 +1,105 @@
 [
-	[{
-		"op": "replace",
-		"path": "/ores",
-		"value": "ff_asteroidstandardores"
-	}],
+  [{
+    "op": "replace",
+    "path": "/ores",
+    "value": "ff_asteroidstandardores"
+  }],
 
-	[{
-			"op": "replace",
-			"path": "/spawnProfile/groups",
-			"value": []
-		},
-		{
-			"op": "add",
-			"path": "/spawnProfile/groups/-",
-			"value": {
-				"select": 2,
-				"pool": [
-					[0.02, "asteroidhorror"],
-					[0.03, "asteroidtentaclecometspore"],
-					[0.03, "asteroidpeblit"],
-					[0.03, "asteroidtintic"],
-					[0.04, "asteroidservitor"],
-					[0.04, "asteroidminidrone"],
-					[0.04, "asteroidscandroid"],
-					[0.04, "asteroidskimbus"],
-					[0.04, "asteroidwisper7"],
-					[0.004, "astrofae"],
-					[0.004, "chiropterror"],
-					[0.002, "cosmostache"],
-					[0.002, "heavydrone"],
-					[0.003, "masteroids"],
-					[0.003, "omnicannon"],
-					[0.003, "spinemine"],
-					[0.004, "trifangle"],
-					[0.004, "skywhale2"],
-					[0.003, "twigun"]
-				]
-			}
-		}
-	],
-	[{
-		"op": "test",
-		"path": "/surfacePlaceables",
-		"inverse": true
-	}, {
-		"op": "add",
-		"path": "/surfacePlaceables",
-		"value": {
-			"grassMod": ["snow"],
-			"grassModDensity": 0.0,
+  [{
+      "op": "replace",
+      "path": "/spawnProfile/groups",
+      "value": []
+    },
+    {
+      "op": "add",
+      "path": "/spawnProfile/groups/-",
+      "value": {
+        "select": 2,
+        "pool": [
+          [0.02, "asteroidhorror"],
+          [0.03, "asteroidtentaclecometspore"],
+          [0.03, "asteroidpeblit"],
+          [0.03, "asteroidtintic"],
+          [0.04, "asteroidservitor"],
+          [0.04, "asteroidminidrone"],
+          [0.04, "asteroidscandroid"],
+          [0.04, "asteroidskimbus"],
+          [0.04, "asteroidwisper7"],
+          [0.004, "astrofae"],
+          [0.004, "chiropterror"],
+          [0.002, "cosmostache"],
+          [0.002, "heavydrone"],
+          [0.003, "masteroids"],
+          [0.003, "omnicannon"],
+          [0.003, "spinemine"],
+          [0.004, "trifangle"],
+          [0.004, "skywhale2"],
+          [0.003, "twigun"]
+        ]
+      }
+    }
+  ],
+  [{
+    "op": "test",
+    "path": "/surfacePlaceables",
+    "inverse": true
+  }, {
+    "op": "add",
+    "path": "/surfacePlaceables",
+    "value": {
+      "grassMod": ["snow"],
+      "grassModDensity": 0.0,
 
-			"items": []
-		}
-	}],
-	[{
-		"op": "test",
-		"path": "/undergroundPlaceables",
-		"inverse": true
-	}, {
-		"op": "add",
-		"path": "/undergroundPlaceables",
-		"value": {
-			"grassMod": ["snow"],
-			"grassModDensity": 0.0,
+      "items": []
+    }
+  }],
+  [{
+    "op": "test",
+    "path": "/surfacePlaceables/items",
+    "inverse": true
+  }, {
+    "op": "add",
+    "path": "/surfacePlaceables/items",
+    "value": []
+  }],
+  [{
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value": {
+      "mode" : "floor",
+      "priority" : 3.0,
+      "variants" : 1,
+      "distribution" : "/biomes/distributions.config:mainBiomeMicrodungeon",
 
-			"items": []
-		}
-	}]
+      "type" : "microdungeon",
+      "microdungeons" : [ "fuasteroidbelt" ]
+    }
+  }],
+  [{
+    "op": "add",
+    "path": "/surfacePlaceables/items/-",
+    "value": {
+      "mode" : "floor",
+      "priority" : 1.0,
+      "variants" : 1,
+      "distribution" : "/biomes/distributions.config:mainBiomeEncounterDungeon",
+
+      "type" : "microdungeon",
+      "microdungeons" : [ "fuasteroidbelt_interior" ]
+    }
+  }],
+  [{
+    "op": "test",
+    "path": "/undergroundPlaceables",
+    "inverse": true
+  }, {
+    "op": "add",
+    "path": "/undergroundPlaceables",
+    "value": {
+      "grassMod": ["snow"],
+      "grassModDensity": 0.0,
+
+      "items": []
+    }
+  }]
 ]
