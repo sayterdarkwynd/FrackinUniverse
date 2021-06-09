@@ -1,177 +1,609 @@
-require "/items/active/tagCaching.lua"
-
+require "/items/active/tagCaching.lua" --integral to mastery identification
 masteries={}
+--vars are temporary, and are reset if weapons are swapped
+masteries.vars={}
+--need a persistent set for the heartbeat
+masteries.persistentVars={}
+--stats are loaded by masteries.load every update.
+masteries.stats={}
+--listeners are not reset by weapon swap, instead they reset with roughly after a second (see fustatusextenderquest.lua)
+masteries.listeners={}
 
-function masteries.apply()
-	--originally all masteries except fire rate were 1-centric. will need to adjust.
-	local hand=activeItem.hand()
+function masteries.apply(args)
+	if activeItem then error("masteries.lua: Masteries don't belong in activeitem scripts. Stop trying.") end
 
-	--bonuses to ammo and reload time for weapons that tend to be ammo based.
-	if tagCaching.mergedCache["machinepistol"]
-	or tagCaching.mergedCache["assaultrifle"]
-	or tagCaching.mergedCache["pistol"]
-	or tagCaching.mergedCache["sniperrifle"] then
-		status.setPersistentEffects("ammobonus", {
-			{stat = "magazineMultiplier", effectiveMultiplier = 1 + masteries.stats.ammoMastery},
-			{stat = "magazineSize", amount = 4 * masteries.stats.ammoMastery},
-			{stat = "reloadTime", amount = -1/3 * masteries.stats.ammoMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","ammobonus")
-	end
+	--if weapon is wielded alongside another weapon, cut the bonuses in half.
+	--here, we don't ASSUME that the weapon type is only in one hand, because anyone can slap the 'broadsword' tag on a fucking onehanded weapon.
+	local dualWield=(tagCaching["primaryTagCache"]["weapon"] and tagCaching["altTagCache"]["weapon"])
+	--due to implementation this has...awkward results I may need to adjust. mostly because 1.05*1.05 is not 1.1, it is 1.1025. the difference is negligible, and fixing this would need a recode to use sqrt instead for multipliers.
+	local handMultiplier=(dualWield and 0.5) or 1.0
 
-	--pistols: reduced Reload time, increased crit chance and damage
-	if tagCaching.mergedCache["pistol"] then
-		status.setPersistentEffects("pistolbonus", {
-			{stat = "powerMultiplier", effectiveMultiplier = 1 + masteries.stats.pistolMastery},
-			{stat = "critChance", amount = 1/4 * masteries.stats.pistolMastery},
-			{stat = "reloadTime", amount = -1/4 * masteries.stats.pistolMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","pistolbonus")
-	end
+	--if either item changed, readjust buffs.
+	if args["primaryChanged"] or args["altChanged"] then
+		--handle each combination in turn.
+		for currentHand,otherHand in pairs({primary="alt",alt="primary"}) do
+			--rather than applying dozens of separate effects...we just build a single list to apply.
+			masteryBuffer={}
 
-	--machine pistols: increased power & crit chance. reduced Reload time.
-	if tagCaching.mergedCache["machinepistol"] then
-		status.setPersistentEffects("machinepistolbonus", {
-			{stat = "powerMultiplier", effectiveMultiplier = 1 + (masteries.stats.machinepistolMastery/2)},
-			{stat = "reloadTime", amount = -1/4 * masteries.stats.machinepistolMastery},
-			{stat = "critChance", amount = 1/2 * masteries.stats.machinepistolMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","machinepistolbonus")
-	end
+			--trying to reduce code overhead by adding checks for melee/ranged/staff fails, sadly. because vanilla shit like fist weapons or wands/staves
 
-	--arm cannons: increased damage, defense. increased crit damage or crit chance.
-	--values based on whether the person has either two arm cannons, a single one, or one with a shield.
-	if tagCaching.mergedCache["armcannon"] then
-		if tagCaching.primaryTagCache["armcannon"] and tagCaching.altTagCache["armcannon"] then
-			--they have two armcannons active
-			status.setPersistentEffects("armcannonbonus", {
-				{stat = "powerMultiplier", effectiveMultiplier = 1 + masteries.stats.armcannonMastery},
-				{stat = "protection", effectiveMultiplier = 1 + (masteries.stats.armcannonMastery/2)},
-				{stat = "critChance", amount = 2 * masteries.stats.armcannonMastery}
-			})
-		elseif tagCaching.mergedCache["shield"] then
-			--they have a shield active
-			status.setPersistentEffects("armcannonbonus", {
-				{stat = "powerMultiplier", effectiveMultiplier = 1 + (masteries.stats.armcannonMastery/3)},
-				{stat = "protection", effectiveMultiplier = 1 + (masteries.stats.armcannonMastery)},
-				{stat = "critDamage", amount = 0.3 * masteries.stats.armcannonMastery}
-			})
-		else
-			status.setPersistentEffects("armcannonbonus", {
-				{stat = "powerMultiplier", effectiveMultiplier = 1 + (masteries.stats.armcannonMastery/2)},
-				{stat = "protection", effectiveMultiplier = 1 + (masteries.stats.armcannonMastery/2)},
-				{stat = "critDamage", amount = 0.3 * masteries.stats.armcannonMastery}
-			})
+			--bonuses to ammo and reload time for certain specific weapontypes that tend to be ammo based.
+			--magazine bonuses for these work best when done in a hybrid manner like this. means they get roughly the same overall increase.
+			--magazineMultiplier is a stat to multiply base magazine size (tooltip on weapon)
+			if tagCaching[currentHand.."TagCache"]["ranged"] then
+				table.insert(masteryBuffer,{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.ammoMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="magazineSize", amount=4*masteries.stats.ammoMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/3)*masteries.stats.ammoMastery*handMultiplier})
+			end
+
+			--pistols: reduced Reload time, increased crit chance and damage
+			if tagCaching[currentHand.."TagCache"]["pistol"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.pistolMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="critChance", amount=(1/4)*masteries.stats.pistolMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/4)*masteries.stats.pistolMastery*handMultiplier})
+			end
+
+			--machine pistols: increased power & crit chance. reduced Reload time.
+			if tagCaching[currentHand.."TagCache"]["machinepistol"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.machinepistolMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/4)*masteries.stats.machinepistolMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="critChance", amount=(1/2)*masteries.stats.machinepistolMastery*handMultiplier})
+			end
+
+			--arm cannons: increased damage, defense. increased crit damage or crit chance.
+			--values based on how many arm cannons and/or shields are equipped.
+			if tagCaching[currentHand.."TagCache"]["armcannon"] then
+				local powerModifier=(masteries.stats.armcannonMastery*handMultiplier)
+				local critChanceModifier=(masteries.stats.armcannonMastery*handMultiplier)
+				local critDamageModifier=(masteries.stats.armcannonMastery*handMultiplier)
+				local protectionModifier=(masteries.stats.armcannonMastery*handMultiplier)
+				if tagCaching[otherHand.."TagCache"]["armcannon"] then
+					--dual arm cannons: full power bonus, half protection bonus, grant crit chance instead of crit damage
+					critChanceModifier=critChanceModifier*2.0
+					critDamageModifier=0.0
+					protectionModifier=protectionModifier/2
+				elseif tagCaching[otherHand.."TagCache"]["shield"] then
+					--with a shield: 1/3 power bonus, full crit damage bonus, full protection bonus
+					powerModifier=powerModifier/3.0
+					critChanceModifier=0.0
+				else
+					--every other case: the only part of this that needs to be kept is the crit modifier, due to the hand multiplier
+					--powerModifier=powerModifier/2.0
+					critChanceModifier=0.0
+					--protectionModifier=protectionModifier/2
+				end
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+powerModifier})
+				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+protectionModifier})
+				table.insert(masteryBuffer,{stat="critChance", amount=2*critChanceModifier})
+				table.insert(masteryBuffer,{stat="critDamage", amount=0.3*critDamageModifier})
+			end
+
+			--assault rifles: increased damage, magazine, crit damage
+			if tagCaching[currentHand.."TagCache"]["assaultrifle"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.assaultrifleMastery*handMultiplier/2) })
+				--{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.assaultrifleMastery*handMultiplier/2) })
+				--{stat="magazineSize", amount=2*masteries.stats.assaultrifleMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.assaultrifleMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="critDamage", amount=(0.3/2)*masteries.stats.assaultrifleMastery*handMultiplier})
+			end
+
+			--sniper rifles: increased magazine, crit chance
+			if tagCaching[currentHand.."TagCache"]["sniperrifle"] then
+				table.insert(masteryBuffer,{stat="critChance", amount=(1/2)*masteries.stats.sniperrifleMastery*handMultiplier})
+				--table.insert(masteryBuffer,{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.sniperrifleMastery*handMultiplier/2) })
+				--table.insert(masteryBuffer,{stat="magazineSize", amount=2*masteries.stats.sniperrifleMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.sniperrifleMastery*handMultiplier})
+			end
+
+			--grenade launchers: increased power, magazine size. reduced reload time
+			if tagCaching[currentHand.."TagCache"]["grenadelauncher"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.grenadelauncherMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/4)*masteries.stats.grenadelauncherMastery*handMultiplier})
+				--{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.grenadelauncherMastery*handMultiplier/2) })
+				--{stat="magazineSize", amount=2*masteries.stats.grenadelauncherMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.grenadelauncherMastery*handMultiplier})
+			end
+
+			--rocket launchers: increased power, magazine size. reduced reload time
+			if tagCaching[currentHand.."TagCache"]["rocketlauncher"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.rocketlauncherMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/4)*masteries.stats.rocketlauncherMastery*handMultiplier})
+				--{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.rocketlauncherMastery/2) })
+				--{stat="magazineSize", amount=2*masteries.stats.rocketlauncherMastery})
+				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.rocketlauncherMastery*handMultiplier})
+			end
+
+			--shotguns: increased Power, Magazine Size, Crit Chance
+			if tagCaching[currentHand.."TagCache"]["shotgun"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.shotgunMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/4)*masteries.stats.shotgunMastery*handMultiplier})
+				--{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.shotgunMastery*handMultiplier/2) },
+				--{stat="magazineSize", amount=2*masteries.stats.shotgunMastery*handMultiplier},
+				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.shotgunMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="critChance", amount=(1/4)*masteries.stats.shotgunMastery*handMultiplier})
+			end
+
+			--magnorbs: damage, crit chance/damage, max energy
+			if tagCaching[currentHand.."TagCache"]["magnorb"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", 1+(masteries.stats.magnorbMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.magnorbMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="critDamage", amount=0.15*masteries.stats.magnorbMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="energyMax", 1+(masteries.stats.magnorbMastery*handMultiplier/2) })
+			end
+
+			--bows: crit chance, crit damage, faster draw time, reduced cost to fire/hold, increased damage.
+			if tagCaching[currentHand.."TagCache"]["bow"] then
+				table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.bowMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="critDamage", amount=7*masteries.stats.bowMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="bowDrawTimeBonus", amount=(0.01/2)*masteries.stats.bowMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="bowEnergyBonus", amount=(1/2)*masteries.stats.bowMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.bowMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="arrowSpeedMultiplier", effectiveMultiplier=1+(masteries.stats.bowMastery*handMultiplier) })
+				mcontroller.controlModifiers({speedModifier=1+(masteries.stats.bowMastery*handMultiplier/16) })
+			end
+
+			--whips: damage, crit chance/damage
+			if tagCaching[currentHand.."TagCache"]["whip"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", 1+(masteries.stats.whipMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="critChance", amount=1*masteries.stats.whipMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="critDamage", amount=(0.25/2)*masteries.stats.whipMastery*handMultiplier})
+			end
+
+			--daggers:dodge tech and damage boost, combo based protection and crit chance.
+			--also: when paired with another melee of any kind, grants a speed boost status effect. (why? why not just apply a control modifier?)
+			if tagCaching[currentHand.."TagCache"]["dagger"] then
+				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.25*(1+(masteries.stats.daggerMastery*handMultiplier)) })
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.daggerMastery*handMultiplier/4) })
+				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(((1/((masteries.vars[currentHand.."ComboStep"] or 0)*4))*handMultiplier)/2) })
+				table.insert(masteryBuffer,{stat="critChance", amount=(masteries.vars[currentHand.."ComboStep"] or 1)*(1+(masteries.stats.daggerMastery*handMultiplier)) })
+				if tagCaching[otherHand.."TagCache"]["melee"] then
+					status.addEphemeralEffects({{effect="runboost5", duration=0.02*self.daggerMastery}})
+				end
+			end
+
+			--quarterstaves: dodge/defense/heal tech boosts. protection boost. damage boost.
+			if tagCaching[currentHand.."TagCache"]["quarterstaff"] or tagCaching[currentHand.."TagCache"]["qs"] then
+				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.25*masteries.stats.quarterstaffMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.quarterstaffMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(0.12*masteries.stats.quarterstaffMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="defensetechBonus", amount=0.25*masteries.stats.quarterstaffMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="healtechBonus", amount=0.15*masteries.stats.quarterstaffMastery*handMultiplier})
+			end
+
+			--rapiers: complicated. dodge, dash, crit and protection modifiers based on wield state (solo, with dagger, else).
+			if tagCaching[currentHand.."TagCache"]["rapier"] then
+				mastery.vars[currentHand.."rapierTimerBonus"]=math.min((masteries.vars.rapierTimerBonus or 0)+dt,5)
+				local dodgeModifier=0.35
+				local dashModifier=0.35
+				local critModifier=0
+				local protectionModifier=0
+
+				--combo started, first hit got the crit bonus and now it resets.
+				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
+					mastery.vars[currentHand.."rapierTimerBonus"]=0
+				end
+
+				--a single rapier, with no other item in the other hand whatsoever, grants a crit chance boost based on time since last attack. wielding alongside a dagger reduces the tech boosts, but grants a protection multiplier.
+				-- one handed --does it need to be HARD one-handed? can't use with a non-weapon?
+				--apparently supposed to grant crit damage? but didnt in previous code. instead, we have this.
+				if not tagCaching[otherHand.."TagCacheItem"] then
+					critModifier=masteries.vars.rapierTimerBonus*(1+masteries.stats.rapierMastery)
+				elseif tagCaching[otherHand.."TagCache"]["dagger"] then
+					--"properly" dual wielded
+					dodgeModifier=0.25
+					dashModifier=0.25
+					protectionModifier=0.12*(1+masteries.stats.rapierMastery)
+				end
+
+				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=dodgeModifier*(1+(masteries.stats.rapierMastery))*handMultiplier})
+				table.insert(masteryBuffer,{stat="dashtechBonus", amount=dashModifier*(1+(masteries.stats.rapierMastery))*handMultiplier})
+				table.insert(masteryBuffer,{stat="critChance", amount=critModifier})
+				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(protectionModifier) })
+			end
+
+			--shortspears: modifiers based on what else is or isn't wielded. none when combo'd.
+			if tagCaching[currentHand.."TagCache"]["shortspear"] then
+				if not tagCaching[otherHand.."TagCacheItem"] then --solo shortspear, no other items: boost crit damage.
+					table.insert(masteryBuffer,{stat="critDamage", amount=0.3*(1+masteries.stats.shortspearMastery) })
+				else
+					-- using shortspear with a shield: boost shield and defense tech stats.
+					if tagCaching[otherHand.."TagCache"]["shield"] then
+						table.insert(masteryBuffer,{stat="shieldBash", amount=10 })
+						table.insert(masteryBuffer,{stat="shieldBashPush", amount=2})
+						table.insert(masteryBuffer,{stat="shieldStaminaRegen", effectiveMultiplier=1+(0.2*(1+masteries.stats.shortspearMastery)) })
+						table.insert(masteryBuffer,{stat="defensetechBonus", amount=0.50})
+					end
+					--technically should be an elseif, but hey...maybe shellguard adds a spearshield?
+					-- with another shortspear: penalize protection and crit chance (crit one is a joke.)
+					if tagCaching[otherHand.."TagCache"]["shortspear"] then
+						--yes, the awkward looking math is needed. this ensures that the system doesn't apply the same 0.8x twice, but instead splits it.
+						table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.shortspearMastery)))*handMultiplier) })
+						table.insert(masteryBuffer,{stat="critChance", effectiveMultiplier=1+((-1*(0.5*(1+masteries.stats.shortspearMastery)))*handMultiplier) })
+					end
+				end
+			end
+
+			--scythe: combo based crit damage and crit chance.
+			if tagCaching[currentHand.."TagCache"]["scythe"] then
+				table.insert(masteryBuffer,{stat="critDamage", amount=(0.05+((masteries.vars[currentHand.."ComboStep"] or 1)*0.1))*handMultiplier })
+				table.insert(masteryBuffer,{stat="critChance", amount=(1+((masteries.vars[currentHand.."ComboStep"] or 0))*masteries.stats.scytheMastery)*handMultiplier })
+			end
+
+			--longswords: no baseline value, like shortspears, due to fart.
+			if tagCaching[currentHand.."TagCache"]["longsword"] then
+				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] >=3) then
+					table.insert(masteryBuffer,{stat="critDamage", amount=0.15*(1+masteries.stats.longswordMastery)*handMultiplier})
+				end
+				-- longsword solo, no other items: attack speed.
+				if not tagCaching[otherHand.."TagCacheItem"] then
+					--this would be funny to apply at full value if wielding alongside another longsword. especially with a minor damage penalty.
+					table.insert(masteryBuffer,{stat="attackSpeedUp", amount=0.7*masteries.stats.longswordMastery})
+				else
+					 --using a shield: increase shield stats, heal/defense techs.
+					if tagCaching[currentHand.."TagCache"]["shield"] or tagCaching[otherHand.."TagCache"]["shield"] then
+						--the below line was placed as a 'baseline' mastery, not in shields. why? commenting out.
+						--table.insert(masteryBuffer,{stat="shieldBash", amount=1.0+((10*handMultiplier)*(1+masteries.stats.longswordMastery)) })
+						table.insert(masteryBuffer,{stat="shieldBash", amount=4*(1+masteries.stats.longswordMastery) })
+						table.insert(masteryBuffer,{stat="shieldBashPush", amount=1})
+						table.insert(masteryBuffer,{stat="defensetechBonus", amount=0.25*(1+masteries.stats.longswordMastery) })
+						table.insert(masteryBuffer,{stat="healtechBonus", amount=0.15*(1+masteries.stats.longswordMastery) })
+					end
+					-- dual wielding longsword with any other weapon: reduced protection, increased movespeed
+					--yes, the awkward looking math is needed. this ensures that the system doesn't apply the same 0.8x twice, but instead splits it.
+					if tagCaching[otherHand.."TagCache"]["weapon"] then
+						table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.longswordMastery)))*handMultiplier) })
+						status.addEphemeralEffects({{effect="runboost5", duration=0.02*masteries.stats.longswordMastery}})
+					end
+				end
+			end
+
+			--spears: crit chance, damage, and dash tech bonuses.
+			if tagCaching[currentHand.."TagCache"]["spear"] then
+				table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.spearMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.spearMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="dashtechBonus", amount=0.08*masteries.stats.spearMastery*handMultiplier})
+			end
+
+			--shortswords: combo based crit chance. other stats based on wield state.
+			if tagCaching[currentHand.."TagCache"]["shortsword"] then
+				table.insert(masteryBuffer, {stat="critChance", amount=(1+((masteries.vars[currentHand.."ComboStep"] or 1)*(1+masteries.stats.shortswordMastery)))*handMultiplier})
+				local powerModifier=masteries.stats.shortswordMastery*handMultiplier
+				local dodgeModifier=masteries.stats.shortswordMastery*handMultiplier
+				local dashModifier=masteries.stats.shortswordMastery*handMultiplier
+				local gritModifier=masteries.stats.shortswordMastery*handMultiplier
+
+				-- solo shortsword, no other items: increased damage, dash/dodge tech bonuses, and knockback resistance
+				if not tagCaching[otherHand.."TagCacheItem"] then
+					powerModifier=(powerModifier/1.5)
+					dashModifier=0.1*dashModifier/2
+					dodgeModifier=0.1*masteries.stats.shortswordMastery/2
+				else
+					-- if holding a shield: lower damage boost. increased defense tech boost, shield bash. increased knockback resistance.
+					if tagCaching[otherHand.."TagCache"]["shield"] then
+						powerModifier=(powerModifier/3)
+						dashModifier=0
+						dodgeModifier=0
+						table.insert(masteryBuffer,{stat="defensetechBonus", amount=0.1*(masteries.stats.shortswordMastery*handMultiplier/2) })
+						table.insert(masteryBuffer,{stat="shieldBash", amount=3*(masteries.stats.shortswordMastery*handMultiplier/3) })
+					else
+						-- anything else: increased damage, increased dash/dodge techs.
+						powerModifier=(powerModifier/2)
+						dashModifier=0.1*(dashModifier/3)
+						dodgeModifier=0.1*(dodgeModifier/3)
+						gritModifier=0
+					end
+				end
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+powerModifier})
+				table.insert(masteryBuffer,{stat="dashtechBonus", amount=0.1*(masteries.stats.shortswordMastery/3) })
+				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.1*(masteries.stats.shortswordMastery/3) })
+				table.insert(masteryBuffer,{stat="grit", amount=gritModifier})
+			end
+
+			if tagCaching[currentHand.."TagCache"]["katana"] then
+				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] >=1) then -- combos higher than 1 move
+					mcontroller.controlModifiers({speedModifier=1+((masteries.vars[currentHand.."ComboStep"]/10)*(1+masteries.stats.katanaMastery/48)) })
+				end
+				-- holding one katana with no other item: increase  defense techs, damage, protection and crit chance
+				if not tagCaching[otherHand.."TagCacheItem"] then
+					table.insert(masteryBuffer,{stat="defensetechBonus", amount=0.15*(1+(masteries.stats.katanaMastery/2)) })
+					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.katanaMastery/3) })
+					table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(masteries.stats.katanaMastery/8) })
+					table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.katanaMastery})
+				else
+					-- dual wielding heavy weapons: reduced damage and protection --you really hate these don't you?
+					if tagCaching[otherHand.."TagCache"]["longsword"] or tagCaching[otherHand.."TagCache"]["katana"] or tagCaching[otherHand.."TagCache"]["axe"] or tagCaching[otherHand.."TagCache"]["flail"] or tagCaching[otherHand.."TagCache"]["shortspear"] or tagCaching[otherHand.."TagCache"]["mace"] then
+						table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.katanaMastery)))*handMultiplier) })
+						table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+((-1*(0.1*(1+masteries.stats.katanaMastery)))*handMultiplier) })
+					end
+					-- dual wielding with a short blade: increased energy
+					if tagCaching[otherHand.."TagCache"]["shortsword"] or tagCaching[otherHand.."TagCache"]["dagger"] or tagCaching[otherHand.."TagCache"]["rapier"] then
+						table.insert(masteryBuffer,{stat="maxEnergy", effectiveMultiplier=1+(0.15+((0.02/3)*masteries.stats.katanaMastery*handMultiplier)) })
+						table.insert(masteryBuffer,{stat="critDamage", amount=0.2*(1+(masteries.stats.katanaMastery*handMultiplier/3)) })
+						table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.08*(1+(masteries.stats.katanaMastery*handMultiplier/2)) })
+						table.insert(masteryBuffer,{stat="dashtechBonus", amount=0.08*(1+(masteries.stats.katanaMastery*handMultiplier/2)) })
+						table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.katanaMastery*handMultiplier/2} )
+					end
+				end
+			end
+
+			-- maces/hammers: increased damage. crit, stun chance. crit damage.
+			--hammers themselves have special bonuses while doing charged attacks. so do greataxes.
+			if tagCaching[currentHand.."TagCache"]["mace"] or tagCaching[currentHand.."TagCache"]["hammer"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.hammerMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.hammerMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="stunChance", amount=2*masteries.stats.hammerMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="critDamage", amount=2*masteries.stats.hammerMastery*handMultiplier/2})
+				-- increased power after first strike in combo.
+				if  masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
+					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(0.01+(masteries.stats.hammerMastery*handMultiplier/3)) })
+				end
+				if tagCaching[otherHand.."TagCache"]["shield"] then -- if using a shield: shield bash, defense.
+					table.insert(masteryBuffer,{stat="shieldBash", amount=3*(1+(masteries.stats.hammerMastery*handMultiplier)) })
+					table.insert(masteryBuffer,{stat="shieldBashPush", amount=handMultiplier})
+					table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+((0.1+(0.05*masteries.stats.hammerMastery))*handMultiplier) })
+				end
+			end
+
+			if tagCaching[currentHand.."TagCache"]["axe"] then
+				table.insert(masteryBuffer,{stat="critChance", amount=2*(masteries.stats.axeMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.hammerMastery*handMultiplier) })
+			end
+			
+			--fist weapons: mastery: increased crit and stun chance. increased damage. combo: increased crit chance/damage, stun chance.
+			--fist weapons aren't 'melee' in vanilla. many mods unfortunately follow that idiot trend. ERM is even worse in that they don't even properly use the fistWeapon category.
+			if tagCaching[currentHand.."TagCache"]["fist"] or tagCaching[currentHand.."TagCache"]["fistweapon"] or tagCaching[currentHand.."TagCache"]["gauntlet"] then
+				local comboStep=math.max(masteries.vars[otherHand.."ComboStep"] and (masteries.vars[otherHand.."ComboStep"]) or 0,masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"]) or 0)
+				table.insert(masteryBuffer,{stat="powerMultiplier",effectiveMultiplier=1+(self.fistMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="critChance", amount=((1*comboStep)+(2*masteries.stats.fistMastery))*handMultiplier})
+				table.insert(masteryBuffer,{stat="stunChance", amount=((4*comboStep)+(2*masteries.stats.fistMastery))*handMultiplier})
+				table.insert(masteryBuffer,{stat="critDamage", amount=(1*comboStep)*handMultiplier})
+			end
+
+			--below this point should be stuff that doesn't fall under melee or ranged; elemental modifiers, staves, wands.
+
+			--energy weapons: increased Energy
+			if tagCaching[currentHand.."TagCache"]["energy"] then
+				table.insert(masteryBuffer,{stat="energyMax", effectiveMultiplier=1+(masteries.stats.energyMastery*handMultiplier/2) })
+			end
+
+			--plasma weapons: increased Crit Damage
+			if tagCaching[currentHand.."TagCache"]["plasma"] then
+				table.insert(masteryBuffer,{stat="critDamage", amount=masteries.stats.plasmaMastery*handMultiplier})
+			end
+
+			--bioweapons: increased Crit Chance
+			if tagCaching[currentHand.."TagCache"]["bioweapon"] then
+				table.insert(masteryBuffer,{stat="critChance", amount=1/2*masteries.stats.bioweaponMastery*handMultiplier})
+			end
+
+			--broadswords
+			if tagCaching[currentHand.."TagCache"]["broadsword"] then
+				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] > 2) then
+					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.broadswordMastery*handMultiplier/2) })
+				else
+					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.broadswordMastery*handMultiplier/3) })
+				end
+			end
+
+			status.setPersistentEffects("masteryBonus"..currentHand,masteryBuffer)
 		end
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","armcannonbonus")
 	end
-
-	--assault rifles: increased damage, magazine, crit damage
-	if tagCaching.mergedCache["assaultrifle"] then
-		status.setPersistentEffects("assaultriflebonus", {
-			{stat = "powerMultiplier", effectiveMultiplier = 1 + (masteries.stats.assaultrifleMastery/2)},
-			--{stat = "magazineMultiplier", effectiveMultiplier = 1 + (masteries.stats.assaultrifleMastery/2)},
-			--{stat = "magazineSize", amount = 2 * masteries.stats.assaultrifleMastery},
-			{stat = "magazineSize", amount = 1/2 * masteries.stats.assaultrifleMastery},
-			{stat = "critDamage", amount = 0.3/2 * masteries.stats.assaultrifleMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","assaultriflebonus")
-	end
-
-	--sniper rifles: increased magazine, crit chance
-	if tagCaching.mergedCache["sniperrifle"] then
-		status.setPersistentEffects("sniperriflebonus", {
-			{stat = "critChance", amount = 1/2 * masteries.stats.sniperrifleMastery},
-			--{stat = "magazineMultiplier", effectiveMultiplier = 1 + (masteries.stats.sniperrifleMastery/2)},
-			--{stat = "magazineSize", amount = 2 * masteries.stats.sniperrifleMastery}
-			{stat = "magazineSize", amount = 1/2 * masteries.stats.sniperrifleMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","sniperriflebonus")
-	end
-
-	--grenade launchers: increased power, magazine size. reduced reload time
-	if tagCaching.mergedCache["grenadelauncher"] then
-		status.setPersistentEffects("grenadelauncherbonus", {
-			{stat = "powerMultiplier", effectiveMultiplier = 1 + (masteries.stats.grenadeLauncherMastery/2)},
-			{stat = "reloadTime", amount = -1/4 * masteries.stats.grenadeLauncherMastery},
-			--{stat = "magazineMultiplier", effectiveMultiplier = 1 + (masteries.stats.grenadeLauncherMastery/2)},
-			--{stat = "magazineSize", amount = 2 * masteries.stats.grenadeLauncherMastery}
-			{stat = "magazineSize", amount = 1/2 * masteries.stats.grenadeLauncherMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","grenadelauncherbonus")
-	end
-
-	--rocket launchers: increased power, magazine size. reduced reload time
-	if tagCaching.mergedCache["rocketlauncher"] then
-		status.setPersistentEffects("rocketlauncherbonus", {
-			{stat = "powerMultiplier", effectiveMultiplier = 1 + (masteries.stats.rocketLauncherMastery/2)},
-			{stat = "reloadTime", amount = -1/4 * masteries.stats.rocketLauncherMastery},
-			--{stat = "magazineMultiplier", effectiveMultiplier = 1 + (masteries.stats.rocketLauncherMastery/2)},
-			--{stat = "magazineSize", amount = 2 * masteries.stats.rocketLauncherMastery}
-			{stat = "magazineSize", amount = 1/2 * masteries.stats.rocketLauncherMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","rocketlauncherbonus")
-	end
-
-	--shotguns: increased Power, Magazine Size, Crit Chance
-	if tagCaching.mergedCache["shotgun"] then
-		status.setPersistentEffects("shotgunbonus", {
-			{stat = "powerMultiplier", effectiveMultiplier = 1 + (masteries.stats.shotgunMastery/2)},
-			{stat = "reloadTime", amount = -1/4 * masteries.stats.shotgunMastery},
-			--{stat = "magazineMultiplier", effectiveMultiplier = 1 + (masteries.stats.shotgunMastery/2)},
-			--{stat = "magazineSize", amount = 2 * masteries.stats.shotgunMastery},
-			{stat = "magazineSize", amount = 1/2 * masteries.stats.shotgunMastery},
-			{stat = "critChance", amount = 1/4 * masteries.stats.shotgunMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","shotgunbonus")
-	end
-
-	--energy weapons: increased Energy
-	if tagCaching.mergedCache["energy"] then
-		status.setPersistentEffects("energybonus", {
-			{stat = "energyMax", effectiveMultiplier = 1 + (masteries.stats.energyMastery/2)}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","energybonus")
-	end
-
-	--plasma weapons: increased Crit Damage
-	if tagCaching.mergedCache["plasma"] then
-		status.setPersistentEffects("plasmabonus", {
-			{stat = "critDamage", amount = masteries.stats.plasmaMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","plasmabonus")
-	end
-
-	--bioweapons: increased Crit Chance
-	if tagCaching.mergedCache["bioweapon"] then
-		status.setPersistentEffects("bioweaponbonus", {
-			{stat = "critChance", amount = 1/2 * masteries.stats.bioWeaponMastery}
-		})
-		world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","bioweaponbonus")
-	end
-
-	--world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","masterybonus")
-	--world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","masteryBonus")
-	masteries.applied=true
+	masteries.vars.applied=true
+	local notices,newBeat=status.inflictedDamageSince(masteries.persistentVars.heartbeat)
+	masteries.persistentVars.heartbeat=newBeat
+	--sb.logInfo("h %s k %s\nmvar %s\nlistener buffer %s",hitCount,killCount,{masteries.vars,masteries.persistentVars},listenerbonus)
+	masteries.listenerBonuses(notices,args.dt)
 end
 
-function masteries.load()
-	masteries.stats=masteries.stats or {}
-	--load mastery stats by forced lowercase tag. streamlines shit.
+function masteries.listenerBonuses(notifications,dt)
+	--initialize vars
+	if not masteries.vars.inflictedKillCounter then masteries.vars.inflictedKillCounter=0 end
+	if not masteries.vars.inflictedHitCounter then masteries.vars.inflictedHitCounter=0 end
+	if not masteries.vars.hitTimer then masteries.vars.hitTimer=0.0 end
+	if not masteries.vars.killTimer then masteries.vars.killTimer=0.0 end
+
+	--load the buffer with valid targets, verify hitType
+	local notificationBuffer={}
+	for _,notification in pairs(notifications) do
+		if (notification.sourceEntityId ==entity.id()) and (notification.targetEntityId ~=entity.id()) then
+			notification.hitType=string.lower(notification.hitType)
+			if (notification.hitType~="kill") and not status.resourcePositive("health") then
+				notification.hitType="kill"
+			end
+			table.insert(notificationBuffer,notification)
+		end
+	end
+
+	local hitCount=0
+	local killCount=0
+	local strongHitCount=0
+	local weakHitCount=0
+	for _,notification in pairs(notificationBuffer) do
+		--check if it's a valid target. only the first valid target is counted
+		--kill computation
+		if notification.hitType =="kill" then
+			killCount=killCount+1
+		elseif notification.hitType =="hit" then
+			--hit computation
+			hitCount=hitCount+1
+		elseif notification.hitType =="weakhit" then
+			--weak hit computation. this and strong hit are added as potential options for later.
+			weakHitCount=weakHitCount+1
+		elseif notification.hitType =="stronghit" then
+			--strong hit computation
+			strongHitCount=strongHitCount+1
+		end
+	end
+	--rather than limiting it to one per, making it so that it instead rounds down from sqrt, up to 5.
+	--this means that hitting 1-3 targets counts as 1, 4-8 counts as 2, 9-15 counts as 3, and 16  counts as 4. etc.
+	hitCount=math.min(5,math.floor(math.sqrt(weakHitCount+hitCount+strongHitCount)))
+	killCount=math.min(5,math.floor(math.sqrt(killCount)))
+
+	--implement timer for hit/kill bonuses. cap each at 500. for now.
+	if hitCount>0 then
+		masteries.vars.hitTimer=10.0
+		masteries.vars.inflictedHitCounter=masteries.vars.inflictedHitCounter+hitCount
+		masteries.vars.inflictedHitCounter=math.min(masteries.vars.inflictedHitCounter,500)
+	else
+		masteries.vars.hitTimer=math.max(0,masteries.vars.hitTimer-dt)
+		if masteries.vars.hitTimer==0 then
+			masteries.vars.inflictedHitCounter=0
+		end
+	end
+	if killCount>0 then
+		masteries.vars.killTimer=10.0
+		masteries.vars.inflictedKillCounter=masteries.vars.inflictedKillCounter+killCount
+		masteries.vars.inflictedKillCounter=math.min(masteries.vars.inflictedKillCounter,500)
+	else
+		masteries.vars.killTimer=math.max(0,masteries.vars.killTimer-dt)
+		if masteries.vars.killTimer==0 then
+			masteries.vars.inflictedKillCounter=0
+		end
+	end
+
+	local listenerbonus={}
+	--process kills
+	if masteries.vars.inflictedKillCounter > 0 then
+		--longswords and daggers: 0.02% power per kill, increased further by averaged mastery. no cap, because it's so damn weak.
+		if tagCaching.mergedCache["longsword"] or tagCaching.mergedCache["dagger"] then
+			--add special coding to handle mixed weapons, rather than just going by longsword mastery
+			local masteryValue=1.0
+			local masteryCalcBuffer=0.0
+			local masteryCounts=0
+
+			if tagCaching.mergedCache["longsword"] then
+				masteryCalcBuffer=masteryCalcBuffer+masteries.stats.longswordMastery
+				masteryCounts=masteryCounts+1
+			end
+
+			if tagCaching.mergedCache["dagger"] then
+				masteryCalcBuffer=masteryCalcBuffer+masteries.stats.longswordMastery
+				masteryCounts=masteryCounts+1
+			end
+
+			if masteryCounts>0 then
+				masteryCalcBuffer=masteryCalcBuffer/masteryCounts
+				masteryValue=masteryValue+masteryCalcBuffer
+			end
+
+			table.insert(listenerbonus,{stat="powerMultiplier", effectiveMultiplier=1+((masteries.vars.inflictedKillCounter/50)*masteryValue) })
+		end
+
+		--axes: 1% power per kill
+		if tagCaching.mergedCache["axe"] and (status.resourcePercentage("health") >= 0.2) then
+			table.insert(listenerbonus,{stat="powerMultiplier", effectiveMultiplier=1+masteries.vars.inflictedKillCounter/100})
+		end
+
+		--broadswords: 0.5% knockback resistance per mastery on kill, not per kill.  increased protection, taking 7 to reach full effect at 35%. Mastery reduces the count to reach this bonus.
+		if tagCaching.mergedCache["broadsword"] then
+			table.insert(listenerbonus,{stat="protection", effectiveMultiplier=math.min(1.35,(1+masteries.vars.inflictedKillCounter/20)*(1+masteries.stats.broadswordMastery)) })
+			table.insert(listenerbonus,{stat="grit", amount=(masteries.stats.broadswordMastery)*0.5})	-- secret bonus from Broadsword Mastery
+		end
+	end
+
+	--process hits
+	if masteries.vars.inflictedHitCounter > 0 then
+		--katana: knockback resistance.
+		if tagCaching.mergedCache["katana"] then
+			table.insert(listenerbonus,{stat="grit", amount=masteries.vars.inflictedHitCounter/20.0})
+		end
+
+		--shortsword: 5% crit damage per hit.
+		if tagCaching.mergedCache["shortsword"] then
+			table.insert(listenerbonus,{stat="critDamage", amount=((masteries.vars.inflictedHitCounter/100)*5) })
+		end
+
+		--quarterstaff: 10% protection per hit, with cap at 50%
+		if tagCaching.mergedCache["quarterstaff"] then
+			table.insert(listenerbonus,{stat="protection", effectiveMultiplier=1+math.min(masteries.vars.inflictedHitCounter,5)/10.0 })
+		end
+
+		--mace: stun chance, +2% per hit.
+		if tagCaching.mergedCache["mace"] then
+			table.insert(listenerbonus,{stat="stunChance", amount=masteries.vars.inflictedHitCounter*2})
+		end
+
+		--axe: +3% crit chance per hit, with cap at 5 hits.
+		if tagCaching.mergedCache["axe"] then
+			table.insert(listenerbonus,{stat="critChance", amount=math.min(5,masteries.vars.inflictedHitCounter)*3})
+		end
+	end
+
+	--using the temporary persistent effect system, to make it wear off
+	status.setPersistentEffects("listenerMasteryBonus", listenerbonus)
+	if (masteries.vars.hitTimer+masteries.vars.killTimer) > 0 then
+		world.sendEntityMessage(entity.id(),"recordFUPersistentEffect","listenerMasteryBonus")
+	end
+end
+
+function masteries.load(dt)
+	--load mastery stats by forced lowercase tag (tagCaching forces lowercase). streamlines shit.
 	for tag,_ in pairs(tagCaching.mergedCache) do
-		local e=tag:lower().."Mastery"
+		local e=tag.."Mastery"
 		masteries.stats[e]=status.stat(e)
 	end
 	if tagCaching.mergedCache["ranged"] then
-		masteries.stats.fireRateMastery = status.stat("fireRateBonus")
-		masteries.stats.ammoMastery = status.stat("ammoMastery")
+		masteries.stats.fireRateMastery=status.stat("fireRateBonus")
+		masteries.stats.ammoMastery=status.stat("ammoMastery")
 	end
-	masteries.loaded=true
+	if not masteries.vars.heartbeat then masteries.vars.heartbeat=0 end
+	masteries.vars.loaded=true
 end
 
 function masteries.update(dt)
-	tagCaching.update(dt)
-	masteries.load()
-	masteries.apply()
-	--sb.logInfo("masteries.update(%s): masteries:%s",dt,masteries)
+	local args={}
+	args.dt=dt
+
+	--update tracking of combo steps for each weapon.
+	masteries.vars.primaryComboStepOld=masteries.vars.primaryComboStep
+	masteries.vars.altComboStepOld=masteries.vars.altComboStep
+	masteries.vars.primaryComboStep=status.statusProperty("primaryComboStep")
+	masteries.vars.altComboStep=status.statusProperty("altComboStep")
+
+	--if this segment fires i'm going to shoot someone with rusty nails from a shotgun.
+	local pType=type(masteries.vars.primaryComboStep)
+	local aType=type(masteries.vars.altComboStep)
+	if pType=="string" then
+		--WTF, this shouldn't happen
+		masteries.vars.primaryComboStep=tonumber(masteries.vars.primaryComboStep)
+	elseif pType~="number" then
+		--this really, really should not happen
+		masteries.vars.altComboStep=nil
+	end
+	if aType=="string" then
+		--WTF, this shouldn't happen
+		masteries.vars.altComboStep=tonumber(masteries.vars.altComboStep)
+	elseif aType~="number" then
+		--this really, really should not happen
+		masteries.vars.altComboStep=nil
+	end
+
+	--if weapon changed, then the script will do more update stuff
+	if (tagCaching.primaryTagCacheItemChanged)then
+		masteries.clearHand("primary")
+		args.primaryChanged=true
+	elseif (masteries.vars.primaryComboStepOld~=masteries.vars.primaryComboStep) then
+		args.primaryChanged=true
+	end
+	if (tagCaching.altTagCacheItemChanged) then
+		args.altChanged=true
+		masteries.clearHand("alt")
+	elseif (masteries.vars.altComboStepOld~=masteries.vars.altComboStep) then
+		args.altChanged=true
+	end
+	masteries.load(dt)
+	masteries.apply(args)
+end
+
+function masteries.clearHand(hand)
+	if (not type(hand)=="string") or (not type(tagCaching[hand.."TagCacheOld"])=="table") then return end
+	status.setPersistentEffects("masteryBonus"..hand, {})
+	status.setPersistentEffects("ammoMasteryBonus"..hand, {})
+end
+
+function masteries.reset()
+	for currentHand,_ in pairs({primary="alt",alt="primary"}) do
+		masteries.clearHand(currentHand)
+	end
+	status.setPersistentEffects("listenerMasteryBonus", {})
 end
