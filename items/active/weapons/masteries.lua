@@ -353,10 +353,10 @@ function masteries.apply(args)
 			--fist weapons aren't 'melee' in vanilla. many mods unfortunately follow that idiot trend. ERM is even worse in that they don't even properly use the fistWeapon category.
 			if tagCaching[currentHand.."TagCache"]["fist"] or tagCaching[currentHand.."TagCache"]["fistweapon"] or tagCaching[currentHand.."TagCache"]["gauntlet"] then
 				local comboStep=math.max(masteries.vars[otherHand.."ComboStep"] and (masteries.vars[otherHand.."ComboStep"]) or 0,masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"]) or 0)
-				table.insert(masteryBuffer,{stat="powerMultiplier",effectiveMultiplier=1+(self.fistMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="powerMultiplier",effectiveMultiplier=1+(masteries.stats.fistMastery*handMultiplier/2) })
 				table.insert(masteryBuffer,{stat="critChance", amount=((1*comboStep)+(2*masteries.stats.fistMastery))*handMultiplier})
 				table.insert(masteryBuffer,{stat="stunChance", amount=((4*comboStep)+(2*masteries.stats.fistMastery))*handMultiplier})
-				table.insert(masteryBuffer,{stat="critDamage", amount=(1*comboStep)*handMultiplier})
+				table.insert(masteryBuffer,{stat="protection", amount=(1*comboStep)*handMultiplier})
 			end
 
 			--below this point should be stuff that doesn't fall under melee or ranged; elemental modifiers, staves, wands.
@@ -384,14 +384,13 @@ function masteries.apply(args)
 					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.broadswordMastery*handMultiplier/3) })
 				end
 			end
-
-			status.setPersistentEffects("masteryBonus"..currentHand,masteryBuffer)
+			--sb.logInfo("buffer %s %s",currentHand,masteryBuffer)
+			status.setPersistentEffects("masteryBonus"..currentHand,masteries.declutter(masteryBuffer))
 		end
 	end
 	masteries.vars.applied=true
 	local notices,newBeat=status.inflictedDamageSince(masteries.persistentVars.heartbeat)
 	masteries.persistentVars.heartbeat=newBeat
-	--sb.logInfo("h %s k %s\nmvar %s\nlistener buffer %s",hitCount,killCount,{masteries.vars,masteries.persistentVars},listenerbonus)
 	masteries.listenerBonuses(notices,args.dt)
 end
 
@@ -606,4 +605,13 @@ function masteries.reset()
 		masteries.clearHand(currentHand)
 	end
 	status.setPersistentEffects("listenerMasteryBonus", {})
+end
+
+function masteries.declutter(inList)
+	local outList={}
+	if type(inList)~="table" then return {} end
+	for _,element in pairs(inList) do
+		if ((element.amount or 0)~=0) or ((element.effectiveMultiplier or 1.0)~=1.0) or ((element.baseMultiplier or 1.0)~=1.0) then table.insert(outList,element) end
+	end
+	return outList
 end
