@@ -4,16 +4,6 @@ function init(args)
 	object.setInteractive(false)
 	storage.hideMode=0
 
-	if (storage.spaces == nil) then
-		storage.spaces = {}
-		local pos = entity.position()
-		local offset, backMaterial
-		for _, offset in ipairs(object.spaces()) do
-			backMaterial = world.material(vec2.add(pos, offset), "background")
-			table.insert(storage.spaces, {offset, backMaterial})
-		end
-	end
-
 	setHideMode()
 
 	-- check wiring state
@@ -47,6 +37,17 @@ end
 
 -- set hide mode (-1 = not hidden, 0 = look like blocks, 1 = invisible)
 function setHideMode()
+
+	if (storage.spaces == nil) then
+		storage.spaces = {}
+		local pos = entity.position()
+		local offset, backMaterial
+		for _, offset in ipairs(object.spaces()) do
+			backMaterial = world.material(vec2.add(pos, offset), "background")
+			table.insert(storage.spaces, {offset, backMaterial})
+		end
+	end
+
 	if (storage.hideMode == 0) then
 		object.setMaterialSpaces(storage.spaces)
 	else
@@ -69,6 +70,7 @@ end
 
 function onNodeConnectionChange(args)
 	requestMarkerPositions()
+	setHideMode()
 end
 
 function onInputNodeChange(args)
