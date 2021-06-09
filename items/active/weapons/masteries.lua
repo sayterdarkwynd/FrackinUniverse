@@ -163,6 +163,7 @@ function masteries.apply(args)
 
 			--quarterstaves: dodge/defense/heal tech boosts. protection boost. damage boost.
 			if tagCaching[currentHand.."TagCache"]["quarterstaff"] or tagCaching[currentHand.."TagCache"]["qs"] then
+				if not masteries.stats.quarterstaffMastery then masteries.stats.quarterstaffMastery=status.stat("quarterstaffMastery") end
 				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.25*masteries.stats.quarterstaffMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.quarterstaffMastery*handMultiplier/2) })
 				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(0.12*masteries.stats.quarterstaffMastery*handMultiplier) })
@@ -352,6 +353,8 @@ function masteries.apply(args)
 			--fist weapons: mastery: increased crit and stun chance. increased damage. combo: increased crit chance/damage, stun chance.
 			--fist weapons aren't 'melee' in vanilla. many mods unfortunately follow that idiot trend. ERM is even worse in that they don't even properly use the fistWeapon category.
 			if tagCaching[currentHand.."TagCache"]["fist"] or tagCaching[currentHand.."TagCache"]["fistweapon"] or tagCaching[currentHand.."TagCache"]["gauntlet"] then
+				--I hate stupid people.
+				if not masteries.stats.fistMastery then masteries.stats.fistMastery=status.stat("fistMastery") end
 				local comboStep=math.max(masteries.vars[otherHand.."ComboStep"] and (masteries.vars[otherHand.."ComboStep"]) or 0,masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"]) or 0)
 				table.insert(masteryBuffer,{stat="powerMultiplier",effectiveMultiplier=1+(masteries.stats.fistMastery*handMultiplier/2) })
 				table.insert(masteryBuffer,{stat="critChance", amount=((1*comboStep)+(2*masteries.stats.fistMastery))*handMultiplier})
@@ -376,6 +379,28 @@ function masteries.apply(args)
 				table.insert(masteryBuffer,{stat="critChance", amount=1/2*masteries.stats.bioweaponMastery*handMultiplier})
 			end
 
+			--wands: increased damage, reduced cast time, increased projectiles (+1 per 16.66% mastery, up to 100%), increased range.
+			--khe's take: slightly less damage and range from mastery as it's a more versatile weapon. Instead, it casts a bit faster and gains projectiles from mastery faster.
+			--notes: projectile count does not increase total damage, as the damage is split per projectile.
+			--math: 20% mastery grants: 5% range and damage when wielded alone, or 2.5% wielded with another weapon. 0.96 charge time multiplier, or 0.98. +1.2 projectiles, or +0.6. note that 0.2 projectiles is a 20% chance for a projectile.
+			if tagCaching[currentHand.."TagCache"]["wand"] then
+				table.insert(masteryBuffer,{stat="focalRangeMult", effectiveMultiplier=1+(masteries.stats.wandMastery*handMultiplier/4) })
+				table.insert(masteryBuffer,{stat="focalCastTimeMult", effectiveMultiplier=1-(masteries.stats.wandMastery*handMultiplier/5) })
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.wandMastery*handMultiplier/4) })
+				table.insert(masteryBuffer,{stat="focalProjectileCountBonus", amount=math.min(1.0,math.floor(masteries.stats.wandMastery*6))*handMultiplier })
+			end
+
+			--wands: increased damage, reduced cast time, increased projectiles (+1 per 20% mastery, up to 100%), increased range.
+			--khe's take: staves are the more cast range and damage focused weapon, less about speed and many hits.
+			--notes: projectile count does not increase total damage, as the damage is split per projectile.
+			--math: 20% mastery grants: 10% range, 6% damage, 0.98 charge time multiplier. +1 projectile.
+			if tagCaching[currentHand.."TagCache"]["staff"] then
+				table.insert(masteryBuffer,{stat="focalRangeMult", effectiveMultiplier=1+(masteries.stats.staffMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="focalCastTimeMult", effectiveMultiplier=1-(masteries.stats.staffMastery*handMultiplier/10) })
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.staffMastery*handMultiplier/3) })
+				table.insert(masteryBuffer,{stat="focalProjectileCountBonus", amount=math.min(1.0,math.floor(masteries.stats.staffMastery*5))*handMultiplier })
+			end
+
 			--broadswords
 			if tagCaching[currentHand.."TagCache"]["broadsword"] then
 				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] > 2) then
@@ -384,7 +409,7 @@ function masteries.apply(args)
 					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.broadswordMastery*handMultiplier/3) })
 				end
 			end
-			--sb.logInfo("buffer %s %s",currentHand,masteryBuffer)
+			sb.logInfo("buffer %s %s",currentHand,masteries.declutter(masteryBuffer))
 			status.setPersistentEffects("masteryBonus"..currentHand,masteries.declutter(masteryBuffer))
 		end
 	end
@@ -440,7 +465,7 @@ function masteries.listenerBonuses(notifications,dt)
 
 	--implement timer for hit/kill bonuses. cap each at 500. for now.
 	if hitCount>0 then
-		masteries.vars.hitTimer=10.0
+		masteries.vars.hitTimer=3.0
 		masteries.vars.inflictedHitCounter=masteries.vars.inflictedHitCounter+hitCount
 		masteries.vars.inflictedHitCounter=math.min(masteries.vars.inflictedHitCounter,500)
 	else

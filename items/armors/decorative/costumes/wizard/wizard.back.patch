@@ -1,38 +1,42 @@
 [
-  {
-    "op": "add",
-    "path": "/acceptsAugmentType",
-    "value": "back"
-  },
-  {
-    "op": "add",
-    "path": "/radioMessagesOnPickup",
-    "value": [
-      "pickupepp"
-    ]
-  },
-  {
-    "op": "add",
-    "path": "/statusEffects",
-    "value": [
-      {
-        "stat": "chargeTimerBonus",
-        "amount": 0.5
-      },
-        {
-        "stat": "staffMastery",
-        "amount": 0.20
-      }    
-    ]
-  },
-  {
-    "op": "replace",
-    "path": "/description",
-    "value": "A Technowizard scroll pulsing with power.\n^green;20%^reset; Arcane Mastery\n-^green;50%^reset;to Charge Time"
-  },
-  {
-    "op": "replace",
-    "path": "/tooltipKind",
-    "value": "baseaugment"
-  }
+	{
+		"op": "add",
+		"path": "/acceptsAugmentType",
+		"value": "back"
+	},
+	{
+		"op": "add",
+		"path": "/radioMessagesOnPickup",
+		"value": [
+			"pickupepp"
+		]
+	},
+	{
+		"op": "add",
+		"path": "/statusEffects",
+		"value": [
+			{
+				"stat" : "focalCastTimeMult",
+				"effectiveMultiplier" : 0.8
+			},
+			{
+				"stat": "staffMastery",
+				"amount": 0.20
+			},
+			{
+				"stat": "wandMastery",
+				"amount": 0.20
+			}
+		]
+	},
+	{
+		"op": "replace",
+		"path": "/description",
+		"value": "A Technowizard scroll pulsing with power.\n^green;20%^reset; Wand & Staff Mastery\n^green;^green;0.8^reset;x Wand & Staff Charge Time"
+	},
+	{
+		"op": "replace",
+		"path": "/tooltipKind",
+		"value": "baseaugment"
+	}
 ]

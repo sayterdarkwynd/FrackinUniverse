@@ -15,10 +15,6 @@ function AimedProjectile:init()
 	self.weapon.onLeaveAbility = function()
 		self:reset()
 	end
-
-  --mastery
-    self.staffMastery = 1 + status.stat("staffMastery")   
-    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0 
 end
 
 function AimedProjectile:update(dt, fireMode, shiftHeld)
@@ -43,14 +39,8 @@ function AimedProjectile:charge()
 	animator.setParticleEmitterActive(self.elementalType .. "charge", true)
 	activeItem.setCursor("/cursors/charge2.cursor")
 
-	local chargeTimer = self.stances.charge.duration
+	local chargeTimer = self.stances.charge.duration * status.stat("focalCastTimeMult")
 
-    -- Wand/Staff Charge Bonus
-    if self.chargeTimerBonus > 0 then
-        chargeTimer = self.stances.charge.duration - self.chargeTimerBonus  
-        --sb.logInfo("edited duration : "..chargeTimer)  
-    end
-    	
 	while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
 		chargeTimer = chargeTimer - self.dt
 
@@ -130,7 +120,7 @@ function AimedProjectile:createProjectiles()
 
 	local pParams = copy(self.projectileParameters)
 	pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier")
-	pParams.powerMultiplier = activeItem.ownerPowerMultiplier()  * self.staffMastery 
+	pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
 
 	if not world.lineTileCollision(mcontroller.position(), position) then
 		world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), {mcontroller.facingDirection() * math.cos(aim), math.sin(aim)}, false, pParams)

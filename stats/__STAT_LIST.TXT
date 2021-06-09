@@ -162,6 +162,9 @@ OTHER:
 	stunChance                      [amount]              [0-relative. Default: 0] Chance to stun. Requires a crit. value of 42 is 42% chance to stun on crit. so if you have 42% chance for both, that equates to about 17% chance to stun.
 	magazineMultiplier				[effectiveMultiplier] [1-relative] direct multiplier to BASE magazine size, before magazineSize. if a magazine has 1 shot in it,  2.0 will make it 2. 1.25 might not do anything.
 	magazineSize					[amount]			  [0-relative] additive flat increase to magazine size. value of 1 is 1 bullet added to the magazine
+	focalRangeMult					[effectiveMultiplier] [1-relative] wand/staff max range is multiplied by this
+	focalCastTimeMult				[effectiveMultiplier] [1-relative] wand/staff cast time = charge stance's duration times this.
+	focalProjectileCountBonus		[amount]			  [1-relative] Increases wand/staff projectile count. this is not a dps increase, as damage is divided per projectile.
 
     fuCharisma                      [baseMultiplier]	  [1-Relative] Used for trading on space stations.
 	fuFoodTrackerHandler			[fixed]				  [-1,0,1] set by fu_player_init. -1 means food isnt draining,1 means it is, 0 means the value isnt initialized.
