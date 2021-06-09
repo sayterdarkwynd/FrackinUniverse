@@ -77,14 +77,14 @@ function NebBowShot:draw()
 
 		--If not yet fully drawn, drain energy quickly
 		if self.drawTimer< self.modifiedDrawTime then
-			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus + status.stat("bowEnergyPenalty")) / self.modifiedDrawTime * self.dt)
+			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus) / self.modifiedDrawTime * self.dt)
 
 		--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
 		elseif self.drawTimer> self.modifiedDrawTime and self.drawTimer<= (self.modifiedDrawTime + (self.powerProjectileTime or 0)) then
 			status.setResourcePercentage("energyRegenBlock", 0.6)
 			drawFrame = #self.drawArmFrames - 1
 			if self.drainEnergyWhilePowerful then
-			status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
+				status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
 			end
 
 		--If drawn beyond power peak levels, drain energy slowly
