@@ -106,8 +106,8 @@ function update(dt)
 	if entity.entityType() ~= "npc" then
 		local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
 		if status.statPositive("breathProtection") or world.breathable(mouthPosition)
-			or status.statPositive("waterbreathProtection") and world.liquidAt(mouthPosition)
-			then
+		or status.statPositive("waterbreathProtection") and world.liquidAt(mouthPosition)
+		then
 			status.modifyResource("breath", status.stat("breathRegenerationRate") * dt)
 		else
 			status.modifyResource("breath", -status.stat("breathDepletionRate") * dt)

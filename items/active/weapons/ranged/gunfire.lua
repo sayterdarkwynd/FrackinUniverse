@@ -26,7 +26,8 @@ function GunFire:init()
 
 	calcAmmo(self)
 	local defaultMag=((self.ownerType=="player") and -1) or self.magazineSize
-	self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) -- current number of bullets in the magazine
+	--self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) -- current number of bullets in the magazine
+	self.magazineAmount=config.getParameter("magazineAmount",defaultMag)
 	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) -- how long does reloading mag take?
 
 	if (self.isAmmoBased == 1) then
@@ -64,28 +65,17 @@ function GunFire:init()
 	self.weapon.onLeaveAbility = function()
 		self.weapon:setStance(self.stances.idle)
 	end
-
+	
 	self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
 	self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
-
 end
 
 function calcAmmo(self)
-	--help addressing race conditions and compensating for idiots.
-	if not masteries then
-		sb.logError("gunfire.lua: masteries failed to load by both weapon.lua and gun.lua. aborting ammo calc.")
-		return
-	end
-	if not masteries.applied then
-		masteries.update(0)
-	end
-	--sb.logInfo("mag size stat %s",status.stat("magazineSize"))
-	--self.magazineSize = (config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")))*status.stat("magazineMultiplier") -- total count of the magazine
+	local oldSize=self.magazineSize
 	self.magazineSize = (config.getParameter("magazineSize",1)*status.stat("magazineMultiplier")) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
-	--sb.logInfo("mag size total %s",self.magazineSize)
+	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
 end
-
 
 -- ****************************************
 -- FR FUNCTIONS
@@ -124,6 +114,14 @@ function GunFire:update(dt, fireMode, shiftHeld)
 	end]]--this block is unused. period.
 
 	if self.cooldownTimer == 0 then
+		local changed,from=calcAmmo(self)
+		if changed then
+			if self.magazineSize>from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount+(self.magazineSize-from))
+			elseif self.magazineSize < from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount)
+			end
+		end
 		self.isReloading = false
 		-- set the cursor to the FU White cursor
 		if (self.isAmmoBased == 1) then
@@ -408,7 +406,7 @@ function GunFire:hasShotgunReload()
 end
 
 function GunFire:checkAmmo(force)
-	 -- set the cursor to the Reload cursor
+	-- set the cursor to the Reload cursor
 	if (self.isAmmoBased==1) then	-- ammo bar color check
 		if self.currentAmmoPercent <= 0 then
 			self.barColor = {0,0,0,255}

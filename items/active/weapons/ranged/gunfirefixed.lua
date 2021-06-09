@@ -84,18 +84,9 @@ function GunFireFixed:init()
 end
 
 function calcAmmo(self)
-	--help addressing race conditions and compensating for idiots.
-	if not masteries then
-		sb.logError("gunfirefixed.lua: masteries failed to load by both weapon.lua and gun.lua. aborting ammo calc.")
-		return
-	end
-	if not masteries.applied then
-		masteries.update(0)
-	end
-	--sb.logInfo("mag size stat %s",status.stat("magazineSize"))
-	--self.magazineSize = (config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")))*status.stat("magazineMultiplier") -- total count of the magazine
+	local oldSize=self.magazineSize
 	self.magazineSize = (config.getParameter("magazineSize",1)*status.stat("magazineMultiplier")) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
-	--sb.logInfo("mag size total %s",self.magazineSize)
+	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
 end
 
 -- ****************************************
@@ -135,6 +126,14 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 		self.loadupTimer = math.max(0, self.loadupTimer - self.dt)
 	end
 	if self.cooldownTimer == 0 then
+		local changed,from=calcAmmo(self)
+		if changed then
+			if self.magazineSize>from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount+(self.magazineSize-from))
+			elseif self.magazineSize < from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount)
+			end
+		end
 		self.isReloading = false
 		-- set the cursor to the FU White cursor
 		if (self.isAmmoBased == 1) then

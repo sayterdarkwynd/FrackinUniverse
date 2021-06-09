@@ -1,6 +1,5 @@
 require "/scripts/util.lua"
 require "/items/active/weapons/crits.lua"
-require "/items/active/weapons/masteries.lua"--this will load "/items/active/tagCaching.lua"
 
 -- handles weapon stances, animations, and abilities
 Weapon = {}
@@ -27,11 +26,9 @@ function Weapon:init()
 	for _,ability in pairs(self.abilities) do
 		ability:init()
 	end
-	masteries.update(0)
 end
 
 function Weapon:update(dt, fireMode, shiftHeld)
-	masteries.update(dt)
 	self.attackTimer = math.max(0, self.attackTimer - dt)
 
 	for _,ability in pairs(self.abilities) do
