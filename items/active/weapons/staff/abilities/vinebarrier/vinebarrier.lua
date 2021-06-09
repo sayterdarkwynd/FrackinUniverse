@@ -5,6 +5,10 @@ Barrier = WeaponAbility:new()
 
 function Barrier:init()
   self:reset()
+  
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 function Barrier:update(dt, fireMode, shiftHeld)

@@ -18,6 +18,10 @@ function CloudBurst:init()
   self.weapon.onLeaveAbility = function()
     self:reset()
   end
+
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0  
 end
 
 function CloudBurst:update(dt, fireMode, shiftHeld)
@@ -37,13 +41,20 @@ end
 
 function CloudBurst:charge()
   self.weapon:setStance(self.stances.charge)
-
+  self.stances.charge.duration = self.stances.charge.duration * self.chargeTimerBonus
   animator.playSound(self.elementalType.."charge")
   animator.setAnimationState("charge", "charge")
   animator.setParticleEmitterActive(self.elementalType .. "charge", true)
   activeItem.setCursor("/cursors/charge2.cursor")
 
   local chargeTimer = self.stances.charge.duration
+  
+    -- Wand/Staff Charge Bonus
+    if self.chargeTimerBonus > 0 then
+        chargeTimer = self.stances.charge.duration - self.chargeTimerBonus  
+        --sb.logInfo("edited duration : "..chargeTimer)  
+    end
+
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     chargeTimer = chargeTimer - self.dt
 
@@ -143,10 +154,21 @@ function CloudBurst:createProjectiles()
   local basePos = activeItem.ownerAimPosition()
 
   local pCount = self.projectileCount or 1
+  -- bonus projectiles
+  if self.staffMasteryBase > 0.80 then
+     self.bonusProjectiles = 3
+  elseif self.staffMasteryBase > 0.40 then
+     self.bonusProjectiles = 2
+  elseif self.staffMasteryBase > 0.20 then
+     self.bonusProjectiles = 1
+  else
+     self.bonusProjectiles = 1
+  end
+  pCount = pCount + self.bonusProjectiles
 
   local pParams = copy(self.projectileParameters)
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
-  pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(

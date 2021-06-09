@@ -13,7 +13,6 @@ function NebBowShot:init()
 	self.bonusSpeedMult=1/(1+self.bonusSpeed)
 	self.baseDrawTime=self.drawTime
 	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*self.bonusSpeedMult)
-
 	animator.setGlobalTag("drawFrame", "0")
 	animator.setAnimationState("bow", "idle")
 	self.cooldownTimer = 0
@@ -61,7 +60,6 @@ end
 
 function NebBowShot:draw()
 	self.energyBonus = status.stat("bowEnergyBonus")
-
 	self.weapon:setStance(self.stances.draw)
 
 	animator.setSoundPitch("draw", 1, self.modifiedDrawTime)
@@ -79,7 +77,7 @@ function NebBowShot:draw()
 
 		--If not yet fully drawn, drain energy quickly
 		if self.drawTimer< self.modifiedDrawTime then
-			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus) / self.modifiedDrawTime * self.dt)
+			status.overConsumeResource("energy", (self.energyPerShot - self.energyBonus + status.stat("bowEnergyPenalty")) / self.modifiedDrawTime * self.dt)
 
 		--If fully drawn and at peak power, prevent energy regen and set the drawFrame to power charged
 		elseif self.drawTimer> self.modifiedDrawTime and self.drawTimer<= (self.modifiedDrawTime + (self.powerProjectileTime or 0)) then

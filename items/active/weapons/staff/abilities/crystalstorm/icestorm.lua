@@ -18,6 +18,10 @@ function CrystalStorm:init()
 		self:reset()
 	end
 	self.castposition = nil
+  
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 function CrystalStorm:update(dt, fireMode, shiftHeld)
@@ -33,6 +37,9 @@ function CrystalStorm:update(dt, fireMode, shiftHeld)
 
 		self:setState(self.charge)
 	end
+
+    --mastery
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 function CrystalStorm:charge()
@@ -47,6 +54,13 @@ function CrystalStorm:charge()
 	activeItem.setCursor("/cursors/charge2.cursor")
 
 	local chargeTimer = self.stances.charge.duration
+
+    -- Wand/Staff Charge Bonus
+    if self.chargeTimerBonus > 0 then
+        chargeTimer = self.stances.charge.duration - self.chargeTimerBonus  
+        --sb.logInfo("edited duration : "..chargeTimer)  
+    end
+    	
 	while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
 		chargeTimer = chargeTimer - self.dt
 
@@ -145,10 +159,21 @@ function CrystalStorm:createProjectiles()
 	local basePos = vec2.sub(aimPosition,{0,5})
 	self.castPosition = basePos
 	local pCount = self.projectileCount or 1
+  -- bonus projectiles
+  if self.staffMasteryBase > 0.80 then
+     self.bonusProjectiles = 3
+  elseif self.staffMasteryBase > 0.40 then
+     self.bonusProjectiles = 2
+  elseif self.staffMasteryBase > 0.20 then
+     self.bonusProjectiles = 1
+  else
+     self.bonusProjectiles = 1
+  end
+  pCount = pCount + self.bonusProjectiles
 
 	local pParams = copy(self.projectileParameters)
 	pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
-	pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+	pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
 
 	for i = 1, pCount do
 		local position = vec2.add(basePos,	{xoffset[((i-1)%8)+1], 1.25 * (i - 1)})

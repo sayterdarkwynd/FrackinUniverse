@@ -17,6 +17,10 @@ function Controlledteleport:init()
   self.weapon.onLeaveAbility = function()
     self:reset()
   end
+  
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 --On each step;
@@ -45,8 +49,15 @@ function Controlledteleport:charge()
   animator.setAnimationState("charge", "charge")
   animator.setParticleEmitterActive(self.elementalType .. "charge", true)
   activeItem.setCursor("/cursors/charge2.cursor")
-
+ 
   local chargeTimer = self.stances.charge.duration
+
+  -- Wand/Staff Charge Bonus
+  if self.chargeTimerBonus > 0 then
+      chargeTimer = self.stances.charge.duration - self.chargeTimerBonus  
+      --sb.logInfo("edited duration : "..chargeTimer)  
+  end
+
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     chargeTimer = chargeTimer - (self.dt*(((status.statPositive("admin") or player.isAdmin()) and 10) or 1))
 

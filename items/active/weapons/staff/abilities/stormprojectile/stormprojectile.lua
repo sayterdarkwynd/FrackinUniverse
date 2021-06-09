@@ -17,6 +17,10 @@ function StormProjectile:init()
   self.weapon.onLeaveAbility = function()
     self:reset()
   end
+  
+  --mastery
+    self.staffMastery = 1 + status.stat("staffMastery")   
+    self.chargeTimerBonus = status.stat("chargeTimerBonus") or 0
 end
 
 function StormProjectile:update(dt, fireMode, shiftHeld)
@@ -43,6 +47,13 @@ function StormProjectile:charge()
   activeItem.setCursor("/cursors/charge2.cursor")
 
   local chargeTimer = self.stances.charge.duration
+
+  -- Wand/Staff Charge Bonus
+  if self.chargeTimerBonus > 0 then
+      chargeTimer = self.stances.charge.duration - self.chargeTimerBonus  
+      --sb.logInfo("edited duration : "..chargeTimer)  
+  end
+
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     chargeTimer = chargeTimer - self.dt
 
@@ -145,7 +156,7 @@ function StormProjectile:createProjectiles()
 
   local pParams = copy(self.projectileParameters)
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
-  pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  pParams.powerMultiplier = activeItem.ownerPowerMultiplier() * self.staffMastery 
   local projectileType=self.projectileType:gsub("spawner","storm2")
 
   pParams.timedActions={
