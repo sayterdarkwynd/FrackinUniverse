@@ -226,8 +226,8 @@ function masteries.apply(args)
 
 			--scythe: combo based crit damage and crit chance.
 			if tagCaching[currentHand.."TagCache"]["scythe"] then
-				table.insert(masteryBuffer,{stat="critDamage", amount=(0.05+((masteries.vars[currentHand.."ComboStep"] or 1)*0.1))*handMultiplier })
-				table.insert(masteryBuffer,{stat="critChance", amount=(1+((masteries.vars[currentHand.."ComboStep"] or 0))*masteries.stats.scytheMastery)*handMultiplier })
+				table.insert(masteryBuffer,{stat="critDamage", amount=(0.05+((masteries.vars[currentHand.."ComboStep"] or 1)*0.1))*(1+masteries.stats.scytheMastery)*handMultiplier })
+				table.insert(masteryBuffer,{stat="critChance", amount=((masteries.vars[currentHand.."ComboStep"] or 0)*(1+masteries.stats.scytheMastery))*handMultiplier })
 			end
 
 			--longswords: no baseline value, like shortspears, due to fart.
