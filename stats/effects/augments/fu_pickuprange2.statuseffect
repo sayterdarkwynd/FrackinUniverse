@@ -1,15 +1,16 @@
 {
-  "name" : "fu_pickuprange2",
-  "effectConfig" : {
-    "range" : 15,
-    "refresh" : 24
-  },
-  "defaultDuration" : 30,
+	"name" : "fu_pickuprange2",
+	"effectConfig" : {
+		//"range" : 15,//no longer does anything
+		"refresh" : 24,
+		"auraprojectile":"fuitemmagnetprojectile2"
+	},
+	"defaultDuration" : 30,
 
-  "scripts" : [
-    "fu_pickuprange.lua"
-  ],
+	"scripts" : [
+		"/stats/effects/fu_auraprojectile.lua"
+	],
 
-  "label" : "Pulls items towards you",
-  "icon" : "/interface/statuses/energy.png"
+	"label" : "Pulls items towards you",
+	"icon" : "/interface/statuses/energy.png"
 }
