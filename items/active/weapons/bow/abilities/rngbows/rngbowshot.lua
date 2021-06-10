@@ -206,7 +206,7 @@ function NebRNGBowShot:currentProjectileParameters()
 	if self.minMaxSpeedMultiplier then
 		speedMultiplier = math.random(self.minMaxSpeedMultiplier[1] * 100, self.minMaxSpeedMultiplier[2] * 100) / 100
 	end
-	speedMultiplier = speedMultiplier*status.stat("arrowSpeedMultiplier")
+	speedMultiplier = speedMultiplier*(1+status.stat("arrowSpeedMultiplier"))
 
 	--Calculate projectile speed based on draw time and projectile parameters
 	projectileParameters.speed = projectileParameters.speed or projectileConfig.speed

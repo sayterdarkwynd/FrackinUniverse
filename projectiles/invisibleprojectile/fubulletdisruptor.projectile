@@ -1,0 +1,33 @@
+{
+	"projectileName":"fubulletdisruptor",
+	"physics":"laser",
+	"timeToLive":1,
+	"image":"invisibleprojectile.png",
+
+	"actionOnReap":[],
+	"speed":0,
+	"power":0,
+
+	"onlyHitTerrain":true,
+
+	"boundBox":[-60, -60, 60, 60],
+	"physicsForces":{
+		"pull":{
+			"type":"RadialForceRegion",
+			"categoryWhitelist":["projectile"],
+			"outerRadius":60,
+			"innerRadius":3,
+			"targetRadialVelocity":100,
+			"controlForce":300
+		}
+	},
+
+	"renderLayer":"Player+1",
+	"orientationLocked":true,
+	"fullbright":true,
+	"emitters":[ ],
+
+	"scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+	"piercing":true,
+	"bounces":-1
+}

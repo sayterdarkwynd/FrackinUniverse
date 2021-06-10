@@ -31,7 +31,7 @@ function masteries.apply(args)
 			--magazine bonuses for these work best when done in a hybrid manner like this. means they get roughly the same overall increase.
 			--magazineMultiplier is a stat to multiply base magazine size (tooltip on weapon)
 			if tagCaching[currentHand.."TagCache"]["ranged"] then
-				table.insert(masteryBuffer,{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.ammoMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="magazineMultiplier", amount=(masteries.stats.ammoMastery*handMultiplier) })
 				table.insert(masteryBuffer,{stat="magazineSize", amount=4*masteries.stats.ammoMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/3)*masteries.stats.ammoMastery*handMultiplier})
 			end
@@ -81,7 +81,7 @@ function masteries.apply(args)
 			--assault rifles: increased damage, magazine, crit damage
 			if tagCaching[currentHand.."TagCache"]["assaultrifle"] then
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.assaultrifleMastery*handMultiplier/2) })
-				--{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.assaultrifleMastery*handMultiplier/2) })
+				--{stat="magazineMultiplier", amount=(masteries.stats.assaultrifleMastery*handMultiplier/2) })
 				--{stat="magazineSize", amount=2*masteries.stats.assaultrifleMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.assaultrifleMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="critDamage", amount=(0.3/2)*masteries.stats.assaultrifleMastery*handMultiplier})
@@ -90,7 +90,7 @@ function masteries.apply(args)
 			--sniper rifles: increased magazine, crit chance
 			if tagCaching[currentHand.."TagCache"]["sniperrifle"] then
 				table.insert(masteryBuffer,{stat="critChance", amount=(1/2)*masteries.stats.sniperrifleMastery*handMultiplier})
-				--table.insert(masteryBuffer,{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.sniperrifleMastery*handMultiplier/2) })
+				--table.insert(masteryBuffer,{stat="magazineMultiplier", amount=(masteries.stats.sniperrifleMastery*handMultiplier/2) })
 				--table.insert(masteryBuffer,{stat="magazineSize", amount=2*masteries.stats.sniperrifleMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.sniperrifleMastery*handMultiplier})
 			end
@@ -99,7 +99,7 @@ function masteries.apply(args)
 			if tagCaching[currentHand.."TagCache"]["grenadelauncher"] then
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.grenadelauncherMastery*handMultiplier/2) })
 				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/4)*masteries.stats.grenadelauncherMastery*handMultiplier})
-				--{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.grenadelauncherMastery*handMultiplier/2) })
+				--{stat="magazineMultiplier", amount=(masteries.stats.grenadelauncherMastery*handMultiplier/2) })
 				--{stat="magazineSize", amount=2*masteries.stats.grenadelauncherMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.grenadelauncherMastery*handMultiplier})
 			end
@@ -108,7 +108,7 @@ function masteries.apply(args)
 			if tagCaching[currentHand.."TagCache"]["rocketlauncher"] then
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.rocketlauncherMastery*handMultiplier/2) })
 				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/4)*masteries.stats.rocketlauncherMastery*handMultiplier})
-				--{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.rocketlauncherMastery/2) })
+				--{stat="magazineMultiplier", amount=(masteries.stats.rocketlauncherMastery/2) })
 				--{stat="magazineSize", amount=2*masteries.stats.rocketlauncherMastery})
 				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.rocketlauncherMastery*handMultiplier})
 			end
@@ -117,7 +117,7 @@ function masteries.apply(args)
 			if tagCaching[currentHand.."TagCache"]["shotgun"] then
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.shotgunMastery*handMultiplier/2) })
 				table.insert(masteryBuffer,{stat="reloadTime", amount=(-1/4)*masteries.stats.shotgunMastery*handMultiplier})
-				--{stat="magazineMultiplier", effectiveMultiplier=1+(masteries.stats.shotgunMastery*handMultiplier/2) },
+				--{stat="magazineMultiplier", amount=(masteries.stats.shotgunMastery*handMultiplier/2) },
 				--{stat="magazineSize", amount=2*masteries.stats.shotgunMastery*handMultiplier},
 				table.insert(masteryBuffer,{stat="magazineSize", amount=(1/2)*masteries.stats.shotgunMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="critChance", amount=(1/4)*masteries.stats.shotgunMastery*handMultiplier})
@@ -384,8 +384,8 @@ function masteries.apply(args)
 			--notes: projectile count does not increase total damage, as the damage is split per projectile.
 			--math: 20% mastery grants: 5% range and damage when wielded alone, or 2.5% wielded with another weapon. 0.96 charge time multiplier, or 0.98. +1.2 projectiles, or +0.6. note that 0.2 projectiles is a 20% chance for a projectile.
 			if tagCaching[currentHand.."TagCache"]["wand"] then
-				table.insert(masteryBuffer,{stat="focalRangeMult", effectiveMultiplier=1+(masteries.stats.wandMastery*handMultiplier/4) })
-				table.insert(masteryBuffer,{stat="focalCastTimeMult", effectiveMultiplier=1-(masteries.stats.wandMastery*handMultiplier/5) })
+				table.insert(masteryBuffer,{stat="focalRangeMult",amount=(masteries.stats.wandMastery*handMultiplier/4) })
+				table.insert(masteryBuffer,{stat="focalCastTimeMult", amount=-(masteries.stats.wandMastery*handMultiplier/5) })
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.wandMastery*handMultiplier/4) })
 				table.insert(masteryBuffer,{stat="focalProjectileCountBonus", amount=math.min(1.0,math.floor(masteries.stats.wandMastery*6))*handMultiplier })
 			end
@@ -395,8 +395,8 @@ function masteries.apply(args)
 			--notes: projectile count does not increase total damage, as the damage is split per projectile.
 			--math: 20% mastery grants: 10% range, 6% damage, 0.98 charge time multiplier. +1 projectile.
 			if tagCaching[currentHand.."TagCache"]["staff"] then
-				table.insert(masteryBuffer,{stat="focalRangeMult", effectiveMultiplier=1+(masteries.stats.staffMastery*handMultiplier/2) })
-				table.insert(masteryBuffer,{stat="focalCastTimeMult", effectiveMultiplier=1-(masteries.stats.staffMastery*handMultiplier/10) })
+				table.insert(masteryBuffer,{stat="focalRangeMult",amount=(masteries.stats.staffMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="focalCastTimeMult", amount=-(masteries.stats.staffMastery*handMultiplier/10) })
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.staffMastery*handMultiplier/3) })
 				table.insert(masteryBuffer,{stat="focalProjectileCountBonus", amount=math.min(1.0,math.floor(masteries.stats.staffMastery*5))*handMultiplier })
 			end
@@ -409,7 +409,7 @@ function masteries.apply(args)
 					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.broadswordMastery*handMultiplier/3) })
 				end
 			end
-			sb.logInfo("buffer %s %s",currentHand,masteries.declutter(masteryBuffer))
+			--sb.logInfo("buffer %s %s",currentHand,masteries.declutter(masteryBuffer))
 			status.setPersistentEffects("masteryBonus"..currentHand,masteries.declutter(masteryBuffer))
 		end
 	end

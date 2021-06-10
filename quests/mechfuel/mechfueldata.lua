@@ -7,10 +7,6 @@ function init()
 	if not player.hasQuest("madnessquestdata") then
 		player.startQuest("madnessquestdata")
 	end
-	--make sure the status extender quest is on, this is a safe place to do so
-	if not player.hasQuest("fustatusextenderquest") then
-		player.startQuest("fustatusextenderquest")
-	end
 
 
 	message.setHandler("setQuestFuelCount", function(_, _, value)

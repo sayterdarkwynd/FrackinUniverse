@@ -73,7 +73,7 @@ end
 
 function calcAmmo(self)
 	local oldSize=self.magazineSize
-	self.magazineSize = (config.getParameter("magazineSize",1)*status.stat("magazineMultiplier")) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
+	self.magazineSize = (config.getParameter("magazineSize",1)*(1+status.stat("magazineMultiplier"))) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
 	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
 end
 

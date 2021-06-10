@@ -1,8 +1,10 @@
 require("/scripts/vec2.lua")
 require("/scripts/FRHelper.lua")
+require ("/items/active/weapons/masteries.lua")--this will load "/items/active/tagCaching.lua"
 
 local FR_old_init = init
 local FR_old_update = update
+local FR_old_uninit = uninit
 
 function init(...)
 	if FR_old_init then
@@ -11,8 +13,8 @@ function init(...)
 	self.lastYPosition = 0
 	self.lastYVelocity = 0
 	self.fallDistance = 0
-
 	message.setHandler("FR_getSpecies", function() return self.species end)
+	masteries.update(0)
 end
 
 function update(dt)
@@ -112,6 +114,15 @@ function update(dt)
 		else
 			status.modifyResource("breath", -status.stat("breathDepletionRate") * dt)
 		end
+	end
+	tagCaching.update()
+	masteries.update(dt)
+end
+
+function uninit(...)
+	masteries.reset()
+	if FR_old_uninit then
+		FR_old_uninit(...)
 	end
 end
 

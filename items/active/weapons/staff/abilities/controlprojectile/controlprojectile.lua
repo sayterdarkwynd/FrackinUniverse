@@ -42,7 +42,7 @@ function ControlProjectile:charge()
 	animator.setParticleEmitterActive(self.elementalType .. "charge", true)
 	activeItem.setCursor("/cursors/charge2.cursor")
 
-	local chargeTimer = self.stances.charge.duration * status.stat("focalCastTimeMult")
+	local chargeTimer = self.stances.charge.duration * (1+status.stat("focalCastTimeMult"))
 
 	while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
 		chargeTimer = chargeTimer - self.dt
@@ -129,7 +129,7 @@ end
 
 function ControlProjectile:targetValid(aimPos)
 	local focusPos = self:focusPosition()
-	return world.magnitude(focusPos, aimPos) <= (self.maxCastRange * status.stat("focalRangeMult"))
+	return world.magnitude(focusPos, aimPos) <= (self.maxCastRange * (1+status.stat("focalRangeMult")))
 	and not world.lineTileCollision(mcontroller.position(), focusPos)
 	and not world.lineTileCollision(focusPos, aimPos)
 end

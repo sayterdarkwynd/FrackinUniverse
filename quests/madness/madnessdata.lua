@@ -39,6 +39,7 @@ function init()
 
     storage.crazycarrycooldown=math.max(storage.crazycarrycooldown or 0,10.0)
 
+  
 	--make sure the annoying sounds dont flood
 	status.removeEphemeralEffect("partytime5madness")
 	status.removeEphemeralEffect("partytime5")
@@ -61,16 +62,9 @@ function init()
 	local elementalTypes=root.assetJson("/damage/elementaltypes.config")
 	local buffer={}
 
-	--migrating to separate quest script.
-	--storage.armorSetData=storage.armorSetData or {}
-	--message.setHandler("recordFUPersistentEffect",function(_,_,setName) storage.armorSetData[setName]=os.time() end)
-	if storage.armorSetData then
-		for set,bd in pairs(storage.armorSetData) do
-			status.clearPersistentEffects(set)
-			storage.armorSetData[set]=nil
-		end
-		storage.armorSetData=nil
-	end
+
+	storage.armorSetData=storage.armorSetData or {}
+	message.setHandler("recordFUPersistentEffect",function(_,_,setName) storage.armorSetData[setName]=os.time() end)
 
 	for element,data in pairs(elementalTypes) do
 		if data.resistanceStat then
@@ -437,8 +431,7 @@ end
 
 function update(dt)
 	storage.crazycarrycooldown=math.max(0,(storage.crazycarrycooldown or 0) - dt)
-	--migrating out
-	--handleSetOrphans(dt)
+	handleSetOrphans(dt)
 	--anti-afk concept: check vs a set of 8 points, referring to the 8 'cardinal' directions. If a person moves far enough past one of the last recorded point, the afk timer is reset.
 	--if the player doesn't move enough, a timer will increment. once that timer gets over a certain point, the player is flagged as afk via status property, which is global and thus we only need this code running in one place.
 	--afk timer and recorded points are reset when the script resets.
@@ -651,6 +644,21 @@ function checkMadnessArt()
 	if hasPainting then
 		checkCrazyCarry()
 		status.addEphemeralEffect("madnesspaintingindicator",self.paintTimer)
+	end
+end
+
+function handleSetOrphans(dt)
+	if orphanSetBonusTimer and orphanSetBonusTimer >= 1.0 then
+		orphanSetBonusTimer=0.0
+		local t=os.time()
+		for set,bd in pairs(storage.armorSetData) do
+			if math.abs(t-bd)>1.0 then
+				status.clearPersistentEffects(set)
+				storage.armorSetData[set]=nil
+			end
+		end
+	else
+		orphanSetBonusTimer=(orphanSetBonusTimer or -1.0)+dt
 	end
 end
 

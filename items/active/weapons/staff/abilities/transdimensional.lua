@@ -46,7 +46,7 @@ function Controlledteleport:charge()
 	animator.setParticleEmitterActive(self.elementalType .. "charge", true)
 	activeItem.setCursor("/cursors/charge2.cursor")
 
-	local chargeTimer = ((status.statPositive("admin") or player.isAdmin()) and 0) or (self.stances.charge.duration * status.stat("focalCastTimeMult") * 0.45)
+	local chargeTimer = ((status.statPositive("admin") or player.isAdmin()) and 0) or (self.stances.charge.duration * (1+status.stat("focalCastTimeMult")) * 0.45)
 	while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
 		chargeTimer = chargeTimer - self.dt
 
@@ -152,7 +152,7 @@ function Controlledteleport:targetValid(collidePoly,aimPos)
 		return false
 	end
 	local focusPos = self:focusPosition()
-	if world.magnitude(focusPos, aimPos) <= (self.maxCastRange*status.stat("focalRangeMult")) then
+	if world.magnitude(focusPos, aimPos) <= (self.maxCastRange*(1+status.stat("focalRangeMult"))) then
 		return resolvedPoint
 	end
 end
