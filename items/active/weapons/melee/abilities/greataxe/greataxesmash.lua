@@ -193,7 +193,7 @@ function GreataxeSmash:fire()
 						})
 						world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","greataxeMasteryBonus")
 					else
-						status.setPersistentEffects("greataxeMasteryBonus", {
+						status.setPersistentEffects("greataxeMasteryBonus", {})
 						self.timerGreataxe = 0
 					end
 				end
