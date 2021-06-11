@@ -20,35 +20,13 @@ function init()
 	if self.altAbility then
         self.weapon:addAbility(self.altAbility)
 	end
-
-    self.whipMastery = 1 + status.stat("whipMastery")
-    self.whipMasteryHalved = ((self.whipMastery -1) / 2) + 1
-    self.whipMasteryThirded = ((self.whipMastery -1) / 3) + 1
-    self.whipMasteryQuartered = ((self.whipMastery -1) / 4) + 1
-
 	self.weapon:init()
 end
 
 function update(dt, fireMode, shiftHeld)
-    self.whipMastery = 1 + status.stat("whipMastery")
-    self.whipMasteryHalved = ((self.whipMastery -1) / 2) + 1
-    self.whipMasteryThirded = ((self.whipMastery -1) / 3) + 1
-    self.whipMasteryQuartered = ((self.whipMastery -1) / 4) + 1
-    self.whipMasteryTiny = ((self.whipMastery -1) / 48) + 1
-    
-    if self.whipMastery > 1 then
-	    status.setPersistentEffects("whipbonus", {
-	        {stat = "powerMultiplier", effectiveMultiplier = 1 * self.whipMastery},
-	        {stat = "critChance", amount = 1 * self.whipMastery},
-	        {stat = "critDamage", amount = 0.25 * self.whipMasteryHalved}
-	    }) 
-	    mcontroller.controlModifiers({speedModifier = 1 * self.whipMasteryHalved})
-    end
-
 	self.weapon:update(dt, fireMode, shiftHeld)
 end
 
 function uninit()
-	status.clearPersistentEffects("whipbonus")
 	self.weapon:uninit()
 end

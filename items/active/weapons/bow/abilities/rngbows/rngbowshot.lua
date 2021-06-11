@@ -26,8 +26,6 @@ function NebRNGBowShot:init()
 	self.weapon.onLeaveAbility = function()
 		self:reset()
 	end
-
-	self.bowMastery = 1 + status.stat("bowMastery")
 end
 
 function NebRNGBowShot:update(dt, fireMode, shiftHeld)
@@ -146,19 +144,19 @@ function NebRNGBowShot:fire()
 				self.projectileParameters.damageKind = self.elementalType .. "bow"
 			end
 			self.projectileParameters.periodicActions = {
-					{
-						time = 0,
-						action = "projectile",
-						type = self.elementalType .. "arrowenergy",
-						angleAdjust = 0,
-					config = {timeToLive = 0},
-						inheritDamageFactor = 0.0,
-						inheritSpeedFactor = 1
-					}
+				{
+					time = 0,
+					action = "projectile",
+					type = self.elementalType .. "arrowenergy",
+					angleAdjust = 0,
+				config = {timeToLive = 0},
+					inheritDamageFactor = 0.0,
+					inheritSpeedFactor = 1
 				}
+			}
 			end
 			for i = 1, (self.projectileCount or 1) do
-			world.spawnProjectile(
+				world.spawnProjectile(
 					self:perfectTiming() and self.powerProjectileType or self.projectileType,
 					self:firePosition(),
 					activeItem.ownerEntityId(),
@@ -204,11 +202,11 @@ function NebRNGBowShot:currentProjectileParameters()
 	--Load the root projectile config based on draw power level
 	local projectileConfig = root.projectileConfig(self:perfectTiming() and self.powerProjectileType or self.projectileType)
 
-	local speedMultiplier = 1.0 * self.bowMastery
+	local speedMultiplier = 1.0
 	if self.minMaxSpeedMultiplier then
 		speedMultiplier = math.random(self.minMaxSpeedMultiplier[1] * 100, self.minMaxSpeedMultiplier[2] * 100) / 100
-		speedMultiplier = speedMultiplier 
 	end
+	speedMultiplier = speedMultiplier*(1+status.stat("arrowSpeedMultiplier"))
 
 	--Calculate projectile speed based on draw time and projectile parameters
 	projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
@@ -224,7 +222,7 @@ function NebRNGBowShot:currentProjectileParameters()
 				action = "projectile",
 				type = "arrow" .. arrowVariant .. "sticking",
 				angleAdjust = 0,
-			config = {processing = self.paletteSwaps},
+				config = {processing = self.paletteSwaps},
 				inheritDamageFactor = 0.1,
 				inheritSpeedFactor = 0.6
 			}
@@ -232,8 +230,6 @@ function NebRNGBowShot:currentProjectileParameters()
 	end
 
 	--Bonus damage calculation for quiver users
-	--local damageBonus = 1.0 + status.stat("bowDrawTimeBonus") --adds the bow draw bonus back to damage to keep it on par, otherwise we lose damage
-	self.bowMasteryHalved = ((self.bowMastery -1) / 2) + 1
 	local damageBonus = 1.0  
 	if self.useQuiverDamageBonus == true and status.statPositive("nebsrngbowdamagebonus") then
 		damageBonus = damageBonus+status.stat("nebsrngbowdamagebonus")
@@ -250,8 +246,8 @@ function NebRNGBowShot:currentProjectileParameters()
 		* damageBonus
 		* ((mcontroller.onGround() and 1) or ((mcontroller.liquidMovement() and 1) or (mcontroller.zeroG() and 1) or (self.airborneBonus + status.stat("bowAirBonus"))))
 		/ (self.projectileCount or 1)
-	projectileParameters.power = Crits.setCritDamage(self,projectileParameters.power)
-	projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
+		projectileParameters.power = Crits.setCritDamage(self,projectileParameters.power)
+		projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
 	return projectileParameters
 end
 

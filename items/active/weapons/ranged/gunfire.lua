@@ -1,4 +1,4 @@
---activeItem.setInstanceValue() can be used to set a property on the active item	(ammo reload pause if discarding)
+--activeItem.setInstanceValue() can be used to set a property on the active item (ammo reload pause if discarding)
 --and the property should be accessible via config.getParameter()
 
 require "/scripts/util.lua"
@@ -14,20 +14,21 @@ function GunFire:init()
 	self.ownerType=world.entityType(self.ownerId)
 	-- FU additions
 	--weapon types
-	self.isReloader = config.getParameter("isReloader",0)						-- is this a shotgun style reload?
-	self.isCrossbow = config.getParameter("isCrossbow",0)						-- is this a crossbow?
-	self.isSniper = config.getParameter("isSniper",0)							-- is this a sniper rifle?
-	self.isAmmoBased = config.getParameter("isAmmoBased",0)						-- is this a ammo based gun?
-	self.isMachinePistol = config.getParameter("isMachinePistol",0)					-- is this a machine pistol?
-	self.isShotgun = config.getParameter("isShotgun",0)							-- is this a shotgun?
+	self.isReloader = config.getParameter("isReloader",0) -- is this a shotgun style reload?
+	self.isCrossbow = config.getParameter("isCrossbow",0) -- is this a crossbow?
+	self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
+	self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a ammo based gun?
+	self.isMachinePistol = config.getParameter("isMachinePistol",0) -- is this a machine pistol?
+	self.isShotgun = config.getParameter("isShotgun",0) -- is this a shotgun?
 	-- params
-	self.countdownDelay = 0 									-- how long till it regains damage bonus?
-	self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
+	self.countdownDelay = 0 -- how long till it regains damage bonus?
+	self.timeBeforeCritBoost = 2 -- how long before it starts accruing bonus again?
 
-	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
+	calcAmmo(self)
 	local defaultMag=((self.ownerType=="player") and -1) or self.magazineSize
-	self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) 						-- current number of bullets in the magazine
-	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) 	-- how long does reloading mag take?
+	--self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) -- current number of bullets in the magazine
+	self.magazineAmount=config.getParameter("magazineAmount",defaultMag)
+	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) -- how long does reloading mag take?
 
 	if (self.isAmmoBased == 1) then
 		self.timerRemoveAmmoBar = 0
@@ -38,14 +39,14 @@ function GunFire:init()
 	self.barColor = {0,250,112,125}
 
 
-		-- **** FR ADDITIONS
+	-- **** FR ADDITIONS
 	daytime = daytimeCheck()
 	underground = undergroundCheck()
 	lightLevel = 1
 
 	-- bonus add for novakids with pistols when sped up, specifically to energy and damage equations at end of file so that they still damage and consume energy at high speed
 	self.energyMax = 1
-		-- ** END FR ADDITIONS
+	-- ** END FR ADDITIONS
 
 	self.weapon:setStance(self.stances.idle)
 	if (self.isAmmoBased == 1) then
@@ -64,13 +65,17 @@ function GunFire:init()
 	self.weapon.onLeaveAbility = function()
 		self.weapon:setStance(self.stances.idle)
 	end
-
+	
 	self.hasRecoil = (config.getParameter("hasRecoil",0))--when fired, does the weapon have recoil?
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
 	self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
-
 end
 
+function calcAmmo(self)
+	local oldSize=self.magazineSize
+	self.magazineSize = (config.getParameter("magazineSize",1)*(1+status.stat("magazineMultiplier"))) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
+	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
+end
 
 -- ****************************************
 -- FR FUNCTIONS
@@ -109,6 +114,14 @@ function GunFire:update(dt, fireMode, shiftHeld)
 	end]]--this block is unused. period.
 
 	if self.cooldownTimer == 0 then
+		local changed,from=calcAmmo(self)
+		if changed then
+			if self.magazineSize>from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount+(self.magazineSize-from))
+			elseif self.magazineSize < from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount)
+			end
+		end
 		self.isReloading = false
 		-- set the cursor to the FU White cursor
 		if (self.isAmmoBased == 1) then
@@ -393,7 +406,7 @@ function GunFire:hasShotgunReload()
 end
 
 function GunFire:checkAmmo(force)
-	 -- set the cursor to the Reload cursor
+	-- set the cursor to the Reload cursor
 	if (self.isAmmoBased==1) then	-- ammo bar color check
 		if self.currentAmmoPercent <= 0 then
 			self.barColor = {0,0,0,255}
@@ -480,7 +493,7 @@ function GunFire:checkAmmo(force)
 end
 
 function GunFire:checkMagazine(evalOnly)
-	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize"))		-- total count of the magazine
+	calcAmmo(self)
 	self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	self.isAmmoBased = config.getParameter("isAmmoBased",0)
 	if (self.isAmmoBased == 1) then

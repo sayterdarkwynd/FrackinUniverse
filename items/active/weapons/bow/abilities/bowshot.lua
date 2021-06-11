@@ -6,8 +6,6 @@ require "/items/active/weapons/crits.lua"
 BowShot = WeaponAbility:new()
 
 function BowShot:init()
-	self.bowMastery = 1 + status.stat("bowMastery")
-
 	self.energyPerShot = self.energyPerShot or 0
 
 	self.drawTime = 0
@@ -115,8 +113,7 @@ end
 function BowShot:currentProjectileParameters()
 	local projectileParameters = copy(self.projectileParameters or {})
 	local projectileConfig = root.projectileConfig(self:perfectTiming() and self.powerProjectileType or self.projectileType)
-	projectileParameters.speed = projectileParameters.speed or projectileConfig.speed
-	projectileParameters.speed = projectileParameters.speed * root.evalFunction(self.drawSpeedMultiplier, self.drawTime)
+	projectileParameters.speed = (projectileParameters.speed or projectileConfig.speed) * root.evalFunction(self.drawSpeedMultiplier, self.drawTime) * (1+status.stat("arrowSpeedMultiplier"))
 	projectileParameters.power = projectileParameters.power or projectileConfig.power
 	--projectileParameters.power = projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime) + BowShot:setCritDamage(damage)
 	projectileParameters.power = Crits.setCritDamage(self, projectileParameters.power* self.weapon.damageLevelMultiplier* root.evalFunction(self.drawPowerMultiplier, self.drawTime))

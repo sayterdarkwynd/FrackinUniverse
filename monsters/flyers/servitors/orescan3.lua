@@ -139,7 +139,7 @@ function update(dt)
 							local color = copy(self.colorCache[sType][cacheKey])
 
 							local dist = math.sqrt(distSquared)
-							local fadeFactor = 2 * math.min(dist - self.pingInnerRadius, math.min(self.pingOuterRadius - dist, searchRange - dist)) / fadeDistance
+							local fadeFactor = 2 * math.min(dist - self.pingInnerRadius,self.pingOuterRadius - dist, searchRange - dist) / fadeDistance
 							color[4] = color[4] * fadeFactor
 
 							local variant = math.random(1, self.detectConfig.variants)

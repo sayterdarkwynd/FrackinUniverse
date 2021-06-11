@@ -29,7 +29,7 @@ function GunFireFixed:init()
 	self.countdownDelay = 0 									-- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 									-- how long before it starts accruing bonus again?
 
-	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")) 	-- total count of the magazine
+	calcAmmo(self)
 	local defaultMag=((self.ownerType=="player") and -1) or self.magazineSize
 	self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) 						-- current number of bullets in the magazine
 	self.reloadTime = math.max(0,config.getParameter("reloadTime",1) + status.stat("reloadTime")) 	-- how long does reloading mag take?
@@ -83,11 +83,14 @@ function GunFireFixed:init()
 	self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
 
+function calcAmmo(self)
+	local oldSize=self.magazineSize
+	self.magazineSize = (config.getParameter("magazineSize",1)*(1+status.stat("magazineMultiplier"))) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
+	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
+end
+
 -- ****************************************
 -- FR FUNCTIONS
-
-
-
 
 function daytimeCheck()
 	return world.timeOfDay() < 0.5 -- true if daytime
@@ -123,6 +126,14 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 		self.loadupTimer = math.max(0, self.loadupTimer - self.dt)
 	end
 	if self.cooldownTimer == 0 then
+		local changed,from=calcAmmo(self)
+		if changed then
+			if self.magazineSize>from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount+(self.magazineSize-from))
+			elseif self.magazineSize < from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount)
+			end
+		end
 		self.isReloading = false
 		-- set the cursor to the FU White cursor
 		if (self.isAmmoBased == 1) then
@@ -519,7 +530,7 @@ function GunFireFixed:checkAmmo(force)
 end
 
 function GunFireFixed:checkMagazine(evalOnly)
-	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize"))		-- total count of the magazine
+	calcAmmo(self)
 	self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	self.isAmmoBased = config.getParameter("isAmmoBased",0)
 	if (self.isAmmoBased == 1) then

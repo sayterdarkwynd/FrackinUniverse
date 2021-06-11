@@ -26,11 +26,9 @@ function Weapon:init()
 	for _,ability in pairs(self.abilities) do
 		ability:init()
 	end
-
 end
 
 function Weapon:update(dt, fireMode, shiftHeld)
-
 	self.attackTimer = math.max(0, self.attackTimer - dt)
 
 	for _,ability in pairs(self.abilities) do
