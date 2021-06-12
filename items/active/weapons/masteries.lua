@@ -515,7 +515,7 @@ function masteries.listenerBonuses(notifications,dt)
 			end
 
 			if tagCaching.mergedCache["dagger"] then
-				masteryCalcBuffer=masteryCalcBuffer+masteries.stats.longswordMastery
+				masteryCalcBuffer=masteryCalcBuffer+masteries.stats.daggerMastery
 				masteryCounts=masteryCounts+1
 			end
 
