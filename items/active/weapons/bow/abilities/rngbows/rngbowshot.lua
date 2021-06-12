@@ -12,11 +12,9 @@ function NebRNGBowShot:init()
 	self.elementalType = config.getParameter("elementalType")
 	self.arrowVariant = config.getParameter("animationParts")
 
-	self.drawTimer= 0
-	self.bonusSpeed = math.max(-0.99,status.stat("bowDrawTimeBonus"))
-	self.bonusSpeedMult=1/(1+self.bonusSpeed)
+	self.drawTimer=0
 	self.baseDrawTime=self.drawTime
-	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*self.bonusSpeedMult)
+	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
     
 	animator.setAnimationState("bow", "idle")
 	self.cooldownTimer = 0
@@ -60,6 +58,7 @@ function NebRNGBowShot:reset()
 	animator.stopAllSounds("draw")
 	animator.stopAllSounds("ready")
 	self.weapon:setStance(self.stances.idle)
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end
 
 function NebRNGBowShot:draw()
@@ -71,6 +70,7 @@ function NebRNGBowShot:draw()
 	animator.playSound("draw", -1)
 	local readySoundPlayed = false
 
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	while self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") do
 		if self.walkWhileFiring then
 			mcontroller.controlModifiers({runningSuppressed = true})
@@ -184,6 +184,7 @@ function NebRNGBowShot:fire()
 	self.projectileParameters.periodicActions = nil
 	self.cooldownTimer = self.cooldownTime
 	animator.setGlobalTag("directives", "")
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 end
 
 --Call this to check if the bow was released at the perfect moment. Bows can be configured to not use perfect timing mechanics

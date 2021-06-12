@@ -47,13 +47,14 @@ end
 function BowShot:reset()
 	animator.setGlobalTag("drawFrame", "0")
 	self.weapon:setStance(self.stances.idle)
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end
 
 function BowShot:draw()
 	self.weapon:setStance(self.stances.draw)
 
 	animator.playSound("draw")
-
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
 		if self.walkWhileFiring then mcontroller.controlModifiers({runningSuppressed = true}) end
 
@@ -104,6 +105,7 @@ function BowShot:fire()
 	end
 
 	self.cooldownTimer = self.cooldownTime
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 end
 
 function BowShot:perfectTiming()
