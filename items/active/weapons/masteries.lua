@@ -2,6 +2,9 @@ require "/items/active/tagCaching.lua" --integral to mastery identification
 masteries={}
 --vars are temporary, and are reset if weapons are swapped
 masteries.vars={}
+--these two are for SETS of modifiers/statuses to apply.
+masteries.vars.ephemeralEffects={}
+masteries.vars.controlModifiers={}
 --need a persistent set for the heartbeat
 masteries.persistentVars={}
 --stats are loaded by masteries.load every update.
@@ -20,6 +23,9 @@ function masteries.apply(args)
 
 	--if either item changed, readjust buffs.
 	if args["primaryChanged"] or args["altChanged"] then
+		--these two are for SETS of modifiers/statuses to apply.
+		masteries.vars.ephemeralEffects={}
+		masteries.vars.controlModifiers={}
 		--handle each combination in turn.
 		for currentHand,otherHand in pairs({primary="alt",alt="primary"}) do
 			--rather than applying dozens of separate effects...we just build a single list to apply.
@@ -139,7 +145,7 @@ function masteries.apply(args)
 				table.insert(masteryBuffer,{stat="bowEnergyBonus", amount=(1/2)*masteries.stats.bowMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.bowMastery*handMultiplier) })
 				table.insert(masteryBuffer,{stat="arrowSpeedMultiplier", effectiveMultiplier=1+(masteries.stats.bowMastery*handMultiplier) })
-				mcontroller.controlModifiers({speedModifier=1+(masteries.stats.bowMastery*handMultiplier/16) })
+				table.insert(masteries.vars.controlModifiers,{speedModifier=1+(masteries.stats.bowMastery*handMultiplier/16) })
 			end
 
 			--whips: damage, crit chance/damage
@@ -154,10 +160,10 @@ function masteries.apply(args)
 			if tagCaching[currentHand.."TagCache"]["dagger"] then
 				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.25*(1+(masteries.stats.daggerMastery*handMultiplier)) })
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.daggerMastery*handMultiplier/4) })
-				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(((1/((masteries.vars[currentHand.."ComboStep"] or 0)*4))*handMultiplier)/2) })
+				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(((1/(math.max(1,masteries.vars[currentHand.."ComboStep"] or 1)*4))*handMultiplier)/2) })
 				table.insert(masteryBuffer,{stat="critChance", amount=(masteries.vars[currentHand.."ComboStep"] or 1)*(1+(masteries.stats.daggerMastery*handMultiplier)) })
 				if tagCaching[otherHand.."TagCache"]["melee"] then
-					status.addEphemeralEffects({{effect="runboost5", duration=0.02*self.daggerMastery}})
+					table.insert(masteries.vars.ephemeralEffects,{{effect="runboost5", duration=0.02}})
 				end
 			end
 
@@ -253,7 +259,7 @@ function masteries.apply(args)
 					--yes, the awkward looking math is needed. this ensures that the system doesn't apply the same 0.8x twice, but instead splits it.
 					if tagCaching[otherHand.."TagCache"]["weapon"] then
 						table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+((-1*(0.2*(1+masteries.stats.longswordMastery)))*handMultiplier) })
-						status.addEphemeralEffects({{effect="runboost5", duration=0.02*masteries.stats.longswordMastery}})
+						table.insert(masteries.vars.ephemeralEffects,{{effect="runboost5", duration=0.02}})
 					end
 				end
 			end
@@ -302,7 +308,7 @@ function masteries.apply(args)
 
 			if tagCaching[currentHand.."TagCache"]["katana"] then
 				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] >=1) then -- combos higher than 1 move
-					mcontroller.controlModifiers({speedModifier=1+((masteries.vars[currentHand.."ComboStep"]/10)*(1+masteries.stats.katanaMastery/48)) })
+					table.insert(masteries.vars.controlModifiers,{speedModifier=1+((masteries.vars[currentHand.."ComboStep"]/10)*(1+masteries.stats.katanaMastery/48)) })
 				end
 				-- holding one katana with no other item: increase  defense techs, damage, protection and crit chance
 				if not tagCaching[otherHand.."TagCacheItem"] then
@@ -413,12 +419,20 @@ function masteries.apply(args)
 			status.setPersistentEffects("masteryBonus"..currentHand,masteries.declutter(masteryBuffer))
 		end
 	end
+	for _,set in pairs(masteries.vars.ephemeralEffects) do
+		status.addEphemeralEffects(set)
+	end
+	for _,set in pairs(masteries.vars.controlModifiers) do
+		mcontroller.controlModifiers(set)
+	end
 	masteries.vars.applied=true
 	local notices,newBeat=status.inflictedDamageSince(masteries.persistentVars.heartbeat)
 	masteries.persistentVars.heartbeat=newBeat
 	masteries.listenerBonuses(notices,args.dt)
 end
+--end mastery application
 
+--begin listener bonuses
 function masteries.listenerBonuses(notifications,dt)
 	--initialize vars
 	if not masteries.vars.inflictedKillCounter then masteries.vars.inflictedKillCounter=0 end
@@ -604,15 +618,19 @@ function masteries.update(dt)
 
 	--if weapon changed, then the script will do more update stuff
 	if (tagCaching.primaryTagCacheItemChanged)then
+		sb.logInfo("primary changed to %s",tagCaching.primaryTagCacheItem)
 		masteries.clearHand("primary")
 		args.primaryChanged=true
 	elseif (masteries.vars.primaryComboStepOld~=masteries.vars.primaryComboStep) then
+		sb.logInfo("primary combo step changed to %s from %s",masteries.vars.primaryComboStepOld,masteries.vars.primaryComboStep)
 		args.primaryChanged=true
 	end
 	if (tagCaching.altTagCacheItemChanged) then
+		sb.logInfo("alt changed to %s",tagCaching.altTagCacheItem)
 		args.altChanged=true
 		masteries.clearHand("alt")
 	elseif (masteries.vars.altComboStepOld~=masteries.vars.altComboStep) then
+		sb.logInfo("alt combo step changed to %s from %s",masteries.vars.altComboStepOld,masteries.vars.altComboStep)
 		args.altChanged=true
 	end
 	masteries.load(dt)
