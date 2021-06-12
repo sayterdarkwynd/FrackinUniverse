@@ -145,7 +145,7 @@ function masteries.apply(args)
 				table.insert(masteryBuffer,{stat="bowEnergyBonus", amount=(1/2)*masteries.stats.bowMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.bowMastery*handMultiplier) })
 				table.insert(masteryBuffer,{stat="arrowSpeedMultiplier", effectiveMultiplier=1+(masteries.stats.bowMastery*handMultiplier) })
-				table.insert(masteries.vars.controlModifiers,{speedModifier=1+(masteries.stats.bowMastery*handMultiplier/16) })
+				table.insert(masteries.vars.controlModifiers,{speedModifier=1+(masteries.stats.bowMastery*handMultiplier/8) })
 			end
 
 			--whips: damage, crit chance/damage
@@ -416,6 +416,7 @@ function masteries.apply(args)
 				end
 			end
 			--sb.logInfo("buffer %s %s",currentHand,masteries.declutter(masteryBuffer))
+			--sb.logInfo("%s ephemeralEffects %s controlModifiers %s",currentHand,masteries.vars.ephemeralEffects,masteries.vars.controlModifiers)
 			status.setPersistentEffects("masteryBonus"..currentHand,masteries.declutter(masteryBuffer))
 		end
 	end
@@ -573,6 +574,7 @@ function masteries.listenerBonuses(notifications,dt)
 		world.sendEntityMessage(entity.id(),"recordFUPersistentEffect","listenerMasteryBonus")
 	end
 end
+--end listener bonuses
 
 function masteries.load(dt)
 	--load mastery stats by forced lowercase tag (tagCaching forces lowercase). streamlines shit.
