@@ -618,19 +618,19 @@ function masteries.update(dt)
 
 	--if weapon changed, then the script will do more update stuff
 	if (tagCaching.primaryTagCacheItemChanged)then
-		sb.logInfo("primary changed to %s",tagCaching.primaryTagCacheItem)
+		--sb.logInfo("primary changed to %s",tagCaching.primaryTagCacheItem)
 		masteries.clearHand("primary")
 		args.primaryChanged=true
 	elseif (masteries.vars.primaryComboStepOld~=masteries.vars.primaryComboStep) then
-		sb.logInfo("primary combo step changed to %s from %s",masteries.vars.primaryComboStepOld,masteries.vars.primaryComboStep)
+		--sb.logInfo("primary combo step changed to %s from %s",masteries.vars.primaryComboStepOld,masteries.vars.primaryComboStep)
 		args.primaryChanged=true
 	end
 	if (tagCaching.altTagCacheItemChanged) then
-		sb.logInfo("alt changed to %s",tagCaching.altTagCacheItem)
+		--sb.logInfo("alt changed to %s",tagCaching.altTagCacheItem)
 		args.altChanged=true
 		masteries.clearHand("alt")
 	elseif (masteries.vars.altComboStepOld~=masteries.vars.altComboStep) then
-		sb.logInfo("alt combo step changed to %s from %s",masteries.vars.altComboStepOld,masteries.vars.altComboStep)
+		--sb.logInfo("alt combo step changed to %s from %s",masteries.vars.altComboStepOld,masteries.vars.altComboStep)
 		args.altChanged=true
 	end
 	masteries.load(dt)
