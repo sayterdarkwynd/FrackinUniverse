@@ -415,7 +415,7 @@ function masteries.apply(args)
 					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.broadswordMastery*handMultiplier/3) })
 				end
 			end
-			--sb.logInfo("buffer %s %s",currentHand,masteries.declutter(masteryBuffer))
+			--sb.logInfo("%s masteryBuffer (decluttered) %s",currentHand,masteries.declutter(masteryBuffer))
 			--sb.logInfo("%s ephemeralEffects %s controlModifiers %s",currentHand,masteries.vars.ephemeralEffects,masteries.vars.controlModifiers)
 			status.setPersistentEffects("masteryBonus"..currentHand,masteries.declutter(masteryBuffer))
 		end
