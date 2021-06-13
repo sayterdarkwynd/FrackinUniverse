@@ -37,6 +37,7 @@ function GreataxeSmash:windup(windupProgress)
 	local windupProgress = windupProgress or 0
 	local bounceProgress = 0
 	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
+		status.setStatusProperty(activeItem.hand().."Firing",true)
 		if windupProgress < 1 then
 			windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
 			self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
@@ -61,7 +62,8 @@ function GreataxeSmash:windup(windupProgress)
 			else
 				if self.timerGreataxe < 100 then --otherwise, add bonus
 					self.timerGreataxe = self.timerGreataxe + 0.5
-					status.setPersistentEffects("greataxeMasteryBonus", {{stat = "critChance", amount = ((self.timerGreataxe * 1.05) + (self.greataxeMastery/2)) },{stat = "critDamage", amount = (self.timerGreataxe/100) + (self.greataxeMastery/100)}})
+					local greataxeMastery=1+status.stat("greataxeMastery")
+					status.setPersistentEffects("greataxeMasteryBonus", {{stat = "critChance", amount = ((self.timerGreataxe * 1.05) + (greataxeMastery/2)) },{stat = "critDamage", amount = (self.timerGreataxe/100) + (greataxeMastery/100)}})
 					world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","greataxeMasteryBonus")
 				end
 				if self.timerGreataxe == 100 then	--at 101, play a sound
@@ -114,9 +116,11 @@ function GreataxeSmash:winddown(windupProgress)
 		coroutine.yield()
 		self.timerGreataxe = 0
 	end
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 end
 
 function GreataxeSmash:fire()
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
@@ -240,4 +244,5 @@ function GreataxeSmash:uninit()
 		self.helper:clearPersistent()
 	end
 	self.blockCount = 0
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end

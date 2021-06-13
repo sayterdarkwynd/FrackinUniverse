@@ -37,6 +37,7 @@ function HammerSmash:windup(windupProgress)
 	local windupProgress = windupProgress or 0
 	local bounceProgress = 0
 	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
+		status.setStatusProperty(activeItem.hand().."Firing",true)
 		if windupProgress < 1 then
 			windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
 			self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
@@ -61,7 +62,8 @@ function HammerSmash:windup(windupProgress)
 			else
 				if self.timerHammer < 100 then --otherwise, add bonus
 					self.timerHammer = self.timerHammer + 0.5
-					status.setPersistentEffects("hammerMasteryBonus", {{stat = "stunChance", amount = ((self.timerHammer * 1.2) * self.hammerMastery) },{stat = "critChance", amount = (self.timerHammer * self.hammerMastery)}})
+					local hammerMastery=1+status.stat("hammerMastery")
+					status.setPersistentEffects("hammerMasteryBonus", {{stat = "stunChance", amount = ((self.timerHammer * 1.2) * hammerMastery) },{stat = "critChance", amount = (self.timerHammer * hammerMastery)}})
 					world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","hammerMasteryBonus")
 				end
 				if self.timerHammer == 100 then	--at 101, play a sound
@@ -114,9 +116,11 @@ function HammerSmash:winddown(windupProgress)
 		coroutine.yield()
 		self.timerHammer = 0
 	end
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 end
 
 function HammerSmash:fire()
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
@@ -241,4 +245,5 @@ function HammerSmash:uninit()
 		self.helper:clearPersistent()
 	end
 	self.blockCount = 0
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end

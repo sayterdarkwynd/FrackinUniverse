@@ -121,9 +121,11 @@ function MeleeCombo:windup()
 	if (status.resource("energy") <= 1) or (not status.consumeResource("energy",self.energyTotal)) then
 		self.comboStep = 1
 		status.setStatusProperty(activeItem.hand().."ComboStep",self.comboStep)
+		status.setStatusProperty(activeItem.hand().."Firing",true)
 	else
 		self.comboStep=self.comboStep or 1
 		status.setStatusProperty(activeItem.hand().."ComboStep",self.comboStep)
+		status.setStatusProperty(activeItem.hand().."Firing",true)
 	end
 
 	local stance = self.stances["windup"..self.comboStep]
@@ -177,6 +179,7 @@ function MeleeCombo:wait()
 	end
 	self.comboStep = 1
 	status.setStatusProperty(activeItem.hand().."ComboStep",self.comboStep)
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 end
 
 -- State: preslash
@@ -321,6 +324,7 @@ end
 function MeleeCombo:uninit()
 	self.comboStep = nil
 	status.setStatusProperty(activeItem.hand().."ComboStep",self.comboStep)
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 
 	if self.helper then
 		self.helper:clearPersistent()

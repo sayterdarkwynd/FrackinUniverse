@@ -77,9 +77,6 @@ end
 function AxeCleave:fire()
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
-	self.hitsListener:update()
-	self.damageListener:update()
-	self.killListener:update()
 	animator.setAnimationState("swoosh", "fire")
 	if animator.hasSound("fire") then
 		animator.playSound("fire")

@@ -158,10 +158,16 @@ function masteries.apply(args)
 			--daggers:dodge tech and damage boost, combo based protection and crit chance.
 			--also: when paired with another melee of any kind, grants a speed boost status effect. (why? why not just apply a control modifier?)
 			if tagCaching[currentHand.."TagCache"]["dagger"] then
+				local protectionModifier=(masteries.stats.daggerMastery/2)
+				local critModifier=0
+				if masteries.vars[currentHand.."Firing"] then
+					protectionModifier=protectionModifier+(1/(math.max(1,masteries.vars[currentHand.."ComboStep"])*4))
+					critModifier=masteries.vars[currentHand.."ComboStep"]*(1+(masteries.stats.daggerMastery*handMultiplier))
+				end
 				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.25*(1+(masteries.stats.daggerMastery*handMultiplier)) })
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.daggerMastery*handMultiplier/4) })
-				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(((1/(math.max(1,masteries.vars[currentHand.."ComboStep"] or 1)*4))*handMultiplier)/2) })
-				table.insert(masteryBuffer,{stat="critChance", amount=(masteries.vars[currentHand.."ComboStep"] or 1)*(1+(masteries.stats.daggerMastery*handMultiplier)) })
+				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(protectionModifier*handMultiplier)})
+				table.insert(masteryBuffer,{stat="critChance", amount=critModifier })
 				if tagCaching[otherHand.."TagCache"]["melee"] then
 					table.insert(masteries.vars.ephemeralEffects,{{effect="runboost5", duration=0.02}})
 				end
@@ -186,7 +192,7 @@ function masteries.apply(args)
 				local protectionModifier=0
 
 				--combo started, first hit got the crit bonus and now it resets.
-				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
+				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
 					mastery.vars[currentHand.."rapierTimerBonus"]=0
 				end
 
@@ -232,13 +238,13 @@ function masteries.apply(args)
 
 			--scythe: combo based crit damage and crit chance.
 			if tagCaching[currentHand.."TagCache"]["scythe"] then
-				table.insert(masteryBuffer,{stat="critDamage", amount=(0.05+((masteries.vars[currentHand.."ComboStep"] or 1)*0.1))*(1+masteries.stats.scytheMastery)*handMultiplier })
-				table.insert(masteryBuffer,{stat="critChance", amount=((masteries.vars[currentHand.."ComboStep"] or 0)*(1+masteries.stats.scytheMastery))*handMultiplier })
+				table.insert(masteryBuffer,{stat="critDamage", amount=(0.05+((masteries.vars[currentHand.."Firing"] and masteries.vars[currentHand.."ComboStep"] or 0)*0.1))*(1+masteries.stats.scytheMastery)*handMultiplier })
+				table.insert(masteryBuffer,{stat="critChance", amount=((masteries.vars[currentHand.."Firing"] and masteries.vars[currentHand.."ComboStep"] or 0)*(1+masteries.stats.scytheMastery))*handMultiplier })
 			end
 
 			--longswords: no baseline value, like shortspears, due to fart.
 			if tagCaching[currentHand.."TagCache"]["longsword"] then
-				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] >=3) then
+				if masteries.vars[currentHand.."Firing"]and (masteries.vars[currentHand.."ComboStep"] >=3) then
 					table.insert(masteryBuffer,{stat="critDamage", amount=0.15*(1+masteries.stats.longswordMastery)*handMultiplier})
 				end
 				-- longsword solo, no other items: attack speed.
@@ -273,7 +279,7 @@ function masteries.apply(args)
 
 			--shortswords: combo based crit chance. other stats based on wield state.
 			if tagCaching[currentHand.."TagCache"]["shortsword"] then
-				table.insert(masteryBuffer, {stat="critChance", amount=(1+((masteries.vars[currentHand.."ComboStep"] or 1)*(1+masteries.stats.shortswordMastery)))*handMultiplier})
+				table.insert(masteryBuffer, {stat="critChance", amount=(1+((masteries.vars[currentHand.."Firing"] and masteries.vars[currentHand.."ComboStep"] or 0)*(1+masteries.stats.shortswordMastery)))*handMultiplier})
 				local powerModifier=masteries.stats.shortswordMastery*handMultiplier
 				local dodgeModifier=masteries.stats.shortswordMastery*handMultiplier
 				local dashModifier=masteries.stats.shortswordMastery*handMultiplier
@@ -307,7 +313,7 @@ function masteries.apply(args)
 			end
 
 			if tagCaching[currentHand.."TagCache"]["katana"] then
-				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] >=1) then -- combos higher than 1 move
+				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] >1) then -- combos higher than 1 move
 					table.insert(masteries.vars.controlModifiers,{speedModifier=1+((masteries.vars[currentHand.."ComboStep"]/10)*(1+masteries.stats.katanaMastery/48)) })
 				end
 				-- holding one katana with no other item: increase  defense techs, damage, protection and crit chance
@@ -341,7 +347,7 @@ function masteries.apply(args)
 				table.insert(masteryBuffer,{stat="stunChance", amount=2*masteries.stats.hammerMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="critDamage", amount=2*masteries.stats.hammerMastery*handMultiplier/2})
 				-- increased power after first strike in combo.
-				if  masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
+				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
 					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(0.01+(masteries.stats.hammerMastery*handMultiplier/3)) })
 				end
 				if tagCaching[otherHand.."TagCache"]["shield"] then -- if using a shield: shield bash, defense.
@@ -361,7 +367,8 @@ function masteries.apply(args)
 			if tagCaching[currentHand.."TagCache"]["fist"] or tagCaching[currentHand.."TagCache"]["fistweapon"] or tagCaching[currentHand.."TagCache"]["gauntlet"] then
 				--I hate stupid people.
 				if not masteries.stats.fistMastery then masteries.stats.fistMastery=status.stat("fistMastery") end
-				local comboStep=math.max(masteries.vars[otherHand.."ComboStep"] and (masteries.vars[otherHand.."ComboStep"]) or 0,masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"]) or 0)
+				--for some reason fist combos start at 0, unlike meleecombo
+				local comboStep=math.max(masteries.vars[otherHand.."ComboStep"],masteries.vars[currentHand.."ComboStep"])
 				table.insert(masteryBuffer,{stat="powerMultiplier",effectiveMultiplier=1+(masteries.stats.fistMastery*handMultiplier/2) })
 				table.insert(masteryBuffer,{stat="critChance", amount=((1*comboStep)+(2*masteries.stats.fistMastery))*handMultiplier})
 				table.insert(masteryBuffer,{stat="stunChance", amount=((4*comboStep)+(2*masteries.stats.fistMastery))*handMultiplier})
@@ -409,7 +416,7 @@ function masteries.apply(args)
 
 			--broadswords
 			if tagCaching[currentHand.."TagCache"]["broadsword"] then
-				if masteries.vars[currentHand.."ComboStep"] and (masteries.vars[currentHand.."ComboStep"] > 2) then
+				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] > 2) then
 					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.broadswordMastery*handMultiplier/2) })
 				else
 					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.broadswordMastery*handMultiplier/3) })
@@ -417,6 +424,7 @@ function masteries.apply(args)
 			end
 			--sb.logInfo("%s masteryBuffer (decluttered) %s",currentHand,masteries.declutter(masteryBuffer))
 			--sb.logInfo("%s ephemeralEffects %s controlModifiers %s",currentHand,masteries.vars.ephemeralEffects,masteries.vars.controlModifiers)
+			--sb.logInfo("mvars %s, mpersistvars %s",masteries.vars,masteries.persistentVars)
 			status.setPersistentEffects("masteryBonus"..currentHand,masteries.declutter(masteryBuffer))
 		end
 	end
@@ -587,6 +595,7 @@ function masteries.load(dt)
 		masteries.stats.ammoMastery=status.stat("ammoMastery")
 	end
 	if not masteries.vars.heartbeat then masteries.vars.heartbeat=0 end
+
 	masteries.vars.loaded=true
 end
 
@@ -597,8 +606,15 @@ function masteries.update(dt)
 	--update tracking of combo steps for each weapon.
 	masteries.vars.primaryComboStepOld=masteries.vars.primaryComboStep
 	masteries.vars.altComboStepOld=masteries.vars.altComboStep
-	masteries.vars.primaryComboStep=status.statusProperty("primaryComboStep")
-	masteries.vars.altComboStep=status.statusProperty("altComboStep")
+	--assume default of 1 globally for combo step, as if a weapon is a combo weapon, that is the initial step. current only exception: fists. because wtf?
+	masteries.vars.primaryComboStep=status.statusProperty("primaryComboStep") or 1
+	masteries.vars.altComboStep=status.statusProperty("altComboStep") or 1
+
+	--update tracking of firing state for each weapon.
+	masteries.vars.primaryFiringOld=masteries.vars.primaryFiring
+	masteries.vars.altFiringOld=masteries.vars.altFiring
+	masteries.vars.primaryFiring=status.statusProperty("primaryFiring")
+	masteries.vars.altFiring=status.statusProperty("altFiring")
 
 	--if this segment fires i'm going to shoot someone with rusty nails from a shotgun.
 	local pType=type(masteries.vars.primaryComboStep)
@@ -618,13 +634,19 @@ function masteries.update(dt)
 		masteries.vars.altComboStep=nil
 	end
 
-	--if weapon changed, then the script will do more update stuff
+	--if weapon state changed, then the script will do more update stuff
+	--typically, weapons set combo state to 1 (Exception: below), on init, and when finishing a combo.
+	--note that fist weapons don't set their firing state. instead, their combo step sets itself to 0 when they're not attacking.
+	--firing state is only set in primary fire modes
 	if (tagCaching.primaryTagCacheItemChanged)then
 		--sb.logInfo("primary changed to %s",tagCaching.primaryTagCacheItem)
 		masteries.clearHand("primary")
 		args.primaryChanged=true
 	elseif (masteries.vars.primaryComboStepOld~=masteries.vars.primaryComboStep) then
-		--sb.logInfo("primary combo step changed to %s from %s",masteries.vars.primaryComboStepOld,masteries.vars.primaryComboStep)
+		--sb.logInfo("primary combo step changed from %s to %s",masteries.vars.primaryComboStepOld,masteries.vars.primaryComboStep)
+		args.primaryChanged=true
+	elseif (masteries.vars.primaryFiringOld~=masteries.vars.primaryFiring) then
+		--sb.logInfo("primary firing state changed from %s to %s",masteries.vars.primaryFiringOld,masteries.vars.primaryFiring)
 		args.primaryChanged=true
 	end
 	if (tagCaching.altTagCacheItemChanged) then
@@ -632,7 +654,10 @@ function masteries.update(dt)
 		args.altChanged=true
 		masteries.clearHand("alt")
 	elseif (masteries.vars.altComboStepOld~=masteries.vars.altComboStep) then
-		--sb.logInfo("alt combo step changed to %s from %s",masteries.vars.altComboStepOld,masteries.vars.altComboStep)
+		--sb.logInfo("alt combo step changed from %s to %s",masteries.vars.altComboStepOld,masteries.vars.altComboStep)
+		args.altChanged=true
+	elseif (masteries.vars.altFiringOld~=masteries.vars.altFiring) then
+		--sb.logInfo("alt firing state changed from %s to %s",masteries.vars.altFiringOld,masteries.vars.altFiring)
 		args.altChanged=true
 	end
 	masteries.load(dt)

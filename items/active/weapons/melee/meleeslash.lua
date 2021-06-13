@@ -42,7 +42,7 @@ end
 -- State: windup
 function MeleeSlash:windup()
 	self.energyMax = math.max(status.resourceMax("energy"),0) -- due to weather and other cases it is possible to have a maximum of under 0.
-
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	local item
 	if world.entityType(activeItem.ownerEntityId()) then
 		item=world.entityHandItemDescriptor(activeItem.ownerEntityId(),activeItem.hand())
@@ -140,6 +140,7 @@ function MeleeSlash:fire()
 
 	-- FR cooldown modifiers
 	self.cooldownTimer = math.max(0, self.cooldownTimer * attackSpeedUp )	-- subtract FR bonus from total
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end
 
 function MeleeSlash:cooldownTime()
@@ -148,4 +149,5 @@ end
 
 function MeleeSlash:uninit()--this function is almost never called. so persistent status effects based on it are...dodo.
 	self.weapon:setDamage()
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end
