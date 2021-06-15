@@ -44,7 +44,6 @@ function GunFire:init()
 	self.barName = "ammoBar"
 	self.barColor = {0,250,112,125}
 
-
 	-- **** FR ADDITIONS
 	daytime = daytimeCheck()
 	underground = undergroundCheck()
@@ -56,7 +55,7 @@ function GunFire:init()
 
 	self.weapon:setStance(self.stances.idle)
 	if (self.isAmmoBased==1) then
-		if not self.isReloading and (self.magazineAmount >= 0) then
+		if (not self.isReloading) and (self.magazineAmount >= 0) then
 			self.cooldownTimer=self.fireTime/10.0
 		else
 			self:checkAmmo(true)
@@ -76,7 +75,6 @@ function GunFire:init()
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
 	self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
-
 
 function GunFire:calcAmmo()
 	local oldSize=self.magazineSize
@@ -105,9 +103,6 @@ end
 -- ***********************************************************************************************************
 
 function GunFire:update(dt, fireMode, shiftHeld)
-	if fireMode=="alt" then
-		sb.logInfo("altfire!")
-	end
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	-- *** FU Weapon Additions
@@ -116,7 +111,6 @@ function GunFire:update(dt, fireMode, shiftHeld)
 	else
 		self.timeBeforeCritBoost = self.timeBeforeCritBoost -dt
 	end
-
 
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt )
 
@@ -173,7 +167,6 @@ function GunFire:update(dt, fireMode, shiftHeld)
 		end
 	end
 end
-
 
 function GunFire:auto()
 -- ***********************************************************************************************************
