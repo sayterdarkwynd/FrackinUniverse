@@ -90,7 +90,7 @@ function GunFireFixed:init()
 	self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
 
-function GunFire:calcAmmo()
+function GunFireFixed:calcAmmo()
 	local oldSize=self.magazineSize
 	local magazineTemp=(self.ammoInheritanceMult or 1.0)*config.getParameter("magazineSize",1)
 	self.magazineSize = magazineTemp*(1+status.stat("magazineMultiplier")) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
