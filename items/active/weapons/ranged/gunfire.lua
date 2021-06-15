@@ -78,7 +78,7 @@ function GunFire:init()
 end
 
 
-function GunFireFixed:calcAmmo()
+function GunFire:calcAmmo()
 	local oldSize=self.magazineSize
 	local magazineTemp=(self.ammoInheritanceMult or 1.0)*config.getParameter("magazineSize",1)
 	self.magazineSize = magazineTemp*(1+status.stat("magazineMultiplier")) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
