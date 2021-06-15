@@ -28,14 +28,14 @@ function GunFireFixed:init()
 
 	-- is this a ammo based gun? if so, the primary gets the parameters off the weapon
 	-- adding support, of course, for alts that are explicitly ammo based.
-	self.isAmmoBased = ((self.abilitySlot=="primary") and config.getParameter("isAmmoBased",0)) or (self.abilitySlot.isAmmoBased)
+	self.isAmmoBased = self.isAmmoBased or ((self.abilitySlot=="primary") and config.getParameter("isAmmoBased",0))
 	self.isMachinePistol = config.getParameter("isMachinePistol",0) -- is this a machine pistol?
 	self.isShotgun = config.getParameter("isShotgun",0) -- is this a shotgun?
 	-- params
 	self.countdownDelay = 0 -- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 -- how long before it starts accruing bonus again?
 
-	calcAmmo(self)
+	self:calcAmmo()
 	local defaultMag=((self.ownerType=="player") and -1) or self.magazineSize
 	--self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) -- current number of bullets in the magazine
 	--self.magazineAmount=config.getParameter("magazineAmount",defaultMag)
@@ -97,6 +97,7 @@ function calcAmmo(self)
 	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
 end
 
+
 -- ****************************************
 -- FR FUNCTIONS
 
@@ -134,7 +135,7 @@ function GunFireFixed:update(dt, fireMode, shiftHeld)
 		self.loadupTimer = math.max(0, self.loadupTimer - self.dt)
 	end
 	if self.cooldownTimer == 0 then
-		local changed,from=calcAmmo(self)
+		local changed,from=self:calcAmmo()
 		if changed then
 			if self.magazineSize>from then
 				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount+(self.magazineSize-from))
@@ -361,13 +362,15 @@ function GunFireFixed:aimVector(inaccuracy)
 end
 
 function GunFireFixed:energyPerShot()
+	local e=self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
 	if (self.isAmmoBased == 1) and not (self.fireMode == "alt") then --ammo based guns use 1/2 as much energy
-		return (self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0))/2
+		e=e/2
 	elseif self.useEnergy == "nil" or self.useEnergy then -- key "useEnergy" defaults to true.
-		return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
+		--do nothing
 	else
-		return 0
+		e=0
 	end
+	return e
 end
 
 function GunFireFixed:damagePerShot()
@@ -446,7 +449,7 @@ function GunFireFixed:isChargeUp()
 end
 
 function GunFireFixed:hasShotgunReload()
-	self.isReloader = config.getParameter("isReloader",0)			-- is this a shotgun style reload?
+	self.isReloader = config.getParameter("isReloader",0) -- is this a shotgun style reload?
 	if self.isReloader >= 1 then
 		animator.playSound("cooldown") -- adds sound to shotgun reload
 		if (self.isAmmoBased==1) and (self.magazineAmount <= 0) then
@@ -541,10 +544,10 @@ function GunFireFixed:checkAmmo(force)
 end
 
 function GunFireFixed:checkMagazine(evalOnly)
-	calcAmmo(self)
+	self:calcAmmo()
 	self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	--self.isAmmoBased = config.getParameter("isAmmoBased",0)--this doesn't fucking belong here, but blah.
-	self.isAmmoBased = ((self.abilitySlot=="primary") and config.getParameter("isAmmoBased",0)) or (self.abilitySlot.isAmmoBased)
+	self.isAmmoBased = self.isAmmoBased or ((self.abilitySlot=="primary") and config.getParameter("isAmmoBased",0))
 	if (self.isAmmoBased == 1) then
 		--check current ammo and create an ammo bar to inform the user
 		self.currentAmmoPercent = self.magazineAmount / self.magazineSize
@@ -575,8 +578,8 @@ end
 
 function GunFireFixed:applyRecoil()
 	--Recoil here
-	if (self.hasRecoil == 1) then							--does the weapon have recoil?
-		if (self.fireMode == "primary") then					--is it primary fire?
+	if (self.hasRecoil == 1) then --does the weapon have recoil?
+		if (self.fireMode == "primary") then --is it primary fire?
 			self.recoilForce = self.recoilForce * self.fireTime
 			self:adjustRecoil()
 		else

@@ -17,11 +17,11 @@ function GunFire:init()
 	self.isReloader = config.getParameter("isReloader",0) -- is this a shotgun style reload?
 	self.isCrossbow = config.getParameter("isCrossbow",0) -- is this a crossbow?
 	self.isSniper = config.getParameter("isSniper",0) -- is this a sniper rifle?
-	--self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a ammo based gun?
 
+	--self.isAmmoBased = config.getParameter("isAmmoBased",0) -- is this a ammo based gun?
 	-- is this a ammo based gun? if so, the primary gets the parameters off the weapon
 	-- adding support, of course, for alts that are explicitly ammo based.
-	self.isAmmoBased = ((self.abilitySlot=="primary") and config.getParameter("isAmmoBased",0)) or (self.abilitySlot.isAmmoBased)
+	self.isAmmoBased = self.isAmmoBased or ((self.abilitySlot=="primary") and config.getParameter("isAmmoBased",0))
 
 	self.isMachinePistol = config.getParameter("isMachinePistol",0) -- is this a machine pistol?
 	self.isShotgun = config.getParameter("isShotgun",0) -- is this a shotgun?
@@ -29,7 +29,7 @@ function GunFire:init()
 	self.countdownDelay = 0 -- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2 -- how long before it starts accruing bonus again?
 
-	calcAmmo(self)
+	self:calcAmmo()
 	local defaultMag=((self.ownerType=="player") and -1) or self.magazineSize
 	--self.magazineAmount = math.min(config.getParameter("magazineAmount",defaultMag),self.magazineSize) -- current number of bullets in the magazine
 	--self.magazineAmount=config.getParameter("magazineAmount",defaultMag)
@@ -77,9 +77,11 @@ function GunFire:init()
 	self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 end
 
-function calcAmmo(self)
+
+function GunFireFixed:calcAmmo()
 	local oldSize=self.magazineSize
-	self.magazineSize = (config.getParameter("magazineSize",1)*(1+status.stat("magazineMultiplier"))) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
+	local magazineTemp=(self.ammoInheritanceMult or 1.0)*config.getParameter("magazineSize",1)
+	self.magazineSize = magazineTemp*(1+status.stat("magazineMultiplier")) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
 	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
 end
 
@@ -103,6 +105,9 @@ end
 -- ***********************************************************************************************************
 
 function GunFire:update(dt, fireMode, shiftHeld)
+	if fireMode=="alt" then
+		sb.logInfo("altfire!")
+	end
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
 	-- *** FU Weapon Additions
@@ -115,12 +120,12 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt )
 
-	--[[if self.loadingUp then	--reloading ammo
+	--[[if self.loadingUp then --reloading ammo
 		self.loadupTimer = math.max(0, self.loadupTimer - self.dt)
 	end]]--this block is unused. period.
 
 	if self.cooldownTimer==0 then
-		local changed,from=calcAmmo(self)
+		local changed,from=self:calcAmmo()
 		if changed then
 			if self.magazineSize>from then
 				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount+(self.magazineSize-from))
@@ -209,9 +214,8 @@ function GunFire:auto()
 end
 
 function GunFire:burst()
-
 	--ammo
-	self.reloadTime = config.getParameter("reloadTime") or 1		-- how long does reloading mag take?
+	self.reloadTime = config.getParameter("reloadTime") or 1 -- how long does reloading mag take?
 	self:checkMagazine()--ammo system magazine check
 	-- recoil stats reset every time we shoot so that it is consistent
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))
@@ -240,7 +244,6 @@ function GunFire:burst()
 	--FU/FR special checks
 	self:hasShotgunReload()--reloads as a shotgun?
 	self:checkAmmo() --is it an ammo user?
-
 
 	if self.helper then self.helper:runScripts("gunfire-postburst", self) end
 end
@@ -502,10 +505,10 @@ function GunFire:checkAmmo(force)
 end
 
 function GunFire:checkMagazine(evalOnly)
-	calcAmmo(self)
+	self:calcAmmo()
 	self.magazineAmount = (self.magazineAmount or 0)-- current number of bullets in the magazine
 	--self.isAmmoBased = config.getParameter("isAmmoBased",0)--this doesn't fucking belong here, but blah.
-	self.isAmmoBased = ((self.abilitySlot=="primary") and config.getParameter("isAmmoBased",0)) or (self.abilitySlot.isAmmoBased)
+	self.isAmmoBased = self.isAmmoBased or ((self.abilitySlot=="primary") and config.getParameter("isAmmoBased",0))
 	if (self.isAmmoBased==1) then
 		--check current ammo and create an ammo bar to inform the user
 		self.currentAmmoPercent = self.magazineAmount / self.magazineSize
