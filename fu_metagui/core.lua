@@ -33,8 +33,20 @@ function mg.asset(path)
   if not path then return nil end
   if path:sub(1, 1) == '/' then return path end
   local ext = path:match('^.*%.(.-)$')
-  if ext == "png" and not root.nonEmptyRegion(mg.cfg.themePath .. path) then return MG_FALLBACK_PATH .. path end
-  return mg.cfg.themePath .. path
+  local op = mg.cfg.themePath .. path
+  if ext == "png" and not root.nonEmptyRegion(op) then
+    if theme and theme.fallback then
+      for _, t in ipairs(theme.fallback) do
+        local tp = mg.registry.themes[t]
+        if tp then
+          local p = tp .. path
+          if root.nonEmptyRegion(p) then return p end
+        end
+      end
+    end
+    return MG_FALLBACK_PATH .. path
+  end
+  return op
 end
 
 do -- encapsulate
@@ -73,6 +85,29 @@ local lastMouseOver
 local mouseMap = setmetatable({ }, { __mode = 'v' })
 local scriptUpdate, scriptUninit = { }, { }
 
+-- define event queue before widgets
+local eventQueue = { }
+local function runEventQueue()
+  local next = { }
+  for _, v in pairs(eventQueue) do
+    if coroutine.status(v) ~= "dead" then -- precheck; coroutine may have finished outside via IPC
+      local f, err = coroutine.resume(v)
+      if coroutine.status(v) ~= "dead" then table.insert(next, v) -- execute; insert in next-frame queue if still running
+      elseif not f then sb.logError(err) end
+    end
+  end
+  eventQueue = next
+  theme.update()
+  for _, f in pairs(scriptUpdate) do f() end
+end
+function mg.startEvent(func, ...)
+  local c = coroutine.create(func)
+  local f, err = coroutine.resume(c, ...)
+  if coroutine.status(c) ~= "dead" then table.insert(eventQueue, c)
+  elseif not f then sb.logError(err) end
+  return c -- might as well
+end
+
 -- and widget stuff
 mg.widgetTypes = { }
 mg.widgetBase = {
@@ -92,9 +127,12 @@ function widgetBase:queueRedraw() redrawQueue[self] = true end
 function widgetBase:draw() end
 
 function widgetBase:isMouseInteractable() return false end
+function widgetBase:isWheelInteractable() return false end
 function widgetBase:onMouseEnter() end
 function widgetBase:onMouseLeave() end
 function widgetBase:onMouseButtonEvent(btn, down) end
+function widgetBase:onMouseWheelEvent(dir) end
+function widgetBase:isMouseOver() return self == lastMouseOver end
 
 function widgetBase:captureMouse(btn) return mg.captureMouse(self, btn) end
 function widgetBase:releaseMouse() return mg.releaseMouse(self) end
@@ -121,6 +159,8 @@ end
 function widgetBase:relativeMousePosition() return mg.paneToWidgetPosition(self, mg.mousePosition) end
 function widgetBase:relativePanePosition(pos) return mg.paneToWidgetPosition(self, pos) end
 function widgetBase:relativeScreenPosition(pos) return mg.screenToWidgetPosition(self, pos) end
+
+function widgetBase:getToolTip() return self.toolTip or nil end
 
 function widgetBase:grabFocus() return mg.grabFocus(self) end
 function widgetBase:releaseFocus() return mg.releaseFocus(self) end
@@ -151,7 +191,7 @@ function widgetBase:applyGeometry(selfOnly)
   --sb.logInfo("widget " .. (self.backingWidget or "unknown") .. ", type " .. self.typeName .. ", pos (" .. self.position[1] .. ", " .. self.position[2] .. "), size (" .. self.size[1] .. ", " .. self.size[2] .. ")")
   self:queueRedraw()
   if not selfOnly and self.children then
-    for _,c in pairs(self.children) do--for k,c in pairs(self.children) do
+    for k,c in pairs(self.children) do
       if c.applyGeometry then c:applyGeometry() end
     end
   end
@@ -179,15 +219,16 @@ function widgetBase:delete()
     end
     self.parent:queueGeometryUpdate()
   end
-  if self.id and _ENV[self.id] == self then _ENV[self.id] = nil end -- remove from global
+  local ctx = self.widgetContext or _ENV
+  if self.id and ctx[self.id] == self then ctx[self.id] = nil end -- remove from global
   self.deleted = true
-
+  
   -- unhook from events and drawing
   redrawQueue[self] = nil
   recalcQueue[self] = nil
-  if lastMouseOver == this then lastMouseOver = nil end
+  if lastMouseOver == self then lastMouseOver = nil end
   self:releaseMouse()
-
+  
   -- clear out backing widgets
   local function rw(w)
     local parent, child = w:match('^(.*)%.(.-)$')
@@ -213,12 +254,26 @@ end
 function widgetBase:pushEvent(ev, ...)
   if self.__event then
     local e = self.__event[ev]
-    if e and e(...) then return nil end -- return true to "catch"
+    if e then
+      local ret = {e(self, ...)}
+      if ret[1] then return table.unpack(ret) end -- return a truthy value to "catch"
+    end
   end
   -- else pass to children
-  for _,c in pairs(self.children or { }) do c:pushEvent(ev, ...) end
+  for _,c in pairs(self.children or { }) do
+    local ret = {c:pushEvent(ev, ...)}
+    if ret[1] and ret[1] ~= true then return table.unpack(ret) end -- only nonboolean values short-circuit!
+  end
 end
-function widgetBase:broadcast(ev, ...) self.parent:pushEvent(ev, ...) end -- just a quick shortcut
+function widgetBase:broadcast(ev, ...) return self.parent:pushEvent(ev, ...) end -- just a quick shortcut
+function widgetBase:wideBroadcast(levels, ev, ...) -- broadcast up a number of levels
+  local w = self
+  for i = 1, levels do
+    if not w.parent then break end
+    w = w.parent
+  end
+  return w:pushEvent(ev, ...)
+end
 
 module "widgets"
 
@@ -234,13 +289,16 @@ function mg.createWidget(param, parent)
     table.insert(w.parent.children, w)
     parent:queueGeometryUpdate()
   end
-
+  
   -- some basics
   w.id = param.id
   w.position = param.position or {0, 0}
   w.explicitSize = param.size
-  w.size = param.size
-
+  w.size = param.size or {0, 0}
+  if param.visible ~= nil then w.visible = param.visible end
+  w.toolTip = param.toolTip
+  w.data = param.data -- arbitrary build-time data
+  
   local base
   if parent then -- find base widget
     local f = parent
@@ -248,14 +306,16 @@ function mg.createWidget(param, parent)
     base = f.backingWidget
   end
   w:init(base, param)
-
+  
   -- enroll in mouse events
   if w.backingWidget then mouseMap[w.backingWidget] = w end
   if w.subWidgets then for _, sw in pairs(w.subWidgets) do mouseMap[sw] = w end end
-
+  
   -- assign id
-  if w.id and _ENV[w.id] == nil then
-    _ENV[w.id] = w
+  w.widgetContext = mg.widgetContext
+  local ctx = w.widgetContext or _ENV
+  if w.id and ctx[w.id] == nil then
+    ctx[w.id] = w
   end
   return w
 end
@@ -265,10 +325,14 @@ function mg.createImplicitLayout(list, parent, defaults)
   local p = { type = "layout", children = list }
   if parent then -- inherit some defaults off parent
     if parent.mode == "horizontal" then p.mode = "vertical"
-    elseif parent.mode == "vertical" then p.mode = "horizontal" end
+    elseif parent.mode == "vertical" then p.mode = "horizontal"
+    elseif parent.mode == "stack" then
+      p.mode = "horizontal"
+      p.expandMode = {2, 2}
+    end
     p.spacing = parent.spacing
   end
-
+  
   if defaults then util.mergeTable(p, defaults) end
   if type(list[1]) == "table" and not list[1][1] and not list[1].type then util.mergeTable(p, list[1]) end
   return mg.createWidget(p, parent)
@@ -341,71 +405,124 @@ function mg.releaseFocus(w) if w == keyFocus or w == true then mg.grabFocus(nil)
 
 function mg.broadcast(ev, ...) paneBase:pushEvent(ev, ...) frame:pushEvent(ev, ...) end
 
+-- register an action on pane close
+function mg.registerUninit(f) if type(f) == "function" then table.insert(scriptUninit, f) end end
+
 module "util"
 module "extra"
 
 -- -- --
 
+local wheel = { }
 local worldId
 function init() -------------------------------------------------------------------------------------------------------------------------------------
   -- guard against wonky reloads
   if widget.getData("_tracker") then return pane.dismiss() end
   widget.setData("_tracker", "open")
-
+  
+  mg.registry = root.assetJson("/metagui/registry.json")
   mg.cfg = config.getParameter("___") -- window config
   mg.inputData = mg.cfg.inputData -- alias
-
-  mg.settings = player.getProperty("metaGUISettings") or { }
-
+  
+  mg.settings = player.getProperty("metagui:settings") or player.getProperty("metaGUISettings") or { }
+  
   mg.theme = root.assetJson(mg.cfg.themePath .. "theme.json")
   mg.theme.id = mg.cfg.theme
   mg.theme.path = mg.cfg.themePath
   _ENV.theme = mg.theme -- alias
   module "theme-common" -- load theme defaults and common utils
   require(mg.theme.path .. "theme.lua") -- load in theme
-
+  
   mg.cfg.icon = mg.path(mg.cfg.icon) -- pre-resolve icon path
-
+  
   -- TODO set up some parameter stuff?? idk, maybe the theme does most of that
-
+  
   -- store this for later
   worldId = player.worldId()
-
+  
   -- set up IPC
   do local mt = getmetatable ''
     mt.metagui_ipc = mt.metagui_ipc or { }
     mg.ipc = mt.metagui_ipc
   end
-
+  
   if mg.cfg.uniqueBy == "path" and mg.cfg.configPath then
     mg.ipc.uniqueByPath = mg.ipc.uniqueByPath or { }
     mg.ipc.uniqueByPath[mg.cfg.configPath] = function() pane.dismiss() end
   end
-
+  
   -- set up basic pane stuff
   local borderMargins = mg.theme.metrics.borderMargins[mg.cfg.style]
   frame = mg.createWidget({ type = "layout", size = mg.cfg.totalSize, position = {0, 0}, zlevel = -9999 })
   paneBase = mg.createImplicitLayout(mg.cfg.children, nil, { size = mg.cfg.size, position = {borderMargins[1], borderMargins[4]}, mode = mg.cfg.layoutMode or "vertical" })
-
+  
+  do -- set up scrollwheel test assembly
+    wheel.base = "_wheel"
+    wheel.target = "_wheel.w.target"
+    wheel.over = "_wheel.w.over"
+    wheel.offset = {0, 0}
+    function wheel.block(t)
+      local se = not wheel.disabled
+      wheel.disabled = math.max(wheel.disabled or 0, t or 15)
+      if se then
+        mg.startEvent(function()
+          while wheel.disabled and wheel.disabled > 0 do
+            wheel.disabled = wheel.disabled - 1
+            coroutine.yield()
+          end
+          wheel.disabled = nil
+        end)
+      end
+    end
+    --wheel.block() -- start blocked so it doesn't misfire the first few frames
+    local size = mg.cfg.totalSize
+    wheel.proto = {
+      type = "scrollArea", position = {0, 0}, size = size, verticalScroll = false, children = {
+        fill = { type = "widget", position = {0, 0}, size },
+        target = { type = "widget", position = wheel.offset, size = {size[1], 72} },
+        over = { type = "widget", position = wheel.offset, size = {size[1], 1000} },
+      }
+    }
+  end
+  
   mg.theme.decorate()
   mg.theme.drawFrame()
-
+  
   local sysUpdate, sysUninit = update, uninit
   for _, s in pairs(mg.cfg.scripts or { }) do
-    init, update, uninit = nil,nil,nil
+    init, update, uninit = nil
     require(mg.path(s))
     if update then table.insert(scriptUpdate, update) end
     if uninit then table.insert(scriptUninit, uninit) end
     if init then init() end -- call script init
   end
   update, uninit = sysUpdate, sysUninit
-
+  
   frame:updateGeometry()
   paneBase:updateGeometry()
   for w in pairs(redrawQueue) do if not w.deleted then w:draw() end end
   recalcQueue, redrawQueue = { }, { }
-
+  
   --setmetatable(_ENV, {__index = function(_, n) if DBG then DBG:setText("unknown func " .. n) end end})
+end
+
+local function recreateWheelChild()
+  if mg.windowPosition[2] < 0 then
+    wheel.offset[2] = -mg.windowPosition[2]
+  else
+    wheel.offset[2] = 0
+  end
+  
+  widget.removeChild(wheel.base, "w")
+  widget.addChild(wheel.base, wheel.proto, "w")
+  wheel.created = true
+end
+local function setWheelActive(b)
+  if b ~= nil then wheel.active = not not b end
+  widget.setPosition(wheel.base, {wheel.active and 0 or 99999999, 0})
+  if not wheel.created then
+    recreateWheelChild()
+  end
 end
 
 function uninit()
@@ -415,35 +532,14 @@ function uninit()
   if mg.cfg.isContainer then mg.ipc.openContainerProxy = nil end
 end
 
-local eventQueue = { }
-local function runEventQueue()
-  local next = { }
-  for _, v in pairs(eventQueue) do
-    if coroutine.status(v) ~= "dead" then -- precheck; coroutine may have finished outside via IPC
-      local f, err = coroutine.resume(v)
-      if coroutine.status(v) ~= "dead" then table.insert(next, v) -- execute; insert in next-frame queue if still running
-      elseif not f then sb.logError(err) end
-    end
-  end
-  eventQueue = next
-  theme.update()
-  for _, f in pairs(scriptUpdate) do f() end
-end
-function mg.startEvent(func, ...)
-  local c = coroutine.create(func)
-  coroutine.resume(c, ...)
-  if coroutine.status(c) ~= "dead" then table.insert(eventQueue, c) end
-  return c -- might as well
-end
-
 local function findWindowPosition()
   if not mg.windowPosition then mg.windowPosition = {0, 0} end -- at the very least, make sure this exists
   local fp
   local sz = mg.cfg.totalSize
   local max = {1920, 1080} -- technically probably 4k
-
+  
   local ws = "_tracker" -- widget to search for
-
+  
   -- initial find
   for y=0,max[2],sz[2] do
     for x=0,max[1],sz[1] do
@@ -453,9 +549,9 @@ local function findWindowPosition()
     end
     if fp then break end
   end
-
+  
   if not fp then return nil end -- ???
-
+  
   local isearch = 32
   -- narrow x
   local search = isearch
@@ -463,16 +559,17 @@ local function findWindowPosition()
     while widget.inMember(ws, {fp[1] - search, fp[2]}) do fp[1] = fp[1] - search end
     search = search / 2
   end
-
+  
   -- narrow y
-  search = isearch
+  local search = isearch
   while search >= 1 do
     while widget.inMember(ws, {fp[1], fp[2] - search}) do fp[2] = fp[2] - search end
     search = search / 2
   end
-
+  
   mg.windowPosition = fp
   mg.windowOffScreen = not widget.inMember(ws, vec2.add(fp, mg.cfg.totalSize))
+  wheel.block()
   --pane.playSound("/sfx/interface/hoverover_bumb.ogg", 0, 0.75)
 end
 
@@ -481,19 +578,38 @@ mg.mousePosition = {0, 0} -- default
 local bcv = { "_tracker", "_mouse" }
 local bcvmp = { {0, 0}, {0, 0} } -- last saved mouse position
 
-lastMouseOver=nil
 function update()
   if player.worldId() ~= worldId then return pane.dismiss() end
-
+  
   if not mg.windowPosition then findWindowPosition() else
-    --if mg.windowOffScreen then
+    if mg.windowOffScreen then
       -- for now, trust the cursor?
-    if not mg.windowOffScreen then--else -- autocheck
+    else -- autocheck
       if not widget.inMember(bcv[1], {math.max(0, mg.windowPosition[1]), math.max(0, mg.windowPosition[2])})
       or not widget.inMember(bcv[1], vec2.add(mg.windowPosition, mg.cfg.totalSize)) then findWindowPosition() end
     end
   end
-
+  
+  local wheelDir
+  if wheel.disabled then
+    recreateWheelChild()
+  elseif wheel.active then
+    local pt = vec2.add(mg.windowPosition, wheel.offset)
+    pt[1] = math.max(0, pt[1]) pt[2] = math.max(0, pt[2]) -- limit to screen
+    local bpf = widget.inMember("_wheel.w", pt)
+    local pf = pt[2] < 0 or widget.inMember(wheel.target, pt)
+    if not bpf then
+      --recreateWheelChild()
+    elseif not pf then
+      if widget.inMember(wheel.over, pt) then -- check overflow
+        wheelDir = -1 -- scroll up
+      else
+        wheelDir = 1 -- scroll down
+      end
+    end
+    if wheelDir then recreateWheelChild() end
+  end
+  
   local lmp = mg.mousePosition
   -- we don't know which of these gets mouse changes properly, so we loop through and
   for k,v in pairs(bcv) do -- set the mouse position whenever one detects a change
@@ -507,9 +623,10 @@ function update()
       end
     end
   end
-
+  
   runEventQueue() -- not entirely sure where this should go in the update cycle
-
+  
+  setWheelActive(false) -- yeet it out of the way so it doesn't hog getChildAt checks
   local mw = mouseCaptor
   if not mw then
     local mwc = widget.getChildAt(vec2.add(mg.windowPosition, mg.mousePosition))
@@ -522,25 +639,42 @@ function update()
       mw = mw.parent
     end
   end
-
+  
+  local ww = mw -- find wheel target
+  if not mouseCaptor then
+    while ww and not ww:isWheelInteractable() do
+      ww = ww.parent
+    end
+  end
+  
   if mw ~= lastMouseOver then
     if mw then mw:onMouseEnter() end
     if lastMouseOver then lastMouseOver:onMouseLeave() end
   end
   lastMouseOver = mw
   widget.setVisible(bcv[2], not not (mw or keyFocus))
-
+  
   if mouseCaptor then -- send mouse move event
     mouseCaptor:onCaptureMouseMove(vec2.sub(mg.mousePosition, lmp))
   end
-
+  
+  if wheelDir then -- send mouse wheel event
+    local w = ww
+    while w and (not w:isWheelInteractable() or not w:onMouseWheelEvent(wheelDir)) do
+      w = w.parent
+    end
+  end
+  
+  if ww then setWheelActive(true) end -- intercept mouse wheel whenever something wants it
   if keyFocus or mw then widget.focus(bcv[2])
   else widget.focus(bcv[1]) end
-
+  
   local rdq, rcq = redrawQueue, recalcQueue
   redrawQueue, recalcQueue = { }, { }
   for w in pairs(rcq) do if not w.deleted then w:updateGeometry() end end
   for w in pairs(rdq) do if not w.deleted then w:draw() end end
+  
+  --
 end
 
 function cursorOverride(pos)
@@ -553,7 +687,7 @@ function cursorOverride(pos)
 end
 
 function createTooltip()
-  --return "lol"
+  if lastMouseOver then return mg.toolTip(lastMouseOver:getToolTip()) end
 end
 
 function _mouseEvent(_, btn, down)
@@ -566,15 +700,13 @@ function _mouseEvent(_, btn, down)
   end
   if down and keyFocus then
     if keyFocus ~= lastMouseOver then mg.grabFocus() -- clear focus on clicking other widget
-    end--else spawnKeysub(true) end --
+    end--else spawnKeysub(true) end -- 
   end
 end
 function _clickLeft() _mouseEvent(nil, 0, true) end
 function _clickRight() _mouseEvent(nil, 2, true) end
 
 function _keyEvent(key, down, accel)
-  --mg.setTitle(util.tableToString{key, down, mg.keyToChar(key, accel.shift), accel})
-  --pane.playSound("/sfx/interface/hoverover_bumb.ogg", 0, 0.75)
   if keyFocus then keyFocus:onKeyEvent(key, down, accel) end
 end
 function _keyRepeatEvent(key, down, accel)
