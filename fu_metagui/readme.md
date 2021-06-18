@@ -5,6 +5,7 @@
   - [Layout](#layout)
   - [Panel](#panel)
   - [Scroll Area](#scroll-area)
+  - [Tab Field](#tab-field)
   - [Spacer](#spacer)
   - [Label](#label)
   - [Image](#image)
@@ -17,6 +18,7 @@
   - [Item Slot](#item-slot)
   - [Item Grid](#item-grid)
 - [Utility functions](#utility-functions)
+- [Misc. notes](#misc-notes)
 
 ## Your first UI
 A pane using metaGUI is a JSON document (as with vanilla panes), typically with the extension `.ui`, though this is not required.
@@ -39,6 +41,8 @@ A pane using metaGUI is a JSON document (as with vanilla panes), typically with 
   // 16 pixels away from the right, and 24 pixels from the bottom.
   "uniqueBy" : "path", // Closes any previous window with the same document path when a new one is opened.
   // Most useful for UI not bound to an entity, such as with activeitems or Quickbar entries.
+  "uniqueMode" : "toggle", // When set, will toggle the window when a new instance tries to open instead
+  // of immediately opening in place of the previous one.
   
   "children" : [ // Finally, the layout syntax. Notice how this is an *array*, unlike vanilla panes;
     // widget names are optional, as metaGUI is largely heirarchy- and layout-based.
@@ -128,6 +132,9 @@ In a Quickbar entry:
 "size" : [16, 16], // Explicit size.
 "expandMode" : [1, 0], // Only available for some widget types; how eager the widget is to expand on each
 // axis. 0 is fixed size; otherwise widget will expand if none in the layout have higher priority.
+"visible" : false, // When false, widget is hidden and excluded from layout calculations.
+"toolTip" : "I'm a tool tip!", // Self explanatory. Can be multiple lines.
+"data" : { "something" : "whatever" }, // Arbitrary JSON data. Mostly useful for script-built panes.
 ```
 ##### General methods
 ```lua
@@ -147,7 +154,10 @@ widget:findParent(type) -- Find most immediate parent of a specific type.
 
 widget:subscribeEvent(name, function) -- Subscribe to a named event on behalf of a widget.
 widget:pushEvent(name, ...) -- Push event to widget with given parameters.
+-- Checks self first, then each child. If own event gives a "truthy" value, immediately returns it;
+-- if a child event gives one, it only short-circuits if it's nonboolean.
 widget:broadcast(name, ...) -- Push event to widget's parent (and likely siblings).
+widget:wideBroadcast(level, name, ...) -- Same as broadcast, but from specified number of levels up.
 -- Subscribed events propagate to children if not caught (subscription exists and returns true).
 
 -- (more in core.lua, if you want to create your own widget types)
@@ -158,6 +168,7 @@ widget:broadcast(name, ...) -- Push event to widget's parent (and likely sibling
 ```js
 "mode" : "horizontal", // How the layout arranges its children. Defaults to manual if explicitly declared.
 // "horizontal", "vertical" ("h", "v"): Automatically arranges children in a row or column.
+// "stack" : Children are stacked on top of each other and expanded to fit layout space.
 // "manual": Children are explicitly placed; layout expands to fit.
 "spacing" : 2, // Spacing between child elements in automatic layout modes, in pixels. Defaults to 2px.
 "align" : 0.5, // Proportion of alignment for fixed-size children on opposite axis in automatic modes.
@@ -173,6 +184,7 @@ Essentially a layout with a background.
 
 ### Scroll Area
 Another layout-proxy, this time with drag-scrolling; left or right click for touch-style "fling" scrolling, middle click for "thumb" (absolute) mode.
+As of Beta v0.1.2, full scroll wheel support is included.
 ##### Attributes
 ```js
 "scrollDirections" : [0, 1], // Whether the contents can be scrolled on each axis. Defaults to vertical.
@@ -183,8 +195,40 @@ Another layout-proxy, this time with drag-scrolling; left or right click for tou
 ```lua
 scrollArea:scrollBy(vec, suppressAnimation) -- Attempts to scroll contents by [vec] pixels. Shows scroll
 -- bars if suppressAnimation is false or omitted.
-scrollArea:scrollTo(pos, suppressAnimation) -- Attempts to center viewport on [pos]. Shows scroll bars if
--- suppressAnimation is false or omitted.
+scrollArea:scrollTo(pos, suppressAnimation, raw) -- Attempts to center viewport on [pos]. Shows scroll bars if
+-- suppressAnimation is false or omitted. If raw is specified, sets raw position instead of centering.
+```
+
+### Tab Field
+desc
+##### Attributes
+```js
+"layout" : "vertical", // Which direction the tabs run. "horizontal" is a bar across the top, "vertical" is a
+// sidebar down the left side.
+"tabWidth" : 80, // If using vertical layout, how wide the tabs are. (Horizontal tabs fit to contents.)
+"noFocusFirstTab" : false, // If true, prevents the first tab created from being automatically selected. Useful
+// for cases where tab contents are loaded on first viewing, such as the settings panel.
+"tabs" : [ // An array of tabs, formatted as follows:
+  "id" : "whatever", // Optional. Tab's unique identifier; if not specified, will be populated with a UUID.
+  "title" : "Example Tab", // The tab's displayed title.
+  "icon" : "blob.png", // The tab's icon; 16x16 or smaller.
+  "visible" : true, // Whether the tab widget itself is visible. Same rules as on widgets.
+  "color" : "ff00ff", // The accent color of the tab.
+  "contents" : [ ], // The contents of the tab's connected page.
+]
+"bottomBar" : [ ], // Contents of an optional bar below the contents. Mostly useful for vertical tab layout.
+```
+##### Methods
+```lua
+tabField:newTab(parameters) -- Creates a new tab. Parameters are as in the "tabs" attribute. Returns a tab object.
+tab:select() -- Switches to tab.
+tab:setTitle(title, icon) -- Changes the tab's title and (optionally) icon.
+tab:setColor(color) -- Changes the tab's accent color.
+tab:setVisible(bool)
+```
+##### Events
+```lua
+tabField:onTabChanged(tab, previous) -- Called on changing tabs.
 ```
 
 ### Spacer
@@ -212,6 +256,8 @@ A simple image display. Centers image within widget area if given explicit size.
 ```js
 "file" : "image.png", // The image to display. Can be absolute or relative.
 "scale" : 2, // Scale proportion for the image. Defaults to 1.
+"noAutoCrop" : true, // When true, preserve empty space in image margins; otherwise, behavior
+// matches vanilla image widgets.
 ```
 ##### Methods
 ```lua
@@ -255,10 +301,18 @@ iconButton:setImage(idle, hover, press) -- Sets the button's icon drawables.
 
 ### Check Box
 A check box. Uses the same `onClick` event as the button types.
+##### Attributes
+```js
+"checked" : true, // Pre-checked if specified.
+"radioGroup" : "mode", // If specified, widget becomes a radio button grouped with others of its group.
+"value" : 23, // Any data type. Used by radio buttons.
+```
 ##### Methods
 ```lua
 checkBox:setChecked(b)
 local bool = checkBox.checked
+checkBox:getGroupChecked() -- If widget is a radio button, returns the checked widget of its group.
+checkBox:getGroupValue() -- Same as above, except returns the widget's value attribute.
 ```
 
 ### Text Box
@@ -266,6 +320,8 @@ A text entry field.
 ##### Attributes
 ```js
 "caption" : "Search...", // Text to display when unfocused and no text is entered.
+"inline" : true, // Alias for an expandMode of [0, 0].
+"expand" : true, // Alias for an expandMode of [2, 0].
 ```
 ##### Methods
 ```lua
@@ -285,7 +341,17 @@ textBox:onEscape() -- Called when unfocused by hitting escape.
 ```
 
 ### List Item
-A list item; essentially a layout, selectable by mouse click. Deselects siblings when selected.
+A list item; essentially a layout, selectable by mouse click. Deselects siblings when selected.  
+Also available under type `menuItem` with behavior modified accordingly.
+##### Attributes
+```js
+"buttonLike" : true, // Flag for theme use; by default, indicates that the item should make a sound when
+// clicked, e.g. a context menu item. Implicit for menuItems.
+"noAutoSelect" : true, // When true, list item will not be automatically set as selected when clicked.
+// Implicit for menuItems.
+"selectionGroup" : "submenu1", // Selecting a menu item will only automatically deselect siblings with
+// the same selection group (nil included).
+```
 ##### Methods
 ```lua
 listItem:select()
@@ -356,6 +422,7 @@ metagui.queueFrameRedraw() -- Marks the window decorations for redraw.
 
 metagui.startEvent(function, ...) -- Starts an event with the specified parameters.
 metagui.broadcast(name, ...) -- Broadcasts a named event to the entire window with specified parameters.
+metagui.registerUninit(function) -- Registers a function to be called on window exit.
 
 metagui.contextMenu(list) -- Opens a context menu with a list of elements: {name, function}
 -- A separator can be placed by inserting the string "separator".
@@ -377,4 +444,12 @@ metagui.itemMaxStack(item) -- Returns the maximum stack size of an item descript
 metagui.itemStacksToCursor(item) -- Returns how many of an item can fit on the cursor, if any.
 
 metagui.checkShift() -- Only available in events; checks if player is holding shift.
+metagui.fastCheckShift() -- Attempts to determine if player is holding shift through tech hooks only.
+
+metagui.checkSync(resync, id) -- Checks if sync succeeded with source entity (or entity id if specified).
+-- If resync specified, clears sync flag and pings entity.
+metagui.waitSync(resync, id) -- Same as above, but waits until sync flag set. Only available in events.
 ```
+
+## Misc. notes
+(none at this time)
