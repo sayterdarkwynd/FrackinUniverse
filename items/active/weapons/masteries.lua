@@ -339,9 +339,26 @@ function masteries.apply(args)
 				end
 			end
 
-			-- maces/hammers: increased damage. crit, stun chance. crit damage.
-			--hammers themselves have special bonuses while doing charged attacks. so do greataxes.
-			if tagCaching[currentHand.."TagCache"]["mace"] or tagCaching[currentHand.."TagCache"]["hammer"] then
+			-- maces: increased damage. crit, stun chance. crit damage.
+			if tagCaching[currentHand.."TagCache"]["mace"] then
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.maceMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.maceMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="stunChance", amount=2*masteries.stats.maceMastery*handMultiplier})
+				table.insert(masteryBuffer,{stat="critDamage", amount=2*masteries.stats.maceMastery*handMultiplier/2})
+				-- increased power after first strike in combo.
+				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
+					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(0.01+(masteries.stats.maceMastery*handMultiplier/3)) })
+				end
+				if tagCaching[otherHand.."TagCache"]["shield"] then -- if using a shield: shield bash, defense.
+					table.insert(masteryBuffer,{stat="shieldBash", amount=3*(1+(masteries.stats.maceMastery*handMultiplier)) })
+					table.insert(masteryBuffer,{stat="shieldBashPush", amount=handMultiplier})
+					table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+((0.1+(0.05*masteries.stats.maceMastery))*handMultiplier) })
+				end
+			end
+
+			-- hammers: increased damage. crit, stun chance. crit damage.
+			--special bonuses while doing charged attacks, like greataxes.
+			if tagCaching[currentHand.."TagCache"]["hammer"] then
 				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.hammerMastery*handMultiplier/2) })
 				table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.hammerMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="stunChance", amount=2*masteries.stats.hammerMastery*handMultiplier})
@@ -350,16 +367,11 @@ function masteries.apply(args)
 				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
 					table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(0.01+(masteries.stats.hammerMastery*handMultiplier/3)) })
 				end
-				if tagCaching[otherHand.."TagCache"]["shield"] then -- if using a shield: shield bash, defense.
-					table.insert(masteryBuffer,{stat="shieldBash", amount=3*(1+(masteries.stats.hammerMastery*handMultiplier)) })
-					table.insert(masteryBuffer,{stat="shieldBashPush", amount=handMultiplier})
-					table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+((0.1+(0.05*masteries.stats.hammerMastery))*handMultiplier) })
-				end
 			end
 
 			if tagCaching[currentHand.."TagCache"]["axe"] then
 				table.insert(masteryBuffer,{stat="critChance", amount=2*(masteries.stats.axeMastery*handMultiplier) })
-				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.hammerMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.axeMastery*handMultiplier) })
 			end
 			
 			--fist weapons: mastery: increased crit and stun chance. increased damage. combo: increased crit chance/damage, stun chance.
