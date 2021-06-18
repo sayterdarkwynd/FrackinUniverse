@@ -18,7 +18,7 @@ local color = { } do -- mini version of StardustLib's color.lua
       math.floor(0.5 + (rgb[4] or 1.0) * 255)
     )
   end
-
+  
   function color.toRgb(hex)
     if type(hex) == "table" then return hex end
     hex = hex:gsub("#", "") -- strip hash if present
@@ -29,14 +29,14 @@ local color = { } do -- mini version of StardustLib's color.lua
       (hex:len() == 8) and (tonumber(hex:sub(7, 8), 16) / 255)
     }
   end
-
+  
   function color.replaceDirective(from, to, continue)
     local l = continue and { } or { "?replace" }
     local num = math.min(#from, #to)
     for i = 1, num do table.insert(l, string.format(";%s=%s", color.toHex(from[i]), color.toHex(to[i]))) end
     return table.concat(l)
   end
-
+  
   -- code borrowed from https://github.com/Wavalab/rgb-hsl-rgb/blob/master/rgbhsl.lua; license unknown :(
   -- {
   local function hslToRgb(h, s, l)
@@ -53,15 +53,15 @@ local color = { } do -- mini version of StardustLib's color.lua
     local p = 2 * l - q
     return to(p, q, h + .33334), to(p, q, h), to(p, q, h - .33334)
   end
-
+  
   local function rgbToHsl(r, g, b)
     local max, min = math.max(r, g, b), math.min(r, g, b)
     local t = max + min
     local h = t / 2
     if max == min then return 0, 0, h end
-    local l = h
+    local s, l = h, h
     local d = max - min
-    local s = l > .5 and d / (2 - t) or d / t
+    s = l > .5 and d / (2 - t) or d / t
     if max == r then h = (g - b) / d % 6
     elseif max == g then h = (b - r) / d + 2
     elseif max == b then h = (r - g) / d + 4
@@ -69,13 +69,13 @@ local color = { } do -- mini version of StardustLib's color.lua
     return h * .16667, s, l
   end
   -- }
-
+  
   function color.fromHsl(hsl)
     local c = { hslToRgb(table.unpack(hsl)) }
     c[4] = hsl[4] -- add alpha if present
     return c
   end
-
+  
   function color.toHsl(c)
     c = color.toRgb(c)
     local hsl = { rgbToHsl(table.unpack(c)) }
@@ -86,12 +86,24 @@ end -- color lib
 
 local paletteFor do
   local baseHue = color.toHsl(theme.defaultAccentColor)[1]
-
+  
   local basePal = { "588adb", "123166", "0d1f40", "060f1f" }
   local framePal = {
     "ffe15c", "ffbd00", "c78b05", "875808", -- yellow bands
     "b3eeff", "7be1ff", "00c6ff", -- gems
   }
+  
+  if not theme.paletteShades then
+    theme.paletteShades = { }
+    local pal = theme.stockPalette or basePal
+    local rs = color.toHsl(pal[1]) -- root shade
+    for i = 1, 3 do
+      local cs = color.toHsl(pal[i+1]) -- comparison shade
+      theme.paletteShades[i] = { cs[2] / rs[2], cs[3] / rs[3] }
+    end
+  end
+  local ps = theme.paletteShades
+  
   local pals = { }--[theme.defaultAccentColor] = "" }
   local bgAlpha = 0.9
   paletteFor = function(col)
@@ -100,15 +112,22 @@ local paletteFor do
     local h, s, l = table.unpack(color.toHsl(col))
     s = math.min(s, 0.64532019704433)
     local function c(v) return util.clamp(v, 0, 1) end
-    local r = color.replaceDirective(basePal, {
-      col, -- highlight
-      color.fromHsl { h, c(s * 1.11), c(l * 0.39), bgAlpha }, -- bg
-      color.fromHsl { h, c(s * 1.04), c(l * 0.25), bgAlpha }, -- bg dark
-      color.fromHsl { h, c(s * 1.04), c(l * 0.125), bgAlpha }, -- bg shadow
-    })
-
+    local r
+    if col == theme.defaultAccentColor and theme.stockPalette then
+      local pm = util.mergeTable({ }, theme.stockPalette)
+      for i=2,4 do pm[i] = string.format("%s%02x", pm[i], math.floor(0.5 + bgAlpha * 255)) end
+      r = color.replaceDirective(basePal, pm)
+    else
+      r = color.replaceDirective(basePal, {
+        col, -- highlight
+        color.fromHsl { h, c(s * ps[1][1]), c(l * ps[1][2]), bgAlpha }, -- bg
+        color.fromHsl { h, c(s * ps[2][1]), c(l * ps[2][2]), bgAlpha }, -- bg dark
+        color.fromHsl { h, c(s * ps[3][1]), c(l * ps[3][2]), bgAlpha }, -- bg shadow
+      })
+    end
+    
     --local hd = s > 0 and h - baseHue or 0
-    local hd = (mg.cfg["frackin:hueShift"] or 0) / 360
+    local hd = (mg.cfg[theme.hueShiftProperty or false] or mg.cfg["frackin:hueShift"] or 0) / 360
     if hd ~= 0 then -- adjust frame colors
       hd = (hd+0.5 % 1) - 0.5
       -- tone down some of the harsher results
@@ -126,17 +145,25 @@ local paletteFor do
       r = r .. color.replaceDirective(framePal, frp, true)
     end
     --
-
+    
     pals[col] = r
     return r
   end
 end
 
+if theme._export then
+  theme._export.color = color
+  theme._export.paletteFor = paletteFor
+end
+
+-- set up fixed directives for some stock functionality
+theme.scrollBarDirectives = paletteFor "accent" .. "?multiply=ffffff7f"
+
 local titleBar, icon, title, close, spacer
 function theme.decorate()
   local style = mg.cfg.style
   widget.addChild(frame.backingWidget, { type = "canvas", position = {0, 0}, size = frame.size }, "canvas")
-
+  
   if (style == "window") then
     titleBar = frame:addChild { type = "layout", position = {6, 2}, size = {frame.size[1] - 24 - 5, 23}, mode = "horizontal", align = 0.55 }
     icon = titleBar:addChild { type = "image" }
@@ -157,14 +184,14 @@ function theme.drawFrame()
   local style = mg.cfg.style
   c = widget.bindCanvas(frame.backingWidget .. ".canvas")
   c:clear() --assets.frame:drawToCanvas(c)
-
-  local pal = paletteFor("accent")
-
+  
+  local pal = paletteFor "accent"
+  
   if (style == "window") then
     local bgClipWindow = rect.withSize({4, 4}, vec2.sub(c:size(), {4+6, 4+4}))
     c:drawTiledImage(assets.windowBg .. pal, {0, 0}, bgClipWindow)
     assets.windowBorder:drawToCanvas(c, "frame" .. pal)
-
+    
     spacer.explicitSize = (not mg.cfg.icon) and -2 or 1
     icon.explicitSize = (not mg.cfg.icon) and {-1, 0} or nil
     icon:setFile(mg.cfg.icon)
@@ -173,8 +200,28 @@ function theme.drawFrame()
 end
 
 function theme.drawPanel(w)
+  if w.tabStyle and theme.useTabStyling then return theme.drawTabPanel(w) end
   local c = widget.bindCanvas(w.backingWidget)
-  c:clear() assets.panel:drawToCanvas(c, (w.style or "convex") .. paletteFor("accent"))
+  c:clear() assets.panel:drawToCanvas(c, (w.style or "convex") .. paletteFor "accent")
+end
+
+function theme.drawTabPanel(w)
+  local c = widget.bindCanvas(w.backingWidget)
+  c:clear() assets.tabPanel:drawToCanvas(c, w.tabStyle .. paletteFor "accent")
+end
+
+function theme.drawTab(w)
+  local c = widget.bindCanvas(w.backingWidget) c:clear()
+  local state
+  if w.selected and not theme.tabsNoFocusFrame then state = "focus"
+  elseif w.hover then state = "hover"
+  else state = "idle" end
+  state = w.tabStyle .. "." .. state .. paletteFor(w.color or "accent")
+  
+  assets.tab:drawToCanvas(c, state)
+  --[[if w.selected then
+    assets.tab:drawToCanvas(c, w.tabStyle .. ".accent?multiply=" .. mg.getColor(w.color or "accent"))
+  end]]
 end
 
 function theme.drawButton(w)
@@ -193,22 +240,29 @@ function theme.drawCheckBox(w)
   if w.state == "press" then state = ":toggle"
   else state = w.checked and ":checked" or ":idle" end
   state = state .. paletteFor("accent")
-
-  c:drawImageDrawable(assets.checkBox .. state, vec2.mul(c:size(), 0.5), 1.0)
+  
+  local img = w.radioGroup and assets.radioButton or assets.checkBox
+  c:drawImageDrawable(img .. state, vec2.mul(c:size(), 0.5), 1.0)
 end
 
 function theme.drawTextBox(w)
   local c = widget.bindCanvas(w.backingWidget)
-  c:clear() assets.textBox:drawToCanvas(c, (w.focused and "focused" or "idle") .. paletteFor("accent"))
+  c:clear() assets.textBox:drawToCanvas(c, (w.focused and "focused" or "idle") .. paletteFor "accent")
 end
 
 function theme.drawItemSlot(w)
   local center = {9, 9}
   local c = widget.bindCanvas(w.backingWidget)
-  c:clear() c:drawImage(assets.itemSlot .. ":" .. (w.hover and "hover" or "idle") .. paletteFor("accent"), center, nil, nil, true)
-  if w.glyph then c:drawImage(w.glyph, center, nil, nil, true) end
+  c:clear() c:drawImage(assets.itemSlot .. ":" .. (w.hover and "hover" or "idle") .. paletteFor "accent", center, nil, nil, true)
+  if w.glyph then
+    if w.colorGlyph then
+      c:drawImage(w.glyph, center, nil, nil, true)
+    else
+      c:drawImage(string.format("%s?multiply=%s?multiply=ffffff7f", w.glyph, mg.getColor "accent"), center, nil, nil, true)
+    end
+  end
   local ic = root.itemConfig(w:item())
-  if ic then
+  if ic and not w.hideRarity then
     local rarity = (ic.parameters.rarity or ic.config.rarity or "Common"):lower()
     c:drawImage(assets.itemRarity .. ":" .. rarity .. (w.hover and "?brightness=50" or ""), center, nil, nil, true)
   end

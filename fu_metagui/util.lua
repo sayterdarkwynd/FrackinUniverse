@@ -74,19 +74,71 @@ function mg.itemMaxStack(item)
   return cfg.parameters.maxStack or cfg.config.maxStack or root.assetJson("/items/defaultParameters.config:defaultMaxStack")
 end
 
+function mg.fastCheckShift() -- check the fast way through tech hooks, fail if not available
+  local p = world.sendEntityMessage(player.id(), "stardustlib:getTechInput")
+  local r = p:succeeded() and p:result()
+  if r then return r.key.sprint or false end
+end
+
 function mg.checkShift()
   local cr = coroutine.running()
   if not cr then sb.logWarn("metagui.checkShift() called in main thread!") return nil end
+  
+  -- try the fast route first
+  local r = mg.fastCheckShift()
+  if r ~= nil then return r end
+  
+  -- if no quick way is available, then fall back on the activeitem hack
+  if player.isLounging() then return false end -- items disabled while lounging
   local icon = "/assetmissing.png"
   local stm = player.swapSlotItem()
   if stm then -- carry over icon
     local cfg = root.itemConfig(stm)
-    icon = util.absolutePath(cfg.directory, cfg.parameters.inventoryIcon or cfg.config.inventoryIcon or icon)
+    icon = cfg.parameters.inventoryIcon or cfg.config.inventoryIcon or icon
+    if type(icon) == "string" then icon = util.absolutePath(cfg.directory, icon)
+    elseif type(icon) == "table" then -- composite icon
+      icon = util.mergeTable({ }, icon) -- operate on copy
+      for _, e in pairs(icon) do if e.image then e.image = util.absolutePath(cfg.directory, e.image) end end
+    end
   end
   mg.ipc.shiftCheck = function(s) coroutine.resume(cr, 'sc', s) end
   player.setSwapSlotItem { name = "geode", count = stm and stm.count or 1, parameters = { inventoryIcon = icon, scripts = {mg.rootPath .. "helper/shiftstub.lua"}, restore = stm } }
   local chk, res = nil
-  while chk ~= 'sc' do chk, res = coroutine.yield() end
+  for i = 1,2 do
+    chk, res = coroutine.yield()
+    if chk == 'sc' then break end
+  end
+  if chk ~= 'sc' then -- failure
+    player.setSwapSlotItem(stm)
+    res = false
+  end
   mg.ipc.shiftCheck = nil -- clean up
   return res
+end
+
+do -- limit variable scope
+  local synced = true -- assume sync on pane open
+  local function syncPingEv(id)
+    synced = false
+    local p = world.sendEntityMessage(id, "") -- empty message ID for just an "are you there?" ping
+    while not p:finished() do coroutine.yield() end
+    synced = true
+  end
+  
+  function mg.checkSync(resync, id)
+    if not id then id = pane.sourceEntity() end -- default to attached if id not specified
+    if not id then return true end -- nothing to sync
+    if not synced then return false end
+    if not resync then return true end -- don't force a resync if not told to
+    mg.startEvent(syncPingEv, id)
+    return true
+  end
+  
+  function mg.waitSync(resync, id)
+    if not id then id = pane.sourceEntity() end -- default to attached if id not specified
+    if not id then return end -- nothing to sync
+    while not synced do coroutine.yield() end
+    if not resync then return end -- don't force a resync if not told to
+    mg.startEvent(syncPingEv, id)
+  end
 end
