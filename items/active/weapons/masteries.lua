@@ -371,7 +371,7 @@ function masteries.apply(args)
 
 			if tagCaching[currentHand.."TagCache"]["axe"] then
 				table.insert(masteryBuffer,{stat="critChance", amount=2*(masteries.stats.axeMastery*handMultiplier) })
-				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.hammerMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.axeMastery*handMultiplier) })
 			end
 			
 			--fist weapons: mastery: increased crit and stun chance. increased damage. combo: increased crit chance/damage, stun chance.
