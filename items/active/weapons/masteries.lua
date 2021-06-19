@@ -162,7 +162,6 @@ function masteries.apply(args)
 				local critModifier=0
 				if masteries.vars[currentHand.."Firing"] then
 					--protectionModifier=protectionModifier+(1/(math.max(1,masteries.vars[currentHand.."ComboStep"])*6))--was *4. adjusted.
-					--you're an idiot. paying attention and math clearly aren't your strong suit.
 					protectionModifier=protectionModifier+((masteries.vars[currentHand.."ComboStep"]/4)*0.25)
 					critModifier=masteries.vars[currentHand.."ComboStep"]*(1+(masteries.stats.daggerMastery*handMultiplier))
 				end
