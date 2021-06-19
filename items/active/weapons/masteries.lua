@@ -161,7 +161,7 @@ function masteries.apply(args)
 				local protectionModifier=(masteries.stats.daggerMastery/2)
 				local critModifier=0
 				if masteries.vars[currentHand.."Firing"] then
-					protectionModifier=protectionModifier+(1/(math.max(1,masteries.vars[currentHand.."ComboStep"])*4))
+					protectionModifier=protectionModifier+(1/(math.max(1,masteries.vars[currentHand.."ComboStep"])*6))--was *4. adjusted.
 					critModifier=masteries.vars[currentHand.."ComboStep"]*(1+(masteries.stats.daggerMastery*handMultiplier))
 				end
 				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.25*(1+(masteries.stats.daggerMastery*handMultiplier)) })
