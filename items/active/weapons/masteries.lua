@@ -161,7 +161,9 @@ function masteries.apply(args)
 				local protectionModifier=(masteries.stats.daggerMastery/2)
 				local critModifier=0
 				if masteries.vars[currentHand.."Firing"] then
-					protectionModifier=protectionModifier+(1/(math.max(1,masteries.vars[currentHand.."ComboStep"])*6))--was *4. adjusted.
+					--protectionModifier=protectionModifier+(1/(math.max(1,masteries.vars[currentHand.."ComboStep"])*6))--was *4. adjusted.
+					--you're an idiot. paying attention and math clearly aren't your strong suit.
+					protectionModifier=protectionModifier+((masteries.vars[currentHand.."ComboStep"]/4)*0.25)
 					critModifier=masteries.vars[currentHand.."ComboStep"]*(1+(masteries.stats.daggerMastery*handMultiplier))
 				end
 				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=0.25*(1+(masteries.stats.daggerMastery*handMultiplier)) })
@@ -185,7 +187,7 @@ function masteries.apply(args)
 
 			--rapiers: complicated. dodge, dash, crit and protection modifiers based on wield state (solo, with dagger, else).
 			if tagCaching[currentHand.."TagCache"]["rapier"] then
-				mastery.vars[currentHand.."rapierTimerBonus"]=math.min((masteries.vars.rapierTimerBonus or 0)+dt,5)
+				masteries.vars[currentHand.."rapierTimerBonus"]=math.min((masteries.vars.rapierTimerBonus or 0)+dt,5)
 				local dodgeModifier=0.35
 				local dashModifier=0.35
 				local critModifier=0
@@ -193,7 +195,7 @@ function masteries.apply(args)
 
 				--combo started, first hit got the crit bonus and now it resets.
 				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
-					mastery.vars[currentHand.."rapierTimerBonus"]=0
+					masteries.vars[currentHand.."rapierTimerBonus"]=0
 				end
 
 				--a single rapier, with no other item in the other hand whatsoever, grants a crit chance boost based on time since last attack. wielding alongside a dagger reduces the tech boosts, but grants a protection multiplier.
