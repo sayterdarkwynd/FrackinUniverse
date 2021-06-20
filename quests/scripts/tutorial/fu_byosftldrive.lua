@@ -41,12 +41,9 @@ function questComplete()
 end
 
 function makeSTL()
-  sb.logInfo("makeSTL started")
-
   while storage.stage == 1 do
     quest.setObjectiveList({{self.descriptions.makeSTL, false}})
     if player.hasItem({name = "fu_stldrive", count = 1}) then
-  sb.logInfo("makeSTL finished")
       storage.stage = 2
     elseif player.hasItem({name = "fu_ftldrivesmall", count = 1}) then
       storage.complete = true
@@ -61,13 +58,11 @@ function getErchius()
   player.radioMessage("fu_byosftldrive-getErchius1")
   player.radioMessage("fu_byosftldrive-getErchius2")
   player.radioMessage("fu_byosftldrive-getErchius3")
-  sb.logInfo("getErchius started")
 
   while storage.stage == 2 do
     quest.setObjectiveList({{self.descriptions.getErchius, false}})
     quest.setProgress(player.hasCountOfItem("solidfuel") / 50)
     if player.hasItem({name = "solidfuel", count = 50}) then
-  sb.logInfo("getErchius finished")
       storage.stage = 3
     elseif player.hasItem({name = "fu_ftldrivesmall", count = 1}) then
       storage.complete = true
@@ -81,12 +76,10 @@ end
 function makeFTL()
   player.radioMessage("fu_byosftldrive-makeFTL")
   quest.setProgress(nil)
-  sb.logInfo("makeFTL started")
 
   while storage.stage == 3 do
     quest.setObjectiveList({{self.descriptions.makeFTL, false}})
     if player.hasItem({name = "fu_ftldrivesmall", count = 1}) then
-  sb.logInfo("makeFTL finished")
       storage.complete = true
     end
     coroutine.yield()
