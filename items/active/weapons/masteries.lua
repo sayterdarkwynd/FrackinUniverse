@@ -11,10 +11,30 @@ masteries.persistentVars={}
 masteries.stats={}
 --listeners are not reset by weapon swap, instead they reset with roughly after a second (see fustatusextenderquest.lua)
 masteries.listeners={}
+--timers are in the form of key:{value,directionMultiplier,(optional)max}. DO NOT put anything directly in masteries.timers itself, it is not designed for that.
+masteries.timers={}
+masteries.timers.primary={}
+masteries.timers.alt={}
+--probably never seeing use, but option for dual wield.
+masteries.timers.both={}
+--this is an option for later
+--masteries.timers.other={}
 
 function masteries.apply(args)
 	if activeItem then error("masteries.lua: Masteries don't belong in activeitem scripts. Stop trying.") end
-
+	for hand,data in pairs(masteries.timers) do
+		for var,set in pairs(data) do
+			local e=set[1]+(args.dt*set[2])
+			if set[3] then
+				if set[2]>0 then e=math.min(e,set[3])
+				elseif set[2]<0 then e=math.max(e,set[3])
+				else error(string.format("You nitwit, timer variables in masteries must be either positive or negative! %s isn't either.",var))
+				end
+			end
+			masteries.timers[hand][var][1]=e
+			--sb.logInfo("masteries.timers: hand %s, var %s, set %s, change to %s",hand,var,set,e)
+		end
+	end
 	--if weapon is wielded alongside another weapon, cut the bonuses in half.
 	--here, we don't ASSUME that the weapon type is only in one hand, because anyone can slap the 'broadsword' tag on a fucking onehanded weapon.
 	local dualWield=(tagCaching["primaryTagCache"]["weapon"] and tagCaching["altTagCache"]["weapon"])
@@ -186,7 +206,8 @@ function masteries.apply(args)
 
 			--rapiers: complicated. dodge, dash, crit and protection modifiers based on wield state (solo, with dagger, else).
 			if tagCaching[currentHand.."TagCache"]["rapier"] then
-				masteries.vars[currentHand.."rapierTimerBonus"]=math.min((masteries.vars.rapierTimerBonus or 0)+dt,5)
+				local rapierTimerDefault={0,1,5}--when we set a timer: start at 0, increment by dt, and max at 5
+				masteries.timers[currentHand]["rapierTimerBonus"]=masteries.timers[currentHand]["rapierTimerBonus"] or rapierTimerDefault--don't reset it yet.
 				local dodgeModifier=0.35
 				local dashModifier=0.35
 				local critModifier=0
@@ -194,14 +215,16 @@ function masteries.apply(args)
 
 				--combo started, first hit got the crit bonus and now it resets.
 				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] > 1) then
-					masteries.vars[currentHand.."rapierTimerBonus"]=0
+					masteries.timers[currentHand]["rapierTimerBonus"]=rapierTimerDefault
 				end
 
 				--a single rapier, with no other item in the other hand whatsoever, grants a crit chance boost based on time since last attack. wielding alongside a dagger reduces the tech boosts, but grants a protection multiplier.
 				-- one handed --does it need to be HARD one-handed? can't use with a non-weapon?
 				--apparently supposed to grant crit damage? but didnt in previous code. instead, we have this.
-				if not tagCaching[otherHand.."TagCacheItem"] then
-					critModifier=masteries.vars.rapierTimerBonus*(1+masteries.stats.rapierMastery)
+				if (not tagCaching[otherHand.."TagCacheItem"]) and masteries.vars[currentHand.."Firing"] then
+					--due to the implementation and nature of this bonus it will never display in the adv stats page or anywhere else. it is only active during the attack, and that is a very brief time frame
+					--to fully test this, it requires the use of debug code in crits.lua
+					critModifier=masteries.timers[currentHand]["rapierTimerBonus"][1]*(1+masteries.stats.rapierMastery)
 				elseif tagCaching[otherHand.."TagCache"]["dagger"] then
 					--"properly" dual wielded
 					dodgeModifier=0.25
@@ -212,6 +235,7 @@ function masteries.apply(args)
 				table.insert(masteryBuffer,{stat="dodgetechBonus", amount=dodgeModifier*(1+(masteries.stats.rapierMastery))*handMultiplier})
 				table.insert(masteryBuffer,{stat="dashtechBonus", amount=dashModifier*(1+(masteries.stats.rapierMastery))*handMultiplier})
 				table.insert(masteryBuffer,{stat="critChance", amount=critModifier})
+				--sb.logInfo("crit modifier in masteries: %s",critModifier)
 				table.insert(masteryBuffer,{stat="protection", effectiveMultiplier=1+(protectionModifier) })
 			end
 
@@ -679,6 +703,8 @@ end
 
 function masteries.clearHand(hand)
 	if (not type(hand)=="string") or (not type(tagCaching[hand.."TagCacheOld"])=="table") then return end
+	masteries.timers[hand]={}
+	masteries.timers["both"]={}
 	status.setPersistentEffects("masteryBonus"..hand, {})
 	status.setPersistentEffects("ammoMasteryBonus"..hand, {})
 end
