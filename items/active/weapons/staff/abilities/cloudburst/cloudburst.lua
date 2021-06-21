@@ -37,7 +37,7 @@ end
 
 function CloudBurst:charge()
 	self.weapon:setStance(self.stances.charge)
-	self.stances.charge.duration = self.stances.charge.duration * self.chargeTimerBonus
+	self.stances.charge.duration = self.stances.charge.duration
 	animator.playSound(self.elementalType.."charge")
 	animator.setAnimationState("charge", "charge")
 	animator.setParticleEmitterActive(self.elementalType .. "charge", true)
