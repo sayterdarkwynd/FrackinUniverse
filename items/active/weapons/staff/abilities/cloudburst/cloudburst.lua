@@ -147,8 +147,7 @@ function CloudBurst:createProjectiles()
 	-- bonus projectiles
 	local bonus=status.stat("focalProjectileCountBonus")
 	local flooredBonus=math.floor(bonus)
-	if bonus~=flooredBonus then bonus=math.random()<bonus end
-	if bonus then bonus=flooredBonus+1 end
+	if bonus~=flooredBonus then bonus=flooredBonus+(((math.random()<(bonus-flooredBonus)) and 1) or 0) end
 	pCount=pCount+bonus
 
 	local pCount = (self.projectileCount or 1) + status.stat("focalProjectileCountBonus")
