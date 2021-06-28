@@ -28,14 +28,16 @@ function tagCaching.update()
 
 	if tagCaching.primaryTagCacheItem~=primaryItem then
 		tagCaching.primaryTagCacheOld=copy(tagCaching.primaryTagCache)
-		tagCaching.primaryTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(root.itemConfig(primaryItem)))
+		local pass,result=pcall(root.itemConfig,primaryItem)
+		tagCaching.primaryTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(pass and result))
 		tagCaching.primaryTagCacheItem=primaryItem
 		tagCaching.primaryTagCacheItemChanged=true
 		doMerge=true
 	end
 	if tagCaching.altTagCacheItem~=altItem then
 		tagCaching.altTagCacheOld=copy(tagCaching.altTagCache)
-		tagCaching.altTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(root.itemConfig(altItem)))
+		local pass,result=pcall(root.itemConfig,altItem)
+		tagCaching.altTagCache=tagCaching.tagsToKeys(tagCaching.fetchTags(pass and result))
 		tagCaching.altTagCacheItem=altItem
 		tagCaching.altTagCacheItemChanged=true
 		doMerge=true
