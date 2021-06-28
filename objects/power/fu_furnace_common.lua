@@ -18,6 +18,7 @@ function init()
 	self.effectiveRequiredPower=self.requiredPower*self.timerInitial
 
 	self.extraConsumptionChance = config.getParameter ("fu_extraConsumptionChance", 0)
+	self.extraProductionChance = config.getParameter ("fu_extraProductionChance")
 	self.itemList=config.getParameter("inputsToOutputs")
 	self.bonusItemList=config.getParameter("bonusOutputs")
 	self.timer = self.timerInitial
@@ -40,21 +41,38 @@ function update(dt)
 			if (power.getTotalEnergy()>=self.effectiveRequiredPower) and world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}}) and power.consume(self.effectiveRequiredPower) then
 				animator.setAnimationState("furnaceState", "active")
 				storage.activeConsumption = true
+				local consumeA=1
+				local consumeC=1
 				if math.random() <= self.extraConsumptionChance then
-					world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}})
+					local succeeded=world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}})
+					if not succeeded then
+						consumeA=consumeA-1
+						consumeC=consumeC-1
+					end
+				end
+				if not self.extraProductionChance then
+					consumeA=consumeA+math.random(0,1)
+				elseif math.random<=self.extraProductionChance then
+					consumeA=consumeA+1
 				end
 				if checkBonus then
 					for key, value in pairs(storage.bonusoutputtable) do
 						if clearSlotCheck(key) and math.random(0,100) <= value then
-						fu_sendOrStoreItems(0, {name = key, count = 1, data = {}}, {0}, true)
+							if consumeC>0 then
+								fu_sendOrStoreItems(0, {name = key, count = consumeC, data = {}}, {0}, true)
+							end
 						end
 					end
 				end
 				if type(storage.currentoutput)=="string" then
-					fu_sendOrStoreItems(0, {name = storage.currentoutput, count = math.random(1,2), data = {}}, {0}, true)
+					if consumeA>0 then
+						fu_sendOrStoreItems(0, {name = storage.currentoutput, count = consumeA, data = {}}, {0}, true)
+					end
 				elseif type(storage.currentoutput)=="table" then
-					for _,item in pairs(storage.currentoutput) do
-						fu_sendOrStoreItems(0, {name = item, count = math.random(1,2), data = {}}, {0}, true)
+					if consumeA>0 then
+						for _,item in pairs(storage.currentoutput) do
+							fu_sendOrStoreItems(0, {name = item, count = consumeC, data = {}}, {0}, true)
+						end
 					end
 				end
 			else
