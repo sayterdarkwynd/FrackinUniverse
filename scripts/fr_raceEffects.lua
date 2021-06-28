@@ -43,6 +43,7 @@ function update(dt)
 			for _, eff in pairs(self.helper.speciesConfig.special or {}) do
 				status.removeEphemeralEffect(eff)
 			end
+			status.clearPersistentEffects("FR_special")
 			self.helper:clearPersistent()
 		end
 
@@ -90,7 +91,7 @@ function update(dt)
 		-- Add any other special effects
 		if self.helper.speciesConfig.special then
 			for _,thing in pairs(self.helper.speciesConfig.special) do
-				status.addEphemeralEffect(thing,math.huge)
+				status.addPersistentEffect("FR_special",thing,math.huge)
 			end
 		end
 	end
