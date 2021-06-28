@@ -18,6 +18,7 @@ function init()
 	self.effectiveRequiredPower=self.requiredPower*self.timerInitial
 
 	self.extraConsumptionChance = config.getParameter ("fu_extraConsumptionChance", 0)
+	self.extraProductionChance = config.getParameter ("fu_extraProductionChance")
 	self.itemList=config.getParameter("inputsToOutputs")
 	self.bonusItemList=config.getParameter("bonusOutputs")
 	self.timer = self.timerInitial
@@ -49,7 +50,11 @@ function update(dt)
 						consumeC=consumeC-1
 					end
 				end
+				if not self.extraProductionChance then
 					consumeA=consumeA+math.random(0,1)
+				elseif math.random<=self.extraProductionChance then
+					consumeA=consumeA+1
+				end
 				if checkBonus then
 					for key, value in pairs(storage.bonusoutputtable) do
 						if clearSlotCheck(key) and math.random(0,100) <= value then
