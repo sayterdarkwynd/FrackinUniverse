@@ -127,27 +127,13 @@ function update(args)
 			if (self.xibulbTimer >= self.maxXibulbValue) then
 				self.rand = math.random(1,3)	-- how many Bulbs can we potentially spawn?
 				self.onehundred = math.random(1,100)	 --chance to spawn rarer bulb types
-				if (foodValue > foodThreshold) then		--must have sufficient food to grow a seed
+				if (foodValue > foodThreshold) or tookEnergy then		--must have sufficient food, or drain energy to grow a seed.challenge race doesn't mean nonfunctional.
 					animator.setParticleEmitterActive("bulbStance", false)
 					animator.setParticleEmitterActive("bulb", true)
 					--world.placeObject("xi_bulb",mcontroller.position(),1) -- doesnt seem to work with that position
 					if self.onehundred == 100 then
 						world.spawnItem("xi_bulb3", mcontroller.position(), 1)
 					elseif self.onehundred > 80 then
-						world.spawnItem("xi_bulb2", mcontroller.position(), self.rand)
-					else
-						world.spawnItem("xi_bulb", mcontroller.position(), self.rand)
-					end
-					local configBombDrop = { power = 0 }
-					world.spawnProjectile("activeBulbCharged", mcontroller.position(), entity.id(), {0, 0}, false, configBombDrop)
-					self.xibulbTimer = 0
-				elseif (foodValue < foodThreshold) or tookEnergy then--(tookEnergy or tookHealth) then--challenge race doesn't mean nonfunctional.
-					--I could have made it so that if it took health or energy it would fire. instead, we make it slightly risky in that it only provides EGG on a tick it takes energy.
-					animator.setParticleEmitterActive("bulbStance", false)
-					animator.setParticleEmitterActive("bulb", true)
-					if self.onehundred == 100 then
-						world.spawnItem("xi_bulb3", mcontroller.position(), 1)
-					elseif self.onehundred > 95 then
 						world.spawnItem("xi_bulb2", mcontroller.position(), self.rand)
 					else
 						world.spawnItem("xi_bulb", mcontroller.position(), self.rand)
