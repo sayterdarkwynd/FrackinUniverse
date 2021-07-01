@@ -144,13 +144,12 @@ function ControlProjectile:createProjectiles()
 	-- bonus projectiles
 	local bonus=status.stat("focalProjectileCountBonus")
 	local flooredBonus=math.floor(bonus)
-	if bonus~=flooredBonus then bonus=math.random()<bonus end
-	if bonus then bonus=flooredBonus+1 end
+	if bonus~=flooredBonus then bonus=flooredBonus+(((math.random()<(bonus-flooredBonus)) and 1) or 0) end
+	local singleMultiplier=1+(((pCount==1) and 0.1*bonus) or 0)
 	pCount=pCount+bonus
-
 	local pParams = copy(self.projectileParameters)
 
-	pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
+	pParams.power = singleMultiplier * self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
 	pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
 
 	for i = 1, pCount do
@@ -181,9 +180,16 @@ end
 function ControlProjectile:updateProjectiles()
 	local aimPosition = activeItem.ownerAimPosition()
 	local newProjectiles = {}
+	local n=0
 	for _, projectileId in pairs(storage.projectiles) do
+		n=n+1
 		if world.entityExists(projectileId) then
-			local projectileResponse = world.sendEntityMessage(projectileId, "updateProjectile", aimPosition)
+			local aP=aimPosition
+			if n>1 then
+				aP[1]=aP[1]+(2*n*(math.random(0.0,1.0)-0.5))
+				aP[2]=aP[2]+(2*n*(math.random(0.0,1.0)-0.5))
+			end
+			local projectileResponse = world.sendEntityMessage(projectileId, "updateProjectile", aP)
 			if projectileResponse:finished() then
 				local newIds = projectileResponse:result()
 				if type(newIds) ~= "table" then
@@ -193,6 +199,8 @@ function ControlProjectile:updateProjectiles()
 					table.insert(newProjectiles, newId)
 				end
 			end
+		else
+			n=n-1
 		end
 	end
 	storage.projectiles = newProjectiles
