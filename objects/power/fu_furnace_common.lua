@@ -17,7 +17,7 @@ function init()
 	script.setUpdateDelta(1)
 	self.effectiveRequiredPower=self.requiredPower*self.timerInitial
 
-	self.extraConsumptionChance = config.getParameter ("fu_extraConsumptionChance", 0)
+	--self.extraConsumptionChance = config.getParameter ("fu_extraConsumptionChance", 0)
 	self.extraProductionChance = config.getParameter ("fu_extraProductionChance")
 	self.itemList=config.getParameter("inputsToOutputs")
 	self.bonusItemList=config.getParameter("bonusOutputs")
@@ -41,40 +41,45 @@ function update(dt)
 			if (power.getTotalEnergy()>=self.effectiveRequiredPower) and world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}}) and power.consume(self.effectiveRequiredPower) then
 				animator.setAnimationState("furnaceState", "active")
 				storage.activeConsumption = true
-				local consumeA=1
-				local consumeC=1
-				if math.random() <= self.extraConsumptionChance then
+				local outputBarsCount=1
+				local outputBonusCount=0
+				--[[if math.random() <= self.extraConsumptionChance then
 					local succeeded=world.containerConsume(entity.id(), {name = storage.currentinput, count = 2, data={}})
 					if not succeeded then
-						consumeA=consumeA-1
-						consumeC=consumeC-1
+						outputBarsCount=outputBarsCount-1
+						outputBonusCount=outputBonusCount-1
 					end
-				end
+				end]]
 				if not self.extraProductionChance then
-					consumeA=consumeA+math.random(0,1)
-				elseif math.random<=self.extraProductionChance then
-					consumeA=consumeA+1
+					outputBonusCount=outputBonusCount+math.random(0,1)
+				elseif math.random()<=self.extraProductionChance then
+					outputBonusCount=outputBonusCount+1
 				end
+				--sb.logInfo("%s",{sepc=self.extraProductionChance,obc1=outputBarsCount,obc2=outputBonusCount})
 				if checkBonus then
-					for key, value in pairs(storage.bonusoutputtable) do
-						if clearSlotCheck(key) and math.random(0,100) <= value then
-							if consumeC>0 then
-								fu_sendOrStoreItems(0, {name = key, count = consumeC, data = {}}, {0}, true)
+					if outputBonusCount>0 then
+						for key, value in pairs(storage.bonusoutputtable) do
+							if clearSlotCheck(key) and math.random(0,100) <= value then
+								fu_sendOrStoreItems(0, {name = key, count = outputBonusCount, data = {}}, {0}, true)
 							end
 						end
 					end
 				end
-				if type(storage.currentoutput)=="string" then
-					if consumeA>0 then
-						fu_sendOrStoreItems(0, {name = storage.currentoutput, count = consumeA, data = {}}, {0}, true)
+				--sb.logInfo("%s",{sbot=storage.bonusoutputtable})
+				if type(storage.currentoutput)=="string" then--normal output is always a single item, not a table
+					if outputBarsCount>0 then
+						fu_sendOrStoreItems(0, {name = storage.currentoutput, count = outputBarsCount, data = {}}, {0}, true)
 					end
-				elseif type(storage.currentoutput)=="table" then
-					if consumeA>0 then
+				elseif type(storage.currentoutput)=="table" then--this occurs when there is no 'normal' item, the output becomes the bonus table.
+					--if outputBonusCount>0 then
+					if outputBarsCount>0 then
 						for _,item in pairs(storage.currentoutput) do
-							fu_sendOrStoreItems(0, {name = item, count = consumeC, data = {}}, {0}, true)
+							--fu_sendOrStoreItems(0, {name = item, count = outputBonusCount, data = {}}, {0}, true)
+							fu_sendOrStoreItems(0, {name = item, count = outputBarsCount, data = {}}, {0}, true)
 						end
 					end
 				end
+				--sb.logInfo("%s",{sco=storage.currentoutput})
 			else
 				storage.activeConsumption = false
 				animator.setAnimationState("furnaceState", "idle")
