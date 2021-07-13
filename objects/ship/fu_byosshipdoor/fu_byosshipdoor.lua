@@ -66,6 +66,7 @@ function checkCustomSounds()
   if config.getParameter("customSoundsClose") then
     animator.setSoundPool("close", config.getParameter("customSoundsClose"))
   end
+  self.customSoundsChecked=true
 end
 
 function update(dt)
@@ -223,7 +224,9 @@ function closeDoor()
 end
 
 function openDoor(direction)
-  checkCustomSounds()
+  if not self.customSoundsChecked then
+    checkCustomSounds()
+  end
 
   if not storage.state then
     storage.state = true
