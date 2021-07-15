@@ -59,6 +59,16 @@ function init()
   message.setHandler("lockDoor", function() lockDoor() end)
 end
 
+function checkCustomSounds()
+  if config.getParameter("customSoundsOpen") then
+    animator.setSoundPool("open", config.getParameter("customSoundsOpen"))
+  end
+  if config.getParameter("customSoundsClose") then
+    animator.setSoundPool("close", config.getParameter("customSoundsClose"))
+  end
+  self.customSoundsChecked=true
+end
+
 function update(dt)
   if self.sensorConfig then
     self.sensorConfig.detectTimer = math.max(0, self.sensorConfig.detectTimer - dt)
@@ -204,7 +214,7 @@ end
 function closeDoor()
   if storage.state ~= false then
     storage.state = false
-	object.setConfigParameter("doorState", "close")
+    object.setConfigParameter("doorState", "close")
     updateInteractive()
     animator.playSound("close")
     animator.setAnimationState("doorState", "closing")
@@ -214,9 +224,13 @@ function closeDoor()
 end
 
 function openDoor(direction)
+  if not self.customSoundsChecked then
+    checkCustomSounds()
+  end
+
   if not storage.state then
     storage.state = true
-	object.setConfigParameter("doorState", "open")
+    object.setConfigParameter("doorState", "open")
     storage.locked = false -- make sure we don't get out of sync when wired
     updateInteractive()
     setDirection((direction == nil or direction * object.direction() < 0) and -1 or 1)

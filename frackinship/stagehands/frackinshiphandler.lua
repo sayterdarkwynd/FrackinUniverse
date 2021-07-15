@@ -51,7 +51,7 @@ function update()
 			self.shipRenderPromise = nil
 		end
 	end
-	if self.placingShip  and world.dungeonId(entity.position()) == self.shipDungeonId then
+	if self.placingShip and world.dungeonId(entity.position()) == self.shipDungeonId then
 		world.setProperty("fu_byos", true)
 		world.setProperty("fuChosenShip", false)
 		racialiseShip()
@@ -154,6 +154,18 @@ function racialiseShip()
 						newParameters.dialog = dialog
 					end
 				end
+
+				if racialiserType == "shipdoor" or racialiserType == "shiphatch" then
+					if newItem.config.animationCustom and newItem.config.animationCustom.sounds then
+						if newItem.config.animationCustom.sounds.open and newItem.config.animationCustom.sounds.open.pool then
+							newParameters.customSoundsOpen = newItem.config.animationCustom.sounds.open.pool
+						end
+						if newItem.config.animationCustom.sounds.close and newItem.config.animationCustom.sounds.close.pool then
+							newParameters.customSoundsClose = newItem.config.animationCustom.sounds.close.pool
+						end
+					end
+				end
+
 				for parameter, data in pairs (newParameters) do
 					world.callScriptedEntity(object, "object.setConfigParameter", parameter, data)
 				end
