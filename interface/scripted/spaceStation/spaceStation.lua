@@ -1160,7 +1160,7 @@ function shopItemSlot(wd)
 	local slotItem = widget.itemSlotItem(wd)
 	local cursorItem = player.swapSlotItem()
 
-	if cursorItem and slotItem and cursorItem.name == slotItem.name then
+	if cursorItem and slotItem and root.itemDescriptorsMatch(cursorItem, slotItem, true) then
 		local slotItemConfig = root.itemConfig(cursorItem.name)
 		local maxStack = slotItemConfig.config.maxStack
 		if not maxStack then maxStack = 1000 end
