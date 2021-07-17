@@ -37,7 +37,8 @@ function findContainer()
 
 	local objectIds = world.objectQuery(storage.position, self.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
-		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
+		local tSize=world.containerSize(objectId)
+		if tSize and (tSize>0) and not world.getObjectParameter(objectId,"notItemStorage",false) then
 			transferUtil.vars.containerId=objectId
 			self.containerPos=world.entityPosition(transferUtil.vars.containerId)
 			transferUtil.vars.inContainers[transferUtil.vars.containerId]=self.containerPos
