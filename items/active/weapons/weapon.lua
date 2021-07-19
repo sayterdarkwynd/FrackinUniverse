@@ -33,8 +33,9 @@ function Weapon:init()
 end
 
 function Weapon:update(dt, fireMode, shiftHeld)
+	if status.statPositive("timeFreeze") then return end
 	self.attackTimer = math.max(0, self.attackTimer - dt)
-
+	
 	for _,ability in pairs(self.abilities) do
 		ability:update(dt, fireMode, shiftHeld)
 	end
