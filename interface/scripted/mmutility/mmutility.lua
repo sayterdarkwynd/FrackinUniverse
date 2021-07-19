@@ -51,6 +51,8 @@ function swapMM(name)
         swapItem.parameters.originalMM = currentlyBase and self.currentMM or self.currentMM.parameters.originalMM
     end
 
+    paintSizeCap(getMaxSize(swapItem)+1)
+
     -- Set the bonus radius to that of the new MM
     status.setStatusProperty("bonusBeamGunRadius", getStatBonus(swapItem, "bonusBeamGunRadius"))
 
@@ -86,6 +88,10 @@ function swapTool(name)
         if not swapItem then
             widget.setItemSlotItem(name, origTool(tool))
             player.giveEssentialItem(tool, origTool(tool))
+            -- no use as the paint tool isn't saved anyways
+            --[[if tool == "painttool" then
+                paintSizeCap(getMaxSize(self.currentMM)+1)
+            end]]--
         else
             player.giveEssentialItem(tool, swapItem)
             widget.setItemSlotItem(name, swapItem)
@@ -94,6 +100,23 @@ function swapTool(name)
 
     resetSpinners()
     setSpinnersEnabled()
+end
+
+function paintSizeCap(size)
+    local paint = player.essentialItem("painttool")
+    local replace = false
+    if not paint or root.itemType(paint.name) ~= "paintingbeamtool" then return end
+    if getStat(paint, "blockRadius") > size then
+        paint.parameters.blockRadius = size
+        replace = true
+    end
+    if getStat(paint, "altBlockRadius") > size then
+        paint.parameters.altBlockRadius = size
+        replace = true
+    end
+    if replace then
+        player.giveEssentialItem("painttool", paint)
+    end
 end
 
 -- Returns the item ID of the player's base tool in the given slot
