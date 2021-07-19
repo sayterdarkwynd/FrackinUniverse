@@ -9,8 +9,7 @@ function update(dt)
 	if warpTimer and warpTimer<=0 then
 		local timer=temporalMin+(math.random())*temporalAdder
 		if math.random()>=0.95 then
-			status.addEphemeralEffect("
-			status.addEphemeralEffect("futimewarp",timer)",timer)
+			status.addEphemeralEffect("timefreeze2totalinvuln",timer)",timer)
 		else
 			if math.random()>=0.83 then
 				status.addEphemeralEffect("futimewarp",timer)
