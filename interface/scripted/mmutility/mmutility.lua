@@ -69,34 +69,30 @@ end
 
 function swapTool(name)
     local tool = self.tools[name]
+    local toolItem = player.essentialItem(tool)
+    local swapItem = player.swapSlotItem()
+    local mmupgrade = {
+        wiretool = "wiremode",
+        painttool = "paintmode"
+    }
 
-    if not player.swapSlotItem() and toolMatch(tool) then return end
+    if not swapItem and toolItem.name == origTool(tool) then return end
 
-    local upgrade = name == "wiretoolSlot" and "wiremode" or "paintmode"
-    if name == "inspectiontoolSlot" then upgrade = "nope" end
+    if tool == "inspectiontool" and toolItem.name == "inspectionmode" then return end
+    if tool ~= "inspectiontool" and not (self.currentMM.parameters.upgrades and contains(self.currentMM.parameters.upgrades, mmupgrade[tool])) then return end
 
-    local mm = player.essentialItem("beamaxe")
-
-    if (name == "inspectiontoolSlot" and (player.essentialItem("inspectiontool") or {}).name ~= "inspectionmode")
-        or (mm.parameters and mm.parameters.upgrades and contains(mm.parameters.upgrades, upgrade)) then
-        local swapItem = player.swapSlotItem()
-        if toolMatch(tool) then
-            player.setSwapSlotItem(nil)
-        else
-            player.setSwapSlotItem(player.essentialItem(tool))
-        end
-        if not swapItem then
-            widget.setItemSlotItem(name, origTool(tool))
-            player.giveEssentialItem(tool, origTool(tool))
-            -- no use as the paint tool isn't saved anyways
-            --[[if tool == "painttool" then
-                paintSizeCap(getMaxSize(self.currentMM)+1)
-            end]]--
-        else
-            player.giveEssentialItem(tool, swapItem)
-            widget.setItemSlotItem(name, swapItem)
-        end
+    if not swapItem then
+        swapItem = toolItem.parameters.originalMM or root.createItem(origTool(tool))
+    elseif toolItem.name == origTool(tool) then
+        swapItem.parameters.originalMM = toolItem
+    else
+        swapItem.parameters.originalMM = toolItem.parameters.originalMM
     end
+    toolItem.parameters.originalMM = nil
+    player.setSwapSlotItem(toolItem.name ~= origTool(tool) and toolItem or nil)
+    player.giveEssentialItem(tool, swapItem)
+    widget.setItemSlotItem(name, swapItem)
+    paintSizeCap(self.maxSize+1)
 
     resetSpinners()
     setSpinnersEnabled()
@@ -128,17 +124,6 @@ function origTool(slot)
     elseif slot == "beamaxe" then
         return getBaseManip()
     end
-end
-
-function toolMatch(slot)
-    local item = player.essentialItem(slot)
-    if not item then return nil end
-    local tool = item.name
-    if tool == slot then return slot
-    elseif slot == "inspectiontool" and tool == "scanmode" then return "scanmode"
-    end
-
-    return nil
 end
 
 -- Returns the item ID of the player's base MM
