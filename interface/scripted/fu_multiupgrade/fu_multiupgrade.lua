@@ -271,6 +271,7 @@ function upgradeWeapon(upgradeItem,price)
 			if consumedCurrency then
 				local mergeBuffer={}
 				local itemConfig = root.itemConfig(upgradedItem)
+				local defaultLvl = (itemConfig.config.level or 1)
 				local categoryLower=string.lower(mergeBuffer.category or itemConfig.parameters.category or itemConfig.config.category or "")
 
 				mergeBuffer.level = (itemConfig.parameters.level or itemConfig.config.level or 1) + 1
@@ -278,24 +279,24 @@ function upgradeWeapon(upgradeItem,price)
 				local oldRarity=(itemConfig.parameters and itemConfig.parameters.rarity) or (itemConfig.config and itemConfig.config.rarity)
 				mergeBuffer.rarity=oldRarity
 
-				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level >= 1) then
+				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level > 1) then
 					mergeBuffer = util.mergeTable(copy(mergeBuffer), copy(itemConfig.config.upgradeParametersTricorder))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
 
-				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level > 4) then
+				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level > math.max(defaultLvl, 4)) then
 					mergeBuffer = util.mergeTable(copy(mergeBuffer), copy(itemConfig.config.upgradeParameters))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
 
-				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level > 5) then
+				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level > math.max(defaultLvl+1, 5)) then
 					mergeBuffer = util.mergeTable(copy(mergeBuffer), copy(itemConfig.config.upgradeParameters2))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
-				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level > 6) then
+				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level > math.max(defaultLvl+2, 6)) then
 					mergeBuffer = util.mergeTable(copy(mergeBuffer), copy(itemConfig.config.upgradeParameters3))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity

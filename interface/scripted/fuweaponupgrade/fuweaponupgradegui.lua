@@ -384,6 +384,7 @@ function upgrade(upgradeItem,target)
 				--set level
 				local isTool=itemHasTag(itemConfig,"upgradeableTool")
 				local maxLvl=(isTool and self.upgradeLevelTool) or self.upgradeLevel
+				local defaultLvl=(itemConfig.config.level or 1)
 				--mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1)+1,maxLvl)
 				mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1),maxLvl)
 				if target then
@@ -391,22 +392,22 @@ function upgrade(upgradeItem,target)
 				end
 
 				--load item upgrade parameters
-				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level >= 1) then
+				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level > 1) then
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParametersTricorder))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
-				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level > 4) then
+				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level > math.max(defaultLvl, 4)) then
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
-				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level > 5) then
+				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level > math.max(defaultLvl+1, 5)) then
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters2))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
 				end
-				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level > 6) then
+				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level > math.max(defaultLvl+2, 6)) then
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters3))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
 					oldRarity=mergeBuffer.rarity
