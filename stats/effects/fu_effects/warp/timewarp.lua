@@ -27,7 +27,7 @@ function uninit()
 	if teleported then return end
 	for k,v in pairs(self.resources) do
 		status.setResource(k,v)
-		if self.lockedResources[k] then status.setResourceLocked(true) end
+		if self.lockedResources[k] then status.setResourceLocked(k,true) end
 	end
 	mcontroller.setPosition(self.rescuePosition)
 	mcontroller.setRotation(self.facing)
