@@ -17,7 +17,21 @@ function init(...)
 	idiotitem=root.itemConfig("idiotitem")
 	doIdiotCheck=true
 	sb.logInfo("----- FU player init -----")
-	ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
+	local wType=world.type()
+	if wType=="ffunknown" then
+		ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
+	elseif wType=="strangesea" then
+		local terraConfig={root.assetJson("/terrestrial_worlds.config:regionTypes.strangesea"),root.assetJson("/terrestrial_worlds.config:regionTypes.strangeseafloor")}
+		for k,v in pairs(terraConfig) do
+			if strangeSeaOverrideCheck then break end
+			for _,v2 in pairs(v.oceanLiquid or {}) do
+				if v2~="alienjuice" then
+					strangeSeaOverrideCheck=true
+					break
+				end
+			end
+		end
+	end
 	message.setHandler("fu_key", function(_, _, requiredItem)
 		if player.hasItem(requiredItem) then
 			return true
@@ -161,7 +175,8 @@ function unknownCheck(dt)
 		ffunknownCheckTimer=0.99
 	elseif ffunknownCheckTimer>=1.0 then
 		local ffunknownWorldProp=world.getProperty("ffunknownWorldProp")
-		if ffunknownConfig and world.type()=="ffunknown" and not playerIsInVehicle() then
+		local wType=world.type()
+		if ffunknownConfig and ((wType=="ffunknown") or (strangeSeaOverrideCheck and (wType=="strangesea"))) and not playerIsInVehicle() then
 			if not ffunknownWorldProp or (ffunknownWorldProp.version~=ffunknownConfig.version) then
 				ffunknownWorldProp={version=ffunknownConfig.version}
 				ffunknownWorldProp.effects={}
@@ -189,7 +204,7 @@ function unknownCheck(dt)
 				world.setProperty("ffunknownWorldProp",ffunknownWorldProp)
 			end
 			status.setPersistentEffects("ffunknownEffects",ffunknownWorldProp.effects)
-		elseif ffunknownWorldProp and world.type()~="ffunknown" then
+		elseif ffunknownWorldProp and not ((wType=="ffunknown") or (strangeSeaOverrideCheck and (wType=="strangesea"))) then
 			world.setProperty("ffunknownWorldProp",nil)
 			status.setPersistentEffects("ffunknownEffects",{})
 		else
