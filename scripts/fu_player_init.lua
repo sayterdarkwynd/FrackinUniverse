@@ -21,6 +21,7 @@ function init(...)
 	if wType=="ffunknown" then
 		ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
 	elseif wType=="strangesea" then
+		ffunknownConfig=root.assetJson("/scripts/ffunknownconfig.config")
 		local terraConfig={root.assetJson("/terrestrial_worlds.config:regionTypes.strangesea"),root.assetJson("/terrestrial_worlds.config:regionTypes.strangeseafloor")}
 		for k,v in pairs(terraConfig) do
 			if strangeSeaOverrideCheck then break end
@@ -170,6 +171,13 @@ function essentialCheck(dt)
 	end
 end
 
+function randTilt(floored,remainder)
+	if remainder>0.0 then
+		floored=math.floor(floored)+(((math.random()>(1-remainder)) and 1) or 0)
+	end
+	return floored
+end
+
 function unknownCheck(dt)
 	if not ffunknownCheckTimer then
 		ffunknownCheckTimer=0.99
@@ -183,19 +191,21 @@ function unknownCheck(dt)
 
 				local threatLevel=world.threatLevel()
 				local leftoverThreat=threatLevel%1
-				if leftoverThreat>0.0 then
-					threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
-				end
+				threatLevel=randTilt(threatLevel,leftoverThreat)
+
 				threatLevel=math.sqrt(threatLevel)
 				leftoverThreat=threatLevel%1
-				if leftoverThreat>0.0 then
-					threatLevel=math.floor(threatLevel)+(((math.random()>(1-leftoverThreat)) and 1) or 0)
-				end
+				threatLevel=randTilt(threatLevel,leftoverThreat)
+
+				threatLevel=threatLevel*(ffunknownConfig.modifier or 1.5)
+				leftoverThreat=threatLevel%1
+				threatLevel=randTilt(threatLevel,leftoverThreat)
 
 				local inc=0
 				local tempConfig=copy(ffunknownConfig.effectList)
-				while (inc<threatLevel) and (inc<10) do
+				while inc<threatLevel do
 					local key,value=chooseRandomPair(tempConfig)
+					if not key then break end
 					table.insert(ffunknownWorldProp.effects,value[math.random(#value)])
 					tempConfig[key]=nil
 					inc=inc+1
@@ -239,6 +249,7 @@ function chooseRandomPair(tbl)
 
     -- Get the amount of possible values
     local max = #keys
+	if max==0 then return end
     local number = math.random(1, max)
     local selectedKey = keys[number]
 
