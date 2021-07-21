@@ -145,7 +145,7 @@ function essentialCheck(dt)
 				if slot=="beamaxe" then
 					swapMM()
 				else
-					local baseTool=origTool(slot)
+					local baseTool=buffer.parameters.originalMM or origTool(slot)
 					player.giveEssentialItem(slot,baseTool)
 				end
 			end
