@@ -1,0 +1,36 @@
+{
+  "objectName" : "fucollisionfixer",
+  "rarity" : "Common",
+  "description" : "Destroys all collision within a 3x3 area, intended for bugfixing. ^red;Deletes foreground tiles.^reset;",
+  "shortdescription" : "Collision Fixing Tool",
+  "race" : "generic",
+  "category" : "decorative",
+
+  "scripts" : ["/objects/devtools/fucollisionfixer/fucollisionfixer.lua"],
+  "scriptDelta" : 10,
+
+  "collisionSpaces" : [
+    [[-1, 1], "metamaterial:empty"],
+    [[-1, 0], "metamaterial:empty"],
+    [[-1,-1], "metamaterial:empty"],
+    [[0, 1], "metamaterial:empty"],
+    [[0, 0], "metamaterial:empty"],
+    [[0,-1], "metamaterial:empty"],
+    [[1, 1], "metamaterial:empty"],
+    [[1, 0], "metamaterial:empty"],
+    [[1,-1], "metamaterial:empty"]
+  ],
+
+  "failureText" : "Don't place this next to your ship's hull!",
+
+  "inventoryIcon" : "fucollisionfixer.png",
+  "orientations" : [
+    {
+      "image" : "fucollisionfixer.png:<color>",
+      "imagePosition" : [-8, -8],
+      "frames" : 1,
+      "animationCycle" : 1.0,
+      "spaces" : [[0, 0]]
+    }
+  ]
+}
