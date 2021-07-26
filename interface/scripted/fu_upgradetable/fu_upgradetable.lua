@@ -538,7 +538,7 @@ function upgradeTool(upgradeItem, target)
 				-- set rarity
 				if mergeBuffer.level >= 8 then
 					mergeBuffer.rarity = highestRarity("essential",mergeBuffer.rarity)
-				elseif mergeBuffer.level >= 7 and self.isCrucible then
+				elseif mergeBuffer.level >= 7 then
 					mergeBuffer.rarity = highestRarity("legendary",mergeBuffer.rarity)
 				elseif mergeBuffer.level >= 5 then
 					mergeBuffer.rarity = highestRarity("rare",mergeBuffer.rarity)
