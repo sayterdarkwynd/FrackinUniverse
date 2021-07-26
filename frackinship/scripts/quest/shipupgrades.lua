@@ -112,7 +112,6 @@ function update(dt)
 		local shipSpeedStat = status.stat("shipSpeed")
 		local shipSpeedBYOS = world.getProperty("fu_byos.shipSpeed") or 0
 		local shipMassBYOS = world.getProperty("fu_byos.shipMass") or 0
-		local shipMassStat = status.stat("shipMass")
 
 		if crewSizeBYOS then
 			crewSizeNew, crewSizeBYOSNew = calculateNew("crewSize", crewSizeBYOS, crewSizeBYOSOld, shipCrewSize)
@@ -181,6 +180,7 @@ function update(dt)
 			--local newShipMass=clampStat("shipMass",((crewStats and crewStats.shipMass) or 0)+shipMassBYOS-status.stat("shipMass"))
 			--crew modifier for ship mass is basically unused, go figure.
 			status.clearPersistentEffects("byos")
+			local shipMassStat = status.stat("shipMass")
 			--shipMassStat = status.stat("shipMass")
 			--sb.logInfo("ship mass stat %s, shipMassBYOS %s",shipMassStat,shipMassBYOS)
 			shipMassTotal, shipMassModifier = calculateNew("shipMass", shipMassBYOS, 0, shipMassStat)

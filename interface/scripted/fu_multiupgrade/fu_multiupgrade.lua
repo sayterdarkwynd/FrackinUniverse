@@ -528,7 +528,7 @@ function upgradeTool(upgradeItem,price)
 					oldRarity=upgradedItem.parameters.rarity
 				end
 
-				if (itemConfig.config.category == "repairgun") and (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
+				if (itemConfig.config.category == "mechrepairtool") and (upgradedItem.parameters.level) > 8 and itemConfig.config.upgradeParameters8 then
 					upgradedItem.parameters = util.mergeTable(upgradedItem.parameters, itemConfig.config.upgradeParameters8)
 					upgradedItem.parameters.rarity=highestRarity(upgradedItem.parameters.rarity,oldRarity)
 					oldRarity=upgradedItem.parameters.rarity
