@@ -554,22 +554,24 @@ function upgradeTool(upgradeItem, target)
 
 				local categoryLower=string.lower(mergeBuffer.category or itemConfig.parameters.category or itemConfig.config.category or "")
 
-				if mergeBuffer.level > 8 and itemConfig.config.upgradeParameters8 and itemHasTag(itemConfig,"mininglaser") then
-					mergeBuffer.primaryAbility.beamLength= 30 + ( mergeBuffer.level + 1 )
-					mergeBuffer.primaryAbility.energyUsage= 6 + ( mergeBuffer.level /10 )
+				-- specific tool bonuses
+				if itemHasTag(itemConfig,"mininglaser") and mergeBuffer.level > 8 and itemConfig.config.upgradeParameters8 then
+					mergeBuffer.primaryAbility.beamLength = 30 + ( mergeBuffer.level + 1 )
+					mergeBuffer.primaryAbility.energyUsage = 6 + ( mergeBuffer.level /10 )
 					mergeBuffer.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( mergeBuffer.level /10 )
-				elseif mergeBuffer.level > 8 and itemConfig.config.upgradeParameters8 and (categoryLower == "bugnet") then
-					mergeBuffer.primaryAbility.energyUsage= 1 + ( mergeBuffer.level /20 )
+				elseif categoryLower == "bugnet" and mergeBuffer.level > 8 and itemConfig.config.upgradeParameters8 then
+					mergeBuffer.primaryAbility.energyUsage = 1 + ( mergeBuffer.level /20 )
 					mergeBuffer.primaryAbility.baseDps = itemConfig.config.primaryAbility.baseDps + ( mergeBuffer.level /10 )
-				elseif (categoryLower == "mechrepairtool") and mergeBuffer.level > 8 and itemConfig.config.upgradeParameters8 then
-					mergeBuffer.primaryAbility.projectileParameters.restoreBase= (mergeBuffer.level) + 3
-					mergeBuffer.primaryAbility.projectileParameters.speed= (mergeBuffer.level)+1
-					mergeBuffer.primaryAbility.energyUsage= 10 + ( mergeBuffer.level /10 )
-					-- catch leftovers
-				elseif (categoryLower == "detector") and mergeBuffer.level >=8 then -- ore detectors and cave detectors
-					mergeBuffer.pingRange= mergeBuffer.pingRange + 1
-					mergeBuffer.pingDuration= mergeBuffer.pingDuration + 0.15
-					mergeBuffer.pingCooldown= mergeBuffer.pingCooldown - 0.05
+				elseif categoryLower == "mechrepairtool" and mergeBuffer.level > 8 and itemConfig.config.upgradeParameters8 then
+					mergeBuffer.primaryAbility.projectileParameters.restoreBase = (mergeBuffer.level) + 3
+					mergeBuffer.primaryAbility.projectileParameters.speed = (mergeBuffer.level)+1
+					mergeBuffer.primaryAbility.energyUsage = 10 + ( mergeBuffer.level /10 )
+				elseif categoryLower == "detector" and mergeBuffer.level > 8 and itemConfig.config.upgradeParameters8 then
+					-- ore detectors and cave detectors
+					-- should be level scaled?
+					mergeBuffer.pingRange = mergeBuffer.pingRange + 1
+					mergeBuffer.pingDuration = mergeBuffer.pingDuration + 0.15
+					mergeBuffer.pingCooldown = mergeBuffer.pingCooldown - 0.05
 				end
 
 				upgradedItem.parameters=util.mergeTable(copy(upgradedItem.parameters),copy(mergeBuffer))
