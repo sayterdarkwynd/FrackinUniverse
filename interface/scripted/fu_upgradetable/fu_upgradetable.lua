@@ -113,6 +113,9 @@ function maxLvl(item,type)
 		itemConfig = root.itemConfig(item)
 	end
 	if itemConfig.config.upmax then
+		if type == "weapon" and not self.isCrucible and self.upgradeLevel < itemConfig.config.upmax then
+			return self.upgradeLevel
+		end
 		return itemConfig.config.upmax
 	end
 	if type == "tool" then
