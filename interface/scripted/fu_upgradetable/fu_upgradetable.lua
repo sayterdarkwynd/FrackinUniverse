@@ -106,16 +106,16 @@ function upgradeCost(itemConfig,type,targetLvl)
 end
 
 function maxLvl(item,type)
+	local itemConfig
+	if item.config then
+		itemConfig = item
+	else
+		itemConfig = root.itemConfig(item)
+	end
+	if itemConfig.config.upmax then
+		return itemConfig.config.upmax
+	end
 	if type == "tool" then
-		local itemConfig
-		if item.config then
-			itemConfig = item
-		else
-			itemConfig = root.itemConfig(item)
-		end
-		if itemConfig.config.upmax then
-			return itemConfig.config.upmax
-		end
 		return self.upgradeLevelTool
 	end
 	return self.upgradeLevel
@@ -428,7 +428,7 @@ function upgradeWeapon(upgradeItem,target)
 				sb.logInfo("Pre-Upgrade Stats: \n"..sb.printJson(upgradedItem,1)) -- list all current bonuses being applied to the weapon for debug
 
 				--set level
-				local maxLvl=self.upgradeLevel
+				local maxLvl=maxLvl(itemConfig, "weapon")
 				local defaultLvl=(itemConfig.config.level or 1)
 				--mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1)+1,maxLvl)
 				mergeBuffer.level = math.min((itemConfig.parameters.level or itemConfig.config.level or 1),maxLvl)
