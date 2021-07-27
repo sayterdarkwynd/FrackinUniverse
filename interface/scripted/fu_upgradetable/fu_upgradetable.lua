@@ -313,8 +313,13 @@ function fixTargetText(changed, item, itemType)
 	end
 	if originalText~=text then
 		widget.setText("upgradeTargetText",text)
-		self.playerTypingTimer=upgradeButtonLockout
-		self.buttonTimer=upgradeButtonLockout
+		if changed then
+			self.playerTypingTimer=upgradeButtonLockout/4
+			self.buttonTimer=upgradeButtonLockout/4
+		else
+			self.playerTypingTimer=upgradeButtonLockout
+			self.buttonTimer=upgradeButtonLockout
+		end
 		widget.setButtonEnabled("btnUpgrade", false)
 		itemSelected()
 	end
