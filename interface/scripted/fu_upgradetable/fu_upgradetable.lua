@@ -225,8 +225,11 @@ function populateItemList(forceRepop)
 
 				local price = upgradeCost(config,item.itemType,math.min(item.itemLevel+1, entryLevelMax))
 				widget.setData(listItem, { index = i,itemType = item.itemType,itemLevel = item.itemLevel })
-
-				widget.setVisible(string.format("%s.unavailableoverlay", listItem), getCurrency(item.itemType)<price)
+				if self.isUpgradeKit or not self.isCrucible then
+					widget.setVisible(string.format("%s.unavailableoverlay", listItem), getCurrency(item.itemType)<price)
+				else
+					widget.setVisible(string.format("%s.unavailableoverlay", listItem), false)
+				end
 			end
 		end
 
