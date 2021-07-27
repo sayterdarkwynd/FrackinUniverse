@@ -7,7 +7,7 @@ local armorList={legarmour=true,chestarmour=true,headarmour=true,enviroProtectio
 local cosmeticSlotList={"headCosmetic", "chestCosmetic", "legsCosmetic", "backCosmetic"}
 local armorSlotList={"head", "chest", "legs", "back"}
 local textboxPulseInterval=1.0
-local upgradeButtonLockout=0.5
+local upgradeButtonLockout=1.5
 
 function init()
 	widget.setButtonEnabled("btnUpgradeMax", false)
@@ -330,7 +330,7 @@ function pulseTextbox()
 end
 
 function btnUpgradeMax()
--- fuck off
+--deprecated. do not use.
 end
 
 function doUpgrade()
@@ -582,294 +582,294 @@ function upgradeTool(upgradeItem, target)
 end
 
 function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
-				--base DPS
-				local baseDps=(mergeBuffer.baseDps) or itemConfig.config.baseDps
-				if baseDps then
-					mergeBuffer.baseDps = baseDps * (1 + (mergeBuffer.level/80) )	-- increase DPS a bit
+	--base DPS
+	local baseDps=(mergeBuffer.baseDps) or itemConfig.config.baseDps
+	if baseDps then
+		mergeBuffer.baseDps = baseDps * (1 + (mergeBuffer.level/80) )	-- increase DPS a bit
+	end
+
+	--crit chance
+	local critChance=(mergeBuffer.critChance) or itemConfig.config.critChance
+	if critChance then
+		local modifier=0.15
+		if matchAny(categoryLower,{"rapier","katana","mace"}) then
+			modifier=0.25
+		end
+		mergeBuffer.critChance = critChance + (mergeBuffer.level*modifier) -- increase Crit Chance
+	end
+
+	--crit chance
+	local critBonus=(mergeBuffer.critBonus) or itemConfig.config.critBonus
+	if critBonus then
+		local modifier=0.5
+		if matchAny(categoryLower,{"rapier","katana","mace"}) then
+			modifier=1.0
+		end
+		mergeBuffer.critBonus = critBonus + (mergeBuffer.level*modifier) -- increase Crit Chance
+	end
+
+	-- is it a shield?
+	if (categoryLower == "shield") then
+		local shieldBash=mergeBuffer.shieldBash or itemConfig.config.shieldBash
+		if shieldBash then
+			mergeBuffer.shieldBash=shieldBash+(mergeBuffer.level*0.5)
+		end
+
+		local shieldBashPush=mergeBuffer.shieldBashPush or itemConfig.config.shieldBashPush
+		if shieldBashPush then
+			mergeBuffer.shieldBashPush=shieldBashPush+(mergeBuffer.level*0.5)
+		end
+
+		local cooldownTime=mergeBuffer.cooldownTime or itemConfig.config.cooldownTime
+		if cooldownTime then
+			mergeBuffer.cooldownTime=cooldownTime*(1.0-(0.02*mergeBuffer.level))
+		end
+
+		local perfectBlockTime=mergeBuffer.perfectBlockTime or itemConfig.config.perfectBlockTime
+		if perfectBlockTime then
+			mergeBuffer.perfectBlockTime=perfectBlockTime*(1.0+(mergeBuffer.level*0.05))
+		end
+
+		local shieldEnergyBonus=mergeBuffer.shieldEnergyBonus or itemConfig.config.shieldEnergyBonus
+		if shieldEnergyBonus then
+			mergeBuffer.shieldEnergyBonus=shieldEnergyBonus*(1.0+(mergeBuffer.level*0.05))
+		end
+
+		local baseShieldHealth=mergeBuffer.baseShieldHealth or itemConfig.config.baseShieldHealth
+		if baseShieldHealth then
+			mergeBuffer.baseShieldHealth=baseShieldHealth*(1.0+(mergeBuffer.level*0.15))
+		end
+	end
+
+	-- is it a staff or wand?
+	if matchAny(categoryLower,{"staff","wand"}) then
+		local baseDamageFactor=mergeBuffer.baseDamageFactor or itemConfig.config.baseDamageFactor
+		if baseDamageFactor then
+			mergeBuffer.baseDamageFactor=baseDamageFactor*(1.0+(mergeBuffer.level*0.075))
+		end
+	end
+
+	-- magnorbs
+	if (itemConfig.config.orbitRate) then
+		local shieldKnockback=mergeBuffer.shieldKnockback or itemConfig.config.shieldKnockback
+		if shieldKnockback then
+			mergeBuffer.shieldKnockback=shieldKnockback+mergeBuffer.level
+		end
+
+		local shieldEnergyCost=mergeBuffer.shieldEnergyCost or itemConfig.config.shieldEnergyCost
+		if shieldEnergyCost then
+			mergeBuffer.shieldEnergyCost=shieldEnergyCost+mergeBuffer.level
+		end
+
+		local shieldHealth=mergeBuffer.shieldHealth or itemConfig.config.shieldHealth
+		if shieldHealth then
+			mergeBuffer.shieldHealth=shieldHealth+mergeBuffer.level
+		end
+	end
+
+	-- boomerangs and other projectileParameters based things (magnorbs here too, chakrams)
+	local projectileParameters=copy(mergeBuffer.projectileParameters or (itemConfig.config.projectileParameters and {}))
+	if projectileParameters then
+		projectileParameters.power=projectileParameters.power or itemConfig.config.projectileParameters.power
+		if projectileParameters.power then
+			projectileParameters.power=projectileParameters.power+(mergeBuffer.level/7)
+		end
+		projectileParameters.controlForce=projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce
+		if projectileParameters.controlForce then
+			projectileParameters.controlForce=projectileParameters.controlForce+mergeBuffer.level
+		end
+		mergeBuffer.projectileParameters=projectileParameters
+	end
+
+	local primaryAbility=copy(mergeBuffer.primaryAbility or (itemConfig.config.primaryAbility and {}))
+	if primaryAbility then
+		if not matchAny(categoryLower,{"gun staff","sggunstaff"}) then --exclude Shellguard gunblades from this bit to not break their rotation
+			-- bows
+			if (categoryLower == "bow") then
+				primaryAbility.drawTime=primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime
+				if primaryAbility.drawTime then
+					primaryAbility.drawTime = primaryAbility.drawTime * (1 - (0.05*mergeBuffer.level))
 				end
-
-				--crit chance
-				local critChance=(mergeBuffer.critChance) or itemConfig.config.critChance
-				if critChance then
-					local modifier=0.15
-					if matchAny(categoryLower,{"rapier","katana","mace"}) then
-						modifier=0.25
-					end
-					mergeBuffer.critChance = critChance + (mergeBuffer.level*modifier) -- increase Crit Chance
+				primaryAbility.powerProjectileTime=primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime
+				if type(primaryAbility.powerProjectileTime)=="number" then
+					primaryAbility.powerProjectileTime = primaryAbility.powerProjectileTime*(1-(0.05*mergeBuffer.level))
+				elseif type(primaryAbility.powerProjectileTime)=="table" then
+					primaryAbility.powerProjectileTime[1]=primaryAbility.powerProjectileTime[1]*(1-(0.05*mergeBuffer.level))
+					primaryAbility.powerProjectileTime[2]=primaryAbility.powerProjectileTime[2]*(1+(0.05*mergeBuffer.level))
 				end
-
-				--crit chance
-				local critBonus=(mergeBuffer.critBonus) or itemConfig.config.critBonus
-				if critBonus then
-					local modifier=0.5
-					if matchAny(categoryLower,{"rapier","katana","mace"}) then
-						modifier=1.0
-					end
-					mergeBuffer.critBonus = critBonus + (mergeBuffer.level*modifier) -- increase Crit Chance
+				primaryAbility.energyPerShot=primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot
+				if primaryAbility.energyPerShot then
+					primaryAbility.energyPerShot = primaryAbility.energyPerShot * math.max(0,(1-(mergeBuffer.level*0.05)))
 				end
-
-				-- is it a shield?
-				if (categoryLower == "shield") then
-					local shieldBash=mergeBuffer.shieldBash or itemConfig.config.shieldBash
-					if shieldBash then
-						mergeBuffer.shieldBash=shieldBash+(mergeBuffer.level*0.5)
-					end
-
-					local shieldBashPush=mergeBuffer.shieldBashPush or itemConfig.config.shieldBashPush
-					if shieldBashPush then
-						mergeBuffer.shieldBashPush=shieldBashPush+(mergeBuffer.level*0.5)
-					end
-
-					local cooldownTime=mergeBuffer.cooldownTime or itemConfig.config.cooldownTime
-					if cooldownTime then
-						mergeBuffer.cooldownTime=cooldownTime*(1.0-(0.02*mergeBuffer.level))
-					end
-
-					local perfectBlockTime=mergeBuffer.perfectBlockTime or itemConfig.config.perfectBlockTime
-					if perfectBlockTime then
-						mergeBuffer.perfectBlockTime=perfectBlockTime*(1.0+(mergeBuffer.level*0.05))
-					end
-
-					local shieldEnergyBonus=mergeBuffer.shieldEnergyBonus or itemConfig.config.shieldEnergyBonus
-					if shieldEnergyBonus then
-						mergeBuffer.shieldEnergyBonus=shieldEnergyBonus*(1.0+(mergeBuffer.level*0.05))
-					end
-
-					local baseShieldHealth=mergeBuffer.baseShieldHealth or itemConfig.config.baseShieldHealth
-					if baseShieldHealth then
-						mergeBuffer.baseShieldHealth=baseShieldHealth*(1.0+(mergeBuffer.level*0.15))
-					end
+				primaryAbility.holdEnergyUsage=primaryAbility.holdEnergyUsage or itemConfig.config.primaryAbility.holdEnergyUsage
+				if primaryAbility.holdEnergyUsage then
+					primaryAbility.holdEnergyUsage = primaryAbility.holdEnergyUsage * math.max(0,1.0-(mergeBuffer.level*0.05))
 				end
-
-				-- is it a staff or wand?
-				if matchAny(categoryLower,{"staff","wand"}) then
-					local baseDamageFactor=mergeBuffer.baseDamageFactor or itemConfig.config.baseDamageFactor
-					if baseDamageFactor then
-						mergeBuffer.baseDamageFactor=baseDamageFactor*(1.0+(mergeBuffer.level*0.075))
-					end
+				primaryAbility.airborneBonus=primaryAbility.airborneBonus or itemConfig.config.primaryAbility.airborneBonus
+				if primaryAbility.airborneBonus then
+					primaryAbility.airborneBonus = primaryAbility.airborneBonus*(1+(mergeBuffer.level*0.02))
 				end
+			end
+			-- beams and miners
+			primaryAbility.beamLength=primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength
+			if (primaryAbility.beamLength) then
+				primaryAbility.beamLength=primaryAbility.beamLength + mergeBuffer.level
+			end
 
-				-- magnorbs
-				if (itemConfig.config.orbitRate) then
-					local shieldKnockback=mergeBuffer.shieldKnockback or itemConfig.config.shieldKnockback
-					if shieldKnockback then
-						mergeBuffer.shieldKnockback=shieldKnockback+mergeBuffer.level
-					end
+			-- wands/staves
+			primaryAbility.maxCastRange=primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange
+			if (primaryAbility.maxCastRange) then
+				primaryAbility.maxCastRange = primaryAbility.maxCastRange + (mergeBuffer.level/4)
+			end
 
-					local shieldEnergyCost=mergeBuffer.shieldEnergyCost or itemConfig.config.shieldEnergyCost
-					if shieldEnergyCost then
-						mergeBuffer.shieldEnergyCost=shieldEnergyCost+mergeBuffer.level
-					end
+			primaryAbility.energyCost=primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost
+			if (itemConfig.config.primaryAbility.energyCost) then
+				primaryAbility.energyCost = primaryAbility.energyCost * math.max(0,1.0-(mergeBuffer.level*0.03))
+			end
 
-					local shieldHealth=mergeBuffer.shieldHealth or itemConfig.config.shieldHealth
-					if shieldHealth then
-						mergeBuffer.shieldHealth=shieldHealth+mergeBuffer.level
-					end
-				end
+			-- does the item have a baseDps? if so, we increase the DPS slightly, but not if the weapon is a big hitter.
+			primaryAbility.baseDps=primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps
+			if (primaryAbility.baseDps) and not (primaryAbility.baseDps >=20) then
+				primaryAbility.baseDps=primaryAbility.baseDps*(1+(mergeBuffer.level/79))
+			end
+		else
+			--gunblade upgrade data here
+		end
+		mergeBuffer.primaryAbility=primaryAbility
+	end
 
-				-- boomerangs and other projectileParameters based things (magnorbs here too, chakrams)
-				local projectileParameters=copy(mergeBuffer.projectileParameters or (itemConfig.config.projectileParameters and {}))
-				if projectileParameters then
-					projectileParameters.power=projectileParameters.power or itemConfig.config.projectileParameters.power
-					if projectileParameters.power then
-						projectileParameters.power=projectileParameters.power+(mergeBuffer.level/7)
-					end
-					projectileParameters.controlForce=projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce
-					if projectileParameters.controlForce then
-						projectileParameters.controlForce=projectileParameters.controlForce+mergeBuffer.level
-					end
-					mergeBuffer.projectileParameters=projectileParameters
-				end
-
-				local primaryAbility=copy(mergeBuffer.primaryAbility or (itemConfig.config.primaryAbility and {}))
-				if primaryAbility then
-					if not matchAny(categoryLower,{"gun staff","sggunstaff"}) then --exclude Shellguard gunblades from this bit to not break their rotation
-						-- bows
-						if (categoryLower == "bow") then
-							primaryAbility.drawTime=primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime
-							if primaryAbility.drawTime then
-								primaryAbility.drawTime = primaryAbility.drawTime * (1 - (0.05*mergeBuffer.level))
-							end
-							primaryAbility.powerProjectileTime=primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime
-							if type(primaryAbility.powerProjectileTime)=="number" then
-								primaryAbility.powerProjectileTime = primaryAbility.powerProjectileTime*(1-(0.05*mergeBuffer.level))
-							elseif type(primaryAbility.powerProjectileTime)=="table" then
-								primaryAbility.powerProjectileTime[1]=primaryAbility.powerProjectileTime[1]*(1-(0.05*mergeBuffer.level))
-								primaryAbility.powerProjectileTime[2]=primaryAbility.powerProjectileTime[2]*(1+(0.05*mergeBuffer.level))
-							end
-							primaryAbility.energyPerShot=primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot
-							if primaryAbility.energyPerShot then
-								primaryAbility.energyPerShot = primaryAbility.energyPerShot * math.max(0,(1-(mergeBuffer.level*0.05)))
-							end
-							primaryAbility.holdEnergyUsage=primaryAbility.holdEnergyUsage or itemConfig.config.primaryAbility.holdEnergyUsage
-							if primaryAbility.holdEnergyUsage then
-								primaryAbility.holdEnergyUsage = primaryAbility.holdEnergyUsage * math.max(0,1.0-(mergeBuffer.level*0.05))
-							end
-							primaryAbility.airborneBonus=primaryAbility.airborneBonus or itemConfig.config.primaryAbility.airborneBonus
-							if primaryAbility.airborneBonus then
-								primaryAbility.airborneBonus = primaryAbility.airborneBonus*(1+(mergeBuffer.level*0.02))
-							end
-						end
-						-- beams and miners
-						primaryAbility.beamLength=primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength
-						if (primaryAbility.beamLength) then
-							primaryAbility.beamLength=primaryAbility.beamLength + mergeBuffer.level
-						end
-
-						-- wands/staves
-						primaryAbility.maxCastRange=primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange
-						if (primaryAbility.maxCastRange) then
-							primaryAbility.maxCastRange = primaryAbility.maxCastRange + (mergeBuffer.level/4)
-						end
-
-						primaryAbility.energyCost=primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost
-						if (itemConfig.config.primaryAbility.energyCost) then
-							primaryAbility.energyCost = primaryAbility.energyCost * math.max(0,1.0-(mergeBuffer.level*0.03))
-						end
-
-						-- does the item have a baseDps? if so, we increase the DPS slightly, but not if the weapon is a big hitter.
-						primaryAbility.baseDps=primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps
-						if (primaryAbility.baseDps) and not (primaryAbility.baseDps >=20) then
-							primaryAbility.baseDps=primaryAbility.baseDps*(1+(mergeBuffer.level/79))
-						end
-					else
-						--gunblade upgrade data here
-					end
-					mergeBuffer.primaryAbility=primaryAbility
-				end
-
-				-- Can it STUN?
-				if matchAny(categoryLower,{"hammer","mace","greataxe","quarterstaff"}) then
-					local stunChance=mergeBuffer.stunChance or itemConfig.config.stunChance
-					if stunChance then
-						mergeBuffer.stunChance=stunChance+(mergeBuffer.level*0.5)
-					end
-				end
+	-- Can it STUN?
+	if matchAny(categoryLower,{"hammer","mace","greataxe","quarterstaff"}) then
+		local stunChance=mergeBuffer.stunChance or itemConfig.config.stunChance
+		if stunChance then
+			mergeBuffer.stunChance=stunChance+(mergeBuffer.level*0.5)
+		end
+	end
 end
 
 function applyBonusesModule(mergeBuffer, itemConfig, categoryLower)
-				--crit chance
-				local critChance=(mergeBuffer.critChance) or itemConfig.config.critChance
-				if critChance then
-					local modifier=0.1
-					--[[if matchAny(categoryLower,{"rapier","katana","mace"}) then
-						modifier=0.25
-					end]]
-					mergeBuffer.critChance = critChance + (mergeBuffer.level*modifier) -- increase Crit Chance
-				end
+	--crit chance
+	local critChance=(mergeBuffer.critChance) or itemConfig.config.critChance
+	if critChance then
+		local modifier=0.1
+		--[[if matchAny(categoryLower,{"rapier","katana","mace"}) then
+			modifier=0.25
+		end]]
+		mergeBuffer.critChance = critChance + (mergeBuffer.level*modifier) -- increase Crit Chance
+	end
 
-				--crit chance
-				local critBonus=(mergeBuffer.critBonus) or itemConfig.config.critBonus
-				if critBonus then
-					local modifier=0.25
-					--[[if matchAny(categoryLower,{"rapier","katana","mace"}) then
-						modifier=1.0
-					end]]
-					mergeBuffer.critBonus = critBonus + (mergeBuffer.level*modifier) -- increase Crit Chance
-				end
+	--crit chance
+	local critBonus=(mergeBuffer.critBonus) or itemConfig.config.critBonus
+	if critBonus then
+		local modifier=0.25
+		--[[if matchAny(categoryLower,{"rapier","katana","mace"}) then
+			modifier=1.0
+		end]]
+		mergeBuffer.critBonus = critBonus + (mergeBuffer.level*modifier) -- increase Crit Chance
+	end
 
-				-- is it a shield?
-				if (categoryLower == "shield") then
-					local shieldBash=mergeBuffer.shieldBash or itemConfig.config.shieldBash
-					if shieldBash then
-						mergeBuffer.shieldBash=shieldBash+(mergeBuffer.level*0.25)
-					end
+	-- is it a shield?
+	if (categoryLower == "shield") then
+		local shieldBash=mergeBuffer.shieldBash or itemConfig.config.shieldBash
+		if shieldBash then
+			mergeBuffer.shieldBash=shieldBash+(mergeBuffer.level*0.25)
+		end
 
-					local cooldownTime=mergeBuffer.cooldownTime or itemConfig.config.cooldownTime
-					if cooldownTime then
-						mergeBuffer.cooldownTime=cooldownTime*(1.0-(0.02*mergeBuffer.level))
-					end
+		local cooldownTime=mergeBuffer.cooldownTime or itemConfig.config.cooldownTime
+		if cooldownTime then
+			mergeBuffer.cooldownTime=cooldownTime*(1.0-(0.02*mergeBuffer.level))
+		end
 
-					local perfectBlockTime=mergeBuffer.perfectBlockTime or itemConfig.config.perfectBlockTime
-					if perfectBlockTime then
-						mergeBuffer.perfectBlockTime=perfectBlockTime*(1.0+(mergeBuffer.level*0.03))
-					end
+		local perfectBlockTime=mergeBuffer.perfectBlockTime or itemConfig.config.perfectBlockTime
+		if perfectBlockTime then
+			mergeBuffer.perfectBlockTime=perfectBlockTime*(1.0+(mergeBuffer.level*0.03))
+		end
 
-					local shieldEnergyBonus=mergeBuffer.shieldEnergyBonus or itemConfig.config.shieldEnergyBonus
-					if shieldEnergyBonus then
-						mergeBuffer.shieldEnergyBonus=shieldEnergyBonus*(1.0+(mergeBuffer.level*0.05))
-					end
+		local shieldEnergyBonus=mergeBuffer.shieldEnergyBonus or itemConfig.config.shieldEnergyBonus
+		if shieldEnergyBonus then
+			mergeBuffer.shieldEnergyBonus=shieldEnergyBonus*(1.0+(mergeBuffer.level*0.05))
+		end
 
-					local baseShieldHealth=mergeBuffer.baseShieldHealth or itemConfig.config.baseShieldHealth
-					if baseShieldHealth then
-						mergeBuffer.baseShieldHealth=baseShieldHealth*(1.0+(mergeBuffer.level*0.05))
-					end
-				end
+		local baseShieldHealth=mergeBuffer.baseShieldHealth or itemConfig.config.baseShieldHealth
+		if baseShieldHealth then
+			mergeBuffer.baseShieldHealth=baseShieldHealth*(1.0+(mergeBuffer.level*0.05))
+		end
+	end
 
-				-- magnorbs
-				if (itemConfig.config.orbitRate) then
-					local shieldKnockback=mergeBuffer.shieldKnockback or itemConfig.config.shieldKnockback
-					if shieldKnockback then
-						mergeBuffer.shieldKnockback=shieldKnockback+mergeBuffer.level
-					end
+	-- magnorbs
+	if (itemConfig.config.orbitRate) then
+		local shieldKnockback=mergeBuffer.shieldKnockback or itemConfig.config.shieldKnockback
+		if shieldKnockback then
+			mergeBuffer.shieldKnockback=shieldKnockback+mergeBuffer.level
+		end
 
-					local shieldEnergyCost=mergeBuffer.shieldEnergyCost or itemConfig.config.shieldEnergyCost
-					if shieldEnergyCost then
-						mergeBuffer.shieldEnergyCost=shieldEnergyCost+mergeBuffer.level
-					end
+		local shieldEnergyCost=mergeBuffer.shieldEnergyCost or itemConfig.config.shieldEnergyCost
+		if shieldEnergyCost then
+			mergeBuffer.shieldEnergyCost=shieldEnergyCost+mergeBuffer.level
+		end
 
-					local shieldHealth=mergeBuffer.shieldHealth or itemConfig.config.shieldHealth
-					if shieldHealth then
-						mergeBuffer.shieldHealth=shieldHealth+mergeBuffer.level
-					end
-				end
+		local shieldHealth=mergeBuffer.shieldHealth or itemConfig.config.shieldHealth
+		if shieldHealth then
+			mergeBuffer.shieldHealth=shieldHealth+mergeBuffer.level
+		end
+	end
 
-				-- is it a staff or wand?
-				if matchAny(categoryLower,{"staff","wand"}) then
-					local baseDamageFactor=mergeBuffer.baseDamageFactor or itemConfig.config.baseDamageFactor
-					if baseDamageFactor then
-						mergeBuffer.baseDamageFactor=baseDamageFactor*(1.0+(mergeBuffer.level*0.05))
-					end
-				end
+	-- is it a staff or wand?
+	if matchAny(categoryLower,{"staff","wand"}) then
+		local baseDamageFactor=mergeBuffer.baseDamageFactor or itemConfig.config.baseDamageFactor
+		if baseDamageFactor then
+			mergeBuffer.baseDamageFactor=baseDamageFactor*(1.0+(mergeBuffer.level*0.05))
+		end
+	end
 
-				-- boomerangs and other projectileParameters based things (magnorbs here too, chakrams)
-				local projectileParameters=copy(mergeBuffer.projectileParameters or (itemConfig.config.projectileParameters and {}))
-				if projectileParameters then
-					projectileParameters.controlForce=projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce
-					if projectileParameters.controlForce then
-						projectileParameters.controlForce=projectileParameters.controlForce+mergeBuffer.level
-					end
-					mergeBuffer.projectileParameters=projectileParameters
-				end
+	-- boomerangs and other projectileParameters based things (magnorbs here too, chakrams)
+	local projectileParameters=copy(mergeBuffer.projectileParameters or (itemConfig.config.projectileParameters and {}))
+	if projectileParameters then
+		projectileParameters.controlForce=projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce
+		if projectileParameters.controlForce then
+			projectileParameters.controlForce=projectileParameters.controlForce+mergeBuffer.level
+		end
+		mergeBuffer.projectileParameters=projectileParameters
+	end
 
-				local primaryAbility=copy(mergeBuffer.primaryAbility or (itemConfig.config.primaryAbility and {}))
-				if primaryAbility then
-					if not matchAny(categoryLower,{"gun staff","sggunstaff"}) then --exclude Shellguard gunblades from this bit to not break their rotation
-						-- beams and miners
-						primaryAbility.beamLength=primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength
-						if (primaryAbility.beamLength) then
-							primaryAbility.beamLength=primaryAbility.beamLength + mergeBuffer.level
-						end
+	local primaryAbility=copy(mergeBuffer.primaryAbility or (itemConfig.config.primaryAbility and {}))
+	if primaryAbility then
+		if not matchAny(categoryLower,{"gun staff","sggunstaff"}) then --exclude Shellguard gunblades from this bit to not break their rotation
+			-- beams and miners
+			primaryAbility.beamLength=primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength
+			if (primaryAbility.beamLength) then
+				primaryAbility.beamLength=primaryAbility.beamLength + mergeBuffer.level
+			end
 
-						-- wands/staves
-						primaryAbility.maxCastRange=primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange
-						if (primaryAbility.maxCastRange) then
-							primaryAbility.maxCastRange = primaryAbility.maxCastRange + (mergeBuffer.level/4)
-						end
+			-- wands/staves
+			primaryAbility.maxCastRange=primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange
+			if (primaryAbility.maxCastRange) then
+				primaryAbility.maxCastRange = primaryAbility.maxCastRange + (mergeBuffer.level/4)
+			end
 
-						primaryAbility.energyCost=primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost
-						if (itemConfig.config.primaryAbility.energyCost) then
-							primaryAbility.energyCost = primaryAbility.energyCost * math.max(0,1.0-(mergeBuffer.level*0.03))
-						end
+			primaryAbility.energyCost=primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost
+			if (itemConfig.config.primaryAbility.energyCost) then
+				primaryAbility.energyCost = primaryAbility.energyCost * math.max(0,1.0-(mergeBuffer.level*0.03))
+			end
 
-						-- does the item have a baseDps? if so, we increase the DPS slightly, but not if the weapon is a big hitter.
-						primaryAbility.baseDps=primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps
-						if (primaryAbility.baseDps) and not (primaryAbility.baseDps >=20) then
-							primaryAbility.baseDps=primaryAbility.baseDps*(1+(mergeBuffer.level/79))
-						end
-					else
-						--gunblade upgrade data here
-					end
-					mergeBuffer.primaryAbility=primaryAbility
-				end
+			-- does the item have a baseDps? if so, we increase the DPS slightly, but not if the weapon is a big hitter.
+			primaryAbility.baseDps=primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps
+			if (primaryAbility.baseDps) and not (primaryAbility.baseDps >=20) then
+				primaryAbility.baseDps=primaryAbility.baseDps*(1+(mergeBuffer.level/79))
+			end
+		else
+			--gunblade upgrade data here
+		end
+		mergeBuffer.primaryAbility=primaryAbility
+	end
 
-				-- Can it STUN?
-				if matchAny(categoryLower,{"hammer","mace","greataxe","quarterstaff"}) then
-					local stunChance=mergeBuffer.stunChance or itemConfig.config.stunChance
-					if stunChance then
-						mergeBuffer.stunChance=stunChance+(mergeBuffer.level*0.5)
-					end
-				end
+	-- Can it STUN?
+	if matchAny(categoryLower,{"hammer","mace","greataxe","quarterstaff"}) then
+		local stunChance=mergeBuffer.stunChance or itemConfig.config.stunChance
+		if stunChance then
+			mergeBuffer.stunChance=stunChance+(mergeBuffer.level*0.5)
+		end
+	end
 end
 
 local oldCompare=compare
@@ -892,11 +892,11 @@ function criticalError()
 	widget.setVisible("warningLabel",true)
 	widget.setVisible("emptyLabel",false)
 	widget.setVisible("btnUpgrade",false)
-	widget.setText("essenceCostDescription","^red;HEAVILY OVER-MODDED ITEM")
-	widget.setText("essenceCost","^yellow;Find it. Remove it.")
-	widget.setText("warningLabel","^red;CRITICAL ERROR: ID10T")
+	widget.setText("essenceCostDescription","^red;UI OVER-LOADED")
+	widget.setText("essenceCost","^yellow;Remove some items from inventory.")
+	widget.setText("warningLabel","^red;CRITICAL ERROR")
 	script.setUpdateDelta(0)
-	error("You have a heavily overloaded item. This upgrade UI can't handle those. Items like the holographic ruler, for example.")
+	error("Your inventory has too much item data to parse. This upgrade UI can't handle that.")
 end
 
 function deepSizeOf(arg)
