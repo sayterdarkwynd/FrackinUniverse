@@ -24,6 +24,8 @@ function init()
 	self.upgradeLevelTool = 20
 	self.upgradeableWeaponItems = {}
 	self.selectedItem = nil
+	self.targetText = widget.getText("upgradeTargetText")
+
 	populateItemList()
 
 	widget.setText("warningLabel","")
@@ -408,7 +410,12 @@ function checkWorn(item)
 end
 
 function upgradeTargetText()
-	self.playerTypingTimer=upgradeButtonLockout
+	local text = widget.getText("upgradeTargetText")
+	if self.targetText ~= text then
+		self.playerTypingTimer = upgradeButtonLockout
+		self.buttonTimer = upgradeButtonLockout
+		self.targetText = text
+	end
 end
 
 function upgradeWeapon(upgradeItem,target)
