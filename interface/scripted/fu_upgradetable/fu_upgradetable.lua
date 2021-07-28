@@ -573,9 +573,8 @@ function upgradeTool(upgradeItem, target)
 					mergeBuffer.primaryAbility.projectileParameters.restoreBase = (mergeBuffer.level) + 3
 					mergeBuffer.primaryAbility.projectileParameters.speed = (mergeBuffer.level)+1
 					mergeBuffer.primaryAbility.energyUsage = 10 + ( mergeBuffer.level /10 )
-				elseif categoryLower == "detector" and mergeBuffer.level > 8 and itemConfig.config.upgradeParameters8 then
+				elseif categoryLower == "detector" and mergeBuffer.level >= 8 and itemConfig.config.upgradeParameters8 then
 					-- ore detectors and cave detectors
-					-- should be level scaled?
 					mergeBuffer.pingRange = mergeBuffer.pingRange + 1
 					mergeBuffer.pingDuration = mergeBuffer.pingDuration + 0.15
 					mergeBuffer.pingCooldown = mergeBuffer.pingCooldown - 0.05
