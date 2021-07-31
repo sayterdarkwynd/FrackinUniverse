@@ -186,5 +186,5 @@ function populateRacialDescription(race,notRecognized)
 end
 
 function upgradeEquipmentMenu()
-	player.interact("ScriptPane", "/interface/scripted/fu_multiupgrade/fu_multiupgrade.config", player.id())
+	player.interact("ScriptPane", "/interface/scripted/fu_upgradetable/fu_upgradetable.config", player.id())
 end
