@@ -1,7 +1,7 @@
 {
   "itemName" : "elduukhartier4broadsword",
   "price" : 750,
-  "level" : 4,
+  "level" : 3,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "This prototype blade was used to build on existing techniques. It's rather bulky.",
@@ -22,12 +22,15 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "ice",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
   },
   
   "critChance" : 1,

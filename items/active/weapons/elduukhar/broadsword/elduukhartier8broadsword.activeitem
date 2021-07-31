@@ -1,6 +1,6 @@
 {
   "itemName" : "elduukhartier8broadsword",
-  "level" : 6,
+  "level" : 5,
   "price" : 1345,
   "maxStack" : 1,
   "rarity" : "legendary",
@@ -22,12 +22,15 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "ice",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
   },
   
   "critChance" : 2,
