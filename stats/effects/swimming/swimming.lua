@@ -233,3 +233,7 @@ function setMonsterAbilities()
 		effect.setStatModifierGroup(handle,{{stat="gravityMod",amount=self.gravityMultipliers.monsterWater},{stat="fuswimming",amount=1}})
 	end
 end
+
+function uninit()
+	effect.removeStatModifierGroup(handle)
+end
