@@ -27,6 +27,9 @@ function init()
   message.setHandler("setErchiusLevel", function(_,_,amount) 
     self.targetErchius = amount
   end)
+  message.setHandler("killGhost", function() 
+    status.setResource("health", 0)
+  end)
 
   self.despawnTimer = 5.0
 end

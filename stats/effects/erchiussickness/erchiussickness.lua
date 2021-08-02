@@ -18,7 +18,12 @@ function init()
   self.checkItems = config.getParameter("ghostItems", {"liquidfuel", "solidfuel", "supermatter"})
   self.messaged = config.getParameter("noRadioMessage", false)
 
-  self.monsterUniqueId = string.format("%s-ghost", world.entityUniqueId(entity.id()) or sb.makeUuid())
+  self.playerId = world.entityUniqueId(entity.id())
+  if self.playerId then
+    self.monsterUniqueId = string.format("%s-ghost", self.playerId)
+  else
+    self.monsterUniqueId = string.format("%s-ghost", sb.makeUuid())
+  end
   self.findMonster = util.uniqueEntityTracker(self.monsterUniqueId, 0.2)
   self.saturation = 0
   self.dps = 0
@@ -75,6 +80,13 @@ function update(dt)
     animator.setLightActive("glow", false)
     animator.setParticleEmitterActive("smoke", false)
 
+    if not self.playerId then
+      self.playerId = world.entityUniqueId(entity.id())
+       if self.playerId then
+        self.monsterUniqueId = string.format("%s-ghost", self.playerId)
+        self.findMonster = util.uniqueEntityTracker(self.monsterUniqueId, 0.2)
+       end
+    end
     if self.spawnTimer < 0 then
       local parameters = {
         level = world.threatLevel(),
@@ -101,5 +113,9 @@ end
 
 function uninit()
   -- no way to check if entity still exists
-  world.sendEntityMessage(self.monsterUniqueId, "setErchiusLevel", 0)
+  if self.playerId then
+    world.sendEntityMessage(self.monsterUniqueId, "setErchiusLevel", 0)
+  else
+    world.sendEntityMessage(self.monsterUniqueId, "killGhost")
+  end
 end
