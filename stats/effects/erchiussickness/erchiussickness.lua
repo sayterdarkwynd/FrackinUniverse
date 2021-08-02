@@ -16,7 +16,7 @@ function init()
   self.sapEnergy = config.getParameter("sapEnergy", false)
   self.spawnGhost = config.getParameter("spawnGhost", "erchiusghost")
   self.checkItems = config.getParameter("ghostItems", {"liquidfuel", "solidfuel", "supermatter"})
-  self.messaged = not config.getParameter("doRadioMessage", true)
+  self.messaged = config.getParameter("noRadioMessage", false)
 
   self.monsterUniqueId = string.format("%s-ghost", world.entityUniqueId(entity.id()) or sb.makeUuid())
   self.findMonster = util.uniqueEntityTracker(self.monsterUniqueId, 0.2)
@@ -100,4 +100,6 @@ function toHex(num)
 end
 
 function uninit()
+  -- no way to check if entity still exists
+  world.sendEntityMessage(self.monsterUniqueId, "setErchiusLevel", 0)
 end
