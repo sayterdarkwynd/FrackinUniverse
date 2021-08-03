@@ -82,10 +82,10 @@ function update(dt)
 
     if not self.playerId then
       self.playerId = world.entityUniqueId(entity.id())
-       if self.playerId then
+      if self.playerId then
         self.monsterUniqueId = string.format("%s-ghost", self.playerId)
         self.findMonster = util.uniqueEntityTracker(self.monsterUniqueId, 0.2)
-       end
+      end
     end
     if self.spawnTimer < 0 then
       local parameters = {
