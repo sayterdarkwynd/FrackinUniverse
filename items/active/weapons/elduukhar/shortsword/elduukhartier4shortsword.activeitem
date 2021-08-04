@@ -1,6 +1,6 @@
 {
   "itemName" : "elduukhartier4shortsword",
-  "level" : 4,
+  "level" : 3,
   "price" : 485,
   "maxStack" : 1,
   "rarity" : "uncommon",
@@ -22,12 +22,15 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "ice",
 
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.625,
-    "baseDps" : 7.5
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "damageSourceKind" : "ice"
+    }
   },
   
   "critChance" : 2,

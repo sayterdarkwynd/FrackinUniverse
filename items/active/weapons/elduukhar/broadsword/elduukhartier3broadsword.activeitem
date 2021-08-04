@@ -1,7 +1,7 @@
 {
   "itemName" : "elduukhartier3broadsword",
   "price" : 530,
-  "level" : 3,
+  "level" : 2,
   "maxStack" : 1,
   "rarity" : "uncommon",
   "description" : "An ornate greatsword crafted from metal and crystal.",
@@ -22,12 +22,15 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "electric"
+    }
   },
   
   "critChance" : 1,
