@@ -24,8 +24,11 @@ function init()
   end
 
   self.targetErchius = 0
-  message.setHandler("setErchiusLevel", function(_,_,amount)
+  message.setHandler("setErchiusLevel", function(_,_,amount) 
     self.targetErchius = amount
+  end)
+  message.setHandler("killGhost", function() 
+    status.setResource("health", 0)
   end)
 
   self.despawnTimer = 5.0
@@ -55,10 +58,14 @@ function update(dt)
     local toTarget = vec2.norm(world.distance(targetPosition, mcontroller.position()))
     local targetDistance = world.magnitude(targetPosition, mcontroller.position())
 
-    local speedDistanceRatio = math.max(0.0, math.min(1.0, (targetDistance - self.speedupRange[1]) / (self.speedupRange[2] - self.speedupRange[1])))
-    local speed = minSpeed() + (speedDistanceRatio * self.maxSpeed)
-    mcontroller.controlApproachVelocity(vec2.mul(toTarget, speed), mcontroller.baseParameters().airForce)
-    mcontroller.controlFace(util.toDirection(toTarget[1]))
+    if targetDistance > 0.5 then
+      local speedDistanceRatio = math.max(0.0, math.min(1.0, (targetDistance - self.speedupRange[1]) / (self.speedupRange[2] - self.speedupRange[1])))
+      local speed = minSpeed() + (speedDistanceRatio * self.maxSpeed)
+      mcontroller.controlApproachVelocity(vec2.mul(toTarget, speed), mcontroller.baseParameters().airForce)
+      mcontroller.controlFace(util.toDirection(toTarget[1]))
+    else
+      mcontroller.controlApproachVelocity({0.0, 0.0}, mcontroller.baseParameters().airForce)
+    end
 
     local emissionDistanceRatio = 1 - math.min(1.0, targetDistance / self.emissionRange)
     animator.setParticleEmitterEmissionRate("erchius", emissionDistanceRatio * self.maxEmissionRate)
