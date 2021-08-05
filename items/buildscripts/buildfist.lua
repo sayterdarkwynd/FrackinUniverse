@@ -69,6 +69,10 @@ function build(directory, config, parameters, level, seed)
 		config.tooltipFields.comboFinisherTitleLabel = "Finisher:"
 		config.tooltipFields.comboFinisherLabel = config.comboFinisher.name or "unknown"
 	end
+	if config.comboSteps then
+		config.tooltipFields.comboStepsTitleLabel = "Combo Steps:"
+		config.tooltipFields.comboStepsLabel = config.comboSteps
+	end
 
 	-- *******************************
 	-- FU ADDITIONS
