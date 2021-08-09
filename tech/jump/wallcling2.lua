@@ -31,6 +31,7 @@ function init()
 end
 
 function uninit()
+  unsetWallClingAbility()
   releaseWall()
 end
 
