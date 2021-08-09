@@ -1,33 +1,53 @@
 {
-  "objectName" : "scumbloom",
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 400,
-  "printable" : false,  
-  "description" : "Lashleaf",
-  "shortdescription" : "Lashleaf",
-  "race" : "apex",
+    "objectName": "scumbloom",
+    "rarity": "Common",
+    "category": "decorative",
+    "price": 400,
+    "printable": false,
+    "description": "Lashleaf",
+    "shortdescription": "Lashleaf",
+    "race": "apex",
+    "inventoryIcon": "scumbloom.png",
+    "orientations": [
+        {
+            "image": "scumbloom.png:<color>",
+            "imagePosition": [
+                0,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.5,
+            "spaceScan": 0.1,
+            "anchors": [
+                "bottom"
+            ]
+        }
+    ],
+    "smashSounds": [
+        "/sfx/tools/axe_chop_alt_heavy.ogg"
+    ],
+    "smashDropOptions": [
+        [
+            [
+                "biosample",
+                1,
+                {
 
-  "inventoryIcon" : "scumbloom.png",
-  "orientations" : [
-    {
-      "image" : "scumbloom.png:<color>",
-      "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+                }
+            ]
+        ]
+    ],
+    "breakDropOptions": [
+        [
+            [
+                "biosample",
+                1,
+                {
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
-  "smashDropOptions" : [
-    [ [ "biosample", 1, { } ] ]
-  ],
-
-  "breakDropOptions" : [
-    [ [ "biosample", 1, { } ] ]
-  ],
-  "biomePlaced" : true
+                }
+            ]
+        ]
+    ],
+    "biomePlaced": true,
+    "scannable": false
 }
