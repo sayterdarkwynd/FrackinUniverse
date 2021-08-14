@@ -34,10 +34,12 @@ function HammerSmash:windup(windupProgress)
 	self.timerHammer = 0--clear the values each time we swing the hammer
 	self.overCharged = 0
 
-	local windupProgress = windupProgress or 0
+	windupProgress = windupProgress or 0
 	local bounceProgress = 0
-	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
+	if self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) then
 		status.setStatusProperty(activeItem.hand().."Firing",true)
+	end
+	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
 		if windupProgress < 1 then
 			windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
 			self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
