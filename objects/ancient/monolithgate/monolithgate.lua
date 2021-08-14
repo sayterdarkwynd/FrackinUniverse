@@ -14,18 +14,12 @@ function update(dt)
 		end
 	end
 	if self.states["open"] then
-		if fuzzState("open","on") then
+		if animator.setAnimationState("open","on") then
 			object.setInteractive(true)
 		end
 	else
 		for state, _ in pairs(self.states) do
-			fuzzState(state,"on")
+			animator.setAnimationState(state,"on")
 		end
-	end
-end
-
-function fuzzState(state,value)
-	if animator.animationState(state)~=value then
-		return animator.setAnimationState(state,value)
 	end
 end
