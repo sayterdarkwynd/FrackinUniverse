@@ -25,10 +25,7 @@ function update(dt)
 end
 
 function fuzzState(state,value)
-	local changed
 	if animator.animationState(state)~=value then
-		animator.setAnimationState(state,value)
-		changed=true
+		return animator.setAnimationState(state,value)
 	end
-	return changed
 end
