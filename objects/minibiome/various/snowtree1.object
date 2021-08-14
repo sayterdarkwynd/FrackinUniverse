@@ -1,33 +1,53 @@
 {
-  "objectName" : "snowtree1",
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 400,
-  "printable" : false,  
-  "description" : "A small tree",
-  "shortdescription" : "Tree",
-  "race" : "apex",
+    "objectName": "snowtree1",
+    "rarity": "Common",
+    "category": "decorative",
+    "price": 400,
+    "printable": false,
+    "description": "A small tree",
+    "shortdescription": "Tree",
+    "race": "apex",
+    "inventoryIcon": "snowtree1.png",
+    "orientations": [
+        {
+            "image": "snowtree1.png:<color>",
+            "imagePosition": [
+                0,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.5,
+            "spaceScan": 0.1,
+            "anchors": [
+                "bottom"
+            ]
+        }
+    ],
+    "smashSounds": [
+        "/sfx/tools/axe_chop_alt_heavy.ogg"
+    ],
+    "smashDropOptions": [
+        [
+            [
+                "logblock",
+                5,
+                {
 
-  "inventoryIcon" : "snowtree1.png",
-  "orientations" : [
-    {
-      "image" : "snowtree1.png:<color>",
-      "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+                }
+            ]
+        ]
+    ],
+    "breakDropOptions": [
+        [
+            [
+                "logblock",
+                5,
+                {
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
-  "smashDropOptions" : [
-    [ [ "logblock", 5, { } ] ]
-  ],
-
-  "breakDropOptions" : [
-    [ [ "logblock", 5, { } ] ]
-  ],
-  "biomePlaced" : true
+                }
+            ]
+        ]
+    ],
+    "biomePlaced": true,
+    "scannable": false
 }

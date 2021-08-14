@@ -1,33 +1,53 @@
 {
-  "objectName" : "smalltree1",
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 400,
-  "printable" : false,  
-  "description" : "A sapling",
-  "shortdescription" : "Sapling",
-  "race" : "apex",
+    "objectName": "smalltree1",
+    "rarity": "Common",
+    "category": "decorative",
+    "price": 400,
+    "printable": false,
+    "description": "A sapling",
+    "shortdescription": "Sapling",
+    "race": "apex",
+    "inventoryIcon": "smalltree1.png",
+    "orientations": [
+        {
+            "image": "smalltree1.png:<color>",
+            "imagePosition": [
+                0,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.5,
+            "spaceScan": 0.1,
+            "anchors": [
+                "bottom"
+            ]
+        }
+    ],
+    "smashSounds": [
+        "/sfx/tools/axe_chop_alt_heavy.ogg"
+    ],
+    "smashDropOptions": [
+        [
+            [
+                "logblock",
+                2,
+                {
 
-  "inventoryIcon" : "smalltree1.png",
-  "orientations" : [
-    {
-      "image" : "smalltree1.png:<color>",
-      "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+                }
+            ]
+        ]
+    ],
+    "breakDropOptions": [
+        [
+            [
+                "logblock",
+                2,
+                {
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
-  "smashDropOptions" : [
-    [ [ "logblock", 2, { } ] ]
-  ],
-
-  "breakDropOptions" : [
-    [ [ "logblock", 2, { } ] ]
-  ],
-  "biomePlaced" : true
+                }
+            ]
+        ]
+    ],
+    "biomePlaced": true,
+    "scannable": false
 }
