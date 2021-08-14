@@ -26,7 +26,7 @@ function Weapon:init()
 	for _,ability in pairs(self.abilities) do
 		ability:init()
 		--fallback code just in case
-		if status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
+		if ability.abilitySlot and status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
 			status.setStatusProperty(ability.abilitySlot.."ComboStep",ability.comboStep)
 		end
 	end
@@ -46,12 +46,12 @@ function Weapon:update(dt, fireMode, shiftHeld)
 			if not status then error(result) end
 		else
 			--fallback code just in case
-			if status.statusProperty(self.currentAbility.abilitySlot.."ComboStep")~=self.currentAbility.comboStep then
+			if self.currentAbility.abilitySlot and status.statusProperty(self.currentAbility.abilitySlot.."ComboStep")~=self.currentAbility.comboStep then
 				status.setStatusProperty(self.currentAbility.abilitySlot.."ComboStep",self.currentAbility.comboStep)
 			end
 			self.currentAbility:uninit()
 			--fallback code just in case
-			if status.statusProperty(self.currentAbility.abilitySlot.."ComboStep")~=self.currentAbility.comboStep then
+			if self.currentAbility.abilitySlot and status.statusProperty(self.currentAbility.abilitySlot.."ComboStep")~=self.currentAbility.comboStep then
 				status.setStatusProperty(self.currentAbility.abilitySlot.."ComboStep",self.currentAbility.comboStep)
 			end
 			self.currentAbility = nil
@@ -86,14 +86,14 @@ end
 function Weapon:uninit()
 	for _,ability in pairs(self.abilities) do
 		--fallback code just in case
-		if status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
+		if ability.abilitySlot and status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
 			status.setStatusProperty(ability.abilitySlot.."ComboStep",ability.comboStep)
 		end
 		if ability.uninit then
 			ability:uninit(true)
 		end
 		--fallback code just in case
-		if status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
+		if ability.abilitySlot and status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
 			status.setStatusProperty(ability.abilitySlot.."ComboStep",ability.comboStep)
 		end
 	end

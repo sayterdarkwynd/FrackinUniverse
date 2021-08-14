@@ -684,13 +684,11 @@ function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
 	-- boomerangs and other projectileParameters based things (magnorbs here too, chakrams)
 	local projectileParameters=copy(mergeBuffer.projectileParameters or (itemConfig.config.projectileParameters and {}))
 	if projectileParameters then
-		projectileParameters.power=projectileParameters.power or itemConfig.config.projectileParameters.power
-		if projectileParameters.power then
-			projectileParameters.power=projectileParameters.power+(mergeBuffer.level/7)
+		if (projectileParameters.power or itemConfig.config.projectileParameters.power) then
+			projectileParameters.power=(projectileParameters.power or itemConfig.config.projectileParameters.power)+(mergeBuffer.level/7)
 		end
-		projectileParameters.controlForce=projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce
-		if projectileParameters.controlForce then
-			projectileParameters.controlForce=projectileParameters.controlForce+mergeBuffer.level
+		if (projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce) then
+			projectileParameters.controlForce=(projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce)+mergeBuffer.level
 		end
 		mergeBuffer.projectileParameters=projectileParameters
 	end
@@ -700,51 +698,45 @@ function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
 		if not matchAny(categoryLower,{"gun staff","sggunstaff"}) then --exclude Shellguard gunblades from this bit to not break their rotation
 			-- bows
 			if (categoryLower == "bow") then
-				primaryAbility.drawTime=primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime
-				if primaryAbility.drawTime then
-					primaryAbility.drawTime = primaryAbility.drawTime * (1 - (0.05*mergeBuffer.level))
+				if (primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime) then
+					primaryAbility.drawTime = (primaryAbility.drawTime or itemConfig.config.primaryAbility.drawTime) * (1 - (0.05*mergeBuffer.level))
 				end
-				primaryAbility.powerProjectileTime=primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime
-				if type(primaryAbility.powerProjectileTime)=="number" then
-					primaryAbility.powerProjectileTime = primaryAbility.powerProjectileTime*(1-(0.05*mergeBuffer.level))
-				elseif type(primaryAbility.powerProjectileTime)=="table" then
-					primaryAbility.powerProjectileTime[1]=primaryAbility.powerProjectileTime[1]*(1-(0.05*mergeBuffer.level))
-					primaryAbility.powerProjectileTime[2]=primaryAbility.powerProjectileTime[2]*(1+(0.05*mergeBuffer.level))
+				local powerProjectileTime=primaryAbility.powerProjectileTime or itemConfig.config.primaryAbility.powerProjectileTime
+				if type(powerProjectileTime)=="number" then
+					powerProjectileTime = powerProjectileTime*(1-(0.05*mergeBuffer.level))
+				elseif type(powerProjectileTime)=="table" then
+					powerProjectileTime[1]=powerProjectileTime[1]*(1-(0.05*mergeBuffer.level))
+					powerProjectileTime[2]=powerProjectileTime[2]*(1+(0.05*mergeBuffer.level))
 				end
 				primaryAbility.energyPerShot=primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot
-				if primaryAbility.energyPerShot then
-					primaryAbility.energyPerShot = primaryAbility.energyPerShot * math.max(0,(1-(mergeBuffer.level*0.05)))
+				if (primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot) then
+					primaryAbility.energyPerShot = (primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot) * math.max(0,(1-(mergeBuffer.level*0.05)))
 				end
-				primaryAbility.holdEnergyUsage=primaryAbility.holdEnergyUsage or itemConfig.config.primaryAbility.holdEnergyUsage
-				if primaryAbility.holdEnergyUsage then
-					primaryAbility.holdEnergyUsage = primaryAbility.holdEnergyUsage * math.max(0,1.0-(mergeBuffer.level*0.05))
+				if (primaryAbility.holdEnergyUsage or itemConfig.config.primaryAbility.holdEnergyUsage) then
+					primaryAbility.holdEnergyUsage = (primaryAbility.holdEnergyUsage or itemConfig.config.primaryAbility.holdEnergyUsage) * math.max(0,1.0-(mergeBuffer.level*0.05))
 				end
-				primaryAbility.airborneBonus=primaryAbility.airborneBonus or itemConfig.config.primaryAbility.airborneBonus
-				if primaryAbility.airborneBonus then
-					primaryAbility.airborneBonus = primaryAbility.airborneBonus*(1+(mergeBuffer.level*0.02))
+				if (primaryAbility.airborneBonus or itemConfig.config.primaryAbility.airborneBonus) then
+					primaryAbility.airborneBonus = (primaryAbility.airborneBonus or itemConfig.config.primaryAbility.airborneBonus)*(1+(mergeBuffer.level*0.02))
 				end
 			end
 			-- beams and miners
-			primaryAbility.beamLength=primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength
-			if (primaryAbility.beamLength) then
-				primaryAbility.beamLength=primaryAbility.beamLength + mergeBuffer.level
+			if (primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength) then
+				primaryAbility.beamLength=(primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength) + mergeBuffer.level
 			end
 
 			-- wands/staves
-			primaryAbility.maxCastRange=primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange
-			if (primaryAbility.maxCastRange) then
-				primaryAbility.maxCastRange = primaryAbility.maxCastRange + (mergeBuffer.level/4)
+			if (primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange) then
+				primaryAbility.maxCastRange = (primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange) + (mergeBuffer.level/4)
 			end
 
-			primaryAbility.energyCost=primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost
-			if (itemConfig.config.primaryAbility.energyCost) then
-				primaryAbility.energyCost = primaryAbility.energyCost * math.max(0,1.0-(mergeBuffer.level*0.03))
+			if (primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost) then
+				primaryAbility.energyCost = (primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost) * math.max(0,1.0-(mergeBuffer.level*0.03))
 			end
 
 			-- does the item have a baseDps? if so, we increase the DPS slightly, but not if the weapon is a big hitter.
-			primaryAbility.baseDps=primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps
-			if (primaryAbility.baseDps) and not (primaryAbility.baseDps >=20) then
-				primaryAbility.baseDps=primaryAbility.baseDps*(1+(mergeBuffer.level/79))
+			local baseDps=(primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps)
+			if (baseDps) and not (baseDps >=20) then
+				primaryAbility.baseDps=baseDps*(1+(mergeBuffer.level/79))
 			end
 		else
 			--gunblade upgrade data here
@@ -839,9 +831,8 @@ function applyBonusesModule(mergeBuffer, itemConfig, categoryLower)
 	-- boomerangs and other projectileParameters based things (magnorbs here too, chakrams)
 	local projectileParameters=copy(mergeBuffer.projectileParameters or (itemConfig.config.projectileParameters and {}))
 	if projectileParameters then
-		projectileParameters.controlForce=projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce
-		if projectileParameters.controlForce then
-			projectileParameters.controlForce=projectileParameters.controlForce+mergeBuffer.level
+		if (projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce) then
+			projectileParameters.controlForce=(projectileParameters.controlForce or itemConfig.config.projectileParameters.controlForce)+mergeBuffer.level
 		end
 		mergeBuffer.projectileParameters=projectileParameters
 	end
@@ -850,26 +841,23 @@ function applyBonusesModule(mergeBuffer, itemConfig, categoryLower)
 	if primaryAbility then
 		if not matchAny(categoryLower,{"gun staff","sggunstaff"}) then --exclude Shellguard gunblades from this bit to not break their rotation
 			-- beams and miners
-			primaryAbility.beamLength=primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength
-			if (primaryAbility.beamLength) then
-				primaryAbility.beamLength=primaryAbility.beamLength + mergeBuffer.level
+			if (primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength) then
+				primaryAbility.beamLength=(primaryAbility.beamLength or itemConfig.config.primaryAbility.beamLength) + mergeBuffer.level
 			end
 
 			-- wands/staves
-			primaryAbility.maxCastRange=primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange
-			if (primaryAbility.maxCastRange) then
-				primaryAbility.maxCastRange = primaryAbility.maxCastRange + (mergeBuffer.level/4)
+			if (primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange) then
+				primaryAbility.maxCastRange = (primaryAbility.maxCastRange or itemConfig.config.primaryAbility.maxCastRange) + (mergeBuffer.level/4)
 			end
 
-			primaryAbility.energyCost=primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost
-			if (itemConfig.config.primaryAbility.energyCost) then
-				primaryAbility.energyCost = primaryAbility.energyCost * math.max(0,1.0-(mergeBuffer.level*0.03))
+			if (primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost) then
+				primaryAbility.energyCost = (primaryAbility.energyCost or itemConfig.config.primaryAbility.energyCost) * math.max(0,1.0-(mergeBuffer.level*0.03))
 			end
 
 			-- does the item have a baseDps? if so, we increase the DPS slightly, but not if the weapon is a big hitter.
-			primaryAbility.baseDps=primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps
-			if (primaryAbility.baseDps) and not (primaryAbility.baseDps >=20) then
-				primaryAbility.baseDps=primaryAbility.baseDps*(1+(mergeBuffer.level/79))
+			local baseDps=primaryAbility.baseDps or itemConfig.config.primaryAbility.baseDps
+			if (baseDps) and not (baseDps >=20) then
+				primaryAbility.baseDps=baseDps*(1+(mergeBuffer.level/79))
 			end
 		else
 			--gunblade upgrade data here
