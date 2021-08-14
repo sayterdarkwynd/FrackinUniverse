@@ -51,8 +51,7 @@ function FRHelper:call(args, ...)
 	if not self.frconfig.liquidCache then self.frconfig.liquidCache={} end
 	if liqAt then
 		if not self.frconfig.liquidCache[liqAt[1]] then
-			local lConf=root.liquidConfig(liqAt[1])
-			self.frconfig.liquidCache[liqAt[1]]=lConf.config.name
+			self.frconfig.liquidCache[liqAt[1]]=root.liquidName(liqAt[1])
 		end
 	end
     for i,thing in ipairs(args or {}) do
