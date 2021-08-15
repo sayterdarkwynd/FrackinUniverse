@@ -2,10 +2,10 @@ function init()
 	script.setUpdateDelta(1)
 	self.resources={}
 	self.lockedResources={}
-	local configuredResources=root.assetJson("/player.config:statusControllerSettings.resources")
+	local configuredResources=status.resourceNames() --root.assetJson("/player.config:statusControllerSettings.resources")
 	for k,v in pairs(configuredResources) do
-		self.resources[k]=status.resource(k)
-		if status.resourceLocked(k) then self.lockedResources[k]=true end
+		self.resources[v]=status.resource(v)
+		if status.resourceLocked(v) then self.lockedResources[v]=true end
 	end
 	for k,v in pairs(self.resources or {}) do
 		if k=="energy" then status.setResource(k,0) end
@@ -18,7 +18,7 @@ function update(dt)
 		if k=="energy" then status.setResource(k,0)
 		else status.setResource(k,v)
 		end
-		status.setResourceLocked(true)
+		status.setResourceLocked(k,true)
 	end
 end
 

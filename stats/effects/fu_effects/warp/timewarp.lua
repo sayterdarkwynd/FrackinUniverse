@@ -6,10 +6,10 @@ function init()
 	self.rescuePosition = mcontroller.position()
 	self.resources={}
 	self.lockedResources={}
-	local configuredResources=root.assetJson("/player.config:statusControllerSettings.resources")
+	local configuredResources=status.resourceNames() --root.assetJson("/player.config:statusControllerSettings.resources")
 	for k,v in pairs(configuredResources) do
-		self.resources[k]=status.resource(k)
-		if status.resourceLocked(k) then self.lockedResources[k]=true end
+		self.resources[v]=status.resource(v)
+		if status.resourceLocked(v) then self.lockedResources[v]=true end
 	end
 	self.facing=mcontroller.rotation()
 	self.velocity={mcontroller.xVelocity(),mcontroller.yVelocity()}
