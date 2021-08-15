@@ -26,21 +26,21 @@ function FRHelper:call(args, ...)
       if type(thing.biomes) == "string" then
         local groups = self.frconfig.biomeGroups[thing.biomes]
         if groups and contains(groups, world.type()) then
-          if #thing.stats == 0 then
+          if thing.stats and #thing.stats == 0 then
             self:clearPersistent(name)
           else
             self:applyStats(thing, name, ...)
           end
-        elseif #thing.stats ~= 0 then
+        elseif not thing.stats or #thing.stats ~= 0 then
           self:clearPersistent(name)
         end
       elseif thing.biomes and contains(thing.biomes, world.type()) then
-        if #thing.stats == 0 then
+        if thing.stats and #thing.stats == 0 then
           self:clearPersistent(name)
         else
           self:applyStats(thing, name, ...)
         end
-      elseif #thing.stats ~= 0 then
+      elseif not thing.stats or #thing.stats ~= 0 then
         self:clearPersistent(name)
       end
     end
