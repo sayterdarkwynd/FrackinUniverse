@@ -394,12 +394,11 @@ function checkWorn(item)
 	local swapSlotItem=player.swapSlotItem()
 	local isCosmeticArmor=cosmeticList[itemCat]
 	local isArmor=armorList[itemCat]
-	if isCosmeticArmor then
+	if isCosmeticArmor or isArmor then
 		for _,slot in pairs(cosmeticSlotList) do
 			local compTo=player.equippedItem(slot)
 			if compare(compTo,item) then return "equipped in cosmetic slot" end
 		end
-	elseif isArmor then
 		for _,slot in pairs(armorSlotList) do
 			local compTo=player.equippedItem(slot)
 			if compare(compTo,item) then return "equipped in armor slot" end
