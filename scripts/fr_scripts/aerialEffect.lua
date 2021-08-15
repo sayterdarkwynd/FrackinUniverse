@@ -28,41 +28,42 @@
     }
 ]]
 
-function FRHelper:call(args)
+function FRHelper:call(args, ...)
     local aerialEffect = args.airStats
     local fallEffect = args.fallStats
     local groundEffect = args.groundStats -- Support for ground-only effects too!
     local windEffects = args.windEffects
 
     -- Effects while in the air
-    if aerialEffect and not mcontroller.onGround() then
-		self:clearPersistent("groundStats")
-        self:applyStats(aerialEffect, "aerialStats")
-	elseif groundEffect then
-		self:clearPersistent("aerialStats")
-        self:applyStats(groundEffect, "groundStats")
+    local onGround = mcontroller.onGround()
+    if aerialEffect and not onGround then
+      self:clearPersistent("groundStats")
+      self:applyStats(aerialEffect, "aerialStats", ...)
+    elseif groundEffect and onGround then
+      self:clearPersistent("aerialStats")
+      self:applyStats(groundEffect, "groundStats", ...)
     else
-		self:clearPersistent("aerialStats")
-		self:clearPersistent("groundStats")
-	end
+      self:clearPersistent("aerialStats")
+      self:clearPersistent("groundStats")
+    end
 
     -- Effects while falling
-	if fallEffect and mcontroller.falling() then
-        self:applyStats(fallEffect, "fallStats")
-        if fallEffect.maxFallSpeed then
-            mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), fallEffect.maxFallSpeed))
-        end
+    if fallEffect and mcontroller.falling() then
+      self:applyStats(fallEffect, "fallStats", ...)
+      if fallEffect.maxFallSpeed then
+        mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), fallEffect.maxFallSpeed))
+      end
     else
-		self:clearPersistent("fallStats")
-	end
+      self:clearPersistent("fallStats")
+    end
 
     -- Wind effects
     local windLevel = world.windLevel(mcontroller.position())
     if windEffects and windEffects.windHigh and windLevel >= windEffects.windHigh.speed then
-        self:applyStats(windEffects.windHigh, "windStats")
-	elseif windEffects and windEffects.windLow and windLevel >= windEffects.windLow.speed then
-        self:applyStats(windEffects.windHigh, "windStats")
+      self:applyStats(windEffects.windHigh, "windStats", ...)
+    elseif windEffects and windEffects.windLow and windLevel >= windEffects.windLow.speed then
+      self:applyStats(windEffects.windHigh, "windStats", ...)
     else
-		self:clearPersistent("windStats")
-	end
+      self:clearPersistent("windStats")
+    end
 end

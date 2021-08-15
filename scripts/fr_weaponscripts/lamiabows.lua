@@ -6,7 +6,7 @@ No args for this one. Not yet, anyway.
 ONLY run in bows! Or something else that has firePosition and aimVector methods
 ]]
 
-function FRHelper:call(args, main)
+function FRHelper:call(args, main, dt, ...)
     local energyValue = status.resource("energy") or 100
 
     -- 10% chance of random projectile
@@ -44,6 +44,6 @@ function FRHelper:call(args, main)
         self:applyStats({stats={
             {stat = "critChance", amount = critValueLamia},
             {stat = "powerMultiplier", baseMultiplier = 1 + (critValueLamia/100) * 2}
-        }}, "lamiabowbonus")
+        }}, "lamiabowbonus", main, dt, ...)
     end
 end

@@ -14,14 +14,14 @@ function FRHelper:call(args, ...)
     local lightLevel = math.floor(world.lightLevel(position)*100)
 
     if status.resource("health") >= status.stat("maxHealth") then
-	    if not args.dark and lightLevel >= args.lightLevel then
-			self:applyStats(args, args.name or "FR_lightEffect", ...)
-	    elseif lightLevel <= args.lightLevel then
-			self:applyStats(args, args.name or "FR_lightEffect", ...)
-	    else
-			self:clearPersistent(args.name or "FR_lightEffect")
-		end
-	else
-		self:clearPersistent(args.name or "FR_lightEffect")
-	end
+        if not args.dark and lightLevel >= args.lightLevel then
+            self:applyStats(args, args.name or "FR_lightEffect", ...)
+        elseif lightLevel <= args.lightLevel then
+            self:applyStats(args, args.name or "FR_lightEffect", ...)
+        else
+            self:clearPersistent(args.name or "FR_lightEffect")
+        end
+    else
+        self:clearPersistent(args.name or "FR_lightEffect")
+    end
 end
