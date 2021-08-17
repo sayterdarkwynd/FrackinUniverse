@@ -45,7 +45,7 @@ function FRHelper:call(args, ...)
                 end
             end
         end
-	if not appliedbonus then
+        if name and not appliedbonus then
             self:clearPersistent(name)
         end
     end
