@@ -20,26 +20,33 @@ Structure:
 ]
 ]]
 
-function FRHelper:call(args)
+function FRHelper:call(args, ...)
     local primaryItem = world.entityHandItem(entity.id(), "primary")
     local altItem = world.entityHandItem(entity.id(), "alt")
     for i,weap in ipairs(args or {}) do
-		self:clearPersistent(weap.name or "FR_weaponComboEffect"..i)
-		self:clearPersistent(weap.name or "FR_weaponEffect"..i)
+        local appliedbonus
+        local name
         if weap.combos then -- Weapon combos
+            name = weap.name or "FR_weaponComboEffect"..i
             for _,combo in ipairs(weap.combos) do
                 if self:validCombo(primaryItem, altItem, combo) then
-                    self:applyStats(weap, weap.name or "FR_weaponComboEffect"..i)
+                    self:applyStats(weap, name, ...)
+                    appliedbonus = true
                     break
                 end
             end
         elseif weap.weapons then -- Single weapons
+            name = weap.name or "FR_weaponEffect"..i
             for _,thing in ipairs(weap.weapons) do
                 if (primaryItem and root.itemHasTag(primaryItem, thing)) or (altItem and root.itemHasTag(altItem, thing)) then
-                    self:applyStats(weap, weap.name or "FR_weaponEffect"..i)
+                    self:applyStats(weap, name, ...)
+                    appliedbonus = true
                     break
                 end
             end
-		end
+        end
+        if name and not appliedbonus then
+            self:clearPersistent(name)
+        end
     end
 end
