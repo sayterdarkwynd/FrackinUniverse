@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/interface/scripted/mmutility/mmutility.lua"
 
 function init()
     self.baseStats = {
@@ -121,7 +122,7 @@ function giveRacialManipulator()
                 mm.parameters.upgrades[#mm.parameters.upgrades + 1] = "liquidcollection"
             end
             if manip.rangeBonus then
-                status.setStatusProperty("bonusBeamGunRadius", manip.rangeBonus+status.statusProperty("bonusBeamGunRadius", 0))
+                status.setStatusProperty("bonusBeamGunRadius", getMMRange(mm))
             end
 
             local newcfg = root.itemConfig(manip.item).config
