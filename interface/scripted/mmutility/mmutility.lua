@@ -54,7 +54,7 @@ function swapMM(name)
     paintSizeCap(getMaxSize(swapItem)+1)
 
     -- Set the bonus radius to that of the new MM
-    status.setStatusProperty("bonusBeamGunRadius", getStatBonus(swapItem, "bonusBeamGunRadius"))
+    status.setStatusProperty("bonusBeamGunRadius", (root.itemConfig(swapItem).config.rangeBonus or 0)+getStatBonus(swapItem, "bonusBeamGunRadius"))
 
     -- Transfer wiremode and paintmode upgrades (as they should be permanent)
     -- Also handles granting of the liquidcollection upgrade if it is enabled by default on the new MM

@@ -306,14 +306,17 @@ end
 
 function giveBeamaxe()
     local frconfig = root.assetJson("/frackinraces.config").manipulators
-	if frconfig[player.species()] then
-      mm = root.createItem(frconfig[player.species()].item or "beamaxe")
-	else
-	  mm = root.createItem('beamaxe')
-	end
+    if frconfig[player.species()] then
+        mm = root.createItem(frconfig[player.species()].item or "beamaxe")
+    else
+        mm = root.createItem('beamaxe')
+    end
     if frconfig[player.species()] and frconfig[player.species()].collectLiquid then
         mm.parameters.upgrades = { "liquidcollection" }
         mm.parameters.canCollectLiquid = true
+    end
+    if frconfig[player.species()] and frconfig[player.species()].rangeBonus then
+        status.setStatusProperty("bonusBeamGunRadius", frconfig[player.species()].rangeBonus)
     end
     player.giveEssentialItem("beamaxe", mm)
 end
