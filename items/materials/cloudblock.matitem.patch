@@ -1,0 +1,30 @@
+[
+    [
+        {
+            "op": "replace",
+            "path": "/description",
+            "value": "A cloud dense enough to walk on.\n^green;Extractable^reset;."
+        }
+    ],
+    [
+        {
+            "op": "test",
+            "path": "/learnBlueprintsOnPickup",
+            "inverse": true
+        },
+        {
+            "op": "add",
+            "path": "/learnBlueprintsOnPickup",
+            "value": [
+
+            ]
+        }
+    ],
+    [
+        {
+            "op": "add",
+            "path": "/learnBlueprintsOnPickup/-",
+            "value": "fu_cloudplatform"
+        }
+    ]
+]

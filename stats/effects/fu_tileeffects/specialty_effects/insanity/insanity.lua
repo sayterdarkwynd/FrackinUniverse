@@ -39,7 +39,7 @@ function update(dt)
 		self.tickTimer = self.tickTime
 		status.applySelfDamageRequest({
 			damageType = "IgnoresDef",
-			effect.addStatModifierGroup({{stat = "protection", amount = baseValue }}),
+			--effect.addStatModifierGroup({{stat = "protection", amount = baseValue }}),
 			damage = math.floor(status.resourceMax("health") * self.tickDamagePercentage) + 1,
 			damageSourceKind = "poison",
 			sourceEntityId = entity.id(),

@@ -4,24 +4,23 @@ require "/scripts/interp.lua"
 require "/items/active/weapons/melee/meleeslash.lua"
 require("/scripts/FRHelper.lua")
 
--- Hammer primary attack
+-- greataxe primary attack
 -- Extends default melee attack and overrides windup and fire
-HammerSmash = MeleeSlash:new()
-function HammerSmash:init()
+GreataxeSmash = MeleeSlash:new()
+function GreataxeSmash:init()
 	self.stances.windup.duration = self.fireTime - self.stances.preslash.duration - self.stances.fire.duration
 
-	self.timerHammer = 0 --for hammer crit/stun bonus (FU)
+	self.timerGreataxe = 0 --for greataxe crit/stun bonus (FU)
 	self.overCharged = 0 -- overcharged default
-	self.hammerMastery = 1 + status.stat("hammerMastery") -- new stat for applying bonuses to hammer functions
 
 	MeleeSlash.init(self)
 	self:setupInterpolation()
 end
 
-function HammerSmash:windup(windupProgress)
+function GreataxeSmash:windup(windupProgress)
 	self.energyTotal = math.max(status.stat("maxEnergy") * 0.10,0) -- due to weather and other cases it is possible to have a maximum of under 0.
 	if (status.resource("energy") <= 1) or not (status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal))) then
-		cancelEffects()
+		self.timerGreataxe = 0
 		self.lowEnergy=true
 	else
 		self.lowEnergy=false
@@ -30,13 +29,16 @@ function HammerSmash:windup(windupProgress)
 	self.weapon:setStance(self.stances.windup)
 	--*************************************
 	-- FU/FR ADDONS
-	setupHelper(self, "hammersmash-fire")
+	setupHelper(self, "GreataxeSmash-fire")
 	--**************************************
-	self.timerHammer = 0--clear the values each time we swing the hammer
+	self.timerGreataxe = 0--clear the values each time we swing the greataxe
 	self.overCharged = 0
 
-	local windupProgress = windupProgress or 0
+	windupProgress = windupProgress or 0
 	local bounceProgress = 0
+	if self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) then
+		status.setStatusProperty(activeItem.hand().."Firing",true)
+	end
 	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
 		if windupProgress < 1 then
 			windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
@@ -45,26 +47,28 @@ function HammerSmash:windup(windupProgress)
 			bounceProgress = math.min(1, bounceProgress + (self.dt / self.stances.windup.bounceTime))
 			self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:bounceWeaponAngle(bounceProgress)
 
-	--**************************************
+			--**************************************
 
 			-- increase "charge" the longer it is held. cannot pass 100.
-			self.bombbonus = status.stat("bombtechBonus")
-			mcontroller.controlModifiers({speedModifier = 0.7 + (self.bombbonus/10)}) --slow down when charging
+			local bombBonus = status.stat("bombtechBonus")
+			mcontroller.controlModifiers({speedModifier = 0.7 + (bombBonus/10)}) --slow down when charging
 
-			if self.lowEnergy or (self.timerHammer >=100) then --if we havent overcharged but hit 100 bonus, overcharge and reset
+			if self.lowEnergy or (self.timerGreataxe >=100) then --if we havent overcharged but hit 100 bonus, overcharge and reset
 				self.overCharged = 1
-				self.timerHammer = 0
-				status.setPersistentEffects("hammerbonus", {})
+				self.timerGreataxe = 0
+				status.setPersistentEffects("greataxeMasteryBonus", {})
 			end
 			if self.overCharged > 0 then --reset if overCharged
-				self.timerHammer = 0
-				status.setPersistentEffects("hammerbonus", {})
+				self.timerGreataxe = 0
+				status.setPersistentEffects("greataxeMasteryBonus", {})
 			else
-				if self.timerHammer < 100 then --otherwise, add bonus
-					self.timerHammer = self.timerHammer + 0.5
-					status.setPersistentEffects("hammerbonus", {{stat = "critChance", amount = ((self.timerHammer * 1.05) + (self.hammerMastery/2)) },{stat = "critDamage", amount = (self.timerHammer/100) + (self.hammerMastery/100)}})
+				if self.timerGreataxe < 100 then --otherwise, add bonus
+					self.timerGreataxe = self.timerGreataxe + 0.5
+					local greataxeMastery=1+status.stat("greataxeMastery")
+					status.setPersistentEffects("greataxeMasteryBonus", {{stat = "critChance", amount = ((self.timerGreataxe * 1.05) + (greataxeMastery/2)) },{stat = "critDamage", amount = (self.timerGreataxe/100) + (greataxeMastery/100)}})
+					world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","greataxeMasteryBonus")
 				end
-				if self.timerHammer == 100 then	--at 101, play a sound
+				if self.timerGreataxe == 100 then	--at 101, play a sound
 					if animator.hasSound("overCharged") then
 						animator.playSound("overCharged")
 					elseif animator.hasSound("groundImpact") then
@@ -74,7 +78,7 @@ function HammerSmash:windup(windupProgress)
 					end
 					--animator.burstParticleEmitter("charged")
 				end
-				if self.timerHammer == 75 then	--at 75, play a sound
+				if self.timerGreataxe == 75 then	--at 75, play a sound
 					if animator.hasSound("charged") then
 						animator.playSound("charged")
 					elseif animator.hasSound("groundImpact") then
@@ -101,7 +105,7 @@ function HammerSmash:windup(windupProgress)
 	end
 end
 
-function HammerSmash:winddown(windupProgress)
+function GreataxeSmash:winddown(windupProgress)
 	self.weapon:setStance(self.stances.windup)
 	while windupProgress > 0 do
 		if self.fireMode == "primary" then
@@ -112,11 +116,13 @@ function HammerSmash:winddown(windupProgress)
 		windupProgress = math.max(0, windupProgress - (self.dt / self.stances.windup.duration))
 		self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
 		coroutine.yield()
-		cancelEffects()
+		self.timerGreataxe = 0
 	end
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 end
 
-function HammerSmash:fire()
+function GreataxeSmash:fire()
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
@@ -131,9 +137,9 @@ function HammerSmash:fire()
 	mcontroller.addMomentum(smashMomentum)
 
 
-	-- ******************* FR ADDONS FOR HAMMER SWINGS
+	-- ******************* FR ADDONS FOR GREATAXE SWINGS
 	if self.helper then
-		self.helper:runScripts("hammersmash-fire", self)
+		self.helper:runScripts("GreataxeSmash-fire", self)
 	end
 	-- ***********************************************
 	local smashTimer = self.stances.fire.smashTimer
@@ -157,42 +163,44 @@ function HammerSmash:fire()
 					if animator.hasSound("groundImpact") then
 						animator.playSound("groundImpact")
 					end
-					if self.timerHammer > 75 and self.timerHammer < 101 then
-						self.bombbonus = status.stat("bombtechBonus")
-						self.hammerMasteryCheck = status.stat("hammerMastery")
-						local primaryStrike = { power = (self.timerHammer / 4) * self.bombbonus}
-						local secondaryStrike = { power = 0 + self.bombbonus}
+					if self.timerGreataxe > 75 and self.timerGreataxe < 101 then
+						local bombBonus = status.stat("bombtechBonus")
+						local greataxeMastery = status.stat("greataxeMastery")
+						local primaryStrike = { power = (self.timerGreataxe / 4) * bombBonus}
+						local secondaryStrike = { power = 0 + bombBonus}
 						world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+2,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, primaryStrike)
 						world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-2,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, primaryStrike)
 						world.spawnProjectile("spearCrit", {mcontroller.position()[1]+1,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, secondaryStrike)
 						world.spawnProjectile("spearCrit", {mcontroller.position()[1]-1,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, secondaryStrike)
 						world.spawnProjectile("spearCrit", {mcontroller.position()[1]+2,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 						world.spawnProjectile("spearCrit", {mcontroller.position()[1]-2,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
-						if self.hammerMasteryCheck > 0.5 then
+						if greataxeMastery > 0.5 then
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("spearCrit", {mcontroller.position()[1]+3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("spearCrit", {mcontroller.position()[1]-3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 						end
-						if self.hammerMasteryCheck > 0.7 then
+						if greataxeMastery > 0.7 then
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("spearCrit", {mcontroller.position()[1]+4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("spearCrit", {mcontroller.position()[1]-4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 						end
-						if self.hammerMasteryCheck > 0.9 then
+						if greataxeMastery > 0.9 then
 							world.spawnProjectile("spearCrit", {mcontroller.position()[1]+5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("spearCrit", {mcontroller.position()[1]-5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 						end
-						status.setPersistentEffects("hammerbonus", {
-							{stat = "protection", effectiveMultiplier = 1.2 + (self.hammerMasteryCheck /10) },
-							{stat = "grit", effectiveMultiplier = 1.2 + (self.hammerMasteryCheck /10)}
+						--(20+(1/10 mastery modifier))% knockback resistance, and same amount as protection multiplier
+						status.setPersistentEffects("greataxeMasteryBonus", {
+							{stat = "protection", effectiveMultiplier = 1.2 + (greataxeMastery /10) },
+							{stat = "grit", amount = 0.2 + (greataxeMastery /10)}
 						})
+						world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","greataxeMasteryBonus")
 					else
-						cancelEffects()
-
+						status.setPersistentEffects("greataxeMasteryBonus", {})
+						self.timerGreataxe = 0
 					end
 				end
 			end
@@ -203,7 +211,7 @@ function HammerSmash:fire()
 	self.cooldownTimer = self:cooldownTime()
 end
 
-function HammerSmash:setupInterpolation()
+function GreataxeSmash:setupInterpolation()
 	for i, v in ipairs(self.stances.windup.bounceWeaponAngle) do
 		v[2] = interp[v[2]]
 	end
@@ -218,44 +226,25 @@ function HammerSmash:setupInterpolation()
 	end
 end
 
-function HammerSmash:bounceWeaponAngle(ratio)
+function GreataxeSmash:bounceWeaponAngle(ratio)
 	local weaponAngle = interp.ranges(ratio, self.stances.windup.bounceWeaponAngle)
 	local armAngle = interp.ranges(ratio, self.stances.windup.bounceArmAngle)
 
 	return util.toRadians(weaponAngle), util.toRadians(armAngle)
 end
 
-function HammerSmash:windupAngle(ratio)
+function GreataxeSmash:windupAngle(ratio)
 	local weaponRotation = interp.ranges(ratio, self.stances.windup.weaponAngle)
 	local armRotation = interp.ranges(ratio, self.stances.windup.armAngle)
 
 	return util.toRadians(weaponRotation), util.toRadians(armRotation)
 end
 
-
-function HammerSmash:uninit()
-	cancelEffects()
+function GreataxeSmash:uninit()
+	self.timerGreataxe = 0
 	if self.helper then
 		self.helper:clearPersistent()
 	end
 	self.blockCount = 0
-end
-
-function cancelEffects()
-	status.clearPersistentEffects("longswordbonus")
-	status.clearPersistentEffects("macebonus")
-	status.clearPersistentEffects("katanabonus")
-	status.clearPersistentEffects("rapierbonus")
-	status.clearPersistentEffects("shortspearbonus")
-	status.clearPersistentEffects("daggerbonus")
-	status.clearPersistentEffects("scythebonus")
-	status.clearPersistentEffects("axebonus")
-	status.clearPersistentEffects("hammerbonus")
-	status.clearPersistentEffects("multiplierbonus")
-	status.clearPersistentEffects("dodgebonus")
-	status.clearPersistentEffects("listenerBonus")
-	status.clearPersistentEffects("masteryBonus")
-	self.rapierTimerBonus = 0
-	self.inflictedHitCounter = 0
-	self.timerHammer = 0
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end

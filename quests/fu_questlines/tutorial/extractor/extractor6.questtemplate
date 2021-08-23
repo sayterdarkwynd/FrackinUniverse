@@ -1,34 +1,32 @@
 {
-  "id" : "extractor6",
-  "prerequisites" : [ "extractor1" ],
-  "title" : "Hydrogen",
-  "text" : "^orange;Water^reset; is never in short supply. If you have upgraded your ^orange;Matter Manipulator^reset; to pick up liquids...^green;extract some^reset; and bring me 5 ^orange;Hydrogen^reset; if you don't mind?",
-  "completionText" : "Great. Thanks so very much. Now I can complete this power cell! Take this as payment for your deeds.",
-  "moneyRange" : [200, 500],
-  "rewards" : [ [ [ "rewardbag", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "extractor6",
+	"prerequisites" : [ "extractor1" ],
+	"title" : "Hydrogen",
+	"text" : "^orange;Water^reset; is never in short supply. If you have upgraded your ^orange;Matter Manipulator^reset; to pick up liquids...^green;extract some^reset; and bring me 5 ^orange;Hydrogen^reset; if you don't mind?",
+	"completionText" : "Great. Thanks so very much. Now I can complete this power cell! Take this as payment for your deeds.",
+	"moneyRange" : [200, 500],
+	"rewards" : [ [ [ "rewardbag", 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,  
-    "turnInDescription" : "Bring the ^green;Hydrogen^reset; to the purple Thelusian at the ^orange;Science Outpost^reset;",
+		"requireTurnIn" : true,	
+		"turnInDescription" : "Bring the ^green;Hydrogen^reset; to the purple Thelusian at the ^orange;Science Outpost^reset;",
 
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "fu_hydrogen",
-        "count" : 5,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "fu_hydrogen",
+				"count" : 5,
+				"consume" : true
+			}
+		]
+	}
 }

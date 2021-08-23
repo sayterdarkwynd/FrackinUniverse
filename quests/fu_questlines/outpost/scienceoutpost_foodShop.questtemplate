@@ -1,35 +1,33 @@
 {
-  "id" : "scienceoutpost_foodShop",
-  "prerequisites" : [ "5wort" ],
-  "title" : "Lucky Coin",
-  "text" : "I've looked everywhere and can't figure out where the heck Kevin hid my damned lucky coin. I ^red;know^reset; it was that buffoon. He left a note that claimed he was getting it repaired. A coin. Honestly. If you come across a rare 12th century Earth coin...it's mine. Please bring it to me. I'll be ^green;quite^reset; generous in return.",
-  "completionText" : "The depths of my thanks cannot even be expressed. Replacing this is literally impossible now, what with Earth being slightly destroyed and all. Have this in exchange for your time and bravery.",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "arconshield", 1 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "scienceoutpost_foodShop",
+	"prerequisites" : [ "5wort" ],
+	"title" : "Lucky Coin",
+	"text" : "I've looked everywhere and can't figure out where the heck Kevin hid my damned lucky coin. I ^red;know^reset; it was that buffoon. He left a note that claimed he was getting it repaired. A coin. Honestly. If you come across a rare 12th century Earth coin...it's mine. Please bring it to me. I'll be ^green;quite^reset; generous in return.",
+	"completionText" : "The depths of my thanks cannot even be expressed. Replacing this is literally impossible now, what with Earth being slightly destroyed and all. Have this in exchange for your time and bravery.",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "arconshield", 1 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Bring the ^orange;rare Lucky Coin^reset; to the ^green;Food Shop^reset; at the ^orange;Science Outpost^reset;",
+		"turnInDescription" : "Bring the ^orange;rare Lucky Coin^reset; to the ^green;Food Shop^reset; at the ^orange;Science Outpost^reset;",
 
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "luckycoin",
-        "count" : 1,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "luckycoin",
+				"count" : 1,
+				"consume" : true
+			}
+		]
+	}
 }

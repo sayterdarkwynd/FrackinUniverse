@@ -1,33 +1,53 @@
 {
-  "objectName" : "bluebush",
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 400,
-  "printable" : false,  
-  "description" : "Blueleaf Bush",
-  "shortdescription" : "Blueleaf Bush",
-  "race" : "apex",
+    "objectName": "bluebush",
+    "rarity": "Common",
+    "category": "decorative",
+    "price": 400,
+    "printable": false,
+    "description": "Blueleaf Bush",
+    "shortdescription": "Blueleaf Bush",
+    "race": "apex",
+    "inventoryIcon": "bluebush.png",
+    "orientations": [
+        {
+            "image": "bluebush.png:<color>",
+            "imagePosition": [
+                0,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.5,
+            "spaceScan": 0.1,
+            "anchors": [
+                "bottom"
+            ]
+        }
+    ],
+    "smashSounds": [
+        "/sfx/tools/axe_chop_alt_heavy.ogg"
+    ],
+    "smashDropOptions": [
+        [
+            [
+                "plantfibre",
+                3,
+                {
 
-  "inventoryIcon" : "bluebush.png",
-  "orientations" : [
-    {
-      "image" : "bluebush.png:<color>",
-      "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+                }
+            ]
+        ]
+    ],
+    "breakDropOptions": [
+        [
+            [
+                "plantfibre",
+                3,
+                {
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
-  "smashDropOptions" : [
-    [ [ "plantfibre", 3, { } ] ]
-  ],
-
-  "breakDropOptions" : [
-    [ [ "plantfibre", 3, { } ] ]
-  ],
-  "biomePlaced" : true
+                }
+            ]
+        ]
+    ],
+    "biomePlaced": true,
+    "scannable": false
 }

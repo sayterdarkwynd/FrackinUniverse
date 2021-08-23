@@ -17,7 +17,7 @@ function update()
   if ipc.keysub ~= ks then return kill() end
   if player.worldId() ~= wid then return kill() end
   widget.focus("canvas")
-
+  
   if lastDown then
     if keyRepeatTimer == 25 then
       ks.repeatEvent(lastDown, true, accel)

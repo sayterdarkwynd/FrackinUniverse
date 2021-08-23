@@ -46,26 +46,25 @@ function FRHelper:call(args, ...)
 		if mouth == nil then return end
 	end
 	-- End investigative debug code
-    local mouthPosition = vec2.add(pos, mouth)
-    for i,thing in ipairs(args or {}) do
-        if thing.liquids then
-            -- Liquid map translation, allows for easy file reading (put in "milk" instead of 7)
-            for i,liquid in ipairs(thing.liquids) do
-                if type(liquid) == "string" then
-                    thing.liquids[i] = self.frconfig.liquidMaps[liquid]
-                end
-            end
-        end
-        if world.liquidAt(mouthPosition) and (not thing.liquids or contains(thing.liquids, mcontroller.liquidId())) then
-            self:applyStats(thing, thing.name or "liquidEffect"..i, ...)
-            for x,thing2 in ipairs(thing.status or {}) do
-                status.addEphemeralEffect(thing2, math.huge)
-            end
-        else
-            self:clearPersistent(thing.name or "liquidEffect"..i)
-            for x,thing2 in ipairs(thing.status or {}) do
-                status.removeEphemeralEffect(thing2)
-            end
-        end
-    end
+	local mouthPosition = vec2.add(pos, mouth)
+	local liqAt=world.liquidAt(mouthPosition)
+	if not self.frconfig.liquidCache then self.frconfig.liquidCache={} end
+	if liqAt then
+		if not self.frconfig.liquidCache[liqAt[1]] then
+			self.frconfig.liquidCache[liqAt[1]]=root.liquidName(liqAt[1])
+		end
+	end
+	for i,thing in ipairs(args or {}) do
+		if liqAt and (not thing.liquids or contains(thing.liquids,self.frconfig.liquidCache[liqAt[1]])) then
+			self:applyStats(thing, thing.name or "liquidEffect"..i, ...)
+			for x,thing2 in ipairs(thing.status or {}) do
+				status.addEphemeralEffect(thing2, math.huge)
+			end
+		else
+			self:clearPersistent(thing.name or "liquidEffect"..i)
+			for x,thing2 in ipairs(thing.status or {}) do
+				status.removeEphemeralEffect(thing2)
+			end
+		end
+	end
 end

@@ -1,4 +1,29 @@
 [
-	[{"op":"test","path":"/learnBlueprintsOnPickup/1"},{"op":"remove","path":"/learnBlueprintsOnPickup/1"}],
-	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
+    [
+        {
+            "op": "replace",
+            "path": "/description",
+            "value": "Heavy, sticky clay.\n^green;Extractable^reset;, ^orange;Siftable^reset;, ^red;Smeltable^reset;."
+        }
+    ],
+    [
+        {
+            "op": "test",
+            "path": "/learnBlueprintsOnPickup/1"
+        },
+        {
+            "op": "remove",
+            "path": "/learnBlueprintsOnPickup/1"
+        }
+    ],
+    [
+        {
+            "op": "test",
+            "path": "/learnBlueprintsOnPickup/0"
+        },
+        {
+            "op": "remove",
+            "path": "/learnBlueprintsOnPickup/0"
+        }
+    ]
 ]

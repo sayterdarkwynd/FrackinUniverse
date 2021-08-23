@@ -51,7 +51,7 @@ function update()
 			self.shipRenderPromise = nil
 		end
 	end
-	if self.placingShip  and world.dungeonId(entity.position()) == self.shipDungeonId then
+	if self.placingShip and world.dungeonId(entity.position()) == self.shipDungeonId then
 		world.setProperty("fu_byos", true)
 		world.setProperty("fuChosenShip", false)
 		racialiseShip()
@@ -154,6 +154,18 @@ function racialiseShip()
 						newParameters.dialog = dialog
 					end
 				end
+
+				if racialiserType == "shipdoor" or racialiserType == "shiphatch" then
+					if newItem.config.animationCustom and newItem.config.animationCustom.sounds then
+						if newItem.config.animationCustom.sounds.open and newItem.config.animationCustom.sounds.open.pool then
+							newParameters.customSoundsOpen = newItem.config.animationCustom.sounds.open.pool
+						end
+						if newItem.config.animationCustom.sounds.close and newItem.config.animationCustom.sounds.close.pool then
+							newParameters.customSoundsClose = newItem.config.animationCustom.sounds.close.pool
+						end
+					end
+				end
+
 				for parameter, data in pairs (newParameters) do
 					world.callScriptedEntity(object, "object.setConfigParameter", parameter, data)
 				end
@@ -182,7 +194,7 @@ function racialiseShip()
 		end
 
 		-- Treasure placing (can be placed in any object with enough space that isn't a fuel hatch (this part isn't tested))
-		if treasure then
+--[[	if treasure then
 			local containerSize = world.containerSize(object)
 			if containerSize and containerSize > #treasure and not (racialiserType and racialiserType == "fuelhatch") and not string.find(world.entityName(object), "fuelhatch") then
 				for _, item in ipairs (treasure) do
@@ -191,11 +203,41 @@ function racialiseShip()
 				treasure = nil
 			end
 		end
-
+--]]
 		-- Trigger activate ship SAIL text
 		if activateShip and ((racialiserType and racialiserType == "techstation") or string.find(world.entityName(object), "techstation")) then
 			world.sendEntityMessage(object, "activateShip")
 			activateShip = false	--to make it only do it for one techstation if there are multiple
+		end
+	end
+
+	for _, object in ipairs (objects) do
+		-- Treasure placing (Searches for shiplockers first)
+		local racialiserType = world.getObjectParameter(object, "racialiserType")
+		if treasure then
+			local containerSize = world.containerSize(object)
+			if ((racialiserType and racialiserType == "shiplocker") or string.find(world.entityName(object), "shiplocker")) and containerSize and containerSize > #treasure then
+				for _, item in ipairs (treasure) do
+					world.containerAddItems(object, item)
+				end
+				treasure = nil
+			end
+		end
+	end
+	if treasure then
+		for _, object in ipairs (objects) do
+			-- Backup Treasure placing (can be placed in any object with enough space that isn't a fuel hatch)
+			local racialiserType = world.getObjectParameter(object, "racialiserType")
+			if treasure then
+				local containerSize = world.containerSize(object)
+				if containerSize and containerSize > #treasure and not (racialiserType and racialiserType == "fuelhatch") and not string.find(world.entityName(object), "fuelhatch") then
+					for _, item in ipairs (treasure) do
+						world.containerAddItems(object, item)
+					end
+					sb.logInfo("No shiplocker found! Starting loot placed in container " .. world.entityName(object) .. ". Ship: " .. tostring(self.ship))
+					treasure = nil
+				end
+			end
 		end
 	end
 	if treasure then

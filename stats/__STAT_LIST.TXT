@@ -151,14 +151,23 @@ OTHER:
     jumpModifier                    [amount] [1-Relative] vanilla thing.
 	activeMovementAbilities         [amount]              [0-Relative] Typically Binary (0 or 1), used to block movement related abilities. vanilla.
 
+	arrowSpeedMultiplier			[amount]			  [0-relative] additive multiplier to projectile speed on bows.
 	bowAirBonus                     [amount]              [0-Relative] additive damage multiplier while airborne, only for supported bow/crossbow weapons. primarily added by quivers.
 	bowEnergyBonus                  [amount]              [0-Relative] positive value, subtracted from bow drain.
 	nebsrngbowdamagebonus           [amount]              [0-Relative] additive damage multiplier, only for supported bow/crossbow weapons. primarily added by quivers.
     bowDrawTimeBonus                [amount]              [0-Relative] increases bow draw speed.
+
 	critChance                      [amount]              [0-relative. Default: 0] Chance for weapons to crit. value of 42 is 42% chance to crit.
 	critBonus                       [amount]              [0-relative. Default: 0] Bonus Crit Damage. Flat amount added, does not scale with critDamage. Avoid using this stat. It should only be part of weapon config files.
 	critDamage                      [amount]              [0-relative. Default: 0] Bonus to Crit Damage multiplier. This is added to a base value of 1.50, but the stat starts as 0. +0.1 will make the crit damage multiplier 1.6.
 	stunChance                      [amount]              [0-relative. Default: 0] Chance to stun. Requires a crit. value of 42 is 42% chance to stun on crit. so if you have 42% chance for both, that equates to about 17% chance to stun.
+
+	magazineMultiplier				[amount]			  [0-relative] additive multiplier to BASE magazine size, before magazineSize. if a magazine has 1 shot in it,  1.0 will make it 2. magazine size after calculations basically rounds up
+	magazineSize					[amount]			  [0-relative] additive flat increase to magazine size. value of 1 is 1 bullet added to the magazine
+
+	focalRangeMult					[amount]			  [0-relative] additive multiplier to wand/staff max range, is multiplied by 1+ this
+	focalCastTimeMult				[amount]			  [0-relative] additive multiplier to wand/staff cast time = charge stance's duration times 1+this.
+	focalProjectileCountBonus		[amount]			  [0-relative] Increases wand/staff projectile count. this is not a dps increase, as damage is divided per projectile.
 
     fuCharisma                      [baseMultiplier]	  [1-Relative] Used for trading on space stations.
 	fuFoodTrackerHandler			[fixed]				  [-1,0,1] set by fu_player_init. -1 means food isnt draining,1 means it is, 0 means the value isnt initialized.

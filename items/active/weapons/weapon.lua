@@ -25,14 +25,17 @@ function Weapon:init()
 
 	for _,ability in pairs(self.abilities) do
 		ability:init()
+		--fallback code just in case
+		if ability.abilitySlot and status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
+			status.setStatusProperty(ability.abilitySlot.."ComboStep",ability.comboStep)
+		end
 	end
-
 end
 
 function Weapon:update(dt, fireMode, shiftHeld)
-
+	if status.statPositive("timeFreeze") then return end
 	self.attackTimer = math.max(0, self.attackTimer - dt)
-
+	
 	for _,ability in pairs(self.abilities) do
 		ability:update(dt, fireMode, shiftHeld)
 	end
@@ -42,7 +45,15 @@ function Weapon:update(dt, fireMode, shiftHeld)
 			local status, result = coroutine.resume(self.stateThread)
 			if not status then error(result) end
 		else
+			--fallback code just in case
+			if self.currentAbility.abilitySlot and status.statusProperty(self.currentAbility.abilitySlot.."ComboStep")~=self.currentAbility.comboStep then
+				status.setStatusProperty(self.currentAbility.abilitySlot.."ComboStep",self.currentAbility.comboStep)
+			end
 			self.currentAbility:uninit()
+			--fallback code just in case
+			if self.currentAbility.abilitySlot and status.statusProperty(self.currentAbility.abilitySlot.."ComboStep")~=self.currentAbility.comboStep then
+				status.setStatusProperty(self.currentAbility.abilitySlot.."ComboStep",self.currentAbility.comboStep)
+			end
 			self.currentAbility = nil
 			self.currentState = nil
 			self.stateThread = nil
@@ -74,8 +85,16 @@ end
 
 function Weapon:uninit()
 	for _,ability in pairs(self.abilities) do
+		--fallback code just in case
+		if ability.abilitySlot and status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
+			status.setStatusProperty(ability.abilitySlot.."ComboStep",ability.comboStep)
+		end
 		if ability.uninit then
 			ability:uninit(true)
+		end
+		--fallback code just in case
+		if ability.abilitySlot and status.statusProperty(ability.abilitySlot.."ComboStep")~=ability.comboStep then
+			status.setStatusProperty(ability.abilitySlot.."ComboStep",ability.comboStep)
 		end
 	end
 end

@@ -4,8 +4,7 @@ function init()
 	self.powerLevel = config.getParameter("powerLevel",1)
 	power.init()
 
-	self.onShip=world.getProperty("fu_byos.owner")
-	self.onStation=(world.type() == 'playerstation') or (world.type() == 'asteroids')
+	self.inSpace = world.getProperty("fu_byos.owner") or world.type() == 'playerstation' or world.type() == 'asteroids'
 	local ePos=entity.position()
 	storage.randomizedPos = storage.randomizedPos or {ePos[1] + math.random(2,3), ePos[2] + 1}
 end
@@ -14,7 +13,7 @@ function update(dt)
 	storage.checkticks = (storage.checkticks or 0) + dt
 	if storage.checkticks >= 10 then
 		storage.checkticks = storage.checkticks - 10
-		if (world.underground(storage.randomizedPos) or ((not (self.onShip or self.onStation)) and (world.timeOfDay() > 0.55))) then
+		if (world.underground(storage.randomizedPos) or ((not self.inSpace) and (world.timeOfDay() > 0.55))) then
 			animator.setAnimationState("meter", "0")
 			power.setPower(0)
 			object.setAllOutputNodes(false)
@@ -29,7 +28,7 @@ function getPowerLevel()
 	--local light = (world.type() ~= 'playerstation' and getLight(storage.randomizedPos) or 0.0)
 	local light = getLight(storage.randomizedPos)
 	local genmult = 1
-	if self.onStation or self.onShip then
+	if self.inSpace then
 		-- player space stations and ships always counts as high power, but never MAX power.
 		genmult = 3.5
 	elseif light >= 0.85 then
@@ -51,7 +50,7 @@ function getPowerLevel()
 
 	local generated = self.powerLevel * genmult
 
-	if genmult >= 4 then
+	if genmult >= 4 or self.inSpace then
 		animator.setAnimationState("meter", "4")
 	elseif genmult >= 3 then
 		animator.setAnimationState("meter", "3")

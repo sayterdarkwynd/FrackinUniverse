@@ -7,6 +7,13 @@ function init()
   self.bombTimer = 0
 end
 
+function uninit()
+  storePosition()
+  deactivate()
+  status.removeEphemeralEffect("swimboost2") --make sure it removes the swimboost it added earlier
+  status.clearPersistentEffects("aquasphere")
+end
+
 function update(args)
   restoreStoredPosition()
 
@@ -41,7 +48,7 @@ function update(args)
     ----------------------------------------------------
 
     if inLiquid then  -- if immersed in liquid do this
-      status.addEphemeralEffect("airimmunity")
+      status.setPersistentEffects("aquasphere", {{stat="breathProtection",amount=1}, {stat="waterbreathProtection",amount=1}})
       self.transformedMovementParameters.gravityMultiplier = -0.005 	-- upwards drag if idle
       if args.moves["up"] and args.moves["down"] then  			-- pushing both up and down cancels out momentum
         self.transformedMovementParameters.liquidForce = 0
@@ -51,9 +58,8 @@ function update(args)
       self.transformedMovementParameters.runSpeed = self.ballLiquidSpeed  -- failsafes
       self.transformedMovementParameters.walkSpeed = self.ballLiquidSpeed -- failsafes
     else
-      status.removeEphemeralEffect("airimmunity")
       status.removeEphemeralEffect("swimboost2")
-      status.removeEphemeralEffect("waterimmunity")
+      status.clearPersistentEffects("aquasphere")
       self.transformedMovementParameters.gravityMultiplier = 1.5	-- reset to default gravity, juuuuust in case
       self.transformedMovementParameters.runSpeed = self.ballSpeed
       self.transformedMovementParameters.walkSpeed = self.ballSpeed
@@ -77,6 +83,7 @@ function update(args)
     checkForceDeactivate(args.dt)
   else
     status.removeEphemeralEffect("swimboost2") --make sure it removes the swimboost it added earlier
+    status.clearPersistentEffects("aquasphere")
   end
 
   updateTransformFade(args.dt)

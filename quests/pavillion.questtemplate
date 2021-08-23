@@ -1,32 +1,31 @@
 {
-  "id" : "pavillion.gearup",
-  "title" : "^green;Castle Takeshi",
-  "text" : "Ninjas in the employ of Shogun Takeshi have kidnapped the hylotl princess Koto. Are you a bad enough dude to rescue the princess?",
-  "completionText" : "A thousand thanks! I will ensure that my father rewards you appropriately for your heroic efforts!",
-  "speaker" : "player",
-  "moneyRange" : [5000, 5000],
-  "rewards" : [
-      [ 
-        [ "titaniumbar", 30 ], 
-        [ "uraniumore", 10 ], 
-        [ "fusamurai2chest" ],
-        [ "fusamurai2head" ],
-        [ "fusamurai2legs"],        
-        [ "carbonkatana" ],
-        [ "luckycoin", 1 ]
-      ]
-   ],
-  "canBeAbandoned" : true,
+	"id" : "pavillion.gearup",
+	"title" : "^green;Castle Takeshi",
+	"text" : "Ninjas in the employ of Shogun Takeshi have kidnapped the Hylotl princess Koto. Are you a bad enough dude to rescue the princess?",
+	"completionText" : "A thousand thanks! I will ensure that my father rewards you appropriately for your heroic efforts!",
+	"speaker" : "player",
+	"moneyRange" : [5000, 5000],
+	"rewards" : [
+		[ 
+			[ "titaniumbar", 30 ], 
+			[ "uraniumore", 10 ], 
+			[ "fusamurai2chest" ],
+			[ "fusamurai2head" ],
+			[ "fusamurai2legs"],				
+			[ "carbonkatana" ],
+			[ "luckycoin", 1 ]
+		]
+	],
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 		"missionUnlockedCinema" : "/cinematics/coordinates.cinematic",		
 		"portraits" : {
-		"default" : "player"
+			"default" : "player"
 		},
-    "associatedMission" : "pavillion",
-    "turnInDescription" : "Storm Castle Takeshi and save Princess Koto!",
-    "requireTurnIn" : true
-  }
+		"associatedMission" : "pavillion",
+		"turnInDescription" : "Storm Castle Takeshi and save Princess Koto!",
+		"requireTurnIn" : true
+	}
 }

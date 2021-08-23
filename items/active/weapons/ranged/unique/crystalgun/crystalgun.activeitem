@@ -85,8 +85,29 @@
   "magazineSize" : 6,
   "isShotgun" : 1,
   
-  
   "altAbilityType" : "crystalbomb",
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters" : {
+    "inventoryIcon" : "crystalgun2.png:idle.1",
+    "description" : "Blast foes with super-sharp flechettes of crystal. They'll thank you later. Maybe.",
+    "shortdescription" : "Crystalline Cannon",
+
+    "animationParts" : {
+      "butt" : "",
+      "middle" : "crystalgun2.png",
+      "middlefullbright" : "crystalgun2fullbright.png"
+    },
+
+    "primaryAbility" : {
+      "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+      "class" : "GunFire",
+      "energyUsage" : 26.9,
+      "inaccuracy" : 0.11,
+      "projectileCount" : 6,
+      "fireType" : "auto"
+    }
+  } 
+
 }

@@ -1,34 +1,32 @@
 {
-  "id" : "create_protocite",
-  "prerequisites" : [ "create_armory" ],
-  "title" : "Proto-Potency",
-  "text" : "There is a rare metal native ^red;only^reset; to ^orange;Proto Worlds^reset; that I am in dire need of. I need 2 ^orange;Protocite Bars^reset;. You can smelt them in a ^orange;Fission Furnace^reset;.",
-  "completionText" : "Without ^green;protocite^reset; you won't be able to make some of the more essential high-end gear. So stay stocked! In return for that bit of help, perhaps try ^green;this thing^reset; on!",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "fusteampunkhead", 1 ] ] ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"id" : "create_protocite",
+	"prerequisites" : [ "create_armory" ],
+	"title" : "Proto-Potency",
+	"text" : "There is a rare metal native ^red;only^reset; to ^orange;Proto Worlds^reset; that I am in dire need of. I need 2 ^orange;Protocite Bars^reset;. You can smelt them in a ^orange;Fission Furnace^reset;.",
+	"completionText" : "Without ^green;protocite^reset; you won't be able to make some of the more essential high-end gear. So stay stocked! In return for that bit of help, perhaps try ^green;this thing^reset; on!",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "fusteampunkhead", 1 ] ] ],
+	"speaker" : "questGiver",
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
-    
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,  
-    "turnInDescription" : "Bring the ^orange;Protocite Bars^reset; to the monocled hylotl at the ^orange;Science Outpost^reset;",
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "protocitebar",
-        "count" : 2,
-        "consume" : true
-      }
-    ]  
-  }
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : true,	
+		"turnInDescription" : "Bring the ^orange;Protocite Bars^reset; to the monocled Hylotl at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "protocitebar",
+				"count" : 2,
+				"consume" : true
+			}
+		]	
+	}
 }

@@ -59,29 +59,14 @@ function init()
 	-- Race checks
 	self.species = world.entitySpecies(activeItem.ownerEntityId())
 
-    self.magnorbMastery = 1 + status.stat("magnorbMastery")
 end
 
 function update(dt, fireMode, shiftHeld)
-    self.magnorbMastery = 1 + status.stat("magnorbMastery")
-    self.magnorbMasteryHalved = ((self.magnorbMastery -1) / 2) + 1
-    self.magnorbMasteryThirded = ((self.magnorbMastery -1) / 3) + 1
-    self.magnorbMasteryQuartered = ((self.magnorbMastery -1) / 4) + 1
 
 	self.cooldownTimer = math.max(0, self.cooldownTimer)
 
 	updateStance(dt)
 	checkProjectiles()
-
-    if self.magnorbMastery > 1 then
-        status.setPersistentEffects("magnorbbonus", {
-            {stat = "powerMultiplier", effectiveMultiplier = 1 * self.magnorbMastery},
-            {stat = "critChance", amount = 2 * self.magnorbMastery},
-            {stat = "critDamage", amount = 0.15 * self.magnorbMastery},
-            {stat = "maxEnergy", effectiveMultiplier = 1 * self.magnorbMasteryHalved}
-        }) 
-        mcontroller.controlModifiers({speedModifier = 1 * self.magnorbMasteryHalved})        
-    end
 
 	if fireMode == "alt" and availableOrbCount() == self.count and not status.resourceLocked("energy") and status.resourcePositive("shieldStamina") then
         if not self.shieldActive then
@@ -141,9 +126,7 @@ function uninit()
 	activeItem.setItemShieldPolys()
 	activeItem.setItemDamageSources()
 	status.clearPersistentEffects("magnorbShield")
-	status.clearPersistentEffects("magnorbBonus")
 	animator.stopAllSounds("shieldLoop")
-    status.clearPersistentEffects("magnorbbonus")
 end
 
 function nextOrb()

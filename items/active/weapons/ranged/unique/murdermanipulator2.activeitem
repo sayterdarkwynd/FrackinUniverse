@@ -6,11 +6,11 @@
     "rarity" : "rare",
     "description" : "A repurposed manipulator. This one murders! Yay!",
     "shortdescription" : "Slaughter Manipulator",
-  "level" : 5,
+  "level" : 4,
   "category" : "machinePistol",
   "itemTags" : ["weapon","ranged","machinepistol", "energy", "upgradeableWeapon"],
   "weaponType" : "Energy",
-    "tooltipKind" : "gun",
+    "tooltipKind" : "gun2",
   "twoHanded" : false,
   "classMultiplier" : 0.2,
   "animation" : "/items/active/weapons/ranged/gun.animation",
@@ -82,9 +82,21 @@
     }
   },
 
-
   "critChance" : 2,
   "critBonus" : 3,
   
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+
+  "upgradeParameters2" : {
+    "description" : "Love is for pansies. Try this instead.",
+    "shortdescription" : "Hate Beam",
+    "primaryAbility" : {
+    "critChance" : 4,
+    "critBonus" : 6,    
+    "energyUsage" : 26,
+      "projectileParameters" : {
+        "speed" : 60
+      }      
+    }
+  }
 }

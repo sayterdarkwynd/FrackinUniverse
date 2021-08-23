@@ -1,20 +1,22 @@
 {
-  "name" : "timefreeze2",
-  "blockingStat" : "specialStatusImmunity",
-  "effectConfig" : {},
-  "defaultDuration" : 1.5,
+	"name" : "timefreeze2",
+	"blockingStat" : "specialStatusImmunity",
+	"effectConfig" : {
+		"shield": ["nodamagedummy","noenergyregendummy","activemovementdummy"]
+	},
+	"defaultDuration" : 1.5,
 
-  "scripts" : [
-    "timefreeze2.lua"
-  ],
+	"scripts" : [
+		"timefreeze2.lua"
+	],
 
-  "animationConfig" : "timefreeze.animation",
+	"animationConfig" : "timefreeze.animation",
 
-  "label" : "Time Freeze",
-  "icon" : "/interface/statuses/timefreeze.png",
+	"label" : "Time Freeze",
+	"icon" : "/interface/statuses/timefreeze.png",
 
-  "sounds" : {
-    "timefreeze_start" : [ "/sfx/statuseffects/timefreeze_start.ogg" ],
-    "timefreeze_loop" : [ "/sfx/statuseffects/timefreeze_loop.ogg" ]
-  }
+	"sounds" : {
+		"timefreeze_start" : [ "/sfx/statuseffects/timefreeze_start.ogg" ],
+		"timefreeze_loop" : [ "/sfx/statuseffects/timefreeze_loop.ogg" ]
+	}
 }

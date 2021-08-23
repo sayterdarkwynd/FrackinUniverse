@@ -1,38 +1,36 @@
 {
-  "id" : "create_fission",
-  "prerequisites" : [ "create_aichip" ],
-  "title" : "Quaid's Start",
-  "text" : "You can generate a lot of power with a ^orange;Fission Reactor^reset; in your lab. Show you can make one using your ^orange;Power Station^reset; and you can have this ^green;crew contract^reset;. I don't have room for crew on my ship anyhow.",
-  "completionText" : "Great! As thanks: This ^green;contract^reset; will allow you to recruit a ^cyan;unique^reset; hired crewmember!",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "crewcontract_radien", 1 ] ] ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"id" : "create_fission",
+	"prerequisites" : [ "create_aichip" ],
+	"title" : "Quaid's Start",
+	"text" : "You can generate a lot of power with a ^orange;Fission Reactor^reset; in your lab. Show you can make one using your ^orange;Power Station^reset; and you can have this ^green;crew contract^reset;. I don't have room for crew on my ship anyhow.",
+	"completionText" : "Great! As thanks: This ^green;contract^reset; will allow you to recruit a ^cyan;unique^reset; hired crewmember!",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "crewcontract_radien", 1 ] ] ],
+	"speaker" : "questGiver",
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
-    
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-    
-    "turnInDescription" : "Bring the ^orange;Fission Reactor^reset; to the scientist at the ^orange;Science Outpost^reset;",
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "isn_fissionreactornew",
-        "count" : 1,
-        "consume" : false
-      }
-    ],
-    "showTech" : [
-      "airdash2"
-    ]
-  }
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
+
+		"requireTurnIn" : false,	
+
+		"turnInDescription" : "Bring the ^orange;Fission Reactor^reset; to the scientist at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "isn_fissionreactornew",
+				"count" : 1,
+				"consume" : false
+			}
+		],
+		"showTech" : [
+			"airdash2"
+		]
+	}
 }

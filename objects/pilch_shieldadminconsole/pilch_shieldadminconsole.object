@@ -1,38 +1,38 @@
 {
-	"objectName" : "pilch_shieldadminconsole",
-	"colonyTags" : ["wired"],
-	"rarity" : "Common",
-	"category" : "wire",
-	"price" : 105,
+  "objectName" : "pilch_shieldadminconsole",
+  "colonyTags" : ["wired"],
+  "rarity" : "Common",
+  "category" : "wire",
+  "price" : 105,
 
-	"description" : "For the administration and shutdown of troublesome fields.",
-	"shortdescription" : "Field Admin Console",
-	"race" : "generic",
-	"inventoryIcon" : "pilch_shieldadminconsole_icon.png",
+  "description" : "For the administration and shutdown of troublesome fields. ^red;Requires admin^reset;",
+  "shortdescription" : "Field Admin Console",
+  "race" : "generic",
+  "inventoryIcon" : "pilch_shieldadminconsole_icon.png",
 
-	"orientations" : [
-		{
-			"dualImage" : "pilch_shieldadminconsole.png:<color>.off",
-			"imagePosition" : [-8, 0],
+  "orientations" : [
+    {
+      "dualImage" : "pilch_shieldadminconsole.png:<color>.off",
+      "imagePosition" : [-8, 0],
 
-			"spaceScan" : 0.1,
-			"anchors" : [ "bottom" ]
-		}
-	],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
 
-	"health" : 10,
+  "health" : 10,
 
-	"scripts" : [
-		"/objects/pilch_shieldadminconsole/pilch_shieldadminconsole.lua"
-	],
-	"scriptDelta" : 5,
+  "scripts" : [
+    "/objects/pilch_shieldadminconsole/pilch_shieldadminconsole.lua"
+  ],
+  "scriptDelta" : 5,
 
-	"animation" : "/objects/wired/switch/switch3.animation",
-	"animationParts" : {
-		"switch" : "pilch_shieldadminconsole.png"
-	},
-	"animationPosition" : [-8, 0],
-	
-	"interactAction" : "ScriptPane",
-	"interactData" : "/objects/pilch_shieldadminconsole/pilch_shieldadminconsole.config"
+  "animation" : "/objects/wired/switch/switch3.animation",
+  "animationParts" : {
+    "switch" : "pilch_shieldadminconsole.png"
+  },
+  "animationPosition" : [-8, 0],
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/objects/pilch_shieldadminconsole/pilch_shieldadminconsole.config"
 }

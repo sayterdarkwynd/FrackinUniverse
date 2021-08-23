@@ -1,28 +1,28 @@
 {
-  "id" : "create_rockbreaker",
-  "prerequisites" : [ "fuquest_powergeneration2" ],
-  "title" : "Rock Breaking",
-  "text" : "The ^orange;Sifter^reset; is great for pulling apart loose materials, but to break up ^green;stone types^reset; like ^orange;cobblestone^reset; or ^orange;conglomerate^reset; you'll need a ^orange;Rock Breaker^reset;. Build one now at your ^orange;Electronics Center^;.",
-  "completionText" : "Compared to the Sifter, the Rock Breaker is slower and needs more power, but it allows for much more resource extracting than the Sifter alone. Upgrade to a ^orange;Rock Crusher^reset; when you can, as those are much more efficient.",
-  "moneyRange" : [0, 0],
-  "rewards" : [ [ [ "cobblestonematerial", 100 ] ] ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-    "portraits" : {
-      "default" : "player"
-    },
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,  
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "fu_rockbreaker",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+	"id" : "create_rockbreaker",
+	"prerequisites" : [ "fuquest_powergeneration2" ],
+	"title" : "Rock Breaking",
+	"text" : "The ^orange;Sifter^reset; is great for pulling apart loose materials, but to break up ^green;stone types^reset; like ^orange;cobblestone^reset; or ^orange;conglomerate^reset; you'll need a ^orange;Rock Breaker^reset;. Build one now at your ^orange;Electronics Center^;.",
+	"completionText" : "Compared to the Sifter, the Rock Breaker is slower and needs more power, but it allows for much more resource extracting than the Sifter alone. Upgrade to a ^orange;Rock Crusher^reset; when you can, as those are much more efficient.",
+	"moneyRange" : [0, 0],
+	"rewards" : [ [ [ "cobblestonematerial", 100 ] ] ],
+	"speaker" : "questGiver",
+
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"default" : "player"
+		},
+
+		"requireTurnIn" : false,	
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "fu_rockbreaker",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

@@ -53,8 +53,8 @@ function isn_makeBatteryDescription(desc, charge, onDeath)
 	end
 	charge = charge or power.getStoredEnergy() / power.getMaxEnergy() * 100
 
-	-- bat flattery
-	if charge == 0 then return desc end
+	--[[-- bat flattery
+	if charge == 0 then return desc end]]
 
 	-- round down to multiple of 0.5 (special case if < 0.5)
 	if charge < 0.5 then
