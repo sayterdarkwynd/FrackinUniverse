@@ -158,6 +158,9 @@ function essentialCheck(dt)
 			local buffer=player.essentialItem(slot)
 			if buffer and buffer.count==0 then
 				if slot=="beamaxe" then
+					if not self.racial then
+						_,self.racial = pcall(function (f) return root.assetJson("/frackinraces.config").manipulators end)
+					end
 					swapMM()
 				else
 					local baseTool=buffer.parameters.originalMM or origTool(slot)

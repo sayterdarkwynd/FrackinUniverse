@@ -9,14 +9,7 @@
 		{ "op" : "remove", "path" : "/rottingMultiplier" }
 	],
 	[
-		{
-			"op" : "add",
-			"path" : "/description",
-			"value" : "\n^cyan;+^white;10% ^cyan;Crit Chance ^gray;(^white;1m^gray;)^reset;"
-		},
-		{ "op" : "add", "path" : "/effects", "value" : [["critchance1"]] },
 		{ "op" : "replace", "path" : "/foodValue", "value" : 3 },
-		
 		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bananamilk" },
 		{ "op" : "add", "path" : "/learnBlueprintsOnPickup/-", "value" : "bananapudding" }
 	],
@@ -24,15 +17,15 @@
 		{
 			"op" : "add",
 			"path" : "/effects",
-			"value" : [ [ "fruit_food" ] ]
+			"value" : [ [ "fruit_food", "critchance1" ] ]
 		},
 		{
 			"op" : "replace",
 			"path" : "/description",
-			"value" : "A genetically enhanced banana. ^green;Type: Fruit^reset;"
+			"value" : "A genetically enhanced banana. ^green;Type: Fruit^reset;\n^cyan;+^white;10% ^cyan;Crit Chance ^gray;(^white;1m^gray;)^reset;"
 		}
 	],
-	[{"op":"test","path":"/learnBlueprintsOnPickup/2"},{"op":"remove","path":"/learnBlueprintsOnPickup/2"}],	
+	[{"op":"test","path":"/learnBlueprintsOnPickup/2"},{"op":"remove","path":"/learnBlueprintsOnPickup/2"}],
 	[{"op":"test","path":"/learnBlueprintsOnPickup/1"},{"op":"remove","path":"/learnBlueprintsOnPickup/1"}],
 	[{"op":"test","path":"/learnBlueprintsOnPickup/0"},{"op":"remove","path":"/learnBlueprintsOnPickup/0"}]
 ]
