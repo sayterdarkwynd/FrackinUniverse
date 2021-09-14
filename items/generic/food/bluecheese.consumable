@@ -1,0 +1,24 @@
+{
+	"itemName": "bluecheese",
+	"rarity": "uncommon",
+	"price": 25,
+	"category": "preparedFood",
+	"inventoryIcon": "bluecheese.png",
+	"description": "Let's just say it was always blue. \n^purple;Glow^reset;^cyan;300s;^reset;Food Type:^orange;Herbivore;",
+	"shortdescription": "Blue Cheese",
+	"effects": [
+        ["plant_food",
+			{
+				"effect": "glow",
+                "duration": 300
+            }
+        ]
+    ],
+	"foodValue": 15,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}
