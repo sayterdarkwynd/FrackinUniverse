@@ -14,7 +14,7 @@
 		},
 		{
 			"stat": "fuCharisma",
-			"baseMultiplier": 0.65
+			"baseMultiplier": 0.80
 		},
 		{
 			"stat": "physicalResistance",
@@ -22,15 +22,15 @@
 		},
 		{
 			"stat": "fireResistance",
-			"amount": -0.4
+			"amount": -0.3
 		},
 		{
 			"stat": "iceResistance",
-			"amount": 0.2
+			"amount": 0.10
 		},
 		{
 			"stat": "poisonResistance",
-			"amount": 0.3
+			"amount": 0.10
 		},
 		{
 			"stat": "shadowResistance",
@@ -38,11 +38,20 @@
 		},
 		{
 			"stat": "cosmicResistance",
-			"amount": -0.4
+			"amount": -0.3
 		},
 		{
 			"stat": "radioactiveResistance",
-			"amount": 0.3
+			"amount": 0.10
+		},
+		{ 
+			"stat": "poisonStatusImmunity", "amount": 1
+		},
+		{ 
+			"stat": "scytheMastery", "amount": 0.25
+		},
+		{
+			"stat": "fistMastery", "amount": 0.25
 		}
 
 	],
@@ -63,7 +72,7 @@
 			}
 		},
 		{
-			"biomes": ["chromatic", "hot", "aethersea", "sulphuric"],
+			"biomes": ["chromatic", "hot", "aethersea", "sulphuric", "infernus", "magma"],
 			"stats": [{
 					"stat": "maxEnergy",
 					"effectiveMultiplier": 0.75
@@ -78,43 +87,6 @@
 			}
 		}
 	],
-	"weaponEffects": [{
-			"weapons": ["fist"],
-			"stats": [{
-				"stat": "powerMultiplier",
-				"effectiveMultiplier": 1.15
-			}]
-		},
-		{
-			"weapons": ["scythe"],
-			"stats": [{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.10
-				},
-				{
-					"stat": "critChance",
-					"amount": 1
-				},
-				{
-					"stat": "critDamage",
-					"amount": 0.05
-				}
-			]
-		},
-		{
-			"combos": [
-				["fist", "fist"]
-			],
-			"stats": [{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.05
-				},
-				{
-					"stat": "critChance",
-					"amount": 1
-				}
-			]
-		}
-	],
+	
 	"special": ["drainzombie"]
 }
