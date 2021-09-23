@@ -1,74 +1,74 @@
 {
-  "objectName": "sproutingtable",
-  "colonyTags": [ "fu", "science", "booze", "plants" ],
-  "rarity": "Essential",
-  "printable": false,
-  "race": "generic",
-  "category": "^orange;Extraction Device^reset;",
-  "price": 450,
-  "objectType": "container",
-  "description": "Extracts useful Genes from Seeds.",
-  "subtitle": "Seed Extractor",
-  "shortdescription": "^cyan;Sprouting Table^reset;",
+	"objectName": "sproutingtable",
+	"colonyTags": [ "fu", "science", "booze", "plants" ],
+	"rarity": "Essential",
+	"printable": false,
+	"race": "generic",
+	"category": "^orange;Extraction Device^reset;",
+	"price": 450,
+	"objectType": "container",
+	"description": "Extracts useful Genes from Seeds.",
+	"subtitle": "Seed Extractor",
+	"shortdescription": "^cyan;Sprouting Table^reset;",
 
-  "fu_stationTechLevel": 1,
-  "fu_mintick": 1,
-  "fu_timerMod": 20,
+	"fu_stationTechLevel": 1,
+	"fu_mintick": 1,
+	"fu_timerMod": 20,
 
-  "apexDescription": "A primitive Sprouting Table.",
-  "avianDescription": "Delicious seeds all over this table...",
-  "floranDescription": "Can Floran makess mate on thiss?",
-  "glitchDescription": "Identify. A Sprouting Table.",
-  "humanDescription": "Some jars on a wooden slab with plants in 'em.",
-  "hylotlDescription": "A quaint early type of plant cloning device.",
+	"apexDescription": "A primitive Sprouting Table.",
+	"avianDescription": "Delicious seeds all over this table...",
+	"floranDescription": "Can Floran makess mate on thiss?",
+	"glitchDescription": "Identify. A Sprouting Table.",
+	"humanDescription": "Some jars on a wooden slab with plants in 'em.",
+	"hylotlDescription": "A quaint early type of plant cloning device.",
 
-  "lightColor": [60, 60, 173],
+	"lightColor": [60, 60, 173],
 
-  "inventoryIcon": "sproutingtableicon.png",
-  "orientations": [
-    {
-      "dualImage": "sproutingtable.png:<color>.<frame>",
-      "imagePosition": [0, 0],
-      "frames": 6,
-      "animationCycle": 1,
+	"inventoryIcon": "sproutingtableicon.png",
+	"orientations": [
+		{
+			"dualImage": "sproutingtable.png:<color>.<frame>",
+			"imagePosition": [0, 0],
+			"frames": 6,
+			"animationCycle": 1,
 
-      "spaceScan": 0.1,
-      "anchors": [ "bottom" ]
-    }
-  ],
+			"spaceScan": 0.1,
+			"anchors": [ "bottom" ]
+		}
+	],
 
-  "animation": "sproutingtable.animation",
-  "animationParts": {
-    "samplingarrayanim": "sproutingtable.png"
-  },
+	"animation": "sproutingtable.animation",
+	"animationParts": {
+		"samplingarrayanim": "sproutingtable.png"
+	},
 
-  "scripts": [ "/objects/generic/xenostation_common.lua", "/scripts/npcToyObject.lua" ],
-  "scriptDelta": 25,
-  "recipeGroup": "sproutingtable",
-  "openSounds": [ "/sfx/objects/locker_open.ogg" ],
-  "slotCount": 12,
-  "uiConfig": "/interface/xenolab/xenolab.config",
-  "frameCooldown": 67,
-  "autoCloseCooldown": 3600,
+	"scripts": [ "/objects/generic/xenostation_common.lua", "/scripts/npcToyObject.lua" ],
+	"scriptDelta": 25,
+	"recipeGroup": "sproutingtable",
+	"openSounds": [ "/sfx/objects/locker_open.ogg" ],
+	"slotCount": 12,
+	"uiConfig": "/interface/xenolab/xenolab.config",
+	"frameCooldown": 67,
+	"autoCloseCooldown": 3600,
 
-  "inputNodes": [ [1, 1] ],
-  "outputNodes": [ [2, 1] ],
-
-  "npcToy": {
-    "influence": [
-      "sink",
-      "sinkComplete"
-    ],
-    "defaultReactions": {
-      "sink": [
-        [1.0, "typing"]
-      ],
-      "sinkComplete": [
-        [1.0, "smile"]
-      ]
-    },
-    "preciseStandPositionLeft": [-1.0, 0.0],
-    "preciseStandPositionRight": [1.0, 0.0],
-    "maxNpcs": 2
-  }
+	"inputNodes": [ [1, 1] ],
+	"outputNodes": [ [2, 1] ],
+	"inputSlot": 3,
+	"npcToy": {
+		"influence": [
+			"sink",
+			"sinkComplete"
+		],
+		"defaultReactions": {
+			"sink": [
+				[1.0, "typing"]
+			],
+			"sinkComplete": [
+				[1.0, "smile"]
+			]
+		},
+		"preciseStandPositionLeft": [-1.0, 0.0],
+		"preciseStandPositionRight": [1.0, 0.0],
+		"maxNpcs": 2
+	}
 }
