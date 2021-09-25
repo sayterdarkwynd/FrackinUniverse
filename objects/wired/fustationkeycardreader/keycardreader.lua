@@ -1,5 +1,5 @@
 function init()
-  self.keycard=config.getParameter("keyname",nil)
+  self.keycard=config.getParameter("keyname")
   if self.keycard==nil then
     object.setInteractive(false)
   else

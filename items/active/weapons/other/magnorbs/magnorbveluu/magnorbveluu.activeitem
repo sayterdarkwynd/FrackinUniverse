@@ -1,67 +1,70 @@
 {
-  "itemName" : "magnorbveluu",
-  "level" : 2,
-  "price" : 200,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Gruesome, yet fun.",
-  "shortdescription" : "Veluu Lightweaver",
-  "tooltipKind" : "magnorb",
-  "category" : "Magnorb",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","magnorb", "upgradeableWeapon","veluu"],
-  "emitters" : [ "blood" ],
-  "inventoryIcon" : "iconveluu.png",
-  "animation" : "magnorbveluu.animation",
-  "animationParts" : {
-    "glove" : "gloveveluu.png",
-    "orb1" : "orbveluu.png",
-    "orb2" : "orbveluu.png",
-    "orb3" : "orbveluu.png",
-    "orb4" : "orbveluu.png",
-    "orb5" : "orbveluu.png"
-  },
-  "animationCustom" : { },
+	"itemName" : "magnorbveluu",
+	"level" : 2,
+	"price" : 200,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Gruesome, yet fun.",
+	"shortdescription" : "Veluu Lightweaver",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","magnorb", "upgradeableWeapon","veluu"],
+	"emitters" : [ "blood" ],
+	"inventoryIcon" : "iconveluu.png",
+	"animation" : "magnorbveluu.animation",
+	"animationParts" : {
+		"glove" : "gloveveluu.png",
+		"orb1" : "orbveluu.png",
+		"orb2" : "orbveluu.png",
+		"orb3" : "orbveluu.png",
+		"orb4" : "orbveluu.png",
+		"orb5" : "orbveluu.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
 
-  "orbitRate" : 1.1,
+	"orbitRate" : 1.1,
 
-  "elementalType" : "electric",
+	"elementalType" : "electric",
 
-  "projectileType" : "magnorbveluu",
-  "projectileParameters" : {
-    "power" : 3.5,
-    "knockback" : 5,
+	"projectileType" : "magnorbveluu",
+	"projectileParameters" : {
+		"power" : 3.5,
+		"knockback" : 5,
 
-    "returnOnHit" : true,
-    "ignoreTerrain" : false,
-    "controlForce" : 50,
-    "pickupDistance" : 2.5,
-    "snapDistance" : 2.0
-  },
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 50,
+		"pickupDistance" : 2.5,
+		"snapDistance" : 2.0
+	},
 
-  "count" : 5,
-  "shieldKnockback" : 14,
-  "shieldEnergyCost" : 40,
-  "shieldHealth" : 50,
-  "shieldPower" : "Regenerate",
-  "critChance" : 1,
-  "critBonus" : 4,
+	"count" : 5,
+	"shieldKnockback" : 14,
+	"shieldEnergyCost" : 40,
+	"shieldHealth" : 50,
+	"shieldPower" : "Regenerate",
+	"shieldPersistentGroup":"magnorbVeluu",
+	"shieldPersistentEffects":[{"stat":"healthRegen","amount":2},{"stat":"poisonResistance","amount":0.15}],
+	//"shieldEphemeralEffects":[""],//doesn't have any
+	"critChance" : 1,
+	"critBonus" : 4,
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : 10,
-      "twoHanded" : false,
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "shield" : {
-      "armRotation" : 0,
-      "twoHanded" : false,
-      "allowRotate" : true,
-      "allowFlip" : true
-    }
-  },
-  "builder" : "/items/buildscripts/fubuildmagnorb.lua"
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
 }
