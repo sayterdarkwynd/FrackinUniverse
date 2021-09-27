@@ -9,6 +9,12 @@ const fs = require( 'fs' ),
 	glob = require( 'fast-glob' ),
 	stripJsonComments = require( 'strip-json-comments' );
 
+// Having these item codes in .recipe files won't be considered an error.
+const listsOfUnknownItemCodes = [
+	'data/vanilla_item_codes.txt',
+	'data/expected_unknown_item_codes.txt'
+];
+
 /**
  * Turn non-strict JSON (with comments, newlines, etc.) into a string suitable for JSON.parse().
  * From https://github.com/edwardspec/fudocgenerator/
@@ -35,9 +41,7 @@ function sanitizeRelaxedJson( relaxedJson ) {
 		// Non-escaped " means that this is start/end of a string.
 		if ( char == '"' && prevChar != '\\' ) {
 			isInsideQuotes = !isInsideQuotes;
-		}
-
-		if ( isInsideQuotes ) {
+		} else if ( isInsideQuotes ) {
 			switch ( char ) {
 				case '\n':
 					char = '\\n';
@@ -104,19 +108,59 @@ var totalCount = 0,
 
 var filenames = glob.sync( '**', globOptions ).concat( [ '.metadata' ] );
 
+var knownItemCodes = new Set(), // [ itemCode1, itemCode2, ... ]
+	allRecipes = new Map(); // { filename1: recipeData1, ... }
+
 filenames.forEach( ( filename ) => {
 	var jsonString = sanitizeRelaxedJson( fs.readFileSync( directory + '/' + filename ).toString() );
+	var data;
+
 	try {
-		JSON.parse( jsonString );
+		data = JSON.parse( jsonString );
 	} catch ( error ) {
 		console.log( '\n', filename, addContextToJsonError( error, jsonString ) );
 		failedCount ++;
+	}
+
+	if ( data ) {
+		var itemCode;
+		if ( filename.endsWith( '.codex' ) && data.id ) {
+			itemCode = data.id + '-codex';
+		} else {
+			itemCode = data.itemName || data.objectName;
+		}
+
+		if ( itemCode ) {
+			knownItemCodes.add( itemCode );
+		}
+
+		if ( filename.endsWith( '.recipe' ) ) {
+			allRecipes.set( filename, data );
+		}
 	}
 
 	if ( ++ totalCount % 2500 == 0 ) {
 		process.stdout.write( totalCount + ' ' );
 	}
 } );
+
+// Check if any crafting recipes have unknown item codes.
+listsOfUnknownItemCodes.forEach( ( filename ) => {
+	fs.readFileSync( __dirname + '/' + filename ).toString().split( /[\r\n]+/ ).forEach( ( itemCode ) => {
+		knownItemCodes.add( itemCode );
+	} );
+} );
+knownItemCodes.delete( '' ); // Ignore empty strings
+
+for ( var [ filename, data ] of allRecipes ) {
+	var itemCodes = data.input.concat( [ data.output ] ).map( ( elem ) => elem.item || elem.name );
+	itemCodes.forEach( ( itemCode ) => {
+		if ( !knownItemCodes.has( itemCode ) ) {
+			console.log( '\n', filename, 'Unknown item in recipe: ' + itemCode );
+			failedCount ++;
+		}
+	} );
+}
 
 process.stdout.write( '\nChecked ' + totalCount + ' JSON files. Errors: ' + failedCount + '.\n' );
 process.exit( failedCount > 0 ? 1 : 0 );
