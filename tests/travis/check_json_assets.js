@@ -175,5 +175,21 @@ allAssets.get( 'objects/generic/extractionlab_recipes.config' ).forEach( ( extra
 	}
 } );
 
+// Check if outputs of centrifuges/sifters/crushers have unknown item codes.
+for ( var [ groupName, groupRecipes ] of Object.entries( allAssets.get( 'objects/generic/centrifuge_recipes.config' ) ) ) {
+	if ( groupName == 'recipeTypes' ) {
+		continue;
+	}
+
+	for ( var [ inputCode, outputs ] of Object.entries( groupRecipes ) ) {
+		for ( var itemCode of Object.keys( outputs ) ) {
+			if ( !knownItemCodes.has( itemCode ) ) {
+				console.log( 'Unknown item in centrifuge recipe: ' + itemCode );
+				failedCount ++;
+			}
+		}
+	}
+}
+
 process.stdout.write( 'Checked ' + totalCount + ' JSON files. Errors: ' + failedCount + '.\n' );
 process.exit( failedCount > 0 ? 1 : 0 );
