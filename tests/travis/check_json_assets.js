@@ -223,5 +223,49 @@ for ( var smelterFilename of [
 	}
 }
 
+// Check if TreasurePools have unknown item codes.
+for ( var [ filename, data ] of allAssets ) {
+	if ( !filename.match( /\.treasurepools(|\.patch)$/ ) ) {
+		continue;
+	}
+
+	var elementsToCheck = [];
+	if ( filename.endsWith( 'treasurepools' ) ) {
+		for ( var [ poolName, poolDataSets ] of Object.entries( data ) ) {
+			poolDataSets.forEach( ( dataSet ) => {
+				var poolData = dataSet[1];
+				var poolElements = ( poolData.pool || [] ).concat( poolData.fill || [] );
+
+				elementsToCheck.push( ...poolElements );
+			} );
+		}
+	} else if ( filename.endsWith( 'patch' ) ) {
+		for ( var instruction of data ) {
+			if ( instruction.op === 'add' && instruction.path.endsWith( '/pool/-' ) ) {
+				elementsToCheck.push( instruction.value );
+			}
+		}
+	}
+
+	for ( var elem of elementsToCheck ) {
+		var itemCode = elem.item;
+		if ( !itemCode ) {
+			continue;
+		}
+
+		if ( Array.isArray( itemCode ) ) {
+			itemCode = itemCode[0];
+		} else if ( itemCode.name ) {
+			itemCode = itemCode.name;
+		}
+
+		itemCode = itemCode.replace( /-recipe$/, '' );
+		if ( !knownItemCodes.has( itemCode ) ) {
+			console.log( filename, 'Unknown item in TreasurePool: ' + itemCode );
+			failedCount ++;
+		}
+	}
+}
+
 process.stdout.write( 'Checked ' + totalCount + ' JSON files. Errors: ' + failedCount + '.\n' );
 process.exit( failedCount > 0 ? 1 : 0 );
