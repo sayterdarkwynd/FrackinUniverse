@@ -166,14 +166,23 @@ for ( var [ filename, data ] of allAssets ) {
 }
 
 // Check if outputs of extractions have unknown item codes.
-allAssets.get( 'objects/generic/extractionlab_recipes.config' ).forEach( ( extractorRecipe ) => {
-	for ( var itemCode of Object.keys( extractorRecipe.outputs ) ) {
-		if ( !knownItemCodes.has( itemCode ) ) {
-			console.log( 'Unknown item in extraction: ' + itemCode );
-			failedCount ++;
+for ( var extractionsFilename of [
+	'objects/generic/extractionlab_recipes.config',
+	'objects/generic/extractionlabmadness_recipes.config',
+	'objects/generic/honeyjarrer_recipes.config',
+	'objects/generic/xenostation_recipes.config',
+	'objects/minibiome/elder/embalmingtable/embalmingtable_recipes.config',
+	'objects/power/fu_liquidmixer/fu_liquidmixer_recipes.config'
+] ) {
+	allAssets.get( extractionsFilename ).forEach( ( extractorRecipe ) => {
+		for ( var itemCode of Object.keys( extractorRecipe.outputs ) ) {
+			if ( !knownItemCodes.has( itemCode ) ) {
+				console.log( extractionsFilename, 'Unknown item in extraction: ' + itemCode );
+				failedCount ++;
+			}
 		}
-	}
-} );
+	} );
+}
 
 // Check if outputs of centrifuges/sifters/crushers have unknown item codes.
 for ( var [ groupName, groupRecipes ] of Object.entries( allAssets.get( 'objects/generic/centrifuge_recipes.config' ) ) ) {
