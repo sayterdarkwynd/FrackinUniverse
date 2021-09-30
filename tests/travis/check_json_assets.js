@@ -109,7 +109,7 @@ var totalCount = 0,
 var filenames = glob.sync( '**', globOptions ).concat( [ '.metadata' ] );
 
 var knownItemCodes = new Set(), // [ itemCode1, itemCode2, ... ]
-	allRecipes = new Map(); // { filename1: recipeData1, ... }
+	allAssets = new Map(); // { filename1: recipeData1, ... }
 
 filenames.forEach( ( filename ) => {
 	var jsonString = sanitizeRelaxedJson( fs.readFileSync( directory + '/' + filename ).toString() );
@@ -134,15 +134,14 @@ filenames.forEach( ( filename ) => {
 			knownItemCodes.add( itemCode );
 		}
 
-		if ( filename.endsWith( '.recipe' ) ) {
-			allRecipes.set( filename, data );
-		}
+		allAssets.set( filename, data );
 	}
 
 	if ( ++ totalCount % 2500 == 0 ) {
 		process.stdout.write( totalCount + ' ' );
 	}
 } );
+console.log( '\n' );
 
 // Check if any crafting recipes have unknown item codes.
 listsOfUnknownItemCodes.forEach( ( filename ) => {
@@ -152,15 +151,29 @@ listsOfUnknownItemCodes.forEach( ( filename ) => {
 } );
 knownItemCodes.delete( '' ); // Ignore empty strings
 
-for ( var [ filename, data ] of allRecipes ) {
+for ( var [ filename, data ] of allAssets ) {
+	if ( !filename.endsWith( '.recipe' ) ) {
+		continue;
+	}
+
 	var itemCodes = data.input.concat( [ data.output ] ).map( ( elem ) => elem.item || elem.name );
 	itemCodes.forEach( ( itemCode ) => {
 		if ( !knownItemCodes.has( itemCode ) ) {
-			console.log( '\n', filename, 'Unknown item in recipe: ' + itemCode );
+			console.log( filename, 'Unknown item in recipe: ' + itemCode );
 			failedCount ++;
 		}
 	} );
 }
 
-process.stdout.write( '\nChecked ' + totalCount + ' JSON files. Errors: ' + failedCount + '.\n' );
+// Check if outputs of extractions have unknown item codes.
+allAssets.get( 'objects/generic/extractionlab_recipes.config' ).forEach( ( extractorRecipe ) => {
+	for ( var itemCode of Object.keys( extractorRecipe.outputs ) ) {
+		if ( !knownItemCodes.has( itemCode ) ) {
+			console.log( 'Unknown item in extraction: ' + itemCode );
+			failedCount ++;
+		}
+	}
+} );
+
+process.stdout.write( 'Checked ' + totalCount + ' JSON files. Errors: ' + failedCount + '.\n' );
 process.exit( failedCount > 0 ? 1 : 0 );
