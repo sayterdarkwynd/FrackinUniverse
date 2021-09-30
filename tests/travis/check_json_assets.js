@@ -191,5 +191,28 @@ for ( var [ groupName, groupRecipes ] of Object.entries( allAssets.get( 'objects
 	}
 }
 
+// Check if outputs of smelters have unknown item codes.
+for ( var smelterFilename of [
+	'objects/power/electricfurnace/electricfurnace.object',
+	'objects/power/fu_blastfurnace/fu_blastfurnace.object',
+	'objects/power/isn_arcsmelter/isn_arcsmelter.object'
+] ) {
+	var smelterConf = allAssets.get( smelterFilename );
+	var possibleOutputs = new Set( Object.values( smelterConf.inputsToOutputs ) );
+
+	for ( var bonusOutputs of Object.values( smelterConf.bonusOutputs ) ) {
+		for ( var itemCode of Object.keys( bonusOutputs ) ) {
+			possibleOutputs.add( itemCode );
+		}
+	}
+
+	for ( var itemCode of possibleOutputs ) {
+		if ( !knownItemCodes.has( itemCode ) ) {
+			console.log( smelterFilename, 'Unknown item in smelter recipe: ' + itemCode );
+			failedCount ++;
+		}
+	}
+}
+
 process.stdout.write( 'Checked ' + totalCount + ' JSON files. Errors: ' + failedCount + '.\n' );
 process.exit( failedCount > 0 ? 1 : 0 );
