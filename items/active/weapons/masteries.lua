@@ -151,10 +151,10 @@ function masteries.apply(args)
 
 			--magnorbs: damage, crit chance/damage, max energy
 			if tagCaching[currentHand.."TagCache"]["magnorb"] then
-				table.insert(masteryBuffer,{stat="powerMultiplier", 1+(masteries.stats.magnorbMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.magnorbMastery*handMultiplier) })
 				table.insert(masteryBuffer,{stat="critChance", amount=2*masteries.stats.magnorbMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="critDamage", amount=0.15*masteries.stats.magnorbMastery*handMultiplier})
-				table.insert(masteryBuffer,{stat="energyMax", 1+(masteries.stats.magnorbMastery*handMultiplier/2) })
+				table.insert(masteryBuffer,{stat="energyMax", effectiveMultiplier=1+(masteries.stats.magnorbMastery*handMultiplier/2) })
 			end
 
 			--bows: crit chance, crit damage, faster draw time, reduced cost to fire/hold, increased damage.
@@ -170,7 +170,7 @@ function masteries.apply(args)
 
 			--whips: damage, crit chance/damage
 			if tagCaching[currentHand.."TagCache"]["whip"] then
-				table.insert(masteryBuffer,{stat="powerMultiplier", 1+(masteries.stats.whipMastery*handMultiplier) })
+				table.insert(masteryBuffer,{stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.whipMastery*handMultiplier) })
 				table.insert(masteryBuffer,{stat="critChance", amount=1*masteries.stats.whipMastery*handMultiplier})
 				table.insert(masteryBuffer,{stat="critDamage", amount=(0.25/2)*masteries.stats.whipMastery*handMultiplier})
 			end
