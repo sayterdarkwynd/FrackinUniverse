@@ -52,7 +52,7 @@ function update(dt)
 	for _,dink in pairs(powerStates) do
         if powerout >= dink.amount then
             animator.setAnimationState("screen", dink.state)
-			animator.setAnimationRate(0.7 + 0.06*isn_getCurrentPowerOutput())
+			animator.setAnimationRate(0.7 + 0.06*powerout)
             break
         end
 	end
@@ -86,22 +86,25 @@ function isn_slotDecayCheckWater(slot)
     end
 	return false
 end
+
 function isn_doSlotDecay(slot)
 	world.containerConsumeAt(entity.id(),slot,1) --consume resource
 end
+
 function isn_getCurrentPowerOutput()
 	local water = world.containerItemAt(entity.id(),3)
 	if storage.active and water then
-		if water.name == "liquidwater" or water.name == "fusaltwater" then
 		local powercount = 0
-		for i=0,2 do
-			powercount = powercount + isn_powerSlotCheck(i)
+		--local cooled=false
+		if water.name == "liquidwater" or water.name == "fusaltwater" then
+			for i=0,2 do
+				powercount = powercount + isn_powerSlotCheck(i)
+			end
+			--cooled=true
+			--object.say(powercount)
 		end
-		--object.say(powercount)
-		return powercount
-		end
-
+		return powercount--,cooled
 	else
-		return 0
+		return 0,false
 	end
 end
