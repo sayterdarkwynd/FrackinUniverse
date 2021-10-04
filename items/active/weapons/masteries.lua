@@ -22,6 +22,7 @@ masteries.timers.both={}
 
 function masteries.apply(args)
 	if activeItem then error("masteries.lua: Masteries don't belong in activeitem scripts. Stop trying.") end
+	local masteryBuffer={}
 	for hand,data in pairs(masteries.timers) do
 		for var,set in pairs(data) do
 			local e=set[1]+(args.dt*set[2])
