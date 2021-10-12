@@ -1,0 +1,24 @@
+{
+	"itemName": "cthushi",
+	"rarity": "Rare",
+	"price": 250,
+	"category": "preparedFood",
+	"inventoryIcon": "cthushi.png",
+	"description": "Mad not to use soy sauce... \n^blue;+^reset;Madness^reset;+^blue;1^reset;Food Type:^green; Meat and Plant;",
+	"shortdescription": "Cthushi",
+	"effects": [
+        ["madnessgain3", "meatc_plant_meal",
+        {
+            "effect": "insanity",
+            "duration": 120
+        }
+        ]
+    ],
+	"foodValue": 35,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

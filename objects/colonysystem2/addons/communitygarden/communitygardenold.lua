@@ -32,7 +32,7 @@ function init()
 	if not storage.fert then storage.fert = {} end
 	if not storage.water then storage.water = {} end
 
-	self.requiredPower = config.getParameter("isn_requiredPower", nil)
+	self.requiredPower = config.getParameter("isn_requiredPower")
 	self.unpoweredGrowthRate = config.getParameter("unpoweredGrowthRate", 0.434782609)   -- Multiplier on base growth rate when unpowered
 	self.liquidInputs = config.getParameter("waterInputs")
 	self.fertInputs = config.getParameter("fertInputs")
