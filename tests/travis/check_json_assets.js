@@ -9,10 +9,15 @@ const fs = require( 'fs' ),
 	glob = require( 'fast-glob' ),
 	stripJsonComments = require( 'strip-json-comments' );
 
-// Having these item codes in .recipe files won't be considered an error.
-const listsOfUnknownItemCodes = [
+// Having these item codes in .recipe files, extractions, etc. won't be considered an error.
+const listsOfAllowedUnknownItemCodes = [
 	'data/vanilla_item_codes.txt',
 	'data/expected_unknown_item_codes.txt'
+];
+
+// Having these items codes in unlocks of Research Tree won't be considered an error.
+const listsOfAllowedNonCraftableItemsInNodes = [
+	'data/expected_noncraftables_in_unlocks.txt'
 ];
 
 /**
@@ -88,6 +93,20 @@ function addContextToJsonError( exception, sourceCode ) {
 	return errorMessage;
 }
 
+/**
+ * Returns array of all lines in several files.
+ * @param {string[]} filenames
+ * @return string[]
+ */
+function readAllLines( filenames ) {
+	var lines = [];
+	filenames.forEach( ( filename ) => {
+		var moreLines = fs.readFileSync( __dirname + '/' + filename ).toString().split( /[\r\n]+/ ).filter( ( x ) => x !== '' );
+		lines.push( ...moreLines );
+	} );
+	return lines;
+}
+
 // This script is under tests/travis/
 var directory = __dirname + '/../..';
 
@@ -109,6 +128,7 @@ var totalCount = 0,
 var filenames = glob.sync( '**', globOptions ).concat( [ '.metadata' ] );
 
 var knownItemCodes = new Set(), // [ itemCode1, itemCode2, ... ]
+	craftableItemCodes = new Set(),
 	allAssets = new Map(); // { filename1: recipeData1, ... }
 
 filenames.forEach( ( filename ) => {
@@ -132,6 +152,11 @@ filenames.forEach( ( filename ) => {
 
 		if ( itemCode ) {
 			knownItemCodes.add( itemCode );
+
+			if ( filename.startsWith( 'items/generic/produce' ) ) {
+				// Produce items (e.g. Aquapod) shouldn't cause a warning if used in unlocks of Agriculture nodes.
+				craftableItemCodes.add( itemCode );
+			}
 		}
 
 		allAssets.set( filename, data );
@@ -143,14 +168,24 @@ filenames.forEach( ( filename ) => {
 } );
 console.log( '\n' );
 
-// Check if any crafting recipes have unknown item codes.
-listsOfUnknownItemCodes.forEach( ( filename ) => {
-	fs.readFileSync( __dirname + '/' + filename ).toString().split( /[\r\n]+/ ).forEach( ( itemCode ) => {
-		knownItemCodes.add( itemCode );
-	} );
-} );
-knownItemCodes.delete( '' ); // Ignore empty strings
+// Load the list of unknown items that shouldn't be considered an error if we find them in recipes.
+// These are mostly vanilla items. Also includes items from other mods that have extractions, etc.
+readAllLines( listsOfAllowedUnknownItemCodes ).forEach( ( itemCode ) => {
+	knownItemCodes.add( itemCode );
 
+	// We don't know if these items are craftable, so we assume that they are.
+	craftableItemCodes.add( itemCode );
+} );
+readAllLines( listsOfAllowedNonCraftableItemsInNodes ).forEach( ( itemCode ) => {
+	craftableItemCodes.add( itemCode );
+} );
+
+// Remember which Tricorder techs are craftable.
+for ( var tech of allAssets.get( 'interface/scripted/techshop/techshop.config' ).techs ) {
+	craftableItemCodes.add( tech.item );
+}
+
+// Check if any crafting recipes have unknown item codes.
 for ( var [ filename, data ] of allAssets ) {
 	if ( !filename.endsWith( '.recipe' ) ) {
 		continue;
@@ -163,6 +198,10 @@ for ( var [ filename, data ] of allAssets ) {
 			failedCount ++;
 		}
 	} );
+
+	// Remember that output item is craftable.
+	// (used later to detect Research Tree unlocks of non-craftable items)
+	craftableItemCodes.add( data.output.item || data.output.name );
 }
 
 // Check if outputs of extractions have unknown item codes.
@@ -287,6 +326,11 @@ for ( var treeFilename of [
 		for ( itemCode of node.unlocks ) {
 			if ( !knownItemCodes.has( itemCode ) ) {
 				console.log( treeFilename, 'Unknown item in research unlocks: ' + itemCode );
+				failedCount ++;
+			}
+
+			if ( !craftableItemCodes.has( itemCode ) ) {
+				console.log( treeFilename, 'Non-craftable item in research unlocks: ' + itemCode );
 				failedCount ++;
 			}
 		}
