@@ -10,7 +10,7 @@ function initCommonParameters()
 	self.conshakTimer = 0
 	-- for status bar filling, below are required
 	self.playerId = entity.id()
-	self.maxConshakValue = 500
+	self.maxConshakValue = 400
 	self.barName = "conshakBar"
 	self.barColor = {150,77,250,125}
 	self.timerRemoveConshakBar = 0
@@ -65,7 +65,7 @@ function undergroundCheck()
 end
 
 function checkStance()
-	if (self.conshakTimer < 500) then
+	if (self.conshakTimer < 400) then
 		animator.setParticleEmitterActive("conshak", false)
 	else
 		animator.playSound("conshakActivate")
@@ -115,7 +115,7 @@ function update(args)
 				self.bombTimer = math.max(0, self.bombTimer - args.dt)
 			end
 			if (self.pressDown) and not self.pressLeft and not self.pressRight and not self.pressUp and not self.pressJump then
-				if (self.conshakTimer < 500) then
+				if (self.conshakTimer < 400) then
 					displayBar()
 					self.conshakTimer = self.conshakTimer + 1
 				else
@@ -136,7 +136,7 @@ function update(args)
 					checkStance()
 				end
 
-				if (self.conshakTimer >= 500) then
+				if (self.conshakTimer >= 400) then
 					animator.setParticleEmitterActive("defenseStance", false)
 					animator.setParticleEmitterActive("conshak", true)
 					local configBombDrop = { power = 0 }
