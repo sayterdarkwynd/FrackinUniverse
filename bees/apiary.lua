@@ -172,10 +172,10 @@ function init()
 	biome = world.type()
 
 	-- Disabled on ship and player space stations
-	if biome == "unknown" then   --or biome == "playerstation" then
-		script.setUpdateDelta(-1)
-		return
-	end
+	--if biome == "unknown" then   --or biome == "playerstation" then
+	--	script.setUpdateDelta(-1)
+	--	return
+	--end
 
 	-- Retrieve data
 	maxStackDefault = root.assetJson("/items/defaultParameters.config").defaultMaxStack
