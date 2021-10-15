@@ -14,6 +14,7 @@ function init()
 		status.setStatusProperty("originalTeam",self.originalTeam)
 	end
 	if self.originalTeam~="player" then
+		status.addEphemeralEffect("teamshiftvfx",dt)
 		self.swapTeam=teamFlips[self.originalTeam.type]
 		if self.swapTeam then
 			world.callScriptedEntity(entity.id(),self.entType..".setDamageTeam",self.swapTeam)
@@ -26,6 +27,7 @@ function update(dt)
 	if not self.didInit then
 		init()
 	end
+	status.addEphemeralEffect("teamshiftvfx",dt)
 end
 
 function uninit()

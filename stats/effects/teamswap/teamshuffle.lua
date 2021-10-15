@@ -12,7 +12,7 @@ function init()
 	if not self.originalTeam then
 		self.originalTeam=world.entityDamageTeam(entity.id())
 		status.setStatusProperty("originalTeam",self.originalTeam)
-		randostick()
+		randostick(1)
 	end
 	self.didInit=true
 end
@@ -23,6 +23,7 @@ function update(dt)
 		if (not self.didInit) then return end
 	end
 	if self.lockTimer then
+		status.addEphemeralEffect("teamshiftvfx",dt)
 		self.lockTimer=self.lockTimer-dt
 		if self.lockTimer<=0 then
 			self.lockTimer=nil
@@ -30,7 +31,7 @@ function update(dt)
 			return
 		end
 	end
-	randostick()
+	randostick(dt)
 end
 
 function uninit()
@@ -39,7 +40,8 @@ function uninit()
 	end
 end
 
-function randostick()
+function randostick(dt)
+	status.addEphemeralEffect("teamshiftvfx",dt)
 	if not (self.originalTeam=="player") then
 		local wiggleRoom=math.random(1,3)
 		if wiggleRoom==1 then
