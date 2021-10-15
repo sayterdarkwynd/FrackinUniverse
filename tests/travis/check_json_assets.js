@@ -267,5 +267,31 @@ for ( var [ filename, data ] of allAssets ) {
 	}
 }
 
+// Check if research tree unlocks have unknown item codes.
+for ( var treeFilename of [
+	'zb/researchTree/fu_agriculture.config',
+	'zb/researchTree/fu_chemistry.config',
+	'zb/researchTree/fu_craftsmanship.config',
+	'zb/researchTree/fu_engineering.config',
+	'zb/researchTree/fu_geology.config',
+	'zb/researchTree/fu_power.config',
+	'zb/researchTree/fu_warcraft.config',
+	'zb/researchTree/madness.config'
+] ) {
+	var treeConf = allAssets.get( treeFilename ).researchTree;
+	Object.values( Object.values( treeConf )[0] ).forEach( ( node ) => {
+		if ( !node.unlocks ) {
+			return;
+		}
+
+		for ( itemCode of node.unlocks ) {
+			if ( !knownItemCodes.has( itemCode ) ) {
+				console.log( treeFilename, 'Unknown item in research unlocks: ' + itemCode );
+				failedCount ++;
+			}
+		}
+	} );
+}
+
 process.stdout.write( 'Checked ' + totalCount + ' JSON files. Errors: ' + failedCount + '.\n' );
 process.exit( failedCount > 0 ? 1 : 0 );
