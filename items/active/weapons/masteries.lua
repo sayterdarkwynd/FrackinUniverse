@@ -155,7 +155,7 @@ function masteries.apply(args)
 				masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.magnorbMastery*handMultiplier) }
 				masteryBuffer[#masteryBuffer + 1]={stat="critChance", amount=2*masteries.stats.magnorbMastery*handMultiplier}
 				masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.15*masteries.stats.magnorbMastery*handMultiplier}
-				masteryBuffer[#masteryBuffer + 1]={stat="energyMax", effectiveMultiplier=1+(masteries.stats.magnorbMastery*handMultiplier/2) }
+				masteryBuffer[#masteryBuffer + 1]={stat="maxEnergy", effectiveMultiplier=1+(masteries.stats.magnorbMastery*handMultiplier/2) }
 			end
 
 			--bows: crit chance, crit damage, faster draw time, reduced cost to fire/hold, increased damage.
@@ -417,7 +417,7 @@ function masteries.apply(args)
 
 			--energy weapons: increased Energy
 			if tagCaching[currentHand.."TagCache"]["energy"] then
-				masteryBuffer[#masteryBuffer + 1]={stat="energyMax", effectiveMultiplier=1+(masteries.stats.energyMastery*handMultiplier/2) }
+				masteryBuffer[#masteryBuffer + 1]={stat="maxEnergy", effectiveMultiplier=1+(masteries.stats.energyMastery*handMultiplier/2) }
 			end
 
 			--plasma weapons: increased Crit Damage
