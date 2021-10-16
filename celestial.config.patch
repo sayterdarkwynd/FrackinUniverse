@@ -1094,25 +1094,42 @@
       "dynamicsImages" : "/celestial/system/terrestrial/dynamics/arid/<num>.png",
       "dynamicsRange" : [1, 50]
   }},
-  
-{ "op" : "replace",
-  "path" : "/systemTypeBins",
-  "value" : [
 
-    [-1.00, "White"],
-    [-0.35, "Orange"],
-    [-0.20, "Yellow"],
-    [-0.10, "bluesun1"], 
-    [-0.05, "redsun1"],          
-    [0.00, "Blue"],
-    [0.05, "binary1"],
-    [0.12, "Red"],
-    [0.22, "dying1"],  
-    [0.25, "blacksun1"],    
-    [0.30, ""]
-  ]
-},
-
+  {
+    "op": "replace",
+    "path": "/systemTypeBins/1/0",
+    "value": -0.35
+  },
+  {
+    "op": "replace",
+    "path": "/systemTypeBins/2/0",
+    "value": -0.20
+  },
+  {
+    "op": "add",
+    "path": "/systemTypeBins/-",
+    "value": [-0.1, "bluesun1"]
+  },
+  {
+    "op": "add",
+    "path": "/systemTypeBins/-",
+    "value": [-0.05, "redsun1"]
+  },
+  {
+    "op": "add",
+    "path": "/systemTypeBins/-",
+    "value": [0.05, "binary1"]
+  },
+  {
+    "op": "add",
+    "path": "/systemTypeBins/-",
+    "value": [0.22, "dying1"]
+  },
+  {
+    "op": "add",
+    "path": "/systemTypeBins/-",
+    "value": [0.25, "blacksun1"]
+  },
 
 // add new world sizes to vanilla tiers
  // {
