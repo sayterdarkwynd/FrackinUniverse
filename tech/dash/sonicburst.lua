@@ -125,15 +125,15 @@ function startDash(direction)
       power = (status.stat("maxEnergy")/5) * self.damageBonus,
       damageSourceKind = "default"
     }
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {10, 0}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {-10, 0}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, 10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {0, -10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {10, 10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {-10, -10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {10, -10}, true, damageConfig)
-    world.spawnProjectile("fusoundwave", mcontroller.position(), entity.id(), {-10, 10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {10, 0}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {-10, 0}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {0, 10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {0, -10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {10, 10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {-10, -10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {10, -10}, true, damageConfig)
+    world.spawnProjectile("fusoundwavetech", mcontroller.position(), entity.id(), {-10, 10}, true, damageConfig)
 -- ***end projectile
  end
 end

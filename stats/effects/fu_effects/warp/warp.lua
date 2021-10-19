@@ -2,7 +2,6 @@ function init()
 	if not world.entityType(entity.id()) then delayInit=true return end
 	script.setUpdateDelta(1)
 	rescuePosition = mcontroller.position()
-	world.spawnItem("fumadnessresource",entity.position(),math.random(1,24))
 end
 
 function update(dt)
@@ -14,6 +13,7 @@ function update(dt)
 	if status.resourcePercentage("health") < 0.1 then
 		if not delayInit then
 			mcontroller.setPosition(rescuePosition)
+			world.spawnItem("fumadnessresource",entity.position(),math.random(1,6)*math.random(1,6))
 		end
 		status.setResourcePercentage("health", 0.1)
 		effect.expire()
