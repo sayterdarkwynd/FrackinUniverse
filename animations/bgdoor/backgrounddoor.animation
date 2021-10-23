@@ -1,0 +1,62 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "doorState" : {
+        "default" : "closed",
+        "states" : {
+          "transitioningopen" : {
+            "frames" : 1,
+            "cycle": 0.15,
+            "mode" : "transition",
+            "transition" : "open"
+          },
+          "open" : {},
+          "transitioningclose" : {
+            "frames" : 1,
+            "cycle" : 0.15,
+            "mode" : "transition",
+            "transition" : "closed"
+          },
+          "closed" : {}
+
+        }
+      }
+    },
+
+    "parts" : {
+      "door" : {
+        "properties" : {
+          "centered" : false
+        },
+        "partStates" : {
+          "doorState" : {
+          "open" : {
+            "properties" : {
+                "image" : "<partImage>:open"
+              }
+            },
+          "transitioningclose" : {
+            "properties" : {
+              "image" : "<partImage>:transitioning.<frame>"
+              }
+            },
+          "closed" : {
+            "properties" : {
+              "image" : "<partImage>:closed"
+          }
+        },
+        "transitioningopen" : {
+          "properties" : {
+            "image" : "<partImage>:transitioning.<frame>"
+        }
+      }
+    }
+  }
+}
+}
+  },
+  "sounds" : {
+    "open" : [],
+    "close" : []
+  }
+}
