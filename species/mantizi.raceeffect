@@ -1,59 +1,9 @@
 {
-	"stats": [
-		{ "stat": "maxHealth", "effectiveMultiplier": 1.2 },
-		{ "stat": "protection", "amount": 5 },
-		{ "stat": "fuCharisma", "baseMultiplier": 0.95 },
-		{ "stat": "maxFood", "effectiveMultiplier": 1.5 },
-
-		{ "stat": "physicalResistance", "amount": 0.15 },
-		{ "stat": "fireResistance", "amount": 0.10 },
-		{ "stat": "iceResistance", "amount": -0.15 },
-		{ "stat": "poisonResistance", "amount": 0.10 },
-		{ "stat": "electricResistance", "amount": 0.10 },
-		{ "stat": "cosmicResistance", "amount": -0.12 },
-		{ "stat": "radioactiveResistance", "amount": 0.05 },
-		{ "stat": "shadowResistance", "amount": -0.10 },
-		
-		{ "stat": "shortspearMastery", "amount": 0.25 },
-		{ "stat": "bowMastery", "amount": 0.05 }
-	],
-	"diet" : [ { "ORGANIC" : false, "INORGANIC" : false, "ROBOT_PLANT" : false }, { "ROCK_RAD" : true } ],
-	"controlModifiers": {},
-	
-	"envEffects": [
+	"scripts" : [
 		{
-			"biomes": ["sulphuric","sulphuricdark","sulphuricocean","sulphuricoceanfloor","jungle","desert","desertwastes","desertwastesdark"],
-			"stats": [
-				{ "stat": "maxEnergy", "effectiveMultiplier": 1.1 },
-				{ "stat": "protection", "effectiveMultiplier": 1.1 }
-			]
-		}
-	],
-	"weaponEffects": [
-		{
-			"weapons": [ "shield" ],
-			"stats": [
-				{ "stat": "shieldBash", "amount": 2 },
-				{ "stat": "shieldBashPush", "amount": 2 }
-			]
-		}
-	],
-	"weaponScripts": [
-		{
-			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
-			"contexts": [ "shield-perfectblock" ],
-			"args": {
-				"resources": {
-					"health": {
-						"base": 0.025,
-						"comboBase": 0.0008,
-						"max": 0.05
-					},
-					"shieldStamina": {
-						"base": 0.2
-					}
-				},
-				"particles": "bonusBlock"
+			"script" : "/scripts/fr_scripts/speciesredirect.lua",
+			"args" : {
+				"species" : "fumantizi"
 			}
 		}
 	]
