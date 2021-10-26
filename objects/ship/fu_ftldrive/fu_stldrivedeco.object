@@ -1,12 +1,12 @@
 {
-  "objectName" : "fu_stldrive",
-  "rarity" : "essential",
+  "objectName" : "fu_stldrivedeco",
+  "rarity" : "common",
   "colonyTags" : [ "science" ],
   "category" : "furniture",
-  "description" : "An STL drive for a space ship. Allows travel within a system, but isn't strong enough to travel to others.\n^orange;Ship Mass: +1^reset;. ^red;BYOS Only^reset;",
-  "shortdescription" : "^red;STL Drive^reset;",
+  "description" : "A decorative STL drive. Doesn't do anything.",
+  "shortdescription" : "Decorative Small STL Drive",
   "race" : "generic",
-  "printable" : false,
+  "printable" : true,
   
   "apexDescription" : "Sometimes rebels try to escape the Miniknog with engines like this. They never get far.",
   "avianDescription" : "I better not fall into any gravity wells with an engine like this.",
@@ -15,7 +15,7 @@
   "humanDescription" : "Humans colonized the Sol system with engines like this, so I shouldn't complain.",
   "hylotlDescription" : "Going somewhere slowly is better than going nowhere fast.",
   "novakidDescription" : "It's basically just a steam engine, but that's just fine.",
-
+  
   "inventoryIcon" : "/objects/ship/fu_ftldrive/fu_stldriveicon.png",
   "orientations" : [
     {
@@ -33,18 +33,6 @@
   },
   "animationPosition" : [-30, 0],
   
-  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua", "/objects/ship/fu_ftldriveanimation.lua" ],
-  "scriptDelta" : 60,
-  
-  "stats" : {
-    "shipSpeed" : -20,
-    "shipMass" : 1
-  },
-  "capabilities" : [
-    "planetTravel"
-  ],
-  "maxAmountGroups" : {
-    "ftlDrive" : 1
-  },
-  "byosOnly" : true
+  "scripts" : [ "/objects/ship/fu_ftldriveanimation.lua" ],
+  "scriptDelta" : 60
 }
