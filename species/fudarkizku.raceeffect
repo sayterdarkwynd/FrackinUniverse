@@ -1,57 +1,10 @@
 {
-	"stats": [
+	"scripts" : [
 		{
-			"stat": "fallDamageMultiplier",
-			"effectiveMultiplier": 0.8
-		},
-		{
-			"stat": "electricResistance",
-			"amount": 0.5
-		},
-		{
-			"stat": "cosmicResistance",
-			"amount": -0.2
-		},
-		{
-			"stat": "fireResistance",
-			"amount": -0.2
-		},
-		{
-			"stat": "poisonResistance",
-			"amount": -0.25
-		},
-		{
-			"stat": "fuCharisma",
-			"effectiveMultiplier": 1.21
-		}
-	],
-	"diet" : "omnivore",
-	"controlModifiers": {
-		"speedModifier": 1.1,
-		"airJumpModifier": 1.1
-	},
-	"weaponEffects": [{
-			"weapons": [
-				"flail"
-			],
-			"stats": [{
-					"stat": "critChance",
-					"amount": 1
-				},
-				{
-					"stat": "critDamage",
-					"amount": 0.05
-				}
-			]
-		},
-		{
-			"weapons": [
-				"scythe"
-			],
-			"stats": [{
-				"stat": "protection",
-				"effectiveMultiplier": 1.15
-			}]
+			"script" : "/scripts/fr_scripts/speciesredirect.lua",
+			"args" : {
+				"species" : "fuizku"
+			}
 		}
 	]
 }

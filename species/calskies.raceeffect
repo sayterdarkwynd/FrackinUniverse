@@ -1,49 +1,9 @@
 {
-	"stats" : [
-		{ "stat" : "maxFood", "effectiveMultiplier" : 0.6 },
-		{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.12 },
-		{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.05 },
-		{ "stat" : "electricResistance", "amount" : -0.3 },
-		{ "stat" : "fireResistance", "amount" : 0.2 },
-		{ "stat" : "iceResistance", "amount" : 0.3 },
-		{ "stat" : "poisonResistance", "amount" : -0.2 },
-		{ "stat" : "shadowResistance", "amount" : 0.2 },
-		{ "stat" : "cosmicResistance", "amount" : -0.2 },
-		{ "stat" : "radioactiveResistance", "amount" : 0.2 },
-		{ "stat" : "fumudslowImmunity", "amount" : 1 },
-		{ "stat" : "jungleslowImmunity", "amount" : 1 },
-		{ "stat" : "webstickImmunity", "amount" : 1 },
-		{ "stat" : "sandstormImmunity", "amount" : 1 },
-		{ "stat" : "snowslowImmunity", "amount" : 1 },
-		{ "stat" : "slushslowImmunity", "amount" : 1 }
-	],
-	"diet" : "carnivore",
-	"envEffects" : [
-		{
-			"biomes" : [ "garden", "forest", "tundra", "snow" ],
-			"stats" : [
-				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.15 },
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.1 }
-			]
-		}
-	],
-	"weaponEffects" : [
-		{
-			"weapons" : [ "energy" ],
-			"stats" : [
-				{ "stat" : "energyRegenPercentageRate", "baseMultiplier" : 1.25 },
-				{ "stat" : "critChance", "amount" : 3 }
-			]
-		}
-	],
 	"scripts" : [
 		{
-			"script" : "/scripts/fr_scripts/foodRush.lua",
+			"script" : "/scripts/fr_scripts/speciesredirect.lua",
 			"args" : {
-				"foodDefault" : 0.5,
-				"speedFactor" : 4.25,
-				"minSpeed" : 0.0,
-				"maxSpeed" : 0.2
+				"species" : "callistan"
 			}
 		}
 	]

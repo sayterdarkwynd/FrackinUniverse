@@ -1,67 +1,10 @@
 {
-	"stats": [
-		{ "stat": "maxHealth","effectiveMultiplier": 1.15},		
-		{ "stat": "maxEnergy","effectiveMultiplier": 1.12},
-		{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0.80 },
-        
-		{ "stat" : "fireResistance", "amount" : -0.30 },
-		{ "stat" : "iceResistance", "amount" : 0.30 },
-		{ "stat" : "radioactiveResistance", "amount" : 0.05 },
-        
-		{ "stat" : "iceStatusImmunity", "amount" : 1 },
-		{ "stat" : "iceslipImmunity", "amount" : 1 },
-		{ "stat" : "liquidnitrogenImmunity", "amount" : 1 },
-
-		{ "stat" : "axeMastery", "amount": 0.15 },
-		{ "stat" : "machinepistolMastery", "amount": 0.15 }
-	],
-	"diet" : "omnivore",
-	"controlModifiers": {
-		"airJumpModifier" : 1.08
-	},
-	"weaponScripts": [{
-		"script": "/scripts/fr_weaponscripts/freebonus.lua",
-		"contexts": [
-			"gun-init"
-		],
-		"args": {
-			"stats": [{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.10
-				},
-				{
-					"stat": "critDamage",
-					"amount": 0.05
-				}
-			]
+	"scripts" : [
+		{
+			"script" : "/scripts/fr_scripts/speciesredirect.lua",
+			"args" : {
+				"species" : "fupeglaci"
+			}
 		}
-	}],
-	"envEffects": [
-		{
-			"biomes": "cold",
-			"stats": [
-				{
-					"stat": "maxHealth",
-					"effectiveMultiplier": 1.15
-				},
-				{
-					"stat": "maxEnergy",
-					"effectiveMultiplier": 1.15
-				}
-			]
-		},
-		{
-			"biomes": "hot",
-			"stats": [
-				{
-					"stat": "maxHealth",
-					"effectiveMultiplier": 0.80
-				},
-				{
-					"stat": "maxEnergy",
-					"effectiveMultiplier": 0.80
-				}
-			]
-		}		
 	]
 }
