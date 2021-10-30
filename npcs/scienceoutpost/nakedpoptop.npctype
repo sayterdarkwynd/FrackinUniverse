@@ -1,12 +1,12 @@
 {
-  "type" : "fuoutpostcivilian",
-  "baseType" : "outpostcivilian",
-  
+  "type" : "nakedpoptop",
+  "baseType" : "nakedvillager",
+  "npcname" : "Scott",
 
   "damageTeam" : 1,
   "scriptConfig" : {
-    "offeredQuests" : [ "create_ignuschili", "create_elder" ],
-    "turnInQuests" : [ "create_ignuschili", "create_elder" ],
+    "offeredQuests" : [  ],
+    "turnInQuests" : [ ],
     
     "reactions" : {
       "spontaneous" : [
@@ -861,227 +861,84 @@
     },    
     "dialogMode" : "sequence",
     "dialog" : {
+      "flee" : {
+        "helpme" :{
+          "default" : [
+            "Reeep Reeep!",
+            "Glbglb! Piff!"
+          ]
+        },
+        "safe" : {
+          "default" : [
+            "Reeep Reeep!",
+            "Glbglb! Piff!"
+          ]
+        }
+      },
+      "breakObject" : {
+          "default" : [
+            "Reeep Reeep!",
+            "Glbglb! Piff!"
+          ]
+        },
+      "greeting" : {
+          "default" : [
+            "*purrs softly*",
+            "*purrs loudly*"
+          ]
+        },
+      "accuse" : {
+          "default" : [
+            "*angry stare*"
+          ]
+        },
+      "alert" : {
+          "default" : [
+            "*unholy screeching*"
+          ]
+        },      
       "converse" : {
-        "elduukhar" : {
+        "default" : {
           "default" : [
-                "We should hang out sometime. Get smashed. Eat garflipps. Avoid Kevin.",
-                "My calculations are infallible. That means we're all going to die soon!",
-                "There's rumored to be a place at the edge of known space made ^yellow;entirely^reset; of shrimp.",
-                "I wonder...what if we're entirely wrong about everything?"
-          ]
-        },       
-        "slimeperson" : {
-          "default" : [
-                "I'm sorry if my appearance bothers you. That's your problem, not mine.",
-                "My odour is none of your concern. Nor are the circumstances of my birth, so do not ask.",
-                "Ever had a feeling of Deja Vu?",
-                "You don't know the hell of remembering a life you never lived, so do not deign to judge my people.",
-                "Us Slimes need to stick together. We are rare, fractured, and unique.",
-                "I am the first among my people, that I know of, to obtain a doctorate.",
-                "Life for a Slime is one of horrified looks, threatened whispers and being hated for something we cannot help.",
-                "This is why I practice science here. I can be safe, and not worry about the prejudices present in the universe."
-          ]
-        },       
-        "veluu" : {
-          "default" : [
-                "Mrowr. There is a constant source of aggravation that plagues us, and it's name is Kevin.",
-                "I can do a backflip. I have it on good authority that you are not able to do so.",
-                "Mmmmrrowr.",
-                "You look like you do not groom yourself enough. I suggest you emulate my people. None are cleaner.",
-                "I long for the hunt, but my mind is far more valuable a tool."
-          ]
-        },       
-        "fuizku" : {
-          "default" : [
-                "I honestly had no idea it was possible to coat this entire facility with lip gloss. That was an interesting day.",
-                "I'd bet 1000 pixels that you can't lick your elbows without dislocating bones.",
-                "Let us rejoice and dance the dance of joy.",
-                "Beauty is in the eye of the beholder. My people know this better than most.",
-                "What are you staring at? There is science to do!",
-                "There is no reality in which you are smarter than I.",
-                "I'd love to skin a ponex and stuff its rotting carcass. Taxidermy is a hobby of mine, and Ponexes are horrifying flesh-devouring monsters.",
-                "Dogs are incapable of flight. Who knew? Sorry, Fluffy! *sob*",
-                "There is no reality in which you are smarter than I."   
-          ]
-        },      
-        "fuanodyne" : {
-          "default" : [
-                "If I see Kevin before lunch, I am going to get Thorlokk to pummel him into pulp.",
-                "Watch your step. I hear Kevin has been hiding weird crap all over the station again.",
-                "Another day, another dollar. And another annoying prank.",
-                "Ever seen a Garflipp? They are weird worms capable of psionic cleansing...something no other known species can accomplish.",
-                "I am recording all of our social interactions for data. I hope you don't mind.",
-                "One of these days this trash can will do something interesting. Today is not that day.",
-                "Is it difficult being fleshy? I often wonder what it feels like to chew things, or to excrete waste. These are things I shall never experience."
-          ]
-        },      
-        "fumantizi" : {
-          "default" : [
-                "I was to be a sandwich maker, like my father before me. But I chose a lesser path in life: Knowledge. I'll leave the sandwiches to true masters.",
-                "You aren't one of those people that use...white bread...with their sandwiches, are you? We can't be friends if this is the case.",
-                "<entityname>! <entityname>! <entityname>! <entityname>!",
-                "<entityname>, why is it you have such a high body count? Do you just walk around murdering everything?",
-                "I'm Kevin. Everyone here hates me. This pleases me.",
-                "I lie all the time. By the way, I'm Kevin.",
-                "I'm <entityname>,<entityname>. You cannot also be <entityname>. Change your name. I won't.",
-                "There is a universal conspiracy whispered that Mantizi invented bread. If we had invented bread, we would have first had to invent the universe.",
-                "I'm Kevin. I am well loved around here.",
-                "Life is 27.3% less enjoyable when wearing pants. Prove me wrong.",
-                "I could make a career out of sandwich making, but that seems so ....plain.",
-                "I once went without pants for 3 full cycles. This was during my earlier years.",
-                "There's no easy way to say this...so I won't.",
-                "You smell exactly like garflipps. Why?",
-                "<entityname>",
-                "<entityname> is an interesting name. It reminds me of a philosopher of my people, Jeff. He came up with the noble profession of Sandwich Maker.",                
-                "There are three types of people. You're the good kind. Flavor-wise, I mean.",
-                "It smells like mushrooms and everyone looks like they want to kill me. Just like home!",
-                "I can't believe nobody noticed the lip gloss...",
-                "I'm debating on the merits of strange matter for my next amazing sculpture. Thoughts? And don't bother with that 'it's going to kill us all' nonsense.",
-                "I once defeated a Xar in a farting contest. That's really hard to do, given that my people don't have buttcheeks.",
-                "There are exactly three stenches that get me excited. Four, now. The fourth is you.",
-                "How many waffles can you fit in a single catheter bag?",
-                "I'd imagine somewhere between zero and thirty.",
-                "I guess it would depend on how they were added. Are they solid waffles? Liquified? Have they been garflipped?",
-                "I'm going to uncover this mystery, and the entire universe will thank me for it. Who doesn't love a waffle?",
-                "I'm absolutely positive that there are medical applications to stabbing.",
-                "Look, you have a mod conflict installed. Go to your starbound.log and check. Hah! Made you look. But really, keep an eye on your mods, stupid.",
-                "Have you ever wondered why you aren't currently dead? I do all the time.",
-                "Don't believe the infraction log. That was...a different Kevin. Honest.",
-                "Stop staring at my pecs, <entityname>.",
-                "Earth? Never did get a chance to go there. I heard it was pretty nice.",
-                "That's my cloaca. My eyes are up here. Surely my gender cannot be that important to you.",
-                "Nobody loves you. Except for me. Work with me. Why? Dancing velociraptors. Need I say more?",
-                "I like filling briefcases and boxes with super fun things and then selling them. Or giving them away!",
-                "Have you ever been hugged by intestines? Oddly comforting, really.",
-                "Unfortunately, you can't hide weapons in a urethra. I've tried. The subjects always get irate.",
-                "There is no way to alter the gender of a starfish using only a hammer. You win this time, nature.",
-                "You look like you want to judge me. But I watched what you did using my infini-cam.",
-                "I can't believe you killed the *entire* village.",
-                "You're a murderer.",
-                "I wondered why humans looked uncomfortably when I asked if I could use a nutcracker on them. I later found out that human language has...interesting intricacies",
-                "What? No, I am most certainly *not* an avatar of an Elder God. Why would you insinuate such a thing? I'm not handsome enough.",
-                "I have quite thoroughly mastered the art of placing smaller things into larger things. Few can surpass me in the art of stacking. It's not a particularly -useful- skill, but there you have it.",
-                "I've been watching you for a very long time, <entityname>. You do really strange things in your free time. Really, really strange.",
-                "Meditating in a field of tendrils as you listen to the calming wails of a stillborn planet is the best way to meditate on the nature of the universe. Trust me.",
-                "I have convinced one of the staff here that they should sneak into your ship to watch you sleep. For science. I may have implied that you were immortal."
-          ]
-        },  
-        "fukirhos" : {
-          "default" : [
-                "Recently I purchased a new FTL drive. This sweet baby is going to impress my Arkology so much!",
-                "It even has an auto-failsafe in its quantum-state capacitor. The third of its kind! Of course, it isn't strictly ^red;legal^reset; by Protectorate standards...so lets keep that between us.",
-                "Might we exchange pleasantries when I am not working? I have to complete this horticultural examination.",
-                "There is no greater threat to sanity than boredom. Never let your mind be totally idle!",
-                "Don't invest in Sigma-Tyovis at this point in time. Their market value is a bit too volatile. Futures projections are grim.",
-                "I'd bet money on just about any wager if the stakes are right. Why, last Tuesday I made 4 million pixels from Kevin. I should probably be more concerned about this than I am.",
-                "I find it exceptionally difficult to adjust to new gravity fields. I prefer artificial gravity like we have at home on the Novustech Arkology.",
-                "Where do you hail from? I don't see many folks like you around here.",
-                "<entityname>! Nice to see you. We should have lunch sometime and discuss your stocks!"                
-          ]
-        },         
-        "thelusian" : {
-          "default" : [
-                "xk-ch-ch kth!",
-                "^yellow;*clicks*^reset; If you annoy me, I'll beat the stupid right out of you.",
-                "I often wonder at how much force it would take to crush Kevins windpipe. That guy sucks.",
-                "Back off, fleshy one. I require personal space.",
-                "My Queen will return one day, and I shall rejoin the hive."
+            "Reeep Reeep!",
+            "Glbglb! Piff!",          
+            "Steve!",
+            "*purring*",
+            "*stares blankly, incapable of comprehending you*",
+            "*excitedly twitches*",
+            "*sighs*",
+            "*raises its paw as if in solidarity with your cause*",
+            "*demands a treat*"
           ]
         },        
-        "fumantis" : {
+        "fuphotonpoptop" : {
           "default" : [
-                "I'm going to strangle Kevin to death while he sleeps if he licks my lab notes again.",
-                "Underneath my carapace is a heart of gold.",
-                "Ever wonder why humans record their acts of mating for entertainment? It is baffling. Soon, it may be all that remains of them."
-          ]
-        },        
-        "fudarkizku" : {
-          "default" : [
-                "I honestly had no idea it was possible to coat this entire facility with lip gloss. That was an interesting day.",
-                "I'd bet 1000 pixels that you can't lick your elbows without dislocating bones.",
-                "Let us rejoice and dance the dance of joy.",
-                "Beauty is in the eye of the beholder. My people know this better than most.",
-                "What are you staring at? There is science to do!",
-                "There is no reality in which you are smarter than I.",
-                "I'd love to skin a ponex and stuff its rotting carcass. Taxidermy is a hobby of mine, and Ponexes are horrifying flesh-devouring monsters.",
-                "Dogs are incapable of flight. Who knew? Sorry, Fluffy! *sob*",
-                "There is no reality in which you are smarter than I."   
-          ]
-        },
-        "apex" : {
-          "default" : [
-                "I wish these glasses fit me properly. But they don't. As a result I look like an idiot. Thanks, Kevin.",
-                "I am currently designing a bio-agent keyed to Kevin's immune system. It will give him chronic vomiting issues for a long, long time."
-          ]
-        },
-        "human" : {
-          "default" : [
-                "There's so much data for me to record around here. It is fascinating.",
-                "Hopefully this location will be a good place for my research into what happened to Earth.",
-                "I'm writing a research paper on biodiversity. It will be extremely important.",
-                "I'm not quite sure yet, but I think my hypothesis is correct. More testing is required."
-          ]
-        },
-        "floran" : {
-          "default" : [
-                "I'd love to ssskin a ponex and ssstuff its rotting carcassss. Taxidermy isss a hobby of mine.",
-                "I'm hesssitant to publisssh these findings. Sssome things should not be shared, but instead...ssstabbed!",
-                "I ssswears I am reformified and no longer eatsss fleshes of sssentients. Mostly."
-          ]
-        },
-        "avian" : {
-          "default" : [
-                "I have no qualms about flight. It's the landing that presents the issue.",
-                "Personally, I think religion is a sham and should be erased from existence. My people, shamefully, disagree.",
-                "I often wonder exactly what is wrong with people that think sentient mystical ponies are acceptable entertainment sources.",
-                "I mean, just look at these stupid things! How do they operate machinery? They have hooves! And building castles? How?",
-                "And don't spew that cop-out 'magic' nonsense. There's no such thing!"
-          ]
-        },
-        "hylotl" : {
-          "default" : [
-                "^cyan;Silicon^reset;? That's easy. Loose Silt sand, in an extractor. How do you not know this by now?",
-                "Everything you know is wrong. Science has proven this to us time and time again. I sense another breakthrough of this nature is coming soon.",
-                "Universal Constants are that way for a reason. Why am I trying to change one?!?! I'm a ^yellow;genius^reset;, thats why!",
-                "Whatever you do, never trust Kevin. Not entirely. His heart is in the right place. His mind, on the other hand..."
-          ]
-        },
-        "glitch" : {
-          "default" : [
-            "Distinguished. I have obtained no less than 11 scientific accolades.",
-            "Pleased. You are a well respected member of this research community.",          
-            "Informative. There are 1,282 follicles on your nose. Each appears to be more hateful than the last.",
-            "Annoyed. Kevin. Why does he exist?"
-          ]
-        },
-        "novakid" : {
-          "default" : [
-                "Agreeing to disagree is always preferable to the alternative.",
-                "I kin' feel fer the people with nobody to love. Grief ain't nothin' to wish on anyone.",
-                "I may not have what ye'd call a 'degree' in science, but I kin sure get the research done if I'm needin' ter!",
-                "Sometimes I feel a bit lonely. When that 'appens, I'll jes' sing ter myself softly. Often in the dark.",
-                "Life kin be bad from time ter time. When yer feeling down, you just need ter find yer center again.",
-                "I hear someone 'eer found a new dimension called...er...K4VC-9? 'Parently, it's all made o' shrimps!"
+            "Reeep Reeep!",
+            "Glbglb! Piff!",          
+            "Steve!",
+            "*purring*",
+            "*stares blankly, incapable of comprehending you*",
+            "*excitedly twitches*",
+            "*sighs*",
+            "*raises its paw as if in solidarity with your cause*",
+            "*demands a treat*"
           ]
         }
       }
     }
   },
   "humanoidTiming" : {
+
     "stateCycle" : [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],
     "stateFrames" : [1, 8, 8, 4, 4, 7, 2, 1, 1, 1],
+
+
     "emoteCycle" : [1.0, 0.3, 0.3, 0.3, 1.0, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.3, 1],
     "emoteFrames" : [1, 2, 2, 2, 5, 2, 2, 2, 2, 3, 3, 5, 2, 2]
   },
   "items" : {
     "override" : [
-      [0, [
-          {
-            "head" : [ { "name" : "glasses2head" } ],
-            "chest" : [ { "name" : "scientistchest", "parameters" : { "colorIndex" : 8 } } ],
-            "legs" : [ { "name" : "scientistlegs", "parameters" : { "colorIndex" : 6 } } ]
-          }
-        ] ]
+      [0, [{}] ]
     ]
   }
 }
