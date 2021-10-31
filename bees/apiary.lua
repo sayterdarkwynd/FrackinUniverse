@@ -477,7 +477,7 @@ function getFrames(dt)
 		physicalResistance = false
 	}
 	if not self.frameTakeTimers then
-		sb.logInfo("initializing frame grab timers")
+--		sb.logInfo("initializing frame grab timers")
 		self.frameTakeTimers={}
 	end
 	local frameCounter=0
