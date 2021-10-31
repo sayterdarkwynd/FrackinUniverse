@@ -482,7 +482,7 @@ function update(dt)
 			if afkLvl<=3 then --if active, increment up to 600 (10 mins)
 				self.environmentTimer = math.min(600.0,self.environmentTimer + (dt/(afkLvl+1)))
 			else --if inactive, decrement at afklvl/6 rate, down to 0. at afklvl 4,current max and where this fires, that's 2/3, so it decreases by 2/3 of a second every second; it would take 15 minutes to fully decay.
-				self.environmentTimer = math.max(0.0,self.environmentTimer - (dt*(afkLevel/6)))
+				self.environmentTimer = math.max(0.0,self.environmentTimer - (dt*(afkLvl/6)))
 			end
 		end
 		-- how crazy are we?
