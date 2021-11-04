@@ -31,6 +31,11 @@ function update(dt)
 		status.setStatusProperty("fr_race", race)
 	end
 	if self.isNpc then
+		if not fuPersistentEffectRecorder then
+			require ("/scripts/fuPersistentEffectRecorder.lua")
+			fuPersistentEffectRecorder.init()
+		end
+		fuPersistentEffectRecorder.update(dt)
 		local overrideval=world.getProperty("frnpcoverride")
 		if (overrideval ~= nil) and enabled ~= overrideval then
 			status.setStatusProperty("fr_enabled", overrideval)
@@ -122,6 +127,9 @@ end
 
 function uninit(...)
 	masteries.reset()
+	if self.isNpc then
+		fuPersistentEffectRecorder.uninit()
+	end
 	if FR_old_uninit then
 		FR_old_uninit(...)
 	end
