@@ -1,0 +1,33 @@
+{
+  "objectName" : "nightarbookcaseswitch",
+  "colonyTags" : ["nightar","knowledge","storage","wired"],
+  "rarity" : "Common",
+  "description" : "One of these books looks out of place... I wonder...",
+  "shortdescription" : "Nightar Umbral Bookcase Switch",
+  "race" : "nightar",
+  "category" : "wire",
+  "price" : 170,
+
+  "inventoryIcon" : "nightarbookcaseswitchicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "nightarbookcaseswitch.png:<color>.off",
+      "imagePosition" : [-12, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+    }
+  ],
+
+  "scripts" : [ "/objects/wired/switch/switch.lua" ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle2.animation",
+  "animationParts" : {
+    "switch" : "nightarbookcaseswitch.png"
+  },
+  "animationPosition" : [-12, 0],
+
+  "outputNodes" : [ [0, 0] ]
+}

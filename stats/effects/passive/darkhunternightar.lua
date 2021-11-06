@@ -69,12 +69,23 @@ function update(dt)
 	    local mult = math.min(math.max((lightLevel-55)/30,0),1)
 	    local healthPenalty = 1-mult*0.25
 	    if (self.species == "nightar") then
-		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
-				{stat = "physicalResistance", amount = mult*-0.33},
-				{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.5},
-				{stat = "maxHealth", effectiveMultiplier = util.round(healthPenalty,1)},
-				{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
-		    })
+		    if status.stat("reducePenalty") >= 0 then
+		        reducePenalty = status.stat("reducePenalty")
+		        healthPenalty = 1-mult*0.1
+			    effect.setStatModifierGroup(nightarDarkHunterEffects, {
+					{stat = "physicalResistance", amount = mult*-0.1},
+					{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.2},
+					{stat = "maxHealth", effectiveMultiplier = util.round((healthPenalty),1)},
+					{stat = "maxEnergy", effectiveMultiplier = util.round((healthPenalty),1)}
+			    })		      
+		    else
+			    effect.setStatModifierGroup(nightarDarkHunterEffects, {
+					{stat = "physicalResistance", amount = mult*-0.33},
+					{stat = "powerMultiplier", effectiveMultiplier = 1-mult*0.5},
+					{stat = "maxHealth", effectiveMultiplier = util.round(healthPenalty,1)},
+					{stat = "maxEnergy", effectiveMultiplier = util.round(healthPenalty,1)}
+			    })		    	
+		    end	    	
 	    else  --tenebrhae have different bonuses than nightar
 		    effect.setStatModifierGroup(nightarDarkHunterEffects, {
 				{stat = "physicalResistance", amount = mult*-0.25},
@@ -96,4 +107,7 @@ function uninit()
 	if nightarDarkHunterEffects2 then
 		effect.removeStatModifierGroup(nightarDarkHunterEffects2)
 	end
+	if nightarDarkHunterEffects3 then
+		effect.removeStatModifierGroup(nightarDarkHunterEffects3)
+	end	
 end
