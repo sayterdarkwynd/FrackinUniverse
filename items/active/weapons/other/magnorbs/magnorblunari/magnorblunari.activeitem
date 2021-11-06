@@ -1,63 +1,66 @@
 {
-  "itemName" : "magnorblunari",
-  "level" : 2,
-  "price" : 500,
-  "maxStack" : 1,
-  "rarity" : "common",
-  "description" : "This lunari-forged weapon can both defend and attack. Quite useful.",
-  "shortdescription" : "Shard Field",
-  "tooltipKind" : "magnorb",
-  "category" : "Magnorb",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","magnorb","lunari", "upgradeableWeapon"],
+	"itemName" : "magnorblunari",
+	"level" : 2,
+	"price" : 500,
+	"maxStack" : 1,
+	"rarity" : "common",
+	"description" : "This lunari-forged weapon can both defend and attack. Quite useful.",
+	"shortdescription" : "Shard Field",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","magnorb","lunari", "upgradeableWeapon"],
 
-  "inventoryIcon" : "iconlunari.png",
-  "animation" : "magnorblunari.animation",
-  "animationParts" : {
-    "glove" : "glovelunari.png",
-    "orb1" : "orblunari.png",
-    "orb2" : "orblunari.png",
-    "orb3" : "orblunari.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "iconlunari.png",
+	"animation" : "magnorblunari.animation",
+	"animationParts" : {
+		"glove" : "glovelunari.png",
+		"orb1" : "orblunari.png",
+		"orb2" : "orblunari.png",
+		"orb3" : "orblunari.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
 
-  "orbitRate" : 0.15,
+	"orbitRate" : 0.15,
 
-  "projectileType" : "magnorblunari",
-  "projectileParameters" : {
-    "power" : 3.6,
-    "knockback" : 10,
+	"projectileType" : "magnorblunari",
+	"projectileParameters" : {
+		"power" : 3.6,
+		"knockback" : 10,
 
-    "returnOnHit" : true,
-    "ignoreTerrain" : false,
-    "controlForce" : 50,
-    "pickupDistance" : 2.5,
-    "snapDistance" : 2.0
-  },
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 50,
+		"pickupDistance" : 2.5,
+		"snapDistance" : 2.0
+	},
 
-  "count" : 3,
-  "shieldKnockback" : 15,
-  "shieldEnergyCost" : 40,
-  "shieldHealth" : 60,
-  "shieldPower" : "Electric Resist",
-  "critChance" : 2,
-  "critBonus" : 2,
+	"count" : 3,
+	"shieldKnockback" : 15,
+	"shieldEnergyCost" : 40,
+	"shieldHealth" : 60,
+	"shieldPower" : "Electric Resist",
+	"shieldPersistentGroup":"magnorbLunari",
+	"shieldPersistentEffects":[{"stat":"electricResist","amount":0.2}],
+	//"shieldEphemeralEffects":[""],//doesn't have any
+	"critChance" : 2,
+	"critBonus" : 2,
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : 10,
-      "twoHanded" : false,
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "shield" : {
-      "armRotation" : 0,
-      "twoHanded" : false,
-      "allowRotate" : true,
-      "allowFlip" : true
-    }
-  },
-  "builder" : "/items/buildscripts/fubuildmagnorb.lua"
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
 }

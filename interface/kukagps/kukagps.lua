@@ -50,16 +50,18 @@ function populateMaterialsList()
                     -- print planet primary biome
                     local parameters = celestial.visitableParameters(planet)
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Primary biome:^reset; "..biomes[parameters.primaryBiome] or parameters.primaryBiome)
+                    widget.setText(path .. ".text", "^green;Primary biome:^reset; "..(parameters.primaryBiome and (biomes[parameters.primaryBiome] or parameters.primaryBiome) or (biomes[parameters.typeName] or parameters.typeName)))
 
                     -- print planet subbiomes (includes main biome)
                     local subbiomes="None"
-                    for key,subBiome in pairs(parameters.surfaceLayer.secondarySubRegions) do
-                        if subBiome and subBiome.biome ~= parameters.primaryBiome then
-                            if subbiomes=="None" then
-                                subbiomes = biomes[subBiome.biome]
-                            else
-                                subbiomes = subbiomes..", "..biomes[subBiome.biome]
+                    if parameters.surfaceLayer then
+                        for key,subBiome in pairs(parameters.surfaceLayer.secondarySubRegions) do
+                            if subBiome and subBiome.biome ~= parameters.primaryBiome then
+                                if subbiomes=="None" then
+                                    subbiomes = biomes[subBiome.biome]
+                                else
+                                    subbiomes = subbiomes..", "..biomes[subBiome.biome]
+                                end
                             end
                         end
                     end
@@ -79,14 +81,14 @@ function populateMaterialsList()
 
                     -- print planet threat and gravity
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Threat:^reset; "..ThreatToString(world.threatLevel()).."                                   ^green;Gravity:^reset; "..world.gravity(world.entityPosition(player.id())) or 0)
+                    widget.setText(path .. ".text", "^green;Threat:^reset; "..ThreatToString(parameters.threatLevel).."                                   ^green;Gravity:^reset; "..parameters.gravity or 0)
 
                     -- print planet ores names
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Ores:^reset; ")
                     local localOres="None"
                     local linecount=0
-                    for _,ore in pairs(celestial.planetOres(planet, (world.threatLevel() or 0))) do
+                    for _,ore in pairs(celestial.planetOres(planet, (parameters.threatLevel or 0))) do
                         if localOres=="None" then
                             localOres = (ores[ore] or ore)
                         else
@@ -111,17 +113,19 @@ function populateMaterialsList()
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "-------------------------------------------------------------------------------")
 
-                    -- print date
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Date:^reset; "..getDate(world.day()))
+                    if parameters.primaryBiome then -- asteroid fields don't have time in the typical sense
+                        -- print date
+                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", "^green;Date:^reset; "..getDate(world.day()))
 
-                    -- print time
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Time:^reset; "..timeConversion())
+                        -- print time
+                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", "^green;Time:^reset; "..timeConversion())
 
-                    -- print day length
-                    local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
-                    widget.setText(path .. ".text", "^green;Day Length:^reset; "..math.floor(world.dayLength()))
+                        -- print day length
+                        local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
+                        widget.setText(path .. ".text", "^green;Day Length:^reset; "..math.floor(world.dayLength()))
+                    end
 
                     -- print light level
                     local lightLevel = math.floor(world.lightLevel(world.entityPosition(player.id()))*100)/100
@@ -133,7 +137,6 @@ function populateMaterialsList()
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Wind Level:^reset; "..windLevel)
 
-                    local parameters = celestial.visitableParameters(planet)
                     -- print enviroment status effects
                     local enviro="None"
                     for _,env in pairs(parameters.environmentStatusEffects) do
@@ -194,7 +197,6 @@ function populateMaterialsList()
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Dungeons on Planet:^reset; ")
 
-                    local parameters = celestial.visitableParameters(planet)
                     -- Search for dungeons in spaceLayer. If exists in dungeon's list, look for name. Else, unknown dungeon.
                     if (parameters.spaceLayer and parameters.spaceLayer.dungeons) then
                         for _,dungeon in pairs(parameters.spaceLayer.dungeons) do

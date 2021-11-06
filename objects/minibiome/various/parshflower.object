@@ -1,33 +1,53 @@
 {
-  "objectName" : "parshflower",
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 400,
-  "printable" : false,  
-  "description" : "Parsh Flower",
-  "shortdescription" : "Parsh Flower",
-  "race" : "apex",
+    "objectName": "parshflower",
+    "rarity": "Common",
+    "category": "decorative",
+    "price": 400,
+    "printable": false,
+    "description": "Parsh Flower",
+    "shortdescription": "Parsh Flower",
+    "race": "apex",
+    "inventoryIcon": "parshflower.png",
+    "orientations": [
+        {
+            "image": "parshflower.png:<color>",
+            "imagePosition": [
+                0,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.5,
+            "spaceScan": 0.1,
+            "anchors": [
+                "bottom"
+            ]
+        }
+    ],
+    "smashSounds": [
+        "/sfx/tools/axe_chop_alt_heavy.ogg"
+    ],
+    "smashDropOptions": [
+        [
+            [
+                "biosample",
+                2,
+                {
 
-  "inventoryIcon" : "parshflower.png",
-  "orientations" : [
-    {
-      "image" : "parshflower.png:<color>",
-      "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+                }
+            ]
+        ]
+    ],
+    "breakDropOptions": [
+        [
+            [
+                "biosample",
+                2,
+                {
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
-  "smashDropOptions" : [
-    [ [ "biosample", 2, { } ] ]
-  ],
-
-  "breakDropOptions" : [
-    [ [ "biosample", 2, { } ] ]
-  ],
-  "biomePlaced" : true
+                }
+            ]
+        ]
+    ],
+    "biomePlaced": true,
+    "scannable": false
 }

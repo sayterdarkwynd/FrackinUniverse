@@ -1,63 +1,66 @@
 {
-  "itemName" : "magnorbzerchesium",
-  "level" : 3,
-  "price" : 800,
-  "maxStack" : 1,
-  "rarity" : "rare",
-  "description" : "Frosty balls of danger decimate the enemy.",
-  "shortdescription" : "Zerchesium Magnorb",
-  "tooltipKind" : "magnorb",
-  "category" : "Magnorb",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","magnorb","zerchesium", "upgradeableWeapon"],
+	"itemName" : "magnorbzerchesium",
+	"level" : 3,
+	"price" : 800,
+	"maxStack" : 1,
+	"rarity" : "rare",
+	"description" : "Frosty balls of danger decimate the enemy.",
+	"shortdescription" : "Zerchesium Magnorb",
+	"tooltipKind" : "magnorb",
+	"category" : "Magnorb",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","magnorb","zerchesium", "upgradeableWeapon"],
 
-  "inventoryIcon" : "iconzerchesium.png",
-  "animation" : "magnorbzerchesium.animation",
-  "animationParts" : {
-    "glove" : "glovezerchesium.png",
-    "orb1" : "orbzerchesium.png",
-    "orb2" : "orbzerchesium.png",
-    "orb3" : "orbzerchesium.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon" : "iconzerchesium.png",
+	"animation" : "magnorbzerchesium.animation",
+	"animationParts" : {
+		"glove" : "glovezerchesium.png",
+		"orb1" : "orbzerchesium.png",
+		"orb2" : "orbzerchesium.png",
+		"orb3" : "orbzerchesium.png"
+	},
+	"animationCustom" : { },
 
-  "scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
+	"scripts" : ["/items/active/weapons/other/magnorbs/magnorbs.lua"],
 
-  "orbitRate" : 0.15,
+	"orbitRate" : 0.15,
 
-  "projectileType" : "magnorbzerchesium",
-  "projectileParameters" : {
-    "power" : 3.6,
-    "knockback" : 10,
+	"projectileType" : "magnorbzerchesium",
+	"projectileParameters" : {
+		"power" : 3.6,
+		"knockback" : 10,
 
-    "returnOnHit" : true,
-    "ignoreTerrain" : false,
-    "controlForce" : 50,
-    "pickupDistance" : 2.5,
-    "snapDistance" : 2.0
-  },
+		"returnOnHit" : true,
+		"ignoreTerrain" : false,
+		"controlForce" : 50,
+		"pickupDistance" : 2.5,
+		"snapDistance" : 2.0
+	},
 
-  "count" : 3,
-  "shieldKnockback" : 15,
-  "shieldEnergyCost" : 40,
-  "shieldHealth" : 60,
-  "shieldPower" : "Frost Resist",
-  "critChance" : 2,
-  "critBonus" : 2,
+	"count" : 3,
+	"shieldKnockback" : 15,
+	"shieldEnergyCost" : 40,
+	"shieldHealth" : 60,
+	"shieldPower" : "Frost Resist",
+	"shieldPersistentGroup":"magnorbZerchesium",
+	"shieldPersistentEffects":[{"stat":"iceResistance","amount":0.2}],
+	//"shieldEphemeralEffects":["iceburst"],//doesn't have any
+	"critChance" : 2,
+	"critBonus" : 2,
 
-  "stances" : {
-    "idle" : {
-      "armRotation" : 10,
-      "twoHanded" : false,
-      "allowRotate" : true,
-      "allowFlip" : true
-    },
-    "shield" : {
-      "armRotation" : 0,
-      "twoHanded" : false,
-      "allowRotate" : true,
-      "allowFlip" : true
-    }
-  },
-  "builder" : "/items/buildscripts/fubuildmagnorb.lua"
+	"stances" : {
+		"idle" : {
+			"armRotation" : 10,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		},
+		"shield" : {
+			"armRotation" : 0,
+			"twoHanded" : false,
+			"allowRotate" : true,
+			"allowFlip" : true
+		}
+	},
+	"builder" : "/items/buildscripts/fubuildmagnorb.lua"
 }

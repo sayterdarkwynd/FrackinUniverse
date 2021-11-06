@@ -1,15 +1,67 @@
 [
-  {
-    "op": "replace",
-    "path": "/miningtreasure/0/1/pool/0/weight",
-    "value": 0.2
-  },
-  {
-    "op": "add",
-    "path": "/miningtreasure/0/1/pool/1",
-    "value": {
-      "weight": 0.1,
-      "pool": "fuBasicMaterials"
-    }
+ {
+  "op": "replace",
+  "path": "/miningtreasure/0/1/pool/0/weight",
+  "value": 0.2
+ },
+ {
+  "op": "add",
+  "path": "/miningtreasure/0/1/pool/-",
+  "value": {
+   "weight": 0.1,
+   "pool": "fuBasicMaterials"
   }
+ },
+ {
+  "op": "add",
+  "path": "/miningtreasurelore/0/1/pool/-",
+  "value": {
+   "weight": 0.01,
+   "item": "fuhumanblueprinta"
+  }
+ },
+ {
+  "op": "add",
+  "path": "/miningtreasurelore/0/1/pool/-",
+  "value": {
+   "weight": 0.01,
+   "item": "fuhumanblueprintm"
+  }
+ },
+ {
+  "op": "add",
+  "path": "/miningtreasurelore/0/1/pool/-",
+  "value": {
+   "weight": 0.01,
+   "item": "fuhumanblueprints"
+  }
+ },
+ {
+  "op": "add",
+  "path": "/miningtreasurelore/-",
+  "value": 
+    [10, {
+      "fill" : [
+        {"item" : [ "lunarmission1-codex", 1]}
+      ],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "techcard", 2]},
+        {"weight" : 0.1, "item" : [ "durasteelbar", 20]},
+        {"weight" : 0.2, "item" : [ "diamond", 2]},
+        {"weight" : 0.1, "item" : [ "money", 12000]},
+        {"weight" : 0.1, "pool" : "rareGun"},
+        {"weight" : 0.15, "item" : [ "capturepod", 4]},
+        {"weight" : 0.15, "pool" : "rareMelee"},
+        {"weight" : 0.1, "pool" : "shield"},
+        {"weight" : 0.04, "item" : "fuhumanblueprinta"},
+        {"weight" : 0.04, "item" : "fuhumanblueprintm"},
+        {"weight" : 0.04, "item" : "fuhumanblueprints"}
+      ],
+      "poolRounds" : [
+        [0.5, 5],
+        [0.5, 6]
+      ],
+      "allowDuplication" : false
+    }]
+ }
 ]

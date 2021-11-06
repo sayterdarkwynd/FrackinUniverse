@@ -1,8 +1,21 @@
 [ // -*- grammar-ext: json -*-
-  { "op" : "add", "path" : "/themes/frackin", "value" : "/metagui/themes/frackin/" },
-  { "op" : "add", "path" : "/defaultTheme", "value" : "frackin" },
-  { "op" : "add", "path" : "/panes/fu", "value" : {
-    // place pane entries here and reference by fu:panename
-    "pane1" : "/panes/fu/example.ui"
-  } }
+  [ // add modules array if not present
+    { "op" : "test", "path" : "/settings", "inverse" : true },
+    { "op" : "add", "path" : "/settings", "value": { } }
+  ],
+  [ // add builtins if not present
+    { "op" : "test", "path" : "/panes/metagui", "inverse" : true },
+    { "op" : "add", "path" : "/panes/metagui", "value" : {
+      "example" : "/metagui/example.ui", // addressed as "metagui:example"
+      "settings" : "/sys/metagui/settings/settings.ui"
+    } }
+  ],
+  [ // and unconditional additions
+    { "op" : "add", "path" : "/themes/frackin", "value" : "/metagui/themes/frackin/" },
+    { "op" : "add", "path" : "/themes/frackin.v2", "value" : "/metagui/themes/frackin/v2/" },
+    { "op" : "add", "path" : "/defaultTheme", "value" : "frackin.v2" },
+    { "op" : "add", "path" : "/panes/fu", "value" : {
+      // place pane entries here and reference by fu:panename
+    } }
+  ]
 ]

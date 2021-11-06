@@ -5,10 +5,10 @@
   "category" : "decorative",
   "printable" : false,
   "price" : 40,
-  "description" : "An impenetrable door. Whatever lurks behind is forever hidden from view.",
+  "description" : "An impenetrable door. Whatever lurks behind it is unknowable.",
   "shortdescription" : "Precursor Background Door",
 
-  "inventoryIcon" : "precursorbackgrounddoor.png",
+  "inventoryIcon" : "icon.png",
   "orientations" : [
     {
       "dualImage" : "precursorbackgrounddoor.png:<color>",
@@ -18,6 +18,34 @@
       "anchors" : [ "background" ]
     }
   ],
+
+  "animation" : "/animations/bgdoor/backgrounddoor.animation",
+    "animationCustom" : {
+     "sounds" : {
+       "open" : {
+           "pool" : ["/sfx/objects/energy_door_open.ogg"],
+           "rangeMultiplier" : 0.25
+       },
+       "close" : {
+         "pool" : ["/sfx/objects/energy_door_close.ogg"],
+         "rangeMultiplier" : 0.25
+       }
+     }
+   },
+   "animationParts" : {
+     "door" : "precursorbackgrounddoor.png"
+   },
+   "animationPosition" : [-16,0],
+
+  "scripts" : ["/scripts/decorations/bgdoor/bgdoortele.lua"],
+  "openAoe" : [[-2,0],[2,5]],
+
+  "allowTele" : true,
+  "telePos" : [0,-1],
+
+  "inputNodes" : [ [-2, 0], [-2, 2] ],
+  "outputNodes" : [ [1, 4] ],
+
   "learnBlueprintsOnPickup" : [ "precursorbackgrounddoor" ]
-  
+
 }

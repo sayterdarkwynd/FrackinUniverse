@@ -12,7 +12,6 @@ function HammerSmash:init()
 
 	self.timerHammer = 0 --for hammer crit/stun bonus (FU)
 	self.overCharged = 0 -- overcharged default
-	self.hammerMastery = 1 + status.stat("hammerMastery") -- new stat for applying bonuses to hammer functions
 
 	MeleeSlash.init(self)
 	self:setupInterpolation()
@@ -21,7 +20,7 @@ end
 function HammerSmash:windup(windupProgress)
 	self.energyTotal = math.max(status.stat("maxEnergy") * 0.10,0) -- due to weather and other cases it is possible to have a maximum of under 0.
 	if (status.resource("energy") <= 1) or not (status.consumeResource("energy",math.min((status.resource("energy")-1), self.energyTotal))) then
-		cancelEffects()
+		self.timerHammer = 0
 		self.lowEnergy=true
 	else
 		self.lowEnergy=false
@@ -35,8 +34,11 @@ function HammerSmash:windup(windupProgress)
 	self.timerHammer = 0--clear the values each time we swing the hammer
 	self.overCharged = 0
 
-	local windupProgress = windupProgress or 0
+	windupProgress = windupProgress or 0
 	local bounceProgress = 0
+	if self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) then
+		status.setStatusProperty(activeItem.hand().."Firing",true)
+	end
 	while self.fireMode == "primary" and (self.allowHold ~= false or windupProgress < 1) do
 		if windupProgress < 1 then
 			windupProgress = math.min(1, windupProgress + (self.dt / self.stances.windup.duration))
@@ -54,15 +56,17 @@ function HammerSmash:windup(windupProgress)
 			if self.lowEnergy or (self.timerHammer >=100) then --if we havent overcharged but hit 100 bonus, overcharge and reset
 				self.overCharged = 1
 				self.timerHammer = 0
-				status.setPersistentEffects("hammerbonus", {})
+				status.setPersistentEffects("hammerMasteryBonus", {})
 			end
 			if self.overCharged > 0 then --reset if overCharged
 				self.timerHammer = 0
-				status.setPersistentEffects("hammerbonus", {})
+				status.setPersistentEffects("hammerMasteryBonus", {})
 			else
 				if self.timerHammer < 100 then --otherwise, add bonus
 					self.timerHammer = self.timerHammer + 0.5
-					status.setPersistentEffects("hammerbonus", {{stat = "stunChance", amount = ((self.timerHammer * 1.2) * self.hammerMastery) },{stat = "critChance", amount = (self.timerHammer * self.hammerMastery)}})
+					local hammerMastery=1+status.stat("hammerMastery")
+					status.setPersistentEffects("hammerMasteryBonus", {{stat = "stunChance", amount = ((self.timerHammer * 1.2) * hammerMastery) },{stat = "critChance", amount = (self.timerHammer * hammerMastery)}})
+					world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","hammerMasteryBonus")
 				end
 				if self.timerHammer == 100 then	--at 101, play a sound
 					if animator.hasSound("overCharged") then
@@ -112,11 +116,13 @@ function HammerSmash:winddown(windupProgress)
 		windupProgress = math.max(0, windupProgress - (self.dt / self.stances.windup.duration))
 		self.weapon.relativeWeaponRotation, self.weapon.relativeArmRotation = self:windupAngle(windupProgress)
 		coroutine.yield()
-		cancelEffects()
+		self.timerHammer = 0
 	end
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 end
 
 function HammerSmash:fire()
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	self.weapon:setStance(self.stances.fire)
 	self.weapon:updateAim()
 
@@ -159,7 +165,7 @@ function HammerSmash:fire()
 					end
 					if self.timerHammer > 75 and self.timerHammer < 101 then
 						self.bombbonus = status.stat("bombtechBonus")
-						self.hammerMasteryCheck = status.stat("hammerMastery")
+						local hammerMastery = status.stat("hammerMastery")
 						local primaryStrike = { power = (self.timerHammer / 4) * self.bombbonus}
 						local secondaryStrike = { power = 0 + self.bombbonus}
 						world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+2,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, primaryStrike)
@@ -168,31 +174,33 @@ function HammerSmash:fire()
 						world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-1,mcontroller.position()[2]-1}, entity.id(), {0, 0}, false, secondaryStrike)
 						world.spawnProjectile("rapierCrit", {mcontroller.position()[1]+2,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 						world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-2,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
-						if self.hammerMasteryCheck > 0.5 then
+						if hammerMastery > 0.5 then
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("rapierCrit", {mcontroller.position()[1]+3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-3,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 						end
-						if self.hammerMasteryCheck > 0.7 then
+						if hammerMastery > 0.7 then
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("rapierCrit", {mcontroller.position()[1]+4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-4,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 						end
-						if self.hammerMasteryCheck > 0.9 then
+						if hammerMastery > 0.9 then
 							world.spawnProjectile("rapierCrit", {mcontroller.position()[1]+5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("rapierCrit", {mcontroller.position()[1]-5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]+5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 							world.spawnProjectile("regularexplosion", {mcontroller.position()[1]-5,mcontroller.position()[2]-2}, entity.id(), {0, 0}, false, secondaryStrike)
 						end
-						status.setPersistentEffects("hammerbonus", {
-							{stat = "protection", effectiveMultiplier = 1.2 + (self.hammerMasteryCheck /10) },
-							{stat = "grit", effectiveMultiplier = 1.2 + (self.hammerMasteryCheck /10)}
+						--(20+(1/10 mastery modifier))% knockback resistance, and same amount as protection multiplier
+						status.setPersistentEffects("hammerMasteryBonus", {
+							{stat = "protection", effectiveMultiplier = 1.2 + (hammerMastery /10) },
+							{stat = "grit", amount = 0.2 + (hammerMastery /10)}
 						})
+						world.sendEntityMessage(activeItem.ownerEntityId(),"recordFUPersistentEffect","hammerMasteryBonus")
 					else
-						cancelEffects()
-
+						status.setPersistentEffects("hammerMasteryBonus", {})
+						self.timerHammer = 0
 					end
 				end
 			end
@@ -234,28 +242,10 @@ end
 
 
 function HammerSmash:uninit()
-	cancelEffects()
+	self.timerHammer = 0
 	if self.helper then
 		self.helper:clearPersistent()
 	end
 	self.blockCount = 0
-end
-
-function cancelEffects()
-	status.clearPersistentEffects("longswordbonus")
-	status.clearPersistentEffects("macebonus")
-	status.clearPersistentEffects("katanabonus")
-	status.clearPersistentEffects("rapierbonus")
-	status.clearPersistentEffects("shortspearbonus")
-	status.clearPersistentEffects("daggerbonus")
-	status.clearPersistentEffects("scythebonus")
-	status.clearPersistentEffects("axebonus")
-	status.clearPersistentEffects("hammerbonus")
-	status.clearPersistentEffects("multiplierbonus")
-	status.clearPersistentEffects("dodgebonus")
-	status.clearPersistentEffects("listenerBonus")
-	status.clearPersistentEffects("masteryBonus")
-	self.rapierTimerBonus = 0
-	self.inflictedHitCounter = 0
-	self.timerHammer = 0
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end

@@ -27,9 +27,10 @@ function FUOverHeating:init()
 	self.isAmmoBased = config.getParameter("isAmmoBased",0)					 -- is this a ammo based gun?
 	self.isMachinePistol = config.getParameter("isMachinePistol",0)				 -- is this a machine pistol?
 	self.isShotgun = config.getParameter("isShotgun",0)						 -- is this a shotgun?
-	self.magazineSize = config.getParameter("magazineSize",1) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
-	self.magazineAmount = math.min(config.getParameter("magazineAmount",-1),self.magazineSize)						-- current number of bullets in the magazine
 
+	calcAmmo(self)
+	--self.magazineAmount = math.min(config.getParameter("magazineAmount",-1),self.magazineSize) -- current number of bullets in the magazine
+	self.magazineAmount = config.getParameter("magazineAmount",-1) -- current number of bullets in the magazine
 	-- params
 	self.countdownDelay = 0									 -- how long till it regains damage bonus?
 	self.timeBeforeCritBoost = 2									-- how long before it starts accruing bonus again?
@@ -55,6 +56,13 @@ function FUOverHeating:init()
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))-- speed of recoil. Ideal is around 200 on the item. Default is 1 here
 	self.recoilForce = (config.getParameter("recoilForce",0)) --force of recoil. Ideal is around 1500 on the item but can be whatever you desire
 
+end
+
+--for some reason, this is overridden by gunfire.lua on the disruptor. okay? looks to be 'shenanigans'
+function calcAmmo(self)
+	local oldSize=self.magazineSize
+	self.magazineSize = (config.getParameter("magazineSize",1)*(1+status.stat("magazineMultiplier"))) + math.max(0,status.stat("magazineSize")) -- total count of the magazine
+	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
 end
 
 -- ****************************************
@@ -127,10 +135,18 @@ function FUOverHeating:update(dt, fireMode, shiftHeld)
 	end
 
 	if self.fireMode == (self.activatingFireMode or self.abilitySlot)
-		and not self.weapon.currentAbility
-		and self.cooldownTimer == 0
-		and not self.overheatActive
-		and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
+	and not self.weapon.currentAbility
+	and self.cooldownTimer == 0
+	and not self.overheatActive
+	and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
+		local changed,from=calcAmmo(self)
+		if changed then
+			if self.magazineSize>from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount+(self.magazineSize-from))
+			elseif self.magazineSize < from then
+				self.magazineAmount=math.min(self.magazineSize,self.magazineAmount)
+			end
+		end
 		if self.fireType == "auto" then
 			self:setState(self.auto)
 		elseif self.fireType == "burst" then
@@ -159,7 +175,7 @@ function FUOverHeating:auto()
 	local species = world.entitySpecies(activeItem.ownerEntityId())
 
 	if self.helper then
-			self.helper:runScripts("gunfire-auto", self)
+		self.helper:runScripts("gunfire-auto", self)
 	end
 
 	self.weapon:setStance(self.stances.fire)

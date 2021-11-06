@@ -13,10 +13,19 @@ function init()
   self.maxDps = config.getParameter("maxDps")
   self.damageDistance = config.getParameter("damageDistance")
 
-  self.monsterUniqueId = string.format("%s-ghost", world.entityUniqueId(entity.id()) or sb.makeUuid())
+  self.sapEnergy = config.getParameter("sapEnergy", false)
+  self.spawnGhost = config.getParameter("spawnGhost", "erchiusghost")
+  self.checkItems = config.getParameter("ghostItems", {"liquidfuel", "solidfuel", "supermatter"})
+  self.messaged = config.getParameter("noRadioMessage", false)
+
+  self.playerId = world.entityUniqueId(entity.id())
+  if self.playerId then
+    self.monsterUniqueId = string.format("%s-ghost", self.playerId)
+  else
+    self.monsterUniqueId = string.format("%s-ghost", sb.makeUuid())
+  end
   self.findMonster = util.uniqueEntityTracker(self.monsterUniqueId, 0.2)
   self.saturation = 0
-
   self.dps = 0
 
   self.spawnTimer = 0.5
@@ -24,15 +33,22 @@ end
 
 function update(dt)
   local erchiusCount = 0
-  erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), "liquidfuel") or 0)
-  erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), "solidfuel") or 0)
-  erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), "supermatter") or 0)
+  for _,item in pairs(self.checkItems) do
+    erchiusCount = erchiusCount + (world.entityHasCountOfItem(entity.id(), item) or 0)
+  end
   local erchiusRatio = math.sqrt(math.min(1.0, erchiusCount / self.effectMaxErchius))
   if erchiusCount > 0 and self.spawnTimer > 0 then
     self.spawnTimer = self.spawnTimer - dt
   end
 
-  status.modifyResource("health", -self.dps * dt)
+  if self.sapEnergy then
+    if status.resource("energy") < 2 then
+      status.modifyResource("health", ((-self.dps * dt)/12))
+    end
+    status.modifyResource("energy", ((-self.dps * dt)*1.05))
+  else
+    status.modifyResource("health", -self.dps * dt)
+  end
 
   local monsterPosition = self.findMonster()
   if monsterPosition then
@@ -52,14 +68,25 @@ function update(dt)
     local effectDistanceRatio = 1 - math.min(1.0, math.max(0.0, vec2.mag(distance) / effectDistance))
     animator.setParticleEmitterEmissionRate("smoke", self.emissionRate * effectDistanceRatio)
     animator.setParticleEmitterActive("smoke", effectDistanceRatio > 0)
+    animator.setLightColor("glow", {self.light[1] * erchiusRatio, self.light[2] * erchiusRatio, self.light[3] * erchiusRatio})
+    animator.setLightActive("glow", true)
 
     self.saturation = math.floor(-self.desaturateAmount * effectDistanceRatio)
 
     world.sendEntityMessage(self.monsterUniqueId, "setErchiusLevel", erchiusCount)
   elseif monsterPosition == nil then
     self.saturation = 0
+    self.dps = 0
     animator.setLightActive("glow", false)
+    animator.setParticleEmitterActive("smoke", false)
 
+    if not self.playerId then
+      self.playerId = world.entityUniqueId(entity.id())
+      if self.playerId then
+        self.monsterUniqueId = string.format("%s-ghost", self.playerId)
+        self.findMonster = util.uniqueEntityTracker(self.monsterUniqueId, 0.2)
+      end
+    end
     if self.spawnTimer < 0 then
       local parameters = {
         level = world.threatLevel(),
@@ -68,13 +95,10 @@ function update(dt)
         uniqueId = self.monsterUniqueId,
         keepAlive = true
       }
-      world.spawnMonster("erchiusghost", vec2.add(mcontroller.position(), config.getParameter("ghostSpawnOffset")), parameters)
+      world.spawnMonster(self.spawnGhost, vec2.add(mcontroller.position(), config.getParameter("ghostSpawnOffset")), parameters)
       self.spawnTimer = 1.0
     end
   end
-
-  animator.setLightColor("glow", {self.light[1] * erchiusRatio, self.light[2] * erchiusRatio, self.light[3] * erchiusRatio})
-  animator.setLightActive("glow", true)
 
   local multiply = {255 + self.multiply[1] * erchiusRatio, 255 + self.multiply[2] * erchiusRatio, 255 + self.multiply[3] * erchiusRatio}
   local multiplyHex = string.format("%s%s%s", toHex(multiply[1]), toHex(multiply[2]), toHex(multiply[3]))
@@ -88,4 +112,10 @@ function toHex(num)
 end
 
 function uninit()
+  -- no way to check if entity still exists
+  if self.playerId then
+    world.sendEntityMessage(self.monsterUniqueId, "setErchiusLevel", 0)
+  else
+    world.sendEntityMessage(self.monsterUniqueId, "killGhost")
+  end
 end

@@ -39,7 +39,8 @@ function AimedProjectile:charge()
 	animator.setParticleEmitterActive(self.elementalType .. "charge", true)
 	activeItem.setCursor("/cursors/charge2.cursor")
 
-	local chargeTimer = self.stances.charge.duration
+	local chargeTimer = self.stances.charge.duration * (1+status.stat("focalCastTimeMult"))
+
 	while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
 		chargeTimer = chargeTimer - self.dt
 
@@ -87,7 +88,7 @@ function AimedProjectile:discharge()
 	if status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
 
 	self:createProjectiles()
-		util.wait(self.stances.discharge.duration, function(dt)
+	util.wait(self.stances.discharge.duration, function(dt)
 		status.setResourcePercentage("energyRegenBlock", 1.0)
 		end)
 	animator.playSound(self.elementalType.."discharge")
@@ -106,9 +107,7 @@ function AimedProjectile:cooldown()
 	animator.setParticleEmitterActive(self.elementalType .. "charge", false)
 	activeItem.setCursor("/cursors/reticle0.cursor")
 
-	util.wait(self.stances.cooldown.duration, function()
-
-	end)
+	util.wait(self.stances.cooldown.duration, function() end)
 	self:reset()
 end
 
@@ -116,13 +115,28 @@ end
 function AimedProjectile:createProjectiles()
 	local position = self.focusPosition()
 	local aim = self.weapon.aimAngle
-
+	
+	local pCount = self.projectileCount or 1
+	-- bonus projectiles
+	local bonus=status.stat("focalProjectileCountBonus")
+	local flooredBonus=math.floor(bonus)
+	if bonus~=flooredBonus then bonus=flooredBonus+(((math.random()<(bonus-flooredBonus)) and 1) or 0) end
+	local initiallySingle=(pCount==1)
+	local singleMultiplier=1+((initiallySingle and 0.1*bonus) or 0)
+	pCount=pCount+bonus
 	local pParams = copy(self.projectileParameters)
-	pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier")
+
+	pParams.power = singleMultiplier * self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
 	pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
 
 	if not world.lineTileCollision(mcontroller.position(), position) then
-		world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), {mcontroller.facingDirection() * math.cos(aim), math.sin(aim)}, false, pParams)
+		for i=1,pCount do
+			if i>1 then
+				util.wait(self.stances.cooldown.duration/((1+status.stat("focalCastTimeMult"))), function() end)
+				aim = self.weapon.aimAngle
+			end
+			world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), {mcontroller.facingDirection() * math.cos(aim), math.sin(aim)}, false, pParams)
+		end
 	end
 end
 

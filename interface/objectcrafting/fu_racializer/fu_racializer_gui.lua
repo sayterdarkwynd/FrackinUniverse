@@ -159,6 +159,15 @@ function btnConvert_Clicked()
 		itemNew.parameters.shipPetType = itemNewInfo.config.shipPetType
 		itemNew.parameters.orientations = nil
 		itemNew.parameters.racialisedTo = self.newName
+		if itemNewInfo.config.animationCustom and itemNewInfo.config.animationCustom.sounds then
+			if itemNewInfo.config.animationCustom.sounds.open and itemNewInfo.config.animationCustom.sounds.open.pool then
+				itemNew.parameters.customSoundsOpen = itemNewInfo.config.animationCustom.sounds.open.pool
+			end
+			if itemNewInfo.config.animationCustom.sounds.close and itemNewInfo.config.animationCustom.sounds.close.pool then
+				itemNew.parameters.customSoundsClose = itemNewInfo.config.animationCustom.sounds.close.pool
+			end
+		end
+
 		itemNew.parameters = util.mergeTable(itemNew.parameters, getNewParameters(itemNewInfo, self.newItem.positionOverride))
 
 		if self.useAll == true then

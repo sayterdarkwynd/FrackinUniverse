@@ -29,6 +29,12 @@ if storage.vanishTime and world.time() > storage.vanishTime then
 
 end
 
+function uninit()
+  if storage.vanishTime then
+    storage.vanishTime = -1
+  end
+end
+
 function onInteraction(args)
   if config.getParameter("returnDoor") then
     return { "OpenTeleportDialog", {

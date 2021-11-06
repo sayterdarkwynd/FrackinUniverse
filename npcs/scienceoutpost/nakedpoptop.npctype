@@ -1,0 +1,944 @@
+{
+  "type" : "nakedpoptop",
+  "baseType" : "nakedvillager",
+  "npcname" : "Scott",
+
+  "damageTeam" : 1,
+  "scriptConfig" : {
+    "offeredQuests" : [  ],
+    "turnInQuests" : [ ],
+    
+    "reactions" : {
+      "spontaneous" : [
+      ]
+    },
+
+    "personalities" : [
+      [1.0, {
+        "personality" : "cheerful",
+        "additiveReactions" : [ "spontaneous" ],
+        "reactions" : {
+          "emo" : [
+            [1.0, "comfort"]
+          ],
+          "flee" : [
+            [1.0, "wave"]
+          ],
+          "gohome" : [
+            [1.0, "wave"]
+          ],
+          "chase" : [
+            [1.0, "smile"]
+          ],
+          "cry" : [
+            [1.0, "comfort"],
+            [1.0, "oh"],
+            [0.3, "follow"]
+          ],
+          "panic" : [
+            [1.0, "comfort"],
+            [1.0, "oh"],
+            [0.3, "follow"]
+          ],
+          "wink" : [
+            [1.0, "love"],
+            [1.0, "wink"],
+            [1.0, "follow"]
+          ],
+          "nosebleed" : [
+            [1.0, "comfort"],
+            [0.3, "follow"]
+          ],
+          "vomit" : [
+            [1.0, "comfort"],
+            [0.3, "follow"]
+          ],
+          "bored" : [
+            [1.0, "laugh"],
+            [1.0, "smile"]
+          ],
+          "spontaneous" : [
+            [1.0, "smile"]
+          ],
+          "hasquest" : [
+            [1.0, "smile"]
+          ],
+          "default" : [
+            [1.0, "smile"],
+            [1.0, "jumpforjoy"],
+            [1.0, "laugh"],
+            [1.0, "oh"],
+            [1.0, "wink"],
+            [1.0, "love"],
+            [1.0, "quit"],
+            [1.0, "follow"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "jerk",
+        "reactions" : {
+          "cheerful" : [
+            [1.0, "annoyed"]
+          ],
+          "emo" : [
+            [1.0, "schadenfreude"]
+          ],
+          "comfort" : [
+            [1.0, "annoyed"],
+            [0.5, "flee"],
+            [1.0, "chase"]
+          ],
+          "cry" : [
+            [1.0, "annoyed"],
+            [3.0, "schadenfreude"],
+            [1.0, "chase"]
+          ],
+          "vomit" : [
+            [1.0, "annoyed"],
+            [2.0, "schadenfreude"],
+            [1.0, "vomit"],
+            [1.0, "gohome"],
+            [1.0, "chase"]
+          ],
+          "bored" : [
+            [1.0, "annoyed"],
+            [1.0, "schadenfreude"],
+            [1.0, "chase"]
+          ],
+          "wink" : [
+            [1.0, "annoyed"],
+            [1.0, "schadenfreude"],
+            [0.3, "chase"]
+          ],
+          "love" : [
+            [1.0, "annoyed"],
+            [1.0, "schadenfreude"],
+            [0.3, "chase"]
+          ],
+          "flee" : [
+            [1.0, "chase"]
+          ],
+          "quit" : [
+            [1.0, "chase"]
+          ],
+          "gohome" : [
+            [1.0, "chase"]
+          ],
+          "wallbutton" : [
+            [1.0, "punch"]
+          ],
+          "music" : [
+            [1.0, "annoyed"]
+          ],
+          "videogameComplete" : [
+            [1.0, "punch"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "flirty",
+        "additiveReactions" : [ "default" ],
+        "reactions" : {
+          "nearnpc" : [
+            [1.0, "wave"],
+            [1.0, "wink"]
+          ],
+          "nearplayer" : [
+            [1.0, "flirtwithplayer"]
+          ],
+          "neutral" : [
+            [1.0, "annoyed"],
+            [1.0, "quit"]
+          ],
+          "bored" : [
+            [1.0, "annoyed"],
+            [1.0, "quit"]
+          ],
+          "vomit" : [
+            [1.0, "annoyed"],
+            [1.0, "quit"]
+          ],
+          "wink" : [
+            [1.0, "wink"],
+            [1.0, "love"],
+            [0.3, "follow"]
+          ],
+          "nosebleed" : [
+            [1.0, "wink"],
+            [1.0, "love"],
+            [0.3, "follow"]
+          ],
+          "love" : [
+            [1.0, "love"],
+            [0.3, "follow"]
+          ],
+          "comfort" : [
+            [1.0, "love"],
+            [0.3, "follow"]
+          ],
+          "follow" : [
+            [1.0, "wink"]
+          ],
+          "gohome" : [
+            [1.0, "follow"]
+          ],
+          "chase" : [ 
+            [1.0, "wink"]
+          ],
+          "default" : [
+            [5.0, "wink"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "anxious",
+        "additiveReactions" : [
+          "default", "love", "wink", "cry"
+        ],
+        "maxPlayTargetNpcs" : 1, 
+        "reactions" : {
+          "nearnpc" : [
+            [1.0, "neutral"],
+            [1.0, "flee"],
+            [1.0, "panic"]
+          ],
+          "nearplayer" : [
+            [1.0, "neutral"],
+            [1.0, "flee"],
+            [1.0, "panic"]
+          ],
+          "cry" : [
+            [3.0, "neutral"],
+            [3.0, "blankstare"],
+            [1.0, "panic"]
+          ],
+          "love" : [
+            [1.0, "vomit"],
+            [1.0, "panic"]
+          ],
+          "wink" : [
+            [1.0, "vomit"],
+            [1.0, "panic"]
+          ],
+          "videogameComplete" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "default" : [
+            [3.0, "neutral"],
+            [3.0, "oh"],
+            [1.0, "vomit"],
+            [9.0, "gohome"],
+            [3.0, "neutral"],
+            [9.0, "blankstare"],
+            [1.0, "panic"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "easilyspooked",
+        "behaviorConfig" : {
+          "sleepUntil" : [0.9,0.1]
+        },
+        "additiveReactions" : [
+          "spontaneous", "videogameComplete", "gongComplete", "drumComplete",
+          "music", "musicFinished", "cry", "vomit", "default"
+        ],
+        "reactions" : {
+          "spontaneous" : [
+            [0.5, "panic"]
+          ],
+          "hasquest" : [
+            [1.0, "panic"]
+          ],
+          "nearplayer" : [
+            [0.2, "flee"],
+            [1.0, "quit"]
+          ],
+          "videogameComplete" : [
+            [0.5, "panic"]
+          ],
+          "gongComplete" : [
+            [0.4, "panic"]
+          ],
+          "drumComplete" : [
+            [0.4, "panic"]
+          ],
+          "music" : [
+            [0.5, "panic"]
+          ],
+          "musicFinished" : [
+            [0.2, "flee"],
+            [0.2, "panic"]
+          ],
+          "cry" : [
+            [0.5, "panic"]
+          ],
+          "panic" : [
+            [1.0, "panic"],
+            [0.2, "flee"]
+          ],
+          "schadenfreude" : [
+            [1.5, "panic"],
+            [1.5, "cry"],
+            [1.0, "flee"],
+            [1.0, "gohome"]
+          ],
+          "vomit" : [
+            [0.5, "panic"],
+            [0.5, "flee"]
+          ],
+          "nosebleed" : [
+            [1.0, "panic"],
+            [0.3, "flee"]
+          ],
+          "follow" : [
+            [1.0, "flee"]
+          ],
+          "creepyfollow" : [
+            [1.0, "flee"]
+          ],
+          "default" : [
+            [5.0, "panic"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "clumsy",
+        "additiveReactions" : [
+          "videogameComplete", "console", "wallbutton", "wallswitch",
+          "vendingmachineCollect", "brokenConsole", "handdryer",
+          "furnaceComplete", "campfire", "watercoolerComplete",
+          "sinkComplete", "teleporter", "turret"
+        ],
+        "reactions" : {
+          "videogameComplete" : [
+            [0.5, "explode"]
+          ],
+          "console" : [
+            [0.5, "touchandexplode"]
+          ],
+          "wallbutton" : [
+            [0.5, "touchandexplode"]
+          ],
+          "wallswitch" : [
+            [0.5, "touchandexplode"]
+          ],
+          "vendingmachineCollect" : [
+            [0.5, "touchandexplode"]
+          ],
+          "brokenConsole" : [
+            [0.5, "touchandexplode"]
+          ],
+          "handdryer" : [
+            [0.5, "touchandexplode"]
+          ],
+          "furnaceComplete" : [
+            [0.5, "burn"]
+          ],
+          "campfire" : [
+            [0.5, "burn"]
+          ],
+          "watercoolerComplete" : [
+            [1.0, "wet"]
+          ],
+          "sinkComplete" : [
+            [1.0, "wet"]
+          ],
+          "teleporter" : [
+            [0.5, "touchandexplode"]
+          ],
+          "teleporterComplete" : [
+            [1.0, "vomit"]
+          ],
+          "turret" : [
+            [0.5, "touchandexplode"]
+          ],
+          "gongComplete" : [
+            [1.0, "hurthop"]
+          ],
+          "drumComplete" : [
+            [1.0, "hurthop"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "excited",
+        "additiveReactions" : [
+          "spontaneous", "wink", "love", "comfort", "default"
+        ],
+        "reactions" : {
+          "spontaneous" : [
+            [0.5, "jumpforjoy"],
+            [0.5, "smile"]
+          ],
+          "hasquest" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "nearplayer" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "cheerful" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "excited" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "wink" : [
+            [3.0, "jumpforjoy"]
+          ],
+          "love" : [
+            [3.0, "jumpforjoy"]
+          ],
+          "jumpforjoy" : [
+            [1.0, "smile"],
+            [1.0, "jumpforjoy"],
+            [0.3, "follow"]
+          ],
+          "comfort" : [
+            [3.0, "jumpforjoy"]
+          ],
+          "musicFinished" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "videogameComplete" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "gongComplete" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "drumComplete" : [
+            [1.0, "jumpforjoy"]
+          ],
+          "default" : [
+            [5.0, "jumpforjoy"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "intrusive",
+        "additiveReactions" : [ "default", "wink", "love", "comfort" ],
+        "reactions" : {
+          "nearplayer" : [
+            [1.0, "creepyfollow"]
+          ],
+          "intrusive" : [
+            [1.0, "smile"]
+          ],
+          "quit" : [
+            [1.0, "creepyfollow"]
+          ],
+          "flee" : [
+            [1.0, "creepyfollow"]
+          ],
+          "gohome" : [
+            [1.0, "creepyfollow"]
+          ],
+          "follow" : [
+            [1.0, "smile"]
+          ],
+          "creepyfollow" : [
+            [1.0, "smile"]
+          ],
+          "wink" : [
+            [1.0, "creepyfollow"]
+          ],
+          "love" : [
+            [2.0, "creepyfollow"]
+          ],
+          "default" : [
+            [5.0, "creepyfollow"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "dumb",
+        "additiveReactions" : [
+          "spontaneous"
+        ],
+        "reactions" : {
+          "spontaneous" : [
+            [0.2, "hop"],
+            [0.2, "smile"]
+          ],
+          "hasquest" : [
+            [1.0, "hop"]
+          ],
+          "bored" : [
+            [1.0, "smile"]
+          ],
+          "videogame" : [
+            [1.0, "punch"]
+          ],
+          "videogameComplete" : [
+            [1.0, "smile"],
+            [1.0, "punch"]
+          ],
+          "furnace" : [
+            [1.0, "warmhands"],
+            [1.0, "pokefire"]
+          ],
+          "wallbutton" : [
+            [1.0, "punch"]
+          ],
+          "wallswitch" : [
+            [1.0, "punch"]
+          ],
+          "console" : [
+            [1.0, "punch"]
+          ],
+          "vendingmachineActivate" : [
+            [1.0, "punch"]
+          ],
+          "vendingmachineCollect" : [
+            [1.0, "smile"]
+          ],
+          "vendingmachineConsume" : [
+          ],
+          "vendingmachineComplete" : [
+          ],
+          "watercoolerCollect" : [
+            [1.0, "punch"]
+          ],
+          "watercoolerConsume" : [
+            [1.0, "smile"]
+          ],
+          "watercoolerComplete" : [
+          ],
+          "teleporter" : [
+            [1.0, "pretendbeam"]
+          ],
+          "teleporterComplete" : [
+            [1.0, "smile"]
+          ],
+          "proximitysensor" : [
+            [1.0, "hop"]
+          ],
+          "default" : [
+            [3.0, "oooh"],
+            [2.0, "oh"],
+            [1.0, "nosebleed"],
+            [2.0, "smile"],
+            [2.0, "jumpforjoy"],
+            [1.0, "hop"],
+            [1.0, "neutral"],
+            [1.0, "wink"],
+            [1.0, "love"],
+            [1.0, "vomit"],
+            [0.3, "cry"],
+            [0.3, "annoyed"],
+            [0.3, "laugh"],
+
+            [1.0, "quit"],
+            [2.0, "flee"],
+            [1.0, "gohome"],
+            [1.0, "follow"],
+            [2.0, "chase"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "emo",
+        "additiveReactions" : [
+          "spontaneous"
+        ],
+        "reactions" : {
+          "spontaneous" : [
+            [1.0, "cry"]
+          ],
+          "hasquest" : [
+            [1.0, "cry"]
+          ],
+          "sleep" : [
+            [1.0, "cry"]
+          ],
+          "default" : [
+            [2.0, "cry"],
+            [2.0, "annoyed"],
+            [1.0, "neutral"],
+            [1.0, "wink"],
+            [1.0, "love"],
+            [0.5, "nosebleed"],
+            [0.2, "vomit"],
+
+            [1.0, "quit"],
+            [2.0, "flee"],
+            [1.0, "gohome"]
+          ],
+          "cry" : [
+            [3.0, "cry"],
+            [1.0, "gohome"]
+          ],
+          "wink" : [
+            [1.0, "neutral"]
+          ],
+          "love" : [
+            [2.0, "neutral"]
+          ],
+          "nosebleed" : [
+            [1.0, "oooh"]
+          ],
+          "vomit" : [
+            [1.0, "cry"],
+            [1.0, "gohome"],
+            [1.0, "flee"]
+          ],
+          "gohome" : [
+            [3.0, "quit"],
+            [3.0, "quit"]
+          ],
+          "flee" : [
+            [3.0, "quit"],
+            [1.0, "cry"]
+          ],
+          "chase" : [
+            [1.0, "flee"]
+          ],
+          "bored" : [
+            [1.0, "cry"],
+            [1.0, "gohome"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "fast",
+        "behaviorConfig" : {
+          "alwaysRun" : true,
+          "wanderTime" : 2
+        },
+        "additiveReactions" : [
+        ],
+        "reactions" : {
+          "spontaneous" : [
+            [5.0, "sleep", { "timeRange" : [0.7, 0.9] }],
+            [1.0, "wander"]
+          ],
+          "hasquest" : [
+            [1.0, "hop"]
+          ],
+          "nearnpc" : [
+            [1.0, "chase"]
+          ],
+          "nearplayer" : [
+            [1.0, "chase"]
+          ],
+          "flee" : [
+            [1.0, "chase"]
+          ],
+          "default" : [
+            [2.0, "hop"],
+            [2.0, "jumpforjoy"],
+            [1.0, "smile"],
+            [1.0, "cry"],
+            [1.0, "bored"],
+            [1.0, "neutral"],
+            [1.0, "laugh"],
+            [1.0, "annoyed"],
+            [1.0, "oh"],
+            [1.0, "oooh"],
+            [1.0, "wink"],
+            [1.0, "love"],
+            [0.3, "nosebleed"],
+            [0.3, "vomit"],
+
+            [3.0, "flee"],
+            [3.0, "chase"],
+            [1.0, "quit"],
+            [1.0, "gohome"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "nocturnal",
+        "behaviorConfig" : {
+          "sleepUntil" : [0.5,0.0]
+        },
+        "reactions" : {
+          "spontaneous" : [
+            [5.0, "sleep", { "timeRange" : [0.0, 0.4] }],
+            [1.0, "sit", { "timeRange" : [0.5,0.0]}],
+            [3.0, "watchsleeping", { "timeRange" : [0.7, 0.0] }],
+            [1.0, "wander"]
+          ],
+          "hasquest" : [
+            [1.0, "sleep"]
+          ],
+          "nearplayer" : [
+            [1.0, "gohome", { "timeRange" : [0.5,0.0]}]
+          ],
+          "default" : [
+            [3.0, "bored"],
+            [3.0, "neutral"],
+            [1.0, "oh"],
+            [1.0, "oooh"],
+            [1.0, "wink"],
+            [0.3, "nosebleed"],
+
+            [1.0, "quit"],
+            [4.0, "follow"]
+          ],
+          "cry" : [
+            [1.0, "neutral"]
+          ],
+          "wink" : [
+            [1.0, "smile"],
+            [1.0, "nosebleed"],
+            [1.0, "neutral"]
+          ],
+          "love" : [
+            [1.0, "smile"],
+            [2.0, "wink"]
+          ],
+          "nosebleed" : [
+            [1.0, "wink"],
+            [1.0, "love"]
+          ],
+          "vomit" : [
+            [1.0, "annoyed"],
+            [1.0, "gohome"]
+          ],
+          "flee" : [
+            [3.0, "quit"],
+            [1.0, "neutral"],
+            [1.0, "smile"],
+            [1.0, "chase"]
+          ],
+          "bored" : [
+            [1.0, "annoyed"],
+            [1.0, "neutral"],
+            [1.0, "gohome"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "socialite",
+        "behaviorConfig" : {
+          "chatCooldown" : 10,
+          "nearPlayerCooldown" : 20
+        },
+        "reactions" : {
+          "nearplayer" : [
+            [2.0, "wave"],
+            [2.0, "follow"],
+            [2.0, "jumpforjoy"],
+            [0.5, "wiggledance"],
+            [0.5, "posedance"],
+            [0.5, "armswingdance"]
+          ],
+          "default" : [
+            [1.0, "smile"],
+            [1.0, "hop"],
+            [1.0, "jumpforjoy"],
+            [1.0, "neutral"],
+            [1.0, "laugh"],
+            [1.0, "oh"],
+            [1.0, "oooh"],
+            [1.0, "wink"],
+            [1.0, "love"],
+            [0.3, "nosebleed"],
+            [0.3, "vomit"],
+            [0.3, "cry"],
+            [0.3, "bored"],
+            [0.3, "annoyed"],
+
+            [0.5, "quit"],
+            [0.5, "flee"],
+            [0.5, "gohome"],
+            [0.5, "follow"],
+            [0.5, "chase"]
+          ],
+          "gohome" : [
+            [1.0, "follow"]
+          ],
+          "flee" : [
+            [3.0, "cry"],
+            [1.0, "chase"]
+          ],
+          "chase" : [
+            [1.0, "smile"],
+            [1.0, "gohome"]
+          ],
+          "bored" : [
+            [1.0, "cry"],
+            [1.0, "annoyed"],
+            [1.0, "gohome"]
+          ]
+        }
+      }],
+      [1.0, {
+        "personality" : "ambitious",
+        "behaviorConfig" : {
+          "chatCooldown" : 10,
+          "playCooldown" : 120
+        },
+        "reactions" : {
+          "default" : [
+            [1.0, "smile"],
+            [1.0, "cry"],
+            [1.0, "hop"],
+            [1.0, "jumpforjoy"],
+            [1.0, "laugh"],
+            [1.0, "oh"],
+            [1.0, "oooh"],
+            [1.0, "wink"],
+            [1.0, "love"],
+
+            [4.0, "sell"]
+          ],
+          "gohome" : [
+            [3.0, "cry"],
+            [1.0, "follow"]
+          ],
+          "follow" : [
+            [1.0, "gohome"]
+          ],
+          "chase" : [
+            [1.0, "flee"]
+          ],
+          "flee" : [
+            [1.0, "chase"]
+          ]
+        }
+      }]
+    ],
+    
+    "wander" : {
+      "timeRange" : [2.0, 10.0],
+      "chatDistance" : 4,
+      "indoorTimeOfDayRanges" : [ [0.0, 0.2], [0.5, 1.0] ],
+      "indoorSearchRadius" : 10,
+      "indoorLookaheadDistance" : 4,
+      "moveToTargetTime" : 7.0,
+      "changeDirectionCooldown" : 2,
+      "dropDownChance" : 0,
+      "cooldown" : 10
+    },
+    "returnToPost" : {
+      "moveTime" : 20,
+      "minDistance" : 2
+    },
+    "sit" : {
+      "timeOfDayRanges" : [ [0.6, 1.0], [0.0, 0.2] ],
+      "moveTimeLimit" : 30,
+      "searchRadius" : 10,
+      "sitRadius" : 3,
+      "cooldown" : 60,
+      "timeRange" : [15, 240]
+    },
+    "work" : {
+      "timeOfDayRanges" : [ [0.2, 0.6] ],
+      "tools" : [ [ "hoe", 0.5, 2.0] ],
+      "toolRange" : 3.0,
+      "searchDistance" : 10.0,
+      "timeRange" : [4.0, 6.0],
+      "cooldown" : 10.0
+    },
+
+    "chat" : {
+      "distanceRange" : [2.0, 4.0],
+      "conversations" : [
+        [
+          [2, "blabbering", "idle" ],
+          [1, "idle", "laugh" ],
+          [2, "idle", "blabbering" ],
+          [1, "sad", "idle" ]
+        ],
+        [
+          [2, "idle", "blabbering" ],
+          [2, "blabbering", "happy" ],
+          [1, "wink", "laugh" ],
+          [2, "happy", "happy" ]
+        ],
+        [
+          [2, "idle", "blabbering" ],
+          [2, "blabbering", "blabbering" ],
+          [2, "blabbering", "annoyed" ],
+          [3, "shouting", "shouting" ],
+          [2, "annoyed", "annoyed" ]
+        ]
+      ],
+      "cooldown" : 10
+    },    
+    "dialogMode" : "sequence",
+    "dialog" : {
+      "flee" : {
+        "helpme" :{
+          "default" : [
+            "Reeep Reeep!",
+            "Glbglb! Piff!"
+          ]
+        },
+        "safe" : {
+          "default" : [
+            "Reeep Reeep!",
+            "Glbglb! Piff!"
+          ]
+        }
+      },
+      "breakObject" : {
+          "default" : [
+            "Reeep Reeep!",
+            "Glbglb! Piff!"
+          ]
+        },
+      "greeting" : {
+          "default" : [
+            "*purrs softly*",
+            "*purrs loudly*"
+          ]
+        },
+      "accuse" : {
+          "default" : [
+            "*angry stare*"
+          ]
+        },
+      "alert" : {
+          "default" : [
+            "*unholy screeching*"
+          ]
+        },      
+      "converse" : {
+        "default" : {
+          "default" : [
+            "Reeep Reeep!",
+            "Glbglb! Piff!",          
+            "Steve!",
+            "*purring*",
+            "*stares blankly, incapable of comprehending you*",
+            "*excitedly twitches*",
+            "*sighs*",
+            "*raises its paw as if in solidarity with your cause*",
+            "*demands a treat*"
+          ]
+        },        
+        "fuphotonpoptop" : {
+          "default" : [
+            "Reeep Reeep!",
+            "Glbglb! Piff!",          
+            "Steve!",
+            "*purring*",
+            "*stares blankly, incapable of comprehending you*",
+            "*excitedly twitches*",
+            "*sighs*",
+            "*raises its paw as if in solidarity with your cause*",
+            "*demands a treat*"
+          ]
+        }
+      }
+    }
+  },
+  "humanoidTiming" : {
+
+    "stateCycle" : [1.0, 0.75, 0.75, 0.25, 0.25, 0.50, 0.50, 1.0, 1.0, 1.0],
+    "stateFrames" : [1, 8, 8, 4, 4, 7, 2, 1, 1, 1],
+
+
+    "emoteCycle" : [1.0, 0.3, 0.3, 0.3, 1.0, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 0.5, 0.3, 1],
+    "emoteFrames" : [1, 2, 2, 2, 5, 2, 2, 2, 2, 3, 3, 5, 2, 2]
+  },
+  "items" : {
+    "override" : [
+      [0, [{}] ]
+    ]
+  }
+}

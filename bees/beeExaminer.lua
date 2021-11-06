@@ -42,14 +42,7 @@ function init()
 
 	playerWorkingEfficiency = nil
 	selfWorkingEfficiency = nil
-	status = statusList.waiting
-	progress = 0
-	futureItem = nil
-
-	bonusEssence=0
-	bonusResearch=0
-    bonusProtheon=0
-    bonusGene=0
+	storage.status = storage.status or statusList.waiting
 
 	--these are declared here, but can be moved to object parameters later as needed
 	self.inputSlot=0
@@ -68,7 +61,6 @@ function init()
 	math.randomseed(util.seedTime())
 end
 
-
 function fetchTags(params)
 	local tags={}
 	for k,v in pairs(params or {}) do
@@ -78,15 +70,6 @@ function fetchTags(params)
 	end
 	return tags
 end
-
---[[function matchAny(str,tbl)
-	for _,v in pairs(tbl) do
-		if v==str then
-			return true
-		end
-	end
-	return false
-end]]
 
 function checkTags(item)
 	if (not item) then return end
@@ -103,153 +86,147 @@ function checkTags(item)
 	return buffer
 end
 
-function resetStats()
-	itemCount=0
-	bonusEssence=0
-	bonusResearch=0
-	bonusProtheon=0
-	itemsDropped=false
-	progress=0
-	futureItem=nil
+function startProcessing(itm,itmParams,lastTag)
+	if lastTag~="drone" then itm.count=1 end
+	if world.containerConsume(entity.id(),itm) then
+		storage.processTag=lastTag
+		storage.currentItem=itm
+		storage.mergedParams=itmParams
+
+		storage.futureItem=copy(storage.currentItem)
+		if tagList[storage.processTag].overrideCategory then storage.futureItem.parameters.category = tagList[storage.processTag].overrideCategory end
+		storage.futureItem.parameters.genomeInspected = true
+
+		storage.progress=0
+		storage.multiplier=0
+		storage.status = "^cyan;"..storage.progress.."%"
+	end
+end
+
+function finishProcessing()
+	storage.status=statusList[storage.processTag.."ID"]
+
+	local protheonRank=(storage.mergedParams.protheonRank or 0)
+	local geneRank=(storage.mergedParams.geneRank or 0)
+	local essenceRank=(storage.mergedParams.essenceRank or 0)
+	local researchRank=(storage.mergedParams.researchRank or 0)
+
+	local bonusEssence=0
+	local bonusGene=0
+	local bonusProtheon=0
+	local bonusResearch=0
+
+	local itemCount=storage.futureItem.count or 1
+
+	for i=1,storage.multiplier do
+		local randCheck = math.random(tagList[storage.processTag].range or 100)
+
+		if (randCheck == self.researchSlot) and (tagList[storage.processTag].currencies.bonusResearch) then
+			bonusResearch=bonusResearch+((tagList[storage.processTag].currencies.bonusResearch+microscopeRank)*itemCount) -- Gain research as this is used
+		elseif (randCheck == self.essenceSlot) and (tagList[storage.processTag].currencies.bonusEssence) then
+			bonusEssence=bonusEssence+((tagList[storage.processTag].currencies.bonusEssence+microscopeRank)*itemCount) -- Gain essence as this is used
+		elseif (randCheck == self.protheonSlot) and (tagList[storage.processTag].currencies.bonusProtheon) then
+			bonusProtheon=bonusProtheon+((tagList[storage.processTag].currencies.bonusProtheon+microscopeRank)*itemCount) -- Gain protheon as this is used
+		elseif (randCheck == self.protheonSlot) and (tagList[storage.processTag].currencies.bonusGene) then
+			bonusGene=bonusGene+((tagList[storage.processTag].currencies.bonusGene+microscopeRank)*itemCount) -- Gain protheon as this is used
+		end
+	end
+	storage.multiplier=0
+
+	storage.bonusResearch=bonusResearch+(itemCount*(researchRank))
+	storage.bonusGene=bonusGene+(itemCount*(geneRank))
+	storage.bonusEssence=bonusEssence+(itemCount*(essenceRank))
+	storage.bonusProtheon=bonusProtheon+(itemCount*(protheonRank))
+	storage.progress=0
+	storage.mergedParams=nil
+	storage.processTag=nil
+	storage.finishedProcessing=true
 end
 
 function update(dt)
 	if playerUsing or selfWorking then
-		local currentItem = world.containerItemAt(entity.id(), self.inputSlot)
-		local currentItemParameters=currentItem and mergedParams(root.itemConfig(currentItem))
-		local lastTag=checkTags(currentItemParameters)
-
-		if currentItem == nil then
-			status = statusList.waiting
-		elseif (futureItem and ((futureItem.name~=currentItem.name) or (futureItem.count~=currentItem.count))) then
-			--no hot-swapping exploit allowed
-			status = statusList.waiting
-			resetStats()
-		elseif not lastTag then
-			status = statusList.invalid
-			resetStats()
-		elseif futureItem and (currentItem.parameters.genome and futureItem.parameters.genome and (currentItem.parameters.genome~=futureItem.parameters.genome)) then
-			--no hot-swapping exploit allowed
-			status = statusList.waiting
-			resetStats()
-		else
-			if not futureItem then futureItem=currentItem end
-
-			if lastTag then
-				if currentItem.parameters.genomeInspected or (futureItem.parameters.genomeInspected and itemsDropped) then
-					status=statusList[lastTag.."ID"]
-
-					shoveTimer=(shoveTimer or 0.0) + dt
-					if not (shoveTimer >= 1.0) then return else shoveTimer=0.0 end
-					local singleCountFutureItem=copy(futureItem)
-					singleCountFutureItem.count=1
-
-					local slotItem=world.containerItemAt(entity.id(),self.outputSlot)
-					local singleCountSlotItem=slotItem and copy(slotItem)
-					if singleCountSlotItem then
-						singleCountSlotItem.count=1
-					end
-
-					if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
-
-					if lastTag=="drone" then
-						if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
-						world.containerTakeAt(entity.id(), self.inputSlot)
-					else
-						if not nudgeItem(singleCountFutureItem,self.outputSlot,slotItem) then return end
-						world.containerTakeNumItemsAt(entity.id(), self.inputSlot,1)
-					end
-
-
-					futureItem=nil
+		if storage.currentItem then
+			if not storage.finishedProcessing then
+				if playerUsing then
+					storage.progress = math.min(100,storage.progress + (playerWorkingEfficiency * dt))
 				else
-					if playerUsing then
-						progress = math.min(100,progress + (playerWorkingEfficiency * dt))
-					else
-						progress = math.min(100,progress + (selfWorkingEfficiency * dt))
-					end
-					progress = math.floor(progress * 100) * 0.01
-
-					if progress >= 100 then
-						status = "^cyan;"..progress.."%"
-
-						if tagList[lastTag].overrideCategory then futureItem.parameters.category = tagList[lastTag].overrideCategory end
-						futureItem.parameters.genomeInspected = true
-
-						local singleCountFutureItem=copy(futureItem)
-						singleCountFutureItem.count=1
-
-						local slotItem=world.containerItemAt(entity.id(),self.outputSlot)
-						local singleCountSlotItem=slotItem and copy(slotItem)
-						if singleCountSlotItem then
-							singleCountSlotItem.count=1
-						end
-
-						if slotItem and not compare(singleCountSlotItem,singleCountFutureItem) then return end
-
-						if lastTag=="drone" then
-							if not nudgeItem(futureItem,self.outputSlot,slotItem) then return end
-							world.containerTakeAt(entity.id(), self.inputSlot)
-						else
-							if not nudgeItem(singleCountFutureItem,self.outputSlot,slotItem) then return end
-							world.containerTakeNumItemsAt(entity.id(), self.inputSlot,1)
-						end
-
-						--local rank=(currentItemParameters.rank or 0)
-						local protheonRank=(currentItemParameters.protheonRank or 0)
-						local geneRank=(currentItemParameters.geneRank or 0)
-						local essenceRank=(currentItemParameters.essenceRank or 0)
-						local researchRank=(currentItemParameters.researchRank or 0)
-						--prev., the 'rank' parameter on the items did nothing. it has been split, and it adds a fixed amount per item after researching.
-						--also, config.getParameter gets info from the calling object.
-						--near the start of update is a currentItemParameters declaration to use.
-
-						bonusResearch=bonusResearch+(itemCount*(researchRank))
-						bonusGene=bonusGene+(itemCount*(geneRank))
-						bonusEssence=bonusEssence+(itemCount*(essenceRank))
-						bonusProtheon=bonusProtheon+(itemCount*(protheonRank))
-
-						if bonusResearch>0 then
-							shoveItem({name="fuscienceresource",count=bonusResearch},self.researchSlot)
-						end
-						if bonusEssence>0 then
-							shoveItem({name="essence",count=bonusEssence},self.essenceSlot)
-						end
-						if bonusProtheon>0 then
-							shoveItem({name="fuprecursorresource",count=bonusProtheon},self.protheonSlot)
-						end
-						if bonusGene>0 then
-							shoveItem({name="fugeneticmaterial",count=bonusGene},self.protheonSlot)
-						end
-						resetStats()
-						itemsDropped=true
-
-						status=statusList[lastTag.."ID"]
-
-					else
-						status = "^cyan;"..progress.."%"
-						-- ***** chance to gain currencies *****
-						local randCheck = math.random(tagList[lastTag].range or 100)
-						itemCount=((lastTag=="drone") and currentItem.count) or 1
-
-						if (randCheck == self.researchSlot) and (tagList[lastTag].currencies.bonusResearch) then
-							bonusResearch=bonusResearch+((tagList[lastTag].currencies.bonusResearch+microscopeRank)*itemCount) -- Gain research as this is used
-						elseif (randCheck == self.essenceSlot) and (tagList[lastTag].currencies.bonusEssence) then
-							bonusEssence=bonusEssence+((tagList[lastTag].currencies.bonusEssence+microscopeRank)*itemCount) -- Gain essence as this is used
-						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusProtheon) then
-							bonusProtheon=bonusProtheon+((tagList[lastTag].currencies.bonusProtheon+microscopeRank)*itemCount) -- Gain protheon as this is used
-						elseif (randCheck == self.protheonSlot) and (tagList[lastTag].currencies.bonusGene) then
-							bonusGene=bonusGene+((tagList[lastTag].currencies.bonusGene+microscopeRank)*itemCount) -- Gain protheon as this is used
-						end
-					end
+					storage.progress = math.min(100,storage.progress + (selfWorkingEfficiency * dt))
+				end
+				storage.multiplier=storage.multiplier+1
+				storage.progress = math.floor(storage.progress * 100) * 0.01
+				storage.status = "^cyan;"..storage.progress.."%"
+				if storage.progress >= 100 then
+					finishProcessing()
 				end
 			else
-				status = statusList.invalid
+				if storage.futureItem then
+					if not shoveLoop(dt,storage.futureItem,self.outputSlot) then return end
+					storage.futureItem=nil
+				else
+					if storage.bonusResearch>0 then
+						shoveItem({name="fuscienceresource",count=storage.bonusResearch},self.researchSlot)
+						storage.bonusResearch=0
+					end
+					if storage.bonusEssence>0 then
+						shoveItem({name="essence",count=storage.bonusEssence},self.essenceSlot)
+						storage.bonusEssence=0
+					end
+					if storage.bonusProtheon>0 then
+						shoveItem({name="fuprecursorresource",count=storage.bonusProtheon},self.protheonSlot)
+						storage.bonusProtheon=0
+					end
+					if storage.bonusGene>0 then
+						shoveItem({name="fugeneticmaterial",count=storage.bonusGene},self.protheonSlot)
+						storage.bonusGene=0
+					end
+					storage.currentItem=nil
+					storage.finishedProcessing=false
+				end
+			end
+		else
+			local currentItem = world.containerItemAt(entity.id(), self.inputSlot)
+			if currentItem == nil then
+				storage.status = statusList.waiting
+			else
+				local currentItemParameters=currentItem and mergedParams(root.itemConfig(currentItem))
+				local lastTag=checkTags(currentItemParameters)
+				if not lastTag then
+					storage.status = statusList.invalid
+					if not shoveLoop(dt,currentItem,self.outputSlot) then return end
+					world.containerTakeAt(entity.id(), self.inputSlot)
+				else
+					if currentItem.parameters.genomeInspected then
+						storage.status=statusList[lastTag.."ID"]
+						if not shoveLoop(dt,currentItem,self.outputSlot) then return end
+						world.containerTakeAt(entity.id(), self.inputSlot)
+					else
+						startProcessing(currentItem,currentItemParameters,lastTag)
+					end
+				end
 			end
 		end
 	else
 		script.setUpdateDelta(-1)
 	end
+end
+
+function shoveLoop(dt,currentItem,slot)
+	shoveTimer=(shoveTimer or 0.0) + dt
+	if not (shoveTimer >= 1.0) then
+		return false
+	else
+		shoveTimer=0.0
+	end
+	if (nudgeCount or 0)>3 then
+		shoveItem(currentItem,slot)
+	else
+		if not nudgeItem(currentItem,slot) then
+			nudgeCount=(nudgeCount or 0)+1
+			return false
+		end
+	end
+	nudgeCount=0
+	return true
 end
 
 function shoveItem(item,slot)
@@ -268,14 +245,20 @@ function shoveItem(item,slot)
 	end
 end
 
-function nudgeItem(item,slot,slotItem)
-	--assumptive: compare(item,slotItem) prior to usage returns true, or slotItem is nil
+function nudgeItem(item,slot)
+	local slotItem=world.containerItemAt(entity.id(),self.outputSlot)
 	if not item then return end
-
 	if not slotItem then
 		world.containerPutItemsAt(entity.id(),item,slot)
 		return true
 	end
+	if slotItem.name~=item.name then return false end
+
+	local cItem=copy(item)
+	local cSlotItem=copy(slotItem)
+	cItem.count=1
+	cSlotItem.count=1
+	if not compare(cItem,cSlotItem) then return false end
 
 	local slotItemConfig=slotItem and root.itemConfig(slotItem)
 	if slotItemConfig then
@@ -305,12 +288,42 @@ function paneClosed()
 end
 
 function getStatus()
-	if status then return status end
+	if storage.status then return storage.status end
 end
 
 function currentlyWorking()
 	for _,label in pairs(statusList) do
-		if status==label then return false end
+		if storage.status==label then return false end
 	end
 	return true
+end
+
+function die()
+	if storage.finishedProcessing then
+		if storage.bonusResearch>0 then
+			world.spawnItem({name="fuscienceresource",count=storage.bonusResearch},entity.position())
+			storage.bonusResearch=0
+		end
+		if storage.bonusEssence>0 then
+			world.spawnItem({name="essence",count=storage.bonusEssence},entity.position())
+			storage.bonusEssence=0
+		end
+		if storage.bonusProtheon>0 then
+			world.spawnItem({name="fuprecursorresource",count=storage.bonusProtheon},entity.position())
+			storage.bonusProtheon=0
+		end
+		if storage.bonusGene>0 then
+			storage.bonusGene=0
+			world.spawnItem({name="fugeneticmaterial",count=storage.bonusGene},entity.position())
+		end
+		if storage.futureItem then
+			storage.futureItem=nil
+			world.spawnItem(storage.futureItem,entity.position())
+		end
+		storage.currentItem=nil
+	elseif storage.currentItem then
+		world.spawnItem(currentItem,entity.position())
+		storage.currentItem=nil
+		storage.futureItem=nil
+	end
 end

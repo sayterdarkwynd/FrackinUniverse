@@ -1,0 +1,43 @@
+{
+  "objectName" : "fuguardanger",
+  "colonyTags" : ["wired"],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "This switch looks suspicious.",
+  "shortdescription" : "Tiny Wall Switch",
+  "race" : "generic",
+
+  "category" : "wire",
+  "price" : 0,
+
+  "inventoryIcon" : "/objects/wired/tinywallswitch/tinywallswitchicon.png",
+  "orientations" : [
+    {
+      "dualImage" : "/objects/wired/tinywallswitch/tinywallswitch.png:<color>.off",
+      "imagePosition" : [0, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/wired/fuguardanger/fuguardanger.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animation" : "/objects/wired/switch/switchtoggle.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallswitch.ogg" ],
+      "off" : [ "/sfx/objects/tinywallswitch.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "switch" : "/objects/wired/tinywallswitch/tinywallswitch.png"
+  },
+  "animationPosition" : [0, 0],
+
+  "outputNodes" : [ [0, 0] ],
+  "smashOnBreak" : true
+}
