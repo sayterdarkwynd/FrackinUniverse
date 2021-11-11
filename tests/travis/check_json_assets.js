@@ -117,6 +117,7 @@ var globOptions = {
 		'tests',
 		'a_modders',
 		'_previewimage',
+		'**/*.gun', // legacy files (JSON, but are not loaded by the game)
 		'**/*.{lua,png,xcf,wav,ogg,txt,md,ase,aseprite,tsx,aup,ico,tmx,pdn,zip,au,old,unused}'
 	],
 	caseSensitiveMatch: false
@@ -151,6 +152,11 @@ filenames.forEach( ( filename ) => {
 		}
 
 		if ( itemCode ) {
+			if ( knownItemCodes.has( itemCode ) && itemCode !== 'weaponupgradeanvil2' ) {
+				console.log( filename, 'Duplicate item ID: ' + itemCode );
+				failedCount ++;
+			}
+
 			knownItemCodes.add( itemCode );
 
 			if ( filename.startsWith( 'items/generic/produce' ) ) {
