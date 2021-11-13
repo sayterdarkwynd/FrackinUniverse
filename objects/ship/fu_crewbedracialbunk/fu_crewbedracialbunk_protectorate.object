@@ -1,10 +1,10 @@
 {
-  "objectName" : "protectorateshipbed",
+  "objectName" : "fu_crewbedracialbunk_protectorate",
   "printable" : false,
   "colonyTags" : ["protectorate", "bed"],
-  "rarity" : "Common",
-  "description" : "A standard Protectorate ship bunk bed.",
-  "shortdescription" : "P. Ship Wall Bunk",
+  "rarity" : "Legendary",
+  "description" : "A standard Protectorate ship bunk bed. ^yellow;Crew +1^reset;. Counts as a deed. ^red;BYOS Only^reset;. Extract to return Crew Bunk.",
+  "shortdescription" : "P. Crew Bunk Bed",
   "race" : "generic",
   "category" : "furniture",
   "price" : 0,
@@ -21,34 +21,42 @@
   "sitFlipDirection" : false,
   "sitOrientation" : "lay",
   "sitAngle" : 90,
-  "sitCoverImage" : "/objects/ship/shipbeds/protectorateshipbed/protectorateshipbedcover.png",
+  "sitCoverImage" : "/objects/ship/shipbeds/protectorateshipbed2/protectorateshipbed2cover.png",
   "sitEmote" : "sleep",
   "sitStatusEffects" : [
-    "bed3"
+    "bed1"
   ],
   "sitEffectEmitters" : [ "sleepbubbles" ],
 
 
-  "inventoryIcon" : "protectorateshipbedicon.png",
+  "inventoryIcon" : "/objects/ship/shipbeds/protectorateshipbed2/protectorateshipbed2icon.png",
   "orientations" : [
     {
-      "image" : "protectorateshipbed.png:<color>",
-      "imagePosition" : [-24, 0],
-      "sitPosition" : [-8, 10],
+      "image" : "/objects/ship/shipbeds/protectorateshipbed2/protectorateshipbed2.png:<color>",
+      "imagePosition" : [0, 0],
+      "sitPosition" : [18, 13],
       "spaceScan" : 0.1,
       "flipImages" : true,
-      "anchors" : [ "background" ],
+      "anchors" : [ "bottom" ],
       "direction" : "right",
       "collision" : "platform"
     },
     {
-      "image" : "protectorateshipbed.png:<color>",
-      "imagePosition" : [-24, 0],
-      "sitPosition" : [-8, 10],
+      "image" : "/objects/ship/shipbeds/protectorateshipbed2/protectorateshipbed2.png:<color>",
+      "imagePosition" : [0, 0],
+      "sitPosition" : [-38, 13],
       "spaceScan" : 0.1,
-      "anchors" : [ "background" ],
+      "anchors" : [ "bottom" ],
       "direction" : "left",
       "collision" : "platform"
     }
-  ]
+  ],
+  
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "crewSize" : 1
+  },
+  "byosOnly" : true,
+  "isDeed" : true
 }
