@@ -230,6 +230,8 @@ for ( var extractionsFilename of [
 	'objects/minibiome/elder/embalmingtable/embalmingtable_recipes.config',
 	'objects/power/fu_liquidmixer/fu_liquidmixer_recipes.config'
 ] ) {
+	var seenInputs = new Set();
+
 	allAssets.get( extractionsFilename ).forEach( ( extractorRecipe ) => {
 		for ( var itemCode of Object.keys( extractorRecipe.outputs ) ) {
 			if ( !knownItemCodes.has( itemCode ) ) {
@@ -238,12 +240,20 @@ for ( var extractionsFilename of [
 			}
 		}
 
-		for ( var itemCode of Object.keys( extractorRecipe.inputs ) ) {
+		var inputCodes = Object.keys( extractorRecipe.inputs );
+		for ( var itemCode of inputCodes ) {
 			if ( !knownItemCodes.has( itemCode ) && !externalExtractionInputs.has( itemCode ) ) {
 				console.log( extractionsFilename, 'Unknown item as extraction input: ' + itemCode );
 				failedCount ++;
 			}
 		}
+
+		var inputsId = inputCodes.sort().join( ',' );
+		if ( seenInputs.has( inputsId ) ) {
+			console.log( extractionsFilename, 'Two (or more) extractions with the same inputs: ' + inputsId );
+			failedCount ++;
+		}
+		seenInputs.add( inputsId );
 	} );
 }
 
@@ -261,9 +271,8 @@ for ( var [ groupName, groupRecipes ] of Object.entries( allAssets.get( 'objects
 			}
 		}
 
-
 		if ( !knownItemCodes.has( inputCode ) && !externalExtractionInputs.has( inputCode ) ) {
-			console.log( extractionsFilename, 'Unknown item as centrifuge input: ' + inputCode );
+			console.log( 'Unknown item as centrifuge input: ' + inputCode );
 			failedCount ++;
 		}
 	}
