@@ -83,7 +83,7 @@ end
 
 function upgradeCost(itemConfig,type,targetLvl)
 	local costValue=0
-	local itemLvl = (itemConfig.parameters.level or itemConfig.config.level) or 1
+	local itemLvl = math.floor((itemConfig.parameters.level or itemConfig.config.level) or 1)
 	if not targetLvl then
 		targetLvl = itemLvl
 	end
