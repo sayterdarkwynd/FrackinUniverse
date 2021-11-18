@@ -174,6 +174,23 @@ filenames.forEach( ( filename ) => {
 			}
 		}
 
+		// Ensure that description/shortdescription don't have non-closed color codes (e.g. ^yellow;).
+		for ( var fieldName of [ 'description', 'shortdescription' ] ) {
+			var fieldValue = data[fieldName];
+			if ( fieldValue ) {
+				var hasColor = false;
+				for ( var match of fieldValue.matchAll( /\^([^;^]+);/g ) ) {
+					var color = match[1].toLowerCase();
+					hasColor = !( [ 'reset', 'gray', 'white', '#ffffff' ].includes( color ) );
+				}
+
+				if ( hasColor ) {
+					console.log( filename, 'Missing ^reset; in ' + fieldName +': ' + fieldValue );
+					failedCount ++;
+				}
+			}
+		}
+
 		allAssets.set( filename, data );
 	}
 
