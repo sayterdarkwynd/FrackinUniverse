@@ -9,10 +9,16 @@ const fs = require( 'fs' ),
 	glob = require( 'fast-glob' ),
 	stripJsonComments = require( 'strip-json-comments' );
 
-// Having these item codes in .recipe files, extractions, etc. won't be considered an error.
+// Having these item codes in .recipe files, extractions outputs, etc. won't be considered an error.
 const listsOfAllowedUnknownItemCodes = [
 	'data/vanilla_item_codes.txt',
 	'data/expected_unknown_item_codes.txt'
+];
+
+// Having these item codes in extraction inputs won't be considered an error.
+// (e.g. items not from FU+vanilla that have extractions)
+const listsOfAllowedUnknownExtractionInputs = [
+	'data/expected_unknown_extraction_inputs.txt'
 ];
 
 // Having these items codes in unlocks of Research Tree won't be considered an error.
@@ -101,7 +107,10 @@ function addContextToJsonError( exception, sourceCode ) {
 function readAllLines( filenames ) {
 	var lines = [];
 	filenames.forEach( ( filename ) => {
-		var moreLines = fs.readFileSync( __dirname + '/' + filename ).toString().split( /[\r\n]+/ ).filter( ( x ) => x !== '' );
+		var moreLines = fs.readFileSync( __dirname + '/' + filename ).toString().split( /[\r\n]+/ )
+			.filter( function ( x ) {
+				return x !== '' && !x.startsWith( '#' ) && !x.startsWith( '//' );
+			} );
 		lines.push( ...moreLines );
 	} );
 	return lines;
@@ -117,6 +126,7 @@ var globOptions = {
 		'tests',
 		'a_modders',
 		'_previewimage',
+		'**/*.gun', // legacy files (JSON, but are not loaded by the game)
 		'**/*.{lua,png,xcf,wav,ogg,txt,md,ase,aseprite,tsx,aup,ico,tmx,pdn,zip,au,old,unused}'
 	],
 	caseSensitiveMatch: false
@@ -151,11 +161,33 @@ filenames.forEach( ( filename ) => {
 		}
 
 		if ( itemCode ) {
+			if ( knownItemCodes.has( itemCode ) && itemCode !== 'weaponupgradeanvil2' ) {
+				console.log( filename, 'Duplicate item ID: ' + itemCode );
+				failedCount ++;
+			}
+
 			knownItemCodes.add( itemCode );
 
 			if ( filename.startsWith( 'items/generic/produce' ) ) {
 				// Produce items (e.g. Aquapod) shouldn't cause a warning if used in unlocks of Agriculture nodes.
 				craftableItemCodes.add( itemCode );
+			}
+		}
+
+		// Ensure that description/shortdescription don't have non-closed color codes (e.g. ^yellow;).
+		for ( var fieldName of [ 'description', 'shortdescription' ] ) {
+			var fieldValue = data[fieldName];
+			if ( fieldValue ) {
+				var hasColor = false;
+				for ( var match of fieldValue.matchAll( /\^([^;^]+);/g ) ) {
+					var color = match[1].toLowerCase();
+					hasColor = !( [ 'reset', 'white', '#ffffff' ].includes( color ) );
+				}
+
+				if ( hasColor ) {
+					console.log( filename, 'Missing ^reset; in ' + fieldName +': ' + fieldValue );
+					failedCount ++;
+				}
 			}
 		}
 
@@ -169,6 +201,8 @@ filenames.forEach( ( filename ) => {
 console.log( '\n' );
 
 // Load the list of unknown items that shouldn't be considered an error if we find them in recipes.
+var externalExtractionInputs = new Set( readAllLines( listsOfAllowedUnknownExtractionInputs ) );
+
 // These are mostly vanilla items. Also includes items from other mods that have extractions, etc.
 readAllLines( listsOfAllowedUnknownItemCodes ).forEach( ( itemCode ) => {
 	knownItemCodes.add( itemCode );
@@ -213,6 +247,8 @@ for ( var extractionsFilename of [
 	'objects/minibiome/elder/embalmingtable/embalmingtable_recipes.config',
 	'objects/power/fu_liquidmixer/fu_liquidmixer_recipes.config'
 ] ) {
+	var seenInputs = new Set();
+
 	allAssets.get( extractionsFilename ).forEach( ( extractorRecipe ) => {
 		for ( var itemCode of Object.keys( extractorRecipe.outputs ) ) {
 			if ( !knownItemCodes.has( itemCode ) ) {
@@ -220,6 +256,21 @@ for ( var extractionsFilename of [
 				failedCount ++;
 			}
 		}
+
+		var inputCodes = Object.keys( extractorRecipe.inputs );
+		for ( var itemCode of inputCodes ) {
+			if ( !knownItemCodes.has( itemCode ) && !externalExtractionInputs.has( itemCode ) ) {
+				console.log( extractionsFilename, 'Unknown item as extraction input: ' + itemCode );
+				failedCount ++;
+			}
+		}
+
+		var inputsId = inputCodes.sort().join( ',' );
+		if ( seenInputs.has( inputsId ) ) {
+			console.log( extractionsFilename, 'Two (or more) extractions with the same inputs: ' + inputsId );
+			failedCount ++;
+		}
+		seenInputs.add( inputsId );
 	} );
 }
 
@@ -235,6 +286,11 @@ for ( var [ groupName, groupRecipes ] of Object.entries( allAssets.get( 'objects
 				console.log( 'Unknown item in centrifuge recipe: ' + itemCode );
 				failedCount ++;
 			}
+		}
+
+		if ( !knownItemCodes.has( inputCode ) && !externalExtractionInputs.has( inputCode ) ) {
+			console.log( 'Unknown item as centrifuge input: ' + inputCode );
+			failedCount ++;
 		}
 	}
 }
@@ -257,6 +313,15 @@ for ( var smelterFilename of [
 	for ( var itemCode of possibleOutputs ) {
 		if ( !knownItemCodes.has( itemCode ) ) {
 			console.log( smelterFilename, 'Unknown item in smelter recipe: ' + itemCode );
+			failedCount ++;
+		}
+	}
+
+	var possibleInputs = new Set(
+		Object.keys( smelterConf.inputsToOutputs ).concat( Object.keys( smelterConf.bonusOutputs ) ) );
+	for ( var itemCode of possibleInputs ) {
+		if ( !knownItemCodes.has( itemCode ) && !externalExtractionInputs.has( itemCode ) ) {
+			console.log( smelterFilename, 'Unknown item as smelter input: ' + itemCode );
 			failedCount ++;
 		}
 	}
