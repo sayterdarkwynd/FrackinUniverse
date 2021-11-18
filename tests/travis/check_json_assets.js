@@ -181,7 +181,7 @@ filenames.forEach( ( filename ) => {
 				var hasColor = false;
 				for ( var match of fieldValue.matchAll( /\^([^;^]+);/g ) ) {
 					var color = match[1].toLowerCase();
-					hasColor = !( [ 'reset', 'gray', 'white', '#ffffff' ].includes( color ) );
+					hasColor = !( [ 'reset', 'white', '#ffffff' ].includes( color ) );
 				}
 
 				if ( hasColor ) {
