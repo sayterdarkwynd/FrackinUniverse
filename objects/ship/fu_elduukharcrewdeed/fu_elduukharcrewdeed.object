@@ -3,7 +3,7 @@
   "colonyTags" : [ "elduukhar","common" ],
   "rarity" : "Common",
   "description" : "Place in an enclosed building with at least one door, a light source and some furniture to gain ^yellow;Crew +1^reset;! ^red;BYOS Only^reset;",
-  "shortdescription" : "^yellow;Eld'uukhar Crew Deed",
+  "shortdescription" : "^yellow;Eld'uukhar Crew Deed^reset;",
   "race" : "villager",
   "printable" : false,
   "category" : "spawner",
@@ -29,11 +29,11 @@
   "animation" : "/objects/spawner/colonydeed/colonydeed.animation",
 
   "animationParts" : {
-    "deed" : "fu_elduukharcrewdeed.png"
+    "Deed^reset;" : "fu_elduukharcrewdeed.png"
   },
   "animationPosition" : [-8, -8],
 
-  "deed" : {
+  "Deed^reset;" : {
 	"maxPerimeter" : 500, //scan limit
 	"scanDelay" : 5, //in seconds
 	"interactive" : true, 
@@ -45,7 +45,7 @@
 	"requireFilledBackground" : true,
 	"grumbleText" : {
 	  "enclosedArea" : "Area not enclosed",
-	  "otherDeed" : "Another deed in room",
+	  "otherDeed^reset;" : "Another deed in room",
 	  "tagCriteria" : "Requires <tagAmount> more tiles of <tagName> objects",
 	  "notShip" : "Must be placed on your ship",
 	  "notByos" : "BYOS only"
@@ -55,5 +55,5 @@
     "crewSize" : 1
   },
   "byosOnly" : true,
-  "isDeed" : true
+  "isDeed^reset;" : true
 }
