@@ -45,6 +45,9 @@ function update(dt)
     if status.resource("energy") < 2 then
       status.modifyResource("health", ((-self.dps * dt)/12))
     end
+    if self.dpsRatio and self.dpsRatio > 0.35 then
+      status.setResourcePercentage("energyRegenBlock", 1.0)
+    end
     status.modifyResource("energy", ((-self.dps * dt)*1.05))
   else
     status.modifyResource("health", -self.dps * dt)
@@ -61,8 +64,8 @@ function update(dt)
     animator.resetTransformationGroup("smoke")
     animator.rotateTransformationGroup("smoke", vec2.angle(distance))
 
-    local damageDistanceRatio = 1 - math.min(1.0, math.max(0.0, vec2.mag(distance) / self.damageDistance))
-    self.dps = damageDistanceRatio * self.maxDps
+    self.dpsRatio = 1 - math.min(1.0, math.max(0.0, vec2.mag(distance) / self.damageDistance))
+    self.dps = self.dpsRatio * self.maxDps
 
     local effectDistance = interp.linear(erchiusRatio, self.effectDistance[1], self.effectDistance[2])
     local effectDistanceRatio = 1 - math.min(1.0, math.max(0.0, vec2.mag(distance) / effectDistance))
