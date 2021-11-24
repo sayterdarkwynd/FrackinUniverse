@@ -1,65 +1,62 @@
 {
-  "name" : "ffbiomeelectric1",
-  "blockingStat" : "biomeelectricImmunity",
+	"name": "ffbiomeelectric1",
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "electricResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.2,
-    "immunityStats" : [
-      "biomeelectricImmunity",
-      "fuelectricresistance",
-      "electricblock1"
-    ],
+	"effectConfig": {
+		"resistanceTypes": {
+			"electricResistance": 1.0
+		},
+		"resistanceThreshold": 0.2,
+		"immunityStats": [
+			"biomeelectricImmunity"
+		],
 
-    "healthDrain" : 0,
-    "hungerDrain" : 0,
-    "energyDrain" : 0,
-    "speedPenalty" : 0,
-    "jumpPenalty" : 0,
+		"healthDrain": 0,
+		"hungerDrain": 0,
+		"energyDrain": 0,
+		"speedPenalty": 0,
+		"jumpPenalty": 0,
 
-    "debuffRate" : 2,
-    "debuffStartDelay" : 0,
-    "debuffs" : {
-      "energyRegenPercentageRate" : {
-        "amount" : -0.3,
-        "constant" : true
-      },
-      "energyRegenBlockTime" : {
-        "amount" : 0.75,
-        "constant" : true
-      }
-    },
+		"debuffRate": 2,
+		"debuffStartDelay": 0,
+		"debuffs": {
+			"energyRegenPercentageRate": {
+				"amount": -0.3,
+				"constant": true
+			},
+			"energyRegenBlockTime": {
+				"amount": 0.75,
+				"constant": true
+			}
+		},
 
-    "modifiers" : {
-      "wet" : 1.2,
-      "windy" : 1.2
-    },
+		"modifiers": {
+			"wet": 1.2,
+			"windy": 1.2
+		},
 
-    "messages" : {
-      "intro" : "ffbiomeelectric",
-      "wet" : "ffbiomeelectricwater"
-    },
+		"messages": {
+			"intro": "ffbiomeelectric",
+			"wet": "ffbiomeelectricwater"
+		},
 
-    "configPath" : "/stats/effects/fu_weathereffects/new/electric/ffbiomeelectric1.statuseffect",
+		"configPath": "/stats/effects/fu_weathereffects/new/electric/ffbiomeelectric1.statuseffect",
 
-    "shockParams" : {
-      "baseHealth" : 5,
-      "randomHealth" : 10,
-      "baseEnergy" : 0.1,
-      "randomEnergy" : 0.6,
-      "baseDelay" : 3,
-      "randomDelay" : 17
-    }
-  },
+		"shockParams": {
+			"baseHealth": 5,
+			"randomHealth": 10,
+			"baseEnergy": 0.1,
+			"randomEnergy": 0.6,
+			"baseDelay": 3,
+			"randomDelay": 17
+		}
+	},
 
-  "defaultDuration" : 5,
+	"defaultDuration": 5,
 
-  "scripts" : [ "electricweathernew.lua" ],
+	"scripts": ["electricweathernew.lua"],
 
-  "animationConfig" : "electricweathernew.animation",
+	"animationConfig": "electricweathernew.animation",
 
-  "label" : "Electrical Storm (Resist: ^#f477ff;Electric^reset;)",
-  "icon" : "/interface/statuses/electric1.png"
+	"label": "Electrical Storm (Resist: ^#f477ff;Electric^reset;)",
+	"icon": "/interface/statuses/electric1.png"
 }
