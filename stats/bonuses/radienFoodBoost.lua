@@ -39,7 +39,7 @@ function update(dt)
 	self.armorTimer = (self.armorTimer or 0) + dt
 
 	if self.armorTimer >= 50 then
-		self.armorTotal = math.min(25,self.armorTotal + 1)
+		self.armorTotal = math.min(25,(self.armorTotal or 0) + 1)
 		status.setPersistentEffects("radienArmor", {{stat = "protection", amount = 1+ self.armorTotal }})
 		self.armorTimer = 0
 	end
