@@ -611,7 +611,7 @@ function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
 		mergeBuffer.critChance = critChance + (mergeBuffer.level*modifier) -- increase Crit Chance
 	end
 
-	--crit chance
+	--crit bonus
 	local critBonus=(mergeBuffer.critBonus) or itemConfig.config.critBonus
 	if critBonus then
 		local modifier=0.5
