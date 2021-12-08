@@ -7,7 +7,11 @@ end
 
 function isSafeLiquid()
 	-- get liquid name and compare to list
-	local vehicleLiquid=root.liquidName(mcontroller.liquidId()) -- yes this works when there is no lquid too
+	local liquidId = mcontroller.liquidId()
+	if not self.liquidCache[liquidId] then
+		self.liquidCache[liquidId] = root.liquidName(liquidId)
+	end
+	local vehicleLiquid=self.liquidCache[liquidId]
 	for x, value in pairs(self.liquidList) do
 		if value == vehicleLiquid then
 			return not self.liquidUnsafe
@@ -91,6 +95,7 @@ function init()
 	self.ownerKey = config.getParameter("ownerKey")
 	vehicle.setPersistent(self.ownerKey)
 
+	self.liquidCache = {}
 	self.liquidList = config.getParameter("safeLiquids")
 	if not self.liquidList then
 		self.liquidList = config.getParameter("unsafeLiquids", {"lava", "corelava"})
