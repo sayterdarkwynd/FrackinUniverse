@@ -219,6 +219,9 @@ for ( var tech of allAssets.get( 'interface/scripted/techshop/techshop.config' )
 	craftableItemCodes.add( tech.item );
 }
 
+// To keep track of duplicate "inputs+outputs" in .recipe files, see below.
+var seenCraftingInputOutputs = new Set();
+
 // Check if any crafting recipes have unknown item codes.
 for ( var [ filename, data ] of allAssets ) {
 	if ( !filename.endsWith( '.recipe' ) ) {
@@ -236,6 +239,31 @@ for ( var [ filename, data ] of allAssets ) {
 	// Remember that output item is craftable.
 	// (used later to detect Research Tree unlocks of non-craftable items)
 	craftableItemCodes.add( data.output.item || data.output.name );
+
+	// Keep track of "inputs+outputs" in .recipe files (including quantities),
+	// because it is an error for 2+ recipe files to have the same "inputs+outputs"
+	// (the game will ignore duplicate recipes, only one of them will be used).
+	var inputsOutputsId = data.input.concat( [
+		Object.assign( { isOutput: 1 }, data.output )
+	] ).map( ( elem ) => {
+		let id = ( elem.item || elem.name ) + ':' + ( elem.count || 1 );
+
+		if ( elem.parameters ) {
+			id += ':' + JSON.stringify( Object.entries( elem.parameters ).sort() );
+		}
+
+		if ( elem.isOutput ) {
+			id = '_Output<<<' + id + '>>>';
+		}
+
+		return id;
+	} ).sort().join( ',' );
+
+	if ( seenCraftingInputOutputs.has( inputsOutputsId ) ) {
+		console.log( filename, 'Two (or more) crafting recipes with the same inputs+outputs: ' + inputsOutputsId );
+		failedCount ++;
+	}
+	seenCraftingInputOutputs.add( inputsOutputsId );
 }
 
 // Check if outputs of extractions have unknown item codes.
