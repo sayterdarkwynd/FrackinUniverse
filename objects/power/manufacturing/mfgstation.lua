@@ -90,6 +90,7 @@ function init()
 	storage.requiredPower = config.getParameter('isn_requiredPower')*self.mintick--<40>/s.
 	storage.crafting = storage.crafting or false
 	storage.output = storage.output or {}
+	self.recipesForItem={}
 	animate()
 end
 
@@ -130,7 +131,8 @@ function scanRecipes(sample)
 		end
 	end
 
-	local recipeScan = root.recipesForItem(sample.name)
+	local recipeScan = self.recipesForItem[sample.name] or root.recipesForItem(sample.name)
+	if recipeScan and not self.recipesForItem[sample.name] then self.recipesForItem=recipeScan end --tentative optimization: caching values in the lua script, instead of relying on the engine to do it. +ramUse, -hddUse
 	if recipeScan then --sb.logInfo("RecipeScan: %s", recipeScan)
 		for index,recipe in pairs(recipeScan) do
 			local recipeInputs = {recipe.input}
