@@ -139,6 +139,7 @@ function scanRecipes(sample)
 			local stackOut = recipe.output
 			sampleOutput[stackOut.name] = stackOut.count
 
+			--note that SB autoconverts any items that are in the material inputs tab to currencyinputs, if they are a currency.
 			if not recipe.currencyInputs or util.tableSize(recipe.currencyInputs) == 0 then
 				local groupFail
 				--ignore any recipes that take a currency
