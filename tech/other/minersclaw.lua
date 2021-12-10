@@ -1,7 +1,8 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
-local foodThreshold=10
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=10--used by checkFood
 
 function init()
 	self.rechargeDirectives = "?fade=CC22CCFF=0.1"
@@ -9,10 +10,6 @@ function init()
 	self.rechargeEffectTimer = 0
 	self.flashCooldownTimer = 0
 	self.halted = 0
-end
-
-function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
 end
 
 function activeFlight(direction)

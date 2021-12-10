@@ -1,5 +1,6 @@
 require "/scripts/vec2.lua"
-local foodThreshold=15
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=15--used by checkFood
 
 function init()
 	initCommonParameters()
@@ -25,10 +26,6 @@ function uninit()
 	animator.stopAllSounds("recharge")
 	status.clearPersistentEffects("glide")
 	deactivate()
-end
-
-function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
 end
 
 function checkStance()

@@ -1,19 +1,12 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 function init()
 	self.healingRate = 1.008 / config.getParameter("healTime", 220)
 	script.setUpdateDelta(10)
 	bonusHandler=effect.addStatModifierGroup({})
-end
-
-function nighttimeCheck()
-	return world.timeOfDay() > 0.5 -- true if night
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
 end
 
 function update(dt)

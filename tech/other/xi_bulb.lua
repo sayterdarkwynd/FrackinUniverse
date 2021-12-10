@@ -1,5 +1,6 @@
 require "/scripts/vec2.lua"
-local foodThreshold=10
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=10--used by checkFood
 
 function init()
 	initCommonParameters()
@@ -22,10 +23,6 @@ end
 
 function uninit()
 	deactivate()
-end
---matt damon
-function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
 end
 
 function checkStance()

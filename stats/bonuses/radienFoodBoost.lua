@@ -1,3 +1,6 @@
+require "/stats/effects/fu_statusUtil.lua"
+local foodThresholdPercent=0.5--used by checkFoodPercent
+
 function init()
 	modifiers=config.getParameter("modifiers",{})
 end
@@ -31,10 +34,6 @@ function setValues()
 	status.setPersistentEffects("radienPower",buffer)
 end
 
-function checkFoodPercent()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resourcePercentage("food")) or 0.5
-end
-
 function update(dt)
 	self.armorTimer = (self.armorTimer or 0) + dt
 
@@ -54,9 +53,4 @@ end
 function uninit()
 	status.clearPersistentEffects("radienPower")
 	status.clearPersistentEffects("radienArmor")
-end
-
-function round(num, idp)
-  local mult = 10^(idp or 0)
-  return math.floor(num * mult + 0.5) / mult
 end
