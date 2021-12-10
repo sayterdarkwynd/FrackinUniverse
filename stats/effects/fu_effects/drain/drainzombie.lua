@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
 	animator.setParticleEmitterEmissionRate("healing", config.getParameter("emissionRate", 3))
@@ -20,16 +22,6 @@ function init()
 
 	self.queryDamageSince = 0
 end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	local lightLevel = math.min(world.lightLevel(position),1.0)
-	lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
-end
-
 
 function resetDrain()
 	self.cooldownTimer = self.cooldown
