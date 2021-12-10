@@ -355,6 +355,17 @@ for ( var smelterFilename of [
 	}
 }
 
+// Check if shops of spacestations have unknown item codes.
+var itemsSoldAtStations = new Set(
+	Object.values( allAssets.get( 'interface/scripted/spaceStation/spaceStationData.config' ).shop.potentialStock ).flat()
+);
+for ( var itemCode of itemsSoldAtStations ) {
+	if ( !knownItemCodes.has( itemCode ) ) {
+		console.log( 'Unknown item sold at spacestations: ' + itemCode );
+		failedCount ++;
+	}
+}
+
 // Check if TreasurePools have unknown item codes.
 for ( var [ filename, data ] of allAssets ) {
 	if ( !filename.match( /\.treasurepools(|\.patch)$/ ) ) {
