@@ -5,15 +5,10 @@ weaponBonus={
 	{stat = "powerMultiplier", effectiveMultiplier = 1.25}
 }
 
-armorBonus={}
-
 function init()
 	setSEBonusInit(setName)
 	effectHandlerList.weaponBonusHandle=effect.addStatModifierGroup({})
-
 	checkWeapons()
-
-	effectHandlerList.armorBonusHandle=effect.addStatModifierGroup(armorBonus)
 end
 
 function update(dt)
@@ -21,8 +16,6 @@ function update(dt)
 		status.removeEphemeralEffect("glowyellow2")
 		effect.expire()
 	else
-		effect.setStatModifierGroup(
-		effectHandlerList.armorBonusHandle,armorBonus)
 		checkWeapons()
 		status.addEphemeralEffect("glowyellow2")
 		setRegen(0.006)
