@@ -15,7 +15,7 @@ inverse causes the value to grow as hunger does, rather than shrink. step clamps
 
 function setValues()
 	local buffer={}
-	local foodPercent=checkFoodPercent()
+	local foodPercent=checkFoodPercent() or foodThresholdPercent
 	for statName,data in pairs(modifiers) do
 		local val=data.value
 		local fVal=foodPercent
