@@ -43,9 +43,9 @@ function update(dt)
 			self.queryDamageSince = nextStep
 			for _, notification in ipairs(damageNotifications) do
 				if notification.healthLost > 0 and notification.sourceEntityId ~= notification.targetEntityId then
-		triggerDrain(notification.healthLost * self.drainMultiplier)
-		self.cooldownTimer = self.cooldown
-		break
+					triggerDrain(notification.healthLost * self.drainMultiplier)
+					self.cooldownTimer = self.cooldown
+					break
 				end
 			end
 		end
@@ -57,8 +57,8 @@ function update(dt)
 		if self.triggerDrain then
 			self.drainTimer = self.drainTimer - dt
 			if self.drainTimer <= 0 then
-		animator.setParticleEmitterActive("healing", false)
-		self.triggerDrain = false
+				animator.setParticleEmitterActive("healing", false)
+				self.triggerDrain = false
 			end
 		end
 	end
