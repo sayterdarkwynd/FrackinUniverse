@@ -186,8 +186,16 @@ function fire(orbIndex)
 		end
 
         -- FU adds energy drain to these otherwise OP with crit weapons
-        self.energyCost = 4 * config.getParameter("level", 1)
+        self.tempEnergy = (config.getParameter("level", 1) + 7) -- base Magnorb cost
+        --self.magnorbBonus = self.tempEnergy * status.stat("magnorbMastery") -- energy cost reduction
+
+        --if status.stat("magnorbMastery") > 0 then
+        --	self.energyCost = self.tempEnergy * status.stat("magnorbMastery")
+    	--else
+    	self.energyCost = self.tempEnergy 
+    	--end
         status.overConsumeResource("energy", self.energyCost)
+
 	end
 end
 
