@@ -18,11 +18,11 @@ function nighttimeCheck()
 end
 
 function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
+	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food"))
 end
 
 function checkFoodPercent()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resourcePercentage("food")) or foodThresholdPercent
+	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resourcePercentage("food"))
 end
 
 function round(num, idp)

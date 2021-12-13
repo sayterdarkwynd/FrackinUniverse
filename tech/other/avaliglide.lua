@@ -29,10 +29,6 @@ function uninit()
 	deactivate()
 end
 
-function checkFood()
-	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
-end
-
 function checkStance()
 	if self.pressDown and self.active2 == 0 then
 		animator.playSound("slowfallMode")
@@ -114,7 +110,7 @@ function update(args)
 				mcontroller.controlParameters(self.fallingParameters2 or {})
 				mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), self.maxFallSpeed2 or -100))
 			end
-			if checkFood() > foodThreshold then
+			if (checkFood() or foodThreshold) > foodThreshold then
 				status.addEphemeralEffects{{effect = "foodcost", duration = 0.1}}
 			else
 				status.overConsumeResource("energy", (self.energyCostPerSecond or 0)*args.dt)

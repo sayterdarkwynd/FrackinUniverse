@@ -27,7 +27,7 @@ function update(args)
 		self.timer = math.max(0, self.timer - args.dt)
 	end
 	-- Stop if hungry
-	if checkFood() < foodThreshold then
+	if (checkFood() or foodThreshold) < foodThreshold then
 		deactivate()
 	end
 	-- Consume food

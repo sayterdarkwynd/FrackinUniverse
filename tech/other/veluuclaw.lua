@@ -74,7 +74,7 @@ function update(args)
 	if args.moves["special1"] and self.firetimer == 0 and not (primaryItem and root.itemHasTag(primaryItem, "weapon")) and not (altItem and root.itemHasTag(altItem, "weapon")) then
 		local upDown=((args.moves["down"] and -1) or 0) + ((args.moves["up"] and 1) or 0)
 		local leftRight=((args.moves["left"] and -1) or 0) + ((args.moves["right"] and 1) or 0)
-		local foodValue=checkFood()
+		local foodValue=checkFood() or foodThreshold
 		if foodValue > 10 then
 			status.addEphemeralEffects{{effect = "foodcostclaw", duration = 0.01}}
 		else

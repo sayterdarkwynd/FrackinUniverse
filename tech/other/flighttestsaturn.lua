@@ -70,7 +70,7 @@ function update(args)
 		mcontroller.controlApproachVelocity(self.boostVelocity, 30)
 		-- end boost
 
-		if checkFood() > foodThreshold then
+		if (checkFood() or foodThreshold) > foodThreshold then
 			if not self.downVal and not self.leftVal and not self.rightVal and not self.upVal then
 				status.setPersistentEffects("glide", {{stat = "gliding", amount = 1},{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}})
 			else

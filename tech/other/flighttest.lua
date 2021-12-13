@@ -52,7 +52,7 @@ function update(args)
 				self.timer = 1
 			end
 		end
-		if checkFood() > foodThreshold then
+		if (checkFood() or foodThreshold) > foodThreshold then
 			status.addEphemeralEffects{{effect = "foodcost", duration = 0.1}}
 		else
 			status.overConsumeResource("energy", (self.energyCostPerSecond or 0)*args.dt)

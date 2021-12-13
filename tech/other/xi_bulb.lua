@@ -91,7 +91,7 @@ function update(args)
 	end
 
 	-- make sure they are fed enough
-	local foodValue=checkFood()
+	local foodValue=checkFood() or foodThreshold
 	-- if fed, move to the effect
 	if self.active then
 		if self.bombTimer > 0 then

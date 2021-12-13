@@ -54,7 +54,7 @@ function update(args)
 	end
 
 	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) and self.firetimer == 0 then
-		local foodValue=checkFood()
+		local foodValue=checkFood() or foodThreshold
 		if foodValue > foodThreshold then
 			status.addEphemeralEffects{{effect = "foodcostshadow", duration = 0.5}}
 		else
