@@ -354,7 +354,11 @@ end
 function checkCrewLimits(recruitUuid)
 	if not recruitSpawner:canGainCrew(recruitUuid) then
 		-- Can't gain any more crew members
-		player.radioMessage("crewLimit")
+		if player.hasCompletedQuest("fu_byos") then
+			player.radioMessage("crewLimitByos")
+		else
+			player.radioMessage("crewLimit")
+		end
 		logCrewSize()
 		return false
 	end

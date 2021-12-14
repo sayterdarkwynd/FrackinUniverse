@@ -33,9 +33,9 @@ function applyDamageRequest(damageRequest)
 	if damageRequest.damageSourceKind ~= "falling" then
 		if status.resourcePositive("health") and self.hitInvulnerabilityTime > 0 then
 			return {}
-	elseif self.hitInvulnerabilityTime > 0 and not status.resourcePositive("health") then
-		self.hitInvulnerabilityTime = 0
-	end
+		elseif self.hitInvulnerabilityTime > 0 and not status.resourcePositive("health") then
+			self.hitInvulnerabilityTime = 0
+		end
 	end
 
 	local damage = 0
@@ -134,22 +134,22 @@ function update(dt)
 		local curYPosition = mcontroller.yPosition()
 		local yPosChange = curYPosition - (self.lastYPosition or curYPosition)
 
-	if self.fallDistance > minimumFallDistance and -self.lastYVelocity > minimumFallVel and mcontroller.onGround() and not inLiquid() then
-		--fall damage is proportional to max health, with 100.0 being the player's standard
-		local healthRatio = status.stat("maxHealth") / 100.0
+		if self.fallDistance > minimumFallDistance and -self.lastYVelocity > minimumFallVel and mcontroller.onGround() and not inLiquid() then
+			--fall damage is proportional to max health, with 100.0 being the player's standard
+			--local healthRatio = status.stat("maxHealth") / 100.0
 
 			local damage = (self.fallDistance - minimumFallDistance) * fallDistanceDamageFactor
 			damage = damage * (1.0 + (world.gravity(mcontroller.position()) - baseGravity) * gravityDiffFactor)
-			damage = damage * healthRatio
+			--damage = damage * healthRatio
+			damage = damage * status.stat("fallDamageMultiplier")
 			status.applySelfDamageRequest({
-					damageType = "IgnoresDef",
-					damage = damage,
-					damageSourceKind = "falling",
-					sourceEntityId = entity.id()
-				})
+				damageType = "IgnoresDef",
+				damage = damage,
+				damageSourceKind = "falling",
+				sourceEntityId = entity.id()})
 		end
 
-	if mcontroller.yVelocity() < -minimumFallVel and not mcontroller.onGround() then
+		if mcontroller.yVelocity() < -minimumFallVel and not mcontroller.onGround() then
 			self.fallDistance = self.fallDistance + -yPosChange
 		else
 			self.fallDistance = 0

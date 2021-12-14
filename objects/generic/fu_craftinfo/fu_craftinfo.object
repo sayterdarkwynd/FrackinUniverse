@@ -22,20 +22,34 @@
 	"inventoryIcon" : "icon.png",
 	"orientations" : [
 		{
+			"image" : "fu_craftinfoleft.png",
+			"imagePosition" : [-16, -8],
+			"spaceScan" : 0.1,
+			"direction" : "left",
+			"anchors" : [ "background" ],
+
+      "animation" : "fu_craftinfo.animation",
+      "animationParts" : {
+        "bg" : "fu_craftinfoleft.png",
+        "fg" : "fu_craftinfoleftlit.png"
+      },
+      "animationPosition" : [-16, -8]
+		},
+		{
 			"image" : "fu_craftinfo.png",
 			"imagePosition" : [-16, -8],
 			"spaceScan" : 0.1,
 			"direction" : "right",
-			"anchors" : [ "background" ]
+			"anchors" : [ "background" ],
+
+      "animation" : "fu_craftinfo.animation",
+      "animationParts" : {
+        "bg" : "fu_craftinfo.png",
+        "fg" : "fu_craftinfolit.png"
+      },
+      "animationPosition" : [-16, -8]
 		}
 	],
-
-	"animation" : "fu_craftinfo.animation",
-	"animationParts" : {
-		"bg" : "fu_craftinfo.png",
-		"fg" : "fu_craftinfolit.png"
-	},
-	"animationPosition" : [-16, -8],
 
 	"openSounds" : [ "/sfx/objects/console_generic_switchon.ogg" ],
 	"closeSounds" : [ "/sfx/objects/console_generic_switchoff.ogg" ],

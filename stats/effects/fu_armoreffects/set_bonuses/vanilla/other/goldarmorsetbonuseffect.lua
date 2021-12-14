@@ -6,7 +6,7 @@ weaponBonus={
 }
 
 armorBonus={
-	{stat = "fuCharisma", effectiveMultiplier = 0.15},
+	{stat = "fuCharisma", baseMultiplier = 1.15},
 	{stat = "grit", amount=0.3}
 }
 
