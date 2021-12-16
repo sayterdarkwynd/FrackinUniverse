@@ -24,7 +24,8 @@ function update(dt)
 end
 
 function uninit()
-	if teleported then return end
+	if teleported or (status.resource("health")<=0) then return end
+	teleported=true
 	for k,v in pairs(self.resources) do
 		status.setResource(k,v)
 		if self.lockedResources[k] then status.setResourceLocked(k,true) end
