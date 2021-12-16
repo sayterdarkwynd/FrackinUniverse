@@ -16,7 +16,13 @@ class JsonAssetsTest {
 		// These tables are populated by various load*() methods below
 		this.knownItemCodes = new Set(); // [ itemCode1, itemCode2, ... ]
 		this.craftableItemCodes = new Set();
-		this.knownAssets = new Map(); // { filename1: recipeData1, ... }
+		this.knownAssets = new Map(); // { filename1: assetData1, ... }
+
+		this.knownLiquids = new Map(); // { liquidId: liquidData1, ... }
+		this.knownMaterials = new Map(); // { materialId: materialData1, ... }
+		this.knownMaterialsByName = new Map(); // { materialName: materialData1, ... }
+
+		this.placeableMaterials = new Set(); // { materialId1, materialId2, ... }
 	}
 
 	/**
@@ -25,7 +31,12 @@ class JsonAssetsTest {
 	 * @return {boolean} True if all checks were successful, false otherwise.
 	 */
 	runTest() {
-		var totalAssetCount = this.loadAssets();
+		var totalAssetCount;
+
+		this.loadMockedVanillaAssets();
+
+		totalAssetCount = this.loadAssets();
+		this.analyzeAssets();
 
 		this.loadExceptionLists();
 		this.loadTricorderTechs();
@@ -37,6 +48,7 @@ class JsonAssetsTest {
 		this.checkSpaceStations();
 		this.checkTreasurePools();
 		this.checkTreeUnlocks();
+		this.checkLiquidInteractions();
 
 		process.stdout.write( 'Checked ' + totalAssetCount + ' JSON files. Errors: ' + this.failedCount + '.\n' );
 		return this.failedCount === 0;
@@ -50,6 +62,21 @@ class JsonAssetsTest {
 	fail( ...errorMessage ) {
 		console.log( ...errorMessage );
 		this.failedCount++;
+	}
+
+	/**
+	 * Load shortened information about some vanilla assets (e.g. lists of liquids and materials).
+	 */
+	loadMockedVanillaAssets() {
+		[
+			'data/vanilla_liquids.json',
+			'data/vanilla_materials.json'
+		].forEach( ( pathToMock ) => {
+			var mocks = JSON.parse( fs.readFileSync( __dirname + '/' + pathToMock ).toString() );
+			for ( var [ filename, data ] of mocks ) {
+				this.knownAssets.set( filename, data );
+			}
+		} );
 	}
 
 	/**
@@ -78,6 +105,33 @@ class JsonAssetsTest {
 				return;
 			}
 
+			this.knownAssets.set( filename, data );
+		} );
+
+		// Completed progress bar.
+		console.log( '\n' );
+		return totalAssetCount;
+	}
+
+	/**
+	 * After all assets are loaded, perform most basic checks on their contents,
+	 * populate this.knownItemCodes, etc.
+	 */
+	analyzeAssets() {
+		for ( var [ filename, data ] of this.knownAssets ) {
+			var filenamePaths = filename.split( '.' ),
+				fileExtension = filenamePaths.pop(),
+				patchedExtension = null;
+
+			if ( fileExtension === 'patch' ) {
+				// We don't have full vanilla assets here, so we can't apply patches completely,
+				// but some parts of them may still be analyzed below.
+				patchedExtension = filenamePaths.pop();
+			}
+
+			// Add "sourceFilename" to all assets (for use in error messages).
+			Object.defineProperty( data, 'sourceFilename', { value: filename } );
+
 			// Ensure that description/shortdescription don't have non-closed color codes (e.g. ^yellow;).
 			for ( var fieldName of [ 'description', 'shortdescription' ] ) {
 				var fieldValue = data[fieldName];
@@ -96,7 +150,7 @@ class JsonAssetsTest {
 
 			// Remember if this is an item.
 			var itemCode;
-			if ( filename.endsWith( '.codex' ) && data.id ) {
+			if ( fileExtension === 'codex' && data.id ) {
 				itemCode = data.id + '-codex';
 			} else {
 				itemCode = data.itemName || data.objectName;
@@ -113,14 +167,55 @@ class JsonAssetsTest {
 					// Produce items (e.g. Aquapod) shouldn't cause a warning if used in unlocks of Agriculture nodes.
 					this.craftableItemCodes.add( itemCode );
 				}
+
+				if ( data.materialId ) {
+					this.placeableMaterials.add( data.materialId );
+				}
+
+				// No more checks for items.
+				continue;
 			}
 
-			this.knownAssets.set( filename, data );
-		} );
+			// Remember if this is a liquid or material.
+			if ( fileExtension === 'liquid' ) {
+				this.knownLiquids.set( data.liquidId, data );
+				continue;
+			}
 
-		// Completed progress bar.
-		console.log( '\n' );
-		return totalAssetCount;
+			if ( fileExtension === 'material' ) {
+				this.knownMaterials.set( data.materialId, data );
+				this.knownMaterialsByName.set( data.materialName, data );
+
+				continue;
+			}
+
+			// Partially apply some patches.
+			if ( !patchedExtension || ![ 'liquid', 'material' ].includes( patchedExtension ) ) {
+				continue;
+			}
+
+			var dataToPatch = this.knownAssets.get( filename.replace( /\.patch$/, '' ) );
+			if ( !dataToPatch ) {
+				continue;
+			}
+
+			for ( let instruction of data ) {
+				if ( instruction.op !== 'add' && instruction.op !== 'replace' ) {
+					continue;
+				}
+
+				if ( instruction.path === '/interactions/-' ) {
+					if ( !dataToPatch.interactions ) {
+						dataToPatch.interactions = [];
+					}
+					dataToPatch.interactions.push( instruction.value );
+				} else if ( instruction.path === '/liquidInteractions' ) {
+					dataToPatch.liquidInteractions = instruction.value;
+				} else if ( instruction.path === '/itemDrop' ) {
+					dataToPatch.itemDrop = instruction.value;
+				}
+			}
+		}
 	}
 
 	/**
@@ -170,6 +265,13 @@ class JsonAssetsTest {
 		// Having these items codes in unlocks of Research Tree won't be considered an error.
 		this.readAllLines( [ 'data/expected_noncraftables_in_unlocks.txt' ] ).forEach( ( itemCode ) => {
 			this.craftableItemCodes.add( itemCode );
+		} );
+
+		// These vanilla materials can be placed by player (using a block item).
+		this.readAllLines( [
+			'data/vanilla_placeable_materials.txt'
+		] ).forEach( ( materialIdAsString ) => {
+			this.placeableMaterials.add( parseInt( materialIdAsString ) );
 		} );
 	}
 
@@ -420,6 +522,145 @@ class JsonAssetsTest {
 					}
 				}
 			} );
+		}
+	}
+
+	/**
+	 * Check that all in-world mixings are possible in Liquid Mixer.
+	 */
+	checkLiquidInteractions() {
+		// These liquids don't need to be in sync with Liquid Mixer recipes.
+		var nonPlaceableLiquids = new Set( [
+			8, // corelava
+			62, // hydrogen,
+			63, // funitrogengas
+			64, // poisongas
+			65, // fuquicksand
+			66, // metallichydrogen
+			69 // sludge
+		] );
+
+		// Load recipes of Liquid Mixer.
+		var mixerInteractions = new Map();
+		this.knownAssets.get( 'objects/power/fu_liquidmixer/fu_liquidmixer_recipes.config' ).forEach( ( mixing ) => {
+			let interactionId = Object.keys( mixing.inputs ).sort().join( '+' );
+			mixerInteractions.set( interactionId, Object.keys( mixing.outputs )[0] );
+		} );
+
+		var interactionsToCheck = [];
+
+		// Check liquids.
+		for ( let liquid of this.knownLiquids.values() ) {
+			( liquid.interactions || [] ).forEach( ( interaction ) => {
+				interactionsToCheck.push( {
+					firstLiquid: liquid.liquidId,
+					secondLiquid: interaction.liquid,
+					resultLiquid: interaction.liquidResult,
+					resultMaterialName: interaction.materialResult,
+					filename: liquid.sourceFilename
+				} );
+			} );
+		}
+
+		// Check materials.
+		for ( let material of this.knownMaterials.values() ) {
+			( material.liquidInteractions || [] ).forEach( ( interaction ) => {
+				interactionsToCheck.push( {
+					firstLiquid: interaction.liquidId,
+					material: material.materialId,
+					resultMaterial: interaction.transformMaterialId,
+					filename: material.sourceFilename
+				} );
+			} );
+		}
+
+		// { "itemCode1+itemCode2": Set { possibleOutputItem1, possibleOutputItem2, ... }, ... }
+		var seenInWorldInteractions = new Map();
+
+		interactionsToCheck.forEach( ( interaction ) => {
+			if ( interaction.resultLiquid === 0 ) {
+				// Unnecessary recipes "<something> + Core Lava = 0 (nothing)", can be ignored.
+				return;
+			}
+
+			let inputItems = [],
+				filename = interaction.filename;
+
+			let liquid = this.knownLiquids.get( interaction.firstLiquid );
+			if ( !liquid ) {
+				this.fail( filename, 'Unknown liquid in interaction: ' + interaction.firstLiquid );
+				return;
+			}
+			inputItems.push( liquid.itemDrop );
+
+			let secondIngredient =
+				( interaction.secondLiquid && this.knownLiquids.get( interaction.secondLiquid ) ) ||
+				( interaction.material && this.knownMaterials.get( interaction.material ) );
+			if ( !secondIngredient ) {
+				this.fail( filename, 'Unknown second ingredient in interaction: ', interaction );
+				return;
+			}
+			inputItems.push( secondIngredient.itemDrop );
+
+			let resultMaterial = ( interaction.resultMaterial && this.knownMaterials.get( interaction.resultMaterial ) ) ||
+				( interaction.resultMaterialName && this.knownMaterialsByName.get( interaction.resultMaterialName ) );
+			let result = resultMaterial || ( interaction.resultLiquid && this.knownLiquids.get( interaction.resultLiquid ) );
+			if ( !result ) {
+				this.fail( filename, 'Unknown result in interaction: ', interaction );
+				return;
+			}
+
+			let outputItem = result.itemDrop;
+			if ( !inputItems[0] || !inputItems[1] || !outputItem ) {
+				// Some of the liquids/materials drop nothing when mined.
+				return;
+			}
+
+			if ( resultMaterial && inputItems.includes( outputItem ) ) {
+				// This is of the cosmetic interactions like "jellystone -> fublueslimestone",
+				// where the resulting material yields the same item as the input material.
+				// This is not usable in Liquid Mixer (which is for changing item and/or quantity of liquid).
+				return;
+			}
+
+			if ( nonPlaceableLiquids.has( interaction.firstLiquid ) ||
+				nonPlaceableLiquids.has( interaction.secondLiquid )
+			) {
+				// Liquids that can't be placed by player (Quicksand, Sludge, etc.) are rarely available and
+				// are not usable in automation, so they don't need to be in sync with Liquid Mixer recipes.
+				return;
+			}
+
+			if ( secondIngredient.materialId && !this.placeableMaterials.has( secondIngredient.materialId ) ) {
+				// Mixing requires a non-placeable material as input, ignoring.
+				return;
+			}
+
+			let interactionId = inputItems.sort().join( '+' );
+			let mixerOutputItem = mixerInteractions.get( interactionId );
+			if ( !mixerOutputItem ) {
+				this.fail( filename, 'Liquid interaction is only possible in-world, not in Mixer: ' +
+					interactionId + '=' + outputItem );
+			} else if ( mixerOutputItem !== outputItem ) {
+				this.fail( filename, 'Liquid interaction inconsistency: ' + interactionId +
+					': in-world: ' + outputItem + ', in Mixer: ' + mixerOutputItem );
+			}
+
+			// Remember this in-world interaction. Used later to detect "A+B=C, B+A=D, C!=D" inconsistencies.
+			var alternateOutputs = seenInWorldInteractions.get( interactionId );
+			if ( !alternateOutputs ) {
+				alternateOutputs = {};
+				seenInWorldInteractions.set( interactionId, alternateOutputs );
+			}
+			alternateOutputs[filename] = outputItem;
+		} );
+
+		for ( let [ interactionId, possibleOutputs ] of seenInWorldInteractions ) {
+			let differentOutputs = new Set( Object.values( possibleOutputs ) );
+			if ( differentOutputs.size > 1 ) {
+				this.fail( 'Inconsistent in-world mixing: ' + interactionId +
+					' may result in: ' + JSON.stringify( possibleOutputs ) );
+			}
 		}
 	}
 
