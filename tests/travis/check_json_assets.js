@@ -362,6 +362,14 @@ class JsonAssetsTest {
 					}
 				}
 
+				// Catch typos like { inputs: { A: 1, B: 1 }, outputs: { A: 1 } } <-- should be: outputs: { A: 2 }
+				var outputEntries = Object.entries( extractorRecipe.outputs ).map( ( arr ) => JSON.stringify( arr ) );
+				for ( var inputEntry of Object.entries( extractorRecipe.inputs ) ) {
+					if ( outputEntries.includes( JSON.stringify( inputEntry ) ) ) {
+						this.fail( extractionsFilename, 'Extraction has the same item in inputs and outputs: ', extractorRecipe );
+					}
+				}
+
 				var inputsId = inputCodes.sort().join( ',' );
 				if ( seenInputs.has( inputsId ) ) {
 					this.fail( extractionsFilename, 'Two (or more) extractions with the same inputs: ' + inputsId );
@@ -577,6 +585,9 @@ class JsonAssetsTest {
 		// { "itemCode1+itemCode2": Set { possibleOutputItem1, possibleOutputItem2, ... }, ... }
 		var seenInWorldInteractions = new Map();
 
+		// [ 'string1_to_add_to_mixer_recipes', 'string2_to_add', ... ]
+		var recommendedMixerRecipesToAdd = new Set();
+
 		interactionsToCheck.forEach( ( interaction ) => {
 			if ( interaction.resultLiquid === 0 ) {
 				// Unnecessary recipes "<something> + Core Lava = 0 (nothing)", can be ignored.
@@ -639,11 +650,27 @@ class JsonAssetsTest {
 			let interactionId = inputItems.sort().join( '+' );
 			let mixerOutputItem = mixerInteractions.get( interactionId );
 			if ( !mixerOutputItem ) {
+				// In-world interaction exists, but we are missing Liquid Mixer recipe.
+				// For convenience, form a JSON line ready for copy-pasting into [fu_liquidmixer_recipes.config].
+				recommendedMixerRecipesToAdd.add( JSON.stringify( {
+					inputs: {
+						[inputItems[0]]: 1,
+						[inputItems[1]]: 1
+					},
+					outputs: {
+						[outputItem]: interaction.resultLiquid ? 2 : 1
+					}
+				} ) );
+
 				this.fail( filename, 'Liquid interaction is only possible in-world, not in Mixer: ' +
 					interactionId + '=' + outputItem );
 			} else if ( mixerOutputItem !== outputItem ) {
-				this.fail( filename, 'Liquid interaction inconsistency: ' + interactionId +
-					': in-world: ' + outputItem + ', in Mixer: ' + mixerOutputItem );
+				// We tolerate Lava+Oil inconsistency, because it's a vanilla mixing,
+				// and we probably shouldn't patch array entries like "/interactions/1" without a better reason.
+				if ( interactionId !== 'liquidlava+liquidoil' ) {
+					this.fail( filename, 'Liquid interaction inconsistency: ' + interactionId +
+						': in-world: ' + outputItem + ', in Mixer: ' + mixerOutputItem );
+				}
 			}
 
 			// Remember this in-world interaction. Used later to detect "A+B=C, B+A=D, C!=D" inconsistencies.
@@ -661,6 +688,11 @@ class JsonAssetsTest {
 				this.fail( 'Inconsistent in-world mixing: ' + interactionId +
 					' may result in: ' + JSON.stringify( possibleOutputs ) );
 			}
+		}
+
+		if ( recommendedMixerRecipesToAdd.size > 0 ) {
+			console.log( 'Recommendation: you might want to add these recipes to Liquid Mixer:\n\t' +
+				[...recommendedMixerRecipesToAdd].sort().join( ',\n\t' ) );
 		}
 	}
 
