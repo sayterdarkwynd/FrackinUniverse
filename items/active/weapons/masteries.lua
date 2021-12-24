@@ -486,6 +486,7 @@ function masteries.listenerBonuses(notifications,dt)
 	if not masteries.vars.inflictedHitCounter then masteries.vars.inflictedHitCounter=0 end
 	if not masteries.vars.hitTimer then masteries.vars.hitTimer=0.0 end
 	if not masteries.vars.killTimer then masteries.vars.killTimer=0.0 end
+	if not masteries.vars.leechInstances then masteries.vars.leechInstances={} end
 
 	--load the buffer with valid targets, verify hitType
 	local notificationBuffer={}
@@ -498,11 +499,26 @@ function masteries.listenerBonuses(notifications,dt)
 			table.insert(notificationBuffer,notification)
 		end
 	end
+	
+	if #notificationBuffer>0 then sb.logInfo("notices %s",notificationBuffer) end
 
+	--hit stuff, typically for hit/kill count combos
 	local hitCount=0
 	local killCount=0
 	local strongHitCount=0
 	local weakHitCount=0
+
+	--total damage, used for leech calcs.
+	local totalDamage=0
+	--overkill damage, not used
+	--local overkillDamage=0
+	--leech percent - percent of damage leeched over the duration of the leech effect.
+	local leechPercent=status.stat("fuLeechPercent")
+	--maximum leech per second
+	local leechMaxRate=0.1+status.stat("fuLeechMaxRate")
+	--leech rate modifier: bigger number means faster ticks.
+	local leechDuration=10.0/(1.0+status.stat("fuLeechRateMod"))
+
 	for _,notification in pairs(notificationBuffer) do
 		--check if it's a valid target. only the first valid target is counted
 		--kill computation
@@ -518,7 +534,30 @@ function masteries.listenerBonuses(notifications,dt)
 			--strong hit computation
 			strongHitCount=strongHitCount+1
 		end
+		--overkillDamage=overkillDamage+notification.damageDealt
+		totalDamage=totalDamage+notification.healthLost
 	end
+
+	--leech calculation
+	local leechValue=math.min(status.stat("maxHealth")*leechMaxRate,(totalDamage*leechPercent)/leechDuration)
+	--sb.logInfo
+	--handle leech instances
+	local leechBuffer={}
+	if leechValue>0 then
+		table.insert(leechBuffer,{timer=leechDuration,amount=leechValue})
+	end
+	leechValue=0
+	for _,instance in pairs(masteries.vars.leechInstances) do
+		instance.timer=instance.timer-dt
+		if instance.timer>0 then
+			table.insert(leechBuffer,instance)
+		end
+	end
+	for _,instance in pairs(leechBuffer) do
+		leechValue=leechValue+instance.amount
+	end
+	masteries.vars.leechInstances=leechBuffer
+
 	--rather than limiting it to one per, making it so that it instead rounds down from sqrt, up to 5.
 	--this means that hitting 1-3 targets counts as 1, 4-8 counts as 2, 9-15 counts as 3, and 16  counts as 4. etc.
 	hitCount=math.min(5,math.floor(math.sqrt(weakHitCount+hitCount+strongHitCount)))
@@ -612,6 +651,13 @@ function masteries.listenerBonuses(notifications,dt)
 		if tagCaching.mergedCache["axe"] then
 			table.insert(listenerbonus,{stat="critChance", amount=math.min(5,masteries.vars.inflictedHitCounter)*3})
 		end
+	end
+
+	--insert leech last
+	if leechValue>0 then
+		sb.logInfo("leechValue %s",leechValue)
+		world.sendEntityMessage(entity.id(),"recordFUPersistentEffect","fuLeeching")
+		status.setPersistentEffects("fuLeeching",{{stat="healthRegen",amount=leechValue}})
 	end
 
 	--using the temporary persistent effect system, to make it wear off

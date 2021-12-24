@@ -1,6 +1,7 @@
 require("/scripts/FRHelper.lua")
 require "/scripts/status.lua" --for damage listener
 require "/items/active/tagCaching.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 -- Melee primary ability
 MeleeCombo = WeaponAbility:new()
@@ -78,15 +79,6 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
 	if not self.weapon.currentAbility and self:shouldActivate() then
 		self:setState(self.windup)
 	end
-end
-
--- ******************************************
--- FR FUNCTIONS
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
 end
 
 function MeleeCombo:firePosition()

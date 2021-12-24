@@ -1,27 +1,13 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 function init()
 	underWorlderEffects=effect.addStatModifierGroup({})
 	self.sunIntensity = config.getParameter("sunIntensity",0)
 	self.radiantWorld = 0.0
 	script.setUpdateDelta(10)
-end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
-end
-
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
 end
 
 function update(dt)

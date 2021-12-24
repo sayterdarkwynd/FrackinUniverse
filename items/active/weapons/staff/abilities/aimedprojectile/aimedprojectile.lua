@@ -123,7 +123,7 @@ function AimedProjectile:createProjectiles()
 	if bonus~=flooredBonus then bonus=flooredBonus+(((math.random()<(bonus-flooredBonus)) and 1) or 0) end
 	local initiallySingle=(pCount==1)
 	local singleMultiplier=1+((initiallySingle and 0.1*bonus) or 0)
-	pCount=pCount+bonus
+	pCount=((self.disableProjectileCountBonus and 0) or bonus)+pCount
 	local pParams = copy(self.projectileParameters)
 
 	pParams.power = singleMultiplier * self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount

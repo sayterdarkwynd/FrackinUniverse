@@ -149,7 +149,7 @@ function CloudBurst:createProjectiles()
 	local flooredBonus=math.floor(bonus)
 	if bonus~=flooredBonus then bonus=flooredBonus+(((math.random()<(bonus-flooredBonus)) and 1) or 0) end
 	local singleMultiplier=1+(((pCount==1) and 0.1*bonus) or 0)
-	pCount=pCount+bonus
+	pCount=((self.disableProjectileCountBonus and 0) or bonus)+pCount
 	local pParams = copy(self.projectileParameters)
 
 	pParams.power = singleMultiplier * self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount

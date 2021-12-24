@@ -1,20 +1,4 @@
-function init()
-end
-
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
-end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
-end
+require "/stats/effects/fu_statusUtil.lua"
 
 function update(dt)
 	local daytime = daytimeCheck()
@@ -31,8 +15,4 @@ function update(dt)
 			status.modifyResourcePercentage("food",(lightLevel * 0.0007*dt))
 		end
 	end
-end
-
-function uninit()
-
 end
