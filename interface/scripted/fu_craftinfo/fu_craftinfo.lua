@@ -253,20 +253,27 @@ function registerMaterial(mat, station)
 		end
 		-- saplings are special-cased
 		local sapling = mat == 'sapling'
-		if not sapling and not root.itemConfig(mat) then
-			materialsMissing[mat] = true
-			-- commented out the creation of warnings cause recipes exist for mods not always installed
-			-- sb.logInfo("Crafting Info Display found non-existent item '%s'", mat)
-			return
-		end
-		local data = root.itemConfig({ name = mat, data = { stemName = 'pineytree' } })
+		local data
 		if sapling then
+			data = root.itemConfig({ name = mat, data = { stemName = 'pineytree' } })
+
 			-- workaround: show something with trunk and leaf info
 			data.config.inventoryIcon = '/interface/scripted/fu_craftinfo/sapling.png'
-		elseif type(data.config.inventoryIcon) == 'table' then
-			-- handle multi-icon items by just using the first icon (broken, I know)
-			data.config.inventoryIcon = data.config.inventoryIcon[1].image
+		else
+			data = root.itemConfig(mat)
+			if not data then
+				materialsMissing[mat] = true
+				-- commented out the creation of warnings cause recipes exist for mods not always installed
+				-- sb.logInfo("Crafting Info Display found non-existent item '%s'", mat)
+				return
+			end
+
+			if type(data.config.inventoryIcon) == 'table' then
+				-- handle multi-icon items by just using the first icon (broken, I know)
+				data.config.inventoryIcon = data.config.inventoryIcon[1].image
+			end
 		end
+
 		materials[mat] = { stations = {}, id = mat, name = data.config.shortdescription, icon = rescale(canonicalise(data.config.inventoryIcon, data.directory), 16, 16) }
 		table.insert(materialsSorted, materials[mat])
 	end

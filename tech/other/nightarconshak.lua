@@ -1,4 +1,5 @@
 require "/scripts/vec2.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 function init()
 	initCommonParameters()
@@ -51,17 +52,6 @@ function displayBar()
 	else
 		world.sendEntityMessage(self.playerId,"removeBar","conshakBar")
 	end
-end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
 end
 
 function checkStance()

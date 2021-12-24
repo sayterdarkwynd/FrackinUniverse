@@ -1,8 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_valkyrieset"
 
-weaponBonus={}
-
 armorBonus={
 	{stat = "pressureProtection", amount = 1},
 	{stat = "extremepressureProtection", amount = 1},

@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	--self.maxHealth = status.stat("maxHealth")
 	self.hasEnergy=status.isResource("energy")
@@ -35,16 +37,6 @@ function activateVisualEffects()
 		--animator.setParticleEmitterActive("smoke", false)
 	end
 end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	local lightLevel = math.min(world.lightLevel(position),1.0)
-	lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
-end
-
 
 function setParticleConfig(dt)
 	if not particleConfig then

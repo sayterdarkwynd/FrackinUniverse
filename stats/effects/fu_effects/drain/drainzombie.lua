@@ -1,3 +1,5 @@
+require "/stats/effects/fu_statusUtil.lua"
+
 function init()
 	animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
 	animator.setParticleEmitterEmissionRate("healing", config.getParameter("emissionRate", 3))
@@ -21,16 +23,6 @@ function init()
 	self.queryDamageSince = 0
 end
 
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	local lightLevel = math.min(world.lightLevel(position),1.0)
-	lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
-end
-
-
 function resetDrain()
 	self.cooldownTimer = self.cooldown
 	self.triggerDrain = false
@@ -51,9 +43,9 @@ function update(dt)
 			self.queryDamageSince = nextStep
 			for _, notification in ipairs(damageNotifications) do
 				if notification.healthLost > 0 and notification.sourceEntityId ~= notification.targetEntityId then
-		triggerDrain(notification.healthLost * self.drainMultiplier)
-		self.cooldownTimer = self.cooldown
-		break
+					triggerDrain(notification.healthLost * self.drainMultiplier)
+					self.cooldownTimer = self.cooldown
+					break
 				end
 			end
 		end
@@ -65,8 +57,8 @@ function update(dt)
 		if self.triggerDrain then
 			self.drainTimer = self.drainTimer - dt
 			if self.drainTimer <= 0 then
-		animator.setParticleEmitterActive("healing", false)
-		self.triggerDrain = false
+				animator.setParticleEmitterActive("healing", false)
+				self.triggerDrain = false
 			end
 		end
 	end

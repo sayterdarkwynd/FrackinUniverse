@@ -1,8 +1,6 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
 setName="fu_arcticset"
 
-armorBonus={}
-
 armorEffect={
 	{stat = "iceStatusImmunity", amount = 1},
 	{stat = "iceslipImmunity", amount = 1},

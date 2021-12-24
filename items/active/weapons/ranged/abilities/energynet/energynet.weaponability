@@ -1,115 +1,71 @@
 {
-  "animationCustom" : {
-    "animatedParts" : { "parts" : {
-      "grenadelauncher" : {
-        "properties" : {
-          "zLevel" : -1,
-          "centered" : true,
-          "offset" : [0, 0],
-          "transformationGroups" : ["muzzle"],
-          "firePosition" : [0, 0],
-          "image" : ""
-        }
-      }
-    }},
-    "particleEmitters" : {
-      "altMuzzleFlash" : {
-        "active" : false,
-        "rotationGroup" : "weapon",
-        "emissionRate" : 8,
-        "offsetPart" : "muzzleFlash",
-        "offsetRegion" : [0.5, 1.0, 1.0, 1.5],
-        "particles" : [
-        ]
-      }
-    },
-    "sounds" : {
-      "altFire" : [ "/sfx/gun/grenade2.ogg" ]
-    }
-  },
+	"animationCustom": {
+		"animatedParts": {
+			"parts": {
+				"grenadelauncher": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"offset": [0, 0],
+						"transformationGroups": ["muzzle"],
+						"firePosition": [0, 0],
+						"image": ""
+					}
+				}
+			}
+		},
+		"particleEmitters": {
+			"altMuzzleFlash": {
+				"active": false,
+				"rotationGroup": "weapon",
+				"emissionRate": 8,
+				"offsetPart": "muzzleFlash",
+				"offsetRegion": [0.5, 1.0, 1.0, 1.5],
+				"particles": []
+			}
+		},
+		"sounds": {
+			"altFire": ["/sfx/gun/grenade2.ogg"]
+		}
+	},
 
-  "ability" : {
-    "name" : "Energy Net",
-    "type" : "energynet",
-    "scripts" : ["/items/active/weapons/ranged/abilities/altfire.lua"],
-    "class" : "AltFireAttack",
+	"ability": {
+		"name": "Energy Net",
+		"type": "energynet",
+		"scripts": ["/items/active/weapons/ranged/abilities/altfire.lua"],
+		"class": "AltFireAttack",
 
-    "projectileType" : "forcecage2",
-    "projectileParameters" : {
-      "timeToLive" : 5,
-      "speed" : 3, 
-      "actionOnReap" : [
-        {
-          "action" : "sound",
-          "options" : [
-            "/sfx/melee/staff_aura_activate.ogg"
-          ]
-        },
-        {
-          "action" : "projectile",
-          "type" : "crystalbayonetforce",
-          "angle" : 0
-        },
-        {
-          "action" : "projectile",
-          "type" : "crystalbayonetforce",
-          "angle" : 180
-        },        
-    {
-      "action" : "projectile",
-      "type" : "pinkplasmaballs",
-      "inheritDamageFactor" : 0.25,
-      "angle" : 45
-    },
-    {
-      "action" : "projectile",
-      "type" : "pinkplasmaballs",
-      "inheritDamageFactor" : 0.25,
-      "angle" : -45
-    },
-    {
-      "action" : "projectile",
-      "type" : "pinkplasmaballs",
-      "inheritDamageFactor" : 0.25,
-      "angle" : -135
-    },
-    {
-      "action" : "projectile",
-      "type" : "pinkplasmaballs",
-      "inheritDamageFactor" : 0.25,
-      "angle" : 135
-    }        
-      ]
-    },
-    "projectileCount" : 1,
-    "inaccuracy" : 0,
-    "baseDps" : 15,
-    "energyUsage" : 35,
-    "fireTime" : 1.5,
-    "fireType" : "auto",
+		"projectileType": "fuswarmmissileforcecage",
+		"projectileParameters": {"speed": 25,"power":0,"damageKind": "nodamage"},
+		"projectileCount": 1,
+		"inaccuracy": 0,
+		"baseDps": 0,
+		"energyUsage": 35,
+		"fireTime": 1.5,
+		"fireType": "auto",
 
-    "firePositionPart" : "grenadelauncher",
-    "hidePrimaryMuzzleFlash" : true,
+		"firePositionPart": "grenadelauncher",
+		"hidePrimaryMuzzleFlash": true,
 
-    "stances" : {
-      "fire" : {
-        "duration" : 0,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+		"stances": {
+			"fire": {
+				"duration": 0,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "cooldown" : {
-        "duration" : 0.11,
-        "armRotation" : 5,
-        "weaponRotation" : 5,
-        "twoHanded" : true,
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"cooldown": {
+				"duration": 0.11,
+				"armRotation": 5,
+				"weaponRotation": 5,
+				"twoHanded": true,
 
-        "allowRotate" : false,
-        "allowFlip" : false
-      }
-    }
-  }
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
 }

@@ -5,6 +5,7 @@ require "/scripts/util.lua"
 require "/scripts/interp.lua"
 require "/scripts/FRHelper.lua"
 require "/items/active/weapons/crits.lua"
+require "/stats/effects/fu_statusUtil.lua"
 
 -- Base gun fire ability
 GunFire = WeaponAbility:new()
@@ -83,22 +84,6 @@ function GunFire:calcAmmo()
 	if (oldSize and oldSize~= self.magazineSize) then return true,oldSize end
 end
 
--- ****************************************
--- FR FUNCTIONS
-function daytimeCheck()
-	return world.timeOfDay() < 0.5 -- true if daytime
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
-end
-
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	return math.floor(math.min(world.lightLevel(position),1.0) * 100)
-end
 -- ***********************************************************************************************************
 -- ***********************************************************************************************************
 
