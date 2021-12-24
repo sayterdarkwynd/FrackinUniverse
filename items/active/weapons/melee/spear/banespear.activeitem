@@ -1,52 +1,56 @@
 {
-  "itemName" : "banespear",
-  "price" : 100,
-  "level" : 5,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "A piercing weapon of great style and sophistication.
+	"itemName": "banespear",
+	"price": 100,
+	"level": 5,
+	"maxStack": 1,
+	"rarity": "legendary",
+	"description": "A piercing weapon of great style and sophistication.
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Bane Spear",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear","bioweapon", "upgradeableWeapon"],
+	"shortdescription": "Bane Spear",
+	"tooltipKind": "sword2",
+	"category": "spear",
+	"twoHanded": true,
+	"itemTags": ["weapon","melee","spear","bioweapon", "upgradeableWeapon"],
 
-  "inventoryIcon" : "banespear.png",
-  //"collectablesOnPickup" : { "fu_weaponspear" : "banespear" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "banespear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon": "banespear.png",
+	//"collectablesOnPickup": { "fu_weaponspear": "banespear" },
+	"animation": "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts": {
+		"handle": "",
+		"blade": "banespear.png"
+	},
+	"animationCustom": {
+		"sounds": {
+			"fire": [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+	"elementalType": "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset": -1.0,
+	"primaryAbilityType": "spearstab",
+	"primaryAbility": {
+		"scripts": [],
 
-    "fireTime" : 0.8,
-    "baseDps" : 11,
-    "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ ],
-      "knockback" : 10
-    }
-  },
-  "altAbilityType" : "fucharge",
-  "altAbility" : { },
-  
-  "critChance" : 1,
-  "critBonus" : 9,
-  
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+		"fireTime": 0.8,
+		"baseDps": 11,
+		"damageConfig": {
+			"damageSourceKind": "bow",
+			"statusEffects": [ ],
+			"knockback": 10
+		}
+	},
+	"altAbilityType": "fucharge",
+	"altAbility": {
+		"damageConfig": {
+			"damageSourceKind": "bow"
+		}
+	},
+	
+	"critChance": 1,
+	"critBonus": 9,
+	
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
 }
