@@ -1,0 +1,26 @@
+{
+  "name": "drunkard_tenant",
+  "priority": 8,
+
+  "colonyTagCriteria": {
+    "light": 1,
+    "door": 1,
+    "drunkard": 5
+  },
+
+  "tenants": [
+    {
+      "spawn": "npc",
+      "species": "human",
+      "type": "drunkardciv",
+      "overrides": {
+        "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent": {
+    "periodRange": [900.0, 1800.0],
+    "pool": "futenantLoot"
+  }
+}

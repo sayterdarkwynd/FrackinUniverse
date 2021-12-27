@@ -1,32 +1,31 @@
 {
-  "id" : "2brew_b",
-  "prerequisites" : [ "2brew_a" ],
-  "title" : "Brewing II",
-  "text" : "Next, you'll need to make ^orange;Yeast Water^reset;. Use ^orange;Water^reset; and ^orange;Wheat^reset; in the ^orange;Mashing Tun^reset; to make 3 ^orange;Grain Water^reset;. Use ^orange;Sugar^reset; with the ^orange;Grain Water^reset; in the ^orange;Mashing Tun^reset; to make ^orange;Yeast Water^reset;.",
-  "completionText" : "Great. Did you harvest your crops yet? Do that, if not. Also, take these ^orange;Bottles^reset; for the next step.",
-  "moneyRange" : [120, 220],
-  "rewards" : [ [ [ "bottle",5 ] ] ],
-  "speaker" : "questGiver",
-  
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"id" : "2brew_b",
+	"prerequisites" : [ "2brew_a" ],
+	"title" : "Brewing II",
+	"text" : "Next, you'll need to make ^orange;Yeast Water^reset;. Use ^orange;Water^reset; and ^orange;Wheat^reset; in the ^orange;Mashing Tun^reset; to make 3 ^orange;Grain Water^reset;. Use ^orange;Sugar^reset; with the ^orange;Grain Water^reset; in the ^orange;Mashing Tun^reset; to make ^orange;Yeast Water^reset;.",
+	"completionText" : "Great. Did you harvest your crops yet? Do that, if not. Also, take these ^orange;Bottles^reset; for the next step.",
+	"moneyRange" : [120, 220],
+	"rewards" : [ [ [ "bottle",5 ] ] ],
+	"speaker" : "questGiver",
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "yeastwater",
-        "count" : 1,
-        "consume" : false
-      }
-    ]
-  }
+		"requireTurnIn" : false,
+
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "yeastwater",
+				"count" : 1,
+				"consume" : false
+			}
+		]
+	}
 }

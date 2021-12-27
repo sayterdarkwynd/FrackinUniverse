@@ -7,6 +7,7 @@ function init()
 	self.regenInstances = config.getParameter("regenDuration", 0) / config.getParameter("regenInterval", 0)
 	self.damageInstances = {}
 	self.regenInterval = 0
+	self.baseRegenInterval=config.getParameter("regenInterval", 0)
 
 	--[[self.modifierGroupID = effect.addStatModifierGroup({
 		{stat = "maxHealth", amount = config.getParameter("healthReductionPcnt", 0)},
@@ -41,7 +42,7 @@ function update(dt)
 		end
 
 		status.modifyResource("health", totalRegen * self.regenPcnt * math.max(0,1+status.stat("healingBonus")))
-		self.regenInterval = config.getParameter("regenInterval", 0)
+		self.regenInterval = self.baseRegenInterval
 	else
 		self.regenInterval = self.regenInterval - dt
 	end

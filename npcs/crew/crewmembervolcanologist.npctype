@@ -1,37 +1,33 @@
 {
   "type" : "crewmembervolcanologist",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "fuinfernoheadnpc",
         "chest" : "fuinfernochestnpc",
         "legs" : "fuinfernopantsnpc"
       },
-
+	  
       "role" : {
+        "type" : "chemist",
+        "name" : "Volcanology",
+        "field" : "Volcanology",
+        "uniformColorIndex" : 3,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "fireblock3",
             "duration" : 900
-          },         
+          },
           {
             "type" : "PersistentEffect",
             "effect" : "shipMassMed"
-          } 
-        ],
-        "type" : "chemist",
-        "name" : "Volcanology",
-        "field" : "Volcanology",
-        "uniformColorIndex" : 3
+          }
+        ]
       }
     },
 
@@ -62,21 +58,6 @@
               "Looks like you could use my assistance!",
               "I can help!"
             ]
-          },
-          "floran" : {
-            "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
-            ]
           }
         }
       }
@@ -88,10 +69,7 @@
       [0, [
           {
             "primary" : [ "armcannonexplosive" ],
-            "sheathedprimary" : [ "zerchesiumbroadsword" ],
-			"head" :  [{ "name" : "fuinfernoheadnpc", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-			"chest" : [ { "name" : "fuinfernochestnpc", "count" :1, "parameters" : { "colorIndex" : 3 } } ],
-            "legs" : [ { "name" : "fuinfernopantsnpc", "count" :1, "parameters" : { "colorIndex" : 3 } } ]          
+            "sheathedprimary" : [ "zerchesiumbroadsword" ]
           }
         ] ]
     ]

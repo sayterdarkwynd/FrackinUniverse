@@ -1,0 +1,46 @@
+{
+  "objectName" : "nightardesk",
+  "colonyTags" : ["nightar","nightarvillage","commerce","storage"],
+  "rarity" : "Common",
+  "objectType" : "container",
+  "tooltipKind" : "container",
+  "description" : "A nicely made Nightarian desk.",
+  "shortdescription" : "Nightar Desk",
+  "race" : "nightar",
+  "category" : "furniture",
+  "price" : 130,
+  "health" : 1.5,
+
+  "inventoryIcon" : "nightardeskicon.png",
+  "orientations" : [
+    {
+      "image" : "nightardesk.png:<color>",
+      "imagePosition" : [-24, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1] ]
+    },
+    {
+      "image" : "nightardesk.png:<color>",
+      "imagePosition" : [-24, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1] ]
+    }
+  ],
+
+  "openSounds" : [ "/sfx/objects/woodenbox_open.ogg" ],
+  "closeSounds" : [ "/sfx/objects/woodenbox_close.ogg" ],
+  "slotCount" : 9,
+  "uiConfig" : "/interface/chests/chest<slots>.config",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600
+
+}

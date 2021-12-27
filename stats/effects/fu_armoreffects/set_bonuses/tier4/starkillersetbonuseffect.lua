@@ -1,4 +1,5 @@
 require "/stats/effects/fu_armoreffects/setbonuses_common.lua"
+require "/stats/effects/fu_statusUtil.lua"
 setName="fu_starkillerset"
 
 armorBonus={
@@ -26,23 +27,6 @@ function init()
 	checkArmor()
 end
 
-function getLight()
-	local position = mcontroller.position()
-	position[1] = math.floor(position[1])
-	position[2] = math.floor(position[2])
-	local lightLevel = math.min(world.lightLevel(position),1.0)
-	lightLevel = math.floor(lightLevel * 100)
-	return lightLevel
-end
-
-function daytimeCheck()
-	return world.timeOfDay() < 0.5
-end
-
-function undergroundCheck()
-	return world.underground(mcontroller.position())
-end
-
 function update(dt)
 	if not checkSetWorn(self.setBonusCheck) then
 		effect.expire()
@@ -54,7 +38,6 @@ end
 function checkArmor()
 	daytime = daytimeCheck()
 	underground = undergroundCheck()
-	local lightLevel = getLight()
 	if daytime and not underground then
 		effect.setStatModifierGroup(effectHandlerList.armorBonusHandle,armorBonus)
 	else

@@ -1,0 +1,30 @@
+{
+	"id": "fu_t10_glitch_mission2",
+	"prerequisites": [ "fu_t10_precursor" ],
+	"title": "In Darkness Keep",
+	"text": "Should be no surprise da next stop is da Baron's Keep. Off you go...",
+	"completionText": "Okay, this not good. Signature data has many journal entries. Kevin found remains of different version of mew. Her inner shell had ruptured due to lack of noms. All da bad energies? In one word: ^red;Fallout^reset;...or is dat two?",
+	"moneyRange": [0, 0],
+	"rewards" : [ [ [ "fu_t10_glitch_mission2beacon", 1 ] ] ],
+
+	"questGiverIndicator": "mainquestgiver",
+	"questReceiverIndicator": "mainquestreceiver",
+
+	"updateDelta": 10,
+	"script": "/quests/scripts/fuartifacthardmode.lua",
+	"scriptConfig": {
+		"portraits": {
+			"questStarted": "questGiver",
+			"questComplete": "questReceiver"
+		},
+		"associatedMission": "fuglitchmission1t10",
+		"descriptions"	: {
+			"artifact": "Find the ^orange;artifact^reset; in the ^orange;Dark Glitch keep^reset;",
+			"turnIn": "Return to ^orange;Kherae^reset; at ^orange;the Science Outpost^reset;"
+		},
+
+		"artifactUid": "glitchartifactaltar",
+		"artifactMessage": "glitchArtifactTaken",
+		"estherUid": "kheraeoutpost"
+	}
+}

@@ -1,7 +1,7 @@
 {
   "objectName" : "tentacleplant",
     "colonyTags" : [ "nature" ],
-  "rarity" : "uncommon",
+  "rarity" : "Legendary",
   "category" : "seed",
   "description" : "Lashes out at enemies.",
   "shortdescription" : "Writhing Vine",
@@ -11,7 +11,7 @@
   
   "inventoryIcon" : "tentacleplanticon.png",
   "largeImage" : "tentacleplant.png:default.3.0",
-  "collectablesOnPickup" : { "fu_plant" : "tentacle" },
+  //"collectablesOnPickup" : { "fu_plant" : "tentacle" },
   "orientations" : [
     {
       "dualImage" : "tentacleplant.png:<color>.<stage>.<alt>",
@@ -19,7 +19,7 @@
       "frames" : 1,
       "animationCycle" : 0.5,
 
-      "spaceScan" : 0.1,
+      "spaces" : [ [1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2] ],
       "requireTilledAnchors" : true,
       "anchors" : [ "bottom" ]
 

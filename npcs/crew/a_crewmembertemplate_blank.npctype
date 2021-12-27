@@ -1,0 +1,88 @@
+{ //Delete this comment. This file is uncommented otherwise, for easier linting. Refer to a_crewmembertemplate.npctype. *Do not edit, make a copy!*
+  "type" : "crewmembertemplateblank",
+  "baseType" : "fu_crewmember",
+
+  "scriptConfig" : {
+    "crew" : {
+      "defaultUniform" : {
+        "head" : "duncecap",
+        "chest" : "protectoratechest",
+        "legs" : "protectoratepants"
+      },
+	  
+      "role" : {
+        "type" : "soldier",
+        "name" : "Template Crewmate",
+        "field" : "Mod developer",
+        "uniformColorIndex" : 1,
+
+        "benefits" : [
+        ]
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "offer" : {
+          "default" : {
+            "default" : [
+              "Hey, let me join your crew."
+            ]
+          }
+        },
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'm an unconfigured crewmate, ready for purpose. This is what I say when I'm recruited, so put flavour text here."
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "This is what I say when I apply a mid-combat buff."
+            ]
+          }
+        },
+        "respawned" : {
+          "default" : {
+            "default" : [
+              "There I go dying again. Good thing I'm alive now!"
+            ]
+          }
+        },
+        "follow" : {
+          "default" : {
+            "default" : [
+              "Let's go jump in lava!"
+            ]
+          }
+        },
+        "unfollow" : {
+          "default" : {
+            "default" : [
+              "You want me to stay on the ship? Won't you get lonely?"
+            ]
+          }
+        },
+        "cantreach" : {
+          "default" : {
+            "default" : [
+              "Help, I don't have double jump!"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "primary" : [ "fuprotectoraterifle", "fuprotectoratesniper" ]
+          }
+      ] ]
+    ]
+  }
+}

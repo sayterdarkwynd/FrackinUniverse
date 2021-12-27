@@ -8,12 +8,12 @@ function init()
 	upgradeConfig = root.assetJson("/frackinship/configs/shipupgrades.config")
 	self = upgradeConfig.atmosphereSystem
 	self.maxPerimeter = self.maxPerimeter or 500
-	crewSizeShipOld = 0
-	maxFuelShipOld = 0
-	fuelEfficiencyShipOld = 0
-	shipSpeedShipOld = 0
+	crewSizeBYOSOld = 0
+	--maxFuelBYOSOld = 0
+	--fuelEfficiencyBYOSOld = 0
+	--shipSpeedBYOSOld = 0
 	beamDownTimer = 0
-
+	--cat note: storage is serialized in this script.
 	message.setHandler("fs_respawn", function()
 		local spawn = world.getProperty("fu_byos.spawn", {1024, 1025})
 		mcontroller.setPosition(vec2.add(spawn, {0, 2}))
@@ -22,7 +22,7 @@ end
 
 function update(dt)
 	promises:update()
-
+	local shipLevel
 	if world.type() == "unknown" then
 		-- make sure the ship handler stagehand exists
 		if handlerPromise then
@@ -76,6 +76,8 @@ function update(dt)
 	end
 
 	if player.worldId() == player.ownShipWorldId() then
+		local shipUpgrades=player.shipUpgrades()
+		--sb.logInfo("shipUpgrades Pre: %s",shipUpgrades)
 		if not initFinished then
 			initFinished = true
 			if player.hasCompletedQuest("fu_byos") then
@@ -84,79 +86,117 @@ function update(dt)
 				end
 			end
 			world.setProperty("fu_byos.owner", player.uniqueId())
+			world.setProperty("frackinship.race", player.species())
 		end
+
+		local shipCrewSize
 		if shipLevel == 0 then
 			shipCrewSize = status.statusProperty("byosCrewSize", 0)
 		else
-			shipCrewSize = (player.shipUpgrades().crewSize or 0) + status.statusProperty("byosCrewSize", 0)
+			shipCrewSize = (shipUpgrades.crewSize or 0) + status.statusProperty("byosCrewSize", 0)
 		end
-		crewSizeShip = world.getProperty("fu_byos.crewSize") or 0
-		shipMaxFuel = world.getProperty("ship.maxFuel")
-		maxFuelShip = world.getProperty("fu_byos.maxFuel") or 0
-		shipFuelEfficiency = world.getProperty("ship.fuelEfficiency")
-		fuelEfficiencyShip = world.getProperty("fu_byos.fuelEfficiency") or 0
-		shipShipSpeed = player.shipUpgrades().shipSpeed
-		shipSpeedShip = world.getProperty("fu_byos.shipSpeed") or 0
-		shipMassShip = world.getProperty("fu_byos.shipMass") or 0
-		if crewSizeShip then
-			crewSizeNew, crewSizeShipNew = calculateNew("crewSize", crewSizeShip, crewSizeShipOld, shipCrewSize)
+
+		--crewStats is set in /scripts/companions/player.lua
+		local crewStats=status.statusProperty("fu_shipUpgradeStatProperty") or {shipmass=10,fuelEfficiency=0,shipSpeed=15,maxFuel=10000}
+		--sb.logInfo("crewStats=%s",crewStats)
+		--[09:00:44.604] [Info] crewStats={shipMass: 10, fuelEfficiency: 0, shipSpeed: 15, maxFuel: 10000}
+
+		local crewSizeBYOS = world.getProperty("fu_byos.crewSize") or 0
+		local shipMaxFuel = world.getProperty("ship.maxFuel")
+		local maxFuelStat = status.stat("maxFuel")
+		local maxFuelBYOS = world.getProperty("fu_byos.maxFuel") or 0
+		local shipFuelEfficiency = world.getProperty("ship.fuelEfficiency")
+		local fuelEfficiencyBYOS = world.getProperty("fu_byos.fuelEfficiency") or 0
+		local fuelEfficiencyStat = status.stat("fuelEfficiency")
+		local shipShipSpeed = shipUpgrades.shipSpeed
+		local shipSpeedStat = status.stat("shipSpeed")
+		local shipSpeedBYOS = world.getProperty("fu_byos.shipSpeed") or 0
+		local shipMassBYOS = world.getProperty("fu_byos.shipMass") or 0
+
+		if crewSizeBYOS then
+			crewSizeNew, crewSizeBYOSNew = calculateNew("crewSize", crewSizeBYOS, crewSizeBYOSOld, shipCrewSize)
 			if shipLevel == 0 then
-				crewSizeShipOld = crewSizeNew
+				crewSizeBYOSOld = crewSizeNew
 				status.setStatusProperty("byosCrewSize", crewSizeNew)
 			else
-				crewSizeShipOld = crewSizeNew - player.shipUpgrades().crewSize
-				status.setStatusProperty("byosCrewSize", crewSizeNew - player.shipUpgrades().crewSize)
+				crewSizeBYOSOld = crewSizeNew - shipUpgrades.crewSize
+				status.setStatusProperty("byosCrewSize", crewSizeNew - shipUpgrades.crewSize)
 			end
 		end
-		if maxFuelShip then
-			if maxFuelNew then
-				if shipMaxFuel ~= maxFuelNew then
-					maxFuelShipOld = 0
+		if maxFuelBYOS then
+			local newMaxFuel=clampStat("maxFuel",maxFuelStat+((crewStats and crewStats.maxFuel) or 0)+maxFuelBYOS)
+			--if maxFuelNew then
+				if shipMaxFuel~=newMaxFuel then
+				--if shipMaxFuel ~= maxFuelNew then
+					--maxFuelBYOSOld = 0
+					player.upgradeShip({maxFuel = newMaxFuel})
 				end
-			end
-			maxFuelNew, maxFuelShipNew = calculateNew("maxFuel", maxFuelShip, maxFuelShipOld, shipMaxFuel)
-			if maxFuelShipNew ~= maxFuelShipOld then
+			--end
+			--[[maxFuelNew, maxFuelBYOSNew = calculateNew("maxFuel", maxFuelBYOS, maxFuelBYOSOld, shipMaxFuel)
+			if maxFuelBYOSNew ~= maxFuelBYOSOld then
 				player.upgradeShip({maxFuel = maxFuelNew})
-				maxFuelShipOld = maxFuelShipNew
+				maxFuelBYOSOld = maxFuelBYOSNew
+			end]]
+			if newMaxFuel and world.getProperty("ship.fuel") > newMaxFuel then
+				world.setProperty("ship.fuel", newMaxFuel)
 			end
 		end
-		if fuelEfficiencyShip then
-			if fuelEfficiencyNew then
-				if shipFuelEfficiency <= fuelEfficiencyNew - 0.01 or shipFuelEfficiency >= fuelEfficiencyNew + 0.01 then
-					fuelEfficiencyShipOld = 0
+		if fuelEfficiencyBYOS then
+			local newFuelEfficiency=clampStat("fuelEfficiency",fuelEfficiencyStat+((crewStats and crewStats.fuelEfficiency) or 0)+fuelEfficiencyBYOS)
+			--if fuelEfficiencyNew then
+				--if (shipFuelEfficiency <= (fuelEfficiencyNew - 0.01)) or (shipFuelEfficiency >= (fuelEfficiencyNew + 0.01)) then
+				--if shipFuelEfficiency <= fuelEfficiencyNew - 0.01 or shipFuelEfficiency >= fuelEfficiencyNew + 0.01 then
+				if newFuelEfficiency~=shipFuelEfficiency then
+					--fuelEfficiencyBYOSOld = 0
+					player.upgradeShip({fuelEfficiency = newFuelEfficiency})
 				end
-			end
-			fuelEfficiencyNew, fuelEfficiencyShipNew = calculateNew("fuelEfficiency", fuelEfficiencyShip, fuelEfficiencyShipOld, shipFuelEfficiency)
-			if fuelEfficiencyShipNew <= fuelEfficiencyShipOld - 0.01 or fuelEfficiencyShipNew >= fuelEfficiencyShipOld + 0.01 then
-				--sb.logInfo(fuelEfficiencyShipNew .. " ~= " .. fuelEfficiencyShipOld)
+			--end
+			--[[fuelEfficiencyNew, fuelEfficiencyBYOSNew = calculateNew("fuelEfficiency", fuelEfficiencyBYOS, fuelEfficiencyBYOSOld, shipFuelEfficiency)
+			sb.logInfo("new efficiency stats %s",{fuelEfficiencyNew,fuelEfficiencyBYOSNew})
+			sb.logInfo("ship upgrades pre: %s",player.shipUpgrades())
+			if fuelEfficiencyBYOSNew <= fuelEfficiencyBYOSOld - 0.01 or fuelEfficiencyBYOSNew >= fuelEfficiencyBYOSOld + 0.01 then
+				--sb.logInfo(fuelEfficiencyBYOSNew .. " ~= " .. fuelEfficiencyBYOSOld)
 				player.upgradeShip({fuelEfficiency = fuelEfficiencyNew})
-				fuelEfficiencyShipOld = fuelEfficiencyShipNew
-			end
+				sb.logInfo("ship upgrades post: %s",player.shipUpgrades())
+				fuelEfficiencyBYOSOld = fuelEfficiencyBYOSNew
+			end]]
 		end
-		if shipSpeedShip then
-			if shipSpeedNew then
-				if shipShipSpeed ~= shipSpeedNew then
-					shipSpeedShipOld = 0
+		if shipSpeedBYOS then
+			local newShipSpeed=clampStat("shipSpeed",shipSpeedStat+((crewStats and crewStats.shipSpeed) or 0)+shipSpeedBYOS)
+			--if shipSpeedNew then
+				--if shipShipSpeed ~= shipSpeedNew then
+				if newShipSpeed~=shipShipSpeed then
+					player.upgradeShip({shipSpeed = newShipSpeed})
+					--shipSpeedBYOSOld = 0
 				end
-			end
-			shipSpeedNew, shipSpeedShipNew = calculateNew("shipSpeed", shipSpeedShip, shipSpeedShipOld, shipShipSpeed)
-			if shipSpeedShipNew ~= shipSpeedShipOld then
+			--end
+			--[[shipSpeedNew, shipSpeedBYOSNew = calculateNew("shipSpeed", shipSpeedBYOS, shipSpeedBYOSOld, shipShipSpeed)
+			if shipSpeedBYOSNew ~= shipSpeedBYOSOld then
 				player.upgradeShip({shipSpeed = shipSpeedNew})
-				shipSpeedShipOld = shipSpeedShipNew
-			end
+				shipSpeedBYOSOld = shipSpeedBYOSNew
+			end]]
 		end
-		if shipMassShip then
+		if shipMassBYOS then
+			--local newShipMass=clampStat("shipMass",((crewStats and crewStats.shipMass) or 0)+shipMassBYOS-status.stat("shipMass"))
+			--crew modifier for ship mass is basically unused, go figure.
 			status.clearPersistentEffects("byos")
-			shipShipMass = status.stat("shipMass")
-			shipMassTotal, shipMassModifier = calculateNew("shipMass", shipMassShip, 0, shipShipMass)
-			if shipShipMass + shipMassModifier ~= shipMassTotal then
-				shipMassModifier = shipMassTotal - shipShipMass
+			local shipMassStat = status.stat("shipMass")
+			--shipMassStat = status.stat("shipMass")
+			--sb.logInfo("ship mass stat %s, shipMassBYOS %s",shipMassStat,shipMassBYOS)
+			shipMassTotal, shipMassModifier = calculateNew("shipMass", shipMassBYOS, 0, shipMassStat)
+			--sb.logInfo("ship mass total, ship mass modifier, pre calc %s %s",shipMassTotal, shipMassModifier)
+			if shipMassStat + shipMassModifier ~= shipMassTotal then
+				shipMassModifier = shipMassTotal - shipMassStat
 			end
+			--sb.logInfo("ship mass total, ship mass modifier, post calc %s %s",shipMassTotal, shipMassModifier)
 			status.addPersistentEffect("byos", {stat = "shipMass", amount = shipMassModifier})
+			--status.addPersistentEffect("byos", {stat = "shipMass", amount = newShipMass})
 		end
-		if maxFuelNew and world.getProperty("ship.fuel") > maxFuelNew then
+		--[[if maxFuelNew and world.getProperty("ship.fuel") > maxFuelNew then
 			world.setProperty("ship.fuel", maxFuelNew)
-		end
+		end]]
+		--shipUpgrades=player.shipUpgrades()
+		--sb.logInfo("shipUpgrades Post: %s",shipUpgrades)
 	end
 end
 
@@ -188,7 +228,7 @@ function lifeSupport(isOn)
 end
 
 function calculateNew(stat, modifier, oldModifier, currentAmount)
-	info = upgradeConfig[stat]
+	local info = upgradeConfig[stat]
 	if info then
 		statModifier = math.max(modifier, info.min or -math.huge)
 		--sb.logInfo("1. " .. statModifier)
@@ -200,4 +240,13 @@ function calculateNew(stat, modifier, oldModifier, currentAmount)
 		--sb.logInfo("4. " .. statNew)
 		return statNew, statModifier
 	end
+end
+
+
+function clampStat(stat,inValue)
+	local info = upgradeConfig[stat]
+	if info then
+		inValue=util.clamp(inValue,info.totalMin or -math.huge,info.totalMax or math.huge)
+	end
+	return inValue
 end

@@ -1,71 +1,30 @@
 {
 	"stats": [
-		{
-			"stat": "maxHealth",
-			"effectiveMultiplier": 1.15
-		},
-		{
-			"stat": "maxEnergy",
-			"effectiveMultiplier": 0.8
-		},
-		{
-			"stat": "radioactiveResistance",
-			"amount": 0.2
-		},
-		{
-			"stat": "powerMultiplier",
-			"effectiveMultiplier": 1.1
-		},
-		{
-			"stat": "physicalResistance",
-			"amount": 0.15
-		},
-		{
-			"stat": "iceResistance",
-			"amount": -0.3
-		},
-		{
-			"stat": "shadowResistance",
-			"amount": 0.3
-		},
-		{
-			"stat": "poisonResistance",
-			"amount": -0.4
-		},
-		{
-			"stat": "fuCharisma","baseMultiplier": 0.75
-		},
-		{
-			"stat": "insanityImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "fallDamageMultiplier",
-			"effectiveMultiplier": 0.4
-		}
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.25 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 0.75 },
+		{ "stat": "protection", "amount": 8 },
+		{ "stat": "fuCharisma", "baseMultiplier": 0.75 },
+        
+		{ "stat": "mentalProtection", "amount": 0.30 },
+		{ "stat": "physicalResistance", "amount": 0.15 },
+		{ "stat": "fireResistance", "amount": -0.30 },
+		{ "stat": "iceResistance", "amount": -0.15 },
+		{ "stat": "radioactiveResistance", "amount": 0.2 },
+        
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.40 },
+		{ "stat": "insanityImmunity", "amount": 1 },
+
+		{ "stat": "broadswordMastery", "amount": 0.15 },
+		{ "stat": "scytheMastery", "amount": 0.15 },
+		{ "stat": "axeMastery", "amount": 0.10 }
 	],
 	"diet" : "carnivore",
-	"controlModifiers": {
-		"minimumLiquidPercentage": 0.3,
-		"normalGroundFriction": 30
-	},
+	"controlModifiers": { "minimumLiquidPercentage": 0.3,"normalGroundFriction": 30 },
 	"envEffects": [{
 		"biomes": ["hot"],
-		"stats": [{"stat": "maxHealth","effectiveMultiplier": 1.1}]
+		"stats": [ { "stat": "maxHealth", "effectiveMultiplier": 1.1} ]
 	}],
-	"weaponEffects": [{
-			"weapons": ["crossbow","flail"],
-			"stats": [{"stat": "critChance","amount": 1.5}]
-		},
-		{
-			"weapons": ["scythe"],
-			"stats": [{"stat": "powerMultiplier","effectiveMultiplier": 1.15},{"stat": "grit","amount": 0.5}]
-		},
-		{
-			"combos": [["shortspear","shield"],["longsword","shield"]],
-			"stats": [{"stat": "critChance","amount": 0.5},{"stat": "grit","amount": 0.5}]
-		}
-	],
+	"weaponEffects": [],
 	"weaponScripts": [{
 			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
 			"contexts": [

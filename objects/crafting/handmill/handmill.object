@@ -6,12 +6,10 @@
   "category" : "^orange;Extraction Device^reset;",
   "printable" : false,
   "objectType" : "container",
-//  "learnBlueprintsOnPickup" : [ "nanofabricator" ], 
-
-  "price" : 450,
+  "price" : 20,
   "inventoryIcon" : "handmillicon.png",
   "description" : "Extracts useful materials from most block types.",
-  "shortdescription" : "^cyan;Hand Mill^white;",
+  "shortdescription" : "^cyan;Hand Mill^reset;",
   "subtitle" : "Block Extractor",
   "orientations" : [
      {
@@ -40,16 +38,14 @@
   ],
 
   "animation" : "handmill.animation",
-  "animationParts" : {
-    "samplingarrayanim" : "handmill.png"
-  },
-  "scripts" : [ "/objects/generic/extractionlab_common.lua",
-                "/scripts/npcToyObject.lua" ],
+  "animationParts" : {"samplingarrayanim" : "handmill.png"},
+  "scripts" : [ "/objects/generic/extractionlab_common.lua","/scripts/npcToyObject.lua" ],
   "scriptDelta" : 5,
+
   "recipeGroup" : "handmill",
   "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
-  "slotCount" : 12,
-  "uiConfig" : "/interface/extractor/extractor.config",
+  "slotCount" : 5,
+  "uiConfig" : "/interface/extractor/handmill.config",
   "frameCooldown" : 67,
   "autoCloseCooldown" : 3600,
 
@@ -72,7 +68,8 @@
     "preciseStandPositionRight" : [1.0, 0.0],
     "maxNpcs" : 1
   },
-
+  
+  "inputSlot": 1,
   "fu_mintick" : 1,
   "fu_stationTechLevel" : 1,
   "fu_timerMod" : 8

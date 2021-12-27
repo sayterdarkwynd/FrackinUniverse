@@ -8,12 +8,9 @@ NebBowShot = WeaponAbility:new()
 function NebBowShot:init()
 	self.energyPerShot = self.energyPerShot or 0
 
-	self.drawTimer= 0
-	self.bonusSpeed = math.max(-0.99,status.stat("bowDrawTimeBonus"))
-	self.bonusSpeedMult=1/(1+self.bonusSpeed)
+	self.drawTimer=0
 	self.baseDrawTime=self.drawTime
-	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*self.bonusSpeedMult)
-
+	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
 	animator.setGlobalTag("drawFrame", "0")
 	animator.setAnimationState("bow", "idle")
 	self.cooldownTimer = 0
@@ -57,17 +54,18 @@ function NebBowShot:reset()
 	animator.stopAllSounds("draw")
 	animator.stopAllSounds("ready")
 	self.weapon:setStance(self.stances.idle)
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end
 
 function NebBowShot:draw()
 	self.energyBonus = status.stat("bowEnergyBonus")
-
 	self.weapon:setStance(self.stances.draw)
 
 	animator.setSoundPitch("draw", 1, self.modifiedDrawTime)
 	animator.playSound("draw", -1)
 	local readySoundPlayed = false
-
+	self.modifiedDrawTime = math.max(script.updateDt(),self.baseDrawTime*(1/(1+math.max(-0.99,status.stat("bowDrawTimeBonus")))))
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	while self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") do
 		if self.walkWhileFiring then
 			mcontroller.controlModifiers({runningSuppressed = true})
@@ -86,7 +84,7 @@ function NebBowShot:draw()
 			status.setResourcePercentage("energyRegenBlock", 0.6)
 			drawFrame = #self.drawArmFrames - 1
 			if self.drainEnergyWhilePowerful then
-			status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
+				status.overConsumeResource("energy", self.holdEnergyUsage * self.dt) --Optionally drain energy while at max power level
 			end
 
 		--If drawn beyond power peak levels, drain energy slowly
@@ -153,7 +151,7 @@ function NebBowShot:fire()
 	else
 		animator.setGlobalTag("drawFrame", "0")
 	end
-
+	status.setStatusProperty(activeItem.hand().."Firing",false)
 	self.cooldownTimer = self.cooldownTime
 end
 

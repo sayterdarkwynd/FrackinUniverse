@@ -45,6 +45,8 @@ function initialize(conf)
 	invertSlots=conf[5]
 	widget.setChecked("roundRobinMode", conf[6])
 	widget.setChecked("roundRobinSlotMode", conf[7])
+	widget.setChecked("leaveOneItemMode", conf[8])
+	widget.setChecked("onlyStackMode", conf[9])
 	redrawListSlots(inputList, inputSlots);
 	redrawListSlots(outputList, outputSlots);
 	redrawItemFilters()
@@ -188,6 +190,16 @@ end
 function roundRobinSlotToggle(name)
 	roundRobin = widget.getChecked(name)
 	world.sendEntityMessage(myBox, "setRRS", roundRobin)
+end
+
+function leaveOneItemToggle(name)
+	leaveOne = widget.getChecked(name)
+	world.sendEntityMessage(myBox, "setLO", leaveOne)
+end
+
+function onlyStackToggle(name)
+	onlyStack = widget.getChecked(name)
+	world.sendEntityMessage(myBox, "setOS", onlyStack)
 end
 
 

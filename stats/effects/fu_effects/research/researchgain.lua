@@ -1,4 +1,4 @@
-function init()
+--[[function init()
 	script.setUpdateDelta(3)
 	self.valBonus = config.getParameter("valBonus")
 	self.baseVal = 1
@@ -49,3 +49,4 @@ function checkSpeed()
 		self.afk = self.afk -2	--movement decrements the penalty
 	end
 end
+]]

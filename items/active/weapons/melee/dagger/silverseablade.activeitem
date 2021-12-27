@@ -1,47 +1,46 @@
 {
-  "itemName" : "silverseablade",
-  "price" : 440,
-  "maxStack" : 1,
-  "rarity" : "uncommon",
-  "description" : "Able to damage all elements equally.",
-  "shortdescription" : "Silver Sea Blade",
-  "tooltipKind" : "sword2",
-  "category" : "dagger",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
-  "level" : 2,
-  "inventoryIcon" : "silverseablade.png",
-  "collectablesOnPickup" : { "fu_weapondagger" : "silverseablade" },
-  "animation" : "daggercombo.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "silverseablade.png"
-  },
+	"itemName" : "silverseablade",
+	"price" : 440,
+	"maxStack" : 1,
+	"rarity" : "uncommon",
+	"description" : "Able to damage all elements equally.",
+	"shortdescription" : "Silver Sea Blade",
+	"tooltipKind" : "sword2",
+	"category" : "dagger",
+	"twoHanded" : false,
+	"itemTags" : ["weapon","melee","dagger", "upgradeableWeapon"],
+	"level" : 2,
+	"inventoryIcon" : "silverseablade.png",
+	//"collectablesOnPickup" : { "fu_weapondagger" : "silverseablade" },
+	"animation" : "daggercombo.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "silverseablade.png"
+	},
 
-  "animationCustom" : {
-    "animatedParts" : { 
-      "parts" : { 
-        "blade" : { "properties" : {"offset" : [0.4, 2.2]}},
-        "swoosh" : { "properties" : {"offset" : [1, 2]}}      
-      }
-    }
-  },
+	"animationCustom" : {
+		"animatedParts" : { 
+			"parts" : { 
+				"blade" : { "properties" : {"offset" : [0.4, 2.2]}},
+				"swoosh" : { "properties" : {"offset" : [1, 2]}}			
+			}
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "silverweapon",
+	"elementalType" : "silverweapon",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "daggercombo",
-  "primaryAbility" : {
-    "fireTime" : 0.4,
-    "baseDps" : 9,
-    "damageConfig" : {
-      "knockback" : 10
-    }
-  },
-  "critChance" : 1, 
-  "critBonus" : 4,
-  "stunChance" : 50,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "daggercombo",
+	"primaryAbility" : {
+		"fireTime" : 0.4,
+		"baseDps" : 9,
+		"damageKindImage" : "/interface/elements/silverweapon.png",
+		"damageConfig" : { "damageSourceKind" : "silverweapon","knockback" : 10 }
+	},
+	"critChance" : 1, 
+	"critBonus" : 4,
+	"stunChance" : 50,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

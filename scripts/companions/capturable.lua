@@ -88,7 +88,8 @@ function capturable.init()
 	setPandorasboxSpecialColor()
 	pandorasboxSpecialColorMusicPlayers = {}
 	pandorasboxSpecialColorMusicRange = 100
-	pandorasboxSpecialColorMusic = {"/music/desert-battle-2.ogg"}
+	--pandorasboxSpecialColorMusic = {"/music/desert-battle-2.ogg"}
+	pandorasboxSpecialColorMusic = {}
 end
 
 function capturable.startReleaseAnimation()

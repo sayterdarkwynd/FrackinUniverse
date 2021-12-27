@@ -1,12 +1,12 @@
 {
   "itemName" : "elduukhartier6broadsword",
-  "level" : 6,
+  "level" : 5,
   "price" : 1150,
   "maxStack" : 1,
   "rarity" : "legendary",
   "description" : "This sword has a grand design, but it looks like it would be difficult to wield.",
   "shortdescription" : "Nhydri Broadsword",
-  "tooltipKind" : "sword",
+  "tooltipKind" : "sword2",
   "category" : "broadsword",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","broadsword","crystal", "upgradeableWeapon"],
@@ -22,14 +22,20 @@
 
   "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbilityType" : "broadswordcombo",
   "primaryAbility" : {
     "fireTime" : 0.83,
-    "baseDps" : 11.5
+    "baseDps" : 11.5,
+    "damageConfig" : {
+      "damageSourceKind" : "electric"
+    }
   },
-
+  
+  "critChance" : 2,
+  "critBonus" : 8,
+  
   "altAbilityType" : "superspinslash",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

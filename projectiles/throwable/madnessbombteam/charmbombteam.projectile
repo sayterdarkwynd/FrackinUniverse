@@ -1,0 +1,30 @@
+{
+  "projectileName" : "charmbombteam",
+  "physics" : "stickybomb",
+  "bounces" : -1,
+  "timeToLive" : 1.35,
+  "image" : "madnessbombteam.png",
+  "animationCycle" : 1.35,
+  "lightColor" : [0, 75, 0],
+  "frameNumber" : 7,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/charmbombexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "ngravityexplosion",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0,
+      "angleAdjust" : 0,
+      "config" : { "timeToLive" : 0.2 }
+    }
+  ],
+  "power" : 0,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "damageTeam" : { "type" : "indiscriminate" },
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "emitters" : [ "sparks" ]
+}

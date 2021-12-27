@@ -23,7 +23,7 @@
   "placementImagePosition" : [-44, 0],
 
   "description" : "Create powered gear.",
-  "shortdescription" : "^orange;Electronics Center^white;",
+  "shortdescription" : "^orange;Electronics Center^reset;",
 
   "learnBlueprintsOnPickup" : [ ],
 
@@ -39,26 +39,19 @@
         "placementImage" : "powerstation.png:default.default",
         "placementImagePosition" : [-44, 0],
 
-        "description" : "Create powered gear",
-        "shortdescription" : "^orange;Electronics Center^white;"
+        "description" : "Create powered gear.",
+        "shortdescription" : "^orange;Electronics Center^reset;"
       },
 
       "interactData" : {
         "config" : "/interface/windowconfig/powerstation.config",
         "paneLayoutOverride" : {
-          "windowtitle" : {
-            "title" : " Electronics Center",
-            "subtitle" : " ^#b9b5b2;Create powered gear.",
-            "icon" : {
-              "file" : ""
-            }
-          }
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^#e158ff;Electronics Center^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Create powered gear."}          
         },
 
         "filter" : [ "powerstation1" ],
-
-     //   "initialRecipeUnlocks" : [ "smartbox_halver", "configurable3statecycler", "smartbox_singular", "smartbox_splitter", "isn_incinerator", "fu_watcher", "isn_powersensor","isn_solarpanel","isn_hydroponicstray","isn_battery_t1","fu_powersensorlarge","isn_powersensor","fu_liquidcondenser", "fu_conduit", "fu_liquidmixer" ],
-
         "upgradeMaterials" : [
           { "item" : "carbonplate", "count" : 6 },
           { "item" : "stickofram", "count" : 2 },
@@ -81,24 +74,18 @@
         "placementImagePosition" : [-44, 0],
 
         "description" : "High-tech powered devices.",
-        "shortdescription" : "^orange;Power Station^white;"
+        "shortdescription" : "^orange;Power Station^reset;"
       },
 
       "interactData" : {
         "config" : "/interface/windowconfig/powerstation.config",
         "paneLayoutOverride" : {
-          "windowtitle" : {
-            "title" : " Power Station",
-            "subtitle" : " ^#b9b5b2;High-tech powered devices.",
-            "icon" : {
-              "file" : ""
-            }
-          }
+          "background" : {"fileHeader" : "/interface/windowconfig/newuiheader_dark_upgraded.png"},  
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^#e158ff;Power Station^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Hi-Tech power and wiring solutions."}     
         },
-        "filter" : [ "powerstation1", "powerstation2" ]//,
-		
-       // "initialRecipeUnlocks" : [ "smartbox_halver", "configurable3statecycler", "smartbox_singular", "fu_cripplerturret", "smartbox_splitter", "isn_incinerator", "fu_watcher", "isn_powersensor","isn_solarpanel","isn_hydroponicstray","isn_battery_t1","fu_powersensorlarge","isn_powersensor","fu_liquidcondenser", "fu_conduit", "fu_atmosfilter", "fu_liquidmixer" ]
-	   
+        "filter" : [ "powerstation1", "powerstation2" ]
       },
 
       "craftingSound" : "/sfx/interface/crafting_tech1.ogg",

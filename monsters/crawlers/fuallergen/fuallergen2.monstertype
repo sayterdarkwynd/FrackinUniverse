@@ -52,22 +52,17 @@
       "hostileActions" : [
         {
           "name" : "action-fire",
-          "cooldown" : 3,
+          "cooldown" : 4,
           "parameters" : {
             "requireLineOfSight" : true,
             "maximumRange" : 20,
-            "minimumRange" : 3,
-            "windupState" : "hurt",
+            "minimumRange" : 1,
+            "windupState" : "fire",
             "windupTime" : 0.4,
 
-            "projectileType" : "miasma",
+            "projectileType" : "miasmaflower",
             "projectileCount" : 1,
             "fireOffset" : [0, 0],
-            "power" : 10,
-            "projectileParameters" : {
-              "speed" : 3.25,
-              "timeToLive" : 8.0
-            },
             "faceTarget" : false,
             "rotationCenter": [0, 0],
 

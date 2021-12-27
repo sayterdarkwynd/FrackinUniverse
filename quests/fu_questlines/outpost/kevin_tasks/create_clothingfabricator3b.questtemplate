@@ -1,35 +1,33 @@
 {
-  "id" : "create_clothingfabricator3b",
-  "prerequisites" : [ "create_clothingfabricator3" ],
-  "title" : "Infantile Deliciousness",
-  "text" : "You ever wonder how many ^orange;baby heads^reset; you can fit in a refrigerator? I do! Let's find out, shall we? If you were to gather say...200 ^orange;baby heads on sticks^reset; I'd be ever so thankful.",
-  "completionText" : "Many thanks, Lester. This time I have an ^orange;honestly good^reset; thing for you! Promise!",
-  "moneyRange" : [10, 20],
-  "rewards" : [ [ [ "cuddlehorse", 1 ],[ "fumadnessresource", 500 ] ] ],
-  "speaker" : "questGiver",
+	"id" : "create_clothingfabricator3b",
+	"prerequisites" : [ "create_clothingfabricator3" ],
+	"title" : "Infantile Deliciousness",
+	"text" : "You ever wonder how many ^orange;baby heads^reset; you can fit in a refrigerator? I do! Let's find out, shall we? If you were to gather say...200 ^orange;baby heads on sticks^reset; I'd be ever so thankful.",
+	"completionText" : "Many thanks, Lester. This time I have an ^orange;honestly good^reset; thing for you! Promise!",
+	"moneyRange" : [10, 20],
+	"rewards" : [ [ [ "cuddlehorse", 1 ],[ "fumadnessresource", 500 ] ] ],
+	"speaker" : "questGiver",
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
 
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "canBeAbandoned" : true,
-    "requireTurnIn" : true,
+		"requireTurnIn" : true,
 
-    "turnInDescription" : "Bring ^red;Kevin, your overlord^reset; 200 ^orange;Baby Heads on Sticks^reset;",
+		"turnInDescription" : "Bring ^red;Kevin, your overlord^reset; 200 ^orange;Baby Heads on Sticks^reset;",
 
-
-    "conditions" : [
-      {
-        "type" : "gatherItem",
-        "itemName" : "babyheadonastick",
-        "count" : 200,
-        "consume" : true
-      }
-    ]
-  }
+		"conditions" : [
+			{
+				"type" : "gatherItem",
+				"itemName" : "babyheadonastick",
+				"count" : 200,
+				"consume" : true
+			}
+		]
+	}
 }

@@ -1,49 +1,23 @@
 {
 	"stats": [
-		{
-			"stat": "maxHealth",
-			"effectiveMultiplier": 1.15
-		},
-		{
-			"stat": "maxEnergy",
-			"effectiveMultiplier": 0.88
-		},
-		{
-			"stat": "fireResistance",
-			"amount": -0.3
-		},
-		{
-			"stat": "radioactiveResistance",
-			"amount": -0.1
-		},		
-		{
-			"stat": "iceResistance",
-			"amount": 0.4
-		},
-		{
-			"stat": "maxFood",
-			"amount": 75
-		},		
-		{
-			"stat": "grit",
-			"amount": 0.25
-		},
-		{
-			"stat": "liquidnitrogenImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "iceslipImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "iceStatusImmunity",
-			"amount": 1
-		}
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.15},		
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.12},
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.80 },
+        
+		{ "stat": "fireResistance", "amount": -0.30 },
+		{ "stat": "iceResistance", "amount": 0.30 },
+		{ "stat": "radioactiveResistance", "amount": 0.05 },
+        
+		{ "stat": "iceStatusImmunity", "amount": 1 },
+		{ "stat": "iceslipImmunity", "amount": 1 },
+		{ "stat": "liquidnitrogenImmunity", "amount": 1 },
+
+		{ "stat": "axeMastery", "amount": 0.15 },
+		{ "stat": "machinepistolMastery", "amount": 0.15 }
 	],
 	"diet" : "omnivore",
 	"controlModifiers": {
-		"speedModifier": 1.05
+		"airJumpModifier" : 1.08
 	},
 	"weaponScripts": [{
 		"script": "/scripts/fr_weaponscripts/freebonus.lua",
@@ -62,16 +36,32 @@
 			]
 		}
 	}],
-	"envEffects": [{
-		"biomes": "cold",
-		"stats": [{
-				"stat": "maxHealth",
-				"effectiveMultiplier": 1.15
-			},
-			{
-				"stat": "maxEnergy",
-				"effectiveMultiplier": 1.15
-			}
-		]
-	}]
+	"envEffects": [
+		{
+			"biomes": "cold",
+			"stats": [
+				{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 1.15
+				},
+				{
+					"stat": "maxEnergy",
+					"effectiveMultiplier": 1.15
+				}
+			]
+		},
+		{
+			"biomes": "hot",
+			"stats": [
+				{
+					"stat": "maxHealth",
+					"effectiveMultiplier": 0.80
+				},
+				{
+					"stat": "maxEnergy",
+					"effectiveMultiplier": 0.80
+				}
+			]
+		}		
+	]
 }

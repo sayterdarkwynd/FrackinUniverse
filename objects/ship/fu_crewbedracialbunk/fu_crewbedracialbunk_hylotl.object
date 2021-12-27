@@ -1,0 +1,62 @@
+{
+  "objectName" : "fu_crewbedracialbunk_hylotl",
+  "printable" : false,
+  "colonyTags" : ["hylotl", "bed"],
+  "rarity" : "Legendary",
+  "description" : "A standard Hylotl ship bunk bed. ^yellow;Crew +1^reset;. Counts as a deed. ^red;BYOS Only^reset;. Extract to return Crew Bunk.",
+  "shortdescription" : "Hylotl Crew Bunk Bed",
+  "race" : "generic",
+  "category" : "furniture",
+  "price" : 0,
+
+  "apexDescription" : "A basic bunk bed.",
+  "avianDescription" : "This bunk bed looks rather basic.",
+  "floranDescription" : "Floran would like to sssleep in bunk bed.",
+  "glitchDescription" : "Sentimental. A bunk bed, not dissimilar from those at the Protectorate academy.",
+  "humanDescription" : "A bunk bed. Not terribly spacious, but surprisingly comfortable.",
+  "hylotlDescription" : "I have fond memories of sleeping in such a bed at the Protectorate academy.",
+  "novakidDescription" : "A regular bunk bed.",
+
+  "objectType" : "loungeable",
+  "sitFlipDirection" : false,
+  "sitOrientation" : "lay",
+  "sitAngle" : 90,
+  "sitCoverImage" : "/objects/ship/shipbeds/hylotlshipbed2/hylotlshipbed2cover.png",
+  "sitEmote" : "sleep",
+  "sitStatusEffects" : [
+    "bed1"
+  ],
+  "sitEffectEmitters" : [ "sleepbubbles" ],
+
+
+  "inventoryIcon" : "/objects/ship/shipbeds/hylotlshipbed2/hylotlshipbed2icon.png",
+  "orientations" : [
+    {
+      "image" : "/objects/ship/shipbeds/hylotlshipbed2/hylotlshipbed2.png:<color>",
+      "imagePosition" : [0, 0],
+      "sitPosition" : [18, 13],
+      "spaceScan" : 0.1,
+      "flipImages" : true,
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+      "collision" : "platform"
+    },
+    {
+      "image" : "/objects/ship/shipbeds/hylotlshipbed2/hylotlshipbed2.png:<color>",
+      "imagePosition" : [0, 0],
+      "sitPosition" : [-38, 13],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "direction" : "left",
+      "collision" : "platform"
+    }
+  ],
+  
+  "scripts" : [ "/objects/ship/fu_shipstatmodifier.lua" ],
+  "scriptDelta" : 60,
+  "stats" : {
+    "crewSize" : 1
+  },
+  "byosOnly" : true,
+  "isDeed" : true
+}

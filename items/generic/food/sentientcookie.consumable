@@ -1,0 +1,29 @@
+{
+	"itemName": "sentientcookie",
+	"rarity": "uncommon",
+	"price": 60,
+	"category": "preparedFood",
+	"inventoryIcon": "sentientcookie.png",
+	"description": "It won't stop begging for life, unless you eat it. \n ^blue;+Insanity^reset; and...? Food Type:^orange; Meat and Herbs ^reset;",
+	"shortdescription": "Sentient Cookie",
+	"effects": [
+        ["meatc_plant_meal",
+        {
+            "effect": "insanity",
+            "duration": 120,
+            "energyModifier": 1.10
+        },
+        { "effect" : "maxhealthscalingboostfood",
+            "duration": 120,
+            "healthModifier": 1.15 
+        }
+        ]
+    ],
+	"foodValue": 15,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

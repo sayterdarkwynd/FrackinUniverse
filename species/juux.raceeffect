@@ -1,48 +1,29 @@
 {
 	"stats": [
-		{
-			"stat": "electricResistance",
-			"amount": 0.30
-		},
-		{
-			"stat": "iceResistance",
-			"amount": 0.15
-		},
-		{
-			"stat": "cosmicResistance",
-			"amount": -0.23
-		},		
-		{
-			"stat": "shadowResistance",
-			"amount": -0.23
-		},		
-		{
-			"stat": "electricStatusImmunity",
-			"amount": 1
-		},		
-		{
-			"stat": "iceslipImmunity",
-			"amount": 1
-		},		
-		{
-			"stat": "snowslipImmunity",
-			"amount": 1
-		},		
-		{
-			"stat": "mentalProtection",
-			"amount": 0.2
-		},		
-		{
-			"stat": "fuCharisma",
-			"baseMultiplier": 0.9
-		}
+		{ "stat": "maxHealth", "effectiveMultiplier": 0.88 },
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.10 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.08 },
+		{ "stat": "fuCharisma", "baseMultiplier": 0.90 },
+
+		{ "stat": "mentalProtection", "amount": 0.30 },
+		{ "stat": "physicalResistance", "amount": -0.12 },
+		{ "stat": "fireResistance", "amount": 0.20 },
+		{ "stat": "iceResistance", "amount": -0.05 },
+		{ "stat": "poisonResistance", "amount": -0.20 },
+		{ "stat": "electricResistance", "amount": 0.20 },
+		{ "stat": "cosmicResistance", "amount": 0.15 },
+		{ "stat": "radioactiveResistance", "amount": 0.15 },
+
+		{ "stat": "fireStatusImmunity", "amount": 1 },
+		{ "stat": "magnorbMastery", "amount": 0.2 }
+
 	],
 	"diet" : "entity",
 	"envEffects": [
 		{
 			"biomes": "electric",
 			"controlModifiers": {
-				"speedModifier": 1.1
+				"speedModifier": 1.05
 			},		
 			"stats": []
 		},
@@ -50,7 +31,7 @@
 			"biomes": "cold",
 			"stats": [{
 				"stat": "protection",
-				"effectiveMultiplier": 1.1
+				"effectiveMultiplier": 0.9
 			}
 			]
 		}	
@@ -63,31 +44,6 @@
 					"stat": "powerMultiplier",
 					"effectiveMultiplier": 1.20
 				}
-			]
-		},		
-		{
-			"weapons": ["qs","quarterstaff"],
-			"stats": [{
-					"stat": "protection",
-					"effectiveMultiplier": 1.10
-				},
-				{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.15
-				}
-			]
-		},		
-		{
-			"weapons": ["magnorb"],
-			"stats": [
-				{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.15
-				},
-				{
-					"stat": "protection",
-					"effectiveMultiplier": 1.10
-				}				
 			]
 		}
 	],

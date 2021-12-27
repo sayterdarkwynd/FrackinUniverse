@@ -1,9 +1,8 @@
 require "/scripts/util.lua"
 require "/scripts/pathutil.lua"
-require "/interface/objectcrafting/fu_racialiser/fu_racialiser.lua"
+require "/scripts/messageutil.lua"
 require "/zb/zb_textTyper.lua"
 require "/zb/zb_util.lua"
-require "/scripts/messageutil.lua"
 
 function init()
 	textUpdateDelay = config.getParameter("textUpdateDelay")
@@ -56,7 +55,8 @@ function init()
 	end)
 
 	ship.notInitial = config.getParameter("notInitial")
-	ship.shipResetConfirmationDialogs = ship.miscConfig.shipResetConfirmationDialogs
+	ship.shipResetConfirmationDialogs = config.getParameter("shipResetConfirmationDialogs")
+	ship.backgroundPresentConfirmation = config.getParameter("backgroundPresentConfirmation")
 end
 
 function generateShipLists()
@@ -79,7 +79,7 @@ function generateShipLists()
 		if addShip then
 			if id == "vanilla" then
 				ship.vanillaShip = data
-			elseif id == "racial" then
+			--elseif id == "racial" then
 				--[[local racialShipData = root.assetJson("/universe_server.config").speciesShips
 				local raceOverrides = root.assetJson("/interface/objectcrafting/fu_racializer/fu_racializer_racetableoverride.config")
 				local races
@@ -129,14 +129,14 @@ function generateShipLists()
 					shipData.id = race .. "racial"
 					table.insert(ship.upgradableShips, shipData)
 				end ]]--
-			else
-				local addShip = true
+			elseif id~="racial" then--else
+				local shouldAddShip = true
 				if data.universeFlag then
-					addShip = false
+					shouldAddShip = false
 					if not ship.disableUnlockableShips then
 						for _, flag in ipairs (ship.universeFlags or {}) do
 							if flag == data.universeFlag then
-								addShip = true
+								shouldAddShip = true
 								break
 							end
 						end
@@ -149,7 +149,7 @@ function generateShipLists()
 					ignoreShip = true
 				end
 
-				if addShip and not ignoreShip then
+				if shouldAddShip and not ignoreShip then
 					data.id = id
 					if type(data.ship) == "table" then
 						data.mode = "Upgradable"
@@ -276,8 +276,23 @@ function changeState(newState)
 					end
 				end)
 			else
-				createShip()
-				changeState("shipChosen")
+				local shipConfigFile = root.assetJson("/universe_server.config").speciesShips[player.species()][1]
+				local shipConfig = root.assetJson(shipConfigFile)
+				if shipConfig.backgroundOverlays[1] then
+					promises:add(player.confirm(ship.backgroundPresentConfirmation), function (choice)
+						if state.state == "frackinShipChosen" then
+							if choice then
+								createShip()
+								changeState("shipChosen")
+							else
+								changeState(state.previousState)
+							end
+						end
+					end)
+				else
+					createShip()
+					changeState("shipChosen")
+				end
 			end
 			return
 		elseif newState == "vanillaShipChosen" then
@@ -420,11 +435,7 @@ function createShip(vanilla)
 		world.setProperty("fuChosenShip", true)
 		if vanilla then
 			player.upgradeShip(ship.vanillaShip.shipUpgrades)
-			-- remove after restoring T0 ships
-			race = player.species()
-			count = racialiserBootUp()
-			parameters = getBYOSParameters("techstation", true, _)
-			player.giveItem({name = "fu_byostechstation", count = 1, parameters = parameters})
+			pane.dismiss()
 		else
 			if ship.selectedShip.mode == "Buildable" then
 				if string.find(ship.selectedShip.ship, "/") then
@@ -438,9 +449,9 @@ function createShip(vanilla)
 				sb.logError("INVALID SHIP MODE DETECTED")
 			end
 			player.startQuest("fu_byos")
+			pane.dismiss()
 		end
 	end
-	pane.dismiss()
 end
 
 function getShipImage(file)
@@ -468,14 +479,4 @@ function comparableName(name)
 	return name:gsub('%^#?%w+;', '') -- removes the color encoding from names, e.g. ^blue;Madness^reset; -> Madness
 		:gsub('ū', 'u')
 		:upper()
-end
-
-function racialiserBootUp()
-	raceInfo = root.assetJson("/interface/objectcrafting/fu_racialiser/fu_raceinfo.config").raceInfo
-	for num, info in pairs (raceInfo) do
-		if info.race == race then
-			return num
-		end
-	end
-	return 0
 end

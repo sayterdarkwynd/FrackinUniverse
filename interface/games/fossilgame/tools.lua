@@ -452,17 +452,17 @@ ExTool.area = {{0,0},{-1,-1},{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1}}
 ExTool.size = {3,3}
 
 ExTool.cursorFrame=1
-ExTool.animationSpeed = 1.25
-ExTool.frames={1,2,2,3,3}
-ExTool.soundTriggerSequence={1,0,0,0,2}
-ExTool.strikeFrame=5
+ExTool.animationSpeed = 0.4
+ExTool.frames={2,1,2,1}
+ExTool.soundTriggerSequence={1,0,1,0}
+ExTool.strikeFrame=3
 
-ExTool.sprite = Sprite:new("/interface/games/fossilgame/images/dynamitetool.png", {20,20}, {3,1}, 3)
-ExTool.buttonIcon = "/interface/games/fossilgame/images/crossicon.png"
+ExTool.sprite = Sprite:new("/interface/games/fossilgame/images/mattockhrect.png", {20,20}, {3,1}, 3)
+ExTool.buttonIcon = "/interface/games/fossilgame/images/extoolicon.png"
 ExTool.buttonBackground = "/interface/games/fossilgame/images/halfbutton.png"
 ExTool.sprite.origin = {0,0}
 ExTool.sprite.scale = 2
-ExTool.sound = {"/sfx/projectiles/acid_hit.ogg","/sfx/projectiles/blast_small1.ogg"}
+ExTool.sound = {"/sfx/tools/pickaxe_hit.ogg"}
 
 function ExTool:calculateUses(toolUses)
   for toolName,uses in pairs(toolUses) do

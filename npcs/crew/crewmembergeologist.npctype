@@ -3,56 +3,52 @@
   "baseType" : "crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "scientisthead",
         "chest" : "scientistchest",
         "legs" : "scientistlegs"
       },
-
+	  
       "role" : {
         "type" : "chemist",
         "name" : "Geologist",
         "field" : "Geology",
         "uniformColorIndex" : 6
       },
+
       // This interactActions only happens when in a crew, and only when
       // interacted with by the captain.
-  "interactAction" : "OpenMerchantInterface",
-  "interactData" : {
-    "config" : "/interface/windowconfig/merchant.config",
-    "paneLayoutOverride" : {
-      "windowtitle" : {
-        "title" : " Geologist",
-        "subtitle" : " Rocks and Rock-like things."
-      }
-    },
-    "buyFactor" : 8.75,
-    "sellFactor" : 0.21,
-    "items" : [
-      { "item" : "copperore" },
-      { "item" : "silverore" },
-      { "item" : "goldore" },
-      { "item" : "ironore" },
-      { "item" : "tungstenore" },
-      { "item" : "titaniumore" },
-      { "item" : "durasteelore" },
-      { "item" : "moonstoneore" },
-	    { "item" : "zerchesiumore" },
-	    { "item" : "prisiliteore" },
-	    { "item" : "protociteore" },
-	    { "item" : "penumbriteore" },
-	    { "item" : "uraniumore" },
-	    { "item" : "neptuniumore" },
-	    { "item" : "plutoniumore" },
-	    { "item" : "thoriumore" }
-    ]
-  }
-
+      "interactAction" : "OpenMerchantInterface",
+	  "interactData" : {
+		"config" : "/interface/windowconfig/merchant.config",
+		"paneLayoutOverride" : {
+		  "windowtitle" : {
+			"title" : " Geologist",
+			"subtitle" : " Rocks and Rock-like things."
+		  }
+		},
+		"buyFactor" : 8.75,
+		"sellFactor" : 0.30,
+		"items" : [
+		  { "item" : "copperore" },
+		  { "item" : "silverore" },
+		  { "item" : "goldore" },
+		  { "item" : "ironore" },
+		  { "item" : "tungstenore" },
+		  { "item" : "titaniumore" },
+		  { "item" : "durasteelore" },
+		  { "item" : "moonstoneore" },
+		  { "item" : "zerchesiumore" },
+		  { "item" : "prisiliteore" },
+		  { "item" : "protociteore" },
+		  { "item" : "penumbriteore" },
+		  { "item" : "uraniumore" },
+		  { "item" : "neptuniumore" },
+		  { "item" : "plutoniumore" },
+		  { "item" : "thoriumore" }
+		]
+	  }
     },
 
     "dialog" : {
@@ -73,31 +69,6 @@
               "Statement. I've got things to sell."
             ]
           }
-        },
-        "combatBenefit" : {
-          "default" : {
-            "default" : [
-              "Let me give you a boost real quick!",
-              "Let me help you out!",
-              "Looks like you could use my assistance!",
-              "I can help!"
-            ]
-          },
-          "floran" : {
-            "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
-            ]
-          }
         }
       }
     }
@@ -107,11 +78,7 @@
     "default" : [
       [0, [
           {
-            "primary" : [ "pickaxe" ],
-            "sheathedprimary" : [ "fuminelayer" ],
-			"head" :  [{ "name" : "scientisthead", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-			"chest" : [ { "name" : "scientistchest", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "legs" : [ { "name" : "scientistlegs", "count" :1, "parameters" : { "colorIndex" : 6 } } ]
+            "primary" : [ "pickaxe" ]
           }
         ] ]
     ]

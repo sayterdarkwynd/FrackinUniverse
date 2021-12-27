@@ -1,0 +1,76 @@
+{
+  "type" : "fupeglacischolar",
+  "baseType" : "villager",
+
+  "scriptConfig" : {
+    "questGenerator" : {
+      "graduation" : {
+        "nextNpcType" : [
+          [0.25, "crewmemberchemistblue"],
+          [0.25, "crewmemberchemistgreen"],
+          [0.25, "crewmemberchemistyellow"],
+          [0.25, "crewmemberchemistorange"],
+          [1, "crewmembermedic"],
+          [1, "crewmembermedic2"],
+          [1, "crewmemberarctic"],
+          [1, "crewmemberbiohazard"],
+          [0.5, "crewmembercounsellor"],
+          [0.35, "crewmembercounsellor2"],
+          [0.15, "crewmembercounsellor3"],
+          [1, "crewmembergas"],
+          [1, "crewmembergeologist"],
+          [1, "crewmemberoceanographer"],
+          [3, "crewmemberresearcher"],
+          [1, "crewmembersciencedrug"],
+          [1, "crewmembervolcanologist"]
+        ]
+      }
+    },
+    "dialog" : {
+      "greeting" : {
+        "default" : {
+          "default" : [
+            "Do keep your voice down, would you? I'm trying to read.",
+            "I hope you're planning to return those books.",
+            "Welcome to the library. Stay and read a while, if you'd like.",
+            "Such a wealth of knowledge to be found in books, whether physical or digital. Don't you agree?"
+          ]
+        },
+        "hylotl" : {
+          "default" : [
+            "I'm here reading up on these Wanderers the Peglaci's history speaks of. Could they be real?",
+            "The Wanderers... How could an entire race just...vanish? I find it hard to believe, if I'm being honest."
+          ]
+        }
+      },
+      "converse" : {	
+        "default" : {
+          "default" : [
+            "Do keep your voice down, would you? I'm trying to read.",
+            "I hope you're planning to return those books.",
+            "Welcome to the library. Stay and read a while, if you'd like.",
+            "Such a wealth of knowledge to be found in books, whether physical or digital. Don't you agree?"
+          ]
+        },
+        "hylotl" : {
+          "default" : [
+            "I'm here reading up on these Wanderers the Peglaci's history speaks of. Could they be real?",
+            "The Wanderers... How could an entire race just...vanish? I find it hard to believe, if I'm being honest."
+          ]
+        }
+      }
+    }
+  },
+
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [""],
+            "chest" : [ { "name" : "apextier6mchest", "parameters" : { "colorIndex" : 3 } } ],
+            "legs" : [ { "name" : "apextier6mpants", "parameters" : { "colorIndex" : 3 } } ]
+          }
+        ] ]
+    ]
+  }
+}

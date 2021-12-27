@@ -1,57 +1,23 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
-function configParameter(name,default)
-	if vehicle.configParameter then
-		return vehicle.configParameter(name,default)--Glad
-	else
-		return config.getParameter(name,default)--Cheerful
-	end
-end
-
 function healthLevelAdjust(hp_or_armor)
 	return root.evalFunction("npcLevelPowerMultiplierModifier", self.level) * hp_or_armor
 end
 
-
-
-function checkHazardType()
-	isSafeLiquid()
-	isGas()
-end
-
 function isSafeLiquid()
-	if mcontroller.liquidId() == 1 or	-- water
-		mcontroller.liquidId() == 55 or	--alienjuice
-		mcontroller.liquidId() == 61 or	-- beer
-		mcontroller.liquidId() == 40 or	-- blood
-		mcontroller.liquidId() == 59 or	-- crystal liquid
-		mcontroller.liquidId() == 60 or	-- darkwater
-		mcontroller.liquidId() == 45 or	-- elder fluid
-		mcontroller.liquidId() == 11 or	-- erchius
-		mcontroller.liquidId() == 6 or	-- healing liquid
-		mcontroller.liquidId() == 7 or	-- milk
-		mcontroller.liquidId() == 43 or	-- organic soup
-		mcontroller.liquidId() == 3 or	-- poison
-		mcontroller.liquidId() == 44 or	-- protocite
-		mcontroller.liquidId() == 53 or	-- pus
-		mcontroller.liquidId() == 69 or	-- sludge
-		mcontroller.liquidId() == 12 or	-- swampwater
-		mcontroller.liquidId() == 58 then -- wastewater
-		return true
+	-- get liquid name and compare to list
+	local liquidId = mcontroller.liquidId()
+	if not self.liquidCache[liquidId] then
+		self.liquidCache[liquidId] = root.liquidName(liquidId)
 	end
-end
-
-function isGas()
-	if mcontroller.liquidId() == 65 or	-- quicksand
-		mcontroller.liquidId() == 49 or	--helium3
-		mcontroller.liquidId() == 62 or	-- hydrogen
-		mcontroller.liquidId() == 66 or	-- metallic hydrogen
-		mcontroller.liquidId() == 63 or	-- nitrogen
-		mcontroller.liquidId() == 64 or	-- poisongas
-		mcontroller.liquidId() == 50 then -- shadowgas
-		return true
+	local vehicleLiquid=self.liquidCache[liquidId]
+	for x, value in pairs(self.liquidList) do
+		if value == vehicleLiquid then
+			return not self.liquidUnsafe
+		end
 	end
+	return self.liquidUnsafe
 end
 
 function init()
@@ -82,41 +48,41 @@ function init()
 	self.waterFactor=0 --how much water are we in right now
 
 	self.level = world.threatLevel() or 1
-	self.maxHealth = healthLevelAdjust(configParameter("maxHealth"))
-	self.protection = healthLevelAdjust(configParameter("protection"))
+	self.maxHealth = healthLevelAdjust(config.getParameter("maxHealth"))
+	self.protection = healthLevelAdjust(config.getParameter("protection"))
 
-	self.damageStateNames = configParameter("damageStateNames")
-	self.damageStateDriverEmotes = configParameter("damageStateDriverEmotes")
-	self.materialKind = configParameter("materialKind")
+	self.damageStateNames = config.getParameter("damageStateNames")
+	self.damageStateDriverEmotes = config.getParameter("damageStateDriverEmotes")
+	self.materialKind = config.getParameter("materialKind")
 
-	self.rockingInterval = configParameter("rockingInterval")
+	self.rockingInterval = config.getParameter("rockingInterval")
 
-	self.windLevelOffset = configParameter("windLevelOffset")
-	self.rockingWindAngleMultiplier = configParameter("rockingWindAngleMultiplier")
-	self.maxRockingAngle = configParameter("maxRockingAngle")
-	self.angleApproachFactor = configParameter("angleApproachFactor")
+	self.windLevelOffset = config.getParameter("windLevelOffset")
+	self.rockingWindAngleMultiplier = config.getParameter("rockingWindAngleMultiplier")
+	self.maxRockingAngle = config.getParameter("maxRockingAngle")
+	self.angleApproachFactor = config.getParameter("angleApproachFactor")
 
-	self.speedRotationMultiplier = configParameter("speedRotationMultiplier")
+	self.speedRotationMultiplier = config.getParameter("speedRotationMultiplier")
 
-	self.targetMoveSpeed = configParameter("targetMoveSpeed")
-	self.moveControlForce = configParameter("moveControlForce")
+	self.targetMoveSpeed = config.getParameter("targetMoveSpeed")
+	self.moveControlForce = config.getParameter("moveControlForce")
 
-	mcontroller.resetParameters(configParameter("movementSettings"))
+	mcontroller.resetParameters(config.getParameter("movementSettings"))
 
- -- if storage.ballasted then mcontroller.applyParameters(configParameter("ballastedSettings")) end
+ -- if storage.ballasted then mcontroller.applyParameters(config.getParameter("ballastedSettings")) end
 
-	self.minWaterFactorToFloat=configParameter("minWaterFactorToFloat")
+	self.minWaterFactorToFloat=config.getParameter("minWaterFactorToFloat")
 	self.maxWaterFactorToFloat= 1-self.minWaterFactorToFloat
-	self.sinkingBuoyancy=configParameter("sinkingBuoyancy")
-	self.sinkingFriction=configParameter("sinkingFriction")
+	self.sinkingBuoyancy=config.getParameter("sinkingBuoyancy")
+	self.sinkingFriction=config.getParameter("sinkingFriction")
 
-	self.bowWaveParticleNames=configParameter("bowWaveParticles")
-	self.bowWaveMaxEmissionRate=configParameter("bowWaveMaxEmissionRate")
+	self.bowWaveParticleNames=config.getParameter("bowWaveParticles")
+	self.bowWaveMaxEmissionRate=config.getParameter("bowWaveMaxEmissionRate")
 
-	self.splashParticleNames=configParameter("splashParticles")
-	self.splashEpsilon=configParameter("splashEpsilon")
+	self.splashParticleNames=config.getParameter("splashParticles")
+	self.splashEpsilon=config.getParameter("splashEpsilon")
 
-	self.maxGroundSearchDistance = configParameter("maxGroundSearchDistance")
+	self.maxGroundSearchDistance = config.getParameter("maxGroundSearchDistance")
 
 	local bounds = mcontroller.localBoundBox()
 	local sixth = (bounds[3]-bounds[1])/6
@@ -126,8 +92,17 @@ function init()
 	self.centerGroundTestPoint={midp,bounds[2]}
 
 	--setup the store functionality
-	self.ownerKey = configParameter("ownerKey")
+	self.ownerKey = config.getParameter("ownerKey")
 	vehicle.setPersistent(self.ownerKey)
+
+	self.liquidCache = {}
+	self.liquidList = config.getParameter("safeLiquids")
+	if not self.liquidList then
+		self.liquidList = config.getParameter("unsafeLiquids", {"lava", "corelava"})
+		self.liquidUnsafe = true
+	else
+		self.liquidUnsafe = false
+	end
 
 	message.setHandler("store", function(_, _, ownerKey)
 		local animState=animator.animationState("base")
@@ -176,7 +151,6 @@ function update()
 				vehicle.setLoungeEnabled("passenger"..num,false)
 			end
 		end
-
 	elseif (animState=="sinking") then
 		local sinkAngle=-math.pi*0.3
 		self.angle=updateSinking(waterFactor, self.angle,sinkAngle)
@@ -261,7 +235,7 @@ function updateDriving()
 			if fatman and world.entityExists(fatman) then
 				world.sendEntityMessage(fatman, "queueRadioMessage", "subCantOperate", 1.0) -- send player a warning
 			end
-		elseif isSafeLiquid() then -- check the type of liquid they are in. works, but not if they swap to new liquid type. odd?
+		else
 			-- movement
 			if vehicle.controlHeld("drivingSeat", "left") then
 				mcontroller.approachXVelocity(-self.targetMoveSpeed, self.moveControlForce)
@@ -574,8 +548,8 @@ function applyDamage(damageRequest)
 end
 
 function setDamageEmotes()
-	local damageTakenEmote=configParameter("damageTakenEmote")
-	self.damageEmoteTimer=configParameter("damageEmoteTime")
+	local damageTakenEmote=config.getParameter("damageTakenEmote")
+	self.damageEmoteTimer=config.getParameter("damageEmoteTime")
 	vehicle.setLoungeEmote("drivingSeat",damageTakenEmote)
 	for n = 1,2,1 do
 		vehicle.setLoungeEmote("passenger"..n,damageTakenEmote)
@@ -661,12 +635,12 @@ end
 
 function applyMovementParams(args)
 -- reset to defaults, apply base damage settings
-	mcontroller.resetParameters(configParameter("movementSettings"))
-	local settingsNameList=configParameter("damageMovementSettingNames")
-	local settingsObject = configParameter(settingsNameList[self.damageStateIndex])
+	mcontroller.resetParameters(config.getParameter("movementSettings"))
+	local settingsNameList=config.getParameter("damageMovementSettingNames")
+	local settingsObject = config.getParameter(settingsNameList[self.damageStateIndex])
 
 	if storage.ballasted then
-		local so = configParameter("ballastedSettings")
+		local so = config.getParameter("ballastedSettings")
 		for k,v in pairs(so) do
 			settingsObject[k] = v
 		end

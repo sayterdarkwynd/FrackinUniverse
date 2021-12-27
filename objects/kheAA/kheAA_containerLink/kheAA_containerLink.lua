@@ -37,7 +37,8 @@ function findContainer()
 
 	local objectIds = world.objectQuery(storage.position, self.linkRange, { order = "nearest" })
 	for _, objectId in pairs(objectIds) do
-		if world.containerSize(objectId) and not world.getObjectParameter(objectId,"notItemStorage",false) then
+		local tSize=world.containerSize(objectId)
+		if tSize and (tSize>0) and not world.getObjectParameter(objectId,"notItemStorage",false) then
 			transferUtil.vars.containerId=objectId
 			self.containerPos=world.entityPosition(transferUtil.vars.containerId)
 			transferUtil.vars.inContainers[transferUtil.vars.containerId]=self.containerPos
@@ -50,7 +51,7 @@ end
 function outputnodes()
 
 	object.setOutputNodeLevel(transferUtil.vars.outDataNode,not transferUtil.vars.containerId==nil)
-	if self.outPartialFillNode or self.outCompleteFillNode then
+	if transferUtil.vars and transferUtil.vars.containerId and (self.outPartialFillNode or self.outCompleteFillNode) then
 		self.containerSize=world.containerSize(transferUtil.vars.containerId)
 		self.containerFill=util.tableSize(world.containerItems(transferUtil.vars.containerId) or {})
 
@@ -59,6 +60,13 @@ function outputnodes()
 		end
 		if self.outCompleteFillNode then
 			object.setOutputNodeLevel(self.outCompleteFillNode,(self.containerFill and self.containerSize) and (self.containerFill==self.containerSize))
+		end
+	else
+		if self.outPartialFillNode then
+			object.setOutputNodeLevel(self.outPartialFillNode,false)
+		end
+		if self.outCompleteFillNode then
+			object.setOutputNodeLevel(self.outCompleteFillNode,false)
 		end
 	end
 end

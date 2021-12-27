@@ -1,66 +1,62 @@
 {
-  "name" : "ffbiomeelectric3",
-  "blockingStat" : "biomeelectricImmunity",
+	"name": "ffbiomeelectric3",
+	"effectConfig": {
+		"resistanceTypes": {
+			"electricResistance": 1.0
+		},
+		"resistanceThreshold": 0.6,
+		"immunityStats": [
+			"biomeelectricImmunity"
+		],
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "electricResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.6,
-    "immunityStats" : [
-      "biomeelectricImmunity",
-      "fuelectricresistance",
-      "electricblock1"
-    ],
+		"healthDrain": 0,
+		"hungerDrain": 0,
+		"energyDrain": 0,
+		"speedPenalty": 0.1,
+		"jumpPenalty": 0.1,
 
-    "healthDrain" : 0,
-    "hungerDrain" : 0,
-    "energyDrain" : 0,
-    "speedPenalty" : 0.1,
-    "jumpPenalty" : 0.1,
+		"debuffRate": 2,
+		"debuffStartDelay": 0,
+		"debuffs": {
+			"energyRegenPercentageRate": {
+				"amount": -0.35,
+				"constant": true
+			},
+			"energyRegenBlockTime": {
+				"amount": 1.25,
+				"constant": true
+			}
+		},
 
-    "debuffRate" : 2,
-    "debuffStartDelay" : 0,
-    "debuffs" : {
-      "energyRegenPercentageRate" : {
-        "amount" : -0.35,
-        "constant" : true
-      },
-      "energyRegenBlockTime" : {
-        "amount" : 1.25,
-        "constant" : true
-      }
-    },
+		"modifiers": {
+			"wet": 1.5,
+			"windy": 1.4
+		},
 
-    "modifiers" : {
-      "wet" : 1.5,
-      "windy" : 1.4
-    },
+		"messages": {
+			"intro": "ffbiomeelectric",
+			"wet": "ffbiomeelectricwater"
+		},
 
-    "messages" : {
-      "intro" : "ffbiomeelectric",
-      "wet" : "ffbiomeelectricwater"
-    },
+		"configPath": "/stats/effects/fu_weathereffects/new/electric/ffbiomeelectric3.statuseffect",
 
-    "configPath" : "/stats/effects/fu_weathereffects/new/electric/ffbiomeelectric3.statuseffect",
+		"shockParams": {
+			"baseHealth": 10,
+			"randomHealth": 15,
+			"baseEnergy": 0.3,
+			"randomEnergy": 0.7,
+			"baseDelay": 2,
+			"randomDelay": 10
+		}
+	},
 
-    "shockParams" : {
-      "baseHealth" : 10,
-      "randomHealth" : 15,
-      "baseEnergy" : 0.3,
-      "randomEnergy" : 0.7,
-      "baseDelay" : 2,
-      "randomDelay" : 10
-    }
-  },
+	"defaultDuration": 5,
 
-  "defaultDuration" : 5,
+	"scripts": [
+		"electricweathernew.lua"
+	],
 
-  "scripts" : [
-    "electricweathernew.lua"
-  ],
-
-  "animationConfig" : "electricweathernew.animation",
-  "label" : "Deadly Electrical Storm",
-  "icon" : "/interface/statuses/electric3.png"
+	"animationConfig": "electricweathernew.animation",
+	"label": "Extreme Electrical Storm (Resist: ^#f477ff;Electric^reset;)",
+	"icon": "/interface/statuses/electric3.png"
 }

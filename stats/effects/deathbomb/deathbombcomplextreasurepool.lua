@@ -13,15 +13,15 @@ function init()
 		if entType=="monster" then
 			local minBaseHealth=config.getParameter("minBaseHealth",10)
 			local eConfig=root.monsterParameters(world.entityTypeName(entity.id()))
-
+			subType=eConfig.bodyMaterialKind or status.statusProperty("targetMaterialKind") or (eConfig.statusSettings and eConfig.statusSettings.statusProperties and eConfig.statusSettings.statusProperties.targetMaterialKind)
 			if minBaseHealth then
 				local baseHealth=eConfig.statusSettings and eConfig.statusSettings.stats and eConfig.statusSettings.stats.maxHealth and eConfig.statusSettings.stats.maxHealth.baseValue or 0
 				if baseHealth > minBaseHealth then
-					subType=eConfig.bodyMaterialKind
+					--subType=eConfig.bodyMaterialKind
 					canExplode=true
 				end
 			else
-				subType=eConfig.bodyMaterialKind
+				--subType=eConfig.bodyMaterialKind
 				canExplode=true
 			end
 		elseif entType=="npc" then
@@ -36,6 +36,7 @@ end
 
 function update(dt)
 	if not self.didInit then init() end
+	if not self.didInit then return end
 	if canExplode and (status.resourcePercentage("health") <= 0.05) and not status.statPositive("deathbombDud") then
 		explode()
 	end

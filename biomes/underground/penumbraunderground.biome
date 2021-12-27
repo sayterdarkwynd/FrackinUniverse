@@ -12,7 +12,8 @@
           [ 0.1111, "wisper" ],
           [ 0.1111, "anglure" ],        
           [ 0.1111, "petricub" ],
-          [ 0.1111, "yokat" ],     
+          [ 0.1111, "yokat" ],
+          [ 0.1111, "illumitop" ],   
           [ 0.1111, "fucorruptflylarge" ],
           [ 0.1111, "shadowhound" ],
           [ 0.1111, "lightsprite" ],
@@ -69,7 +70,7 @@
       "tracks" : [ "/music/epsilon-indi.ogg", "/music/hymn-to-the-stars.ogg", "/music/planetarium.ogg", "/music/procyon.ogg", "/music/stellarformation.ogg", "/music/vast-immortal-suns.ogg", "/music/atlas.ogg", "/music/blue-straggler.ogg", "/music/cygnus-x1.ogg", "/music/europa.ogg", "/music/haiku.ogg", "/music/M54.ogg", "/music/on-the-beach-at-night.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-Disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
+      "tracks" : [ "/music/jupiter.ogg", "/music/arctic-constellation1.ogg", "/music/arctic-constellation2.ogg", "/music/mercury.ogg", "/music/mira.ogg", "/music/procyon.ogg", "/music/tranquility-base.ogg", "/music/psyche.ogg", "/music/accretion-disc.ogg", "/music/cygnus-x1.ogg", "/music/eridanus-supervoid.ogg", "/music/horsehead-nebula.ogg", "/music/large-magellanic-cloud.ogg", "/music/M54.ogg", "/music/Nomads.ogg", "/music/on-the-beach-at-night.ogg" ]
     }
   },
 
@@ -309,15 +310,46 @@
               [0.50, "bioshroomblue4" ],
               [0.50, "bioshroomblue5" ],
               [0.50, "bioshroomblue6" ],
-              [0.50, "bioshroomblue7" ],
-              [0.65, "exoniteseed" ],
-              [0.65, "emeraseed" ],
-              [0.65, "tokaniteseed" ]
+              [0.50, "bioshroomblue7" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }
           ]
         },
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+                [0.33, "exoniteseed" ],
+                [0.33, "emeraseed" ],
+                [0.33, "tokaniteseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },         
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:ffunCommon",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+                [1, "thanatiteseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },        
       {
         "mode" : "floor",
         "priority" : 0.0,

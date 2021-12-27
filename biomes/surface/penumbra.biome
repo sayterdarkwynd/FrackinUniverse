@@ -7,19 +7,20 @@
       {
         "select" : 4,
         "pool" : [ 
-          [ 0.2, "anglure5" ],
-          [ 0.04, "doomspirit" ],
-          [ 0.2, "monopus" ],     
-          [ 0.2, "wisper" ],
-          [ 0.2, "bandraflora4" ],
-          [ 0.2, "anglure" ],        
-          [ 0.3, "petricub" ],
-          [ 0.3, "shadowcrab" ], 
-          [ 0.01, "darkmetroid" ],
-          [ 0.3, "fucorruptflylarge" ],
-          [ 0.3, "shadowhound" ],
-          [ 0.1, "garflipp" ],
-          [0.2, "pandorasboxglofae"]
+          [ 0.106, "anglure5" ],
+          [ 0.046, "doomspirit" ],
+          [ 0.096, "monopus" ],     
+          [ 0.086, "wisper" ],
+          [ 0.086, "bandraflora4" ],
+          [ 0.086, "anglure" ],        
+          [ 0.086, "petricub" ],
+          [ 0.096, "illumitop" ],
+          [ 0.076, "shadowcrab" ], 
+          [ 0.016, "darkmetroid" ],
+          [ 0.076, "fucorruptflylarge" ],
+          [ 0.086, "shadowhound" ],
+          [ 0.026, "garflipp" ],
+          [0.096, "pandorasboxglofae"]
         ]
       },
       {
@@ -174,10 +175,10 @@
 
   "musicTrack" : {
     "day" : {
-      "tracks" : [ "/music/Srinagar.ogg","/music/ambient_reformed.ogg","/music/TentacleExploration2.ogg","/music/tentacle-exploration1.ogg","/music/a_thing.ogg","/music/darkambient2a.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+      "tracks" : [ "/music/Srinagar.ogg","/music/ambient_reformed.ogg","/music/TentacleExploration2.ogg","/music/tentacle-exploration1.ogg","/music/a_thing.ogg","/music/darkambient2a.ogg","/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     },
     "night" : {
-      "tracks" : [ "/music/TentacleExploration2.ogg","/music/tentacle-exploration1.ogg", "/music/a_thing.ogg","/music/devils_tritone.ogg", "/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
+      "tracks" : [ "/music/TentacleExploration2.ogg","/music/tentacle-exploration1.ogg", "/music/a_thing.ogg","/music/devils_tritone.ogg", "/music/lava-exploration1.ogg", "/music/crystal-exploration1.ogg", "/music/crystal-exploration2.ogg", "/music/accretion-disc.ogg", "/music/arctic-exploration1.ogg", "/music/error-0xbfaf000.ogg", "/music/casiopeia.ogg", "/music/Nomads.ogg", "/music/forsaken-grotto.ogg", "/music/accretion-disc.ogg", "/music/tranquility-base.ogg" ]
     }
   },
 
@@ -227,12 +228,28 @@
           "objectSets" : [
             {
               "pool" : [ 
-              [0.35, "wildalgaeseed" ],
-              [0.50, "wildlumivineseed" ],
-              [0.35, "wildenergiflowerseed" ],
-              [0.35, "wildghostmushroomseed" ],
-              [0.35, "wildslimeplantseed" ],
-              [0.35, "tokaniteseed" ]
+                [1, "thanatiteseed" ]
+              ],
+              "parameters" : { "startingStage" : 3 }
+            }
+          ]
+        },        
+        {
+          "mode" : "floor",
+          "priority" : 1.0,
+          "variants" : 1,
+          "distribution" : "/biomes/distributions.config:surfaceCrops",
+
+          "type" : "object",
+          "objectSets" : [
+            {
+              "pool" : [ 
+                [0.30, "wildalgaeseed" ],
+                [0.20, "wildenergiflowerseed" ],
+                [0.12, "wildghostmushroomseed" ],
+                [0.15, "tokaniteseed" ],
+                [0.08, "wildlumivineseed" ],
+                [0.10, "wildslimeplantseed" ]
               ],
               "parameters" : { "startingStage" : 3 }
             }
@@ -248,19 +265,19 @@
           "objectSets" : [
             {
               "pool" : [ 
-              [0.50, "ffbioshroom" ],
-              [0.50, "ffbioshroom1" ],
-              [0.50, "ffbioshroom2" ],
-              [0.50, "ffbioshroom3" ],
-              [0.50, "bioshroomblue" ],
-              [0.50, "bioshroomblue1" ],
-              [0.50, "bioshroomblue2" ],
-              [0.50, "bioshroomblue3" ],
-              [0.50, "bioshroomblue4" ],
-              [0.50, "bioshroomblue5" ],
-              [0.50, "bioshroomblue6" ],
-              [0.50, "bioshroomblue7" ],
-              [0.35, "fireflies1"]
+                [0.07, "ffbioshroom" ],
+                [0.07, "ffbioshroom1" ],
+                [0.07, "ffbioshroom2" ],
+                [0.07, "ffbioshroom3" ],
+                [0.07, "bioshroomblue" ],
+                [0.07, "bioshroomblue1" ],
+                [0.07, "bioshroomblue2" ],
+                [0.07, "bioshroomblue3" ],
+                [0.07, "bioshroomblue4" ],
+                [0.07, "bioshroomblue5" ],
+                [0.07, "bioshroomblue6" ],
+                [0.07, "bioshroomblue7" ],
+                [0.16, "fireflies1"]
               ],
               "parameters" : { }
             }
@@ -276,10 +293,10 @@
           "objectSets" : [
             {
               "pool" : [ 
-              [0.35, "plynth1" ],
-              [0.35, "plynth2" ],
-              [0.35, "mound3" ],
-              [0.35, "mound4" ]
+              [0.25, "plynth1" ],
+              [0.25, "plynth2" ],
+              [0.25, "mound3" ],
+              [0.25, "mound4" ]
               ],
               "parameters" : { }
             }
@@ -294,7 +311,7 @@
           "type" : "object",
           "objectSets" : [
             {
-              "pool" : [ [0.35, "capsulesmall" ], [0.35, "capsulemed" ], [0.35, "capsulebig" ] ],
+              "pool" : [ [0.33, "capsulesmall" ], [0.33, "capsulemed" ], [0.33, "capsulebig" ] ],
               "parameters" : { }
             }
           ]

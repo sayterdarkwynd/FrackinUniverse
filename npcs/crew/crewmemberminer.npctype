@@ -1,21 +1,21 @@
 {
   "type" : "crewmemberminer",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.30} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "mininghathead",
         "chest" : "minerchest",
         "legs" : "humantier2pants"
       },
-
+	  
       "role" : {
+        "type" : "soldier",
+        "name" : "Lunar Miner",
+        "field" : "Mining",
+        "uniformColorIndex" : 0,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -29,11 +29,7 @@
             "effect" : "fu_pickuprange2",
             "duration" : 120
           }
-        ],
-        "type" : "soldier",
-        "name" : "Lunar Miner",
-        "field" : "Mining",
-        "uniformColorIndex" : 0
+        ]
       }
     },
 
@@ -102,7 +98,7 @@
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -110,13 +106,10 @@
     "default" : [
       [0, [
           {
-    		"primary" : [ "laspistol" ],
-            	"alt" : [ "fuflashlight" ],
-		"head" :  [{ "name" : "mininghathead", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
-	      	"chest" : [ { "name" : "minerchest", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
-            	"legs" : [ { "name" : "humantier2pants", "count" :1, "parameters" : { "colorIndex" : 1 } } ]          
+			"primary" : [ "laspistol" ],
+			"alt" : [ "fuflashlight" ]
           }
-	] ]
+        ] ]
     ]
   }
 }

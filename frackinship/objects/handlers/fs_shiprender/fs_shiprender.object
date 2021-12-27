@@ -1,0 +1,31 @@
+{
+	"objectName" : "fs_shiprender",
+	"colonyTags" : ["misc"],
+	"printable" : false,
+	"rarity" : "Common",
+	"description" : "Renders the T0 ship's background image.",
+	"shortdescription" : "Ship Render",
+	"race" : "generic",
+	"smashOnBreak" : true,
+	"unbreakable" : true,
+	"scannable" : false,
+
+	"category" : "wire",
+	"uniqueId" : "fs_shiprender",
+
+	"inventoryIcon" : "fs_shiprendericon.png",
+	"orientations" : [
+		{
+			"image" : "fs_shiprender.png:<color>",
+			"imagePosition" : [0, 0],
+
+			"spaceScan" : 0.1
+		}
+	],
+
+	"scripts" : [ "fs_shiprender.lua"],
+	"animationScripts" : ["fs_shiprenderanimation.lua"],
+	"scriptDelta" : 20,
+	
+	"blockImageBase" : "/frackinship/objects/handlers/fs_shiprender/fs_shiprenderbase.png"
+}

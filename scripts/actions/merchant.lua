@@ -109,7 +109,7 @@ function buildTradingConfig()
 		sellFactor = storage.sellFactor,
 		buyFactor = storage.buyFactor,
 		items = selectedItems,
-		paneLayoutOverride = config.getParameter("merchant.paneLayoutOverride", nil)
+		paneLayoutOverride = config.getParameter("merchant.paneLayoutOverride")
 	}
 
 	-- Reset RNG

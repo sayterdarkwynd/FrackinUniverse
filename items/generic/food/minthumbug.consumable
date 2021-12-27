@@ -1,0 +1,24 @@
+{
+	"itemName": "minthumbug",
+	"rarity": "uncommon",
+	"price": 75,
+	"category": "preparedFood",
+	"inventoryIcon": "minthumbug.png",
+	"description": "A small treat used for after a meal. Esther has a lot of these. \n^cyan;+^reset;8%^green; Energy ^reset; Food Type: ^green; Any^reset;",
+	"shortdescription": "Mint Humbug",
+	"effects": [
+        [{
+				"effect": "maxenergyscalingboostfood",
+                "duration": 180,
+                    "energyModifier": 1.08
+            }
+        ]
+    ],
+	"foodValue": 10,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

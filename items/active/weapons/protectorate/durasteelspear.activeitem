@@ -1,52 +1,57 @@
 {
-  "itemName" : "durasteelspear",
-  "price" : 900,
-  "level" : 4,
-  "maxStack" : 1,
-  "rarity" : "Uncommon",
-  "description" : "A durasteel spear. Among the finest.",
-  "shortdescription" : "Durasteel Spear",
-  "tooltipKind" : "sword",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
+	"itemName" : "durasteelspear",
+	"price" : 900,
+	"level" : 4,
+	"maxStack" : 1,
+	"rarity" : "Uncommon",
+	"description" : "A durasteel spear. Among the finest.
+^cyan;Hunting weapon^reset;",
+	"shortdescription" : "Durasteel Spear",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear", "upgradeableWeapon"],
 
-  "inventoryIcon" : "durasteelspear.png",
-  "collectablesOnPickup" : { "fu_weaponspear" : "durasteelspear" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "durasteelspear.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "durasteelspear.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "durasteelspear" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "durasteelspear.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : [
-  "/items/active/weapons/melee/meleeweapon.lua"
-  ],
+	"scripts" : [
+	"/items/active/weapons/melee/meleeweapon.lua"
+	],
 
-  "elementalType" : "physical",
+	"elementalType" : "physical",
 
-  "aimOffset" : -1.0,
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"aimOffset" : -1.0,
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.9,
-    "baseDps" : 10.5,
-    "damageConfig" : {
-      "damageSourceKind" : "bow",
-      "statusEffects" : [ ],
-      "knockback" : 25
-    }
-  },
-  "altAbilityType" : "flurry",
-  "altAbility" : { },
-  
-  "critChance" : 1,
-  "critBonus" : 3,
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+		"fireTime" : 0.9,
+		"baseDps" : 10.5,
+		"damageConfig" : {
+			"damageSourceKind" : "bow",
+			"statusEffects" : [ ],
+			"knockback" : 25
+		}
+	},
+	"altAbilityType" : "flurry",
+	"altAbility" : {
+		"damageConfig" : {
+			"damageSourceKind" : "bow"
+		}
+	},
+
+	"critChance" : 1,
+	"critBonus" : 3,
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -1,7 +1,7 @@
 {
 	"type": "miningdrone2",
-	"shortdescription": "Mining Droid",
-	"description": "Provides information on nearby caves and ores.",
+	"shortdescription": "Ore Drone II",
+	"description": "Provides information on nearby ores.",
 	"reversed": true,
 	"categories": ["miningdrone1"],
 	"parts": ["body"],
@@ -19,7 +19,7 @@
 		],
 		
 		"pingDetectConfig": {
-			"types": ["ore","cave"],
+			"types": ["ore"],
 			"image": "/items/active/unsorted/oredetector/detectnoise.png:<variant>",
 			"variants": 4,
 			"pingRange": 24,
@@ -28,14 +28,13 @@
 			"pingCooldown": 5.0
 		},
 		"animationDelta": 5,
-		
-
 
 		"persistent": false,
 
 		"behavior": "monster",
+		"renderLayer" : "foregroundEntity",
 		"deathBehavior": "monster-death",
-		"seeThroughLiquid": false,
+		"seeThroughLiquid": true,
 		"behaviorConfig": {
 			"damageOnTouch": false,
 
@@ -112,10 +111,12 @@
 			"walkSpeed": 4,
 			"runSpeed": 24,
 			"gravityEnabled": false,
-			"collisionEnabled":true,
+			"collisionEnabled":false,
 			"airFriction": 4,
-			"airForce": 40,
-			"flySpeed": 15
+			"airForce": 60,
+			"liquidFriction" : 4,
+			"liquidForce" : 60,
+			"flySpeed": 30
 		},
 
 		"bodyMaterialKind": "robotic",
@@ -214,7 +215,7 @@
 		"feetOffset": [0, -8],
 		"capturable": true,
 		"captureHealthFraction": 1.0,
-		"nametagColor": [64, 200, 255],
-		"captureCollectables" : { "fu_monster" : "miningdrone2" }
+		"nametagColor": [64, 200, 255]//,
+		//"captureCollectables" : { "fu_monster" : "miningdrone2" }
 	}
 }

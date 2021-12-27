@@ -1,6 +1,6 @@
 {
 	"type": "miningdrone3",
-	"shortdescription": "Mining Droid",
+	"shortdescription": "Mining Drone",
 	"description": "Provides information on nearby caves and ores.",
 	"reversed": true,
 	"categories": ["miningdrone1"],
@@ -28,14 +28,13 @@
 			"pingCooldown": 5.0
 		},
 		"animationDelta": 5,
-		
-
 
 		"persistent": false,
 
 		"behavior": "monster",
+		"renderLayer" : "foregroundEntity",
 		"deathBehavior": "monster-death",
-		"seeThroughLiquid": false,
+		"seeThroughLiquid": true,
 		"behaviorConfig": {
 			"damageOnTouch": false,
 
@@ -112,10 +111,12 @@
 			"walkSpeed": 4,
 			"runSpeed": 24,
 			"gravityEnabled": false,
-			"collisionEnabled":true,
+			"collisionEnabled":false,
 			"airFriction": 4,
-			"airForce": 40,
-			"flySpeed": 15
+			"airForce": 80,
+			"liquidFriction" : 4,
+			"liquidForce" : 80,
+			"flySpeed": 40
 		},
 
 		"bodyMaterialKind": "robotic",
@@ -214,7 +215,7 @@
 		"feetOffset": [0, -8],
 		"capturable": true,
 		"captureHealthFraction": 1.0,
-		"nametagColor": [64, 200, 255],
-		"captureCollectables" : { "fu_monster" : "miningdrone3" }
+		"nametagColor": [64, 200, 255]//,
+		//"captureCollectables" : { "fu_monster" : "miningdrone3" }
 	}
 }

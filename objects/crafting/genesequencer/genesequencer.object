@@ -5,17 +5,19 @@
   "interactAction" : "OpenCraftingInterface",
   "interactData" : {
     "config" : "/interface/windowconfig/genesequencer.config",
-    "filter" : [ "genesequencer" ]
+    "filter" : [ "genesequencer" ],
+    "paneLayoutOverride" : {
+      "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+      "lblTitle" : {"value" : " ^#00ccff;Gene Sequencer^reset;"},
+      "lblSubTitle" : {"value" : " ^#dddddd;Create genes from scratch."}
+    }    
   },
   "printable" : false,
   "description" : "Create genes from scratch.",
-  "shortdescription" : "^orange;Gene Sequencer^white;",
+  "shortdescription" : "^orange;Gene Sequencer^reset;",
   "race" : "generic",
   "category" : "crafting",
   "price" : 450,
-
-//  "learnBlueprintsOnPickup" : [ "clonelab" ],
-
 
   "lightColor" : [60, 60, 100],
   "soundEffect" : "/sfx/objects/fridge_hum.ogg",

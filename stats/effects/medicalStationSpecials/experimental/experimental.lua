@@ -8,7 +8,8 @@ function init()
 
 	self.positiveEffects = config.getParameter("positiveEffects", 0)
 	self.negativeEffects = config.getParameter("negativeEffects", 0)
-
+	self.minDuration=config.getParameter("durationMin", 0)
+	self.maxDuration=config.getParameter("durationMax", 0)
 	baseInit()
 end
 
@@ -18,7 +19,7 @@ function update(dt)
 		local r = math.random()
 		local doubleMin = self.equalityScore - self.doubleChance / 2
 		local doubleMax = self.equalityScore + self.doubleChance / 2
-		local duration = math.floor(math.max(math.random(config.getParameter("durationMin", 0), config.getParameter("durationMax", 0)), status.resource("fuMedicalEnhancerDuration")))
+		local duration = math.floor(math.max(math.random(self.minDuration, self.maxDuration), status.resource("fuMedicalEnhancerDuration")))
 
 		if r >= doubleMin and r <= doubleMax then	-- Check if the roll landed in the double effect margin
 			effect = self.positiveEffects[math.random(1, #self.positiveEffects)]

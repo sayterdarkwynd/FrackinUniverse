@@ -1,53 +1,53 @@
 {
-  "itemName" : "fuqueenstinger",
-  "price" : 1800,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "Legendary",
-  "description" : "The stinger of a giant queen bee, seriously?
+	"itemName" : "fuqueenstinger",
+	"price" : 1800,
+	"level" : 6,
+	"maxStack" : 1,
+	"rarity" : "Legendary",
+	"description" : "The stinger of a giant queen bee, seriously?
 ^cyan;Hunting weapon^reset;",
-  "shortdescription" : "Queen Stinger",
-  "tooltipKind" : "sword2",
-  "category" : "spear",
-  "twoHanded" : true,
-  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon", "bees"],
+	"shortdescription" : "Queen Stinger",
+	"tooltipKind" : "sword2",
+	"category" : "spear",
+	"twoHanded" : true,
+	"itemTags" : ["weapon","melee","spear", "upgradeableWeapon", "bees"],
 
-  "inventoryIcon" : "fuqueenstinger.png",
-  "collectablesOnPickup" : { "fu_weaponspear" : "fuqueenstinger" },
-  "animation" : "/items/active/weapons/melee/spear/spear.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "fuqueenstinger.png"
-  },
-  "animationCustom" : {
-    "sounds" : {
-      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
-    }
-  },
+	"inventoryIcon" : "fuqueenstinger.png",
+	//"collectablesOnPickup" : { "fu_weaponspear" : "fuqueenstinger" },
+	"animation" : "/items/active/weapons/melee/spear/spear.animation",
+	"animationParts" : {
+		"handle" : "",
+		"blade" : "fuqueenstinger.png"
+	},
+	"animationCustom" : {
+		"sounds" : {
+			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
+		}
+	},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-  "elementalType" : "poison",
+	"elementalType" : "poison",
 
-  "aimOffset" : -1.0,
+	"aimOffset" : -1.0,
 
-  "primaryAbilityType" : "spearstab",
-  "primaryAbility" : {
-    "scripts" : [],
+	"primaryAbilityType" : "spearstab",
+	"primaryAbility" : {
+		"scripts" : [],
 
-    "fireTime" : 0.8,
-    "baseDps" : 11,
+		"fireTime" : 0.8,
+		"baseDps" : 11,
 
-    "damageConfig" : {
-      "damageSourceKind" : "poisonbow",
-      "statusEffects" : [ "fubeesting2" ],
-      "knockback" : 10
-    }
-  },
-  "critChance" : 5,
-  "critBonus" : 12,
-  "altAbilityType" : "stingflurry",
-  "altAbility" : {},
+		"damageConfig" : {
+			"damageSourceKind" : "poisonbow",
+			"statusEffects" : [ "fubeesting2" ],
+			"knockback" : 10
+		}
+	},
+	"critChance" : 5,
+	"critBonus" : 12,
+	"altAbilityType" : "stingflurry",
+	"altAbility" : {},
 
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

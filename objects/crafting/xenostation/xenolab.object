@@ -1,76 +1,74 @@
 {
-  "objectName" : "xenostation",
-  "colonyTags" : [ "fu", "science", "scienceoutpost", "radiation" ],
-  "rarity" : "rare",
-  "printable" : false,
-  "race" : "generic",
-  "category" : "^orange;Extraction Device^reset;",
-  "price" : 450,
-  "objectType" : "container",
-  "description" : "This station is designed to pull genes from seeds for study and experimentation.",
-  "subtitle" : "Seed Extractor",
-  "shortdescription" : "^cyan;Xeno Research Lab^white;",
-//  "learnBlueprintsOnPickup" : [ "genesequencer", "xenostationadvnew" ],
-  "apexDescription" : "An Xeno Research Lab.",
-  "avianDescription" : "An Xeno Research Lab.",
-  "floranDescription" : "An Xeno Research Lab.",
-  "glitchDescription" : "Identify. An Xeno Research Lab.",
-  "humanDescription" : "An Xeno Research Lab.",
-  "hylotlDescription" : "An Xeno Research Lab.",
+  "objectName": "xenostation",
+  "colonyTags": ["fu", "science", "scienceoutpost", "radiation"],
+  "rarity": "rare",
+  "printable": false,
+  "race": "generic",
+  "category": "^orange;Extraction Device^reset;",
+  "price": 450,
+  "objectType": "container",
+  "description": "This station is designed to pull genes from seeds for study and experimentation.",
+  "subtitle": "Seed Extractor",
+  "shortdescription": "^cyan;Xeno Research Lab^reset;",
 
   "fu_stationTechLevel": 2,
   "fu_mintick": 1,
-  "fu_timerMod" : 1,
-  
-  "lightColor" : [60, 60, 173],
+  "fu_timerMod": 1,
 
-  "inventoryIcon" : "xenostationicon.png",
-  "orientations" : [
+  "lightColor": [60, 60, 173],
 
+  "inventoryIcon": "xenostationicon.png",
+  "orientations": [
     {
-      "dualImage" : "xenostation.png:<color>.<frame>",
-      "imagePosition" : [0, 0],
-      "frames" : 6,
-      "animationCycle" : 3.0,
+      "dualImage": "xenostation.png:<color>.<frame>",
+      "imagePosition": [0, 0],
+      "frames": 6,
+      "animationCycle": 3.0,
 
-      "spaceScan" : 0.1,
-      "fgAnchors" : [ [0, -1] ]
+      "spaceScan": 0.1,
+      "anchors" : [ "bottom" ]
     }
   ],
-  
-  
-  "animation" : "xenolab.animation",
-  "animationParts" : {
-    "samplingarrayanim" : "xenostation.png"
+
+
+  "animation": "xenolab.animation",
+  "animationParts": {
+    "samplingarrayanim": "xenostation.png"
   },
-  "scripts" : [ "/objects/generic/xenostation_common.lua",
-                "/scripts/npcToyObject.lua" ],
-  "scriptDelta" : 25,
-  "recipeGroup" : "xenostation",
-  "openSounds" : [ "/sfx/objects/locker_open.ogg" ],
-  "slotCount" : 12,
-  "uiConfig" : "/interface/xenolab/xenolab.config",
-  "frameCooldown" : 67,
-  "autoCloseCooldown" : 3600,
+  "scripts": ["/objects/generic/xenostation_common.lua",
+    "/scripts/npcToyObject.lua"
+  ],
+  "scriptDelta": 25,
+  "recipeGroup": "xenostation",
+  "openSounds": ["/sfx/objects/locker_open.ogg"],
+  "slotCount": 12,
+  "uiConfig": "/interface/xenolab/xenolab.config",
+  "frameCooldown": 67,
+  "autoCloseCooldown": 3600,
 
-  "inputNodes" : [ [1, 1] ],
-  "outputNodes" : [ [2, 1] ],
+  "inputNodes": [
+    [1, 1]
+  ],
+  "outputNodes": [
+    [2, 1]
+  ],
+  "inputSlot": 3,
 
-  "npcToy" : {
-    "influence" : [
+  "npcToy": {
+    "influence": [
       "sink",
       "sinkComplete"
     ],
-    "defaultReactions" : {
-      "sink" : [
+    "defaultReactions": {
+      "sink": [
         [1.0, "typing"]
       ],
-      "sinkComplete" : [
+      "sinkComplete": [
         [1.0, "smile"]
       ]
     },
-    "preciseStandPositionLeft" : [-1.0, 0.0],
-    "preciseStandPositionRight" : [1.0, 0.0],
-    "maxNpcs" : 2
+    "preciseStandPositionLeft": [-1.0, 0.0],
+    "preciseStandPositionRight": [1.0, 0.0],
+    "maxNpcs": 2
   }
 }

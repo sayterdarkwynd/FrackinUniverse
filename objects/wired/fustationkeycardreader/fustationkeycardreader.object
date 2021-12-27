@@ -1,0 +1,53 @@
+{
+  "objectName" : "fustationkeycardreader",
+  "colonyTags" : ["electronic","wired"],
+  "rarity" : "Rare",
+  "description" : "It scans keycards and allows only authorised personnel through. Requires: Kirhosi Station Keycard",
+  "shortdescription" : "Station Keycard Reader",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 180,
+
+  "lightColor" : [61, 80, 102],
+
+  "apexDescription" : "A keycard reader. Normal in Apex society, though this one seems to require a Kirhosi Station Keycard, rather than Miniknog clearance.",
+  "avianDescription" : "An interesting security device, I'll have to find a key. Looks like it wants a Kirhosi Station Keycard.",
+  "floranDescription" : "Device for ssscanning cards. Floran needss Kirhosssi Sstation Keycard...",
+  "glitchDescription" : "Observant. A security device used to allow paying customers to enter restricted spaces. This one requires a Kirhosi Station Keycard.",
+  "humanDescription" : "A Kirhosi Station Keycard scanner. Makes me feel like I'm in a spy movie.",
+  "hylotlDescription" : "I should look around for a Kirhosi Station Keycard.",
+  "novakidDescription" : "A type of scannin' device for cards. Looks t' need a Kirhosi Station Keycard.",
+
+  "inventoryIcon" : "fustationkeycardreadericon.png",
+  "orientations" : [
+    {
+      "image" : "fustationkeycardreader.png:<color>.off",
+      "imagePosition" : [-8, -8],
+      
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ],
+
+  "scripts" : [ "keycardreader.lua" ],
+  "keyname" : "fustationkeycard",
+  "interval" : 15,
+  "scriptDelta" : 5,
+  
+  "animation" : "/objects/wired/switch/switch4bgfullbright.animation",
+  "animationCustom" : {
+    "sounds" : {
+      "on" : [ "/sfx/objects/tinywallbutton.ogg" ],
+      "fail" : [ "/sfx/interface/ship_error1.ogg" ]
+    }
+  },
+  "animationParts" : {
+    "bg" : "fustationkeycardreader.png",
+    "fg" : "fustationkeycardreaderlit.png"
+  },
+  "animationPosition" : [-8, -8],
+
+  "outputNodes" : [ [0, -1] ]
+}

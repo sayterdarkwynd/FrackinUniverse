@@ -20,7 +20,6 @@ function init()
 	if self.altAbility then
         self.weapon:addAbility(self.altAbility)
 	end
-
 	self.weapon:init()
 end
 

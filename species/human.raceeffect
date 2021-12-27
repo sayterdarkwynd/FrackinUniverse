@@ -1,35 +1,28 @@
 {
 	"stats": [
-		{ "stat": "maxFood", "baseMultiplier": 1.3 },
-		{ "stat": "grit", "amount": 0.2 }
+		{ "stat": "maxEnergy", "effectiveMultiplier": 1.05 },
+		{ "stat": "maxFood", "baseMultiplier": 1.15 },
+		{ "stat": "fuCharisma", "baseMultiplier": 1.10 },
+        
+		{ "stat": "mentalProtection", "amount": 0.12 },
+		{ "stat": "fireResistance", "amount": 0.10 },
+		{ "stat": "iceResistance", "amount": 0.10 },
+		{ "stat": "poisonResistance", "amount": 0.10 },
+		{ "stat": "electricResistance", "amount": 0.11 },
+		{ "stat": "cosmicResistance", "amount": 0.10 },
+		{ "stat": "radioactiveResistance", "amount": -0.15 },
+		{ "stat": "shadowResistance", "amount": -0.15 },
+        
+		{ "stat": "ammoMastery", "amount": 0.25 },
+		{ "stat": "shortswordMastery", "amount": 0.15 }
 	],
 	"diet" : "omnivore",
-	"controlParameters": {
-		"liquidJumpProfile": {
-			"jumpHoldTime": 0.28
-		}
+	"controlModifiers" : {
+		"airJumpModifier" : 1.02
 	},
-	"weaponEffects": [
-		{
-			"weapons": [ "shortsword" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 },
-				{ "stat": "grit", "amount": 0.2 }
-			]
-		},
-		{
-			"weapons": [ "assaultrifle" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.12 }
-			]
-		},
-		{
-			"weapons": [ "yoyo" ],
-			"stats": [
-				{ "stat": "powerMultiplier", "effectiveMultiplier": 1.1 }
-			]
-		}
-	],
+
+	"weaponEffects": [],
+	
 	"weaponScripts": [
 		{
 			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",

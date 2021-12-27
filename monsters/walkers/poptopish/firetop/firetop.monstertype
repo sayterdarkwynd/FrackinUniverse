@@ -32,7 +32,7 @@
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
+      "targetQueryRange" : 48,
       "targetOnDamage" : true,
       "keepTargetInSight" : true,
       "keepTargetInRange" : 50,
@@ -42,25 +42,48 @@
 
       "fleeActions" : [],
 
-      "hostileActions" : [     
+      "hostileActions" : [ 
         {
           "name" : "action-fire",
           "cooldown" : 3,
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 12,
-            "minimumRange" : 1,
+            "maximumRange" : 10,
+            "minimumRange" : 0,
             "windupState" : "chargewindup",
-            "windupTime" : 0.5,
+            "windupTime" : 0.3,
 
-            "projectileType" : "fireblast",
-            "power" : 10,
+            "projectileType" : "flamethrower",
+            "power" : 2,
             "fireOffset" : [0, 1],
             "aimAtTarget" : true,
-            "projectileCount" : 2,
+            "projectileCount" : 8,
+            "projectileInterval" : 0.001,
+            "projectileParameters" : { "power" : 2 },
+            "inaccuracy" : 0.01,
+            "fireSound" : "fire",
+            "fireState" : "",
+            "winddownState" : "charge",
+            "winddownTime" : 0.3
+          }
+        },          
+        {
+          "name" : "action-fire",
+          "cooldown" : 2,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 48,
+            "minimumRange" : 10,
+            "windupState" : "chargewindup",
+            "windupTime" : 0.8,
+
+            "projectileType" : "fireblastsmall",
+            "power" : 12,
+            "fireOffset" : [0, 1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
             "projectileInterval" : 0,
-            "projectileParameters" : { "speed" : 60 },
-            "inaccuracy" : 0.75,
+            "inaccuracy" : 0.2,
             "fireSound" : "fire",
             "fireState" : "",
             "winddownState" : "charge",
@@ -154,7 +177,7 @@
 
     "touchDamage" : {
       "poly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.55],  [-0.8125, -1.55], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
-      "damage" : 14,
+      "damage" : 5,
 
       "teamType" : "enemy",
       "damageSourceKind" : "hellfire",
@@ -281,7 +304,7 @@
     "feetOffset" : [0, -8],
     "capturable" : true,
     "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255],
-    "captureCollectables" : { "fu_monster" : "firetop" }
+    "nametagColor" : [64, 200, 255]//,
+    //"captureCollectables" : { "fu_monster" : "firetop" }
   }
 }

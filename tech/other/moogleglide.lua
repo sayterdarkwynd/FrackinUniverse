@@ -1,4 +1,6 @@
 require "/scripts/vec2.lua"
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=15--used by checkFood
 
 function init()
 	initCommonParameters()
@@ -24,14 +26,6 @@ function uninit()
 	animator.stopAllSounds("recharge")
 	status.clearPersistentEffects("glide")
 	deactivate()
-end
-
-function checkFood()
-	local foodValue=15
-	if status.isResource("food") then
-		foodValue = status.resource("food")
-	end
-	return foodValue
 end
 
 function checkStance()
@@ -60,8 +54,6 @@ end
 
 
 function update(args)
-	--checkFood()
-
 	if not self.specialLast and args.moves["special1"] then
 		attemptActivation()
 	end
@@ -77,6 +69,7 @@ function update(args)
 	end
 
 	if self.active and status.overConsumeResource("energy", 0.001) then
+		status.removeEphemeralEffect("wellfed")
 
 		if self.bombTimer > 0 then
 			self.bombTimer = math.max(0, self.bombTimer - args.dt)
@@ -85,8 +78,7 @@ function update(args)
 		if self.pressDown or self.pressDown and self.active2== 1 then	--slowfall stance
 			if not mcontroller.onGround() and not mcontroller.zeroG() then
 				status.setPersistentEffects("glide", {
-					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}--,
-					--{stat = "gliding", amount = 0}
+					{stat = "fallDamageMultiplier", effectiveMultiplier = 0.35}
 				})
 			end
 			if self.bombTimer == 0 then
@@ -114,7 +106,7 @@ function update(args)
 				mcontroller.controlParameters(self.fallingParameters2 or {})
 				mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), self.maxFallSpeed2 or -100))
 			end
-			if checkFood() > 15 then
+			if (checkFood() or foodThreshold) > foodThreshold then
 				status.addEphemeralEffects{{effect = "foodcost", duration = 0.1}}
 			else
 				status.overConsumeResource("energy", (self.energyCostPerSecond or 0)*args.dt)

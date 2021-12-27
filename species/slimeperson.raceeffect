@@ -1,100 +1,44 @@
 {
 	"stats": [
-		{
-			"stat": "foodDelta",
-			"baseMultiplier": 1.25
-		},
-		{
-			"stat": "slimeImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "slimestickImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "webstickImmunity",
-			"amount": 1
-		},
-		{
-			"stat": "fallDamageMultiplier",
-			"effectiveMultiplier": 0.85
-		},
-		{
-			"stat": "electricResistance",
-			"amount": 0.2
-		},
-		{
-			"stat": "radioactiveResistance",
-			"amount": -0.25
-		},			
-		{
-			"stat": "iceResistance",
-			"amount": -0.5
-		},
-		{
-			"stat": "fireResistance",
-			"amount": 0.4
-		},
-		{
-			"stat": "poisonResistance",
-			"amount": 0.2
-		},
-		{
-			"stat": "poisonStatusImmunity",
-			"amount": 1
-		}
+		{ "stat": "foodDelta", "baseMultiplier": 1.25},
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.5},
+		{ "stat": "maxFood", "effectiveMultiplier": 0.90 },
+
+		{ "stat": "fireResistance", "amount": -0.20 },
+		{ "stat": "iceResistance", "amount": -0.20 },
+		{ "stat": "poisonResistance", "amount": 0.30 },
+		{ "stat": "electricResistance", "amount": 0.04 },	
+		{ "stat": "cosmicResistance", "amount": 0.03 },				
+		{ "stat": "radioactiveResistance", "amount": 0.10 },
+
+		{ "stat": "poisonStatusImmunity", "amount": 1},
+		{ "stat": "slimeImmunity", "amount": 1},
+		{ "stat": "slimestickImmunity", "amount": 1},
+		{ "stat": "webstickImmunity", "amount": 1},
+        
+		{ "stat": "whipMastery", "amount": 0.15}		
 	],
 	"diet" : "raw_omnivore",
 	"envEffects": [{
-			"biomes": [
-				"arctic",
-				"arcticdark",
-				"icemoon",
-				"icewaste",
-				"icewastedark",
-				"snow",
-				"snowdark",
-				"taiga"
-			],
+			"biomes": ["arctic","arcticdark","icemoon","icewaste","icewastedark","snow","snowdark","taiga"],
 			"stats": [{
 				"stat": "maxHealth",
 				"effectiveMultiplier": 0.75
 			}]
 		},
 		{
-			"biomes": [
-				"bog",
-				"swamp",
-				"slimeworld"
-			],
-			"stats": [{
-				"stat": "maxHealth",
-				"effectiveMultiplier": 1.25
-			}],
-			"controlModifiers": {
-				"speedModifier": 1.15
-			}
-		}
-	],
-	"weaponEffects": [{
-			"weapons": [
-				"whip"
-			],
-			"stats": [{
-					"stat": "powerMultiplier",
-					"effectiveMultiplier": 1.2
-				},
+			"biomes": ["bog","swamp","slimeworld"],
+			"stats": [
 				{
-					"stat": "protection",
-					"effectiveMultiplier": 1.12
+					"stat": "maxHealth",
+					"effectiveMultiplier": 1.25
 				}
 			]
-		},
+		}
+	],
+	"weaponEffects": [
 		{
-			"weapons": [
-				"livingweapon","bioweapon","slime"
-			],
+			"weapons": ["livingweapon","bioweapon","slime"],
 			"stats": [{
 					"stat": "powerMultiplier",
 					"effectiveMultiplier": 1.15
@@ -113,6 +57,16 @@
 			"args" : {
 				"healingRate" : 0.005
 			}
+		}
+	],
+	"tech" : [ "colorvariableslimesphere", "stickywalljump" ],
+	
+	"liquidEffects": [
+		{
+			"liquids": [ "slime", "slimeliquid" ],
+			"stats": [
+				{ "stat": "waterbreathProtection", "amount": 1 }
+			]
 		}
 	]
 }

@@ -27,3 +27,22 @@ jobs:
       # There are ~900 warnings in existing code, so we can't use "no warnings allowed" mode (yet?).
       - name: RUN -- luacheck .
         run: luacheck --no-color . || [[ $? -le 1 ]]
+
+  # Create .pak file for each GitHub release.
+  pack-assets:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Remove directories that are not needed inside PAK file (e.g. ".git" or "tests")
+        run: rm -rf .git a_modders tests
+      - uses: edwardspec/github-action-pack-starbound-mod@v1
+        with:
+          outputFilename: FrackinUniverse.pak
+      - run: ls -l FrackinUniverse.pak
+      - name: Add .pak file to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: FrackinUniverse.pak
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

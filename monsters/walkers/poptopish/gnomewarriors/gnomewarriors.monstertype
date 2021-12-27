@@ -1,0 +1,243 @@
+{
+  "type" : "gnomewarriors",
+  "shortdescription" : "Gnomish Warriors",
+  "description" : "They appear to be enraged, but are not particularly threatening.",
+
+  "categories" : [ "gnomewarriors" ],
+  "parts" : [ "body" ],
+
+  "animation" : "gnomewarriors.animation",
+
+  "dropPools" : [{"default" : "miniVillageTreasure" }], 
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua"
+    ],
+
+    "behavior" : "monster",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 20,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 50,
+      "targetOutOfSightTime" : 2.5,
+
+      "foundTargetActions" : [ { "name" : "action-aggrohop" } ],
+
+      "fleeActions" : [],
+
+      "hostileActions" : [  
+        {
+          "name" : "action-charge",
+          "cooldown" : 3,
+          "parameters" : {
+            "maximumRange" : 6,
+            "windupTime" : 0.5,
+            "aimAtTarget" : false,
+            "aimDirection" : [1, 1.0],
+            "chargeTime" : 0.1,
+            "chargeSpeed" : 20,
+            "chargeSound" : "charge",
+            "chargeControlForce" : 500,
+            "wallCrashSound" : "",
+            "wallCrashEmitter" : "",
+            "winddownTime" : 0.5
+          }
+        },             
+        {
+          "name" : "action-fire",
+          "cooldown" : 7,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 6,
+            "minimumRange" : 1,
+            "windupState" : "chargewindup",
+            "windupTime" : 1,
+
+            "projectileType" : "throwinggnome",
+            "power" : 6,
+            "fireOffset" : [0, 1],
+            "aimAtTarget" : true,
+            "projectileCount" : 1,
+            "projectileInterval" : 0,
+            "projectileParameters" : { "speed" : 20 },
+            "inaccuracy" : 0.75,
+            "fireSound" : "fire",
+            "fireState" : "",
+            "winddownState" : "charge",
+            "winddownTime" : 0.3
+          }
+        }
+      ],
+
+      "periodicActions" : [],
+      
+      "damageTakenActions" : [],      
+      "approachActions" : [
+        {
+          "name" : "approach-walk",
+          "cooldown" :  2,
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 1,
+            "moveState" : "run",
+            "jumpXVelocity" : 8,
+            "jumpYVelocity" : 20,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        },      
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 1,
+            "moveState" : "run",
+            "jumpXVelocity" : 8,
+            "jumpYVelocity" : 20,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-walk",
+          "parameters" : {
+            "canJump" : true,
+            "maxJumps" : 1,
+            "moveState" : "run",
+            "jumpXVelocity" : 8,
+            "jumpYVelocity" : 20,
+            "jumpXControlForce" : 50,
+            "minXRange" : 10,
+            "run" : true
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "wander-walk",
+          "cooldown" : 3.0,
+          "parameters" : {
+            "moveState" : "stroll",
+            "wanderTime" : [5, 20]
+          }
+        },
+        {
+          "name" : "wander-walk",
+          "cooldown" : 6.0,
+          "parameters" : {
+            "moveState" : "walk",
+            "wanderTime" : [5, 5]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, -1.05], [0.8125, -1.55],  [-0.8125, -1.55], [-1.3125, -1.05],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+      "damage" : 7,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "physical",
+      "knockback" : 20,
+      "statusEffects" : [  ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+
+      "mass" : 0.2,
+      "walkSpeed" : 2,
+      "runSpeed" : 3,
+
+      "airFriction" : 0,
+
+      "airJumpProfile" : {
+        "jumpSpeed" : 45.0,
+        "jumpInitialPercentage" : 1.0,
+        "jumpHoldTime" : 0.0
+      }
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 50
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.05
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        } 
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false,
+    "captureHealthFraction" : 0.0000001,
+    "nametagColor" : [64, 200, 255]
+  }
+}

@@ -1,0 +1,24 @@
+{
+	"itemName": "bloodyboogerbread",
+	"rarity": "uncommon",
+	"price": 35,
+	"category": "preparedFood",
+	"inventoryIcon": "bloodyboogerbread.png",
+	"description": "Whose twisted idea was this?! Revolting! \n^cyan;-^red;15% ^green;HP^reset; Food Type:^green; Any^reset;",
+	"shortdescription": "Bloody Boogerbread",
+	"effects": [
+		["madnessgain",
+			{
+				"effect": "negativehealth15",
+                "duration": 60
+			}
+		]
+	],
+	"foodValue": 30,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

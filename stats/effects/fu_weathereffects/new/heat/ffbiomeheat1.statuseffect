@@ -1,47 +1,46 @@
 {
-  "name" : "ffbiomeheat1",
-  "blockingStat" : "",
+	"name": "ffbiomeheat1",
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "fireResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.2,
-    "immunityStats" : [
-      "biomeheatImmunity",
-      "ffextremeheatImmunity"
-    ],
+	"effectConfig": {
+		"resistanceTypes": {
+			"fireResistance": 1.0
+		},
+		"resistanceThreshold": 0.2,
+		"immunityStats": [
+			"biomeheatImmunity",
+			"ffextremeheatImmunity"
+		],
 
-    "healthDrain" : 4,
-    "hungerDrain" : 0.5,
-    "energyDrain" : 0,
-    "speedPenalty" : 0.5,
-    "jumpPenalty" : 0.5,
+		"healthDrain": 4,
+		"hungerDrain": 0.5,
+		"energyDrain": 0,
+		"speedPenalty": 0.5,
+		"jumpPenalty": 0.5,
 
-    "debuffRate" : 5,
-    "debuffStartDelay" : 0,
-    "debuffs" : {},
+		"debuffRate": 5,
+		"debuffStartDelay": 0,
+		"debuffs": {},
 
-    "modifiers" : {
-      "night" : 0.8,
-      "wet" : 0.7,
-      "underground" : 1.1
-    },
+		"modifiers": {
+			"night": 0.8,
+			"wet": 0.7,
+			"underground": 1.1
+		},
 
-    "messages" : {
-      "intro" : "biomeheat",
-      "underground" : "ffbiomeheatcavern"
-    },
+		"messages": {
+			"intro": "biomeheat",
+			"underground": "ffbiomeheatcavern"
+		},
 
-    "configPath" : "/stats/effects/fu_weathereffects/new/heat/ffbiomeheat1.statuseffect"
-  },
-  "defaultDuration" : 5,
+		"configPath": "/stats/effects/fu_weathereffects/new/heat/ffbiomeheat1.statuseffect"
+	},
+	"defaultDuration": 5,
 
-  "scripts" : [
-    "heatweathernew.lua"
-  ],
+	"scripts": [
+		"heatweathernew.lua"
+	],
 
-  "animationConfig" : "heatweathernew.animation",
-  "label" : "Severe Heat",
-  "icon" : "/interface/statuses/heat1.png"
+	"animationConfig": "heatweathernew.animation",
+	"label": "Mild Heat (Resist: ^#ff6e00;Fire^reset;)",
+	"icon": "/interface/statuses/heat1.png"
 }

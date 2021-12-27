@@ -21,7 +21,6 @@ function init()
 	getProjectiles()
 	checkProjectiles()
 
-
 	self.orbitRate = config.getParameter("orbitRate", 1) * -2 * math.pi
 
 	animator.resetTransformationGroup("orbs")
@@ -30,7 +29,12 @@ function init()
 	end
 	setOrbPosition(1)
 
-	self.shieldPower = config.getParameter("shieldPower", nil)
+	self.shieldPower = config.getParameter("shieldPower")
+	self.shieldEphemeralEffects=config.getParameter("shieldEphemeralEffects")
+	self.shieldEphemeralEffectsExist=type(self.shieldEphemeralEffects)=="table"
+	self.shieldPersistentEffects=config.getParameter("shieldPersistentEffects")
+	self.shieldPersistentEffectsExist=(type(self.shieldPersistentEffects)=="table")
+	self.shieldPersistentGroup=config.getParameter("shieldPersistentGroup","magnorbPersistent")
 	self.shieldActive = false
 	self.shieldTransformTimer = 0
 
@@ -55,12 +59,12 @@ function init()
 	setStance("idle")
 	updateHand()
 
-
 	-- Race checks
 	self.species = world.entitySpecies(activeItem.ownerEntityId())
 end
 
 function update(dt, fireMode, shiftHeld)
+
 	self.cooldownTimer = math.max(0, self.cooldownTimer)
 
 	updateStance(dt)
@@ -73,6 +77,9 @@ function update(dt, fireMode, shiftHeld)
         end
         setOrbAnimationState("shield")
         self.shieldTransformTimer = math.min(self.shieldTransformTime, self.shieldTransformTimer + dt)
+		if self.shieldPersistentEffectsExist then
+			world.sendEntityMessage(entity.id(),"recordFUPersistentEffect",self.shieldPersistentGroup)
+		end
     else
         self.shieldTransformTimer = math.max(0, self.shieldTransformTimer - dt)
         if self.shieldTransformTimer > 0 then
@@ -121,10 +128,10 @@ function update(dt, fireMode, shiftHeld)
 end
 
 function uninit()
+	deactivateShield()
+	removeShieldEffect()
 	activeItem.setItemShieldPolys()
 	activeItem.setItemDamageSources()
-	status.clearPersistentEffects("magnorbShield")
-	status.clearPersistentEffects("magnorbBonus")
 	animator.stopAllSounds("shieldLoop")
 end
 
@@ -154,7 +161,7 @@ end
 
 function fire(orbIndex)
 	local params = copy(self.projectileParameters)
-	params.powerMultiplier = activeItem.ownerPowerMultiplier()
+	params.powerMultiplier = activeItem.ownerPowerMultiplier() 
 
 	params.power = Crits.setCritDamage(self, params.power)
 
@@ -179,8 +186,16 @@ function fire(orbIndex)
 		end
 
         -- FU adds energy drain to these otherwise OP with crit weapons
-        self.energyCost = 4 * config.getParameter("level", 1)
+        self.tempEnergy = (config.getParameter("level", 1) + 7) -- base Magnorb cost
+        --self.magnorbBonus = self.tempEnergy * status.stat("magnorbMastery") -- energy cost reduction
+
+        --if status.stat("magnorbMastery") > 0 then
+        --	self.energyCost = self.tempEnergy * status.stat("magnorbMastery")
+    	--else
+    	self.energyCost = self.tempEnergy 
+    	--end
         status.overConsumeResource("energy", self.energyCost)
+
 	end
 end
 
@@ -221,7 +236,6 @@ function activateShield()
             end
         end
 	end)
-	addShieldEffect()
 end
 
 function deactivateShield()
@@ -248,114 +262,26 @@ function setOrbAnimationState(newState)
 	end
 end
 
--- shouldn't have to do this twice, but oh well...
 function addShieldEffect()
-	if self.shieldPower == "Regenerate" then
-        status.setPersistentEffects("atropusmagnorb", {
-            {stat = "healthRegen", amount = 2},
-            {stat = "poisonResistance", amount = 0.15}
-        })
-	elseif self.shieldPower == "Frost Aura" then
-        status.addEphemeralEffect("iceburst")
-        status.setPersistentEffects("frostmagnorb", {
-            {stat = "iceResistance", amount = 0.15}
-        })
-	elseif self.shieldPower == "Fire Aura" then
-        status.addEphemeralEffect("fireburst")
-        status.setPersistentEffects("hellfiremagnorb", {
-            {stat = "fireStatusImmunity", amount = 1},
-            {stat = "fireResistance", amount = 0.25}
-        })
-	elseif self.shieldPower == "Electric Resist" then
-        status.setPersistentEffects("lunarimagnorb", {
-            {stat = "electricResist", amount = 0.20}
-        })
-	elseif self.shieldPower == "Gravity Well" then
-        status.addEphemeralEffect("lowgrav_neutronmagnorb")
-        status.setPersistentEffects("neutronmagnorb", {
-            {stat = "aetherImmunity", amount = 1},
-            {stat = "cosmicResistance", amount = 0.25}
-        })
-	elseif self.shieldPower == "Force Field" then
-        status.addEphemeralEffect("mage_shield_lvl1")
-        status.setPersistentEffects("protomagnorb", {
-            {stat = "protoImmunity", amount = 1}
-        })
-	elseif self.shieldPower == "Reverse Gravity" then
-        status.addEphemeralEffect("lowgrav_shadowmagnorb")
-        status.setPersistentEffects("shadowmagnorb", {
-            {stat = "shadowImmunity", amount = 1},
-            {stat = "shadowResistance", amount = 0.25}
-        })
-	elseif self.shieldPower == "Slimey Defense" then
-        status.addEphemeralEffect("percentarmorboost10")
-        status.setPersistentEffects("slimemagnorb", {
-            {stat = "slimestickImmunity", amount = 1},
-            {stat = "slimefrictionImmunity", amount = 1},
-            {stat = "poisonResistance", amount = 0.15}
-        })
-	  elseif self.shieldPower == "Cosmic Absorbtion" then
-	    status.setPersistentEffects("cosmicdefender", {
-	      {stat = "aetherImmunity", amount = 1},
-	      {stat = "cosmicResistance", amount = 0.25}
-	    })
-	elseif self.shieldPower ~= nil and self.shieldPower ~= "none" then
-        sb.logError("shieldPower %s is undefined for function addShieldEffect in magnorbs.lua")
+	if self.shieldEphemeralEffectsExist then
+		for _,fx in pairs(self.shieldEphemeralEffects) do
+			status.addEphemeralEffect(fx)
+		end
+	end
+	if self.shieldPersistentEffectsExist then
+		status.setPersistentEffects(self.shieldPersistentGroup,self.shieldPersistentEffects)
+		world.sendEntityMessage(entity.id(),"recordFUPersistentEffect",self.shieldPersistentGroup)
 	end
 end
 
 function removeShieldEffect()
-	if self.shieldPower == "Regenerate" then
-        status.clearPersistentEffects("atropusmagnorb", {
-            {stat = "healthRegen", amount = 2},
-            {stat = "poisonResistance", amount = 0.15}
-        })
-	elseif self.shieldPower == "Cosmic Absorbtion" then
-        status.clearPersistentEffects("cosmicdefender", {
-	      {stat = "aetherImmunity", amount = 1},
-	      {stat = "cosmicResistance", amount = 0.25}
-        })
-	elseif self.shieldPower == "Frost Aura" then
-        status.removeEphemeralEffect("iceburst")
-        status.clearPersistentEffects("frostmagnorb", {
-            {stat = "iceResistance", amount = 0.15}
-        })
-	elseif self.shieldPower == "Fire Aura" then
-        status.removeEphemeralEffect("fireburst")
-        status.clearPersistentEffects("hellfiremagnorb", {
-            {stat = "fireStatusImmunity", amount = 1},
-            {stat = "fireResistance", amount = 0.25}
-        })
-	elseif self.shieldPower == "Electric Resist" then
-        status.clearPersistentEffects("lunarimagnorb", {
-            {stat = "electricResist", amount = 0.20}
-        })
-	elseif self.shieldPower == "Gravity Well" then
-        status.removeEphemeralEffect("lowgrav_neutronmagnorb")
-        status.clearPersistentEffects("neutronmagnorb", {
-            {stat = "aetherImmunity", amount = 1},
-            {stat = "cosmicResistance", amount = 0.25}
-        })
-	elseif self.shieldPower == "Force Field" then
-        status.removeEphemeralEffect("mage_shield_lvl1")
-        status.clearPersistentEffects("protomagnorb", {
-            {stat = "protoImmunity", amount = 1}
-        })
-	elseif self.shieldPower == "Reverse Gravity" then
-        status.removeEphemeralEffect("lowgrav_shadowmagnorb")
-        status.clearPersistentEffects("shadowmagnorb", {
-            {stat = "shadowImmunity", amount = 1},
-            {stat = "shadowResistance", amount = 0.25}
-        })
-	elseif self.shieldPower == "Slimey Defense" then
-        status.removeEphemeralEffect("percentarmorboost10")
-        status.clearPersistentEffects("slimemagnorb", {
-            {stat = "slimestickImmunity", amount = 1},
-            {stat = "slimefrictionImmunity", amount = 1},
-            {stat = "poisonResistance", amount = 0.15}
-        })
-	elseif self.shieldPower ~= nil and self.shieldPower ~= "none" then
-        sb.logError("shieldPower %s is undefined for function removeShieldEffect in magnorbs.lua")
+	if type(self.shieldEphemeralEffects)=="table" then
+		for _,fx in pairs(self.shieldEphemeralEffects) do
+			status.removeEphemeralEffect(fx)
+		end
+	end
+	if type(self.shieldPersistentEffects)=="table" then
+		status.setPersistentEffects(self.shieldPersistentGroup,{})
 	end
 end
 

@@ -6,14 +6,23 @@
   "interactAction" : "OpenCraftingInterface",
   "interactData" : {
     "config" : "/interface/windowconfig/psionicbench.config",
-    "filter" : [ "psibench" ]
+    "filter" : [ "psibench" ],
+      "paneLayoutOverride" : {
+      "windowtitle" : {
+        "title" : " ",
+        "subtitle" : " ",
+        "icon" : {"file" : ""}
+      },
+      "lblTitle" : {"value" : " ^#ffea00;Psionics Table"},
+      "lblSubTitle" : {"value" : " ^#dddddd;Create psionic weapons and gear."}    
+    }
   },
 
   "category" : "crafting",
   "price" : 2400,
 
   "description" : "Create psionic weapons and gear.",
-  "shortdescription" : "^orange;Psionics Table^white;",
+  "shortdescription" : "^orange;Psionics Table^reset;",
   "race" : "generic",
 
   "inventoryIcon" : "psionicbench.png",

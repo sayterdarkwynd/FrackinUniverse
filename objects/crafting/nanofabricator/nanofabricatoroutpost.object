@@ -23,7 +23,7 @@
   "placementImagePosition" : [-16, 0],    
 
   "description" : "This station helps with upgrading gear and creating ideas.",
-  "shortdescription" : "^orange;Tinkering Table^white;",
+  "shortdescription" : "^orange;Tinkering Table^reset;",
 
   "learnBlueprintsOnPickup" : [],
 
@@ -40,7 +40,7 @@
         "placementImagePosition" : [-16, 0],    
 
         "description" : "This station helps with upgrading gear and creating ideas.",
-        "shortdescription" : "^orange;Tinkering Table^white;"
+        "shortdescription" : "^orange;Tinkering Table^reset;"
       },
 
       "interactData" : {
@@ -61,7 +61,7 @@
         "placementImagePosition" : [-16, 0],    
 
         "description" : "Upgrade and enhance, conceptualize and experiment.",
-        "shortdescription" : "^orange;Engineering Table^white;"
+        "shortdescription" : "^orange;Engineering Table^reset;"
       },
 
       "interactData" : {
@@ -84,11 +84,17 @@
         "placementImagePosition" : [-16, 0],    
 
         "description" : "Create upgrades and hi-tech gear with nanites.",
-        "shortdescription" : "^orange;Nanofabricator^white;"
+        "shortdescription" : "^orange;Nanofabricator^reset;"
       },
 
       "interactData" : {
-        "config" : "/interface/windowconfig/fuempty.config"
+        "config" : "/interface/windowconfig/fuempty.config",
+        "paneLayoutOverride" : {
+          "background" : {"fileHeader" : "/interface/windowconfig/newuiheader_dark_upgraded.png"},  
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^red;UNAUTHORIZED ACCESS DETECTED^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Access to terminal disabled."}
+        }        
       },
 
       "learnBlueprintsOnPickup" : []

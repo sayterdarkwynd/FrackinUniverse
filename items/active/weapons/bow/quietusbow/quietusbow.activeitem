@@ -1,0 +1,60 @@
+{
+  "itemName" : "quietusbow",
+  "price" : 350,
+  "inventoryIcon" : "quietusbowicon.png",
+  "maxStack" : 1,
+  "rarity" : "uncommon",
+  "tooltipKind" : "bow2",
+  "category" : "bow",
+  "description" : "Laced with poisonous quantities of Quietus.",
+  "shortdescription" : "Quietus Bow",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow", "upgradeableWeapon","bioweapon","quietus"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 4,
+
+  "animation" : "/items/active/weapons/bow/fubow.animation",
+  "animationParts" : {
+    "bow" : "quietusbowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [-0.2, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/bow/bow.lua"],
+
+  "elementalType" : "bioweapon",
+  "primaryAbilityType" : "rngbows_enhancedbowshot",
+  "primaryAbility" : { 
+    "drawTime" : 0.87,				
+	"powerProjectileTime" : 0.325,	
+	"dynamicDamageMultiplier" : 1.0,	
+	"energyPerShot" : 25,			
+	"holdEnergyUsage" : 3,				
+	"airborneBonus" : 1.45,
+	"projectileType" : "quietusarrow",
+    "powerProjectileType" : "chargedquietusarrow",
+    "projectileParameters" : {
+      "power" : 7.5
+    },
+    "powerProjectileParameters" : {
+      "power" : 7.5,
+      "piercing" : true
+    }
+  },
+
+  "altAbilityType" : "rngbows_backpedal3",
+  "critChance" : 4,
+  "critBonus" : 2, 
+
+  "builder" : "/items/buildscripts/neb-buildbow.lua"
+}

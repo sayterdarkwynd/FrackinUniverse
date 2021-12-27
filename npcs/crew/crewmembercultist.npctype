@@ -1,44 +1,40 @@
 {
   "type" : "crewmembercultist",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "cultarmorhead",
         "chest" : "cultarmorchest",
         "legs" : "cultarmorpants"
       },
-
+	  
       "role" : {
+        "type" : "soldier",
+        "name" : "Cultist",
+        "field" : "Evil Worship",
+        "uniformColorIndex" : 8,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "insanityimmunity",
             "duration" : 300
-          },  
+          },
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "poisonblock2",
             "duration" : 300
           },
-	    {
-	      "type": "ShipUpgradeBenefit",
-	      "property": "maxFuel",
-	      "value": 150
-	    }          
-        ],
-        "type" : "soldier",
-        "name" : "Cultist",
-        "field" : "Evil Worship",
-        "uniformColorIndex" : 8
+	      {
+	        "type": "ShipUpgradeBenefit",
+	        "property": "maxFuel",
+	        "value": 150
+	      }
+        ]
       }
     },
 
@@ -72,17 +68,17 @@
           },
           "floran" : {
             "default" : [
-              "Floran hasss things to help you out!",
+              "Floran use idolss to help you out!",
               "Floran can help out!",
-              "Floran hasss things to help!"
+              "Floran hasss potionss to help!"
             ]
           },
           "glitch" : {
             "default" : [
               "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
+              "Excited. Perhaps you could do with a ritual empowerement!",
+              "Intrigued. I wonder if this will help more than it dooms you?",
+              "Helpful. Take this, it will help, for a time!"
             ]
           }
         }
@@ -95,10 +91,7 @@
       [0, [
           {
             "primary" : [ "carbonquarterstaff", "curvestaff", "cultiststaffmelee",  "bloodyknife", "fubonepickaxe", "effigiumdagger" ],
-            "sheathedprimary" : [ "eyecannon", "sniperknife", "thornslinger", "elderpistol", "elderrepeater", "ff_icechucker", "aegisaltpistol3", "blistergun", "blisterpistol", "biopistol", "biogun" ],
-			"head" :  [{ "name" : "cultarmorhead", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-			"chest" : [ { "name" : "cultarmorchest", "count" :1, "parameters" : { "colorIndex" : 8 } } ],
-            "legs" : [ { "name" : "cultarmorpants", "count" :1, "parameters" : { "colorIndex" : 8 } } ]          
+            "sheathedprimary" : [ "eyecannon", "sniperknife", "thornslinger", "elderpistol", "elderrepeater", "ff_icechucker", "blistergun", "blisterpistol", "biopistol", "biogun" ]
           }
         ] ]
     ]

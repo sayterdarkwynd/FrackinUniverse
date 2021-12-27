@@ -3,28 +3,34 @@
   "colonyTags" : [ "science", "hitech" ],
   "printable" : false,
   "rarity" : "Common",
-  "description" : "Never before have your butt cheeks rested on something so comfortable!",
-  "shortdescription" : "Hi-tech Armchair",
+  "description" : "Escape the bright future into the comfort of an even brighter future!",
+  "shortdescription" : "Hi-tech VR Set Chair",
   "race" : "generic",
   "category" : "furniture",
   "price" : 65,
-
   "inventoryIcon" : "fuokeahitechvrchairicon.png",
-  "orientations" : [
-    {
-      "dualImage" : "fuokeahitechvrchair.png:<color>",
-
-      "imagePosition" : [-16, 0],
-      "frames" : 1,
-      "animationCycle" : 1.0,
-
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ],
-
   "objectType" : "loungeable",
   "sitFlipDirection" : true,
-  "sitPosition" : [2, 22]
+  
+    "orientations" : [
+    {
+      "image" : "fuokeahitechvrchair.png:<color>",
+      "sitCoverImage" : "/objects/pixelgoods/fuokeahitechvrchairoverlay.png",
+      "imagePosition" : [-16, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "sitPositions" : [[-4, 22]],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "fuokeahitechvrchair.png:<color>",
+      "sitCoverImage" : "/objects/pixelgoods/fuokeahitechvrchairoverlay.png",
+      "imagePosition" : [-16, 0],
+      "direction" : "right",
+      "sitPositions" : [[4, 22]],
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
 }

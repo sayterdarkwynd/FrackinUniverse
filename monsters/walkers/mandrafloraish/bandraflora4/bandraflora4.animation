@@ -58,7 +58,16 @@
               "persistentSound" : "/sfx/npc/monsters/mandraflora_spinning.ogg",
               "persistentSoundStopTime" : 0.5
             }
-          }
+          },
+          "powerup" : {
+            "frames" : 8,
+            "cycle" : 0.6,
+            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/projectiles/gravitymine_detonate.ogg",
+              "persistentSoundStopTime" : 0.6
+            }
+          }          
         }
       },
            
@@ -139,6 +148,11 @@
               "properties" : {
                 "image" : "<partImage>:charge.<frame>"
               }
+            },
+            "powerup" : {
+              "properties" : {
+                "image" : "<partImage>:powerup.<frame>"
+              }
             }
           },
           "damage" : {
@@ -192,6 +206,11 @@
             "charge" : {
               "properties" : {
                 "image" : "<partImage>:charge.<frame>"
+              }
+            },
+            "powerup" : {
+              "properties" : {
+                "image" : "<partImage>:powerup.<frame>"
               }
             }
           },
@@ -278,7 +297,9 @@
 
   "sounds" : {
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
-    "fire" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "fire" : [ "/sfx/projectiles/tar_hit_organic1.ogg" ],
+    "fire2" : [ "/sfx/projectiles/tar_hit_organic2.ogg" ],
+    "fire3" : [ "/sfx/projectiles/goo_spit1.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ]
   }
 }

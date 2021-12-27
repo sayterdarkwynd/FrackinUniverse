@@ -23,7 +23,7 @@
   "placementImagePosition" : [-28, 0],
 
   "description" : "^cyan;(Frackin' Universe main table)^reset; Craft all sorts of useful gear.",
-  "shortdescription" : "^orange;Machining Table^white;",
+  "shortdescription" : "^orange;Machining Table^reset;",
 
   "learnBlueprintsOnPickup" : [],
 
@@ -39,8 +39,8 @@
         "placementImage" : "prototyper1.png:default.default",
         "placementImagePosition" : [-28, 0],
 
-        "description" : "Craft all sorts of complex gear",
-        "shortdescription" : "^orange;Machining Table^white;"
+        "description" : "Craft all sorts of complex gear.",
+        "shortdescription" : "^orange;Machining Table^reset;"
       },
 
       "interactData" : {
@@ -61,7 +61,7 @@
         "placementImagePosition" : [-28, 0],
 
         "description" : "Create more complicated gear",
-        "shortdescription" : "^orange;Auto-Assembler^white;"
+        "shortdescription" : "^orange;Auto-Assembler^reset;"
       },
 
       "interactData" : {
@@ -84,14 +84,17 @@
         "placementImagePosition" : [-28, 0],
 
         "description" : "Create advanced technology.",
-        "shortdescription" : "^orange;Matter Assembler^white;"
+        "shortdescription" : "^orange;Matter Assembler^reset;"
       },
 
       "interactData" : {
-        "config" : "/interface/windowconfig/fuempty.config"
-      }//,
-
-      //"learnBlueprintsOnPickup" : [ "labdoorhuge", "labhatchhuge", "labhatchplatformlarge" ]
+        "config" : "/interface/windowconfig/fuempty.config",
+        "paneLayoutOverride" : {
+          "background" : {"fileHeader" : "/interface/windowconfig/newuiheader_dark_upgraded.png"},  
+          "lblTitle" : {"value" : " ^red;UNAUTHORIZED ACCESS DETECTED^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Access to terminal disabled."}
+        } 
+      }
     }
   ],
 

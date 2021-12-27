@@ -1,6 +1,6 @@
 {
 	"type": "miningdrone1",
-	"shortdescription": "Mining Droid",
+	"shortdescription": "Ore Drone I",
 	"description": "Provides information on nearby ores.",
 	"reversed": true,
 	"categories": ["miningdrone1"],
@@ -32,8 +32,9 @@
 		"persistent": false,
 
 		"behavior": "monster",
+		"renderLayer" : "foregroundEntity",
 		"deathBehavior": "monster-death",
-		"seeThroughLiquid": false,
+		"seeThroughLiquid": true,
 		"behaviorConfig": {
 			"damageOnTouch": false,
 
@@ -110,10 +111,12 @@
 			"walkSpeed": 4,
 			"runSpeed": 24,
 			"gravityEnabled": false,
-			"collisionEnabled":true,
+			"collisionEnabled":false,
 			"airFriction": 4,
 			"airForce": 40,
-			"flySpeed": 15
+			"liquidFriction" : 4,
+			"liquidForce" : 40,
+			"flySpeed": 20
 		},
 
 		"bodyMaterialKind": "robotic",
@@ -139,7 +142,6 @@
 			"primaryScriptDelta": 5,
 
 			"stats": {
-			        "oreScan" : { "baseValue" : 1 },
 				"maxHealth":{
 					"baseValue":100
 				},
@@ -213,7 +215,7 @@
 		"feetOffset": [0, -8],
 		"capturable": true,
 		"captureHealthFraction": 1.0,
-		"nametagColor": [64, 200, 255],
-		"captureCollectables" : { "fu_monster" : "miningdrone1" }
+		"nametagColor": [64, 200, 255]//,
+		//"captureCollectables" : { "fu_monster" : "miningdrone1" }
 	}
 }

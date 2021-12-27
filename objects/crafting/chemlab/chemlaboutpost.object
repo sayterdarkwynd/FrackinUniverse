@@ -22,9 +22,7 @@
   "placementImagePosition" : [-28, 0],    
 
   "description" : "Play with chemicals. Endless fun.",
-  "shortdescription" : "^orange;Alchemy Table^white;",
-
- // "learnBlueprintsOnPickup" : [ "fucopperbomb", "fuironbomb", "glowbomb" ],
+  "shortdescription" : "^orange;Alchemy Table^reset;",
 
   "startingUpgradeStage" : 1,
   "maxUpgradeStage" : 3,
@@ -39,11 +37,17 @@
         "placementImagePosition" : [-28, 0],    
 
         "description" : "Experiment with chemicals. Super fun.",
-        "shortdescription" : "^orange;Alchemy Table^white;"
+        "shortdescription" : "^orange;Alchemy Table^reset;"
       },
 
       "interactData" : {
-        "config" : "/interface/windowconfig/fuempty.config"
+        "config" : "/interface/windowconfig/fuempty.config",
+        "paneLayoutOverride" : {
+          "background" : {"fileHeader" : "/interface/windowconfig/newuiheader_dark_upgraded.png"},  
+          "windowtitle" : {"title" : " ","subtitle" : " ","icon" : {"file" : ""}},
+          "lblTitle" : {"value" : " ^red;UNAUTHORIZED ACCESS DETECTED^reset;"},
+          "lblSubTitle" : {"value" : " ^#dddddd;Access to terminal disabled."}
+        } 
       },
 
       
@@ -62,7 +66,7 @@
         "placementImagePosition" : [-28, 0],    
 
         "description" : "More advanced experiments. More kaboom.",
-        "shortdescription" : "^orange;Chemistry Lab^white;"
+        "shortdescription" : "^orange;Chemistry Lab^reset;"
       },
       "interactData" : {
         "config" : "/interface/windowconfig/fuempty.config"
@@ -84,7 +88,7 @@
         "placementImagePosition" : [-28, 0],    
 
         "description" : "Superior chemistry and biology experiments.",
-        "shortdescription" : "^orange;Bio-Chem Lab^white;"
+        "shortdescription" : "^orange;Bio-Chem Lab^reset;"
       },
 
       "interactData" : {

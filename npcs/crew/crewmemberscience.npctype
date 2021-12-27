@@ -1,15 +1,10 @@
 {
   "type" : "crewmemberscience",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
-  // This npctype is used just as a base for the other crewmemberchemist*
-  // npctypes. Don't use it directly for spawning NPCs.
+  // Not used for anything currently, feel free to turn into something else.
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "scientisthead",
@@ -77,10 +72,7 @@
       [0, [
           {
             "primary" : [ "carbonblade" ],
-            "sheathedprimary" : [ "energyassault" ],
-			"head" :  [{ "name" : "scientisthead", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-			"chest" : [ { "name" : "scientistchest", "count" :1, "parameters" : { "colorIndex" : 2 } } ],
-            "legs" : [ { "name" : "scientistlegs", "count" :1, "parameters" : { "colorIndex" : 2 } } ]          
+            "sheathedprimary" : [ "energyassault" ]
           }
         ] ]
     ]

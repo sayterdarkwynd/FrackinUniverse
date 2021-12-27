@@ -607,6 +607,7 @@ function checkHouseIntegrity()
 end
 
 function getTagCriteria()
+	if not storage.occupier then return {} end
 	if not storage.occupier.tagCriteria then
 		storage.occupier.tagCriteria = root.tenantConfig(storage.occupier.name).colonyTagCriteria
 	end

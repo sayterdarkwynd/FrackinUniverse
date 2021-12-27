@@ -1,14 +1,8 @@
 {
   "type" : "crewmemberghostbuster",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-"innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.20} ], 
-  
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "goggles2",
@@ -16,29 +10,29 @@
         "legs" : "tw_spacesuitlegs",
         "back" : "tw_spacepunkback"
       },
-
+	  
       "role" : {
-        "benefits" : [   
+        "name" : "Ghostbuster",
+        "field" : "Ghostbusting",
+        "uniformColorIndex" : 2,
+
+        "benefits" : [
           {
             "type" : "ShipUpgradeBenefit",
             "property" : "maxFuel",
             "value" : 340
-          },         
+          },
           {
             // Ephemeral effects gained upon leaving the ship
             "type" : "EphemeralEffect",
             "effect" : "erchiusimmunity",
             "duration" : 900
-          },         
+          },
           {
             "type" : "Regeneration",
             "value" : 1
           }
-        ],
-        "type" : "chemist",
-        "name" : "Ghostbuster",
-        "field" : "Ghostbusting",
-        "uniformColorIndex" : 2
+        ]
       }
     },
 
@@ -104,11 +98,7 @@
       [0, [
           {
             "primary" : [ "fubeamgunghostbuster" ],
-            "sheathedprimary" : [ "penumbritespear" ],
-			"head" :  [{ "name" : "goggles2", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
-			"chest" : [ { "name" : "tw_spacesuitchest", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
-            "legs" : [ { "name" : "tw_spacesuitlegs", "count" :1, "parameters" : { "colorIndex" : 0 } } ],
-            "back" : [ { "name" : "tw_spacepunkback", "count" :1, "parameters" : { "colorIndex" : 0 } } ]         
+            "sheathedprimary" : [ "penumbritespear" ]
           }
         ] ]
     ]

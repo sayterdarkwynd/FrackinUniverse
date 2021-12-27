@@ -1,33 +1,53 @@
 {
-  "objectName" : "icespikeff",
-  "rarity" : "Common",
-  "category" : "decorative",
-  "price" : 400,
-  "printable" : false,  
-  "description" : "Ice spike",
-  "shortdescription" : "Ice spike",
-  "race" : "apex",
+    "objectName": "icespikeff",
+    "rarity": "Common",
+    "category": "decorative",
+    "price": 400,
+    "printable": false,
+    "description": "Ice spike",
+    "shortdescription": "Ice spike",
+    "race": "apex",
+    "inventoryIcon": "icespikeff.png",
+    "orientations": [
+        {
+            "image": "icespikeff.png:<color>",
+            "imagePosition": [
+                0,
+                0
+            ],
+            "frames": 1,
+            "animationCycle": 0.5,
+            "spaceScan": 0.1,
+            "anchors": [
+                "bottom"
+            ]
+        }
+    ],
+    "smashSounds": [
+        "/sfx/tools/axe_chop_alt_heavy.ogg"
+    ],
+    "smashDropOptions": [
+        [
+            [
+                "ice",
+                5,
+                {
 
-  "inventoryIcon" : "icespikeff.png",
-  "orientations" : [
-    {
-      "image" : "icespikeff.png:<color>",
-      "imagePosition" : [0, 0],
-      "frames" : 1,
-      "animationCycle" : 0.5,
+                }
+            ]
+        ]
+    ],
+    "breakDropOptions": [
+        [
+            [
+                "ice",
+                5,
+                {
 
-      "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ]
-
-    }
-  ],
-  "smashSounds" : [ "/sfx/tools/axe_chop_alt_heavy.ogg" ],
-  "smashDropOptions" : [
-    [ [ "ice", 5, { } ] ]
-  ],
-
-  "breakDropOptions" : [
-    [ [ "ice", 5, { } ] ]
-  ],
-  "biomePlaced" : true
+                }
+            ]
+        ]
+    ],
+    "biomePlaced": true,
+    "scannable": false
 }

@@ -1,45 +1,44 @@
 {
-  "name" : "jungleweathernew",
-  "blockingStat" : "",
+	"name" : "jungleweathernew",
 
-  "effectConfig" : {
-    "resistanceTypes" : {
-      "physicalResistance" : 1.0
-    },
-    "resistanceThreshold" : 0.2,
-    "immunityStats" : [
-      "jungleslowImmunity"
-    ],
+	"effectConfig" : {
+		"resistanceTypes" : {
+			"physicalResistance" : 1.0
+		},
+		"resistanceThreshold" : 0.2,
+		"immunityStats" : [
+			"jungleslowImmunity"
+		],
 
-    "healthDrain" : 0.3,
-    "hungerDrain" : 0,
-    "energyDrain" : 0,
-    "speedPenalty" : 0.5,
-    "jumpPenalty" : 0.5,
+		"healthDrain" : 0.3,
+		"hungerDrain" : 0,
+		"energyDrain" : 0,
+		"speedPenalty" : 0.5,
+		"jumpPenalty" : 0.5,
 
-    "debuffRate" : 5,
-    "debuffStartDelay" : 0,
-    "debuffs" : {},
+		"debuffRate" : 5,
+		"debuffStartDelay" : 0,
+		"debuffs" : {},
 
-    "modifiers" : {
-      "night" : 0.9,
-      "wet" : 0.35
-    },
+		"modifiers" : {
+			"night" : 0.9,
+			"wet" : 0.35
+		},
 
-    "messages" : {
-      "intro" : "ffbiomejungle",
-      "wet" : "ffbiomejunglewater"
-    },
+		"messages" : {
+			"intro" : "ffbiomejungle",
+			"wet" : "ffbiomejunglewater"
+		},
 
-    "configPath" : "/stats/effects/fu_weathereffects/new/tropical/jungleheatweather.statuseffect"
-  },
-  "defaultDuration" : 5,
+		"configPath" : "/stats/effects/fu_weathereffects/new/tropical/jungleheatweather.statuseffect"
+	},
+	"defaultDuration" : 5,
 
-  "scripts" : [
-    "jungleheatweather.lua"
-  ],
+	"scripts" : [
+		"jungleheatweather.lua"
+	],
 
-  "animationConfig" : "jungleheatweather.animation",
-  "label" : "Tropical Heat",
-  "icon" : "/interface/statuses/biomeheat.png"
+	"animationConfig" : "jungleheatweather.animation",
+	"label" : "Tropical Humidity (Resist: ^#a10000;Physical^reset;)",
+	"icon" : "/interface/statuses/biomeheat.png"
 }

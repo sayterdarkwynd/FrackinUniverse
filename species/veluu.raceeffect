@@ -1,55 +1,47 @@
 {
-	"stats" : [	
-		{ "stat" : "iceResistance", "amount" : 0.20 },
-		{ "stat" : "electricResistance", "amount" : -0.20 },
-		{ "stat" : "cosmicResistance", "amount" : -0.20 },
-		{ "stat" : "fumudslowImmunity", "amount" : 1 },
-		{ "stat" : "fallDamageMultiplier", "effectiveMultiplier" : 0.5 },
-		{ "stat" : "fujungleslowImmunity", "amount" : 1 },
-		{ "stat" : "jungleslowImmunity", "amount" : 1 },
-		{ "stat" : "bowDrawTimeBonus", "amount": 0.1 }
+	"stats": [	
+		{ "stat": "maxHealth", "effectiveMultiplier": 1.05 },
+		{ "stat": "powerMultiplier", "effectiveMultiplier": 1.05 },
+		{ "stat": "fallDamageMultiplier", "effectiveMultiplier": 0.8 },
+        
+		{ "stat": "physicalResistance", "amount": -0.05 },
+		{ "stat": "fireResistance", "amount": -0.10 },
+		{ "stat": "iceResistance", "amount": 0.15 },
+		{ "stat": "poisonResistance", "amount": -0.10 },
+		{ "stat": "electricResistance", "amount": 0.05 },
+		{ "stat": "radioactiveResistance", "amount": -0.10 },
+        
+		{ "stat": "fumudslowImmunity", "amount": 1 },
+		{ "stat": "fujungleslowImmunity", "amount": 1 },
+		{ "stat": "jungleslowImmunity", "amount": 1 },
+
+		{ "stat": "fistMastery", "amount": 0.20 },
+		{ "stat": "daggerMastery", "amount": 0.15 },
+		{ "stat": "armcannonMastery", "amount": 0.15 }
 	],
 	"diet" : "raw_omnivore",
 	"controlModifiers" : {
-		"speedModifier" : 1.08,
-		"airJumpModifier" : 1.20
+		"speedModifier" : 1.06,
+		"airJumpModifier" : 1.13
 	},
 	"envEffects" : [
 		{
 			"biomes" : [ "jungle", "thickjungle", "forest", "desert", "arboreal", "arborealdark" ],	
-			"stats" : [
-				{ "stat" : "maxHealth", "effectiveMultiplier" : 1.1 },
-				{ "stat" : "maxEnergy", "effectiveMultiplier" : 1.15 }
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 1.1 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 1.15 }
 			]			
-		}
-	],
-	"weaponEffects" : [
-		{
-			"weapons" : [ "fist","dagger","shortsword" ],
-			"stats" : [
-				{ "stat" : "critChance", "amount" : 1 }
-			]
 		},
 		{
-			"weapons" : [ "thrown","thrown_grenade" ],
-			"stats" : [
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.25 }
-			]
-		},
-		{
-			"weapons" : [ "armcannon" ],
-			"stats" : [
-				{ "stat" : "powerMultiplier", "effectiveMultiplier" : 1.15 },
-				{ "stat" : "protection", "effectiveMultiplier" : 1.15 }
-			]
-		},
-		{
-			"weapons" : [ "magnorb" ],
-			"stats" : [
-				{ "stat" : "critChance", "amount" : 2 }
-			]
+			"biomes" : [ "sulphuric", "sulphuricdark", "sulphuricocean", "desert", "desertwastes", "desertwastesdark", "infernus","infernusdark","barren" ],	
+			"stats": [
+				{ "stat": "maxHealth", "effectiveMultiplier": 0.8 },
+				{ "stat": "maxEnergy", "effectiveMultiplier": 0.8 }
+			]			
 		}		
 	],
+	"weaponEffects" : [],
+	
 	"special" : [ "headlampveluu" ],
 	"tech" : [ "veluuclaw" ]
 }

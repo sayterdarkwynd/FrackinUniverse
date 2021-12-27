@@ -1,305 +1,305 @@
 {
-  "type" : "sentryminidrone1",
-  "shortdescription" : "Light Drone",
-  "description" : "Floats and glows.",
+	"type" : "sentryminidrone1",
+	"shortdescription" : "Light Drone",
+	"description" : "Floats and glows.",
 
-  "categories" : [ "sentryminidrone1" ],
-  "parts" : [ "body" ],
+	"categories" : [ "sentryminidrone1" ],
+	"parts" : [ "body" ],
 
-"reversed" : true,
+	"reversed" : true,
 
-  "animation" : "sentryminidrone1.animation",
-  
-  "dropPools" : [ ],
+	"animation" : "sentryminidrone1.animation",
 
-  "baseParameters" : {
-    "scripts" : [
-      "/monsters/monster.lua"
-    ],
+	"dropPools" : [ ],
+
+	"baseParameters" : {
+		"scripts" : [
+			"/monsters/monster.lua"
+		],
 
 
-    "persistent" : false,
+		"persistent" : false,
 
-    "behavior" : "monster",
-    "deathBehavior" : "monster-death",
-    "seeThroughLiquid" : false,
-    "behaviorConfig" : {
-      "damageOnTouch" : true,
+		"behavior" : "monster",
+		"deathBehavior" : "monster-death",
+		"seeThroughLiquid" : false,
+		"behaviorConfig" : {
+			"damageOnTouch" : true,
 
-      "targetQueryRange" : 20,
-      "targetOnDamage" : true,
-      "keepTargetInSight" : true,
-      "keepTargetInRange" : 50,
-      "targetOutOfSightTime" : 5.0,
+			"targetQueryRange" : 20,
+			"targetOnDamage" : true,
+			"keepTargetInSight" : true,
+			"keepTargetInRange" : 50,
+			"targetOutOfSightTime" : 5.0,
 
-      "hurtWaitForGround" : false,
+			"hurtWaitForGround" : false,
 
-      "foundTargetActions" : [
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "glow",
-          "duration" : 220
-          }
-        },          
-        {
-          "name" : "action-statuseffect",
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "headlamp",
-          "duration" : 220
-          }
-        }        
-      ],
+			"foundTargetActions" : [
+				{
+					"name" : "action-statuseffect",
+					"cooldown" : 200,
+					"parameters" : {
+					"effect" : "glow",
+					"duration" : 220
+					}
+				},
+				{
+					"name" : "action-statuseffect",
+					"cooldown" : 200,
+					"parameters" : {
+					"effect" : "headlamp",
+					"duration" : 220
+					}
+				}
+			],
 
-      "fleeActions" : [ 
-      
-      ],
+			"fleeActions" : [
 
-      "hostileActions" : [
-       {
-          "name" : "action-fire",
-          "cooldown" : 5,
-          "parameters" : {
-            "requireLineOfSight" : true,
-            "maximumRange" : 20,
-            "minimumRange" : 4,
-            "windupStopForce" : 50,
-            "windupState" : "fire",
-            "windupTime" : 0.4,
+			],
 
-            "projectileType" : "laser-1",
-            "projectileCount" : 1,
-            "projectileInterval" : 0.01,
-            "projectileParameters" : {
-              "speed" : 60
-            },
-            "power" : 5,
-            "fireOffset" : [0, 0],
-            "aimAtTarget" : true,
-            "onGround" : false,
-            "fireState" : "",
-            "fireSound" : "fire",
+			"hostileActions" : [
+			 {
+					"name" : "action-fire",
+					"cooldown" : 5,
+					"parameters" : {
+						"requireLineOfSight" : true,
+						"maximumRange" : 20,
+						"minimumRange" : 4,
+						"windupStopForce" : 50,
+						"windupState" : "fire",
+						"windupTime" : 0.4,
 
-            "winddownState" : "",
-            "winddownTime" : 0.1
-          }
-        }
-      ],
+						"projectileType" : "laser-1",
+						"projectileCount" : 1,
+						"projectileInterval" : 0.01,
+						"projectileParameters" : {
+							"speed" : 60
+						},
+						"power" : 5,
+						"fireOffset" : [0, 0],
+						"aimAtTarget" : true,
+						"onGround" : false,
+						"fireState" : "",
+						"fireSound" : "fire",
 
-      "approachActions" : [
-        {
-          "name" : "approach-swarm",
-          "parameters" : {
-            "usePathfinding" : true
-          }
-        }
-      ],
+						"winddownState" : "",
+						"winddownTime" : 0.1
+					}
+				}
+			],
 
-      "followActions" : [
-        {
-          "name" : "approach-teleport",
-          "parameters" : {
-          }
-        },
-        {
-          "name" : "approach-fly",
-          "parameters" : {
-            "usePathfinding" : true
-          }
-        }
-      ],
+			"approachActions" : [
+				{
+					"name" : "approach-swarm",
+					"parameters" : {
+						"usePathfinding" : true
+					}
+				}
+			],
 
-      "wanderActions" : [
-        {
-          "name" : "action-statuseffect", 
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "glow",
-          "duration" : 220
-          }
-        },          
-        {
-          "name" : "action-statuseffect",
-          "cooldown" : 200,
-          "parameters" : {
-          "effect" : "headlamp",
-          "duration" : 220
-          }
-        },         
-        {
-          "name" : "emerge-fly"
-        },
-        {
-          "name" : "wander-fly",
-          "parameters" : {
-            "wanderTime" : [2,4],
-            "groundDistance" : 3,
-            "ceilingDistance" : 3,
-            "xVelocity" : 8,
-            "yVelocity" : 12
-          }
-        }        
-      ],
+			"followActions" : [
+				{
+					"name" : "approach-teleport",
+					"parameters" : {
+					}
+				},
+				{
+					"name" : "approach-fly",
+					"parameters" : {
+						"usePathfinding" : true
+					}
+				}
+			],
 
-      "concurrentActions" : [
-      
-      ],
-      
-      "concurrentHostileActions" : [
-        
-      ],
-      
-      "deathActions" : [
-        {
-          "name" : "action-projectile",
-          "parameters" : {
-            "projectileCount" : 1,
-            "projectileType" : "gaussrifleboom",
-            "projectileParameters" : {},
-            "power" : 6,
-            "aimDirection" : [0, -1],
-            "inaccuracy" : 0,
-            "fireOffset" : [0, 1]
-          }
-        }
-      ]
-    },
+			"wanderActions" : [
+				{
+					"name" : "action-statuseffect",
+					"cooldown" : 200,
+					"parameters" : {
+					"effect" : "glow",
+					"duration" : 220
+					}
+				},
+				{
+					"name" : "action-statuseffect",
+					"cooldown" : 200,
+					"parameters" : {
+					"effect" : "headlamp",
+					"duration" : 220
+					}
+				},
+				{
+					"name" : "emerge-fly"
+				},
+				{
+					"name" : "wander-fly",
+					"parameters" : {
+						"wanderTime" : [2,4],
+						"groundDistance" : 3,
+						"ceilingDistance" : 3,
+						"xVelocity" : 8,
+						"yVelocity" : 12
+					}
+				}
+			],
 
-    "touchDamage" : {
-      "poly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
-      "damage" : 8,
+			"concurrentActions" : [
 
-      "teamType" : "enemy",
-      "damageSourceKind" : "lash",
-      "knockback" : 20,
-      "statusEffects" : [ "electrified" ]
-    },
+			],
 
-    "metaBoundBox" : [-4, -4, 4, 4],
-    "scale" : 0.8,
+			"concurrentHostileActions" : [
 
-    "movementSettings" : {
-      "collisionEnabled" : true,
-      "collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
+			],
 
-      "mass" : 0.5,
-      "walkSpeed" : 20,
-      "runSpeed" : 25,
-      "gravityEnabled" : false,
+			"deathActions" : [
+				{
+					"name" : "action-projectile",
+					"parameters" : {
+						"projectileCount" : 1,
+						"projectileType" : "gaussrifleboom",
+						"projectileParameters" : {},
+						"power" : 6,
+						"aimDirection" : [0, -1],
+						"inaccuracy" : 0,
+						"fireOffset" : [0, 1]
+					}
+				}
+			]
+		},
 
-      "airFriction" : 4,
-      "airForce" : 40,
-      "flySpeed" : 26
-    },
+		"touchDamage" : {
+			"poly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
+			"damage" : 8,
 
-    "bodyMaterialKind" : "robotic",
+			"teamType" : "enemy",
+			"damageSourceKind" : "lash",
+			"knockback" : 20,
+			"statusEffects" : [ "electrified" ]
+		},
 
-    "knockoutTime" : 0.3,
-    "knockoutAnimationStates" : {
-      "damage" : "stunned"
-    },
-    "deathParticles" : "deathPoof",
-    "knockoutEffect" : "",
+		"metaBoundBox" : [-4, -4, 4, 4],
+		"scale" : 0.8,
 
-    "statusSettings" : {
-      "statusProperties" : {
-        "targetMaterialKind" : "robotic"
-      },
+		"movementSettings" : {
+			"collisionEnabled" : true,
+			"collisionPoly" : [ [0.1875, 1.1875], [0.6875, 0.6875], [0.6875, -0.6875], [0.1875, -1.1875], [-0.1875, -1.1875], [-0.6875, -0.6875], [-0.6875, 0.6875], [-0.1875, 1.1875] ],
 
-      "appliesEnvironmentStatusEffects" : false,
-      "appliesWeatherStatusEffects" : true,
-      "minimumLiquidStatusEffectPercentage" : 0.1,
+			"mass" : 0.5,
+			"walkSpeed" : 20,
+			"runSpeed" : 25,
+			"gravityEnabled" : false,
 
-      "primaryScriptSources" : [
-        "/stats/monster_primary.lua"
-      ],
-      "primaryScriptDelta" : 5,
+			"airFriction" : 4,
+			"airForce" : 40,
+			"flySpeed" : 26
+		},
 
-      "stats" : {
-        "knockbackStunTime" : {
-          "baseValue" : 0.5
-        },
-        "knockbackThreshold" : {
-          "baseValue" : 9
-        },
-        "maxHealth" : {
-          "baseValue" : 70
-        },
-        "protection" : {
-          "baseValue" : 0.0
-        },
-        "healthRegen" : {
-          "baseValue" : 0.0
-        },
-        "powerMultiplier" : {
-          "baseValue" : 1.0
-        },
-        "electricResistance" : {
-          "baseValue" : -0.3
-        },        
-        "fireResistance" : {
-          "baseValue" : 0.2
-        },       
-        "fireStatusImmunity" : {
-          "baseValue" : 1
-        },
-        "iceResistance" : {
-          "baseValue" : 0.2
-        },       
-        "iceStatusImmunity" : {
-          "baseValue" : 1
-        },        
-        "poisonResistance" : {
-          "baseValue" : 0.7
-        },        
-        "poisonStatusImmunity" : {
-          "baseValue" : 1
-        },
-        "physicalResistance" : {
-          "baseValue" : 0.25
-        },        
-        "cosmicResistance" : {
-          "baseValue" : 0.0
-        },        
-        "radioactiveResistance" : {
-          "baseValue" : 0.7
-        },        
-        "shadowResistance" : {
-          "baseValue" : 0.5
-        },        
-        "extremepressureImmunity" : {
-          "baseValue" : 1
-        },        
-        "shadowImmunity" : {
-          "baseValue" : 1
-        },
-        "insanityImmunity" : {
-          "baseValue" : 1
-        },
-        "darknessImmunity" : {
-          "baseValue" : 1
-        } 
-      },
+		"bodyMaterialKind" : "robotic",
 
-      "resources" : {
-        "stunned" : {
-          "deltaValue" : -1.0,
-          "initialValue" : 0.0
-        },
-        "health" : {
-          "maxStat" : "maxHealth",
-          "deltaStat" : "healthRegen",
-          "defaultPercentage" : 100
-        }
-      }
-    },
+		"knockoutTime" : 0.3,
+		"knockoutAnimationStates" : {
+			"damage" : "stunned"
+		},
+		"deathParticles" : "deathPoof",
+		"knockoutEffect" : "",
 
-    "mouthOffset" : [0, 0],
-    "feetOffset" : [0, -8],
-    "capturable" : true,
-    "captureHealthFraction" : 0.5,
-    "nametagColor" : [64, 200, 255]
-  }
+		"statusSettings" : {
+			"statusProperties" : {
+				"targetMaterialKind" : "robotic"
+			},
+
+			"appliesEnvironmentStatusEffects" : false,
+			"appliesWeatherStatusEffects" : true,
+			"minimumLiquidStatusEffectPercentage" : 0.1,
+
+			"primaryScriptSources" : [
+				"/stats/monster_primary.lua"
+			],
+			"primaryScriptDelta" : 5,
+
+			"stats" : {
+				"knockbackStunTime" : {
+					"baseValue" : 0.5
+				},
+				"knockbackThreshold" : {
+					"baseValue" : 9
+				},
+				"maxHealth" : {
+					"baseValue" : 70
+				},
+				"protection" : {
+					"baseValue" : 0.0
+				},
+				"healthRegen" : {
+					"baseValue" : 0.0
+				},
+				"powerMultiplier" : {
+					"baseValue" : 1.0
+				},
+				"electricResistance" : {
+					"baseValue" : -0.3
+				},
+				"fireResistance" : {
+					"baseValue" : 0.2
+				},
+				"fireStatusImmunity" : {
+					"baseValue" : 1
+				},
+				"iceResistance" : {
+					"baseValue" : 0.2
+				},
+				"iceStatusImmunity" : {
+					"baseValue" : 1
+				},
+				"poisonResistance" : {
+					"baseValue" : 0.7
+				},
+				"poisonStatusImmunity" : {
+					"baseValue" : 1
+				},
+				"physicalResistance" : {
+					"baseValue" : 0.25
+				},
+				"cosmicResistance" : {
+					"baseValue" : 0.0
+				},
+				"radioactiveResistance" : {
+					"baseValue" : 0.7
+				},
+				"shadowResistance" : {
+					"baseValue" : 0.5
+				},
+				"extremepressureImmunity" : {
+					"baseValue" : 1
+				},
+				"shadowImmunity" : {
+					"baseValue" : 1
+				},
+				"insanityImmunity" : {
+					"baseValue" : 1
+				},
+				"darknessImmunity" : {
+					"baseValue" : 1
+				}
+			},
+
+			"resources" : {
+				"stunned" : {
+					"deltaValue" : -1.0,
+					"initialValue" : 0.0
+				},
+				"health" : {
+					"maxStat" : "maxHealth",
+					"deltaStat" : "healthRegen",
+					"defaultPercentage" : 100
+				}
+			}
+		},
+
+		"mouthOffset" : [0, 0],
+		"feetOffset" : [0, -8],
+		"capturable" : true,
+		"captureHealthFraction" : 0.5,
+		"nametagColor" : [64, 200, 255]
+	}
 }

@@ -1,127 +1,29 @@
 {
 	"stats": [
-		{
-			"stat": "shadowResistance",
-			"amount": 0.4
-		},
-		{
-			"stat": "iceResistance",
-			"amount": 0.1
-		},
-		{
-			"stat": "electricResistance",
-			"amount": -0.2
-		},			
-		{
-			"stat": "cosmicResistance",
-			"amount": -0.2
-		},
-		{
-			"stat": "radioactiveResistance",
-			"amount": -0.2
-		},
-		{
-			"stat": "poisonStatusImmunity",
-			"amount": 1
-		},			
-		{
-			"stat": "biooozeImmunity",
-			"amount": 1
-		}
+		{ "stat": "iceResistance", "amount": 0.05},
+		{ "stat": "poisonResistance", "amount": 0.10},
+		{ "stat": "electricResistance", "amount": -0.15},			
+		{ "stat": "cosmicResistance", "amount": -0.20},
+		{ "stat": "shadowResistance", "amount": 0.15},
+        
+		{ "stat": "poisonStatusImmunity", "amount": 1},
+        
+		{ "stat": "longswordMastery", "amount": 0.25},
+		{ "stat": "shortswordMastery", "amount": 0.25},
+		{ "stat": "broadswordMastery", "amount": 0.25}
 	],
 	"diet" : "omnivore",
-	"envEffects": [{
-		"biomes": [
-			"chromatic",
-			"desert","desertwastes","forest","ocean"
-		],
-		"stats": [{
-				"stat": "protection",
-				"effectiveMultiplier": 0.8
-			},
-			{
-				"stat": "energyRegenPercentageRate",
-				"baseMultiplier": 0.8
-			}
-		],
-		"controlModifiers": {
-			"speedModifier": 0.9,
-			"airJumpModifier": 0.9
-		}
-	},{
-		"biomes": [
-			"penumbra","oceanfloor","tidewater","tidewaterfloor","lightless","midnight","sulphuricdark","arborealdark","desertwastesdark","tundradark","aethersea","shadow","moonshadow","icemoon","icewastesdark"
-		],
-		"stats": [{
-				"stat": "protection",
-				"effectiveMultiplier": 1.1
-			},
-			{
-				"stat": "energyRegenPercentageRate",
-				"baseMultiplier": 1.1
-			}
-		],
-		"controlModifiers": {
-			"speedModifier": 1.07,
-			"airJumpModifier": 1.07
-		}
-	}],
+	"envEffects": [],
 	
-	
-	"weaponEffects": [
-		{
-			"weapons": ["longsword","shortsword","dagger","katana","rapier"],
-			"stats": [ {"stat": "critChance","amount": 1.0} ]
-		},
-		
-		{
-			"weapons": ["shortsword","dagger"],
-			"stats": [ {"stat": "critDamage","amount": 0.1}]
-		},
-				
-		{
-			"weapons": ["longsword","katana"],
-			"stats": [{"stat": "powerMultiplier","effectiveMultiplier": 1.06}
-			]
-		},
-		{
-			"combos": [ ["katana","dagger"],["rapier","dagger"] ],
-			"stats": [ {"stat": "critChance","amount": 1.5} ]
-		},	
-		{
-			"weapons": ["whip"],
-			"controlModifiers": {"speedModifier": 1.10}
-		},		
-		{
-			"combos": [ ["shortsword","shortsword"],["dagger","dagger"],["katana","dagger"],["rapier","dagger"] ],
-			"stats": [ {"stat": "protection","effectiveMultiplier": 1.12} ],
-			"controlModifiers": {"speedModifier": 1.05}
-		},
+	"weaponEffects": [		
 		{
 			"weapons": [ "shield" ],
-			"stats": [ {"stat": "grit","amount": 0.25},{"stat": "shieldBash","amount": 2} ]
-		},
-		
-		{
-			"weapons": ["shortsword","broadsword","katana","longsword","rapier","dagger"],
-			"scripts": [
-			{
-				"script": "/scripts/fr_weaponscripts/healthybonus.lua",
-				"contexts": [ "healthyBonus" ],
-				"args": {
-					"healthReq": 1,
-					"stats": [{
-						"stat": "powerMultiplier",
-						"effectiveMultiplier": 1.1
-					}]
-				}
-			}]
-		}
-		
+			"stats": [ { "stat": "grit", "amount": 0.25} ]
+		}	
 	],
 	"weaponScripts": [		
 		{
-			"weapons": [ "shortsword","longsword","dagger","katana","broadsword","whip" ],
+			"weapons": [ "shortsword","longsword","rapier","katana","broadsword" ],
 			"contexts": [ "meleecombo-fire" ],
 			"script": "/scripts/fr_scripts/lightEffectNightar.lua",
 			"args": {
@@ -135,6 +37,6 @@
 		}
 	],
 	
-	"special": [ "nightarglow3", "darkhunternightar", "drainnightar"],
+	"special": [ "darkhunternightar", "drainnightar", "headlampnightar" ],
 	"tech" : [ "nightarconshak" ]
 }

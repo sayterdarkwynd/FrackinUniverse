@@ -1,21 +1,21 @@
 {
   "type" : "crewmemberstealth",
-  "baseType" : "crewmember",
-  //"disableWornArmor" : false,
-    "innateStatusEffects" : [ { "stat" : "protection", "amount": -10 }, {"stat" : "powerMultiplier", "amount" : -0.25} ], 
-  "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
+  "baseType" : "fu_crewmember",
 
+  "scriptConfig" : {
     "crew" : {
       "defaultUniform" : {
         "head" : "fudarkrobeshelmetnpc",
         "chest" : "fudarkrobeschestnpc",
         "legs" : "fudarkrobespantsnpc"
       },
-
+	  
       "role" : {
+        "type" : "chemist",
+        "name" : "Assassin",
+        "field" : "Murderology",
+        "uniformColorIndex" : 6,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -29,16 +29,12 @@
             "effect" : "biooozeimmunity",
             "duration" : 300
           },
-    	    {
-    	      "type": "ShipUpgradeBenefit",
-    	      "property": "maxFuel",
-    	      "value": 160
-    	    }  
-        ],
-        "type" : "chemist",
-        "name" : "Assassin",
-        "field" : "Murderology",
-        "uniformColorIndex" : 6
+    	  {
+    	    "type": "ShipUpgradeBenefit",
+    	    "property": "maxFuel",
+    	    "value": 160
+    	  }
+        ]
       }
     },
 
@@ -69,21 +65,6 @@
               "Looks like you could use my assistance!",
               "I can help cure poison!"
             ]
-          },
-          "floran" : {
-            "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
-            ]
           }
         }
       }
@@ -95,10 +76,7 @@
       [0, [
           {
             "primary" : [ "thornrifle" ],
-            "sheathedprimary" : [ "spikesword" ],
-			"head" :  [{ "name" : "fudarkrobeshelmetnpc", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-			"chest" : [ { "name" : "fudarkrobeschestnpc", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "legs" : [ { "name" : "fudarkrobespantsnpc", "count" :1, "parameters" : { "colorIndex" : 6 } } ]          
+            "sheathedprimary" : [ "spikesword" ]
           }
         ] ]
     ]

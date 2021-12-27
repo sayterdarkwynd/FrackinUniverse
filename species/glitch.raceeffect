@@ -1,40 +1,32 @@
 {
 	"stats": [
-		{ "stat": "maxHealth", "effectiveMultiplier": 1.15 },
-		{ "stat": "maxEnergy", "effectiveMultiplier": 1.05 },
-		{ "stat": "protection", "effectiveMultiplier": 1.05 },
-		{ "stat": "physicalResistance", "amount": 0.2 },
-		{ "stat": "electricResistance", "amount": -0.3 },
-		{ "stat": "poisonResistance", "amount": 0.2 },
-		{ "stat": "cosmicResistance", "amount": -0.3 },
-		{ "stat": "radioactiveResistance", "amount": 0.2 },
+		{ "stat": "protection", "effectiveMultiplier": 1.06 },
 		{ "stat": "grit", "amount": 0.2 },
+        
+		{ "stat": "physicalResistance", "amount": 0.20 },
+		{ "stat": "fireResistance", "amount": 0.14 },
+		{ "stat": "poisonResistance", "amount": 0.20 },
+		{ "stat": "electricResistance", "amount": -0.30 },
+		{ "stat": "radioactiveResistance", "amount": 0.05 },
+        
 		{ "stat": "poisonStatusImmunity", "amount": 1 },
-		{ "stat": "beestingImmunity", "amount": 1 }
+		{ "stat": "beestingImmunity", "amount": 1 },
+        
+		{ "stat": "hammerMastery", "amount": 0.25 },
+		{ "stat": "bowMastery", "amount": 0.10 }
 	],
 	"diet" : [ { "ORGANIC" : false, "ROBOT_PLANT" : true }, { "MEAT_RAW" : true } ],
-	"weaponEffects": [
+	"weaponEffects": [],
+
+	"envEffects" : [
 		{
-			"weapons": [ "bow", "crossbow" ],
+			"biomes" : [ "mountainous", "mountainous2","mountainous3","mountainous4" ],
 			"stats": [
-				{ "stat": "critChance", "amount": 2 }
+				{ "stat": "protection", "effectiveMultiplier": 0.85 }
 			]
-		},
-		{
-			"weapons": [ "mace", "axe", "greataxe" ],
-			"stats": [
-				{ "stat": "critChance", "amount": 2 },
-				{ "stat": "critDamage", "amount": 0.05 }
-			]
-		},
-		{
-			"weapons": [ "shield" ],
-			"stats": [
-				{ "stat": "maxHealth", "effectiveMultiplier": 1.08 },
-				{ "stat": "shieldBash", "amount": 3 }
-			]
-		}
+		}		
 	],
+
 	"weaponScripts": [
 		{
 			"script": "/scripts/fr_weaponscripts/combobonus.lua",
@@ -49,9 +41,7 @@
 		{
 			"script": "/scripts/fr_weaponscripts/glitchbash.lua",
 			"contexts": [ "shield-bash" ],
-			"args": {
-				"healthRecover": 1.2
-			}
+			"args": { "healthRecover": 1.2 }
 		},
 		{
 			"script": "/scripts/fr_weaponscripts/perfectblockbonus.lua",
@@ -71,25 +61,14 @@
 			"contexts": [ "shield-raised" ],
 			"args": {
 				"name": "FR_glitchShieldRaised",
-				"stats": [
-					{ "stat": "protection", "amount": 3 }
-				],
-				"scripts" : [
-					//{
-					//	"script" : "/scripts/fr_scripts/healthRegen.lua",
-					//	"args" : {
-					//		"healingRate" : 1
-					//	}
-					//}
-				]
+				"stats": [{ "stat": "protection", "amount": 3 }],
+				"scripts" : []
 			}
 		},
 		{
 			"script": "/scripts/fr_weaponscripts/shieldcancel.lua",
 			"contexts": [ "shield-update" ],
-			"args": {
-				"energyAmt": 0.25
-			}
+			"args": {"energyAmt": 0.25}
 		}
 	],
 	"special": [ "glitchStuff" ],

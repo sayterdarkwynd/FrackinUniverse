@@ -1,20 +1,21 @@
 {
   "type" : "crewmembergas",
-  "baseType" : "crewmember",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
-    },
-
     "crew" : {
       "defaultUniform" : {
         "head" : "ff_gasmask",
         "chest" : "scientistchest",
         "legs" : "scientistlegs"
       },
-
+	  
       "role" : {
+        "type" : "chemist",
+        "name" : "Scientist",
+        "field" : "Toxic Gas",
+        "uniformColorIndex" : 6,
+
         "benefits" : [
           {
             // Ephemeral effects gained upon leaving the ship
@@ -22,16 +23,12 @@
             "effect" : "gasimmunity",
             "duration" : 300
           },
-	    {
-	      "type": "ShipUpgradeBenefit",
-	      "property": "maxFuel",
-	      "value": 200
-	    }  
-        ],
-        "type" : "chemist",
-        "name" : "Scientist",
-        "field" : "Toxic Gas",
-        "uniformColorIndex" : 6
+	      {
+	        "type": "ShipUpgradeBenefit",
+	        "property": "maxFuel",
+	        "value": 200
+	      }  
+        ]
       }
     },
 
@@ -62,21 +59,6 @@
               "Looks like you could use my assistance!",
               "I can help!"
             ]
-          },
-          "floran" : {
-            "default" : [
-              "Floran hasss things to help you out!",
-              "Floran can help out!",
-              "Floran hasss things to help!"
-            ]
-          },
-          "glitch" : {
-            "default" : [
-              "Eager. I can help you out!",
-              "Excited. Perhaps you could do with a power-up!",
-              "Intrigued. I wonder if this will help you?",
-              "Helpful. Take this, it will help!"
-            ]
           }
         }
       }
@@ -88,10 +70,7 @@
       [0, [
           {
             "primary" : [ "dblade" ],
-            "sheathedprimary" : [ "laspistol" ],
-			"head" :  [{ "name" : "ff_gasmask", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-			"chest" : [ { "name" : "scientistchest", "count" :1, "parameters" : { "colorIndex" : 6 } } ],
-            "legs" : [ { "name" : "scientistlegs", "count" :1, "parameters" : { "colorIndex" : 6 } } ]          
+            "sheathedprimary" : [ "laspistol" ]
           }
         ] ]
     ]

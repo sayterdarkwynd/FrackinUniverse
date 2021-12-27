@@ -1,93 +1,53 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=15--used by checkFood
 
 function init()
-  self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
-  self.active=false
-  self.available = true
-  --self.species = world.entitySpecies(entity.id())
-  self.firetimer = 0
-  self.facingDirection = 1
-
-  checkFood()
 end
-
---[[function uninit()
-
-end]]
 
 function checkFood()
-	if status.isResource("food") then
-		return status.resource("food")
-	else
-		return 15
-	end
+	return (((status.statusProperty("fuFoodTrackerHandler",0)>-1) and status.isResource("food")) and status.resource("food")) or foodThreshold
 end
 
---[[function damageConfig()
-  foodVal = self.foodValue /60
-  energyVal = status.resource("energy")/150
-  defenseVal =  status.stat("protection") /250
-  totalVal = foodVal + energyVal + defenseVal
-end]]
-
 function activeFlight()
-    --damageConfig()
-    --local damageConfig = { power = totalVal, damageSourceKind = "fire", speed = 12 }
-    --sb.logInfo("power value from food, energy and protection = "..damageConfig.power)
-    animator.playSound("activate",3)
-    animator.playSound("recharge")
-    animator.setSoundVolume("activate", 0.5,0)
-    animator.setSoundVolume("recharge", 0.375,0)
+	status.removeEphemeralEffect("wellfed")
+	animator.playSound("activate",3)
+	animator.playSound("recharge")
+	animator.setSoundVolume("activate", 0.5,0)
+	animator.setSoundVolume("recharge", 0.375,0)
 
-    world.spawnProjectile("elduukharflamethrower",self.mouthPosition, entity.id(), aimVector(), false, { power = ((checkFood() /60) + (status.resource("energy")/150) + (status.stat("protection") /250)), damageSourceKind = "fire", speed = 12 })
+	world.spawnProjectile("elduukharflamethrower",self.mouthPosition, entity.id(), aimVector(), false, { power = (((checkFood() or foodThreshold) /60) + (status.resource("energy")/130) + (status.stat("protection") /220)) })
 end
 
 function aimVector()
-  local aimVector = vec2.rotate({1, 0}, sb.nrand(0, 0))
-  aimVector[1] = aimVector[1] * mcontroller.facingDirection()
-  return aimVector
+	local aimVector = vec2.rotate({1, 0}, sb.nrand(0, 0))
+	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
+	return aimVector
 end
-
 
 function update(args)
-        --checkFood()
+	self.mouthPosition = vec2.add(mcontroller.position(), {mcontroller.facingDirection(),(args.moves["down"] and -0.7) or 0.15})
 
-        if mcontroller.facingDirection() == 1 then -- what direction are we facing?
-           if args.moves["down"] then -- are we crouching?
-             self.mouthPosition = vec2.add(mcontroller.position(), {1,-0.7})
-           else
-             self.mouthPosition = vec2.add(mcontroller.position(), {1,0.15})
-           end
-
-        else
-           if args.moves["down"] then -- are we crouching?
-             self.mouthPosition = vec2.add(mcontroller.position(), {-1,-0.7})
-           else
-             self.mouthPosition = vec2.add(mcontroller.position(), {-1,0.15})
-           end
-        end
-
-        self.firetimer = math.max(0, self.firetimer - args.dt)
+	self.firetimer = math.max(0, (self.firetimer or 0) - args.dt)
 	if args.moves["special1"] and status.overConsumeResource("energy", 0.001) then
-	  self.facingDirection = world.distance(aimVector(), mcontroller.position())[1] > 0 and 1 or -1  --what direction are we facing
-		if checkFood() > 15 then
-		    status.addEphemeralEffects{{effect = "foodcostfire", duration = 0.02}}
+		self.randValFire = math.random(3)
+
+		if (checkFood() or foodThreshold) > foodThreshold then
+			if self.randValFire == 1 then
+			    status.addEphemeralEffects{{effect = "foodcostfire", duration = 0.002}}
+		    end
 		else
-		    status.overConsumeResource("energy", 0.6)
+			status.overConsumeResource("energy", 0.3)
 		end
 
-	      if self.firetimer == 0 then
-		self.firetimer = 0.1
-		activeFlight()
-	      end
+		if self.firetimer == 0 then
+			self.firetimer = 0.1
+			activeFlight()
+		end
 	
 	else
-  	        animator.stopAllSounds("activate")
+		animator.stopAllSounds("activate")
 	end
 end
-
---[[function idle()
-
-end]]

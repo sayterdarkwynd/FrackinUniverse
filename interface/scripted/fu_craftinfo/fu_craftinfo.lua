@@ -13,6 +13,7 @@ NOTE: for the LEGEND
 
 centrifuge = {}
 centrifuge2 = {}
+electricFurnace = {}
 blastFurnace = {}
 arcSmelter = {}
 
@@ -67,6 +68,7 @@ function init()
 
 	-- centrifuge = getLists("centrifuge")
 	-- centrifuge2 = getLists("centrifuge2")
+	electricFurnace = getLists("electricfurnace")
 	blastFurnace = getLists("fu_blastfurnace")
 	arcSmelter = getLists("isn_arcsmelter")
 
@@ -76,6 +78,7 @@ function init()
 		"quantumextractor",
 		"extractionlabadv",
 		"extractionlab",
+		"handmill",
 		"xenostationadvnew",
 		"xenostation",
 		"centrifuge2",
@@ -83,12 +86,14 @@ function init()
 		"industrialcentrifuge",
 		"ironcentrifuge",
 		"woodencentrifuge",
+		"precursorsmelter",
 		"isn_powdersifter",
 		"fu_woodensifter",
 		"fu_rockbreaker",
 		"fu_rockcrusher",
 		"isn_arcsmelter",
 		"fu_blastfurnace",
+		"electricfurnace",
 		"fu_liquidmixer",
 		"embalmingtable"
 	}
@@ -96,6 +101,7 @@ function init()
 		["quantumextractor"] = true,
 		["extractionlabadv"] = true,
 		["extractionlab"] = true,
+		["handmill"] = true,
 		["xenostationadvnew"] = true,
 		["xenostation"] = true,
 		["centrifuge2"] = true,
@@ -103,12 +109,14 @@ function init()
 		["industrialcentrifuge"] = true,
 		["ironcentrifuge"] = true,
 		["woodencentrifuge"] = true,
+		["precursorsmelter"] = true,
 		["isn_powdersifter"] = true,
 		["fu_woodensifter"] = true,
 		["fu_rockbreaker"] = true,
 		["fu_rockcrusher"] = true,
 		["isn_arcsmelter"] = true,
 		["fu_blastfurnace"] = true,
+		["electricfurnace"] = true,
 		["fu_liquidmixer"] = true,
 		["embalmingtable"] = true
 	}
@@ -123,6 +131,8 @@ function init()
 		processObjects["extractionlabadv"]		= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
 	if found["extractionlab"] then
 		processObjects["extractionlab"]			= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
+	if found["handmill"] then
+		processObjects["handmill"]			= { mats = getExtractionMats, spew = doExtraction, data = extractionLab } end
 	if found["xenostationadvnew"] then
 		processObjects["xenostationadvnew"]		= { mats = getExtractionMats, spew = doExtraction, data = xenoLab } end
 	if found["xenostation"] then
@@ -137,6 +147,8 @@ function init()
 		processObjects["ironcentrifuge"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["woodencentrifuge"] then
 		processObjects["woodencentrifuge"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
+	if found["precursorsmelter"] then
+		processObjects["precursorsmelter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["isn_powdersifter"] then
 		processObjects["isn_powdersifter"]		= { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab } end
 	if found["fu_woodensifter"] then
@@ -149,6 +161,8 @@ function init()
 		processObjects["isn_arcsmelter"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter } end
 	if found["fu_blastfurnace"] then
 		processObjects["fu_blastfurnace"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace } end
+	if found["electricfurnace"] then
+		processObjects["electricfurnace"]		= { mats = getSepSmeltMats, spew = doSepOrSmelt, data = electricFurnace } end
 	if found["fu_liquidmixer"] then
 		processObjects["fu_liquidmixer"]		= { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab } end
 	if found["embalmingtable"] then
@@ -165,8 +179,10 @@ function init()
 		industrialcentrifuge  = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		ironcentrifuge        = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		woodencentrifuge      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		precursorsmelter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		isn_powdersifter      = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
 		fu_woodensifter       = { mats = getSeparatorMats, spew = doSeparate, data = centrifugeLab },
+		electricfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = electricFurnace },
 		fu_blastfurnace       = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = blastFurnace },
 		isn_arcsmelter        = { mats = getSepSmeltMats, spew = doSepOrSmelt, data = arcSmelter },
 		fu_liquidmixer        = { mats = getExtractionMats, spew = doLiquidInteraction, data = liquidLab }
@@ -237,20 +253,27 @@ function registerMaterial(mat, station)
 		end
 		-- saplings are special-cased
 		local sapling = mat == 'sapling'
-		if not sapling and not root.itemConfig(mat) then
-			materialsMissing[mat] = true
-			-- commented out the creation of warnings cause recipes exist for mods not always installed
-			-- sb.logInfo("Crafting Info Display found non-existent item '%s'", mat)
-			return
-		end
-		local data = root.itemConfig({ name = mat, data = { stemName = 'pineytree' } })
+		local data
 		if sapling then
+			data = root.itemConfig({ name = mat, data = { stemName = 'pineytree' } })
+
 			-- workaround: show something with trunk and leaf info
 			data.config.inventoryIcon = '/interface/scripted/fu_craftinfo/sapling.png'
-		elseif type(data.config.inventoryIcon) == 'table' then
-			-- handle multi-icon items by just using the first icon (broken, I know)
-			data.config.inventoryIcon = data.config.inventoryIcon[1].image
+		else
+			data = root.itemConfig(mat)
+			if not data then
+				materialsMissing[mat] = true
+				-- commented out the creation of warnings cause recipes exist for mods not always installed
+				-- sb.logInfo("Crafting Info Display found non-existent item '%s'", mat)
+				return
+			end
+
+			if type(data.config.inventoryIcon) == 'table' then
+				-- handle multi-icon items by just using the first icon (broken, I know)
+				data.config.inventoryIcon = data.config.inventoryIcon[1].image
+			end
 		end
+
 		materials[mat] = { stations = {}, id = mat, name = data.config.shortdescription, icon = rescale(canonicalise(data.config.inventoryIcon, data.directory), 16, 16) }
 		table.insert(materialsSorted, materials[mat])
 	end

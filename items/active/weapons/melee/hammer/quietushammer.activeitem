@@ -1,0 +1,60 @@
+{
+  "itemName" : "quietushammer",
+  "price" : 500,
+  "maxStack" : 1,
+  "level" : 4,
+  "rarity" : "legendary",
+  "description" : "A solid, dangerous weapon for a true warrior.
+^cyan;Inflicts Poison^reset;",
+  "shortdescription" : "Quietus Hammer",
+  "tooltipKind" : "hammer",
+  "category" : "hammer",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","hammer","quietus", "bioweapon", "upgradeableWeapon"],
+  "inventoryIcon" : "quietushammer.png",
+  "animation" : "hammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "quietushammer.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { 
+      "parts" : { 
+        "swoosh" : { 
+          "properties" : { 
+            "offset" : [0, 1.5]
+          } 
+        },
+        "blade" : { 
+            "properties" : {"offset" : [0, 1]}
+        }
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "bioweapon",
+  "damageKindImage" : "/interface/statuses/bioweapon.png",
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 0.85,
+    "baseDps" : 11,
+    "damageConfig" : {
+      "damageSourceKind" : "bioweapon",
+      "statusEffects" : [ "weakpoison" ]
+    }
+  },
+
+  "altAbilityType" : "shockwave",
+  "altAbility" : { },
+
+  "critChance" : 2,
+  "critBonus" : 4,
+  "builder" : "/items/buildscripts/buildunrandweapon.lua",
+  
+  "stunChance" : 11
+}

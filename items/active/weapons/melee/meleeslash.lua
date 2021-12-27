@@ -9,74 +9,29 @@ function MeleeSlash:init()
 	self.energyUsage = self.energyUsage or 0
 	self.weapon:setStance(self.stances.idle)
 	self.cooldownTimer = self:cooldownTime()
-
 	self.weapon.onLeaveAbility = function()
-	self.weapon:setStance(self.stances.idle)
+		self.weapon:setStance(self.stances.idle)
 	end
     -- **************************
     -- FR and FU values
 	attackSpeedUp = 0 -- base attackSpeed bonus
-    --self.hitsListener = damageListener("inflictedHits", checkDamage)  --listen for damage
-    --self.damageListener = damageListener("inflictedDamage", checkDamage)  --listen for damage
-    --self.killListener = damageListener("Kill", checkDamage)  --listen for kills
 end
-
---[[function calculateMasteries()
-	self.shortswordMastery = 1 + status.stat("shortswordMastery")
-	self.longswordMastery = 1 + status.stat("longswordMastery")
-	self.rapierMastery = 1 + status.stat("rapierMastery")
-	self.katanaMastery = 1 + status.stat("katanaMastery")
-	self.daggerMastery = 1 + status.stat("daggerMastery")
-	self.broadswordMastery = 1 + status.stat("broadswordMastery")
-	self.quarterstaffMastery = 1 + status.stat("quarterstaffMastery")
-	self.maceMastery = 1 + status.stat("maceMastery")
-	self.shortspearMastery = 1 + status.stat("shortspearMastery")
-	self.hammerMastery = 1 + status.stat("hammerMastery")
-	self.axeMastery = 1 + status.stat("axeMastery")
-	self.spearMastery = 1 + status.stat("spearMastery")
-end]]
---[[
-function checkDamage(notifications)
-
-  for _,notification in pairs(notifications) do
-    --check for individual hits
-    if notification.sourceEntityId == entity.id() or notification.targetEntityId == entity.id() then
-	    if not status.resourcePositive("health") then --count total kills
-	    	notification.hitType = "Kill"
-	    end
-	    local hitType = notification.hitType
-	    --sb.logInfo(hitType)
-
-        --kill computation
-	    if notification.hitType == "Kill" or notification.hitType == "kill" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
-
-	    end
-
-	    --hit computation
-	    if notification.hitType == "Hit" and world.entityType(notification.targetEntityId) == ("monster" or "npc") and world.entityCanDamage(notification.targetEntityId, entity.id()) then
-
-	    end
-      return
-    end
-  end
-end
-]]
 
 -- Ticks on every update regardless of whether this is the active ability
 function MeleeSlash:update(dt, fireMode, shiftHeld)
 	WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
+	-- velocity check
+    velocityAdded = mcontroller.xVelocity()
+    if velocityAdded > 0.01 or velocityAdded < 0 then
+        activeHoldDamage = 1
+    else 
+        activeHoldDamage = 0
+    end 
+
 	self.lowEnergy=((status.resource("energy") <= 1) or (status.resourceLocked("energy")))
-
-	status.clearPersistentEffects("meleeEnergyLowPenalty")
-
-
-
 	-- FR
 	setupHelper(self, "meleeslash-fire")
-    --self.hitsListener:update()
-    --self.damageListener:update()
-    --self.killListener:update()
 
 	self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 	if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) then
@@ -87,7 +42,7 @@ end
 -- State: windup
 function MeleeSlash:windup()
 	self.energyMax = math.max(status.resourceMax("energy"),0) -- due to weather and other cases it is possible to have a maximum of under 0.
-
+	status.setStatusProperty(activeItem.hand().."Firing",true)
 	local item
 	if world.entityType(activeItem.ownerEntityId()) then
 		item=world.entityHandItemDescriptor(activeItem.ownerEntityId(),activeItem.hand())
@@ -101,9 +56,6 @@ function MeleeSlash:windup()
 	end
 
 	self.lowEnergy=(status.resource("energy") <= 1) or (not status.consumeResource("energy",self.energyTotal))
-
-	status.clearPersistentEffects("meleeEnergyLowPenalty")
-
 
 	self.weapon:setStance(self.stances.windup)
 
@@ -154,9 +106,9 @@ function MeleeSlash:aimVectorRand() -- fires wherever it wants
 	aimVector[1] = aimVector[1] * mcontroller.facingDirection()
 	return aimVector
 end
-	-- ***********************************************************************************************************
-	-- END FR SPECIALS
-	-- ***********************************************************************************************************
+-- ***********************************************************************************************************
+-- END FR SPECIALS
+-- ***********************************************************************************************************
 
 -- State: fire
 function MeleeSlash:fire()
@@ -177,7 +129,7 @@ function MeleeSlash:fire()
 			local damageArea = partDamageArea("swoosh")
 			local damageConfigCopy=copy(self.damageConfig)
 			if self.lowEnergy then
-				damageConfigCopy.baseDamage=damageConfigCopy.baseDamage*0.75
+				damageConfigCopy.baseDamage=damageConfigCopy.baseDamage*0.8
 			end
 			self.weapon:setDamage(damageConfigCopy, damageArea, self.fireTime)
 		end
@@ -188,6 +140,7 @@ function MeleeSlash:fire()
 
 	-- FR cooldown modifiers
 	self.cooldownTimer = math.max(0, self.cooldownTimer * attackSpeedUp )	-- subtract FR bonus from total
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end
 
 function MeleeSlash:cooldownTime()
@@ -196,27 +149,5 @@ end
 
 function MeleeSlash:uninit()--this function is almost never called. so persistent status effects based on it are...dodo.
 	self.weapon:setDamage()
-	cancelEffects()
-end
-
-function cancelEffects()
-	status.clearPersistentEffects("meleeEnergyLowPenalty")
-	status.clearPersistentEffects("longswordbonus")
-	status.clearPersistentEffects("macebonus")
-	status.clearPersistentEffects("katanabonus")
-	status.clearPersistentEffects("rapierbonus")
-	status.clearPersistentEffects("shortspearbonus")
-	status.clearPersistentEffects("daggerbonus")
-	status.clearPersistentEffects("scythebonus")
-    status.clearPersistentEffects("axebonus")
-    status.clearPersistentEffects("hammerbonus")
-	status.clearPersistentEffects("multiplierbonus")
-	status.clearPersistentEffects("dodgebonus")
-	status.clearPersistentEffects("listenerBonus")
-	status.clearPersistentEffects("floranFoodPowerBonus")
-	status.clearPersistentEffects("slashbonusdmg")
-	status.clearPersistentEffects("masteryBonus")
-	self.meleeCountslash = 0
-	self.rapierTimerBonus = 0
-	self.inflictedHitCounter = 0
+	status.setStatusProperty(activeItem.hand().."Firing",nil)
 end

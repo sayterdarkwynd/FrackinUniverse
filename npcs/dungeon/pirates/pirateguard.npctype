@@ -1,0 +1,56 @@
+{
+  "type" : "pirateguard",
+  "baseType" : "hostile",
+
+  "dropPools" : [ "airshipguardtreasure" ],
+
+  "scriptConfig" : {
+    "behaviorConfig" : {
+      "greetingChance" : 0
+    },
+    "dialog" : {
+      "converse" : "/dialog/airship.config:converse"
+    }
+  },
+
+  "matchColorIndices" : true,
+  "items" : {
+    "override" : [
+      [0, [
+          {
+            "head" : [ { "name" : "piratehead", "parameters" : { "colorIndex" : [4, 5, 6, 7, 8, 9] } }, "", "", "", "", "", "", "", "", "" ],
+            "chest" : [ 
+              { "name" : "piratechest" },
+              { "name" : "buccaneerchest" },
+              { "name" : "aviancommonershirt" },
+              { "name" : "aviancommonershirt", "parameters" : { "colorIndex" : 1 } } 
+            ],
+            "legs" : [ { "name" : "piratelegs", "parameters" : { "colorIndex" : [4, 5, 6, 7, 8, 9] } } ],
+            "primary" : [
+              "coralkatana",
+              "coralstinger",
+              "coralsword",
+			  "randomharpoongun"
+            ]
+          }
+        ] ]
+    ]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 70.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.65
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

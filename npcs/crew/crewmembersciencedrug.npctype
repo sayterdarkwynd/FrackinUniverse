@@ -1,10 +1,28 @@
 {
   "type" : "crewmembersciencedrug",
-  "baseType" : "crewmemberscience",
+  "baseType" : "fu_crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : false
+    "role" : {
+      "benefits" : [
+        {
+          // Ephemeral effects gained upon leaving the ship
+          "type" : "EphemeralEffect",
+          "effect" : "runboost10",
+          "duration" : 30
+        },
+        {
+          // Ephemeral effects gained upon leaving the ship
+          "type" : "EphemeralEffect",
+          "effect" : "jumpboost15",
+          "duration" : 30
+        },
+        {
+          "type": "ShipUpgradeBenefit",
+          "property": "fuelEfficiency",
+          "value": 0.05
+        }
+      ]
     },
 
     "crew" : {
@@ -13,27 +31,58 @@
         "chest" : "scientistchest",
         "legs" : "scientistlegs"
       },
-
       "role" : {
-        "benefits" : [
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "runboost10",
-            "duration" : 30
+        "type" : "chemist",
+        "name" : "Scientist",
+        "field" : "Biochemistry",
+        "uniformColorIndex" : 2
+      }
+    },
+
+    "dialog" : {
+      "crewmember" : {
+        "roleDescription" : {
+          "default" : {
+            "default" : [
+              "I'll give you a boost whenever we're on the ship!"
+            ]
           },
-          {
-            // Ephemeral effects gained upon leaving the ship
-            "type" : "EphemeralEffect",
-            "effect" : "jumpboost15",
-            "duration" : 30
+          "floran" : {
+            "default" : [
+              "Floran will give you boostsss when we are on ship!"
+            ]
           },
-	  {
-            "type": "ShipUpgradeBenefit",
-            "property": "fuelEfficiency",
-            "value": 0.05
-          } 
-        ]
+          "glitch" : {
+            "default" : [
+              "Friendly. I'll give you a boost whenever we're on the ship!"
+            ]
+          }
+        },
+        "combatBenefit" : {
+          "default" : {
+            "default" : [
+              "Let me give you a boost real quick!",
+              "Let me help you out!",
+              "Looks like you could use my assistance!",
+              "I can help!"
+            ]
+          },
+          "floran" : {
+            "default" : [
+              "Floran hasss things to help you out!",
+              "Floran can help out!",
+              "Floran hasss things to help!"
+            ]
+          },
+          "glitch" : {
+            "default" : [
+              "Eager. I can help you out!",
+              "Excited. Perhaps you could do with a power-up!",
+              "Intrigued. I wonder if this will help you?",
+              "Helpful. Take this, it will help!"
+            ]
+          }
+        }
       }
     }
   },
@@ -43,10 +92,7 @@
       [0, [
           {
             "primary" : [ "thesauce" ],
-            "sheathedprimary" : [ "mechpistol" ],
-			"head" :  [{ "name" : "scientisthead" } ],
-			"chest" : [ { "name" : "scientistchest" } ],
-            "legs" : [ { "name" : "scientistlegs" } ]
+            "sheathedprimary" : [ "mechpistol" ]
           }
         ] ]
     ]

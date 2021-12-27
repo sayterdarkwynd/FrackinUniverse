@@ -100,7 +100,7 @@ end
 
 function updateHand(alwaysFront)
 	local isFrontHand = (activeItem.hand() == "primary") == (mcontroller.facingDirection() < 0)
-	local isBackHand = (activeItem.hand() == "primary") == (mcontroller.facingDirection() > 0)
+	--local isBackHand = (activeItem.hand() == "primary") == (mcontroller.facingDirection() > 0)
 	animator.setGlobalTag("hand", isFrontHand and "front" or "back")
 	if alwaysFront then
 		activeItem.setOutsideOfHand(isFrontHand)
@@ -134,7 +134,7 @@ function drawLine(_point1, _point2, _size, _color, _layer)
 	local lineAngle = math.atan(lineDistance[2],  lineDistance[1])
 	local lineLength = world.magnitude(_point1, _point2)
 	local height = math.ceil(_size) or 1
-	local light = hexToRGB(_color:sub(1, 6)) or "FFFFFF"
+	--local light = hexToRGB(_color:sub(1, 6)) or "FFFFFF"
 
 	world.spawnProjectile("invisibleprojectile", sb.interpolateSinEase(0.5, _point1, _point2), activeItem.ownerEntityId(), {0, 0}, true, {
 		damageType = "NoDamage",
@@ -161,7 +161,7 @@ end
 
 function drawLightning(startLine, endLine, displacement, minDisplacement, forks, forkAngleRange, width, color, layer)
 	if displacement < minDisplacement then
-		local position = startLine
+		--local position = startLine
 		drawLine(startLine, endLine, width, color, layer)
 	else
 		local mid = {(startLine[1] + endLine[1]) / 2, (startLine[2] + endLine[2]) / 2}

@@ -64,7 +64,7 @@ function moveLiquid(inputLocation,outputLocation)
 			end
 
 			if destroyed then
-				world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2]*1.01)
+				world.spawnLiquid(outputLocation,inputLiquid[1],inputLiquid[2])
            end
             if protectCheckOutput then
 				world.setTileProtection(world.dungeonId(self.outputLocation), true)

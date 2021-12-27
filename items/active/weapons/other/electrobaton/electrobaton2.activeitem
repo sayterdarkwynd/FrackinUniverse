@@ -6,10 +6,10 @@
   "rarity" : "Legendary",
   "description" : "Originally developed for Miniknog riot police. It's shockingly effective.",
   "shortdescription" : "Zipzap The Astounder",
-  "tooltipKind" : "base",
+  "tooltipKind" : "swordunique",
   "category" : "shortsword",
   "twoHanded" : false,
-  "itemTags" : ["weapon", "melee", "shortsword", "upgradeableWeapon" ],
+  "itemTags" : ["weapon", "melee", "shortsword", "upgradeableWeapon", "energy", "electric" ],
 
   "inventoryIcon" : "electrobaton2icon.png",
 
@@ -102,7 +102,8 @@
 
   "primaryAbilityType" : "shortswordcombo",
   "primaryAbility" : {
-    "fireTime" : 0.3,
+    "fireTime" : 0.3,//you are an idiot. if you change the fire time, you MUST change the stance durations proportionally when the weapon is made faster. Or was the lesson of the precursor crucible upgrades to maces and such wasted?
+    //"fireTime" : 0.8,//original electrobaton
     "baseDps" : 7.5,
 
     "damageConfig" : {
@@ -117,31 +118,31 @@
         "weaponOffset" : [0, 2.75]
       },
       "windup1" : {
-        "duration" : 0.1,
+        "duration" : 0.0375,
         "armRotation" : -15,
         "weaponRotation" : -60,
         "weaponOffset" : [0, 2.75]
       },
       "fire1" : {
-        "duration" : 0.2,
+        "duration" : 0.075,
         "armRotation" : -135,
         "weaponRotation" : 30,
         "weaponOffset" : [0, 2.75]
       },
       "wait1" : {
-        "duration" : 0.3,
+        "duration" : 0.01125,
         "armRotation" : -135,
         "weaponRotation" : 30,
         "weaponOffset" : [0, 2.75]
       },
       "windup2" : {
-        "duration" : 0.15,
+        "duration" : 0.05625,
         "armRotation" : 30,
         "weaponRotation" : 0,
         "weaponOffset" : [0, 2.75]
       },
       "fire2" : {
-        "duration" : 0.3,
+        "duration" : 0.1125,
         "armRotation" : -40,
         "weaponRotation" : -70,
         "weaponOffset" : [0, 2.75]
@@ -150,7 +151,8 @@
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
-
+  "critChance" : 2,
+  "critBonus": 10,
   "upgradeParameters" : {
     "inventoryIcon" : "electrobaton2icon_l6.png",
     "animationParts" : {

@@ -906,8 +906,14 @@ function populateShopList()
 				price = price * (math.max(item.parameters.level * 0.5, 1))
 			end
 			price = calculateShopPrice(price, true,pricePcnt)
-
-			widget.setText(listItem..".name", item.parameters.shortdescription or "")
+			--sb.logInfo("itemData:%s",item)
+			local itemName=item.parameters.shortdescription
+			if not itemName then
+				local itemRoot=root.itemConfig(item)
+				--sb.logInfo("%s",itemRoot)
+				itemName=itemRoot.config.shortdescription or ""
+			end
+			widget.setText(listItem..".name", itemName)
 			widget.setItemSlotItem(listItem..".item", item)
 			widget.setText(listItem..".price", price)
 			widget.setData(listItem, { name = item.name, price = price, maxStack = 1, isWeapon = true })
@@ -1154,7 +1160,7 @@ function shopItemSlot(wd)
 	local slotItem = widget.itemSlotItem(wd)
 	local cursorItem = player.swapSlotItem()
 
-	if cursorItem and slotItem and cursorItem.name == slotItem.name then
+	if cursorItem and slotItem and root.itemDescriptorsMatch(cursorItem, slotItem, true) then
 		local slotItemConfig = root.itemConfig(cursorItem.name)
 		local maxStack = slotItemConfig.config.maxStack
 		if not maxStack then maxStack = 1000 end
@@ -1228,7 +1234,7 @@ function calculateSellPrice()
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
 				local config = root.itemConfig(slotItem.name)
-				local itemPrice = config.config.price
+				local itemPrice = (slotItem.parameters and slotItem.parameters.price) or config.config.price
 				if itemPrice then
 					total = itemPrice * slotItem.count + total
 				end
@@ -1249,7 +1255,7 @@ function shopSell()
 			local slotItem = widget.itemSlotItem("shopSellSlot"..row..column)
 			if slotItem then
 				local config = root.itemConfig(slotItem.name)
-				local itemPrice = config.config.price
+				local itemPrice = (slotItem.parameters and slotItem.parameters.price) or config.config.price
 				if itemPrice then
 					money = itemPrice * slotItem.count + money
 				end
@@ -1783,19 +1789,19 @@ function invest()
 end
 
 function investMax()
-	objectData.specialsTable.investing = math.min(math.min(objectData.specialsTable.investRequired - objectData.specialsTable.invested, 99999), player.currency("money"))
+	objectData.specialsTable.investing = math.min(objectData.specialsTable.investRequired - objectData.specialsTable.invested, 99999, player.currency("money"))
 	widget.setText("investAmount", objectData.specialsTable.investing)
 end
 
 function investAmount(wd)
 	local value = tonumber(widget.getText(wd))
-	local max = objectData.specialsTable.investRequired - objectData.specialsTable.invested
+	local maxValue = objectData.specialsTable.investRequired - objectData.specialsTable.invested
 
 	if objectData.specialsTable.investLevel >= stationData.trading.investMaxLevel then
 		widget.setText(wd, "")
 	else
 		if value then
-			value = math.min(math.min(math.floor(value), max), player.currency("money"))
+			value = math.min(math.floor(value), maxValue, player.currency("money"))
 			if value == 0 then
 				widget.setText(wd, "")
 				objectData.specialsTable.investing = 0

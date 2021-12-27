@@ -83,7 +83,15 @@ end
 function techEquip()
 	player.interact("ScriptPane", "/interface/scripted/techupgrade/techupgradegui.config", player.id())
 end
-
+function loadGPS()
+	player.interact("ScriptPane", "/interface/kukagps/kukagps.config", player.id())
+end
+function loadGPS2()
+	player.interact("ScriptPane", "/interface/kukagps/kukadungeon.config", player.id())
+end
+function loadGPS3()
+	player.interact("ScriptPane", "/interface/kukagps/kukadatetime.config", player.id())
+end
 
 function populateRacialDescription(race,notRecognized)
 	widget.clearListItems("racialDesc.textList")
@@ -95,7 +103,8 @@ function populateRacialDescription(race,notRecognized)
 	widget.setText("racialLabel", "Racial Traits - " .. racialName)
 
 	local str = JSON.charCreationTooltip.description
-	local strTbl = {}
+--work smart, not hard, bucko.
+--[[	local strTbl = {}
 	local splitters = {}
 	local lists = {}
 	local startFound = false
@@ -108,11 +117,12 @@ function populateRacialDescription(race,notRecognized)
 	local str2=str
 	while str~=string.gsub(str," \n","\n") do
 		str=string.gsub(str," \n","\n")
-	end
-	str=string.gsub(str,"\n      ","\n>>>")
-	str=string.gsub(str,"\n    ","\n>>")
-	str=string.gsub(str,"\n  ","\n>")
-	local wordWall={}
+	end]]
+	str=string.gsub(str,"\n      ","\n^gray;>>>^reset;")
+	str=string.gsub(str,"\n    ","\n^gray;>>^reset;")
+	str=string.gsub(str,"\n  ","\n^gray;>^reset;")
+	--all of this was unnecessary. all it took was a single, properly formatted, text element.
+	--[[local wordWall={}
 	local line={}
 	local sentence=""
 
@@ -146,7 +156,8 @@ function populateRacialDescription(race,notRecognized)
 								colorTest=colorTest..c3
 							end
 						end
-						if (string.len(sentence) + string.len(wordTest)) > 60 then
+						--sb.logInfo("%s <adding to> %s",wordTest,sentence)
+						if (string.len(stripTagging(sentence)) + string.len(wordTest)) > 28 then
 							table.insert(wordWall,sentence)
 							sentence=colorTest
 						end
@@ -168,10 +179,12 @@ function populateRacialDescription(race,notRecognized)
 	end
 	for i = 1, #wordWall do
 		local listItem = "racialDesc.textList."..widget.addListItem("racialDesc.textList")
+		--widget.setSize(listItem,{})
 		widget.setText(listItem..".trait", wordWall[i])
-	end
+	end]]
+	widget.setText("racialDesc.textElement", str)
 end
 
 function upgradeEquipmentMenu()
-	player.interact("ScriptPane", "/interface/scripted/fu_multiupgrade/fu_multiupgrade.config", player.id())
+	player.interact("ScriptPane", "/interface/scripted/fu_upgradetable/fu_upgradetable.config", player.id())
 end

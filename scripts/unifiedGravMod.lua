@@ -47,21 +47,25 @@ function unifiedGravMod.refreshGrav(dt)
 	if not self.ghosting then --ignore effect if ghost
 		local gravMod=(self.gravFlightOverride and -1.0) or (status.statPositive("gravFlightOverride") and 0.0) or status.stat("gravityMod")--most multipliers are gonna be this. this is where gravity increases and decreases go.
 		local gravBaseMod=status.stat("gravityBaseMod")--stuff that directly affects how much gravity effects will affect a creature.
-		--dbg("uGM.rG@first: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position())})
 		local newGrav=(gravMod*self.gravMult2*(1+gravBaseMod))--new effective gravity
 		local gravNorm=((status.statPositive("fuswimming") and 0.0) or 1.0) * status.stat("gravityNorm")
+		local newGravNorm=(gravNorm~=0.0) and (((status.statPositive("fuswimming") and 0.0) or 1.0)) or 0.0
+		local createGravity=status.statPositive("createGravity")
+		--dbg("uGM.rG@first: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,gravAt=world.gravity(entity.position()),newGrav=newGrav,gravNorm=gravNorm,newGravNorm=newGravNorm,createGravity=createGravity,zeroG=mcontroller.zeroG()})
 
-		if self.gravFlightOverride or status.statPositive("gravFlightOverride") then
+		if self.gravFlightOverride or status.statPositive("gravFlightOverride") or ((not createGravity) and (0==world.gravity(entity.position()))) then
 			--nothing
-		elseif self.flying or (0==world.gravity(entity.position())) then
+		elseif self.createGravity or self.flying or (0==world.gravity(entity.position())) then
 			local fishbowl=((0==world.gravity(entity.position())) and 80) or (world.gravity(entity.position()))
-			--dbg("uGM.rG","FLOATING!")
+			--dbg("uGM.rG","Flying entity!")
 			mcontroller.addMomentum({0,-0.2*fishbowl*newGrav*dt})
 		else
-			newGrav=newGrav+gravNorm+1.5
+			--reduce effect of gravity modifiers if gravity normalization is in effect
+			newGravNorm=newGravNorm*(((newGravNorm~=0.0) and ((newGrav*(1.0-(0.5*math.abs(gravNorm))))*-1)) or 0)
+			newGrav=newGrav+newGravNorm+gravNorm+1.5
 			mcontroller.controlParameters({gravityMultiplier = newGrav})
 		end
-		--dbg("uGM.rG@end: ",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,newGrav=newGrav,gravNorm=gravNorm,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod})
+		--dbg("uGM.rG@end",{flying=self.flying,ghosting=self.ghosting,gravMod=gravMod,newGrav=newGrav,gravNorm=gravNorm,gravMult2=self.gravMult2,gravBaseMod=gravBaseMod,newGravNorm=newGravNorm})
 	end
 end
 

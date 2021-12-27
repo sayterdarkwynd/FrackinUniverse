@@ -1,0 +1,355 @@
+{
+  "type" : "fuvillageguard",//easier than patching every race into the vanilla guard file
+  "baseType" : "villageguard",
+
+  "levelVariance" : [3, 3],
+  "persistent" : true,
+
+  "damageTeamType" : "friendly",
+
+  "dropPools" : [ "guardtreasure" ],
+
+  "scriptConfig" : {
+    "behavior" : "villageguard",
+
+    "behaviorConfig" : {
+      "greetingChance" : 0.67,
+
+      "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
+    },
+
+    "questGenerator" : {
+      "pools" : ["common", "guard"],
+      "enableParticipation" : true,
+      "timeLimit" : 30,
+      "nearbyQuestLimit" : 2,
+      "nearbyQuestRange" : 50,
+      "questCountRange" : [1, 4],
+      
+      "graduation" : {
+        "nextNpcType" : [
+          [1, "crewmember"],
+          [1, "crewmember_spacestationassassin"],
+          [1, "crewmember_spacestationcaptain"],
+          [1, "crewmember_spacestationcommander"],
+          [1, "crewmember_spacestationdevastator"],
+          [1, "crewmember_spacestationmercenary"],
+          [1, "crewmember_spacestationwarmonger"],
+          [1, "crewmemberbountyhunter"],
+          [1, "crewmembercyborg"],
+          [1, "crewmemberguardian"],
+          [1, "crewmemberstealth"],
+          [1, "crewmemberwarrior"],
+          [1, "crewmemberwarrior2"],
+          [1, "crewmemberwarrior3"]
+        ]
+      }
+    },
+
+    "personalities" : [
+        [1.0, { "personality" : "normal", "reactions" : {} }]
+    ],
+
+    "dialog" : {
+      "greeting" : "/dialog/converse.config:greeting",
+      "converse" : "/dialog/converse.config:converse",
+
+      "attack" : "/dialog/combat.config:attack",
+      "reattack" : "/dialog/combat.config:reattack",
+      "killedTarget" : "/dialog/combat.config:killedTarget",
+      "lostTarget" : "/dialog/combat.config:lostTarget",
+      "outOfSight" : "/dialog/combat.config:outOfSight",
+      "cheerOn" : "/dialog/combat.config:cheerOn",
+      "cantReach" : "/dialog/combat.config:cantReach",
+
+      "hail" : "/dialog/guard.config:hail",
+
+      "accuse" : "/dialog/thief.config:accuse"
+    }
+  },
+
+  "items" : {
+    "default" : [
+      [0, [
+          {
+            "head" : [ { "name" : "humantier1head" } ],
+            "chest" : [ { "name" : "humantier1chest" } ],
+            "legs" : [ { "name" : "humantier1pants" } ],
+            "primary" : [
+              "npcbroadsword",
+              "npcassaultrifle"
+            ]
+          }
+        ] ]
+    ],
+    "fupeglaci" : [
+      [0, [
+          {
+            "head" : [ { "name" : "kirhostier6ahead" } ],
+            "chest" : [ { "name" : "kirhostier6achest" } ],
+            "legs" : [ { "name" : "kirhostier6apants" } ],
+            "primary" : [
+              "fubeamgun",
+              "furailgun",
+              "splittergun",
+              "furailgun",
+              "banespear",
+              "furailgun",
+              "frostcannonarm",
+              "fufreezecannon"
+            ],
+            "sheathedprimary" : [
+              "fuenergyblaster",
+              "violiumshortsword",
+              "pistolaegisaltfu",
+              "pistolferoziumfu",
+              "advalloyshortsword",
+              "advalloyshortspear"
+            ],
+            "alt" : [
+              { "name" : "bubbleshield" },
+              { "name" : "xenoshield" }
+            ]
+          },
+          {
+            "head" : [ { "name" : "enforcerhead" } ],
+            "chest" : [ { "name" : "enforcerchest" } ],
+            "legs" : [ { "name" : "enforcerpants" } ],
+            "primary" : [
+              "fubeamgun",
+              "furailgun",
+              "splittergun",
+              "furailgun",
+              "banespear",
+              "furailgun",
+              "frostcannonarm",
+              "fufreezecannon"
+            ],
+            "sheathedprimary" : [
+              "fuenergyblaster",
+              "violiumshortsword",
+              "pistolaegisaltfu",
+              "pistolferoziumfu",
+              "advalloyshortsword",
+              "advalloyshortspear"
+            ],
+            "alt" : [
+              { "name" : "bubbleshield" },
+              { "name" : "xenoshield" }
+            ]
+          },
+          {
+            "head" : [ { "name" : "mobiushead" } ],
+            "chest" : [ { "name" : "mobiuschest" } ],
+            "legs" : [ { "name" : "mobiuspants" } ],
+            "primary" : [
+              "fubeamgun",
+              "furailgun",
+              "splittergun",
+              "furailgun",
+              "banespear",
+              "furailgun",
+              "frostcannonarm",
+              "fufreezecannon"
+            ],
+            "sheathedprimary" : [
+              "fuenergyblaster",
+              "violiumshortsword",
+              "pistolaegisaltfu",
+              "pistolferoziumfu",
+              "advalloyshortsword",
+              "advalloyshortspear"
+            ],
+            "alt" : [
+              { "name" : "bubbleshield" },
+              { "name" : "xenoshield" }
+            ]
+          },
+          {
+            "head" : [ { "name" : "apextier6ahead" } ],
+            "chest" : [ { "name" : "apextier6achest" } ],
+            "legs" : [ { "name" : "apextier6apants" } ],
+            "primary" : [
+              "fubeamgun",
+              "furailgun",
+              "splittergun",
+              "furailgun",
+              "banespear",
+              "furailgun",
+              "frostcannonarm",
+              "fufreezecannon"
+            ],
+            "sheathedprimary" : [
+              "fuenergyblaster",
+              "violiumshortsword",
+              "pistolaegisaltfu",
+              "pistolferoziumfu",
+              "advalloyshortsword",
+              "advalloyshortspear"
+            ],
+            "alt" : [
+              { "name" : "bubbleshield" },
+              { "name" : "xenoshield" }
+            ]
+          }
+        ] ]
+	],
+    "fumantizi" : [
+      [0, [
+          {
+            "head" : [ { "name" : "fumantiziroyalguardhead" } ],
+            "chest" : [ { "name" : "fumantiziroyalguardchest" } ],
+            "legs" : [ { "name" : "fumantiziroyalguardpants" } ],
+            "primary" : [
+              "carbonshortspear",
+              "coreshortspear",
+              "densiniumshortspear",
+              "durasteelshortspear",
+              "irradiumshortspear",
+              "lunarishortspear",
+              "advalloyshortspear",
+              "telebriumshortspear",
+              "titaniumshortspear",
+              "tritaniumshortspear",
+              "zerchesiumshortspear"
+            ],
+            "sheathedprimary" : [
+              "autocrossbow",
+              "telebriumcrossbow",
+              "zerchesiumcrossbow",
+              "advalloycrossbow",
+              "carboncrossbow",
+              "lightningcrossbow"
+            ],
+            "alt" : [
+              { "name" : "zerchesiumshield" },
+              { "name" : "telebriumshield" },
+              { "name" : "titaniumshield" },
+              { "name" : "durasteelshield" },
+              { "name" : "telebriumshield" },
+              { "name" : "gladiatorshield" }
+            ]
+          },
+          {
+            "head" : [ { "name" : "fumantiziroyalguardornatehead" } ],
+            "chest" : [ { "name" : "fumantiziroyalguardornatechest" } ],
+            "legs" : [ { "name" : "fumantiziroyalguardornatepants" } ],
+            "primary" : [
+              "carbonshortspear",
+              "coreshortspear",
+              "densiniumshortspear",
+              "durasteelshortspear",
+              "irradiumshortspear",
+              "lunarishortspear",
+              "advalloyshortspear",
+              "telebriumshortspear",
+              "titaniumshortspear",
+              "tritaniumshortspear",
+              "zerchesiumshortspear"
+            ],
+            "sheathedprimary" : [
+              "autocrossbow",
+              "telebriumcrossbow",
+              "zerchesiumcrossbow",
+              "advalloycrossbow",
+              "carboncrossbow",
+              "lightningcrossbow"
+            ],
+            "alt" : [
+              { "name" : "zerchesiumshield" },
+              { "name" : "telebriumshield" },
+              { "name" : "titaniumshield" },
+              { "name" : "durasteelshield" },
+              { "name" : "telebriumshield" },
+              { "name" : "gladiatorshield" }
+            ]
+          },
+          {
+            "head" : [ { "name" : "fuhoplitehead" } ],
+            "chest" : [ { "name" : "fuhoplitechest" } ],
+            "legs" : [ { "name" : "fuhoplitepants" } ],
+            "primary" : [
+              "carbonshortspear",
+              "coreshortspear",
+              "densiniumshortspear",
+              "durasteelshortspear",
+              "irradiumshortspear",
+              "lunarishortspear",
+              "advalloyshortspear",
+              "telebriumshortspear",
+              "titaniumshortspear",
+              "tritaniumshortspear",
+              "zerchesiumshortspear"
+            ],
+            "sheathedprimary" : [
+              "autocrossbow",
+              "telebriumcrossbow",
+              "zerchesiumcrossbow",
+              "advalloycrossbow",
+              "carboncrossbow",
+              "lightningcrossbow"
+            ],
+            "alt" : [
+              { "name" : "zerchesiumshield" },
+              { "name" : "telebriumshield" },
+              { "name" : "titaniumshield" },
+              { "name" : "durasteelshield" },
+              { "name" : "telebriumshield" },
+              { "name" : "gladiatorshield" }
+            ]
+          },
+          {
+            "head" : [ { "name" : "fumantizitier4head" } ],
+            "chest" : [ { "name" : "fumantizitier4chest" } ],
+            "legs" : [ { "name" : "fumantizitier4pants" } ],
+            "primary" : [
+              "carbonshortspear",
+              "coreshortspear",
+              "densiniumshortspear",
+              "durasteelshortspear",
+              "irradiumshortspear",
+              "lunarishortspear",
+              "advalloyshortspear",
+              "telebriumshortspear",
+              "titaniumshortspear",
+              "tritaniumshortspear",
+              "zerchesiumshortspear"
+            ],
+            "sheathedprimary" : [
+              "autocrossbow",
+              "telebriumcrossbow",
+              "zerchesiumcrossbow",
+              "advalloycrossbow",
+              "carboncrossbow",
+              "lightningcrossbow"
+            ],
+            "alt" : [
+              { "name" : "zerchesiumshield" },
+              { "name" : "telebriumshield" },
+              { "name" : "titaniumshield" },
+              { "name" : "durasteelshield" },
+              { "name" : "telebriumshield" },
+              { "name" : "gladiatorshield" }
+            ]
+          }
+        ] ]
+	]
+  },
+
+  "statusControllerSettings" : {
+    "stats" : {
+      "maxHealth" : {
+        "baseValue" : 100.0
+      },
+      "powerMultiplier" : {
+        "baseValue" : 0.5
+      },
+      "protection" : {
+        "baseValue" : 1.0
+      },
+      "healthRegen" : {
+        "baseValue" : 0.0
+      }
+    }
+  }
+}

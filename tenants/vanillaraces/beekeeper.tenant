@@ -1,0 +1,27 @@
+{
+  "name": "beekeeper_tenant",
+  "priority": 8,
+
+  "colonyTagCriteria": {
+    "light": 1,
+    "door": 1,
+    "hive": 1,
+    "bees": 12
+  },
+
+  "tenants": [
+    {
+      "spawn": "npc",
+      "species": "human",
+      "type": "beekeeperciv",
+      "overrides": {
+        "damageTeamType" : "friendly"
+       }
+     }
+   ],
+
+  "rent": {
+    "periodRange": [900.0, 1800.0],
+    "pool": "futenantLoot"
+  }
+}

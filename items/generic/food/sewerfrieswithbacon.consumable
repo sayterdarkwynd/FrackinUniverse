@@ -1,0 +1,24 @@
+{
+	"itemName": "sewerfrieswithbacon",
+	"rarity": "uncommon",
+	"price": 45,
+	"category": "preparedFood",
+	"inventoryIcon": "sewerfrieswithbacon.png",
+	"description": "Fries with a fermented gravy, adorned with bacon. What a crappy meal. \n^cyan;-^red;5% Health ^reset; ^blue;+2^reset; Madness",
+	"shortdescription": "Sewer Fries with Bacon",
+	"effects": [
+        ["madnessgain", "meatc_plant_meal",
+		{
+				"effect": "negativehealth5",
+                "duration": 30
+            }
+        ]
+    ],
+	"foodValue": 25,
+	"tooltipKind": "food",
+	"builder": "/items/buildscripts/buildfood.lua",
+	"maxStack": 1,
+	"itemAgingScripts": ["/scripts/items/rotting.lua"],
+	"rottingMultiplier": 1,
+	"blockingEffects": ["wellfed"]
+}

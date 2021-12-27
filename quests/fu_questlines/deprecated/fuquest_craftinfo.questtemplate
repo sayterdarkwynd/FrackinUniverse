@@ -1,32 +1,32 @@
 {
-  "id" : "fuquest_craftinfo",
-  "title" : "New Directions",
-  "text" : "A ^orange;Lab Directory^reset; does only one thing: ^green;Telling you what makes what^reset; in your production stations. Try making one now in your ^orange;Machining Table^reset;.",
-  "completionText" : "Now take that to your base and place it next to an extractor, centrifuge or other production station. Access it, and you'll soon see just how amazing a device it truly is.",
-  "rewards" : [
-    [ [ "glass", 2] ]
-  ],
-  "moneyRange" : [10, 10],
+	"id" : "fuquest_craftinfo",
+	"title" : "New Directions",
+	"text" : "^red;(Deprecated)^reset; A ^orange;Lab Directory^reset; does only one thing: ^green;Telling you what makes what^reset; in your production stations. Try making one now in your ^orange;Machining Table^reset;.",
+	"completionText" : "Now take that to your base and place it next to an extractor, centrifuge or other production station. Access it, and you'll soon see just how amazing a device it truly is.",
+	"rewards" : [
+		[ [ "glass", 2] ]
+	],
+	"moneyRange" : [10, 10],
 
-  "updateDelta" : 10,
-  "script" : "/quests/scripts/main.lua",
-  "scriptConfig" : {
-    "portraits" : {
-      "questStarted" : "questGiver",
-      "questComplete" : "questGiver"
-    },
-    "canBeAbandoned" : true,
-    "requireTurnIn" : false,
+	"updateDelta" : 10,
+	"script" : "/quests/scripts/main.lua",
+	"scriptConfig" : {
+		"portraits" : {
+			"questStarted" : "questGiver",
+			"questComplete" : "questGiver"
+		},
 
-    "turnInDescription" : "Bring the ^orange;Lab Directory^reset; to the scientist at the ^orange;Science Outpost^reset;",
+		"requireTurnIn" : false,
 
-    "conditions" : [ 
-      {
-        "type" : "gatherItem",
-        "itemName" : "fu_craftinfo",
-        "count" : 1,
-        "consume" : false
-      }    
-    ]
-  }
+		"turnInDescription" : "Bring the ^orange;Lab Directory^reset; to the scientist at the ^orange;Science Outpost^reset;",
+
+		"conditions" : [ 
+			{
+				"type" : "gatherItem",
+				"itemName" : "fu_craftinfo",
+				"count" : 1,
+				"consume" : false
+			}		
+		]
+	}
 }

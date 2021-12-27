@@ -3,23 +3,19 @@
   "baseType" : "crewmember",
 
   "scriptConfig" : {
-    "behaviorConfig" : {
-      "emptyHands" : true
-    },
-
     "crew" : {
       "role" : {
-        "benefits" : [
-	    {
-	      "type": "PersistentEffect",
-	      "property": "shipMass",
-	      "value": 0.9
-	    }  
-        ],      
         "type" : "janitor",
         "name" : "Janitor",
         "field" : "Cleanliness",
-        "uniformColorIndex" : 11
+        "uniformColorIndex" : 11,
+
+        "benefits" : [
+	      {
+	        "type": "PersistentEffect",
+	        "effect": "shipMassSmall"
+	      }
+        ]
       }
     },
 
@@ -51,7 +47,7 @@
             ]
           }
         }
-      }
+	  }
     }
   },
 
@@ -59,8 +55,6 @@
     "default" : [
       [0, [
           {
-            "chest" : [ { "name" : "protectoratechest", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
-            "legs" : [ { "name" : "protectoratepants", "count" :1, "parameters" : { "colorIndex" : 1 } } ],
             "primary" : [ "broom" ],
             "sheathedprimary" : [ "npcassaultrifle", "npcdagger" ]
           }

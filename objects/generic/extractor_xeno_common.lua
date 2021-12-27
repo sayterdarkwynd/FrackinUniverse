@@ -15,7 +15,12 @@ function init()
 	storage.crafting = storage.crafting or false
 
 	self.light = config.getParameter("lightColor")
-
+	self.inputSlot = config.getParameter("inputSlot",3)
+	self.outputSlots={}
+	for i=0,self.inputSlot-1 do
+		table.insert(self.outputSlots,i)
+	end
+	self.inputSlot = config.getParameter("inputSlot",1)
 	self.techLevel = config.getParameter("fu_stationTechLevel", 1)
 
 	storage.activeConsumption = storage.activeConsumption or false
@@ -51,7 +56,7 @@ end
 function getInputContents()
 	local id = entity.id()
 	local contents = {}
-	for i = 0, 2 do
+	for i = 0, self.inputSlot-1 do
 		local stack = world.containerItemAt(entity.id(),i)
 		if stack then
 			contents[stack.name] = (contents[stack.name] or 0) + stack.count
@@ -104,7 +109,7 @@ function update(dt)
 	if storage.timer <= 0 then
 		if storage.output then
 			for k,v in pairs(storage.output) do
-				fu_sendOrStoreItems(0, {name = k, count = techlevelMap(v)}, {0, 1, 2}, true)
+				fu_sendOrStoreItems(0, {name = k, count = techlevelMap(v)},self.outputSlots, true)
 			end
 			storage.output = nil
 			storage.inputs = nil
@@ -141,7 +146,7 @@ function findRecipe(input)
 				tempResult=resEntry
 			else
 				--sb.logInfo("%s",resEntry)
-				if not resEntry.inputs then sb.logInfo("%s",result) return false end
+				if not resEntry.inputs then sb.logInfo("extractor error: no inputs: %s",result) return false end
 				for resEntryInputItem,resEntryItemCount in pairs(resEntry.inputs) do
 					if tempResult.inputs[resEntryInputItem] < resEntryItemCount then
 						tempResult=resEntry
@@ -182,7 +187,7 @@ function doCrafting(result)
 					local i=0
 					for i=0,world.containerSize(entity.id())-1 do
 						if v then
-						v=world.containerPutItemsAt(entity.id(),v,i)
+							v=world.containerPutItemsAt(entity.id(),v,i)
 						else
 							break
 						end

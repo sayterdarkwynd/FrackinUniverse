@@ -12,35 +12,31 @@
 
     "behaviorConfig" : {
       "greetingChance" : 0.5,
-
       "hostileDamageTeam" : { "type" : "enemy", "team" : 1 }
     },
 
     "questGenerator" : {
       "pools" : ["common"],
       "enableParticipation" : true,
-
-      // Every 30 seconds, decide whether to generate a quest and if so, spend
-      // the rest of the 30s window trying to generate it.
       "timeLimit" : 30,
-
-      // Don't generate new quests if there are already more than <nearbyQuestLimit>
-      // questmanager stagehands nearby, within a <nearbyQuestRange> tile range.
       "nearbyQuestLimit" : 2,
       "nearbyQuestRange" : 50,
-	  "questCountRange" : [1, 4],
+	    "questCountRange" : [1, 4],
       
       "graduation" : {
         "nextNpcType" : [
-          [1, "crewmember"],
-          [0.25, "crewmemberchemistblue"],
-          [0.25, "crewmemberchemistgreen"],
-          [0.25, "crewmemberchemistyellow"],
-          [0.25, "crewmemberchemistorange"],
-          [1, "crewmemberengineer"],
-          [1, "crewmembermechanic"],
-          [1, "crewmembermedic"],
-          [1, "crewmemberjanitor"],
+          [0.5, "crewmembercounsellor"],
+          [0.35, "crewmembercounsellor2"],
+          [0.15, "crewmembercounsellor3"],
+          [0.5, "crewmemberchef"],
+          [0.35, "crewmemberchef2"],
+          [0.15, "crewmemberchef3"],
+          [0.5, "crewmemberwarrior"],
+          [0.35, "crewmemberwarrior2"],
+          [0.15, "crewmemberwarrior3"],
+          [1, "crewmembergeologist"],
+          [1, "crewmember_spacestationcaptain"],
+          [1, "crewmemberguardian"],
           [1, "crewmembertailor"]
         ]
       }

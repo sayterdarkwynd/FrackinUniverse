@@ -1,91 +1,74 @@
 [
-[
-  {
-    "op": "add",
-    "path": "/starterTreasure/0/1/fill/0",
-    "value": {
-      "item": "statustablet"
+  [
+    {"op": "replace","path": "/starterTreasure/0/1/fill/0/item","value": "flashlight_new"},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "aegisaltpistol2", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "pandorasboxprotectorateshield", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide-codex", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide2-codex", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide3-codex", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide5-codex", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide6-codex", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguidebattle-codex", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "networkguide-codex", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "networkguide2-codex", 1]}},
+    {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "fu_craftinfo", 1]}},
+    {
+      "op": "add",
+      "path": "/fuxiStarterTreasure",
+      "value": [[0, {
+        "fill" : [
+          {"pool" : "starterTreasure"},
+          {"item" : [ "xi_bulb", 6 ]}
+        ]
+      }]]
+    },
+    {
+      "op": "add",
+      "path": "/fukirhosStarterTreasure",
+      "value": [[0, {
+        "fill" : [
+          {"pool" : "starterTreasure"},
+          {"item" : [ "kirhospistol", 1 ]},
+          {"item" : [ "money", 1000 ]}
+        ]
+      } ]]
+    },
+    {
+      "op": "add",
+      "path": "/slimepersonStarterTreasure",
+      "value": [[0, {
+        "fill" : [
+          {"pool" : "starterTreasure"},
+          {"item" : [ "greenslime", 30 ]}
+        ]
+      }]]
+    },
+    {
+      "op": "add",
+      "path": "/mantiziStarterTreasure",
+      "value": [[0, {
+        "fill" : [ 
+          {"pool" : "starterTreasure"}         
+        ]
+      }]]
     }
-  },
-   
-  {
-    "op": "add",
-    "path": "/fuxiStarterTreasure",
-    "value": [[0, {
-      "fill" : [
-        {"pool" : "starterTreasure"},
-        {"item" : [ "xi_bulb", 6 ]}
-      ]
-    }]]
-  },
-  {
-    "op": "add",
-    "path": "/fukirhosStarterTreasure",
-    "value": [[0, {
-      "fill" : [
-        {"pool" : "starterTreasure"},
-        {"item" : [ "kirhospistol", 1 ]},
-        {"item" : [ "money", 500 ]}
-      ]
-    }]]
-  },
-  {
-    "op": "add",
-    "path": "/slimepersonStarterTreasure",
-    "value": [[0, {
-      "fill" : [
-        {"pool" : "starterTreasure"},
-        {"item" : [ "greenslime", 30 ]}
-      ]
-    }]]
-  },
-  {
-    "op": "add",
-    "path": "/mantiziStarterTreasure",
-    "value": [[0, {
-      "fill" : [ 
-        {"pool" : "starterTreasure"}         
-      ]
-    }]]
-  },
-  {
-    "op": "remove",
-    "path": "/starterTreasure/0/1/fill/0"
-  },  
-  {"op": "replace","path": "/starterTreasure/0/1/fill/0/item","value": "flashlight_new"},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "aegisaltpistol2", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "pandorasboxprotectorateshield", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide-codex", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide2-codex", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide3-codex", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide5-codex", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguide6-codex", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "networkguide2-codex", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "networkguide-codex", 1]}},
-  {"op": "add", "path": "/starterTreasure/0/1/fill/-", "value": {"item": [ "ffguidebattle-codex", 1]}} 
 ],
-    [{
-            "op": "test",
-            "path": "/glitchStarterTreasure"
-        },  
-  	{"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "currentcornseed", 3]}},
-  	{"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "hoe", 1]}},
-  	{"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "woodenwateringcan", 1]}}   
-    ],      
-    [{
-            "op": "test",
-            "path": "/drodenStarterTreasure"
-        },  
-        {"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "currentcornseed", 3]}},
-        {"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "hoe", 1]}},
-        {"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "woodenwateringcan", 1]}}
-    ],  
-    [{
-            "op": "test",
-            "path": "/trinkStarterTreasure"
-        },  
-	  {"op": "add", "path": "/trinkStarterTreasure/0/1/fill/-", "value": {"item": [ "currentcornseed", 3]}},
- 	 {"op": "add", "path": "/trinkStarterTreasure/0/1/fill/-", "value": {"item": [ "hoe", 1]}},
- 	 {"op": "add", "path": "/trinkStarterTreasure/0/1/fill/-", "value": {"item": [ "woodenwateringcan", 1]}}
-    ]      
+  [
+    {"op": "test", "path": "/glitchStarterTreasure"},  
+    {"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "currentcornseed", 3]}},
+    {"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "hoe", 1]}},
+    {"op": "add", "path": "/glitchStarterTreasure/0/1/fill/-", "value": {"item": [ "woodenwateringcan", 1]}}   
+  ],      
+  [
+    {"op": "test", "path": "/drodenStarterTreasure"},  
+    {"op": "add", "path": "/drodenStarterTreasure/0/1/fill/-", "value": {"item": [ "currentcornseed", 3]}},
+    {"op": "add", "path": "/drodenStarterTreasure/0/1/fill/-", "value": {"item": [ "hoe", 1]}},
+    {"op": "add", "path": "/drodenStarterTreasure/0/1/fill/-", "value": {"item": [ "woodenwateringcan", 1]}}
+  ],  
+  [
+    {"op": "test", "path": "/trinkStarterTreasure"},  
+    {"op": "add", "path": "/trinkStarterTreasure/0/1/fill/-", "value": {"item": [ "currentcornseed", 3]}},
+    {"op": "add", "path": "/trinkStarterTreasure/0/1/fill/-", "value": {"item": [ "hoe", 1]}},
+    {"op": "add", "path": "/trinkStarterTreasure/0/1/fill/-", "value": {"item": [ "woodenwateringcan", 1]}}
+  ]      
 ]

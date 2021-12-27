@@ -1,4 +1,6 @@
 require "/scripts/vec2.lua"
+require "/stats/effects/fu_statusUtil.lua"
+local foodThreshold=15--used by checkFood
 
 function init()
 	initCommonParameters()
@@ -9,7 +11,6 @@ function initCommonParameters()
 	self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
 	self.active=false
 	self.available = true
-	--self.species = world.entitySpecies(entity.id())
 	self.timer = 0
 	self.active2 = 0
 	self.active3 = 0
@@ -26,14 +27,6 @@ function uninit()
 	animator.stopAllSounds("recharge")
 	status.clearPersistentEffects("glide")
 	deactivate()
-end
-
-function checkFood()
-	if status.isResource("food") then
-		return status.resource("food")
-	else
-		return 15
-	end
 end
 
 function checkStance()
@@ -79,6 +72,7 @@ function update(args)
 	end
 
 	if self.active and status.overConsumeResource("energy", 0.001) then
+		status.removeEphemeralEffect("wellfed")
 
 		if self.bombTimer > 0 then
 			self.bombTimer = math.max(0, self.bombTimer - args.dt)
@@ -116,7 +110,7 @@ function update(args)
 				mcontroller.controlParameters(self.fallingParameters2 or {})
 				mcontroller.setYVelocity(math.max(mcontroller.yVelocity(), self.maxFallSpeed2 or -100))
 			end
-			if checkFood() > 15 then
+			if (checkFood() or foodThreshold) > foodThreshold then
 				status.addEphemeralEffects{{effect = "foodcost", duration = 0.1}}
 			else
 				status.overConsumeResource("energy", (self.energyCostPerSecond or 0)*args.dt)

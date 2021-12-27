@@ -12,7 +12,7 @@
   "level" : 3,
   "tooltipKind" : "gun2",
   "weaponType" : "sniperRifle",
-  "itemTags" : ["weapon","ranged","sniperrifle", "upgradeableWeapon"],
+  "itemTags" : ["weapon","ranged","sniperrifle", "energy", "upgradeableWeapon"],
   "twoHanded" : true,
 
   "animation" : "/items/active/weapons/ranged/unique/fugun.animation",
@@ -27,11 +27,11 @@
     "animatedParts" : {
       "parts" : {
         "middlefullbright" : {
-	  "properties" : {
-		//Same as BaseOffset
-	    "offset" : [0.875, 0.25]
-	  }
-	}
+          "properties" : {
+            //Same as BaseOffset
+            "offset" : [0.875, 0.25]
+          }
+        }
       }
     },  
     "particleEmitters" : {
@@ -165,7 +165,7 @@
   "builder" : "/items/buildscripts/buildunrandweapon.lua",
     "upgradeParameters" : {
     "scripts" : [ "/items/active/weapons/ranged/gun.lua"],
-    "shortdescription" : "^cyan;Expar Sniper Rifle^reset; ^yellow;",
+    "shortdescription" : "^cyan;Expar Sniper Rifle^reset; ^yellow;^reset;",
   "description" : "Highly useful weapon for wanderers.
 ^yellow;Counts as Hunting weapon^reset;
 ^green;Causes Rad Burn^reset;", 
