@@ -1,0 +1,202 @@
+{
+  //Placeholder - This replaces the deprecated Apex Tower Block dungeon, and serves only to stop worlds trying to generate that dungeon from breaking. It's a clone of the Apex City vanilla dungeon, don't add to this.
+  "metadata" : {
+    "name" : "apextowerblock",
+    "species" : "apex",
+    "rules" : [
+    ],
+    "anchor" : [ "apexcitybuilding2" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 20,
+    "extendSurfaceFreeSpace" : 100,
+    "protected" : false
+  },
+
+  "parts" : [
+    {
+      "name" : "apexcityhouse1",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "apexcityhouse1" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityhouse1.json" ]
+    },
+    {
+      "name" : "apexcityhouse2",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "apexcityhouse2" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityhouse2.json" ]
+    },
+    {
+      "name" : "apexcityhouse3",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "apexcityhouse3" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityhouse3.json" ]
+    },
+    {
+      "name" : "apexcityhouse4",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "apexcityhouse4" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityhouse4.json" ]
+    },
+    {
+      "name" : "apexcityhouse5",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "apexcityhouse5" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityhouse5.json" ]
+    },
+    {
+      "name" : "apexcitystore1",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcitystore1" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitystore1.json" ]
+    },
+    {
+      "name" : "apexcitystore1clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcitystore1clue" ] ],
+        [ "doNotCombineWith", [ "apexcitystore1", "apexcitybuilding3clue", "apexcitybuilding2clue", "apexcitymansion2clue", "apexcityflat2clue" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitystore1clue.json" ]
+    },
+    {
+      "name" : "apexcityoffice1",
+      "rules" : [
+        [ "maxSpawnCount", [4] ],
+        [ "doNotConnectToPart", [ "apexcityoffice1" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityoffice1.json" ]
+    },
+    {
+      "name" : "apexcitybuilding1",
+      "rules" : [
+        [ "maxSpawnCount", [2] ],
+        [ "doNotConnectToPart", [ "apexcitybuilding1" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitybuilding1.json" ]
+    },
+    {
+      "name" : "apexcitybuilding2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcitybuilding2" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitybuilding2.json" ]
+    },
+    {
+      "name" : "apexcitybuilding2clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcitybuilding2clue" ] ],
+        [ "doNotCombineWith", [ "apexcitybuilding2", "apexcitybuilding3clue", "apexcitystore1clue", "apexcitymansion2clue", "apexcityflat2clue" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitybuilding2clue.json" ]
+    },
+    {
+      "name" : "apexcitybuilding3",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcitybuilding3" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitybuilding3.json" ]
+    },
+    {
+      "name" : "apexcitybuilding3clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcitybuilding3clue" ] ],
+        [ "doNotCombineWith", [ "apexcitybuilding3", "apexcitybuilding2clue", "apexcitystore1clue", "apexcitymansion2clue", "apexcityflat2clue" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitybuilding3clue.json" ]
+    },
+    {
+      "name" : "apexcitymansion2",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcitymansion2" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitymansion2.json" ]
+    },
+    {
+      "name" : "apexcitymansion2clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcitymansion2clue" ] ],
+        [ "doNotCombineWith", [ "apexcitymansion2", "apexcitybuilding2clue", "apexcitybuilding3clue", "apexcitystore1clue", "apexcityflat2clue" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcitymansion2clue.json" ]
+    },
+    {
+      "name" : "apexcityflat1",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+        [ "doNotConnectToPart", [ "apexcityflat1" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityflat1.json" ]
+    },
+    {
+      "name" : "apexcityflat2",
+      "rules" : [
+        [ "maxSpawnCount", [3] ],
+        [ "doNotConnectToPart", [ "apexcityflat2" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityflat2.json" ]
+    },
+    {
+      "name" : "apexcityflat2clue",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "doNotConnectToPart", [ "apexcityflat2clue" ] ],
+        [ "doNotCombineWith", [ "apexcityflat2", "apexcitybuilding2clue", "apexcitybuilding3clue", "apexcitystore1clue", "apexcitymansion2clue" ] ]
+
+      ],
+      "def" : [ "tmx", "apexcityflat2clue.json" ]
+    },
+    {
+      "name" : "apexendleft1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", [ "apexendleft1.json" ] ],
+      "chance" : 0
+    },
+
+    {
+      "name" : "apexendright1",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", [ "apexendright1.json" ] ],
+      "chance" : 0
+    }
+  ]
+}
