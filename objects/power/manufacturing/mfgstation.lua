@@ -79,9 +79,6 @@ outputExclusionList = {
 	nocxiumbar=true,
 }
 
-
-local deltaTime = 0
-
 function init()
 	self.mintick = math.max(script.updateDt(),0.0167)--0.0167 (1/60 of a second) is minimum due to frames/second limit.
 	storage.timer = storage.timer or self.mintick
@@ -103,7 +100,6 @@ end
 
 
 function getInputContents()
-	local id = entity.id()
 	local contents = {}
 	for i=1,6 do
 		local stack = world.containerItemAt(entity.id(),i)
@@ -141,8 +137,7 @@ function scanRecipes(sample)
 	local recipeScan = self.recipesForItem[sample.name] or root.recipesForItem(sample.name)
 	if recipeScan and not self.recipesForItem[sample.name] then self.recipesForItem=recipeScan end --tentative optimization: caching values in the lua script, instead of relying on the engine to do it. +ramUse, -hddUse
 	if recipeScan then --sb.logInfo("RecipeScan: %s", recipeScan)
-		for index,recipe in pairs(recipeScan) do
-			local recipeInputs = {recipe.input}
+		for _,recipe in pairs(recipeScan) do
 			local sampleInputs = {}
 			local sampleOutput = {}
 			local stackOut = recipe.output
@@ -169,7 +164,7 @@ function scanRecipes(sample)
 				end
 
 				if not groupFail then
-					for index,item in pairs(recipe.input) do
+					for _,item in pairs(recipe.input) do
 						sampleInputs[item.name]=item.count
 					end
 					table.insert(recipes, {inputs = sampleInputs, outputs = sampleOutput, time = math.max(util.round(recipe.duration^0.5,3),self.mintick) })
@@ -297,7 +292,7 @@ function update(dt)
 					end
 				end
 			end
-			if not tagfail then
+			if not tagFail then
 				if not (outputExclusionList.types and outputExclusionList.types[type]) and not (outputExclusionList and outputExclusionList[slot0.name]) then
 					local hasEnoughPower = (not storage.requiredPower) or (power.getTotalEnergy() >= storage.requiredPower)
 					if hasEnoughPower then
