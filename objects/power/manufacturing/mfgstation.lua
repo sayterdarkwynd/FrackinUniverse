@@ -83,11 +83,18 @@ outputExclusionList = {
 local deltaTime = 0
 
 function init()
-	power.init()
 	self.mintick = math.max(script.updateDt(),0.0167)--0.0167 (1/60 of a second) is minimum due to frames/second limit.
 	storage.timer = storage.timer or self.mintick
 	storage.powerTimer = 0
-	storage.requiredPower = config.getParameter('isn_requiredPower')*self.mintick--<40>/s.
+	storage.craftDelay = config.getParameter('craftDelay') or 0 -- in seconds, added to normal crafting time of an item.
+
+	-- This script is used by both powered Manufacturing Station and non-powered Gnome Workshop.
+	storage.requiredPower = config.getParameter('isn_requiredPower')
+	if storage.requiredPower then
+		storage.requiredPower = storage.requiredPower * self.mintick -- <40>/s.
+		power.init()
+	end
+
 	storage.crafting = storage.crafting or false
 	storage.output = storage.output or {}
 	self.recipesForItem={}
@@ -240,9 +247,9 @@ function update(dt)
 		transferUtilDeltaTime=transferUtilDeltaTime+dt
 	end
 
-    storage.timer = storage.timer - dt
+	storage.timer = storage.timer - dt
 
-	if storage.crafting then
+	if storage.crafting and storage.requiredPower then
 		if not storage.powerTimer or storage.powerTimer <= 0 then
 			if power.consume(storage.requiredPower) then
 				storage.powerTimer=self.minTick
@@ -255,7 +262,7 @@ function update(dt)
 
 	end
 
-	if storage.timer <= 0 then
+	if storage.timer <= -storage.craftDelay then
 		if storage.crafting then
 			for k,v in pairs(storage.output) do
 				local leftover = {name = k, count = v}
@@ -276,7 +283,7 @@ function update(dt)
 		end
 	end
 
-	if not storage.crafting and storage.timer <= 0 then --make sure we didn't just finish crafting
+	if not storage.crafting and storage.timer <= -storage.craftDelay then --make sure we didn't just finish crafting
 		local slot0 = world.containerItemAt(entity.id(), 0)
 		if slot0 then                            --sb.logInfo("slot0: %s", slot0)
 			local type = root.itemType(slot0.name) --sb.logInfo("slot0 type: %s", type)
@@ -292,8 +299,8 @@ function update(dt)
 			end
 			if not tagfail then
 				if not (outputExclusionList.types and outputExclusionList.types[type]) and not (outputExclusionList and outputExclusionList[slot0.name]) then
-					local totalEnergy = power.getTotalEnergy() --sb.logInfo("totalEnergy %s", totalEnergy)
-					if totalEnergy >= storage.requiredPower then
+					local hasEnoughPower = (not storage.requiredPower) or (power.getTotalEnergy() >= storage.requiredPower)
+					if hasEnoughPower then
 						if not startCrafting(getValidRecipes(getInputContents())) then
 							storage.timer = self.mintick
 						end --set timeout if there were no recipes
@@ -304,7 +311,10 @@ function update(dt)
 			end
 		end
 	end
-	power.update(dt)
+
+	if storage.requiredPower then
+		power.update(dt)
+	end
 end
 
 
