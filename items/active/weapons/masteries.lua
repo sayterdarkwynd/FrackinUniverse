@@ -500,7 +500,7 @@ function masteries.listenerBonuses(notifications,dt)
 		end
 	end
 	
-	if #notificationBuffer>0 then sb.logInfo("notices %s",notificationBuffer) end
+	--if #notificationBuffer>0 then sb.logInfo("notices %s",notificationBuffer) end
 
 	--hit stuff, typically for hit/kill count combos
 	local hitCount=0
@@ -655,7 +655,7 @@ function masteries.listenerBonuses(notifications,dt)
 
 	--insert leech last
 	if leechValue>0 then
-		sb.logInfo("leechValue %s",leechValue)
+		--sb.logInfo("leechValue %s",leechValue)
 		world.sendEntityMessage(entity.id(),"recordFUPersistentEffect","fuLeeching")
 		status.setPersistentEffects("fuLeeching",{{stat="healthRegen",amount=leechValue}})
 	end
