@@ -219,10 +219,10 @@ function masteries.apply(args)
 					masteries.timers[currentHand]["rapierTimerBonus"]=rapierTimerDefault
 				end
 
-				--a single rapier, with no other item in the other hand whatsoever, grants a crit chance boost based on time since last attack. wielding alongside a dagger reduces the tech boosts, but grants a protection multiplier.
+				--a single rapier, with no other weapon in the other hand whatsoever, grants a crit chance boost based on time since last attack. wielding alongside a dagger reduces the tech boosts, but grants a protection multiplier.
 				-- one handed --does it need to be HARD one-handed? can't use with a non-weapon?
 				--apparently supposed to grant crit damage? but didnt in previous code. instead, we have this.
-				if (not tagCaching[otherHand.."TagCacheItem"]) and masteries.vars[currentHand.."Firing"] then
+				if (not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"])) and masteries.vars[currentHand.."Firing"] then
 					--due to the implementation and nature of this bonus it will never display in the adv stats page or anywhere else. it is only active during the attack, and that is a very brief time frame
 					--to fully test this, it requires the use of debug code in crits.lua
 					critModifier=masteries.timers[currentHand]["rapierTimerBonus"][1]*(1+masteries.stats.rapierMastery)
@@ -242,7 +242,7 @@ function masteries.apply(args)
 
 			--shortspears: modifiers based on what else is or isn't wielded. none when combo'd.
 			if tagCaching[currentHand.."TagCache"]["shortspear"] then
-				if not tagCaching[otherHand.."TagCacheItem"] then --solo shortspear, no other items: boost crit damage.
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then --solo shortspear, no other weapons: boost crit damage.
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.3*(1+masteries.stats.shortspearMastery) }
 				else
 					-- using shortspear with a shield: boost shield and defense tech stats.
@@ -273,8 +273,8 @@ function masteries.apply(args)
 				if masteries.vars[currentHand.."Firing"]and (masteries.vars[currentHand.."ComboStep"] >=3) then
 					masteryBuffer[#masteryBuffer + 1]={stat="critDamage", amount=0.15*(1+masteries.stats.longswordMastery)*handMultiplier}
 				end
-				-- longsword solo, no other items: attack speed.
-				if not tagCaching[otherHand.."TagCacheItem"] then
+				-- longsword solo, no other weapons: attack speed.
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
 					--this would be funny to apply at full value if wielding alongside another longsword. especially with a minor damage penalty.
 					masteryBuffer[#masteryBuffer + 1]={stat="attackSpeedUp", amount=0.7*masteries.stats.longswordMastery}
 				else
@@ -311,8 +311,8 @@ function masteries.apply(args)
 				local dashModifier=masteries.stats.shortswordMastery*handMultiplier
 				local gritModifier=masteries.stats.shortswordMastery*handMultiplier
 
-				-- solo shortsword, no other items: increased damage, dash/dodge tech bonuses, and knockback resistance
-				if not tagCaching[otherHand.."TagCacheItem"] then
+				-- solo shortsword, no other weapons: increased damage, dash/dodge tech bonuses, and knockback resistance
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
 					powerModifier=(powerModifier/1.5)
 					dashModifier=0.1*dashModifier/2
 					dodgeModifier=0.1*masteries.stats.shortswordMastery/2
@@ -342,8 +342,8 @@ function masteries.apply(args)
 				if masteries.vars[currentHand.."Firing"] and (masteries.vars[currentHand.."ComboStep"] >1) then -- combos higher than 1 move
 					table.insert(masteries.vars.controlModifiers,{speedModifier=1+((masteries.vars[currentHand.."ComboStep"]/10)*(1+masteries.stats.katanaMastery/48)) })
 				end
-				-- holding one katana with no other item: increase  defense techs, damage, protection and crit chance
-				if not tagCaching[otherHand.."TagCacheItem"] then
+				-- holding one katana with no other weapon: increase  defense techs, damage, protection and crit chance
+				if not (tagCaching[otherHand.."TagCache"]["weapon"] or tagCaching[otherHand.."TagCache"]["thrown"]) then
 					masteryBuffer[#masteryBuffer + 1]={stat="defensetechBonus", amount=0.15*(1+(masteries.stats.katanaMastery/2)) }
 					masteryBuffer[#masteryBuffer + 1]={stat="powerMultiplier", effectiveMultiplier=1+(masteries.stats.katanaMastery/3) }
 					masteryBuffer[#masteryBuffer + 1]={stat="protection", effectiveMultiplier=1+(masteries.stats.katanaMastery/8) }
