@@ -63,19 +63,19 @@ function onInteraction(args)
 					}}
 				}
 			}
-		elseif  status.stat("gaterepair") then--player already completed the dungeon once. afterwards, they get a shittier version with less loot
-			return { "OpenTeleportDialog",
-				{
-					canBookmark = false,
-					includePlayerBookmarks = false,
-					destinations = {{
-						name = "^green;Dark Cavern^reset; (^orange;2^reset;)",
-						planetName = "Dark Cavern",
-						icon = "default",
-						warpAction = string.format(config.getParameter("destination2"), storage.uuid, world.threatLevel())
-					}}
-				}
-			}				
+		--elseif  status.stat("gaterepair") then--player already completed the dungeon once. afterwards, they get a shittier version with less loot
+		---	return { "OpenTeleportDialog",
+		--		{
+		--			canBookmark = false,
+		--			includePlayerBookmarks = false,
+		--			destinations = {{
+		--				name = "^green;Dark Cavern^reset; (^orange;2^reset;)",
+		--				planetName = "Dark Cavern",
+		--				icon = "default",
+		--				warpAction = string.format(config.getParameter("destination2"), storage.uuid, world.threatLevel())
+		--			}}
+		--		}
+		--	}				
 		else
 			return { "OpenTeleportDialog",
 				{
