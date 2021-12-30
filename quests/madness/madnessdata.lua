@@ -146,7 +146,7 @@ function randomEvent()
 	while (not didRng) or streakCheck(math.max(0,self.randEvent)) do
 		self.randEvent=math.random(1,100)
 		--mentalProtection can make it harder to be affected
-		if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtectionAbs) then
+		if (self.currentProtectionAbs>0.0) and (self.isProtectedRandVal <= self.currentProtection) then
 			self.randEvent = math.max(0,self.randEvent - util.round(self.currentProtection * 10)) --math.random(10,70) --it doesnt *remove* the effect, it just moves it further up (or down) the list, and potentially off of it.
 		end
 		didRng=true
