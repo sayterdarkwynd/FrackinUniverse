@@ -1,56 +1,56 @@
 {
-	"itemName" : "coralspear",
-	"price" : 100,
-	"level" : 4,
-	"maxStack" : 1,
-	"rarity" : "Uncommon",
-	"description" : "Dangerously sharp bits of coral. Stabby!
+  "itemName" : "coralspear",
+  "price" : 100,
+  "level" : 4,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Dangerously sharp bits of coral. Stabby!
 ^cyan;Hunting weapon^reset;",
-	"shortdescription" : "Coral Spear",
-	"tooltipKind" : "sword2",
-	"category" : "spear",
-	"twoHanded" : true,
-	"itemTags" : ["weapon","melee","spear", "upgradeableWeapon","coral"],
+  "shortdescription" : "Coral Spear",
+  "tooltipKind" : "sword2",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear", "upgradeableWeapon","coral"],
 
-	"inventoryIcon" : "coralspear.png",
-	//"collectablesOnPickup" : { "fu_weaponspear" : "coralspear" },
-	"animation" : "/items/active/weapons/melee/spear/spear.animation",
-	"animationParts" : {
-		"handle" : "",
-		"blade" : "coralspear.png"
-	},
-	"animationCustom" : {
-		"sounds" : {
-			"fire" : [ "/sfx/melee/swing_spear.ogg" ]
-		}
-	},
+  "inventoryIcon" : "coralspear.png",
+  //"collectablesOnPickup" : { "fu_weaponspear" : "coralspear" },
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "coralspear.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+    }
+  },
 
-	"scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
 
-	"elementalType" : "physical",
+  "elementalType" : "physical",
 
-	"aimOffset" : -1.0,
-	"primaryAbilityType" : "spearstab",
-	"primaryAbility" : {
-		"scripts" : [],
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
 
-		"fireTime" : 0.9,
-		"baseDps" : 9.5,
-		"damageConfig" : {
-			"damageSourceKind" : "bow",
-			"statusEffects" : [ ],
-			"knockback" : 10
-		}
-	},
-	"altAbilityType" : "flurry",
-	"altAbility" : {
-		"damageConfig" : {
-			"damageSourceKind" : "bow"
-		}
-	},
+    "fireTime" : 0.9,
+    "baseDps" : 9.5,
+    "damageConfig" : {
+      "damageSourceKind" : "bow",
+      "statusEffects" : [ ],
+      "knockback" : 10
+    }
+  },
+  "altAbilityType" : "flurry",
+  "altAbility" : {
+    "damageConfig" : {
+      "damageSourceKind" : "bow"
+    }
+  },
 
-	"critChance" : 1,
-	"critBonus" : 4,
+  "critChance" : 1,
+  "critBonus" : 4,
 
-	"builder" : "/items/buildscripts/buildunrandweapon.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

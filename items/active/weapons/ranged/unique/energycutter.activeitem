@@ -129,7 +129,7 @@
           "explosiveDamageAmount" : 4,
           "harvestLevel" : 99,
           "delaySteps" : 2
-        }, 	    
+        },       
         {  
           "time":0.1,
           "action":"projectile",
@@ -150,34 +150,34 @@
         }
       ]
     },
-	  "stances" : {
-	    "idle" : {
-	      "armRotation" : 0,
-	      "weaponRotation" : 0,
-	      "twoHanded" : true,
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
 
-	      "allowRotate" : true,
-	      "allowFlip" : true
-	    },
-	    "fire" : {
-	      "duration" : 0,
-	      "armRotation" : 3,
-	      "weaponRotation" : -6,
-	      "twoHanded" : true,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : -6,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    },
-	    "cooldown" : {
-	      "duration" : 0.0,
-	      "armRotation" : 3,
-	      "weaponRotation" : -6,
-	      "twoHanded" : true,
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.0,
+        "armRotation" : 3,
+        "weaponRotation" : -6,
+        "twoHanded" : true,
 
-	      "allowRotate" : false,
-	      "allowFlip" : false
-	    }
-	  }
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
   },
 
   "critChance" : 5,
@@ -264,85 +264,85 @@
 
       "actionOnReap":[  
       {
-	    "action" : "projectile",
-	    "type" : "plasmatorpedo2",
-	    "fuzzAngle" : 0,
-	    "inheritDamageFactor" : 1.0,
-	    "angleAdjust" : 0,
-	    "config" : {
-	              "processing":"?hueshift=-60",
-		      "speed":60,
-		      "timeToLive":1.0,
-		      "knockback":10,
-		      "bounces":0,    
-		      "statusEffects" : [ "bleedinglong", "electrified" ],
-		      "piercing" : true,
-		      "periodicActions":[  
-			{
-			  "time":0,
-			  "loop" : true,
-			  "action" : "explosion",
-			  "foregroundRadius" : 2,
-			  "backgroundRadius" : 2,
-			  "explosiveDamageAmount" : 3,
-			  "harvestLevel" : 99,
-			  "delaySteps" : 2
-			},       
-			{  
-			  "time":0,
-			  "action":"particle",
-			  "specification":{  
-			    "type":"ember",
-			    "light":[  
-			      0,
-			      0,
-			      255
-			    ],
-			    "size":0.5,
-			    "color":[  
-			      0,
-			      0,
-			      180,
-			      50
-			    ],
-			    "initialVelocity":[  
-			      0.0,
-			      10.0
-			    ],
-			    "finalVelocity":[  
-			      0.0,
-			      -3.0
-			    ],
-			    "approach":[  
-			      0.0,
-			      -1.0
-			    ],
-			    "timeToLive":0.5,
-			    "fade":1,
-			    "destructionAction":"shrink",
-			    "destructionTime":0.2,
-			    "layer":"front",
-			    "variance":{  
-			      "initialVelocity":[  
-				0.0,
-				0.0
-			      ],
-			      "position":[  
-				2.2,
-				0.2
-			      ],
-			      "size":2
-			    }
-			  }
-			}
-		      ],
-		      "actionOnReap" : [
-			    {
-			      "action" : "config",
-			      "file" : "/projectiles/explosions/atomsmasherboom/atomsmasherboombasic.config"
-			    }		      
-		      ]
-	    }
+      "action" : "projectile",
+      "type" : "plasmatorpedo2",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 1.0,
+      "angleAdjust" : 0,
+      "config" : {
+                "processing":"?hueshift=-60",
+          "speed":60,
+          "timeToLive":1.0,
+          "knockback":10,
+          "bounces":0,    
+          "statusEffects" : [ "bleedinglong", "electrified" ],
+          "piercing" : true,
+          "periodicActions":[  
+      {
+        "time":0,
+        "loop" : true,
+        "action" : "explosion",
+        "foregroundRadius" : 2,
+        "backgroundRadius" : 2,
+        "explosiveDamageAmount" : 3,
+        "harvestLevel" : 99,
+        "delaySteps" : 2
+      },       
+      {  
+        "time":0,
+        "action":"particle",
+        "specification":{  
+          "type":"ember",
+          "light":[  
+            0,
+            0,
+            255
+          ],
+          "size":0.5,
+          "color":[  
+            0,
+            0,
+            180,
+            50
+          ],
+          "initialVelocity":[  
+            0.0,
+            10.0
+          ],
+          "finalVelocity":[  
+            0.0,
+            -3.0
+          ],
+          "approach":[  
+            0.0,
+            -1.0
+          ],
+          "timeToLive":0.5,
+          "fade":1,
+          "destructionAction":"shrink",
+          "destructionTime":0.2,
+          "layer":"front",
+          "variance":{  
+            "initialVelocity":[  
+        0.0,
+        0.0
+            ],
+            "position":[  
+        2.2,
+        0.2
+            ],
+            "size":2
+          }
+        }
+      }
+          ],
+          "actionOnReap" : [
+          {
+            "action" : "config",
+            "file" : "/projectiles/explosions/atomsmasherboom/atomsmasherboombasic.config"
+          }          
+          ]
+      }
       },        
         {  
           "action":"sound",
