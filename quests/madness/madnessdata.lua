@@ -23,10 +23,8 @@ function init()
 	self.environmentTimer = 0
 
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
-	local buffer=status.activeUniqueStatusEffectSummary()
-	for _,v in pairs(buffer) do
-		-- FIXME: detected by Luacheck: something is wrong here (loop checks the same thing N times).
-		if buffer[1]=="mad" then
+	for _,effect in ipairs(status.activeUniqueStatusEffectSummary()) do
+		if effect[1]=="mad" then
 			status.removeEphemeralEffect("mad")
 			status.addEphemeralEffect("mad",self.timer)
 			break

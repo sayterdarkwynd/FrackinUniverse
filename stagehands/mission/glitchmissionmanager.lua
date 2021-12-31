@@ -302,8 +302,7 @@ function bossWave()
 	util.wait(4.0)
 	startMusic("bossMusic")
 
-	for _,enemyId in pairs(wave) do
-		-- FIXME: detected by Luacheck: something is wrong here (loop uses wave[1] several times).
+	if wave[1] then
 		world.sendEntityMessage(wave[1], "notify", { type = "bossAggro", sourceId = entity.id() })
 	end
 
