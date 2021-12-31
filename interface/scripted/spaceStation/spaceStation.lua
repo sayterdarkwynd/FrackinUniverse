@@ -21,65 +21,42 @@ function init()
 	stationType = ""
 	defaultMaxStack = 0
 
-	-- Find closest object and use it
-	-- There should only be one object in the stations world anyways
-	-- If theres another one close enough to interact with, but the first one is closer to the player
-	-- the ones that closer will be read.
-	-- So don't do that
-	local objects = {}
+	-- Maps objectName of supported station objects to their type.
+	local supportedObjects = {
+		spacestationguiconsole = "",
+		racialspacestationconsole = ""
+	}
+	for _, type in ipairs(stationData.stationTypes) do
+		supportedObjects["spacestationguiconsole_"..type] = type
+		supportedObjects["racialspacestationconsole_"..type] = type
+	end
+
+	-- Find closest object and use it.
+	-- There should only be one object in the stations world anyways,
+	-- but it's possible that the player is standing close to two stations.
+	local chosenObject, chosenType, shortestDistance
 	local playerPos = world.entityPosition(player.id())
 
-	local objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "spacestationguiconsole" })
-	for _, ID in ipairs(objectIDs) do
-		local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
-		distance = math.sqrt(distance[1]^2 + distance[2]^2)
-		table.insert(objects, {ID, distance})
-		break
-	end
-
-	for _, type in ipairs(stationData.stationTypes) do
-		objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "spacestationguiconsole_"..type })
-		for _, ID in ipairs(objectIDs) do
-			local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
+	for supportedObjectName, objectType in pairs(supportedObjects) do
+		local _, foundId = next(world.objectQuery(playerPos, 10, { order = "nearest", name = supportedObjectName }))
+		if foundId then
+			local distance = world.distance(playerPos, world.entityPosition(foundId))
 			distance = math.sqrt(distance[1]^2 + distance[2]^2)
-			table.insert(objects, {ID, distance, type})
-			break
+
+			if not shortestDistance or distance < shortestDistance then
+				shortestDistance = distance
+				chosenObject = foundId
+				chosenType = objectType
+			end
 		end
 	end
 
-	objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "racialspacestationconsole" })
-	for _, ID in ipairs(objectIDs) do
-		local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
-		distance = math.sqrt(distance[1]^2 + distance[2]^2)
-		table.insert(objects, {ID, distance})
-		break
-	end
-
-	for _, type in ipairs(stationData.stationTypes) do
-		objectIDs = world.objectQuery(playerPos, 10, { order = "nearest", name = "racialspacestationconsole_"..type })
-		for _, ID in ipairs(objectIDs) do
-			local distance = world.distance(world.entityPosition(player.id()), world.entityPosition(ID))
-			distance = math.sqrt(distance[1]^2 + distance[2]^2)
-			table.insert(objects, {ID, distance, type})
-			break
-		end
-	end
-
-	local closest = objects[1]
-	for _, tbl in ipairs(objects) do
-		if tbl[2] < closest[2] then
-			closest = tbl
-		end
-	end
-
-	if closest and closest[1] then
-		objectID = closest[1]
+	if chosenObject then
+		objectID = chosenObject
 		objectData = world.sendEntityMessage(objectID, 'getStorage')
 		world.sendEntityMessage(objectID, 'setInteractable', false)
 
-		if closest[3] then
-			stationType = closest[3]
-		end
+		stationType = chosenType
 
 		widget.setText("text", "") -- Clear error message
 	else

@@ -16,13 +16,9 @@ function fuParticleBaseParticleBurst(self,particleEmitterList)
 			elseif fuParticleBaseParticleFileCache and lists.particleEmitterBaseList[particleEmitterId] and lists.particleEmitterBaseList[particleEmitterId].particles then
 				for _,p in pairs(lists.particleEmitterBaseList[particleEmitterId].particles) do
 					if ((type(p)=="table") and p.particle) and fuParticleBaseParticleFileCache[p.particle] then
-						local fartbox
-						--path={id=data}
-						for _,data in pairs(fuParticleBaseParticleFileCache[p.particle]) do
+						local _,data = next(fuParticleBaseParticleFileCache[p.particle])
+						if data then
 							fartbox=copy(data)
-							break
-						end
-						if fartbox then
 							fartbox.position=entity.position()
 							world.sendEntityMessage(entity.id(),"fu_specialAnimator.spawnParticle",fartbox)
 						end

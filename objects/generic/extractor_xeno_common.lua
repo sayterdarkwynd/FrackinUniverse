@@ -138,7 +138,8 @@ function findRecipe(input)
 	local result=getValidRecipes(input)
 	local listSize=util.tableSize(result)
 	if listSize==1 then
-		for _,v in pairs(result) do return v end
+		_,v = next(result)
+		return v
 	elseif listSize > 1 then
 		local tempResult=false
 		for _,resEntry in pairs(result) do

@@ -236,15 +236,6 @@ local function GetNameAbbreviation(name, existingAbbreviations, startSub, maxLen
 	return abv
 end
 
--- Gets the first element in a dictionary-style table (where the keys are non-numeric)
--- TODO: Change to getting the first non-nil entry?
-function GetFirstInTable(tbl)
-	-- Basically just run one iteration and immediately return the first value.
-	for _, value in pairs(tbl) do
-		return value
-	end
-end
-
 -------------------------------
 ------ PRIMARY FUNCTIONS ------
 -------------------------------
@@ -428,7 +419,7 @@ local function PopulateCategories()
 					if speciesDisplayData and speciesDisplayData.title and #speciesDisplayData.title >= 1 then
 						-- If this is true, the species' display name is adequately populated.
 						-- This is where we MAY need to edit displayName. First things first -- Do we have an available image?
-						local firstGender = GetFirstInTable(speciesData.genders)
+						local _, firstGender = next(speciesData.genders)
 						firstAvailableGenderImage = firstGender.characterImage or ""
 
 						-- Uh-oh! We don't. We'll have to fall back to using an abbreviation.

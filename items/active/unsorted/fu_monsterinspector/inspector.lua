@@ -19,11 +19,7 @@ function update(dt, fireMode, shiftHeld)
 	local position = activeItem.ownerAimPosition()
 	local monsterList = world.monsterQuery(position,1) or {}
 
-	local target = nil
-	for _,v in pairs(monsterList) do
-		target=v
-		break
-	end
+	local _, target = next(monsterList)
 	local rangecheck = world.magnitude(mcontroller.position(), position) <= self.maxRange and not world.lineTileCollision(vec2.add(mcontroller.position(), activeItem.handPosition(self.baseOffset)), position)
 	local firing=fireMode=="primary" or fireMode=="alt"
 

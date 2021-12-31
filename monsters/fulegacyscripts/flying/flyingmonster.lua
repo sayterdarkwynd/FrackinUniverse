@@ -97,10 +97,9 @@ function update(dt)
   local slows = status.statusProperty("slows", {})
 
   local stunned = false
-  for k, v in pairs(stuns) do
+  if next(stuns) then
     stunned = true
     animator.setAnimationRate(0)
-    break
   end
   if not stunned then
     local animSpeed = 1.0

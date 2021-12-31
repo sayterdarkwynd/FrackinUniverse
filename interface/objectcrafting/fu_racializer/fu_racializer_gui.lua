@@ -291,12 +291,9 @@ function buildRaceTable()
 				tempRaceTable[race].items[race .. objectType] = true
 			end
 		end
-		local hasObjects = false
-		for object, _ in pairs (tempRaceTable[race].items) do
-			hasObjects = true
-			break
-		end
-		if not hasObjects then
+
+		if not next(tempRaceTable[race].items) then
+			-- Race doesn't have any objects.
 			tempRaceTable[race] = nil
 			--sb.logInfo("Removing " .. tostring(race))
 		end
