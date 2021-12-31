@@ -83,7 +83,7 @@ function BeamArm:fireState()
 			self.newFireAngle = self.aimAngle
 		end
 		animator.rotateTransformationGroup(self.armName, self.newFireAngle, self.shoulderOffset)
-		local endPoint, beamCollision, beamLength = self:updateBeam()
+		local endPoint, beamCollision = self:updateBeam()
 
 		if stateTimer <= 0 then
 			stateTimer = self.fireTime

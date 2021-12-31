@@ -152,7 +152,7 @@ function randomEvent()
 	end
 
 	-- are we currently carrying any really weird stuff?
-	local carryWeird=isWeirdStuff(self.timer)
+	isWeirdStuff(self.timer)
 
 	--set duration of curse
 	self.curseDuration = math.min(self.timer,self.madnessCount / 5)--this value will be adjusted based on effect type. Clamping this because it's too much otherwise. --highest duration (285.71) is reached at 1428.57. duration at max madness: 150.

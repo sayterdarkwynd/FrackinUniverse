@@ -57,7 +57,7 @@ function getInputContents()
 	local id = entity.id()
 	local contents = {}
 	for i = 0, self.inputSlot-1 do
-		local stack = world.containerItemAt(entity.id(),i)
+		local stack = world.containerItemAt(id, i)
 		if stack then
 			contents[stack.name] = (contents[stack.name] or 0) + stack.count
 		end
@@ -185,7 +185,6 @@ function doCrafting(result)
 			local itemData={item = k , count = techlevelMap(v)}
 			if not (world.containerAvailable(entity.id(),{item = k}) >= techlevelMap(v) and (not powered or power.consume(config.getParameter('isn_requiredPower'))) and world.containerConsume(entity.id(), itemData)) then
 				for _,v in pairs(storage.inputs) do
-					local i=0
 					for i=0,world.containerSize(entity.id())-1 do
 						if v then
 							v=world.containerPutItemsAt(entity.id(),v,i)

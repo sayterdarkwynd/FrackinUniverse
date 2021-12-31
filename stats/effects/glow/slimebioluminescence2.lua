@@ -18,7 +18,6 @@ function update(dt)
 				return
 			end
 			local i = 1
-			local done = 0
 			while i < 12 do
 					if string.find(sb.printJson(result[i].image), "head") ~= nil then
 						local bodyColor = sb.printJson(result[i].image)

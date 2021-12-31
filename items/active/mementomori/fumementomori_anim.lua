@@ -7,8 +7,6 @@ function get(param)
 end
 
 function update()
-    local color = {255,255,255,255}
-
     local startPosition = vec2.add(activeItemAnimation.ownerPosition(), activeItemAnimation.handPosition(offset))
 
     local worldId = get(mementomori.worldId)
@@ -44,7 +42,7 @@ function update()
     local spookyFactor = get("spookyFactor")
     local spookyColor = get("spookyColor")
 
-    local color, lightcolor, size, fade, fullbright
+    local color, size, fade, fullbright
     if math.random() < spookyFactor then
         -- Spooky particles...some of the time :P
         color = spookyColor

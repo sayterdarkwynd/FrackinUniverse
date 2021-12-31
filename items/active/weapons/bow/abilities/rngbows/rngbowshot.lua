@@ -138,7 +138,6 @@ function NebRNGBowShot:fire()
 	animator.stopAllSounds("ready")
 
 	if not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-		local projectileParameters = copy(self:perfectTiming() and self.powerProjectileParameters or self.projectileParameters or {})
 		if self.drawTimer> (self.modifiedDrawTime + (self.powerProjectileTime or 0)) then
 			if self.elementalType ~= "physical" then
 				self.projectileParameters.damageKind = self.elementalType .. "bow"

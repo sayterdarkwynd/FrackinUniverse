@@ -27,9 +27,8 @@ function init(args)
 	if (storage.spaces == nil) then
 		storage.spaces = {}
 		local pos = entity.position()
-		local offset, backMaterial
 		for _, offset in ipairs(object.spaces()) do
-			backMaterial = world.material(vec2.add(pos, offset), "background")
+			local backMaterial = world.material(vec2.add(pos, offset), "background")
 			table.insert(storage.spaces, {offset, backMaterial})
 		end
 	end

@@ -330,7 +330,6 @@ end
 
 function addConfetti(amount)
 	for _ = 1, amount do
-		local color = "#FFFFFF"
 		local distance =  math.random(vfx.confetti.distance[1], vfx.confetti.distance[2])
 		local pos = {math.floor(math.random(0, distance)), 0}
 		pos[2] = math.sqrt(distance^2 - pos[1]^2)
@@ -398,7 +397,6 @@ function doneOpening()
 		local requirement = 0
 		local subtitle = nil
 		local title = nil
-		local item = nil
 		local flashColor = nil
 		local textColor = nil
 
@@ -753,7 +751,6 @@ function fadeHex(hex, fade, amount, target)
 
 			if target then
 				local tTens = cb[string.byte(string.sub(target, 1, 1))]
-				local tUnits = cb[string.byte(string.sub(target, 2, 2))]
 
 				if tens <= tTens then
 					return target
@@ -788,7 +785,6 @@ function fadeHex(hex, fade, amount, target)
 
 			if target then
 				local tTens = cb[string.byte(string.sub(target, 1, 1))]
-				local tUnits = cb[string.byte(string.sub(target, 2, 2))]
 
 				if tens >= tTens then
 					return target

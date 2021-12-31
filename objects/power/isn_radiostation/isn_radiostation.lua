@@ -13,7 +13,6 @@ function onInteraction(args)
 	animator.burstParticleEmitter("noPower")
 	animator.playSound("error")
   else
-	local itemName = world.entityHandItem(args.sourceId, "primary")
 	local tradingConfig = { config = storage.currentconfig, recipes = { } }
 	for key, value in pairs(config.getParameter(storage.currentkey)) do
 	  local recipe = { input = { { name = "money", count = value } }, output = { name = key } }

@@ -298,7 +298,7 @@ function checkSoil()
 	configBombDrop = { speed = 20}
 	if world.mod(mcontroller.position(), "foreground") then
 	 --setAnimationState("body", "graze")
-		for _,value in pairs(tileMods.mainTiles) do
+		for _,value in pairs(tileModConfig.mainTiles) do
 			if world.mod(mcontroller.position(), "foreground") == value then
 				world.spawnProjectile("grazingprojectilespray",mcontroller.position(), entity.id(), {0, 20}, false, configBombDrop)
 			end

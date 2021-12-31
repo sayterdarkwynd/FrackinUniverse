@@ -173,7 +173,7 @@ function primaryFire(ability)
 		power = damagePerShot(ability),
 	powerMultiplier = activeItem.ownerPowerMultiplier()
 	}
-	local projectileId = fireProjectile(ability,params)
+	fireProjectile(ability,params)
 end
 
 function fireProjectile(ability,params)

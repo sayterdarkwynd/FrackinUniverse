@@ -13,7 +13,6 @@ function init()
 	end
 	if not selection then
 		local pools = config.getParameter("pools")
-		local weighted = type(pools[1][1]) == "table"
 		local tier = math.floor(world.threatLevel())
 		selection = pools[math.max(1, math.min(tier, #pools))]
 		selection = selection[math.random(#selection)]

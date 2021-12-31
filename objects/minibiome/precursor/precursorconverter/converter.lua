@@ -16,7 +16,7 @@ function getInputContents()
 
 	local contents = {}
 	for i=0,1 do
-			local stack = world.containerItemAt(entity.id(),i)
+			local stack = world.containerItemAt(id, i)
 			if stack ~=nil then
 					if contents[stack.name] ~= nil then
 						contents[stack.name] = contents[stack.name] + stack.count

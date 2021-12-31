@@ -139,8 +139,6 @@ end
 function populateItemList(forceRepop)
 	-- Only repopulate the list when conditions change! Cuts down on lag by ten zillion %
 	if forceRepop then
-		local selectFound = false
-
 		widget.clearListItems(self.itemList)
 		widget.setButtonEnabled("btnUpgrade", false)
 

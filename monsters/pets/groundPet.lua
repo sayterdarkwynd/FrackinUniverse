@@ -187,7 +187,6 @@ end
 
 function findAnchor()
 	local anchorName = config.getParameter("anchorName", "humantechstation")
-	local nearObjects
 	if storage.anchorPosition then
 		local nearObjects = world.entityQuery(storage.anchorPosition, 5, {
 			includedTypes = { "object" },
@@ -195,7 +194,6 @@ function findAnchor()
 		})
 
 		for _,objectId in ipairs(nearObjects) do
-			local objectPosition = world.entityPosition(objectId)
 			if world.entityName(objectId) == anchorName and not world.callScriptedEntity(objectId, "hasPet") then
 				setAnchor(objectId)
 				return true
@@ -279,7 +277,6 @@ end
 function drawDebugResources()
 	if not self.debug then return end
 
-	local resources = storage.petResources
 	local position = mcontroller.position()
 
 	local y = 2

@@ -4,7 +4,7 @@ require "/scripts/rect.lua"
 
 -- Helper functions
 function fireShockwave()
-  local impact, impactHeight = impactPosition()
+  local impact = impactPosition()
 
   if impact then
     local charge = math.floor(config.getParameter("maxDistance"))

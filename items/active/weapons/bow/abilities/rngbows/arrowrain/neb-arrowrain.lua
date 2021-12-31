@@ -108,7 +108,7 @@ function NebArrowRain:draw()
 
     local aimVec = self:idealAimVector()
     if self.aimOutOfReach or self.aimTypeSwitchTimer > 0 then
-	  local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
+	  local aimAngle = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
 	  self.weapon.aimAngle = aimAngle
 	  self.weapon:updateAim()
 	  world.debugLine(self:firePosition(), vec2.add(self:firePosition(), vec2.mul(vec2.norm(self:idealAimVector()), 3)), "yellow")

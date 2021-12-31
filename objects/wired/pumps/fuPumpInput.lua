@@ -25,7 +25,6 @@ function locatePump(area)
 function setCurrentOutput()
     if object.isOutputNodeConnected(0) then
         local outputId,isPressure =  locatePump(object.getOutputNodeIds(0))
-        local var -- set to null
 
         if outputId then
             self.outputLocation = world.entityPosition(outputId)

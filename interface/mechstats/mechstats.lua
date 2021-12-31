@@ -12,9 +12,6 @@ previewStates = {
 }
 
 function init()
-  local mechParamsMessage = world.sendEntityMessage(player.id(), "getMechParams")
-  local mechParams = mechParamsMessage:result()
-
   local getUnlockedMessage = world.sendEntityMessage(player.id(), "mechUnlocked")
   if getUnlockedMessage:finished() and getUnlockedMessage:succeeded() then
     local unlocked = getUnlockedMessage:result()

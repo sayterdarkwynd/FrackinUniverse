@@ -1,5 +1,4 @@
 require "/scripts/kheAA/excavatorCommon.lua"
-local deltatime = 0;
 
 function init()
 	excavatorCommon.init()

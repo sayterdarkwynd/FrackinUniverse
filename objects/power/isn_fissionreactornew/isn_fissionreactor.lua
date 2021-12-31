@@ -105,7 +105,6 @@ end
 
 function isn_slotDecayCheck(slot)
 	local item = world.containerItemAt(entity.id(),slot)
-	local myLocation = entity.position()
     if item and self and self.fuels and self.fuels[item.name] and math.random(1, self.fuels[item.name].decayRate) == 1 then
         return true
     end

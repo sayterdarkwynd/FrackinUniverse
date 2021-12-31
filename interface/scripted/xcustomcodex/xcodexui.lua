@@ -349,7 +349,6 @@ local function PopulateCategories()
 	local knownCodexEntries = player.getProperty("xcodex.knownCodexEntries") or {}
 
 	-- I want to order the buttons alphabetically.
-	local buttonInfo = {}
 	local existingAbbreviations = {}
 
 	-- Create a new list element.

@@ -383,7 +383,7 @@ function states.pump(dt)
 		return
 	end
 
-	local tempDelta=excavatorCommon.mainDelta
+	--local tempDelta=excavatorCommon.mainDelta
 	excavatorCommon.mainDelta = 0
 
 	--storage.pumpThrottler=math.max(storage.pumpThrottler-(tempDelta*excavatorCommon.vars.excavatorRate*2),0)

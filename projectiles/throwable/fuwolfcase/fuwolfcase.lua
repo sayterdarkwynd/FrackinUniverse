@@ -1,6 +1,5 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
-local randomnumbermax = 10
 
 function init()
 	self = config.getParameter("spawner")

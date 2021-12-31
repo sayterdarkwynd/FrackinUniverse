@@ -110,7 +110,6 @@ function init()
 			if (self.ownerKey and self.ownerKey == ownerKey) then
 				self.spawnPosition = mcontroller.position()
 				animator.setAnimationState("base", "warpOut")
-				local localStorable = (self.driver ==nil)
 				return {storable = true, healthFactor = storage.health / self.maxHealth}
 			end
 		end

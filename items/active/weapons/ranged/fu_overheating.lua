@@ -157,7 +157,6 @@ function FUOverHeating:auto()
 	-- recoil stats reset every time we shoot so that it is consistent
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))
 	self.recoilForce = (config.getParameter("recoilForce",0))
-	local species = world.entitySpecies(activeItem.ownerEntityId())
 
 	if self.helper then
 		self.helper:runScripts("gunfire-auto", self)
@@ -208,7 +207,6 @@ function FUOverHeating:burst()
 	-- recoil stats reset every time we shoot so that it is consistent
 	self.recoilSpeed = (config.getParameter("recoilSpeed",0))
 	self.recoilForce = (config.getParameter("recoilForce",0))
-	local species = world.entitySpecies(activeItem.ownerEntityId())
 
 	if self.helper then
 			self.helper:runScripts("gunfire-burst", self)

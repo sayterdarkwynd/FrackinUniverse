@@ -35,7 +35,6 @@ function applyStats(multiplier)
 end
 
 function statChange(stat)
-	local baseAmount = world.getProperty("fu_byos." .. stat) or 0
 	world.setProperty("fu_byos." .. stat,0)
 end
 

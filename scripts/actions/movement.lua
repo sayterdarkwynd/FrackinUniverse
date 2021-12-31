@@ -419,7 +419,7 @@ function openDoors(args, board)
 	local direction = args.direction or mcontroller.facingDirection() --Default to opening doors in front
 
 	local position = mcontroller.position()
-	local bounds = rect.translate(mcontroller.boundBox(), mcontroller.position())
+	local bounds = rect.translate(mcontroller.boundBox(), position)
 	local opened = true
 	if direction > 0 then
 		bounds[1] = bounds[3]
@@ -439,7 +439,7 @@ function openDoors(args, board)
 			closedDoors = util.mergeLists(closedDoors, lockedDoors)
 		end
 		for _, doorId in pairs(closedDoors) do
-			local toDoor = world.distance(world.entityPosition(doorId), mcontroller.position())
+			local toDoor = world.distance(world.entityPosition(doorId), position)
 			if toDoor[1] * direction > 0 then
 				world.callScriptedEntity(doorId, "openDoor")
 				opened = true

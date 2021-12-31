@@ -21,7 +21,7 @@ function update(dt)
 	if self.drainTimer <= 0 then
 		if status.resourcePercentage("health") > self.minHealthPcnt then
 			local drain = status.resource("health") * self.healthDrainPcnt
-			local success = status.consumeResource("health", drain)
+			status.consumeResource("health", drain)
 		end
 		self.drainTimer = self.drainInterval
 	else

@@ -176,7 +176,6 @@ function textTyper.splitTableString(str)
 	local copy = str
 	local temp
 	local dotPos = 0
-	local length = string.len(str)
 
 	while dotPos do
 		dotPos = string.find(copy, "%.", 1)

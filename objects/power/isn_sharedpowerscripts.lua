@@ -50,7 +50,6 @@ function isn_countCurrentPowerInputs()
 	--- Same rule as for isn_getCurrentPowerInput()
 	local connectedDevices
 	local psus = 0
-	local totalInput = 0
 	local hasPSU = false
 	local hasPassthrough = false
 

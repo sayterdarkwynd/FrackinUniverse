@@ -124,7 +124,6 @@ function repairState.update(dt, stateData)
   end
 
   local toTarget = world.distance(targetPosition, mcontroller.position())
-  local animation = entity.animationState("movement")
   if world.magnitude(toTarget) < config.getParameter("repairDistance") then
     if setAnimation("repair") then
       entity.heal(stateData.targetId, config.getParameter("repairHealthPerSecond") * dt)

@@ -74,9 +74,6 @@ function build(directory, config, parameters, level, seed)
 	setupAbility(config, parameters, "alt", builderConfig, seed)
 	setupAbility(config, parameters, "primary", builderConfig, seed)
 
-	local primaryAbility=configParameterDeep("primaryAbility")
-	local altAbility=configParameterDeep("altAbility")
-
 	--Elemental type
 	if not parameters.elementalType and builderConfig.elementalType then
 		parameters.elementalType = randomFromList(builderConfig.elementalType, seed, "elementalType")
@@ -239,7 +236,6 @@ function build(directory, config, parameters, level, seed)
 	if builderConfig.gunParts then
 		construct(config, "animationCustom", "animatedParts", "parts")
 		local imageOffset = {0,0}
-		local gunPartOffset = {0,0}
 		for _,part in ipairs(builderConfig.gunParts) do
 			local imageSize = root.imageSize(config.animationParts[part])
 			construct(config.animationCustom.animatedParts.parts, part, "properties")

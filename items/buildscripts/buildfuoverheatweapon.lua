@@ -67,7 +67,6 @@ function build(directory, config, parameters, level, seed)
 	config.damageLevelMultiplier = root.evalFunction("weaponDamageLevelMultiplier", configParameter("level", 1))
 
 	local primaryAbility=configParameterDeep("primaryAbility")
-	local altAbility=configParameterDeep("altAbility")
 
 	-- palette swaps
 	config.paletteSwaps = ""

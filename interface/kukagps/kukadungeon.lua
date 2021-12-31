@@ -11,7 +11,6 @@ function populateMaterialsList()
         widget.clearListItems(MATERIALS)
         local worldId = string.split(player.worldId(),":")
         local planet = {location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}, planet = tonumber(worldId[5]), satellite = (tonumber(worldId[6]) or 0)}
-        local system ={location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}}
         if worldId[1]=="InstanceWorld" then
             local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
             widget.setText(path .. ".text", "This is a Instance World. Instance World do not contain relevant GPS data. Please travel to a planet surface.")
@@ -25,7 +24,6 @@ function populateMaterialsList()
                 if worldId[1]=="CelestialWorld" then
                     dungeons =root.assetJson("/interface/kukagps/dungeons.config")
 
-                    -- print system
                     local path = string.format("%s.%s", MATERIALS, widget.addListItem(MATERIALS))
                     widget.setText(path .. ".text", "^green;Dungeons on Planet:^reset; ")
 

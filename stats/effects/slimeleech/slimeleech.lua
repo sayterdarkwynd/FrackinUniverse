@@ -17,7 +17,6 @@ end
 
 function update(dt)
 	self.tickTimer = self.tickTimer - dt
-	local boltPower = util.clamp(status.resourceMax("health") * self.healthDamageFactor, self.damageClampRange[1], self.damageClampRange[2])
 	if self.tickTimer <= 0 then
 		self.tickTimer = self.tickTime
 		local targetIds = world.entityQuery(mcontroller.position(), self.jumpDistance, {

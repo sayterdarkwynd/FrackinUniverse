@@ -78,7 +78,6 @@ function fleshBombAttack.bomb(direction)
 	local projectileConfig = config.getParameter("fleshBombAttack.projectile.config")
 	local projectileOffset = config.getParameter("fleshBombAttack.projectile.offset")
 	local direction2 = vec2.add(direction, {0, 10})
-	local direction3 = vec2.add(direction, {0, -10})
 
 	if projectileConfig.power then
 		projectileConfig.power = projectileConfig.power * root.evalFunction("monsterLevelPowerMultiplier", monster.level())

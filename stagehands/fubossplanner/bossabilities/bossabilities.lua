@@ -31,7 +31,6 @@ end
 
 -- returns a behavior config with parameters applied from the operation
 function minionTriggerGroupHandler(ability, operation, plan, state, spaceConfig)
-  local behaviorConfig = ability.behaviorConfig
   local triggerId = minionTriggerId(operation, plan)
   local minionType = util.find(operation.postconditions, function(term) return term[1] == "Minion" end)[2][1]
   ability = mapAbilityActions(ability, function(action)

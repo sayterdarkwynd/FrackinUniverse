@@ -40,6 +40,7 @@ end
 function updateCounts()
     local listItem = widget.getListSelected(self.itemList)
 
+    -- FIXME: found by Luacheck: useless code, as result is "local"
     local itemData = widget.getData(string.format("%s.%s", self.itemList, listItem))
 end
 

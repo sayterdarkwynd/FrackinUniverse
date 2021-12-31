@@ -437,7 +437,6 @@ end
 
 function move()
   local groundDistance = minimumSpringDistance(self.bodySpringPositions)
-  local nearGround = groundDistance < self.nearGroundDistance
 
   --assume idle pitch
   self.enginePitch = self.engineIdlePitch;

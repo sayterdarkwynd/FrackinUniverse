@@ -183,7 +183,6 @@ function approachBurn(args, output, _, dt)
 
 	local distance = world.magnitude(entity.position(), targetPosition)
 	local approach = vec2.add(targetPosition, vec2.mul(toTarget, -args.approachRadius))
-	local toApproach = vec2.norm(world.distance(approach, entity.position()))
 	local approachSpeed = flySpeed + vec2.mag(targetVelocity)
 	if distance < args.approachRadius * 2 then
 		local angle = math.atan(args.approachRadius, distance / 2)

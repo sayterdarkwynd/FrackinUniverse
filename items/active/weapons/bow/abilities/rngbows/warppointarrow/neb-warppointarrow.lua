@@ -139,9 +139,8 @@ function NebRNGWarpPoint:fire()
   animator.stopAllSounds("ready")
 
   if not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-    local projectileParameters = copy(self.projectileParameters or {})
-	if self.elementalType ~= "physical" then
-	  self.projectileParameters.damageKind = self.elementalType .. "bow"
+    if self.elementalType ~= "physical" then
+        self.projectileParameters.damageKind = self.elementalType .. "bow"
     end
     for _ = 1, (self.projectileCount or 1) do
 	  self.teleportProjectile = world.spawnProjectile(
@@ -231,6 +230,7 @@ function NebRNGWarpPoint:attemptTeleport()
 end
 
 function NebRNGWarpPoint:currentProjectileParameters()
+  -- FIXME: found by Luacheck: "arrowVariant" is unused, but looks like it should be used somehow.
   local arrowVariant = self.arrowVariant.arrow:match("(%d+)%.png")
   --Set projectile parameters based on draw power level
   local projectileParameters = copy(self.projectileParameters or {})

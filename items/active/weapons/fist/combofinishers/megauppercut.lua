@@ -61,8 +61,7 @@ function Uppercut:fire()
     world.spawnProjectile("uppercutspecial", mcontroller.position(), activeItem.ownerEntityId(), {0, 1}, true, uppercutPower)
 
   util.wait(self.stances.fire.duration, function()
-    local damageArea = partDamageArea("specialswoosh")
-    local uppercutPower = { power = 0.25 }
+    partDamageArea("specialswoosh")
 
     if self.stances.fire.velocity and math.abs(world.gravity(mcontroller.position())) > 0 then
       mcontroller.controlApproachVelocity({self.stances.fire.velocity[1] * self.weapon.aimDirection, self.stances.fire.velocity[2]}, 1000)

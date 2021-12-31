@@ -346,7 +346,7 @@ function rangedAttack.enter()
 end
 
 function rangedAttack.enteringState(stateData)
-  local fireOffset = closestCraterOffset(stateData.targetPosition)
+  -- local fireOffset = closestCraterOffset(stateData.targetPosition)
   -- entity.setFireDirection(fireOffset, vec2.norm(fireOffset))
   -- entity.startFiring("meteor")
 end
@@ -391,7 +391,7 @@ end
 function meleeAttack.update(dt, stateData)
   local targetIds = findTargets(meleeAttack.tentacleSearchRadius)
   for _, targetId in pairs(targetIds) do
-    local offset, index = closestCraterOffset(world.entityPosition(targetId))
+    local _, index = closestCraterOffset(world.entityPosition(targetId))
     local animationStateName = "tentacle" .. index
     if entity.animationState(animationStateName) == "hidden" then
       entity.setAnimationState(animationStateName, "extend")

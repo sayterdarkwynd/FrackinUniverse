@@ -42,7 +42,6 @@ function TheaLightningFire:fire()
   animator.playSound("fireStart")
   animator.playSound("fireLoop", -1)
 
-  local wasColliding = false
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", (self.energyUsage or 0) * self.dt) do
 	--Play the weapon's active animation
 	animator.setAnimationState("weapon", "active")

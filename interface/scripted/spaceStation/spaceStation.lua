@@ -901,7 +901,6 @@ function populateShopList()
 			local config = root.itemConfig(item)
 			if config then
 				local listItem = "shopScrollList.itemList."..widget.addListItem("shopScrollList.itemList")
-				local isWeapon = false
 				local basePrice = math.max(config.config.price or 1, 1)
 				local maxStack = config.config.maxStack or defaultMaxStack
 
@@ -1089,7 +1088,6 @@ function shopIncrement()
 		local currentValue = string.gsub(widget.getText("shopBuyAmount"),"x","")
 		currentValue = tonumber(currentValue)
 		local value = currentValue
-		local price = 0
 
 		if value then
 			local affordable = math.min(math.floor(player.currency("money") / stationData.selected.price), stationData.selected.maxStack)

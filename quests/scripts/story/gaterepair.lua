@@ -241,7 +241,6 @@ function findEsther(dt)
 	quest.setObjectiveList({{self.descriptions.findEsther, false}})
 
 	local trackEsther = util.uniqueEntityTracker(self.estherUid, self.compassUpdate)
-	local trackGate = util.uniqueEntityTracker(self.gateUid, self.compassUpdate)
 	while true do
 		if not storage.complete then
 			local estherResult = trackEsther()

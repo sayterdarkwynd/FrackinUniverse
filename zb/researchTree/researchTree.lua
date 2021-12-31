@@ -856,8 +856,8 @@ function stringToAcronyms(dataString)
 	local splitString = {}
 	local _, count = string.gsub(dataString, ",", "")
 	for _ = 1, count do
-		splitpos = string.find(dataString, ",")
-		insertingString = string.sub(dataString, 1, splitpos)
+		local splitpos = string.find(dataString, ",")
+		local insertingString = string.sub(dataString, 1, splitpos)
 		dataString = string.gsub(dataString, insertingString, "")
 
 		insertingString = string.gsub(insertingString, ",", "")
@@ -879,8 +879,6 @@ function buildStates(tree)
 
 	local researchedTable = status.statusProperty("zb_researchtree_researched", {}) or {}
 	local dataString = researchedTable[selectedTree] or ""
-	local insertingString = ""
-	local splitpos = 0
 
 	local versionEndPos = string.find(dataString, data.versionSplitString)
 	if versionEndPos then

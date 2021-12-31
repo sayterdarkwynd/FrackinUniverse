@@ -132,8 +132,9 @@ function NebBowShotElder:fire()
 	animator.stopAllSounds("ready")
 
 	if not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
+		local projectileId
 		for _ = 1, (self.projectileCount or 1) do
-			local projectileId = world.spawnProjectile(
+			projectileId = world.spawnProjectile(
 				self:perfectTiming() and self.powerProjectileType or self.projectileType,
 				self:firePosition(),
 				activeItem.ownerEntityId(),

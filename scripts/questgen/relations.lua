@@ -1029,7 +1029,6 @@ QuestRelations.findLocation = defineQueryRelation("findLocation", true) {
 	[case(1, QuestPredicands.Location, TagSet, NonNil, NonNil)] = function (self, location, tags, minDistance, maxDistance)
 			local locationPos = rect.center(location.region)
 			local distance = world.magnitude(locationPos, entity.position())
-			local farEnoughAway = distance >= minDistance
 			local inRange = maxDistance < 0 or distance <= maxDistance
 			local tagsMatch = set.containsAll(set.new(location.tags), tags.tags)
 			if xor(self.negated, tagsMatch and inRange) then

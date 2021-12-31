@@ -74,7 +74,6 @@ function NebRNGAimBot:draw()
   animator.playSound("draw", -1)
   local readySoundPlayed = false
 
-  local i = 1
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") do
     if self.walkWhileFiring then
 	  mcontroller.controlModifiers({runningSuppressed = true})
@@ -97,7 +96,7 @@ function NebRNGAimBot:draw()
 	local aimVec = self:idealAimVector()
 	local firePosition = self:firePosition()
     if self.aimOutOfReach or self.aimTypeSwitchTimer > 0 then
-	  local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
+	  local aimAngle = activeItem.aimAngleAndDirection(self.weapon.aimOffset, activeItem.ownerAimPosition())
 	  self.weapon.aimAngle = aimAngle
 
 	  world.debugLine(firePosition, vec2.add(firePosition, vec2.mul(vec2.norm(self:idealAimVector()), 3)), "yellow")
@@ -188,7 +187,6 @@ function NebRNGAimBot:fire()
   animator.stopAllSounds("ready")
 
   if not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-    local projectileParameters = copy(self:perfectTiming() and self.powerProjectileParameters or self.projectileParameters or {})
     if self.drawTimer > (self.drawTime + (self.powerProjectileTime or 0)) then
 	  if self.elementalType ~= "physical" then
 	    self.projectileParameters.damageKind = self.elementalType .. "bow"

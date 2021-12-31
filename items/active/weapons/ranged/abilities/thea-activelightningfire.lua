@@ -46,7 +46,6 @@ function TheaActiveLightningFire:fire()
   animator.playSound("fireLoopIdle", -1)
   self.idleSoundPlaying = true
 
-  local wasColliding = false
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", (self.energyUsage or 0) * self.dt) do
 
     local beamStart = self:firePosition()

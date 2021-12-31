@@ -834,7 +834,6 @@ spawnOphanimsAttack = async(function()
 	local upAngle = math.pi/2
 	local angleRange = ((math.pi - 0.2) / maxSpawn) * (spawnCount - 1)
 	local startAngle = upAngle - (angleRange / 2)
-	local endAngle = upAngle + (angleRange / 2)
 	await(moveRightHand({0, 2.0}, startAngle, 6.0, 0.5))
 
 	animator.setAnimationState("righthand", "firewindup")

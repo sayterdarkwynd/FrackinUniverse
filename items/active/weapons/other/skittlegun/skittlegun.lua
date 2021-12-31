@@ -41,8 +41,6 @@ function init()
 end
 
 function setToolTipValues(ability)
-	local projectileCount=totalProjectileTypes
-
 	activeItem.setInstanceValue("tooltipFields", {
 		damagePerShotLabel = damagePerShot(ability,1),
 		speedLabel = 1 / ability.fireTime,
@@ -291,7 +289,7 @@ function fire(ability,fireMode,throttle)
 			end
 
 			projectileType=string.gsub(projectileType,"<element>",element)
-			local projectileId = world.spawnProjectile(
+			world.spawnProjectile(
 				projectileType,
 				firePosition(),
 				activeItem.ownerEntityId(),

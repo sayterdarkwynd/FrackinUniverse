@@ -34,7 +34,6 @@ function update(dt)
       local orientation = 1
       local facingDirection = mcontroller.position()[1] < targetPosition[1] and 1 or -1
       local junction = mcontroller.position()
-      local close = false
       local axis
       for axii=1,math.max(1,distance/self.radius),2 do
 
@@ -83,8 +82,6 @@ function update(dt)
     path[1] = mcontroller.position()
 
     local targetPosition = world.entityPosition(target)
-
-    local step  = self.step
 
     local xDist = targetPosition[1] - path[1][1]
 

@@ -48,7 +48,7 @@ function update(dt)
 --	    item.count = config.getParameter('wellslots')[1].max
 --	  end
 	if (rentTimer > rentGoal) then
-		local item = world.containerItemAt(entity.id(),0) or {name=config.getParameter('wellslots')[1].name,count=0}
+--		local item = world.containerItemAt(entity.id(),0) or {name=config.getParameter('wellslots')[1].name,count=0}
 --		local amount = math.min(math.floor(storage.waterCount/config.getParameter('wellslots')[1].ratio),config.getParameter('wellslots')[1].max - item.count)
 		world.containerPutItemsAt(entity.id(),{name=config.getParameter('wellslots')[1].name,count=(10 * (wellsDrawing) * (bonusHappiness/10))},0)
 	 -- storage.waterCount = math.min((storage.waterCount or 0) + dt,100)

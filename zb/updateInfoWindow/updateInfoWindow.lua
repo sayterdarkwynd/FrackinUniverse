@@ -111,7 +111,7 @@ end
 function checkString(str, req)
 	local rtn = ""
 	local passed, err = pcall(function()
-		local a, b = string.find(str, "#file#")
+		local a = string.find(str, "#file#")
 		if a == 1 then
 			local text = root.assetJson(string.gsub(str, "#file#", ""))
 			rtn = text[req]

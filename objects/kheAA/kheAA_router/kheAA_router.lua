@@ -129,7 +129,6 @@ function routeItems(dt)
 					if pass and (not storage.roundRobin or item.count>=(mod*outputSizeG)) then
 						local outputSlotCountG = util.tableSize(storage.outputSlots)
 						local originalCount=item.count
-						local canRobinRoundSlots
 						if storage.roundRobin then
 							local buffer
 							buffer=math.floor(item.count/outputSizeG)

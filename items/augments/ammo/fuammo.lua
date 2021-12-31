@@ -33,7 +33,6 @@ function apply(input)
 			local ammoIcon   = config.getParameter("ammoIcon")
 			local projectile = config.getParameter("ammoProjectile")
 			local pcount	 = config.getParameter("ammoProjectileCount")
-			local pdamage	 = config.getParameter("ammoDamage")
 			local inputAmmoRate	 = config.getParameter("ammoFireRate")
 
 			--sb.logInfo(inputAmmoRate)
@@ -65,7 +64,6 @@ function apply(input)
 	local outputMax = output:instanceValue("ammoMax")
 	local outputType = output:instanceValue("ammoType")
 	local outputMagazine = output:instanceValue("magazineType") or false
-	local outputFireRate = output:instanceValue("ammoType")
 
 	local inputAmmo = config.getParameter("ammoCount") or false
 	local inputType = config.getParameter("ammoType")
@@ -73,8 +71,6 @@ function apply(input)
 	local inputCasing = config.getParameter("ammoCasing") or false
 
 	local extraStorage = output:instanceValue("extraAmmoList") or {}
-
-	local inputFireRate = config.getParameter("ammmoFireRate")
 
 
 	if outputMagazine and inputMagazine then --if it uses mags, you can't load it with separate bullets. Placing this before the maxammo check since mag can change that
@@ -85,6 +81,8 @@ function apply(input)
 		output:setInstanceValue("magazineType",inputMagazine)
 		output:setInstanceValue("ammoType",inputType)
 		output:setInstanceValue("ammoMax",config.getParameter("ammoMax") or outputMax)
+
+		-- FIXME: found by Luacheck: both "inputAmmoRate" and "outputAmmoRate" are always nil here:
 		output:setInstanceValue("ammoFireRate",inputAmmoRate or config.getParameter("ammoFireRate") or outputAmmoRate)
 
 		output:setInstanceValue("ammoAmount",inputAmmo or config.getParameter("ammoMax") or outputMax) --probably won't work right

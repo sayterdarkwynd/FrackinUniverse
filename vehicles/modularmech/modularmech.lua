@@ -1059,8 +1059,6 @@ function update(dt)
 		end
 
 		for _, arm in pairs({"left", "right"}) do
-			local fireControl = (arm == "left") and "PrimaryFire" or "AltFire"
-
 			animator.resetTransformationGroup(arm .. "Arm")
 			animator.resetTransformationGroup(arm .. "ArmFlipper")
 
@@ -1414,7 +1412,6 @@ end
 
 function armRotation(armSide)
 	local absoluteOffset = animator.partPoint(armSide .. "BoosterFront", "shoulder")
-	local relativeOffset = vec2.mul(absoluteOffset, {self.facingDirection, 1})
 	local shoulderPosition = vec2.add(mcontroller.position(), absoluteOffset)
 	local aimVec = world.distance(self.aimPosition, shoulderPosition)
 	local rotation = vec2.angle(aimVec)
