@@ -25,6 +25,7 @@ function init()
 	self.timer = 10.0 -- was zero, instant event on plopping in. giving players a short grace period. some of us teleport around a LOT.
 	local buffer=status.activeUniqueStatusEffectSummary()
 	for _,v in pairs(buffer) do
+		-- FIXME: detected by Luacheck: something is wrong here (loop checks the same thing N times).
 		if buffer[1]=="mad" then
 			status.removeEphemeralEffect("mad")
 			status.addEphemeralEffect("mad",self.timer)
@@ -67,7 +68,7 @@ function init()
 	--storage.armorSetData=storage.armorSetData or {}--moved into a separate setup
 	fuPersistentEffectRecorder.init()
 
-	for element,data in pairs(elementalTypes) do
+	for _,data in pairs(elementalTypes) do
 		if data.resistanceStat then
 			buffer[data.resistanceStat]=true
 		end

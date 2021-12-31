@@ -103,12 +103,12 @@ end
 function checkProjectiles()
     if storage.projectileIds then
         local newProjectileIds = {}
-        for i, projectileId in ipairs(storage.projectileIds) do
+        for _, projectileId in ipairs(storage.projectileIds) do
             if world.entityExists(projectileId) then
                 local updatedProjectileIds = world.callScriptedEntity(projectileId, "projectileIds")
 
                 if updatedProjectileIds then
-                    for j, updatedProjectileId in ipairs(updatedProjectileIds) do
+                    for _, updatedProjectileId in ipairs(updatedProjectileIds) do
                         table.insert(newProjectileIds, updatedProjectileId)
                     end
                 end

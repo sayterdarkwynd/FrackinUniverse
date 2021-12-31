@@ -161,7 +161,7 @@ function transferUtil.updateInputs()
 	end
 	transferUtil.vars.input=object.getInputNodeIds(transferUtil.vars.inDataNode);
 	local buffer={}
-	for inputSource,nodeValue in pairs(transferUtil.vars.input) do
+	for inputSource in pairs(transferUtil.vars.input) do
 		local temp=world.callScriptedEntity(inputSource,"transferUtil.sendContainerInputs")
 		if temp ~= nil then
 			for entId,position in pairs(temp) do
@@ -184,7 +184,7 @@ function transferUtil.updateOutputs()
 	end
 	transferUtil.vars.output=object.getOutputNodeIds(transferUtil.vars.outDataNode);
 	local buffer={}
-	for outputSource,nodeValue in pairs(transferUtil.vars.output) do
+	for outputSource in pairs(transferUtil.vars.output) do
 		local temp=world.callScriptedEntity(outputSource,"transferUtil.sendContainerOutputs")
 		if temp then
 			for entId,position in pairs(temp) do

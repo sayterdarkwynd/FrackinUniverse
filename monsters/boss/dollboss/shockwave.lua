@@ -21,7 +21,7 @@ function fireShockwave()
           type = config.getParameter("projectileType")
         }
       }
-      for i,position in pairs(positions) do
+      for _,position in pairs(positions) do
         local xDistance = world.distance(position, impact)[1]
         local dir = util.toDirection(xDistance)
         params.timeToLive = (math.floor(math.abs(xDistance))) * 0.025

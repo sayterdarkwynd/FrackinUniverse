@@ -7,7 +7,7 @@ function init()
 	self.resources={}
 	self.lockedResources={}
 	local configuredResources=status.resourceNames() --root.assetJson("/player.config:statusControllerSettings.resources")
-	for k,v in pairs(configuredResources) do
+	for _,v in pairs(configuredResources) do
 		self.resources[v]=status.resource(v)
 		if status.resourceLocked(v) then self.lockedResources[v]=true end
 	end

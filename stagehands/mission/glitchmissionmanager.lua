@@ -226,7 +226,7 @@ function missionSequence()
 			{ entityType = "cultistsciencepet", count = 2 }
 		}) end
 	}
-	for i = 1, 5 do
+	for _ = 1, 5 do
 		shuffle(spawnFunctions)
 		for _,spawn in pairs(spawnFunctions) do
 			util.appendLists(wave,spawn())
@@ -303,6 +303,7 @@ function bossWave()
 	startMusic("bossMusic")
 
 	for _,enemyId in pairs(wave) do
+		-- FIXME: detected by Luacheck: something is wrong here (loop uses wave[1] several times).
 		world.sendEntityMessage(wave[1], "notify", { type = "bossAggro", sourceId = entity.id() })
 	end
 
@@ -394,7 +395,7 @@ function spawnWave(spawnPoint, wave)
 	if not spawnStagehand then error(string.format("No entity with unique ID: %s", spawnPoint)) end
 	local enemies = {}
 	for _,spawn in pairs(wave) do
-		for i = 1, (spawn.count or 1) do
+		for _ = 1, (spawn.count or 1) do
 			local position = world.entityPosition(spawnStagehand)
 
 			if contains({"cultistknight", "cultistarcher", "helicultist", "fuhelicultist","cultistbasic","cultistassault","cultistrocket","cultistscientistpet","cultistsniper","fusorceror"}, spawn.entityType) then

@@ -27,7 +27,7 @@ function getInputContents()
 
 function map(l,f)
     local res = {}
-    for k,v in ipairs(l) do
+    for _,v in ipairs(l) do
         local val = f(v)
         if val ~= nil then
           table.insert(res, val)

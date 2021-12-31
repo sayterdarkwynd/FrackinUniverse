@@ -80,7 +80,7 @@ end
 function CleanUpCodexEntries()
 	local newKnownEntries = {}
 	local existingKnownEntries = player.getProperty("xcodex.knownCodexEntries") or {}
-	for index, cdx in ipairs(existingKnownEntries) do
+	for _, cdx in ipairs(existingKnownEntries) do
 		local data = root.itemConfig(cdx[1] or "ERR_NULL_ITEM_NAME")
 		if data ~= nil and data.directory ~= nil then
 			table.insert(newKnownEntries, cdx)

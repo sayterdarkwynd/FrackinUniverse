@@ -110,7 +110,7 @@ end
 
 function TheaLightningFire:setLightning(amount, width, forks, branching, color, length, collision)
   local lightning = {}
-  for i = 1, amount do
+  for _ = 1, amount do
     local bolt = {
       minDisplacement = 0.125,
       forks = forks,

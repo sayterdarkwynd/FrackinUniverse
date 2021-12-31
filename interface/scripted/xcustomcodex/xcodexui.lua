@@ -224,7 +224,7 @@ local function GetNameAbbreviation(name, existingAbbreviations, startSub, maxLen
 	-- If we have made it here, we have gotten an appropriate abbreviation for the name (e.g. "A" for "Apex")
 	-- Now we need to look at our other outputs from this function in the race button population cycle.
 	-- What if we also have an Avian codex? That starts with "A" too, and would result in the same abbreviation!
-	for index, abbreviation in ipairs(existingAbbreviations) do
+	for _, abbreviation in ipairs(existingAbbreviations) do
 		if abv == abbreviation then
 			-- So if we meet this condition, we see that "Oh, our result right now is something this function has already given!"
 			-- So we tell it to give the result of calling this function again, with one more added to startSub.

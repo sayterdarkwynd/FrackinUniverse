@@ -12,7 +12,7 @@ function animate()
 end
 
 function locatePump(area)
-    for outputObject,v in pairs(area) do
+    for outputObject in pairs(area) do
         local isStandard = world.getObjectParameter(outputObject,"pumpOutputStandard")
 		local isPressure = world.getObjectParameter(outputObject,"pumpOutputPressure")
         if isStandard or isPressure then

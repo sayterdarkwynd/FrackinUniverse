@@ -76,7 +76,7 @@ function getIcon(item, conf, listItem)
 			icon = absolutePath(conf.directory, icon)
 			widget.setImage("scrollArea.itemList." .. listItem .. ".itemIcon", icon)
 		elseif type(icon) == "table" then
-			for i,v in pairs(icon) do
+			for _,v in pairs(icon) do
 				local item = widget.addListItem("scrollArea.itemList" .. "." .. listItem .. ".compositeIcon")
 				widget.setImage("scrollArea.itemList." .. listItem .. ".compositeIcon." .. item ..".icon", absolutePath(conf.directory, v.image))
 			end

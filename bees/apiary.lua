@@ -630,7 +630,7 @@ function queenProduction()
 		local produced = math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement)
 		youngQueenProgress = youngQueenProgress % beeData.youngQueenProductionRequirement
 
-		for i = 1, produced do--for _ = 1, math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement) do--produced do
+		for _ = 1, produced do--for _ = 1, math.floor(youngQueenProgress / beeData.youngQueenProductionRequirement) do--produced do
 			local youngQueen = generateYoungQueen() -- Generate queen stats
 			for j = firstInventorySlot, slotCount do
 				youngQueen = world.containerPutItemsAt(entity.id(), youngQueen, j-1)

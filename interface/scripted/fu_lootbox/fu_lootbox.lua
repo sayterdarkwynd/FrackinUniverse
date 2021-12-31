@@ -329,7 +329,7 @@ function draw()
 end
 
 function addConfetti(amount)
-	for i = 1, amount do
+	for _ = 1, amount do
 		local color = "#FFFFFF"
 		local distance =  math.random(vfx.confetti.distance[1], vfx.confetti.distance[2])
 		local pos = {math.floor(math.random(0, distance)), 0}
@@ -692,7 +692,7 @@ function animate()
 		vfx.subtitle.alpha = fadeHex(vfx.subtitle.alpha, "in", vfx.subtitle.alphaFade)
 	else
 
-		for i, tbl in ipairs(vfx.boxes.instances) do
+		for _, tbl in ipairs(vfx.boxes.instances) do
 			if distanceToPoint(tbl.pos, tbl.targetPos) > 0.5 then
 				isAnimating = true
 
@@ -830,7 +830,7 @@ end
 function rollDice(dice, sides, mod)
 	local sum = mod or 0
 
-	for i = 1, dice do
+	for _ = 1, dice do
 		sum = sum + math.random(1, sides)
 	end
 

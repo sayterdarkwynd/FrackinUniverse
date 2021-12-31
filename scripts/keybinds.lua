@@ -77,7 +77,7 @@ function keybinds.update(args)
     sb.setLogMap("player_rel", string.format("%s %s", keybinds.input.aimrelative[1], keybinds.input.aimrelative[2]))
   end
 
-  for id,bind in pairs(keybinds.binds) do
+  for _,bind in pairs(keybinds.binds) do
     local isMatch, matches, noMatches = bind:matches(keybinds.input)
 
     -- Run function if the current input matches the arguments of the bind.

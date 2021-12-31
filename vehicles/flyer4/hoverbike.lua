@@ -372,13 +372,13 @@ function switchHeadLights(oldIndex, newIndex, activate)
     if (listOfLists ~= nil) then
       if (oldIndex ~= newIndex) then
         local listToSwitchOff = listOfLists[oldIndex]
-        for i, name in ipairs(listToSwitchOff) do
+        for _, name in ipairs(listToSwitchOff) do
           animator.setLightActive(name, false)
         end
       end
 
-        local listToSwitchOn = listOfLists[newIndex]
-        for i, name in ipairs(listToSwitchOn) do
+      local listToSwitchOn = listOfLists[newIndex]
+      for _, name in ipairs(listToSwitchOn) do
         animator.setLightActive(name, activate)
       end
     end

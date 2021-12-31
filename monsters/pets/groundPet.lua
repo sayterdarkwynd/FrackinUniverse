@@ -258,7 +258,7 @@ end
 
 function petResources()
 	local resources = {}
-	for resourceName, resourceValue in pairs(storage.petResources) do
+	for resourceName in pairs(storage.petResources) do
 		resources[resourceName] = status.resource(resourceName)
 	end
 	return resources
@@ -283,7 +283,7 @@ function drawDebugResources()
 	local position = mcontroller.position()
 
 	local y = 2
-	for resourceName, resourceValue in pairs(storage.petResources) do
+	for resourceName in pairs(storage.petResources) do
 		--Border
 		world.debugLine(vec2.add(position, {-2, y+0.125}), vec2.add(position, {-2, y + 0.75}), "black")
 		world.debugLine(vec2.add(position, {-2, y + 0.75}), vec2.add(position, {2, y + 0.75}), "black")

@@ -129,7 +129,7 @@ function firstTimeInit()
 			end
 		end
 
-		for i = 1, tradesAvailable do
+		for _ = 1, tradesAvailable do
 			local tradeTbl = {}
 
 			local rnd = math.random()
@@ -141,6 +141,7 @@ function firstTimeInit()
 			end
 
 			for _, tbl in pairs(available) do
+				-- FIXME: detected by Luacheck: something is wrong here (loop checks the same thing 3 times).
 				if #available[rarity] < 1 then
 					if rarity == "rare" then
 						rarity = "uncommon"
@@ -236,7 +237,7 @@ function firstTimeInit()
 	end
 
 	-- Fill the stations trading goods stocks
-	for goods, tbl in pairs(stationData.goods) do
+	for _, tbl in pairs(stationData.goods) do
 		local stock = tbl.baseAmount
 
 		local stockStatus = 0 -- -1 = lacking, 0 = normal, 1 = abundance
@@ -1070,7 +1071,7 @@ function shopBuy()
 					local slot = widget.getListSelected("shopScrollList.itemList")
 					local item = widget.itemSlotItem("shopScrollList.itemList."..slot..".item")
 
-					for i = 1, amount do
+					for _ = 1, amount do
 						player.giveItem(item)
 					end
 				else
@@ -1446,7 +1447,7 @@ function simulateGoodTrades()
 		local trades = math.min(1000,math.abs(math.floor(timePassed / stationData.passiveTradeInterval)))
 		--sb.logInfo("spaceStation.lua:simulateGoodTrades()::timePassed:%s,trades:%s",timePassed,trades)
 		if trades > 0 then
-			for t = 1, trades do
+			for _ = 1, trades do
 				for goods, amount in pairs(objectData.goodsStock) do
 					-- Get index, and goods state
 					for i, tbl in ipairs(stationData.goods) do

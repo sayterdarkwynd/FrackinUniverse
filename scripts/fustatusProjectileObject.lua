@@ -30,7 +30,7 @@ function use(args)
 
     local level = world.threatLevel()
     local projectileOptions = {}
-    for i, option in ipairs(config.getParameter("projectileOptions"), {}) do
+    for _, option in ipairs(config.getParameter("projectileOptions"), {}) do
       if option.levelRange == nil or (level >= option.levelRange[1] and level <= option.levelRange[2]) then
         projectileOptions[#projectileOptions + 1] = option
       end

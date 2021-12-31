@@ -194,7 +194,7 @@ function NebArrowRain:fire()
 	end
 
 	--Spawn the projectile using the calculated parameters
-    for i = 1, (self.projectileCount or 1) do
+    for _ = 1, (self.projectileCount or 1) do
       local projectileId = world.spawnProjectile(
         self.altProjectileType,
         self:firePosition(),
@@ -355,7 +355,7 @@ end
 
 function NebArrowRain:unpack(tab)
     local unpacked = {}
-    for k, v in ipairs(tab) do
+    for _, v in ipairs(tab) do
         if type(v) == "table" then
             local t = self:unpack(v)
             for _, vv in ipairs(t) do

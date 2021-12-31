@@ -60,7 +60,7 @@ end
 function TentacleGun:fire()
   status.overConsumeResource("energy", self.energyUsage * self.fireTime)
 
-  for i = 1, math.min(self.projectileCount, self.maxProjectiles - #self.chains) do
+  for _ = 1, math.min(self.projectileCount, self.maxProjectiles - #self.chains) do
     local projectileParameters = {
         damageTeam = world.entityDamageTeam(activeItem.ownerEntityId()),
         power = self:damagePerShot(),

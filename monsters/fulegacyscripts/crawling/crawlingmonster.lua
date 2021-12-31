@@ -99,7 +99,7 @@ function init()
     monster.setActiveSkillName(nil)
     if isSkillState(stateName) then
       setAggressive(true, false)
-      for k,v in pairs(self.skillCooldownTimers) do
+      for k in pairs(self.skillCooldownTimers) do
         if k == stateName then
           self.skillCooldownTimers[k] = self.skillParameters[k].cooldownTime
         else
@@ -137,7 +137,7 @@ function update(dt)
   self.state.autoPickState = not hasTarget()
 
   --execute skill onUpdate hooks
-  for skillName, params in pairs(self.skillParameters) do
+  for skillName in pairs(self.skillParameters) do
     if type(_ENV[skillName].onUpdate) == "function" then
       _ENV[skillName].onUpdate(dt)
     end
@@ -153,7 +153,7 @@ function update(dt)
   end
   if not stunned then
     local animSpeed = 1.0
-    for k, v in pairs(slows) do
+    for _, v in pairs(slows) do
       animSpeed = animSpeed * v
     end
     animator.setAnimationRate(animSpeed)
@@ -258,7 +258,7 @@ function damage(args)
   end
 
   --execute skill onDamage hooks
-  for skillName, params in pairs(self.skillParameters) do
+  for skillName in pairs(self.skillParameters) do
     if type(_ENV[skillName].onDamage) == "function" then
       _ENV[skillName].onDamage(args)
     end

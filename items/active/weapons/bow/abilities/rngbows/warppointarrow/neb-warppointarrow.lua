@@ -143,7 +143,7 @@ function NebRNGWarpPoint:fire()
 	if self.elementalType ~= "physical" then
 	  self.projectileParameters.damageKind = self.elementalType .. "bow"
     end
-    for i = 1, (self.projectileCount or 1) do
+    for _ = 1, (self.projectileCount or 1) do
 	  self.teleportProjectile = world.spawnProjectile(
         self.projectileType,
         self:firePosition(),

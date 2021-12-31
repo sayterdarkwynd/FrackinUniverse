@@ -525,7 +525,7 @@ function doLiquidInteraction(list, recipes, itemIn, itemOut, objectName)
 		end
 
 		if output then
-			for index, inputs in pairs(result) do
+			for _, inputs in pairs(result) do
 				addTextItem("<=", inputs,list)
 			end
 		end
@@ -539,7 +539,7 @@ function concatLiquid(list, resultquantity, sep)
 	local out = ""
 	local sep2 = ""
 
-	for item, counts in pairs(list) do
+	for item in pairs(list) do
 			if materials[item] then
 				if resultquantity then
 					local colour =  string.format("^#FF%02X00;", math.floor(resultquantity*80+70))
@@ -615,7 +615,7 @@ end
 
 function getTableSize(t)
     local count = 0
-    for _, __ in pairs(t) do
+    for _ in pairs(t) do
         count = count + 1
     end
     return count

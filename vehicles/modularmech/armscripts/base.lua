@@ -133,7 +133,7 @@ function MechArm:fire()
       firePos = vec2.add(firePos, vec2.mul(pSpacing, (pCount - 1) * -0.5))
     end
 
-    for i = 1, pCount do
+    for _ = 1, pCount do
       local thisFirePos = firePos
       if self.projectileRandomOffset then
         thisFirePos = vec2.add(thisFirePos, {(math.random() - 0.5) * self.projectileRandomOffset[1], (math.random() - 0.5) * self.projectileRandomOffset[2]})

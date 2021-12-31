@@ -188,13 +188,13 @@ function updateCurrentUpgrades()
 
     local mm = player.essentialItem("beamaxe") or {}
     local currentUpgrades = mm.parameters.upgrades or {}
-    for i, v in ipairs(currentUpgrades) do
+    for _, v in ipairs(currentUpgrades) do
         self.currentUpgrades[v] = true
     end
 end
 
 function hasPrereqs(prereqs)
-    for i, v in ipairs(prereqs) do
+    for _, v in ipairs(prereqs) do
         if not self.currentUpgrades[v] then
           return false
         end

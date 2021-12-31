@@ -340,7 +340,7 @@ function states.mine(dt)
 			local weeds=world.objectQuery({absdrillPos[1]-1,absdrillPos[2]-1},{absdrillPos[1]+1,absdrillPos[2]+1})
 			if weeds then
 				local cut=false
-				for k,v in pairs(weeds) do
+				for _,v in pairs(weeds) do
 					if world.entityExists(v) then
 						cut=true
 						break

@@ -268,7 +268,7 @@ function fire(ability,fireMode,throttle)
 			sayterG=4.0
 		end
 	else
-		for i = 1, projectileCount do
+		for _ = 1, projectileCount do
 			local buffer, buffer2
 			local aimVec=aimVector(ability)
 

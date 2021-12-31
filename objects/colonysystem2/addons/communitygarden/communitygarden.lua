@@ -294,9 +294,9 @@ function growPlant(growthmod, dt)
 
 	-- If the new stage is a harvesting stage, harvest and handle perennial
 	if stage().harvestPool then
-		local tblmerge = function(tb1, tb2) for k,v in pairs(tb2) do table.insert(tb1, v) end end
+		local tblmerge = function(tb1, tb2) for _,v in pairs(tb2) do table.insert(tb1, v) end end
 		local output = {}
-		for i=1,getFertSum("yield") do
+		for _=1,getFertSum("yield") do
 			tblmerge(output, root.createTreasure(stage().harvestPool, 1))
 		end
 
@@ -391,7 +391,7 @@ Third, Starbound gracefully handles if a seed changes data, mods (resetToStage c
 --Also handles some of perennial growth mechanics.
 function genGrowthData()
 	storage.growthCap = 0
-	for index,stage in ipairs(storage.stage) do
+	for _,stage in ipairs(storage.stage) do
 		storage.growthCap = storage.growthCap + (stage.duration and stage.duration[1] or 0)
 		stage.val = storage.growthCap
 	end

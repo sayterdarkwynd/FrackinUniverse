@@ -375,7 +375,7 @@ activeState = async(function(attackConfig)
 			rocketSwarmAttack(attackConfig.rocketSwarm),
 			deathLaserAttack(attackConfig.deathLaser),
 			coroutine.create(function()
-				for i = 1, 4 do
+				for _ = 1, 4 do
 					await(meleeSequenceAttack(attackConfig.melee))
 				end
 			end)
@@ -386,7 +386,7 @@ activeState = async(function(attackConfig)
 			await(activateGravity(attackConfig.activateGravity))
 
 			await(spawnOphanimsAttack(attackConfig.spawnOphanims))
-			for i = 1, 2 do
+			for _ = 1, 2 do
 				await(hoverFireAttack(attackConfig.hoverFire))
 			end
 
@@ -405,7 +405,7 @@ activeState = async(function(attackConfig)
 				await(deathLaserAttack(attackConfig.deathLaser))
 			end
 			if step == 0 or step == 1 then
-				for i = 1, 4 do
+				for _ = 1, 4 do
 					await(meleeSequenceAttack(attackConfig.melee))
 				end
 			end
@@ -416,7 +416,7 @@ activeState = async(function(attackConfig)
 			await(flyTo({storage.spawnPosition[1], mcontroller.position()[2]}))
 
 			await(spawnOphanimsAttack(attackConfig.spawnOphanims))
-			for i = 1, 2 do
+			for _ = 1, 2 do
 				await(hoverFireAttack(attackConfig.hoverFire))
 			end
 
@@ -773,7 +773,7 @@ spawnAnimation = async(function()
 			await(delay(0.75))
 		end,
 		function()
-			for i = 1, 5 do
+			for _ = 1, 5 do
 				--animator.playSound("spawnClank")
 				await(delay(0.5))
 			end
@@ -902,7 +902,7 @@ hoverFireAttack = async(function(conf)
 	await(delay(0.5))
 	monster.setAnimationParameter("aimLaser", false)
 
-	for i = 1, 5 do
+	for _ = 1, 5 do
 		animator.setAnimationState("righthand", "fire", true)
 		local sourcePosition = vec2.add(mcontroller.position(), animator.partPoint("righthand", "projectileSource"))
 		local aimDir = vec2.withAngle(self.righthand.angle)
@@ -950,7 +950,7 @@ rocketSwarmAttack = async(function(conf)
 			function()
 				await(delay(0.5))
 
-				for i = 1, conf.rocketCount do
+				for _ = 1, conf.rocketCount do
 					-- spawn one rocket from each rocket orifice
 					local leftPos = vec2.add(mcontroller.position(), animator.partPoint("body", "leftRocketSource"))
 					local aimDir = vec2.rotate({-1, 0}, -util.toRadians(30) * math.random() * util.toRadians(60))
@@ -1329,7 +1329,7 @@ deathLaserAttack = async(function(conf)
 	animator.setAnimationState("wings", "beamwindup")
 	await(delay(1.0))
 
-	for i = 1, 6 do
+	for _ = 1, 6 do
 		local sourcePosition = vec2.add(mcontroller.position(), animator.partPoint("beam", "beamStart"))
 		local toTarget = world.distance(world.entityPosition(self.target), sourcePosition)
 		controlFace(toTarget[1])
@@ -1400,13 +1400,13 @@ finalFormTransition = async(function(conf)
 			end
 		end,
 		function()
-			for i = 1, conf.beams do
+			for _ = 1, conf.beams do
 				await(handBeam("left", anglePrediction(mcontroller.position(), self.target, 1.0, 35), setDamagePartActive))
 			end
 		end,
 		function()
 			await(delay(0.75))
-			for i = 1, conf.beams do
+			for _ = 1, conf.beams do
 				await(handBeam("right", anglePrediction(mcontroller.position(), self.target, 1.0, 35), setDamagePartActive))
 			end
 		end

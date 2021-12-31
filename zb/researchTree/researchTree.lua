@@ -568,7 +568,7 @@ function draw()
 		local endPoint = {0,0}
 
 		-- draw tree lines
-		for research, tbl in pairs(researchTree) do
+		for _, tbl in pairs(researchTree) do
 			if tbl.state ~= "hidden" then
 				if tbl.children and #tbl.children > 0 then
 					startPoint[1] = tbl.position[1] + dragOffset.x
@@ -855,7 +855,7 @@ end
 function stringToAcronyms(dataString)
 	local splitString = {}
 	local _, count = string.gsub(dataString, ",", "")
-	for i = 1, count do
+	for _ = 1, count do
 		splitpos = string.find(dataString, ",")
 		insertingString = string.sub(dataString, 1, splitpos)
 		dataString = string.gsub(dataString, insertingString, "")

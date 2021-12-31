@@ -133,7 +133,7 @@ function textTyper.init(textData, str, sound)
 						amount = tonumber(string.sub(textCopy, i+11, bracketEnd-1))
 						table.insert(textData.scrambingLetters, #textData.toWrite + skippedChars..";"..#textData.toWrite + skippedChars + amount)
 
-						for j = 1, amount do
+						for _ = 1, amount do
 							table.insert(textData.toWrite, "#")
 						end
 
@@ -293,7 +293,7 @@ function textTyper.scrambling(textData)
 
 		if toScramble ~= "" then
 			local replacement = ""
-			for i = 1, string.len(toScramble) do
+			for _ = 1, string.len(toScramble) do
 				-- replacement = replacement..textTyper.allowedScrambleCharacters[math.random(1,#textTyper.allowedScrambleCharacters)]
 				local rnd = math.random(1, string.len(textTyper.allowedScrambleCharacters))
 				replacement = replacement..string.sub(textTyper.allowedScrambleCharacters, rnd, rnd)

@@ -30,7 +30,7 @@ function update(dt)
 	if self.spawnTimer <= 0 then
 		local damageCalc=(status.stat("maxHealth")*(self.spawnBaseDamage*self.healthDrainPcnt*(self.spawnInterval/self.drainInterval))) * (((status.stat("powerMultiplier")-1.0)*0.5)+1.0)
 		local monsters = world.entityQuery(entity.position(), self.spawnSearchRadius, { order = "nearest",includedTypes={"creature"}})
-		for i, monsterID in ipairs(monsters) do
+		for _, monsterID in ipairs(monsters) do
 			if entity.isValidTarget(monsterID) and entity.entityInSight(monsterID) then
 				local dir =  vec2.rotate({1, 0}, vec2.angle(vec2.sub(world.entityPosition(monsterID), entity.position())))
 				world.spawnProjectile("hivemindspawn", entity.position(), entity.id(), dir, nil, {controlForce=self.controlForce,maxSpeed=self.maxSpeed,spawnSearchRadius=self.spawnSearchRadius,target=monsterID,power = damageCalc})

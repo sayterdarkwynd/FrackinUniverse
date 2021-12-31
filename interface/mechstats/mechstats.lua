@@ -221,7 +221,7 @@ function updatePreview()
     local energyDrain = params.parts.body.energyDrain + params.parts.leftArm.energyDrain + params.parts.rightArm.energyDrain
 
     local chips = self.chips or {}
-    for chipName,chip in pairs(chips) do
+    for _,chip in pairs(chips) do
       if chip.name == "mechchiprefueler" then
         energyDrain = energyDrain * 0.75
       end

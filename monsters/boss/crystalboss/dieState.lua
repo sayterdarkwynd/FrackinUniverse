@@ -26,7 +26,7 @@ function dieState.enteringState(stateData)
   animator.playSound("death")
 
   --Spawn some initial shards
-  for i = 1, 10 do
+  for _ = 1, 10 do
     local randAngle = math.random() * math.pi * 2
     local spawnPosition = vec2.add(mcontroller.position(), vec2.rotate({8, 0}, randAngle))
     local aimVector = {math.cos(randAngle), math.sin(randAngle)}
@@ -56,7 +56,7 @@ function dieState.update(dt, stateData)
     self.dead = true
 
     --Explode into shards
-    for i = 1, 30 do
+    for _ = 1, 30 do
       local randAngle = math.random() * math.pi * 2
       local spawnPosition = vec2.add(mcontroller.position(), vec2.rotate({math.random() * 8, 0}, randAngle))
       local aimVector = {math.cos(randAngle), math.sin(randAngle)}

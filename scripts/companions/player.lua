@@ -88,7 +88,7 @@ function spawnCompanions()
 	end
 	petSpawner:markDirty()
 
-	for uuid, recruit in pairs(recruitSpawner.followers) do
+	for _, recruit in pairs(recruitSpawner.followers) do
 		if not recruit:dead() then
 			recruit:spawn()
 		end

@@ -55,7 +55,7 @@ function populateMaterialsList()
                     -- print planet subbiomes (includes main biome)
                     local subbiomes="None"
                     if parameters.surfaceLayer then
-                        for key,subBiome in pairs(parameters.surfaceLayer.secondarySubRegions) do
+                        for _,subBiome in pairs(parameters.surfaceLayer.secondarySubRegions) do
                             if subBiome and subBiome.biome ~= parameters.primaryBiome then
                                 if subbiomes=="None" then
                                     subbiomes = biomes[subBiome.biome]

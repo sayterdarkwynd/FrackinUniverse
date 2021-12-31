@@ -31,7 +31,7 @@ function fire(dt)
 		end
 	end
 	buffer=buffer2
-	for id,pos in pairs(buffer) do
+	for _,pos in pairs(buffer) do
 		local quack=math.floor(math.random(100))
 		if quack > 40 then
 			local aimVector=vec2.sub(pos,entity.position())

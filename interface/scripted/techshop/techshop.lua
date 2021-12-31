@@ -224,7 +224,7 @@ function doUnlock()
 
 			if not (craftable or player.isAdmin()) then return end
 
-			for k,v in pairs(tech.recipe) do
+			for _,v in pairs(tech.recipe) do
 				if isCurrency(v) then
 					player.consumeCurrency(v.name, v.count)
 				else
@@ -260,7 +260,7 @@ function hasIngredients(recipe)
 	-- hax for the hax god
 	if player.isAdmin() then return true end
 
-	for k,v in pairs(recipe) do
+	for _,v in pairs(recipe) do
 		if not hasEnough(v) then
 			return false
 		end
@@ -291,7 +291,7 @@ function swapRecipe()
 			local missing = ""
 			for _,p in pairs(self.selectedData.prereq or {}) do
 				local found = false
-				for d,x in pairs(player.enabledTechs()) do
+				for _,x in pairs(player.enabledTechs()) do
 					if x == p then found = true break end
 				end
 				if not found then missing = missing.."  - "..root.techConfig(p).shortDescription.."\n" end

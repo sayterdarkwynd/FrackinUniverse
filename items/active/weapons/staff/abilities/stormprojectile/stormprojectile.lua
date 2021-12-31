@@ -155,7 +155,7 @@ function StormProjectile:createProjectiles()
 	local projectileType=self.projectileType:gsub("spawner","storm2")
 	local castTimeMult=1+status.stat("focalCastTimeMult")
 	pParams.timedActions={}
-	for i=1,3 do
+	for _=1,3 do
 		table.insert(pParams.timedActions,
 		{
 			delayTime = 0.5*castTimeMult,
