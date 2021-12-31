@@ -100,7 +100,7 @@ function liquidLib.doPump()
 
 	if items ~= nil then
 		for slot,item in pairs(items) do
-			if liquidLib.tryConsumeLiqitem(items[1]) then break end
+			if liquidLib.tryConsumeLiqitem(item) then break end
 		end
 	end
 
