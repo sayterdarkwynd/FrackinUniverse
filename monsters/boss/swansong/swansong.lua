@@ -197,12 +197,10 @@ function boostAnimation()
 
 	local bodyTargetAngle = util.angleDiff(downAngle, thrustAngle) * 0.75
 	local lhTargetAngle = downAngle + util.angleDiff(downAngle, handThrustAngle)
-	local rhTargetAngle = downAngle + util.angleDiff(downAngle, handThrustAngle)
 	if braking then
 		-- move body and hands back toward their original angles when braking
 		bodyTargetAngle = util.angleDiff(0, bodyTargetAngle) * speedMultiplier
 		lhTargetAngle = downAngle + util.angleDiff(downAngle, lhTargetAngle) * speedMultiplier
-		rhTargetAngle = downAngle + util.angleDiff(downAngle, rhTargetAngle) * speedMultiplier
 	end
 
 	local hands = {

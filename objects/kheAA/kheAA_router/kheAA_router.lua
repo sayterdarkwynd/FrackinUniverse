@@ -149,7 +149,6 @@ function routeItems(dt)
 							end
 							if targetAwake == true and sourceAwake == true then
 								local containerSize=world.containerSize(targetContainer)
-								local outputSlotCount=outputSlotCountG
 								local outputSlotsBuffer={}
 
 
@@ -159,7 +158,7 @@ function routeItems(dt)
 									end
 								end
 
-								outputSlotCount=util.tableSize(outputSlotsBuffer)
+								local outputSlotCount=util.tableSize(outputSlotsBuffer)
 
 
 								local subCount=item.count
@@ -264,8 +263,6 @@ function checkFilter(item)
 				result = true
 			elseif fType == 1 and transferUtil.compareCategories(rItem, item) then
 				result = true
-			else
-				result = false
 			end
 			if storage.filterInverted[slot] then
 				result = not result

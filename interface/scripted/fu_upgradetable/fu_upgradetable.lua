@@ -450,24 +450,24 @@ function upgradeWeapon(upgradeItem,target)
 
 				--load item upgrade parameters
 				if (itemConfig.config.upgradeParametersTricorder) and (mergeBuffer.level > 1) then
+					oldRarity=mergeBuffer.rarity
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParametersTricorder))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
-					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters) and (mergeBuffer.level > math.max(defaultLvl, 4)) then
+					oldRarity=mergeBuffer.rarity
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
-					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters2) and (mergeBuffer.level > math.max(defaultLvl+1, 5)) then
+					oldRarity=mergeBuffer.rarity
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters2))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
-					oldRarity=mergeBuffer.rarity
 				end
 				if (itemConfig.config.upgradeParameters3) and (mergeBuffer.level > math.max(defaultLvl+2, 6)) then
+					oldRarity=mergeBuffer.rarity
 					mergeBuffer=util.mergeTable(mergeBuffer,copy(itemConfig.config.upgradeParameters3))
 					mergeBuffer.rarity=highestRarity(mergeBuffer.rarity,oldRarity)
-					oldRarity=mergeBuffer.rarity
 				end
 
 				local categoryLower=string.lower(mergeBuffer.category or itemConfig.parameters.category or itemConfig.config.category or "")
@@ -707,6 +707,8 @@ function applyBonusesEssence(mergeBuffer, itemConfig, categoryLower)
 					powerProjectileTime[1]=powerProjectileTime[1]*(1-(0.05*mergeBuffer.level))
 					powerProjectileTime[2]=powerProjectileTime[2]*(1+(0.05*mergeBuffer.level))
 				end
+				-- FIXME: found by Luacheck: value of "powerProjectileTime" (that we just calculated above) is unused, was it supposed to be saved somewhere?
+
 				primaryAbility.energyPerShot=primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot
 				if (primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot) then
 					primaryAbility.energyPerShot = (primaryAbility.energyPerShot or itemConfig.config.primaryAbility.energyPerShot) * math.max(0,(1-(mergeBuffer.level*0.05)))

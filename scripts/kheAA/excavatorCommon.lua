@@ -26,7 +26,6 @@ node list:
 ]]
 
 function excavatorCommon.init()
-	local buffer=""
 	transferUtil.loadSelfContainer()
 	if self.disabled then
 		storage.state="disabled"
@@ -40,7 +39,7 @@ function excavatorCommon.init()
 	excavatorCommon.vars.isPump=config.getParameter("kheAA_isPump",false)
 	excavatorCommon.vars.isVacuum=config.getParameter("kheAA_isVacuum",false)
 
-	buffer=config.getParameter("kheAA_excavatorRate")
+	local buffer=config.getParameter("kheAA_excavatorRate")
 	excavatorCommon.vars.excavatorRate=((type(buffer)=="number" and buffer > 0.0) and buffer) or 1.0
 
 	step=(step or -0.2)

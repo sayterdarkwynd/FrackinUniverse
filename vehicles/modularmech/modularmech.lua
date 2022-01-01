@@ -1416,6 +1416,7 @@ function armRotation(armSide)
 	local aimVec = world.distance(self.aimPosition, shoulderPosition)
 	local rotation = vec2.angle(aimVec)
 	if self.facingDirection == -1 then
+		-- FIXME: found by Luacheck: value of "rotation" is not used for anything.
 		rotation = math.pi - rotation
 	end
 end
