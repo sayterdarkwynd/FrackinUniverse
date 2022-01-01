@@ -222,7 +222,7 @@ QuestRelations.monsterTenants = defineQueryRelation("monsterTenants", true) {
 			return Relation.empty
 		end,
 
-	[case(2, Entity, Nil)] = function (self, deed, count)
+	[case(2, Entity, Nil)] = function (self, deed)
 			if self.negated then return Relation.some end
 			local count = deed:callScript("countMonsterTenants")
 			if count then

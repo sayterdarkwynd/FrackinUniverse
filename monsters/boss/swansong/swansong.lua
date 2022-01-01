@@ -279,7 +279,7 @@ function anglePrediction(sourcePosition, targetId, time, trackRange)
 		local targetVelocity = world.entityVelocity(targetId)
 		local toTarget = world.distance(world.entityPosition(targetId), sourcePosition)
 
-		local trackRange = trackRange or vec2.mag(toTarget)
+		trackRange = trackRange or vec2.mag(toTarget)
 		local perpendicular = vec2.rotate(vec2.norm(toTarget), math.pi / 2)
 		local angularVel = vec2.dot(perpendicular, vec2.norm(targetVelocity)) * (vec2.mag(targetVelocity) / trackRange)
 		return vec2.angle(toTarget) + angularVel * time

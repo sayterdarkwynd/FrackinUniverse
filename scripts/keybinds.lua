@@ -18,7 +18,7 @@ local set = function(values, f) local v = {};  for _,value in pairs(values) do v
 -- vec1-vec2
 local sub = function(a, b) return { a[1] - b[1], a[2] - b[2] } end
 -- http://lua-users.org/wiki/SplitJoin
-function string:split(sep) local sep, fields = sep or ":", {}; local pattern = string.format("([^%s]+)", sep); self:gsub(pattern, function(c) fields[#fields+1] = c end); return fields; end
+function string:split(sep) local fields = {}; local pattern = string.format("([^%s]+)", sep or ":"); self:gsub(pattern, function(c) fields[#fields+1] = c end); return fields; end
 -- Sets the tostring of of a table to "vec2"
 function keybinds.setVec2(point) setmetatable(point, { __tostring = function() return "vec2" end }) end
 

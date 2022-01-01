@@ -57,7 +57,7 @@ local function ArgsToString(...)
 end
 
 function CreateLoggingOverride(prefix, tostringPointsToSBPrint)
-	local prefix = tostring(prefix) or ""
+	prefix = tostring(prefix) or ""
 	if prefix ~= nil and prefix ~= "" then
 		prefix = prefix .. " "
 	end

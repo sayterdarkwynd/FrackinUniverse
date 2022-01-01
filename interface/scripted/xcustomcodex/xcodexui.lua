@@ -195,8 +195,8 @@ end
 -- The last argument is the maximum string length from this function. Its default value is 4 if undefined.
 local function GetNameAbbreviation(name, existingAbbreviations, startSub, maxLen)
 	-- Start out by getting default values.
-	local maxLen = maxLen or 4
-	local startSub = startSub or 1
+	maxLen = maxLen or 4
+	startSub = startSub or 1
 
 	-- Now we want to make sure our maximum length is also not going to be longer than the text since this will throw an error.
 	local newAvailableMax = math.min(maxLen, #name)

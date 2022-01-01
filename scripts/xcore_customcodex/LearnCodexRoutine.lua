@@ -52,7 +52,7 @@ function LearnCodex(itemName)
 	end
 
 	-- Update item name to strip it of -codex since we no longer want that suffix.
-	local itemName = itemName:sub(1, -7)
+	itemName = itemName:sub(1, -7)
 
 	local foundCodexFile = pcall(root.assetJson, data.directory .. itemName .. ".codex")
 	if not foundCodexFile then
