@@ -55,7 +55,7 @@
 -- Preventing potential overrides
 zbutil = zbutil or {}
 
-function math.clamp(input, min, max)
+function math.clamp(input, min, max) -- luacheck: ignore 142
 	return math.max(min, math.min(input, max))
 end
 
@@ -113,7 +113,7 @@ function zbutil._DeepPrintTableHelper(toPrint, level)
 end
 
 function zbutil.RGBToHex(num)
-	num = math.clamp(math.floor(num + 0.5), 0, 255)
+	num = math.clamp(math.floor(num + 0.5), 0, 255) -- luacheck: ignore 143
 
 	local hexidecimal = "0123456789ABCDEF"
 	local units = num%16+1
@@ -122,7 +122,7 @@ function zbutil.RGBToHex(num)
 end
 
 function zbutil.ValToHex(num)
-	return zbutil.RGBToHex(255 * math.clamp(num, 0, 1))
+	return zbutil.RGBToHex(255 * math.clamp(num, 0, 1)) -- luacheck: ignore 143
 end
 
 function zbutil.HexToRGB(hex)

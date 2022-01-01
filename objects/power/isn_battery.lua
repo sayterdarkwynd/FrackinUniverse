@@ -64,14 +64,14 @@ function isn_makeBatteryDescription(desc, charge, onDeath)
 	end
 
 	-- append charge state to default description; ensure that it's on a line of its own
-	local str=string.split(desc,"^truncate;")
+	local str=string_split(desc,"^truncate;")
 	if str[1] then str=str[1] else str="" end
 	str=str..((onDeath and " ^red;Scan for Info^reset;") or "\n^blue;Input 1^reset;: On/Off Switch\n^red;Output 1^reset;: Partial Power, ^red;Output 2^reset;: Full Power")
 	str = str .. (desc ~= '' and "\n" or '') .. "Power Stored: ^yellow;"..util.round(power.getStoredEnergy(),1).."^reset;/^green;"..util.round(power.getMaxEnergy(),1).."^reset;J (^yellow;" .. charge .. '^reset;%)'
 	return str
 end
 
-function string.split(str, pat)
+function string_split(str, pat)
 	 local t = {}	-- NOTE: use {n = 0} in Lua-5.0
 	 local fpat = "(.-)" .. pat
 	 local last_end = 1

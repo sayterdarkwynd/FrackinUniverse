@@ -9,7 +9,7 @@ end
 
 function populateMaterialsList()
         widget.clearListItems(MATERIALS)
-        local worldId = string.split(player.worldId(),":")
+        local worldId = string_split(player.worldId(),":")
         local planet = {location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}, planet = tonumber(worldId[5]), satellite = (tonumber(worldId[6]) or 0)}
         local system ={location = {tonumber(worldId[2]),tonumber(worldId[3]),tonumber(worldId[4])}}
         if worldId[1]=="InstanceWorld" then
@@ -273,7 +273,7 @@ function ThreatToString(threat)
 end
 -- contribution of zimberzimber
 
-function string.split(str, pat)
+function string_split(str, pat)
     local t = {}  -- NOTE: use {n = 0} in Lua-5.0
     local fpat = "(.-)" .. pat
     local last_end = 1
